@@ -6,26 +6,24 @@ class Navigation extends Base
 {
     public function load()
     {
-        $this->registerEvent('message', 'onMessage');
-        $this->registerEvent('chat_open', 'onMessage', 'chat');
-        $this->registerEvent('chat_open_room', 'onMessage', 'chat');
+        $this->registerEvent('chat_counter', 'onCounter');
     }
 
-    public function onMessage($packet)
+    public function onCounter($count)
     {
-        $this->rpc('MovimTpl.fill', '#chatcounter', $this->prepareChatButton());
+        $this->rpc('MovimTpl.fill', '#chatcounter', $this->prepareChatButton($count));
     }
 
     public function display()
     {
         $this->view->assign('page', $this->_view);
-        $this->view->assign('chatCounter', $this->prepareChatButton());
+        $this->view->assign('chatCounter', $this->prepareChatButton($this->user->unreads()));
     }
 
-    public function prepareChatButton()
+    private function prepareChatButton(int $count = 0)
     {
         $view = $this->tpl();
-        $view->assign('count', $this->user->unreads());
+        $view->assign('count', $count);
         return $view->draw('_navigation_chat_counter');
     }
 }

@@ -28,7 +28,6 @@ class Menu extends Base
         $view->assign('count', $count);
         $view->assign('refresh', $this->call('ajaxGetAll'));
 
-        $this->rpc('movim_posts_unread', $count);
         $this->rpc('MovimTpl.fill', '#menu_refresh', $view->draw('_menu_refresh'));
     }
 

@@ -195,6 +195,7 @@ class Chats extends Base
         \App\Cache::c('chats', $chats);
 
         $this->rpc('MovimTpl.remove', '#' . cleanupId($jid . '_chat_item'));
+        $this->rpc('Chat_ajaxClearCounter', $jid);
         $this->rpc('Chats.refresh');
 
         if ($closeDiscussion) {

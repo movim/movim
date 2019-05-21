@@ -137,6 +137,8 @@ class Chat extends \Movim\Widget\Base
         if (!$message->isOTR()) {
             $this->rpc('Chat.appendMessagesWrapper', $this->prepareMessage($message, $from));
         }
+
+        $this->event('chat_counter', $this->user->unreads());
     }
 
     public function onSticker($packet)
@@ -217,6 +219,12 @@ class Chat extends \Movim\Widget\Base
         $separator = $view->draw('_chat_separator');
 
         $this->rpc('Chat.setGeneralElements', $date, $separator);
+    }
+
+    public function ajaxClearCounter($jid)
+    {
+        $this->prepareMessages($jid, false, true);
+        $this->event('chat_counter', $this->user->unreads());
     }
 
     /**
@@ -673,7 +681,7 @@ class Chat extends \Movim\Widget\Base
         return $view->draw('_chat');
     }
 
-    public function prepareMessages($jid, $muc = false)
+    public function prepareMessages($jid, $muc = false, $seenOnly = false)
     {
         if (!$this->validateJid($jid)) {
             return;
@@ -696,6 +704,8 @@ class Chat extends \Movim\Widget\Base
         if ($unreadsCount > 0) {
             $messagesQuery->where('seen', false)->update(['seen' => true]);
         }
+
+        if ($seenOnly) return;
 
         $messages = $messages->reverse();
 
@@ -720,6 +730,7 @@ class Chat extends \Movim\Widget\Base
         $this->rpc('Chat.appendMessagesWrapper', $this->_wrapper, false, true);
 
         $this->event($muc ? 'chat_open_room' : 'chat_open', $jid);
+        $this->event('chat_counter', $this->user->unreads());
 
         $notif = new Notification;
         $this->rpc('Chat.insertSeparator', $unreadsCount);

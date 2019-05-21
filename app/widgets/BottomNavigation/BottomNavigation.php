@@ -8,26 +8,24 @@ class BottomNavigation extends Base
     {
         $this->addcss('bottomnavigation.css');
 
-        $this->registerEvent('message', 'onMessage');
-        $this->registerEvent('chat_open', 'onMessage', 'chat');
-        $this->registerEvent('chat_open_room', 'onMessage', 'chat');
+        $this->registerEvent('chat_counter', 'onCounter');
     }
 
-    public function onMessage($packet)
+    public function onCounter($count)
     {
-        $this->rpc('MovimTpl.fill', '#bottomchatcounter', $this->prepareChatButton());
-    }
-
-    public function prepareChatButton()
-    {
-        $view = $this->tpl();
-        $view->assign('count', $this->user->unreads());
-        return $view->draw('_bottomnavigation_chat_counter');
+        $this->rpc('MovimTpl.fill', '#chatcounter', $this->prepareChatButton($count));
     }
 
     public function display()
     {
         $this->view->assign('page', $this->_view);
-        $this->view->assign('chatCounter', $this->prepareChatButton());
+        $this->view->assign('chatCounter', $this->prepareChatButton($this->user->unreads()));
+    }
+
+    private function prepareChatButton(int $count = 0)
+    {
+        $view = $this->tpl();
+        $view->assign('count', $this->user->unreads());
+        return $view->draw('_bottomnavigation_chat_counter');
     }
 }
