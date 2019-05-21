@@ -205,7 +205,26 @@ class Chats extends Base
 
     public function prepareChats($emptyItems = false)
     {
+        $unreads = [];
+
+        // Get the chats with unread messages
+        $this->user->messages()
+            ->select('jidfrom')
+            ->where('seen', false)
+            ->where('type', 'chat')
+            ->groupBy('jidfrom')
+            ->pluck('jidfrom')
+            ->each(function ($item) use (&$unreads) {
+                $unreads[$item] = 1;
+            });
+
+        // Append the open chats
         $chats = \App\Cache::c('chats');
+
+        $chats = array_merge(
+            is_array($chats) ? $chats : [],
+            $unreads
+        );
 
         $view = $this->tpl();
 
