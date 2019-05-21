@@ -40,9 +40,10 @@
         onclick="MovimUtils.reload('{$c->route('chat')}')"
         title="{$c->__('page.chats')}"
     >
-        <span class="primary icon">
-            <i class="material-icons">forum</i>
-            <span data-key="chat" class="counter"></span>
+        <span class="primary icon" id="bottomchatcounter">
+            {autoescape="off"}
+                {$chatCounter}
+            {/autoescape}
         </span>
     </li>
 </ul>

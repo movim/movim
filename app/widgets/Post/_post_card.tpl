@@ -181,7 +181,7 @@
                     <i class="material-icons">share</i>
                 </a>
                     {if="$post->openlink"}
-                        <a  title="{$c->__('post.public_yes')}"
+                        <a  title="{$c->__('post.public_url')}"
                             class="button icon flat gray on_desktop oppose"
                             target="_blank"
                             href="{$post->openlink->href}">

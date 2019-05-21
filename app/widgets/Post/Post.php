@@ -48,14 +48,14 @@ class Post extends Base
     public function onCommentPublished($packet)
     {
         $isLike = $packet->content;
-        Notification::append(false, $isLike
+        Notification::toast($isLike
             ? $this->__('post.comment_like_published')
             : $this->__('post.comment_published'));
     }
 
     public function onCommentPublishError($packet)
     {
-        Notification::append(false, $this->__('post.comment_publish_error'));
+        Notification::toast($this->__('post.comment_publish_error'));
     }
 
     public function onComments($packet)

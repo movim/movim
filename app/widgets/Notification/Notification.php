@@ -11,6 +11,11 @@ class Notification extends Base
         $this->addjs('notification.js');
     }
 
+    public static function toast($title)
+    {
+        RPC::call('Notification.toast', $title);
+    }
+
     /**
      * @brief Notify something
      *
@@ -23,7 +28,7 @@ class Notification extends Base
      * @return void
      */
     public static function append(
-        $key = null,
+        string $key,
         $title = null,
         $body = null,
         $picture = null,
@@ -32,12 +37,6 @@ class Notification extends Base
         $group = null,
         $execute = null
     ) {
-        // In this case we have an action confirmation
-        if ($key == null && $title != null) {
-            RPC::call('Notification.toast', $title);
-            return;
-        }
-
         if ($picture == null) {
             $picture = BASE_URI . '/theme/img/app/128.png';
         }
@@ -100,6 +99,16 @@ class Notification extends Base
         $session->set('notifs', $notifs);
     }
 
+
+    /**
+     * @brief Get the current Notification key
+     */
+    public function getCurrent()
+    {
+        $session = Session::start();
+        return $session->get('notifs_key');
+    }
+
     /**
      * @brief Clear the counter of a key
      *
@@ -118,6 +127,7 @@ class Notification extends Base
             RPC::call('Notification.counter', $key, '');
 
             $explode = explode('|', $key);
+
             $first = reset($explode);
 
             if (array_key_exists($first, $notifs)) {
@@ -149,21 +159,6 @@ class Notification extends Base
     }
 
     /**
-     * @brief Get all the keys
-     * @return void
-     */
-    public function getCounter($key)
-    {
-        $session = Session::start();
-        $notifs = $session->get('notifs');
-        if ($notifs != null && array_key_exists($key, $notifs)) {
-            return $notifs[$key];
-        }
-
-        return 0;
-    }
-
-    /**
      * @brief Set the current used key (to prevent notifications on current view)
      *
      * @param string $key
@@ -172,10 +167,16 @@ class Notification extends Base
     public function ajaxCurrent($key)
     {
         $session = Session::start();
+
+        // If the page was blurred
+        if ($session->get('notifs_key') === 'blurred') {
+            $this->event('notification_counter_clear', explode('|', $key));
+        }
+
         $session->set('notifs_key', $key);
     }
 
-    public function prepareSnackbar($title, $body = null, $picture = null, $action = null, $execute = null)
+    private function prepareSnackbar($title, $body = null, $picture = null, $action = null, $execute = null)
     {
         $view = $this->tpl();
 

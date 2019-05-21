@@ -33,9 +33,9 @@ class PostActions extends Base
         list($server, $node, $id) = array_values($packet->content);
 
         if (substr($node, 0, 29) == 'urn:xmpp:microblog:0:comments') {
-            Notification::append(false, $this->__('post.comment_deleted'));
+            Notification::toast($this->__('post.comment_deleted'));
         } else {
-            Notification::append(false, $this->__('post.deleted'));
+            Notification::toast($this->__('post.deleted'));
 
             $this->rpc(
                 'PostActions.handleDelete',

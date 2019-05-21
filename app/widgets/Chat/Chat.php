@@ -49,11 +49,21 @@ class Chat extends \Movim\Widget\Base
         $this->registerEvent('presence_muc_handle', 'onMucConnected', 'chat');
 
         $this->registerEvent('bob_request_handle', 'onSticker');
+        $this->registerEvent('notification_counter_clear', 'onNotificationCounterClear');
     }
 
     public function onMessageReceipt($packet)
     {
         $this->onMessage($packet, false, true);
+    }
+
+    public function onNotificationCounterClear($params)
+    {
+        list($page, $first, $room) = array_pad($params, 3, null);
+
+        if ($page === 'chat') {
+            $this->prepareMessages($first, ($room === 'room'));
+        }
     }
 
     public function onMessage($packet, $history = false, $receipt = false)
@@ -172,7 +182,7 @@ class Chat extends \Movim\Widget\Base
 
     public function onRoomConfigError($packet)
     {
-        Notification::append(false, $packet->content);
+        Notification::toast($packet->content);
     }
 
     public function onRoomConfig($packet)
@@ -192,7 +202,7 @@ class Chat extends \Movim\Widget\Base
 
     public function onRoomConfigSaved($packet)
     {
-        Notification::append(false, $this->__('chatroom.config_saved'));
+        Notification::toast($this->__('chatroom.config_saved'));
     }
 
     private function setState(string $jid, string $message)
@@ -261,7 +271,7 @@ class Chat extends \Movim\Widget\Base
 
             $notif = new Notification;
             $notif->ajaxClear('chat|'.$room);
-            $this->rpc('Notification.current', 'chat|'.$room);
+            $this->rpc('Notification.current', 'chat|'.$room.'|room');
         } else {
             $this->rpc('Rooms_ajaxAdd', $room);
         }
@@ -333,6 +343,7 @@ class Chat extends \Movim\Widget\Base
 
         // TODO: make this boolean configurable
         $m->markable = true;
+        $m->seen = true;
 
         $m->type    = 'chat';
         $m->resource = $this->user->session->resource;
@@ -535,7 +546,7 @@ class Chat extends \Movim\Widget\Base
 
         if ($messages->count() > 0) {
             if ($prepend) {
-                Notification::append(false, $this->__('message.history', $messages->count()));
+                Notification::toast($this->__('message.history', $messages->count()));
             } else {
                 $messages = $messages->reverse();
             }
@@ -675,11 +686,15 @@ class Chat extends \Movim\Widget\Base
                   ->orWhere('jidto', $jid);
         });
 
-        $messages = $muc
+        $messagesQuery = $muc
             ? $messages->where('type', 'groupchat')->whereNull('subject')
             : $messages->whereIn('type', $this->_messageTypes);
 
-        $messages = $messages->orderBy('published', 'desc')->take($this->_pagination)->get();
+        $messages = $messagesQuery->orderBy('published', 'desc')->take($this->_pagination)->get();
+        $unreadsCount = $messages->where('seen', false)->count();
+
+        $messagesQuery->update(['seen' => true]);
+
         $messages = $messages->reverse();
 
         foreach ($messages as $message) {
@@ -702,8 +717,10 @@ class Chat extends \Movim\Widget\Base
         $this->rpc('Chat.setSpecificElements', $left, $right);
         $this->rpc('Chat.appendMessagesWrapper', $this->_wrapper, false, true);
 
+        $this->event($muc ? 'chat_open_room' : 'chat_open', $jid);
+
         $notif = new Notification;
-        $this->rpc('Chat.insertSeparator', $notif->getCounter('chat|'.$jid));
+        $this->rpc('Chat.insertSeparator', $unreadsCount);
         $notif->ajaxClear('chat|'.$jid);
     }
 
@@ -837,12 +854,22 @@ class Chat extends \Movim\Widget\Base
                 }
 
                 $message->moderator = ($this->mucPresences[$key]->mucrole == 'moderator');
-                $message->mine = ($this->mucPresences[$key]->mucjid == $this->user->id);
+                $message->mine = $message->seen = ($this->mucPresences[$key]->mucjid == $this->user->id);
+
             } else {
                 $this->mucPresences[$key] = true;
             }
 
             $message->icon = firstLetterCapitalize($message->resource);
+        } else {
+            $n = new Notification;
+            $message->seen = ('chat|'.$message->jidfrom == $n->getCurrent());
+        }
+
+        if ($message->seen) {
+            $this->user->messages()
+                 ->where('id', $message->id)
+                 ->update(['seen' => true]);
         }
 
         $msgkey = '<' . $message->jidfrom;

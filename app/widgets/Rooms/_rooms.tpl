@@ -40,14 +40,18 @@
                         {$value->name|stringToColor}"
                         id="{$value->conference|cleanupId}-rooms-primary"
                         style="background-image: url({$url});">
-                        <span data-key="chat|{$value->conference}" class="counter"></span>
+                        {autoescape="off"}
+                            {$c->prepareRoomCounter($value)}
+                        {/autoescape}
                     </span>
                 {else}
                     <span class="primary
                         {if="!$connected"}disabled small{/if} icon bubble color
                         {$value->name|stringToColor}"
                         id="{$value->conference|cleanupId}-rooms-primary">
-                        <span data-key="chat|{$value->conference}" class="counter"></span>
+                        {if="$value->unreads_count > 0"}
+                            <span class="counter">{$value->unreads_count}</span>
+                        {/if}
                         {autoescape="off"}
                             {if="$connected"}
                                 {$value->name|firstLetterCapitalize|addEmojis}

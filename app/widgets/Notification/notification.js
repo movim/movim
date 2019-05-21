@@ -185,7 +185,6 @@ if (typeof MovimWebsocket != 'undefined') {
         window.addEventListener('focus', function() {
             Notification.focused = true;
             Notification.current(Notification.notifs_key);
-            Notification_ajaxClear(Notification.notifs_key);
         });
     });
 }

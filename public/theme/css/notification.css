@@ -11,7 +11,7 @@
     color: white;
     padding: 2rem 3rem;
     box-sizing: border-box;
-    width: 40rem;
+    width: 44rem;
     pointer-events: none;
     transition: opacity 0.2s ease, transform 0.4s ease;
     background-color: #333333;

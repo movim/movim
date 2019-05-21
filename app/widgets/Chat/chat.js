@@ -256,7 +256,8 @@ var Chat = {
         MovimUtils.textareaAutoheight(textarea);
         textarea.focus();
     },
-    setGeneralElements(date, separator) {
+    setGeneralElements(date, separator)
+    {
         var div = document.createElement('div');
 
         Chat.currentDate = null;
@@ -266,7 +267,8 @@ var Chat = {
         div.innerHTML = separator;
         Chat.separator = div.firstChild.cloneNode(true);
     },
-    setSpecificElements : function(left, right) {
+    setSpecificElements : function(left, right)
+    {
         var div = document.createElement('div');
 
         Chat.currentDate = null;
@@ -276,8 +278,12 @@ var Chat = {
         div.innerHTML = right;
         Chat.right = div.firstChild.cloneNode(true);
     },
-    setScrollBehaviour : function() {
+    setScrollBehaviour : function()
+    {
         var discussion = Chat.getDiscussion();
+
+        if (discussion == null) return;
+
         discussion.onscroll = function() {
             if (this.scrollTop < 1
             && discussion.querySelectorAll('ul li div.bubble p').length >= Chat.pagination) {
@@ -291,7 +297,8 @@ var Chat = {
             Chat.lastHeight = this.clientHeight;
         };
     },
-    setReactionButtonBehaviour : function() {
+    setReactionButtonBehaviour : function()
+    {
         let reactions = document.querySelectorAll('#chat_widget span.reaction');
         let i = 0;
 
@@ -303,7 +310,8 @@ var Chat = {
             i++;
         }
     },
-    checkDiscussion : function(page) {
+    checkDiscussion : function(page)
+    {
         for (var firstKey in page) break;
         if (page[firstKey] == null) return false;
 
@@ -320,7 +328,8 @@ var Chat = {
 
         return true;
     },
-    appendMessagesWrapper : function(page, prepend, scroll) {
+    appendMessagesWrapper : function(page, prepend, scroll)
+    {
         var discussion = Chat.getDiscussion();
 
         if (page && Chat.checkDiscussion(page)) {
@@ -709,6 +718,7 @@ var Chat = {
 
 MovimWebsocket.attach(function() {
     Chat_ajaxInit();
+    Notification.current('chat');
 
     var jid = MovimUtils.urlParts().params[0];
     var room = (MovimUtils.urlParts().params[1] === 'room');

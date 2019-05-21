@@ -70,28 +70,28 @@ class AccountNext extends \Movim\Widget\Base
 
     public function onError()
     {
-        Notification::append(null, $this->__('error.service_unavailable'));
+        Notification::toast($this->__('error.service_unavailable'));
     }
 
     public function onRegisterError($package)
     {
         $error = $package->content;
-        Notification::append(null, $error);
+        Notification::toast($error);
     }
 
     public function onForbidden()
     {
-        Notification::append(null, $this->__('error.forbidden'));
+        Notification::toast($this->__('error.forbidden'));
     }
 
     public function onRegisterNotAcceptable()
     {
-        Notification::append(null, $this->__('error.not_acceptable'));
+        Notification::toast($this->__('error.not_acceptable'));
     }
 
     public function onServiceUnavailable()
     {
-        Notification::append(null, $this->__('error.service_unavailable'));
+        Notification::toast($this->__('error.service_unavailable'));
 
         requestAPI('disconnect', 2, ['sid' => SESSION_ID]);
 
@@ -120,7 +120,7 @@ class AccountNext extends \Movim\Widget\Base
     {
         if (isset($form->re_password)
         && $form->re_password->value != $form->password->value) {
-            Notification::append(null, $this->__('account.password_not_same'));
+            Notification::toast($this->__('account.password_not_same'));
             return;
         }
 

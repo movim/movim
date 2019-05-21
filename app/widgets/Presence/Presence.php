@@ -40,7 +40,7 @@ class Presence extends Base
     public function onMyPresence($packet)
     {
         $this->rpc('MovimTpl.fill', '#presence_widget', $this->preparePresence());
-        Notification::append(null, $this->__('status.updated'));
+        Notification::toast($this->__('status.updated'));
     }
 
     public function start()

@@ -42,6 +42,19 @@ class User extends Model
         return $this->hasMany('App\Message');
     }
 
+    public function unreads(string $jid = null)
+    {
+        $unreads = $this->messages()
+                        ->where('seen', false)
+                        ->whereIn('type', ['chat', 'groupchat']);
+
+        if ($jid) {
+            $unreads = $unreads->where('jidfrom', $jid);
+        }
+
+        return $unreads->count();
+    }
+
     public function encryptedPasswords()
     {
         return $this->hasMany('App\EncryptedPassword');

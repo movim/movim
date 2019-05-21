@@ -21,14 +21,17 @@
         </li>
     </a>
     <a class="classic" href="{$c->route('chat')}"
+       id="chatbutton"
        title="{$c->__('page.chats')}">
         <li {if="$page == 'chat'"}class="active"{/if}>
-            <span class="primary icon">
-                <i class="material-icons">forum</i>
-                <span data-key="chat" class="counter"></span>
+            <span class="primary icon" id="chatcounter">
+                {autoescape="off"}
+                    {$chatCounter}
+                {/autoescape}
             </span>
             <p class="normal">{$c->__('page.chats')}</p>
         </li>
+
     </a>
 </ul>
 

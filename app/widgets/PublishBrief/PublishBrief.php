@@ -25,7 +25,7 @@ class PublishBrief extends Base
 
     public function onPublish($packet)
     {
-        Notification::append(false, $this->__('post.published'));
+        Notification::toast($this->__('post.published'));
 
         list($to, $node, $id, $repost, $comments) = array_values($packet->content);
 
@@ -106,7 +106,7 @@ class PublishBrief extends Base
 
             Dialog::fill($view->draw('_publishbrief_preview'), true);
         } else {
-            Notification::append(false, $this->__('publishbrief.no_content_preview'));
+            Notification::toast($this->__('publishbrief.no_content_preview'));
         }
     }
 
@@ -228,7 +228,7 @@ class PublishBrief extends Base
             $this->ajaxGet();
         } else {
             $this->rpc('PublishBrief.enableSend');
-            Notification::append(false, $this->__('publishbrief.no_title'));
+            Notification::toast($this->__('publishbrief.no_title'));
         }
     }
 
@@ -248,7 +248,7 @@ class PublishBrief extends Base
         }
 
         if (!Validator::url()->validate($url)) {
-            Notification::append(false, $this->__('publishbrief.valid_url'));
+            Notification::toast($this->__('publishbrief.valid_url'));
             $this->ajaxClearEmbed();
             return;
         }
@@ -371,7 +371,7 @@ class PublishBrief extends Base
 
     public function ajaxDisplayPrivacy($open)
     {
-        Notification::append(false, ($open)
+        Notification::toast(($open)
             ? $this->__('post.public_yes')
             : $this->__('post.public_no'));
     }

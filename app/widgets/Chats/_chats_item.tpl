@@ -9,13 +9,16 @@
                 action
             {/if}
         {/if}
+        {if="$active"}active{/if}
         "
     title="{$contact->jid}{if="isset($message)"} – {$message->published|strtotime|prepareDate}{/if}">
     {$url = $contact->getPhoto()}
     {if="$url"}
         <span class="primary icon bubble {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}">
             <img src="{$url}">
-            <span data-key="chat|{$contact->jid}" class="counter"></span>
+            {if="$count > 0"}
+                <span class="counter">{$count}</span>
+            {/if}
         </span>
     {else}
         <span class="primary icon bubble color {$contact->jid|stringToColor} {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}">
@@ -24,7 +27,7 @@
             {else}
                 {$contact->truename|firstLetterCapitalize}
             {/if}
-            <span data-key="chat|{$contact->jid}" class="counter"></span>
+            <span class="counter">{$count}</span>
         </span>
     {/if}
 
