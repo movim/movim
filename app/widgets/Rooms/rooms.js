@@ -28,7 +28,7 @@ var Rooms = {
         {
             if (items[i].dataset.jid != null) {
                 items[i].onclick = function(e) {
-                    Chats.refresh();
+                    Chats.refresh(true);
 
                     items.forEach(item => item.classList.remove('active'));
                     this.classList.add('active');

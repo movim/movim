@@ -46,7 +46,6 @@ class Chats extends Base
             return;
         }
 
-        $this->rpc('Chats.refresh');
         $this->rpc(
             'MovimTpl.replace',
             '#' . cleanupId($jid . '_chat_item'),
@@ -58,6 +57,7 @@ class Chats extends Base
                 true
             )
         );
+        $this->rpc('Chats.refresh');
     }
 
     public function onPresence($packet)
@@ -75,9 +75,6 @@ class Chats extends Base
                     )
                 );
                 $this->rpc('Chats.refresh');
-
-                $n = new Notification;
-                $n->ajaxGet();
             }
         }
     }
@@ -178,6 +175,8 @@ class Chats extends Base
                     $this->resolveRosterFromJid($jid)
                 )
             );
+
+            $this->rpc('Chats.refresh');
         }
     }
 

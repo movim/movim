@@ -2,7 +2,7 @@ var Chats = {
     startX: 0,
     startY: 0,
 
-    refresh: function() {
+    refresh: function(clearAllActives = false) {
         var list = document.querySelector('#chats_widget_list');
         var trim = list.innerHTML.trim();
 
@@ -70,7 +70,9 @@ var Chats = {
                 }, true);
             }
 
-            items[i].classList.remove('active');
+            if (clearAllActives) {
+                items[i].classList.remove('active');
+            }
             i++;
         }
     },
