@@ -27,7 +27,9 @@
             {else}
                 {$contact->truename|firstLetterCapitalize}
             {/if}
-            <span class="counter">{$count}</span>
+            {if="$count > 0"}
+                <span class="counter">{$count}</span>
+            {/if}
         </span>
     {/if}
 
