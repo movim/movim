@@ -6,7 +6,6 @@ use Moxl\Xec\Action\Roster\UpdateItem;
 use Moxl\Xec\Action\Roster\RemoveItem;
 use Moxl\Xec\Action\Presence\Unsubscribe;
 
-use Respect\Validation\Validator;
 use App\Roster as DBRoster;
 
 class ContactHeader extends Base
@@ -104,8 +103,7 @@ class ContactHeader extends Base
      */
     private function validateJid($jid)
     {
-        $validate_jid = Validator::stringType()->noWhitespace()->length(6, 60);
-        return ($validate_jid->validate($jid));
+        return prepJid($jid);
     }
 
     public function display()

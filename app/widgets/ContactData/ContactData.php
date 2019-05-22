@@ -2,8 +2,6 @@
 
 use Movim\Widget\Base;
 
-use Respect\Validation\Validator;
-
 class ContactData extends Base
 {
     public function load()
@@ -71,8 +69,7 @@ class ContactData extends Base
      */
     private function validateJid($jid)
     {
-        $validate_jid = Validator::stringType()->noWhitespace()->length(6, 60);
-        return ($validate_jid->validate($jid));
+        return prepJid($jid);
     }
 
     public function display()

@@ -5,8 +5,6 @@ use Movim\Widget\Base;
 use Moxl\Xec\Action\Roster\AddItem;
 use Moxl\Xec\Action\Presence\Subscribe;
 
-use Respect\Validation\Validator;
-
 class ContactActions extends Base
 {
     public function load()
@@ -88,7 +86,6 @@ class ContactActions extends Base
      */
     private function validateJid($jid)
     {
-        $validate_jid = Validator::stringType()->noWhitespace()->length(6, 60);
-        return ($validate_jid->validate($jid));
+        return prepJid($jid);
     }
 }

@@ -3,8 +3,6 @@
 use Moxl\Xec\Action\Message\Publish;
 use Moxl\Xec\Action\BOB\Answer;
 
-use Respect\Validation\Validator;
-
 use Movim\Picture;
 
 class Stickers extends \Movim\Widget\Base
@@ -193,8 +191,7 @@ class Stickers extends \Movim\Widget\Base
      */
     private function validateJid($jid)
     {
-        return Validator::stringType()->noWhitespace()
-                        ->length(6, 60)->validate($jid);
+        return prepJid($jid);
     }
 
     public function getSmileyPath($id)

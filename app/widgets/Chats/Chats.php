@@ -6,8 +6,6 @@ use Moxl\Xec\Action\Presence\Muc;
 use Moxl\Xec\Action\Bookmark\Get;
 use Moxl\Xec\Action\Bookmark\Set;
 
-use Respect\Validation\Validator;
-
 class Chats extends Base
 {
     public function load()
@@ -292,9 +290,6 @@ class Chats extends Base
 
     private function validateJid($jid)
     {
-        return (Validator::stringType()
-            ->noWhitespace()
-            ->length(6, 80)
-            ->validate($jid));
+        return prepJid($jid);
     }
 }
