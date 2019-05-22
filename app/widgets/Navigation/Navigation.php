@@ -6,12 +6,18 @@ class Navigation extends Base
 {
     public function load()
     {
+        $this->addjs('navigation.js');
         $this->registerEvent('chat_counter', 'onCounter');
     }
 
     public function onCounter($count)
     {
         $this->rpc('MovimTpl.fill', '#chatcounter', $this->prepareChatButton($count));
+    }
+
+    public function ajaxRefresh()
+    {
+        $this->onCounter($this->user->unreads());
     }
 
     public function display()

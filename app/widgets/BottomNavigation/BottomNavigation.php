@@ -7,6 +7,7 @@ class BottomNavigation extends Base
     public function load()
     {
         $this->addcss('bottomnavigation.css');
+        $this->addjs('bottomnavigation.js');
 
         $this->registerEvent('chat_counter', 'onCounter');
     }
@@ -14,6 +15,11 @@ class BottomNavigation extends Base
     public function onCounter($count)
     {
         $this->rpc('MovimTpl.fill', '#chatcounter', $this->prepareChatButton($count));
+    }
+
+    public function ajaxRefresh()
+    {
+        $this->onCounter($this->user->unreads());
     }
 
     public function display()
