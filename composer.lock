@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a021c48b6bdc6486a753e9efd6c38d29",
+    "content-hash": "f8053aa31d3ca7bdd66792a97b968b3c",
     "packages": [
         {
             "name": "cakephp/cache",
@@ -3492,6 +3492,16 @@
             ],
             "description": "Composer plugin to merge multiple composer.json files",
             "time": "2017-04-25T02:31:25+00:00"
+        },
+        {
+            "name": "znerol/php-stringprep",
+            "version": "0.0.1",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:znerol/Stringprep.git",
+                "reference": "master"
+            },
+            "type": "package"
         }
     ],
     "packages-dev": [],

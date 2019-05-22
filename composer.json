@@ -10,6 +10,21 @@
             "Moxl\\": "lib/moxl/src/"
         }
     },
+    "repositories": [
+      {
+        "type": "package",
+        "package": {
+          "name": "znerol/php-stringprep",
+          "version": "0.0.1",
+          "type": "package",
+          "source": {
+              "url": "git@github.com:znerol/Stringprep.git",
+              "type": "git",
+              "reference": "master"
+          }
+        }
+      }
+    ],
     "require": {
         "php": ">=7.0.0",
         "ext-curl": "*",
@@ -31,6 +46,7 @@
         "cocur/slugify": "^3.2",
         "dflydev/fig-cookies": "^1.0",
         "defuse/php-encryption": "^2.2",
+        "znerol/php-stringprep": "*",
 
         "robmorgan/phinx": "^0.10.7",
         "illuminate/database": "^5.5",
