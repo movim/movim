@@ -138,8 +138,8 @@ function echapJid($jid): string
 {
     $jid_parts = explodeJid($jid);
 
-    $from = array(' ',    '"',    '&',    '\'',   '/',    ':',    '<',    '>',    '@',    '\\');
-    $to =   array('\\20', '\\22', '\\26', '\\27', '\\2f', '\\3a', '\\3c', '\\3e', '\\40', '\5c');
+    $from = array('\\',   ' ',    '"',    '&',    '\'',   '/',    ':',    '<',    '>',    '@');
+    $to =   array('\\5c', '\\20', '\\22', '\\26', '\\27', '\\2f', '\\3a', '\\3c', '\\3e', '\\40');
 
     $jid_parts['username'] = str_replace($from, $to, $jid_parts["username"]);
 
@@ -226,22 +226,30 @@ function explodeQueryParams(string $query): array
  */
 function explodeJid(string $jid): array
 {
-    $arr = explode('/', $jid, 2);
-    $jid = $arr[0];
+    // Split local part out if it exists
+    if (strpos($jid, '@') !== false) {
+        $splits = explode('@', $jid, 2);
+        $local = $splits[0];
+        $rest = $splits[1];
+    } else {
+        $local = '';
+        $rest = $jid;
+    }
 
-    $resource = isset($arr[1]) ? $arr[1] : null;
-    $server = '';
-
-    $arr = explode('@', $jid, 2);
-    $username = $arr[0];
-    if (isset($arr[1])) {
-        $server = $arr[1];
+    // Split resource part out if it exists
+    if (strpos($rest, '/') !== false) {
+        $splits = explode('/', $rest, 2);
+        $resource = $splits[1];
+        $domain = $splits[0];
+    } else {
+        $resource = '';
+        $domain = $rest;
     }
 
     return [
-        'username'  => $username,
-        'server'    => $server,
-        'jid'       => $jid,
+        'username'  => $local,
+        'server'    => $domain,
+        'jid'       => $local.'@'.$domain,
         'resource'  => $resource
     ];
 }
