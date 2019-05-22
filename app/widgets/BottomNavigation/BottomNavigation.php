@@ -14,7 +14,7 @@ class BottomNavigation extends Base
 
     public function onCounter($count)
     {
-        $this->rpc('MovimTpl.fill', '#chatcounter', $this->prepareChatButton($count));
+        $this->rpc('MovimTpl.fill', '#bottomchatcounter', $this->prepareChatButton($count));
     }
 
     public function ajaxRefresh()
