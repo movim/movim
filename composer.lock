@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e9660ecdb0f0bdf5f9f85c3f5c2910bc",
+    "content-hash": "a24347fdde8d922550497ad6b82993b4",
     "packages": [
         {
             "name": "cakephp/cache",
@@ -3495,19 +3495,50 @@
         },
         {
             "name": "znerol/php-stringprep",
-            "version": "0.0.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "git@github.com:znerol/Stringprep.git",
-                "reference": "master"
+                "url": "https://github.com/Teckids/Stringprep.git",
+                "reference": "cd5084ed7469619559874380085a5df79bcec7d3"
             },
-            "type": "package"
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Teckids/Stringprep/zipball/cd5084ed7469619559874380085a5df79bcec7d3",
+                "reference": "cd5084ed7469619559874380085a5df79bcec7d3",
+                "shasum": ""
+            },
+            "require": {
+                "ext-iconv": "*",
+                "ext-intl": "*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Znerol\\Component\\Stringprep\\": ""
+                }
+            },
+            "authors": [
+                {
+                    "name": "Lorenz Schori",
+                    "email": "lo@znerol.ch"
+                }
+            ],
+            "description": "Implementation of RFC 3454 Preparation of Internationalized Strings (\"stringprep\")",
+            "support": {
+                "source": "https://github.com/Teckids/Stringprep/tree/master"
+            },
+            "time": "2019-05-22T15:32:15+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "znerol/php-stringprep": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
