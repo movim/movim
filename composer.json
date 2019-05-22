@@ -11,19 +11,10 @@
         }
     },
     "repositories": [
-      {
-        "type": "package",
-        "package": {
-          "name": "znerol/php-stringprep",
-          "version": "0.0.1",
-          "type": "package",
-          "source": {
-              "url": "git@github.com:znerol/Stringprep.git",
-              "type": "git",
-              "reference": "master"
-          }
+        {
+            "type": "vcs",
+            "url": "https://github.com/Teckids/Stringprep"
         }
-      }
     ],
     "require": {
         "php": ">=7.0.0",
@@ -46,7 +37,6 @@
         "cocur/slugify": "^3.2",
         "dflydev/fig-cookies": "^1.0",
         "defuse/php-encryption": "^2.2",
-        "znerol/php-stringprep": "^0.0.1",
 
         "robmorgan/phinx": "^0.10.7",
         "illuminate/database": "^5.5",
@@ -57,7 +47,8 @@
         "react/http": "^0.8.4",
         "react/dns": "^0.4.17",
         "monolog/monolog": "^1.24",
-        "ratchet/pawl": "^0.3.4"
+        "ratchet/pawl": "^0.3.4",
+        "znerol/php-stringprep": "dev-master"
     },
     "config": {
         "platform": {
