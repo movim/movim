@@ -454,7 +454,24 @@ function prepJid($value) {
     if (isIpAddress($rest)) {
         $domain = $rest;
     } else {
-        $domain = prepJidPart($rest, new Nameprep());
+        // First, strip trailing label delimiter .
+        $domain = rtrim($rest, '.');
+
+        // Verify that each label is a valid Internationalized Domain Name
+        foreach (explode('.', $domain) as $label) {
+            // Apply UseSTD3ASCIIRules
+            if (preg_match('/^-|-$|[\x{00}-\x{2c}\x{2e}-\x{2f}\x{3a}-\x{40}\x{5b}-\x{60}\x{7b}-\x{7f}]/', $label)) {
+                return false;
+            }
+
+            // Try ToASCII conversion
+            if (idn_to_ascii($label) === false) {
+                return false;
+            }
+        }
+
+        // Finally, do Nameprep normalisation
+        $domain = prepJidPart($domain, new Nameprep());
     }
 
     // Invalid if any part is invalid
