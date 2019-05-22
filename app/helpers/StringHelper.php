@@ -222,13 +222,13 @@ function explodeQueryParams(string $query): array
  */
 function explodeJid(string $jid): array
 {
-    $arr = explode('/', $jid);
+    $arr = explode('/', $jid, 2);
     $jid = $arr[0];
 
     $resource = isset($arr[1]) ? $arr[1] : null;
     $server = '';
 
-    $arr = explode('@', $jid);
+    $arr = explode('@', $jid, 2);
     $username = $arr[0];
     if (isset($arr[1])) {
         $server = $arr[1];
