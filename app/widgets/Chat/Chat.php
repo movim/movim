@@ -11,8 +11,6 @@ use App\Reaction;
 
 use Moxl\Xec\Action\BOB\Request;
 
-use Respect\Validation\Validator;
-
 use Illuminate\Database\Capsule\Manager as DB;
 
 use Movim\Picture;
@@ -1014,7 +1012,7 @@ class Chat extends \Movim\Widget\Base
      */
     private function validateJid($jid)
     {
-        return (Validator::stringType()->noWhitespace()->length(6, 60)->validate($jid));
+        return prepJid($jid);
     }
 
     public function getSmileyPath($id)

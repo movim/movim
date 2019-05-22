@@ -3,6 +3,11 @@
 use Movim\Route;
 use App\Configuration;
 
+use Znerol\Component\Stringprep\Profile\Nodeprep;
+use Znerol\Component\Stringprep\Profile\Nameprep;
+use Znerol\Component\Stringprep\Profile\Resourceprep;
+use Znerol\Component\Stringprep\ProfileException;
+
 function addUrls($string, bool $preview = false)
 {
     // Add missing links
@@ -391,4 +396,58 @@ function urilize($path, bool $noTime = false): string
  */
 function implodeCsv($value) {
     return implode(', ', $value);
+}
+
+/**
+ * Returns a part of a JID, stringprep'ed with the given profile,
+ * or false if it is invalid under that profile.
+ */
+function prepJidPart($value, $prep) {
+    try {
+        $ret = $prep->apply($value);
+    } catch (ProfileException $e) {
+        return false;
+    }
+
+    if ((strlen($ret) < 1) || (strlen($ret) > 1023)) {
+        return false;
+    }
+
+    return $ret;
+}
+
+/**
+ * Returns a JID, stringprep'ed with the given profile,
+ * or false if it is invalid under that profile.
+ */
+function prepJid($value) {
+    // Split local part out if it exists
+    if (strpos($value, '@') !== false) {
+        $splits = explode('@', $value, 2);
+        $local = prepJidPart($splits[0], new Nodeprep());
+        $rest = $splits[1];
+    } else {
+        $local = '';
+        $rest = $value;
+    }
+
+    // Split resource part out if it exists
+    if (strpos($rest, '/') !== false) {
+        $splits = explode('/', $rest, 2);
+        $resource = prepJidPart($splits[1], new Resourceprep());
+        $rest = $splits[0];
+    } else {
+        $resource = '';
+    }
+
+    // Finally, validate domain part
+    $domain = prepJidPart($rest, new Nameprep());
+
+    // Invalid if any part is invalid
+    if (($local === false) || ($domain === false) || ($resource === false)) {
+        return false;
+    }
+
+    // Rebuild JID with parts properly stringprep'ed if everything was valid
+    return ($local !== '' ? $local.'@' : '').$domain.($resource !== '' ? '/'.$resource : '');
 }
