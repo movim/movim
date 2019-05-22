@@ -136,10 +136,14 @@ function getHashtags($string): array
  */
 function echapJid($jid): string
 {
+    $jid_parts = explodeJid($jid);
+
     $from = array(' ',    '"',    '&',    '\'',   '/',    ':',    '<',    '>',    '@',    '\\');
     $to =   array('\\20', '\\22', '\\26', '\\27', '\\2f', '\\3a', '\\3c', '\\3e', '\\40', '\5c');
 
-    return str_replace($from, $to, $jid);
+    $jid_parts['username'] = str_replace($from, $to, $jid_parts["username"]);
+
+    return ($jid_parts['username'] !== '' ? $jid_parts['username'].'@' : '').$jid_parts['server'].($jid_parts['resource'] !== '' ? '/'.$jid_parts['resource'] : '');
 }
 
 /*
