@@ -136,7 +136,10 @@ function getHashtags($string): array
  */
 function echapJid($jid): string
 {
-    return str_replace(' ', '\40', $jid);
+    $from = array(' ',    '"',    '&',    '\'',   '/',    ':',    '<',    '>',    '@',    '\\');
+    $to =   array('\\20', '\\22', '\\26', '\\27', '\\2f', '\\3a', '\\3c', '\\3e', '\\40', '\5c');
+
+    return str_replace($from, $to, $jid);
 }
 
 /*
