@@ -476,34 +476,32 @@ function prepJidPart($value, $prep) {
  * or false if it is invalid under that profile.
  */
 function prepJid($value) {
-    // Split local part out if it exists
-    if (strpos($value, '@') !== false) {
-        $splits = explode('@', $value, 2);
-        $local = prepJidPart($splits[0], new Nodeprep());
-        $rest = $splits[1];
-    } else {
-        $local = '';
-        $rest = $value;
+    // Split JID into parts
+    $jid_parts = explodeJid($value);
+
+    // Validate local part against Nodeprep profile
+    if ($jid_parts['username'] !== '') {
+        $jid_parts['username'] = prepJidPart($jid_parts['username'], new Nodeprep());
+        if ($jid_parts['username'] === false) {
+            return false;
+        }
     }
 
-    // Split resource part out if it exists
-    if (strpos($rest, '/') !== false) {
-        $splits = explode('/', $rest, 2);
-        $resource = prepJidPart($splits[1], new Resourceprep());
-        $rest = $splits[0];
-    } else {
-        $resource = '';
+    // Validate resource part against Resourceprep profile
+    if ($jid_parts['resource'] !== '') {
+        $jid_parts['resource'] = prepJidPart($jid_parts['resource'], new Resourceprep());
+        if ($jid_parts['resource'] === false) {
+            return false;
+        }
     }
 
     // Finally, validate domain part (IPv6, IPv4, FQDN, in that order)
-    if (isIpAddress($rest)) {
-        $domain = $rest;
-    } else {
+    if (!isIpAddress($jid_parts['server'])) {
         // First, strip trailing label delimiter .
-        $domain = rtrim($rest, '.');
+        $jid_parts['server'] = rtrim($jid_parts['server'], '.');
 
         // Verify that each label is a valid Internationalized Domain Name
-        foreach (explode('.', $domain) as $label) {
+        foreach (explode('.', $jid_parts['server']) as $label) {
             // Apply UseSTD3ASCIIRules
             if (preg_match('/^-|-$|[\x{00}-\x{2c}\x{2e}-\x{2f}\x{3a}-\x{40}\x{5b}-\x{60}\x{7b}-\x{7f}]/', $label)) {
                 return false;
@@ -516,14 +514,14 @@ function prepJid($value) {
         }
 
         // Finally, do Nameprep normalisation
-        $domain = prepJidPart($domain, new Nameprep());
+        $jid_parts['server'] = prepJidPart($jid_parts['server'], new Nameprep());
     }
 
     // Invalid if any part is invalid
-    if (($local === false) || ($domain === false) || ($resource === false)) {
+    if (($jid_parts['username'] === false) || ($jid_parts['server'] === false) || ($jid_parts['resource'] === false)) {
         return false;
     }
 
     // Rebuild JID with parts properly stringprep'ed if everything was valid
-    return ($local !== '' ? $local.'@' : '').$domain.($resource !== '' ? '/'.$resource : '');
+    return ($jid_parts['username'] !== '' ? $jid_parts['username'].'@' : '').$jid_parts['server'].($jid_parts['resource'] !== '' ? '/'.$jid_parts['resource'] : '');
 }
