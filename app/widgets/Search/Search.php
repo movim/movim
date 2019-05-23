@@ -68,7 +68,7 @@ class Search extends Base
                       ->where('id', 'like', '%'. $key . '%');
             })->limit(5)->get();
 
-            if (Validator::email()->validate($key)) {
+            if (prepJid($key)) {
                 $contact = new \App\Contact;
                 $contact->id = $key;
                 $contacts->push($contact);
