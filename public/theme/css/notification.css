@@ -11,7 +11,7 @@
     color: white;
     padding: 2rem 3rem;
     box-sizing: border-box;
-    width: 44rem;
+    width: 48rem;
     pointer-events: none;
     transition: opacity 0.2s ease, transform 0.4s ease;
     background-color: #333333;
@@ -40,7 +40,7 @@
 }
 
 .snackbar {
-    right: 2.2rem;
+    right: 2.8rem;
     border-radius: 0.25rem;
     opacity: 1;
     padding: 2rem 1rem;
