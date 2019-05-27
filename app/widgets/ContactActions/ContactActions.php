@@ -40,7 +40,7 @@ class ContactActions extends Base
 
     public function ajaxGetDrawer($jid)
     {
-        if (!$this->validateJid($jid)) {
+        if (!prepJid($jid)) {
             return;
         }
 
@@ -69,7 +69,7 @@ class ContactActions extends Base
 
     public function ajaxChat($jid)
     {
-        if (!$this->validateJid($jid)) {
+        if (!prepJid($jid)) {
             return;
         }
 
@@ -77,15 +77,5 @@ class ContactActions extends Base
         $c->ajaxOpen($jid);
 
         $this->rpc('MovimUtils.redirect', $this->route('chat', $jid));
-    }
-
-    /**
-     * @brief Validate the jid
-     *
-     * @param string $jid
-     */
-    private function validateJid($jid)
-    {
-        return prepJid($jid);
     }
 }
