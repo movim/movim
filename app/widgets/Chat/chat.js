@@ -323,7 +323,7 @@ var Chat = {
             ? firstMessage.jidto
             : firstMessage.jidfrom;
 
-        if (document.getElementById(MovimUtils.cleanupId(contactJid + '-discussion'))
+        if (document.getElementById(MovimUtils.cleanupId(contactJid + '_discussion'))
         == null) return false;
 
         return true;
@@ -737,7 +737,7 @@ MovimWebsocket.attach(function() {
     var jid = MovimUtils.urlParts().params[0];
     var room = (MovimUtils.urlParts().params[1] === 'room');
     if (jid) {
-        if (Boolean(document.getElementById(MovimUtils.cleanupId(jid) + '-conversation'))) {
+        if (Boolean(document.getElementById(MovimUtils.cleanupId(jid) + '_conversation'))) {
             Chat_ajaxGetHistory(jid, Chat.currentDate, room, false);
         } else {
             MovimTpl.showPanel();

@@ -6,7 +6,7 @@
             <li
                 id="{$value->jid|cleanupId}"
                 title="{$value->jid}"
-                name="{$value->jid|cleanupId}-{$value->truename|cleanupId}-{$value->group|cleanupId}"
+                name="{$value->jid|cleanupId}_{$value->truename|cleanupId}_{$value->group|cleanupId}"
                 class="{if="$value->presence && $value->presence->value > 4"}faded{/if}"
             >
                 {$url = $value->getPhoto('m')}

@@ -65,7 +65,7 @@
                 </p>
             {/if}
 
-            <p class="compose line" id="{$jid|cleanupId}-state"></p>
+            <p class="compose line" id="{$jid|cleanupId}_state"></p>
             {if="$conference && !$conference->connected"}
                 <p>{$c->__('button.connecting')}…</p>
             {elseif="$conference && $conference->subject"}
@@ -79,7 +79,7 @@
                     {$conference->subject}
                 </p>
             {else}
-                <p class="line" id="{$jid|cleanupId}-state">
+                <p class="line" id="{$jid|cleanupId}_state">
                     {if="$conference->info && !$conference->info->mucsemianonymous"}
                         <span title="{$c->__('room.public_muc_text')}">
                             {$c->__('room.public_muc')} <i class="material-icons">wifi_tethering</i>
@@ -175,7 +175,7 @@
                     {$contact->truename}
                 {/if}
             </p>
-            <p class="compose line" id="{$jid|cleanupId}-state"></p>
+            <p class="compose line" id="{$jid|cleanupId}_state"></p>
             <p class="line">{$contact->jid}</p>
         </li>
     </ul>
@@ -209,9 +209,9 @@
     {/if}
 </header>
 
-<div id="{$jid|cleanupId}-discussion" class="contained {if="$muc"}muc{/if}" data-muc="{$muc}">
-    <section id="{$jid|cleanupId}-messages">
-        <ul class="list middle spin" id="{$jid|cleanupId}-conversation"></ul>
+<div id="{$jid|cleanupId}_discussion" class="contained {if="$muc"}muc{/if}" data-muc="{$muc}">
+    <section id="{$jid|cleanupId}_messages">
+        <ul class="list middle spin" id="{$jid|cleanupId}_conversation"></ul>
         <div class="placeholder">
             <i class="material-icons">chat</i>
             <h1>{$c->__('chat.new_title')}</h1>
