@@ -65,7 +65,7 @@ class Message extends Model
             return self::firstOrNew([
                 'user_id' => \App\User::me()->id,
                 'replaceid' => (string)$stanza->replace->attributes()->id,
-                'jidfrom' => current(explode('/', (string)$stanza->attributes()->from))
+                'jidfrom' => explodeJid((string)$stanza->attributes()->from)['jid']
             ]);
         }
 
@@ -79,7 +79,7 @@ class Message extends Model
         return self::firstOrNew([
             'user_id' => \App\User::me()->id,
             'id' => $id,
-            'jidfrom' => current(explode('/', (string)$stanza->attributes()->from))
+            'jidfrom' => explodeJid((string)$stanza->attributes()->from)['jid']
         ]);
     }
 
@@ -93,8 +93,8 @@ class Message extends Model
             $this->replaceid = $stanza->attributes()->id;
         }
 
-        $jid = explode('/', (string)$stanza->attributes()->from);
-        $to = current(explode('/', (string)$stanza->attributes()->to));
+        $jid = explodeJid((string)$stanza->attributes()->from);
+        $to = explodeJid((string)$stanza->attributes()->to)['jid'];
 
         $this->user_id    = \App\User::me()->id;
 
@@ -103,11 +103,11 @@ class Message extends Model
         }
 
         if (!$this->jidfrom) {
-            $this->jidfrom    = $jid[0];
+            $this->jidfrom    = $jid['username'];
         }
 
-        if (isset($jid[1])) {
-            $this->resource = $jid[1];
+        if ($jid['resource']) {
+            $this->resource = $jid['resource'];
         }
 
         if ($stanza->delay) {
@@ -168,8 +168,8 @@ class Message extends Model
 
             if ($stanza->x
             && (string)$stanza->x->attributes()->xmlns == 'http://jabber.org/protocol/muc#user'
-            && isset($jid[1])) {
-                $this->jidfrom = $jid[0].'/'.$jid[1];
+            && $jid['resource']) {
+                $this->jidfrom = $jid['jid'].'/'.$jid['resource'];
             }
 
             # HipChat MUC specific cards
@@ -325,7 +325,7 @@ class Message extends Model
             if (isset($stanza->x->invite)) {
                 $this->type = 'invitation';
                 $this->subject = $this->jidfrom;
-                $this->jidfrom = current(explode('/', (string)$stanza->x->invite->attributes()->from));
+                $this->jidfrom = explodeJid((string)$stanza->x->invite->attributes()->from)['jid'];
             }
 
             //return $this->checkPicture();
@@ -342,7 +342,7 @@ class Message extends Model
     public function isTrusted()
     {
         /*$rd = new \Modl\RosterLinkDAO;
-        $from = explode('@', cleanJid((string)$this->jidfrom));
+        $from = explodeJid((string)$this->jidfrom)['server'];
         $from = explode('.', end($from));
 
         $session = explode('@',(string)$this->session);

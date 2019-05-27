@@ -8,7 +8,7 @@ class Carbons extends Payload
 {
     public function handle($stanza, $parent = false)
     {
-        $parentfrom = current(explode('/', (string)$parent->attributes()->from));
+        $parentfrom = explodeJid((string)$parent->attributes()->from)['jid'];
         $message = $stanza->forwarded->message;
 
         if ($parentfrom == \App\User::me()->id) {

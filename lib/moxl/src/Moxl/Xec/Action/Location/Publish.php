@@ -18,7 +18,7 @@ class Publish extends Action
 
     public function handle($stanza, $parent = false)
     {
-        $from = current(explode('/', (string)$stanza->attributes()->from));
+        $from = explodeJid((string)$stanza->attributes()->from)['jid'];
 
         /*$cd = new \modl\ContactDAO();
         $c = $cd->get($from);

@@ -6,18 +6,18 @@ class Subject extends Payload
 {
     public function handle($stanza, $parent = false)
     {
-        $jid = explode('/', (string)$parent->attributes()->from);
-        $to = current(explode('/', (string)$parent->attributes()->to));
+        $jid = explodeJid((string)$parent->attributes()->from);
+        $to = explodeJid((string)$parent->attributes()->to)['jid'];
 
         if ($parent->subject) {
             $message = new \App\Message;
 
             $message->user_id    = $to;
             $message->jidto      = $to;
-            $message->jidfrom    = $jid[0];
+            $message->jidfrom    = $jid['jid'];
 
-            if (isset($jid[1])) {
-                $message->resource = $jid[1];
+            if ($jid['resource']) {
+                $message->resource = $jid['resource'];
             }
 
             $message->type    = (string)$parent->attributes()->type;

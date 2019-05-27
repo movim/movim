@@ -8,7 +8,7 @@ class Displayed extends Payload
     {
         $message = \App\User::me()->messages()
                                   ->where('replaceid', (string)$stanza->attributes()->id)
-                                  ->where('jidfrom', current(explode('/', (string)$parent->attributes()->to)))
+                                  ->where('jidfrom', explodeJid((string)$parent->attributes()->to)['jid'])
                                   ->first();
 
         if ($message) {

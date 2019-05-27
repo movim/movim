@@ -8,7 +8,7 @@ class Mood extends Payload
 {
     public function handle($stanza, $parent = false)
     {
-        $from = current(explode('/', (string)$parent->attributes()->from));
+        $from = explodeJid((string)$parent->attributes()->from)['jid'];
 
         if (isset($stanza->items->item->mood)
         && $stanza->items->item->mood->count() > 0) {

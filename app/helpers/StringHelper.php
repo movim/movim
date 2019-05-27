@@ -155,15 +155,6 @@ function echapJS($string): string
 }
 
 /**
- * Clean the resource of a jid
- */
-function cleanJid($jid): string
-{
-    $explode = explode('/', $jid);
-    return reset($explode);
-}
-
-/**
  * Extract the CID
  */
 function getCid($string)

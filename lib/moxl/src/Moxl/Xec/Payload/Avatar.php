@@ -8,7 +8,7 @@ class Avatar extends Payload
 {
     public function handle($stanza, $parent = false)
     {
-        $jid = current(explode('/', (string)$parent->attributes()->from));
+        $jid = explodeJid((string)$parent->attributes()->from)['jid'];
 
         $p = new Picture;
         $p->fromBase((string)$stanza->items->item->data);

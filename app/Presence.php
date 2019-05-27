@@ -86,25 +86,22 @@ class Presence extends Model
 
     public static function findByStanza($stanza)
     {
-        $jid = explode('/', (string)$stanza->attributes()->from);
+        $jid = explodeJid((string)$stanza->attributes()->from);
         return self::firstOrNew([
             'session_id' => SESSION_ID,
-            'jid' => $jid[0],
-            'resource' => isset($jid[1]) ? $jid[1] : ''
+            'jid' => $jid['jid'],
+            'resource' => $jid['resource']
         ]);
     }
 
     public function set($stanza)
     {
         $this->session_id = SESSION_ID;
-        $jid = explode('/', (string)$stanza->attributes()->from);
-        $this->jid = $jid[0];
 
-        if (isset($jid[1])) {
-            $this->resource = $jid[1];
-        } else {
-            $this->resource = '';
-        }
+        $jid = explodeJid((string)$stanza->attributes()->from);
+
+        $this->jid = $jid['jid'];
+        $this->resource = $jid['resource'];
 
         if ($stanza->status && !empty((string)$stanza->status)) {
             $this->status = (string)$stanza->status;
@@ -155,7 +152,7 @@ class Presence extends Model
                         if ($session->get((string)$stanza->attributes()->from)) {
                             $this->mucjid = \App\User::me()->id;
                         } elseif ($c->item->attributes()->jid) {
-                            $this->mucjid = cleanJid((string)$c->item->attributes()->jid);
+                            $this->mucjid = explodeJid((string)$c->item->attributes()->jid)['jid'];
                         } else {
                             $this->mucjid = (string)$stanza->attributes()->from;
                         }

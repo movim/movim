@@ -6,7 +6,7 @@ class OMEMOMessage extends Payload
 {
     public function handle($stanza, $parent = false)
     {
-        $jid = explode('/', (string)$parent->attributes()->from);
+        $jid = explodeJid((string)$parent->attributes()->from)['jid'];
 
         $keys = [];
         foreach ($stanza->header->key as $key) {

@@ -8,7 +8,7 @@ class Nickname extends Payload
 {
     public function handle($stanza, $parent = false)
     {
-        $from = current(explode('/', (string)$parent->attributes()->from));
+        $from = explodeJid((string)$parent->attributes()->from)['jid'];
 
         if ($stanza->items->item->nick) {
             $contact = Contact::firstOrNew(['id' => $from]);
