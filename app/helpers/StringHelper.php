@@ -246,7 +246,9 @@ function explodeJid($jid): array
     return [
         'username'  => $local,
         'server'    => $domain,
-        'jid'       => $local.'@'.$domain,
+        'jid'       => ($local !== '' ?
+            $local.'@' :
+            '') . $domain,
         'resource'  => $resource
     ];
 }
