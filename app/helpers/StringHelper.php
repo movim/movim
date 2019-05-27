@@ -136,14 +136,14 @@ function getHashtags($string): array
  */
 function echapJid($jid): string
 {
-    $jid_parts = explodeJid($jid);
+    $jidParts = explodeJid($jid);
 
     $from = array('\\',   ' ',    '"',    '&',    '\'',   '/',    ':',    '<',    '>',    '@');
     $to =   array('\\5c', '\\20', '\\22', '\\26', '\\27', '\\2f', '\\3a', '\\3c', '\\3e', '\\40');
 
-    $jid_parts['username'] = str_replace($from, $to, $jid_parts["username"]);
+    $jidParts['username'] = str_replace($from, $to, $jidParts["username"]);
 
-    return implodeJid($jid_parts);
+    return implodeJid($jidParts);
 }
 
 /*
@@ -234,7 +234,7 @@ function implodeJid(array $jid): string
                 '') .
            $jid['server'] .
            ($jid['resource'] !== '' ?
-               '/' . $jid_parts['resource'] :
+               '/' . $jid['resource'] :
                '');
 }
 
@@ -461,31 +461,31 @@ function prepJidPart($value, $prep) {
  */
 function prepJid($value) {
     // Split JID into parts
-    $jid_parts = explodeJid($value);
+    $jidParts = explodeJid($value);
 
     // Validate local part against Nodeprep profile
-    if ($jid_parts['username'] !== '') {
-        $jid_parts['username'] = prepJidPart($jid_parts['username'], new Nodeprep());
-        if ($jid_parts['username'] === false) {
+    if ($jidParts['username'] !== '') {
+        $jidParts['username'] = prepJidPart($jidParts['username'], new Nodeprep());
+        if ($jidParts['username'] === false) {
             return false;
         }
     }
 
     // Validate resource part against Resourceprep profile
-    if ($jid_parts['resource'] !== '') {
-        $jid_parts['resource'] = prepJidPart($jid_parts['resource'], new Resourceprep());
-        if ($jid_parts['resource'] === false) {
+    if ($jidParts['resource'] !== '') {
+        $jidParts['resource'] = prepJidPart($jidParts['resource'], new Resourceprep());
+        if ($jidParts['resource'] === false) {
             return false;
         }
     }
 
     // Finally, validate domain part (IPv6, IPv4, FQDN, in that order)
-    if (!isIpAddress($jid_parts['server'])) {
+    if (!isIpAddress($jidParts['server'])) {
         // First, strip trailing label delimiter .
-        $jid_parts['server'] = rtrim($jid_parts['server'], '.');
+        $jidParts['server'] = rtrim($jidParts['server'], '.');
 
         // Verify that each label is a valid Internationalized Domain Name
-        foreach (explode('.', $jid_parts['server']) as $label) {
+        foreach (explode('.', $jidParts['server']) as $label) {
             // Apply UseSTD3ASCIIRules
             if (preg_match('/^-|-$|[\x{00}-\x{2c}\x{2e}-\x{2f}\x{3a}-\x{40}\x{5b}-\x{60}\x{7b}-\x{7f}]/', $label)) {
                 return false;
@@ -498,14 +498,14 @@ function prepJid($value) {
         }
 
         // Finally, do Nameprep normalisation
-        $jid_parts['server'] = prepJidPart($jid_parts['server'], new Nameprep());
+        $jidParts['server'] = prepJidPart($jidParts['server'], new Nameprep());
     }
 
     // Invalid if any part is invalid
-    if (($jid_parts['username'] === false) || ($jid_parts['server'] === false) || ($jid_parts['resource'] === false)) {
+    if (($jidParts['username'] === false) || ($jidParts['server'] === false) || ($jidParts['resource'] === false)) {
         return false;
     }
 
     // Rebuild JID with parts properly stringprep'ed if everything was valid
-    return implodeJid($jid_parts);
+    return implodeJid($jidParts);
 }
