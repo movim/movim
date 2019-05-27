@@ -19,7 +19,7 @@ class MAMResult extends Payload
             $message = $message->set($stanza->forwarded->message, $stanza->forwarded);
 
             if ($message->type == 'groupchat') {
-                $message->jidfrom = explodeJid(($message->jidfrom)['jid']);
+                $message->jidfrom = explodeJid($message->jidfrom)['jid'];
             }
 
             if (!empty($to) && empty($message->jidto)) {

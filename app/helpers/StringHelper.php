@@ -215,26 +215,32 @@ function explodeQueryParams(string $query): array
 /**
  *  Explode JID
  */
-function explodeJid(string $jid): array
+function explodeJid($jid): array
 {
-    // Split local part out if it exists
-    if (strpos($jid, '@') !== false) {
-        $splits = explode('@', $jid, 2);
-        $local = $splits[0];
-        $rest = $splits[1];
+    if ($jid) {
+        // Split local part out if it exists
+        if (strpos($jid, '@') !== false) {
+            $splits = explode('@', $jid, 2);
+            $local = $splits[0];
+            $rest = $splits[1];
+        } else {
+            $local = '';
+            $rest = $jid;
+        }
+
+        // Split resource part out if it exists
+        if (strpos($rest, '/') !== false) {
+            $splits = explode('/', $rest, 2);
+            $resource = $splits[1];
+            $domain = $splits[0];
+        } else {
+            $resource = '';
+            $domain = $rest;
+        }
     } else {
         $local = '';
-        $rest = $jid;
-    }
-
-    // Split resource part out if it exists
-    if (strpos($rest, '/') !== false) {
-        $splits = explode('/', $rest, 2);
-        $resource = $splits[1];
-        $domain = $splits[0];
-    } else {
+        $domain = '';
         $resource = '';
-        $domain = $rest;
     }
 
     return [
