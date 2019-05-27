@@ -492,7 +492,7 @@ function prepJid($value)
             }
 
             // Try ToASCII conversion
-            if (idn_to_ascii($label) === false) {
+            if (idn_to_ascii($label, IDNA_NONTRANSITIONAL_TO_ASCII, INTL_IDNA_VARIANT_UTS46) === false) {
                 return false;
             }
         }
