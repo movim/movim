@@ -103,7 +103,9 @@ class Message extends Model
         }
 
         if (!$this->jidfrom) {
-            $this->jidfrom    = $jid['username'];
+            $this->jidfrom    = ($jid['username'] !== '' ?
+                $jid['username'] :
+                $jid['server']);
         }
 
         if ($jid['resource']) {
