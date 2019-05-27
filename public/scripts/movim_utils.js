@@ -21,9 +21,28 @@ Storage.prototype.getObject = function(key) {
     return JSON.parse(this.getItem(key));
 };
 
+/**
+ * @brief Replace all occurences in a string
+ */
+String.prototype.replaceAll = function(find, replace) {
+    var newString = this;
+    var index = newString.indexOf(find);
+
+    while (index != -1) {
+        newString = newString.substr(0, index) + newString.substr(index).replace(find, replace);
+        index = newString.indexOf(find, index + replace.length);
+    }
+
+    return newString;
+};
+
 var MovimUtils = {
     cleanupId: function(string) {
-        return 'id-' + string.replace(/([^a-z0-9]+)/gi, '-').toLowerCase();
+        return 'id-' + encodeURIComponent(string)
+            .replaceAll('.', '%2E')
+            .replaceAll('~', '%7E')
+            .replaceAll('-', '--')
+            .replaceAll('%', '-');
     },
     disconnect: function() {
         window.location.replace(ERROR_URI);

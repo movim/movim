@@ -396,7 +396,8 @@ function firstLetterCapitalize($string, bool $firstOnly = false): string
  */
 function cleanupId($string)
 {
-    return "id-" . strtolower(preg_replace('/([^a-z0-9]+)/i', '-', $string));
+    return "id-" . str_replace(array('.', '-', '%'),
+        array('%2E', '--', '-'), urlencode($string));
 }
 
 /**
