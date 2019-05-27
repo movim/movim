@@ -143,7 +143,7 @@ function echapJid($jid): string
 
     $jid_parts['username'] = str_replace($from, $to, $jid_parts["username"]);
 
-    return ($jid_parts['username'] !== '' ? $jid_parts['username'].'@' : '').$jid_parts['server'].($jid_parts['resource'] !== '' ? '/'.$jid_parts['resource'] : '');
+    return implodeJid($jid_parts);
 }
 
 /*
@@ -222,6 +222,20 @@ function explodeJid(string $jid): array
         'jid'       => $local.'@'.$domain,
         'resource'  => $resource
     ];
+}
+
+/**
+ *  Implode JID
+ */
+function implodeJid(array $jid): string
+{
+    return ($jid['username'] !== '' ?
+                $jid['username'] . '@' :
+                '') .
+           $jid['server'] .
+           ($jid['resource'] !== '' ?
+               '/' . $jid_parts['resource'] :
+               '');
 }
 
 /**
@@ -493,5 +507,5 @@ function prepJid($value) {
     }
 
     // Rebuild JID with parts properly stringprep'ed if everything was valid
-    return ($jid_parts['username'] !== '' ? $jid_parts['username'].'@' : '').$jid_parts['server'].($jid_parts['resource'] !== '' ? '/'.$jid_parts['resource'] : '');
+    return implodeJid($jid_parts);
 }
