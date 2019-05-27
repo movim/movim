@@ -10,7 +10,7 @@ class Roster extends Payload
     public function handle($stanza, $parent = false)
     {
         if ((string)$parent->attributes()->type == 'set') {
-            $jid = current(explode('/', (string)$stanza->item->attributes()->jid));
+            $jid = explodeJid((string)$stanza->item->attributes()->jid)['jid'];
 
             $contact = DBUser::me()->session->contacts()->where('jid', $jid)->first();
 

@@ -52,8 +52,8 @@ abstract class Payload
     final public function prepare($stanza, $parent = false)
     {
         $this->packet->from = ($parent === false)
-            ? current(explode('/', (string)$stanza->attributes()->from))
-            : current(explode('/', (string)$parent->attributes()->from));
+            ? explodeJid((string)$stanza->attributes()->from)['jid']
+            : explodeJid((string)$parent->attributes()->from)['jid'];
     }
 
     /**

@@ -48,7 +48,7 @@ class Jingle extends Payload
         $message->user_id = $userid;
         $message->id = 'm_' . generateUUID();
         $message->jidto = $userid;
-        $message->jidfrom = current(explode('/', (string)$from));
+        $message->jidfrom = explodeJid((string)$from)['jid'];
         $message->published = gmdate('Y-m-d H:i:s');
         $message->thread = (string)$stanza->attributes()->sid;
 

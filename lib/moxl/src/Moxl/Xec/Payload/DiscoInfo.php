@@ -9,7 +9,7 @@ class DiscoInfo extends Payload
     public function handle($stanza, $parent = false)
     {
         $jid = (string)$parent->attributes()->from;
-        $to = current(explode('/', (string)$parent->attributes()->to));
+        $to = explodeJid((string)$parent->attributes()->to)['jid'];
         $id = (string)$parent->attributes()->id;
 
         Disco::answer($jid, $id);

@@ -11,8 +11,8 @@ class Message extends Payload
     {
         $from = (string)$stanza->attributes()->type == 'groupchat'
             ? (string)$stanza->attributes()->from
-            : current(explode('/', (string)$stanza->attributes()->from));
-        $to = current(explode('/', (string)$stanza->attributes()->to));
+            : explodeJid((string)$stanza->attributes()->from)['jid'];
+        $to = explodeJid((string)$stanza->attributes()->to)['jid'];
 
         if ($stanza->confirm
         && $stanza->confirm->attributes()->xmlns == 'http://jabber.org/protocol/http-auth') {

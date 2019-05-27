@@ -14,7 +14,7 @@ class ReceiptRequest extends Payload
 
         $message = \App\User::me()->messages()
                                   ->where('id', $id)
-                                  ->where('jidfrom', current(explode('/', $from)))
+                                  ->where('jidfrom', explodeJid($from)['jid'])
                                   ->first();
 
         if ($message) {

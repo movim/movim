@@ -27,7 +27,7 @@ class Visio extends Base
         $s = Session::start();
         $s->set('sdp', $jts->generate());
 
-        $contact = \App\Contact::firstOrNew(['id' => cleanJid($from)]);
+        $contact = \App\Contact::firstOrNew(['id' => explodeJid($from)['jid']]);
 
         $view = $this->tpl();
         $view->assign('contact', $contact);
