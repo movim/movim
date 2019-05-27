@@ -51,7 +51,7 @@ class Rooms extends Base
         && $message->type == 'groupchat'
         && $message->subject == null) {
             Notification::append(
-                'chat|'.$message->jidfrom,
+                'chat',
                 null,
                 $message->body,
                 null,

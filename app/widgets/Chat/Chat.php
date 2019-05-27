@@ -83,14 +83,7 @@ class Chat extends \Movim\Widget\Base
             $roster = $this->user->session->contacts()->where('jid', $from)->first();
             $contact = App\Contact::firstOrNew(['id' => $from]);
 
-            // If the message was displayed by another of my clients
-            if ($message->user_id == $message->jidto
-            && $message->displayed) {
-                $n = new Notification;
-                $n->ajaxClear('chat|'.$message->jidfrom);
-            }
-            // If the message is for me
-            elseif ($contact != null
+            if ($contact != null
             //&& $message->isTrusted()
             && !$message->isOTR()
             && $message->type != 'groupchat'
@@ -98,7 +91,7 @@ class Chat extends \Movim\Widget\Base
                 $chatStates->clearState($from);
 
                 Notification::append(
-                    'chat|'.$from,
+                    'chat',
                     $roster ? $roster->truename : $contact->truename,
                     $message->body,
                     $contact->getPhoto(),
@@ -115,7 +108,7 @@ class Chat extends \Movim\Widget\Base
                                    ->first();
 
                 Notification::append(
-                    'chat|'.$from,
+                    'chat',
                     ($conference != null && $conference->name)
                         ? $conference->name
                         : $from,
@@ -128,10 +121,6 @@ class Chat extends \Movim\Widget\Base
             }
 
             $this->onPaused($chatStates->getState($from));
-        } else {
-            // If the message is from me we reset the notif counter
-            $n = new Notification;
-            $n->ajaxClear('chat|'.$message->jidto);
         }
 
         if (!$message->isOTR()) {
@@ -276,9 +265,6 @@ class Chat extends \Movim\Widget\Base
             }
 
             $this->prepareMessages($room, true);
-
-            $notif = new Notification;
-            $notif->ajaxClear('chat|'.$room);
             $this->rpc('Notification.current', 'chat|'.$room.'|room');
         } else {
             $this->rpc('Rooms_ajaxAdd', $room);
@@ -732,9 +718,7 @@ class Chat extends \Movim\Widget\Base
         $this->event($muc ? 'chat_open_room' : 'chat_open', $jid);
         $this->event('chat_counter', $this->user->unreads());
 
-        $notif = new Notification;
         $this->rpc('Chat.insertSeparator', $unreadsCount);
-        $notif->ajaxClear('chat|'.$jid);
     }
 
     public function prepareMessage(&$message, $jid = null)

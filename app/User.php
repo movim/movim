@@ -46,7 +46,13 @@ class User extends Model
     {
         $unreads = $this->messages()
                         ->where('seen', false)
-                        ->whereIn('type', ['chat', 'groupchat']);
+                        ->where(function ($query) {
+                            $query->where('type', 'chat')
+                                ->orWhere(function ($query) {
+                                    $query->where('type', 'groupchat')
+                                        ->where('quoted', true);
+                                });
+                        });
 
         if ($jid) {
             $unreads = $unreads->where('jidfrom', $jid);

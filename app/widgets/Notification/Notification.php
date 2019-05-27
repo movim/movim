@@ -9,6 +9,15 @@ class Notification extends Base
     public function load()
     {
         $this->addjs('notification.js');
+        $this->registerEvent('chat_open', 'onChatOpen');
+        $this->registerEvent('chat_open_room', 'onChatOpen');
+    }
+
+    public function onChatOpen($jid)
+    {
+        // Get directly the counter from the DB for the chats
+        $user = \App\User::me();
+        RPC::call('Notification.counter', 'chat', $user->unreads());
     }
 
     public static function toast($title)
@@ -75,7 +84,13 @@ class Notification extends Base
             return;
         }
 
-        RPC::call('Notification.counter', $first, $notifs[$first]);
+        if ($first === 'chat') {
+            $user = \App\User::me();
+            RPC::call('Notification.counter', $first, $user->unreads());
+            return;
+        } else {
+            RPC::call('Notification.counter', $first, $notifs[$first]);
+        }
 
         if ($first != $key) {
             if (array_key_exists($key, $notifs)) {

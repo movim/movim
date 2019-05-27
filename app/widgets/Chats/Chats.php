@@ -182,9 +182,6 @@ class Chats extends Base
 
     public function ajaxClose($jid, $closeDiscussion = false)
     {
-        $notif = new Notification;
-        $notif->ajaxClear('chat|'.$jid);
-
         if (!$this->validateJid($jid)) {
             return;
         }
