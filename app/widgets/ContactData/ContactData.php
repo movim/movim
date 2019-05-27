@@ -21,7 +21,7 @@ class ContactData extends Base
 
     public function prepareData($jid)
     {
-        if (!$this->validateJid($jid)) {
+        if (!prepJid($jid)) {
             return;
         }
 
@@ -44,7 +44,7 @@ class ContactData extends Base
 
     public function ajaxRefresh($jid)
     {
-        if (!$this->validateJid($jid)) {
+        if (!prepJid($jid)) {
             return;
         }
 
@@ -60,20 +60,5 @@ class ContactData extends Base
             $r = new Moxl\Xec\Action\Vcard4\Get;
             $r->setTo(echapJid($jid))->request();
         }
-    }
-
-    /**
-     * @brief Validate the jid
-     *
-     * @param string $jid
-     */
-    private function validateJid($jid)
-    {
-        return prepJid($jid);
-    }
-
-    public function display()
-    {
-        $this->view->assign('jid', $this->get('s'));
     }
 }

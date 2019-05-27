@@ -40,7 +40,7 @@ class Chats extends Base
 
     public function onChatOpen($jid)
     {
-        if (!$this->validateJid($jid)) {
+        if (!prepJid($jid)) {
             return;
         }
 
@@ -124,7 +124,7 @@ class Chats extends Base
 
             $g->setLimit(150);
             $g->request();
-        } elseif ($this->validateJid($jid)) {
+        } elseif (prepJid($jid)) {
             $message = $this->user->messages()
                                   ->where(function ($query) use ($jid) {
                                       $query->where('jidfrom', $jid)
@@ -144,7 +144,7 @@ class Chats extends Base
 
     public function ajaxOpen($jid, $history = true)
     {
-        if (!$this->validateJid($jid)) {
+        if (!prepJid($jid)) {
             return;
         }
 
@@ -183,7 +183,7 @@ class Chats extends Base
         $notif = new Notification;
         $notif->ajaxClear('chat|'.$jid);
 
-        if (!$this->validateJid($jid)) {
+        if (!prepJid($jid)) {
             return;
         }
 
@@ -254,7 +254,7 @@ class Chats extends Base
 
     public function prepareChat(string $jid, App\Contact $contact, App\Roster $roster = null, $status = null, $active = false)
     {
-        if (!$this->validateJid($jid)) {
+        if (!prepJid($jid)) {
             return;
         }
 
@@ -289,10 +289,5 @@ class Chats extends Base
     {
         return $this->user->session->contacts()->where('jid', $jid)
                     ->with('presence.capability')->first();
-    }
-
-    private function validateJid($jid)
-    {
-        return prepJid($jid);
     }
 }

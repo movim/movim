@@ -255,7 +255,7 @@ class Chat extends \Movim\Widget\Base
      */
     public function ajaxGetRoom($room, $light = false, $noConnect = false)
     {
-        if (!$this->validateJid($room)) {
+        if (!prepJid($room)) {
             return;
         }
 
@@ -515,7 +515,7 @@ class Chat extends \Movim\Widget\Base
      */
     public function ajaxSendComposing($to, $muc = false)
     {
-        if (!$this->validateJid($to)) {
+        if (!prepJid($to)) {
             return;
         }
 
@@ -530,7 +530,7 @@ class Chat extends \Movim\Widget\Base
      */
     public function ajaxGetHistory($jid, $date, $muc = false, $prepend = true)
     {
-        if (!$this->validateJid($jid)) {
+        if (!prepJid($jid)) {
             return;
         }
 
@@ -575,7 +575,7 @@ class Chat extends \Movim\Widget\Base
      */
     public function ajaxGetRoomConfig($room)
     {
-        if (!$this->validateJid($room)) {
+        if (!prepJid($room)) {
             return;
         }
 
@@ -591,7 +591,7 @@ class Chat extends \Movim\Widget\Base
      */
     public function ajaxSetRoomConfig($data, $room)
     {
-        if (!$this->validateJid($room)) {
+        if (!prepJid($room)) {
             return;
         }
 
@@ -606,7 +606,7 @@ class Chat extends \Movim\Widget\Base
      */
     public function ajaxDisplayed($jid, $id)
     {
-        if (!$this->validateJid($jid)) {
+        if (!prepJid($jid)) {
             return;
         }
 
@@ -629,7 +629,7 @@ class Chat extends \Movim\Widget\Base
      */
     public function ajaxClearHistory($jid)
     {
-        if (!$this->validateJid($jid)) {
+        if (!prepJid($jid)) {
             return;
         }
 
@@ -681,7 +681,7 @@ class Chat extends \Movim\Widget\Base
 
     public function prepareMessages($jid, $muc = false, $seenOnly = false)
     {
-        if (!$this->validateJid($jid)) {
+        if (!prepJid($jid)) {
             return;
         }
 
@@ -1003,16 +1003,6 @@ class Chat extends \Movim\Widget\Base
         $view = $this->tpl();
         $view->assign('list', implode(', ', $list));
         return $view->draw('_chat_compose_list');
-    }
-
-    /**
-     * @brief Validate the jid
-     *
-     * @param string $jid
-     */
-    private function validateJid($jid)
-    {
-        return prepJid($jid);
     }
 
     public function getSmileyPath($id)

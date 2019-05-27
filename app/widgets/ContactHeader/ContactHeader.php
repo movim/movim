@@ -24,7 +24,7 @@ class ContactHeader extends Base
 
     public function ajaxEditContact($jid)
     {
-        if (!$this->validateJid($jid)) {
+        if (!prepJid($jid)) {
             return;
         }
 
@@ -47,7 +47,7 @@ class ContactHeader extends Base
 
     public function ajaxDeleteContact($jid)
     {
-        if (!$this->validateJid($jid)) {
+        if (!prepJid($jid)) {
             return;
         }
 
@@ -73,7 +73,7 @@ class ContactHeader extends Base
 
     public function ajaxChat($jid)
     {
-        if (!$this->validateJid($jid)) {
+        if (!prepJid($jid)) {
             return;
         }
 
@@ -85,7 +85,7 @@ class ContactHeader extends Base
 
     public function prepareHeader($jid)
     {
-        if (!$this->validateJid($jid)) {
+        if (!prepJid($jid)) {
             return;
         }
 
@@ -94,16 +94,6 @@ class ContactHeader extends Base
         $view->assign('contact', App\Contact::firstOrNew(['id' => $jid]));
 
         return $view->draw('_contactheader');
-    }
-
-    /**
-     * @brief Validate the jid
-     *
-     * @param string $jid
-     */
-    private function validateJid($jid)
-    {
-        return prepJid($jid);
     }
 
     public function display()

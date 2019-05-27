@@ -38,7 +38,7 @@ class Stickers extends \Movim\Widget\Base
 
     public function ajaxSend($to, $pack, $file, $muc = false)
     {
-        if (!$this->validateJid($to)) {
+        if (!prepJid($to)) {
             return;
         }
 
@@ -97,7 +97,7 @@ class Stickers extends \Movim\Widget\Base
 
     public function ajaxShow($to, $pack = null)
     {
-        if (!$this->validateJid($to)) {
+        if (!prepJid($to)) {
             return;
         }
 
@@ -128,7 +128,7 @@ class Stickers extends \Movim\Widget\Base
      */
     public function ajaxSmiley($to)
     {
-        if (!$this->validateJid($to)) {
+        if (!prepJid($to)) {
             return;
         }
 
@@ -182,16 +182,6 @@ class Stickers extends \Movim\Widget\Base
         }
 
         return $packs;
-    }
-
-    /**
-     * @brief Validate the jid
-     *
-     * @param string $jid
-     */
-    private function validateJid($jid)
-    {
-        return prepJid($jid);
     }
 
     public function getSmileyPath($id)
