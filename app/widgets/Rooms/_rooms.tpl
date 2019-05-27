@@ -38,7 +38,7 @@
                     <span class="primary
                         {if="!$connected"}disabled small{/if} icon bubble color
                         {$value->name|stringToColor}"
-                        id="{$value->conference|cleanupId}-rooms-primary"
+                        id="{$value->conference|cleanupId}_rooms_primary"
                         style="background-image: url({$url});">
                         {autoescape="off"}
                             {$c->prepareRoomCounter($value, true)}
@@ -48,7 +48,7 @@
                     <span class="primary
                         {if="!$connected"}disabled small{/if} icon bubble color
                         {$value->name|stringToColor}"
-                        id="{$value->conference|cleanupId}-rooms-primary">
+                        id="{$value->conference|cleanupId}_rooms_primary">
                         {autoescape="off"}
                             {$c->prepareRoomCounter($value, false)}
                         {/autoescape}

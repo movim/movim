@@ -76,7 +76,7 @@ class Roster extends Model
 
     public function getSearchTerms()
     {
-        return cleanupId($this->jid).'-'.
+        return cleanupId($this->jid).'_'.
             cleanupId($this->group);
     }
 

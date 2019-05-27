@@ -1,5 +1,5 @@
 <li
-    id="{$contact->jid|cleanupId}-chat-item"
+    id="{$contact->jid|cleanupId}_chat_item"
     data-jid="{$contact->jid}"
     class="
         {if="$roster && $roster->presence"}
@@ -60,7 +60,7 @@
             <p><i class="material-icons">lock</i> {$c->__('message.encrypted')}</p>
         {elseif="stripTags($message->body) != ''"}
             <p class="line">
-                <span id="{$contact->jid|cleanupId}-chat-state"></span>
+                <span id="{$contact->jid|cleanupId}_chat_state"></span>
                 {autoescape="off"}
                     {$message->body|stripTags|addEmojis}
                 {/autoescape}
