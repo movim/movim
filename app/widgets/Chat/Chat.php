@@ -91,7 +91,7 @@ class Chat extends \Movim\Widget\Base
                 $chatStates->clearState($from);
 
                 Notification::append(
-                    'chat',
+                    'chat|'.$from,
                     $roster ? $roster->truename : $contact->truename,
                     $message->body,
                     $contact->getPhoto(),
@@ -108,7 +108,7 @@ class Chat extends \Movim\Widget\Base
                                    ->first();
 
                 Notification::append(
-                    'chat',
+                    'chat|'.$from,
                     ($conference != null && $conference->name)
                         ? $conference->name
                         : $from,

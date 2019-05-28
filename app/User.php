@@ -42,15 +42,18 @@ class User extends Model
         return $this->hasMany('App\Message');
     }
 
-    public function unreads(string $jid = null)
+    public function unreads(string $jid = null, bool $quoted = false)
     {
         $unreads = $this->messages()
                         ->where('seen', false)
-                        ->where(function ($query) {
+                        ->where(function ($query) use ($quoted) {
                             $query->where('type', 'chat')
-                                ->orWhere(function ($query) {
-                                    $query->where('type', 'groupchat')
-                                        ->where('quoted', true);
+                                ->orWhere(function ($query) use ($quoted) {
+                                    $query->where('type', 'groupchat');
+
+                                    if ($quoted) {
+                                        $query->where('quoted', true);
+                                    }
                                 });
                         });
 

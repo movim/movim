@@ -17,7 +17,7 @@ class Notification extends Base
     {
         // Get directly the counter from the DB for the chats
         $user = \App\User::me();
-        RPC::call('Notification.counter', 'chat', $user->unreads());
+        RPC::call('Notification.counter', 'chat', $user->unreads(null, true));
     }
 
     public static function toast($title)
@@ -86,7 +86,7 @@ class Notification extends Base
 
         if ($first === 'chat') {
             $user = \App\User::me();
-            RPC::call('Notification.counter', $first, $user->unreads());
+            RPC::call('Notification.counter', $first, $user->unreads(null, true));
             return;
         } else {
             RPC::call('Notification.counter', $first, $notifs[$first]);

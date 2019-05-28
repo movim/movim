@@ -47,19 +47,6 @@ class Rooms extends Base
     {
         $message = $packet->content;
 
-        if ($message->user_id == $message->jidto
-        && $message->type == 'groupchat'
-        && $message->subject == null) {
-            Notification::append(
-                'chat',
-                null,
-                $message->body,
-                null,
-                0,
-                null
-            );
-        }
-
         $chatStates = ChatStates::getInstance();
         $chatStates->clearState($message->jidfrom, $message->resource);
         $this->onPaused($chatStates->getState($message->jidfrom));
