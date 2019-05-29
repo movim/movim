@@ -10,6 +10,17 @@ class Capability extends Model
     protected $fillable = ['features'];
     public $incrementing = false;
 
+    public function save(array $options = [])
+    {
+        try {
+            parent::save($options);
+        } catch (\Exception $e) {
+            /*
+             * When an capability is received by two accounts simultaenously
+             */
+        }
+    }
+
     public function set($query, $node = false)
     {
         if (!$node) {

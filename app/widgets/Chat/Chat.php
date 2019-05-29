@@ -899,6 +899,7 @@ class Chat extends \Movim\Widget\Base
         if ($message->type == 'jingle_end') {
             $view = $this->tpl();
             $view->assign('message', $message);
+            $view->assign('diff', false);
 
             $start = Message::where(
                 [
