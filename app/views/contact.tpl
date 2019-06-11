@@ -4,6 +4,7 @@
 <?php $this->widget('PostActions');?>
 <?php $this->widget('ContactActions');?>
 <?php $this->widget('Notifications');?>
+<?php $this->widget('SendTo');?>
 
 <nav class="color dark">
     <?php $this->widget('Presence');?>

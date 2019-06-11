@@ -12,7 +12,7 @@
                       onclick="MovimUtils.redirect('{$c->route('publish', [$post->server, $post->node, $post->nodeid, 'share'])}')">
                     <i class="material-icons">share</i>
                 </span>
-                <p class="normal">{$c->__('sendto.attach')}</p>
+                <p class="normal line">{$c->__('sendto.attach')}</p>
             </li>
         </ul>
     {/if}
