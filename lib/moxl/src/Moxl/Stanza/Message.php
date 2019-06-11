@@ -123,16 +123,17 @@ class Message
                 $sources = $dom->createElement('sources');
                 $media->appendChild($sources);
 
-                $reference = $dom->createElement('reference');
-                $reference->setAttribute('xmlns', 'urn:xmpp:reference:0');
-                $reference->setAttribute('type', 'data');
-                $reference->setAttribute('uri', $file->uri);
+                $sreference = $dom->createElement('reference');
+                $sreference->setAttribute('xmlns', 'urn:xmpp:reference:0');
+                $sreference->setAttribute('type', 'data');
+                $sreference->setAttribute('uri', $file->uri);
 
-                $sources->appendChild($reference);
+                $sources->appendChild($sreference);
             } else {
                 $reference->setAttribute('uri', $file->uri);
-                $root->appendChild($reference);
             }
+
+            $root->appendChild($reference);
 
             // OOB
             $x = $dom->createElement('x');

@@ -20,6 +20,27 @@
 </ul>
 {/if}
 
+{if="$tags->isNotEmpty()"}
+<br />
+<ul class="list active">
+    <li class="subheader">
+        <p>{$c->__('page.tag')}</p>
+    </li>
+    {loop="$tags"}
+        <li onclick="MovimUtils.redirect('{$c->route('tag', $value)}')">
+            <span class="primary icon gray">
+                <i class="material-icons">#</i>
+            </span>
+            <span class="control icon gray">
+                <i class="material-icons">chevron_right</i>
+            </span>
+            <p class="line normal">{$value}</p>
+            <p>{$c->__('communitydata.num', $key)}</p>
+        </li>
+    {/loop}
+</ul>
+{/if}
+
 {if="$contacts->isNotEmpty()"}
 <ul class="list">
     <li class="subheader">

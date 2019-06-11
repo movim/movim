@@ -37,7 +37,11 @@ class SendTo extends Base
         }
 
         $view->assign('uri', $link);
-        $view->assign('contacts', $this->user->session->topContacts()->get());
+        $view->assign('contacts', $this->user->session
+                                       ->topContacts()
+                                       ->with('presence')
+                                       ->take(15)
+                                       ->get());
 
         Drawer::fill($view->draw('_sendto_share'));
     }
@@ -51,5 +55,20 @@ class SendTo extends Base
 
         $c = new Chat;
         $c->ajaxHttpSendMessage($to, $this->__('sendto.shared_with'), false, false, false, $file);
+    }
+
+    public function ajaxGetMoreContacts(string $uri)
+    {
+        $contacts = $this->user->session->topContacts()->with('presence')->get();
+        $this->rpc('MovimTpl.fill', '#sendto_contacts', $this->prepareContacts($contacts, $uri));
+    }
+
+    public function prepareContacts($contacts, string $uri)
+    {
+        $view = $this->tpl();
+        $view->assign('uri', $uri);
+        $view->assign('contacts', $contacts);
+
+        return $view->draw('_sendto_contacts');
     }
 }

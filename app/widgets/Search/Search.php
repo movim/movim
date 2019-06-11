@@ -76,6 +76,22 @@ class Search extends Base
 
             $view->assign('contacts', $contacts);
 
+            $tags = DB::table('post_tag')
+                ->select(DB::raw('count(*) as count, name'))
+                ->join('tags', 'tag_id', '=', 'tags.id')
+                ->whereIn('tag_id', function ($query) use ($key) {
+                    $query->select('id')
+                        ->from('tags')
+                        ->where('name', 'like', '%' . strtolower($key) . '%');
+                })
+                ->groupBy('name')
+                ->orderBy('count', 'desc')
+                ->take(5)
+                ->get()
+                ->pluck('name', 'count');
+
+            $view->assign('tags', $tags);
+
             return $view->draw('_search_results');
         }
 

@@ -19,25 +19,16 @@
 
     <hr />
 
-    <ul class="list thin">
-        <li class="subheader"><p>{$c->__('sendto.contact')}</p></li>
-        {loop="$contacts"}
-            <li>
-                {$url = $value->getPhoto('m')}
-                {if="$url"}
-                    <span class="primary icon bubble"
-                        style="background-image: url({$url});">
-                    </span>
-                {else}
-                    <span class="primary icon bubble color {$value->jid|stringToColor}">
-                        <i class="material-icons">person</i>
-                    </span>
-                {/if}
-                <span class="control icon active gray" onclick="SendTo_ajaxSend('{$value->id}', {'uri': '{$uri}'})">
-                    <i class="material-icons">send</i>
-                </span>
-                <p class="normal line">{$value->truename}</p>
-            </li>
-        {/loop}
+    <ul class="list thin" id="sendto_contacts">
+        {autoescape="off"}
+            {$c->prepareContacts($contacts, $uri)}
+        {/autoescape}
+        <br />
+        <li onclick="SendTo_ajaxGetMoreContacts('{$uri}')" class="active">
+            <span class="control icon active gray">
+                <i class="material-icons">expand_more</i>
+            </span>
+            <p class="normal line center">{$c->__('sendto.more_contacts')}</p>
+        </li>
     </ul>
 </section>
