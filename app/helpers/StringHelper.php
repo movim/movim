@@ -163,7 +163,37 @@ function getCid($string)
 }
 
 /**
- * Explose query parameters into an array
+ * Explode a XMPP URI
+ */
+function explodeXMPPURI(string $uri): array
+{
+    $uri = parse_url($uri);
+
+    if ($uri && $uri['scheme'] == 'xmpp') {
+        if (isset($uri['query'])) {
+            if ($uri['query'] == 'join') {
+                return ['type' => 'room', 'params' => $uri['path']];
+            }
+
+            $params = explodeQueryParams($uri['query']);
+
+            if (isset($params['node']) && isset($params['item'])) {
+                return ['type' => 'post', 'params' => [$uri['path'], $params['node'], $params['item']]];
+            }
+
+            if (isset($params['node'])) {
+                return ['type' => 'community', 'params' => [$uri['path'], $params['node']]];
+            }
+        } else {
+            return ['type' => 'contact', 'params' => $uri['path']];
+        }
+    }
+
+    return ['type' => null];
+}
+
+/**
+ * Explode query parameters into an array
  */
 function explodeQueryParams(string $query): array
 {

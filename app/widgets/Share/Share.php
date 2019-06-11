@@ -22,52 +22,30 @@ class Share extends Base
             $session->set('share_url', $link);
             $this->rpc('Share.redirect', $this->route('news'));
         } else {
-            $uri = parse_url($link);
+            $uri = \explodeXMPPURI($link);
 
-            if ($uri && $uri['scheme'] == 'xmpp') {
-                if (isset($uri['query'])) {
-                    if ($uri['query'] == 'join') {
-                        $this->rpc(
-                            'MovimUtils.redirect',
-                            $this->route(
-                                'chat',
-                                [$uri['path'], 'room']
-                            )
-                        );
-
-                        return;
-                    }
-
-                    $params = explodeQueryParams($uri['query']);
-
-                    if (isset($params['node']) && isset($params['item'])) {
-                        $this->rpc(
-                            'MovimUtils.redirect',
-                            $this->route(
-                                'post',
-                                [$uri['path'], $params['node'], $params['item']]
-                            )
-                        );
-                    }
-
-                    if (isset($params['node'])) {
-                        $this->rpc(
-                            'MovimUtils.redirect',
-                            $this->route(
-                                'community',
-                                [$uri['path'], $params['node']]
-                            )
-                        );
-                    }
-                } else {
+            switch ($uri['type']) {
+                case 'room':
                     $this->rpc(
                         'MovimUtils.redirect',
                         $this->route(
-                            'contact',
-                            $uri['path']
+                            'chat',
+                            [$uri['params'], 'room']
                         )
                     );
-                }
+                    break;
+
+                case 'post':
+                case 'community':
+                case 'contact':
+                    $this->rpc(
+                        'MovimUtils.redirect',
+                        $this->route(
+                            $uri['type'],
+                            $uri['params']
+                        )
+                    );
+                    break;
             }
         }
     }

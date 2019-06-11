@@ -746,6 +746,7 @@ class Chat extends \Movim\Widget\Base
 
         // Sticker message
         if (isset($message->sticker)) {
+
             $p = new Picture;
             $sticker = $p->get($message->sticker, false, false, 'png');
             $stickerSize = $p->getSize();
@@ -767,7 +768,7 @@ class Chat extends \Movim\Widget\Base
         }
 
         // Jumbo emoji
-        if ($emoji->isSingleEmoji()) {
+        if ($emoji->isSingleEmoji() && !isset($message->html)) {
             $message->sticker = [
                 'url' => $emoji->getLastSingleEmojiURL(),
                 'height' => 60
@@ -789,19 +790,21 @@ class Chat extends \Movim\Widget\Base
             // Other image websites
             $url = parse_url($message->file['uri']);
 
-            switch ($url['host']) {
-                case 'i.imgur.com':
-                    $matches = [];
-                    preg_match('/https:\/\/i.imgur.com\/([a-zA-Z0-9]{7})(.*)/', $message->file['uri'], $matches);
+            if (\array_key_exists('host', $url)) {
+                switch ($url['host']) {
+                    case 'i.imgur.com':
+                        $matches = [];
+                        preg_match('/https:\/\/i.imgur.com\/([a-zA-Z0-9]{7})(.*)/', $message->file['uri'], $matches);
 
-                    if (!empty($matches)) {
-                        $message->sticker = [
-                            'url' => $message->file['uri'],
-                            'thumb' => 'https://i.imgur.com/' . $matches[1] . 'g' . $matches[2],
-                            'picture' => true
-                        ];
-                    }
-                    break;
+                        if (!empty($matches)) {
+                            $message->sticker = [
+                                'url' => $message->file['uri'],
+                                'thumb' => 'https://i.imgur.com/' . $matches[1] . 'g' . $matches[2],
+                                'picture' => true
+                            ];
+                        }
+                        break;
+                }
             }
         }
 

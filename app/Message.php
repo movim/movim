@@ -45,7 +45,11 @@ class Message extends Model
     {
         if (isset($this->attributes['file'])) {
             $file = unserialize($this->attributes['file']);
-            $file['cleansize'] = sizeToCleanSize($file['size']);
+
+            if (\array_key_exists('size', $file)) {
+                $file['cleansize'] = sizeToCleanSize($file['size']);
+            }
+
             return $file;
         }
 
@@ -235,10 +239,12 @@ class Message extends Model
                 }
             }
 
-            if ($stanza->reference) {
+            if ($stanza->reference
+            && (string)$stanza->reference->attributes()->xmlns == 'urn:xmpp:reference:0') {
                 $filetmp = [];
 
-                if ($stanza->reference->{'media-sharing'}) {
+                if ($stanza->reference->{'media-sharing'}
+                && (string)$stanza->reference->{'media-sharing'}->attributes()->xmlns == 'urn:xmpp:sims:1') {
                     $file = $stanza->reference->{'media-sharing'}->file;
                     if (isset($file)) {
                         if (preg_match('/\w+\/[-+.\w]+/', $file->{'media-type'}) == 1) {
@@ -262,22 +268,36 @@ class Message extends Model
                     && array_key_exists('name', $filetmp)) {
                         $this->file = $filetmp;
                     }
-                } elseif ($stanza->reference->attributes()->type == 'mention'
-                    && parse_url($stanza->reference->attributes()->uri !== false)) {
-                    $begin = '<a href="' . Route::urlize('share', $stanza->reference->attributes()->uri) . '">';
+                } elseif (\in_array($stanza->reference->attributes()->type, ['mention', 'data'])
+                    && $stanza->reference->attributes()->uri) {
 
-                    $this->html = substr_replace(
-                        $this->body,
-                        $begin,
-                        (int)$stanza->reference->attributes()->begin,
-                        0
-                    );
-                    $this->html = substr_replace(
-                        $this->html,
-                        '</a>',
-                        (int)$stanza->reference->attributes()->end + strlen($begin),
-                        0
-                    );
+                    $uri = parse_url($stanza->reference->attributes()->uri);
+
+                    if ($uri['scheme'] === 'xmpp') {
+                        $begin = '<a href="' . Route::urlize('share', $stanza->reference->attributes()->uri) . '">';
+
+                        if ($stanza->reference->attributes()->begin && $stanza->reference->attributes()->end) {
+                            $this->html = substr_replace(
+                                $this->body,
+                                $begin,
+                                (int)$stanza->reference->attributes()->begin,
+                                0
+                            );
+                            $this->html = substr_replace(
+                                $this->html,
+                                '</a>',
+                                (int)$stanza->reference->attributes()->end + strlen($begin),
+                                0
+                            );
+                        } else {
+                            $this->html = $begin . $this->body . '</a>';
+                        }
+
+                        $this->file = [
+                            'type' => 'xmpp',
+                            'uri' => (string)$stanza->reference->attributes()->uri,
+                        ];
+                    }
                 }
             }
 
