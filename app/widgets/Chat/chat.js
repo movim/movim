@@ -668,21 +668,23 @@ var Chat = {
         var div = document.createElement('div');
         div.setAttribute('class', 'file');
 
-        var a = document.createElement('a');
-        if (sticker == null) {
-            a.textContent = file.name;
+        if (file.name) {
+            var a = document.createElement('a');
+            if (sticker == null) {
+                a.textContent = file.name;
+            }
+            a.setAttribute('href', file.uri);
+            a.setAttribute('target', '_blank');
+            a.setAttribute('rel', 'noopener');
+
+            div.appendChild(a);
+
+            var span = document.createElement('span');
+            span.innerHTML = file.cleansize;
+            span.setAttribute('class', 'size');
+
+            a.appendChild(span);
         }
-        a.setAttribute('href', file.uri);
-        a.setAttribute('target', '_blank');
-        a.setAttribute('rel', 'noopener');
-
-        div.appendChild(a);
-
-        var span = document.createElement('span');
-        span.innerHTML = file.cleansize;
-        span.setAttribute('class', 'size');
-
-        a.appendChild(span);
 
         return div;
     },
