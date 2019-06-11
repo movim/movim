@@ -96,6 +96,12 @@ class Post extends Base
                       ->where('nodeid', $nodeid)
                       ->first();
 
+        $gi = new GetItem;
+        $gi->setTo($server)
+            ->setNode($node)
+            ->setId($nodeid)
+            ->request();
+
         if ($p) {
             $html = $this->preparePost($p);
 
@@ -111,13 +117,8 @@ class Post extends Base
                    ->setAskReply($p->id)
                    ->request();
             }
-
-            $gi = new GetItem;
-            $gi->setTo($p->server)
-               ->setNode($p->node)
-               ->setId($p->nodeid)
-               ->request();
         } else {
+
             $this->rpc('MovimTpl.fill', '#post_widget', $this->prepareNotFound());
         }
     }
