@@ -9,6 +9,10 @@
     box-sizing: border-box;
 }
 
+.card.noanim > .block:not(.subheader):not(.simple) {
+    animation: none;
+}
+
 .card > form.block {
     padding: 2rem;
     padding-top: 0;

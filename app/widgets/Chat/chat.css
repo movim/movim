@@ -119,7 +119,7 @@ main:not(.enabled) #chat_widget {
     padding-left: 2rem;
 }
 
-#chat_widget div:not(.chat_box) li span.icon {
+#chat_widget div:not(.chat_box) li span.icon:not(.thumb) { /** .thumb is for cards **/
     top: 3.25rem;
 }
 
@@ -155,9 +155,9 @@ main:not(.enabled) #chat_widget {
     cursor: pointer;
 }
 
-#chat_widget .contained:not(.muc) ul li.oppose + li.oppose span.icon,
+#chat_widget .contained:not(.muc) ul li.oppose + li.oppose > span.icon,
 #chat_widget .contained:not(.muc) ul li.oppose + li.oppose .bubble::before,
-#chat_widget .contained:not(.muc) ul li:not(.oppose):not(.separator):not(.date) + li:not(.oppose) span.icon,
+#chat_widget .contained:not(.muc) ul li:not(.oppose):not(.separator):not(.date) + li:not(.oppose) > span.icon,
 #chat_widget .contained:not(.muc) ul li:not(.oppose):not(.separator):not(.date) + li:not(.oppose) .bubble::before {
     display: none;
 }
@@ -297,4 +297,9 @@ table.emojis td:hover {
     margin: 0;
     padding: 0;
     margin-right: 0.5rem;
+}
+
+/* Card */
+#chat_widget .bubble ul.card.list {
+    max-width: 55rem;
 }

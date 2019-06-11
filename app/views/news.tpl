@@ -5,6 +5,7 @@
 <?php $this->widget('Search');?>
 <?php $this->widget('Onboarding');?>
 <?php $this->widget('Notifications');?>
+<?php $this->widget('SendTo');?>
 
 <?php $this->widget('PostActions');?>
 

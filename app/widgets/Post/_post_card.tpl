@@ -174,12 +174,13 @@
                     </a>
                 {/if}
                 {if="!$public"}
-                <a
-                    title="{$c->__('button.share')}"
-                    class="button icon flat gray"
-                    href="{$c->route('publish', [$post->server, $post->node, $post->nodeid, 'share'])}">
-                    <i class="material-icons">share</i>
-                </a>
+                    <a
+                        title="{$c->__('button.share')}"
+                        class="button icon flat gray"
+                        onclick="SendTo_ajaxSendSearch('{$post->getRef()}')"
+                        href="#">
+                        <i class="material-icons">send</i>
+                    </a>
                     {if="$post->openlink"}
                         <a  title="{$c->__('post.public_url')}"
                             class="button icon flat gray on_desktop oppose"

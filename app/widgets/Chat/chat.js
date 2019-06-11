@@ -493,7 +493,7 @@ var Chat = {
             p.innerHTML = data.body;
         }
 
-        if (data.file != null) {
+        if (data.file != null && data.card === undefined) {
             bubble.querySelector('div.bubble').classList.add('file');
             p.appendChild(Chat.getFileHtml(data.file, data.sticker));
         }
@@ -512,6 +512,11 @@ var Chat = {
 
         if (data.reactionsHtml !== undefined) {
             reactions.innerHTML = data.reactionsHtml;
+        }
+
+        if (data.card) {
+            bubble.querySelector('div.bubble').classList.add('file');
+            msg.appendChild(Chat.getCardHtml(data.card));
         }
 
         msg.appendChild(p);
@@ -651,6 +656,13 @@ var Chat = {
         }
 
         return img;
+    },
+    getCardHtml: function(card) {
+        var ul = document.createElement('ul');
+        ul.setAttribute('class', 'card list noanim active');
+
+        ul.innerHTML = card;
+        return ul;
     },
     getFileHtml: function(file, sticker) {
         var div = document.createElement('div');

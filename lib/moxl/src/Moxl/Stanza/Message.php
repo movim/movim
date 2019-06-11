@@ -102,33 +102,37 @@ class Message
         }
 
         if ($file != false) {
+            $reference = $dom->createElement('reference');
+            $reference->setAttribute('xmlns', 'urn:xmpp:reference:0');
+            $reference->setAttribute('type', 'data');
+
             // SIMS
-            $reference = $dom->createElement('reference');
-            $reference->setAttribute('xmlns', 'urn:xmpp:reference:0');
-            $reference->setAttribute('type', 'data');
-            $root->appendChild($reference);
+            if (isset($file->type) && isset($file->name) && isset($file->size)) {
+                $media = $dom->createElement('media-sharing');
+                $media->setAttribute('xmlns', 'urn:xmpp:sims:1');
+                $reference->appendChild($media);
 
-            $media = $dom->createElement('media-sharing');
-            $media->setAttribute('xmlns', 'urn:xmpp:sims:1');
-            $reference->appendChild($media);
+                $filen = $dom->createElement('file');
+                $filen->setAttribute('xmlns', 'urn:xmpp:jingle:apps:file-transfer:4');
+                $media->appendChild($filen);
 
-            $filen = $dom->createElement('file');
-            $filen->setAttribute('xmlns', 'urn:xmpp:jingle:apps:file-transfer:4');
-            $media->appendChild($filen);
+                $filen->appendChild($dom->createElement('media-type', $file->type));
+                $filen->appendChild($dom->createElement('name', $file->name));
+                $filen->appendChild($dom->createElement('size', $file->size));
 
-            $filen->appendChild($dom->createElement('media-type', $file->type));
-            $filen->appendChild($dom->createElement('name', $file->name));
-            $filen->appendChild($dom->createElement('size', $file->size));
+                $sources = $dom->createElement('sources');
+                $media->appendChild($sources);
 
-            $sources = $dom->createElement('sources');
-            $media->appendChild($sources);
+                $reference = $dom->createElement('reference');
+                $reference->setAttribute('xmlns', 'urn:xmpp:reference:0');
+                $reference->setAttribute('type', 'data');
+                $reference->setAttribute('uri', $file->uri);
 
-            $reference = $dom->createElement('reference');
-            $reference->setAttribute('xmlns', 'urn:xmpp:reference:0');
-            $reference->setAttribute('type', 'data');
-            $reference->setAttribute('uri', $file->uri);
-
-            $sources->appendChild($reference);
+                $sources->appendChild($reference);
+            } else {
+                $reference->setAttribute('uri', $file->uri);
+                $root->appendChild($reference);
+            }
 
             // OOB
             $x = $dom->createElement('x');

@@ -305,7 +305,7 @@ class Chat extends \Movim\Widget\Base
             }
         }
 
-        $body = ($file != false)
+        $body = ($file != false && $file->type != 'xmpp')
             ? $file->uri
             : $message;
 
@@ -778,7 +778,8 @@ class Chat extends \Movim\Widget\Base
         // Attached file
         if (isset($message->file)) {
             // We proxify pictures links even if they are advertized as small ones
-            if (typeIsPicture($message->file['type'])
+            if (\array_key_exists('type', $message->file)
+            && typeIsPicture($message->file['type'])
             && $message->file['size'] <= SMALL_PICTURE_LIMIT) {
                 $message->sticker = [
                     'thumb' => $this->route('picture', urlencode($message->file['uri'])),
@@ -787,9 +788,8 @@ class Chat extends \Movim\Widget\Base
                 ];
             }
 
-            // Other image websites
             $url = parse_url($message->file['uri']);
-
+            // Other image websites
             if (\array_key_exists('host', $url)) {
                 switch ($url['host']) {
                     case 'i.imgur.com':
@@ -805,6 +805,23 @@ class Chat extends \Movim\Widget\Base
                         }
                         break;
                 }
+            }
+
+            // Build cards for the URIs
+            $uri = explodeXMPPURI($message->file['uri']);
+
+            switch ($uri['type']) {
+                case 'post':
+                    $post = \App\Post::where('server', $uri['params'][0])
+                        ->where('node',  $uri['params'][1])
+                        ->where('nodeid',  $uri['params'][2])
+                        ->first();
+
+                    if ($post) {
+                        $p = new Post;
+                        $message->card = $p->prepareTicket($post);
+                    }
+                    break;
             }
         }
 

@@ -365,6 +365,15 @@ ul li div.bubble > div {
     padding-right: 0.75rem;
 }
 
+ul li div.bubble ul.card p:not(:last-child) {
+    display: block;
+}
+
+ul li div.bubble ul.card p:last-child {
+    white-space: inherit;
+    display: block;
+}
+
 ul li div.bubble p {
     overflow: hidden;
     display: inline;
