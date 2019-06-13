@@ -54,8 +54,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Invitations/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Login/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/LoginAnonymous/locales.ini
@@ -63,8 +61,6 @@
 #. extracted from ../app/widgets/Menu/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Notifications/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Notifs/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Onboarding/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -79,6 +75,8 @@
 #. extracted from ../app/widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/SendTo/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -99,7 +97,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-01 23:17+0200\n"
+"POT-Creation-Date: 2019-06-13 15:58+0200\n"
 "PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/movim/movim/language/cs_CZ/)\n"
@@ -179,8 +177,13 @@ msgid "You will delete your XMPP account and all the relative information linked
 msgstr "Smažete váš XMPP účet a všechna informace propojená s ním (profil, kontakty, články)."
 
 #: [account]delete_text_confirm
-msgid "Are you sure that you want to delete it?"
+msgid "Type your full username"
 msgstr ""
+
+#: [account]delete_text_error
+#, fuzzy
+msgid "Please provide a valid username."
+msgstr "Zadejte prosím nadpis"
 
 #: [account]gateway_title
 #, fuzzy
@@ -1115,14 +1118,6 @@ msgstr ""
 msgid "Add the chatroom"
 msgstr "Přidat do konverzace"
 
-#: [invitations]title
-msgid "Pending Invitations"
-msgstr "Nevyřízené pozvánky"
-
-#: [invitations]wants_to_talk
-msgid "%s wants to talk with you"
-msgstr "%s s vámi chce mluvit"
-
 #: [error]username
 msgid "Wrong username"
 msgstr "Nesprávné uživatelské jméno"
@@ -1242,6 +1237,14 @@ msgstr "Kontakty"
 #: [menu]add_post
 msgid "Write a new post…"
 msgstr "Napsat nový příspěvek"
+
+#: [invitations]title
+msgid "Pending Invitations"
+msgstr "Nevyřízené pozvánky"
+
+#: [invitations]wants_to_talk
+msgid "%s wants to talk with you"
+msgstr "%s s vámi chce mluvit"
 
 #: [notifs]title [onboarding]notifications_title
 msgid "Notifications"
@@ -1639,6 +1642,31 @@ msgstr "Zatím žádné komentáře"
 #: [search]no_contacts_text
 msgid "Find one by searching for his name or id"
 msgstr ""
+
+#: [sendto]attach
+#, fuzzy
+msgid "Attach to a blog publication"
+msgstr "Kontakt příspěvek"
+
+#: [sendto]contact
+#, fuzzy
+msgid "Send it to a contact"
+msgstr "Zahájit konverzaci s kontaktem."
+
+#: [sendto]shared_with
+#, fuzzy
+msgid "Post shared"
+msgstr "Příspěvek zveřejněn"
+
+#: [sendto]shared
+#, fuzzy
+msgid "Post shared with your contact"
+msgstr "Zahájit konverzaci s kontaktem."
+
+#: [sendto]more_contacts
+#, fuzzy
+msgid "More contacts"
+msgstr "Časté kontakty"
 
 #: [statistics]title
 msgid "Statistics"

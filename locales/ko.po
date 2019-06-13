@@ -52,8 +52,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Invitations/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Login/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/LoginAnonymous/locales.ini
@@ -61,8 +59,6 @@
 #. extracted from ../app/widgets/Menu/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Notifications/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Notifs/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Onboarding/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -77,6 +73,8 @@
 #. extracted from ../app/widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/SendTo/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -97,7 +95,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-01 23:17+0200\n"
+"POT-Creation-Date: 2019-06-13 15:58+0200\n"
 "PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Korean (http://www.transifex.com/movim/movim/language/ko/)\n"
@@ -177,8 +175,13 @@ msgid "You will delete your XMPP account and all the relative information linked
 msgstr ""
 
 #: [account]delete_text_confirm
-msgid "Are you sure that you want to delete it?"
+msgid "Type your full username"
 msgstr ""
+
+#: [account]delete_text_error
+#, fuzzy
+msgid "Please provide a valid username."
+msgstr "알맞은 비밀번호를 입력해주세요 (최소 6글자 이상)"
 
 #: [account]gateway_title
 msgid "Gateways"
@@ -1111,14 +1114,6 @@ msgstr ""
 msgid "Add the chatroom"
 msgstr ""
 
-#: [invitations]title
-msgid "Pending Invitations"
-msgstr ""
-
-#: [invitations]wants_to_talk
-msgid "%s wants to talk with you"
-msgstr ""
-
 #: [error]username
 msgid "Wrong username"
 msgstr ""
@@ -1237,6 +1232,14 @@ msgstr ""
 
 #: [menu]add_post
 msgid "Write a new post…"
+msgstr ""
+
+#: [invitations]title
+msgid "Pending Invitations"
+msgstr ""
+
+#: [invitations]wants_to_talk
+msgid "%s wants to talk with you"
 msgstr ""
 
 #: [notifs]title [onboarding]notifications_title
@@ -1632,6 +1635,27 @@ msgstr "아직 댓글이 없습니다"
 #: [search]no_contacts_text
 msgid "Find one by searching for his name or id"
 msgstr ""
+
+#: [sendto]attach
+msgid "Attach to a blog publication"
+msgstr ""
+
+#: [sendto]contact
+msgid "Send it to a contact"
+msgstr ""
+
+#: [sendto]shared_with
+msgid "Post shared"
+msgstr ""
+
+#: [sendto]shared
+msgid "Post shared with your contact"
+msgstr ""
+
+#: [sendto]more_contacts
+#, fuzzy
+msgid "More contacts"
+msgstr "아직 댓글이 없습니다"
 
 #: [statistics]title
 msgid "Statistics"

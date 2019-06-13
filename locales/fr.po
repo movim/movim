@@ -59,8 +59,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Invitations/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Login/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/LoginAnonymous/locales.ini
@@ -68,8 +66,6 @@
 #. extracted from ../app/widgets/Menu/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Notifications/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Notifs/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Onboarding/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -84,6 +80,8 @@
 #. extracted from ../app/widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/SendTo/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -104,8 +102,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-01 23:17+0200\n"
-"PO-Revision-Date: 2019-04-01 21:16+0000\n"
+"POT-Creation-Date: 2019-06-13 15:58+0200\n"
+"PO-Revision-Date: 2019-06-13 14:02+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: French (France) (http://www.transifex.com/movim/movim/language/fr_FR/)\n"
 "Language: fr_FR\n"
@@ -184,8 +182,12 @@ msgid "You will delete your XMPP account and all the relative information linked
 msgstr "Vous allez supprimer votre compte XMPP ainsi que l’ensemble des informations qui y sont liées (profil, contacts et billets)."
 
 #: [account]delete_text_confirm
-msgid "Are you sure that you want to delete it?"
-msgstr "Êtes-vous sûr de vouloir le supprimer ?"
+msgid "Type your full username"
+msgstr "Entrez votre identifiant complet"
+
+#: [account]delete_text_error
+msgid "Please provide a valid username."
+msgstr "Veuillez entre un identifiant valide."
 
 #: [account]gateway_title
 msgid "Gateways"
@@ -1118,14 +1120,6 @@ msgstr "Discuter avec l’équipe de Movim ?"
 msgid "Add the chatroom"
 msgstr "Ajouter le salon de discussion"
 
-#: [invitations]title
-msgid "Pending Invitations"
-msgstr "Invitations en attente"
-
-#: [invitations]wants_to_talk
-msgid "%s wants to talk with you"
-msgstr "%s veut parler avec vous"
-
 #: [error]username
 msgid "Wrong username"
 msgstr "Nom d’utilisateur incorrect"
@@ -1245,6 +1239,14 @@ msgstr "Contacts"
 #: [menu]add_post
 msgid "Write a new post…"
 msgstr "Écrire un nouveau billet…"
+
+#: [invitations]title
+msgid "Pending Invitations"
+msgstr "Invitations en attente"
+
+#: [invitations]wants_to_talk
+msgid "%s wants to talk with you"
+msgstr "%s veut parler avec vous"
 
 #: [notifs]title [onboarding]notifications_title
 msgid "Notifications"
@@ -1637,6 +1639,26 @@ msgstr "Pas encore de contacts ?"
 #: [search]no_contacts_text
 msgid "Find one by searching for his name or id"
 msgstr "Trouvez-en un en saisissant son nom ou son identifiant"
+
+#: [sendto]attach
+msgid "Attach to a blog publication"
+msgstr "Attacher à un billet de blog"
+
+#: [sendto]contact
+msgid "Send it to a contact"
+msgstr "Envoyer à un contact"
+
+#: [sendto]shared_with
+msgid "Post shared"
+msgstr "Billet partagé"
+
+#: [sendto]shared
+msgid "Post shared with your contact"
+msgstr "Billet partagé avec votre contact"
+
+#: [sendto]more_contacts
+msgid "More contacts"
+msgstr "Plus de contacts"
 
 #: [statistics]title
 msgid "Statistics"

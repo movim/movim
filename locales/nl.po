@@ -59,8 +59,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Invitations/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Login/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/LoginAnonymous/locales.ini
@@ -68,8 +66,6 @@
 #. extracted from ../app/widgets/Menu/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Notifications/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Notifs/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Onboarding/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -84,6 +80,8 @@
 #. extracted from ../app/widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/SendTo/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -104,7 +102,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-01 23:17+0200\n"
+"POT-Creation-Date: 2019-06-13 15:58+0200\n"
 "PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Dutch (http://www.transifex.com/movim/movim/language/nl/)\n"
@@ -184,8 +182,13 @@ msgid "You will delete your XMPP account and all the relative information linked
 msgstr "Je verwijdert je XMPP-account en alle hieraan gerelateerde informatie (profiel, contactpersonen en publicaties)."
 
 #: [account]delete_text_confirm
-msgid "Are you sure that you want to delete it?"
+msgid "Type your full username"
 msgstr ""
+
+#: [account]delete_text_error
+#, fuzzy
+msgid "Please provide a valid username."
+msgstr "Geef een titel in"
 
 #: [account]gateway_title
 #, fuzzy
@@ -1119,14 +1122,6 @@ msgstr ""
 msgid "Add the chatroom"
 msgstr "Voeg de chatroom toe"
 
-#: [invitations]title
-msgid "Pending Invitations"
-msgstr "Uitstaande uitnodigingen"
-
-#: [invitations]wants_to_talk
-msgid "%s wants to talk with you"
-msgstr "%s wil met je praten"
-
 #: [error]username
 msgid "Wrong username"
 msgstr "Foute gebruikersnaam"
@@ -1246,6 +1241,14 @@ msgstr "Contactpersonen"
 #: [menu]add_post
 msgid "Write a new post…"
 msgstr "Schrijf een nieuw bericht..."
+
+#: [invitations]title
+msgid "Pending Invitations"
+msgstr "Uitstaande uitnodigingen"
+
+#: [invitations]wants_to_talk
+msgid "%s wants to talk with you"
+msgstr "%s wil met je praten"
 
 #: [notifs]title [onboarding]notifications_title
 msgid "Notifications"
@@ -1644,6 +1647,31 @@ msgstr "Nog geen reacties"
 #: [search]no_contacts_text
 msgid "Find one by searching for his name or id"
 msgstr ""
+
+#: [sendto]attach
+#, fuzzy
+msgid "Attach to a blog publication"
+msgstr "Contactpersoon publiceren"
+
+#: [sendto]contact
+#, fuzzy
+msgid "Send it to a contact"
+msgstr "Nodig een contactpersoon uit"
+
+#: [sendto]shared_with
+#, fuzzy
+msgid "Post shared"
+msgstr "bericht gepubliceerd"
+
+#: [sendto]shared
+#, fuzzy
+msgid "Post shared with your contact"
+msgstr "Chat met een contactpersoon"
+
+#: [sendto]more_contacts
+#, fuzzy
+msgid "More contacts"
+msgstr "Frequente contacten"
 
 #: [statistics]title
 msgid "Statistics"

@@ -59,8 +59,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Invitations/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Login/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/LoginAnonymous/locales.ini
@@ -68,8 +66,6 @@
 #. extracted from ../app/widgets/Menu/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Notifications/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Notifs/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Onboarding/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -84,6 +80,8 @@
 #. extracted from ../app/widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/SendTo/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -104,7 +102,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-01 23:17+0200\n"
+"POT-Creation-Date: 2019-06-13 15:58+0200\n"
 "PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -184,8 +182,13 @@ msgid "You will delete your XMPP account and all the relative information linked
 msgstr "你将会删除你的 XMPP 账号以及所有相关的信息（基本资料、联系人和已发表的内容）"
 
 #: [account]delete_text_confirm
-msgid "Are you sure that you want to delete it?"
+msgid "Type your full username"
 msgstr ""
+
+#: [account]delete_text_error
+#, fuzzy
+msgid "Please provide a valid username."
+msgstr "请提供一个标题"
 
 #: [account]gateway_title
 #, fuzzy
@@ -1121,14 +1124,6 @@ msgstr "和 Movim 开发团队交流？"
 msgid "Add the chatroom"
 msgstr "添加这聊天室"
 
-#: [invitations]title
-msgid "Pending Invitations"
-msgstr "待处理的邀请"
-
-#: [invitations]wants_to_talk
-msgid "%s wants to talk with you"
-msgstr "%s 想同您聊天"
-
 #: [error]username
 msgid "Wrong username"
 msgstr "错误的用户名"
@@ -1248,6 +1243,14 @@ msgstr "联系人"
 #: [menu]add_post
 msgid "Write a new post…"
 msgstr "发一篇新的帖子…"
+
+#: [invitations]title
+msgid "Pending Invitations"
+msgstr "待处理的邀请"
+
+#: [invitations]wants_to_talk
+msgid "%s wants to talk with you"
+msgstr "%s 想同您聊天"
 
 #: [notifs]title [onboarding]notifications_title
 msgid "Notifications"
@@ -1646,6 +1649,31 @@ msgstr "尚无评论"
 #: [search]no_contacts_text
 msgid "Find one by searching for his name or id"
 msgstr ""
+
+#: [sendto]attach
+#, fuzzy
+msgid "Attach to a blog publication"
+msgstr "联系人公佈"
+
+#: [sendto]contact
+#, fuzzy
+msgid "Send it to a contact"
+msgstr "邀请联系人"
+
+#: [sendto]shared_with
+#, fuzzy
+msgid "Post shared"
+msgstr "贴子已发布"
+
+#: [sendto]shared
+#, fuzzy
+msgid "Post shared with your contact"
+msgstr "同联系人聊天"
+
+#: [sendto]more_contacts
+#, fuzzy
+msgid "More contacts"
+msgstr "常用联系人"
 
 #: [statistics]title
 msgid "Statistics"

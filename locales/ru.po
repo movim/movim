@@ -63,8 +63,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Invitations/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Login/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/LoginAnonymous/locales.ini
@@ -72,8 +70,6 @@
 #. extracted from ../app/widgets/Menu/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Notifications/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Notifs/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Onboarding/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -88,6 +84,8 @@
 #. extracted from ../app/widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/SendTo/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -108,7 +106,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-01 23:17+0200\n"
+"POT-Creation-Date: 2019-06-13 15:58+0200\n"
 "PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Russian (http://www.transifex.com/movim/movim/language/ru/)\n"
@@ -188,8 +186,13 @@ msgid "You will delete your XMPP account and all the relative information linked
 msgstr "Ваша учетная запись XMPP и вся связанная с ней информация (профиль, контакты, публикации) будет удалена"
 
 #: [account]delete_text_confirm
-msgid "Are you sure that you want to delete it?"
+msgid "Type your full username"
 msgstr ""
+
+#: [account]delete_text_error
+#, fuzzy
+msgid "Please provide a valid username."
+msgstr "Заголовок"
 
 #: [account]gateway_title
 #, fuzzy
@@ -1125,14 +1128,6 @@ msgstr "Хотите ли связаться с командой Movim?"
 msgid "Add the chatroom"
 msgstr "Добавить чат-комнату"
 
-#: [invitations]title
-msgid "Pending Invitations"
-msgstr "Ожидающие решения приглашения"
-
-#: [invitations]wants_to_talk
-msgid "%s wants to talk with you"
-msgstr "%s хочет добавить Вас в контакт-лист"
-
 #: [error]username
 msgid "Wrong username"
 msgstr "Неверное имя пользователя"
@@ -1252,6 +1247,14 @@ msgstr "Контакты"
 #: [menu]add_post
 msgid "Write a new post…"
 msgstr "Написать новый пост..."
+
+#: [invitations]title
+msgid "Pending Invitations"
+msgstr "Ожидающие решения приглашения"
+
+#: [invitations]wants_to_talk
+msgid "%s wants to talk with you"
+msgstr "%s хочет добавить Вас в контакт-лист"
 
 #: [notifs]title [onboarding]notifications_title
 msgid "Notifications"
@@ -1650,6 +1653,31 @@ msgstr "Комментариев пока нет"
 #: [search]no_contacts_text
 msgid "Find one by searching for his name or id"
 msgstr ""
+
+#: [sendto]attach
+#, fuzzy
+msgid "Attach to a blog publication"
+msgstr "Публикация контакта"
+
+#: [sendto]contact
+#, fuzzy
+msgid "Send it to a contact"
+msgstr "Пригласить контакт"
+
+#: [sendto]shared_with
+#, fuzzy
+msgid "Post shared"
+msgstr "Запись опубликована"
+
+#: [sendto]shared
+#, fuzzy
+msgid "Post shared with your contact"
+msgstr "Пообщаться с контактом"
+
+#: [sendto]more_contacts
+#, fuzzy
+msgid "More contacts"
+msgstr "Популярные контакты"
 
 #: [statistics]title
 msgid "Statistics"
