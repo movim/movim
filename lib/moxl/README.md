@@ -266,12 +266,12 @@ XECHandler will then make an MD5 hash of `$name.$ns.$node` and search for the re
 Here the resulting string is `96c06e02022480352b6c581286b7eefb`.
 
 ```php
-$hashToClass = array(
+$hashToClass = [
     '9b98cd868d07fb7f6d6cb39dad31f10e' => 'Message',
     'e83b2aea042b74b1bec00b7d1bba2405' => 'Presence',
 
     '96c06e02022480352b6c581286b7eefb' => 'Post'
-    );
+];
 ```
 
 If the resulting string is one of the keys of the array, the value that corresponds to a class will be instanciate and the `handle()` method will be called.

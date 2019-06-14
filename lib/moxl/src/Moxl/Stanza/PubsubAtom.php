@@ -26,7 +26,7 @@ class PubsubAtom
     public $comments = false;
     public $open = false;
 
-    public $tags = array();
+    public $tags = [];
 
     public $published = false;
 

@@ -5,7 +5,7 @@
         {if="$roster && $roster->presence"}
             {if="$roster->presence->value > 4"}faded{/if}
             {if="$roster->presence->last > 60"} inactive{/if}
-            {if="$roster->presence->capability && in_array($roster->presence->capability->type, array('handheld', 'phone', 'web'))"}
+            {if="$roster->presence->capability && in_array($roster->presence->capability->type, ['handheld', 'phone', 'web'])"}
                 action
             {/if}
         {/if}

@@ -30,6 +30,6 @@ class RequestError
 {
     public function handle($number, $message)
     {
-        $this->event('moxlerror', array($number, $message));
+        $this->event('moxlerror', [$number, $message]);
     }
 }

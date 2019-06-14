@@ -96,16 +96,16 @@ class Message extends Model
         $jid = explodeJid((string)$stanza->attributes()->from);
         $to = explodeJid((string)$stanza->attributes()->to)['jid'];
 
-        $this->user_id    = \App\User::me()->id;
+        $this->user_id = \App\User::me()->id;
 
         if (!$this->jidto) {
-            $this->jidto      = $to;
+            $this->jidto = $to;
         }
 
         if (!$this->jidfrom) {
-            $this->jidfrom    = ($jid['username'] !== '' ?
-                $jid['username'] :
-                $jid['server']);
+            $this->jidfrom = ($jid['username'] !== ''
+                ? $jid['username']
+                : $jid['server']);
         }
 
         if ($jid['resource']) {

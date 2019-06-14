@@ -138,8 +138,8 @@ function echapJid($jid): string
 {
     $jidParts = explodeJid($jid);
 
-    $from = array('\\',   ' ',    '"',    '&',    '\'',   '/',    ':',    '<',    '>',    '@');
-    $to =   array('\\5c', '\\20', '\\22', '\\26', '\\27', '\\2f', '\\3a', '\\3c', '\\3e', '\\40');
+    $from = ['\\',   ' ',    '"',    '&',    '\'',   '/',    ':',    '<',    '>',    '@'];
+    $to =   ['\\5c', '\\20', '\\22', '\\26', '\\27', '\\2f', '\\3a', '\\3c', '\\3e', '\\40'];
 
     $jidParts['username'] = str_replace($from, $to, $jidParts["username"]);
 
@@ -246,9 +246,7 @@ function explodeJid($jid): array
     return [
         'username'  => $local,
         'server'    => $domain,
-        'jid'       => ($local !== '' ?
-            $local.'@' :
-            '') . $domain,
+        'jid'       => ($local !== '' ? $local.'@' : '') . $domain,
         'resource'  => $resource
     ];
 }
@@ -258,13 +256,10 @@ function explodeJid($jid): array
  */
 function implodeJid(array $jid): string
 {
-    return ($jid['username'] !== '' ?
-                $jid['username'] . '@' :
-                '') .
-           $jid['server'] .
-           ($jid['resource'] !== '' ?
-               '/' . $jid['resource'] :
-               '');
+    return
+        ($jid['username'] !== '' ? $jid['username'] . '@' : '') .
+        $jid['server'] .
+        ($jid['resource'] !== ''  ? '/' . $jid['resource'] : '');
 }
 
 /**
@@ -272,7 +267,7 @@ function implodeJid(array $jid): string
  */
 function sizeToCleanSize($bytes, int $precision = 2): string
 {
-    $units = array('B', 'KB', 'MB', 'GB', 'TB');
+    $units = ['B', 'KB', 'MB', 'GB', 'TB'];
 
     $bytes = max($bytes, 0);
     $pow = floor(($bytes ? log($bytes) : 0) / log(1024));
@@ -426,8 +421,11 @@ function firstLetterCapitalize($string, bool $firstOnly = false): string
  */
 function cleanupId($string)
 {
-    return "id-" . str_replace(array('.', '-', '%'),
-        array('%2E', '--', '-'), urlencode($string));
+    return "id-" . str_replace(
+        ['.', '-', '%'],
+        ['%2E', '--', '-'],
+        urlencode($string)
+    );
 }
 
 /**

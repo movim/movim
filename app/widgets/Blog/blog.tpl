@@ -43,7 +43,7 @@
             </span>
             {/if}
             <p>
-                <a href="{$c->route('tag', array($tag))}">
+                <a href="{$c->route('tag', [$tag])}">
                     #{$tag}
                 </a>
             </p>
