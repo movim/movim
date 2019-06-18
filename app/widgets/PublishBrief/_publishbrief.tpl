@@ -36,11 +36,13 @@
     <ul class="list">
         <li>
             {if="!$extended"}
-            <span id="button_send"
-                  class="control icon gray active"
-                  onclick="PublishBrief.disableSend(); PublishBrief_ajaxHttpPublish(MovimUtils.formToJson('brief'));">
-                <i class="material-icons">send</i>
-            </span>
+                <span class="control icon active gray"
+                    title="{$c->__('publishbrief.post')}"
+                    onclick="MovimUtils.reload('{$c->route('publish')}')">
+                    <i class="material-icons">add_circle</i>
+                </span>
+            {else}
+
             {/if}
             <form onsubmit="return false;" name="brief">
                 <input type="hidden" name="to" value="{$to}">
@@ -103,7 +105,20 @@
 
     <ul class="list middle">
         <li>
-            <span class="primary privacy"
+            {if="$extended"}
+                <span class="control icon active gray"
+                    title="{$c->__('publishbrief.preview')}"
+                    onclick="PublishBrief_ajaxPreview(MovimUtils.formToJson('brief'))">
+                    <i class="material-icons">visibility</i>
+                </span>
+            {else}
+                <span id="button_send"
+                    class="control icon gray active"
+                    onclick="PublishBrief.disableSend(); PublishBrief_ajaxHttpPublish(MovimUtils.formToJson('brief'));">
+                    <i class="material-icons">send</i>
+                </span>
+            {/if}
+            <span class="control privacy"
                   title="{$c->__('post.public')}">
                 <form>
                     <div class="control action">
@@ -129,19 +144,6 @@
                     </div>
                 </form>
             </span>
-            {if="$extended"}
-                <span class="control icon active gray"
-                    title="{$c->__('publishbrief.preview')}"
-                    onclick="PublishBrief_ajaxPreview(MovimUtils.formToJson('brief'))">
-                    <i class="material-icons">visibility</i>
-                </span>
-            {else}
-                <span class="control icon active gray"
-                    title="{$c->__('publishbrief.post')}"
-                    onclick="MovimUtils.reload('{$c->route('publish')}')">
-                    <i class="material-icons">add_circle</i>
-                </span>
-            {/if}
             <div>
                 <ul class="list embed">
                     {if="$reply"}

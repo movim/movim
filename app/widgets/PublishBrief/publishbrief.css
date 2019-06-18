@@ -47,6 +47,10 @@ header#publishbrief form > div textarea {
     border-radius: 0.3rem 0 0;
 }
 
+#publishbrief span.privacy {
+    margin-right: 0.75rem;
+}
+
 #publishbrief span.privacy form > div .checkbox {
     margin-top: calc(50% - 1.75rem);
     width: 5rem;
