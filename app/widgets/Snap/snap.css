@@ -52,10 +52,6 @@
     padding: 3rem;
 }
 
-#snap ul.controls.list > li span {
-    padding: 2rem;
-}
-
 #snap ul.controls.list > li span.primary {
     left: 0;
 }
