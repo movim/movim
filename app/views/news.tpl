@@ -8,6 +8,7 @@
 <?php $this->widget('SendTo');?>
 
 <?php $this->widget('PostActions');?>
+<?php $this->widget('Snap');?>
 
 <nav class="color dark">
     <?php $this->widget('Presence');?>

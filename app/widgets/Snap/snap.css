@@ -1,0 +1,78 @@
+#snap {
+    top: 0;
+    left: 0;
+    background-color: #111;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    display: none;
+}
+
+#snap canvas {
+    border: 1rem #333 solid;
+    box-sizing: border-box;
+}
+
+#snap canvas,
+#snap video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#snap select#snapsource {
+    display: none;
+}
+
+#snap canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#snap button#snapshoot,
+#snap button#snapupload {
+    right: calc(50% - 3.5rem);
+    position: absolute;
+    bottom: 2rem;
+}
+
+#snap button#snapswitch {
+    left: 2rem;
+}
+
+/* Controls */
+#snap ul.controls.list {
+    position: absolute;
+    width: 100%;
+    top: 0;
+}
+
+#snap ul.controls.list > li {
+    padding: 3rem;
+}
+
+#snap ul.controls.list > li span {
+    padding: 2rem;
+}
+
+#snap ul.controls.list > li span.primary {
+    left: 0;
+}
+
+/* States */
+#snap.shoot,
+#snap.upload {
+    display: block;
+}
+
+#snap.shoot ul.controls.list > li#snapback,
+#snap.shoot #snapupload,
+#snap.shoot #snapclose,
+#snap.shoot canvas,
+#snap.upload ul.controls.list > li#snapclose,
+#snap.upload #snapshoot,
+#snap.upload #snapback,
+#snap.upload #snapswitch {
+    display: none;
+}

@@ -1,0 +1,129 @@
+var Snap = {
+    snap: undefined,
+    video: undefined,
+    videoSelect: undefined,
+    canvas: undefined,
+
+    gotStream: function() {
+        const constraints = {
+            video: {
+                deviceId: Snap.videoSelect.value,
+                width: {ideal: 1280},
+                height: {ideal: 720}
+            }
+        };
+
+        if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia(constraints)
+                .then(stream => {
+                    Snap.video.srcObject = stream;
+                });
+        }
+    },
+    gotDevices: function(deviceInfos) {
+        Snap.videoSelect.innerText = '';
+
+        const ids = [];
+
+        for (let i = 0; i !== deviceInfos.length; ++i) {
+            const deviceInfo = deviceInfos[i];
+
+            if (deviceInfo.kind === 'videoinput' && !ids.includes(deviceInfo.deviceId)) {
+                const option = document.createElement('option');
+                option.value = deviceInfo.deviceId;
+                option.text = deviceInfo.label;
+                Snap.videoSelect.add(option);
+                ids.push(deviceInfo.deviceId);
+            }
+        }
+
+        Snap.videoSelect.addEventListener('change', e => Snap.gotStream() );
+        Snap.gotStream();
+
+        snap.classList = 'shoot';
+    },
+    shoot: function() {
+        Snap.canvas.width = Snap.video.videoWidth;
+        Snap.canvas.height = Snap.video.videoHeight;
+        var context = Snap.canvas.getContext('2d');
+        context.drawImage(Snap.video, 0, 0, Snap.video.videoWidth, Snap.video.videoHeight);
+        Snap.video.pause();
+
+        Upload.name = 'snapshot.jpg';
+
+        Snap.canvas.toBlob(
+            function (blob) {
+                Upload.prepare(blob);
+            },
+            'image/jpeg',
+            0.85
+        );
+
+        Snap.snap.classList = 'upload';
+    },
+    clear: function() {
+        Snap.video.play();
+        var context = Snap.canvas.getContext('2d');
+        context.clearRect(0, 0, Snap.canvas.width, Snap.canvas.height);
+    },
+    close: function() {
+        let stream = Snap.video.srcObject;
+
+        if (stream) {
+            stream.getTracks().forEach(function(track) {
+                track.stop();
+            });
+        }
+
+        Snap.video.srcObject = null;
+    },
+    init : function() {
+
+        Snap.snap = document.querySelector('#snap');
+        Snap.video = document.querySelector('#snap video');
+        Snap.videoSelect = document.querySelector('#snap select#snapsource');
+        Snap.canvas = document.querySelector('#snap canvas');
+
+        Snap.close(); // Just in case
+
+        navigator.mediaDevices.enumerateDevices().then(devices => Snap.gotDevices(devices));
+
+        document.querySelector("#snap #snapshoot").addEventListener('click', function() {
+            Snap.shoot();
+        });
+
+        document.querySelector("#snap #snapupload").addEventListener('click', function() {
+            Upload.init();
+        });
+
+        document.querySelector("#snap #snapback").addEventListener('click', function() {
+            Snap.snap.classList = '';
+            Snap.close();
+        });
+
+        document.querySelector("#snap #snapclose").addEventListener('click', function() {
+            Snap.snap.classList = 'shoot';
+            Snap.video.play();
+        });
+
+        document.querySelector("#snap #snapswitch").addEventListener('click', function() {
+            Snap.videoSelect.selectedIndex++;
+
+            // No empty selection
+            if (Snap.videoSelect.selectedIndex == -1) {
+                Snap.videoSelect.selectedIndex++;
+            }
+
+            Snap.close();
+            Snap.gotStream();
+        });
+
+        Upload.attach(function(file) {
+            document.querySelector('input[name=embed]').value = file.uri;
+            PublishBrief.checkEmbed();
+
+            Snap.snap.classList = '';
+            Snap.close();
+        });
+    }
+}

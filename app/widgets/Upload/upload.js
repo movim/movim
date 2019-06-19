@@ -123,10 +123,14 @@ var Upload = {
         Upload.file = file;
 
         var preview = document.querySelector('#upload img.preview_picture');
-        if (Upload.file.type.match(/image.*/)) {
-            preview.src = URL.createObjectURL(Upload.file);
-        } else {
-            preview.src = '';
+
+        // If the preview system is there
+        if (preview) {
+            if (Upload.file.type.match(/image.*/)) {
+                preview.src = URL.createObjectURL(Upload.file);
+            } else {
+                preview.src = '';
+            }
         }
     },
 
