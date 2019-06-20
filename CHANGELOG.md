@@ -13,6 +13,7 @@ v0.14.2 (trunk)
  * Fix "Forever composing" (#130) + ids for composing/paused states
  * Add support of XEP-0367: Message Attaching, add Reactions feature in Movim
  * Move the index.php file to the public/ subfolder and all the assets bellow it
+ * Add Snap widget to quickly take pictures and publish them in Chats or Posts
 
 v0.14.1
 ---------------------------
