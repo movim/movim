@@ -123,8 +123,12 @@ var Snap = {
         });
 
         Upload.attach(function(file) {
-            document.querySelector('input[name=embed]').value = file.uri;
-            PublishBrief.checkEmbed();
+            const page = MovimUtils.urlParts().page;
+
+            if (page != 'chat') {
+                document.querySelector('input[name=embed]').value = file.uri;
+                PublishBrief.checkEmbed();
+            }
 
             Snap.snap.classList = '';
             Snap.close();

@@ -223,7 +223,7 @@
 <div class="chat_box">
     <ul class="list">
         <li class="{if="$muc && !$conference->connected"}disabled{/if}">
-            <span class="primary icon gray emojis_open" onclick="Stickers_ajaxShow('{$jid}')">
+            <span class="primary icon gray primary_action" onclick="Stickers_ajaxShow('{$jid}')">
                 <i class="material-icons">mood</i>
             </span>
             {if="$c->getUser()->hasUpload()"}
@@ -232,9 +232,12 @@
                     onclick="Upload_ajaxRequest()">
                     <i class="material-icons">attach_file</i>
                 </span>
+                <span class="snap control icon" onclick="Snap.init()">
+                    <i class="material-icons">camera_alt</i>
+                </span>
             {/if}
             <span title="{$c->__('button.submit')}"
-                class="send control icon gray {if="$c->getUser()->hasUpload()"}hide{else}show{/if}"
+                class="send control icon gray"
                   onclick="Chat.sendMessage()">
                 <i class="material-icons">send</i>
             </span>

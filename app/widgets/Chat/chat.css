@@ -44,6 +44,7 @@ main:not(.enabled) #chat_widget {
     margin: 0 auto;
 }
 
+/* Chat box */
 
 #chat_widget .chat_box {
     background-color: rgba(var(--movim-background-main), 1);
@@ -55,8 +56,10 @@ main:not(.enabled) #chat_widget {
     max-width: 100%;
 }
 
+#chat_widget .chat_box.compose ul.list li > .control.upload ~ form,
 #chat_widget .chat_box form {
-    margin-right: 4.5rem;
+    margin-right: 5rem;
+    transition: margin-right .075s;
     padding-left: 7rem;
     padding-right: 1rem;
 }
@@ -98,6 +101,31 @@ main:not(.enabled) #chat_widget {
 
 #chat_widget .chat_box span.control.send.sending {
     animation: loading_opacity 1s infinite alternate;
+}
+
+#chat_widget .chat_box ul.list li {
+    padding: 0.01rem 0;
+}
+
+#chat_widget .chat_box ul.list li > .control.control.send {
+    right: 0rem;
+}
+
+#chat_widget .chat_box:not(.compose) ul.list li > .control.upload ~ .control.send,
+#chat_widget .chat_box.compose ul.list li > .control.upload ~ .control:not(.send),
+#chat_widget .chat_box.compose ul.list li > .control:not(.send) {
+    display: none;
+}
+
+#chat_widget .chat_box ul.list li > .control.upload ~ form {
+    margin-right: 11rem;
+}
+
+@media screen and (max-width: 1024px) {
+    #chat_widget .chat_box {
+        left: 0;
+        width: 100%;
+    }
 }
 
 @keyframes loading_opacity {
@@ -161,13 +189,6 @@ main:not(.enabled) #chat_widget {
 #chat_widget .contained:not(.muc) ul li:not(.oppose):not(.separator):not(.date) + li:not(.oppose) .bubble::before {
     display: none;
 }
-/*
-#chat_widget > .placeholder {
-    padding-top: 27em;
-    background-size: 28rem;
-    background-position: center 5rem;
-    background-image: url('img/chat.svg');
-}*/
 
 #chat_widget .contained section > ul > li {
     animation: fadein 0.2s;
@@ -188,37 +209,19 @@ table.emojis td {
     padding: 1rem 0;
 }
 
-.chat_box ul.list li {
-    padding: 0.01rem 0;
-}
-
-.chat_box ul.list li > .control.control {
-    right: 0rem;
-}
-
-#chat_widget .emojis_open:hover,
+#chat_widget .primary_action:hover,
 table.emojis td:hover {
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.05);
     border-radius: 0.5rem;
 }
 
-@media screen and (max-width: 1024px) {
-    #chat_widget .chat_box {
-        left: 0;
-        width: 100%;
-    }
-}
-
 #chat_widget div.quoted {
     border-right: 4px solid rgb(var(--movim-main));
 }
 
-/*#chat_widget div.call {
-    background-color: red;
-}*/
-
 /* File preview */
+
 #chat_widget div.file:not(.bubble) {
     word-break: break-all;
 }
@@ -300,6 +303,7 @@ table.emojis td:hover {
 }
 
 /* Card */
+
 #chat_widget .bubble ul.card.list {
     max-width: 55rem;
 }

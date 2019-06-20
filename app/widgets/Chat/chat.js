@@ -709,16 +709,12 @@ var Chat = {
         return i;
     },
     toggleAction: function() {
-        var send_button = document.querySelector('.chat_box span.send');
-        var attachment_button = document.querySelector('.chat_box span.upload');
-        if (send_button && attachment_button) {
-            if (Chat.getTextarea().value.length > 0) {
-                send_button.classList.remove('hide');
-                attachment_button.classList.add('hide');
-            } else {
-                send_button.classList.add('hide');
-                attachment_button.classList.remove('hide');
-            }
+        var chatBox = document.querySelector('#chat_widget .chat_box');
+
+        if (chatBox) {
+            Chat.getTextarea().value.length > 0
+                ? chatBox.classList.add('compose')
+                : chatBox.classList.remove('compose');
         }
     },
     getTextarea: function() {
