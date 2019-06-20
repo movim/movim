@@ -39,6 +39,11 @@
 
 #snap button#snapswitch {
     left: 2rem;
+    display: none;
+}
+
+#snap button#snapswitch.enabled {
+    display: inherit;
 }
 
 /* Controls */
@@ -54,6 +59,10 @@
 
 #snap ul.controls.list > li span.primary {
     left: 0;
+}
+
+#snap ul.controls.list i {
+    text-shadow: 0 0 3rem black;
 }
 
 /* States */

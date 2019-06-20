@@ -40,6 +40,10 @@ var Snap = {
         Snap.videoSelect.addEventListener('change', e => Snap.gotStream() );
         Snap.gotStream();
 
+        if (ids.length >= 2) {
+            document.querySelector("#snap #snapswitch").classList.add('enabled');
+        }
+
         snap.classList = 'shoot';
     },
     shoot: function() {
