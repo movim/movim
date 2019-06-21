@@ -21,6 +21,8 @@ class Account extends \Movim\Widget\Base
     {
         $this->rpc('Account.resetPassword');
         Notification::toast($this->__('account.password_changed'));
+
+        $this->rpc('Presence_ajaxLogout');
     }
 
     public function onRemoved()
