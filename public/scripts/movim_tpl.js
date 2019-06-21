@@ -20,6 +20,8 @@ var MovimTpl = {
         if (cm != null && cm.className.includes('shown')) {
             MovimTpl.toggleContextMenu(document);
             // If a drawer is shown
+        } else if (typeof Snap == 'object' && Snap.snap != undefined && Snap.snap.classList !== '') {
+            Snap.end();
         } else if (Drawer.filled()) {
             Drawer.clear();
             // If a dialog box is shown

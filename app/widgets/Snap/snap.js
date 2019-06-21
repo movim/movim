@@ -81,6 +81,10 @@ var Snap = {
 
         Snap.video.srcObject = null;
     },
+    end: function() {
+        Snap.snap.classList = '';
+        Snap.close();
+    },
     init : function() {
 
         Snap.snap = document.querySelector('#snap');
@@ -130,8 +134,7 @@ var Snap = {
                 PublishBrief.checkEmbed();
             }
 
-            Snap.snap.classList = '';
-            Snap.close();
+            Snap.end();
         });
     }
 }

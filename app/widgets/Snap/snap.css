@@ -11,6 +11,7 @@
 #snap canvas {
     border: 1rem #333 solid;
     box-sizing: border-box;
+    background-color: #111;
 }
 
 #snap canvas,
