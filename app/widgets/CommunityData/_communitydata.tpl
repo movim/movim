@@ -24,9 +24,9 @@
                 </p>
             {/if}
             <p class="center">
-                <i class="material-icons">people</i> {$c->__('communitydata.sub', $info->occupants)}
-                –
                 <i class="material-icons">receipt</i> {$c->__('communitydata.num', $num)}
+                –
+                <i class="material-icons">people</i> {$c->__('communitydata.sub', $info->occupants)}
             </p>
         </li>
 

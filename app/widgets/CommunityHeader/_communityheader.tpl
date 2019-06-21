@@ -30,12 +30,21 @@
                 {$node}
             {/if}
         </p>
-        {if="$info != null && $info->description"}
-            <p class="line" title="{$info->description|strip_tags}">
-                {$info->description|strip_tags}
-            </p>
-        {else}
-            <p class="line">{$server}</p>
-        {/if}
+        <p class="line on_mobile" {if="$info != null && $info->description"}title="{$info->description|strip_tags}"{/if}>
+            {if="$num > 0"}
+                <i class="material-icons">receipt</i> {$num}
+            {/if}
+            {if="$info != null"}
+                – <i class="material-icons">people</i> {$c->__('communitydata.sub', $info->occupants)}
+                {if="$info->description"}
+                    – {$info->description|strip_tags}
+                {/if}
+            {else}
+                {$server}
+            {/if}
+        </p>
+        <p class="line on_desktop">
+            {$server}
+        </p>
     </li>
 </ul>

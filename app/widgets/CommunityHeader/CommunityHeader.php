@@ -181,13 +181,22 @@ class CommunityHeader extends Base
     {
         $view = $this->tpl();
 
-        $view->assign('info', \App\Info::where('server', $origin)
-                                   ->where('node', $node)
-                                   ->first());
+        $info = \App\Info::where('server', $origin)
+                         ->where('node', $node)
+                         ->first();
+
+        $view->assign('info', $info);
         $view->assign('subscription', $this->user->subscriptions()
                                            ->where('server', $origin)
                                            ->where('node', $node)
                                            ->first());
+        $view->assign('num', $info ?
+            ($info->items > 0)
+                ? $info->items
+                : \App\Post::where('server', $origin)
+                        ->where('node', $node)
+                        ->count()
+            : 0);
         $view->assign('node', $node);
         $view->assign('server', $origin);
 
