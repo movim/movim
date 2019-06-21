@@ -1,5 +1,5 @@
 <div id="snap">
-    <video autoplay></video>
+    <video autoplay poster="/theme/img/empty.png"></video>
     <canvas id="snapcanvas"></canvas>
     <select id="snapsource"></select>
     <button id="snapshoot" class="button action color green">

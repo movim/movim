@@ -21,6 +21,12 @@
     object-fit: contain;
 }
 
+#snap video {
+    background-image: url(/theme/img/movim_cloud.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
 #snap select#snapsource {
     display: none;
 }
