@@ -20,9 +20,9 @@ var MovimTpl = {
         if (cm != null && cm.className.includes('shown')) {
             MovimTpl.toggleContextMenu(document);
             // If a drawer is shown
-        } else if (typeof Snap == 'object' && Snap.snap != undefined && Snap.snap.classList !== '') {
-            if (Snap.snap.classList == 'upload') {
-                Snap.snap.classList = 'shoot';
+        } else if (typeof Snap == 'object' && Snap.snap != undefined && Snap.snap.className !== '') {
+            if (Snap.snap.classList.contains('upload')) {
+                Snap.snap.className = 'shoot';
                 Snap.video.play();
             } else {
                 Snap.end();

@@ -17,6 +17,7 @@ var Snap = {
             navigator.mediaDevices.getUserMedia(constraints)
                 .then(stream => {
                     Snap.video.srcObject = stream;
+                    Snap.video.play();
                 });
         }
     },
