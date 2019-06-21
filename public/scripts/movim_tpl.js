@@ -21,7 +21,12 @@ var MovimTpl = {
             MovimTpl.toggleContextMenu(document);
             // If a drawer is shown
         } else if (typeof Snap == 'object' && Snap.snap != undefined && Snap.snap.classList !== '') {
-            Snap.end();
+            if (Snap.snap.classList == 'upload') {
+                Snap.snap.classList = 'shoot';
+                Snap.video.play();
+            } else {
+                Snap.end();
+            }
         } else if (Drawer.filled()) {
             Drawer.clear();
             // If a dialog box is shown
