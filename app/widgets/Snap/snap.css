@@ -79,6 +79,7 @@
 #snap.upload ul.controls.list > li#snapclose,
 #snap.upload #snapshoot,
 #snap.upload #snapback,
-#snap.upload #snapswitch {
+#snap.upload #snapswitch,
+#snap.upload #snapswitch.enabled {
     display: none;
 }
