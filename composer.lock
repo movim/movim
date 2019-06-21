@@ -8,7 +8,7 @@
     "packages": [
         {
             "name": "cakephp/cache",
-            "version": "3.7.8",
+            "version": "3.7.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/cache.git",
@@ -52,7 +52,7 @@
         },
         {
             "name": "cakephp/collection",
-            "version": "3.7.8",
+            "version": "3.7.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/collection.git",
@@ -98,7 +98,7 @@
         },
         {
             "name": "cakephp/core",
-            "version": "3.7.8",
+            "version": "3.7.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/core.git",
@@ -148,16 +148,16 @@
         },
         {
             "name": "cakephp/database",
-            "version": "3.7.8",
+            "version": "3.7.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/database.git",
-                "reference": "c4ad111c06cd42e07ad75cc67344bdccf19a08f5"
+                "reference": "f1659560bf7d58bfb73c7a00c450ee45ceee9fdb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/database/zipball/c4ad111c06cd42e07ad75cc67344bdccf19a08f5",
-                "reference": "c4ad111c06cd42e07ad75cc67344bdccf19a08f5",
+                "url": "https://api.github.com/repos/cakephp/database/zipball/f1659560bf7d58bfb73c7a00c450ee45ceee9fdb",
+                "reference": "f1659560bf7d58bfb73c7a00c450ee45ceee9fdb",
                 "shasum": ""
             },
             "require": {
@@ -192,11 +192,11 @@
                 "database abstraction",
                 "pdo"
             ],
-            "time": "2019-05-28T16:04:17+00:00"
+            "time": "2019-06-19T16:05:01+00:00"
         },
         {
             "name": "cakephp/datasource",
-            "version": "3.7.8",
+            "version": "3.7.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/datasource.git",
@@ -246,7 +246,7 @@
         },
         {
             "name": "cakephp/log",
-            "version": "3.7.8",
+            "version": "3.7.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/log.git",
@@ -291,7 +291,7 @@
         },
         {
             "name": "cakephp/utility",
-            "version": "3.7.8",
+            "version": "3.7.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/utility.git",
