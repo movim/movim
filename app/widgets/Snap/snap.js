@@ -96,6 +96,8 @@ var Snap = {
 
         navigator.mediaDevices.enumerateDevices().then(devices => Snap.gotDevices(devices));
 
+        Snap.video.play();
+
         document.querySelector("#snap #snapshoot").addEventListener('click', function() {
             Snap.shoot();
         });
