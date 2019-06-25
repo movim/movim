@@ -34,7 +34,7 @@ You can also use Movim on our official Pods:
 * https://nl.movim.eu/ server hosted in The Netherlands
 * https://fi.movim.eu/ server hosted in Finland
 * https://jp.mov.im/ server hosted in Japan
-* https://de.movim.eu server host in Germany
+* https://de.movim.eu server hosted in Germany
 
 Translations
 ------------

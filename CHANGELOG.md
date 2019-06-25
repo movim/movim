@@ -1,7 +1,7 @@
 Movim Changelog
 ================
 
-v0.14.2 (trunk)
+v0.15 (trunk)
 ---------------------------
  * Redesign the Communities page
  * Center verticaly the content of cards when they are displayed as flexbox
