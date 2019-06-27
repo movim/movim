@@ -86,9 +86,7 @@ class Visio extends Base
         $candidates = $s->get('candidates');
 
         if (is_array($candidates)) {
-            foreach ($candidates as $candidate) {
-                $this->rpc('Visio.onCandidate', $candidate[0], $candidate[1], $candidate[2]);
-            }
+            $this->rpc('Visio.onCandidates', $candidates);
         }
 
         $s->remove('candidates');

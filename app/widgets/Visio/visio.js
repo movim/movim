@@ -84,6 +84,13 @@ var Visio = {
         Visio.pc.setLocalDescription(desc, Visio.toggleMainButton, logError);
     },
 
+    onCandidates: function(candidates) {
+        console.log('Canditates');
+        candidates.forEach(candidate => {
+            Visio.onCandidate(candidate[0], candidate[1], candidate[2]);
+        });
+    },
+
     onCandidate: function(candidate, mid, mlineindex) {
         console.log('candidate');
         console.log(candidate);
@@ -92,7 +99,7 @@ var Visio = {
 
         if (mid == '') mlineindex = 1;
 
-        if (Visio.pc.remoteDescription == null) return;
+        if (Visio.pc.remoteDescription == null || candidate.candidate == '') return;
 
         candidate = new RTCIceCandidate({
             'candidate': candidate,
