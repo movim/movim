@@ -675,20 +675,27 @@ class Chat extends \Movim\Widget\Base
 
         $jid = echapJid($jid);
 
-        $messages = $this->user->messages()->where(function ($query) use ($jid) {
+        $messagesQuery = $this->user->messages()->where(function ($query) use ($jid) {
             $query->where('jidfrom', $jid)
                   ->orWhere('jidto', $jid);
         });
 
         $messagesQuery = $muc
-            ? $messages->where('type', 'groupchat')->whereNull('subject')
-            : $messages->whereIn('type', $this->_messageTypes);
+            ? $messagesQuery->where('type', 'groupchat')->whereNull('subject')
+            : $messagesQuery->whereIn('type', $this->_messageTypes);
 
-        $messages = $messagesQuery->orderBy('published', 'desc')->take($this->_pagination)->get();
-        $unreadsCount = $messagesQuery->where('seen', false)->count();
+        /**
+         * The object need to be cloned there for MySQL, looks like the pagination/where is kept somewhere in between…
+         **/
+        $messagesRequest = clone $messagesQuery;
+        $messagesCount = clone $messagesQuery;
+
+        $messages = $messagesRequest->orderBy('published', 'desc')->take($this->_pagination)->get();
+        $unreadsCount = $messagesCount->where('seen', false)->count();
 
         if ($unreadsCount > 0) {
-            $messagesQuery->where('seen', false)->update(['seen' => true]);
+            $messagesClear = clone $messagesQuery;
+            $messagesClear->where('seen', false)->update(['seen' => true]);
         }
 
         if ($seenOnly) return;
