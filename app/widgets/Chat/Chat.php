@@ -685,7 +685,7 @@ class Chat extends \Movim\Widget\Base
             : $messages->whereIn('type', $this->_messageTypes);
 
         $messages = $messagesQuery->orderBy('published', 'desc')->take($this->_pagination)->get();
-        $unreadsCount = $messages->where('seen', false)->count();
+        $unreadsCount = $messagesQuery->where('seen', false)->count();
 
         if ($unreadsCount > 0) {
             $messagesQuery->where('seen', false)->update(['seen' => true]);
