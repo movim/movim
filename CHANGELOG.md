@@ -14,6 +14,8 @@ v0.15 (trunk)
  * Add support of XEP-0367: Message Attaching, add Reactions feature in Movim
  * Move the index.php file to the public/ subfolder and all the assets bellow it
  * Add Snap widget to quickly take pictures and publish them in Chats or Posts
+ * Refactor the notification mechanism for the Chat (move the status to the messages table)
+ * Comment and remove SQLite support in the project
 
 v0.14.1
 ---------------------------
