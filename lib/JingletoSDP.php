@@ -11,7 +11,7 @@ class JingletoSDP
 
     // Only used for ICE Candidate (Jingle transport-info)
     public $media;
-    public $name;
+    public $name = null;
 
     private $values = [
         'session_sdp_id'    => 1,
@@ -351,7 +351,7 @@ class JingletoSDP
                     $sdp_media;
                 //"\r\na=sendrecv";
 
-                if (!empty($this->name)) {
+                if ($this->name !== null) {
                     $sdp_medias .= "\r\na=mid:".$this->name;
                 }
             } else {

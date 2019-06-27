@@ -13,7 +13,7 @@ class SDPtoJingle
 
     private $action;
 
-    private $mid;
+    private $mid = null;
     private $mlineindex;
 
     // Move the global fingerprint into each medias
@@ -46,7 +46,7 @@ class SDPtoJingle
       'media'           => "/^m=(audio|video|application|data)/i"
     ];
 
-    public function __construct($sdp, $initiator, $responder = false, $action = false, $mid = false, $mlineindex = false)
+    public function __construct($sdp, $initiator, $responder = false, $action = false, $mid = null, $mlineindex = false)
     {
         $this->sdp = $sdp;
         $this->arr = explode("\n", $this->sdp);
@@ -126,11 +126,11 @@ class SDPtoJingle
         }
     }
 
-    public function addName($name = false)
+    public function addName($name = null)
     {
-        if ($name) {
+        if ($name !== null) {
             $this->content->addAttribute('name', $name);
-        } elseif ($this->mid) {
+        } elseif ($this->mid !== null) {
             $this->content->addAttribute('name', $this->mid);
         }
     }
