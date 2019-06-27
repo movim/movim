@@ -66,6 +66,12 @@ class Presence extends Base
         $this->ajaxProfileRefresh();
     }
 
+    public function ajaxAskLogout()
+    {
+        $view = $this->tpl();
+        Dialog::fill($view->draw('_presence_logout'));
+    }
+
     public function ajaxLogout()
     {
         $this->rpc('Presence.clearQuick');

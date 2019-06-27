@@ -14,7 +14,7 @@
         </span>
     {/if}
     <span class="control icon active on_mobile"
-        onclick="Presence_ajaxLogout()"
+        onclick="Presence_ajaxAskLogout()"
         title="{$c->__('status.disconnect')}">
         <i class="material-icons">exit_to_app</i>
     </span>
