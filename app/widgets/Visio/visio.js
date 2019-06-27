@@ -5,6 +5,8 @@ function logError(error) {
 
 var Visio = {
     pc: null,
+    localVideo: null,
+    remoteVideo: null,
     constraints: null,
     audioContext: null,
     max_level_L: 0,
@@ -30,7 +32,7 @@ var Visio = {
 
         Visio.toggleMainButton();
 
-        document.getElementById('video').srcObject = stream;
+        Visio.localVideo.srcObject = stream;
 
         // Audio
         var microphone = Visio.audioContext.createMediaStreamSource(stream);
@@ -107,14 +109,25 @@ var Visio = {
 
     onTerminate: function() {
         console.log('terminate');
-        Visio.pc.getRemoteStreams().forEach(function(stream) {
-            stream.getTracks().forEach(function(track) {
+
+        let localStream = Visio.localVideo.srcObject;
+
+        if (localStream) {
+            localStream.getTracks().forEach(function(track) {
                 track.stop();
             });
-        });
+        }
 
-        document.getElementById('video').srcObject = null;
-        document.getElementById('remote_video').srcObject = null;
+        let remoteStream = Visio.remoteVideo.srcObject;
+
+        if (remoteStream) {
+            remoteStream.getTracks().forEach(function(track) {
+                track.stop();
+            });
+        }
+
+        Visio.localVideo.srcObject = null;
+        Visio.remoteVideo.srcObject = null;
 
         Visio.pc.close();
 
@@ -180,7 +193,11 @@ var Visio = {
 
         Visio.constraints = window.constraints = {
             audio: true,
-            video: { facingMode: "user" }
+            video: {
+                facingMode: 'user',
+                width: {ideal: 1280},
+                height: {ideal: 720}
+            }
         };
 
         Visio.toggleMainButton();
@@ -189,9 +206,7 @@ var Visio = {
             Visio.onSDP(sdp, type);
         }
 
-        if (typeof navigator.webkitGetUserMedia == 'function') {
-            navigator.webkitGetUserMedia(constraints, Visio.handleSuccess, logError);
-        } else {
+        if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
             navigator.mediaDevices.getUserMedia(constraints)
                 .then(Visio.handleSuccess)
                 .catch(logError);
@@ -234,9 +249,7 @@ var Visio = {
         if (Visio.pc) {
             if (Visio.localCreated) Visio.answer();
 
-            let length = Visio.pc.getSenders
-                ? Visio.pc.getSenders().length
-                : Visio.pc.getLocalStreams().length;
+            let length = Visio.pc.getSenders().length;
 
             if (Visio.pc.iceConnectionState != 'closed'
             && length > 0) {
@@ -286,7 +299,7 @@ var Visio = {
                     state.innerText = Visio.states.failed;
                 } else {
                     // Visio.pc.ontrack seems buggy for now
-                    document.getElementById('remote_video').srcObject = Visio.pc.getRemoteStreams()[0];
+                    Visio.remoteVideo.srcObject = Visio.pc.getRemoteStreams()[0];
                     state.innerTest = Visio.states.in_call;
                 }
 
@@ -298,30 +311,15 @@ var Visio = {
     toggleFullScreen: function() {
         var button = document.querySelector('#toggle_fullscreen i');
 
-        if (!document.fullscreenElement
-        && !document.msFullscreenElement
-        && !document.mozFullScreenElement
-        && !document.webkitFullscreenElement) {
+        if (!document.fullscreenElement) {
             if (document.body.requestFullscreen) {
                 document.body.requestFullscreen();
-            } else if (document.body.msRequestFullscreen) {
-                document.body.msRequestFullscreen();
-            } else if (document.body.mozRequestFullScreen) {
-                document.body.mozRequestFullScreen();
-            } else if (document.body.webkitRequestFullscreen) {
-                document.body.webkitRequestFullscreen();
             }
 
             button.innerText = 'fullscreen_exit';
         } else {
             if (document.exitFullscreen) {
                 document.exitFullscreen();
-            } else if (document.msExitFullscreen) {
-                document.msExitFullscreen();
-            } else if (document.mozCancelFullScreen) {
-                document.mozCancelFullScreen();
-            } else if (document.webkitCancelFullScreen) {
-                document.webkitCancelFullScreen();
             }
 
             button.innerText = 'fullscreen';
@@ -354,6 +352,8 @@ var Visio = {
 }
 
 MovimWebsocket.attach(function() {
+    Visio.localVideo = document.getElementById('video');
+    Visio.remoteVideo = document.getElementById('remote_video');
     Visio_ajaxAskInit();
 });
 

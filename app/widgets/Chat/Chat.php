@@ -768,7 +768,9 @@ class Chat extends \Movim\Widget\Base
         }
 
         // Jumbo emoji
-        if ($emoji->isSingleEmoji() && !isset($message->html)) {
+        if ($emoji->isSingleEmoji()
+            && !isset($message->html)
+            && in_array($message->type,  ['chat', 'groupchat'])) {
             $message->sticker = [
                 'url' => $emoji->getLastSingleEmojiURL(),
                 'height' => 60
