@@ -44,7 +44,7 @@ body {
 
 #visio header {
     position: absolute;
-    right: 0;
+    width: 100%;
 }
 
 #visio header ul.list li {

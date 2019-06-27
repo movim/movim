@@ -2,6 +2,9 @@
     <header class="fixed">
         <ul class="list">
             <li>
+                <span class="primary icon color transparent active on_mobile" onclick="Visio.goodbye(); window.close()">
+                    <i class="material-icons">close</i>
+                </span>
                 <span id="toggle_fullscreen" class="control icon color transparent active" onclick="Visio.toggleFullScreen()">
                     <i class="material-icons">fullscreen</i>
                 </span>
