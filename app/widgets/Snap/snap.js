@@ -8,8 +8,8 @@ var Snap = {
         const constraints = {
             video: {
                 deviceId: Snap.videoSelect.value,
-                width: {ideal: 1280},
-                height: {ideal: 720}
+                width: { ideal: 4096 },
+                height: { ideal: 4096 }
             }
         };
 

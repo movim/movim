@@ -132,7 +132,7 @@ var Visio = {
         Visio.localVideo.srcObject = null;
         Visio.remoteVideo.srcObject = null;
 
-        Visio.pc.close();
+        if (Visio.pc) Visio.pc.close();
 
         document.querySelector('p.state').innerText = Visio.states.ended;
         button = document.querySelector('#main i');
