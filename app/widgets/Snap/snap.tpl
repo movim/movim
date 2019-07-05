@@ -8,6 +8,9 @@
     <button id="snapupload" class="button action color blue">
         <i class="material-icons">publish</i>
     </button>
+    <button id="snapwait" class="button action color gray">
+        <i class="material-icons">more_horiz</i>
+    </button>
     <button id="snapswitch" class="button action color">
         <i class="material-icons">switch_camera</i>
     </button>

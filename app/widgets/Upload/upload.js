@@ -1,6 +1,7 @@
 var Upload = {
     xhr : null,
     attached : [],
+    failed : [],
     get : null,
     name : null,
     file : null,
@@ -21,6 +22,12 @@ var Upload = {
         }
     },
 
+    fail : function(func) {
+        if (typeof(func) === "function") {
+            this.failed.push(func);
+        }
+    },
+
     launchAttached : function() {
         for(var i = 0; i < Upload.attached.length; i++) {
             Upload.attached[i]({
@@ -29,6 +36,12 @@ var Upload = {
                 type: Upload.file.type,
                 uri:  Upload.get
             });
+        }
+    },
+
+    launchFailed : function(evt) {
+        for(var i = 0; i < Upload.failed.length; i++) {
+            Upload.failed[i](evt);
         }
     },
 
@@ -155,6 +168,7 @@ var Upload = {
             if (Upload.xhr.readyState == 4
             && (Upload.xhr.status >= 400 || Upload.xhr.status == 0)
             && Upload.file != null) {
+                Upload.launchFailed();
                 Upload_ajaxFailed();
             }
         }

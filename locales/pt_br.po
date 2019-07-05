@@ -102,7 +102,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-13 15:58+0200\n"
+"POT-Creation-Date: 2019-07-05 11:28+0200\n"
 "PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Christopher Ribeiro <christo_campiglia@hotmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/movim/movim/language/pt_BR/)\n"
@@ -1461,6 +1461,11 @@ msgstr "Estado atualizado"
 msgid "Presence"
 msgstr "Presente"
 
+#: [status]logout_confirm
+#, fuzzy
+msgid "Do you really want to log out?"
+msgstr "Certeza que deseja excluir isto?"
+
 #: [publishbrief]placeholder
 msgid "What’s new?"
 msgstr "O que há de novo?"
@@ -1472,6 +1477,11 @@ msgstr "Escrever uma postagem"
 #: [publishbrief]add_link
 msgid "Add a link"
 msgstr "Adicionar um novo endereço"
+
+#: [publishbrief]add_snap
+#, fuzzy
+msgid "Take a picture"
+msgstr "Adicione um arquivo ou imagem"
 
 #: [publishbrief]no_title
 msgid "Please provide a title"
@@ -2684,9 +2694,6 @@ msgstr "A API está inalcançável, tente mais tarde"
 #: [field]type_here
 msgid "Type here"
 msgstr "Digite aqui"
-
-#~ msgid "Are you sure that you want to delete it?"
-#~ msgstr "Certeza que deseja excluir isto?"
 
 #~ msgid "Privacy Level"
 #~ msgstr "Nível de privacidade"

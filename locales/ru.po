@@ -106,7 +106,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-13 15:58+0200\n"
+"POT-Creation-Date: 2019-07-05 11:28+0200\n"
 "PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Russian (http://www.transifex.com/movim/movim/language/ru/)\n"
@@ -1463,6 +1463,10 @@ msgstr "Статус обновлен"
 msgid "Presence"
 msgstr "Присутствие"
 
+#: [status]logout_confirm
+msgid "Do you really want to log out?"
+msgstr ""
+
 #: [publishbrief]placeholder
 msgid "What’s new?"
 msgstr ""
@@ -1474,6 +1478,11 @@ msgstr "Напишите пост"
 #: [publishbrief]add_link
 msgid "Add a link"
 msgstr "Добавьте ссылку"
+
+#: [publishbrief]add_snap
+#, fuzzy
+msgid "Take a picture"
+msgstr "Добавить файл или картинку"
 
 #: [publishbrief]no_title
 msgid "Please provide a title"

@@ -99,7 +99,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-13 15:58+0200\n"
+"POT-Creation-Date: 2019-07-05 11:28+0200\n"
 "PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Zsolt <maxigaz@protonmail.com>\n"
 "Language-Team: Hungarian (http://www.transifex.com/movim/movim/language/hu/)\n"
@@ -1453,6 +1453,11 @@ msgstr "Állapot frissítve"
 msgid "Presence"
 msgstr "Jelenlét"
 
+#: [status]logout_confirm
+#, fuzzy
+msgid "Do you really want to log out?"
+msgstr "Biztosan törölni akarod?"
+
 #: [publishbrief]placeholder
 msgid "What’s new?"
 msgstr ""
@@ -1463,6 +1468,10 @@ msgstr ""
 
 #: [publishbrief]add_link
 msgid "Add a link"
+msgstr ""
+
+#: [publishbrief]add_snap
+msgid "Take a picture"
 msgstr ""
 
 #: [publishbrief]no_title
@@ -2674,9 +2683,6 @@ msgstr "Az API nem elérhető, próbáld újra később"
 #: [field]type_here
 msgid "Type here"
 msgstr "Ide írj"
-
-#~ msgid "Are you sure that you want to delete it?"
-#~ msgstr "Biztosan törölni akarod?"
 
 #~ msgid "Privacy Level"
 #~ msgstr "Magánszféra szintje"

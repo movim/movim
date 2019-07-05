@@ -95,7 +95,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-13 15:58+0200\n"
+"POT-Creation-Date: 2019-07-05 11:28+0200\n"
 "PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Besnik <besnik@programeshqip.org>\n"
 "Language-Team: Albanian (http://www.transifex.com/movim/movim/language/sq/)\n"
@@ -1451,6 +1451,11 @@ msgstr "Gjendja u përditësua"
 msgid "Presence"
 msgstr "Prani"
 
+#: [status]logout_confirm
+#, fuzzy
+msgid "Do you really want to log out?"
+msgstr "Jeni i sigurt se doni të fshihet?"
+
 #: [publishbrief]placeholder
 msgid "What’s new?"
 msgstr "Ç’ka të re?"
@@ -1462,6 +1467,11 @@ msgstr "Shkruani një postim"
 #: [publishbrief]add_link
 msgid "Add a link"
 msgstr "Shtoni një lidhje"
+
+#: [publishbrief]add_snap
+#, fuzzy
+msgid "Take a picture"
+msgstr "Shtoni një kartelë ose një foto"
 
 #: [publishbrief]no_title
 msgid "Please provide a title"
@@ -2672,9 +2682,6 @@ msgstr "API nuk kapet dot, riprovoni më vonë"
 #: [field]type_here
 msgid "Type here"
 msgstr "Shtypni këtu"
-
-#~ msgid "Are you sure that you want to delete it?"
-#~ msgstr "Jeni i sigurt se doni të fshihet?"
 
 #~ msgid "Privacy Level"
 #~ msgstr "Shkallë Privatësie"

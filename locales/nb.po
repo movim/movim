@@ -99,7 +99,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-13 15:58+0200\n"
+"POT-Creation-Date: 2019-07-05 11:28+0200\n"
 "PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://www.transifex.com/movim/movim/language/nb_NO/)\n"
@@ -1456,6 +1456,10 @@ msgstr "Statusen er oppdatert"
 msgid "Presence"
 msgstr "Tilstedeværelse"
 
+#: [status]logout_confirm
+msgid "Do you really want to log out?"
+msgstr ""
+
 #: [publishbrief]placeholder
 msgid "What’s new?"
 msgstr ""
@@ -1467,6 +1471,11 @@ msgstr "Skriv en melding"
 #: [publishbrief]add_link
 msgid "Add a link"
 msgstr "Legg til lenke"
+
+#: [publishbrief]add_snap
+#, fuzzy
+msgid "Take a picture"
+msgstr "Legge til en fil eller et bilde"
 
 #: [publishbrief]no_title
 msgid "Please provide a title"

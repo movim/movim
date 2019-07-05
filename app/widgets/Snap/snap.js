@@ -87,13 +87,14 @@ var Snap = {
         Snap.close();
     },
     init : function() {
-
         Snap.snap = document.querySelector('#snap');
         Snap.video = document.querySelector('#snap video');
         Snap.videoSelect = document.querySelector('#snap select#snapsource');
         Snap.canvas = document.querySelector('#snap canvas');
 
         Snap.close(); // Just in case
+
+        Snap.snap.classList = 'wait';
 
         navigator.mediaDevices.enumerateDevices().then(devices => Snap.gotDevices(devices));
 
@@ -104,6 +105,7 @@ var Snap = {
         });
 
         document.querySelector("#snap #snapupload").addEventListener('click', function() {
+            Snap.snap.classList = 'wait';
             Upload.init();
         });
 
@@ -129,7 +131,7 @@ var Snap = {
             Snap.gotStream();
         });
 
-        Upload.attach(function(file) {
+        Upload.attach((file) => {
             const page = MovimUtils.urlParts().page;
 
             if (page != 'chat') {
@@ -139,5 +141,7 @@ var Snap = {
 
             Snap.end();
         });
+
+        Upload.fail(() => Snap.snap.classList = 'upload');
     }
 }

@@ -97,7 +97,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-13 15:58+0200\n"
+"POT-Creation-Date: 2019-07-05 11:28+0200\n"
 "PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/movim/movim/language/cs_CZ/)\n"
@@ -1452,6 +1452,10 @@ msgstr "Stav aktualizován"
 msgid "Presence"
 msgstr "Přítomnost"
 
+#: [status]logout_confirm
+msgid "Do you really want to log out?"
+msgstr ""
+
 #: [publishbrief]placeholder
 msgid "What’s new?"
 msgstr ""
@@ -1463,6 +1467,10 @@ msgstr "Napsat příspěvek"
 #: [publishbrief]add_link
 msgid "Add a link"
 msgstr "Přidat odkaz"
+
+#: [publishbrief]add_snap
+msgid "Take a picture"
+msgstr ""
 
 #: [publishbrief]no_title
 msgid "Please provide a title"
