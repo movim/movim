@@ -96,7 +96,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-05 11:28+0200\n"
-"PO-Revision-Date: 2018-09-18 06:12+0000\n"
+"PO-Revision-Date: 2019-07-05 10:14+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/movim/movim/language/zh_TW/)\n"
 "Language: zh_TW\n"
@@ -104,7 +104,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
+"X-Generator: Translate Toolkit 2.3.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -179,14 +179,12 @@ msgid "Type your full username"
 msgstr ""
 
 #: [account]delete_text_error
-#, fuzzy
 msgid "Please provide a valid username."
-msgstr "請提供有效的密碼 (最少6個字元)"
+msgstr ""
 
 #: [account]gateway_title
-#, fuzzy
 msgid "Gateways"
-msgstr "通道"
+msgstr ""
 
 #: [account]clear
 msgid "Leave this instance"
@@ -611,18 +609,16 @@ msgid "Communities servers"
 msgstr "社群伺服器"
 
 #: [communities]disco
-#, fuzzy
 msgid "Communities server discovered"
-msgstr "社群伺服器"
+msgstr ""
 
 #: [communities]disco_error
 msgid "This server doesn’t exists"
 msgstr ""
 
 #: [communities]interesting
-#, fuzzy
 msgid "Communities you might like"
-msgstr "社群名稱"
+msgstr ""
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -1534,9 +1530,8 @@ msgid "Standard room"
 msgstr ""
 
 #: [rooms]gateway_room
-#, fuzzy
 msgid "Gateway room"
-msgstr "通道"
+msgstr ""
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -1651,23 +1646,20 @@ msgid "Attach to a blog publication"
 msgstr ""
 
 #: [sendto]contact
-#, fuzzy
 msgid "Send it to a contact"
-msgstr "跟聯絡人聊天"
+msgstr ""
 
 #: [sendto]shared_with
 msgid "Post shared"
 msgstr ""
 
 #: [sendto]shared
-#, fuzzy
 msgid "Post shared with your contact"
-msgstr "跟聯絡人聊天"
+msgstr ""
 
 #: [sendto]more_contacts
-#, fuzzy
 msgid "More contacts"
-msgstr "常聯絡的"
+msgstr ""
 
 #: [statistics]title
 msgid "Statistics"
@@ -1778,9 +1770,8 @@ msgid "The nickname is already registered"
 msgstr ""
 
 #: [profile]nickname_saved
-#, fuzzy
 msgid "Nickname saved"
-msgstr "檔名"
+msgstr ""
 
 #: [save]submit [button]submit
 msgid "Submit"
@@ -2653,9 +2644,8 @@ msgid "Publish only"
 msgstr ""
 
 #: [affiliation]member
-#, fuzzy
 msgid "Member"
-msgstr "成員"
+msgstr ""
 
 #: [affiliation]no-aff
 msgid "No affiliation"
@@ -2672,9 +2662,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "This user has not posted anything right now"
-#~ msgstr "這個使用者目前沒有發表任何文章"
-
-#~ msgid "This message will be displayed on the login page"
-#~ msgstr "這個訊息會顯示在登入頁面"

@@ -97,7 +97,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-05 11:28+0200\n"
-"PO-Revision-Date: 2018-09-18 06:12+0000\n"
+"PO-Revision-Date: 2019-07-05 10:14+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Latvian (http://www.transifex.com/movim/movim/language/lv/)\n"
 "Language: lv\n"
@@ -105,7 +105,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
+"X-Generator: Translate Toolkit 2.3.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -180,14 +180,12 @@ msgid "Type your full username"
 msgstr ""
 
 #: [account]delete_text_error
-#, fuzzy
 msgid "Please provide a valid username."
-msgstr "Lūdzu ievadiet derīgu paroli (minimums 6 zīmes)"
+msgstr ""
 
 #: [account]gateway_title
-#, fuzzy
 msgid "Gateways"
-msgstr "Vārteja "
+msgstr ""
 
 #: [account]clear
 msgid "Leave this instance"
@@ -1533,9 +1531,8 @@ msgid "Standard room"
 msgstr ""
 
 #: [rooms]gateway_room
-#, fuzzy
 msgid "Gateway room"
-msgstr "Vārteja "
+msgstr ""
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -1654,18 +1651,16 @@ msgid "Send it to a contact"
 msgstr ""
 
 #: [sendto]shared_with
-#, fuzzy
 msgid "Post shared"
-msgstr "Ieraksti"
+msgstr ""
 
 #: [sendto]shared
 msgid "Post shared with your contact"
 msgstr ""
 
 #: [sendto]more_contacts
-#, fuzzy
 msgid "More contacts"
-msgstr "Kontakti"
+msgstr ""
 
 #: [statistics]title
 msgid "Statistics"
@@ -1776,9 +1771,8 @@ msgid "The nickname is already registered"
 msgstr ""
 
 #: [profile]nickname_saved
-#, fuzzy
 msgid "Nickname saved"
-msgstr "Segvārds"
+msgstr ""
 
 #: [save]submit [button]submit
 msgid "Submit"
@@ -2669,9 +2663,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "Privacy Level"
-#~ msgstr "Privātuma līmenis"
-
-#~ msgid "Since"
-#~ msgstr "Kopš"

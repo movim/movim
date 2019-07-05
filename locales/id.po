@@ -1,7 +1,7 @@
 #
 # Translators:
 # Anjar Febrianto <an@jar.web.id>, 2015
-# Fahmi Barnes <itsfahmiegerton@live.co.uk>, 2017
+# Fahmi <itsfahmiegerton@live.co.uk>, 2017
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2013
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
@@ -98,7 +98,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-05 11:28+0200\n"
-"PO-Revision-Date: 2018-09-18 06:12+0000\n"
+"PO-Revision-Date: 2019-07-05 10:14+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Indonesian (http://www.transifex.com/movim/movim/language/id/)\n"
 "Language: id\n"
@@ -106,7 +106,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
+"X-Generator: Translate Toolkit 2.3.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -181,9 +181,8 @@ msgid "Type your full username"
 msgstr ""
 
 #: [account]delete_text_error
-#, fuzzy
 msgid "Please provide a valid username."
-msgstr "Harap masukkan kata sandi yang valid (minimum 6 karakter)"
+msgstr ""
 
 #: [account]gateway_title
 msgid "Gateways"
@@ -612,9 +611,8 @@ msgid "Communities servers"
 msgstr "Server komunitas"
 
 #: [communities]disco
-#, fuzzy
 msgid "Communities server discovered"
-msgstr "Server komunitas"
+msgstr ""
 
 #: [communities]disco_error
 msgid "This server doesn’t exists"
@@ -1378,18 +1376,16 @@ msgid "Liked"
 msgstr ""
 
 #: [post]comment_publish_error
-#, fuzzy
 msgid "The comment cannot be published"
-msgstr "Komentar diterbitkan"
+msgstr ""
 
 #: [post]comment_deleted
 msgid "Comment deleted"
 msgstr "Komentar dihapus"
 
 #: [post]liked
-#, fuzzy
 msgid "Liked your publication"
-msgstr "Publikasi saya"
+msgstr ""
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1620,9 +1616,8 @@ msgid "Send this link to your contacts"
 msgstr ""
 
 #: [room]public_muc
-#, fuzzy
 msgid "Public"
-msgstr "Penerbit"
+msgstr ""
 
 #: [room]public_muc_text
 msgid "The participants of this chatroom can see each other's profile"
@@ -1641,9 +1636,8 @@ msgid "#cats, username@server.com, John…"
 msgstr ""
 
 #: [search]no_contacts_title
-#, fuzzy
 msgid "No contacts yet?"
-msgstr "Belum ada berita..."
+msgstr ""
 
 #: [search]no_contacts_text
 msgid "Find one by searching for his name or id"
@@ -1654,24 +1648,20 @@ msgid "Attach to a blog publication"
 msgstr ""
 
 #: [sendto]contact
-#, fuzzy
 msgid "Send it to a contact"
-msgstr "Mengobrol dengan sebuah kontak"
+msgstr ""
 
 #: [sendto]shared_with
-#, fuzzy
 msgid "Post shared"
-msgstr "Post diterbitkan"
+msgstr ""
 
 #: [sendto]shared
-#, fuzzy
 msgid "Post shared with your contact"
-msgstr "Mengobrol dengan sebuah kontak"
+msgstr ""
 
 #: [sendto]more_contacts
-#, fuzzy
 msgid "More contacts"
-msgstr "Kontak yang sering dihubungi"
+msgstr ""
 
 #: [statistics]title
 msgid "Statistics"
@@ -1782,9 +1772,8 @@ msgid "The nickname is already registered"
 msgstr ""
 
 #: [profile]nickname_saved
-#, fuzzy
 msgid "Nickname saved"
-msgstr "Panggilan"
+msgstr ""
 
 #: [save]submit [button]submit
 msgid "Submit"
@@ -2653,19 +2642,16 @@ msgid "Publisher"
 msgstr "Penerbit"
 
 #: [affiliation]publish-only
-#, fuzzy
 msgid "Publish only"
-msgstr "Penerbit"
+msgstr ""
 
 #: [affiliation]member
-#, fuzzy
 msgid "Member"
-msgstr "Anggota"
+msgstr ""
 
 #: [affiliation]no-aff
-#, fuzzy
 msgid "No affiliation"
-msgstr "Notifikasi"
+msgstr ""
 
 #: [affiliation]outcast
 msgid "Outcast"
@@ -2678,15 +2664,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "Privacy Level"
-#~ msgstr "Tingkat Privasi"
-
-#~ msgid "This user has not posted anything right now"
-#~ msgstr "Pengguna ini belum ada memposting apapun"
-
-#~ msgid "Refresh all the streams"
-#~ msgstr "Segarkan semua aliran"
-
-#~ msgid "This message will be displayed on the login page"
-#~ msgstr "Pesan ini akan ditampilkan didalam halaman masuk"

@@ -96,7 +96,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-05 11:28+0200\n"
-"PO-Revision-Date: 2018-09-18 06:12+0000\n"
+"PO-Revision-Date: 2019-07-05 10:14+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Lithuanian (http://www.transifex.com/movim/movim/language/lt/)\n"
 "Language: lt\n"
@@ -104,7 +104,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < 11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? 1 : n % 1 != 0 ? 2: 3);\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
+"X-Generator: Translate Toolkit 2.3.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -179,14 +179,12 @@ msgid "Type your full username"
 msgstr ""
 
 #: [account]delete_text_error
-#, fuzzy
 msgid "Please provide a valid username."
-msgstr "Prašome įvesti tinakmą slaptažodį (bent 6 simbolių)"
+msgstr ""
 
 #: [account]gateway_title
-#, fuzzy
 msgid "Gateways"
-msgstr "Vartai"
+msgstr ""
 
 #: [account]clear
 msgid "Leave this instance"
@@ -1532,9 +1530,8 @@ msgid "Standard room"
 msgstr ""
 
 #: [rooms]gateway_room
-#, fuzzy
 msgid "Gateway room"
-msgstr "Vartai"
+msgstr ""
 
 #: [chatrooms]title
 msgid "Chatrooms"

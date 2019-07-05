@@ -102,7 +102,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-05 11:28+0200\n"
-"PO-Revision-Date: 2018-09-18 06:12+0000\n"
+"PO-Revision-Date: 2019-07-05 10:14+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Spanish (http://www.transifex.com/movim/movim/language/es/)\n"
 "Language: es\n"
@@ -110,7 +110,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
+"X-Generator: Translate Toolkit 2.3.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -185,14 +185,12 @@ msgid "Type your full username"
 msgstr ""
 
 #: [account]delete_text_error
-#, fuzzy
 msgid "Please provide a valid username."
-msgstr "Por favor, agrega un título"
+msgstr ""
 
 #: [account]gateway_title
-#, fuzzy
 msgid "Gateways"
-msgstr "Puerta de Enlace"
+msgstr ""
 
 #: [account]clear
 msgid "Leave this instance"
@@ -617,18 +615,16 @@ msgid "Communities servers"
 msgstr "Servidores de las Comunidades"
 
 #: [communities]disco
-#, fuzzy
 msgid "Communities server discovered"
-msgstr "Servidores de las Comunidades"
+msgstr ""
 
 #: [communities]disco_error
 msgid "This server doesn’t exists"
 msgstr ""
 
 #: [communities]interesting
-#, fuzzy
 msgid "Communities you might like"
-msgstr "Nombre de la Comunidad"
+msgstr ""
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -1384,18 +1380,16 @@ msgid "Liked"
 msgstr ""
 
 #: [post]comment_publish_error
-#, fuzzy
 msgid "The comment cannot be published"
-msgstr "Comentario publicado"
+msgstr ""
 
 #: [post]comment_deleted
 msgid "Comment deleted"
 msgstr "Comentario borrado"
 
 #: [post]liked
-#, fuzzy
 msgid "Liked your publication"
-msgstr "Mis publicaciones"
+msgstr ""
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1542,9 +1536,8 @@ msgid "Standard room"
 msgstr ""
 
 #: [rooms]gateway_room
-#, fuzzy
 msgid "Gateway room"
-msgstr "Puerta de Enlace"
+msgstr ""
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -1627,9 +1620,8 @@ msgid "Send this link to your contacts"
 msgstr ""
 
 #: [room]public_muc
-#, fuzzy
 msgid "Public"
-msgstr "Publicar"
+msgstr ""
 
 #: [room]public_muc_text
 msgid "The participants of this chatroom can see each other's profile"
@@ -1648,38 +1640,32 @@ msgid "#cats, username@server.com, John…"
 msgstr ""
 
 #: [search]no_contacts_title
-#, fuzzy
 msgid "No contacts yet?"
-msgstr "Sin comentarios"
+msgstr ""
 
 #: [search]no_contacts_text
 msgid "Find one by searching for his name or id"
 msgstr ""
 
 #: [sendto]attach
-#, fuzzy
 msgid "Attach to a blog publication"
-msgstr "Publicación de contacto"
+msgstr ""
 
 #: [sendto]contact
-#, fuzzy
 msgid "Send it to a contact"
-msgstr "Invitar a un contacto"
+msgstr ""
 
 #: [sendto]shared_with
-#, fuzzy
 msgid "Post shared"
-msgstr "Mensaje publicado"
+msgstr ""
 
 #: [sendto]shared
-#, fuzzy
 msgid "Post shared with your contact"
-msgstr "Añadir nueva conversación"
+msgstr ""
 
 #: [sendto]more_contacts
-#, fuzzy
 msgid "More contacts"
-msgstr "Contactos frecuentes"
+msgstr ""
 
 #: [statistics]title
 msgid "Statistics"
@@ -1774,9 +1760,8 @@ msgid "Set a local nickname to allow the other users of the instance to find you
 msgstr ""
 
 #: [profile]nickname_set
-#, fuzzy
 msgid "Your nickname is %s."
-msgstr "Tu apodo"
+msgstr ""
 
 #: [profile]nickname_placeholder
 msgid "John_Bob96"
@@ -1791,9 +1776,8 @@ msgid "The nickname is already registered"
 msgstr ""
 
 #: [profile]nickname_saved
-#, fuzzy
 msgid "Nickname saved"
-msgstr "Apodo"
+msgstr ""
 
 #: [save]submit [button]submit
 msgid "Submit"
@@ -2662,19 +2646,16 @@ msgid "Publisher"
 msgstr "Editor"
 
 #: [affiliation]publish-only
-#, fuzzy
 msgid "Publish only"
-msgstr "Publicar"
+msgstr ""
 
 #: [affiliation]member
-#, fuzzy
 msgid "Member"
-msgstr "Miembros"
+msgstr ""
 
 #: [affiliation]no-aff
-#, fuzzy
 msgid "No affiliation"
-msgstr "Notificaciones"
+msgstr ""
 
 #: [affiliation]outcast
 msgid "Outcast"
@@ -2687,18 +2668,3 @@ msgstr "La API no se puede alcanzar, inténtalo de nuevo más tarde"
 #: [field]type_here
 msgid "Type here"
 msgstr "Escribe aquí"
-
-#~ msgid "Privacy Level"
-#~ msgstr "Nivel de privacidad"
-
-#~ msgid "This user has not posted anything right now"
-#~ msgstr "Este usuario no ha publicado nada ahora mismo"
-
-#~ msgid "Refresh all the streams"
-#~ msgstr "Refrescar todas las retransmisiones"
-
-#~ msgid "This message will be displayed on the login page"
-#~ msgstr "Este mensaje se mostrará en la página de inicio"
-
-#~ msgid "Since"
-#~ msgstr "Desde"

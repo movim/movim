@@ -1,5 +1,6 @@
 #
 # Translators:
+# T3rr0rz0n3 <zagur@voidnull.es>, 2019
 # Xals Xaloc <33xaloc@gmail.com>, 2016
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
@@ -96,7 +97,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-05 11:28+0200\n"
-"PO-Revision-Date: 2018-09-18 06:12+0000\n"
+"PO-Revision-Date: 2019-07-05 10:14+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Catalan (http://www.transifex.com/movim/movim/language/ca/)\n"
 "Language: ca\n"
@@ -104,7 +105,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
+"X-Generator: Translate Toolkit 2.3.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -112,7 +113,7 @@ msgstr "Gràcies"
 
 #: [about]developers
 msgid "Developers"
-msgstr ""
+msgstr "Desenvolupadors"
 
 #: [about]translators
 msgid "Translators"
@@ -124,15 +125,15 @@ msgstr "Gràcies a tots els traductors"
 
 #: [about]software
 msgid "Software"
-msgstr "Software"
+msgstr "Programari"
 
 #: [about]resources
 msgid "Resources"
-msgstr ""
+msgstr "Recursos"
 
 #: [about]api [schema]api [api]title
 msgid "API"
-msgstr ""
+msgstr "API"
 
 #: [about]info
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
@@ -179,9 +180,8 @@ msgid "Type your full username"
 msgstr ""
 
 #: [account]delete_text_error
-#, fuzzy
 msgid "Please provide a valid username."
-msgstr "Siusplau proporcioni una contrasenya vàlida (6 caràcters mínim)"
+msgstr ""
 
 #: [account]gateway_title
 msgid "Gateways"
@@ -189,19 +189,19 @@ msgstr ""
 
 #: [account]clear
 msgid "Leave this instance"
-msgstr ""
+msgstr "Sortir d'aquesta instància"
 
 #: [account]clear_text
 msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
-msgstr ""
+msgstr "Esborraràs tota la informació relativa al teu compte en aquesta instància de Movim (Perfil, contactes i publicacions)"
 
 #: [account]clear_text_confirm
 msgid "This action will not delete your account but will disconnect you from this instance."
-msgstr ""
+msgstr "Aquesta acció no esborrà el seu compte, però el desconnectarà d'aquesta instància"
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
-msgstr "Crea un nou compte"
+msgstr "Crea un compte nou"
 
 #: [create]notfound
 msgid "No account creation form found on the server"
@@ -233,7 +233,7 @@ msgstr "El sistema de registrament d'aquest servidor no està disponible"
 
 #: [error]forbidden
 msgid "Registration forbidden"
-msgstr ""
+msgstr "Registre prohibit"
 
 #: [adhoc]title
 msgid "Actions"
@@ -241,11 +241,11 @@ msgstr "Accions"
 
 #: [adhoc]completed
 msgid "Action completed"
-msgstr ""
+msgstr "Acció finalitzada"
 
 #: [admin]general
 msgid "General Settings"
-msgstr "Configuració General"
+msgstr "Paràmetres Generals"
 
 #: [general]theme
 msgid "Theme"
@@ -257,7 +257,7 @@ msgstr "Idioma per defecte"
 
 #: [general]log_verbosity
 msgid "Log verbosity"
-msgstr ""
+msgstr "Registre de detall"
 
 #: [restrictsuggestions]title
 msgid "Restrict suggestions"
@@ -269,7 +269,7 @@ msgstr ""
 
 #: [credentials]title
 msgid "Administration Credential"
-msgstr "Credencial d'adiministració"
+msgstr "Paraula de pas per l'administrador"
 
 #: [credentials]username [input]username
 msgid "Username"
@@ -281,7 +281,7 @@ msgstr "Repeteix la contrasenya"
 
 #: [whitelist]title
 msgid "Whitelisted XMPP Servers"
-msgstr ""
+msgstr "Servidors XMPP de llistes blanques"
 
 #: [whitelist]info1
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
@@ -293,12 +293,12 @@ msgstr "Deixa en aquest camp en blanc si permets la connexió a tots els comptes
 
 #: [whitelist]label
 msgid "List of whitelisted XMPP servers"
-msgstr ""
+msgstr "Llistat dels servidors XMPP en llista blanca"
 
 #: [information]title
 msgctxt "[information]title"
 msgid "Information Message"
-msgstr "Missatge d'infofmació"
+msgstr "Missatge d'informació"
 
 #: [information]description [communityconfig]description
 msgid "Description"
@@ -319,23 +319,23 @@ msgstr "Missatge d'infofmació "
 
 #: [xmpp]title
 msgid "Default XMPP server"
-msgstr ""
+msgstr "Servidor XMPP per defecte"
 
 #: [xmpp]domain
 msgid "Main XMPP server domain"
-msgstr ""
+msgstr "Domini principal del servidor XMPP"
 
 #: [xmpp]description
 msgid "Main XMPP server description"
-msgstr ""
+msgstr "Descripció principal del servidor XMPP"
 
 #: [xmpp]country
 msgid "Main XMPP server country"
-msgstr ""
+msgstr "País principal del servidor XMPP"
 
 #: [xmpp]country_pick
 msgid "Pick a country in the list"
-msgstr ""
+msgstr "Escull un país de la llista"
 
 #: [log]empty
 msgid "Empty"
@@ -343,15 +343,15 @@ msgstr "Buit"
 
 #: [log]syslog
 msgid "Syslog"
-msgstr "Syslog"
+msgstr "Registre del sistema"
 
 #: [log]syslog_files
 msgid "Syslog and files"
-msgstr "Syslog i fitxers"
+msgstr "Registre del sistema i fitxers"
 
 #: [adminsessions]title
 msgid "Sessions"
-msgstr ""
+msgstr "Sessions "
 
 #: [admin]compatibility
 msgid "General Overview"
@@ -371,11 +371,11 @@ msgstr "Navegador"
 
 #: [schema]movim
 msgid "Movim Core"
-msgstr ""
+msgstr "Movim Core"
 
 #: [schema]daemon
 msgid "Movim Daemon"
-msgstr ""
+msgstr "Dimoni Movim"
 
 #: [schema]database
 msgid "Database"
@@ -383,7 +383,7 @@ msgstr "Base de dades"
 
 #: [schema]xmpp
 msgid "XMPP"
-msgstr ""
+msgstr "XMPP"
 
 #: [api]info
 msgid "Here you can register your pod on the official %sMovim API%s"
@@ -391,7 +391,7 @@ msgstr ""
 
 #: [api]register
 msgid "Your pod is not registered on the API"
-msgstr ""
+msgstr "El teu pod no està registrat a la API"
 
 #: [api]registered
 msgid "Your pod is registered on the API"
@@ -423,7 +423,7 @@ msgstr "Utilitza'l"
 
 #: [avatar]webcam
 msgid "Webcam"
-msgstr "Webcam"
+msgstr "Càmera web"
 
 #: [avatar]cheese
 msgid "Cheese!"
@@ -431,23 +431,23 @@ msgstr ""
 
 #: [avatar]snapshot
 msgid "Take a webcam snapshot"
-msgstr ""
+msgstr "Fer una instantània amb la càmera web"
 
 #: [avatar]updated
 msgid "Avatar Updated"
-msgstr ""
+msgstr "Avatar actualitzat"
 
 #: [avatar]not_updated
 msgid "Avatar Not Updated"
-msgstr ""
+msgstr "Avatar no actualitzat"
 
 #: [avatar]missing
 msgid "No avatar defined yet"
-msgstr ""
+msgstr "Encara no s'ha definit cap avatar"
 
 #: [blog]title [feed]title
 msgid "%s’s feed"
-msgstr ""
+msgstr "%s canals"
 
 #: [blog]private
 msgid "This content is private, please login to see it"
@@ -1383,9 +1383,8 @@ msgid "Comment deleted"
 msgstr ""
 
 #: [post]liked
-#, fuzzy
 msgid "Liked your publication"
-msgstr "Visits el teu blog públic"
+msgstr ""
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1648,24 +1647,20 @@ msgid "Attach to a blog publication"
 msgstr ""
 
 #: [sendto]contact
-#, fuzzy
 msgid "Send it to a contact"
-msgstr "Xateja amb un contacte"
+msgstr ""
 
 #: [sendto]shared_with
-#, fuzzy
 msgid "Post shared"
-msgstr "Publicacions"
+msgstr ""
 
 #: [sendto]shared
-#, fuzzy
 msgid "Post shared with your contact"
-msgstr "Xateja amb un contacte"
+msgstr ""
 
 #: [sendto]more_contacts
-#, fuzzy
 msgid "More contacts"
-msgstr "Contactes freqüents"
+msgstr ""
 
 #: [statistics]title
 msgid "Statistics"
@@ -1776,9 +1771,8 @@ msgid "The nickname is already registered"
 msgstr ""
 
 #: [profile]nickname_saved
-#, fuzzy
 msgid "Nickname saved"
-msgstr "Sobrenom"
+msgstr ""
 
 #: [save]submit [button]submit
 msgid "Submit"
@@ -2651,9 +2645,8 @@ msgid "Publish only"
 msgstr ""
 
 #: [affiliation]member
-#, fuzzy
 msgid "Member"
-msgstr "Membres"
+msgstr ""
 
 #: [affiliation]no-aff
 msgid "No affiliation"
@@ -2670,9 +2663,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "This user has not posted anything right now"
-#~ msgstr "Aquest usuari no ha publicat res en aquest moment"
-
-#~ msgid "This message will be displayed on the login page"
-#~ msgstr "Aquest missatge es mostrarà en la pàgina de login"

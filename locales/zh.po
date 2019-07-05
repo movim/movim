@@ -1,13 +1,14 @@
 #
 # Translators:
-# Hydro Lee <i@th0.me>, 2017
+# ZeroAurora <2205358329@qq.com>, 2019
+# HydroChLorica, 2017
 # kashing <shing3232@gmail.com>, 2015-2016
 # Lei feng, 2015
 # Wangrui Enderex <jwr030521@gmail.com>, 2016
 # Zhao Rui <renyuneyun@gmail.com>, 2015
 # 三三 <gihub@mail.best33.com>, 2016
-# ヨイツの賢狼ホロ <kenookamihoro@gmail.com>, 2018
-# ヨイツの賢狼ホロ <kenookamihoro@gmail.com>, 2018
+# ヨイツの賢狼ホロ, 2018
+# ヨイツの賢狼ホロ, 2018
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -103,7 +104,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-05 11:28+0200\n"
-"PO-Revision-Date: 2018-09-18 06:12+0000\n"
+"PO-Revision-Date: 2019-07-05 10:14+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
 "Language: zh_CN\n"
@@ -111,7 +112,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
+"X-Generator: Translate Toolkit 2.3.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -186,14 +187,12 @@ msgid "Type your full username"
 msgstr ""
 
 #: [account]delete_text_error
-#, fuzzy
 msgid "Please provide a valid username."
-msgstr "请提供一个标题"
+msgstr ""
 
 #: [account]gateway_title
-#, fuzzy
 msgid "Gateways"
-msgstr "入口"
+msgstr ""
 
 #: [account]clear
 msgid "Leave this instance"
@@ -273,7 +272,7 @@ msgstr "限制建议"
 
 #: [restrictsuggestions]text
 msgid "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
-msgstr "只建议可用于此 XMPP 范围和关联服务的聊天室，社区和其它内容。"
+msgstr "只建议可用于此 XMPP 服务器和关联服务的聊天室，社区和其它内容。"
 
 #: [credentials]title
 msgid "Administration Credential"
@@ -293,7 +292,7 @@ msgstr "在白名单中的 XMPP 服务器"
 
 #: [whitelist]info1
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
-msgstr "如果您想在 Movim pod 中指定一部分授权的 XMPP 服务器，并且禁止余下的，请将它们的域名在这里输入，并用英文逗号分隔（例如：movim.eu， jabber.fr）"
+msgstr "如果您想在 Movim pod 中指定一部分授权的 XMPP 服务器，并且禁止余下的，请将它们的域名在这里输入，并用英文逗号分隔（例如：movim.eu, jabber.fr）"
 
 #: [whitelist]info2
 msgid "Leave this field blank if you allow the access to all the XMPP accounts."
@@ -618,18 +617,16 @@ msgid "Communities servers"
 msgstr "社群服务器"
 
 #: [communities]disco
-#, fuzzy
 msgid "Communities server discovered"
-msgstr "社群服务器"
+msgstr ""
 
 #: [communities]disco_error
 msgid "This server doesn’t exists"
 msgstr ""
 
 #: [communities]interesting
-#, fuzzy
 msgid "Communities you might like"
-msgstr "社群名称"
+msgstr ""
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -914,7 +911,7 @@ msgstr "一般信息"
 
 #: [general]name [chatrooms]name
 msgid "Name"
-msgstr "姓名"
+msgstr "名称"
 
 #: [general]nickname [chatrooms]nickname
 msgid "Nickname"
@@ -1381,23 +1378,20 @@ msgid "Comment published"
 msgstr "评论已发布"
 
 #: [post]comment_like_published
-#, fuzzy
 msgid "Liked"
-msgstr "赞"
+msgstr ""
 
 #: [post]comment_publish_error
-#, fuzzy
 msgid "The comment cannot be published"
-msgstr "评论已发布"
+msgstr ""
 
 #: [post]comment_deleted
 msgid "Comment deleted"
 msgstr "评论已删除"
 
 #: [post]liked
-#, fuzzy
 msgid "Liked your publication"
-msgstr "我的发布"
+msgstr ""
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1476,9 +1470,8 @@ msgid "Add a link"
 msgstr "添加链接"
 
 #: [publishbrief]add_snap
-#, fuzzy
 msgid "Take a picture"
-msgstr "附加文件或图片"
+msgstr ""
 
 #: [publishbrief]no_title
 msgid "Please provide a title"
@@ -1545,9 +1538,8 @@ msgid "Standard room"
 msgstr ""
 
 #: [rooms]gateway_room
-#, fuzzy
 msgid "Gateway room"
-msgstr "入口"
+msgstr ""
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -1630,9 +1622,8 @@ msgid "Send this link to your contacts"
 msgstr "将此链接发送给你的联系人"
 
 #: [room]public_muc
-#, fuzzy
 msgid "Public"
-msgstr "发布"
+msgstr ""
 
 #: [room]public_muc_text
 msgid "The participants of this chatroom can see each other's profile"
@@ -1651,38 +1642,32 @@ msgid "#cats, username@server.com, John…"
 msgstr ""
 
 #: [search]no_contacts_title
-#, fuzzy
 msgid "No contacts yet?"
-msgstr "尚无评论"
+msgstr ""
 
 #: [search]no_contacts_text
 msgid "Find one by searching for his name or id"
 msgstr ""
 
 #: [sendto]attach
-#, fuzzy
 msgid "Attach to a blog publication"
-msgstr "联系人公佈"
+msgstr ""
 
 #: [sendto]contact
-#, fuzzy
 msgid "Send it to a contact"
-msgstr "邀请联系人"
+msgstr ""
 
 #: [sendto]shared_with
-#, fuzzy
 msgid "Post shared"
-msgstr "贴子已发布"
+msgstr ""
 
 #: [sendto]shared
-#, fuzzy
 msgid "Post shared with your contact"
-msgstr "同联系人聊天"
+msgstr ""
 
 #: [sendto]more_contacts
-#, fuzzy
 msgid "More contacts"
-msgstr "常用联系人"
+msgstr ""
 
 #: [statistics]title
 msgid "Statistics"
@@ -1777,9 +1762,8 @@ msgid "Set a local nickname to allow the other users of the instance to find you
 msgstr ""
 
 #: [profile]nickname_set
-#, fuzzy
 msgid "Your nickname is %s."
-msgstr "你的昵称"
+msgstr ""
 
 #: [profile]nickname_placeholder
 msgid "John_Bob96"
@@ -1794,9 +1778,8 @@ msgid "The nickname is already registered"
 msgstr ""
 
 #: [profile]nickname_saved
-#, fuzzy
 msgid "Nickname saved"
-msgstr "昵称"
+msgstr ""
 
 #: [save]submit [button]submit
 msgid "Submit"
@@ -1911,9 +1894,8 @@ msgid "Login"
 msgstr "登录"
 
 #: [page]not_found
-#, fuzzy
 msgid "Not Found"
-msgstr "稍后"
+msgstr ""
 
 #: [page]feed
 msgid "Feed"
@@ -2666,19 +2648,16 @@ msgid "Publisher"
 msgstr "发布者"
 
 #: [affiliation]publish-only
-#, fuzzy
 msgid "Publish only"
-msgstr "发布"
+msgstr ""
 
 #: [affiliation]member
-#, fuzzy
 msgid "Member"
-msgstr "成员"
+msgstr ""
 
 #: [affiliation]no-aff
-#, fuzzy
 msgid "No affiliation"
-msgstr "提醒"
+msgstr ""
 
 #: [affiliation]outcast
 msgid "Outcast"
@@ -2691,18 +2670,3 @@ msgstr "API 无法连接，请稍后重试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
-
-#~ msgid "Privacy Level"
-#~ msgstr "隐私等级"
-
-#~ msgid "This user has not posted anything right now"
-#~ msgstr "这个用户还没发布任何东西"
-
-#~ msgid "Refresh all the streams"
-#~ msgstr "刷新所有流"
-
-#~ msgid "This message will be displayed on the login page"
-#~ msgstr "这条信息将显示在登录页面"
-
-#~ msgid "Since"
-#~ msgstr "自"

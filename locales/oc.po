@@ -95,7 +95,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-05 11:28+0200\n"
-"PO-Revision-Date: 2018-09-18 06:12+0000\n"
+"PO-Revision-Date: 2019-07-05 10:14+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Occitan (post 1500) (http://www.transifex.com/movim/movim/language/oc/)\n"
 "Language: oc\n"
@@ -103,7 +103,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
+"X-Generator: Translate Toolkit 2.3.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -1633,9 +1633,8 @@ msgid "#cats, username@server.com, John…"
 msgstr ""
 
 #: [search]no_contacts_title
-#, fuzzy
 msgid "No contacts yet?"
-msgstr "Pas cap de contengut"
+msgstr ""
 
 #: [search]no_contacts_text
 msgid "Find one by searching for his name or id"
@@ -1658,9 +1657,8 @@ msgid "Post shared with your contact"
 msgstr ""
 
 #: [sendto]more_contacts
-#, fuzzy
 msgid "More contacts"
-msgstr "Pas cap de contengut"
+msgstr ""
 
 #: [statistics]title
 msgid "Statistics"
@@ -1771,9 +1769,8 @@ msgid "The nickname is already registered"
 msgstr ""
 
 #: [profile]nickname_saved
-#, fuzzy
 msgid "Nickname saved"
-msgstr "Escais"
+msgstr ""
 
 #: [save]submit [button]submit
 msgid "Submit"
@@ -2646,9 +2643,8 @@ msgid "Publish only"
 msgstr ""
 
 #: [affiliation]member
-#, fuzzy
 msgid "Member"
-msgstr "Novembre"
+msgstr ""
 
 #: [affiliation]no-aff
 msgid "No affiliation"
@@ -2665,6 +2661,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "Privacy Level"
-#~ msgstr "Nivèl de confidencialitat"

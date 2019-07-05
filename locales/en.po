@@ -95,7 +95,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-05 11:28+0200\n"
-"PO-Revision-Date: 2018-09-18 06:12+0000\n"
+"PO-Revision-Date: 2019-07-05 10:14+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: English (http://www.transifex.com/movim/movim/language/en/)\n"
 "Language: en\n"
@@ -103,7 +103,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
+"X-Generator: Translate Toolkit 2.3.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -175,17 +175,15 @@ msgstr "You will delete your XMPP account and all the relative information linke
 
 #: [account]delete_text_confirm
 msgid "Type your full username"
-msgstr ""
+msgstr "Type your full username"
 
 #: [account]delete_text_error
-#, fuzzy
 msgid "Please provide a valid username."
-msgstr "Please provide a title"
+msgstr "Please provide a valid username."
 
 #: [account]gateway_title
-#, fuzzy
 msgid "Gateways"
-msgstr "Gateway"
+msgstr "Gateways"
 
 #: [account]clear
 msgid "Leave this instance"
@@ -306,7 +304,7 @@ msgstr "Description"
 
 #: [information]info1
 msgid "This message will be displayed on the login page. It can be used to link the Terms and Conditions of your Movim instance for example."
-msgstr ""
+msgstr "This message will be displayed on the login page. It can be used to link the Terms and Conditions of your Movim instance for example."
 
 #: [information]info2
 msgid "Leave this field blank if you don’t want to show any message."
@@ -535,11 +533,11 @@ msgstr "Report abuse"
 
 #: [chat]jingle_start
 msgid "Call started"
-msgstr ""
+msgstr "Call started"
 
 #: [chat]jingle_end
 msgid "Call ended"
-msgstr ""
+msgstr "Call ended"
 
 #: [chatroom]members
 msgid "Members"
@@ -610,18 +608,16 @@ msgid "Communities servers"
 msgstr "Communities servers"
 
 #: [communities]disco
-#, fuzzy
 msgid "Communities server discovered"
-msgstr "Communities servers"
+msgstr "Communities server discovered"
 
 #: [communities]disco_error
 msgid "This server doesn’t exists"
 msgstr "This server doesn’t exists"
 
 #: [communities]interesting
-#, fuzzy
 msgid "Communities you might like"
-msgstr "Community name"
+msgstr "Communities you might like"
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -1054,31 +1050,31 @@ msgstr "Frequently Asked Questions"
 
 #: [faq]permission_title
 msgid "What does the permission setting do?"
-msgstr ""
+msgstr "What does the permission setting do?"
 
 #: [faq]permission_text
 msgid "By default the content is only available to your contacts. You can make your profile and publications public by enabling the related setting."
-msgstr ""
+msgstr "By default the content is only available to your contacts. You can make your profile and publications public by enabling the related setting."
 
 #: [faq]permission_community_title
 msgid "How does it applies on Communities posts?"
-msgstr ""
+msgstr "How does it applies on Communities posts?"
 
 #: [faq]permission_community_text
 msgid "Similary to your blog publications except that, by default, the posts are only available to the members or subscribers of the Community (except if you explicitly open all the Community content)"
-msgstr ""
+msgstr "Similary to your blog publications except that, by default, the posts are only available to the members or subscribers of the Community (except if you explicitly open all the Community content)"
 
 #: [faq]chatrooms_title
 msgid "Where can I find a list of chatrooms?"
-msgstr ""
+msgstr "Where can I find a list of chatrooms?"
 
 #: [faq]find_contacts_title
 msgid "Where can I find my contacts?"
-msgstr ""
+msgstr "Where can I find my contacts?"
 
 #: [faq]find_contacts_text
 msgid "By opening the search panel."
-msgstr ""
+msgstr "By opening the search panel."
 
 #: [apps]question
 msgid "Have you already tried Movim on other platforms?"
@@ -1373,23 +1369,20 @@ msgid "Comment published"
 msgstr "Comment published"
 
 #: [post]comment_like_published
-#, fuzzy
 msgid "Liked"
-msgstr "Like"
+msgstr "Liked"
 
 #: [post]comment_publish_error
-#, fuzzy
 msgid "The comment cannot be published"
-msgstr "Comment published"
+msgstr "The comment cannot be published"
 
 #: [post]comment_deleted
 msgid "Comment deleted"
 msgstr "Comment deleted"
 
 #: [post]liked
-#, fuzzy
 msgid "Liked your publication"
-msgstr "My publications"
+msgstr "Liked your publication"
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1452,9 +1445,8 @@ msgid "Presence"
 msgstr "Presence"
 
 #: [status]logout_confirm
-#, fuzzy
 msgid "Do you really want to log out?"
-msgstr "Are you sure that you want to delete it?"
+msgstr "Do you really want to log out?"
 
 #: [publishbrief]placeholder
 msgid "What’s new?"
@@ -1469,9 +1461,8 @@ msgid "Add a link"
 msgstr "Add a link"
 
 #: [publishbrief]add_snap
-#, fuzzy
 msgid "Take a picture"
-msgstr "Add a file or a picture"
+msgstr "Take a picture"
 
 #: [publishbrief]no_title
 msgid "Please provide a title"
@@ -1531,16 +1522,15 @@ msgstr "Add one by clicking on the add button."
 
 #: [rooms]type_room
 msgid "Type of room"
-msgstr ""
+msgstr "Type of room"
 
 #: [rooms]default_room
 msgid "Standard room"
-msgstr ""
+msgstr "Standard room"
 
 #: [rooms]gateway_room
-#, fuzzy
 msgid "Gateway room"
-msgstr "Gateway"
+msgstr "Gateway room"
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -1623,13 +1613,12 @@ msgid "Send this link to your contacts"
 msgstr "Send this link to your contacts"
 
 #: [room]public_muc
-#, fuzzy
 msgid "Public"
-msgstr "Publish"
+msgstr "Public"
 
 #: [room]public_muc_text
 msgid "The participants of this chatroom can see each other's profile"
-msgstr ""
+msgstr "The participants of this chatroom can see each other's profile"
 
 #: [search]keyword
 msgid "What are you looking for?"
@@ -1641,41 +1630,35 @@ msgstr "Open me using Ctrl + M"
 
 #: [search]placeholder
 msgid "#cats, username@server.com, John…"
-msgstr ""
+msgstr "#cats, username@server.com, John…"
 
 #: [search]no_contacts_title
-#, fuzzy
 msgid "No contacts yet?"
-msgstr "No comments yet"
+msgstr "No contacts yet?"
 
 #: [search]no_contacts_text
 msgid "Find one by searching for his name or id"
-msgstr ""
+msgstr "Find one by searching for his name or id"
 
 #: [sendto]attach
-#, fuzzy
 msgid "Attach to a blog publication"
-msgstr "Contact publication"
+msgstr "Attach to a blog publication"
 
 #: [sendto]contact
-#, fuzzy
 msgid "Send it to a contact"
-msgstr "Invite a contact"
+msgstr "Send it to a contact"
 
 #: [sendto]shared_with
-#, fuzzy
 msgid "Post shared"
-msgstr "Post published"
+msgstr "Post shared"
 
 #: [sendto]shared
-#, fuzzy
 msgid "Post shared with your contact"
-msgstr "Chat with a contact"
+msgstr "Post shared with your contact"
 
 #: [sendto]more_contacts
-#, fuzzy
 msgid "More contacts"
-msgstr "Frequent contacts"
+msgstr "More contacts"
 
 #: [statistics]title
 msgid "Statistics"
@@ -1727,11 +1710,11 @@ msgstr "Upload failed"
 
 #: [upload]error_not_allowed
 msgid "You are not allowed to upload a file"
-msgstr ""
+msgstr "You are not allowed to upload a file"
 
 #: [upload]error_resource_constraint
 msgid "You exceeded the quota"
-msgstr ""
+msgstr "You exceeded the quota"
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -1755,7 +1738,7 @@ msgstr "Your profile is now restricted"
 
 #: [profile]info
 msgid "Configure your instance nickname"
-msgstr ""
+msgstr "Configure your instance nickname"
 
 #: [profile]privacy_question
 msgid "Is this profile public?"
@@ -1767,29 +1750,27 @@ msgstr "Please pay attention! By making your profile public, all the information
 
 #: [profile]nickname_info
 msgid "Set a local nickname to allow the other users of the instance to find you easily."
-msgstr ""
+msgstr "Set a local nickname to allow the other users of the instance to find you easily."
 
 #: [profile]nickname_set
-#, fuzzy
 msgid "Your nickname is %s."
-msgstr "Your nickname"
+msgstr "Your nickname is %s."
 
 #: [profile]nickname_placeholder
 msgid "John_Bob96"
-msgstr ""
+msgstr "John_Bob96"
 
 #: [profile]nickname_error
 msgid "Your nickname should only contains letters, numbers, - and _"
-msgstr ""
+msgstr "Your nickname should only contains letters, numbers, - and _"
 
 #: [profile]nickname_conflict
 msgid "The nickname is already registered"
-msgstr ""
+msgstr "The nickname is already registered"
 
 #: [profile]nickname_saved
-#, fuzzy
 msgid "Nickname saved"
-msgstr "Nickname"
+msgstr "Nickname saved"
 
 #: [save]submit [button]submit
 msgid "Submit"
@@ -1837,11 +1818,11 @@ msgstr "…connecting"
 
 #: [visio]ended
 msgid "call ended"
-msgstr ""
+msgstr "call ended"
 
 #: [global]no_js
 msgid "Movim requires Javascript to be enabled to work properly."
-msgstr ""
+msgstr "Movim requires Javascript to be enabled to work properly."
 
 #: [global]description
 msgid "Movim is a kickass distributed social networking platform that protect your privacy and comes with a set of awesome features."
@@ -1904,9 +1885,8 @@ msgid "Login"
 msgstr "Login"
 
 #: [page]not_found
-#, fuzzy
 msgid "Not Found"
-msgstr "Not Now"
+msgstr "Not Found"
 
 #: [page]feed
 msgid "Feed"
@@ -2659,23 +2639,20 @@ msgid "Publisher"
 msgstr "Publisher"
 
 #: [affiliation]publish-only
-#, fuzzy
 msgid "Publish only"
-msgstr "Publish"
+msgstr "Publish only"
 
 #: [affiliation]member
-#, fuzzy
 msgid "Member"
-msgstr "Members"
+msgstr "Member"
 
 #: [affiliation]no-aff
-#, fuzzy
 msgid "No affiliation"
-msgstr "Notifications"
+msgstr "No affiliation"
 
 #: [affiliation]outcast
 msgid "Outcast"
-msgstr ""
+msgstr "Outcast"
 
 #: [api]error
 msgid "The API is not reachable, try again later"
@@ -2684,21 +2661,3 @@ msgstr "The API is not reachable, try again later"
 #: [field]type_here
 msgid "Type here"
 msgstr "Type here"
-
-#~ msgid "Privacy Level"
-#~ msgstr "Privacy Level"
-
-#~ msgid "This user has not posted anything right now"
-#~ msgstr "This user has not posted anything right now"
-
-#~ msgid "You don’t have Javascript enabled. Good luck with that."
-#~ msgstr "You don’t have Javascript enabled. Good luck with that."
-
-#~ msgid "Refresh all the streams"
-#~ msgstr "Refresh all the streams"
-
-#~ msgid "This message will be displayed on the login page"
-#~ msgstr "This message will be displayed on the login page"
-
-#~ msgid "Since"
-#~ msgstr "Since"

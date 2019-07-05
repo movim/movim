@@ -97,7 +97,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-05 11:28+0200\n"
-"PO-Revision-Date: 2018-09-18 06:12+0000\n"
+"PO-Revision-Date: 2019-07-05 10:14+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Hebrew (http://www.transifex.com/movim/movim/language/he/)\n"
 "Language: he\n"
@@ -105,7 +105,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
+"X-Generator: Translate Toolkit 2.3.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -180,9 +180,8 @@ msgid "Type your full username"
 msgstr ""
 
 #: [account]delete_text_error
-#, fuzzy
 msgid "Please provide a valid username."
-msgstr "אנא ספק כותרת"
+msgstr ""
 
 #: [account]gateway_title
 msgid "Gateways"
@@ -1376,18 +1375,16 @@ msgid "Liked"
 msgstr ""
 
 #: [post]comment_publish_error
-#, fuzzy
 msgid "The comment cannot be published"
-msgstr "תגובה פורסמה"
+msgstr ""
 
 #: [post]comment_deleted
 msgid "Comment deleted"
 msgstr ""
 
 #: [post]liked
-#, fuzzy
 msgid "Liked your publication"
-msgstr "הפרסומים שלי"
+msgstr ""
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1618,9 +1615,8 @@ msgid "Send this link to your contacts"
 msgstr ""
 
 #: [room]public_muc
-#, fuzzy
 msgid "Public"
-msgstr "פרסם"
+msgstr ""
 
 #: [room]public_muc_text
 msgid "The participants of this chatroom can see each other's profile"
@@ -1639,38 +1635,32 @@ msgid "#cats, username@server.com, John…"
 msgstr ""
 
 #: [search]no_contacts_title
-#, fuzzy
 msgid "No contacts yet?"
-msgstr "אין תגובות עדיין"
+msgstr ""
 
 #: [search]no_contacts_text
 msgid "Find one by searching for his name or id"
 msgstr ""
 
 #: [sendto]attach
-#, fuzzy
 msgid "Attach to a blog publication"
-msgstr "פרסום איש קשר"
+msgstr ""
 
 #: [sendto]contact
-#, fuzzy
 msgid "Send it to a contact"
-msgstr "שיח עם איש קשר"
+msgstr ""
 
 #: [sendto]shared_with
-#, fuzzy
 msgid "Post shared"
-msgstr "פרסום פורסם"
+msgstr ""
 
 #: [sendto]shared
-#, fuzzy
 msgid "Post shared with your contact"
-msgstr "שיח עם איש קשר"
+msgstr ""
 
 #: [sendto]more_contacts
-#, fuzzy
 msgid "More contacts"
-msgstr "אנשי קשר תדירים"
+msgstr ""
 
 #: [statistics]title
 msgid "Statistics"
@@ -1765,9 +1755,8 @@ msgid "Set a local nickname to allow the other users of the instance to find you
 msgstr ""
 
 #: [profile]nickname_set
-#, fuzzy
 msgid "Your nickname is %s."
-msgstr "שם כינוי"
+msgstr ""
 
 #: [profile]nickname_placeholder
 msgid "John_Bob96"
@@ -1782,9 +1771,8 @@ msgid "The nickname is already registered"
 msgstr ""
 
 #: [profile]nickname_saved
-#, fuzzy
 msgid "Nickname saved"
-msgstr "שם כינוי"
+msgstr ""
 
 #: [save]submit [button]submit
 msgid "Submit"
@@ -2653,14 +2641,12 @@ msgid "Publisher"
 msgstr ""
 
 #: [affiliation]publish-only
-#, fuzzy
 msgid "Publish only"
-msgstr "פרסם"
+msgstr ""
 
 #: [affiliation]member
-#, fuzzy
 msgid "Member"
-msgstr "חברים"
+msgstr ""
 
 #: [affiliation]no-aff
 msgid "No affiliation"
@@ -2677,15 +2663,3 @@ msgstr "API אינו נגיש, נסה שוב מאוחר יותר"
 #: [field]type_here
 msgid "Type here"
 msgstr "הקלד כאן"
-
-#~ msgid "Privacy Level"
-#~ msgstr "רמת פרטיות"
-
-#~ msgid "Refresh all the streams"
-#~ msgstr "רענון של כל הזרמים"
-
-#~ msgid "This message will be displayed on the login page"
-#~ msgstr "הודעה זו תוצג בעמוד הכניסה"
-
-#~ msgid "Since"
-#~ msgstr "מאז"

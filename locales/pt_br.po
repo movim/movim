@@ -103,15 +103,15 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-05 11:28+0200\n"
-"PO-Revision-Date: 2018-09-18 06:12+0000\n"
-"Last-Translator: Christopher Ribeiro <christo_campiglia@hotmail.com>\n"
+"PO-Revision-Date: 2019-07-05 10:14+0000\n"
+"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/movim/movim/language/pt_BR/)\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
+"X-Generator: Translate Toolkit 2.3.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -186,14 +186,12 @@ msgid "Type your full username"
 msgstr ""
 
 #: [account]delete_text_error
-#, fuzzy
 msgid "Please provide a valid username."
-msgstr "Por favor forneça um título"
+msgstr ""
 
 #: [account]gateway_title
-#, fuzzy
 msgid "Gateways"
-msgstr "Gateway"
+msgstr ""
 
 #: [account]clear
 msgid "Leave this instance"
@@ -618,18 +616,16 @@ msgid "Communities servers"
 msgstr "Servidores comunitários"
 
 #: [communities]disco
-#, fuzzy
 msgid "Communities server discovered"
-msgstr "Servidores comunitários"
+msgstr ""
 
 #: [communities]disco_error
 msgid "This server doesn’t exists"
 msgstr "Este servidor não existe"
 
 #: [communities]interesting
-#, fuzzy
 msgid "Communities you might like"
-msgstr "Nome da Comunidade"
+msgstr ""
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -1381,23 +1377,20 @@ msgid "Comment published"
 msgstr "Comentário publicado"
 
 #: [post]comment_like_published
-#, fuzzy
 msgid "Liked"
-msgstr "Gostar"
+msgstr ""
 
 #: [post]comment_publish_error
-#, fuzzy
 msgid "The comment cannot be published"
-msgstr "Comentário publicado"
+msgstr ""
 
 #: [post]comment_deleted
 msgid "Comment deleted"
 msgstr "Comentário excluído"
 
 #: [post]liked
-#, fuzzy
 msgid "Liked your publication"
-msgstr "Minhas publicações"
+msgstr ""
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1462,9 +1455,8 @@ msgid "Presence"
 msgstr "Presente"
 
 #: [status]logout_confirm
-#, fuzzy
 msgid "Do you really want to log out?"
-msgstr "Certeza que deseja excluir isto?"
+msgstr ""
 
 #: [publishbrief]placeholder
 msgid "What’s new?"
@@ -1479,9 +1471,8 @@ msgid "Add a link"
 msgstr "Adicionar um novo endereço"
 
 #: [publishbrief]add_snap
-#, fuzzy
 msgid "Take a picture"
-msgstr "Adicione um arquivo ou imagem"
+msgstr ""
 
 #: [publishbrief]no_title
 msgid "Please provide a title"
@@ -1548,9 +1539,8 @@ msgid "Standard room"
 msgstr ""
 
 #: [rooms]gateway_room
-#, fuzzy
 msgid "Gateway room"
-msgstr "Gateway"
+msgstr ""
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -1633,9 +1623,8 @@ msgid "Send this link to your contacts"
 msgstr "Enviar este link para seus contatos"
 
 #: [room]public_muc
-#, fuzzy
 msgid "Public"
-msgstr "Publicar"
+msgstr ""
 
 #: [room]public_muc_text
 msgid "The participants of this chatroom can see each other's profile"
@@ -1654,38 +1643,32 @@ msgid "#cats, username@server.com, John…"
 msgstr ""
 
 #: [search]no_contacts_title
-#, fuzzy
 msgid "No contacts yet?"
-msgstr "Sem comentários ainda"
+msgstr ""
 
 #: [search]no_contacts_text
 msgid "Find one by searching for his name or id"
 msgstr ""
 
 #: [sendto]attach
-#, fuzzy
 msgid "Attach to a blog publication"
-msgstr "Publicação do contato"
+msgstr ""
 
 #: [sendto]contact
-#, fuzzy
 msgid "Send it to a contact"
-msgstr "Convidar um contato"
+msgstr ""
 
 #: [sendto]shared_with
-#, fuzzy
 msgid "Post shared"
-msgstr "Artigo publicado"
+msgstr ""
 
 #: [sendto]shared
-#, fuzzy
 msgid "Post shared with your contact"
-msgstr "Converse com um contato"
+msgstr ""
 
 #: [sendto]more_contacts
-#, fuzzy
 msgid "More contacts"
-msgstr "Contatos frequentes"
+msgstr ""
 
 #: [statistics]title
 msgid "Statistics"
@@ -1780,9 +1763,8 @@ msgid "Set a local nickname to allow the other users of the instance to find you
 msgstr ""
 
 #: [profile]nickname_set
-#, fuzzy
 msgid "Your nickname is %s."
-msgstr "Seu apelido"
+msgstr ""
 
 #: [profile]nickname_placeholder
 msgid "John_Bob96"
@@ -1797,9 +1779,8 @@ msgid "The nickname is already registered"
 msgstr ""
 
 #: [profile]nickname_saved
-#, fuzzy
 msgid "Nickname saved"
-msgstr "Apelido"
+msgstr ""
 
 #: [save]submit [button]submit
 msgid "Submit"
@@ -1914,9 +1895,8 @@ msgid "Login"
 msgstr "Entrar"
 
 #: [page]not_found
-#, fuzzy
 msgid "Not Found"
-msgstr "Não agora"
+msgstr ""
 
 #: [page]feed
 msgid "Feed"
@@ -2669,19 +2649,16 @@ msgid "Publisher"
 msgstr "Publicador"
 
 #: [affiliation]publish-only
-#, fuzzy
 msgid "Publish only"
-msgstr "Publicar"
+msgstr ""
 
 #: [affiliation]member
-#, fuzzy
 msgid "Member"
-msgstr "Membros"
+msgstr ""
 
 #: [affiliation]no-aff
-#, fuzzy
 msgid "No affiliation"
-msgstr "Notificações"
+msgstr ""
 
 #: [affiliation]outcast
 msgid "Outcast"
@@ -2694,23 +2671,3 @@ msgstr "A API está inalcançável, tente mais tarde"
 #: [field]type_here
 msgid "Type here"
 msgstr "Digite aqui"
-
-#~ msgid "Privacy Level"
-#~ msgstr "Nível de privacidade"
-
-#~ msgid "This user has not posted anything right now"
-#~ msgstr "Este usuário não publicou nada até agora"
-
-#~ msgid "You don’t have Javascript enabled. Good luck with that."
-#~ msgstr ""
-#~ "Você não tem JavaScript habilitado.\n"
-#~ "Boa sorte com isto."
-
-#~ msgid "Refresh all the streams"
-#~ msgstr "Recarregar todos os fluxos"
-
-#~ msgid "This message will be displayed on the login page"
-#~ msgstr "Esta mensagem será exibida na página de login"
-
-#~ msgid "Since"
-#~ msgstr "Desde"

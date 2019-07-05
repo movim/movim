@@ -96,7 +96,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-05 11:28+0200\n"
-"PO-Revision-Date: 2018-09-18 06:12+0000\n"
+"PO-Revision-Date: 2019-07-05 10:14+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Finnish (http://www.transifex.com/movim/movim/language/fi/)\n"
 "Language: fi\n"
@@ -104,7 +104,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
+"X-Generator: Translate Toolkit 2.3.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -179,14 +179,12 @@ msgid "Type your full username"
 msgstr ""
 
 #: [account]delete_text_error
-#, fuzzy
 msgid "Please provide a valid username."
-msgstr "Anna otsikko"
+msgstr ""
 
 #: [account]gateway_title
-#, fuzzy
 msgid "Gateways"
-msgstr "Portti"
+msgstr ""
 
 #: [account]clear
 msgid "Leave this instance"
@@ -1376,18 +1374,16 @@ msgid "Liked"
 msgstr ""
 
 #: [post]comment_publish_error
-#, fuzzy
 msgid "The comment cannot be published"
-msgstr "Kommentti julkaistu"
+msgstr ""
 
 #: [post]comment_deleted
 msgid "Comment deleted"
 msgstr ""
 
 #: [post]liked
-#, fuzzy
 msgid "Liked your publication"
-msgstr "Vieraile julkisessa blogissasi"
+msgstr ""
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1534,9 +1530,8 @@ msgid "Standard room"
 msgstr ""
 
 #: [rooms]gateway_room
-#, fuzzy
 msgid "Gateway room"
-msgstr "Portti"
+msgstr ""
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -1619,9 +1614,8 @@ msgid "Send this link to your contacts"
 msgstr ""
 
 #: [room]public_muc
-#, fuzzy
 msgid "Public"
-msgstr "Julkaise"
+msgstr ""
 
 #: [room]public_muc_text
 msgid "The participants of this chatroom can see each other's profile"
@@ -1640,9 +1634,8 @@ msgid "#cats, username@server.com, John…"
 msgstr ""
 
 #: [search]no_contacts_title
-#, fuzzy
 msgid "No contacts yet?"
-msgstr "Ei kommentteja vielä"
+msgstr ""
 
 #: [search]no_contacts_text
 msgid "Find one by searching for his name or id"
@@ -1653,24 +1646,20 @@ msgid "Attach to a blog publication"
 msgstr ""
 
 #: [sendto]contact
-#, fuzzy
 msgid "Send it to a contact"
-msgstr "Keskustele kontaktin kanssa"
+msgstr ""
 
 #: [sendto]shared_with
-#, fuzzy
 msgid "Post shared"
-msgstr "Julkaisu julkaistu"
+msgstr ""
 
 #: [sendto]shared
-#, fuzzy
 msgid "Post shared with your contact"
-msgstr "Keskustele kontaktin kanssa"
+msgstr ""
 
 #: [sendto]more_contacts
-#, fuzzy
 msgid "More contacts"
-msgstr "Usein käytetyt kontaktit"
+msgstr ""
 
 #: [statistics]title
 msgid "Statistics"
@@ -1765,9 +1754,8 @@ msgid "Set a local nickname to allow the other users of the instance to find you
 msgstr ""
 
 #: [profile]nickname_set
-#, fuzzy
 msgid "Your nickname is %s."
-msgstr "Nimimerkkisi"
+msgstr ""
 
 #: [profile]nickname_placeholder
 msgid "John_Bob96"
@@ -1782,9 +1770,8 @@ msgid "The nickname is already registered"
 msgstr ""
 
 #: [profile]nickname_saved
-#, fuzzy
 msgid "Nickname saved"
-msgstr "Nimimerkki"
+msgstr ""
 
 #: [save]submit [button]submit
 msgid "Submit"
@@ -2653,14 +2640,12 @@ msgid "Publisher"
 msgstr ""
 
 #: [affiliation]publish-only
-#, fuzzy
 msgid "Publish only"
-msgstr "Julkaise"
+msgstr ""
 
 #: [affiliation]member
-#, fuzzy
 msgid "Member"
-msgstr "Jäsenet"
+msgstr ""
 
 #: [affiliation]no-aff
 msgid "No affiliation"
@@ -2677,9 +2662,3 @@ msgstr "API ei ole saatavilla, yritä myöhemmin uudelleen"
 #: [field]type_here
 msgid "Type here"
 msgstr "Kirjoita tähän"
-
-#~ msgid "Privacy Level"
-#~ msgstr "Yksityisyyden taso"
-
-#~ msgid "This user has not posted anything right now"
-#~ msgstr "Tämä käyttäjä ei ole julkaissut vielä mitään"

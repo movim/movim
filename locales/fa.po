@@ -97,7 +97,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-05 11:28+0200\n"
-"PO-Revision-Date: 2018-09-18 06:12+0000\n"
+"PO-Revision-Date: 2019-07-05 10:14+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Persian (http://www.transifex.com/movim/movim/language/fa/)\n"
 "Language: fa\n"
@@ -105,7 +105,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
+"X-Generator: Translate Toolkit 2.3.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -180,14 +180,12 @@ msgid "Type your full username"
 msgstr ""
 
 #: [account]delete_text_error
-#, fuzzy
 msgid "Please provide a valid username."
-msgstr "لطفا رمزعبور درستی را وارد کنید ( حداقل 6 کاراکتر )"
+msgstr ""
 
 #: [account]gateway_title
-#, fuzzy
 msgid "Gateways"
-msgstr "دروازه"
+msgstr ""
 
 #: [account]clear
 msgid "Leave this instance"
@@ -1377,9 +1375,8 @@ msgid "Liked"
 msgstr ""
 
 #: [post]comment_publish_error
-#, fuzzy
 msgid "The comment cannot be published"
-msgstr "نظر منتشر شد"
+msgstr ""
 
 #: [post]comment_deleted
 msgid "Comment deleted"
@@ -1534,9 +1531,8 @@ msgid "Standard room"
 msgstr ""
 
 #: [rooms]gateway_room
-#, fuzzy
 msgid "Gateway room"
-msgstr "دروازه"
+msgstr ""
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -1619,9 +1615,8 @@ msgid "Send this link to your contacts"
 msgstr ""
 
 #: [room]public_muc
-#, fuzzy
 msgid "Public"
-msgstr "منتشر کردن"
+msgstr ""
 
 #: [room]public_muc_text
 msgid "The participants of this chatroom can see each other's profile"
@@ -1640,9 +1635,8 @@ msgid "#cats, username@server.com, John…"
 msgstr ""
 
 #: [search]no_contacts_title
-#, fuzzy
 msgid "No contacts yet?"
-msgstr "هنوز نظری ثبت نشده است."
+msgstr ""
 
 #: [search]no_contacts_text
 msgid "Find one by searching for his name or id"
@@ -1653,24 +1647,20 @@ msgid "Attach to a blog publication"
 msgstr ""
 
 #: [sendto]contact
-#, fuzzy
 msgid "Send it to a contact"
-msgstr "با مخاطب گپ بزنید"
+msgstr ""
 
 #: [sendto]shared_with
-#, fuzzy
 msgid "Post shared"
-msgstr "نوشته ها"
+msgstr ""
 
 #: [sendto]shared
-#, fuzzy
 msgid "Post shared with your contact"
-msgstr "با مخاطب گپ بزنید"
+msgstr ""
 
 #: [sendto]more_contacts
-#, fuzzy
 msgid "More contacts"
-msgstr "مخاطبین اخیر"
+msgstr ""
 
 #: [statistics]title
 msgid "Statistics"
@@ -1781,9 +1771,8 @@ msgid "The nickname is already registered"
 msgstr ""
 
 #: [profile]nickname_saved
-#, fuzzy
 msgid "Nickname saved"
-msgstr "اسم مستعار"
+msgstr ""
 
 #: [save]submit [button]submit
 msgid "Submit"
@@ -2652,19 +2641,16 @@ msgid "Publisher"
 msgstr "منتشر کننده"
 
 #: [affiliation]publish-only
-#, fuzzy
 msgid "Publish only"
-msgstr "منتشر کردن"
+msgstr ""
 
 #: [affiliation]member
-#, fuzzy
 msgid "Member"
-msgstr "اعض"
+msgstr ""
 
 #: [affiliation]no-aff
-#, fuzzy
 msgid "No affiliation"
-msgstr "اعلان ها"
+msgstr ""
 
 #: [affiliation]outcast
 msgid "Outcast"
@@ -2677,12 +2663,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "This user has not posted anything right now"
-#~ msgstr "این کاربر تا الان هنوز نوشته ای ارسال نکرده است"
-
-#~ msgid "This message will be displayed on the login page"
-#~ msgstr "این پیام در صفحه ورود نمایش داده میشود"
-
-#~ msgid "Since"
-#~ msgstr "از"

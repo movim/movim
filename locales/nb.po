@@ -100,7 +100,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-05 11:28+0200\n"
-"PO-Revision-Date: 2018-09-18 06:12+0000\n"
+"PO-Revision-Date: 2019-07-05 10:14+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://www.transifex.com/movim/movim/language/nb_NO/)\n"
 "Language: nb_NO\n"
@@ -108,7 +108,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
+"X-Generator: Translate Toolkit 2.3.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -183,14 +183,12 @@ msgid "Type your full username"
 msgstr ""
 
 #: [account]delete_text_error
-#, fuzzy
 msgid "Please provide a valid username."
-msgstr "Lag en overskrift"
+msgstr ""
 
 #: [account]gateway_title
-#, fuzzy
 msgid "Gateways"
-msgstr "Portner"
+msgstr ""
 
 #: [account]clear
 msgid "Leave this instance"
@@ -246,7 +244,7 @@ msgstr "Handlinger"
 
 #: [adhoc]completed
 msgid "Action completed"
-msgstr ""
+msgstr "Akjson klart"
 
 #: [admin]general
 msgid "General Settings"
@@ -432,7 +430,7 @@ msgstr "Nettkamera"
 
 #: [avatar]cheese
 msgid "Cheese!"
-msgstr ""
+msgstr "Appelsin!"
 
 #: [avatar]snapshot
 msgid "Take a webcam snapshot"
@@ -452,7 +450,7 @@ msgstr "Ingen avatar angitt enda"
 
 #: [blog]title [feed]title
 msgid "%s’s feed"
-msgstr ""
+msgstr "%ss strøm"
 
 #: [blog]private
 msgid "This content is private, please login to see it"
@@ -472,11 +470,11 @@ msgstr "Kryptert melding"
 
 #: [message]composing
 msgid "Composing…"
-msgstr ""
+msgstr "Oppretter…"
 
 #: [message]paused
 msgid "Paused…"
-msgstr ""
+msgstr "Pauserer…"
 
 #: [message]gone
 msgid "Contact gone"
@@ -496,7 +494,7 @@ msgstr "%s trenger din oppmerksomhet"
 
 #: [chat]placeholder
 msgid "Your message here…"
-msgstr ""
+msgstr "Meddelelsen din her…"
 
 #: [chat]smileys
 msgid "Smileys"
@@ -512,7 +510,7 @@ msgstr "Ennå intet her…"
 
 #: [chat]new_text
 msgid "Don’t be shy, send a first message to start the discussion"
-msgstr ""
+msgstr "Vær ikke blyg, sender en først meddelelse for å begynne diskusjonen"
 
 #: [chat]invitation
 msgid "You received an invitation to join a chatroom"
@@ -580,11 +578,11 @@ msgstr "Administrasjon"
 
 #: [chats]empty_title
 msgid "No chats yet…"
-msgstr ""
+msgstr "Ingen samtaler ennå…"
 
 #: [chats]empty
 msgid "Start a new conversation by clicking on the %s button."
-msgstr ""
+msgstr "Begynn en ny samtale ved å klikke knappen %s."
 
 #: [chats]add
 msgid "Chat with a contact"
@@ -615,18 +613,16 @@ msgid "Communities servers"
 msgstr "Samfunns-tjenere"
 
 #: [communities]disco
-#, fuzzy
 msgid "Communities server discovered"
-msgstr "Samfunns-tjenere"
+msgstr ""
 
 #: [communities]disco_error
 msgid "This server doesn’t exists"
-msgstr ""
+msgstr "Denne tjeneren eksisterer ikke"
 
 #: [communities]interesting
-#, fuzzy
 msgid "Communities you might like"
-msgstr "Navn på fellesskap"
+msgstr ""
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -795,7 +791,7 @@ msgstr "Her kan du administrere alle dine abonnement."
 
 #: [communitysubscriptions]empty_text2
 msgid "You don’t have any group subscriptions yet."
-msgstr ""
+msgstr "Du har ingen samfunneabonnementer ennå."
 
 #: [config]general
 msgid "General"
@@ -967,7 +963,7 @@ msgstr "Humør"
 
 #: [mood]im
 msgid "I’m "
-msgstr ""
+msgstr "Jeg er"
 
 #: [listen]title
 msgid "Listening"
@@ -1311,7 +1307,7 @@ msgstr "Innlegg slettet"
 
 #: [post]hot
 msgid "What’s Hot"
-msgstr ""
+msgstr "Hva er kåt"
 
 #: [post]hot_text
 msgid "Posts recently published in communities that you are not subscribed (yet)"
@@ -1378,23 +1374,20 @@ msgid "Comment published"
 msgstr "Kommentaren ble publisert"
 
 #: [post]comment_like_published
-#, fuzzy
 msgid "Liked"
-msgstr "Lik"
+msgstr ""
 
 #: [post]comment_publish_error
-#, fuzzy
 msgid "The comment cannot be published"
-msgstr "Kommentaren ble publisert"
+msgstr ""
 
 #: [post]comment_deleted
 msgid "Comment deleted"
 msgstr "Kommentaren ble slettet"
 
 #: [post]liked
-#, fuzzy
 msgid "Liked your publication"
-msgstr "Mine innlegg"
+msgstr ""
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1462,7 +1455,7 @@ msgstr ""
 
 #: [publishbrief]placeholder
 msgid "What’s new?"
-msgstr ""
+msgstr "Hva er nytt?"
 
 #: [publishbrief]post
 msgid "Write a post"
@@ -1473,9 +1466,8 @@ msgid "Add a link"
 msgstr "Legg til lenke"
 
 #: [publishbrief]add_snap
-#, fuzzy
 msgid "Take a picture"
-msgstr "Legge til en fil eller et bilde"
+msgstr ""
 
 #: [publishbrief]no_title
 msgid "Please provide a title"
@@ -1527,7 +1519,7 @@ msgstr "Rediger et samtalerom"
 
 #: [rooms]empty_text1
 msgid "You don’t have any chatroom yet."
-msgstr ""
+msgstr "Du har ingen samtaleromer ennå."
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
@@ -1542,9 +1534,8 @@ msgid "Standard room"
 msgstr ""
 
 #: [rooms]gateway_room
-#, fuzzy
 msgid "Gateway room"
-msgstr "Portner"
+msgstr ""
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -1627,9 +1618,8 @@ msgid "Send this link to your contacts"
 msgstr "Send denne lenken til dine kontakter"
 
 #: [room]public_muc
-#, fuzzy
 msgid "Public"
-msgstr "Publiser"
+msgstr ""
 
 #: [room]public_muc_text
 msgid "The participants of this chatroom can see each other's profile"
@@ -1648,38 +1638,32 @@ msgid "#cats, username@server.com, John…"
 msgstr ""
 
 #: [search]no_contacts_title
-#, fuzzy
 msgid "No contacts yet?"
-msgstr "Ingen kommentarer enda"
+msgstr ""
 
 #: [search]no_contacts_text
 msgid "Find one by searching for his name or id"
 msgstr ""
 
 #: [sendto]attach
-#, fuzzy
 msgid "Attach to a blog publication"
-msgstr "Kontakt publikasjon"
+msgstr ""
 
 #: [sendto]contact
-#, fuzzy
 msgid "Send it to a contact"
-msgstr "Inviter en kontakt"
+msgstr ""
 
 #: [sendto]shared_with
-#, fuzzy
 msgid "Post shared"
-msgstr "Innlegg publisert"
+msgstr ""
 
 #: [sendto]shared
-#, fuzzy
 msgid "Post shared with your contact"
-msgstr "Prat med en kontakt"
+msgstr ""
 
 #: [sendto]more_contacts
-#, fuzzy
 msgid "More contacts"
-msgstr "Ofte brukte kontakter"
+msgstr ""
 
 #: [statistics]title
 msgid "Statistics"
@@ -1695,7 +1679,7 @@ msgstr "Movim er et desentralisert sosialt nettverk. Før du kan lage en ny kont
 
 #: [subscribe]server_question
 msgid "Your server here?"
-msgstr ""
+msgstr "Tjeneren din her?"
 
 #: [subscribe]server_contact
 msgid "Contact us to add yours to the officially supported servers list"
@@ -1763,7 +1747,7 @@ msgstr ""
 
 #: [profile]privacy_question
 msgid "Is this profile public?"
-msgstr ""
+msgstr "Er denne profilen offentlig?"
 
 #: [profile]privacy_info
 msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
@@ -1774,9 +1758,8 @@ msgid "Set a local nickname to allow the other users of the instance to find you
 msgstr ""
 
 #: [profile]nickname_set
-#, fuzzy
 msgid "Your nickname is %s."
-msgstr "Ditt kallenavn"
+msgstr ""
 
 #: [profile]nickname_placeholder
 msgid "John_Bob96"
@@ -1791,9 +1774,8 @@ msgid "The nickname is already registered"
 msgstr ""
 
 #: [profile]nickname_saved
-#, fuzzy
 msgid "Nickname saved"
-msgstr "Kallenavn"
+msgstr ""
 
 #: [save]submit [button]submit
 msgid "Submit"
@@ -1908,9 +1890,8 @@ msgid "Login"
 msgstr "Logg inn"
 
 #: [page]not_found
-#, fuzzy
 msgid "Not Found"
-msgstr "Ikke nå"
+msgstr ""
 
 #: [page]feed
 msgid "Feed"
@@ -2663,19 +2644,16 @@ msgid "Publisher"
 msgstr "Utgiver"
 
 #: [affiliation]publish-only
-#, fuzzy
 msgid "Publish only"
-msgstr "Publiser"
+msgstr ""
 
 #: [affiliation]member
-#, fuzzy
 msgid "Member"
-msgstr "Medlemer"
+msgstr ""
 
 #: [affiliation]no-aff
-#, fuzzy
 msgid "No affiliation"
-msgstr "Varsel"
+msgstr ""
 
 #: [affiliation]outcast
 msgid "Outcast"
@@ -2688,18 +2666,3 @@ msgstr "API-et kan ikke nås, prøv igjen senere"
 #: [field]type_here
 msgid "Type here"
 msgstr "Skriv her"
-
-#~ msgid "Privacy Level"
-#~ msgstr "Nivå av tilgjengelighet"
-
-#~ msgid "This user has not posted anything right now"
-#~ msgstr "Denne brukeren har ikke postet noe enda"
-
-#~ msgid "Refresh all the streams"
-#~ msgstr "Oppdater alle strømmer"
-
-#~ msgid "This message will be displayed on the login page"
-#~ msgstr "Denne meldingen vil vises på påloggingssiden"
-
-#~ msgid "Since"
-#~ msgstr "Siden"

@@ -4,6 +4,7 @@
 # Alexander Radchenko <radchenkosasha@gmail.com>, 2016
 # Alexey Murz Korepov <murznn@gmail.com>, 2017
 # yanislavb <its@dark0ff.ru>, 2017
+# Dig Dig, 2018
 # yanislavb <its@dark0ff.ru>, 2017-2018
 # Jaussoin Timothée <edhelas@movim.eu>, 2017
 # Killy MXI <killy.mxi@gmail.com>, 2018
@@ -107,7 +108,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-05 11:28+0200\n"
-"PO-Revision-Date: 2018-09-18 06:12+0000\n"
+"PO-Revision-Date: 2019-07-05 10:14+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Russian (http://www.transifex.com/movim/movim/language/ru/)\n"
 "Language: ru\n"
@@ -115,7 +116,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
+"X-Generator: Translate Toolkit 2.3.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -190,14 +191,12 @@ msgid "Type your full username"
 msgstr ""
 
 #: [account]delete_text_error
-#, fuzzy
 msgid "Please provide a valid username."
-msgstr "Заголовок"
+msgstr ""
 
 #: [account]gateway_title
-#, fuzzy
 msgid "Gateways"
-msgstr "Шлюз"
+msgstr ""
 
 #: [account]clear
 msgid "Leave this instance"
@@ -622,18 +621,16 @@ msgid "Communities servers"
 msgstr "Сервера сообществ"
 
 #: [communities]disco
-#, fuzzy
 msgid "Communities server discovered"
-msgstr "Сервера сообществ"
+msgstr ""
 
 #: [communities]disco_error
 msgid "This server doesn’t exists"
 msgstr ""
 
 #: [communities]interesting
-#, fuzzy
 msgid "Communities you might like"
-msgstr "Название группы"
+msgstr ""
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -1385,23 +1382,20 @@ msgid "Comment published"
 msgstr "Комментарий опубликован"
 
 #: [post]comment_like_published
-#, fuzzy
 msgid "Liked"
-msgstr "Нравится"
+msgstr ""
 
 #: [post]comment_publish_error
-#, fuzzy
 msgid "The comment cannot be published"
-msgstr "Комментарий опубликован"
+msgstr ""
 
 #: [post]comment_deleted
 msgid "Comment deleted"
 msgstr "Комментарий удален"
 
 #: [post]liked
-#, fuzzy
 msgid "Liked your publication"
-msgstr "Мои публикации"
+msgstr ""
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1480,9 +1474,8 @@ msgid "Add a link"
 msgstr "Добавьте ссылку"
 
 #: [publishbrief]add_snap
-#, fuzzy
 msgid "Take a picture"
-msgstr "Добавить файл или картинку"
+msgstr ""
 
 #: [publishbrief]no_title
 msgid "Please provide a title"
@@ -1534,7 +1527,7 @@ msgstr "Изменить комнату"
 
 #: [rooms]empty_text1
 msgid "You don’t have any chatroom yet."
-msgstr ""
+msgstr "У Вас нет комнат."
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
@@ -1549,9 +1542,8 @@ msgid "Standard room"
 msgstr ""
 
 #: [rooms]gateway_room
-#, fuzzy
 msgid "Gateway room"
-msgstr "Шлюз"
+msgstr ""
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -1634,9 +1626,8 @@ msgid "Send this link to your contacts"
 msgstr "Отправьте эту ссылку своим контактам"
 
 #: [room]public_muc
-#, fuzzy
 msgid "Public"
-msgstr "Опубликовать"
+msgstr ""
 
 #: [room]public_muc_text
 msgid "The participants of this chatroom can see each other's profile"
@@ -1655,38 +1646,32 @@ msgid "#cats, username@server.com, John…"
 msgstr ""
 
 #: [search]no_contacts_title
-#, fuzzy
 msgid "No contacts yet?"
-msgstr "Комментариев пока нет"
+msgstr ""
 
 #: [search]no_contacts_text
 msgid "Find one by searching for his name or id"
 msgstr ""
 
 #: [sendto]attach
-#, fuzzy
 msgid "Attach to a blog publication"
-msgstr "Публикация контакта"
+msgstr ""
 
 #: [sendto]contact
-#, fuzzy
 msgid "Send it to a contact"
-msgstr "Пригласить контакт"
+msgstr ""
 
 #: [sendto]shared_with
-#, fuzzy
 msgid "Post shared"
-msgstr "Запись опубликована"
+msgstr ""
 
 #: [sendto]shared
-#, fuzzy
 msgid "Post shared with your contact"
-msgstr "Пообщаться с контактом"
+msgstr ""
 
 #: [sendto]more_contacts
-#, fuzzy
 msgid "More contacts"
-msgstr "Популярные контакты"
+msgstr ""
 
 #: [statistics]title
 msgid "Statistics"
@@ -1781,9 +1766,8 @@ msgid "Set a local nickname to allow the other users of the instance to find you
 msgstr ""
 
 #: [profile]nickname_set
-#, fuzzy
 msgid "Your nickname is %s."
-msgstr "Ваш псевдоним"
+msgstr ""
 
 #: [profile]nickname_placeholder
 msgid "John_Bob96"
@@ -1798,9 +1782,8 @@ msgid "The nickname is already registered"
 msgstr ""
 
 #: [profile]nickname_saved
-#, fuzzy
 msgid "Nickname saved"
-msgstr "Псевдоним"
+msgstr ""
 
 #: [save]submit [button]submit
 msgid "Submit"
@@ -1915,9 +1898,8 @@ msgid "Login"
 msgstr "Войти"
 
 #: [page]not_found
-#, fuzzy
 msgid "Not Found"
-msgstr "Не сейчас"
+msgstr ""
 
 #: [page]feed
 msgid "Feed"
@@ -2670,19 +2652,16 @@ msgid "Publisher"
 msgstr "Автор"
 
 #: [affiliation]publish-only
-#, fuzzy
 msgid "Publish only"
-msgstr "Опубликовать"
+msgstr ""
 
 #: [affiliation]member
-#, fuzzy
 msgid "Member"
-msgstr "Участники"
+msgstr ""
 
 #: [affiliation]no-aff
-#, fuzzy
 msgid "No affiliation"
-msgstr "Уведомления"
+msgstr ""
 
 #: [affiliation]outcast
 msgid "Outcast"
@@ -2695,18 +2674,3 @@ msgstr "API недоступен, попробуйте позже"
 #: [field]type_here
 msgid "Type here"
 msgstr "Введите здесь"
-
-#~ msgid "Privacy Level"
-#~ msgstr "Уровень приватности"
-
-#~ msgid "This user has not posted anything right now"
-#~ msgstr "Этот пользователь ещё ничего не публиковал"
-
-#~ msgid "Refresh all the streams"
-#~ msgstr "Обновить все потоки"
-
-#~ msgid "This message will be displayed on the login page"
-#~ msgstr "Это сообщение будет отображаться на странице входа"
-
-#~ msgid "Since"
-#~ msgstr "С"

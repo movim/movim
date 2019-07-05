@@ -1,6 +1,6 @@
 #
 # Translators:
-# Sinyeol An <soundlake@gmail.com>, 2018
+# Sinyeol An <soundlake@gmail.com>, 2018-2019
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -96,7 +96,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-05 11:28+0200\n"
-"PO-Revision-Date: 2018-09-18 06:12+0000\n"
+"PO-Revision-Date: 2019-07-05 10:14+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Korean (http://www.transifex.com/movim/movim/language/ko/)\n"
 "Language: ko\n"
@@ -104,11 +104,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
+"X-Generator: Translate Toolkit 2.3.1\n"
 
 #: [about]thanks
 msgid "Thanks"
-msgstr ""
+msgstr "감사합니다"
 
 #: [about]developers
 msgid "Developers"
@@ -120,7 +120,7 @@ msgstr "번역자"
 
 #: [about]translators_text
 msgid "Thanks to all the translators"
-msgstr ""
+msgstr "모든 번역자분들께 감사드립니다"
 
 #: [about]software
 msgid "Software"
@@ -128,7 +128,7 @@ msgstr "소프트웨어"
 
 #: [about]resources
 msgid "Resources"
-msgstr ""
+msgstr "자원"
 
 #: [about]api [schema]api [api]title
 msgid "API"
@@ -136,11 +136,11 @@ msgstr ""
 
 #: [about]info
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
-msgstr ""
+msgstr "Movim은 XMPP를 바탕으로 하는 커뮤니케이션 플랫폼입니다. 다음 소프트웨어와 자원을 제외한 모든 프로젝트는 아래에"
 
 #: [account]title [page]account
 msgid "Account"
-msgstr ""
+msgstr "계정"
 
 #: [account]password_change_title
 msgid "Change my password"
@@ -168,20 +168,19 @@ msgstr "입력하신 비밀번호가 다릅니다"
 
 #: [account]delete
 msgid "Delete your account"
-msgstr ""
+msgstr "계정 삭제하기"
 
 #: [account]delete_text
 msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts and publications)."
-msgstr ""
+msgstr "당신은 당신의 XMPP 계정과 그와 관련된 모든 정보들을 삭제할 것입니다. (프로필, 연락처, 게시물 포함)"
 
 #: [account]delete_text_confirm
 msgid "Type your full username"
 msgstr ""
 
 #: [account]delete_text_error
-#, fuzzy
 msgid "Please provide a valid username."
-msgstr "알맞은 비밀번호를 입력해주세요 (최소 6글자 이상)"
+msgstr ""
 
 #: [account]gateway_title
 msgid "Gateways"
@@ -193,7 +192,7 @@ msgstr ""
 
 #: [account]clear_text
 msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
-msgstr ""
+msgstr "당신은 당신의 계정과 관련된 모든 정보들을 삭제할 것입니다. (프로필, 연락처, 게시물 포함)"
 
 #: [account]clear_text_confirm
 msgid "This action will not delete your account but will disconnect you from this instance."
@@ -1371,9 +1370,8 @@ msgid "Comment published"
 msgstr ""
 
 #: [post]comment_like_published
-#, fuzzy
 msgid "Liked"
-msgstr "좋아요"
+msgstr ""
 
 #: [post]comment_publish_error
 msgid "The comment cannot be published"
@@ -1636,9 +1634,8 @@ msgid "#cats, username@server.com, John…"
 msgstr ""
 
 #: [search]no_contacts_title
-#, fuzzy
 msgid "No contacts yet?"
-msgstr "아직 댓글이 없습니다"
+msgstr ""
 
 #: [search]no_contacts_text
 msgid "Find one by searching for his name or id"
@@ -1661,9 +1658,8 @@ msgid "Post shared with your contact"
 msgstr ""
 
 #: [sendto]more_contacts
-#, fuzzy
 msgid "More contacts"
-msgstr "아직 댓글이 없습니다"
+msgstr ""
 
 #: [statistics]title
 msgid "Statistics"
@@ -2648,9 +2644,8 @@ msgid "Publish only"
 msgstr ""
 
 #: [affiliation]member
-#, fuzzy
 msgid "Member"
-msgstr "11월"
+msgstr ""
 
 #: [affiliation]no-aff
 msgid "No affiliation"

@@ -96,7 +96,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-05 11:28+0200\n"
-"PO-Revision-Date: 2018-09-18 06:12+0000\n"
+"PO-Revision-Date: 2019-07-05 10:14+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Greek (http://www.transifex.com/movim/movim/language/el/)\n"
 "Language: el\n"
@@ -104,7 +104,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
+"X-Generator: Translate Toolkit 2.3.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -1382,9 +1382,8 @@ msgid "Comment deleted"
 msgstr ""
 
 #: [post]liked
-#, fuzzy
 msgid "Liked your publication"
-msgstr "Κοινοποιησή επαφής"
+msgstr ""
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1615,9 +1614,8 @@ msgid "Send this link to your contacts"
 msgstr ""
 
 #: [room]public_muc
-#, fuzzy
 msgid "Public"
-msgstr "Δημοσίευση"
+msgstr ""
 
 #: [room]public_muc_text
 msgid "The participants of this chatroom can see each other's profile"
@@ -1636,18 +1634,16 @@ msgid "#cats, username@server.com, John…"
 msgstr ""
 
 #: [search]no_contacts_title
-#, fuzzy
 msgid "No contacts yet?"
-msgstr "Δεν υπάρχουν σχόλια ακόμα"
+msgstr ""
 
 #: [search]no_contacts_text
 msgid "Find one by searching for his name or id"
 msgstr ""
 
 #: [sendto]attach
-#, fuzzy
 msgid "Attach to a blog publication"
-msgstr "Κοινοποιησή επαφής"
+msgstr ""
 
 #: [sendto]contact
 msgid "Send it to a contact"
@@ -1662,9 +1658,8 @@ msgid "Post shared with your contact"
 msgstr ""
 
 #: [sendto]more_contacts
-#, fuzzy
 msgid "More contacts"
-msgstr "Δεν υπάρχουν σχόλια ακόμα"
+msgstr ""
 
 #: [statistics]title
 msgid "Statistics"
@@ -1759,9 +1754,8 @@ msgid "Set a local nickname to allow the other users of the instance to find you
 msgstr ""
 
 #: [profile]nickname_set
-#, fuzzy
 msgid "Your nickname is %s."
-msgstr "Το ψευδώνυμο σου"
+msgstr ""
 
 #: [profile]nickname_placeholder
 msgid "John_Bob96"
@@ -1776,9 +1770,8 @@ msgid "The nickname is already registered"
 msgstr ""
 
 #: [profile]nickname_saved
-#, fuzzy
 msgid "Nickname saved"
-msgstr "Ψευδώνυμο"
+msgstr ""
 
 #: [save]submit [button]submit
 msgid "Submit"
@@ -2647,14 +2640,12 @@ msgid "Publisher"
 msgstr ""
 
 #: [affiliation]publish-only
-#, fuzzy
 msgid "Publish only"
-msgstr "Δημοσίευση"
+msgstr ""
 
 #: [affiliation]member
-#, fuzzy
 msgid "Member"
-msgstr "Μέλη"
+msgstr ""
 
 #: [affiliation]no-aff
 msgid "No affiliation"
@@ -2671,6 +2662,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr "Πληκτρολογήστε εδώ"
-
-#~ msgid "Privacy Level"
-#~ msgstr "Επίπεδο ιδιωτικότητας"

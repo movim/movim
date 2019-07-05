@@ -98,7 +98,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-05 11:28+0200\n"
-"PO-Revision-Date: 2018-09-18 06:12+0000\n"
+"PO-Revision-Date: 2019-07-05 10:14+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/movim/movim/language/cs_CZ/)\n"
 "Language: cs_CZ\n"
@@ -106,7 +106,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
+"X-Generator: Translate Toolkit 2.3.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -181,14 +181,12 @@ msgid "Type your full username"
 msgstr ""
 
 #: [account]delete_text_error
-#, fuzzy
 msgid "Please provide a valid username."
-msgstr "Zadejte prosím nadpis"
+msgstr ""
 
 #: [account]gateway_title
-#, fuzzy
 msgid "Gateways"
-msgstr "Brána"
+msgstr ""
 
 #: [account]clear
 msgid "Leave this instance"
@@ -621,9 +619,8 @@ msgid "This server doesn’t exists"
 msgstr ""
 
 #: [communities]interesting
-#, fuzzy
 msgid "Communities you might like"
-msgstr "Název komunity"
+msgstr ""
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -1379,18 +1376,16 @@ msgid "Liked"
 msgstr ""
 
 #: [post]comment_publish_error
-#, fuzzy
 msgid "The comment cannot be published"
-msgstr "Komentář zveřejněn"
+msgstr ""
 
 #: [post]comment_deleted
 msgid "Comment deleted"
 msgstr "Komentář smazán"
 
 #: [post]liked
-#, fuzzy
 msgid "Liked your publication"
-msgstr "Moje příspěvky"
+msgstr ""
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1537,9 +1532,8 @@ msgid "Standard room"
 msgstr ""
 
 #: [rooms]gateway_room
-#, fuzzy
 msgid "Gateway room"
-msgstr "Brána"
+msgstr ""
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -1622,9 +1616,8 @@ msgid "Send this link to your contacts"
 msgstr ""
 
 #: [room]public_muc
-#, fuzzy
 msgid "Public"
-msgstr "Zveřejnit"
+msgstr ""
 
 #: [room]public_muc_text
 msgid "The participants of this chatroom can see each other's profile"
@@ -1643,38 +1636,32 @@ msgid "#cats, username@server.com, John…"
 msgstr ""
 
 #: [search]no_contacts_title
-#, fuzzy
 msgid "No contacts yet?"
-msgstr "Zatím žádné komentáře"
+msgstr ""
 
 #: [search]no_contacts_text
 msgid "Find one by searching for his name or id"
 msgstr ""
 
 #: [sendto]attach
-#, fuzzy
 msgid "Attach to a blog publication"
-msgstr "Kontakt příspěvek"
+msgstr ""
 
 #: [sendto]contact
-#, fuzzy
 msgid "Send it to a contact"
-msgstr "Zahájit konverzaci s kontaktem."
+msgstr ""
 
 #: [sendto]shared_with
-#, fuzzy
 msgid "Post shared"
-msgstr "Příspěvek zveřejněn"
+msgstr ""
 
 #: [sendto]shared
-#, fuzzy
 msgid "Post shared with your contact"
-msgstr "Zahájit konverzaci s kontaktem."
+msgstr ""
 
 #: [sendto]more_contacts
-#, fuzzy
 msgid "More contacts"
-msgstr "Časté kontakty"
+msgstr ""
 
 #: [statistics]title
 msgid "Statistics"
@@ -1769,9 +1756,8 @@ msgid "Set a local nickname to allow the other users of the instance to find you
 msgstr ""
 
 #: [profile]nickname_set
-#, fuzzy
 msgid "Your nickname is %s."
-msgstr "Vaše přezdívka"
+msgstr ""
 
 #: [profile]nickname_placeholder
 msgid "John_Bob96"
@@ -1786,9 +1772,8 @@ msgid "The nickname is already registered"
 msgstr ""
 
 #: [profile]nickname_saved
-#, fuzzy
 msgid "Nickname saved"
-msgstr "Přezdívka"
+msgstr ""
 
 #: [save]submit [button]submit
 msgid "Submit"
@@ -2657,19 +2642,16 @@ msgid "Publisher"
 msgstr ""
 
 #: [affiliation]publish-only
-#, fuzzy
 msgid "Publish only"
-msgstr "Zveřejnit"
+msgstr ""
 
 #: [affiliation]member
-#, fuzzy
 msgid "Member"
-msgstr "Členi"
+msgstr ""
 
 #: [affiliation]no-aff
-#, fuzzy
 msgid "No affiliation"
-msgstr "Oznámení"
+msgstr ""
 
 #: [affiliation]outcast
 msgid "Outcast"
@@ -2682,18 +2664,3 @@ msgstr "API je nedostupná, zkuste to znovu později"
 #: [field]type_here
 msgid "Type here"
 msgstr "Pište sem"
-
-#~ msgid "Privacy Level"
-#~ msgstr "Úroveň soukromí"
-
-#~ msgid "This user has not posted anything right now"
-#~ msgstr "Tento uživatel nyní nezveřejnil žádný příspěvek"
-
-#~ msgid "Refresh all the streams"
-#~ msgstr "Obnovit všechny proudy"
-
-#~ msgid "This message will be displayed on the login page"
-#~ msgstr "Tato zpráva bude zobrazena na stránce přihlášení"
-
-#~ msgid "Since"
-#~ msgstr "Od"

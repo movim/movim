@@ -2,7 +2,7 @@
 # Translators:
 # Lazalatin <inactive+Lazalatin@transifex.com>, 2015
 # Christian <christian-pauly@posteo.de>, 2017
-# Dominik George <nik@naturalnet.de>, 2017-2018
+# Dominik George <nik@naturalnet.de>, 2017-2019
 # Fabian Thiele <fabian.thiele@posteo.de>, 2016
 # Jaussoin Timothée <edhelas@movim.eu>, 2017
 # j k <yky.yode@gmail.com>, 2016
@@ -14,8 +14,9 @@
 # Rob Jacob <jr@jaxfab.net>, 2016
 # Roland <rasos@alton.at>, 2016
 # Rüdiger Holzmann <bernhard@cyng.tk>, 2015
-# Thomas Thomas <fix@kippenbergs.de>, 2018
+# bbccd56199dff1756d18cc89f7ff4628, 2018
 # Tobias Bannert <tobannert@gmail.com>, 2015
+# Tom Teichler <tom@dummerdelfin.de>, 2018-2019
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -111,15 +112,15 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-05 11:28+0200\n"
-"PO-Revision-Date: 2018-09-18 06:12+0000\n"
-"Last-Translator: Thomas Thomas <fix@kippenbergs.de>\n"
+"PO-Revision-Date: 2019-07-05 10:14+0000\n"
+"Last-Translator: Tom Teichler <tom@dummerdelfin.de>\n"
 "Language-Team: German (http://www.transifex.com/movim/movim/language/de/)\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
+"X-Generator: Translate Toolkit 2.3.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -191,17 +192,15 @@ msgstr "Sie werden Ihr XMPP-Konto und alle Informationen welche damit verbunden 
 
 #: [account]delete_text_confirm
 msgid "Type your full username"
-msgstr ""
+msgstr "Gib deinen vollen Benutzernamen ein"
 
 #: [account]delete_text_error
-#, fuzzy
 msgid "Please provide a valid username."
-msgstr "Bitte einen Titel angeben"
+msgstr "Bitte gib einen richtigen Benutzernamen ein"
 
 #: [account]gateway_title
-#, fuzzy
 msgid "Gateways"
-msgstr "Zugang"
+msgstr "Gateways"
 
 #: [account]clear
 msgid "Leave this instance"
@@ -213,7 +212,7 @@ msgstr "Sie werden alle mit Ihrem Account verknüpften Informationen auf diesem 
 
 #: [account]clear_text_confirm
 msgid "This action will not delete your account but will disconnect you from this instance."
-msgstr "Diese Aktion wird nicht Ihren Account löschen, sondern Ihre Verbindung zu diesem Pod trennen."
+msgstr "Diese Aktion wird Ihren Account nicht löschen, sondern Ihre Verbindung zu diesem Pod trennen."
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
@@ -237,7 +236,7 @@ msgstr "Wird geladen"
 
 #: [create]placeholder
 msgid "…and start playing"
-msgstr "... und beginne es auszuprobieren"
+msgstr "...und beginne es auszuprobieren"
 
 #: [error]not_acceptable
 msgid "Not Acceptable"
@@ -249,7 +248,7 @@ msgstr "Derzeit kann man sich auf diesem Server nicht registrieren"
 
 #: [error]forbidden
 msgid "Registration forbidden"
-msgstr "Anmeldung abgelehnt"
+msgstr "Registrierung abgelehnt"
 
 #: [adhoc]title
 msgid "Actions"
@@ -269,7 +268,7 @@ msgstr "Thema"
 
 #: [general]language
 msgid "Default language"
-msgstr "Vorgabesprache"
+msgstr "Standardsprache"
 
 #: [general]log_verbosity
 msgid "Log verbosity"
@@ -297,7 +296,7 @@ msgstr "Passwort erneut eingeben"
 
 #: [whitelist]title
 msgid "Whitelisted XMPP Servers"
-msgstr "Erlaubte XMPP Server"
+msgstr "Erlaubte XMPP-Server"
 
 #: [whitelist]info1
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
@@ -322,7 +321,7 @@ msgstr "Beschreibung"
 
 #: [information]info1
 msgid "This message will be displayed on the login page. It can be used to link the Terms and Conditions of your Movim instance for example."
-msgstr ""
+msgstr "Dieser Text wird auf der Anmeldeseite angezeigt. Er kann genutzt werden, um rechtliche Bestimmungen und Nutzungshinweise Ihrer Movim-Instanz zu verlinken."
 
 #: [information]info2
 msgid "Leave this field blank if you don’t want to show any message."
@@ -339,15 +338,15 @@ msgstr "Standard XMPP Server"
 
 #: [xmpp]domain
 msgid "Main XMPP server domain"
-msgstr "Haupt XMPP Server Domain"
+msgstr "Haupt-XMPP-Server-Domain"
 
 #: [xmpp]description
 msgid "Main XMPP server description"
-msgstr "Haupt XMPP Server Beschreibung"
+msgstr "Beschreibung des Haupt-XMPP-Servers"
 
 #: [xmpp]country
 msgid "Main XMPP server country"
-msgstr "Land des Haupt XMPP Server"
+msgstr "Land des Haupt-XMPP-Servers"
 
 #: [xmpp]country_pick
 msgid "Pick a country in the list"
@@ -415,7 +414,7 @@ msgstr "Ihr Pod ist bei der offiziellen API registriert"
 
 #: [api]wait
 msgid "Your pod is not yet validated"
-msgstr "Ihr Pod ist noch nicht bestätigt worden"
+msgstr "Ihr Pod wurde noch nicht bestätigt"
 
 #: [api]validated
 msgid "Your pod is validated"
@@ -451,11 +450,11 @@ msgstr "Einen Webcam-Schnappschuss aufnehmen"
 
 #: [avatar]updated
 msgid "Avatar Updated"
-msgstr "Benutzerbild aktualisiert"
+msgstr "Avatar aktualisiert"
 
 #: [avatar]not_updated
 msgid "Avatar Not Updated"
-msgstr "Benutzerbild nicht aktualisiert"
+msgstr "Avatar nicht aktualisiert"
 
 #: [avatar]missing
 msgid "No avatar defined yet"
@@ -463,11 +462,11 @@ msgstr "Noch wurde kein Avatar festgelegt"
 
 #: [blog]title [feed]title
 msgid "%s’s feed"
-msgstr "%s Newsfeed"
+msgstr "%s's Newsfeed"
 
 #: [blog]private
 msgid "This content is private, please login to see it"
-msgstr "Dieser Inhalt ist privat, bitte anmelden um ihn zu sehen"
+msgstr "Dieser Inhalt ist privat, bitte melde dich an, um ihn zu sehen"
 
 #: [message]published
 msgid "Message Published"
@@ -483,7 +482,7 @@ msgstr "Verschlüsselte Nachricht"
 
 #: [message]composing
 msgid "Composing…"
-msgstr "Setze zusammen..."
+msgstr "Schreibt…"
 
 #: [message]paused
 msgid "Paused…"
@@ -519,7 +518,7 @@ msgstr "Häufige Kontakte"
 
 #: [chat]new_title
 msgid "Nothing here yet…"
-msgstr "Bisher nichts hier…"
+msgstr "Bisher gibt es hier nichts…"
 
 #: [chat]new_text
 msgid "Don’t be shy, send a first message to start the discussion"
@@ -551,11 +550,11 @@ msgstr "Missbrauch melden"
 
 #: [chat]jingle_start
 msgid "Call started"
-msgstr ""
+msgstr "Anruf begonnen"
 
 #: [chat]jingle_end
 msgid "Call ended"
-msgstr ""
+msgstr "Anruf beendet"
 
 #: [chatroom]members
 msgid "Members"
@@ -587,7 +586,7 @@ msgstr "Betreff geändert"
 
 #: [chatroom]administration [page]administration
 msgid "Administration"
-msgstr "Systemverwaltung"
+msgstr "Administration"
 
 #: [chats]empty_title
 msgid "No chats yet…"
@@ -626,18 +625,16 @@ msgid "Communities servers"
 msgstr "Gemeinschaftsserver"
 
 #: [communities]disco
-#, fuzzy
 msgid "Communities server discovered"
-msgstr "Gemeinschaftsserver"
+msgstr "Gemeinschafts-Server entdeckt"
 
 #: [communities]disco_error
 msgid "This server doesn’t exists"
 msgstr "Der Server existiert nicht."
 
 #: [communities]interesting
-#, fuzzy
 msgid "Communities you might like"
-msgstr "Name der Gemeinschaft"
+msgstr "Gemeinschaften, die du mögen könntest"
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -669,7 +666,7 @@ msgstr "Sie können keine neue Gemeinschaft auf diesem Server anlegen"
 
 #: [communityaffiliation]subscriptions
 msgid "Subscriptions"
-msgstr "Anmeldungen"
+msgstr "Abonnements"
 
 #: [communityaffiliation]deleted
 msgid "Community deleted successfully"
@@ -746,7 +743,7 @@ msgstr "Abonnieren"
 
 #: [communityheader]unsubscribe
 msgid "Unsubscribe"
-msgstr "Abbestellen"
+msgstr "Deabonnieren"
 
 #: [communityheader]subscribed
 msgid "Subscribed"
@@ -754,7 +751,7 @@ msgstr "Abonniert"
 
 #: [communityheader]unsubscribed
 msgid "Unsubscribed"
-msgstr "Abgemeldet"
+msgstr "Deabonniert"
 
 #: [communityheader]subscription_unsupported
 msgid "The subscriptions are disabled for this community"
@@ -878,7 +875,7 @@ msgstr "Archivierungseinstellungen gespeichert"
 
 #: [cssurl]label
 msgid "Custom CSS URL for your blog"
-msgstr "Benutzerdefinierte CSS URL für deinen Blog"
+msgstr "Benutzerdefinierte CSS-URL für deinen Blog"
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -902,7 +899,7 @@ msgstr "Die Jabber-Kennung Ihres Kontaktes eingeben."
 
 #: [roster]add_contact_info2
 msgid "Press enter to validate."
-msgstr "Enter zum Überprüfen eingeben."
+msgstr "Drücke Enter zum Überprüfen"
 
 #: [roster]added
 msgid "Contact added"
@@ -1070,31 +1067,31 @@ msgstr "Häufig gestellte Fragen"
 
 #: [faq]permission_title
 msgid "What does the permission setting do?"
-msgstr ""
+msgstr "Wie funktionieren die Berechtigungseinstellungen?"
 
 #: [faq]permission_text
 msgid "By default the content is only available to your contacts. You can make your profile and publications public by enabling the related setting."
-msgstr ""
+msgstr "Standardmäßig sind deine Inhalte nur für deine Kontakte verfügbar. Du kannst dein Profil und deine Veröffentlichungen öffentlich zugänglich machen, indem du die entsprechende Einstellung aktivierst."
 
 #: [faq]permission_community_title
 msgid "How does it applies on Communities posts?"
-msgstr ""
+msgstr "Wie wirkt es sich auf Gemeinschafts-Posts aus?"
 
 #: [faq]permission_community_text
 msgid "Similary to your blog publications except that, by default, the posts are only available to the members or subscribers of the Community (except if you explicitly open all the Community content)"
-msgstr ""
+msgstr "Ähnlich wie bei Blog-Veröffentlichungen, außer, dass standardmäßig Veröffentlichungen nur für die Mitglieder und Abonnenten der Gemeinschaft zugänglich sind (außer, wenn du ausdrücklich den gesamten Inhalt der Gemeinschaft freigibst)"
 
 #: [faq]chatrooms_title
 msgid "Where can I find a list of chatrooms?"
-msgstr ""
+msgstr "Wo kann ich eine Liste von Chaträumen finden?"
 
 #: [faq]find_contacts_title
 msgid "Where can I find my contacts?"
-msgstr ""
+msgstr "Wo finde ich meine Kontakte?"
 
 #: [faq]find_contacts_text
 msgid "By opening the search panel."
-msgstr ""
+msgstr "Durch das Öffnen der Such-Seite."
 
 #: [apps]question
 msgid "Have you already tried Movim on other platforms?"
@@ -1170,7 +1167,7 @@ msgstr "Das Benutzerkonto wurde erfolgreich angelegt."
 
 #: [error]mec_error
 msgid "The server takes too much time to respond"
-msgstr "Der Server braucht zum Antworten zu lange"
+msgstr "Der Server braucht zu lange um zu Antworten"
 
 #: [error]impossible
 msgid "Impossible login"
@@ -1194,15 +1191,15 @@ msgstr "Ihr XMPP-Server ist nicht legitimiert"
 
 #: [error]wrong_account
 msgid "Movim failed to authenticate. You entered wrong data"
-msgstr "Movim konnte nicht legitimiert werden. Sie haben falsche Daten eingegeben."
+msgstr "Movim konnte nicht authentifiziert werden. Sie haben falsche Daten eingegeben."
 
 #: [error]mechanism
 msgid "Authentication mechanism not supported by Movim"
-msgstr "Legitimierungsmechanismus wird von Movim nicht unterstützt"
+msgstr "Authentifizierungsmechanismus wird von Movim nicht unterstützt"
 
 #: [error]fail_auth
 msgid "The XMPP authentification failed"
-msgstr "XMPP-Legitimierung ist fehlgeschlagen"
+msgstr "XMPP-Authentifizierung ist fehlgeschlagen"
 
 #: [form]username
 msgid "My address"
@@ -1274,7 +1271,7 @@ msgstr "Movim kann dich benachrichtigen, wenn ein neuer Post veröffentlicht wir
 
 #: [onboarding]notifications_text_second
 msgid "You can always disable them afterwards"
-msgstr "Du kannst Sie später jederzeit wieder ausstellen"
+msgstr "Du kannst sie später jederzeit wieder deaktivieren"
 
 #: [onboarding]public_title
 msgid "Public profile"
@@ -1282,7 +1279,7 @@ msgstr "Öffentliches Profil"
 
 #: [onboarding]public_text
 msgid "Make your profile public and allow other users to find you and make new contacts more easily"
-msgstr "Mach dein Profil öffentlich und erlaube anderen Benutzern dich zu finden und mache dadurch neue Freundschaften einfacher"
+msgstr "Mach dein Profil öffentlich und erlaube anderen Benutzern dich zu finden und knüpfe dadurch einfacher neue Kontakte"
 
 #: [onboarding]public_text_second
 msgid "You can always disable this in the configuration afterwards"
@@ -1370,7 +1367,7 @@ msgstr "Sie sind dabei Ihren Beitrag zu löschen. Möchten Sie fortfahren?"
 
 #: [post]delete_comment
 msgid "Are you sure that you want to delete this comment?"
-msgstr "Sind SIe sicher, dass Sie diesen Kommentar entfernen möchten?"
+msgstr "Sind Sie sicher, dass Sie diesen Kommentar entfernen möchten?"
 
 #: [post]discover
 msgid "Discover more articles on the communities page"
@@ -1389,23 +1386,20 @@ msgid "Comment published"
 msgstr "Kommentar veröffentlicht"
 
 #: [post]comment_like_published
-#, fuzzy
 msgid "Liked"
-msgstr "Gefällt mir"
+msgstr "Gefällt dir"
 
 #: [post]comment_publish_error
-#, fuzzy
 msgid "The comment cannot be published"
-msgstr "Kommentar veröffentlicht"
+msgstr "Der Kommentar kann nicht veröffentlicht werden"
 
 #: [post]comment_deleted
 msgid "Comment deleted"
 msgstr "Kommentar gelöscht"
 
 #: [post]liked
-#, fuzzy
 msgid "Liked your publication"
-msgstr "Meine Veröffentlichungen"
+msgstr "Gefällt dein Beitrag"
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1465,12 +1459,11 @@ msgstr "Status aktualisiert"
 
 #: [status]presence
 msgid "Presence"
-msgstr "Anwesenend"
+msgstr "Präsenz"
 
 #: [status]logout_confirm
-#, fuzzy
 msgid "Do you really want to log out?"
-msgstr "Sind Sie sicher, dass sie löschen wollen?"
+msgstr "Möchtest Du dich wirklich abmelden?"
 
 #: [publishbrief]placeholder
 msgid "What’s new?"
@@ -1485,9 +1478,8 @@ msgid "Add a link"
 msgstr "Link hinzufügen"
 
 #: [publishbrief]add_snap
-#, fuzzy
 msgid "Take a picture"
-msgstr "Datei oder Bild hinzufügen"
+msgstr "Nimm ein Foto auf"
 
 #: [publishbrief]no_title
 msgid "Please provide a title"
@@ -1539,7 +1531,7 @@ msgstr "Chatraum bearbeiten"
 
 #: [rooms]empty_text1
 msgid "You don’t have any chatroom yet."
-msgstr "Sie sind derzeit in keinem Chat-Raum"
+msgstr "Sie sind derzeit in keinem Chatraum"
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
@@ -1547,16 +1539,15 @@ msgstr "Zum Hinzufügen klicken Sie oben auf den Hinzufügen-Knopf."
 
 #: [rooms]type_room
 msgid "Type of room"
-msgstr ""
+msgstr "Art des Raums"
 
 #: [rooms]default_room
 msgid "Standard room"
-msgstr ""
+msgstr "Normaler Raum"
 
 #: [rooms]gateway_room
-#, fuzzy
 msgid "Gateway room"
-msgstr "Zugang"
+msgstr "Gateway-Raum"
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -1568,7 +1559,7 @@ msgstr "Chatraum Adresse"
 
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
-msgstr "Unser Treffpunkt"
+msgstr "Mein Liebslingsraum"
 
 #: [chatrooms]bad_id
 msgid "Bad Chatroom ID"
@@ -1639,13 +1630,12 @@ msgid "Send this link to your contacts"
 msgstr "Senden Sie diesen Link an Ihre Kontakte"
 
 #: [room]public_muc
-#, fuzzy
 msgid "Public"
-msgstr "Veröffentlichen"
+msgstr "Öffentlich"
 
 #: [room]public_muc_text
 msgid "The participants of this chatroom can see each other's profile"
-msgstr ""
+msgstr "Die Mitglieder dieses Raums können die Profile der anderen sehen"
 
 #: [search]keyword
 msgid "What are you looking for?"
@@ -1657,41 +1647,35 @@ msgstr "Mit Ctrl+M zu öffnen"
 
 #: [search]placeholder
 msgid "#cats, username@server.com, John…"
-msgstr ""
+msgstr "#cats, username@server.com, John…"
 
 #: [search]no_contacts_title
-#, fuzzy
 msgid "No contacts yet?"
-msgstr "Noch keine Kommentare"
+msgstr "Noch keine Kontakte?"
 
 #: [search]no_contacts_text
 msgid "Find one by searching for his name or id"
-msgstr ""
+msgstr "Finde jemanden, indem du seinen Namen oder seine ID suchst"
 
 #: [sendto]attach
-#, fuzzy
 msgid "Attach to a blog publication"
-msgstr "Kontaktveröffentlichung"
+msgstr "An einen Blogbeitrag anheften"
 
 #: [sendto]contact
-#, fuzzy
 msgid "Send it to a contact"
-msgstr "Kontakt einladen"
+msgstr "An einen Kontakt senden"
 
 #: [sendto]shared_with
-#, fuzzy
 msgid "Post shared"
-msgstr "Beitrag veröffentlicht"
+msgstr "Post geteilt"
 
 #: [sendto]shared
-#, fuzzy
 msgid "Post shared with your contact"
-msgstr "Mit einem Kontakt chatten"
+msgstr "Post mit einem Kontakt geteilt"
 
 #: [sendto]more_contacts
-#, fuzzy
 msgid "More contacts"
-msgstr "Häufige Kontakte"
+msgstr "Mehr Kontakte"
 
 #: [statistics]title
 msgid "Statistics"
@@ -1739,15 +1723,15 @@ msgstr "Datei zu groß"
 
 #: [upload]error_failed
 msgid "Upload failed"
-msgstr "Heraufladen gescheitert"
+msgstr "Hochladen fehlgeschlagen"
 
 #: [upload]error_not_allowed
 msgid "You are not allowed to upload a file"
-msgstr ""
+msgstr "Du darfst keine Datei hochladen"
 
 #: [upload]error_resource_constraint
 msgid "You exceeded the quota"
-msgstr ""
+msgstr "Du hast das Kontingent überschritten"
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -1771,7 +1755,7 @@ msgstr "Ihr Profil ist jetzt eingeschränkt"
 
 #: [profile]info
 msgid "Configure your instance nickname"
-msgstr ""
+msgstr "Konfiguriere deinen Instanz-Spitznamen"
 
 #: [profile]privacy_question
 msgid "Is this profile public?"
@@ -1783,29 +1767,27 @@ msgstr "Achtung! Durch das Öffentlichmachen des Profils werden alle untenstehen
 
 #: [profile]nickname_info
 msgid "Set a local nickname to allow the other users of the instance to find you easily."
-msgstr ""
+msgstr "Setze einen lokalen Spitznamen, so dass andere Nutzer der Instanz dich einfach finden können."
 
 #: [profile]nickname_set
-#, fuzzy
 msgid "Your nickname is %s."
-msgstr "Ihr Spitzname"
+msgstr "Dein Spitzname ist %s."
 
 #: [profile]nickname_placeholder
 msgid "John_Bob96"
-msgstr ""
+msgstr "John_Bob96"
 
 #: [profile]nickname_error
 msgid "Your nickname should only contains letters, numbers, - and _"
-msgstr ""
+msgstr "Dein Spitzname sollte nur Buchstaben, Ziffern, - und _ enthalten."
 
 #: [profile]nickname_conflict
 msgid "The nickname is already registered"
-msgstr ""
+msgstr "Der Spitzname ist schon registriert."
 
 #: [profile]nickname_saved
-#, fuzzy
 msgid "Nickname saved"
-msgstr "Spitzname"
+msgstr "Spitzname gespeichert"
 
 #: [save]submit [button]submit
 msgid "Submit"
@@ -1821,7 +1803,7 @@ msgstr "Movim arbeitet gerade im eingeschränkten Modus"
 
 #: [degraded]text_1
 msgid "Your server doesn’t support XMPP Pubsub persistence."
-msgstr "Ihr Server unterstützt keine XMPP Pubsub persistence."
+msgstr "Ihr Server unterstützt keine XMPP-Pubsub-Persistenz."
 
 #: [degraded]text_2
 msgid "The communities, news feed and profile have been disabled for the moment."
@@ -1829,7 +1811,7 @@ msgstr "Newsfeed, Gemeinschaften und Profile wurden vorerst deaktiviert"
 
 #: [degraded]text_3
 msgid "Please contact your server administrator to see if this feature can be enabled."
-msgstr "Bitte kontaktieren Sie den Administrators Ihres Servers, um dieses Feature zu ermöglichen"
+msgstr "Bitte kontaktieren Sie den Administrators Ihres Servers, um dieses Feature zu aktivieren"
 
 #: [visio]calling
 msgid "…is calling you"
@@ -1853,11 +1835,11 @@ msgstr "…verbinden"
 
 #: [visio]ended
 msgid "call ended"
-msgstr ""
+msgstr "Anruf beendet"
 
 #: [global]no_js
 msgid "Movim requires Javascript to be enabled to work properly."
-msgstr ""
+msgstr "Movim benötigt JavaScript, um richtig zu funktionieren"
 
 #: [global]description
 msgid "Movim is a kickass distributed social networking platform that protect your privacy and comes with a set of awesome features."
@@ -1865,7 +1847,7 @@ msgstr "Movim ist ein ausgezeichnetes verteiltes soziales Netzwerk, das Ihre Pri
 
 #: [global]loading
 msgid "Loading…"
-msgstr "Laden..."
+msgstr "Lädt…"
 
 #: [global]or
 msgid "Or"
@@ -1920,9 +1902,8 @@ msgid "Login"
 msgstr "Anmelden"
 
 #: [page]not_found
-#, fuzzy
 msgid "Not Found"
-msgstr "Nicht jetzt"
+msgstr "Nicht gefunden"
 
 #: [page]feed
 msgid "Feed"
@@ -2140,11 +2121,11 @@ msgstr "Sonntag"
 
 #: [client]bot
 msgid "Bot"
-msgstr "Roboter"
+msgstr "Bot"
 
 #: [client]desktop
 msgid "Desktop"
-msgstr "Schreibtisch"
+msgstr "Desktop"
 
 #: [client]phone
 msgid "Phone"
@@ -2675,23 +2656,20 @@ msgid "Publisher"
 msgstr "Herausgeber"
 
 #: [affiliation]publish-only
-#, fuzzy
 msgid "Publish only"
-msgstr "Veröffentlichen"
+msgstr "Nur Veröffentlichen"
 
 #: [affiliation]member
-#, fuzzy
 msgid "Member"
-msgstr "Mitglieder"
+msgstr "Mitglied"
 
 #: [affiliation]no-aff
-#, fuzzy
 msgid "No affiliation"
-msgstr "Benachrichtigungen"
+msgstr "Nicht zugehörig"
 
 #: [affiliation]outcast
 msgid "Outcast"
-msgstr ""
+msgstr "Ausgestoßen"
 
 #: [api]error
 msgid "The API is not reachable, try again later"
@@ -2700,21 +2678,3 @@ msgstr "Die API ist nicht erreichbar, bitte später erneut versuchen"
 #: [field]type_here
 msgid "Type here"
 msgstr "Hier schreiben"
-
-#~ msgid "Privacy Level"
-#~ msgstr "Privatsphärenstufe"
-
-#~ msgid "This user has not posted anything right now"
-#~ msgstr "Dieser Benutzer hat noch nichts veröffentlicht"
-
-#~ msgid "You don’t have Javascript enabled. Good luck with that."
-#~ msgstr "Sie haben Javascript nicht aktiviert. Viel Glück damit."
-
-#~ msgid "Refresh all the streams"
-#~ msgstr "Alle Daten auffrischen"
-
-#~ msgid "This message will be displayed on the login page"
-#~ msgstr "Diese Nachricht wird auf der Anmeldeseite angezeigt"
-
-#~ msgid "Since"
-#~ msgstr "Seit"

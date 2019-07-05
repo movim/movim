@@ -3,9 +3,11 @@
 # LinuxArie <abj61@posteo.net>, 2018
 # before <never@unseen.is>, 2015
 # Joep Seuren <joepseuren1@gmail.com>, 2015
+# Casper <casper@vrije-mens.org>, 2018
 # Flevo Polder <flevopolder2@gmail.com>, 2017
 # Heimen Stoffels <vistausss@outlook.com>, 2018
 # Jeshua Edgar <jeshua.edgar@hotmail.com>, 2016
+# Robbie Deighton <deightonrobbie@gmail.com>, 2019
 # Rolf Deenen <rolf.deenen@gmail.com>, 2017
 # Steven Roose <stevenroose@gmail.com>, 2015
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -103,7 +105,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-05 11:28+0200\n"
-"PO-Revision-Date: 2018-09-18 06:12+0000\n"
+"PO-Revision-Date: 2019-07-05 10:14+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Dutch (http://www.transifex.com/movim/movim/language/nl/)\n"
 "Language: nl\n"
@@ -111,7 +113,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
+"X-Generator: Translate Toolkit 2.3.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -186,14 +188,12 @@ msgid "Type your full username"
 msgstr ""
 
 #: [account]delete_text_error
-#, fuzzy
 msgid "Please provide a valid username."
-msgstr "Geef een titel in"
+msgstr ""
 
 #: [account]gateway_title
-#, fuzzy
 msgid "Gateways"
-msgstr "Gateway"
+msgstr ""
 
 #: [account]clear
 msgid "Leave this instance"
@@ -249,7 +249,7 @@ msgstr "Acties"
 
 #: [adhoc]completed
 msgid "Action completed"
-msgstr ""
+msgstr "Actie voltooid"
 
 #: [admin]general
 msgid "General Settings"
@@ -314,11 +314,11 @@ msgstr "Beschrijving"
 
 #: [information]info1
 msgid "This message will be displayed on the login page. It can be used to link the Terms and Conditions of your Movim instance for example."
-msgstr ""
+msgstr "Deze informatie zal op de aanmeldpagina worden weergegeven. Het kan bijvoorbeeld worden gebruikt om een link naar de voorwaarden en condities van je Movim instantie te maken."
 
 #: [information]info2
 msgid "Leave this field blank if you don’t want to show any message."
-msgstr ""
+msgstr "Laat dit veld leeg als je geen berichten wilt tonen."
 
 #: [information]label
 msgctxt "[information]label"
@@ -367,7 +367,7 @@ msgstr "Algemeen Overzicht"
 
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim’s %s directory"
-msgstr ""
+msgstr "Lees - en schrijfrechten voor de webserver in Movim's %s folder"
 
 #: [compatibility]websocket
 msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
@@ -455,7 +455,7 @@ msgstr "Nog geen avatar gekozen"
 
 #: [blog]title [feed]title
 msgid "%s’s feed"
-msgstr ""
+msgstr "Feed van %s"
 
 #: [blog]private
 msgid "This content is private, please login to see it"
@@ -475,11 +475,11 @@ msgstr "Geëncrypteerd bericht"
 
 #: [message]composing
 msgid "Composing…"
-msgstr ""
+msgstr "Aan het schrijven..."
 
 #: [message]paused
 msgid "Paused…"
-msgstr ""
+msgstr "Gepauzeerd..."
 
 #: [message]gone
 msgid "Contact gone"
@@ -499,7 +499,7 @@ msgstr "%s heeft uw aandacht nodig"
 
 #: [chat]placeholder
 msgid "Your message here…"
-msgstr ""
+msgstr "Je bericht hier..."
 
 #: [chat]smileys
 msgid "Smileys"
@@ -515,11 +515,11 @@ msgstr "Hier is nog niets..."
 
 #: [chat]new_text
 msgid "Don’t be shy, send a first message to start the discussion"
-msgstr ""
+msgstr "Wees niet verlegen, zend een eerste bericht om de discussie te starten"
 
 #: [chat]invitation
 msgid "You received an invitation to join a chatroom"
-msgstr "Je hebt een uitnodiging ontvangen om lid te worden van  een chatruimte"
+msgstr "Je hebt een uitnodiging ontvangen om je aan te sluiten bij  een chatruimte"
 
 #: [chat]invitation_join
 msgid "Join %s"
@@ -583,11 +583,11 @@ msgstr "Beheer"
 
 #: [chats]empty_title
 msgid "No chats yet…"
-msgstr ""
+msgstr "Momenteel geen gesprekken..."
 
 #: [chats]empty
 msgid "Start a new conversation by clicking on the %s button."
-msgstr ""
+msgstr "Start een nieuwe conversatie door op de %s knop te klikken."
 
 #: [chats]add
 msgid "Chat with a contact"
@@ -692,7 +692,7 @@ msgstr "Rollen"
 
 #: [communityaffiliation]role_set
 msgid "Role correctly set"
-msgstr ""
+msgstr "rol correct ingesteld"
 
 #: [communityconfig]publication
 msgid "Publication"
@@ -700,11 +700,11 @@ msgstr ""
 
 #: [communityconfig]publish_model_open_title
 msgid "Open"
-msgstr ""
+msgstr "open"
 
 #: [communityconfig]publish_model_open_text
 msgid "Everyone can publish"
-msgstr ""
+msgstr "Iedereen kan publiceren"
 
 #: [communityconfig]publish_model_publishers_text
 msgid "The publishers can publish"
@@ -756,7 +756,7 @@ msgstr "Geef deze groep een label"
 
 #: [communityheader]label_placeholder
 msgid "My Community Name"
-msgstr ""
+msgstr "Mijn groepsnaam"
 
 #: [communityheader]share_subscription
 msgid "Share this subscription publicly"
@@ -796,7 +796,7 @@ msgstr "Hier kun je al je abonnementen beheren."
 
 #: [communitysubscriptions]empty_text2
 msgid "You don’t have any group subscriptions yet."
-msgstr ""
+msgstr "Je bent nog geen lid van een groep"
 
 #: [config]general
 msgid "General"
@@ -836,7 +836,7 @@ msgstr "Verberg NSFW niet"
 
 #: [config]nsfw_text
 msgid "Will allow you to read the posts tagged with the #nsfw tag"
-msgstr "Hiermee laat je ook berichten als #nsfw zijn aangemerkt"
+msgstr "Laat je ook berichten zien die als #nsfw zijn aangemerkt"
 
 #: [config]night_mode
 msgid "Night Mode"
@@ -856,11 +856,11 @@ msgstr ""
 
 #: [config]mam_always
 msgid "Always"
-msgstr ""
+msgstr "altijd"
 
 #: [config]mam_never
 msgid "Never"
-msgstr ""
+msgstr "nooit"
 
 #: [config]mam_saved
 msgid "Archiving preferences saved"
@@ -880,7 +880,7 @@ msgstr ""
 
 #: [confirm]code
 msgid "Authentication code"
-msgstr ""
+msgstr "Authenticatiecode"
 
 #: [roster]add_title
 msgid "Add a contact"
@@ -1216,7 +1216,7 @@ msgstr ""
 
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
-msgstr "Roepnaam niet mogelijk (moet tussen 4 en 40 tekens zijn)"
+msgstr "Bijnaam niet mogelijk (moet tussen 4 en 40 tekens zijn)"
 
 #: [menu]empty_title
 msgid "No news yet…"
@@ -1379,23 +1379,20 @@ msgid "Comment published"
 msgstr "Reactie gepubliceerd"
 
 #: [post]comment_like_published
-#, fuzzy
 msgid "Liked"
-msgstr "Vind ik leuk"
+msgstr ""
 
 #: [post]comment_publish_error
-#, fuzzy
 msgid "The comment cannot be published"
-msgstr "Reactie gepubliceerd"
+msgstr ""
 
 #: [post]comment_deleted
 msgid "Comment deleted"
 msgstr "Reactie verwijderd"
 
 #: [post]liked
-#, fuzzy
 msgid "Liked your publication"
-msgstr "Mijn berichten"
+msgstr ""
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1439,7 +1436,7 @@ msgstr ""
 
 #: [hello]profile_title
 msgid "Looks like you didn’t complete your profile yet"
-msgstr ""
+msgstr "Het lijkt er op dat je je profiel niet helemaal hebt ingevuld"
 
 #: [hello]profile_paragraph
 msgid "You can go in the Configuration page to describe yourself and put a nice picture"
@@ -1487,7 +1484,7 @@ msgstr "Voorbeeld"
 
 #: [publishbrief]attach
 msgid "Add a file or a picture"
-msgstr ""
+msgstr "Voeg een bestand of foto toe"
 
 #: [publishbrief]no_publication
 msgid "You cannot publish a post here"
@@ -1499,7 +1496,7 @@ msgstr "Geen voorbeeld beschikbaar"
 
 #: [publishbrief]valid_url
 msgid "Please enter a valid URL"
-msgstr ""
+msgstr "Voer een geldig url in alstublieft"
 
 #: [publishbrief]content_text
 msgid "You can format your content using Markdown"
@@ -1542,9 +1539,8 @@ msgid "Standard room"
 msgstr ""
 
 #: [rooms]gateway_room
-#, fuzzy
 msgid "Gateway room"
-msgstr "Gateway"
+msgstr ""
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -1627,9 +1623,8 @@ msgid "Send this link to your contacts"
 msgstr ""
 
 #: [room]public_muc
-#, fuzzy
 msgid "Public"
-msgstr "Publiceer"
+msgstr ""
 
 #: [room]public_muc_text
 msgid "The participants of this chatroom can see each other's profile"
@@ -1648,38 +1643,32 @@ msgid "#cats, username@server.com, John…"
 msgstr ""
 
 #: [search]no_contacts_title
-#, fuzzy
 msgid "No contacts yet?"
-msgstr "Nog geen reacties"
+msgstr ""
 
 #: [search]no_contacts_text
 msgid "Find one by searching for his name or id"
 msgstr ""
 
 #: [sendto]attach
-#, fuzzy
 msgid "Attach to a blog publication"
-msgstr "Contactpersoon publiceren"
+msgstr ""
 
 #: [sendto]contact
-#, fuzzy
 msgid "Send it to a contact"
-msgstr "Nodig een contactpersoon uit"
+msgstr ""
 
 #: [sendto]shared_with
-#, fuzzy
 msgid "Post shared"
-msgstr "bericht gepubliceerd"
+msgstr ""
 
 #: [sendto]shared
-#, fuzzy
 msgid "Post shared with your contact"
-msgstr "Chat met een contactpersoon"
+msgstr ""
 
 #: [sendto]more_contacts
-#, fuzzy
 msgid "More contacts"
-msgstr "Frequente contacten"
+msgstr ""
 
 #: [statistics]title
 msgid "Statistics"
@@ -1774,9 +1763,8 @@ msgid "Set a local nickname to allow the other users of the instance to find you
 msgstr ""
 
 #: [profile]nickname_set
-#, fuzzy
 msgid "Your nickname is %s."
-msgstr "Jouw nickname"
+msgstr ""
 
 #: [profile]nickname_placeholder
 msgid "John_Bob96"
@@ -1791,9 +1779,8 @@ msgid "The nickname is already registered"
 msgstr ""
 
 #: [profile]nickname_saved
-#, fuzzy
 msgid "Nickname saved"
-msgstr "bijnaam"
+msgstr ""
 
 #: [save]submit [button]submit
 msgid "Submit"
@@ -1908,9 +1895,8 @@ msgid "Login"
 msgstr "Inloggen"
 
 #: [page]not_found
-#, fuzzy
 msgid "Not Found"
-msgstr "Niet nu"
+msgstr ""
 
 #: [page]feed
 msgid "Feed"
@@ -2663,19 +2649,16 @@ msgid "Publisher"
 msgstr ""
 
 #: [affiliation]publish-only
-#, fuzzy
 msgid "Publish only"
-msgstr "Publiceer"
+msgstr ""
 
 #: [affiliation]member
-#, fuzzy
 msgid "Member"
-msgstr "Leden"
+msgstr ""
 
 #: [affiliation]no-aff
-#, fuzzy
 msgid "No affiliation"
-msgstr "Meldingen"
+msgstr ""
 
 #: [affiliation]outcast
 msgid "Outcast"
@@ -2688,18 +2671,3 @@ msgstr "De API is niet bereikbaar, probeer later nog eens"
 #: [field]type_here
 msgid "Type here"
 msgstr "Typ hier"
-
-#~ msgid "Privacy Level"
-#~ msgstr "Privacy-Niveau"
-
-#~ msgid "This user has not posted anything right now"
-#~ msgstr "Deze gebruiker heeft momenteel niets gepost"
-
-#~ msgid "Refresh all the streams"
-#~ msgstr "Vernieuw alle streams"
-
-#~ msgid "This message will be displayed on the login page"
-#~ msgstr "Dit bericht zal worden vertoond op de loginpagina."
-
-#~ msgid "Since"
-#~ msgstr "Sinds"

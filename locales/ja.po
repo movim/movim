@@ -99,7 +99,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-07-05 11:28+0200\n"
-"PO-Revision-Date: 2018-09-18 06:12+0000\n"
+"PO-Revision-Date: 2019-07-05 10:14+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Japanese (http://www.transifex.com/movim/movim/language/ja/)\n"
 "Language: ja\n"
@@ -107,7 +107,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
+"X-Generator: Translate Toolkit 2.3.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -182,14 +182,12 @@ msgid "Type your full username"
 msgstr ""
 
 #: [account]delete_text_error
-#, fuzzy
 msgid "Please provide a valid username."
-msgstr "適正なパスワードを記入してください（最低６文字）"
+msgstr ""
 
 #: [account]gateway_title
-#, fuzzy
 msgid "Gateways"
-msgstr "ゲートウェイ"
+msgstr ""
 
 #: [account]clear
 msgid "Leave this instance"
@@ -1387,9 +1385,8 @@ msgid "Comment deleted"
 msgstr ""
 
 #: [post]liked
-#, fuzzy
 msgid "Liked your publication"
-msgstr "公開ブログへ"
+msgstr ""
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1536,9 +1533,8 @@ msgid "Standard room"
 msgstr ""
 
 #: [rooms]gateway_room
-#, fuzzy
 msgid "Gateway room"
-msgstr "ゲートウェイ"
+msgstr ""
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -1653,24 +1649,20 @@ msgid "Attach to a blog publication"
 msgstr ""
 
 #: [sendto]contact
-#, fuzzy
 msgid "Send it to a contact"
-msgstr "誰かに招待を送る"
+msgstr ""
 
 #: [sendto]shared_with
-#, fuzzy
 msgid "Post shared"
-msgstr "投稿"
+msgstr ""
 
 #: [sendto]shared
-#, fuzzy
 msgid "Post shared with your contact"
-msgstr "誰かとチャットする"
+msgstr ""
 
 #: [sendto]more_contacts
-#, fuzzy
 msgid "More contacts"
-msgstr "知り合い"
+msgstr ""
 
 #: [statistics]title
 msgid "Statistics"
@@ -1765,9 +1757,8 @@ msgid "Set a local nickname to allow the other users of the instance to find you
 msgstr ""
 
 #: [profile]nickname_set
-#, fuzzy
 msgid "Your nickname is %s."
-msgstr "ニックネーム"
+msgstr ""
 
 #: [profile]nickname_placeholder
 msgid "John_Bob96"
@@ -1782,9 +1773,8 @@ msgid "The nickname is already registered"
 msgstr ""
 
 #: [profile]nickname_saved
-#, fuzzy
 msgid "Nickname saved"
-msgstr "ニックネーム"
+msgstr ""
 
 #: [save]submit [button]submit
 msgid "Submit"
@@ -2657,9 +2647,8 @@ msgid "Publish only"
 msgstr ""
 
 #: [affiliation]member
-#, fuzzy
 msgid "Member"
-msgstr "メンバー"
+msgstr ""
 
 #: [affiliation]no-aff
 msgid "No affiliation"
@@ -2676,9 +2665,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr "ここに入力を"
-
-#~ msgid "This user has not posted anything right now"
-#~ msgstr "このユーザがまだ投稿していません"
-
-#~ msgid "This message will be displayed on the login page"
-#~ msgstr "このメッセージはログインページに表示されます"
