@@ -18,6 +18,11 @@ var Snap = {
                 .then(stream => {
                     Snap.video.srcObject = stream;
                     Snap.video.play();
+
+                    // If we cancel after the authorization was given
+                    if (Snap.snap.classList == '') {
+                        Snap.close();
+                    };
                 });
         }
     },
