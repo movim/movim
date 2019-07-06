@@ -27,6 +27,9 @@ var MovimTpl = {
             } else {
                 Snap.end();
             }
+        } else if (document.querySelector('#preview')
+         && document.querySelector('#preview').innerHTML != '') {
+            Preview_ajaxHide();
         } else if (Drawer.filled()) {
             Drawer.clear();
             // If a dialog box is shown
