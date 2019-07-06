@@ -1,7 +1,7 @@
 Movim Changelog
 ================
 
-v0.15 (trunk)
+v0.15 – Donati (trunk)
 ---------------------------
  * Redesign the Communities page
  * Center verticaly the content of cards when they are displayed as flexbox
@@ -16,6 +16,8 @@ v0.15 (trunk)
  * Add Snap widget to quickly take pictures and publish them in Chats or Posts
  * Refactor the notification mechanism for the Chat (move the status to the messages table)
  * Comment and remove SQLite support in the project
+ * Using XEP-0372: References allow Movim users to share articles in the chats and chatrooms
+ * Display errors when the Pubsub nodes config are not saved
 
 v0.14.1
 ---------------------------

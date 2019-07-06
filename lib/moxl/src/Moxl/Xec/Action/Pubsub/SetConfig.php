@@ -18,6 +18,12 @@ class SetConfig extends Errors
         Pubsub::setConfig($this->_to, $this->_node, $this->_data);
     }
 
+    public function error($id, $message = '')
+    {
+        $this->pack($message);
+        $this->deliver();
+    }
+
     public function handle($stanza, $parent = false)
     {
         $this->deliver();

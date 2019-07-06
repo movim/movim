@@ -17,6 +17,7 @@ class CommunityConfig extends Base
     {
         $this->registerEvent('pubsub_getconfig_handle', 'onConfig');
         $this->registerEvent('pubsub_setconfig_handle', 'onConfigSaved');
+        $this->registerEvent('pubsub_setconfig_error', 'onConfigError');
         $this->registerEvent('avatar_set_pubsub', 'onAvatarSet');
     }
 
@@ -47,6 +48,14 @@ class CommunityConfig extends Base
     public function onConfigSaved()
     {
         Notification::toast($this->__('communityaffiliation.config_saved'));
+    }
+
+    public function onConfigError($packet)
+    {
+        Notification::toast(
+            $packet->content ??
+            $this->__('communityaffiliation.config_error')
+        );
     }
 
     public function ajaxGetAvatar($origin, $node)
