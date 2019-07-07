@@ -67,18 +67,23 @@
                     {/if}
                 </span>
             </p>
-            <p>
+            <p class="line">
                 {if="$value->items > 0"}
                      {$value->items} <i class="material-icons">receipt</i>
                 {/if}
                 {if="$value->occupants > 0 && $value->items > 0"}
-                  -
+                    –
                 {/if}
                 {if="$value->occupants > 0"}
                     <span title="{$c->__('communitydata.sub', $value->occupants)}">
                         {$value->occupants} <i class="material-icons">people</i>
                     </span>
                 {/if}
+
+                {if="$value->occupants > 0 || $value->items > 0"}
+                    –
+                {/if}
+                {$value->node}
             </p>
         </li>
     {/loop}

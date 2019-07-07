@@ -29,10 +29,15 @@
                 {else}
                     {$value->node}
                 {/if}
+                {if="$value->description"}
+                    <span class="second">
+                        {$value->description|strip_tags}
+                    </span>
+                {/if}
             </p>
-            {if="$value->description"}
-                <p class="line">{$value->description|strip_tags}</p>
-            {/if}
+            <p class="line">
+                {$value->server} / {$value->node}
+            </p>
         </li>
     {/loop}
 </ul>
