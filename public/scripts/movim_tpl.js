@@ -129,7 +129,7 @@ var MovimTpl = {
 
             if (
             (
-                (startX < 10 && startY > 56)
+                (startX < document.body.clientWidth/35 && startY > 56)
                 ||
                 (nav.classList.contains('active') && startX > document.body.clientWidth - 50)
             )
