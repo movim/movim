@@ -1,0 +1,267 @@
+<?xml version="1.0"?>
+<Project xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://usefulinc.com/ns/doap#" xmlns:foaf="http://xmlns.com/foaf/0.1/">
+    <name>Movim</name>
+
+    <created>2011-03-03</created>
+
+    <shortdesc xml:lang="en">Decentralized social platform</shortdesc>
+
+    <description xml:lang="en">Responsive web-based cross-platform XMPP client</description>
+
+    <homepage rdf:resource="https://movim.eu/"/>
+    <doc rdf:resource="https://github.com/movim/movim/wiki"/>
+    <download-page rdf:resource="https://github.com/movim/movim/releases"/>
+    <bug-database rdf:resource="https://github.com/movim/movim/issues"/>
+
+    <license rdf:resource="https://github.com/movim/movim/blob/master/COPYING"/>
+
+    <!-- TODO: https://github.com/ewilderj/doap/issues/49 -->
+    <language>eng</language>
+
+    <!-- TODO: https://github.com/ewilderj/doap/issues/40 -->
+    <logo rdf:resource="https://movim.eu/img/vectorial.svg"/>
+    <!-- TODO: https://github.com/ewilderj/doap/issues/50 -->
+    <screenshot rdf:resource="https://movim.eu/img/community.png"/>
+
+    <programming-language>PHP</programming-language>
+
+    <os>Linux</os>
+
+    <!-- TODO: Categories are URIs, find a better location for them. -->
+    <category rdf:resource="xmpp:linkmauve.fr/category/XMPP"/>
+    <category rdf:resource="xmpp:linkmauve.fr/category/Jabber"/>
+    <category rdf:resource="xmpp:linkmauve.fr/category/client"/>
+    <category rdf:resource="xmpp:linkmauve.fr/category/console"/>
+    <category rdf:resource="xmpp:linkmauve.fr/category/web"/>
+
+    <maintainer>
+        <foaf:Person>
+            <foaf:name>Timothée Jaussoin</foaf:name>
+            <foaf:homepage rdf:resource="https://edhelas.movim.eu/"/>
+            <!--<foaf:mbox_sha1sum>aaa4dac2b31c1be4ee8f8e2ab986d34fb261974f</foaf:mbox_sha1sum>-->
+        </foaf:Person>
+    </maintainer>
+
+    <repository>
+        <!-- TODO: GitRepository isn’t defined in doap.rdf, see
+             https://github.com/ewilderj/doap/issues/42, and
+             https://github.com/ewilderj/doap/issues/38 for a proposed
+             solution. -->
+        <GitRepository>
+            <browse rdf:resource="https://github.com/movim/movim/"/>
+            <location rdf:resource="https://github.com/movim/movim.git"/>
+        </GitRepository>
+    </repository>
+
+    <implements rdf:resource="https://xmpp.org/rfcs/rfc6120.html"/>
+    <implements rdf:resource="https://xmpp.org/rfcs/rfc6121.html"/>
+    <implements rdf:resource="https://xmpp.org/rfcs/rfc6122.html"/>
+    <implements rdf:resource="https://xmpp.org/rfcs/rfc7590.html"/>
+    <!-- TODO: Report a bug to support that in poezio. -->
+    <!-- TODO: Add this one to the xsf/rfcs repository. -->
+    <!--<implements rdf:resource="https://xmpp.org/rfcs/rfc5122.html"/>-->
+
+    <!-- TODO: Figure out what’s still missing, and what could instead go into DOAP. -->
+    <!-- TODO: Write a schema for that. -->
+    <xmpp-software xmlns="xmpp:linkmauve.fr/protocols/xmpp-software">
+        <type>client</type>
+        <!-- TODO: Maybe this is just a normal dependency?
+	     See https://github.com/ewilderj/doap/issues/1 -->
+        <!-- TODO: Should we link to anther DOAP file here? -->
+        <!--<library rdf:resource="https://dev.louiz.org/projects/slixmpp"/>-->
+        <extension number="0004" status="complete" version="2.9"/>
+        <extension number="0012" status="complete" version="2.0"/>
+        <extension number="0030" status="complete" version="2.4"/>
+        <extension number="0045" status="partial" version="1.27.1"/>
+        <extension number="0048" status="complete" version="1.1"/>
+        <extension number="0049" status="complete" version="1.2"/>
+        <extension number="0050" status="partial" version="1.2.2"/>
+        <extension number="0054" status="complete" version="1.2" note="no avatar sent"/>
+        <extension number="0059" status="complete" version="1.0" note="for PEP/Pubsub retrieval and MAM"/>
+        <extension number="0060" status="partial" version="1.15.7"/>
+        <extension number="0070" status="complete" version="1.0.1"/>
+        <extension number="0071" status="partial" version="1.5.4"/>
+        <extension number="0077" status="partial" version="2.4"/>
+        <extension number="0084" status="complete" version="1.1.2"/>
+        <extension number="0085" status="partial" version="2.1" note="also displayed in group chat"/>
+        <extension number="0092" status="complete" version="1.1" note="send only"/>
+        <extension number="0100" status="complete" version="1.0"/>
+        <extension number="0107" status="partial" version="1.2" note="read only"/>
+        <extension number="0108" status="partial" version="1.3" note="read only"/>
+        <extension number="0115" status="partial" version="1.5.1"/>
+        <extension number="0118" status="partial" version="1.2" note="read only"/>
+        <extension number="0153" status="complete" version="1.1"/>
+        <extension number="0157" status="complete" version="1.0.1"/>
+        <extension number="0163" status="complete" version="1.2.1"/>
+        <extension number="0172" status="complete" version="1.1" note="read only"/>
+        <extension number="0184" status="complete" version="1.2"/>
+        <extension number="0199" status="complete" version="2.0.1"/>
+        <extension number="0203" status="complete" version="2.0"/>
+        <extension number="0231" status="partial" version="1.0" note="stickers feature"/>
+        <extension number="0245" status="complete" version="1.0"/>
+        <extension number="0256" status="complete" version="1.1"/>
+        <extension number="0277" status="complete" version="0.6.3"/>
+        <extension number="0280" status="complete" version="0.11.0"/>
+        <extension number="0292" status="complete" version="0.10"/>
+        <extension number="0297" status="complete" version="1.0" since="0.8" note="only used for Carbons"/>
+        <extension number="0308" status="complete" version="1.0"/>
+        <extension number="0313" status="complete" version="0.6.3"/>
+        <extension number="0330" status="complete" version="0.1"/>
+        <extension number="0333" status="complete" version="0.3"/>
+        <extension number="0334" status="complete" version="0.2"/>
+        <extension number="0359" status="complete" version="0.6"/>
+        <extension number="0363" status="complete" version="0.9"/>
+        <extension number="0367" status="complete" version="0.3" note="for reactions"/>
+        <extension number="0372" status="complete" version="0.2"/>
+        <extension number="0385" status="partial" version="0.2.1"/>
+    </xmpp-software>
+
+    <!-- TODO: https://github.com/ewilderj/doap/issues/52 -->
+    <release>
+        <Version>
+            <revision>0.14.1</revision>
+            <created>2019-02-09</created>
+            <file-release rdf:resource="https://github.com/movim/movim/releases/tag/v0.14.1"/>
+        </Version>
+    </release>
+    <release>
+        <Version>
+            <revision>0.14</revision>
+            <created>2018-11-18</created>
+            <file-release rdf:resource="https://github.com/movim/movim/releases/tag/v0.14"/>
+        </Version>
+    </release>
+    <release>
+        <Version>
+            <revision>0.13</revision>
+            <created>2017-12-24</created>
+            <file-release rdf:resource="https://github.com/movim/movim/releases/tag/v0.13"/>
+        </Version>
+    </release>
+    <release>
+        <Version>
+            <revision>0.12</revision>
+            <created>2016-11-16</created>
+            <file-release rdf:resource="https://github.com/movim/movim/releases/tag/v0.12.1"/>
+        </Version>
+    </release>
+    <release>
+        <Version>
+            <revision>0.12</revision>
+            <created>2017-10-19</created>
+            <file-release rdf:resource="https://github.com/movim/movim/releases/tag/v0.12"/>
+        </Version>
+    </release>
+    <release>
+        <Version>
+            <revision>0.11</revision>
+            <created>2017-03-18</created>
+            <file-release rdf:resource="https://github.com/movim/movim/releases/tag/v0.11"/>
+        </Version>
+    </release>
+    <release>
+        <Version>
+            <revision>0.10</revision>
+            <created>2016-08-07</created>
+            <file-release rdf:resource="https://github.com/movim/movim/releases/tag/v0.10"/>
+        </Version>
+    </release>
+    <release>
+        <Version>
+            <revision>0.9</revision>
+            <created>2016-01-10</created>
+            <file-release rdf:resource="https://github.com/movim/movim/releases/tag/v0.9"/>
+        </Version>
+    </release>
+    <release>
+        <Version>
+            <revision>0.8.1</revision>
+            <created>2015-06-24</created>
+            <file-release rdf:resource="https://github.com/movim/movim/releases/tag/v0.8.1"/>
+        </Version>
+    </release>
+    <release>
+        <Version>
+            <revision>0.8</revision>
+            <created>2015-06-24</created>
+            <file-release rdf:resource="https://github.com/movim/movim/releases/tag/v0.8"/>
+        </Version>
+    </release>
+    <release>
+        <Version>
+            <revision>0.7.2</revision>
+            <created>2015-06-24</created>
+            <file-release rdf:resource="https://github.com/movim/movim/releases/tag/v0.7.2"/>
+        </Version>
+    </release>
+    <release>
+        <Version>
+            <revision>0.7.1</revision>
+            <created>2015-06-24</created>
+            <file-release rdf:resource="https://github.com/movim/movim/releases/tag/v0.7.1"/>
+        </Version>
+    </release>
+    <release>
+        <Version>
+            <revision>0.7</revision>
+            <created>2015-06-24</created>
+            <file-release rdf:resource="https://github.com/movim/movim/releases/tag/v0.7"/>
+        </Version>
+    </release>
+    <release>
+        <Version>
+            <revision>0.6.1</revision>
+            <created>2015-06-24</created>
+            <file-release rdf:resource="https://github.com/movim/movim/releases/tag/v0.6.1"/>
+        </Version>
+    </release>
+    <release>
+        <Version>
+            <revision>0.6</revision>
+            <created>2015-06-24</created>
+            <file-release rdf:resource="https://github.com/movim/movim/releases/tag/v0.6"/>
+        </Version>
+    </release>
+    <release>
+        <Version>
+            <revision>0.5</revision>
+            <created>2012-06-24</created>
+            <file-release rdf:resource="https://github.com/movim/movim/releases/tag/v0.5"/>
+        </Version>
+    </release>
+    <release>
+        <Version>
+            <revision>0.4.1</revision>
+            <created>2012-02-22</created>
+            <file-release rdf:resource="https://github.com/movim/movim/releases/tag/v0.4.1"/>
+        </Version>
+    </release>
+    <release>
+        <Version>
+            <revision>0.4</revision>
+            <created>2012-02-05</created>
+            <file-release rdf:resource="https://github.com/movim/movim/releases/tag/v0.4"/>
+        </Version>
+    </release>
+    <release>
+        <Version>
+            <revision>0.3</revision>
+            <created>2011-08-12</created>
+            <file-release rdf:resource="https://github.com/movim/movim/releases/tag/v0.3"/>
+        </Version>
+    </release>
+    <release>
+        <Version>
+            <revision>0.2</revision>
+            <created>2011-05-21</created>
+            <file-release rdf:resource="https://github.com/movim/movim/releases/tag/v0.2"/>
+        </Version>
+    </release>
+    <release>
+        <Version>
+            <revision>0.1</revision>
+            <created>2011-03-03</created>
+            <file-release rdf:resource="https://github.com/movim/movim/releases/tag/v0.1"/>
+        </Version>
+    </release>
+</Project>
