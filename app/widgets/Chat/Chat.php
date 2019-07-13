@@ -1,6 +1,7 @@
 <?php
 
 use Moxl\Xec\Action\Message\Publish;
+use Moxl\Xec\Action\Message\Reactions;
 
 use Moxl\Xec\Action\Muc\GetConfig;
 use Moxl\Xec\Action\Muc\SetConfig;
@@ -287,7 +288,7 @@ class Chat extends \Movim\Widget\Base
      * @param string $message
      * @return void
      */
-    public function ajaxHttpSendMessage($to, $message = false, $muc = false, $resource = false, $replace = false, $file = false, $attachId = false)
+    public function ajaxHttpSendMessage($to, $message = false, $muc = false, $resource = false, $replace = false, $file = false)
     {
         $message = trim($message);
         if (filter_var($message, FILTER_VALIDATE_URL)) {
@@ -375,40 +376,16 @@ class Chat extends \Movim\Widget\Base
             $p->setFile($file);
         }
 
-        if ($attachId) {
-            $parentMessage = $this->user->messages()
-                            ->where('replaceid', $attachId)
-                            ->first();
-
-            if ($parentMessage) {
-                if (!$p->getMuc()) {
-                    $reaction = new Reaction;
-                    $reaction->message_mid = $parentMessage->mid;
-                    $reaction->jidfrom = ($muc)
-                        ? $this->user->session->username
-                        : $this->user->id;
-                    $reaction->emoji = $body;
-                    $reaction->save();
-                }
-
-                $p->setAttachId($attachId);
-
-                $m = $parentMessage;
-            }
-        }
-
         (ChatOwnState::getInstance())->halt();
 
         $p->request();
 
         /* Is it really clean ? */
         if (!$p->getMuc()) {
-            if ($attachId == false) {
-                $m->oldid = $oldid;
-                $m->body = htmlentities(trim($m->body), ENT_XML1, 'UTF-8');
-                $m->save();
-                $m = $m->fresh();
-            }
+            $m->oldid = $oldid;
+            $m->body = htmlentities(trim($m->body), ENT_XML1, 'UTF-8');
+            $m->save();
+            $m = $m->fresh();
 
             $packet = new \Moxl\Xec\Payload\Packet;
             $packet->content = $m;
@@ -442,16 +419,19 @@ class Chat extends \Movim\Widget\Base
      */
     public function ajaxHttpSendReaction(string $mid, string $emoji)
     {
-        $message = $this->user->messages()
+        $parentMessage = $this->user->messages()
                         ->where('mid', $mid)
                         ->first();
 
-        if ($message) {
+        $emojiHandler = \Movim\Emoji::getInstance();
+        $emojiHandler->replace($emoji);
+
+        if ($parentMessage && $emojiHandler->isSingleEmoji()) {
             // Try to load the MUC presence and resolve the resource
             $mucPresence = null;
-            if ($message->type == 'groupchat') {
+            if ($parentMessage->type == 'groupchat') {
                 $mucPresence = $this->user->session->presences()
-                                    ->where('jid', $message->jidfrom)
+                                    ->where('jid', $parentMessage->jidfrom)
                                     ->where('mucjid', $this->user->id)
                                     ->where('muc', true)
                                     ->first();
@@ -459,19 +439,61 @@ class Chat extends \Movim\Widget\Base
                 if (!$mucPresence) return;
             }
 
-            if ($message->reactions()
+            $jidfrom = ($parentMessage->type == 'groupchat')
+                ? $mucPresence->resource
+                : $this->user->id;
+
+            $emojis = $parentMessage->reactions()
+                ->where('jidfrom', $jidfrom)
+                ->get();
+
+            $r = new Reactions;
+            $newEmojis = [];
+
+            // This reaction was not published yet
+            if ($emojis->where('emoji', $emoji)->count() == 0) {
+                $reaction = new Reaction;
+                $reaction->message_mid = $parentMessage->mid;
+                $reaction->jidfrom = ($parentMessage->type == 'groupchat')
+                    ? $this->user->session->username
+                    : $this->user->id;
+                $reaction->emoji = $emoji;
+
+                if ($parentMessage->type != 'groupchat') {
+                    $reaction->save();
+                }
+
+                $newEmojis = $emojis->push($reaction);
+            } else {
+                if ($parentMessage->type != 'groupchat') {
+                    $parentMessage->reactions()
+                        ->where('jidfrom', $jidfrom)
                         ->where('emoji', $emoji)
-                        ->where('jidfrom', ($message->type == 'groupchat')
-                            ? $mucPresence->resource
-                            : $this->user->id)
-                        ->count() == 0) {
-                $this->ajaxHttpSendMessage(
-                    $message->jidfrom != $message->user_id
-                        ? $message->jidfrom
-                        : $message->jidto,
-                    $emoji, $message->type == 'groupchat',
-                    false, false, false, $message->replaceid
-                );
+                        ->delete();
+                }
+
+                $newEmojis = $emojis->filter(function ($value, $key) use ($emoji) {
+                    return $value->emoji != $emoji;
+                });
+            }
+
+            $r->setTo($parentMessage->jidfrom != $parentMessage->user_id
+                ? $parentMessage->jidfrom
+                : $parentMessage->jidto)
+              ->setId(\generateUUID())
+              ->setParentId($parentMessage->replaceid)
+              ->setReactions($newEmojis->pluck('emoji')->toArray());
+
+            if ($parentMessage->type == 'groupchat') {
+                $r->setMuc();
+            }
+
+            $r->request();
+
+            if ($parentMessage->type != 'groupchat') {
+                $packet = new \Moxl\Xec\Payload\Packet;
+                $packet->content = $parentMessage;
+                $this->onMessage($packet);
             }
         }
     }

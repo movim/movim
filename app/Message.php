@@ -118,52 +118,18 @@ class Message extends Model
             $this->published = gmdate('Y-m-d H:i:s');
         }
 
-        if ($stanza->body || $stanza->subject) {
-            $this->type = 'chat';
-            if ($stanza->attributes()->type) {
-                $this->type = (string)$stanza->attributes()->type;
-            }
+        $this->type = 'chat';
+        if ($stanza->attributes()->type) {
+            $this->type = (string)$stanza->attributes()->type;
+        }
 
+        if ($stanza->body || $stanza->subject) {
             /*if (isset($stanza->attributes()->id)) {
                 $this->id = (string)$stanza->attributes()->id;
             }*/
 
             if ($stanza->body) {
                 $this->body = (string)$stanza->body;
-            }
-
-            # XEP-0367: Message Attaching
-            if (isset($stanza->{'attach-to'})
-            && $stanza->{'attach-to'}->attributes()->xmlns == 'urn:xmpp:message-attaching:1') {
-                $reaction = new Reaction;
-
-                $parentMessage = $this->user
-                                ->messages()
-                                ->where('replaceid', $stanza->{'attach-to'}->attributes()->id)
-                                ->where(function ($query)  {
-                                    $query->where('jidfrom', $this->jidfrom)
-                                        ->orWhere('jidto', $this->jidfrom);
-                                })
-                                ->first();
-
-                $emoji = \Movim\Emoji::getInstance();
-                $emoji->replace($this->body);
-
-                if ($parentMessage && $emoji->isSingleEmoji()) {
-                    $reaction->message_mid = $parentMessage->mid;
-                    $reaction->emoji = $this->body;
-                    $reaction->jidfrom = ($this->type == 'groupchat')
-                        ? $this->resource
-                        : $this->jidfrom;
-
-                    try {
-                        $reaction->save();
-                    } catch (QueryException $exception) {
-                        // Duplicate ?
-                    }
-
-                    return $parentMessage;
-                }
             }
 
             if ($stanza->x
@@ -330,10 +296,61 @@ class Message extends Model
 
             //return $this->checkPicture();
         } elseif (isset($stanza->x)
-        && $stanza->x->attributes()->xmlns == 'jabber:x:conference') {
+            && $stanza->x->attributes()->xmlns == 'jabber:x:conference') {
             $this->type = 'invitation';
             $this->body = (string)$stanza->x->attributes()->reason;
             $this->subject = (string)$stanza->x->attributes()->jid;
+        }
+
+        # XEP-xxxx: Message Reactions
+        elseif (isset($stanza->reactions)
+            && $stanza->reactions->attributes()->xmlns == 'urn:xmpp:reactions:0') {
+
+            $parentMessage = $this->user
+                ->messages()
+                ->where('replaceid', (string)$stanza->reactions->attributes()->to)
+                ->where(function ($query)  {
+                    $query->where('jidfrom', $this->jidfrom)
+                        ->orWhere('jidto', $this->jidfrom);
+                })
+                ->first();
+
+            if ($parentMessage) {
+                $resource = ($this->type == 'groupchat')
+                    ? $this->resource
+                    : $this->jidfrom;
+
+                $parentMessage
+                    ->reactions()
+                    ->where('jidfrom', $resource)
+                    ->delete();
+
+                $emojis = [];
+                $now = \Carbon\Carbon::now();
+                $emoji = \Movim\Emoji::getInstance();
+
+                foreach ($stanza->reactions->reaction as $children) {
+                    $emoji->replace((string)$children);
+                    if ($emoji->isSingleEmoji()) {
+                        $reaction = new Reaction;
+                        $reaction->message_mid = $parentMessage->mid;
+                        $reaction->emoji = (string)$children;
+                        $reaction->jidfrom = $resource;
+                        $reaction->created_at = $now;
+                        $reaction->updated_at = $now;
+
+                        \array_push($emojis, $reaction->toArray());
+                    }
+                }
+
+                try {
+                    Reaction::insert($emojis);
+                } catch (QueryException $exception) {
+                    // Duplicate ?
+                }
+
+                return $parentMessage;
+            }
         }
 
         return $this;

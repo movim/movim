@@ -8,9 +8,9 @@ use Movim\Session;
 
 class Muc
 {
-    public static function message($to, $content, $html = false, $id = false, $file = false, $attachId = false)
+    public static function message($to, $content = false, $html = false, $id = false, $file = false, $parentId = false, array $reactions = [])
     {
-        Message::maker($to, $content, $html, 'groupchat', false, false, $id, false, $file, false, $attachId);
+        Message::maker($to, $content, $html, 'groupchat', false, false, $id, false, $file, false, $parentId, $reactions);
     }
 
     public static function composing($to)

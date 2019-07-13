@@ -42,6 +42,7 @@ class Utils
             'urn:xmpp:chat-markers:0',
             'urn:xmpp:reference:0',
             'urn:xmpp:message-attaching:1',
+            'urn:xmpp:reactions:0',
 
             // Jingle
             'http://jabber.org/protocol/jingle',

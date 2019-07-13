@@ -18,7 +18,8 @@ class Message
         $replace = false,
         $file = false,
         $invite = false,
-        $attachId = false
+        $parentId = false,
+        array $reactions = []
     ) {
         $session = Session::start();
 
@@ -153,19 +154,24 @@ class Message
             $x->appendChild($xinvite);
         }
 
-        if ($attachId != false) {
-            $attach = $dom->createElement('attach-to');
-            $attach->setAttribute('xmlns', 'urn:xmpp:message-attaching:1');
-            $attach->setAttribute('id', $attachId);
-            $root->appendChild($attach);
+        if ($parentId != false) {
+            $reactionsn = $dom->createElement('reactions');
+            $reactionsn->setAttribute('xmlns', 'urn:xmpp:reactions:0');
+            $reactionsn->setAttribute('to', $parentId);
+
+            foreach ($reactions as $emoji) {
+                $reaction = $dom->createElement('reaction', $emoji);
+                $reactionsn->appendChild($reaction);
+            }
+            $root->appendChild($reactionsn);
         }
 
         \Moxl\API::request($dom->saveXML($dom->documentElement));
     }
 
-    public static function message($to, $content, $html = false, $id = false, $replace = false, $file = false, $attachId = false)
+    public static function message($to, $content = false, $html = false, $id = false, $replace = false, $file = false, $parentId = false, array $reactions = [])
     {
-        self::maker($to, $content, $html, 'chat', 'active', 'request', $id, $replace, $file, false, $attachId);
+        self::maker($to, $content, $html, 'chat', 'active', 'request', $id, $replace, $file, false, $parentId, $reactions);
     }
 
     public static function composing($to)
