@@ -142,11 +142,9 @@
             <button class="button flat gray" onclick="Post.comment()">
                 <i class="material-icons">comment</i> {$c->__('post.comment_add')}
             </button>
-            {if="$c->getUser()->hasPubsub()"}
-            <a class="button flat gray" onclick="Post.share()">
-                <i class="material-icons">share</i> {$c->__('button.share')}
+            <a class="button flat gray" onclick="SendTo_ajaxSendSearch('{$post->getRef()}')">
+                <i class="material-icons">send</i> {$c->__('button.share')}
             </a>
-            {/if}
         </p>
     </li>
     {/if}

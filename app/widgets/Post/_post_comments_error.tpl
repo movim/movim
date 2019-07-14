@@ -11,9 +11,9 @@
     <li class="block">
         <p class="center">
             {if="$c->getUser()->hasPubsub()"}
-            <button class="button icon flat gray" onclick="Post.share()">
-                <i class="material-icons">share</i> {$c->__('button.share')}
-            </button>
+                <button class="button icon flat gray" onclick="Post.share()">
+                    <i class="material-icons">share</i> {$c->__('button.share')}
+                </button>
             {/if}
         </p>
     </li>
