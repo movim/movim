@@ -361,7 +361,7 @@ ul li div.bubble:not(.sticker):not(.file) {
     margin-bottom: 0.75rem;
 }
 
-ul li div.bubble > div {
+ul li div.bubble:not(.sticker):not(.file) > div {
     padding-right: 0.75rem;
 }
 

@@ -495,6 +495,12 @@ var Chat = {
 
         if (data.file != null && data.card === undefined) {
             bubble.querySelector('div.bubble').classList.add('file');
+
+            // Ugly fix to clear the paragraph if the file contains a similar link
+            if (p.querySelector('a') && p.querySelector('a').href == data.file.uri) {
+                p.innerHTML = '';
+            }
+
             p.appendChild(Chat.getFileHtml(data.file, data.sticker));
         }
 
@@ -670,8 +676,11 @@ var Chat = {
 
         if (file.name) {
             var a = document.createElement('a');
+
             if (sticker == null) {
-                a.textContent = file.name;
+                var link = document.createElement('p');
+                link.textContent = file.name;
+                a.appendChild(link);
             }
             a.setAttribute('href', file.uri);
             a.setAttribute('target', '_blank');

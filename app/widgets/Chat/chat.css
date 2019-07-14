@@ -234,6 +234,11 @@ table.emojis td:hover {
     display: inline-block;
 }
 
+#chat_widget div.file:not(.bubble) p + span.size:before {
+    content: '–';
+    margin: 0 0.75rem;
+}
+
 #chat_widget audio {
     border-radius: 0.5rem;
     width: 100%;
