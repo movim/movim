@@ -266,6 +266,7 @@ table.emojis td:hover {
     margin-top: 0.25rem;
     display: inline-flex;
     z-index: 1;
+    border: solid 1px transparent;
 }
 
 #chat_widget .bubble div span.reaction,
@@ -295,7 +296,7 @@ table.emojis td:hover {
 }
 
 #chat_widget .bubble ul.reactions li.reacted {
-    border: 1px solid rgba(var(--movim-font), 0.3);
+    border-color: rgba(var(--movim-font), 0.3);
     box-sizing: border-box;
 }
 

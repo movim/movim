@@ -417,7 +417,7 @@ class Chat extends \Movim\Widget\Base
      *
      * @
      */
-    public function ajaxHttpSendReaction(string $mid, string $emoji)
+    public function ajaxHttpSendReaction($mid, string $emoji)
     {
         $parentMessage = $this->user->messages()
                         ->where('mid', $mid)
