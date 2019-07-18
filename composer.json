@@ -11,7 +11,7 @@
         }
     },
     "require": {
-        "php": ">=7.0.0",
+        "php": ">=7.3.0",
         "ext-curl": "*",
         "ext-gd": "*",
         "ext-dom": "*",
@@ -19,33 +19,33 @@
         "ext-imagick": "*",
         "ext-json": "*",
 
-        "wikimedia/composer-merge-plugin": "^1.0",
-        "rain/raintpl": "^3.1.0",
+        "wikimedia/composer-merge-plugin": "^1.4",
+        "rain/raintpl": "^3.1.1",
         "michelf/php-markdown": "^1.8",
 
-        "embed/embed": "^v3.3.9",
+        "embed/embed": "^v3.4",
 
         "respect/validation": "^1.1",
-        "ezyang/htmlpurifier": "^4.10",
-        "symfony/console": "^3.3",
+        "ezyang/htmlpurifier": "^4.11",
+        "symfony/console": "^4.3",
         "cocur/slugify": "^3.2",
-        "dflydev/fig-cookies": "^1.0",
-        "defuse/php-encryption": "^2.2",
+        "dflydev/fig-cookies": "^2.0",
+        "defuse/php-encryption": "^2.2.1",
 
-        "robmorgan/phinx": "^0.10.7",
-        "illuminate/database": "^5.5",
-        "doctrine/dbal": "^2.5",
+        "robmorgan/phinx": "^0.10.8",
+        "illuminate/database": "^5.8",
+        "doctrine/dbal": "^2.9.2",
 
         "cboden/ratchet": "^0.4.1",
         "react/child-process": "^0.6.1",
         "react/http": "^0.8.4",
-        "react/dns": "^0.4.17",
+        "react/dns": "^1.1.0",
         "monolog/monolog": "^1.24",
         "ratchet/pawl": "^0.3.4"
     },
     "config": {
         "platform": {
-            "php": "7.0"
+            "php": "7.3"
         }
     },
     "scripts": {
