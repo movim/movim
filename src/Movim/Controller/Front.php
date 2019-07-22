@@ -11,7 +11,13 @@ class Front extends Base
     public function handle()
     {
         $r = new Route;
-        $this->runRequest($r->find());
+        $page = $r->find();
+
+        if ($page === null) {
+            $this->redirect($r->getRedirect());
+        } else {
+            $this->runRequest($page);
+        }
     }
 
     public function loadController($request)

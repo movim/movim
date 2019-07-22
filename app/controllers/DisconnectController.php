@@ -6,11 +6,6 @@ use Movim\Session;
 
 class DisconnectController extends Base
 {
-    public function load()
-    {
-        $this->session_only = false;
-    }
-
     public function dispatch()
     {
         // Just in case

@@ -9,8 +9,4 @@ class PictureController extends Base
         $this->session_only = true;
         $this->raw = true;
     }
-
-    public function dispatch()
-    {
-    }
 }

@@ -3,11 +3,13 @@
 namespace Movim;
 
 use Movim\Controller\Base;
+use App\User;
 
 class Route extends Base
 {
     public $_routes;
     private $_page;
+    private $_redirect;
 
     public function __construct()
     {
@@ -72,23 +74,29 @@ class Route extends Base
         }
 
         if (empty($this->_page) || $this->_page == 'main') {
-            $this->_page = 'news';
-        }
+            $this->_page = null;
 
-        if (!isset($this->_routes[$this->_page])) {
-            $this->_page = 'notfound';
+            $user = User::me();
+
+            $this->_redirect = ($user->isLogged() && $user->chatmain)
+                ? 'chat'
+                : 'news';
+        } else if (!isset($this->_routes[$this->_page])) {
+            $this->_page = null;
+            $this->_redirect = 'notfound';
         }
 
         return $this->_page;
     }
 
+    public function getRedirect()
+    {
+        return $this->_redirect;
+    }
+
     public static function urlize($page, $params = false, $get = [], $tab = false)
     {
         $routes = (new Route)->_routes;
-
-        if ($page === 'root') {
-            return BASE_URI;
-        }
 
         if (isset($routes[$page])) {
             $uri = BASE_URI . '?'. $page;

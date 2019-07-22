@@ -18,6 +18,7 @@ v0.15 – Donati (trunk)
  * Comment and remove SQLite support in the project
  * Using XEP-0372: References allow Movim users to share articles in the chats and chatrooms
  * Display errors when the Pubsub nodes config are not saved
+ * Add an option to make the Chat page the main one
 
 v0.14.1
 ---------------------------

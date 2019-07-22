@@ -5,11 +5,6 @@ use Respect\Validation\Validator;
 
 class LoginController extends Base
 {
-    public function load()
-    {
-        $this->session_only = false;
-    }
-
     public function dispatch()
     {
         $this->page->setTitle(__('page.login'));
@@ -20,7 +15,7 @@ class LoginController extends Base
                 $invitation = \App\Invite::find($this->fetchGet('i'));
                 $this->redirect('chat', [$invitation->resource, 'room']);
             } else {
-                $this->redirect('root');
+                $this->redirect('main');
             }
         }
     }

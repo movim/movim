@@ -9,8 +9,4 @@ class PopuptestController extends Base
         $this->unique = true;
         $this->session_only = true;
     }
-
-    public function dispatch()
-    {
-    }
 }

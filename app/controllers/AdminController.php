@@ -4,11 +4,6 @@ use Movim\Controller\Base;
 
 class AdminController extends Base
 {
-    public function load()
-    {
-        $this->session_only = false;
-    }
-
     public function dispatch()
     {
         session_start();

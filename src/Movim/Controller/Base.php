@@ -109,4 +109,12 @@ class Base
             echo $this->page->build('page', $this->public);
         }
     }
+
+    public function load()
+    {
+    }
+
+    public function dispatch()
+    {
+    }
 }

@@ -31,6 +31,28 @@
         <ul class="list thick">
             <li>
                 <span class="primary icon gray">
+                    <i class="material-icons">forum</i>
+                </span>
+                <span class="control">
+                    <div class="checkbox">
+                        <input
+                            {if="$conf->chatmain"}checked{/if}
+                            type="checkbox"
+                            id="chatmain"
+                            name="chatmain"/>
+                        <label for="chatmain"></label>
+                    </div>
+                </span>
+                <p class="line">{$c->__('config.chatmain')}</p>
+                <p class="line">{$c->__('config.chatmain_text')}</p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="block">
+        <ul class="list thick">
+            <li>
+                <span class="primary icon gray">
                     18+
                 </span>
                 <span class="control">

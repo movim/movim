@@ -17,9 +17,5 @@ class NewsController extends Base
         if (!\App\User::me()->hasPubsub()) {
             $this->redirect('contact');
         }
-
-        if (!\App\User::me()->isLogged()) {
-            $this->redirect('login');
-        }
     }
 }

@@ -8,7 +8,7 @@ use App\Contact;
 
 class User extends Model
 {
-    protected $fillable = ['id', 'language', 'nightmode', 'nsfw', 'cssurl', 'nickname'];
+    protected $fillable = ['id', 'language', 'nightmode', 'chatmain', 'nsfw', 'cssurl', 'nickname'];
     public $with = ['session', 'capability'];
     public $incrementing = false;
     private static $me = null;
@@ -113,6 +113,10 @@ class User extends Model
 
         if (isset($config['nsfw'])) {
             $this->nsfw = $config['nsfw'];
+        }
+
+        if (isset($config['chatmain'])) {
+            $this->chatmain = $config['chatmain'];
         }
 
         if (isset($config['nightmode'])) {
