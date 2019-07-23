@@ -4,7 +4,7 @@
 {if="$url"}
 <ul class="list middle">
     <li>
-        <span class="control active icon gray" onclick="ContactActions_ajaxGetDrawer('{$contact->id}')">
+        <span class="control active icon gray" onclick="ContactActions_ajaxGetDrawer('{$contact->id|echapJS}')">
             <i class="material-icons">more_horiz</i>
         </span>
         <p class="center">
