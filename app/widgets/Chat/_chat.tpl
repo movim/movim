@@ -141,14 +141,14 @@
             {if="$url"}
                 <span class="primary icon bubble active
                     {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}"
-                    onclick="Chat_ajaxGetContact('{$contact->jid}')">
+                    onclick="Chat_ajaxGetContact('{$contact->jid|echapJS}')">
                     <img src="{$url}">
                 </span>
             {else}
                 <span class="primary icon bubble active color
                     {$contact->jid|stringToColor}
                     {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}"
-                    onclick="Chat_ajaxGetContact('{$contact->jid}')">
+                    onclick="Chat_ajaxGetContact('{$contact->jid|echapJS}')">
                     {if="$roster"}
                         {$roster->truename|firstLetterCapitalize}
                     {else}
@@ -188,7 +188,7 @@
         <li class="on_mobile" onclick="Chat.editPrevious()">
             <p class="normal">{$c->__('chat.edit_previous')}</p>
         </li>
-        <li onclick="Chat_ajaxClearHistory('{$contact->jid}')">
+        <li onclick="Chat_ajaxClearHistory('{$contact->jid|echapJS}')">
             <p class="normal">{$c->__('chat.clear')}</p>
         </li>
         {if="!empty($info->abuseaddresses)"}

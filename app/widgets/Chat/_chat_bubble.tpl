@@ -7,7 +7,7 @@
         {if="$url"}
             <span class="{if="$me"}control{else}primary{/if} icon bubble">
                 {if="$me == null"}
-                    <a href="#" onclick="Chat_ajaxGetContact('{$contact->jid}')">
+                    <a href="#" onclick="Chat_ajaxGetContact('{$contact->jid|echapJS}')">
                 {/if}
                     <img src="{$url}">
                 {if="$me == null"}</a>{/if}
@@ -15,7 +15,7 @@
         {else}
             <span class="{if="$me"}control{else}primary{/if} icon bubble color {$contact->jid|stringToColor}">
                 {if="$me == null"}
-                    <a href="#" onclick="Chat_ajaxGetContact('{$contact->jid}')">
+                    <a href="#" onclick="Chat_ajaxGetContact('{$contact->jid|echapJS}')">
                 {/if}
                     <i class="material-icons">person</i>
                 {if="$me == null"}</a>{/if}

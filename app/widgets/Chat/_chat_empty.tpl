@@ -10,7 +10,7 @@
     {/if}
     {loop="$top"}
         <li class="block {if="$value->last > 60"} inactive{/if}"
-            onclick="Chats_ajaxOpen('{$value->jid}'); Chat_ajaxGet('{$value->jid}');">
+            onclick="Chats_ajaxOpen('{$value->jid|echapJS}'); Chat_ajaxGet('{$value->jid|echapJS}');">
             {$url = $value->getPhoto('m')}
             {if="$url"}
                 <span class="primary icon bubble
