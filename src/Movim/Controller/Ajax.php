@@ -32,13 +32,16 @@ class Ajax extends Base
 
         $buffer = '<script type="text/javascript">';
         foreach ($this->funclist as $key => $funcdef) {
-            $parlist = implode(', ', $funcdef['params']);
+            $parlist = implode(',', $funcdef['params']);
 
             $buffer .= 'function ' . $funcdef['object'] . '_'
-                . $funcdef['funcname'] . "(${parlist}) {";
-            $buffer .= ($funcdef['http'] ? " return MovimWebsocket.sendAjax('" : "MovimWebsocket.send('") .
+                . $funcdef['funcname'] . "(${parlist}){";
+            $buffer .=
+                ($funcdef['http'] ? " return MovimWebsocket.ajax('" : "MWSs('") .
                 $funcdef['object'] . "','" .
-                $funcdef['funcname'] . "',[${parlist}]);}";
+                $funcdef['funcname'] . "'" .
+                (!empty($funcdef['params']) ? ",[${parlist}]" : '');
+            $buffer .=")}";
         }
 
         return $buffer . "</script>\n";

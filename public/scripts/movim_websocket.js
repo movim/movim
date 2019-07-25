@@ -13,6 +13,13 @@ WebSocket.prototype.register = function(host) {
 };
 
 /**
+ * Short function for MovimWebsocket.send
+ */
+function MWSs(widget, func, params) {
+    MovimWebsocket.send(widget, func, params);
+}
+
+/**
  * @brief Definition of the MovimWebsocket object
  * @param string error
  */
@@ -134,33 +141,33 @@ var MovimWebsocket = {
 
     send : function(widget, func, params) {
         if (this.connection.readyState == 1) {
-            this.connection.send(
-                JSON.stringify(
-                    {'func' : 'message', 'body' :
-                        {
-                            'widget' : widget,
-                            'func' : func,
-                            'params' : params
-                        }
-                    }
-                )
-            );
+            var body = {
+                'w' : widget,
+                'f' : func
+            };
+
+            if (params) body.p = params;
+
+            this.connection.send(JSON.stringify(
+                {'func' : 'message', 'b' : body}
+            ));
         }
     },
 
-    sendAjax : function(widget, func, params) {
+    ajax : function(widget, func, params) {
         let xhr = new XMLHttpRequest;
+
+        var body = {
+            'w' : widget,
+            'f' : func
+        };
+
+        if (params) body.p = params;
 
         xhr.open('POST', '?ajax');
         xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
         xhr.send(JSON.stringify(
-            {'func' : 'message', 'body' :
-                {
-                    'widget' : widget,
-                    'func' : func,
-                    'params' : params
-                }
-            }
+            {'func' : 'message', 'b' : body }
         ));
 
         return xhr;

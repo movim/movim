@@ -94,7 +94,7 @@ $wsSocketBehaviour = function ($msg) use (&$xmppSocket, &$connector, &$xmppBehav
     if (isset($msg)) {
         switch ($msg->func) {
             case 'message':
-                (new RPC)->handleJSON($msg->body);
+                (new RPC)->handleJSON($msg->b);
                 break;
 
             case 'ping':
