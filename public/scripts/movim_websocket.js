@@ -61,7 +61,7 @@ var MovimWebsocket = {
             var uri = 'ws:' + BASE_URI + 'ws/';
         }
 
-        if (typeof this.connection === 'object') {
+        if (this.connection !== null) {
             this.connection.onclose = null;
             this.connection.close();
         }
@@ -266,19 +266,21 @@ var MovimWebsocket = {
 }
 
 window.onbeforeunload = function() {
-    MovimWebsocket.connection.onclose = function () {}; // disable onclose handler first
-    MovimWebsocket.connection.close()
+    if (MovimWebsocket.connection !== null) {
+        MovimWebsocket.connection.onclose = function () {}; // disable onclose handler first
+        MovimWebsocket.connection.close()
+    }
 };
+
+// If the Websocket was closed after some innactivity, we try to reconnect
+window.addEventListener('focus', function() {
+    if (MovimWebsocket.connection !== null
+     && MovimWebsocket.connection.readyState > 1) {
+        MovimWebsocket.init();
+    }
+});
 
 document.addEventListener("DOMContentLoaded", function(event) {
     // And we start it
     MovimWebsocket.init();
-});
-
-// If the Websocket was closed after some innactivity, we try to reconnect
-window.addEventListener('focus', function() {
-    if (typeof MovimWebsocket.connection === 'object'
-     && MovimWebsocket.connection.readyState > 1) {
-        MovimWebsocket.init();
-    }
 });
