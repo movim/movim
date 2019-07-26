@@ -277,7 +277,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 // If the Websocket was closed after some innactivity, we try to reconnect
 window.addEventListener('focus', function() {
-    if (MovimWebsocket.connection.readyState > 1) {
+    if (typeof MovimWebsocket.connection === 'object'
+     && MovimWebsocket.connection.readyState > 1) {
         MovimWebsocket.init();
     }
 });
