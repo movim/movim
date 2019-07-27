@@ -246,12 +246,13 @@ var MovimWebsocket = {
         var interval = MovimWebsocket.generateInterval();
         console.log("Try to reconnect");
 
-        this.statusBar.classList.remove('hide');
-        this.statusBar.classList.add('connect');
-
         setTimeout(function () {
             // We've tried to reconnect so increment the attempts by 1
             MovimWebsocket.attempts++;
+
+            // Show the reconnect state
+            this.statusBar.classList.remove('hide');
+            this.statusBar.classList.add('connect');
 
             // Connection has closed so try to reconnect every 10 seconds.
             MovimWebsocket.init();
