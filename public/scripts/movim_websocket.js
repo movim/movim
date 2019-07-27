@@ -32,10 +32,11 @@ var MovimWebsocket = {
     attempts: 1,
     pong: false,
     closed: false,
+    statusBar: null,
 
     launchAttached : function() {
         // We hide the Websocket error
-        document.getElementById('error_websocket').classList.add('hide');
+        this.statusBar.classList.add('hide');
 
         for(var i = 0; i < MovimWebsocket.attached.length; i++) {
             MovimWebsocket.attached[i]();
@@ -116,7 +117,7 @@ var MovimWebsocket = {
             if (e.code == 1008) {
                 // The server closed the connection and asked to keep it this way
                 this.closed = true;
-                document.getElementById('error_websocket').classList.remove('hide');
+                this.statusBar.classList.remove('hide');
                 MovimWebsocket.connection.close();
             } if (e.code == 1006) {
                 MovimWebsocket.reconnect();
@@ -129,7 +130,7 @@ var MovimWebsocket = {
             console.log("Connection error!");
 
             // We show the Websocket error
-            document.getElementById('error_websocket').classList.remove('hide');
+            this.statusBar.classList.remove('hide');
 
             MovimWebsocket.reconnect();
 
@@ -244,6 +245,10 @@ var MovimWebsocket = {
     reconnect : function() {
         var interval = MovimWebsocket.generateInterval();
         console.log("Try to reconnect");
+
+        this.statusBar.classList.remove('hide');
+        this.statusBar.classList.add('connect');
+
         setTimeout(function () {
             // We've tried to reconnect so increment the attempts by 1
             MovimWebsocket.attempts++;
@@ -281,6 +286,8 @@ window.addEventListener('focus', function() {
 });
 
 document.addEventListener("DOMContentLoaded", function(event) {
+    MovimWebsocket.statusBar = document.getElementById('status_websocket');
+
     // And we start it
     MovimWebsocket.init();
 });

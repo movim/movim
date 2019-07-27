@@ -35,12 +35,18 @@
         <?php } ?>
         <div id="hiddendiv"></div>
         <div id="snackbar" class="snackbar"></div>
-        <div id="error_websocket" class="snackbar hide" onclick="MovimUtils.reloadThis()">
+        <div id="status_websocket" class="snackbar hide" onclick="MovimUtils.reloadThis()">
             <ul class="list">
                 <li>
                     <span class="control icon gray">
+                        <i class="material-icons">signal_cellular_null</i>
+                    </span>
+                    <span class="control icon gray">
                         <i class="material-icons">signal_cellular_off</i>
                     </span>
+                    <p class="normal">
+                        <?php echo __('error.websocket_connect'); ?>
+                    </p>
                     <p class="normal">
                         <?php echo __('error.websocket'); ?>
                     </p>

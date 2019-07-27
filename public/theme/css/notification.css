@@ -57,21 +57,32 @@
     transform: translateY(100%);
 }
 
-.snackbar#error_websocket {
+.snackbar#status_websocket {
     max-height: initial;
 }
 
-.snackbar#error_websocket p {
-    line-height: 2.5rem;
+.snackbar#status_websocket p {
+    line-height: 2.55rem;
     white-space: initial;
 }
 
-.snackbar#error_websocket:not(.hide) ~ main,
-.snackbar#error_websocket:not(.hide) ~ div.drawer,
-.snackbar#error_websocket:not(.hide) ~ div.dialog {
+.snackbar#status_websocket:not(.hide) ~ main,
+.snackbar#status_websocket:not(.hide) ~ div.drawer,
+.snackbar#status_websocket:not(.hide) ~ div.dialog {
     opacity: 0.5;
     pointer-events: none;
     filter: grayscale(1);
+}
+
+.snackbar#status_websocket span.control {
+    right: 0;
+}
+
+.snackbar#status_websocket:not(.connect) span.control:nth-child(1),
+.snackbar#status_websocket.connect span.control:nth-child(2),
+.snackbar#status_websocket:not(.connect) p:nth-child(3),
+.snackbar#status_websocket.connect p:nth-child(4) {
+    display: none;
 }
 
 @media screen and (max-width: 1024px) {
