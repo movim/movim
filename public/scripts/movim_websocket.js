@@ -283,8 +283,8 @@ window.addEventListener('focus', function() {
     if (MovimWebsocket.connection !== null
      && MovimWebsocket.connection.readyState > 1) {
          // Show the reconnect state
-        this.statusBar.classList.remove('hide');
-        this.statusBar.classList.add('connect');
+        MovimWebsocket.statusBar.classList.remove('hide');
+        MovimWebsocket.statusBar.classList.add('connect');
 
         MovimWebsocket.init();
     }
