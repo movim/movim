@@ -36,7 +36,7 @@ var MovimWebsocket = {
 
     launchAttached : function() {
         // We hide the Websocket error
-        this.statusBar.classList.add('hide');
+        MovimWebsocket.statusBar.classList.add('hide');
 
         for(var i = 0; i < MovimWebsocket.attached.length; i++) {
             MovimWebsocket.attached[i]();
@@ -117,7 +117,7 @@ var MovimWebsocket = {
             if (e.code == 1008) {
                 // The server closed the connection and asked to keep it this way
                 this.closed = true;
-                this.statusBar.classList.remove('hide');
+                MovimWebsocket.statusBar.classList.remove('hide', 'connect');
                 MovimWebsocket.connection.close();
             } if (e.code == 1006) {
                 MovimWebsocket.reconnect();
@@ -130,7 +130,7 @@ var MovimWebsocket = {
             console.log("Connection error!");
 
             // We show the Websocket error
-            this.statusBar.classList.remove('hide');
+            MovimWebsocket.statusBar.classList.remove('hide', 'connect');
 
             MovimWebsocket.reconnect();
 
@@ -251,8 +251,8 @@ var MovimWebsocket = {
             MovimWebsocket.attempts++;
 
             // Show the reconnect state
-            this.statusBar.classList.remove('hide');
-            this.statusBar.classList.add('connect');
+            MovimWebsocket.statusBar.classList.remove('hide');
+            MovimWebsocket.statusBar.classList.add('connect');
 
             // Connection has closed so try to reconnect every 10 seconds.
             MovimWebsocket.init();
