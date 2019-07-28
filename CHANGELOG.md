@@ -1,7 +1,10 @@
 Movim Changelog
 ================
 
-v0.15 – Donati (trunk)
+v0.16 (trunk)
+---------------------------
+
+v0.15 – Donati
 ---------------------------
  * Redesign the Communities page
  * Center verticaly the content of cards when they are displayed as flexbox
