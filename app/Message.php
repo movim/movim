@@ -118,6 +118,11 @@ class Message extends Model
             $this->published = gmdate('Y-m-d H:i:s');
         }
 
+        // If the message is quite old, mark it as seen
+        if (strtotime($this->published) < strtotime('-1 month')) {
+            $this->seen = true;
+        }
+
         $this->type = 'chat';
         if ($stanza->attributes()->type) {
             $this->type = (string)$stanza->attributes()->type;
@@ -133,6 +138,7 @@ class Message extends Model
             }
 
             if ($stanza->x
+            && $this->type !== 'groupchat'
             && (string)$stanza->x->attributes()->xmlns == 'http://jabber.org/protocol/muc#user'
             && isset($jid[1])) {
                 $this->jidfrom = $jid[0].'/'.$jid[1];
