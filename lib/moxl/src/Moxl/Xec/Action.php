@@ -17,22 +17,13 @@ abstract class Action extends Payload
         $id = \generateKey(6);
 
         $sess->set('id', $id);
-
-        // We serialize the current object
-        $obj = new \StdClass;
-        $obj->type   = get_class($this);
-        $obj->object = $this;
-        $obj->time   = time();
-
-        //$_instances = $this->clean($_instances);
-
-        $sess->set($id, $obj);
+        $sess->set($id, $this);
     }
 
     /*
      * Clean old IQ requests
      */
-    private function clean($instances)
+    /*private function clean($instances)
     {
         $t = time();
         foreach ($instances as $key => $i) {
@@ -43,7 +34,7 @@ abstract class Action extends Payload
         }
 
         return $instances;
-    }
+    }*/
 
     public function __call($name, $args)
     {

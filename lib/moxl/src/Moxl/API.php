@@ -31,8 +31,8 @@ class API
 
         global $language;
 
-        $session = Session::start();
         if ($id == false) {
+            $session = Session::start();
             $id = $session->get('id');
         }
         $iq->setAttribute('id', $id);

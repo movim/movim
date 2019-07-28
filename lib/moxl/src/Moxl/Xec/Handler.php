@@ -6,45 +6,20 @@ use Movim\Session;
 
 class Handler
 {
-    /**
-     * Constructor of class Handler.
-     *
-     * @return void
-     */
     public static function handle($child)
     {
-        $_instances = 'empty';
-
-        $id = '';
-        $element = '';
-
-        // Id verification in the returned stanza
-        if (in_array($child->getName(), ['iq', 'presence', 'message'])) {
-            $id = (string)$child->attributes()->id;
-        }
+        $id = (in_array($child->getName(), ['iq', 'presence', 'message']))
+            ? (string)$child->attributes()->id
+            : '';
 
         $sess = Session::start();
 
-        if (($id != '' && $sess->get($id) == false)
-        || $id == '') {
-            \Utils::info("Handler : Memory instance not found for {$id}");
-            \Utils::info('Handler : Not an XMPP ACK');
-
-            Handler::handleNode($child);
-
-            foreach ($child->children() as $s1) {
-                Handler::handleNode($s1, $child);
-                foreach ($s1->children() as $s2) {
-                    Handler::handleNode($s2, $child);
-                }
-            }
-        } elseif ($id != ''
-        && $sess->get($id) != false) {
-            // We search an existent instance
+        if ($id !== ''
+        && $sess->get($id) !== false) {
             \Utils::info("Handler : Memory instance found for {$id}");
-            $instance = $sess->get($id);
 
-            $action = $instance->object;
+            $action = $sess->get($id);
+            $sess->remove($id);
 
             $error = false;
 
@@ -58,7 +33,6 @@ class Handler
             // XMPP returned an error
             if ($error) {
                 $errors = $error->children();
-
                 $errorid = Handler::formatError($errors->getName());
 
                 $message = false;
@@ -86,8 +60,17 @@ class Handler
                 $action->method('handle');
                 $action->handle($child);
             }
-            // We clean the object from the cache
-            $sess->remove($id);
+        } else {
+            \Utils::info("Handler : No memory instance found for {$id}");
+
+            Handler::handleNode($child);
+
+            foreach ($child->children() as $s1) {
+                Handler::handleNode($s1, $child);
+                foreach ($s1->children() as $s2) {
+                    Handler::handleNode($s2, $child);
+                }
+            }
         }
     }
 
@@ -180,12 +163,11 @@ class Handler
         if (isset($hashToClass[$hash])) {
             $classname = '\\Moxl\\Xec\\Payload\\'.$hashToClass[$hash];
 
-            $payload_class = new $classname();
+            $payload_class = new $classname;
             $payload_class->prepare($s, $sparent);
             $payload_class->handle($s, $sparent);
         } else {
             \Utils::info('Handler : This event is not listed');
-            return true;
         }
     }
 

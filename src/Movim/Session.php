@@ -25,8 +25,8 @@ class Session
      */
     public function get($varname)
     {
-        if (array_key_exists($varname, $this->values)) {
-            return unserialize(base64_decode($this->values[$varname]));
+        if (\array_key_exists($varname, $this->values)) {
+            return $this->values[$varname];
         }
 
         return false;
@@ -37,7 +37,6 @@ class Session
      */
     public function set($varname, $value)
     {
-        $value = base64_encode(serialize($value));
         $this->values[$varname] = $value;
 
         return $value;
