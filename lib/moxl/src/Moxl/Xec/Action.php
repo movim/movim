@@ -11,30 +11,15 @@ abstract class Action extends Payload
 {
     final public function store()
     {
-        $sess = Session::start();
+        $session = Session::start();
 
         // Generating the iq key.
         $id = \generateKey(6);
 
-        $sess->set('id', $id);
-        $sess->set($id, $this);
+        $session->set('id', $id);
+        $session->set($id, $this, true);
+        $session->clean();
     }
-
-    /*
-     * Clean old IQ requests
-     */
-    /*private function clean($instances)
-    {
-        $t = time();
-        foreach ($instances as $key => $i) {
-            if ($i['time'] < (int)$t-30) {
-                \Utils::info('Action : Clean this request after 30 sec of no feedback '.$i['type']);
-                unset($instances[$key]);
-            }
-        }
-
-        return $instances;
-    }*/
 
     public function __call($name, $args)
     {

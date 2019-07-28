@@ -7,6 +7,7 @@ class Session
     protected static $instance;
     protected static $sid = null;
     protected $values = [];
+    private $seconds = 60; // Amount of seconds where the removable values are kept
 
     /**
      * Gets a session handle.
@@ -26,7 +27,7 @@ class Session
     public function get($varname)
     {
         if (\array_key_exists($varname, $this->values)) {
-            return $this->values[$varname];
+            return $this->values[$varname]->value;
         }
 
         return false;
@@ -35,9 +36,14 @@ class Session
     /**
      * Sets a session variable. Returns $value.
      */
-    public function set($varname, $value)
+    public function set(string $varname, $value, bool $removable = false)
     {
-        $this->values[$varname] = $value;
+        $obj = new \StdClass;
+        $obj->removable = $removable;
+        $obj->value     = $value;
+        $obj->time      = time();
+
+        $this->values[$varname] = $obj;
 
         return $value;
     }
@@ -48,6 +54,21 @@ class Session
     public function remove($varname)
     {
         unset($this->values[$varname]);
+    }
+
+    /**
+     * Clean the old removable values
+     */
+    public function clean()
+    {
+        $t = time();
+
+        foreach ($this->values as $key => $object) {
+            if ($object->removable
+            && $object->time < (int)$t - $this->seconds) {
+                unset($this->values[$key]);
+            }
+        }
     }
 
     /**
