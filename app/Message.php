@@ -118,11 +118,6 @@ class Message extends Model
             $this->published = gmdate('Y-m-d H:i:s');
         }
 
-        // If the message is quite old, mark it as seen
-        if (strtotime($this->published) < strtotime('-1 month')) {
-            $this->seen = true;
-        }
-
         $this->type = 'chat';
         if ($stanza->attributes()->type) {
             $this->type = (string)$stanza->attributes()->type;
