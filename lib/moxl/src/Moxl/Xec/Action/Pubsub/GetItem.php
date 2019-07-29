@@ -80,7 +80,8 @@ class GetItem extends Errors
                     }
                 }
             }
-        } else {
+        // Don't handle the case if we try to retrieve the avatar
+        } elseif ($this->_id != 'urn:xmpp:avatar:metadata') {
             $pd = new PostDelete;
             $pd->setTo($this->_to)
                ->setNode($this->_node)
