@@ -46,6 +46,7 @@ class User extends Model
     {
         $unreads = $this->messages()
                         ->where('seen', false)
+                        ->where('jidfrom', '!=', $this->id)
                         ->where(function ($query) use ($quoted) {
                             $query->where('type', 'chat')
                                 ->orWhere(function ($query) use ($quoted) {

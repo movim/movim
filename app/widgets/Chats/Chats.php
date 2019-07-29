@@ -208,6 +208,7 @@ class Chats extends Base
             ->select('jidfrom')
             ->where('seen', false)
             ->where('type', 'chat')
+            ->where('jidfrom', '!=', $this->user->id)
             ->groupBy('jidfrom')
             ->pluck('jidfrom')
             ->each(function ($item) use (&$unreads) {
