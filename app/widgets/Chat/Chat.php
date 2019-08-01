@@ -79,6 +79,7 @@ class Chat extends \Movim\Widget\Base
 
         if ($message->user_id == $message->jidto
         && !$history
+        && $message->seen == false
         && $message->jidfrom != $message->jidto) {
             $from = $message->jidfrom;
             $roster = $this->user->session->contacts()->where('jid', $from)->first();

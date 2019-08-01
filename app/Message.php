@@ -106,6 +106,11 @@ class Message extends Model
             $this->jidfrom    = $jid[0];
         }
 
+        // If the message is from me
+        if ($this->jidfrom == $this->user_id) {
+            $this->seen = true;
+        }
+
         if (isset($jid[1])) {
             $this->resource = $jid[1];
         }
