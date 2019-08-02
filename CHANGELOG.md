@@ -12,6 +12,7 @@ v0.15.1 (trunk)
  * Always display a default title in Blog pages
  * Fix Search tags display (icons, section title and placeholder)
  * Send http://jabber.org/protocol/muc#user in MUC PM
+ * Handle separately the ChatStates for MUC PM messages
 
 v0.15 – Donati
 ---------------------------

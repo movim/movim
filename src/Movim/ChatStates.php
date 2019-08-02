@@ -55,18 +55,19 @@ class ChatStates
         ];
     }
 
-    public function composing(string $from, string $to)
+    public function composing(string $from, string $to, bool $mucPM = false)
     {
         global $loop;
 
         $explodedFrom = explodeJid($from);
-        $jid = $this->resolveJid($explodedFrom['jid'], $to);
+        $jid = $this->resolveJid(!$mucPM ? $explodedFrom['jid'] : $from, $to);
 
         $timer = $loop->addTimer($this->_timeout, function () use ($from, $to) {
             $this->paused($from, $to);
         });
 
-        if (isset($explodedFrom['resource'])) {
+        // Resource within a MUC
+        if (!$mucPM && isset($explodedFrom['resource'])) {
             if (!array_key_exists($jid, $this->_composing)) {
                 $this->_composing[$jid] = [];
             }
@@ -82,14 +83,14 @@ class ChatStates
         $wrapper->iterate('composing', [$jid, $this->_composing[$jid]]);
     }
 
-    public function paused(string $from, string $to)
+    public function paused(string $from, string $to, bool $mucPM = false)
     {
         global $loop;
 
         $explodedFrom = explodeJid($from);
-        $jid = $this->resolveJid($explodedFrom['jid'], $to);
+        $jid = $this->resolveJid(!$mucPM ? $explodedFrom['jid'] : $from, $to);
 
-        $this->clearState($jid, $explodedFrom['resource']);
+        $this->clearState($jid, !$mucPM ? $explodedFrom['resource'] : null);
 
         $wrapper = Wrapper::getInstance();
         $wrapper->iterate('paused', [

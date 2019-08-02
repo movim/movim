@@ -12,6 +12,7 @@ class Message extends Model
 {
     protected $primaryKey = ['user_id', 'jidfrom', 'id'];
     public $incrementing = false;
+    public $mucpm; // Only used in Message Payloads to detect composer/paused PM messages
 
     protected $guarded = [];
 
@@ -128,6 +129,14 @@ class Message extends Model
             $this->type = (string)$stanza->attributes()->type;
         }
 
+        if (isset($jid[1])
+        && $this->type !== 'groupchat'
+        && $stanza->x
+        && (string)$stanza->x->attributes()->xmlns == 'http://jabber.org/protocol/muc#user') {
+            $this->mucpm = true;
+            $this->jidfrom = $jid[0].'/'.$jid[1];
+        }
+
         if ($stanza->body || $stanza->subject) {
             /*if (isset($stanza->attributes()->id)) {
                 $this->id = (string)$stanza->attributes()->id;
@@ -135,13 +144,6 @@ class Message extends Model
 
             if ($stanza->body) {
                 $this->body = (string)$stanza->body;
-            }
-
-            if ($stanza->x
-            && $this->type !== 'groupchat'
-            && (string)$stanza->x->attributes()->xmlns == 'http://jabber.org/protocol/muc#user'
-            && isset($jid[1])) {
-                $this->jidfrom = $jid[0].'/'.$jid[1];
             }
 
             # HipChat MUC specific cards
