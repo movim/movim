@@ -40,6 +40,15 @@ class Message
             $root->setAttribute('id', $session->get('id'));
         }
 
+        /**
+         * https://xmpp.org/extensions/xep-0045.html#privatemessage
+         * Resource on the to, we assume that it's a MUC PM
+         */
+        if (explodeJid($to)['resource'] !== null) {
+            $xuser = $dom->createElementNS('http://jabber.org/protocol/muc#user', 'x');
+            $root->appendChild($xuser);
+        }
+
         if ($content != false) {
             $body = $dom->createElement('body');
             $bodyContent = $dom->createTextNode($content);

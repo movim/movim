@@ -254,8 +254,7 @@ class Post extends Model
             return $this->contact->truename;
         }
 
-        $truename = explodeJid($this->aid);
-        return (isset($truename['username'])) ? $truename['username'] : '';
+        return explodeJid($this->aid)['username'] ?? '';
     }
 
     private function extractContent($contents)

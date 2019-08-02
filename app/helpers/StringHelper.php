@@ -218,11 +218,12 @@ function explodeJid(string $jid): array
     $jid = $arr[0];
 
     $resource = isset($arr[1]) ? $arr[1] : null;
-    $server = '';
+    $username = null;
 
     $arr = explode('@', $jid);
-    $username = $arr[0];
+    $server = $arr[0];
     if (isset($arr[1])) {
+        $username = $arr[0];
         $server = $arr[1];
     }
 
