@@ -20,7 +20,7 @@ class Publish extends Action
 
     public function request()
     {
-        $this->store();
+        $this->store($this->_id);
         if ($this->_muc) {
             Muc::message($this->_to, $this->_content, $this->_html, $this->_id, $this->_file, $this->_attachid);
         } elseif ($this->_encrypted) {
@@ -47,5 +47,11 @@ class Publish extends Action
             $m = new \Moxl\Xec\Payload\Message;
             $m->handle($stanza, $parent);
         }
+    }
+
+    public function error($id, $message = '')
+    {
+        $this->pack($message);
+        $this->deliver();
     }
 }

@@ -48,6 +48,7 @@ class Chat extends \Movim\Widget\Base
         $this->registerEvent('muc_setconfig_handle', 'onRoomConfigSaved', 'chat');
         $this->registerEvent('muc_setconfig_error', 'onRoomConfigError', 'chat');
         $this->registerEvent('presence_muc_handle', 'onMucConnected', 'chat');
+        $this->registerEvent('message_publish_error', 'onPublishError', 'chat');
 
         $this->registerEvent('bob_request_handle', 'onSticker');
         $this->registerEvent('notification_counter_clear', 'onNotificationCounterClear');
@@ -65,6 +66,14 @@ class Chat extends \Movim\Widget\Base
         if ($page === 'chat') {
             $this->prepareMessages($first, ($room === 'room'));
         }
+    }
+
+    public function onPublishError($packet)
+    {
+        Notification::toast(
+            $packet->content ??
+            $this->__('chat.publish_error')
+        );
     }
 
     public function onMessage($packet, $history = false, $receipt = false)

@@ -9,12 +9,12 @@ use Movim\Session;
 
 abstract class Action extends Payload
 {
-    final public function store()
+    final public function store(string $customId = null)
     {
         $session = Session::start();
 
         // Generating the iq key.
-        $id = \generateKey(6);
+        $id = $customId ?? \generateKey(6);
 
         $session->set('id', $id);
         $session->set($id, $this, true);
