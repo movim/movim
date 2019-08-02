@@ -323,7 +323,7 @@ var Chat = {
             ? firstMessage.jidto
             : firstMessage.jidfrom;
 
-        if (document.getElementById(MovimUtils.cleanupId(contactJid + '-discussion'))
+        if (document.getElementById(MovimUtils.cleanupId(contactJid) + '-discussion')
         == null) return false;
 
         return true;
@@ -431,16 +431,16 @@ var Chat = {
             || data.mine) {
                 bubble = Chat.right.cloneNode(true);
                 if (data.mine) {
-                    id = data.jidfrom + '_conversation';
+                    id = data.jidfrom;
                 } else {
-                    id = data.jidto + '_conversation';
+                    id = data.jidto;
                 }
             } else {
                 bubble = Chat.left.cloneNode(true);
-                id = data.jidfrom + '_conversation';
+                id = data.jidfrom;
             }
 
-            id = MovimUtils.cleanupId(id);
+            id = MovimUtils.cleanupId(id) + '-conversation';
 
             bubble.querySelector('div.bubble').dataset.bubble = jidtime;
             bubble.querySelector('div.bubble').dataset.publishedprepared = data.publishedPrepared;
