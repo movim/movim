@@ -130,18 +130,20 @@ class Builder
 
         $widgets = Wrapper::getInstance();
 
+        $title = $this->title;
+
         if (isset($widgets->title)) {
-            $this->title .= ' – ' . $widgets->title;
+            $title .= ' – ' . $widgets->title;
         }
 
         $meta = $dom->createElement('meta');
         $meta->setAttribute('property', 'og:title');
-        $meta->setAttribute('content', $this->title);
+        $meta->setAttribute('content', $title);
         $metas->appendChild($meta);
 
         $meta = $dom->createElement('meta');
         $meta->setAttribute('name', 'twitter:title');
-        $meta->setAttribute('content', $this->title);
+        $meta->setAttribute('content', $title);
         $metas->appendChild($meta);
 
         if (isset($widgets->image)) {

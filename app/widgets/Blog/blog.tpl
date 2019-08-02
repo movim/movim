@@ -76,8 +76,10 @@
             </span>
             <p>
                 <a href="{$c->route('node', [$server, $node])}">
-                    {if="$item != null"}
+                    {if="$item != null && $item->name"}
                         {$item->name}
+                    {else}
+                        {$node}
                     {/if}
                 </a>
             </p>

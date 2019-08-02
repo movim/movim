@@ -32,6 +32,29 @@ class Request extends Action
 
     public function handle($stanza, $parent = false)
     {
+        $this->pack([$this->_to, $this->_node]);
+
+        // Info
+        $info = new \App\Info;
+        $info->set($stanza);
+
+        $found = \App\Info::where('server', $info->server)
+                          ->where('node', $info->node)
+                          ->first();
+
+        if ($found) {
+            $found->set($stanza);
+            $found->save();
+
+            $this->deliver();
+        } elseif (!empty($info->category)
+        && $info->category !== 'account'
+        && $info->category !== 'client') {
+            $info->save();
+
+            $this->deliver();
+        }
+
         // Caps
         $capability = new \App\Capability;
 
@@ -49,27 +72,10 @@ class Request extends Action
             }
 
             $capability->save();
+
+            $this->method('caps');
+            $this->deliver();
         }
-
-        // Info
-        $info = new \App\Info;
-        $info->set($stanza);
-
-        $found = \App\Info::where('server', $info->server)
-                          ->where('node', $info->node)
-                          ->first();
-
-        if ($found) {
-            $found->set($stanza);
-            $found->save();
-        } elseif (!empty($info->category)
-        && $info->category !== 'account'
-        && $info->category !== 'client') {
-            $info->save();
-        }
-
-        $this->pack([$this->_to, $this->_node]);
-        $this->deliver();
 
         // Affiliations
         $affiliations = [];

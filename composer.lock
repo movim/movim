@@ -462,16 +462,16 @@
         },
         {
             "name": "composer/ca-bundle",
-            "version": "1.2.1",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/ca-bundle.git",
-                "reference": "33810d865dd06a674130fceb729b2f279dc79e8c"
+                "reference": "ec2e24d4fa6a0d50d423794a56605ecec3401b85"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/33810d865dd06a674130fceb729b2f279dc79e8c",
-                "reference": "33810d865dd06a674130fceb729b2f279dc79e8c",
+                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/ec2e24d4fa6a0d50d423794a56605ecec3401b85",
+                "reference": "ec2e24d4fa6a0d50d423794a56605ecec3401b85",
                 "shasum": ""
             },
             "require": {
@@ -514,7 +514,7 @@
                 "ssl",
                 "tls"
             ],
-            "time": "2019-07-31T08:13:16+00:00"
+            "time": "2019-08-01T07:52:17+00:00"
         },
         {
             "name": "defuse/php-encryption",

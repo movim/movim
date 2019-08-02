@@ -1,8 +1,16 @@
 Movim Changelog
 ================
 
-v0.16 (trunk)
+v0.15.1 (trunk)
 ---------------------------
+ * Cleanup the unanswered IQ requests after 60 seconds
+ * Simplify the Moxl handler
+ * Remove object serialization in Session
+ * Prevent the communities to fire a "Post deleted" event if the avatar is not set
+ * Don't notify or display my own messages in Chats
+ * Fix title generation in Template Builder
+ * Always display a default title in Blog pages
+ * Fix Search tags display (icons, section title and placeholder)
 
 v0.15 – Donati
 ---------------------------

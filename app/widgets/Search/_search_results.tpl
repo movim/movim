@@ -1,4 +1,4 @@
-{if="$posts->isEmpty() && $contacts->isEmpty()"}
+{if="$posts->isEmpty() && $contacts->isEmpty() && $tags->isEmpty()"}
     {autoescape="off"}
         {$c->prepareEmpty()}
     {/autoescape}
@@ -21,15 +21,14 @@
 {/if}
 
 {if="$tags->isNotEmpty()"}
-<br />
 <ul class="list active">
     <li class="subheader">
-        <p>{$c->__('page.tag')}</p>
+        <p>{$c->__('search.tags')}</p>
     </li>
     {loop="$tags"}
         <li onclick="MovimUtils.redirect('{$c->route('tag', $value)}')">
             <span class="primary icon gray">
-                <i class="material-icons">#</i>
+                #
             </span>
             <span class="control icon gray">
                 <i class="material-icons">chevron_right</i>

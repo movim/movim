@@ -40,7 +40,7 @@ class Blog extends Base
             $this->_mode = 'group';
 
             if ($this->_item) {
-                $this->title = $this->_item->name;
+                $this->title = $this->_item->name ? $this->_item->name : $this->_node;
                 $this->description = $this->_item->description;
             }
 
