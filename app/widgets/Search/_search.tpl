@@ -1,5 +1,5 @@
 <section id="search">
-    <ul id="roster" class="list thin"></ul>
+    <ul id="roster" class="list thin spin"></ul>
 
     <div id="results">
         {autoescape="off"}{$empty}{/autoescape}

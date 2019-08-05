@@ -292,7 +292,7 @@ hr:not(.clear) {
     min-height: 30rem;
 }
 
-.spin {
+.spin:not(.list) {
     min-height: 80%;
 }
 

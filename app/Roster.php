@@ -94,6 +94,6 @@ class Roster extends Model
             return $this->contact->truename;
         }
 
-        return explodeJid($this->jid)['username'];
+        return explodeJid($this->jid)['username'] ?? $this->jid;
     }
 }

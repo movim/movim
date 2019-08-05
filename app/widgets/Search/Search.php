@@ -62,7 +62,7 @@ class Search extends Base
                     $query = \App\Post::withSubscriptionsScope($query);
                 })
                 ->orderBy('published', 'desc')
-                ->take(6)
+                ->take(5)
                 ->get();
 
                 $view->assign('posts', $posts);

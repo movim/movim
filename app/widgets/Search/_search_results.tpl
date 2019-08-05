@@ -4,22 +4,6 @@
     {/autoescape}
 {/if}
 
-{if="$posts->isNotEmpty()"}
-<ul id="search_posts" class="list card active middle">
-    <li class="subheader">
-        <p>
-            <span class="info">{$posts|count}</span>
-            {$c->__('page.news')}
-        </p>
-    </li>
-    {loop="$posts"}
-        {autoescape="off"}
-            {$c->prepareTicket($value)}
-        {/autoescape}
-    {/loop}
-</ul>
-{/if}
-
 {if="$tags->isNotEmpty()"}
 <ul class="list active">
     <li class="subheader">
@@ -36,6 +20,22 @@
             <p class="line normal">{$value}</p>
             <p>{$c->__('communitydata.num', $key)}</p>
         </li>
+    {/loop}
+</ul>
+{/if}
+
+{if="$posts->isNotEmpty()"}
+<ul id="search_posts" class="list card active middle">
+    <li class="subheader">
+        <p>
+            <span class="info">{$posts|count}</span>
+            {$c->__('page.news')}
+        </p>
+    </li>
+    {loop="$posts"}
+        {autoescape="off"}
+            {$c->prepareTicket($value)}
+        {/autoescape}
     {/loop}
 </ul>
 {/if}

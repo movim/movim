@@ -1,5 +1,6 @@
 var Search = {
     timer : null,
+    rosterLimit: 7,
 
     init : function() {
         if (window.matchMedia("(min-width: 1025px)").matches) {
@@ -17,12 +18,14 @@ var Search = {
             .forEach(item => item.classList.remove('found'));
 
         if (key == '') {
-            document.querySelectorAll(selector).forEach(item => item.classList.add('found'));
+            document.querySelectorAll(selector + ':nth-child(-n+' + (Search.rosterLimit+1) + ')').forEach(item => item.classList.add('found'));
         };
 
         var founds = document.querySelectorAll(
             selector + '[name*="' + MovimUtils.cleanupId(key).slice(3) + '"]'
-        )
+        );
+
+        founds = [].slice.call(founds).slice(0, Search.rosterLimit);
 
         if (founds.length > 0) {
             subheader.classList.add('found');
