@@ -19,13 +19,20 @@ class Search extends Base
         $view = $this->tpl();
 
         $view->assign('empty', $this->prepareSearch(''));
-        $view->assign('contacts', $this->user->session->topContacts()
-                                             ->with('presence.capability')
-                                             ->get());
-
         Drawer::fill($view->draw('_search'), true);
 
         $this->rpc('Search.init');
+    }
+
+    public function ajaxInitRoster()
+    {
+        $view = $this->tpl();
+        $view->assign('contacts', $this->user->session->topContacts()
+            ->with('presence.capability')
+            ->get());
+
+        $this->rpc('MovimTpl.fill', '#roster', $view->draw('_search_roster'));
+        $this->rpc('Search.roster', '');
     }
 
     public function prepareSearch($key)

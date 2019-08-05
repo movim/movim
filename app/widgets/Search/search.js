@@ -6,7 +6,7 @@ var Search = {
             document.querySelector('input[name=keyword]').focus();
         }
 
-        Search.roster('');
+        Search_ajaxInitRoster();
     },
 
     roster : function(key) {
