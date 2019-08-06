@@ -399,6 +399,11 @@ class Chat extends \Movim\Widget\Base
 
             $packet = new \Moxl\Xec\Payload\Packet;
             $packet->content = $m;
+
+            // We refresh the Chats list
+            $c = new Chats;
+            $c->onMessage($packet);
+
             $this->onMessage($packet);
         }
     }

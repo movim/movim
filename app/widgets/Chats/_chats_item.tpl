@@ -36,6 +36,13 @@
     <p class="normal line">
         {if="isset($message)"}
             <span class="info" title="{$message->published|strtotime|prepareDate}">
+                {if="$message->jidfrom == $message->user_id"}
+                    {if="$message->displayed"}
+                        <span class="material-icons">done_all</span>
+                    {elseif="$message->delivered"}
+                        <span class="material-icons">check</span>
+                    {/if}
+                {/if}
                 {$message->published|strtotime|prepareDate:true,true}
             </span>
         {/if}
@@ -63,6 +70,9 @@
         {elseif="stripTags($message->body) != ''"}
             <p class="line">
                 <span id="{$contact->jid|cleanupId}-chat-state"></span>
+                {if="$message->jidfrom == $message->user_id"}
+                    <span class="moderator">{$c->__('chats.me')}:</span>
+                {/if}
                 {autoescape="off"}
                     {$message->body|stripTags|addEmojis}
                 {/autoescape}
