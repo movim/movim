@@ -189,6 +189,12 @@ class Info extends Model
                         case 'pubsub#creation_date':
                             $this->created = toSQLDate($field->value);
                             break;
+                        case 'pubsub#access_model':
+                            $this->pubsubaccessmodel = $field->value;
+                            break;
+                        case 'pubsub#publish_model':
+                            $this->pubsubpublishmodel = $field->value;
+                            break;
                         case 'muc#roominfo_pubsub':
                             if (!empty((string)$field->value)) {
                                 $this->related = $field->value;
@@ -204,7 +210,6 @@ class Info extends Model
                         case 'muc#roominfo_occupants':
                             $this->occupants = (int)$field->value;
                             break;
-
                         case 'abuse-addresses':
                             $arr = [];
                             foreach ($field->children() as $value) {
