@@ -67,10 +67,14 @@
         {if="$message->isOTR()"}
             <p><i class="material-icons">lock</i> {$c->__('message.encrypted')}</p>
         {elseif="$message->file"}
-            <p><i class="material-icons">insert_drive_file</i> {$c->__('avatar.file')}</p>
+            <p>
+                {if="$message->jidfrom == $message->user_id"}
+                    <span class="moderator">{$c->__('chats.me')}:</span>
+                {/if}
+                <i class="material-icons">insert_drive_file</i> {$c->__('avatar.file')}
+            </p>
         {elseif="stripTags($message->body) != ''"}
             <p class="line">
-                <span id="{$contact->jid|cleanupId}-chat-state"></span>
                 {if="$message->jidfrom == $message->user_id"}
                     <span class="moderator">{$c->__('chats.me')}:</span>
                 {/if}
