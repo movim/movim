@@ -256,7 +256,7 @@ main > div:first-child:nth-last-child(2) + div {
     border-top-style: solid;
     border-bottom-width: 0;
     border-top-color: transparent;
-    border-radius: 0 0 0.5rem 0.5rem;
+    border-radius: 0 0 0.75rem 0.75rem;
 }
 
 .drawer.actions > div:last-child ul.tabs li.active {

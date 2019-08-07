@@ -15,6 +15,7 @@ class Menu extends Base
         $this->registerEvent('pubsub_postdelete', 'onRetract', 'news');
 
         $this->addjs('menu.js');
+        $this->addcss('menu.css');
     }
 
     public function onRetract($packet)

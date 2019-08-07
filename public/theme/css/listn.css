@@ -307,7 +307,7 @@ ul.tabs > li {
     opacity: 0.6;
     height: 6rem;
     box-sizing: border-box;
-    border-radius: 0.5rem 0.5rem 0 0;
+    border-radius: 0.75rem 0.75rem 0 0;
 }
 
 ul.tabs > li > * {
@@ -471,7 +471,7 @@ ul.list.middle li.separator:not(.subheader):not(.date) {
 /* Menu */
 
 ul.context_menu {
-    border-radius: 0.5rem;
+    border-radius: 0.75rem;
     overflow: hidden;
     position: absolute;
     top: 0;

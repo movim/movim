@@ -8,6 +8,7 @@ ul.flex li.block {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    border-radius: 0.65rem;
 }
 
 .flex .block:not(.subheader) {

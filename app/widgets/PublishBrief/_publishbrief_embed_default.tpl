@@ -1,12 +1,12 @@
 <a
-    class="button flat icon gray"
+    class="button narrow flat icon gray"
     title="{$c->__('publishbrief.add_snap')}"
     href="#"
     onclick="Snap.init()">
     <i class="material-icons">camera_alt</i>
 </a>
 <a
-    class="button flat icon gray"
+    class="button narrow  flat icon gray"
     title="{$c->__('publishbrief.add_link')}"
     href="#"
     onclick="PublishBrief_ajaxLink()">
@@ -14,7 +14,7 @@
 </a>
 {if="$c->getUser()->hasUpload()"}
 <a
-    class="button flat icon gray"
+    class="button narrow flat icon gray"
     href="#"
     title="{$c->__('publishbrief.attach')}"
     onclick="Upload_ajaxRequest()">

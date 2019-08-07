@@ -42,6 +42,7 @@
                     {elseif="$message->delivered"}
                         <span class="material-icons">check</span>
                     {/if}
+                    &nbsp;
                 {/if}
                 {$message->published|strtotime|prepareDate:true,true}
             </span>

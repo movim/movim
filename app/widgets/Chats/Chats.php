@@ -16,6 +16,7 @@ class Chats extends Base
         $this->addjs('chats.js');
         $this->registerEvent('invitation', 'onMessage');
         $this->registerEvent('receiptack', 'onMessage', 'chat');
+        $this->registerEvent('displayed', 'onMessage', 'chat');
         $this->registerEvent('carbons', 'onMessage');
         $this->registerEvent('message', 'onMessage');
         $this->registerEvent('presence', 'onPresence', 'chat');

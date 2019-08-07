@@ -1,7 +1,6 @@
 .drawer {
     position: fixed;
     z-index: 3;
-
     bottom: 0;
     left: 0;
     width: 100%;
@@ -21,7 +20,7 @@
 }
 
 .drawer + .drawer_close.button.color i {
-    font-size: 4rem;
+    font-size: 3.5rem;
     line-height: 5.5rem;
 }
 
@@ -59,7 +58,7 @@
 
 @media screen and (min-width: 570px) {
     .drawer {
-        border-radius: 0.5rem 0.5rem 0 0;
+        border-radius: 0.75rem 0.75rem 0 0;
         width: 70rem;
         left: calc(50% - 35rem);
     }

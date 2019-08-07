@@ -7,6 +7,8 @@
             </li>
             {/if}
         {/loop}
+    </ul>
+    <ul class="list">
         <li class="block large">
             <span class="primary icon gray">
                 <i class="material-icons">person</i>

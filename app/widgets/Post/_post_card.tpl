@@ -153,12 +153,12 @@
                     {$liked = $post->isLiked()}
 
                     {if="$liked"}
-                        <a class="button icon flat red" href="{$c->route('post', [$post->server, $post->node, $post->nodeid])}">
+                        <a class="button narrow icon flat red" href="{$c->route('post', [$post->server, $post->node, $post->nodeid])}">
                             {$post->likes->count()}
                             <i class="material-icons">favorite</i>
                         </a>
                     {else}
-                        <a class="button icon flat gray" href="#"
+                        <a class="button narrow icon flat gray" href="#"
                            onclick="this.classList.add('disabled'); PostActions_ajaxLike('{$post->server}', '{$post->node}', '{$post->nodeid}')">
                             {$post->likes->count()}
                             {if="$liked"}
@@ -168,7 +168,7 @@
                             {/if}
                         </a>
                     {/if}
-                    <a class="button icon flat gray" href="{$c->route('post', [$post->server, $post->node, $post->nodeid])}">
+                    <a class="button narrow icon flat gray" href="{$c->route('post', [$post->server, $post->node, $post->nodeid])}">
                         {$post->comments->count()}
                         <i class="material-icons">chat_bubble_outline</i>
                     </a>
@@ -176,20 +176,20 @@
                 {if="!$public"}
                     <a
                         title="{$c->__('button.share')}"
-                        class="button icon flat gray"
+                        class="button narrow icon flat gray"
                         onclick="SendTo_ajaxSendSearch('{$post->getRef()}')"
                         href="#">
                         <i class="material-icons">send</i>
                     </a>
                     {if="$post->openlink"}
                         <a  title="{$c->__('post.public_url')}"
-                            class="button icon flat gray on_desktop oppose"
+                            class="button narrow icon flat gray on_desktop oppose"
                             target="_blank"
                             href="{$post->openlink->href}">
                             <i class="material-icons">wifi_tethering</i>
                         </a>
                     {else}
-                        <a  class="button icon flat gray on_desktop oppose"
+                        <a  class="button narrow icon flat gray on_desktop oppose"
                             title="{$c->__('post.public_no')}">
                             <i class="material-icons">lock</i>
                         </a>
@@ -198,13 +198,13 @@
 
                 {if="$post->isMine()"}
                     {if="$post->isEditable()"}
-                        <a class="button icon flat oppose gray on_desktop"
+                        <a class="button narrow icon flat oppose gray on_desktop"
                            href="{$c->route('publish', [$post->server, $post->node, $post->nodeid])}"
                            title="{$c->__('button.edit')}">
                             <i class="material-icons">edit</i>
                         </a>
                     {/if}
-                    <a class="button icon flat oppose gray on_desktop"
+                    <a class="button narrow icon flat oppose gray on_desktop"
                        href="#"
                        onclick="PostActions_ajaxDelete('{$post->server}', '{$post->node}', '{$post->nodeid}')"
                        title="{$c->__('button.delete')}">
