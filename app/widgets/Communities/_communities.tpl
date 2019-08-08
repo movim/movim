@@ -1,3 +1,15 @@
+{if="$tags->isNotEmpty()"}
+    <ul class="list">
+        <li>
+            <p class="line normal">
+                {loop="$tags"}
+                    <a class="button flat narrow" href="{$c->route('tag', $value->name)}">#{$value->name}</a>
+                {/loop}
+            </p>
+        </li>
+    </ul>
+{/if}
+
 {if="!$communities->isEmpty()"}
 <ul class="list middle flex third active all">
     <li class="subheader block large">
