@@ -38,13 +38,6 @@
                 <i class="material-icons">more_vert</i>
             </span>
 
-            <span
-                title="{$c->__('button.close')}"
-                class="control icon active"
-                onclick="Rooms_ajaxExit('{$room}'); {if="$anon"}Presence_ajaxLogout(){/if}">
-                <i class="material-icons">exit_to_app</i>
-            </span>
-
             {if="$conference && $conference->info && $conference->info->related"}
                 {$related = $conference->info->related}
                 <span
@@ -104,17 +97,7 @@
                 <p class="normal">{$c->__('chatroom.subject')}</p>
             </li>
         {/if}
-        {if="!$anon"}
-            <li onclick="Rooms_ajaxRemoveConfirm('{$room}')">
-                <p class="normal">{$c->__('button.delete')}</p>
-            </li>
-        {/if}
-        <li onclick="Rooms_ajaxAskInvite('{$room}');">
-            <p class="normal">{$c->__('room.invite')}</p>
-        </li>
-        <li onclick="Rooms_ajaxAdd('{$room}');">
-            <p class="normal">{$c->__('chatroom.config')}</p>
-        </li>
+
         {if="!empty($info->abuseaddresses)"}
             {$parsed = parse_url($info->abuseaddresses[0])}
             {if="$parsed['scheme'] == 'xmpp'"}
@@ -129,6 +112,24 @@
                 <p class="normal">{$c->__('chat.report_abuse')}</p>
             </li>
         {/if}
+
+        <li class="divided" onclick="Rooms_ajaxAskInvite('{$room}');">
+            <p class="normal">{$c->__('room.invite')}</p>
+        </li>
+
+        <li onclick="Rooms_ajaxAdd('{$room}');">
+            <p class="normal">{$c->__('chatroom.config')}</p>
+        </li>
+        {if="!$anon"}
+            <li onclick="Rooms_ajaxRemoveConfirm('{$room}')">
+                <p class="normal">{$c->__('button.delete')}</p>
+            </li>
+        {/if}
+
+        <li onclick="Rooms_ajaxExit('{$room}'); {if="$anon"}Presence_ajaxLogout(){/if}">
+            <p class="normal">{$c->__('status.disconnect')}</p>
+        </li>
+    </span>
     </ul>
     {else}
     <ul class="list middle">
