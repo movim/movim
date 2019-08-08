@@ -40,8 +40,12 @@ var MovimTpl = {
             document.querySelector('body > nav').classList.remove('active');
             // If the panel is shown
         } else if (document.querySelector('main').classList.contains('enabled')) {
-            MovimTpl.hidePanel();
-            window.history.back();
+            if (MovimUtils.urlParts().page == 'chat') {
+                Chat_ajaxGet();
+            } else {
+                MovimTpl.hidePanel();
+                window.history.back();
+            }
         } else {
             history.back();
         }
