@@ -54,7 +54,7 @@
     </ul>
     <br />
     <hr />
-    <ul class="list thick block divided">
+    <ul class="list thick block">
         <li class="subheader">
             <p>{$c->__('apps.question')}</p>
         </li>

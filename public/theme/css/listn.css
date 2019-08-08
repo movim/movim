@@ -284,8 +284,8 @@ ul.tabs {
     border-bottom: 1px solid rgba(var(--movim-font), 0.12);
     overflow: hidden;
     white-space: nowrap;
-    height: 6rem;
-    line-height: 6rem;
+    height: 5.5rem;
+    line-height: 5.5rem;
     font-size: 0;
 }
 
@@ -305,7 +305,7 @@ ul.tabs > li {
     font-size: 1.75rem;
     font-weight: 600;
     opacity: 0.6;
-    height: 6rem;
+    height: 5.5rem;
     box-sizing: border-box;
     border-radius: 0.75rem 0.75rem 0 0;
 }
