@@ -321,6 +321,11 @@ input[type=button] {
     background-image: none;
 }
 
+p > .button,
+p> input[type=button] {
+    margin: 0.75rem 0;
+}
+
 .button.narrow {
     padding: 0 1rem;
 }
