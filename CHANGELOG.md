@@ -13,6 +13,9 @@ v0.15.1 (trunk)
  * Fix Search tags display (icons, section title and placeholder)
  * Send http://jabber.org/protocol/muc#user in MUC PM
  * Handle separately the ChatStates for MUC PM messages
+ * Boost the Search widget loading by defering the Roster injection
+ * Slight upgrade of the general CSS (round corners, padding…)
+ * Display more info in Chats (Me, chatstates)
 
 v0.15 – Donati
 ---------------------------

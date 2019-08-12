@@ -312,9 +312,9 @@ input[type=button] {
     font-weight: 700;
     line-height: 4.5rem;
     height: 4.5rem;
-    margin: 0.75rem 0.5rem;
+    margin: 0.75rem 0.25rem;
     border-radius: 0.5rem;
-    padding: 0 1.5rem;
+    padding: 0 1.25rem;
     border: 0;
     transition: background 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.5);
@@ -328,13 +328,6 @@ p> input[type=button] {
 
 .button.narrow {
     padding: 0 1rem;
-}
-
-@media screen and (max-width: 1024px) {
-    .button,
-    input[type=button] {
-        margin: 0.75rem 0.15rem;
-    }
 }
 
 .button:not(.color),
