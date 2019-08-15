@@ -1213,7 +1213,7 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v5.8.31",
+            "version": "v5.8.32",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
@@ -1258,7 +1258,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v5.8.31",
+            "version": "v5.8.32",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -1302,16 +1302,16 @@
         },
         {
             "name": "illuminate/database",
-            "version": "v5.8.31",
+            "version": "v5.8.32",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "4ede24ddbf39ab7893c2c3d2d643ac13584db8ba"
+                "reference": "bca118a78df06922a53b74a083c81b61353fe0a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/4ede24ddbf39ab7893c2c3d2d643ac13584db8ba",
-                "reference": "4ede24ddbf39ab7893c2c3d2d643ac13584db8ba",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/bca118a78df06922a53b74a083c81b61353fe0a7",
+                "reference": "bca118a78df06922a53b74a083c81b61353fe0a7",
                 "shasum": ""
             },
             "require": {
@@ -1358,20 +1358,20 @@
                 "orm",
                 "sql"
             ],
-            "time": "2019-08-06T14:57:14+00:00"
+            "time": "2019-08-07T12:51:08+00:00"
         },
         {
             "name": "illuminate/support",
-            "version": "v5.8.31",
+            "version": "v5.8.32",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "60fdf2cd0fe8092947f42add1681c34fa252af33"
+                "reference": "7aabcab4634a1c7865fa6acb6b1b810cf4b699ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/60fdf2cd0fe8092947f42add1681c34fa252af33",
-                "reference": "60fdf2cd0fe8092947f42add1681c34fa252af33",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/7aabcab4634a1c7865fa6acb6b1b810cf4b699ea",
+                "reference": "7aabcab4634a1c7865fa6acb6b1b810cf4b699ea",
                 "shasum": ""
             },
             "require": {
@@ -1419,7 +1419,7 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "https://laravel.com",
-            "time": "2019-08-06T08:53:24+00:00"
+            "time": "2019-08-11T12:48:29+00:00"
         },
         {
             "name": "michelf/php-markdown",
@@ -2117,23 +2117,23 @@
         },
         {
             "name": "react/dns",
-            "version": "v1.1.0",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/dns.git",
-                "reference": "a04f6f23ee40afec2e5814ddfbdf71b9e88bbc1f"
+                "reference": "a214d90c2884dac18d0cac6176202f247b66d762"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/dns/zipball/a04f6f23ee40afec2e5814ddfbdf71b9e88bbc1f",
-                "reference": "a04f6f23ee40afec2e5814ddfbdf71b9e88bbc1f",
+                "url": "https://api.github.com/repos/reactphp/dns/zipball/a214d90c2884dac18d0cac6176202f247b66d762",
+                "reference": "a214d90c2884dac18d0cac6176202f247b66d762",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0",
                 "react/cache": "^1.0 || ^0.6 || ^0.5",
-                "react/event-loop": "^1.0 || ^0.5 || ^0.4 || ^0.3.5",
-                "react/promise": "^2.1 || ^1.2.1",
+                "react/event-loop": "^1.0 || ^0.5",
+                "react/promise": "^2.7 || ^1.2.1",
                 "react/promise-timer": "^1.2"
             },
             "require-dev": {
@@ -2157,7 +2157,7 @@
                 "dns-resolver",
                 "reactphp"
             ],
-            "time": "2019-07-18T09:47:47+00:00"
+            "time": "2019-08-15T09:06:31+00:00"
         },
         {
             "name": "react/event-loop",
