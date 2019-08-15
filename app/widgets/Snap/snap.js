@@ -3,6 +3,7 @@ var Snap = {
     video: undefined,
     videoSelect: undefined,
     canvas: undefined,
+    wait: undefined,
 
     gotStream: function() {
         const constraints = {
@@ -89,6 +90,7 @@ var Snap = {
     },
     end: function() {
         Snap.snap.classList = '';
+        Snap.wait.style.backgroundImage = '';
         Snap.close();
     },
     init : function() {
@@ -96,6 +98,7 @@ var Snap = {
         Snap.video = document.querySelector('#snap video');
         Snap.videoSelect = document.querySelector('#snap select#snapsource');
         Snap.canvas = document.querySelector('#snap canvas');
+        Snap.wait = document.querySelector("#snap #snapwait");
 
         Snap.close(); // Just in case
 
@@ -122,6 +125,7 @@ var Snap = {
         document.querySelector("#snap #snapclose").addEventListener('click', function() {
             Snap.snap.classList = 'shoot';
             Snap.video.play();
+            Upload.abort();
         });
 
         document.querySelector("#snap #snapswitch").addEventListener('click', function() {
@@ -147,6 +151,8 @@ var Snap = {
             Snap.end();
         });
 
-        Upload.fail(() => Snap.snap.classList = 'upload');
+        Upload.progress((percent) => Snap.wait.style.backgroundImage
+            = 'linear-gradient(to top, rgba(0, 0, 0, 0.5) ' + percent + '%, transparent ' + percent + '%)');
+        Upload.fail(() => { Snap.snap.classList = 'upload'; Snap.wait.style.backgroundImage = ''; });
     }
 }

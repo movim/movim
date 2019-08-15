@@ -442,6 +442,11 @@ div#spinner{
     to   { transform: translate(0, 0); }
 }
 
+@keyframes loadingopacity {
+    from { opacity: 0.4; }
+    to { opacity: 1; }
+}
+
 body {
     --standard-easing: cubic-bezier(0.4, 0.0, 0.2, 1);
     --accelerate-easing: cubic-bezier(0.0, 0.0, 0.2, 1);

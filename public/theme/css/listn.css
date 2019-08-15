@@ -277,6 +277,24 @@ header > ul.list li .primary {
     padding-left: 7rem;
 }*/
 
+/* Actions */
+ul.list.actions > li {
+    height: 6rem;
+    animation: zoom 0.3s;
+    padding-right: 15rem;
+}
+
+ul.list.actions > li > p {
+    border-radius: 0.65rem;
+    display: inline-block;
+    line-height: 4rem;
+    margin: 1rem 0;
+    vertical-align: middle;
+    font-size: 1.75rem;
+    position: absolute;
+    right: 1.5rem;
+}
+
 /* Tabs */
 
 ul.tabs {

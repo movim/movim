@@ -2,6 +2,7 @@ var Upload = {
     xhr : null,
     attached : [],
     failed : [],
+    progressed : [],
     get : null,
     name : null,
     file : null,
@@ -28,6 +29,12 @@ var Upload = {
         }
     },
 
+    progress : function(func) {
+        if (typeof(func) === "function") {
+            this.progressed.push(func);
+        }
+    },
+
     launchAttached : function() {
         for(var i = 0; i < Upload.attached.length; i++) {
             Upload.attached[i]({
@@ -39,9 +46,15 @@ var Upload = {
         }
     },
 
-    launchFailed : function(evt) {
+    launchFailed : function() {
         for(var i = 0; i < Upload.failed.length; i++) {
-            Upload.failed[i](evt);
+            Upload.failed[i]();
+        }
+    },
+
+    launchProgressed : function(percent) {
+        for(var i = 0; i < Upload.progressed.length; i++) {
+            Upload.progressed[i](percent);
         }
     },
 
@@ -154,6 +167,9 @@ var Upload = {
 
         Upload.xhr.upload.addEventListener('progress', function(evt) {
             var percent = Math.floor(evt.loaded/evt.total*100);
+
+            Upload.launchProgressed(percent);
+
             var progress = document.querySelector('#dialog ul li p');
             if (progress) progress.innerHTML = percent + '%';
         }, false);

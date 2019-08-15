@@ -52,6 +52,7 @@ ul li.date > p.normal,
 .dialog, .drawer, ul.context_menu,
 ul li div.bubble:not(.sticker):not(.file),
 .card > .block:not(.subheader):not(.simple),
+ul.list.actions p,
 main {
     background-color: rgb(var(--movim-background-main));
 }

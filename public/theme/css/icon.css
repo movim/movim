@@ -105,6 +105,14 @@ ul.list li span.icon.small {
     font-size: 0; /* Only display the first letter */
 }
 
+ul.list li span.icon.middle {
+    width: 4.5rem;
+    height: 4.5rem;
+    line-height: 4rem;
+    margin-top: -2.25rem;
+    font-size: 0; /* Only display the first letter */
+}
+
 ul.list li span.icon.small img.emoji {
     width: 1.75rem;
 }
@@ -117,6 +125,12 @@ span.icon.small.bubble:first-letter,
 span.icon.small.bubble i {
     font-size: 2rem;
     line-height: 3rem;
+}
+
+span.icon.middle.bubble:first-letter,
+span.icon.middle.bubble i {
+    font-size: 2.75rem;
+    line-height: 4.5rem;
 }
 
 span.icon span.counter,

@@ -44,6 +44,13 @@ main:not(.enabled) #chat_widget {
     margin: 0 auto;
 }
 
+/* Chat attach list */
+#chat_widget ul.list.actions {
+    right: 0.5rem;
+    bottom: 7.5rem;
+    position: absolute;
+}
+
 /* Chat box */
 
 #chat_widget .chat_box {
@@ -59,7 +66,6 @@ main:not(.enabled) #chat_widget {
 #chat_widget .chat_box.compose ul.list li > .control.upload ~ form,
 #chat_widget .chat_box form {
     margin-right: 5rem;
-    transition: margin-right .075s;
     padding-left: 7rem;
     padding-right: 1rem;
 }
@@ -77,7 +83,7 @@ main:not(.enabled) #chat_widget {
 }
 
 #chat_widget .chat_box span.primary,
-#chat_widget .chat_box span.control {
+#chat_widget .chat_box span.control:not(.button) {
     font-size: 3.5rem;
     color: rgba(var(--movim-font), 0.68);
 }
@@ -86,7 +92,7 @@ main:not(.enabled) #chat_widget {
     left: 0.5rem;
 }
 
-#chat_widget .chat_box span.control i {
+#chat_widget .chat_box span.control:not(.button) i {
     font-size: inherit;
 }
 
@@ -100,25 +106,30 @@ main:not(.enabled) #chat_widget {
 }
 
 #chat_widget .chat_box span.control.send.sending {
-    animation: loading_opacity 1s infinite alternate;
+    animation: loadingopacity 1s infinite alternate;
 }
 
-#chat_widget .chat_box ul.list li {
+#chat_widget .chat_box > ul.list > li {
     padding: 0.01rem 0;
 }
 
-#chat_widget .chat_box ul.list li > .control.control.send {
-    right: 0rem;
+#chat_widget .chat_box > ul.list > li > .control.control.send {
+    right: 0;
+}
+#chat_widget .chat_box > ul.list > li > .control.attach {
+    transition: transform 0.3s;
 }
 
-#chat_widget .chat_box:not(.compose) ul.list li > .control.upload ~ .control.send,
-#chat_widget .chat_box.compose ul.list li > .control.upload ~ .control:not(.send),
-#chat_widget .chat_box.compose ul.list li > .control:not(.send) {
+#chat_widget .chat_box > ul.list > li > .control.attach.enabled {
+    transform: rotate(45deg);
+}
+
+#chat_widget .chat_box.compose > ul.list > li > ul.list.actions,
+#chat_widget .chat_box > ul.list > li > .control.attach:not(.enabled) ~ ul.list.actions,
+#chat_widget .chat_box:not(.compose) > ul.list > li > .control.attach ~ .control.send,
+#chat_widget .chat_box.compose > ul.list > li > .control.attach ~ .control:not(.send),
+#chat_widget .chat_box.compose > ul.list > li > .control:not(.send) {
     display: none;
-}
-
-#chat_widget .chat_box ul.list li > .control.upload ~ form {
-    margin-right: 11rem;
 }
 
 @media screen and (max-width: 1024px) {
@@ -126,11 +137,6 @@ main:not(.enabled) #chat_widget {
         left: 0;
         width: 100%;
     }
-}
-
-@keyframes loading_opacity {
-    from { opacity: 0.4; }
-    to { opacity: 1; }
 }
 
 #chat_widget li.oppose span.control {

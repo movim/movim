@@ -296,7 +296,7 @@ form > div > input:disabled + label {
 
 .button:disabled,
 .button.inactive {
-    opacity: 0.5;
+    opacity: 0.6;
     pointer-events:none;
 }
 
@@ -347,6 +347,7 @@ input[type=button].flat {
 }
 
 .button:hover,
+ul.list.actions > li:hover,
 input[type=button]:hover {
     cursor: pointer;
 }
@@ -379,20 +380,22 @@ input[type=button].flat:focus {
     z-index: 1;
     font-size: 3.5rem;
     animation: zoom 0.3s;
+    padding: 0;
+    border-radius: 10rem;
 }
 
 .button.action,
-.button.action .actions li {
-    border-radius: 10rem;
+ul.list.actions > li > p {
     box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.23), 0 0.5rem 1.25rem rgba(0, 0, 0, 0.16);
 }
 
+ul.list.actions > li:hover .button.action,
+ul.list.actions > li:hover p,
 .button.action:hover {
     background-image: linear-gradient(to bottom, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.1) 100%);
 }
 
 .button.action,
-.button.action .actions li,
 .button.action > i {
     transition: all 0.15s ease 0s;
 }
@@ -419,41 +422,6 @@ li.action div.action .button {
     aside ~ * .button.action {
         right: calc(50% - 20rem);
     }
-}
-
-.button.action .actions {
-    position: absolute;
-    bottom: 7rem;
-    left: 0;
-    padding: 0;
-    pointer-events: none;
-}
-
-.button.action .actions li {
-    background-color: white;
-    color: #888;
-    font-size: 3rem;
-    line-height: 6rem;
-    margin: 2rem 0.5rem;
-    width: 6rem;
-    height: 6rem;
-    padding: 0;
-    opacity: 0;
-    transition: all 0.3s ease 0.15s;
-    pointer-events: none;
-}
-
-.button.action.active .actions {
-    pointer-events: auto;
-}
-
-.button.action.active .actions li {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.button.action .actions li:hover {
-    background-color: white;
 }
 
 /* The textarea hidden div */

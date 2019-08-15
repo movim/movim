@@ -721,9 +721,24 @@ var Chat = {
         var chatBox = document.querySelector('#chat_widget .chat_box');
 
         if (chatBox) {
-            Chat.getTextarea().value.length > 0
-                ? chatBox.classList.add('compose')
-                : chatBox.classList.remove('compose');
+            if (Chat.getTextarea().value.length > 0) {
+                chatBox.classList.add('compose');
+                Chat.toggleAttach(true);
+            } else {
+                chatBox.classList.remove('compose');
+            }
+        }
+    },
+    toggleAttach: function(forceDisabled)
+    {
+        var attach = document.querySelector('#chat_widget .chat_box span.attach');
+
+        if (attach) {
+            if (forceDisabled) {
+                attach.classList.remove('enabled');
+            } else {
+                attach.classList.toggle('enabled');
+            }
         }
     },
     getTextarea: function() {

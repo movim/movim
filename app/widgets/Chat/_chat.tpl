@@ -228,14 +228,29 @@
                 <i class="material-icons">mood</i>
             </span>
             {if="$c->getUser()->hasUpload()"}
-                <span class="upload control icon"
-                    title="{$c->__('publishbrief.attach')}"
-                    onclick="Upload_ajaxRequest()">
-                    <i class="material-icons">attach_file</i>
+                <span class="attach control icon" onclick="Chat.toggleAttach()">
+                    <i class="material-icons">add_circle</i>
                 </span>
-                <span class="snap control icon" onclick="Snap.init()">
-                    <i class="material-icons">camera_alt</i>
-                </span>
+                <ul class="list actions">
+                    <li onclick="Chat.toggleAttach(); Snap.init()">
+                        <span class="button action control icon middle bubble color blue">
+                            <i class="material-icons">camera_alt</i>
+                        </span>
+                        <p class="normal line">Snap</p>
+                    </li>
+                    <li onclick="Chat.toggleAttach(); Upload_ajaxRequest()">
+                        <span class="button action control icon middle bubble color purple">
+                            <i class="material-icons">attach_file</i>
+                        </span>
+                        <p class="normal line">{$c->__('publishbrief.attach')}</p>
+                    </li>
+                    <!--<li>
+                        <span class="button action control icon middle bubble color green">
+                            <i class="material-icons">gesture</i>
+                        </span>
+                        <p class="normal line">Draw</p>
+                    </li>-->
+                </ul>
             {/if}
             <span title="{$c->__('button.submit')}"
                 class="send control icon gray"
