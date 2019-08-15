@@ -108,27 +108,27 @@ var Snap = {
 
         Snap.video.play();
 
-        document.querySelector("#snap #snapshoot").addEventListener('click', function() {
+        document.querySelector("#snap #snapshoot").onclick = () => {
             Snap.shoot();
-        });
+        };
 
-        document.querySelector("#snap #snapupload").addEventListener('click', function() {
+        document.querySelector("#snap #snapupload").onclick = () => {
             Snap.snap.classList = 'wait';
             Upload.init();
-        });
+        };
 
-        document.querySelector("#snap #snapback").addEventListener('click', function() {
+        document.querySelector("#snap #snapback").onclick = () => {
             Snap.snap.classList = '';
             Snap.close();
-        });
+        };
 
-        document.querySelector("#snap #snapclose").addEventListener('click', function() {
+        document.querySelector("#snap #snapclose").onclick = () => {
             Snap.snap.classList = 'shoot';
             Snap.video.play();
             Upload.abort();
-        });
+        };
 
-        document.querySelector("#snap #snapswitch").addEventListener('click', function() {
+        document.querySelector("#snap #snapswitch").onclick = () => {
             Snap.videoSelect.selectedIndex++;
 
             // No empty selection
@@ -138,21 +138,21 @@ var Snap = {
 
             Snap.close();
             Snap.gotStream();
-        });
-
-        Upload.attach((file) => {
-            const page = MovimUtils.urlParts().page;
-
-            if (page != 'chat') {
-                document.querySelector('input[name=embed]').value = file.uri;
-                PublishBrief.checkEmbed();
-            }
-
-            Snap.end();
-        });
-
-        Upload.progress((percent) => Snap.wait.style.backgroundImage
-            = 'linear-gradient(to top, rgba(0, 0, 0, 0.5) ' + percent + '%, transparent ' + percent + '%)');
-        Upload.fail(() => { Snap.snap.classList = 'upload'; Snap.wait.style.backgroundImage = ''; });
+        };
     }
 }
+
+Upload.attach((file) => {
+    const page = MovimUtils.urlParts().page;
+
+    if (page != 'chat') {
+        document.querySelector('input[name=embed]').value = file.uri;
+        PublishBrief.checkEmbed();
+    }
+
+    Snap.end();
+});
+
+Upload.progress((percent) => Snap.wait.style.backgroundImage
+    = 'linear-gradient(to top, rgba(0, 0, 0, 0.5) ' + percent + '%, transparent ' + percent + '%)');
+Upload.fail(() => { Snap.snap.classList = 'upload'; Snap.wait.style.backgroundImage = ''; });

@@ -3,7 +3,6 @@
 <?php $this->widget('VisioLink');?>
 <?php $this->widget('Stickers');?>
 <?php $this->widget('Notifications');?>
-<?php $this->widget('Snap');?>
 
 <nav class="color dark">
     <?php $this->widget('Presence');?>
@@ -20,3 +19,5 @@
         <?php $this->widget('Rooms');?>
     </div>
 </main>
+
+<?php $this->widget('Snap');?>

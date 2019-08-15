@@ -179,9 +179,7 @@ var Upload = {
             && (Upload.xhr.status >= 200 && Upload.xhr.status < 400)) {
                 Dialog.clear();
                 Upload.launchAttached();
-            }
-
-            if (Upload.xhr.readyState == 4
+            } else if (Upload.xhr.readyState == 4
             && (Upload.xhr.status >= 400 || Upload.xhr.status == 0)
             && Upload.file != null) {
                 Upload.launchFailed();

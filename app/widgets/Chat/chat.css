@@ -101,10 +101,6 @@ main:not(.enabled) #chat_widget {
     color: rgba(var(--movim-font), 0.54);
 }
 
-#chat_widget .chat_box span.control:active {
-    color: #333;
-}
-
 #chat_widget .chat_box span.control.send.sending {
     animation: loadingopacity 1s infinite alternate;
 }
