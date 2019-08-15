@@ -17,6 +17,8 @@ var Snap = {
         if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
             navigator.mediaDevices.getUserMedia(constraints)
                 .then(stream => {
+                    snap.classList = 'shoot';
+
                     Snap.video.srcObject = stream;
                     Snap.video.play();
 
@@ -50,8 +52,6 @@ var Snap = {
         if (ids.length >= 2) {
             document.querySelector("#snap #snapswitch").classList.add('enabled');
         }
-
-        snap.classList = 'shoot';
     },
     shoot: function() {
         Snap.canvas.width = Snap.video.videoWidth;
@@ -102,7 +102,7 @@ var Snap = {
 
         Snap.close(); // Just in case
 
-        Snap.snap.classList = 'wait';
+        Snap.snap.classList = 'init';
 
         navigator.mediaDevices.enumerateDevices().then(devices => Snap.gotDevices(devices));
 
@@ -129,6 +129,8 @@ var Snap = {
         };
 
         document.querySelector("#snap #snapswitch").onclick = () => {
+            Snap.snap.classList = 'init';
+
             Snap.videoSelect.selectedIndex++;
 
             // No empty selection

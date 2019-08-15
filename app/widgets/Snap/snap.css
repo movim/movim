@@ -76,26 +76,30 @@
 /* States */
 #snap.shoot,
 #snap.upload,
-#snap.wait {
+#snap.wait,
+#snap.init {
     display: block;
 }
 
-#snap.shoot ul.controls.list > li#snapback,
 #snap.shoot #snapupload,
 #snap.shoot #snapclose,
 #snap.shoot #snapwait,
 #snap.shoot canvas,
-#snap.upload ul.controls.list > li#snapclose,
 #snap.upload #snapshoot,
 #snap.upload #snapback,
 #snap.upload #snapwait,
 #snap.upload #snapswitch,
 #snap.upload #snapswitch.enabled,
-#snap.wait ul.controls.list > li#snapclose,
 #snap.wait #snapshoot,
 #snap.wait #snapupload,
 #snap.wait #snapback,
 #snap.wait #snapswitch,
-#snap.wait #snapswitch.enabled {
+#snap.wait #snapswitch.enabled,
+#snap.init #snapshoot,
+#snap.init #snapupload,
+#snap.init #snapswitch,
+#snap.init #snapswitch.enabled,
+#snap.init #snapclose,
+#snap.init canvas {
     display: none;
 }
