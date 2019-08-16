@@ -270,7 +270,7 @@ class Base
             \symlink($local, $cache);
         }
 
-        return $path;
+        return urilize($path);
     }
 
     /**
