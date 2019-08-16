@@ -51,6 +51,7 @@ function getClientTypes()
 {
     return [
         'bot'           => __('client.bot'),
+        'console'       => __('client.console'),
         'pc'            => __('client.desktop'),
         'phone'         => __('client.phone'),
         'handheld'      => __('client.phone'),
