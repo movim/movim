@@ -44,25 +44,33 @@
         </ul>
     </header>
 
-    <ul class="list middle">
-        {if="$roster && $roster->presence && $roster->presence->capability"}
-            <li class="block">
-                <span class="primary icon gray">
-                    <i class="material-icons">
-                        {$roster->presence->capability->getDeviceIcon()}
-                    </i>
-                </span>
-                <p class="normal line">
-                    {$roster->presence->capability->name}
-                </p>
-                <p class="line">
-                    {if="isset($clienttype[$roster->presence->capability->type])"}
-                        {$clienttype[$roster->presence->capability->type]}
-                    {/if}
-                </p>
-            </li>
-        {/if}
+    {if="$roster && $roster->presences"}
+        <ul class="list middle">
+            <li class="subheader"><p>{$c->__('clients.title')}</p></li>
+            {loop="$roster->presences"}
+                {if="$value->capability"}
+                    <li class="block">
+                        <span class="primary icon gray">
+                            <i class="material-icons">
+                                {$value->capability->getDeviceIcon()}
+                            </i>
+                        </span>
+                        <p class="normal line">
+                            {$value->capability->name}
+                        </p>
+                        <p class="line">
+                            {if="isset($clienttype[$value->capability->type])"}
+                                {$clienttype[$value->capability->type]}
+                            {/if}
+                        </p>
+                    </li>
+                {/if}
+            {/loop}
+        </ul>
+        <hr class="thick"/>
+    {/if}
 
+    <ul class="list middle">
         {if="$contact->fn != null"}
         <li>
             <span class="primary icon gray">{$contact->fn|firstLetterCapitalize}</span>

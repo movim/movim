@@ -283,6 +283,10 @@ hr:not(.clear) {
     width: 100%;
 }
 
+hr.thick {
+    margin: 1rem 0;
+}
+
 /* Spin */
 
 .spin:empty {
