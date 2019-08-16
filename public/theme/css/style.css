@@ -442,7 +442,12 @@ div#spinner{
 }
 
 @keyframes top-right {
-    from { transform: translate(15%, -25%); }
+    from { transform: translate(10%, -20%); }
+    to   { transform: translate(0, 0); }
+}
+
+@keyframes bottom-right {
+    from { transform: translate(10%, 20%); }
     to   { transform: translate(0, 0); }
 }
 

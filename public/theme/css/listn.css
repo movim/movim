@@ -278,10 +278,10 @@ header > ul.list li .primary {
 }*/
 
 /* Actions */
+
 ul.list.actions {
     width: 50%;
     animation: fadein 0.2s;
-
 }
 
 ul.list.actions:before {
@@ -299,7 +299,7 @@ ul.list.actions:before {
 
 ul.list.actions > li {
     height: 6.5rem;
-    animation: zoom 0.3s;
+    animation: zoom 0.2s, bottom-right 0.2s;
     padding-right: 15rem;
 }
 

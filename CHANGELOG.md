@@ -16,6 +16,8 @@ v0.15.1 (trunk)
  * Boost the Search widget loading by defering the Roster injection
  * Slight upgrade of the general CSS (round corners, padding…)
  * Display more info in Chats (Me, chatstates)
+ * Redesign the attachment system for the Chat
+ * Display all the contacts clients in the ContactActions drawer
 
 v0.15 – Donati
 ---------------------------
