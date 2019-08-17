@@ -281,7 +281,6 @@ header > ul.list li .primary {
 
 ul.list.actions {
     width: 50%;
-    animation: fadein 0.2s;
 }
 
 ul.list.actions:before {
@@ -518,12 +517,16 @@ ul.context_menu {
     margin: 0.5rem;
     z-index: 3;
     box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.26), 0px 2px 10px 0px rgba(0, 0, 0, 0.16);
-    display: none;
-    animation: zoom 0.2s, top-right 0.2s;
+    transition: transform 0.2s, opacity 0.2s;
+    transform: translateY(-5%);
+    opacity: 0;
+    pointer-events: none;
 }
 
 ul.context_menu.shown {
-    display: block;
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
 }
 
 /* Divided */

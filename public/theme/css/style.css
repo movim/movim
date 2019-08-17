@@ -441,11 +441,6 @@ div#spinner{
     to   { transform: scale(1); opacity: 1; }
 }
 
-@keyframes top-right {
-    from { transform: translate(10%, -20%); }
-    to   { transform: translate(0, 0); }
-}
-
 @keyframes bottom-right {
     from { transform: translate(10%, 20%); }
     to   { transform: translate(0, 0); }
