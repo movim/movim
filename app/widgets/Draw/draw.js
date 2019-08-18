@@ -1,12 +1,7 @@
 var Draw = {
-    BLACK: '#222222',
-    BLUE: '#3F51B5',
-    RED: '#e91e63',
-    GREEN: '#689F38',
-    PURPLE: '#9C27B0',
-    SMALL: 2,
-    MEDIUM: 4,
-    BIG: 6,
+    SMALL: 4,
+    MEDIUM: 6,
+    BIG: 8,
 
     canvas: null,
     canvasbg: null,
@@ -31,7 +26,7 @@ var Draw = {
 
         Draw.ctx = Draw.canvas.getContext('2d');
         Draw.ctx.strokeStyle = Draw.BLACK;
-        Draw.ctx.lineWidth = Draw.SMALL;
+        Draw.ctx.lineWidth = Draw.MEDIUM;
         Draw.ctx.lineCap = 'round';
 
         // Get a regular interval for drawing to the screen
@@ -95,17 +90,30 @@ var Draw = {
         save.addEventListener('click', (e) => {
             const rect = Draw.canvas.getBoundingClientRect();
             const finalCanvas = document.createElement('canvas');
-            finalCanvas.setAttribute('width', 320);
-            finalCanvas.setAttribute('height', 160);
+
+            finalCanvas.setAttribute('width', rect.width);
+            finalCanvas.setAttribute('height', rect.height);
 
             const bgimg = document.getElementById('background');
+            const finalctx = finalCanvas.getContext('2d');
+
             if(bgimg){
-                const finalctx = finalCanvas.getContext('2d');
                 finalctx.drawImage(bgimg, 0, 0, rect.width, rect.height);
             }
 
-            finalctx.drawImage(Draw.canvas, 0, 0);
-            document.body.appendChild(finalCanvas);
+            finalctx.drawImage(Draw.canvas, 0, 0, rect.width, rect.height);
+            //document.body.appendChild(finalCanvas);
+
+            finalCanvas.toBlob(
+                function (blob) {
+                    console.log(blob);
+                    Upload.prepare(blob);
+                    Upload.init();
+                    Draw.draw.classList = '';
+                },
+                'image/jpeg',
+                0.85
+            );
         })
 
         // Use the eraser
@@ -118,35 +126,24 @@ var Draw = {
         // Change pencil color
         const colors = document.querySelectorAll('.draw-colors li');
         for (let i = 0; i < colors.length; i++) {
-            colors[i].addEventListener('click', (e) => {
+            colors[i].addEventListener('click', function(e) {
+                colors.forEach(item => item.classList.remove('selected'));
+                this.classList.add('selected');
+
                 Draw.ctx.globalCompositeOperation = 'source-over';
-                let color;
-                switch (e.target.getAttribute('data-color')) {
-                    case 'blue':
-                        color = Draw.BLUE;
-                        break;
-                    case 'red':
-                        color = Draw.RED;
-                        break;
-                    case 'green':
-                        color = Draw.GREEN;
-                        break;
-                    case 'purple':
-                        color = Draw.PURPLE;
-                        break;
-                    default:
-                        color = Draw.BLACK;
-                }
-                Draw.ctx.strokeStyle = color;
+                Draw.ctx.strokeStyle = window.getComputedStyle(colors[i].querySelector('span.primary')).backgroundColor;
             });
         }
 
         // Change pencil thickness
         const widths = document.querySelectorAll('.draw-widths li');
         for (let i = 0; i < widths.length; i++) {
-            widths[i].addEventListener('click', (e) => {
+            widths[i].addEventListener('click', function(e) {
+                widths.forEach(item => item.classList.remove('selected'));
+                this.classList.add('selected');
+
                 let width;
-                switch (e.target.getAttribute('data-width')) {
+                switch (this.dataset.width) {
                     case 'small':
                         width = Draw.SMALL;
                         break;
@@ -159,16 +156,12 @@ var Draw = {
                     default:
                         width = Draw.SMALL;
                 }
-                Draw.ctx.lineWidth = width
+                Draw.ctx.lineWidth = width;
             });
         }
+
         const drawback = document.querySelector('#draw #drawback');
         drawback.addEventListener('click', () => {
-            Draw.draw.classList = '';
-        });
-
-        const drawclose = document.querySelector('#draw #drawclose');
-        drawclose.addEventListener('click', () => {
             Draw.draw.classList = '';
         });
 
