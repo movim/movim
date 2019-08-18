@@ -128,7 +128,7 @@ var Snap = {
         };
 
         Snap.snap.classList = 'init';
-            
+
         document.querySelector("#snap #snapupload").onclick = () => {
             Snap.snap.classList = 'wait';
             Upload.init();
@@ -155,9 +155,17 @@ Upload.attach((file) => {
         PublishBrief.checkEmbed();
     }
 
-    Snap.end();
+    if (Snap.snap) Snap.end();
 });
 
-Upload.progress((percent) => Snap.wait.style.backgroundImage
-    = 'linear-gradient(to top, rgba(0, 0, 0, 0.5) ' + percent + '%, transparent ' + percent + '%)');
-Upload.fail(() => { Snap.snap.classList = 'upload'; Snap.wait.style.backgroundImage = ''; });
+Upload.progress((percent) => {
+    if (Snap.wait) {
+        Snap.wait.style.backgroundImage = 'linear-gradient(to top, rgba(0, 0, 0, 0.5) ' + percent + '%, transparent ' + percent + '%)';
+    }
+});
+
+Upload.fail(() => {
+    if (Snap.snap) {
+        Snap.snap.classList = 'upload'; Snap.wait.style.backgroundImage = '';
+    }
+});

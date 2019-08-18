@@ -7,6 +7,7 @@ var Draw = {
     canvasbg: null,
     ctx: null,
     draw: null,
+    save: null,
 
     // MouseEvents for drawing
     drawing: false,
@@ -86,8 +87,8 @@ var Draw = {
         }, false);
 
         // Save (background +) drawing
-        const save = document.getElementById('draw-save');
-        save.addEventListener('click', (e) => {
+        Draw.save = document.getElementById('draw-save');
+        Draw.save.onclick = (e) => {
             const rect = Draw.canvas.getBoundingClientRect();
             const finalCanvas = document.createElement('canvas');
 
@@ -102,19 +103,17 @@ var Draw = {
             }
 
             finalctx.drawImage(Draw.canvas, 0, 0, rect.width, rect.height);
-            //document.body.appendChild(finalCanvas);
 
             finalCanvas.toBlob(
                 function (blob) {
-                    console.log(blob);
                     Upload.prepare(blob);
+                    Upload.name = 'drawing.jpg';
                     Upload.init();
-                    Draw.draw.classList = '';
                 },
                 'image/jpeg',
                 0.85
             );
-        })
+        };
 
         // Use the eraser
         const eraser = document.querySelector('.draw-eraser');
@@ -211,3 +210,20 @@ var Draw = {
         }
     }
 };
+
+Upload.attach((file) => {
+    if (Draw.draw) Draw.draw.classList = '';
+    if (Draw.save) Draw.save.querySelector('span.primary').style.backgroundImage = '';
+});
+
+Upload.progress((percent) => {
+    if (Draw.save) {
+        Draw.save.querySelector('span.primary').style.backgroundImage
+            = 'linear-gradient(to top, rgba(0, 0, 0, 0.5) ' + percent + '%, transparent ' + percent + '%)';
+    }
+});
+
+Upload.fail(() => {
+    if (Draw.draw) Draw.draw.classList = 'upload';
+    if (Draw.save) Draw.save.querySelector('span.primary').style.backgroundImage = '';
+});
