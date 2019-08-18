@@ -21,3 +21,4 @@
 </main>
 
 <?php $this->widget('Snap');?>
+<?php $this->widget('Draw');?>

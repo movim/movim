@@ -238,7 +238,7 @@
                         </span>
                         <p class="normal line">Snap</p>
                     </li>
-                    <li  onclick="Chat.toggleAttach(); Snap.init(true)">
+                    <li onclick="Chat.toggleAttach(); Draw.init()">
                         <span class="button action control icon middle bubble color green">
                             <i class="material-icons">gesture</i>
                         </span>
