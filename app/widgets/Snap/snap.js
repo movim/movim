@@ -95,44 +95,40 @@ var Snap = {
         Snap.wait.style.backgroundImage = '';
         Snap.close();
     },
-    init : function(draw) {
+    init : function() {
         Snap.snap = document.querySelector('#snap');
         Snap.canvas = document.querySelector('#snap canvas');
         Snap.wait = document.querySelector("#snap #snapwait");
 
-        if (draw !== true) {
-            Snap.video = document.querySelector('#snap video');
-            Snap.videoSelect = document.querySelector('#snap select#snapsource');
+        Snap.video = document.querySelector('#snap video');
+        Snap.videoSelect = document.querySelector('#snap select#snapsource');
 
-            Snap.close(); // Just in case
+        Snap.close(); // Just in case
 
-            navigator.mediaDevices.enumerateDevices().then(devices => Snap.gotDevices(devices));
+        navigator.mediaDevices.enumerateDevices().then(devices => Snap.gotDevices(devices));
 
-            Snap.video.play();
+        Snap.video.play();
 
-            document.querySelector("#snap #snapshoot").onclick = () => {
-                Snap.shoot();
-            };
+        document.querySelector("#snap #snapshoot").onclick = () => {
+            Snap.shoot();
+        };
 
-            document.querySelector("#snap #snapswitch").onclick = () => {
-                Snap.snap.classList = 'init';
-
-                Snap.videoSelect.selectedIndex++;
-
-                // No empty selection
-                if (Snap.videoSelect.selectedIndex == -1) {
-                    Snap.videoSelect.selectedIndex++;
-                }
-
-                Snap.close();
-                Snap.gotStream();
-            };
-
+        document.querySelector("#snap #snapswitch").onclick = () => {
             Snap.snap.classList = 'init';
-        } else {
-            Snap.snap.classList = 'draw';
-        }
 
+            Snap.videoSelect.selectedIndex++;
+
+            // No empty selection
+            if (Snap.videoSelect.selectedIndex == -1) {
+                Snap.videoSelect.selectedIndex++;
+            }
+
+            Snap.close();
+            Snap.gotStream();
+        };
+
+        Snap.snap.classList = 'init';
+            
         document.querySelector("#snap #snapupload").onclick = () => {
             Snap.snap.classList = 'wait';
             Upload.init();
