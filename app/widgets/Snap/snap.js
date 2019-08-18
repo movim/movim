@@ -78,6 +78,8 @@ var Snap = {
         context.clearRect(0, 0, Snap.canvas.width, Snap.canvas.height);
     },
     close: function() {
+        if (!Snap.video) return;
+
         let stream = Snap.video.srcObject;
 
         if (stream) {
@@ -93,24 +95,43 @@ var Snap = {
         Snap.wait.style.backgroundImage = '';
         Snap.close();
     },
-    init : function() {
+    init : function(draw) {
         Snap.snap = document.querySelector('#snap');
-        Snap.video = document.querySelector('#snap video');
-        Snap.videoSelect = document.querySelector('#snap select#snapsource');
         Snap.canvas = document.querySelector('#snap canvas');
         Snap.wait = document.querySelector("#snap #snapwait");
 
-        Snap.close(); // Just in case
+        if (draw !== true) {
+            Snap.video = document.querySelector('#snap video');
+            Snap.videoSelect = document.querySelector('#snap select#snapsource');
 
-        Snap.snap.classList = 'init';
+            Snap.close(); // Just in case
 
-        navigator.mediaDevices.enumerateDevices().then(devices => Snap.gotDevices(devices));
+            navigator.mediaDevices.enumerateDevices().then(devices => Snap.gotDevices(devices));
 
-        Snap.video.play();
+            Snap.video.play();
 
-        document.querySelector("#snap #snapshoot").onclick = () => {
-            Snap.shoot();
-        };
+            document.querySelector("#snap #snapshoot").onclick = () => {
+                Snap.shoot();
+            };
+
+            document.querySelector("#snap #snapswitch").onclick = () => {
+                Snap.snap.classList = 'init';
+
+                Snap.videoSelect.selectedIndex++;
+
+                // No empty selection
+                if (Snap.videoSelect.selectedIndex == -1) {
+                    Snap.videoSelect.selectedIndex++;
+                }
+
+                Snap.close();
+                Snap.gotStream();
+            };
+
+            Snap.snap.classList = 'init';
+        } else {
+            Snap.snap.classList = 'draw';
+        }
 
         document.querySelector("#snap #snapupload").onclick = () => {
             Snap.snap.classList = 'wait';
@@ -126,20 +147,6 @@ var Snap = {
             Snap.snap.classList = 'shoot';
             Snap.video.play();
             Upload.abort();
-        };
-
-        document.querySelector("#snap #snapswitch").onclick = () => {
-            Snap.snap.classList = 'init';
-
-            Snap.videoSelect.selectedIndex++;
-
-            // No empty selection
-            if (Snap.videoSelect.selectedIndex == -1) {
-                Snap.videoSelect.selectedIndex++;
-            }
-
-            Snap.close();
-            Snap.gotStream();
         };
     }
 }

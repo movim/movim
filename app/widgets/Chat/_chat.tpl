@@ -238,18 +238,18 @@
                         </span>
                         <p class="normal line">Snap</p>
                     </li>
+                    <li  onclick="Chat.toggleAttach(); Snap.init(true)">
+                        <span class="button action control icon middle bubble color green">
+                            <i class="material-icons">gesture</i>
+                        </span>
+                        <p class="normal line">Draw</p>
+                    </li>
                     <li onclick="Chat.toggleAttach(); Upload_ajaxRequest()">
                         <span class="button action control icon bubble color purple">
                             <i class="material-icons">attach_file</i>
                         </span>
                         <p class="normal line">{$c->__('publishbrief.attach')}</p>
                     </li>
-                    <!--<li>
-                        <span class="button action control icon middle bubble color green">
-                            <i class="material-icons">gesture</i>
-                        </span>
-                        <p class="normal line">Draw</p>
-                    </li>-->
                 </ul>
             {/if}
             <span title="{$c->__('button.submit')}"
