@@ -24,6 +24,11 @@ var Draw = {
         Draw.canvasbg = document.getElementById('draw-background');
         Draw.canvasbg.width = document.body.clientWidth;
         Draw.canvasbg.height = document.body.clientHeight;
+        // fill canvas with white if no bg to reuse
+        bgctx = Draw.canvasbg.getContext("2d");
+        bgctx.fillStyle = "white";
+        bgctx.fillRect(0, 0, Draw.canvasbg.width, Draw.canvasbg.height);
+
 
         Draw.ctx = Draw.canvas.getContext('2d');
         Draw.ctx.strokeStyle = Draw.BLACK;
@@ -95,13 +100,10 @@ var Draw = {
             finalCanvas.setAttribute('width', rect.width);
             finalCanvas.setAttribute('height', rect.height);
 
-            const bgimg = document.getElementById('background');
+            const bgimg = document.getElementById('draw-background');
             const finalctx = finalCanvas.getContext('2d');
 
-            if(bgimg){
-                finalctx.drawImage(bgimg, 0, 0, rect.width, rect.height);
-            }
-
+            finalctx.drawImage(bgimg, 0, 0, rect.width, rect.height);
             finalctx.drawImage(Draw.canvas, 0, 0, rect.width, rect.height);
 
             finalCanvas.toBlob(
