@@ -18,6 +18,7 @@ v0.15.1 (trunk)
  * Display more info in Chats (Me, chatstates)
  * Redesign the attachment system for the Chat
  * Display all the contacts clients in the ContactActions drawer
+ * Add support of pubsub#publish_model in CommunityHeader
 
 v0.15 – Donati
 ---------------------------
