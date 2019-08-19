@@ -134,6 +134,14 @@ var Snap = {
             Upload.init();
         };
 
+        document.querySelector("#snap #snapdraw").onclick = () => {
+            // snapback or snapclose?
+            Snap.snap.classList = '';
+            Snap.close();
+
+            Draw.init(true);
+        };
+
         document.querySelector("#snap #snapback").onclick = () => {
             Snap.snap.classList = '';
             Snap.close();

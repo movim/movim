@@ -14,7 +14,7 @@ var Draw = {
     mousePos: { x: 0, y: 0 },
     lastPos: this.mousePos,
 
-    init: function () {
+    init: function (snapBackground) {
         Draw.draw = document.getElementById('draw');
         // Set up the canvas
         Draw.canvas = document.getElementById('draw-canvas');
@@ -24,11 +24,15 @@ var Draw = {
         Draw.canvasbg = document.getElementById('draw-background');
         Draw.canvasbg.width = document.body.clientWidth;
         Draw.canvasbg.height = document.body.clientHeight;
-        // fill canvas with white if no bg to reuse
+
         bgctx = Draw.canvasbg.getContext("2d");
+        // fill canvas with white
         bgctx.fillStyle = "white";
         bgctx.fillRect(0, 0, Draw.canvasbg.width, Draw.canvasbg.height);
-
+        if(snapBackground) {
+            // copy over snap image
+            bgctx.drawImage(Snap.canvas, 0, 0, Draw.canvasbg.width, Draw.canvasbg.width * Snap.canvas.height / Snap.canvas.width);
+        }
 
         Draw.ctx = Draw.canvas.getContext('2d');
         Draw.ctx.strokeStyle = Draw.BLACK;

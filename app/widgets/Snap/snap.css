@@ -41,12 +41,16 @@
     left: 0;
 }
 
-#snap button#snapshoot,
-#snap button#snapupload,
-#snap button#snapwait {
-    right: calc(50% - 3.5rem);
+#snap .bottom_center {
+    width: 100%;
     position: absolute;
     bottom: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+#snap .bottom_center > * {
+    position: relative;
 }
 
 #snap button#snapswitch {
@@ -87,6 +91,7 @@
 }
 
 #snap.shoot #snapupload,
+#snap.shoot #snapdraw,
 #snap.shoot #snapclose,
 #snap.shoot #snapwait,
 #snap.shoot canvas,
@@ -100,6 +105,7 @@
 
 #snap.wait #snapshoot,
 #snap.wait #snapupload,
+#snap.wait #snapdraw,
 #snap.wait #snapback,
 #snap.wait #snapswitch,
 #snap.wait #snapswitch.enabled,
@@ -114,6 +120,7 @@
 
 #snap.init #snapshoot,
 #snap.init #snapupload,
+#snap.init #snapdraw,
 #snap.init #snapswitch,
 #snap.init #snapswitch.enabled,
 #snap.init #snapclose,
