@@ -215,7 +215,7 @@ var MovimWebsocket = {
         this.attached = [];
     },
 
-    handle : function(funcall) {
+    handle : function(funcall) {console.log(funcall);
         if (funcall.func != null && (typeof window[funcall.func] == 'function')) {
             try {
                 window[funcall.func].apply(null, funcall.params);

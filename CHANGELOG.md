@@ -19,6 +19,7 @@ v0.15.1 (trunk)
  * Redesign the attachment system for the Chat
  * Display all the contacts clients in the ContactActions drawer
  * Add support of pubsub#publish_model in CommunityHeader
+ * Fix Bookmarks edition (Chat panel toggle) and show a toast on save
 
 v0.15 – Donati
 ---------------------------

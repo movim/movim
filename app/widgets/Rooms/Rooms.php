@@ -27,8 +27,8 @@ class Rooms extends Base
         $this->addjs('rooms.js');
         $this->addcss('rooms.css');
         $this->registerEvent('message', 'onMessage');
-        $this->registerEvent('bookmark_get_handle', 'onGetBookmark');
-        $this->registerEvent('bookmark_set_handle', 'onBookmark');
+        $this->registerEvent('bookmark_get_handle', 'onBookmarkGet');
+        $this->registerEvent('bookmark_set_handle', 'onBookmarkSet');
         $this->registerEvent('disco_items_nosave_handle', 'onDiscoGateway');
         $this->registerEvent('disco_items_nosave_error', 'onDiscoGatewayError');
         $this->registerEvent('vcard_set_handle', 'onAvatarSet', 'chat');
@@ -99,7 +99,7 @@ class Rooms extends Base
         $this->ajaxExit($packet->content);
     }
 
-    public function onGetBookmark()
+    public function onBookmarkGet()
     {
         foreach ($this->user->session->conferences as $room) {
             if ($room->autojoin && !$room->connected) {
@@ -110,10 +110,11 @@ class Rooms extends Base
         $this->refreshRooms();
     }
 
-    public function onBookmark()
+    public function onBookmarkSet()
     {
+        Notification::toast($this->__('bookmarks.updated'));
         $this->refreshRooms();
-        $this->rpc('MovimTpl.hidePanel');
+        (new Chat)->ajaxGet();
     }
 
     public function onConnected($packet)
