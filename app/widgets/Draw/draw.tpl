@@ -75,7 +75,7 @@
     </div>
     <ul class="list controls">
         <li>
-            <span id="drawback" class="primary active icon black active">
+            <span id="drawback" class="primary active icon color active bubble">
                 <i class="material-icons">arrow_back</i>
             </span>
         </li>
