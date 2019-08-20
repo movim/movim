@@ -1,6 +1,8 @@
 <div id="draw">
-    <canvas id="draw-background"></canvas>
-    <canvas id="draw-canvas">¯\_(ツ)_/¯</canvas>
+    <div class="canvas">
+        <canvas id="draw-background"></canvas>
+        <canvas id="draw-canvas">¯\_(ツ)_/¯</canvas>
+    </div>
     <div class="draw-control">
         <ul class="list middle">
             <li id="draw-save">
@@ -36,8 +38,11 @@
                 </span>
                 <p></p>
             </li>
-            <li>
-                <span class="primary active icon bubble color gray draw-eraser">
+        </ul>
+        <br />
+        <ul class="list">
+            <li class="draw-eraser">
+                <span class="primary active icon bubble color gray">
                     <i class="material-icons">crop_landscape</i>
                 </span>
                 <p></p>

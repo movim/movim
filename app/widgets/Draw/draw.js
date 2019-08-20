@@ -9,26 +9,50 @@ var Draw = {
     draw: null,
     save: null,
 
-    // MouseEvents for drawing
     drawing: false,
     mousePos: { x: 0, y: 0 },
     lastPos: this.mousePos,
 
-    init: function () {
+    init: function (snapBackground) {
         Draw.draw = document.getElementById('draw');
-        // Set up the canvas
+        Draw.draw.classList.add('open');
+
+        if(Draw.draw.classList.contains('bound')) return;
+
+        let height, width;
+        if(snapBackground) {
+            height = Snap.canvas.height;
+            width = Snap.canvas.width;
+        } else {
+            height = document.body.clientHeight;
+            width = document.body.clientWidth;
+        }
+
+        const canvasWrapper = document.querySelector('#draw .canvas');
+        canvasWrapper.style.height = `${height}px`;
+        canvasWrapper.style.width = `${width}px`;
+
         Draw.canvas = document.getElementById('draw-canvas');
-        Draw.canvas.width = document.body.clientWidth;
-        Draw.canvas.height = document.body.clientHeight;
-
-        Draw.canvasbg = document.getElementById('draw-background');
-        Draw.canvasbg.width = document.body.clientWidth;
-        Draw.canvasbg.height = document.body.clientHeight;
-
+        Draw.canvas.width = width;
+        Draw.canvas.height = height;
         Draw.ctx = Draw.canvas.getContext('2d');
         Draw.ctx.strokeStyle = Draw.BLACK;
         Draw.ctx.lineWidth = Draw.MEDIUM;
         Draw.ctx.lineCap = 'round';
+
+        Draw.canvasbg = document.getElementById('draw-background');
+        Draw.canvasbg.width = width;
+        Draw.canvasbg.height = height;
+        bgctx = Draw.canvasbg.getContext("2d");
+
+        if (snapBackground) {
+            // copy over snap image
+            bgctx.drawImage(Snap.canvas, 0, 0, width, height);
+        } else {
+            // fill canvas with white
+            bgctx.fillStyle = "white";
+            bgctx.fillRect(0, 0, width, height);
+        }
 
         // Get a regular interval for drawing to the screen
         window.requestAnimFrame = (function (callback) {
@@ -95,13 +119,10 @@ var Draw = {
             finalCanvas.setAttribute('width', rect.width);
             finalCanvas.setAttribute('height', rect.height);
 
-            const bgimg = document.getElementById('background');
+            const bgimg = document.getElementById('draw-background');
             const finalctx = finalCanvas.getContext('2d');
 
-            if(bgimg){
-                finalctx.drawImage(bgimg, 0, 0, rect.width, rect.height);
-            }
-
+            finalctx.drawImage(bgimg, 0, 0, rect.width, rect.height);
             finalctx.drawImage(Draw.canvas, 0, 0, rect.width, rect.height);
 
             finalCanvas.toBlob(
@@ -117,7 +138,10 @@ var Draw = {
 
         // Use the eraser
         const eraser = document.querySelector('.draw-eraser');
-        eraser.addEventListener('click', (e) => {
+        eraser.addEventListener('click', function(e) {
+            colors.forEach(item => item.classList.remove('selected'));
+            this.classList.add('selected');
+
             Draw.ctx.globalCompositeOperation = 'destination-out';
             Draw.ctx.strokeStyle = 'rgba(0,0,0,1)';
         }, false);
@@ -127,6 +151,7 @@ var Draw = {
         for (let i = 0; i < colors.length; i++) {
             colors[i].addEventListener('click', function(e) {
                 colors.forEach(item => item.classList.remove('selected'));
+                eraser.classList.remove('selected');
                 this.classList.add('selected');
 
                 Draw.ctx.globalCompositeOperation = 'source-over';
@@ -161,11 +186,12 @@ var Draw = {
 
         const drawback = document.querySelector('#draw #drawback');
         drawback.addEventListener('click', () => {
-            Draw.draw.classList = '';
+            Draw.draw.classList.remove('open');
         });
 
-        // When all is ready, show the panel
-        Draw.draw.classList.add('init');
+        // Add a fleg to not re-bind event listeners
+        Draw.draw.classList.add('bound');
+
     },
 
     stopDrawing: function(e) {
