@@ -37,8 +37,13 @@ ul.list.active.all li:hover,
 ul.list li.active:hover,
 ul.list.active li.active:not(.subheader),
 ul.tabs > li:hover,
-ul.list li > span.active:hover {
+ul.list li > span:not(.color).active:hover {
     background-color: rgba(var(--movim-font), 0.04);
+    cursor: pointer;
+}
+
+ul.list li > span.color.active:hover {
+    opacity: 0.8;
     cursor: pointer;
 }
 
@@ -47,9 +52,13 @@ ul.list li > span.active:hover {
 ul.list.active li:active:not(.subheader),
 ul.list.active.all li:active,
 ul.tabs > li:active,
-ul.list li > span.active:active {
+ul.list li > span:not(.color).active:active {
     background-color: rgba(var(--movim-font), 0.08);
     transition: background-color 0.15s ease;
+}
+
+ul.list li > span.color.active:active {
+    opacity: 0.6;
 }
 
 /* Main elements */

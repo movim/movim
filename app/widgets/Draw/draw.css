@@ -1,0 +1,75 @@
+#draw {
+    display: none;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+#draw.open {
+    display: flex;
+}
+
+#draw .canvas {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+}
+
+#draw #draw-background {
+    position: absolute;
+    z-index: -1;
+}
+
+#draw #draw-canvas {
+    cursor: crosshair;
+}
+
+/* Controls */
+#draw ul.controls.list {
+    position: absolute;
+    width: 100%;
+    top: 0;
+}
+
+#draw ul.controls.list > li {
+    padding: 3rem;
+    width: 100%;
+    margin: 0;
+}
+
+#draw ul.controls.list > li span.primary {
+    left: 0.5rem;
+}
+
+#draw ul.controls.list i {
+    text-shadow: 0 0 3rem black;
+}
+
+#draw .draw-control {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+#draw .draw-control li.selected span.primary {
+    border: 0.5rem solid #AAA;
+    transform: translate(-0.5rem,-0.5rem);
+}
+
+#draw .draw-control p {
+    height: 5.5rem;
+    display: block;
+    padding-right: 0;
+}
+
+#draw [data-width=small] i {
+    font-size: 2rem;
+}
+#draw [data-width=medium] i {
+    font-size: 2.5rem;
+}

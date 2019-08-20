@@ -78,6 +78,8 @@ var Snap = {
         context.clearRect(0, 0, Snap.canvas.width, Snap.canvas.height);
     },
     close: function() {
+        if (!Snap.video) return;
+
         let stream = Snap.video.srcObject;
 
         if (stream) {
@@ -95,14 +97,13 @@ var Snap = {
     },
     init : function() {
         Snap.snap = document.querySelector('#snap');
-        Snap.video = document.querySelector('#snap video');
-        Snap.videoSelect = document.querySelector('#snap select#snapsource');
         Snap.canvas = document.querySelector('#snap canvas');
         Snap.wait = document.querySelector("#snap #snapwait");
 
-        Snap.close(); // Just in case
+        Snap.video = document.querySelector('#snap video');
+        Snap.videoSelect = document.querySelector('#snap select#snapsource');
 
-        Snap.snap.classList = 'init';
+        Snap.close(); // Just in case
 
         navigator.mediaDevices.enumerateDevices().then(devices => Snap.gotDevices(devices));
 
@@ -110,22 +111,6 @@ var Snap = {
 
         document.querySelector("#snap #snapshoot").onclick = () => {
             Snap.shoot();
-        };
-
-        document.querySelector("#snap #snapupload").onclick = () => {
-            Snap.snap.classList = 'wait';
-            Upload.init();
-        };
-
-        document.querySelector("#snap #snapback").onclick = () => {
-            Snap.snap.classList = '';
-            Snap.close();
-        };
-
-        document.querySelector("#snap #snapclose").onclick = () => {
-            Snap.snap.classList = 'shoot';
-            Snap.video.play();
-            Upload.abort();
         };
 
         document.querySelector("#snap #snapswitch").onclick = () => {
@@ -141,6 +126,32 @@ var Snap = {
             Snap.close();
             Snap.gotStream();
         };
+
+        Snap.snap.classList = 'init';
+
+        document.querySelector("#snap #snapupload").onclick = () => {
+            Snap.snap.classList = 'wait';
+            Upload.init();
+        };
+
+        document.querySelector("#snap #snapdraw").onclick = () => {
+            // snapback or snapclose?
+            Snap.snap.classList = '';
+            Snap.close();
+
+            Draw.init(true);
+        };
+
+        document.querySelector("#snap #snapback").onclick = () => {
+            Snap.snap.classList = '';
+            Snap.close();
+        };
+
+        document.querySelector("#snap #snapclose").onclick = () => {
+            Snap.snap.classList = 'shoot';
+            Snap.video.play();
+            Upload.abort();
+        };
     }
 }
 
@@ -152,9 +163,17 @@ Upload.attach((file) => {
         PublishBrief.checkEmbed();
     }
 
-    Snap.end();
+    if (Snap.snap) Snap.end();
 });
 
-Upload.progress((percent) => Snap.wait.style.backgroundImage
-    = 'linear-gradient(to top, rgba(0, 0, 0, 0.5) ' + percent + '%, transparent ' + percent + '%)');
-Upload.fail(() => { Snap.snap.classList = 'upload'; Snap.wait.style.backgroundImage = ''; });
+Upload.progress((percent) => {
+    if (Snap.wait) {
+        Snap.wait.style.backgroundImage = 'linear-gradient(to top, rgba(0, 0, 0, 0.5) ' + percent + '%, transparent ' + percent + '%)';
+    }
+});
+
+Upload.fail(() => {
+    if (Snap.snap) {
+        Snap.snap.classList = 'upload'; Snap.wait.style.backgroundImage = '';
+    }
+});

@@ -8,10 +8,14 @@
     display: none;
 }
 
-#snap canvas {
+#snap.upload canvas {
     border: 1rem #333 solid;
     box-sizing: border-box;
     background-color: #111;
+}
+
+#snap.draw canvas {
+    background-color: white;
 }
 
 #snap canvas,
@@ -37,12 +41,18 @@
     left: 0;
 }
 
-#snap button#snapshoot,
-#snap button#snapupload,
-#snap button#snapwait {
-    right: calc(50% - 3.5rem);
+#snap .bottom_center {
+    width: 100%;
     position: absolute;
     bottom: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+#snap .bottom_center > button {
+    position: relative;
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
 
 #snap button#snapswitch {
@@ -77,29 +87,46 @@
 #snap.shoot,
 #snap.upload,
 #snap.wait,
+#snap.draw,
 #snap.init {
     display: block;
 }
 
 #snap.shoot #snapupload,
+#snap.shoot #snapdraw,
 #snap.shoot #snapclose,
 #snap.shoot #snapwait,
 #snap.shoot canvas,
+
 #snap.upload #snapshoot,
 #snap.upload #snapback,
 #snap.upload #snapwait,
 #snap.upload #snapswitch,
 #snap.upload #snapswitch.enabled,
+#snap.upload video,
+
 #snap.wait #snapshoot,
 #snap.wait #snapupload,
+#snap.wait #snapdraw,
 #snap.wait #snapback,
 #snap.wait #snapswitch,
 #snap.wait #snapswitch.enabled,
+#snap.wait video,
+
+#snap.draw #snapshoot,
+#snap.draw #snapswitch,
+#snap.draw #snapwait,
+#snap.draw #snapclose,
+#snap.draw #snapswitch.enabled,
+#snap.draw video,
+
 #snap.init #snapshoot,
 #snap.init #snapupload,
+#snap.init #snapdraw,
 #snap.init #snapswitch,
 #snap.init #snapswitch.enabled,
 #snap.init #snapclose,
-#snap.init canvas {
+#snap.init canvas,
+#snap.init video {
     display: none;
 }
