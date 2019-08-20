@@ -17,10 +17,8 @@ var Draw = {
         Draw.draw = document.getElementById('draw');
         Draw.draw.classList.add('open');
 
-        if(Draw.draw.classList.contains('bound')) return;
-
         let height, width;
-        if(snapBackground) {
+        if (snapBackground) {
             height = Snap.canvas.height;
             width = Snap.canvas.width;
         } else {
@@ -43,16 +41,18 @@ var Draw = {
         Draw.canvasbg = document.getElementById('draw-background');
         Draw.canvasbg.width = width;
         Draw.canvasbg.height = height;
-        bgctx = Draw.canvasbg.getContext("2d");
+        bgctx = Draw.canvasbg.getContext('2d');
 
         if (snapBackground) {
             // copy over snap image
             bgctx.drawImage(Snap.canvas, 0, 0, width, height);
         } else {
             // fill canvas with white
-            bgctx.fillStyle = "white";
+            bgctx.fillStyle = 'white';
             bgctx.fillRect(0, 0, width, height);
         }
+
+        if (Draw.draw.classList.contains('bound')) return;
 
         // Get a regular interval for drawing to the screen
         window.requestAnimFrame = (function (callback) {

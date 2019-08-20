@@ -25,6 +25,10 @@
     z-index: -1;
 }
 
+#draw #draw-canvas {
+    cursor: crosshair;
+}
+
 /* Controls */
 #draw ul.controls.list {
     position: absolute;
@@ -39,7 +43,7 @@
 }
 
 #draw ul.controls.list > li span.primary {
-    left: 0;
+    left: 0.5rem;
 }
 
 #draw ul.controls.list i {
