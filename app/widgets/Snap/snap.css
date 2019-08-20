@@ -49,8 +49,10 @@
     justify-content: center;
 }
 
-#snap .bottom_center > * {
+#snap .bottom_center > button {
     position: relative;
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
 
 #snap button#snapswitch {
