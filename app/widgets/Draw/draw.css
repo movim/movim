@@ -1,18 +1,30 @@
 #draw {
     display: none;
     position: absolute;
+    height: 100%;
+    width: 100%;
     top: 0;
     left: 0;
     z-index: 2;
+    background-color: rgba(0, 0, 0, 0.7);
 }
+
 #draw.init {
-    display: initial;
+    display: flex;
+}
+
+#draw .canvas {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    margin: auto;
 }
 
 #draw #draw-background {
     position: absolute;
     z-index: -1;
 }
+
 /* Controls */
 #draw ul.controls.list {
     position: absolute;

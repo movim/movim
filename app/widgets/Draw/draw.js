@@ -9,35 +9,47 @@ var Draw = {
     draw: null,
     save: null,
 
-    // MouseEvents for drawing
     drawing: false,
     mousePos: { x: 0, y: 0 },
     lastPos: this.mousePos,
 
     init: function (snapBackground) {
         Draw.draw = document.getElementById('draw');
-        // Set up the canvas
-        Draw.canvas = document.getElementById('draw-canvas');
-        Draw.canvas.width = document.body.clientWidth;
-        Draw.canvas.height = document.body.clientHeight;
 
-        Draw.canvasbg = document.getElementById('draw-background');
-        Draw.canvasbg.width = document.body.clientWidth;
-        Draw.canvasbg.height = document.body.clientHeight;
-
-        bgctx = Draw.canvasbg.getContext("2d");
-        // fill canvas with white
-        bgctx.fillStyle = "white";
-        bgctx.fillRect(0, 0, Draw.canvasbg.width, Draw.canvasbg.height);
+        let height, width;
         if(snapBackground) {
-            // copy over snap image
-            bgctx.drawImage(Snap.canvas, 0, 0, Draw.canvasbg.width, Draw.canvasbg.width * Snap.canvas.height / Snap.canvas.width);
+            height = Snap.canvas.height;
+            width = Snap.canvas.width;
+        } else {
+            height = document.body.clientHeight;
+            width = document.body.clientWidth;
         }
 
+        const canvasWrapper = document.querySelector('#draw .canvas');
+        canvasWrapper.style.height = `${height}px`;
+        canvasWrapper.style.width = `${width}px`;
+
+        Draw.canvas = document.getElementById('draw-canvas');
+        Draw.canvas.width = width;
+        Draw.canvas.height = height;
         Draw.ctx = Draw.canvas.getContext('2d');
         Draw.ctx.strokeStyle = Draw.BLACK;
         Draw.ctx.lineWidth = Draw.MEDIUM;
         Draw.ctx.lineCap = 'round';
+
+        Draw.canvasbg = document.getElementById('draw-background');
+        Draw.canvasbg.width = width;
+        Draw.canvasbg.height = height;
+        bgctx = Draw.canvasbg.getContext("2d");
+
+        if (snapBackground) {
+            // copy over snap image
+            bgctx.drawImage(Snap.canvas, 0, 0, width, height);
+        } else {
+            // fill canvas with white
+            bgctx.fillStyle = "white";
+            bgctx.fillRect(0, 0, width, height);
+        }
 
         // Get a regular interval for drawing to the screen
         window.requestAnimFrame = (function (callback) {
