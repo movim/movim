@@ -15,6 +15,9 @@ var Draw = {
 
     init: function (snapBackground) {
         Draw.draw = document.getElementById('draw');
+        Draw.draw.classList.add('open');
+
+        if(Draw.draw.classList.contains('bound')) return;
 
         let height, width;
         if(snapBackground) {
@@ -183,11 +186,12 @@ var Draw = {
 
         const drawback = document.querySelector('#draw #drawback');
         drawback.addEventListener('click', () => {
-            Draw.draw.classList = '';
+            Draw.draw.classList.remove('open');
         });
 
-        // When all is ready, show the panel
-        Draw.draw.classList.add('init');
+        // Add a fleg to not re-bind event listeners
+        Draw.draw.classList.add('bound');
+
     },
 
     stopDrawing: function(e) {
