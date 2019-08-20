@@ -38,8 +38,11 @@
                 </span>
                 <p></p>
             </li>
-            <li>
-                <span class="primary active icon bubble color gray draw-eraser">
+        </ul>
+        <br />
+        <ul class="list">
+            <li class="draw-eraser">
+                <span class="primary active icon bubble color gray">
                     <i class="material-icons">crop_landscape</i>
                 </span>
                 <p></p>

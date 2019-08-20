@@ -135,7 +135,10 @@ var Draw = {
 
         // Use the eraser
         const eraser = document.querySelector('.draw-eraser');
-        eraser.addEventListener('click', (e) => {
+        eraser.addEventListener('click', function(e) {
+            colors.forEach(item => item.classList.remove('selected'));
+            this.classList.add('selected');
+
             Draw.ctx.globalCompositeOperation = 'destination-out';
             Draw.ctx.strokeStyle = 'rgba(0,0,0,1)';
         }, false);
@@ -145,6 +148,7 @@ var Draw = {
         for (let i = 0; i < colors.length; i++) {
             colors[i].addEventListener('click', function(e) {
                 colors.forEach(item => item.classList.remove('selected'));
+                eraser.classList.remove('selected');
                 this.classList.add('selected');
 
                 Draw.ctx.globalCompositeOperation = 'source-over';
