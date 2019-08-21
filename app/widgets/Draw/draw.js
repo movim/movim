@@ -85,7 +85,8 @@ var Draw = {
             var touch = e.touches[0];
             var mouseEvent = new MouseEvent('mousedown', {
                 clientX: touch.clientX,
-                clientY: touch.clientY
+                clientY: touch.clientY,
+                buttons: 1
             });
             Draw.canvas.dispatchEvent(mouseEvent);
         }, false);
