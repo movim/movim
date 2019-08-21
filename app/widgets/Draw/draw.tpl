@@ -13,7 +13,7 @@
             </li>
             <li id="draw-clear">
                 <span class="primary active icon bubble color gray">
-                    <i class="material-icons">undo</i>
+                    <i class="material-icons">delete</i>
                 </span>
                 <p></p>
             </li>
