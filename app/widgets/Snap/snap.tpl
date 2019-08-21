@@ -15,14 +15,14 @@
         <button id="snapwait" class="button action color gray">
             <i class="material-icons">more_horiz</i>
         </button>
-        <button id="snapswitch" class="button action color">
-            <i class="material-icons">switch_camera</i>
-        </button>
     </div>
     <ul class="list controls">
         <li>
             <span id="snapback" class="primary icon color transparent active">
                 <i class="material-icons">arrow_back</i>
+            </span>
+            <span id="snapswitch" class="control icon color transparent active">
+                <i class="material-icons">switch_camera</i>
             </span>
             <span id="snapclose" class="control icon color transparent active">
                 <i class="material-icons">close</i>

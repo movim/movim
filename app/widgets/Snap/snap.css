@@ -56,12 +56,15 @@
 }
 
 #snap button#snapswitch {
-    left: 2rem;
     display: none;
 }
 
 #snap button#snapswitch.enabled {
     display: inherit;
+}
+
+#snap span#snapclose {
+    right: 0;
 }
 
 /* Controls */
