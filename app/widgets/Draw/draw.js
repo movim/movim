@@ -10,10 +10,11 @@ var Draw = {
     save: null,
 
     drawing: false,
-    mousePos: { x: 0, y: 0 },
-    lastPos: this.mousePos,
+    snapBackground: false,
 
     init: function (snapBackground) {
+        Draw.snapBackground = snapBackground;
+
         Draw.draw = document.getElementById('draw');
         const canvasWrapper = document.querySelector('#draw .canvas');
         const colors = document.querySelectorAll('.draw-colors li');
@@ -143,15 +144,26 @@ var Draw = {
         Draw.save.onclick = (e) => {
             const rect = Draw.canvas.getBoundingClientRect();
             const finalCanvas = document.createElement('canvas');
+            const rect = Draw.canvas.getBoundingClientRect();
 
+            if (Draw.snapBackground) {
+                finalCanvas.setAttribute('width', Snap.canvas.width);
+                finalCanvas.setAttribute('height', Snap.canvas.height);
+            } else {
             finalCanvas.setAttribute('width', rect.width);
             finalCanvas.setAttribute('height', rect.height);
+            }
 
-            const bgimg = document.getElementById('draw-background');
             const finalctx = finalCanvas.getContext('2d');
 
+            if (Draw.snapBackground) {
+                finalctx.drawImage(Snap.canvas, 0, 0, Snap.canvas.width, Snap.canvas.height);
+                finalctx.drawImage(Draw.canvas, 0, 0, Snap.canvas.width, Snap.canvas.height);
+            } else {
+                const bgimg = document.getElementById('draw-background');
             finalctx.drawImage(bgimg, 0, 0, rect.width, rect.height);
             finalctx.drawImage(Draw.canvas, 0, 0, rect.width, rect.height);
+            }
 
             finalCanvas.toBlob(
                 function (blob) {
