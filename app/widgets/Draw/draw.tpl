@@ -26,7 +26,7 @@
                 </span>
                 <p></p>
             </li>
-            <li data-width="medium" class="selected">
+            <li data-width="medium">
                 <span class="primary active icon bubble color gray">
                     <i class="material-icons">brush</i>
                 </span>
