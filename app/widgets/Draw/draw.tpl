@@ -50,24 +50,24 @@
         </ul>
         <br />
         <ul class="list draw-colors">
-            <li class="selected">
-                <span class="primary active icon bubble color black" data-color="black"></span>
+            <li data-color="black">
+                <span class="primary active icon bubble color black" ></span>
                 <p></p>
             </li>
-            <li>
-                <span class="primary active icon bubble color blue" data-color="blue"></span>
+            <li data-color="blue">
+                <span class="primary active icon bubble color blue"></span>
                 <p></p>
             </li>
-            <li>
-                <span class="primary active icon bubble color red" data-color="red"></span>
+            <li data-color="red">
+                <span class="primary active icon bubble color red"></span>
                 <p></p>
             </li>
-            <li class="on_desktop">
-                <span class="primary active icon bubble color green" data-color="green"></span>
+            <li data-color="green" class="on_desktop">
+                <span class="primary active icon bubble color green"></span>
                 <p></p>
             </li>
-            <li class="on_desktop">
-                <span class="primary active icon bubble color purple" data-color="purple"></span>
+            <li data-color="purple" class="on_desktop">
+                <span class="primary active icon bubble color purple"></span>
                 <p></p>
             </li>
         </ul>

@@ -15,6 +15,11 @@ var Draw = {
 
     init: function (snapBackground) {
         Draw.draw = document.getElementById('draw');
+        const canvasWrapper = document.querySelector('#draw .canvas');
+        const colors = document.querySelectorAll('.draw-colors li');
+        const widths = document.querySelectorAll('.draw-widths li');
+        const eraser = document.querySelector('.draw-eraser');
+
         Draw.draw.classList.add('open');
 
         let height, width;
@@ -26,7 +31,6 @@ var Draw = {
             width = document.body.clientWidth;
         }
 
-        const canvasWrapper = document.querySelector('#draw .canvas');
         canvasWrapper.style.height = `${height}px`;
         canvasWrapper.style.width = `${width}px`;
 
@@ -34,8 +38,6 @@ var Draw = {
         Draw.canvas.width = width;
         Draw.canvas.height = height;
         Draw.ctx = Draw.canvas.getContext('2d');
-        Draw.ctx.strokeStyle = Draw.BLACK;
-        Draw.ctx.lineWidth = Draw.MEDIUM;
         Draw.ctx.lineCap = 'round';
 
         Draw.canvasbg = document.getElementById('draw-background');
@@ -51,6 +53,16 @@ var Draw = {
             bgctx.fillStyle = 'white';
             bgctx.fillRect(0, 0, width, height);
         }
+
+        // init controls
+        Draw.ctx.strokeStyle = Draw.BLACK;
+        colors.forEach(item => item.classList.remove('selected'));
+        eraser.classList.remove('selected');
+        document.querySelector('[data-color=black]').classList.add('selected');
+        Draw.ctx.lineWidth = Draw.MEDIUM;
+        widths.forEach(item => item.classList.remove('selected'));
+        document.querySelector('[data-width=medium]').classList.add('selected');
+
 
         if (Draw.draw.classList.contains('bound')) return;
 
@@ -138,7 +150,6 @@ var Draw = {
         };
 
         // Use the eraser
-        const eraser = document.querySelector('.draw-eraser');
         eraser.addEventListener('click', function(e) {
             colors.forEach(item => item.classList.remove('selected'));
             this.classList.add('selected');
@@ -148,7 +159,6 @@ var Draw = {
         }, false);
 
         // Change pencil color
-        const colors = document.querySelectorAll('.draw-colors li');
         for (let i = 0; i < colors.length; i++) {
             colors[i].addEventListener('click', function(e) {
                 colors.forEach(item => item.classList.remove('selected'));
@@ -161,7 +171,6 @@ var Draw = {
         }
 
         // Change pencil thickness
-        const widths = document.querySelectorAll('.draw-widths li');
         for (let i = 0; i < widths.length; i++) {
             widths[i].addEventListener('click', function(e) {
                 widths.forEach(item => item.classList.remove('selected'));
