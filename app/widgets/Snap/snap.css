@@ -55,11 +55,11 @@
     margin-right: 1rem;
 }
 
-#snap button#snapswitch {
+#snap span#snapswitch {
     display: none;
 }
 
-#snap button#snapswitch.enabled {
+#snap span#snapswitch.enabled {
     display: inherit;
 }
 
