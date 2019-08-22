@@ -55,13 +55,16 @@
     margin-right: 1rem;
 }
 
-#snap button#snapswitch {
-    left: 2rem;
+#snap span#snapswitch {
     display: none;
 }
 
-#snap button#snapswitch.enabled {
+#snap span#snapswitch.enabled {
     display: inherit;
+}
+
+#snap span#snapclose {
+    right: 0;
 }
 
 /* Controls */
