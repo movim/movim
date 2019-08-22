@@ -10,6 +10,8 @@ var Draw = {
     save: null,
 
     drawing: false,
+    mousePos: null,
+    lastPos: null,
     snapBackground: false,
 
     init: function (snapBackground) {
@@ -233,6 +235,8 @@ var Draw = {
 
     stopDrawing: function(e) {
         Draw.drawing = false;
+        Draw.lastPos = null;
+        Draw.mousePos = null;
         Draw.ctx.beginPath();
     },
 
@@ -259,7 +263,7 @@ var Draw = {
 
     // Draw to the canvas
     renderCanvas: function() {
-        if (Draw.drawing) {
+        if (Draw.drawing && Draw.lastPos && Draw.mousePos) {
             Draw.ctx.moveTo(Draw.lastPos.x, Draw.lastPos.y);
             Draw.ctx.lineTo(Draw.mousePos.x, Draw.mousePos.y);
             Draw.ctx.stroke();
