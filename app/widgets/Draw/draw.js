@@ -24,8 +24,23 @@ var Draw = {
 
         let height, width;
         if (snapBackground) {
-            height = Snap.canvas.height;
-            width = Snap.canvas.width;
+            const sheight = Snap.canvas.height;
+            const swidth = Snap.canvas.width;
+            const dheight = document.body.clientHeight;
+            const dwidth = document.body.clientWidth;
+            if (sheight <= dheight && swidth <= dwidth) {
+                height = sheight;
+                width = swidth;
+            } else {
+                const s_taller = sheight / swidth > dheight / dwidth;
+                if (sheight <= dheight || !s_taller) {
+                    width = dwidth;
+                    height = dwidth * sheight / swidth;
+                } else if (swidth <= dwidth || s_taller) {
+                    height = dheight;
+                    width = dheight * swidth / sheight;
+                }
+            }
         } else {
             height = document.body.clientHeight;
             width = document.body.clientWidth;
