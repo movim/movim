@@ -219,6 +219,6 @@ class Blog extends Base
 
     private function validateTag($tag)
     {
-        return Validator::stringType()->notEmpty()->noWhitespace()->validate($tag);
+        return Validator::stringType()->notEmpty()->validate($tag);
     }
 }
