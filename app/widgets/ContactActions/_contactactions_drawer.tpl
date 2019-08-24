@@ -44,7 +44,7 @@
         </ul>
     </header>
 
-    {if="$roster && $roster->presences"}
+    {if="$roster && $roster->presences->count() > 0"}
         <ul class="list middle">
             <li class="subheader"><p>{$c->__('clients.title')}</p></li>
             {loop="$roster->presences"}
@@ -56,6 +56,7 @@
                             </i>
                         </span>
                         <p class="normal line">
+                            <span class="info">{$value->resource}</span>
                             {$value->capability->name}
                         </p>
                         <p class="line">

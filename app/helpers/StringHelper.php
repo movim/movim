@@ -329,13 +329,19 @@ function stripTags($string): string
 /**
  * Purify a string
  */
-function purifyHTML($string): string
+function purifyHTML($string, $base = null): string
 {
     $config = \HTMLPurifier_Config::createDefault();
     $config->set('HTML.Doctype', 'XHTML 1.1');
     $config->set('Cache.SerializerPath', '/tmp');
     $config->set('HTML.DefinitionID', 'html5-definitions');
     $config->set('HTML.DefinitionRev', 1);
+
+    if ($base !== null) {
+        $config->set('URI.Base', $base);
+        $config->set('URI.MakeAbsolute', true);
+    }
+
     $config->set('CSS.AllowedProperties', ['float']);
     if ($def = $config->maybeGetRawHTMLDefinition()) {
         $def->addElement('video', 'Block', 'Optional: (source, Flow) | (Flow, source) | Flow', 'Common', [
