@@ -53,6 +53,7 @@
     position: relative;
     margin-left: 1rem;
     margin-right: 1rem;
+    right: 0;
 }
 
 #snap span#snapswitch {
