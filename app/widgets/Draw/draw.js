@@ -8,13 +8,16 @@ var Draw = {
     ctx: null,
     draw: null,
     save: null,
-
-    drawing: false,
     mousePos: null,
     lastPos: null,
+    drawingData: null,
+
+    drawing: false,
     snapBackground: false,
+    ratio: 1,
 
     init: function (snapBackground) {
+        Draw.drawingData = [];
         Draw.snapBackground = snapBackground;
 
         Draw.draw = document.getElementById('draw');
@@ -26,7 +29,7 @@ var Draw = {
         Draw.draw.classList.add('open');
 
         let height, width;
-        if (snapBackground) {
+        if (Draw.snapBackground) {
             const sheight = Snap.canvas.height;
             const swidth = Snap.canvas.width;
             const dheight = document.body.clientHeight;
@@ -39,9 +42,11 @@ var Draw = {
                 if (sheight <= dheight || !s_taller) {
                     width = dwidth;
                     height = dwidth * sheight / swidth;
+                    Draw.ratio = swidth / dwidth;
                 } else if (swidth <= dwidth || s_taller) {
                     height = dheight;
                     width = dheight * swidth / sheight;
+                    Draw.ratio = sheight / dheight;
                 }
             }
         } else {
@@ -63,7 +68,7 @@ var Draw = {
         Draw.canvasbg.height = height;
         bgctx = Draw.canvasbg.getContext('2d');
 
-        if (snapBackground) {
+        if (Draw.snapBackground) {
             // copy over snap image
             bgctx.drawImage(Snap.canvas, 0, 0, width, height);
         } else {
@@ -139,12 +144,12 @@ var Draw = {
         clear.addEventListener('click', (e) => {
             const rect = Draw.canvas.getBoundingClientRect();
             Draw.ctx.clearRect(0, 0, rect.width, rect.height);
+            Draw.drawingData = [];
         }, false);
 
         // Save (background +) drawing
         Draw.save = document.getElementById('draw-save');
         Draw.save.onclick = (e) => {
-            const rect = Draw.canvas.getBoundingClientRect();
             const finalCanvas = document.createElement('canvas');
             const rect = Draw.canvas.getBoundingClientRect();
 
@@ -152,19 +157,52 @@ var Draw = {
                 finalCanvas.setAttribute('width', Snap.canvas.width);
                 finalCanvas.setAttribute('height', Snap.canvas.height);
             } else {
-            finalCanvas.setAttribute('width', rect.width);
-            finalCanvas.setAttribute('height', rect.height);
+                finalCanvas.setAttribute('width', rect.width);
+                finalCanvas.setAttribute('height', rect.height);
             }
 
             const finalctx = finalCanvas.getContext('2d');
+            finalctx.lineCap = 'round';
 
             if (Draw.snapBackground) {
+                // re-draw upscaled
+                for (let i = 0; i < Draw.drawingData.length; i++) {
+                    finalctx.globalCompositeOperation = Draw.drawingData[i].gco;
+                    finalctx.lineWidth = Draw.drawingData[i].width * Draw.ratio;
+                    finalctx.strokeStyle = Draw.drawingData[i].color;
+                    let j = 0;
+                    finalctx.moveTo(
+                        Draw.drawingData[i].points[j].x * Draw.ratio,
+                        Draw.drawingData[i].points[j].y * Draw.ratio
+                    );
+                    for (j = 1; j < Draw.drawingData[i].points.length - 2; j++) {
+                        const c = (Draw.drawingData[i].points[j].x + Draw.drawingData[i].points[j + 1].x) / 2;
+                        const d = (Draw.drawingData[i].points[j].y + Draw.drawingData[i].points[j + 1].y) / 2;
+
+                        finalctx.quadraticCurveTo(
+                            Draw.drawingData[i].points[j].x * Draw.ratio,
+                            Draw.drawingData[i].points[j].y * Draw.ratio,
+                            c * Draw.ratio,
+                            d * Draw.ratio
+                        );
+                    }
+                    finalctx.quadraticCurveTo(
+                        Draw.drawingData[i].points[j].x * Draw.ratio,
+                        Draw.drawingData[i].points[j].y * Draw.ratio,
+                        Draw.drawingData[i].points[j + 1].x * Draw.ratio,
+                        Draw.drawingData[i].points[j + 1].y * Draw.ratio
+                    );
+                    finalctx.stroke();
+                    finalctx.beginPath();
+                }
+
+                // add background at then end so erased parts look correct
+                finalctx.globalCompositeOperation = 'destination-over';
                 finalctx.drawImage(Snap.canvas, 0, 0, Snap.canvas.width, Snap.canvas.height);
-                finalctx.drawImage(Draw.canvas, 0, 0, Snap.canvas.width, Snap.canvas.height);
             } else {
                 const bgimg = document.getElementById('draw-background');
-            finalctx.drawImage(bgimg, 0, 0, rect.width, rect.height);
-            finalctx.drawImage(Draw.canvas, 0, 0, rect.width, rect.height);
+                finalctx.drawImage(bgimg, 0, 0, rect.width, rect.height);
+                finalctx.drawImage(Draw.canvas, 0, 0, rect.width, rect.height);
             }
 
             finalCanvas.toBlob(
@@ -184,7 +222,6 @@ var Draw = {
             this.classList.add('selected');
 
             Draw.ctx.globalCompositeOperation = 'destination-out';
-            Draw.ctx.strokeStyle = 'rgba(0,0,0,1)';
         }, false);
 
         // Change pencil color
@@ -230,19 +267,29 @@ var Draw = {
 
         // Add a fleg to not re-bind event listeners
         Draw.draw.classList.add('bound');
-
     },
 
     stopDrawing: function(e) {
         Draw.drawing = false;
         Draw.lastPos = null;
         Draw.mousePos = null;
+
         Draw.ctx.beginPath();
     },
 
     startDrawing: function(e) {
         if (e.buttons == 1) {
             Draw.drawing = true;
+
+            // save data
+            const data = {
+                gco: Draw.ctx.globalCompositeOperation,
+                width: Draw.ctx.lineWidth,
+                color: Draw.ctx.strokeStyle,
+                points: []
+            }
+            Draw.drawingData.push(data);
+
             Draw.lastPos = Draw.getPos(Draw.canvas, e);
         }
     },
@@ -258,6 +305,12 @@ var Draw = {
             x = event.clientX - rect.left;
             y = event.clientY - rect.top;
         }
+
+        if (Draw.drawing) {
+            let points = Draw.drawingData[Draw.drawingData.length - 1].points;
+            points.push({ x, y });
+        }
+
         return { x, y };
     },
 
