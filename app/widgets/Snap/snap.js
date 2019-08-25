@@ -139,7 +139,7 @@ var Snap = {
             Snap.snap.classList = '';
             Snap.close();
 
-            Draw.init(true);
+            Draw.init(Snap.canvas);
         };
 
         document.querySelector("#snap #snapback").onclick = () => {

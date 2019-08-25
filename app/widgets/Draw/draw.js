@@ -3,23 +3,29 @@ var Draw = {
     MEDIUM: 6,
     BIG: 8,
 
-    canvas: null,
-    canvasbg: null,
+    draw: null,  // widget wrapper
+
+    canvas: null,  // drawable
     ctx: null,
-    draw: null,
-    save: null,
-    mousePos: null,
-    lastPos: null,
-    drawingData: null,
-    controls: null,
+    bg: null,  // non drawable, only used for background
 
     drawing: false,
-    snapBackground: false,
-    ratio: 1,
+    mousePos: null,
+    lastPos: null,
 
-    init: function (snapBackground) {
+    drawingData: null,  // data structure for saving drawn points
+
+    controls: null,
+    save: null,  // button
+
+    backgroundCanvas: null,  // background coming from another widget as a canvas
+    bgHeight: null,  // natural height of background
+    bgWidth: null,  // natural width of background
+    ratio: 1,  // upscale ratio
+
+    init: function (backgroundCanvas) {
         Draw.drawingData = [];
-        Draw.snapBackground = snapBackground;
+        Draw.backgroundCanvas = backgroundCanvas;
         Draw.controls = document.querySelector('.draw-control');
 
         Draw.draw = document.getElementById('draw');
@@ -31,24 +37,24 @@ var Draw = {
         Draw.draw.classList.add('open');
 
         let height, width;
-        if (Draw.snapBackground) {
-            const sheight = Snap.canvas.height;
-            const swidth = Snap.canvas.width;
+        if (Draw.backgroundCanvas) {
+            Draw.bgHeight = Draw.backgroundCanvas.height;
+            Draw.bgWidth = Draw.backgroundCanvas.width;
             const dheight = document.body.clientHeight;
             const dwidth = document.body.clientWidth;
-            if (sheight <= dheight && swidth <= dwidth) {
-                height = sheight;
-                width = swidth;
+            if (Draw.bgHeight <= dheight && Draw.bgWidth <= dwidth) {
+                height = Draw.bgHeight;
+                width = Draw.bgWidth;
             } else {
-                const s_taller = sheight / swidth > dheight / dwidth;
-                if (sheight <= dheight || !s_taller) {
+                const bgTaller = Draw.bgHeight / Draw.bgWidth > dheight / dwidth;
+                if (Draw.bgHeight <= dheight || !bgTaller) {
                     width = dwidth;
-                    height = dwidth * sheight / swidth;
-                    Draw.ratio = swidth / dwidth;
-                } else if (swidth <= dwidth || s_taller) {
+                    height = dwidth * Draw.bgHeight / Draw.bgWidth;
+                    Draw.ratio = Draw.bgWidth / dwidth;
+                } else if (Draw.bgWidth <= dwidth || bgTaller) {
                     height = dheight;
-                    width = dheight * swidth / sheight;
-                    Draw.ratio = sheight / dheight;
+                    width = dheight * Draw.bgWidth / Draw.bgHeight;
+                    Draw.ratio = Draw.bgHeight / dheight;
                 }
             }
         } else {
@@ -65,14 +71,14 @@ var Draw = {
         Draw.ctx = Draw.canvas.getContext('2d');
         Draw.ctx.lineCap = 'round';
 
-        Draw.canvasbg = document.getElementById('draw-background');
-        Draw.canvasbg.width = width;
-        Draw.canvasbg.height = height;
-        bgctx = Draw.canvasbg.getContext('2d');
+        Draw.bg = document.getElementById('draw-background');
+        Draw.bg.width = width;
+        Draw.bg.height = height;
+        bgctx = Draw.bg.getContext('2d');
 
-        if (Draw.snapBackground) {
-            // copy over snap image
-            bgctx.drawImage(Snap.canvas, 0, 0, width, height);
+        if (Draw.backgroundCanvas) {
+            // copy over background image
+            bgctx.drawImage(Draw.backgroundCanvas, 0, 0, width, height);
         } else {
             // fill canvas with white
             bgctx.fillStyle = 'white';
@@ -155,9 +161,9 @@ var Draw = {
             const finalCanvas = document.createElement('canvas');
             const rect = Draw.canvas.getBoundingClientRect();
 
-            if (Draw.snapBackground) {
-                finalCanvas.setAttribute('width', Snap.canvas.width);
-                finalCanvas.setAttribute('height', Snap.canvas.height);
+            if (Draw.backgroundCanvas) {
+                finalCanvas.setAttribute('width', Draw.bgWidth);
+                finalCanvas.setAttribute('height', Draw.bgHeight);
             } else {
                 finalCanvas.setAttribute('width', rect.width);
                 finalCanvas.setAttribute('height', rect.height);
@@ -166,7 +172,7 @@ var Draw = {
             const finalctx = finalCanvas.getContext('2d');
             finalctx.lineCap = 'round';
 
-            if (Draw.snapBackground) {
+            if (Draw.backgroundCanvas) {
                 // re-draw upscaled
                 for (let i = 0; i < Draw.drawingData.length; i++) {
                     finalctx.globalCompositeOperation = Draw.drawingData[i].gco;
@@ -196,7 +202,6 @@ var Draw = {
                             Draw.drawingData[i].points[j + 1].y * Draw.ratio
                         );
                     } else {
-                        console.log(Draw.drawingData[i].points)
                         if (Draw.drawingData[i].points.length == 1) {
                             Draw.drawingData[i].points.push(Draw.drawingData[i].points[0]);
                         }
@@ -217,7 +222,12 @@ var Draw = {
 
                 // add background at then end so erased parts look correct
                 finalctx.globalCompositeOperation = 'destination-over';
-                finalctx.drawImage(Snap.canvas, 0, 0, Snap.canvas.width, Snap.canvas.height);
+                finalctx.drawImage(
+                    Draw.backgroundCanvas,
+                    0, 0,
+                    Draw.bgWidth,
+                    Draw.bgHeight
+                );
             } else {
                 const bgimg = document.getElementById('draw-background');
                 finalctx.drawImage(bgimg, 0, 0, rect.width, rect.height);
