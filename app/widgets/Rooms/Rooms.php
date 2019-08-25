@@ -562,8 +562,10 @@ class Rooms extends Base
                                            ->withCount('unreads')
                                            ->get();
         $connected = new Collection;
+        $servers = [];
 
         foreach ($conferences as $key => $conference) {
+            array_push($servers, $conference->server);
             if ($conference->connected) {
                 $connected->push($conferences->pull($key));
             }
@@ -573,6 +575,7 @@ class Rooms extends Base
 
         $view = $this->tpl();
         $view->assign('edit', $edit);
+        $view->assign('servers', App\Info::whereIn('server', array_unique($servers))->get()->keyBy('server'));
         $view->assign('conferences', $conferences);
         $view->assign('room', $this->get('r'));
 

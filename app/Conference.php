@@ -60,6 +60,11 @@ class Conference extends Model
         return $this->hasOne('App\Contact', 'id', 'conference');
     }
 
+    public function getServerAttribute()
+    {
+        return \explodeJid($this->conference)['server'];
+    }
+
     public function getConnectedAttribute()
     {
         return isset($this->presence);
