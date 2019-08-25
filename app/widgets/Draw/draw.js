@@ -153,6 +153,7 @@ var Draw = {
         Draw.save = document.getElementById('draw-save');
         Draw.save.onclick = (e) => {
             const finalCanvas = document.createElement('canvas');
+            const rect = Draw.canvas.getBoundingClientRect();
 
             if (Draw.snapBackground) {
                 finalCanvas.setAttribute('width', Snap.canvas.width);
@@ -172,27 +173,44 @@ var Draw = {
                     finalctx.lineWidth = Draw.drawingData[i].width * Draw.ratio;
                     finalctx.strokeStyle = Draw.drawingData[i].color;
                     let j = 0;
-                    finalctx.moveTo(
-                        Draw.drawingData[i].points[j].x * Draw.ratio,
-                        Draw.drawingData[i].points[j].y * Draw.ratio
-                    );
-                    for (j = 1; j < Draw.drawingData[i].points.length - 2; j++) {
-                        const c = (Draw.drawingData[i].points[j].x + Draw.drawingData[i].points[j + 1].x) / 2;
-                        const d = (Draw.drawingData[i].points[j].y + Draw.drawingData[i].points[j + 1].y) / 2;
+                    if (Draw.drawingData[i].points.length >= 4) {
+                        finalctx.moveTo(
+                            Draw.drawingData[i].points[j].x * Draw.ratio,
+                            Draw.drawingData[i].points[j].y * Draw.ratio
+                        );
+                        for (j = 1; j < Draw.drawingData[i].points.length - 2; j++) {
+                            const c = (Draw.drawingData[i].points[j].x + Draw.drawingData[i].points[j + 1].x) / 2;
+                            const d = (Draw.drawingData[i].points[j].y + Draw.drawingData[i].points[j + 1].y) / 2;
 
+                            finalctx.quadraticCurveTo(
+                                Draw.drawingData[i].points[j].x * Draw.ratio,
+                                Draw.drawingData[i].points[j].y * Draw.ratio,
+                                c * Draw.ratio,
+                                d * Draw.ratio
+                            );
+                        }
                         finalctx.quadraticCurveTo(
                             Draw.drawingData[i].points[j].x * Draw.ratio,
                             Draw.drawingData[i].points[j].y * Draw.ratio,
-                            c * Draw.ratio,
-                            d * Draw.ratio
+                            Draw.drawingData[i].points[j + 1].x * Draw.ratio,
+                            Draw.drawingData[i].points[j + 1].y * Draw.ratio
                         );
+                    } else {
+                        console.log(Draw.drawingData[i].points)
+                        if (Draw.drawingData[i].points.length == 1) {
+                            Draw.drawingData[i].points.push(Draw.drawingData[i].points[0]);
+                        }
+                        for (j = 0; j < Draw.drawingData[i].points.length - 1; j++) {
+                            finalctx.moveTo(
+                                Draw.drawingData[i].points[j].x * Draw.ratio,
+                                Draw.drawingData[i].points[j].y * Draw.ratio
+                            );
+                            finalctx.lineTo(
+                                Draw.drawingData[i].points[j + 1].x * Draw.ratio,
+                                Draw.drawingData[i].points[j + 1].y * Draw.ratio
+                            );
+                        }
                     }
-                    finalctx.quadraticCurveTo(
-                        Draw.drawingData[i].points[j].x * Draw.ratio,
-                        Draw.drawingData[i].points[j].y * Draw.ratio,
-                        Draw.drawingData[i].points[j + 1].x * Draw.ratio,
-                        Draw.drawingData[i].points[j + 1].y * Draw.ratio
-                    );
                     finalctx.stroke();
                     finalctx.beginPath();
                 }
