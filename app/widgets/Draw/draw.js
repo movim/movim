@@ -11,6 +11,7 @@ var Draw = {
     mousePos: null,
     lastPos: null,
     drawingData: null,
+    controls: null,
 
     drawing: false,
     snapBackground: false,
@@ -19,6 +20,7 @@ var Draw = {
     init: function (snapBackground) {
         Draw.drawingData = [];
         Draw.snapBackground = snapBackground;
+        Draw.controls = document.querySelector('.draw-control');
 
         Draw.draw = document.getElementById('draw');
         const canvasWrapper = document.querySelector('#draw .canvas');
@@ -274,6 +276,9 @@ var Draw = {
         Draw.lastPos = null;
         Draw.mousePos = null;
 
+        // show coontrols
+        Draw.controls.classList.remove('drawing');
+
         Draw.ctx.beginPath();
     },
 
@@ -281,7 +286,10 @@ var Draw = {
         if (e.buttons == 1) {
             Draw.drawing = true;
 
-            // save data
+            // hide coontrols
+            Draw.controls.classList.add('drawing');
+
+            // save drawing data
             const data = {
                 gco: Draw.ctx.globalCompositeOperation,
                 width: Draw.ctx.lineWidth,

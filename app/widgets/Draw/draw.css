@@ -54,6 +54,11 @@
     position: absolute;
     bottom: 0;
     right: 0;
+    transition: transform 0.2s;
+}
+
+#draw .draw-control.drawing {
+    transform: translateX(100%);
 }
 
 #draw .draw-control li.selected span.primary {
