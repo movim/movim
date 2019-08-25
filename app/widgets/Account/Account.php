@@ -14,7 +14,10 @@ class Account extends \Movim\Widget\Base
         $this->registerEvent('register_changepassword_handle', 'onPasswordChanged');
         $this->registerEvent('register_remove_handle', 'onRemoved');
         $this->registerEvent('register_get_handle', 'onRegister', 'account');
+        $this->registerEvent('register_get_error', 'onRegisterError', 'account');
         $this->registerEvent('register_get_errorfeaturenotimplemented', 'onRegisterError', 'account');
+        $this->registerEvent('register_set_handle', 'onRegistered', 'account');
+        $this->registerEvent('register_set_error', 'onRegisterError', 'account');
     }
 
     public function onPasswordChanged()
@@ -30,6 +33,12 @@ class Account extends \Movim\Widget\Base
         $this->user->messages()->delete();
         \App\Post::restrictToMicroblog()->where('server', $this->user->id)->delete();
         $this->rpc('Presence_ajaxLogout');
+    }
+
+    public function onRegistered()
+    {
+        $this->rpc('MovimTpl.fill', '#account_gateways', $this->prepareGateways());
+        Notification::toast($this->__('client.registered'));
     }
 
     public function onRegister($package)
@@ -54,9 +63,12 @@ class Account extends \Movim\Widget\Base
         }
     }
 
-    public function onRegisterError()
+    public function onRegisterError($packet)
     {
-        Notification::toast($this->__('error.oops'));
+        Notification::toast(
+            $packet->content ??
+            $this->__('error.oops')
+        );
     }
 
     public function ajaxChangePassword($form)
@@ -137,6 +149,19 @@ class Account extends \Movim\Widget\Base
           ->request();
     }
 
+    public function prepareGateways()
+    {
+        $view = $this->tpl();
+        $view->assign(
+            'gateways',
+            \App\Info::where('server', 'like', '%' . $this->user->session->host)
+                     ->where('category', 'gateway')
+                     ->get()
+        );
+
+        return $view->draw('_account_gateways');
+    }
+
     private function validateServer($server)
     {
         return (Validator::stringType()->noWhitespace()->length(6, 80)->validate($server));
@@ -144,11 +169,6 @@ class Account extends \Movim\Widget\Base
 
     public function display()
     {
-        $this->view->assign(
-            'gateways',
-            \App\Info::where('server', 'like', '%' . $this->user->session->host)
-                     ->where('category', 'gateway')
-                     ->get()
-        );
+        $this->view->assign('gateways', $this->prepareGateways());
     }
 }
