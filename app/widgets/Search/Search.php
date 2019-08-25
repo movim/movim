@@ -93,11 +93,20 @@ class Search extends Base
                 })
                 ->groupBy('name')
                 ->orderBy('count', 'desc')
-                ->take(5)
+                ->take(4)
                 ->get()
                 ->pluck('name', 'count');
 
             $view->assign('tags', $tags);
+
+            $communities = \App\Info::whereRaw('lower(node) like ?', '%'.strtolower($key).'%')
+                ->where('category', 'pubsub')
+                ->where('type', 'leaf')
+                ->where('pubsubaccessmodel', 'open')
+                ->take(5)
+                ->get();
+
+            $view->assign('communities', $communities);
 
             return $view->draw('_search_results');
         }

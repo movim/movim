@@ -153,7 +153,6 @@ var Draw = {
         Draw.save = document.getElementById('draw-save');
         Draw.save.onclick = (e) => {
             const finalCanvas = document.createElement('canvas');
-            const rect = Draw.canvas.getBoundingClientRect();
 
             if (Draw.snapBackground) {
                 finalCanvas.setAttribute('width', Snap.canvas.width);

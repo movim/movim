@@ -1065,7 +1065,7 @@ class Chat extends \Movim\Widget\Base
      */
     private function validateJid($jid)
     {
-        return (Validator::stringType()->noWhitespace()->length(6, 60)->validate($jid));
+        return (Validator::stringType()->noWhitespace()->length(6, 256)->validate($jid));
     }
 
     public function getSmileyPath($id)

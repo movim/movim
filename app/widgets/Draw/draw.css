@@ -59,6 +59,7 @@
 
 #draw .draw-control.drawing {
     transform: translateX(100%);
+    padding-bottom: 0.5rem;
 }
 
 #draw .draw-control li.selected span.primary {
@@ -70,6 +71,7 @@
     height: 5.5rem;
     display: block;
     padding-right: 0;
+    padding-left: 8rem;
 }
 
 #draw [data-width=small] i {

@@ -22,6 +22,11 @@ class Get extends Action
         $this->deliver();
     }
 
+    public function error($stanza)
+    {
+        $this->deliver();
+    }
+
     public function errorFeatureNotImplemented()
     {
         $this->deliver();

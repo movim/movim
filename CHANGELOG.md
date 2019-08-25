@@ -20,6 +20,8 @@ v0.15.1 (trunk)
  * Display all the contacts clients in the ContactActions drawer
  * Add support of pubsub#publish_model in CommunityHeader
  * Fix Bookmarks edition (Chat panel toggle) and show a toast on save
+ * Add Communities results to Search
+ * Add a Draw widget to the chat page
 
 v0.15 – Donati
 ---------------------------

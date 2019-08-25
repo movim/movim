@@ -501,7 +501,7 @@ class Rooms extends Base
      */
     public function ajaxChatroomAdd($form)
     {
-        if (!filter_var($form->jid->value, FILTER_VALIDATE_EMAIL)) {
+        if (!$this->validateRoom($form->jid->value)) {
             Notification::toast($this->__('chatrooms.bad_id'));
         } elseif (trim($form->name->value) == '') {
             Notification::toast($this->__('chatrooms.empty_name'));
@@ -595,7 +595,7 @@ class Rooms extends Base
      */
     private function validateRoom($room)
     {
-        return (Validator::stringType()->noWhitespace()->length(6, 80)->validate($room));
+        return (Validator::stringType()->noWhitespace()->contains('@')->length(6, 256)->validate($room));
     }
 
     /**

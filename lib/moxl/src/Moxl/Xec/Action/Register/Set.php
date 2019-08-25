@@ -34,8 +34,9 @@ class Set extends Action
         $this->deliver();
     }
 
-    public function error($stanza)
+    public function error($id, $message = false)
     {
+        $this->pack($message);
         $this->deliver();
     }
 

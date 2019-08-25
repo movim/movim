@@ -71,7 +71,6 @@
                 <p></p>
             </li>
         </ul>
-        <br />
     </div>
     <ul class="list controls">
         <li>
