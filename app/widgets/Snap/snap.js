@@ -135,7 +135,6 @@ var Snap = {
         };
 
         document.querySelector("#snap #snapdraw").onclick = () => {
-            // snapback or snapclose?
             Snap.snap.classList = '';
             Snap.close();
 
