@@ -52,14 +52,13 @@
 
 #draw .draw-control {
     position: absolute;
-    bottom: 0;
+    bottom: 0.5rem;
     right: 0;
     transition: transform 0.2s;
 }
 
 #draw .draw-control.drawing {
     transform: translateX(100%);
-    padding-bottom: 0.5rem;
 }
 
 #draw .draw-control li.selected span.primary {
