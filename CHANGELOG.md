@@ -22,6 +22,7 @@ v0.15.1 (trunk)
  * Fix Bookmarks edition (Chat panel toggle) and show a toast on save
  * Add Communities results to Search
  * Add a Draw widget to the chat page
+ * Add an index on user_id on the users table
 
 v0.15 – Donati
 ---------------------------
