@@ -156,7 +156,7 @@ var Draw = {
         }, false);
 
         // Save (background +) drawing
-        Draw.save = document.getElementById('draw-save');
+        Draw.save = document.querySelector('#draw-save span.primary');
         Draw.save.onclick = (e) => {
             const finalCanvas = document.createElement('canvas');
             const rect = Draw.canvas.getBoundingClientRect();
@@ -233,6 +233,9 @@ var Draw = {
                 finalctx.drawImage(bgimg, 0, 0, rect.width, rect.height);
                 finalctx.drawImage(Draw.canvas, 0, 0, rect.width, rect.height);
             }
+
+            // Disable button
+            Draw.save.classList.add('disabled');
 
             finalCanvas.toBlob(
                 function (blob) {
@@ -368,17 +371,23 @@ var Draw = {
 
 Upload.attach((file) => {
     if (Draw.draw) Draw.draw.classList = '';
-    if (Draw.save) Draw.save.querySelector('span.primary').style.backgroundImage = '';
-});
-
-Upload.progress((percent) => {
     if (Draw.save) {
-        Draw.save.querySelector('span.primary').style.backgroundImage
-            = 'linear-gradient(to top, rgba(0, 0, 0, 0.5) ' + percent + '%, transparent ' + percent + '%)';
+        Draw.save.classList.remove('disabled');
+        Draw.save.style.backgroundImage = '';
     }
 });
 
 Upload.fail(() => {
     if (Draw.draw) Draw.draw.classList = 'upload';
-    if (Draw.save) Draw.save.querySelector('span.primary').style.backgroundImage = '';
+    if (Draw.save) {
+        Draw.save.classList.remove('disabled');
+        Draw.save.style.backgroundImage = '';
+    }
+});
+
+Upload.progress((percent) => {
+    if (Draw.save) {
+        Draw.save.style.backgroundImage
+            = 'linear-gradient(to top, rgba(0, 0, 0, 0.5) ' + percent + '%, transparent ' + percent + '%)';
+    }
 });
