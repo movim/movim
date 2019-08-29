@@ -31,25 +31,21 @@ class Communities extends Base
             ->orderBy('posts.published', 'desc')
             ->where('open', true);
 
-        $postsIds = $posts->take(200)->pluck('id')->toArray();
+        $posts = $posts->take(30)->get();
 
-        $tags = \App\Tag::whereIn('id', function ($query) use ($postsIds) {
+        $tags = \App\Tag::whereIn('id', function ($query) use ($posts) {
             $query->select('tag_id')
-                  ->fromSub(function ($query) use ($postsIds) {
-                      $query->selectRaw('tag_id, count(tag_id) as count')
-                            ->fromSub(function ($query) use ($postsIds) {
-                                $query->from('post_tag')
-                                      ->whereIn('post_id', $postsIds)
-                                      ->get();
-                            }, 'last_month')
-                            ->groupBy('tag_id')
-                            ->orderBy('count', 'desc')
-                            ->take(20);
-                  }, 'top');
+                  ->fromSub(function ($query) use ($posts) {
+                $query->selectRaw('tag_id, count(tag_id) as count')
+                    ->from('post_tag')
+                    ->groupBy('tag_id')
+                    ->orderBy('count', 'desc')
+                    ->whereIn('post_id', $posts->pluck('id'));
+            }, 'top');
         })->get();
 
         $view->assign('tags', $tags);
-        $view->assign('posts', $posts->take(30)->get());
+        $view->assign('posts', $posts);
         $view->assign('communities', $this->user->session->interestingCommunities()
             ->take(6)
             ->get());
