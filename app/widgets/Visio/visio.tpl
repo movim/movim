@@ -38,8 +38,8 @@
         </li>
     </ul>
 
-    <video id="remote_video" autoplay></video>
-    <video id="video" autoplay muted></video>
+    <video id="remote_video" autoplay poster="noposter"></video>
+    <video id="video" autoplay muted poster="noposter"></video>
     <canvas class="level"></canvas>
     <div class="controls">
         <a id="main" class="button action color gray">

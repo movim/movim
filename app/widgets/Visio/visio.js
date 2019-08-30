@@ -36,6 +36,10 @@ var Visio = {
         Visio.switchCamera.classList.add('disabled');
         Visio.localVideo.srcObject = null;
 
+        // Useful on Android where you can't have both camera enabled at the same time
+        var videoTrack = Visio.pc.getSenders().find(rtc => rtc.track.kind == 'video');
+        if (videoTrack) videoTrack.track.stop();
+
         if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
             navigator.mediaDevices.getUserMedia(Visio.constraints)
             .then(function(stream) {
