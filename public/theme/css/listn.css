@@ -262,6 +262,10 @@ ul.list li > .control ~ .control ~ .control {
     right: 12rem;
 }
 
+ul.list li > .control ~ .control ~ .control ~ .control {
+    right: 18rem;
+}
+
 /* Limit the size of the main content */
 
 ul.list li > .control ~ *:not(.control):not(.bubble):not(.counter) {
@@ -274,6 +278,10 @@ ul.list li > .control ~ .control ~ *:not(.control):not(.bubble):not(.counter) {
 
 ul.list li > .control ~ .control ~ .control ~ *:not(.control):not(.bubble):not(.counter) {
     margin-right: 17rem;
+}
+
+ul.list li > .control ~ .control ~ .control ~ .control ~ *:not(.control):not(.bubble):not(.counter) {
+    margin-right: 23rem;
 }
 
 /* Limit the size of the main content */

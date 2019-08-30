@@ -40,7 +40,10 @@ class Visio extends Base
             $contact->truename,
             $this->__('visio.calling'),
             $contact->getPhoto(),
-            5
+            5,
+            null,
+            null,
+            'VisioLink.openVisio(\''.$from.'\'); Dialog_ajaxClear()'
         );
     }
 
@@ -94,11 +97,14 @@ class Visio extends Base
 
     public function onTerminate($stanza)
     {
+        $this->clearCandidates();
         $this->rpc('Visio.onTerminate');
     }
 
     public function ajaxInitiate($sdp, $to)
     {
+        $this->clearCandidates();
+
         $stj = new SDPtoJingle(
             $sdp->sdp,
             $this->user->id,
@@ -146,6 +152,8 @@ class Visio extends Base
 
     public function ajaxTerminate($to, $reason = 'success')
     {
+        $this->clearCandidates();
+
         $s = Session::start();
 
         $st = new SessionTerminate;
@@ -153,6 +161,12 @@ class Visio extends Base
            ->setJingleSid($s->get('jingleSid'))
            ->setReason($reason)
            ->request();
+    }
+
+    private function clearCandidates()
+    {
+        $s = Session::start();
+        $s->remove('candidates');
     }
 
     public function display()

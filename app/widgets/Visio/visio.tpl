@@ -1,4 +1,4 @@
-<div id="visio" class="">
+<div id="visio">
     <header class="fixed">
         <ul class="list">
             <li>
@@ -14,9 +14,13 @@
                 <span id="toggle_video" class="control icon color transparent active" onclick="Visio.toggleVideo()">
                     <i class="material-icons">videocam</i>
                 </span>
+                <span id="switch_camera" class="control icon color transparent active" onclick="Visio.toggleVideo()">
+                    <i class="material-icons">switch_camera</i>
+                </span>
             </li>
         </ul>
     </header>
+    <select id="visio_source"></select>
 
     <ul class="list infos" class="list middle">
         {$url = $contact->getPhoto('l')}
@@ -34,8 +38,8 @@
         </li>
     </ul>
 
-    <video id="video" autoplay muted></video>
     <video id="remote_video" autoplay></video>
+    <video id="video" autoplay muted></video>
     <canvas class="level"></canvas>
     <div class="controls">
         <a id="main" class="button action color gray">

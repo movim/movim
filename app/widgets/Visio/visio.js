@@ -14,28 +14,91 @@ var Visio = {
     from: null,
     type: null,
 
+    videoSelect: undefined,
+    switchCamera: undefined,
     localCreated: false,
 
     setFrom: function(from) {
         Visio.from = from;
     },
 
-    /*
-     * Jingle and WebRTC
-     */
-    handleSuccess: function(stream) {
-        stream.getTracks().forEach(track => Visio.pc.addTrack(track, stream));
+    gotStream: function() {
+        Visio.constraints = window.constraints = {
+            audio: true,
+            video: {
+                deviceId: Visio.videoSelect.value,
+                facingMode: 'user',
+                width: { ideal: 4096 },
+                height: { ideal: 4096 }
+            }
+        };
 
-        Visio.toggleMainButton();
+        Visio.switchCamera.classList.add('disabled');
+        Visio.localVideo.srcObject = null;
 
-        Visio.localVideo.srcObject = stream;
+        if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia(Visio.constraints)
+            .then(function(stream) {
+                Visio.switchCamera.classList.remove('disabled');
 
-        // Audio
+                Visio.localVideo.srcObject = stream;
+                Visio.handleAudio(stream);
+
+                stream.getTracks().forEach(track => Visio.pc.addTrack(track, stream));
+
+                // Switch camera
+                let videoTrack = stream.getVideoTracks()[0];
+
+                var sender = Visio.pc.getSenders().find(function(s) {
+                    return s.track.kind == videoTrack.kind;
+                });
+
+                if (sender) {
+                    sender.replaceTrack(videoTrack);
+                }
+
+                Visio.toggleMainButton();
+
+                // if we received an offer, we need to answer
+                if (Visio.pc.remoteDescription
+                && Visio.pc.remoteDescription.type == 'offer') {
+                    Visio.pc.createAnswer(Visio.localDescCreated, logError);
+                }
+            });
+        }
+    },
+
+    gotDevices: function(deviceInfos) {
+        Visio.videoSelect.innerText = '';
+
+        const ids = [];
+
+        for (let i = 0; i !== deviceInfos.length; ++i) {
+            const deviceInfo = deviceInfos[i];
+
+            if (deviceInfo.kind === 'videoinput' && !ids.includes(deviceInfo.deviceId)) {
+                const option = document.createElement('option');
+                option.value = deviceInfo.deviceId;
+                option.text = deviceInfo.label;
+                Visio.videoSelect.add(option);
+                ids.push(deviceInfo.deviceId);
+            }
+        }
+
+        if (ids.length >= 2) {
+            document.querySelector("#visio #switch_camera").classList.add('enabled');
+        }
+
+        Visio.videoSelect.addEventListener('change', e => Visio.gotStream() );
+        Visio.gotStream();
+    },
+
+    handleAudio: function(stream) {
         var microphone = Visio.audioContext.createMediaStreamSource(stream);
         var javascriptNode = Visio.audioContext.createScriptProcessor(2048, 1, 1);
 
         var cnvs = document.querySelector('#visio .level');
-        var cnvs_cntxt = cnvs.getContext("2d");
+        var cnvs_cntxt = cnvs.getContext('2d');
 
         microphone.connect(javascriptNode);
         javascriptNode.connect(Visio.audioContext.destination);
@@ -57,12 +120,6 @@ var Visio = {
             cnvs_cntxt.clearRect(0, 0, cnvs.width, cnvs.height);
             cnvs_cntxt.fillStyle = 'white';
             cnvs_cntxt.fillRect(0, 0,(cnvs.width)*(instant_L/Visio.max_level_L),(cnvs.height)); // x,y,w,h
-        }
-
-        // if we received an offer, we need to answer
-        if (Visio.pc.remoteDescription
-        && Visio.pc.remoteDescription.type == 'offer') {
-            Visio.pc.createAnswer(Visio.localDescCreated, logError);
         }
     },
 
@@ -111,8 +168,6 @@ var Visio = {
     },
 
     onTerminate: function() {
-        console.log('terminate');
-
         let localStream = Visio.localVideo.srcObject;
 
         if (localStream) {
@@ -131,6 +186,7 @@ var Visio = {
 
         Visio.localVideo.srcObject = null;
         Visio.remoteVideo.srcObject = null;
+        Visio.localVideo.classList.add('hide');
 
         if (Visio.pc) Visio.pc.close();
 
@@ -178,6 +234,22 @@ var Visio = {
             ]
         };
 
+        // Switch camera
+        Visio.videoSelect = document.querySelector('#visio select#visio_source');
+        navigator.mediaDevices.enumerateDevices().then(devices => Visio.gotDevices(devices));
+
+        Visio.switchCamera = document.querySelector("#visio #switch_camera");
+        Visio.switchCamera.onclick = () => {
+            Visio.videoSelect.selectedIndex++;
+
+            // No empty selection
+            if (Visio.videoSelect.selectedIndex == -1) {
+                Visio.videoSelect.selectedIndex++;
+            }
+
+            Visio.gotStream();
+        };
+
         // WebRTC
         Visio.pc = new RTCPeerConnection(configuration);
 
@@ -199,25 +271,10 @@ var Visio = {
 
         Visio.audioContext = new AudioContext();
 
-        Visio.constraints = window.constraints = {
-            audio: true,
-            video: {
-                facingMode: 'user',
-                width: {ideal: 1280},
-                height: {ideal: 720}
-            }
-        };
-
         Visio.toggleMainButton();
 
         if (sdp && type) {
             Visio.onSDP(sdp, type);
-        }
-
-        if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-            navigator.mediaDevices.getUserMedia(constraints)
-                .then(Visio.handleSuccess)
-                .catch(logError);
         }
     },
 
@@ -289,13 +346,13 @@ var Visio = {
                 i.className = 'material-icons disabled';
                 i.innerText = 'more_horiz';
                 state.innerText = Visio.states.connecting;
-
-            } else if (Visio.pc.iceConnectionState == 'closed') {
+            } else if (Visio.pc.iceConnectionState == 'closed'
+                    || Visio.pc.iceConnectionState == 'disconnected') {
                 button.classList.add('gray');
                 button.classList.remove('disabled');
                 i.innerText = 'call_end';
 
-                button.onclick = function() { MovimUtils.reloadThis(); };
+                button.onclick = function() { Visio.goodbye(); };
             } else if (Visio.pc.iceConnectionState == 'connected'
                    || Visio.pc.iceConnectionState == 'complete'
                    || Visio.pc.iceConnectionState == 'failed') {
@@ -308,6 +365,7 @@ var Visio = {
                 } else {
                     // Visio.pc.ontrack seems buggy for now
                     Visio.remoteVideo.srcObject = Visio.pc.getRemoteStreams()[0];
+                    Visio.remoteVideo.classList.add('enabled');
                     state.innerTest = Visio.states.in_call;
                 }
 

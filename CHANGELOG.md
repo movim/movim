@@ -23,6 +23,9 @@ v0.15.1 (trunk)
  * Add Communities results to Search
  * Add a Draw widget to the chat page
  * Add an index on user_id on the users table
+ * Allow camera switch in Visio
+ * Allow Visio notification to also open pop-up
+ * Clear all candidates when terminating or starting a new Visio
 
 v0.15 – Donati
 ---------------------------

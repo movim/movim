@@ -405,18 +405,18 @@ img.avatar:not([src=""]) + .placeholder {
 
 /* Spinner */
 
-div#spinner{
+div#spinner {
     position: relative;
     overflow: visible;
     text-align: center;
     margin: 50% 0;
 }
 
-.show{
+.show {
     display: block;
 }
 
-.hide{
+.hide {
     display: none;
 }
 
