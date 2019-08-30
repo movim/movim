@@ -44,7 +44,10 @@ var Visio = {
                 Visio.localVideo.srcObject = stream;
                 Visio.handleAudio(stream);
 
-                stream.getTracks().forEach(track => Visio.pc.addTrack(track, stream));
+                // For the first time we attach all the tracks
+                if (Visio.pc.getSenders().length == 0) {
+                    stream.getTracks().forEach(track => Visio.pc.addTrack(track, stream));
+                }
 
                 // Switch camera
                 let videoTrack = stream.getVideoTracks()[0];
@@ -400,24 +403,26 @@ var Visio = {
 
     toggleAudio: function() {
         var button = document.querySelector('#toggle_audio i');
+        var rtc = Visio.pc.getSenders().find(rtc => rtc.track.kind == 'audio');
 
-        if (Visio.pc.getLocalStreams()[0].getAudioTracks()[0].enabled) {
-            Visio.pc.getLocalStreams()[0].getAudioTracks()[0].enabled = 0;
+        if (rtc && rtc.track.enabled == 1) {
+            rtc.track.enabled = 0;
             button.innerText = 'mic_off';
-        } else {
-            Visio.pc.getLocalStreams()[0].getAudioTracks()[0].enabled = 1;
+        } else if (rtc) {
+            rtc.track.enabled = 1;
             button.innerText = 'mic';
         }
     },
 
     toggleVideo: function() {
         var button = document.querySelector('#toggle_video i');
+        var rtc = Visio.pc.getSenders().find(rtc => rtc.track.kind == 'video');
 
-        if (Visio.pc.getLocalStreams()[0].getVideoTracks()[0].enabled) {
-            Visio.pc.getLocalStreams()[0].getVideoTracks()[0].enabled = 0;
+        if (rtc && rtc.track.enabled == 1) {
+            rtc.track.enabled = 0;
             button.innerText = 'videocam_off';
-        } else {
-            Visio.pc.getLocalStreams()[0].getVideoTracks()[0].enabled = 1;
+        } else if (rtc) {
+            rtc.track.enabled = 1;
             button.innerText = 'videocam';
         }
     },
