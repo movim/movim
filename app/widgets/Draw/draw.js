@@ -173,61 +173,7 @@ var Draw = {
             finalctx.lineCap = 'round';
 
             if (Draw.backgroundCanvas) {
-                // re-draw upscaled
-                for (let i = 0; i < Draw.drawingData.length; i++) {
-                    finalctx.globalCompositeOperation = Draw.drawingData[i].gco;
-                    finalctx.lineWidth = Draw.drawingData[i].width * Draw.ratio;
-                    finalctx.strokeStyle = Draw.drawingData[i].color;
-                    let j = 0;
-                    if (Draw.drawingData[i].points.length >= 4) {
-                        finalctx.moveTo(
-                            Draw.drawingData[i].points[j].x * Draw.ratio,
-                            Draw.drawingData[i].points[j].y * Draw.ratio
-                        );
-                        for (j = 1; j < Draw.drawingData[i].points.length - 2; j++) {
-                            const c = (Draw.drawingData[i].points[j].x + Draw.drawingData[i].points[j + 1].x) / 2;
-                            const d = (Draw.drawingData[i].points[j].y + Draw.drawingData[i].points[j + 1].y) / 2;
-
-                            finalctx.quadraticCurveTo(
-                                Draw.drawingData[i].points[j].x * Draw.ratio,
-                                Draw.drawingData[i].points[j].y * Draw.ratio,
-                                c * Draw.ratio,
-                                d * Draw.ratio
-                            );
-                        }
-                        finalctx.quadraticCurveTo(
-                            Draw.drawingData[i].points[j].x * Draw.ratio,
-                            Draw.drawingData[i].points[j].y * Draw.ratio,
-                            Draw.drawingData[i].points[j + 1].x * Draw.ratio,
-                            Draw.drawingData[i].points[j + 1].y * Draw.ratio
-                        );
-                    } else {
-                        if (Draw.drawingData[i].points.length == 1) {
-                            Draw.drawingData[i].points.push(Draw.drawingData[i].points[0]);
-                        }
-                        for (j = 0; j < Draw.drawingData[i].points.length - 1; j++) {
-                            finalctx.moveTo(
-                                Draw.drawingData[i].points[j].x * Draw.ratio,
-                                Draw.drawingData[i].points[j].y * Draw.ratio
-                            );
-                            finalctx.lineTo(
-                                Draw.drawingData[i].points[j + 1].x * Draw.ratio,
-                                Draw.drawingData[i].points[j + 1].y * Draw.ratio
-                            );
-                        }
-                    }
-                    finalctx.stroke();
-                    finalctx.beginPath();
-                }
-
-                // add background at then end so erased parts look correct
-                finalctx.globalCompositeOperation = 'destination-over';
-                finalctx.drawImage(
-                    Draw.backgroundCanvas,
-                    0, 0,
-                    Draw.bgWidth,
-                    Draw.bgHeight
-                );
+                Draw.upscaleDrawing(finalctx);
             } else {
                 const bgimg = document.getElementById('draw-background');
                 finalctx.drawImage(bgimg, 0, 0, rect.width, rect.height);
@@ -330,6 +276,64 @@ var Draw = {
 
             Draw.lastPos = Draw.getPos(Draw.canvas, e);
         }
+    },
+
+    upscaleDrawing: function (finalctx) {
+        // re-draw upscaled
+        for (let i = 0; i < Draw.drawingData.length; i++) {
+            finalctx.globalCompositeOperation = Draw.drawingData[i].gco;
+            finalctx.lineWidth = Draw.drawingData[i].width * Draw.ratio;
+            finalctx.strokeStyle = Draw.drawingData[i].color;
+            let j = 0;
+            if (Draw.drawingData[i].points.length >= 4) {
+                finalctx.moveTo(
+                    Draw.drawingData[i].points[j].x * Draw.ratio,
+                    Draw.drawingData[i].points[j].y * Draw.ratio
+                );
+                for (j = 1; j < Draw.drawingData[i].points.length - 2; j++) {
+                    const c = (Draw.drawingData[i].points[j].x + Draw.drawingData[i].points[j + 1].x) / 2;
+                    const d = (Draw.drawingData[i].points[j].y + Draw.drawingData[i].points[j + 1].y) / 2;
+
+                    finalctx.quadraticCurveTo(
+                        Draw.drawingData[i].points[j].x * Draw.ratio,
+                        Draw.drawingData[i].points[j].y * Draw.ratio,
+                        c * Draw.ratio,
+                        d * Draw.ratio
+                    );
+                }
+                finalctx.quadraticCurveTo(
+                    Draw.drawingData[i].points[j].x * Draw.ratio,
+                    Draw.drawingData[i].points[j].y * Draw.ratio,
+                    Draw.drawingData[i].points[j + 1].x * Draw.ratio,
+                    Draw.drawingData[i].points[j + 1].y * Draw.ratio
+                );
+            } else {
+                if (Draw.drawingData[i].points.length == 1) {
+                    Draw.drawingData[i].points.push(Draw.drawingData[i].points[0]);
+                }
+                for (j = 0; j < Draw.drawingData[i].points.length - 1; j++) {
+                    finalctx.moveTo(
+                        Draw.drawingData[i].points[j].x * Draw.ratio,
+                        Draw.drawingData[i].points[j].y * Draw.ratio
+                    );
+                    finalctx.lineTo(
+                        Draw.drawingData[i].points[j + 1].x * Draw.ratio,
+                        Draw.drawingData[i].points[j + 1].y * Draw.ratio
+                    );
+                }
+            }
+            finalctx.stroke();
+            finalctx.beginPath();
+        }
+
+        // add background at then end so erased parts look correct
+        finalctx.globalCompositeOperation = 'destination-over';
+        finalctx.drawImage(
+            Draw.backgroundCanvas,
+            0, 0,
+            Draw.bgWidth,
+            Draw.bgHeight
+        );
     },
 
     // Get the position of the mouse/touch relative to the canvas
