@@ -191,10 +191,12 @@ var Visio = {
         if (Visio.pc) Visio.pc.close();
 
         document.querySelector('p.state').innerText = Visio.states.ended;
-        button = document.querySelector('#main i');
+        button = document.querySelector('#main');
 
-        button.className = 'material-icons red';
-        button.innerText = 'close';
+        button.className = 'button action color red';
+        button.querySelector('i').className = 'material-icons';
+        button.querySelector('i').innerText = 'close';
+
         button.onclick = function() {
             window.close();
         }
@@ -266,6 +268,11 @@ var Visio = {
         };
 
         Visio.pc.onicegatheringstatechange = function (e) {
+            // When we didn't receive the WebRTC termination before Jingle
+            if (Visio.pc.iceConnectionState == 'disconnected') {
+                Visio.onTerminate();
+            }
+
             Visio.toggleMainButton();
         };
 
@@ -346,8 +353,7 @@ var Visio = {
                 i.className = 'material-icons disabled';
                 i.innerText = 'more_horiz';
                 state.innerText = Visio.states.connecting;
-            } else if (Visio.pc.iceConnectionState == 'closed'
-                    || Visio.pc.iceConnectionState == 'disconnected') {
+            } else if (Visio.pc.iceConnectionState == 'closed') {
                 button.classList.add('gray');
                 button.classList.remove('disabled');
                 i.innerText = 'call_end';
