@@ -3,6 +3,8 @@ var Draw = {
     MEDIUM: 6,
     BIG: 8,
 
+    CROP_PADDING: 0.15,
+
     draw: null,  // widget wrapper
 
     canvas: null,  // drawable
@@ -159,15 +161,20 @@ var Draw = {
         Draw.save = document.querySelector('#draw-save span.primary');
         Draw.save.onclick = (e) => {
             const finalCanvas = document.createElement('canvas');
-            const rect = Draw.canvas.getBoundingClientRect();
+            let crop, height, width, bg;
 
             if (Draw.backgroundCanvas) {
-                finalCanvas.setAttribute('width', Draw.bgWidth);
-                finalCanvas.setAttribute('height', Draw.bgHeight);
+                width = Draw.bgWidth;
+                height = Draw.bgHeight;
+                bg = Draw.backgroundCanvas;
             } else {
-                finalCanvas.setAttribute('width', rect.width);
-                finalCanvas.setAttribute('height', rect.height);
+                crop = Draw.autoCropDrawing();
+                width = crop.width;
+                height = crop.height;
+                bg = Draw.bg;
             }
+            finalCanvas.setAttribute('width', width);
+            finalCanvas.setAttribute('height', height);
 
             const finalctx = finalCanvas.getContext('2d');
             finalctx.lineCap = 'round';
@@ -175,10 +182,17 @@ var Draw = {
             if (Draw.backgroundCanvas) {
                 Draw.upscaleDrawing(finalctx);
             } else {
-                const bgimg = document.getElementById('draw-background');
-                finalctx.drawImage(bgimg, 0, 0, rect.width, rect.height);
-                finalctx.drawImage(Draw.canvas, 0, 0, rect.width, rect.height);
+                finalctx.putImageData(crop, 0, 0);
             }
+
+            // add background
+            finalctx.globalCompositeOperation = 'destination-over';
+            finalctx.drawImage(
+                bg,
+                0, 0,
+                width,
+                height
+            );
 
             // Disable button
             Draw.save.classList.add('disabled');
@@ -243,7 +257,7 @@ var Draw = {
             Draw.draw.classList.remove('open');
         });
 
-        // Add a fleg to not re-bind event listeners
+        // Add a flag to not re-bind event listeners
         Draw.draw.classList.add('bound');
     },
 
@@ -285,6 +299,10 @@ var Draw = {
             finalctx.lineWidth = Draw.drawingData[i].width * Draw.ratio;
             finalctx.strokeStyle = Draw.drawingData[i].color;
             let j = 0;
+            while (Draw.drawingData[i].points.length < 4) {
+                Draw.drawingData[i].points.push(Draw.drawingData[i].points[Draw.drawingData[i].points.length - 1]);
+            }
+
             if (Draw.drawingData[i].points.length >= 4) {
                 finalctx.moveTo(
                     Draw.drawingData[i].points[j].x * Draw.ratio,
@@ -307,33 +325,43 @@ var Draw = {
                     Draw.drawingData[i].points[j + 1].x * Draw.ratio,
                     Draw.drawingData[i].points[j + 1].y * Draw.ratio
                 );
-            } else {
-                if (Draw.drawingData[i].points.length == 1) {
-                    Draw.drawingData[i].points.push(Draw.drawingData[i].points[0]);
-                }
-                for (j = 0; j < Draw.drawingData[i].points.length - 1; j++) {
-                    finalctx.moveTo(
-                        Draw.drawingData[i].points[j].x * Draw.ratio,
-                        Draw.drawingData[i].points[j].y * Draw.ratio
-                    );
-                    finalctx.lineTo(
-                        Draw.drawingData[i].points[j + 1].x * Draw.ratio,
-                        Draw.drawingData[i].points[j + 1].y * Draw.ratio
-                    );
-                }
             }
             finalctx.stroke();
             finalctx.beginPath();
         }
+    },
 
-        // add background at then end so erased parts look correct
-        finalctx.globalCompositeOperation = 'destination-over';
-        finalctx.drawImage(
-            Draw.backgroundCanvas,
-            0, 0,
-            Draw.bgWidth,
-            Draw.bgHeight
-        );
+    autoCropDrawing: function () {
+        const rect = Draw.canvas.getBoundingClientRect();
+        let height = rect.height;
+        let width = rect.width;
+
+        const imgData = Draw.ctx.getImageData(0, 0, width, height);
+        let maxx = 0, minx = width, maxy = 0, miny = height,
+            index;
+
+        // list all non transparent pixels
+        for (let y = 0; y < height; y++) {
+            for (let x = 0; x < width; x++) {
+                index = (y * width + x) * 4;
+                if (imgData.data[index + 3] > 0) {
+                    minx = Math.min(x, minx);
+                    miny = Math.min(y, miny);
+                    maxx = Math.max(x, maxx);
+                    maxy = Math.max(y, maxy);
+                }
+            }
+        }
+
+        width = maxx - minx + 1;
+        height = maxy - miny + 1;
+
+        return Draw.ctx.getImageData(
+            minx - (width * Draw.CROP_PADDING),
+            miny - (height * Draw.CROP_PADDING),
+            width * (1 + 2 * Draw.CROP_PADDING),
+            height * (1 + 2 * Draw.CROP_PADDING)
+        )
     },
 
     // Get the position of the mouse/touch relative to the canvas
