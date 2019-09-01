@@ -1,5 +1,5 @@
 <div id="snap">
-    <video autoplay poster="/theme/img/empty.png"></video>
+    <video autoplay poster="noposter"></video>
     <canvas id="snapcanvas"></canvas>
     <select id="snapsource"></select>
     <div class="bottom_center">
