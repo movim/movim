@@ -32,7 +32,7 @@ class Search extends Base
             ->get());
 
         $this->rpc('MovimTpl.fill', '#roster', $view->draw('_search_roster'));
-        $this->rpc('Search.roster', '');
+        $this->rpc('Search.searchCurrent');
     }
 
     public function prepareSearch($key)

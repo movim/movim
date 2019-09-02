@@ -45,6 +45,10 @@ var Search = {
         }
     },
 
+    searchCurrent() {
+        Search.searchSomething(document.querySelector('#searchbar input[name=keyword').value);
+    },
+
     searchSomething : function(value) {
         clearTimeout(Search.timer);
 
