@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "cakephp/cache",
-            "version": "3.8.2",
+            "version": "3.8.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/cache.git",
-                "reference": "c5b9075f2a7b53176fb2f9329088671e85d309ba"
+                "reference": "34f8a4c3585c0177438880728668d3a9c5a5c9f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/cache/zipball/c5b9075f2a7b53176fb2f9329088671e85d309ba",
-                "reference": "c5b9075f2a7b53176fb2f9329088671e85d309ba",
+                "url": "https://api.github.com/repos/cakephp/cache/zipball/34f8a4c3585c0177438880728668d3a9c5a5c9f0",
+                "reference": "34f8a4c3585c0177438880728668d3a9c5a5c9f0",
                 "shasum": ""
             },
             "require": {
@@ -48,20 +48,20 @@
                 "caching",
                 "cakephp"
             ],
-            "time": "2019-08-08T09:05:06+00:00"
+            "time": "2019-08-29T13:28:40+00:00"
         },
         {
             "name": "cakephp/collection",
-            "version": "3.8.2",
+            "version": "3.8.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/collection.git",
-                "reference": "5f22678fc2d151082e331b20677d9696563af549"
+                "reference": "7491c4e1f04af5186a0e77f34406e2e40a8a857e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/collection/zipball/5f22678fc2d151082e331b20677d9696563af549",
-                "reference": "5f22678fc2d151082e331b20677d9696563af549",
+                "url": "https://api.github.com/repos/cakephp/collection/zipball/7491c4e1f04af5186a0e77f34406e2e40a8a857e",
+                "reference": "7491c4e1f04af5186a0e77f34406e2e40a8a857e",
                 "shasum": ""
             },
             "require": {
@@ -94,20 +94,20 @@
                 "collections",
                 "iterators"
             ],
-            "time": "2019-02-26T20:10:41+00:00"
+            "time": "2019-08-29T13:17:59+00:00"
         },
         {
             "name": "cakephp/core",
-            "version": "3.8.2",
+            "version": "3.8.3",
             "source": {
                 "type": "git",
-                "url": "git@github.com:cakephp/core.git",
-                "reference": "856ebb75e3cef6068444185e3dd54e98dfe888b3"
+                "url": "https://github.com/cakephp/core.git",
+                "reference": "4f7710dab6f9bf0483e42e189942b1941c070b72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/core/zipball/856ebb75e3cef6068444185e3dd54e98dfe888b3",
-                "reference": "856ebb75e3cef6068444185e3dd54e98dfe888b3",
+                "url": "https://api.github.com/repos/cakephp/core/zipball/4f7710dab6f9bf0483e42e189942b1941c070b72",
+                "reference": "4f7710dab6f9bf0483e42e189942b1941c070b72",
                 "shasum": ""
             },
             "require": {
@@ -144,20 +144,20 @@
                 "core",
                 "framework"
             ],
-            "time": "2019-08-06T03:36:04+00:00"
+            "time": "2019-08-29T13:17:59+00:00"
         },
         {
             "name": "cakephp/database",
-            "version": "3.8.2",
+            "version": "3.8.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/database.git",
-                "reference": "f0ff1a57c89f1e4370a946be21e2d33ba15777bb"
+                "reference": "1e249fa8b2b82313bb7db51a39fa6491fd638e53"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/database/zipball/f0ff1a57c89f1e4370a946be21e2d33ba15777bb",
-                "reference": "f0ff1a57c89f1e4370a946be21e2d33ba15777bb",
+                "url": "https://api.github.com/repos/cakephp/database/zipball/1e249fa8b2b82313bb7db51a39fa6491fd638e53",
+                "reference": "1e249fa8b2b82313bb7db51a39fa6491fd638e53",
                 "shasum": ""
             },
             "require": {
@@ -192,20 +192,20 @@
                 "database abstraction",
                 "pdo"
             ],
-            "time": "2019-08-08T09:05:06+00:00"
+            "time": "2019-08-29T13:36:23+00:00"
         },
         {
             "name": "cakephp/datasource",
-            "version": "3.8.2",
+            "version": "3.8.3",
             "source": {
                 "type": "git",
-                "url": "git@github.com:cakephp/datasource.git",
-                "reference": "c46eff4f12fd72f01dd6987d5bfa0d7e5c92af70"
+                "url": "https://github.com/cakephp/datasource.git",
+                "reference": "c8ff35ec1c49618d4ace994a90e968b51d6315d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/datasource/zipball/c46eff4f12fd72f01dd6987d5bfa0d7e5c92af70",
-                "reference": "c46eff4f12fd72f01dd6987d5bfa0d7e5c92af70",
+                "url": "https://api.github.com/repos/cakephp/datasource/zipball/c8ff35ec1c49618d4ace994a90e968b51d6315d7",
+                "reference": "c8ff35ec1c49618d4ace994a90e968b51d6315d7",
                 "shasum": ""
             },
             "require": {
@@ -242,14 +242,14 @@
                 "entity",
                 "query"
             ],
-            "time": "2019-07-09T14:11:51+00:00"
+            "time": "2019-08-29T13:35:39+00:00"
         },
         {
             "name": "cakephp/log",
-            "version": "3.8.2",
+            "version": "3.8.3",
             "source": {
                 "type": "git",
-                "url": "git@github.com:cakephp/log.git",
+                "url": "https://github.com/cakephp/log.git",
                 "reference": "ed6398ae8c2e8a5630e8dea24dda34b102ec65e2"
             },
             "dist": {
@@ -287,20 +287,20 @@
                 "log",
                 "logging"
             ],
-            "time": "2019-05-27T20:26:47+00:00"
+            "time": "2019-05-27T20:32:25+00:00"
         },
         {
             "name": "cakephp/utility",
-            "version": "3.8.2",
+            "version": "3.8.3",
             "source": {
                 "type": "git",
-                "url": "git@github.com:cakephp/utility.git",
-                "reference": "1b9d956aa81c2db720bd2cd9fa05079f44ad923c"
+                "url": "https://github.com/cakephp/utility.git",
+                "reference": "0dcddfbc2d63335c5bce7cca6790fa434e4a8790"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/utility/zipball/1b9d956aa81c2db720bd2cd9fa05079f44ad923c",
-                "reference": "1b9d956aa81c2db720bd2cd9fa05079f44ad923c",
+                "url": "https://api.github.com/repos/cakephp/utility/zipball/0dcddfbc2d63335c5bce7cca6790fa434e4a8790",
+                "reference": "0dcddfbc2d63335c5bce7cca6790fa434e4a8790",
                 "shasum": ""
             },
             "require": {
@@ -340,7 +340,7 @@
                 "string",
                 "utility"
             ],
-            "time": "2019-08-08T09:05:06+00:00"
+            "time": "2019-08-29T13:43:27+00:00"
         },
         {
             "name": "cboden/ratchet",
@@ -1547,16 +1547,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.23.1",
+            "version": "2.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "767617a047e5b8b8b3b0b6023a2650847ed7df02"
+                "reference": "934459c5ac0658bc765ad1e53512c7c77adcac29"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/767617a047e5b8b8b3b0b6023a2650847ed7df02",
-                "reference": "767617a047e5b8b8b3b0b6023a2650847ed7df02",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/934459c5ac0658bc765ad1e53512c7c77adcac29",
+                "reference": "934459c5ac0658bc765ad1e53512c7c77adcac29",
                 "shasum": ""
             },
             "require": {
@@ -1610,7 +1610,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2019-08-17T13:57:34+00:00"
+            "time": "2019-08-31T16:37:55+00:00"
         },
         {
             "name": "paragonie/random_compat",
