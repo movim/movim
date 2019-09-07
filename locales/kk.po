@@ -49,6 +49,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Draw/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Login/locales.ini
@@ -94,7 +96,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-05 11:28+0200\n"
+"POT-Creation-Date: 2019-09-08 00:00+0200\n"
 "PO-Revision-Date: 2019-07-05 10:14+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Kazakh (http://www.transifex.com/movim/movim/language/kk/)\n"
@@ -539,6 +541,10 @@ msgstr ""
 msgid "Call ended"
 msgstr ""
 
+#: [chat]publish_error
+msgid "An error occured when sending the message"
+msgstr ""
+
 #: [chatroom]members
 msgid "Members"
 msgstr ""
@@ -581,6 +587,10 @@ msgstr ""
 
 #: [chats]add
 msgid "Chat with a contact"
+msgstr ""
+
+#: [chats]me
+msgid "Me"
 msgstr ""
 
 #: [button]chat
@@ -665,6 +675,10 @@ msgstr ""
 
 #: [communityaffiliation]delete_clean_text
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
+msgstr ""
+
+#: [communityaffiliation]config_error
+msgid "Error during the application of the node configuration"
 msgstr ""
 
 #: [communityaffiliation]owners
@@ -836,6 +850,14 @@ msgstr ""
 msgid "Use dark colors to rest your eyes"
 msgstr ""
 
+#: [config]chatmain
+msgid "Main chat page"
+msgstr ""
+
+#: [config]chatmain_text
+msgid "Make the chat page as the default one"
+msgstr ""
+
 #: [config]mam
 msgid "Archiving preferences"
 msgstr ""
@@ -968,8 +990,8 @@ msgstr ""
 msgid "Last seen"
 msgstr ""
 
-#: [client]title
-msgid "Client Information"
+#: [clients]title
+msgid "Clients information"
 msgstr ""
 
 #: [explore]last_registered
@@ -1042,6 +1064,10 @@ msgstr ""
 
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
+msgstr ""
+
+#: [draw]title
+msgid "Draw"
 msgstr ""
 
 #: [faq]title
@@ -1640,6 +1666,10 @@ msgstr ""
 msgid "Find one by searching for his name or id"
 msgstr ""
 
+#: [search]tags
+msgid "Tags"
+msgstr ""
+
 #: [sendto]attach
 msgid "Attach to a blog publication"
 msgstr ""
@@ -1688,8 +1718,8 @@ msgstr ""
 msgid "No contact specified"
 msgstr ""
 
-#: [upload]title
-msgid "Upload a file"
+#: [upload]title [button]upload
+msgid "Upload"
 msgstr ""
 
 #: [upload]choose
@@ -1941,6 +1971,10 @@ msgstr ""
 msgid "Movim cannot talk with the server, please try again later"
 msgstr ""
 
+#: [error]websocket_connect
+msgid "Reconnection to the server…"
+msgstr ""
+
 #: [error]oops
 msgid "Oops!"
 msgstr ""
@@ -2003,10 +2037,6 @@ msgstr ""
 
 #: [button]clear
 msgid "Clear"
-msgstr ""
-
-#: [button]upload
-msgid "Upload"
 msgstr ""
 
 #: [button]connecting
@@ -2104,6 +2134,10 @@ msgstr ""
 
 #: [client]bot
 msgid "Bot"
+msgstr ""
+
+#: [client]console
+msgid "Console"
 msgstr ""
 
 #: [client]desktop

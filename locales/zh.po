@@ -58,6 +58,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Draw/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Login/locales.ini
@@ -103,7 +105,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-05 11:28+0200\n"
+"POT-Creation-Date: 2019-09-08 00:00+0200\n"
 "PO-Revision-Date: 2019-07-05 10:14+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -548,6 +550,10 @@ msgstr ""
 msgid "Call ended"
 msgstr ""
 
+#: [chat]publish_error
+msgid "An error occured when sending the message"
+msgstr ""
+
 #: [chatroom]members
 msgid "Members"
 msgstr "成员"
@@ -591,6 +597,10 @@ msgstr ""
 #: [chats]add
 msgid "Chat with a contact"
 msgstr "同联系人聊天"
+
+#: [chats]me
+msgid "Me"
+msgstr ""
 
 #: [button]chat
 msgid "Chat"
@@ -674,6 +684,10 @@ msgstr "你将要删除下列的社群。请确认你的操作。"
 
 #: [communityaffiliation]delete_clean_text
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
+msgstr ""
+
+#: [communityaffiliation]config_error
+msgid "Error during the application of the node configuration"
 msgstr ""
 
 #: [communityaffiliation]owners
@@ -845,6 +859,14 @@ msgstr "夜间模式"
 msgid "Use dark colors to rest your eyes"
 msgstr "通过深色来放松你的眼睛"
 
+#: [config]chatmain
+msgid "Main chat page"
+msgstr ""
+
+#: [config]chatmain_text
+msgid "Make the chat page as the default one"
+msgstr ""
+
 #: [config]mam
 msgid "Archiving preferences"
 msgstr "存档选项"
@@ -977,8 +999,9 @@ msgstr "听"
 msgid "Last seen"
 msgstr "最后一次访问"
 
-#: [client]title
-msgid "Client Information"
+#: [clients]title
+#, fuzzy
+msgid "Clients information"
 msgstr "客户端信息"
 
 #: [explore]last_registered
@@ -1052,6 +1075,10 @@ msgstr "邀请"
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
 msgstr "该联系人在你的联系人列表中，但两账户之间没有订阅"
+
+#: [draw]title
+msgid "Draw"
+msgstr ""
 
 #: [faq]title
 msgid "Frequently Asked Questions"
@@ -1649,6 +1676,10 @@ msgstr ""
 msgid "Find one by searching for his name or id"
 msgstr ""
 
+#: [search]tags
+msgid "Tags"
+msgstr ""
+
 #: [sendto]attach
 msgid "Attach to a blog publication"
 msgstr ""
@@ -1697,9 +1728,9 @@ msgstr "该联系人没有公开订阅源"
 msgid "No contact specified"
 msgstr "没有指定联系人"
 
-#: [upload]title
-msgid "Upload a file"
-msgstr "上传一个文件"
+#: [upload]title [button]upload
+msgid "Upload"
+msgstr "上传"
 
 #: [upload]choose
 msgid "Choose a file to upload"
@@ -1950,6 +1981,10 @@ msgstr "糟了！"
 msgid "Movim cannot talk with the server, please try again later"
 msgstr "Movim 无法与服务器通信，请稍后再试"
 
+#: [error]websocket_connect
+msgid "Reconnection to the server…"
+msgstr ""
+
 #: [error]oops
 msgid "Oops!"
 msgstr "糟糕！"
@@ -2013,10 +2048,6 @@ msgstr "保存"
 #: [button]clear
 msgid "Clear"
 msgstr "清除"
-
-#: [button]upload
-msgid "Upload"
-msgstr "上传"
 
 #: [button]connecting
 msgid "Connecting"
@@ -2114,6 +2145,10 @@ msgstr "星期日"
 #: [client]bot
 msgid "Bot"
 msgstr "Bot"
+
+#: [client]console
+msgid "Console"
+msgstr ""
 
 #: [client]desktop
 msgid "Desktop"
@@ -2670,3 +2705,6 @@ msgstr "API 无法连接，请稍后重试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
+
+#~ msgid "Upload a file"
+#~ msgstr "上传一个文件"

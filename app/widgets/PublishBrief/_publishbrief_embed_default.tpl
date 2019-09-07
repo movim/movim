@@ -6,7 +6,14 @@
     <i class="material-icons">camera_alt</i>
 </a>
 <a
-    class="button narrow  flat icon gray"
+    class="button narrow flat icon gray"
+    title="{$c->__('draw.title')}"
+    href="#"
+    onclick="Draw.init()">
+    <i class="material-icons">gesture</i>
+</a>
+<a
+    class="button narrow flat icon gray"
     title="{$c->__('publishbrief.add_link')}"
     href="#"
     onclick="PublishBrief_ajaxLink()">

@@ -54,6 +54,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Draw/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Login/locales.ini
@@ -99,7 +101,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-05 11:28+0200\n"
+"POT-Creation-Date: 2019-09-08 00:00+0200\n"
 "PO-Revision-Date: 2019-07-05 10:14+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Hungarian (http://www.transifex.com/movim/movim/language/hu/)\n"
@@ -544,6 +546,10 @@ msgstr ""
 msgid "Call ended"
 msgstr ""
 
+#: [chat]publish_error
+msgid "An error occured when sending the message"
+msgstr ""
+
 #: [chatroom]members
 msgid "Members"
 msgstr "Tagok"
@@ -587,6 +593,10 @@ msgstr "Indíts új üzenetváltást a %sgombra való kattintással"
 #: [chats]add
 msgid "Chat with a contact"
 msgstr "Beszélgetés egy partnerrel"
+
+#: [chats]me
+msgid "Me"
+msgstr ""
 
 #: [button]chat
 msgid "Chat"
@@ -671,6 +681,10 @@ msgstr "Törölni fogod az alábbi közösséget. Kérlek erősítsd meg szánd�
 #: [communityaffiliation]delete_clean_text
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
 msgstr "Úgy tűnik, ez a közösség már nem létezik. El akarod távolítani a feliratkozásaid közül?"
+
+#: [communityaffiliation]config_error
+msgid "Error during the application of the node configuration"
+msgstr ""
 
 #: [communityaffiliation]owners
 msgid "Owners"
@@ -841,6 +855,14 @@ msgstr "Éjjeli mód"
 msgid "Use dark colors to rest your eyes"
 msgstr "Sötét színek használata, hogy pihenni tudjon a szemed"
 
+#: [config]chatmain
+msgid "Main chat page"
+msgstr ""
+
+#: [config]chatmain_text
+msgid "Make the chat page as the default one"
+msgstr ""
+
 #: [config]mam
 msgid "Archiving preferences"
 msgstr "Archiválási beállítások"
@@ -973,8 +995,9 @@ msgstr "hallgat"
 msgid "Last seen"
 msgstr "Utoljára itt"
 
-#: [client]title
-msgid "Client Information"
+#: [clients]title
+#, fuzzy
+msgid "Clients information"
 msgstr "Kliensinformáció"
 
 #: [explore]last_registered
@@ -1048,6 +1071,10 @@ msgstr "Meghívás"
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
 msgstr "Ez az partner a partnerlistádon van, de nincsenek feliratkozások a két fiók között."
+
+#: [draw]title
+msgid "Draw"
+msgstr ""
 
 #: [faq]title
 msgid "Frequently Asked Questions"
@@ -1645,6 +1672,10 @@ msgstr ""
 msgid "Find one by searching for his name or id"
 msgstr ""
 
+#: [search]tags
+msgid "Tags"
+msgstr ""
+
 #: [sendto]attach
 msgid "Attach to a blog publication"
 msgstr ""
@@ -1693,9 +1724,9 @@ msgstr "A partnernek nincs nyilvános hírfolyama"
 msgid "No contact specified"
 msgstr "Nincs kapcsolat megadva"
 
-#: [upload]title
-msgid "Upload a file"
-msgstr "Fájl feltöltése"
+#: [upload]title [button]upload
+msgid "Upload"
+msgstr "Feltölt"
 
 #: [upload]choose
 msgid "Choose a file to upload"
@@ -1946,6 +1977,10 @@ msgstr "Hupsz!"
 msgid "Movim cannot talk with the server, please try again later"
 msgstr ""
 
+#: [error]websocket_connect
+msgid "Reconnection to the server…"
+msgstr ""
+
 #: [error]oops
 msgid "Oops!"
 msgstr "Hupsz!"
@@ -2009,10 +2044,6 @@ msgstr "Mentés"
 #: [button]clear
 msgid "Clear"
 msgstr "Törlés"
-
-#: [button]upload
-msgid "Upload"
-msgstr "Feltölt"
 
 #: [button]connecting
 msgid "Connecting"
@@ -2110,6 +2141,10 @@ msgstr "Vasárnap"
 #: [client]bot
 msgid "Bot"
 msgstr "Robot"
+
+#: [client]console
+msgid "Console"
+msgstr ""
 
 #: [client]desktop
 msgid "Desktop"
@@ -2666,3 +2701,6 @@ msgstr "Az API nem elérhető, próbáld újra később"
 #: [field]type_here
 msgid "Type here"
 msgstr "Ide írj"
+
+#~ msgid "Upload a file"
+#~ msgstr "Fájl feltöltése"

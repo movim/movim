@@ -54,6 +54,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Draw/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Login/locales.ini
@@ -99,7 +101,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-05 11:28+0200\n"
+"POT-Creation-Date: 2019-09-08 00:00+0200\n"
 "PO-Revision-Date: 2019-07-05 10:14+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://www.transifex.com/movim/movim/language/nb_NO/)\n"
@@ -544,6 +546,10 @@ msgstr ""
 msgid "Call ended"
 msgstr ""
 
+#: [chat]publish_error
+msgid "An error occured when sending the message"
+msgstr ""
+
 #: [chatroom]members
 msgid "Members"
 msgstr "Medlemer"
@@ -587,6 +593,10 @@ msgstr "Begynn en ny samtale ved å klikke knappen %s."
 #: [chats]add
 msgid "Chat with a contact"
 msgstr "Prat med en kontakt"
+
+#: [chats]me
+msgid "Me"
+msgstr ""
 
 #: [button]chat
 msgid "Chat"
@@ -670,6 +680,10 @@ msgstr "Du er igang med å slette følgende fellesskap.  Vær så snill å bekre
 
 #: [communityaffiliation]delete_clean_text
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
+msgstr ""
+
+#: [communityaffiliation]config_error
+msgid "Error during the application of the node configuration"
 msgstr ""
 
 #: [communityaffiliation]owners
@@ -841,6 +855,14 @@ msgstr "Nattmodus"
 msgid "Use dark colors to rest your eyes"
 msgstr "Bruk mørke farger for å avspenne øyne dine"
 
+#: [config]chatmain
+msgid "Main chat page"
+msgstr ""
+
+#: [config]chatmain_text
+msgid "Make the chat page as the default one"
+msgstr ""
+
 #: [config]mam
 msgid "Archiving preferences"
 msgstr "Arkivinstillinger"
@@ -973,8 +995,9 @@ msgstr "Lytter"
 msgid "Last seen"
 msgstr "Sist sett"
 
-#: [client]title
-msgid "Client Information"
+#: [clients]title
+#, fuzzy
+msgid "Clients information"
 msgstr "Informasjoner om klienten"
 
 #: [explore]last_registered
@@ -1047,6 +1070,10 @@ msgstr "Inviter"
 
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
+msgstr ""
+
+#: [draw]title
+msgid "Draw"
 msgstr ""
 
 #: [faq]title
@@ -1645,6 +1672,10 @@ msgstr ""
 msgid "Find one by searching for his name or id"
 msgstr ""
 
+#: [search]tags
+msgid "Tags"
+msgstr ""
+
 #: [sendto]attach
 msgid "Attach to a blog publication"
 msgstr ""
@@ -1693,9 +1724,9 @@ msgstr "Denne kontakten har ingen offentlig strøm"
 msgid "No contact specified"
 msgstr "Ingen kontakt spesifisert"
 
-#: [upload]title
-msgid "Upload a file"
-msgstr "Last opp fil"
+#: [upload]title [button]upload
+msgid "Upload"
+msgstr "Last opp"
 
 #: [upload]choose
 msgid "Choose a file to upload"
@@ -1946,6 +1977,10 @@ msgstr "Oida!"
 msgid "Movim cannot talk with the server, please try again later"
 msgstr "Movim får ikke kontakt med tjeneren, prøv igjen senere"
 
+#: [error]websocket_connect
+msgid "Reconnection to the server…"
+msgstr ""
+
 #: [error]oops
 msgid "Oops!"
 msgstr "Uffda!"
@@ -2009,10 +2044,6 @@ msgstr "Lagre"
 #: [button]clear
 msgid "Clear"
 msgstr "Tøm"
-
-#: [button]upload
-msgid "Upload"
-msgstr "Last opp"
 
 #: [button]connecting
 msgid "Connecting"
@@ -2110,6 +2141,10 @@ msgstr "Søndag"
 #: [client]bot
 msgid "Bot"
 msgstr "Bot"
+
+#: [client]console
+msgid "Console"
+msgstr ""
 
 #: [client]desktop
 msgid "Desktop"
@@ -2666,3 +2701,6 @@ msgstr "API-et kan ikke nås, prøv igjen senere"
 #: [field]type_here
 msgid "Type here"
 msgstr "Skriv her"
+
+#~ msgid "Upload a file"
+#~ msgstr "Last opp fil"

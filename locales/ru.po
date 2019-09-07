@@ -62,6 +62,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Draw/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Login/locales.ini
@@ -107,7 +109,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-05 11:28+0200\n"
+"POT-Creation-Date: 2019-09-08 00:00+0200\n"
 "PO-Revision-Date: 2019-07-05 10:14+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Russian (http://www.transifex.com/movim/movim/language/ru/)\n"
@@ -552,6 +554,10 @@ msgstr ""
 msgid "Call ended"
 msgstr ""
 
+#: [chat]publish_error
+msgid "An error occured when sending the message"
+msgstr ""
+
 #: [chatroom]members
 msgid "Members"
 msgstr "Участники"
@@ -595,6 +601,10 @@ msgstr ""
 #: [chats]add
 msgid "Chat with a contact"
 msgstr "Пообщаться с контактом"
+
+#: [chats]me
+msgid "Me"
+msgstr ""
 
 #: [button]chat
 msgid "Chat"
@@ -678,6 +688,10 @@ msgstr "Вы собираетесь удалить это сообщество. 
 
 #: [communityaffiliation]delete_clean_text
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
+msgstr ""
+
+#: [communityaffiliation]config_error
+msgid "Error during the application of the node configuration"
 msgstr ""
 
 #: [communityaffiliation]owners
@@ -849,6 +863,14 @@ msgstr "Ночной режим"
 msgid "Use dark colors to rest your eyes"
 msgstr "Тёмные цвета дадут отдохнуть вашим глазам"
 
+#: [config]chatmain
+msgid "Main chat page"
+msgstr ""
+
+#: [config]chatmain_text
+msgid "Make the chat page as the default one"
+msgstr ""
+
 #: [config]mam
 msgid "Archiving preferences"
 msgstr ""
@@ -981,8 +1003,9 @@ msgstr "Слушаю"
 msgid "Last seen"
 msgstr "Последнее посещение"
 
-#: [client]title
-msgid "Client Information"
+#: [clients]title
+#, fuzzy
+msgid "Clients information"
 msgstr "Информация о клиенте"
 
 #: [explore]last_registered
@@ -1056,6 +1079,10 @@ msgstr "Пригласить"
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
 msgstr "Контакт находится в Вашем контакт-листе, однако он не авторизован между аккаунтами"
+
+#: [draw]title
+msgid "Draw"
+msgstr ""
 
 #: [faq]title
 msgid "Frequently Asked Questions"
@@ -1653,6 +1680,10 @@ msgstr ""
 msgid "Find one by searching for his name or id"
 msgstr ""
 
+#: [search]tags
+msgid "Tags"
+msgstr ""
+
 #: [sendto]attach
 msgid "Attach to a blog publication"
 msgstr ""
@@ -1701,9 +1732,9 @@ msgstr "Нет публичной ленты для этого контакта"
 msgid "No contact specified"
 msgstr "Контакт не задан"
 
-#: [upload]title
-msgid "Upload a file"
-msgstr "Загрузить файл"
+#: [upload]title [button]upload
+msgid "Upload"
+msgstr "Загрузить"
 
 #: [upload]choose
 msgid "Choose a file to upload"
@@ -1954,6 +1985,10 @@ msgstr "Ой-ой!"
 msgid "Movim cannot talk with the server, please try again later"
 msgstr "Movim не может установить связь с сервером, зайдите позже"
 
+#: [error]websocket_connect
+msgid "Reconnection to the server…"
+msgstr ""
+
 #: [error]oops
 msgid "Oops!"
 msgstr "Упс!"
@@ -2017,10 +2052,6 @@ msgstr "Сохранить"
 #: [button]clear
 msgid "Clear"
 msgstr "Очистить"
-
-#: [button]upload
-msgid "Upload"
-msgstr "Загрузить"
 
 #: [button]connecting
 msgid "Connecting"
@@ -2118,6 +2149,10 @@ msgstr "Воскресенье"
 #: [client]bot
 msgid "Bot"
 msgstr "Бот"
+
+#: [client]console
+msgid "Console"
+msgstr ""
 
 #: [client]desktop
 msgid "Desktop"
@@ -2674,3 +2709,6 @@ msgstr "API недоступен, попробуйте позже"
 #: [field]type_here
 msgid "Type here"
 msgstr "Введите здесь"
+
+#~ msgid "Upload a file"
+#~ msgstr "Загрузить файл"

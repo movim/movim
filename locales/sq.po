@@ -51,6 +51,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Draw/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Login/locales.ini
@@ -96,7 +98,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-05 11:28+0200\n"
+"POT-Creation-Date: 2019-09-08 00:00+0200\n"
 "PO-Revision-Date: 2019-07-05 10:14+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Albanian (http://www.transifex.com/movim/movim/language/sq/)\n"
@@ -541,6 +543,10 @@ msgstr "Thirrja filloi"
 msgid "Call ended"
 msgstr "Thirrja përfundoi"
 
+#: [chat]publish_error
+msgid "An error occured when sending the message"
+msgstr ""
+
 #: [chatroom]members
 msgid "Members"
 msgstr "Anëtarë"
@@ -584,6 +590,10 @@ msgstr "Filloni një bisedë të re duke klikuar mbi butonin %s."
 #: [chats]add
 msgid "Chat with a contact"
 msgstr "Fjalosuni me një kontakt"
+
+#: [chats]me
+msgid "Me"
+msgstr ""
 
 #: [button]chat
 msgid "Chat"
@@ -668,6 +678,10 @@ msgstr "Ju ndan një hap nga fshirja e bashkësisë vijuese. Ju lutemi, ripohoni
 #: [communityaffiliation]delete_clean_text
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
 msgstr "Duket se ajo bashkësi s’ekziston më. Doni të hiqet nga pajtimet tuaja?"
+
+#: [communityaffiliation]config_error
+msgid "Error during the application of the node configuration"
+msgstr ""
 
 #: [communityaffiliation]owners
 msgid "Owners"
@@ -838,6 +852,14 @@ msgstr "Mënyra Mbrëmje"
 msgid "Use dark colors to rest your eyes"
 msgstr "Përdorni ngjyra të errëta për të çlodhur sytë"
 
+#: [config]chatmain
+msgid "Main chat page"
+msgstr ""
+
+#: [config]chatmain_text
+msgid "Make the chat page as the default one"
+msgstr ""
+
 #: [config]mam
 msgid "Archiving preferences"
 msgstr "Parapëlqime arkivimi"
@@ -970,8 +992,9 @@ msgstr "Duke Dëgjuar"
 msgid "Last seen"
 msgstr "Parë së fundi"
 
-#: [client]title
-msgid "Client Information"
+#: [clients]title
+#, fuzzy
+msgid "Clients information"
 msgstr "Të dhëna Klienti"
 
 #: [explore]last_registered
@@ -1045,6 +1068,10 @@ msgstr "Ftoje"
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
 msgstr "Ky kontakt gjendet në listën tuaj të kontakteve, por nuk ka pajtim mes dy llogarive"
+
+#: [draw]title
+msgid "Draw"
+msgstr ""
 
 #: [faq]title
 msgid "Frequently Asked Questions"
@@ -1642,6 +1669,10 @@ msgstr "Ende pa kontakte?"
 msgid "Find one by searching for his name or id"
 msgstr "Gjeni një të tillë duke kërkuar për emër apo ID të tij"
 
+#: [search]tags
+msgid "Tags"
+msgstr ""
+
 #: [sendto]attach
 msgid "Attach to a blog publication"
 msgstr ""
@@ -1690,9 +1721,9 @@ msgstr "S’ka prurje publike për këtë kontakt"
 msgid "No contact specified"
 msgstr "S’u përcaktua kontakt"
 
-#: [upload]title
-msgid "Upload a file"
-msgstr "Ngarkoni një kartelë"
+#: [upload]title [button]upload
+msgid "Upload"
+msgstr "Ngarkoje"
 
 #: [upload]choose
 msgid "Choose a file to upload"
@@ -1943,6 +1974,10 @@ msgstr "Ooh!"
 msgid "Movim cannot talk with the server, please try again later"
 msgstr "Movim-i s’komunikon dot me shërbyesin, ju lutemi, riprovoni më vonë"
 
+#: [error]websocket_connect
+msgid "Reconnection to the server…"
+msgstr ""
+
 #: [error]oops
 msgid "Oops!"
 msgstr "Oooh!"
@@ -2006,10 +2041,6 @@ msgstr "Ruaje"
 #: [button]clear
 msgid "Clear"
 msgstr "Pastroje"
-
-#: [button]upload
-msgid "Upload"
-msgstr "Ngarkoje"
 
 #: [button]connecting
 msgid "Connecting"
@@ -2107,6 +2138,10 @@ msgstr "E diel"
 #: [client]bot
 msgid "Bot"
 msgstr "Robot"
+
+#: [client]console
+msgid "Console"
+msgstr ""
 
 #: [client]desktop
 msgid "Desktop"
@@ -2663,3 +2698,6 @@ msgstr "API nuk kapet dot, riprovoni më vonë"
 #: [field]type_here
 msgid "Type here"
 msgstr "Shtypni këtu"
+
+#~ msgid "Upload a file"
+#~ msgstr "Ngarkoni një kartelë"

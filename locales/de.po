@@ -66,6 +66,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Draw/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Login/locales.ini
@@ -111,7 +113,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-05 11:28+0200\n"
+"POT-Creation-Date: 2019-09-08 00:00+0200\n"
 "PO-Revision-Date: 2019-07-05 10:14+0000\n"
 "Last-Translator: Tom Teichler <tom@dummerdelfin.de>\n"
 "Language-Team: German (http://www.transifex.com/movim/movim/language/de/)\n"
@@ -556,6 +558,10 @@ msgstr "Anruf begonnen"
 msgid "Call ended"
 msgstr "Anruf beendet"
 
+#: [chat]publish_error
+msgid "An error occured when sending the message"
+msgstr ""
+
 #: [chatroom]members
 msgid "Members"
 msgstr "Mitglieder"
@@ -599,6 +605,10 @@ msgstr "Beginne eine neue Unterhaltung durch Klicken auf die %sSchaltfläche."
 #: [chats]add
 msgid "Chat with a contact"
 msgstr "Mit einem Kontakt chatten"
+
+#: [chats]me
+msgid "Me"
+msgstr ""
 
 #: [button]chat
 msgid "Chat"
@@ -683,6 +693,10 @@ msgstr "Sie werden die folgende Gemeinschaft löschen. Bitte bestätigen Sie Ihr
 #: [communityaffiliation]delete_clean_text
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
 msgstr "Anscheinend existiert diese Gemeinschaft nicht mehr. Möchten Sie das Abonnement löschen?"
+
+#: [communityaffiliation]config_error
+msgid "Error during the application of the node configuration"
+msgstr ""
 
 #: [communityaffiliation]owners
 msgid "Owners"
@@ -853,6 +867,14 @@ msgstr "Nachtmodus"
 msgid "Use dark colors to rest your eyes"
 msgstr "Dunkle Farben benutzen, um die Augen zu entspannen"
 
+#: [config]chatmain
+msgid "Main chat page"
+msgstr ""
+
+#: [config]chatmain_text
+msgid "Make the chat page as the default one"
+msgstr ""
+
 #: [config]mam
 msgid "Archiving preferences"
 msgstr "Archivierungseinstellungen"
@@ -985,8 +1007,9 @@ msgstr "Hört zu"
 msgid "Last seen"
 msgstr "Zuletzt gesehen"
 
-#: [client]title
-msgid "Client Information"
+#: [clients]title
+#, fuzzy
+msgid "Clients information"
 msgstr "Client-Informationen"
 
 #: [explore]last_registered
@@ -1060,6 +1083,10 @@ msgstr "Einladen"
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
 msgstr "Der Kontakt ist in Ihrer Kontaktliste, aber es gibt keine Verbindung zwischen den beiden Konten"
+
+#: [draw]title
+msgid "Draw"
+msgstr ""
 
 #: [faq]title
 msgid "Frequently Asked Questions"
@@ -1657,6 +1684,10 @@ msgstr "Noch keine Kontakte?"
 msgid "Find one by searching for his name or id"
 msgstr "Finde jemanden, indem du seinen Namen oder seine ID suchst"
 
+#: [search]tags
+msgid "Tags"
+msgstr ""
+
 #: [sendto]attach
 msgid "Attach to a blog publication"
 msgstr "An einen Blogbeitrag anheften"
@@ -1705,9 +1736,9 @@ msgstr "Kein öffentlicher Newsfeed für diesen Kontakt"
 msgid "No contact specified"
 msgstr "Keinen Kontakt angegeben"
 
-#: [upload]title
-msgid "Upload a file"
-msgstr "Eine Datei hochladen"
+#: [upload]title [button]upload
+msgid "Upload"
+msgstr "Hochladen"
 
 #: [upload]choose
 msgid "Choose a file to upload"
@@ -1958,6 +1989,10 @@ msgstr "Huch!"
 msgid "Movim cannot talk with the server, please try again later"
 msgstr "Movim kann den Server nicht erreichen, bitte versuchen Sie es später nochmal"
 
+#: [error]websocket_connect
+msgid "Reconnection to the server…"
+msgstr ""
+
 #: [error]oops
 msgid "Oops!"
 msgstr "Huch!"
@@ -2021,10 +2056,6 @@ msgstr "Speichern"
 #: [button]clear
 msgid "Clear"
 msgstr "Leeren"
-
-#: [button]upload
-msgid "Upload"
-msgstr "Hochladen"
 
 #: [button]connecting
 msgid "Connecting"
@@ -2122,6 +2153,10 @@ msgstr "Sonntag"
 #: [client]bot
 msgid "Bot"
 msgstr "Bot"
+
+#: [client]console
+msgid "Console"
+msgstr ""
 
 #: [client]desktop
 msgid "Desktop"
@@ -2678,3 +2713,6 @@ msgstr "Die API ist nicht erreichbar, bitte später erneut versuchen"
 #: [field]type_here
 msgid "Type here"
 msgstr "Hier schreiben"
+
+#~ msgid "Upload a file"
+#~ msgstr "Eine Datei hochladen"

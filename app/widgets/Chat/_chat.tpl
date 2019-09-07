@@ -242,13 +242,13 @@
                         <span class="button action control icon middle bubble color green">
                             <i class="material-icons">gesture</i>
                         </span>
-                        <p class="normal line">Draw</p>
+                        <p class="normal line">{$c->__('draw.title')}</p>
                     </li>
                     <li onclick="Chat.toggleAttach(); Upload_ajaxRequest()">
                         <span class="button action control icon bubble color purple">
                             <i class="material-icons">attach_file</i>
                         </span>
-                        <p class="normal line">{$c->__('publishbrief.attach')}</p>
+                        <p class="normal line">{$c->__('upload.title')}</p>
                     </li>
                 </ul>
             {/if}

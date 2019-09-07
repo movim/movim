@@ -8,7 +8,6 @@
 <?php $this->widget('SendTo');?>
 
 <?php $this->widget('PostActions');?>
-<?php $this->widget('Snap');?>
 
 <nav class="color dark">
     <?php $this->widget('Presence');?>
@@ -26,3 +25,6 @@
     <?php $this->widget('Menu');?>
     </div>
 </main>
+
+<?php $this->widget('Snap');?>
+<?php $this->widget('Draw');?>

@@ -49,6 +49,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Draw/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Login/locales.ini
@@ -94,7 +96,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-05 11:28+0200\n"
+"POT-Creation-Date: 2019-09-08 00:00+0200\n"
 "PO-Revision-Date: 2019-07-05 10:14+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: English (http://www.transifex.com/movim/movim/language/en/)\n"
@@ -539,6 +541,10 @@ msgstr "Call started"
 msgid "Call ended"
 msgstr "Call ended"
 
+#: [chat]publish_error
+msgid "An error occured when sending the message"
+msgstr ""
+
 #: [chatroom]members
 msgid "Members"
 msgstr "Members"
@@ -582,6 +588,10 @@ msgstr "Start a new conversation by clicking on the %s button."
 #: [chats]add
 msgid "Chat with a contact"
 msgstr "Chat with a contact"
+
+#: [chats]me
+msgid "Me"
+msgstr ""
 
 #: [button]chat
 msgid "Chat"
@@ -666,6 +676,10 @@ msgstr "You are going to delete the following community. Please confirm your act
 #: [communityaffiliation]delete_clean_text
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
 msgstr "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
+
+#: [communityaffiliation]config_error
+msgid "Error during the application of the node configuration"
+msgstr ""
 
 #: [communityaffiliation]owners
 msgid "Owners"
@@ -836,6 +850,14 @@ msgstr "Night Mode"
 msgid "Use dark colors to rest your eyes"
 msgstr "Use dark colors to rest your eyes"
 
+#: [config]chatmain
+msgid "Main chat page"
+msgstr ""
+
+#: [config]chatmain_text
+msgid "Make the chat page as the default one"
+msgstr ""
+
 #: [config]mam
 msgid "Archiving preferences"
 msgstr "Archiving preferences"
@@ -968,8 +990,9 @@ msgstr "Listening"
 msgid "Last seen"
 msgstr "Last seen"
 
-#: [client]title
-msgid "Client Information"
+#: [clients]title
+#, fuzzy
+msgid "Clients information"
 msgstr "Client Information"
 
 #: [explore]last_registered
@@ -1043,6 +1066,10 @@ msgstr "Invite"
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
 msgstr "This contact is in your contact list but there is no subscription between the two accounts"
+
+#: [draw]title
+msgid "Draw"
+msgstr ""
 
 #: [faq]title
 msgid "Frequently Asked Questions"
@@ -1640,6 +1667,10 @@ msgstr "No contacts yet?"
 msgid "Find one by searching for his name or id"
 msgstr "Find one by searching for his name or id"
 
+#: [search]tags
+msgid "Tags"
+msgstr ""
+
 #: [sendto]attach
 msgid "Attach to a blog publication"
 msgstr "Attach to a blog publication"
@@ -1688,9 +1719,9 @@ msgstr "No public feed for this contact"
 msgid "No contact specified"
 msgstr "No contact specified"
 
-#: [upload]title
-msgid "Upload a file"
-msgstr "Upload a file"
+#: [upload]title [button]upload
+msgid "Upload"
+msgstr "Upload"
 
 #: [upload]choose
 msgid "Choose a file to upload"
@@ -1941,6 +1972,10 @@ msgstr "Whoops!"
 msgid "Movim cannot talk with the server, please try again later"
 msgstr "Movim cannot talk with the server, please try again later"
 
+#: [error]websocket_connect
+msgid "Reconnection to the server…"
+msgstr ""
+
 #: [error]oops
 msgid "Oops!"
 msgstr "Oops!"
@@ -2004,10 +2039,6 @@ msgstr "Save"
 #: [button]clear
 msgid "Clear"
 msgstr "Clear"
-
-#: [button]upload
-msgid "Upload"
-msgstr "Upload"
 
 #: [button]connecting
 msgid "Connecting"
@@ -2105,6 +2136,10 @@ msgstr "Sunday"
 #: [client]bot
 msgid "Bot"
 msgstr "Bot"
+
+#: [client]console
+msgid "Console"
+msgstr ""
 
 #: [client]desktop
 msgid "Desktop"
@@ -2661,3 +2696,6 @@ msgstr "The API is not reachable, try again later"
 #: [field]type_here
 msgid "Type here"
 msgstr "Type here"
+
+#~ msgid "Upload a file"
+#~ msgstr "Upload a file"

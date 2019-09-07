@@ -3,6 +3,7 @@
 # Baudouin Feildel <baudouin_transifex@feildel.fr>, 2018
 # Cypouz, 2015
 # Éfrit, 2015
+# François D. <francois.drouhard@gmail.com>, 2019
 # Jaussoin Timothée <edhelas@movim.eu>, 2015-2019
 # Maxime Buquet <tidusx62@gmail.com>, 2015
 # Raphael J <contact@raphael-jolivet.name>, 2018
@@ -57,6 +58,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Draw/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Login/locales.ini
@@ -102,8 +105,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-05 11:28+0200\n"
-"PO-Revision-Date: 2019-07-05 10:14+0000\n"
+"POT-Creation-Date: 2019-09-08 00:00+0200\n"
+"PO-Revision-Date: 2019-09-07 22:04+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: French (France) (http://www.transifex.com/movim/movim/language/fr_FR/)\n"
 "Language: fr_FR\n"
@@ -111,7 +114,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Translate Toolkit 2.3.1\n"
+"X-Generator: Translate Toolkit 2.4.0\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -171,7 +174,7 @@ msgstr "Veuillez entrer un mot de passe valide (6 caractères minimum)"
 
 #: [account]password_not_same
 msgid "The provided passwords are not the same"
-msgstr "Les mot de passes renseignés ne sont pas identiques"
+msgstr "Les mots de passe renseignés ne sont pas identiques"
 
 #: [account]delete
 msgid "Delete your account"
@@ -187,7 +190,7 @@ msgstr "Entrez votre identifiant complet"
 
 #: [account]delete_text_error
 msgid "Please provide a valid username."
-msgstr "Veuillez entre un identifiant valide."
+msgstr "Veuillez entrer un identifiant valide."
 
 #: [account]gateway_title
 msgid "Gateways"
@@ -449,7 +452,7 @@ msgstr "Avatar non mis à jour"
 
 #: [avatar]missing
 msgid "No avatar defined yet"
-msgstr "Aucun avatar définit pour le moment"
+msgstr "Aucun avatar défini pour le moment"
 
 #: [blog]title [feed]title
 msgid "%s’s feed"
@@ -547,6 +550,10 @@ msgstr "Appel entrant"
 msgid "Call ended"
 msgstr "Fin de l'appel"
 
+#: [chat]publish_error
+msgid "An error occured when sending the message"
+msgstr "Une erreur s'est produite lors de l'envoi du message"
+
 #: [chatroom]members
 msgid "Members"
 msgstr "Membres"
@@ -591,6 +598,10 @@ msgstr "Commencez une nouvelle conversation en cliquant sur le bouton %s"
 msgid "Chat with a contact"
 msgstr "Discuter avec un contact"
 
+#: [chats]me
+msgid "Me"
+msgstr "Moi"
+
 #: [button]chat
 msgid "Chat"
 msgstr "Clavardage"
@@ -613,7 +624,7 @@ msgstr "Rechercher un nouveau serveur"
 
 #: [communities]servers
 msgid "Communities servers"
-msgstr "Serveurs de Communautés"
+msgstr "Serveurs de communautés"
 
 #: [communities]disco
 msgid "Communities server discovered"
@@ -633,7 +644,7 @@ msgstr "Communauté créée avec succès"
 
 #: [communitiesserver]empty_server
 msgid "There is no Communities yet on this server."
-msgstr "Il n'y a pas de Communautés pour le moment sur ce serveur"
+msgstr "Il n'y a pas de communautés pour le moment sur ce serveur"
 
 #: [communitiesserver]add
 msgid "Create a new community on %s"
@@ -641,7 +652,7 @@ msgstr "Créer une nouvelle communauté sur %s "
 
 #: [communitiesserver]name
 msgid "Community name"
-msgstr "Nom de la Communauté"
+msgstr "Nom de la communauté"
 
 #: [communitiesserver]name_example
 msgid "My Little Pony - Fan Club"
@@ -674,6 +685,10 @@ msgstr "Vous allez supprimer la communauté suivante. Êtes-vous sûr ?"
 #: [communityaffiliation]delete_clean_text
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
 msgstr "Il semblerait que cette communauté n'existe plus. Souhaitez-vous la supprimer de vos souscriptions ?"
+
+#: [communityaffiliation]config_error
+msgid "Error during the application of the node configuration"
+msgstr "Erreur lors de la mise en place de la configuration du nœud"
 
 #: [communityaffiliation]owners
 msgid "Owners"
@@ -844,6 +859,14 @@ msgstr "Mode Nuit"
 msgid "Use dark colors to rest your eyes"
 msgstr "Des couleurs sombres pour reposer vos yeux"
 
+#: [config]chatmain
+msgid "Main chat page"
+msgstr "Page chat principale"
+
+#: [config]chatmain_text
+msgid "Make the chat page as the default one"
+msgstr "Ouvrir la partie chat par défaut lors du lancement"
+
 #: [config]mam
 msgid "Archiving preferences"
 msgstr "Paramètres d'archivage"
@@ -976,9 +999,9 @@ msgstr "En écoute"
 msgid "Last seen"
 msgstr "Dernière apparition"
 
-#: [client]title
-msgid "Client Information"
-msgstr "Informations sur le Client"
+#: [clients]title
+msgid "Clients information"
+msgstr "Informations des clients"
 
 #: [explore]last_registered
 msgid "Last registered"
@@ -1010,11 +1033,11 @@ msgstr "%s ans"
 
 #: [blog]last
 msgid "Last public post"
-msgstr "Derniers billets public"
+msgstr "Derniers billets publics"
 
 #: [blog]visit
 msgid "Visit the blog to see all the public posts"
-msgstr "Visiter le blog pour voir tous les billets publiques"
+msgstr "Visiter le blog pour voir tous les billets publics"
 
 #: [subscription]to
 msgid "You can see this contact status"
@@ -1052,17 +1075,21 @@ msgstr "Inviter"
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
 msgstr "Ce contact est présent dans votre liste mais il n'y a aucune souscriptions entre vos deux comptes"
 
+#: [draw]title
+msgid "Draw"
+msgstr "Dessiner"
+
 #: [faq]title
 msgid "Frequently Asked Questions"
 msgstr "Foire aux questions"
 
 #: [faq]permission_title
 msgid "What does the permission setting do?"
-msgstr "Quel est l'utilité du paramètre de permission ?"
+msgstr "Quelle est l'utilité du paramètre de permission ?"
 
 #: [faq]permission_text
 msgid "By default the content is only available to your contacts. You can make your profile and publications public by enabling the related setting."
-msgstr "Le contenu que vous publiez et, par défaut, uniquement disponible pour vos contacts. Vous pouvez choisir de partager publiquement votre profil et vos publications en activant ce paramètre."
+msgstr "Le contenu que vous publiez est, par défaut, uniquement disponible pour vos contacts. Vous pouvez choisir de partager publiquement votre profil et vos publications en activant ce paramètre."
 
 #: [faq]permission_community_title
 msgid "How does it applies on Communities posts?"
@@ -1070,7 +1097,7 @@ msgstr "Comment ce paramètre s'applique t'il aux publications dans les Communau
 
 #: [faq]permission_community_text
 msgid "Similary to your blog publications except that, by default, the posts are only available to the members or subscribers of the Community (except if you explicitly open all the Community content)"
-msgstr "Le comportement est similaire aux articles publiés sur votre blog à l'exception que les articles publiés sont accessibles aux membres ou souscrit de la Communauté en question (sauf si vous souhaitez ouvrir totalement le contenu de la Communauté)."
+msgstr "Le comportement est similaire aux articles publiés sur votre blog à l'exception que les articles publiés sont accessibles aux membres ou souscripteurs de la Communauté en question (sauf si vous souhaitez ouvrir totalement le contenu de la Communauté)."
 
 #: [faq]chatrooms_title
 msgid "Where can I find a list of chatrooms?"
@@ -1222,7 +1249,7 @@ msgstr "Aucune actualité… pour le moment"
 
 #: [menu]empty
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
-msgstr "Bienvenue sur votre flux d’actualité, ici vous verrez toutes les publications des communautés auxquelles vous vous êtes abonnées ainsi que celles de vos contacts."
+msgstr "Bienvenue sur votre flux d’actualité, ici vous verrez toutes les publications des communautés auxquelles vous vous êtes abonné ainsi que celles de vos contacts."
 
 #: [menu]all
 msgid "All"
@@ -1302,7 +1329,7 @@ msgstr "Contenu"
 
 #: [post]published
 msgid "Post published"
-msgstr "Bilet publié"
+msgstr "Billet publié"
 
 #: [post]deleted
 msgid "Post deleted"
@@ -1434,7 +1461,7 @@ msgstr "Toutes les principales fonctionnalités de Movim sont disponibles à cet
 
 #: [hello]profile_title
 msgid "Looks like you didn’t complete your profile yet"
-msgstr "Il semblerait que vous n'ayez pas encore complété vôtre profil"
+msgstr "Il semblerait que vous n'ayez pas encore complété votre profil"
 
 #: [hello]profile_paragraph
 msgid "You can go in the Configuration page to describe yourself and put a nice picture"
@@ -1522,7 +1549,7 @@ msgstr "Éditer un salon de discussion"
 
 #: [rooms]empty_text1
 msgid "You don’t have any chatroom yet."
-msgstr "Vous n'avez pas encore de salon de discussions."
+msgstr "Vous n'avez pas encore de salon de discussion."
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
@@ -1626,7 +1653,7 @@ msgstr "Publique"
 
 #: [room]public_muc_text
 msgid "The participants of this chatroom can see each other's profile"
-msgstr "Les participants de ce salon peuvent voir leurs profiles réciproquement"
+msgstr "Les participants de ce salon peuvent voir leurs profils réciproquement"
 
 #: [search]keyword
 msgid "What are you looking for?"
@@ -1647,6 +1674,10 @@ msgstr "Pas encore de contacts ?"
 #: [search]no_contacts_text
 msgid "Find one by searching for his name or id"
 msgstr "Trouvez-en un en saisissant son nom ou son identifiant"
+
+#: [search]tags
+msgid "Tags"
+msgstr "Étiquettes"
 
 #: [sendto]attach
 msgid "Attach to a blog publication"
@@ -1696,9 +1727,9 @@ msgstr "Pas de flux public pour ce contact"
 msgid "No contact specified"
 msgstr "Aucun contact indiqué"
 
-#: [upload]title
-msgid "Upload a file"
-msgstr "Téléverser un fichier"
+#: [upload]title [button]upload
+msgid "Upload"
+msgstr "Téléverser"
 
 #: [upload]choose
 msgid "Choose a file to upload"
@@ -1794,7 +1825,7 @@ msgstr "Movim fonctionne actuellement en mode dégradé"
 
 #: [degraded]text_1
 msgid "Your server doesn’t support XMPP Pubsub persistence."
-msgstr "Vôtre serveur ne supporte pas la persistance XMPP Pubsub."
+msgstr "Votre serveur ne supporte pas la persistance XMPP Pubsub."
 
 #: [degraded]text_2
 msgid "The communities, news feed and profile have been disabled for the moment."
@@ -1802,7 +1833,7 @@ msgstr "Les communautés, fil d'actualités et profils ont été désactivés po
 
 #: [degraded]text_3
 msgid "Please contact your server administrator to see if this feature can be enabled."
-msgstr "Merci de contacter l'administrateur de vôtre serveur pour vérifier si cette fonctionnalité peut être activée."
+msgstr "Merci de contacter l'administrateur de votre serveur pour vérifier si cette fonctionnalité peut être activée."
 
 #: [visio]calling
 msgid "…is calling you"
@@ -1949,6 +1980,10 @@ msgstr "Oups !"
 msgid "Movim cannot talk with the server, please try again later"
 msgstr "Movim ne peut pas communiquer avec le serveur, veuillez réessayer plus tard"
 
+#: [error]websocket_connect
+msgid "Reconnection to the server…"
+msgstr "Reconnexion au serveur…"
+
 #: [error]oops
 msgid "Oops!"
 msgstr "Oups !"
@@ -2012,10 +2047,6 @@ msgstr "Sauvegarder"
 #: [button]clear
 msgid "Clear"
 msgstr "Vider"
-
-#: [button]upload
-msgid "Upload"
-msgstr "Téléverser"
 
 #: [button]connecting
 msgid "Connecting"
@@ -2113,6 +2144,10 @@ msgstr "Dimanche"
 #: [client]bot
 msgid "Bot"
 msgstr "Robot"
+
+#: [client]console
+msgid "Console"
+msgstr "Console"
 
 #: [client]desktop
 msgid "Desktop"
@@ -2280,7 +2315,7 @@ msgstr "charmeur(se)"
 
 #: [mood]frustrated
 msgid "frustrated"
-msgstr "frustré"
+msgstr "frustré(e)"
 
 #: [mood]grateful
 msgid "grateful"

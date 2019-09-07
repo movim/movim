@@ -59,6 +59,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Draw/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Login/locales.ini
@@ -104,7 +106,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-05 11:28+0200\n"
+"POT-Creation-Date: 2019-09-08 00:00+0200\n"
 "PO-Revision-Date: 2019-07-05 10:14+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Dutch (http://www.transifex.com/movim/movim/language/nl/)\n"
@@ -549,6 +551,10 @@ msgstr ""
 msgid "Call ended"
 msgstr ""
 
+#: [chat]publish_error
+msgid "An error occured when sending the message"
+msgstr ""
+
 #: [chatroom]members
 msgid "Members"
 msgstr "Leden"
@@ -592,6 +598,10 @@ msgstr "Start een nieuwe conversatie door op de %s knop te klikken."
 #: [chats]add
 msgid "Chat with a contact"
 msgstr "Chat met een contactpersoon"
+
+#: [chats]me
+msgid "Me"
+msgstr ""
 
 #: [button]chat
 msgid "Chat"
@@ -675,6 +685,10 @@ msgstr ""
 
 #: [communityaffiliation]delete_clean_text
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
+msgstr ""
+
+#: [communityaffiliation]config_error
+msgid "Error during the application of the node configuration"
 msgstr ""
 
 #: [communityaffiliation]owners
@@ -846,6 +860,14 @@ msgstr ""
 msgid "Use dark colors to rest your eyes"
 msgstr ""
 
+#: [config]chatmain
+msgid "Main chat page"
+msgstr ""
+
+#: [config]chatmain_text
+msgid "Make the chat page as the default one"
+msgstr ""
+
 #: [config]mam
 msgid "Archiving preferences"
 msgstr ""
@@ -978,9 +1000,10 @@ msgstr "Luisteren"
 msgid "Last seen"
 msgstr "Laatst gezien"
 
-#: [client]title
-msgid "Client Information"
-msgstr ""
+#: [clients]title
+#, fuzzy
+msgid "Clients information"
+msgstr "Algemene informatie"
 
 #: [explore]last_registered
 msgid "Last registered"
@@ -1052,6 +1075,10 @@ msgstr "Uitnodigen"
 
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
+msgstr ""
+
+#: [draw]title
+msgid "Draw"
 msgstr ""
 
 #: [faq]title
@@ -1650,6 +1677,10 @@ msgstr ""
 msgid "Find one by searching for his name or id"
 msgstr ""
 
+#: [search]tags
+msgid "Tags"
+msgstr ""
+
 #: [sendto]attach
 msgid "Attach to a blog publication"
 msgstr ""
@@ -1698,9 +1729,9 @@ msgstr "Geen publieke feed beschikbaar voor deze contactpersoon"
 msgid "No contact specified"
 msgstr "Geen contactpersoon geselecteerd"
 
-#: [upload]title
-msgid "Upload a file"
-msgstr "Upload een bestand"
+#: [upload]title [button]upload
+msgid "Upload"
+msgstr "Uploaden"
 
 #: [upload]choose
 msgid "Choose a file to upload"
@@ -1951,6 +1982,10 @@ msgstr "Oeps!"
 msgid "Movim cannot talk with the server, please try again later"
 msgstr ""
 
+#: [error]websocket_connect
+msgid "Reconnection to the server…"
+msgstr ""
+
 #: [error]oops
 msgid "Oops!"
 msgstr "Oeps!"
@@ -2014,10 +2049,6 @@ msgstr "Opslaan"
 #: [button]clear
 msgid "Clear"
 msgstr "Opnieuw"
-
-#: [button]upload
-msgid "Upload"
-msgstr "Uploaden"
 
 #: [button]connecting
 msgid "Connecting"
@@ -2115,6 +2146,10 @@ msgstr "zondag"
 #: [client]bot
 msgid "Bot"
 msgstr "Bot"
+
+#: [client]console
+msgid "Console"
+msgstr ""
 
 #: [client]desktop
 msgid "Desktop"
@@ -2671,3 +2706,6 @@ msgstr "De API is niet bereikbaar, probeer later nog eens"
 #: [field]type_here
 msgid "Type here"
 msgstr "Typ hier"
+
+#~ msgid "Upload a file"
+#~ msgstr "Upload een bestand"
