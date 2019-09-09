@@ -113,8 +113,9 @@ class Bootstrap
 
         define('MOVIM_API', 'https://api.movim.eu/');
 
-        if (!defined('DOCTYPE')) {
-            define('DOCTYPE', 'text/html');
+        // Useful for the daemon
+        if (php_sapi_name() != 'cli') {
+            file_put_contents(CACHE_PATH.'baseuri', BASE_URI);
         }
     }
 
@@ -128,8 +129,7 @@ class Bootstrap
 
     private function getBaseUri()
     {
-        if (getenv('baseuri') != null
-        && filter_var(getenv('baseuri'), FILTER_VALIDATE_URL)) {
+        if (getenv('baseuri') != null) {
             return getenv('baseuri');
         }
 

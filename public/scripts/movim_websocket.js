@@ -56,7 +56,7 @@ var MovimWebsocket = {
     },
 
     init : function() {
-        if (SECURE_WEBSOCKET) {
+        if (window.location.protocol === "https:") {
             var uri = 'wss:' + BASE_URI + 'ws/';
         } else {
             var uri = 'ws:' + BASE_URI + 'ws/';

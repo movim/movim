@@ -33,8 +33,8 @@ class DaemonCommand extends Command
             ->setDescription('Start the daemon')
             ->addOption(
                 'url',
-                null,
-                InputOption::VALUE_REQUIRED,
+                'u',
+                InputOption::VALUE_OPTIONAL,
                 'Public URL of your Movim instance'
             )
             ->addOption(
@@ -73,17 +73,20 @@ class DaemonCommand extends Command
 
         $loop = Factory::create();
 
-        if (!Validator::url()->notEmpty()->validate($input->getOption('url'))) {
-            $output->writeln('<error>Invalid or missing url parameter</error>');
+        if ($input->getOption('url') && Validator::url()->notEmpty()->validate($input->getOption('url'))) {
+            $baseuri = rtrim($input->getOption('url'), '/') . '/';
+        } elseif (file_exists(CACHE_PATH.'baseuri')) {
+            $baseuri = file_get_contents(CACHE_PATH.'baseuri');
+        } else {
+            $output->writeln('<comment>Please load the login page once before starting the daemon to cache the public URL</comment>');
+            $output->writeln('<comment>or force a public URL using the --url parameter</comment>');
             exit;
         }
-
-        $baseuri = rtrim($input->getOption('url'), '/') . '/';
 
         $configuration = Configuration::get();
 
         if (empty($configuration->username) || empty($configuration->password)) {
-            $output->writeln('<comment>Please set a username and password for the admin panel (' . $baseuri . '?admin)</comment>');
+            $output->writeln('<comment>Please set a username and password for the admin panel (https://yourmovimdomain/?admin)</comment>');
 
             $output->writeln('<info>To set those credentials run</info>');
             $output->writeln('<info>php daemon.php config --username=USERNAME --password=PASSWORD</info>');

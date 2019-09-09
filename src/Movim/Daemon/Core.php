@@ -75,22 +75,6 @@ class Core implements MessageComponentInterface
 }
 
 ";
-
-        $path = $explode['host'].$explode['path'];
-
-        if ($explode['scheme'] == 'https') {
-            $ws = 'wss://'.$path.'ws/';
-            $secured = 'true';
-            echo colorize("Encrypted ", 'green')."\n";
-        } else {
-            $ws = 'ws://'.$path.'ws/';
-            $secured = 'false';
-            echo colorize("Unencrypted ", 'red')."\n";
-        }
-
-        file_put_contents(CACHE_PATH.'websocket', $secured);
-
-        return $ws;
     }
 
     public function onOpen(ConnectionInterface $conn)

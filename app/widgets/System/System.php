@@ -13,6 +13,5 @@ class System extends Base
         $this->view->assign('base_uri', BASE_URI);
         $this->view->assign('small_picture_limit', SMALL_PICTURE_LIMIT);
         $this->view->assign('error_uri', $this->route('disconnect'));
-        $this->view->assign('secure_websocket', file_get_contents(CACHE_PATH.'websocket'));
     }
 }
