@@ -27,7 +27,7 @@
         {/autoescape}
         <br />
         <li onclick="SendTo_ajaxGetMoreContacts('{$uri}')" class="active">
-            <span class="control icon active gray">
+            <span class="control icon gray">
                 <i class="material-icons">expand_more</i>
             </span>
             <p class="normal line center">{$c->__('sendto.more_contacts')}</p>

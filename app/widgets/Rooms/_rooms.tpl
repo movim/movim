@@ -1,5 +1,5 @@
 {if="$edit"}
-    <a class="button action color green" onclick="Rooms_ajaxDisplay(false)">
+    <a class="button action color green" onclick="Rooms_ajaxDisplay(false, {if="$all"}true{else}false{/if})">
         <i class="material-icons">check</i>
     </a>
 {/if}
@@ -10,7 +10,7 @@
     <ul class="list divided spaced middle {if="!$edit"}active{/if}">
         <li class="subheader" title="{$c->__('page.configuration')}">
             {if="$conferences->isNotEmpty() && !$edit"}
-            <span class="control icon active gray" onclick="Rooms_ajaxDisplay(true);">
+            <span class="control icon active gray" onclick="Rooms_ajaxDisplay(true, {if="$all"}true{else}false{/if});">
                 <i class="material-icons">edit</i>
             </span>
             <span class="control icon active gray" onclick="Rooms_ajaxAdd()">
@@ -29,90 +29,92 @@
                 <ul class="list divided thin spaced {if="!$edit"}active{/if}">
             {/if}
             {$previousConnected = $connected}
-            <li {if="!$edit"} data-jid="{$value->conference}" {/if}
-                {if="$value->nick != null"} data-nick="{$value->nick}" {/if}
-                class="room {if="$connected"}online{/if}"
-                title="{$value->conference}">
-                {$url = $value->getPhoto()}
-                {if="$url"}
-                    <span class="primary
-                        {if="!$connected"}disabled small{/if} icon bubble color
-                        {$value->name|stringToColor}"
-                        id="{$value->conference|cleanupId}-rooms-primary"
-                        style="background-image: url({$url});">
-                        {autoescape="off"}
-                            {$c->prepareRoomCounter($value, true)}
-                        {/autoescape}
-                    </span>
-                {else}
-                    <span class="primary
-                        {if="!$connected"}disabled small{/if} icon bubble color
-                        {$value->name|stringToColor}"
-                        id="{$value->conference|cleanupId}-rooms-primary">
-                        {autoescape="off"}
-                            {$c->prepareRoomCounter($value, false)}
-                        {/autoescape}
-                    </span>
-                {/if}
-
-                {$info = $value->info}
-                {if="$edit"}
-                    <span class="control icon active gray" onclick="Rooms_ajaxRemoveConfirm('{$value->conference}');">
-                        <i class="material-icons">delete</i>
-                    </span>
-                    <span class="control icon active gray" onclick="Rooms_ajaxAdd('{$value->conference}');">
-                        <i class="material-icons">edit</i>
-                    </span>
-                {/if}
-
-                <p class="normal line">
-                    {$value->name}
-                    {if="$connected"}
-                        <span class="second">{$value->conference}</span>
+            {if="$value->connected || $all"}
+                <li {if="!$edit"} data-jid="{$value->conference}" {/if}
+                    {if="$value->nick != null"} data-nick="{$value->nick}" {/if}
+                    class="room {if="$connected"}online{/if}"
+                    title="{$value->conference}">
+                    {$url = $value->getPhoto()}
+                    {if="$url"}
+                        <span class="primary
+                            {if="!$connected"}disabled small{/if} icon bubble color
+                            {$value->name|stringToColor}"
+                            id="{$value->conference|cleanupId}-rooms-primary"
+                            style="background-image: url({$url});">
+                            {autoescape="off"}
+                                {$c->prepareRoomCounter($value, true)}
+                            {/autoescape}
+                        </span>
                     {else}
-                        –
+                        <span class="primary
+                            {if="!$connected"}disabled small{/if} icon bubble color
+                            {$value->name|stringToColor}"
+                            id="{$value->conference|cleanupId}-rooms-primary">
+                            {autoescape="off"}
+                                {$c->prepareRoomCounter($value, false)}
+                            {/autoescape}
+                        </span>
                     {/if}
-                {if="$connected"}
-                </p>
-                <p class="line"
-                    {if="isset($info) && $info->description"}title="{$info->description}"{/if}>
-                {/if}
-                    {if="$connected"}
-                        {$count = $value->presences()->count()}
-                        <span title="{$c->__('communitydata.sub', $count)}"
-                            {if="$connected && $connected->mucrole == 'moderator'"}
-                                class="moderator"
-                            {/if}>
-                            {$count} <i class="material-icons">people</i>
-                            {if="$value->info && !$value->info->mucsemianonymous"}
-                                <i class="material-icons">wifi_tethering</i>
-                            {/if}
-                        </span> –
-                    {elseif="isset($info) && $info->occupants > 0"}
-                        <span title="{$c->__('communitydata.sub', $info->occupants)}"
-                            {if="$connected && $connected->mucrole == 'moderator'"}
-                                class="moderator"
-                            {/if}>
-                            {$info->occupants} <i class="material-icons">people</i>
-                            {if="$value->info && !$value->info->mucsemianonymous"}
-                                <i class="material-icons">wifi_tethering</i>
-                            {/if}
-                        </span> –
+
+                    {$info = $value->info}
+                    {if="$edit"}
+                        <span class="control icon active gray" onclick="Rooms_ajaxRemoveConfirm('{$value->conference}');">
+                            <i class="material-icons">delete</i>
+                        </span>
+                        <span class="control icon active gray" onclick="Rooms_ajaxAdd('{$value->conference}');">
+                            <i class="material-icons">edit</i>
+                        </span>
                     {/if}
-                    {if="$servers->has($value->server) && $servers->get($value->server)->type != 'text'"}
-                        <i class="material-icons" title="{$c->__('rooms.gateway_room')}">swap_horiz</i> –
-                    {/if}
-                    {if="$connected"}
-                        {if="isset($info) && $info->description"}
-                            {$info->description}
+
+                    <p class="normal line">
+                        {$value->name}
+                        {if="$connected"}
+                            <span class="second">{$value->conference}</span>
                         {else}
-                            {$value->conference}
+                            –
                         {/if}
-                    {else}
-                        <span class="second">{$value->conference}</span>
+                    {if="$connected"}
+                    </p>
+                    <p class="line"
+                        {if="isset($info) && $info->description"}title="{$info->description}"{/if}>
                     {/if}
-                </p>
-            </li>
+                        {if="$connected"}
+                            {$count = $value->presences()->count()}
+                            <span title="{$c->__('communitydata.sub', $count)}"
+                                {if="$connected && $connected->mucrole == 'moderator'"}
+                                    class="moderator"
+                                {/if}>
+                                {$count} <i class="material-icons">people</i>
+                                {if="$value->info && !$value->info->mucsemianonymous"}
+                                    <i class="material-icons">wifi_tethering</i>
+                                {/if}
+                            </span> –
+                        {elseif="isset($info) && $info->occupants > 0"}
+                            <span title="{$c->__('communitydata.sub', $info->occupants)}"
+                                {if="$connected && $connected->mucrole == 'moderator'"}
+                                    class="moderator"
+                                {/if}>
+                                {$info->occupants} <i class="material-icons">people</i>
+                                {if="$value->info && !$value->info->mucsemianonymous"}
+                                    <i class="material-icons">wifi_tethering</i>
+                                {/if}
+                            </span> –
+                        {/if}
+                        {if="$servers->has($value->server) && $servers->get($value->server)->type != 'text'"}
+                            <i class="material-icons" title="{$c->__('rooms.gateway_room')}">swap_horiz</i> –
+                        {/if}
+                        {if="$connected"}
+                            {if="isset($info) && $info->description"}
+                                {$info->description}
+                            {else}
+                                {$value->conference}
+                            {/if}
+                        {else}
+                            <span class="second">{$value->conference}</span>
+                        {/if}
+                    </p>
+                </li>
+            {/if}
         {/loop}
     </ul>
     {if="$conferences->isEmpty()"}
@@ -127,12 +129,34 @@
     </ul>
     {/if}
 
-    <ul class="list thick spaced active {if="$edit"}disabled{/if}">
-        <li onclick="Rooms_ajaxAdd()">
-            <span class="primary icon bubble color green">
+    <ul class="list thin active spaced divided">
+        {if="$all"}
+            <li onclick="Rooms_ajaxDisplay({if="$edit"}true{else}false{/if}, false)">
+                <span class="primary icon active gray">
+                    <i class="material-icons">expand_less</i>
+                </span>
+                <p class="normal">
+                    {$c->__('rooms.show_all')}
+                    <span class="second">{$disconnected} <i class="material-icons">people</i></span>
+                </p>
+            </li>
+        {else}
+            <li onclick="Rooms_ajaxDisplay({if="$edit"}true{else}false{/if}, true)">
+                <span class="primary icon gray">
+                    <i class="material-icons">expand_more</i>
+                </span>
+                <p class="normal">
+                    {$c->__('rooms.show_all')}
+                    <span class="second">{$disconnected} <i class="material-icons">people</i></span>
+                </p>
+            </li>
+        {/if}
+
+        <li onclick="Rooms_ajaxAdd()" class="{if="$edit"}disabled{/if}"">
+            <span class="primary icon gray">
                 <i class="material-icons">group_add</i>
             </span>
-            <p class="normal">{$c->__('rooms.add')}</p>
+            <p class="normal line">{$c->__('rooms.add')}</p>
         </li>
     </ul>
 {else}

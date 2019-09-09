@@ -161,9 +161,9 @@ class Rooms extends Base
         }
     }
 
-    private function refreshRooms($edit = false)
+    private function refreshRooms($edit = false, $all = false)
     {
-        $this->rpc('MovimTpl.fill', '#rooms_widget', $this->prepareRooms($edit));
+        $this->rpc('MovimTpl.fill', '#rooms_widget', $this->prepareRooms($edit, $all));
         $this->rpc('Rooms.refresh');
     }
 
@@ -175,9 +175,9 @@ class Rooms extends Base
     /**
      * @brief Get the Rooms
      */
-    public function ajaxDisplay($edit = false)
+    public function ajaxDisplay($edit = false, $all = false)
     {
-        $this->refreshRooms($edit);
+        $this->refreshRooms($edit, $all);
     }
 
     /**
@@ -551,7 +551,7 @@ class Rooms extends Base
           ->request();
     }
 
-    public function prepareRooms($edit = false)
+    public function prepareRooms($edit = false, $all = false)
     {
         if (!$this->user->session) {
             return '';
@@ -562,19 +562,29 @@ class Rooms extends Base
                                            ->withCount('unreads')
                                            ->get();
         $connected = new Collection;
+        $disconnected = 0;
         $servers = [];
 
         foreach ($conferences as $key => $conference) {
             array_push($servers, $conference->server);
             if ($conference->connected) {
                 $connected->push($conferences->pull($key));
+            } else {
+                $disconnected++;
             }
         }
 
         $conferences = $connected->merge($conferences);
 
+        // If all the rooms are disconnected, we show everything
+        if ($disconnected == $conferences->count()) {
+            $all = true;
+        }
+
         $view = $this->tpl();
         $view->assign('edit', $edit);
+        $view->assign('all', $all);
+        $view->assign('disconnected', $disconnected);
         $view->assign('servers', App\Info::whereIn('server', array_unique($servers))->get()->keyBy('server'));
         $view->assign('conferences', $conferences);
         $view->assign('room', $this->get('r'));
