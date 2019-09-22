@@ -26,6 +26,7 @@ v0.15.1 (trunk)
  * Allow camera switch in Visio
  * Allow Visio notification to also open pop-up
  * Clear all candidates when terminating or starting a new Visio
+ * Fix a compatibility issue between Phinx and symphony/console v4.3.4
 
 v0.15 – Donati
 ---------------------------
