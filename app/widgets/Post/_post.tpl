@@ -94,20 +94,21 @@
                 {/if}
             {/if}
             {if="$public"}
-            <span class="control icon active">
-                <a  {if="$public"}
-                    {if="$post->isMicroblog()"}
-                    href="{$c->route('blog', [$post->server, $post->nodeid])}"
+                <span class="control icon active">
+                    <a
+                    {if="$public"}
+                        {if="$post->isMicroblog()"}
+                            href="{$c->route('blog', [$post->server, $post->nodeid])}"
+                        {else}
+                            href="{$c->route('node', [$post->server, $post->node, $post->nodeid])}"
+                        {/if}
                     {else}
-                    href="{$c->route('node', [$post->server, $post->node, $post->nodeid])}"
+                        href="{$c->route('post', [$post->server, $post->node, $post->nodeid])}"
                     {/if}
-                {else}
-                    href="{$c->route('post', [$post->server, $post->node, $post->nodeid])}"
-                {/if}
-                >
-                    <i class="material-icons">chevron_right</i>
-                </a>
-            </span>
+                    >
+                        <i class="material-icons">chevron_right</i>
+                    </a>
+                </span>
             {/if}
             {if="!$post->isBrief()"}
                 <p {if="$post->title != null"}title="{$post->title|strip_tags}"{/if}>

@@ -6,27 +6,26 @@
                 <i class="material-icons">edit</i>
             </span>
             {if="$contact"}
-            <span class="control icon active">
-                <a
-                    href="{$c->route('feed', $contact->jid)}"
-                    target="_blank"
-                    title="Atom"
-                >
-                    <i class="material-icons">rss_feed</i>
-                </a>
-            </span>
-            <p>
-                <a href="{$contact->getBlogUrl()}">
-                    {$c->__('blog.title', $contact->truename)}
-                </a>
-            </p>
-                {if="$contact->description"}
-                    <p>{$contact->description}</p>
-                {/if}
-            {else}
-            <p>
-                {$c->__('page.blog')}
-            </p>
+                <span class="control icon active">
+                    <a
+                        href="{$c->route('feed', $contact->jid)}"
+                        target="_blank"
+                        title="Atom"
+                    >
+                        <i class="material-icons">rss_feed</i>
+                    </a>
+                </span>
+                <p>
+                    <a href="{$contact->getBlogUrl()}">
+                        {$c->__('blog.title', $contact->truename)}
+                    </a>
+                </p>
+                    {if="$contact->description"}
+                        <p>{$contact->description}</p>
+                    {/if}
+                <p>
+                    {$c->__('page.blog')}
+                </p>
             {/if}
         </li>
     </ul>
@@ -49,55 +48,61 @@
             </p>
         </li>
     </ul>
-    {else}
-    <ul class="list thick">
-        <li>
-            {$url = null}
-            {if="$item != null"}
-                {$url = $item->getPhoto('m')}
-            {/if}
-            {if="$url"}
-                <span class="primary icon bubble">
-                    <img src="{$url}"/>
-                </span>
-            {else}
-                <span class="primary icon gray">
-                    <i class="material-icons">group_work</i>
-                </span>
-            {/if}
-            <span class="control icon active">
-                <a
-                    href="{$c->route('feed', [$server, $node])}"
-                    target="_blank"
-                    title="Atom"
-                >
-                    <i class="material-icons">rss_feed</i>
-                </a>
-            </span>
-            <p>
-                <a href="{$c->route('node', [$server, $node])}">
-                    {if="$item != null && $item->name"}
-                        {$item->name}
-                    {else}
-                        {$node}
-                    {/if}
-                </a>
-            </p>
-            {if="$item != null"}
-                {if="$item->description"}
-                    <p title="{$item->description|stripTags}">
-                        <i class="material-icons">people</i> {$c->__('communitydata.sub', $item->occupants)} –
-                        {$item->description|stripTags}
-                    </p>
-                {else}
-                    <p>
-                        <i class="material-icons">people</i> {$c->__('communitydata.sub', $item->occupants)} –
-                        {$item->server}
-                    </p>
+    {elseif="$node && $server"}
+        <ul class="list thick">
+            <li>
+                {$url = null}
+                {if="$item != null"}
+                    {$url = $item->getPhoto('m')}
                 {/if}
-            {/if}
-        </li>
-    </ul>
+                {if="$url"}
+                    <span class="primary icon bubble">
+                        <img src="{$url}"/>
+                    </span>
+                {else}
+                    <span class="primary icon gray">
+                        <i class="material-icons">group_work</i>
+                    </span>
+                {/if}
+                <span class="control icon active">
+                    <a
+                        href="{$c->route('feed', [$server, $node])}"
+                        target="_blank"
+                        title="Atom"
+                    >
+                        <i class="material-icons">rss_feed</i>
+                    </a>
+                </span>
+                <p>
+                    <a href="{$c->route('node', [$server, $node])}">
+                        {if="$item != null && $item->name"}
+                            {$item->name}
+                        {else}
+                            {$node}
+                        {/if}
+                    </a>
+                </p>
+                {if="$item != null"}
+                    {if="$item->description"}
+                        <p title="{$item->description|stripTags}">
+                            <i class="material-icons">people</i> {$c->__('communitydata.sub', $item->occupants)} –
+                            {$item->description|stripTags}
+                        </p>
+                    {else}
+                        <p>
+                            <i class="material-icons">people</i> {$c->__('communitydata.sub', $item->occupants)} –
+                            {$item->server}
+                        </p>
+                    {/if}
+                {/if}
+            </li>
+        </ul>
+    {else}
+        <ul class="list thick">
+            <li>
+                <p>{$c->__('post.empty')}</p>
+            </li>
+        </ul>
     {/if}
 </header>
 

@@ -22,6 +22,9 @@ class Blog extends Base
     private $_next;
     private $_tag;
 
+    // Blog nickname
+    private $_nickname = null;
+
     public function load()
     {
         $this->links = [];
@@ -68,6 +71,7 @@ class Blog extends Base
 
             $user = \App\User::where('nickname', $this->_from)->first();
             if ($user) {
+                $this->_nickname = $this->_from;
                 $this->_from = $user->id;
             }
 
@@ -189,9 +193,12 @@ class Blog extends Base
 
     public function preparePost(\App\Post $post)
     {
-        return ($this->_view == 'tag' && $this->user->isLogged())
-            ? (new Post)->preparePost($post, false, true)
-            : (new Post)->preparePost($post, true);
+        if ($this->_view == 'tag' && $this->user->isLogged()) {
+            return (new Post)->preparePost($post, false, true);
+        } else {
+            $post->server = $this->_nickname ?? $post->server;
+            return (new Post)->preparePost($post, true);
+        }
     }
 
     public function display()
