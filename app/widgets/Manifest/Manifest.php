@@ -2,9 +2,6 @@
 
 use Movim\Widget\Base;
 
-use App\Configuration;
-use App\User;
-
 class Manifest extends Base
 {
     public function display()

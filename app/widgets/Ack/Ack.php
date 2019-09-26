@@ -1,8 +1,6 @@
 <?php
 
 use Moxl\Xec\Action\Ack\Send;
-use Moxl\Xec\Action\Disco\Request;
-use Moxl\Stanza\Disco;
 
 class Ack extends \Movim\Widget\Base
 {

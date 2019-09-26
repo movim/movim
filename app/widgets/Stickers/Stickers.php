@@ -5,8 +5,6 @@ use Moxl\Xec\Action\BOB\Answer;
 
 use Respect\Validation\Validator;
 
-use Movim\Picture;
-
 class Stickers extends \Movim\Widget\Base
 {
     public function load()

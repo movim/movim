@@ -7,7 +7,6 @@ use Moxl\Xec\Action\Roster\RemoveItem;
 use Moxl\Xec\Action\Presence\Unsubscribe;
 
 use Respect\Validation\Validator;
-use App\Roster as DBRoster;
 
 class ContactHeader extends Base
 {

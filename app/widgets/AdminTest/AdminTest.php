@@ -1,6 +1,8 @@
 <?php
 
-class AdminTest extends \Movim\Widget\Base
+use Movim\Widget\Base;
+
+class AdminTest extends Base
 {
     public function load()
     {

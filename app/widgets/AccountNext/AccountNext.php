@@ -1,6 +1,5 @@
 <?php
 
-use Moxl\Xec\Action\Disco\Request;
 use Moxl\Xec\Action\Register\Set;
 
 use Movim\Session;

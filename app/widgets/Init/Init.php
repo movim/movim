@@ -4,7 +4,6 @@ use Movim\Widget\Base;
 
 use Moxl\Xec\Action\Pubsub\ConfigurePersistentStorage;
 use Moxl\Xec\Action\Pubsub\CreatePersistentStorage;
-use Moxl\Xec\Action\Storage\Set;
 
 class Init extends Base
 {

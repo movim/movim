@@ -12,6 +12,7 @@ class User extends Model
     public $with = ['session', 'capability'];
     public $incrementing = false;
     private static $me = null;
+    private $unreads = null;
 
     public function save(array $options = [])
     {
@@ -42,8 +43,10 @@ class User extends Model
         return $this->hasMany('App\Message');
     }
 
-    public function unreads(string $jid = null, bool $quoted = false)
+    public function unreads(string $jid = null, bool $quoted = false, $cached = false)
     {
+        if ($this->unreads !== null && $cached) return $this->unreads;
+
         $unreads = $this->messages()
                         ->where('seen', false)
                         ->where('jidfrom', '!=', $this->id)
@@ -62,7 +65,9 @@ class User extends Model
             $unreads = $unreads->where('jidfrom', $jid);
         }
 
-        return $unreads->count();
+        $this->unreads = $unreads->count();
+
+        return $this->unreads;
     }
 
     public function encryptedPasswords()

@@ -2,8 +2,6 @@
 
 use Movim\Widget\Base;
 
-use Respect\Validation\Validator;
-
 class CommunitySubscriptions extends Base
 {
     private $_list_server;

@@ -1,6 +1,5 @@
 <?php
 
-use Moxl\Xec\Action\Pubsub\GetItems;
 use Moxl\Xec\Action\Disco\Items;
 use Respect\Validation\Validator;
 use Moxl\Xec\Action\Pubsub\Create;

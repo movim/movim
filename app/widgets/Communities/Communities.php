@@ -2,10 +2,6 @@
 
 use Movim\Widget\Base;
 
-use Respect\Validation\Validator;
-use App\Configuration;
-use Carbon\Carbon;
-
 include_once WIDGETS_PATH . 'Post/Post.php';
 
 class Communities extends Base

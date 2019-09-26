@@ -4,8 +4,6 @@ use Movim\Widget\Base;
 
 use Moxl\Xec\Action\Presence\Chat;
 use Moxl\Xec\Action\Presence\Away;
-use Moxl\Xec\Action\Presence\DND;
-use Moxl\Xec\Action\Presence\XA;
 use Moxl\Xec\Action\Presence\Unavailable;
 use Moxl\Xec\Action\Roster\GetList;
 use Moxl\Xec\Action\Pubsub\GetItemsId;

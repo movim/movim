@@ -4,7 +4,6 @@ use Movim\Widget\Base;
 
 use Moxl\Xec\Action\Pubsub\GetConfig;
 use Moxl\Xec\Action\Pubsub\SetConfig;
-use Moxl\Xec\Action\Avatar\Get as AvatarGet;
 use Moxl\Xec\Action\Avatar\Set as AvatarSet;
 
 use Respect\Validation\Validator;

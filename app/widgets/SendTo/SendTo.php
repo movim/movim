@@ -1,9 +1,6 @@
 <?php
 
-use Respect\Validation\Validator;
-
 use Movim\Widget\Base;
-use Movim\Session;
 
 class SendTo extends Base
 {

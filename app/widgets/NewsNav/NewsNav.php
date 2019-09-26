@@ -1,6 +1,5 @@
 <?php
 
-use App\Configuration;
 use Movim\Widget\Base;
 
 include_once WIDGETS_PATH . 'Post/Post.php';

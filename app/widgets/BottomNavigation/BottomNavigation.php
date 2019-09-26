@@ -25,13 +25,13 @@ class BottomNavigation extends Base
     public function display()
     {
         $this->view->assign('page', $this->_view);
-        $this->view->assign('chatCounter', $this->prepareChatButton($this->user->unreads()));
+        $this->view->assign('chatCounter', $this->prepareChatButton($this->user->unreads(null, false, true)));
     }
 
     private function prepareChatButton(int $count = 0)
     {
         $view = $this->tpl();
-        $view->assign('count', $this->user->unreads());
+        $view->assign('count', $count);
         return $view->draw('_bottomnavigation_chat_counter');
     }
 }
