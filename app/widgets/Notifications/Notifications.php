@@ -3,7 +3,6 @@
 use Moxl\Xec\Action\Presence\Subscribed;
 use Moxl\Xec\Action\Presence\Unsubscribed;
 use Moxl\Xec\Action\Roster\AddItem;
-use Moxl\Xec\Action\Roster\UpdateItem;
 use Moxl\Xec\Action\Presence\Subscribe;
 
 use Movim\Widget\Base;

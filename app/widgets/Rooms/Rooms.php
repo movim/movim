@@ -1,7 +1,6 @@
 <?php
 
 use Moxl\Xec\Action\Presence\Muc;
-use Moxl\Xec\Action\Bookmark\Get;
 use Moxl\Xec\Action\Bookmark\Set;
 use Moxl\Xec\Action\Presence\Unavailable;
 use Moxl\Xec\Action\Message\Invite;
@@ -609,15 +608,5 @@ class Rooms extends Base
     private function validateRoom($room)
     {
         return (Validator::stringType()->noWhitespace()->contains('@')->length(6, 256)->validate($room));
-    }
-
-    /**
-     * @brief Validate the resource
-     *
-     * @param string $resource
-     */
-    private function validateResource($resource)
-    {
-        return (Validator::stringType()->length(2, 40)->validate($resource));
     }
 }

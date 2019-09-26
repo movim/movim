@@ -17,7 +17,6 @@ use Respect\Validation\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 
 use Movim\Picture;
-use Movim\Session;
 use Movim\ChatStates;
 use Movim\ChatOwnState;
 

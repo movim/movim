@@ -2,13 +2,10 @@
 
 use Movim\Widget\Base;
 
-use Moxl\Xec\Action\Pubsub\GetItemsId;
 use Moxl\Xec\Action\Pubsub\GetItems;
-use Moxl\Xec\Action\Pubsub\Delete;
 
 use Respect\Validation\Validator;
 use Cocur\Slugify\Slugify;
-use App\User;
 
 include_once WIDGETS_PATH.'Post/Post.php';
 

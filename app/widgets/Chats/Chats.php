@@ -2,10 +2,6 @@
 
 use Movim\Widget\Base;
 
-use Moxl\Xec\Action\Presence\Muc;
-use Moxl\Xec\Action\Bookmark\Get;
-use Moxl\Xec\Action\Bookmark\Set;
-
 use Respect\Validation\Validator;
 
 class Chats extends Base
@@ -231,16 +227,19 @@ class Chats extends Base
             return '';
         }
 
-        $contacts = App\Contact::whereIn('id', array_keys($chats))->get()->keyBy('id');
-        foreach (array_keys($chats) as $jid) {
-            if (!$contacts->has($jid)) {
-                $contacts->put($jid, new App\Contact(['id' => $jid]));
+        if ($emptyItems == false) {
+            $contacts = App\Contact::whereIn('id', array_keys($chats))->get()->keyBy('id');
+            foreach (array_keys($chats) as $jid) {
+                if (!$contacts->has($jid)) {
+                    $contacts->put($jid, new App\Contact(['id' => $jid]));
+                }
             }
+
+            $view->assign('rosters', $this->user->session->contacts()->whereIn('jid', array_keys($chats))
+                                        ->with('presence.capability')->get()->keyBy('jid'));
+            $view->assign('contacts', $contacts);
         }
 
-        $view->assign('rosters', $this->user->session->contacts()->whereIn('jid', array_keys($chats))
-                                      ->with('presence.capability')->get()->keyBy('jid'));
-        $view->assign('contacts', $contacts);
         $view->assign('chats', array_reverse($chats));
         $view->assign('emptyItems', $emptyItems);
 
