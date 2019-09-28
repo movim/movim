@@ -148,7 +148,7 @@ class Presence extends Base
     // We refresh the bookmarks
     public function ajaxBookmarksGet()
     {
-        $b = new \Moxl\Xec\Action\Bookmark\Get;
+        $b = new \Moxl\Xec\Action\Bookmark2\Get;
         $b->setTo($this->user->id)
           ->request();
     }

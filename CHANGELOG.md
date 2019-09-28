@@ -1,7 +1,7 @@
 Movim Changelog
 ================
 
-v0.15.1 (trunk)
+v0.16 (trunk)
 ---------------------------
  * Cleanup the unanswered IQ requests after 60 seconds
  * Simplify the Moxl handler
@@ -27,6 +27,7 @@ v0.15.1 (trunk)
  * Allow Visio notification to also open pop-up
  * Clear all candidates when terminating or starting a new Visio
  * Fix a compatibility issue between Phinx and symphony/console v4.3.4
+ * Add support for XEP-0402: Bookmarks 2 and a migration button
 
 v0.15 – Donati
 ---------------------------

@@ -1,7 +1,8 @@
 <?php
 
 use Moxl\Xec\Action\Presence\Muc;
-use Moxl\Xec\Action\Bookmark\Set;
+use Moxl\Xec\Action\Bookmark2\Set;
+use Moxl\Xec\Action\Bookmark2\Delete;
 use Moxl\Xec\Action\Presence\Unavailable;
 use Moxl\Xec\Action\Message\Invite;
 use Moxl\Xec\Action\Disco\Request;
@@ -26,8 +27,10 @@ class Rooms extends Base
         $this->addjs('rooms.js');
         $this->addcss('rooms.css');
         $this->registerEvent('message', 'onMessage');
-        $this->registerEvent('bookmark_get_handle', 'onBookmarkGet');
-        $this->registerEvent('bookmark_set_handle', 'onBookmarkSet');
+        $this->registerEvent('bookmark2_get_handle', 'onBookmarkGet');
+        $this->registerEvent('bookmark2_set_handle', 'onBookmarkSet');
+        $this->registerEvent('bookmark2_delete_handle', 'onBookmarkSet');
+        $this->registerEvent('bookmark_synchronize_handle', 'onBookmarkSynchronized');
         $this->registerEvent('disco_items_nosave_handle', 'onDiscoGateway');
         $this->registerEvent('disco_items_nosave_error', 'onDiscoGatewayError');
         $this->registerEvent('vcard_set_handle', 'onAvatarSet', 'chat');
@@ -109,11 +112,15 @@ class Rooms extends Base
         $this->refreshRooms();
     }
 
+    public function onBookmarkSynchronized($packet)
+    {
+        Notification::toast($this->__('chatrooms.synchronized', $packet->content));
+    }
+
     public function onBookmarkSet()
     {
         Notification::toast($this->__('bookmarks.updated'));
         $this->refreshRooms();
-        (new Chat)->ajaxGet();
     }
 
     public function onConnected($packet)
@@ -403,9 +410,9 @@ class Rooms extends Base
             return;
         }
 
-        $this->user->session->conferences()->where('conference', $room)->delete();
-
-        $this->setBookmark();
+        $d = new Delete;
+        $d->setId($room)
+          ->request();
     }
 
     /**
@@ -509,45 +516,27 @@ class Rooms extends Base
                  ->where('conference', strtolower($form->jid->value))
                  ->delete();
 
-            $item = [
-                    'type'      => 'conference',
-                    'name'      => $form->name->value,
-                    'autojoin'  => $form->autojoin->value,
-                    'nick'      => $form->nick->value,
-                    'jid'       => strtolower($form->jid->value)
-                    ];
-            $this->setBookmark($item);
+            $conference = new Conference;
+            $conference->conference = strtolower($form->jid->value);
+            $conference->name = $form->name->value;
+            $conference->autojoin = $form->autojoin->value;
+            $conference->nick = $form->nick->value;
+
+            $b = new Set;
+            $b->setConference($conference)
+              ->request();
+
             $this->rpc('Dialog_ajaxClear');
         }
     }
 
-    public function setBookmark($item = false)
+    /**
+     * Synchronize Bookmark 1 to Bookmark 2
+     */
+    public function ajaxSyncBookmark()
     {
-        $arr = [];
-
-        if ($item) {
-            array_push($arr, $item);
-        }
-
-        $conferences = $this->user->session->conferences()->get();
-        if ($conferences) {
-            foreach ($conferences as $c) {
-                array_push(
-                    $arr,
-                    [
-                        'type'      => 'conference',
-                        'name'      => $c->name,
-                        'autojoin'  => $c->autojoin,
-                        'nick'      => $c->nick,
-                        'jid'       => $c->conference
-                    ]
-                );
-            }
-        }
-
-        $b = new Set;
-        $b->setArr($arr)
-          ->request();
+        $s = new \Moxl\Xec\Action\Bookmark\Synchronize;
+        $s->request();
     }
 
     public function prepareRooms($edit = false, $all = false)

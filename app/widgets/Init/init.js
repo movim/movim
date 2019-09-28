@@ -1,5 +1,5 @@
 var Init = {
-    version: 4,
+    version: 5,
 
     checkNode : function() {
         // TODO : very ugly, need to refactor this
@@ -11,6 +11,7 @@ var Init = {
         if (init.initialized != 'true') {
             Init_ajaxCreatePersistentStorage('storage:bookmarks');
             Init_ajaxCreatePersistentStorage('urn:xmpp:pubsub:movim-public-subscription', 1000);
+            Init_ajaxCreatePersistentStorage('urn:xmpp:bookmarks:0', 1000);
             Init_ajaxCreatePersistentPEPStorage('urn:xmpp:vcard4');
             Init_ajaxCreatePersistentPEPStorage('urn:xmpp:avatar:data');
             Init_ajaxCreatePersistentPEPStorage('http://jabber.org/protocol/geoloc');

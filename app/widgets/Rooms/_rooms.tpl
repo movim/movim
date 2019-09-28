@@ -126,6 +126,18 @@
             <p>{$c->__('rooms.empty_text1')}</p>
             <p>{$c->__('rooms.empty_text2')}</p>
         </li>
+        <li>
+            <span class="primary icon purple">
+                <i class="material-icons">help</i>
+            </span>
+            <span class="control icon active" onclick="Rooms_ajaxSyncBookmark()">
+                <i class="material-icons">sync</i>
+            </span>
+            <p>{$c->__('rooms.empty_synchronize_title')}</p>
+            <p>
+                {$c->__('rooms.empty_synchronize_text')}
+            </p>
+        </li>
     </ul>
     {/if}
 
