@@ -33,6 +33,7 @@ class Bookmark2
         $publish->appendChild($item);
 
         $conference = $dom->createElement('conference');
+        $conference->setAttribute('xmlns', 'urn:xmpp:bookmarks:0');
         $conference->setAttribute('name', $conf->name);
         if ($conf->autojoin) {
             $conference->setAttribute('autojoin', 'true');
@@ -58,6 +59,11 @@ class Bookmark2
         $field = $dom->createElement('field');
         $field->setAttribute('var', 'pubsub#persist_items');
         $field->appendChild($dom->createElement('value', 'true'));
+        $x->appendChild($field);
+
+        $field = $dom->createElement('field');
+        $field->setAttribute('var', 'pubsub#send_last_published_item');
+        $field->appendChild($dom->createElement('value', 'never'));
         $x->appendChild($field);
 
         $field = $dom->createElement('field');

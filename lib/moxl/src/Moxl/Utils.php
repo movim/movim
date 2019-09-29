@@ -13,6 +13,7 @@ class Utils
         return [
             'urn:xmpp:microblog:0',
             'urn:xmpp:microblog:0+notify',
+            'urn:xmpp:bookmarks:0+notify',
             //'urn:xmpp:inbox',
             //'urn:xmpp:inbox+notify',
             'urn:xmpp:pubsub:subscription',
