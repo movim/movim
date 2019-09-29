@@ -28,6 +28,7 @@ class Rooms extends Base
         $this->addcss('rooms.css');
         $this->registerEvent('message', 'onMessage');
         $this->registerEvent('bookmark2_get_handle', 'onBookmarkGet');
+        $this->registerEvent('bookmark2', 'onBookmarkSet');
         $this->registerEvent('bookmark2_set_handle', 'onBookmarkSet');
         $this->registerEvent('bookmark2_delete_handle', 'onBookmarkSet');
         $this->registerEvent('bookmark_synchronize_handle', 'onBookmarkSynchronized');
@@ -117,8 +118,14 @@ class Rooms extends Base
         Notification::toast($this->__('chatrooms.synchronized', $packet->content));
     }
 
-    public function onBookmarkSet()
+    public function onBookmarkSet($packet)
     {
+        $conference = $packet->content;
+
+        if ($conference && $conference->autojoin) {
+            $this->ajaxJoin($conference->conference);
+        }
+
         Notification::toast($this->__('bookmarks.updated'));
         $this->refreshRooms();
     }
@@ -477,8 +484,11 @@ class Rooms extends Base
             ->where('conference', $room)
             ->first()->presences()
             ->where('mucjid', $this->user->id)
-            ->first()
-            ->resource;
+            ->first();
+
+        $resource = $resource
+            ? $resource->resource
+            : null;
 
         $jid = explodeJid($room);
         $capability = App\Capability::find($jid['server']);
@@ -493,13 +503,15 @@ class Rooms extends Base
 
         $this->refreshRooms();
 
-        $session = Session::start();
-        $session->remove($room . '/' .$resource);
+        if ($resource) {
+            $session = Session::start();
+            $session->remove($room . '/' .$resource);
 
-        $pu = new Unavailable;
-        $pu->setTo($room)
-           ->setResource($resource)
-           ->request();
+            $pu = new Unavailable;
+            $pu->setTo($room)
+               ->setResource($resource)
+               ->request();
+        }
     }
 
     /**

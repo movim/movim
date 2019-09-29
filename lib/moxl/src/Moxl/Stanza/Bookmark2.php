@@ -71,6 +71,11 @@ class Bookmark2
         $field->appendChild($dom->createElement('value', 'whitelist'));
         $x->appendChild($field);
 
+        $field = $dom->createElement('field');
+        $field->setAttribute('var', 'pubsub#pubsub#notify_retract');
+        $field->appendChild($dom->createElement('value', 'true'));
+        $x->appendChild($field);
+
         $pubsub->appendChild($publishOption);
 
         $xml = \Moxl\API::iqWrapper($pubsub, false, 'set');

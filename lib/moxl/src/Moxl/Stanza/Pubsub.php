@@ -433,7 +433,7 @@ class Pubsub
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
         $retract = $dom->createElement('retract');
         $retract->setAttribute('node', $node);
-        $retract->setAttribute('notify', true);
+        $retract->setAttribute('notify', 'true');
         $pubsub->appendChild($retract);
 
         $item = $dom->createElement('item');

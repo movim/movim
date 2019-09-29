@@ -25,6 +25,7 @@ class Set extends Action
     public function handle($stanza, $parent = false)
     {
         $this->_conference->save();
+        $this->pack($this->_conference);
         $this->deliver();
     }
 }
