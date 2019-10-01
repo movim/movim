@@ -145,6 +145,27 @@ main:not(.enabled) #chat_widget {
     overflow-x: hidden;
 }
 
+/* Emojis */
+#chat_widget .chat_box .emojis ul:not(:empty) {
+    text-align: center;
+    margin-top: 0.25rem;
+}
+
+#chat_widget .chat_box .emojis ul img {
+    display: inline-block;
+    width: 3rem;
+    height: 3rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    margin: 0 0.25rem;
+    border-radius: 0.5rem;
+}
+
+#chat_widget .chat_box .emojis ul img:hover {
+    cursor: pointer;
+    background-color: rgba(var(--movim-font), 0.05);
+}
+
 /* Chatroom */
 
 #chat_widget ul.simple {

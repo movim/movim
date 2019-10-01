@@ -28,6 +28,7 @@ v0.16 (trunk)
  * Clear all candidates when terminating or starting a new Visio
  * Fix a compatibility issue between Phinx and symphony/console v4.3.4
  * Add support for XEP-0402: Bookmarks 2 and a migration button
+ * Add a quick emoji search feature using the :key: system
 
 v0.15 – Donati
 ---------------------------

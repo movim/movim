@@ -234,6 +234,7 @@ var Chat = {
             var discussion = Chat.getDiscussion();
             var scrolled = (discussion.scrollHeight - discussion.scrollTop === discussion.clientHeight);
             MovimUtils.textareaAutoheight(this);
+            Chat.checkEmojis(this);
 
             if (scrolled) discussion.scrollTop = discussion.scrollHeight;
         }
@@ -247,6 +248,29 @@ var Chat = {
         }
 
         Chat.autocompleteList = null;
+    },
+    checkEmojis: function(textarea)
+    {
+        var emojisList = document.querySelector('.chat_box .emojis ul');
+        emojisList.innerHTML = '';
+        if (textarea.value.lastIndexOf(':') > -1 && textarea.value.length > textarea.value.lastIndexOf(':') + 2) {
+            Object.keys(emojis).filter(key => key.indexOf(
+                    textarea.value.substr(textarea.value.lastIndexOf(':') + 1)
+                ) > -1)
+            .slice(0, 20)
+            .forEach(found => {
+                var img = document.createElement('img');
+                img.setAttribute('src','theme/img/emojis/svg/' + emojis[found].codepoint + '.svg');
+                img.classList.add('emoji');
+                img.dataset.emoji = emojis[found].emoji;
+                img.addEventListener('click', e => {
+                    textarea.value = textarea.value.substr(0, textarea.value.lastIndexOf(':'));
+                    emojisList.innerHTML = '';
+                    Chat.insertAtCursor(e.target.dataset.emoji + ' ');
+                });
+                emojisList.appendChild(img);
+            });
+        }
     },
     setTextarea: function(value)
     {

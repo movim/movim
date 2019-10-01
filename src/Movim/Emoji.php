@@ -63,6 +63,11 @@ class Emoji
         $this->_emoji = require('Emoji/CompiledEmoji.php');
     }
 
+    public function getEmojis()
+    {
+        return $this->_emoji;
+    }
+
     public function replace($string, bool $noTitle = false): string
     {
         $this->_string = $string;
