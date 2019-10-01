@@ -262,6 +262,7 @@ var Chat = {
                 var img = document.createElement('img');
                 img.setAttribute('src','theme/img/emojis/svg/' + emojis[found].codepoint + '.svg');
                 img.classList.add('emoji');
+                img.title = ':' + found + ':';
                 img.dataset.emoji = emojis[found].emoji;
                 img.addEventListener('click', e => {
                     textarea.value = textarea.value.substr(0, textarea.value.lastIndexOf(':'));
