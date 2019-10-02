@@ -31,13 +31,7 @@ class EmojisToJsonCommand extends Command
         $json = [];
         foreach ($filtered as $key => $value) {
             sscanf('U+'.$key, 'U+%x', $codepoint);
-            $json[\strtolower(
-                \str_replace(
-                    ['-', ' ', 0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
-                    ['_', '_', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'],
-                    $value
-                )
-            )] = ['emoji' => \IntlChar::chr($codepoint), 'codepoint' => $key];
+            $json[emojiShortcut($value)] = ['e' => \IntlChar::chr($codepoint), 'c' => $key];
         }
 
         \file_put_contents(PUBLIC_PATH.'scripts/movim_emojis_list.js', 'var emojis = '.\json_encode($json));

@@ -327,6 +327,20 @@ function stripTags($string): string
 }
 
 /**
+ * To emoji shortcut
+ */
+function emojiShortcut($string): string
+{
+    return \strtolower(
+        \str_replace(
+            ['-', ' ', 0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+            ['_', '_', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'],
+            $string
+        )
+    );
+}
+
+/**
  * Purify a string
  */
 function purifyHTML($string, $base = null): string

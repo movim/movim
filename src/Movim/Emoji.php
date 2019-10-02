@@ -28,6 +28,7 @@ class Emoji
     private $_string;
     private $_lastEmoji = null;
     private $_lastEmojiURL = null;
+    private $_lastEmojiTitle = null;
     private $_regex = [
         // Some easy cases first
         '/[#*0-9]\x{20E3}
@@ -94,7 +95,8 @@ class Emoji
             $img->setAttribute('class', 'emoji');
             $img->setAttribute('alt', $this->_emoji[$astext]);
             if (!$noTitle) {
-                $img->setAttribute('title', \strtolower($this->_emoji[$astext]));
+                $this->_lastEmojiTitle = emojiShortcut($this->_emoji[$astext]);
+                $img->setAttribute('title', ':'.$this->_lastEmojiTitle.':');
             }
             $img->setAttribute('src', $this->_lastEmojiURL);
 
@@ -110,6 +112,11 @@ class Emoji
     public function getLastSingleEmojiURL()
     {
         return $this->_lastEmojiURL;
+    }
+
+    public function getLastSingleEmojiTitle()
+    {
+        return $this->_lastEmojiTitle;
     }
 
     public static function getInstance()

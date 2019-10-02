@@ -253,6 +253,7 @@ var Chat = {
     {
         var emojisList = document.querySelector('.chat_box .emojis ul');
         emojisList.innerHTML = '';
+
         if (textarea.value.lastIndexOf(':') > -1 && textarea.value.length > textarea.value.lastIndexOf(':') + 2) {
             Object.keys(emojis).filter(key => key.indexOf(
                     textarea.value.substr(textarea.value.lastIndexOf(':') + 1)
@@ -260,10 +261,10 @@ var Chat = {
             .slice(0, 20)
             .forEach(found => {
                 var img = document.createElement('img');
-                img.setAttribute('src','theme/img/emojis/svg/' + emojis[found].codepoint + '.svg');
+                img.setAttribute('src','theme/img/emojis/svg/' + emojis[found].c + '.svg');
                 img.classList.add('emoji');
                 img.title = ':' + found + ':';
-                img.dataset.emoji = emojis[found].emoji;
+                img.dataset.emoji = emojis[found].e;
                 img.addEventListener('click', e => {
                     textarea.value = textarea.value.substr(0, textarea.value.lastIndexOf(':'));
                     emojisList.innerHTML = '';
@@ -679,6 +680,10 @@ var Chat = {
             } else {
                 img.setAttribute('height', '170');
             }
+        }
+
+        if (sticker.title) {
+            img.title = sticker.title;
         }
 
         if (sticker.picture) {

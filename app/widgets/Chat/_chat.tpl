@@ -218,6 +218,7 @@
             <h1>{$c->__('chat.new_title')}</h1>
             <h4>{$c->___('chat.new_text')}</h4>
             <h4>{$c->___('message.edit_help')}</h4>
+            <h4>{$c->___('message.emoji_help')}</h4>
         </div>
     </section>
 </div>
@@ -265,8 +266,11 @@
                         id="chat_textarea"
                         data-jid="{$jid}"
                         data-muc="{if="$muc"}true{/if}"
-                        {if="rand(0, 4) == 4 && !$muc"}
+                        {$rand = rand(0, 4)};
+                        {if="$rand == 4 && !$muc"}
                             placeholder="{$c->__('message.edit_help')}"
+                        {elseif="$rand == 3"}
+                            placeholder="{$c->__('message.emoji_help')}"
                         {else}
                             placeholder="{$c->__('chat.placeholder')}"
                         {/if}

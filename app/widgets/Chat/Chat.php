@@ -816,7 +816,8 @@ class Chat extends \Movim\Widget\Base
             && in_array($message->type,  ['chat', 'groupchat'])) {
             $message->sticker = [
                 'url' => $emoji->getLastSingleEmojiURL(),
-                'height' => 60
+                'title' => ':'.$emoji->getLastSingleEmojiTitle().':',
+                'height' => 60,
             ];
         }
 
