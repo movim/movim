@@ -19,6 +19,9 @@ class Presence extends Payload
             $session->set('activenotifs', $notifs);
 
             $this->event('subscribe', (string)$stanza->attributes()->from);
+        } elseif((string)$stanza->attributes()->type === 'error'
+            && isset($stanza->attributes()->id)) {
+            // Let's drop errors with an id, useless for us
         } else {
             $presence = DBPresence::findByStanza($stanza);
             $presence->set($stanza);

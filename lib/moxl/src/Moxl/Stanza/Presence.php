@@ -51,7 +51,6 @@ class Presence
         $c = $dom->createElementNS('http://jabber.org/protocol/caps', 'c');
         $c->setAttribute('hash', 'sha-1');
         $c->setAttribute('node', 'http://moxl.movim.eu/');
-        $c->setAttribute('ext', 'pmuc-v1 share-v1 voice-v1 video-v1 camera-v1');
         $c->setAttribute('ver', \Moxl\Utils::generateCaps());
         $root->appendChild($c);
 

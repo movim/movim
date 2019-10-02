@@ -62,22 +62,21 @@ class Utils
             'http://jabber.org/protocol/muc',
             'http://jabber.org/protocol/nick',
             'http://jabber.org/protocol/nick+notify',
-            'http://jabber.org/protocol/mood',
-            'http://jabber.org/protocol/mood+notify',
+            //'http://jabber.org/protocol/mood',
+            //'http://jabber.org/protocol/mood+notify',
             'http://jabber.org/protocol/xhtml-im',
             'http://jabber.org/protocol/chatstates',
             'http://jabber.org/protocol/commands',
-            'http://jabber.org/protocol/httpbind',
+            //'http://jabber.org/protocol/httpbind',
             'http://jabber.org/protocol/caps',
             'http://jabber.org/protocol/disco#info',
             'http://jabber.org/protocol/disco#items',
-            'http://jabber.org/protocol/activity',
-            'http://jabber.org/protocol/geoloc',
-            'http://jabber.org/protocol/geoloc+notify',
-            'http://jabber.org/protocol/http-bind',
+            //'http://jabber.org/protocol/activity',
+            //'http://jabber.org/protocol/geoloc',
+            //'http://jabber.org/protocol/geoloc+notify',
             'http://jabber.org/protocol/pubsub',
-            'http://jabber.org/protocol/tune',
-            'http://jabber.org/protocol/tune+notify'
+            //'http://jabber.org/protocol/tune',
+            //'http://jabber.org/protocol/tune+notify'
         ];
     }
 
