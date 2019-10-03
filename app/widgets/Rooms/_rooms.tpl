@@ -142,21 +142,23 @@
     {/if}
 
     <ul class="list thin active spaced divided">
-        <li onclick="Rooms_ajaxDisplay({if="$edit"}true{else}false{/if}, {if="$all"}false{else}true{/if})">
-            <span class="primary icon gray">
-                <i class="material-icons">
-                    {if="$all"}expand_less{else}expand_more{/if}
-                </i>
-            </span>
-            <p class="normal line">
-                {if="$all"}
-                    {$c->__('rooms.hide_disconnected')}
-                {else}
-                    {$c->__('rooms.show_all')}
-                {/if}
-                <span class="second">{$disconnected} <i class="material-icons">people</i></span>
-            </p>
-        </li>
+        {if="$disconnected > 0"}
+            <li onclick="Rooms_ajaxDisplay({if="$edit"}true{else}false{/if}, {if="$all"}false{else}true{/if})">
+                <span class="primary icon gray">
+                    <i class="material-icons">
+                        {if="$all"}expand_less{else}expand_more{/if}
+                    </i>
+                </span>
+                <p class="normal line">
+                    {if="$all"}
+                        {$c->__('rooms.hide_disconnected')}
+                    {else}
+                        {$c->__('rooms.show_all')}
+                    {/if}
+                    <span class="second">{$disconnected} <i class="material-icons">people</i></span>
+                </p>
+            </li>
+        {/if}
 
         <li onclick="Rooms_ajaxAdd()" class="{if="$edit"}disabled{/if}"">
             <span class="primary icon gray">
