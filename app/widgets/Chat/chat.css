@@ -146,24 +146,30 @@ main:not(.enabled) #chat_widget {
 }
 
 /* Emojis */
-#chat_widget .chat_box .emojis ul:not(:empty) {
+#chat_widget .chat_box .emojis:not(:empty) {
     text-align: center;
     margin-top: 0.25rem;
+    margin-bottom: -0.75rem;
+    max-height: 10.5rem;
+    overflow: hidden;
 }
 
-#chat_widget .chat_box .emojis ul img {
+#chat_widget .chat_box .emojis img {
     display: inline-block;
     width: 3rem;
     height: 3rem;
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    margin: 0 0.25rem;
-    border-radius: 0.5rem;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    margin: 0;
 }
 
-#chat_widget .chat_box .emojis ul img:hover {
+#chat_widget .chat_box .emojis img:hover,
+#chat_widget .chat_box .emojis img.selected {
     cursor: pointer;
     background-color: rgba(var(--movim-font), 0.05);
+    width: 4rem;
+    height: 4rem;
+    padding: 0.5rem;
 }
 
 /* Chatroom */
@@ -237,7 +243,7 @@ table.emojis td {
 #chat_widget .primary_action:hover,
 table.emojis td:hover {
     cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: rgba(var(--movim-font), 0.05);
     border-radius: 0.5rem;
 }
 

@@ -178,6 +178,12 @@ var Chat = {
 
         var textarea = Chat.getTextarea();
         textarea.onkeydown = function(event) {
+            if ((event.keyCode == 37 && Chat.tryPreviousEmoji())
+             || (event.keyCode == 39 && Chat.tryNextEmoji())) {
+                event.preventDefault();
+                return;
+            }
+
             if (this.dataset.muc
             && event.keyCode == 9) {
                 event.preventDefault();
@@ -200,6 +206,14 @@ var Chat = {
 
         textarea.onkeypress = function(event) {
             if (event.keyCode == 13) {
+                // An emoji was selected
+                var emoji = document.querySelector('.chat_box .emojis img.selected');
+                if (emoji) {
+                    Chat.selectEmoji(emoji);
+                    event.preventDefault();
+                    return;
+                }
+
                 if ((window.matchMedia('(max-width: 1024px)').matches && !event.shiftKey)
                 || (window.matchMedia('(min-width: 1025px)').matches && event.shiftKey)) {
                     return;
@@ -251,28 +265,67 @@ var Chat = {
     },
     checkEmojis: function(textarea)
     {
-        var emojisList = document.querySelector('.chat_box .emojis ul');
+        var emojisList = document.querySelector('.chat_box .emojis');
         emojisList.innerHTML = '';
 
         if (textarea.value.lastIndexOf(':') > -1 && textarea.value.length > textarea.value.lastIndexOf(':') + 2) {
+            var first = true;
+
             Object.keys(emojis).filter(key => key.indexOf(
                     textarea.value.substr(textarea.value.lastIndexOf(':') + 1)
                 ) > -1)
-            .slice(0, 20)
+            .slice(0, 40)
             .forEach(found => {
                 var img = document.createElement('img');
                 img.setAttribute('src','theme/img/emojis/svg/' + emojis[found].c + '.svg');
                 img.classList.add('emoji');
+
+                if (first) {
+                    img.classList.add('selected');
+                    first = false;
+                }
+
                 img.title = ':' + found + ':';
                 img.dataset.emoji = emojis[found].e;
                 img.addEventListener('click', e => {
-                    textarea.value = textarea.value.substr(0, textarea.value.lastIndexOf(':'));
-                    emojisList.innerHTML = '';
-                    Chat.insertAtCursor(e.target.dataset.emoji + ' ');
+                    Chat.selectEmoji(e.target);
                 });
                 emojisList.appendChild(img);
             });
         }
+    },
+    selectEmoji: function(emoji)
+    {
+        var emojisList = document.querySelector('.chat_box .emojis');
+        var textarea = Chat.getTextarea();
+
+        textarea.value = textarea.value.substr(0, textarea.value.lastIndexOf(':'));
+        emojisList.innerHTML = '';
+        Chat.insertAtCursor(emoji.dataset.emoji + ' ');
+    },
+    tryNextEmoji: function()
+    {
+        var currentEmoji = document.querySelector('.chat_box .emojis img.selected');
+
+        if (currentEmoji && currentEmoji.nextSibling) {
+            currentEmoji.classList.remove('selected');
+            currentEmoji.nextSibling.classList.add('selected');
+            return true;
+        }
+
+        return false;
+    },
+    tryPreviousEmoji: function()
+    {
+        var currentEmoji = document.querySelector('.chat_box .emojis img.selected');
+
+        if (currentEmoji && currentEmoji.previousSibling) {
+            currentEmoji.classList.remove('selected');
+            currentEmoji.previousSibling.classList.add('selected');
+            return true;
+        }
+
+        return false;
     },
     setTextarea: function(value)
     {

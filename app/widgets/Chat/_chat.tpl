@@ -224,7 +224,7 @@
 </div>
 <div class="chat_box">
     <ul class="list">
-        <li class="emojis"><ul></ul></li>
+        <li class="emojis"></li>
         <li class="{if="$muc && !$conference->connected"}disabled{/if}">
             <span class="primary icon gray primary_action" onclick="Stickers_ajaxShow('{$jid}')">
                 <i class="material-icons">mood</i>
