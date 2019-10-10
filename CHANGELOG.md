@@ -29,6 +29,7 @@ v0.16 (trunk)
  * Fix a compatibility issue between Phinx and symphony/console v4.3.4
  * Add support for XEP-0402: Bookmarks 2 and a migration button
  * Add a quick emoji search feature using the :key: system
+ * Fix XEP-0085: Chat State Notifications flow
 
 v0.15 – Donati
 ---------------------------

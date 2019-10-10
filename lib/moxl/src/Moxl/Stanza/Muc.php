@@ -13,6 +13,16 @@ class Muc
         Message::maker($to, $content, $html, 'groupchat', false, false, $id, false, $file, false, $parentId, $reactions);
     }
 
+    public static function active($to)
+    {
+        Message::maker($to, false, false, 'groupchat', 'active');
+    }
+
+    public static function inactive($to)
+    {
+        Message::maker($to, false, false, 'groupchat', 'inactive');
+    }
+
     public static function composing($to)
     {
         Message::maker($to, false, false, 'groupchat', 'composing');

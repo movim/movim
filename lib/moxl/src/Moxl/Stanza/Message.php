@@ -49,7 +49,16 @@ class Message
             $root->appendChild($xuser);
         }
 
+        // Chatstates
+        if ($chatstates != false && $content == false) {
+            $chatstate = $dom->createElementNS('http://jabber.org/protocol/chatstates', $chatstates);
+            $root->appendChild($chatstate);
+        }
+
         if ($content != false) {
+            $chatstate = $dom->createElementNS('http://jabber.org/protocol/chatstates', 'active');
+            $root->appendChild($chatstate);
+
             $body = $dom->createElement('body');
             $bodyContent = $dom->createTextNode($content);
             $body->appendChild($bodyContent);
@@ -73,11 +82,6 @@ class Message
 
             $xhtml->appendChild($body);
             $root->appendChild($xhtml);
-        }
-
-        if ($chatstates != false) {
-            $chatstate = $dom->createElementNS('http://jabber.org/protocol/chatstates', $chatstates);
-            $root->appendChild($chatstate);
         }
 
         if ($receipts != false) {
@@ -183,16 +187,6 @@ class Message
         self::maker($to, $content, $html, 'chat', 'active', 'request', $id, $replace, $file, false, $parentId, $reactions);
     }
 
-    public static function composing($to)
-    {
-        self::maker($to, false, false, 'chat', 'composing');
-    }
-
-    public static function paused($to)
-    {
-        self::maker($to, false, false, 'chat', 'paused');
-    }
-
     public static function receipt($to, $id)
     {
         self::maker($to, false, false, 'chat', false, 'received', $id);
@@ -206,5 +200,25 @@ class Message
     public static function invite($to, $id, $invite)
     {
         self::maker($to, false, false, false, false, false, $id, false, false, $invite);
+    }
+
+    public static function active($to)
+    {
+        self::maker($to, false, false, 'chat', 'active');
+    }
+
+    public static function inactive($to)
+    {
+        self::maker($to, false, false, 'chat', 'inactive');
+    }
+
+    public static function composing($to)
+    {
+        self::maker($to, false, false, 'chat', 'composing');
+    }
+
+    public static function paused($to)
+    {
+        self::maker($to, false, false, 'chat', 'paused');
     }
 }

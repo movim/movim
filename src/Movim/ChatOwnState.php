@@ -2,11 +2,9 @@
 
 namespace Movim;
 
-use Movim\Widget\Wrapper;
-use React\EventLoop\Timer\Timer;
-
 use Moxl\Xec\Action\Message\Composing;
 use Moxl\Xec\Action\Message\Paused;
+use Moxl\Xec\Action\Message\Inactive;
 
 /**
  * This class handle all the outgoing chatstates
@@ -58,19 +56,7 @@ class ChatOwnState
         });
     }
 
-    public function halt()
-    {
-        global $loop;
-
-        $this->_to = null;
-        $this->_muc = false;
-
-        if ($this->_timer) {
-            $loop->cancelTimer($this->_timer);
-        }
-    }
-
-    private function paused(string $to, bool $muc = false)
+    public function paused(string $to, bool $muc = false)
     {
         $this->halt();
 
@@ -81,5 +67,17 @@ class ChatOwnState
         }
 
         $mp->setTo($to)->request();
+    }
+
+    public function halt()
+    {
+        global $loop;
+
+        $this->_to = null;
+        $this->_muc = false;
+
+        if ($this->_timer) {
+            $loop->cancelTimer($this->_timer);
+        }
     }
 }
