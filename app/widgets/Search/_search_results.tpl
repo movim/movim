@@ -89,6 +89,6 @@
 
 {if="$contacts->isNotEmpty()"}
     {autoescape="off"}
-        {$c->prepareUsers($users)}
+        {$c->prepareUsers($contacts)}
     {/autoescape}
 {/if}
