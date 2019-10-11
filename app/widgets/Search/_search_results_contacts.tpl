@@ -1,9 +1,9 @@
-<ul class="list flex active">
+<ul class="list flex">
     <li class="subheader block large">
         <p>{$c->__('explore.explore')}</p>
     </li>
     {loop="$users"}
-        <li class="block" title="{$value->jid}" onclick="MovimUtils.redirect('{$c->route('contact', $value->jid)}')">
+        <li class="block" title="{$value->jid}">
             {$url = $value->getPhoto('m')}
             {if="$url"}
                 <span class="primary icon bubble
