@@ -73,7 +73,20 @@ class Search extends Base
                       ->from('users')
                       ->where('public', true)
                       ->where('id', 'like', '%'. $key . '%');
-            })->limit(5)->get();
+            })->leftJoin(DB::raw('(
+                select min(value) as value, jid
+                from presences
+                group by jid) as presences
+                '), 'presences.jid', '=', 'contacts.id')
+            ->whereNotIn('id', function ($query) {
+                $query->select('jid')
+                      ->from('rosters')
+                      ->where('session_id', $this->user->session->id);
+            })
+            ->where('id', '!=', $this->user->id)
+            ->orderBy('presences.value')
+            ->limit(10)
+            ->get();
 
             if (Validator::email()->validate($key)) {
                 $contact = new \App\Contact;
@@ -123,7 +136,7 @@ class Search extends Base
                   ->from('users')
                   ->where('public', true);
         })
-        ->join(DB::raw('(
+        ->leftJoin(DB::raw('(
             select min(value) as value, jid
             from presences
             group by jid) as presences
@@ -135,9 +148,9 @@ class Search extends Base
         })
         ->where('id', '!=', $this->user->id)
         ->orderBy('presences.value')
-        ->limit(15)->get();
+        ->limit(16)
+        ->get();
 
-        $view->assign('presencestxt', getPresencesTxt());
         $view->assign('users', $users);
 
         return $view->draw('_search_results_empty');
@@ -158,5 +171,15 @@ class Search extends Base
     public function prepareTicket(\App\Post $post)
     {
         return (new Post)->prepareTicket($post);
+    }
+
+    public function prepareUsers($users)
+    {
+        $view = $this->tpl();
+
+        $view->assign('presencestxt', getPresencesTxt());
+        $view->assign('users', $users);
+
+        return $view->draw('_search_results_contacts');
     }
 }
