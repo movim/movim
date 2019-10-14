@@ -69,6 +69,19 @@
             {/if}
         </li>
     {/loop}
+
+    {if="$contacts->count() > 7"}
+        <br />
+        <li class="showall active" onclick="Search.showCompleteRoster(this)">
+            <span class="primary icon gray">
+                <i class="material-icons">expand_more</i>
+            </span>
+            <p class="normal line">
+                {$c->__('search.show_complete_roster')}
+                <span class="second">{$contacts->count()} <i class="material-icons">people</i></span>
+            </p>
+        </li>
+    {/if}
 {else}
     <ul class="list thick">
         <li>

@@ -5,7 +5,6 @@ var Tabs = {
         var current = null;
 
         // We create the list
-        var html = '';
         for (var i=0; i<tabs.length; i++) {
             if (window.location.hash == '#' + tabs[i].id + '_tab') {
                 current = tabs[i].id;

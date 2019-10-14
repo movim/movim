@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Capsule\Manager as DB;
 
 use Respect\Validation\Validator;
 use Movim\Picture;
@@ -15,6 +16,37 @@ class Contact extends Model
     public function user()
     {
         return $this->belongsTo('App\User', 'id');
+    }
+
+    public function scopePublic($query, $like = false)
+    {
+        return $query->whereIn('id', function ($query) use ($like) {
+            $query->select('id')
+                  ->from('users')
+                  ->where('public', true)
+                  ->when($like !== false, function ($query) use ($like) {
+                      $query->where('id', 'like', '%'. $like . '%');
+                  });
+        });
+    }
+
+    public function scopeNotInRoster($query, $sessionId)
+    {
+        return $query->whereNotIn('id', function ($query) use ($sessionId) {
+            $query->select('jid')
+                  ->from('rosters')
+                  ->where('session_id', $sessionId);
+        });
+    }
+
+    public function scopeOrderByPresence($query)
+    {
+        return $query->leftJoin(DB::raw('(
+            select min(value) as value, jid
+            from presences
+            group by jid) as presences
+            '), 'presences.jid', '=', 'contacts.id')
+        ->orderBy('presences.value');
     }
 
     public function save(array $options = [])

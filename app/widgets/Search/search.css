@@ -20,6 +20,6 @@
     top: -1rem;
 }
 
-#search ul#roster li:not(.found) {
+#search ul#roster li:not(.found):not(.showall) {
     display: none;
 }

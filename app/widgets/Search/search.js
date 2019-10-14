@@ -1,17 +1,19 @@
 var Search = {
     timer : null,
-    rosterLimit: 7,
+    rosterLimit: false,
 
     init : function() {
         if (window.matchMedia("(min-width: 1025px)").matches) {
             document.querySelector('input[name=keyword]').focus();
         }
 
+        Search.rosterLimit = 7;
+
         Search_ajaxInitRoster();
     },
 
     roster : function(key) {
-        var selector = '#search > #roster > li';
+        var selector = '#search > #roster > li:not(.showall)';
         var subheader = document.querySelector(selector + '.subheader')
 
         document.querySelectorAll(selector)
@@ -33,6 +35,13 @@ var Search = {
         } else if (key != '') {
             subheader.classList.remove('found');
         }
+    },
+
+    showCompleteRoster : function(li)
+    {
+        li.style.display = 'none';
+        Search.rosterLimit = document.querySelectorAll('#search > #roster > li:not(.showall)').length;
+        Search.searchCurrent();
     },
 
     chat : function(jid) {
@@ -59,8 +68,7 @@ var Search = {
 
         Search.timer = setTimeout(() => {
             Search_ajaxSearch(value);
-        },
-        700);
+        }, 700);
 
         Search.roster(value);
     },

@@ -25,18 +25,15 @@
             <span class="control icon active gray" onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}')">
                 <i class="material-icons">person</i>
             </span>
-            <span class="control icon active gray" onclick="Search.chat('{$value->jid|echapJS}')">
-                <i class="material-icons">comment</i>
-            </span>
 
             <p class="normal line">
                 {$value->truename}
-                {if="!empty($value->description)"}
-                    <span class="second" title="{$value->description|strip_tags}">
-                        {$value->description|strip_tags|truncate:80}
-                    </span>
-                {/if}
             </p>
+            {if="!empty($value->description)"}
+                <p class="line" title="{$value->description|strip_tags}">
+                    {$value->description|strip_tags|truncate:80}
+                </p>
+            {/if}
         </li>
     {/loop}
 </ul>

@@ -6,6 +6,13 @@ use Respect\Validation\Validator;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Capsule\Manager as DB;
 
+use App\Post;
+use App\Tag;
+use App\Contact;
+use App\Info;
+
+use Post as PostWidget;
+
 class Search extends Base
 {
     public function load()
@@ -41,25 +48,35 @@ class Search extends Base
 
         $key = str_replace(['#', 'xmpp:'], '', $key);
 
-        if (Validator::stringType()->length(1, 64)->validate($key)) {
+        if (Validator::stringType()->length(2, 64)->validate($key)) {
             $view->assign('posts', new Collection);
 
             if ($this->user->hasPubsub()) {
-                $posts = \App\Post::whereIn('id', function ($query) use ($key) {
+                $tagIds = Tag::where('name', 'like', '%' . strtolower($key) . '%')->pluck('id');
+
+                $tags = DB::table('post_tag')
+                    ->select(DB::raw('count(*) as count, name'))
+                    ->join('tags', 'tag_id', '=', 'tags.id')
+                    ->whereIn('tag_id', $tagIds)
+                    ->groupBy('name')
+                    ->orderBy('count', 'desc')
+                    ->take(4)
+                    ->get()
+                    ->pluck('name', 'count');
+
+                $view->assign('tags', $tags);
+
+                $posts = Post::whereIn('id', function ($query) use ($tagIds) {
                     $query->select('post_id')
                           ->from('post_tag')
-                          ->whereIn('tag_id', function ($query) use ($key) {
-                              $query->select('id')
-                                  ->from('tags')
-                                  ->where('name', 'like', '%' . strtolower($key) . '%');
-                          });
+                          ->whereIn('tag_id', $tagIds);
                 })
                 ->whereIn('id', function ($query) {
                     $query = $query->select('id')->from('posts');
 
-                    $query = \App\Post::withContactsScope($query);
-                    $query = \App\Post::withMineScope($query);
-                    $query = \App\Post::withSubscriptionsScope($query);
+                    $query = Post::withContactsScope($query);
+                    $query = Post::withMineScope($query);
+                    $query = Post::withSubscriptionsScope($query);
                 })
                 ->orderBy('published', 'desc')
                 ->take(5)
@@ -68,51 +85,23 @@ class Search extends Base
                 $view->assign('posts', $posts);
             }
 
-            $contacts = \App\Contact::whereIn('id', function ($query) use ($key) {
-                $query->select('id')
-                      ->from('users')
-                      ->where('public', true)
-                      ->where('id', 'like', '%'. $key . '%');
-            })->leftJoin(DB::raw('(
-                select min(value) as value, jid
-                from presences
-                group by jid) as presences
-                '), 'presences.jid', '=', 'contacts.id')
-            ->whereNotIn('id', function ($query) {
-                $query->select('jid')
-                      ->from('rosters')
-                      ->where('session_id', $this->user->session->id);
-            })
-            ->where('id', '!=', $this->user->id)
-            ->orderBy('presences.value')
-            ->limit(10)
-            ->get();
+            $contacts = Contact::public($key)
+                ->notInRoster($this->user->session->id)
+                ->orderByPresence()
+                ->where('id', '!=', $this->user->id)
+                ->limit(10)
+                ->get();
 
             if (Validator::email()->validate($key)) {
-                $contact = new \App\Contact;
+                $contact = new Contact;
                 $contact->id = $key;
                 $contacts->push($contact);
             }
 
             $view->assign('contacts', $contacts);
 
-            $tags = DB::table('post_tag')
-                ->select(DB::raw('count(*) as count, name'))
-                ->join('tags', 'tag_id', '=', 'tags.id')
-                ->whereIn('tag_id', function ($query) use ($key) {
-                    $query->select('id')
-                        ->from('tags')
-                        ->where('name', 'like', '%' . strtolower($key) . '%');
-                })
-                ->groupBy('name')
-                ->orderBy('count', 'desc')
-                ->take(4)
-                ->get()
-                ->pluck('name', 'count');
-
-            $view->assign('tags', $tags);
-
-            $communities = \App\Info::whereRaw('lower(node) like ?', '%'.strtolower($key).'%')
+            $communities = Info::whereRaw('lower(node) like ?', '%'.strtolower($key).'%')
+                ->whereRaw('lower(node) not like ?', 'urn:xmpp:microblog:0%')
                 ->where('category', 'pubsub')
                 ->where('type', 'leaf')
                 ->where('pubsubaccessmodel', 'open')
@@ -131,25 +120,12 @@ class Search extends Base
     {
         $view = $this->tpl();
 
-        $users = \App\Contact::whereIn('id', function ($query) {
-            $query->select('id')
-                  ->from('users')
-                  ->where('public', true);
-        })
-        ->leftJoin(DB::raw('(
-            select min(value) as value, jid
-            from presences
-            group by jid) as presences
-            '), 'presences.jid', '=', 'contacts.id')
-        ->whereNotIn('id', function ($query) {
-            $query->select('jid')
-                  ->from('rosters')
-                  ->where('session_id', $this->user->session->id);
-        })
-        ->where('id', '!=', $this->user->id)
-        ->orderBy('presences.value')
-        ->limit(16)
-        ->get();
+        $users = Contact::public()
+            ->notInRoster($this->user->session->id)
+            ->orderByPresence()
+            ->where('id', '!=', $this->user->id)
+            ->limit(16)
+            ->get();
 
         $view->assign('users', $users);
 
@@ -168,9 +144,9 @@ class Search extends Base
         $contact->ajaxChat($jid);
     }
 
-    public function prepareTicket(\App\Post $post)
+    public function prepareTicket(Post $post)
     {
-        return (new Post)->prepareTicket($post);
+        return (new PostWidget)->prepareTicket($post);
     }
 
     public function prepareUsers($users)
