@@ -13,14 +13,16 @@ var Search = {
     },
 
     roster : function(key) {
-        var selector = '#search > #roster > li:not(.showall)';
-        var subheader = document.querySelector(selector + '.subheader')
+        var selector = '#search > #roster > li';
+        var subheader = document.querySelector(selector + '.subheader');
+        var showall = document.querySelector(selector + '.showall');
 
         document.querySelectorAll(selector)
             .forEach(item => item.classList.remove('found'));
 
         if (key == '') {
             document.querySelectorAll(selector + ':nth-child(-n+' + (Search.rosterLimit+1) + ')').forEach(item => item.classList.add('found'));
+            document.querySelector(selector + ':last-child').classList.add('found');
         };
 
         var founds = document.querySelectorAll(
@@ -31,9 +33,11 @@ var Search = {
 
         if (founds.length > 0) {
             subheader.classList.add('found');
+            showall.classList.add('found');
             founds.forEach(item => item.classList.add('found'));
         } else if (key != '') {
             subheader.classList.remove('found');
+            showall.classList.remove('found');
         }
     },
 

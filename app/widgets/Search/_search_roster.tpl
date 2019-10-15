@@ -71,7 +71,6 @@
     {/loop}
 
     {if="$contacts->count() > 7"}
-        <br />
         <li class="showall active" onclick="Search.showCompleteRoster(this)">
             <span class="primary icon gray">
                 <i class="material-icons">expand_more</i>

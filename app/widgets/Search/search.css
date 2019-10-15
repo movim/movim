@@ -20,6 +20,10 @@
     top: -1rem;
 }
 
-#search ul#roster li:not(.found):not(.showall) {
+#search ul#roster li:not(.found) {
     display: none;
+}
+
+#search ul#roster li.showall {
+    margin-top: 1rem;
 }
