@@ -8,6 +8,7 @@ use Moxl\Xec\Action\Message\Invite;
 use Moxl\Xec\Action\Disco\Request;
 use Moxl\Xec\Action\Disco\Items;
 use Moxl\Xec\Action\Muc\SetSubject;
+use Moxl\Xec\Action\Muc\Destroy;
 use Moxl\Xec\Action\Vcard\Set as VcardSet;
 
 use Respect\Validation\Validator;
@@ -35,6 +36,7 @@ class Rooms extends Base
         $this->registerEvent('disco_items_nosave_handle', 'onDiscoGateway');
         $this->registerEvent('disco_items_nosave_error', 'onDiscoGatewayError');
         $this->registerEvent('vcard_set_handle', 'onAvatarSet', 'chat');
+        $this->registerEvent('muc_destroy_handle', 'onDestroyed', 'chat');
         $this->registerEvent('presence_muc_handle', 'onConnected', 'chat');
         $this->registerEvent('presence_unavailable_handle', 'onDisconnected', 'chat');
         $this->registerEvent('presence_muc_errorconflict', 'onConflict');
@@ -116,6 +118,14 @@ class Rooms extends Base
     public function onBookmarkSynchronized($packet)
     {
         Notification::toast($this->__('chatrooms.synchronized', $packet->content));
+    }
+
+    public function onDestroyed($packet)
+    {
+        $this->refreshRooms();
+        $this->rpc('Chat_ajaxGet');
+
+        Notification::toast($this->__('chatrooms.destroyed'));
     }
 
     public function onBookmarkSet($packet)
@@ -419,6 +429,34 @@ class Rooms extends Base
 
         $d = new Delete;
         $d->setId($room)
+          ->request();
+    }
+
+    /**
+     * @brief Destroy a room
+     */
+    public function ajaxAskDestroy($room)
+    {
+        if (!$this->validateRoom($room)) {
+            return;
+        }
+
+        $view = $this->tpl();
+        $view->assign('room', $room);
+
+        Dialog::fill($view->draw('_rooms_destroy'));
+    }
+    /**
+     * @brief Destroy a room
+     */
+    public function ajaxDestroy($room)
+    {
+        if (!$this->validateRoom($room)) {
+            return;
+        }
+
+        $d = new Destroy;
+        $d->setTo($room)
           ->request();
     }
 

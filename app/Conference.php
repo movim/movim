@@ -28,6 +28,7 @@ class Conference extends Model
                     ->where('resource', '!=', '')
                     ->where('value', '<', 5)
                     ->orderBy('mucrole')
+                    ->orderBy('mucaffiliation', 'desc')
                     ->orderBy('value')
                     ->orderBy('resource');
     }

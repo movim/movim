@@ -93,8 +93,11 @@
             <li onclick="Rooms_ajaxGetAvatar('{$room}')">
                 <p class="normal">{$c->__('page.avatar')}</p>
             </li>
-            <li class="divided" onclick="Rooms_ajaxGetSubject('{$room}')">
+            <li onclick="Rooms_ajaxGetSubject('{$room}')">
                 <p class="normal">{$c->__('chatroom.subject')}</p>
+            </li>
+            <li class="divided" onclick="Rooms_ajaxAskDestroy('{$room}')">
+                <p class="normal">{$c->__('button.destroy')}</p>
             </li>
         {/if}
 

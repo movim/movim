@@ -49,6 +49,19 @@ class Muc
         \Moxl\API::request($dom->saveXML($dom->documentElement));
     }
 
+    public static function destroy($to)
+    {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $query = $dom->createElementNS('http://jabber.org/protocol/muc#owner', 'query');
+
+        $destroy = $dom->createElement('destroy');
+        $destroy->setAttribute('jid', $to);
+        $query->appendChild($destroy);
+
+        $xml = \Moxl\API::iqWrapper($query, $to, 'set');
+        \Moxl\API::request($xml);
+    }
+
     public static function getConfig($to)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
