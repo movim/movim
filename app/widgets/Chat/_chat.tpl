@@ -86,19 +86,23 @@
     </ul>
 
     <ul class="list context_menu active">
-        {if="$conference->presence && $conference->presence->mucrole == 'moderator' && !$anon"}
-            <li onclick="Chat_ajaxGetRoomConfig('{$room}')">
-                <p class="normal">{$c->__('chatroom.administration')}</p>
-            </li>
+        {if="$conference->presence && !$anon"}
+            {if="$conference->presence->mucrole == 'moderator'"}
             <li onclick="Rooms_ajaxGetAvatar('{$room}')">
                 <p class="normal">{$c->__('page.avatar')}</p>
             </li>
             <li onclick="Rooms_ajaxGetSubject('{$room}')">
                 <p class="normal">{$c->__('chatroom.subject')}</p>
             </li>
-            <li class="divided" onclick="Rooms_ajaxAskDestroy('{$room}')">
-                <p class="normal">{$c->__('button.destroy')}</p>
-            </li>
+            {/if}
+            {if="$conference->presence->mucaffiliation == 'owner'"}
+                <li onclick="Chat_ajaxGetRoomConfig('{$room}')">
+                    <p class="normal">{$c->__('chatroom.administration')}</p>
+                </li>
+                <li class="divided" onclick="Rooms_ajaxAskDestroy('{$room}')">
+                    <p class="normal">{$c->__('button.destroy')}</p>
+                </li>
+            {/if}
         {/if}
 
         {if="!empty($info->abuseaddresses)"}

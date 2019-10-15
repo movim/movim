@@ -62,6 +62,20 @@ class Muc
         \Moxl\API::request($xml);
     }
 
+    public static function setRole($to, $nick, $role)
+    {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $query = $dom->createElementNS('http://jabber.org/protocol/muc#admin', 'query');
+
+        $item = $dom->createElement('item');
+        $item->setAttribute('nick', $nick);
+        $item->setAttribute('role', $role);
+        $query->appendChild($item);
+
+        $xml = \Moxl\API::iqWrapper($query, $to, 'set');
+        \Moxl\API::request($xml);
+    }
+
     public static function getConfig($to)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
