@@ -19,6 +19,14 @@
                         <i class="material-icons">people</i>
                     </span>
                 {/if}
+                {if="$value->mucjid != $me"}
+                <span class="control icon active gray" onclick="
+                    Chats_ajaxOpen('{$value->mucjid}');
+                    Chat_ajaxGet('{$value->mucjid}');
+                    Dialog_ajaxClear();">
+                    <i class="material-icons">comment</i>
+                </span>
+                {/if}
                 {if="$value->mucaffiliation == 'owner'"}
                     <span class="control icon yellow" title="{$c->__('rooms.owner')}">
                         <i class="material-icons">star</i>
@@ -32,14 +40,6 @@
                     <span class="control icon gray" title="{$c->__('rooms.visitor')}">
                         <i class="material-icons">speaker_notes_off</i>
                     </span>
-                {/if}
-                {if="$value->mucjid != $me"}
-                <span class="control icon active gray" onclick="
-                    Chats_ajaxOpen('{$value->mucjid}');
-                    Chat_ajaxGet('{$value->mucjid}');
-                    Dialog_ajaxClear();">
-                    <i class="material-icons">comment</i>
-                </span>
                 {/if}
                 <p class="line normal">
                     {if="$value->mucjid && strpos($value->mucjid, '/') == false && !$c->supported('anonymous')"}
