@@ -9,7 +9,7 @@ Installation
 ------------
 Please refer to the installation instructions that are available on the GitHub Wiki: https://github.com/movim/movim/wiki
 
-Movim is also available as a [Docker image](https://github.com/movim/movim_docker) or as a [Debian package](https://packages.debian.org/sid/movim).
+Movim is also available as a [Docker image](https://github.com/movim/movim_docker) or as a [Debian package](https://packages.debian.org/movim).
 
 Support Us
 ----------
