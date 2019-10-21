@@ -1016,7 +1016,7 @@ class Chat extends \Movim\Widget\Base
     {
         $view = $this->tpl();
 
-        $conferences = \App\Info::where('category', 'conference')
+        $conferences = \App\Info::whereCategory('conference')
                                 ->whereNotIn('server', $this->user->session->conferences()->pluck('conference')->toArray())
                                 ->where('mucpublic', true)
                                 ->where('mucpersistent', true);

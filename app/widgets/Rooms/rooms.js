@@ -15,7 +15,7 @@ var Rooms = {
 
             Rooms.default_services.forEach(function(item) {
                var option = document.createElement('option');
-               option.value = input.value + '@' + item.node;
+               option.value = input.value + '@' + item.server;
                suggestions.appendChild(option);
             });
         }

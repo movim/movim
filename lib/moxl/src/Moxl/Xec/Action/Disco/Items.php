@@ -43,8 +43,6 @@ class Items extends Action
                 $this->method('manual');
             }
 
-            $jid = null;
-
             $parent = \App\Info::where('server', $this->_to)
                              ->where('node', '')
                              ->first();
@@ -52,45 +50,26 @@ class Items extends Action
 
             foreach ($stanza->query->item as $item) {
                 if ($this->_save) {
-                    $info = \App\Info::firstOrNew([
-                        'server' => $this->_to,
-                        'node' => (string)$item->attributes()->node
-                    ]);
+                    if ($item->attributes()->node) {
+                        $info = \App\Info::firstOrNew([
+                            'server' => $this->_to,
+                            'node' => (string)$item->attributes()->node
+                        ]);
 
-                    $info->setItem($item);
+                        if ($parent && $parent->isPubsubService()) {
+                            $info->setPubsubItem($item);
 
-                    if ($parent && $parent->isPubsubService()) {
-                        $info->category = 'pubsub';
-
-                        if (!$info->isMicroblogCommentsNode()) {
-                            $counter++;
+                            if (!$info->isMicroblogCommentsNode()) {
+                                $counter++;
+                                $info->save();
+                            }
                         }
-                    }
-
-                    if (!empty($info->category)
-                    && !$info->isMicroblogCommentsNode()) {
-                        $info->save();
-                    }
-                }
-
-                if ($jid != $info->server) {
-                    if (isset($info->node)
-                    && $info->node != ''
-                    && $info->node != 'urn:xmpp:microblog:0') {
+                    } elseif ($parent && $parent->identities->contains('category', 'server')) {
                         $r = new Request;
-                        $r->setTo($info->server)
-                          ->setNode($info->node)
-                          ->request();
-                    }
-
-                    if (strpos($info->server, '/') === false) {
-                        $r = new Request;
-                        $r->setTo($info->server)
+                        $r->setTo((string)$item->attributes()->jid)
                           ->request();
                     }
                 }
-
-                $jid = $info->server;
             }
 
             if ($parent && $parent->isPubsubService()) {

@@ -4,9 +4,6 @@ namespace App;
 
 use Respect\Validation\Validator;
 
-use Movim\Picture;
-use Movim\User;
-
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Capsule\Manager as DB;
 
@@ -486,7 +483,7 @@ class Post extends Model
             $enc = (array)$attachment->attributes();
             $enc = $enc['@attributes'];
 
-            $att = new \App\Attachment;
+            $att = new Attachment;
 
             if (empty($enc['href']) || empty($enc['rel'])) {
                 continue;
@@ -526,7 +523,7 @@ class Post extends Model
                     $att->logo = (isset($enc['logo'])) ? $enc['logo'] : null;
 
                     if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $enc['href'], $match)) {
-                        $atty = new \App\Attachment;
+                        $atty = new Attachment;
                         $atty->rel = $enc['rel'];
                         $atty->href = 'https://www.youtube.com/embed/' . $match[1];
                         $atty->category = 'youtube';
@@ -548,7 +545,7 @@ class Post extends Model
         }
 
         if ($picture == false && $extra) {
-            $attachment = new \App\Attachment;
+            $attachment = new Attachment;
             $attachment->rel = 'enclosure';
             $attachment->href = $extra;
             $attachment->type = 'content';

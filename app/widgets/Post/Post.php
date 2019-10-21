@@ -272,8 +272,8 @@ class Post extends Base
         $view = $this->tpl();
         $view->assign('post', $post);
         $view->assign('info', \App\Info::where('server', $post->server)
-                                            ->where('node', $post->node)
-                                            ->first());
+                                       ->where('node', $post->node)
+                                       ->first());
         return $view->draw('_post_prevnext_back');
     }
 

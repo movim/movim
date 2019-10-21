@@ -630,3 +630,16 @@ function __()
     $string = array_shift($args);
     return $l->translate($string, $args);
 }
+
+/*
+ * Quick debug and die
+ */
+function dd($string)
+{
+    if (php_sapi_name() != 'cli') {
+        \Utils::debug(is_string($string) ? $string : serialize($string));
+    } else {
+        \var_dump(is_string($string) ? $string : serialize($string));
+    }
+    exit;
+}

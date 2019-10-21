@@ -9,7 +9,6 @@ class CreateReactionsTable extends Migration
     {
         $this->disableForeignKeyCheck();
 
-
         $this->schema->table('messages', function (Blueprint $table) {
             $table->dropForeign(['user_id']);
             $table->dropPrimary('messages_pkey');

@@ -93,27 +93,27 @@ class Session extends Model
 
     public function getUploadService()
     {
-        return Capability::where('node', 'like', '%' . $this->host)
-                         ->where('category', 'store')
-                         ->where('type', 'file')
-                         ->where('features', 'like', '%urn:xmpp:http:upload%')
-                         ->first();
+        return Info::where('server', 'like', '%' . $this->host)
+                   ->whereCategory('store')
+                   ->whereType('file')
+                   ->where('features', 'like', '%urn:xmpp:http:upload%')
+                   ->first();
     }
 
     public function getChatroomsServices()
     {
-        return Capability::where('node', 'like', '%' . $this->host . '%')
-                         ->where('node', 'not like', '%@%')
-                         ->where('category', 'conference')
-                         ->get();
+        return Info::where('server', 'like', '%' . $this->host . '%')
+                   ->where('server', 'not like', '%@%')
+                   ->whereCategory('conference')
+                   ->get();
     }
 
     public function getCommentsService()
     {
-        return Capability::where('node', 'comments.' . $this->host)
-                         ->where('category', 'pubsub')
-                         ->where('type', 'service')
-                         ->first();
+        return Info::where('server', 'comments.' . $this->host)
+                   ->whereCategory('pubsub')
+                   ->whereType('service')
+                   ->first();
     }
 
     public function loadMemory()

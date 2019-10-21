@@ -2,13 +2,49 @@
 
 namespace App;
 
-use Movim\Model;
+use Illuminate\Database\Eloquent\Model;
 
 class Info extends Model
 {
-    protected $primaryKey = ['server', 'node'];
-    public $incrementing = false;
     protected $fillable = ['server', 'node', 'avatarhash'];
+    protected $with = ['identities'];
+
+    private $freshIdentities;
+
+    public function identities()
+    {
+        return $this->hasMany('App\Identity');
+    }
+
+    public function save(array $options = [])
+    {
+        try {
+            parent::save($options);
+
+            if ($this->freshIdentities) {
+                $this->identities()->delete();
+                $this->identities()->saveMany($this->freshIdentities);
+            }
+        } catch (\Exception $e) {
+            /**
+             * Existing info are saved in the DB
+             */
+        }
+    }
+
+    public function scopeWhereCategory($query, $category)
+    {
+        return $query->whereHas('identities', function($query) use ($category) {
+            $query->where('category', $category);
+        });
+    }
+
+    public function scopeWhereType($query, $type)
+    {
+        return $query->whereHas('identities', function($query) use ($type) {
+            $query->where('type', $type);
+        });
+    }
 
     public function setAdminaddressesAttribute(array $arr)
     {
@@ -90,13 +126,13 @@ class Info extends Model
 
     public function getRelatedAttribute()
     {
-        if ($this->category == 'pubsub' && $this->type == 'leaf') {
+        if ($this->identities->contains('category', 'pubsub') && $this->identities->contains('type', 'leaf')) {
             return \App\Info::where('related', 'xmpp:'.$this->server.'?;node='.$this->node)
                 ->first();
         }
 
         if (isset($this->attributes['related'])
-        && $this->category == 'conference' && $this->type == 'text') {
+        && $this->identities->contains('category', 'conference') && $this->identities->contains('type', 'text')) {
             $uri = parse_url($this->attributes['related']);
 
             if (isset($uri['query']) && isset($uri['path'])) {
@@ -128,36 +164,73 @@ class Info extends Model
             : null;
     }
 
+    public function getDeviceIcon()
+    {
+        if ($this->identities->contains('type', 'handheld')
+        || $this->identities->contains('type', 'phone')) {
+            return 'smartphone';
+        }
+        if ($this->identities->contains('type', 'bot')) {
+            return 'memory';
+        }
+        if ($this->identities->contains('type', 'console')) {
+            return 'video_label';
+        }
+        if ($this->identities->contains('type', 'web')) {
+            if ($this->name == 'Movim') {
+                return 'cloud_queue';
+            }
+
+            return 'language';
+        }
+
+        return 'desktop_windows';
+    }
+
+    public function hasFeature(string $feature)
+    {
+        return (in_array($feature, unserialize($this->attributes['features'])));
+    }
+
+    public function isJingle()
+    {
+        return $this->hasFeature('urn:xmpp:jingle:1');
+    }
+
+    public function isMAM()
+    {
+        return $this->hasFeature('urn:xmpp:mam:1');
+    }
+
+    public function isMAM2()
+    {
+        return $this->hasFeature('urn:xmpp:mam:2');
+    }
+
     public function set($query)
     {
         $from = (string)$query->attributes()->from;
 
-        if (strpos($from, '/') == false
-        && isset($query->query)) {
-            $this->server   = $from;
+        if (isset($query->query)) {
+            $this->server   = strpos($from, '/') == false ? $from : null;
             $this->node     = (string)$query->query->attributes()->node;
+            $this->freshIdentities = collect();
 
             foreach ($query->query->identity as $i) {
-                if ($i->attributes()) {
-                    $this->category = (string)$i->attributes()->category;
-                    $this->type     = (string)$i->attributes()->type;
+                $identity = new Identity;
+                $identity->category = (string)$i->attributes()->category;
+                $identity->type     = (string)$i->attributes()->type;
 
-                    if ($i->attributes()->name) {
-                        $this->name = (string)$i->attributes()->name;
-                    } elseif (!empty($this->node)) {
-                        $this->name = $this->node;
-                    }
-                }
+                $this->freshIdentities->push($identity);
+                $this->name = ($i->attributes()->name)
+                    ? (string)$i->attributes()->name
+                    : $this->node;
             }
 
-            foreach ($query->query->feature as $feature) {
-                $key = (string)$feature->attributes()->var;
 
-                switch ($key) {
-                    // If it's a MUC we clear the node
-                    case 'http://jabber.org/protocol/muc':
-                        $this->node = '';
-                        break;
+            $features = [];
+            foreach ($query->query->feature as $feature) {
+                switch ((string)$feature->attributes()->var) {
                     case 'muc_public':
                         $this->mucpublic = true;
                         break;
@@ -177,12 +250,14 @@ class Info extends Model
                         $this->mucsemianonymous = true;
                         break;
                 }
+
+                array_push($features, (string)$feature->attributes()->var);
             }
+            $this->attributes['features'] = serialize($features);
 
             if (isset($query->query->x)) {
                 foreach ($query->query->x->field as $field) {
-                    $key = (string)$field->attributes()->var;
-                    switch ($key) {
+                    switch ((string)$field->attributes()->var) {
                         case 'pubsub#title':
                             $this->name = (string)$field->value;
                             break;
@@ -210,45 +285,45 @@ class Info extends Model
                         case 'muc#roominfo_occupants':
                             $this->occupants = (int)$field->value;
                             break;
-                        case 'abuse-addresses':
+                        case 'abuseaddresses':
                             $arr = [];
-                            foreach ($field->children() as $value) {
-                                $arr[] = (string)$value;
+                            foreach ($field>children() as $value) {
+                               $arr[] = (string)$value;
                             }
                             $this->abuseaddresses = $arr;
                             break;
-                        case 'admin-addresses':
+                        case 'adminaddresses':
                             $arr = [];
-                            foreach ($field->children() as $value) {
-                                $arr[] = (string)$value;
+                            foreach ($field>children() as $value) {
+                               $arr[] = (string)$value;
                             }
                             $this->adminaddresses = $arr;
                             break;
-                        case 'feedback-addresses':
+                        case 'feedbackaddresses':
                             $arr = [];
-                            foreach ($field->children() as $value) {
-                                $arr[] = (string)$value;
+                            foreach ($field>children() as $value) {
+                               $arr[] = (string)$value;
                             }
                             $this->feedbackaddresses = $arr;
                             break;
-                        case 'sales-addresses':
+                        case 'salesaddresses':
                             $arr = [];
-                            foreach ($field->children() as $value) {
-                                $arr[] = (string)$value;
+                            foreach ($field>children() as $value) {
+                               $arr[] = (string)$value;
                             }
                             $this->salesaddresses = $arr;
                             break;
-                        case 'security-addresses':
+                        case 'securityaddresses':
                             $arr = [];
-                            foreach ($field->children() as $value) {
-                                $arr[] = (string)$value;
+                            foreach ($field>children() as $value) {
+                               $arr[] = (string)$value;
                             }
                             $this->securityaddresses = $arr;
                             break;
-                        case 'support-addresses':
+                        case 'supportaddresses':
                             $arr = [];
-                            foreach ($field->children() as $value) {
-                                $arr[] = (string)$value;
+                            foreach ($field>children() as $value) {
+                               $arr[] = (string)$value;
                             }
                             $this->supportaddresses = $arr;
                             break;
@@ -258,7 +333,7 @@ class Info extends Model
         }
     }
 
-    public function setItem($item)
+    public function setPubsubItem($item)
     {
         $this->server = (string)$item->attributes()->jid;
         $this->node   = (string)$item->attributes()->node;
@@ -266,20 +341,37 @@ class Info extends Model
         if ($item->attributes()->name) {
             $this->name   = (string)$item->attributes()->name;
         }
+
+        $this->identities = collect();
+        $identity = new Identity;
+        $identity->category = 'pubsub';
+        $identity->type     = 'leaf';
+
+        $this->identities->push($identity);
+    }
+
+    public function getPubsubRoles()
+    {
+        $roles = ['owner' => __('affiliation.owner'), 'none' =>  __('affiliation.no-aff')];
+
+        foreach (unserialize($this->attributes['features']) as $feature) {
+            preg_match("/http:\/\/jabber.org\/protocol\/pubsub#(.*)-affiliation$/", $feature, $matches);
+            if (!empty($matches)) {
+                $roles[$matches[1]] = __('affiliation.' . $matches[1]);
+            }
+        }
+
+        return $roles;
     }
 
     public function isPubsubService()
     {
-        return ($this->category == 'pubsub' && $this->type == 'service');
+        return ($this->identities->contains('category', 'pubsub')
+             && $this->identities->contains('type', 'service'));
     }
 
     public function isMicroblogCommentsNode()
     {
         return (substr($this->node, 0, 29) == 'urn:xmpp:microblog:0:comments');
-    }
-
-    public function isOld()
-    {
-        return (strtotime($this->updated_at) < time() - 3600);
     }
 }

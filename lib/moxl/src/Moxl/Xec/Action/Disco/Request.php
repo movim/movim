@@ -4,7 +4,6 @@ namespace Moxl\Xec\Action\Disco;
 
 use Moxl\Xec\Action;
 use Moxl\Stanza\Disco;
-use Moxl\Xec\Action\Disco\Items;
 
 class Request extends Action
 {
@@ -20,12 +19,7 @@ class Request extends Action
     {
         $this->store();
 
-        /*$info = \App\Info::where('server', $this->_to)
-                         ->where('node', (string)$this->_node)
-                         ->first();*/
-
-        if (!in_array($this->_node, $this->_excluded)
-        /*&& (!$info || $info->isOld())*/) {
+        if (!in_array($this->_node, $this->_excluded)) {
             Disco::request($this->_to, $this->_node);
         }
     }
@@ -45,35 +39,13 @@ class Request extends Action
         if ($found) {
             $found->set($stanza);
             $found->save();
-
-            $this->deliver();
-        } elseif (!empty($info->category)
-        && $info->category !== 'account'
-        && $info->category !== 'client') {
-            $info->save();
-
-            $this->deliver();
-        }
-
-        // Caps
-        $capability = new \App\Capability;
-
-        if ($this->_node !== false) {
-            $capability->set($stanza, $this->_node);
+            $info = $found;
         } else {
-            $capability->set($stanza, $this->_to);
+            $info->save();
         }
 
-        if ($capability->features != null
-        && $capability->category != null) {
-            $found = \App\Capability::find($capability->node);
-            if ($found) {
-                $found->delete();
-            }
-
-            $capability->save();
-
-            $this->method('caps');
+        if (!$info->identities->contains('category', 'account')
+        && !$info->identities->contains('category', 'client')) {
             $this->deliver();
         }
 

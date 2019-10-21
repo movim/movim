@@ -175,7 +175,7 @@ class PublishBrief extends Base
             }
 
             if ($comments) {
-                $p->enableComments($comments->node);
+                $p->enableComments($comments->server);
             } else {
                 $p->enableComments();
             }

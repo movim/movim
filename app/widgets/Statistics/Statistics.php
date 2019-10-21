@@ -11,7 +11,7 @@ class Statistics extends Base
 
     public function getCapabilityName($node)
     {
-        $capability = App\Capability::where('node', 'like', '%' . $node . '%')->first();
+        $capability = \App\Info::where('node', 'like', '%' . $node . '%')->first();
 
         if ($capability && !filter_var($capability->name, FILTER_VALIDATE_URL)) {
             $parts = explode(' ', $capability->name);

@@ -90,8 +90,8 @@ class CommunityHeader extends Base
         $view->assign('server', $origin);
         $view->assign('node', $node);
         $view->assign('info', \App\Info::where('server', $origin)
-                                   ->where('node', $node)
-                                   ->first());
+                                       ->where('node', $node)
+                                       ->first());
 
         Dialog::fill($view->draw('_communityheader_subscribe'));
     }
@@ -129,8 +129,8 @@ class CommunityHeader extends Base
         $view->assign('server', $origin);
         $view->assign('node', $node);
         $view->assign('info', \App\Info::where('server', $origin)
-                                   ->where('node', $node)
-                                   ->first());
+                                       ->where('node', $node)
+                                       ->first());
 
         Dialog::fill($view->draw('_communityheader_unsubscribe'));
     }
@@ -191,8 +191,8 @@ class CommunityHeader extends Base
                                            ->where('node', $node)
                                            ->first());
         $view->assign('num', $info ?
-            ($info->items > 0)
-                ? $info->items
+            ($info->occupants > 0)
+                ? $info->occupants
                 : \App\Post::where('server', $origin)
                         ->where('node', $node)
                         ->count()

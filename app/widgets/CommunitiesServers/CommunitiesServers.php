@@ -2,6 +2,7 @@
 
 use Movim\Widget\Base;
 
+use Moxl\Xec\Action\Disco\Request;
 use Moxl\Xec\Action\Disco\Items;
 use Respect\Validation\Validator;
 
@@ -23,8 +24,8 @@ class CommunitiesServers extends Base
 
     public function onDiscoInfo($packet)
     {
-        $info = \App\Info::where('category', 'pubsub')
-                 ->where('type', 'service')
+        $info = \App\Info::whereCategory('pubsub')
+                 ->whereType('service')
                  ->where('server', $packet->content[0])
                  ->first();
 
@@ -44,6 +45,9 @@ class CommunitiesServers extends Base
             Notification::toast($this->__('communities.disco_error'));
             return;
         }
+
+        $r = new Request;
+        $r->setTo($origin)->request();
 
         $r = new Items;
         $r->enableManual()
@@ -69,8 +73,8 @@ class CommunitiesServers extends Base
 
     public function prepareCommunities()
     {
-        $servers = \App\Info::where('category', 'pubsub')
-                            ->where('type', 'service')
+        $servers = \App\Info::whereCategory('pubsub')
+                            ->whereType('service')
                             ->orderBy('occupants', 'desc')
                             ->get();
 

@@ -26,7 +26,7 @@ class Caps extends Base
 
     public function display()
     {
-        $clients = App\Capability::where('category', 'client')->orderBy('name')->get();
+        $clients = \App\Info::whereCategory('client')->orderBy('name')->get();
         $oldname = '';
 
         foreach ($clients as $c) {
