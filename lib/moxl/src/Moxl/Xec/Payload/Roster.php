@@ -9,6 +9,8 @@ class Roster extends Payload
 {
     public function handle($stanza, $parent = false)
     {
+        if (current(explode('/', (string)$parent->attributes()->from)) != \App\User::me()->id) return;
+
         if ((string)$parent->attributes()->type == 'set') {
             $jid = current(explode('/', (string)$stanza->item->attributes()->jid));
 

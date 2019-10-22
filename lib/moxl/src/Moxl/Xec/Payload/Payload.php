@@ -27,7 +27,6 @@ namespace Moxl\Xec\Payload;
 use Movim\Widget\Wrapper;
 
 use Moxl\Xec\Payload\Packet;
-use Moxl\Utils;
 
 abstract class Payload
 {

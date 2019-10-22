@@ -8,6 +8,8 @@ class Bookmark2 extends Payload
 {
     public function handle($stanza, $parent = false)
     {
+        if (current(explode('/', (string)$parent->attributes()->from)) != \App\User::me()->id) return;
+
         $conference = new Conference;
 
         $conference->conference     = (string)$stanza->items->item->attributes()->id;

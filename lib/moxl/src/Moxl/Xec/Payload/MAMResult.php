@@ -2,7 +2,6 @@
 
 namespace Moxl\Xec\Payload;
 
-use Movim\User;
 use Movim\Session;
 
 class MAMResult extends Payload

@@ -3,14 +3,11 @@
 namespace Moxl\Xec\Payload;
 
 use Movim\ChatStates;
-use App\Reaction;
 
 class Message extends Payload
 {
     public function handle($stanza, $parent = false)
     {
-        $to = current(explode('/', (string)$stanza->attributes()->to));
-
         if ($stanza->confirm
         && $stanza->confirm->attributes()->xmlns == 'http://jabber.org/protocol/http-auth') {
             return;
