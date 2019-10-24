@@ -59,11 +59,11 @@
                             <span class="info">{$value->resource}</span>
                             {$value->capability->name}
                         </p>
-                        <p class="line">
-                            {if="isset($clienttype[$value->capability->type])"}
-                                {$clienttype[$value->capability->type]}
-                            {/if}
-                        </p>
+                        {if="$value->capability->identities()->first() && isset($clienttype[$value->capability->identities()->first()->type])"}
+                            <p class="line">
+                                {$clienttype[$value->capability->identities()->first()->type]}
+                            </p>
+                        {/if}
                     </li>
                 {/if}
             {/loop}

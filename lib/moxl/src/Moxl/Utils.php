@@ -2,10 +2,6 @@
 
 namespace Moxl;
 
-use Monolog\Logger;
-use Monolog\Handler\SyslogHandler;
-use Monolog\Handler\StreamHandler;
-
 class Utils
 {
     public static function getSupportedServices()

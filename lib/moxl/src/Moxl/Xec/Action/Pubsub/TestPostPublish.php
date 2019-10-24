@@ -2,10 +2,7 @@
 
 namespace Moxl\Xec\Action\Pubsub;
 
-use Moxl\Xec\Action;
 use Moxl\Stanza\Pubsub;
-use Moxl\Stanza\PubsubAtom;
-use Moxl\Xec\Action\Pubsub\PostDelete;
 use Moxl\Xec\Action\Pubsub\Errors;
 
 class TestPostPublish extends Errors

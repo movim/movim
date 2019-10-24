@@ -4,7 +4,6 @@ namespace Movim\Controller;
 
 use Movim\Template\Builder;
 use Movim\Route;
-use Movim\User;
 
 class Base
 {

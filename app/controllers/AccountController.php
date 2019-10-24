@@ -1,4 +1,5 @@
 <?php
+
 use Movim\Controller\Base;
 
 class AccountController extends Base

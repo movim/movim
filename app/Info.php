@@ -19,6 +19,7 @@ class Info extends Model
     public function save(array $options = [])
     {
         try {
+            unset($this->identities);
             parent::save($options);
 
             if ($this->freshIdentities) {
@@ -44,6 +45,20 @@ class Info extends Model
         return $query->whereHas('identities', function($query) use ($type) {
             $query->where('type', $type);
         });
+    }
+
+    public function scopeRestrictUserHost($query)
+    {
+        $configuration = Configuration::get();
+
+        if ($configuration->restrictsuggestions) {
+            $query->whereIn('server', function ($query) {
+                $host = \App\User::me()->session->host;
+                $query->select('server')
+                      ->from('infos')
+                      ->where('server', 'like', '%.' . $host);
+            });
+        }
     }
 
     public function setAdminaddressesAttribute(array $arr)
@@ -285,45 +300,45 @@ class Info extends Model
                         case 'muc#roominfo_occupants':
                             $this->occupants = (int)$field->value;
                             break;
-                        case 'abuseaddresses':
+                        case 'abuse-addresses':
                             $arr = [];
-                            foreach ($field>children() as $value) {
-                               $arr[] = (string)$value;
+                            foreach ($field->children() as $value) {
+                                $arr[] = (string)$value;
                             }
                             $this->abuseaddresses = $arr;
                             break;
-                        case 'adminaddresses':
+                        case 'admin-addresses':
                             $arr = [];
-                            foreach ($field>children() as $value) {
-                               $arr[] = (string)$value;
+                            foreach ($field->children() as $value) {
+                                $arr[] = (string)$value;
                             }
                             $this->adminaddresses = $arr;
                             break;
-                        case 'feedbackaddresses':
+                        case 'feedback-addresses':
                             $arr = [];
-                            foreach ($field>children() as $value) {
-                               $arr[] = (string)$value;
+                            foreach ($field->children() as $value) {
+                                $arr[] = (string)$value;
                             }
                             $this->feedbackaddresses = $arr;
                             break;
-                        case 'salesaddresses':
+                        case 'sales-addresses':
                             $arr = [];
-                            foreach ($field>children() as $value) {
-                               $arr[] = (string)$value;
+                            foreach ($field->children() as $value) {
+                                $arr[] = (string)$value;
                             }
                             $this->salesaddresses = $arr;
                             break;
-                        case 'securityaddresses':
+                        case 'security-addresses':
                             $arr = [];
-                            foreach ($field>children() as $value) {
-                               $arr[] = (string)$value;
+                            foreach ($field->children() as $value) {
+                                $arr[] = (string)$value;
                             }
                             $this->securityaddresses = $arr;
                             break;
-                        case 'supportaddresses':
+                        case 'support-addresses':
                             $arr = [];
-                            foreach ($field>children() as $value) {
-                               $arr[] = (string)$value;
+                            foreach ($field->children() as $value) {
+                                $arr[] = (string)$value;
                             }
                             $this->supportaddresses = $arr;
                             break;

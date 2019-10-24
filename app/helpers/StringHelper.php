@@ -1,7 +1,6 @@
 <?php
 
 use Movim\Route;
-use App\Configuration;
 
 function addUrls($string, bool $preview = false)
 {

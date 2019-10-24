@@ -2,7 +2,6 @@
 
 namespace Moxl\Xec\Action\Pubsub;
 
-use Moxl\Xec\Action;
 use Moxl\Stanza\Pubsub;
 use Moxl\Xec\Action\Pubsub\Errors;
 use Moxl\Xec\Action\PubsubSubscription\Add as SubscriptionAdd;

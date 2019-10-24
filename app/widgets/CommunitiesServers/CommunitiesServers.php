@@ -75,11 +75,14 @@ class CommunitiesServers extends Base
     {
         $servers = \App\Info::whereCategory('pubsub')
                             ->whereType('service')
+                            ->restrictUserHost()
                             ->orderBy('occupants', 'desc')
                             ->get();
+        $configuration = \App\Configuration::get();
 
         $view = $this->tpl();
         $view->assign('servers', $servers);
+        $view->assign('restrict', $configuration->restrictsuggestions);
 
         return $view->draw('_communitiesservers');
     }

@@ -118,8 +118,8 @@ class CommunityAffiliations extends Base
 
     public function onDeleteError($packet)
     {
-        $m = new Rooms;
-        $m->setBookmark();
+        $c = new CommunityHeader;
+        $c->ajaxUnsubscribe($packet->content['server'], $packet->content['node']);
 
         $this->deleted($packet);
     }

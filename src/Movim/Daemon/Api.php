@@ -7,9 +7,6 @@ use Movim\Bootstrap;
 use Psr\Http\Message\ServerRequestInterface;
 use React\Socket\Server as Reactor;
 
-use React\Http\Middleware\LimitConcurrentRequestsMiddleware;
-use React\Http\Middleware\RequestBodyBufferMiddleware;
-use React\Http\Middleware\RequestBodyParserMiddleware;
 use React\Http\Server;
 use React\Http\Response;
 

@@ -1018,6 +1018,7 @@ class Chat extends \Movim\Widget\Base
 
         $conferences = \App\Info::whereCategory('conference')
                                 ->whereNotIn('server', $this->user->session->conferences()->pluck('conference')->toArray())
+                                ->restrictUserHost()
                                 ->where('mucpublic', true)
                                 ->where('mucpersistent', true);
 
