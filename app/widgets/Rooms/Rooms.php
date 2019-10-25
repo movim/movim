@@ -133,7 +133,7 @@ class Rooms extends Base
         $conference = $packet->content;
 
         if ($conference && $conference->autojoin) {
-            $this->ajaxJoin($conference->conference);
+            $this->ajaxJoin($conference->conference, $conference->nick);
         }
 
         Notification::toast($this->__('bookmarks.updated'));
@@ -558,6 +558,8 @@ class Rooms extends Base
         } elseif (trim($form->name->value) == '') {
             Notification::toast($this->__('chatrooms.empty_name'));
         } else {
+            $this->ajaxExit($form->jid->value);
+
             $this->user->session->conferences()
                  ->where('conference', strtolower($form->jid->value))
                  ->delete();
