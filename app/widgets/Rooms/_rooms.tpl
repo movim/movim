@@ -100,7 +100,7 @@
                                 {/if}
                             </span> –
                         {/if}
-                        {if="$servers->has($value->server) && $servers->get($value->server)->type != 'text'"}
+                        {if="$servers->has($value->server) && !$servers->get($value->server)->identities->contains('type', 'text')"}
                             <i class="material-icons" title="{$c->__('rooms.gateway_room')}">swap_horiz</i> –
                         {/if}
                         {if="$connected"}

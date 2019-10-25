@@ -619,7 +619,11 @@ class Rooms extends Base
         $view->assign('edit', $edit);
         $view->assign('all', $all);
         $view->assign('disconnected', $disconnected);
-        $view->assign('servers', App\Info::whereIn('server', array_unique($servers))->get()->keyBy('server'));
+        $view->assign('servers', App\Info::with('identities')
+                                         ->whereIn('server', array_unique($servers))
+                                         ->get()
+                                         ->keyBy('server')
+        );
         $view->assign('conferences', $conferences);
         $view->assign('room', $this->get('r'));
 
