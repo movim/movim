@@ -2,7 +2,6 @@
 
 namespace Moxl\Xec\Action\Pubsub;
 
-use Moxl\Xec\Action;
 use Moxl\Xec\Action\Pubsub\Errors;
 use Moxl\Stanza\Pubsub;
 

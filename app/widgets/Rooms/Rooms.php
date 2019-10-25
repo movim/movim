@@ -211,12 +211,12 @@ class Rooms extends Base
         $view = $this->tpl();
 
         $view->assign('info', \App\Info::where('server', $room)
-                                       ->where('category', 'conference')
+                                       ->whereCategory('conference')
                                        ->first());
         $view->assign('mucservice', \App\Info::where('server', 'like', '%'. $this->user->session->host)
                                              ->where('server', 'not like', '%@%')
-                                             ->where('category', 'conference')
-                                             ->where('type', 'text')
+                                             ->whereCategory('conference')
+                                             ->whereType('text')
                                              ->first());
         $view->assign('id', $room);
         $view->assign(
@@ -230,8 +230,8 @@ class Rooms extends Base
             \App\Info::whereIn('server', function ($query) {
                 $query->select('jid')->from('presences');
             })
-                     ->where('category', 'gateway')
-                     ->get()
+            ->whereCategory('gateway')
+            ->get()
         );
 
         $this->rpc('Rooms.setDefaultServices', $this->user->session->getChatroomsServices());
@@ -476,16 +476,12 @@ class Rooms extends Base
         $p = new Muc;
         $p->setTo($room);
 
-        /*$c = new \Moxl\Xec\Action\Disco\Request;
-        $c->setTo(explodeJid($room)['server'])
-          ->request();*/
-
         if ($nickname == false) {
             $nickname = $this->user->session->username;
         }
 
         $jid = explodeJid($room);
-        $capability = App\Capability::find($jid['server']);
+        $capability = \App\Info::where('node', $jid['server'])->first();
 
         if ($capability && ($capability->isMAM() || $capability->isMAM2())) {
             $p->enableMAM();
@@ -529,7 +525,7 @@ class Rooms extends Base
             : null;
 
         $jid = explodeJid($room);
-        $capability = App\Capability::find($jid['server']);
+        $capability = \App\Info::where('node', $jid['server'])->first();
 
         if (!$capability || !$capability->isMAM()) {
             $this->user->messages()->where('jidfrom', $room)->delete();

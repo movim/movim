@@ -13,7 +13,10 @@
                         <option value="">{$c->__('rooms.default_room')}</option>
                         {loop="$gateways"}
                             <option value="{$value->server}">
-                                {$value->name} ({$value->type})
+                                {$value->name}
+                                {if="$value->identities()->first()"}
+                                    ({$value->identities()->first()->type})
+                                {/if}
                             </option>
                         {/loop}
                     </select>

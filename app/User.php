@@ -35,7 +35,7 @@ class User extends Model
 
     public function capability()
     {
-        return $this->hasOne('App\Capability', 'node', 'id');
+        return $this->hasOne('App\Info', 'server', 'id');
     }
 
     public function messages()
@@ -132,12 +132,12 @@ class User extends Model
 
     public function hasMAM()
     {
-        return ($this->capability && $this->capability->isMAM2());
+        return ($this->capability && $this->capability->hasFeature('urn:xmpp:mam:2'));
     }
 
     public function hasPubsub()
     {
-        return ($this->capability && $this->capability->isPubsub());
+        return ($this->capability && $this->capability->hasFeature('http://jabber.org/protocol/pubsub#persistent-items'));
     }
 
     public function hasUpload()

@@ -3,7 +3,6 @@
 use Monolog\Logger;
 use Monolog\Handler\SyslogHandler;
 use Monolog\Handler\StreamHandler;
-use GuzzleHttp\Client;
 use Movim\Picture;
 
 class Utils

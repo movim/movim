@@ -52,8 +52,8 @@ class Conference extends Model
     public function info()
     {
         return $this->hasOne('App\Info', 'server', 'conference')
-                    ->where('category', 'conference')
-                    ->where('type', 'text');
+                    ->whereCategory('conference')
+                    ->whereType('text');
     }
 
     public function contact()

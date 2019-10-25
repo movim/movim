@@ -60,7 +60,7 @@ class Upload extends Base
 
         if ($upload) {
             $r = new Request;
-            $r->setTo($upload->node)
+            $r->setTo($upload->server)
               ->setName($file->name)
               ->setSize($file->size)
               ->setType($file->type)

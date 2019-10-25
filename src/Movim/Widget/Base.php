@@ -4,7 +4,6 @@ namespace Movim\Widget;
 
 use Rain\Tpl;
 use Movim\Controller\Ajax;
-use Movim\User;
 use Movim\Template\Partial;
 
 class Base

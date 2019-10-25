@@ -2,7 +2,6 @@
 
 namespace Moxl\Xec\Action\Pubsub;
 
-use Moxl\Xec\Action;
 use Moxl\Stanza\Disco;
 use Moxl\Xec\Action\Pubsub\Errors;
 use Moxl\Xec\Action\Pubsub\GetItem;

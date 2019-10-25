@@ -102,8 +102,8 @@ class Search extends Base
 
             $communities = Info::whereRaw('lower(node) like ?', '%'.strtolower($key).'%')
                 ->whereRaw('lower(node) not like ?', 'urn:xmpp:microblog:0%')
-                ->where('category', 'pubsub')
-                ->where('type', 'leaf')
+                ->whereCategory('pubsub')
+                ->whereType('leaf')
                 ->where('pubsubaccessmodel', 'open')
                 ->take(5)
                 ->get();

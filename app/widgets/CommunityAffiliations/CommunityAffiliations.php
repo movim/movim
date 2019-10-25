@@ -55,7 +55,7 @@ class CommunityAffiliations extends Base
         // If the configuration is open, we fill it
         $view = $this->tpl();
 
-        $caps = App\Capability::find($origin);
+        $caps = \App\Info::where('server', $origin)->first();
 
         $view->assign('subscriptions', \App\Subscription::where('server', $origin)
                 ->where('node', $node)
@@ -118,8 +118,8 @@ class CommunityAffiliations extends Base
 
     public function onDeleteError($packet)
     {
-        $m = new Rooms;
-        $m->setBookmark();
+        $c = new CommunityHeader;
+        $c->ajaxUnsubscribe($packet->content['server'], $packet->content['node']);
 
         $this->deleted($packet);
     }
@@ -197,7 +197,7 @@ class CommunityAffiliations extends Base
             return;
         }
 
-        if (Validator::in(array_keys(\App\Capability::find($origin)->getPubsubRoles()))->validate($form->role->value)
+        if (Validator::in(array_keys(\App\Info::where('node', $origin)->first()->getPubsubRoles()))->validate($form->role->value)
         && Validator::stringType()->length(3, 100)->validate($form->jid->value)) {
             $sa = new SetAffiliations;
             $sa->setTo($origin)

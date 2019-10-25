@@ -2,8 +2,6 @@
 namespace Movim\Daemon;
 
 use Ratchet\ConnectionInterface;
-use React\EventLoop\Timer\Timer;
-use Movim\Controller\Front;
 use App\Session as DBSession;
 
 class Session

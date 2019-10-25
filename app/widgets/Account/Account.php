@@ -155,7 +155,7 @@ class Account extends \Movim\Widget\Base
         $view->assign(
             'gateways',
             \App\Info::where('server', 'like', '%' . $this->user->session->host)
-                     ->where('category', 'gateway')
+                     ->whereCategory('gateway')
                      ->get()
         );
 

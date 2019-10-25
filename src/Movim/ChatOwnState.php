@@ -4,7 +4,6 @@ namespace Movim;
 
 use Moxl\Xec\Action\Message\Composing;
 use Moxl\Xec\Action\Message\Paused;
-use Moxl\Xec\Action\Message\Inactive;
 
 /**
  * This class handle all the outgoing chatstates
