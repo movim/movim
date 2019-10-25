@@ -30,6 +30,8 @@ v0.16 (trunk)
  * Add support for XEP-0402: Bookmarks 2 and a migration button
  * Add a quick emoji search feature using the :key: system
  * Fix XEP-0085: Chat State Notifications flow
+ * Fix Roster item and Bookmark 2 XMPP injection
+ * Merge Infos and Capabilities and add Identities support to handle multi-identity par XMPP resource
 
 v0.15 – Donati
 ---------------------------
