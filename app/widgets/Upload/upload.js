@@ -188,7 +188,6 @@ var Upload = {
         }
 
         Upload.xhr.open("PUT", put, true);
-
         Upload.xhr.setRequestHeader('Content-Type', 'text/plain');
 
         if (Upload.file != null) {

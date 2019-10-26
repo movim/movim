@@ -22,8 +22,8 @@ class Request extends Action
     {
         if ($stanza->slot) {
             $this->pack([
-                'get' => (string)$stanza->slot->get,
-                'put' => (string)$stanza->slot->put
+                'get' => (string)$stanza->slot->get->attributes()->url,
+                'put' => (string)$stanza->slot->put->attributes()->url
             ]);
             $this->deliver();
         }

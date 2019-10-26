@@ -32,6 +32,7 @@ v0.16 (trunk)
  * Fix XEP-0085: Chat State Notifications flow
  * Fix Roster item and Bookmark 2 XMPP injection
  * Merge Infos and Capabilities and add Identities support to handle multi-identity par XMPP resource
+ * Update HTTP Upload support to urn:xmpp:http:upload:0
 
 v0.15 – Donati
 ---------------------------

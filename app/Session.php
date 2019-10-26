@@ -96,7 +96,7 @@ class Session extends Model
         return Info::where('server', 'like', '%' . $this->host)
                    ->whereCategory('store')
                    ->whereType('file')
-                   ->where('features', 'like', '%urn:xmpp:http:upload%')
+                   ->where('features', 'like', '%urn:xmpp:http:upload:0%')
                    ->first();
     }
 
