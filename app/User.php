@@ -53,7 +53,8 @@ class User extends Model
                         ->where(function ($query) use ($quoted) {
                             $query->where('type', 'chat')
                                 ->orWhere(function ($query) use ($quoted) {
-                                    $query->where('type', 'groupchat');
+                                    $query->where('type', 'groupchat')
+                                          ->whereNull('subject');
 
                                     if ($quoted) {
                                         $query->where('quoted', true);

@@ -26,7 +26,6 @@ class Chat extends \Movim\Widget\Base
 {
     private $_pagination = 50;
     private $_wrapper = [];
-    private $_mucPresences = [];
     private $_messageTypes = ['chat', 'headline', 'invitation', 'jingle_start', 'jingle_end'];
 
     public function load()
@@ -94,7 +93,6 @@ class Chat extends \Movim\Widget\Base
             $contact = App\Contact::firstOrNew(['id' => $from]);
 
             if ($contact != null
-            //&& $message->isTrusted()
             && !$message->isOTR()
             && $message->type != 'groupchat'
             && !$message->oldid) {

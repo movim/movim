@@ -41,6 +41,11 @@ class Message extends Payload
 
             if ($message->body || $message->subject) {
                 $this->pack($message);
+
+                if ($message->subject) {
+                    $this->event('subject');
+                }
+
                 $this->deliver();
             }
         }

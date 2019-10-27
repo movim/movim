@@ -25,8 +25,7 @@ class Chats extends Base
     {
         $message = $packet->content;
 
-        if ($message->type != 'groupchat'
-         && $message->type != 'subject') {
+        if ($message->type != 'groupchat') {
             // If the message is from me
             if ($message->user_id == $message->jidto) {
                 $from = $message->jidfrom;

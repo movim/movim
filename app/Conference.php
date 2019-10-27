@@ -38,6 +38,7 @@ class Conference extends Model
         return $this->hasMany('App\Message', 'jidfrom', 'conference')
                     ->where('user_id', \App\User::me()->id)
                     ->where('type', 'groupchat')
+                    ->whereNull('subject')
                     ->where('seen', false);
     }
 
@@ -77,7 +78,7 @@ class Conference extends Model
                             ->messages()
                             ->where('jidfrom', $this->conference)
                             ->whereNotNull('subject')
-                            ->where('type', 'subject')
+                            ->where('type', 'groupchat')
                             ->orderBy('published', 'desc')
                             ->first();
 

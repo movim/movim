@@ -3,7 +3,6 @@
 namespace App;
 
 use Movim\Model;
-use Movim\Picture;
 
 class Roster extends Model
 {
