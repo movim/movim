@@ -32,12 +32,6 @@
                         <i class="material-icons">comment</i>
                     </span>
                 {/if}
-                {if="$roster && $roster->presence && $roster->presence->capability && $roster->presence->capability->isJingle()"}
-                    <span title="{$c->__('button.call')}" class="control icon active"
-                          onclick="VisioLink.openVisio('{$roster->presence->jid . '/' . $roster->presence->resource}');">
-                        <i class="material-icons">phone</i>
-                    </span>
-                {/if}
                 <p class="line">{$contact->truename}</p>
                 <p class="line">{$contact->id}</p>
             </li>
@@ -50,14 +44,20 @@
             {loop="$roster->presences"}
                 {if="$value->capability"}
                     <li class="block">
-                        <span class="primary icon gray">
+                        <span class="primary icon gray status {$value->presencekey}">
                             <i class="material-icons">
                                 {$value->capability->getDeviceIcon()}
                             </i>
                         </span>
+                        {if="$value->capability && $value->capability->isJingle()"}
+                            <span title="{$c->__('button.call')}" class="control icon active"
+                                onclick="VisioLink.openVisio('{$value->jid . '/' . $value->resource}');">
+                                <i class="material-icons">phone</i>
+                            </span>
+                        {/if}
                         <p class="normal line">
-                            <span class="info">{$value->resource}</span>
                             {$value->capability->name}
+                            <span class="second">{$value->resource}</span>
                         </p>
                         {if="$value->capability->identities()->first() && isset($clienttype[$value->capability->identities()->first()->type])"}
                             <p class="line">

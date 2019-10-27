@@ -27,7 +27,6 @@
 namespace Moxl\Xec\Payload;
 
 use Moxl\Xec\Action\Version\Send;
-use Moxl\Stanza;
 
 class Version extends Payload
 {

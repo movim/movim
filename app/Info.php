@@ -209,7 +209,7 @@ class Info extends Model
 
     public function isJingle()
     {
-        return $this->hasFeature('urn:xmpp:jingle:1');
+        return $this->hasFeature('urn:xmpp:jingle:apps:rtp:audio');
     }
 
     public function isMAM()

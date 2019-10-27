@@ -33,6 +33,9 @@ v0.16 (trunk)
  * Fix Roster item and Bookmark 2 XMPP injection
  * Merge Infos and Capabilities and add Identities support to handle multi-identity par XMPP resource
  * Update HTTP Upload support to urn:xmpp:http:upload:0
+ * Fix Groupchat and Headline subject handling
+ * Allow calling a specific device from the Contact drawer + specific resource status
+ * Only detect Jingle if audio is supported (and not Jingle globally)
 
 v0.15 – Donati
 ---------------------------
