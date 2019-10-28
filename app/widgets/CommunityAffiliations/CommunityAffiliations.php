@@ -197,7 +197,9 @@ class CommunityAffiliations extends Base
             return;
         }
 
-        if (Validator::in(array_keys(\App\Info::where('node', $origin)->first()->getPubsubRoles()))->validate($form->role->value)
+        $caps = \App\Info::where('server', $origin)->first();
+
+        if (Validator::in($caps ? array_keys($caps->getPubsubRoles()) : [])->validate($form->role->value)
         && Validator::stringType()->length(3, 100)->validate($form->jid->value)) {
             $sa = new SetAffiliations;
             $sa->setTo($origin)
