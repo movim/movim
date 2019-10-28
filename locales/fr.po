@@ -38,6 +38,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunitiesServer/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunitiesServers/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityAffiliations/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityConfig/locales.ini
@@ -105,8 +107,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-08 00:00+0200\n"
-"PO-Revision-Date: 2019-09-07 22:04+0000\n"
+"POT-Creation-Date: 2019-10-28 14:43+0200\n"
+"PO-Revision-Date: 2019-10-28 13:50+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: French (France) (http://www.transifex.com/movim/movim/language/fr_FR/)\n"
 "Language: fr_FR\n"
@@ -491,8 +493,12 @@ msgid "%s messages retrieved"
 msgstr "%s messages récupérés"
 
 #: [message]edit_help
-msgid "You can use the up arrow ↑ to edit your previous message"
-msgstr "Vous pouvez utiliser la touche flèche haut ↑ pour éditer votre précédent message"
+msgid "↑ to edit your previous message"
+msgstr "↑ pour éditer votre précédent message"
+
+#: [message]emoji_help
+msgid ":shortcut: to insert an emoji"
+msgstr ":raccourci: pour insérer un emoji"
 
 #: [chat]attention
 msgid "%s needs your attention"
@@ -665,6 +671,14 @@ msgstr "Veuillez renseigner un nom valide pour votre communauté (4 caractères 
 #: [communitiesserver]no_creation
 msgid "You cannot create a new community on this server"
 msgstr "Vous ne pouvez pas créer de communauté sur ce serveur"
+
+#: [communitiesservers]empty_title
+msgid "No Communities Servers yet…"
+msgstr "Pas de Serveurs de Communautés pour le moment…"
+
+#: [communitiesservers]empty_text
+msgid "It seems that we can't find any communities for the moment"
+msgstr "Il semblerait que nous ne trouvons pas de communautés pour le moment"
 
 #: [communityaffiliation]subscriptions
 msgid "Subscriptions"
@@ -1540,8 +1554,8 @@ msgid "Markdown syntax manual"
 msgstr "Manuel d'utilisation de la syntaxe Markdown"
 
 #: [rooms]add
-msgid "Add a chatroom"
-msgstr "Ajouter un salon de discussion"
+msgid "Add or join a chatroom"
+msgstr "Ajouter ou rejoindre un salon"
 
 #: [rooms]edit
 msgid "Edit a chatroom"
@@ -1555,6 +1569,18 @@ msgstr "Vous n'avez pas encore de salon de discussion."
 msgid "Add one by clicking on the add button."
 msgstr "Ajoutez en un en cliquant sur le bouton ajouter."
 
+#: [rooms]empty_synchronize_title
+msgid "You had some rooms previously listed?"
+msgstr "Vous aviez des salons listés ici ?"
+
+#: [rooms]empty_synchronize_text
+msgid "Try to synchronize them to the new room bookmarking system"
+msgstr "Synchroniser vos salons sur le nouveau système"
+
+#: [rooms]empty_synchronize_button
+msgid "Synchronize"
+msgstr "Synchroniser"
+
 #: [rooms]type_room
 msgid "Type of room"
 msgstr "Type de salon"
@@ -1566,6 +1592,34 @@ msgstr "Salon standard"
 #: [rooms]gateway_room
 msgid "Gateway room"
 msgstr "Salon de passerelle"
+
+#: [rooms]show_all
+msgid "Show all the rooms"
+msgstr "Afficher tous les salons"
+
+#: [rooms]hide_disconnected
+msgid "Hide disconnected rooms"
+msgstr "Cacher les salons hors-lignes"
+
+#: [rooms]destroy_title
+msgid "Destroy the room"
+msgstr "Détruire le salon"
+
+#: [rooms]destroy_text
+msgid "Are you sure that you want to definitely destroy the following room?"
+msgstr "Êtes-vous sûr de vouloir détruire définitivement le salon suivant ?"
+
+#: [rooms]owner [affiliation]owner
+msgid "Owner"
+msgstr "Propriétaire"
+
+#: [rooms]admin
+msgid "Admin"
+msgstr "Administrateur"
+
+#: [rooms]visitor
+msgid "Visitor"
+msgstr "Visiteur"
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -1587,6 +1641,10 @@ msgstr "Mauvais identifiant de salon de discussion"
 msgid "Empty name"
 msgstr "Nom vide"
 
+#: [chatrooms]synchronized
+msgid "%s rooms synchronized"
+msgstr "%s salons synchronisés"
+
 #: [chatrooms]users
 msgid "Users in the room"
 msgstr "Utilisateurs du salon"
@@ -1602,6 +1660,10 @@ msgstr "Nom d'utilisateur déjà utilisé"
 #: [chatrooms]autojoin
 msgid "Join this chatroom on connect"
 msgstr "Rejoindre ce salon de discussion lors de la connexion"
+
+#: [chatrooms]destroyed
+msgid "Room destroyed"
+msgstr "Salon détruit"
 
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
@@ -1678,6 +1740,10 @@ msgstr "Trouvez-en un en saisissant son nom ou son identifiant"
 #: [search]tags
 msgid "Tags"
 msgstr "Étiquettes"
+
+#: [search]show_complete_roster
+msgid "Show all the contacts"
+msgstr "Afficher tous les contacts"
 
 #: [sendto]attach
 msgid "Attach to a blog publication"
@@ -2007,6 +2073,10 @@ msgstr "Ajouter"
 #: [button]delete
 msgid "Delete"
 msgstr "Supprimer"
+
+#: [button]destroy
+msgid "Destroy"
+msgstr "Détruire"
 
 #: [button]cancel
 msgid "Cancel"
@@ -2672,10 +2742,6 @@ msgstr "Commentaires"
 #: [post]original_deleted
 msgid "Original post deleted"
 msgstr "Billet original supprimé"
-
-#: [affiliation]owner
-msgid "Owner"
-msgstr "Propriétaire"
 
 #: [affiliation]publisher
 msgid "Publisher"

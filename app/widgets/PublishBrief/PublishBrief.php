@@ -243,6 +243,8 @@ class PublishBrief extends Base
 
     public function ajaxEmbedTest($url, $imagenumber = 0)
     {
+        $url = trim($url);
+
         if ($url == '') {
             return;
         }
@@ -269,6 +271,8 @@ class PublishBrief extends Base
 
     public function ajaxEmbedChooseImage($url)
     {
+        $url = trim($url);
+
         try {
             $view = $this->tpl();
             $view->assign('embed', \App\Url::resolve($url));

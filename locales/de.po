@@ -46,6 +46,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunitiesServer/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunitiesServers/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityAffiliations/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityConfig/locales.ini
@@ -113,7 +115,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-08 00:00+0200\n"
+"POT-Creation-Date: 2019-10-28 14:43+0200\n"
 "PO-Revision-Date: 2019-07-05 10:14+0000\n"
 "Last-Translator: Tom Teichler <tom@dummerdelfin.de>\n"
 "Language-Team: German (http://www.transifex.com/movim/movim/language/de/)\n"
@@ -499,8 +501,13 @@ msgid "%s messages retrieved"
 msgstr "%s Nachrichten geholt"
 
 #: [message]edit_help
-msgid "You can use the up arrow ↑ to edit your previous message"
+#, fuzzy
+msgid "↑ to edit your previous message"
 msgstr "Sie können die Pfeiltaste nach oben ↑ benutzen, um Ihre letzte Nachricht zu bearbeiten"
+
+#: [message]emoji_help
+msgid ":shortcut: to insert an emoji"
+msgstr ""
 
 #: [chat]attention
 msgid "%s needs your attention"
@@ -673,6 +680,15 @@ msgstr "Bitte geben Sie einen gültigen Namen für die Gemeinschaft an (mindeste
 #: [communitiesserver]no_creation
 msgid "You cannot create a new community on this server"
 msgstr "Sie können keine neue Gemeinschaft auf diesem Server anlegen"
+
+#: [communitiesservers]empty_title
+#, fuzzy
+msgid "No Communities Servers yet…"
+msgstr "Gemeinschaftsserver"
+
+#: [communitiesservers]empty_text
+msgid "It seems that we can't find any communities for the moment"
+msgstr ""
 
 #: [communityaffiliation]subscriptions
 msgid "Subscriptions"
@@ -1549,7 +1565,8 @@ msgid "Markdown syntax manual"
 msgstr "Markdown-Anleitung"
 
 #: [rooms]add
-msgid "Add a chatroom"
+#, fuzzy
+msgid "Add or join a chatroom"
 msgstr "Chatraum hinzufügen"
 
 #: [rooms]edit
@@ -1564,6 +1581,18 @@ msgstr "Sie sind derzeit in keinem Chatraum"
 msgid "Add one by clicking on the add button."
 msgstr "Zum Hinzufügen klicken Sie oben auf den Hinzufügen-Knopf."
 
+#: [rooms]empty_synchronize_title
+msgid "You had some rooms previously listed?"
+msgstr ""
+
+#: [rooms]empty_synchronize_text
+msgid "Try to synchronize them to the new room bookmarking system"
+msgstr ""
+
+#: [rooms]empty_synchronize_button
+msgid "Synchronize"
+msgstr ""
+
 #: [rooms]type_room
 msgid "Type of room"
 msgstr "Art des Raums"
@@ -1575,6 +1604,37 @@ msgstr "Normaler Raum"
 #: [rooms]gateway_room
 msgid "Gateway room"
 msgstr "Gateway-Raum"
+
+#: [rooms]show_all
+msgid "Show all the rooms"
+msgstr ""
+
+#: [rooms]hide_disconnected
+#, fuzzy
+msgid "Hide disconnected rooms"
+msgstr "Vom Chatraum getrennt"
+
+#: [rooms]destroy_title
+#, fuzzy
+msgid "Destroy the room"
+msgstr "Nutzer im Raum"
+
+#: [rooms]destroy_text
+#, fuzzy
+msgid "Are you sure that you want to definitely destroy the following room?"
+msgstr "Sind Sie sicher, dass Sie diesen Kommentar entfernen möchten?"
+
+#: [rooms]owner [affiliation]owner
+msgid "Owner"
+msgstr "Besitzer"
+
+#: [rooms]admin
+msgid "Admin"
+msgstr ""
+
+#: [rooms]visitor
+msgid "Visitor"
+msgstr ""
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -1596,6 +1656,10 @@ msgstr "Falsche Chatraumkennung"
 msgid "Empty name"
 msgstr "Leerer Name"
 
+#: [chatrooms]synchronized
+msgid "%s rooms synchronized"
+msgstr ""
+
 #: [chatrooms]users
 msgid "Users in the room"
 msgstr "Nutzer im Raum"
@@ -1611,6 +1675,10 @@ msgstr "Benutzername bereits vergeben"
 #: [chatrooms]autojoin
 msgid "Join this chatroom on connect"
 msgstr "Diesen Chatraum beim Verbinden betreten"
+
+#: [chatrooms]destroyed
+msgid "Room destroyed"
+msgstr ""
 
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
@@ -1687,6 +1755,11 @@ msgstr "Finde jemanden, indem du seinen Namen oder seine ID suchst"
 #: [search]tags
 msgid "Tags"
 msgstr ""
+
+#: [search]show_complete_roster
+#, fuzzy
+msgid "Show all the contacts"
+msgstr "Abgemeldete Kontakte anzeigen"
 
 #: [sendto]attach
 msgid "Attach to a blog publication"
@@ -2016,6 +2089,11 @@ msgstr "Hinzufügen"
 #: [button]delete
 msgid "Delete"
 msgstr "Löschen"
+
+#: [button]destroy
+#, fuzzy
+msgid "Destroy"
+msgstr "stark"
 
 #: [button]cancel
 msgid "Cancel"
@@ -2681,10 +2759,6 @@ msgstr "Kommentare"
 #: [post]original_deleted
 msgid "Original post deleted"
 msgstr "Ursprünglicher Beitrag gelöscht"
-
-#: [affiliation]owner
-msgid "Owner"
-msgstr "Besitzer"
 
 #: [affiliation]publisher
 msgid "Publisher"
