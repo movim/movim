@@ -32,9 +32,6 @@
 /* Previewable */
 .previewable {
     display: block;
-}
-
-.previewable:hover {
     position: relative;
 }
 
