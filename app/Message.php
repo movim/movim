@@ -239,6 +239,12 @@ class Message extends Model
                     && array_key_exists('type', $filetmp)
                     && array_key_exists('size', $filetmp)
                     && array_key_exists('name', $filetmp)) {
+                        if (empty($filetmp['name'])) {
+                            $filetmp['name'] =
+                                pathinfo(parse_url($filetmp['uri'], PHP_URL_PATH), PATHINFO_BASENAME)
+                                . ' ('.parse_url($filetmp['uri'], PHP_URL_HOST).')';
+                        }
+
                         $this->file = $filetmp;
                     }
                 } elseif (\in_array($stanza->reference->attributes()->type, ['mention', 'data'])
