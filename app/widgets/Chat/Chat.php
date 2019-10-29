@@ -11,6 +11,7 @@ use App\Message;
 use App\Reaction;
 
 use Moxl\Xec\Action\BOB\Request;
+use Moxl\Xec\Action\Disco\Request as DiscoRequest;
 
 use Respect\Validation\Validator;
 
@@ -201,6 +202,10 @@ class Chat extends \Movim\Widget\Base
 
     public function onRoomConfigSaved($packet)
     {
+        $r = new DiscoRequest;
+        $r->setTo($packet->content)
+          ->request();
+
         Notification::toast($this->__('chatroom.config_saved'));
     }
 

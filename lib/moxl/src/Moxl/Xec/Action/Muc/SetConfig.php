@@ -18,6 +18,7 @@ class SetConfig extends Action
 
     public function handle($stanza, $parent = false)
     {
+        $this->pack($this->_to);
         $this->deliver();
     }
 
