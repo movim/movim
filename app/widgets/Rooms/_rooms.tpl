@@ -86,10 +86,10 @@
                                 {/if}>
                                 {$count} <i class="material-icons">people</i>
                                 {if="$value->info && $value->info->mucpublic"}
-                                    <i class="material-icons">wifi_tethering</i>
+                                    <i class="material-icons" title="{$c->__('room.public_muc_text')}">wifi_tethering</i>
                                 {/if}
                                 {if="$value->info && !$value->info->mucsemianonymous"}
-                                    <i class="material-icons">face</i>
+                                    <i class="material-icons" title="{$c->__('room.nonanonymous_muc_text')}">face</i>
                                 {/if}
                             </span> –
                         {elseif="isset($info) && $info->occupants > 0"}
@@ -99,10 +99,10 @@
                                 {/if}>
                                 {$info->occupants} <i class="material-icons">people</i>
                                 {if="$value->info && $value->info->mucpublic"}
-                                    <i class="material-icons">wifi_tethering</i>
+                                    <i class="material-icons" title="{$c->__('room.public_muc_text')}">wifi_tethering</i>
                                 {/if}
                                 {if="$value->info && !$value->info->mucsemianonymous"}
-                                    <i class="material-icons">face</i>
+                                    <i class="material-icons" title="{$c->__('room.nonanonymous_muc_text')}">face</i>
                                 {/if}
                             </span> –
                         {/if}
