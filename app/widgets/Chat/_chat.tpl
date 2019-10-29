@@ -63,9 +63,15 @@
                 <p>{$c->__('button.connecting')}…</p>
             {elseif="$conference && $conference->subject"}
                 <p class="line" title="{$conference->subject}">
-                    {if="$conference->info && !$conference->info->mucsemianonymous"}
+                    {if="$conference->info && $conference->info->mucpublic"}
                         <span title="{$c->__('room.public_muc_text')}">
                             {$c->__('room.public_muc')} <i class="material-icons">wifi_tethering</i>
+                        </span>
+                        –
+                    {/if}
+                    {if="$conference->info && !$conference->info->mucsemianonymous"}
+                        <span title="{$c->__('room.nonanonymous_muc_text')}">
+                            {$c->__('room.nonanonymous_muc')} <i class="material-icons">face</i>
                         </span>
                         –
                     {/if}
@@ -73,9 +79,15 @@
                 </p>
             {else}
                 <p class="line" id="{$jid|cleanupId}-state">
-                    {if="$conference->info && !$conference->info->mucsemianonymous"}
+                    {if="$conference->info && $conference->info->mucpublic"}
                         <span title="{$c->__('room.public_muc_text')}">
                             {$c->__('room.public_muc')} <i class="material-icons">wifi_tethering</i>
+                        </span>
+                        –
+                    {/if}
+                    {if="$conference->info && !$conference->info->mucsemianonymous"}
+                        <span title="{$c->__('room.nonanonymous_muc_text')}">
+                            {$c->__('room.nonanonymous_muc')} <i class="material-icons">face</i>
                         </span>
                         –
                     {/if}

@@ -53,6 +53,7 @@ class Conference extends Model
     public function info()
     {
         return $this->hasOne('App\Info', 'server', 'conference')
+                    ->where('node', '')
                     ->whereCategory('conference')
                     ->whereType('text');
     }

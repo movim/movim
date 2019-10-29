@@ -211,6 +211,7 @@ class Rooms extends Base
         $view = $this->tpl();
 
         $view->assign('info', \App\Info::where('server', $room)
+                                       ->where('node', '')
                                        ->whereCategory('conference')
                                        ->first());
         $view->assign('mucservice', \App\Info::where('server', 'like', '%'. $this->user->session->host)
@@ -481,7 +482,9 @@ class Rooms extends Base
         }
 
         $jid = explodeJid($room);
-        $capability = \App\Info::where('node', $jid['server'])->first();
+        $capability = \App\Info::where('server', $jid['server'])
+                               ->where('node', '')
+                               ->first();
 
         if ($capability && ($capability->isMAM() || $capability->isMAM2())) {
             $p->enableMAM();
@@ -516,7 +519,12 @@ class Rooms extends Base
         // We properly exit
         $resource = $this->user->session->conferences()
             ->where('conference', $room)
-            ->first()->presences()
+            ->first();
+
+        if (!$resource) return;
+
+        $resource = $resource
+            ->presences()
             ->where('mucjid', $this->user->id)
             ->first();
 
@@ -525,7 +533,9 @@ class Rooms extends Base
             : null;
 
         $jid = explodeJid($room);
-        $capability = \App\Info::where('node', $jid['server'])->first();
+        $capability = \App\Info::where('server', $jid['server'])
+                               ->where('node', '')
+                               ->first();
 
         if (!$capability || !$capability->isMAM()) {
             $this->user->messages()->where('jidfrom', $room)->delete();

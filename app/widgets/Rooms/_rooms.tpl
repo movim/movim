@@ -85,8 +85,11 @@
                                     class="moderator"
                                 {/if}>
                                 {$count} <i class="material-icons">people</i>
-                                {if="$value->info && !$value->info->mucsemianonymous"}
+                                {if="$value->info && $value->info->mucpublic"}
                                     <i class="material-icons">wifi_tethering</i>
+                                {/if}
+                                {if="$value->info && !$value->info->mucsemianonymous"}
+                                    <i class="material-icons">face</i>
                                 {/if}
                             </span> –
                         {elseif="isset($info) && $info->occupants > 0"}
@@ -95,8 +98,11 @@
                                     class="moderator"
                                 {/if}>
                                 {$info->occupants} <i class="material-icons">people</i>
-                                {if="$value->info && !$value->info->mucsemianonymous"}
+                                {if="$value->info && $value->info->mucpublic"}
                                     <i class="material-icons">wifi_tethering</i>
+                                {/if}
+                                {if="$value->info && !$value->info->mucsemianonymous"}
+                                    <i class="material-icons">face</i>
                                 {/if}
                             </span> –
                         {/if}

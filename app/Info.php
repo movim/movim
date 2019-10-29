@@ -249,20 +249,38 @@ class Info extends Model
                     case 'muc_public':
                         $this->mucpublic = true;
                         break;
+                    case 'muc_hidden':
+                        $this->mucpublic = false;
+                        break;
                     case 'muc_persistent':
                         $this->mucpersistent = true;
+                        break;
+                    case 'muc_temporary':
+                        $this->mucpersistent = false;
                         break;
                     case 'muc_passwordprotected':
                         $this->mucpasswordprotected = true;
                         break;
+                    case 'muc_unsecured':
+                        $this->mucpasswordprotected = false;
+                        break;
                     case 'muc_membersonly':
-                        $this->mucpasswordprotected = true;
+                        $this->mucmembersonly = true;
+                        break;
+                    case 'muc_open':
+                        $this->mucmembersonly = false;
                         break;
                     case 'muc_moderated':
                         $this->mucmoderated = true;
                         break;
+                    case 'muc_unmoderated':
+                        $this->mucmoderated = false;
+                        break;
                     case 'muc_semianonymous':
                         $this->mucsemianonymous = true;
+                        break;
+                    case 'muc_nonanonymous':
+                        $this->mucsemianonymous = false;
                         break;
                 }
 
