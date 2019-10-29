@@ -1,12 +1,3 @@
-#chat_header.encrypted:after{
-    content: "";
-    display: inline-block;
-    font-family: "Material Design Iconic Font";
-    content: "\f041";
-    font-size: 2.5rem;
-    margin-left: 1rem;
-}
-
 #chat_widget {
     background-color: var(--movim-background);
     display: flex;
@@ -202,6 +193,8 @@ main:not(.enabled) #chat_widget {
 #chat_widget li div.bubble.sticker.file img:not(.emoji):not(.hfr) {
     max-height: 170px;
     object-fit: cover;
+    transition: opacity 0.2s ease-in-out;
+    background-color: gray;
 }
 
 #chat_widget ul.list:after {

@@ -119,6 +119,7 @@ var MovimUtils = {
                 if (img.parentNode.localName != 'a') {
                     img.classList.add('active');
                     img.addEventListener('click', e => Preview_ajaxShow(img.src))
+                    img.parentNode.classList.add('previewable');
                 }
             });
     },

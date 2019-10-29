@@ -568,6 +568,7 @@ var Chat = {
         if (data.sticker != null) {
             bubble.querySelector('div.bubble').classList.add('sticker');
             p.appendChild(Chat.getStickerHtml(data.sticker));
+            p.classList.add('previewable');
         } else {
             p.innerHTML = data.body;
         }

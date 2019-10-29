@@ -439,6 +439,10 @@ ul li div.bubble p {
     position: relative;
 }
 
+ul li div.bubble p.previewable {
+    display: block;
+}
+
 ul li div.bubble p.code {
     display: inline-block;
     margin: 0.5rem 0;
@@ -470,6 +474,11 @@ ul li div.bubble:after {
     content: attr(data-publishedprepared);
     line-height: 3rem;
     text-align: left;
+}
+
+ul li div.bubble.file:after {
+    margin-top: -0.75rem;
+    margin-bottom: 0.25rem;
 }
 
 ul li .quote {
