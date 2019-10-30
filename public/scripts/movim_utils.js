@@ -117,9 +117,13 @@ var MovimUtils = {
         document.querySelectorAll('article section content img')
             .forEach(img => {
                 if (img.parentNode.localName != 'a') {
+                    var div = document.createElement('div');
+                    img.parentNode.insertBefore(div, img);
+                    div.classList.add('previewable');
                     img.classList.add('active');
                     img.addEventListener('click', e => Preview_ajaxShow(img.src))
-                    img.parentNode.classList.add('previewable');
+                    
+                    div.appendChild(img);
                 }
             });
     },
