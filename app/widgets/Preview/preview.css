@@ -35,25 +35,23 @@
     position: relative;
 }
 
+.previewable img {
+    transition: opacity 0.1s ease-in-out;
+}
+
 .previewable:hover img {
     opacity: 0.6;
 }
 
 .previewable:after {
-    transition: opacity 0.1s ease-in-out;
-    opacity: 0;
     color: white;
     font-family: 'Material Icons';
     content: "\e8ff";
-    text-shadow: 0 0 3rem black;
+    text-shadow: 0 0 2rem black, 0 0 4rem black;
     position: absolute;
     display: block;
     font-size: 3rem;
-    left: 1.5rem;
-    top: 1.5rem;
+    left: 1.25rem;
+    top: 1.25rem;
     pointer-events: none;
-}
-
-.previewable:hover:after {
-    opacity: 1;
 }
