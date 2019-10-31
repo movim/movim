@@ -62,7 +62,7 @@ class Chat extends \Movim\Widget\Base
         list($page, $first, $room) = array_pad($params, 3, null);
 
         if ($page === 'chat') {
-            $this->prepareMessages($first, ($room === 'room'));
+            $this->prepareMessages($first, ($room === 'room'), true);
         }
     }
 
@@ -736,29 +736,29 @@ class Chat extends \Movim\Widget\Base
             $messagesClear->where('seen', false)->update(['seen' => true]);
         }
 
-        if ($seenOnly) return;
+        if (!$seenOnly) {
+            $messages = $messages->reverse();
 
-        $messages = $messages->reverse();
+            foreach ($messages as $message) {
+                $this->prepareMessage($message);
+            }
 
-        foreach ($messages as $message) {
-            $this->prepareMessage($message);
+            $view = $this->tpl();
+            $view->assign('jid', $jid);
+
+            $view->assign('contact', \App\Contact::firstOrNew(['id' => $jid]));
+            $view->assign('me', false);
+            $view->assign('muc', $muc);
+            $left = $view->draw('_chat_bubble');
+
+            $view->assign('contact', \App\Contact::firstOrNew(['id' => $this->user->id]));
+            $view->assign('me', true);
+            $view->assign('muc', $muc);
+            $right = $view->draw('_chat_bubble');
+
+            $this->rpc('Chat.setSpecificElements', $left, $right);
+            $this->rpc('Chat.appendMessagesWrapper', $this->_wrapper, false, true);
         }
-
-        $view = $this->tpl();
-        $view->assign('jid', $jid);
-
-        $view->assign('contact', \App\Contact::firstOrNew(['id' => $jid]));
-        $view->assign('me', false);
-        $view->assign('muc', $muc);
-        $left = $view->draw('_chat_bubble');
-
-        $view->assign('contact', \App\Contact::firstOrNew(['id' => $this->user->id]));
-        $view->assign('me', true);
-        $view->assign('muc', $muc);
-        $right = $view->draw('_chat_bubble');
-
-        $this->rpc('Chat.setSpecificElements', $left, $right);
-        $this->rpc('Chat.appendMessagesWrapper', $this->_wrapper, false, true);
 
         $this->event($muc ? 'chat_open_room' : 'chat_open', $jid);
         $this->event('chat_counter', $this->user->unreads());
