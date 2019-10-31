@@ -396,10 +396,10 @@ ul li div.bubble {
     box-sizing: border-box;
     display: block;
     font-size: 1.75rem;
-    max-width: calc(100% - 9rem);
+    max-width: calc(100% - 10rem);
     float: left;
 
-    left: 7.5rem;
+    left: 8rem;
     width: auto;
 }
 
@@ -449,7 +449,7 @@ ul li div.bubble p.code {
 }
 
 ul li.oppose div.bubble {
-    margin-right: 7.5rem;
+    margin-right: 8rem;
     float: right;
     position: initial;
 }
@@ -495,7 +495,7 @@ ul li div.bubble:not(.sticker):not(.file):before {
 }
 
 ul li.oppose div.bubble:not(.sticker):not(.file):before {
-    left: calc(100% - 7.5rem);
+    left: calc(100% - 8rem);
     top: 0.75rem;
     border-right-color: transparent;
     border-left-color: inherit;
