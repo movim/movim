@@ -15,6 +15,10 @@ main:not(.enabled) #chat_widget {
     width: 100%;
 }
 
+#chat_widget > header p.active:hover {
+    cursor: pointer;
+}
+
 #chat_widget p.compose:not(:empty),
 #chat_widget p.compose:empty + p {
     animation: fadein 0.3s;
@@ -128,8 +132,12 @@ main:not(.enabled) #chat_widget {
     }
 }
 
-#chat_widget li.oppose span.control {
-    right: 2rem;
+#chat_widget section ul.list li span.primary.icon.bubble {
+    left: 1rem;
+}
+
+#chat_widget section ul.list li.oppose span.control.icon.bubble {
+    right: 1rem;
 }
 
 #chat_widget .contained ul {
@@ -281,7 +289,7 @@ table.emojis td:hover {
 #chat_widget .bubble div span.reaction,
 #chat_widget .bubble ul.reactions li {
     list-style-type: none;
-    background-color: rgba(var(--movim-font), 0.05);
+    background-color: rgba(var(--movim-font), 0.1);
     padding: 0 0.5rem;
     border-radius: 0.5rem;
     line-height: 3rem;
@@ -291,6 +299,7 @@ table.emojis td:hover {
     display: inline-flex;
     z-index: 1;
     border: solid 1px transparent;
+    text-shadow: 0 0 3rem rgb(var(--movim-main));
 }
 
 #chat_widget .bubble div span.reaction,
@@ -302,11 +311,11 @@ table.emojis td:hover {
     display: inline-flex;
     position: absolute;
     left: 100%;
-    transform: translate(-1.25rem, -0.25rem);
+    transform: translate(-1.5rem, -0.5rem);
 }
 
 #chat_widget li:not(.oppose) .bubble.sticker div:hover ul.reactions:empty + span.reaction {
-    transform: translate(-1.25rem, -3.25rem);
+    transform: translate(-1.5rem, -3.75rem);
 }
 
 #chat_widget .bubble ul.reactions li:not(:last-child) {

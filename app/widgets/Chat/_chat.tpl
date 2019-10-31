@@ -49,11 +49,11 @@
             {/if}
 
             {if="$conference && $conference->name"}
-                <p class="line" title="{$room}">
+                <p class="line active" title="{$room}" onclick="Rooms_ajaxShowSubject('{$room}')">
                     {$conference->name}
                 </p>
             {else}
-                <p class="line">
+                <p class="line active" onclick="Rooms_ajaxShowSubject('{$room}')">
                     {$room}
                 </p>
             {/if}
@@ -62,7 +62,7 @@
             {if="$conference && !$conference->connected"}
                 <p>{$c->__('button.connecting')}…</p>
             {elseif="$conference && $conference->subject"}
-                <p class="line" title="{$conference->subject}">
+                <p class="line active" title="{$conference->subject}" onclick="Rooms_ajaxShowSubject('{$room}')">
                     {if="$conference->info && $conference->info->mucpublic"}
                         <span title="{$c->__('room.public_muc_text')}">
                             {$c->__('room.public_muc')} <i class="material-icons">wifi_tethering</i>
@@ -78,7 +78,7 @@
                     {$conference->subject}
                 </p>
             {else}
-                <p class="line" id="{$jid|cleanupId}-state">
+                <p class="line active" id="{$jid|cleanupId}-state" onclick="Rooms_ajaxShowSubject('{$room}')">
                     {if="$conference->info && $conference->info->mucpublic"}
                         <span title="{$c->__('room.public_muc_text')}">
                             {$c->__('room.public_muc')} <i class="material-icons">wifi_tethering</i>
@@ -97,15 +97,23 @@
         </li>
     </ul>
 
-    <ul class="list context_menu active">
+    <ul class="list context_menu thin active">
         {if="$conference->presence && !$anon"}
+            {if="$conference->presence->mucrole == 'moderator' || $conference->presence->mucaffiliation == 'owner'"}
+                <li class="subheader">
+                    <span class="control icon">
+                        <i class="material-icons">settings</i>
+                    </span>
+                    <p class="line">{$c->__('chatroom.administration')}</p>
+                </li>
+            {/if}
             {if="$conference->presence->mucrole == 'moderator'"}
-            <li onclick="Rooms_ajaxGetAvatar('{$room}')">
-                <p class="normal">{$c->__('page.avatar')}</p>
-            </li>
-            <li onclick="Rooms_ajaxGetSubject('{$room}')">
-                <p class="normal">{$c->__('chatroom.subject')}</p>
-            </li>
+                <li onclick="Rooms_ajaxGetAvatar('{$room}')">
+                    <p class="normal">{$c->__('page.avatar')}</p>
+                </li>
+                <li onclick="Rooms_ajaxGetSubject('{$room}')">
+                    <p class="normal">{$c->__('chatroom.subject')}</p>
+                </li>
             {/if}
             {if="$conference->presence->mucaffiliation == 'owner'"}
                 <li onclick="Chat_ajaxGetRoomConfig('{$room}')">

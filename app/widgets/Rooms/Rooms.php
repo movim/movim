@@ -241,6 +241,29 @@ class Rooms extends Base
     }
 
     /**
+     * Display the room subject
+     */
+    public function ajaxShowSubject($room = false)
+    {
+        if (!$this->validateRoom($room)) {
+            return;
+        }
+
+        $conference = $this->user->session->conferences()
+            ->where('conference', $room)
+            ->with('info')
+            ->first();
+
+        if (!$conference) return;
+
+        $view = $this->tpl();
+        $view->assign('conference', $conference);
+        $view->assign('room', $room);
+
+        Dialog::fill($view->draw('_rooms_subject_show'));
+    }
+
+    /**
      * @brief Discover rooms for a gateway
      */
     public function ajaxDiscoGateway(string $server)
@@ -395,13 +418,17 @@ class Rooms extends Base
             return;
         }
 
+        $conference = $this->user->session->conferences()
+            ->where('conference', $room)
+            ->first();
+
+        if (!$conference) return;
+
         $view = $this->tpl();
-        $view->assign('list', $this->user->session->conferences()
-                                   ->where('conference', $room)
-                                   ->first()
-                                   ->presences()
-                                   ->with('capability')
-                                   ->get());
+        $view->assign('list', $conference->presences()
+            ->with('capability')
+            ->get());
+        $view->assign('conference', $conference);
         $view->assign('room', $room);
         $view->assign('me', $this->user->id);
 
