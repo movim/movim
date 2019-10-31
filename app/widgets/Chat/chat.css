@@ -299,7 +299,6 @@ table.emojis td:hover {
     display: inline-flex;
     z-index: 1;
     border: solid 1px transparent;
-    text-shadow: 0 0 3rem rgb(var(--movim-main));
 }
 
 #chat_widget .bubble div span.reaction,
