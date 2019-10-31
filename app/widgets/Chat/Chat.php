@@ -33,7 +33,6 @@ class Chat extends \Movim\Widget\Base
     {
         $this->addjs('chat.js');
         $this->addcss('chat.css');
-        $this->registerEvent('invitation', 'onMessage');
         $this->registerEvent('carbons', 'onMessage');
         $this->registerEvent('message', 'onMessage');
         $this->registerEvent('receiptack', 'onMessageReceipt');

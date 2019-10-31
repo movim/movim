@@ -42,7 +42,7 @@ class Message extends Payload
             if ($message->body || $message->subject) {
                 $this->pack($message);
 
-                if ($message->subject) {
+                if ($message->subject && $message->type == 'groupchat') {
                     $this->event('subject');
                 }
 
