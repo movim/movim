@@ -945,7 +945,7 @@ class Chat extends \Movim\Widget\Base
         }
 
         $msgkey = '<' . $message->jidfrom;
-        $msgkey .= ($message->type == 'groupchat') ? $message->resource : '';
+        $msgkey .= ($message->type == 'groupchat') ? cleanupId($message->resource, true) : '';
         $msgkey .= '>' . substr($message->published, 11, 5);
 
         $counter = count($this->_wrapper[$date]);

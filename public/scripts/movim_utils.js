@@ -122,7 +122,7 @@ var MovimUtils = {
                     div.classList.add('previewable');
                     img.classList.add('active');
                     img.addEventListener('click', e => Preview_ajaxShow(img.src))
-                    
+
                     div.appendChild(img);
                 }
             });
