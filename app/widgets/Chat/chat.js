@@ -576,7 +576,7 @@ var Chat = {
             p.innerHTML = data.body;
         }
 
-        if (data.file != null && data.card === undefined) {
+        if (data.file != null && data.card === undefined && data.file.type !== 'xmpp') {
             bubble.querySelector('div.bubble').classList.add('file');
 
             // Ugly fix to clear the paragraph if the file contains a similar link
