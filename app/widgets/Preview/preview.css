@@ -3,24 +3,22 @@
     width: 100%;
     justify-content: center;
     display: flex;
-    background-color: rgba(0, 0, 0, 0.95);
+    background-color: #111;
+    transition: transform .3s cubic-bezier(.4,0,.2,1) .05s;
+    transform: translateX(100%);
     z-index: 3;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity .3s cubic-bezier(.4,0,.2,1) .05s;
 }
 
 #preview:not(:empty) {
-    pointer-events: auto;
-    opacity: 1;
+    transform: translateX(0);
 }
 
 #preview img {
-    max-height: calc(100% - 10rem);
-    margin-top: -5rem;
-    max-width: 95%;
+    max-height: calc(100% - 15rem);
+    max-width: calc(100% - 2rem);
     align-self: center;
     border-radius: 0.5rem;
+    margin-top: -1rem;
 }
 
 #preview .buttons {

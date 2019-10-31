@@ -68,25 +68,6 @@
     right: 0;
 }
 
-/* Controls */
-#snap ul.controls.list {
-    position: absolute;
-    width: 100%;
-    top: 0;
-}
-
-#snap ul.controls.list > li {
-    padding: 3rem;
-}
-
-#snap ul.controls.list > li span.primary {
-    left: 0;
-}
-
-#snap ul.controls.list i {
-    text-shadow: 0 0 3rem black;
-}
-
 /* States */
 #snap.shoot,
 #snap.upload,

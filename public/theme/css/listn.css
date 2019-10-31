@@ -525,6 +525,28 @@ ul.list.middle li.separator:not(.subheader):not(.date) {
     margin: 0 1.5rem;
 }
 
+/* Top controls list */
+ul.list.controls {
+    position: absolute;
+    width: 100%;
+    top: 0;
+}
+
+ul.list.controls > li {
+    padding: 3rem;
+    width: 100%;
+    margin: 0;
+}
+
+ul.list.controls > li span.primary {
+    left: 0.5rem;
+}
+
+ul.list.controls i {
+    text-shadow: 0 0 3rem black;
+}
+
+
 /* Icon */
 
 .icon.tiny {

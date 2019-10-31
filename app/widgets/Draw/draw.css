@@ -30,26 +30,6 @@
 }
 
 /* Controls */
-#draw ul.controls.list {
-    position: absolute;
-    width: 100%;
-    top: 0;
-}
-
-#draw ul.controls.list > li {
-    padding: 3rem;
-    width: 100%;
-    margin: 0;
-}
-
-#draw ul.controls.list > li span.primary {
-    left: 0.5rem;
-}
-
-#draw ul.controls.list i {
-    text-shadow: 0 0 3rem black;
-}
-
 #draw .draw-control {
     position: absolute;
     bottom: 0.5rem;
