@@ -99,7 +99,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-28 14:43+0200\n"
+"POT-Creation-Date: 2019-11-02 10:39+0200\n"
 "PO-Revision-Date: 2019-07-05 10:14+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Bengali (http://www.transifex.com/movim/movim/language/bn/)\n"
@@ -1706,6 +1706,14 @@ msgid "Public"
 msgstr ""
 
 #: [room]public_muc_text
+msgid "This chatroom is publicly discoverable"
+msgstr ""
+
+#: [room]nonanonymous_muc
+msgid "Public profiles"
+msgstr ""
+
+#: [room]nonanonymous_muc_text
 msgid "The participants of this chatroom can see each other's profile"
 msgstr ""
 
