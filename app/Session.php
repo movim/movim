@@ -56,7 +56,7 @@ class Session extends Model
      */
     public function interestingCommunities()
     {
-        return Info::whereRaw('(server, node) in (
+        $where = '(server, node) in (
             select server, node from (
                 select count(*) as count, server, node
                 from subscriptions
@@ -67,8 +67,17 @@ class Session extends Model
                 and (server, node) not in (select server, node from subscriptions where jid = \''.$this->user_id.'\')
                 group by server, node
                 order by count desc
-            ) as sub
-        )');
+            ) as sub';
+
+        $configuration = Configuration::get();
+        if ($configuration->restrictsuggestions) {
+            $host = \App\User::me()->session->host;
+            $where .= ' where server like \'%.'.$host.'\'';
+        }
+
+        $where .= ')';
+
+        return Info::whereRaw($where);
     }
 
     public function conferences()

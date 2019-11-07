@@ -26,17 +26,19 @@
         {/loop}
     </ul>
 {/if}
-<ul class="list middle">
-    <li class="block large">
-        <span class="primary icon">
-            <i class="material-icons">search</i>
-        </span>
-        <form>
-            <div>
-                <input placeholder="pubsub.server.com" onkeypress="
-                    if (event.keyCode == 13) { CommunitiesServers_ajaxDisco(this.value); return false; }" >
-                <label>{$c->__('communities.search_server')}</label>
-            </div>
-        </form>
-    </li>
-</ul>
+{if="!$restrict"}
+    <ul class="list middle">
+        <li class="block large">
+            <span class="primary icon">
+                <i class="material-icons">search</i>
+            </span>
+            <form>
+                <div>
+                    <input placeholder="pubsub.server.com" onkeypress="
+                        if (event.keyCode == 13) { CommunitiesServers_ajaxDisco(this.value); return false; }" >
+                    <label>{$c->__('communities.search_server')}</label>
+                </div>
+            </form>
+        </li>
+    </ul>
+{/if}
