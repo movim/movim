@@ -389,7 +389,13 @@ class Message extends Model
     public function addUrls()
     {
         if (is_string($this->body)) {
+            $old = $this->body;
             $this->body = addUrls($this->body);
+
+            // TODO fix addUrls, see https://github.com/movim/movim/issues/877
+            if (strlen($this->body) < strlen($old)) {
+                $this->body = $old;
+            }
         }
     }
 }

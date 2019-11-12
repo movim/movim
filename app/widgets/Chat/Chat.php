@@ -791,7 +791,6 @@ class Chat extends \Movim\Widget\Base
 
         // Sticker message
         if (isset($message->sticker)) {
-
             $p = new Picture;
             $sticker = $p->get($message->sticker, false, false, 'png');
             $stickerSize = $p->getSize();
