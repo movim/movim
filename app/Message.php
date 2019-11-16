@@ -304,10 +304,14 @@ class Message extends Model
                 /**
                  * We prepare the existing message to be edited in the DB
                  */
-                Message::where('replaceid', (string)$stanza->replace->attributes()->id)
-                ->where('user_id', $this->user_id)
-                ->where('jidfrom', $this->jidfrom)
-                ->update(['id' => $this->id]);
+                try {
+                    Message::where('replaceid', (string)$stanza->replace->attributes()->id)
+                           ->where('user_id', $this->user_id)
+                           ->where('jidfrom', $this->jidfrom)
+                           ->update(['id' => $this->id]);
+                } catch (\Exception $e) {
+                    \Utils::error($e->getMessage());
+                }
             }
 
             if (isset($stanza->x->invite)) {
