@@ -294,8 +294,10 @@ class Bootstrap
      * Error Handlers…
      */
 
-    public function systemErrorHandler($errno, string $errstr, string $errfile = '', int $errline = 0, string $trace = '')
+    public function systemErrorHandler($errno, string $errstr, string $errfile = '', int $errline = 0, $trace = '')
     {
+        if (\is_array($trace)) $trace = '';
+
         echo 'An error occured, check syslog for more information'."\n";
         \Utils::error($errstr . " in " . $errfile . ' (line ' . $errline . ")\n" . 'Trace' . "\n" . $trace);
         return false;
