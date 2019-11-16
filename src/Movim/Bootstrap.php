@@ -294,10 +294,10 @@ class Bootstrap
      * Error Handlers…
      */
 
-    public function systemErrorHandler($errno, string $errstr, string $errfile = '', int $errline = 0)
+    public function systemErrorHandler($errno, string $errstr, string $errfile = '', int $errline = 0, string $trace = '')
     {
         echo 'An error occured, check syslog for more information'."\n";
-        \Utils::error($errstr . " in " . $errfile . ' (line ' . $errline . ")\n");
+        \Utils::error($errstr . " in " . $errfile . ' (line ' . $errline . ")\n" . 'Trace' . "\n" . $trace);
         return false;
     }
 
@@ -307,7 +307,8 @@ class Bootstrap
             E_ERROR,
             get_class($exception) . ': '. $exception->getMessage(),
             $exception->getFile(),
-            $exception->getLine()
+            $exception->getLine(),
+            $exception->getTraceAsString()
         );
     }
 
