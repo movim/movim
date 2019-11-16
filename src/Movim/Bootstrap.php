@@ -297,15 +297,7 @@ class Bootstrap
     public function systemErrorHandler($errno, string $errstr, string $errfile = '', int $errline = 0)
     {
         echo 'An error occured, check syslog for more information'."\n";
-
-        $log = new Logger('movim');
-        $log->pushHandler(new SyslogHandler('movim'));
-
-        if (defined('LOG_LEVEL') && LOG_LEVEL > 1) {
-            $log->pushHandler(new StreamHandler(LOG_PATH . '/errors.log'));
-        }
-
-        $log->addError($errstr . " in " . $errfile . ' (line ' . $errline . ")\n");
+        \Utils::error($errstr . " in " . $errfile . ' (line ' . $errline . ")\n");
         return false;
     }
 

@@ -40,6 +40,21 @@ class Utils
             $log->addDebug($logs);
         }
     }
+
+    /**
+     * Log a string, only used for debug purposes
+     */
+    public static function error($logs)
+    {
+        $log = new Logger('movim');
+        $log->pushHandler(new SyslogHandler('movim'));
+
+        if (defined('LOG_LEVEL') && LOG_LEVEL > 1) {
+            $log->pushHandler(new StreamHandler(LOG_PATH . '/errors.log'));
+        }
+
+        $log->addError($logs);
+    }
 }
 
 

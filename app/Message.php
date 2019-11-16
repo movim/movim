@@ -27,6 +27,15 @@ class Message extends Model
         'markable' => 'boolean'
     ];
 
+    public function save(array $options = [])
+    {
+        try {
+            parent::save($options);
+        } catch (\Exception $e) {
+            \Utils::error($e->getMessage());
+        }
+    }
+
     public function user()
     {
         return $this->belongsTo('App\User');
