@@ -101,8 +101,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-02 10:39+0200\n"
-"PO-Revision-Date: 2019-07-05 10:14+0000\n"
+"POT-Creation-Date: 2019-11-17 19:30+0200\n"
+"PO-Revision-Date: 2019-11-02 09:40+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Indonesian (http://www.transifex.com/movim/movim/language/id/)\n"
 "Language: id\n"
@@ -110,7 +110,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Translate Toolkit 2.3.1\n"
+"X-Generator: Translate Toolkit 2.4.0\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -667,9 +667,8 @@ msgid "You cannot create a new community on this server"
 msgstr ""
 
 #: [communitiesservers]empty_title
-#, fuzzy
 msgid "No Communities Servers yet…"
-msgstr "Server komunitas"
+msgstr ""
 
 #: [communitiesservers]empty_text
 msgid "It seems that we can't find any communities for the moment"
@@ -1549,9 +1548,8 @@ msgid "Markdown syntax manual"
 msgstr ""
 
 #: [rooms]add
-#, fuzzy
 msgid "Add or join a chatroom"
-msgstr "Tambahkan ke chatroom"
+msgstr ""
 
 #: [rooms]edit
 msgid "Edit a chatroom"
@@ -1594,14 +1592,12 @@ msgid "Show all the rooms"
 msgstr ""
 
 #: [rooms]hide_disconnected
-#, fuzzy
 msgid "Hide disconnected rooms"
-msgstr "Terputus dari chatroom"
+msgstr ""
 
 #: [rooms]destroy_title
-#, fuzzy
 msgid "Destroy the room"
-msgstr "Terputus dari chatroom"
+msgstr ""
 
 #: [rooms]destroy_text
 msgid "Are you sure that you want to definitely destroy the following room?"
@@ -1716,9 +1712,8 @@ msgid "This chatroom is publicly discoverable"
 msgstr ""
 
 #: [room]nonanonymous_muc
-#, fuzzy
 msgid "Public profiles"
-msgstr "Profil publik"
+msgstr ""
 
 #: [room]nonanonymous_muc_text
 msgid "The participants of this chatroom can see each other's profile"
@@ -1749,9 +1744,8 @@ msgid "Tags"
 msgstr ""
 
 #: [search]show_complete_roster
-#, fuzzy
 msgid "Show all the contacts"
-msgstr "Tampilkan kontak offline"
+msgstr ""
 
 #: [sendto]attach
 msgid "Attach to a blog publication"
@@ -2083,9 +2077,8 @@ msgid "Delete"
 msgstr ""
 
 #: [button]destroy
-#, fuzzy
 msgid "Destroy"
-msgstr "kuat"
+msgstr ""
 
 #: [button]cancel
 msgid "Cancel"

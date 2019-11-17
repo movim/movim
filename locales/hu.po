@@ -103,8 +103,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-02 10:39+0200\n"
-"PO-Revision-Date: 2019-07-05 10:14+0000\n"
+"POT-Creation-Date: 2019-11-17 19:30+0200\n"
+"PO-Revision-Date: 2019-11-02 09:40+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Hungarian (http://www.transifex.com/movim/movim/language/hu/)\n"
 "Language: hu\n"
@@ -112,7 +112,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 2.3.1\n"
+"X-Generator: Translate Toolkit 2.4.0\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -489,9 +489,8 @@ msgid "%s messages retrieved"
 msgstr "%s üzenet betöltve"
 
 #: [message]edit_help
-#, fuzzy
 msgid "↑ to edit your previous message"
-msgstr "Használhatod a felfelé mutató nyilat ↑ az előző üzeneted szerkesztéséhez"
+msgstr ""
 
 #: [message]emoji_help
 msgid ":shortcut: to insert an emoji"
@@ -670,9 +669,8 @@ msgid "You cannot create a new community on this server"
 msgstr "Nem tudsz új közösséget létrehozni ezen a szerveren"
 
 #: [communitiesservers]empty_title
-#, fuzzy
 msgid "No Communities Servers yet…"
-msgstr "Közösségi szerverek"
+msgstr ""
 
 #: [communitiesservers]empty_text
 msgid "It seems that we can't find any communities for the moment"
@@ -1012,9 +1010,8 @@ msgid "Last seen"
 msgstr "Utoljára itt"
 
 #: [clients]title
-#, fuzzy
 msgid "Clients information"
-msgstr "Kliensinformáció"
+msgstr ""
 
 #: [explore]last_registered
 msgid "Last registered"
@@ -1553,9 +1550,8 @@ msgid "Markdown syntax manual"
 msgstr "Markdown formázási útmutató"
 
 #: [rooms]add
-#, fuzzy
 msgid "Add or join a chatroom"
-msgstr "Chatszoba hozzáadása"
+msgstr ""
 
 #: [rooms]edit
 msgid "Edit a chatroom"
@@ -1598,14 +1594,12 @@ msgid "Show all the rooms"
 msgstr ""
 
 #: [rooms]hide_disconnected
-#, fuzzy
 msgid "Hide disconnected rooms"
-msgstr "Lecsatlakozva a chat szobától"
+msgstr ""
 
 #: [rooms]destroy_title
-#, fuzzy
 msgid "Destroy the room"
-msgstr "Felhasználók a szobában"
+msgstr ""
 
 #: [rooms]destroy_text
 msgid "Are you sure that you want to definitely destroy the following room?"
@@ -1720,9 +1714,8 @@ msgid "This chatroom is publicly discoverable"
 msgstr ""
 
 #: [room]nonanonymous_muc
-#, fuzzy
 msgid "Public profiles"
-msgstr "Nyilvános profil"
+msgstr ""
 
 #: [room]nonanonymous_muc_text
 msgid "The participants of this chatroom can see each other's profile"
@@ -1753,9 +1746,8 @@ msgid "Tags"
 msgstr ""
 
 #: [search]show_complete_roster
-#, fuzzy
 msgid "Show all the contacts"
-msgstr "Mutatsd az offline kapcsolatokat"
+msgstr ""
 
 #: [sendto]attach
 msgid "Attach to a blog publication"
@@ -2087,9 +2079,8 @@ msgid "Delete"
 msgstr "Törlés"
 
 #: [button]destroy
-#, fuzzy
 msgid "Destroy"
-msgstr "erős"
+msgstr ""
 
 #: [button]cancel
 msgid "Cancel"
@@ -2783,6 +2774,3 @@ msgstr "Az API nem elérhető, próbáld újra később"
 #: [field]type_here
 msgid "Type here"
 msgstr "Ide írj"
-
-#~ msgid "Upload a file"
-#~ msgstr "Fájl feltöltése"

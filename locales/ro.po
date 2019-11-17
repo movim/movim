@@ -99,8 +99,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-02 10:39+0200\n"
-"PO-Revision-Date: 2019-07-05 10:14+0000\n"
+"POT-Creation-Date: 2019-11-17 19:30+0200\n"
+"PO-Revision-Date: 2019-11-02 09:40+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Romanian (http://www.transifex.com/movim/movim/language/ro/)\n"
 "Language: ro\n"
@@ -108,7 +108,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
-"X-Generator: Translate Toolkit 2.3.1\n"
+"X-Generator: Translate Toolkit 2.4.0\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -1590,14 +1590,12 @@ msgid "Show all the rooms"
 msgstr ""
 
 #: [rooms]hide_disconnected
-#, fuzzy
 msgid "Hide disconnected rooms"
-msgstr "Decontactat de la chatroom"
+msgstr ""
 
 #: [rooms]destroy_title
-#, fuzzy
 msgid "Destroy the room"
-msgstr "Decontactat de la chatroom"
+msgstr ""
 
 #: [rooms]destroy_text
 msgid "Are you sure that you want to definitely destroy the following room?"
@@ -1712,9 +1710,8 @@ msgid "This chatroom is publicly discoverable"
 msgstr ""
 
 #: [room]nonanonymous_muc
-#, fuzzy
 msgid "Public profiles"
-msgstr "Profil"
+msgstr ""
 
 #: [room]nonanonymous_muc_text
 msgid "The participants of this chatroom can see each other's profile"
@@ -1745,9 +1742,8 @@ msgid "Tags"
 msgstr ""
 
 #: [search]show_complete_roster
-#, fuzzy
 msgid "Show all the contacts"
-msgstr "Afișați contactele deconectate"
+msgstr ""
 
 #: [sendto]attach
 msgid "Attach to a blog publication"
@@ -2774,6 +2770,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "Upload a file"
-#~ msgstr "Încarcă un fișier"

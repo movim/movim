@@ -1,7 +1,7 @@
 #
 # Translators:
 # Christopher Ribeiro <christo_campiglia@hotmail.com>, 2018
-# Evandro Alves Rodrigues <evandro.rodrigues@conab.gov.br>, 2017
+# Evandro Alves Rodrigues <evandro.rodrigues@conab.gov.br>, 2017,2019
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012
 # ismael bonato <ismaelbonato@gmail.com>, 2016
 # Jose Marcos Araujo <jmaraujo@avancetec.com.br>, 2016
@@ -106,8 +106,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-02 10:39+0200\n"
-"PO-Revision-Date: 2019-07-05 10:14+0000\n"
+"POT-Creation-Date: 2019-11-17 19:30+0200\n"
+"PO-Revision-Date: 2019-11-02 09:40+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/movim/movim/language/pt_BR/)\n"
 "Language: pt_BR\n"
@@ -115,7 +115,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Translate Toolkit 2.3.1\n"
+"X-Generator: Translate Toolkit 2.4.0\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -187,15 +187,15 @@ msgstr "Você irá apagar sua conta XMPP e todas as informações relacionadas (
 
 #: [account]delete_text_confirm
 msgid "Type your full username"
-msgstr ""
+msgstr "Digite seu nome de usuário"
 
 #: [account]delete_text_error
 msgid "Please provide a valid username."
-msgstr ""
+msgstr "Por favor, forneça um nome de usuário válido"
 
 #: [account]gateway_title
 msgid "Gateways"
-msgstr ""
+msgstr "Gateways"
 
 #: [account]clear
 msgid "Leave this instance"
@@ -316,7 +316,7 @@ msgstr "Descrição"
 
 #: [information]info1
 msgid "This message will be displayed on the login page. It can be used to link the Terms and Conditions of your Movim instance for example."
-msgstr ""
+msgstr "Esta mensagem será exibida na página de login. Pode ser usada para apresentar os Termos e Condições de sua instância do Movim, por exemplo."
 
 #: [information]info2
 msgid "Leave this field blank if you don’t want to show any message."
@@ -492,9 +492,8 @@ msgid "%s messages retrieved"
 msgstr "%s mensagens recebidas"
 
 #: [message]edit_help
-#, fuzzy
 msgid "↑ to edit your previous message"
-msgstr "Você pode usar a seta para cima ↑ para editar sua mensagem anterior"
+msgstr ""
 
 #: [message]emoji_help
 msgid ":shortcut: to insert an emoji"
@@ -550,11 +549,11 @@ msgstr "Reportar abuso"
 
 #: [chat]jingle_start
 msgid "Call started"
-msgstr ""
+msgstr "Ligação iniciada"
 
 #: [chat]jingle_end
 msgid "Call ended"
-msgstr ""
+msgstr "Ligação finalizada"
 
 #: [chat]publish_error
 msgid "An error occured when sending the message"
@@ -673,9 +672,8 @@ msgid "You cannot create a new community on this server"
 msgstr "Você não pode criar uma nova comunidade neste servidor"
 
 #: [communitiesservers]empty_title
-#, fuzzy
 msgid "No Communities Servers yet…"
-msgstr "Servidores comunitários"
+msgstr ""
 
 #: [communitiesservers]empty_text
 msgid "It seems that we can't find any communities for the moment"
@@ -1015,9 +1013,8 @@ msgid "Last seen"
 msgstr "Última visualização"
 
 #: [clients]title
-#, fuzzy
 msgid "Clients information"
-msgstr "Informação do cliente"
+msgstr ""
 
 #: [explore]last_registered
 msgid "Last registered"
@@ -1558,9 +1555,8 @@ msgid "Markdown syntax manual"
 msgstr "Manual de sintaxe Markdown"
 
 #: [rooms]add
-#, fuzzy
 msgid "Add or join a chatroom"
-msgstr "Adicionar uma Sala de Bate-papo"
+msgstr ""
 
 #: [rooms]edit
 msgid "Edit a chatroom"
@@ -1603,19 +1599,16 @@ msgid "Show all the rooms"
 msgstr ""
 
 #: [rooms]hide_disconnected
-#, fuzzy
 msgid "Hide disconnected rooms"
-msgstr "Desconectado da Sala de Bate-papo"
+msgstr ""
 
 #: [rooms]destroy_title
-#, fuzzy
 msgid "Destroy the room"
-msgstr "Usuários na sala"
+msgstr ""
 
 #: [rooms]destroy_text
-#, fuzzy
 msgid "Are you sure that you want to definitely destroy the following room?"
-msgstr "Tem certeza que deseja apagar este comentário?"
+msgstr ""
 
 #: [rooms]owner [affiliation]owner
 msgid "Owner"
@@ -1726,9 +1719,8 @@ msgid "This chatroom is publicly discoverable"
 msgstr ""
 
 #: [room]nonanonymous_muc
-#, fuzzy
 msgid "Public profiles"
-msgstr "Perfil público"
+msgstr ""
 
 #: [room]nonanonymous_muc_text
 msgid "The participants of this chatroom can see each other's profile"
@@ -1759,9 +1751,8 @@ msgid "Tags"
 msgstr ""
 
 #: [search]show_complete_roster
-#, fuzzy
 msgid "Show all the contacts"
-msgstr "Mostrar os contatos offline"
+msgstr ""
 
 #: [sendto]attach
 msgid "Attach to a blog publication"
@@ -2093,9 +2084,8 @@ msgid "Delete"
 msgstr "Excluir"
 
 #: [button]destroy
-#, fuzzy
 msgid "Destroy"
-msgstr "forte"
+msgstr ""
 
 #: [button]cancel
 msgid "Cancel"
@@ -2789,6 +2779,3 @@ msgstr "A API está inalcançável, tente mais tarde"
 #: [field]type_here
 msgid "Type here"
 msgstr "Digite aqui"
-
-#~ msgid "Upload a file"
-#~ msgstr "Enviar um arquivo"

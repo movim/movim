@@ -115,16 +115,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-02 10:39+0200\n"
-"PO-Revision-Date: 2019-07-05 10:14+0000\n"
-"Last-Translator: Tom Teichler <tom@dummerdelfin.de>\n"
+"POT-Creation-Date: 2019-11-17 19:30+0200\n"
+"PO-Revision-Date: 2019-11-02 09:40+0000\n"
+"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: German (http://www.transifex.com/movim/movim/language/de/)\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 2.3.1\n"
+"X-Generator: Translate Toolkit 2.4.0\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -501,13 +501,12 @@ msgid "%s messages retrieved"
 msgstr "%s Nachrichten geholt"
 
 #: [message]edit_help
-#, fuzzy
 msgid "↑ to edit your previous message"
-msgstr "Sie können die Pfeiltaste nach oben ↑ benutzen, um Ihre letzte Nachricht zu bearbeiten"
+msgstr "↑ um deine letzte Nachricht zu editieren "
 
 #: [message]emoji_help
 msgid ":shortcut: to insert an emoji"
-msgstr ""
+msgstr ":shortcut: um ein Emoji einzufügen"
 
 #: [chat]attention
 msgid "%s needs your attention"
@@ -567,7 +566,7 @@ msgstr "Anruf beendet"
 
 #: [chat]publish_error
 msgid "An error occured when sending the message"
-msgstr ""
+msgstr "Beim Senden der Nachricht ist ein Fehler aufgetreten"
 
 #: [chatroom]members
 msgid "Members"
@@ -615,7 +614,7 @@ msgstr "Mit einem Kontakt chatten"
 
 #: [chats]me
 msgid "Me"
-msgstr ""
+msgstr "Ich"
 
 #: [button]chat
 msgid "Chat"
@@ -682,9 +681,8 @@ msgid "You cannot create a new community on this server"
 msgstr "Sie können keine neue Gemeinschaft auf diesem Server anlegen"
 
 #: [communitiesservers]empty_title
-#, fuzzy
 msgid "No Communities Servers yet…"
-msgstr "Gemeinschaftsserver"
+msgstr ""
 
 #: [communitiesservers]empty_text
 msgid "It seems that we can't find any communities for the moment"
@@ -1024,9 +1022,8 @@ msgid "Last seen"
 msgstr "Zuletzt gesehen"
 
 #: [clients]title
-#, fuzzy
 msgid "Clients information"
-msgstr "Client-Informationen"
+msgstr "Client Informationen"
 
 #: [explore]last_registered
 msgid "Last registered"
@@ -1565,9 +1562,8 @@ msgid "Markdown syntax manual"
 msgstr "Markdown-Anleitung"
 
 #: [rooms]add
-#, fuzzy
 msgid "Add or join a chatroom"
-msgstr "Chatraum hinzufügen"
+msgstr ""
 
 #: [rooms]edit
 msgid "Edit a chatroom"
@@ -1591,7 +1587,7 @@ msgstr ""
 
 #: [rooms]empty_synchronize_button
 msgid "Synchronize"
-msgstr ""
+msgstr "Synchronisieren"
 
 #: [rooms]type_room
 msgid "Type of room"
@@ -1607,22 +1603,19 @@ msgstr "Gateway-Raum"
 
 #: [rooms]show_all
 msgid "Show all the rooms"
-msgstr ""
+msgstr "Alle Räume anzeigen"
 
 #: [rooms]hide_disconnected
-#, fuzzy
 msgid "Hide disconnected rooms"
-msgstr "Vom Chatraum getrennt"
+msgstr "Nicht-verbundene Räume verstecken"
 
 #: [rooms]destroy_title
-#, fuzzy
 msgid "Destroy the room"
-msgstr "Nutzer im Raum"
+msgstr "Raum zerstören"
 
 #: [rooms]destroy_text
-#, fuzzy
 msgid "Are you sure that you want to definitely destroy the following room?"
-msgstr "Sind Sie sicher, dass Sie diesen Kommentar entfernen möchten?"
+msgstr ""
 
 #: [rooms]owner [affiliation]owner
 msgid "Owner"
@@ -1630,11 +1623,11 @@ msgstr "Besitzer"
 
 #: [rooms]admin
 msgid "Admin"
-msgstr ""
+msgstr "Admin"
 
 #: [rooms]visitor
 msgid "Visitor"
-msgstr ""
+msgstr "Besucher"
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -1658,7 +1651,7 @@ msgstr "Leerer Name"
 
 #: [chatrooms]synchronized
 msgid "%s rooms synchronized"
-msgstr ""
+msgstr "%s Räume  synchronisiert"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1678,7 +1671,7 @@ msgstr "Diesen Chatraum beim Verbinden betreten"
 
 #: [chatrooms]destroyed
 msgid "Room destroyed"
-msgstr ""
+msgstr "Raum zerstört"
 
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
@@ -1733,9 +1726,8 @@ msgid "This chatroom is publicly discoverable"
 msgstr ""
 
 #: [room]nonanonymous_muc
-#, fuzzy
 msgid "Public profiles"
-msgstr "Öffentliches Profil"
+msgstr ""
 
 #: [room]nonanonymous_muc_text
 msgid "The participants of this chatroom can see each other's profile"
@@ -1766,9 +1758,8 @@ msgid "Tags"
 msgstr ""
 
 #: [search]show_complete_roster
-#, fuzzy
 msgid "Show all the contacts"
-msgstr "Abgemeldete Kontakte anzeigen"
+msgstr "Alle Kontakte anzeigen"
 
 #: [sendto]attach
 msgid "Attach to a blog publication"
@@ -2100,9 +2091,8 @@ msgid "Delete"
 msgstr "Löschen"
 
 #: [button]destroy
-#, fuzzy
 msgid "Destroy"
-msgstr "stark"
+msgstr "Zerstören"
 
 #: [button]cancel
 msgid "Cancel"
@@ -2243,7 +2233,7 @@ msgstr "Bot"
 
 #: [client]console
 msgid "Console"
-msgstr ""
+msgstr "Konsole"
 
 #: [client]desktop
 msgid "Desktop"
@@ -2796,6 +2786,3 @@ msgstr "Die API ist nicht erreichbar, bitte später erneut versuchen"
 #: [field]type_here
 msgid "Type here"
 msgstr "Hier schreiben"
-
-#~ msgid "Upload a file"
-#~ msgstr "Eine Datei hochladen"

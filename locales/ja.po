@@ -102,8 +102,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-02 10:39+0200\n"
-"PO-Revision-Date: 2019-07-05 10:14+0000\n"
+"POT-Creation-Date: 2019-11-17 19:30+0200\n"
+"PO-Revision-Date: 2019-11-02 09:40+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Japanese (http://www.transifex.com/movim/movim/language/ja/)\n"
 "Language: ja\n"
@@ -111,7 +111,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Translate Toolkit 2.3.1\n"
+"X-Generator: Translate Toolkit 2.4.0\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -488,9 +488,8 @@ msgid "%s messages retrieved"
 msgstr ""
 
 #: [message]edit_help
-#, fuzzy
 msgid "↑ to edit your previous message"
-msgstr "上向き矢印キー押せば訂正ができます"
+msgstr ""
 
 #: [message]emoji_help
 msgid ":shortcut: to insert an emoji"
@@ -1550,9 +1549,8 @@ msgid "Markdown syntax manual"
 msgstr ""
 
 #: [rooms]add
-#, fuzzy
 msgid "Add or join a chatroom"
-msgstr "チャットルームを追加する"
+msgstr ""
 
 #: [rooms]edit
 msgid "Edit a chatroom"
@@ -1595,14 +1593,12 @@ msgid "Show all the rooms"
 msgstr ""
 
 #: [rooms]hide_disconnected
-#, fuzzy
 msgid "Hide disconnected rooms"
-msgstr "チャットルームを退去しました"
+msgstr ""
 
 #: [rooms]destroy_title
-#, fuzzy
 msgid "Destroy the room"
-msgstr "チャットルームを退去しました"
+msgstr ""
 
 #: [rooms]destroy_text
 msgid "Are you sure that you want to definitely destroy the following room?"
@@ -1717,9 +1713,8 @@ msgid "This chatroom is publicly discoverable"
 msgstr ""
 
 #: [room]nonanonymous_muc
-#, fuzzy
 msgid "Public profiles"
-msgstr "プロフィール"
+msgstr ""
 
 #: [room]nonanonymous_muc_text
 msgid "The participants of this chatroom can see each other's profile"
@@ -1750,9 +1745,8 @@ msgid "Tags"
 msgstr ""
 
 #: [search]show_complete_roster
-#, fuzzy
 msgid "Show all the contacts"
-msgstr "オフラインの知り合いを表示"
+msgstr ""
 
 #: [sendto]attach
 msgid "Attach to a blog publication"
@@ -2779,6 +2773,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr "ここに入力を"
-
-#~ msgid "Upload a file"
-#~ msgstr "アップロード "

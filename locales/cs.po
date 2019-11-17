@@ -1,5 +1,6 @@
 #
 # Translators:
+# Egon Borovan <egon.boro@gmail.com>, 2019
 # Jakub Hlusička <limethgaming@gmail.com>, 2016
 # Tom Dienstbier <dienstbiercomputer.tomas@gmail.com>, 2017
 # Tom Dienstbier <dienstbiercomputer.tomas@gmail.com>, 2017
@@ -101,8 +102,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-02 10:39+0200\n"
-"PO-Revision-Date: 2019-07-05 10:14+0000\n"
+"POT-Creation-Date: 2019-11-17 19:30+0200\n"
+"PO-Revision-Date: 2019-11-02 09:40+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/movim/movim/language/cs_CZ/)\n"
 "Language: cs_CZ\n"
@@ -110,7 +111,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
-"X-Generator: Translate Toolkit 2.3.1\n"
+"X-Generator: Translate Toolkit 2.4.0\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -182,19 +183,19 @@ msgstr "Smažete váš XMPP účet a všechna informace propojená s ním (profi
 
 #: [account]delete_text_confirm
 msgid "Type your full username"
-msgstr ""
+msgstr "Zadejte své celé uživatelské jméno"
 
 #: [account]delete_text_error
 msgid "Please provide a valid username."
-msgstr ""
+msgstr "Zadejte platné uživatelské jméno."
 
 #: [account]gateway_title
 msgid "Gateways"
-msgstr ""
+msgstr "Brány"
 
 #: [account]clear
 msgid "Leave this instance"
-msgstr ""
+msgstr "Opusťte tuto instanci"
 
 #: [account]clear_text
 msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
@@ -246,7 +247,7 @@ msgstr "Akce"
 
 #: [adhoc]completed
 msgid "Action completed"
-msgstr ""
+msgstr "Akce byla dokončena"
 
 #: [admin]general
 msgid "General Settings"
@@ -266,7 +267,7 @@ msgstr ""
 
 #: [restrictsuggestions]title
 msgid "Restrict suggestions"
-msgstr ""
+msgstr "Omezit návrhy"
 
 #: [restrictsuggestions]text
 msgid "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
@@ -311,11 +312,11 @@ msgstr "Popis"
 
 #: [information]info1
 msgid "This message will be displayed on the login page. It can be used to link the Terms and Conditions of your Movim instance for example."
-msgstr ""
+msgstr "Tato zpráva se zobrazí na přihlašovací stránce. Lze ji použít například k odkazu na smluvní podmínky vaší instance Movim."
 
 #: [information]info2
 msgid "Leave this field blank if you don’t want to show any message."
-msgstr ""
+msgstr "Pokud nechcete zobrazovat žádnou zprávu, ponechte toto pole prázdné."
 
 #: [information]label
 msgctxt "[information]label"
@@ -487,9 +488,8 @@ msgid "%s messages retrieved"
 msgstr "Získáno %s zpráv"
 
 #: [message]edit_help
-#, fuzzy
 msgid "↑ to edit your previous message"
-msgstr "Můžete použít šipku nahoru ↑ k úpravě Vaší předchozí zprávy"
+msgstr ""
 
 #: [message]emoji_help
 msgid ":shortcut: to insert an emoji"
@@ -668,9 +668,8 @@ msgid "You cannot create a new community on this server"
 msgstr ""
 
 #: [communitiesservers]empty_title
-#, fuzzy
 msgid "No Communities Servers yet…"
-msgstr "Zatím tu nic není"
+msgstr ""
 
 #: [communitiesservers]empty_text
 msgid "It seems that we can't find any communities for the moment"
@@ -751,7 +750,7 @@ msgstr "%s příspěvků"
 
 #: [communitydata]public
 msgid "Public page"
-msgstr ""
+msgstr "Veřejná stránka"
 
 #: [communityheader]subscribe
 msgid "Subscribe"
@@ -863,7 +862,7 @@ msgstr "Umožní Vám číst příspěvky označené #nsfw"
 
 #: [config]night_mode
 msgid "Night Mode"
-msgstr ""
+msgstr "Noční režim"
 
 #: [config]night_mode_text
 msgid "Use dark colors to rest your eyes"
@@ -871,7 +870,7 @@ msgstr ""
 
 #: [config]chatmain
 msgid "Main chat page"
-msgstr ""
+msgstr "Hlavní stránka chatu"
 
 #: [config]chatmain_text
 msgid "Make the chat page as the default one"
@@ -887,11 +886,11 @@ msgstr ""
 
 #: [config]mam_always
 msgid "Always"
-msgstr ""
+msgstr "Vždy"
 
 #: [config]mam_never
 msgid "Never"
-msgstr ""
+msgstr "Nikdy"
 
 #: [config]mam_saved
 msgid "Archiving preferences saved"
@@ -911,11 +910,11 @@ msgstr ""
 
 #: [confirm]code
 msgid "Authentication code"
-msgstr ""
+msgstr "Ověřovací kód"
 
 #: [roster]add_title
 msgid "Add a contact"
-msgstr ""
+msgstr "Přidej kontakt"
 
 #: [roster]add_contact_info1
 msgid "Enter the Jabber ID of your contact."
@@ -939,7 +938,7 @@ msgstr "Kontakt odebrán"
 
 #: [general]legend
 msgid "General Information"
-msgstr ""
+msgstr "Obecné informace"
 
 #: [general]name [chatrooms]name
 msgid "Name"
@@ -999,7 +998,7 @@ msgstr "Nálada"
 
 #: [mood]im
 msgid "I’m "
-msgstr ""
+msgstr "Já jsem"
 
 #: [listen]title
 msgid "Listening"
@@ -1111,11 +1110,11 @@ msgstr ""
 
 #: [faq]chatrooms_title
 msgid "Where can I find a list of chatrooms?"
-msgstr ""
+msgstr "Kde najdu seznam chatroomů?"
 
 #: [faq]find_contacts_title
 msgid "Where can I find my contacts?"
-msgstr ""
+msgstr "Kde najdu své kontakty?"
 
 #: [faq]find_contacts_text
 msgid "By opening the search panel."
@@ -1127,7 +1126,7 @@ msgstr ""
 
 #: [apps]phone
 msgid "Apps for your phone"
-msgstr ""
+msgstr "Aplikace pro váš telefon"
 
 #: [apps]android
 msgid "Try out our official Android app"
@@ -1135,11 +1134,11 @@ msgstr ""
 
 #: [apps]recommend
 msgid "We also recommend"
-msgstr ""
+msgstr "Doporučujeme také"
 
 #: [apps]computer
 msgid "Apps for your computer"
-msgstr ""
+msgstr "Aplikace pro váš počítač"
 
 #: [apps]computer_text
 msgid "Our official apps are available on our website"
@@ -1550,9 +1549,8 @@ msgid "Markdown syntax manual"
 msgstr "Návod na syntaxi Markdown"
 
 #: [rooms]add
-#, fuzzy
 msgid "Add or join a chatroom"
-msgstr "Přidat konverzaci"
+msgstr ""
 
 #: [rooms]edit
 msgid "Edit a chatroom"
@@ -1595,14 +1593,12 @@ msgid "Show all the rooms"
 msgstr ""
 
 #: [rooms]hide_disconnected
-#, fuzzy
 msgid "Hide disconnected rooms"
-msgstr "Odpojeni z konverzace"
+msgstr ""
 
 #: [rooms]destroy_title
-#, fuzzy
 msgid "Destroy the room"
-msgstr "Uživatelé v této konverzaci"
+msgstr ""
 
 #: [rooms]destroy_text
 msgid "Are you sure that you want to definitely destroy the following room?"
@@ -1717,9 +1713,8 @@ msgid "This chatroom is publicly discoverable"
 msgstr ""
 
 #: [room]nonanonymous_muc
-#, fuzzy
 msgid "Public profiles"
-msgstr "Veřejný profil"
+msgstr ""
 
 #: [room]nonanonymous_muc_text
 msgid "The participants of this chatroom can see each other's profile"
@@ -1750,9 +1745,8 @@ msgid "Tags"
 msgstr ""
 
 #: [search]show_complete_roster
-#, fuzzy
 msgid "Show all the contacts"
-msgstr "Zobrazovat offline kontakty"
+msgstr ""
 
 #: [sendto]attach
 msgid "Attach to a blog publication"
@@ -2278,11 +2272,11 @@ msgstr ""
 
 #: [mood]amorous
 msgid "amorous"
-msgstr ""
+msgstr "zamilovaný"
 
 #: [mood]angry
 msgid "angry"
-msgstr ""
+msgstr "rozlobený"
 
 #: [mood]annoyed
 msgid "annoyed"
@@ -2302,31 +2296,31 @@ msgstr ""
 
 #: [mood]bored
 msgid "bored"
-msgstr ""
+msgstr "znuděný"
 
 #: [mood]brave
 msgid "brave"
-msgstr ""
+msgstr "statečný"
 
 #: [mood]calm
 msgid "calm"
-msgstr ""
+msgstr "klidný"
 
 #: [mood]cautious
 msgid "cautious"
-msgstr ""
+msgstr "opatrný"
 
 #: [mood]cold
 msgid "cold"
-msgstr ""
+msgstr "chladný"
 
 #: [mood]confident
 msgid "confident"
-msgstr ""
+msgstr "sebejistý"
 
 #: [mood]confused
 msgid "confused"
-msgstr ""
+msgstr "zmatený"
 
 #: [mood]contemplative
 msgid "contemplative"
@@ -2338,19 +2332,19 @@ msgstr ""
 
 #: [mood]cranky
 msgid "cranky"
-msgstr ""
+msgstr "výstřední"
 
 #: [mood]crazy
 msgid "crazy"
-msgstr ""
+msgstr "bláznivý"
 
 #: [mood]creative
 msgid "creative"
-msgstr ""
+msgstr "tvůrčí"
 
 #: [mood]curious
 msgid "curious"
-msgstr ""
+msgstr "zvědavý"
 
 #: [mood]dejected
 msgid "dejected"
@@ -2414,7 +2408,7 @@ msgstr ""
 
 #: [mood]happy
 msgid "happy"
-msgstr ""
+msgstr "šťastný"
 
 #: [mood]hopeful
 msgid "hopeful"
@@ -2422,11 +2416,11 @@ msgstr ""
 
 #: [mood]hot
 msgid "hot"
-msgstr ""
+msgstr "žhavý"
 
 #: [mood]humbled
 msgid "humbled"
-msgstr ""
+msgstr "pokořený"
 
 #: [mood]humiliated
 msgid "humiliated"
@@ -2434,15 +2428,15 @@ msgstr ""
 
 #: [mood]hungry
 msgid "hungry"
-msgstr ""
+msgstr "hladový"
 
 #: [mood]hurt
 msgid "hurt"
-msgstr ""
+msgstr "zraněný"
 
 #: [mood]impressed
 msgid "impressed"
-msgstr ""
+msgstr "zapůsobil"
 
 #: [mood]in_awe
 msgid "in awe"
@@ -2530,75 +2524,75 @@ msgstr ""
 
 #: [mood]sad
 msgid "sad"
-msgstr ""
+msgstr "smutný"
 
 #: [mood]sarcastic
 msgid "sarcastic"
-msgstr ""
+msgstr "sarkastický"
 
 #: [mood]satisfied
 msgid "satisfied"
-msgstr ""
+msgstr "spokojený"
 
 #: [mood]serious
 msgid "serious"
-msgstr ""
+msgstr "vážný"
 
 #: [mood]shocked
 msgid "shocked"
-msgstr ""
+msgstr "vylekaný"
 
 #: [mood]shy
 msgid "shy"
-msgstr ""
+msgstr "stydlivý"
 
 #: [mood]sick
 msgid "sick"
-msgstr ""
+msgstr "nemocný"
 
 #: [mood]sleepy
 msgid "sleepy"
-msgstr ""
+msgstr "ospalý"
 
 #: [mood]spontaneous
 msgid "spontaneous"
-msgstr ""
+msgstr "spontánní"
 
 #: [mood]stressed
 msgid "stressed"
-msgstr ""
+msgstr "stresovaný"
 
 #: [mood]strong
 msgid "strong"
-msgstr ""
+msgstr "silný"
 
 #: [mood]surprised
 msgid "surprised"
-msgstr ""
+msgstr "překvapený"
 
 #: [mood]thankful
 msgid "thankful"
-msgstr ""
+msgstr "vděčný"
 
 #: [mood]thirsty
 msgid "thirsty"
-msgstr ""
+msgstr "žíznivý"
 
 #: [mood]tired
 msgid "tired"
-msgstr ""
+msgstr "unavený"
 
 #: [mood]undefined
 msgid "undefined"
-msgstr ""
+msgstr "nedefinovaný"
 
 #: [mood]weak
 msgid "weak"
-msgstr ""
+msgstr "slabý"
 
 #: [mood]worried
 msgid "worried"
-msgstr ""
+msgstr "znepokojený"
 
 #: [month]title
 msgid "Month"
@@ -2754,7 +2748,7 @@ msgstr ""
 
 #: [affiliation]publisher
 msgid "Publisher"
-msgstr ""
+msgstr "Vydavatel"
 
 #: [affiliation]publish-only
 msgid "Publish only"
@@ -2762,7 +2756,7 @@ msgstr ""
 
 #: [affiliation]member
 msgid "Member"
-msgstr ""
+msgstr "Člen"
 
 #: [affiliation]no-aff
 msgid "No affiliation"
@@ -2779,6 +2773,3 @@ msgstr "API je nedostupná, zkuste to znovu později"
 #: [field]type_here
 msgid "Type here"
 msgstr "Pište sem"
-
-#~ msgid "Upload a file"
-#~ msgstr "Nahrát soubor"

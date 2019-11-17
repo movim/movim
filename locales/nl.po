@@ -108,8 +108,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-02 10:39+0200\n"
-"PO-Revision-Date: 2019-07-05 10:14+0000\n"
+"POT-Creation-Date: 2019-11-17 19:30+0200\n"
+"PO-Revision-Date: 2019-11-02 09:40+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Dutch (http://www.transifex.com/movim/movim/language/nl/)\n"
 "Language: nl\n"
@@ -117,7 +117,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 2.3.1\n"
+"X-Generator: Translate Toolkit 2.4.0\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -494,9 +494,8 @@ msgid "%s messages retrieved"
 msgstr "%s berichten ontvangen"
 
 #: [message]edit_help
-#, fuzzy
 msgid "↑ to edit your previous message"
-msgstr "Je kan het pijltje naar boven ↑ gebruiken om je laatste bericht nog aan te passen"
+msgstr ""
 
 #: [message]emoji_help
 msgid ":shortcut: to insert an emoji"
@@ -675,9 +674,8 @@ msgid "You cannot create a new community on this server"
 msgstr ""
 
 #: [communitiesservers]empty_title
-#, fuzzy
 msgid "No Communities Servers yet…"
-msgstr "Hier is nog niets..."
+msgstr ""
 
 #: [communitiesservers]empty_text
 msgid "It seems that we can't find any communities for the moment"
@@ -1017,9 +1015,8 @@ msgid "Last seen"
 msgstr "Laatst gezien"
 
 #: [clients]title
-#, fuzzy
 msgid "Clients information"
-msgstr "Algemene informatie"
+msgstr ""
 
 #: [explore]last_registered
 msgid "Last registered"
@@ -1558,9 +1555,8 @@ msgid "Markdown syntax manual"
 msgstr "Markdown syntax handleiding"
 
 #: [rooms]add
-#, fuzzy
 msgid "Add or join a chatroom"
-msgstr "Voeg een chat-ruimte toe"
+msgstr ""
 
 #: [rooms]edit
 msgid "Edit a chatroom"
@@ -1603,14 +1599,12 @@ msgid "Show all the rooms"
 msgstr ""
 
 #: [rooms]hide_disconnected
-#, fuzzy
 msgid "Hide disconnected rooms"
-msgstr "Verbinding met de chatroom verbroken"
+msgstr ""
 
 #: [rooms]destroy_title
-#, fuzzy
 msgid "Destroy the room"
-msgstr "Gebruikers in de room"
+msgstr ""
 
 #: [rooms]destroy_text
 msgid "Are you sure that you want to definitely destroy the following room?"
@@ -1725,9 +1719,8 @@ msgid "This chatroom is publicly discoverable"
 msgstr ""
 
 #: [room]nonanonymous_muc
-#, fuzzy
 msgid "Public profiles"
-msgstr "Openbare profiel"
+msgstr ""
 
 #: [room]nonanonymous_muc_text
 msgid "The participants of this chatroom can see each other's profile"
@@ -1758,9 +1751,8 @@ msgid "Tags"
 msgstr ""
 
 #: [search]show_complete_roster
-#, fuzzy
 msgid "Show all the contacts"
-msgstr "Toon offline contactpersonen"
+msgstr ""
 
 #: [sendto]attach
 msgid "Attach to a blog publication"
@@ -2092,9 +2084,8 @@ msgid "Delete"
 msgstr "Verwijderen"
 
 #: [button]destroy
-#, fuzzy
 msgid "Destroy"
-msgstr "sterk"
+msgstr ""
 
 #: [button]cancel
 msgid "Cancel"
@@ -2788,6 +2779,3 @@ msgstr "De API is niet bereikbaar, probeer later nog eens"
 #: [field]type_here
 msgid "Type here"
 msgstr "Typ hier"
-
-#~ msgid "Upload a file"
-#~ msgstr "Upload een bestand"

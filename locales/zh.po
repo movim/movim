@@ -107,8 +107,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-02 10:39+0200\n"
-"PO-Revision-Date: 2019-07-05 10:14+0000\n"
+"POT-Creation-Date: 2019-11-17 19:30+0200\n"
+"PO-Revision-Date: 2019-11-02 09:40+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
 "Language: zh_CN\n"
@@ -116,7 +116,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Translate Toolkit 2.3.1\n"
+"X-Generator: Translate Toolkit 2.4.0\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -493,9 +493,8 @@ msgid "%s messages retrieved"
 msgstr "获取了 %s 条消息"
 
 #: [message]edit_help
-#, fuzzy
 msgid "↑ to edit your previous message"
-msgstr "你可以使用上方向键 ↑ 来编辑你之前的消息"
+msgstr ""
 
 #: [message]emoji_help
 msgid ":shortcut: to insert an emoji"
@@ -674,9 +673,8 @@ msgid "You cannot create a new community on this server"
 msgstr "你不能在此服务器上创建社群"
 
 #: [communitiesservers]empty_title
-#, fuzzy
 msgid "No Communities Servers yet…"
-msgstr "社群服务器"
+msgstr ""
 
 #: [communitiesservers]empty_text
 msgid "It seems that we can't find any communities for the moment"
@@ -1016,9 +1014,8 @@ msgid "Last seen"
 msgstr "最后一次访问"
 
 #: [clients]title
-#, fuzzy
 msgid "Clients information"
-msgstr "客户端信息"
+msgstr ""
 
 #: [explore]last_registered
 msgid "Last registered"
@@ -1557,9 +1554,8 @@ msgid "Markdown syntax manual"
 msgstr "Markdown 语法手册"
 
 #: [rooms]add
-#, fuzzy
 msgid "Add or join a chatroom"
-msgstr "添加一个聊天室"
+msgstr ""
 
 #: [rooms]edit
 msgid "Edit a chatroom"
@@ -1602,19 +1598,16 @@ msgid "Show all the rooms"
 msgstr ""
 
 #: [rooms]hide_disconnected
-#, fuzzy
 msgid "Hide disconnected rooms"
-msgstr "离开聊天室"
+msgstr ""
 
 #: [rooms]destroy_title
-#, fuzzy
 msgid "Destroy the room"
-msgstr "聊天室用户"
+msgstr ""
 
 #: [rooms]destroy_text
-#, fuzzy
 msgid "Are you sure that you want to definitely destroy the following room?"
-msgstr "你确定想要删除这条评论吗？"
+msgstr ""
 
 #: [rooms]owner [affiliation]owner
 msgid "Owner"
@@ -1725,9 +1718,8 @@ msgid "This chatroom is publicly discoverable"
 msgstr ""
 
 #: [room]nonanonymous_muc
-#, fuzzy
 msgid "Public profiles"
-msgstr "公开个人资料"
+msgstr ""
 
 #: [room]nonanonymous_muc_text
 msgid "The participants of this chatroom can see each other's profile"
@@ -1758,9 +1750,8 @@ msgid "Tags"
 msgstr ""
 
 #: [search]show_complete_roster
-#, fuzzy
 msgid "Show all the contacts"
-msgstr "显示离线联络人"
+msgstr ""
 
 #: [sendto]attach
 msgid "Attach to a blog publication"
@@ -2092,9 +2083,8 @@ msgid "Delete"
 msgstr "删除"
 
 #: [button]destroy
-#, fuzzy
 msgid "Destroy"
-msgstr "得意"
+msgstr ""
 
 #: [button]cancel
 msgid "Cancel"
@@ -2788,6 +2778,3 @@ msgstr "API 无法连接，请稍后重试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
-
-#~ msgid "Upload a file"
-#~ msgstr "上传一个文件"

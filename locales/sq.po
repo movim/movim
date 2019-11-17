@@ -100,16 +100,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-02 10:39+0200\n"
-"PO-Revision-Date: 2019-07-05 10:14+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"POT-Creation-Date: 2019-11-17 19:30+0200\n"
+"PO-Revision-Date: 2019-11-03 09:01+0000\n"
+"Last-Translator: Besnik <besnik@programeshqip.org>\n"
 "Language-Team: Albanian (http://www.transifex.com/movim/movim/language/sq/)\n"
 "Language: sq\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 2.3.1\n"
+"X-Generator: Translate Toolkit 2.4.0\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -486,13 +486,12 @@ msgid "%s messages retrieved"
 msgstr "U morën %s mesazhe"
 
 #: [message]edit_help
-#, fuzzy
 msgid "↑ to edit your previous message"
-msgstr "Që të përpunoni mesazhin tuaj të mëparshëm, mund të përdorni shigjetën për sipër ↑"
+msgstr "↑ që të përpunoni mesazhin tuaj të mëparshëm"
 
 #: [message]emoji_help
 msgid ":shortcut: to insert an emoji"
-msgstr ""
+msgstr ":shkurtore: që të futni një emoxhi"
 
 #: [chat]attention
 msgid "%s needs your attention"
@@ -552,7 +551,7 @@ msgstr "Thirrja përfundoi"
 
 #: [chat]publish_error
 msgid "An error occured when sending the message"
-msgstr ""
+msgstr "Ndodhi një gabim teksa dërgohej mesazhi"
 
 #: [chatroom]members
 msgid "Members"
@@ -600,7 +599,7 @@ msgstr "Fjalosuni me një kontakt"
 
 #: [chats]me
 msgid "Me"
-msgstr ""
+msgstr "Unë"
 
 #: [button]chat
 msgid "Chat"
@@ -667,13 +666,12 @@ msgid "You cannot create a new community on this server"
 msgstr "S’mund të krijoni një bashkësi të re në këtë shërbyes"
 
 #: [communitiesservers]empty_title
-#, fuzzy
 msgid "No Communities Servers yet…"
-msgstr "Shërbyes bashkësish"
+msgstr "Ende pa Shërbyes Bashkësie…"
 
 #: [communitiesservers]empty_text
 msgid "It seems that we can't find any communities for the moment"
-msgstr ""
+msgstr "Duket se për çastin s’gjejmë dot ndonjë bashkësi"
 
 #: [communityaffiliation]subscriptions
 msgid "Subscriptions"
@@ -697,7 +695,7 @@ msgstr "Duket se ajo bashkësi s’ekziston më. Doni të hiqet nga pajtimet tua
 
 #: [communityaffiliation]config_error
 msgid "Error during the application of the node configuration"
-msgstr ""
+msgstr "Gabim gjatë zbatimit të formësimit të nyjës"
 
 #: [communityaffiliation]owners
 msgid "Owners"
@@ -870,11 +868,11 @@ msgstr "Përdorni ngjyra të errëta për të çlodhur sytë"
 
 #: [config]chatmain
 msgid "Main chat page"
-msgstr ""
+msgstr "Faqja e fjalosjes kryesore"
 
 #: [config]chatmain_text
 msgid "Make the chat page as the default one"
-msgstr ""
+msgstr "Bëje faqen e fjalosjes si atë parazgjedhje"
 
 #: [config]mam
 msgid "Archiving preferences"
@@ -1009,9 +1007,8 @@ msgid "Last seen"
 msgstr "Parë së fundi"
 
 #: [clients]title
-#, fuzzy
 msgid "Clients information"
-msgstr "Të dhëna Klienti"
+msgstr "Të dhëna klientësh"
 
 #: [explore]last_registered
 msgid "Last registered"
@@ -1347,7 +1344,7 @@ msgstr "Postimi u fshi"
 
 #: [post]hot
 msgid "What’s Hot"
-msgstr ""
+msgstr "Ç’është Në Modë"
 
 #: [post]hot_text
 msgid "Posts recently published in communities that you are not subscribed (yet)"
@@ -1491,7 +1488,7 @@ msgstr "Prani"
 
 #: [status]logout_confirm
 msgid "Do you really want to log out?"
-msgstr ""
+msgstr "Doni vërtet të dilni?"
 
 #: [publishbrief]placeholder
 msgid "What’s new?"
@@ -1507,7 +1504,7 @@ msgstr "Shtoni një lidhje"
 
 #: [publishbrief]add_snap
 msgid "Take a picture"
-msgstr ""
+msgstr "Bëni një foto"
 
 #: [publishbrief]no_title
 msgid "Please provide a title"
@@ -1550,9 +1547,8 @@ msgid "Markdown syntax manual"
 msgstr "Doracak sintakse Markdown"
 
 #: [rooms]add
-#, fuzzy
 msgid "Add or join a chatroom"
-msgstr "Shtoni një dhomë bisedash"
+msgstr "Shtoni ose hyni në një dhomë"
 
 #: [rooms]edit
 msgid "Edit a chatroom"
@@ -1568,15 +1564,15 @@ msgstr "Shtoni një duke klikuar mbi butonin e shtimeve."
 
 #: [rooms]empty_synchronize_title
 msgid "You had some rooms previously listed?"
-msgstr ""
+msgstr "Keni ndonjë dhomë prej më parë?"
 
 #: [rooms]empty_synchronize_text
 msgid "Try to synchronize them to the new room bookmarking system"
-msgstr ""
+msgstr "Provoni t’i njëkohësoni me sistemin e faqerojtjes së dhomës së re"
 
 #: [rooms]empty_synchronize_button
 msgid "Synchronize"
-msgstr ""
+msgstr "Njëkohësoje"
 
 #: [rooms]type_room
 msgid "Type of room"
@@ -1592,22 +1588,19 @@ msgstr ""
 
 #: [rooms]show_all
 msgid "Show all the rooms"
-msgstr ""
+msgstr "Shfaq krejt dhomat"
 
 #: [rooms]hide_disconnected
-#, fuzzy
 msgid "Hide disconnected rooms"
-msgstr "U shkëput nga dhoma e fjalosjeve"
+msgstr "Fshihi dhomat e shkëputura"
 
 #: [rooms]destroy_title
-#, fuzzy
 msgid "Destroy the room"
-msgstr "Përdorues në dhomë"
+msgstr "Asgjësoje dhomën"
 
 #: [rooms]destroy_text
-#, fuzzy
 msgid "Are you sure that you want to definitely destroy the following room?"
-msgstr "Jeni i sigurt se doni të fshihet ky koment?"
+msgstr "Jeni i sigurt se doni përfundimisht të asgjësoni dhomën vijuese?"
 
 #: [rooms]owner [affiliation]owner
 msgid "Owner"
@@ -1615,11 +1608,11 @@ msgstr "Pronar"
 
 #: [rooms]admin
 msgid "Admin"
-msgstr ""
+msgstr "Përgjegjës"
 
 #: [rooms]visitor
 msgid "Visitor"
-msgstr ""
+msgstr "Vizitor"
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -1643,7 +1636,7 @@ msgstr "Emër i zbrazët"
 
 #: [chatrooms]synchronized
 msgid "%s rooms synchronized"
-msgstr ""
+msgstr "U njëkohësuan %s dhoma"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1663,7 +1656,7 @@ msgstr "Hyr në këtë dhomë bisedash gjatë lidhjes"
 
 #: [chatrooms]destroyed
 msgid "Room destroyed"
-msgstr ""
+msgstr "Dhoma u asgjësua"
 
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
@@ -1715,12 +1708,11 @@ msgstr "Publike"
 
 #: [room]public_muc_text
 msgid "This chatroom is publicly discoverable"
-msgstr ""
+msgstr "Kjo dhomë bisedash mund të zbulohet publikisht"
 
 #: [room]nonanonymous_muc
-#, fuzzy
 msgid "Public profiles"
-msgstr "Profil publik"
+msgstr "Profile publike"
 
 #: [room]nonanonymous_muc_text
 msgid "The participants of this chatroom can see each other's profile"
@@ -1748,16 +1740,15 @@ msgstr "Gjeni një të tillë duke kërkuar për emër apo ID të tij"
 
 #: [search]tags
 msgid "Tags"
-msgstr ""
+msgstr "Etiketa"
 
 #: [search]show_complete_roster
-#, fuzzy
 msgid "Show all the contacts"
-msgstr "Shfaqi kontaktet që s’janë në linjë"
+msgstr "Shfaqi krejt kontaktet"
 
 #: [sendto]attach
 msgid "Attach to a blog publication"
-msgstr ""
+msgstr "Bashkëngjitni te një botim blohu"
 
 #: [sendto]contact
 msgid "Send it to a contact"
@@ -2058,7 +2049,7 @@ msgstr "Movim-i s’komunikon dot me shërbyesin, ju lutemi, riprovoni më vonë
 
 #: [error]websocket_connect
 msgid "Reconnection to the server…"
-msgstr ""
+msgstr "Rilidhje me shërbyesin…"
 
 #: [error]oops
 msgid "Oops!"
@@ -2085,9 +2076,8 @@ msgid "Delete"
 msgstr "Fshije"
 
 #: [button]destroy
-#, fuzzy
 msgid "Destroy"
-msgstr "i fortë"
+msgstr "Asgjësoje"
 
 #: [button]cancel
 msgid "Cancel"
@@ -2228,7 +2218,7 @@ msgstr "Robot"
 
 #: [client]console
 msgid "Console"
-msgstr ""
+msgstr "Konsolë"
 
 #: [client]desktop
 msgid "Desktop"
@@ -2781,6 +2771,3 @@ msgstr "API nuk kapet dot, riprovoni më vonë"
 #: [field]type_here
 msgid "Type here"
 msgstr "Shtypni këtu"
-
-#~ msgid "Upload a file"
-#~ msgstr "Ngarkoni një kartelë"

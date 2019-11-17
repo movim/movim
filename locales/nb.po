@@ -103,8 +103,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-02 10:39+0200\n"
-"PO-Revision-Date: 2019-07-05 10:14+0000\n"
+"POT-Creation-Date: 2019-11-17 19:30+0200\n"
+"PO-Revision-Date: 2019-11-02 09:40+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://www.transifex.com/movim/movim/language/nb_NO/)\n"
 "Language: nb_NO\n"
@@ -112,7 +112,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 2.3.1\n"
+"X-Generator: Translate Toolkit 2.4.0\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -489,9 +489,8 @@ msgid "%s messages retrieved"
 msgstr "%s meldinger hentet"
 
 #: [message]edit_help
-#, fuzzy
 msgid "↑ to edit your previous message"
-msgstr "Du kan bruke pil opp ↑ for å endre på din tidligere melding"
+msgstr ""
 
 #: [message]emoji_help
 msgid ":shortcut: to insert an emoji"
@@ -670,9 +669,8 @@ msgid "You cannot create a new community on this server"
 msgstr "Du kan ikke opprette et nytt fellesskap på denne tjeneren"
 
 #: [communitiesservers]empty_title
-#, fuzzy
 msgid "No Communities Servers yet…"
-msgstr "Samfunns-tjenere"
+msgstr ""
 
 #: [communitiesservers]empty_text
 msgid "It seems that we can't find any communities for the moment"
@@ -1012,9 +1010,8 @@ msgid "Last seen"
 msgstr "Sist sett"
 
 #: [clients]title
-#, fuzzy
 msgid "Clients information"
-msgstr "Informasjoner om klienten"
+msgstr ""
 
 #: [explore]last_registered
 msgid "Last registered"
@@ -1553,9 +1550,8 @@ msgid "Markdown syntax manual"
 msgstr "Bruksanvisning for tekstformatering"
 
 #: [rooms]add
-#, fuzzy
 msgid "Add or join a chatroom"
-msgstr "Opprett samtalerom"
+msgstr ""
 
 #: [rooms]edit
 msgid "Edit a chatroom"
@@ -1598,19 +1594,16 @@ msgid "Show all the rooms"
 msgstr ""
 
 #: [rooms]hide_disconnected
-#, fuzzy
 msgid "Hide disconnected rooms"
-msgstr "Frakoblet fra samtalerommet"
+msgstr ""
 
 #: [rooms]destroy_title
-#, fuzzy
 msgid "Destroy the room"
-msgstr "Brukere i rommet"
+msgstr ""
 
 #: [rooms]destroy_text
-#, fuzzy
 msgid "Are you sure that you want to definitely destroy the following room?"
-msgstr "Er du sikker på at du ønsker å slette denne kommentaren?"
+msgstr ""
 
 #: [rooms]owner [affiliation]owner
 msgid "Owner"
@@ -1721,9 +1714,8 @@ msgid "This chatroom is publicly discoverable"
 msgstr ""
 
 #: [room]nonanonymous_muc
-#, fuzzy
 msgid "Public profiles"
-msgstr "Offentlig profil"
+msgstr ""
 
 #: [room]nonanonymous_muc_text
 msgid "The participants of this chatroom can see each other's profile"
@@ -1754,9 +1746,8 @@ msgid "Tags"
 msgstr ""
 
 #: [search]show_complete_roster
-#, fuzzy
 msgid "Show all the contacts"
-msgstr "Vis avloggede kontakter"
+msgstr ""
 
 #: [sendto]attach
 msgid "Attach to a blog publication"
@@ -2088,9 +2079,8 @@ msgid "Delete"
 msgstr "Slett"
 
 #: [button]destroy
-#, fuzzy
 msgid "Destroy"
-msgstr "sterk"
+msgstr ""
 
 #: [button]cancel
 msgid "Cancel"
@@ -2784,6 +2774,3 @@ msgstr "API-et kan ikke nås, prøv igjen senere"
 #: [field]type_here
 msgid "Type here"
 msgstr "Skriv her"
-
-#~ msgid "Upload a file"
-#~ msgstr "Last opp fil"
