@@ -2,6 +2,10 @@ header#publishbrief form > div textarea {
     padding-top: 1rem;
 }
 
+#publishbrief {
+    margin-bottom: 8rem;
+}
+
 #publishbrief img.preview {
     border-radius: 0.5rem;
 }
