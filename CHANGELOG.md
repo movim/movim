@@ -1,7 +1,10 @@
 Movim Changelog
 ================
 
-v0.16 (trunk)
+v0.17 (trunk)
+---------------------------
+
+v0.16 – Cesco
 ---------------------------
  * Cleanup the unanswered IQ requests after 60 seconds
  * Simplify the Moxl handler
