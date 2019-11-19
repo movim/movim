@@ -932,7 +932,7 @@ class Chat extends \Movim\Widget\Base
             if ($message->seen === false) {
                 $message->seen = ('chat|'.$message->jidfrom.'|room' == $n->getCurrent());
             }
-        } else {
+        } elseif($message->seen === false) {
             $message->seen = ('chat|'.$message->jidfrom == $n->getCurrent());
         }
 
