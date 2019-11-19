@@ -1,7 +1,6 @@
 <?php
 
 use Movim\Controller\Base;
-use Movim\User;
 
 class NewsController extends Base
 {

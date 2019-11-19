@@ -92,17 +92,20 @@
                             <i class="material-icons">comment</i>
                         </span>
                     {/if}
+
+                    <p class="line" onclick="MovimUtils.redirect('{$c->route('post', [$parent->server, $parent->node, $parent->nodeid])}')">
+                        {$value->truename}
+                        <span class="second">
+                            {$parent->title}
+                        </span>
+                    </p>
                     <p class="line" onclick="MovimUtils.redirect('{$c->route('post', [$parent->server, $parent->node, $parent->nodeid])}')">
                         <span class="info">{$value->published|strtotime|prepareDate:true,true}</span>
-                        {$value->truename}
                         {if="!$value->isLike()"}
-                            <span class="second">{$value->title}</span>
+                            {$c->__('post.commented')}<span class="second">{$value->title}</span>
                         {else}
-                            <span class="second">{$c->__('post.liked')}</span>
+                            {$c->__('post.liked')}
                         {/if}
-                    </p>
-                    <p class="line" onclick="MovimUtils.redirect('{$c->route('post', [$parent->server, $parent->node, $parent->nodeid])}')"">
-                        {$parent->title}
                     </p>
                 </li>
                 {$old = $value->parent_id}

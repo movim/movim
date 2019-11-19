@@ -423,3 +423,7 @@ Upload.progress((percent) => {
             = 'linear-gradient(to top, rgba(0, 0, 0, 0.5) ' + percent + '%, transparent ' + percent + '%)';
     }
 });
+
+MovimWebsocket.attach(function() {
+    Draw_ajaxGet();
+});

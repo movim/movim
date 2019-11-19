@@ -32,7 +32,7 @@
 {else}
     <br class="on_desktop"/>
 {/if}
-<div class="block">
+<div class="block {if="$extended"}extended{/if}">
     <ul class="list">
         <li>
             {if="!$extended"}

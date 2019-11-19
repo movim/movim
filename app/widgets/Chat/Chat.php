@@ -1023,9 +1023,9 @@ class Chat extends \Movim\Widget\Base
                                 ->where('mucpublic', true)
                                 ->where('mucpersistent', true);
 
-        $conferences = (Configuration::get()->restrictsuggestions)
-            ? $conferences->where('server', 'like', '%@%.' . $this->user->session->host)
-            : $conferences->where('server', 'like', '%@%');
+        if (Configuration::get()->restrictsuggestions) {
+            $conferences = $conferences->where('server', 'like', '%@%.' . $this->user->session->host);
+        }
 
         $conferences = $conferences->orderBy('occupants', 'desc')->take(8)->get();
 

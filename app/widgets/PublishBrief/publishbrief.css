@@ -2,7 +2,7 @@ header#publishbrief form > div textarea {
     padding-top: 1rem;
 }
 
-#publishbrief {
+#publishbrief div.extended {
     margin-bottom: 8rem;
 }
 
