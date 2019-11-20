@@ -106,6 +106,9 @@ var Chat = {
         var muc = Boolean(textarea.dataset.muc);
         var jid = textarea.dataset.jid;
 
+        // In case it was in edit mode
+        textarea.classList.remove('edit');
+
         textarea.focus();
 
         if (!Chat.sended) {
@@ -345,10 +348,12 @@ var Chat = {
         Chat.edit = true;
         var textarea = Chat.getTextarea();
         textarea.value = value;
+        textarea.classList.add('edit');
 
         if (mid) {
             textarea.dataset.mid = mid;
         }
+
         MovimUtils.textareaAutoheight(textarea);
         textarea.focus();
     },
@@ -408,7 +413,7 @@ var Chat = {
     },
     setEditButtonBehaviour : function()
     {
-        let edits = document.querySelectorAll('#chat_widget span.edit');
+        let edits = document.querySelectorAll('#chat_widget .contained:not(.muc) span.edit');
         let i = 0;
 
         while (i < edits.length) {
@@ -575,7 +580,11 @@ var Chat = {
             span.className = 'info';
             p = document.createElement('p');
             reaction = reaction.cloneNode(true);
-            edit = edit.cloneNode(true);
+
+            if (edit) {
+                edit = edit.cloneNode(true);
+            }
+
             reactions = document.createElement('ul');
             reactions.className = 'reactions';
         }
@@ -648,8 +657,10 @@ var Chat = {
         reaction.dataset.mid = data.mid;
         msg.appendChild(reaction);
 
-        edit.dataset.mid = data.mid;
-        msg.appendChild(edit);
+        if (edit) {
+            edit.dataset.mid = data.mid;
+            msg.appendChild(edit);
+        }
 
         var elem = document.getElementById(data.oldid);
         if (!elem) {
