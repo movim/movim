@@ -313,15 +313,15 @@ table.emojis td:hover {
     display: inline-flex;
     position: absolute;
     left: 100%;
-    transform: translate(-1.75rem, -0.5rem);
+    transform: translate(-1.55rem, -0.5rem);
 }
 
 #chat_widget li.oppose .bubble:not(.sticker) div:hover span.edit {
-    transform: translate(-9.25rem, -0.5rem);
+    transform: translate(-9.45rem, -0.5rem);
 }
 
 #chat_widget li:not(.oppose) .bubble.sticker div:hover ul.reactions:empty + span.reaction {
-    transform: translate(-1.75rem, -3.75rem);
+    transform: translate(-1.55rem, -3.75rem);
 }
 #chat_widget .bubble ul.reactions li:not(:last-child) {
     margin-right: 0.5rem;
