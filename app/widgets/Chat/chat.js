@@ -117,7 +117,12 @@ var Chat = {
 
             if (Chat.edit) {
                 Chat.edit = false;
-                xhr = Chat_ajaxHttpCorrect(jid, text);
+                if (textarea.dataset.mid) {
+                    xhr = Chat_ajaxHttpCorrect(jid, text, textarea.dataset.mid);
+                    delete textarea.dataset.mid;
+                } else {
+                    xhr = Chat_ajaxHttpCorrect(jid, text);
+                }
             } else {
                 xhr = Chat_ajaxHttpSendMessage(jid, text, muc);
             }
@@ -167,6 +172,14 @@ var Chat = {
         if (textarea.value == ''
         && Boolean(textarea.dataset.muc) == false) {
             Chat_ajaxLast(textarea.dataset.jid);
+        }
+    },
+    editMessage: function(mid)
+    {
+        var textarea = Chat.getTextarea();
+        if (textarea.value == ''
+        && Boolean(textarea.dataset.muc) == false) {
+            Chat_ajaxEdit(textarea.dataset.jid, mid);
         }
     },
     focus: function()
@@ -327,11 +340,15 @@ var Chat = {
 
         return false;
     },
-    setTextarea: function(value)
+    setTextarea: function(value, mid)
     {
         Chat.edit = true;
         var textarea = Chat.getTextarea();
         textarea.value = value;
+
+        if (mid) {
+            textarea.dataset.mid = mid;
+        }
         MovimUtils.textareaAutoheight(textarea);
         textarea.focus();
     },
@@ -384,6 +401,19 @@ var Chat = {
         while (i < reactions.length) {
             reactions[i].onclick = function() {
                 Stickers_ajaxReaction(this.dataset.mid);
+            }
+
+            i++;
+        }
+    },
+    setEditButtonBehaviour : function()
+    {
+        let edits = document.querySelectorAll('#chat_widget span.edit');
+        let i = 0;
+
+        while (i < edits.length) {
+            edits[i].onclick = function() {
+                Chat.editMessage(this.dataset.mid);
             }
 
             i++;
@@ -470,6 +500,7 @@ var Chat = {
 
         Chat.setScrollBehaviour();
         Chat.setReactionButtonBehaviour();
+        Chat.setEditButtonBehaviour();
 
         if (scroll) {
             MovimTpl.scrollPanel();
@@ -533,6 +564,7 @@ var Chat = {
         var span = msg.querySelector('span:not(.reaction)');
         var p = msg.getElementsByTagName('p')[0];
         var reaction = msg.querySelector('span.reaction');
+        var edit = msg.querySelector('span.edit');
         var reactions = msg.querySelector('ul.reactions');
 
         // If there is already a msg in this bubble, create another div (next msg or replacement)
@@ -543,6 +575,7 @@ var Chat = {
             span.className = 'info';
             p = document.createElement('p');
             reaction = reaction.cloneNode(true);
+            edit = edit.cloneNode(true);
             reactions = document.createElement('ul');
             reactions.className = 'reactions';
         }
@@ -614,6 +647,9 @@ var Chat = {
 
         reaction.dataset.mid = data.mid;
         msg.appendChild(reaction);
+
+        edit.dataset.mid = data.mid;
+        msg.appendChild(edit);
 
         var elem = document.getElementById(data.oldid);
         if (!elem) {

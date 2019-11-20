@@ -287,6 +287,7 @@ table.emojis td:hover {
 }
 
 #chat_widget .bubble div span.reaction,
+#chat_widget .bubble div span.edit,
 #chat_widget .bubble ul.reactions li {
     list-style-type: none;
     background-color: rgba(var(--movim-font), 0.1);
@@ -302,26 +303,32 @@ table.emojis td:hover {
 }
 
 #chat_widget .bubble div span.reaction,
+#chat_widget .bubble div span.edit,
 #chat_widget .bubble ul.reactions:empty {
     display: none;
 }
 
-#chat_widget li:not(.oppose) .bubble div:hover ul.reactions:empty + span.reaction {
+#chat_widget li:not(.oppose) .bubble div:hover ul.reactions:empty + span.reaction,
+#chat_widget li.oppose .bubble:not(.sticker) div:hover span.edit {
     display: inline-flex;
     position: absolute;
     left: 100%;
     transform: translate(-1.5rem, -0.5rem);
 }
 
+#chat_widget li.oppose .bubble:not(.sticker) div:hover span.edit {
+    transform: translate(-9rem, -0.5rem);
+}
+
 #chat_widget li:not(.oppose) .bubble.sticker div:hover ul.reactions:empty + span.reaction {
     transform: translate(-1.5rem, -3.75rem);
 }
-
 #chat_widget .bubble ul.reactions li:not(:last-child) {
     margin-right: 0.5rem;
 }
 
 #chat_widget .bubble div span.reaction:hover,
+#chat_widget .bubble div span.edit:hover,
 #chat_widget .bubble ul.reactions li:hover {
     cursor: pointer;
     background-color: rgba(var(--movim-font), 0.2);

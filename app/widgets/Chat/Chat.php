@@ -416,12 +416,16 @@ class Chat extends \Movim\Widget\Base
      * @param string $message
      * @return void
      */
-    public function ajaxHttpCorrect($to, $message)
+    public function ajaxHttpCorrect($to, $message, $mid = false)
     {
-        $replace = $this->user->messages()
-                        ->where('jidto', $to)
-                        ->orderBy('published', 'desc')
-                        ->first();
+        $replace = $mid
+            ? $this->user->messages()
+                         ->where('mid', $mid)
+                         ->first()
+            : $this->user->messages()
+                         ->where('jidto', $to)
+                         ->orderBy('published', 'desc')
+                         ->first();
 
         if ($replace) {
             $this->ajaxHttpSendMessage($to, $message, false, false, $replace);
@@ -530,6 +534,24 @@ class Chat extends \Movim\Widget\Base
         if (!isset($m->sticker)
         && !isset($m->file)) {
             $this->rpc('Chat.setTextarea', htmlspecialchars_decode($m->body));
+        }
+    }
+    /**
+     * @brief Get the a sent message
+     *
+     * @param string $to
+     * @return void
+     */
+    public function ajaxEdit($to, $mid)
+    {
+        $m = $this->user->messages()
+                        ->where('jidto', $to)
+                        ->where('mid', $mid)
+                        ->first();
+
+        if (!isset($m->sticker)
+        && !isset($m->file)) {
+            $this->rpc('Chat.setTextarea', htmlspecialchars_decode($m->body), $mid);
         }
     }
 

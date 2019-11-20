@@ -1,8 +1,9 @@
 Movim Changelog
 ================
 
-v0.17 (trunk)
+v0.16.1 (trunk)
 ---------------------------
+ * Allow the edition of all the sent messages
 
 v0.16 – Cesco
 ---------------------------

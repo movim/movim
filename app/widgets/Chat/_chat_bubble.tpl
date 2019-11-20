@@ -31,6 +31,9 @@
             <span class="reaction">
                 +<i class="material-icons">mood</i>
             </span>
+            <span class="edit">
+                <i class="material-icons">edit</i>
+            </span>
         </div>
     </div>
 </li>
