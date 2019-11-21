@@ -471,7 +471,7 @@ ul li div.bubble span.info {
 
 ul li div.bubble:after {
     content: attr(data-publishedprepared);
-    line-height: 3rem;
+    line-height: 2.5rem;
     text-align: left;
 }
 
