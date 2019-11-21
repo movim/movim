@@ -476,8 +476,7 @@ ul li div.bubble:after {
 }
 
 ul li div.bubble.file:after {
-    margin-top: -0.75rem;
-    margin-bottom: 0.25rem;
+    margin-top: -0.1rem;
 }
 
 ul li .quote {
