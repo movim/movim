@@ -27,11 +27,11 @@ class Presence extends Payload
             $presence->set($stanza);
             $presence->save();
 
-            $refreshable = $presence->refreshable;
+            /*$refreshable = $presence->refreshable;
             if ($refreshable) {
                 $r = new Get;
                 $r->setTo((string)$refreshable)->request();
-            }
+            }*/
 
             if ($presence->muc
             && isset($stanza->x)) {
