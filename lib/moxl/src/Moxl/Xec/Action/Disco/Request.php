@@ -30,14 +30,14 @@ class Request extends Action
 
         // Info
         $info = new \App\Info;
-        $info->set($stanza);
+        $info->set($stanza, $this->_node);
 
         $found = \App\Info::where('server', $info->server)
                           ->where('node', $info->node)
                           ->first();
 
         if ($found) {
-            $found->set($stanza);
+            $found->set($stanza, $this->_node);
             $found->save();
             $info = $found;
         } else {

@@ -222,13 +222,23 @@ class Info extends Model
         return $this->hasFeature('urn:xmpp:mam:2');
     }
 
-    public function set($query)
+    public function set($query, $node = false)
     {
         $from = (string)$query->attributes()->from;
 
         if (isset($query->query)) {
             $this->server   = strpos($from, '/') == false ? $from : null;
             $this->node     = (string)$query->query->attributes()->node;
+
+            /**
+             * Enforce node, it seems that some servers and clients doesn't
+             * returns the node attribute when answering a caps…
+             * - Slixmpp
+             * - bitlbee
+             */
+            if (empty($this->node)) {
+                $this->node = $node;
+            }
             $this->freshIdentities = collect();
 
             foreach ($query->query->identity as $i) {
