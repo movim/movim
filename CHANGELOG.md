@@ -4,6 +4,9 @@ Movim Changelog
 v0.16.1 (trunk)
 ---------------------------
  * Allow the edition of all the sent messages
+ * Add an index on Contacts avatarhash
+ * Save avatarhash in any cases when retrieving vcard-temps from Presences (even failed or empty ones)
+ * Enforce query node if not set when doing a disco#info, some libraries or clients doesn't put it back in the iq answer
 
 v0.16 – Cesco
 ---------------------------
