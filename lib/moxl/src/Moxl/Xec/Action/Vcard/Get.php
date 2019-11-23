@@ -8,6 +8,7 @@ use Moxl\Stanza\Vcard;
 class Get extends Action
 {
     protected $_to;
+    protected $_avatarhash;
 
     public function request()
     {
@@ -20,9 +21,31 @@ class Get extends Action
         $contact = \App\Contact::firstOrNew(['id' => $this->_to]);
         $contact->set($stanza, $this->_to);
         $contact->createThumbnails();
+
+        $notify = true;
+
+        /**
+         * Specific case if the returned stanza didn't contained a hash
+         * received trough a presence, we save it then we don't request
+         * it each time
+         */
+        if  ($this->_avatarhash && !$contact->avatarhash) {
+            $contact->avatarhash = $this->_avatarhash;
+            $notify = false;
+        }
+
         $contact->save();
 
-        $this->pack($contact);
-        $this->deliver();
+        if ($notify) {
+            $this->pack($contact);
+            $this->deliver();
+        }
+    }
+
+    public function error($error)
+    {
+        $contact = \App\Contact::firstOrNew(['id' => $this->_to]);
+        $contact->avatarhash = $this->_avatarhash;
+        $contact->save();
     }
 }

@@ -299,7 +299,15 @@ class Bootstrap
         if (\is_array($trace)) $trace = '';
 
         echo 'An error occured, check syslog for more information'."\n";
-        \Utils::error($errstr . " in " . $errfile . ' (line ' . $errline . ")\n" . 'Trace' . "\n" . $trace);
+
+        $error = $errstr . " in " . $errfile . ' (line ' . $errline . ")\n" . 'Trace' . "\n" . $trace;
+
+        if (class_exists('Utils')) {
+            \Utils::error($error);
+        } else {
+            echo $error;
+        }
+
         return false;
     }
 

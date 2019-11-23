@@ -235,6 +235,7 @@ class Info extends Model
              * returns the node attribute when answering a caps…
              * - Slixmpp
              * - bitlbee
+             * - jtalk
              */
             if (empty($this->node)) {
                 $this->node = $node;
