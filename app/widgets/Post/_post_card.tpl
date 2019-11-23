@@ -183,7 +183,7 @@
                     </a>
                     {if="$post->openlink"}
                         <a  title="{$c->__('post.public_url')}"
-                            class="button narrow icon flat gray on_desktop oppose"
+                            class="button narrow icon flat gray oppose"
                             target="_blank"
                             href="{$post->openlink->href}">
                             <i class="material-icons">wifi_tethering</i>
