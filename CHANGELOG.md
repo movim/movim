@@ -8,6 +8,8 @@ v0.16.1 (trunk)
  * Save avatarhash in any cases when retrieving vcard-temps from Presences (even failed or empty ones)
  * Enforce query node if not set when doing a disco#info, some libraries or clients doesn't put it back in the iq answer
  * Put back the public link for posts cards on mobile
+ * Improve Communities headers (avatar + padding)
+ * Add publish model infos in Communitiy data
 
 v0.16 – Cesco
 ---------------------------

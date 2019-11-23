@@ -23,6 +23,7 @@ class CommunityHeader extends Base
         $this->registerEvent('pubsub_testpostpublish_error', 'onTestPublishError');
 
         $this->addjs('communityheader.js');
+        $this->addcss('communityheader.css');
     }
 
     public function onDiscoRequest($packet)

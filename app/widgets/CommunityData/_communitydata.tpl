@@ -34,6 +34,16 @@
                 –
                 <i class="material-icons">people</i> {$c->__('communitydata.sub', $info->occupants)}
             </p>
+            {if="$info->pubsubpublishmodel == 'publishers'"}
+                <p class="center">
+                    <i class="material-icons">assignment_ind</i> {$c->__('communitydata.publishmodel_publishers')}
+                </p>
+            {/if}
+            {if="$info->pubsubpublishmodel == 'subscribers'"}
+                <p class="center">
+                    <i class="material-icons">assignment_turned_in</i> {$c->__('communitydata.publishmodel_subscribers')}
+                </p>
+            {/if}
         </li>
 
         {if="$info->related"}

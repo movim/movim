@@ -95,6 +95,10 @@ ul.list.thick li .primary:not(.bubble):not(.thumb):not(.top) {
     padding: 1.75rem 0.5rem;
 }
 
+ul.list > li > .primary:only-of-type:not(.bubble):not(.thumb):not(.top) ~ *:not(img):not(.counter):not(span):not(.bubble):not(.button):not(ul):not(article) {
+    padding-left: 7rem;
+}
+
 ul.list:not(.actions) > li > *:not(img):not(.counter):not(span):not(.bubble):not(.button):not(ul):not(article),
 ul.list > a > li > *:not(img):not(.counter):not(span):not(.bubble):not(.button):not(ul):not(article),
 ul.list li.subheader p {
