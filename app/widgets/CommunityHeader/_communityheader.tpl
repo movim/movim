@@ -27,11 +27,13 @@
         <span class="primary icon active gray" onclick="history.back()">
             <i class="material-icons">arrow_back</i>
         </span>
-        {$url = $info->getPhoto('l')}
-        {if="$url"}
-            <span class="primary icon bubble">
-                <img src="{$url}"/>
-            </span>
+        {if="$info != null"}
+            {$url = $info->getPhoto('l')}
+            {if="$url"}
+                <span class="primary icon bubble">
+                    <img src="{$url}"/>
+                </span>
+            {/if}
         {/if}
         <p class="line">
             {if="$info != null"}
