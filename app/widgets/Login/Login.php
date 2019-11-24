@@ -26,6 +26,8 @@ class Login extends Base
         $this->registerEvent('storage_get_errorfeaturenotimplemented', 'onConfig');
         $this->registerEvent('storage_get_errorserviceunavailable', 'onConfig');
         $this->registerEvent('ssl_error', 'onFailAuth');
+        $this->registerEvent('dns_error', 'onDNSError');
+        $this->registerEvent('timeout_error', 'onTimeoutError');
         $this->registerEvent('streamerror', 'onFailAuth');
     }
 
@@ -123,6 +125,16 @@ class Login extends Base
     public function onFailAuth()
     {
         $this->showErrorBlock('fail_auth');
+    }
+
+    public function onDNSError()
+    {
+        $this->showErrorBlock('dns');
+    }
+
+    public function onTimeoutError()
+    {
+        $this->showErrorBlock('timeout');
     }
 
     public function onSASLFailure($packet)
