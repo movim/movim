@@ -237,7 +237,7 @@ class Info extends Model
              * - bitlbee
              * - jtalk
              */
-            if (empty($this->node)) {
+            if (empty($this->node) && $node != false) {
                 $this->node = $node;
             }
             $this->freshIdentities = collect();
