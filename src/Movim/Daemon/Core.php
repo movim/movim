@@ -191,7 +191,7 @@ class Core implements MessageComponentInterface
     private function cleanupDBSessions()
     {
         DBSession::where('active', false)
-            ->where('created_at', date(SQL_DATE, time()-60))
+            ->where('created_at', date(MOVIM_SQL_DATE, time()-60))
             ->delete();
     }
 

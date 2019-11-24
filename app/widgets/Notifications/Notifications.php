@@ -51,7 +51,7 @@ class Notifications extends Base
     public function ajaxRequest()
     {
         Drawer::fill($this->prepareNotifications());
-        \App\Cache::c('notifs_since', date(SQL_DATE));
+        \App\Cache::c('notifs_since', date(MOVIM_SQL_DATE));
         $this->ajaxSetCounter();
         (new Notification)->ajaxClear('comments');
     }
@@ -60,7 +60,7 @@ class Notifications extends Base
     {
         $since = \App\Cache::c('notifs_since');
         if (!$since) {
-            $since = date(SQL_DATE, 0);
+            $since = date(MOVIM_SQL_DATE, 0);
         }
 
         $count = \App\Post::whereIn('parent_id', function ($query) {
@@ -161,7 +161,7 @@ class Notifications extends Base
         ->get();
         $since = \App\Cache::c('notifs_since');
         if (!$since) {
-            $since = date(SQL_DATE, 0);
+            $since = date(MOVIM_SQL_DATE, 0);
         }
 
         $view = $this->tpl();

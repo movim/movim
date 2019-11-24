@@ -587,7 +587,7 @@ class Chat extends \Movim\Widget\Base
                              $query->where('jidfrom', $jid)
                                       ->orWhere('jidto', $jid);
                          })
-                         ->where('published', $prepend ? '<' : '>', date(SQL_DATE, strtotime($date)));
+                         ->where('published', $prepend ? '<' : '>', date(MOVIM_SQL_DATE, strtotime($date)));
 
 
         $messages = $muc

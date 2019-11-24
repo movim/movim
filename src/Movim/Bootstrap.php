@@ -107,7 +107,7 @@ class Bootstrap
         define('VIEWS_PATH', DOCUMENT_ROOT . '/app/views/');
         define('HELPERS_PATH', DOCUMENT_ROOT . '/app/helpers/');
         define('WIDGETS_PATH', DOCUMENT_ROOT . '/app/widgets/');
-        define('SQL_DATE', 'Y-m-d H:i:s');
+        define('MOVIM_SQL_DATE', 'Y-m-d H:i:s');
 
         define('API_SOCKET', CACHE_PATH . 'socketapi.sock');
 

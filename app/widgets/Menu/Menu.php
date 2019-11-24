@@ -165,7 +165,7 @@ class Menu extends Base
         if ($page == 0) {
             $count = 0;
             $last = $posts->orderBy('published', 'desc')->first();
-            \App\Cache::c('since', ($last) ? $last->published : date(SQL_DATE));
+            \App\Cache::c('since', ($last) ? $last->published : date(MOVIM_SQL_DATE));
         }
 
         $items = \App\Post::skip($page * $this->_paging + $count)->withoutComments();

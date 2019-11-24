@@ -75,5 +75,5 @@ function prepareTime($time = false)
 
 function toSQLDate($date)
 {
-    return date(SQL_DATE, strtotime((string)$date));
+    return date(MOVIM_SQL_DATE, strtotime((string)$date));
 }

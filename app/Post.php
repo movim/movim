@@ -354,14 +354,14 @@ class Post extends Model
 
         $this->updated = ($entry->entry->updated)
             ? toSQLDate($entry->entry->updated)
-            : gmdate(SQL_DATE);
+            : gmdate(MOVIM_SQL_DATE);
 
         if ($entry->entry->published) {
             $this->published = toSQLDate($entry->entry->published);
         } elseif ($entry->entry->updated) {
             $this->published = toSQLDate($entry->entry->updated);
         } else {
-            $this->published = gmdate(SQL_DATE);
+            $this->published = gmdate(MOVIM_SQL_DATE);
         }
 
         if ($delay) {
