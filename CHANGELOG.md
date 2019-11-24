@@ -10,8 +10,9 @@ v0.16.1 (trunk)
  * Put back the public link for posts cards on mobile
  * Improve Communities headers (avatar + padding)
  * Add publish model infos in Communitiy data
- * Handle DNS and timeout (5sec) errors and display an error message in Login
- * Use generic presence make for MUC presences
+ * Handle DNS and timeout (5sec) errors and display an error message in Login (#368)
+ * Use generic presence make for MUC presences (#711)
+ * Rename SQL_DATE to MOVIM_SQL_DATE (#820)
 
 v0.16 – Cesco
 ---------------------------
