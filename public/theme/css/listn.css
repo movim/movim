@@ -534,6 +534,7 @@ ul.list.controls > li {
     padding: 3rem;
     width: 100%;
     margin: 0;
+    box-sizing: border-box;
 }
 
 ul.list.controls > li span.primary {

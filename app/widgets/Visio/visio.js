@@ -37,7 +37,7 @@ var Visio = {
         Visio.localVideo.srcObject = null;
 
         // Useful on Android where you can't have both camera enabled at the same time
-        var videoTrack = Visio.pc.getSenders().find(rtc => rtc.track.kind == 'video');
+        var videoTrack = Visio.pc.getSenders().find(rtc => rtc.track && rtc.track.kind == 'video');
         if (videoTrack) videoTrack.track.stop();
 
         if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -57,7 +57,7 @@ var Visio = {
                 let videoTrack = stream.getVideoTracks()[0];
 
                 var sender = Visio.pc.getSenders().find(function(s) {
-                    return s.track.kind == videoTrack.kind;
+                    return s.track && s.track.kind == videoTrack.kind;
                 });
 
                 if (sender) {

@@ -13,6 +13,8 @@ v0.16.1 (trunk)
  * Handle DNS and timeout (5sec) errors and display an error message in Login (#368)
  * Use generic presence make for MUC presences (#711)
  * Rename SQL_DATE to MOVIM_SQL_DATE (#820)
+ * Fix camera switching in Snap
+ * Fix Visio call (JS error)
 
 v0.16 – Cesco
 ---------------------------
