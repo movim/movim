@@ -281,7 +281,7 @@ class Bootstrap
     public function getWidgets()
     {
         // Return a list of interesting widgets to load (to save memory)
-        return ['Account','AccountNext','Ack','AdHoc','Avatar','BottomNavigation',
+        return ['Account','AccountNext','AdHoc','Avatar','BottomNavigation',
         'Communities','CommunityAffiliations','CommunityConfig','CommunityData',
         'CommunityHeader','CommunityPosts','CommunitiesServer','CommunitiesServers',
         'Confirm','ContactActions','Chat','Chats','Config','ContactData','ContactHeader',

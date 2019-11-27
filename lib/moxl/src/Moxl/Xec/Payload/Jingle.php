@@ -26,7 +26,7 @@
 
 namespace Moxl\Xec\Payload;
 
-use Moxl\Xec\Action\Ack\Send;
+use Moxl\Stanza\Ack;
 
 class Jingle extends Payload
 {
@@ -38,10 +38,7 @@ class Jingle extends Payload
 
         $action = (string)$stanza->attributes()->action;
 
-        $ack = new Send;
-        $ack->setTo($from)
-            ->setId($id)
-            ->request();
+        Ack::send($from, $id);
 
         $userid = \App\User::me()->id;
         $message = new \App\Message;
