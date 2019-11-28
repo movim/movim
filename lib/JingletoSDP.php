@@ -27,12 +27,8 @@ class JingletoSDP
 
         if (isset($this->jingle->attributes()->sid)) {
             $sid = (string)$this->jingle->attributes()->sid;
-
-            //$sid = substr(base_convert($sid, 30, 10), 0, 6);
-
             $s = Session::start();
             $s->set('jingleSid', $sid);
-            //$this->values['session_id'] = $sid;
         }
 
         $this->action = (string)$this->jingle->attributes()->action;

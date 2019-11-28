@@ -14,7 +14,7 @@
                 <span id="toggle_video" class="control icon color transparent active" onclick="Visio.toggleVideo()">
                     <i class="material-icons">videocam</i>
                 </span>
-                <span id="switch_camera" class="control icon color transparent active" onclick="Visio.toggleVideo()">
+                <span id="switch_camera" class="control icon color transparent active">
                     <i class="material-icons">switch_camera</i>
                 </span>
             </li>
