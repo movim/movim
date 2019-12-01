@@ -38,7 +38,7 @@ class Jingle extends Payload
 
         $action = (string)$stanza->attributes()->action;
 
-        Ack::send($from, $id);
+        //Ack::send($from, $id);
 
         $userid = \App\User::me()->id;
         $message = new \App\Message;

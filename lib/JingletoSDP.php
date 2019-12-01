@@ -100,7 +100,9 @@ class JingletoSDP
                 $sdp_media .= "\r\na=ice-pwd:".$content->transport->attributes()->pwd;
             }
 
-            if (isset($content->transport->attributes()->ufrag)) {
+            // ufrag can be alone without a password for candidates
+            if (isset($content->transport->attributes()->ufrag)
+            && isset($content->transport->attributes()->pwd)) {
                 $sdp_media .= "\r\na=ice-ufrag:".$content->transport->attributes()->ufrag;
             }
 
@@ -306,6 +308,17 @@ class JingletoSDP
                                 ' network-id '.$payload->attributes()->{'network-id'};
                         }
 
+                        if (isset($payload->attributes()->{'network-cost'})) {
+                            $sdp_media .=
+                                ' network-id '.$payload->attributes()->{'network-cost'};
+                        }
+
+                        // ufrag in candidate transport
+                        if (isset($content->transport->attributes()->ufrag)) {
+                            $sdp_media .=
+                                ' ufrag '.$content->transport->attributes()->ufrag;
+                        }
+
                         $media_header_last_ip = $payload->attributes()->ip;
 
                         break;
@@ -341,9 +354,13 @@ class JingletoSDP
 
                 $sdp_media_header = $sdp_media_header.' '.implode(' ', $media_header_ids);
 
+                $ipVersion = filter_var($media_header_last_ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)
+                    ? 'IP6'
+                    : 'IP4';
+
                 $sdp_medias .=
                     $sdp_media_header.
-                    "\r\nc=IN IP4 ".$media_header_last_ip.
+                    "\r\nc=IN ".$ipVersion." ".$media_header_last_ip.
                     $sdp_media;
                 //"\r\na=sendrecv";
 

@@ -12,6 +12,7 @@ class Visio extends Base
     {
         $this->addcss('visio.css');
         $this->addjs('visio.js');
+        $this->addjs('visio2.js');
 
         $this->registerEvent('jingle_sessioninitiate', 'onSDP');
         $this->registerEvent('jingle_transportinfo', 'onCandidate');
@@ -22,10 +23,6 @@ class Visio extends Base
     public function onSDP($data)
     {
         list($stanza, $from) = $data;
-        $jts = new JingletoSDP($stanza);
-
-        $s = Session::start();
-        $s->set('sdp', $jts->generate());
 
         $contact = \App\Contact::firstOrNew(['id' => cleanJid($from)]);
 
@@ -47,7 +44,7 @@ class Visio extends Base
         );
     }
 
-    public function ajaxAskInit()
+    /*public function ajaxAskInit()
     {
         $s = Session::start();
         if ($s->get('sdp')) {
@@ -56,12 +53,12 @@ class Visio extends Base
         } else {
             $this->rpc('Visio.init');
         }
-    }
+    }*/
 
     public function onAccept($stanza)
     {
         $jts = new JingletoSDP($stanza);
-        $this->rpc('Visio.onSDP', $jts->generate(), 'answer');
+        $this->rpc('Visio.onAcceptSDP', $jts->generate());
     }
 
     public function onCandidate($stanza)
@@ -69,7 +66,7 @@ class Visio extends Base
         $jts = new JingletoSDP($stanza);
         $sdp = $jts->generate();
 
-        $s = Session::start();
+        /*$s = Session::start();
         $candidates = $s->get('candidates');
 
         if (!$candidates) {
@@ -78,12 +75,13 @@ class Visio extends Base
 
         array_push($candidates, [$sdp, $jts->name, substr($jts->name, -1, 1)]);
 
-        $s->set('candidates', $candidates);
+        $s->set('candidates', $candidates);*/
 
         $this->rpc('Visio.onCandidate', $sdp, $jts->name, substr($jts->name, -1, 1));
+        //Visio.consume
     }
 
-    public function ajaxGetCandidates()
+    /*public function ajaxGetCandidates()
     {
         $s = Session::start();
         $candidates = $s->get('candidates');
@@ -93,17 +91,17 @@ class Visio extends Base
         }
 
         $s->remove('candidates');
-    }
+    }*/
 
     public function onTerminate($stanza)
     {
-        $this->clearCandidates();
+        //$this->clearCandidates();
         $this->rpc('Visio.onTerminate');
     }
 
     public function ajaxInitiate($sdp, $to)
     {
-        $this->clearCandidates();
+        //$this->clearCandidates();
 
         $stj = new SDPtoJingle(
             $sdp->sdp,
@@ -152,7 +150,7 @@ class Visio extends Base
 
     public function ajaxTerminate($to, $reason = 'success')
     {
-        $this->clearCandidates();
+        //$this->clearCandidates();
 
         $s = Session::start();
 
@@ -163,11 +161,11 @@ class Visio extends Base
            ->request();
     }
 
-    private function clearCandidates()
+    /*private function clearCandidates()
     {
         $s = Session::start();
         $s->remove('candidates');
-    }
+    }*/
 
     public function display()
     {

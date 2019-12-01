@@ -1,5 +1,13 @@
 var VisioLink = {
-    candidates: [],
+    setSDP: function(remoteSDP) {
+        localStorage.setItem('sdp', remoteSDP);
+    },
+
+    setCandidate: function(remoteCandidate) {
+        var candidates = localStorage.getObject('candidates');
+        if (!candidates) candidates = [];
+        candidates.push(remoteCandidate);
+    },
 
     reset: function() {
         VisioLink.window = null;

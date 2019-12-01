@@ -22,7 +22,7 @@ class SDPtoJingle
     private $rtcp_fb_cache = [];
 
     private $regex = [
-      'candidate'       => "/^a=candidate:(\w{1,32}) (\d{1,5}) (udp|tcp) (\d{1,10}) ([a-zA-Z0-9:\.]{1,45}) (\d{1,5}) (typ) (host|srflx|prflx|relay)( (raddr) ([a-zA-Z0-9:\.]{1,45}) (rport) (\d{1,5}))?( (generation) (\d) (network) (\d) (id) ([a-zA-Z0-9]{1,45}))?/i", //à partir de generation les attr sont spécifiques à XMPP..autant l'enlever de la REGEX et les traiter à part? En théorie ils peuvent être dans n'importe quel ordre.
+      'candidate'       => "/^a=candidate:(\w{1,32}) (\d{1,5}) (udp|tcp) (\d{1,10}) ([a-zA-Z0-9:\.]{1,45}) (\d{1,5}) (typ) (host|srflx|prflx|relay) (.+)?/i",
       'sess_id'         => "/^o=(\S+) (\d+)/i",
       'group'           => "/^a=group:(\S+) (.+)/i",
       'rtpmap'          => "/^a=rtpmap:(\d+) (([^\s\/]+)(\/(\d+)(\/([^\s\/]+))?)?)?/i",
@@ -352,9 +352,10 @@ class SDPtoJingle
                             $this->initContent();
                             $this->addName();
 
-                            $generation = $network = $id = $networkid = false;
+                            //$generation = $network = $id = $networkid = false;
+\Utils::debug($this->sdp);
 
-                            if ($key = array_search("generation", $matches)) {
+                            /*if ($key = array_search("generation", $matches)) {
                                 $generation = $matches[($key+1)];
                             }
                             if ($key = array_search("network", $matches)) {
@@ -365,43 +366,65 @@ class SDPtoJingle
                             }
                             if ($key = array_search("network-id", $matches)) {
                                 $networkid = $matches[($key+1)];
-                            }
+                            }*/
 
-                            if (isset($matches[11]) && isset($matches[13])) {
+                            /*if (isset($matches[11]) && isset($matches[13])) {
                                 $reladdr = $matches[11];
                                 $relport = $matches[13];
                             } else {
                                 $reladdr = $relport = null;
-                            }
+                            }*/
 
                             $candidate = $this->transport->addChild('candidate');
 
-                            $candidate->addAttribute('component', $matches[2]);
                             $candidate->addAttribute('foundation', $matches[1]);
-
-                            if ($generation) {
-                                $candidate->addAttribute('generation', $generation);
-                            }
-                            if ($id) {
-                                $candidate->addAttribute('id', $id);
-                            }
-                            if ($network) {
-                                $candidate->addAttribute('network', $network);
-                            }
-                            if ($networkid) {
-                                $candidate->addAttribute('network-id', $networkid);
-                            }
-
+                            $candidate->addAttribute('component', $matches[2]);
+                            $candidate->addAttribute('protocol', $matches[3]);
+                            $candidate->addAttribute('priority', $matches[4]);
                             $candidate->addAttribute('ip', $matches[5]);
                             $candidate->addAttribute('port', $matches[6]);
-                            $candidate->addAttribute('priority', $matches[4]);
-                            $candidate->addAttribute('protocol', $matches[3]);
                             $candidate->addAttribute('type', $matches[8]);
 
-                            if ($reladdr) {
-                                $candidate->addAttribute('rel-addr', $reladdr);
-                                $candidate->addAttribute('rel-port', $relport);
+                            // We have other arguments
+                            $args = [];
+                            if (isset($matches[9])) {
+                                $keyValues = explode(' ', $matches[9]);
+                                foreach ($keyValues as $key)
+
+                                foreach (array_chunk($keyValues, 2) as $pair) {
+                                    list($key, $value) = $pair;
+                                    $args[$key] = $value;
+                                }
+                                \Utils::debug(serialize($args));
                             }
+
+                            if (isset($args['generation'])) {
+                                $candidate->addAttribute('generation', $args['generation']);
+                            }
+                            if (isset($args['id'])) {
+                                $candidate->addAttribute('id', $args['id']);
+                            }
+                            if (isset($args['network'])) {
+                                $candidate->addAttribute('network', $args['network']);
+                            }
+                            if (isset($args['network-id'])) {
+                                $candidate->addAttribute('network-id', $args['network-id']);
+                            }
+                            if (isset($args['network-cost'])) {
+                                $candidate->addAttribute('network-cost', $args['network-cost']);
+                            }
+                            if (isset($args['raddr'])) {
+                                $candidate->addAttribute('rel-addr', $args['raddr']);
+                            }
+                            if (isset($args['rport'])) {
+                                $candidate->addAttribute('rel-port', $args['rport']);
+                            }
+
+                            // ufrag to the transport
+                            if (isset($args['ufrag'])) {
+                                $this->transport->addAttribute('ufrag', $args['ufrag']);
+                            }
+
                             break;
                     }
                 }

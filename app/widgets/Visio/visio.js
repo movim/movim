@@ -1,4 +1,4 @@
-function logError(error) {
+/*function logError(error) {
     console.log(error.name + ': ' + error.message);
     console.log(error);
 }
@@ -15,7 +15,6 @@ var Visio = {
 
     videoSelect: undefined,
     switchCamera: undefined,
-    localCreated: false,
 
     setFrom: from => Visio.from = from,
 
@@ -59,6 +58,11 @@ var Visio = {
                 }
 
                 Visio.toggleMainButton();
+
+                // If we received an offer, we need to answer
+                if (Visio.pc.remoteDescription.type == 'offer') {
+                    Visio.pc.createAnswer(Visio.localDescCreated, logError);
+                }
             });
         }
     },
@@ -128,11 +132,6 @@ var Visio = {
             new RTCSessionDescription({'sdp': sdp + "\n", 'type': type}),
             () => {
                 Visio_ajaxGetCandidates();
-
-                // If we received an offer, we need to answer
-                if (Visio.pc.remoteDescription.type == 'offer') {
-                    Visio.pc.createAnswer(Visio.localDescCreated, logError);
-                }
             },
             (error) => {
                 Visio.goodbye('incompatible-parameters');
@@ -142,8 +141,10 @@ var Visio = {
     },
 
     localDescCreated: function(desc) {
-        Visio.localCreated = true;
-        Visio.pc.setLocalDescription(desc, Visio.toggleMainButton, logError);
+        Visio.pc.setLocalDescription(desc, () => {
+            Visio_ajaxAccept(Visio.pc.localDescription, Visio.from);
+            Visio.toggleMainButton();
+        }, logError);
     },
 
     onCandidates: function(candidates) {
@@ -285,11 +286,6 @@ var Visio = {
         };
     },
 
-    answer: () => {
-        Visio.localCreated = false;
-        Visio_ajaxAccept(Visio.pc.localDescription, Visio.from);
-    },
-
     hello: function() {
         Visio.pc.createOffer((desc) => {
             Visio.pc.setLocalDescription(
@@ -305,9 +301,6 @@ var Visio = {
         Visio_ajaxTerminate(Visio.from, reason);
     },
 
-    /*
-     * UI Status
-     */
     toggleMainButton: function() {
         button = document.getElementById('main');
         state = document.querySelector('p.state');
@@ -318,8 +311,6 @@ var Visio = {
         button.classList.add('disabled');
 
         if (Visio.pc) {
-            if (Visio.localCreated) Visio.answer();
-
             let length = Visio.pc.getSenders().length;
 
             if (Visio.pc.iceConnectionState != 'closed'
@@ -432,3 +423,4 @@ MovimWebsocket.attach(() => {
 window.onbeforeunload = () => {
     Visio.goodbye();
 }
+*/
