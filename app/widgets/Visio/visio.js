@@ -73,7 +73,6 @@ var Visio = {
         };
 
         VisioUtils.toggleMainButton();
-
         VisioUtils.switchCameraSetup();
     },
 
