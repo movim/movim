@@ -56,7 +56,6 @@ var Visio = {
 
         Visio.pc.onicecandidate = evt => {
             if (evt.candidate) {
-                console.log(evt.candidate);
                 Visio_ajaxCandidate(evt.candidate, Visio.from);
             }
         };
@@ -168,7 +167,6 @@ var Visio = {
     },
 
     onTerminate: (reason) => {
-        console.log(reason);
         let localStream = Visio.localVideo.srcObject;
 
         if (localStream) {
