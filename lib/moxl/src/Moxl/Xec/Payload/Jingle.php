@@ -61,7 +61,7 @@ class Jingle extends Payload
             case 'session-terminate':
                 $message->type = 'jingle_end';
                 $message->save();
-                $this->event('jingle_sessionterminate', $stanza);
+                $this->event('jingle_sessionterminate', (string)$stanza->reason->children()[0]->getName());
                 break;
             case 'session-accept':
                 $message->type = 'jingle_start';

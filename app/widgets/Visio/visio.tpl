@@ -5,13 +5,13 @@
                 <span class="primary icon color transparent active on_mobile" onclick="Visio.onTerminate(); window.close()">
                     <i class="material-icons">close</i>
                 </span>
-                <span id="toggle_fullscreen" class="control icon color transparent active" onclick="Visio.toggleFullScreen()">
+                <span id="toggle_fullscreen" class="control icon color transparent active" onclick="VisioUtils.toggleFullScreen()">
                     <i class="material-icons">fullscreen</i>
                 </span>
-                <span id="toggle_audio" class="control icon color transparent active" onclick="Visio.toggleAudio()">
+                <span id="toggle_audio" class="control icon color transparent active" onclick="VisioUtils.toggleAudio()">
                     <i class="material-icons">mic</i>
                 </span>
-                <span id="toggle_video" class="control icon color transparent active" onclick="Visio.toggleVideo()">
+                <span id="toggle_video" class="control icon color transparent active" onclick="VisioUtils.toggleVideo()">
                     <i class="material-icons">videocam</i>
                 </span>
                 <span id="switch_camera" class="control icon color transparent active">
@@ -54,6 +54,7 @@ Visio.states = {
     in_call: '{$c->__('visio.in_call')}',
     failed: '{$c->__('visio.failed')}',
     connecting: '{$c->__('visio.connecting')}',
-    ended: '{$c->__('visio.ended')}'
+    ended: '{$c->__('visio.ended')}',
+    declined: '{$c->__('visio.declined')}'
 }
 </script>

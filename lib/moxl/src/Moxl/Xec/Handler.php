@@ -144,6 +144,8 @@ class Handler
             '0f59aa7fb0492a008df1b807e91dda3b' => 'AvatarMetadata',
             '36fe2745bdc72b1682be2c008d547e3d' => 'Vcard4',
 
+            '0923dd6b12f46f658b4273104a129ec9' => 'JinglePropose',
+            '829715591c7554bad3630dfd3353b4e7' => 'JingleAccept',
             'd84d4b89d43e88a244197ccf499de8d8' => 'Jingle',
 
             '09ef1b34cf40fdd954f10d6e5075ee5c' => 'Carbons',

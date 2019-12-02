@@ -15,6 +15,8 @@ v0.16.1 (trunk)
  * Rename SQL_DATE to MOVIM_SQL_DATE (#820)
  * Fix camera switching in Snap
  * Fix Visio call (JS error)
+ * Implement XEP-0353: Jingle Message Initiation partially
+ * Refactor the Visio and VisioLink widgets to simplify them
 
 v0.16 – Cesco
 ---------------------------

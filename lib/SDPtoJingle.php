@@ -15,6 +15,7 @@ class SDPtoJingle
 
     private $mid = null;
     private $mlineindex;
+    private $sid;
 
     // Move the global fingerprint into each medias
     private $global_fingerprint = [];
@@ -54,6 +55,7 @@ class SDPtoJingle
         if ($mid) {
             $this->mid = $mid;
         }
+
         if ($mlineindex) {
             $this->mlineindex = $mlineindex;
         }
@@ -70,6 +72,11 @@ class SDPtoJingle
         }
 
         $this->action = $action;
+    }
+
+    public function setSessionId(string $sid)
+    {
+        $this->sid = $sid;
     }
 
     private function getSessionId()
@@ -142,7 +149,7 @@ class SDPtoJingle
                 if (preg_match($r, $l, $matches)) {
                     switch ($key) {
                         case 'sess_id':
-                            $this->jingle->addAttribute('sid', $this->getSessionId());
+                            $this->jingle->addAttribute('sid', $this->sid ?? $this->getSessionId());
                             break;
                         case 'media':
                             $this->initContent(true);
@@ -352,29 +359,6 @@ class SDPtoJingle
                             $this->initContent();
                             $this->addName();
 
-                            //$generation = $network = $id = $networkid = false;
-\Utils::debug($this->sdp);
-
-                            /*if ($key = array_search("generation", $matches)) {
-                                $generation = $matches[($key+1)];
-                            }
-                            if ($key = array_search("network", $matches)) {
-                                $network = $matches[($key+1)];
-                            }
-                            if ($key = array_search("id", $matches)) {
-                                $id = $matches[($key+1)];
-                            }
-                            if ($key = array_search("network-id", $matches)) {
-                                $networkid = $matches[($key+1)];
-                            }*/
-
-                            /*if (isset($matches[11]) && isset($matches[13])) {
-                                $reladdr = $matches[11];
-                                $relport = $matches[13];
-                            } else {
-                                $reladdr = $relport = null;
-                            }*/
-
                             $candidate = $this->transport->addChild('candidate');
 
                             $candidate->addAttribute('foundation', $matches[1]);
@@ -395,7 +379,6 @@ class SDPtoJingle
                                     list($key, $value) = $pair;
                                     $args[$key] = $value;
                                 }
-                                \Utils::debug(serialize($args));
                             }
 
                             if (isset($args['generation'])) {
@@ -419,6 +402,10 @@ class SDPtoJingle
                             if (isset($args['rport'])) {
                                 $candidate->addAttribute('rel-port', $args['rport']);
                             }
+
+                            // mid, mlineid
+                            $candidate->addAttribute('mid', $this->mid);
+                            $candidate->addAttribute('mlineindex', $this->mlineindex);
 
                             // ufrag to the transport
                             if (isset($args['ufrag'])) {

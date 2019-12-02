@@ -1,5 +1,7 @@
 <?php
 
+use Moxl\Xec\Action\Jingle\SessionPropose;
+use Moxl\Xec\Action\Jingle\SessionAccept;
 use Moxl\Xec\Action\Jingle\SessionInitiate;
 use Moxl\Xec\Action\Jingle\SessionTerminate;
 
@@ -12,23 +14,26 @@ class Visio extends Base
     {
         $this->addcss('visio.css');
         $this->addjs('visio.js');
-        $this->addjs('visio2.js');
+        $this->addjs('visio_utils.js');
 
-        $this->registerEvent('jingle_sessioninitiate', 'onSDP');
+        $this->registerEvent('jinglepropose', 'onPropose');
+        $this->registerEvent('jingleaccept', 'onAccept');
+        $this->registerEvent('jingle_sessioninitiate', 'onInitiateSDP');
+        $this->registerEvent('jingle_sessionaccept', 'onAcceptSDP');
         $this->registerEvent('jingle_transportinfo', 'onCandidate');
-        $this->registerEvent('jingle_sessionaccept', 'onAccept');
         $this->registerEvent('jingle_sessionterminate', 'onTerminate');
     }
 
-    public function onSDP($data)
+    public function onPropose($packet)
     {
-        list($stanza, $from) = $data;
+        $data = $packet->content;
 
-        $contact = \App\Contact::firstOrNew(['id' => cleanJid($from)]);
+        $contact = \App\Contact::firstOrNew(['id' => cleanJid($data['from'])]);
 
         $view = $this->tpl();
         $view->assign('contact', $contact);
-        $view->assign('from', $from);
+        $view->assign('from', $data['from']);
+        $view->assign('id', $data['id']);
 
         Dialog::fill($view->draw('_visio_dialog'));
 
@@ -40,22 +45,26 @@ class Visio extends Base
             5,
             null,
             null,
-            'VisioLink.openVisio(\''.$from.'\'); Dialog_ajaxClear()'
+            'VisioLink.openVisio(\''.$data['from'].'\', \''.$data['id'].'\'); Dialog_ajaxClear()'
         );
     }
 
-    /*public function ajaxAskInit()
+    public function onInitiateSDP($data)
     {
-        $s = Session::start();
-        if ($s->get('sdp')) {
-            $this->rpc('Visio.init', $s->get('sdp'), 'offer');
-            $s->remove('sdp');
-        } else {
-            $this->rpc('Visio.init');
-        }
-    }*/
+        list($stanza, $from) = $data;
 
-    public function onAccept($stanza)
+        $jts = new JingletoSDP($stanza);
+
+        $this->rpc('Visio.onInitiateSDP', $jts->generate());
+    }
+
+    public function onAccept($packet)
+    {
+        $data = $packet->content;
+        $this->rpc('Visio.onAccept', $data['from'], $data['id']);
+    }
+
+    public function onAcceptSDP($stanza)
     {
         $jts = new JingletoSDP($stanza);
         $this->rpc('Visio.onAcceptSDP', $jts->generate());
@@ -66,49 +75,39 @@ class Visio extends Base
         $jts = new JingletoSDP($stanza);
         $sdp = $jts->generate();
 
-        /*$s = Session::start();
-        $candidates = $s->get('candidates');
-
-        if (!$candidates) {
-            $candidates = [];
-        }
-
-        array_push($candidates, [$sdp, $jts->name, substr($jts->name, -1, 1)]);
-
-        $s->set('candidates', $candidates);*/
-
-        $this->rpc('Visio.onCandidate', $sdp, $jts->name, substr($jts->name, -1, 1));
-        //Visio.consume
+        $this->rpc('Visio.onCandidate', $sdp, (string)$jts->mid, $jts->mlineindex);
     }
 
-    /*public function ajaxGetCandidates()
+    public function onTerminate($reason)
     {
-        $s = Session::start();
-        $candidates = $s->get('candidates');
-
-        if (is_array($candidates)) {
-            $this->rpc('Visio.onCandidates', $candidates);
-        }
-
-        $s->remove('candidates');
-    }*/
-
-    public function onTerminate($stanza)
-    {
-        //$this->clearCandidates();
-        $this->rpc('Visio.onTerminate');
+        $this->rpc('Visio.onTerminate', $reason);
     }
 
-    public function ajaxInitiate($sdp, $to)
+    public function ajaxPropose($to, $id)
     {
-        //$this->clearCandidates();
+        $p = new SessionPropose;
+        $p->setTo($to)
+          ->setId($id)
+          ->request();
+    }
 
+    public function ajaxAccept($to, $id)
+    {
+        $p = new SessionAccept;
+        $p->setTo($to)
+          ->setId($id)
+          ->request();
+    }
+
+    public function ajaxSessionInitiate($sdp, $to, $id)
+    {
         $stj = new SDPtoJingle(
             $sdp->sdp,
             $this->user->id,
             $to,
             'session-initiate'
         );
+        $stj->setSessionId($id);
 
         $si = new SessionInitiate;
         $si->setTo($to)
@@ -116,7 +115,7 @@ class Visio extends Base
            ->request();
     }
 
-    public function ajaxAccept($sdp, $to)
+    public function ajaxSessionAccept($sdp, $to, $id)
     {
         $stj = new SDPtoJingle(
             $sdp->sdp,
@@ -124,6 +123,7 @@ class Visio extends Base
             $to,
             'session-accept'
         );
+        $stj->setSessionId($id);
 
         $si = new SessionInitiate;
         $si->setTo($to)
@@ -150,8 +150,6 @@ class Visio extends Base
 
     public function ajaxTerminate($to, $reason = 'success')
     {
-        //$this->clearCandidates();
-
         $s = Session::start();
 
         $st = new SessionTerminate;
@@ -160,12 +158,6 @@ class Visio extends Base
            ->setReason($reason)
            ->request();
     }
-
-    /*private function clearCandidates()
-    {
-        $s = Session::start();
-        $s->remove('candidates');
-    }*/
 
     public function display()
     {

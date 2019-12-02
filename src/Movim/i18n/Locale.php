@@ -103,9 +103,9 @@ class Locale
             && isset($this->translations[$skey])) {
                 $string = $this->translations[$skey];
             } else {
-                if ($this->language != 'en') {
+                /*if ($this->language != 'en') {
                     \Utils::info('Locale: Translation not found in ['.$this->language.'] for "'.$key.'" : "'.$skey.'"');
-                }
+                }*/
                 if (is_string($skey)) {
                     $string = $skey;
                 } else {

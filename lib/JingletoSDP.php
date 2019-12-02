@@ -13,6 +13,10 @@ class JingletoSDP
     public $media;
     public $name = null;
 
+    // Non standard
+    public $mid;
+    public $mlineindex;
+
     private $values = [
         'session_sdp_id'    => 1,
         'session_version'   => 0,
@@ -293,6 +297,12 @@ class JingletoSDP
                                 ' generation '.$payload->attributes()->generation;
                         }
 
+                        // ufrag in candidate transport
+                        if (isset($content->transport->attributes()->ufrag)) {
+                            $sdp_media .=
+                                ' ufrag '.$content->transport->attributes()->ufrag;
+                        }
+
                         if (isset($payload->attributes()->network)) {
                             $sdp_media .=
                                 ' network '.$payload->attributes()->network;
@@ -313,10 +323,13 @@ class JingletoSDP
                                 ' network-id '.$payload->attributes()->{'network-cost'};
                         }
 
-                        // ufrag in candidate transport
-                        if (isset($content->transport->attributes()->ufrag)) {
-                            $sdp_media .=
-                                ' ufrag '.$content->transport->attributes()->ufrag;
+                        // mid, mlineindex
+                        if (isset($payload->attributes()->mid)) {
+                            $this->mid = (int)$payload->attributes()->mid;
+                        }
+
+                        if (isset($payload->attributes()->mlineindex)) {
+                            $this->mlineindex = (int)$payload->attributes()->mlineindex;
                         }
 
                         $media_header_last_ip = $payload->attributes()->ip;
