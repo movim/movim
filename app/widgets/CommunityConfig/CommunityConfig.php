@@ -36,6 +36,7 @@ class CommunityConfig extends Base
         $view->assign('attributes', $config->attributes());
 
         Dialog::fill($view->draw('_communityconfig'), true);
+        $this->rpc('MovimUtils.applyAutoheight');
     }
 
     public function onAvatarSet($packet)

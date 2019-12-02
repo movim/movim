@@ -60,7 +60,7 @@
                         id="title"
                         rows="1"
                         required
-                        onkeyup="MovimUtils.textareaAutoheight(this);"
+                        data-autoheight="true"
                         placeholder="{$c->__('publishbrief.placeholder')}"
                         type="text">{if="$post"}{$post->title}{elseif="$draft && !empty($draft->title)"}{$draft->title}{elseif="$reply"}{$reply->title}{/if}</textarea>
                 </div>
@@ -71,7 +71,7 @@
                         {/if}
                         name="content"
                         placeholder="{$c->__('publishbrief.content_text')}"
-                        oninput="MovimUtils.textareaAutoheight(this);"
+                        data-autoheight="true"
                         >{if="$post"}{$post->contentraw}{elseif="$draft && !empty($draft->content)"}{$draft->content}{/if}</textarea>
                 </div>
                 <input

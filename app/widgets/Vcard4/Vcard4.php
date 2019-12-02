@@ -43,6 +43,7 @@ class Vcard4 extends Base
         Notification::toast($this->__('vcard.updated'));
 
         $this->rpc('MovimTpl.fill', '#vcard_form', $html);
+        $this->rpc('MovimUtils.applyAutoheight');
     }
 
     public function onMyVcard4Received()

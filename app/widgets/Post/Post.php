@@ -34,6 +34,7 @@ class Post extends Base
                 '#post_widget.'.cleanupId($parent->nodeid).' #comments',
                 $this->prepareComments($post->getParent())
             );
+            $this->rpc('MovimUtils.applyAutoheight');
         } else {
             $this->rpc(
                 'MovimTpl.fill',
@@ -67,6 +68,7 @@ class Post extends Base
                 '#post_widget.'.cleanupId($post->nodeid).' #comments',
                 $this->prepareComments($post)
             );
+            $this->rpc('MovimUtils.applyAutoheight');
         }
     }
 

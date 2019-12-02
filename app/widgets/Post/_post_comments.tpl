@@ -115,7 +115,7 @@
         <form name="comment">
             <div>
                 <textarea
-                    oninput="MovimUtils.textareaAutoheight(this);"
+                    data-autoheight="true"
                     name="comment"
                     placeholder="{$c->__('field.type_here')}"
                 ></textarea>

@@ -10,7 +10,7 @@
         </div>
         <div>
             <textarea id="pubsub#description" name="pubsub#description"
-                      onkeyup="MovimUtils.textareaAutoheight(this);"
+                      data-autoheight="true"
                       placeholder="{$c->__('communityconfig.description')}">{if="isset($config['pubsub#description'])"}{$config['pubsub#description']}{/if}</textarea>
             <label for="pubsub#description">{$c->__('communityconfig.description')}</label>
         </div>

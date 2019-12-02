@@ -398,10 +398,14 @@ class Info extends Model
     {
         $roles = ['owner' => __('affiliation.owner'), 'none' =>  __('affiliation.no-aff')];
 
-        foreach (unserialize($this->attributes['features']) as $feature) {
-            preg_match("/http:\/\/jabber.org\/protocol\/pubsub#(.*)-affiliation$/", $feature, $matches);
-            if (!empty($matches)) {
-                $roles[$matches[1]] = __('affiliation.' . $matches[1]);
+        $features = unserialize($this->attributes['features']);
+
+        if (is_array($features)) {
+            foreach ($features as $feature) {
+                preg_match("/http:\/\/jabber.org\/protocol\/pubsub#(.*)-affiliation$/", $feature, $matches);
+                if (!empty($matches)) {
+                    $roles[$matches[1]] = __('affiliation.' . $matches[1]);
+                }
             }
         }
 

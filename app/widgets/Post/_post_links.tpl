@@ -1,28 +1,30 @@
 <ul class="list middle divided spaced">
 {loop="$post->links"}
-    <li>
-        <span class="primary icon gray">
-            {if="$value->logo"}
-                <img src="{$value->logo}"/>
-            {else}
-                <i class="material-icons">link</i>
-            {/if}
-        </span>
-        <p class="normal line">
-            <a target="_blank" href="{$value->href}" title="{$value->href}">
-                {if="isset($value->title)"}
-                    {$value->title}
+    {if="!substr($value->href, 0, strlen(BASE_URI) == BASE_URI)"}
+        <li>
+            <span class="primary icon gray">
+                {if="$value->logo"}
+                    <img src="{$value->logo}"/>
                 {else}
-                    {$value->href}
+                    <i class="material-icons">link</i>
                 {/if}
-            </a>
-        </p>
-        {if="$value->description"}
-            <p title="{$value->description}">{$value->description}</p>
-        {else}
-            <p>{$value->url.host}</p>
-        {/if}
-    </li>
+            </span>
+            <p class="normal line">
+                <a target="_blank" href="{$value->href}" title="{$value->href}">
+                    {if="isset($value->title)"}
+                        {$value->title}
+                    {else}
+                        {$value->href}
+                    {/if}
+                </a>
+            </p>
+            {if="$value->description"}
+                <p title="{$value->description}">{$value->description}</p>
+            {else}
+                <p>{$value->url.host}</p>
+            {/if}
+        </li>
+    {/if}
 {/loop}
 
 {loop="$post->files"}

@@ -338,6 +338,7 @@ class Rooms extends Base
                                  ->first());
 
         Dialog::fill($view->draw('_rooms_subject'));
+        $this->rpc('MovimUtils.applyAutoheight');
     }
 
     /**

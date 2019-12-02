@@ -25,7 +25,7 @@
     </div>
 
     <div class="block large">
-        <textarea name="desc" id="desctext" placeholder="{$c->__('general.about')}" onkeyup="MovimUtils.textareaAutoheight(this);">{$desc}</textarea>
+        <textarea name="desc" id="desctext" placeholder="{$c->__('general.about')}" data-autoheight="true">{$desc}</textarea>
         <label for="desc">{$c->__('general.about')}</label>
     </div>
 
