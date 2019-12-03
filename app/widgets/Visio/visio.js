@@ -94,7 +94,6 @@ var Visio = {
             Visio.switchCamera.classList.remove('disabled');
 
             Visio.localVideo.srcObject = stream;
-            VisioUtils.handleAudio();
 
             // Switch camera
             let videoTrack = stream.getVideoTracks()[0];
@@ -104,6 +103,7 @@ var Visio = {
                 sender.replaceTrack(videoTrack);
             }
 
+            VisioUtils.handleAudio();
             VisioUtils.toggleMainButton();
 
             // For the first time we attach all the tracks and we launch the call

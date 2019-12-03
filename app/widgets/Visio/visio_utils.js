@@ -1,15 +1,19 @@
 var VisioUtils = {
-    handleAudio: function() {
-        Visio.audioContext = new AudioContext();
+    max_level_L: 0,
+    old_level_L: 0,
+    audioContext: null,
 
-        var microphone = Visio.audioContext.createMediaStreamSource(Visio.localVideo.srcObject);
-        var javascriptNode = Visio.audioContext.createScriptProcessor(2048, 1, 1);
+    handleAudio: function() {
+        VisioUtils.audioContext = new AudioContext();
+
+        var microphone = VisioUtils.audioContext.createMediaStreamSource(Visio.localVideo.srcObject);
+        var javascriptNode = VisioUtils.audioContext.createScriptProcessor(2048, 1, 1);
 
         var cnvs = document.querySelector('#visio .level');
         var cnvs_cntxt = cnvs.getContext('2d');
 
         microphone.connect(javascriptNode);
-        javascriptNode.connect(Visio.audioContext.destination);
+        javascriptNode.connect(VisioUtils.audioContext.destination);
         javascriptNode.onaudioprocess = function(event) {
             var inpt_L = event.inputBuffer.getChannelData(0);
             var instant_L = 0.0;
@@ -21,13 +25,13 @@ var VisioUtils = {
             }
 
             instant_L = Math.sqrt(sum_L / inpt_L.length);
-            Visio.max_level_L = Math.max(Visio.max_level_L, instant_L);
-            instant_L = Math.max( instant_L, Visio.old_level_L -0.008 );
-            Visio.old_level_L = instant_L;
+            VisioUtils.max_level_L = Math.max(VisioUtils.max_level_L, instant_L);
+            instant_L = Math.max(instant_L, VisioUtils.old_level_L -0.008 );
+            VisioUtils.old_level_L = instant_L;
 
             cnvs_cntxt.clearRect(0, 0, cnvs.width, cnvs.height);
             cnvs_cntxt.fillStyle = 'white';
-            cnvs_cntxt.fillRect(0, 0,(cnvs.width)*(instant_L/Visio.max_level_L),(cnvs.height)); // x,y,w,h
+            cnvs_cntxt.fillRect(0, 0,(cnvs.width)*(instant_L/VisioUtils.max_level_L),(cnvs.height)); // x,y,w,h
         }
     },
 
