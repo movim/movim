@@ -54,15 +54,15 @@ var Visio = {
             Visio.remoteVideo.srcObject = event.streams[0];
         };
 
-        Visio.pc.onicecandidate = evt => {
-            if (evt.candidate) {
-                Visio_ajaxCandidate(evt.candidate, Visio.from);
+        Visio.pc.onicecandidate = event => {
+            if (event.candidate) {
+                Visio_ajaxCandidate(event.candidate, Visio.from);
             }
         };
 
         Visio.pc.oniceconnectionstatechange = () => VisioUtils.toggleMainButton();
 
-        Visio.pc.onicegatheringstatechange = function (e) {
+        Visio.pc.onicegatheringstatechange = function (event) {
             // When we didn't receive the WebRTC termination before Jingle
             if (Visio.pc.iceConnectionState == 'disconnected') {
                 Visio.onTerminate();

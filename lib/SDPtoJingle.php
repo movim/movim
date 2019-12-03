@@ -14,7 +14,6 @@ class SDPtoJingle
     private $action;
 
     private $mid = null;
-    private $mlineindex;
     private $sid;
 
     // Move the global fingerprint into each medias
@@ -23,7 +22,7 @@ class SDPtoJingle
     private $rtcp_fb_cache = [];
 
     private $regex = [
-      'candidate'       => "/^a=candidate:(\w{1,32}) (\d{1,5}) (udp|tcp) (\d{1,10}) ([a-zA-Z0-9:\.]{1,45}) (\d{1,5}) (typ) (host|srflx|prflx|relay) (.+)?/i",
+      'candidate'       => "/^a=candidate:(\w{1,32}) (\d{1,5}) (udp|tcp) (\d{1,10}) ([a-zA-Z0-9:\.]{1,45}) (\d{1,5}) (typ) (host|srflx|prflx|relay)\s?(.+)?/i",
       'sess_id'         => "/^o=(\S+) (\d+)/i",
       'group'           => "/^a=group:(\S+) (.+)/i",
       'rtpmap'          => "/^a=rtpmap:(\d+) (([^\s\/]+)(\/(\d+)(\/([^\s\/]+))?)?)?/i",
@@ -47,17 +46,13 @@ class SDPtoJingle
       'media'           => "/^m=(audio|video|application|data)/i"
     ];
 
-    public function __construct($sdp, $initiator, $responder = false, $action = false, $mid = null, $mlineindex = false)
+    public function __construct($sdp, $initiator, $responder = false, $action = false, $mid = null)
     {
         $this->sdp = $sdp;
         $this->arr = explode("\n", $this->sdp);
 
         if ($mid) {
             $this->mid = $mid;
-        }
-
-        if ($mlineindex) {
-            $this->mlineindex = $mlineindex;
         }
 
         $this->jingle = new SimpleXMLElement('<jingle></jingle>');
@@ -402,10 +397,6 @@ class SDPtoJingle
                             if (isset($args['rport'])) {
                                 $candidate->addAttribute('rel-port', $args['rport']);
                             }
-
-                            // mid, mlineid
-                            $candidate->addAttribute('mid', $this->mid);
-                            $candidate->addAttribute('mlineindex', $this->mlineindex);
 
                             // ufrag to the transport
                             if (isset($args['ufrag'])) {

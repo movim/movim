@@ -75,7 +75,7 @@ class Visio extends Base
         $jts = new JingletoSDP($stanza);
         $sdp = $jts->generate();
 
-        $this->rpc('Visio.onCandidate', $sdp, (string)$jts->mid, $jts->mlineindex);
+        $this->rpc('Visio.onCandidate', $sdp, (string)$jts->name, $jts->name);
     }
 
     public function onTerminate($reason)
@@ -138,8 +138,7 @@ class Visio extends Base
             $this->user->id,
             $to,
             'transport-info',
-            $sdp->sdpMid,
-            $sdp->sdpMLineIndex
+            $sdp->sdpMid
         );
 
         $si = new SessionInitiate;
