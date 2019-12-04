@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9296958a7f433005792cee88a49ef85b",
+    "content-hash": "cc541f429ea903cefc130b0c3bf9ceef",
     "packages": [
         {
             "name": "cakephp/cache",
@@ -1095,31 +1095,32 @@
         },
         {
             "name": "fabiang/sasl",
-            "version": "1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabiang/sasl.git",
-                "reference": "cb49ffc81aa179420e1c7ed36dd06caa0ad3624b"
+                "reference": "10c3f75642508254deaeb9dab755430209fb4fa3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabiang/sasl/zipball/cb49ffc81aa179420e1c7ed36dd06caa0ad3624b",
-                "reference": "cb49ffc81aa179420e1c7ed36dd06caa0ad3624b",
+                "url": "https://api.github.com/repos/fabiang/sasl/zipball/10c3f75642508254deaeb9dab755430209fb4fa3",
+                "reference": "10c3f75642508254deaeb9dab755430209fb4fa3",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
             },
             "require-dev": {
-                "behat/behat": "~3.0",
+                "behat/behat": "^3.0",
                 "codeclimate/php-test-reporter": "@dev",
-                "phpunit/phpunit": "~4.4",
-                "satooshi/php-coveralls": "~0.6"
+                "phpunit/php-invoker": "^1.1",
+                "phpunit/phpunit": "^4.8",
+                "satooshi/php-coveralls": "^0.6.1"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.1.x-dev"
                 }
             },
             "autoload": {
@@ -1133,6 +1134,10 @@
             ],
             "authors": [
                 {
+                    "name": "Fabian Grutschus",
+                    "email": "f.grutschus@lubyte.de"
+                },
+                {
                     "name": "Anish Mistry",
                     "email": "amistry@am-productions.biz"
                 },
@@ -1143,10 +1148,6 @@
                 {
                     "name": "Michael Bretterklieber",
                     "email": "michael@bretterklieber.com"
-                },
-                {
-                    "name": "Fabian Grutschus",
-                    "email": "f.grutschus@lubyte.de"
                 }
             ],
             "description": "Abstraction of various SASL mechanism responses.",
@@ -1157,7 +1158,7 @@
                 "sasl",
                 "scram"
             ],
-            "time": "2015-01-02T09:00:34+00:00"
+            "time": "2019-12-03T15:31:45+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
