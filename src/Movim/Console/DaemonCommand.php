@@ -96,7 +96,7 @@ class DaemonCommand extends Command
         $output->writeln('<info>Base URL: '.$baseuri.'</info>');
 
         if ($input->getOption('debug')) {
-            $output->writeln("\n".'<comment>Debug is enabled, check the logs in syslog or '.DOCUMENT_ROOT.'/logs/</comment>');
+            $output->writeln("\n".'<comment>Debug is enabled, check the logs in syslog or '.DOCUMENT_ROOT.'/log/</comment>');
         }
 
         $core = new Core($loop, $baseuri, $input);
