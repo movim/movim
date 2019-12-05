@@ -30,9 +30,6 @@
                     {if="$url"}
                         <span class="primary icon bubble color {$value->name|stringToColor}"
                             style="background-image: url({$url});">
-                            {autoescape="off"}
-                                {$value->name|firstLetterCapitalize|addEmojis}
-                            {/autoescape}
                         </span>
                     {else}
                         <span class="primary icon bubble color {$value->name|stringToColor}">
