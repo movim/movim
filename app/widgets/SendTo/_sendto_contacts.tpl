@@ -22,16 +22,17 @@
                 <i class="material-icons">person</i>
             </span>
         {/if}
-        <span class="control icon active gray" onclick="SendTo_ajaxSend('{$value->id}', {'uri': '{$uri}'})">
+        <span class="control icon active gray" onclick="SendTo_ajaxSend('{$value->jid}', {'uri': '{$uri}'})">
             <i class="material-icons">send</i>
         </span>
         <p class="normal line">{$value->truename}</p>
-        {if="$value->group"}
         <p>
-            <span class="tag color {$value->group|stringToColor}">
-                {$value->group}
-            </span>
+            {$value->jid}
+            {if="$value->group"}
+                <span class="tag color {$value->group|stringToColor}">
+                    {$value->group}
+                </span>
+            {/if}
         </p>
-        {/if}
     </li>
 {/loop}

@@ -21,6 +21,50 @@
 
     <hr />
 
+    {if="$conferences->isNotEmpty()"}
+        <ul class="list thin">
+            <li class="subheader"><p>{$c->__('sendto.chatroom')}</p></li>
+            {loop="$conferences"}
+                <li>
+                    {$url = $value->getPhoto()}
+                    {if="$url"}
+                        <span class="primary icon bubble color {$value->name|stringToColor}"
+                            style="background-image: url({$url});">
+                            {autoescape="off"}
+                                {$value->name|firstLetterCapitalize|addEmojis}
+                            {/autoescape}
+                        </span>
+                    {else}
+                        <span class="primary icon bubble color {$value->name|stringToColor}">
+                            {autoescape="off"}
+                                {$value->name|firstLetterCapitalize|addEmojis}
+                            {/autoescape}
+                        </span>
+                    {/if}
+
+                    <span class="control icon active gray" onclick="SendTo_ajaxSend('{$value->conference}', {'uri': '{$uri}'}, true)">
+                        <i class="material-icons">send</i>
+                    </span>
+
+                    {$info = $value->info}
+
+                    <p class="normal line">
+                        {$value->name}
+                        <span class="second">{$value->conference}</span>
+                    </p>
+                    <p class="line"
+                        {if="isset($info) && $info->description"}title="{$info->description}"{/if}>
+                        {if="isset($info) && $info->description"}
+                            {$info->description}
+                        {else}
+                            {$value->conference}
+                        {/if}
+                    </p>
+                </li>
+            {/loop}
+        </ul>
+    {/if}
+
     <ul class="list thin" id="sendto_contacts">
         {autoescape="off"}
             {$c->prepareContacts($contacts, $uri)}

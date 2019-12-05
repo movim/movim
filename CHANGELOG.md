@@ -17,6 +17,7 @@ v0.16.1 (trunk)
  * Fix Visio call (JS error)
  * Implement XEP-0353: Jingle Message Initiation partially
  * Refactor the Visio and VisioLink widgets to simplify them
+ * Allow post sharing in chatrooms (#881)
 
 v0.16 – Cesco
 ---------------------------

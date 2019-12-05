@@ -34,24 +34,34 @@ class SendTo extends Base
         }
 
         $view->assign('uri', $link);
+        $conferences = $this->user->session->conferences()
+                            ->with('info', 'contact')
+                            ->has('presence')
+                            ->get();
+        $view->assign('conferences', $conferences);
         $view->assign('contacts', $this->user->session
                                        ->topContacts()
                                        ->with('presence')
-                                       ->take(15)
+                                       ->take($conferences->count() > 0 && $conferences->count() <= 10
+                                            ? 20 - $conferences->count()
+                                            : 25 )
                                        ->get());
 
         Drawer::fill($view->draw('_sendto_share'));
     }
 
-    public function ajaxSend(string $to, $file)
+    public function ajaxSend(string $to, $file, $muc = false)
     {
         $file->type = 'xmpp';
 
-        Notification::toast($this->__('sendto.shared'));
+        Notification::toast($muc
+            ? $this->__('sendto.shared_chatroom')
+            : $this->__('sendto.shared_contact')
+        );
         $this->rpc('Drawer.clear');
 
         $c = new Chat;
-        $c->ajaxHttpSendMessage($to, $this->__('sendto.shared_with'), false, false, false, $file);
+        $c->ajaxHttpSendMessage($to, $this->__('sendto.shared_with'), $muc, false, false, $file);
     }
 
     public function ajaxGetMoreContacts(string $uri)
