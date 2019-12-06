@@ -1,7 +1,10 @@
 Movim Changelog
 ================
 
-v0.16.1 (trunk)
+v0.16.2 (trunk)
+---------------------------
+
+v0.16.1
 ---------------------------
  * Allow the edition of all the sent messages
  * Add an index on Contacts avatarhash
