@@ -106,7 +106,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-17 19:30+0200\n"
+"POT-Creation-Date: 2019-12-06 10:07+0200\n"
 "PO-Revision-Date: 2019-11-02 09:40+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Italian (http://www.transifex.com/movim/movim/language/it/)\n"
@@ -756,6 +756,16 @@ msgstr "%s post"
 msgid "Public page"
 msgstr "Pagina pubblica"
 
+#: [communitydata]publishmodel_publishers
+#, fuzzy
+msgid "Only publishers can publish"
+msgstr "Gli autori possono pubblicare"
+
+#: [communitydata]publishmodel_subscribers
+#, fuzzy
+msgid "Only subscribers can publish"
+msgstr "I lettori possono pubblicare"
+
 #: [communityheader]subscribe
 msgid "Subscribe"
 msgstr "Iscriviti"
@@ -1196,7 +1206,7 @@ msgstr "Errore di sessione"
 msgid "Account successfully created"
 msgstr "Account creato con successo"
 
-#: [error]mec_error
+#: [error]timeout
 msgid "The server takes too much time to respond"
 msgstr "Il server sta impiegando troppo tempo a rispondere"
 
@@ -1431,6 +1441,11 @@ msgstr "Commento cancellato"
 #: [post]liked
 msgid "Liked your publication"
 msgstr ""
+
+#: [post]commented
+#, fuzzy
+msgid "Commented"
+msgstr "Commenti"
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1760,13 +1775,23 @@ msgstr ""
 msgid "Send it to a contact"
 msgstr ""
 
+#: [sendto]chatroom
+#, fuzzy
+msgid "Share it in a chatroom"
+msgstr "Modifica una chat room"
+
 #: [sendto]shared_with
 msgid "Post shared"
 msgstr ""
 
-#: [sendto]shared
+#: [sendto]shared_contact
 msgid "Post shared with your contact"
 msgstr ""
+
+#: [sendto]shared_chatroom
+#, fuzzy
+msgid "Post shared within the chatroom"
+msgstr "Connesso alla chatroom"
 
 #: [sendto]more_contacts
 msgid "More contacts"
@@ -1915,6 +1940,11 @@ msgstr "... ti sta chiamando"
 #: [visio]ringing
 msgid "…ringing"
 msgstr "... squillando ..."
+
+#: [visio]declined
+#, fuzzy
+msgid "declined"
+msgstr "non definito"
 
 #: [visio]in_call
 msgid "in call"

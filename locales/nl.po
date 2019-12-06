@@ -108,7 +108,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-17 19:30+0200\n"
+"POT-Creation-Date: 2019-12-06 10:07+0200\n"
 "PO-Revision-Date: 2019-11-02 09:40+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Dutch (http://www.transifex.com/movim/movim/language/nl/)\n"
@@ -758,6 +758,14 @@ msgstr "%s berichten"
 msgid "Public page"
 msgstr "Openbare pagina"
 
+#: [communitydata]publishmodel_publishers
+msgid "Only publishers can publish"
+msgstr ""
+
+#: [communitydata]publishmodel_subscribers
+msgid "Only subscribers can publish"
+msgstr ""
+
 #: [communityheader]subscribe
 msgid "Subscribe"
 msgstr "Abbonneer"
@@ -1198,7 +1206,7 @@ msgstr "sessie fout"
 msgid "Account successfully created"
 msgstr "Account succesvol aangemaakt"
 
-#: [error]mec_error
+#: [error]timeout
 msgid "The server takes too much time to respond"
 msgstr "De server neemt te veel tijd om te antwoorden"
 
@@ -1433,6 +1441,11 @@ msgstr "Reactie verwijderd"
 #: [post]liked
 msgid "Liked your publication"
 msgstr ""
+
+#: [post]commented
+#, fuzzy
+msgid "Commented"
+msgstr "Reacties"
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1762,13 +1775,23 @@ msgstr ""
 msgid "Send it to a contact"
 msgstr ""
 
+#: [sendto]chatroom
+#, fuzzy
+msgid "Share it in a chatroom"
+msgstr "Bewerk een chat-ruimte"
+
 #: [sendto]shared_with
 msgid "Post shared"
 msgstr ""
 
-#: [sendto]shared
+#: [sendto]shared_contact
 msgid "Post shared with your contact"
 msgstr ""
+
+#: [sendto]shared_chatroom
+#, fuzzy
+msgid "Post shared within the chatroom"
+msgstr "Verbonden met de chatroom"
 
 #: [sendto]more_contacts
 msgid "More contacts"
@@ -1917,6 +1940,11 @@ msgstr ""
 #: [visio]ringing
 msgid "…ringing"
 msgstr ""
+
+#: [visio]declined
+#, fuzzy
+msgid "declined"
+msgstr "ongedefiniëerd"
 
 #: [visio]in_call
 msgid "in call"

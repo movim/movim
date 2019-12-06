@@ -107,7 +107,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-17 19:30+0200\n"
+"POT-Creation-Date: 2019-12-06 10:07+0200\n"
 "PO-Revision-Date: 2019-11-02 09:40+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -757,6 +757,14 @@ msgstr "%s 帖子"
 msgid "Public page"
 msgstr "公共页面"
 
+#: [communitydata]publishmodel_publishers
+msgid "Only publishers can publish"
+msgstr ""
+
+#: [communitydata]publishmodel_subscribers
+msgid "Only subscribers can publish"
+msgstr ""
+
 #: [communityheader]subscribe
 msgid "Subscribe"
 msgstr "订阅"
@@ -1197,7 +1205,7 @@ msgstr "会话（Session）错误"
 msgid "Account successfully created"
 msgstr "创建账户成功"
 
-#: [error]mec_error
+#: [error]timeout
 msgid "The server takes too much time to respond"
 msgstr "服务器未响应"
 
@@ -1432,6 +1440,11 @@ msgstr "评论已删除"
 #: [post]liked
 msgid "Liked your publication"
 msgstr ""
+
+#: [post]commented
+#, fuzzy
+msgid "Commented"
+msgstr "评论"
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1761,13 +1774,23 @@ msgstr ""
 msgid "Send it to a contact"
 msgstr ""
 
+#: [sendto]chatroom
+#, fuzzy
+msgid "Share it in a chatroom"
+msgstr "修改聊天室"
+
 #: [sendto]shared_with
 msgid "Post shared"
 msgstr ""
 
-#: [sendto]shared
+#: [sendto]shared_contact
 msgid "Post shared with your contact"
 msgstr ""
+
+#: [sendto]shared_chatroom
+#, fuzzy
+msgid "Post shared within the chatroom"
+msgstr "已连接到聊天室"
 
 #: [sendto]more_contacts
 msgid "More contacts"
@@ -1916,6 +1939,11 @@ msgstr "在呼叫你"
 #: [visio]ringing
 msgid "…ringing"
 msgstr "响铃中"
+
+#: [visio]declined
+#, fuzzy
+msgid "declined"
+msgstr "未定义"
 
 #: [visio]in_call
 msgid "in call"

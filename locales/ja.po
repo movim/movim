@@ -102,7 +102,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-17 19:30+0200\n"
+"POT-Creation-Date: 2019-12-06 10:07+0200\n"
 "PO-Revision-Date: 2019-11-02 09:40+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Japanese (http://www.transifex.com/movim/movim/language/ja/)\n"
@@ -752,6 +752,14 @@ msgstr "%s 投稿"
 msgid "Public page"
 msgstr ""
 
+#: [communitydata]publishmodel_publishers
+msgid "Only publishers can publish"
+msgstr ""
+
+#: [communitydata]publishmodel_subscribers
+msgid "Only subscribers can publish"
+msgstr ""
+
 #: [communityheader]subscribe
 msgid "Subscribe"
 msgstr "参加申請する"
@@ -1192,7 +1200,7 @@ msgstr "セッションエラー"
 msgid "Account successfully created"
 msgstr "アカウントが正常に作成されました"
 
-#: [error]mec_error
+#: [error]timeout
 msgid "The server takes too much time to respond"
 msgstr "このサーバは重すぎます"
 
@@ -1427,6 +1435,11 @@ msgstr ""
 #: [post]liked
 msgid "Liked your publication"
 msgstr ""
+
+#: [post]commented
+#, fuzzy
+msgid "Commented"
+msgstr "コメント"
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1756,13 +1769,22 @@ msgstr ""
 msgid "Send it to a contact"
 msgstr ""
 
+#: [sendto]chatroom
+msgid "Share it in a chatroom"
+msgstr ""
+
 #: [sendto]shared_with
 msgid "Post shared"
 msgstr ""
 
-#: [sendto]shared
+#: [sendto]shared_contact
 msgid "Post shared with your contact"
 msgstr ""
+
+#: [sendto]shared_chatroom
+#, fuzzy
+msgid "Post shared within the chatroom"
+msgstr "チャットルームに参加しました"
 
 #: [sendto]more_contacts
 msgid "More contacts"
@@ -1911,6 +1933,11 @@ msgstr ""
 #: [visio]ringing
 msgid "…ringing"
 msgstr ""
+
+#: [visio]declined
+#, fuzzy
+msgid "declined"
+msgstr "不明"
 
 #: [visio]in_call
 msgid "in call"

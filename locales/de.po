@@ -115,7 +115,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-17 19:30+0200\n"
+"POT-Creation-Date: 2019-12-06 10:07+0200\n"
 "PO-Revision-Date: 2019-11-02 09:40+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: German (http://www.transifex.com/movim/movim/language/de/)\n"
@@ -765,6 +765,16 @@ msgstr "%s Beiträge"
 msgid "Public page"
 msgstr "Öffentliche Seite"
 
+#: [communitydata]publishmodel_publishers
+#, fuzzy
+msgid "Only publishers can publish"
+msgstr "Die Veröffentlicher können veröffentlichen"
+
+#: [communitydata]publishmodel_subscribers
+#, fuzzy
+msgid "Only subscribers can publish"
+msgstr "Die Abonnenten können veröffentlichen"
+
 #: [communityheader]subscribe
 msgid "Subscribe"
 msgstr "Abonnieren"
@@ -1205,7 +1215,7 @@ msgstr "Sitzungsfehler"
 msgid "Account successfully created"
 msgstr "Das Benutzerkonto wurde erfolgreich angelegt."
 
-#: [error]mec_error
+#: [error]timeout
 msgid "The server takes too much time to respond"
 msgstr "Der Server braucht zu lange um zu Antworten"
 
@@ -1440,6 +1450,11 @@ msgstr "Kommentar gelöscht"
 #: [post]liked
 msgid "Liked your publication"
 msgstr "Gefällt dein Beitrag"
+
+#: [post]commented
+#, fuzzy
+msgid "Commented"
+msgstr "Kommentare"
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1769,12 +1784,22 @@ msgstr "An einen Blogbeitrag anheften"
 msgid "Send it to a contact"
 msgstr "An einen Kontakt senden"
 
+#: [sendto]chatroom
+#, fuzzy
+msgid "Share it in a chatroom"
+msgstr "Chatraum bearbeiten"
+
 #: [sendto]shared_with
 msgid "Post shared"
 msgstr "Post geteilt"
 
-#: [sendto]shared
+#: [sendto]shared_contact
 msgid "Post shared with your contact"
+msgstr "Post mit einem Kontakt geteilt"
+
+#: [sendto]shared_chatroom
+#, fuzzy
+msgid "Post shared within the chatroom"
 msgstr "Post mit einem Kontakt geteilt"
 
 #: [sendto]more_contacts
@@ -1924,6 +1949,11 @@ msgstr "…ruft Sie an"
 #: [visio]ringing
 msgid "…ringing"
 msgstr "…klingelt"
+
+#: [visio]declined
+#, fuzzy
+msgid "declined"
+msgstr "unbestimmt"
 
 #: [visio]in_call
 msgid "in call"

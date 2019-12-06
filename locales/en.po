@@ -98,7 +98,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-17 19:30+0200\n"
+"POT-Creation-Date: 2019-12-06 10:07+0200\n"
 "PO-Revision-Date: 2019-11-02 09:40+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: English (http://www.transifex.com/movim/movim/language/en/)\n"
@@ -748,6 +748,16 @@ msgstr "%s posts"
 msgid "Public page"
 msgstr "Public page"
 
+#: [communitydata]publishmodel_publishers
+#, fuzzy
+msgid "Only publishers can publish"
+msgstr "The publishers can publish"
+
+#: [communitydata]publishmodel_subscribers
+#, fuzzy
+msgid "Only subscribers can publish"
+msgstr "The subscribers can publish"
+
 #: [communityheader]subscribe
 msgid "Subscribe"
 msgstr "Subscribe"
@@ -1188,7 +1198,7 @@ msgstr "Session error"
 msgid "Account successfully created"
 msgstr "Account successfully created"
 
-#: [error]mec_error
+#: [error]timeout
 msgid "The server takes too much time to respond"
 msgstr "The server takes too much time to respond"
 
@@ -1423,6 +1433,11 @@ msgstr "Comment deleted"
 #: [post]liked
 msgid "Liked your publication"
 msgstr "Liked your publication"
+
+#: [post]commented
+#, fuzzy
+msgid "Commented"
+msgstr "Comments"
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1752,12 +1767,22 @@ msgstr "Attach to a blog publication"
 msgid "Send it to a contact"
 msgstr "Send it to a contact"
 
+#: [sendto]chatroom
+#, fuzzy
+msgid "Share it in a chatroom"
+msgstr "Edit a chatroom"
+
 #: [sendto]shared_with
 msgid "Post shared"
 msgstr "Post shared"
 
-#: [sendto]shared
+#: [sendto]shared_contact
 msgid "Post shared with your contact"
+msgstr "Post shared with your contact"
+
+#: [sendto]shared_chatroom
+#, fuzzy
+msgid "Post shared within the chatroom"
 msgstr "Post shared with your contact"
 
 #: [sendto]more_contacts
@@ -1907,6 +1932,11 @@ msgstr "…is calling you"
 #: [visio]ringing
 msgid "…ringing"
 msgstr "…ringing"
+
+#: [visio]declined
+#, fuzzy
+msgid "declined"
+msgstr "undefined"
 
 #: [visio]in_call
 msgid "in call"

@@ -107,8 +107,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-17 19:30+0200\n"
-"PO-Revision-Date: 2019-11-02 09:40+0000\n"
+"POT-Creation-Date: 2019-12-06 10:07+0200\n"
+"PO-Revision-Date: 2019-12-06 09:11+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: French (France) (http://www.transifex.com/movim/movim/language/fr_FR/)\n"
 "Language: fr_FR\n"
@@ -757,6 +757,14 @@ msgstr "%s billets"
 msgid "Public page"
 msgstr "Page publique"
 
+#: [communitydata]publishmodel_publishers
+msgid "Only publishers can publish"
+msgstr "Seul les rédacteurs peuvent publier"
+
+#: [communitydata]publishmodel_subscribers
+msgid "Only subscribers can publish"
+msgstr "Seul les souscrits peuvent publier"
+
 #: [communityheader]subscribe
 msgid "Subscribe"
 msgstr "S’abonner"
@@ -1197,7 +1205,7 @@ msgstr "Erreur de session"
 msgid "Account successfully created"
 msgstr "Compte créé avec succès"
 
-#: [error]mec_error
+#: [error]timeout
 msgid "The server takes too much time to respond"
 msgstr "Le serveur met trop de temps à répondre"
 
@@ -1432,6 +1440,10 @@ msgstr "Commentaire supprimé"
 #: [post]liked
 msgid "Liked your publication"
 msgstr "Aime votre publication"
+
+#: [post]commented
+msgid "Commented"
+msgstr "Commenté"
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1715,11 +1727,11 @@ msgstr "Publique"
 
 #: [room]public_muc_text
 msgid "This chatroom is publicly discoverable"
-msgstr ""
+msgstr "Ce salon de discussion est découvrable publiquement"
 
 #: [room]nonanonymous_muc
 msgid "Public profiles"
-msgstr ""
+msgstr "Profils publiques"
 
 #: [room]nonanonymous_muc_text
 msgid "The participants of this chatroom can see each other's profile"
@@ -1761,13 +1773,21 @@ msgstr "Attacher à un billet de blog"
 msgid "Send it to a contact"
 msgstr "Envoyer à un contact"
 
+#: [sendto]chatroom
+msgid "Share it in a chatroom"
+msgstr "Partager dans un salon de discussion"
+
 #: [sendto]shared_with
 msgid "Post shared"
 msgstr "Billet partagé"
 
-#: [sendto]shared
+#: [sendto]shared_contact
 msgid "Post shared with your contact"
 msgstr "Billet partagé avec votre contact"
+
+#: [sendto]shared_chatroom
+msgid "Post shared within the chatroom"
+msgstr "Billet partagé dans le salon de discussion"
 
 #: [sendto]more_contacts
 msgid "More contacts"
@@ -1916,6 +1936,10 @@ msgstr "…vous appelle"
 #: [visio]ringing
 msgid "…ringing"
 msgstr "…en attente"
+
+#: [visio]declined
+msgid "declined"
+msgstr "refusé"
 
 #: [visio]in_call
 msgid "in call"
