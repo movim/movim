@@ -39,7 +39,7 @@
                         </span>
                     {/if}
 
-                    <span class="control icon active gray" onclick="SendTo_ajaxSend('{$value->conference}', {'uri': '{$uri}'}, true)">
+                    <span class="control icon active gray" onclick="SendTo_ajaxSend('{$value->conference}', {'uri': '{$uri}'}, true, '{$openlink}')">
                         <i class="material-icons">send</i>
                     </span>
 
@@ -64,7 +64,7 @@
 
     <ul class="list thin" id="sendto_contacts">
         {autoescape="off"}
-            {$c->prepareContacts($contacts, $uri)}
+            {$c->prepareContacts($contacts, $uri, $openlink)}
         {/autoescape}
         <br />
         <li onclick="SendTo_ajaxGetMoreContacts('{$uri}')" class="active">

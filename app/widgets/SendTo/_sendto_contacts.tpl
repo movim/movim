@@ -22,7 +22,7 @@
                 <i class="material-icons">person</i>
             </span>
         {/if}
-        <span class="control icon active gray" onclick="SendTo_ajaxSend('{$value->jid}', {'uri': '{$uri}'})">
+        <span class="control icon active gray" onclick="SendTo_ajaxSend('{$value->jid}', {'uri': '{$uri}'}, false, '{$openlink}')">
             <i class="material-icons">send</i>
         </span>
         <p class="normal line">{$value->truename}</p>

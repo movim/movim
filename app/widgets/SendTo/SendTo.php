@@ -17,6 +17,7 @@ class SendTo extends Base
 
         $view->assign('post', null);
         $view->assign('card', null);
+        $view->assign('openlink', false);
 
         switch ($uri['type']) {
             case 'post':
@@ -28,6 +29,7 @@ class SendTo extends Base
                 if ($post) {
                     $p = new Post;
                     $view->assign('post', $post);
+                    $view->assign('openlink', $post->openlink ? $post->openlink->href : false);
                     $view->assign('card', $p->prepareTicket($post));
                 }
                 break;
@@ -50,7 +52,7 @@ class SendTo extends Base
         Drawer::fill($view->draw('_sendto_share'));
     }
 
-    public function ajaxSend(string $to, $file, $muc = false)
+    public function ajaxSend(string $to, $file, $muc = false, $message = false)
     {
         $file->type = 'xmpp';
 
@@ -61,7 +63,7 @@ class SendTo extends Base
         $this->rpc('Drawer.clear');
 
         $c = new Chat;
-        $c->ajaxHttpSendMessage($to, $this->__('sendto.shared_with'), $muc, false, false, $file);
+        $c->ajaxHttpSendMessage($to, !empty($message) ? $message : $this->__('sendto.shared_with'), $muc, false, false, $file);
     }
 
     public function ajaxGetMoreContacts(string $uri)
@@ -70,11 +72,12 @@ class SendTo extends Base
         $this->rpc('MovimTpl.fill', '#sendto_contacts', $this->prepareContacts($contacts, $uri));
     }
 
-    public function prepareContacts($contacts, string $uri)
+    public function prepareContacts($contacts, string $uri, $openlink)
     {
         $view = $this->tpl();
         $view->assign('uri', $uri);
         $view->assign('contacts', $contacts);
+        $view->assign('openlink', $openlink);
 
         return $view->draw('_sendto_contacts');
     }
