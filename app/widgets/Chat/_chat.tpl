@@ -22,12 +22,12 @@
                 <span class="primary icon bubble color active {$conference->name|stringToColor}
                     {if="!$conference->connected"}disabled{/if}"
                     style="background-image: url({$curl});"
-                    onclick="Rooms_ajaxList('{$jid|echapJS}')">
+                    onclick="Rooms_ajaxShowSubject('{$room}')">
                 </span>
             {else}
                 <span class="primary icon bubble color active {$conference->name|stringToColor}
                     {if="!$conference->connected"}disabled{/if}"
-                    onclick="Rooms_ajaxList('{$jid|echapJS}')">
+                    onclick="Rooms_ajaxShowSubject('{$room}')">
                     {autoescape="off"}
                         {$conference->name|firstLetterCapitalize|addEmojis}
                     {/autoescape}
@@ -36,6 +36,10 @@
 
             <span class="control icon show_context_menu active {if="!$conference->connected"}disabled{/if}">
                 <i class="material-icons">more_vert</i>
+            </span>
+
+            <span class="control icon active {if="!$conference->connected"}disabled{/if}" onclick="Rooms_ajaxList('{$jid|echapJS}')">
+                <i class="material-icons">group</i>
             </span>
 
             {if="$conference && $conference->info && $conference->info->related"}

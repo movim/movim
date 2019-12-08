@@ -29,12 +29,14 @@
 
 /* Previewable */
 .previewable {
-    display: block;
+    display: inline-block;
     position: relative;
 }
 
 .previewable img {
     transition: opacity 0.1s ease-in-out;
+    border-radius: 0.25rem;
+    overflow: hidden;
 }
 
 .previewable:hover img {
@@ -49,7 +51,7 @@
     position: absolute;
     display: block;
     font-size: 3rem;
-    left: 1.25rem;
+    right: 1.25rem;
     top: 1.25rem;
     pointer-events: none;
 }

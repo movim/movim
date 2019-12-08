@@ -11,7 +11,7 @@ dl dd {
 }
 
 article section p {
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     max-height: initial;
     color: inherit;
     line-height: inherit;

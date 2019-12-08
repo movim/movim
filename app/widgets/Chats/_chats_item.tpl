@@ -50,7 +50,11 @@
         {if="$roster"}
             {$roster->truename}
         {elseif="strpos($contact->jid, '/') != false"}
-            {$contact->jid}
+            {$exploded = explodeJid($contact->jid)}
+            {$exploded.resource}
+            <span class="second" title="{$exploded.jid}">
+                {$exploded.jid}
+            </span>
         {else}
             {$contact->truename}
         {/if}

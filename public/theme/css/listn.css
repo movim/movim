@@ -227,7 +227,7 @@ ul.list li > .primary.bubble {
 }
 
 ul.list li > .primary ~ *:not(.primary):not(.counter):not(.bubble):not(.control):not(ul) {
-    padding-left: 9rem;
+    padding-left: 8.5rem;
 }
 
 ul.list li > .top + .primary ~ *:not(.primary):not(.counter):not(.bubble):not(.control) {
@@ -245,7 +245,7 @@ ul.list li > .primary.bubble + .primary {
 }
 
 ul.list li > .primary + .primary ~ *:not(.primary):not(.counter):not(.bubble):not(.control):not(ul) {
-    padding-left: 14rem;
+    padding-left: 13.5rem;
 }
 
 /* Place the other controls */
@@ -269,19 +269,19 @@ ul.list li > .control ~ .control ~ .control ~ .control {
 /* Limit the size of the main content */
 
 ul.list li > .control ~ *:not(.control):not(.bubble):not(.counter) {
-    margin-right: 5rem;
+    margin-right: 4.5rem;
 }
 
 ul.list li > .control ~ .control ~ *:not(.control):not(.bubble):not(.counter) {
-    margin-right: 11rem;
+    margin-right: 10.5rem;
 }
 
 ul.list li > .control ~ .control ~ .control ~ *:not(.control):not(.bubble):not(.counter) {
-    margin-right: 17rem;
+    margin-right: 18.5rem;
 }
 
 ul.list li > .control ~ .control ~ .control ~ .control ~ *:not(.control):not(.bubble):not(.counter) {
-    margin-right: 23rem;
+    margin-right: 22.5rem;
 }
 
 /* Limit the size of the main content */
