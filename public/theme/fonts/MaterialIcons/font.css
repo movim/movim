@@ -37,3 +37,15 @@
   /* Support for IE. */
   font-feature-settings: 'liga';
 }
+
+.material-icons.flip-hor {
+  transform: scale(-1, 1);
+}
+
+.material-icons.flip-vert {
+  transform: scale(1, -1);
+}
+
+.material-icons.flip-hor.flip-vert {
+  transform: scale(-1, -1);
+}

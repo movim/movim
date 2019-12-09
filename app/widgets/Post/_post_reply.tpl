@@ -1,3 +1,4 @@
+<br />
 <hr />
 {if="$reply != null"}
     <ul class="list thick active recessed"
@@ -5,24 +6,24 @@
         <li>
             {if="$reply->picture"}
                 <span
-                    class="primary icon bubble color white"
+                    class="primary icon gray"
                     style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$reply->picture});">
-                    <i class="material-icons">share</i>
+                    <i class="material-icons flip-hor">reply</i>
                 </span>
             {elseif="$reply->isMicroblog() && $reply->contact"}
                 {$url = $reply->contact->getPhoto('l')}
                 {if="$url"}
-                    <span class="primary icon bubble color white" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$url});">
-                        <i class="material-icons">share</i>
+                    <span class="primary icon gray" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$url});">
+                        <i class="material-icons">reply</i>
                     </span>
                 {else}
-                    <span class="primary icon bubble color {$reply->contact->jid|stringToColor}">
-                        <i class="material-icons">share</i>
+                    <span class="primary icon gray {$reply->contact->jid|stringToColor}">
+                        <i class="material-icons">reply</i>
                     </span>
                 {/if}
             {/if}
             <span class="control icon gray">
-                <i class="material-icons">chevron-right</i>
+                <i class="material-icons">chevron_right</i>
             </span>
             <p class="normal line">{$reply->title}</p>
             <p>{$reply->getContent()|html_entity_decode|stripTags}</p>

@@ -29,14 +29,19 @@
 
 /* Previewable */
 .previewable {
-    display: inline-block;
+    display: block;
     position: relative;
+    overflow: hidden;
 }
 
 .previewable img {
     transition: opacity 0.1s ease-in-out;
     border-radius: 0.25rem;
     overflow: hidden;
+}
+
+article section content .previewable img.big_picture {
+    margin-bottom: 0;
 }
 
 .previewable:hover img {

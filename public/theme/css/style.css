@@ -395,7 +395,7 @@ img.avatar:not([src=""]) + .placeholder {
 }
 
 .recessed {
-    opacity: 0.75;
+    opacity: 0.9;
 }
 
 .disabled {
