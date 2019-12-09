@@ -27,7 +27,7 @@ class Notifications extends Base
     {
         $post = $packet->content;
         if ($post->isComment() && !$post->isMine()) {
-            $this->ajaxSetCounter();
+            $this->ajaxHttpSetCounter();
         }
     }
 
@@ -45,18 +45,18 @@ class Notifications extends Base
             );
         }
 
-        $this->ajaxSetCounter();
+        $this->ajaxHttpSetCounter();
     }
 
     public function ajaxRequest()
     {
         Drawer::fill($this->prepareNotifications());
         \App\Cache::c('notifs_since', date(MOVIM_SQL_DATE));
-        $this->ajaxSetCounter();
+        $this->ajaxHttpSetCounter();
         (new Notification)->ajaxClear('comments');
     }
 
-    public function ajaxSetCounter()
+    public function ajaxHttpSetCounter()
     {
         $since = \App\Cache::c('notifs_since');
         if (!$since) {
@@ -109,7 +109,7 @@ class Notifications extends Base
         $n->ajaxClear('invite|'.$jid);
 
         Drawer::fill($this->prepareNotifications());
-        $this->ajaxSetCounter();
+        $this->ajaxHttpSetCounter();
     }
 
     public function ajaxRefuse($jid)
@@ -132,7 +132,7 @@ class Notifications extends Base
         $n->ajaxClear('invite|'.$jid);
 
         Drawer::fill($this->prepareNotifications());
-        $this->ajaxSetCounter();
+        $this->ajaxHttpSetCounter();
     }
 
     /*

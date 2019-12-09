@@ -7,7 +7,4 @@ var Presence = {
     }
 }
 
-MovimWebsocket.attach(function()
-{
-    Presence_ajaxGetPresence();
-});
+movim_add_onload(e => Presence_ajaxHttpGetPresence());

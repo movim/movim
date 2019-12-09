@@ -55,7 +55,7 @@ class CommunitiesServers extends Base
           ->request();
     }
 
-    public function ajaxGet()
+    public function ajaxHttpGet()
     {
         $this->rpc('MovimTpl.fill', '#communities_servers', $this->prepareCommunities());
     }

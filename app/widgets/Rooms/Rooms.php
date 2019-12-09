@@ -198,7 +198,7 @@ class Rooms extends Base
     /**
      * @brief Get the Rooms
      */
-    public function ajaxDisplay($edit = false, $all = false)
+    public function ajaxHttpDisplay($edit = false, $all = false)
     {
         $this->refreshRooms($edit, $all);
     }

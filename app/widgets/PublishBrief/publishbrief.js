@@ -56,7 +56,7 @@ var PublishBrief = {
         document.querySelector('input[name=embed]').onchange();
     },
     saveDraft: function() {
-        PublishBrief_ajaxHttpSaveDraft(MovimUtils.formToJson('brief'));
+        PublishBrief_ajaxHttpDaemonSaveDraft(MovimUtils.formToJson('brief'));
     },
     enableSend: function() {
         document.querySelector('#button_send').classList.remove('disabled');

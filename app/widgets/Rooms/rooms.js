@@ -78,7 +78,5 @@ var Rooms = {
     }
 }
 
-MovimWebsocket.attach(function() {
-    Rooms.anonymousInit();
-    Rooms_ajaxDisplay();
-});
+//Rooms.anonymousInit();
+movim_add_onload(e => Rooms_ajaxHttpDisplay());

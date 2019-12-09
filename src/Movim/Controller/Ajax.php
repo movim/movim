@@ -29,15 +29,19 @@ class Ajax extends Base
         if (empty($this->funclist)) {
             return '';
         }
-
         $buffer = '<script type="text/javascript">';
         foreach ($this->funclist as $key => $funcdef) {
             $parlist = implode(',', $funcdef['params']);
 
             $buffer .= 'function ' . $funcdef['object'] . '_'
                 . $funcdef['funcname'] . "(${parlist}){";
+
+            $function = "MWSs('";
+            if ($funcdef['http'] === 1) $function = " return MWSa('";
+            if ($funcdef['http'] === 2) $function = " return MWSad('";
+
             $buffer .=
-                ($funcdef['http'] ? " return MovimWebsocket.ajax('" : "MWSs('") .
+                $function .
                 $funcdef['object'] . "','" .
                 $funcdef['funcname'] . "'" .
                 (!empty($funcdef['params']) ? ",[${parlist}]" : '');
@@ -58,9 +62,14 @@ class Ajax extends Base
     /**
      * Defines a new function.
      */
-    public function defun($widget, $funcname, array $params, $http = false)
+    public function defun($widget, $funcname, array $params)
     {
         array_push($this->widgetlist, $widget);
+
+        $http = 0;
+        if (preg_match('#^ajaxHttp#', $funcname)) $http = 1;
+        if (preg_match('#^ajaxHttpDaemon#', $funcname)) $http = 2;
+
         $this->funclist[$widget.$funcname] = [
             'object' => $widget,
             'funcname' => $funcname,

@@ -18,6 +18,7 @@ class Route extends Base
                 'account'       => false,
                 'accountnext'   => ['s', 'err'],
                 'ajax'          => false,
+                'ajaxd'         => false,
                 'admin'         => false,
                 'blog'          => ['f', 'i'],
                 'chat'          => ['f', 'r'],

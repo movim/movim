@@ -85,7 +85,7 @@ class Presence extends Base
         Stream::end();
     }
 
-    public function ajaxGetPresence()
+    public function ajaxHttpGetPresence()
     {
         $html = $this->preparePresence();
         if ($html) {

@@ -121,13 +121,13 @@ var Chat = {
             if (Chat.edit) {
                 Chat.edit = false;
                 if (textarea.dataset.mid) {
-                    xhr = Chat_ajaxHttpCorrect(jid, text, textarea.dataset.mid);
+                    xhr = Chat_ajaxHttpDaemonCorrect(jid, text, textarea.dataset.mid);
                     delete textarea.dataset.mid;
                 } else {
-                    xhr = Chat_ajaxHttpCorrect(jid, text);
+                    xhr = Chat_ajaxHttpDaemonCorrect(jid, text);
                 }
             } else {
-                xhr = Chat_ajaxHttpSendMessage(jid, text, muc);
+                xhr = Chat_ajaxHttpDaemonSendMessage(jid, text, muc);
             }
 
             xhr.onreadystatechange = function() {
@@ -907,7 +907,7 @@ MovimWebsocket.attach(function() {
 
 if (typeof Upload != 'undefined') {
     Upload.attach(function(file) {
-        Chat_ajaxHttpSendMessage(Chat.getTextarea().dataset.jid, false, Boolean(Chat.getTextarea().dataset.muc), false, false, file);
+        Chat_ajaxHttpDaemonSendMessage(Chat.getTextarea().dataset.jid, false, Boolean(Chat.getTextarea().dataset.muc), false, false, file);
     });
 }
 

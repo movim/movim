@@ -13,10 +13,18 @@ WebSocket.prototype.register = function(host) {
 };
 
 /**
- * Short function for MovimWebsocket.send
+ * Short functions
  */
 function MWSs(widget, func, params) {
     MovimWebsocket.send(widget, func, params);
+}
+
+function MWSa(widget, func, params) {
+    return MovimWebsocket.ajax(widget, func, params, false);
+}
+
+function MWSad(widget, func, params) {
+    return MovimWebsocket.ajax(widget, func, params, true);
 }
 
 /**
@@ -154,7 +162,8 @@ var MovimWebsocket = {
         }
     },
 
-    ajax : function(widget, func, params) {
+    // Ajax call that is going to the daemon
+    ajax : function(widget, func, params, daemon) {
         let xhr = new XMLHttpRequest;
 
         var body = {
@@ -164,11 +173,22 @@ var MovimWebsocket = {
 
         if (params) body.p = params;
 
-        xhr.open('POST', '?ajax');
+        xhr.open('POST', daemon ? '?ajaxd': '?ajax');
         xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
         xhr.send(JSON.stringify(
             {'func' : 'message', 'b' : body }
         ));
+
+        if (!daemon) {
+            xhr.addEventListener('readystatechange', function(e) {
+                if (this.readyState == 4 && this.status >= 200 && this.status < 400) {
+                    var obj = JSON.parse(this.response);
+                    for (funcall of obj) {
+                        MovimWebsocket.handle(funcall);
+                    }
+                }
+            });
+        }
 
         return xhr;
     },

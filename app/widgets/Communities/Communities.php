@@ -11,7 +11,7 @@ class Communities extends Base
         $this->addjs('communities.js');
     }
 
-    public function ajaxGet()
+    public function ajaxHttpGet()
     {
         $this->rpc('MovimTpl.fill', '#communities', $this->prepareCommunities());
     }

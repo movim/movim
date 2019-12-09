@@ -6,12 +6,25 @@ use Movim\Widget\Wrapper;
 
 class RPC
 {
+    private static $json = [];
+
     public static function call($funcname, ...$args)
     {
-        writeOut([
+        $payload = [
             'func' => $funcname,
             'params' => $args,
-        ]);
+        ];
+
+        if (php_sapi_name() != 'cli') {
+            array_push(self::$json, $payload);
+        } else {
+            writeOut($payload);
+        }
+    }
+
+    public function writeJSON()
+    {
+        echo json_encode(self::$json);
     }
 
     /**

@@ -26,7 +26,7 @@
         </ul>
     </header>
     <a id="button_send" class="button action color"
-       onclick="PublishBrief.disableSend(); PublishBrief_ajaxHttpPublish(MovimUtils.formToJson('brief'));">
+       onclick="PublishBrief.disableSend(); PublishBrief_ajaxHttpDaemonPublish(MovimUtils.formToJson('brief'));">
         <i class="material-icons">send</i>
     </a>
 {else}
@@ -114,7 +114,7 @@
             {else}
                 <span id="button_send"
                     class="control icon gray active"
-                    onclick="PublishBrief.disableSend(); PublishBrief_ajaxHttpPublish(MovimUtils.formToJson('brief'));">
+                    onclick="PublishBrief.disableSend(); PublishBrief_ajaxHttpDaemonPublish(MovimUtils.formToJson('brief'));">
                     <i class="material-icons">send</i>
                 </span>
             {/if}

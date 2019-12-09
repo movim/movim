@@ -32,7 +32,6 @@ var Init = {
     }
 }
 
-MovimWebsocket.attach(function()
-{
+MovimWebsocket.attach(function() {
     Init.checkNode();
 });

@@ -299,7 +299,7 @@ class Chat extends \Movim\Widget\Base
      * @param string $message
      * @return void
      */
-    public function ajaxHttpSendMessage($to, $message = false, $muc = false, $resource = false, $replace = false, $file = false)
+    public function ajaxHttpDaemonSendMessage($to, $message = false, $muc = false, $resource = false, $replace = false, $file = false)
     {
         $message = trim($message);
         if (filter_var($message, FILTER_VALIDATE_URL)) {
@@ -416,7 +416,7 @@ class Chat extends \Movim\Widget\Base
      * @param string $message
      * @return void
      */
-    public function ajaxHttpCorrect($to, $message, $mid = false)
+    public function ajaxHttpDaemonCorrect($to, $message, $mid = false)
     {
         $replace = $mid
             ? $this->user->messages()
@@ -428,7 +428,7 @@ class Chat extends \Movim\Widget\Base
                          ->first();
 
         if ($replace) {
-            $this->ajaxHttpSendMessage($to, $message, false, false, $replace);
+            $this->ajaxHttpDaemonSendMessage($to, $message, false, false, $replace);
         }
     }
 
@@ -437,7 +437,7 @@ class Chat extends \Movim\Widget\Base
      *
      * @
      */
-    public function ajaxHttpSendReaction($mid, string $emoji)
+    public function ajaxHttpDaemonSendReaction($mid, string $emoji)
     {
         $parentMessage = $this->user->messages()
                         ->where('mid', $mid)

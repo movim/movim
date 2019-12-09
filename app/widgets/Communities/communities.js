@@ -1,4 +1,5 @@
 MovimWebsocket.attach(function() {
     Notification.current('community');
-    Communities_ajaxGet();
 });
+
+movim_add_onload(e => Communities_ajaxHttpGet());

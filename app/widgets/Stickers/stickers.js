@@ -28,7 +28,7 @@ var Stickers = {
         while (i < tds.length) {
             tds[i].onclick = function() {
                 if (mid) {
-                    Chat_ajaxHttpSendReaction(mid, this.dataset.emoji);
+                    Chat_ajaxHttpDaemonSendReaction(mid, this.dataset.emoji);
                     Dialog_ajaxClear();
                 } else {
                     Stickers.addSmiley(this);

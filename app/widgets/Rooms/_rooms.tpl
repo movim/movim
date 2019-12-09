@@ -1,5 +1,5 @@
 {if="$edit"}
-    <a class="button action color green" onclick="Rooms_ajaxDisplay(false, {if="$all"}true{else}false{/if})">
+    <a class="button action color green" onclick="Rooms_ajaxHttpDisplay(false, {if="$all"}true{else}false{/if})">
         <i class="material-icons">check</i>
     </a>
 {/if}
@@ -10,7 +10,7 @@
     <ul class="list divided spaced middle {if="!$edit"}active{/if}">
         <li class="subheader" title="{$c->__('page.configuration')}">
             {if="$conferences->isNotEmpty() && !$edit"}
-            <span class="control icon active gray" onclick="Rooms_ajaxDisplay(true, {if="$all"}true{else}false{/if});">
+            <span class="control icon active gray" onclick="Rooms_ajaxHttpDisplay(true, {if="$all"}true{else}false{/if});">
                 <i class="material-icons">edit</i>
             </span>
             <span class="control icon active gray" onclick="Rooms_ajaxAdd()">
@@ -149,7 +149,7 @@
 
     <ul class="list thin active spaced divided">
         {if="$disconnected > 0"}
-            <li onclick="Rooms_ajaxDisplay({if="$edit"}true{else}false{/if}, {if="$all"}false{else}true{/if})">
+            <li onclick="Rooms_ajaxHttpDisplay({if="$edit"}true{else}false{/if}, {if="$all"}false{else}true{/if})">
                 <span class="primary icon gray">
                     <i class="material-icons">
                         {if="$all"}expand_less{else}expand_more{/if}

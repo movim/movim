@@ -5,6 +5,7 @@ use Monolog\Logger;
 use Monolog\Handler\SyslogHandler;
 use Movim\Route;
 use Movim\Cookie;
+use Movim\RPC;
 
 class Front extends Base
 {
@@ -44,7 +45,19 @@ class Front extends Base
      */
     public function runRequest($request)
     {
+        // Simple ajax request to a Widget
         if ($request === 'ajax') {
+            $payload = json_decode(file_get_contents('php://input'));
+
+            if ($payload) {
+                $rpc = new RPC;
+                $rpc->handleJSON($payload->b);
+                $rpc->writeJSON();
+            }
+        }
+
+        // Ajax request that is going to the daemon
+        if ($request === 'ajaxd') {
             requestAPI('ajax', 2, [
                 'sid' => SESSION_ID,
                 'json' => rawurlencode(file_get_contents('php://input'))

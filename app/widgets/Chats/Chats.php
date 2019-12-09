@@ -101,7 +101,7 @@ class Chats extends Base
         }
     }
 
-    public function ajaxGet()
+    public function ajaxHttpGet()
     {
         $this->rpc('MovimTpl.fill', '#chats_widget_list', $this->prepareChats());
         $this->rpc('Chats.refresh');

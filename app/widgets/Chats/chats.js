@@ -83,6 +83,4 @@ var Chats = {
     }
 };
 
-MovimWebsocket.attach(function() {
-    Chats_ajaxGet();
-});
+movim_add_onload(e => Chats_ajaxHttpGet());

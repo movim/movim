@@ -78,7 +78,7 @@ class PublishBrief extends Base
         $this->rpc('PublishBrief.checkEmbed');
     }
 
-    public function ajaxHttpSaveDraft($form)
+    public function ajaxHttpDaemonSaveDraft($form)
     {
         $p = new \App\Post;
         $p->title = $form->title->value;
@@ -110,7 +110,7 @@ class PublishBrief extends Base
         }
     }
 
-    public function ajaxHttpPublish($form)
+    public function ajaxHttpDaemonPublish($form)
     {
         $this->rpc('PublishBrief.disableSend');
 
