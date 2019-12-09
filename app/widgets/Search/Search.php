@@ -31,7 +31,7 @@ class Search extends Base
         $this->rpc('Search.init');
     }
 
-    public function ajaxInitRoster()
+    public function ajaxHttpInitRoster()
     {
         $view = $this->tpl();
         $view->assign('contacts', $this->user->session->topContacts()

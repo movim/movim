@@ -9,7 +9,7 @@ var Search = {
 
         Search.rosterLimit = 7;
 
-        Search_ajaxInitRoster();
+        Search_ajaxHttpInitRoster();
     },
 
     roster : function(key) {
