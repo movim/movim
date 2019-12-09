@@ -3,6 +3,9 @@ Movim Changelog
 
 v0.16.2 (trunk)
 ---------------------------
+ * Remove some paddings in the UI
+ * Set public url as a default body for shared Posts
+ * Request all the open Chats messages in one request (instead of looping)
 
 v0.16.1
 ---------------------------

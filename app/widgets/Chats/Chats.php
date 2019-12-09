@@ -49,6 +49,7 @@ class Chats extends Base
                 $jid,
                 $this->resolveContactFromJid($jid),
                 $this->resolveRosterFromJid($jid),
+                $this->resolveMessageFromJid($jid),
                 null,
                 true
             )
@@ -67,7 +68,8 @@ class Chats extends Base
                     $this->prepareChat(
                         $packet->content->jid,
                         $this->resolveContactFromJid($packet->content->jid),
-                        $this->resolveRosterFromJid($packet->content->jid)
+                        $this->resolveRosterFromJid($packet->content->jid),
+                        $this->resolveMessageFromJid($packet->content->jid)
                     )
                 );
                 $this->rpc('Chats.refresh');
@@ -168,7 +170,8 @@ class Chats extends Base
                 $this->prepareChat(
                     $jid,
                     $this->resolveContactFromJid($jid),
-                    $this->resolveRosterFromJid($jid)
+                    $this->resolveRosterFromJid($jid),
+                    $this->resolveMessageFromJid($jid),
                 )
             );
 
@@ -233,9 +236,42 @@ class Chats extends Base
                 }
             }
 
+            $messages = collect();
+            $selectedMessages = $this->user->messages()
+                ->joinSub(
+                    function ($query) use ($chats) {
+                        $query->selectRaw('max(published) as published, jidfrom, jidto')
+                            ->from('messages')
+                            ->where('user_id', $this->user->id)
+                            ->where(function ($query) use ($chats) {
+                                $query->whereIn('jidfrom', array_keys($chats))
+                                    ->orWhereIn('jidto', array_keys($chats));
+                            })
+                            ->groupBy(['jidfrom', 'jidto']);
+                    },
+                    'recents',
+                    function ($join) {
+                        $join->on('recents.published', 'messages.published')
+                             ->on('recents.jidfrom', 'messages.jidfrom')
+                             ->on('recents.jidto', 'messages.jidto');
+                    }
+                )->get();
+
+            foreach ($selectedMessages as $message) {
+                $key = $message->jidfrom == $this->user->id
+                    ? $message->jidto
+                    : $message->jidfrom;
+
+                // $selectedMessages contains jidfrom and jidto together, we only take the most recent
+                if (!$messages->has($key) || $message->published > $messages->get($key)->published) {
+                    $messages->put($key, $message);
+                }
+            }
+
             $view->assign('rosters', $this->user->session->contacts()->whereIn('jid', array_keys($chats))
                                         ->with('presence.capability')->get()->keyBy('jid'));
             $view->assign('contacts', $contacts);
+            $view->assign('messages', $messages);
         }
 
         $view->assign('chats', array_reverse($chats));
@@ -251,7 +287,7 @@ class Chats extends Base
         return $view->draw('_chats_empty_item');
     }
 
-    public function prepareChat(string $jid, App\Contact $contact, App\Roster $roster = null, $status = null, $active = false)
+    public function prepareChat(string $jid, App\Contact $contact, App\Roster $roster = null, App\Message $message = null, $status = null, $active = false)
     {
         if (!$this->validateJid($jid)) {
             return;
@@ -266,13 +302,7 @@ class Chats extends Base
         $view->assign('count', $this->user->unreads($jid));
 
         if ($status == null) {
-            $view->assign('message', $this->user->messages()
-                ->where(function ($query) use ($jid) {
-                    $query->where('jidfrom', $jid)
-                        ->orWhere('jidto', $jid);
-                })
-                ->orderBy('published', 'desc')
-                ->first());
+            $view->assign('message', $message);
         }
 
         return $view->draw('_chats_item');
@@ -288,6 +318,17 @@ class Chats extends Base
     {
         return $this->user->session->contacts()->where('jid', $jid)
                     ->with('presence.capability')->first();
+    }
+
+    public function resolveMessageFromJid($jid)
+    {
+        return $this->user->messages()
+            ->where(function ($query) use ($jid) {
+                $query->where('jidfrom', $jid)
+                    ->orWhere('jidto', $jid);
+            })
+            ->orderBy('published', 'desc')
+            ->first();
     }
 
     private function validateJid($jid)
