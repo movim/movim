@@ -10,7 +10,7 @@ class Draw extends Base
         $this->addcss('draw.css');
     }
 
-    public function ajaxGet()
+    public function ajaxHttpGet()
     {
         $view = $this->tpl();
         $this->rpc('MovimTpl.fill', '#draw', $view->draw('_draw'));

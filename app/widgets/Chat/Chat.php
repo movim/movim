@@ -213,7 +213,7 @@ class Chat extends \Movim\Widget\Base
         $this->rpc('MovimTpl.fill', '#' . cleanupId($jid.'_state'), $message);
     }
 
-    public function ajaxInit()
+    public function ajaxHttpInit()
     {
         $view = $this->tpl();
         $date = $view->draw('_chat_date');

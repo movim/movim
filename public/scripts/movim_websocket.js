@@ -155,7 +155,6 @@ var MovimWebsocket = {
             };
 
             if (params) body.p = params;
-
             this.connection.send(JSON.stringify(
                 {'func' : 'message', 'b' : body}
             ));

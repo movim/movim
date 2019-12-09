@@ -19,7 +19,7 @@ class CommunitiesServers extends Base
     public function onDisco($packet)
     {
         Notification::toast($this->__('communities.disco'));
-        $this->ajaxGet();
+        $this->ajaxHttpGet();
     }
 
     public function onDiscoInfo($packet)
@@ -30,7 +30,7 @@ class CommunitiesServers extends Base
                  ->first();
 
         if ($info) {
-            $this->ajaxGet();
+            $this->ajaxHttpGet();
         }
     }
 

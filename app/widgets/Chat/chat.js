@@ -884,8 +884,9 @@ var Chat = {
     }
 };
 
+movim_add_onload(e => Chat_ajaxHttpInit());
+
 MovimWebsocket.attach(function() {
-    Chat_ajaxInit();
     Notification.current('chat');
 
     var jid = MovimUtils.urlParts().params[0];

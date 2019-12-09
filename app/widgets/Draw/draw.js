@@ -424,6 +424,4 @@ Upload.progress((percent) => {
     }
 });
 
-MovimWebsocket.attach(function() {
-    Draw_ajaxGet();
-});
+movim_add_onload(e => Draw_ajaxHttpGet());

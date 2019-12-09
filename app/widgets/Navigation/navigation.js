@@ -1,3 +1,1 @@
-MovimWebsocket.attach(function() {
-    Navigation_ajaxRefresh();
-});
+movim_add_onload(e => Navigation_ajaxHttpRefresh());

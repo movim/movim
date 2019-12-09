@@ -15,7 +15,7 @@ class Navigation extends Base
         $this->rpc('MovimTpl.fill', '#chatcounter', $this->prepareChatButton($count));
     }
 
-    public function ajaxRefresh()
+    public function ajaxHttpRefresh()
     {
         $this->onCounter($this->user->unreads());
     }
