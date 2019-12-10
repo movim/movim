@@ -154,13 +154,13 @@
 
                     {if="$liked"}
                         <a class="button narrow icon flat red" href="{$c->route('post', [$post->server, $post->node, $post->nodeid])}">
-                            {$post->likes->count()}
+                            {if="$post->likes->count() > 0"}{$post->likes->count()}{/if}
                             <i class="material-icons">favorite</i>
                         </a>
                     {else}
                         <a class="button narrow icon flat gray" href="#"
                            onclick="this.classList.add('disabled'); PostActions_ajaxLike('{$post->server}', '{$post->node}', '{$post->nodeid}')">
-                            {$post->likes->count()}
+                           {if="$post->likes->count() > 0"}{$post->likes->count()}{/if}
                             {if="$liked"}
                                 <i class="material-icons">favorite</i>
                             {else}
@@ -169,7 +169,7 @@
                         </a>
                     {/if}
                     <a class="button narrow icon flat gray" href="{$c->route('post', [$post->server, $post->node, $post->nodeid])}">
-                        {$post->comments->count()}
+                        {if="$post->comments->count() > 0"}{$post->comments->count()}{/if}
                         <i class="material-icons">chat_bubble_outline</i>
                     </a>
                 {/if}
