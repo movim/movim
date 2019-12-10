@@ -1,1 +1,1 @@
-movim_add_onload(e => BottomNavigation_ajaxHttpRefresh());
+MovimWebsocket.initiate(e => BottomNavigation_ajaxHttpRefresh());

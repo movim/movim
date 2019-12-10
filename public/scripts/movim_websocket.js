@@ -34,6 +34,7 @@ function MWSad(widget, func, params) {
 
 var MovimWebsocket = {
     connection: null,
+    initiated: [], // Launched when the socket is connecting or reconnecting
     attached: [], // Launched when the socket is connected to the daemon
     started: [], // Launched when the linker is started
     registered: [], // Launched when the linker is connected to XMPP
@@ -63,12 +64,20 @@ var MovimWebsocket = {
         }
     },
 
+    launchInitiated : function() {
+        for(var i = 0; i < MovimWebsocket.initiated.length; i++) {
+            MovimWebsocket.initiated[i]();
+        }
+    },
+
     init : function() {
         if (window.location.protocol === "https:") {
             var uri = 'wss:' + BASE_URI + 'ws/';
         } else {
             var uri = 'ws:' + BASE_URI + 'ws/';
         }
+
+        MovimWebsocket.launchInitiated();
 
         if (this.connection !== null) {
             this.connection.onclose = null;
@@ -227,6 +236,12 @@ var MovimWebsocket = {
     start : function(func) {
         if (typeof(func) === "function") {
             this.started.push(func);
+        }
+    },
+
+    initiate : function(func) {
+        if (typeof(func) === "function") {
+            this.initiated.push(func);
         }
     },
 

@@ -1,1 +1,1 @@
-movim_add_onload(e => CommunitiesServers_ajaxHttpGet());
+MovimWebsocket.initiate(e => CommunitiesServers_ajaxHttpGet());

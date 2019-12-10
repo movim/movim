@@ -79,4 +79,4 @@ var Rooms = {
 }
 
 //Rooms.anonymousInit();
-movim_add_onload(e => Rooms_ajaxHttpDisplay());
+MovimWebsocket.initiate(e => Rooms_ajaxHttpDisplay());
