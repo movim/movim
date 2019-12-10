@@ -237,7 +237,7 @@ class Chats extends Base
             }
 
             $messages = collect();
-            $selectedMessages = $this->user->messages()
+            /*$selectedMessages = $this->user->messages()
                 ->joinSub(
                     function ($query) use ($chats) {
                         $query->selectRaw('max(published) as published, jidfrom, jidto')
@@ -266,6 +266,11 @@ class Chats extends Base
                 if (!$messages->has($key) || $message->published > $messages->get($key)->published) {
                     $messages->put($key, $message);
                 }
+            }*/
+
+            // For the moment more optimized then the request above
+            foreach (array_keys($chats) as $jid) {
+                $messages->put($jid, $this->resolveMessageFromJid($jid));
             }
 
             $view->assign('rosters', $this->user->session->contacts()->whereIn('jid', array_keys($chats))
