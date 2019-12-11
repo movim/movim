@@ -303,7 +303,7 @@ var Chat = {
 
                 img.title = ':' + found + ':';
                 img.dataset.emoji = emojis[found].e;
-                img.addEventListener('click', () => {
+                img.addEventListener('click', e => {
                     Chat.selectEmoji(e.target);
                 });
                 emojisList.appendChild(img);
