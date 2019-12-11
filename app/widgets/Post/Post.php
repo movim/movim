@@ -75,8 +75,8 @@ class Post extends Base
     public function onCommentsError($packet)
     {
         $view = $this->tpl();
-        $html = $view->draw('_post_comments_error');
-        $this->rpc('MovimTpl.fill', '#comments', $html);
+        $view->assign('post', \App\Post::find($packet->content));
+        $this->rpc('MovimTpl.fill', '#comments', $view->draw('_post_comments_error'));
     }
 
     public function onDelete($packet)
@@ -217,6 +217,7 @@ class Post extends Base
                 $view->assign('commentsdisabled', false);
             } elseif (!$card) {
                 $viewd = $this->tpl();
+                $viewd->assign('post', $p);
                 $view->assign('commentsdisabled', $viewd->draw('_post_comments_error'));
             }
 

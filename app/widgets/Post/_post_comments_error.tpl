@@ -11,9 +11,15 @@
     <li class="block">
         <p class="center">
             {if="$c->getUser()->hasPubsub()"}
-                <button class="button icon flat gray" onclick="Post.share()">
-                    <i class="material-icons">share</i> {$c->__('button.share')}
-                </button>
+                {if="isset($post)"}
+                    <button class="button icon flat gray" onclick="SendTo_ajaxSendSearch('{$post->getRef()}')">
+                        <i class="material-icons">send</i> {$c->__('button.share')}
+                    </button>
+                {else}
+                    <button class="button icon flat gray" onclick="Post.share()">
+                        <i class="material-icons">share</i> {$c->__('button.share')}
+                    </button>
+                {/if}
             {/if}
         </p>
     </li>

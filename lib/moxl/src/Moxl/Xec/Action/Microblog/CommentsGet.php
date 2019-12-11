@@ -27,8 +27,6 @@ class CommentsGet extends Action
 
     public function handle($stanza, $parent = false)
     {
-        $node = (string)$stanza->pubsub->items->attributes()->node;
-
         if ($stanza->pubsub->items->item) {
             foreach ($stanza->pubsub->items->item as $item) {
                 $p = \App\Post::firstOrNew([
@@ -48,7 +46,7 @@ class CommentsGet extends Action
 
     public function error()
     {
-        $this->pack($this->_id);
+        $this->pack($this->_parentid);
         $this->deliver();
     }
 }
