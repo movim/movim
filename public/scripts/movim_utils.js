@@ -104,7 +104,7 @@ var MovimUtils = {
 
         for(var i = 0; i < textareas.length; i++) {
             MovimUtils.textareaAutoheight(textareas[i]);
-            textareas[i].addEventListener('keyup', () => MovimUtils.textareaAutoheight(e.target));
+            textareas[i].addEventListener('keyup', e => MovimUtils.textareaAutoheight(e.target));
         };
     },
     htmlEscape: function(string) {
