@@ -19,7 +19,7 @@ function movim_add_onload(func) {
 /**
  * @brief Function that is run once the page is loaded.
  */
-document.addEventListener("DOMContentLoaded", e => {
+document.addEventListener("DOMContentLoaded", () => {
     for (var i = 0; i < onloaders.length; i++) {
         onloaders[i]();
     }

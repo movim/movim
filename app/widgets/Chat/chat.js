@@ -303,7 +303,7 @@ var Chat = {
 
                 img.title = ':' + found + ':';
                 img.dataset.emoji = emojis[found].e;
-                img.addEventListener('click', e => {
+                img.addEventListener('click', () => {
                     Chat.selectEmoji(e.target);
                 });
                 emojisList.appendChild(img);
@@ -884,7 +884,7 @@ var Chat = {
     }
 };
 
-movim_add_onload(e => Chat_ajaxHttpInit());
+movim_add_onload(() => Chat_ajaxHttpInit());
 
 MovimWebsocket.attach(function() {
     Notification.current('chat');

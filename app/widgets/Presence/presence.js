@@ -7,4 +7,4 @@ var Presence = {
     }
 }
 
-MovimWebsocket.initiate(e => Presence_ajaxHttpGetPresence());
+MovimWebsocket.initiate(() => Presence_ajaxHttpGetPresence());

@@ -1,1 +1,1 @@
-MovimWebsocket.initiate(e => CommunitiesServers_ajaxHttpGet());
+MovimWebsocket.initiate(() => CommunitiesServers_ajaxHttpGet());

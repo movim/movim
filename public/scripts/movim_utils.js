@@ -104,7 +104,7 @@ var MovimUtils = {
 
         for(var i = 0; i < textareas.length; i++) {
             MovimUtils.textareaAutoheight(textareas[i]);
-            textareas[i].addEventListener('keyup', e => MovimUtils.textareaAutoheight(e.target));
+            textareas[i].addEventListener('keyup', () => MovimUtils.textareaAutoheight(e.target));
         };
     },
     htmlEscape: function(string) {
@@ -129,7 +129,7 @@ var MovimUtils = {
                     img.parentNode.insertBefore(div, img);
                     div.classList.add('previewable');
                     img.classList.add('active');
-                    img.addEventListener('click', e => Preview_ajaxShow(img.src))
+                    img.addEventListener('click', () => Preview_ajaxShow(img.src))
 
                     div.appendChild(img);
                 }

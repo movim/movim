@@ -83,4 +83,4 @@ var Chats = {
     }
 };
 
-MovimWebsocket.initiate(e => Chats_ajaxHttpGet());
+MovimWebsocket.initiate(() => Chats_ajaxHttpGet());

@@ -128,7 +128,7 @@ var Visio = {
             'candidate': candidate.substr(2),
             'sdpMid': mid,
             'sdpMLineIndex' : mlineindex
-        }), e => {}, logError);
+        }), () => {}, logError);
     },
 
     onAccept: function(from, id) {
