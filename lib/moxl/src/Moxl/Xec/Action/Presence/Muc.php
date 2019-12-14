@@ -16,8 +16,6 @@ class Muc extends Action
 
     public function request()
     {
-        $this->store();
-
         $session = Session::start();
 
         if (empty($this->_nickname)) {
@@ -28,8 +26,13 @@ class Muc extends Action
             \App\User::me()->messages()->where('jidfrom', $this->_to)->delete();
         }
 
-        // Save the state in the session to handle the callback later
-        $session->set($this->_to . '/' .$this->_nickname, true);
+        $this->store(); // Set stanzaId
+
+        /**
+         * Some servers doesn't return the ID, so save it in another session key-value
+         * and use the to and nickname as a key ¯\_(ツ)_/¯
+         */
+        $session->set($this->_to . '/' .$this->_nickname, $this->stanzaId);
 
         Presence::muc($this->_to, $this->_nickname, $this->_mam);
     }
@@ -84,12 +87,6 @@ class Muc extends Action
 
         $this->pack($presence);
         $this->deliver();
-    }
-
-    public function error($stanza, $parent = false)
-    {
-        $session = Session::start();
-        $session->remove($this->_to . '/' .$this->_nickname);
     }
 
     public function errorRegistrationRequired($stanza, $parent = false)

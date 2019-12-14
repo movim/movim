@@ -2,22 +2,22 @@
 
 namespace Moxl\Xec;
 
-use Moxl\Utils;
 use Moxl\Xec\Payload\Payload;
-
 use Movim\Session;
 
 abstract class Action extends Payload
 {
+    protected $stanzaId;
+
     final public function store(string $customId = null)
     {
         $session = Session::start();
 
         // Generating the iq key.
-        $id = $customId ?? \generateKey(6);
+        $this->stanzaId = $customId ?? \generateKey(6);
 
-        $session->set('id', $id);
-        $session->set($id, $this, true);
+        $session->set('id', $this->stanzaId);
+        $session->set($this->stanzaId, $this, true);
         $session->clean();
     }
 
