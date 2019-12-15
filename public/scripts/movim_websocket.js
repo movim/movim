@@ -181,8 +181,11 @@ var MovimWebsocket = {
 
         if (params) body.p = params;
 
+        var date = new Date();
+
         xhr.open('POST', daemon ? '?ajaxd': '?ajax');
         xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+        xhr.setRequestHeader('Movim-Offset', date.getTimezoneOffset());
         xhr.send(JSON.stringify(
             {'func' : 'message', 'b' : body }
         ));
