@@ -58,7 +58,7 @@
                     {/if}
                 </p>
                 {if="$value->status"}
-                    <p class="line">{$value->status}</p>
+                    <p class="line" title="{$value->status}">{$value->status}</p>
                 {/if}
             </li>
         {/loop}
