@@ -8,6 +8,8 @@ v0.16.2 (trunk)
  * Request all the open Chats messages in one request (instead of looping)
  * Add a third way to query widgets (websocket, ajax to daemon and pure ajax)
  * Convert some Widgets RPC calls to pure Ajax
+ * Clear message counter when Movim receive a message of the current user through Carbon or MAM (#857)
+ * Use the from as a temporary key resolver if the presence id is not set for MUC presences (#893)
 
 v0.16.1
 ---------------------------
