@@ -8,5 +8,5 @@ var Notifications = {
 }
 
 MovimWebsocket.attach(function() {
-    Notifications_ajaxHttpSetCounter();
+    Notifications_ajaxSetCounter();
 });
