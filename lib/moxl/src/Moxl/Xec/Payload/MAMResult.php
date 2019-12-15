@@ -28,6 +28,7 @@ class MAMResult extends Payload
             if (!$message->isOTR()
             && (!$message->isEmpty() || $message->isSubject())) {
                 $message->save();
+                $message->clearUnreads();
 
                 $this->pack($message);
                 $this->deliver();

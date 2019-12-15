@@ -93,6 +93,16 @@ class Message extends Model
         ]);
     }
 
+    public function clearUnreads()
+    {
+        if ($this->jidfrom == $this->user_id) {
+            $this->user->messages()
+                       ->where('jidfrom', $this->jidto)
+                       ->where('seen', false)
+                       ->update(['seen' => true]);
+        }
+    }
+
     public function set($stanza, $parent = false)
     {
         $this->id = ($stanza->{'stanza-id'} && $stanza->{'stanza-id'}->attributes()->id)

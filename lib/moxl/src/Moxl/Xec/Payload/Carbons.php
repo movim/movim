@@ -18,6 +18,8 @@ class Carbons extends Payload
 
                 if (!$m->isOTR()) {
                     $m->save();
+                    $m->clearUnreads();
+
                     $this->pack($m);
                     $this->deliver();
                 }
