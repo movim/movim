@@ -10,6 +10,7 @@ v0.16.2 (trunk)
  * Convert some Widgets RPC calls to pure Ajax
  * Clear message counter when Movim receive a message of the current user through Carbon or MAM (#857)
  * Use the from as a temporary key resolver if the presence id is not set for MUC presences (#893)
+ * Fix an error in Picture (filesize when on a missing file) (#810)
 
 v0.16.1
 ---------------------------

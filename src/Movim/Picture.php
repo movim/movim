@@ -42,11 +42,13 @@ class Picture
      */
     public function fromPath($path)
     {
-        $size = filesize($path);
-        if ($size > 0) {
-            $handle = fopen($path, "r");
-            $this->_bin = fread($handle, $size);
-            fclose($handle);
+        if (file_exists($path)) {
+            $size = filesize($path);
+            if ($size > 0) {
+                $handle = fopen($path, "r");
+                $this->_bin = fread($handle, $size);
+                fclose($handle);
+            }
         }
     }
 
