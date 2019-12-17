@@ -13,7 +13,7 @@ class Caps extends Payload
         $node = $stanza->attributes()->node.'#'.$stanza->attributes()->ver;
         $to = (string)$parent->attributes()->from;
 
-        if (!Info::whereNull('server')->where('node', $node)->first()
+        if (!Info::where('node', $node)->first()
         && $parent->getName() != 'streamfeatures') {
             $d = new Request;
             $d->setTo($to)
