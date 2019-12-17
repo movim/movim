@@ -30,9 +30,9 @@
         <div>
             <input
                 {if="isset($conference)"}
-                    value="{$conference->conference}" disabled
+                    value="{$conference->conference}" readonly
                 {elseif="isset($id)"}
-                    value="{$id}" disabled
+                    value="{$id}" readonly
                 {/if}
                 name="jid"
                 {if="isset($mucservice)"}
@@ -56,6 +56,8 @@
                     value="{$conference->name}"
                 {elseif="isset($info)"}
                     value="{$info->name}"
+                {elseif="isset($name)"}
+                    value="{$name}"
                 {/if}
                 name="name"
                 placeholder="{$c->__('chatrooms.name_placeholder')}"

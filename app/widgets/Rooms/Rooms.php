@@ -206,7 +206,7 @@ class Rooms extends Base
     /**
      * @brief Display the add room form
      */
-    public function ajaxAdd($room = false)
+    public function ajaxAdd($room = false, $name = null)
     {
         $view = $this->tpl();
 
@@ -225,6 +225,7 @@ class Rooms extends Base
             $this->user->session->conferences()
             ->where('conference', $room)->first()
         );
+        $view->assign('name', $name);
         $view->assign('username', $this->user->session->username);
         $view->assign(
             'gateways',
@@ -356,7 +357,6 @@ class Rooms extends Base
           ->setSubject($form->subject->value)
           ->request();
     }
-
 
     /**
      * @brief Display the add room form

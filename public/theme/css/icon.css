@@ -103,6 +103,7 @@ ul.list li span.icon.small {
     line-height: 3rem;
     margin-top: -1.5rem;
     font-size: 0; /* Only display the first letter */
+    left: 3rem;
 }
 
 ul.list li span.icon.small img.emoji {

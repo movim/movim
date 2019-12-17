@@ -7,21 +7,29 @@
 {$previousConnected = true}
 
 {if="!$c->supported('anonymous') && $c->getView() != 'room'"}
-    <ul class="list divided spaced middle {if="!$edit"}active{/if}">
+    <ul class="list divided spaced thin {if="!$edit"}active{/if}">
         <li class="subheader" title="{$c->__('page.configuration')}">
             {if="$conferences->isNotEmpty() && !$edit"}
-            <span class="control icon active gray" onclick="Rooms_ajaxHttpDisplay(true, {if="$all"}true{else}false{/if});">
-                <i class="material-icons">edit</i>
-            </span>
-            <span class="control icon active gray" onclick="Rooms_ajaxAdd()">
-                <i class="material-icons">add</i>
-            </span>
+                <span class="control icon active gray" onclick="Rooms_ajaxHttpDisplay(true, {if="$all"}true{else}false{/if});">
+                    <i class="material-icons">edit</i>
+                </span>
             {/if}
             <p>
                 <span class="info">{$conferences|count}</span>
                 {$c->__('chatrooms.title')}
             </p>
         </li>
+        <li class="divided spaced {if="$edit"}disabled{/if}">
+            <span class="primary icon gray">
+                <i class="material-icons">explore</i>
+            </span>
+            <span class="control icon gray active" onclick="Rooms_ajaxAdd();">
+                <i class="material-icons">group_add</i>
+            </span>
+            <p class="normal line" onclick="RoomsExplore_ajaxSearch();">{$c->__('rooms.add')}</p>
+        </li>
+    </ul>
+    <ul class="list divided spaced middle {if="!$edit"}active{/if}">
         {loop="$conferences"}
             {$connected = $value->presence}
             {if="!$connected && $previousConnected"}
@@ -147,7 +155,7 @@
     </ul>
     {/if}
 
-    <ul class="list thin active spaced divided">
+    <ul class="list thin active spaced">
         {if="$disconnected > 0"}
             <li onclick="Rooms_ajaxHttpDisplay({if="$edit"}true{else}false{/if}, {if="$all"}false{else}true{/if})">
                 <span class="primary icon gray">
@@ -165,13 +173,6 @@
                 </p>
             </li>
         {/if}
-
-        <li onclick="Rooms_ajaxAdd()" class="{if="$edit"}disabled{/if}"">
-            <span class="primary icon gray">
-                <i class="material-icons">group_add</i>
-            </span>
-            <p class="normal line">{$c->__('rooms.add')}</p>
-        </li>
     </ul>
 {else}
     {if="$c->getView() == 'room' && $room != false"}

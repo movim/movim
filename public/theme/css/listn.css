@@ -83,6 +83,12 @@ ul.list li .primary:not(.bubble):not(.thumb):not(.top) {
     padding: 0.5rem;
 }
 
+ul.list.thin li .control:not(.bubble):not(.thumb):not(.top),
+ul.list.thin li .primary:not(.bubble):not(.thumb):not(.top) {
+    margin-top: -2.75rem;
+    padding: 0.25rem 0.5rem;
+}
+
 ul.list.middle li .control:not(.bubble):not(.thumb):not(.top),
 ul.list.middle li .primary:not(.bubble):not(.thumb):not(.top) {
     margin-top: -3.5rem;
@@ -586,20 +592,22 @@ ul.context_menu.shown {
 
 /* Divided */
 
-ul.list li.divided,
+ul.list li.divided:not(.spaced),
+ul.list li.divided.spaced:after,
 *.divided:not(.spaced):not(li) > *:not(:last-child):not(.subheader),
 *.divided.spaced > *:not(:last-child):not(.subheader):after {
     border-bottom-width: 1px;
     border-bottom-style: solid;
 }
 
+ul.list li.divided.spaced:after,
 *.divided.spaced > *:not(:last-child):after {
     position: absolute;
     right: 0;
     bottom: 0rem;
     content: "";
     display: block;
-    width: calc(100% - 9rem);
+    width: calc(100% - 8.5rem);
 }
 
 /* RTL */

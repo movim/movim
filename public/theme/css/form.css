@@ -288,6 +288,12 @@ form > div > input:disabled + label {
     opacity: 0.5;
 }
 
+/* Readonly */
+
+form > div > input[readonly] {
+    opacity: 0.75;
+}
+
 /* Button */
 
 .button.oppose {

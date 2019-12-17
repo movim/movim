@@ -22,6 +22,7 @@ input, textarea, select {
 }
 
 ul.list li.divided,
+ul.list li.divided.spaced:after,
 hr:not(.clear),
 .card > .block:not(.subheader):not(.simple),
 *.divided > *:not(:last-child),
