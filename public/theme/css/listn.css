@@ -154,6 +154,14 @@ ul.list li > p.filler + p.filler:before {
     background-size: 70% 35%;
 }
 
+ul.list li:nth-child(2n) > p.filler:before {
+    background-size: 90% 40%;
+}
+
+ul.list li:nth-child(2n) > p.filler + p.filler:before {
+    background-size: 60% 35%;
+}
+
 ul.list li > p {
     box-sizing: border-box;
     width: auto;
