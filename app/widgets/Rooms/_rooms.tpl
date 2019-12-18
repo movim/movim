@@ -66,10 +66,10 @@
 
                     {$info = $value->info}
                     {if="$edit"}
-                        <span class="control icon active gray" onclick="Rooms_ajaxRemoveConfirm('{$value->conference}');">
+                        <span class="control icon active gray" onclick="Rooms_ajaxRemoveConfirm('{$value->conference|echapJS}');">
                             <i class="material-icons">delete</i>
                         </span>
-                        <span class="control icon active gray" onclick="Rooms_ajaxAdd('{$value->conference}');">
+                        <span class="control icon active gray" onclick="Rooms_ajaxAdd('{$value->conference|echapJS}');">
                             <i class="material-icons">edit</i>
                         </span>
                     {/if}
