@@ -66,8 +66,15 @@ class Message extends Model
         return null;
     }
 
+    public function getJidfromAttribute()
+    {
+        return \unechap($this->attributes['jidfrom']);
+    }
+
     public static function findByStanza($stanza)
     {
+        $jidfrom = current(explode('/', (string)$stanza->attributes()->from));
+
         /**
          * If this stanza replaces another one, we load the original message
          */
@@ -75,7 +82,7 @@ class Message extends Model
             return self::firstOrNew([
                 'user_id' => \App\User::me()->id,
                 'replaceid' => (string)$stanza->replace->attributes()->id,
-                'jidfrom' => current(explode('/', (string)$stanza->attributes()->from))
+                'jidfrom' => $jidfrom
             ]);
         }
 
@@ -89,7 +96,7 @@ class Message extends Model
         return self::firstOrNew([
             'user_id' => \App\User::me()->id,
             'id' => $id,
-            'jidfrom' => current(explode('/', (string)$stanza->attributes()->from))
+            'jidfrom' => $jidfrom
         ]);
     }
 

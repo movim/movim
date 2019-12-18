@@ -141,6 +141,14 @@ function echapJS($string): string
     return str_replace(["\\", "'"], ["\\\\", "\\'"], $string);
 }
 
+/*
+ * Echap the anti-slashs for Javascript
+ */
+function unechap($string): string
+{
+    return str_replace("\\\\", "\\", $string);
+}
+
 /**
  * Clean the resource of a jid
  */

@@ -760,7 +760,7 @@ var Chat = {
 
         var list = document.querySelector('#chat_widget > div ul');
 
-        if (list.querySelector('li.separator')) return;
+        if (!list || list.querySelector('li.separator')) return;
 
         var messages = document.querySelectorAll('#chat_widget > div ul div.bubble p');
 
@@ -884,10 +884,10 @@ var Chat = {
     }
 };
 
-movim_add_onload(() => Chat_ajaxHttpInit());
-
 MovimWebsocket.attach(function() {
     Notification.current('chat');
+
+    Chat_ajaxInit();
 
     var jid = MovimUtils.urlParts().params[0];
     var room = (MovimUtils.urlParts().params[1] === 'room');

@@ -12,6 +12,7 @@ v0.16.2 (trunk)
  * Use the from as a temporary key resolver if the presence id is not set for MUC presences (#893)
  * Fix an error in Picture (filesize when on a missing file) (#810)
  * Implement search.jabber.network and refactor the global search feature
+ * Fix handling of JIDs with escaped anti-slash
 
 v0.16.1
 ---------------------------
