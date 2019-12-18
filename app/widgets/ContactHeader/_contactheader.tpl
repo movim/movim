@@ -16,7 +16,7 @@
                     <i class="material-icons">settings</i>
                 </span>
             {else}
-                <span class="control icon active gray" onclick="ContactActions_ajaxAddAsk('{$contact->id}')"
+                <span class="control icon active gray" onclick="ContactActions_ajaxAddAsk('{$contact->id|echapJS}')"
                     title="{$c->__('button.add')}">
                     <i class="material-icons">person_add</i>
                 </span>
@@ -25,7 +25,7 @@
         <span class="primary icon active gray" onclick="history.back()">
             <i class="material-icons">arrow_back</i>
         </span>
-        <span class="control active icon gray on_mobile" onclick="ContactActions_ajaxGetDrawer('{$contact->id}')">
+        <span class="control active icon gray on_mobile" onclick="ContactActions_ajaxGetDrawer('{$contact->id|echapJS}')">
             <i class="material-icons">more_horiz</i>
         </span>
 

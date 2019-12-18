@@ -10,7 +10,7 @@
     <button
         name="submit"
         class="button flat"
-        onclick="ContactHeader_ajaxDelete('{$jid}'); Dialog_ajaxClear()">
+        onclick="ContactHeader_ajaxDelete('{$jid|echapJS}'); Dialog_ajaxClear()">
         {$c->__('button.delete')}
     </button>
 </div>

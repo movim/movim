@@ -28,7 +28,7 @@
                     </span>
                 {/if}
                 {if="!$contact->isMe()"}
-                    <span class="control icon active" onclick="ContactActions_ajaxChat('{$contact->id}')">
+                    <span class="control icon active" onclick="ContactActions_ajaxChat('{$contact->id|echapJS}')">
                         <i class="material-icons">comment</i>
                     </span>
                 {/if}

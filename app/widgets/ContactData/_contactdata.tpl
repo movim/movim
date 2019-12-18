@@ -114,7 +114,7 @@
                     <p>{$c->__('subscription.to')}</p>
                     <p>{$c->__('subscription.to_text')}</p>
                     <p>
-                        <button class="button flat" onclick="ContactActions_ajaxAddAsk('{$contact->id}')">
+                        <button class="button flat" onclick="ContactActions_ajaxAddAsk('{$contact->id|echapJS}')">
                             {$c->__('subscription.to_button')}
                         </button>
                     </p>
@@ -126,7 +126,7 @@
                     <p>{$c->__('subscription.from')}</p>
                     <p>{$c->__('subscription.from_text')}</p>
                     <p>
-                        <button class="button flat" onclick="ContactActions_ajaxAddAsk('{$contact->id}')">
+                        <button class="button flat" onclick="ContactActions_ajaxAddAsk('{$contact->id|echapJS}')">
                             {$c->__('subscription.from_button')}
                         </button>
                     </p>
@@ -139,7 +139,7 @@
                     <p>{$c->__('subscription.nil')}</p>
                     <p>{$c->__('subscription.nil_text')}</p>
                     <p>
-                        <button class="button flat" onclick="ContactActions_ajaxAddAsk('{$contact->id}')">
+                        <button class="button flat" onclick="ContactActions_ajaxAddAsk('{$contact->id|echapJS}')">
                             {$c->__('subscription.nil_button')}
                         </button>
                     </p>
