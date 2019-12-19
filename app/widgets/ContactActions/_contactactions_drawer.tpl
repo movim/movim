@@ -50,7 +50,7 @@
                             </i>
                         </span>
                         {if="$value->capability && $value->capability->isJingle()"}
-                            <span title="{$c->__('button.call')}" class="control icon active"
+                            <span title="{$c->__('button.call')}" class="control icon active divided"
                                 onclick="VisioLink.openVisio('{$value->jid . '/' . $value->resource}');">
                                 <i class="material-icons">phone</i>
                             </span>

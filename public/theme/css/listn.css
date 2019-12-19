@@ -604,10 +604,21 @@ ul.list li.divided.spaced:after,
 *.divided.spaced > *:not(:last-child):after {
     position: absolute;
     right: 0;
-    bottom: 0rem;
+    bottom: 0;
     content: "";
     display: block;
     width: calc(100% - 8.5rem);
+}
+
+ul.list li span.control.divided:before {
+    position: absolute;
+    left: 0;
+    content: "";
+    display: block;
+    height: calc(100% - 2rem);
+    top: 1rem;
+    border-left-width: 1px;
+    border-left-style: solid;
 }
 
 /* RTL */

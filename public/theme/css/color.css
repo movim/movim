@@ -30,6 +30,10 @@ hr:not(.clear),
     border-color: rgba(var(--movim-font), 0.12);
 }
 
+ul.list li span.control.divided:before {
+    border-color: rgba(var(--movim-font), 0.128);
+}
+
 label, span.info,
 .tabs a,
 table tr th {

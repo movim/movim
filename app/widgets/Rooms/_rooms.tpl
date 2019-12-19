@@ -23,7 +23,7 @@
             <span class="primary icon gray">
                 <i class="material-icons">explore</i>
             </span>
-            <span class="control icon gray active" onclick="Rooms_ajaxAdd();">
+            <span class="control icon gray active divided" onclick="Rooms_ajaxAdd();">
                 <i class="material-icons">group_add</i>
             </span>
             <p class="normal line" onclick="RoomsExplore_ajaxSearch();">{$c->__('rooms.add')}</p>
