@@ -171,7 +171,7 @@ class Chats extends Base
                     $jid,
                     $this->resolveContactFromJid($jid),
                     $this->resolveRosterFromJid($jid),
-                    $this->resolveMessageFromJid($jid),
+                    $this->resolveMessageFromJid($jid)
                 )
             );
 
