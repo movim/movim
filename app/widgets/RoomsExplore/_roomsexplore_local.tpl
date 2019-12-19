@@ -3,9 +3,13 @@
         <p>{$c->__('chatrooms.title')}</p>
     </li>
     {loop="$rooms"}
-        <li onclick="Drawer.clear(); Rooms_ajaxAdd('{$value->server}', '{$value->name}')"
-            title="{$value->server}">
-            {$url = $value->getPhoto()}
+        <li title="{$value->server}">
+            {if="$vcards->has($value->server)"}
+                {$url = $vcards->get($value->server)->getPhoto()}
+            {else}
+                {$url = null}
+            {/if}
+
             {if="$url"}
                 <span class="primary icon bubble color {$value->name|stringToColor}"
                     style="background-image: url({$url});">
@@ -15,9 +19,16 @@
                     {$value->name|firstLetterCapitalize}
                 </span>
             {/if}
-            <span class="control icon gray">
-                <i class="material-icons">add</i>
-            </span>
+            {if="$bookmarks->has($value->server)"}
+                <span class="control icon gray">
+                    <i class="material-icons">bookmark</i>
+                </span>
+            {else}
+                <span class="control icon gray active divided"
+                    onclick="Drawer.clear(); Rooms_ajaxAdd('{$value->server}', '{$value->name}')">
+                    <i class="material-icons">add</i>
+                </span>
+            {/if}
 
             <p class="line">{$value->name}
                 <span class="second">{$value->server}</span>

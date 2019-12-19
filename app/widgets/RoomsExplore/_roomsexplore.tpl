@@ -1,6 +1,6 @@
 <section>
-    <ul class="list divided spaced middle active" id="roomsexplore_local"></ul>
-    <ul class="list divided spaced middle active" id="roomsexplore_global"></ul>
+    <ul class="list divided spaced middle" id="roomsexplore_local"></ul>
+    <ul class="list divided spaced middle" id="roomsexplore_global"></ul>
 </section>
 <div id="roomsexplore_bar">
     <ul class="list">

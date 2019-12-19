@@ -32,4 +32,10 @@ class Search extends Action
         $this->pack($results);
         $this->deliver();
     }
+
+    public function error()
+    {
+        $this->pack($this->_keyword);
+        $this->deliver();
+    }
 }

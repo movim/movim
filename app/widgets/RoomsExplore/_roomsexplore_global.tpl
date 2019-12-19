@@ -3,14 +3,32 @@
         <p>{$c->__('roomsexplore.global_title')}</p>
     </li>
     {loop="$results"}
-        <li onclick="Drawer.clear(); Rooms_ajaxAdd('{$value.jid}', '{$value.name}')"
-            title="{$value.jid}">
-            <span class="primary icon bubble color {$value.name|stringToColor}">
-                {$value.name|firstLetterCapitalize}
-            </span>
-            <span class="control icon gray">
-                <i class="material-icons">add</i>
-            </span>
+        <li title="{$value.jid}">
+            {if="$vcards->has($value['jid'])"}
+                {$url = $vcards->get($value['jid'])->getPhoto()}
+            {else}
+                {$url = null}
+            {/if}
+
+            {if="$url"}
+                <span class="primary icon bubble color {$value.name|stringToColor}"
+                    style="background-image: url({$url});">
+                </span>
+            {else}
+                <span class="primary icon bubble color {$value.name|stringToColor}">
+                    {$value.name|firstLetterCapitalize}
+                </span>
+            {/if}
+            {if="$bookmarks->has($value['jid'])"}
+                <span class="control icon gray">
+                    <i class="material-icons">bookmark</i>
+                </span>
+            {else}
+                <span class="control icon gray active divided"
+                    onclick="Drawer.clear(); Rooms_ajaxAdd('{$value.jid}', '{$value.name}')">
+                    <i class="material-icons">add</i>
+                </span>
+            {/if}
 
             <p class="line">
                 {$value.name}

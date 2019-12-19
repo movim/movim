@@ -3,20 +3,44 @@
 use Moxl\Xec\Action\Muclumbus\Search;
 use Movim\Widget\Base;
 
+use App\Contact;
+
 class RoomsExplore extends Base
 {
     public function load()
     {
         $this->addjs('roomsexplore.js');
         $this->registerEvent('muclumbus_search_handle', 'onGlobalSearch', 'chat');
+        $this->registerEvent('muclumbus_search_error', 'onGlobalSearchError', 'chat');
     }
 
     public function onGlobalSearch($packet)
     {
         $view = $this->tpl();
-        $view->assign('results', $packet->content);
+
+        $results = $packet->content;
+        $keys = [];
+
+        foreach ($results as $result) {
+            array_push($keys, $result['jid']);
+        }
+
+        $view->assign('vcards', Contact::whereIn('id', $keys)->get()->keyBy('id'));
+        $view->assign('bookmarks', $this->user->session
+                                        ->conferences()
+                                        ->whereIn('conference', $keys)
+                                        ->get()
+                                        ->keyBy('conference')
+        );
+        $view->assign('results', $results);
 
         $this->rpc('MovimTpl.fill', '#roomsexplore_global', $view->draw('_roomsexplore_global'));
+        $this->rpc('RoomsExplore.searchClear');
+    }
+
+    public function onGlobalSearchError($packet)
+    {
+        $this->searchLocaly($packet->content);
     }
 
     /**
@@ -33,33 +57,50 @@ class RoomsExplore extends Base
     /**
      * @brief search a keyword in the explore panel
      */
-    public function ajaxSearchRooms($key = false)
+    public function ajaxSearchRooms($keyword = false)
+    {
+        $configuration = \App\Configuration::get();
+
+        if ($configuration->restrictsuggestions) {
+            $this->searchLocaly($keyword);
+        } else {
+            $s = new Search;
+            $s->setKeyword($keyword)
+              ->request();
+        }
+    }
+
+    private function searchLocaly($keyword = false)
     {
         $view = $this->tpl();
         $rooms = \App\Info::whereCategory('conference')
-                         ->whereType('text')
-                         ->where('mucpublic', true)
-                         ->where('mucpersistent', true)
-                         ->where('node', '')
-                         ->orderBy('occupants', 'desc');
+            ->restrictUserHost()
+            ->whereType('text')
+            ->where('mucpublic', true)
+            ->where('mucpersistent', true)
+            ->where('node', '')
+            ->orderBy('occupants', 'desc');
 
-        if ($key) {
-            $rooms = $rooms->where(function($query) use ($key) {
-                $query->where('name', 'like', '%'.$key.'%')
-                      ->orWhere('server', 'like', '%'.$key.'%')
-                      ->orWhere('description', 'like', '%'.$key.'%');
+        if ($keyword) {
+            $rooms = $rooms->where(function($query) use ($keyword) {
+                $query->where('name', 'like', '%'.$keyword.'%')
+                    ->orWhere('server', 'like', '%'.$keyword.'%')
+                    ->orWhere('description', 'like', '%'.$keyword.'%');
             });
         }
 
-        $view->assign('rooms', $rooms->take(5)->get());
+        $rooms = $rooms->take(25)->get();
+
+        $view->assign('vcards', Contact::whereIn('id', $rooms->pluck('server'))->get()->keyBy('id'));
+        $view->assign('rooms', $rooms);
+        $view->assign('bookmarks', $this->user->session
+                                        ->conferences()
+                                        ->whereIn('conference', $rooms->pluck('server'))
+                                        ->get()
+                                        ->keyBy('conference')
+        );
+
         $this->rpc('MovimTpl.fill', '#roomsexplore_local', $view->draw('_roomsexplore_local'));
-
-        $configuration = \App\Configuration::get();
-
-        if (!$configuration->restrictsuggestions) {
-            $s = new Search;
-            $s->setKeyword($key)
-              ->request();
-        }
+        $this->rpc('RoomsExplore.searchClear');
     }
 }
