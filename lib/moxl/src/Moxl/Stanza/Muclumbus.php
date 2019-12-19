@@ -7,13 +7,16 @@ class Muclumbus
     public static function search($keyword)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
-        $search = $dom->createElementNS('https://xmlns.zombofant.net/muclumbus/search/1.0', 'search');
+        $search = $dom->createElement('search');
+        $search->setAttribute('xmlns', 'https://xmlns.zombofant.net/muclumbus/search/1.0');
 
-        $set = $dom->createElementNS('http://jabber.org/protocol/rsm', 'set');
+        $set = $dom->createElement('set');
+        $set->setAttribute('xmlns', 'http://jabber.org/protocol/rsm');
         $set->appendChild($dom->createElement('max', 30));
         $search->appendChild($set);
 
-        $x = $dom->createElementNS('jabber:x:data', 'x');
+        $x = $dom->createElement('x');
+        $x->setAttribute('xmlns', 'jabber:x:data');
         $x->setAttribute('type', 'submit');
         $search->appendChild($x);
 

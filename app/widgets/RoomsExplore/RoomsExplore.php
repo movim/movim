@@ -34,12 +34,14 @@ class RoomsExplore extends Base
         );
         $view->assign('results', $results);
 
+        $this->rpc('MovimTpl.fill', '#roomsexplore_local', '');
         $this->rpc('MovimTpl.fill', '#roomsexplore_global', $view->draw('_roomsexplore_global'));
         $this->rpc('RoomsExplore.searchClear');
     }
 
     public function onGlobalSearchError($packet)
     {
+        $this->rpc('MovimTpl.fill', '#roomsexplore_global', '');
         $this->searchLocaly($packet->content);
     }
 

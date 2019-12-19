@@ -5,8 +5,8 @@
 <div id="roomsexplore_bar">
     <ul class="list">
         <li>
-            <span class="primary icon gray">
-                <i class="material-icons">search</i>
+            <span class="primary icon gray spin">
+                <i class="material-icons">autorenew</i>
             </span>
             <form name="search" onsubmit="return false;">
                 <div>
