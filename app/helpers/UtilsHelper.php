@@ -519,6 +519,41 @@ function getMood()
 }
 
 /**
+ * Map the XMPP form vars to Material icons
+ */
+function varToIcons(string $var)
+{
+    $icons = [
+        // Pubsub
+        'pubsub#deliver_payloads' => 'add_box',
+        'pubsub#notify_config' => 'notifications',
+        'pubsub#notify_delete' => 'delete',
+        'pubsub#notify_retract' => 'delete_sweep',
+        'pubsub#persist_items' => 'save',
+        'pubsub#deliver_notifications' => 'notifications_active',
+
+        // Muc
+        'muc#roomconfig_persistentroom' => 'save',
+        'muc#roomconfig_publicroom' => 'wifi_tethering',
+        'muc#roomconfig_passwordprotectedroom' => 'lock',
+        'muc#roomconfig_membersonly' => 'playlist_add_check',
+        'muc#roomconfig_moderatedroom' => 'stars',
+        'muc#roomconfig_changesubject' => 'title',
+        'muc#roomconfig_allowinvites' => 'mail',
+        'allow_visitor_status' => 'description',
+        'allow_private_messages' => 'message',
+        'allow_query_users' => 'portrait',
+        'mam' => 'archive',
+    ];
+
+    if (array_key_exists($var, $icons)) {
+        return $icons[$var];
+    }
+
+    return 'check_box';
+}
+
+/**
  * Generate a standard UUID
  */
 function generateUUID($string = false)

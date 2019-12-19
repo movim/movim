@@ -48,7 +48,7 @@ form > div > textarea,
     box-sizing: border-box;
 }
 
-form > div > .select:after {
+form > div > .select:not(.multi):after {
     font-family: 'Material Icons';
     content: "\e5c5";
     display: block;

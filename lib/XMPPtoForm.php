@@ -79,7 +79,7 @@ class XMPPtoForm
                                 $this->outHiddeninput($element);
                                 break;
                             case 'list-multi':
-                                //$this->outList($element);
+                                //$this->outList($element, true);
                                 break;
                             case 'list-single':
                                 $this->outList($element);
@@ -154,56 +154,57 @@ class XMPPtoForm
         $this->html->appendChild($div);
     }
 
-    private function outUrl($s)
-    {
-        $a = $this->html->createElement('a', $s->getName());
-        $a->setAttribute('href', $s->getName());
-        $this->html->appendChild($a);
-    }
-
     private function outCheckbox($s)
     {
         $container = $this->html->createElement('div');
+        $container->setAttribute('class', 'control');
         $this->html->appendChild($container);
 
-        $div = $this->html->createElement('div');
-        $div->setAttribute('class', 'select');
-        $container->appendChild($div);
+        $ul = $this->html->createElement('ul');
+        $ul->setAttribute('class', 'list');
+        $container->appendChild($ul);
 
-        $select = $this->html->createElement('select');
-        $select->setAttribute('type', $s['type']);
-        $select->setAttribute('label', $s['label']);
-        $select->setAttribute('id', $s['var']);
-        $select->setAttribute('name', $s['var']);
+        $li = $this->html->createElement('li');
+        $ul->appendChild($li);
+
+        $primary = $this->html->createElement('span');
+        $primary->setAttribute('class', 'primary icon gray');
+        $li->appendChild($primary);
+
+        $i = $this->html->createElement('i', \varToIcons($s['var']));
+        $i->setAttribute('class', 'material-icons');
+        $primary->appendChild($i);
+
+        $span = $this->html->createElement('span');
+        $span->setAttribute('class', 'control');
+        $li->appendChild($span);
+
+        $div = $this->html->createElement('div');
+        $div->setAttribute('class', 'checkbox');
+        $span->appendChild($div);
+
+        $input = $this->html->createElement('input');
+        $input->setAttribute('type', 'checkbox');
+        $input->setAttribute('id', $s['var']);
+        $input->setAttribute('name', $s['var']);
 
         if ($s->required) {
-            $select->setAttribute('required', 'required');
+            $input->setAttribute('required', 'required');
         }
 
-        $div->appendChild($select);
-
-        $option = $this->html->createElement('option', __('button.bool_yes'));
-        $option->setAttribute('value', 'true');
-
-        if (isset($s->value) || $s->value == 'true' || $s->value == '1') {
-            $option->setAttribute('selected', 'selected');
+        if ((string)$s->value === 'true' || (string)$s->value === '1') {
+            $input->setAttribute('checked', 'checked');
         }
 
-        $select->appendChild($option);
+        $div->appendChild($input);
 
-        $option = $this->html->createElement('option', __('button.bool_no'));
-        $option->setAttribute('value', 'false');
-
-        if (!isset($s->value) || $s->value == 'false' || $s->value == '0') {
-            $option->setAttribute('selected', 'selected');
-        }
-
-        $select->appendChild($option);
-
-        $label = $this->html->createElement('label', $s['label']);
+        $label = $this->html->createElement('label');
         $label->setAttribute('for', $s['var']);
-        $label->setAttribute('title', $s['label']);
-        $container->appendChild($label);
+        $div->appendChild($label);
+
+        $p = $this->html->createElement('p', $s['label']);
+        $p->setAttribute('class', 'normal line');
+        $li->appendChild($p);
     }
 
     private function outTextarea($s)
@@ -290,13 +291,14 @@ class XMPPtoForm
         $this->html->appendChild($input);
     }
 
-    private function outList($s)
+    private function outList($s, bool $multi = false)
     {
         $container = $this->html->createElement('div');
         $this->html->appendChild($container);
 
         $div = $this->html->createElement('div');
-        $div->setAttribute('class', 'select');
+        $div->setAttribute('class', $multi ? 'select multi' : 'select');
+
         $container->appendChild($div);
 
         $select = $this->html->createElement('select');
@@ -304,6 +306,10 @@ class XMPPtoForm
         $select->setAttribute('label', $s['label']);
         $select->setAttribute('id', $s['var']);
         $select->setAttribute('name', $s['var']);
+
+        if ($multi) {
+            $select->setAttribute('multiple', 'multiple');
+        }
 
         if ($s->required) {
             $select->setAttribute('required', 'required');
@@ -390,22 +396,18 @@ class FormtoXMPP
             $val = $this->_form->createElement('value');
             $field->appendChild($val);
 
-            if ($value->value === 'true') {
-                $val->nodeValue = '1';
-            }
-
-            if ($value->value === 'false') {
-                $val->nodeValue = '0';
-            }
-
             if (is_bool($value->value)) {
-                $val->nodeValue = ($value) ? '1' : '0';
-            }
+                $val->nodeValue = ($value->value) ? '1' : '0';
+            } else {
+                if ($value->value === 'true') {
+                    $val->nodeValue = '1';
+                }
 
-            if (empty($val->nodeValue)
-                && $value !== 'false' // WTF PHP !!!
-            ) {
-                $val->nodeValue = trim($value->value);
+                if ($value->value === 'false') {
+                    $val->nodeValue = '0';
+                } elseif (empty($val->nodeValue)) {
+                    $val->nodeValue = trim($value->value);
+                }
             }
 
             $field->setAttribute('var', trim($key));

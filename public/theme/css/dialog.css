@@ -59,6 +59,15 @@
     padding-bottom: 0;
 }
 
+/* List specific */
+.dialog > section ul.list li > .primary {
+    left: 0.5rem;
+}
+
+.dialog > section ul.list li > .primary ~ :not(.primary):not(.counter):not(.bubble):not(.control):not(ul) {
+    padding-left: 7.5rem;
+}
+
 @media screen and (max-width: 600px) {
     .dialog {
         width: 90%;

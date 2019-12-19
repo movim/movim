@@ -13,6 +13,7 @@ v0.16.2 (trunk)
  * Fix an error in Picture (filesize when on a missing file) (#810)
  * Implement search.jabber.network and refactor the global search feature
  * Fix handling of JIDs with escaped anti-slash
+ * Complete and fix XMPPtoForm
 
 v0.16.1
 ---------------------------
