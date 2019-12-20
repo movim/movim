@@ -60,11 +60,11 @@
 }
 
 /* List specific */
-.dialog > section ul.list li > .primary {
+.dialog > section form ul.list li > .primary {
     left: 0;
 }
 
-.dialog > section ul.list li > .primary ~ :not(.primary):not(.counter):not(.bubble):not(.control):not(ul) {
+.dialog > section form ul.list li > .primary ~ :not(.primary):not(.counter):not(.bubble):not(.control):not(ul) {
     padding-left: 6.5rem;
 }
 
