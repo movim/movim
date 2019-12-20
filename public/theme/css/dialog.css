@@ -61,11 +61,11 @@
 
 /* List specific */
 .dialog > section ul.list li > .primary {
-    left: 0.5rem;
+    left: 0;
 }
 
 .dialog > section ul.list li > .primary ~ :not(.primary):not(.counter):not(.bubble):not(.control):not(ul) {
-    padding-left: 7.5rem;
+    padding-left: 6.5rem;
 }
 
 @media screen and (max-width: 600px) {
