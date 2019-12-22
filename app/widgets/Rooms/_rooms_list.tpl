@@ -21,8 +21,8 @@
                 {/if}
                 {if="$value->mucjid != $me"}
                 <span class="control icon active gray" onclick="
-                    Chats_ajaxOpen('{$value->mucjid}');
-                    Chat_ajaxGet('{$value->mucjid}');
+                    Chats_ajaxOpen('{$value->mucjid|echapJS}');
+                    Chat_ajaxGet('{$value->mucjid|echapJS}');
                     Dialog_ajaxClear();">
                     <i class="material-icons">comment</i>
                 </span>
