@@ -184,30 +184,15 @@ main > div:first-child:nth-last-child(2) + div {
 }
 
 @media screen and (max-width: 1024px) {
-    nav ~ main {
-        display: initial;
+    main,
+    nav ~ main,
+    main.enabled > div:first-child:nth-last-child(2),
+    main:not(.enabled) > div:first-child:nth-last-child(2) + div {
         width: 100%;
     }
 
-    main > div:first-child:nth-last-child(2) {
-        transition: transform .3s cubic-bezier(.4,0,.2,1) .05s;
-        transform: translateX(100%);
-        z-index: 1;
-    }
-
-    main.enabled > div:first-child:nth-last-child(2) {
-        transform: translateX(0);
-    }
-
-    main > div:first-child:nth-last-child(2),
-    main > div:first-child:nth-last-child(2) + div {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-
+    main:not(.enabled) > div:first-child:nth-last-child(2),
+    main.enabled > div:first-child:nth-last-child(2) + div,
     body > nav {
         width: 0;
     }
