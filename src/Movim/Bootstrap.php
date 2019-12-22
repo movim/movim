@@ -64,7 +64,7 @@ class Bootstrap
         define('APP_TITLE', 'Movim');
         define('APP_NAME', 'movim');
         define('APP_VERSION', $this->getVersion());
-        define('SMALL_PICTURE_LIMIT', 512000);
+        define('SMALL_PICTURE_LIMIT', 768000);
 
         if (file_exists(DOCUMENT_ROOT.'/config/db.inc.php')) {
             require DOCUMENT_ROOT.'/config/db.inc.php';

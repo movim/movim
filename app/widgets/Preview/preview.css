@@ -5,7 +5,7 @@
     display: flex;
     background-color: #111;
     transition: transform .3s cubic-bezier(.4,0,.2,1) .05s;
-    transform: translateX(100%);
+    transform: translateY(100%);
     z-index: 3;
 }
 

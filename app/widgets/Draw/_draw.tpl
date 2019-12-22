@@ -57,6 +57,14 @@
             <span class="primary active icon bubble color blue"></span>
             <p></p>
         </li>
+        <li data-color="purple" class="on_desktop">
+            <span class="primary active icon bubble color yellow"></span>
+            <p></p>
+        </li>
+        <li data-color="green" class="on_desktop">
+            <span class="primary active icon bubble color orange"></span>
+            <p></p>
+        </li>
         <li data-color="red">
             <span class="primary active icon bubble color red"></span>
             <p></p>

@@ -1,5 +1,5 @@
 #draw {
-    display: none;
+    display: flex;
     position: absolute;
     height: 100%;
     width: 100%;
@@ -7,10 +7,12 @@
     left: 0;
     z-index: 2;
     background-color: rgba(0, 0, 0, 0.7);
+    transition: transform .3s cubic-bezier(.4,0,.2,1) .05s;
+    transform: translateY(100%);
 }
 
 #draw.open {
-    display: flex;
+    transform: translateX(0);
 }
 
 #draw .canvas {
