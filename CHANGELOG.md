@@ -14,6 +14,7 @@ v0.16.2 (trunk)
  * Implement search.jabber.network and refactor the global search feature
  * Fix handling of JIDs with escaped anti-slash
  * Complete and fix XMPPtoForm
+ * Add a checkbox to disable the social features in the admin panel
 
 v0.16.1
 ---------------------------

@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Movim\Session;
 use App\Contact;
+use App\Configuration;
 
 class User extends Model
 {
@@ -138,7 +139,12 @@ class User extends Model
 
     public function hasPubsub()
     {
-        return ($this->capability && $this->capability->hasFeature('http://jabber.org/protocol/pubsub#persistent-items'));
+        $configuration = Configuration::get();
+
+        return (!$configuration->chatonly
+            && $this->capability
+            && $this->capability->hasFeature('http://jabber.org/protocol/pubsub#persistent-items')
+        );
     }
 
     public function hasUpload()

@@ -22,6 +22,14 @@
     </div>
 
     <div>
+        <textarea type="text" name="description" id="description" placeholder="{$c->__('information.description_placeholder')}"
+                  onclick="MovimUtils.textareaAutoheight(this);"
+                  oninput="MovimUtils.textareaAutoheight(this);"/>{$conf->description}</textarea>
+        <label for="description">{$c->__('information.description')}</label>
+    </div>
+    <div class="clear"></div>
+
+    <div>
         <div class="select">
             <select id="loglevel" name="loglevel">
                 {loop="$logs"}
@@ -54,6 +62,22 @@
                 </span>
                 <p>{$c->__('restrictsuggestions.title')}</p>
                 <p class="all">{$c->__('restrictsuggestions.text')}</p>
+            </li>
+            <li class="wide">
+                <span class="control">
+                    <div class="checkbox">
+                        <input
+                            {if="$conf->chatonly"}
+                                checked
+                            {/if}
+                            type="checkbox"
+                            id="chatonly"
+                            name="chatonly"/>
+                        <label for="chatonly"></label>
+                    </div>
+                </span>
+                <p>{$c->__('chatonly.title')}</p>
+                <p class="all">{$c->__('chatonly.text')}</p>
             </li>
         </ul>
     </div>
@@ -110,14 +134,6 @@
 
     <br />
     <h3>{$c->__('information.title')}</h3>
-
-    <div>
-        <textarea type="text" name="description" id="description" placeholder="{$conf->description}"
-                  onclick="MovimUtils.textareaAutoheight(this);"
-                  oninput="MovimUtils.textareaAutoheight(this);"/>{$conf->description}</textarea>
-        <label for="description">{$c->__('information.description')}</label>
-    </div>
-    <div class="clear"></div>
 
     <div>
         <textarea type="text" name="info" id="info"

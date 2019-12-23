@@ -81,7 +81,6 @@
         <p>{$c->__('degraded.title')}</p>
         <p class="all">{$c->__('degraded.text_1')}</br>
         {$c->__('degraded.text_2')}</p>
-        <p class="all">{$c->__('degraded.text_3')}</p>
     </li>
 </ul>
 {/if}

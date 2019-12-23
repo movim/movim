@@ -19,6 +19,7 @@ class AdminMain extends \Movim\Widget\Base
             }
 
             $form['restrictsuggestions'] = (isset($form['restrictsuggestions']));
+            $form['chatonly'] = (isset($form['chatonly']));
 
             unset($form['password']);
             unset($form['repassword']);
