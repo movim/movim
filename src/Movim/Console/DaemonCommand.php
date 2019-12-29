@@ -63,7 +63,7 @@ class DaemonCommand extends Command
         $config = new Config(require(DOCUMENT_ROOT . '/phinx.php'));
         $manager = new Manager($config, $input, new NullOutput);
 
-        if ($manager->printStatus('movim') > 0) {
+        if ($manager->printStatus('movim')['hasDownMigration']) {
             $output->writeln('<comment>The database needs to be migrated before running the daemon</comment>');
             $output->writeln('<info>To migrate the database run</info>');
             $output->writeln('<info>php vendor/bin/phinx migrate</info>');
