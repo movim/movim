@@ -885,8 +885,6 @@ var Chat = {
 };
 
 MovimWebsocket.attach(function() {
-    Notification.current('chat');
-
     Chat_ajaxInit();
 
     var jid = MovimUtils.urlParts().params[0];
@@ -895,14 +893,14 @@ MovimWebsocket.attach(function() {
         if (Boolean(document.getElementById(MovimUtils.cleanupId(jid) + '-conversation'))) {
             Chat_ajaxGetHistory(jid, Chat.currentDate, room, false);
         } else {
-            MovimTpl.showPanel();
-
             if (room) {
                 Chat_ajaxGetRoom(jid);
             } else {
                 Chat_ajaxGet(jid);
             }
         }
+    } else {
+        Notification.current('chat');
     }
 });
 
