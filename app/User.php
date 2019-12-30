@@ -11,6 +11,7 @@ class User extends Model
 {
     protected $fillable = ['id', 'language', 'nightmode', 'chatmain', 'nsfw', 'cssurl', 'nickname'];
     public $with = ['session', 'capability'];
+    protected $keyType = 'string';
     public $incrementing = false;
     private static $me = null;
     private $unreads = null;

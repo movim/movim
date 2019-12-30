@@ -9,6 +9,13 @@ use Illuminate\Database\Eloquent\Model as EloquentModel;
 class Model extends EloquentModel
 {
     /**
+     * The "type" of the primary key ID.
+     *
+     * @var string
+     */
+    protected $keyType = 'composite';
+
+    /**
      * Get the value indicating whether the IDs are incrementing.
      *
      * @return bool

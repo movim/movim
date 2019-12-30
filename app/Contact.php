@@ -11,6 +11,7 @@ use Movim\Picture;
 class Contact extends Model
 {
     protected $fillable = ['id', 'nickname', 'mood'];
+    protected $keyType = 'string';
     public $incrementing = false;
 
     public function user()
