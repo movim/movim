@@ -15,6 +15,8 @@ v0.16.2 (trunk)
  * Fix handling of JIDs with escaped anti-slash
  * Complete and fix XMPPtoForm
  * Add a checkbox to disable the social features in the admin panel
+ * Fix MAM handling for MUC
+ * Fix panel and notification management for Chat
 
 v0.16.1
 ---------------------------
