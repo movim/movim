@@ -52,7 +52,11 @@ class Get extends Action
         $sess = Session::start();
         $sess->remove('mamid'.$this->_queryid);
 
-        $this->pack($this->_to);
+        if ($this->_to) {
+            $this->method('handle_muc');
+            $this->pack($this->_to);
+        }
+
         $this->deliver();
 
         if (isset($stanza->fin)

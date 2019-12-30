@@ -37,7 +37,8 @@ class Chat extends \Movim\Widget\Base
         $this->registerEvent('message', 'onMessage');
         $this->registerEvent('receiptack', 'onMessageReceipt');
         $this->registerEvent('displayed', 'onMessage', 'chat');
-        $this->registerEvent('mam_get_handle', 'onMAMRetrieved', 'chat');
+        $this->registerEvent('mam_get_handle', 'onMAMRetrieved');
+        $this->registerEvent('mam_get_handle_muc', 'onMAMMucRetrieved', 'chat');
         $this->registerEvent('composing', 'onComposing', 'chat');
         $this->registerEvent('paused', 'onPaused', 'chat');
         $this->registerEvent('subject', 'onConferenceSubject', 'chat');
@@ -89,13 +90,13 @@ class Chat extends \Movim\Widget\Base
         && $message->seen == false
         && $message->jidfrom != $message->jidto) {
             $from = $message->jidfrom;
-            $roster = $this->user->session->contacts()->where('jid', $from)->first();
             $contact = App\Contact::firstOrNew(['id' => $from]);
 
             if ($contact != null
             && !$message->isOTR()
             && $message->type != 'groupchat'
             && !$message->oldid) {
+                $roster = $this->user->session->contacts()->where('jid', $from)->first();
                 $chatStates->clearState($from);
 
                 Notification::append(
@@ -169,9 +170,14 @@ class Chat extends \Movim\Widget\Base
         $this->ajaxGetRoom($packet->content->jidfrom);
     }
 
-    public function onMAMRetrieved($packet)
+    public function onMAMRetrieved()
     {
-        $this->ajaxGetRoom($packet->content);
+        Notification::toast($this->__('chat.mam_retrieval'));
+    }
+
+    public function onMAMMucRetrieved($packet)
+    {
+        $this->ajaxGetRoom($packet->content, true, true);
     }
 
     public function onMucConnected($packet)
