@@ -83,7 +83,6 @@ class CommentPublish extends Errors
 
     public function error()
     {
-        $this->pack($this->_id);
         $this->deliver();
     }
 }

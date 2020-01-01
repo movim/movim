@@ -53,7 +53,7 @@ class Post extends Base
             : $this->__('post.comment_published'));
     }
 
-    public function onCommentPublishError($packet)
+    public function onCommentPublishError()
     {
         Notification::toast($this->__('post.comment_publish_error'));
     }
