@@ -105,6 +105,11 @@ class Base
             $built = $content->build($this->name);
             $this->page->setContent($built);
 
+            header('Strict-Transport-Security: max-age=31536000');
+            header('Access-Control-Allow-Origin: *');
+            header('X-Content-Type-Options: nosniff');
+            header('X-Frame-Options: SAMEORIGIN');
+            header('X-XSS-Protection: 1; mode=block');
             header('Referrer-Policy: strict-origin-when-cross-origin');
             echo $this->page->build('page', $this->public);
         }
