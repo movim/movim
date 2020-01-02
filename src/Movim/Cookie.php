@@ -34,7 +34,7 @@ class Cookie
     {
         if (!headers_sent()) {
             header_remove('Set-Cookie');
-            setcookie('MOVIM_SESSION_ID', $key, self::getTime(), '/', '', true, true);
+            setcookie('MOVIM_SESSION_ID', $key, self::getTime(), '/', '', true);
         }
     }
 }
