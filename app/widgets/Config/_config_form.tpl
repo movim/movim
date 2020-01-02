@@ -43,8 +43,8 @@
                         <label for="chatmain"></label>
                     </div>
                 </span>
-                <p class="line">{$c->__('config.chatmain')}</p>
-                <p class="line">{$c->__('config.chatmain_text')}</p>
+                <p>{$c->__('config.chatmain')}</p>
+                <p class="all">{$c->__('config.chatmain_text')}</p>
             </li>
         </ul>
     </div>
@@ -65,8 +65,8 @@
                         <label for="nsfw"></label>
                     </div>
                 </span>
-                <p class="line">{$c->__('config.nsfw')}</p>
-                <p class="line">{$c->__('config.nsfw_text')}</p>
+                <p>{$c->__('config.nsfw')}</p>
+                <p class="all">{$c->__('config.nsfw_text')}</p>
             </li>
         </ul>
     </div>
@@ -88,8 +88,8 @@
                         <label for="nightmode"></label>
                     </div>
                 </span>
-                <p class="line">{$c->__('config.night_mode')}</p>
-                <p class="line">{$c->__('config.night_mode_text')}</p>
+                <p>{$c->__('config.night_mode')}</p>
+                <p class="all">{$c->__('config.night_mode_text')}</p>
             </li>
         </ul>
     </div>

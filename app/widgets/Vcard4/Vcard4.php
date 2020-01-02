@@ -12,7 +12,6 @@ class Vcard4 extends Base
 {
     public function load()
     {
-        $this->addcss('vcard4.css');
         $this->registerEvent('vcard4_get_handle', 'onMyVcard4');
         $this->registerEvent('vcard4_set_handle', 'onMyVcard4');
     }
