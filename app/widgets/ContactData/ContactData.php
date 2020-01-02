@@ -37,7 +37,7 @@ class ContactData extends Base
                                         ->orderBy('published', 'desc')
                                         ->first());
         $view->assign('subscriptions', \App\Subscription::where('jid', $jid)
-            ->where('public', true)->get());
+             ->where('public', true)->get());
         $view->assign('contact', App\Contact::firstOrNew(['id' => $jid]));
         $view->assign('roster', $this->user->session->contacts()->where('jid', $jid)->first());
 

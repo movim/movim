@@ -203,7 +203,7 @@ class XMPPtoForm
         $div->appendChild($label);
 
         $p = $this->html->createElement('p', $s['label']);
-        $p->setAttribute('class', 'normal');
+        $p->setAttribute('class', 'normal all');
         $li->appendChild($p);
     }
 

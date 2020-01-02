@@ -175,9 +175,14 @@ ul.list li > p {
 
 ul.list > * > li > p:first-of-type,
 ul.list > li > p:first-of-type {
+    line-height: 5.5rem;
+    font-size: 3rem;
+}
+
+ul.list > * > li > p.all:first-of-type,
+ul.list > li > p.all:first-of-type {
     line-height: 3rem;
     padding: 1.25rem 0;
-    font-size: 3rem;
 }
 
 ul.list li > p.normal {

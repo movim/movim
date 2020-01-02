@@ -172,19 +172,33 @@
         {loop="$subscriptions"}
             <a href="{$c->route('community', [$value->server, $value->node])}">
                 <li title="{$value->server} - {$value->node}">
-                    <span class="primary icon bubble color {$value->node|stringToColor}">{$value->node|firstLetterCapitalize}</span>
+                    {if="$value->info"}
+                        {$url = $value->info->getPhoto('m')}
+                    {/if}
+
+                    {if="$url"}
+                        <span class="primary icon bubble">
+                            <img src="{$url}"/>
+                        </span>
+                    {else}
+                        <span class="primary icon bubble color {$value->node|stringToColor}">
+                            {$value->node|firstLetterCapitalize}
+                        </span>
+                    {/if}
                     <span class="control icon gray">
                         <i class="material-icons">chevron_right</i>
                     </span>
                     <p class="line normal">
-                        {if="$value->name"}
+                        {if="$value->info && $value->info->name"}
+                            {$value->info->name}
+                        {elseif="$value->name"}
                             {$value->name}
                         {else}
                             {$value->node}
                         {/if}
                     </p>
-                    {if="$value->description"}
-                        <p class="line">{$value->description|strip_tags}</p>
+                    {if="$value->info && $value->info->description"}
+                        <p class="line">{$value->info->description|strip_tags}</p>
                     {/if}
                 </li>
             </a>

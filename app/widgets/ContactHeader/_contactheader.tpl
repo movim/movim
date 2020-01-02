@@ -51,13 +51,11 @@
             </span>
         {/if}
 
-        <p style="max-height: 9rem; overflow: hidden; text-overflow: ellipsis;" title="{$contact->description}">
+        <p class="normal all" style="max-height: 8.5rem; overflow: hidden; text-overflow: ellipsis;" title="{$contact->description}">
             {autoescape="off"}
                 {$contact->description|nl2br}
             {/autoescape}
         </p>
-        <p></p>
     </li>
 </ul>
-<br />
 {/if}
