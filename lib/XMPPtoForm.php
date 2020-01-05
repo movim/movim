@@ -148,10 +148,7 @@ class XMPPtoForm
 
     private function outP($s)
     {
-        $div = $this->html->createElement('div');
-        $p = $this->html->createElement('p', $s);
-        $div->appendChild($p);
-        $this->html->appendChild($div);
+        $this->html->appendChild($this->html->createElement('p', $s));
     }
 
     private function outCheckbox($s)

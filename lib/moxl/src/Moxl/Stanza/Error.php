@@ -2,8 +2,6 @@
 
 namespace Moxl\Stanza;
 
-use Moxl\Utils;
-
 class Error
 {
     public static function notImplemented($to, $id)
