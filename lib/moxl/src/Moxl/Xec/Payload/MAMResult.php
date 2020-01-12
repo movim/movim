@@ -25,7 +25,7 @@ class MAMResult extends Payload
                 $message->jidto = $to;
             }
 
-            if (!$message->isOTR()
+            if (!$message->encrypted
             && (!$message->isEmpty() || $message->isSubject())) {
                 $message->save();
                 $message->clearUnreads();

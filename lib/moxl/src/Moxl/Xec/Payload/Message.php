@@ -34,7 +34,7 @@ class Message extends Payload
             }
         }
 
-        if (!$message->isOTR()
+        if (!$message->encrypted
         && (!$message->isEmpty() || $message->isSubject())) {
             $message->save();
             $message = $message->fresh();

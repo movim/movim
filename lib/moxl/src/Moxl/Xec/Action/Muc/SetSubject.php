@@ -21,7 +21,7 @@ class SetSubject extends Action
         $message = \App\Message::findByStanza($stanza);
         $message->set($stanza, $parent);
 
-        if (!$message->isOTR()
+        if (!$message->encrypted
         && (!$message->isEmpty() || $message->isSubject())) {
             $message->save();
             $this->pack($message);

@@ -68,7 +68,7 @@
     {if="$status"}
         <p class="line">{$status}</p>
     {elseif="isset($message)"}
-        {if="$message->isOTR()"}
+        {if="$message->encrypted"}
             <p><i class="material-icons">lock</i> {$c->__('message.encrypted')}</p>
         {elseif="$message->file"}
             <p>

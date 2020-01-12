@@ -306,6 +306,11 @@ class Message extends Model
                 }
             }
 
+            if ($stanza->encryption
+            && (string)$stanza->encryption->attributes()->xmlns == 'urn:xmpp:eme:0') {
+                $this->encrypted = true;
+            }
+
             if ($stanza->replace
             && $this->user->messages()
                 ->where('jidfrom', $this->jidfrom)
@@ -409,11 +414,6 @@ class Message extends Model
     public function isSubject()
     {
         return !empty($this->subject);
-    }
-
-    public function isOTR()
-    {
-        return preg_match('#^\?OTR#', $this->body);
     }
 
     public function addUrls()

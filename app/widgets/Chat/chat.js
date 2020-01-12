@@ -593,6 +593,11 @@ var Chat = {
             bubble.querySelector('div.bubble').setAttribute('dir', 'rtl');
         }
 
+        // Encrypted message
+        if (data.encrypted) {
+            p.classList.add('encrypted');
+        }
+
         if (data.body.match(/^\/me\s/)) {
             p.classList.add('quote');
             data.body = data.body.substr(4);

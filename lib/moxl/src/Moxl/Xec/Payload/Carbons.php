@@ -16,7 +16,7 @@ class Carbons extends Payload
                 $m = \App\Message::findByStanza($message);
                 $m->set($message, $stanza->forwarded);
 
-                if (!$m->isOTR()) {
+                if (!$m->encrypted) {
                     $m->save();
                     $m->clearUnreads();
 

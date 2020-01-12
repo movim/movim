@@ -17,6 +17,7 @@ v0.16.2 (trunk)
  * Add a checkbox to disable the social features in the admin panel
  * Fix MAM handling for MUC
  * Fix panel and notification management for Chat
+ * Add support for XEP-0380: Explicit Message Encryption
 
 v0.16.1
 ---------------------------

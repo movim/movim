@@ -93,7 +93,7 @@ class Chat extends \Movim\Widget\Base
             $contact = App\Contact::firstOrNew(['id' => $from]);
 
             if ($contact != null
-            && !$message->isOTR()
+            && !$message->encrypted
             && $message->type != 'groupchat'
             && !$message->oldid) {
                 $roster = $this->user->session->contacts()->where('jid', $from)->first();
@@ -132,7 +132,7 @@ class Chat extends \Movim\Widget\Base
             $this->onPaused($chatStates->getState($from));
         }
 
-        if (!$message->isOTR()) {
+        if (!$message->encrypted) {
             $this->rpc('Chat.appendMessagesWrapper', $this->prepareMessage($message, $from));
         }
 
@@ -612,7 +612,7 @@ class Chat extends \Movim\Widget\Base
             }
 
             foreach ($messages as $message) {
-                if (!$message->isOTR()) {
+                if (!$message->encrypted) {
                     $this->prepareMessage($message);
                 }
             }
@@ -805,7 +805,9 @@ class Chat extends \Movim\Widget\Base
 
         $emoji = \Movim\Emoji::getInstance();
 
-        if (isset($message->html)) {
+        if ($message->encrypted) {
+            $message->body = '<i class="material-icons">lock</i> '.__('message.encrypted');
+        } elseif (isset($message->html)) {
             $message->body = $message->html;
         } else {
             $message->addUrls();

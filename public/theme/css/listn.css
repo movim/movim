@@ -459,6 +459,10 @@ ul li div.bubble p {
     position: relative;
 }
 
+ul li div.bubble p.encrypted {
+    opacity: 0.7;
+}
+
 ul li div.bubble p.previewable {
     display: block;
 }
