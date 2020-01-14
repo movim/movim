@@ -132,6 +132,13 @@ class Info extends Model
             : [];
     }
 
+    public function getFeaturesAttribute(): array
+    {
+        return (isset($this->attributes['features']))
+            ? unserialize($this->attributes['features'])
+            : [];
+    }
+
     public function getNameAttribute()
     {
         return isset($this->attributes['name'])
