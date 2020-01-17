@@ -6,6 +6,7 @@ body {
     --movim-background-main: 255, 255, 255;
     --movim-background: #EEE;
     --movim-font: 0, 0, 0;
+    scrollbar-color: rgba(var(--movim-font), 0.3) rgba(var(--movim-font), 0.2);
 }
 
 body.nightmode {
@@ -13,6 +14,7 @@ body.nightmode {
     --movim-background-main: 20,26,33;
     --movim-background: #171E26;
     --movim-font: 255, 255, 255;
+    scrollbar-color: rgba(var(--movim-font), 0.1) rgba(var(--movim-background-main));
 }
 
 body > *,
@@ -76,6 +78,10 @@ form > div .radio > input[type="radio"]:checked + label {
     border-color: rgb(var(--movim-main));
     background-color: rgb(var(--movim-main));
     color: white;
+}
+
+span.icon span.counter.alt {
+    background-color: var(--movim-accent);
 }
 
 /* Elements */
