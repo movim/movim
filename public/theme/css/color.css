@@ -9,9 +9,9 @@ body {
 }
 
 body.nightmode {
-    --movim-accent: #222;
-    --movim-background-main: 41, 41, 41;
-    --movim-background: #393939;
+    --movim-accent: #10151A;
+    --movim-background-main: 20,26,33;
+    --movim-background: #171E26;
     --movim-font: 255, 255, 255;
 }
 
@@ -46,7 +46,7 @@ table tr th {
 }
 
 .color.dark {
-    background-color: #212121;
+    background-color: #10151A;
 }
 
 .color.dark *.divided > *:not(:last-child) {
