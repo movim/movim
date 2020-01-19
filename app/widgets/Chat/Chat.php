@@ -807,7 +807,7 @@ class Chat extends \Movim\Widget\Base
 
         if ($message->encrypted) {
             $message->body = '<i class="material-icons">lock</i> '.__('message.encrypted');
-        } elseif (isset($message->html)) {
+        } elseif (isset($message->html) && !isset($message->file)) {
             $message->body = $message->html;
         } else {
             $message->addUrls();
