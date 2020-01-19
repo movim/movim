@@ -42,10 +42,9 @@ main:not(.enabled) #chat_widget {
 /* Chat attach list */
 #chat_widget ul.list.actions {
     right: 0;
-    bottom: 6.5rem;
     padding: 1rem 0;
-    padding-right: 1rem;
     position: absolute;
+    transform: translate(-1rem, -100%);
 }
 
 /* Chat box */
