@@ -10,8 +10,8 @@ ul#chats_widget_list li {
     transition: opacity 0.2s ease-in-out;
     width: calc(100% + 1000px);
     margin-left: -500px;
-    border-right: 500px #222 solid;
-    border-left: 500px #222 solid;
+    border-right: 500px var(--movim-gray) solid;
+    border-left: 500px var(--movim-gray) solid;
     box-sizing: border-box;
 }
 

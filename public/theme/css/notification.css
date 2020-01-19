@@ -7,16 +7,21 @@
     z-index: 4;
     min-height: 6rem;
     max-height: 11rem;
+    width: 48rem;
     height: auto;
     color: white;
     padding: 2rem 3rem;
     box-sizing: border-box;
-    width: 48rem;
     pointer-events: none;
     transition: opacity 0.2s ease, transform 0.4s ease;
-    background-color: #333333;
+    background-color: var(--movim-gray);
     transform: translateY(0);
-    bottom: 3rem;
+    bottom: 1rem;
+}
+
+body.nightmode .snackbar,
+body.nightmode .toast {
+    background-color: var(--movim-background);
 }
 
 .toast,
@@ -47,8 +52,10 @@
 }
 
 .toast {
-    left: calc(50% - 20rem);
+    left: calc(50% - 24rem);
+    margin: 1rem;
     line-height: 2.5rem;
+    border-radius: 0.75rem;
 }
 
 .snackbar:empty,
@@ -88,8 +95,14 @@
 @media screen and (max-width: 1024px) {
     .snackbar,
     .toast {
-        width: 100%;
+        bottom: 7rem;
+    }
+}
+
+@media screen and (max-width: 25rem) {
+    .snackbar,
+    .toast {
         left: 0;
-        bottom: 6.5rem;
+        max-width: calc(100% - 2.5rem);
     }
 }

@@ -5,6 +5,7 @@ body {
     --movim-accent: #3F51B5;
     --movim-background-main: 255, 255, 255;
     --movim-background: #EEE;
+    --movim-gray: #232323;
     --movim-font: 0, 0, 0;
     scrollbar-color: rgba(var(--movim-font), 0.3) rgba(var(--movim-font), 0.2);
 }
@@ -13,6 +14,7 @@ body.nightmode {
     --movim-accent: #10151A;
     --movim-background-main: 20,26,33;
     --movim-background: #192028;
+    --movim-gray: var(--movim-accent);
     --movim-font: 255, 255, 255;
     scrollbar-color: rgba(var(--movim-font), 0.1) rgba(var(--movim-background-main));
 }
@@ -48,7 +50,7 @@ table tr th {
 }
 
 .color.dark {
-    background-color: #10151A;
+    background-color: var(--movim-gray);
 }
 
 .color.dark *.divided > *:not(:last-child) {
