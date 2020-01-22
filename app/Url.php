@@ -10,6 +10,7 @@ use Embed\Http\CurlDispatcher;
 class Url extends Model
 {
     protected $primaryKey = 'hash';
+    protected $keyType = 'string';
     public $incrementing = false;
 
     public static function resolve($url)

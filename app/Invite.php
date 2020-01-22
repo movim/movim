@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Invite extends Model
 {
     public $primaryKey = 'code';
+    protected $keyType = 'string';
     public $incrementing = false;
     protected $fillable = ['code'];
 

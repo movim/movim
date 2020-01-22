@@ -9,6 +9,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 class Session extends Model
 {
     protected $fillable = ['id'];
+    protected $keyType = 'string';
     public $incrementing = false;
 
     public function user()

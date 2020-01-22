@@ -33,7 +33,7 @@
         "defuse/php-encryption": "^2.2.1",
 
         "robmorgan/phinx": "^0.11.1",
-        "illuminate/database": "^5.8",
+        "illuminate/database": "^6.0",
         "doctrine/dbal": "^2.9.2",
 
         "cboden/ratchet": "^0.4.1",
