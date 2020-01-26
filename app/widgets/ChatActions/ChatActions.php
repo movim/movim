@@ -54,7 +54,7 @@ class ChatActions extends \Movim\Widget\Base
                               ->where('mid', $mid)
                               ->first();
 
-        if ($retract) {
+        if ($retract && $retract->originid) {
             $this->rpc('Dialog.clear');
 
             $r = new Retract;
