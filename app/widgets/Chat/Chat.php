@@ -2,6 +2,7 @@
 
 use Moxl\Xec\Action\Message\Publish;
 use Moxl\Xec\Action\Message\Reactions;
+use Moxl\Xec\Action\Message\Retract;
 
 use Moxl\Xec\Action\Muc\GetConfig;
 use Moxl\Xec\Action\Muc\SetConfig;
@@ -21,8 +22,6 @@ use Movim\Picture;
 use Movim\ChatStates;
 use Movim\ChatOwnState;
 
-include_once WIDGETS_PATH.'ContactActions/ContactActions.php';
-
 class Chat extends \Movim\Widget\Base
 {
     private $_pagination = 50;
@@ -35,6 +34,7 @@ class Chat extends \Movim\Widget\Base
         $this->addcss('chat.css');
         $this->registerEvent('carbons', 'onMessage');
         $this->registerEvent('message', 'onMessage');
+        $this->registerEvent('retracted', 'onRetracted');
         $this->registerEvent('receiptack', 'onMessageReceipt');
         $this->registerEvent('displayed', 'onMessage', 'chat');
         $this->registerEvent('mam_get_handle', 'onMAMRetrieved');
@@ -54,6 +54,11 @@ class Chat extends \Movim\Widget\Base
     }
 
     public function onMessageReceipt($packet)
+    {
+        $this->onMessage($packet, false, true);
+    }
+
+    public function onRetracted($packet)
     {
         $this->onMessage($packet, false, true);
     }
@@ -290,15 +295,6 @@ class Chat extends \Movim\Widget\Base
     }
 
     /**
-     * @brief Get a Drawer view of a contact
-     */
-    public function ajaxGetContact($jid)
-    {
-        $c = new ContactActions;
-        $c->ajaxGetDrawer($jid);
-    }
-
-    /**
      * @brief Send a message
      *
      * @param string $to
@@ -346,6 +342,7 @@ class Chat extends \Movim\Widget\Base
         } else {
             $m = new \App\Message;
             $m->id          = generateUUID();
+            $m->originid    = generateUUID();
             $m->replaceid   = $m->id;
             $m->user_id     = $this->user->id;
             $m->jidto       = echapJid($to);
@@ -383,6 +380,7 @@ class Chat extends \Movim\Widget\Base
         }
 
         $p->setId($m->id);
+        $p->setOriginid($m->originid);
 
         if ($muc) {
             $p->setMuc();
@@ -440,8 +438,6 @@ class Chat extends \Movim\Widget\Base
 
     /**
      * @brief Send a reaction
-     *
-     * @
      */
     public function ajaxHttpDaemonSendReaction($mid, string $emoji)
     {
@@ -545,13 +541,12 @@ class Chat extends \Movim\Widget\Base
     /**
      * @brief Get the a sent message
      *
-     * @param string $to
+     * @param string $mid
      * @return void
      */
-    public function ajaxEdit($to, $mid)
+    public function ajaxEdit($mid)
     {
         $m = $this->user->messages()
-                        ->where('jidto', $to)
                         ->where('mid', $mid)
                         ->first();
 
@@ -805,7 +800,9 @@ class Chat extends \Movim\Widget\Base
 
         $emoji = \Movim\Emoji::getInstance();
 
-        if ($message->encrypted) {
+        if ($message->retracted) {
+            $message->body = '<i class="material-icons">delete</i> '.__('message.retracted');
+        } elseif ($message->encrypted) {
             $message->body = '<i class="material-icons">lock</i> '.__('message.encrypted');
         } elseif (isset($message->html) && !isset($message->file)) {
             $message->body = $message->html;

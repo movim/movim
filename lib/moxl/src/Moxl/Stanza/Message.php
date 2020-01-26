@@ -3,7 +3,6 @@
 namespace Moxl\Stanza;
 
 use Movim\Session;
-use Moxl\Utils;
 
 class Message
 {
@@ -19,7 +18,8 @@ class Message
         $file = false,
         $invite = false,
         $parentId = false,
-        array $reactions = []
+        array $reactions = [],
+        $originId = false
     ) {
         $session = Session::start();
 
@@ -179,12 +179,19 @@ class Message
             $root->appendChild($reactionsn);
         }
 
+        if ($originId != false) {
+            $origin = $dom->createElement('origin-id');
+            $origin->setAttribute('xmlns', 'urn:xmpp:sid:0');
+            $origin->setAttribute('id', $originId);
+            $root->appendChild($origin);
+        }
+
         \Moxl\API::request($dom->saveXML($dom->documentElement));
     }
 
-    public static function message($to, $content = false, $html = false, $id = false, $replace = false, $file = false, $parentId = false, array $reactions = [])
+    public static function message($to, $content = false, $html = false, $id = false, $replace = false, $file = false, $parentId = false, array $reactions = [], $originId = false)
     {
-        self::maker($to, $content, $html, 'chat', 'active', 'request', $id, $replace, $file, false, $parentId, $reactions);
+        self::maker($to, $content, $html, 'chat', 'active', 'request', $id, $replace, $file, false, $parentId, $reactions, $originId);
     }
 
     public static function receipt($to, $id)
@@ -220,5 +227,26 @@ class Message
     public static function paused($to)
     {
         self::maker($to, false, false, 'chat', 'paused');
+    }
+
+    public static function retract(string $to, string $originId)
+    {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $root = $dom->createElementNS('jabber:client', 'message');
+        $dom->appendChild($root);
+        $root->setAttribute('to', str_replace(' ', '\40', $to));
+        $root->setAttribute('type', 'chat');
+        $root->setAttribute('id', generateUUID());
+
+        $apply = $dom->createElement('apply-to');
+        $apply->setAttribute('xmlns', 'urn:xmpp:fasten:0');
+        $apply->setAttribute('id', $originId);
+        $root->appendChild($apply);
+
+        $retract = $dom->createElement('retract');
+        $retract->setAttribute('xmlns', 'urn:xmpp:message-retract:0');
+        $apply->appendChild($retract);
+
+        \Moxl\API::request($dom->saveXML($dom->documentElement));
     }
 }

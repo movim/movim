@@ -182,7 +182,7 @@ var Chat = {
         var textarea = Chat.getTextarea();
         if (textarea.value == ''
         && Boolean(textarea.dataset.muc) == false) {
-            Chat_ajaxEdit(textarea.dataset.jid, mid);
+            Chat_ajaxEdit(mid);
         }
     },
     focus: function()
@@ -411,14 +411,14 @@ var Chat = {
             i++;
         }
     },
-    setEditButtonBehaviour : function()
+    setActionsButtonBehaviour : function()
     {
-        let edits = document.querySelectorAll('#chat_widget .contained:not(.muc) span.edit');
+        let actions = document.querySelectorAll('#chat_widget .contained:not(.muc) span.actions');
         let i = 0;
 
-        while (i < edits.length) {
-            edits[i].onclick = function() {
-                Chat.editMessage(this.dataset.mid);
+        while (i < actions.length) {
+            actions[i].onclick = function() {
+                ChatActions_ajaxShowMessageDialog(this.dataset.mid);
             }
 
             i++;
@@ -505,7 +505,7 @@ var Chat = {
 
         Chat.setScrollBehaviour();
         Chat.setReactionButtonBehaviour();
-        Chat.setEditButtonBehaviour();
+        Chat.setActionsButtonBehaviour();
 
         if (scroll) {
             MovimTpl.scrollPanel();
@@ -569,7 +569,7 @@ var Chat = {
         var span = msg.querySelector('span:not(.reaction)');
         var p = msg.getElementsByTagName('p')[0];
         var reaction = msg.querySelector('span.reaction');
-        var edit = msg.querySelector('span.edit');
+        var actions = msg.querySelector('span.actions');
         var reactions = msg.querySelector('ul.reactions');
 
         // If there is already a msg in this bubble, create another div (next msg or replacement)
@@ -581,8 +581,8 @@ var Chat = {
             p = document.createElement('p');
             reaction = reaction.cloneNode(true);
 
-            if (edit) {
-                edit = edit.cloneNode(true);
+            if (actions) {
+                actions = actions.cloneNode(true);
             }
 
             reactions = document.createElement('ul');
@@ -593,7 +593,10 @@ var Chat = {
             bubble.querySelector('div.bubble').setAttribute('dir', 'rtl');
         }
 
-        // Encrypted message
+        if (data.retracted) {
+            p.classList.add('retracted');
+        }
+
         if (data.encrypted) {
             p.classList.add('encrypted');
         }
@@ -662,9 +665,9 @@ var Chat = {
         reaction.dataset.mid = data.mid;
         msg.appendChild(reaction);
 
-        if (edit) {
-            edit.dataset.mid = data.mid;
-            msg.appendChild(edit);
+        if (actions) {
+            actions.dataset.mid = data.mid;
+            msg.appendChild(actions);
         }
 
         var elem = document.getElementById(data.oldid);

@@ -17,7 +17,10 @@ v0.16.2 (trunk)
  * Add a checkbox to disable the social features in the admin panel
  * Fix MAM handling for MUC
  * Fix panel and notification management for Chat
+ * Add support for XEP-0359: Unique and Stable Stanza IDs
  * Add support for XEP-0380: Explicit Message Encryption
+ * Add support for XEP-0422: Message Fastening (for Message Retractation)
+ * Add support for XEP-0424: Message Retraction
 
 v0.16.1
 ---------------------------

@@ -12,21 +12,19 @@ class Publish extends Action
     protected $_content;
     protected $_html;
     protected $_muc = false;
-    protected $_encrypted = false;
     protected $_id = false;
     protected $_replace = false;
     protected $_file = false;
     protected $_attachid = false;
+    protected $_originid = false;
 
     public function request()
     {
         $this->store($this->_id);
         if ($this->_muc) {
-            Muc::message($this->_to, $this->_content, $this->_html, $this->_id, $this->_file, $this->_attachid);
-        } elseif ($this->_encrypted) {
-            Message::encrypted($this->_to, $this->_content, $this->_html, $this->_id, $this->_replace);
+            Muc::message($this->_to, $this->_content, $this->_html, $this->_id, $this->_file, $this->_attachid, [], $this->_originid);
         } else {
-            Message::message($this->_to, $this->_content, $this->_html, $this->_id, $this->_replace, $this->_file, $this->_attachid);
+            Message::message($this->_to, $this->_content, $this->_html, $this->_id, $this->_replace, $this->_file, $this->_attachid, [], $this->_originid);
         }
     }
 

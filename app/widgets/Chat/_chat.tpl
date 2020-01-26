@@ -177,14 +177,14 @@
             {if="$url"}
                 <span class="primary icon bubble active
                     {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}"
-                    onclick="Chat_ajaxGetContact('{$contact->jid|echapJS}')">
+                    onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')">
                     <img src="{$url}">
                 </span>
             {else}
                 <span class="primary icon bubble active color
                     {$contact->jid|stringToColor}
                     {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}"
-                    onclick="Chat_ajaxGetContact('{$contact->jid|echapJS}')">
+                    onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')">
                     {if="$roster"}
                         {$roster->truename|firstLetterCapitalize}
                     {else}

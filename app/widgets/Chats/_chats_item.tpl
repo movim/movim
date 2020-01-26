@@ -68,7 +68,9 @@
     {if="$status"}
         <p class="line">{$status}</p>
     {elseif="isset($message)"}
-        {if="$message->encrypted"}
+        {if="$message->retracted"}
+            <p><i class="material-icons">delete</i> {$c->__('message.retracted')}</p>
+        {elseif="$message->encrypted"}
             <p><i class="material-icons">lock</i> {$c->__('message.encrypted')}</p>
         {elseif="$message->file"}
             <p>

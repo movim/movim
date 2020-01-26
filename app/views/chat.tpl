@@ -14,6 +14,7 @@
 <main>
     <?php $this->widget('Upload');?>
     <?php $this->widget('Chat');?>
+    <?php $this->widget('ChatActions');?>
     <div>
         <?php $this->widget('Chats');?>
         <?php $this->widget('Rooms');?>

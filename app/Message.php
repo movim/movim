@@ -311,6 +311,11 @@ class Message extends Model
                 $this->encrypted = true;
             }
 
+            if ($stanza->{'origin-id'}
+            && (string)$stanza->{'origin-id'}->attributes()->xmlns == 'urn:xmpp:sid:0') {
+                $this->originid = (string)$stanza->{'origin-id'}->attributes()->id;
+            }
+
             if ($stanza->replace
             && $this->user->messages()
                 ->where('jidfrom', $this->jidfrom)
@@ -414,6 +419,13 @@ class Message extends Model
     public function isSubject()
     {
         return !empty($this->subject);
+    }
+
+    public function retract()
+    {
+        $this->retracted = true;
+        $this->oldid = null;
+        $this->body = $this->html = 'retracted';
     }
 
     public function addUrls()

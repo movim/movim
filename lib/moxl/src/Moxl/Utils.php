@@ -10,16 +10,12 @@ class Utils
             'urn:xmpp:microblog:0',
             'urn:xmpp:microblog:0+notify',
             'urn:xmpp:bookmarks:0+notify',
-            //'urn:xmpp:inbox',
-            //'urn:xmpp:inbox+notify',
             'urn:xmpp:pubsub:subscription',
             'urn:xmpp:pubsub:subscription+notify',
 
-            //'eu.siacs.conversations.axolotl.devicelist',
-            //'eu.siacs.conversations.axolotl.devicelist+notify',
-
             //'urn:xmpp:omemo:0:movim',
             //'urn:xmpp:omemo:0:movim+notify',
+            'urn:xmpp:sid:0',
 
             'urn:xmpp:attention:0',
             'urn:xmpp:vcard4',
@@ -35,6 +31,7 @@ class Utils
             'jabber:x:data',
             'urn:xmpp:ping',
             'urn:xmpp:message-correct:0',
+            'urn:xmpp:message-retract:0',
             'urn:xmpp:bob',
             'urn:xmpp:chat-markers:0',
             'urn:xmpp:reference:0',
@@ -63,7 +60,6 @@ class Utils
             'http://jabber.org/protocol/xhtml-im',
             'http://jabber.org/protocol/chatstates',
             'http://jabber.org/protocol/commands',
-            //'http://jabber.org/protocol/httpbind',
             'http://jabber.org/protocol/caps',
             'http://jabber.org/protocol/disco#info',
             'http://jabber.org/protocol/disco#items',
