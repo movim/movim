@@ -5,7 +5,7 @@
                 onclick="PublishBrief.setEmbedImage({$key})">
                 <div style="background-image: url('{$value.url|protectPicture}')">
                     <span>
-                        {$value.width} × {$value.height} – {$value.size|sizeToCleanSize:0}
+                        {$value.width} × {$value.height} · {$value.size|sizeToCleanSize:0}
                     </span>
                 </div>
             </li>

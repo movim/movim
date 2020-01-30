@@ -20,7 +20,7 @@
             <p class="normal center	">
                 {$contact->truename}
                 {if="isset($roster) && isset($roster->presence)"}
-                    –  {$roster->presence->presencetext}
+                    ·  {$roster->presence->presencetext}
                 {/if}
             </p>
             {if="$contact->email"}

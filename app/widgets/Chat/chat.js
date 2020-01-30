@@ -689,7 +689,7 @@ var Chat = {
         /* MUC specific */
         if (isMuc) {
             bubble.querySelector('div.bubble').dataset.publishedprepared =
-                data.resource + ' – ' + data.publishedPrepared;
+                data.resource + ' · ' + data.publishedPrepared;
 
             if (data.moderator) {
                 bubble.querySelector('div.bubble').classList.add('moderator');

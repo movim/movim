@@ -108,6 +108,14 @@ function prepareString($string, bool $preview = false)
 }
 
 /**
+ * Estimate the reading time of a content in minutes
+ */
+function readTime($content)
+{
+    return floor(str_word_count(strip_tags($content)) / 200);
+}
+
+/**
  * Return the tags in a string
  */
 function getHashtags($string): array

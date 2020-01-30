@@ -11,7 +11,7 @@
         {/if}
         {if="$active"}active{/if}
         "
-    title="{$contact->jid}{if="isset($message)"} – {$message->published|strtotime|prepareDate}{/if}">
+    title="{$contact->jid}{if="isset($message)"} · {$message->published|strtotime|prepareDate}{/if}">
     {$url = $contact->getPhoto()}
     {if="$url"}
         <span class="primary icon bubble {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}">

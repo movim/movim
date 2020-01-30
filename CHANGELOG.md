@@ -21,6 +21,8 @@ v0.16.2 (trunk)
  * Add support for XEP-0380: Explicit Message Encryption
  * Add support for XEP-0422: Message Fastening (for Message Retractation)
  * Add support for XEP-0424: Message Retraction
+ * Add "read time" info in posts headers
+ * New nights-theme colors
 
 v0.16.1
 ---------------------------

@@ -46,7 +46,7 @@
                         {/if}
                     >
                         {$post->truename}
-                    </a> –
+                    </a> ·
                 {else}
                     {if="$public"}
                         {$post->server}
@@ -57,7 +57,7 @@
                     {/if} /
                     <a href="{$c->route('community', [$post->server, $post->node])}">
                         {$post->node}
-                    </a> –
+                    </a> ·
                 {/if}
                 {$post->published|strtotime|prepareDate}
                 {if="$post->published != $post->updated"}
@@ -69,6 +69,9 @@
                     <i class="material-icons on_mobile" title="{$c->__('post.public_no')}">
                         lock
                     </i>
+                {/if}
+                {if="$post->contentcleaned && readTime($post->contentcleaned) > 0"}
+                    · {$c->__('post.read_time', readTime($post->contentcleaned))}
                 {/if}
             </p>
             {if="$post->isBrief()"}

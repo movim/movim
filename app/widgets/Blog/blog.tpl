@@ -85,12 +85,12 @@
                 {if="$item != null"}
                     {if="$item->description"}
                         <p title="{$item->description|stripTags}">
-                            <i class="material-icons">people</i> {$c->__('communitydata.sub', $item->occupants)} –
+                            <i class="material-icons">people</i> {$c->__('communitydata.sub', $item->occupants)} ·
                             {$item->description|stripTags}
                         </p>
                     {else}
                         <p>
-                            <i class="material-icons">people</i> {$c->__('communitydata.sub', $item->occupants)} –
+                            <i class="material-icons">people</i> {$c->__('communitydata.sub', $item->occupants)} ·
                             {$item->server}
                         </p>
                     {/if}

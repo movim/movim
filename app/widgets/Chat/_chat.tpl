@@ -50,7 +50,7 @@
                 {$related = $conference->info->related}
                 <span
                     class="control icon active"
-                    title="{$c->__('page.communities')} – {$related->name}"
+                    title="{$c->__('page.communities')} · {$related->name}"
                     onclick="MovimUtils.redirect('{$c->route('community', [$related->server, $related->node])}')">
                     <i class="material-icons">group_work</i>
                 </span>
@@ -75,13 +75,13 @@
                         <span title="{$c->__('room.public_muc_text')}">
                             {$c->__('room.public_muc')} <i class="material-icons">wifi_tethering</i>
                         </span>
-                        –
+                        ·
                     {/if}
                     {if="$conference->info && !$conference->info->mucsemianonymous"}
                         <span title="{$c->__('room.nonanonymous_muc_text')}">
                             {$c->__('room.nonanonymous_muc')} <i class="material-icons">face</i>
                         </span>
-                        –
+                        ·
                     {/if}
                     {$conference->subject}
                 </p>
@@ -91,13 +91,13 @@
                         <span title="{$c->__('room.public_muc_text')}">
                             {$c->__('room.public_muc')} <i class="material-icons">wifi_tethering</i>
                         </span>
-                        –
+                        ·
                     {/if}
                     {if="$conference->info && !$conference->info->mucsemianonymous"}
                         <span title="{$c->__('room.nonanonymous_muc_text')}">
                             {$c->__('room.nonanonymous_muc')} <i class="material-icons">face</i>
                         </span>
-                        –
+                        ·
                     {/if}
                     {$room|echapJS}
                 </p>

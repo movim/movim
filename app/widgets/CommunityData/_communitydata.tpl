@@ -31,7 +31,7 @@
             {/if}
             <p class="center">
                 <i class="material-icons">receipt</i> {$c->__('communitydata.num', $num)}
-                –
+                ·
                 <i class="material-icons">people</i> {$c->__('communitydata.sub', $info->occupants)}
             </p>
             {if="$info->pubsubpublishmodel == 'publishers'"}
@@ -64,7 +64,7 @@
 
                     {if="$related->occupants > 0"}
                         <span title="{$c->__('communitydata.sub', $related->occupants)}">
-                            {$related->occupants} <i class="material-icons">people</i>  –
+                            {$related->occupants} <i class="material-icons">people</i>  ·
                         </span>
                     {/if}
                     {if="$related->description"}

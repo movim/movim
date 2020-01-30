@@ -39,7 +39,7 @@
                         {$value->occupants} <i class="material-icons">people</i>
                     </span>
                 {/if}
-                {if="$value->occupants > 0 && !empty($value->description)"}  – {/if}
+                {if="$value->occupants > 0 && !empty($value->description)"} · {/if}
                 {$value->description}
             </p>
         </li>

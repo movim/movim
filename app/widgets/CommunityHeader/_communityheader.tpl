@@ -51,9 +51,9 @@
                 <i class="material-icons">receipt</i> {$num}
             {/if}
             {if="$info != null"}
-                – <i class="material-icons">people</i> {$c->__('communitydata.sub', $info->occupants)}
+                · <i class="material-icons">people</i> {$c->__('communitydata.sub', $info->occupants)}
                 {if="$info->description"}
-                    – {$info->description|strip_tags}
+                    · {$info->description|strip_tags}
                 {/if}
             {else}
                 {$server}

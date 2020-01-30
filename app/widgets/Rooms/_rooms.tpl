@@ -79,7 +79,7 @@
                         {if="$connected"}
                             <span class="second">{$value->conference}</span>
                         {else}
-                            –
+                            ·
                         {/if}
                     {if="$connected"}
                     </p>
@@ -99,7 +99,7 @@
                                 {if="$value->info && !$value->info->mucsemianonymous"}
                                     <i class="material-icons" title="{$c->__('room.nonanonymous_muc_text')}">face</i>
                                 {/if}
-                            </span> –
+                            </span> ·
                         {elseif="isset($info) && $info->occupants > 0"}
                             <span title="{$c->__('communitydata.sub', $info->occupants)}"
                                 {if="$connected && $connected->mucrole == 'moderator'"}
@@ -112,10 +112,10 @@
                                 {if="$value->info && !$value->info->mucsemianonymous"}
                                     <i class="material-icons" title="{$c->__('room.nonanonymous_muc_text')}">face</i>
                                 {/if}
-                            </span> –
+                            </span> ·
                         {/if}
                         {if="$servers->has($value->server) && !$servers->get($value->server)->identities->contains('type', 'text')"}
-                            <i class="material-icons" title="{$c->__('rooms.gateway_room')}">swap_horiz</i> –
+                            <i class="material-icons" title="{$c->__('rooms.gateway_room')}">swap_horiz</i> ·
                         {/if}
                         {if="$connected"}
                             {if="isset($info) && $info->description"}

@@ -125,7 +125,7 @@
                     <a href="#" onclick="if (typeof Post_ajaxGetContact == 'function') { Post_ajaxGetContact('{$contact->jid}'); } else { Group_ajaxGetContact('{$contact->jid}'); } ">
                     {/if}
                     {$contact->truename}
-                    {if="!$public"}</a>{/if} –
+                    {if="!$public"}</a>{/if} ·
                 {/if}
                 {if="!$post->isMicroblog()"}
                     {if="!$public"}
@@ -137,13 +137,16 @@
                     <a href="{$c->route('community', [$post->server, $post->node])}">
                     {/if}
                         {$post->node}
-                    {if="!$public"}</a>{/if} –
+                    {if="!$public"}</a>{/if} ·
                 {/if}
                 {$post->published|strtotime|prepareDate}
                 {if="$post->published != $post->updated"}
                     <i class="material-icons" title="{$post->updated|strtotime|prepareDate}">
                         edit
                     </i>
+                {/if}
+                {if="$post->contentcleaned && readTime($post->contentcleaned) > 0"}
+                    · {$c->__('post.read_time', readTime($post->contentcleaned))}
                 {/if}
             </p>
             {if="$post->isBrief()"}
@@ -236,7 +239,7 @@
                 </p>
                 <p>
                     <a target="_blank" href="{$post->openlink->href}">
-                        {$c->__('post.public_url')} – {$post->openlink->url.host}
+                        {$c->__('post.public_url')} · {$post->openlink->url.host}
                     </a>
                 </p>
             </li>
