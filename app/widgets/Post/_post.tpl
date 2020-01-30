@@ -145,7 +145,7 @@
                         edit
                     </i>
                 {/if}
-                {if="$post->contentcleaned && isset(readTime($post->contentcleaned))"}
+                {if="$post->contentcleaned && readTime($post->contentcleaned)"}
                     · {$post->contentcleaned|readTime}
                 {/if}
             </p>
