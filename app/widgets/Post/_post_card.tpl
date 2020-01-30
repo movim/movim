@@ -70,8 +70,8 @@
                         lock
                     </i>
                 {/if}
-                {if="$post->contentcleaned && readTime($post->contentcleaned) > 0"}
-                    · {$c->__('post.read_time', readTime($post->contentcleaned))}
+                {if="$post->contentcleaned && readTime($post->contentcleaned)"}
+                    · {$post->contentcleaned|readTime}
                 {/if}
             </p>
             {if="$post->isBrief()"}

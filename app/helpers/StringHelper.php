@@ -112,7 +112,13 @@ function prepareString($string, bool $preview = false)
  */
 function readTime($content)
 {
-    return floor(str_word_count(strip_tags($content)) / 200);
+    $minutes = floor(str_word_count(strip_tags($content)) / 200);
+
+    if ($minutes == 0) return false;
+
+    return $minutes == 1
+        ? __('post.read_time_singular', $minutes)
+        : __('post.read_time_plural', $minutes);
 }
 
 /**
