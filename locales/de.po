@@ -92,6 +92,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/RoomsExplore/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/SendTo/locales.ini
@@ -115,7 +117,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-06 10:07+0200\n"
+"POT-Creation-Date: 2020-02-05 19:34+0200\n"
 "PO-Revision-Date: 2019-11-02 09:40+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: German (http://www.transifex.com/movim/movim/language/de/)\n"
@@ -286,6 +288,15 @@ msgstr "Vorschläge einschränken"
 msgid "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
 msgstr "Nur Chaträume, Gemeinschaften und andere Inhalte vorschlagen, die auf dem XMPP-Server des Benutzers gespeichert sind."
 
+#: [chatonly]title
+#, fuzzy
+msgid "Chat only"
+msgstr "Sofortnachrichten"
+
+#: [chatonly]text
+msgid "Disable all the social feature (Communities, Blog…) and keep only the chat ones"
+msgstr ""
+
 #: [credentials]title
 msgid "Administration Credential"
 msgstr "Systemverwaltungsberechtigung"
@@ -322,6 +333,10 @@ msgstr "Informationsnachricht"
 #: [information]description [communityconfig]description
 msgid "Description"
 msgstr "Beschreibung"
+
+#: [information]description_placeholder
+msgid "General description of the instance"
+msgstr ""
 
 #: [information]info1
 msgid "This message will be displayed on the login page. It can be used to link the Terms and Conditions of your Movim instance for example."
@@ -484,6 +499,11 @@ msgstr "Die Nachricht konnte nicht gesendet werden. Bitte später noch einmal ve
 msgid "Encrypted message"
 msgstr "Verschlüsselte Nachricht"
 
+#: [message]retracted
+#, fuzzy
+msgid "Retracted message"
+msgstr "Verschlüsselte Nachricht"
+
 #: [message]composing
 msgid "Composing…"
 msgstr "Schreibt…"
@@ -567,6 +587,10 @@ msgstr "Anruf beendet"
 #: [chat]publish_error
 msgid "An error occured when sending the message"
 msgstr "Beim Senden der Nachricht ist ein Fehler aufgetreten"
+
+#: [chat]mam_retrieval
+msgid "Synchronizing the history, please wait…"
+msgstr ""
 
 #: [chatroom]members
 msgid "Members"
@@ -1391,6 +1415,14 @@ msgstr "Profil %s ansehen"
 msgid "Public posts from users"
 msgstr "Öffentliche Postings von Benutzern"
 
+#: [post]read_time_singular
+msgid "%s minute"
+msgstr ""
+
+#: [post]read_time_plural
+msgid "%s minutes"
+msgstr ""
+
 #: [post]public
 msgid "Publish this post publicly?"
 msgstr "Diesen Beitrag öffentlich zeigen?"
@@ -1577,8 +1609,9 @@ msgid "Markdown syntax manual"
 msgstr "Markdown-Anleitung"
 
 #: [rooms]add
-msgid "Add or join a chatroom"
-msgstr ""
+#, fuzzy
+msgid "Search or join a chatroom"
+msgstr "Chatraum bearbeiten"
 
 #: [rooms]edit
 msgid "Edit a chatroom"
@@ -1644,6 +1677,11 @@ msgstr "Admin"
 msgid "Visitor"
 msgstr "Besucher"
 
+#: [rooms]explore_placeholder
+#, fuzzy
+msgid "Name or description"
+msgstr "Keine Abonnements"
+
 #: [chatrooms]title
 msgid "Chatrooms"
 msgstr "Chaträume"
@@ -1691,6 +1729,16 @@ msgstr "Raum zerstört"
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
 msgstr "Der Chatraum kann nicht betreten werden - Registrierung erforderlich"
+
+#: [chatrooms]itemnotfound
+#, fuzzy
+msgid "The chatroom doesn’t exists"
+msgstr "Der Server existiert nicht."
+
+#: [chatrooms]notauthorized
+#, fuzzy
+msgid "A password is required"
+msgstr "Das Passwort wurde aktualisiert"
 
 #: [bookmarks]updated
 msgid "Bookmarks updated"
@@ -1747,6 +1795,18 @@ msgstr ""
 #: [room]nonanonymous_muc_text
 msgid "The participants of this chatroom can see each other's profile"
 msgstr "Die Mitglieder dieses Raums können die Profile der anderen sehen"
+
+#: [roomsexplore]no_local
+msgid "No chatrooms found localy"
+msgstr ""
+
+#: [roomsexplore]global_title
+msgid "Global search"
+msgstr ""
+
+#: [roomsexplore]no_global
+msgid "No chatrooms found globaly"
+msgstr ""
 
 #: [search]keyword
 msgid "What are you looking for?"
@@ -1931,14 +1991,10 @@ msgid "Movim is currently working in degraded mode"
 msgstr "Movim arbeitet gerade im eingeschränkten Modus"
 
 #: [degraded]text_1
-msgid "Your server doesn’t support XMPP Pubsub persistence."
-msgstr "Ihr Server unterstützt keine XMPP-Pubsub-Persistenz."
+msgid "Your server doesn’t support XMPP Pubsub persistence or the social features (communities, news feed and profile) are disabled by the administrator."
+msgstr ""
 
 #: [degraded]text_2
-msgid "The communities, news feed and profile have been disabled for the moment."
-msgstr "Newsfeed, Gemeinschaften und Profile wurden vorerst deaktiviert"
-
-#: [degraded]text_3
 msgid "Please contact your server administrator to see if this feature can be enabled."
 msgstr "Bitte kontaktieren Sie den Administrators Ihres Servers, um dieses Feature zu aktivieren"
 
@@ -2816,3 +2872,9 @@ msgstr "Die API ist nicht erreichbar, bitte später erneut versuchen"
 #: [field]type_here
 msgid "Type here"
 msgstr "Hier schreiben"
+
+#~ msgid "Your server doesn’t support XMPP Pubsub persistence."
+#~ msgstr "Ihr Server unterstützt keine XMPP-Pubsub-Persistenz."
+
+#~ msgid "The communities, news feed and profile have been disabled for the moment."
+#~ msgstr "Newsfeed, Gemeinschaften und Profile wurden vorerst deaktiviert"
