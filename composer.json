@@ -21,26 +21,26 @@
 
         "wikimedia/composer-merge-plugin": "^1.4",
         "rain/raintpl": "^3.1.1",
-        "michelf/php-markdown": "^1.8",
+        "michelf/php-markdown": "^1.9",
 
         "embed/embed": "^v3.4",
 
         "respect/validation": "^1.1",
-        "ezyang/htmlpurifier": "^4.11",
+        "ezyang/htmlpurifier": "^4.12",
         "symfony/console": "^4.3",
-        "cocur/slugify": "^3.2",
+        "cocur/slugify": "^4.0",
         "dflydev/fig-cookies": "^2.0",
         "defuse/php-encryption": "^2.2.1",
 
-        "robmorgan/phinx": "^0.11.1",
+        "robmorgan/phinx": "^0.11.4",
         "illuminate/database": "^6.0",
-        "doctrine/dbal": "^2.9.2",
+        "doctrine/dbal": "^2.10",
 
-        "cboden/ratchet": "^0.4.1",
+        "cboden/ratchet": "^0.4.2",
         "react/child-process": "^0.6.1",
-        "react/http": "^0.8.4",
+        "react/http": "^0.8.6",
         "react/dns": "^1.2.0",
-        "monolog/monolog": "^1.24",
+        "monolog/monolog": "^2.0.2",
         "ratchet/pawl": "^0.3.4"
     },
     "config": {

@@ -22,7 +22,7 @@ class Utils
 
             $errlines = explode("\n", $message);
             foreach ($errlines as $txt) {
-                $log->addInfo($txt);
+                $log->info($txt);
             }
         }
     }
@@ -53,7 +53,7 @@ class Utils
             $log->pushHandler(new StreamHandler(LOG_PATH . '/errors.log'));
         }
 
-        $log->addError($logs);
+        $log->error($logs);
     }
 }
 

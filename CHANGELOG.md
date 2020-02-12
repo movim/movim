@@ -23,6 +23,7 @@ v0.16.2 (trunk)
  * Add support for XEP-0424: Message Retraction
  * Add "read time" info in posts headers
  * New nights-theme colors
+ * More agressive linker killer (24h for sending, 30min for receiving)
 
 v0.16.1
 ---------------------------

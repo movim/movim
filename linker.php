@@ -33,7 +33,7 @@ $parser = new \Moxl\Parser(function ($node) {
     \Moxl\Xec\Handler::handle($node);
 });
 
-$timestamp = time();
+$timestampReceive = $timestampSend = time();
 
 function handleSSLErrors($errno, $errstr)
 {
@@ -48,9 +48,9 @@ function handleSSLErrors($errno, $errstr)
 }
 
 // Temporary linker killer
-$loop->addPeriodicTimer(5, function () use (&$xmppSocket, &$timestamp) {
-    if ($timestamp < time() - 3600*4
-    && isset($xmppSocket)) {
+$loop->addPeriodicTimer(5, function () use (&$xmppSocket, &$timestampReceive, &$timestampSend) {
+    if (($timestampSend < time() - 3600*24 /* 24h */ || $timestampReceive < time() - 60*30 /* 30min */)
+        && isset($xmppSocket)) {
         $xmppSocket->close();
     }
 });
@@ -69,8 +69,10 @@ function writeOut($msg = null)
 function writeXMPP($xml)
 {
     global $xmppSocket;
+    global $timestampSend;
 
     if (!empty($xml) && $xmppSocket) {
+        $timestampSend = time();
         $xmppSocket->write(trim($xml));
 
         if (getenv('debug')) {
@@ -147,9 +149,12 @@ $wsSocketBehaviour = function ($msg) use (&$xmppSocket, &$connector, &$xmppBehav
                         }
                     )
                     ->always(function () use (&$connector, &$xmppBehaviour, &$dns, &$host, &$port) {
-                        $dns->resolve($host, React\Dns\Model\Message::TYPE_AAAA)
+                        $dns->resolveAll($host, React\Dns\Model\Message::TYPE_AAAA)
                             ->then(
-                                function ($ip) use (&$connector, &$xmppBehaviour, $host, $port) {
+                                function ($ips) use (&$connector, &$xmppBehaviour, $host, $port) {
+                                    // If we have several ips, we pick one randomly
+                                    $ip = $ips[array_rand($ips)];
+
                                     if (getenv('verbose')) {
                                         fwrite(
                                             STDERR,
@@ -184,7 +189,7 @@ $wsSocketBehaviour = function ($msg) use (&$xmppSocket, &$connector, &$xmppBehav
     return;
 };
 
-$xmppBehaviour = function (React\Socket\Connection $stream) use (&$xmppSocket, $parser, &$timestamp) {
+$xmppBehaviour = function (React\Socket\Connection $stream) use (&$xmppSocket, $parser, &$timestampReceive) {
     global $wsSocket;
 
     $xmppSocket = $stream;
@@ -194,7 +199,7 @@ $xmppBehaviour = function (React\Socket\Connection $stream) use (&$xmppSocket, $
         fwrite(STDERR, colorize(getenv('sid'), 'yellow')." launched : ".\sizeToCleanSize(memory_get_usage())."\n");
     }
 
-    $xmppSocket->on('data', function ($message) use (&$xmppSocket, $parser, &$timestamp) {
+    $xmppSocket->on('data', function ($message) use (&$xmppSocket, $parser, &$timestampReceive) {
         if (!empty($message)) {
             $restart = false;
 
@@ -240,7 +245,7 @@ $xmppBehaviour = function (React\Socket\Connection $stream) use (&$xmppSocket, $
                 $restart = true;
             }
 
-            $timestamp = time();
+            $timestampReceive = time();
 
             if ($restart) {
                 $session = Session::start();

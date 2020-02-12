@@ -29,7 +29,7 @@ class Front extends Base
         } else {
             $log = new Logger('movim');
             $log->pushHandler(new SyslogHandler('movim'));
-            $log->addError(__(
+            $log->error(__(
                 "Requested controller '%s' doesn't exist.",
                 $class_name
             ));

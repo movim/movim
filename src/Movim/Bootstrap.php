@@ -5,9 +5,6 @@ namespace Movim;
 define('DOCUMENT_ROOT', dirname(__FILE__, 3));
 
 use App\Configuration;
-use Monolog\Logger;
-use Monolog\Handler\SyslogHandler;
-use Monolog\Handler\StreamHandler;
 use Illuminate\Database\Capsule\Manager as Capsule;
 
 use App\Session as DBSession;
