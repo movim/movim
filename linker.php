@@ -149,12 +149,9 @@ $wsSocketBehaviour = function ($msg) use (&$xmppSocket, &$connector, &$xmppBehav
                         }
                     )
                     ->always(function () use (&$connector, &$xmppBehaviour, &$dns, &$host, &$port) {
-                        $dns->resolveAll($host, React\Dns\Model\Message::TYPE_AAAA)
+                        $dns->resolve($host, React\Dns\Model\Message::TYPE_AAAA)
                             ->then(
-                                function ($ips) use (&$connector, &$xmppBehaviour, $host, $port) {
-                                    // If we have several ips, we pick one randomly
-                                    $ip = $ips[array_rand($ips)];
-
+                                function ($ip) use (&$connector, &$xmppBehaviour, $host, $port) {
                                     if (getenv('verbose')) {
                                         fwrite(
                                             STDERR,
