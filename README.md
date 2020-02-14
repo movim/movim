@@ -3,7 +3,7 @@ Movim - Decentralized social platform
 
 Movim is a decentralized social platform, written in PHP and HTML5 and based on the XMPP standard protocol.
 
-![movim logo](https://movim.eu/img/chatroom.png)
+![movim logo](https://movim.eu/img/home.png)
 
 Installation
 ------------
