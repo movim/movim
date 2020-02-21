@@ -35,6 +35,7 @@ class Syndication extends Base
                         ->get();
 
         header("Content-Type: application/atom+xml; charset=UTF-8");
+        header('Content-Disposition: attachment; filename="'.\cleanupId($from.'-'.$node).'.atom"');
 
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->formatOutput = true;
@@ -112,13 +113,6 @@ class Syndication extends Base
                 $link->setAttribute('type', $value->type);
                 $link->setAttribute('href', $value->href);
             }
-
-            /*foreach ($attachments['files'] as $value) {
-                $entry->appendChild($link = $dom->createElement('link'));
-                $link->setAttribute('rel', 'enclosure');
-                $link->setAttribute('type', $value->type);
-                $link->setAttribute('href', $value->href);
-            }*/
 
             foreach ($post->links as $value) {
                 $entry->appendChild($link = $dom->createElement('link'));

@@ -35,9 +35,9 @@ class Utils
         $log = new Logger('movim');
         $log->pushHandler(new StreamHandler(LOG_PATH . '/debug.log'));
         if (is_array($logs)) {
-            $log->addDebug('', $logs);
+            $log->debug('', $logs);
         } else {
-            $log->addDebug($logs);
+            $log->debug($logs);
         }
     }
 

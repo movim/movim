@@ -106,9 +106,13 @@ class Post extends Model
         try {
             parent::save($options);
 
-            $this->attachments()->delete();
-            $this->attachments()->saveMany($this->attachments);
-            $this->tags()->sync($this->tags);
+            if (!$this->isComment()) {
+                $this->healAttachments();
+
+                $this->attachments()->delete();
+                $this->attachments()->saveMany($this->attachments);
+                $this->tags()->sync($this->tags);
+            }
         } catch (\Exception $e) {
             /*
              * When an article is received by two accounts simultaenously
@@ -551,6 +555,23 @@ class Post extends Model
             $attachment->type = 'content';
             $attachment->category = 'picture';
             $this->attachments[] = $attachment;
+        }
+    }
+
+    private function healAttachments()
+    {
+        $enclosures = [];
+
+        foreach (array_filter($this->attachments, function ($a) { return $a->rel == 'enclosure'; }) as $attachment)
+        {
+            array_push($enclosures, $attachment->href);
+        }
+
+        foreach (array_filter($this->attachments, function ($a) { return $a->rel != 'enclosure'; }) as $key => $attachment)
+        {
+            if (in_array($attachment->href, $enclosures)) {
+                unset($this->attachments[$key]);
+            }
         }
     }
 
