@@ -8,7 +8,7 @@
     "packages": [
         {
             "name": "cakephp/cache",
-            "version": "3.8.9",
+            "version": "3.8.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/cache.git",
@@ -52,7 +52,7 @@
         },
         {
             "name": "cakephp/collection",
-            "version": "3.8.9",
+            "version": "3.8.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/collection.git",
@@ -98,7 +98,7 @@
         },
         {
             "name": "cakephp/core",
-            "version": "3.8.9",
+            "version": "3.8.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/core.git",
@@ -148,16 +148,16 @@
         },
         {
             "name": "cakephp/database",
-            "version": "3.8.9",
+            "version": "3.8.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/database.git",
-                "reference": "f52cd444d4f5ef411a3a13f82510badda1d5280e"
+                "reference": "100542d4364a6de674c37bb605ac2fce5a8cc0cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/database/zipball/f52cd444d4f5ef411a3a13f82510badda1d5280e",
-                "reference": "f52cd444d4f5ef411a3a13f82510badda1d5280e",
+                "url": "https://api.github.com/repos/cakephp/database/zipball/100542d4364a6de674c37bb605ac2fce5a8cc0cd",
+                "reference": "100542d4364a6de674c37bb605ac2fce5a8cc0cd",
                 "shasum": ""
             },
             "require": {
@@ -192,11 +192,11 @@
                 "database abstraction",
                 "pdo"
             ],
-            "time": "2020-01-10T15:24:40+00:00"
+            "time": "2020-02-04T11:23:19+00:00"
         },
         {
             "name": "cakephp/datasource",
-            "version": "3.8.9",
+            "version": "3.8.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/datasource.git",
@@ -246,7 +246,7 @@
         },
         {
             "name": "cakephp/log",
-            "version": "3.8.9",
+            "version": "3.8.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/log.git",
@@ -291,16 +291,16 @@
         },
         {
             "name": "cakephp/utility",
-            "version": "3.8.9",
+            "version": "3.8.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/utility.git",
-                "reference": "71fe6e8b39f3ef0dedd036cbf112a6e84b01759b"
+                "reference": "9f121defbff4b5f3691b33de8cb203b8923fc2a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/utility/zipball/71fe6e8b39f3ef0dedd036cbf112a6e84b01759b",
-                "reference": "71fe6e8b39f3ef0dedd036cbf112a6e84b01759b",
+                "url": "https://api.github.com/repos/cakephp/utility/zipball/9f121defbff4b5f3691b33de8cb203b8923fc2a4",
+                "reference": "9f121defbff4b5f3691b33de8cb203b8923fc2a4",
                 "shasum": ""
             },
             "require": {
@@ -340,7 +340,7 @@
                 "string",
                 "utility"
             ],
-            "time": "2020-01-10T15:24:40+00:00"
+            "time": "2020-02-18T01:57:35+00:00"
         },
         {
             "name": "cboden/ratchet",
@@ -1238,7 +1238,7 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v6.16.0",
+            "version": "v6.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
@@ -1282,7 +1282,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v6.16.0",
+            "version": "v6.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -1326,16 +1326,16 @@
         },
         {
             "name": "illuminate/database",
-            "version": "v6.16.0",
+            "version": "v6.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "f56c632e93e7ae8f675d5fd0d0b3b0a9eede1d22"
+                "reference": "2d24be92d25a5adf68ccea30b5682ed2990fa330"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/f56c632e93e7ae8f675d5fd0d0b3b0a9eede1d22",
-                "reference": "f56c632e93e7ae8f675d5fd0d0b3b0a9eede1d22",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/2d24be92d25a5adf68ccea30b5682ed2990fa330",
+                "reference": "2d24be92d25a5adf68ccea30b5682ed2990fa330",
                 "shasum": ""
             },
             "require": {
@@ -1382,20 +1382,20 @@
                 "orm",
                 "sql"
             ],
-            "time": "2020-02-18T15:08:16+00:00"
+            "time": "2020-02-25T14:08:02+00:00"
         },
         {
             "name": "illuminate/support",
-            "version": "v6.16.0",
+            "version": "v6.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "2f5f449750e6821f2d8c4e993a4ff77c7d7d5cc8"
+                "reference": "468b76701a1caf8859b2af7c770a3f293c4f065b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/2f5f449750e6821f2d8c4e993a4ff77c7d7d5cc8",
-                "reference": "2f5f449750e6821f2d8c4e993a4ff77c7d7d5cc8",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/468b76701a1caf8859b2af7c770a3f293c4f065b",
+                "reference": "468b76701a1caf8859b2af7c770a3f293c4f065b",
                 "shasum": ""
             },
             "require": {
@@ -1443,7 +1443,7 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "https://laravel.com",
-            "time": "2020-02-14T14:20:14+00:00"
+            "time": "2020-02-24T17:34:22+00:00"
         },
         {
             "name": "michelf/php-markdown",
