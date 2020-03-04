@@ -58,10 +58,10 @@ var Upload = {
         }
     },
 
-    preview : function() {
-        var file = document.getElementById('file').files[0];
-        Upload.name = file.name;
-        Upload.check(file);
+    preview : function(file) {
+        var resolvedFile = file ?? document.getElementById('file').files[0];
+        Upload.name = resolvedFile.name;
+        Upload.check(resolvedFile);
     },
 
     check : function(file) {
@@ -152,6 +152,12 @@ var Upload = {
 
         // If the preview system is there
         if (preview) {
+            console.log(file);
+            var fileInfo = document.querySelector('#upload li.file');
+            fileInfo.querySelector('p.name').innerText = Upload.name;
+            var type = file.type ? file.type + ' · ' : '';
+            fileInfo.querySelector('p.desc').innerText =  type + MovimUtils.humanFileSize(file.size);
+
             if (Upload.file.type.match(/image.*/)) {
                 preview.src = URL.createObjectURL(Upload.file);
             } else {
@@ -196,5 +202,40 @@ var Upload = {
 
     abort : function() {
         if (Upload.xhr) Upload.xhr.abort();
+    },
+
+    attachEvents : function () {
+        document.querySelector('#upload div.drop').addEventListener('drop', ev => {
+            ev.preventDefault();
+
+            if (ev.dataTransfer.items) {
+                for (var i = 0; i < ev.dataTransfer.items.length; i++) {
+                    if (ev.dataTransfer.items[i].kind === 'file') {
+                        var file = ev.dataTransfer.items[i].getAsFile();
+                        Upload.preview(file);
+                    }
+                }
+            }
+        });
+
+        var dropArea = document.querySelector('#upload div.drop');
+
+        dropArea.querySelector('img.preview_picture')
+            .addEventListener('drop', ev => ev.preventDefault());
+
+        dropArea.addEventListener('dragover', ev => {
+            ev.preventDefault();
+            dropArea.classList.add('dropped');
+        }, false);
+
+        dropArea.addEventListener('drop', ev => {
+            ev.preventDefault();
+            dropArea.classList.remove('dropped');
+        }, false);
+
+        dropArea.addEventListener('dragleave', ev => {
+            ev.preventDefault();
+            dropArea.classList.remove('dropped');
+        }, false);
     }
 }

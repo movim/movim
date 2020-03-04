@@ -1,14 +1,41 @@
 #upload img.preview_picture {
     max-height: 35rem;
-    max-width: calc(100% - 4rem);
+    max-width: calc(100% - 2rem);
     margin: 0 auto;
     display: block;
 }
 
 #upload img.preview_picture[src] {
-    padding-bottom: 2rem;
+    margin: 1rem auto;
+    background-color: #eee;
+    background-image: linear-gradient(45deg, #CCC 25%, transparent 25%, transparent 75%, #CCC 75%, #CCC),
+        linear-gradient(45deg, #CCC 25%, transparent 25%, transparent 75%, #CCC 75%, #CCC);
+    background-size: 30px 30px;
+    background-position: 0 0, 15px 15px;
+    margin-top: 0;
 }
 
-#upload img.preview_picture[src] + li {
+#upload img.preview_picture[src] ~ li:not(.file) {
     display: none;
+}
+
+#upload div.drop {
+    width: auto;
+    margin: 2rem;
+    display: block;
+    box-sizing: border-box;
+    border-radius: 0.5rem;
+    min-height: 30rem;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 0.5rem solid transparent;
+    border-style: dashed;
+    padding: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#upload div.drop.dropped {
+    border-color: gray;
 }

@@ -3,6 +3,7 @@ Movim Changelog
 
 v0.17.1 (trunk)
 ---------------------------
+ * Improve Upload widget, add drag & drop feature
 
 v0.17
 ---------------------------

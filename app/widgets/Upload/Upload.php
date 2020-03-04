@@ -52,6 +52,7 @@ class Upload extends Base
     {
         $view = $this->tpl();
         Dialog::fill($view->draw('_upload'));
+        $this->rpc('Upload.attachEvents');
     }
 
     public function ajaxSend($file)

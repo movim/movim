@@ -10,19 +10,30 @@
                 <input type="file" id="file" onchange="Upload.preview()"/>
             </p>
         </li>
-        <img class="preview_picture" />
-        <li>
-            <span class="primary icon gray">
-                <i class="material-icons">photo_size_select_large</i>
-            </span>
-            <p></p>
-            <p class="normal">
-                {$c->__('upload.info')}
-            </p>
-        </li>
+    </ul>
+    <ul class="list">
+        <div class="drop">
+            <img class="preview_picture" />
+            <li>
+                <span class="primary icon gray">
+                    <i class="material-icons on_desktop">system_update_alt</i>
+                    <i class="material-icons on_mobile">photo_size_select_large</i>
+                </span>
+                <p class="on_desktop">
+                    {$c->__('upload.drag_drop')}
+                </p>
+                <p>
+                    {$c->__('upload.info')}
+                </p>
+            </li>
+            <li class="file">
+                <p class="name line center"></p>
+                <p class="desc line center"></p>
+            </li>
+        </div>
     </ul>
 </section>
-<div>
+<div class="no_bar">
     <button onclick="Dialog_ajaxClear(); Upload.abort();" class="button flat">
         {$c->__('button.close')}
     </button>
