@@ -13,7 +13,7 @@
     </ul>
     <ul class="list">
         <div class="drop">
-            <img class="preview_picture" />
+            <img class="preview_picture transparent" />
             <li>
                 <span class="primary icon gray">
                     <i class="material-icons on_desktop">system_update_alt</i>

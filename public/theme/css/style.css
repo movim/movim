@@ -421,6 +421,15 @@ div#spinner {
     display: none;
 }
 
+/* Transparent images background */
+img.transparent {
+    background-color: #eee;
+    background-image: linear-gradient(45deg, #CCC 25%, transparent 25%, transparent 75%, #CCC 75%, #CCC),
+        linear-gradient(45deg, #CCC 25%, transparent 25%, transparent 75%, #CCC 75%, #CCC);
+    background-size: 30px 30px;
+    background-position: 0 0, 15px 15px;
+}
+
 /* Animations */
 
 @keyframes fadein {
