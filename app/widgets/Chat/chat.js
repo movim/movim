@@ -18,6 +18,10 @@ var Chat = {
     lastAutocomplete: null,
     searchAutocomplete: null,
 
+    // Touch
+    startX: 0,
+    translateX: 0,
+
     autocomplete: function(event, jid)
     {
         Rooms_ajaxMucUsersAutocomplete(jid);
@@ -890,6 +894,32 @@ var Chat = {
     },
     getDiscussion: function() {
         return document.querySelector('#chat_widget div.contained');
+    },
+    touchEvents: function() {
+        var chat = document.querySelector('#chat_widget');
+        var main = document.querySelector('main');
+        chat.addEventListener('touchstart', function(event) {
+            Chat.startX = event.targetTouches[0].pageX;
+        }, true);
+
+        chat.addEventListener('touchmove', function(event) {
+            moveX = event.targetTouches[0].pageX;
+            clientWidth = Math.abs(document.body.clientWidth);
+            Chat.translateX = parseInt(50 * (moveX - Chat.startX) / clientWidth);
+            event.preventDefault();
+            event.stopPropagation();
+
+            if (Chat.translateX > 0 && Chat.translateX <= 50) {
+                main.style.transform = 'translateX('+Chat.translateX+'%)';
+            }
+        }, true);
+
+        chat.addEventListener('touchend', function(event) {
+            if (Chat.translateX > 25) {
+                Chat_ajaxGet();
+            }
+            main.style.transform = '';
+        }, true);
     }
 };
 
@@ -930,6 +960,10 @@ window.addEventListener('resize', function() {
         discussion.scrollTop += Chat.lastHeight - discussion.clientHeight;
         Chat.lastHeight = discussion.clientHeight;
     }
+});
+
+movim_add_onload(function() {
+    Chat.touchEvents();
 });
 
 var state = 0;

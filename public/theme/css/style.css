@@ -184,9 +184,21 @@ main > div:first-child:nth-last-child(2) + div {
 }
 
 @media screen and (max-width: 1024px) {
-    main,
-    nav ~ main,
-    main.enabled > div:first-child:nth-last-child(2),
+    nav ~ main {
+        width: 100%;
+    }
+
+    nav ~ main.slide {
+        width: 200%;
+        transform: translateX(50%);
+        transition: transform .25s var(--standard-easing);
+    }
+
+    nav ~ main.slide.enabled {
+        transform: translateX(0);
+    }
+
+    /*main.enabled > div:first-child:nth-last-child(2),
     main:not(.enabled) > div:first-child:nth-last-child(2) + div {
         width: 100%;
     }
@@ -195,6 +207,11 @@ main > div:first-child:nth-last-child(2) + div {
     main.enabled > div:first-child:nth-last-child(2) + div,
     body > nav {
         width: 0;
+    }*/
+
+    main.slide > div:first-child:nth-last-child(2),
+    main.slide > div:first-child:nth-last-child(2) + div {
+        width: 100%;
     }
 
     main > aside + div {

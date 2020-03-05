@@ -11,7 +11,7 @@
 
 <?php $this->widget('BottomNavigation');?>
 
-<main>
+<main class="slide">
     <?php $this->widget('Upload');?>
     <?php $this->widget('Chat');?>
     <?php $this->widget('ChatActions');?>
