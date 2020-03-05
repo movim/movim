@@ -47,7 +47,6 @@ class FromModlToEloquent extends AbstractSeed
 
             if ($settings) {
                 $user->language = $settings->language;
-                $user->cssurl = $settings->cssurl;
                 $user->nightmode = (bool)$settings->nightmode;
                 $user->nsfw = (bool)$settings->nsfw;
             } else {

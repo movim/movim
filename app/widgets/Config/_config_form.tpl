@@ -94,14 +94,6 @@
         </ul>
     </div>
 
-    <br />
-    <h3>{$c->__('config.advanced')}</h3>
-
-    <div class="block">
-        <input name="cssurl" class="content" placeholder="http://myserver.com/style.css" value="{$conf->cssurl}" type="url">
-        <label for="cssurl">{$c->__('cssurl.label')}</label>
-    </div>
-
     <div class="clear padded"></div>
     <button
         type="button"

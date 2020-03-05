@@ -10,7 +10,6 @@ class Base
 {
     protected $js = [];     // Contains javascripts
     protected $css = [];    // Contains CSS files
-    protected $rawcss = []; // Contains raw CSS files links
     protected $ajax;        // Contains ajax client code
     protected $user;
     protected $name;
@@ -272,19 +271,11 @@ class Base
     }
 
     /**
-     * @brief Adds a CSS to the page.
-     */
-    protected function addrawcss(string $url)
-    {
-        $this->rawcss[] = $url;
-    }
-
-    /**
      * @brief returns the list of javascript files to be loaded for the widget.
      */
     public function loadcss(): array
     {
-        return array_merge($this->css, $this->rawcss);
+        return $this->css;
     }
 
     /*

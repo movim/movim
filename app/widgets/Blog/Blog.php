@@ -179,16 +179,6 @@ class Blog extends Base
                 $this->_next = $this->route('node', [$this->_from, $this->_node], ['page' => $this->_page + 1]);
             }
         }
-
-        if ($this->_node == 'urn:xmpp:microblog:0') {
-            $user = User::find($this->_from);
-
-            if ($user
-            && !empty($user->cssurl)
-            && Validator::url()->validate($user->cssurl)) {
-                $this->addrawcss($user->cssurl);
-            }
-        }
     }
 
     public function preparePost(\App\Post $post)

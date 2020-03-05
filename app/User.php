@@ -9,7 +9,7 @@ use App\Configuration;
 
 class User extends Model
 {
-    protected $fillable = ['id', 'language', 'nightmode', 'chatmain', 'nsfw', 'cssurl', 'nickname'];
+    protected $fillable = ['id', 'language', 'nightmode', 'chatmain', 'nsfw', 'nickname'];
     public $with = ['session', 'capability'];
     protected $keyType = 'string';
     public $incrementing = false;
@@ -114,10 +114,6 @@ class User extends Model
     {
         if (isset($config['language'])) {
             $this->language = $config['language'];
-        }
-
-        if (isset($config['cssurl'])) {
-            $this->cssurl = $config['cssurl'];
         }
 
         if (isset($config['nsfw'])) {

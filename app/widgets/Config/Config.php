@@ -106,8 +106,7 @@ class Config extends Base
     {
         $l = Movim\i18n\Locale::start();
 
-        return (Validator::in(array_keys($l->getList()))->validate($data->language->value)
-            && ($data->cssurl->value == '' || Validator::url()->validate($data->cssurl->value)));
+        return Validator::in(array_keys($l->getList()))->validate($data->language->value);
     }
 
     public function display()
