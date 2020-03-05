@@ -898,24 +898,27 @@ var Chat = {
     touchEvents: function() {
         var chat = document.querySelector('#chat_widget');
         var main = document.querySelector('main');
+        clientWidth = Math.abs(document.body.clientWidth);
+
         chat.addEventListener('touchstart', function(event) {
             Chat.startX = event.targetTouches[0].pageX;
         }, true);
 
         chat.addEventListener('touchmove', function(event) {
             moveX = event.targetTouches[0].pageX;
-            clientWidth = Math.abs(document.body.clientWidth);
-            Chat.translateX = parseInt(50 * (moveX - Chat.startX) / clientWidth);
+            Chat.translateX = parseInt(moveX - Chat.startX);
             event.preventDefault();
             event.stopPropagation();
 
-            if (Chat.translateX > 0 && Chat.translateX <= 50) {
-                main.style.transform = 'translateX('+Chat.translateX+'%)';
+            if (Chat.translateX > 0 && Chat.translateX <= clientWidth) {
+                main.style.transform = 'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, '
+                    + Chat.translateX
+                    + ', 0, 0, 1)';
             }
         }, true);
 
         chat.addEventListener('touchend', function(event) {
-            if (Chat.translateX > 25) {
+            if (Chat.translateX > (clientWidth / 2)) {
                 Chat_ajaxGet();
             }
             main.style.transform = '';
