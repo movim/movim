@@ -896,7 +896,7 @@ var Chat = {
         return document.querySelector('#chat_widget div.contained');
     },
     touchEvents: function() {
-        var chat = document.querySelector('#chat_widget');
+        /*var chat = document.querySelector('#chat_widget');
         var main = document.querySelector('main.slide');
         clientWidth = Math.abs(document.body.clientWidth);
 
@@ -923,7 +923,7 @@ var Chat = {
                 Chat_ajaxGet();
             }
             main.style.transform = '';
-        }, true);
+        }, true);*/
     }
 };
 
