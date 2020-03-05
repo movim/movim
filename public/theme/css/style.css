@@ -191,11 +191,14 @@ main > div:first-child:nth-last-child(2) + div {
     nav ~ main.slide {
         width: 200%;
         transform: translateX(50%);
-        transition: transform .25s var(--standard-easing);
     }
 
     nav ~ main.slide.enabled {
         transform: translateX(0);
+    }
+
+    nav ~ main.slide.moving {
+        transition: transform .25s var(--standard-easing);
     }
 
     /*main.enabled > div:first-child:nth-last-child(2),

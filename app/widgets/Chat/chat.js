@@ -897,18 +897,17 @@ var Chat = {
     },
     touchEvents: function() {
         var chat = document.querySelector('#chat_widget');
-        var main = document.querySelector('main');
+        var main = document.querySelector('main.slide');
         clientWidth = Math.abs(document.body.clientWidth);
 
         chat.addEventListener('touchstart', function(event) {
             Chat.startX = event.targetTouches[0].pageX;
+            main.classList.remove('moving');
         }, true);
 
         chat.addEventListener('touchmove', function(event) {
             moveX = event.targetTouches[0].pageX;
             Chat.translateX = parseInt(moveX - Chat.startX);
-            event.preventDefault();
-            event.stopPropagation();
 
             if (Chat.translateX > 0 && Chat.translateX <= clientWidth) {
                 main.style.transform = 'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, '
@@ -918,7 +917,9 @@ var Chat = {
         }, true);
 
         chat.addEventListener('touchend', function(event) {
+            main.classList.add('moving');
             if (Chat.translateX > (clientWidth / 2)) {
+                MovimTpl.hidePanel();
                 Chat_ajaxGet();
             }
             main.style.transform = '';
