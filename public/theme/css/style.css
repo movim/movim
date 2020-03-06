@@ -202,17 +202,6 @@ main > div:first-child:nth-last-child(2) + div {
         transition: transform .25s var(--standard-easing);
     }
 
-    /*main.enabled > div:first-child:nth-last-child(2),
-    main:not(.enabled) > div:first-child:nth-last-child(2) + div {
-        width: 100%;
-    }
-
-    main:not(.enabled) > div:first-child:nth-last-child(2),
-    main.enabled > div:first-child:nth-last-child(2) + div,
-    body > nav {
-        width: 0;
-    }*/
-
     main.slide > div:first-child:nth-last-child(2),
     main.slide > div:first-child:nth-last-child(2) + div {
         width: 100%;
