@@ -8,15 +8,20 @@ main > * {
 }
 
 body .drawer {
-    height: calc(100% - 10rem);
+    top: 10rem;
+    height: calc(100% - 16rem);
 }
 
 body {
-    height: calc(100% - 7rem);
+    height: calc(100% - 6rem);
 }
 
 body ul#bottomnavigation {
-    bottom: 7rem;
+    bottom: 6rem;
+}
+
+body ul.context_menu {
+    top: 3rem;
 }
 
 body #draw,
