@@ -49,7 +49,7 @@
 
 .drawer.empty + .drawer_close.button.color {
     transition-timing-function: var(--accelerate-easing);
-    transform: translateY(-120%);
+    transform: translateY(-150%);
 }
 
 .drawer form.padded {

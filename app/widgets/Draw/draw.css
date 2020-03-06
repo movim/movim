@@ -8,7 +8,7 @@
     z-index: 2;
     background-color: rgba(0, 0, 0, 0.7);
     transition: transform .3s cubic-bezier(.4,0,.2,1) .05s;
-    transform: translateY(100%);
+    transform: translateY(120%);
 }
 
 #draw.open {

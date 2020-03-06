@@ -36,7 +36,7 @@ ul#bottomnavigation li span:not(.counter) {
 
     nav.active + ul#bottomnavigation,
     ul#bottomnavigation.hidden {
-        transform: translateY(100%);
+        transform: translateY(220%);
         pointer-events: none;
     }
 

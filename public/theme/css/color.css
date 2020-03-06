@@ -19,6 +19,10 @@ body.nightmode {
     scrollbar-color: rgba(var(--movim-font), 0.1) rgba(var(--movim-background-main));
 }
 
+body {
+    background-color: var(--movim-background);
+}
+
 body > *,
 .context_menu,
 input, textarea, select {

@@ -2,3 +2,25 @@ body > nav,
 main > * {
     padding-top: 3rem;
 }
+
+.drawer + .drawer_close.button.color {
+    top: 3rem;
+}
+
+body .drawer {
+    height: calc(100% - 10rem);
+}
+
+body {
+    height: calc(100% - 7rem);
+}
+
+body ul#bottomnavigation {
+    bottom: 7rem;
+}
+
+body #draw,
+body #snap {
+    height: calc(100% - 3rem);
+    top: 3rem;
+}
