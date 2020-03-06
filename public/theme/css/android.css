@@ -1,0 +1,4 @@
+body > nav,
+main > * {
+    padding-top: 3rem;
+}

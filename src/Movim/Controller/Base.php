@@ -85,6 +85,11 @@ class Base
         $this->page->addCSS('typo.css');
         $this->page->addCSS('scrollbar.css');
 
+        // Load custom CSS for Android
+        if (isset($_SERVER['MOVIM_CLIENT']) && $_SERVER['MOVIM_CLIENT'] == 'Android') {
+            $this->page->addCSS('android.css');
+        }
+
         $this->page->addScript('movim_utils.js');
         $this->page->addScript('movim_base.js');
         $this->page->addScript('movim_electron.js');
