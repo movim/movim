@@ -66,8 +66,8 @@
             <p class="normal">{$c->__('page.configuration')}</p>
         </li>
     </a>
-    <a class="classic on_android" href="#">
-        <li onclick="Android.choosePod()">
+    <a class="classic on_android" href="movim://changepod">
+        <li>
             <span class="primary icon bubble"><i class="material-icons">dns</i></span>
             <p class="normal">{$c->__('global.change_pod')}</p>
         </li>
