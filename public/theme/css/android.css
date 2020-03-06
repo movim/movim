@@ -37,3 +37,8 @@ body #snap {
 body .button.action {
     bottom: 8rem;
 }
+
+body #preview {
+    height: calc(100% - 9rem);
+    top: 3rem;
+}

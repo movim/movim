@@ -923,6 +923,7 @@ var Chat = {
                 Chat_ajaxGet();
             }
             main.style.transform = '';
+            Chat.startX = Chat.translateX = 0;
         }, true);
     }
 };
