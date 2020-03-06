@@ -12,6 +12,10 @@ body .drawer {
     height: calc(100% - 16rem);
 }
 
+body .drawer.empty {
+    transform: translateY(120%);
+}
+
 body {
     height: calc(100% - 6rem);
 }
@@ -28,4 +32,8 @@ body #draw,
 body #snap {
     height: calc(100% - 3rem);
     top: 3rem;
+}
+
+body .button.action {
+    bottom: 8rem;
 }
