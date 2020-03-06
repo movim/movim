@@ -86,7 +86,7 @@ class Base
         $this->page->addCSS('scrollbar.css');
 
         // Load custom CSS for Android
-        if (isset($_SERVER['MOVIM_CLIENT']) && $_SERVER['MOVIM_CLIENT'] == 'Android') {
+        if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'com.android.android') {
             $this->page->addCSS('android.css');
         }
 
