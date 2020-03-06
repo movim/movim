@@ -1,3 +1,7 @@
+.on_android {
+    display: inherit;
+}
+
 body > nav,
 main > * {
     padding-top: 3rem;
@@ -9,19 +13,7 @@ main > * {
 
 body .drawer {
     top: 10rem;
-    height: calc(100% - 16rem);
-}
-
-body .drawer.empty {
-    transform: translateY(120%);
-}
-
-body {
-    height: calc(100% - 6rem);
-}
-
-body ul#bottomnavigation {
-    bottom: 6rem;
+    height: calc(100% - 10rem);
 }
 
 body ul.context_menu {
@@ -34,11 +26,7 @@ body #snap {
     top: 3rem;
 }
 
-body .button.action {
-    bottom: 8rem;
-}
-
 body #preview {
-    height: calc(100% - 9rem);
+    height: calc(100% - 3rem);
     top: 3rem;
 }

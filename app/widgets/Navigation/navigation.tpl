@@ -66,6 +66,12 @@
             <p class="normal">{$c->__('page.configuration')}</p>
         </li>
     </a>
+    <a class="classic on_android" href="#">
+        <li onclick="Android.choosePod()">
+            <span class="primary icon bubble"><i class="material-icons">dns</i></span>
+            <p class="normal">{$c->__('global.change_pod')}</p>
+        </li>
+    </a>
     <a class="classic on_mobile" href="#">
         <li onclick="MovimTpl.toggleMenu()">
             <span class="primary icon bubble"><i class="material-icons">arrow_back</i></span>
