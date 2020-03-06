@@ -896,7 +896,7 @@ var Chat = {
         return document.querySelector('#chat_widget div.contained');
     },
     touchEvents: function() {
-        /*var chat = document.querySelector('#chat_widget');
+        var chat = document.querySelector('#chat_widget');
         var main = document.querySelector('main.slide');
         clientWidth = Math.abs(document.body.clientWidth);
 
@@ -909,7 +909,7 @@ var Chat = {
             moveX = event.targetTouches[0].pageX;
             Chat.translateX = parseInt(moveX - Chat.startX);
 
-            if (Chat.translateX > 0 && Chat.translateX <= clientWidth) {
+            if (Chat.translateX > 50 && Chat.translateX <= clientWidth) {
                 main.style.transform = 'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, '
                     + Chat.translateX
                     + ', 0, 0, 1)';
@@ -918,12 +918,12 @@ var Chat = {
 
         chat.addEventListener('touchend', function(event) {
             main.classList.add('moving');
-            if (Chat.translateX > (clientWidth / 2)) {
+            if (Chat.translateX > (clientWidth / 4)) {
                 MovimTpl.hidePanel();
                 Chat_ajaxGet();
             }
             main.style.transform = '';
-        }, true);*/
+        }, true);
     }
 };
 

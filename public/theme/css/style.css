@@ -185,6 +185,7 @@ main > div:first-child:nth-last-child(2) + div {
 
 @media screen and (max-width: 1024px) {
     nav ~ main {
+        overflow-x: hidden;
         width: 100%;
     }
 
