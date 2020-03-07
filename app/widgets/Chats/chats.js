@@ -16,6 +16,7 @@ var Chats = {
             if (items[i].dataset.jid != null) {
                 items[i].onclick = function(e) {
                     Rooms.refresh();
+                    MovimUtils.addClass('ul#bottomnavigation', 'hidden');
 
                     Chat_ajaxGet(this.dataset.jid);
 
@@ -39,7 +40,7 @@ var Chats = {
                     moveX = Math.abs(parseInt(event.targetTouches[0].pageX - Chats.startX));
                     moveY = Math.abs(parseInt(event.targetTouches[0].pageY - Chats.startY));
 
-                    if (moveX > 15 && moveX > moveY && moveY < this.offsetHeight) {
+                    if (moveX > 15 && moveX > moveY && moveY < 15) {
                         if (moveX > (this.offsetWidth - 1000)/2) {
                             this.classList.add('close');
                         } else {
