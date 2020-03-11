@@ -20,7 +20,10 @@ var Chat = {
 
     // Touch
     startX: 0,
+    startY: 0,
     translateX: 0,
+    translateY: 0,
+    slideAuthorized: false,
 
     autocomplete: function(event, jid)
     {
@@ -901,18 +904,30 @@ var Chat = {
 
         chat.addEventListener('touchstart', function(event) {
             Chat.startX = event.targetTouches[0].pageX;
+            Chat.startY = event.targetTouches[0].pageY;
             chat.classList.remove('moving');
         }, true);
 
         chat.addEventListener('touchmove', function(event) {
             moveX = event.targetTouches[0].pageX;
+            moveY = event.targetTouches[0].pageY;
             delay = 20;
             Chat.translateX = parseInt(moveX - Chat.startX);
+            Chat.translateY = parseInt(moveY - Chat.startY);
 
             if (Chat.translateX > delay && Chat.translateX <= clientWidth) {
-                chat.style.transform = 'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, '
-                    + (Chat.translateX - delay)
-                    + ', 0, 0, 1)';
+                // If the horizontal movement is allowed and the vertical one is not important
+                // we authorize the slide
+                if (Chat.translateY < delay) {
+                    Chat.slideAuthorized = true;
+                }
+
+                if (Chat.slideAuthorized) {
+                    chat.style.touchAction = 'none';
+                    chat.style.transform = 'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, '
+                        + (Chat.translateX - delay)
+                        + ', 0, 0, 1)';
+                }
             }
         }, true);
 
@@ -923,7 +938,8 @@ var Chat = {
                 Chat_ajaxGet();
             }
             chat.style.transform = '';
-            Chat.startX = Chat.translateX = 0;
+            Chat.slideAuthorized = false;
+            Chat.startX = Chat.translateX = Chat.startY = Chat.translateY = 0;
         }, true);
     }
 };

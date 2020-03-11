@@ -30,7 +30,7 @@ ul#bottomnavigation li span:not(.counter) {
         display: flex;
     }
 
-    ul#bottomnavigation ~ main {
+    ul#bottomnavigation ~ main:not(.enabled) > div > div {
         padding-bottom: 6.5rem;
     }
 

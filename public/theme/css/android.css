@@ -30,3 +30,12 @@ body #preview {
     height: calc(100% - 3rem);
     top: 3rem;
 }
+
+
+@media screen and (max-width: 1024px) {
+    main.slide > div:first-child:nth-last-child(2),
+    main.slide > div:first-child:nth-last-child(2) + div {
+        height: calc(100% - 3rem);
+    }
+
+}
