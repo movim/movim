@@ -933,7 +933,7 @@ var Chat = {
 
         chat.addEventListener('touchend', function(event) {
             chat.classList.add('moving');
-            if (Chat.translateX > (clientWidth / 4)) {
+            if (Chat.translateX > (clientWidth / 4) && Chat.slideAuthorized) {
                 MovimTpl.hidePanel();
                 Chat_ajaxGet();
             }
