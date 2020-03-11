@@ -5,7 +5,7 @@ ul#bottomnavigation {
     height: auto;
     width: 100%;
     box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.2);;
-    z-index: 1;
+    z-index: 2;
     display: none;
     transition: transform .3s cubic-bezier(.4,0,.2,1);
 }
