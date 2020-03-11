@@ -190,21 +190,35 @@ main > div:first-child:nth-last-child(2) + div {
     }
 
     nav ~ main.slide {
-        width: 200%;
-        transform: translateX(50%);
-    }
-
-    nav ~ main.slide.enabled {
-        transform: translateX(0);
-    }
-
-    nav ~ main.slide.moving {
-        transition: transform .25s var(--standard-easing);
+        display: block;
     }
 
     main.slide > div:first-child:nth-last-child(2),
     main.slide > div:first-child:nth-last-child(2) + div {
         width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    main.slide > div:first-child:nth-last-child(2) {
+        z-index: 1;
+        box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.2);
+        transform: translateX(100%);
+    }
+
+    main.slide > div:first-child:nth-last-child(2).moving {
+        transition: transform .25s var(--standard-easing);
+    }
+
+    main.slide.enabled > div:first-child:nth-last-child(2) {
+        transform: translateX(0);
+    }
+
+    main.slide.enabled > div:first-child:nth-last-child(2) + div {
+        opacity: 0.3;
     }
 
     main > aside + div {

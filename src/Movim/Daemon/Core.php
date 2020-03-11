@@ -27,7 +27,7 @@ class Core implements MessageComponentInterface
         $this->input = $input;
         $this->key = \generateKey(32);
 
-        $this->setWebsocket($baseuri, $this->input->getOption('port'));
+        $this->setWebsocket($this->input->getOption('port'));
 
         $this->loop    = $loop;
         $this->baseuri = $baseuri;
@@ -46,10 +46,8 @@ class Core implements MessageComponentInterface
         $this->registerCleaner();
     }
 
-    public function setWebsocket($baseuri, $port)
+    public function setWebsocket($port)
     {
-        $explode = parse_url($baseuri);
-
         echo
             "\n".
             "--- ".colorize("Server Configuration - Apache", 'purple')." ---".

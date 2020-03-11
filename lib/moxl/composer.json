@@ -19,7 +19,7 @@
         }
     },
     "require": {
-        "php": ">=7.0.0",
-        "fabiang/sasl": "^1.0"
+        "php": ">=7.3",
+        "fabiang/sasl": "^1.0.1"
     }
 }
