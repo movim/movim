@@ -915,9 +915,6 @@ var Chat = {
             Chat.translateX = parseInt(moveX - Chat.startX);
             Chat.translateY = parseInt(moveY - Chat.startY);
 
-            event.preventDefault();
-            event.stopPropagation();
-
             if (Chat.translateX > delay && Chat.translateX <= clientWidth) {
                 // If the horizontal movement is allowed and the vertical one is not important
                 // we authorize the slide
