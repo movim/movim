@@ -20,7 +20,7 @@ body.nightmode {
 }
 
 body {
-    background-color: var(--movim-background);
+    background-color: var(--movim-gray);
 }
 
 body > *,

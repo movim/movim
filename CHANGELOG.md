@@ -5,6 +5,11 @@ v0.17.1 (trunk)
 ---------------------------
  * Improve Upload widget, add drag & drop feature
  * Remove the custom CSS blog feature
+ * Add a touch-slide event for Chat
+ * Minor UI fixes
+ * Check 7.4 compatibility
+ * Add new core contributors to About
+ * Disable "set cookies only over HTTPS"
 
 v0.17
 ---------------------------

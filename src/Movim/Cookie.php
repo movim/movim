@@ -37,7 +37,7 @@ class Cookie
             setcookie('MOVIM_SESSION_ID', $key, [
                 'expires' => self::getTime(),
                 'path' => '/',
-                'secure' => true
+                'secure' => false
             ]);
         }
     }
