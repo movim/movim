@@ -11,7 +11,7 @@ v0.17.1 (trunk)
  * Add new core contributors to About
  * Disable "set cookies only over HTTPS"
 
-v0.17
+v0.17 – Catalina
 ---------------------------
  * Remove some paddings in the UI
  * Set public url as a default body for shared Posts

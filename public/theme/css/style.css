@@ -318,6 +318,7 @@ hr.thick {
     background-image: url(../img/movim_cloud.svg);
     background-repeat: no-repeat;
     background-position: center center;
+    background-size: 10rem;
     min-height: 30rem;
 }
 
