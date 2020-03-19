@@ -249,7 +249,9 @@ class Chat extends \Movim\Widget\Base
             $this->rpc('MovimTpl.hidePanel');
             $this->rpc('Notification.current', 'chat');
             $this->rpc('MovimUtils.pushState', $this->route('chat'));
-            $this->rpc('MovimTpl.fill', '#chat_widget', $this->prepareEmpty());
+            if ($light == false) {
+                $this->rpc('MovimTpl.fill', '#chat_widget', $this->prepareEmpty());
+            }
         } else {
             if ($light == false) {
                 $this->rpc('MovimUtils.pushState', $this->route('chat', $jid));

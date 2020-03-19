@@ -935,7 +935,7 @@ var Chat = {
             chat.classList.add('moving');
             if (Chat.translateX > (clientWidth / 4) && Chat.slideAuthorized) {
                 MovimTpl.hidePanel();
-                Chat_ajaxGet();
+                Chat_ajaxGet(null, true);
             }
             chat.style.transform = '';
             Chat.slideAuthorized = false;
