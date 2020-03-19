@@ -91,10 +91,11 @@ body > nav li { /* Little hack for the navbar */
     }
 
     body > nav:not(.moving) {
-        transition: transform .25s var(--standard-easing);
+        transition: transform .25s var(--decelerate-easing);
     }
 
     body > nav.active:not(.moving) {
+        transition: transform .25s var(--accelerate-easing);
         transform: translateX(0%);
     }
 }
@@ -210,11 +211,15 @@ main > div:first-child:nth-last-child(2) + div {
     }
 
     main.slide > div:first-child:nth-last-child(2).moving {
-        transition: transform .25s var(--standard-easing);
+        transition: transform .25s var(--decelerate-easing);
     }
 
     main.slide.enabled > div:first-child:nth-last-child(2) {
         transform: translateX(0);
+    }
+
+    main.slide.enabled > div:first-child:nth-last-child(2).moving {
+        transition: transform .25s var(--accelerate-easing);
     }
 
     main.slide.enabled > div:first-child:nth-last-child(2) + div {
@@ -492,6 +497,6 @@ img.transparent {
 
 body {
     --standard-easing: cubic-bezier(0.4, 0.0, 0.2, 1);
-    --accelerate-easing: cubic-bezier(0.0, 0.0, 0.2, 1);
-    --decelerate-easing: cubic-bezier(0.4, 0.0, 1, 1);
+    --accelerate-easing: cubic-bezier(0.167, 0.167, 0, 1);
+    --decelerate-easing: cubic-bezier(1, 0, 0.833, 0.833);
 }
