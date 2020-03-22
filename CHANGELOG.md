@@ -1,7 +1,10 @@
 Movim Changelog
 ================
 
-v0.17.1 (trunk)
+v0.17.2 (trunk)
+---------------------------
+
+v0.17.1
 ---------------------------
  * Improve Upload widget, add drag & drop feature
  * Remove the custom CSS blog feature
