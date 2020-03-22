@@ -102,7 +102,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-14 10:39+0200\n"
+"POT-Creation-Date: 2020-03-22 15:18+0200\n"
 "PO-Revision-Date: 2019-11-03 09:01+0000\n"
 "Last-Translator: Besnik <besnik@programeshqip.org>\n"
 "Language-Team: Albanian (http://www.transifex.com/movim/movim/language/sq/)\n"
@@ -927,10 +927,6 @@ msgstr "Kurrë"
 #: [config]mam_saved
 msgid "Archiving preferences saved"
 msgstr "Parapëlqimet e arkivimit u ruajtën"
-
-#: [cssurl]label
-msgid "Custom CSS URL for your blog"
-msgstr "URL CSS-je vetjake për blogun tuaj"
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -1907,6 +1903,10 @@ msgstr "S’keni leje të ngarkoni kartelë"
 msgid "You exceeded the quota"
 msgstr "Keni tejkaluar kuotat"
 
+#: [upload]drag_drop
+msgid "Drag and drop your file in this area"
+msgstr ""
+
 #: [vcard]title [page]profile
 msgid "Profile"
 msgstr "Profil"
@@ -2027,6 +2027,10 @@ msgstr "Po ngarkohet…"
 #: [global]or
 msgid "Or"
 msgstr "Ose"
+
+#: [global]change_pod
+msgid "Switch to another pod"
+msgstr ""
 
 #: [page]communities
 msgid "Communities"
@@ -2857,6 +2861,9 @@ msgstr "API nuk kapet dot, riprovoni më vonë"
 #: [field]type_here
 msgid "Type here"
 msgstr "Shtypni këtu"
+
+#~ msgid "Custom CSS URL for your blog"
+#~ msgstr "URL CSS-je vetjake për blogun tuaj"
 
 #~ msgid "Your server doesn’t support XMPP Pubsub persistence."
 #~ msgstr "Shërbyesi juaj nuk mbulon <em>XMPP Pubsub persistence</em>."

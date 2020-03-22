@@ -105,7 +105,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-14 10:39+0200\n"
+"POT-Creation-Date: 2020-03-22 15:18+0200\n"
 "PO-Revision-Date: 2019-11-02 09:40+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Hungarian (http://www.transifex.com/movim/movim/language/hu/)\n"
@@ -930,10 +930,6 @@ msgstr "Soha"
 #: [config]mam_saved
 msgid "Archiving preferences saved"
 msgstr "Archiválási beállítások elmentve"
-
-#: [cssurl]label
-msgid "Custom CSS URL for your blog"
-msgstr "A blogod CSS URL-je"
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -1910,6 +1906,10 @@ msgstr ""
 msgid "You exceeded the quota"
 msgstr ""
 
+#: [upload]drag_drop
+msgid "Drag and drop your file in this area"
+msgstr ""
+
 #: [vcard]title [page]profile
 msgid "Profile"
 msgstr "Profil"
@@ -2028,6 +2028,10 @@ msgstr ""
 
 #: [global]or
 msgid "Or"
+msgstr ""
+
+#: [global]change_pod
+msgid "Switch to another pod"
 msgstr ""
 
 #: [page]communities
@@ -2859,3 +2863,6 @@ msgstr "Az API nem elérhető, próbáld újra később"
 #: [field]type_here
 msgid "Type here"
 msgstr "Ide írj"
+
+#~ msgid "Custom CSS URL for your blog"
+#~ msgstr "A blogod CSS URL-je"

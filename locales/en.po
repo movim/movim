@@ -100,7 +100,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-14 10:39+0200\n"
+"POT-Creation-Date: 2020-03-22 15:18+0200\n"
 "PO-Revision-Date: 2019-11-02 09:40+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: English (http://www.transifex.com/movim/movim/language/en/)\n"
@@ -925,10 +925,6 @@ msgstr "Never"
 #: [config]mam_saved
 msgid "Archiving preferences saved"
 msgstr "Archiving preferences saved"
-
-#: [cssurl]label
-msgid "Custom CSS URL for your blog"
-msgstr "Custom CSS URL for your blog"
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -1905,6 +1901,10 @@ msgstr "You are not allowed to upload a file"
 msgid "You exceeded the quota"
 msgstr "You exceeded the quota"
 
+#: [upload]drag_drop
+msgid "Drag and drop your file in this area"
+msgstr ""
+
 #: [vcard]title [page]profile
 msgid "Profile"
 msgstr "Profile"
@@ -2025,6 +2025,10 @@ msgstr "Loading…"
 #: [global]or
 msgid "Or"
 msgstr "Or"
+
+#: [global]change_pod
+msgid "Switch to another pod"
+msgstr ""
 
 #: [page]communities
 msgid "Communities"
@@ -2855,6 +2859,9 @@ msgstr "The API is not reachable, try again later"
 #: [field]type_here
 msgid "Type here"
 msgstr "Type here"
+
+#~ msgid "Custom CSS URL for your blog"
+#~ msgstr "Custom CSS URL for your blog"
 
 #~ msgid "Your server doesn’t support XMPP Pubsub persistence."
 #~ msgstr "Your server doesn’t support XMPP Pubsub persistence."

@@ -108,7 +108,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-14 10:39+0200\n"
+"POT-Creation-Date: 2020-03-22 15:18+0200\n"
 "PO-Revision-Date: 2019-11-02 09:40+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Italian (http://www.transifex.com/movim/movim/language/it/)\n"
@@ -933,10 +933,6 @@ msgstr ""
 #: [config]mam_saved
 msgid "Archiving preferences saved"
 msgstr ""
-
-#: [cssurl]label
-msgid "Custom CSS URL for your blog"
-msgstr "URL di CSS personalizzate per il tuo blog"
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -1912,6 +1908,10 @@ msgstr ""
 msgid "You exceeded the quota"
 msgstr ""
 
+#: [upload]drag_drop
+msgid "Drag and drop your file in this area"
+msgstr ""
+
 #: [vcard]title [page]profile
 msgid "Profile"
 msgstr "Profilo"
@@ -2032,6 +2032,10 @@ msgstr "Caricamento..."
 #: [global]or
 msgid "Or"
 msgstr "O"
+
+#: [global]change_pod
+msgid "Switch to another pod"
+msgstr ""
 
 #: [page]communities
 msgid "Communities"
@@ -2862,6 +2866,9 @@ msgstr "L'API non è raggiungibile, riprovare più tardi"
 #: [field]type_here
 msgid "Type here"
 msgstr "Digita qui"
+
+#~ msgid "Custom CSS URL for your blog"
+#~ msgstr "URL di CSS personalizzate per il tuo blog"
 
 #~ msgid "The communities, news feed and profile have been disabled for the moment."
 #~ msgstr "Le Comunità, i feed delle novità ed il profilo sono stati disabilitati per il momento."

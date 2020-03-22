@@ -117,7 +117,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-14 10:39+0200\n"
+"POT-Creation-Date: 2020-03-22 15:18+0200\n"
 "PO-Revision-Date: 2020-02-10 16:08+0000\n"
 "Last-Translator: Tom Teichler <tom@dummerdelfin.de>\n"
 "Language-Team: German (http://www.transifex.com/movim/movim/language/de/)\n"
@@ -938,10 +938,6 @@ msgstr "Nie"
 #: [config]mam_saved
 msgid "Archiving preferences saved"
 msgstr "Archivierungseinstellungen gespeichert"
-
-#: [cssurl]label
-msgid "Custom CSS URL for your blog"
-msgstr "Benutzerdefinierte CSS-URL für deinen Blog"
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -1911,6 +1907,10 @@ msgstr "Du darfst keine Datei hochladen"
 msgid "You exceeded the quota"
 msgstr "Du hast das Kontingent überschritten"
 
+#: [upload]drag_drop
+msgid "Drag and drop your file in this area"
+msgstr ""
+
 #: [vcard]title [page]profile
 msgid "Profile"
 msgstr "Profil"
@@ -2030,6 +2030,10 @@ msgstr "Lädt…"
 #: [global]or
 msgid "Or"
 msgstr "Oder"
+
+#: [global]change_pod
+msgid "Switch to another pod"
+msgstr ""
 
 #: [page]communities
 msgid "Communities"
@@ -2860,3 +2864,6 @@ msgstr "Die API ist nicht erreichbar, bitte später erneut versuchen"
 #: [field]type_here
 msgid "Type here"
 msgstr "Hier schreiben"
+
+#~ msgid "Custom CSS URL for your blog"
+#~ msgstr "Benutzerdefinierte CSS-URL für deinen Blog"

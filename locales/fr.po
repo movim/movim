@@ -109,8 +109,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-14 10:39+0200\n"
-"PO-Revision-Date: 2020-02-05 18:45+0000\n"
+"POT-Creation-Date: 2020-03-22 15:18+0200\n"
+"PO-Revision-Date: 2020-03-22 14:20+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: French (France) (http://www.transifex.com/movim/movim/language/fr_FR/)\n"
 "Language: fr_FR\n"
@@ -930,10 +930,6 @@ msgstr "Jamais"
 #: [config]mam_saved
 msgid "Archiving preferences saved"
 msgstr "Paramètres d'archivage sauvegardés"
-
-#: [cssurl]label
-msgid "Custom CSS URL for your blog"
-msgstr "URL CSS personnalisée pour votre blog"
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -1903,6 +1899,10 @@ msgstr "Vous n'êtes pas autorisé à téléverser un fichier"
 msgid "You exceeded the quota"
 msgstr "Vous avez dépassé le quota"
 
+#: [upload]drag_drop
+msgid "Drag and drop your file in this area"
+msgstr "Cliquez-déposez vos fichier sur cette zone"
+
 #: [vcard]title [page]profile
 msgid "Profile"
 msgstr "Profil"
@@ -2022,6 +2022,10 @@ msgstr "Chargement…"
 #: [global]or
 msgid "Or"
 msgstr "Ou"
+
+#: [global]change_pod
+msgid "Switch to another pod"
+msgstr "Changer de pod"
 
 #: [page]communities
 msgid "Communities"
