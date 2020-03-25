@@ -4,6 +4,7 @@ Movim Changelog
 v0.17.2 (trunk)
 ---------------------------
  * Keep the scroll to the "last read" message when opening a discussion
+ * Unify the Chat top bar design between one-to-one and chatrooms
 
 v0.17.1
 ---------------------------

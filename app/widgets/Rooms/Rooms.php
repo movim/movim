@@ -274,8 +274,12 @@ class Rooms extends Base
         $view = $this->tpl();
         $view->assign('conference', $conference);
         $view->assign('room', $room);
+        $view->assign('list', $conference->presences()
+            ->with('capability')
+            ->get());
+        $view->assign('me', $this->user->id);
 
-        Dialog::fill($view->draw('_rooms_subject_show'));
+        Drawer::fill($view->draw('_rooms_subject_show'));
     }
 
     /**
@@ -422,32 +426,6 @@ class Rooms extends Base
         $view->assign('room', $room);
 
         Dialog::fill($view->draw('_rooms_remove'));
-    }
-
-    /**
-     * @brief Display the room list
-     */
-    public function ajaxList($room)
-    {
-        if (!$this->validateRoom($room)) {
-            return;
-        }
-
-        $conference = $this->user->session->conferences()
-            ->where('conference', $room)
-            ->first();
-
-        if (!$conference) return;
-
-        $view = $this->tpl();
-        $view->assign('list', $conference->presences()
-            ->with('capability')
-            ->get());
-        $view->assign('conference', $conference);
-        $view->assign('room', $room);
-        $view->assign('me', $this->user->id);
-
-        Dialog::fill($view->draw('_rooms_list'), true);
     }
 
     /**

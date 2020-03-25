@@ -23,7 +23,6 @@
                     {if="!$conference->connected"}disabled{/if}"
                     style="background-image: url({$curl});"
                     onclick="Rooms_ajaxShowSubject('{$room|echapJS}')">
-                </span>
             {else}
                 <span class="primary icon bubble color active {$conference->name|stringToColor}
                     {if="!$conference->connected"}disabled{/if}"
@@ -31,19 +30,17 @@
                     {autoescape="off"}
                         {$conference->name|firstLetterCapitalize|addEmojis}
                     {/autoescape}
-                </span>
             {/if}
+                {if="$conference->connected"}
+                    {$count = $conference->presences()->count()}
+                    <span class="counter alt">
+                        {if="$count > 99"}99+{else}{$count}{/if}
+                    </span>
+                {/if}
+                </span>
 
             <span class="control icon show_context_menu active {if="!$conference->connected"}disabled{/if}">
                 <i class="material-icons">more_vert</i>
-            </span>
-
-            <span class="control icon active {if="!$conference->connected"}disabled{/if}" onclick="Rooms_ajaxList('{$jid|echapJS}')">
-                <i class="material-icons">group</i>
-                {if="$conference->connected"}
-                {$count = $conference->presences()->count()}
-                    <span class="counter alt">{if="$count > 99"}99+{else}{$count}{/if}</span>
-                {/if}
             </span>
 
             {if="$conference && $conference->info && $conference->info->related"}
@@ -175,7 +172,7 @@
 
             {$url = $contact->getPhoto()}
             {if="$url"}
-                <span class="primary icon bubble active
+                <span class="primary icon bubble active color
                     {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}"
                     onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')">
                     <img src="{$url}">
@@ -204,15 +201,15 @@
                 <i class="material-icons">close</i>
             </span>
 
-            <p class="line">
+            <p class="line active" onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')">
                 {if="$roster"}
                     {$roster->truename}
                 {else}
                     {$contact->truename}
                 {/if}
             </p>
-            <p class="compose line" id="{$jid|cleanupId}-state"></p>
-            <p class="line">{$contact->jid}</p>
+            <p class="compose line active" id="{$jid|cleanupId}-state" onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')"></p>
+            <p class="line active" onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')">{$contact->jid}</p>
         </li>
     </ul>
     <ul class="list context_menu active">
