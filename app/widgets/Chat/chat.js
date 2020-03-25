@@ -482,7 +482,7 @@ var Chat = {
             // => don't scroll if the user was reading previous messages
             if (scrolled && prepend !== true) {
                 setTimeout(function() {
-                    MovimTpl.scrollPanel();
+                    Chat.scrollPanel();
                 }, 20);
             }
 
@@ -515,7 +515,14 @@ var Chat = {
         Chat.setActionsButtonBehaviour();
 
         if (scroll) {
-            MovimTpl.scrollPanel();
+            Chat.scrollPanel();
+        }
+    },
+    scrollPanel : function() {
+        var selector = Chat.getDiscussion();
+
+        if (selector != null && !selector.querySelector('li.separator')) {
+            selector.scrollTop = selector.scrollHeight;
         }
     },
     appendMessage : function(idjidtime, data, prepend) {
@@ -782,6 +789,9 @@ var Chat = {
         if (messages.length > counter && counter > 0) {
             var p = messages[messages.length - counter];
             list.insertBefore(separatorNode, p.parentNode.parentNode.parentNode);
+
+            var discussion = Chat.getDiscussion();
+            discussion.scrollTop = separatorNode.offsetTop - 65;
         }
     },
     getStickerHtml: function(sticker) {

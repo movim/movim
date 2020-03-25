@@ -76,13 +76,6 @@ var MovimTpl = {
             return (selector.scrollHeight - Math.floor(selector.scrollTop) <= selector.clientHeight + 3);
         }
     },
-    scrollPanel : function() {
-        var selector = document.querySelector('main > div:first-child:nth-last-child(2) > div');
-
-        if (selector != null) {
-            selector.scrollTop = selector.scrollHeight;
-        }
-    },
     scrollPanelTop : function() {
         var selector = document.querySelector('main > div:first-child:nth-last-child(2) > div');
 

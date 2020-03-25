@@ -3,6 +3,7 @@ Movim Changelog
 
 v0.17.2 (trunk)
 ---------------------------
+ * Keep the scroll to the "last read" message when opening a discussion
 
 v0.17.1
 ---------------------------
