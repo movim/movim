@@ -292,6 +292,7 @@ class Chat extends \Movim\Widget\Base
 
             $this->prepareMessages($room, true);
             $this->rpc('Notification.current', 'chat|'.$room.'|room');
+            $this->rpc('Chat.scrollToSeparator');
         } else {
             $this->rpc('Rooms_ajaxAdd', $room);
         }
