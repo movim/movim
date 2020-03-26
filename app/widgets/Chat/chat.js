@@ -113,6 +113,8 @@ var Chat = {
         var muc = Boolean(textarea.dataset.muc);
         var jid = textarea.dataset.jid;
 
+        Chat.removeSeparator();
+
         // In case it was in edit mode
         textarea.classList.remove('edit');
 
@@ -793,6 +795,10 @@ var Chat = {
             var discussion = Chat.getDiscussion();
             discussion.scrollTop = separatorNode.offsetTop - 65;
         }
+    },
+    removeSeparator: function() {
+        var separator = Chat.getDiscussion().querySelector('li.separator');
+        if (separator) separator.remove();
     },
     getStickerHtml: function(sticker) {
         var img = document.createElement('img');

@@ -15,12 +15,12 @@
             {if="$subscription == null"}
                 <button class="button oppose green color" title="{$c->__('communityheader.subscribe')}"
                 onclick="CommunityHeader_ajaxAskSubscribe('{$server|echapJS}', '{$node|echapJS}')">
-                    {$c->__('communityheader.subscribe')}
+                    <i class="material-icons">bookmark</i> <span class="on_desktop">{$c->__('communityheader.subscribe')}</span>
                 </button>
             {else}
-                <button class="button oppose flat" title="{$c->__('communityheader.unsubscribe')}"
+                <button class="button oppose color gray" title="{$c->__('communityheader.unsubscribe')}"
                 onclick="CommunityHeader_ajaxAskUnsubscribe('{$server|echapJS}', '{$node|echapJS}')">
-                    {$c->__('communityheader.unsubscribe')}
+                    <i class="material-icons">bookmark_border</i> <span class="on_desktop">{$c->__('communityheader.unsubscribe')}</span>
                 </button>
             {/if}
         {/if}
