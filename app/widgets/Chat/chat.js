@@ -959,7 +959,6 @@ var Chat = {
                 }
 
                 if (Chat.slideAuthorized) {
-                    chat.style.touchAction = 'none';
                     chat.style.transform = 'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, '
                         + (Chat.translateX - delay)
                         + ', 0, 0, 1)';

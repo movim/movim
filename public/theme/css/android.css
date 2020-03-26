@@ -3,8 +3,14 @@
 }
 
 body > nav,
-main > * {
+main > *,
+body #chat_widget header {
     padding-top: 3rem;
+}
+
+body #chat_widget {
+    padding-top: 0;
+    height: 100%;
 }
 
 .drawer + .drawer_close.button.color {
