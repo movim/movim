@@ -262,6 +262,7 @@ class Chat extends \Movim\Widget\Base
 
             $this->prepareMessages($jid);
             $this->rpc('Notification.current', 'chat|'.$jid);
+            $this->rpc('Chat.scrollToSeparator');
         }
     }
 

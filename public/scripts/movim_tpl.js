@@ -63,25 +63,10 @@ var MovimTpl = {
     showPanel: function() {
         MovimUtils.addClass('main', 'enabled');
         MovimUtils.addClass('ul#bottomnavigation', 'hidden');
-        MovimTpl.scrollPanelTop();
     },
     hidePanel: function() {
         MovimUtils.removeClass('main', 'enabled');
         MovimUtils.removeClass('ul#bottomnavigation', 'hidden');
-    },
-    isPanelScrolled: function() {
-        var selector = document.querySelector('main > div:first-child:nth-last-child(2) > div');
-
-        if (selector != null) {
-            return (selector.scrollHeight - Math.floor(selector.scrollTop) <= selector.clientHeight + 3);
-        }
-    },
-    scrollPanelTop : function() {
-        var selector = document.querySelector('main > div:first-child:nth-last-child(2) > div');
-
-        if (selector != null) {
-            selector.scrollTop = 0;
-        }
     },
     prepend: function(selector, html) {
         target = document.querySelector(selector);

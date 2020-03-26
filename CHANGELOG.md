@@ -5,6 +5,7 @@ v0.17.2 (trunk)
 ---------------------------
  * Keep the scroll to the "last read" message when opening a discussion
  * Unify the Chat top bar design between one-to-one and chatrooms
+ * Refactor the scrolling system in Chat
 
 v0.17.1
 ---------------------------

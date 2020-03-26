@@ -4,9 +4,11 @@ var Chat = {
     date: null,
     separator: null,
     currentDate: null,
-    lastScroll: null,
-    lastHeight: null,
     edit: false,
+
+    // Scroll
+    lastHeight: null,
+    lastScroll: null,
 
     // Chat state
     composing: false,
@@ -114,6 +116,7 @@ var Chat = {
         var jid = textarea.dataset.jid;
 
         Chat.removeSeparator();
+        Chat.scrollTotally();
 
         // In case it was in edit mode
         textarea.classList.remove('edit');
@@ -159,8 +162,6 @@ var Chat = {
         document.querySelector('.chat_box span.send').classList.remove('sending');
 
         var textarea = Chat.getTextarea();
-        var discussion = Chat.getDiscussion();
-        discussion.scrollTop = discussion.scrollHeight;
         localStorage.removeItem(textarea.dataset.jid + '_message');
         Chat.clearReplace();
         Chat.toggleAction();
@@ -270,12 +271,9 @@ var Chat = {
         };
 
         textarea.oninput = function() {
-            var discussion = Chat.getDiscussion();
-            var scrolled = (discussion.scrollHeight - discussion.scrollTop === discussion.clientHeight);
             MovimUtils.textareaAutoheight(this);
             Chat.checkEmojis(this);
-
-            if (scrolled) discussion.scrollTop = discussion.scrollHeight;
+            Chat.scrollRestore();
         }
 
         textarea.onchange = function() {
@@ -391,7 +389,6 @@ var Chat = {
     setScrollBehaviour : function()
     {
         var discussion = Chat.getDiscussion();
-
         if (discussion == null) return;
 
         discussion.onscroll = function() {
@@ -404,8 +401,56 @@ var Chat = {
                     true);
             }
 
-            Chat.lastHeight = this.clientHeight;
+            Chat.setScroll();
         };
+
+        Chat.setScroll();
+    },
+    setScroll : function ()
+    {
+        var discussion = Chat.getDiscussion();
+        if (discussion == null) return;
+
+        Chat.lastHeight = discussion.scrollHeight;
+        Chat.lastScroll = discussion.scrollTop + discussion.clientHeight;
+    },
+    isScrolled : function ()
+    {
+        return Chat.lastHeight === Chat.lastScroll;
+    },
+    scrollRestore : function ()
+    {
+        var discussion = Chat.getDiscussion();
+        if (!discussion) return;
+
+        if (Chat.isScrolled()) {
+            Chat.scrollTotally();
+        } else {
+            discussion.scrollTop = Chat.lastScroll - discussion.clientHeight;
+        }
+    },
+    scrollTotally : function ()
+    {
+        var discussion = Chat.getDiscussion();
+        if (discussion == null) return;
+
+        discussion.scrollTop = discussion.scrollHeight;
+    },
+    scrollToSeparator : function ()
+    {
+        var discussion = Chat.getDiscussion();
+        if (discussion == null) return;
+
+        var separator = discussion.querySelector('.separator');
+        if (separator) {
+            discussion.scrollTop = separator.offsetTop - 65;
+            Chat.setScroll();
+        }
+    },
+    removeSeparator: function()
+    {
+        var separator = Chat.getDiscussion().querySelector('li.separator');
+        if (separator) separator.remove();
     },
     setReactionButtonBehaviour : function()
     {
@@ -456,11 +501,9 @@ var Chat = {
         var discussion = Chat.getDiscussion();
 
         if (page && Chat.checkDiscussion(page)) {
-            var scrolled = MovimTpl.isPanelScrolled();
-
             if (discussion == null) return;
 
-            Chat.lastScroll = discussion.scrollHeight;
+            Chat.setScroll();
 
             for(date in page) {
                 if (prepend === undefined || prepend === false) {
@@ -480,19 +523,14 @@ var Chat = {
                 }
             }
 
-            // Only scroll down if scroll was at the bottom before the new msg
-            // => don't scroll if the user was reading previous messages
-            if (scrolled && prepend !== true) {
-                setTimeout(function() {
-                    Chat.scrollPanel();
-                }, 20);
-            }
-
             if (prepend) {
                 // And we scroll where we were
-                var scrollDiff = discussion.scrollHeight - Chat.lastScroll;
+                var scrollDiff = discussion.scrollHeight - Chat.lastHeight;
                 discussion.scrollTop += scrollDiff;
-                Chat.lastScroll = discussion.scrollHeight;
+
+                Chat.setScroll();
+            } else {
+                Chat.scrollRestore();
             }
 
             var chat = document.querySelector('#chat_widget');
@@ -515,17 +553,6 @@ var Chat = {
         Chat.setScrollBehaviour();
         Chat.setReactionButtonBehaviour();
         Chat.setActionsButtonBehaviour();
-
-        if (scroll) {
-            Chat.scrollPanel();
-        }
-    },
-    scrollPanel : function() {
-        var selector = Chat.getDiscussion();
-
-        if (selector != null && !selector.querySelector('li.separator')) {
-            selector.scrollTop = selector.scrollHeight;
-        }
     },
     appendMessage : function(idjidtime, data, prepend) {
         if (data.body === null) return;
@@ -791,14 +818,7 @@ var Chat = {
         if (messages.length > counter && counter > 0) {
             var p = messages[messages.length - counter];
             list.insertBefore(separatorNode, p.parentNode.parentNode.parentNode);
-
-            var discussion = Chat.getDiscussion();
-            discussion.scrollTop = separatorNode.offsetTop - 65;
         }
-    },
-    removeSeparator: function() {
-        var separator = Chat.getDiscussion().querySelector('li.separator');
-        if (separator) separator.remove();
     },
     getStickerHtml: function(sticker) {
         var img = document.createElement('img');
@@ -992,11 +1012,7 @@ document.addEventListener('focus', function() {
 });
 
 window.addEventListener('resize', function() {
-    var discussion = Chat.getDiscussion();
-    if (discussion) {
-        discussion.scrollTop += Chat.lastHeight - discussion.clientHeight;
-        Chat.lastHeight = discussion.clientHeight;
-    }
+    Chat.scrollRestore();
 });
 
 movim_add_onload(function() {
