@@ -416,7 +416,7 @@ var Chat = {
     },
     isScrolled : function ()
     {
-        return Chat.lastHeight === Chat.lastScroll;
+        return Chat.lastHeight -5 <= Chat.lastScroll;
     },
     scrollRestore : function ()
     {
