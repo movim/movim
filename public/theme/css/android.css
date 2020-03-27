@@ -4,7 +4,8 @@
 
 body > nav,
 main > *,
-body #chat_widget header {
+body #chat_widget header,
+body #visio header {
     padding-top: 3rem;
 }
 
@@ -36,7 +37,6 @@ body #preview {
     height: calc(100% - 3rem);
     top: 3rem;
 }
-
 
 @media screen and (max-width: 1024px) {
     main.slide > div:first-child:nth-last-child(2),
