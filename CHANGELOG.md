@@ -7,6 +7,7 @@ v0.17.2 (trunk)
  * Unify the Chat top bar design between one-to-one and chatrooms
  * Refactor the scrolling system in Chat
  * Fix Chat drag & drop panel header and performances
+ * Add audio notifications for incoming chat messages and calls
 
 v0.17.1
 ---------------------------

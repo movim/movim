@@ -93,6 +93,45 @@
             </li>
         </ul>
     </div>
+    <br/>
+    <h3>{$c->__('config.notification_title')}</h3>
+
+    <div class="block">
+        <ul class="list">
+            <li>
+                <span class="primary icon gray">
+                    <i class="material-icons">call</i>
+                </span>
+                <span class="control">
+                    <div class="checkbox">
+                        <input
+                            {if="$conf->notificationcall"}checked{/if}
+                            type="checkbox"
+                            id="notificationcall"
+                            name="notificationcall"/>
+                        <label for="notificationcall"></label>
+                    </div>
+                </span>
+                <p class="normal line">{$c->__('config.notification_call')}</p>
+            </li>
+            <li>
+                <span class="primary icon gray">
+                    <i class="material-icons">forum</i>
+                </span>
+                <span class="control">
+                    <div class="checkbox">
+                        <input
+                            {if="$conf->notificationchat"}checked{/if}
+                            type="checkbox"
+                            id="notificationchat"
+                            name="notificationchat"/>
+                        <label for="notificationchat"></label>
+                    </div>
+                </span>
+                <p class="normal line">{$c->__('config.notification_chat')}</p>
+            </li>
+        </ul>
+    </div>
 
     <div class="clear padded"></div>
     <button

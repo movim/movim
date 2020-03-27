@@ -37,6 +37,8 @@ class Visio extends Base
 
         Dialog::fill($view->draw('_visio_dialog'));
 
+        $this->rpc('Notification.incomingCall');
+
         Notification::append(
             'call',
             $contact->truename,

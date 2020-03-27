@@ -9,7 +9,7 @@ use App\Configuration;
 
 class User extends Model
 {
-    protected $fillable = ['id', 'language', 'nightmode', 'chatmain', 'nsfw', 'nickname'];
+    protected $fillable = ['id', 'language', 'nightmode', 'chatmain', 'nsfw', 'nickname', 'notificationchat', 'notificationcall'];
     public $with = ['session', 'capability'];
     protected $keyType = 'string';
     public $incrementing = false;
@@ -126,6 +126,14 @@ class User extends Model
 
         if (isset($config['nightmode'])) {
             $this->nightmode = $config['nightmode'];
+        }
+
+        if (isset($config['notificationcall'])) {
+            $this->notificationcall = $config['notificationcall'];
+        }
+
+        if (isset($config['notificationchat'])) {
+            $this->notificationchat = $config['notificationchat'];
         }
     }
 

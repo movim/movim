@@ -112,6 +112,8 @@ class Chat extends \Movim\Widget\Base
                     4,
                     $this->route('chat', $contact->jid)
                 );
+
+                $this->rpc('Notification.incomingMessage');
             }
             // If it's a groupchat message
             elseif ($message->type == 'groupchat'
@@ -130,6 +132,8 @@ class Chat extends \Movim\Widget\Base
                     false,
                     4
                 );
+
+                $this->rpc('Notification.incomingMessage');
             } elseif ($message->type == 'groupchat') {
                 $chatStates->clearState($from, $message->resource);
             }
