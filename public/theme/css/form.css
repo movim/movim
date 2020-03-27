@@ -422,11 +422,21 @@ li.action div.action .button {
 
 @media screen and (min-width: 1025px) {
     main > div:first-child:nth-last-child(2) + div .button.action {
-        right: calc(70% - 2rem);
+        right: calc(70% - 3rem);
     }
 
     aside ~ * .button.action {
         right: calc(50% - 20rem);
+    }
+}
+
+@media screen and (min-width: 1680px) {
+    main > div:first-child:nth-last-child(2) + div .button.action {
+        right: calc(59.5% + 2rem);
+    }
+
+    aside ~ * .button.action {
+        right: calc(42.5% - 16rem);
     }
 }
 
