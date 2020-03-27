@@ -192,8 +192,8 @@ class CommunityHeader extends Base
                                            ->where('node', $node)
                                            ->first());
         $view->assign('num', $info ?
-            ($info->occupants > 0)
-                ? $info->occupants
+            ($info->items > 0)
+                ? $info->items
                 : \App\Post::where('server', $origin)
                         ->where('node', $node)
                         ->count()
