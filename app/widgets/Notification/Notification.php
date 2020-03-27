@@ -84,7 +84,6 @@ class Notification extends Base
                 $action = $group;
             }
             RPC::call('Notification.android', $title, $body, $picture, $action);
-            self::executeRPC();
         }
 
         if (array_key_exists($first, $notifs)) {

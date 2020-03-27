@@ -90,6 +90,10 @@ class Chat extends \Movim\Widget\Base
             return;
         }
 
+        if (!$message->encrypted) {
+            $this->rpc('Chat.appendMessagesWrapper', $this->prepareMessage($message, $from));
+        }
+
         if ($message->user_id == $message->jidto
         && !$history
         && $message->seen == false
@@ -137,10 +141,6 @@ class Chat extends \Movim\Widget\Base
             }
 
             $this->onPaused($chatStates->getState($from));
-        }
-
-        if (!$message->encrypted) {
-            $this->rpc('Chat.appendMessagesWrapper', $this->prepareMessage($message, $from));
         }
 
         $this->event('chat_counter', $this->user->unreads());
