@@ -36,8 +36,10 @@ var Notification = {
     },
     incomingAnswer : function ()
     {
-        Notification.audioCall.pause();
-        Notification.audioCall.currentTime = 0;
+        if (Notification.audioCall) {
+            Notification.audioCall.pause();
+            Notification.audioCall.currentTime = 0;
+        }
     },
     inhibit : function(sec) {
         Notification.inhibed = true;
