@@ -10,12 +10,16 @@ class Dialog extends Base
         $this->addjs('dialog.js');
     }
 
-    public static function fill($html = '', $scroll = false)
+    public static function fill($html = '', $scroll = false, $locked = false)
     {
         RPC::call('MovimTpl.fill', '#dialog', $html);
 
         if ($scroll) {
             RPC::call('Dialog.addScroll');
+        }
+
+        if ($locked) {
+            RPC::call('Dialog.addLocked');
         }
     }
 

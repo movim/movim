@@ -35,7 +35,7 @@ class Visio extends Base
         $view->assign('from', $data['from']);
         $view->assign('id', $data['id']);
 
-        Dialog::fill($view->draw('_visio_dialog'));
+        Dialog::fill($view->draw('_visio_dialog'), false, true);
 
         $this->rpc('Notification.incomingCall');
 

@@ -8,6 +8,7 @@ v0.17.2 (trunk)
  * Refactor the scrolling system in Chat
  * Fix Chat drag & drop panel header and performances
  * Add audio notifications for incoming chat messages and calls
+ * Add a way to lock the Dialog box, can only be closed using the action buttons
 
 v0.17.1
 ---------------------------

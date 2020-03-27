@@ -34,6 +34,7 @@ ul#bottomnavigation li span:not(.counter) {
         padding-bottom: 6.5rem;
     }
 
+    body > div.dialog:not(:empty) ~ ul#bottomnavigation,
     nav.active + ul#bottomnavigation,
     ul#bottomnavigation.hidden {
         transform: translateY(100%);

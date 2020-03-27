@@ -12,6 +12,7 @@ class VisioLink extends Base
 
     public function ajaxDecline($to)
     {
+        $this->rpc('Notification.incomingAnswer');
         $visio = new Visio;
         $visio->ajaxTerminate($to, 'decline');
     }
