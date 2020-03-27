@@ -6,6 +6,7 @@ use Movim\Session;
 
 class Notification extends Base
 {
+    public static $rpcCall = null;
     public function load()
     {
         $this->addjs('notification.js');
@@ -23,6 +24,17 @@ class Notification extends Base
     public static function toast($title)
     {
         RPC::call('Notification.toast', $title);
+    }
+
+    public static function rpcCall($rpc)
+    {
+        self::$rpcCall = $rpc;
+    }
+
+    public static function executeRPC()
+    {
+        if (self::$rpcCall) RPC::call(self::$rpcCall);
+        self::rpcCall(null);
     }
 
     /**
@@ -72,6 +84,7 @@ class Notification extends Base
                 $action = $group;
             }
             RPC::call('Notification.android', $title, $body, $picture, $action);
+            self::executeRPC();
         }
 
         if (array_key_exists($first, $notifs)) {
@@ -87,9 +100,11 @@ class Notification extends Base
         if ($first === 'chat') {
             $user = \App\User::me();
             RPC::call('Notification.counter', $first, $user->unreads(null, true));
+            self::executeRPC();
             return;
         } else {
             RPC::call('Notification.counter', $first, $notifs[$first]);
+            self::executeRPC();
         }
 
         if ($first != $key) {
@@ -100,6 +115,7 @@ class Notification extends Base
             }
 
             RPC::call('Notification.counter', $key, $notifs[$key]);
+            self::executeRPC();
         }
 
         if ($title != null) {

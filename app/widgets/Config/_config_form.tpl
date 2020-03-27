@@ -97,7 +97,7 @@
     <h3>{$c->__('config.notification_title')}</h3>
 
     <div class="block">
-        <ul class="list">
+        <ul class="list middle">
             <li>
                 <span class="primary icon gray">
                     <i class="material-icons">call</i>

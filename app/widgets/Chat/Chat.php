@@ -104,6 +104,7 @@ class Chat extends \Movim\Widget\Base
                 $roster = $this->user->session->contacts()->where('jid', $from)->first();
                 $chatStates->clearState($from);
 
+                Notification::rpcCall('Notification.incomingMessage');
                 Notification::append(
                     'chat|'.$from,
                     $roster ? $roster->truename : $contact->truename,
@@ -112,8 +113,6 @@ class Chat extends \Movim\Widget\Base
                     4,
                     $this->route('chat', $contact->jid)
                 );
-
-                $this->rpc('Notification.incomingMessage');
             }
             // If it's a groupchat message
             elseif ($message->type == 'groupchat'
@@ -123,6 +122,7 @@ class Chat extends \Movim\Widget\Base
                                    ->conferences()->where('conference', $from)
                                    ->first();
 
+                Notification::rpcCall('Notification.incomingMessage');
                 Notification::append(
                     'chat|'.$from,
                     ($conference != null && $conference->name)
@@ -132,8 +132,6 @@ class Chat extends \Movim\Widget\Base
                     false,
                     4
                 );
-
-                $this->rpc('Notification.incomingMessage');
             } elseif ($message->type == 'groupchat') {
                 $chatStates->clearState($from, $message->resource);
             }
