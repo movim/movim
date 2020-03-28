@@ -954,7 +954,7 @@ var Chat = {
             if (Chat.translateX > delay && Chat.translateX <= clientWidth) {
                 // If the horizontal movement is allowed and the vertical one is not important
                 // we authorize the slide
-                if (Chat.translateY < delay) {
+                if (Math.abs(Chat.translateY) < delay) {
                     Chat.slideAuthorized = true;
                 }
 
