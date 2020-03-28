@@ -26,7 +26,6 @@ var Chat = {
     translateX: 0,
     translateY: 0,
     slideAuthorized: false,
-    slideLocked: false,
 
     autocomplete: function(event, jid)
     {
@@ -957,11 +956,9 @@ var Chat = {
                 // we authorize the slide
                 if (Math.abs(Chat.translateY) < delay) {
                     Chat.slideAuthorized = true;
-                } else {
-                    Chat.slideLocked = true;
                 }
 
-                if (Chat.slideAuthorized && Chat.slideLocked == false) {
+                if (Chat.slideAuthorized) {
                     chat.style.transform = 'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, '
                         + (Chat.translateX - delay)
                         + ', 0, 0, 1)';
@@ -971,13 +968,12 @@ var Chat = {
 
         chat.addEventListener('touchend', function(event) {
             chat.classList.add('moving');
-            if (Chat.translateX > (clientWidth / 4) && Chat.slideAuthorized && Chat.slideLocked == false) {
+            if (Chat.translateX > (clientWidth / 4) && Chat.slideAuthorized) {
                 MovimTpl.hidePanel();
                 Chat_ajaxGet(null, true);
             }
             chat.style.transform = '';
             Chat.slideAuthorized = false;
-            Chat.slideLocked = false;
             Chat.startX = Chat.translateX = Chat.startY = Chat.translateY = 0;
         }, true);
     }
