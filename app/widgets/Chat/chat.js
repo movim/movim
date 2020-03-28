@@ -26,6 +26,7 @@ var Chat = {
     translateX: 0,
     translateY: 0,
     slideAuthorized: false,
+    slideLocked: false,
 
     autocomplete: function(event, jid)
     {
@@ -956,9 +957,11 @@ var Chat = {
                 // we authorize the slide
                 if (Math.abs(Chat.translateY) < delay) {
                     Chat.slideAuthorized = true;
+                } else {
+                    Chat.slideLocked = true;
                 }
 
-                if (Chat.slideAuthorized) {
+                if (Chat.slideAuthorized && Chat.slideLocked == false) {
                     chat.style.transform = 'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, '
                         + (Chat.translateX - delay)
                         + ', 0, 0, 1)';
@@ -974,6 +977,7 @@ var Chat = {
             }
             chat.style.transform = '';
             Chat.slideAuthorized = false;
+            Chat.slideLocked = false;
             Chat.startX = Chat.translateX = Chat.startY = Chat.translateY = 0;
         }, true);
     }
