@@ -448,7 +448,7 @@ div#spinner {
 }
 
 .show {
-    display: block;
+    display: inherit;
 }
 
 .hide {

@@ -413,6 +413,8 @@ var Chat = {
 
         Chat.lastHeight = discussion.scrollHeight;
         Chat.lastScroll = discussion.scrollTop + discussion.clientHeight;
+
+        Chat.scrollToggleButton();
     },
     isScrolled : function ()
     {
@@ -445,6 +447,20 @@ var Chat = {
         if (separator) {
             discussion.scrollTop = separator.offsetTop - 65;
             Chat.setScroll();
+        }
+    },
+    scrollToggleButton : function ()
+    {
+        var discussion = Chat.getDiscussion();
+        if (discussion == null) return;
+
+        var button = discussion.querySelector('.button.action');
+
+        console.log(button);
+        if (Chat.isScrolled()) {
+            button.classList.remove('show');
+        } else {
+            button.classList.add('show');
         }
     },
     removeSeparator: function()

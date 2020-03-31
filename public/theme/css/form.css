@@ -390,6 +390,12 @@ input[type=button].flat:focus {
     border-radius: 10rem;
 }
 
+.button.action.small {
+    height: 5rem;
+    width: 5rem;
+    line-height: 5rem;
+}
+
 .button.action,
 ul.list.actions > li > p {
     box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.23), 0 0.5rem 1.25rem rgba(0, 0, 0, 0.16);

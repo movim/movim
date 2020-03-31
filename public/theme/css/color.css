@@ -134,6 +134,7 @@ span.icon:not(.composing).status.server_error:after,
 .color.bgray    { color: white; background-color: #607d8b; border-color: #607d8b }
 
 .color.transparent { color: white; background-color: rgba(0, 0, 0, 0); }
+.color.semi { color: rgba(var(--movim-font), 0.87); background-color: rgba(var(--movim-background-main), 0.75); }
 
 form > div > input:focus:invalid,
 form > div > input:focus:required {

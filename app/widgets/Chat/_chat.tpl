@@ -243,6 +243,9 @@
 </header>
 
 <div id="{$jid|cleanupId}-discussion" class="contained {if="$muc"}muc{/if}" data-muc="{$muc}">
+    <a class="button action color small semi" onclick="Chat.scrollTotally()">
+        <i class="material-icons">expand_more</i>
+    </a>
     <section id="{$jid|cleanupId}-messages">
         <ul class="list middle spin" id="{$jid|cleanupId}-conversation"></ul>
         <div class="placeholder">

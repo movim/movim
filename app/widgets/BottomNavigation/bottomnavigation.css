@@ -47,6 +47,6 @@ ul#bottomnavigation li span:not(.counter) {
     }
 
     ul#bottomnavigation ~ main .button.action {
-        bottom: 8.5rem;
+        bottom: 8rem;
     }
 }
