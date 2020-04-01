@@ -43,24 +43,26 @@ main:not(.enabled) #chat_widget {
 
 #chat_widget ul.list.actions {
     right: 0;
-    padding: 1rem 0;
+    padding: 1rem;
     position: absolute;
-    transform: translate(-1rem, -100%);
+    transform: translate(0, -100%);
 }
 
 /* Scroll button */
 
-#chat_widget .button.action {
+#chat_widget #scroll_down.button.action {
     animation: none;
     opacity: 0;
-    transform: translateX(150%);
+    transform: scale(90%);
     bottom: 8rem;
+    pointer-events: none;
 }
 
-#chat_widget .button.action.show {
+#chat_widget #scroll_down.button.action.show {
     transition: transform 0.2s ease-in-out, opacity 0.2s;
-    transform: translateX(0);
+    transform: scale(100%);
     opacity: 1;
+    pointer-events: all;
 }
 
 /* Chat box */
