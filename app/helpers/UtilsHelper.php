@@ -583,7 +583,7 @@ function generateKey($size)
     return $hash;
 }
 
-define('DEFAULT_HTTP_USER_AGENT', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:31.0) Gecko/20100101 Firefox/31.0');
+define('DEFAULT_HTTP_USER_AGENT', 'Mozilla/5.0 (X11; Linux x86_64; rv:74.0) Gecko/20100101 Firefox/74.0');
 
 /*
  * @desc Request a simple url

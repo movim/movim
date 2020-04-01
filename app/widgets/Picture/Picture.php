@@ -34,6 +34,7 @@ class Picture extends Base
                 curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 4);
                 curl_setopt($ch, CURLOPT_BUFFERSIZE, 12800);
                 curl_setopt($ch, CURLOPT_NOPROGRESS, false);
+                curl_setopt($ch, CURLOPT_USERAGENT, DEFAULT_HTTP_USER_AGENT);
                 curl_setopt($ch, CURLOPT_PROGRESSFUNCTION, function ($downloadSize, $downloaded, $uploadSize, $uploaded) {
                     return ($downloaded > SMALL_PICTURE_LIMIT) ? 1 : 0;
                 });
