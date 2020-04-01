@@ -69,7 +69,7 @@ class SendTo extends Base
     public function ajaxGetMoreContacts(string $uri)
     {
         $contacts = $this->user->session->topContacts()->with('presence')->get();
-        $this->rpc('MovimTpl.fill', '#sendto_contacts', $this->prepareContacts($contacts, $uri));
+        $this->rpc('MovimTpl.fill', '#sendto_contacts', $this->prepareContacts($contacts, $uri, ''));
     }
 
     public function prepareContacts($contacts, string $uri, $openlink)

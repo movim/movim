@@ -678,11 +678,28 @@ class Chat extends \Movim\Widget\Base
     }
 
     /**
-     * @brief Clear the history
+     * @brief Ask to clear the history
      *
-     * @param string $room
+     * @param string $jid
      */
     public function ajaxClearHistory($jid)
+    {
+        $view = $this->tpl();
+        $view->assign('jid', $jid);
+        $view->assign('count', $this->user->messages()->where(function ($query) use ($jid) {
+            $query->where('jidfrom', $jid)
+                  ->orWhere('jidto', $jid);
+        })->count());
+
+        Dialog::fill($view->draw('_chat_clear'));
+    }
+
+    /**
+     * @brief Clear the history
+     *
+     * @param string $jid
+     */
+    public function ajaxClearHistoryConfirm($jid)
     {
         if (!$this->validateJid($jid)) {
             return;
@@ -1081,6 +1098,7 @@ class Chat extends \Movim\Widget\Base
             ->get();
 
         $view->assign('conferences', $conferences);
+        $view->assign('vcards', \App\Contact::whereIn('id', $conferences->pluck('server'))->get()->keyBy('id'));
         $view->assign('top', $top);
 
         return $view->draw('_chat_empty');
