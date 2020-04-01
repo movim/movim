@@ -1,5 +1,5 @@
 <section class="scroll">
-    <ul class="list thick">
+    <ul class="list middle">
         <li>
             {if="$conference"}
                 {$curl = $conference->getPhoto()}
@@ -35,8 +35,7 @@
                 {/if}
             </p>
         </li>
-    </ul>
-    <ul class="list middle">
+
         {if="$conference->info && $conference->info->mucpublic"}
             <li>
                 <span class="primary icon gray">
@@ -56,9 +55,6 @@
             </li>
         {/if}
     </ul>
-
-    <br />
-    <hr />
 
     <ul class="list">
         <li class="subheader">
