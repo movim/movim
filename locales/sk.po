@@ -1,7 +1,9 @@
 #
 # Translators:
+# Jaussoin Timothée <edhelas@movim.eu>, 2020
 # palica <pavol.cupka@gmail.com>, 2016
 # palica <pavol.cupka@gmail.com>, 2016
+# Slavko <linux@slavino.sk>, 2020
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -103,15 +105,15 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-22 15:18+0200\n"
-"PO-Revision-Date: 2019-11-02 09:40+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"PO-Revision-Date: 2020-04-04 13:23+0000\n"
+"Last-Translator: Slavko <linux@slavino.sk>\n"
 "Language-Team: Slovak (Slovakia) (http://www.transifex.com/movim/movim/language/sk_SK/)\n"
 "Language: sk_SK\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);\n"
-"X-Generator: Translate Toolkit 2.4.0\n"
+"X-Generator: Translate Toolkit 2.5.0\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -143,7 +145,7 @@ msgstr "API"
 
 #: [about]info
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
-msgstr "Movim je komunikačná platforma založená na protokole XMPP. Celý projekt, okrem nasledujúcich programov a zdroj je licencovaný pod"
+msgstr "Movim je komunikačná platforma založená na protokole XMPP. Celý projekt, okrem nasledujúcich programov a zdroj je vydaný pod licenciou"
 
 #: [account]title [page]account
 msgid "Account"
@@ -151,7 +153,7 @@ msgstr "Účet"
 
 #: [account]password_change_title
 msgid "Change my password"
-msgstr "Zmeniť moje heslo"
+msgstr "Zmeniť svoje heslo"
 
 #: [account]password [credentials]password [form]password [input]password
 msgid "Password"
@@ -183,131 +185,131 @@ msgstr "Zmažete svoj XMPP účet a všetky informácie s ním spojené (profil,
 
 #: [account]delete_text_confirm
 msgid "Type your full username"
-msgstr ""
+msgstr "Zadajte svoje celé meno"
 
 #: [account]delete_text_error
 msgid "Please provide a valid username."
-msgstr ""
+msgstr "Prosím, zadajte platné používateľské meno."
 
 #: [account]gateway_title
 msgid "Gateways"
-msgstr ""
+msgstr "Brány"
 
 #: [account]clear
 msgid "Leave this instance"
-msgstr ""
+msgstr "Opustiť túto inštanciu"
 
 #: [account]clear_text
 msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
-msgstr ""
+msgstr "Odstránite všetky informácie súvisiace so svojim účtom z tejto inštancie Movim (profil, kontakty a publikácie)."
 
 #: [account]clear_text_confirm
 msgid "This action will not delete your account but will disconnect you from this instance."
-msgstr ""
+msgstr "Táto akcia neodstráni váš účet, ale odpojí ho od tejto inštancie."
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
-msgstr ""
+msgstr "Vytvoriť nový účet"
 
 #: [create]notfound
 msgid "No account creation form found on the server"
-msgstr ""
+msgstr "Nebol nájdený registračný formulár servera"
 
 #: [create]server_on
 msgid "on"
-msgstr ""
+msgstr "na"
 
 #: [create]successfull
 msgid "Your acccount has been successfully registered"
-msgstr ""
+msgstr "Váš účet bol úspešne registrovaný"
 
 #: [create]loading
 msgid "Loading"
-msgstr ""
+msgstr "Načítanie"
 
 #: [create]placeholder
 msgid "…and start playing"
-msgstr ""
+msgstr "…a začnite sa zabávať"
 
 #: [error]not_acceptable
 msgid "Not Acceptable"
-msgstr ""
+msgstr "Neprijateľné"
 
 #: [error]service_unavailable
 msgid "The registration system of this server is currently unavailable"
-msgstr ""
+msgstr "Registračný systém tohoto servera nie je momentálne dostupný"
 
 #: [error]forbidden
 msgid "Registration forbidden"
-msgstr ""
+msgstr "Registrácia zakázaná"
 
 #: [adhoc]title
 msgid "Actions"
-msgstr ""
+msgstr "Akcie"
 
 #: [adhoc]completed
 msgid "Action completed"
-msgstr ""
+msgstr "Akcia dokončená"
 
 #: [admin]general
 msgid "General Settings"
-msgstr ""
+msgstr "Všeobecné nastavenia\t"
 
 #: [general]theme
 msgid "Theme"
-msgstr ""
+msgstr "Téma"
 
 #: [general]language
 msgid "Default language"
-msgstr ""
+msgstr "Predvolený jazyk"
 
 #: [general]log_verbosity
 msgid "Log verbosity"
-msgstr ""
+msgstr "Podrobnosť záznamu"
 
 #: [restrictsuggestions]title
 msgid "Restrict suggestions"
-msgstr ""
+msgstr "Obmedziť odporúčania"
 
 #: [restrictsuggestions]text
 msgid "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
-msgstr ""
+msgstr "Odporúčať len miestnosti, komunity a ostatný obsah zo servera XMPP používateľa a jeho súvisiacich služieb"
 
 #: [chatonly]title
 msgid "Chat only"
-msgstr ""
+msgstr "Len chat"
 
 #: [chatonly]text
 msgid "Disable all the social feature (Communities, Blog…) and keep only the chat ones"
-msgstr ""
+msgstr "Vypnúť všetky sociálne funkcie (Komunity, Blog…) a ponechať len chat"
 
 #: [credentials]title
 msgid "Administration Credential"
-msgstr ""
+msgstr "Prihlasovacie údaje správcu"
 
 #: [credentials]username [input]username
 msgid "Username"
-msgstr ""
+msgstr "Meno používateľa"
 
 #: [credentials]re_password
 msgid "Retype password"
-msgstr ""
+msgstr "Zopakujte heslo"
 
 #: [whitelist]title
 msgid "Whitelisted XMPP Servers"
-msgstr ""
+msgstr "Povolené servery XMPP"
 
 #: [whitelist]info1
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
-msgstr ""
+msgstr "Ak chcete vo svojom Movim zadať zoznam povolených serverov XMPP a zakázať na zo všetkých ostatných, prosím zadajte tu ich doménové mená, oddelené čiarkou (napr.: movim.eu,jabber.fr)"
 
 #: [whitelist]info2
 msgid "Leave this field blank if you allow the access to all the XMPP accounts."
-msgstr ""
+msgstr "Ponechajte toto pole prázdne na povolenie prístupu zo všetkých účtov XMPP."
 
 #: [whitelist]label
 msgid "List of whitelisted XMPP servers"
-msgstr ""
+msgstr "Zoznam povolených serverov XMPP"
 
 #: [information]title
 msgctxt "[information]title"
@@ -316,19 +318,19 @@ msgstr "Informácia"
 
 #: [information]description [communityconfig]description
 msgid "Description"
-msgstr ""
+msgstr "Popis"
 
 #: [information]description_placeholder
 msgid "General description of the instance"
-msgstr ""
+msgstr "Všeobecný popis tejto inštancie"
 
 #: [information]info1
 msgid "This message will be displayed on the login page. It can be used to link the Terms and Conditions of your Movim instance for example."
-msgstr ""
+msgstr "Táto správa bude zobrazená na prihlasovacej stránke. Môže byť použitá napr. na odkazy na Požiadavky a podmienky svojej inštancie Movim."
 
 #: [information]info2
 msgid "Leave this field blank if you don’t want to show any message."
-msgstr ""
+msgstr "Ponechajte toto pole prázdne, ak nechcete zobraziť žiadnu správu."
 
 #: [information]label
 msgctxt "[information]label"
@@ -337,175 +339,175 @@ msgstr "Informácia"
 
 #: [xmpp]title
 msgid "Default XMPP server"
-msgstr ""
+msgstr "Predvolený server XMPP"
 
 #: [xmpp]domain
 msgid "Main XMPP server domain"
-msgstr ""
+msgstr "Hlavná doména servera XMPP"
 
 #: [xmpp]description
 msgid "Main XMPP server description"
-msgstr ""
+msgstr "Popis hlavného servera XMPP"
 
 #: [xmpp]country
 msgid "Main XMPP server country"
-msgstr ""
+msgstr "Krajina hlavného servera XMPP"
 
 #: [xmpp]country_pick
 msgid "Pick a country in the list"
-msgstr ""
+msgstr "Zvoľte krajinu zo zoznamu"
 
 #: [log]empty
 msgid "Empty"
-msgstr ""
+msgstr "Prázdny"
 
 #: [log]syslog
 msgid "Syslog"
-msgstr ""
+msgstr "Syslog"
 
 #: [log]syslog_files
 msgid "Syslog and files"
-msgstr ""
+msgstr "Syslog a súbory"
 
 #: [adminsessions]title
 msgid "Sessions"
-msgstr ""
+msgstr "Relácie"
 
 #: [admin]compatibility
 msgid "General Overview"
-msgstr ""
+msgstr "Všeobecný prehľad"
 
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim’s %s directory"
-msgstr ""
+msgstr "Práva čítania a zápisu webového servera v adresári Movim %s"
 
 #: [compatibility]websocket
 msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
-msgstr ""
+msgstr "Chyba spojenia WebSocket, skontrolujte, že je spustený a dosiahnuteľný démon Movim"
 
 #: [schema]browser
 msgid "Browser"
-msgstr ""
+msgstr "Prehliadač"
 
 #: [schema]movim
 msgid "Movim Core"
-msgstr ""
+msgstr "Základ Movim"
 
 #: [schema]daemon
 msgid "Movim Daemon"
-msgstr ""
+msgstr "Démon Movim"
 
 #: [schema]database
 msgid "Database"
-msgstr ""
+msgstr "Databáza"
 
 #: [schema]xmpp
 msgid "XMPP"
-msgstr ""
+msgstr "XMPP"
 
 #: [api]info
 msgid "Here you can register your pod on the official %sMovim API%s"
-msgstr ""
+msgstr "Tu môžete registrovať svoj POD v oficiálnom %sAPI Movim%s"
 
 #: [api]register
 msgid "Your pod is not registered on the API"
-msgstr ""
+msgstr "Váš POD nie je registrovaný v API"
 
 #: [api]registered
 msgid "Your pod is registered on the API"
-msgstr ""
+msgstr "Váš POD je registrovaný v API"
 
 #: [api]wait
 msgid "Your pod is not yet validated"
-msgstr ""
+msgstr "Váš POD nie je overený "
 
 #: [api]validated
 msgid "Your pod is validated"
-msgstr ""
+msgstr "Váš POD je overený"
 
 #: [api]unregister
 msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
-msgstr ""
+msgstr "Požiadali ste o odstránenie z API, požiadavka bude spracovaná za niekoľko hodín"
 
 #: [api]conf_updated [config]updated
 msgid "Configuration updated"
-msgstr ""
+msgstr "Konfigurácia uložená"
 
 #: [avatar]file
 msgid "File"
-msgstr ""
+msgstr "Súbor"
 
 #: [avatar]use_it
 msgid "Use it"
-msgstr ""
+msgstr "Použiť"
 
 #: [avatar]webcam
 msgid "Webcam"
-msgstr ""
+msgstr "Webkamera"
 
 #: [avatar]cheese
 msgid "Cheese!"
-msgstr ""
+msgstr "Cheese!"
 
 #: [avatar]snapshot
 msgid "Take a webcam snapshot"
-msgstr ""
+msgstr "Urobiť snímok kamery"
 
 #: [avatar]updated
 msgid "Avatar Updated"
-msgstr ""
+msgstr "Avatar aktualizovaný"
 
 #: [avatar]not_updated
 msgid "Avatar Not Updated"
-msgstr ""
+msgstr "Avatar neaktualizovaný"
 
 #: [avatar]missing
 msgid "No avatar defined yet"
-msgstr ""
+msgstr "Avatqar ešte nie je definovaný"
 
 #: [blog]title [feed]title
 msgid "%s’s feed"
-msgstr ""
+msgstr "Kanál: %s"
 
 #: [blog]private
 msgid "This content is private, please login to see it"
-msgstr ""
+msgstr "Tento obsah je súkromný, prosím prihláste sa na jeho zobrazenie"
 
 #: [message]published
 msgid "Message Published"
-msgstr ""
+msgstr "Správa uverejnená"
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
-msgstr ""
+msgstr "Vašu správu nemožno odoslať, prosím, skúste neskôr"
 
 #: [message]encrypted
 msgid "Encrypted message"
-msgstr ""
+msgstr "Šifrovaná správa"
 
 #: [message]retracted
 msgid "Retracted message"
-msgstr ""
+msgstr "Odvolaná správa"
 
 #: [message]composing
 msgid "Composing…"
-msgstr ""
+msgstr "Píše…"
 
 #: [message]paused
 msgid "Paused…"
-msgstr ""
+msgstr "Prerušil…"
 
 #: [message]gone
 msgid "Contact gone"
-msgstr ""
+msgstr "Kontakt stratený"
 
 #: [message]history
 msgid "%s messages retrieved"
-msgstr ""
+msgstr "Prijaté správy: %S"
 
 #: [message]edit_help
 msgid "↑ to edit your previous message"
-msgstr ""
+msgstr "↑ na úpravu predošlej správy"
 
 #: [message]emoji_help
 msgid ":shortcut: to insert an emoji"
@@ -513,492 +515,492 @@ msgstr ""
 
 #: [chat]attention
 msgid "%s needs your attention"
-msgstr ""
+msgstr "Vyžaduje pozornosť: %s"
 
 #: [chat]placeholder
 msgid "Your message here…"
-msgstr ""
+msgstr "Vaša správa tu…"
 
 #: [chat]smileys
 msgid "Smileys"
-msgstr ""
+msgstr "Smailíky"
 
 #: [chat]frequent
 msgid "Frequent contacts"
-msgstr ""
+msgstr "Časté kontakty"
 
 #: [chat]new_title
 msgid "Nothing here yet…"
-msgstr ""
+msgstr "Zatiaľ tu nič nie je…"
 
 #: [chat]new_text
 msgid "Don’t be shy, send a first message to start the discussion"
-msgstr ""
+msgstr "Nehanbite sa a pošlite prvú správu, ktorá začne diskusiu"
 
 #: [chat]invitation
 msgid "You received an invitation to join a chatroom"
-msgstr ""
+msgstr "Bola Vám doručená pozvánka na vstup do chatu"
 
 #: [chat]invitation_join
 msgid "Join %s"
-msgstr ""
+msgstr "Vstúpiť do %s"
 
 #: [chat]profile
 msgid "See the profile"
-msgstr ""
+msgstr "Pozrieť profil"
 
 #: [chat]clear
 msgid "Clear the history"
-msgstr ""
+msgstr "Vymazať históriu"
 
 #: [chat]edit_previous
 msgid "Edit last message"
-msgstr ""
+msgstr "Upraviť poslednú správu"
 
 #: [chat]report_abuse
 msgid "Report abuse"
-msgstr ""
+msgstr "Nahlásiť obťažovanie"
 
 #: [chat]jingle_start
 msgid "Call started"
-msgstr ""
+msgstr "Hovor začal"
 
 #: [chat]jingle_end
 msgid "Call ended"
-msgstr ""
+msgstr "Hovor skončil"
 
 #: [chat]publish_error
 msgid "An error occured when sending the message"
-msgstr ""
+msgstr "Nastala chyba pri odosielaní správy"
 
 #: [chat]mam_retrieval
 msgid "Synchronizing the history, please wait…"
-msgstr ""
+msgstr "Synchronizácia histórie, prosím počkajte…"
 
 #: [chatroom]members
 msgid "Members"
-msgstr ""
+msgstr "Členovia"
 
 #: [chatroom]connected [chatrooms]connected
 msgid "Connected to the chatroom"
-msgstr ""
+msgstr "Pripojený do miestnosti"
 
 #: [chatroom]disconnected [chatrooms]disconnected
 msgid "Disconnected from the chatroom"
-msgstr ""
+msgstr "Odpojený z miestnosti"
 
 #: [chatroom]config [communityaffiliation]configuration [page]configuration
 msgid "Configuration"
-msgstr ""
+msgstr "Konfigurácia"
 
 #: [chatroom]config_saved [communityaffiliation]config_saved
 msgid "Configuration saved"
-msgstr ""
+msgstr "Konfigurácia uložená"
 
 #: [chatroom]subject
 msgid "Subject"
-msgstr ""
+msgstr "Predmet"
 
 #: [chatroom]subject_changed
 msgid "Subject changed"
-msgstr ""
+msgstr "Predmet zmenený"
 
 #: [chatroom]administration [page]administration
 msgid "Administration"
-msgstr ""
+msgstr "Asministrácia"
 
 #: [chats]empty_title
 msgid "No chats yet…"
-msgstr ""
+msgstr "zatiaľ žiadne chaty…"
 
 #: [chats]empty
 msgid "Start a new conversation by clicking on the %s button."
-msgstr ""
+msgstr "začnite novú konverzáciu kliknutím na tlačidlo %s."
 
 #: [chats]add
 msgid "Chat with a contact"
-msgstr ""
+msgstr "Chatovať s kontaktom"
 
 #: [chats]me
 msgid "Me"
-msgstr ""
+msgstr "Ja"
 
 #: [button]chat
 msgid "Chat"
-msgstr ""
+msgstr "Chat"
 
 #: [button]new
 msgid "New conversation"
-msgstr ""
+msgstr "Nové konverzácie"
 
 #: [communities]empty_text
 msgid "Discover, follow and share"
-msgstr ""
+msgstr "Objavte, sledujte a zdieľajte"
 
 #: [communities]counter
 msgid "%s communities"
-msgstr ""
+msgstr "Komunity: %s"
 
 #: [communities]search_server
 msgid "Search for a new server"
-msgstr ""
+msgstr "Nájsť nový server"
 
 #: [communities]servers
 msgid "Communities servers"
-msgstr ""
+msgstr "Komunitné servery"
 
 #: [communities]disco
 msgid "Communities server discovered"
-msgstr ""
+msgstr "Objavené komunitné servery"
 
 #: [communities]disco_error
 msgid "This server doesn’t exists"
-msgstr ""
+msgstr "Tento server neexistuje"
 
 #: [communities]interesting
 msgid "Communities you might like"
-msgstr ""
+msgstr "Komunity, ktoré sa Vám môžu páčiť"
 
 #: [communitiesserver]created
 msgid "Community created successfully"
-msgstr ""
+msgstr "Komunita úspešne vytvorená"
 
 #: [communitiesserver]empty_server
 msgid "There is no Communities yet on this server."
-msgstr ""
+msgstr "Tento server nemá zatiaľ žiadne komunity."
 
 #: [communitiesserver]add
 msgid "Create a new community on %s"
-msgstr ""
+msgstr "Vytvoriť novú komunitu na %s"
 
 #: [communitiesserver]name
 msgid "Community name"
-msgstr ""
+msgstr "Nýzov komunity"
 
 #: [communitiesserver]name_example
 msgid "My Little Pony - Fan Club"
-msgstr ""
+msgstr "Môj jednorožec - fanklub"
 
 #: [communitiesserver]name_error
 msgid "Please provide a valid community name (4 characters minimum)"
-msgstr ""
+msgstr "Prosím, zadajte platný názov komunity (min. 4 znaky)"
 
 #: [communitiesserver]no_creation
 msgid "You cannot create a new community on this server"
-msgstr ""
+msgstr "Nemôžete vytvárať nové komunity na tomto serveri"
 
 #: [communitiesservers]empty_title
 msgid "No Communities Servers yet…"
-msgstr ""
+msgstr "Zatiaľ žiadne komunitné servery…"
 
 #: [communitiesservers]empty_text
 msgid "It seems that we can't find any communities for the moment"
-msgstr ""
+msgstr "Zdá sa, že teraz nemožno nájsť žiadne komunity"
 
 #: [communityaffiliation]subscriptions
 msgid "Subscriptions"
-msgstr ""
+msgstr "Prihlásenia"
 
 #: [communityaffiliation]deleted
 msgid "Community deleted successfully"
-msgstr ""
+msgstr "Komunita úspešne odstránená"
 
 #: [communityaffiliation]delete_title
 msgid "Delete the community"
-msgstr ""
+msgstr "Odstrániť komunitu"
 
 #: [communityaffiliation]delete_text
 msgid "You are going to delete the following community. Please confirm your action."
-msgstr ""
+msgstr "Odstraňujete nasledujúcu komunitu. Prosím, potvrďte svoju akciu"
 
 #: [communityaffiliation]delete_clean_text
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
-msgstr ""
+msgstr "Zdá sa, že táto komunita už neexistuje. Chcete ju odstrániť zo svojich odberov?"
 
 #: [communityaffiliation]config_error
 msgid "Error during the application of the node configuration"
-msgstr ""
+msgstr "Chyba pri aplikácií nastavenia uzla"
 
 #: [communityaffiliation]owners
 msgid "Owners"
-msgstr ""
+msgstr "Vlastníci"
 
 #: [communityaffiliation]publishers
 #: [communityconfig]publish_model_publishers_title
 msgid "Publishers"
-msgstr ""
+msgstr "Vydavatelia"
 
 #: [communityaffiliation]roles
 msgid "Roles"
-msgstr ""
+msgstr "Role"
 
 #: [communityaffiliation]role_set
 msgid "Role correctly set"
-msgstr ""
+msgstr "Role správne nastavené"
 
 #: [communityconfig]publication
 msgid "Publication"
-msgstr ""
+msgstr "Uverejnenia"
 
 #: [communityconfig]publish_model_open_title
 msgid "Open"
-msgstr ""
+msgstr "Otvorené"
 
 #: [communityconfig]publish_model_open_text
 msgid "Everyone can publish"
-msgstr ""
+msgstr "Každý môže uverejňovať"
 
 #: [communityconfig]publish_model_publishers_text
 msgid "The publishers can publish"
-msgstr ""
+msgstr "Vydavatelia môžu uverejňovať"
 
 #: [communityconfig]publish_model_subscribers_title
 msgid "Subscribers"
-msgstr ""
+msgstr "Odberatelia"
 
 #: [communityconfig]publish_model_subscribers_text
 msgid "The subscribers can publish"
-msgstr ""
+msgstr "Odberatelia môžu uverejňovať"
 
 #: [communitydata]sub
 msgid "%s subscribers"
-msgstr ""
+msgstr "Odberateľov: %s"
 
 #: [communitydata]num
 msgid "%s posts"
-msgstr ""
+msgstr "Príspevkov: %s"
 
 #: [communitydata]public
 msgid "Public page"
-msgstr ""
+msgstr "Verejná stránka"
 
 #: [communitydata]publishmodel_publishers
 msgid "Only publishers can publish"
-msgstr ""
+msgstr "Len vydavatelia môžu uverejňovať"
 
 #: [communitydata]publishmodel_subscribers
 msgid "Only subscribers can publish"
-msgstr ""
+msgstr "Len odberatelia môžu uverejňovať"
 
 #: [communityheader]subscribe
 msgid "Subscribe"
-msgstr ""
+msgstr "Odoberať"
 
 #: [communityheader]unsubscribe
 msgid "Unsubscribe"
-msgstr ""
+msgstr "Neodoberať"
 
 #: [communityheader]subscribed
 msgid "Subscribed"
-msgstr ""
+msgstr "Odoberané"
 
 #: [communityheader]unsubscribed
 msgid "Unsubscribed"
-msgstr ""
+msgstr "Neodoberané"
 
 #: [communityheader]subscription_unsupported
 msgid "The subscriptions are disabled for this community"
-msgstr ""
+msgstr "Odbery tejto komunity sú vypnuté"
 
 #: [communityheader]label_label
 msgid "Give a label for this community"
-msgstr ""
+msgstr "Zadajte menovku tejto komunity"
 
 #: [communityheader]label_placeholder
 msgid "My Community Name"
-msgstr ""
+msgstr "Moje meno komunity"
 
 #: [communityheader]share_subscription
 msgid "Share this subscription publicly"
-msgstr ""
+msgstr "zdieľať tento odber verejne"
 
 #: [communityheader]share_subscription_text
 msgid "It will appear on your profile"
-msgstr ""
+msgstr "Bude zobrazený vo Vašom profile"
 
 #: [communityheader]unsubscribe_text
 msgid "You are going to unsubscribe from this community"
-msgstr ""
+msgstr "Odhlasujete sa z odberu tejto komunity"
 
 #: [communityheader]sure [delete]title
 msgid "Are you sure?"
-msgstr ""
+msgstr "Ste si istý?"
 
 #: [communityposts]nsfw_title
 msgid "Adult content blocked"
-msgstr ""
+msgstr "Obsah pre dospelých blokovaný"
 
 #: [communityposts]nsfw_message
 msgid "Some adult content has been blocked on this page. You can enable the display of adult content in the configuration page."
-msgstr ""
+msgstr "nejaký obsah pre dospelých bol na tejto stránke blokovaný. ?ôžete povoliť zobrazenie odbahu pre dospelých v stránke konfigurácie."
 
 #: [communitysubscriptions]subscriptions
 msgid "My Subscriptions"
-msgstr ""
+msgstr "Moje odbery"
 
 #: [communitysubscriptions]empty_title
 msgid "Hello"
-msgstr ""
+msgstr "Ahoj"
 
 #: [communitysubscriptions]empty_text1
 msgid "Here you will be able to manage all your subscriptions."
-msgstr ""
+msgstr "Tu môžete spracovať svoje odbery."
 
 #: [communitysubscriptions]empty_text2
 msgid "You don’t have any group subscriptions yet."
-msgstr ""
+msgstr "zatiaľ nemáte žiadne skupiny odberov."
 
 #: [config]general
 msgid "General"
-msgstr ""
+msgstr "Všeobecné"
 
 #: [config]language
 msgid "Language"
-msgstr ""
+msgstr "Jazyk"
 
 #: [config]roster
 msgid "Roster display"
-msgstr ""
+msgstr "Zobrazenie kontaktov"
 
 #: [config]roster_show
 msgid "Show the offline contacts"
-msgstr ""
+msgstr "Zobraziť odpojené kontakty"
 
 #: [config]roster_hide
 msgid "Hide the offline contacts"
-msgstr ""
+msgstr "Skryť odpojené kontakty"
 
 #: [config]appearence
 msgid "Appearence"
-msgstr ""
+msgstr "Vzhľad"
 
 #: [config]not_valid
 msgid "Configuration invalid"
-msgstr ""
+msgstr "Neplatné nastavenia"
 
 #: [config]advanced
 msgid "Advanced Configuration"
-msgstr ""
+msgstr "Pokročilé nastavenia"
 
 #: [config]nsfw
 msgid "Display adult content"
-msgstr ""
+msgstr "Zobraziť obsah pre dospelých"
 
 #: [config]nsfw_text
 msgid "Will allow you to read the posts tagged with the #nsfw tag"
-msgstr ""
+msgstr "Dovolí vám čítať príspevky označené značkou #nsfw"
 
 #: [config]night_mode
 msgid "Night Mode"
-msgstr ""
+msgstr "Nočný režim"
 
 #: [config]night_mode_text
 msgid "Use dark colors to rest your eyes"
-msgstr ""
+msgstr "Použiť tmavé farby, na oddýchnutie očiam"
 
 #: [config]chatmain
 msgid "Main chat page"
-msgstr ""
+msgstr "Hlavná stránka chatu"
 
 #: [config]chatmain_text
 msgid "Make the chat page as the default one"
-msgstr ""
+msgstr "Nastaviť stránku chatu ako predvolenú"
 
 #: [config]mam
 msgid "Archiving preferences"
-msgstr ""
+msgstr "Nastavenia archivovania"
 
 #: [config]mam_text
 msgid "Server-side archiving preferences"
-msgstr ""
+msgstr "Archivovanie na strane servera"
 
 #: [config]mam_always
 msgid "Always"
-msgstr ""
+msgstr "Vždy"
 
 #: [config]mam_never
 msgid "Never"
-msgstr ""
+msgstr "Nikdy"
 
 #: [config]mam_saved
 msgid "Archiving preferences saved"
-msgstr ""
+msgstr "nastavenia archivovania uložené"
 
 #: [confirm]title
 msgid "Confirmation of authentication"
-msgstr ""
+msgstr "Potvrdenie autentifikcáie"
 
 #: [confirm]description
 msgid "The following platform would like your confirmation to authentify this account"
-msgstr ""
+msgstr "nasledujúca platforma by chcela potvrdenie autenticity tohoto účtu"
 
 #: [confirm]code
 msgid "Authentication code"
-msgstr ""
+msgstr "Autentifikačný kód"
 
 #: [roster]add_title
 msgid "Add a contact"
-msgstr ""
+msgstr "Pridať kontakt"
 
 #: [roster]add_contact_info1
 msgid "Enter the Jabber ID of your contact."
-msgstr ""
+msgstr "Zadajte Jabber ID kontaktu."
 
 #: [roster]add_contact_info2
 msgid "Press enter to validate."
-msgstr ""
+msgstr "Stlačte enter na overenie."
 
 #: [roster]added
 msgid "Contact added"
-msgstr ""
+msgstr "Kontakt pridaný"
 
 #: [roster]updated
 msgid "Contact updated"
-msgstr ""
+msgstr "Kontakt upravený"
 
 #: [roster]deleted
 msgid "Contact deleted"
-msgstr ""
+msgstr "Kontakt odstránený"
 
 #: [general]legend
 msgid "General Information"
-msgstr ""
+msgstr "Všeobecné informácie"
 
 #: [general]name [chatrooms]name
 msgid "Name"
-msgstr ""
+msgstr "Meno"
 
 #: [general]nickname [chatrooms]nickname
 msgid "Nickname"
-msgstr ""
+msgstr "Prezývky"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
-msgstr ""
+msgstr "Dátum narodenia"
 
 #: [general]gender
 msgid "Gender"
-msgstr ""
+msgstr "Pohlavie"
 
 #: [general]marital
 msgid "Marital Status"
-msgstr ""
+msgstr "Rodinný stav"
 
 #: [general]email
 msgid "Email"
-msgstr ""
+msgstr "Email"
 
 #: [general]website
 msgid "Website"
-msgstr ""
+msgstr "Webová stránka"
 
 #: [general]about
 msgid "About Me"
-msgstr ""
+msgstr "O mne"
 
 #: [general]accounts
 msgid "Other Accounts"
-msgstr ""
+msgstr "Ostatné účty"
 
 #: [general]tune
 msgid "Is Listening"
@@ -1006,19 +1008,19 @@ msgstr ""
 
 #: [position]legend
 msgid "Geographic Position"
-msgstr ""
+msgstr "Geografická pozícia"
 
 #: [position]locality
 msgid "Locality"
-msgstr ""
+msgstr "Lokalita"
 
 #: [position]country
 msgid "Country"
-msgstr ""
+msgstr "Krajina"
 
 #: [mood]title
 msgid "Mood"
-msgstr ""
+msgstr "Nálada"
 
 #: [mood]im
 msgid "I’m "
@@ -1030,163 +1032,163 @@ msgstr ""
 
 #: [last]title
 msgid "Last seen"
-msgstr ""
+msgstr "Naposledy videný"
 
 #: [clients]title
 msgid "Clients information"
-msgstr ""
+msgstr "Informácie o klientovi"
 
 #: [explore]last_registered
 msgid "Last registered"
-msgstr ""
+msgstr "naposledy registrovaný"
 
 #: [explore]explore
 msgid "Find some new friends"
-msgstr ""
+msgstr "Nájsť nových priateľov"
 
 #: [edit]title [button]edit
 msgid "Edit"
-msgstr ""
+msgstr "Upraviť"
 
 #: [edit]alias
 msgid "Alias"
-msgstr ""
+msgstr "Alias"
 
 #: [edit]group
 msgid "Group"
-msgstr ""
+msgstr "Skupina"
 
 #: [delete]text
 msgid "You are going to delete one of your contacts, please confirm your action"
-msgstr ""
+msgstr "odstraňujete jeden zo svojich kontaktov, prosím, potvrďte svoju akciu"
 
 #: [age]years
 msgid "%s years"
-msgstr ""
+msgstr "%s rokov"
 
 #: [blog]last
 msgid "Last public post"
-msgstr ""
+msgstr "Najnovšie verejné príspevky"
 
 #: [blog]visit
 msgid "Visit the blog to see all the public posts"
-msgstr ""
+msgstr "Navštívte blog na zobrazenie všetkých verejných príspevkov"
 
 #: [subscription]to
 msgid "You can see this contact status"
-msgstr ""
+msgstr "Môžete vidieť status tohoto kontaktu"
 
 #: [subscription]to_button
 msgid "Share my status"
-msgstr ""
+msgstr "Zdieľať svoj status"
 
 #: [subscription]to_text
 msgid "But this contact cannot see yours"
-msgstr ""
+msgstr "Ale tento kontakt nemôže vidieť ten Váš"
 
 #: [subscription]from
 msgid "You are not subscribed to this contact"
-msgstr ""
+msgstr "Neodoberáte tento kontakt"
 
 #: [subscription]from_button
 msgid "Ask to subscribe"
-msgstr ""
+msgstr "Požiadať o odber"
 
 #: [subscription]from_text
 msgid "But this contact can still see if you are online"
-msgstr ""
+msgstr "Ale tento kontakt stále môže vidieť, či ste odhlásený"
 
 #: [subscription]nil
 msgid "No subscriptions"
-msgstr ""
+msgstr "Žiadne odbery"
 
 #: [subscription]nil_button [button]invite
 msgid "Invite"
-msgstr ""
+msgstr "Pozvať"
 
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
-msgstr ""
+msgstr "Tento kontakt je v zozname Vašich kontaktov, ale neexistuje odber medzi týmito dvomi účtami"
 
 #: [draw]title
 msgid "Draw"
-msgstr ""
+msgstr "Kresliť"
 
 #: [faq]title
 msgid "Frequently Asked Questions"
-msgstr ""
+msgstr "Často kladené otázky"
 
 #: [faq]permission_title
 msgid "What does the permission setting do?"
-msgstr ""
+msgstr "Čo robia nastavenia povolení?"
 
 #: [faq]permission_text
 msgid "By default the content is only available to your contacts. You can make your profile and publications public by enabling the related setting."
-msgstr ""
+msgstr "Predvolene je obsah dostupný len pre Vaše kontakty. Môžete urobiť svoj profil a uverejnenia verejné, zapnutím príslušného nastavenia."
 
 #: [faq]permission_community_title
 msgid "How does it applies on Communities posts?"
-msgstr ""
+msgstr "Ako je to použité na komunitné príspevky?"
 
 #: [faq]permission_community_text
 msgid "Similary to your blog publications except that, by default, the posts are only available to the members or subscribers of the Community (except if you explicitly open all the Community content)"
-msgstr ""
+msgstr "Podobne ako pri uverejnení v blogu, okrem toho, že predvolene sú dostupné len šlenom alebo odberateľom komunity (ibaže explicitne otvoríte všetok obsah Komunity)"
 
 #: [faq]chatrooms_title
 msgid "Where can I find a list of chatrooms?"
-msgstr ""
+msgstr "Kde nájdem zoznam chatových miestností?"
 
 #: [faq]find_contacts_title
 msgid "Where can I find my contacts?"
-msgstr ""
+msgstr "Kde môžem nájsť svoje kontakty?"
 
 #: [faq]find_contacts_text
 msgid "By opening the search panel."
-msgstr ""
+msgstr "Otvorením panela hľadania."
 
 #: [apps]question
 msgid "Have you already tried Movim on other platforms?"
-msgstr ""
+msgstr "Už ste skúsili Movim na iných platformách?"
 
 #: [apps]phone
 msgid "Apps for your phone"
-msgstr ""
+msgstr "Aplikácie pre Váš telefón"
 
 #: [apps]android
 msgid "Try out our official Android app"
-msgstr ""
+msgstr "Skúste oficiálnu aplikáciu Android"
 
 #: [apps]recommend
 msgid "We also recommend"
-msgstr ""
+msgstr "Odporúčame aj"
 
 #: [apps]computer
 msgid "Apps for your computer"
-msgstr ""
+msgstr "Aplikácie pre Vás počítač"
 
 #: [apps]computer_text
 msgid "Our official apps are available on our website"
-msgstr ""
+msgstr "naše oficiálne aplikácie sú dostupné na našej webovej stránke"
 
 #: [contact]title
 msgid "Administrators & Contact"
-msgstr ""
+msgstr "Správcovia & kontakty"
 
 #: [chatroom]question
 msgid "Chat with the Movim team?"
-msgstr ""
+msgstr "Chatovať s tímom Movim?"
 
 #: [chatroom]button
 msgid "Add the chatroom"
-msgstr ""
+msgstr "Pridať miestnosť"
 
 #: [error]username
 msgid "Wrong username"
-msgstr ""
+msgstr "Zlé používateľské meno"
 
 #: [error]jid
 msgid "Invalid JID"
-msgstr ""
+msgstr "Neplatné JID"
 
 #: [error]empty_challenge
 msgid "Empty Challenge from the server"
@@ -1194,75 +1196,75 @@ msgstr ""
 
 #: [error]dns
 msgid "XMPP Domain error, your account is not a correct Jabber ID"
-msgstr ""
+msgstr "Chyba domény XMPP, Váš účet nie je platné Jabber ID"
 
 #: [error]data_missings
 msgid "Some data are missing!"
-msgstr ""
+msgstr "Niektoré dáta chybajú!"
 
 #: [error]wrong_password
 msgid "Wrong password"
-msgstr ""
+msgstr "Zlé heslo"
 
 #: [error]internal
 msgid "Internal server error"
-msgstr ""
+msgstr "Interná chyba servera"
 
 #: [error]session
 msgid "Session error"
-msgstr ""
+msgstr "Chyba relácie"
 
 #: [error]account_created
 msgid "Account successfully created"
-msgstr ""
+msgstr "účet úspešne vytvorený"
 
 #: [error]timeout
 msgid "The server takes too much time to respond"
-msgstr ""
+msgstr "Serveru trvá odpoveď príliš dlho"
 
 #: [error]impossible
 msgid "Impossible login"
-msgstr ""
+msgstr "Nemožné prihlásenie"
 
 #: [error]default
 msgid "Unknown error"
-msgstr ""
+msgstr "Neznáma chyba"
 
 #: [error]login_format
 msgid "Invalid username format"
-msgstr ""
+msgstr "Neplatný formát používateľského mena"
 
 #: [error]password_format
 msgid "Invalid password format"
-msgstr ""
+msgstr "Neplatný formát hesla"
 
 #: [error]unauthorized
 msgid "Your XMPP server is unauthorized"
-msgstr ""
+msgstr "Váš server XMPP nie je autorizovaný"
 
 #: [error]wrong_account
 msgid "Movim failed to authenticate. You entered wrong data"
-msgstr ""
+msgstr "Movim zlyhal pri autentifikácii, zadali ste zlé údaje"
 
 #: [error]mechanism
 msgid "Authentication mechanism not supported by Movim"
-msgstr ""
+msgstr "Autentifikačný mechanizmus nepodporovaný v Movim"
 
 #: [error]fail_auth
 msgid "The XMPP authentification failed"
-msgstr ""
+msgstr "Autentifikácia XMPP zlyhala"
 
 #: [form]username
 msgid "My address"
-msgstr ""
+msgstr "Moja adresa"
 
 #: [form]whitelist_info
 msgid "You can login with accounts from these servers"
-msgstr ""
+msgstr "Môžete sa prihlásiť pomocou účtov z týchto serverov"
 
 #: [form]connected
 msgid "Connected"
-msgstr ""
+msgstr "Pripojený"
 
 #: [form]population
 msgid "Population"
@@ -1270,355 +1272,355 @@ msgstr ""
 
 #: [form]invite_chatroom
 msgid "%s invited you to join a chatroom"
-msgstr ""
+msgstr "%s Vás pozval vstúpiť do miestnosti"
 
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
-msgstr ""
+msgstr "Zlá prezývka (4 až 40 znakov)"
 
 #: [menu]empty_title
 msgid "No news yet…"
-msgstr ""
+msgstr "Zatiaľ žiadne novinky…"
 
 #: [menu]empty
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
-msgstr ""
+msgstr "Vitajte vo svojom kanáli noviniek, v ktorom uvidíte všetky príspevky uverejnené vašimi kontaktmi a v komunitách, ktoré odoberáte."
 
 #: [menu]all
 msgid "All"
-msgstr ""
+msgstr "Všetky"
 
 #: [menu]mine
 msgid "My publications"
-msgstr ""
+msgstr "Moje príspevky"
 
 #: [menu]contacts [page]contacts
 msgid "Contacts"
-msgstr ""
+msgstr "Kontakty"
 
 #: [menu]add_post
 msgid "Write a new post…"
-msgstr ""
+msgstr "Napísať nový príspevok…"
 
 #: [invitations]title
 msgid "Pending Invitations"
-msgstr ""
+msgstr "čakajúce pozvánky"
 
 #: [invitations]wants_to_talk
 msgid "%s wants to talk with you"
-msgstr ""
+msgstr "%s chce s Vami rozprávať"
 
 #: [notifs]title [onboarding]notifications_title
 msgid "Notifications"
-msgstr ""
+msgstr "Upozornenia"
 
 #: [notifs]empty
 msgid "No new notifications"
-msgstr ""
+msgstr "Žiadne nové upozornenia"
 
 #: [onboarding]notifications_text
 msgid "Movim can notify you when a new post is published or if you receive messages"
-msgstr ""
+msgstr "Movim Vás môže upozorniť, keď je uverejnený nový príspevok alebo keď prijmete správy"
 
 #: [onboarding]notifications_text_second
 msgid "You can always disable them afterwards"
-msgstr ""
+msgstr "Kedykoľvek neskôr ich môžete vypnúť"
 
 #: [onboarding]public_title
 msgid "Public profile"
-msgstr ""
+msgstr "Verejný profil"
 
 #: [onboarding]public_text
 msgid "Make your profile public and allow other users to find you and make new contacts more easily"
-msgstr ""
+msgstr "Urobte svoj profil verejný, aby Vás mohli ostatní používatelia ľahšie nájsť a pridať do kontaktov"
 
 #: [onboarding]public_text_second
 msgid "You can always disable this in the configuration afterwards"
-msgstr ""
+msgstr "Kedykoľvek neskôr to môžete v konfigurácii vypnúť"
 
 #: [onboarding]popups_title
 msgid "Popups"
-msgstr ""
+msgstr "Vyskakovacie okná"
 
 #: [onboarding]popups_text
 msgid "Movim is using popups for the video-conference feature, they are sometime blocked by the browsers"
-msgstr ""
+msgstr "Movim používa na video-konferenciu vyskakovacie okná, ktoré sú niekedy prehliadačmi blokované"
 
 #: [onboarding]popups_text_second
 msgid "Please be sure that they are enabled to use this feature properly"
-msgstr ""
+msgstr "Prosím, preverte, že sú povolené, aby ste mohli túto vlastnosť správne používať"
 
 #: [post]news_feed
 msgid "News Feed"
-msgstr ""
+msgstr "Kanály noviniek"
 
 #: [post]placeholder
 msgid "Discover and register to the groups you are interested in"
-msgstr ""
+msgstr "Objavte a registrujte sa do skupín, podľa vlastného záujmu"
 
 #: [post]content
 msgid "Content"
-msgstr ""
+msgstr "Obsah"
 
 #: [post]published
 msgid "Post published"
-msgstr ""
+msgstr "príspevok uverejnený"
 
 #: [post]deleted
 msgid "Post deleted"
-msgstr ""
+msgstr "Príspevok odstránený"
 
 #: [post]hot
 msgid "What’s Hot"
-msgstr ""
+msgstr "Čo letí"
 
 #: [post]hot_text
 msgid "Posts recently published in communities that you are not subscribed (yet)"
-msgstr ""
+msgstr "Najnovšie príspevky v komunitách, ktoré neodoberáte (zatiaľ)"
 
 #: [post]new [publishbrief]new
 msgid "New post"
-msgstr ""
+msgstr "Nový príspevok"
 
 #: [post]repost
 msgid "This is a re-post from %s"
-msgstr ""
+msgstr "Toto je preposlanie od %s"
 
 #: [post]repost_profile
 msgid "See %s profile"
-msgstr ""
+msgstr "Pozrieť profil: %s"
 
 #: [post]blog_last
 msgid "Public posts from users"
-msgstr ""
+msgstr "Verejné príspevky používateľov"
 
 #: [post]read_time_singular
 msgid "%s minute"
-msgstr ""
+msgstr "%s minúta"
 
 #: [post]read_time_plural
 msgid "%s minutes"
-msgstr ""
+msgstr "%s minúty"
 
 #: [post]public
 msgid "Publish this post publicly?"
-msgstr ""
+msgstr "Uverejniť tento príspevok verejne?"
 
 #: [post]public_yes
 msgid "This post is public"
-msgstr ""
+msgstr "Tento príspevok je verejný"
 
 #: [post]public_no
 msgid "This post is private"
-msgstr ""
+msgstr "Tento príspevok je súkormný"
 
 #: [post]public_url
 msgid "Public URL of this post"
-msgstr ""
+msgstr "Verejná URL othoto príspevku"
 
 #: [post]delete_title [post]delete
 msgid "Delete this post"
-msgstr ""
+msgstr "Odstrániť tento príspevok"
 
 #: [post]delete_text
 msgid "You are going to delete this post, please confirm your action"
-msgstr ""
+msgstr "odstraňujete tento príspevok, prosím potvrďte svoju akciu"
 
 #: [post]delete_comment
 msgid "Are you sure that you want to delete this comment?"
-msgstr ""
+msgstr "Naozaj chcete odstrániť tento komentár?"
 
 #: [post]discover
 msgid "Discover more articles on the communities page"
-msgstr ""
+msgstr "Objavte ďalšie články na stránke komunít"
 
 #: [post]more
 msgid "Read more"
-msgstr ""
+msgstr "Čítať ďalej"
 
 #: [post]comments_disabled
 msgid "Comments disabled"
-msgstr ""
+msgstr "Komentáre vpynuté"
 
 #: [post]comment_published
 msgid "Comment published"
-msgstr ""
+msgstr "Komentár uverejnený"
 
 #: [post]comment_like_published
 msgid "Liked"
-msgstr ""
+msgstr "Páči sa"
 
 #: [post]comment_publish_error
 msgid "The comment cannot be published"
-msgstr ""
+msgstr "Komentár nemožno uverejniť"
 
 #: [post]comment_deleted
 msgid "Comment deleted"
-msgstr ""
+msgstr "Komentár odstránený"
 
 #: [post]liked
 msgid "Liked your publication"
-msgstr ""
+msgstr "Ocenil Vaše uverejnenie"
 
 #: [post]commented
 msgid "Commented"
-msgstr ""
+msgstr "Komentoval"
 
 #: [hello]blog_title
 msgid "Visit your public blog"
-msgstr ""
+msgstr "navštívte svoj verejný blog"
 
 #: [hello]blog_text
 msgid "See your public posts and share them with all your contacts"
-msgstr ""
+msgstr "Zobrazte svoje verejné príspevky a zdieľajte ich so všetkými svojimi kontaktmi"
 
 #: [hello]contact_post
 msgid "Contact post"
-msgstr ""
+msgstr "Príspevky kontaktu"
 
 #: [hello]share_title
 msgid "Universal share button"
-msgstr ""
+msgstr "Univerzálne tlačidlo zdieľania"
 
 #: [hello]share_text
 msgid "Bookmark or drag and drop the following button in your toolbar and use it on all the pages you want to share on Movim"
-msgstr ""
+msgstr "pridajte si nasledujúce tlačidlo do záložiek alebo ho pretiahnite do panela nástrojov a použite ho všetkých stránkach, ktoré chcete zdieľať v Movim"
 
 #: [hello]share_button
 msgid "Share on Movim"
-msgstr ""
+msgstr "Zdieľať v Movim"
 
 #: [hello]enter_title
 msgid "Oh! Hello!"
-msgstr ""
+msgstr "Oh! Vitajte!"
 
 #: [hello]enter_paragraph
 msgid "It seems that you’re new there! Welcome on Movim!"
-msgstr ""
+msgstr "zdá sa, že ste tu nový! Vitajte v Movim!"
 
 #: [hello]menu_title
 msgid "Check the Menu"
-msgstr ""
+msgstr "Skúste menu"
 
 #: [hello]menu_paragraph
 msgid "All the main Movim features are accessible there. Don’t hesitate to navigate through the pages to discover more!"
-msgstr ""
+msgstr "Všetky hlavné funkcie Movim sú z neho dostupné. Nehanbite sa prechádzať stránkami, aby ste objavili viac!"
 
 #: [hello]profile_title
 msgid "Looks like you didn’t complete your profile yet"
-msgstr ""
+msgstr "Zdá sa, že ste zatiaľ nedokončili svoj profil"
 
 #: [hello]profile_paragraph
 msgid "You can go in the Configuration page to describe yourself and put a nice picture"
-msgstr ""
+msgstr "V stránke konfigurácie môžete popísať sám seba a pridať si zaujímavý obrázok"
 
 #: [status]disconnect
 msgid "Disconnect"
-msgstr ""
+msgstr "Odpojený"
 
 #: [status]updated
 msgid "Status updated"
-msgstr ""
+msgstr "Status aktualizovaný"
 
 #: [status]presence
 msgid "Presence"
-msgstr ""
+msgstr "Prítomnosť"
 
 #: [status]logout_confirm
 msgid "Do you really want to log out?"
-msgstr ""
+msgstr "Naozaj sa chcete odhlásiť?"
 
 #: [publishbrief]placeholder
 msgid "What’s new?"
-msgstr ""
+msgstr "Čo je nové?"
 
 #: [publishbrief]post
 msgid "Write a post"
-msgstr ""
+msgstr "Napísať príspevok"
 
 #: [publishbrief]add_link
 msgid "Add a link"
-msgstr ""
+msgstr "Pridať odkaz"
 
 #: [publishbrief]add_snap
 msgid "Take a picture"
-msgstr ""
+msgstr "Získať obrázok"
 
 #: [publishbrief]no_title
 msgid "Please provide a title"
-msgstr ""
+msgstr "Prosím, zadajte titulok"
 
 #: [publishbrief]preview
 msgid "Preview"
-msgstr ""
+msgstr "Ukážka"
 
 #: [publishbrief]attach
 msgid "Add a file or a picture"
-msgstr ""
+msgstr "Pridať súbor alebo obrázok"
 
 #: [publishbrief]no_publication
 msgid "You cannot publish a post here"
-msgstr ""
+msgstr "Nemôžete tu uverejniť príspevok"
 
 #: [publishbrief]no_content_preview
 msgid "No content to preview"
-msgstr ""
+msgstr "Žiadny obsah na ukážku"
 
 #: [publishbrief]valid_url
 msgid "Please enter a valid URL"
-msgstr ""
+msgstr "Prosí, zadajte platnú URL"
 
 #: [publishbrief]content_text
 msgid "You can format your content using Markdown"
-msgstr ""
+msgstr "Svoj obsah môžete formátovať pomocou Markdown"
 
 #: [publishhelp]title [page]help
 msgid "Help"
-msgstr ""
+msgstr "Pomocník"
 
 #: [publishhelp]more
 msgid "More help"
-msgstr ""
+msgstr "Ďalšia pomoc"
 
 #: [publishhelp]manual
 msgid "Markdown syntax manual"
-msgstr ""
+msgstr "Manuál syntaxe Markdown"
 
 #: [rooms]add
 msgid "Search or join a chatroom"
-msgstr ""
+msgstr "Hľadať alebo vstúpiť do miestnosti"
 
 #: [rooms]edit
 msgid "Edit a chatroom"
-msgstr ""
+msgstr "Upraviť miestnosť"
 
 #: [rooms]empty_text1
 msgid "You don’t have any chatroom yet."
-msgstr ""
+msgstr "nemáte zatiaľ žiadnu miestnosť."
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
-msgstr ""
+msgstr "Pridajte si nejakú kliknutím na tlačidlo pridať."
 
 #: [rooms]empty_synchronize_title
 msgid "You had some rooms previously listed?"
-msgstr ""
+msgstr "Mali ste predtým v zozname nejaké miestnosti?"
 
 #: [rooms]empty_synchronize_text
 msgid "Try to synchronize them to the new room bookmarking system"
-msgstr ""
+msgstr "Skúste ich synchronizovať do nového systému záložiek miestností"
 
 #: [rooms]empty_synchronize_button
 msgid "Synchronize"
-msgstr ""
+msgstr "Synchronizovať"
 
 #: [rooms]type_room
 msgid "Type of room"
-msgstr ""
+msgstr "Typ miestnosti"
 
 #: [rooms]default_room
 msgid "Standard room"
-msgstr ""
+msgstr "Štandardná miestnosť"
 
 #: [rooms]gateway_room
 msgid "Gateway room"
@@ -1626,112 +1628,111 @@ msgstr ""
 
 #: [rooms]show_all
 msgid "Show all the rooms"
-msgstr ""
+msgstr "Zobraziť všetky miestnosti"
 
 #: [rooms]hide_disconnected
 msgid "Hide disconnected rooms"
-msgstr ""
+msgstr "Skryť odpojené miestnosti"
 
 #: [rooms]destroy_title
 msgid "Destroy the room"
-msgstr ""
+msgstr "Odstrániť miestnosť"
 
 #: [rooms]destroy_text
 msgid "Are you sure that you want to definitely destroy the following room?"
-msgstr ""
+msgstr "naozaj chcete úplne odstrániť nasledujúcu miestnosť?"
 
 #: [rooms]owner [affiliation]owner
 msgid "Owner"
-msgstr ""
+msgstr "Vlastník"
 
 #: [rooms]admin
 msgid "Admin"
-msgstr ""
+msgstr "Správca"
 
 #: [rooms]visitor
 msgid "Visitor"
-msgstr ""
+msgstr "Návštevník"
 
 #: [rooms]explore_placeholder
 msgid "Name or description"
-msgstr ""
+msgstr "Názov alebo popis"
 
 #: [chatrooms]title
 msgid "Chatrooms"
-msgstr ""
+msgstr "Chatové miestnosti"
 
 #: [chatrooms]id
 msgid "Chat Room ID"
-msgstr ""
+msgstr "ID chatovej miestnosti"
 
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
-msgstr ""
+msgstr "Moje obľôbené miestnosti"
 
 #: [chatrooms]bad_id
 msgid "Bad Chatroom ID"
-msgstr ""
+msgstr "Zlé ID chatovej miestnosti"
 
 #: [chatrooms]empty_name
 msgid "Empty name"
-msgstr ""
+msgstr "Prázdne meno"
 
 #: [chatrooms]synchronized
 msgid "%s rooms synchronized"
-msgstr ""
+msgstr "Synchronizované miestnosti: %s"
 
 #: [chatrooms]users
 msgid "Users in the room"
-msgstr ""
+msgstr "Používatelia v miestnosti"
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a correct nickname (2 to 40 characters)"
-msgstr ""
+msgstr "Prosím, zadajte platnú prezývku (2 až 40 znakov)"
 
 #: [chatrooms]conflict
 msgid "Username already taken"
-msgstr ""
+msgstr "Používateľské meno už existuje"
 
 #: [chatrooms]autojoin
 msgid "Join this chatroom on connect"
-msgstr ""
+msgstr "Vstúpiť do miestnosti pri prihlásení"
 
 #: [chatrooms]destroyed
 msgid "Room destroyed"
-msgstr ""
+msgstr "Miestnosť odstránená"
 
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
-msgstr ""
+msgstr "Do miestnosti nemožno vstúpiť, je vyžadovaná registrácia"
 
 #: [chatrooms]itemnotfound
 msgid "The chatroom doesn’t exists"
-msgstr ""
+msgstr "Chatová miestnosť neexistuje"
 
 #: [chatrooms]notauthorized
-#, fuzzy
 msgid "A password is required"
-msgstr "Heslo bolo zmenené"
+msgstr "Je vyžadované heslo"
 
 #: [bookmarks]updated
 msgid "Bookmarks updated"
-msgstr ""
+msgstr "Záložky aktualizované"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
-msgstr ""
+msgstr "Verejná miestnosť"
 
 #: [room]no_room
 msgid "Please provide a room address"
-msgstr ""
+msgstr "Prosím, zadajte adresu miestnosti"
 
 #: [room]anonymous_text1
 msgid "You are currently logged as an anonymous user."
-msgstr ""
+msgstr "Ste prihlásený ako anonymný požuívateľ."
 
 #: [room]anonymous_text2
 msgid "You can join using your own account or create one on the login page by loging out using the cross in the top-right corner."
-msgstr ""
+msgstr "Môžete vstúpiť pomocou svojho vlastného účtu alebo si môžete vytvoriť nový na prihlasovacej stránke, po odhlásení pomocou krížika v pravom hornom rohu."
 
 #: [room]anonymous_login
 msgid "Login on %s"
@@ -1739,107 +1740,107 @@ msgstr ""
 
 #: [room]nick
 msgid "Your nickname"
-msgstr ""
+msgstr "Vaša prezývka"
 
 #: [room]invite
 msgid "Invite a contact"
-msgstr ""
+msgstr "Pozvať kontakt"
 
 #: [room]invited
 msgid "Invitation sent"
-msgstr ""
+msgstr "Pozvánka poslaná"
 
 #: [room]invite_code
 msgid "Send this link to your contacts"
-msgstr ""
+msgstr "Poslať tento odkaz svojim kontaktom"
 
 #: [room]public_muc
 msgid "Public"
-msgstr ""
+msgstr "Verejné"
 
 #: [room]public_muc_text
 msgid "This chatroom is publicly discoverable"
-msgstr ""
+msgstr "Táto miestnosť je verejne zistiteľná"
 
 #: [room]nonanonymous_muc
 msgid "Public profiles"
-msgstr ""
+msgstr "Verejné profily"
 
 #: [room]nonanonymous_muc_text
 msgid "The participants of this chatroom can see each other's profile"
-msgstr ""
+msgstr "Členovia tejto miestnosti môžu vidieť profil všetkých ostatných"
 
 #: [roomsexplore]no_local
 msgid "No chatrooms found localy"
-msgstr ""
+msgstr "Nenájdené žiadne lokálne miestnosti"
 
 #: [roomsexplore]global_title
 msgid "Global search"
-msgstr ""
+msgstr "Globálne hľadanie"
 
 #: [roomsexplore]no_global
 msgid "No chatrooms found globaly"
-msgstr ""
+msgstr "Nenájdené žiadne globálne miestnosti"
 
 #: [search]keyword
 msgid "What are you looking for?"
-msgstr ""
+msgstr "Čo hľadáte?"
 
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
-msgstr ""
+msgstr "Otvorte ma pomocou Ctrl+M"
 
 #: [search]placeholder
 msgid "#cats, username@server.com, John…"
-msgstr ""
+msgstr "#kateg, meno@example.org, Jožko…"
 
 #: [search]no_contacts_title
 msgid "No contacts yet?"
-msgstr ""
+msgstr "Zatiaľ žiadne kontakty?"
 
 #: [search]no_contacts_text
 msgid "Find one by searching for his name or id"
-msgstr ""
+msgstr "Nájdite niekoho zadaním jeho mena alebo ID"
 
 #: [search]tags
 msgid "Tags"
-msgstr ""
+msgstr "Značky"
 
 #: [search]show_complete_roster
 msgid "Show all the contacts"
-msgstr ""
+msgstr "Zobraziť všetky kontakty"
 
 #: [sendto]attach
 msgid "Attach to a blog publication"
-msgstr ""
+msgstr "Pripojiť k uverejneneniu v blogu"
 
 #: [sendto]contact
 msgid "Send it to a contact"
-msgstr ""
+msgstr "Poslať to kontaktu"
 
 #: [sendto]chatroom
 msgid "Share it in a chatroom"
-msgstr ""
+msgstr "zdieľať to v miestnosti"
 
 #: [sendto]shared_with
 msgid "Post shared"
-msgstr ""
+msgstr "Príspevok zdieľaný"
 
 #: [sendto]shared_contact
 msgid "Post shared with your contact"
-msgstr ""
+msgstr "Príspevok zdieľaný s kontaktom"
 
 #: [sendto]shared_chatroom
 msgid "Post shared within the chatroom"
-msgstr ""
+msgstr "Príspevok zdieľaný do miestnosti"
 
 #: [sendto]more_contacts
 msgid "More contacts"
-msgstr ""
+msgstr "Ďalšie kontakty"
 
 #: [statistics]title
 msgid "Statistics"
-msgstr ""
+msgstr "Štatistiky"
 
 #: [sticker]sent
 msgid "A sticker has been sent using Movim"
@@ -1847,243 +1848,243 @@ msgstr ""
 
 #: [subscribe]info
 msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
-msgstr ""
+msgstr "Movim je decentralizovaná sociálna sieť, pred vytvorením nového účtu si musíte zvoliť server, kde sa chcete registrovať."
 
 #: [subscribe]server_question
 msgid "Your server here?"
-msgstr ""
+msgstr "Váš server tu?"
 
 #: [subscribe]server_contact
 msgid "Contact us to add yours to the officially supported servers list"
-msgstr ""
+msgstr "Kontaktujte nás, ak chcete do zoznamu oficiálne podporovaných serverov ten svoj"
 
 #: [feed]nope
 msgid "No public feed for this contact"
-msgstr ""
+msgstr "Žiadne verejné kanály tohoto kontaktu"
 
 #: [feed]nope_contact
 msgid "No contact specified"
-msgstr ""
+msgstr "Nebol zadaný kontakt"
 
 #: [upload]title [button]upload
 msgid "Upload"
-msgstr ""
+msgstr "Nahrať"
 
 #: [upload]choose
 msgid "Choose a file to upload"
-msgstr ""
+msgstr "Zvoľte súbor na nahratie"
 
 #: [upload]info
 msgid "Large pictures will be resized and compressed"
-msgstr ""
+msgstr "Veľké obrázky budú zmenšené a komprimované"
 
 #: [upload]error_filesize
 msgid "File too large"
-msgstr ""
+msgstr "Súbor príliš veľký"
 
 #: [upload]error_failed
 msgid "Upload failed"
-msgstr ""
+msgstr "nahratie zlyhalo"
 
 #: [upload]error_not_allowed
 msgid "You are not allowed to upload a file"
-msgstr ""
+msgstr "nemáte dovolené nahrať súbor"
 
 #: [upload]error_resource_constraint
 msgid "You exceeded the quota"
-msgstr ""
+msgstr "Prekročili ste kvôtu"
 
 #: [upload]drag_drop
 msgid "Drag and drop your file in this area"
-msgstr ""
+msgstr "Pretiahnite svoj súbor do tejto oblasti"
 
 #: [vcard]title [page]profile
 msgid "Profile"
-msgstr ""
+msgstr "Profil"
 
 #: [vcard]updated
 msgid "Profile Updated"
-msgstr ""
+msgstr "Profil upravený"
 
 #: [vcard]not_updated
 msgid "Profile Not Updated"
-msgstr ""
+msgstr "Profil nebol upravený"
 
 #: [vcard]public
 msgid "Your profile is now public"
-msgstr ""
+msgstr "Váš profil je teraz verejný"
 
 #: [vcard]restricted
 msgid "Your profile is now restricted"
-msgstr ""
+msgstr "Váš profil je teraz obmedzený"
 
 #: [profile]info
 msgid "Configure your instance nickname"
-msgstr ""
+msgstr "Nastavte si prezývku v tejto inštancii"
 
 #: [profile]privacy_question
 msgid "Is this profile public?"
-msgstr ""
+msgstr "je tento profil verejný?"
 
 #: [profile]privacy_info
 msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
-msgstr ""
+msgstr "Prosím, dávajte pozor! Keď nastavíte svoj profil na verejný, všetky nasledujúce informácie budú prístupné všetkým používateľom Movim a celému Internetu."
 
 #: [profile]nickname_info
 msgid "Set a local nickname to allow the other users of the instance to find you easily."
-msgstr ""
+msgstr "nastaví lokálnu prezývku, aby Vás ostatní používatelia tejto inštancie ľahšie našli."
 
 #: [profile]nickname_set
 msgid "Your nickname is %s."
-msgstr ""
+msgstr "Vaša prezývka je %s."
 
 #: [profile]nickname_placeholder
 msgid "John_Bob96"
-msgstr ""
+msgstr "Jožko_Mrkvička"
 
 #: [profile]nickname_error
 msgid "Your nickname should only contains letters, numbers, - and _"
-msgstr ""
+msgstr "Vaša prezývky môže obsahovať len písmená, číslice, - a _"
 
 #: [profile]nickname_conflict
 msgid "The nickname is already registered"
-msgstr ""
+msgstr "Prezývka už je registrovaná"
 
 #: [profile]nickname_saved
 msgid "Nickname saved"
-msgstr ""
+msgstr "Prezývka uložená"
 
 #: [save]submit [button]submit
 msgid "Submit"
-msgstr ""
+msgstr "Poslať"
 
 #: [save]reset [button]reset
 msgid "Reset"
-msgstr ""
+msgstr "Vymazať"
 
 #: [degraded]title
 msgid "Movim is currently working in degraded mode"
-msgstr ""
+msgstr "Movim momentálne pracuje v degradovanom režime"
 
 #: [degraded]text_1
 msgid "Your server doesn’t support XMPP Pubsub persistence or the social features (communities, news feed and profile) are disabled by the administrator."
-msgstr ""
+msgstr "Váš server nepodporuje trvalé XMPP Pubsub alebo sú sociálne funkcie (komunity, kanály noviniek a profil) vypnuté jeho správcom."
 
 #: [degraded]text_2
 msgid "Please contact your server administrator to see if this feature can be enabled."
-msgstr ""
+msgstr "Prosím, kontaktujte správcu servera, aby ste zistili či môže byť táto vlastnosť zapnutá."
 
 #: [visio]calling
 msgid "…is calling you"
-msgstr ""
+msgstr "…Vám volá"
 
 #: [visio]ringing
 msgid "…ringing"
-msgstr ""
+msgstr "…zvoní"
 
 #: [visio]declined
 msgid "declined"
-msgstr ""
+msgstr "odmietnuté"
 
 #: [visio]in_call
 msgid "in call"
-msgstr ""
+msgstr "hovorí"
 
 #: [visio]failed
 msgid "failed"
-msgstr ""
+msgstr "zlyhané"
 
 #: [visio]connecting
 msgid "…connecting"
-msgstr ""
+msgstr "…pripájanie"
 
 #: [visio]ended
 msgid "call ended"
-msgstr ""
+msgstr "hovor skončil"
 
 #: [global]no_js
 msgid "Movim requires Javascript to be enabled to work properly."
-msgstr ""
+msgstr "Movim vyžaduje zapnutý a funkčný Javascript, aby fungoval správne."
 
 #: [global]description
 msgid "Movim is a kickass distributed social networking platform that protect your privacy and comes with a set of awesome features."
-msgstr ""
+msgstr "Movim je platforma distribuovanej sociálnej siete, ktorá chráni vaše súkromie a ponúka úžasné funkcie."
 
 #: [global]loading
 msgid "Loading…"
-msgstr ""
+msgstr "načítanie…"
 
 #: [global]or
 msgid "Or"
-msgstr ""
+msgstr "alebo"
 
 #: [global]change_pod
 msgid "Switch to another pod"
-msgstr ""
+msgstr "Prepnúť na iný POD"
 
 #: [page]communities
 msgid "Communities"
-msgstr ""
+msgstr "Komunity"
 
 #: [page]home
 msgid "Home"
-msgstr ""
+msgstr "Domov"
 
 #: [page]explore
 msgid "Explore"
-msgstr ""
+msgstr "Preskúmať"
 
 #: [page]account_creation
 msgid "Account Creation"
-msgstr ""
+msgstr "Vytvorenie účtu"
 
 #: [page]news
 msgid "News"
-msgstr ""
+msgstr "Novinky"
 
 #: [page]avatar
 msgid "Avatar"
-msgstr ""
+msgstr "Avatar"
 
 #: [page]chats
 msgid "Chats"
-msgstr ""
+msgstr "Chaty"
 
 #: [page]publish
 msgid "Publish"
-msgstr ""
+msgstr "Uverejniť"
 
 #: [page]post
 msgid "Post"
-msgstr ""
+msgstr "Príspevky"
 
 #: [page]blog
 msgid "Blog"
-msgstr ""
+msgstr "Blog"
 
 #: [page]about
 msgid "About"
-msgstr ""
+msgstr "O aplikácii"
 
 #: [page]login
 msgid "Login"
-msgstr ""
+msgstr "Prihlásiť"
 
 #: [page]not_found
 msgid "Not Found"
-msgstr ""
+msgstr "Nenájdené"
 
 #: [page]feed
 msgid "Feed"
-msgstr ""
+msgstr "Kanál"
 
 #: [page]posts
 msgid "Posts"
-msgstr ""
+msgstr "Príspevky"
 
 #: [page]gallery
 msgid "Gallery"
-msgstr ""
+msgstr "Galéria"
 
 #: [page]visio
 msgid "Visio-conference"
@@ -2096,27 +2097,27 @@ msgstr "Zdieľať"
 
 #: [page]room
 msgid "Room"
-msgstr ""
+msgstr "Miestnosť"
 
 #: [page]tag
 msgid "Tag"
-msgstr ""
+msgstr "Značka"
 
 #: [error]error
 msgid "Error: %s"
-msgstr ""
+msgstr "Chyba: %s"
 
 #: [error]cannot_load_file
 msgid "Cannot load file '%s'"
-msgstr ""
+msgstr "Nemožno načítať súbor „%s”"
 
 #: [error]widget_load_error
 msgid "Requested widget '%s' doesn’t exist."
-msgstr ""
+msgstr "Požadovaný widget „%s” neexistuje."
 
 #: [error]widget_call_error
 msgid "Requested event '%s' not registered."
-msgstr ""
+msgstr "Požadovaná udalosť „%s” nie je registrovaná."
 
 #: [error]whoops
 msgid "Whoops!"
@@ -2124,11 +2125,11 @@ msgstr ""
 
 #: [error]websocket
 msgid "Movim cannot talk with the server, please try again later"
-msgstr ""
+msgstr "Movim nemôže komunikovať so serverom, prosím, skúste neskôr"
 
 #: [error]websocket_connect
 msgid "Reconnection to the server…"
-msgstr ""
+msgstr "Opätovné pripojenie k serveru…"
 
 #: [error]oops
 msgid "Oops!"
@@ -2136,55 +2137,55 @@ msgstr ""
 
 #: [button]call
 msgid "Call"
-msgstr ""
+msgstr "Volať"
 
 #: [button]validate
 msgid "Validate"
-msgstr ""
+msgstr "Overiť"
 
 #: [button]refresh
 msgid "Refresh"
-msgstr ""
+msgstr "Obnoviť"
 
 #: [button]add
 msgid "Add"
-msgstr ""
+msgstr "Pridať"
 
 #: [button]delete
 msgid "Delete"
-msgstr ""
+msgstr "Odstrániť"
 
 #: [button]destroy
 msgid "Destroy"
-msgstr ""
+msgstr "Zničiť"
 
 #: [button]cancel
 msgid "Cancel"
-msgstr ""
+msgstr "Zrušiť"
 
 #: [button]close
 msgid "Close"
-msgstr ""
+msgstr "Zatvoriť"
 
 #: [button]update
 msgid "Update"
-msgstr ""
+msgstr "Aktualizovať"
 
 #: [button]updating
 msgid "Updating"
-msgstr ""
+msgstr "Aktualizovanie"
 
 #: [button]submitting
 msgid "Submitting"
-msgstr ""
+msgstr "ODosielanie"
 
 #: [button]register
 msgid "Register"
-msgstr ""
+msgstr "Registrovať"
 
 #: [button]reply
 msgid "Reply"
-msgstr ""
+msgstr "Odpovedať"
 
 #: [button]unregister
 msgid "Unregister"
@@ -2192,47 +2193,47 @@ msgstr ""
 
 #: [button]save
 msgid "Save"
-msgstr ""
+msgstr "Uložiť"
 
 #: [button]clear
 msgid "Clear"
-msgstr ""
+msgstr "Vymazať"
 
 #: [button]connecting
 msgid "Connecting"
-msgstr ""
+msgstr "Pripájanie"
 
 #: [button]bool_yes
 msgid "Yes"
-msgstr ""
+msgstr "Áno"
 
 #: [button]bool_no
 msgid "No"
-msgstr ""
+msgstr "Nie"
 
 #: [button]return
 msgid "Return"
-msgstr ""
+msgstr "Návrat"
 
 #: [button]accept
 msgid "Accept"
-msgstr ""
+msgstr "Prijať"
 
 #: [button]refuse
 msgid "Refuse"
-msgstr ""
+msgstr "Odmietnuť"
 
 #: [button]next
 msgid "Next"
-msgstr ""
+msgstr "Ďalšie"
 
 #: [button]previous
 msgid "Previous"
-msgstr ""
+msgstr "Predošlé"
 
 #: [button]search
 msgid "Search"
-msgstr ""
+msgstr "Hľadať"
 
 #: [button]share
 msgctxt "[button]share"
@@ -2241,515 +2242,515 @@ msgstr "Zdieľať"
 
 #: [button]discover
 msgid "Discover"
-msgstr ""
+msgstr "Objaviť"
 
 #: [button]like
 msgid "Like"
-msgstr ""
+msgstr "Páči"
 
 #: [button]not_now
 msgid "Not Now"
-msgstr ""
+msgstr "Nie teraz"
 
 #: [button]enable
 msgid "Enable"
-msgstr ""
+msgstr "Zapnúť"
 
 #: [button]sign_up
 msgid "Sign Up"
-msgstr ""
+msgstr "Prihlásiť sa"
 
 #: [day]title
 msgid "Day"
-msgstr ""
+msgstr "Deň"
 
 #: [day]monday
 msgid "Monday"
-msgstr ""
+msgstr "Pondelok"
 
 #: [day]tuesday
 msgid "Tuesday"
-msgstr ""
+msgstr "Utokork"
 
 #: [day]wednesday
 msgid "Wednesday"
-msgstr ""
+msgstr "Streda"
 
 #: [day]thursday
 msgid "Thursday"
-msgstr ""
+msgstr "Štvrtok"
 
 #: [day]friday
 msgid "Friday"
-msgstr ""
+msgstr "Piatok"
 
 #: [day]saturday
 msgid "Saturday"
-msgstr ""
+msgstr "Sobota"
 
 #: [day]sunday
 msgid "Sunday"
-msgstr ""
+msgstr "Nedeľa"
 
 #: [client]bot
 msgid "Bot"
-msgstr ""
+msgstr "Bot"
 
 #: [client]console
 msgid "Console"
-msgstr ""
+msgstr "Konzola"
 
 #: [client]desktop
 msgid "Desktop"
-msgstr ""
+msgstr "Desktop"
 
 #: [client]phone
 msgid "Phone"
-msgstr ""
+msgstr "Telefón"
 
 #: [client]web
 msgid "Web"
-msgstr ""
+msgstr "Web"
 
 #: [client]registered
 msgid "Registered"
-msgstr ""
+msgstr "Registrovaný"
 
 #: [presence]online
 msgid "Online"
-msgstr ""
+msgstr "Pripojený"
 
 #: [presence]away
 msgid "Away"
-msgstr ""
+msgstr "Preč"
 
 #: [presence]dnd
 msgid "Do Not Disturb"
-msgstr ""
+msgstr "Nerušiť"
 
 #: [presence]xa
 msgid "Extended Away"
-msgstr ""
+msgstr "Celkom preč"
 
 #: [presence]offline
 msgid "Offline"
-msgstr ""
+msgstr "Odpojený"
 
 #: [presence]error
 msgid "Error"
-msgstr ""
+msgstr "Chyba"
 
 #: [mood]afraid
 msgid "afraid"
-msgstr ""
+msgstr "ustráchaný"
 
 #: [mood]amazed
 msgid "amazed"
-msgstr ""
+msgstr "užasnutý"
 
 #: [mood]amorous
 msgid "amorous"
-msgstr ""
+msgstr "zamilovaný"
 
 #: [mood]angry
 msgid "angry"
-msgstr ""
+msgstr "nahnevaný"
 
 #: [mood]annoyed
 msgid "annoyed"
-msgstr ""
+msgstr "mrzutý"
 
 #: [mood]anxious
 msgid "anxious"
-msgstr ""
+msgstr "úskostlivý"
 
 #: [mood]aroused
 msgid "aroused"
-msgstr ""
+msgstr "nabudený"
 
 #: [mood]ashamed
 msgid "ashamed"
-msgstr ""
+msgstr "zahanbený"
 
 #: [mood]bored
 msgid "bored"
-msgstr ""
+msgstr "znudený"
 
 #: [mood]brave
 msgid "brave"
-msgstr ""
+msgstr "odvážny"
 
 #: [mood]calm
 msgid "calm"
-msgstr ""
+msgstr "pokojný"
 
 #: [mood]cautious
 msgid "cautious"
-msgstr ""
+msgstr "opatrný"
 
 #: [mood]cold
 msgid "cold"
-msgstr ""
+msgstr "chladný"
 
 #: [mood]confident
 msgid "confident"
-msgstr ""
+msgstr "sebaistý"
 
 #: [mood]confused
 msgid "confused"
-msgstr ""
+msgstr "zmätený"
 
 #: [mood]contemplative
 msgid "contemplative"
-msgstr ""
+msgstr "zamyslený"
 
 #: [mood]contented
 msgid "contented"
-msgstr ""
+msgstr "spokojný"
 
 #: [mood]cranky
 msgid "cranky"
-msgstr ""
+msgstr "vratký"
 
 #: [mood]crazy
 msgid "crazy"
-msgstr ""
+msgstr "bláznivý"
 
 #: [mood]creative
 msgid "creative"
-msgstr ""
+msgstr "tvorivý"
 
 #: [mood]curious
 msgid "curious"
-msgstr ""
+msgstr "zvedavý"
 
 #: [mood]dejected
 msgid "dejected"
-msgstr ""
+msgstr "skľúčený"
 
 #: [mood]depressed
 msgid "depressed"
-msgstr ""
+msgstr "deprimovaný"
 
 #: [mood]disappointed
 msgid "disappointed"
-msgstr ""
+msgstr "sklamaný"
 
 #: [mood]disgusted
 msgid "disgusted"
-msgstr ""
+msgstr "zhnusený"
 
 #: [mood]dismayed
 msgid "dismayed"
-msgstr ""
+msgstr "vypnutý"
 
 #: [mood]distracted
 msgid "distracted"
-msgstr ""
+msgstr "rozrušený"
 
 #: [mood]embarrassed
 msgid "embarrassed"
-msgstr ""
+msgstr "rozpačitý"
 
 #: [mood]envious
 msgid "envious"
-msgstr ""
+msgstr "závistlivý"
 
 #: [mood]excited
 msgid "excited"
-msgstr ""
+msgstr "vzrušený"
 
 #: [mood]flirtatious
 msgid "flirtatious"
-msgstr ""
+msgstr "záletný"
 
 #: [mood]frustrated
 msgid "frustrated"
-msgstr ""
+msgstr "frustrovaný"
 
 #: [mood]grateful
 msgid "grateful"
-msgstr ""
+msgstr "vďačný"
 
 #: [mood]grieving
 msgid "grieving"
-msgstr ""
+msgstr "trúchliaci"
 
 #: [mood]grumpy
 msgid "grumpy"
-msgstr ""
+msgstr "mrzutý"
 
 #: [mood]guilty
 msgid "guilty"
-msgstr ""
+msgstr "vinný"
 
 #: [mood]happy
 msgid "happy"
-msgstr ""
+msgstr "šťastný"
 
 #: [mood]hopeful
 msgid "hopeful"
-msgstr ""
+msgstr "sľubný"
 
 #: [mood]hot
 msgid "hot"
-msgstr ""
+msgstr "horlivý"
 
 #: [mood]humbled
 msgid "humbled"
-msgstr ""
+msgstr "pokorný"
 
 #: [mood]humiliated
 msgid "humiliated"
-msgstr ""
+msgstr "ponížený"
 
 #: [mood]hungry
 msgid "hungry"
-msgstr ""
+msgstr "hladný"
 
 #: [mood]hurt
 msgid "hurt"
-msgstr ""
+msgstr "zranený"
 
 #: [mood]impressed
 msgid "impressed"
-msgstr ""
+msgstr "dojatý"
 
 #: [mood]in_awe
 msgid "in awe"
-msgstr ""
+msgstr "zhrozený"
 
 #: [mood]in_love
 msgid "in love"
-msgstr ""
+msgstr "zaľúbený"
 
 #: [mood]indignant
 msgid "indignant"
-msgstr ""
+msgstr "rozhorčený"
 
 #: [mood]interested
 msgid "interested"
-msgstr ""
+msgstr "zaujímajúci sa"
 
 #: [mood]intoxicated
 msgid "intoxicated"
-msgstr ""
+msgstr "pod vplyvom"
 
 #: [mood]invincible
 msgid "invincible"
-msgstr ""
+msgstr "neprekonateľný"
 
 #: [mood]jealous
 msgid "jealous"
-msgstr ""
+msgstr "žiarlivý"
 
 #: [mood]lonely
 msgid "lonely"
-msgstr ""
+msgstr "osamelý"
 
 #: [mood]lost
 msgid "lost"
-msgstr ""
+msgstr "stratený"
 
 #: [mood]lucky
 msgid "lucky"
-msgstr ""
+msgstr "šťastný"
 
 #: [mood]mean
 msgid "mean"
-msgstr ""
+msgstr "zlý"
 
 #: [mood]moody
 msgid "moody"
-msgstr ""
+msgstr "náladový"
 
 #: [mood]nervous
 msgid "nervous"
-msgstr ""
+msgstr "nervózny"
 
 #: [mood]neutral
 msgid "neutral"
-msgstr ""
+msgstr "neutrálny"
 
 #: [mood]offended
 msgid "offended"
-msgstr ""
+msgstr "urazený"
 
 #: [mood]outraged
 msgid "outraged"
-msgstr ""
+msgstr "pobúrený"
 
 #: [mood]playful
 msgid "playful"
-msgstr ""
+msgstr "hravý"
 
 #: [mood]proud
 msgid "proud"
-msgstr ""
+msgstr "hrdý"
 
 #: [mood]relaxed
 msgid "relaxed"
-msgstr ""
+msgstr "oddychujúci"
 
 #: [mood]relieved
 msgid "relieved"
-msgstr ""
+msgstr "uvoľnený"
 
 #: [mood]restless
 msgid "restless"
-msgstr ""
+msgstr "nespokojný"
 
 #: [mood]sad
 msgid "sad"
-msgstr ""
+msgstr "smutný"
 
 #: [mood]sarcastic
 msgid "sarcastic"
-msgstr ""
+msgstr "sarkastický"
 
 #: [mood]satisfied
 msgid "satisfied"
-msgstr ""
+msgstr "spokojný"
 
 #: [mood]serious
 msgid "serious"
-msgstr ""
+msgstr "vážny"
 
 #: [mood]shocked
 msgid "shocked"
-msgstr ""
+msgstr "šokovaný"
 
 #: [mood]shy
 msgid "shy"
-msgstr ""
+msgstr "hamblivý"
 
 #: [mood]sick
 msgid "sick"
-msgstr ""
+msgstr "chorý"
 
 #: [mood]sleepy
 msgid "sleepy"
-msgstr ""
+msgstr "ospalý"
 
 #: [mood]spontaneous
 msgid "spontaneous"
-msgstr ""
+msgstr "spontánny"
 
 #: [mood]stressed
 msgid "stressed"
-msgstr ""
+msgstr "vystresovaný"
 
 #: [mood]strong
 msgid "strong"
-msgstr ""
+msgstr "silný"
 
 #: [mood]surprised
 msgid "surprised"
-msgstr ""
+msgstr "prekvapený"
 
 #: [mood]thankful
 msgid "thankful"
-msgstr ""
+msgstr "vďačný"
 
 #: [mood]thirsty
 msgid "thirsty"
-msgstr ""
+msgstr "smädný"
 
 #: [mood]tired
 msgid "tired"
-msgstr ""
+msgstr "unavený"
 
 #: [mood]undefined
 msgid "undefined"
-msgstr ""
+msgstr "nedefinované"
 
 #: [mood]weak
 msgid "weak"
-msgstr ""
+msgstr "slabý"
 
 #: [mood]worried
 msgid "worried"
-msgstr ""
+msgstr "ustarostený"
 
 #: [month]title
 msgid "Month"
-msgstr ""
+msgstr "mesiac"
 
 #: [month]january
 msgid "January"
-msgstr ""
+msgstr "Január"
 
 #: [month]february
 msgid "February"
-msgstr ""
+msgstr "Ferbruár"
 
 #: [month]march
 msgid "March"
-msgstr ""
+msgstr "Marec"
 
 #: [month]april
 msgid "April"
-msgstr ""
+msgstr "Apríl"
 
 #: [month]may
 msgid "May"
-msgstr ""
+msgstr "Máj"
 
 #: [month]june
 msgid "June"
-msgstr ""
+msgstr "Jún"
 
 #: [month]july
 msgid "July"
-msgstr ""
+msgstr "Júl"
 
 #: [month]august
 msgid "August"
-msgstr ""
+msgstr "August"
 
 #: [month]september
 msgid "September"
-msgstr ""
+msgstr "September"
 
 #: [month]october
 msgid "October"
-msgstr ""
+msgstr "Október"
 
 #: [month]november
 msgid "November"
-msgstr ""
+msgstr "November"
 
 #: [month]december
 msgid "December"
-msgstr ""
+msgstr "December"
 
 #: [year]title
 msgid "Year"
-msgstr ""
+msgstr "Rok"
 
 #: [date]today
 msgid "Today"
-msgstr ""
+msgstr "Dnes"
 
 #: [date]tomorrow
 msgid "Tomorrow"
-msgstr ""
+msgstr "Zajtra"
 
 #: [date]yesterday
 msgid "Yesterday"
-msgstr ""
+msgstr "Včera"
 
 #: [date]ago
 msgid "%d days ago"
-msgstr ""
+msgstr "pred %d dňami"
 
 #: [date]day
 msgid "day"
-msgstr ""
+msgstr "deň"
 
 #: [post]title
 msgid "Title"
-msgstr ""
+msgstr "Titulok"
 
 #: [post]place
 msgid "Place"
@@ -2761,91 +2762,91 @@ msgstr ""
 
 #: [post]geolocalisation
 msgid "Geolocalisation"
-msgstr ""
+msgstr "Geolokalizácia"
 
 #: [post]email
 msgid "email"
-msgstr ""
+msgstr "email"
 
 #: [post]empty
 msgid "No content"
-msgstr ""
+msgstr "Žiadny obsah"
 
 #: [post]no_comments
 msgid "No comments yet"
-msgstr ""
+msgstr "zatiaľ žiadne komentáre"
 
 #: [post]older
 msgid "Get older posts"
-msgstr ""
+msgstr "Získať staršie príspevky"
 
 #: [post]new_items
 msgid "%s new items"
-msgstr ""
+msgstr "Nové položky: %s"
 
 #: [post]comment_error
 msgid "Comment publication error"
-msgstr ""
+msgstr "Chyba uverejnenia komentára"
 
 #: [post]comments_get
 msgid "Get the comments"
-msgstr ""
+msgstr "Získať komentáre"
 
 #: [post]comment_add
 msgid "Add a comment"
-msgstr ""
+msgstr "Pridať komentár"
 
 #: [post]share
 msgid "Share with"
-msgstr ""
+msgstr "Zdieľať s"
 
 #: [post]share_everyone
 msgid "Everyone"
-msgstr ""
+msgstr "Každý"
 
 #: [post]updated
 msgid "Updated"
-msgstr ""
+msgstr "Aktualizvoané"
 
 #: [post]content_not_found
 msgid "Content not found"
-msgstr ""
+msgstr "Obsah nenájdený"
 
 #: [post]default_title
 msgid "Contact publication"
-msgstr ""
+msgstr "Uverejnenia kontaktu"
 
 #: [post]comments
 msgid "Comments"
-msgstr ""
+msgstr "Komentáre"
 
 #: [post]original_deleted
 msgid "Original post deleted"
-msgstr ""
+msgstr "Pôvodný príspevok zmazaný"
 
 #: [affiliation]publisher
 msgid "Publisher"
-msgstr ""
+msgstr "Vydavateľ"
 
 #: [affiliation]publish-only
 msgid "Publish only"
-msgstr ""
+msgstr "Len vydavateľ"
 
 #: [affiliation]member
 msgid "Member"
-msgstr ""
+msgstr "Člen"
 
 #: [affiliation]no-aff
 msgid "No affiliation"
-msgstr ""
+msgstr "Bez pričlenenia"
 
 #: [affiliation]outcast
 msgid "Outcast"
-msgstr ""
+msgstr "Blokovaný"
 
 #: [api]error
 msgid "The API is not reachable, try again later"
-msgstr ""
+msgstr "API nie je dostupné, skúste neskôr"
 
 #: [field]type_here
 msgid "Type here"
