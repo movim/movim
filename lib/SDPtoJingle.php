@@ -51,7 +51,7 @@ class SDPtoJingle
         $this->sdp = $sdp;
         $this->arr = explode("\n", $this->sdp);
 
-        if ($mid) {
+        if ($mid !== null) {
             $this->mid = $mid;
         }
 
@@ -354,6 +354,7 @@ class SDPtoJingle
                             $this->initContent();
                             $this->addName();
 
+                            $this->jingle->addAttribute('sid', $this->sid ?? $this->getSessionId());
                             $candidate = $this->transport->addChild('candidate');
 
                             $candidate->addAttribute('foundation', $matches[1]);

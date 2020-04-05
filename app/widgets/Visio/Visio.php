@@ -133,7 +133,7 @@ class Visio extends Base
            ->request();
     }
 
-    public function ajaxCandidate($sdp, $to)
+    public function ajaxCandidate($sdp, $to, $id)
     {
         $stj = new SDPtoJingle(
             'a='.$sdp->candidate,
@@ -142,6 +142,7 @@ class Visio extends Base
             'transport-info',
             $sdp->sdpMid
         );
+        $stj->setSessionId($id);
 
         $si = new SessionInitiate;
         $si->setTo($to)
