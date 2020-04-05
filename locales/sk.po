@@ -105,7 +105,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-22 15:18+0200\n"
-"PO-Revision-Date: 2020-04-04 13:23+0000\n"
+"PO-Revision-Date: 2020-04-05 08:41+0000\n"
 "Last-Translator: Slavko <linux@slavino.sk>\n"
 "Language-Team: Slovak (Slovakia) (http://www.transifex.com/movim/movim/language/sk_SK/)\n"
 "Language: sk_SK\n"
@@ -161,7 +161,7 @@ msgstr "Heslo"
 
 #: [account]password_confirmation
 msgid "Password confirmation"
-msgstr "Povrdenie hesla"
+msgstr "Potvrdenie hesla"
 
 #: [account]password_changed
 msgid "The password has been updated"
@@ -253,7 +253,7 @@ msgstr "Akcia dokončená"
 
 #: [admin]general
 msgid "General Settings"
-msgstr "Všeobecné nastavenia\t"
+msgstr "Všeobecné nastavenia"
 
 #: [general]theme
 msgid "Theme"
@@ -463,7 +463,7 @@ msgstr "Avatar neaktualizovaný"
 
 #: [avatar]missing
 msgid "No avatar defined yet"
-msgstr "Avatqar ešte nie je definovaný"
+msgstr "Avatar ešte nie je definovaný"
 
 #: [blog]title [feed]title
 msgid "%s’s feed"
@@ -503,7 +503,7 @@ msgstr "Kontakt stratený"
 
 #: [message]history
 msgid "%s messages retrieved"
-msgstr "Prijaté správy: %S"
+msgstr "Prijaté správy: %s"
 
 #: [message]edit_help
 msgid "↑ to edit your previous message"
@@ -523,7 +523,7 @@ msgstr "Vaša správa tu…"
 
 #: [chat]smileys
 msgid "Smileys"
-msgstr "Smailíky"
+msgstr "Smajlíky"
 
 #: [chat]frequent
 msgid "Frequent contacts"
@@ -611,11 +611,11 @@ msgstr "Asministrácia"
 
 #: [chats]empty_title
 msgid "No chats yet…"
-msgstr "zatiaľ žiadne chaty…"
+msgstr "Zatiaľ žiadne chaty…"
 
 #: [chats]empty
 msgid "Start a new conversation by clicking on the %s button."
-msgstr "začnite novú konverzáciu kliknutím na tlačidlo %s."
+msgstr "Začnite novú konverzáciu kliknutím na tlačidlo %s."
 
 #: [chats]add
 msgid "Chat with a contact"
@@ -675,7 +675,7 @@ msgstr "Vytvoriť novú komunitu na %s"
 
 #: [communitiesserver]name
 msgid "Community name"
-msgstr "Nýzov komunity"
+msgstr "Názov komunity"
 
 #: [communitiesserver]name_example
 msgid "My Little Pony - Fan Club"
@@ -812,7 +812,7 @@ msgstr "Moje meno komunity"
 
 #: [communityheader]share_subscription
 msgid "Share this subscription publicly"
-msgstr "zdieľať tento odber verejne"
+msgstr "Zdieľať tento odber verejne"
 
 #: [communityheader]share_subscription_text
 msgid "It will appear on your profile"
@@ -832,7 +832,7 @@ msgstr "Obsah pre dospelých blokovaný"
 
 #: [communityposts]nsfw_message
 msgid "Some adult content has been blocked on this page. You can enable the display of adult content in the configuration page."
-msgstr "nejaký obsah pre dospelých bol na tejto stránke blokovaný. ?ôžete povoliť zobrazenie odbahu pre dospelých v stránke konfigurácie."
+msgstr "nejaký obsah pre dospelých bol na tejto stránke blokovaný. Môžete povoliť zobrazenie obsahu pre dospelých v stránke konfigurácie."
 
 #: [communitysubscriptions]subscriptions
 msgid "My Subscriptions"
@@ -848,7 +848,7 @@ msgstr "Tu môžete spracovať svoje odbery."
 
 #: [communitysubscriptions]empty_text2
 msgid "You don’t have any group subscriptions yet."
-msgstr "zatiaľ nemáte žiadne skupiny odberov."
+msgstr "Zatiaľ nemáte žiadne skupiny odberov."
 
 #: [config]general
 msgid "General"
@@ -924,7 +924,7 @@ msgstr "Nikdy"
 
 #: [config]mam_saved
 msgid "Archiving preferences saved"
-msgstr "nastavenia archivovania uložené"
+msgstr "Nastavenia archivovania uložené"
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -932,7 +932,7 @@ msgstr "Potvrdenie autentifikcáie"
 
 #: [confirm]description
 msgid "The following platform would like your confirmation to authentify this account"
-msgstr "nasledujúca platforma by chcela potvrdenie autenticity tohoto účtu"
+msgstr "Nasledujúca platforma by chcela potvrdenie autenticity tohoto účtu"
 
 #: [confirm]code
 msgid "Authentication code"
@@ -1040,7 +1040,7 @@ msgstr "Informácie o klientovi"
 
 #: [explore]last_registered
 msgid "Last registered"
-msgstr "naposledy registrovaný"
+msgstr "Naposledy registrovaný"
 
 #: [explore]explore
 msgid "Find some new friends"
@@ -1060,7 +1060,7 @@ msgstr "Skupina"
 
 #: [delete]text
 msgid "You are going to delete one of your contacts, please confirm your action"
-msgstr "odstraňujete jeden zo svojich kontaktov, prosím, potvrďte svoju akciu"
+msgstr "Odstraňujete jeden zo svojich kontaktov, prosím, potvrďte svoju akciu"
 
 #: [age]years
 msgid "%s years"
@@ -1168,7 +1168,7 @@ msgstr "Aplikácie pre Vás počítač"
 
 #: [apps]computer_text
 msgid "Our official apps are available on our website"
-msgstr "naše oficiálne aplikácie sú dostupné na našej webovej stránke"
+msgstr "Naše oficiálne aplikácie sú dostupné na našej webovej stránke"
 
 #: [contact]title
 msgid "Administrators & Contact"
@@ -1216,7 +1216,7 @@ msgstr "Chyba relácie"
 
 #: [error]account_created
 msgid "Account successfully created"
-msgstr "účet úspešne vytvorený"
+msgstr "Účet úspešne vytvorený"
 
 #: [error]timeout
 msgid "The server takes too much time to respond"
@@ -1304,7 +1304,7 @@ msgstr "Napísať nový príspevok…"
 
 #: [invitations]title
 msgid "Pending Invitations"
-msgstr "čakajúce pozvánky"
+msgstr "Čakajúce pozvánky"
 
 #: [invitations]wants_to_talk
 msgid "%s wants to talk with you"
@@ -1364,7 +1364,7 @@ msgstr "Obsah"
 
 #: [post]published
 msgid "Post published"
-msgstr "príspevok uverejnený"
+msgstr "Príspevok uverejnený"
 
 #: [post]deleted
 msgid "Post deleted"
@@ -1412,7 +1412,7 @@ msgstr "Tento príspevok je verejný"
 
 #: [post]public_no
 msgid "This post is private"
-msgstr "Tento príspevok je súkormný"
+msgstr "Tento príspevok je súkromný"
 
 #: [post]public_url
 msgid "Public URL of this post"
@@ -1424,7 +1424,7 @@ msgstr "Odstrániť tento príspevok"
 
 #: [post]delete_text
 msgid "You are going to delete this post, please confirm your action"
-msgstr "odstraňujete tento príspevok, prosím potvrďte svoju akciu"
+msgstr "Odstraňujete tento príspevok, prosím potvrďte svoju akciu"
 
 #: [post]delete_comment
 msgid "Are you sure that you want to delete this comment?"
@@ -1468,7 +1468,7 @@ msgstr "Komentoval"
 
 #: [hello]blog_title
 msgid "Visit your public blog"
-msgstr "navštívte svoj verejný blog"
+msgstr "Navštívte svoj verejný blog"
 
 #: [hello]blog_text
 msgid "See your public posts and share them with all your contacts"
@@ -1484,7 +1484,7 @@ msgstr "Univerzálne tlačidlo zdieľania"
 
 #: [hello]share_text
 msgid "Bookmark or drag and drop the following button in your toolbar and use it on all the pages you want to share on Movim"
-msgstr "pridajte si nasledujúce tlačidlo do záložiek alebo ho pretiahnite do panela nástrojov a použite ho všetkých stránkach, ktoré chcete zdieľať v Movim"
+msgstr "Pridajte si nasledujúce tlačidlo do záložiek alebo ho pretiahnite do panela nástrojov a použite ho všetkých stránkach, ktoré chcete zdieľať v Movim"
 
 #: [hello]share_button
 msgid "Share on Movim"
@@ -1496,7 +1496,7 @@ msgstr "Oh! Vitajte!"
 
 #: [hello]enter_paragraph
 msgid "It seems that you’re new there! Welcome on Movim!"
-msgstr "zdá sa, že ste tu nový! Vitajte v Movim!"
+msgstr "Zdá sa, že ste tu nový! Vitajte v Movim!"
 
 #: [hello]menu_title
 msgid "Check the Menu"
@@ -1596,7 +1596,7 @@ msgstr "Upraviť miestnosť"
 
 #: [rooms]empty_text1
 msgid "You don’t have any chatroom yet."
-msgstr "nemáte zatiaľ žiadnu miestnosť."
+msgstr "Nemáte zatiaľ žiadnu miestnosť."
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
@@ -1640,7 +1640,7 @@ msgstr "Odstrániť miestnosť"
 
 #: [rooms]destroy_text
 msgid "Are you sure that you want to definitely destroy the following room?"
-msgstr "naozaj chcete úplne odstrániť nasledujúcu miestnosť?"
+msgstr "Naozaj chcete úplne odstrániť nasledujúcu miestnosť?"
 
 #: [rooms]owner [affiliation]owner
 msgid "Owner"
@@ -1792,7 +1792,7 @@ msgstr "Otvorte ma pomocou Ctrl+M"
 
 #: [search]placeholder
 msgid "#cats, username@server.com, John…"
-msgstr "#kateg, meno@example.org, Jožko…"
+msgstr "#kateg, username@server.com, Jožko…"
 
 #: [search]no_contacts_title
 msgid "No contacts yet?"
@@ -1884,11 +1884,11 @@ msgstr "Súbor príliš veľký"
 
 #: [upload]error_failed
 msgid "Upload failed"
-msgstr "nahratie zlyhalo"
+msgstr "Nahratie zlyhalo"
 
 #: [upload]error_not_allowed
 msgid "You are not allowed to upload a file"
-msgstr "nemáte dovolené nahrať súbor"
+msgstr "Nemáte dovolené nahrať súbor"
 
 #: [upload]error_resource_constraint
 msgid "You exceeded the quota"
@@ -1924,7 +1924,7 @@ msgstr "Nastavte si prezývku v tejto inštancii"
 
 #: [profile]privacy_question
 msgid "Is this profile public?"
-msgstr "je tento profil verejný?"
+msgstr "Je tento profil verejný?"
 
 #: [profile]privacy_info
 msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
@@ -1932,7 +1932,7 @@ msgstr "Prosím, dávajte pozor! Keď nastavíte svoj profil na verejný, všetk
 
 #: [profile]nickname_info
 msgid "Set a local nickname to allow the other users of the instance to find you easily."
-msgstr "nastaví lokálnu prezývku, aby Vás ostatní používatelia tejto inštancie ľahšie našli."
+msgstr "Nastaví lokálnu prezývku, aby Vás ostatní používatelia tejto inštancie ľahšie našli."
 
 #: [profile]nickname_set
 msgid "Your nickname is %s."
@@ -1940,11 +1940,11 @@ msgstr "Vaša prezývka je %s."
 
 #: [profile]nickname_placeholder
 msgid "John_Bob96"
-msgstr "Jožko_Mrkvička"
+msgstr "Jožko_Mrkvička96"
 
 #: [profile]nickname_error
 msgid "Your nickname should only contains letters, numbers, - and _"
-msgstr "Vaša prezývky môže obsahovať len písmená, číslice, - a _"
+msgstr "Vaša prezývka môže obsahovať len písmená, číslice, - a _"
 
 #: [profile]nickname_conflict
 msgid "The nickname is already registered"
@@ -2004,7 +2004,7 @@ msgstr "hovor skončil"
 
 #: [global]no_js
 msgid "Movim requires Javascript to be enabled to work properly."
-msgstr "Movim vyžaduje zapnutý a funkčný Javascript, aby fungoval správne."
+msgstr "Aby Movim fungoval správne, vyžaduje zapnutý a funkčný Javascript."
 
 #: [global]description
 msgid "Movim is a kickass distributed social networking platform that protect your privacy and comes with a set of awesome features."
@@ -2012,7 +2012,7 @@ msgstr "Movim je platforma distribuovanej sociálnej siete, ktorá chráni vaše
 
 #: [global]loading
 msgid "Loading…"
-msgstr "načítanie…"
+msgstr "Načítanie…"
 
 #: [global]or
 msgid "Or"
@@ -2088,7 +2088,7 @@ msgstr "Galéria"
 
 #: [page]visio
 msgid "Visio-conference"
-msgstr ""
+msgstr "Video-konferencia"
 
 #: [page]share
 msgctxt "[page]share"
@@ -2258,7 +2258,7 @@ msgstr "Zapnúť"
 
 #: [button]sign_up
 msgid "Sign Up"
-msgstr "Prihlásiť sa"
+msgstr "Registrovať"
 
 #: [day]title
 msgid "Day"
@@ -2362,7 +2362,7 @@ msgstr "mrzutý"
 
 #: [mood]anxious
 msgid "anxious"
-msgstr "úskostlivý"
+msgstr "úzkostlivý"
 
 #: [mood]aroused
 msgid "aroused"
@@ -2442,7 +2442,7 @@ msgstr "zhnusený"
 
 #: [mood]dismayed
 msgid "dismayed"
-msgstr "vypnutý"
+msgstr "zdesený"
 
 #: [mood]distracted
 msgid "distracted"
@@ -2498,7 +2498,7 @@ msgstr "horlivý"
 
 #: [mood]humbled
 msgid "humbled"
-msgstr "pokorný"
+msgstr "pokorený"
 
 #: [mood]humiliated
 msgid "humiliated"
@@ -2622,7 +2622,7 @@ msgstr "šokovaný"
 
 #: [mood]shy
 msgid "shy"
-msgstr "hamblivý"
+msgstr "hanblivý"
 
 #: [mood]sick
 msgid "sick"
@@ -2674,7 +2674,7 @@ msgstr "ustarostený"
 
 #: [month]title
 msgid "Month"
-msgstr "mesiac"
+msgstr "Mesiac"
 
 #: [month]january
 msgid "January"
@@ -2754,7 +2754,7 @@ msgstr "Titulok"
 
 #: [post]place
 msgid "Place"
-msgstr ""
+msgstr "Miesto"
 
 #: [post]by
 msgid "by"
@@ -2850,4 +2850,4 @@ msgstr "API nie je dostupné, skúste neskôr"
 
 #: [field]type_here
 msgid "Type here"
-msgstr ""
+msgstr "Píšte tu"
