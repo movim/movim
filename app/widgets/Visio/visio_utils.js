@@ -112,7 +112,7 @@ var VisioUtils = {
                     i.innerText = 'call';
                     state.innerText = Visio.states.ringing;
 
-                    button.onclick = function() { Visio.goodbye(); };
+                    button.onclick = function() { Visio.goodbye('busy'); };
                 } else {
                     button.classList.add('green');
                     i.innerText = 'call';
