@@ -199,7 +199,7 @@ var Visio = {
 
     goodbye: (reason) => {
         Visio.onTerminate(reason);
-        Visio_ajaxTerminate(Visio.from, reason);
+        Visio_ajaxTerminate(Visio.from, reason, Visio.id);
     },
 }
 

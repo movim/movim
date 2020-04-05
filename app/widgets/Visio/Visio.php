@@ -82,6 +82,10 @@ class Visio extends Base
 
     public function onTerminate($reason)
     {
+        // Stop calling sound and clear the Dialog if there
+        $this->rpc('Notification.incomingAnswer');
+        (new Dialog)->ajaxClear();
+
         $this->rpc('Visio.onTerminate', $reason);
     }
 
@@ -150,13 +154,13 @@ class Visio extends Base
            ->request();
     }
 
-    public function ajaxTerminate($to, $reason = 'success')
+    public function ajaxTerminate($to, $reason = 'success', $sid = null)
     {
         $s = Session::start();
 
         $st = new SessionTerminate;
         $st->setTo($to)
-           ->setJingleSid($s->get('jingleSid'))
+           ->setJingleSid($sid !== null ? $sid : $s->get('jingleSid'))
            ->setReason($reason)
            ->request();
     }
