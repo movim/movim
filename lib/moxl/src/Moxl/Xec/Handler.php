@@ -162,6 +162,7 @@ class Handler
 
             '0923dd6b12f46f658b4273104a129ec9' => 'JinglePropose',
             '829715591c7554bad3630dfd3353b4e7' => 'JingleAccept',
+            '0c0238797befe918ac81efaa0200771b' => 'JingleProceed',
             'd84d4b89d43e88a244197ccf499de8d8' => 'Jingle',
 
             '09ef1b34cf40fdd954f10d6e5075ee5c' => 'Carbons',
