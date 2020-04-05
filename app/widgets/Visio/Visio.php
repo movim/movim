@@ -154,13 +154,13 @@ class Visio extends Base
            ->request();
     }
 
-    public function ajaxTerminate($to, $reason = 'success', $sid = null)
+    public function ajaxTerminate($to, $reason = 'success', $sid)
     {
         $s = Session::start();
 
         $st = new SessionTerminate;
         $st->setTo($to)
-           ->setJingleSid($sid !== null ? $sid : $s->get('jingleSid'))
+           ->setJingleSid($sid)
            ->setReason($reason)
            ->request();
     }

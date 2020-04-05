@@ -31,6 +31,7 @@ class SessionTerminate extends Action
                 'success',
                 'busy',
                 'decline',
+                'cancel',
                 'unsupported-transports',
                 'failed-transport',
                 'unsupported-applications',

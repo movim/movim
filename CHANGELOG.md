@@ -10,6 +10,7 @@ v0.17.2 (trunk)
  * Add audio notifications for incoming chat messages and calls
  * Add a way to lock the Dialog box, can only be closed using the action buttons
  * Add scroll-to-bottom button in Chat
+ * Fix several Jingle session + ICE issues
 
 v0.17.1
 ---------------------------
