@@ -22,16 +22,29 @@ class Jingle
         \Moxl\API::request($dom->saveXML($dom->documentElement));
     }
 
-    public static function sessionAccept($to, $id)
+    public static function sessionAccept($id)
+    {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $message = $dom->createElementNS('jabber:client', 'message');
+        $dom->appendChild($message);
+
+        $accept = $dom->createElementNS('urn:xmpp:jingle-message:0', 'accept');
+        $accept->setAttribute('id', $id);
+        $message->appendChild($accept);
+
+        \Moxl\API::request($dom->saveXML($dom->documentElement));
+    }
+
+    public static function sessionProceed($to, $id)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $message = $dom->createElementNS('jabber:client', 'message');
         $message->setAttribute('to', $to);
         $dom->appendChild($message);
 
-        $propose = $dom->createElementNS('urn:xmpp:jingle-message:0', 'accept');
-        $propose->setAttribute('id', $id);
-        $message->appendChild($propose);
+        $proceed = $dom->createElementNS('urn:xmpp:jingle-message:0', 'proceed');
+        $proceed->setAttribute('id', $id);
+        $message->appendChild($proceed);
 
         \Moxl\API::request($dom->saveXML($dom->documentElement));
     }

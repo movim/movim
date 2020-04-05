@@ -13,6 +13,7 @@ class SessionAccept extends Action
     public function request()
     {
         $this->store();
-        Jingle::sessionAccept($this->_to, $this->_id);
+        Jingle::sessionAccept($this->_id);
+        Jingle::sessionProceed($this->_to, $this->_id);
     }
 }

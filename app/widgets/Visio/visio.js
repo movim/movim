@@ -131,7 +131,7 @@ var Visio = {
         }), () => {}, logError);
     },
 
-    onAccept: function(from, id) {
+    onProceed: function(from, id) {
         if (Visio.from == from && Visio.id == id) {
             Visio.pc.createOffer().then(function(offer) {
                 Visio.calling = false;
