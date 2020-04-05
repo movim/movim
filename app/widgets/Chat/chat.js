@@ -456,7 +456,6 @@ var Chat = {
 
         var button = discussion.querySelector('.button.action');
 
-        console.log(button);
         if (Chat.isScrolled()) {
             button.classList.remove('show');
         } else {
