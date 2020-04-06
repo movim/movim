@@ -31,6 +31,17 @@
                     <span class="control icon active" onclick="ContactActions_ajaxChat('{$contact->id|echapJS}')">
                         <i class="material-icons">comment</i>
                     </span>
+                    {if="$roster && $roster->presences->count() > 0"}
+                        {loop="$roster->presences"}
+                            {if="$value->capability && $value->capability->isJingle()"}
+                                <span title="{$c->__('button.call')}" class="control icon active"
+                                    onclick="VisioLink.openVisio('{$value->jid}');">
+                                    <i class="material-icons">phone</i>
+                                </span>
+                                {break}
+                            {/if}
+                        {/loop}
+                    {/if}
                 {/if}
                 <p class="line">{$contact->truename}</p>
                 <p class="line">{$contact->id}</p>
@@ -49,12 +60,6 @@
                                 {$value->capability->getDeviceIcon()}
                             </i>
                         </span>
-                        {if="$value->capability && $value->capability->isJingle()"}
-                            <span title="{$c->__('button.call')}" class="control icon active divided"
-                                onclick="VisioLink.openVisio('{$value->jid . '/' . $value->resource}');">
-                                <i class="material-icons">phone</i>
-                            </span>
-                        {/if}
                         <p class="normal line">
                             {$value->capability->name}
                             <span class="second">{$value->resource}</span>

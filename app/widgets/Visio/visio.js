@@ -15,7 +15,7 @@ var Visio = {
     switchCamera: undefined,
 
     init: function(id) {
-        Visio.from = MovimUtils.urlParts().params[0] + '/' + MovimUtils.urlParts().params[1];
+        Visio.from = MovimUtils.urlParts().params[0];
         Visio.localVideo = document.getElementById('video');
         Visio.remoteVideo = document.getElementById('remote_video');
 
@@ -132,7 +132,10 @@ var Visio = {
     },
 
     onProceed: function(from, id) {
-        if (Visio.from == from && Visio.id == id) {
+        if (from.substring(0, Visio.from.length) == Visio.from && Visio.id == id) {
+            // We set the remote resource
+            Visio.from = from;
+
             Visio.pc.createOffer().then(function(offer) {
                 Visio.calling = false;
                 VisioUtils.toggleMainButton();
