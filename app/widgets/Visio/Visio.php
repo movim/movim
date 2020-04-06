@@ -18,6 +18,7 @@ class Visio extends Base
 
         $this->registerEvent('jinglepropose', 'onPropose');
         $this->registerEvent('jingleproceed', 'onProceed');
+        $this->registerEvent('jingleaccept', 'onAccept');
         $this->registerEvent('jingle_sessioninitiate', 'onInitiateSDP');
         $this->registerEvent('jingle_sessionaccept', 'onAcceptSDP');
         $this->registerEvent('jingle_transportinfo', 'onCandidate');
@@ -64,6 +65,12 @@ class Visio extends Base
     {
         $data = $packet->content;
         $this->rpc('Visio.onProceed', $data['from'], $data['id']);
+    }
+
+    public function onAccept($packet)
+    {
+        $this->rpc('Notification.incomingAnswer');
+        (new Dialog)->ajaxClear();
     }
 
     public function onAcceptSDP($stanza)
