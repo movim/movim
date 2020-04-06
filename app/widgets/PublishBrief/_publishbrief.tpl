@@ -56,6 +56,7 @@
                 {/if}
                 <div>
                     <textarea
+                        dir="auto"
                         name="title"
                         id="title"
                         rows="1"
@@ -69,6 +70,7 @@
                         {if="$extended"}
                             class="extended"
                         {/if}
+                        dir="auto"
                         name="content"
                         placeholder="{$c->__('publishbrief.content_text')}"
                         data-autoheight="true"

@@ -297,6 +297,7 @@
             <form>
                 <div>
                      <textarea
+                        dir="auto"
                         rows="1"
                         id="chat_textarea"
                         data-jid="{$jid}"

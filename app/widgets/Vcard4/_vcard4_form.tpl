@@ -1,11 +1,11 @@
 {if="$me->hasPubsub()"}
 <form name="vcard4" id="vcard4form" class="flex">
     <div class="block">
-        <input type="text" name="fn" value="{$contact->fn}" placeholder="{$c->__('general.name')}">
+        <input dir="auto" type="text" name="fn" value="{$contact->fn}" placeholder="{$c->__('general.name')}">
         <label for="fn">{$c->__('general.name')}</label>
     </div>
     <div class="block">
-        <input type="text" name="name" value="{$contact->name}" placeholder="{$c->__('general.nickname')}">
+        <input dir="auto" type="text" name="name" value="{$contact->name}" placeholder="{$c->__('general.nickname')}">
         <label for="name">{$c->__('general.nickname')}</label>
     </div>
 
@@ -25,14 +25,14 @@
     </div>
 
     <div class="block large">
-        <textarea name="desc" id="desctext" placeholder="{$c->__('general.about')}" data-autoheight="true">{$desc}</textarea>
+        <textarea dir="auto" name="desc" id="desctext" placeholder="{$c->__('general.about')}" data-autoheight="true">{$desc}</textarea>
         <label for="desc">{$c->__('general.about')}</label>
     </div>
 
     <div class="clear padded"></div>
 
     <div class="block">
-        <input type="text" name ="locality" class="content" value="{$contact->adrlocality}" placeholder="{$c->__('position.locality')}">
+        <input dir="auto" type="text" name ="locality" class="content" value="{$contact->adrlocality}" placeholder="{$c->__('position.locality')}">
         <label for="url">{$c->__('position.locality')}</label>
     </div>
 

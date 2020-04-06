@@ -25,6 +25,10 @@ article section {
     padding: 0 2rem;
 }
 
+article section[dir=rtl] {
+    text-align: right;
+}
+
 article section.limited {
     display: block;
     max-height: 60rem;

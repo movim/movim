@@ -173,6 +173,11 @@ main > aside + div {
     box-sizing: border-box;
 }
 
+body[dir="rtl"] main > aside + div {
+    padding-left: 1rem;
+    padding-right: 0;
+}
+
 /* Two blocks */
 main > div:first-child:nth-last-child(2) {
     width: 70%;

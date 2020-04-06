@@ -647,10 +647,6 @@ var Chat = {
             reactions.className = 'reactions';
         }
 
-        if (data.rtl) {
-            bubble.querySelector('div.bubble').setAttribute('dir', 'rtl');
-        }
-
         if (data.retracted) {
             p.classList.add('retracted');
         }
@@ -671,6 +667,10 @@ var Chat = {
 
         if (data.id != null) {
             msg.setAttribute('id', data.id);
+        }
+
+        if (data.rtl) {
+            msg.setAttribute('dir', 'rtl');
         }
 
         if (data.sticker != null) {

@@ -70,11 +70,12 @@ span.icon.primary.thumb {
     line-height: 7.5rem;
     max-height: 100%;
 }
-/*
-*[dir="rtl"] span.icon.primary.thumb {
+
+body[dir="rtl"] span.icon.primary.thumb {
+    left: initial;
     right: 0;
 }
-*/
+
 li.oppose span.icon {
     left: auto;
     right: 2rem;
