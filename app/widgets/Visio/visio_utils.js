@@ -115,9 +115,8 @@ var VisioUtils = {
                     button.onclick = function() { Visio.goodbye('cancel'); };
                 } else {
                     button.classList.add('green');
+                    button.classList.add('disabled');
                     i.innerText = 'call';
-
-                    button.onclick = function() { Visio.hello(); };
                 }
             } else if (Visio.pc.iceConnectionState == 'checking') {
                 button.classList.add('blue');

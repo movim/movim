@@ -16,6 +16,11 @@ var Visio = {
 
     init: function(id) {
         Visio.from = MovimUtils.urlParts().params[0];
+
+        if (MovimUtils.urlParts().params[1] !== undefined) {
+            Visio.from += '/' + MovimUtils.urlParts().params[1];
+        }
+
         Visio.localVideo = document.getElementById('video');
         Visio.remoteVideo = document.getElementById('remote_video');
 
