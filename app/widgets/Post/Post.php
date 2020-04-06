@@ -283,7 +283,7 @@ class Post extends Base
     public function display()
     {
         $this->view->assign('nodeid', false);
-        if (Validator::stringType()->length(10, 256)->validate($this->get('i'))) {
+        if (Validator::stringType()->length(3, 256)->validate($this->get('i'))) {
             $this->view->assign('nodeid', $this->get('i'));
         }
     }
