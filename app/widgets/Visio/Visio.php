@@ -151,7 +151,8 @@ class Visio extends Base
             $this->user->id,
             $to,
             'transport-info',
-            $sdp->sdpMid
+            $sdp->sdpMid,
+            $sdp->usernameFragment
         );
         $stj->setSessionId($id);
 

@@ -13,6 +13,7 @@ class SDPtoJingle
 
     private $action;
 
+    private $ufrag = null;
     private $mid = null;
     private $sid;
 
@@ -46,13 +47,17 @@ class SDPtoJingle
       'media'           => "/^m=(audio|video|application|data)/i"
     ];
 
-    public function __construct($sdp, $initiator, $responder = false, $action = false, $mid = null)
+    public function __construct($sdp, $initiator, $responder = false, $action = false, $mid = null, $ufrag = null)
     {
         $this->sdp = $sdp;
         $this->arr = explode("\n", $this->sdp);
 
         if ($mid !== null) {
             $this->mid = $mid;
+        }
+
+        if ($ufrag !== null) {
+            $this->ufrag = $ufrag;
         }
 
         $this->jingle = new SimpleXMLElement('<jingle></jingle>');
@@ -158,8 +163,6 @@ class SDPtoJingle
 
                             if (!empty($this->global_fingerprint)) {
                                 $fingerprint = $this->transport->addChild('fingerprint', $this->global_fingerprint['fingerprint']);
-                                //$this->transport->addAttribute('pwd', $this->global_fingerprint['pwd']);
-                                //$this->transport->addAttribute('ufrag', $this->global_fingerprint['ufrag']);
                                 $fingerprint->addAttribute('xmlns', "urn:xmpp:jingle:apps:dtls:0");
                                 $fingerprint->addAttribute('hash', $this->global_fingerprint['hash']);
                             }
@@ -341,13 +344,13 @@ class SDPtoJingle
                             break;
 
                         case 'pwd':
+                            $s = Session::start();
+                            $s->set('icePwd', $matches[1]);
                             $this->transport->addAttribute('pwd', $matches[1]);
-
                             break;
 
                         case 'ufrag':
                             $this->transport->addAttribute('ufrag', $matches[1]);
-
                             break;
 
                         case 'candidate':
@@ -400,8 +403,10 @@ class SDPtoJingle
                             }
 
                             // ufrag to the transport
-                            if (isset($args['ufrag'])) {
-                                $this->transport->addAttribute('ufrag', $args['ufrag']);
+                            $s = Session::start();
+                            if ($this->ufrag && $s->get('icePwd')) {
+                                $this->transport->addAttribute('ufrag', $this->ufrag);
+                                $this->transport->addAttribute('pwd', $s->get('icePwd'));
                             }
 
                             break;
