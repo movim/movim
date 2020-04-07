@@ -235,6 +235,10 @@ main > div:first-child:nth-last-child(2) + div {
         padding-right: 0;
     }
 
+    body[dir="rtl"] main > aside + div {
+        padding-left: 0;
+    }
+
     main > aside {
         display: none;
     }

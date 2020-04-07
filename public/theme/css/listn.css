@@ -262,7 +262,7 @@ ul.list li > .primary ~ *:not(.primary):not(.counter):not(.bubble):not(.control)
 }
 
 body[dir="rtl"] ul.list li > .primary ~ *:not(.primary):not(.counter):not(.bubble):not(.control):not(ul) {
-    padding-left: 0;
+    padding-left: 2rem;
     padding-right: 8.5rem;
 }
 
@@ -271,7 +271,7 @@ ul.list li > .top + .primary ~ *:not(.primary):not(.counter):not(.bubble):not(.c
 }
 
 body[dir="rtl"] ul.list li > .top + .primary ~ *:not(.primary):not(.counter):not(.bubble):not(.control) {
-    padding-left: 0;
+    padding-left: 2rem;
     padding-right: 2rem;
 }
 
@@ -384,9 +384,9 @@ header > ul.list li .primary {
     left: 0;
 }
 
-/*header > ul.list li > .primary.icon:not(.bubble) ~ :not(.primary):not(.counter):not(.bubble):not(.control) {
-    padding-left: 7rem;
-}*/
+body[dir="rtl"] header > ul.list li .primary {
+    right: 0;
+}
 
 /* Actions */
 

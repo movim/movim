@@ -41,7 +41,7 @@ var Chats = {
                     moveY = Math.abs(parseInt(event.targetTouches[0].pageY - Chats.startY));
 
                     if (moveX > 15 && moveX > moveY && moveY < 15) {
-                        if (moveX > (this.offsetWidth - 1000)/2) {
+                        if (moveX > this.offsetWidth/2) {
                             this.classList.add('close');
                         } else {
                             this.classList.remove('close');
@@ -61,7 +61,7 @@ var Chats = {
                         moveX = Math.abs(parseInt(event.changedTouches[0].pageX - Chats.startX));
                         moveY = Math.abs(parseInt(event.changedTouches[0].pageY - Chats.startY));
 
-                        if (moveX > (this.offsetWidth - 1000)/2 && moveY < this.offsetHeight) {
+                        if (moveX > this.offsetWidth/2 && moveY < this.offsetHeight) {
                             this.style.display = 'none';
                             Chats_ajaxClose(this.dataset.jid, (MovimUtils.urlParts().params[0] === this.dataset.jid));
                         }
