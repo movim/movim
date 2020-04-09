@@ -4,11 +4,11 @@
 {if="$url"}
 <ul class="list middle">
     <li>
-        <content>
+        <div>
             <p class="center">
                 <img class="avatar" src="{$url}">
             </p>
-        </content>
+        </div>
     </li>
 </ul>
 {/if}
@@ -16,7 +16,7 @@
 <div class="block">
     <ul class="list middle">
         <li>
-            <content>
+            <div>
                 <p class="normal center	">
                     {$contact->truename}
                     {if="isset($roster) && isset($roster->presence)"}
@@ -33,7 +33,7 @@
                         {/autoescape}
                     </p>
                 {/if}
-            </content>
+            </div>
         </li>
         <!--<li>
             <span class="primary icon gray">
@@ -47,7 +47,7 @@
         <ul class="list thin">
             <li>
                 <span class="primary icon gray"><i class="material-icons">link</i></span>
-                <content>
+                <div>
                     <p class="normal line">
                         {if="filter_var($contact->url, FILTER_VALIDATE_URL)"}
                             <a href="{$contact->url}" target="_blank">{$contact->url}</a>
@@ -55,7 +55,7 @@
                             {$contact->url}
                         {/if}
                     </p>
-                </content>
+                </div>
             </li>
         </ul>
     {/if}
@@ -64,7 +64,7 @@
         <ul class="list middle">
             <li>
                 <span class="primary icon gray"><i class="material-icons">location_city</i></span>
-                <content>
+                <div>
                     {if="$contact->adrlocality != null"}
                         <p class="normal">{$contact->adrlocality}</p>
                     {/if}
@@ -73,7 +73,7 @@
                             {$contact->adrcountry}
                         </p>
                     {/if}
-                </content>
+                </div>
             </li>
         </ul>
     {/if}
@@ -86,16 +86,16 @@
                     <span class="primary icon green">
                         <i class="material-icons">phone</i>
                     </span>
-                    <content>
+                    <div>
                         <p class="normal">{$c->__('button.call')}</p>
-                    </content>
+                    </div>
                 </li>
             {/if}
             <li onclick="ContactHeader_ajaxChat('{$contact->jid|echapJS}')">
                 <span class="primary icon gray">
                     <i class="material-icons">comment</i>
                 </span>
-                <content>
+                <div>
                     <p class="normal">
                         {if="isset($message)"}
                             <span class="info" title="{$message->published|strtotime|prepareDate}">
@@ -111,7 +111,7 @@
                             <p class="line">{$message->body|stripTags}</p>
                         {/if}
                     {/if}
-                </content>
+                </div>
             </li>
         {/if}
         {if="$roster && !in_array($roster->subscription, ['', 'both'])"}
@@ -120,7 +120,7 @@
                     <span class="primary icon gray">
                         <i class="material-icons">arrow_upward</i>
                     </span>
-                    <content>
+                    <div>
                         <p>{$c->__('subscription.to')}</p>
                         <p>{$c->__('subscription.to_text')}</p>
                         <p>
@@ -128,13 +128,13 @@
                                 {$c->__('subscription.to_button')}
                             </button>
                         </p>
-                    </content>
+                    </div>
                 {/if}
                 {if="$roster->subscription == 'from'"}
                     <span class="primary icon gray">
                         <i class="material-icons">arrow_downward</i>
                     </span>
-                    <content>
+                    <div>
                         <p>{$c->__('subscription.from')}</p>
                         <p>{$c->__('subscription.from_text')}</p>
                         <p>
@@ -142,13 +142,13 @@
                                 {$c->__('subscription.from_button')}
                             </button>
                         </p>
-                    </content>
+                    </div>
                 {/if}
                 {if="$roster->subscription == 'none'"}
                     <span class="primary icon gray">
                         <i class="material-icons">block</i>
                     </span>
-                    <content>
+                    <div>
                         <p>{$c->__('subscription.nil')}</p>
                         <p>{$c->__('subscription.nil_text')}</p>
                         <p>
@@ -156,7 +156,7 @@
                                 {$c->__('subscription.nil_button')}
                             </button>
                         </p>
-                    </content>
+                    </div>
                 {/if}
             </li>
         {/if}
@@ -168,10 +168,10 @@
                 <span class="control icon">
                     <i class="material-icons">chevron_right</i>
                 </span>
-                <content>
+                <div>
                     <p></p>
                     <p class="normal">{$c->__('blog.visit')}</p>
-                </content>
+                </div>
             </li>
         </a>
     </ul>
@@ -180,12 +180,12 @@
 {if="count($subscriptions) > 0"}
     <ul class="list active large">
         <li class="subheader large">
-            <content>
+            <div>
                 <p>
                     <span class="info">{$subscriptions|count}</span>
                     {$c->__('page.communities')}
                 </p>
-            </content>
+            </div>
         </li>
         {loop="$subscriptions"}
             <a href="{$c->route('community', [$value->server, $value->node])}">
@@ -206,7 +206,7 @@
                     <span class="control icon gray">
                         <i class="material-icons">chevron_right</i>
                     </span>
-                    <content>
+                    <div>
                         <p class="line normal">
                             {if="$value->info && $value->info->name"}
                                 {$value->info->name}
@@ -219,7 +219,7 @@
                         {if="$value->info && $value->info->description"}
                             <p class="line">{$value->info->description|strip_tags}</p>
                         {/if}
-                    </content>
+                    </div>
                 </li>
             </a>
         {/loop}

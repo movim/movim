@@ -1,9 +1,9 @@
 <div id="adminsessions" class="tabelem" title="{$c->__("adminsessions.title")}">
     <ul class="list divided middle flex active">
         <li class="subheader block large">
-            <content>
+            <div>
                 <p>{$c->__('adminsessions.title')} <span class="second">{$sessions|count}</a></p>
-            </content>
+            </div>
         </li>
         {loop="$sessions"}
             {$user = $c->getContact($value->user)}
@@ -18,14 +18,14 @@
                         <i class="material-icons">person</i>
                     </span>
                 {/if}
-                <content>
+                <div>
                     <p class="line" title="{$user->id}">
                         {$user->truename} <span class="second">{$user->id}</span>
                     </p>
                     <p>
                         {$value->created_at|strtotime|prepareDate}
                     </p>
-                </content>
+                </div>
             </li>
         {/loop}
     </ul>

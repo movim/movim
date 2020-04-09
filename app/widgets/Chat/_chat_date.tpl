@@ -1,5 +1,5 @@
 <li class="date">
-    <content>
+    <div>
         <p class="normal">Date</p>
-    </content>
+    </div>
 </li>

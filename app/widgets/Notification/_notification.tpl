@@ -8,12 +8,12 @@
         {if="isset($picture)"}
             <span class="primary icon bubble"><img src="{$picture}"></span>
         {/if}
-        <content>
+        <div>
             <p>{$title}</p>
             {if="isset($body)"}
                 <p>{$body}</p>
             {/if}
-        </content>
+        </div>
         </li>
     </ul>
 {if="isset($action) || isset($onclick)"}

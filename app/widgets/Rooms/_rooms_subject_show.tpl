@@ -16,7 +16,7 @@
                     {/autoescape}
                 </span>
             {/if}
-            <content>
+            <div>
                 {if="$conference && $conference->name"}
                     <p class="line" title="{$room}">
                         {$conference->name}
@@ -35,7 +35,7 @@
                         {$room}
                     {/if}
                 </p>
-            </content>
+            </div>
         </li>
 
         {if="$conference->info && $conference->info->mucpublic"}
@@ -43,10 +43,10 @@
                 <span class="primary icon gray">
                     <i class="material-icons">wifi_tethering</i>
                 </span>
-                <content>
+                <div>
                     <p class="line">{$c->__('room.public_muc')}</p>
                     <p class="all">{$c->__('room.public_muc_text')}</p>
-                </content>
+                </div>
             </li>
         {/if}
         {if="$conference->info && !$conference->info->mucsemianonymous"}
@@ -54,22 +54,22 @@
                 <span class="primary icon gray">
                     <i class="material-icons">face</i>
                 </span>
-                <content>
+                <div>
                     <p class="line">{$c->__('room.nonanonymous_muc')}</p>
                     <p class="all">{$c->__('room.nonanonymous_muc_text')}</p>
-                </content>
+                </div>
             </li>
         {/if}
     </ul>
 
     <ul class="list">
         <li class="subheader">
-            <content>
+            <div>
                 <p>
                     <span class="info">{$list|count}</span>
                     {$c->__('chatrooms.users')}
                 </p>
-            </content>
+            </div>
         </li>
         {loop="$list"}
             <li class="{if="$value->last > 60"} inactive{/if}"
@@ -106,7 +106,7 @@
                         <i class="material-icons">comment</i>
                     </span>
                 {/if}
-                <content>
+                <div>
                     <p class="line normal">
                         {if="$value->mucjid && strpos($value->mucjid, '/') == false && !$c->supported('anonymous')"}
                             {if="$value->mucjid == $me"}
@@ -126,7 +126,7 @@
                     {if="$value->status"}
                         <p class="line" title="{$value->status}">{$value->status}</p>
                     {/if}
-                </content>
+                </div>
             </li>
         {/loop}
     </ul>

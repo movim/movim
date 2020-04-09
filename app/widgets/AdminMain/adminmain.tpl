@@ -60,10 +60,10 @@
                         <label for="restrictsuggestions"></label>
                     </div>
                 </span>
-                <content>
+                <div>
                     <p>{$c->__('restrictsuggestions.title')}</p>
                     <p class="all">{$c->__('restrictsuggestions.text')}</p>
-                </content>
+                </div>
             </li>
             <li class="wide">
                 <span class="control">
@@ -78,10 +78,10 @@
                         <label for="chatonly"></label>
                     </div>
                 </span>
-                <content>
+                <div>
                     <p>{$c->__('chatonly.title')}</p>
                     <p class="all">{$c->__('chatonly.text')}</p>
-                </content>
+                </div>
             </li>
         </ul>
     </div>
@@ -131,10 +131,10 @@
             <span class="primary icon bubble color blue">
                 <i class="material-icons">info</i>
             </span>
-            <content>
+            <div>
                 <p>{$c->__('whitelist.info1')}</p>
                 <p>{$c->__('whitelist.info2')}</p>
-            </content>
+            </div>
         </li>
     </ul>
 
@@ -154,11 +154,11 @@
             <span class="primary icon bubble color blue">
                 <i class="material-icons">info</i>
             </span>
-            <content>
+            <div>
                 <p>{$c->__('information.info1')}</p>
                 <p>{$c->__('information.info2')}</p>
                 <p>{$c->__('publishbrief.content_text')}</p>
-            </content>
+            </div>
         </li>
     </ul>
 

@@ -6,7 +6,7 @@
             <span class="primary icon red">
                 <i class="material-icons">favorite</i>
             </span>
-            <content>
+            <div>
                 <p>{$post->likes->count()}</span> {$c->__('button.like')}</p>
                 <p class="all">
                     {loop="$post->likes"}
@@ -21,7 +21,7 @@
                                 {$value->truename}</a>{/if}{if="$key + 1 < $post->likes->count()"},{/if}
                     {/loop}
                 </p>
-            </content>
+            </div>
         </li>
     </ul>
 {/if}
@@ -29,11 +29,11 @@
 <ul class="list divided spaced middle">
     {if="$post->comments->count() > 0"}
         <li class="subheader center">
-            <content>
+            <div>
                 <p>
                     <span class="info">{$post->comments->count()}</span> {$c->__('post.comments')}
                 </p>
-            </content>
+            </div>
         </li>
     {/if}
 
@@ -81,7 +81,7 @@
                     {/if}
                 </span>
             {/if}
-            <content>
+            <div>
                 <p class="normal line">
                     <span class="info" title="{$value->published|strtotime|prepareDate}">
                         {$value->published|strtotime|prepareDate:true,true}
@@ -105,7 +105,7 @@
                         {/autoescape}
                     {/if}
                 </p>
-            </content>
+            </div>
         </li>
         {/if}
     {/loop}
@@ -132,7 +132,7 @@
     </li>
 
     <li>
-        <content>
+        <div>
             <p class="center">
                 {if="$liked"}
                     <button class="button red flat"
@@ -154,7 +154,7 @@
                     <i class="material-icons">send</i> {$c->__('button.share')}
                 </a>
             </p>
-        </content>
+        </div>
     </li>
     {/if}
 </ul>

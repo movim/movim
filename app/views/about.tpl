@@ -8,9 +8,9 @@
                             <i class="material-icons">arrow_back</i>
                         </a>
                     </span>
-                    <content>
+                    <div>
                         <p class="center"><?php echo __('page.about'); ?></p>
-                    </content>
+                    </div>
                 </li>
             </ul>
         </header>

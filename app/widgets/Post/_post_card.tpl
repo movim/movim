@@ -28,7 +28,7 @@
                 </span>
             {/if}
 
-            <content>
+            <div>
                 {if="!$post->isBrief()"}
                     <p class="normal">
                         {autoescape="off"}
@@ -82,7 +82,7 @@
                         {/autoescape}
                     </p>
                 {/if}
-            </content>
+            </div>
         </li>
     </ul>
     <ul class="list">
@@ -94,7 +94,7 @@
                 <label class="spoiler" for="spoiler_{$post->nodeid|cleanupId}">
                     <i class="material-icons">visibility</i>
                 </label>
-                <content>
+                <div>
                     {if="$post->youtube"}
                         <div class="video_embed">
                             <iframe src="{$post->youtube->href}" frameborder="0" allowfullscreen></iframe>
@@ -105,7 +105,7 @@
                                  src="{$value->href|protectPicture}" alt="{$value->title}">
                         {/loop}
                     {/if}
-                </content>
+                </div>
             </section>
         {else}
             <li>
@@ -116,7 +116,7 @@
                     <label class="spoiler" for="spoiler_{$post->nodeid|cleanupId}">
                         <i class="material-icons">visibility</i>
                     </label>
-                    <content>
+                    <div>
                         {if="$post->youtube"}
                             <div class="video_embed">
                                 <iframe src="{$post->youtube->href}" frameborder="0" allowfullscreen></iframe>
@@ -130,7 +130,7 @@
                         {autoescape="off"}
                             {$post->getContent()|addHashtagsLinks}
                         {/autoescape}
-                    </content>
+                    </div>
                 </section>
             </li>
         {/if}
@@ -141,7 +141,7 @@
         {/autoescape}
 
         <li>
-            <content>
+            <div>
                 <p class="normal">
                     <a class="button flat oppose"
                     {if="$public"}
@@ -218,7 +218,7 @@
                         </a>
                     {/if}
                 </p>
-            </content>
+            </div>
         </li>
     </ul>
 </article>

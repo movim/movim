@@ -8,9 +8,9 @@
                             <i class="material-icons">home</i>
                         </a>
                     </span>
-                    <content>
+                    <div>
                         <p class="center"><?php echo __('page.account_creation'); ?></p>
-                    </content>
+                    </div>
                 </li>
             </ul>
         </header>

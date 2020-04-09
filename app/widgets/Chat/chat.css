@@ -56,7 +56,7 @@ main:not(.enabled) #chat_widget {
     pointer-events: initial;
 }
 
-#chat_widget ul.list.actions > li > content > p {
+#chat_widget ul.list.actions > li > div > p {
     border-radius: 0.65rem;
     line-height: 4rem;
     padding: 0 1.25rem;
@@ -65,7 +65,7 @@ main:not(.enabled) #chat_widget {
 }
 
 #chat_widget ul.list.actions > li > span.control,
-#chat_widget ul.list.actions > li > content > p {
+#chat_widget ul.list.actions > li > div > p {
     box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.23);
 }
 

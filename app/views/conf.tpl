@@ -19,9 +19,9 @@
                     <span id="menu" class="primary icon active gray" >
                         <i class="material-icons">settings</i>
                     </span>
-                    <content>
+                    <div>
                         <p><?php echo __('page.configuration'); ?></p>
-                    </content>
+                    </div>
                 </li>
             </ul>
         </header>

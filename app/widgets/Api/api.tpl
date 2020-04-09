@@ -1,9 +1,9 @@
 <div id="api" class="tabelem paddedtop" title="{$c->__("api.title")}">
     <ul class="list">
         <li class="subheader">
-            <content>
+            <div>
                 <p>{autoescape="off"}{$infos}{/autoescape}</p>
-            </content>
+            </div>
         </li>
 
     {if="isset($json)"}
@@ -19,9 +19,9 @@
                         </a>
                     </span>
                 {/if}
-                <content>
+                <div>
                     <p class="normal">{$c->__('api.registered')}</p>
-                </content>
+                </div>
             </li>
 
             {if="$json->pod->activated"}
@@ -29,18 +29,18 @@
                     <span class="primary icon bubble color green">
                         <i class="material-icons">check</i>
                     </span>
-                    <content>
+                    <div>
                         <p class="normal">{$c->__('api.validated')}</p>
-                    </content>
+                    </div>
                 </li>
             {else}
                 <li>
                     <span class="primary icon bubble color gray">
                         <i class="material-icons">cloud_off</i>
                     </span>
-                    <content>
+                    <div>
                         <p class="normal">{$c->__('api.wait')}</p>
-                    </content>
+                    </div>
                 </li>
             {/if}
 
@@ -51,9 +51,9 @@
                             {$c->__('button.reset')}
                         </a>
                     </span>
-                    <content>
+                    <div>
                         <p class="normal">{$c->__('api.unregister')}</p>
-                    </content>
+                    </div>
                 </li>
             {/if}
             <script type="text/javascript">AdminTest.enableAPI();</script>
@@ -67,9 +67,9 @@
                         {$c->__('button.register')}
                     </a>
                 </span>
-                <content>
+                <div>
                     <p class="normal">{$c->__('api.register')}</p>
-                </content>
+                </div>
             </li>
         {/if}
     {else}
@@ -77,9 +77,9 @@
             <span class="primary icon bubble color gray">
                 <i class="material-icons">cloud_off</i>
             </span>
-            <content>
+            <div>
                 <p class="normal">{$c->__('api.error')}</p>
-            </content>
+            </div>
         </li>
     {/if}
     </ul>

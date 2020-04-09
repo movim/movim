@@ -1,10 +1,10 @@
 <div id="subscribe">
     <ul class="list thick">
         <li>
-            <content>
+            <div>
                 <p>{$c->__('subscribe.title')}</p>
                 <p>{$c->__('subscribe.info')}</p>
-            </content>
+            </div>
         </li>
     </ul>
 
@@ -16,7 +16,7 @@
                 <span class="primary icon bubble color {$config->xmppdomain|stringToColor}">
                     {$config->xmppdomain|firstLetterCapitalize}
                 </span>
-                <content>
+                <div>
                     <p>
                         {if="!empty($config->xmppcountry)"}
                             <span class="info">
@@ -34,7 +34,7 @@
                         {$config->xmppdescription}<br />
                     </p>
                     {/if}
-                </content>
+                </div>
             </li>
         {/if}
         {loop="$servers"}
@@ -48,7 +48,7 @@
                     {$value->domain|firstLetterCapitalize}
                 {/if}
             </span>
-            <content>
+            <div>
                 <p>
                     <span class="info">
                     <img
@@ -62,19 +62,19 @@
                 <p>
                     {$value->description}<br />
                 </p>
-            </content>
+            </div>
         </li>
         {/loop}
     </ul>
     <ul class="list thick">
         <li class="block">
-            <content>
+            <div>
                 <p></p>
                 <p>{$c->__('subscribe.server_question')}</p>
                 <p>
                     {$c->__('subscribe.server_contact')} • <a href="https://movim.eu/">https://movim.eu/</a>
                 </p>
-            </content>
+            </div>
         </li>
     </ul>
 </div>

@@ -13,7 +13,7 @@
             <span class="primary icon gray">
                 <i class="material-icons">person</i>
             </span>
-            <content>
+            <div>
                 <p class="line">
                     {if="!empty($info.url)"}
                         <a href="{$info.url}" target="_blank">{$info.author}</a>
@@ -22,7 +22,7 @@
                     {/if}
                 </p>
                 <p class="line">Under {$info.license}</p>
-            </content>
+            </div>
         </li>
     </ul>
 </section>

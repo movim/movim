@@ -25,7 +25,7 @@
         <span class="control icon active gray" onclick="SendTo_ajaxSend('{$value->jid}', {'uri': '{$uri}'}, false, '{$openlink}')">
             <i class="material-icons">send</i>
         </span>
-        <content>
+        <div>
             <p class="normal line">{$value->truename}</p>
             <p>
                 {$value->jid}
@@ -35,6 +35,6 @@
                     </span>
                 {/if}
             </p>
-        </content>
+        </div>
     </li>
 {/loop}

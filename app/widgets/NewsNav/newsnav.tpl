@@ -1,19 +1,19 @@
 <ul class="list">
     <li>
-        <content>
+        <div>
             <p class="line">
                 <h4 class="gray"></h4>
             </p>
-        </content>
+        </div>
     </li>
 </ul>
 
 {if="$c->getView() == 'news'"}
     <ul class="list active middle card shadow">
         <li class="subheader">
-            <content>
+            <div>
                 <p>{$c->__('post.blog_last')}</p>
-            </content>
+            </div>
         </li>
         {loop="$blogs"}
             {autoescape="off"}
@@ -33,9 +33,9 @@
             </a>
         </span>
         {/if}
-        <content>
+        <div>
             <p>{$c->__('page.communities')}</p>
-        </content>
+        </div>
     </li>
 
     {loop="$posts"}
@@ -49,12 +49,12 @@
 {if="$c->getView() == 'news' && $c->getUser()->hasPubsub()"}
     <ul class="list thick on_desktop card">
         <li class="block">
-            <content>
+            <div>
                 <p class="line">{$c->__('hello.share_title')}</p>
                 <p class="all">{$c->__('hello.share_text')}</p>
                 <p class="center">
                 <a class="button" onclick="return false;" href="javascript:(function(){location.href='{$c->route('share', '\'+encodeURIComponent(location.href);')}})();"><i class="material-icons">share</i> {$c->__('button.share')}</a></p>
-            </content>
+            </div>
         </li>
     </ul>
 {/if}

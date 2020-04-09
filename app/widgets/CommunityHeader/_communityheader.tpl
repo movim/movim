@@ -22,7 +22,7 @@
                 </span>
             {/if}
         {/if}
-        <content>
+        <div>
             {if="$c->getUser()->hasPubsub()"}
                 {if="$subscription == null"}
                     <button class="button oppose color gray" title="{$c->__('communityheader.subscribe')}"
@@ -63,6 +63,6 @@
             <p class="line on_desktop">
                 {$server}
             </p>
-        </content>
+        </div>
     </li>
 </ul>

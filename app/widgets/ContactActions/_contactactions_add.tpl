@@ -12,12 +12,12 @@
                     {$contact->truename|firstLetterCapitalize}
                 </span>
             {/if}
-            <content>
+            <div>
                 <p class="line">
                     {$contact->truename}
                 </p>
                 <p>{$contact->id}</p>
-            </content>
+            </div>
         </li>
         <li>
             <form name="add" onsubmit="return false;">

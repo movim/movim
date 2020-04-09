@@ -26,7 +26,7 @@
                 <i class="material-icons">person</i>
             </span>
 
-            <content>
+            <div>
                 <p class="normal line">
                     {$value->truename}
                 </p>
@@ -35,7 +35,7 @@
                         {$value->description|strip_tags|truncate:80}
                     </p>
                 {/if}
-            </content>
+            </div>
         </li>
     {/loop}
 </ul>

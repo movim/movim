@@ -1,84 +1,84 @@
 <div class="tabelem" title="{$c->__('page.help')}" id="help_widget">
     <ul class="list middle">
         <li class="subheader">
-            <content>
+            <div>
                 <p>{$c->__('faq.title')}</p>
-            </content>
+            </div>
         </li>
         <li class="block">
             <span class="primary icon gray">
                 <i class="material-icons">wifi_tethering</i>
             </span>
-            <content>
+            <div>
                 <p>{$c->__('faq.permission_title')}</p>
                 <p class="all">{$c->__('faq.permission_text')}</p>
-            </content>
+            </div>
         </li>
         <li class="block">
             <span class="primary icon gray">
                 <i class="material-icons">group_work</i>
             </span>
-            <content>
+            <div>
                 <p>{$c->__('faq.permission_community_title')}</p>
                 <p class="all">{$c->__('faq.permission_community_text')}</p>
-            </content>
+            </div>
         </li>
         <li class="block">
             <span class="primary icon gray">
                 <i class="material-icons">forum</i>
             </span>
-            <content>
+            <div>
                 <p>{$c->__('faq.chatrooms_title')}</p>
                 <p class="all">
                     <a href="https://search.jabber.network" target="_blank">search.jabber.network</a>
                 </p>
-            </content>
+            </div>
         </li>
         <li class="block">
             <span class="primary icon gray">
                 <i class="material-icons">search</i>
             </span>
-            <content>
+            <div>
                 <p>{$c->__('faq.find_contacts_title')}</p>
                 <p class="all">{$c->__('faq.find_contacts_text')}</p>
-            </content>
+            </div>
         </li>
     </ul>
     <br />
     <hr />
     <ul class="list divided middle">
         <li class="subheader">
-            <content>
+            <div>
                 <p>{$c->__('page.help')}</p>
-            </content>
+            </div>
         </li>
         <li class="block">
             <span class="primary icon gray">
                 <i class="material-icons">comment</i>
             </span>
-            <content>
+            <div>
                 <p>{$c->__('chatroom.question')}</p>
                 <p class="all">
                     <a href="#" onclick="Help_ajaxAddChatroom()">
                         {$c->__('chatroom.button')} movim@conference.movim.eu
                     </a>
                 </p>
-            </content>
+            </div>
         </li>
     </ul>
     <br />
     <hr />
     <ul class="list thick block">
         <li class="subheader">
-            <content>
+            <div>
                 <p>{$c->__('apps.question')}</p>
-            </content>
+            </div>
         </li>
         <li class="block">
             <span class="primary icon bubble color green">
                 <i class="material-icons">android</i>
             </span>
-            <content>
+            <div>
                 <p>{$c->__('apps.phone')}<p>
                 <p class="all">
                     {$c->__('apps.android')}
@@ -99,29 +99,29 @@
                         <i class="material-icons">adb</i> F-Droid
                     </a>
                 </p>
-            </content>
+            </div>
         </li>
         <li class="block">
             <span class="primary icon bubble color purple">
                 <i class="material-icons">desktop_windows</i>
             </span>
-            <content>
+            <div>
                 <p>{$c->__('apps.computer')}<p>
                 <p class="all">
                     <a href="https://movim.eu/#apps" target="_blank">
                         {$c->__('apps.computer_text')}
                     </a>
                 </p>
-            </content>
+            </div>
         </li>
     </ul>
     {if="$info && (!empty($info->adminaddresses) || !empty($info->abuseaddresses) || !empty($info->supportaddresses)  || !empty($info->securityaddresses))"}
         <hr />
         <ul class="list flex">
             <li class="subheader block large">
-                <content>
+                <div>
                     <p class="normal">{$c->__('contact.title')}</p>
-                </content>
+                </div>
             </li>
             <hr />
             {$addresses = array_unique(array_merge($info->adminaddresses, $info->abuseaddresses, $info->supportaddresses, $info->securityaddresses))}
@@ -133,36 +133,36 @@
                         <span class="primary icon gray">
                             <i class="material-icons">mode_comment</i>
                         </span>
-                        <content>
+                        <div>
                             <p class="normal">
                                 <a href="{$c->route('chat', [$parsed['path'], 'room'])}">
                                     {$parsed['path']}
                                 </a>
                             </p>
-                        </content>
+                        </div>
                         {else}
                         <span class="primary icon gray">
                             <i class="material-icons">comment</i>
                         </span>
-                        <content>
+                        <div>
                             <p class="normal">
                                 <a href="{$c->route('chat', $parsed['path'])}">
                                     {$parsed['path']}
                                 </a>
                             </p>
-                        </content>
+                        </div>
                         {/if}
                     {else}
                         <span class="primary icon gray">
                             <i class="material-icons">email</i>
                         </span>
-                        <content>
+                        <div>
                             <p class="normal">
                                 <a href="{$value}" target="_blank" rel="noopener noreferrer">
                                     {$parsed['path']}
                                 </a>
                             </p>
-                        </content>
+                        </div>
                     {/if}
                 </li>
             {/loop}

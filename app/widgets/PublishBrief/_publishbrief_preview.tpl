@@ -3,11 +3,11 @@
     <br />
     <article>
         <section>
-            <content>
+            <div>
                 {autoescape="off"}
                     {$content|addHashtagsLinks}
                 {/autoescape}
-            </content>
+            </div>
         </section>
     </article>
 </section>

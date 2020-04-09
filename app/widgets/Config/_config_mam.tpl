@@ -1,7 +1,7 @@
 <br /><hr /><br/>
 
 <ul class="list fill">
-    <li class="subheader"><content><p>{$c->__('config.mam')}</p></content></li>
+    <li class="subheader"><div><p>{$c->__('config.mam')}</p></div></li>
 </ul>
 
 <form>

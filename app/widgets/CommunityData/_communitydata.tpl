@@ -5,18 +5,18 @@
     {if="$url"}
         <ul class="list">
             <li class="block large">
-                <content>
+                <div>
                     <p class="center">
                         <img class="avatar" src="{$url}"/>
                     </p>
-                </content>
+                </div>
             </li>
         </ul>
     {/if}
 
     <ul class="list block middle flex">
         <li class="block large">
-            <content>
+            <div>
                 <p class="normal center line" title="{$info->name}">
                     {if="$info->name"}
                         {$info->name}
@@ -47,7 +47,7 @@
                         <i class="material-icons">assignment_turned_in</i> {$c->__('communitydata.publishmodel_subscribers')}
                     </p>
                 {/if}
-            </content>
+            </div>
         </li>
 
         {if="$info->related"}
@@ -62,7 +62,7 @@
                     <i class="material-icons">chevron_right</i>
                 </span>
 
-                <content>
+                <div>
                     <p class="normal line">{$related->name} <span class="second">{$related->server}</span></p>
                     <p class="line"
                         {if="$related->description"}title="{$related->description}"{/if}>
@@ -78,7 +78,7 @@
                             {$related->server}
                         {/if}
                     </p>
-                </content>
+                </div>
             </li>
         {/if}
 
@@ -90,9 +90,9 @@
                 <span class="control icon">
                     <i class="material-icons">chevron_right</i>
                 </span>
-                <content>
+                <div>
                     <p class="normal">{$c->__('communitydata.public')}</p>
-                </content>
+                </div>
             </li>
         </a>
     </ul>

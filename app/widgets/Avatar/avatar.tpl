@@ -2,9 +2,9 @@
     <div id="avatar_form">
         <ul class="list thick">
             <li>
-                <content>
+                <div>
                     <p class="center normal">{$c->__('global.loading')}</p>
-                </content>
+                </div>
             </li>
         </ul>
     </div>

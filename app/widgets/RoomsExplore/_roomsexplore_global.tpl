@@ -1,8 +1,8 @@
 {if="!empty($results)"}
     <li class="subheader">
-        <content>
+        <div>
             <p>{$c->__('roomsexplore.global_title')}</p>
-        </content>
+        </div>
     </li>
     {loop="$results"}
         <li title="{$value.jid}">
@@ -32,7 +32,7 @@
                 </span>
             {/if}
 
-            <content>
+            <div>
                 <p class="line">
                     {$value.name}
                     <span class="second">{$value.jid}</span>
@@ -46,7 +46,7 @@
                     {if="$value.occupants > 0 && !empty($value.description)"} · {/if}
                     {$value.description}
                 </p>
-            </content>
+            </div>
         </li>
     {/loop}
 {else}

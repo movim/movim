@@ -2,9 +2,9 @@
     {if="$card"}
         <ul class="list card middle">
             <li class="subheader">
-                <content>
+                <div>
                     <p>{$c->__('button.share')}</p>
-                </content>
+                </div>
             </li>
             {autoescape="off"}
                 {$card}
@@ -15,9 +15,9 @@
                         onclick="MovimUtils.redirect('{$c->route('publish', [$post->server, $post->node, $post->nodeid, 'share'])}')">
                         <i class="material-icons">share</i>
                     </span>
-                    <content>
+                    <div>
                         <p class="normal line">{$c->__('sendto.attach')}</p>
-                    </content>
+                    </div>
                 </li>
             {/if}
         </ul>
@@ -49,7 +49,7 @@
 
                     {$info = $value->info}
 
-                    <content>
+                    <div>
                         <p class="normal line">
                             {$value->name}
                             <span class="second">{$value->conference}</span>
@@ -62,7 +62,7 @@
                                 {$value->conference}
                             {/if}
                         </p>
-                    </content>
+                    </div>
                 </li>
             {/loop}
         </ul>
@@ -77,9 +77,9 @@
             <span class="control icon gray">
                 <i class="material-icons">expand_more</i>
             </span>
-            <content>
+            <div>
                 <p class="normal line center">{$c->__('sendto.more_contacts')}</p>
-            </content>
+            </div>
         </li>
     </ul>
 </section>

@@ -1,10 +1,10 @@
 <ul class="list">
     <li class="subheader">
-        <content>
+        <div>
             <p class="normal">
                 {$c->__('page.chats')}
             </p>
-        </content>
+        </div>
     </li>
 </ul>
 <ul id="chats_widget_list" class="list middle active divided spaced">

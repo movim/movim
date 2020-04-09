@@ -1,8 +1,8 @@
 {if="$contacts->isNotEmpty()"}
     <li class="subheader">
-        <content>
+        <div>
             <p>{$c->__('page.contacts')}</p>
-        </content>
+        </div>
     </li>
     {loop="$contacts"}
         <li
@@ -44,7 +44,7 @@
             <span class="control icon active gray" onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}')">
                 <i class="material-icons">person</i>
             </span>
-            <content>
+            <div>
                 <p class="normal line">
                     {$value->truename}
                     {if="$value->presence && $value->presence->capability"}
@@ -72,7 +72,7 @@
                     </span>
                 </p>
                 {/if}
-            </content>
+            </div>
         </li>
     {/loop}
 
@@ -81,12 +81,12 @@
             <span class="primary icon gray">
                 <i class="material-icons">expand_more</i>
             </span>
-            <content>
+            <div>
                 <p class="normal line">
                     {$c->__('search.show_complete_roster')}
                     <span class="second">{$contacts->count()} <i class="material-icons">people</i></span>
                 </p>
-            </content>
+            </div>
         </li>
     {/if}
 {else}
@@ -95,10 +95,10 @@
             <span class="primary icon blue">
                 <i class="material-icons">help</i>
             </span>
-            <content>
+            <div>
                 <p>{$c->__('search.no_contacts_title')}</p>
                 <p>{$c->__('search.no_contacts_text')}</p>
-            </content>
+            </div>
         </li>
     </ul>
 {/if}

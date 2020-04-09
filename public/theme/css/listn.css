@@ -164,19 +164,19 @@ ul.list li .control > a {
 
 /* Truncated content */
 
-ul.list li.subheader > content > p,
-ul.list li > content > p.line {
+ul.list li.subheader > div > p,
+ul.list li > div > p.line {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-ul.list li > content > p > span.second {
+ul.list li > div > p > span.second {
     color: gray;
     margin-left: 0.5rem;
 }
 
-ul.list li > content > p > span.info,
+ul.list li > div > p > span.info,
 ul li div.bubble:after {
     float: right;
     font-size: 1.5rem;
@@ -185,7 +185,7 @@ ul li div.bubble:after {
 
 /* Size automagicaly the content */
 
-ul.list li > content > p.filler:before {
+ul.list li > div > p.filler:before {
     content: "…";
     color: transparent;
     width: 100%;
@@ -196,64 +196,64 @@ ul.list li > content > p.filler:before {
     background-repeat: no-repeat;
 }
 
-ul.list li > content > p.filler + p.filler:before {
+ul.list li > div > p.filler + p.filler:before {
     background-size: 70% 35%;
 }
 
-ul.list li:nth-child(2n) > content > p.filler:before {
+ul.list li:nth-child(2n) > div > p.filler:before {
     background-size: 90% 40%;
 }
 
-ul.list li:nth-child(2n) > content > p.filler + p.filler:before {
+ul.list li:nth-child(2n) > div > p.filler + p.filler:before {
     background-size: 60% 35%;
 }
 
-ul.list li > content > p {
+ul.list li > div > p {
     box-sizing: border-box;
     width: auto;
 }
 
-ul.list > * > li > content > p:first-of-type,
-ul.list > li > content > p:first-of-type {
+ul.list > * > li > div > p:first-of-type,
+ul.list > li > div > p:first-of-type {
     line-height: 5.5rem;
     font-size: 3rem;
 }
 
-ul.list > * > li > content > p.all:first-of-type,
-ul.list > li > content > p.all:first-of-type {
+ul.list > * > li > div > p.all:first-of-type,
+ul.list > li > div > p.all:first-of-type {
     line-height: 3rem;
     padding: 1.25rem 0;
 }
 
-ul.list li > content > p.normal {
+ul.list li > div > p.normal {
     font-size: 2rem;
 }
 
-ul.list li > content > p.bold {
+ul.list li > div > p.bold {
     font-weight: bold;
 }
 
-ul.list li > content > p.center {
+ul.list li > div > p.center {
     text-align: center;
 }
 
-ul.list li > content > p:nth-last-of-type(3),
-ul.list li > content > p:nth-last-of-type(2) {
+ul.list li > div > p:nth-last-of-type(3),
+ul.list li > div > p:nth-last-of-type(2) {
     line-height: 3rem;
     font-size: 2rem;
     padding: 0;
 }
 
-ul.list li > content > p:nth-last-of-type(3) + p:not(.normal),
-ul.list li > content > p:nth-last-of-type(2) + p:not(.normal) {
+ul.list li > div > p:nth-last-of-type(3) + p:not(.normal),
+ul.list li > div > p:nth-last-of-type(2) + p:not(.normal) {
     line-height: 2.5rem;
     font-size: 1.75rem;
     max-height: 7.5rem;
     overflow: hidden;
 }
 
-ul.list li > content > p:nth-last-of-type(3) + p.all,
-ul.list li > content > p:nth-last-of-type(2) + p.all {
+ul.list li > div > p:nth-last-of-type(3) + p.all,
+ul.list li > div > p:nth-last-of-type(2) + p.all {
     max-height: 100%;
 }
 
@@ -263,7 +263,7 @@ ul.list li.subheader {
     overflow: hidden;
 }
 
-ul.list li.subheader > content > p {
+ul.list li.subheader > div > p {
     font-size: 1.75rem;
     line-height: 5rem;
     font-weight: 600;
@@ -443,12 +443,12 @@ ul li.date {
     text-align: center;
 }
 
-ul li.date > content > p.normal {
+ul li.date > div > p.normal {
     line-height: 2.5rem;
     font-size: 1.5rem;
     display: inline-block;
     border-radius: 2rem;
-    margin: 1rem;
+    margin-bottom: 1.25rem;
     padding: 0 2rem;
 }
 

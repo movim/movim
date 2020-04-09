@@ -1,93 +1,93 @@
 <ul class="list thin">
     <li class="subheader">
-        <content>
+        <div>
             <p>{$c->__('publishhelp.title')}</p>
-        </content>
+        </div>
     </li>
     <li>
         <span class="primary icon">
             <i class="material-icons">format_size</i>
         </span>
-        <content>
+        <div>
             <p># Title H1</p>
             <p>## Title H2…</p>
-        </content>
+        </div>
     </li>
     <li>
         <span class="primary icon">
             <i class="material-icons">format_bold</i>
         </span>
-        <content>
+        <div>
             <p>**bolded**</p>
             <p>__bolded__</p>
-        </content>
+        </div>
     </li>
     <li>
         <span class="primary icon">
             <i class="material-icons">format_italic</i>
         </span>
-        <content>
+        <div>
             <p>*emphasis*</p>
             <p>_emphasis_</p>
-        </content>
+        </div>
     </li>
     <li>
         <span class="primary icon">
             <i class="material-icons">format_quote</i>
         </span>
-        <content>
+        <div>
             <p>> Quoted line</p>
             <p>> Quoted line</p>
-        </content>
+        </div>
     </li>
     <li>
         <span class="primary icon">
             <i class="material-icons">format_list_bulleted</i>
         </span>
-        <content>
+        <div>
             <p>* Item 1</p>
             <p>* Item 2</p>
-        </content>
+        </div>
     </li>
     <li>
         <span class="primary icon">
             <i class="material-icons">format_list_numbered</i>
         </span>
-        <content>
+        <div>
             <p>1. Item 1</p>
             <p>2. Item 2</p>
-        </content>
+        </div>
     </li>
     <li>
         <span class="primary icon">
             <i class="material-icons">functions</i>
         </span>
-        <content>
+        <div>
             <p class="normal">`Sourcecode`</p>
-        </content>
+        </div>
     </li>
     <li>
         <span class="primary icon">
             <i class="material-icons">link</i>
         </span>
-        <content>
+        <div>
             <p class="normal line">[my text](http://my_url/)</p>
-        </content>
+        </div>
     </li>
     <li>
         <span class="primary icon">
             <i class="material-icons">image</i>
         </span>
-        <content>
+        <div>
             <p class="normal line">![Alt text](http://my_image_url/)</p>
-        </content>
+        </div>
     </li>
 </ul>
 <ul class="list active">
     <li class="subheader">
-        <content>
+        <div>
             <p>{$c->__('publishhelp.more')}</p>
-        </content>
+        </div>
     </li>
     <li>
         <span class="primary icon color bubble blue">
@@ -96,7 +96,7 @@
         <span class="control icon gray">
             <i class="material-icons">chevron_right</i>
         </span>
-        <content>
+        <div>
             <p class="line">
                 {$c->__('publishhelp.manual')}
             </p>
@@ -105,7 +105,7 @@
                     http://daringfireball.net/projects/markdown/syntax
                 </a>
             </p>
-        </content>
+        </div>
     </li>
     <br />
 </ul>

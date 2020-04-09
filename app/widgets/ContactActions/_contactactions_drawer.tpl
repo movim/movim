@@ -43,10 +43,10 @@
                         {/loop}
                     {/if}
                 {/if}
-                <content>
+                <div>
                     <p class="line">{$contact->truename}</p>
                     <p class="line">{$contact->id}</p>
-                </content>
+                </div>
             </li>
         </ul>
     </header>
@@ -54,9 +54,9 @@
     {if="$roster && $roster->presences->count() > 0"}
         <ul class="list middle">
             <li class="subheader">
-                <content>
+                <div>
                     <p>{$c->__('clients.title')}</p>
-                </content>
+                </div>
             </li>
             {loop="$roster->presences"}
                 {if="$value->capability"}
@@ -66,7 +66,7 @@
                                 {$value->capability->getDeviceIcon()}
                             </i>
                         </span>
-                        <content>
+                        <div>
                             <p class="normal line">
                                 {$value->capability->name}
                                 <span class="second">{$value->resource}</span>
@@ -76,7 +76,7 @@
                                     {$clienttype[$value->capability->identities()->first()->type]}
                                 </p>
                             {/if}
-                        </content>
+                        </div>
                     </li>
                 {/if}
             {/loop}
@@ -88,27 +88,27 @@
         {if="$contact->fn != null"}
         <li>
             <span class="primary icon gray">{$contact->fn|firstLetterCapitalize}</span>
-            <content>
+            <div>
                 <p>{$c->__('general.name')}</p>
                 <p>{$contact->fn}</p>
-            </content>
+            </div>
         </li>
         {/if}
 
         {if="$contact->nickname != null"}
         <li>
             <span class="primary icon gray">{$contact->nickname|firstLetterCapitalize}</span>
-            <content>
+            <div>
                 <p>{$c->__('general.nickname')}</p>
                 <p>{$contact->nickname}</p>
-            </content>
+            </div>
         </li>
         {/if}
 
         {if="$contact->url != null"}
         <li>
             <span class="primary icon gray"><i class="material-icons">link</i></span>
-            <content>
+            <div>
                 <p>{$c->__('general.website')}</p>
                 <p>
                     {if="filter_var($contact->url, FILTER_VALIDATE_URL)"}
@@ -117,41 +117,41 @@
                         {$contact->url}
                     {/if}
                 </p>
-            </content>
+            </div>
         </li>
         {/if}
 
         {if="$contact->email != null"}
         <li>
             <span class="primary icon gray"><i class="material-icons">email</i></span>
-            <content>
+            <div>
                 <p>{$c->__('general.email')}</p>
                 <p><a href="mailto:{$contact->email}">{$contact->email}</a></p>
-            </content>
+            </div>
         </li>
         {/if}
 
         {if="$contact->description != null && trim($contact->description) != ''"}
         <li>
             <span class="primary icon gray"><i class="material-icons">subject</i></span>
-            <content>
+            <div>
                 <p>{$c->__('general.about')}</p>
                 <p class="all">
                     {autoescape="off"}
                         {$contact->description|nl2br}
                     {/autoescape}
                 </p>
-            </content>
+            </div>
         </li>
         {/if}
 
         {if="strtotime($contact->date) != 0"}
         <li class="block">
             <span class="primary icon gray"><i class="material-icons">cake</i></span>
-            <content>
+            <div>
                 <p>{$c->__('general.date_of_birth')}</p>
                 <p>{$contact->date|strtotime|prepareDate:false}</p>
-            </content>
+            </div>
         </li>
         {/if}
     </ul>

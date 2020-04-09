@@ -90,10 +90,10 @@
                             <label for="autojoin"></label>
                         </div>
                     </span>
-                    <content>
+                    <div>
                         <p></p>
                         <p class="normal">{$c->__('chatrooms.autojoin')}</p>
-                    </content>
+                    </div>
                 </li>
             </ul>
         </div>

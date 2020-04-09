@@ -25,10 +25,10 @@
                             <label for="publish_model_open"></label>
                         </div>
                     </span>
-                    <content>
+                    <div>
                         <p>{$c->__('communityconfig.publish_model_open_title')}</p>
                         <p>{$c->__('communityconfig.publish_model_open_text')}</p>
-                    </content>
+                    </div>
                 </li>
                 <li class="wide">
                     <span class="control">
@@ -39,10 +39,10 @@
                             <label for="publish_model_publishers"></label>
                         </div>
                     </span>
-                    <content>
+                    <div>
                         <p>{$c->__('communityconfig.publish_model_publishers_title')}</p>
                         <p>{$c->__('communityconfig.publish_model_publishers_text')}</p>
-                    </content>
+                    </div>
                 </li>
                 <li class="wide">
                     <span class="control">
@@ -53,10 +53,10 @@
                             <label for="publish_model_subscribers"></label>
                         </div>
                     </span>
-                    <content>
+                    <div>
                         <p>{$c->__('communityconfig.publish_model_subscribers_title')}</p>
                         <p>{$c->__('communityconfig.publish_model_subscribers_text')}</p>
-                    </content>
+                    </div>
                 </li>
             </ul>
             <label>{$c->__('communityconfig.publication')}</label>

@@ -12,10 +12,10 @@
             <span class="primary icon bubble color green">
                 <i class="material-icons">attach_file</i>
             </span>
-            <content>
+            <div>
                 <p>{$c->__('avatar.file')}</p>
                 <p><input type="file" onchange="MovimAvatar.file(this.files, 'avatarcommunity');"></p>
-            </content>
+            </div>
         </li>
     </ul>
 </section>

@@ -1,6 +1,6 @@
 <form enctype="multipart/form-data" method="post" action="index.php" name="general">
     <ul class="list fill">
-        <li class="subheader"><content><p>{$c->__('config.general')}</p></content></li>
+        <li class="subheader"><div><p>{$c->__('config.general')}</p></div></li>
     </ul>
 
     <div class="block">
@@ -44,10 +44,10 @@
                         <label for="chatmain"></label>
                     </div>
                 </span>
-                <content>
+                <div>
                     <p>{$c->__('config.chatmain')}</p>
                     <p class="all">{$c->__('config.chatmain_text')}</p>
-                </content>
+                </div>
             </li>
 
             <li>
@@ -64,10 +64,10 @@
                         <label for="nsfw"></label>
                     </div>
                 </span>
-                <content>
+                <div>
                     <p>{$c->__('config.nsfw')}</p>
                     <p class="all">{$c->__('config.nsfw_text')}</p>
-                </content>
+                </div>
             </li>
 
             <li>
@@ -85,16 +85,16 @@
                         <label for="nightmode"></label>
                     </div>
                 </span>
-                <content>
+                <div>
                     <p>{$c->__('config.night_mode')}</p>
                     <p class="all">{$c->__('config.night_mode_text')}</p>
-                </content>
+                </div>
             </li>
         </ul>
     </div>
     <div class="block">
         <ul class="list fill">
-            <li class="subheader"><content><p>{$c->__('config.notification_title')}</p></content></li>
+            <li class="subheader"><div><p>{$c->__('config.notification_title')}</p></div></li>
             <li>
                 <span class="primary icon gray">
                     <i class="material-icons">call</i>
@@ -109,9 +109,9 @@
                         <label for="notificationcall"></label>
                     </div>
                 </span>
-                <content>
+                <div>
                     <p class="normal line">{$c->__('config.notification_call')}</p>
-                </content>
+                </div>
             </li>
             <li>
                 <span class="primary icon gray">
@@ -127,9 +127,9 @@
                         <label for="notificationchat"></label>
                     </div>
                 </span>
-                <content>
+                <div>
                     <p class="normal line">{$c->__('config.notification_chat')}</p>
-                </content>
+                </div>
             </li>
         </ul>
     </div>

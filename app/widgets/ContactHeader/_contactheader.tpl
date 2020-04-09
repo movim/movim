@@ -34,7 +34,7 @@
         <span class="control active icon gray" onclick="ContactActions_ajaxGetDrawer('{$contact->id|echapJS}')">
             <i class="material-icons">more_horiz</i>
         </span>
-        <content>
+        <div>
             <p class="line">
                 {$contact->truename}
                 {if="$roster && $roster->group"}
@@ -44,6 +44,6 @@
             <p class="line">
                 {$contact->id}
             </p>
-        </content>
+        </div>
     </li>
 </ul>

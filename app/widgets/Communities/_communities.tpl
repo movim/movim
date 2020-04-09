@@ -1,13 +1,13 @@
 {if="$tags->isNotEmpty()"}
     <ul class="list">
         <li>
-            <content>
+            <div>
                 <p class="line normal">
                     {loop="$tags"}
                         <a class="button flat narrow" href="{$c->route('tag', $value->name)}">#{$value->name}</a>
                     {/loop}
                 </p>
-            </content>
+            </div>
         </li>
     </ul>
 {/if}
@@ -15,9 +15,9 @@
 {if="!$communities->isEmpty()"}
 <ul class="list middle flex third active all">
     <li class="subheader block large">
-        <content>
+        <div>
             <p>{$c->__('communities.interesting')}</p>
-        </content>
+        </div>
     </li>
     {loop="$communities"}
         <li
@@ -39,7 +39,7 @@
             <span class="control icon gray">
                 <i class="material-icons">chevron_right</i>
             </span>
-            <content>
+            <div>
                 <p class="line normal">
                     {if="$value->name"}
                         {$value->name}
@@ -55,7 +55,7 @@
                 <p class="line">
                     {$value->server} / {$value->node}
                 </p>
-            </content>
+            </div>
         </li>
     {/loop}
 </ul>

@@ -11,10 +11,10 @@
         <div id="subscription_form" class="block">
             <ul class="list simple thick">
                 <li>
-                    <content>
+                    <div>
                         <p>{$c->__('create.title')} {$c->__('create.server_on')} {$host}</p>
                         <p>{$c->__('create.loading')}</p>
-                    </content>
+                    </div>
                 </li>
             </ul>
         </div>

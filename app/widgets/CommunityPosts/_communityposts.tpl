@@ -29,7 +29,7 @@
 
 <ul class="list thick" id="goback">
     <li class="block">
-        <content>
+        <div>
             <p class="center">
                 {if="$before != null || $page > 0"}
                 <a class="button flat" href="#" onclick="history.back()">
@@ -44,6 +44,6 @@
                 </a>
                 {/if}
             </p>
-        </content>
+        </div>
     </li>
 </ul>

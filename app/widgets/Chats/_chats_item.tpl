@@ -33,7 +33,7 @@
         </span>
     {/if}
 
-    <content>
+    <div>
         <p class="normal line">
             {if="isset($message)"}
                 <span class="info" title="{$message->published|strtotime|prepareDate}">
@@ -93,5 +93,5 @@
         {elseif="$roster && $roster->presence && $roster && $roster->presence->status"}
             <p class="line">{$roster->presence->status}</p>
         {/if}
-    </content>
+    </div>
 </li>

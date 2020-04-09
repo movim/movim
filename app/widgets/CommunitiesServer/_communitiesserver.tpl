@@ -9,7 +9,7 @@
                     {$nodes|count}
                 </span>
             {/if}
-            <content>
+            <div>
                 <p>
                     {if="isset($item->name)"}
                         {$item->name}
@@ -18,7 +18,7 @@
                     {/if}
                 </p>
                 <p class="line">{$server}</p>
-            </content>
+            </div>
         </li>
     </ul>
 </header>
@@ -57,7 +57,7 @@
                     {$value->node|firstLetterCapitalize}
                 </span>
             {/if}
-            <content>
+            <div>
                 <p class="line">
                     {if="$value->name"}
                         {$value->name}
@@ -88,7 +88,7 @@
                     {/if}
                     {$value->node}
                 </p>
-            </content>
+            </div>
         </li>
     {/loop}
     </ul>

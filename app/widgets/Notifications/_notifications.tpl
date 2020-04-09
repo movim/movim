@@ -2,12 +2,12 @@
     {if="!empty($invitations)"}
     <ul class="list">
         <li class="subheader">
-            <content>
+            <div>
                 <p>
                     <span class="info">{$invitations|count}</span>
                     {$c->__('invitations.title')}
                 </p>
-            </content>
+            </div>
         </li>
     </ul>
     <ul class="list middle divided spaced">
@@ -32,12 +32,12 @@
                 <span class="control icon gray active" onclick="MovimUtils.redirect('{$c->route('contact', $value->jid)}')">
                     <i class="material-icons">person</i>
                 </span>
-                <content>
+                <div>
                     <p class="line normal">
                         {$c->__('invitations.wants_to_talk', $value->truename)}
                     </p>
                     <p class="line">{$value->jid}</p>
-                </content>
+                </div>
             </li>
         {/loop}
     </ul>
@@ -46,9 +46,9 @@
     {if="$notifs->isNotEmpty()"}
     <ul class="list active">
         <li class="subheader">
-            <content>
+            <div>
                 <p>{$c->__('notifs.title')}</p>
-            </content>
+            </div>
         </li>
 
         {$old = null}
@@ -97,7 +97,7 @@
                         </span>
                     {/if}
 
-                    <content>
+                    <div>
                         <p class="line" onclick="MovimUtils.redirect('{$c->route('post', [$parent->server, $parent->node, $parent->nodeid])}')">
                             {$value->truename}
                             <span class="second">
@@ -112,7 +112,7 @@
                                 {$c->__('post.liked')}
                             {/if}
                         </p>
-                    </content>
+                    </div>
                 </li>
                 {$old = $value->parent_id}
             {/if}

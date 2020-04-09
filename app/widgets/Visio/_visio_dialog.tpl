@@ -2,7 +2,7 @@
     {$url = $contact->getPhoto('l')}
     <ul class="list thick">
         <li>
-            <content>
+            <div>
                 {if="$url"}
                     <p class="center">
                         <img src="{$url}">
@@ -10,7 +10,7 @@
                 {/if}
                 <p class="normal center">{$contact->truename}</p>
                 <p class="center">{$c->__('visio.calling')}</p>
-            </content>
+            </div>
         </li>
     </ul>
 </section>

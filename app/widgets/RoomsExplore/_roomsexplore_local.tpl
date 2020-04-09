@@ -1,8 +1,8 @@
 {if="$rooms->isNotEmpty()"}
     <li class="subheader">
-        <content>
+        <div>
             <p>{$c->__('chatrooms.title')}</p>
-        </content>
+        </div>
     </li>
     {loop="$rooms"}
         <li title="{$value->server}">
@@ -31,7 +31,7 @@
                     <i class="material-icons">add</i>
                 </span>
             {/if}
-            <content>
+            <div>
                 <p class="line">{$value->name}
                     <span class="second">{$value->server}</span>
                 </p>
@@ -44,7 +44,7 @@
                     {if="$value->occupants > 0 && !empty($value->description)"} · {/if}
                     {$value->description}
                 </p>
-            </content>
+            </div>
         </li>
     {/loop}
 {else}

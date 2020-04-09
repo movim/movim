@@ -2,9 +2,9 @@
     {$addresses = array_unique(array_merge($info->adminaddresses, $info->abuseaddresses, $info->supportaddresses))}
     <ul class="list">
         <li class="subheader">
-            <content>
+            <div>
                 <p>{$c->__('contact.title')}</p>
-            </content>
+            </div>
         </li>
         {loop="$addresses"}
             <li>
@@ -14,7 +14,7 @@
                     <span class="primary icon gray">
                         <i class="material-icons">chat</i>
                     </span>
-                    <content>
+                    <div>
                         <p class="normal">
                             <a href="{$c->route('chat', [$parsed['path'], 'room'])}">
                                 {$parsed['path']}
@@ -29,19 +29,19 @@
                                 {$parsed['path']}
                             </a>
                         </p>
-                    </content>
+                    </div>
                     {/if}
                 {else}
                     <span class="primary icon gray">
                         <i class="material-icons">email</i>
                     </span>
-                    <content>
+                    <div>
                         <p class="normal">
                             <a href="{$value}" target="_blank" rel="noopener noreferrer">
                                 {$parsed['path']}
                             </a>
                         </p>
-                    </content>
+                    </div>
                 {/if}
             </li>
         {/loop}

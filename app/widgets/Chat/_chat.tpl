@@ -53,7 +53,7 @@
                 <i class="material-icons">more_vert</i>
             </span>
 
-            <content>
+            <div>
                 {if="$conference && $conference->name"}
                     <p class="line active" title="{$room|echapJS}" onclick="Rooms_ajaxShowSubject('{$room|echapJS}')">
                         {$conference->name}
@@ -100,7 +100,7 @@
                         {$room|echapJS}
                     </p>
                 {/if}
-            </content>
+            </div>
         </li>
     </ul>
 
@@ -111,33 +111,33 @@
                     <span class="control icon">
                         <i class="material-icons">settings</i>
                     </span>
-                    <content>
+                    <div>
                         <p class="line">{$c->__('chatroom.administration')}</p>
-                    </content>
+                    </div>
                 </li>
             {/if}
             {if="$conference->presence->mucrole == 'moderator'"}
                 <li onclick="Rooms_ajaxGetAvatar('{$room|echapJS}')">
-                    <content>
+                    <div>
                         <p class="normal">{$c->__('page.avatar')}</p>
-                    </content>
+                    </div>
                 </li>
                 <li onclick="Rooms_ajaxGetSubject('{$room|echapJS}')">
-                    <content>
+                    <div>
                         <p class="normal">{$c->__('chatroom.subject')}</p>
-                    </content>
+                    </div>
                 </li>
             {/if}
             {if="$conference->presence->mucaffiliation == 'owner'"}
                 <li onclick="Chat_ajaxGetRoomConfig('{$room|echapJS}')">
-                    <content>
+                    <div>
                         <p class="normal">{$c->__('chatroom.administration')}</p>
-                    </content>
+                    </div>
                 </li>
                 <li class="divided" onclick="Rooms_ajaxAskDestroy('{$room|echapJS}')">
-                    <content>
+                    <div>
                         <p class="normal">{$c->__('button.destroy')}</p>
-                    </content>
+                    </div>
                 </li>
             {/if}
         {/if}
@@ -153,35 +153,35 @@
             {else}
                 <li onclick="MovimUtils.reload('{$info->abuseaddresses[0]}')">
             {/if}
-                <content>
+                <div>
                     <p class="normal">{$c->__('chat.report_abuse')}</p>
-                </content>
+                </div>
             </li>
         {/if}
 
         <li class="divided" onclick="Rooms_ajaxAskInvite('{$room|echapJS}');">
-            <content>
+            <div>
                 <p class="normal">{$c->__('room.invite')}</p>
-            </content>
+            </div>
         </li>
 
         <li onclick="Rooms_ajaxAdd('{$room|echapJS}');">
-            <content>
+            <div>
                 <p class="normal">{$c->__('chatroom.config')}</p>
-            </content>
+            </div>
         </li>
         {if="!$anon"}
             <li onclick="Rooms_ajaxRemoveConfirm('{$room|echapJS}')">
-                <content>
+                <div>
                     <p class="normal">{$c->__('button.delete')}</p>
-                </content>
+                </div>
             </li>
         {/if}
 
         <li onclick="Rooms_ajaxExit('{$room|echapJS}'); {if="$anon"}Presence_ajaxLogout(){/if}">
-            <content>
+            <div>
                 <p class="normal">{$c->__('status.disconnect')}</p>
-            </content>
+            </div>
         </li>
     </span>
     </ul>
@@ -223,7 +223,7 @@
                 <i class="material-icons">more_vert</i>
             </span>
 
-            <content>
+            <div>
                 <p class="line active" onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')">
                     {if="$roster"}
                         {$roster->truename}
@@ -233,26 +233,26 @@
                 </p>
                 <p class="compose line active" id="{$jid|cleanupId}-state" onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')"></p>
                 <p class="line active" onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')">{$contact->jid}</p>
-            </content>
+            </div>
         </li>
     </ul>
     <ul class="list context_menu active">
         {if="!$contact->isFromMuc()"}
             <li onclick="MovimUtils.reload('{$c->route('contact', $contact->jid)}')">
-                <content>
+                <div>
                     <p class="normal">{$c->__('chat.profile')}</p>
-                </content>
+                </div>
             </li>
         {/if}
         <li class="on_mobile" onclick="Chat.editPrevious()">
-            <content>
+            <div>
                 <p class="normal">{$c->__('chat.edit_previous')}</p>
-            </content>
+            </div>
         </li>
         <li onclick="Chat_ajaxClearHistory('{$contact->jid|echapJS}')">
-            <content>
+            <div>
                 <p class="normal">{$c->__('chat.clear')}</p>
-            </content>
+            </div>
         </li>
         {if="!empty($info->abuseaddresses)"}
             {$parsed = parse_url($info->abuseaddresses[0])}
@@ -265,9 +265,9 @@
             {else}
                 <li onclick="MovimUtils.reload('{$info->abuseaddresses[0]}')">
             {/if}
-                <content>
+                <div>
                     <p class="normal">{$c->__('chat.report_abuse')}</p>
-                </content>
+                </div>
             </li>
         {/if}
     </ul>
@@ -305,25 +305,25 @@
                         <span class="control icon bubble color blue">
                             <i class="material-icons">camera_alt</i>
                         </span>
-                        <content>
+                        <div>
                             <p class="normal line">Snap</p>
-                        </content>
+                        </div>
                     </li>
                     <li onclick="Chat.toggleAttach(); Draw.init()">
                         <span class="control icon middle bubble color green">
                             <i class="material-icons">gesture</i>
                         </span>
-                        <content>
+                        <div>
                             <p class="normal line">{$c->__('draw.title')}</p>
-                        </content>
+                        </div>
                     </li>
                     <li onclick="Chat.toggleAttach(); Upload_ajaxRequest()">
                         <span class="control icon bubble color purple">
                             <i class="material-icons">attach_file</i>
                         </span>
-                        <content>
+                        <div>
                             <p class="normal line">{$c->__('upload.title')}</p>
-                        </content>
+                        </div>
                     </li>
                 </ul>
             {/if}

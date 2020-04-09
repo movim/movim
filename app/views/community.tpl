@@ -20,10 +20,10 @@
             <header>
                 <ul class="list middle">
                     <li>
-                        <content>
+                        <div>
                             <p class="center"><?php echo __('page.communities'); ?></p>
                             <p class="center line"><?php echo __('communities.empty_text'); ?></p>
-                        </content>
+                        </div>
                     </li>
                 </ul>
             </header>

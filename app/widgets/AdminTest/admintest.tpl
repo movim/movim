@@ -39,10 +39,10 @@
                 <span class="primary icon bubble color red">
                     <i class="material-icons">data_usage</i>
                 </span>
-                <content>
+                <div>
                     <p>Database connection error</p>
                     <p>Check if database configuration exist in the <code>config/</code> folder and fill it with proper values</p>
-                </content>
+                </div>
             </li>
         {/if}
 
@@ -50,11 +50,11 @@
             <span class="primary icon bubble color red">
                 <i class="material-icons">code</i>
             </span>
-            <content>
+            <div>
                 <p class="normal line">
                     {$c->__('compatibility.websocket')}
                 </p>
-            </content>
+            </div>
         </li>
 
         {if="!$c->testDir(CACHE_PATH)"}
@@ -62,9 +62,9 @@
                 <span class="primary icon color bubble red">
                     <i class="material-icons">folder</i>
                 </span>
-                <content>
+                <div>
                     <p class="normal line">{$c->__('compatibility.rights', 'cache')}</p>
-                </content>
+                </div>
             </li>
             <script type="text/javascript">AdminTest.disableMovim()</script>
         {/if}
@@ -74,9 +74,9 @@
                 <span class="primary icon color bubble red">
                     <i class="material-icons">folder</i>
                 </span>
-                <content>
+                <div>
                     <p class="normal line">{$c->__('compatibility.rights', 'log')}</p>
-                </content>
+                </div>
             </li>
             <script type="text/javascript">AdminTest.disableMovim()</script>
         {/if}

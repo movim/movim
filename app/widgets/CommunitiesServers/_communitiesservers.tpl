@@ -16,13 +16,13 @@
                     <span class="primary icon bubble color {$value->server|stringToColor}">
                         {$value->server|firstLetterCapitalize}
                     </span>
-                    <content>
+                    <div>
                         <p class="line" title="{$value->server} - {$value->name}">
                             {$value->server}
                             <span class="second">{$value->name}</span>
                         </p>
                         <p>{$c->__('communities.counter', $value->occupants)}</p>
-                    </content>
+                    </div>
                 </li>
             {/if}
         {/loop}

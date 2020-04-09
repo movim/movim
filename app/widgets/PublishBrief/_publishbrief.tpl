@@ -13,7 +13,7 @@
                     <i class="material-icons">arrow_back</i>
                 </span>
 
-                <content>
+                <div>
                     <p class="line">
                         {if="$post"}
                             {$c->__('button.edit')}
@@ -23,7 +23,7 @@
                             {$c->__('publishbrief.new')}
                         {/if}
                     </p>
-                </content>
+                </div>
             </li>
         </ul>
     </header>

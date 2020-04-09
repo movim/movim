@@ -1,9 +1,9 @@
 <ul class="list divided active spaced">
     {if="!empty($list)"}
     <li class="subheader">
-        <content>
+        <div>
             <p>{$c->__('adhoc.title')}</p>
-        </content>
+        </div>
     </li>
     {/if}
     {loop="$list"}
@@ -15,11 +15,11 @@
                 <span class="control icon gray">
                     <i class="material-icons">chevron_right</i>
                 </span>
-                <content>
+                <div>
                     <p class="normal line" title="{$value->attributes()->name}">
                         {$value->attributes()->name}
                     </p>
-                </content>
+                </div>
             </li>
         {/if}
     {/loop}

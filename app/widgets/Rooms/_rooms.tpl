@@ -14,12 +14,12 @@
                     <i class="material-icons">edit</i>
                 </span>
             {/if}
-            <content>
+            <div>
                 <p>
                     <span class="info">{$conferences|count}</span>
                     {$c->__('chatrooms.title')}
                 </p>
-            </content>
+            </div>
         </li>
         <li class="divided spaced {if="$edit"}disabled{/if}">
             <span class="primary icon gray">
@@ -28,9 +28,9 @@
             <span class="control icon gray active divided" onclick="Rooms_ajaxAdd();">
                 <i class="material-icons">group_add</i>
             </span>
-            <content>
+            <div>
                 <p class="normal line" onclick="RoomsExplore_ajaxSearch();">{$c->__('rooms.add')}</p>
-            </content>
+            </div>
         </li>
     </ul>
     <ul class="list divided spaced middle {if="!$edit"}active{/if}">
@@ -78,7 +78,7 @@
                         </span>
                     {/if}
 
-                    <content>
+                    <div>
                         <p class="normal line">
                             {$value->name}
                             {if="$connected"}
@@ -132,7 +132,7 @@
                                 <span class="second">{$value->conference}</span>
                             {/if}
                         </p>
-                    </content>
+                    </div>
                 </li>
             {/if}
         {/loop}
@@ -143,10 +143,10 @@
             <span class="primary icon green">
                 <i class="material-icons">people_outline</i>
             </span>
-            <content>
+            <div>
                 <p>{$c->__('rooms.empty_text1')}</p>
                 <p>{$c->__('rooms.empty_text2')}</p>
-            </content>
+            </div>
         </li>
         <li>
             <span class="primary icon purple">
@@ -155,10 +155,10 @@
             <span class="control icon active" onclick="Rooms_ajaxSyncBookmark()">
                 <i class="material-icons">sync</i>
             </span>
-            <content>
+            <div>
                 <p>{$c->__('rooms.empty_synchronize_title')}</p>
                 <p>{$c->__('rooms.empty_synchronize_text')}</p>
-            </content>
+            </div>
         </li>
     </ul>
     {/if}
@@ -171,7 +171,7 @@
                         {if="$all"}expand_less{else}expand_more{/if}
                     </i>
                 </span>
-                <content>
+                <div>
                     <p class="normal line">
                         {if="$all"}
                             {$c->__('rooms.hide_disconnected')}
@@ -180,7 +180,7 @@
                         {/if}
                         <span class="second">{$disconnected} <i class="material-icons">people</i></span>
                     </p>
-                </content>
+                </div>
             </li>
         {/if}
     </ul>

@@ -78,11 +78,11 @@
         <span class="primary icon orange bubble color">
             <i class="material-icons">warning</i>
         </span>
-        <content>
+        <div>
             <p>{$c->__('degraded.title')}</p>
             <p class="all">{$c->__('degraded.text_1')}</br>
             {$c->__('degraded.text_2')}</p>
-        </content>
+        </div>
     </li>
 </ul>
 {/if}
@@ -95,13 +95,13 @@
         <span class="control icon gray">
             <i class="material-icons">edit</i>
         </span>
-        <content>
+        <div>
             <p>{$c->__('profile.info')}</p>
             <p class="all">{$c->__('profile.nickname_info')}</p>
             {if="!empty($me->nickname)"}
                 <p>{$c->__('profile.nickname_set', $me->nickname)}</p>
             {/if}
-        </content>
+        </div>
     </li>
     <li>
         <span class="control">
@@ -121,9 +121,9 @@
                 </div>
             </form>
         </span>
-        <content>
+        <div>
             <p>{$c->__('profile.privacy_question')}</p>
             <p class="all">{$c->__('profile.privacy_info')}</p>
-        </content>
+        </div>
     </li>
 </ul>

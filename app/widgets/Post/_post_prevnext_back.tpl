@@ -20,7 +20,7 @@
                     <i class="material-icons">person</i>
                 </span>
             {/if}
-            <content>
+            <div>
                 <p class="normal line">
                     {$post->contact->truename}
                 </p>
@@ -28,7 +28,7 @@
             <span class="primary icon bubble color {$post->server|stringToColor}">
                 <i class="material-icons">person</i>
             </span>
-            <content>
+            <div>
                 <p class="normal line">
                     {$post->server}
                 </p>
@@ -36,7 +36,7 @@
             <p class="line">
                 {$post->server}
             </p>
-        </content>
+        </div>
     {else}
         {if="$info"}
             {$url = $info->getPhoto('m')}
@@ -50,7 +50,7 @@
                     {$info->node|firstLetterCapitalize}
                 </span>
             {/if}
-            <content>
+            <div>
                 <p class="line normal">
                     {if="$info->name"}
                         {$info->name}
@@ -61,15 +61,15 @@
                 {if="$info->description"}
                     <p class="line">{$info->description|strip_tags}</p>
                 {/if}
-            </content>
+            </div>
         {else}
             <span class="primary icon bubble color {$post->node|stringToColor}">
                 {$post->node|firstLetterCapitalize}
             </span>
-            <content>
+            <div>
                 <p class="line normal">{$post->node}</p>
                 <p>{$post->server}</p>
-            </content>
+            </div>
         {/if}
     {/if}
 </li>

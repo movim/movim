@@ -24,7 +24,7 @@
         {/if}
     </span>
     {/if}
-    <content>
+    <div>
         <p class="line" {if="isset($post->title)"}title="{$post->title}"{/if}>
             {if="isset($post->title)"}
                 {autoescape="off"}
@@ -63,5 +63,5 @@
                 {$post->published|strtotime|prepareDate}
             </span>
         </p>
-    </content>
+    </div>
 </li>

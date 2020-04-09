@@ -5,9 +5,9 @@
 <ul class="list flex middle active">
     {if="$top->isNotEmpty()"}
         <li class="subheader block large">
-            <content>
+            <div>
                 <p>{$c->__('chat.frequent')}</p>
-            </content>
+            </div>
         </li>
 
         {loop="$top"}
@@ -29,7 +29,7 @@
                         <i class="material-icons">person</i>
                     </span>
                 {/if}
-                <content>
+                <div>
                     <p class="line">
                         {$value->truename}
 
@@ -40,16 +40,16 @@
                         {/if}
                     </p>
                     <p class="line">{$value->jid}</p>
-                </content>
+                </div>
             </li>
         {/loop}
     {/if}
 
     {if="$conferences->isNotEmpty()"}
         <li class="subheader block large">
-            <content>
+            <div>
                 <p>{$c->__('chatrooms.title')}</p>
-            </content>
+            </div>
         </li>
 
         {loop="$conferences"}
@@ -71,7 +71,7 @@
                     </span>
                 {/if}
 
-                <content>
+                <div>
                     <p class="line">{$value->name}
                         <span class="second">{$value->server}</span>
                     </p>
@@ -84,7 +84,7 @@
                         {if="$value->occupants > 0 && !empty($value->description)"} · {/if}
                         {$value->description}
                     </p>
-                </content>
+                </div>
             </li>
         {/loop}
     {/if}

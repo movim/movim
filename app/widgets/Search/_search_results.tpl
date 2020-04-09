@@ -7,9 +7,9 @@
 {if="$tags->isNotEmpty()"}
 <ul class="list active flex">
     <li class="subheader block large">
-        <content>
+        <div>
             <p>{$c->__('search.tags')}</p>
-        </content>
+        </div>
     </li>
     {loop="$tags"}
         <li class="block" onclick="MovimUtils.redirect('{$c->route('tag', $value)}')">
@@ -19,10 +19,10 @@
             <span class="control icon gray">
                 <i class="material-icons">chevron_right</i>
             </span>
-            <content>
+            <div>
                 <p class="line normal">{$value}</p>
                 <p>{$c->__('communitydata.num', $key)}</p>
-            </content>
+            </div>
         </li>
     {/loop}
 </ul>
@@ -31,12 +31,12 @@
 {if="$communities->isNotEmpty()"}
 <ul class="list card active middle">
     <li class="subheader">
-        <content>
+        <div>
             <p>
                 <span class="info">{$communities|count}</span>
                 {$c->__('page.communities')}
             </p>
-        </content>
+        </div>
     </li>
     {loop="$communities"}
     <li
@@ -57,7 +57,7 @@
             <span class="control icon gray">
                 <i class="material-icons">chevron_right</i>
             </span>
-            <content>
+            <div>
                 <p class="line normal">
                     {if="$value->name"}
                         {$value->name}
@@ -73,7 +73,7 @@
                 <p class="line">
                     {$value->server} / {$value->node}
                 </p>
-            </content>
+            </div>
         </li>
     {/loop}
 </ul>
@@ -82,12 +82,12 @@
 {if="$posts->isNotEmpty()"}
 <ul id="search_posts" class="list card active middle">
     <li class="subheader">
-        <content>
+        <div>
             <p>
                 <span class="info">{$posts|count}</span>
                 {$c->__('page.news')}
             </p>
-        </content>
+        </div>
     </li>
     {loop="$posts"}
         {autoescape="off"}

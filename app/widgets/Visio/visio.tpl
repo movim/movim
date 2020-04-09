@@ -17,7 +17,7 @@
                 <span id="switch_camera" class="control icon color transparent active">
                     <i class="material-icons">switch_camera</i>
                 </span>
-                <content><p></p></content>
+                <div><p></p></div>
             </li>
         </ul>
     </header>
@@ -26,13 +26,13 @@
     <ul class="list infos" class="list middle">
         {$url = $contact->getPhoto('l')}
         <li>
-            <content>
+            <div>
                 {if="$url"}
                     <p class="center"><img src="{$url}"></p>
                 {/if}
                 <p class="normal center">{$contact->truename}</p>
                 <p class="normal state center"></p>
-            </content>
+            </div>
         </li>
     </ul>
 

@@ -15,9 +15,9 @@
                     <span class="control icon gray">
                         <i class="material-icons">chevron_right</i>
                     </span>
-                    <content>
+                    <div>
                         <p>{$value->server}</p>
-                    </content>
+                    </div>
                 </li>
             {/if}
             <li
@@ -43,7 +43,7 @@
                 <span class="control icon gray">
                     <i class="material-icons">chevron_right</i>
                 </span>
-                <content>
+                <div>
                     <p class="line normal">
                         {if="$value->info && $value->info->name"}
                             {$value->info->name}
@@ -54,7 +54,7 @@
                     {if="$value->info && $value->info->description"}
                         <p class="line">{$value->info->description|strip_tags}</p>
                     {/if}
-                </content>
+                </div>
             </li>
         {/loop}
     </ul>

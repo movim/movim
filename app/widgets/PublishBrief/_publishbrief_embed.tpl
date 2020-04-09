@@ -26,7 +26,7 @@
         </span>
     {/if}
 
-    <content>
+    <div>
         {if="$embed->type == 'photo'"}
             <p class="line">{$embed->images[$imagenumber]['width']} x {$embed->images[$imagenumber]['height']}</p>
             <p class="line">{$embed->images[$imagenumber]['size']|sizeToCleanSize}</p>
@@ -39,5 +39,5 @@
                 {$embed->url}
             </a>
         </p>
-    </content>
+    </div>
 </li>

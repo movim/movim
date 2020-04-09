@@ -9,7 +9,7 @@
                     <i class="material-icons">link</i>
                 {/if}
             </span>
-            <content>
+            <div>
                 <p class="normal line">
                     <a target="_blank" href="{$value->href}" title="{$value->href}">
                         {if="isset($value->title)"}
@@ -24,7 +24,7 @@
                 {else}
                     <p>{$value->url.host}</p>
                 {/if}
-            </content>
+            </div>
         </li>
     {/if}
 {/loop}
@@ -34,7 +34,7 @@
         <span class="primary icon gray">
             <span class="material-icons">attach_file</span>
         </span>
-        <content>
+        <div>
             <p class="normal line">
                 <a
                     href="{$value->href}"
@@ -46,7 +46,7 @@
                     {$value->href|urldecode}
                 </a>
             </p>
-        </content>
+        </div>
     </li>
 {/loop}
 </ul>

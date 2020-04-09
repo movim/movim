@@ -26,9 +26,9 @@
     <div class="bubble">
         <div>
             <span class="info"></span>
-            <content>
+            <div>
                 <p></p>
-            </content>
+            </div>
             <ul class="reactions"></ul>
             <span class="reaction">
                 +<i class="material-icons">mood</i>

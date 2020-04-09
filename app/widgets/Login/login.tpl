@@ -38,10 +38,10 @@
                             <span class="primary icon bubble" style="background-image: url({$invitation->room->getPhoto('m')});">
                             </span>
                         {/if}
-                        <content>
+                        <div>
                             <p></p>
                             <p class="all">{$c->__('form.invite_chatroom', $contact->truename)}: {$invitation->resource}</p>
-                        </content>
+                        </div>
                     </li>
                 </ul>
             {/if}
@@ -63,7 +63,7 @@
                 <div>
                     <ul class="list thin">
                         <li>
-                            <content>
+                            <div>
                                 <p class="center">
                                     <input
                                         type="submit"
@@ -75,7 +75,7 @@
                                         {$c->__('button.sign_up')}
                                     </a>
                                 </p>
-                            </content>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -84,12 +84,12 @@
             {if="isset($info)"}
             <ul class="list thin card">
                 <li class="info">
-                    <content>
+                    <div>
                         <p></p>
                         {autoescape="off"}
                             {$info}
                         {/autoescape}
-                    </content>
+                    </div>
                 </li>
             </ul>
             {/if}
@@ -97,13 +97,13 @@
             {if="!empty($whitelist)"}
             <ul class="list thin">
                 <li class="info">
-                    <content>
+                    <div>
                         <p></p>
                         <p class="center normal">{$c->__('form.whitelist_info')} :
                         {loop="$whitelist"}
                             {$value}
                         {/loop}</p>
-                    </content>
+                    </div>
                 </li>
             </ul>
             {/if}

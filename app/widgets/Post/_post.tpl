@@ -22,7 +22,7 @@
                     </span>
                 {/if}
 
-                <content>
+                <div>
                     <p class="line">
                         {if="$post->title != null && !$post->isBrief()"}
                             {autoescape="off"}
@@ -32,7 +32,7 @@
                             {$c->__('post.default_title')}
                         {/if}
                     </p>
-                </content>
+                </div>
             </li>
         </ul>
     {/if}
@@ -113,7 +113,7 @@
                     </a>
                 </span>
             {/if}
-            <content>
+            <div>
                 {if="!$post->isBrief()"}
                     <p {if="$post->title != null"}title="{$post->title|strip_tags}"{/if}>
                         {autoescape="off"}
@@ -160,7 +160,7 @@
                         {/autoescape}
                     </p>
                 {/if}
-            </content>
+            </div>
         </li>
     </ul>
 {/if}
@@ -184,17 +184,17 @@
                     <i class="material-icons">chevron_right</i>
                 </span>
 
-                <content>
+                <div>
                     <p>{$c->__('post.repost', $post->contact->truename)}</p>
                     <p>{$c->__('post.repost_profile', $post->contact->truename)}</p>
-                </content>
+                </div>
             </li>
         </ul>
     </a>
 {/if}
 
 <section dir="{if="$post->isRTL()"}rtl{else}ltr{/if}">
-    <content>
+    <div>
         {if="$post->youtube"}
             <div class="video_embed">
                 <iframe src="{$post->youtube->href}" frameborder="0" allowfullscreen></iframe>
@@ -208,7 +208,7 @@
         {autoescape="off"}
             {$post->getContent()|addHashtagsLinks}
         {/autoescape}
-    </content>
+    </div>
 </section>
 
 {autoescape="off"}
@@ -240,7 +240,7 @@
                 <span class="primary icon gray">
                     <i class="material-icons">wifi_tethering</i>
                 </span>
-                <content>
+                <div>
                     <p class="line normal">
                         {$c->__('post.public_yes')}
                     </p>
@@ -249,7 +249,7 @@
                             {$c->__('post.public_url')} · {$post->openlink->url.host}
                         </a>
                     </p>
-                </content>
+                </div>
             </li>
         </ul>
     {/if}

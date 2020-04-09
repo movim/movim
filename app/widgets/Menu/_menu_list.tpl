@@ -32,9 +32,9 @@
                 <span class="control icon">
                     <i class="material-icons">chevron_right</i>
                 </span>
-                <content>
+                <div>
                     <p class="normal line">{$c->__('privacy.my_profile')}</p>
-                </content>
+                </div>
             </li>
         </a>
         <a href="{$c->route('blog', $jid)}" target="_blank" class="block">
@@ -45,9 +45,9 @@
                 <span class="control icon">
                     <i class="material-icons">chevron_right</i>
                 </span>
-                <content>
+                <div>
                     <p class="normal line">{$c->__('hello.blog_title')}</p>
-                </content>
+                </div>
             </li>
         </a>
     </ul>
@@ -65,7 +65,7 @@
 
     <ul class="list thick">
         <li class="block">
-            <content>
+            <div>
                 <p class="center">
                     <a class="button flat {if="$page == 0"}disabled{/if}" href="{$previous}">
                         <i class="material-icons">keyboard_arrow_left</i>
@@ -78,7 +78,7 @@
                         </a>
                     {/if}
                 </p>
-            </content>
+            </div>
         </li>
     </ul>
 

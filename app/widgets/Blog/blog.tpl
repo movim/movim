@@ -15,7 +15,7 @@
                         <i class="material-icons">rss_feed</i>
                     </a>
                 </span>
-                <content>
+                <div>
                     <p>
                         <a href="{$contact->getBlogUrl()}">
                             {$c->__('blog.title', $contact->truename)}
@@ -27,7 +27,7 @@
                     <p>
                         {$c->__('page.blog')}
                     </p>
-                </content>
+                </div>
             {/if}
         </li>
     </ul>
@@ -43,13 +43,13 @@
                 <i class="material-icons">label</i>
             </span>
             {/if}
-            <content>
+            <div>
                 <p>
                     <a href="{$c->route('tag', array($tag))}">
                         #{$tag}
                     </a>
                 </p>
-            </content>
+            </div>
         </li>
     </ul>
     {elseif="$node && $server"}
@@ -77,7 +77,7 @@
                         <i class="material-icons">rss_feed</i>
                     </a>
                 </span>
-                <content>
+                <div>
                     <p>
                         <a href="{$c->route('node', [$server, $node])}">
                             {if="$item != null && $item->name"}
@@ -100,15 +100,15 @@
                             </p>
                         {/if}
                     {/if}
-                </content>
+                </div>
             </li>
         </ul>
     {else}
         <ul class="list thick">
             <li>
-                <content>
+                <div>
                     <p>{$c->__('post.empty')}</p>
-                </content>
+                </div>
             </li>
         </ul>
     {/if}
@@ -122,9 +122,9 @@
                     <span class="primary icon gray">
                         <i class="material-icons">comment</i>
                     </span>
-                    <content>
+                    <div>
                         <p class="normal">{$c->__('post.empty')}</p>
-                    </content>
+                    </div>
                 </li>
             </ul>
         </article>
@@ -141,9 +141,9 @@
                 <a href="{$next}">
                     <li id="history" class="block large">
                         <span class="primary icon gray"><i class="material-icons">history</i></span>
-                        <content>
+                        <div>
                             <p class="normal line center">{$c->__('post.older')}</p>
-                        </content>
+                        </div>
                     </li>
                 </a>
             </ul>

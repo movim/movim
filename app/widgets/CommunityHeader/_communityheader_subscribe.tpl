@@ -23,10 +23,10 @@
                             <label for="share"></label>
                         </div>
                     </span>
-                    <content>
+                    <div>
                         <p class="line">{$c->__('communityheader.share_subscription')}</p>
                         <p>{$c->__('communityheader.share_subscription_text')}</p>
-                    </content>
+                    </div>
                 </li>
             </ul>
         </div>

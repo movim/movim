@@ -25,7 +25,7 @@
             <span class="control icon gray">
                 <i class="material-icons">chevron_right</i>
             </span>
-            <content>
+            <div>
                 <p class="normal line">{$reply->title}</p>
                 <p>{$reply->getContent()|html_entity_decode|stripTags}</p>
                 <p>
@@ -38,7 +38,7 @@
                         {$reply->published|strtotime|prepareDate:true,true}
                     </span>
                 </p>
-            </content>
+            </div>
         </li>
     </ul>
 {else}
@@ -47,9 +47,9 @@
             <span class="primary icon gray">
                 <i class="material-icons">reply</i>
             </span>
-            <content>
+            <div>
                 <p class="line normal">{$c->__('post.original_deleted')}</p>
-            </content>
+            </div>
         </li>
     </ul>
 {/if}
