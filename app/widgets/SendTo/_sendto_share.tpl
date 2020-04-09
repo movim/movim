@@ -27,7 +27,11 @@
 
     {if="$conferences->isNotEmpty()"}
         <ul class="list thin">
-            <li class="subheader"><p>{$c->__('sendto.chatroom')}</p></li>
+            <li class="subheader">
+                <div>
+                    <p>{$c->__('sendto.chatroom')}</p>
+                </div>
+            </li>
             {loop="$conferences"}
                 <li>
                     {$url = $value->getPhoto()}

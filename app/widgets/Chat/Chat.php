@@ -1067,18 +1067,6 @@ class Chat extends \Movim\Widget\Base
     {
         $view = $this->tpl();
 
-        $conferences = \App\Info::whereCategory('conference')
-                                ->whereNotIn('server', $this->user->session->conferences()->pluck('conference')->toArray())
-                                ->restrictUserHost()
-                                ->where('mucpublic', true)
-                                ->where('mucpersistent', true);
-
-        if (Configuration::get()->restrictsuggestions) {
-            $conferences = $conferences->where('server', 'like', '%@%.' . $this->user->session->host);
-        }
-
-        $conferences = $conferences->orderBy('occupants', 'desc')->take(8)->get();
-
         $chats = \App\Cache::c('chats');
         if ($chats == null) {
             $chats = [];
@@ -1094,11 +1082,8 @@ class Chat extends \Movim\Widget\Base
             ->where('value', '<', 5)
             ->whereNotIn('rosters.jid', array_keys($chats))
             ->with('presence.capability')
-            ->take(8)
+            ->take(16)
             ->get();
-
-        $view->assign('conferences', $conferences);
-        $view->assign('vcards', \App\Contact::whereIn('id', $conferences->pluck('server'))->get()->keyBy('id'));
         $view->assign('top', $top);
 
         return $view->draw('_chat_empty');
