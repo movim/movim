@@ -452,7 +452,7 @@ ul li.date > div > p.normal {
     padding: 0 2rem;
 }
 
-ul li.date > div > p.normal:first-of-type {
+ul li.date:first-of-type > div > p.normal {
     margin-top: 1rem;
 }
 
