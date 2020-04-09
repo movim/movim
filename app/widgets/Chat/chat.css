@@ -305,13 +305,6 @@ table.emojis td:hover {
 
 /* Emojis */
 
-#chat_widget .bubble ul.reactions {
-    display: flex;
-    flex: 1;
-    flex-wrap: wrap;
-    padding: 0.1rem 0 0.3rem;
-}
-
 #chat_widget .bubble div span.reaction,
 #chat_widget .bubble div span.actions,
 #chat_widget .bubble ul.reactions li {
@@ -319,13 +312,17 @@ table.emojis td:hover {
     background-color: rgba(var(--movim-font), 0.1);
     padding: 0 0.5rem;
     border-radius: 0.5rem;
-    line-height: 3rem;
+    line-height: 2.5rem;
     font-size: 1.75rem;
     margin: 0;
-    margin-top: 0.25rem;
     display: inline-flex;
     z-index: 1;
     border: solid 1px transparent;
+}
+
+#chat_widget .bubble div span.reaction,
+#chat_widget .bubble div span.actions {
+    line-height: 3rem;
 }
 
 #chat_widget .bubble div span.reaction,
@@ -339,18 +336,15 @@ table.emojis td:hover {
     display: inline-flex;
     position: absolute;
     left: 100%;
-    transform: translate(-0.5rem, -0.5rem);
+    transform: translate(-1.5rem, -0.25rem);
 }
 
 #chat_widget li.oppose .bubble:not(.sticker) div:hover span.actions {
-    transform: translate(-0.5rem, -0.5rem);
+    transform: translate(-1.5rem, -0.25rem);
 }
 
 #chat_widget li:not(.oppose) .bubble.sticker div:hover ul.reactions:empty + span.reaction {
-    transform: translate(-1.55rem, -3.75rem);
-}
-#chat_widget .bubble ul.reactions li:not(:last-child) {
-    margin-right: 0.5rem;
+    transform: translate(-1.5rem, -3.75rem);
 }
 
 #chat_widget .bubble div span.reaction:hover,
@@ -370,7 +364,7 @@ table.emojis td:hover {
     height: 3rem;
     margin: 0;
     padding: 0;
-    margin-right: 0.5rem;
+    margin-left: 0.5rem;
 }
 
 /* Card */
