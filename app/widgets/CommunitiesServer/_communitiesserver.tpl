@@ -9,14 +9,16 @@
                     {$nodes|count}
                 </span>
             {/if}
-            <p>
-                {if="isset($item->name)"}
-                    {$item->name}
-                {else}
-                    {$c->__('page.communities')}
-                {/if}
-            </p>
-            <p class="line">{$server}</p>
+            <content>
+                <p>
+                    {if="isset($item->name)"}
+                        {$item->name}
+                    {else}
+                        {$c->__('page.communities')}
+                    {/if}
+                </p>
+                <p class="line">{$server}</p>
+            </content>
         </li>
     </ul>
 </header>
@@ -55,36 +57,38 @@
                     {$value->node|firstLetterCapitalize}
                 </span>
             {/if}
-            <p class="line">
-                {if="$value->name"}
-                    {$value->name}
-                {else}
-                    {$value->node}
-                {/if}
-                <span class="second">
-                    {if="$value->description"}
-                        {$value->description|strip_tags}
+            <content>
+                <p class="line">
+                    {if="$value->name"}
+                        {$value->name}
+                    {else}
+                        {$value->node}
                     {/if}
-                </span>
-            </p>
-            <p class="line">
-                {if="$value->items > 0"}
-                     {$value->items} <i class="material-icons">receipt</i>
-                {/if}
-                {if="$value->occupants > 0 && $value->items > 0"}
-                    ·
-                {/if}
-                {if="$value->occupants > 0"}
-                    <span title="{$c->__('communitydata.sub', $value->occupants)}">
-                        {$value->occupants} <i class="material-icons">people</i>
+                    <span class="second">
+                        {if="$value->description"}
+                            {$value->description|strip_tags}
+                        {/if}
                     </span>
-                {/if}
+                </p>
+                <p class="line">
+                    {if="$value->items > 0"}
+                         {$value->items} <i class="material-icons">receipt</i>
+                    {/if}
+                    {if="$value->occupants > 0 && $value->items > 0"}
+                        ·
+                    {/if}
+                    {if="$value->occupants > 0"}
+                        <span title="{$c->__('communitydata.sub', $value->occupants)}">
+                            {$value->occupants} <i class="material-icons">people</i>
+                        </span>
+                    {/if}
 
-                {if="$value->occupants > 0 || $value->items > 0"}
-                    ·
-                {/if}
-                {$value->node}
-            </p>
+                    {if="$value->occupants > 0 || $value->items > 0"}
+                        ·
+                    {/if}
+                    {$value->node}
+                </p>
+            </content>
         </li>
     {/loop}
     </ul>

@@ -7,7 +7,9 @@
 {if="$tags->isNotEmpty()"}
 <ul class="list active flex">
     <li class="subheader block large">
-        <p>{$c->__('search.tags')}</p>
+        <content>
+            <p>{$c->__('search.tags')}</p>
+        </content>
     </li>
     {loop="$tags"}
         <li class="block" onclick="MovimUtils.redirect('{$c->route('tag', $value)}')">
@@ -17,8 +19,10 @@
             <span class="control icon gray">
                 <i class="material-icons">chevron_right</i>
             </span>
-            <p class="line normal">{$value}</p>
-            <p>{$c->__('communitydata.num', $key)}</p>
+            <content>
+                <p class="line normal">{$value}</p>
+                <p>{$c->__('communitydata.num', $key)}</p>
+            </content>
         </li>
     {/loop}
 </ul>
@@ -27,10 +31,12 @@
 {if="$communities->isNotEmpty()"}
 <ul class="list card active middle">
     <li class="subheader">
-        <p>
-            <span class="info">{$communities|count}</span>
-            {$c->__('page.communities')}
-        </p>
+        <content>
+            <p>
+                <span class="info">{$communities|count}</span>
+                {$c->__('page.communities')}
+            </p>
+        </content>
     </li>
     {loop="$communities"}
     <li
@@ -51,21 +57,23 @@
             <span class="control icon gray">
                 <i class="material-icons">chevron_right</i>
             </span>
-            <p class="line normal">
-                {if="$value->name"}
-                    {$value->name}
-                {else}
-                    {$value->node}
-                {/if}
-                {if="$value->description"}
-                    <span class="second">
-                        {$value->description|strip_tags}
-                    </span>
-                {/if}
-            </p>
-            <p class="line">
-                {$value->server} / {$value->node}
-            </p>
+            <content>
+                <p class="line normal">
+                    {if="$value->name"}
+                        {$value->name}
+                    {else}
+                        {$value->node}
+                    {/if}
+                    {if="$value->description"}
+                        <span class="second">
+                            {$value->description|strip_tags}
+                        </span>
+                    {/if}
+                </p>
+                <p class="line">
+                    {$value->server} / {$value->node}
+                </p>
+            </content>
         </li>
     {/loop}
 </ul>
@@ -74,10 +82,12 @@
 {if="$posts->isNotEmpty()"}
 <ul id="search_posts" class="list card active middle">
     <li class="subheader">
-        <p>
-            <span class="info">{$posts|count}</span>
-            {$c->__('page.news')}
-        </p>
+        <content>
+            <p>
+                <span class="info">{$posts|count}</span>
+                {$c->__('page.news')}
+            </p>
+        </content>
     </li>
     {loop="$posts"}
         {autoescape="off"}

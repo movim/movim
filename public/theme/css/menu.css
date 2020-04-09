@@ -6,19 +6,8 @@ body > nav > ul:nth-child(3) li p.normal {
     line-height: 6rem;
 }
 
-body > nav > ul.list li > .primary ~ :not(.primary):not(.counter):not(.bubble):not(.control),
-body[dir="rtl"] > nav > ul.list li > .primary ~ :not(.primary):not(.counter):not(.bubble):not(.control) {
-    padding-left: 7rem;
-}
-
-body > nav > ul.list li > .primary,
-body[dir="rtl"] > nav > ul.list li > .primary {
-    left: 0.5rem;
-}
-
-body > nav > ul.list li > .primary.bubble,
-body[dir="rtl"] > nav > ul.list li > .primary.bubble {
-    left: 1rem;
+body > nav > ul.list li {
+    padding: 0 0.5rem;
 }
 
 body > nav.color.dark > ul a {

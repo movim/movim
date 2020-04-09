@@ -15,7 +15,7 @@ ul#bottomnavigation li {
 }
 
 ul#bottomnavigation li:first-child {
-    flex: 0.25;
+    flex: 0.7;
     padding: 0.5rem 0;
     border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -30,7 +30,8 @@ ul#bottomnavigation li span:not(.counter) {
         display: flex;
     }
 
-    ul#bottomnavigation ~ main > div:not(#chat_widget) > div {
+    ul#bottomnavigation ~ main > div:not(#chat_widget) > div,
+    ul#bottomnavigation ~ main > div:not(#chat_widget) > article {
         padding-bottom: 6.5rem;
     }
 

@@ -4,13 +4,17 @@
             <span class="control icon gray">
                 <i class="material-icons">edit</i>
             </span>
-            <p class="normal">Edit</p>
+            <content>
+                <p class="normal">Edit</p>
+            </content>
         </li>
         <li onclick="ChatActions_ajaxHttpDaemonRetract({$message->mid})">
             <span class="control icon gray">
                 <i class="material-icons">delete</i>
             </span>
-            <p class="normal">Retract</p>
+            <content>
+                <p class="normal">Retract</p>
+            </content>
         </li>
     </ul>
 </section>

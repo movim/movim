@@ -76,7 +76,7 @@
             <label>{$c->__('chatrooms.nickname')}</label>
         </div>
         <div>
-            <ul class="list thick">
+            <ul class="list thick fill">
                 <li class="wide">
                     <span class="control">
                         <div class="checkbox">
@@ -90,8 +90,10 @@
                             <label for="autojoin"></label>
                         </div>
                     </span>
-                    <p></p>
-                    <p class="normal">{$c->__('chatrooms.autojoin')}</p>
+                    <content>
+                        <p></p>
+                        <p class="normal">{$c->__('chatrooms.autojoin')}</p>
+                    </content>
                 </li>
             </ul>
         </div>

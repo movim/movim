@@ -1,6 +1,8 @@
 {if="!empty($results)"}
     <li class="subheader">
-        <p>{$c->__('roomsexplore.global_title')}</p>
+        <content>
+            <p>{$c->__('roomsexplore.global_title')}</p>
+        </content>
     </li>
     {loop="$results"}
         <li title="{$value.jid}">
@@ -30,19 +32,21 @@
                 </span>
             {/if}
 
-            <p class="line">
-                {$value.name}
-                <span class="second">{$value.jid}</span>
-            </p>
-            <p class="line" title="{$value.description}">
-                {if="$value.occupants > 0"}
-                    <span title="{$c->__('communitydata.sub', $value.occupants)}">
-                        {$value.occupants} <i class="material-icons">people</i>
-                    </span>
-                {/if}
-                {if="$value.occupants > 0 && !empty($value.description)"} · {/if}
-                {$value.description}
-            </p>
+            <content>
+                <p class="line">
+                    {$value.name}
+                    <span class="second">{$value.jid}</span>
+                </p>
+                <p class="line" title="{$value.description}">
+                    {if="$value.occupants > 0"}
+                        <span title="{$c->__('communitydata.sub', $value.occupants)}">
+                            {$value.occupants} <i class="material-icons">people</i>
+                        </span>
+                    {/if}
+                    {if="$value.occupants > 0 && !empty($value.description)"} · {/if}
+                    {$value.description}
+                </p>
+            </content>
         </li>
     {/loop}
 {else}

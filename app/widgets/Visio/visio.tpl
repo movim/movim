@@ -2,7 +2,7 @@
     <header class="fixed">
         <ul class="list">
             <li>
-                <span class="primary icon color transparent active on_mobile" onclick="Visio.onTerminate(); window.close()">
+                <span class="primary icon color transparent active" onclick="Visio.onTerminate(); window.close()">
                     <i class="material-icons">close</i>
                 </span>
                 <span id="toggle_fullscreen" class="control icon color transparent active" onclick="VisioUtils.toggleFullScreen()">
@@ -17,6 +17,7 @@
                 <span id="switch_camera" class="control icon color transparent active">
                     <i class="material-icons">switch_camera</i>
                 </span>
+                <content><p></p></content>
             </li>
         </ul>
     </header>
@@ -25,16 +26,13 @@
     <ul class="list infos" class="list middle">
         {$url = $contact->getPhoto('l')}
         <li>
-            {if="$url"}
-                <p class="center">
-                    <img src="{$url}">
-                </p>
-            {/if}
-
-            <p class="normal center	">
-                {$contact->truename}
-            </p>
-            <p class="normal state center"></p>
+            <content>
+                {if="$url"}
+                    <p class="center"><img src="{$url}"></p>
+                {/if}
+                <p class="normal center">{$contact->truename}</p>
+                <p class="normal state center"></p>
+            </content>
         </li>
     </ul>
 

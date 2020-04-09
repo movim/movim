@@ -22,6 +22,10 @@
     margin: auto;
 }
 
+#draw ul.list.controls li {
+    justify-content: space-between;
+}
+
 #draw #draw-background {
     position: absolute;
     z-index: -1;
@@ -32,27 +36,43 @@
 }
 
 /* Controls */
+#draw .draw-actions,
 #draw .draw-control {
     position: absolute;
     bottom: 0.5rem;
-    right: 0;
+    right: -0.5rem;
     transition: transform 0.2s;
+}
+
+#draw .draw-actions {
+    left: -1.5rem;
+    right: initial;
 }
 
 #draw .draw-control.drawing {
     transform: translateX(100%);
 }
 
-#draw .draw-control li.selected span.primary {
-    border: 0.5rem solid #AAA;
-    transform: translate(-0.5rem,-0.5rem);
+#draw .draw-actions.drawing {
+    transform: translateX(-100%);
 }
 
-#draw .draw-control p {
-    height: 5.5rem;
-    display: block;
-    padding-right: 0;
-    padding-left: 8rem;
+#draw .draw-control span.icon.bubble i,
+#draw .draw-actions span.icon.bubble i {
+    line-height: 4rem;
+    height: 5rem;
+}
+
+#draw .draw-actions li span.primary,
+#draw .draw-control li span.primary {
+    border: 0.5rem solid transparent;
+    height: 4rem;
+    flex: 0 0 4rem;
+}
+
+#draw .draw-actions li.selected span.primary,
+#draw .draw-control li.selected span.primary {
+    border-color: #AAA;
 }
 
 #draw [data-width=small] i {

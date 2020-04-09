@@ -1,10 +1,12 @@
 <section class="scroll">
     <ul class="list">
         <li class="subheader">
-            <p>
-                <span class="info">{$subscriptions|count}</span>
-                {$c->__('communityaffiliation.subscriptions')}
-            </p>
+            <content>
+                <p>
+                    <span class="info">{$subscriptions|count}</span>
+                    {$c->__('communityaffiliation.subscriptions')}
+                </p>
+            </content>
         </li>
         {loop="$subscriptions"}
             {$contact = $c->getContact($value->jid)}
@@ -19,14 +21,16 @@
                         {$contact->truename|firstLetterCapitalize}
                     </span>
                 {/if}
-                <p class="normal line">
-                    <a href="{$c->route('contact', $value->jid)}">
-                        {$contact->truename}
-                    </a>
-                </p>
-                <p>
-                    {$contact->jid}
-                </p>
+                <content>
+                    <p class="normal line">
+                        <a href="{$c->route('contact', $value->jid)}">
+                            {$contact->truename}
+                        </a>
+                    </p>
+                    <p>
+                        {$contact->jid}
+                    </p>
+                </content>
             </li>
         {/loop}
     </ul>

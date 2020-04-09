@@ -17,7 +17,9 @@
                         <i class="material-icons on_desktop">help</i>
                         <i class="material-icons on_mobile" onclick="MovimTpl.toggleMenu()">menu</i>
                     </span>
-                    <p><?php echo __('page.help'); ?></p>
+                    <content>
+                        <p><?php echo __('page.help'); ?></p>
+                    </content>
                 </li>
             </ul>
         </header>

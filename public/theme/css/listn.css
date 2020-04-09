@@ -1,28 +1,44 @@
-ul.list {
-    list-style-type: none;
-    padding: 0;
-}
-
-ul.list.thin li:not(.subheader) {
-    padding: 0;
-}
-
-ul.list li:not(.subheader) {
-    padding: 0.25rem 0;
-}
-
-ul.list.middle li:not(.subheader):not(.date) {
-    padding: 0.75rem 0;
-    min-height: 5rem;
-}
-
-ul.list.thick li:not(.subheader) {
-    padding: 1.5rem 0;
-}
-
 ul.list li {
     clear: both;
     position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 1.5rem;
+    box-sizing: border-box;
+    position: relative;
+}
+
+header > ul.list > li,
+nav > ul.list > li,
+ul.list.fill > li,
+ul.list.controls > li {
+    padding: 0;
+}
+
+article header > ul.list li {
+    padding: 0 1rem;
+}
+
+ul.list li > * {
+    order: 2;
+    flex: 1;
+    min-width: 0;
+}
+
+ul.list li:not(.subheader) > *:not(.primary):not(.control):not(.bubble) {
+    padding: 0.25rem 0;
+}
+
+ul.list.thin li:not(.subheader) > *:not(.primary):not(.control):not(.bubble) {
+    padding: 0;
+}
+
+ul.list.middle li:not(.subheader) > *:not(.primary):not(.control):not(.bubble) {
+    padding: 0.75rem 0;
+}
+
+ul.list.thick li:not(.subheader) > *:not(.primary):not(.control):not(.bubble) {
+    padding: 1.5rem 0;
 }
 
 ul.list li > *:not(p, .hide, form) {
@@ -65,52 +81,80 @@ ul.list li > span.color.active:active {
 
 ul.list li .control,
 ul.list li .primary {
-    width: 5rem;
     height: 5rem;
-    top: 50%;
-    margin-top: -2.5rem;
-    position: absolute;
     line-height: 5rem;
+    flex: 0 0 5rem;
 }
 
-ul.list li .top + .primary {
-    top: 5rem;
+ul.list li > span.primary {
+    order: 1;
 }
 
-ul.list li .control:not(.bubble):not(.thumb):not(.top),
-ul.list li .primary:not(.bubble):not(.thumb):not(.top) {
-    margin-top: -3rem;
-    padding: 0.5rem;
+ul.list li > span.control {
+    order: 3;
 }
 
-ul.list.thin li .control:not(.bubble):not(.thumb):not(.top),
-ul.list.thin li .primary:not(.bubble):not(.thumb):not(.top) {
-    margin-top: -2.75rem;
+ul.list li > span.control:last-of-type {
+    margin-right: -1.5rem;
+}
+
+header > ul.list li > span.control:last-of-type,
+nav > ul.list li > span.control:last-of-type,
+ul.list.fill li > span.control:last-of-type,
+ul.list.controls li > span.control:last-of-type{
+    margin-right: 0;
+}
+
+ul.list li > span.thumb {
+    flex: 0 0 7rem;
+}
+
+ul.list li:not(.subheader) .control:not(.bubble):not(.thumb),
+ul.list li:not(.subheader) .primary:not(.bubble):not(.thumb) {
     padding: 0.25rem 0.5rem;
 }
 
-ul.list.middle li .control:not(.bubble):not(.thumb):not(.top),
-ul.list.middle li .primary:not(.bubble):not(.thumb):not(.top) {
-    margin-top: -3.5rem;
+ul.list li:not(.subheader) .control.bubble,
+ul.list li:not(.subheader) .primary.bubble {
+    margin: 0.25rem 0.5rem;
+}
+
+ul.list.thin li:not(.subheader) .control:not(.bubble):not(.thumb),
+ul.list.thin li:not(.subheader) .primary:not(.bubble):not(.thumb) {
+    padding: 0 0.5rem;
+}
+
+ul.list.thin li:not(.subheader) .control.bubble,
+ul.list.thin li:not(.subheader) .primary.bubble {
+    margin: 0 0.5rem;
+}
+
+ul.list.middle li:not(.subheader) .control:not(.bubble):not(.thumb),
+ul.list.middle li:not(.subheader) .primary:not(.bubble):not(.thumb) {
     padding: 1rem 0.5rem;
 }
 
-ul.list.thick li .control:not(.bubble):not(.thumb):not(.top),
-ul.list.thick li .primary:not(.bubble):not(.thumb):not(.top) {
-    margin-top: -4.25rem;
+ul.list.middle li:not(.subheader) .control.bubble,
+ul.list.middle li:not(.subheader) .primary.bubble {
+    margin: 1rem 0.5rem;
+}
+
+ul.list.thick li:not(.subheader) .control:not(.bubble):not(.thumb),
+ul.list.thick li:not(.subheader) .primary:not(.bubble):not(.thumb) {
     padding: 1.75rem 0.5rem;
 }
 
-ul.list:not(.actions) > li > *:not(img):not(.counter):not(span):not(.bubble):not(.button):not(ul):not(article),
-ul.list > a > li > *:not(img):not(.counter):not(span):not(.bubble):not(.button):not(ul):not(article),
-ul.list li.subheader p {
-    box-sizing: border-box;
-    padding-right: 2rem;
-    padding-left: 2rem;
+ul.list.thick li:not(.subheader) .control.bubble,
+ul.list.thick li:not(.subheader) .primary.bubble {
+    margin: 1.75rem 0.5rem;
 }
 
-ul.list > li.wide > *:not(img):not(.counter):not(span):not(.bubble):not(.button):not(ul):not(article) {
-    padding-left: 0;
+ul.list li .primary ~ *:not(.primary):not(.control):not(.bubble) {
+    margin-left: 1rem;
+}
+
+ul.list li .control ~ *:not(.primary):not(.control):not(.bubble) {
+    margin-right: 1rem;
 }
 
 ul.list li .primary > a,
@@ -120,32 +164,28 @@ ul.list li .control > a {
 
 /* Truncated content */
 
-ul.list li.subheader > p,
-ul.list li > p.line {
+ul.list li.subheader > content > p,
+ul.list li > content > p.line {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-ul.list li > p > span.second {
+ul.list li > content > p > span.second {
     color: gray;
     margin-left: 0.5rem;
 }
 
-ul.list li > p > span.info,
+ul.list li > content > p > span.info,
 ul li div.bubble:after {
     float: right;
     font-size: 1.5rem;
     color: gray;
 }
 
-*[dir="rtl"] ul.list li > p > span.info {
-    float: left;
-}
-
 /* Size automagicaly the content */
 
-ul.list li > p.filler:before {
+ul.list li > content > p.filler:before {
     content: "…";
     color: transparent;
     width: 100%;
@@ -156,72 +196,65 @@ ul.list li > p.filler:before {
     background-repeat: no-repeat;
 }
 
-ul.list li > p.filler + p.filler:before {
+ul.list li > content > p.filler + p.filler:before {
     background-size: 70% 35%;
 }
 
-ul.list li:nth-child(2n) > p.filler:before {
+ul.list li:nth-child(2n) > content > p.filler:before {
     background-size: 90% 40%;
 }
 
-ul.list li:nth-child(2n) > p.filler + p.filler:before {
+ul.list li:nth-child(2n) > content > p.filler + p.filler:before {
     background-size: 60% 35%;
 }
 
-ul.list li > p {
+ul.list li > content > p {
     box-sizing: border-box;
     width: auto;
 }
 
-ul.list > * > li > p:first-of-type,
-ul.list > li > p:first-of-type {
+ul.list > * > li > content > p:first-of-type,
+ul.list > li > content > p:first-of-type {
     line-height: 5.5rem;
     font-size: 3rem;
 }
 
-ul.list > * > li > p.all:first-of-type,
-ul.list > li > p.all:first-of-type {
+ul.list > * > li > content > p.all:first-of-type,
+ul.list > li > content > p.all:first-of-type {
     line-height: 3rem;
     padding: 1.25rem 0;
 }
 
-ul.list li > p.normal {
+ul.list li > content > p.normal {
     font-size: 2rem;
 }
 
-ul.list li > p.bold {
+ul.list li > content > p.bold {
     font-weight: bold;
 }
 
-ul.list li > p.center {
+ul.list li > content > p.center {
     text-align: center;
 }
 
-ul.list li > p:nth-last-of-type(3),
-ul.list li > p:nth-last-of-type(2) {
+ul.list li > content > p:nth-last-of-type(3),
+ul.list li > content > p:nth-last-of-type(2) {
     line-height: 3rem;
     font-size: 2rem;
     padding: 0;
 }
 
-ul.list li > p:nth-last-of-type(3) + p:not(.normal),
-ul.list li > p:nth-last-of-type(2) + p:not(.normal) {
+ul.list li > content > p:nth-last-of-type(3) + p:not(.normal),
+ul.list li > content > p:nth-last-of-type(2) + p:not(.normal) {
     line-height: 2.5rem;
     font-size: 1.75rem;
     max-height: 7.5rem;
     overflow: hidden;
 }
 
-ul.list li > p:nth-last-of-type(3) + p.all,
-ul.list li > p:nth-last-of-type(2) + p.all {
+ul.list li > content > p:nth-last-of-type(3) + p.all,
+ul.list li > content > p:nth-last-of-type(2) + p.all {
     max-height: 100%;
-}
-
-/* In case of a card inside a li */
-ul.list li > ul.list.card {
-    padding-right: 1rem;
-    padding-left: 8rem;
-    padding-bottom: 0.5rem;
 }
 
 /* Subheader */
@@ -230,200 +263,10 @@ ul.list li.subheader {
     overflow: hidden;
 }
 
-ul.list li.subheader > p {
+ul.list li.subheader > content > p {
     font-size: 1.75rem;
     line-height: 5rem;
     font-weight: 600;
-    padding: 0 2rem;
-}
-
-/* If we have a primary control */
-
-ul.list li > .primary {
-    left: 1.5rem;
-}
-
-body[dir="rtl"] ul.list li > .primary {
-    left: initial;
-    right: 1.5rem;
-}
-
-ul.list li > .primary.bubble {
-    left: 2rem;
-}
-
-body[dir="rtl"] ul.list li > .primary.bubble {
-    left: initial;
-    right: 2rem;
-}
-
-ul.list li > .primary ~ *:not(.primary):not(.counter):not(.bubble):not(.control):not(ul) {
-    padding-left: 8.5rem;
-}
-
-body[dir="rtl"] ul.list li > .primary ~ *:not(.primary):not(.counter):not(.bubble):not(.control):not(ul) {
-    padding-left: 2rem;
-    padding-right: 8.5rem;
-}
-
-ul.list li > .top + .primary ~ *:not(.primary):not(.counter):not(.bubble):not(.control) {
-    padding-left: 2rem;
-}
-
-body[dir="rtl"] ul.list li > .top + .primary ~ *:not(.primary):not(.counter):not(.bubble):not(.control) {
-    padding-left: 2rem;
-    padding-right: 2rem;
-}
-
-/* If we have a second primary control */
-
-ul.list li > .primary + .primary {
-    left: 7rem;
-}
-
-ul.list li > .primary.bubble + .primary {
-    left: 7.5rem;
-}
-
-ul.list li > .primary + .primary ~ *:not(.primary):not(.counter):not(.bubble):not(.control):not(ul) {
-    padding-left: 13.5rem;
-}
-
-body[dir="rtl"] ul.list li > .primary + .primary {
-    right: 7rem;
-}
-
-body[dir="rtl"] ul.list li > .primary.bubble + .primary {
-    right: 7.5rem;
-}
-
-body[dir="rtl"] ul.list li > .primary + .primary ~ *:not(.primary):not(.counter):not(.bubble):not(.control):not(ul) {
-    padding-left: 0;
-    padding-right: 13.5rem;
-}
-
-/* Place the other controls */
-
-ul.list li > .control {
-    right: 0;
-}
-
-ul.list li > .control ~ .control {
-    right: 6rem;
-}
-
-ul.list li > .control ~ .control ~ .control {
-    right: 12rem;
-}
-
-ul.list li > .control ~ .control ~ .control ~ .control {
-    right: 18rem;
-}
-
-body[dir="rtl"] ul.list li > .control {
-    right: initial;
-    left: 0;
-}
-
-body[dir="rtl"] ul.list li > .control ~ .control {
-    right: initial;
-    left: 6rem;
-}
-
-body[dir="rtl"] ul.list li > .control ~ .control ~ .control {
-    right: initial;
-    left: 12rem;
-}
-
-body[dir="rtl"] ul.list li > .control ~ .control ~ .control ~ .control {
-    right: initial;
-    left: 18rem;
-}
-
-/* Limit the size of the main content */
-
-ul.list li > .control ~ *:not(.control):not(.bubble):not(.counter) {
-    margin-right: 5.5rem;
-}
-
-ul.list li > .control ~ .control ~ *:not(.control):not(.bubble):not(.counter) {
-    margin-right: 10.5rem;
-}
-
-ul.list li > .control ~ .control ~ .control ~ *:not(.control):not(.bubble):not(.counter) {
-    margin-right: 18.5rem;
-}
-
-ul.list li > .control ~ .control ~ .control ~ .control ~ *:not(.control):not(.bubble):not(.counter) {
-    margin-right: 22.5rem;
-}
-
-body[dir="rtl"] ul.list li > .control ~ *:not(.control):not(.bubble):not(.counter) {
-    margin-right: 0;
-    margin-left: 5.5rem;
-}
-
-body[dir="rtl"] ul.list li > .control ~ .control ~ *:not(.control):not(.bubble):not(.counter) {
-    margin-right: 0;
-    margin-left: 10.5rem;
-}
-
-body[dir="rtl"] ul.list li > .control ~ .control ~ .control ~ *:not(.control):not(.bubble):not(.counter) {
-    margin-right: 0;
-    margin-left: 18.5rem;
-}
-
-body[dir="rtl"] ul.list li > .control ~ .control ~ .control ~ .control ~ *:not(.control):not(.bubble):not(.counter) {
-    margin-right: 0;
-    margin-left: 22.5rem;
-}
-
-/* Limit the size of the main content */
-
-header > ul.list li .primary {
-    left: 0;
-}
-
-body[dir="rtl"] header > ul.list li .primary {
-    right: 0;
-}
-
-/* Actions */
-
-ul.list.actions {
-    width: 50%;
-}
-
-ul.list.actions:before {
-    content: '';
-    display: block;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    background-image: radial-gradient(ellipse at bottom right, black, transparent 50%, transparent);
-    opacity: 0.35;
-    pointer-events: none;
-    width: 100%;
-    height: 100%;
-}
-
-ul.list.actions > li {
-    height: 6.5rem;
-    animation: zoom 0.2s, bottom-right 0.2s;
-    padding-right: 15rem;
-}
-
-
-ul.list.actions > li > p {
-    border-radius: 0.65rem;
-    display: inline-block;
-    line-height: 4rem;
-    margin: 1.25rem 0;
-    padding: 0 1.25rem;
-    vertical-align: middle;
-    font-size: 1.75rem;
-    position: absolute;
-    right: 2rem;
 }
 
 /* Tabs */
@@ -490,11 +333,9 @@ ul li div.bubble {
     box-sizing: border-box;
     display: block;
     font-size: 1.75rem;
-    max-width: calc(100% - 10rem);
-    float: left;
-
-    left: 8rem;
-    width: auto;
+    max-width: calc(100% - 9rem);
+    flex: 0 0 auto;
+    margin: 0 2rem;
 }
 
 ul li div.bubble div[dir="rtl"] {
@@ -502,15 +343,16 @@ ul li div.bubble div[dir="rtl"] {
 }
 
 ul li div.bubble:not(.sticker):not(.file) {
-    padding: 1rem 1rem 0.5rem 1.75rem;
+    padding: 1rem 1rem 0.5rem 1.5rem;
     border-radius: 0 0.5rem 0.5rem;
     line-height: 2.75rem;
     border-color: rgb(var(--movim-background-main));
-    margin-bottom: 0.75rem;
+    margin-bottom: 1.5rem;
 }
 
-ul li div.bubble:not(.sticker):not(.file) > div {
-    padding-right: 0.75rem;
+ul li div.bubble.sticker,
+ul li div.bubble.file {
+    margin-bottom: 0.5rem;
 }
 
 ul li div.bubble ul.card p:not(:last-child) {
@@ -547,12 +389,6 @@ ul li div.bubble p.code {
     margin-bottom: 0;
 }
 
-ul li.oppose div.bubble {
-    margin-right: 8rem;
-    float: right;
-    position: initial;
-}
-
 ul li.oppose div.bubble.file {
     word-break: break-all;
 }
@@ -561,17 +397,12 @@ ul li.oppose div.bubble:not(.sticker):not(.file) {
     background-color: rgba(var(--movim-background-main), 0.5);
     border-color: rgba(var(--movim-background-main), 0.5);
     border-radius: 0.5rem 0 0.5rem 0.5rem;
+    padding: 1rem 1rem 0.5rem 1.5rem;
 }
 
 ul li div.bubble span.info {
     float: right;
     padding-left: 1rem;
-}
-
-ul li div.bubble div[dir="rtl"] span.info {
-    float: left;
-    padding-right: 1rem;
-    padding-left: 0;
 }
 
 ul li div.bubble:after {
@@ -599,8 +430,8 @@ ul li div.bubble:not(.sticker):not(.file):before {
 }
 
 ul li.oppose div.bubble:not(.sticker):not(.file):before {
-    left: calc(100% - 8rem);
-    top: 0.75rem;
+    left: initial;
+    right: -1.5rem;
     border-right-color: transparent;
     border-left-color: inherit;
 }
@@ -612,44 +443,39 @@ ul li.date {
     text-align: center;
 }
 
-ul li.date > p.normal {
+ul li.date > content > p.normal {
     line-height: 2.5rem;
     font-size: 1.5rem;
     display: inline-block;
     border-radius: 2rem;
     margin: 1rem;
+    padding: 0 2rem;
 }
 
-ul.list.middle li.separator:not(.subheader):not(.date) {
+ul.list li.separator:not(.subheader):not(.date) {
     display: block;
-    min-height: 0;
-    padding: 0;
     border-top: 0.15rem dashed #BBB;
-    margin: 0 1rem;
+    margin-bottom: 1rem;
 }
 
 /* Top controls list */
+
 ul.list.controls {
     position: absolute;
     width: 100%;
     top: 0;
+    justify-content: space-between;
 }
 
 ul.list.controls > li {
-    padding: 3rem;
     width: 100%;
     margin: 0;
     box-sizing: border-box;
 }
 
-ul.list.controls > li span.primary {
-    left: 0.5rem;
-}
-
 ul.list.controls i {
     text-shadow: 0 0 3rem black;
 }
-
 
 /* Icon */
 
@@ -660,7 +486,7 @@ ul.list.controls i {
 
 /* Menu */
 
-ul.context_menu {
+header ul.context_menu {
     border-radius: 0.75rem;
     overflow: hidden;
     position: absolute;
@@ -675,7 +501,11 @@ ul.context_menu {
     pointer-events: none;
 }
 
-ul.context_menu.shown {
+header ul.list.context_menu li {
+    padding: 0 2rem;
+}
+
+header ul.context_menu.shown {
     transform: translateY(0);
     opacity: 1;
     pointer-events: all;
@@ -711,61 +541,6 @@ ul.list li span.control.divided:before {
     border-left-width: 1px;
     border-left-style: solid;
 }
-
-/* RTL */
-
-/*
-*[dir="rtl"] :not(nav) ul.list li > .primary {
-    left: auto;
-    right: 1.5rem;
-}
-
-*[dir="rtl"] :not(nav) ul.list li > .primary.bubble {
-    left: auto;
-    right: 2rem;
-}
-
-*[dir="rtl"] :not(nav) ul.list li > .primary ~ *:not(.primary):not(.counter):not(.bubble):not(.control):not(ul) {
-    padding-left: 2rem;
-    padding-right: 9rem;
-}
-
-*[dir="rtl"] :not(nav) ul.list li > .top + .primary ~ *:not(.primary):not(.counter):not(.bubble):not(.control) {
-    padding-left: 2rem;
-    padding-right: 2rem;
-}
-
-
-*[dir="rtl"] :not(nav) ul.list li > .control {
-    right: auto;
-    left: 0;
-}
-
-*[dir="rtl"] :not(nav) ul.list li > .control ~ .control {
-    right: auto;
-    left: 6rem;
-}
-
-*[dir="rtl"] :not(nav) ul.list li > .control ~ .control ~ .control {
-    right: auto;
-    left: 12rem;
-}
-
-
-*[dir="rtl"] :not(nav) ul.list li > .control ~ *:not(.control):not(.bubble):not(.counter) {
-    margin-right: auto;
-    margin-left: 6rem;
-}
-
-*[dir="rtl"] :not(nav) ul.list li > .control ~ .control ~ *:not(.control):not(.bubble):not(.counter) {
-    margin-right: auto;
-    margin-left: 12rem;
-}
-
-*[dir="rtl"] :not(nav) ul.list li > .control ~ .control ~ .control ~ *:not(.control):not(.bubble):not(.counter) {
-    margin-right: 0;
-    margin-left: 18rem;
-}*/
 
 ul li img.preview {
     max-width: 100%;

@@ -4,31 +4,41 @@
             <span class="primary icon gray">
                 <i class="material-icons">image</i>
             </span>
-            <p class="normal">{$c->__('page.avatar')}</p>
+            <content>
+                <p class="normal">{$c->__('page.avatar')}</p>
+            </content>
         </li>
         <li onclick="CommunityConfig_ajaxGetConfig('{$info->server|echapJS}', '{$info->node|echapJS}')">
             <span class="primary icon gray">
                 <i class="material-icons">settings</i>
             </span>
-            <p class="normal">{$c->__('communityaffiliation.configuration')}</p>
+            <content>
+                <p class="normal">{$c->__('communityaffiliation.configuration')}</p>
+            </content>
         </li>
         <li onclick="CommunityAffiliations_ajaxGetSubscriptions('{$info->server|echapJS}', '{$info->node|echapJS}', true)">
             <span class="primary icon gray">
                 <i class="material-icons">contacts</i>
             </span>
-            <p class="normal">{$c->__('communityaffiliation.subscriptions')}</p>
+            <content>
+                <p class="normal">{$c->__('communityaffiliation.subscriptions')}</p>
+            </content>
         </li>
         <li onclick="CommunityAffiliations_ajaxAffiliations('{$info->server|echapJS}', '{$info->node|echapJS}')">
             <span class="primary icon gray">
                 <i class="material-icons">supervisor_account</i>
             </span>
-            <p class="normal">{$c->__('communityaffiliation.roles')}</p>
+            <content>
+                <p class="normal">{$c->__('communityaffiliation.roles')}</p>
+            </content>
         </li>
         <li onclick="CommunityAffiliations_ajaxDelete('{$info->server|echapJS}', '{$info->node|echapJS}')">
             <span class="primary icon gray">
                 <i class="material-icons">delete</i>
             </span>
-            <p class="normal">{$c->__('button.delete')}</p>
+            <content>
+                <p class="normal">{$c->__('button.delete')}</p>
+            </content>
         </li>
     </ul>
 {/if}
@@ -36,7 +46,9 @@
 {if="array_key_exists('owner', $affiliations)"}
     <ul class="list card active">
         <li class="subheader">
-            <p>{$c->__('communityaffiliation.owners')}</p>
+            <content>
+                <p>{$c->__('communityaffiliation.owners')}</p>
+            </content>
         </li>
         {loop="$affiliations['owner']"}
             {$contact = $c->getContact($value['jid'])}
@@ -52,8 +64,10 @@
                         {$contact->truename|firstLetterCapitalize}
                     </span>
                 {/if}
-                <p>{$contact->truename}</p>
-                <p>{$contact->jid}</p>
+                <content>
+                    <p>{$contact->truename}</p>
+                    <p>{$contact->jid}</p>
+                </content>
             </li>
         {/loop}
     </ul>
@@ -62,7 +76,9 @@
 {if="array_key_exists('publisher', $affiliations)"}
 <ul class="list card active">
     <li class="subheader">
-        <p>{$c->__('communityaffiliation.publishers')}</p>
+        <content>
+            <p>{$c->__('communityaffiliation.publishers')}</p>
+        </content>
     </li>
     {loop="$affiliations['publisher']"}
         {$contact = $c->getContact($value['jid'])}
@@ -78,8 +94,10 @@
                     {$contact->truename|firstLetterCapitalize}
                 </span>
             {/if}
-            <p>{$contact->truename}</p>
-            <p>{$contact->jid}</p>
+            <content>
+                <p>{$contact->truename}</p>
+                <p>{$contact->jid}</p>
+            </content>
         </li>
     {/loop}
 </ul>
@@ -88,7 +106,9 @@
 {if="$subscriptions->isNotEmpty()"}
 <ul class="list card active thin">
     <li class="subheader">
-        <p>{$c->__('communityaffiliation.subscriptions')}</p>
+        <content>
+            <p>{$c->__('communityaffiliation.subscriptions')}</p>
+        </content>
     </li>
     {loop="$subscriptions"}
         <li title="{$value->jid}"
@@ -104,12 +124,16 @@
                         {$value->contact->truename|firstLetterCapitalize:true}
                     </span>
                 {/if}
-                <p class="normal">{$value->contact->truename}</p>
+                <content>
+                    <p class="normal">{$value->contact->truename}</p>
+                </content>
             {else}
                 <span class="primary icon bubble small color {$value->jid|stringToColor}">
                     {$value->jid|firstLetterCapitalize:true}
                 </span>
-                <p class="normal">{$value->jid}</p>
+                <content>
+                    <p class="normal">{$value->jid}</p>
+                </content>
             {/if}
         </li>
     {/loop}

@@ -22,20 +22,23 @@
                     </span>
                 {/if}
 
-                <p class="line">
-                    {if="$post->title != null && !$post->isBrief()"}
-                        {autoescape="off"}
-                            {$post->getTitle()}
-                        {/autoescape}
-                    {else}
-                        {$c->__('post.default_title')}
-                    {/if}
-                </p>
+                <content>
+                    <p class="line">
+                        {if="$post->title != null && !$post->isBrief()"}
+                            {autoescape="off"}
+                                {$post->getTitle()}
+                            {/autoescape}
+                        {else}
+                            {$c->__('post.default_title')}
+                        {/if}
+                    </p>
+                </content>
             </li>
         </ul>
     {/if}
+</header>
 
-    {if="($public && $post->openlink) || !$public"}
+{if="($public && $post->openlink) || !$public"}
     <ul class="list thick">
         <li>
             {if="$repost"}
@@ -110,56 +113,57 @@
                     </a>
                 </span>
             {/if}
-            {if="!$post->isBrief()"}
-                <p {if="$post->title != null"}title="{$post->title|strip_tags}"{/if}>
-                    {autoescape="off"}
-                        {$post->getTitle()|addHashtagsLinks|addEmojis}
-                    {/autoescape}
+            <content>
+                {if="!$post->isBrief()"}
+                    <p {if="$post->title != null"}title="{$post->title|strip_tags}"{/if}>
+                        {autoescape="off"}
+                            {$post->getTitle()|addHashtagsLinks|addEmojis}
+                        {/autoescape}
+                    </p>
+                {else}
+                    <p></p>
+                {/if}
+                <p>
+                    {if="$contact"}
+                        {if="!$public"}
+                        <a href="#" onclick="if (typeof Post_ajaxGetContact == 'function') { Post_ajaxGetContact('{$contact->jid}'); } else { Group_ajaxGetContact('{$contact->jid}'); } ">
+                        {/if}
+                        {$contact->truename}
+                        {if="!$public"}</a>{/if} ·
+                    {/if}
+                    {if="!$post->isMicroblog()"}
+                        {if="!$public"}
+                        <a href="{$c->route('community', $post->server)}">
+                        {/if}
+                            {$post->server}
+                        {if="!$public"}</a>{/if} /
+                        {if="!$public"}
+                        <a href="{$c->route('community', [$post->server, $post->node])}">
+                        {/if}
+                            {$post->node}
+                        {if="!$public"}</a>{/if} ·
+                    {/if}
+                    {$post->published|strtotime|prepareDate}
+                    {if="$post->published != $post->updated"}
+                        <i class="material-icons" title="{$post->updated|strtotime|prepareDate}">
+                            edit
+                        </i>
+                    {/if}
+                    {if="$post->contentcleaned && readTime($post->contentcleaned)"}
+                        · {$post->contentcleaned|readTime}
+                    {/if}
                 </p>
-            {else}
-                <p></p>
-            {/if}
-            <p>
-                {if="$contact"}
-                    {if="!$public"}
-                    <a href="#" onclick="if (typeof Post_ajaxGetContact == 'function') { Post_ajaxGetContact('{$contact->jid}'); } else { Group_ajaxGetContact('{$contact->jid}'); } ">
-                    {/if}
-                    {$contact->truename}
-                    {if="!$public"}</a>{/if} ·
+                {if="$post->isBrief()"}
+                    <p class="normal">
+                        {autoescape="off"}
+                            {$post->getTitle()|addUrls|addHashtagsLinks|nl2br|prepareString|addEmojis}
+                        {/autoescape}
+                    </p>
                 {/if}
-                {if="!$post->isMicroblog()"}
-                    {if="!$public"}
-                    <a href="{$c->route('community', $post->server)}">
-                    {/if}
-                        {$post->server}
-                    {if="!$public"}</a>{/if} /
-                    {if="!$public"}
-                    <a href="{$c->route('community', [$post->server, $post->node])}">
-                    {/if}
-                        {$post->node}
-                    {if="!$public"}</a>{/if} ·
-                {/if}
-                {$post->published|strtotime|prepareDate}
-                {if="$post->published != $post->updated"}
-                    <i class="material-icons" title="{$post->updated|strtotime|prepareDate}">
-                        edit
-                    </i>
-                {/if}
-                {if="$post->contentcleaned && readTime($post->contentcleaned)"}
-                    · {$post->contentcleaned|readTime}
-                {/if}
-            </p>
-            {if="$post->isBrief()"}
-                <p class="normal">
-                    {autoescape="off"}
-                        {$post->getTitle()|addUrls|addHashtagsLinks|nl2br|prepareString|addEmojis}
-                    {/autoescape}
-                </p>
-            {/if}
+            </content>
         </li>
     </ul>
-    {/if}
-</header>
+{/if}
 
 {if="$repost"}
     <a href="{$c->route('contact', $post->contact->jid)}">
@@ -180,8 +184,10 @@
                     <i class="material-icons">chevron_right</i>
                 </span>
 
-                <p>{$c->__('post.repost', $post->contact->truename)}</p>
-                <p>{$c->__('post.repost_profile', $post->contact->truename)}</p>
+                <content>
+                    <p>{$c->__('post.repost', $post->contact->truename)}</p>
+                    <p>{$c->__('post.repost_profile', $post->contact->truename)}</p>
+                </content>
             </li>
         </ul>
     </a>
@@ -234,14 +240,16 @@
                 <span class="primary icon gray">
                     <i class="material-icons">wifi_tethering</i>
                 </span>
-                <p class="line normal">
-                    {$c->__('post.public_yes')}
-                </p>
-                <p>
-                    <a target="_blank" href="{$post->openlink->href}">
-                        {$c->__('post.public_url')} · {$post->openlink->url.host}
-                    </a>
-                </p>
+                <content>
+                    <p class="line normal">
+                        {$c->__('post.public_yes')}
+                    </p>
+                    <p>
+                        <a target="_blank" href="{$post->openlink->href}">
+                            {$c->__('post.public_url')} · {$post->openlink->url.host}
+                        </a>
+                    </p>
+                </content>
             </li>
         </ul>
     {/if}
@@ -269,4 +277,3 @@
 </footer>
 
 </article>
-<span class="clear padded"></span>

@@ -15,17 +15,19 @@
                         <i class="material-icons">rss_feed</i>
                     </a>
                 </span>
-                <p>
-                    <a href="{$contact->getBlogUrl()}">
-                        {$c->__('blog.title', $contact->truename)}
-                    </a>
-                </p>
-                    {if="$contact->description"}
-                        <p>{$contact->description}</p>
-                    {/if}
-                <p>
-                    {$c->__('page.blog')}
-                </p>
+                <content>
+                    <p>
+                        <a href="{$contact->getBlogUrl()}">
+                            {$c->__('blog.title', $contact->truename)}
+                        </a>
+                    </p>
+                        {if="$contact->description"}
+                            <p>{$contact->description}</p>
+                        {/if}
+                    <p>
+                        {$c->__('page.blog')}
+                    </p>
+                </content>
             {/if}
         </li>
     </ul>
@@ -41,11 +43,13 @@
                 <i class="material-icons">label</i>
             </span>
             {/if}
-            <p>
-                <a href="{$c->route('tag', array($tag))}">
-                    #{$tag}
-                </a>
-            </p>
+            <content>
+                <p>
+                    <a href="{$c->route('tag', array($tag))}">
+                        #{$tag}
+                    </a>
+                </p>
+            </content>
         </li>
     </ul>
     {elseif="$node && $server"}
@@ -73,34 +77,38 @@
                         <i class="material-icons">rss_feed</i>
                     </a>
                 </span>
-                <p>
-                    <a href="{$c->route('node', [$server, $node])}">
-                        {if="$item != null && $item->name"}
-                            {$item->name}
+                <content>
+                    <p>
+                        <a href="{$c->route('node', [$server, $node])}">
+                            {if="$item != null && $item->name"}
+                                {$item->name}
+                            {else}
+                                {$node}
+                            {/if}
+                        </a>
+                    </p>
+                    {if="$item != null"}
+                        {if="$item->description"}
+                            <p title="{$item->description|stripTags}">
+                                <i class="material-icons">people</i> {$c->__('communitydata.sub', $item->occupants)} ·
+                                {$item->description|stripTags}
+                            </p>
                         {else}
-                            {$node}
+                            <p>
+                                <i class="material-icons">people</i> {$c->__('communitydata.sub', $item->occupants)} ·
+                                {$item->server}
+                            </p>
                         {/if}
-                    </a>
-                </p>
-                {if="$item != null"}
-                    {if="$item->description"}
-                        <p title="{$item->description|stripTags}">
-                            <i class="material-icons">people</i> {$c->__('communitydata.sub', $item->occupants)} ·
-                            {$item->description|stripTags}
-                        </p>
-                    {else}
-                        <p>
-                            <i class="material-icons">people</i> {$c->__('communitydata.sub', $item->occupants)} ·
-                            {$item->server}
-                        </p>
                     {/if}
-                {/if}
+                </content>
             </li>
         </ul>
     {else}
         <ul class="list thick">
             <li>
-                <p>{$c->__('post.empty')}</p>
+                <content>
+                    <p>{$c->__('post.empty')}</p>
+                </content>
             </li>
         </ul>
     {/if}
@@ -114,7 +122,9 @@
                     <span class="primary icon gray">
                         <i class="material-icons">comment</i>
                     </span>
-                    <p class="normal">{$c->__('post.empty')}</p>
+                    <content>
+                        <p class="normal">{$c->__('post.empty')}</p>
+                    </content>
                 </li>
             </ul>
         </article>
@@ -131,7 +141,9 @@
                 <a href="{$next}">
                     <li id="history" class="block large">
                         <span class="primary icon gray"><i class="material-icons">history</i></span>
-                        <p class="normal line center">{$c->__('post.older')}</p>
+                        <content>
+                            <p class="normal line center">{$c->__('post.older')}</p>
+                        </content>
                     </li>
                 </a>
             </ul>

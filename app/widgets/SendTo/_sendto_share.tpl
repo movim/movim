@@ -2,7 +2,9 @@
     {if="$card"}
         <ul class="list card middle">
             <li class="subheader">
-                <p>{$c->__('button.share')}</p>
+                <content>
+                    <p>{$c->__('button.share')}</p>
+                </content>
             </li>
             {autoescape="off"}
                 {$card}
@@ -13,7 +15,9 @@
                         onclick="MovimUtils.redirect('{$c->route('publish', [$post->server, $post->node, $post->nodeid, 'share'])}')">
                         <i class="material-icons">share</i>
                     </span>
-                    <p class="normal line">{$c->__('sendto.attach')}</p>
+                    <content>
+                        <p class="normal line">{$c->__('sendto.attach')}</p>
+                    </content>
                 </li>
             {/if}
         </ul>
@@ -45,18 +49,20 @@
 
                     {$info = $value->info}
 
-                    <p class="normal line">
-                        {$value->name}
-                        <span class="second">{$value->conference}</span>
-                    </p>
-                    <p class="line"
-                        {if="isset($info) && $info->description"}title="{$info->description}"{/if}>
-                        {if="isset($info) && $info->description"}
-                            {$info->description}
-                        {else}
-                            {$value->conference}
-                        {/if}
-                    </p>
+                    <content>
+                        <p class="normal line">
+                            {$value->name}
+                            <span class="second">{$value->conference}</span>
+                        </p>
+                        <p class="line"
+                            {if="isset($info) && $info->description"}title="{$info->description}"{/if}>
+                            {if="isset($info) && $info->description"}
+                                {$info->description}
+                            {else}
+                                {$value->conference}
+                            {/if}
+                        </p>
+                    </content>
                 </li>
             {/loop}
         </ul>
@@ -71,7 +77,9 @@
             <span class="control icon gray">
                 <i class="material-icons">expand_more</i>
             </span>
-            <p class="normal line center">{$c->__('sendto.more_contacts')}</p>
+            <content>
+                <p class="normal line center">{$c->__('sendto.more_contacts')}</p>
+            </content>
         </li>
     </ul>
 </section>

@@ -1,6 +1,7 @@
 <form enctype="multipart/form-data" method="post" action="index.php" name="general">
-    <br/>
-    <h3>{$c->__('config.general')}</h3>
+    <ul class="list fill">
+        <li class="subheader"><content><p>{$c->__('config.general')}</p></content></li>
+    </ul>
 
     <div class="block">
         <div class="select">
@@ -28,7 +29,7 @@
     </div>
 
     <div class="block">
-        <ul class="list thick">
+        <ul class="list middle fill">
             <li>
                 <span class="primary icon gray">
                     <i class="material-icons">forum</i>
@@ -43,14 +44,12 @@
                         <label for="chatmain"></label>
                     </div>
                 </span>
-                <p>{$c->__('config.chatmain')}</p>
-                <p class="all">{$c->__('config.chatmain_text')}</p>
+                <content>
+                    <p>{$c->__('config.chatmain')}</p>
+                    <p class="all">{$c->__('config.chatmain_text')}</p>
+                </content>
             </li>
-        </ul>
-    </div>
 
-    <div class="block">
-        <ul class="list thick">
             <li>
                 <span class="primary icon gray">
                     18+
@@ -65,14 +64,12 @@
                         <label for="nsfw"></label>
                     </div>
                 </span>
-                <p>{$c->__('config.nsfw')}</p>
-                <p class="all">{$c->__('config.nsfw_text')}</p>
+                <content>
+                    <p>{$c->__('config.nsfw')}</p>
+                    <p class="all">{$c->__('config.nsfw_text')}</p>
+                </content>
             </li>
-        </ul>
-    </div>
 
-    <div class="block">
-        <ul class="list thick">
             <li>
                 <span class="primary icon gray">
                     <i class="material-icons">brightness_2</i>
@@ -88,16 +85,16 @@
                         <label for="nightmode"></label>
                     </div>
                 </span>
-                <p>{$c->__('config.night_mode')}</p>
-                <p class="all">{$c->__('config.night_mode_text')}</p>
+                <content>
+                    <p>{$c->__('config.night_mode')}</p>
+                    <p class="all">{$c->__('config.night_mode_text')}</p>
+                </content>
             </li>
         </ul>
     </div>
-    <br/>
-    <h3>{$c->__('config.notification_title')}</h3>
-
     <div class="block">
-        <ul class="list middle">
+        <ul class="list fill">
+            <li class="subheader"><content><p>{$c->__('config.notification_title')}</p></content></li>
             <li>
                 <span class="primary icon gray">
                     <i class="material-icons">call</i>
@@ -112,7 +109,9 @@
                         <label for="notificationcall"></label>
                     </div>
                 </span>
-                <p class="normal line">{$c->__('config.notification_call')}</p>
+                <content>
+                    <p class="normal line">{$c->__('config.notification_call')}</p>
+                </content>
             </li>
             <li>
                 <span class="primary icon gray">
@@ -128,7 +127,9 @@
                         <label for="notificationchat"></label>
                     </div>
                 </span>
-                <p class="normal line">{$c->__('config.notification_chat')}</p>
+                <content>
+                    <p class="normal line">{$c->__('config.notification_chat')}</p>
+                </content>
             </li>
         </ul>
     </div>

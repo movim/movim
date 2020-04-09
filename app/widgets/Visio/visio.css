@@ -65,7 +65,7 @@ body {
 }
 
 #visio header ul.list li {
-    padding: 3rem;
+    justify-content: space-between;
 }
 
 #visio header i {

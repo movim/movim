@@ -7,7 +7,6 @@ span.icon {
     background-size: cover;
     background-position: center;
     position: relative;
-    width: 5rem;
     word-break: keep-all;
 }
 
@@ -62,31 +61,23 @@ img.icon.thumb {
 }
 
 span.icon.primary.thumb {
-    height: 100%;
-    left: 0;
-    top: 0;
     width: 7rem;
-    margin: 0;
-    line-height: 7.5rem;
-    max-height: 100%;
+    line-height: 7rem;
+    margin-left: -1.5rem;
+    align-self: stretch;
+    height: auto;
 }
 
-body[dir="rtl"] span.icon.primary.thumb {
-    left: initial;
-    right: 0;
-}
-
-li.oppose span.icon {
-    left: auto;
-    right: 2rem;
+ul.fill li span.icon.primary.thumb {
+    margin-left: 0;
 }
 
 span.icon.bubble {
     border-radius: 5rem;
-    font-size: 0;
     font-size: 2.25rem;
     user-select: none;
     -moz-user-select: none;
+    height: 5rem;
 }
 
 span.icon.bubble img:not(.emoji) {
@@ -99,12 +90,12 @@ span.icon.bubble i {
 }
 
 ul.list li span.icon.small {
-    width: 3rem;
     height: 3rem;
     line-height: 3rem;
-    margin-top: -1.5rem;
     font-size: 0; /* Only display the first letter */
-    left: 3rem;
+    flex: 0 0 3rem;
+    margin-left: 1rem;
+    margin-right: 2rem;
 }
 
 ul.list li span.icon.small img.emoji {

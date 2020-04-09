@@ -26,16 +26,18 @@
         </span>
     {/if}
 
-    {if="$embed->type == 'photo'"}
-        <p class="line">{$embed->images[$imagenumber]['width']} x {$embed->images[$imagenumber]['height']}</p>
-        <p class="line">{$embed->images[$imagenumber]['size']|sizeToCleanSize}</p>
-    {else}
-        <p class="line">{$embed->title}</p>
-        <p class="line">{$embed->description}</p>
-    {/if}
-    <p class="line">
-        <a href="{$embed->url}" target="_blank">
-            {$embed->url}
-        </a>
-    </p>
+    <content>
+        {if="$embed->type == 'photo'"}
+            <p class="line">{$embed->images[$imagenumber]['width']} x {$embed->images[$imagenumber]['height']}</p>
+            <p class="line">{$embed->images[$imagenumber]['size']|sizeToCleanSize}</p>
+        {else}
+            <p class="line">{$embed->title}</p>
+            <p class="line">{$embed->description}</p>
+        {/if}
+        <p class="line">
+            <a href="{$embed->url}" target="_blank">
+                {$embed->url}
+            </a>
+        </p>
+    </content>
 </li>

@@ -5,10 +5,12 @@
             <span class="primary icon bubble color green">
                 <i class="material-icons">cloud_upload</i>
             </span>
-            <p>{$c->__('upload.choose')}</p>
-            <p>
-                <input type="file" id="file" onchange="Upload.preview()"/>
-            </p>
+            <content>
+                <p>{$c->__('upload.choose')}</p>
+                <p>
+                    <input type="file" id="file" onchange="Upload.preview()"/>
+                </p>
+            </content>
         </li>
     </ul>
     <ul class="list">
@@ -19,16 +21,20 @@
                     <i class="material-icons on_desktop">system_update_alt</i>
                     <i class="material-icons on_mobile">photo_size_select_large</i>
                 </span>
-                <p class="on_desktop">
-                    {$c->__('upload.drag_drop')}
-                </p>
-                <p>
-                    {$c->__('upload.info')}
-                </p>
+                <content>
+                    <p class="on_desktop">
+                        {$c->__('upload.drag_drop')}
+                    </p>
+                    <p>
+                        {$c->__('upload.info')}
+                    </p>
+                </content>
             </li>
             <li class="file">
-                <p class="name line center"></p>
-                <p class="desc line center"></p>
+                <content>
+                    <p class="name line center"></p>
+                    <p class="desc line center"></p>
+                </content>
             </li>
         </div>
     </ul>

@@ -15,18 +15,18 @@
         </div>
 
         <div class="checkbox">
-            <ul class="list thick">
+            <ul class="list thick fill">
                 <li class="wide">
                     <span class="control">
-                        <div class="control action">
-                            <div class="checkbox">
-                                <input id="share" name="share" type="checkbox">
-                                <label for="share"></label>
-                            </div>
+                        <div class="checkbox">
+                            <input id="share" name="share" type="checkbox">
+                            <label for="share"></label>
                         </div>
                     </span>
-                    <p class="line">{$c->__('communityheader.share_subscription')}</p>
-                    <p>{$c->__('communityheader.share_subscription_text')}</p>
+                    <content>
+                        <p class="line">{$c->__('communityheader.share_subscription')}</p>
+                        <p>{$c->__('communityheader.share_subscription_text')}</p>
+                    </content>
                 </li>
             </ul>
         </div>

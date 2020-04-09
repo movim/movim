@@ -13,14 +13,16 @@
             <span class="primary icon gray">
                 <i class="material-icons">person</i>
             </span>
-            <p class="line">
-                {if="!empty($info.url)"}
-                    <a href="{$info.url}" target="_blank">{$info.author}</a>
-                {else}
-                    {$info.author}
-                {/if}
-            </p>
-            <p class="line">Under {$info.license}</p>
+            <content>
+                <p class="line">
+                    {if="!empty($info.url)"}
+                        <a href="{$info.url}" target="_blank">{$info.author}</a>
+                    {else}
+                        {$info.author}
+                    {/if}
+                </p>
+                <p class="line">Under {$info.license}</p>
+            </content>
         </li>
     </ul>
 </section>

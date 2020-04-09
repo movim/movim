@@ -8,7 +8,9 @@
                             <i class="material-icons">arrow_back</i>
                         </a>
                     </span>
-                    <p class="center"><?php echo __('page.about'); ?></p>
+                    <content>
+                        <p class="center"><?php echo __('page.about'); ?></p>
+                    </content>
                 </li>
             </ul>
         </header>

@@ -13,15 +13,17 @@
                     <i class="material-icons">arrow_back</i>
                 </span>
 
-                <p class="line">
-                    {if="$post"}
-                        {$c->__('button.edit')}
-                    {elseif="$reply"}
-                        {$c->__('button.share')}
-                    {else}
-                        {$c->__('publishbrief.new')}
-                    {/if}
-                </p>
+                <content>
+                    <p class="line">
+                        {if="$post"}
+                            {$c->__('button.edit')}
+                        {elseif="$reply"}
+                            {$c->__('button.share')}
+                        {else}
+                            {$c->__('publishbrief.new')}
+                        {/if}
+                    </p>
+                </content>
             </li>
         </ul>
     </header>
@@ -107,19 +109,6 @@
 
     <ul class="list middle">
         <li>
-            {if="$extended"}
-                <span class="control icon active gray"
-                    title="{$c->__('publishbrief.preview')}"
-                    onclick="PublishBrief_ajaxPreview(MovimUtils.formToJson('brief'))">
-                    <i class="material-icons">visibility</i>
-                </span>
-            {else}
-                <span id="button_send"
-                    class="control icon gray active"
-                    onclick="PublishBrief.disableSend(); PublishBrief_ajaxHttpDaemonPublish(MovimUtils.formToJson('brief'));">
-                    <i class="material-icons">send</i>
-                </span>
-            {/if}
             <span class="control privacy"
                   title="{$c->__('post.public')}">
                 <form>
@@ -146,8 +135,21 @@
                     </div>
                 </form>
             </span>
+            {if="$extended"}
+                <span class="control icon active gray"
+                    title="{$c->__('publishbrief.preview')}"
+                    onclick="PublishBrief_ajaxPreview(MovimUtils.formToJson('brief'))">
+                    <i class="material-icons">visibility</i>
+                </span>
+            {else}
+                <span id="button_send"
+                    class="control icon gray active"
+                    onclick="PublishBrief.disableSend(); PublishBrief_ajaxHttpDaemonPublish(MovimUtils.formToJson('brief'));">
+                    <i class="material-icons">send</i>
+                </span>
+            {/if}
             <div>
-                <ul class="list embed">
+                <ul class="list embed fill">
                     {if="$reply"}
                         {autoescape="off"}
                             {$replyblock}

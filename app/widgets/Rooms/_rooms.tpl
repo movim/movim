@@ -14,10 +14,12 @@
                     <i class="material-icons">edit</i>
                 </span>
             {/if}
-            <p>
-                <span class="info">{$conferences|count}</span>
-                {$c->__('chatrooms.title')}
-            </p>
+            <content>
+                <p>
+                    <span class="info">{$conferences|count}</span>
+                    {$c->__('chatrooms.title')}
+                </p>
+            </content>
         </li>
         <li class="divided spaced {if="$edit"}disabled{/if}">
             <span class="primary icon gray">
@@ -26,7 +28,9 @@
             <span class="control icon gray active divided" onclick="Rooms_ajaxAdd();">
                 <i class="material-icons">group_add</i>
             </span>
-            <p class="normal line" onclick="RoomsExplore_ajaxSearch();">{$c->__('rooms.add')}</p>
+            <content>
+                <p class="normal line" onclick="RoomsExplore_ajaxSearch();">{$c->__('rooms.add')}</p>
+            </content>
         </li>
     </ul>
     <ul class="list divided spaced middle {if="!$edit"}active{/if}">
@@ -74,59 +78,61 @@
                         </span>
                     {/if}
 
-                    <p class="normal line">
-                        {$value->name}
-                        {if="$connected"}
-                            <span class="second">{$value->conference}</span>
-                        {else}
-                            ·
-                        {/if}
-                    {if="$connected"}
-                    </p>
-                    <p class="line"
-                        {if="isset($info) && $info->description"}title="{$info->description}"{/if}>
-                    {/if}
-                        {if="$connected"}
-                            {$count = $value->presences()->count()}
-                            <span title="{$c->__('communitydata.sub', $count)}"
-                                {if="$connected && $connected->mucrole == 'moderator'"}
-                                    class="moderator"
-                                {/if}>
-                                {$count} <i class="material-icons">people</i>
-                                {if="$value->info && $value->info->mucpublic"}
-                                    <i class="material-icons" title="{$c->__('room.public_muc_text')}">wifi_tethering</i>
-                                {/if}
-                                {if="$value->info && !$value->info->mucsemianonymous"}
-                                    <i class="material-icons" title="{$c->__('room.nonanonymous_muc_text')}">face</i>
-                                {/if}
-                            </span> ·
-                        {elseif="isset($info) && $info->occupants > 0"}
-                            <span title="{$c->__('communitydata.sub', $info->occupants)}"
-                                {if="$connected && $connected->mucrole == 'moderator'"}
-                                    class="moderator"
-                                {/if}>
-                                {$info->occupants} <i class="material-icons">people</i>
-                                {if="$value->info && $value->info->mucpublic"}
-                                    <i class="material-icons" title="{$c->__('room.public_muc_text')}">wifi_tethering</i>
-                                {/if}
-                                {if="$value->info && !$value->info->mucsemianonymous"}
-                                    <i class="material-icons" title="{$c->__('room.nonanonymous_muc_text')}">face</i>
-                                {/if}
-                            </span> ·
-                        {/if}
-                        {if="$servers->has($value->server) && !$servers->get($value->server)->identities->contains('type', 'text')"}
-                            <i class="material-icons" title="{$c->__('rooms.gateway_room')}">swap_horiz</i> ·
-                        {/if}
-                        {if="$connected"}
-                            {if="isset($info) && $info->description"}
-                                {$info->description}
+                    <content>
+                        <p class="normal line">
+                            {$value->name}
+                            {if="$connected"}
+                                <span class="second">{$value->conference}</span>
                             {else}
-                                {$value->conference}
+                                ·
                             {/if}
-                        {else}
-                            <span class="second">{$value->conference}</span>
+                        {if="$connected"}
+                        </p>
+                        <p class="line"
+                            {if="isset($info) && $info->description"}title="{$info->description}"{/if}>
                         {/if}
-                    </p>
+                            {if="$connected"}
+                                {$count = $value->presences()->count()}
+                                <span title="{$c->__('communitydata.sub', $count)}"
+                                    {if="$connected && $connected->mucrole == 'moderator'"}
+                                        class="moderator"
+                                    {/if}>
+                                    {$count} <i class="material-icons">people</i>
+                                    {if="$value->info && $value->info->mucpublic"}
+                                        <i class="material-icons" title="{$c->__('room.public_muc_text')}">wifi_tethering</i>
+                                    {/if}
+                                    {if="$value->info && !$value->info->mucsemianonymous"}
+                                        <i class="material-icons" title="{$c->__('room.nonanonymous_muc_text')}">face</i>
+                                    {/if}
+                                </span> ·
+                            {elseif="isset($info) && $info->occupants > 0"}
+                                <span title="{$c->__('communitydata.sub', $info->occupants)}"
+                                    {if="$connected && $connected->mucrole == 'moderator'"}
+                                        class="moderator"
+                                    {/if}>
+                                    {$info->occupants} <i class="material-icons">people</i>
+                                    {if="$value->info && $value->info->mucpublic"}
+                                        <i class="material-icons" title="{$c->__('room.public_muc_text')}">wifi_tethering</i>
+                                    {/if}
+                                    {if="$value->info && !$value->info->mucsemianonymous"}
+                                        <i class="material-icons" title="{$c->__('room.nonanonymous_muc_text')}">face</i>
+                                    {/if}
+                                </span> ·
+                            {/if}
+                            {if="$servers->has($value->server) && !$servers->get($value->server)->identities->contains('type', 'text')"}
+                                <i class="material-icons" title="{$c->__('rooms.gateway_room')}">swap_horiz</i> ·
+                            {/if}
+                            {if="$connected"}
+                                {if="isset($info) && $info->description"}
+                                    {$info->description}
+                                {else}
+                                    {$value->conference}
+                                {/if}
+                            {else}
+                                <span class="second">{$value->conference}</span>
+                            {/if}
+                        </p>
+                    </content>
                 </li>
             {/if}
         {/loop}
@@ -137,8 +143,10 @@
             <span class="primary icon green">
                 <i class="material-icons">people_outline</i>
             </span>
-            <p>{$c->__('rooms.empty_text1')}</p>
-            <p>{$c->__('rooms.empty_text2')}</p>
+            <content>
+                <p>{$c->__('rooms.empty_text1')}</p>
+                <p>{$c->__('rooms.empty_text2')}</p>
+            </content>
         </li>
         <li>
             <span class="primary icon purple">
@@ -147,10 +155,10 @@
             <span class="control icon active" onclick="Rooms_ajaxSyncBookmark()">
                 <i class="material-icons">sync</i>
             </span>
-            <p>{$c->__('rooms.empty_synchronize_title')}</p>
-            <p>
-                {$c->__('rooms.empty_synchronize_text')}
-            </p>
+            <content>
+                <p>{$c->__('rooms.empty_synchronize_title')}</p>
+                <p>{$c->__('rooms.empty_synchronize_text')}</p>
+            </content>
         </li>
     </ul>
     {/if}
@@ -163,14 +171,16 @@
                         {if="$all"}expand_less{else}expand_more{/if}
                     </i>
                 </span>
-                <p class="normal line">
-                    {if="$all"}
-                        {$c->__('rooms.hide_disconnected')}
-                    {else}
-                        {$c->__('rooms.show_all')}
-                    {/if}
-                    <span class="second">{$disconnected} <i class="material-icons">people</i></span>
-                </p>
+                <content>
+                    <p class="normal line">
+                        {if="$all"}
+                            {$c->__('rooms.hide_disconnected')}
+                        {else}
+                            {$c->__('rooms.show_all')}
+                        {/if}
+                        <span class="second">{$disconnected} <i class="material-icons">people</i></span>
+                    </p>
+                </content>
             </li>
         {/if}
     </ul>

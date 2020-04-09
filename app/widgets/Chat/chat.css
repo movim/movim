@@ -34,7 +34,6 @@ main:not(.enabled) #chat_widget {
 }
 
 #chat_widget .contained section {
-    padding-bottom: 1rem;
     max-width: 100rem;
     margin: 0 auto;
 }
@@ -43,9 +42,31 @@ main:not(.enabled) #chat_widget {
 
 #chat_widget ul.list.actions {
     right: 0;
-    padding: 1rem;
+    bottom: 7rem;
     position: absolute;
-    transform: translate(0, -100%);
+    opacity: 0;
+    transform: translateY(5%) scaleY(0.98);
+    transition: transform 0.2s, opacity 0.2s;
+    pointer-events: none;
+}
+
+#chat_widget span.control.enabled + ul.list.actions {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+    pointer-events: initial;
+}
+
+#chat_widget ul.list.actions > li > content > p {
+    border-radius: 0.65rem;
+    line-height: 4rem;
+    padding: 0 1.25rem;
+    font-size: 1.75rem;
+    float: right;
+}
+
+#chat_widget ul.list.actions > li > span.control,
+#chat_widget ul.list.actions > li > content > p {
+    box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.23);
 }
 
 /* Scroll button */
@@ -77,38 +98,22 @@ main:not(.enabled) #chat_widget {
     max-width: 100%;
 }
 
-#chat_widget .chat_box.compose ul.list li > .control.upload ~ form,
-#chat_widget .chat_box form {
-    margin-right: 5rem;
-    padding-left: 7rem;
-    padding-right: 1rem;
-}
-
 #chat_widget .chat_box form > div {
     min-height: 0;
 }
 
 #chat_widget .chat_box form textarea {
-    padding: 0 0 1rem;
-    margin-top: 3rem;
+    /*padding: 0 0 1rem;*/
+    margin-top: -1.5rem;
     margin-bottom: -0.5rem;
     max-height: 50vh;
     overflow-y: auto;
 }
 
 #chat_widget .chat_box span.primary,
-#chat_widget .chat_box span.control:not(.button) {
+#chat_widget .chat_box span.control:not(.button):not(.color) {
     font-size: 3.5rem;
     color: rgba(var(--movim-font), 0.68);
-}
-
-#chat_widget .chat_box span.primary {
-    left: 0.5rem;
-}
-
-body[dir="rtl"] #chat_widget .chat_box span.primary {
-    right: 0.5rem;
-    left: 0;
 }
 
 #chat_widget .chat_box span.control:not(.button) i {
@@ -125,7 +130,8 @@ body[dir="rtl"] #chat_widget .chat_box span.primary {
 }
 
 #chat_widget .chat_box > ul.list > li {
-    padding: 0.01rem 0;
+    min-height: 0;
+    padding: 0 0.5rem;
 }
 
 #chat_widget .chat_box > ul.list > li > .control.control.send {
@@ -140,7 +146,6 @@ body[dir="rtl"] #chat_widget .chat_box span.primary {
 }
 
 #chat_widget .chat_box.compose > ul.list > li > ul.list.actions,
-#chat_widget .chat_box > ul.list > li > .control.attach:not(.enabled) ~ ul.list.actions,
 #chat_widget .chat_box:not(.compose) > ul.list > li > .control.attach ~ .control.send,
 #chat_widget .chat_box.compose > ul.list > li > .control.attach ~ .control:not(.send),
 #chat_widget .chat_box.compose > ul.list > li > .control:not(.send) {
@@ -154,12 +159,8 @@ body[dir="rtl"] #chat_widget .chat_box span.primary {
     }
 }
 
-#chat_widget section ul.list li span.primary.icon.bubble {
-    left: 1rem;
-}
-
-#chat_widget section ul.list li.oppose span.control.icon.bubble {
-    right: 1rem;
+#chat_widget section ul.list li.oppose {
+    flex-direction: row-reverse;
 }
 
 #chat_widget .contained ul {
@@ -167,29 +168,30 @@ body[dir="rtl"] #chat_widget .chat_box span.primary {
 }
 
 /* Emojis */
+
 #chat_widget .chat_box .emojis:not(:empty) {
     text-align: center;
     margin-top: 0.25rem;
-    margin-bottom: -0.75rem;
     max-height: 10.5rem;
     overflow: hidden;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 #chat_widget .chat_box .emojis img {
     display: inline-block;
-    width: 3rem;
-    height: 3rem;
     padding: 1rem;
     border-radius: 0.25rem;
     margin: 0;
+    flex: 0 0 5rem;
+    height: 5rem;
+    box-sizing: border-box;
 }
 
 #chat_widget .chat_box .emojis img:hover,
 #chat_widget .chat_box .emojis img.selected {
     cursor: pointer;
     background-color: rgba(var(--movim-font), 0.05);
-    width: 4rem;
-    height: 4rem;
     padding: 0.5rem;
 }
 
@@ -200,7 +202,8 @@ body[dir="rtl"] #chat_widget .chat_box span.primary {
 }
 
 #chat_widget div:not(.chat_box) li span.icon:not(.thumb) { /** .thumb is for cards **/
-    top: 3.25rem;
+    align-self: flex-start;
+    margin: 0;
 }
 
 #chat_widget li img:not(.emoji):not(.hfr) {
@@ -240,11 +243,13 @@ body[dir="rtl"] #chat_widget .chat_box span.primary {
 #chat_widget .contained:not(.muc) ul li.oppose + li.oppose .bubble::before,
 #chat_widget .contained:not(.muc) ul li:not(.oppose):not(.separator):not(.date) + li:not(.oppose) > span.icon,
 #chat_widget .contained:not(.muc) ul li:not(.oppose):not(.separator):not(.date) + li:not(.oppose) .bubble::before {
-    display: none;
+    /*display: none;*/
+    opacity: 0;
 }
 
 #chat_widget .contained section > ul > li {
     animation: fadein 0.2s;
+    padding: 0 1rem;
 }
 
 #chat_widget ul ~ .placeholder {
@@ -334,11 +339,11 @@ table.emojis td:hover {
     display: inline-flex;
     position: absolute;
     left: 100%;
-    transform: translate(-2.4rem, -0.5rem);
+    transform: translate(-0.5rem, -0.5rem);
 }
 
 #chat_widget li.oppose .bubble:not(.sticker) div:hover span.actions {
-    transform: translate(-9.45rem, -0.5rem);
+    transform: translate(-0.5rem, -0.5rem);
 }
 
 #chat_widget li:not(.oppose) .bubble.sticker div:hover ul.reactions:empty + span.reaction {

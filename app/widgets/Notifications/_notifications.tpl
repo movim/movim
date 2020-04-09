@@ -2,10 +2,12 @@
     {if="!empty($invitations)"}
     <ul class="list">
         <li class="subheader">
-            <p>
-                <span class="info">{$invitations|count}</span>
-                {$c->__('invitations.title')}
-            </p>
+            <content>
+                <p>
+                    <span class="info">{$invitations|count}</span>
+                    {$c->__('invitations.title')}
+                </p>
+            </content>
         </li>
     </ul>
     <ul class="list middle divided spaced">
@@ -30,10 +32,12 @@
                 <span class="control icon gray active" onclick="MovimUtils.redirect('{$c->route('contact', $value->jid)}')">
                     <i class="material-icons">person</i>
                 </span>
-                <p class="line normal">
-                    {$c->__('invitations.wants_to_talk', $value->truename)}
-                </p>
-                <p class="line">{$value->jid}</p>
+                <content>
+                    <p class="line normal">
+                        {$c->__('invitations.wants_to_talk', $value->truename)}
+                    </p>
+                    <p class="line">{$value->jid}</p>
+                </content>
             </li>
         {/loop}
     </ul>
@@ -42,9 +46,9 @@
     {if="$notifs->isNotEmpty()"}
     <ul class="list active">
         <li class="subheader">
-            <p>
-                {$c->__('notifs.title')}
-            </p>
+            <content>
+                <p>{$c->__('notifs.title')}</p>
+            </content>
         </li>
 
         {$old = null}
@@ -93,20 +97,22 @@
                         </span>
                     {/if}
 
-                    <p class="line" onclick="MovimUtils.redirect('{$c->route('post', [$parent->server, $parent->node, $parent->nodeid])}')">
-                        {$value->truename}
-                        <span class="second">
-                            {$parent->title}
-                        </span>
-                    </p>
-                    <p class="line" onclick="MovimUtils.redirect('{$c->route('post', [$parent->server, $parent->node, $parent->nodeid])}')">
-                        <span class="info">{$value->published|strtotime|prepareDate:true,true}</span>
-                        {if="!$value->isLike()"}
-                            {$c->__('post.commented')}<span class="second">{$value->title}</span>
-                        {else}
-                            {$c->__('post.liked')}
-                        {/if}
-                    </p>
+                    <content>
+                        <p class="line" onclick="MovimUtils.redirect('{$c->route('post', [$parent->server, $parent->node, $parent->nodeid])}')">
+                            {$value->truename}
+                            <span class="second">
+                                {$parent->title}
+                            </span>
+                        </p>
+                        <p class="line" onclick="MovimUtils.redirect('{$c->route('post', [$parent->server, $parent->node, $parent->nodeid])}')">
+                            <span class="info">{$value->published|strtotime|prepareDate:true,true}</span>
+                            {if="!$value->isLike()"}
+                                {$c->__('post.commented')}<span class="second">{$value->title}</span>
+                            {else}
+                                {$c->__('post.liked')}
+                            {/if}
+                        </p>
+                    </content>
                 </li>
                 {$old = $value->parent_id}
             {/if}

@@ -1,5 +1,8 @@
 <br /><hr /><br/>
-<h3>{$c->__('config.mam')}</h3>
+
+<ul class="list fill">
+    <li class="subheader"><content><p>{$c->__('config.mam')}</p></content></li>
+</ul>
 
 <form>
     <div>
