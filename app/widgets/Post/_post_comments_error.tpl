@@ -3,9 +3,9 @@
         <span class="primary icon gray">
             <i class="material-icons">comment</i>
         </span>
-        <p class="normal">
-            {$c->__('post.comments_disabled')}
-        </p>
+        <content>
+            <p class="normal">{$c->__('post.comments_disabled')}</p>
+        </content>
     </li>
 
     <li class="block">

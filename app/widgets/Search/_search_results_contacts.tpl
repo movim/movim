@@ -26,14 +26,16 @@
                 <i class="material-icons">person</i>
             </span>
 
-            <p class="normal line">
-                {$value->truename}
-            </p>
-            {if="!empty($value->description)"}
-                <p class="line" title="{$value->description|strip_tags}">
-                    {$value->description|strip_tags|truncate:80}
+            <content>
+                <p class="normal line">
+                    {$value->truename}
                 </p>
-            {/if}
+                {if="!empty($value->description)"}
+                    <p class="line" title="{$value->description|strip_tags}">
+                        {$value->description|strip_tags|truncate:80}
+                    </p>
+                {/if}
+            </content>
         </li>
     {/loop}
 </ul>

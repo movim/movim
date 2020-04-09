@@ -25,14 +25,16 @@
         <span class="control icon active gray" onclick="SendTo_ajaxSend('{$value->jid}', {'uri': '{$uri}'}, false, '{$openlink}')">
             <i class="material-icons">send</i>
         </span>
-        <p class="normal line">{$value->truename}</p>
-        <p>
-            {$value->jid}
-            {if="$value->group"}
-                <span class="tag color {$value->group|stringToColor}">
-                    {$value->group}
-                </span>
-            {/if}
-        </p>
+        <content>
+            <p class="normal line">{$value->truename}</p>
+            <p>
+                {$value->jid}
+                {if="$value->group"}
+                    <span class="tag color {$value->group|stringToColor}">
+                        {$value->group}
+                    </span>
+                {/if}
+            </p>
+        </content>
     </li>
 {/loop}

@@ -9,20 +9,22 @@
                     <i class="material-icons">link</i>
                 {/if}
             </span>
-            <p class="normal line">
-                <a target="_blank" href="{$value->href}" title="{$value->href}">
-                    {if="isset($value->title)"}
-                        {$value->title}
-                    {else}
-                        {$value->href}
-                    {/if}
-                </a>
-            </p>
-            {if="$value->description"}
-                <p title="{$value->description}">{$value->description}</p>
-            {else}
-                <p>{$value->url.host}</p>
-            {/if}
+            <content>
+                <p class="normal line">
+                    <a target="_blank" href="{$value->href}" title="{$value->href}">
+                        {if="isset($value->title)"}
+                            {$value->title}
+                        {else}
+                            {$value->href}
+                        {/if}
+                    </a>
+                </p>
+                {if="$value->description"}
+                    <p title="{$value->description}">{$value->description}</p>
+                {else}
+                    <p>{$value->url.host}</p>
+                {/if}
+            </content>
         </li>
     {/if}
 {/loop}
@@ -32,17 +34,19 @@
         <span class="primary icon gray">
             <span class="material-icons">attach_file</span>
         </span>
-        <p class="normal line">
-            <a
-                href="{$value->href}"
-                class="enclosure"
-                {if="isset($value->type)"}
-                    type="{$value->type}"
-                {/if}
-                target="_blank">
-                {$value->href|urldecode}
-            </a>
-        </p>
+        <content>
+            <p class="normal line">
+                <a
+                    href="{$value->href}"
+                    class="enclosure"
+                    {if="isset($value->type)"}
+                        type="{$value->type}"
+                    {/if}
+                    target="_blank">
+                    {$value->href|urldecode}
+                </a>
+            </p>
+        </content>
     </li>
 {/loop}
 </ul>

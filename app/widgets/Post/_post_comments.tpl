@@ -6,20 +6,22 @@
             <span class="primary icon red">
                 <i class="material-icons">favorite</i>
             </span>
-            <p>{$post->likes->count()}</span> {$c->__('button.like')}</p>
-            <p class="all">
-                {loop="$post->likes"}
-                    {if="$public"}
-                        {$value->truename}
-                    {else}
-                        {if="$value->isMine()"}
-                            {$liked = [$value->server, $value->node, $value->nodeid]}
-                        {/if}
-                        <a title="{$value->published|strtotime|prepareDate:true,true}"
-                           href="{$c->route('contact', $value->aid)}">
-                            {$value->truename}</a>{/if}{if="$key + 1 < $post->likes->count()"},{/if}
-                {/loop}
-            </p>
+            <content>
+                <p>{$post->likes->count()}</span> {$c->__('button.like')}</p>
+                <p class="all">
+                    {loop="$post->likes"}
+                        {if="$public"}
+                            {$value->truename}
+                        {else}
+                            {if="$value->isMine()"}
+                                {$liked = [$value->server, $value->node, $value->nodeid]}
+                            {/if}
+                            <a title="{$value->published|strtotime|prepareDate:true,true}"
+                               href="{$c->route('contact', $value->aid)}">
+                                {$value->truename}</a>{/if}{if="$key + 1 < $post->likes->count()"},{/if}
+                    {/loop}
+                </p>
+            </content>
         </li>
     </ul>
 {/if}
@@ -27,9 +29,11 @@
 <ul class="list divided spaced middle">
     {if="$post->comments->count() > 0"}
         <li class="subheader center">
-            <p>
-                <span class="info">{$post->comments->count()}</span> {$c->__('post.comments')}
-            </p>
+            <content>
+                <p>
+                    <span class="info">{$post->comments->count()}</span> {$c->__('post.comments')}
+                </p>
+            </content>
         </li>
     {/if}
 
@@ -77,29 +81,31 @@
                     {/if}
                 </span>
             {/if}
-            <p class="normal line">
-                <span class="info" title="{$value->published|strtotime|prepareDate}">
-                    {$value->published|strtotime|prepareDate:true,true}
-                </span>
-                {if="$public"}
-                    {$value->truename}
-                {else}
-                    <a href="{$c->route('contact', $value->aid)}">
+            <content>
+                <p class="normal line">
+                    <span class="info" title="{$value->published|strtotime|prepareDate}">
+                        {$value->published|strtotime|prepareDate:true,true}
+                    </span>
+                    {if="$public"}
                         {$value->truename}
-                    </a>
-                {/if}
-            </p>
-            <p class="all">
-                {if="$value->contentraw"}
-                    {autoescape="off"}
-                        {$value->contentraw|addHashtagsLinks|addHFR|prepareString}
-                    {autoescape/}
-                {else}
-                    {autoescape="off"}
-                        {$value->title|addUrls|addHashtagsLinks|nl2br|prepareString}
-                    {/autoescape}
-                {/if}
-            </p>
+                    {else}
+                        <a href="{$c->route('contact', $value->aid)}">
+                            {$value->truename}
+                        </a>
+                    {/if}
+                </p>
+                <p class="all">
+                    {if="$value->contentraw"}
+                        {autoescape="off"}
+                            {$value->contentraw|addHashtagsLinks|addHFR|prepareString}
+                        {autoescape/}
+                    {else}
+                        {autoescape="off"}
+                            {$value->title|addUrls|addHashtagsLinks|nl2br|prepareString}
+                        {/autoescape}
+                    {/if}
+                </p>
+            </content>
         </li>
         {/if}
     {/loop}
@@ -126,27 +132,29 @@
     </li>
 
     <li>
-        <p class="center">
-            {if="$liked"}
-                <button class="button red flat"
-                    id="like"
-                    onclick="this.classList.add('disabled'); PostActions_ajaxDeleteConfirm('{$liked[0]}', '{$liked[1]}', '{$liked[2]}')">
-                    <i class="material-icons">favorite_border</i>
+        <content>
+            <p class="center">
+                {if="$liked"}
+                    <button class="button red flat"
+                        id="like"
+                        onclick="this.classList.add('disabled'); PostActions_ajaxDeleteConfirm('{$liked[0]}', '{$liked[1]}', '{$liked[2]}')">
+                        <i class="material-icons">favorite_border</i>
+                    </button>
+                {else}
+                    <button class="button red flat"
+                        id="like"
+                        onclick="this.classList.add('disabled'); PostActions_ajaxLike('{$post->server}', '{$post->node}', '{$post->nodeid}')">
+                        <i class="material-icons">favorite</i> {$c->__('button.like')}
+                    </button>
+                {/if}
+                <button class="button flat gray" onclick="Post.comment()">
+                    <i class="material-icons">comment</i> {$c->__('post.comment_add')}
                 </button>
-            {else}
-                <button class="button red flat"
-                    id="like"
-                    onclick="this.classList.add('disabled'); PostActions_ajaxLike('{$post->server}', '{$post->node}', '{$post->nodeid}')">
-                    <i class="material-icons">favorite</i> {$c->__('button.like')}
-                </button>
-            {/if}
-            <button class="button flat gray" onclick="Post.comment()">
-                <i class="material-icons">comment</i> {$c->__('post.comment_add')}
-            </button>
-            <a class="button flat gray" onclick="SendTo_ajaxSendSearch('{$post->getRef()}')">
-                <i class="material-icons">send</i> {$c->__('button.share')}
-            </a>
-        </p>
+                <a class="button flat gray" onclick="SendTo_ajaxSendSearch('{$post->getRef()}')">
+                    <i class="material-icons">send</i> {$c->__('button.share')}
+                </a>
+            </p>
+        </content>
     </li>
     {/if}
 </ul>

@@ -1,7 +1,9 @@
 {if="$gateways->isNotEmpty()"}
 <ul class="list active middle divided">
     <li class="subheader">
-        <p>{$c->__('account.gateway_title')}</p>
+        <content>
+            <p>{$c->__('account.gateway_title')}</p>
+        </content>
     </li>
     {loop="$gateways"}
     <li onclick="Account_ajaxGetRegistration('{$value->server}')">
@@ -12,8 +14,10 @@
         <span class="control icon gray">
             <i class="material-icons">chevron_right</i>
         </span>
-        <p>{$value->name}</p>
-        <p>{$value->server}</p>
+        <content>
+            <p>{$value->name}</p>
+            <p>{$value->server}</p>
+        </content>
     </li>
     {/loop}
 </ul>

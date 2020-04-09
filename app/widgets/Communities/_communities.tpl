@@ -1,11 +1,13 @@
 {if="$tags->isNotEmpty()"}
     <ul class="list">
         <li>
-            <p class="line normal">
-                {loop="$tags"}
-                    <a class="button flat narrow" href="{$c->route('tag', $value->name)}">#{$value->name}</a>
-                {/loop}
-            </p>
+            <content>
+                <p class="line normal">
+                    {loop="$tags"}
+                        <a class="button flat narrow" href="{$c->route('tag', $value->name)}">#{$value->name}</a>
+                    {/loop}
+                </p>
+            </content>
         </li>
     </ul>
 {/if}
@@ -13,7 +15,9 @@
 {if="!$communities->isEmpty()"}
 <ul class="list middle flex third active all">
     <li class="subheader block large">
-        <p>{$c->__('communities.interesting')}</p>
+        <content>
+            <p>{$c->__('communities.interesting')}</p>
+        </content>
     </li>
     {loop="$communities"}
         <li
@@ -35,21 +39,23 @@
             <span class="control icon gray">
                 <i class="material-icons">chevron_right</i>
             </span>
-            <p class="line normal">
-                {if="$value->name"}
-                    {$value->name}
-                {else}
-                    {$value->node}
-                {/if}
-                {if="$value->description"}
-                    <span class="second">
-                        {$value->description|strip_tags}
-                    </span>
-                {/if}
-            </p>
-            <p class="line">
-                {$value->server} / {$value->node}
-            </p>
+            <content>
+                <p class="line normal">
+                    {if="$value->name"}
+                        {$value->name}
+                    {else}
+                        {$value->node}
+                    {/if}
+                    {if="$value->description"}
+                        <span class="second">
+                            {$value->description|strip_tags}
+                        </span>
+                    {/if}
+                </p>
+                <p class="line">
+                    {$value->server} / {$value->node}
+                </p>
+            </content>
         </li>
     {/loop}
 </ul>

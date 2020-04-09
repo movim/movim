@@ -2,13 +2,15 @@
     {$url = $contact->getPhoto('l')}
     <ul class="list thick">
         <li>
-            {if="$url"}
-                <p class="center">
-                    <img src="{$url}">
-                </p>
-            {/if}
-            <p class="normal center">{$contact->truename}</p>
-            <p class="center">{$c->__('visio.calling')}</p>
+            <content>
+                {if="$url"}
+                    <p class="center">
+                        <img src="{$url}">
+                    </p>
+                {/if}
+                <p class="normal center">{$contact->truename}</p>
+                <p class="center">{$c->__('visio.calling')}</p>
+            </content>
         </li>
     </ul>
 </section>

@@ -1,5 +1,9 @@
 {if="$contacts->isNotEmpty()"}
-    <li class="subheader"><p>{$c->__('page.contacts')}</p></li>
+    <li class="subheader">
+        <content>
+            <p>{$c->__('page.contacts')}</p>
+        </content>
+    </li>
     {loop="$contacts"}
         <li
             id="{$value->jid|cleanupId}"
@@ -28,45 +32,47 @@
                     <i class="material-icons">person</i>
                 </span>
             {/if}
-            <span class="control icon active gray" onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}')">
-                <i class="material-icons">person</i>
-            </span>
-            <span class="control icon active gray" onclick="Search.chat('{$value->jid|echapJS}')">
-                <i class="material-icons">comment</i>
-            </span>
             {if="$value->presence && $value->presence->capability && $value->presence->capability->isJingle()"}
                 <span title="{$c->__('button.call')}" class="control icon active gray"
                         onclick="VisioLink.openVisio('{$value->presence->jid . '/' . $value->presence->resource}');">
                     <i class="material-icons">phone</i>
                 </span>
             {/if}
-            <p class="normal line">
-                {$value->truename}
-                {if="$value->presence && $value->presence->capability"}
-                    <span class="second" title="{$value->presence->capability->name}">
-                        <i class="material-icons">{$value->presence->capability->getDeviceIcon()}</i>
-                    </span>
-                {/if}
+            <span class="control icon active gray" onclick="Search.chat('{$value->jid|echapJS}')">
+                <i class="material-icons">comment</i>
+            </span>
+            <span class="control icon active gray" onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}')">
+                <i class="material-icons">person</i>
+            </span>
+            <content>
+                <p class="normal line">
+                    {$value->truename}
+                    {if="$value->presence && $value->presence->capability"}
+                        <span class="second" title="{$value->presence->capability->name}">
+                            <i class="material-icons">{$value->presence->capability->getDeviceIcon()}</i>
+                        </span>
+                    {/if}
 
-                {if="!in_array($value->subscription, ['', 'both'])"}
-                    <span class="second">
-                        {if="$value->subscription == 'to'"}
-                            <i class="material-icons">arrow_upward</i>
-                        {elseif="$value->subscription == 'from'"}
-                            <i class="material-icons">arrow_downward</i>
-                        {else}
-                            <i class="material-icons">block</i>
-                        {/if}
+                    {if="!in_array($value->subscription, ['', 'both'])"}
+                        <span class="second">
+                            {if="$value->subscription == 'to'"}
+                                <i class="material-icons">arrow_upward</i>
+                            {elseif="$value->subscription == 'from'"}
+                                <i class="material-icons">arrow_downward</i>
+                            {else}
+                                <i class="material-icons">block</i>
+                            {/if}
+                        </span>
+                    {/if}
+                </p>
+                {if="$value->group"}
+                <p>
+                    <span class="tag color {$value->group|stringToColor}">
+                        {$value->group}
                     </span>
+                </p>
                 {/if}
-            </p>
-            {if="$value->group"}
-            <p>
-                <span class="tag color {$value->group|stringToColor}">
-                    {$value->group}
-                </span>
-            </p>
-            {/if}
+            </content>
         </li>
     {/loop}
 
@@ -75,10 +81,12 @@
             <span class="primary icon gray">
                 <i class="material-icons">expand_more</i>
             </span>
-            <p class="normal line">
-                {$c->__('search.show_complete_roster')}
-                <span class="second">{$contacts->count()} <i class="material-icons">people</i></span>
-            </p>
+            <content>
+                <p class="normal line">
+                    {$c->__('search.show_complete_roster')}
+                    <span class="second">{$contacts->count()} <i class="material-icons">people</i></span>
+                </p>
+            </content>
         </li>
     {/if}
 {else}
@@ -87,8 +95,10 @@
             <span class="primary icon blue">
                 <i class="material-icons">help</i>
             </span>
-            <p>{$c->__('search.no_contacts_title')}</p>
-            <p>{$c->__('search.no_contacts_text')}</p>
+            <content>
+                <p>{$c->__('search.no_contacts_title')}</p>
+                <p>{$c->__('search.no_contacts_text')}</p>
+            </content>
         </li>
     </ul>
 {/if}

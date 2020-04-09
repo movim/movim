@@ -32,7 +32,9 @@
                 <span class="control icon">
                     <i class="material-icons">chevron_right</i>
                 </span>
-                <p class="normal line">{$c->__('privacy.my_profile')}</p>
+                <content>
+                    <p class="normal line">{$c->__('privacy.my_profile')}</p>
+                </content>
             </li>
         </a>
         <a href="{$c->route('blog', $jid)}" target="_blank" class="block">
@@ -43,7 +45,9 @@
                 <span class="control icon">
                     <i class="material-icons">chevron_right</i>
                 </span>
-                <p class="normal line">{$c->__('hello.blog_title')}</p>
+                <content>
+                    <p class="normal line">{$c->__('hello.blog_title')}</p>
+                </content>
             </li>
         </a>
     </ul>
@@ -61,18 +65,20 @@
 
     <ul class="list thick">
         <li class="block">
-            <p class="center">
-                <a class="button flat {if="$page == 0"}disabled{/if}" href="{$previous}">
-                    <i class="material-icons">keyboard_arrow_left</i>
-                    {$c->__('button.previous')}
-                </a>
-                {if="count($items) == $paging"}
-                    <a class="button flat" href="{$next}" title="{$c->__('post.older')}">
-                        {$c->__('button.next')}
-                        <i class="material-icons">keyboard_arrow_right</i>
+            <content>
+                <p class="center">
+                    <a class="button flat {if="$page == 0"}disabled{/if}" href="{$previous}">
+                        <i class="material-icons">keyboard_arrow_left</i>
+                        {$c->__('button.previous')}
                     </a>
-                {/if}
-            </p>
+                    {if="count($items) == $paging"}
+                        <a class="button flat" href="{$next}" title="{$c->__('post.older')}">
+                            {$c->__('button.next')}
+                            <i class="material-icons">keyboard_arrow_right</i>
+                        </a>
+                    {/if}
+                </p>
+            </content>
         </li>
     </ul>
 

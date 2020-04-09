@@ -3,15 +3,19 @@
     <br />
     <ul class="list thick">
         <li>
-            <p></p>
-            <p class="center">{$c->__('confirm.description')}</p>
+            <content>
+                <p></p>
+                <p class="center">{$c->__('confirm.description')}</p>
+            </content>
             <h3>{$url}</h3>
         </li>
         <li>
-            <p></p>
-            <p class="center">
-                {$c->__('confirm.code')}
-            </p>
+            <content>
+                <p></p>
+                <p class="center">
+                    {$c->__('confirm.code')}
+                </p>
+            </content>
             <h3>{$id}</h3>
         </li>
     </ul>

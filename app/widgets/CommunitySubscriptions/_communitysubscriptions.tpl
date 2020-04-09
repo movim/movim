@@ -15,9 +15,9 @@
                     <span class="control icon gray">
                         <i class="material-icons">chevron_right</i>
                     </span>
-                    <p>
-                        {$value->server}
-                    </p>
+                    <content>
+                        <p>{$value->server}</p>
+                    </content>
                 </li>
             {/if}
             <li
@@ -43,16 +43,18 @@
                 <span class="control icon gray">
                     <i class="material-icons">chevron_right</i>
                 </span>
-                <p class="line normal">
-                    {if="$value->info && $value->info->name"}
-                        {$value->info->name}
-                    {else}
-                        {$value->node}
+                <content>
+                    <p class="line normal">
+                        {if="$value->info && $value->info->name"}
+                            {$value->info->name}
+                        {else}
+                            {$value->node}
+                        {/if}
+                    </p>
+                    {if="$value->info && $value->info->description"}
+                        <p class="line">{$value->info->description|strip_tags}</p>
                     {/if}
-                </p>
-                {if="$value->info && $value->info->description"}
-                    <p class="line">{$value->info->description|strip_tags}</p>
-                {/if}
+                </content>
             </li>
         {/loop}
     </ul>

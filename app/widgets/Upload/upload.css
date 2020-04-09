@@ -16,7 +16,7 @@
 
 #upload div.drop {
     width: auto;
-    margin: 2rem;
+    margin: 0 2rem;
     display: block;
     box-sizing: border-box;
     border-radius: 0.5rem;

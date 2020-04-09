@@ -1,8 +1,10 @@
 <div id="subscribe">
     <ul class="list thick">
         <li>
-            <p>{$c->__('subscribe.title')}</p>
-            <p>{$c->__('subscribe.info')}</p>
+            <content>
+                <p>{$c->__('subscribe.title')}</p>
+                <p>{$c->__('subscribe.info')}</p>
+            </content>
         </li>
     </ul>
 
@@ -14,23 +16,25 @@
                 <span class="primary icon bubble color {$config->xmppdomain|stringToColor}">
                     {$config->xmppdomain|firstLetterCapitalize}
                 </span>
-                <p>
-                    {if="!empty($config->xmppcountry)"}
-                        <span class="info">
-                            <img
-                                class="flag"
-                                title="{$config->xmppcountry}"
-                                alt="{$config->xmppc}"
-                                src="{$c->flagPath($config->xmppcountry)}"/>
-                        </span>
+                <content>
+                    <p>
+                        {if="!empty($config->xmppcountry)"}
+                            <span class="info">
+                                <img
+                                    class="flag"
+                                    title="{$config->xmppcountry}"
+                                    alt="{$config->xmppc}"
+                                    src="{$c->flagPath($config->xmppcountry)}"/>
+                            </span>
+                        {/if}
+                        {$config->xmppdomain}
+                    </p>
+                    {if="!empty($config->xmppdescription)"}
+                    <p>
+                        {$config->xmppdescription}<br />
+                    </p>
                     {/if}
-                    {$config->xmppdomain}
-                </p>
-                {if="!empty($config->xmppdescription)"}
-                <p>
-                    {$config->xmppdescription}<br />
-                </p>
-                {/if}
+                </content>
             </li>
         {/if}
         {loop="$servers"}
@@ -44,29 +48,33 @@
                     {$value->domain|firstLetterCapitalize}
                 {/if}
             </span>
-            <p>
-                <span class="info">
-                <img
-                    class="flag"
-                    title="{$value->geo_country}"
-                    alt="{$value->geo_country}"
-                    src="{$c->flagPath($value->geo_country)}"/>
-                </span>
-                {$value->domain}
-            </p>
-            <p>
-                {$value->description}<br />
-            </p>
+            <content>
+                <p>
+                    <span class="info">
+                    <img
+                        class="flag"
+                        title="{$value->geo_country}"
+                        alt="{$value->geo_country}"
+                        src="{$c->flagPath($value->geo_country)}"/>
+                    </span>
+                    {$value->domain}
+                </p>
+                <p>
+                    {$value->description}<br />
+                </p>
+            </content>
         </li>
         {/loop}
     </ul>
     <ul class="list thick">
         <li class="block">
-            <p></p>
-            <p>{$c->__('subscribe.server_question')}</p>
-            <p>
-                {$c->__('subscribe.server_contact')} • <a href="https://movim.eu/">https://movim.eu/</a>
-            </p>
+            <content>
+                <p></p>
+                <p>{$c->__('subscribe.server_question')}</p>
+                <p>
+                    {$c->__('subscribe.server_contact')} • <a href="https://movim.eu/">https://movim.eu/</a>
+                </p>
+            </content>
         </li>
     </ul>
 </div>

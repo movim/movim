@@ -39,10 +39,6 @@
                 {/if}
                 </span>
 
-            <span class="control icon show_context_menu active {if="!$conference->connected"}disabled{/if}">
-                <i class="material-icons">more_vert</i>
-            </span>
-
             {if="$conference && $conference->info && $conference->info->related"}
                 {$related = $conference->info->related}
                 <span
@@ -53,52 +49,58 @@
                 </span>
             {/if}
 
-            {if="$conference && $conference->name"}
-                <p class="line active" title="{$room|echapJS}" onclick="Rooms_ajaxShowSubject('{$room|echapJS}')">
-                    {$conference->name}
-                </p>
-            {else}
-                <p class="line active" onclick="Rooms_ajaxShowSubject('{$room|echapJS}')">
-                    {$room|echapJS}
-                </p>
-            {/if}
+            <span class="control icon show_context_menu active {if="!$conference->connected"}disabled{/if}">
+                <i class="material-icons">more_vert</i>
+            </span>
 
-            <p class="compose line" id="{$jid|cleanupId}-state"></p>
-            {if="$conference && !$conference->connected"}
-                <p>{$c->__('button.connecting')}…</p>
-            {elseif="$conference && $conference->subject"}
-                <p class="line active" title="{$conference->subject}" onclick="Rooms_ajaxShowSubject('{$room|echapJS}')">
-                    {if="$conference->info && $conference->info->mucpublic"}
-                        <span title="{$c->__('room.public_muc_text')}">
-                            {$c->__('room.public_muc')} <i class="material-icons">wifi_tethering</i>
-                        </span>
-                        ·
-                    {/if}
-                    {if="$conference->info && !$conference->info->mucsemianonymous"}
-                        <span title="{$c->__('room.nonanonymous_muc_text')}">
-                            {$c->__('room.nonanonymous_muc')} <i class="material-icons">face</i>
-                        </span>
-                        ·
-                    {/if}
-                    {$conference->subject}
-                </p>
-            {else}
-                <p class="line active" id="{$jid|cleanupId}-state" onclick="Rooms_ajaxShowSubject('{$room|echapJS}')">
-                    {if="$conference->info && $conference->info->mucpublic"}
-                        <span title="{$c->__('room.public_muc_text')}">
-                            {$c->__('room.public_muc')} <i class="material-icons">wifi_tethering</i>
-                        </span>
-                        ·
-                    {/if}
-                    {if="$conference->info && !$conference->info->mucsemianonymous"}
-                        <span title="{$c->__('room.nonanonymous_muc_text')}">
-                            {$c->__('room.nonanonymous_muc')} <i class="material-icons">face</i>
-                        </span>
-                        ·
-                    {/if}
-                    {$room|echapJS}
-                </p>
-            {/if}
+            <content>
+                {if="$conference && $conference->name"}
+                    <p class="line active" title="{$room|echapJS}" onclick="Rooms_ajaxShowSubject('{$room|echapJS}')">
+                        {$conference->name}
+                    </p>
+                {else}
+                    <p class="line active" onclick="Rooms_ajaxShowSubject('{$room|echapJS}')">
+                        {$room|echapJS}
+                    </p>
+                {/if}
+
+                <p class="compose line" id="{$jid|cleanupId}-state"></p>
+                {if="$conference && !$conference->connected"}
+                    <p>{$c->__('button.connecting')}…</p>
+                {elseif="$conference && $conference->subject"}
+                    <p class="line active" title="{$conference->subject}" onclick="Rooms_ajaxShowSubject('{$room|echapJS}')">
+                        {if="$conference->info && $conference->info->mucpublic"}
+                            <span title="{$c->__('room.public_muc_text')}">
+                                {$c->__('room.public_muc')} <i class="material-icons">wifi_tethering</i>
+                            </span>
+                            ·
+                        {/if}
+                        {if="$conference->info && !$conference->info->mucsemianonymous"}
+                            <span title="{$c->__('room.nonanonymous_muc_text')}">
+                                {$c->__('room.nonanonymous_muc')} <i class="material-icons">face</i>
+                            </span>
+                            ·
+                        {/if}
+                        {$conference->subject}
+                    </p>
+                {else}
+                    <p class="line active" id="{$jid|cleanupId}-state" onclick="Rooms_ajaxShowSubject('{$room|echapJS}')">
+                        {if="$conference->info && $conference->info->mucpublic"}
+                            <span title="{$c->__('room.public_muc_text')}">
+                                {$c->__('room.public_muc')} <i class="material-icons">wifi_tethering</i>
+                            </span>
+                            ·
+                        {/if}
+                        {if="$conference->info && !$conference->info->mucsemianonymous"}
+                            <span title="{$c->__('room.nonanonymous_muc_text')}">
+                                {$c->__('room.nonanonymous_muc')} <i class="material-icons">face</i>
+                            </span>
+                            ·
+                        {/if}
+                        {$room|echapJS}
+                    </p>
+                {/if}
+            </content>
         </li>
     </ul>
 
@@ -109,23 +111,33 @@
                     <span class="control icon">
                         <i class="material-icons">settings</i>
                     </span>
-                    <p class="line">{$c->__('chatroom.administration')}</p>
+                    <content>
+                        <p class="line">{$c->__('chatroom.administration')}</p>
+                    </content>
                 </li>
             {/if}
             {if="$conference->presence->mucrole == 'moderator'"}
                 <li onclick="Rooms_ajaxGetAvatar('{$room|echapJS}')">
-                    <p class="normal">{$c->__('page.avatar')}</p>
+                    <content>
+                        <p class="normal">{$c->__('page.avatar')}</p>
+                    </content>
                 </li>
                 <li onclick="Rooms_ajaxGetSubject('{$room|echapJS}')">
-                    <p class="normal">{$c->__('chatroom.subject')}</p>
+                    <content>
+                        <p class="normal">{$c->__('chatroom.subject')}</p>
+                    </content>
                 </li>
             {/if}
             {if="$conference->presence->mucaffiliation == 'owner'"}
                 <li onclick="Chat_ajaxGetRoomConfig('{$room|echapJS}')">
-                    <p class="normal">{$c->__('chatroom.administration')}</p>
+                    <content>
+                        <p class="normal">{$c->__('chatroom.administration')}</p>
+                    </content>
                 </li>
                 <li class="divided" onclick="Rooms_ajaxAskDestroy('{$room|echapJS}')">
-                    <p class="normal">{$c->__('button.destroy')}</p>
+                    <content>
+                        <p class="normal">{$c->__('button.destroy')}</p>
+                    </content>
                 </li>
             {/if}
         {/if}
@@ -141,30 +153,40 @@
             {else}
                 <li onclick="MovimUtils.reload('{$info->abuseaddresses[0]}')">
             {/if}
-                <p class="normal">{$c->__('chat.report_abuse')}</p>
+                <content>
+                    <p class="normal">{$c->__('chat.report_abuse')}</p>
+                </content>
             </li>
         {/if}
 
         <li class="divided" onclick="Rooms_ajaxAskInvite('{$room|echapJS}');">
-            <p class="normal">{$c->__('room.invite')}</p>
+            <content>
+                <p class="normal">{$c->__('room.invite')}</p>
+            </content>
         </li>
 
         <li onclick="Rooms_ajaxAdd('{$room|echapJS}');">
-            <p class="normal">{$c->__('chatroom.config')}</p>
+            <content>
+                <p class="normal">{$c->__('chatroom.config')}</p>
+            </content>
         </li>
         {if="!$anon"}
             <li onclick="Rooms_ajaxRemoveConfirm('{$room|echapJS}')">
-                <p class="normal">{$c->__('button.delete')}</p>
+                <content>
+                    <p class="normal">{$c->__('button.delete')}</p>
+                </content>
             </li>
         {/if}
 
         <li onclick="Rooms_ajaxExit('{$room|echapJS}'); {if="$anon"}Presence_ajaxLogout(){/if}">
-            <p class="normal">{$c->__('status.disconnect')}</p>
+            <content>
+                <p class="normal">{$c->__('status.disconnect')}</p>
+            </content>
         </li>
     </span>
     </ul>
     {else}
-    <ul class="list middle">
+    <ul class="list middle fill">
         <li id="chat_header">
             <span onclick="Chat_ajaxGet()" class="primary icon active">
                 <i class="material-icons">arrow_back</i>
@@ -190,10 +212,6 @@
                 </span>
             {/if}
 
-            <span class="control icon show_context_menu active">
-                <i class="material-icons">more_vert</i>
-            </span>
-
             <span
                 title="{$c->__('button.close')}"
                 class="control icon active"
@@ -201,28 +219,40 @@
                 <i class="material-icons">close</i>
             </span>
 
-            <p class="line active" onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')">
-                {if="$roster"}
-                    {$roster->truename}
-                {else}
-                    {$contact->truename}
-                {/if}
-            </p>
-            <p class="compose line active" id="{$jid|cleanupId}-state" onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')"></p>
-            <p class="line active" onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')">{$contact->jid}</p>
+            <span class="control icon show_context_menu active">
+                <i class="material-icons">more_vert</i>
+            </span>
+
+            <content>
+                <p class="line active" onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')">
+                    {if="$roster"}
+                        {$roster->truename}
+                    {else}
+                        {$contact->truename}
+                    {/if}
+                </p>
+                <p class="compose line active" id="{$jid|cleanupId}-state" onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')"></p>
+                <p class="line active" onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')">{$contact->jid}</p>
+            </content>
         </li>
     </ul>
     <ul class="list context_menu active">
         {if="!$contact->isFromMuc()"}
             <li onclick="MovimUtils.reload('{$c->route('contact', $contact->jid)}')">
-                <p class="normal">{$c->__('chat.profile')}</p>
+                <content>
+                    <p class="normal">{$c->__('chat.profile')}</p>
+                </content>
             </li>
         {/if}
         <li class="on_mobile" onclick="Chat.editPrevious()">
-            <p class="normal">{$c->__('chat.edit_previous')}</p>
+            <content>
+                <p class="normal">{$c->__('chat.edit_previous')}</p>
+            </content>
         </li>
         <li onclick="Chat_ajaxClearHistory('{$contact->jid|echapJS}')">
-            <p class="normal">{$c->__('chat.clear')}</p>
+            <content>
+                <p class="normal">{$c->__('chat.clear')}</p>
+            </content>
         </li>
         {if="!empty($info->abuseaddresses)"}
             {$parsed = parse_url($info->abuseaddresses[0])}
@@ -235,7 +265,9 @@
             {else}
                 <li onclick="MovimUtils.reload('{$info->abuseaddresses[0]}')">
             {/if}
-                <p class="normal">{$c->__('chat.report_abuse')}</p>
+                <content>
+                    <p class="normal">{$c->__('chat.report_abuse')}</p>
+                </content>
             </li>
         {/if}
     </ul>
@@ -247,7 +279,7 @@
         <i class="material-icons">expand_more</i>
     </a>
     <section id="{$jid|cleanupId}-messages">
-        <ul class="list middle spin" id="{$jid|cleanupId}-conversation"></ul>
+        <ul class="list spin" id="{$jid|cleanupId}-conversation"></ul>
         <div class="placeholder">
             <i class="material-icons">chat</i>
             <h1>{$c->__('chat.new_title')}</h1>
@@ -258,7 +290,7 @@
     </section>
 </div>
 <div class="chat_box">
-    <ul class="list">
+    <ul class="list thin fill">
         <li class="emojis"></li>
         <li class="{if="$muc && !$conference->connected"}disabled{/if}">
             <span class="primary icon gray primary_action" onclick="Stickers_ajaxShow('{$jid}')">
@@ -268,24 +300,30 @@
                 <span class="attach control icon" onclick="Chat.toggleAttach()">
                     <i class="material-icons">add_circle</i>
                 </span>
-                <ul class="list actions">
+                <ul class="list middle actions">
                     <li onclick="Chat.toggleAttach(); Snap.init()">
-                        <span class="button action control icon bubble color blue">
+                        <span class="control icon bubble color blue">
                             <i class="material-icons">camera_alt</i>
                         </span>
-                        <p class="normal line">Snap</p>
+                        <content>
+                            <p class="normal line">Snap</p>
+                        </content>
                     </li>
                     <li onclick="Chat.toggleAttach(); Draw.init()">
-                        <span class="button action control icon middle bubble color green">
+                        <span class="control icon middle bubble color green">
                             <i class="material-icons">gesture</i>
                         </span>
-                        <p class="normal line">{$c->__('draw.title')}</p>
+                        <content>
+                            <p class="normal line">{$c->__('draw.title')}</p>
+                        </content>
                     </li>
                     <li onclick="Chat.toggleAttach(); Upload_ajaxRequest()">
-                        <span class="button action control icon bubble color purple">
+                        <span class="control icon bubble color purple">
                             <i class="material-icons">attach_file</i>
                         </span>
-                        <p class="normal line">{$c->__('upload.title')}</p>
+                        <content>
+                            <p class="normal line">{$c->__('upload.title')}</p>
+                        </content>
                     </li>
                 </ul>
             {/if}

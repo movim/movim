@@ -28,7 +28,9 @@
             <style type="text/css">main {display: none;}</style>
             <ul class="list" style="color: white;">
                 <li>
-                    <p class="center"><?php echo __('global.no_js'); ?></p>
+                    <content>
+                        <p class="center"><?php echo __('global.no_js'); ?></p>
+                    </content>
                 </li>
             </ul>
         </noscript>
@@ -44,12 +46,14 @@
                     <span class="control icon gray">
                         <i class="material-icons">signal_cellular_off</i>
                     </span>
-                    <p class="normal">
-                        <?php echo __('error.websocket_connect'); ?>
-                    </p>
-                    <p class="normal">
-                        <?php echo __('error.websocket'); ?>
-                    </p>
+                    <content>
+                        <p class="normal">
+                            <?php echo __('error.websocket_connect'); ?>
+                        </p>
+                        <p class="normal">
+                            <?php echo __('error.websocket'); ?>
+                        </p>
+                    </content>
                 </li>
             </ul>
         </div>

@@ -6,7 +6,9 @@
     </div>
     <ul class="list middle active divided ">
         <li class="subheader">
-            <p>{$c->__('account.password_change_title')}</p>
+            <content>
+                <p>{$c->__('account.password_change_title')}</p>
+            </content>
         </li>
         <li>
             <span class="primary icon gray">
@@ -31,7 +33,9 @@
     </ul>
     <ul class="list middle active">
         <li class="subheader">
-            <p>{$c->__('account.clear')}</p>
+            <content>
+                <p>{$c->__('account.clear')}</p>
+            </content>
         </li>
         <li onclick="Account_ajaxClearAccount()">
             <span class="primary icon orange">
@@ -40,12 +44,16 @@
             <span class="control icon gray">
                 <i class="material-icons">chevron_right</i>
             </span>
-            <p class="normal line">{$c->__('account.clear')}</p>
+            <content>
+                <p class="normal line">{$c->__('account.clear')}</p>
+            </content>
         </li>
     </ul>
     <ul class="list middle active">
         <li class="subheader">
-            <p>{$c->__('account.delete')}</p>
+            <content>
+                <p>{$c->__('account.delete')}</p>
+            </content>
         </li>
         <li onclick="Account_ajaxRemoveAccount()">
             <span class="primary icon red">
@@ -54,7 +62,9 @@
             <span class="control icon gray">
                 <i class="material-icons">chevron_right</i>
             </span>
-            <p class="normal line">{$c->__('account.delete')}</p>
+            <content>
+                <p class="normal line">{$c->__('account.delete')}</p>
+            </content>
         </li>
     </ul>
 </div>

@@ -753,11 +753,11 @@ var Chat = {
                 bubble.querySelector('div.bubble').classList.add('moderator');
             }
 
-            if (data.mine) {
+            /*if (data.mine) {
                 icon = bubble.querySelector('span.control.icon');
-            } else {
+            } else {*/
                 icon = bubble.querySelector('span.primary.icon');
-            }
+            //}
 
             if (icon.querySelector('img') == undefined) {
                 if (data.icon_url) {

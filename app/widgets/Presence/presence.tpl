@@ -10,7 +10,9 @@
                 <i class="material-icons">person</i>
             </span>
         {/if}
-        <p class="line bold"><br /></p>
-        <p class="line"><br /></p>
+        <content>
+            <p class="line bold"><br /></p>
+            <p class="line"><br /></p>
+        </content>
     </li>
 </ul>

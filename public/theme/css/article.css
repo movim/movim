@@ -9,7 +9,11 @@ article header {
 }
 
 article footer {
-    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+article header ul:not(:first-child) {
+    padding: 0 1rem;
 }
 
 @media print {
@@ -33,6 +37,7 @@ article section.limited {
     display: block;
     max-height: 60rem;
     overflow: hidden;
+    margin: 0;
 }
 
 article section.limited:after {

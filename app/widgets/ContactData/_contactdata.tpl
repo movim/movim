@@ -4,12 +4,11 @@
 {if="$url"}
 <ul class="list middle">
     <li>
-        <span class="control active icon gray" onclick="ContactActions_ajaxGetDrawer('{$contact->id|echapJS}')">
-            <i class="material-icons">more_horiz</i>
-        </span>
-        <p class="center">
-            <img class="avatar" src="{$url}">
-        </p>
+        <content>
+            <p class="center">
+                <img class="avatar" src="{$url}">
+            </p>
+        </content>
     </li>
 </ul>
 {/if}
@@ -17,22 +16,24 @@
 <div class="block">
     <ul class="list middle">
         <li>
-            <p class="normal center	">
-                {$contact->truename}
-                {if="isset($roster) && isset($roster->presence)"}
-                    ·  {$roster->presence->presencetext}
-                {/if}
-            </p>
-            {if="$contact->email"}
-                <p class="center"><a href="mailto:{$contact->email}">{$contact->email}</a></p>
-            {/if}
-            {if="$contact->description != null && trim($contact->description) != ''"}
-                <p class="center all" title="{$contact->description}">
-                    {autoescape="off"}
-                        {$contact->description|nl2br}
-                    {/autoescape}
+            <content>
+                <p class="normal center	">
+                    {$contact->truename}
+                    {if="isset($roster) && isset($roster->presence)"}
+                        ·  {$roster->presence->presencetext}
+                    {/if}
                 </p>
-            {/if}
+                {if="$contact->email"}
+                    <p class="center"><a href="mailto:{$contact->email}">{$contact->email}</a></p>
+                {/if}
+                {if="$contact->description != null && trim($contact->description) != ''"}
+                    <p class="center all" title="{$contact->description}">
+                        {autoescape="off"}
+                            {$contact->description|nl2br}
+                        {/autoescape}
+                    </p>
+                {/if}
+            </content>
         </li>
         <!--<li>
             <span class="primary icon gray">
@@ -46,13 +47,15 @@
         <ul class="list thin">
             <li>
                 <span class="primary icon gray"><i class="material-icons">link</i></span>
-                <p class="normal line">
-                    {if="filter_var($contact->url, FILTER_VALIDATE_URL)"}
-                        <a href="{$contact->url}" target="_blank">{$contact->url}</a>
-                    {else}
-                        {$contact->url}
-                    {/if}
-                </p>
+                <content>
+                    <p class="normal line">
+                        {if="filter_var($contact->url, FILTER_VALIDATE_URL)"}
+                            <a href="{$contact->url}" target="_blank">{$contact->url}</a>
+                        {else}
+                            {$contact->url}
+                        {/if}
+                    </p>
+                </content>
             </li>
         </ul>
     {/if}
@@ -61,14 +64,16 @@
         <ul class="list middle">
             <li>
                 <span class="primary icon gray"><i class="material-icons">location_city</i></span>
-                {if="$contact->adrlocality != null"}
-                    <p class="normal">{$contact->adrlocality}</p>
-                {/if}
-                {if="$contact->adrcountry != null"}
-                    <p {if="$contact->adrlocality == null"}class="normal"{/if}>
-                        {$contact->adrcountry}
-                    </p>
-                {/if}
+                <content>
+                    {if="$contact->adrlocality != null"}
+                        <p class="normal">{$contact->adrlocality}</p>
+                    {/if}
+                    {if="$contact->adrcountry != null"}
+                        <p {if="$contact->adrlocality == null"}class="normal"{/if}>
+                            {$contact->adrcountry}
+                        </p>
+                    {/if}
+                </content>
             </li>
         </ul>
     {/if}
@@ -81,28 +86,32 @@
                     <span class="primary icon green">
                         <i class="material-icons">phone</i>
                     </span>
-                    <p class="normal">{$c->__('button.call')}</p>
+                    <content>
+                        <p class="normal">{$c->__('button.call')}</p>
+                    </content>
                 </li>
             {/if}
             <li onclick="ContactHeader_ajaxChat('{$contact->jid|echapJS}')">
                 <span class="primary icon gray">
                     <i class="material-icons">comment</i>
                 </span>
-                <p class="normal">
+                <content>
+                    <p class="normal">
+                        {if="isset($message)"}
+                            <span class="info" title="{$message->published|strtotime|prepareDate}">
+                                {$message->published|strtotime|prepareDate:true,true}
+                            </span>
+                        {/if}
+                        {$c->__('button.chat')}
+                    </p>
                     {if="isset($message)"}
-                        <span class="info" title="{$message->published|strtotime|prepareDate}">
-                            {$message->published|strtotime|prepareDate:true,true}
-                        </span>
+                        {if="preg_match('#^\?OTR#', $message->body)"}
+                            <p><i class="material-icons">lock</i> {$c->__('message.encrypted')}</p>
+                        {elseif="stripTags($message->body) != ''"}
+                            <p class="line">{$message->body|stripTags}</p>
+                        {/if}
                     {/if}
-                    {$c->__('button.chat')}
-                </p>
-                {if="isset($message)"}
-                    {if="preg_match('#^\?OTR#', $message->body)"}
-                        <p><i class="material-icons">lock</i> {$c->__('message.encrypted')}</p>
-                    {elseif="stripTags($message->body) != ''"}
-                        <p class="line">{$message->body|stripTags}</p>
-                    {/if}
-                {/if}
+                </content>
             </li>
         {/if}
         {if="$roster && !in_array($roster->subscription, ['', 'both'])"}
@@ -111,38 +120,43 @@
                     <span class="primary icon gray">
                         <i class="material-icons">arrow_upward</i>
                     </span>
-                    <p>{$c->__('subscription.to')}</p>
-                    <p>{$c->__('subscription.to_text')}</p>
-                    <p>
-                        <button class="button flat" onclick="ContactActions_ajaxAddAsk('{$contact->id|echapJS}')">
-                            {$c->__('subscription.to_button')}
-                        </button>
-                    </p>
+                    <content>
+                        <p>{$c->__('subscription.to')}</p>
+                        <p>{$c->__('subscription.to_text')}</p>
+                        <p>
+                            <button class="button flat" onclick="ContactActions_ajaxAddAsk('{$contact->id|echapJS}')">
+                                {$c->__('subscription.to_button')}
+                            </button>
+                        </p>
+                    </content>
                 {/if}
                 {if="$roster->subscription == 'from'"}
                     <span class="primary icon gray">
                         <i class="material-icons">arrow_downward</i>
                     </span>
-                    <p>{$c->__('subscription.from')}</p>
-                    <p>{$c->__('subscription.from_text')}</p>
-                    <p>
-                        <button class="button flat" onclick="ContactActions_ajaxAddAsk('{$contact->id|echapJS}')">
-                            {$c->__('subscription.from_button')}
-                        </button>
-                    </p>
+                    <content>
+                        <p>{$c->__('subscription.from')}</p>
+                        <p>{$c->__('subscription.from_text')}</p>
+                        <p>
+                            <button class="button flat" onclick="ContactActions_ajaxAddAsk('{$contact->id|echapJS}')">
+                                {$c->__('subscription.from_button')}
+                            </button>
+                        </p>
+                    </content>
                 {/if}
                 {if="$roster->subscription == 'none'"}
                     <span class="primary icon gray">
                         <i class="material-icons">block</i>
                     </span>
-
-                    <p>{$c->__('subscription.nil')}</p>
-                    <p>{$c->__('subscription.nil_text')}</p>
-                    <p>
-                        <button class="button flat" onclick="ContactActions_ajaxAddAsk('{$contact->id|echapJS}')">
-                            {$c->__('subscription.nil_button')}
-                        </button>
-                    </p>
+                    <content>
+                        <p>{$c->__('subscription.nil')}</p>
+                        <p>{$c->__('subscription.nil_text')}</p>
+                        <p>
+                            <button class="button flat" onclick="ContactActions_ajaxAddAsk('{$contact->id|echapJS}')">
+                                {$c->__('subscription.nil_button')}
+                            </button>
+                        </p>
+                    </content>
                 {/if}
             </li>
         {/if}
@@ -154,8 +168,10 @@
                 <span class="control icon">
                     <i class="material-icons">chevron_right</i>
                 </span>
-                <p></p>
-                <p class="normal">{$c->__('blog.visit')}</p>
+                <content>
+                    <p></p>
+                    <p class="normal">{$c->__('blog.visit')}</p>
+                </content>
             </li>
         </a>
     </ul>
@@ -164,10 +180,12 @@
 {if="count($subscriptions) > 0"}
     <ul class="list active large">
         <li class="subheader large">
-            <p>
-                <span class="info">{$subscriptions|count}</span>
-                {$c->__('page.communities')}
-            </p>
+            <content>
+                <p>
+                    <span class="info">{$subscriptions|count}</span>
+                    {$c->__('page.communities')}
+                </p>
+            </content>
         </li>
         {loop="$subscriptions"}
             <a href="{$c->route('community', [$value->server, $value->node])}">
@@ -188,18 +206,20 @@
                     <span class="control icon gray">
                         <i class="material-icons">chevron_right</i>
                     </span>
-                    <p class="line normal">
-                        {if="$value->info && $value->info->name"}
-                            {$value->info->name}
-                        {elseif="$value->name"}
-                            {$value->name}
-                        {else}
-                            {$value->node}
+                    <content>
+                        <p class="line normal">
+                            {if="$value->info && $value->info->name"}
+                                {$value->info->name}
+                            {elseif="$value->name"}
+                                {$value->name}
+                            {else}
+                                {$value->node}
+                            {/if}
+                        </p>
+                        {if="$value->info && $value->info->description"}
+                            <p class="line">{$value->info->description|strip_tags}</p>
                         {/if}
-                    </p>
-                    {if="$value->info && $value->info->description"}
-                        <p class="line">{$value->info->description|strip_tags}</p>
-                    {/if}
+                    </content>
                 </li>
             </a>
         {/loop}

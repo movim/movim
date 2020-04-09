@@ -25,18 +25,20 @@
             <span class="control icon gray">
                 <i class="material-icons">chevron_right</i>
             </span>
-            <p class="normal line">{$reply->title}</p>
-            <p>{$reply->getContent()|html_entity_decode|stripTags}</p>
-            <p>
-                {if="$reply->isMicroblog() && $reply->contact"}
-                    <i class="material-icons">people</i> {$reply->contact->truename}
-                {else}
-                    <i class="material-icons">group_work</i> {$reply->node}
-                {/if}
-                <span class="info">
-                    {$reply->published|strtotime|prepareDate:true,true}
-                </span>
-            </p>
+            <content>
+                <p class="normal line">{$reply->title}</p>
+                <p>{$reply->getContent()|html_entity_decode|stripTags}</p>
+                <p>
+                    {if="$reply->isMicroblog() && $reply->contact"}
+                        <i class="material-icons">people</i> {$reply->contact->truename}
+                    {else}
+                        <i class="material-icons">group_work</i> {$reply->node}
+                    {/if}
+                    <span class="info">
+                        {$reply->published|strtotime|prepareDate:true,true}
+                    </span>
+                </p>
+            </content>
         </li>
     </ul>
 {else}
@@ -45,7 +47,9 @@
             <span class="primary icon gray">
                 <i class="material-icons">reply</i>
             </span>
-            <p class="line normal">{$c->__('post.original_deleted')}</p>
+            <content>
+                <p class="line normal">{$c->__('post.original_deleted')}</p>
+            </content>
         </li>
     </ul>
 {/if}

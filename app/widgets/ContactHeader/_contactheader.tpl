@@ -1,5 +1,5 @@
-<ul class="list thick">
-    <li class="">
+<ul class="list middle">
+    <li>
         {if="$roster"}
             <span class="control icon active gray" onclick="ContactHeader_ajaxEditContact('{$contact->id|echapJS}')"
                 title="{$c->__('button.edit')}">
@@ -25,37 +25,25 @@
         <span class="primary icon active gray" onclick="history.back()">
             <i class="material-icons">arrow_back</i>
         </span>
-        <span class="control active icon gray on_mobile" onclick="ContactActions_ajaxGetDrawer('{$contact->id|echapJS}')">
-            <i class="material-icons">more_horiz</i>
-        </span>
-
-        <p class="line">
-            {$contact->truename}
-            {if="$roster && $roster->group"}
-                <span class="tag color {$roster->group|stringToColor}">{$roster->group}</span>
-            {/if}
-        </p>
-        <p class="line">
-            {$contact->id}
-        </p>
-    </li>
-</ul>
-
-{if="$contact->description != null && trim($contact->description) != ''"}
-<ul class="list">
-    <li class="on_mobile">
         {$url = $contact->getPhoto('m')}
         {if="$url"}
             <span class="primary icon bubble">
                 <img src="{$url}">
             </span>
         {/if}
-
-        <p class="normal all" style="max-height: 8.5rem; overflow: hidden; text-overflow: ellipsis;" title="{$contact->description}">
-            {autoescape="off"}
-                {$contact->description|nl2br}
-            {/autoescape}
-        </p>
+        <span class="control active icon gray" onclick="ContactActions_ajaxGetDrawer('{$contact->id|echapJS}')">
+            <i class="material-icons">more_horiz</i>
+        </span>
+        <content>
+            <p class="line">
+                {$contact->truename}
+                {if="$roster && $roster->group"}
+                    <span class="tag color {$roster->group|stringToColor}">{$roster->group}</span>
+                {/if}
+            </p>
+            <p class="line">
+                {$contact->id}
+            </p>
+        </content>
     </li>
 </ul>
-{/if}

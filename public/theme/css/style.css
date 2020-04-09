@@ -389,12 +389,12 @@ img.avatar:not([src=""]) + .placeholder {
 
 @media screen and (max-width: 800px) {
     .padded {
-        padding: 2rem;
+        padding: 1rem;
         box-sizing: border-box;
     }
 
     .padded_top_bottom {
-        padding: 0 2rem;
+        padding: 0 1rem;
         box-sizing: border-box;
     }
 }
@@ -460,6 +460,7 @@ div#spinner {
     display: inherit;
 }
 
+ul.list li.hide,
 .hide {
     display: none;
 }

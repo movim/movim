@@ -48,7 +48,9 @@
         {/loop}
     {/loop}
     <li class="subheader">
-        <p>{$c->__('button.add')}</p>
+        <content>
+            <p>{$c->__('button.add')}</p>
+        </content>
     </li>
     <li>
         <form name="addaffiliation">
@@ -83,12 +85,14 @@
                 </div>
                 <label for="role">Role</label>
             </div>
-            <p>
-                <a href="#" onclick="CommunityAffiliations.update('addaffiliation')"
-                   class="button green color">
-                    {$c->__('button.add')}
-                </a>
-            </p>
+            <content>
+                <p>
+                    <a href="#" onclick="CommunityAffiliations.update('addaffiliation')"
+                       class="button green color">
+                        {$c->__('button.add')}
+                    </a>
+                </p>
+            </content>
         </form>
     </li>
 </ul>

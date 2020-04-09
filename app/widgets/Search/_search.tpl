@@ -8,7 +8,7 @@
     <br />
 </section>
 <div id="searchbar">
-    <ul class="list">
+    <ul class="list fill">
         <li>
             <span class="primary icon gray">
                 <i class="material-icons">search</i>

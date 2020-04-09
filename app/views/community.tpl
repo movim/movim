@@ -20,17 +20,19 @@
             <header>
                 <ul class="list middle">
                     <li>
-                        <p class="center"><?php echo __('page.communities'); ?></p>
-                        <p class="center line"><?php echo __('communities.empty_text'); ?></p>
+                        <content>
+                            <p class="center"><?php echo __('page.communities'); ?></p>
+                            <p class="center line"><?php echo __('communities.empty_text'); ?></p>
+                        </content>
                     </li>
                 </ul>
             </header>
             <?php $this->widget('Tabs');?>
             <?php $this->widget('Communities'); ?>
-            <?php $this->widget('CommunitiesServers'); ?>
             <?php if (\App\User::me()->hasPubsub()) { ?>
                 <?php $this->widget('CommunitySubscriptions'); ?>
             <?php } ?>
+            <?php $this->widget('CommunitiesServers'); ?>
         </div>
     <?php } elseif (empty($_GET['n'])) { ?>
         <aside>

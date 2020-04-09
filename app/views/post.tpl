@@ -14,6 +14,8 @@
     <?php $this->widget('Navigation');?>
 </nav>
 
+<?php $this->widget('BottomNavigation');?>
+
 <main>
     <?php $this->widget('Post');?>
 </main>

@@ -17,7 +17,8 @@ var Draw = {
 
     drawingData: null,  // data structure for saving drawn points
 
-    controls: null,
+    control: null,
+    actions: null,
     save: null,  // button
 
     backgroundCanvas: null,  // background coming from another widget as a canvas
@@ -28,7 +29,8 @@ var Draw = {
     init: function (backgroundCanvas) {
         Draw.drawingData = [];
         Draw.backgroundCanvas = backgroundCanvas;
-        Draw.controls = document.querySelector('.draw-control');
+        Draw.control = document.querySelector('.draw-control');
+        Draw.actions = document.querySelector('.draw-actions');
 
         Draw.draw = document.getElementById('draw');
         const canvasWrapper = document.querySelector('#draw .canvas');
@@ -158,7 +160,7 @@ var Draw = {
         }, false);
 
         // Save (background +) drawing
-        Draw.save = document.querySelector('#draw-save span.primary');
+        Draw.save = document.querySelector('#draw-save');
         Draw.save.onclick = (e) => {
             const finalCanvas = document.createElement('canvas');
             let crop, height, width, bg;
@@ -267,7 +269,8 @@ var Draw = {
         Draw.mousePos = null;
 
         // show coontrols
-        Draw.controls.classList.remove('drawing');
+        Draw.actions.classList.remove('drawing');
+        Draw.control.classList.remove('drawing');
 
         Draw.ctx.beginPath();
     },
@@ -276,8 +279,9 @@ var Draw = {
         if (e.buttons == 1) {
             Draw.drawing = true;
 
-            // hide coontrols
-            Draw.controls.classList.add('drawing');
+            // hide controls
+            Draw.actions.classList.add('drawing');
+            Draw.control.classList.add('drawing');
 
             // save drawing data
             const data = {

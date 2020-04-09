@@ -9,7 +9,9 @@
                             <i class="material-icons">arrow_back</i>
                         </a>
                     </span>
-                    <p class="center"><?php echo __('page.account_creation'); ?></p>
+                    <content>
+                        <p class="center"><?php echo __('page.account_creation'); ?></p>
+                    </content>
                 </li>
             </ul>
         </header>

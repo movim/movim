@@ -5,7 +5,9 @@
 <ul class="list flex middle active">
     {if="$top->isNotEmpty()"}
         <li class="subheader block large">
-            <p>{$c->__('chat.frequent')}</p>
+            <content>
+                <p>{$c->__('chat.frequent')}</p>
+            </content>
         </li>
 
         {loop="$top"}
@@ -27,23 +29,27 @@
                         <i class="material-icons">person</i>
                     </span>
                 {/if}
-                <p class="line">
-                    {$value->truename}
+                <content>
+                    <p class="line">
+                        {$value->truename}
 
-                    {if="$value->presence && $value->presence->capability"}
-                        <span class="second" title="{$value->presence->capability->name}">
-                            <i class="material-icons">{$value->presence->capability->getDeviceIcon()}</i>
-                        </span>
-                    {/if}
-                </p>
-                <p class="line">{$value->jid}</p>
+                        {if="$value->presence && $value->presence->capability"}
+                            <span class="second" title="{$value->presence->capability->name}">
+                                <i class="material-icons">{$value->presence->capability->getDeviceIcon()}</i>
+                            </span>
+                        {/if}
+                    </p>
+                    <p class="line">{$value->jid}</p>
+                </content>
             </li>
         {/loop}
     {/if}
 
     {if="$conferences->isNotEmpty()"}
         <li class="subheader block large">
-            <p>{$c->__('chatrooms.title')}</p>
+            <content>
+                <p>{$c->__('chatrooms.title')}</p>
+            </content>
         </li>
 
         {loop="$conferences"}
@@ -65,18 +71,20 @@
                     </span>
                 {/if}
 
-                <p class="line">{$value->name}
-                    <span class="second">{$value->server}</span>
-                </p>
-                <p class="line" title="{$value->description}">
-                    {if="$value->occupants > 0"}
-                        <span title="{$c->__('communitydata.sub', $value->occupants)}">
-                            {$value->occupants} <i class="material-icons">people</i>
-                        </span>
-                    {/if}
-                    {if="$value->occupants > 0 && !empty($value->description)"} · {/if}
-                    {$value->description}
-                </p>
+                <content>
+                    <p class="line">{$value->name}
+                        <span class="second">{$value->server}</span>
+                    </p>
+                    <p class="line" title="{$value->description}">
+                        {if="$value->occupants > 0"}
+                            <span title="{$c->__('communitydata.sub', $value->occupants)}">
+                                {$value->occupants} <i class="material-icons">people</i>
+                            </span>
+                        {/if}
+                        {if="$value->occupants > 0 && !empty($value->description)"} · {/if}
+                        {$value->description}
+                    </p>
+                </content>
             </li>
         {/loop}
     {/if}

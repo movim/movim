@@ -28,59 +28,61 @@
                 </span>
             {/if}
 
-            {if="!$post->isBrief()"}
-                <p class="normal">
-                    {autoescape="off"}
-                        {$post->getTitle()|addHashtagsLinks|addEmojis}
-                    {/autoescape}
-                </p>
-            {else}
-                <p></p>
-            {/if}
-            <p>
-                {if="$post->isMicroblog()"}
-                    <a  {if="$public"}
-                            href="{$c->route('blog', $post->aid)}"
-                        {else}
-                            href="{$c->route('contact', $post->aid)}"
-                        {/if}
-                    >
-                        {$post->truename}
-                    </a> ·
+            <content>
+                {if="!$post->isBrief()"}
+                    <p class="normal">
+                        {autoescape="off"}
+                            {$post->getTitle()|addHashtagsLinks|addEmojis}
+                        {/autoescape}
+                    </p>
                 {else}
-                    {if="$public"}
-                        {$post->server}
+                    <p></p>
+                {/if}
+                <p>
+                    {if="$post->isMicroblog()"}
+                        <a  {if="$public"}
+                                href="{$c->route('blog', $post->aid)}"
+                            {else}
+                                href="{$c->route('contact', $post->aid)}"
+                            {/if}
+                        >
+                            {$post->truename}
+                        </a> ·
                     {else}
-                        <a href="{$c->route('community', $post->server)}">
+                        {if="$public"}
                             {$post->server}
-                        </a>
-                    {/if} /
-                    <a href="{$c->route('community', [$post->server, $post->node])}">
-                        {$post->node}
-                    </a> ·
-                {/if}
-                {$post->published|strtotime|prepareDate}
-                {if="$post->published != $post->updated"}
-                    <i class="material-icons" title="{$post->updated|strtotime|prepareDate}">
-                         edit
-                    </i>
-                {/if}
-                {if="!$post->openlink"}
-                    <i class="material-icons on_mobile" title="{$c->__('post.public_no')}">
-                        lock
-                    </i>
-                {/if}
-                {if="$post->contentcleaned && readTime($post->contentcleaned)"}
-                    · {$post->contentcleaned|readTime}
-                {/if}
-            </p>
-            {if="$post->isBrief()"}
-                <p class="normal">
-                    {autoescape="off"}
-                        {$post->getTitle()|addHashtagsLinks|addUrls|nl2br|prepareString}
-                    {/autoescape}
+                        {else}
+                            <a href="{$c->route('community', $post->server)}">
+                                {$post->server}
+                            </a>
+                        {/if} /
+                        <a href="{$c->route('community', [$post->server, $post->node])}">
+                            {$post->node}
+                        </a> ·
+                    {/if}
+                    {$post->published|strtotime|prepareDate}
+                    {if="$post->published != $post->updated"}
+                        <i class="material-icons" title="{$post->updated|strtotime|prepareDate}">
+                            edit
+                        </i>
+                    {/if}
+                    {if="!$post->openlink"}
+                        <i class="material-icons on_mobile" title="{$c->__('post.public_no')}">
+                            lock
+                        </i>
+                    {/if}
+                    {if="$post->contentcleaned && readTime($post->contentcleaned)"}
+                        · {$post->contentcleaned|readTime}
+                    {/if}
                 </p>
-            {/if}
+                {if="$post->isBrief()"}
+                    <p class="normal">
+                        {autoescape="off"}
+                            {$post->getTitle()|addHashtagsLinks|addUrls|nl2br|prepareString}
+                        {/autoescape}
+                    </p>
+                {/if}
+            </content>
         </li>
     </ul>
     <ul class="list">
@@ -139,82 +141,84 @@
         {/autoescape}
 
         <li>
-            <p class="normal">
-                <a class="button flat oppose"
-                {if="$public"}
-                    {if="$post->isMicroblog()"}
-                    href="{$c->route('blog', [$post->server, $post->nodeid])}"
+            <content>
+                <p class="normal">
+                    <a class="button flat oppose"
+                    {if="$public"}
+                        {if="$post->isMicroblog()"}
+                        href="{$c->route('blog', [$post->server, $post->nodeid])}"
+                        {else}
+                        href="{$c->route('node', [$post->server, $post->node, $post->nodeid])}"
+                        {/if}
                     {else}
-                    href="{$c->route('node', [$post->server, $post->node, $post->nodeid])}"
-                    {/if}
-                {else}
-                    href="{$c->route('post', [$post->server, $post->node, $post->nodeid])}"
-                {/if}>
-                    <i class="material-icons on_desktop">add</i> {$c->__('post.more')}
-                </a>
-                {if="$post->hasCommentsNode()"}
-                    {$liked = $post->isLiked()}
+                        href="{$c->route('post', [$post->server, $post->node, $post->nodeid])}"
+                    {/if}>
+                        <i class="material-icons on_desktop">add</i> {$c->__('post.more')}
+                    </a>
+                    {if="$post->hasCommentsNode()"}
+                        {$liked = $post->isLiked()}
 
-                    {if="$liked"}
-                        <a class="button narrow icon flat red" href="{$c->route('post', [$post->server, $post->node, $post->nodeid])}">
-                            {if="$post->likes->count() > 0"}{$post->likes->count()}{/if}
-                            <i class="material-icons">favorite</i>
-                        </a>
-                    {else}
-                        <a class="button narrow icon flat gray" href="#"
-                           onclick="this.classList.add('disabled'); PostActions_ajaxLike('{$post->server}', '{$post->node}', '{$post->nodeid}')">
-                           {if="$post->likes->count() > 0"}{$post->likes->count()}{/if}
-                            {if="$liked"}
+                        {if="$liked"}
+                            <a class="button narrow icon flat red" href="{$c->route('post', [$post->server, $post->node, $post->nodeid])}">
+                                {if="$post->likes->count() > 0"}{$post->likes->count()}{/if}
                                 <i class="material-icons">favorite</i>
-                            {else}
-                                <i class="material-icons">favorite_border</i>
-                            {/if}
+                            </a>
+                        {else}
+                            <a class="button narrow icon flat gray" href="#"
+                            onclick="this.classList.add('disabled'); PostActions_ajaxLike('{$post->server}', '{$post->node}', '{$post->nodeid}')">
+                            {if="$post->likes->count() > 0"}{$post->likes->count()}{/if}
+                                {if="$liked"}
+                                    <i class="material-icons">favorite</i>
+                                {else}
+                                    <i class="material-icons">favorite_border</i>
+                                {/if}
+                            </a>
+                        {/if}
+                        <a class="button narrow icon flat gray" href="{$c->route('post', [$post->server, $post->node, $post->nodeid])}">
+                            {if="$post->comments->count() > 0"}{$post->comments->count()}{/if}
+                            <i class="material-icons">chat_bubble_outline</i>
                         </a>
                     {/if}
-                    <a class="button narrow icon flat gray" href="{$c->route('post', [$post->server, $post->node, $post->nodeid])}">
-                        {if="$post->comments->count() > 0"}{$post->comments->count()}{/if}
-                        <i class="material-icons">chat_bubble_outline</i>
-                    </a>
-                {/if}
-                {if="!$public"}
-                    <a
-                        title="{$c->__('button.share')}"
-                        class="button narrow icon flat gray"
-                        onclick="SendTo_ajaxSendSearch('{$post->getRef()}')"
-                        href="#">
-                        <i class="material-icons">send</i>
-                    </a>
-                    {if="$post->openlink"}
-                        <a  title="{$c->__('post.public_url')}"
-                            class="button narrow icon flat gray oppose"
-                            target="_blank"
-                            href="{$post->openlink->href}">
-                            <i class="material-icons">wifi_tethering</i>
+                    {if="!$public"}
+                        <a
+                            title="{$c->__('button.share')}"
+                            class="button narrow icon flat gray"
+                            onclick="SendTo_ajaxSendSearch('{$post->getRef()}')"
+                            href="#">
+                            <i class="material-icons">send</i>
                         </a>
-                    {else}
-                        <a  class="button narrow icon flat gray on_desktop oppose"
-                            title="{$c->__('post.public_no')}">
-                            <i class="material-icons">lock</i>
-                        </a>
+                        {if="$post->openlink"}
+                            <a  title="{$c->__('post.public_url')}"
+                                class="button narrow icon flat gray oppose"
+                                target="_blank"
+                                href="{$post->openlink->href}">
+                                <i class="material-icons">wifi_tethering</i>
+                            </a>
+                        {else}
+                            <a  class="button narrow icon flat gray on_desktop oppose"
+                                title="{$c->__('post.public_no')}">
+                                <i class="material-icons">lock</i>
+                            </a>
+                        {/if}
                     {/if}
-                {/if}
 
-                {if="$post->isMine()"}
-                    {if="$post->isEditable()"}
+                    {if="$post->isMine()"}
+                        {if="$post->isEditable()"}
+                            <a class="button narrow icon flat oppose gray on_desktop"
+                            href="{$c->route('publish', [$post->server, $post->node, $post->nodeid])}"
+                            title="{$c->__('button.edit')}">
+                                <i class="material-icons">edit</i>
+                            </a>
+                        {/if}
                         <a class="button narrow icon flat oppose gray on_desktop"
-                           href="{$c->route('publish', [$post->server, $post->node, $post->nodeid])}"
-                           title="{$c->__('button.edit')}">
-                            <i class="material-icons">edit</i>
+                        href="#"
+                        onclick="PostActions_ajaxDelete('{$post->server}', '{$post->node}', '{$post->nodeid}')"
+                        title="{$c->__('button.delete')}">
+                            <i class="material-icons">delete</i>
                         </a>
                     {/if}
-                    <a class="button narrow icon flat oppose gray on_desktop"
-                       href="#"
-                       onclick="PostActions_ajaxDelete('{$post->server}', '{$post->node}', '{$post->nodeid}')"
-                       title="{$c->__('button.delete')}">
-                        <i class="material-icons">delete</i>
-                    </a>
-                {/if}
-            </p>
+                </p>
+            </content>
         </li>
     </ul>
 </article>

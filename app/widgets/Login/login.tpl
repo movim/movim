@@ -38,8 +38,10 @@
                             <span class="primary icon bubble" style="background-image: url({$invitation->room->getPhoto('m')});">
                             </span>
                         {/if}
-                        <p></p>
-                        <p class="all">{$c->__('form.invite_chatroom', $contact->truename)}: {$invitation->resource}</p>
+                        <content>
+                            <p></p>
+                            <p class="all">{$c->__('form.invite_chatroom', $contact->truename)}: {$invitation->resource}</p>
+                        </content>
                     </li>
                 </ul>
             {/if}
@@ -61,17 +63,19 @@
                 <div>
                     <ul class="list thin">
                         <li>
-                            <p class="center">
-                                <input
-                                    type="submit"
-                                    disabled
-                                    data-loading="{$c->__('button.connecting')}…"
-                                    value="{$c->__('page.login')}"
-                                    class="button color"/>
-                                <a class="button flat" href="{$c->route('account')}">
-                                    {$c->__('button.sign_up')}
-                                </a>
-                            </p>
+                            <content>
+                                <p class="center">
+                                    <input
+                                        type="submit"
+                                        disabled
+                                        data-loading="{$c->__('button.connecting')}…"
+                                        value="{$c->__('page.login')}"
+                                        class="button color"/>
+                                    <a class="button flat" href="{$c->route('account')}">
+                                        {$c->__('button.sign_up')}
+                                    </a>
+                                </p>
+                            </content>
                         </li>
                     </ul>
                 </div>
@@ -80,10 +84,12 @@
             {if="isset($info)"}
             <ul class="list thin card">
                 <li class="info">
-                    <p></p>
-                    {autoescape="off"}
-                        {$info}
-                    {/autoescape}
+                    <content>
+                        <p></p>
+                        {autoescape="off"}
+                            {$info}
+                        {/autoescape}
+                    </content>
                 </li>
             </ul>
             {/if}
@@ -91,11 +97,13 @@
             {if="!empty($whitelist)"}
             <ul class="list thin">
                 <li class="info">
-                    <p></p>
-                    <p class="center normal">{$c->__('form.whitelist_info')} :
-                    {loop="$whitelist"}
-                        {$value}
-                    {/loop}</p>
+                    <content>
+                        <p></p>
+                        <p class="center normal">{$c->__('form.whitelist_info')} :
+                        {loop="$whitelist"}
+                            {$value}
+                        {/loop}</p>
+                    </content>
                 </li>
             </ul>
             {/if}

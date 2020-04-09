@@ -20,20 +20,23 @@
                     <i class="material-icons">person</i>
                 </span>
             {/if}
-            <p class="normal line">
-                {$post->contact->truename}
-            </p>
+            <content>
+                <p class="normal line">
+                    {$post->contact->truename}
+                </p>
         {else}
             <span class="primary icon bubble color {$post->server|stringToColor}">
                 <i class="material-icons">person</i>
             </span>
-            <p class="normal line">
+            <content>
+                <p class="normal line">
+                    {$post->server}
+                </p>
+        {/if}
+            <p class="line">
                 {$post->server}
             </p>
-        {/if}
-        <p class="line">
-            {$post->server}
-        </p>
+        </content>
     {else}
         {if="$info"}
             {$url = $info->getPhoto('m')}
@@ -47,24 +50,26 @@
                     {$info->node|firstLetterCapitalize}
                 </span>
             {/if}
-            <p class="line normal">
-                {if="$info->name"}
-                    {$info->name}
-                {else}
-                    {$info->node}
+            <content>
+                <p class="line normal">
+                    {if="$info->name"}
+                        {$info->name}
+                    {else}
+                        {$info->node}
+                    {/if}
+                </p>
+                {if="$info->description"}
+                    <p class="line">{$info->description|strip_tags}</p>
                 {/if}
-            </p>
-            {if="$info->description"}
-                <p class="line">{$info->description|strip_tags}</p>
-            {/if}
+            </content>
         {else}
             <span class="primary icon bubble color {$post->node|stringToColor}">
                 {$post->node|firstLetterCapitalize}
             </span>
-            <p class="line normal">
-                {$post->node}
-            </p>
-            <p>{$post->server}</p>
+            <content>
+                <p class="line normal">{$post->node}</p>
+                <p>{$post->server}</p>
+            </content>
         {/if}
     {/if}
 </li>
