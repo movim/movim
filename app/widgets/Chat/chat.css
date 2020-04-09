@@ -41,7 +41,7 @@ main:not(.enabled) #chat_widget {
 /* Chat attach list */
 
 #chat_widget ul.list.actions {
-    right: 0;
+    right: -1rem;
     bottom: 7rem;
     position: absolute;
     opacity: 0;
