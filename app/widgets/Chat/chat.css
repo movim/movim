@@ -265,6 +265,7 @@ table.emojis td {
     width: 10%;
     text-align: center;
     padding: 1rem 0;
+    font-size: 0;
 }
 
 #chat_widget .primary_action:hover,
