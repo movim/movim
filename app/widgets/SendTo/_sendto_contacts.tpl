@@ -1,4 +1,8 @@
-<li class="subheader"><p>{$c->__('sendto.contact')}</p></li>
+<li class="subheader">
+    <div>
+        <p>{$c->__('sendto.contact')}</p>
+    </div>
+</li>
 {loop="$contacts"}
     <li class="{if="$value->presence && $value->presence->value > 4"}faded{/if}"">
         {$url = $value->getPhoto('m')}
@@ -26,14 +30,16 @@
             <i class="material-icons">send</i>
         </span>
         <div>
-            <p class="normal line">{$value->truename}</p>
-            <p>
-                {$value->jid}
+            <p class="normal line">
+                {$value->truename}
                 {if="$value->group"}
                     <span class="tag color {$value->group|stringToColor}">
                         {$value->group}
                     </span>
                 {/if}
+            </p>
+            <p>
+                {$value->jid}
             </p>
         </div>
     </li>
