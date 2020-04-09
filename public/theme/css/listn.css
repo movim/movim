@@ -459,7 +459,8 @@ ul li.date:first-of-type > div > p.normal {
 ul.list li.separator:not(.subheader):not(.date) {
     display: block;
     border-top: 0.15rem dashed #BBB;
-    margin-bottom: 1rem;
+    margin-bottom: 0.7rem;
+    margin-top: -0.7rem;
 }
 
 /* Top controls list */
