@@ -452,6 +452,10 @@ ul li.date > div > p.normal {
     padding: 0 2rem;
 }
 
+ul li.date > div > p.normal:first-of-type {
+    margin-top: 1rem;
+}
+
 ul.list li.separator:not(.subheader):not(.date) {
     display: block;
     border-top: 0.15rem dashed #BBB;
