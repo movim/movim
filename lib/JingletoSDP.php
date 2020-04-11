@@ -216,7 +216,7 @@ class JingletoSDP
                         case 'source':
                             foreach ($payload->children() as $s) {
                                 $sdp_media .=
-                                    "\r\na=ssrc:".$payload->attributes()->id.' '.
+                                    "\r\na=ssrc:".$payload->attributes()->ssrc.' '.
                                     $s->attributes()->name.':'.
                                     $s->attributes()->value;
                             }

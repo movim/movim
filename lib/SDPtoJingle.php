@@ -283,7 +283,7 @@ class SDPtoJingle
                             if (!$description->source) {
                                 $ssrc = $description->addChild('source');
                                 $ssrc->addAttribute('xmlns', "urn:xmpp:jingle:apps:rtp:ssma:0");
-                                $ssrc->addAttribute('id', $matches[1]);
+                                $ssrc->addAttribute('ssrc', $matches[1]);
                             }
 
                             $param = $ssrc->addChild('parameter');
