@@ -352,7 +352,7 @@ ul li div.bubble:not(.sticker):not(.file) {
 
 ul li div.bubble.sticker,
 ul li div.bubble.file {
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 ul li div.bubble ul.card p:not(:last-child) {
