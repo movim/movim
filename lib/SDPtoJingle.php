@@ -124,7 +124,6 @@ class SDPtoJingle
         foreach ($params as $matches) {
             $rtcpfp = $payloadtype->addChild('rtcp-fb');
             $rtcpfp->addAttribute('xmlns', "urn:xmpp:jingle:apps:rtp:rtcp-fb:0");
-            $rtcpfp->addAttribute('id', $matches[1]);
             $rtcpfp->addAttribute('type', $matches[2]);
 
             if (isset($matches[4])) {

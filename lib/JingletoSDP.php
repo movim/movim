@@ -125,11 +125,23 @@ class JingletoSDP
                             $sdp_media .= ' '.$payload->attributes()->uri;
                             break;
 
+                        // https://xmpp.org/extensions/xep-0293.html
+                        case 'rtcp-fb':
+                            $sdp_media .=
+                                "\r\na=rtcp-fb:".
+                                '* '.
+                                $payload->attributes()->type;
+
+                            if (isset($payload->attributes()->subtype)) {
+                                $sdp_media .= ' '.$payload->attributes()->subtype;
+                            }
+                            break;
+
                         case 'rtcp-mux':
                             $sdp_media .=
                                 "\r\na=rtcp-mux";
 
-                                // no break
+                            // no break
                         case 'encryption':
                             if (isset($payload->crypto)) {
                                 $sdp_media .=
@@ -150,11 +162,12 @@ class JingletoSDP
                             break;
 
                         case 'payload-type':
+                            $payload_id = $payload->attributes()->id;
                             $sdp_media .=
                                 "\r\na=rtpmap:".
-                                $payload->attributes()->id;
+                                $payload_id;
 
-                            array_push($media_header_ids, $payload->attributes()->id);
+                            array_push($media_header_ids, $payload_id);
 
                             if (isset($payload->attributes()->name)) {
                                 $sdp_media .= ' '.$payload->attributes()->name;
@@ -175,7 +188,7 @@ class JingletoSDP
                                     case 'rtcp-fb':
                                         $sdp_media .=
                                             "\r\na=rtcp-fb:".
-                                            $param->attributes()->id.' '.
+                                            $payload_id.' '.
                                             $param->attributes()->type;
 
                                         if (isset($param->attributes()->subtype)) {
@@ -188,7 +201,7 @@ class JingletoSDP
                                         if ($first_fmtp) {
                                             $sdp_media .=
                                                 "\r\na=fmtp:".
-                                                $payload->attributes()->id.
+                                                $payload_id.
                                                 ' ';
                                         } else {
                                             $sdp_media .= ';';
