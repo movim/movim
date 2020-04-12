@@ -383,7 +383,7 @@ input[type=button].flat:focus {
     line-height: 7rem;
     height: 7rem;
     width: 7rem;
-    z-index: 2;
+    z-index: 1;
     font-size: 3.5rem;
     animation: zoom 0.3s;
     padding: 0;

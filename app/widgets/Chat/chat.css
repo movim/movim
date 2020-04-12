@@ -52,6 +52,7 @@ main:not(.enabled) #chat_widget {
 
 #chat_widget span.control.enabled + ul.list.actions {
     opacity: 1;
+    z-index: 2;
     transform: translateY(0) scaleY(1);
     pointer-events: initial;
 }
@@ -75,7 +76,8 @@ main:not(.enabled) #chat_widget {
     animation: none;
     opacity: 0;
     transform: scale(90%);
-    bottom: 8rem;
+    bottom: 7.25rem;
+    right: 0.75rem;
     pointer-events: none;
 }
 

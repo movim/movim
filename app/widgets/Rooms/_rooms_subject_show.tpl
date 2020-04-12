@@ -102,7 +102,7 @@
                     <span class="control icon active gray divided" onclick="
                         Chats_ajaxOpen('{$value->mucjid|echapJS}');
                         Chat_ajaxGet('{$value->mucjid|echapJS}');
-                        Dialog_ajaxClear();">
+                        Drawer_ajaxClear();">
                         <i class="material-icons">comment</i>
                     </span>
                 {/if}

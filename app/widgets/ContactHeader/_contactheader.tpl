@@ -22,6 +22,10 @@
                 </span>
             {/if}
         {/if}
+        <span class="control icon active gray" onclick="ContactActions_ajaxChat('{$contact->id|echapJS}')"
+            title="{$c->__('button.chat')}">
+            <i class="material-icons">comment</i>
+        </span>
         <span class="primary icon active gray" onclick="history.back()">
             <i class="material-icons">arrow_back</i>
         </span>
