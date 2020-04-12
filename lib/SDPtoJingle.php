@@ -263,6 +263,7 @@ class SDPtoJingle
                             $zrtphash->addAttribute('version', $matches[1]);
                             break;
 
+                        // Non standard
                         case 'rtcp_mux':
                             $description->addChild('rtcp-mux');
                             break;
@@ -326,7 +327,7 @@ class SDPtoJingle
 
                             break;
 
-                        // http://xmpp.org/extensions/inbox/jingle-dtls.html
+                        // https://xmpp.org/extensions/xep-0343.html
                         case 'sctpmap':
                             $sctpmap = $this->transport->addChild('sctpmap');
                             $sctpmap->addAttribute('xmlns', "urn:xmpp:jingle:transports:dtls-sctp:1");

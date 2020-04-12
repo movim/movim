@@ -33,12 +33,11 @@ class Jingle extends Payload
     public function handle($stanza, $parent = false)
     {
         $from = (string)$parent->attributes()->from;
-        $to   = (string)$parent->attributes()->to;
         $id   = (string)$parent->attributes()->id;
 
         $action = (string)$stanza->attributes()->action;
 
-        //Ack::send($from, $id);
+        Ack::send($from, $id);
 
         $userid = \App\User::me()->id;
         $message = new \App\Message;

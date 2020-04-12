@@ -256,7 +256,7 @@ class JingletoSDP
                         }
                         break;
 
-                    // http://xmpp.org/extensions/inbox/jingle-dtls.html
+                    // https://xmpp.org/extensions/xep-0343.html
                     case 'sctpmap':
                         $sdp_media .=
                             "\r\na=sctpmap:".
