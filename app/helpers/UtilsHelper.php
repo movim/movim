@@ -633,6 +633,31 @@ function requestHeaders(string $url, $timeout = 2)
 }
 
 /**
+ * Check if a URL is a valid picture
+ */
+function resolvePictureFileFromUrl(string $url)
+{
+    if (filter_var($url, FILTER_VALIDATE_URL)) {
+        $headers = requestHeaders($url);
+
+        if ($headers['http_code'] == 200
+        && isset($headers['content_type'])
+        && typeIsPicture($headers['content_type'])
+        && $headers['download_content_length'] > 100) {
+            $file = new \stdClass;
+            $file->name = $url;
+            $file->type = $headers['content_type'];
+            $file->size = $headers['download_content_length'];
+            $file->uri  = $url;
+
+            return $file;
+        }
+    }
+
+    return false;
+}
+
+/**
  * Request the internal API
  */
 function requestAPI(string $action, int $timeout = 2, $post = false)

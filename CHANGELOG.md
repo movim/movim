@@ -11,6 +11,8 @@ v0.17.2 (trunk)
  * Add a way to lock the Dialog box, can only be closed using the action buttons
  * Add scroll-to-bottom button in Chat
  * Fix several Jingle session + ICE issues
+ * Add Chat messages URL pictures resolver
+ * Full rewrite of the Movim list system in the UI
 
 v0.17.1
 ---------------------------

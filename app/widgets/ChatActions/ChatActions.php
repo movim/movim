@@ -72,4 +72,27 @@ class ChatActions extends \Movim\Widget\Base
             $c->onMessage($packet, false, true);
         }
     }
+
+    /**
+     * @brief Try to resolve a message URL
+     */
+    public function ajaxHttpResolveMessage($mid)
+    {
+        $message = $this->user->messages()
+                              ->where('mid', $mid)
+                              ->first();
+
+        if ($message && $message->resolved == false) {
+            $file = resolvePictureFileFromUrl($message->body);
+
+            if ($file != false) {
+                $message->file = (array)$file;
+                $this->rpc('Chat.refreshMessage', $message->mid);
+            }
+
+            $message->resolved = true;
+            $message->save();
+        }
+
+    }
 }

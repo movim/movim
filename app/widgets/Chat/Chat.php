@@ -2,12 +2,10 @@
 
 use Moxl\Xec\Action\Message\Publish;
 use Moxl\Xec\Action\Message\Reactions;
-use Moxl\Xec\Action\Message\Retract;
 
 use Moxl\Xec\Action\Muc\GetConfig;
 use Moxl\Xec\Action\Muc\SetConfig;
 
-use App\Configuration;
 use App\Message;
 use App\Reaction;
 
@@ -310,20 +308,9 @@ class Chat extends \Movim\Widget\Base
     public function ajaxHttpDaemonSendMessage($to, $message = false, $muc = false, $resource = false, $replace = false, $file = false)
     {
         $message = trim($message);
-        if (filter_var($message, FILTER_VALIDATE_URL)) {
-            $headers = requestHeaders($message);
+        $resolvedFile = resolvePictureFileFromUrl($message);
 
-            if ($headers['http_code'] == 200
-            && isset($headers['content_type'])
-            && typeIsPicture($headers['content_type'])
-            && $headers['download_content_length'] > 100) {
-                $file = new \stdClass;
-                $file->name = $message;
-                $file->type = $headers['content_type'];
-                $file->size = $headers['download_content_length'];
-                $file->uri  = $message;
-            }
-        }
+        if ($resolvedFile != false) $file = $resolvedFile;
 
         $body = ($file != false && $file->type != 'xmpp')
             ? $file->uri
@@ -523,6 +510,20 @@ class Chat extends \Movim\Widget\Base
                 $packet->content = $parentMessage;
                 $this->onMessage($packet);
             }
+        }
+    }
+
+    /**
+     * @brief Refresh a message
+     */
+    public function ajaxRefreshMessage(string $mid)
+    {
+        $message = $this->user->messages()
+                              ->where('mid', $mid)
+                              ->first();
+
+        if ($message) {
+            $this->rpc('Chat.appendMessagesWrapper', $this->prepareMessage($message, null));
         }
     }
 
@@ -803,7 +804,7 @@ class Chat extends \Movim\Widget\Base
             $right = $view->draw('_chat_bubble');
 
             $this->rpc('Chat.setSpecificElements', $left, $right);
-            $this->rpc('Chat.appendMessagesWrapper', $this->_wrapper, false, true);
+            $this->rpc('Chat.appendMessagesWrapper', $this->_wrapper, false);
         }
 
         $this->event($muc ? 'chat_open_room' : 'chat_open', $jid);
@@ -822,6 +823,14 @@ class Chat extends \Movim\Widget\Base
         $message->jidfrom = echapJS($message->jidfrom);
 
         $emoji = \Movim\Emoji::getInstance();
+
+        // URL messages
+        $message->url = filter_var($message->body, FILTER_VALIDATE_URL);
+
+        // If the message doesn't contain a file but is a URL, we try to resolve it
+        if (!$message->file && $message->url && $message->resolved == false) {
+            $this->rpc('Chat.resolveMessage', (int)$message->mid);
+        }
 
         if ($message->retracted) {
             $message->body = '<i class="material-icons">delete</i> '.__('message.retracted');

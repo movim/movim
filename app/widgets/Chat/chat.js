@@ -195,6 +195,14 @@ var Chat = {
             Chat_ajaxEdit(mid);
         }
     },
+    resolveMessage: function(mid)
+    {
+        ChatActions_ajaxHttpResolveMessage(mid);
+    },
+    refreshMessage: function(mid)
+    {
+        Chat_ajaxRefreshMessage(mid);
+    },
     focus: function()
     {
         Chat.sended = false;
@@ -511,7 +519,7 @@ var Chat = {
 
         return true;
     },
-    appendMessagesWrapper : function(page, prepend, scroll)
+    appendMessagesWrapper : function(page, prepend)
     {
         var discussion = Chat.getDiscussion();
 
@@ -591,6 +599,7 @@ var Chat = {
 
         if (msgStack != null
             && msgStack.parentNode == refBubble
+            && data.url === false
             && (data.file === undefined || data.file === null)
             && (data.sticker === undefined || data.sticker === null)
             && !refBubble.querySelector('div.bubble').classList.contains('sticker')
@@ -736,6 +745,15 @@ var Chat = {
         if (elem) {
             elem.parentElement.replaceChild(msg, elem);
             mergeMsg = true;
+
+            // If the previous message was not a file and is replaced by it
+            if (data.file != null) {
+                msg.parentElement.classList.add('file');
+            }
+
+            if (data.sticker != null) {
+                msg.parentElement.classList.add('sticker');
+            }
         } else {
             if (prepend) {
                 bubble.querySelector('div.bubble').insertBefore(msg, bubble.querySelector('div.bubble').firstChild);
