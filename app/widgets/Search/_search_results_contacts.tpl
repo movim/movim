@@ -1,6 +1,8 @@
 <ul class="list flex">
     <li class="subheader block large">
-        <p>{$c->__('explore.explore')}</p>
+        <div>
+            <p>{$c->__('explore.explore')}</p>
+        </div>
     </li>
     {loop="$users"}
         <li class="block" title="{$value->jid}">
