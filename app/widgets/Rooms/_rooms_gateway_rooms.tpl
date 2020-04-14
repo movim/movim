@@ -2,7 +2,7 @@
     <select onchange="Rooms.selectGatewayRoom(this.value, this.options[this.selectedIndex].label)">
         {loop="$rooms"}
             <option value="{$key}">
-                {$value}
+                {$value} · {$key}
             </option>
         {/loop}
     </select>
