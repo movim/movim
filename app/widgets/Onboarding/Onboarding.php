@@ -10,13 +10,6 @@ class Onboarding extends Base
         $this->addjs('onboarding.js');
     }
 
-    public function ajaxAskNotifications()
-    {
-        $tpl = $this->tpl();
-        $this->rpc('Onboarding.setNotifications');
-        Dialog::fill($tpl->draw('_onboarding_notifications', true));
-    }
-
     public function ajaxAskPublic()
     {
         $tpl = $this->tpl();

@@ -13,6 +13,7 @@ v0.17.2 (trunk)
  * Fix several Jingle session + ICE issues
  * Add Chat messages URL pictures resolver
  * Full rewrite of the Movim list system in the UI
+ * Remove the Notifications panel from Onboarding, the browser can take care of that
 
 v0.17.1
 ---------------------------

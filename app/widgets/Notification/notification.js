@@ -163,22 +163,26 @@ var Notification = {
         || Notification.focused
         || typeof DesktopNotification === 'undefined') return;
 
-        var notification = new DesktopNotification(title, { icon: picture, body: body });
+        if (DesktopNotification.permission === "granted") {
+            var notification = new DesktopNotification(title, { icon: picture, body: body });
 
-        if (action !== null) {
-            notification.onclick = function() {
-                window.location.href = action;
-                Notification.snackbarClear();
-                this.close();
+            if (action !== null) {
+                notification.onclick = function() {
+                    window.location.href = action;
+                    Notification.snackbarClear();
+                    this.close();
+                }
             }
-        }
 
-        if (execute !== null) {
-            notification.onclick = function() {
-                eval(execute);
-                Notification.snackbarClear();
-                this.close();
+            if (execute !== null) {
+                notification.onclick = function() {
+                    eval(execute);
+                    Notification.snackbarClear();
+                    this.close();
+                }
             }
+        } else if (DesktopNotification.permission !== "denied") {
+            DesktopNotification.requestPermission();
         }
     },
     android : function(title, body, picture, action) {

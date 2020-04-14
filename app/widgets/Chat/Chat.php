@@ -84,6 +84,8 @@ class Chat extends \Movim\Widget\Base
         $from = null;
         $chatStates = ChatStates::getInstance();
 
+        $rawbody = $message->body;
+
         if ($message->isEmpty()) {
             return;
         }
@@ -110,7 +112,7 @@ class Chat extends \Movim\Widget\Base
                 Notification::append(
                     'chat|'.$from,
                     $roster ? $roster->truename : $contact->truename,
-                    $message->body,
+                    $rawbody,
                     $contact->getPhoto(),
                     4,
                     $this->route('chat', $contact->jid)
@@ -130,7 +132,7 @@ class Chat extends \Movim\Widget\Base
                     ($conference != null && $conference->name)
                         ? $conference->name
                         : $from,
-                    $message->resource.': '.$message->body,
+                    $message->resource.': '.$rawbody,
                     false,
                     4
                 );

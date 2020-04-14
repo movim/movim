@@ -48,6 +48,7 @@ class Message extends Model
 
     public function setFileAttribute(array $file)
     {
+        $this->resolved = true;
         $this->attributes['file'] = serialize($file);
     }
 
