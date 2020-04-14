@@ -58,21 +58,23 @@
                 <i class="material-icons">chevron_right</i>
             </span>
             <div>
-                <p class="line normal">
-                    {if="$value->name"}
-                        {$value->name}
-                    {else}
-                        {$value->node}
-                    {/if}
-                    {if="$value->description"}
-                        <span class="second">
-                            {$value->description|strip_tags}
-                        </span>
-                    {/if}
-                </p>
-                <p class="line">
-                    {$value->server} / {$value->node}
-                </p>
+                <div>
+                    <p class="line normal">
+                        {if="$value->name"}
+                            {$value->name}
+                        {else}
+                            {$value->node}
+                        {/if}
+                        {if="$value->description"}
+                            <span class="second">
+                                {$value->description|strip_tags}
+                            </span>
+                        {/if}
+                    </p>
+                    <p class="line">
+                        {$value->server} / {$value->node}
+                    </p>
+                </div>
             </div>
         </li>
     {/loop}
