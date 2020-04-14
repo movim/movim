@@ -59,7 +59,7 @@ var Upload = {
     },
 
     preview : function(file) {
-        var resolvedFile = file ?? document.getElementById('file').files[0];
+        var resolvedFile = file ? file : document.getElementById('file').files[0];
         Upload.name = resolvedFile.name;
         Upload.check(resolvedFile);
     },

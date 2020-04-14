@@ -178,7 +178,7 @@ function cleanJid($jid): string
 function getCid($string)
 {
     preg_match("/(\w+)\@/", $string, $matches);
-    if (is_array($matches)) {
+    if (is_array($matches) && count($matches) > 1) {
         return $matches[1];
     }
 }
