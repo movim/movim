@@ -241,11 +241,10 @@ main:not(.enabled) #chat_widget {
     cursor: pointer;
 }
 
-#chat_widget .contained:not(.muc) ul li.oppose + li.oppose > span.icon,
-#chat_widget .contained:not(.muc) ul li.oppose + li.oppose .bubble::before,
+#chat_widget .contained ul li.oppose + li.oppose > span.icon,
+#chat_widget .contained ul li.oppose + li.oppose .bubble::before,
 #chat_widget .contained:not(.muc) ul li:not(.oppose):not(.separator):not(.date) + li:not(.oppose) > span.icon,
 #chat_widget .contained:not(.muc) ul li:not(.oppose):not(.separator):not(.date) + li:not(.oppose) .bubble::before {
-    /*display: none;*/
     opacity: 0;
 }
 
