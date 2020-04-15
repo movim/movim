@@ -39,7 +39,7 @@ class Message extends Payload
             $message->save();
             $message = $message->fresh();
 
-            if ($message->body || $message->subject) {
+            if ($message && ($message->body || $message->subject)) {
                 $this->pack($message);
 
                 if ($message->subject && $message->type == 'groupchat') {

@@ -876,7 +876,6 @@ var Chat = {
 
         if (sticker.picture) {
             img.classList.add('active');
-            img.classList.add('transparent');
             img.setAttribute('onclick', 'Preview_ajaxShow("' + sticker.url + '")');
         }
 
