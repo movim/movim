@@ -2,7 +2,8 @@
     <select onchange="Rooms.selectGatewayRoom(this.value, this.options[this.selectedIndex].label)">
         {loop="$rooms"}
             <option value="{$key}">
-                {$value} · {$key}
+                {$name = explodeJid($key)['username']}
+                {$value} · {$name}
             </option>
         {/loop}
     </select>

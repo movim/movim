@@ -139,7 +139,7 @@ function getHashtags($string): array
     return $hashtags;
 }
 
-/*
+/**
  * Echap the JID
  */
 function echapJid($jid): string
@@ -147,7 +147,7 @@ function echapJid($jid): string
     return str_replace(' ', '\40', $jid);
 }
 
-/*
+/**
  * Echap the anti-slashs for Javascript
  */
 function echapJS($string): string
@@ -155,7 +155,7 @@ function echapJS($string): string
     return str_replace(["\\", "'"], ["\\\\", "\\'"], $string);
 }
 
-/*
+/**
  * Echap the anti-slashs for Javascript
  */
 function unechap($string): string
@@ -462,6 +462,7 @@ function urilize($path, bool $noTime = false): string
 /**
  * Return a comma-separated list of joined array elements
  */
-function implodeCsv($value) {
+function implodeCsv($value)
+{
     return implode(', ', $value);
 }
