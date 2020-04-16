@@ -4,6 +4,8 @@ namespace Moxl\Xec\Payload;
 
 use Movim\Session;
 
+use App\MessageBuffer;
+
 class MAMResult extends Payload
 {
     public function handle($stanza, $parent = false)
@@ -26,12 +28,15 @@ class MAMResult extends Payload
             }
 
             if (!$message->encrypted
+            && $message->valid()
             && (!$message->isEmpty() || $message->isSubject())) {
-                $message->save();
-                $message->clearUnreads();
+                //MessageBuffer::getInstance()->append($message, function() use ($message) {
+                    $message->save();
+                    $message->clearUnreads();
 
-                $this->pack($message);
-                $this->deliver();
+                    $this->pack($message);
+                    $this->deliver();
+                //});
             }
         }
     }

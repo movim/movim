@@ -6,6 +6,7 @@ use Moxl\Xec\Action;
 use Moxl\Stanza\MAM;
 
 use Movim\Session;
+use App\MessageBuffer;
 
 class Get extends Action
 {
@@ -51,6 +52,8 @@ class Get extends Action
     {
         $sess = Session::start();
         $sess->remove('mamid'.$this->_queryid);
+
+        //MessageBuffer::getInstance()->save();
 
         if ($this->_to) {
             $this->method('handle_muc');

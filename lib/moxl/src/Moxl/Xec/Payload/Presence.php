@@ -6,6 +6,7 @@ use Moxl\Xec\Action\Vcard\Get;
 
 use Movim\Session;
 use App\Presence as DBPresence;
+use App\PresenceBuffer;
 
 class Presence extends Payload
 {
@@ -25,42 +26,45 @@ class Presence extends Payload
         } else {
             $presence = DBPresence::findByStanza($stanza);
             $presence->set($stanza);
-            $presence->save();
 
-            $refreshable = $presence->refreshable;
-            if ($refreshable) {
-                $r = new Get;
-                $r->setAvatarhash($presence->avatarhash)
-                  ->setTo((string)$refreshable)
-                  ->request();
-            }
+            PresenceBuffer::getInstance()->append($presence, function () use ($presence, $stanza) {
+                //$presence = $presence->fresh();
+                $refreshable = $presence->refreshable;
+                if ($refreshable) {
+                    $r = new Get;
+                    $r->setAvatarhash($presence->avatarhash)
+                      ->setTo((string)$refreshable)
+                      ->request();
+                }
 
-            if ($presence->muc
-            && isset($stanza->x)) {
-                foreach ($stanza->x as $x) {
-                    if ($x->attributes()->xmlns == 'http://jabber.org/protocol/muc#user'
-                    && isset($stanza->x->status)
-                    && \in_array((int)$stanza->x->status->attributes()->code, [110, 332, 307, 301])) {
-                        if ($presence->value != 5 && $presence->value != 6) {
-                            $this->method('muc_handle');
-                            $this->pack($presence);
-                        } elseif ($presence->value == 5) {
-                            $this->method('unavailable_handle');
-                            $this->pack($presence);
+                if ($presence->muc
+                && isset($stanza->x)) {
+                    foreach ($stanza->x as $x) {
+                        if ($x->attributes()->xmlns == 'http://jabber.org/protocol/muc#user'
+                        && isset($stanza->x->status)
+                        && \in_array((int)$stanza->x->status->attributes()->code, [110, 332, 307, 301])) {
+                            if ($presence->value != 5 && $presence->value != 6) {
+                                $this->method('muc_handle');
+                                $this->pack($presence);
+                            } elseif ($presence->value == 5) {
+                                $this->method('unavailable_handle');
+                                $this->pack($presence);
+                            }
+
+                            $this->deliver();
+                            break;
                         }
+                    }
+                } else {
+                    $this->pack($presence->roster);
 
-                        $this->deliver();
+                    if ($presence->value == 5 /*|| $p->value == 6*/) {
+                        $presence->delete();
                     }
                 }
-            } else {
-                $this->pack($presence->roster);
 
-                if ($presence->value == 5 /*|| $p->value == 6*/) {
-                    $presence->delete();
-                }
-            }
-
-            $this->deliver();
+                $this->deliver();
+            });
         }
     }
 }

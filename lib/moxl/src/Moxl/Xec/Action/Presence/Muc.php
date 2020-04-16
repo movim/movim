@@ -6,6 +6,7 @@ use Moxl\Xec\Action;
 use Moxl\Stanza\Presence;
 
 use Movim\Session;
+use App\PresenceBuffer;
 
 class Muc extends Action
 {
@@ -58,35 +59,35 @@ class Muc extends Action
             $presence->mucjid = current(explode('/', (string)$stanza->attributes()->to));
         }
 
-        $presence->save();
+        PresenceBuffer::getInstance()->append($presence, function () use ($presence) {
+            if ($this->_mam) {
+                $message = \App\User::me()->messages()
+                                        ->where('jidfrom', $this->_to)
+                                        ->whereNull('subject')
+                                        ->orderBy('published', 'desc')
+                                        ->first();
 
-        if ($this->_mam) {
-            $message = \App\User::me()->messages()
-                                      ->where('jidfrom', $this->_to)
-                                      ->whereNull('subject')
-                                      ->orderBy('published', 'desc')
-                                      ->first();
+                $g = new \Moxl\Xec\Action\MAM\Get;
+                $g->setTo($this->_to)
+                ->setLimit(300);
 
-            $g = new \Moxl\Xec\Action\MAM\Get;
-            $g->setTo($this->_to)
-              ->setLimit(300);
+                if (!empty($message)
+                && strtotime($message->published) > strtotime('-3 days')) {
+                    $g->setStart(strtotime($message->published));
+                } else {
+                    $g->setStart(strtotime('-3 days'));
+                }
 
-            if (!empty($message)
-            && strtotime($message->published) > strtotime('-3 days')) {
-                $g->setStart(strtotime($message->published));
-            } else {
-                $g->setStart(strtotime('-3 days'));
+                if (!$this->_mam2) {
+                    $g->setVersion('1');
+                }
+
+                $g->request();
             }
 
-            if (!$this->_mam2) {
-                $g->setVersion('1');
-            }
-
-            $g->request();
-        }
-
-        $this->pack($presence);
-        $this->deliver();
+            $this->pack($presence);
+            $this->deliver();
+        });
     }
 
     public function errorRegistrationRequired($stanza, $parent = false)

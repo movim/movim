@@ -327,7 +327,10 @@ class Message extends Model
                                 ->where('jidfrom', $this->jidfrom)
                                 ->where('replaceid', (string)$stanza->replace->attributes()->id)
                                 ->first();
-                $this->oldid = $message->id;
+
+                if ($message) {
+                    $this->oldid = $message->id;
+                }
 
                 /**
                  * We prepare the existing message to be edited in the DB
@@ -440,5 +443,51 @@ class Message extends Model
                 $this->body = $old;
             }
         }
+    }
+
+    public function valid()
+    {
+        return
+            strlen($this->attributes['jidto']) < 256
+            && strlen($this->attributes['jidfrom']) < 256
+            && (!isset($this->attributes['resource']) || strlen($this->attributes['resource']) < 256)
+            && (!isset($this->attributes['thread']) || strlen($this->attributes['thread']) < 128)
+            && (!isset($this->attributes['replaceid']) || strlen($this->attributes['replaceid']) < 64)
+            && (!isset($this->attributes['originid']) || strlen($this->attributes['originid']) < 255)
+            && (!isset($this->attributes['id']) || strlen($this->attributes['id']) < 64)
+            && (!isset($this->attributes['oldid']) || strlen($this->attributes['oldid']) < 64);
+    }
+
+    public function toRawArray()
+    {
+        return [
+            'user_id' => $this->attributes['user_id'] ?? null,
+            'id' => $this->attributes['id'] ?? null,
+            'oldid' => $this->attributes['oldid'] ?? null,
+            'jidto' => $this->attributes['jidto'] ?? null,
+            'jidfrom' => $this->attributes['jidfrom'] ?? null,
+            'resource' => $this->attributes['resource'] ?? null,
+            'type' => $this->attributes['type'] ?? null,
+            'subject' => $this->attributes['subject'] ?? null,
+            'thread' => $this->attributes['thread'] ?? null,
+            'body' => $this->attributes['body'] ?? null,
+            'html' => $this->attributes['html'] ?? null,
+            'published' => $this->attributes['published'] ?? null,
+            'delivered' => $this->attributes['deliver'] ?? null,
+            'displayed' => $this->attributes['displayed'] ?? null,
+            'quoted' => $this->attributes['quoted'] ?? false,
+            'markable' => $this->attributes['markable'] ?? false,
+            'picture' => $this->attributes['picture'] ?? null,
+            'sticker' => $this->attributes['sticker'] ?? null,
+            'file' => isset($this->attributes['file']) ? $this->attributes['file'] : null,
+            'created_at' => $this->attributes['created_at'] ?? null,
+            'updated_at' => $this->attributes['updated_at'] ?? null,
+            'replaceid' => $this->attributes['replaceid'] ?? null,
+            'seen' => $this->attributes['seen'] ?? false,
+            'encrypted' => $this->attributes['encrypted'] ?? false,
+            'originid' => $this->attributes['originid'] ?? null,
+            'retracted' => $this->attributes['retracted'] ?? false,
+            'resolved' => $this->attributes['resolved'] ?? false,
+        ];
     }
 }

@@ -238,7 +238,7 @@ function explodeJid(string $jid): array
     $arr = explode('/', $jid);
     $jid = $arr[0];
 
-    $resource = isset($arr[1]) ? $arr[1] : null;
+    $resource = count($arr) > 1 ? implode('/', array_slice($arr, 1)) : null;
     $username = null;
 
     $arr = explode('@', $jid);

@@ -35,6 +35,7 @@ class Message extends Payload
         }
 
         if (!$message->encrypted
+        && $message->valid()
         && (!$message->isEmpty() || $message->isSubject())) {
             $message->save();
             $message = $message->fresh();

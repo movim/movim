@@ -97,14 +97,9 @@ class Presence extends Model
     public function set($stanza)
     {
         $this->session_id = SESSION_ID;
-        $jid = explode('/', (string)$stanza->attributes()->from);
-        $this->jid = $jid[0];
-
-        if (isset($jid[1])) {
-            $this->resource = $jid[1];
-        } else {
-            $this->resource = '';
-        }
+        $jid = explodeJid($stanza->attributes()->from);
+        $this->jid = $jid['jid'];
+        $this->resource = $jid['resource'] ?? '';
 
         if ($stanza->status && !empty((string)$stanza->status)) {
             $this->status = (string)$stanza->status;
@@ -186,5 +181,28 @@ class Presence extends Model
         if ($stanza->query) {
             $this->last = (int)$stanza->query->attributes()->seconds;
         }
+    }
+
+    public function toArray()
+    {
+        $now = \Carbon\Carbon::now();
+        return [
+            'session_id' => $this->attributes['session_id'] ?? null,
+            'jid' => $this->attributes['jid']  ?? null,
+            'resource' => $this->attributes['resource'] ?? null,
+            'value' => $this->attributes['value'] ?? null,
+            'priority' => $this->attributes['priority'] ?? null,
+            'status' => $this->attributes['status'] ?? null,
+            'node' => $this->attributes['node'] ?? null,
+            'delay' => $this->attributes['delay'] ?? null,
+            'last' => $this->attributes['last'] ?? null,
+            'muc' => $this->attributes['muc'] ?? null,
+            'mucjid' => $this->attributes['mucjid'] ?? null,
+            'mucaffiliation' => $this->attributes['mucaffiliation']  ?? null,
+            'mucrole' => $this->attributes['mucrole'] ?? null,
+            'created_at' => $this->attributes['created_at'] ?? $now,
+            'updated_at' => $this->attributes['updated_at'] ?? $now,
+            'avatarhash' => $this->attributes['avatar_hash'] ?? null,
+        ];
     }
 }
