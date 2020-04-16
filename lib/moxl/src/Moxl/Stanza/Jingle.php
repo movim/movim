@@ -17,6 +17,7 @@ class Jingle
 
         $description = $dom->createElementNS('urn:xmpp:jingle:apps:rtp:1', 'description');
         $description->setAttribute('media', 'video');
+        $description->setAttribute('media', 'audio');
         $propose->appendChild($description);
 
         \Moxl\API::request($dom->saveXML($dom->documentElement));
