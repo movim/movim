@@ -174,7 +174,7 @@ class Chat extends \Movim\Widget\Base
 
     public function onConferenceSubject($packet)
     {
-        $this->ajaxGetRoom($packet->content->jidfrom);
+        $this->ajaxGetRoom($packet->content->jidfrom, false, true);
     }
 
     public function onMAMRetrieved()

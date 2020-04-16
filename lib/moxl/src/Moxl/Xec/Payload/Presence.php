@@ -28,7 +28,6 @@ class Presence extends Payload
             $presence->set($stanza);
 
             PresenceBuffer::getInstance()->append($presence, function () use ($presence, $stanza) {
-                //$presence = $presence->fresh();
                 $refreshable = $presence->refreshable;
                 if ($refreshable) {
                     $r = new Get;
