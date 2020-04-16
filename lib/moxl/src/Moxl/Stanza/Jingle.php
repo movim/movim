@@ -17,6 +17,9 @@ class Jingle
 
         $description = $dom->createElementNS('urn:xmpp:jingle:apps:rtp:1', 'description');
         $description->setAttribute('media', 'video');
+        $propose->appendChild($description);
+
+        $description = $dom->createElementNS('urn:xmpp:jingle:apps:rtp:1', 'description');
         $description->setAttribute('media', 'audio');
         $propose->appendChild($description);
 
