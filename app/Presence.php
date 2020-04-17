@@ -6,6 +6,8 @@ use Movim\Model;
 use Movim\Picture;
 use Movim\Session;
 
+use App\PresenceBuffer;
+
 class Presence extends Model
 {
     protected $primaryKey = ['session_id', 'jid', 'resource'];
@@ -86,12 +88,20 @@ class Presence extends Model
 
     public static function findByStanza($stanza)
     {
-        $jid = explode('/', (string)$stanza->attributes()->from);
-        return self::firstOrNew([
-            'session_id' => SESSION_ID,
-            'jid' => $jid[0],
-            'resource' => isset($jid[1]) ? $jid[1] : ''
-        ]);
+        $buffer = PresenceBuffer::getInstance();
+        $temporary = new self;
+        $temporary->set($stanza);
+
+        if ($buffer->saved($temporary)) {
+            $jid = explode('/', (string)$stanza->attributes()->from);
+            return self::firstOrNew([
+                'session_id' => SESSION_ID,
+                'jid' => $jid[0],
+                'resource' => isset($jid[1]) ? $jid[1] : ''
+            ]);
+        }
+
+        return $temporary;
     }
 
     public function set($stanza)

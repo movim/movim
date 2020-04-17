@@ -10,6 +10,9 @@ class PresenceBuffer
     private $_models = null;
     private $_calls = null;
 
+    // Historically processed presences, to prevent useless DB lookup
+    private $_saved = [];
+
     public static function getInstance()
     {
         if (!isset(self::$instance)) {
@@ -25,10 +28,16 @@ class PresenceBuffer
 
         $this->_models = collect();
         $this->_calls = collect();
+        $this->_saved = collect();
 
         $loop->addPeriodicTimer(1, function () {
             $this->save();
         });
+    }
+
+    public function saved(Presence $presence)
+    {
+        return $this->_saved->contains($this->getPresenceKey($presence));
     }
 
     public function save()
@@ -54,11 +63,18 @@ class PresenceBuffer
     {
         // Only presences that can be inserted, not updated
         if ($presence->created_at == null) {
-            $this->_models[$presence->muc ? $presence->jid.$presence->mucjid : $presence->jid.$presence->resource] = $presence->toArray();
+            $key = $this->getPresenceKey($presence);
+            $this->_saved->push($key);
+            $this->_models[$key] = $presence->toArray();
             $this->_calls->push($call);
         } else {
             $presence->save();
             $call();
         }
+    }
+
+    private function getPresenceKey(Presence $presence)
+    {
+        return $presence->muc ? $presence->jid.$presence->mucjid : $presence->jid.$presence->resource;
     }
 }
