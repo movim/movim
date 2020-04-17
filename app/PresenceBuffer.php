@@ -73,6 +73,11 @@ class PresenceBuffer
         }
     }
 
+    public function remove(Presence $presence)
+    {
+        $this->_saved->forget($this->getPresenceKey($presence));
+    }
+
     private function getPresenceKey(Presence $presence)
     {
         return $presence->muc ? $presence->jid.$presence->mucjid : $presence->jid.$presence->resource;
