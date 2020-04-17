@@ -32,11 +32,20 @@
                     <i class="material-icons">person</i>
                 </span>
             {/if}
-            {if="$value->presence && $value->presence->capability && $value->presence->capability->isJingle()"}
-                <span title="{$c->__('button.call')}" class="control icon active gray"
-                        onclick="VisioLink.openVisio('{$value->presence->jid . '/' . $value->presence->resource}');">
-                    <i class="material-icons">phone</i>
-                </span>
+            {if="$value->presences->count() > 0"}
+                {loop="$value->presences"}
+                    {if="$value->capability && $value->capability->isJingle()"}
+                        <span title="{$c->__('button.audio_call')}" class="control icon active gray"
+                            onclick="VisioLink.openVisio('{$value->jid}');">
+                            <i class="material-icons">phone</i>
+                        </span>
+                        <span title="{$c->__('button.video_call')}" class="control icon active gray"
+                            onclick="VisioLink.openVisio('{$value->jid}', '', true);">
+                            <i class="material-icons">videocam</i>
+                        </span>
+                        {break}
+                    {/if}
+                {/loop}
             {/if}
             <span class="control icon active gray" onclick="Search.chat('{$value->jid|echapJS}')">
                 <i class="material-icons">comment</i>
