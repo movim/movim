@@ -19,7 +19,10 @@ class Visio extends Base
         $this->registerEvent('jinglepropose', 'onPropose');
         $this->registerEvent('jingleproceed', 'onProceed');
         $this->registerEvent('jingleaccept', 'onAccept');
+        $this->registerEvent('jingleretract', 'onTerminateRetract');
+        $this->registerEvent('jinglereject', 'onTerminateReject');
         $this->registerEvent('jingle_sessioninitiate', 'onInitiateSDP');
+        $this->registerEvent('jingle_sessioninitiate_erroritemnotfound', 'onTerminateNotFound');
         $this->registerEvent('jingle_sessionaccept', 'onAcceptSDP');
         $this->registerEvent('jingle_transportinfo', 'onCandidate');
         $this->registerEvent('jingle_sessionterminate', 'onTerminate');
@@ -85,6 +88,21 @@ class Visio extends Base
         $sdp = $jts->generate();
 
         $this->rpc('Visio.onCandidate', $sdp, (string)$jts->name, $jts->name);
+    }
+
+    public function onTerminateRetract()
+    {
+        $this->onTerminate('retract');
+    }
+
+    public function onTerminateReject()
+    {
+        $this->onTerminate('reject');
+    }
+
+    public function onTerminateNotFound()
+    {
+        $this->onTerminate('notfound');
     }
 
     public function onTerminate($reason)
