@@ -74,7 +74,7 @@ var Visio = {
         };
 
         Visio.pc.onicecandidate = event => {
-            if (event.candidate) {
+            if (event.candidate && event.candidate.candidate != '') {
                 Visio_ajaxCandidate(event.candidate, Visio.from, Visio.id);
             }
         };
