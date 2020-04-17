@@ -108,11 +108,14 @@ class SDPtoJingle
         foreach ($params as $value) {
             $p = explode('=', trim($value));
 
-            $parameter = $payloadtype->addChild('parameter');
-
             if (count($p) == 1) {
-                $parameter->addAttribute('value', $p[0]);
+                /**
+                 * http://xmpp.org/extensions/xep-0167.html#format
+                 * doesn't specifiy a case where we only have a value
+                 */
+                //$parameter->addAttribute('value', $p[0]);
             } else {
+                $parameter = $payloadtype->addChild('parameter');
                 $parameter->addAttribute('name', $p[0]);
                 $parameter->addAttribute('value', $p[1]);
             }
