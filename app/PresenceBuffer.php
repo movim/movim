@@ -34,7 +34,11 @@ class PresenceBuffer
     public function save()
     {
         if ($this->_models->isNotEmpty()) {
-            Presence::insert($this->_models->toArray());
+            try {
+                Presence::insert($this->_models->toArray());
+            } catch (\Exception $e) {
+                \Utils::error($e->getMessage());
+            }
             $this->_models = collect();
         }
 
