@@ -54,7 +54,7 @@ class PresenceBuffer
     {
         // Only presences that can be inserted, not updated
         if ($presence->created_at == null) {
-            $this->_models[$presence->muc ? $presence->mucjid : $presence->jid.$presence->resource] = $presence->toArray();
+            $this->_models[$presence->muc ? $presence->jid.$presence->mucjid : $presence->jid.$presence->resource] = $presence->toArray();
             $this->_calls->push($call);
         } else {
             $presence->save();

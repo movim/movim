@@ -27,15 +27,15 @@ class Presence extends Payload
             $presence = DBPresence::findByStanza($stanza);
             $presence->set($stanza);
 
-            PresenceBuffer::getInstance()->append($presence, function () use ($presence, $stanza) {
-                $refreshable = $presence->refreshable;
-                if ($refreshable) {
-                    $r = new Get;
-                    $r->setAvatarhash($presence->avatarhash)
-                      ->setTo((string)$refreshable)
-                      ->request();
-                }
+            $refreshable = $presence->refreshable;
+            if ($refreshable) {
+                $r = new Get;
+                $r->setAvatarhash($presence->avatarhash)
+                  ->setTo((string)$refreshable)
+                  ->request();
+            }
 
+            PresenceBuffer::getInstance()->append($presence, function () use ($presence, $stanza) {
                 if ($presence->muc
                 && isset($stanza->x)) {
                     foreach ($stanza->x as $x) {
