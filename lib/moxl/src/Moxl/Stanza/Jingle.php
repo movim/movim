@@ -53,6 +53,22 @@ class Jingle
         \Moxl\API::request($dom->saveXML($dom->documentElement));
     }
 
+    public static function sessionReject($id, $to = false)
+    {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $message = $dom->createElementNS('jabber:client', 'message');
+        if ($to) {
+            $message->setAttribute('to', $to);
+        }
+        $dom->appendChild($message);
+
+        $proceed = $dom->createElementNS('urn:xmpp:jingle-message:0', 'reject');
+        $proceed->setAttribute('id', $id);
+        $message->appendChild($proceed);
+
+        \Moxl\API::request($dom->saveXML($dom->documentElement));
+    }
+
     public static function sessionInitiate($to, $offer)
     {
         $xml = \Moxl\API::iqWrapper($offer, $to, 'set');

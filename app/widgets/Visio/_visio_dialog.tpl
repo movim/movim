@@ -15,7 +15,7 @@
     </ul>
 </section>
 <div class="no_bar">
-    <button onclick="VisioLink_ajaxDecline('{$from}', '{$id}'); Dialog_ajaxClear()" class="button flat">
+    <button onclick="VisioLink_ajaxReject('{$from}', '{$id}'); Dialog_ajaxClear()" class="button flat">
         {$c->__('button.refuse')}
     </button>
     <button onclick="VisioLink.openVisio('{$from}', '{$id}'); Dialog_ajaxClear();" class="button flat green">

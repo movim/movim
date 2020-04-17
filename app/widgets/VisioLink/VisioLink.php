@@ -2,6 +2,8 @@
 
 use Movim\Widget\Base;
 
+use Moxl\Xec\Action\Jingle\SessionReject;
+
 class VisioLink extends Base
 {
     public function load()
@@ -10,10 +12,12 @@ class VisioLink extends Base
         $this->addcss('visiolink.css');
     }
 
-    public function ajaxDecline($to, $id)
+    public function ajaxReject($to, $id)
     {
         $this->rpc('Notification.incomingAnswer');
-        $visio = new Visio;
-        $visio->ajaxTerminate($to, 'decline', $id);
+        $reject = new SessionReject;
+        $reject->setTo($to)
+               ->setId($id)
+               ->request();
     }
 }
