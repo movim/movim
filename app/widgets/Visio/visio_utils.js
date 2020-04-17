@@ -1,8 +1,8 @@
 var VisioUtils = {
     max_level_L: 0,
-    old_level_L: 0,
+    old_level_L: 1,
     remote_max_level_L: 0,
-    remote_old_level_L: 0,
+    remote_old_level_L: 1,
     audioContext: null,
     remoteAudioContext: null,
 
@@ -34,7 +34,7 @@ var VisioUtils = {
 
             instant_L = Math.sqrt(sum_L / inpt_L.length);
             VisioUtils.max_level_L = Math.max(VisioUtils.max_level_L, instant_L);
-            instant_L = Math.max(instant_L, VisioUtils.old_level_L -0.008 );
+            instant_L = Math.max(instant_L, VisioUtils.old_level_L -0.0005 );
             VisioUtils.old_level_L = instant_L;
 
             var level = (instant_L/VisioUtils.max_level_L);
@@ -75,7 +75,7 @@ var VisioUtils = {
 
             instant_L = Math.sqrt(sum_L / inpt_L.length);
             VisioUtils.max_level_L = Math.max(VisioUtils.max_level_L, instant_L);
-            instant_L = Math.max(instant_L, VisioUtils.old_level_L -0.008 );
+            instant_L = Math.max(instant_L, VisioUtils.old_level_L -0.0005 );
             VisioUtils.old_level_L = instant_L;
 
             var level = (instant_L/VisioUtils.max_level_L);

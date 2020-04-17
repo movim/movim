@@ -85,7 +85,7 @@
             {if="$roster && $roster->presences->count() > 0"}
                 {loop="$roster->presences"}
                     {if="$value->capability && $value->capability->isJingle()"}
-                        <li onclick="VisioLink.openVisio('{$roster->presence->jid . '/' . $roster->presence->resource}');">
+                        <li onclick="VisioLink.openVisio('{$value->jid}');">
                             <span class="primary icon green">
                                 <i class="material-icons">phone</i>
                             </span>
@@ -93,7 +93,7 @@
                                 <p class="normal">{$c->__('button.audio_call')}</p>
                             </div>
                         </li>
-                        <li onclick="VisioLink.openVisio('{$roster->presence->jid . '/' . $roster->presence->resource}', '', true);">
+                        <li onclick="VisioLink.openVisio('{$value->jid}', '', true);">
                             <span class="primary icon green">
                                 <i class="material-icons">videocam</i>
                             </span>
