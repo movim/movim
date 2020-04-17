@@ -1,7 +1,10 @@
 var VisioUtils = {
     max_level_L: 0,
     old_level_L: 0,
+    remote_max_level_L: 0,
+    remote_old_level_L: 0,
     audioContext: null,
+    remoteAudioContext: null,
 
     handleAudio: function() {
         VisioUtils.audioContext = new AudioContext();
@@ -11,10 +14,11 @@ var VisioUtils = {
                 ? Visio.localVideo.srcObject
                 : Visio.localAudio.srcObject
         );
-        var javascriptNode = VisioUtils.audioContext.createScriptProcessor(2048, 1, 1);
 
-        var cnvs = document.querySelector('#visio .level');
-        var cnvs_cntxt = cnvs.getContext('2d');
+        // Local microphone
+        var javascriptNode = VisioUtils.audioContext.createScriptProcessor(256, 1, 1);
+
+        var icon = document.querySelector('#toggle_audio i');
 
         microphone.connect(javascriptNode);
         javascriptNode.connect(VisioUtils.audioContext.destination);
@@ -33,9 +37,51 @@ var VisioUtils = {
             instant_L = Math.max(instant_L, VisioUtils.old_level_L -0.008 );
             VisioUtils.old_level_L = instant_L;
 
-            cnvs_cntxt.clearRect(0, 0, cnvs.width, cnvs.height);
-            cnvs_cntxt.fillStyle = 'white';
-            cnvs_cntxt.fillRect(0, 0,(cnvs.width)*(instant_L/VisioUtils.max_level_L),(cnvs.height)); // x,y,w,h
+            var level = (instant_L/VisioUtils.max_level_L);
+            if (level < 0.1) {
+                icon.style.color = 'white';
+            } else {
+                var inverse = 255-(level*255);
+                icon.style.color = 'rgb('+inverse+', 255, '+inverse+')';
+            }
+        }
+    },
+
+    handleRemoteAudio: function() {
+        VisioUtils.remoteAudioContext = new AudioContext();
+
+        var remoteMicrophone = VisioUtils.remoteAudioContext.createMediaStreamSource(
+            Visio.withVideo
+                ? Visio.remoteVideo.srcObject
+                : Visio.remoteAudio.srcObject
+        );
+
+        // Remote microphone
+        var remoteJavascriptNode = VisioUtils.remoteAudioContext.createScriptProcessor(256, 1, 1);
+
+        var image = document.querySelector('#visio .infos img');
+
+        remoteMicrophone.connect(remoteJavascriptNode);
+        remoteJavascriptNode.connect(VisioUtils.remoteAudioContext.destination);
+        remoteJavascriptNode.onaudioprocess = function(event) {
+            var inpt_L = event.inputBuffer.getChannelData(0);
+            var instant_L = 0.0;
+
+            var sum_L = 0.0;
+
+            for(var i = 0; i < inpt_L.length; ++i) {
+                sum_L += inpt_L[i] * inpt_L[i];
+            }
+
+            instant_L = Math.sqrt(sum_L / inpt_L.length);
+            VisioUtils.max_level_L = Math.max(VisioUtils.max_level_L, instant_L);
+            instant_L = Math.max(instant_L, VisioUtils.old_level_L -0.008 );
+            VisioUtils.old_level_L = instant_L;
+
+            var level = (instant_L/VisioUtils.max_level_L);
+            if (level < 0.1) level = 0;
+
+            image.style.borderColor = 'rgba(255, 255, 255, ' + level + ')';
         }
     },
 

@@ -69,6 +69,7 @@ var Visio = {
                 Visio.remoteVideo.srcObject = event.streams[0];
             } else {
                 Visio.remoteAudio.srcObject = event.streams[0];
+                VisioUtils.handleRemoteAudio();
             }
         };
 

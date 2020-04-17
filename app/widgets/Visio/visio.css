@@ -21,11 +21,15 @@ body {
     top: calc(50% - 15rem);
     width: 100%;
     z-index: -1;
+    text-align: center;
 }
 
 #visio .infos img {
     border-radius: 100%;
     width: 15rem;
+    border: 0.5rem solid transparent;
+    margin-bottom: 2rem;
+    position: relative;
 }
 
 #visio .infos p.state {
@@ -33,26 +37,22 @@ body {
     font-size: 1.8rem;
 }
 
-#visio .level,
 #visio video#video {
     position: fixed;
-    right: 0;
-    bottom: 0;
+    right: 1rem;
+    bottom: 1rem;
     width: 25rem;
     height: auto;
-}
+    border-radius: 0.25rem;
 
-#visio video#video {
     background-image: url('/theme/img/movim_cloud.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 0.25rem 0 0 0;
     background-size: 25%;
 }
 
 @media screen and (max-width: 800px) {
-    #visio .level,
     #visio video#video {
         width: 15rem;
     }
@@ -74,11 +74,6 @@ body {
 
 #visio .button.action {
     right: calc(50% - 3.5rem);
-}
-
-#visio .level {
-    background-color: rgba(255, 255, 255, 0.1);
-    height: 0.5rem;
 }
 
 #visio .ring {

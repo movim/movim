@@ -30,7 +30,9 @@
         <li>
             <div>
                 {if="$url"}
-                    <p class="center"><img src="{$url}"></p>
+                    <p class="center">
+                        <img src="{$url}">
+                    </p>
                 {/if}
                 <p class="normal center">{$contact->truename}</p>
                 <p class="normal state center"></p>
@@ -46,7 +48,6 @@
         <video id="video" autoplay muted poster="/theme/img/empty.png"></video>
     {/if}
 
-    <canvas class="level"></canvas>
     <div class="controls">
         <a id="main" class="button action color gray">
             <i class="material-icons">phone</i>
