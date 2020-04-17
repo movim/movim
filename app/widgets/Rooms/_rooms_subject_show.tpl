@@ -1,43 +1,58 @@
+{if="$conference"}
+    {$curl = $conference->getPhoto()}
+{/if}
+
 <section class="scroll">
-    <ul class="list middle">
-        <li>
-            {if="$conference"}
-                {$curl = $conference->getPhoto()}
-            {/if}
-
-            {if="$curl"}
-                <span class="primary icon bubble color active {$conference->name|stringToColor}"
-                    style="background-image: url({$curl});">
-                </span>
-            {else}
-                <span class="primary icon bubble color active {$conference->name|stringToColor}">
-                    {autoescape="off"}
-                        {$conference->name|firstLetterCapitalize|addEmojis}
-                    {/autoescape}
-                </span>
-            {/if}
-            <div>
-                {if="$conference && $conference->name"}
-                    <p class="line" title="{$room}">
-                        {$conference->name}
-                    </p>
+    <header class="big"
+        {if="$curl"}
+            style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%), url('{$conference->getPhoto('xxl')}');"
+        {/if}
+    >
+        <ul class="list thick">
+            <li>
+                {if="$curl"}
+                    <span class="primary icon bubble color active {$conference->name|stringToColor}"
+                        style="background-image: url({$curl});">
+                    </span>
                 {else}
-                    <p class="line">
-                        {$room}
-                    </p>
-                {/if}
-                <p class="all">
-                    {if="$conference->subject"}
+                    <span class="primary icon bubble color active {$conference->name|stringToColor}">
                         {autoescape="off"}
-                            {$conference->subject|addUrls}
+                            {$conference->name|firstLetterCapitalize|addEmojis}
                         {/autoescape}
+                    </span>
+                {/if}
+                <div>
+                    {if="$conference && $conference->name"}
+                        <p class="line" title="{$room}">
+                            {$conference->name}
+                        </p>
+                        <p class="line">{$room}</p>
                     {else}
-                        {$room}
+                        <p class="line">
+                            {$room}
+                        </p>
                     {/if}
-                </p>
-            </div>
-        </li>
-
+                </div>
+            </li>
+        </ul>
+    </header>
+    <ul class="list">
+        <p class="all">
+            {if="$conference->subject"}
+                <li>
+                    <span class="primary icon gray">
+                        <i class="material-icons">short_text</i>
+                    </span>
+                    <div>
+                        <p class="all normal">
+                            {autoescape="off"}
+                                {$conference->subject|addUrls}
+                            {/autoescape}
+                        </p>
+                    </div>
+                </li>
+            {/if}
+        </p>
         {if="$conference->info && $conference->info->mucpublic"}
             <li>
                 <span class="primary icon gray">

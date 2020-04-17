@@ -8,7 +8,7 @@ ul.list li {
     position: relative;
 }
 
-header > ul.list > li,
+header:not(.big) > ul.list > li,
 nav > ul.list > li,
 ul.list.fill > li,
 ul.list.controls > li {

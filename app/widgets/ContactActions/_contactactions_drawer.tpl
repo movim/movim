@@ -3,11 +3,9 @@
     <header class="big"
         {if="$url"}
             style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%), url('{$contact->getPhoto('xxl')}');"
-        {else}
-            style="background-color: rgba(62,81,181,1);"
         {/if}
         >
-        <ul class="list middle">
+        <ul class="list thick">
             <li>
                 {if="$url"}
                     <span class="primary icon bubble color

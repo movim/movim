@@ -161,6 +161,7 @@ ul.list li > div > p:nth-last-of-type(2) + p:not(.normal) {
 
 input[type=button].color,
 main > div > header.fixed,
+header.big,
 main > header {
     background-color: var(--movim-accent);
     color: white;
