@@ -4,7 +4,7 @@ namespace Moxl\Stanza;
 
 class Jingle
 {
-    public static function sessionPropose($to, $id)
+    public static function sessionPropose($to, $id, $withVideo = false)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $message = $dom->createElementNS('jabber:client', 'message');
@@ -15,9 +15,11 @@ class Jingle
         $propose->setAttribute('id', $id);
         $message->appendChild($propose);
 
-        $description = $dom->createElementNS('urn:xmpp:jingle:apps:rtp:1', 'description');
-        $description->setAttribute('media', 'video');
-        $propose->appendChild($description);
+        if ($withVideo) {
+            $description = $dom->createElementNS('urn:xmpp:jingle:apps:rtp:1', 'description');
+            $description->setAttribute('media', 'video');
+            $propose->appendChild($description);
+        }
 
         $description = $dom->createElementNS('urn:xmpp:jingle:apps:rtp:1', 'description');
         $description->setAttribute('media', 'audio');

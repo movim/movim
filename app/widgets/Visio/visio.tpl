@@ -11,12 +11,14 @@
                 <span id="toggle_audio" class="control icon color transparent active" onclick="VisioUtils.toggleAudio()">
                     <i class="material-icons">mic</i>
                 </span>
-                <span id="toggle_video" class="control icon color transparent active" onclick="VisioUtils.toggleVideo()">
-                    <i class="material-icons">videocam</i>
-                </span>
-                <span id="switch_camera" class="control icon color transparent active">
-                    <i class="material-icons">switch_camera</i>
-                </span>
+                {if="$withvideo"}
+                    <span id="toggle_video" class="control icon color transparent active" onclick="VisioUtils.toggleVideo()">
+                        <i class="material-icons">videocam</i>
+                    </span>
+                    <span id="switch_camera" class="control icon color transparent active">
+                        <i class="material-icons">switch_camera</i>
+                    </span>
+                {/if}
                 <div><p></p></div>
             </li>
         </ul>
@@ -36,8 +38,14 @@
         </li>
     </ul>
 
-    <video id="remote_video" autoplay poster="/theme/img/empty.png"></video>
-    <video id="video" autoplay muted poster="/theme/img/empty.png"></video>
+    <audio id="remote_audio" autoplay></audio>
+    <audio id="audio" autoplay muted></audio>
+
+    {if="$withvideo"}
+        <video id="remote_video" autoplay poster="/theme/img/empty.png"></video>
+        <video id="video" autoplay muted poster="/theme/img/empty.png"></video>
+    {/if}
+
     <canvas class="level"></canvas>
     <div class="controls">
         <a id="main" class="button action color gray">

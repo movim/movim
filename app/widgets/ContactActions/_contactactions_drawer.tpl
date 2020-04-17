@@ -32,9 +32,13 @@
                     {if="$roster && $roster->presences->count() > 0"}
                         {loop="$roster->presences"}
                             {if="$value->capability && $value->capability->isJingle()"}
-                                <span title="{$c->__('button.call')}" class="control icon active"
+                                <span title="{$c->__('button.audio_call')}" class="control icon active"
                                     onclick="VisioLink.openVisio('{$value->jid}');">
                                     <i class="material-icons">phone</i>
+                                </span>
+                                <span title="{$c->__('button.video_call')}" class="control icon active"
+                                    onclick="VisioLink.openVisio('{$value->jid}', '', true);">
+                                    <i class="material-icons">videocam</i>
                                 </span>
                                 {break}
                             {/if}

@@ -6,8 +6,12 @@ function logError(error) {
 var Visio = {
     from: null,
     id: null,
+    withVideo: false,
+
     localVideo: null,
     remoteVideo: null,
+    localAudio: null,
+    remoteAudio: null,
 
     calling: false,
 
@@ -21,8 +25,13 @@ var Visio = {
             Visio.from += '/' + MovimUtils.urlParts().params[1];
         }
 
-        Visio.localVideo = document.getElementById('video');
-        Visio.remoteVideo = document.getElementById('remote_video');
+        if (Visio.withVideo) {
+            Visio.localVideo = document.getElementById('video');
+            Visio.remoteVideo = document.getElementById('remote_video');
+        }
+
+        Visio.localAudio = document.getElementById('audio');
+        Visio.remoteAudio = document.getElementById('remote_audio');
 
         const servers = ['stun:stun01.sipphone.com',
             'stun:stun.ekiga.net',
@@ -56,7 +65,11 @@ var Visio = {
         Visio.pc = new RTCPeerConnection(configuration);
 
         Visio.pc.ontrack = event => {
-            Visio.remoteVideo.srcObject = event.streams[0];
+            if (Visio.withVideo) {
+                Visio.remoteVideo.srcObject = event.streams[0];
+            } else {
+                Visio.remoteAudio.srcObject = event.streams[0];
+            }
         };
 
         Visio.pc.onicecandidate = event => {
@@ -77,35 +90,51 @@ var Visio = {
         };
 
         VisioUtils.toggleMainButton();
-        VisioUtils.switchCameraSetup();
+
+        if (Visio.withVideo) {
+            VisioUtils.switchCameraSetup();
+        }
+
+        Visio.gotStream();
     },
 
     gotStream: function() {
-        // On Android where you can't have both camera enabled at the same time
-        var videoTrack = Visio.pc.getSenders().find(rtc => rtc.track && rtc.track.kind == 'video');
-        if (videoTrack) videoTrack.track.stop();
+        if (Visio.withVideo) {
+            // On Android where you can't have both camera enabled at the same time
+            var videoTrack = Visio.pc.getSenders().find(rtc => rtc.track && rtc.track.kind == 'video');
+            if (videoTrack) videoTrack.track.stop();
 
-        Visio.switchCamera.classList.add('disabled');
+            Visio.switchCamera.classList.add('disabled');
+        }
 
-        navigator.mediaDevices.getUserMedia({
+        var constraints = {
             audio: true,
-            video: {
+            video: false
+        };
+
+        if (Visio.withVideo) {
+            constraints.video = {
                 deviceId: Visio.videoSelect.value,
                 facingMode: 'user',
                 width: { ideal: 4096 },
                 height: { ideal: 4096 }
-            }
-        }).then(stream => {
-            Visio.switchCamera.classList.remove('disabled');
+            };
+        }
 
-            Visio.localVideo.srcObject = stream;
+        navigator.mediaDevices.getUserMedia(constraints).then(stream => {
+            if (!Visio.withVideo) {
+                Visio.localAudio.srcObject = stream;
+            } else {
+                Visio.switchCamera.classList.remove('disabled');
+                Visio.localVideo.srcObject = stream;
 
-            // Switch camera
-            let videoTrack = stream.getVideoTracks()[0];
-            var sender = Visio.pc.getSenders().find(s => s.track && s.track.kind == videoTrack.kind);
+                // Switch camera
+                let videoTrack = stream.getVideoTracks()[0];
+                var sender = Visio.pc.getSenders().find(s => s.track && s.track.kind == videoTrack.kind);
 
-            if (sender) {
-                sender.replaceTrack(videoTrack);
+                if (sender) {
+                    sender.replaceTrack(videoTrack);
+                }
             }
 
             VisioUtils.handleAudio();
@@ -122,7 +151,7 @@ var Visio = {
                     Visio.id = Math.random().toString(36).substr(2, 9);
                     Visio.calling = true;
                     VisioUtils.toggleMainButton();
-                    Visio_ajaxPropose(Visio.from, Visio.id);
+                    Visio_ajaxPropose(Visio.from, Visio.id, Visio.withVideo);
                 }
             }
         }, logError);
@@ -175,21 +204,40 @@ var Visio = {
     },
 
     onTerminate: (reason) => {
-        let localStream = Visio.localVideo.srcObject;
+        if (!Visio.withVideo) {
+            let localStream = Visio.localAudio.srcObject;
 
-        if (localStream) {
-            localStream.getTracks().forEach(track => track.stop());
+            if (localStream) {
+                localStream.getTracks().forEach(track => track.stop());
+            }
+
+            let remoteStream = Visio.remoteAudio.srcObject;
+
+            if (remoteStream) {
+                remoteStream.getTracks().forEach(track => track.stop());
+            }
+
+            Visio.localAudio.srcObject = null;
+            Visio.remoteAudio.srcObject = null;
+        } else {
+            let localStream = Visio.localVideo.srcObject;
+
+            if (localStream) {
+                localStream.getTracks().forEach(track => track.stop());
+            }
+
+            let remoteStream = Visio.remoteVideo.srcObject;
+
+            if (remoteStream) {
+                remoteStream.getTracks().forEach(track => track.stop());
+            }
+
+            Visio.localVideo.srcObject = null;
+            Visio.remoteVideo.srcObject = null;
+
+            Visio.localVideo.classList.add('hide');
         }
 
-        let remoteStream = Visio.remoteVideo.srcObject;
-
-        if (remoteStream) {
-            remoteStream.getTracks().forEach(track => track.stop());
-        }
-
-        Visio.localVideo.srcObject = null;
-        Visio.remoteVideo.srcObject = null;
-        Visio.localVideo.classList.add('hide');
 
         if (Visio.pc) Visio.pc.close();
 
@@ -214,6 +262,10 @@ var Visio = {
 MovimWebsocket.attach(() => {
     if (MovimUtils.urlParts().params[2] !== undefined) {
         Visio.id = MovimUtils.urlParts().params[2];
+    }
+
+    if (MovimUtils.urlParts().page == 'visio') {
+        Visio.withVideo = true;
     }
 
     Visio.init();

@@ -18,7 +18,7 @@
     <button onclick="VisioLink_ajaxReject('{$from}', '{$id}'); Dialog_ajaxClear()" class="button flat">
         {$c->__('button.refuse')}
     </button>
-    <button onclick="VisioLink.openVisio('{$from}', '{$id}'); Dialog_ajaxClear();" class="button flat green">
+    <button onclick="VisioLink.openVisio('{$from}', '{$id}', {if="$withvideo"}true{else}false{/if}); Dialog_ajaxClear();" class="button flat green">
         {$c->__('button.reply')}
     </button>
 </div>

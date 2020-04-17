@@ -6,7 +6,11 @@ var VisioUtils = {
     handleAudio: function() {
         VisioUtils.audioContext = new AudioContext();
 
-        var microphone = VisioUtils.audioContext.createMediaStreamSource(Visio.localVideo.srcObject);
+        var microphone = VisioUtils.audioContext.createMediaStreamSource(
+            Visio.withVideo
+                ? Visio.localVideo.srcObject
+                : Visio.localAudio.srcObject
+        );
         var javascriptNode = VisioUtils.audioContext.createScriptProcessor(2048, 1, 1);
 
         var cnvs = document.querySelector('#visio .level');
@@ -162,8 +166,6 @@ var VisioUtils = {
 
             Visio.gotStream();
         };
-
-        Visio.gotStream();
     },
 
     gotDevices: function(deviceInfos) {

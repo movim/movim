@@ -38,10 +38,15 @@ class Visio extends Base
         $view->assign('contact', $contact);
         $view->assign('from', $data['from']);
         $view->assign('id', $data['id']);
+        $view->assign('withvideo', $data['withVideo']);
 
         Dialog::fill($view->draw('_visio_dialog'), false, true);
 
         $this->rpc('Notification.incomingCall');
+
+        $withVideoParameter = $data['withVideo']
+            ? 'true'
+            : 'false';
 
         Notification::append(
             'call',
@@ -51,7 +56,7 @@ class Visio extends Base
             5,
             null,
             null,
-            'VisioLink.openVisio(\''.$data['from'].'\', \''.$data['id'].'\'); Dialog_ajaxClear()'
+            'VisioLink.openVisio(\''.$data['from'].'\', \''.$data['id'].'\', '.$withVideoParameter.'); Dialog_ajaxClear()'
         );
     }
 
@@ -114,11 +119,12 @@ class Visio extends Base
         $this->rpc('Visio.onTerminate', $reason);
     }
 
-    public function ajaxPropose($to, $id)
+    public function ajaxPropose($to, $id, $withVideo = false)
     {
         $p = new SessionPropose;
         $p->setTo($to)
           ->setId($id)
+          ->setWithVideo($withVideo)
           ->request();
     }
 
@@ -193,6 +199,7 @@ class Visio extends Base
 
     public function display()
     {
+        $this->view->assign('withvideo', $this->getView() == 'visio');
         $this->view->assign('contact', \App\Contact::firstOrNew(['id' => $this->get('f')]));
     }
 }

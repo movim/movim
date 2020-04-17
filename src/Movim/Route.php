@@ -44,6 +44,7 @@ class Route extends Base
                 'system'        => false,
                 'tag'           => ['t', 'i'],
                 'visio'         => ['f', 's'],
+                'visioaudio'    => ['f', 's'],
             ];
     }
 

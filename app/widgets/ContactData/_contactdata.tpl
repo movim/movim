@@ -81,15 +81,29 @@
 <div class="block">
     <ul class="list middle active divided spaced">
         {if="!$contact->isMe()"}
-            {if="$roster && $roster->presence && $roster->presence->capability && $roster->presence->capability->isJingle()"}
-                <li onclick="VisioLink.openVisio('{$roster->presence->jid . '/' . $roster->presence->resource}');">
-                    <span class="primary icon green">
-                        <i class="material-icons">phone</i>
-                    </span>
-                    <div>
-                        <p class="normal">{$c->__('button.call')}</p>
-                    </div>
-                </li>
+
+            {if="$roster && $roster->presences->count() > 0"}
+                {loop="$roster->presences"}
+                    {if="$value->capability && $value->capability->isJingle()"}
+                        <li onclick="VisioLink.openVisio('{$roster->presence->jid . '/' . $roster->presence->resource}');">
+                            <span class="primary icon green">
+                                <i class="material-icons">phone</i>
+                            </span>
+                            <div>
+                                <p class="normal">{$c->__('button.audio_call')}</p>
+                            </div>
+                        </li>
+                        <li onclick="VisioLink.openVisio('{$roster->presence->jid . '/' . $roster->presence->resource}', '', true);">
+                            <span class="primary icon green">
+                                <i class="material-icons">videocam</i>
+                            </span>
+                            <div>
+                                <p class="normal">{$c->__('button.video_call')}</p>
+                            </div>
+                        </li>
+                        {break}
+                    {/if}
+                {/loop}
             {/if}
             <li onclick="ContactHeader_ajaxChat('{$contact->jid|echapJS}')">
                 <span class="primary icon gray">

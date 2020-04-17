@@ -14,6 +14,10 @@ v0.17.2 (trunk)
  * Add Chat messages URL pictures resolver
  * Full rewrite of the Movim list system in the UI
  * Remove the Notifications panel from Onboarding, the browser can take care of that
+ * Redesign the header of contacts and chatrooms drawers
+ * Add a PresenceBuffer to do mass insert of Presences in the SQL DB
+ * Complete and fix Jingle/WebRTC implementation in Movim, work on Compatibility with Conversations
+ * Add Audio-only call support
 
 v0.17.1
 ---------------------------
