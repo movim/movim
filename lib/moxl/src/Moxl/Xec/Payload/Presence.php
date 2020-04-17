@@ -42,6 +42,20 @@ class Presence extends Payload
                         if ($x->attributes()->xmlns == 'http://jabber.org/protocol/muc#user'
                         && isset($stanza->x->status)
                         && \in_array((int)$stanza->x->status->attributes()->code, [110, 332, 307, 301])) {
+                            // Spectrum2 specific bug, we can receive two self-presences, one with several caps items
+                            $cCount = 0;
+                            foreach ($stanza->children() as $key => $content) {
+                                if ($key == 'c') $cCount++;
+                            }
+
+                            if ($cCount > 1) {
+                                $presence->delete();
+                                break;
+                            }
+                            // So we drop it
+
+                            \Utils::debug('CONNECTED 2 '.$presence->jid. ' '.$stanza->x->status->attributes()->code);
+                            \Utils::debug($stanza->asXML());
                             if ($presence->value != 5 && $presence->value != 6) {
                                 $this->method('muc_handle');
                                 $this->pack($presence);
