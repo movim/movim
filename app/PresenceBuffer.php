@@ -28,7 +28,6 @@ class PresenceBuffer
 
         $this->_models = collect();
         $this->_calls = collect();
-        $this->_saved = collect();
 
         $loop->addPeriodicTimer(1, function () {
             $this->save();
@@ -37,7 +36,7 @@ class PresenceBuffer
 
     public function saved(Presence $presence)
     {
-        return $this->_saved->contains($this->getPresenceKey($presence));
+        return array_key_exists($this->getPresenceKey($presence), $this->_saved);
     }
 
     public function save()
@@ -64,7 +63,7 @@ class PresenceBuffer
         // Only presences that can be inserted, not updated
         if ($presence->created_at == null) {
             $key = $this->getPresenceKey($presence);
-            $this->_saved->push($key);
+            $this->_saved[$key] = 1;
             $this->_models[$key] = $presence->toArray();
             $this->_calls->push($call);
         } else {
@@ -75,7 +74,7 @@ class PresenceBuffer
 
     public function remove(Presence $presence)
     {
-        $this->_saved->forget($this->getPresenceKey($presence));
+        unset($this->_saved[$this->getPresenceKey($presence)]);
     }
 
     private function getPresenceKey(Presence $presence)

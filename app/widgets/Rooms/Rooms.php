@@ -20,6 +20,7 @@ use Movim\Session;
 use Movim\ChatStates;
 
 use App\Conference;
+use App\PresenceBuffer;
 
 class Rooms extends Base
 {
@@ -561,6 +562,13 @@ class Rooms extends Base
             $this->user->messages()->where('jidfrom', $room)->delete();
         }
 
+        // We clear the presences from the buffer cache and then the DB
+        $pb = PresenceBuffer::getInstance();
+        $this->user->session->conferences()
+            ->where('conference', $room)
+            ->first()->presences->each(function ($presence) use ($pb) {
+                $pb->remove($presence);
+            });
         $this->user->session->conferences()
              ->where('conference', $room)
              ->first()->presences()->delete();
