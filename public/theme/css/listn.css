@@ -1,4 +1,4 @@
-ul.list > a > li,
+ul.list > * > li,
 ul.list > li {
     clear: both;
     position: relative;
