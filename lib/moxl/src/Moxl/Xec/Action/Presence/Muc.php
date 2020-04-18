@@ -15,6 +15,9 @@ class Muc extends Action
     protected $_mam = false;
     protected $_mam2 = false;
 
+    // Disable the event
+    protected $_notify = true;
+
     public function request()
     {
         $session = Session::start();
@@ -50,6 +53,12 @@ class Muc extends Action
         return $this;
     }
 
+    public function noNotify()
+    {
+        $this->_notify = false;
+        return $this;
+    }
+
     public function handle($stanza, $parent = false)
     {
         $presence = \App\Presence::findByStanza($stanza);
@@ -68,7 +77,7 @@ class Muc extends Action
 
             $g = new \Moxl\Xec\Action\MAM\Get;
             $g->setTo($this->_to)
-            ->setLimit(300);
+              ->setLimit(300);
 
             if (!empty($message)
             && strtotime($message->published) > strtotime('-3 days')) {
@@ -85,7 +94,7 @@ class Muc extends Action
         }
 
         PresenceBuffer::getInstance()->append($presence, function () use ($presence) {
-            $this->pack($presence);
+            $this->pack([$presence, $this->_notify]);
             $this->deliver();
         });
     }

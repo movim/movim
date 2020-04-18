@@ -55,8 +55,6 @@ class Presence extends Payload
                             }
                             // So we drop it
 
-                            \Utils::debug('CONNECTED 2 '.$presence->jid. ' '.$stanza->x->status->attributes()->code);
-                            \Utils::debug($stanza->asXML());
                             if ($presence->value != 5 && $presence->value != 6) {
                                 $this->method('muc_handle');
                                 $this->pack($presence);

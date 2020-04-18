@@ -1,9 +1,9 @@
 <?php
 
 use Moxl\Xec\Action\Presence\Muc;
+use Moxl\Xec\Action\Presence\Unavailable;
 use Moxl\Xec\Action\Bookmark2\Set;
 use Moxl\Xec\Action\Bookmark2\Delete;
-use Moxl\Xec\Action\Presence\Unavailable;
 use Moxl\Xec\Action\Message\Invite;
 use Moxl\Xec\Action\Disco\Request;
 use Moxl\Xec\Action\Disco\Items;
@@ -123,7 +123,7 @@ class Rooms extends Base
     {
         foreach ($this->user->session->conferences as $room) {
             if ($room->autojoin && !$room->connected) {
-                $this->ajaxJoin($room->conference, $room->nick);
+                $this->ajaxJoin($room->conference, $room->nick, true);
             }
         }
 
@@ -485,7 +485,7 @@ class Rooms extends Base
     /**
      * @brief Join a chatroom
      */
-    public function ajaxJoin($room, $nickname = false)
+    public function ajaxJoin($room, $nickname = false, $noNotify = false)
     {
         if (!$this->validateRoom($room)) {
             return;
@@ -517,6 +517,10 @@ class Rooms extends Base
             $r = new Request;
             $r->setTo($jid['server'])
               ->request();
+        }
+
+        if ($noNotify) {
+            $p->noNotify();
         }
 
         $p->setNickname($nickname);

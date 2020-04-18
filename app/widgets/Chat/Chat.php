@@ -39,7 +39,7 @@ class Chat extends \Movim\Widget\Base
         $this->registerEvent('mam_get_handle_muc', 'onMAMMucRetrieved', 'chat');
         $this->registerEvent('composing', 'onComposing', 'chat');
         $this->registerEvent('paused', 'onPaused', 'chat');
-        $this->registerEvent('subject', 'onConferenceSubject', 'chat');
+        //$this->registerEvent('subject', 'onConferenceSubject', 'chat'); Spam the UI during authentication
         $this->registerEvent('muc_setsubject_handle', 'onConferenceSubject', 'chat');
         $this->registerEvent('muc_getconfig_handle', 'onRoomConfig', 'chat');
         $this->registerEvent('muc_setconfig_handle', 'onRoomConfigSaved', 'chat');
@@ -189,7 +189,11 @@ class Chat extends \Movim\Widget\Base
 
     public function onMucConnected($packet)
     {
-        $this->ajaxGetRoom($packet->content->jid, false, true);
+        list($content, $notify) = $packet->content;
+
+        if ($notify) {
+            $this->ajaxGetRoom($content->jid, false, true);
+        }
     }
 
     public function onRoomConfigError($packet)
