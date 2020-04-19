@@ -17,8 +17,6 @@ class Get extends Action
 
     public function handle($stanza, $parent = false)
     {
-        \Utils::debug($stanza->asXML());
-
         $services = [];
         foreach ($stanza->services->service as $service) {
             $item = [
