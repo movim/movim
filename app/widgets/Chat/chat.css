@@ -137,10 +137,7 @@ main:not(.enabled) #chat_widget {
 }
 
 #chat_widget .chat_box > ul.list > li > .control {
-    transition: transform 0.2s, visibility 0s, opacity 0.2s;
-    visibility: visible;
-    opacity: 1;
-    transform: scale(1);
+    transition: transform 0.2s;
 }
 
 #chat_widget .chat_box > ul.list > li > .control.attach.enabled {
@@ -151,14 +148,7 @@ main:not(.enabled) #chat_widget {
 #chat_widget .chat_box:not(.compose) > ul.list > li > .control.attach ~ .control.send,
 #chat_widget .chat_box.compose > ul.list > li > .control.attach ~ .control:not(.send),
 #chat_widget .chat_box.compose > ul.list > li > .control:not(.send) {
-    visibility: collapse;
-}
-
-#chat_widget .chat_box:not(.compose) > ul.list > li > .control.attach ~ .control.send,
-#chat_widget .chat_box.compose > ul.list > li > .control.attach ~ .control:not(.send),
-#chat_widget .chat_box.compose > ul.list > li > .control:not(.send) {
-    transform: scale(0.9);
-    opacity: 0.5;
+    display: none;
 }
 
 #chat_widget section ul.list li.oppose {

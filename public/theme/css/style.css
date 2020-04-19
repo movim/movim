@@ -406,12 +406,12 @@ img.avatar:not([src=""]) + .placeholder {
 }
 
 .on_mobile {
-    visibility: collapse;
+    display: none !important;
 }
 
 @media screen and (max-width: 1024px) {
     .on_mobile {
-        visibility: inherit;
+        display: inherit !important;
     }
 
     .on_mobile.material-icons {
@@ -419,7 +419,7 @@ img.avatar:not([src=""]) + .placeholder {
     }
 
     .on_desktop {
-        visibility: collapse;
+        display: none !important;
     }
 }
 
