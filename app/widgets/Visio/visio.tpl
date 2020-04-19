@@ -63,5 +63,7 @@ Visio.states = {
     connecting: '{$c->__('visio.connecting')}',
     ended: '{$c->__('visio.ended')}',
     declined: '{$c->__('visio.declined')}'
-}
+};
+
+Visio.externalServices = {autoescape="off"}{$externalservices}{/autoescape};
 </script>

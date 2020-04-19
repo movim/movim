@@ -33,6 +33,7 @@ class MessageBuffer
             } catch (\Exception $e) {
                 \Utils::error($e->getMessage());
             }
+
             $this->_models = collect();
         }
 

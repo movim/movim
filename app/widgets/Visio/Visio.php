@@ -199,7 +199,30 @@ class Visio extends Base
 
     public function display()
     {
+        $externalServices = [];
+        if ($this->user->session->externalservices) {
+            $turn = $stun = false;
+            foreach ($this->user->session->externalservices as $service) {
+                // One STUN/TURN server max
+                if ($service['type'] == 'stun' && $stun) continue;
+                if ($service['type'] == 'stun') $stun = true;
+                if ($service['type'] == 'turn' && $turn) continue;
+                if ($service['type'] == 'turn') $turn = true;
+
+                $url = $service['type'].':'.$service['host'];
+                $url .= !empty($service['port']) ? ':'.$service['port'] : '';
+                $item = ['urls' => $url];
+
+                if (isset($service['username']) && isset($service['password'])) {
+                    $item['username'] = $service['username'];
+                    $item['credential'] = $service['password'];
+                }
+
+                array_push($externalServices, $item);
+            }
+        }
         $this->view->assign('withvideo', $this->getView() == 'visio');
+        $this->view->assign('externalservices', json_encode($externalServices));
         $this->view->assign('contact', \App\Contact::firstOrNew(['id' => $this->get('f')]));
     }
 }

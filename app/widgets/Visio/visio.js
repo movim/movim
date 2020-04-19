@@ -33,33 +33,38 @@ var Visio = {
         Visio.localAudio = document.getElementById('audio');
         Visio.remoteAudio = document.getElementById('remote_audio');
 
-        const servers = ['stun:stun01.sipphone.com',
-            'stun:stun.ekiga.net',
-            'stun:stun.fwdnet.net',
-            'stun:stun.ideasip.com',
-            'stun:stun.iptel.org',
-            'stun:stun.rixtelecom.se',
-            'stun:stun.schlund.de',
-            'stun:stun.l.google.com:19302',
-            'stun:stun1.l.google.com:19302',
-            'stun:stun2.l.google.com:19302',
-            'stun:stun3.l.google.com:19302',
-            'stun:stun4.l.google.com:19302',
-            'stun:stunserver.org',
-            'stun:stun.softjoys.com',
-            'stun:stun.voiparound.com',
-            'stun:stun.voipbuster.com',
-            'stun:stun.voipstunt.com',
-            'stun:stun.voxgratia.org',
-            'stun:stun.xten.com'
-        ];
+        var iceServers = [];
+        if (Visio.externalServices.length > 0) {
+            iceServers = Visio.externalServices
+        } else {
+            const servers = ['stun:stun01.sipphone.com',
+                'stun:stun.ekiga.net',
+                'stun:stun.fwdnet.net',
+                'stun:stun.ideasip.com',
+                'stun:stun.iptel.org',
+                'stun:stun.rixtelecom.se',
+                'stun:stun.schlund.de',
+                'stun:stun.l.google.com:19302',
+                'stun:stun1.l.google.com:19302',
+                'stun:stun2.l.google.com:19302',
+                'stun:stun3.l.google.com:19302',
+                'stun:stun4.l.google.com:19302',
+                'stun:stunserver.org',
+                'stun:stun.softjoys.com',
+                'stun:stun.voiparound.com',
+                'stun:stun.voipbuster.com',
+                'stun:stun.voipstunt.com',
+                'stun:stun.voxgratia.org',
+                'stun:stun.xten.com'
+            ];
 
-        const shuffled = servers.sort(() => 0.5 - Math.random());
+            const shuffled = servers.sort(() => 0.5 - Math.random());
+            iceServers = [{urls: shuffled.slice(0, 2)}];
+        }
+
 
         var configuration = {
-            'iceServers': [
-                {urls: shuffled.slice(0, 2)}
-            ]
+            'iceServers': iceServers
         };
 
         Visio.pc = new RTCPeerConnection(configuration);

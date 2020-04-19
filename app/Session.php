@@ -101,6 +101,20 @@ class Session extends Model
         $s->set('password', $password);
     }
 
+    public function setExternalservicesAttribute(array $externalServices)
+    {
+        $this->attributes['externalservices'] = serialize($externalServices);
+    }
+
+    public function getExternalservicesAttribute()
+    {
+        if (isset($this->attributes['externalservices'])) {
+            return unserialize($this->attributes['externalservices']);
+        }
+
+        return null;
+    }
+
     public function getUploadService()
     {
         return Info::where('server', 'like', '%' . $this->host)

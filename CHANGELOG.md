@@ -18,6 +18,7 @@ v0.17.2 (trunk)
  * Add a PresenceBuffer to do mass insert of Presences in the SQL DB
  * Complete and fix Jingle/WebRTC implementation in Movim, work on Compatibility with Conversations
  * Add Audio-only call support
+ * Added support for XEP-0215: External Service Discovery
 
 v0.17.1
 ---------------------------

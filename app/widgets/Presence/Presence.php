@@ -21,6 +21,7 @@ class Presence extends Base
         $this->registerEvent('mypresence', 'onMyPresence');
         $this->registerEvent('session_up', 'onSessionUp');
         $this->registerEvent('session_down', 'onSessionDown');
+        $this->registerEvent('externalservices_get_handle', 'onExternalServices');
     }
 
     public function onSessionUp()
@@ -33,6 +34,15 @@ class Presence extends Base
     {
         $p = new Away;
         $p->request();
+    }
+
+    public function onExternalServices($packet)
+    {
+        $session = $this->user->session;
+        if ($session) {
+            $session->externalservices = $packet->content;
+            $session->save();
+        };
     }
 
     public function onMyPresence($packet)
@@ -62,6 +72,7 @@ class Presence extends Base
         $this->ajaxFeedRefresh();
         $this->ajaxServerDisco();
         $this->ajaxProfileRefresh();
+        $this->ajaxExternalServicesGet();
     }
 
     public function ajaxAskLogout()
@@ -129,6 +140,14 @@ class Presence extends Base
     public function ajaxServerDisco()
     {
         $c = new \Moxl\Xec\Action\Disco\Items;
+        $c->setTo($this->user->session->host)
+          ->request();
+    }
+
+    // We discover the server services
+    public function ajaxExternalServicesGet()
+    {
+        $c = new \Moxl\Xec\Action\ExternalServices\Get;
         $c->setTo($this->user->session->host)
           ->request();
     }
