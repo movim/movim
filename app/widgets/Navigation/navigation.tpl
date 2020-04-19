@@ -78,6 +78,18 @@
             </div>
         </li>
     </a>
+    <a class="classic"
+        href="{$c->route('help')}"
+        title="{$c->__('page.help')}">
+        <li {if="$page == 'help'"}class="active"{/if}>
+            <span class="primary icon">
+                <i class="material-icons">help</i>
+            </span>
+            <div>
+                <p class="normal">{$c->__('page.help')}</p>
+            </div>
+        </li>
+    </a>
     <a class="classic on_android" href="movim://changepod">
         <li>
             <span class="primary icon bubble"><i class="material-icons">dns</i></span>
@@ -91,18 +103,6 @@
             <span class="primary icon bubble"><i class="material-icons">arrow_back</i></span>
             <div>
                 <p class="normal">{$c->__('button.close')}</p>
-            </div>
-        </li>
-    </a>
-    <a class="classic"
-       href="{$c->route('help')}"
-       title="{$c->__('page.help')}">
-        <li {if="$page == 'help'"}class="active"{/if}>
-            <span class="primary icon">
-                <i class="material-icons">help</i>
-            </span>
-            <div>
-                <p class="normal">{$c->__('page.help')}</p>
             </div>
         </li>
     </a>
