@@ -7,7 +7,7 @@ body > nav > ul:nth-child(3) li p.normal {
 }
 
 body > nav > ul.list li {
-    padding: 0 0.5rem;
+    padding-left: 0.5rem;
 }
 
 body > nav.color.dark > ul a {

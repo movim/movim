@@ -16,11 +16,12 @@
             <i class="material-icons">more_horiz</i>
         </button>
     </div>
-    <ul class="list controls">
+    <ul class="list controls middle">
         <li>
             <span id="snapback" class="primary icon color transparent active">
                 <i class="material-icons">arrow_back</i>
             </span>
+            <div></div>
             <span id="snapswitch" class="control icon color transparent active">
                 <i class="material-icons">switch_camera</i>
             </span>
