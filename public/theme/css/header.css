@@ -9,6 +9,10 @@ header.big {
     margin-bottom: 0.5rem;
 }
 
+header.big ul li {
+    padding-right: 0;
+}
+
 /* Specific forms in header */
 header form > div:not(.clear):not(.control) {
     min-height: 0;
