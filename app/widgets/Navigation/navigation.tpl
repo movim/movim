@@ -94,7 +94,7 @@
             </div>
         </li>
     </a>
-    <a class="classic on_desktop"
+    <a class="classic"
        href="{$c->route('help')}"
        title="{$c->__('page.help')}">
         <li {if="$page == 'help'"}class="active"{/if}>

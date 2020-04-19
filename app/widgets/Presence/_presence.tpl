@@ -13,7 +13,7 @@
             <i class="material-icons">person</i>
         </span>
     {/if}
-    <span class="control icon active on_mobile"
+    <span class="control icon active"
         onclick="Presence_ajaxAskLogout()"
         title="{$c->__('status.disconnect')}">
         <i class="material-icons">exit_to_app</i>

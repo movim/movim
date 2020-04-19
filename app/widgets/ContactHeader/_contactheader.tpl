@@ -3,10 +3,12 @@
         <span class="control active icon gray" onclick="ContactActions_ajaxGetDrawer('{$contact->id|echapJS}')">
             <i class="material-icons">more_horiz</i>
         </span>
-        <span class="control icon active gray" onclick="ContactActions_ajaxChat('{$contact->id|echapJS}')"
-            title="{$c->__('button.chat')}">
-            <i class="material-icons">comment</i>
-        </span>
+        {if="!$contact->isMe()"}
+            <span class="control icon active gray" onclick="ContactActions_ajaxChat('{$contact->id|echapJS}')"
+                title="{$c->__('button.chat')}">
+                <i class="material-icons">comment</i>
+            </span>
+        {/if}
         {if="$roster"}
             <span class="control icon active gray divided" onclick="ContactHeader_ajaxEditContact('{$contact->id|echapJS}')"
                 title="{$c->__('button.edit')}">
