@@ -27,6 +27,8 @@
 namespace Moxl\Xec\Payload;
 
 use Moxl\Stanza\Ack;
+use Moxl\Stanza\Jingle as JingleStanza;
+use Movim\Session;
 
 class Jingle extends Payload
 {
@@ -37,8 +39,6 @@ class Jingle extends Payload
 
         $action = (string)$stanza->attributes()->action;
 
-        Ack::send($from, $id);
-
         $userid = \App\User::me()->id;
         $message = new \App\Message;
         $message->user_id = $userid;
@@ -48,25 +48,33 @@ class Jingle extends Payload
         $message->published = gmdate('Y-m-d H:i:s');
         $message->thread = (string)$stanza->attributes()->sid;
 
-        switch ($action) {
-            case 'session-initiate':
-                $message->type = 'jingle_start';
-                $message->save();
-                $this->event('jingle_sessioninitiate', [$stanza, $from]);
-                break;
-            case 'transport-info':
-                $this->event('jingle_transportinfo', $stanza);
-                break;
-            case 'session-terminate':
-                $message->type = 'jingle_end';
-                $message->save();
-                $this->event('jingle_sessionterminate', (string)$stanza->reason->children()[0]->getName());
-                break;
-            case 'session-accept':
-                $message->type = 'jingle_start';
-                $message->save();
-                $this->event('jingle_sessionaccept', $stanza);
-                break;
+        $sid = Session::start()->get('jingleSid');
+
+        if ($sid == $message->thread) {
+            Ack::send($from, $id);
+
+            switch ($action) {
+                case 'session-initiate':
+                    $message->type = 'jingle_start';
+                    $message->save();
+                    $this->event('jingle_sessioninitiate', [$stanza, $from]);
+                    break;
+                case 'transport-info':
+                    $this->event('jingle_transportinfo', $stanza);
+                    break;
+                case 'session-terminate':
+                    $message->type = 'jingle_end';
+                    $message->save();
+                    $this->event('jingle_sessionterminate', (string)$stanza->reason->children()[0]->getName());
+                    break;
+                case 'session-accept':
+                    $message->type = 'jingle_start';
+                    $message->save();
+                    $this->event('jingle_sessionaccept', $stanza);
+                    break;
+            }
+        } else {
+            JingleStanza::unknownSession($from, $id);
         }
     }
 }

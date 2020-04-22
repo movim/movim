@@ -34,7 +34,7 @@ var VisioUtils = {
 
             instant_L = Math.sqrt(sum_L / inpt_L.length);
             VisioUtils.max_level_L = Math.max(VisioUtils.max_level_L, instant_L);
-            instant_L = Math.max(instant_L, VisioUtils.old_level_L -0.0005 );
+            instant_L = Math.max(instant_L, VisioUtils.old_level_L -0.001 );
             VisioUtils.old_level_L = instant_L;
 
             var level = (instant_L/VisioUtils.max_level_L);
@@ -197,6 +197,41 @@ var VisioUtils = {
         }
     },
 
+    enableScreenSharingButton: function() {
+        document.querySelector('#screen_sharing').classList.add('enabled');
+    },
+
+    toggleScreenSharing: async function() {
+        var button = document.querySelector('#screen_sharing i');
+        if (Visio.screenSharing.srcObject == null) {
+            try {
+                Visio.screenSharing.srcObject = await navigator.mediaDevices.getDisplayMedia({
+                    video: {
+                        cursor: "always"
+                    },
+                    audio: false
+                });
+
+                Visio.screenSharing.classList.add('sharing');
+                Visio.switchCamera.classList.add('disabled');
+                button.innerText = 'stop_screen_share';
+
+                Visio.gotScreen();
+            } catch(err) {
+                console.error("Error: " + err);
+            }
+        } else {
+            Visio.screenSharing.srcObject.getTracks().forEach(track => track.stop());
+            Visio.screenSharing.srcObject = null;
+            Visio.screenSharing.classList.remove('sharing');
+            Visio.switchCamera.classList.remove('disabled');
+
+            button.innerText = 'screen_share';
+
+            Visio.gotQuickStream();
+        }
+    },
+
     switchCameraSetup: function() {
         Visio.videoSelect = document.querySelector('#visio select#visio_source');
         navigator.mediaDevices.enumerateDevices().then(devices => VisioUtils.gotDevices(devices));
@@ -212,6 +247,15 @@ var VisioUtils = {
 
             Visio.gotStream();
         };
+    },
+
+    pcReplaceTrack: function(stream) {
+        let videoTrack = stream.getVideoTracks()[0];
+        var sender = Visio.pc.getSenders().find(s => s.track && s.track.kind == videoTrack.kind);
+
+        if (sender) {
+            sender.replaceTrack(videoTrack);
+        }
     },
 
     gotDevices: function(deviceInfos) {

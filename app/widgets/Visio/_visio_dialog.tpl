@@ -8,7 +8,14 @@
                         <img src="{$url}">
                     </p>
                 {/if}
-                <p class="normal center">{$contact->truename}</p>
+                <p class="normal center">
+                    {if="$withvideo"}
+                        {$c->__('visio.video_call')}
+                    {else}
+                        {$c->__('visio.audio_call')}
+                    {/if}
+                </p>
+                <p class="center">{$contact->truename}</p>
                 <p class="center">{$c->__('visio.calling')}</p>
             </div>
         </li>

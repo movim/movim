@@ -2,7 +2,6 @@ var CommunityAffiliations = {
     update : function(jid) {
         var parts = MovimUtils.urlParts();
         if (parts.params.length > 0) {
-            console.log(MovimUtils.formToJson(jid));
             CommunityAffiliations_ajaxChangeAffiliation(
                 parts.params[0],
                 parts.params[1],
