@@ -50,7 +50,7 @@ class Jingle extends Payload
 
         $sid = Session::start()->get('jingleSid');
 
-        if ($sid == $message->thread) {
+       // if ($sid == $message->thread) {
             Ack::send($from, $id);
 
             switch ($action) {
@@ -73,8 +73,8 @@ class Jingle extends Payload
                     $this->event('jingle_sessionaccept', $stanza);
                     break;
             }
-        } else {
+        /*} else {
             JingleStanza::unknownSession($from, $id);
-        }
+        }*/
     }
 }
