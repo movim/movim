@@ -172,8 +172,6 @@ class Visio extends Base
 
     public function ajaxAccept($to, $id)
     {
-        Session::start()->set('jingleSid', $id);
-
         $p = new SessionAccept;
         $p->setTo($to)
           ->setId($id)
