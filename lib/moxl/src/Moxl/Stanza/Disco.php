@@ -10,7 +10,7 @@ class Disco
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('http://jabber.org/protocol/disco#info', 'query');
-        $query->setAttribute('node', 'http://moxl.movim.eu/#'.Utils::generateCaps());
+        $query->setAttribute('node', 'https://movim.eu/#'.Utils::generateCaps());
 
         $identity = $dom->createElement('identity');
         $identity->setAttribute('category', 'client');
