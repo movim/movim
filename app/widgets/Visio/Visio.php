@@ -26,6 +26,48 @@ class Visio extends Base
         $this->registerEvent('jingle_sessionaccept', 'onAcceptSDP');
         $this->registerEvent('jingle_transportinfo', 'onCandidate');
         $this->registerEvent('jingle_sessionterminate', 'onTerminate');
+        $this->registerEvent('externalservices_get_handle', 'onExternalServices');
+        $this->registerEvent('externalservices_get_error', 'onExternalServicesError');
+    }
+
+    public function onExternalServices($packet)
+    {
+        $externalServices = [];
+        if ($packet->content) {
+            $turn = $stun = false;
+            foreach ($packet->content as $service) {
+                // One STUN/TURN server max
+                if ($service['type'] == 'stun' && $stun) continue;
+                if ($service['type'] == 'stun') $stun = true;
+                if ($service['type'] == 'turn' && $turn) continue;
+                if ($service['type'] == 'turn') $turn = true;
+
+                $url = $service['type'].':'.$service['host'];
+                $url .= !empty($service['port']) ? ':'.$service['port'] : '';
+                $item = ['urls' => $url];
+
+                if (isset($service['username']) && isset($service['password'])) {
+                    $item['username'] = $service['username'];
+                    $item['credential'] = $service['password'];
+                }
+
+                array_push($externalServices, $item);
+            }
+        }
+
+        if (!empty($externalServices)) {
+            $this->rpc('Visio.setServices', $externalServices);
+        } else {
+            $this->setDefaultServices();
+        }
+
+        $this->rpc('Visio.init');
+    }
+
+    public function onExternalServicesError($packet)
+    {
+        $this->setDefaultServices();
+        $this->rpc('Visio.init');
     }
 
     public function onPropose($packet)
@@ -152,6 +194,49 @@ class Visio extends Base
            ->request();
     }
 
+    public function ajaxResolveServices()
+    {
+        $info = \App\Info::where('server', $this->user->session->host)
+                    ->where('node', '')
+                    ->first();
+        if ($info && $info->hasExternalServices()) {
+            $c = new \Moxl\Xec\Action\ExternalServices\Get;
+            $c->setTo($this->user->session->host)
+              ->request();
+        } else {
+            $this->setDefaultServices();
+            $this->rpc('Visio.init');
+        }
+    }
+
+    public function setDefaultServices()
+    {
+        $servers = [
+            /*'stun:stun01.sipphone.com',
+            'stun:stun.ekiga.net',
+            'stun:stun.fwdnet.net',
+            'stun:stun.ideasip.com',
+            'stun:stun.iptel.org',
+            'stun:stun.rixtelecom.se',
+            'stun:stun.schlund.de',*/
+            'stun:stun.l.google.com:19305',
+            'stun:stun1.l.google.com:19305',
+            'stun:stun2.l.google.com:19305',
+            'stun:stun3.l.google.com:19305',
+            'stun:stun4.l.google.com:19305',
+            /*'stun:stunserver.org',
+            'stun:stun.softjoys.com',
+            'stun:stun.voiparound.com',
+            'stun:stun.voipbuster.com',
+            'stun:stun.voipstunt.com',
+            'stun:stun.voxgratia.org',
+            'stun:stun.xten.com'*/
+        ];
+
+        shuffle($servers);
+        $this->rpc('Visio.setServices', [['urls' => array_slice($servers, 0, 2)]]);
+    }
+
     public function ajaxSessionAccept($sdp, $to, $id)
     {
         $stj = new SDPtoJingle(
@@ -188,7 +273,7 @@ class Visio extends Base
 
     public function ajaxTerminate($to, $reason = 'success', $sid)
     {
-        $s = Session::start();
+        Session::start()->remove('jingleSid');
 
         $st = new SessionTerminate;
         $st->setTo($to)
@@ -199,30 +284,7 @@ class Visio extends Base
 
     public function display()
     {
-        $externalServices = [];
-        if ($this->user->session->externalservices) {
-            $turn = $stun = false;
-            foreach ($this->user->session->externalservices as $service) {
-                // One STUN/TURN server max
-                if ($service['type'] == 'stun' && $stun) continue;
-                if ($service['type'] == 'stun') $stun = true;
-                if ($service['type'] == 'turn' && $turn) continue;
-                if ($service['type'] == 'turn') $turn = true;
-
-                $url = $service['type'].':'.$service['host'];
-                $url .= !empty($service['port']) ? ':'.$service['port'] : '';
-                $item = ['urls' => $url];
-
-                if (isset($service['username']) && isset($service['password'])) {
-                    $item['username'] = $service['username'];
-                    $item['credential'] = $service['password'];
-                }
-
-                array_push($externalServices, $item);
-            }
-        }
         $this->view->assign('withvideo', $this->getView() == 'visio');
-        $this->view->assign('externalservices', json_encode($externalServices));
         $this->view->assign('contact', \App\Contact::firstOrNew(['id' => $this->get('f')]));
     }
 }

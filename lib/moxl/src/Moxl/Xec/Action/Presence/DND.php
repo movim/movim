@@ -5,7 +5,6 @@ namespace Moxl\Xec\Action\Presence;
 use Moxl\Xec\Action;
 use Moxl\Stanza\Presence;
 use App\Presence as DBPresence;
-use App\PresenceBuffer;
 
 class DND extends Action
 {
@@ -21,9 +20,8 @@ class DND extends Action
     {
         $presence = DBPresence::findByStanza($stanza);
         $presence->set($stanza);
+        $presence->save();
 
-        PresenceBuffer::getInstance()->append($presence, function () use ($stanza) {
-            $this->event('mypresence', $stanza);
-        });
+        $this->event('mypresence', $stanza);
     }
 }

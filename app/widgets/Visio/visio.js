@@ -12,11 +12,14 @@ var Visio = {
     remoteVideo: null,
     localAudio: null,
     remoteAudio: null,
+    screenSharing: null,
 
     calling: false,
 
     videoSelect: undefined,
     switchCamera: undefined,
+
+    services: [],
 
     init: function(id) {
         Visio.from = MovimUtils.urlParts().params[0];
@@ -28,43 +31,14 @@ var Visio = {
         if (Visio.withVideo) {
             Visio.localVideo = document.getElementById('video');
             Visio.remoteVideo = document.getElementById('remote_video');
+            Visio.screenSharing = document.getElementById('screen_sharing_video');
         }
 
         Visio.localAudio = document.getElementById('audio');
         Visio.remoteAudio = document.getElementById('remote_audio');
 
-        var iceServers = [];
-        if (Visio.externalServices.length > 0) {
-            iceServers = Visio.externalServices
-        } else {
-            const servers = ['stun:stun01.sipphone.com',
-                'stun:stun.ekiga.net',
-                'stun:stun.fwdnet.net',
-                'stun:stun.ideasip.com',
-                'stun:stun.iptel.org',
-                'stun:stun.rixtelecom.se',
-                'stun:stun.schlund.de',
-                'stun:stun.l.google.com:19302',
-                'stun:stun1.l.google.com:19302',
-                'stun:stun2.l.google.com:19302',
-                'stun:stun3.l.google.com:19302',
-                'stun:stun4.l.google.com:19302',
-                'stun:stunserver.org',
-                'stun:stun.softjoys.com',
-                'stun:stun.voiparound.com',
-                'stun:stun.voipbuster.com',
-                'stun:stun.voipstunt.com',
-                'stun:stun.voxgratia.org',
-                'stun:stun.xten.com'
-            ];
-
-            const shuffled = servers.sort(() => 0.5 - Math.random());
-            iceServers = [{urls: shuffled.slice(0, 2)}];
-        }
-
-
         var configuration = {
-            'iceServers': iceServers
+            'iceServers': Visio.services
         };
 
         Visio.pc = new RTCPeerConnection(configuration);
@@ -104,6 +78,10 @@ var Visio = {
         Visio.gotStream();
     },
 
+    setServices: function(services) {
+        Visio.services = services;
+    },
+
     gotStream: function() {
         if (Visio.withVideo) {
             // On Android where you can't have both camera enabled at the same time
@@ -135,12 +113,9 @@ var Visio = {
                 Visio.localVideo.srcObject = stream;
 
                 // Switch camera
-                let videoTrack = stream.getVideoTracks()[0];
-                var sender = Visio.pc.getSenders().find(s => s.track && s.track.kind == videoTrack.kind);
+                VisioUtils.pcReplaceTrack(stream);
 
-                if (sender) {
-                    sender.replaceTrack(videoTrack);
-                }
+                VisioUtils.enableScreenSharingButton();
             }
 
             VisioUtils.handleAudio();
@@ -161,6 +136,14 @@ var Visio = {
                 }
             }
         }, logError);
+    },
+
+    gotQuickStream: function() {
+        VisioUtils.pcReplaceTrack(Visio.localVideo.srcObject);
+    },
+
+    gotScreen: function() {
+        VisioUtils.pcReplaceTrack(Visio.screenSharing.srcObject);
     },
 
     onCandidate: function(candidate, mid, mlineindex) {
@@ -274,7 +257,7 @@ MovimWebsocket.attach(() => {
         Visio.withVideo = true;
     }
 
-    Visio.init();
+    Visio_ajaxResolveServices();
 });
 
 window.onbeforeunload = () => {

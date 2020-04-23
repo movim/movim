@@ -93,4 +93,17 @@ class Jingle
         $xml = \Moxl\API::iqWrapper($jingle, $to, 'set');
         \Moxl\API::request($xml);
     }
+
+    public static function unknownSession($to, $id)
+    {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $error = $dom->createElement('error');
+        $error->setAttribute('type', 'cancel');
+
+        $fni = $dom->createElementNS('urn:xmpp:jingle:errors:1', 'unknown-session');
+        $error->appendChild($fni);
+
+        $xml = \Moxl\API::iqWrapper($error, $to, 'error', $id);
+        \Moxl\API::request($xml);
+    }
 }

@@ -216,7 +216,8 @@ class Info extends Model
 
     public function isJingle()
     {
-        return $this->hasFeature('urn:xmpp:jingle:apps:rtp:audio');
+        return $this->hasFeature('urn:xmpp:jingle:apps:rtp:audio')
+            && $this->hasFeature('urn:xmpp:jingle-message:0');
     }
 
     public function isMAM()
@@ -227,6 +228,11 @@ class Info extends Model
     public function isMAM2()
     {
         return $this->hasFeature('urn:xmpp:mam:2');
+    }
+
+    public function hasExternalServices()
+    {
+        return $this->hasFeature('urn:xmpp:extdisco:2');
     }
 
     public function set($query, $node = false)

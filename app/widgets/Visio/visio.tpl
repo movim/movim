@@ -8,7 +8,7 @@
                 <span id="toggle_fullscreen" class="control icon color transparent active" onclick="VisioUtils.toggleFullScreen()">
                     <i class="material-icons">fullscreen</i>
                 </span>
-                <span id="toggle_audio" class="control icon color transparent active" onclick="VisioUtils.toggleAudio()">
+                <span id="toggle_audio" class="divided control icon color transparent active" onclick="VisioUtils.toggleAudio()">
                     <i class="material-icons">mic</i>
                 </span>
                 {if="$withvideo"}
@@ -17,6 +17,9 @@
                     </span>
                     <span id="switch_camera" class="control icon color transparent active">
                         <i class="material-icons">switch_camera</i>
+                    </span>
+                    <span id="screen_sharing" class="control icon color transparent active" onclick="VisioUtils.toggleScreenSharing()">
+                        <i class="material-icons">screen_share</i>
                     </span>
                 {/if}
                 <div><p></p></div>
@@ -45,6 +48,7 @@
 
     {if="$withvideo"}
         <video id="remote_video" autoplay poster="/theme/img/empty.png"></video>
+        <video id="screen_sharing_video" autoplay muted poster="/theme/img/empty.png"></video>
         <video id="video" autoplay muted poster="/theme/img/empty.png"></video>
     {/if}
 
@@ -64,6 +68,4 @@ Visio.states = {
     ended: '{$c->__('visio.ended')}',
     declined: '{$c->__('visio.declined')}'
 };
-
-Visio.externalServices = {autoescape="off"}{$externalservices}{/autoescape};
 </script>

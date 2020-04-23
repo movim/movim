@@ -51,6 +51,7 @@ class Utils
             'urn:xmpp:jingle:transports:ice-udp:0',
             'urn:xmpp:jingle:transports:ice-udp:1',
             'urn:xmpp:jingle:apps:rtp:rtcp-fb:0',
+            'urn:xmpp:jingle-message:0',
 
             'http://jabber.org/protocol/muc',
             'http://jabber.org/protocol/nick',

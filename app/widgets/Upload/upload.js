@@ -152,7 +152,6 @@ var Upload = {
 
         // If the preview system is there
         if (preview) {
-            console.log(file);
             var fileInfo = document.querySelector('#upload li.file');
             fileInfo.querySelector('p.name').innerText = Upload.name;
             var type = file.type ? file.type + ' · ' : '';
