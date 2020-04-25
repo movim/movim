@@ -66,6 +66,8 @@ class User extends Model
 
         if ($jid) {
             $unreads = $unreads->where('jidfrom', $jid);
+        } else {
+            $unreads = $unreads->distinct('jidfrom');
         }
 
         $this->unreads = $unreads->count();
