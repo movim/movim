@@ -94,6 +94,12 @@ class Chat extends \Movim\Widget\Base
             $this->rpc('Chat.appendMessagesWrapper', $this->prepareMessage($message, $from));
         }
 
+        if ($message->file) {
+            $rawbody = (typeIsPicture($message->file['type']))
+                ? '🖼️ ' . $this->__('chats.picture')
+                : '📄 ' . $this->__('avatar.file');
+        }
+
         if ($message->user_id == $message->jidto
         && !$history
         && $message->seen == false

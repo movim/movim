@@ -78,7 +78,11 @@
                     {if="$message->jidfrom == $message->user_id"}
                         <span class="moderator">{$c->__('chats.me')}:</span>
                     {/if}
-                    <i class="material-icons">insert_drive_file</i> {$c->__('avatar.file')}
+                    {if="typeIsPicture($message->file['type'])"}
+                        <i class="material-icons">image</i> {$c->__('chats.picture')}
+                    {else}
+                        <i class="material-icons">insert_drive_file</i> {$c->__('avatar.file')}
+                    {/if}
                 </p>
             {elseif="stripTags($message->body) != ''"}
                 <p class="line">
