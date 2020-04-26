@@ -19,6 +19,8 @@ v0.17.2 (trunk)
  * Complete and fix Jingle/WebRTC implementation in Movim, work on Compatibility with Conversations
  * Add Audio-only call support
  * Added support for XEP-0215: External Service Discovery
+ * Fix browser tab Chat counter
+ * Global chat counter count the notified chats and not the unread chat messages anymore
 
 v0.17.1
 ---------------------------

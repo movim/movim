@@ -92,13 +92,13 @@ class Notification extends Base
             $notifs[$first] = 1;
         }
 
+        // Don't notify
         if ($notifs_key != null && $key == $notifs_key) {
             return;
         }
 
         if ($first === 'chat') {
-            $user = \App\User::me();
-            RPC::call('Notification.counter', $first, $user->unreads(null, true));
+            RPC::call('Notification.counter', $first, (\App\User::me())->unreads(null, true));
             self::executeRPC();
             return;
         } else {
@@ -182,8 +182,12 @@ class Notification extends Base
     public function ajaxGet()
     {
         $session = Session::start();
-        $notifs = $session->get('notifs');
-        if ($notifs != null) {
+        $notifs = $session->get('notifs') ?? [];
+
+        $chatCount = (\App\User::me())->unreads(null, true, true);
+        if ($chatCount) $notifs['chat'] = $chatCount;
+
+        if (!empty($notifs)) {
             RPC::call('Notification.refresh', $notifs);
         }
     }

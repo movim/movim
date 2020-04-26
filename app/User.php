@@ -45,7 +45,7 @@ class User extends Model
         return $this->hasMany('App\Message');
     }
 
-    public function unreads(string $jid = null, bool $quoted = false, $cached = false)
+    public function unreads(string $jid = null, bool $quoted = false, $cached = false): int
     {
         if ($this->unreads !== null && $cached) return $this->unreads;
 
@@ -70,9 +70,13 @@ class User extends Model
             $unreads = $unreads->distinct('jidfrom');
         }
 
-        $this->unreads = $unreads->count();
+        $unreads = $unreads->count();
 
-        return $this->unreads;
+        if ($jid == null) {
+            $this->unreads = $unreads;
+        }
+
+        return $unreads;
     }
 
     public function encryptedPasswords()
