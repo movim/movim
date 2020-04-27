@@ -421,6 +421,10 @@ ul li div.bubble span.info {
     padding-left: 1rem;
 }
 
+ul li div.bubble span.info:empty {
+    padding-left: 0;
+}
+
 ul li div.bubble:after {
     content: attr(data-publishedprepared);
     line-height: 1.5rem;
