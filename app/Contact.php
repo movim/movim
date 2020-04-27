@@ -52,8 +52,14 @@ class Contact extends Model
 
     public function save(array $options = [])
     {
-        unset($this->photobin);
-        parent::save($options);
+        try {
+            unset($this->photobin);
+            parent::save($options);
+        } catch (\Exception $e) {
+            /*
+            * Multi processes simultanous save
+            */
+        }
     }
 
     public function set($vcard, $jid)
