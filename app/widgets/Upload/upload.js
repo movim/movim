@@ -89,14 +89,7 @@ var Upload = {
             var width = image.naturalWidth;
             var height = image.naturalHeight;
 
-            var ratio = Math.min(limit / width, limit / height);
-
-            if (ratio < 1 || file.size > SMALL_PICTURE_LIMIT) {
-                if (ratio < 1) {
-                    width = Math.round(width*ratio);
-                    height = Math.round(height*ratio);
-                }
-
+            if (file.size > SMALL_PICTURE_LIMIT) {
                 var canvas = document.createElement('canvas');
 
                 if ([5,6,7,8].indexOf(orientation) > -1) {
