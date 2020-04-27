@@ -92,20 +92,28 @@ span.icon span.counter.alt {
 
 /* Elements */
 
-.button.red,    .icon.red   , p.user.red      { color: #F44336; }
-.button.purple, .icon.purple, p.user.purple   { color: #9C27B0; }
-.button.indigo, .icon.indigo, p.user.indigo   { color: #3F51B5; }
-.button.blue,   .icon.blue  , p.user.blue     { color: #2196F3; }
-.button.green,  .icon.green , p.user.green    { color: #689F38; }
+.button.red,    .icon.red   , span.resource.red      { color: #F44336; }
+.button.purple, .icon.purple, span.resource.purple   { color: #9C27B0; }
+.button.indigo, .icon.indigo, span.resource.indigo   { color: #3F51B5; }
+.button.blue,   .icon.blue  , span.resource.blue     { color: #2196F3; }
+.button.green,  .icon.green , span.resource.green    { color: #689F38; }
 ul li div.bubble.moderator:after,
 ul li p span.moderator,
-.button.orange, .icon.orange, p.user.orange   { color: #FF9800; }
-.button.yellow, .icon.yellow, p.user.yellow   { color: #FBC02D; }
-.button.brown,  .icon.brown , p.user.brown    { color: #795548; }
+.button.orange, .icon.orange, span.resource.orange   { color: #FF9800; }
+.button.yellow, .icon.yellow, span.resource.yellow   { color: #FBC02D; }
+.button.brown,  .icon.brown , span.resource.brown    { color: #795548; }
 ul li.action > div.action,
 ul li.action > form > div.action,
-.button.gray,   .icon.gray  , p.user.gray     { color: #9E9E9E; }
-.button.black,  .icon.black , p.user.black    { color: #000; }
+.button.gray,   .icon.gray  , span.resource.gray     { color: #9E9E9E; }
+.button.black,  .icon.black , span.resource.black    { color: #000; }
+.button.lime,   .icon.lime  , span.resource.lime  { color: #CDDC39 }
+.button.cyan,   .icon.cyan  , span.resource.cyan  { color: #00bcd4 }
+.button.teal,   .icon.teal  , span.resource.teal  { color: #009688 }
+.button.pink,   .icon.pink  , span.resource.pink  { color: #e91e63 }
+.button.dorange,.icon.dorange  , span.resource.dorange  { color: #ff5722 }
+.button.lblue,  .icon.lblue  , span.resource.lblue  { color: #03a9f4 }
+.button.amber,  .icon.anber  , span.resource.amber  { color: #ffc107 }
+.button.bgray,  .icon.bgray  , span.resource.bgray  { color: #607d8b }
 
 .color          { color: white; background-color: #607D8B; border-color: #607D8B }
 span.icon:not(.composing).status.dnd:after,

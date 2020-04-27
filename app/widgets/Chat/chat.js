@@ -628,6 +628,20 @@ var Chat = {
             bubble.querySelector('div.bubble').dataset.publishedprepared = data.publishedPrepared;
         }
 
+        if (isMuc) {
+            bubble.dataset.resource = data.resource;
+        }
+
+        if (refBubble.dataset.resource == bubble.dataset.resource
+            && mergeMsg == false
+            && isMuc) {
+            if (prepend) {
+                refBubble.classList.add('sequel');
+            } else {
+                bubble.classList.add('sequel');
+            }
+        }
+
         if (['jingle_start'].indexOf(data.type) >= 0) {
             bubble.querySelector('div.bubble').classList.add('call');
         }
@@ -725,6 +739,15 @@ var Chat = {
             msg.appendChild(Chat.getCardHtml(data.card));
         }
 
+        if (isMuc) {
+            var resourceSpan = document.createElement('span');
+            resourceSpan.classList.add('resource');
+            resourceSpan.classList.add(data.color);
+            resourceSpan.innerText = data.resource;
+
+            msg.appendChild(resourceSpan);
+        }
+
         msg.appendChild(p);
         msg.appendChild(span);
         msg.appendChild(reactions);
@@ -764,18 +787,11 @@ var Chat = {
 
         /* MUC specific */
         if (isMuc) {
-            bubble.querySelector('div.bubble').dataset.publishedprepared =
-                data.resource + ' · ' + data.publishedPrepared;
-
             if (data.moderator) {
                 bubble.querySelector('div.bubble').classList.add('moderator');
             }
 
-            /*if (data.mine) {
-                icon = bubble.querySelector('span.control.icon');
-            } else {*/
-                icon = bubble.querySelector('span.primary.icon');
-            //}
+            icon = bubble.querySelector('span.primary.icon');
 
             if (icon.querySelector('img') == undefined) {
                 if (data.icon_url) {

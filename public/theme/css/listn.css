@@ -337,6 +337,7 @@ ul li div.bubble {
     max-width: calc(100% - 9rem);
     flex: 0 0 auto;
     margin: 0 2rem;
+    min-height: 5rem;
 }
 
 ul li div.bubble div[dir="rtl"] {
@@ -344,7 +345,7 @@ ul li div.bubble div[dir="rtl"] {
 }
 
 ul li div.bubble:not(.sticker):not(.file) {
-    padding: 1rem 1rem 0.5rem 1.5rem;
+    padding: 1rem 1rem 1rem 1.5rem;
     border-radius: 0 0.5rem 0.5rem;
     line-height: 2.75rem;
     border-color: rgb(var(--movim-background-main));
@@ -387,7 +388,16 @@ ul li div.bubble p.previewable {
 ul li div.bubble p.code {
     display: inline-block;
     margin: 0.5rem 0;
-    margin-bottom: 0;
+    margin-bottom: 1rem;
+}
+
+ul li div.bubble span.resource {
+    display: none;
+}
+
+ul li:not(.oppose):not(.sequel) div.bubble div:first-child span.resource {
+    display: block;
+    line-height: 2.5rem;
 }
 
 ul li.oppose div.bubble.file {
@@ -398,34 +408,31 @@ ul li.oppose div.bubble:not(.sticker):not(.file) {
     background-color: rgba(var(--movim-background-main), 0.5);
     border-color: rgba(var(--movim-background-main), 0.5);
     border-radius: 0.5rem 0 0.5rem 0.5rem;
-    padding: 1rem 1rem 0.5rem 1.5rem;
+    padding: 1rem 1rem 1rem 1.5rem;
 }
 
-div.contained:not(.muc) ul li div.bubble:not(.sticker):not(.file) > div:last-child span.info {
-    margin-right: 4.5rem;
+ul li div.bubble:not(.sticker):not(.file) > div:last-child span.info {
+    padding-right: 5rem;
+    padding-left: 1rem;
+    height: 3rem;
 }
 
 ul li div.bubble span.info {
     float: right;
-    padding-left: 1rem;
 }
 
 ul li div.bubble:after {
     content: attr(data-publishedprepared);
-    line-height: 2.5rem;
-    text-align: left;
-    margin-top: -2rem;
-}
-
-div.contained.muc ul li div.bubble:after {
-    margin-right: 0;
-    margin-top: 0;
+    line-height: 1.5rem;
+    right: 1rem;
+    bottom: 1rem;
+    position: absolute;
 }
 
 ul li div.bubble.sticker:after,
 ul li div.bubble.file:after {
-    margin-top: -0.1rem;
-    margin-right: 0;
+    right: 0;
+    bottom: 0.5rem;
 }
 
 ul li .quote {
