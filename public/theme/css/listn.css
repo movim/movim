@@ -344,15 +344,11 @@ ul li div.bubble div[dir="rtl"] {
 }
 
 ul li div.bubble:not(.sticker):not(.file) {
-    padding: 1rem 5.5rem 1rem 1.5rem;
+    padding: 1rem 1rem 0.5rem 1.5rem;
     border-radius: 0 0.5rem 0.5rem;
     line-height: 2.75rem;
     border-color: rgb(var(--movim-background-main));
     margin-bottom: 1.5rem;
-}
-
-div.contained.muc ul li div.bubble:not(.sticker):not(.file) {
-    padding: 1rem 1rem 0.5rem 1.5rem;
 }
 
 ul li div.bubble.sticker,
@@ -402,11 +398,11 @@ ul li.oppose div.bubble:not(.sticker):not(.file) {
     background-color: rgba(var(--movim-background-main), 0.5);
     border-color: rgba(var(--movim-background-main), 0.5);
     border-radius: 0.5rem 0 0.5rem 0.5rem;
-    padding: 1rem 5.5rem 1rem 1.5rem;
+    padding: 1rem 1rem 0.5rem 1.5rem;
 }
 
-div.contained.muc ul li.oppose div.bubble:not(.sticker):not(.file) {
-    padding: 1rem 1rem 0.5rem 1.5rem;
+div.contained:not(.muc) ul li div.bubble:not(.sticker):not(.file) > div:last-child span.info {
+    margin-right: 4.5rem;
 }
 
 ul li div.bubble span.info {
@@ -418,8 +414,7 @@ ul li div.bubble:after {
     content: attr(data-publishedprepared);
     line-height: 2.5rem;
     text-align: left;
-    margin-right: -4.5rem;
-    margin-top: -2.5rem;
+    margin-top: -2rem;
 }
 
 div.contained.muc ul li div.bubble:after {
