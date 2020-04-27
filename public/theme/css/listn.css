@@ -424,6 +424,7 @@ ul li div.bubble:not(.file) > div:last-child span.info {
 
 ul li.oppose div.bubble.file > div:last-child span.info {
     height: 2.5rem;
+    margin-top: -2.5rem;
 }
 
 ul li div.bubble span.info:empty {
