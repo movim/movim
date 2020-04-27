@@ -413,12 +413,12 @@ ul li.oppose div.bubble:not(.sticker):not(.file) {
 
 ul li div.bubble:not(.sticker):not(.file) > div:last-child span.info {
     padding-right: 5rem;
-    padding-left: 1rem;
     height: 3rem;
 }
 
 ul li div.bubble span.info {
     float: right;
+    padding-left: 1rem;
 }
 
 ul li div.bubble:after {
