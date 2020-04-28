@@ -415,6 +415,9 @@ ul li div.bubble span.info {
     float: right;
     clear: right;
     padding-left: 1rem;
+}
+
+ul li div.bubble > div:last-child span.info {
     padding-right: 5rem;
 }
 
