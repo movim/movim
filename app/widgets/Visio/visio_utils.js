@@ -13,9 +13,7 @@ var VisioUtils = {
                 : Visio.localAudio.srcObject
         );
 
-        // Local microphone
         var javascriptNode = VisioUtils.audioContext.createScriptProcessor(2048, 1, 1);
-
         var icon = document.querySelector('#toggle_audio i');
 
         microphone.connect(javascriptNode);
