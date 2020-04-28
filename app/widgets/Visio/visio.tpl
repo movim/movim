@@ -32,11 +32,17 @@
         {$url = $contact->getPhoto('l')}
         <li>
             <div>
-                {if="$url"}
-                    <p class="center">
-                        <img src="{$url}">
-                    </p>
-                {/if}
+                <div id="remote_level">
+                    {if="$url"}
+                        <div class="avatar">
+                            <img src="{$url}">
+                        </div>
+                    {else}
+                        <div class="avatar color {$contact->jid|stringToColor}">
+                            {$contact->truename|firstLetterCapitalize}
+                        </div>
+                    {/if}
+                </div>
                 <p class="normal center">{$contact->truename}</p>
                 <p class="normal state center"></p>
             </div>

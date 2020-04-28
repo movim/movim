@@ -25,12 +25,20 @@ body {
     text-align: center;
 }
 
-#visio .infos img {
+#visio .infos #remote_level {
+    overflow: hidden;
     border-radius: 100%;
     width: 15rem;
-    border: 0.5rem solid transparent;
+    height: 15rem;
+    margin: 0 auto;
     margin-bottom: 2rem;
-    position: relative;
+    font-size: 6rem;
+    line-height: 15rem;
+    border: 0.5rem solid transparent;
+}
+
+#visio .infos #remote_level div.avatar img {
+    width: 100%;
 }
 
 #visio .infos p.state {
@@ -113,4 +121,12 @@ body {
 
 #drawer {
     display: none;
+}
+
+#visio #toggle_audio i {
+    transition: color 0.2s ease-out;
+}
+
+#visio .infos img {
+    transition: border-color 0.2s ease-out;
 }

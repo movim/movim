@@ -1,8 +1,6 @@
 var VisioUtils = {
-    max_level_L: 0,
-    old_level_L: 1,
-    remote_max_level_L: 0,
-    remote_old_level_L: 1,
+    maxLevel: 0,
+    remoteMaxLevel: 0,
     audioContext: null,
     remoteAudioContext: null,
 
@@ -16,33 +14,31 @@ var VisioUtils = {
         );
 
         // Local microphone
-        var javascriptNode = VisioUtils.audioContext.createScriptProcessor(256, 1, 1);
+        var javascriptNode = VisioUtils.audioContext.createScriptProcessor(2048, 1, 1);
 
         var icon = document.querySelector('#toggle_audio i');
 
         microphone.connect(javascriptNode);
         javascriptNode.connect(VisioUtils.audioContext.destination);
         javascriptNode.onaudioprocess = function(event) {
-            var inpt_L = event.inputBuffer.getChannelData(0);
-            var instant_L = 0.0;
+            var inpt = event.inputBuffer.getChannelData(0);
+            var instant = 0.0;
+            var sum = 0.0;
 
-            var sum_L = 0.0;
-
-            for(var i = 0; i < inpt_L.length; ++i) {
-                sum_L += inpt_L[i] * inpt_L[i];
+            for(var i = 0; i < inpt.length; ++i) {
+                sum += inpt[i] * inpt[i];
             }
 
-            instant_L = Math.sqrt(sum_L / inpt_L.length);
-            VisioUtils.max_level_L = Math.max(VisioUtils.max_level_L, instant_L);
-            instant_L = Math.max(instant_L, VisioUtils.old_level_L -0.001 );
-            VisioUtils.old_level_L = instant_L;
+            instant = Math.sqrt(sum / inpt.length);
+            VisioUtils.maxLevel = Math.max(VisioUtils.maxLevel, instant);
 
-            var level = (instant_L/VisioUtils.max_level_L);
-            if (level < 0.1) {
-                icon.style.color = 'white';
+            var level = Math.log2((instant/VisioUtils.maxLevel)+1);
+
+            if (level < 0.02) {
+                icon.style.color = 'rgb(255, 255, 255, 1)';
             } else {
-                var inverse = 255-(level*255);
-                icon.style.color = 'rgb('+inverse+', 255, '+inverse+')';
+                var inverse = 255-(level.toPrecision(2)*255);
+                icon.style.color = 'rgb(' + inverse + ', 255, ' + inverse + ')';
             }
         }
     },
@@ -56,32 +52,30 @@ var VisioUtils = {
                 : Visio.remoteAudio.srcObject
         );
 
-        // Remote microphone
-        var remoteJavascriptNode = VisioUtils.remoteAudioContext.createScriptProcessor(256, 1, 1);
-
-        var image = document.querySelector('#visio .infos img');
+        var remoteJavascriptNode = VisioUtils.remoteAudioContext.createScriptProcessor(2048, 1, 1);
+        var remoteMeter = document.querySelector('#visio #remote_level');
 
         remoteMicrophone.connect(remoteJavascriptNode);
         remoteJavascriptNode.connect(VisioUtils.remoteAudioContext.destination);
         remoteJavascriptNode.onaudioprocess = function(event) {
-            var inpt_L = event.inputBuffer.getChannelData(0);
-            var instant_L = 0.0;
+            var inpt = event.inputBuffer.getChannelData(0);
+            var instant = 0.0;
+            var sum = 0.0;
 
-            var sum_L = 0.0;
-
-            for(var i = 0; i < inpt_L.length; ++i) {
-                sum_L += inpt_L[i] * inpt_L[i];
+            for(var i = 0; i < inpt.length; ++i) {
+                sum += inpt[i] * inpt[i];
             }
 
-            instant_L = Math.sqrt(sum_L / inpt_L.length);
-            VisioUtils.max_level_L = Math.max(VisioUtils.max_level_L, instant_L);
-            instant_L = Math.max(instant_L, VisioUtils.old_level_L -0.0005 );
-            VisioUtils.old_level_L = instant_L;
+            instant = Math.sqrt(sum / inpt.length);
+            VisioUtils.remoteMaxLevel = Math.max(VisioUtils.remoteMaxLevel, instant);
 
-            var level = (instant_L/VisioUtils.max_level_L);
-            if (level < 0.1) level = 0;
+            var level = Math.log2((instant/VisioUtils.remoteMaxLevel)+1);
+            if (level < 0.02) {
+                level = 0;
+                VisioUtils.remoteMaxLevel = 0;
+            }
 
-            image.style.borderColor = 'rgba(255, 255, 255, ' + level + ')';
+            remoteMeter.style.borderColor = 'rgba(255, 255, 255, ' + level + ')';
         }
     },
 
