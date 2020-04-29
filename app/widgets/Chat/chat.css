@@ -105,8 +105,8 @@ main:not(.enabled) #chat_widget {
 }
 
 #chat_widget .chat_box form textarea {
-    /*padding: 0 0 1rem;*/
-    margin-top: -1.5rem;
+    padding-top: 0;
+    margin-top: 3rem;
     margin-bottom: -0.5rem;
     max-height: 50vh;
     overflow-y: auto;
