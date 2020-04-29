@@ -124,10 +124,10 @@
             <i class="material-icons">android</i> Play Store
         </a>-->
         <a class="button flat color blue" href="https://f-droid.org/packages/com.movim.movim/" target="_blank">
-            <i class="material-icons">adb</i> F-Droid
+            <i class="material-icons">android</i> F-Droid
         </a>
         <a class="button flat color purple on_desktop" href="https://movim.eu/#apps" target="_blank">
-            <i class="material-icons">face</i> Apps
+            <i class="material-icons">computer</i> Apps
         </a>
         <br />
     </footer>
