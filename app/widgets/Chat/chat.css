@@ -313,6 +313,10 @@ table.emojis td:hover {
 
 /* Emojis */
 
+#chat_widget .bubble ul.reactions {
+    min-width: 20rem;
+}
+
 #chat_widget .bubble div span.reaction,
 #chat_widget .bubble div span.actions,
 #chat_widget .bubble ul.reactions li {
@@ -320,12 +324,16 @@ table.emojis td:hover {
     background-color: rgba(var(--movim-font), 0.1);
     padding: 0 0.5rem;
     border-radius: 0.5rem;
-    line-height: 2.5rem;
+    line-height: 3rem;
     font-size: 1.75rem;
     margin: 0;
     display: inline-flex;
     z-index: 1;
     border: solid 1px transparent;
+}
+
+#chat_widget .bubble ul.reactions li i {
+    padding: 0;
 }
 
 #chat_widget .bubble div span.reaction,

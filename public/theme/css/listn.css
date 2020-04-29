@@ -336,7 +336,7 @@ ul li div.bubble {
     font-size: 1.75rem;
     max-width: calc(100% - 9rem);
     flex: 0 0 auto;
-    margin: 0 2rem;
+    margin: 0 1.5rem;
     min-height: 5rem;
 }
 

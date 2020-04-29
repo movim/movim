@@ -84,12 +84,19 @@ var Upload = {
         var image = new Image();
         image.onload = function()
         {
-            var limit = 1440;
+            var limit = 1920;
 
             var width = image.naturalWidth;
             var height = image.naturalHeight;
 
             if (file.size > SMALL_PICTURE_LIMIT) {
+                var ratio = Math.min(limit / width, limit / height);
+
+                if (ratio < 1) {
+                    width = Math.round(width*ratio);
+                    height = Math.round(height*ratio);
+                }
+
                 var canvas = document.createElement('canvas');
 
                 if ([5,6,7,8].indexOf(orientation) > -1) {

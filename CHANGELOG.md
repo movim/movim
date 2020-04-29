@@ -21,6 +21,7 @@ v0.17.2 (trunk)
  * Added support for XEP-0215: External Service Discovery
  * Fix browser tab Chat counter
  * Global chat counter count the notified chats and not the unread chat messages anymore
+ * Add support for Unicode 12.0 emojis
 
 v0.17.1
 ---------------------------
