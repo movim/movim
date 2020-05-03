@@ -26,9 +26,9 @@ class Post extends Payload
             ]);
             $p->set($stanza->items->item, $delay);
 
-            // We limit the very old posts (2 months old)
-            if (/*strtotime($p->published) > mktime(0, 0, 0, gmdate("m")-2, gmdate("d"), gmdate("Y"))
-            &&*/ $p->nodeid != $this->testid
+            // We limit the very old posts (1 months old)
+            if (strtotime($p->published) > mktime(0, 0, 0, gmdate("m")-1, gmdate("d"), gmdate("Y"))
+            && $p->nodeid != $this->testid
             && (($p->isComment() && isset($p->parent_id))
             || !$p->isComment())
             ) {
