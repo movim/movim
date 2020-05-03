@@ -62,7 +62,7 @@ class Presence
 
         $c = $dom->createElementNS('http://jabber.org/protocol/caps', 'c');
         $c->setAttribute('hash', 'sha-1');
-        $c->setAttribute('node', 'http://moxl.movim.eu/');
+        $c->setAttribute('node', 'https://movim.eu/');
         $c->setAttribute('ver', \Moxl\Utils::generateCaps());
         $root->appendChild($c);
 
