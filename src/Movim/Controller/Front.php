@@ -23,21 +23,16 @@ class Front extends Base
 
     public function loadController($request)
     {
-        $class_name = ucfirst($request).'Controller';
-        if (file_exists(APP_PATH . 'controllers/'.$class_name.'.php')) {
-            $controller_path = APP_PATH . 'controllers/'.$class_name.'.php';
+        $className = ucfirst($request).'Controller';
+        if (file_exists(APP_PATH . 'controllers/'.$className.'.php')) {
+            $controllerPath = APP_PATH . 'controllers/'.$className.'.php';
         } else {
-            $log = new Logger('movim');
-            $log->pushHandler(new SyslogHandler('movim'));
-            $log->error(__(
-                "Requested controller '%s' doesn't exist.",
-                $class_name
-            ));
+            \Utils::error("Requested controller $className doesn't exist");
             exit;
         }
 
-        require_once $controller_path;
-        return new $class_name();
+        require_once $controllerPath;
+        return new $className();
     }
 
     /**
@@ -54,6 +49,7 @@ class Front extends Base
                 $rpc->handleJSON($payload->b);
                 $rpc->writeJSON();
             }
+            return;
         }
 
         // Ajax request that is going to the daemon

@@ -4,7 +4,6 @@ namespace Moxl\Xec\Action\Vcard4;
 
 use Moxl\Xec\Action;
 use Moxl\Stanza\Vcard4;
-use App\Contact;
 
 class Get extends Action
 {
