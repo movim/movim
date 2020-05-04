@@ -80,7 +80,7 @@ class Builder
      */
     public function setTitle(string $name)
     {
-        $this->title = APP_TITLE . ' – ' . $name;
+        $this->title = $name;
     }
 
     /**

@@ -104,11 +104,10 @@ var Notification = {
                 window.electron.notification(false);
         } else {
             document.title =
-                '('
-                + Notification.tab_counter1
-                + '/'
+                Notification.tab_counter1
+                + '∣'
                 + Notification.tab_counter2
-                + ') '
+                + ' • '
                 + Notification.document_title;
 
             if (Notification.favicon != null)
