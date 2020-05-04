@@ -23,7 +23,6 @@ ul#bottomnavigation li:first-child {
 ul#bottomnavigation li span:not(.counter) {
     line-height: 5.5rem;
     display: inline-block;
-    font-size: 3.5rem;
 }
 
 @media screen and (max-width: 1024px) {
