@@ -365,7 +365,7 @@ class SDPtoJingle
 
                             $candidate->addAttribute('foundation', $matches[1]);
                             $candidate->addAttribute('component', $matches[2]);
-                            $candidate->addAttribute('protocol', $matches[3]);
+                            $candidate->addAttribute('protocol', strtolower($matches[3]));
                             $candidate->addAttribute('priority', $matches[4]);
                             $candidate->addAttribute('ip', $matches[5]);
                             $candidate->addAttribute('port', $matches[6]);
