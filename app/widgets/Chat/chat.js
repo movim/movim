@@ -132,12 +132,8 @@ var Chat = {
 
             if (Chat.edit) {
                 Chat.edit = false;
-                if (textarea.dataset.mid) {
-                    xhr = Chat_ajaxHttpDaemonCorrect(jid, text, textarea.dataset.mid);
-                    delete textarea.dataset.mid;
-                } else {
-                    xhr = Chat_ajaxHttpDaemonCorrect(jid, text);
-                }
+                xhr = Chat_ajaxHttpDaemonCorrect(jid, text, textarea.dataset.mid);
+                delete textarea.dataset.mid;
             } else {
                 xhr = Chat_ajaxHttpDaemonSendMessage(jid, text, muc);
             }
