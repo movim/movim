@@ -340,7 +340,7 @@
                         id="chat_textarea"
                         data-jid="{$jid}"
                         data-muc="{if="$muc"}true{/if}"
-                        {$rand = rand(0, 4)};
+                        {$rand = rand(0, 4)}
                         {if="$rand == 4 && !$muc"}
                             placeholder="{$c->__('message.edit_help')}"
                         {elseif="$rand == 3"}
