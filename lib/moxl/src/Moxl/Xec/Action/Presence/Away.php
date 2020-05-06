@@ -5,6 +5,7 @@ namespace Moxl\Xec\Action\Presence;
 use Moxl\Xec\Action;
 use Moxl\Stanza\Presence;
 use App\Presence as DBPresence;
+use App\PresenceBuffer;
 
 class Away extends Action
 {
@@ -14,14 +15,16 @@ class Away extends Action
     {
         $this->store();
         Presence::away($this->_status);
+
     }
 
     public function handle($stanza, $parent = false)
     {
         $presence = DBPresence::findByStanza($stanza);
         $presence->set($stanza);
-        $presence->save();
 
-        $this->event('mypresence', $stanza);
+        PresenceBuffer::getInstance()->append($presence, function () use ($stanza) {
+            $this->event('mypresence', $stanza);
+        });
     }
 }
