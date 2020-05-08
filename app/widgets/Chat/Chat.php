@@ -58,7 +58,7 @@ class Chat extends \Movim\Widget\Base
             $arr = explode('|', (new Notification)->getCurrent());
 
             if (isset($arr[1]) && $jid == $arr[1] && !$packet->content->muc) {
-                $this->ajaxGetHeader($jid);
+                $this->ajaxHttpGetHeader($jid);
             }
         }
     }
@@ -267,7 +267,7 @@ class Chat extends \Movim\Widget\Base
     /**
      * Get the header
      */
-    public function ajaxGetHeader($jid, $muc = false)
+    public function ajaxHttpGetHeader($jid, $muc = false)
     {
         $this->rpc(
             'MovimTpl.fill',

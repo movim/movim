@@ -63,7 +63,7 @@
                     </p>
                 {/if}
 
-                <p class="compose line" id="{$jid|cleanupId}-state"></p>
+                <p class="compose first line" id="{$jid|cleanupId}-state"></p>
                 {if="$conference && !$conference->connected"}
                     <p>{$c->__('button.connecting')}…</p>
                 {elseif="$conference && $conference->subject"}
