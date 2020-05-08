@@ -19,8 +19,8 @@ main:not(.enabled) #chat_widget {
     cursor: pointer;
 }
 
-#chat_widget p.compose:not(:empty),
-#chat_widget p.compose:empty + p {
+#chat_widget p.compose:not(.first):not(:empty),
+#chat_widget p.compose:not(.first):empty + p {
     animation: fadein 0.3s;
 }
 

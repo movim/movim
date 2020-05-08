@@ -86,8 +86,6 @@ class ChatStates
 
     public function paused(string $from, string $to, bool $mucPM = false)
     {
-        global $loop;
-
         $explodedFrom = explodeJid($from);
         $jid = $this->resolveJid(!$mucPM ? $explodedFrom['jid'] : $from, $to);
 

@@ -20,7 +20,7 @@ class Message extends Payload
         $message = \App\Message::findByStanza($stanza);
         $message = $message->set($stanza, $parent);
 
-        if ($stanza->composing || $stanza->paused) {
+        if ($stanza->composing || $stanza->paused || $stanza->active) {
             $from = ($message->type == 'groupchat')
                 ? $message->jidfrom.'/'.$message->resource
                 : $message->jidfrom;
@@ -29,7 +29,7 @@ class Message extends Payload
                 (ChatStates::getInstance())->composing($from, $message->jidto, isset($message->mucpm));
             }
 
-            if ($stanza->paused) {
+            if ($stanza->paused || $stanza->active) {
                 (ChatStates::getInstance())->paused($from, $message->jidto, isset($message->mucpm));
             }
         }

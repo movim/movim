@@ -245,6 +245,7 @@ class Chat extends \Movim\Widget\Base
 
     private function setState(string $jid, string $message)
     {
+        $this->rpc('MovimUtils.removeClass', '#' . cleanupId($jid.'_state'), 'first');
         $this->rpc('MovimTpl.fill', '#' . cleanupId($jid.'_state'), $message);
     }
 
