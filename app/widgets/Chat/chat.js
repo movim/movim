@@ -1054,7 +1054,9 @@ movimAddFocus(function() {
         var jid = MovimUtils.urlParts().params[0];
         var room = (MovimUtils.urlParts().params[1] === 'room');
 
-        Chat_ajaxGetHeader(jid, room);
+        if (jid) {
+            Chat_ajaxGetHeader(jid, room);
+        }
     }
 });
 
