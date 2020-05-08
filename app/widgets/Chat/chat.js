@@ -1052,10 +1052,8 @@ if (typeof Upload != 'undefined') {
 movimAddFocus(function() {
     if (MovimWebsocket.connection) {
         var jid = MovimUtils.urlParts().params[0];
-        var room = (MovimUtils.urlParts().params[1] === 'room');
-
-        if (jid) {
-            Chat_ajaxGetHeader(jid, room);
+        if (jid && (MovimUtils.urlParts().params[1] === 'room') == false) {
+            Chat_ajaxGetHeader(jid);
         }
     }
 });
