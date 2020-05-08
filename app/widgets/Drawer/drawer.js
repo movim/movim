@@ -13,7 +13,7 @@ var Drawer = {
     }
 }
 
-movim_add_onload(function() {
+movimAddOnload(function() {
     document.body.addEventListener('click', Drawer.toggle, false);
     document.addEventListener('keydown', function(e) {
         if (Drawer.filled()

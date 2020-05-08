@@ -23,7 +23,7 @@ var Dialog = {
     },
 }
 
-movim_add_onload(function() {
+movimAddOnload(function() {
     document.body.addEventListener('click', Dialog.toggle, false);
     document.addEventListener('keydown', function(e) {
         if (Dialog.filled()

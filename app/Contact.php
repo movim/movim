@@ -228,7 +228,7 @@ class Contact extends Model
         return explodeJid($this->id)['username'] ?? $this->id;
     }
 
-    public function getJidAttribute(): string
+    public function getJidAttribute(): ?string
     {
         return $this->id;
     }

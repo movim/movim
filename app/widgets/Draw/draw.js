@@ -428,4 +428,4 @@ Upload.progress((percent) => {
     }
 });
 
-movim_add_onload(() => Draw_ajaxHttpGet());
+movimAddOnload(() => Draw_ajaxHttpGet());

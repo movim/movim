@@ -1,4 +1,4 @@
-movim_add_onload(function() {
+movimAddOnload(function() {
     document.addEventListener('keydown', function(e) {
         if (document.querySelector('#preview').innerHTML != '' && e.keyCode == 27) {
             Preview_ajaxHide();

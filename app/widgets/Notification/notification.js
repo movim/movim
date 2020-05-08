@@ -189,6 +189,12 @@ var Notification = {
             Android.showNotification(title, body, picture, action);
             return;
         }
+    },
+    focus : function() {
+        if (Notification.focused == false) {
+            Notification.focused = true;
+            Notification.current(Notification.notifs_key);
+        }
     }
 }
 
@@ -214,9 +220,8 @@ if (typeof MovimWebsocket != 'undefined') {
             Notification_ajaxCurrent('blurred');
         });
 
-        window.addEventListener('focus', function() {
-            Notification.focused = true;
-            Notification.current(Notification.notifs_key);
+        movimAddFocus(function() {
+            Notification.focus();
         });
     });
 }

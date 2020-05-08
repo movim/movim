@@ -82,7 +82,7 @@ MovimWebsocket.register(function()
     }
 });
 
-movim_add_onload(function() {
+movimAddOnload(function() {
     // We had the autocomplete system
     var login = document.querySelector('input#username');
     login.addEventListener('input', function() {

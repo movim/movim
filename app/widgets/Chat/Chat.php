@@ -32,6 +32,7 @@ class Chat extends \Movim\Widget\Base
         $this->addcss('chat.css');
         $this->registerEvent('carbons', 'onMessage');
         $this->registerEvent('message', 'onMessage');
+        $this->registerEvent('presence', 'onPresence', 'chat');
         $this->registerEvent('retracted', 'onRetracted');
         $this->registerEvent('receiptack', 'onMessageReceipt');
         $this->registerEvent('displayed', 'onMessage', 'chat');
@@ -49,6 +50,17 @@ class Chat extends \Movim\Widget\Base
 
         $this->registerEvent('bob_request_handle', 'onSticker');
         $this->registerEvent('notification_counter_clear', 'onNotificationCounterClear');
+    }
+
+    public function onPresence($packet)
+    {
+        if ($packet->content && $jid = $packet->content->jid) {
+            $arr = explode('|', (new Notification)->getCurrent());
+
+            if (isset($arr[1]) && $jid == $arr[1] && !$packet->content->muc) {
+                $this->ajaxGetHeader($jid);
+            }
+        }
     }
 
     public function onMessageReceipt($packet)
@@ -249,6 +261,18 @@ class Chat extends \Movim\Widget\Base
     {
         $this->prepareMessages($jid, false, true);
         $this->event('chat_counter', $this->user->unreads());
+    }
+
+    /**
+     * Get the header
+     */
+    public function ajaxGetHeader($jid, $muc = false)
+    {
+        $this->rpc(
+            'MovimTpl.fill',
+            '#' . cleanupId($jid.'_header'),
+            $this->prepareHeader($jid, $muc)
+        );
     }
 
     /**
@@ -726,35 +750,9 @@ class Chat extends \Movim\Widget\Base
         $view = $this->tpl();
 
         $view->assign('jid', $jid);
-
+        $view->assign('muc', $muc);
         $view->assign('smiley', $this->call('ajaxSmiley'));
         $view->assign('emoji', prepareString('😀'));
-        $view->assign('muc', $muc);
-        $view->assign('anon', false);
-        $view->assign(
-            'info',
-            \App\Info::where('server', $this->user->session->host)
-                     ->where('node', '')
-                     ->first()
-        );
-
-        if ($muc) {
-            $view->assign('room', $jid);
-            $view->assign('conference', $this->user->session->conferences()
-                                             ->where('conference', $jid)
-                                             ->with('info')
-                                             ->first());
-
-            $mucinfo = \App\Info::where('server', explodeJid($jid)['server'])
-                                ->where('node', '')
-                                ->first();
-            if ($mucinfo && !empty($mucinfo->abuseaddresses)) {
-                $view->assign('info', $mucinfo);
-            }
-        } else {
-            $view->assign('roster', $this->user->session->contacts()->where('jid', $jid)->first());
-            $view->assign('contact', \App\Contact::firstOrNew(['id' => $jid]));
-        }
 
         return $view->draw('_chat');
     }
@@ -1077,6 +1075,40 @@ class Chat extends \Movim\Widget\Base
         $view->assign('me', $this->user->id);
 
         return $view->draw('_chat_reactions');
+    }
+
+    public function prepareHeader($jid, $muc = false)
+    {
+        $view = $this->tpl();
+
+        $view->assign('jid', $jid);
+        $view->assign('muc', $muc);
+        $view->assign(
+            'info',
+            \App\Info::where('server', $this->user->session->host)
+                     ->where('node', '')
+                     ->first()
+        );
+        $view->assign('anon', false);
+
+        if ($muc) {
+            $view->assign('conference', $this->user->session->conferences()
+                                             ->where('conference', $jid)
+                                             ->with('info')
+                                             ->first());
+
+            $mucinfo = \App\Info::where('server', explodeJid($jid)['server'])
+                                ->where('node', '')
+                                ->first();
+            if ($mucinfo && !empty($mucinfo->abuseaddresses)) {
+                $view->assign('info', $mucinfo);
+            }
+        } else {
+            $view->assign('roster', $this->user->session->contacts()->where('jid', $jid)->first());
+            $view->assign('contact', \App\Contact::firstOrNew(['id' => $jid]));
+        }
+
+        return $view->draw('_chat_header');
     }
 
     public function prepareEmpty()

@@ -155,7 +155,7 @@ var MovimTpl = {
     }
 };
 
-movim_add_onload(function() {
+movimAddOnload(function() {
     MovimTpl.touchEvents();
     document.body.addEventListener('click', MovimTpl.toggleContextMenu, false);
 });

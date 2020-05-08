@@ -44,6 +44,6 @@ MovimWebsocket.attach(function() {
     AdminTest.toggleConfiguration();
 });
 
-movim_add_onload(function() {
+movimAddOnload(function() {
     AdminTest.toggleConfiguration();
 });

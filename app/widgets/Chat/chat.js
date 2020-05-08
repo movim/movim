@@ -1049,6 +1049,15 @@ if (typeof Upload != 'undefined') {
     });
 }
 
+movimAddFocus(function() {
+    if (MovimWebsocket.connection) {
+        var jid = MovimUtils.urlParts().params[0];
+        var room = (MovimUtils.urlParts().params[1] === 'room');
+
+        Chat_ajaxGetHeader(jid, room);
+    }
+});
+
 document.addEventListener('focus', function() {
     var textarea = Chat.getTextarea();
     if (textarea) textarea.focus();
@@ -1058,7 +1067,7 @@ window.addEventListener('resize', function() {
     Chat.scrollRestore();
 });
 
-movim_add_onload(function() {
+movimAddOnload(function() {
     Chat.touchEvents();
 });
 
