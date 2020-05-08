@@ -22,6 +22,7 @@ v0.17.2 (trunk)
  * Fix browser tab Chat counter
  * Global chat counter count the notified chats and not the unread chat messages anymore
  * Add support for Unicode 12.0 emojis
+ * Add a refresh system for the Chat header based on the presences (and filtered by notifications)
 
 v0.17.1
 ---------------------------
