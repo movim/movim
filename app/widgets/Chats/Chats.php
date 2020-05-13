@@ -126,13 +126,9 @@ class Chats extends Base
             $g->setLimit(150);
             $g->request();
         } elseif ($this->validateJid($jid)) {
-            $message = $this->user->messages()
-                                  ->where(function ($query) use ($jid) {
-                                      $query->where('jidfrom', $jid)
-                                            ->orWhere('jidto', $jid);
-                                  })
-                                  ->orderBy('published', 'desc')
-                                  ->first();
+            $message = \App\Message::jid($jid)
+                ->orderBy('published', 'desc')
+                ->first();
             $g->setJid(echapJid($jid));
 
             if ($message) {
@@ -328,11 +324,7 @@ class Chats extends Base
 
     public function resolveMessageFromJid($jid)
     {
-        return $this->user->messages()
-            ->where(function ($query) use ($jid) {
-                $query->where('jidfrom', $jid)
-                    ->orWhere('jidto', $jid);
-            })
+        return \App\Message::jid($jid)
             ->orderBy('published', 'desc')
             ->first();
     }

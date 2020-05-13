@@ -622,12 +622,8 @@ class Chat extends \Movim\Widget\Base
             return;
         }
 
-        $messages = $this->user->messages()
-                         ->where(function ($query) use ($jid) {
-                             $query->where('jidfrom', $jid)
-                                      ->orWhere('jidto', $jid);
-                         })
-                         ->where('published', $prepend ? '<' : '>', date(MOVIM_SQL_DATE, strtotime($date)));
+        $messages = \App\Message::jid($jid)
+            ->where('published', $prepend ? '<' : '>', date(MOVIM_SQL_DATE, strtotime($date)));
 
 
         $messages = $muc
@@ -719,10 +715,7 @@ class Chat extends \Movim\Widget\Base
     {
         $view = $this->tpl();
         $view->assign('jid', $jid);
-        $view->assign('count', $this->user->messages()->where(function ($query) use ($jid) {
-            $query->where('jidfrom', $jid)
-                  ->orWhere('jidto', $jid);
-        })->count());
+        $view->assign('count', \App\Message::jid($jid)->count());
 
         Dialog::fill($view->draw('_chat_clear'));
     }
@@ -738,10 +731,7 @@ class Chat extends \Movim\Widget\Base
             return;
         }
 
-        $this->user->messages()->where(function ($query) use ($jid) {
-            $query->where('jidfrom', $jid)
-                  ->orWhere('jidto', $jid);
-        })->delete();
+        \App\Message::jid($jid)->delete();
 
         $this->ajaxGet($jid);
     }
@@ -766,10 +756,7 @@ class Chat extends \Movim\Widget\Base
 
         $jid = echapJid($jid);
 
-        $messagesQuery = $this->user->messages()->where(function ($query) use ($jid) {
-            $query->where('jidfrom', $jid)
-                  ->orWhere('jidto', $jid);
-        });
+        $messagesQuery = \App\Message::jid($jid);
 
         $messagesQuery = $muc
             ? $messagesQuery->where('type', 'groupchat')->whereNull('subject')
@@ -786,7 +773,8 @@ class Chat extends \Movim\Widget\Base
 
         if ($unreadsCount > 0) {
             $messagesClear = clone $messagesQuery;
-            $messagesClear->where('seen', false)->update(['seen' => true]);
+            // Two queries as Eloquent doesn't seems to map correctly the parameters
+            \App\Message::whereIn('mid', $messagesClear->where('seen', false)->pluck('mid'))->update(['seen' => true]);
         }
 
         if (!$seenOnly) {

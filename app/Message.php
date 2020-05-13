@@ -7,6 +7,7 @@ use Movim\Picture;
 use Movim\Route;
 
 use Illuminate\Database\QueryException;
+use Illuminate\Database\Capsule\Manager as DB;
 
 class Message extends Model
 {
@@ -39,6 +40,22 @@ class Message extends Model
     public function user()
     {
         return $this->belongsTo('App\User');
+    }
+
+    public function scopeJid($query, string $jid)
+    {
+        $jidFromToMessages = DB::table('messages')
+            ->where('user_id', \App\User::me()->id)
+            ->where('jidfrom', $jid)
+            ->unionAll(DB::table('messages')
+                ->where('user_id', \App\User::me()->id)
+                ->where('jidto', $jid)
+            );
+
+        return $query->select('*')->from(
+            $jidFromToMessages,
+            'messages'
+        )->where('user_id', \App\User::me()->id);
     }
 
     public function reactions()
@@ -361,13 +378,8 @@ class Message extends Model
         elseif (isset($stanza->reactions)
             && $stanza->reactions->attributes()->xmlns == 'urn:xmpp:reactions:0') {
 
-            $parentMessage = $this->user
-                ->messages()
+            $parentMessage = \App\Message::jid($this->jidfrom)
                 ->where('replaceid', (string)$stanza->reactions->attributes()->to)
-                ->where(function ($query)  {
-                    $query->where('jidfrom', $this->jidfrom)
-                        ->orWhere('jidto', $this->jidfrom);
-                })
                 ->first();
 
             if ($parentMessage) {

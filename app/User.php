@@ -37,7 +37,7 @@ class User extends Model
 
     public function capability()
     {
-        return $this->hasOne('App\Info', 'server', 'id');
+        return $this->hasOne('App\Info', 'server', 'id')->where('node', '');
     }
 
     public function messages()

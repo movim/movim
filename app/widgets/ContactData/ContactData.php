@@ -29,13 +29,12 @@ class ContactData extends Base
 
         $view = $this->tpl();
 
-        $view->assign('message', $this->user->messages()
-                                        ->where(function ($query) use ($jid) {
-                                            $query->where('jidfrom', $jid)
-                                                  ->orWhere('jidto', $jid);
-                                        })
-                                        ->orderBy('published', 'desc')
-                                        ->first());
+        $view->assign(
+            'message',
+            \App\Message::jid($jid)
+                        ->orderBy('published', 'desc')
+                        ->first()
+        );
         $view->assign('subscriptions', \App\Subscription::where('jid', $jid)
              ->where('public', true)->get());
         $view->assign('contact', App\Contact::firstOrNew(['id' => $jid]));

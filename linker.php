@@ -273,7 +273,7 @@ $xmppBehaviour = function (React\Socket\Connection $stream) use (&$xmppSocket, $
 };
 
 $wsConnector = new \Ratchet\Client\Connector($loop);
-$wsConnector('ws://localhost:' . getenv('port'), [], [
+$wsConnector('ws://127.0.0.1:' . getenv('port'), [], [
     'MOVIM_SESSION_ID' => getenv('sid'),
     'MOVIM_DAEMON_KEY' => getenv('key')
 ])->then(function (Ratchet\Client\WebSocket $socket) use (&$wsSocket, $wsSocketBehaviour) {
