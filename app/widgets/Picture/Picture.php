@@ -13,6 +13,14 @@ class Picture extends Base
     public function display()
     {
         $url = urldecode($this->get('url'));
+        $uri = parse_url($url);
+
+        // Other image websites
+        if (\array_key_exists('host', $uri) && $uri['host'] == 'i.imgur.com') {
+            header("HTTP/1.1 301 Moved Permanently");
+            header('Location: ' . getImgurThumbnail($url));
+            return;
+        }
 
         $headers = requestHeaders($url);
 

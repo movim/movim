@@ -893,13 +893,12 @@ class Chat extends \Movim\Widget\Base
             if (\array_key_exists('host', $url)) {
                 switch ($url['host']) {
                     case 'i.imgur.com':
-                        $matches = [];
-                        preg_match('/https:\/\/i.imgur.com\/([a-zA-Z0-9]{7})(.*)/', $message->file['uri'], $matches);
+                        $thumb = getImgurThumbnail($message->file['uri']);
 
-                        if (!empty($matches)) {
+                        if ($thumb) {
                             $message->sticker = [
                                 'url' => $message->file['uri'],
-                                'thumb' => 'https://i.imgur.com/' . $matches[1] . 'g' . $matches[2],
+                                'thumb' => $thumb,
                                 'picture' => true
                             ];
                         }
