@@ -66,6 +66,7 @@ class Message extends Model
     public function setFileAttribute(array $file)
     {
         $this->resolved = true;
+        $this->picture = typeIsPicture($file['type']);
         $this->attributes['file'] = serialize($file);
     }
 
@@ -426,7 +427,6 @@ class Message extends Model
     public function isEmpty()
     {
         return (empty($this->body)
-            && empty($this->picture)
             && empty($this->file)
             && empty($this->sticker)
         );

@@ -116,13 +116,13 @@ var MovimUtils = {
                 .replace(/>/g, '&gt;');
     },
     enhanceArticlesContent: function() {
-        document.querySelectorAll('article section content video')
+        document.querySelectorAll('article section > div  video')
             .forEach(item => item.setAttribute('controls', 'controls'));
 
-        document.querySelectorAll('article section content a:not(.innertag)')
+        document.querySelectorAll('article section > div a:not(.innertag)')
             .forEach(link => link.setAttribute('target', '_blank'));
 
-        document.querySelectorAll('article section content img')
+        document.querySelectorAll('article section > div img')
             .forEach(img => {
                 if (img.parentNode.localName != 'a') {
                     var div = document.createElement('div');

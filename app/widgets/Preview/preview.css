@@ -29,7 +29,7 @@
 
 /* Previewable */
 .previewable {
-    display: block;
+    display: inline-block;
     position: relative;
     overflow: hidden;
 }

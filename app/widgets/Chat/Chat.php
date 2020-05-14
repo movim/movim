@@ -819,7 +819,7 @@ class Chat extends \Movim\Widget\Base
         $emoji = \Movim\Emoji::getInstance();
 
         // URL messages
-        $message->url = filter_var($message->body, FILTER_VALIDATE_URL);
+        $message->url = filter_var(trim($message->body), FILTER_VALIDATE_URL);
 
         // If the message doesn't contain a file but is a URL, we try to resolve it
         if (!$message->file && $message->url && $message->resolved == false) {

@@ -47,7 +47,12 @@ class ContactActions extends Base
         }
 
         $tpl = $this->tpl();
-        $tpl->assign('contact', App\Contact::firstOrNew(['id' => $jid]));
+        $tpl->assign('contact', \App\Contact::firstOrNew(['id' => $jid]));
+        $tpl->assign('pictures', \App\Message::jid($jid)
+                                             ->where('picture', true)
+                                             ->orderBy('published', 'desc')
+                                             ->take(8)
+                                             ->get());
         $tpl->assign('roster', $this->user->session->contacts()->where('jid', $jid)->first());
         $tpl->assign('clienttype', getClientTypes());
 

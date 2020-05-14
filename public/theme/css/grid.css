@@ -1,56 +1,47 @@
 /* Grid */
+ul.grid {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 ul.grid > li {
-    background-size: cover;
-    width: calc(25% - 0.2em);
-    padding: 0;
-    padding-bottom: 25%;
-    float: left;
-    position: relative;
+    flex: 0 1 25%;
     background-repeat: no-repeat;
     background-position: center center;
-    box-sizing: border-box;
-    margin: 0.1em;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+ul.grid.third > li {
+    flex: 0 1 33.33%;
 }
 
 ul.grid.active > li:hover {
     cursor: pointer;
+    opacity: 0.8;
 }
 
-ul.grid > li > nav {
+ul.grid.active > li i {
+    font-size: 4rem;
+}
+
+ul.grid.active > li span {
     position: absolute;
     bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.8);
     color: white;
-    background-color: rgba(0, 0, 0, 0.5);
-    width: 100%;
-    padding: 0 1rem;
-    box-sizing: border-box;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    font-size: 2rem;
-    line-height: 5rem;
+    font-size: 1.5rem;
+    padding: 0 0.5rem;
+    line-height: 2.5rem;
+    border-radius: 0.3rem 0 0;
 }
 
-@media screen and (max-width: 1024px) {
-    ul.grid > li {
-        width: calc(33.33% - 0.2em);
-        padding-bottom: 33.33%;
-    }
-}
-
-@media screen and (max-width: 640px) {
-    ul.grid > li {
-        width: calc(50% - 0.2em);
-        padding-bottom: 50%;
-    }
-}
-
-ul.grid:after {
-    content: "";
+ul.grid > li:after {
+    content: '';
     display: block;
-    clear: both;
-}
-
-ul.grid.padded {
-    padding: 0;
+    padding-bottom: 100%;
 }

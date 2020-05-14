@@ -280,7 +280,7 @@ class Rooms extends Base
             ->get());
         $view->assign('me', $this->user->id);
 
-        Drawer::fill($view->draw('_rooms_subject_show'));
+        Drawer::fill($view->draw('_rooms_info'));
     }
 
     /**

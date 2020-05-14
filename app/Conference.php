@@ -49,6 +49,15 @@ class Conference extends Model
                     ->where('mucjid', \App\User::me()->id);
     }
 
+    public function pictures()
+    {
+        return $this->hasMany('App\Message', 'jidfrom', 'conference')
+                    ->where('user_id', \App\User::me()->id)
+                    ->where('type', 'groupchat')
+                    ->where('picture', true)
+                    ->orderBy('published', 'desc');
+    }
+
     public function info()
     {
         return $this->hasOne('App\Info', 'server', 'conference')

@@ -83,10 +83,36 @@
                 {/if}
             {/loop}
         </ul>
-        <hr class="thick"/>
+    {/if}
+
+    {if="$pictures->count() > 0"}
+        <ul class="list">
+            <li class="subheader">
+                <div>
+                    <p>
+                        {$c->__('general.pictures')}
+                    </p>
+                </div>
+            </li>
+        </ul>
+        <ul class="grid active">
+            {loop="$pictures"}
+                <li style="background-image: url('{$value->file['uri']|protectPicture}')"
+                    onclick="Preview_ajaxShow('{$value->file['uri']}')">
+                    <i class="material-icons">visibility</i>
+                </li>
+            {/loop}
+        </ul>
     {/if}
 
     <ul class="list middle">
+        <li class="subheader">
+            <div>
+                <p>
+                    {$c->__('vcard.title')}
+                </p>
+            </div>
+        </li>
         {if="$contact->fn != null"}
         <li>
             <span class="primary icon gray">{$contact->fn|firstLetterCapitalize}</span>

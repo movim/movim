@@ -77,6 +77,26 @@
         {/if}
     </ul>
 
+    {if="$conference->pictures()->count() > 0"}
+        <ul class="list">
+            <li class="subheader">
+                <div>
+                    <p>
+                        {$c->__('general.pictures')}
+                    </p>
+                </div>
+            </li>
+        </ul>
+        <ul class="grid active">
+            {loop="$conference->pictures()->take(8)->get()"}
+                <li style="background-image: url('{$value->file['uri']|protectPicture}')"
+                    onclick="Preview_ajaxShow('{$value->file['uri']}')">
+                    <i class="material-icons">visibility</i>
+                </li>
+            {/loop}
+        </ul>
+    {/if}
+
     <ul class="list">
         <li class="subheader">
             <div>

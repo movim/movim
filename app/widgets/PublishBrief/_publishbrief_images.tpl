@@ -1,20 +1,16 @@
 <section id="publishbriefimages" class="scroll">
-    <ul class="list flex active">
+    <ul class="grid third active">
         {loop="$embed->images"}
-            <li class="block"
+            <li style="background-image: url('{$value.url|protectPicture}')"
                 onclick="PublishBrief.setEmbedImage({$key})">
-                <div style="background-image: url('{$value.url|protectPicture}')">
-                    <span>
-                        {$value.width} × {$value.height} · {$value.size|sizeToCleanSize:0}
-                    </span>
-                </div>
+                <i class="material-icons">photo</i>
+                <span>
+                    {$value.width} × {$value.height} · {$value.size|sizeToCleanSize:0}
+                </span>
             </li>
         {/loop}
-        <li class="block"
-            onclick="PublishBrief.setEmbedImage('none')">
-            <div>
-                <i class="material-icons">visibility_off</i>
-            </div>
+        <li onclick="PublishBrief.setEmbedImage('none')">
+            <i class="material-icons">visibility_off</i>
         </li>
     </ul>
 </section>

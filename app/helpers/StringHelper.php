@@ -295,7 +295,7 @@ function colorize($string, string $color): string
  */
 function typeIsPicture(string $type): bool
 {
-    return in_array($type, ['image/jpeg', 'image/png', 'image/jpg', 'image/gif']);
+    return in_array($type, ['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/webp']);
 }
 
 /**
@@ -306,8 +306,9 @@ function typeIsAudio(string $type): bool
     return in_array(
         $type,
         [
-        'audio/aac', 'audio/ogg', 'video/ogg', 'audio/opus',
-        'audio/vorbis', 'audio/speex', 'audio/mpeg']
+            'audio/aac', 'audio/ogg', 'video/ogg', 'audio/opus',
+            'audio/vorbis', 'audio/speex', 'audio/mpeg'
+        ]
     );
 }
 
