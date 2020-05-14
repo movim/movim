@@ -4,13 +4,15 @@
     justify-content: center;
     display: flex;
     background-color: #111;
-    transition: transform .3s cubic-bezier(.4,0,.2,1) .05s;
-    transform: translateY(100%);
+    transition: opacity .3s cubic-bezier(.4,0,.2,1);
+    opacity: 0;
+    pointer-events: none;
     z-index: 3;
 }
 
 #preview:not(:empty) {
-    transform: translateX(0);
+    opacity: 1;
+    pointer-events: initial;
 }
 
 #preview img {
