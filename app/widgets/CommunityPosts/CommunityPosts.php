@@ -133,17 +133,6 @@ class CommunityPosts extends Base
         $posts = \App\Post::where('server', $origin)->where('node', $node)
                           ->whereIn('nodeid', $ids)->get();
 
-        $nsfwMessage = false;
-
-        if ($this->user->nsfw == false) {
-            foreach ($posts as $key => $post) {
-                if ($post->nsfw) {
-                    $posts->forget($key);
-                    $nsfwMessage = true;
-                }
-            }
-        }
-
         $postsWithKeys = [];
 
         foreach ($posts as $key => $post) {
@@ -151,15 +140,6 @@ class CommunityPosts extends Base
         }
 
         $view = $this->tpl();
-
-        if ($nsfwMessage) {
-            $this->rpc('MovimTpl.remove', '#nsfwmessage');
-            $this->rpc(
-                'MovimTpl.prepend',
-                '#communityposts',
-                $view->draw('_communityposts_nsfw')
-            );
-        }
 
         $view->assign('server', $origin);
         $view->assign('node', $node);
@@ -179,10 +159,6 @@ class CommunityPosts extends Base
         $view->assign('publicposts', ($ids == false)
             ? \App\Post::where('server', $origin)
                        ->where('node', $node)
-                       ->where(function ($query) {
-                           $query->where('nsfw', $this->user->nsfw)
-                                  ->orWhere('nsfw', false);
-                       })
                        ->where('open', true)
                        ->orderBy('published', 'desc')
                        ->skip($page * $this->_paging)
