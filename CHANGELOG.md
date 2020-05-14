@@ -23,6 +23,7 @@ v0.18 (trunk)
  * Global chat counter count the notified chats and not the unread chat messages anymore
  * Add support for Unicode 12.0 emojis
  * Add a refresh system for the Chat header based on the presences (and filtered by notifications)
+ * Use UNION ALL instead of OR for messages request (to prevent optimisations issues in SQL)
 
 v0.17.1
 ---------------------------
