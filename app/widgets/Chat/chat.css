@@ -161,7 +161,7 @@ main:not(.enabled) #chat_widget {
         width: 100%;
     }
 
-    #chat_widget section > ul.list > li.oppose span.primary {
+    #chat_widget section > ul.list > li.oppose > span.primary {
         display: none;
     }
 }
