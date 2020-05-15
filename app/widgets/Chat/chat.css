@@ -388,3 +388,7 @@ table.emojis td:hover {
 #chat_widget .bubble ul.card.list {
     max-width: 55rem;
 }
+
+#chat_widget .bubble ul.card.list .info {
+    display: none;
+}
