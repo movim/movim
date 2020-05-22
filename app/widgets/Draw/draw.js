@@ -19,6 +19,7 @@ var Draw = {
 
     control: null,
     actions: null,
+    topNav: null,
     save: null,  // button
 
     backgroundCanvas: null,  // background coming from another widget as a canvas
@@ -29,6 +30,7 @@ var Draw = {
     init: function (backgroundCanvas) {
         Draw.drawingData = [];
         Draw.backgroundCanvas = backgroundCanvas;
+        Draw.topNav = document.querySelector('.draw-top-nav');
         Draw.control = document.querySelector('.draw-control');
         Draw.actions = document.querySelector('.draw-actions');
 
@@ -269,6 +271,7 @@ var Draw = {
         Draw.mousePos = null;
 
         // show coontrols
+        Draw.topNav.classList.remove('drawing');
         Draw.actions.classList.remove('drawing');
         Draw.control.classList.remove('drawing');
 
@@ -280,6 +283,7 @@ var Draw = {
             Draw.drawing = true;
 
             // hide controls
+            Draw.topNav.classList.add('drawing');
             Draw.actions.classList.add('drawing');
             Draw.control.classList.add('drawing');
 

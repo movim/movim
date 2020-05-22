@@ -62,7 +62,7 @@
         </li>
     </ul>
 </div>
-<ul class="list controls middle">
+<ul class="list controls middle draw-top-nav">
     <li>
         <span id="drawback" class="primary active icon color active bubble">
             <i class="material-icons">arrow_back</i>

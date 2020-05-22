@@ -27,15 +27,15 @@ body ul.context_menu {
     top: 3rem;
 }
 
-body #draw,
-body #snap {
-    height: calc(100% - 3rem);
-    top: 3rem;
+body #snap,
+body #preview {
+    padding-top: 3rem;
 }
 
-body #preview {
-    height: calc(100% - 3rem);
-    top: 3rem;
+body #draw > ul.list.controls,
+body #snap > ul.list.controls,
+body #preview > ul.list.controls {
+    margin-top: 3rem;
 }
 
 @media screen and (max-width: 1024px) {

@@ -36,6 +36,11 @@
 }
 
 /* Controls */
+
+#draw .draw-top-nav {
+    transition: transform 0.2s;
+}
+
 #draw .draw-actions,
 #draw .draw-control {
     position: absolute;
@@ -47,6 +52,10 @@
 #draw .draw-actions {
     left: -1.5rem;
     right: initial;
+}
+
+#draw .draw-top-nav.drawing {
+    transform: translateY(-130%);
 }
 
 #draw .draw-control.drawing {
