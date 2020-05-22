@@ -4,6 +4,7 @@ var Snap = {
     videoSelect: undefined,
     canvas: undefined,
     wait: undefined,
+    imageCapture: null,
 
     gotStream: function() {
         const constraints = {
@@ -21,6 +22,12 @@ var Snap = {
 
                     Snap.video.srcObject = stream;
                     Snap.video.play();
+
+                    // We try to use ImageCapture
+                    if (ImageCapture) {
+                        const track = stream.getVideoTracks()[0];
+                        Snap.imageCapture = new ImageCapture(track);
+                    }
 
                     // If we cancel after the authorization was given
                     if (Snap.snap.classList == '') {
@@ -54,14 +61,30 @@ var Snap = {
         Snap.gotStream();
     },
     shoot: function() {
-        Snap.canvas.width = Snap.video.videoWidth;
-        Snap.canvas.height = Snap.video.videoHeight;
-        var context = Snap.canvas.getContext('2d');
-        context.drawImage(Snap.video, 0, 0, Snap.video.videoWidth, Snap.video.videoHeight);
-        Snap.video.pause();
+        if (Snap.imageCapture) {
+            Snap.imageCapture.takePhoto()
+                .then(blob => createImageBitmap(blob))
+                .then(imageBitmap => {
+                    Snap.canvas.width = imageBitmap.width;
+                    Snap.canvas.height = imageBitmap.height;
+                    var context = Snap.canvas.getContext('2d');
+                    context.drawImage(imageBitmap, 0, 0, imageBitmap.width, imageBitmap.height);
 
-        Upload.name = 'snapshot.jpg';
+                    Snap.compress();
+                })
+                .catch(error => console.log(error));
 
+        } else {
+            Snap.canvas.width = Snap.video.videoWidth;
+            Snap.canvas.height = Snap.video.videoHeight;
+            var context = Snap.canvas.getContext('2d');
+            context.drawImage(Snap.video, 0, 0, Snap.video.videoWidth, Snap.video.videoHeight);
+            Snap.video.pause();
+
+            Snap.compress();
+        }
+    },
+    compress: function() {
         Snap.canvas.toBlob(
             function (blob) {
                 Upload.prepare(blob);
@@ -70,6 +93,7 @@ var Snap = {
             0.85
         );
 
+        Upload.name = 'snapshot.jpg';
         Snap.snap.classList = 'upload';
     },
     clear: function() {

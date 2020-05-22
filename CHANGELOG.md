@@ -27,6 +27,7 @@ v0.18 (trunk)
  * Better handling of Pictures in Posts and Messages
  * Show picture number when selecting one in a gallery when publishing a Post
  * Draw on pictures before uploading them + fix some Upload behaviors
+ * Use ImageCapture Web API if it exists to capture images
 
 v0.17.1
 ---------------------------

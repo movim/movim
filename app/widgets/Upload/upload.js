@@ -177,14 +177,18 @@ var Upload = {
             }
         }
 
-        Upload.uploadButton.classList.remove('disabled');
+        if (Upload.uploadButton) {
+            Upload.uploadButton.classList.remove('disabled');
+        }
     },
 
     request : function(get, put) {
         Upload.get = get;
         Upload.xhr = new XMLHttpRequest();
 
-        Upload.uploadButton.classList.add('disabled');
+        if (Upload.uploadButton) {
+            Upload.uploadButton.classList.add('disabled');
+        }
 
         Upload.xhr.upload.addEventListener('progress', function(evt) {
             var percent = Math.floor(evt.loaded/evt.total*100);
@@ -200,13 +204,19 @@ var Upload = {
             && (Upload.xhr.status >= 200 && Upload.xhr.status < 400)) {
                 Dialog.clear();
                 Upload.launchAttached();
-                Upload.uploadButton.classList.remove('disabled');
+
+                if (Upload.uploadButton) {
+                    Upload.uploadButton.classList.remove('disabled');
+                }
             } else if (Upload.xhr.readyState == 4
             && (Upload.xhr.status >= 400 || Upload.xhr.status == 0)
             && Upload.file != null) {
                 Upload.launchFailed();
                 Upload_ajaxFailed();
-                Upload.uploadButton.classList.remove('disabled');
+
+                if (Upload.uploadButton) {
+                    Upload.uploadButton.classList.remove('disabled');
+                }
             }
         }
 
