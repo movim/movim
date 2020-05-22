@@ -25,6 +25,7 @@ v0.18 (trunk)
  * Add a refresh system for the Chat header based on the presences (and filtered by notifications)
  * Use UNION ALL instead of OR for messages request (to prevent optimisations issues in SQL)
  * Better handling of Pictures in Posts and Messages
+ * Show picture number when selecting one in a gallery when publishing a Post
 
 v0.17.1
 ---------------------------

@@ -34,7 +34,13 @@
             <p class="line">{$embed->title}</p>
             <p class="line">{$embed->description}</p>
         {/if}
+
         <p class="line">
+            {if="!empty($embed->images)"}
+                {$c->__('chats.picture')}
+                {if="$imagenumber != 'none'"}{$imagenumber+1}{else}1{/if}/{$embed->images|count}
+                ·
+            {/if}
             <a href="{$embed->url}" target="_blank">
                 {$embed->url}
             </a>
