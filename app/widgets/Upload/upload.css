@@ -34,3 +34,15 @@
 #upload div.drop.dropped {
     border-color: gray;
 }
+
+#upload li.file {
+    padding: 0;
+}
+
+#upload li.file span.primary {
+    margin-right: 1.5rem;
+}
+
+#upload li.file:not(.preview) span.primary {
+    display: none;
+}

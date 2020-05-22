@@ -2,8 +2,8 @@
     <h3>{$c->__('upload.title')}</h3>
     <ul class="list thick">
         <li>
-            <span class="primary icon bubble color green">
-                <i class="material-icons">cloud_upload</i>
+            <span class="primary icon">
+                <i class="material-icons">attach_file</i>
             </span>
             <div>
                 <p>{$c->__('upload.choose')}</p>
@@ -35,6 +35,9 @@
                     <p class="name line center"></p>
                     <p class="desc line center"></p>
                 </div>
+                <span class="primary active bubble color icon green">
+                    <i class="material-icons">gesture</i>
+                </span>
             </li>
         </div>
     </ul>
@@ -43,7 +46,7 @@
     <button onclick="Dialog_ajaxClear(); Upload.abort();" class="button flat">
         {$c->__('button.close')}
     </button>
-    <button onclick="Upload.init();" class="button flat">
+    <button id="upload_button" onclick="Upload.init();" class="button flat disabled">
         {$c->__('button.upload')}
     </button>
 </div>

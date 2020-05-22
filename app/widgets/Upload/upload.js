@@ -6,6 +6,8 @@ var Upload = {
     get : null,
     name : null,
     file : null,
+    canvas : null,
+    uploadButton : null,
 
     init : function() {
         if (Upload.file) {
@@ -59,6 +61,9 @@ var Upload = {
     },
 
     preview : function(file) {
+        Upload.canvas = null;
+        Upload.uploadButton = document.querySelector('#upload_button');
+
         var resolvedFile = file ? file : document.getElementById('file').files[0];
         Upload.name = resolvedFile.name;
         Upload.check(resolvedFile);
@@ -89,6 +94,31 @@ var Upload = {
             var width = image.naturalWidth;
             var height = image.naturalHeight;
 
+            Upload.canvas = document.createElement('canvas');
+
+            if ([5,6,7,8].indexOf(orientation) > -1) {
+                Upload.canvas.width = height;
+                Upload.canvas.height = width;
+            } else {
+                Upload.canvas.width = width;
+                Upload.canvas.height = height;
+            }
+
+            ctx = Upload.canvas.getContext("2d");
+
+            switch (orientation) {
+                case 2: ctx.transform(-1, 0, 0, 1, width, 0); break;
+                case 3: ctx.transform(-1, 0, 0, -1, width, height ); break;
+                case 4: ctx.transform(1, 0, 0, -1, 0, height ); break;
+                case 5: ctx.transform(0, 1, 1, 0, 0, 0); break;
+                case 6: ctx.transform(0, 1, -1, 0, height , 0); break;
+                case 7: ctx.transform(0, -1, -1, 0, height , width); break;
+                case 8: ctx.transform(0, -1, 1, 0, 0, width); break;
+                default: ctx.transform(1, 0, 0, 1, 0, 0);
+            }
+
+            ctx.drawImage(image, 0, 0, width, height);
+
             if (file.size > SMALL_PICTURE_LIMIT) {
                 var ratio = Math.min(limit / width, limit / height);
 
@@ -97,37 +127,12 @@ var Upload = {
                     height = Math.round(height*ratio);
                 }
 
-                var canvas = document.createElement('canvas');
-
-                if ([5,6,7,8].indexOf(orientation) > -1) {
-                  canvas.width = height;
-                  canvas.height = width;
-                } else {
-                  canvas.width = width;
-                  canvas.height = height;
-                }
-
-                ctx = canvas.getContext("2d");
-
-                switch (orientation) {
-                    case 2: ctx.transform(-1, 0, 0, 1, width, 0); break;
-                    case 3: ctx.transform(-1, 0, 0, -1, width, height ); break;
-                    case 4: ctx.transform(1, 0, 0, -1, 0, height ); break;
-                    case 5: ctx.transform(0, 1, 1, 0, 0, 0); break;
-                    case 6: ctx.transform(0, 1, -1, 0, height , 0); break;
-                    case 7: ctx.transform(0, -1, -1, 0, height , width); break;
-                    case 8: ctx.transform(0, -1, 1, 0, 0, width); break;
-                    default: ctx.transform(1, 0, 0, 1, 0, 0);
-                }
-
-                ctx.drawImage(image, 0, 0, width, height);
-
-                if (typeof canvas.toBlob == 'function') {
+                if (typeof Upload.canvas.toBlob == 'function') {
                     if (file.type != 'image/jpeg') {
                         Upload.name += '.jpg';
                     }
 
-                    canvas.toBlob(
+                    Upload.canvas.toBlob(
                         function (blob) {
                             Upload.prepare(blob);
                         },
@@ -153,22 +158,33 @@ var Upload = {
         // If the preview system is there
         if (preview) {
             var fileInfo = document.querySelector('#upload li.file');
+            var toDraw = fileInfo.querySelector('span.primary');
+            fileInfo.classList.remove('preview');
             fileInfo.querySelector('p.name').innerText = Upload.name;
             var type = file.type ? file.type + ' · ' : '';
             fileInfo.querySelector('p.desc').innerText =  type + MovimUtils.humanFileSize(file.size);
 
             if (Upload.file.type.match(/image.*/)) {
                 preview.src = URL.createObjectURL(Upload.file);
+                toDraw.addEventListener('click', e => {
+                    Draw.init(Upload.canvas);
+                    Dialog_ajaxClear();
+                    Upload.abort();
+                });
+                fileInfo.classList.add('preview');
             } else {
                 preview.src = '';
             }
         }
+
+        Upload.uploadButton.classList.remove('disabled');
     },
 
     request : function(get, put) {
         Upload.get = get;
-
         Upload.xhr = new XMLHttpRequest();
+
+        Upload.uploadButton.classList.add('disabled');
 
         Upload.xhr.upload.addEventListener('progress', function(evt) {
             var percent = Math.floor(evt.loaded/evt.total*100);
@@ -184,11 +200,13 @@ var Upload = {
             && (Upload.xhr.status >= 200 && Upload.xhr.status < 400)) {
                 Dialog.clear();
                 Upload.launchAttached();
+                Upload.uploadButton.classList.remove('disabled');
             } else if (Upload.xhr.readyState == 4
             && (Upload.xhr.status >= 400 || Upload.xhr.status == 0)
             && Upload.file != null) {
                 Upload.launchFailed();
                 Upload_ajaxFailed();
+                Upload.uploadButton.classList.remove('disabled');
             }
         }
 

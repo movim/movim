@@ -29,7 +29,7 @@ header#publishbrief form > div textarea {
 }
 
 #publishbrief span.privacy form > div .checkbox {
-    margin-top: calc(50% - 1.75rem);
+    margin-top: calc(50% - 2.25rem);
     width: 5rem;
     height: 3.5rem;
 }

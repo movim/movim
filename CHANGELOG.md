@@ -26,6 +26,7 @@ v0.18 (trunk)
  * Use UNION ALL instead of OR for messages request (to prevent optimisations issues in SQL)
  * Better handling of Pictures in Posts and Messages
  * Show picture number when selecting one in a gallery when publishing a Post
+ * Draw on pictures before uploading them + fix some Upload behaviors
 
 v0.17.1
 ---------------------------
