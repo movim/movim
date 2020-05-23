@@ -9,6 +9,12 @@ var Rooms = {
         document.querySelector('#rooms_widget ul.list.rooms').classList.toggle('edition');
     },
 
+    checkNoConnected: function() {
+        if (!document.querySelector('#rooms_widget ul.list.rooms li.connected')) {
+            Rooms.toggleShowAll();
+        }
+    },
+
     toggleShowAll: function(){
         document.querySelector('#rooms_widget ul.list.rooms').classList.toggle('all');
     },
@@ -52,10 +58,6 @@ var Rooms = {
             items[i].classList.remove('active');
 
             i++;
-        }
-
-        if (!document.querySelector('#rooms_widget ul.list.rooms li.connected')) {
-            Rooms.toggleShowAll();
         }
     },
 
