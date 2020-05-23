@@ -34,13 +34,13 @@
                             moderator
                         {/if}
                     ">
-                    {$count} <i class="material-icons">people</i>
                     {if="$conference->info && $conference->info->mucpublic"}
                         <i class="material-icons" title="{$c->__('room.public_muc_text')}">wifi_tethering</i>
                     {/if}
                     {if="$conference->info && !$conference->info->mucsemianonymous"}
                         <i class="material-icons" title="{$c->__('room.nonanonymous_muc_text')}">face</i>
                     {/if}
+                    {$count} <i class="material-icons">people</i>
                 </span>
             {elseif="isset($info) && $info->occupants > 0"}
                 <span title="{$c->__('communitydata.sub', $info->occupants)}"
@@ -49,13 +49,13 @@
                             moderator
                         {/if}
                     ">
-                    {$info->occupants} <i class="material-icons">people</i>
                     {if="$conference->info && $conference->info->mucpublic"}
                         <i class="material-icons" title="{$c->__('room.public_muc_text')}">wifi_tethering</i>
                     {/if}
                     {if="$conference->info && !$conference->info->mucsemianonymous"}
                         <i class="material-icons" title="{$c->__('room.nonanonymous_muc_text')}">face</i>
                     {/if}
+                    {$info->occupants} <i class="material-icons">people</i>
                 </span>
             {/if}
 
