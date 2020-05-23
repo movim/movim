@@ -182,6 +182,7 @@ ul li div.bubble:after {
     float: right;
     font-size: 1.5rem;
     color: gray;
+    margin-left: 0.5rem;
 }
 
 /* Size automagicaly the content */

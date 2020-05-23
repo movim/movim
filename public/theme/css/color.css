@@ -98,7 +98,7 @@ span.icon span.counter.alt {
 .button.blue,   .icon.blue  , span.resource.blue     { color: #2196F3; }
 .button.green,  .icon.green , span.resource.green    { color: #689F38; }
 ul li div.bubble.moderator:after,
-ul li p span.moderator,
+ul li div > p > span.info.moderator,
 .button.orange, .icon.orange, span.resource.orange   { color: #FF9800; }
 .button.yellow, .icon.yellow, span.resource.yellow   { color: #FBC02D; }
 .button.brown,  .icon.brown , span.resource.brown    { color: #795548; }

@@ -39,7 +39,9 @@
             <?php $this->widget('CommunitiesServerInfo'); ?>
             <?php $this->widget('NewsNav');?>
         </aside>
-        <?php $this->widget('CommunitiesServer'); ?>
+        <div>
+            <?php $this->widget('CommunitiesServer'); ?>
+        </div>
 
     <?php } else { ?>
         <aside>
