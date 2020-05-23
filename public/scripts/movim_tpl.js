@@ -14,6 +14,12 @@ var MovimTpl = {
             target.insertAdjacentHTML('beforeend', html);
         }
     },
+    appendAfter : function(selector, html) {
+        target = document.querySelector(selector);
+        if (target) {
+            target.insertAdjacentHTML('afterend', html);
+        }
+    },
     back : function() {
         // If the context menu is shown
         var cm = document.querySelector('ul.context_menu');
@@ -72,6 +78,12 @@ var MovimTpl = {
         target = document.querySelector(selector);
         if (target) {
             target.insertAdjacentHTML('afterbegin', html);
+        }
+    },
+    prependBefore: function(selector, html) {
+        target = document.querySelector(selector);
+        if (target) {
+            target.insertAdjacentHTML('beforebegin', html);
         }
     },
     remove: function(selector) {

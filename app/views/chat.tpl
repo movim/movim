@@ -19,6 +19,7 @@
     <div>
         <?php $this->widget('Chats');?>
         <?php $this->widget('Rooms');?>
+        <?php $this->widget('RoomsUtils');?>
     </div>
 </main>
 

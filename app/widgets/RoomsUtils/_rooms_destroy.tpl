@@ -12,7 +12,7 @@
     <button
         name="submit"
         class="button flat color red"
-        onclick="Rooms_ajaxDestroy('{$room}'); Dialog_ajaxClear()">
+        onclick="RoomsUtils_ajaxDestroy('{$room}'); Dialog_ajaxClear()">
         {$c->__('button.destroy')}
     </button>
 </div>

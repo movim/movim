@@ -29,7 +29,7 @@ var Chat = {
 
     autocomplete: function(event, jid)
     {
-        Rooms_ajaxMucUsersAutocomplete(jid);
+        RoomsUtils_ajaxMucUsersAutocomplete(jid);
     },
     onAutocomplete: function(usersList)
     {

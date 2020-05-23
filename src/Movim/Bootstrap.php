@@ -287,7 +287,7 @@ class Bootstrap
         'Confirm','ContactActions','Chat','Chats','Config','ContactData','ContactHeader',
         'Dialog','Drawer','Init','Login','LoginAnonymous','Menu','Navigation',
         'Notification', 'Notifications','Post','PostActions','Presence','PublishBrief','Rooms',
-        'RoomsExplore', 'Stickers','Upload','Vcard4','Visio','VisioLink'];
+        'RoomsExplore', 'RoomsUtils', 'Stickers','Upload','Vcard4','Visio','VisioLink'];
     }
 
     /**

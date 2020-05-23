@@ -103,7 +103,8 @@ ul.list li span.icon.small img.emoji {
 }
 
 ul.list li span.icon.small:not(.bubble) i {
-    padding: 1rem 0;
+    font-size: 3rem;
+    line-height: 3rem;
 }
 
 span.icon.small.bubble:first-letter,
@@ -126,6 +127,12 @@ span.icon.status:after {
     border-radius: 2em;
     background-color: #DDD;
     box-shadow: -0.1rem -0.1rem 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+span.icon.small span.counter,
+span.icon.small.composing:after,
+span.icon.small.status:after {
+    top: 1.75rem;
 }
 
 main ul li .control > i {

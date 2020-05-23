@@ -57,7 +57,7 @@ class Presence extends Payload
 
                             if ($presence->value != 5 && $presence->value != 6) {
                                 $this->method('muc_handle');
-                                $this->pack($presence);
+                                $this->pack([$presence, false]);
                             } elseif ($presence->value == 5) {
                                 $this->method('unavailable_handle');
                                 $this->pack($presence);

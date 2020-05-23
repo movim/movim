@@ -28,6 +28,7 @@ v0.18 (trunk)
  * Show picture number when selecting one in a gallery when publishing a Post
  * Draw on pictures before uploading them + fix some Upload behaviors
  * Use ImageCapture Web API if it exists to capture images
+ * Rewrite and split Rooms in Rooms and Rooms Utils for better performances
 
 v0.17.1
 ---------------------------

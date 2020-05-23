@@ -32,7 +32,7 @@
         </button>
         <button
             class="button flat"
-            onclick="Rooms_ajaxInvite(MovimUtils.formToJson('invite'));">
+            onclick="RoomsUtils_ajaxInvite(MovimUtils.formToJson('invite'));">
             {$c->__('button.invite')}
         </button>
     </div>

@@ -15,7 +15,7 @@
         </button>
         <button
             class="button flat"
-            onclick="Rooms_ajaxSetSubject('{$room->conference}', MovimUtils.formToJson('changesubject')); Dialog_ajaxClear();">
+            onclick="RoomsUtils_ajaxSetSubject('{$room->conference}', MovimUtils.formToJson('changesubject')); Dialog_ajaxClear();">
             {$c->__('button.save')}
         </button>
     </div>

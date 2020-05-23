@@ -21,11 +21,11 @@
                 <span class="primary icon bubble color active {$conference->name|stringToColor}
                     {if="!$conference->connected"}disabled{/if}"
                     style="background-image: url({$curl});"
-                    onclick="Rooms_ajaxShowSubject('{$jid|echapJS}')">
+                    onclick="RoomsUtils_ajaxShowSubject('{$jid|echapJS}')">
             {else}
                 <span class="primary icon bubble color active {$conference->name|stringToColor}
                     {if="!$conference->connected"}disabled{/if}"
-                    onclick="Rooms_ajaxShowSubject('{$jid|echapJS}')">
+                    onclick="RoomsUtils_ajaxShowSubject('{$jid|echapJS}')">
                     {autoescape="off"}
                         {$conference->name|firstLetterCapitalize|addEmojis}
                     {/autoescape}
@@ -54,11 +54,11 @@
 
             <div>
                 {if="$conference && $conference->name"}
-                    <p class="line active" title="{$jid|echapJS}" onclick="Rooms_ajaxShowSubject('{$jid|echapJS}')">
+                    <p class="line active" title="{$jid|echapJS}" onclick="RoomsUtils_ajaxShowSubject('{$jid|echapJS}')">
                         {$conference->name}
                     </p>
                 {else}
-                    <p class="line active" onclick="Rooms_ajaxShowSubject('{$jid|echapJS}')">
+                    <p class="line active" onclick="RoomsUtils_ajaxShowSubject('{$jid|echapJS}')">
                         {$jid|echapJS}
                     </p>
                 {/if}
@@ -67,7 +67,7 @@
                 {if="$conference && !$conference->connected"}
                     <p>{$c->__('button.connecting')}…</p>
                 {elseif="$conference && $conference->subject"}
-                    <p class="line active" title="{$conference->subject}" onclick="Rooms_ajaxShowSubject('{$jid|echapJS}')">
+                    <p class="line active" title="{$conference->subject}" onclick="RoomsUtils_ajaxShowSubject('{$jid|echapJS}')">
                         {if="$conference->info && $conference->info->mucpublic"}
                             <span title="{$c->__('room.public_muc_text')}">
                                 {$c->__('room.public_muc')} <i class="material-icons">wifi_tethering</i>
@@ -83,7 +83,7 @@
                         {$conference->subject}
                     </p>
                 {else}
-                    <p class="line active" id="{$jid|cleanupId}-state" onclick="Rooms_ajaxShowSubject('{$jid|echapJS}')">
+                    <p class="line active" id="{$jid|cleanupId}-state" onclick="RoomsUtils_ajaxShowSubject('{$jid|echapJS}')">
                         {if="$conference->info && $conference->info->mucpublic"}
                             <span title="{$c->__('room.public_muc_text')}">
                                 {$c->__('room.public_muc')} <i class="material-icons">wifi_tethering</i>
@@ -116,12 +116,12 @@
                 </li>
             {/if}
             {if="$conference->presence->mucrole == 'moderator'"}
-                <li onclick="Rooms_ajaxGetAvatar('{$jid|echapJS}')">
+                <li onclick="RoomsUtils_ajaxGetAvatar('{$jid|echapJS}')">
                     <div>
                         <p class="normal">{$c->__('page.avatar')}</p>
                     </div>
                 </li>
-                <li onclick="Rooms_ajaxGetSubject('{$jid|echapJS}')">
+                <li onclick="RoomsUtils_ajaxGetSubject('{$jid|echapJS}')">
                     <div>
                         <p class="normal">{$c->__('chatroom.subject')}</p>
                     </div>
@@ -133,7 +133,7 @@
                         <p class="normal">{$c->__('chatroom.administration')}</p>
                     </div>
                 </li>
-                <li class="divided" onclick="Rooms_ajaxAskDestroy('{$jid|echapJS}')">
+                <li class="divided" onclick="RoomsUtils_ajaxAskDestroy('{$jid|echapJS}')">
                     <div>
                         <p class="normal">{$c->__('button.destroy')}</p>
                     </div>
@@ -158,19 +158,19 @@
             </li>
         {/if}
 
-        <li class="divided" onclick="Rooms_ajaxAskInvite('{$jid|echapJS}');">
+        <li class="divided" onclick="RoomsUtils_ajaxAskInvite('{$jid|echapJS}');">
             <div>
                 <p class="normal">{$c->__('room.invite')}</p>
             </div>
         </li>
 
-        <li onclick="Rooms_ajaxAdd('{$jid|echapJS}');">
+        <li onclick="RoomsUtils_ajaxAdd('{$jid|echapJS}');">
             <div>
                 <p class="normal">{$c->__('chatroom.config')}</p>
             </div>
         </li>
         {if="!$anon"}
-            <li onclick="Rooms_ajaxRemoveConfirm('{$jid|echapJS}')">
+            <li onclick="RoomsUtils_ajaxRemove('{$jid|echapJS}')">
                 <div>
                     <p class="normal">{$c->__('button.delete')}</p>
                 </div>

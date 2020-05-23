@@ -1,9 +1,21 @@
 var Rooms = {
-    anonymous_room: false,
     default_services: [],
 
     setDefaultServices: function(services) {
         Rooms.default_services = services;
+    },
+
+    toggleEdit: function(){
+        document.querySelector('#rooms_widget ul.list.rooms').classList.toggle('edition');
+    },
+
+    toggleShowAll: function(){
+        document.querySelector('#rooms_widget ul.list.rooms').classList.toggle('all');
+    },
+
+    selectGatewayRoom : function(room, name) {
+        document.querySelector('form[name="bookmarkmucadd"] input[name=jid]').value = room;
+        document.querySelector('form[name="bookmarkmucadd"] input[name=name]').value = name;
     },
 
     suggest: function() {
@@ -22,7 +34,7 @@ var Rooms = {
     },
 
     refresh: function() {
-        var items = document.querySelectorAll('#rooms_widget ul li:not(.subheader)');
+        var items = document.querySelectorAll('#rooms_widget ul.list.rooms li:not(.subheader)');
         var i = 0;
         while(i < items.length)
         {
@@ -41,42 +53,38 @@ var Rooms = {
 
             i++;
         }
+
+        if (!document.querySelector('#rooms_widget ul.list.rooms li.connected')) {
+            Rooms.toggleShowAll();
+        }
     },
 
-    selectGatewayRoom : function(room, name) {
-        document.querySelector('form[name="bookmarkmucadd"] input[name=jid]').value = room;
-        document.querySelector('form[name="bookmarkmucadd"] input[name=name]').value = name;
-    },
+    setRoom: function(id, html) {
+        var listSelector = '#rooms_widget ul.list.rooms ';
+        var list = document.querySelector(listSelector);
+        var element = list.querySelector('#' + id);
 
-    /**
-     * @brief Connect to an anonymous server
-     * @param The jid to remember
-     */
-    anonymousInit : function() {
-        MovimWebsocket.register(function()
+        if (element) element.remove();
+
+        var rooms = document.querySelectorAll(listSelector + '> li');
+        var i = 0;
+
+        while(i < rooms.length)
         {
-            form = document.querySelector('form[name="loginanonymous"]');
-            form.onsubmit = function(e) {
-                e.preventDefault();
-                // We login
-                LoginAnonymous_ajaxLogin(this.querySelector('input#nick').value);
+            if (rooms[i].id > id) {
+                MovimTpl.prependBefore(listSelector + '#' + rooms[i].id, html);
+                break;
             }
-        });
-    },
 
-    /**
-     * @brief Join an anonymous room
-     * @param The jid to remember
-     */
-    anonymousJoin : function() {
-        // And finally we join
-        Rooms_ajaxExit(Rooms.anonymous_room);
-        Rooms_ajaxJoin(Rooms.anonymous_room);
+            i++;
+        }
 
-        // We display the room
-        Chat_ajaxGetRoom(Rooms.anonymous_room);
+        if (i == rooms.length) {
+            MovimTpl.append(listSelector, html);
+        }
+
+        Rooms.refresh();
     }
 }
 
-//Rooms.anonymousInit();
-MovimWebsocket.initiate(() => Rooms_ajaxHttpDisplay());
+MovimWebsocket.initiate(() => Rooms_ajaxHttpGet());

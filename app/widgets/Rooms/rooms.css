@@ -13,3 +13,37 @@
 #gateway_rooms:not(:empty) + div {
     display: none;
 }
+
+#rooms_widget ul.list.rooms:not(.edition) li span.control {
+    display: none;
+}
+
+#rooms_widget ul.list.rooms {
+    display: flex;
+    flex-direction: column;
+}
+
+#rooms_widget ul.list.rooms li {
+    order: 2;
+}
+
+#rooms_widget ul.list.rooms li:not(.connected) span.primary {
+    opacity: 0.5;
+}
+
+#rooms_widget ul.list.rooms li.connected {
+    order: 1;
+}
+
+#rooms_widget ul.list.rooms:empty ~ ul.toggle_show,
+#rooms_widget ul.list.rooms:not(:empty):not(.all) ~ ul.toggle_show li span.primary i:first-child,
+#rooms_widget ul.list.rooms:not(:empty).all ~ ul.toggle_show li span.primary i:last-child,
+#rooms_widget ul.list.rooms:not(:empty):not(.all) ~ ul.toggle_show li div > p:first-child,
+#rooms_widget ul.list.rooms:not(:empty).all ~ ul.toggle_show li div > p:last-child,
+#rooms_widget ul.list.rooms:not(:empty) ~ ul.empty {
+    display: none;
+}
+
+#rooms_widget ul.list.rooms:not(.all) li:not(.connected) {
+    display: none;
+}

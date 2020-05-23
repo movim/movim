@@ -9,7 +9,7 @@
         {if="$gateways->isNotEmpty() && !isset($conference)"}
             <div>
                 <div class="select">
-                    <select onchange="Rooms_ajaxDiscoGateway(this.value)">
+                    <select onchange="RoomsUtils_ajaxDiscoGateway(this.value)">
                         <option value="">{$c->__('rooms.default_room')}</option>
                         {loop="$gateways"}
                             <option value="{$value->server}">
@@ -104,7 +104,7 @@
         </button>
         <button
             class="button flat"
-            onclick="Rooms_ajaxChatroomAdd(MovimUtils.formToJson('bookmarkmucadd'));">
+            onclick="RoomsUtils_ajaxAddConfirm(MovimUtils.formToJson('bookmarkmucadd'));">
             {if="isset($conference)"}
                 {$c->__('button.edit')}
             {else}

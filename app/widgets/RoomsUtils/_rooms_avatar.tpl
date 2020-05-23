@@ -26,7 +26,7 @@
     <button
         type="button"
         onclick="
-            Rooms_ajaxSetAvatar('{$room->conference}', MovimUtils.formToJson('avatarroom'));
+            RoomsUtils_ajaxSetAvatar('{$room->conference}', MovimUtils.formToJson('avatarroom'));
             this.value = '{$c->__('button.submitting')}';
             this.className='button flat inactive';"
         class="button flat"

@@ -331,7 +331,7 @@ class Chat extends \Movim\Widget\Base
             $this->rpc('Notification.current', 'chat|'.$room.'|room');
             $this->rpc('Chat.scrollToSeparator');
         } else {
-            $this->rpc('Rooms_ajaxAdd', $room);
+            $this->rpc('RoomsUtils_ajaxAdd', $room);
         }
     }
 

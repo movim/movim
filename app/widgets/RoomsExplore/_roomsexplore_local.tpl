@@ -27,7 +27,7 @@
                 </span>
             {else}
                 <span class="control icon gray active divided"
-                    onclick="Drawer.clear(); Rooms_ajaxAdd('{$value->server}', '{$value->name}')">
+                    onclick="Drawer.clear(); RoomsUtils_ajaxAdd('{$value->server}', '{$value->name}')">
                     <i class="material-icons">add</i>
                 </span>
             {/if}

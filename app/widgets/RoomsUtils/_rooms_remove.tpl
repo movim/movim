@@ -12,7 +12,7 @@
     <button
         name="submit"
         class="button flat"
-        onclick="Rooms_ajaxExit('{$room|echapJS}'); Rooms_ajaxRemove('{$room|echapJS}'); Dialog_ajaxClear()">
+        onclick="Rooms_ajaxExit('{$room|echapJS}'); RoomsUtils_ajaxRemoveConfirm('{$room|echapJS}'); Dialog_ajaxClear()">
         {$c->__('button.remove')}
     </button>
 </div>
