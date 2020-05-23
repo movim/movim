@@ -94,8 +94,8 @@ ul.list li span.icon.small {
     line-height: 3rem;
     font-size: 0; /* Only display the first letter */
     flex: 0 0 3rem;
-    margin-left: 1rem;
-    margin-right: 2rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
 }
 
 ul.list li span.icon.small img.emoji {
@@ -109,7 +109,7 @@ ul.list li span.icon.small:not(.bubble) i {
 
 span.icon.small.bubble:first-letter,
 span.icon.small.bubble i {
-    font-size: 2rem;
+    font-size: 1.75rem;
     line-height: 3rem;
 }
 
