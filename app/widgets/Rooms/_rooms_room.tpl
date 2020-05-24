@@ -63,6 +63,8 @@
             <span class="second">
                 {if="isset($info) && $info->description"}
                     {$info->description}
+                {else}
+                    {$conference->conference}
                 {/if}
             </span>
         </p>

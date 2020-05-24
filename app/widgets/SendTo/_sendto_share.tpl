@@ -26,7 +26,7 @@
     <hr />
 
     {if="$conferences->isNotEmpty()"}
-        <ul class="list thin">
+        <ul class="list thin divided spaced">
             <li class="subheader">
                 <div>
                     <p>{$c->__('sendto.chatroom')}</p>
@@ -36,18 +36,18 @@
                 <li>
                     {$url = $value->getPhoto()}
                     {if="$url"}
-                        <span class="primary icon bubble color {$value->name|stringToColor}"
+                        <span class="primary icon bubble color small {$value->name|stringToColor}"
                             style="background-image: url({$url});">
                         </span>
                     {else}
-                        <span class="primary icon bubble color {$value->name|stringToColor}">
+                        <span class="primary icon bubble color small {$value->name|stringToColor}">
                             {autoescape="off"}
                                 {$value->name|firstLetterCapitalize|addEmojis}
                             {/autoescape}
                         </span>
                     {/if}
 
-                    <span class="control icon active gray" onclick="SendTo_ajaxSend('{$value->conference}', {'uri': '{$uri}'}, true, '{$openlink}')">
+                    <span class="control icon active gray" onclick="SendTo_ajaxSend('{$value->conference|echapJS}', {'uri': '{$uri}'}, true, '{$openlink}')">
                         <i class="material-icons">send</i>
                     </span>
 
@@ -55,16 +55,14 @@
 
                     <div>
                         <p class="normal line">
-                            {$value->name}
-                            <span class="second">{$value->conference}</span>
-                        </p>
-                        <p class="line"
-                            {if="isset($info) && $info->description"}title="{$info->description}"{/if}>
-                            {if="isset($info) && $info->description"}
-                                {$info->description}
-                            {else}
-                                {$value->conference}
-                            {/if}
+                            <span title="{$value->conference}">{$value->name}</span>
+                            <span class="second" {if="isset($info) && $info->description"}title="{$info->description}"{/if}>
+                                {if="isset($info) && $info->description"}
+                                    {$info->description}
+                                {else}
+                                    {$value->conference}
+                                {/if}
+                            </span>
                         </p>
                     </div>
                 </li>
@@ -72,7 +70,7 @@
         </ul>
     {/if}
 
-    <ul class="list thin" id="sendto_contacts">
+    <ul class="list divided spaced" id="sendto_contacts">
         {autoescape="off"}
             {$c->prepareContacts($contacts, $uri, $openlink)}
         {/autoescape}

@@ -4,7 +4,7 @@
     </div>
 </li>
 {loop="$contacts"}
-    <li class="{if="$value->presence && $value->presence->value > 4"}faded{/if}"">
+    <li class="{if="$value->presence && $value->presence->value > 4"}faded{/if}">
         {$url = $value->getPhoto('m')}
         {if="$url"}
             <span class="primary icon bubble
@@ -26,7 +26,7 @@
                 <i class="material-icons">person</i>
             </span>
         {/if}
-        <span class="control icon active gray" onclick="SendTo_ajaxSend('{$value->jid}', {'uri': '{$uri}'}, false, '{$openlink}')">
+        <span class="control icon active gray" onclick="SendTo_ajaxSend('{$value->jid|echapJS}', {'uri': '{$uri}'}, false, '{$openlink}')">
             <i class="material-icons">send</i>
         </span>
         <div>
@@ -38,9 +38,7 @@
                     </span>
                 {/if}
             </p>
-            <p>
-                {$value->jid}
-            </p>
+            <p>{$value->jid}</p>
         </div>
     </li>
 {/loop}
