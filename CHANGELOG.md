@@ -29,6 +29,7 @@ v0.18 (trunk)
  * Draw on pictures before uploading them + fix some Upload behaviors
  * Use ImageCapture Web API if it exists to capture images
  * Rewrite and split Rooms in Rooms and Rooms Utils for better performances
+ * Add support for XEP-0319: Last User Interaction in Presence and refactor the "last seen" feature
 
 v0.17.1
 ---------------------------

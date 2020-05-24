@@ -41,6 +41,22 @@ class Presence extends Model
         return $this->hasOne('App\Contact', 'id', 'jid');
     }
 
+    public function getSeenAttribute()
+    {
+        if ($this->value == 1) return;
+
+        if ($this->resource == '' && $this->delay) {
+            $delay = strtotime($this->delay);
+            if ($this->last) $delay += $this->last;
+
+            return gmdate('Y-m-d H:i:s', $delay);
+        } elseif ($this->delay) {
+            return $this->delay;
+        } elseif ($this->idle) {
+            return $this->idle;
+        }
+    }
+
     public function getPresencetextAttribute()
     {
         return getPresences()[$this->value];
@@ -179,7 +195,7 @@ class Presence extends Model
             }
         }
 
-        if ($stanza->delay) {
+        if ($stanza->delay && $stanza->delay->attributes()->xmlns == 'urn:xmpp:delay') {
             $this->delay = gmdate(
                 'Y-m-d H:i:s',
                 strtotime(
@@ -188,7 +204,16 @@ class Presence extends Model
             );
         }
 
-        if ($stanza->query) {
+        if ($stanza->idle && $stanza->idle->attributes()->xmlns == 'urn:xmpp:idle:1') {
+            $this->idle = gmdate(
+                'Y-m-d H:i:s',
+                strtotime(
+                    (string)$stanza->idle->attributes()->since
+                )
+            );
+        }
+
+        if ($stanza->query && $stanza->query->attributes()->xmlns == 'jabber:iq:last') {
             $this->last = (int)$stanza->query->attributes()->seconds;
         }
     }
@@ -206,6 +231,7 @@ class Presence extends Model
             'node' => $this->attributes['node'] ?? null,
             'delay' => $this->attributes['delay'] ?? null,
             'last' => $this->attributes['last'] ?? null,
+            'idle' => $this->attributes['idle'] ?? null,
             'muc' => $this->attributes['muc'] ?? null,
             'mucjid' => $this->attributes['mucjid'] ?? null,
             'mucaffiliation' => $this->attributes['mucaffiliation']  ?? null,

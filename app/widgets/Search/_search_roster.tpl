@@ -56,6 +56,11 @@
             <div>
                 <p class="normal line">
                     {$value->truename}
+                        {if="$value->group"}
+                        <span class="tag color {$value->group|stringToColor}">
+                            {$value->group}
+                        </span>
+                    {/if}
                     {if="$value->presence && $value->presence->capability"}
                         <span class="second" title="{$value->presence->capability->name}">
                             <i class="material-icons">{$value->presence->capability->getDeviceIcon()}</i>
@@ -74,12 +79,13 @@
                         </span>
                     {/if}
                 </p>
-                {if="$value->group"}
-                <p>
-                    <span class="tag color {$value->group|stringToColor}">
-                        {$value->group}
-                    </span>
-                </p>
+
+                {if="$value->presence && $value->presence->seen"}
+                    <p>
+                        {$c->__('last.title')} {$value->presence->seen|strtotime|prepareDate:true,true}
+                    </p>
+                {elseif="$value->presence"}
+                    <p>{$value->presence->presencetext}</p>
                 {/if}
             </div>
         </li>

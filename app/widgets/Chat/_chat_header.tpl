@@ -246,7 +246,17 @@
                     {/if}
                 </p>
                 <p class="compose first line active" id="{$jid|cleanupId}-state" onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')"></p>
-                <p class="line active" onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')">{$contact->jid}</p>
+                <p class="line active" onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')">
+                    {if="$roster && $roster->presence && $roster->presence->seen"}
+                        {$c->__('last.title')} {$roster->presence->seen|strtotime|prepareDate:true,true}
+                    {elseif="$roster && $roster->presence && !empty($roster->presence->status)"}
+                        {$roster->presence->status}
+                    {elseif="$roster && $roster->presence"}
+                        {$roster->presence->presencetext}
+                    {else}
+                        {$contact->jid}
+                    {/if}
+                </p>
             </div>
         </li>
     </ul>

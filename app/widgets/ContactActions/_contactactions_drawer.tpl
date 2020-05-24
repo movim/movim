@@ -113,6 +113,21 @@
                 </p>
             </div>
         </li>
+
+        {if="$roster && $roster->presence && $roster->presence->seen"}
+        <li>
+            <span class="primary icon gray">
+                <i class="material-icons">access_time</i>
+            </span>
+            <div>
+                <p>{$c->__('last.title')}</p>
+                <p>
+                    {$roster->presence->seen|strtotime|prepareDate:true,true}
+                </p>
+            </div>
+        </li>
+        {/if}
+
         {if="$contact->fn != null"}
         <li>
             <span class="primary icon gray">{$contact->fn|firstLetterCapitalize}</span>
@@ -135,7 +150,9 @@
 
         {if="$contact->url != null"}
         <li>
-            <span class="primary icon gray"><i class="material-icons">link</i></span>
+            <span class="primary icon gray">
+                <i class="material-icons">link</i>
+            </span>
             <div>
                 <p>{$c->__('general.website')}</p>
                 <p>

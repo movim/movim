@@ -35,6 +35,15 @@
 
     <div>
         <p class="normal line">
+            {if="$roster && $roster->presence && $roster->presence->seen"}
+                <span class="info">
+                    {$c->__('last.title')} {$roster->presence->seen|strtotime|prepareDate:true,true}
+                </span>
+            {elseif="isset($message)"}
+                <span class="info">
+                    {$message->published|strtotime|prepareDate:true,true}
+                </span>
+            {/if}
             {if="isset($message)"}
                 <span class="info" title="{$message->published|strtotime|prepareDate}">
                     {if="$message->jidfrom == $message->user_id"}
@@ -45,7 +54,6 @@
                         {/if}
                         &nbsp;
                     {/if}
-                    {$message->published|strtotime|prepareDate:true,true}
                 </span>
             {/if}
             {if="$roster"}

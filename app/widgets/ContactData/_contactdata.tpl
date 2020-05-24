@@ -20,9 +20,17 @@
                 <p class="normal center	">
                     {$contact->truename}
                     {if="isset($roster) && isset($roster->presence)"}
-                        ·  {$roster->presence->presencetext}
+                        <span class="second">{$roster->presence->presencetext}</span>
                     {/if}
                 </p>
+
+                {if="$roster && $roster->presence && $roster->presence->seen"}
+                    <p class="center">
+                        <span class="second">
+                            {$c->__('last.title')} {$roster->presence->seen|strtotime|prepareDate:true,true}
+                        </span>
+                    </p>
+                {/if}
                 {if="$contact->email"}
                     <p class="center"><a href="mailto:{$contact->email}">{$contact->email}</a></p>
                 {/if}

@@ -70,7 +70,7 @@ class Presence extends Payload
                 } else {
                     $this->pack($presence->roster);
 
-                    if ($presence->value == 5 /*|| $p->value == 6*/) {
+                    if ($presence->value == 5 && !empty($presence->resource)) {
                         $presence->delete();
                         PresenceBuffer::getInstance()->remove($presence);
                     }
