@@ -97,7 +97,7 @@
         </ul>
     {/if}
 
-    <ul class="list">
+    <ul class="list thin">
         <li class="subheader">
             <div>
                 <p>
@@ -111,11 +111,11 @@
                 title="{$value->resource}">
 
                 {if="$url = $value->conferencePicture"}
-                    <span class="primary icon bubble status {$value->presencekey}">
+                    <span class="primary icon bubble small status {$value->presencekey}">
                         <img src="{$url}">
                     </span>
                 {else}
-                    <span class="primary icon bubble color {$value->resource|stringToColor} status {$value->presencekey}">
+                    <span class="primary icon bubble small color {$value->resource|stringToColor} status {$value->presencekey}">
                         <i class="material-icons">people</i>
                     </span>
                 {/if}
@@ -158,7 +158,11 @@
                             </span>
                         {/if}
                     </p>
-                    {if="$value->status"}
+                    {if="$value->seen"}
+                        <p class="line">
+                            {$c->__('last.title')} {$value->seen|strtotime|prepareDate:true,true}
+                        </p>
+                    {elseif="$value->status"}
                         <p class="line" title="{$value->status}">{$value->status}</p>
                     {/if}
                 </div>

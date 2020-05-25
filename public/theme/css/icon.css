@@ -90,12 +90,12 @@ span.icon.bubble i {
 }
 
 ul.list li span.icon.small {
-    height: 3rem;
-    line-height: 3rem;
+    height: 4rem;
+    line-height: 3.5rem;
     font-size: 0; /* Only display the first letter */
-    flex: 0 0 3rem;
-    margin-left: 1.5rem;
-    margin-right: 1.5rem;
+    flex: 0 0 4rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
 
 ul.list li span.icon.small img.emoji {
@@ -109,8 +109,8 @@ ul.list li span.icon.small:not(.bubble) i {
 
 span.icon.small.bubble:first-letter,
 span.icon.small.bubble i {
-    font-size: 1.75rem;
-    line-height: 3rem;
+    font-size: 2.25rem;
+    line-height: 4rem;
 }
 
 span.icon span.counter,
@@ -129,10 +129,15 @@ span.icon.status:after {
     box-shadow: -0.1rem -0.1rem 0.5rem rgba(0, 0, 0, 0.2);
 }
 
+/* Weird bug */
+span.icon.small.status:after {
+    border-radius: 2rem;
+}
+
 span.icon.small span.counter,
 span.icon.small.composing:after,
 span.icon.small.status:after {
-    top: 1.75rem;
+    top: 2.25rem;
 }
 
 main ul li .control > i {
