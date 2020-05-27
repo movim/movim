@@ -66,8 +66,8 @@
                 <p class="compose first line" id="{$jid|cleanupId}-state"></p>
                 {if="$conference && !$conference->connected"}
                     <p>{$c->__('button.connecting')}…</p>
-                {elseif="$conference && $conference->subject"}
-                    <p class="line active" title="{$conference->subject}" onclick="RoomsUtils_ajaxShowSubject('{$jid|echapJS}')">
+                {elseif="$conference && $subject = $conference->subject"}
+                    <p class="line active" title="{$subject}" onclick="RoomsUtils_ajaxShowSubject('{$jid|echapJS}')">
                         {if="$conference->info && $conference->info->mucpublic"}
                             <span title="{$c->__('room.public_muc_text')}">
                                 {$c->__('room.public_muc')} <i class="material-icons">wifi_tethering</i>
@@ -80,7 +80,7 @@
                             </span>
                             ·
                         {/if}
-                        {$conference->subject}
+                        {$subject}
                     </p>
                 {else}
                     <p class="line active" id="{$jid|cleanupId}-state" onclick="RoomsUtils_ajaxShowSubject('{$jid|echapJS}')">
