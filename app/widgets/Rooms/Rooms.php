@@ -165,6 +165,8 @@ class Rooms extends Base
                                            ->withCount('unreads')
                                            ->get();
 
+        $this->rpc('Rooms.clearRooms');
+
         foreach ($conferences as $conference) {
             $this->rpc('Rooms.setRoom', \cleanupId($conference->conference), $this->prepareConference($conference));
         }

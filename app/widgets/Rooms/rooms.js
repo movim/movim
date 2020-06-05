@@ -61,6 +61,10 @@ var Rooms = {
         }
     },
 
+    clearRooms: function() {
+        document.querySelector('#rooms_widget ul.list.rooms').innerHTML = '';
+    },
+
     setRoom: function(id, html) {
         var listSelector = '#rooms_widget ul.list.rooms ';
         var list = document.querySelector(listSelector);
