@@ -89,43 +89,42 @@ var Upload = {
         var image = new Image();
         image.onload = function()
         {
-            var limit = 1920;
-
-            var width = image.naturalWidth;
-            var height = image.naturalHeight;
-
-            Upload.canvas = document.createElement('canvas');
-
-            if ([5,6,7,8].indexOf(orientation) > -1) {
-                Upload.canvas.width = height;
-                Upload.canvas.height = width;
-            } else {
-                Upload.canvas.width = width;
-                Upload.canvas.height = height;
-            }
-
-            ctx = Upload.canvas.getContext("2d");
-
-            switch (orientation) {
-                case 2: ctx.transform(-1, 0, 0, 1, width, 0); break;
-                case 3: ctx.transform(-1, 0, 0, -1, width, height ); break;
-                case 4: ctx.transform(1, 0, 0, -1, 0, height ); break;
-                case 5: ctx.transform(0, 1, 1, 0, 0, 0); break;
-                case 6: ctx.transform(0, 1, -1, 0, height , 0); break;
-                case 7: ctx.transform(0, -1, -1, 0, height , width); break;
-                case 8: ctx.transform(0, -1, 1, 0, 0, width); break;
-                default: ctx.transform(1, 0, 0, 1, 0, 0);
-            }
-
-            ctx.drawImage(image, 0, 0, width, height);
-
             if (file.size > SMALL_PICTURE_LIMIT) {
+                var limit = 1920;
+                var width = image.naturalWidth;
+                var height = image.naturalHeight;
+
                 var ratio = Math.min(limit / width, limit / height);
 
                 if (ratio < 1) {
                     width = Math.round(width*ratio);
                     height = Math.round(height*ratio);
                 }
+
+                Upload.canvas = document.createElement('canvas');
+
+                if ([5,6,7,8].indexOf(orientation) > -1) {
+                    Upload.canvas.width = height;
+                    Upload.canvas.height = width;
+                } else {
+                    Upload.canvas.width = width;
+                    Upload.canvas.height = height;
+                }
+
+                ctx = Upload.canvas.getContext("2d");
+
+                switch (orientation) {
+                    case 2: ctx.transform(-1, 0, 0, 1, width, 0); break;
+                    case 3: ctx.transform(-1, 0, 0, -1, width, height ); break;
+                    case 4: ctx.transform(1, 0, 0, -1, 0, height ); break;
+                    case 5: ctx.transform(0, 1, 1, 0, 0, 0); break;
+                    case 6: ctx.transform(0, 1, -1, 0, height , 0); break;
+                    case 7: ctx.transform(0, -1, -1, 0, height , width); break;
+                    case 8: ctx.transform(0, -1, 1, 0, 0, width); break;
+                    default: ctx.transform(1, 0, 0, 1, 0, 0);
+                }
+
+                ctx.drawImage(image, 0, 0, width, height);
 
                 if (typeof Upload.canvas.toBlob == 'function') {
                     if (file.type != 'image/jpeg') {
