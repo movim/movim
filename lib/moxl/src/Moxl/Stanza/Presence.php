@@ -9,7 +9,7 @@ class Presence
     /*
      * The presence builder
      */
-    public static function maker($to = false, $status = false, $show = false, $priority = 0, $type = false, $muc = false, $mam = false)
+    public static function maker($to = false, $status = false, $show = false, $priority = 0, $type = false, $muc = false, $mam = false, $last = 0)
     {
         $session = Session::start();
 
@@ -46,6 +46,14 @@ class Presence
         if ($priority != 0) {
             $priority = $dom->createElement('priority', $priority);
             $root->appendChild($priority);
+        }
+
+        // https://xmpp.org/extensions/xep-0319.html#last-interact
+        if ($last > 0) {
+            $timestamp = time() - $last;
+            $idle = $dom->createElementNS('urn:xmpp:idle:1', 'idle');
+            $idle->setAttribute('since', gmdate(DATE_ISO8601, $timestamp));
+            $root->appendChild($idle);
         }
 
         if ($muc) {
@@ -135,9 +143,9 @@ class Presence
     /*
      * Go away
      */
-    public static function away($status = false)
+    public static function away($status = false, $last = 0)
     {
-        $xml = self::maker(false, $status, 'away', false, false);
+        $xml = self::maker(false, $status, 'away', false, false, false, false, $last);
         \Moxl\API::request($xml);
     }
 

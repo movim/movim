@@ -10,12 +10,12 @@ use App\PresenceBuffer;
 class Away extends Action
 {
     protected $_status;
+    protected $_last;
 
     public function request()
     {
         $this->store();
-        Presence::away($this->_status);
-
+        Presence::away($this->_status, $this->_last);
     }
 
     public function handle($stanza, $parent = false)

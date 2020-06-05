@@ -6,6 +6,7 @@ use App\Session as DBSession;
 
 class Session
 {
+    const DOWN_TIMER = 20;
     protected $clients;       // Browser Websockets
     public $timestamp;
     protected $sid;           // Session id
@@ -86,7 +87,7 @@ class Session
         }
 
         if ($this->countClients() == 0) {
-            $loop->addPeriodicTimer(20, function ($timer) use ($loop) {
+            $loop->addPeriodicTimer(Session::DOWN_TIMER, function ($timer) use ($loop) {
                 if ($this->countClients() == 0) {
                     $this->stateOut('down');
                 }

@@ -11,6 +11,8 @@ use Moxl\Xec\Action\Storage\Get;
 use Moxl\Xec\Action\PubsubSubscription\Get as GetPubsubSubscriptions;
 use Moxl\Stanza\Stream;
 
+use Movim\Daemon\Session;
+
 class Presence extends Base
 {
     public function load()
@@ -32,7 +34,8 @@ class Presence extends Base
     public function onSessionDown()
     {
         $p = new Away;
-        $p->request();
+        $p->setLast(Session::DOWN_TIMER)
+          ->request();
     }
 
     public function onMyPresence($packet)

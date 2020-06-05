@@ -28,6 +28,7 @@ class Roster extends Model
     public function presences()
     {
         return $this->hasMany('App\Presence', 'jid', 'jid')
+                    ->where('resource', '!=', '')
                     ->where('session_id', $this->session_id);
     }
 
