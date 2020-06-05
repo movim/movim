@@ -314,7 +314,7 @@ table.emojis td:hover {
 /* Emojis */
 
 #chat_widget .bubble ul.reactions {
-    min-width: 20rem;
+    margin-right: 5rem;
 }
 
 #chat_widget .bubble div span.reaction,
@@ -326,7 +326,7 @@ table.emojis td:hover {
     border-radius: 0.5rem;
     line-height: 3rem;
     font-size: 1.75rem;
-    margin: 0;
+    margin: 0.25rem 0;
     display: inline-flex;
     z-index: 1;
     border: solid 1px transparent;
