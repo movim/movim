@@ -745,8 +745,8 @@ var Chat = {
         }
 
         msg.appendChild(p);
-        msg.appendChild(span);
         msg.appendChild(reactions);
+        msg.appendChild(span);
 
         reaction.dataset.mid = data.mid;
         msg.appendChild(reaction);

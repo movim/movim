@@ -423,7 +423,7 @@ ul li div.bubble > div:last-child span.info {
 }
 
 
-ul li div.bubble:not(.file):not(.sticker) > div:last-child span.info {
+ul li div.bubble:not(.file) > div:last-child span.info {
     height: 3rem;
 }
 
@@ -442,6 +442,7 @@ ul li div.bubble:after {
     right: 1rem;
     bottom: 1rem;
     position: absolute;
+    pointer-events: none;
 }
 
 ul li div.bubble.sticker:after,

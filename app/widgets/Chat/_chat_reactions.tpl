@@ -10,7 +10,7 @@
 {/loop}
 
 {if="!empty($reactions)"}
-    <li onclick="Stickers_ajaxReaction('{$message->mid}')">
+    <li onclick="Stickers_ajaxReaction('{$message->mid}')" title="{$c->__('message.react')}">
         +<i class="material-icons">mood</i>
     </li>
 {/if}

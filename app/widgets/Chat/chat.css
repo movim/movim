@@ -347,7 +347,7 @@ table.emojis td:hover {
     display: none;
 }
 
-#chat_widget li:not(.oppose) .bubble div:hover ul.reactions:empty + span.reaction,
+#chat_widget li:not(.oppose) .bubble div:hover ul.reactions:empty ~ span.reaction,
 #chat_widget li.oppose .bubble:not(.sticker) div:hover span.actions {
     display: inline-flex;
     position: absolute;
@@ -359,7 +359,7 @@ table.emojis td:hover {
     transform: translate(-1.5rem, -0.25rem);
 }
 
-#chat_widget li:not(.oppose) .bubble.sticker div:hover ul.reactions:empty + span.reaction {
+#chat_widget li:not(.oppose) .bubble.sticker div:hover ul.reactions:empty ~ span.reaction {
     transform: translate(-1.5rem, -3.75rem);
 }
 
