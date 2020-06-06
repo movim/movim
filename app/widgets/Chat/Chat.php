@@ -58,7 +58,7 @@ class Chat extends \Movim\Widget\Base
             $arr = explode('|', (new Notification)->getCurrent());
 
             if (isset($arr[1]) && $jid == $arr[1] && !$packet->content->muc) {
-                $this->ajaxHttpGetHeader($jid);
+                $this->ajaxGetHeader($jid);
             }
         }
     }
@@ -180,13 +180,14 @@ class Chat extends \Movim\Widget\Base
         );
     }
 
-    public function onPaused(array $array)
+    public function onPaused(array $array, $first = true)
     {
         $this->setState(
             $array[0],
             is_array($array[1]) && !empty($array[1])
                 ? $this->prepareComposeList(array_keys($array[1]))
-                : ''
+                : '',
+            $first
         );
     }
 
@@ -243,9 +244,11 @@ class Chat extends \Movim\Widget\Base
         Notification::toast($this->__('chatroom.config_saved'));
     }
 
-    private function setState(string $jid, string $message)
+    private function setState(string $jid, string $message, $first = true)
     {
-        $this->rpc('MovimUtils.removeClass', '#' . cleanupId($jid.'_state'), 'first');
+        if ($first) {
+            $this->rpc('MovimUtils.removeClass', '#' . cleanupId($jid.'_state'), 'first');
+        }
         $this->rpc('MovimTpl.fill', '#' . cleanupId($jid.'_state'), $message);
     }
 
@@ -267,13 +270,16 @@ class Chat extends \Movim\Widget\Base
     /**
      * Get the header
      */
-    public function ajaxHttpGetHeader($jid, $muc = false)
+    public function ajaxGetHeader($jid, $muc = false)
     {
         $this->rpc(
             'MovimTpl.fill',
             '#' . cleanupId($jid.'_header'),
             $this->prepareHeader($jid, $muc)
         );
+
+        $chatStates = ChatStates::getInstance();
+        $this->onPaused($chatStates->getState($jid), false);
     }
 
     /**

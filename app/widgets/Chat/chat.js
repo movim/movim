@@ -1053,7 +1053,7 @@ movimAddFocus(function() {
     if (MovimWebsocket.connection) {
         var jid = MovimUtils.urlParts().params[0];
         if (jid) {
-            Chat_ajaxHttpGetHeader(jid, (MovimUtils.urlParts().params[1] === 'room'));
+            Chat_ajaxGetHeader(jid, (MovimUtils.urlParts().params[1] === 'room'));
         }
     }
 });
