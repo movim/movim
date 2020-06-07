@@ -81,7 +81,7 @@ class ChatStates
         }
 
         $wrapper = Wrapper::getInstance();
-        $wrapper->iterate('composing', [$jid, $this->_composing[$jid]]);
+        $wrapper->iterate('chatstate', [$jid, $this->_composing[$jid]]);
     }
 
     public function paused(string $from, string $to, bool $mucPM = false)
@@ -92,7 +92,7 @@ class ChatStates
         $this->clearState($jid, !$mucPM ? $explodedFrom['resource'] : null);
 
         $wrapper = Wrapper::getInstance();
-        $wrapper->iterate('paused', [
+        $wrapper->iterate('chatstate', [
             $jid,
             array_key_exists($jid, $this->_composing)
                 ? $this->_composing[$jid]

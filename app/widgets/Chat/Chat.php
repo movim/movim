@@ -38,8 +38,7 @@ class Chat extends \Movim\Widget\Base
         $this->registerEvent('displayed', 'onMessage', 'chat');
         $this->registerEvent('mam_get_handle', 'onMAMRetrieved');
         $this->registerEvent('mam_get_handle_muc', 'onMAMMucRetrieved', 'chat');
-        $this->registerEvent('composing', 'onComposing', 'chat');
-        $this->registerEvent('paused', 'onPaused', 'chat');
+        $this->registerEvent('chatstate', 'onChatState', 'chat');
         //$this->registerEvent('subject', 'onConferenceSubject', 'chat'); Spam the UI during authentication
         $this->registerEvent('muc_setsubject_handle', 'onConferenceSubject', 'chat');
         $this->registerEvent('muc_getconfig_handle', 'onRoomConfig', 'chat');
@@ -158,7 +157,7 @@ class Chat extends \Movim\Widget\Base
                 $chatStates->clearState($from, $message->resource);
             }
 
-            $this->onPaused($chatStates->getState($from));
+            $this->onChatState($chatStates->getState($from));
         }
 
         $this->event('chat_counter', $this->user->unreads());
@@ -170,25 +169,19 @@ class Chat extends \Movim\Widget\Base
         $this->ajaxGet($to);
     }
 
-    public function onComposing(array $array)
+    public function onChatState(array $array, $first = true)
     {
-        $this->setState(
-            $array[0],
-            is_array($array[1]) && !empty($array[1])
-                ? $this->prepareComposeList(array_keys($array[1]))
-                : $this->__('message.composing')
-        );
-    }
-
-    public function onPaused(array $array, $first = true)
-    {
-        $this->setState(
-            $array[0],
-            is_array($array[1]) && !empty($array[1])
-                ? $this->prepareComposeList(array_keys($array[1]))
-                : '',
-            $first
-        );
+        if (isset($array[1])) {
+            $this->setState(
+                $array[0],
+                is_array($array[1]) && !empty($array[1])
+                    ? $this->prepareComposeList(array_keys($array[1]))
+                    : $this->__('message.composing'),
+                $first
+            );
+        } else {
+            $this->setState($array[0], '', $first);
+        }
     }
 
     public function onConferenceSubject($packet)
@@ -279,7 +272,7 @@ class Chat extends \Movim\Widget\Base
         );
 
         $chatStates = ChatStates::getInstance();
-        $this->onPaused($chatStates->getState($jid), false);
+        $this->onChatState($chatStates->getState($jid), false);
     }
 
     /**
@@ -299,6 +292,10 @@ class Chat extends \Movim\Widget\Base
             if ($light == false) {
                 $this->rpc('MovimUtils.pushState', $this->route('chat', $jid));
                 $this->rpc('MovimTpl.fill', '#chat_widget', $this->prepareChat($jid));
+
+                $chatStates = ChatStates::getInstance();
+                $this->onChatState($chatStates->getState($jid), false);
+
                 $this->rpc('MovimTpl.showPanel');
                 $this->rpc('Chat.focus');
             }
@@ -329,6 +326,10 @@ class Chat extends \Movim\Widget\Base
             if ($light == false) {
                 $this->rpc('MovimUtils.pushState', $this->route('chat', [$room, 'room']));
                 $this->rpc('MovimTpl.fill', '#chat_widget', $this->prepareChat($room, true));
+
+                $chatStates = ChatStates::getInstance();
+                $this->onChatState($chatStates->getState($room), false);
+
                 $this->rpc('MovimTpl.showPanel');
                 $this->rpc('Chat.focus');
             }

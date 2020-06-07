@@ -16,8 +16,7 @@ class Chats extends Base
         $this->registerEvent('carbons', 'onMessage');
         $this->registerEvent('message', 'onMessage');
         $this->registerEvent('presence', 'onPresence', 'chat');
-        $this->registerEvent('composing', 'onComposing', 'chat');
-        $this->registerEvent('paused', 'onPaused', 'chat');
+        $this->registerEvent('chatstate', 'onChatState', 'chat');
         $this->registerEvent('chat_open', 'onChatOpen', 'chat');
     }
 
@@ -78,14 +77,9 @@ class Chats extends Base
         }
     }
 
-    public function onComposing(array $array)
+    public function onChatState(array $array)
     {
-        $this->setState($array[0], true);
-    }
-
-    public function onPaused(array $array)
-    {
-        $this->setState($array[0], false);
+        $this->setState($array[0], isset($array[1]));
     }
 
     private function setState(string $jid, bool $composing)

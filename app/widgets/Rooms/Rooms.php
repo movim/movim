@@ -28,8 +28,7 @@ class Rooms extends Base
 
         $this->registerEvent('muc_destroy_handle', 'onDestroyed', 'chat');
 
-        $this->registerEvent('composing', 'onComposing', 'chat');
-        $this->registerEvent('paused', 'onPaused', 'chat');
+        $this->registerEvent('chatstate', 'onChatState', 'chat');
         $this->registerEvent('message', 'onMessage');
         $this->registerEvent('presence_unavailable_handle', 'onDisconnected', 'chat');
 
@@ -48,14 +47,9 @@ class Rooms extends Base
         $this->setCounter($room);
     }
 
-    public function onComposing(array $array)
+    public function onChatState(array $array)
     {
-        $this->setState($array[0], true);
-    }
-
-    public function onPaused(array $array)
-    {
-        $this->setState($array[0], false);
+        $this->setState($array[0], isset($array[1]));
     }
 
     public function onMessage($packet)
@@ -65,7 +59,7 @@ class Rooms extends Base
         $chatStates = ChatStates::getInstance();
         $chatStates->clearState($message->jidfrom, $message->resource);
 
-        $this->onPaused($chatStates->getState($message->jidfrom));
+        $this->onChatState($chatStates->getState($message->jidfrom));
         $this->setCounter($message->jidfrom);
     }
 
