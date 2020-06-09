@@ -137,8 +137,8 @@ class Chat extends \Movim\Widget\Base
             }
             // If it's a groupchat message
             elseif ($message->type == 'groupchat'
-                   && $message->quoted
-                   && !$receipt) {
+                && $message->quoted
+                && !$receipt) {
                 $conference = $this->user->session
                                    ->conferences()->where('conference', $from)
                                    ->first();
@@ -150,7 +150,7 @@ class Chat extends \Movim\Widget\Base
                         ? $conference->name
                         : $from,
                     $message->resource.': '.$rawbody,
-                    false,
+                    $conference->getPhoto(),
                     4
                 );
             } elseif ($message->type == 'groupchat') {
