@@ -22,7 +22,7 @@
         <%scripts%>
     </head>
     <body dir="<%dir%>"
-          class="<?php if (!$this->public && \App\User::me()->nightmode) { ?>nightmode<?php } ?>">
+          class="<?php if (!$this->public && isLogged() && \App\User::me()->nightmode) { ?>nightmode<?php } ?>">
         <?php if ($this->js_check) { ?>
         <noscript>
             <style type="text/css">main {display: none;}</style>

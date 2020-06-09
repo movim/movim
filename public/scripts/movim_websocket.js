@@ -148,7 +148,6 @@ var MovimWebsocket = {
 
             // We show the Websocket error
             MovimWebsocket.statusBar.classList.remove('hide', 'connect');
-
             MovimWebsocket.reconnect();
 
             // We prevent the onclose launch
@@ -170,7 +169,7 @@ var MovimWebsocket = {
         }
     },
 
-    // Ajax call that is going to the daemon
+    // Ajax calls
     ajax : function(widget, func, params, daemon) {
         let xhr = new XMLHttpRequest;
 
@@ -197,6 +196,8 @@ var MovimWebsocket = {
                     for (funcall of obj) {
                         MovimWebsocket.handle(funcall);
                     }
+                } else if (this.readyState == 4 && this.status == 403) {
+                    MovimUtils.disconnect();
                 }
             });
         }
@@ -275,7 +276,7 @@ var MovimWebsocket = {
         }
     },
 
-    unregister : function(reload) {
+    unregister : function() {
         this.connection.unregister();
     },
 

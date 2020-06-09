@@ -16,7 +16,7 @@ class Help extends Base
     {
         $this->view->assign(
             'info',
-            ($this->user->isLogged())
+            (isLogged())
                 ? \App\Info::where('server', $this->user->session->host)
                          ->where('node', '')
                          ->first()

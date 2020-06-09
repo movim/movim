@@ -105,11 +105,6 @@ class User extends Model
         return ($me) ? $me : new User;
     }
 
-    public function isLogged()
-    {
-        return (bool)(Session::start())->get('jid');
-    }
-
     public function init()
     {
         $contact = Contact::firstOrNew(['id' => $this->id]);

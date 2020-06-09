@@ -57,6 +57,13 @@ class Utils
     }
 }
 
+/**
+ * Check if the session exists
+ */
+function isLogged()
+{
+    return (bool)(\Movim\Session::start())->get('jid');
+}
 
 /**
  * Return the list of client types

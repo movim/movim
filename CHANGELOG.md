@@ -30,6 +30,7 @@ v0.18 (trunk)
  * Use ImageCapture Web API if it exists to capture images
  * Rewrite and split Rooms in Rooms and Rooms Utils for better performances
  * Add support for XEP-0319: Last User Interaction in Presence and refactor the "last seen" feature
+ * Protect Ajax calls when session is dropped, return 403 and redirect properly
 
 v0.17.1
 ---------------------------

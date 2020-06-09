@@ -1,4 +1,4 @@
-<?php if ($this->user->isLogged()) { ?>
+<?php if (isLogged()) { ?>
     <?php $this->widget('Search');?>
     <?php $this->widget('Notification');?>
     <?php $this->widget('VisioLink');?>
@@ -12,7 +12,7 @@
 <?php } ?>
 
 <main style="background-color: var(--movim-background);">
-    <?php if ($this->user->isLogged()) { ?>
+    <?php if (isLogged()) { ?>
         <aside>
             <?php $this->widget('NewsNav');?>
         </aside>

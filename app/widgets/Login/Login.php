@@ -256,19 +256,18 @@ class Login extends Base
             $this->showErrorBlock('wrong_password');
             return;
         }
-        {
-            $s = new App\Session;
-            $s->init($username, $password, $host);
-            $s->loadMemory();
-            $s->save();
 
-            // Force reload the User to link the new session
-            \App\User::me(true);
+        $s = new App\Session;
+        $s->init($username, $password, $host);
+        $s->loadMemory();
+        $s->save();
 
-            // We launch the XMPP socket
-            $this->rpc('register', $host);
+        // Force reload the User to link the new session
+        \App\User::me(true);
 
-            \Moxl\Stanza\Stream::init($host);
-        }
+        // We launch the XMPP socket
+        $this->rpc('register', $host);
+
+        \Moxl\Stanza\Stream::init($host);
     }
 }

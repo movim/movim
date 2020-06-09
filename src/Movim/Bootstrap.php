@@ -168,24 +168,11 @@ class Bootstrap
 
         $capsule->bootEloquent();
         $capsule->setAsGlobal();
-
-        // if the configured database is SQLite, turn on foreign key constraints and set a long busy-timeout
-        /*if (Capsule::connection() instanceof \Illuminate\Database\SQLiteConnection) {
-            try {
-                Capsule::statement('PRAGMA foreign_keys = on');
-                Capsule::statement('PRAGMA busy_timeout = ' . (30 * 1000)); // milliseconds
-            } catch (\Illuminate\Database\QueryException $e) {
-                // database does not exist yet; do nothing
-            }
-        }*/
     }
 
     private function loadCommonLibraries()
     {
-        // XMPPtoForm lib
         require_once LIB_PATH . 'XMPPtoForm.php';
-
-        // SDPtoJingle and JingletoSDP lib :)
         require_once LIB_PATH . 'SDPtoJingle.php';
         require_once LIB_PATH . 'JingletoSDP.php';
     }
@@ -209,7 +196,7 @@ class Bootstrap
     {
         $l = \Movim\i18n\Locale::start();
 
-        if (DBUser::me()->isLogged()) {
+        if (isLogged()) {
             $lang = DBUser::me()->language;
         }
 

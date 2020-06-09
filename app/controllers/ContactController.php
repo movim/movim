@@ -17,8 +17,7 @@ class ContactController extends Base
             $this->redirect('chat');
         }
 
-        $user = new \App\User;
-        if (!$user->isLogged() && $this->fetchGet('s')) {
+        if (!isLogged() && $this->fetchGet('s')) {
             $this->redirect('blog', [$this->fetchGet('s')]);
         }
     }

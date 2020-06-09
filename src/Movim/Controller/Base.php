@@ -53,7 +53,7 @@ class Base
     protected function checkSession()
     {
         if ($this->session_only
-        && !(new \App\User)->isLogged()) {
+        && !isLogged()) {
             $this->name = 'login';
         }
     }

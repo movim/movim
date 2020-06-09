@@ -183,7 +183,7 @@ class Blog extends Base
 
     public function preparePost(\App\Post $post)
     {
-        if ($this->_view == 'tag' && $this->user->isLogged()) {
+        if ($this->_view == 'tag' && isLogged()) {
             return (new Post)->preparePost($post, false, true);
         } else {
             $post->server = $this->_nickname ?? $post->server;

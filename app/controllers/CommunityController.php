@@ -13,8 +13,7 @@ class CommunityController extends Base
     {
         $this->page->setTitle(__('page.communities'));
 
-        $user = new \App\User;
-        if (!$user->isLogged()) {
+        if (!isLogged()) {
             $this->redirect('node', [$this->fetchGet('s'), $this->fetchGet('n')]);
         }
     }

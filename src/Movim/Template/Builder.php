@@ -23,7 +23,9 @@ class Builder
      */
     public function __construct()
     {
-        $this->user = \App\User::me();
+        if (isLogged()) {
+            $this->user = \App\User::me();
+        }
     }
 
     public function viewsPath(string $file)
@@ -108,10 +110,12 @@ class Builder
      */
     public function dir()
     {
-        $lang = \App\User::me()->language;
+        if (isLogged()) {
+            $lang = \App\User::me()->language;
 
-        if (in_array($lang, ['ar', 'he', 'fa'])) {
-            $this->dir = 'rtl';
+            if (in_array($lang, ['ar', 'he', 'fa'])) {
+                $this->dir = 'rtl';
+            }
         }
 
         return $this->dir;

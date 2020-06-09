@@ -1,8 +1,6 @@
 <?php
 namespace Movim\Controller;
 
-use Monolog\Logger;
-use Monolog\Handler\SyslogHandler;
 use Movim\Route;
 use Movim\Cookie;
 use Movim\RPC;
@@ -40,6 +38,21 @@ class Front extends Base
      */
     public function runRequest($request)
     {
+        if ($request == 'ajax' || $request == 'ajaxd') {
+            $parts = explode('/', parse_url($_SERVER['HTTP_REFERER'], PHP_URL_QUERY));
+
+            if (isset($parts[0])) {
+                $c = $this->loadController($parts[0]);
+                if (is_callable([$c, 'load'])) $c->load();
+
+                $c->checkSession();
+                if ($c->name == 'login') {
+                    header('HTTP/1.0 403 Forbidden');
+                    exit;
+                }
+            }
+        }
+
         // Simple ajax request to a Widget
         if ($request === 'ajax') {
             $payload = json_decode(file_get_contents('php://input'));

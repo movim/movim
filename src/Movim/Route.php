@@ -80,7 +80,7 @@ class Route extends Base
 
             $user = User::me();
 
-            $this->_redirect = ($user->isLogged() && $user->chatmain)
+            $this->_redirect = (isLogged() && $user->chatmain)
                 ? 'chat'
                 : 'news';
         } else if (!isset($this->_routes[$this->_page])) {

@@ -9,8 +9,7 @@ class LoginController extends Base
     {
         $this->page->setTitle(__('page.login'));
 
-        $user = new App\User;
-        if ($user->isLogged()) {
+        if (isLogged()) {
             if ($this->fetchGet('i') && Validator::length(8)->validate($this->fetchGet('i'))) {
                 $invitation = \App\Invite::find($this->fetchGet('i'));
                 $this->redirect('chat', [$invitation->resource, 'room']);

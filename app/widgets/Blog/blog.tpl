@@ -34,7 +34,7 @@
     {elseif="$mode == 'tag'"}
     <ul class="list middle">
         <li>
-            {if="$c->getUser()->isLogged()"}
+            {if="isLogged()"}
             <span class="primary icon active gray" onclick="history.back()">
                 <i class="material-icons">arrow_back</i>
             </span>
