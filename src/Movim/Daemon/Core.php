@@ -193,7 +193,7 @@ class Core implements MessageComponentInterface
             ->delete();
     }
 
-    public function onError(ConnectionInterface $conn, \Throwable $e)
+    public function onError(ConnectionInterface $conn, \Exception $e)
     {
         echo "An error has occurred: {$e->getMessage()}\n";
     }
