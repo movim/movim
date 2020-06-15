@@ -267,15 +267,23 @@ main:not(.enabled) #chat_widget {
     animation: fadein 1s;
 }
 
-table.emojis td {
-    width: 10%;
+#emojisearchbar + .emojis {
+    max-width: 80%;
+    padding: 0 2rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;    
+}
+
+#emojisearchbar + .emojis img {
     text-align: center;
-    padding: 1rem 0;
+    padding: 1rem 1.5rem;
     font-size: 0;
 }
 
 #chat_widget .primary_action:hover,
-table.emojis td:hover {
+#emojisearchbar + .emojis img:hover {
     cursor: pointer;
     background-color: rgba(var(--movim-font), 0.05);
     border-radius: 0.5rem;
