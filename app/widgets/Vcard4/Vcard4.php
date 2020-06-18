@@ -27,11 +27,6 @@ class Vcard4 extends Base
 
         $contact->isValidDate();
 
-        $vcardform->assign(
-            'submit',
-            $this->call('ajaxVcardSubmit', "MovimUtils.formToJson('vcard4')")
-            );
-
         return $vcardform->draw('_vcard4_form');
     }
 
@@ -148,7 +143,6 @@ class Vcard4 extends Base
 
     public function display()
     {
-        $this->view->assign('getvcard', $this->call('ajaxGetVcard'));
         $this->view->assign('form', $this->prepareForm($this->user->contact));
     }
 }

@@ -50,12 +50,10 @@ class Api extends Base
         if (isset($json)) {
             $this->view->assign('json', $json);
             if ($json->status == 200) {
-                $this->view->assign('unregister', $this->call('ajaxUnregister'));
                 $this->view->assign('unregister_status', $configuration->unregister);
             } else {
                 $configuration->unregister = false;
                 $configuration->save();
-                $this->view->assign('register', $this->call('ajaxRegister'));
             }
         } else {
             $this->view->assign('json', null);

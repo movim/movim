@@ -27,7 +27,6 @@ class Menu extends Base
     {
         $view = $this->tpl();
         $view->assign('count', $count);
-        $view->assign('refresh', $this->call('ajaxGetAll'));
 
         $this->rpc('MovimTpl.fill', '#menu_refresh', $view->draw('_menu_refresh'));
     }

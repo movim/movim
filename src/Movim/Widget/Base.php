@@ -211,26 +211,6 @@ class Base
     }
 
     /**
-     * @brief Returns the javascript ajax call.
-     */
-    protected function call(string $funcname): string
-    {
-        return $this->makeCall(func_get_args());
-    }
-
-    protected function makeCall(array $params, $widget = false): string
-    {
-        if (!$widget) {
-            $widget = $this->name;
-        }
-
-        $funcname = array_shift($params);
-        $args = implode(', ', $params);
-
-        return $widget . '_' . $funcname . "(" . $args . ");";
-    }
-
-    /**
      * @brief returns the list of javascript files to be loaded for the widget.
      */
     public function loadjs(): array

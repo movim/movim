@@ -19,15 +19,6 @@ class AccountNext extends \Movim\Widget\Base
         $this->registerEvent('register_get_errorserviceunavailable', 'onServiceUnavailable', 'accountnext');
     }
 
-    public function display()
-    {
-        $host = $this->get('s');
-
-        $this->view->assign('init', $this->call('ajaxInit', "'".$host."'"));
-        $this->view->assign('getsubscriptionform', $this->call('ajaxGetForm', "'".$host."'"));
-        $this->view->assign('host', $host);
-    }
-
     public function onForm($package)
     {
         $form = $package->content;
@@ -38,7 +29,6 @@ class AccountNext extends \Movim\Widget\Base
             switch ($form->x->attributes()->xmlns) {
                 case 'jabber:x:data':
                     $formview = $this->tpl();
-                    $formview->assign('submitdata', $this->call('ajaxRegister', "MovimUtils.formToJson('data')"));
                     $formview->assign('formh', $xtf->getHTML($form->x, $form));
                     $html = $formview->draw('_accountnext_form');
                     break;
@@ -48,7 +38,6 @@ class AccountNext extends \Movim\Widget\Base
             }
         } else {
             $formview = $this->tpl();
-            $formview->assign('submitdata', $this->call('ajaxRegister', "MovimUtils.formToJson('data')"));
             $formview->assign('formh', $xtf->getHTML($form));
             $html = $formview->draw('_accountnext_form');
         }
@@ -97,33 +86,9 @@ class AccountNext extends \Movim\Widget\Base
         $this->rpc('MovimUtils.redirect', $this->route('account'));
     }
 
-    public function ajaxGetForm($host)
+    public function display()
     {
-        global $dns;
-        $domain = $host;
-
-        $dns->resolveAll('_xmpp-client._tcp.' . $host, React\Dns\Model\Message::TYPE_SRV)
-        ->then(function ($resolved) use ($host, &$domain) {
-            $domain = $resolved[0]['target'];
-        })->always(function () use ($host, &$domain) {
-            // We create a new session or clear the old one
-            $s = Session::start();
-            $s->set('host', $host);
-            $s->set('domain', $domain);
-
-            \Moxl\Stanza\Stream::init($host);
-        });
-    }
-
-    public function ajaxRegister($form)
-    {
-        if (isset($form->re_password)
-        && $form->re_password->value != $form->password->value) {
-            Notification::toast($this->__('account.password_not_same'));
-            return;
-        }
-
-        $s = new Set;
-        $s->setData($form)->request();
+        $host = $this->get('s');
+        $this->view->assign('host', $host);
     }
 }

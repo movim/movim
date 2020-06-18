@@ -66,7 +66,7 @@
     <button
         type="button"
         onclick="
-            {$submit}
+            Avatar_ajaxSubmit(MovimUtils.formToJson('avatarform'));
             this.value = '{$c->__('button.submitting')}';
             this.className='button inactive oppose';"
         class="button color oppose"

@@ -749,7 +749,6 @@ class Chat extends \Movim\Widget\Base
 
         $view->assign('jid', $jid);
         $view->assign('muc', $muc);
-        $view->assign('smiley', $this->call('ajaxSmiley'));
         $view->assign('emoji', prepareString('😀'));
 
         return $view->draw('_chat');

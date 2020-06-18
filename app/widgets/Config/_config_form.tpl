@@ -137,7 +137,10 @@
     <div class="clear padded"></div>
     <button
         type="button"
-        onclick="{$submit}"
+        onclick="
+            Config_ajaxSubmit(MovimUtils.formToJson('general'));
+            this.className='button color orange inactive oppose';
+            this.onclick=null;"
         class="button color oppose" >
         {$c->__('button.save')}
     </button>

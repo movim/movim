@@ -55,7 +55,7 @@
     <div class="block large">
         <button
             onclick="
-                {$submit}
+                Vcard4_ajaxVcardSubmit(MovimUtils.formToJson('vcard4'));
                 this.value = '{$c->__('button.submitting')}';
                 this.className='button oppose inactive';"
             class="button color oppose"

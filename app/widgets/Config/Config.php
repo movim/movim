@@ -29,16 +29,6 @@ class Config extends Base
         $view->assign('languages', $l->getList());
         $view->assign('conf', User::me());
 
-        $view->assign(
-            'submit',
-            $this->call(
-                'ajaxSubmit',
-                "MovimUtils.formToJson('general')"
-            )
-            . "this.className='button color orange inactive oppose';
-                this.onclick=null;"
-        );
-
         return $view->draw('_config_form');
     }
 

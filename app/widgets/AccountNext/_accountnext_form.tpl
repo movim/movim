@@ -5,7 +5,7 @@
     <button
         type="button"
         class="button color oppose"
-        onclick="{$submitdata}"
+        onclick="AccountNext_ajaxRegister(MovimUtils.formToJson('data'))"
     >
         {$c->__('button.validate')}
     </button>

@@ -2,7 +2,7 @@
     {if="!isset($me->jid)"}
         <script type="text/javascript">
             MovimWebsocket.attach(function() {
-                {$getvcard}
+                Vcard4_ajaxGetVcard()
             });
         </script>
     {/if}

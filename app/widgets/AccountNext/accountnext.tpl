@@ -28,7 +28,7 @@
 
         MovimWebsocket.register(function()
         {
-            {$getsubscriptionform}
+            AccountNext_ajaxGetForm('{$host}');
         });
     </script>
 </div>

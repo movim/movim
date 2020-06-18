@@ -47,7 +47,7 @@
             {if="$unregister_status"}
                 <li>
                     <span class="control">
-                        <a class="button oppose" onclick="{$unregister}">
+                        <a class="button oppose" onclick="Api_ajaxUnregister()">
                             {$c->__('button.reset')}
                         </a>
                     </span>
@@ -63,7 +63,7 @@
                     <i class="material-icons">cloud_off</i>
                 </span>
                 <span class="control">
-                    <a class="button oppose" onclick="{$register}">
+                    <a class="button oppose" onclick="Api_ajaxRegister()">
                         {$c->__('button.register')}
                     </a>
                 </span>
