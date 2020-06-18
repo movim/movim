@@ -77,6 +77,12 @@ var Draw = {
         Draw.ctx = Draw.canvas.getContext('2d');
         Draw.ctx.lineCap = 'round';
 
+        Draw.screen = document.getElementById('screen-canvas');
+        Draw.screen.width = width;
+        Draw.screen.height = height;
+        Draw.sctx = Draw.screen.getContext('2d');
+        Draw.sctx.lineCap = Draw.ctx.lineCap;
+
         Draw.bg = document.getElementById('draw-background');
         Draw.bg.width = width;
         Draw.bg.height = height;
@@ -92,11 +98,13 @@ var Draw = {
         }
 
         // init controls
-        Draw.ctx.strokeStyle = Draw.BLACK;
+        Draw.ctx.strokeStyle = '#000';
+        Draw.sctx.strokeStyle = '#000';
         colors.forEach(item => item.classList.remove('selected'));
         eraser.classList.remove('selected');
         document.querySelector('[data-color=black]').classList.add('selected');
         Draw.ctx.lineWidth = Draw.MEDIUM;
+        Draw.sctx.lineWidth = Draw.MEDIUM;
         widths.forEach(item => item.classList.remove('selected'));
         document.querySelector('[data-width=medium]').classList.add('selected');
 
@@ -120,33 +128,33 @@ var Draw = {
             Draw.renderCanvas();
         })();
 
-        Draw.canvas.addEventListener('mousedown', Draw.startDrawing, true);
-        Draw.canvas.addEventListener('mouseenter', Draw.startDrawing, false);
-        Draw.canvas.addEventListener('mouseup', Draw.stopDrawing, false);
-        Draw.canvas.addEventListener('mouseleave', Draw.stopDrawing, false);
-        Draw.canvas.addEventListener('mousemove', function (e) {
-            Draw.mousePos = Draw.getPos(Draw.canvas, e);
+        Draw.screen.addEventListener('mousedown', Draw.startDrawing, true);
+        Draw.screen.addEventListener('mouseenter', Draw.startDrawing, false);
+        Draw.screen.addEventListener('mouseup', Draw.stopDrawing, false);
+        Draw.screen.addEventListener('mouseleave', Draw.stopDrawing, false);
+        Draw.screen.addEventListener('mousemove', function (e) {
+            Draw.mousePos = Draw.getPos(Draw.screen, e);
         }, false);
 
         // Set up touch events for mobile, etc
-        Draw.canvas.addEventListener('touchstart', function (e) {
-            Draw.mousePos = Draw.getPos(Draw.canvas, e);
+        Draw.screen.addEventListener('touchstart', function (e) {
+            Draw.mousePos = Draw.getPos(Draw.screen, e);
             var touch = e.touches[0];
             var mouseEvent = new MouseEvent('mousedown', {
                 clientX: touch.clientX,
                 clientY: touch.clientY,
                 buttons: 1
             });
-            Draw.canvas.dispatchEvent(mouseEvent);
+            Draw.screen.dispatchEvent(mouseEvent);
         }, false);
-        Draw.canvas.addEventListener('touchend', Draw.stopDrawing, false);
-        Draw.canvas.addEventListener('touchmove', function (e) {
+        Draw.screen.addEventListener('touchend', Draw.stopDrawing, false);
+        Draw.screen.addEventListener('touchmove', function (e) {
             var touch = e.touches[0];
             var mouseEvent = new MouseEvent('mousemove', {
                 clientX: touch.clientX,
                 clientY: touch.clientY
             });
-            Draw.canvas.dispatchEvent(mouseEvent);
+            Draw.screen.dispatchEvent(mouseEvent);
         }, false);
 
         document.body.addEventListener('touchstart', Draw.disableForCanvas, false);
@@ -156,7 +164,7 @@ var Draw = {
         // Clear canvas
         const clear = document.getElementById('draw-clear');
         clear.addEventListener('click', (e) => {
-            const rect = Draw.canvas.getBoundingClientRect();
+            const rect = Draw.screen.getBoundingClientRect();
             Draw.ctx.clearRect(0, 0, rect.width, rect.height);
             Draw.drawingData = [];
         }, false);
@@ -229,6 +237,7 @@ var Draw = {
 
                 Draw.ctx.globalCompositeOperation = 'source-over';
                 Draw.ctx.strokeStyle = window.getComputedStyle(colors[i].querySelector('span.primary')).backgroundColor;
+                Draw.sctx.strokeStyle = window.getComputedStyle(colors[i].querySelector('span.primary')).backgroundColor;
             });
         }
 
@@ -253,6 +262,7 @@ var Draw = {
                         width = Draw.SMALL;
                 }
                 Draw.ctx.lineWidth = width;
+                Draw.sctx.lineWidth = width;
             });
         }
 
@@ -266,6 +276,13 @@ var Draw = {
     },
 
     stopDrawing: function(e) {
+        // print to actual canvas
+        if (Draw.drawingData.length)
+            Draw.smoothenLine(Draw.drawingData[Draw.drawingData.length -1], Draw.ctx)
+        // cleanup screen
+        const rect = Draw.screen.getBoundingClientRect();
+        Draw.sctx.clearRect(0, 0, rect.width, rect.height);
+
         Draw.drawing = false;
         Draw.lastPos = null;
         Draw.mousePos = null;
@@ -276,6 +293,7 @@ var Draw = {
         Draw.control.classList.remove('drawing');
 
         Draw.ctx.beginPath();
+        Draw.sctx.beginPath();
     },
 
     startDrawing: function(e) {
@@ -289,14 +307,14 @@ var Draw = {
 
             // save drawing data
             const data = {
-                gco: Draw.ctx.globalCompositeOperation,
-                width: Draw.ctx.lineWidth,
-                color: Draw.ctx.strokeStyle,
+                gco: Draw.sctx.globalCompositeOperation,
+                width: Draw.sctx.lineWidth,
+                color: Draw.sctx.strokeStyle,
                 points: []
             }
             Draw.drawingData.push(data);
 
-            Draw.lastPos = Draw.getPos(Draw.canvas, e);
+            Draw.lastPos = Draw.getPos(Draw.screen, e);
         }
     },
 
@@ -306,41 +324,52 @@ var Draw = {
             finalctx.globalCompositeOperation = Draw.drawingData[i].gco;
             finalctx.lineWidth = Draw.drawingData[i].width * Draw.ratio;
             finalctx.strokeStyle = Draw.drawingData[i].color;
-            let j = 0;
-            while (Draw.drawingData[i].points.length < 4) {
-                Draw.drawingData[i].points.push(Draw.drawingData[i].points[Draw.drawingData[i].points.length - 1]);
-            }
 
-            if (Draw.drawingData[i].points.length >= 4) {
-                finalctx.moveTo(
-                    Draw.drawingData[i].points[j].x * Draw.ratio,
-                    Draw.drawingData[i].points[j].y * Draw.ratio
-                );
-                for (j = 1; j < Draw.drawingData[i].points.length - 2; j++) {
-                    const c = (Draw.drawingData[i].points[j].x + Draw.drawingData[i].points[j + 1].x) / 2;
-                    const d = (Draw.drawingData[i].points[j].y + Draw.drawingData[i].points[j + 1].y) / 2;
-
-                    finalctx.quadraticCurveTo(
-                        Draw.drawingData[i].points[j].x * Draw.ratio,
-                        Draw.drawingData[i].points[j].y * Draw.ratio,
-                        c * Draw.ratio,
-                        d * Draw.ratio
-                    );
-                }
-                finalctx.quadraticCurveTo(
-                    Draw.drawingData[i].points[j].x * Draw.ratio,
-                    Draw.drawingData[i].points[j].y * Draw.ratio,
-                    Draw.drawingData[i].points[j + 1].x * Draw.ratio,
-                    Draw.drawingData[i].points[j + 1].y * Draw.ratio
-                );
-            }
-            finalctx.stroke();
+            Draw.smoothenLine(Draw.drawingData[i], finalctx);
             finalctx.beginPath();
         }
     },
 
+    smoothenLine(line, ctx) {
+        let j = 0;
+        const sample = line.points.filter((point, index) => index % 5)
+
+        while (sample.length < 4) {
+            sample.push(sample[sample.length - 1]);
+        }
+
+        if (sample.length >= 4) {
+            // move to 1st point of the line
+            ctx.moveTo(
+                sample[j].x * Draw.ratio,
+                sample[j].y * Draw.ratio
+            );
+            for (j = 1; j < sample.length - 2; j++) {
+                // define controle point as the mean point between current point and next point
+                const c = (sample[j].x + sample[j + 1].x) / 2;
+                const d = (sample[j].y + sample[j + 1].y) / 2;
+
+                // draw a curve between
+                ctx.quadraticCurveTo(
+                    sample[j].x * Draw.ratio,
+                    sample[j].y * Draw.ratio,
+                    c * Draw.ratio,
+                    d * Draw.ratio
+                );
+            }
+            ctx.quadraticCurveTo(
+                sample[j].x * Draw.ratio,
+                sample[j].y * Draw.ratio,
+                sample[j + 1].x * Draw.ratio,
+                sample[j + 1].y * Draw.ratio
+            );
+
+        }
+        ctx.stroke();
+    },
+
     autoCropDrawing: function () {
-        const rect = Draw.canvas.getBoundingClientRect();
+        const rect = Draw.screen.getBoundingClientRect();
         let height = rect.height;
         let width = rect.width;
 
@@ -395,9 +424,9 @@ var Draw = {
     // Draw to the canvas
     renderCanvas: function() {
         if (Draw.drawing && Draw.lastPos && Draw.mousePos) {
-            Draw.ctx.moveTo(Draw.lastPos.x, Draw.lastPos.y);
-            Draw.ctx.lineTo(Draw.mousePos.x, Draw.mousePos.y);
-            Draw.ctx.stroke();
+            Draw.sctx.moveTo(Draw.lastPos.x, Draw.lastPos.y);
+            Draw.sctx.lineTo(Draw.mousePos.x, Draw.mousePos.y);
+            Draw.sctx.stroke();
             Draw.lastPos = Draw.mousePos;
         }
     },

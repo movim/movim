@@ -1,6 +1,7 @@
 <div class="canvas">
     <canvas id="draw-background"></canvas>
     <canvas id="draw-canvas">¯\_(ツ)_/¯</canvas>
+    <canvas id="screen-canvas"></canvas>
 </div>
 <div class="draw-actions">
     <ul class="list middle">
