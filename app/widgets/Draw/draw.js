@@ -324,42 +324,13 @@ var Draw = {
             finalctx.globalCompositeOperation = Draw.drawingData[i].gco;
             finalctx.lineWidth = Draw.drawingData[i].width * Draw.ratio;
             finalctx.strokeStyle = Draw.drawingData[i].color;
-            // let j = 0;
-            // while (Draw.drawingData[i].points.length < 4) {
-            //     Draw.drawingData[i].points.push(Draw.drawingData[i].points[Draw.drawingData[i].points.length - 1]);
-            // }
 
-            // if (Draw.drawingData[i].points.length >= 4) {
-            //     finalctx.moveTo(
-            //         Draw.drawingData[i].points[j].x * Draw.ratio,
-            //         Draw.drawingData[i].points[j].y * Draw.ratio
-            //     );
-            //     for (j = 1; j < Draw.drawingData[i].points.length - 2; j++) {
-            //         const c = (Draw.drawingData[i].points[j].x + Draw.drawingData[i].points[j + 1].x) / 2;
-            //         const d = (Draw.drawingData[i].points[j].y + Draw.drawingData[i].points[j + 1].y) / 2;
-
-            //         finalctx.quadraticCurveTo(
-            //             Draw.drawingData[i].points[j].x * Draw.ratio,
-            //             Draw.drawingData[i].points[j].y * Draw.ratio,
-            //             c * Draw.ratio,
-            //             d * Draw.ratio
-            //         );
-            //     }
-            //     finalctx.quadraticCurveTo(
-            //         Draw.drawingData[i].points[j].x * Draw.ratio,
-            //         Draw.drawingData[i].points[j].y * Draw.ratio,
-            //         Draw.drawingData[i].points[j + 1].x * Draw.ratio,
-            //         Draw.drawingData[i].points[j + 1].y * Draw.ratio
-            //     );
-            // }
             Draw.smoothenLine(Draw.drawingData[i], finalctx);
-            // finalctx.stroke();
             finalctx.beginPath();
         }
     },
 
     smoothenLine(line, ctx) {
-        console.log("SMOOTH!")
         let j = 0;
         const sample = line.points.filter((point, index) => index % 5)
 
