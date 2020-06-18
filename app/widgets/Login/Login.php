@@ -23,8 +23,7 @@ class Login extends Base
         $this->registerEvent('session_start_handle', 'onStart');
         $this->registerEvent('saslfailure', 'onSASLFailure');
         $this->registerEvent('storage_get_handle', 'onConfig');
-        $this->registerEvent('storage_get_errorfeaturenotimplemented', 'onConfig');
-        $this->registerEvent('storage_get_errorserviceunavailable', 'onConfig');
+        $this->registerEvent('storage_get_error', 'onConfig');
         $this->registerEvent('ssl_error', 'onFailAuth');
         $this->registerEvent('dns_error', 'onDNSError');
         $this->registerEvent('timeout_error', 'onTimeoutError');
