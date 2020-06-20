@@ -143,7 +143,7 @@
                 {/if}
                 <div>
                     <p class="line normal">
-                        {if="$value->mucjid && strpos($value->mucjid, '/') == false && !$c->supported('anonymous')"}
+                        {if="$value->mucjid && strpos($value->mucjid, '/') == false"}
                             {if="$value->mucjid == $me"}
                                 {$value->resource}
                             {else}

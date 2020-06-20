@@ -1289,16 +1289,16 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v6.18.18",
+            "version": "v6.18.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
-                "reference": "3147dc925108b7463be7701ddd50ae947ee6c0fd"
+                "reference": "10d0097df1dc8ba30b635f80db7fc0a426e07610"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/container/zipball/3147dc925108b7463be7701ddd50ae947ee6c0fd",
-                "reference": "3147dc925108b7463be7701ddd50ae947ee6c0fd",
+                "url": "https://api.github.com/repos/illuminate/container/zipball/10d0097df1dc8ba30b635f80db7fc0a426e07610",
+                "reference": "10d0097df1dc8ba30b635f80db7fc0a426e07610",
                 "shasum": ""
             },
             "require": {
@@ -1329,11 +1329,11 @@
             ],
             "description": "The Illuminate Container package.",
             "homepage": "https://laravel.com",
-            "time": "2020-06-01T14:59:29+00:00"
+            "time": "2020-06-11T14:01:32+00:00"
         },
         {
             "name": "illuminate/contracts",
-            "version": "v6.18.18",
+            "version": "v6.18.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -1377,16 +1377,16 @@
         },
         {
             "name": "illuminate/database",
-            "version": "v6.18.18",
+            "version": "v6.18.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "807677460276460f5f623e1e5a6fe84046274a0d"
+                "reference": "e9dc2afc768e9eb3f8772b05526eda34a41aee18"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/807677460276460f5f623e1e5a6fe84046274a0d",
-                "reference": "807677460276460f5f623e1e5a6fe84046274a0d",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/e9dc2afc768e9eb3f8772b05526eda34a41aee18",
+                "reference": "e9dc2afc768e9eb3f8772b05526eda34a41aee18",
                 "shasum": ""
             },
             "require": {
@@ -1434,20 +1434,20 @@
                 "orm",
                 "sql"
             ],
-            "time": "2020-06-02T17:06:20+00:00"
+            "time": "2020-06-09T13:55:15+00:00"
         },
         {
             "name": "illuminate/support",
-            "version": "v6.18.18",
+            "version": "v6.18.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "aafc887fd5d4a51a7c81833938bce28d9c607a6d"
+                "reference": "33eb4bb263602142831858033801796875d75d1d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/aafc887fd5d4a51a7c81833938bce28d9c607a6d",
-                "reference": "aafc887fd5d4a51a7c81833938bce28d9c607a6d",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/33eb4bb263602142831858033801796875d75d1d",
+                "reference": "33eb4bb263602142831858033801796875d75d1d",
                 "shasum": ""
             },
             "require": {
@@ -1495,7 +1495,7 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "https://laravel.com",
-            "time": "2020-06-01T14:38:14+00:00"
+            "time": "2020-06-11T14:01:32+00:00"
         },
         {
             "name": "michelf/php-markdown",
@@ -2808,7 +2808,7 @@
         },
         {
             "name": "symfony/config",
-            "version": "v5.1.0",
+            "version": "v5.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
@@ -2888,7 +2888,7 @@
         },
         {
             "name": "symfony/console",
-            "version": "v4.4.9",
+            "version": "v4.4.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
@@ -3039,7 +3039,7 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v5.1.0",
+            "version": "v5.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
@@ -3103,16 +3103,16 @@
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v5.1.0",
+            "version": "v5.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "e0d853bddc2b2cfb0d67b0b4496c03fffe1d37fa"
+                "reference": "f93055171b847915225bd5b0a5792888419d8d75"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/e0d853bddc2b2cfb0d67b0b4496c03fffe1d37fa",
-                "reference": "e0d853bddc2b2cfb0d67b0b4496c03fffe1d37fa",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/f93055171b847915225bd5b0a5792888419d8d75",
+                "reference": "f93055171b847915225bd5b0a5792888419d8d75",
                 "shasum": ""
             },
             "require": {
@@ -3174,7 +3174,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-05-24T12:18:07+00:00"
+            "time": "2020-06-15T06:52:54+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -3471,16 +3471,16 @@
         },
         {
             "name": "symfony/routing",
-            "version": "v5.1.0",
+            "version": "v5.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/routing.git",
-                "reference": "95cf30145b26c758d6d832aa2d0de3128978d556"
+                "reference": "bbd0ba121d623f66d165a55a108008968911f3eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/routing/zipball/95cf30145b26c758d6d832aa2d0de3128978d556",
-                "reference": "95cf30145b26c758d6d832aa2d0de3128978d556",
+                "url": "https://api.github.com/repos/symfony/routing/zipball/bbd0ba121d623f66d165a55a108008968911f3eb",
+                "reference": "bbd0ba121d623f66d165a55a108008968911f3eb",
                 "shasum": ""
             },
             "require": {
@@ -3559,7 +3559,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-05-30T20:35:19+00:00"
+            "time": "2020-06-10T11:49:58+00:00"
         },
         {
             "name": "symfony/service-contracts",
@@ -3635,7 +3635,7 @@
         },
         {
             "name": "symfony/translation",
-            "version": "v5.1.0",
+            "version": "v5.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
@@ -3798,7 +3798,7 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v5.1.0",
+            "version": "v5.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",

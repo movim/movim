@@ -103,11 +103,6 @@ class Base
         echo call_user_func_array([&$this, '__'], $args);
     }
 
-    public function supported($key): bool
-    {
-        return false;
-    }
-
     public function route(...$args): string
     {
         return \Movim\Route::urlize(...$args);
