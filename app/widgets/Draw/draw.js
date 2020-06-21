@@ -332,7 +332,7 @@ var Draw = {
 
     smoothenLine(line, ctx) {
         let j = 0;
-        const sample = line.points.filter((point, index) => index % 5)
+        const sample = line.points.filter((point, index) => index % 2 == 0)
 
         while (sample.length < 4) {
             sample.push(sample[sample.length - 1]);
@@ -363,7 +363,6 @@ var Draw = {
                 sample[j + 1].x * Draw.ratio,
                 sample[j + 1].y * Draw.ratio
             );
-
         }
         ctx.stroke();
     },
