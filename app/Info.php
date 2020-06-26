@@ -238,13 +238,14 @@ class Info extends Model
         return $this->hasFeature('urn:xmpp:extdisco:2');
     }
 
-    public function set($query, $node = false)
+    public function set($query, $node = false, $parent = false)
     {
         $from = (string)$query->attributes()->from;
 
         if (isset($query->query)) {
             $this->server   = strpos($from, '/') == false ? $from : null;
             $this->node     = (string)$query->query->attributes()->node;
+            $this->parent   = $parent == false ? null : $parent;
 
             /**
              * Enforce node, it seems that some servers and clients doesn't

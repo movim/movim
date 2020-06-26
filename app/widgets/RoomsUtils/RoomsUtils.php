@@ -161,8 +161,7 @@ class RoomsUtils extends Base
                                        ->where('node', '')
                                        ->whereCategory('conference')
                                        ->first());
-        $view->assign('mucservice', \App\Info::where('server', 'like', '%'. $this->user->session->host)
-                                             ->where('server', 'not like', '%@%')
+        $view->assign('mucservice', \App\Info::where('parent', $this->user->session->host)
                                              ->whereCategory('conference')
                                              ->whereType('text')
                                              ->first());

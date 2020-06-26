@@ -67,6 +67,7 @@ class Items extends Action
                     } elseif ($parent && $parent->identities->contains('category', 'server')) {
                         $r = new Request;
                         $r->setTo((string)$item->attributes()->jid)
+                          ->setParent($this->_to)
                           ->request();
                     }
                 }

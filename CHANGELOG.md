@@ -31,6 +31,7 @@ v0.18 (trunk)
  * Rewrite and split Rooms in Rooms and Rooms Utils for better performances
  * Add support for XEP-0319: Last User Interaction in Presence and refactor the "last seen" feature
  * Protect Ajax calls when session is dropped, return 403 and redirect properly
+ * Add an indexed parent column on Info to ensure the component origins
 
 v0.17.1
 ---------------------------

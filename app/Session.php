@@ -103,7 +103,7 @@ class Session extends Model
 
     public function getUploadService()
     {
-        return Info::where('server', 'like', '%' . $this->host)
+        return Info::where('parent', $this->host)
                    ->whereCategory('store')
                    ->whereType('file')
                    ->where('features', 'like', '%urn:xmpp:http:upload:0%')
@@ -112,8 +112,7 @@ class Session extends Model
 
     public function getChatroomsServices()
     {
-        return Info::where('server', 'like', '%' . $this->host . '%')
-                   ->where('server', 'not like', '%@%')
+        return Info::where('parent', $this->host)
                    ->whereCategory('conference')
                    ->get();
     }
@@ -121,6 +120,7 @@ class Session extends Model
     public function getCommentsService()
     {
         return Info::where('server', 'comments.' . $this->host)
+                   ->where('parent', $this->host)
                    ->whereCategory('pubsub')
                    ->whereType('service')
                    ->first();

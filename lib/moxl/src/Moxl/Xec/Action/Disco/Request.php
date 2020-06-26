@@ -9,6 +9,7 @@ class Request extends Action
 {
     protected $_node = false;
     protected $_to;
+    protected $_parent;
 
     // Excluded nodes
     protected $_excluded = [
@@ -30,14 +31,14 @@ class Request extends Action
 
         // Info
         $info = new \App\Info;
-        $info->set($stanza, $this->_node);
+        $info->set($stanza, $this->_node, $this->_parent);
 
         $found = \App\Info::where('server', $info->server)
                           ->where('node', $info->node)
                           ->first();
 
         if ($found) {
-            $found->set($stanza, $this->_node);
+            $found->set($stanza, $this->_node, $this->_parent);
             $found->save();
             $info = $found;
         } else {
