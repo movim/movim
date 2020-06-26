@@ -1,6 +1,7 @@
 <?php
 
 use Movim\Widget\Base;
+use Illuminate\Database\Capsule\Manager as DB;
 
 use Respect\Validation\Validator;
 
@@ -228,16 +229,21 @@ class Chats extends Base
             }
 
             $messages = collect();
-            /*$selectedMessages = $this->user->messages()
+
+            $jidFromToMessages = DB::table('messages')
+            ->where('user_id', $this->user->id)
+            ->whereIn('jidfrom', array_keys($chats))
+            ->unionAll(DB::table('messages')
+                ->where('user_id', $this->user->id)
+                ->whereIn('jidto', array_keys($chats))
+            );
+
+            $selectedMessages = $this->user->messages()
                 ->joinSub(
-                    function ($query) use ($chats) {
+                    function ($query) use ($jidFromToMessages) {
                         $query->selectRaw('max(published) as published, jidfrom, jidto')
-                            ->from('messages')
+                            ->from($jidFromToMessages, 'messages')
                             ->where('user_id', $this->user->id)
-                            ->where(function ($query) use ($chats) {
-                                $query->whereIn('jidfrom', array_keys($chats))
-                                    ->orWhereIn('jidto', array_keys($chats));
-                            })
                             ->groupBy(['jidfrom', 'jidto']);
                     },
                     'recents',
@@ -257,11 +263,6 @@ class Chats extends Base
                 if (!$messages->has($key) || $message->published > $messages->get($key)->published) {
                     $messages->put($key, $message);
                 }
-            }*/
-
-            // For the moment more optimized then the request above
-            foreach (array_keys($chats) as $jid) {
-                $messages->put($jid, $this->resolveMessageFromJid($jid));
             }
 
             $view->assign('rosters', $this->user->session->contacts()->whereIn('jid', array_keys($chats))
