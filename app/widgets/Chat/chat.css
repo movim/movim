@@ -274,6 +274,8 @@ main:not(.enabled) #chat_widget {
 #emojisearchbar + .emojis {
     padding: 0;
     margin: 0 auto;
+    max-width: 55rem;
+    margin-bottom: 2rem;
     display: flex;
     justify-content: center;
     text-align: center;

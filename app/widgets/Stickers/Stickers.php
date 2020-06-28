@@ -153,7 +153,10 @@ class Stickers extends \Movim\Widget\Base
     public function ajaxReaction(string $mid)
     {
         $view = $this->tpl();
-        $view->assign('emojis', $this->tpl()->draw('_stickers_emojis'));
+
+        $emojis = $this->tpl();
+        $emojis->assign('mid', $mid);
+        $view->assign('emojis', $emojis->draw('_stickers_emojis'));
 
         Dialog::fill($view->draw('_stickers_reactions'));
         $this->rpc('Stickers.setEmojisEvent', $mid);
