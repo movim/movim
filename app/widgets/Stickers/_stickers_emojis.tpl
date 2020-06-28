@@ -1,5 +1,5 @@
 <div id="emojisearchbar">
-    <ul class="list fill">
+    <ul class="list fill thin">
         <li>
             <span class="primary icon gray">
                 <i class="material-icons">search</i>
