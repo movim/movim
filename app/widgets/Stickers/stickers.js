@@ -22,11 +22,11 @@ var Stickers = {
         element.classList.add('zoomed');
     },
     setEmojisEvent(mid) {
-        let tds = document.querySelectorAll('table.emojis td');
+        const emojis = document.querySelectorAll('#emojisearchbar + .emojis img');
         let i = 0;
 
-        while (i < tds.length) {
-            tds[i].onclick = function() {
+        while (i < emojis.length) {
+            emojis[i].onclick = function() {
                 if (mid) {
                     Chat_ajaxHttpDaemonSendReaction(mid, this.dataset.emoji);
                     Dialog_ajaxClear();

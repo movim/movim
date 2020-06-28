@@ -276,7 +276,7 @@ var Chat = {
 
         textarea.oninput = function() {
             MovimUtils.textareaAutoheight(this);
-            Chat.checkEmojis(this);
+            Chat.checkEmojis(this.value);
             Chat.scrollRestore();
         }
 
@@ -290,22 +290,31 @@ var Chat = {
 
         Chat.autocompleteList = null;
     },
-    checkEmojis: function(textarea)
+    searchEmoji(value) {
+        this.checkEmojis(value, '#emojisearchbar + .emojis .results', 'large', true);
+    },
+    checkEmojis: function(value, listSelector, emojiClass, noColon)
     {
-        var emojisList = document.querySelector('.chat_box .emojis');
+        if(typeof(listSelector) === 'undefined') {
+            listSelector = '.chat_box .emojis';
+        }
+        var emojisList = document.querySelector(listSelector);
         emojisList.innerHTML = '';
 
-        if (textarea.value.lastIndexOf(':') > -1 && textarea.value.length > textarea.value.lastIndexOf(':') + 2) {
+        if (!value) return;
+
+        if (noColon || value.lastIndexOf(':') > -1 && value.length > value.lastIndexOf(':') + 2) {
             var first = true;
 
             Object.keys(emojis).filter(key => key.indexOf(
-                    textarea.value.substr(textarea.value.lastIndexOf(':') + 1)
+                    value.substr(value.lastIndexOf(':') + 1)
                 ) > -1)
             .slice(0, 40)
             .forEach(found => {
                 var img = document.createElement('img');
                 img.setAttribute('src','theme/img/emojis/svg/' + emojis[found].c + '.svg');
                 img.classList.add('emoji');
+                if (emojiClass) img.classList.add(emojiClass);
 
                 if (first) {
                     img.classList.add('selected');
