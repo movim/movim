@@ -24,7 +24,7 @@ var Snap = {
                     Snap.video.play();
 
                     // We try to use ImageCapture
-                    if (ImageCapture) {
+                    if (typeof(ImageCapture) != 'undefined') {
                         const track = stream.getVideoTracks()[0];
                         Snap.imageCapture = new ImageCapture(track);
                     }

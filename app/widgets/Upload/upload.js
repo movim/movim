@@ -77,18 +77,17 @@ var Upload = {
             var reader = new FileReader();
             reader.readAsDataURL(file);
 
-            reader.onload = function (ev) {
+            reader.addEventListener('load', function (ev) {
                 MovimUtils.getOrientation(file, function(orientation) {
                     Upload.compress(ev.target.result, file, orientation);
                 });
-            };
+            });
         };
     },
 
     compress : function(src, file, orientation) {
         var image = new Image();
-        image.onload = function()
-        {
+        image.addEventListener('load', function() {
             if (file.size > SMALL_PICTURE_LIMIT) {
                 var limit = 1920;
                 var width = image.naturalWidth;
@@ -144,8 +143,7 @@ var Upload = {
             } else {
                 Upload.prepare(file);
             }
-
-        }
+        });
         image.src = src;
     },
 
@@ -166,7 +164,11 @@ var Upload = {
             if (Upload.file.type.match(/image.*/)) {
                 preview.src = URL.createObjectURL(Upload.file);
                 toDraw.addEventListener('click', e => {
-                    Draw.init(Upload.canvas);
+                    if (Upload.canvas) {
+                        Draw.init(Upload.canvas);
+                    } else {
+                        Draw.init(preview);
+                    }
                     Dialog_ajaxClear();
                     Upload.abort();
                 });

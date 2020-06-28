@@ -278,7 +278,7 @@ var Draw = {
     stopDrawing: function(e) {
         // print to actual canvas
         if (Draw.drawingData.length)
-            Draw.smoothenLine(Draw.drawingData[Draw.drawingData.length -1], Draw.ctx)
+            Draw.smoothenLine(Draw.drawingData[Draw.drawingData.length -1], Draw.ctx, 1)
         // cleanup screen
         const rect = Draw.screen.getBoundingClientRect();
         Draw.sctx.clearRect(0, 0, rect.width, rect.height);
@@ -325,13 +325,14 @@ var Draw = {
             finalctx.lineWidth = Draw.drawingData[i].width * Draw.ratio;
             finalctx.strokeStyle = Draw.drawingData[i].color;
 
-            Draw.smoothenLine(Draw.drawingData[i], finalctx);
+            Draw.smoothenLine(Draw.drawingData[i], finalctx, Draw.ratio);
             finalctx.beginPath();
         }
     },
 
-    smoothenLine(line, ctx) {
+    smoothenLine(line, ctx, ratio) {
         let j = 0;
+        // keep only half of the points
         const sample = line.points.filter((point, index) => index % 2 == 0)
 
         while (sample.length < 4) {
@@ -341,8 +342,8 @@ var Draw = {
         if (sample.length >= 4) {
             // move to 1st point of the line
             ctx.moveTo(
-                sample[j].x * Draw.ratio,
-                sample[j].y * Draw.ratio
+                sample[j].x * ratio,
+                sample[j].y * ratio
             );
             for (j = 1; j < sample.length - 2; j++) {
                 // define controle point as the mean point between current point and next point
@@ -351,17 +352,17 @@ var Draw = {
 
                 // draw a curve between
                 ctx.quadraticCurveTo(
-                    sample[j].x * Draw.ratio,
-                    sample[j].y * Draw.ratio,
-                    c * Draw.ratio,
-                    d * Draw.ratio
+                    sample[j].x * ratio,
+                    sample[j].y * ratio,
+                    c * ratio,
+                    d * ratio
                 );
             }
             ctx.quadraticCurveTo(
-                sample[j].x * Draw.ratio,
-                sample[j].y * Draw.ratio,
-                sample[j + 1].x * Draw.ratio,
-                sample[j + 1].y * Draw.ratio
+                sample[j].x * ratio,
+                sample[j].y * ratio,
+                sample[j + 1].x * ratio,
+                sample[j + 1].y * ratio
             );
         }
         ctx.stroke();
