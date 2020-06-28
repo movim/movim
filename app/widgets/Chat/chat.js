@@ -291,9 +291,9 @@ var Chat = {
         Chat.autocompleteList = null;
     },
     searchEmoji(value) {
-        this.checkEmojis(value, '#emojisearchbar + .emojis');
+        this.checkEmojis(value, '#emojisearchbar + .emojis .results', 'large', true);
     },
-    checkEmojis: function(value, listSelector)
+    checkEmojis: function(value, listSelector, emojiClass, noColon)
     {
         if(typeof(listSelector) === 'undefined') {
             listSelector = '.chat_box .emojis';
@@ -301,7 +301,9 @@ var Chat = {
         var emojisList = document.querySelector(listSelector);
         emojisList.innerHTML = '';
 
-        if (value.lastIndexOf(':') > -1 && value.length > value.lastIndexOf(':') + 2) {
+        if (!value) return;
+
+        if (noColon || value.lastIndexOf(':') > -1 && value.length > value.lastIndexOf(':') + 2) {
             var first = true;
 
             Object.keys(emojis).filter(key => key.indexOf(
@@ -312,6 +314,7 @@ var Chat = {
                 var img = document.createElement('img');
                 img.setAttribute('src','theme/img/emojis/svg/' + emojis[found].c + '.svg');
                 img.classList.add('emoji');
+                if (emojiClass) img.classList.add(emojiClass);
 
                 if (first) {
                     img.classList.add('selected');

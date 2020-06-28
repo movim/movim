@@ -17,6 +17,7 @@
     </ul>
 </div>
 <div class="emojis">
+    <div class="results"></div>
     <img data-emoji="😀" class="emoji large" src="{$c->getSmileyPath('1f600')}">
     <img data-emoji="😁" class="emoji large" src="{$c->getSmileyPath('1f601')}">
     <img data-emoji="😂" class="emoji large" src="{$c->getSmileyPath('1f602')}">

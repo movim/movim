@@ -273,7 +273,12 @@ main:not(.enabled) #chat_widget {
     margin: 0 auto;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;    
+    flex-wrap: wrap;
+}
+
+#emojisearchbar + .emojis .results:not(:empty) ~ img {
+    /* hide default when results are not empty */
+    display: none;
 }
 
 #emojisearchbar + .emojis img {
