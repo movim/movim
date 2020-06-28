@@ -187,7 +187,7 @@ header.big ul.list li > div > p:nth-last-of-type(2) + p {
 
 /* Gray accent : orange */
 
-.main,
+body.nightmode .main,
 .tabs,
 .tabs li.active a:not(.classic):not(.action),
 .button,
