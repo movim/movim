@@ -33,6 +33,8 @@ v0.18 (trunk)
  * Protect Ajax calls when session is dropped, return 403 and redirect properly
  * Add an indexed parent column on Info to ensure the component origins
  * Request all the latest messages in one query instead of a loop in Chats
+ * Improve the Draw widget lines quality (christine-ho-dev)
+ * New emoji picker (christine-ho-dev)
 
 v0.17.1
 ---------------------------
