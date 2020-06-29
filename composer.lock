@@ -1007,16 +1007,16 @@
         },
         {
             "name": "embed/embed",
-            "version": "v3.4.6",
+            "version": "v3.4.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/Embed.git",
-                "reference": "fdf2039fd796e1f5ec6dee04254a8ed10293c63c"
+                "reference": "c35f948df4e36fe34a9be2ddc34414a7ddea0f65"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/fdf2039fd796e1f5ec6dee04254a8ed10293c63c",
-                "reference": "fdf2039fd796e1f5ec6dee04254a8ed10293c63c",
+                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/c35f948df4e36fe34a9be2ddc34414a7ddea0f65",
+                "reference": "c35f948df4e36fe34a9be2ddc34414a7ddea0f65",
                 "shasum": ""
             },
             "require": {
@@ -1057,7 +1057,7 @@
                 "opengraph",
                 "twitter cards"
             ],
-            "time": "2020-06-08T18:29:58+00:00"
+            "time": "2020-06-29T13:48:20+00:00"
         },
         {
             "name": "evenement/evenement",
@@ -1104,16 +1104,16 @@
         },
         {
             "name": "ezyang/htmlpurifier",
-            "version": "v4.12.0",
+            "version": "v4.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezyang/htmlpurifier.git",
-                "reference": "a617e55bc62a87eec73bd456d146d134ad716f03"
+                "reference": "08e27c97e4c6ed02f37c5b2b20488046c8d90d75"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/a617e55bc62a87eec73bd456d146d134ad716f03",
-                "reference": "a617e55bc62a87eec73bd456d146d134ad716f03",
+                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/08e27c97e4c6ed02f37c5b2b20488046c8d90d75",
+                "reference": "08e27c97e4c6ed02f37c5b2b20488046c8d90d75",
                 "shasum": ""
             },
             "require": {
@@ -1129,6 +1129,9 @@
                 },
                 "files": [
                     "library/HTMLPurifier.composer.php"
+                ],
+                "exclude-from-classmap": [
+                    "/library/HTMLPurifier/Language/"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1147,7 +1150,7 @@
             "keywords": [
                 "html"
             ],
-            "time": "2019-10-28T03:44:26+00:00"
+            "time": "2020-06-29T00:56:53+00:00"
         },
         {
             "name": "fabiang/sasl",
