@@ -129,25 +129,6 @@ class Stickers extends \Movim\Widget\Base
     }
 
     /**
-     * @brief Show the smiley list
-     */
-    public function ajaxSmiley($to)
-    {
-        if (!$this->validateJid($to)) {
-            return;
-        }
-
-        $view = $this->tpl();
-        $view->assign('jid', $to);
-        $view->assign('packs', $this->getPacks());
-        $view->assign('emojis', $this->tpl()->draw('_stickers_emojis'));
-        $view->assign('path', $this->respath('stickers', false, false, true));
-
-        Drawer::fill($view->draw('_stickers_smiley'));
-        $this->rpc('Stickers.setEmojisEvent');
-    }
-
-    /**
      * @brief Show the smiley Poppin
      */
     public function ajaxReaction(string $mid)

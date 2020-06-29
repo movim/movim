@@ -24,7 +24,7 @@
         <li class="emojis"></li>
         <li>
             <span class="primary icon gray primary_action" onclick="Stickers_ajaxShow('{$jid}')">
-                <i class="material-icons">mood</i>
+                <i class="material-icons">face</i>
             </span>
             {if="$c->getUser()->hasUpload()"}
                 <span class="attach control icon" onclick="Chat.toggleAttach()">

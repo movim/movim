@@ -63,19 +63,19 @@
                     </p>
                 {/if}
 
-                <p class="compose first line main" id="{$jid|cleanupId}-state"></p>
+                <p class="compose first line" id="{$jid|cleanupId}-state"></p>
                 {if="$conference && !$conference->connected"}
                     <p>{$c->__('button.connecting')}…</p>
                 {elseif="$conference && $subject = $conference->subject"}
                     <p class="line active" title="{$subject}" onclick="RoomsUtils_ajaxShowSubject('{$jid|echapJS}')">
                         {if="$conference->info && $conference->info->mucpublic"}
-                            <span title="{$c->__('room.public_muc_text')}" class="main">
+                            <span title="{$c->__('room.public_muc_text')}">
                                 {$c->__('room.public_muc')} <i class="material-icons">wifi_tethering</i>
                             </span>
                             ·
                         {/if}
                         {if="$conference->info && !$conference->info->mucsemianonymous"}
-                            <span title="{$c->__('room.nonanonymous_muc_text')}" class="main">
+                            <span title="{$c->__('room.nonanonymous_muc_text')}">
                                 {$c->__('room.nonanonymous_muc')} <i class="material-icons">face</i>
                             </span>
                             ·
@@ -85,13 +85,13 @@
                 {else}
                     <p class="line active" id="{$jid|cleanupId}-state" onclick="RoomsUtils_ajaxShowSubject('{$jid|echapJS}')">
                         {if="$conference->info && $conference->info->mucpublic"}
-                            <span title="{$c->__('room.public_muc_text')}" class="main">
+                            <span title="{$c->__('room.public_muc_text')}">
                                 {$c->__('room.public_muc')} <i class="material-icons">wifi_tethering</i>
                             </span>
                             ·
                         {/if}
                         {if="$conference->info && !$conference->info->mucsemianonymous"}
-                            <span title="{$c->__('room.nonanonymous_muc_text')}" class="main">
+                            <span title="{$c->__('room.nonanonymous_muc_text')}">
                                 {$c->__('room.nonanonymous_muc')} <i class="material-icons">face</i>
                             </span>
                             ·
@@ -245,7 +245,7 @@
                         {$contact->truename}
                     {/if}
                 </p>
-                <p class="compose first line active main" id="{$jid|cleanupId}-state" onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')"></p>
+                <p class="compose first line active" id="{$jid|cleanupId}-state" onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')"></p>
                 <p class="line active" onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')">
                     {if="$roster && $roster->presence && $roster->presence->seen"}
                         {$c->__('last.title')} {$roster->presence->seen|strtotime|prepareDate:true,true}

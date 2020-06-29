@@ -33,8 +33,5 @@
                 <a href="#"><img alt=":sticker:" class="emoji medium" src="/stickers/{$value}/icon.png"></a>
             </li>
         {/loop}
-        <li onclick="Stickers_ajaxSmiley('{$jid}')">
-            <a href="#"><img alt=":smiley:" class="emoji medium" src="{$c->getSmileyPath('1f603')}"></a>
-        </li>
     </ul>
 </div>
