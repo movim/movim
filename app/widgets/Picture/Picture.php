@@ -1,6 +1,7 @@
 <?php
 
 use Movim\Widget\Base;
+use Movim\Picture as MovimPicture;
 
 class Picture extends Base
 {
@@ -9,6 +10,7 @@ class Picture extends Base
      * see https://support.mozilla.org/en-US/kb/content-blocking
      */
     private $blockedHosts = ['pbs.twimg.com'];
+    private $compressLimit = SMALL_PICTURE_LIMIT * 4;
 
     public function display()
     {
@@ -25,26 +27,33 @@ class Picture extends Base
         $headers = requestHeaders($url);
 
         if ($headers['http_code'] == 200
-        && $headers["download_content_length"] <= SMALL_PICTURE_LIMIT
+        && $headers["download_content_length"] <= $this->compressLimit
         && $headers["download_content_length"] > 2000
         && typeIsPicture($headers['content_type'])) {
-            $components = parse_url($url);
+            $compress = (
+                $headers["download_content_length"] >= SMALL_PICTURE_LIMIT
+                && $headers["download_content_length"] < $this->compressLimit
+            );
 
             // We proxify the picture if served from HTTP
-            if ($components['scheme'] === 'http'
-            || in_array($components['host'], $this->blockedHosts)) {
+            if ($uri['scheme'] === 'http'
+            || $compress
+            || in_array($uri['host'], $this->blockedHosts)) {
+                $limit = $compress
+                    ? $this->compressLimit
+                    : SMALL_PICTURE_LIMIT;
+
                 $ch = curl_init();
                 curl_setopt($ch, CURLOPT_URL, $url);
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                 curl_setopt($ch, CURLOPT_HEADER, true);
-                curl_setopt($ch, CURLOPT_BINARYTRANSFER, true);
                 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
                 curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 4);
                 curl_setopt($ch, CURLOPT_BUFFERSIZE, 12800);
                 curl_setopt($ch, CURLOPT_NOPROGRESS, false);
                 curl_setopt($ch, CURLOPT_USERAGENT, DEFAULT_HTTP_USER_AGENT);
-                curl_setopt($ch, CURLOPT_PROGRESSFUNCTION, function ($downloadSize, $downloaded, $uploadSize, $uploaded) {
-                    return ($downloaded > SMALL_PICTURE_LIMIT) ? 1 : 0;
+                curl_setopt($ch, CURLOPT_PROGRESSFUNCTION, function ($downloadSize, $downloaded, $uploadSize, $uploaded) use ($limit) {
+                    return ($downloaded > $limit) ? 1 : 0;
                 });
 
                 $response = curl_exec($ch);
@@ -54,9 +63,18 @@ class Picture extends Base
                 $headers = preg_split('/[\r\n]+/', substr($response, 0, $header_size));
                 $body = substr($response, $header_size);
 
-                foreach ($headers as $header) {
-                    if (strtolower(substr($header, 0, strlen('Content-Type:'))) === 'content-type:') {
-                        header($header);
+                if ($compress) {
+                    $picture = new MovimPicture;
+                    $picture->fromBin($body);
+                    $body = $picture->set(false, DEFAULT_PICTURE_FORMAT, 85);
+                    $body->adaptiveResizeImage(1920, 1920, true);
+
+                    header('Content-Type: image/'. DEFAULT_PICTURE_FORMAT);
+                } else {
+                    foreach ($headers as $header) {
+                        if (strtolower(substr($header, 0, strlen('Content-Type:'))) === 'content-type:') {
+                            header($header);
+                        }
                     }
                 }
 

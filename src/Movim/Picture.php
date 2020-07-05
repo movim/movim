@@ -53,6 +53,27 @@ class Picture
     }
 
     /**
+     * @desc Load a bin picture from a binary
+     */
+    public function fromBin($bin = false)
+    {
+        if ($bin) {
+            $this->_bin = (string)$bin;
+        }
+    }
+
+    /**
+     * @desc Return the binary
+     */
+    public function toBin()
+    {
+        if ($this->_bin) {
+            return $this->_bin;
+        }
+        return false;
+    }
+
+    /**
      * @desc Load a bin picture from a base64
      */
     public function fromBase($base = false)
@@ -171,31 +192,35 @@ class Picture
 
     /**
      * @desc Save a picture (original size)
-     * @param $key The key of the picture
+     * @param $key The key of the picture, if = false return the compressed binary
      */
-    public function set($key, $format = DEFAULT_PICTURE_FORMAT, $quality = DEFAULT_PICTURE_QUALITY)
+    public function set($key = false, $format = DEFAULT_PICTURE_FORMAT, $quality = DEFAULT_PICTURE_QUALITY)
     {
         if (!in_array($format, array_keys($this->_formats))) {
             $format = DEFAULT_PICTURE_FORMAT;
         }
 
-        $this->_key = $key;
-        $path = $this->_path.md5($this->_key).$this->_formats[$format];
+        if ($key) {
+            $this->_key = $key;
+            $path = $this->_path.md5($this->_key).$this->_formats[$format];
 
-        // If the file exist we replace it
-        if (file_exists($path) && $this->_bin) {
-            @unlink($path);
+            // If the file exist we replace it
+            if (file_exists($path) && $this->_bin) {
+                @unlink($path);
 
-            // And destroy all the thumbnails
-            foreach (
-                glob(
-                    $this->_path.
-                    md5($key).
-                    '*'.$this->_formats[$format],
-                    GLOB_NOSORT
-                ) as $path_thumb) {
-                @unlink($path_thumb);
+                // And destroy all the thumbnails
+                foreach (
+                    glob(
+                        $this->_path.
+                        md5($key).
+                        '*'.$this->_formats[$format],
+                        GLOB_NOSORT
+                    ) as $path_thumb) {
+                    @unlink($path_thumb);
+                }
             }
+        } else {
+            $path = false;
         }
 
         if ($this->_bin) {
@@ -207,6 +232,7 @@ class Picture
                 if ($finfo->buffer($this->_bin) == 'image/webp'
                     && empty(\Imagick::queryFormats('WEBP'))
                     && array_key_exists('WebP Support', \gd_info())
+                    && $path
                 ) {
                     $temp = tmpfile();
                     fwrite($temp, $this->_bin);
@@ -236,9 +262,13 @@ class Picture
                         $im->setOption('png:exclude-chunk', 'gAMA');
                     }
 
-                    $im->writeImage($path);
-                    $im->clear();
-                    return true;
+                    if ($path) {
+                        $im->writeImage($path);
+                        $im->clear();
+                        return true;
+                    }
+
+                    return $im;
                 }
                 return false;
             } catch (\ImagickException $e) {

@@ -35,6 +35,7 @@ v0.18 (trunk)
  * Request all the latest messages in one query instead of a loop in Chats
  * Improve the Draw widget lines quality (christine-ho-dev)
  * New emoji picker (christine-ho-dev)
+ * Add on-the-fly picture compression for the Picture proxy for larger pictures
 
 v0.17.1
 ---------------------------
