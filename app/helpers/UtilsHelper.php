@@ -414,7 +414,7 @@ function getCountries()
 function getImgurThumbnail(string $uri)
 {
     $matches = [];
-    preg_match('/https:\/\/i.imgur.com\/([a-zA-Z0-9]{7})(.*)/', $uri, $matches);
+    preg_match('/https?:\/\/i.imgur.com\/([a-zA-Z0-9]{7})(.*)/', $uri, $matches);
 
     if (!empty($matches)) {
         return 'https://i.imgur.com/' . $matches[1] . 'g' . $matches[2];
