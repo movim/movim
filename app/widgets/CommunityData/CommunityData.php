@@ -54,7 +54,7 @@ class CommunityData extends Base
             );
 
             $title = !empty($info->name) ? $info->name : $node;
-            $this->rpc('MovimUtils.setTitle',
+            $this->rpc('Notification.setTitle',
                 $this->__('page.communities') . ' • ' . $title
             );
         }

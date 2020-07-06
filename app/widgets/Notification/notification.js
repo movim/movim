@@ -93,6 +93,10 @@ var Notification = {
             Notification.tab_counter2 = counter;
         }
     },
+    setTitle : function (title) {
+        Notification.document_title = title;
+        Notification.displayTab();
+    },
     displayTab : function() {
         if (Notification.tab_counter1 == 0 && Notification.tab_counter2 == 0) {
             document.title = Notification.document_title;
