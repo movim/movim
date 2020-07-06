@@ -63,6 +63,9 @@ var MovimUtils = {
 
         return json;
     },
+    setTitle: function(title) {
+        document.title = title;
+    },
     pushState: function(url) {
         window.history.pushState(null, '', url);
     },

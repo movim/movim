@@ -19,7 +19,10 @@ class Info extends Model
     public function save(array $options = [])
     {
         // Empty features, we're not saving anything
-        if (is_array($this->attributes['features']) && empty($this->attributes['features'])) return;
+        if (array_key_exists('features', $this->attributes)
+        && is_array($this->attributes['features'])
+        && empty($this->attributes['features'])
+        ) return;
 
         try {
             unset($this->identities);

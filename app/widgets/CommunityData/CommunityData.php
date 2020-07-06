@@ -42,13 +42,23 @@ class CommunityData extends Base
                          ->first();
 
         $view->assign('info', $info);
-        $view->assign('num', $info ?
-            ($info->items > 0)
-                ? $info->items
-                : \App\Post::where('server', $origin)
-                       ->where('node', $node)
-                       ->count()
-            : 0);
+        $view->assign('num', 0);
+
+        if ($info) {
+            $view->assign('num',
+                ($info->items > 0)
+                    ? $info->items
+                    : \App\Post::where('server', $origin)
+                           ->where('node', $node)
+                           ->count()
+            );
+
+            $this->rpc('MovimUtils.setTitle',
+                $this->__('page.communities') .
+                ' • ' .
+                $info->name ?? $info->node
+            );
+        }
 
         return $view->draw('_communitydata');
     }

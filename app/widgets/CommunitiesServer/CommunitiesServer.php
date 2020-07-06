@@ -116,15 +116,19 @@ class CommunitiesServer extends \Movim\Widget\Base
 
     public function prepareCommunitiesServer($origin)
     {
+        $item = \App\Info::where('server', $origin)->where('node', '')->first();
+
         $view = $this->tpl();
-        $view->assign('item', \App\Info::where('server', $origin)
-                                       ->where('node', '')
-                                       ->first());
+        $view->assign('item', $item);
         $view->assign('nodes', \App\Info::where('server', $origin)
                                         ->where('node', '!=', '')
                                         ->orderBy('occupants', 'desc')
                                         ->get());
         $view->assign('server', $origin);
+
+        if (isset($item->name)) {
+            $this->rpc('MovimUtils.setTitle', $this->__('page.communities') . ' • ' . $item->name);
+        }
 
         return $view->draw('_communitiesserver');
     }

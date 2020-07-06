@@ -4,7 +4,7 @@
         <li>
             <span class="primary icon gray">
                 {if="$value->logo"}
-                    <img src="{$value->logo}"/>
+                    <img src="{$value->logo|protectPicture}"/>
                 {else}
                     <i class="material-icons">link</i>
                 {/if}

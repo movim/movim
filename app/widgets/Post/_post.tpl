@@ -220,22 +220,8 @@
         {$c->preparePostLinks($post)}
     {/autoescape}
 
-    {if="$post->pictures && !$post->isBrief() && !$post->isShort()"}
-        <ul class="list flex middle">
-        {loop="$post->pictures"}
-            <li class="block pic">
-                <span class="primary icon gray">
-                    <i class="material-icons">image</i>
-                </span>
-                <a href="{$value->href}" class="alternate" target="_blank">
-                    <img type="{$value->type}" src="{$value->href}"/>
-                </a>
-            </li>
-        {/loop}
-        </ul>
-    {/if}
     {if="$post->openlink && !$public"}
-        <ul class="list active thick">
+        <ul class="list thick">
             <li>
                 <span class="primary icon gray">
                     <i class="material-icons">wifi_tethering</i>
@@ -251,6 +237,26 @@
                     </p>
                 </div>
             </li>
+        </ul>
+    {/if}
+
+    {if="$post->pictures()->count() > 0 && !$post->isBrief() && !$post->isShort()"}
+        <ul class="list">
+            <li class="subheader">
+                <div>
+                    <p>
+                        {$c->__('general.pictures')}
+                    </p>
+                </div>
+            </li>
+        </ul>
+        <ul class="grid active">
+            {loop="$post->pictures"}
+                <li style="background-image: url('{$value->href|protectPicture}')"
+                    onclick="Preview_ajaxShow('{$value->href}')">
+                    <i class="material-icons">visibility</i>
+                </li>
+            {/loop}
         </ul>
     {/if}
 
