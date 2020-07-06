@@ -53,10 +53,9 @@ class CommunityData extends Base
                            ->count()
             );
 
+            $title = !empty($info->name) ? $info->name : $node;
             $this->rpc('MovimUtils.setTitle',
-                $this->__('page.communities') .
-                ' • ' .
-                $info->name ?? $info->node
+                $this->__('page.communities') . ' • ' . $title
             );
         }
 

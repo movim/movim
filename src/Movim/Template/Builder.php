@@ -101,7 +101,7 @@ class Builder
         $widgets = Wrapper::getInstance();
 
         return isset($widgets->title)
-            ? $this->title . ' – ' . $widgets->title
+            ? $this->title . ' • ' . $widgets->title
             : $this->title;
     }
 
