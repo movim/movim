@@ -86,6 +86,36 @@ class AccountNext extends \Movim\Widget\Base
         $this->rpc('MovimUtils.redirect', $this->route('account'));
     }
 
+    public function ajaxGetForm($host)
+    {
+        global $dns;
+        $domain = $host;
+
+        $dns->resolveAll('_xmpp-client._tcp.' . $host, React\Dns\Model\Message::TYPE_SRV)
+        ->then(function ($resolved) use ($host, &$domain) {
+            $domain = $resolved[0]['target'];
+        })->always(function () use ($host, &$domain) {
+            // We create a new session or clear the old one
+            $s = Session::start();
+            $s->set('host', $host);
+            $s->set('domain', $domain);
+
+            \Moxl\Stanza\Stream::init($host);
+        });
+    }
+
+    public function ajaxRegister($form)
+    {
+        if (isset($form->re_password)
+        && $form->re_password->value != $form->password->value) {
+            Notification::toast($this->__('account.password_not_same'));
+            return;
+        }
+
+        $s = new Set;
+        $s->setData($form)->request();
+    }
+
     public function display()
     {
         $host = $this->get('s');

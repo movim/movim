@@ -19,16 +19,4 @@
             </ul>
         </div>
     </div>
-    <script type="text/javascript">
-        MovimWebsocket.attach(function()
-        {
-            MovimWebsocket.connection.register('{$host}');
-            AccountNext.host = '{$host}';
-        });
-
-        MovimWebsocket.register(function()
-        {
-            AccountNext_ajaxGetForm('{$host}');
-        });
-    </script>
 </div>
