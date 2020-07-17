@@ -100,7 +100,6 @@ class Notification extends Base
         if ($first === 'chat') {
             RPC::call('Notification.counter', $first, (\App\User::me())->unreads(null, true));
             self::executeRPC();
-            return;
         } else {
             RPC::call('Notification.counter', $first, $notifs[$first]);
             self::executeRPC();

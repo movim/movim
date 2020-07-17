@@ -151,7 +151,8 @@ class Chat extends \Movim\Widget\Base
                         : $from,
                     $message->resource.': '.$rawbody,
                     $conference->getPhoto(),
-                    4
+                    4,
+                    $this->route('chat', [$contact->jid, 'room'])
                 );
             } elseif ($message->type == 'groupchat') {
                 $chatStates->clearState($from, $message->resource);
