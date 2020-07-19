@@ -404,6 +404,9 @@ class SDPtoJingle
                             if (isset($args['rport'])) {
                                 $candidate->addAttribute('rel-port', $args['rport']);
                             }
+                            if (isset($args['tcptype'])) {
+                                $candidate->addAttribute('tcptype', $args['tcptype']);
+                            }
 
                             // ufrag to the transport
                             $s = Session::start();

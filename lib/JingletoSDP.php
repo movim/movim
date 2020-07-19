@@ -305,6 +305,11 @@ class JingletoSDP
                             }
                         }
 
+                        if (isset($payload->attributes()->tcptype)) {
+                            $sdp_media .=
+                                ' tcptype '.$payload->attributes()->tcptype;
+                        }
+
                         if (isset($payload->attributes()->generation)) {
                             $sdp_media .=
                                 ' generation '.$payload->attributes()->generation;
