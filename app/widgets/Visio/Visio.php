@@ -255,13 +255,15 @@ class Visio extends Base
 
     public function ajaxCandidate($sdp, $to, $id)
     {
+        $ufrag = $sdp->usernameFragment ?? null;
+
         $stj = new SDPtoJingle(
             'a='.$sdp->candidate,
             $this->user->id,
             $to,
             'transport-info',
             $sdp->sdpMid,
-            $sdp->usernameFragment
+            $ufrag
         );
         $stj->setSessionId($id);
 
