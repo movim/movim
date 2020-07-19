@@ -147,8 +147,13 @@ var Visio = {
     },
 
     onCandidate: function(candidate, mid, mlineindex) {
+        // filter the a=candidate lines
+        var filtered = candidate.split(/\n/).filter(line => {
+            return line.startsWith('a=candidate');
+        });
+
         Visio.pc.addIceCandidate(new RTCIceCandidate({
-            'candidate': candidate.substr(2),
+            'candidate': filtered.join('').substr(2),
             'sdpMid': mid,
             'sdpMLineIndex' : mlineindex
         }), () => {}, logError);
