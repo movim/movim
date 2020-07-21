@@ -19,7 +19,11 @@ class Get extends Action
 
     public function handle($stanza, $parent = false)
     {
-        \App\User::me()->session->conferences()->delete();
+        \App\User::me()
+            ->session
+            ->conferences()
+            ->where('bookmarkversion', (int)$this->_version)
+            ->delete();
 
         foreach ($stanza->pubsub->items->item as $c) {
             $conference = new Conference;
