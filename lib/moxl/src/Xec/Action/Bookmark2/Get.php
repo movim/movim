@@ -31,6 +31,7 @@ class Get extends Action
             $conference->save();
         }
 
+        $this->pack($this->_version);
         $this->deliver();
     }
 }

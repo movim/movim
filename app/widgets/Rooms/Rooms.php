@@ -83,9 +83,11 @@ class Rooms extends Base
         Notification::toast($this->__('chatrooms.disconnected'));
     }
 
-    public function onBookmarkGet()
+    public function onBookmarkGet($packet)
     {
-        foreach ($this->user->session->conferences as $room) {
+        foreach ($this->user->session->conferences()
+                      ->where('bookmarkversion', (int)$packet->content)
+                      ->get() as $room) {
             if ($room->autojoin && !$room->connected) {
                 $this->ajaxJoin($room->conference, $room->nick, true);
             }
