@@ -56,6 +56,15 @@
                 {if="$conference && $conference->name"}
                     <p class="line active" title="{$jid|echapJS}" onclick="RoomsUtils_ajaxShowSubject('{$jid|echapJS}')">
                         {$conference->name}
+                        {if="$conference->notify == 0"}
+                            <span class="second" title="{$c->__('room.notify_never')}">
+                                <i class="material-icons">notifications_off</i>
+                            </span>
+                        {elseif="$conference->notify == 2"}
+                            <span class="second" title="{$c->__('room.notify_always')}">
+                                <i class="material-icons">notifications_active</i>
+                            </span>
+                        {/if}
                     </p>
                 {else}
                     <p class="line active" onclick="RoomsUtils_ajaxShowSubject('{$jid|echapJS}')">

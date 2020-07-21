@@ -11,6 +11,13 @@ class Conference extends Model
     protected $fillable = ['conference', 'name', 'nick', 'autojoin'];
     protected $with = ['contact'];
 
+    public static $xmlns = 'xmpp:movim.eu/notifications:0';
+    public static $notifications = [
+        0 => 'never',
+        1 => 'quoted',
+        2 => 'always'
+    ];
+
     protected $attributes = [
         'session_id'    => SESSION_ID
     ];
@@ -71,6 +78,27 @@ class Conference extends Model
         return $this->hasOne('App\Contact', 'id', 'conference');
     }
 
+    public function set($item)
+    {
+        $this->conference      = (string)$item->attributes()->id;
+        $this->name            = (string)$item->conference->attributes()->name;
+        $this->nick            = (string)$item->conference->nick;
+        $this->autojoin        = filter_var($item->conference->attributes()->autojoin, FILTER_VALIDATE_BOOLEAN);
+        $this->bookmarkversion = (int)substr((string)$item->conference->attributes()->xmlns, -1, 1);
+
+        if ($item->conference->extensions) {
+            if ($item->conference->extensions && $item->conference->extensions->notifications
+            && $item->conference->extensions->notifications->attributes()->xmlns == self::$xmlns) {
+                $this->notify = (int)array_flip(self::$notifications)[
+                    (string)$item->conference->extensions->notifications->attributes()->notify
+                ];
+                unset($item->conference->extensions->notifications);
+            }
+
+            $this->extensions = $item->conference->extensions->asXML();
+        }
+    }
+
     public function getServerAttribute()
     {
         return \explodeJid($this->conference)['server'];
@@ -79,6 +107,11 @@ class Conference extends Model
     public function getConnectedAttribute()
     {
         return isset($this->presence);
+    }
+
+    public function getNotificationKeyAttribute()
+    {
+        return self::$notifications[$this->notify];
     }
 
     public function getSubjectAttribute()

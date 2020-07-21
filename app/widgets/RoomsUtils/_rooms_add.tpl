@@ -76,6 +76,22 @@
             <label>{$c->__('chatrooms.nickname')}</label>
         </div>
         <div>
+            <div class="select">
+                <select name="notify">
+                    <option value="never" {if="isset($conference) && $conference->notify == 0"}selected{/if}>
+                        {$c->__('room.notify_never')}
+                    </option>
+                    <option value="quoted" {if="isset($conference) && $conference->notify == 1"}selected{/if}>
+                        {$c->__('room.notify_quoted')}
+                    </option>
+                    <option value="always" {if="isset($conference) && $conference->notify == 2"}selected{/if}>
+                        {$c->__('room.notify_always')}
+                    </option>
+                </select>
+            </div>
+            <label>{$c->__('room.notify_title')}</label>
+        </div>
+        <div>
             <ul class="list thick fill">
                 <li class="wide">
                     <span class="control">

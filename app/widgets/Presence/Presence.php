@@ -154,6 +154,12 @@ class Presence extends Base
         $b = new \Moxl\Xec\Action\Bookmark2\Get;
         $b->setTo($this->user->id)
           ->request();
+
+        // Also get the old Bookmarks
+        $b = new \Moxl\Xec\Action\Bookmark2\Get;
+        $b->setTo($this->user->id)
+          ->setVersion('0')
+          ->request();
     }
 
     // We refresh our personnal feed

@@ -17,11 +17,7 @@ class Bookmark2 extends Payload
                            ->delete();
         } else {
             $conference = new Conference;
-
-            $conference->conference     = (string)$stanza->items->item->attributes()->id;
-            $conference->name           = (string)$stanza->items->item->conference->attributes()->name;
-            $conference->nick           = (string)$stanza->items->item->conference->nick;
-            $conference->autojoin       = filter_var($stanza->items->item->conference->attributes()->autojoin, FILTER_VALIDATE_BOOLEAN);
+            $conference->set($stanza->items->item);
 
             \App\User::me()->session->conferences()->where('conference', $conference->conference)->delete();
 

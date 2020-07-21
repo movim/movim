@@ -8,11 +8,12 @@ use Moxl\Stanza\Pubsub;
 class Delete extends Action
 {
     protected $_id;
+    protected $_version = '1';
 
     public function request()
     {
         $this->store();
-        Pubsub::postDelete(false, 'urn:xmpp:bookmarks:0', $this->_id);
+        Pubsub::postDelete(false, 'urn:xmpp:bookmarks:'.$this->_version, $this->_id);
     }
 
     public function handle($stanza, $parent = false)

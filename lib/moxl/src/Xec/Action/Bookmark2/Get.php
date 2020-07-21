@@ -9,11 +9,12 @@ use Moxl\Stanza\Bookmark2;
 class Get extends Action
 {
     protected $_to;
+    protected $_version = '1';
 
     public function request()
     {
         $this->store();
-        Bookmark2::get();
+        Bookmark2::get($this->_version);
     }
 
     public function handle($stanza, $parent = false)
@@ -22,12 +23,7 @@ class Get extends Action
 
         foreach ($stanza->pubsub->items->item as $c) {
             $conference = new Conference;
-
-            $conference->conference     = (string)$c->attributes()->id;
-            $conference->name           = (string)$c->conference->attributes()->name;
-            $conference->nick           = (string)$c->conference->nick;
-            $conference->autojoin       = filter_var($c->conference->attributes()->autojoin, FILTER_VALIDATE_BOOLEAN);
-
+            $conference->set($c);
             $conference->save();
         }
 

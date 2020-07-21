@@ -61,6 +61,11 @@
 
             <span title="{$conference->conference}">{$conference->name}</span>
             <span class="second">
+                {if="$conference->notify == 0"}
+                    <i class="material-icons" title="{$c->__('room.notify_never')}">notifications_off</i>
+                {elseif="$conference->notify == 2"}
+                    <i class="material-icons" title="{$c->__('room.notify_always')}">notifications_active</i>
+                {/if}
                 {if="isset($info) && $info->description"}
                     {$info->description}
                 {else}

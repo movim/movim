@@ -10,6 +10,7 @@ class Utils
             'urn:xmpp:microblog:0',
             'urn:xmpp:microblog:0+notify',
             'urn:xmpp:bookmarks:0+notify',
+            'urn:xmpp:bookmarks:1+notify',
             'urn:xmpp:pubsub:subscription',
             'urn:xmpp:pubsub:subscription+notify',
 

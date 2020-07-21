@@ -128,7 +128,8 @@ class Handler
             'fd60f5fdd5d2a06d1c4dd723032fb41a' => 'MAMResult', // mam:1
             '0e49eb65ba266051d2a2287660e22ab1' => 'MAMResult', // mam:2
 
-            '887777451221e69bc638f4659ecfeffb' => 'Bookmark2',
+            '887777451221e69bc638f4659ecfeffb' => 'Bookmark2', // bookmarks:0
+            'c539a0a12da7913eef6b8b5292e31e68' => 'Bookmark2', // bookmarks:1
 
             '1040105fc01bfac8a5ab81324875e382' => 'Presence',
             '362b908ec9432a506f86bed0bae7bbb6' => 'Presence',// TLS

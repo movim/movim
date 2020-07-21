@@ -199,18 +199,23 @@ class RoomsUtils extends Base
         } else {
             $this->rpc('Rooms_ajaxExit', $form->jid->value);
 
-            $this->user->session->conferences()
+            $conference = $this->user->session->conferences()
                  ->where('conference', strtolower($form->jid->value))
-                 ->delete();
+                 ->first();
 
-            $conference = new Conference;
+            if (!$conference) $conference = new Conference;
+
             $conference->conference = strtolower($form->jid->value);
             $conference->name = $form->name->value;
             $conference->autojoin = $form->autojoin->value;
             $conference->nick = $form->nick->value;
+            $conference->notify = (int)array_flip(Conference::$notifications)[$form->notify->value];
+
+            $conferenceSave = clone $conference;
+            $conference->delete();
 
             $b = new Set;
-            $b->setConference($conference)
+            $b->setConference($conferenceSave)
               ->request();
 
             $this->rpc('Dialog_ajaxClear');
@@ -241,8 +246,13 @@ class RoomsUtils extends Base
             return;
         }
 
+        $conference = $this->user->session->conferences()
+            ->where('conference', strtolower($room))
+            ->first();
+
         $d = new Delete;
         $d->setId($room)
+          ->setVersion($conference->bookmarkversion)
           ->request();
     }
 

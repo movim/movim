@@ -118,6 +118,12 @@ class Chat extends \Movim\Widget\Base
             $from = $message->jidfrom;
             $contact = App\Contact::firstOrNew(['id' => $from]);
 
+            $conference = $message->type == 'groupchat'
+                ? $this->user->session
+                    ->conferences()->where('conference', $from)
+                    ->first()
+                : null;
+
             if ($contact != null
             && !$message->encrypted
             && $message->type != 'groupchat'
@@ -137,12 +143,10 @@ class Chat extends \Movim\Widget\Base
             }
             // If it's a groupchat message
             elseif ($message->type == 'groupchat'
-                && $message->quoted
+                && $conference
+                && (($conference->notify == 1 && $message->quoted) // When quoted
+                  || $conference->notify == 2) // Always
                 && !$receipt) {
-                $conference = $this->user->session
-                                   ->conferences()->where('conference', $from)
-                                   ->first();
-
                 Notification::rpcCall('Notification.incomingMessage');
                 Notification::append(
                     'chat|'.$from,

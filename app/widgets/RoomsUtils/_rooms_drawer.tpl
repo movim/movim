@@ -75,6 +75,38 @@
                 </div>
             </li>
         {/if}
+
+        {if="$conference->notify == 0"}
+            <li>
+                <span class="primary icon gray">
+                    <i class="material-icons">notifications_off</i>
+                </span>
+                <div>
+                    <p class="line">{$c->__('room.notify_title')}</p>
+                    <p class="line">{$c->__('room.notify_never')}</p>
+                </div>
+            </li>
+        {elseif="$conference->notify == 2"}
+            <li>
+                <span class="primary icon gray">
+                    <i class="material-icons">notifications_active</i>
+                </span>
+                <div>
+                    <p class="line">{$c->__('room.notify_title')}</p>
+                    <p class="line">{$c->__('room.notify_always')}</p>
+                </div>
+            </li>
+        {else}
+            <li>
+                <span class="primary icon gray">
+                    <i class="material-icons">notifications</i>
+                </span>
+                <div>
+                    <p class="line">{$c->__('room.notify_title')}</p>
+                    <p class="line">{$c->__('room.notify_quoted')}</p>
+                </div>
+            </li>
+        {/if}
     </ul>
 
     {if="$conference->pictures()->count() > 0"}
