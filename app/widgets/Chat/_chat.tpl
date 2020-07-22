@@ -23,8 +23,10 @@
     <ul class="list thin fill">
         <li class="emojis"></li>
         <li>
-            <span class="primary icon gray primary_action" onclick="Stickers_ajaxShow('{$jid}')">
-                <i class="material-icons">face</i>
+            <span class="primary icon gray primary_action"
+                  title="{$c->__('sticker.title')}"
+                  onclick="Stickers_ajaxShow('{$jid}')">
+                <i class="material-icons flip-vert">note</i>
             </span>
             {if="$c->getUser()->hasUpload()"}
                 <span class="attach control icon" onclick="Chat.toggleAttach()">
