@@ -37,6 +37,7 @@ v0.18 (trunk)
  * New emoji picker (christine-ho-dev)
  * Add on-the-fly picture compression for the Picture proxy for larger pictures
  * Update XEP-0402 to urn:xmpp:bookmarks:1 and add xmpp:movim.eu/notifications:0 extension support
+ * Update meme and rage comic stickers pack
 
 v0.17.1
 ---------------------------
