@@ -10,7 +10,7 @@
             title="{$c->__('page.news')}"
         >
             <span class="primary icon">
-                <i class="material-icons">receipt</i>
+                <i class="material-icons">home</i>
                 <span data-key="news" class="counter"></span>
             </span>
         </li>

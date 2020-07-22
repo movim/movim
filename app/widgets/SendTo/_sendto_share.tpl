@@ -3,7 +3,7 @@
         <ul class="list card middle">
             <li class="subheader">
                 <div>
-                    <p>{$c->__('button.share')}</p>
+                    <p>{$c->__('button.send_to')}</p>
                 </div>
             </li>
             {autoescape="off"}

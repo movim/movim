@@ -181,7 +181,7 @@
                     {/if}
                     {if="!$public"}
                         <a
-                            title="{$c->__('button.share')}"
+                            title="{$c->__('button.send_to')}"
                             class="button narrow icon flat gray"
                             onclick="SendTo_ajaxSendSearch('{$post->getRef()}')"
                             href="#">

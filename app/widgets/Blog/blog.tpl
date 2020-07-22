@@ -46,7 +46,7 @@
             <div>
                 <p>
                     <a href="{$c->route('tag', array($tag))}">
-                        #{$tag}
+                        <i class="material-icons">tag</i>{$tag}
                     </a>
                 </p>
             </div>

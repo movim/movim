@@ -148,10 +148,10 @@
                     </button>
                 {/if}
                 <button class="button flat gray" onclick="Post.comment()">
-                    <i class="material-icons">comment</i> {$c->__('post.comment_add')}
+                    <i class="material-icons">add_comment</i> {$c->__('post.comment_add')}
                 </button>
                 <a class="button flat gray" onclick="SendTo_ajaxSendSearch('{$post->getRef()}')">
-                    <i class="material-icons">send</i> {$c->__('button.share')}
+                    <i class="material-icons">send</i> {$c->__('button.send_to')}
                 </a>
             </p>
         </div>

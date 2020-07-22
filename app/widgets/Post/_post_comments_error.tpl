@@ -13,11 +13,11 @@
             {if="$c->getUser()->hasPubsub()"}
                 {if="isset($post)"}
                     <button class="button icon flat gray" onclick="SendTo_ajaxSendSearch('{$post->getRef()}')">
-                        <i class="material-icons">send</i> {$c->__('button.share')}
+                        <i class="material-icons">send</i> {$c->__('button.send_to')}
                     </button>
                 {else}
                     <button class="button icon flat gray" onclick="Post.share()">
-                        <i class="material-icons">share</i> {$c->__('button.share')}
+                        <i class="material-icons">share</i> {$c->__('button.send_to')}
                     </button>
                 {/if}
             {/if}
