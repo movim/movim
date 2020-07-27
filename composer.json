@@ -27,13 +27,13 @@
 
         "respect/validation": "^1.1",
         "ezyang/htmlpurifier": "^4.12",
-        "symfony/console": "^4.3",
+        "symfony/console": "^5.0",
         "cocur/slugify": "^4.0",
         "dflydev/fig-cookies": "^2.0",
         "defuse/php-encryption": "^2.2.1",
 
         "robmorgan/phinx": "^0.11.4",
-        "illuminate/database": "^6.0",
+        "illuminate/database": "^7.0",
         "doctrine/dbal": "^2.10",
 
         "cboden/ratchet": "^0.4.3",
