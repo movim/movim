@@ -38,6 +38,7 @@ v0.18 (trunk)
  * Add on-the-fly picture compression for the Picture proxy for larger pictures
  * Update XEP-0402 to urn:xmpp:bookmarks:1 and add xmpp:movim.eu/notifications:0 extension support
  * Update meme and rage comic stickers pack
+ * Add a little indicator when saving draft in PublishBrief
 
 v0.17.1
 ---------------------------

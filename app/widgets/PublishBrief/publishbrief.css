@@ -1,9 +1,27 @@
 header#publishbrief form > div textarea {
     padding-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 #publishbrief div.extended {
     margin-bottom: 8rem;
+}
+
+#publishbrief span#saved {
+    position: absolute;
+    font-size: 1.5rem;
+    line-height: 1rem;
+    right: 0;
+}
+
+#publishbrief span#saved:not(.saved) {
+    display: none;
+}
+
+#publishbrief span#saved i {
+    width: 2rem;
+    line-height: 1rem;
+    font-size: 1.75rem;
 }
 
 #publishbrief img.preview {

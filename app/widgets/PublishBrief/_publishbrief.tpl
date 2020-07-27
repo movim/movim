@@ -41,7 +41,7 @@
                 <span class="control icon active gray"
                     title="{$c->__('publishbrief.post')}"
                     onclick="MovimUtils.reload('{$c->route('publish')}')">
-                    <i class="material-icons">add_circle</i>
+                    <i class="material-icons">open_in_full</i>
                 </span>
             {else}
 
@@ -66,6 +66,12 @@
                         data-autoheight="true"
                         placeholder="{$c->__('publishbrief.placeholder')}"
                         type="text">{if="$post"}{$post->title}{elseif="$draft && !empty($draft->title)"}{$draft->title}{elseif="$reply"}{$reply->title}{/if}</textarea>
+                    {if="!$extended"}
+                        <span id="saved" class="info">
+                            <i class="material-icons">saved</i>
+                            {$c->__('publishbrief.draft_saved')}
+                        </span>
+                    {/if}
                 </div>
                 <div {if="!$extended"}class="hide"{/if}>
                     <textarea
@@ -77,6 +83,12 @@
                         placeholder="{$c->__('publishbrief.content_text')}"
                         data-autoheight="true"
                         >{if="$post"}{$post->contentraw}{elseif="$draft && !empty($draft->content)"}{$draft->content}{/if}</textarea>
+                    {if="$extended"}
+                        <span id="saved" class="info">
+                            <i class="material-icons">saved</i>
+                            {$c->__('publishbrief.draft_saved')}
+                        </span>
+                    {/if}
                 </div>
                 <input
                     type="checkbox"

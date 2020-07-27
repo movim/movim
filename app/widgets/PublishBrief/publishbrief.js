@@ -43,7 +43,8 @@ var PublishBrief = {
         var embed = document.querySelector('input[name=embed]');
         embed.onchange();
 
-        document.querySelector('form[name=brief]').onkeyup = function() {
+        document.querySelector('form[name=brief]').onkeydown = function() {
+            PublishBrief.clearSavedDraft();
             if (PublishBrief.timeout) clearTimeout(PublishBrief.timeout);
             PublishBrief.timeout = setTimeout(function () {
                 PublishBrief.saveDraft();
@@ -56,7 +57,25 @@ var PublishBrief = {
         document.querySelector('input[name=embed]').onchange();
     },
     saveDraft: function() {
-        PublishBrief_ajaxHttpDaemonSaveDraft(MovimUtils.formToJson('brief'));
+        xhr = PublishBrief_ajaxHttpDaemonSaveDraft(MovimUtils.formToJson('brief'));
+
+        xhr.onreadystatechange = function() {
+            if (this.readyState == 4) {
+                if (this.status >= 200 && this.status < 400) {
+                    PublishBrief.savedDraft();
+                }
+
+                if (this.status >= 400 || this.status == 0) {
+                    PublishBrief.clearSavedDraft();
+                }
+            }
+        };
+    },
+    savedDraft() {
+        document.querySelector('#saved').classList.add('saved');
+    },
+    clearSavedDraft() {
+        document.querySelector('#saved').classList.remove('saved');
     },
     enableSend: function() {
         document.querySelector('#button_send').classList.remove('disabled');
