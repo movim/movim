@@ -110,7 +110,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-22 15:18+0200\n"
+"POT-Creation-Date: 2020-07-27 23:56+0200\n"
 "PO-Revision-Date: 2019-11-02 09:40+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Dutch (http://www.transifex.com/movim/movim/language/nl/)\n"
@@ -484,6 +484,15 @@ msgstr "Deze data is privé, log in om dit te zien."
 msgid "Message Published"
 msgstr "Bericht gepubliceerd"
 
+#: [message]react
+#, fuzzy
+msgid "Add a reaction"
+msgstr "Voeg een contact toe"
+
+#: [message]retract
+msgid "Retract"
+msgstr ""
+
 #: [message]error
 msgid "Your message could not be sent, please try again later"
 msgstr "Je bericht kon niet worden verzonden. probeer het a.u.b. later nog eens"
@@ -558,6 +567,8 @@ msgid "See the profile"
 msgstr "Bekijk profiel"
 
 #: [chat]clear
+#, fuzzy
+msgctxt "[chat]clear"
 msgid "Clear the history"
 msgstr "Verwijder geschiedenis"
 
@@ -584,6 +595,17 @@ msgstr ""
 #: [chat]mam_retrieval
 msgid "Synchronizing the history, please wait…"
 msgstr ""
+
+#: [chat]clear_history
+#, fuzzy
+msgctxt "[chat]clear_history"
+msgid "Clear the history"
+msgstr "Verwijder geschiedenis"
+
+#: [chat]clear_history_text
+#, fuzzy
+msgid "You are going to delete %s messages, are you sure?"
+msgstr "Weet je zeker dat je dit bericht wil verwijderen?"
 
 #: [chatroom]members
 msgid "Members"
@@ -631,6 +653,10 @@ msgstr "Chat met een contactpersoon"
 
 #: [chats]me
 msgid "Me"
+msgstr ""
+
+#: [chats]picture
+msgid "Picture"
 msgstr ""
 
 #: [button]chat
@@ -934,6 +960,20 @@ msgstr "nooit"
 msgid "Archiving preferences saved"
 msgstr ""
 
+#: [config]notification_title
+#, fuzzy
+msgid "Audio notifications"
+msgstr "Geen nieuwe meldingen"
+
+#: [config]notification_call
+msgid "Incoming call"
+msgstr ""
+
+#: [config]notification_chat
+#, fuzzy
+msgid "Incoming message"
+msgstr "Informatieve Melding"
+
 #: [confirm]title
 msgid "Confirmation of authentication"
 msgstr ""
@@ -1013,6 +1053,10 @@ msgstr "Andere Accounts"
 #: [general]tune
 msgid "Is Listening"
 msgstr "luistert"
+
+#: [general]pictures
+msgid "Pictures"
+msgstr ""
 
 #: [position]legend
 msgid "Geographic Position"
@@ -1318,7 +1362,7 @@ msgstr "Uitstaande uitnodigingen"
 msgid "%s wants to talk with you"
 msgstr "%s wil met je praten"
 
-#: [notifs]title [onboarding]notifications_title
+#: [notifs]title [onboarding]notifications_title [room]notify_title
 msgid "Notifications"
 msgstr "Meldingen"
 
@@ -1575,6 +1619,16 @@ msgstr ""
 msgid "No content to preview"
 msgstr "Geen voorbeeld beschikbaar"
 
+#: [publishbrief]title
+#, fuzzy
+msgid "Post title"
+msgstr "bericht verwijderd"
+
+#: [publishbrief]content
+#, fuzzy
+msgid "Markdown content"
+msgstr "Geen inhoud"
+
 #: [publishbrief]valid_url
 msgid "Please enter a valid URL"
 msgstr "Voer een geldig url in alstublieft"
@@ -1582,6 +1636,15 @@ msgstr "Voer een geldig url in alstublieft"
 #: [publishbrief]content_text
 msgid "You can format your content using Markdown"
 msgstr "je kunt je inhoud opmaken met Markdown"
+
+#: [publishbrief]draft_saved
+#, fuzzy
+msgid "Draft saved"
+msgstr "Instellingen opgeslagen"
+
+#: [publishbrief]rich_editor
+msgid "Rich text editor"
+msgstr ""
 
 #: [publishhelp]title [page]help
 msgid "Help"
@@ -1782,6 +1845,19 @@ msgstr ""
 msgid "The participants of this chatroom can see each other's profile"
 msgstr ""
 
+#: [room]notify_never
+msgid "Never notify"
+msgstr ""
+
+#: [room]notify_quoted
+msgid "Notify when quoted"
+msgstr ""
+
+#: [room]notify_always
+#, fuzzy
+msgid "Always notify"
+msgstr "altijd"
+
 #: [roomsexplore]no_local
 msgid "No chatrooms found localy"
 msgstr ""
@@ -1855,6 +1931,10 @@ msgstr ""
 #: [statistics]title
 msgid "Statistics"
 msgstr "Statistieken"
+
+#: [sticker]title
+msgid "Stickers"
+msgstr ""
 
 #: [sticker]sent
 msgid "A sticker has been sent using Movim"
@@ -1990,6 +2070,14 @@ msgstr "Contact de server beheerder om te zien of de mogelijkheid kan worden ing
 
 #: [visio]calling
 msgid "…is calling you"
+msgstr ""
+
+#: [visio]video_call
+msgid "Incoming video call"
+msgstr ""
+
+#: [visio]audio_call
+msgid "Incoming audio call"
 msgstr ""
 
 #: [visio]ringing
@@ -2154,6 +2242,14 @@ msgstr "Oeps!"
 msgid "Call"
 msgstr "Bellen"
 
+#: [button]audio_call
+msgid "Audio Call"
+msgstr ""
+
+#: [button]video_call
+msgid "Video Call"
+msgstr ""
+
 #: [button]validate
 msgid "Validate"
 msgstr "Bevestig"
@@ -2273,6 +2369,10 @@ msgstr "Inschakelen"
 
 #: [button]sign_up
 msgid "Sign Up"
+msgstr ""
+
+#: [button]send_to
+msgid "Send to"
 msgstr ""
 
 #: [day]title

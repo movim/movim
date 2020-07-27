@@ -23,6 +23,7 @@
                             {$c->__('publishbrief.new')}
                         {/if}
                     </p>
+                    <p>{$c->__('publishbrief.rich_editor')}</p>
                 </div>
             </li>
         </ul>
@@ -66,7 +67,9 @@
                         data-autoheight="true"
                         placeholder="{$c->__('publishbrief.placeholder')}"
                         type="text">{if="$post"}{$post->title}{elseif="$draft && !empty($draft->title)"}{$draft->title}{elseif="$reply"}{$reply->title}{/if}</textarea>
-                    {if="!$extended"}
+                    {if="$extended"}
+                        <label for="desc">{$c->__('publishbrief.title')}</label>
+                    {else}
                         <span id="saved" class="info">
                             <i class="material-icons">saved</i>
                             {$c->__('publishbrief.draft_saved')}
@@ -84,6 +87,7 @@
                         data-autoheight="true"
                         >{if="$post"}{$post->contentraw}{elseif="$draft && !empty($draft->content)"}{$draft->content}{/if}</textarea>
                     {if="$extended"}
+                        <label for="desc">{$c->__('publishbrief.content')}</label>
                         <span id="saved" class="info">
                             <i class="material-icons">saved</i>
                             {$c->__('publishbrief.draft_saved')}

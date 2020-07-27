@@ -1,4 +1,4 @@
-header#publishbrief form > div textarea {
+header#publishbrief div:not(.extended) form > div textarea {
     padding-top: 1rem;
     margin-bottom: 1rem;
 }
@@ -28,8 +28,8 @@ header#publishbrief form > div textarea {
     border-radius: 0.5rem;
 }
 
-#publishbrief textarea:focus,
-#publishbrief textarea:valid {
+#publishbrief div:not(.extended) textarea:focus,
+#publishbrief div:not(.extended) textarea:valid {
     min-height: 8rem;
 }
 

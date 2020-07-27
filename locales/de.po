@@ -117,7 +117,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-22 15:18+0200\n"
+"POT-Creation-Date: 2020-07-27 23:56+0200\n"
 "PO-Revision-Date: 2020-03-22 14:19+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: German (http://www.transifex.com/movim/movim/language/de/)\n"
@@ -490,6 +490,15 @@ msgstr "Dieser Inhalt ist privat, bitte melde dich an, um ihn zu sehen"
 msgid "Message Published"
 msgstr "Nachricht veröffentlicht"
 
+#: [message]react
+#, fuzzy
+msgid "Add a reaction"
+msgstr "Kontakt hinzufügen"
+
+#: [message]retract
+msgid "Retract"
+msgstr ""
+
 #: [message]error
 msgid "Your message could not be sent, please try again later"
 msgstr "Die Nachricht konnte nicht gesendet werden. Bitte später noch einmal versuchen"
@@ -563,6 +572,8 @@ msgid "See the profile"
 msgstr "Profil ansehen"
 
 #: [chat]clear
+#, fuzzy
+msgctxt "[chat]clear"
 msgid "Clear the history"
 msgstr "Historie löschen"
 
@@ -589,6 +600,17 @@ msgstr "Beim Senden der Nachricht ist ein Fehler aufgetreten"
 #: [chat]mam_retrieval
 msgid "Synchronizing the history, please wait…"
 msgstr "Synchronisiere die History, bitte warten…"
+
+#: [chat]clear_history
+#, fuzzy
+msgctxt "[chat]clear_history"
+msgid "Clear the history"
+msgstr "Historie löschen"
+
+#: [chat]clear_history_text
+#, fuzzy
+msgid "You are going to delete %s messages, are you sure?"
+msgstr "Sie sind dabei Ihren Beitrag zu löschen. Möchten Sie fortfahren?"
 
 #: [chatroom]members
 msgid "Members"
@@ -637,6 +659,10 @@ msgstr "Mit einem Kontakt chatten"
 #: [chats]me
 msgid "Me"
 msgstr "Ich"
+
+#: [chats]picture
+msgid "Picture"
+msgstr ""
 
 #: [button]chat
 msgid "Chat"
@@ -939,6 +965,21 @@ msgstr "Nie"
 msgid "Archiving preferences saved"
 msgstr "Archivierungseinstellungen gespeichert"
 
+#: [config]notification_title
+#, fuzzy
+msgid "Audio notifications"
+msgstr "Keine neuen Benachrichtigungen"
+
+#: [config]notification_call
+#, fuzzy
+msgid "Incoming call"
+msgstr "im Gespräch"
+
+#: [config]notification_chat
+#, fuzzy
+msgid "Incoming message"
+msgstr "Informationsnachricht"
+
 #: [confirm]title
 msgid "Confirmation of authentication"
 msgstr "Bestätigung der Authentifikation"
@@ -1018,6 +1059,10 @@ msgstr "Weitere Konten"
 #: [general]tune
 msgid "Is Listening"
 msgstr "hört zu"
+
+#: [general]pictures
+msgid "Pictures"
+msgstr ""
 
 #: [position]legend
 msgid "Geographic Position"
@@ -1323,7 +1368,7 @@ msgstr "Neue Einladungen"
 msgid "%s wants to talk with you"
 msgstr "%s möchte mit Ihnen sprechen"
 
-#: [notifs]title [onboarding]notifications_title
+#: [notifs]title [onboarding]notifications_title [room]notify_title
 msgid "Notifications"
 msgstr "Benachrichtigungen"
 
@@ -1579,6 +1624,16 @@ msgstr "Sie können hier keinen Beitrag veröffentlichen"
 msgid "No content to preview"
 msgstr "Kein Inhalt zur Vorschau"
 
+#: [publishbrief]title
+#, fuzzy
+msgid "Post title"
+msgstr "Beitrag gelöscht"
+
+#: [publishbrief]content
+#, fuzzy
+msgid "Markdown content"
+msgstr "Ohne Inhalt"
+
 #: [publishbrief]valid_url
 msgid "Please enter a valid URL"
 msgstr "Bitte eine gültige URL eingeben"
@@ -1586,6 +1641,15 @@ msgstr "Bitte eine gültige URL eingeben"
 #: [publishbrief]content_text
 msgid "You can format your content using Markdown"
 msgstr "Sie können ihren Text mithilfe der Markdown-Sprache formatieren"
+
+#: [publishbrief]draft_saved
+#, fuzzy
+msgid "Draft saved"
+msgstr "Einstellungen gespeichert"
+
+#: [publishbrief]rich_editor
+msgid "Rich text editor"
+msgstr ""
 
 #: [publishhelp]title [page]help
 msgid "Help"
@@ -1783,6 +1847,19 @@ msgstr "Öffentliche Profile"
 msgid "The participants of this chatroom can see each other's profile"
 msgstr "Die Mitglieder dieses Raums können die Profile der anderen sehen"
 
+#: [room]notify_never
+msgid "Never notify"
+msgstr ""
+
+#: [room]notify_quoted
+msgid "Notify when quoted"
+msgstr ""
+
+#: [room]notify_always
+#, fuzzy
+msgid "Always notify"
+msgstr "Immer"
+
 #: [roomsexplore]no_local
 msgid "No chatrooms found localy"
 msgstr "Keine lokalen Chaträume gefunden"
@@ -1854,6 +1931,10 @@ msgstr "Mehr Kontakte"
 #: [statistics]title
 msgid "Statistics"
 msgstr "Statistiken"
+
+#: [sticker]title
+msgid "Stickers"
+msgstr ""
 
 #: [sticker]sent
 msgid "A sticker has been sent using Movim"
@@ -1990,6 +2071,14 @@ msgstr "Bitte kontaktieren Sie den Administrators Ihres Servers, um dieses Featu
 #: [visio]calling
 msgid "…is calling you"
 msgstr "…ruft Sie an"
+
+#: [visio]video_call
+msgid "Incoming video call"
+msgstr ""
+
+#: [visio]audio_call
+msgid "Incoming audio call"
+msgstr ""
 
 #: [visio]ringing
 msgid "…ringing"
@@ -2152,6 +2241,14 @@ msgstr "Huch!"
 msgid "Call"
 msgstr "Anruf"
 
+#: [button]audio_call
+msgid "Audio Call"
+msgstr ""
+
+#: [button]video_call
+msgid "Video Call"
+msgstr ""
+
 #: [button]validate
 msgid "Validate"
 msgstr "Bestätigen"
@@ -2272,6 +2369,10 @@ msgstr "Aktivieren"
 #: [button]sign_up
 msgid "Sign Up"
 msgstr "Registrieren"
+
+#: [button]send_to
+msgid "Send to"
+msgstr ""
 
 #: [day]title
 msgid "Day"

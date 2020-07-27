@@ -100,7 +100,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-22 15:18+0200\n"
+"POT-Creation-Date: 2020-07-27 23:56+0200\n"
 "PO-Revision-Date: 2019-11-02 09:40+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: English (http://www.transifex.com/movim/movim/language/en/)\n"
@@ -474,6 +474,15 @@ msgstr "This content is private, please login to see it"
 msgid "Message Published"
 msgstr "Message Published"
 
+#: [message]react
+#, fuzzy
+msgid "Add a reaction"
+msgstr "Add a contact"
+
+#: [message]retract
+msgid "Retract"
+msgstr ""
+
 #: [message]error
 msgid "Your message could not be sent, please try again later"
 msgstr "Your message could not be sent, please try again later"
@@ -548,6 +557,8 @@ msgid "See the profile"
 msgstr "See the profile"
 
 #: [chat]clear
+#, fuzzy
+msgctxt "[chat]clear"
 msgid "Clear the history"
 msgstr "Clear the history"
 
@@ -574,6 +585,17 @@ msgstr "An error occured when sending the message"
 #: [chat]mam_retrieval
 msgid "Synchronizing the history, please wait…"
 msgstr ""
+
+#: [chat]clear_history
+#, fuzzy
+msgctxt "[chat]clear_history"
+msgid "Clear the history"
+msgstr "Clear the history"
+
+#: [chat]clear_history_text
+#, fuzzy
+msgid "You are going to delete %s messages, are you sure?"
+msgstr "You are going to delete this post, please confirm your action"
 
 #: [chatroom]members
 msgid "Members"
@@ -622,6 +644,10 @@ msgstr "Chat with a contact"
 #: [chats]me
 msgid "Me"
 msgstr "Me"
+
+#: [chats]picture
+msgid "Picture"
+msgstr ""
 
 #: [button]chat
 msgid "Chat"
@@ -926,6 +952,21 @@ msgstr "Never"
 msgid "Archiving preferences saved"
 msgstr "Archiving preferences saved"
 
+#: [config]notification_title
+#, fuzzy
+msgid "Audio notifications"
+msgstr "No new notifications"
+
+#: [config]notification_call
+#, fuzzy
+msgid "Incoming call"
+msgstr "in call"
+
+#: [config]notification_chat
+#, fuzzy
+msgid "Incoming message"
+msgstr "Information Message"
+
 #: [confirm]title
 msgid "Confirmation of authentication"
 msgstr "Confirmation of authentication"
@@ -1005,6 +1046,10 @@ msgstr "Other Accounts"
 #: [general]tune
 msgid "Is Listening"
 msgstr "Is Listening"
+
+#: [general]pictures
+msgid "Pictures"
+msgstr ""
 
 #: [position]legend
 msgid "Geographic Position"
@@ -1310,7 +1355,7 @@ msgstr "Pending Invitations"
 msgid "%s wants to talk with you"
 msgstr "%s wants to talk with you"
 
-#: [notifs]title [onboarding]notifications_title
+#: [notifs]title [onboarding]notifications_title [room]notify_title
 msgid "Notifications"
 msgstr "Notifications"
 
@@ -1567,6 +1612,16 @@ msgstr "You cannot publish a post here"
 msgid "No content to preview"
 msgstr "No content to preview"
 
+#: [publishbrief]title
+#, fuzzy
+msgid "Post title"
+msgstr "Post deleted"
+
+#: [publishbrief]content
+#, fuzzy
+msgid "Markdown content"
+msgstr "No content"
+
 #: [publishbrief]valid_url
 msgid "Please enter a valid URL"
 msgstr "Please enter a valid URL"
@@ -1574,6 +1629,15 @@ msgstr "Please enter a valid URL"
 #: [publishbrief]content_text
 msgid "You can format your content using Markdown"
 msgstr "You can format your content using Markdown"
+
+#: [publishbrief]draft_saved
+#, fuzzy
+msgid "Draft saved"
+msgstr "Configuration saved"
+
+#: [publishbrief]rich_editor
+msgid "Rich text editor"
+msgstr ""
 
 #: [publishhelp]title [page]help
 msgid "Help"
@@ -1775,6 +1839,19 @@ msgstr "Public profiles"
 msgid "The participants of this chatroom can see each other's profile"
 msgstr "The participants of this chatroom can see each other's profile"
 
+#: [room]notify_never
+msgid "Never notify"
+msgstr ""
+
+#: [room]notify_quoted
+msgid "Notify when quoted"
+msgstr ""
+
+#: [room]notify_always
+#, fuzzy
+msgid "Always notify"
+msgstr "Always"
+
 #: [roomsexplore]no_local
 msgid "No chatrooms found localy"
 msgstr ""
@@ -1848,6 +1925,10 @@ msgstr "More contacts"
 #: [statistics]title
 msgid "Statistics"
 msgstr "Statistics"
+
+#: [sticker]title
+msgid "Stickers"
+msgstr ""
 
 #: [sticker]sent
 msgid "A sticker has been sent using Movim"
@@ -1984,6 +2065,14 @@ msgstr "Please contact your server administrator to see if this feature can be e
 #: [visio]calling
 msgid "…is calling you"
 msgstr "…is calling you"
+
+#: [visio]video_call
+msgid "Incoming video call"
+msgstr ""
+
+#: [visio]audio_call
+msgid "Incoming audio call"
+msgstr ""
 
 #: [visio]ringing
 msgid "…ringing"
@@ -2147,6 +2236,14 @@ msgstr "Oops!"
 msgid "Call"
 msgstr "Call"
 
+#: [button]audio_call
+msgid "Audio Call"
+msgstr ""
+
+#: [button]video_call
+msgid "Video Call"
+msgstr ""
+
 #: [button]validate
 msgid "Validate"
 msgstr "Validate"
@@ -2267,6 +2364,10 @@ msgstr "Enable"
 #: [button]sign_up
 msgid "Sign Up"
 msgstr "Sign Up"
+
+#: [button]send_to
+msgid "Send to"
+msgstr ""
 
 #: [day]title
 msgid "Day"

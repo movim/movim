@@ -109,7 +109,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-22 15:18+0200\n"
+"POT-Creation-Date: 2020-07-27 23:56+0200\n"
 "PO-Revision-Date: 2019-11-02 09:40+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -483,6 +483,15 @@ msgstr "私密内容，请登录后查看"
 msgid "Message Published"
 msgstr "消息已发布"
 
+#: [message]react
+#, fuzzy
+msgid "Add a reaction"
+msgstr "添加联系人"
+
+#: [message]retract
+msgid "Retract"
+msgstr ""
+
 #: [message]error
 msgid "Your message could not be sent, please try again later"
 msgstr "无法发送消息，请稍后再试"
@@ -557,6 +566,8 @@ msgid "See the profile"
 msgstr "查看个人资料"
 
 #: [chat]clear
+#, fuzzy
+msgctxt "[chat]clear"
 msgid "Clear the history"
 msgstr "清除历史"
 
@@ -583,6 +594,17 @@ msgstr ""
 #: [chat]mam_retrieval
 msgid "Synchronizing the history, please wait…"
 msgstr ""
+
+#: [chat]clear_history
+#, fuzzy
+msgctxt "[chat]clear_history"
+msgid "Clear the history"
+msgstr "清除历史"
+
+#: [chat]clear_history_text
+#, fuzzy
+msgid "You are going to delete %s messages, are you sure?"
+msgstr "您将移除以下的帖子，请确认"
 
 #: [chatroom]members
 msgid "Members"
@@ -630,6 +652,10 @@ msgstr "同联系人聊天"
 
 #: [chats]me
 msgid "Me"
+msgstr ""
+
+#: [chats]picture
+msgid "Picture"
 msgstr ""
 
 #: [button]chat
@@ -933,6 +959,21 @@ msgstr "从不"
 msgid "Archiving preferences saved"
 msgstr "已保存归档选项"
 
+#: [config]notification_title
+#, fuzzy
+msgid "Audio notifications"
+msgstr "没有新的提醒"
+
+#: [config]notification_call
+#, fuzzy
+msgid "Incoming call"
+msgstr "通话中"
+
+#: [config]notification_chat
+#, fuzzy
+msgid "Incoming message"
+msgstr "通知消息"
+
 #: [confirm]title
 msgid "Confirmation of authentication"
 msgstr "验证确认"
@@ -1012,6 +1053,10 @@ msgstr "其它帐号"
 #: [general]tune
 msgid "Is Listening"
 msgstr "是在听"
+
+#: [general]pictures
+msgid "Pictures"
+msgstr ""
 
 #: [position]legend
 msgid "Geographic Position"
@@ -1317,7 +1362,7 @@ msgstr "待处理的邀请"
 msgid "%s wants to talk with you"
 msgstr "%s 想同您聊天"
 
-#: [notifs]title [onboarding]notifications_title
+#: [notifs]title [onboarding]notifications_title [room]notify_title
 msgid "Notifications"
 msgstr "提醒"
 
@@ -1574,6 +1619,16 @@ msgstr "你不能在这里发帖"
 msgid "No content to preview"
 msgstr "无内容可预览"
 
+#: [publishbrief]title
+#, fuzzy
+msgid "Post title"
+msgstr "帖子已删除"
+
+#: [publishbrief]content
+#, fuzzy
+msgid "Markdown content"
+msgstr "没有内容"
+
 #: [publishbrief]valid_url
 msgid "Please enter a valid URL"
 msgstr "请输入一个有效的URL"
@@ -1581,6 +1636,15 @@ msgstr "请输入一个有效的URL"
 #: [publishbrief]content_text
 msgid "You can format your content using Markdown"
 msgstr "你可以使用 Markdown 来格式化内容"
+
+#: [publishbrief]draft_saved
+#, fuzzy
+msgid "Draft saved"
+msgstr "配置已保存"
+
+#: [publishbrief]rich_editor
+msgid "Rich text editor"
+msgstr ""
 
 #: [publishhelp]title [page]help
 msgid "Help"
@@ -1781,6 +1845,19 @@ msgstr ""
 msgid "The participants of this chatroom can see each other's profile"
 msgstr ""
 
+#: [room]notify_never
+msgid "Never notify"
+msgstr ""
+
+#: [room]notify_quoted
+msgid "Notify when quoted"
+msgstr ""
+
+#: [room]notify_always
+#, fuzzy
+msgid "Always notify"
+msgstr "总是"
+
 #: [roomsexplore]no_local
 msgid "No chatrooms found localy"
 msgstr ""
@@ -1854,6 +1931,10 @@ msgstr ""
 #: [statistics]title
 msgid "Statistics"
 msgstr "统计"
+
+#: [sticker]title
+msgid "Stickers"
+msgstr ""
 
 #: [sticker]sent
 msgid "A sticker has been sent using Movim"
@@ -1990,6 +2071,14 @@ msgstr "请尝试联系你的服务器管理员看看能否开启这些特性"
 #: [visio]calling
 msgid "…is calling you"
 msgstr "在呼叫你"
+
+#: [visio]video_call
+msgid "Incoming video call"
+msgstr ""
+
+#: [visio]audio_call
+msgid "Incoming audio call"
+msgstr ""
 
 #: [visio]ringing
 msgid "…ringing"
@@ -2153,6 +2242,14 @@ msgstr "糟糕！"
 msgid "Call"
 msgstr "拨打"
 
+#: [button]audio_call
+msgid "Audio Call"
+msgstr ""
+
+#: [button]video_call
+msgid "Video Call"
+msgstr ""
+
 #: [button]validate
 msgid "Validate"
 msgstr "验证"
@@ -2273,6 +2370,10 @@ msgstr "开启"
 #: [button]sign_up
 msgid "Sign Up"
 msgstr "注册"
+
+#: [button]send_to
+msgid "Send to"
+msgstr ""
 
 #: [day]title
 msgid "Day"

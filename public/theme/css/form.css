@@ -22,7 +22,7 @@ li > form > div:not(.control) { /* If we put the form in a list */
 
 form > div > label {
     position: absolute;
-    top: 2rem;
+    top: 1.5rem;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
@@ -76,7 +76,7 @@ form > div > .select select {
     width: 100%;
     background-color: transparent;
     background-image: none;
-    padding: 0.5rem 0;
+    padding: 0.25rem 0;
     padding-bottom: 0.75rem;
 }
 
@@ -126,7 +126,7 @@ form > div > input:not([type=submit]),
 form > div > textarea {
     display: block;
     padding: 1rem 0;
-    padding-top: 4.5rem;
+    padding-top: 4rem;
     width: 100%;
     background-color: transparent;
     margin-bottom: 1rem;

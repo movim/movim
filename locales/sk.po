@@ -104,7 +104,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-22 15:18+0200\n"
+"POT-Creation-Date: 2020-07-27 23:56+0200\n"
 "PO-Revision-Date: 2020-04-05 08:41+0000\n"
 "Last-Translator: Slavko <linux@slavino.sk>\n"
 "Language-Team: Slovak (Slovakia) (http://www.transifex.com/movim/movim/language/sk_SK/)\n"
@@ -477,6 +477,15 @@ msgstr "Tento obsah je súkromný, prosím prihláste sa na jeho zobrazenie"
 msgid "Message Published"
 msgstr "Správa uverejnená"
 
+#: [message]react
+#, fuzzy
+msgid "Add a reaction"
+msgstr "Pridať kontakt"
+
+#: [message]retract
+msgid "Retract"
+msgstr ""
+
 #: [message]error
 msgid "Your message could not be sent, please try again later"
 msgstr "Vašu správu nemožno odoslať, prosím, skúste neskôr"
@@ -550,6 +559,8 @@ msgid "See the profile"
 msgstr "Pozrieť profil"
 
 #: [chat]clear
+#, fuzzy
+msgctxt "[chat]clear"
 msgid "Clear the history"
 msgstr "Vymazať históriu"
 
@@ -576,6 +587,17 @@ msgstr "Nastala chyba pri odosielaní správy"
 #: [chat]mam_retrieval
 msgid "Synchronizing the history, please wait…"
 msgstr "Synchronizácia histórie, prosím počkajte…"
+
+#: [chat]clear_history
+#, fuzzy
+msgctxt "[chat]clear_history"
+msgid "Clear the history"
+msgstr "Vymazať históriu"
+
+#: [chat]clear_history_text
+#, fuzzy
+msgid "You are going to delete %s messages, are you sure?"
+msgstr "Odstraňujete tento príspevok, prosím potvrďte svoju akciu"
 
 #: [chatroom]members
 msgid "Members"
@@ -624,6 +646,10 @@ msgstr "Chatovať s kontaktom"
 #: [chats]me
 msgid "Me"
 msgstr "Ja"
+
+#: [chats]picture
+msgid "Picture"
+msgstr ""
 
 #: [button]chat
 msgid "Chat"
@@ -926,6 +952,21 @@ msgstr "Nikdy"
 msgid "Archiving preferences saved"
 msgstr "Nastavenia archivovania uložené"
 
+#: [config]notification_title
+#, fuzzy
+msgid "Audio notifications"
+msgstr "Žiadne nové upozornenia"
+
+#: [config]notification_call
+#, fuzzy
+msgid "Incoming call"
+msgstr "hovorí"
+
+#: [config]notification_chat
+#, fuzzy
+msgid "Incoming message"
+msgstr "Informácia"
+
 #: [confirm]title
 msgid "Confirmation of authentication"
 msgstr "Potvrdenie autentifikcáie"
@@ -1004,6 +1045,10 @@ msgstr "Ostatné účty"
 
 #: [general]tune
 msgid "Is Listening"
+msgstr ""
+
+#: [general]pictures
+msgid "Pictures"
 msgstr ""
 
 #: [position]legend
@@ -1310,7 +1355,7 @@ msgstr "Čakajúce pozvánky"
 msgid "%s wants to talk with you"
 msgstr "%s chce s Vami rozprávať"
 
-#: [notifs]title [onboarding]notifications_title
+#: [notifs]title [onboarding]notifications_title [room]notify_title
 msgid "Notifications"
 msgstr "Upozornenia"
 
@@ -1566,6 +1611,16 @@ msgstr "Nemôžete tu uverejniť príspevok"
 msgid "No content to preview"
 msgstr "Žiadny obsah na ukážku"
 
+#: [publishbrief]title
+#, fuzzy
+msgid "Post title"
+msgstr "Príspevok odstránený"
+
+#: [publishbrief]content
+#, fuzzy
+msgid "Markdown content"
+msgstr "Žiadny obsah"
+
 #: [publishbrief]valid_url
 msgid "Please enter a valid URL"
 msgstr "Prosí, zadajte platnú URL"
@@ -1573,6 +1628,15 @@ msgstr "Prosí, zadajte platnú URL"
 #: [publishbrief]content_text
 msgid "You can format your content using Markdown"
 msgstr "Svoj obsah môžete formátovať pomocou Markdown"
+
+#: [publishbrief]draft_saved
+#, fuzzy
+msgid "Draft saved"
+msgstr "Konfigurácia uložená"
+
+#: [publishbrief]rich_editor
+msgid "Rich text editor"
+msgstr ""
 
 #: [publishhelp]title [page]help
 msgid "Help"
@@ -1770,6 +1834,19 @@ msgstr "Verejné profily"
 msgid "The participants of this chatroom can see each other's profile"
 msgstr "Členovia tejto miestnosti môžu vidieť profil všetkých ostatných"
 
+#: [room]notify_never
+msgid "Never notify"
+msgstr ""
+
+#: [room]notify_quoted
+msgid "Notify when quoted"
+msgstr ""
+
+#: [room]notify_always
+#, fuzzy
+msgid "Always notify"
+msgstr "Vždy"
+
 #: [roomsexplore]no_local
 msgid "No chatrooms found localy"
 msgstr "Nenájdené žiadne lokálne miestnosti"
@@ -1841,6 +1918,10 @@ msgstr "Ďalšie kontakty"
 #: [statistics]title
 msgid "Statistics"
 msgstr "Štatistiky"
+
+#: [sticker]title
+msgid "Stickers"
+msgstr ""
 
 #: [sticker]sent
 msgid "A sticker has been sent using Movim"
@@ -1977,6 +2058,14 @@ msgstr "Prosím, kontaktujte správcu servera, aby ste zistili či môže byť t
 #: [visio]calling
 msgid "…is calling you"
 msgstr "…Vám volá"
+
+#: [visio]video_call
+msgid "Incoming video call"
+msgstr ""
+
+#: [visio]audio_call
+msgid "Incoming audio call"
+msgstr ""
 
 #: [visio]ringing
 msgid "…ringing"
@@ -2139,6 +2228,14 @@ msgstr ""
 msgid "Call"
 msgstr "Volať"
 
+#: [button]audio_call
+msgid "Audio Call"
+msgstr ""
+
+#: [button]video_call
+msgid "Video Call"
+msgstr ""
+
 #: [button]validate
 msgid "Validate"
 msgstr "Overiť"
@@ -2259,6 +2356,10 @@ msgstr "Zapnúť"
 #: [button]sign_up
 msgid "Sign Up"
 msgstr "Registrovať"
+
+#: [button]send_to
+msgid "Send to"
+msgstr ""
 
 #: [day]title
 msgid "Day"

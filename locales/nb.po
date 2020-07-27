@@ -105,7 +105,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-22 15:18+0200\n"
+"POT-Creation-Date: 2020-07-27 23:56+0200\n"
 "PO-Revision-Date: 2019-11-02 09:40+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://www.transifex.com/movim/movim/language/nb_NO/)\n"
@@ -479,6 +479,15 @@ msgstr "Dette innholdet er privat, logg på for å se det"
 msgid "Message Published"
 msgstr "Melding publisert"
 
+#: [message]react
+#, fuzzy
+msgid "Add a reaction"
+msgstr "Legg til kontakt"
+
+#: [message]retract
+msgid "Retract"
+msgstr ""
+
 #: [message]error
 msgid "Your message could not be sent, please try again later"
 msgstr "Meldingen din kunne ikke sendes, trenge på nytt senere."
@@ -553,6 +562,8 @@ msgid "See the profile"
 msgstr "Se profilen"
 
 #: [chat]clear
+#, fuzzy
+msgctxt "[chat]clear"
 msgid "Clear the history"
 msgstr "Nullstill historien"
 
@@ -579,6 +590,17 @@ msgstr ""
 #: [chat]mam_retrieval
 msgid "Synchronizing the history, please wait…"
 msgstr ""
+
+#: [chat]clear_history
+#, fuzzy
+msgctxt "[chat]clear_history"
+msgid "Clear the history"
+msgstr "Nullstill historien"
+
+#: [chat]clear_history_text
+#, fuzzy
+msgid "You are going to delete %s messages, are you sure?"
+msgstr "Du er i ferd med å slette innlegget, bekreft handlingen"
 
 #: [chatroom]members
 msgid "Members"
@@ -626,6 +648,10 @@ msgstr "Prat med en kontakt"
 
 #: [chats]me
 msgid "Me"
+msgstr ""
+
+#: [chats]picture
+msgid "Picture"
 msgstr ""
 
 #: [button]chat
@@ -931,6 +957,21 @@ msgstr "Aldri"
 msgid "Archiving preferences saved"
 msgstr "Arkivinstillinger lagret"
 
+#: [config]notification_title
+#, fuzzy
+msgid "Audio notifications"
+msgstr "Ingen nye varsler"
+
+#: [config]notification_call
+#, fuzzy
+msgid "Incoming call"
+msgstr "i en samtale"
+
+#: [config]notification_chat
+#, fuzzy
+msgid "Incoming message"
+msgstr "Informasjonsmelding"
+
 #: [confirm]title
 msgid "Confirmation of authentication"
 msgstr "Bekreftelse av autentisering"
@@ -1010,6 +1051,10 @@ msgstr "Andre kontoer"
 #: [general]tune
 msgid "Is Listening"
 msgstr "Lytter"
+
+#: [general]pictures
+msgid "Pictures"
+msgstr ""
 
 #: [position]legend
 msgid "Geographic Position"
@@ -1315,7 +1360,7 @@ msgstr "Ventende invitasjoner"
 msgid "%s wants to talk with you"
 msgstr "%s ønsker å prate med deg"
 
-#: [notifs]title [onboarding]notifications_title
+#: [notifs]title [onboarding]notifications_title [room]notify_title
 msgid "Notifications"
 msgstr "Varsel"
 
@@ -1572,6 +1617,16 @@ msgstr "Du kan ikke publisere et innlegg her"
 msgid "No content to preview"
 msgstr "Ingen innhold å forhåndsvise"
 
+#: [publishbrief]title
+#, fuzzy
+msgid "Post title"
+msgstr "Innlegg slettet"
+
+#: [publishbrief]content
+#, fuzzy
+msgid "Markdown content"
+msgstr "Ingen innhold"
+
 #: [publishbrief]valid_url
 msgid "Please enter a valid URL"
 msgstr "Mate en gyldig lenke"
@@ -1579,6 +1634,15 @@ msgstr "Mate en gyldig lenke"
 #: [publishbrief]content_text
 msgid "You can format your content using Markdown"
 msgstr "Du kan formatere tekst og innhold med Markdown-syntaks"
+
+#: [publishbrief]draft_saved
+#, fuzzy
+msgid "Draft saved"
+msgstr "Oppsett lagret"
+
+#: [publishbrief]rich_editor
+msgid "Rich text editor"
+msgstr ""
 
 #: [publishhelp]title [page]help
 msgid "Help"
@@ -1780,6 +1844,19 @@ msgstr ""
 msgid "The participants of this chatroom can see each other's profile"
 msgstr ""
 
+#: [room]notify_never
+msgid "Never notify"
+msgstr ""
+
+#: [room]notify_quoted
+msgid "Notify when quoted"
+msgstr ""
+
+#: [room]notify_always
+#, fuzzy
+msgid "Always notify"
+msgstr "Alltid"
+
 #: [roomsexplore]no_local
 msgid "No chatrooms found localy"
 msgstr ""
@@ -1853,6 +1930,10 @@ msgstr ""
 #: [statistics]title
 msgid "Statistics"
 msgstr "Statistikk"
+
+#: [sticker]title
+msgid "Stickers"
+msgstr ""
 
 #: [sticker]sent
 msgid "A sticker has been sent using Movim"
@@ -1989,6 +2070,14 @@ msgstr "Kontakt administratoren av tjeneren for å sjekke om funksjonaliteten ka
 #: [visio]calling
 msgid "…is calling you"
 msgstr "…ringer deg"
+
+#: [visio]video_call
+msgid "Incoming video call"
+msgstr ""
+
+#: [visio]audio_call
+msgid "Incoming audio call"
+msgstr ""
 
 #: [visio]ringing
 msgid "…ringing"
@@ -2152,6 +2241,14 @@ msgstr "Uffda!"
 msgid "Call"
 msgstr "Ring"
 
+#: [button]audio_call
+msgid "Audio Call"
+msgstr ""
+
+#: [button]video_call
+msgid "Video Call"
+msgstr ""
+
 #: [button]validate
 msgid "Validate"
 msgstr "Valider"
@@ -2272,6 +2369,10 @@ msgstr "Aktiver"
 #: [button]sign_up
 msgid "Sign Up"
 msgstr "Registrere"
+
+#: [button]send_to
+msgid "Send to"
+msgstr ""
 
 #: [day]title
 msgid "Day"

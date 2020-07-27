@@ -101,7 +101,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-22 15:18+0200\n"
+"POT-Creation-Date: 2020-07-27 23:56+0200\n"
 "PO-Revision-Date: 2019-11-02 09:40+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/movim/movim/language/zh_TW/)\n"
@@ -475,6 +475,15 @@ msgstr "這個內容是私人的，請登入後再來看"
 msgid "Message Published"
 msgstr "訊息已發佈"
 
+#: [message]react
+#, fuzzy
+msgid "Add a reaction"
+msgstr "創建帳戶"
+
+#: [message]retract
+msgid "Retract"
+msgstr ""
+
 #: [message]error
 msgid "Your message could not be sent, please try again later"
 msgstr "您的訊息可能不能送出，請晚點重試"
@@ -549,6 +558,8 @@ msgid "See the profile"
 msgstr "檢視個人設定"
 
 #: [chat]clear
+#, fuzzy
+msgctxt "[chat]clear"
 msgid "Clear the history"
 msgstr "清除紀錄"
 
@@ -574,6 +585,16 @@ msgstr ""
 
 #: [chat]mam_retrieval
 msgid "Synchronizing the history, please wait…"
+msgstr ""
+
+#: [chat]clear_history
+#, fuzzy
+msgctxt "[chat]clear_history"
+msgid "Clear the history"
+msgstr "清除紀錄"
+
+#: [chat]clear_history_text
+msgid "You are going to delete %s messages, are you sure?"
 msgstr ""
 
 #: [chatroom]members
@@ -622,6 +643,10 @@ msgstr "跟聯絡人聊天"
 
 #: [chats]me
 msgid "Me"
+msgstr ""
+
+#: [chats]picture
+msgid "Picture"
 msgstr ""
 
 #: [button]chat
@@ -925,6 +950,20 @@ msgstr ""
 msgid "Archiving preferences saved"
 msgstr ""
 
+#: [config]notification_title
+#, fuzzy
+msgid "Audio notifications"
+msgstr "管理者"
+
+#: [config]notification_call
+msgid "Incoming call"
+msgstr ""
+
+#: [config]notification_chat
+#, fuzzy
+msgid "Incoming message"
+msgstr "資訊"
+
 #: [confirm]title
 msgid "Confirmation of authentication"
 msgstr ""
@@ -1003,6 +1042,10 @@ msgstr ""
 
 #: [general]tune
 msgid "Is Listening"
+msgstr ""
+
+#: [general]pictures
+msgid "Pictures"
 msgstr ""
 
 #: [position]legend
@@ -1309,7 +1352,7 @@ msgstr ""
 msgid "%s wants to talk with you"
 msgstr ""
 
-#: [notifs]title [onboarding]notifications_title
+#: [notifs]title [onboarding]notifications_title [room]notify_title
 msgid "Notifications"
 msgstr ""
 
@@ -1566,12 +1609,29 @@ msgstr ""
 msgid "No content to preview"
 msgstr ""
 
+#: [publishbrief]title
+msgid "Post title"
+msgstr ""
+
+#: [publishbrief]content
+msgid "Markdown content"
+msgstr ""
+
 #: [publishbrief]valid_url
 msgid "Please enter a valid URL"
 msgstr ""
 
 #: [publishbrief]content_text
 msgid "You can format your content using Markdown"
+msgstr ""
+
+#: [publishbrief]draft_saved
+#, fuzzy
+msgid "Draft saved"
+msgstr "已儲存設置"
+
+#: [publishbrief]rich_editor
+msgid "Rich text editor"
 msgstr ""
 
 #: [publishhelp]title [page]help
@@ -1772,6 +1832,18 @@ msgstr ""
 msgid "The participants of this chatroom can see each other's profile"
 msgstr ""
 
+#: [room]notify_never
+msgid "Never notify"
+msgstr ""
+
+#: [room]notify_quoted
+msgid "Notify when quoted"
+msgstr ""
+
+#: [room]notify_always
+msgid "Always notify"
+msgstr ""
+
 #: [roomsexplore]no_local
 msgid "No chatrooms found localy"
 msgstr ""
@@ -1843,6 +1915,10 @@ msgstr ""
 
 #: [statistics]title
 msgid "Statistics"
+msgstr ""
+
+#: [sticker]title
+msgid "Stickers"
 msgstr ""
 
 #: [sticker]sent
@@ -1979,6 +2055,14 @@ msgstr ""
 
 #: [visio]calling
 msgid "…is calling you"
+msgstr ""
+
+#: [visio]video_call
+msgid "Incoming video call"
+msgstr ""
+
+#: [visio]audio_call
+msgid "Incoming audio call"
 msgstr ""
 
 #: [visio]ringing
@@ -2142,6 +2226,14 @@ msgstr ""
 msgid "Call"
 msgstr ""
 
+#: [button]audio_call
+msgid "Audio Call"
+msgstr ""
+
+#: [button]video_call
+msgid "Video Call"
+msgstr ""
+
 #: [button]validate
 msgid "Validate"
 msgstr ""
@@ -2261,6 +2353,10 @@ msgstr ""
 
 #: [button]sign_up
 msgid "Sign Up"
+msgstr ""
+
+#: [button]send_to
+msgid "Send to"
 msgstr ""
 
 #: [day]title

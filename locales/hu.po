@@ -105,7 +105,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-22 15:18+0200\n"
+"POT-Creation-Date: 2020-07-27 23:56+0200\n"
 "PO-Revision-Date: 2019-11-02 09:40+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Hungarian (http://www.transifex.com/movim/movim/language/hu/)\n"
@@ -479,6 +479,15 @@ msgstr "Ez a tartalom nem nyilvános, jelentkezz be, hogy láthasd"
 msgid "Message Published"
 msgstr "Üzenet közzétéve"
 
+#: [message]react
+#, fuzzy
+msgid "Add a reaction"
+msgstr "Partner hozzáadása"
+
+#: [message]retract
+msgid "Retract"
+msgstr ""
+
 #: [message]error
 msgid "Your message could not be sent, please try again later"
 msgstr "Az üzenetedet nem lehetett elküldeni, kérlek, próbáld újra!"
@@ -553,6 +562,8 @@ msgid "See the profile"
 msgstr "A profil megtekintése"
 
 #: [chat]clear
+#, fuzzy
+msgctxt "[chat]clear"
 msgid "Clear the history"
 msgstr "Az előzmények törlése"
 
@@ -579,6 +590,17 @@ msgstr ""
 #: [chat]mam_retrieval
 msgid "Synchronizing the history, please wait…"
 msgstr ""
+
+#: [chat]clear_history
+#, fuzzy
+msgctxt "[chat]clear_history"
+msgid "Clear the history"
+msgstr "Az előzmények törlése"
+
+#: [chat]clear_history_text
+#, fuzzy
+msgid "You are going to delete %s messages, are you sure?"
+msgstr "Hagyd jóvá, hogy tényleg le szeretnéd törölni ezt a bejegyzést"
 
 #: [chatroom]members
 msgid "Members"
@@ -626,6 +648,10 @@ msgstr "Beszélgetés egy partnerrel"
 
 #: [chats]me
 msgid "Me"
+msgstr ""
+
+#: [chats]picture
+msgid "Picture"
 msgstr ""
 
 #: [button]chat
@@ -931,6 +957,20 @@ msgstr "Soha"
 msgid "Archiving preferences saved"
 msgstr "Archiválási beállítások elmentve"
 
+#: [config]notification_title
+#, fuzzy
+msgid "Audio notifications"
+msgstr "Nincsenek új értesítések"
+
+#: [config]notification_call
+msgid "Incoming call"
+msgstr ""
+
+#: [config]notification_chat
+#, fuzzy
+msgid "Incoming message"
+msgstr "Információs üzenet"
+
 #: [confirm]title
 msgid "Confirmation of authentication"
 msgstr "Hitelesítés megerősítése"
@@ -1010,6 +1050,10 @@ msgstr "Egyéb felhasználói fiókok"
 #: [general]tune
 msgid "Is Listening"
 msgstr "Éppen hallgatja"
+
+#: [general]pictures
+msgid "Pictures"
+msgstr ""
 
 #: [position]legend
 msgid "Geographic Position"
@@ -1315,7 +1359,7 @@ msgstr "Várakozó meghívások"
 msgid "%s wants to talk with you"
 msgstr "%s beszélni szeretne veled"
 
-#: [notifs]title [onboarding]notifications_title
+#: [notifs]title [onboarding]notifications_title [room]notify_title
 msgid "Notifications"
 msgstr "Értesítések"
 
@@ -1572,6 +1616,16 @@ msgstr ""
 msgid "No content to preview"
 msgstr "Nincs megjeleníthető tartalom előnézethez"
 
+#: [publishbrief]title
+#, fuzzy
+msgid "Post title"
+msgstr "Poszt törölve"
+
+#: [publishbrief]content
+#, fuzzy
+msgid "Markdown content"
+msgstr "Nincs tartalom"
+
 #: [publishbrief]valid_url
 msgid "Please enter a valid URL"
 msgstr ""
@@ -1579,6 +1633,15 @@ msgstr ""
 #: [publishbrief]content_text
 msgid "You can format your content using Markdown"
 msgstr "A tartalmadat Markdownnal formázhatod"
+
+#: [publishbrief]draft_saved
+#, fuzzy
+msgid "Draft saved"
+msgstr "Beállítások elmentve."
+
+#: [publishbrief]rich_editor
+msgid "Rich text editor"
+msgstr ""
 
 #: [publishhelp]title [page]help
 msgid "Help"
@@ -1780,6 +1843,19 @@ msgstr ""
 msgid "The participants of this chatroom can see each other's profile"
 msgstr ""
 
+#: [room]notify_never
+msgid "Never notify"
+msgstr ""
+
+#: [room]notify_quoted
+msgid "Notify when quoted"
+msgstr ""
+
+#: [room]notify_always
+#, fuzzy
+msgid "Always notify"
+msgstr "Mindig"
+
 #: [roomsexplore]no_local
 msgid "No chatrooms found localy"
 msgstr ""
@@ -1853,6 +1929,10 @@ msgstr ""
 #: [statistics]title
 msgid "Statistics"
 msgstr "Statisztika"
+
+#: [sticker]title
+msgid "Stickers"
+msgstr ""
 
 #: [sticker]sent
 msgid "A sticker has been sent using Movim"
@@ -1988,6 +2068,14 @@ msgstr ""
 
 #: [visio]calling
 msgid "…is calling you"
+msgstr ""
+
+#: [visio]video_call
+msgid "Incoming video call"
+msgstr ""
+
+#: [visio]audio_call
+msgid "Incoming audio call"
 msgstr ""
 
 #: [visio]ringing
@@ -2151,6 +2239,14 @@ msgstr "Hupsz!"
 msgid "Call"
 msgstr ""
 
+#: [button]audio_call
+msgid "Audio Call"
+msgstr ""
+
+#: [button]video_call
+msgid "Video Call"
+msgstr ""
+
 #: [button]validate
 msgid "Validate"
 msgstr "Érvényesít"
@@ -2270,6 +2366,10 @@ msgstr ""
 
 #: [button]sign_up
 msgid "Sign Up"
+msgstr ""
+
+#: [button]send_to
+msgid "Send to"
 msgstr ""
 
 #: [day]title

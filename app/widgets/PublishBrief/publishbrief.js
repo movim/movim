@@ -43,7 +43,7 @@ var PublishBrief = {
         var embed = document.querySelector('input[name=embed]');
         embed.onchange();
 
-        document.querySelector('form[name=brief]').onkeydown = function() {
+        document.querySelector('form[name=brief]').onkeyup = function() {
             PublishBrief.clearSavedDraft();
             if (PublishBrief.timeout) clearTimeout(PublishBrief.timeout);
             PublishBrief.timeout = setTimeout(function () {
@@ -57,11 +57,11 @@ var PublishBrief = {
         document.querySelector('input[name=embed]').onchange();
     },
     saveDraft: function() {
-        xhr = PublishBrief_ajaxHttpDaemonSaveDraft(MovimUtils.formToJson('brief'));
+        xhr = PublishBrief_ajaxHttpSaveDraft(MovimUtils.formToJson('brief'));
 
         xhr.onreadystatechange = function() {
             if (this.readyState == 4) {
-                if (this.status >= 200 && this.status < 400) {
+                if (this.status >= 200 && this.status < 400 && this.status != 204) {
                     PublishBrief.savedDraft();
                 }
 

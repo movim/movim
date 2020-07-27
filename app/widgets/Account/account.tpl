@@ -4,7 +4,7 @@
             {$gateways}
         {/autoescape}
     </div>
-    <ul class="list middle active divided ">
+    <ul class="list middle divided ">
         <li class="subheader">
             <div>
                 <p>{$c->__('account.password_change_title')}</p>

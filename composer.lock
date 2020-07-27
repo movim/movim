@@ -1296,7 +1296,7 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v7.22.2",
+            "version": "v7.22.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
@@ -1343,7 +1343,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v7.22.2",
+            "version": "v7.22.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -1387,7 +1387,7 @@
         },
         {
             "name": "illuminate/database",
-            "version": "v7.22.2",
+            "version": "v7.22.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
@@ -1449,16 +1449,16 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v7.22.2",
+            "version": "v7.22.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "cead591a137776e281090a46481c9831677018ca"
+                "reference": "138d67507a697c3fff06710af2df7452d0fafb09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/cead591a137776e281090a46481c9831677018ca",
-                "reference": "cead591a137776e281090a46481c9831677018ca",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/138d67507a697c3fff06710af2df7452d0fafb09",
+                "reference": "138d67507a697c3fff06710af2df7452d0fafb09",
                 "shasum": ""
             },
             "require": {
@@ -1507,7 +1507,7 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "https://laravel.com",
-            "time": "2020-07-24T09:17:00+00:00"
+            "time": "2020-07-27T17:48:28+00:00"
         },
         {
             "name": "michelf/php-markdown",

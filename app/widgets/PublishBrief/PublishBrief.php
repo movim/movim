@@ -78,7 +78,7 @@ class PublishBrief extends Base
         $this->rpc('PublishBrief.checkEmbed');
     }
 
-    public function ajaxHttpDaemonSaveDraft($form)
+    public function ajaxHttpSaveDraft($form)
     {
         $p = new \App\Post;
         $p->title = $form->title->value;
@@ -89,6 +89,10 @@ class PublishBrief extends Base
         }
 
         Cache::c('draft', $p);
+
+        if (empty($p->title) && empty($p->content) && empty($p->link)) {
+            http_response_code(204);
+        }
     }
 
     public function ajaxPreview($form)
@@ -102,6 +106,7 @@ class PublishBrief extends Base
             $parser->hashtag_protection = true;
 
             $doc->loadXML('<div>'.addHFR($parser->transform($form->content->value)).'</div>');
+            $view->assign('title', $form->title->value);
             $view->assign('content', substr($doc->saveXML($doc->getElementsByTagName('div')->item(0)), 5, -6));
 
             Dialog::fill($view->draw('_publishbrief_preview'), true);

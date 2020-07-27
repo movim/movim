@@ -102,7 +102,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-22 15:18+0200\n"
+"POT-Creation-Date: 2020-07-27 23:56+0200\n"
 "PO-Revision-Date: 2019-11-03 09:01+0000\n"
 "Last-Translator: Besnik <besnik@programeshqip.org>\n"
 "Language-Team: Albanian (http://www.transifex.com/movim/movim/language/sq/)\n"
@@ -476,6 +476,15 @@ msgstr "Kjo lëndë është private, që ta shihni, ju lutemi, bëni hyrjen"
 msgid "Message Published"
 msgstr "Mesazhi u Botua"
 
+#: [message]react
+#, fuzzy
+msgid "Add a reaction"
+msgstr "Shtoni një kontakt"
+
+#: [message]retract
+msgid "Retract"
+msgstr ""
+
 #: [message]error
 msgid "Your message could not be sent, please try again later"
 msgstr "Mesazhi juaj s’u dërgua dot, ju lutemi, riprovoni më vonë"
@@ -550,6 +559,8 @@ msgid "See the profile"
 msgstr "Shihni profilin"
 
 #: [chat]clear
+#, fuzzy
+msgctxt "[chat]clear"
 msgid "Clear the history"
 msgstr "Spastro historikun"
 
@@ -576,6 +587,17 @@ msgstr "Ndodhi një gabim teksa dërgohej mesazhi"
 #: [chat]mam_retrieval
 msgid "Synchronizing the history, please wait…"
 msgstr ""
+
+#: [chat]clear_history
+#, fuzzy
+msgctxt "[chat]clear_history"
+msgid "Clear the history"
+msgstr "Spastro historikun"
+
+#: [chat]clear_history_text
+#, fuzzy
+msgid "You are going to delete %s messages, are you sure?"
+msgstr "Ju ndan një hap nga fshirja e këtij postimi, ju lutemi, ripohoni veprimin tuaj"
 
 #: [chatroom]members
 msgid "Members"
@@ -624,6 +646,10 @@ msgstr "Fjalosuni me një kontakt"
 #: [chats]me
 msgid "Me"
 msgstr "Unë"
+
+#: [chats]picture
+msgid "Picture"
+msgstr ""
 
 #: [button]chat
 msgid "Chat"
@@ -928,6 +954,21 @@ msgstr "Kurrë"
 msgid "Archiving preferences saved"
 msgstr "Parapëlqimet e arkivimit u ruajtën"
 
+#: [config]notification_title
+#, fuzzy
+msgid "Audio notifications"
+msgstr "S’ka njoftime të reja"
+
+#: [config]notification_call
+#, fuzzy
+msgid "Incoming call"
+msgstr "në thirrje"
+
+#: [config]notification_chat
+#, fuzzy
+msgid "Incoming message"
+msgstr "Mesazh Informacioni"
+
 #: [confirm]title
 msgid "Confirmation of authentication"
 msgstr "Ripohim i mirëfilltësimit"
@@ -1007,6 +1048,10 @@ msgstr "Llogari të Tjera"
 #: [general]tune
 msgid "Is Listening"
 msgstr "Po Dëgjon"
+
+#: [general]pictures
+msgid "Pictures"
+msgstr ""
 
 #: [position]legend
 msgid "Geographic Position"
@@ -1312,7 +1357,7 @@ msgstr "Ftesa Pezull"
 msgid "%s wants to talk with you"
 msgstr "%s dëshiron të flasë me ju"
 
-#: [notifs]title [onboarding]notifications_title
+#: [notifs]title [onboarding]notifications_title [room]notify_title
 msgid "Notifications"
 msgstr "Njoftime"
 
@@ -1569,6 +1614,16 @@ msgstr "S’mund të botoni postim këtu"
 msgid "No content to preview"
 msgstr "S’ka lëndë për paraparje"
 
+#: [publishbrief]title
+#, fuzzy
+msgid "Post title"
+msgstr "Postimi u fshi"
+
+#: [publishbrief]content
+#, fuzzy
+msgid "Markdown content"
+msgstr "S’ka lëndë"
+
 #: [publishbrief]valid_url
 msgid "Please enter a valid URL"
 msgstr "Ju lutemi, jepni një URL të vlefshme"
@@ -1576,6 +1631,15 @@ msgstr "Ju lutemi, jepni një URL të vlefshme"
 #: [publishbrief]content_text
 msgid "You can format your content using Markdown"
 msgstr "Lëndën tuaj mund ta formatoni duke përdorur Markdown"
+
+#: [publishbrief]draft_saved
+#, fuzzy
+msgid "Draft saved"
+msgstr "Formësim u ruajt"
+
+#: [publishbrief]rich_editor
+msgid "Rich text editor"
+msgstr ""
 
 #: [publishhelp]title [page]help
 msgid "Help"
@@ -1777,6 +1841,19 @@ msgstr "Profile publike"
 msgid "The participants of this chatroom can see each other's profile"
 msgstr "Pjesëmarrësit e kësaj dhome bisedash mund të shohin profilin e njëri-tjetrit"
 
+#: [room]notify_never
+msgid "Never notify"
+msgstr ""
+
+#: [room]notify_quoted
+msgid "Notify when quoted"
+msgstr ""
+
+#: [room]notify_always
+#, fuzzy
+msgid "Always notify"
+msgstr "Përherë"
+
 #: [roomsexplore]no_local
 msgid "No chatrooms found localy"
 msgstr ""
@@ -1850,6 +1927,10 @@ msgstr "Më tepër kontakte"
 #: [statistics]title
 msgid "Statistics"
 msgstr "Statistika"
+
+#: [sticker]title
+msgid "Stickers"
+msgstr ""
 
 #: [sticker]sent
 msgid "A sticker has been sent using Movim"
@@ -1986,6 +2067,14 @@ msgstr "Ju lutemi, lidhuni me përgjegjësin e shërbyesit tuaj për të parë n
 #: [visio]calling
 msgid "…is calling you"
 msgstr "…po ju thërret"
+
+#: [visio]video_call
+msgid "Incoming video call"
+msgstr ""
+
+#: [visio]audio_call
+msgid "Incoming audio call"
+msgstr ""
 
 #: [visio]ringing
 msgid "…ringing"
@@ -2149,6 +2238,14 @@ msgstr "Oooh!"
 msgid "Call"
 msgstr "Thirre"
 
+#: [button]audio_call
+msgid "Audio Call"
+msgstr ""
+
+#: [button]video_call
+msgid "Video Call"
+msgstr ""
+
 #: [button]validate
 msgid "Validate"
 msgstr "Vleftësoje"
@@ -2269,6 +2366,10 @@ msgstr "Aktivizoje"
 #: [button]sign_up
 msgid "Sign Up"
 msgstr "Regjistrohuni"
+
+#: [button]send_to
+msgid "Send to"
+msgstr ""
 
 #: [day]title
 msgid "Day"
