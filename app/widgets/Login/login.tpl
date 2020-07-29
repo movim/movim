@@ -1,10 +1,10 @@
 <div id="login_widget">
     <script type="text/javascript">
-        /*if (typeof navigator.registerProtocolHandler == 'function') {
+        if (typeof navigator.registerProtocolHandler == 'function') {
             navigator.registerProtocolHandler('xmpp',
                                           '{$c->route("share")}/%s',
                                           'Movim');
-        }*/
+        }
 
         Login.domain = '{$domain}';
         {if="isset($httpAuthUser)"}
