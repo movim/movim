@@ -1,7 +1,7 @@
 #
 # Translators:
 # Baudouin Feildel <baudouin_transifex@feildel.fr>, 2018
-# Cypouz, 2015
+# e1ab480322b0d2e3f0ebe6f294df65db_ecba13c, 2015
 # Éfrit, 2015
 # François D. <francois.drouhard@gmail.com>, 2019
 # Jaussoin Timothée <edhelas@movim.eu>, 2015-2020
@@ -110,7 +110,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-27 23:56+0200\n"
-"PO-Revision-Date: 2020-03-22 14:20+0000\n"
+"PO-Revision-Date: 2020-07-28 09:02+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: French (France) (http://www.transifex.com/movim/movim/language/fr_FR/)\n"
 "Language: fr_FR\n"
@@ -118,7 +118,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Translate Toolkit 2.5.0\n"
+"X-Generator: Translate Toolkit 2.5.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -483,13 +483,12 @@ msgid "Message Published"
 msgstr "Message publié"
 
 #: [message]react
-#, fuzzy
 msgid "Add a reaction"
-msgstr "Ajouter un contact"
+msgstr "Ajouter une réaction"
 
 #: [message]retract
 msgid "Retract"
-msgstr ""
+msgstr "Rétracter"
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
@@ -564,7 +563,6 @@ msgid "See the profile"
 msgstr "Voir le profil"
 
 #: [chat]clear
-#, fuzzy
 msgctxt "[chat]clear"
 msgid "Clear the history"
 msgstr "Supprimer l'historique"
@@ -594,13 +592,11 @@ msgid "Synchronizing the history, please wait…"
 msgstr "Synchronisation de l'historique, veuillez patienter…"
 
 #: [chat]clear_history
-#, fuzzy
 msgctxt "[chat]clear_history"
 msgid "Clear the history"
 msgstr "Supprimer l'historique"
 
 #: [chat]clear_history_text
-#, fuzzy
 msgid "You are going to delete %s messages, are you sure?"
 msgstr "Vous allez supprimer ce billet, veuillez confirmer votre action."
 
@@ -654,7 +650,7 @@ msgstr "Moi"
 
 #: [chats]picture
 msgid "Picture"
-msgstr ""
+msgstr "Image"
 
 #: [button]chat
 msgid "Chat"
@@ -958,19 +954,16 @@ msgid "Archiving preferences saved"
 msgstr "Paramètres d'archivage sauvegardés"
 
 #: [config]notification_title
-#, fuzzy
 msgid "Audio notifications"
-msgstr "Pas de nouvelles notifications"
+msgstr "Notifications audio"
 
 #: [config]notification_call
-#, fuzzy
 msgid "Incoming call"
-msgstr "en communication"
+msgstr "Appel entrant"
 
 #: [config]notification_chat
-#, fuzzy
 msgid "Incoming message"
-msgstr "Message d’information"
+msgstr "Message entrant"
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -1054,7 +1047,7 @@ msgstr "En écoute"
 
 #: [general]pictures
 msgid "Pictures"
-msgstr ""
+msgstr "Images"
 
 #: [position]legend
 msgid "Geographic Position"
@@ -1617,14 +1610,12 @@ msgid "No content to preview"
 msgstr "Pas de contenu à afficher"
 
 #: [publishbrief]title
-#, fuzzy
 msgid "Post title"
-msgstr "Billet effacé"
+msgstr "Titre de l'article"
 
 #: [publishbrief]content
-#, fuzzy
 msgid "Markdown content"
-msgstr "Aucun contenu"
+msgstr "Contenu Markdown"
 
 #: [publishbrief]valid_url
 msgid "Please enter a valid URL"
@@ -1635,13 +1626,12 @@ msgid "You can format your content using Markdown"
 msgstr "Vous pouvez enrichir le contenu en utilisant Markdown"
 
 #: [publishbrief]draft_saved
-#, fuzzy
 msgid "Draft saved"
-msgstr "Configuration enregistrée"
+msgstr "Brouillon sauvegardé"
 
 #: [publishbrief]rich_editor
 msgid "Rich text editor"
-msgstr ""
+msgstr "Éditeur de texte enrichi"
 
 #: [publishhelp]title [page]help
 msgid "Help"
@@ -1841,16 +1831,15 @@ msgstr "Les participants de ce salon peuvent voir leurs profils réciproquement"
 
 #: [room]notify_never
 msgid "Never notify"
-msgstr ""
+msgstr "Ne jamais notifier"
 
 #: [room]notify_quoted
 msgid "Notify when quoted"
-msgstr ""
+msgstr "Notifier lors de la citation"
 
 #: [room]notify_always
-#, fuzzy
 msgid "Always notify"
-msgstr "Toujours"
+msgstr "Toujours notifier"
 
 #: [roomsexplore]no_local
 msgid "No chatrooms found localy"
@@ -1926,7 +1915,7 @@ msgstr "Statistiques"
 
 #: [sticker]title
 msgid "Stickers"
-msgstr ""
+msgstr "Autocollants"
 
 #: [sticker]sent
 msgid "A sticker has been sent using Movim"
@@ -2066,11 +2055,11 @@ msgstr "…vous appelle"
 
 #: [visio]video_call
 msgid "Incoming video call"
-msgstr ""
+msgstr "Appel vidéo entrant"
 
 #: [visio]audio_call
 msgid "Incoming audio call"
-msgstr ""
+msgstr "Appel audio entrant"
 
 #: [visio]ringing
 msgid "…ringing"
@@ -2235,11 +2224,11 @@ msgstr "Appeler"
 
 #: [button]audio_call
 msgid "Audio Call"
-msgstr ""
+msgstr "Appel audio"
 
 #: [button]video_call
 msgid "Video Call"
-msgstr ""
+msgstr "Appel vidéo"
 
 #: [button]validate
 msgid "Validate"
@@ -2364,7 +2353,7 @@ msgstr "Souscrire"
 
 #: [button]send_to
 msgid "Send to"
-msgstr ""
+msgstr "Envoyer à"
 
 #: [day]title
 msgid "Day"
