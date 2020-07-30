@@ -92,12 +92,23 @@ class Menu extends Base
                     );
                 }
             } else {
-                $logo = ($post->logo) ? $post->getLogo() : null;
+                $info = \App\Info::where('server', $post->server)
+                                 ->where('node', $post->node)
+                                 ->first();
+                $logo = null;
+                $title = $post->node;
+
+                if ($info) {
+                    if ($info->name) {
+                        $title = $info->name;
+                    }
+                    $logo = $info->getPhoto('l');
+                }
 
                 Notification::append(
                     'news',
+                    $title,
                     $post->title,
-                    $post->node,
                     $logo,
                     2,
                     $this->route('post', [$post->server, $post->node, $post->nodeid]),
