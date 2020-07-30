@@ -19,7 +19,7 @@ class Info extends Model
     public function save(array $options = [])
     {
         // Empty features, we're not saving anything
-        if ($this->isEmptyFeatures()) return;
+        if ($this->isEmptyFeatures() && empty($this->freshIdentities)) return;
 
         try {
             unset($this->identities);
@@ -408,12 +408,12 @@ class Info extends Model
             $this->name   = (string)$item->attributes()->name;
         }
 
-        $this->identities = collect();
+        $this->freshIdentities = collect();
         $identity = new Identity;
         $identity->category = 'pubsub';
         $identity->type     = 'leaf';
 
-        $this->identities->push($identity);
+        $this->freshIdentities->push($identity);
     }
 
     public function getPubsubRoles()
