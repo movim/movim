@@ -194,6 +194,12 @@ var Notification = {
             return;
         }
     },
+    clearAndroid : function(action) {
+        if (typeof Android !== 'undefined') {
+            Android.clearNotifications(action);
+            return;
+        }
+    },
     focus : function() {
         if (Notification.focused == false) {
             Notification.focused = true;
