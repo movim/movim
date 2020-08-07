@@ -41,8 +41,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityHeader/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/CommunityPosts/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunitySubscriptions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Config/locales.ini
@@ -102,7 +100,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-27 23:56+0200\n"
+"POT-Creation-Date: 2020-08-07 08:54+0200\n"
 "PO-Revision-Date: 2019-11-03 09:01+0000\n"
 "Last-Translator: Besnik <besnik@programeshqip.org>\n"
 "Language-Team: Albanian (http://www.transifex.com/movim/movim/language/sq/)\n"
@@ -853,14 +851,6 @@ msgstr "Ju ndan një hap nga shpajtimi prej kësaj bashkësie"
 #: [communityheader]sure [delete]title
 msgid "Are you sure?"
 msgstr "Jeni i sigurt?"
-
-#: [communityposts]nsfw_title
-msgid "Adult content blocked"
-msgstr "U bllokua lëndë të rriturish"
-
-#: [communityposts]nsfw_message
-msgid "Some adult content has been blocked on this page. You can enable the display of adult content in the configuration page."
-msgstr "Në këtë faqe është bllokuar ca lëndë të rriturish. Shfaqjen e lëndës për të rritur mund ta aktivizoni te faqja e formësimit."
 
 #: [communitysubscriptions]subscriptions
 msgid "My Subscriptions"
@@ -1988,6 +1978,10 @@ msgstr "Keni tejkaluar kuotat"
 msgid "Drag and drop your file in this area"
 msgstr ""
 
+#: [upload]max_size
+msgid "Max file size %s"
+msgstr ""
+
 #: [vcard]title [page]profile
 msgid "Profile"
 msgstr "Profil"
@@ -2935,6 +2929,26 @@ msgstr "Komente"
 msgid "Original post deleted"
 msgstr "Postimi origjinal u fshi"
 
+#: [filesize]byte
+msgid "B"
+msgstr ""
+
+#: [filesize]kilobyte
+msgid "KB"
+msgstr ""
+
+#: [filesize]megabyte
+msgid "MB"
+msgstr ""
+
+#: [filesize]gigabyte
+msgid "GB"
+msgstr ""
+
+#: [filesize]terabyte
+msgid "TB"
+msgstr ""
+
 #: [affiliation]publisher
 msgid "Publisher"
 msgstr "Botues"
@@ -2962,6 +2976,12 @@ msgstr "API nuk kapet dot, riprovoni më vonë"
 #: [field]type_here
 msgid "Type here"
 msgstr "Shtypni këtu"
+
+#~ msgid "Adult content blocked"
+#~ msgstr "U bllokua lëndë të rriturish"
+
+#~ msgid "Some adult content has been blocked on this page. You can enable the display of adult content in the configuration page."
+#~ msgstr "Në këtë faqe është bllokuar ca lëndë të rriturish. Shfaqjen e lëndës për të rritur mund ta aktivizoni te faqja e formësimit."
 
 #~ msgid "Custom CSS URL for your blog"
 #~ msgstr "URL CSS-je vetjake për blogun tuaj"

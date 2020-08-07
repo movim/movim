@@ -7,6 +7,9 @@
             </span>
             <div>
                 <p>{$c->__('upload.choose')}</p>
+                {if="isset($service->description)"}
+                    <p>{$c->__('upload.max_size', sizeToCleanSize($service->description))}</p>
+                {/if}
                 <p>
                     <input type="file" id="file" onchange="Upload.preview()"/>
                 </p>

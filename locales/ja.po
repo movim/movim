@@ -43,8 +43,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityHeader/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/CommunityPosts/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunitySubscriptions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Config/locales.ini
@@ -104,7 +102,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-27 23:56+0200\n"
+"POT-Creation-Date: 2020-08-07 08:54+0200\n"
 "PO-Revision-Date: 2019-11-02 09:40+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Japanese (http://www.transifex.com/movim/movim/language/ja/)\n"
@@ -853,14 +851,6 @@ msgstr ""
 #: [communityheader]sure [delete]title
 msgid "Are you sure?"
 msgstr "よろしいですか"
-
-#: [communityposts]nsfw_title
-msgid "Adult content blocked"
-msgstr ""
-
-#: [communityposts]nsfw_message
-msgid "Some adult content has been blocked on this page. You can enable the display of adult content in the configuration page."
-msgstr ""
 
 #: [communitysubscriptions]subscriptions
 msgid "My Subscriptions"
@@ -1980,6 +1970,10 @@ msgstr ""
 msgid "Drag and drop your file in this area"
 msgstr ""
 
+#: [upload]max_size
+msgid "Max file size %s"
+msgstr ""
+
 #: [vcard]title [page]profile
 msgid "Profile"
 msgstr "プロフィール"
@@ -2925,6 +2919,26 @@ msgstr "コメント"
 
 #: [post]original_deleted
 msgid "Original post deleted"
+msgstr ""
+
+#: [filesize]byte
+msgid "B"
+msgstr ""
+
+#: [filesize]kilobyte
+msgid "KB"
+msgstr ""
+
+#: [filesize]megabyte
+msgid "MB"
+msgstr ""
+
+#: [filesize]gigabyte
+msgid "GB"
+msgstr ""
+
+#: [filesize]terabyte
+msgid "TB"
 msgstr ""
 
 #: [affiliation]publisher

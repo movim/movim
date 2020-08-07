@@ -51,6 +51,7 @@ class Upload extends Base
     public function ajaxRequest()
     {
         $view = $this->tpl();
+        $view->assign('service', $this->user->session->getUploadService());
         Dialog::fill($view->draw('_upload'));
         $this->rpc('Upload.attachEvents');
     }

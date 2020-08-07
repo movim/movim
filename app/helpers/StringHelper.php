@@ -261,7 +261,13 @@ function explodeJid(string $jid): array
  */
 function sizeToCleanSize($bytes, int $precision = 2): string
 {
-    $units = array('B', 'KB', 'MB', 'GB', 'TB');
+    $units = [
+        __('filesize.byte'),
+        __('filesize.kilobyte'),
+        __('filesize.megabyte'),
+        __('filesize.gigabyte'),
+        __('filesize.terabyte')
+    ];
 
     $bytes = max($bytes, 0);
     $pow = floor(($bytes ? log($bytes) : 0) / log(1024));

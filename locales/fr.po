@@ -48,8 +48,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityHeader/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/CommunityPosts/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunitySubscriptions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Config/locales.ini
@@ -109,7 +107,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-27 23:56+0200\n"
+"POT-Creation-Date: 2020-08-07 08:54+0200\n"
 "PO-Revision-Date: 2020-07-28 09:02+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: French (France) (http://www.transifex.com/movim/movim/language/fr_FR/)\n"
@@ -852,14 +850,6 @@ msgstr "Vous allez vous désinscrire de cette communauté"
 #: [communityheader]sure [delete]title
 msgid "Are you sure?"
 msgstr "Êtes-vous sûr ?"
-
-#: [communityposts]nsfw_title
-msgid "Adult content blocked"
-msgstr "Contenu réservé aux adultes bloqué"
-
-#: [communityposts]nsfw_message
-msgid "Some adult content has been blocked on this page. You can enable the display of adult content in the configuration page."
-msgstr "Du contenu réservé aux adultes a été bloqué sur cette page. Vous pouvez activer la consultation du contenu restreint dans la configuration."
 
 #: [communitysubscriptions]subscriptions
 msgid "My Subscriptions"
@@ -1973,6 +1963,10 @@ msgstr "Vous avez dépassé le quota"
 msgid "Drag and drop your file in this area"
 msgstr "Cliquez-déposez vos fichier sur cette zone"
 
+#: [upload]max_size
+msgid "Max file size %s"
+msgstr ""
+
 #: [vcard]title [page]profile
 msgid "Profile"
 msgstr "Profil"
@@ -2919,6 +2913,26 @@ msgstr "Commentaires"
 msgid "Original post deleted"
 msgstr "Billet original supprimé"
 
+#: [filesize]byte
+msgid "B"
+msgstr ""
+
+#: [filesize]kilobyte
+msgid "KB"
+msgstr ""
+
+#: [filesize]megabyte
+msgid "MB"
+msgstr ""
+
+#: [filesize]gigabyte
+msgid "GB"
+msgstr ""
+
+#: [filesize]terabyte
+msgid "TB"
+msgstr ""
+
 #: [affiliation]publisher
 msgid "Publisher"
 msgstr "Rédacteur"
@@ -2946,3 +2960,9 @@ msgstr "L’API est indisponible pour le moment, réessayez plus tard."
 #: [field]type_here
 msgid "Type here"
 msgstr "Rédigez votre message ici"
+
+#~ msgid "Adult content blocked"
+#~ msgstr "Contenu réservé aux adultes bloqué"
+
+#~ msgid "Some adult content has been blocked on this page. You can enable the display of adult content in the configuration page."
+#~ msgstr "Du contenu réservé aux adultes a été bloqué sur cette page. Vous pouvez activer la consultation du contenu restreint dans la configuration."

@@ -43,8 +43,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityHeader/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/CommunityPosts/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunitySubscriptions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Config/locales.ini
@@ -104,7 +102,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-27 23:56+0200\n"
+"POT-Creation-Date: 2020-08-07 08:54+0200\n"
 "PO-Revision-Date: 2020-04-05 08:41+0000\n"
 "Last-Translator: Slavko <linux@slavino.sk>\n"
 "Language-Team: Slovak (Slovakia) (http://www.transifex.com/movim/movim/language/sk_SK/)\n"
@@ -851,14 +849,6 @@ msgstr "Odhlasujete sa z odberu tejto komunity"
 #: [communityheader]sure [delete]title
 msgid "Are you sure?"
 msgstr "Ste si istý?"
-
-#: [communityposts]nsfw_title
-msgid "Adult content blocked"
-msgstr "Obsah pre dospelých blokovaný"
-
-#: [communityposts]nsfw_message
-msgid "Some adult content has been blocked on this page. You can enable the display of adult content in the configuration page."
-msgstr "nejaký obsah pre dospelých bol na tejto stránke blokovaný. Môžete povoliť zobrazenie obsahu pre dospelých v stránke konfigurácie."
 
 #: [communitysubscriptions]subscriptions
 msgid "My Subscriptions"
@@ -1979,6 +1969,10 @@ msgstr "Prekročili ste kvôtu"
 msgid "Drag and drop your file in this area"
 msgstr "Pretiahnite svoj súbor do tejto oblasti"
 
+#: [upload]max_size
+msgid "Max file size %s"
+msgstr ""
+
 #: [vcard]title [page]profile
 msgid "Profile"
 msgstr "Profil"
@@ -2925,6 +2919,26 @@ msgstr "Komentáre"
 msgid "Original post deleted"
 msgstr "Pôvodný príspevok zmazaný"
 
+#: [filesize]byte
+msgid "B"
+msgstr ""
+
+#: [filesize]kilobyte
+msgid "KB"
+msgstr ""
+
+#: [filesize]megabyte
+msgid "MB"
+msgstr ""
+
+#: [filesize]gigabyte
+msgid "GB"
+msgstr ""
+
+#: [filesize]terabyte
+msgid "TB"
+msgstr ""
+
 #: [affiliation]publisher
 msgid "Publisher"
 msgstr "Vydavateľ"
@@ -2952,3 +2966,9 @@ msgstr "API nie je dostupné, skúste neskôr"
 #: [field]type_here
 msgid "Type here"
 msgstr "Píšte tu"
+
+#~ msgid "Adult content blocked"
+#~ msgstr "Obsah pre dospelých blokovaný"
+
+#~ msgid "Some adult content has been blocked on this page. You can enable the display of adult content in the configuration page."
+#~ msgstr "nejaký obsah pre dospelých bol na tejto stránke blokovaný. Môžete povoliť zobrazenie obsahu pre dospelých v stránke konfigurácie."

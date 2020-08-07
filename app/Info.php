@@ -343,6 +343,7 @@ class Info extends Model
                             break;
                         case 'muc#roominfo_description':
                         case 'pubsub#description':
+                        case 'max-file-size': // https://xmpp.org/extensions/xep-0363.html#disco
                             if (!empty((string)$field->value)) {
                                 $this->description = (string)$field->value;
                             }
