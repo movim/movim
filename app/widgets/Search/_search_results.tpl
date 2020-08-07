@@ -1,10 +1,10 @@
-{if="$posts->isEmpty() && $contacts->isEmpty() && $tags->isEmpty()"}
+{if="(!isset($posts) || $posts->isEmpty()) && (!isset($contacts) || $contacts->isEmpty()) && (!isset($tags) || $tags->isEmpty())"}
     {autoescape="off"}
         {$c->prepareEmpty()}
     {/autoescape}
 {/if}
 
-{if="$tags->isNotEmpty()"}
+{if="isset($tags) && $tags->isNotEmpty()"}
 <ul class="list active flex">
     <li class="subheader block large">
         <div>
@@ -28,7 +28,7 @@
 </ul>
 {/if}
 
-{if="$communities->isNotEmpty()"}
+{if="isset($communities) && $communities->isNotEmpty()"}
 <ul class="list card active middle">
     <li class="subheader">
         <div>
@@ -81,7 +81,7 @@
 </ul>
 {/if}
 
-{if="$posts->isNotEmpty()"}
+{if="isset($posts) && $posts->isNotEmpty()"}
 <ul id="search_posts" class="list card active middle">
     <li class="subheader">
         <div>
@@ -99,7 +99,7 @@
 </ul>
 {/if}
 
-{if="$contacts->isNotEmpty()"}
+{if="isset($contacts) && $contacts->isNotEmpty()"}
     {autoescape="off"}
         {$c->prepareUsers($contacts)}
     {/autoescape}
