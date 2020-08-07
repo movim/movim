@@ -8,7 +8,9 @@ class AddNotifyAndExtensionsToConferencesTable extends Migration
 {
     public function up()
     {
+        $this->disableForeignKeyCheck();
         Info::truncate();
+        $this->enableForeignKeyCheck();
 
         $this->schema->table('conferences', function (Blueprint $table) {
             $table->text('extensions')->nullable();

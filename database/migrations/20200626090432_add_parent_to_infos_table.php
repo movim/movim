@@ -8,12 +8,15 @@ class AddParentToInfosTable extends Migration
 {
     public function up()
     {
+        $this->disableForeignKeyCheck();
         Info::truncate();
+        $this->enableForeignKeyCheck();
 
         $this->schema->table('infos', function (Blueprint $table) {
             $table->string('parent')->nullable();
             $table->index('parent');
         });
+
     }
 
     public function down()
