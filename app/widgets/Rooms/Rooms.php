@@ -129,7 +129,7 @@ class Rooms extends Base
         $conference = $this->user->session
                            ->conferences()
                            ->where('conference', $room)
-                           ->withCount('unreads')
+                           ->withCount('unreads', 'quoted')
                            ->first();
 
         if ($conference) {
@@ -146,7 +146,7 @@ class Rooms extends Base
         $conference = $this->user->session->conferences()
                                           ->where('conference', $room)
                                           ->with('info', 'contact', 'presence')
-                                          ->withCount('unreads')
+                                          ->withCount('unreads', 'quoted')
                                           ->first();
 
         if ($conference) {
@@ -158,7 +158,7 @@ class Rooms extends Base
     {
         $conferences = $this->user->session->conferences()
                                            ->with('info', 'contact', 'presence')
-                                           ->withCount('unreads')
+                                           ->withCount('unreads', 'quoted')
                                            ->get();
 
         $this->rpc('Rooms.clearRooms');

@@ -1310,7 +1310,7 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v7.23.2",
+            "version": "v7.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
@@ -1357,7 +1357,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v7.23.2",
+            "version": "v7.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -1401,16 +1401,16 @@
         },
         {
             "name": "illuminate/database",
-            "version": "v7.23.2",
+            "version": "v7.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "14a0af930d78e100c152939f502427027ecef2f0"
+                "reference": "8cbfd89fbda0bf969339a87816660c140473800e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/14a0af930d78e100c152939f502427027ecef2f0",
-                "reference": "14a0af930d78e100c152939f502427027ecef2f0",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/8cbfd89fbda0bf969339a87816660c140473800e",
+                "reference": "8cbfd89fbda0bf969339a87816660c140473800e",
                 "shasum": ""
             },
             "require": {
@@ -1459,11 +1459,11 @@
                 "orm",
                 "sql"
             ],
-            "time": "2020-08-06T14:56:13+00:00"
+            "time": "2020-08-07T15:06:43+00:00"
         },
         {
             "name": "illuminate/support",
-            "version": "v7.23.2",
+            "version": "v7.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",

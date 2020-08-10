@@ -84,7 +84,7 @@ span.icon.bubble img:not(.emoji) {
     border-radius: 5rem;
 }
 
-span.icon.bubble i {
+span.icon.bubble > i {
     font-size: 3rem;
     line-height: 5rem;
 }
@@ -103,13 +103,13 @@ ul.list li span.icon.small img.emoji {
     height: 4rem;
 }
 
-ul.list li span.icon.small:not(.bubble) i {
+ul.list li span.icon.small:not(.bubble) > i {
     font-size: 3rem;
     line-height: 3rem;
 }
 
 span.icon.small.bubble:first-letter,
-span.icon.small.bubble i {
+span.icon.small.bubble > i {
     font-size: 2.25rem;
     line-height: 4rem;
 }
@@ -164,7 +164,7 @@ span.icon span.counter {
     box-shadow: -0.1rem -0.1rem 0.5rem rgba(0, 0, 0, 0.2);
 }
 
-span.icon span.counter i {
+span.icon span.counter > i {
     margin-left: 0.1rem;
     margin-right: 0.1rem;
 }

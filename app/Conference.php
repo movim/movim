@@ -48,6 +48,16 @@ class Conference extends Model
                     ->where('seen', false);
     }
 
+    public function quoted()
+    {
+        return $this->hasMany('App\Message', 'jidfrom', 'conference')
+                    ->where('user_id', \App\User::me()->id)
+                    ->where('type', 'groupchat')
+                    ->whereNull('subject')
+                    ->where('quoted', true)
+                    ->where('seen', false);
+    }
+
     public function presence()
     {
         return $this->hasOne('App\Presence', 'jid', 'conference')
