@@ -52,6 +52,7 @@ var Notification = {
             sec*1000);
     },
     refresh : function(keys) {
+        console.log(keys);
         var counters = document.querySelectorAll('.counter');
         for(i = 0; i < counters.length; i++) {
             var n = counters[i];
@@ -99,10 +100,8 @@ var Notification = {
     },
     displayTab : function() {
         if (Notification.tab_counter1 == 0 && Notification.tab_counter2 == 0) {
+            MovimFavicon.counter(0);
             document.title = Notification.document_title;
-
-            if (Notification.favicon != null)
-                Notification.favicon.badge(0);
 
             if (typeof window.electron !== 'undefined')
                 window.electron.notification(false);
@@ -114,8 +113,7 @@ var Notification = {
                 + ' • '
                 + Notification.document_title;
 
-            if (Notification.favicon != null)
-                Notification.favicon.badge(Notification.tab_counter1 + Notification.tab_counter2);
+            MovimFavicon.counter(Notification.tab_counter1 + Notification.tab_counter2);
 
             if (typeof window.electron !== 'undefined')
                 window.electron.notification(Notification.tab_counter1 + Notification.tab_counter2);
@@ -212,14 +210,6 @@ Notification.document_title_init = document.title;
 
 if (typeof MovimWebsocket != 'undefined') {
     MovimWebsocket.attach(function() {
-        if (typeof Favico != 'undefined') {
-            Notification.favicon = new Favico({
-                animation: 'none',
-                fontStyle: 'normal',
-                bgColor: '#FF5722'
-            });
-        }
-
         Notification.document_title = Notification.document_title_init;
         Notification.tab_counter1 = Notification.tab_counter2 = 0;
         Notification_ajaxGet();
