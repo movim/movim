@@ -23,7 +23,12 @@ class Navigation extends Base
     public function display()
     {
         $this->view->assign('page', $this->_view);
-        $this->view->assign('chatCounter', $this->prepareChatButton($this->user->unreads(null, true, true)));
+        $this->view->assign(
+            'chatCounter',
+            $this->prepareChatButton(
+                $this->user->unreads(null, false, true)
+            )
+        );
     }
 
     private function prepareChatButton(int $count = 0)

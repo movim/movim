@@ -10,15 +10,12 @@ class Notification extends Base
     public function load()
     {
         $this->addjs('notification.js');
-        $this->registerEvent('chat_open', 'onChatOpen');
-        $this->registerEvent('chat_open_room', 'onChatOpen');
+        $this->registerEvent('chat_counter', 'onChatCounter');
     }
 
-    public function onChatOpen($jid)
+    public function onChatCounter(int $count = 0)
     {
-        // Get directly the counter from the DB for the chats
-        $user = \App\User::me();
-        RPC::call('Notification.counter', 'chat', $user->unreads(null, true));
+        RPC::call('Notification.counter', 'chat', $count);
     }
 
     public static function rpcCall($rpc)
@@ -148,7 +145,7 @@ class Notification extends Base
             $counter = $notifs[$key];
             unset($notifs[$key]);
 
-            RPC::call('Notification.counter', $key, '');
+            RPC::call('Notification.counter', $key, 0);
 
             $explode = explode('|', $key);
 
@@ -159,7 +156,7 @@ class Notification extends Base
 
                 if ($notifs[$first] <= 0) {
                     unset($notifs[$first]);
-                    RPC::call('Notification.counter', $first, '');
+                    RPC::call('Notification.counter', $first, 0);
                 } else {
                     RPC::call('Notification.counter', $first, $notifs[$first]);
                 }
@@ -178,7 +175,7 @@ class Notification extends Base
         $session = Session::start();
         $notifs = $session->get('notifs') ?? [];
 
-        $notifs['chat'] = (\App\User::me())->unreads(null, true, true);
+        $notifs['chat'] = (\App\User::me())->unreads();
         RPC::call('Notification.refresh', $notifs);
     }
 

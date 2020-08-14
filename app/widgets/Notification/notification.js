@@ -84,8 +84,6 @@ var Notification = {
         Notification.displayTab();
     },
     setTab : function(key, counter) {
-        if (counter == '') counter = 0;
-
         if (Notification.tab_counter1_key == key) {
             Notification.tab_counter1 = counter;
         }
