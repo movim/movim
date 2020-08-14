@@ -229,11 +229,11 @@ msgstr "Je account is gecreëerd"
 
 #: [create]loading
 msgid "Loading"
-msgstr "Bezig met laden..."
+msgstr "Bezig met laden…"
 
 #: [create]placeholder
 msgid "…and start playing"
-msgstr "...en speel af"
+msgstr "…en speel af"
 
 #: [error]not_acceptable
 msgid "Not Acceptable"
@@ -506,11 +506,11 @@ msgstr "Geëncrypteerd bericht"
 
 #: [message]composing
 msgid "Composing…"
-msgstr "Aan het schrijven..."
+msgstr "Aan het schrijven…"
 
 #: [message]paused
 msgid "Paused…"
-msgstr "Gepauzeerd..."
+msgstr "Gepauzeerd…"
 
 #: [message]gone
 msgid "Contact gone"
@@ -534,7 +534,7 @@ msgstr "%s heeft uw aandacht nodig"
 
 #: [chat]placeholder
 msgid "Your message here…"
-msgstr "Je bericht hier..."
+msgstr "Je bericht hier…"
 
 #: [chat]smileys
 msgid "Smileys"
@@ -546,7 +546,7 @@ msgstr "Frequente contacten"
 
 #: [chat]new_title
 msgid "Nothing here yet…"
-msgstr "Hier is nog niets..."
+msgstr "Hier is nog niets…"
 
 #: [chat]new_text
 msgid "Don’t be shy, send a first message to start the discussion"
@@ -639,7 +639,7 @@ msgstr "Beheer"
 
 #: [chats]empty_title
 msgid "No chats yet…"
-msgstr "Momenteel geen gesprekken..."
+msgstr "Momenteel geen gesprekken…"
 
 #: [chats]empty
 msgid "Start a new conversation by clicking on the %s button."
@@ -1342,7 +1342,7 @@ msgstr "Contactpersonen"
 
 #: [menu]add_post
 msgid "Write a new post…"
-msgstr "Schrijf een nieuw bericht..."
+msgstr "Schrijf een nieuw bericht…"
 
 #: [invitations]title
 msgid "Pending Invitations"
@@ -2109,7 +2109,7 @@ msgstr ""
 
 #: [global]loading
 msgid "Loading…"
-msgstr "Laden..."
+msgstr "Laden…"
 
 #: [global]or
 msgid "Or"

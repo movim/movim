@@ -543,7 +543,7 @@ msgstr "Contactos frecuentes"
 
 #: [chat]new_title
 msgid "Nothing here yet…"
-msgstr "No hay nada aún aquí..."
+msgstr "No hay nada aún aquí…"
 
 #: [chat]new_text
 msgid "Don’t be shy, send a first message to start the discussion"
@@ -1319,7 +1319,7 @@ msgstr "Mal apodo (entre 4 y 40 carácteres)"
 
 #: [menu]empty_title
 msgid "No news yet…"
-msgstr "Sin noticias aún..."
+msgstr "Sin noticias aún…"
 
 #: [menu]empty
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
@@ -1339,7 +1339,7 @@ msgstr "Contactos"
 
 #: [menu]add_post
 msgid "Write a new post…"
-msgstr "Escribir una nueva publicación..."
+msgstr "Escribir una nueva publicación…"
 
 #: [invitations]title
 msgid "Pending Invitations"
@@ -2106,7 +2106,7 @@ msgstr ""
 
 #: [global]loading
 msgid "Loading…"
-msgstr "Cargando..."
+msgstr "Cargando…"
 
 #: [global]or
 msgid "Or"

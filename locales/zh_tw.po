@@ -537,7 +537,7 @@ msgstr "常聯絡的"
 
 #: [chat]new_title
 msgid "Nothing here yet…"
-msgstr "這裡沒有..."
+msgstr "這裡沒有…"
 
 #: [chat]new_text
 msgid "Don’t be shy, send a first message to start the discussion"

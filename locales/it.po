@@ -231,7 +231,7 @@ msgstr "Caricamento"
 
 #: [create]placeholder
 msgid "…and start playing"
-msgstr "...e inizia a giocare"
+msgstr "…e inizia a giocare"
 
 #: [error]not_acceptable
 msgid "Not Acceptable"
@@ -544,7 +544,7 @@ msgstr "Contatti frequenti"
 
 #: [chat]new_title
 msgid "Nothing here yet…"
-msgstr "Qui non c'è ancora nulla. Per ora..."
+msgstr "Qui non c'è ancora nulla. Per ora…"
 
 #: [chat]new_text
 msgid "Don’t be shy, send a first message to start the discussion"
@@ -1343,7 +1343,7 @@ msgstr "Contatti"
 
 #: [menu]add_post
 msgid "Write a new post…"
-msgstr "Scrivi un nuovo post..."
+msgstr "Scrivi un nuovo post…"
 
 #: [invitations]title
 msgid "Pending Invitations"
@@ -2064,7 +2064,7 @@ msgstr "Per favore, contatta l'amministratore del tuo server per sapere se quest
 
 #: [visio]calling
 msgid "…is calling you"
-msgstr "... ti sta chiamando"
+msgstr "… ti sta chiamando"
 
 #: [visio]video_call
 msgid "Incoming video call"
@@ -2076,7 +2076,7 @@ msgstr ""
 
 #: [visio]ringing
 msgid "…ringing"
-msgstr "... squillando ..."
+msgstr "… squillando …"
 
 #: [visio]declined
 #, fuzzy
@@ -2093,7 +2093,7 @@ msgstr "fallita"
 
 #: [visio]connecting
 msgid "…connecting"
-msgstr "... in collegamento ..."
+msgstr "… in collegamento …"
 
 #: [visio]ended
 msgid "call ended"
@@ -2109,7 +2109,7 @@ msgstr ""
 
 #: [global]loading
 msgid "Loading…"
-msgstr "Caricamento..."
+msgstr "Caricamento…"
 
 #: [global]or
 msgid "Or"
@@ -2282,7 +2282,7 @@ msgstr "Aggiornamento"
 
 #: [button]submitting
 msgid "Submitting"
-msgstr "Inviando..."
+msgstr "Inviando…"
 
 #: [button]register
 msgid "Register"

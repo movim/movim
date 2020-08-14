@@ -226,7 +226,7 @@ msgstr "Memuat"
 
 #: [create]placeholder
 msgid "…and start playing"
-msgstr "...dan mulai bermain"
+msgstr "…dan mulai bermain"
 
 #: [error]not_acceptable
 msgid "Not Acceptable"
@@ -1312,7 +1312,7 @@ msgstr "Nama panggilan buruk (diantara 4 dan 40 karakter)"
 
 #: [menu]empty_title
 msgid "No news yet…"
-msgstr "Belum ada berita..."
+msgstr "Belum ada berita…"
 
 #: [menu]empty
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."

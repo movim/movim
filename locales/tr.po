@@ -226,7 +226,7 @@ msgstr "Yükleniyor"
 
 #: [create]placeholder
 msgid "…and start playing"
-msgstr "...ve oynatılıyor"
+msgstr "…ve oynatılıyor"
 
 #: [error]not_acceptable
 msgid "Not Acceptable"

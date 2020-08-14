@@ -232,7 +232,7 @@ msgstr "载入中"
 
 #: [create]placeholder
 msgid "…and start playing"
-msgstr "...跟着开始播放"
+msgstr "…跟着开始播放"
 
 #: [error]not_acceptable
 msgid "Not Acceptable"

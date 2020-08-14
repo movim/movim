@@ -228,7 +228,7 @@ msgstr "Töltés"
 
 #: [create]placeholder
 msgid "…and start playing"
-msgstr "...és kezdődhet a játék"
+msgstr "…és kezdődhet a játék"
 
 #: [error]not_acceptable
 msgid "Not Acceptable"

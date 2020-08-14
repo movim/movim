@@ -224,7 +224,7 @@ msgstr "Kraunama"
 
 #: [create]placeholder
 msgid "…and start playing"
-msgstr "...ir pradėkit žaisti"
+msgstr "…ir pradėkit žaisti"
 
 #: [error]not_acceptable
 msgid "Not Acceptable"

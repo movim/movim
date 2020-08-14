@@ -240,7 +240,7 @@ msgstr "Wird geladen"
 
 #: [create]placeholder
 msgid "…and start playing"
-msgstr "...und beginne es auszuprobieren"
+msgstr "…und beginne es auszuprobieren"
 
 #: [error]not_acceptable
 msgid "Not Acceptable"
@@ -515,7 +515,7 @@ msgstr "Schreibt…"
 
 #: [message]paused
 msgid "Paused…"
-msgstr "Pausiert..."
+msgstr "Pausiert…"
 
 #: [message]gone
 msgid "Contact gone"
@@ -539,7 +539,7 @@ msgstr "%s braucht Ihre Aufmerksamkeit"
 
 #: [chat]placeholder
 msgid "Your message here…"
-msgstr "Ihre Nachricht..."
+msgstr "Ihre Nachricht…"
 
 #: [chat]smileys
 msgid "Smileys"
@@ -644,7 +644,7 @@ msgstr "Administration"
 
 #: [chats]empty_title
 msgid "No chats yet…"
-msgstr "Keine Chats bisher..."
+msgstr "Keine Chats bisher…"
 
 #: [chats]empty
 msgid "Start a new conversation by clicking on the %s button."
@@ -1328,7 +1328,7 @@ msgstr "Ungültiger Spitzname (zwischen 4 und 40 Zeichen)"
 
 #: [menu]empty_title
 msgid "No news yet…"
-msgstr "Nichts Neues bisher ..."
+msgstr "Nichts Neues bisher …"
 
 #: [menu]empty
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."

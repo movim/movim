@@ -237,7 +237,7 @@ msgstr "Идёт загрузка"
 
 #: [create]placeholder
 msgid "…and start playing"
-msgstr "... и начинайте пробовать"
+msgstr "… и начинайте пробовать"
 
 #: [error]not_acceptable
 msgid "Not Acceptable"
@@ -510,7 +510,7 @@ msgstr "Зашифрованное сообщение"
 
 #: [message]composing
 msgid "Composing…"
-msgstr "Сопоставление..."
+msgstr "Сопоставление…"
 
 #: [message]paused
 msgid "Paused…"
@@ -550,7 +550,7 @@ msgstr "Популярные контакты"
 
 #: [chat]new_title
 msgid "Nothing here yet…"
-msgstr "Пока ничего нет..."
+msgstr "Пока ничего нет…"
 
 #: [chat]new_text
 msgid "Don’t be shy, send a first message to start the discussion"
@@ -643,7 +643,7 @@ msgstr "Администрирование"
 
 #: [chats]empty_title
 msgid "No chats yet…"
-msgstr "Нет чатов..."
+msgstr "Нет чатов…"
 
 #: [chats]empty
 msgid "Start a new conversation by clicking on the %s button."
@@ -1349,7 +1349,7 @@ msgstr "Контакты"
 
 #: [menu]add_post
 msgid "Write a new post…"
-msgstr "Написать новый пост..."
+msgstr "Написать новый пост…"
 
 #: [invitations]title
 msgid "Pending Invitations"
@@ -1546,7 +1546,7 @@ msgstr "Ох! Здравствуйте!"
 
 #: [hello]enter_paragraph
 msgid "It seems that you’re new there! Welcome on Movim!"
-msgstr "Выглядит словно Вы здесь впервые... Добро пожаловать в Movim! "
+msgstr "Выглядит словно Вы здесь впервые… Добро пожаловать в Movim! "
 
 #: [hello]menu_title
 msgid "Check the Menu"
@@ -2072,7 +2072,7 @@ msgstr "Пожалуйста, свяжитесь с Вашим админист�
 
 #: [visio]calling
 msgid "…is calling you"
-msgstr "... звонит Вам"
+msgstr "… звонит Вам"
 
 #: [visio]video_call
 msgid "Incoming video call"
@@ -2084,7 +2084,7 @@ msgstr ""
 
 #: [visio]ringing
 msgid "…ringing"
-msgstr "...звонит"
+msgstr "…звонит"
 
 #: [visio]declined
 #, fuzzy
@@ -2101,7 +2101,7 @@ msgstr "не удалось"
 
 #: [visio]connecting
 msgid "…connecting"
-msgstr "... соединение"
+msgstr "… соединение"
 
 #: [visio]ended
 msgid "call ended"
@@ -2117,7 +2117,7 @@ msgstr "Movim - это потрясающая распределенная, со
 
 #: [global]loading
 msgid "Loading…"
-msgstr "Загрузка..."
+msgstr "Загрузка…"
 
 #: [global]or
 msgid "Or"

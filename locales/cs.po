@@ -227,7 +227,7 @@ msgstr "Načítání"
 
 #: [create]placeholder
 msgid "…and start playing"
-msgstr "... a začněte hrát"
+msgstr "… a začněte hrát"
 
 #: [error]not_acceptable
 msgid "Not Acceptable"
@@ -1316,7 +1316,7 @@ msgstr "Nesprávné přihlašovací jméno (mezi 4 a 40 znaky)"
 
 #: [menu]empty_title
 msgid "No news yet…"
-msgstr "Zatím žádné novinky..."
+msgstr "Zatím žádné novinky…"
 
 #: [menu]empty
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."

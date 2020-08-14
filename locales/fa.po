@@ -225,7 +225,7 @@ msgstr "درحال بارگیری"
 
 #: [create]placeholder
 msgid "…and start playing"
-msgstr "...و شروع به بازی کنید"
+msgstr "…و شروع به بازی کنید"
 
 #: [error]not_acceptable
 msgid "Not Acceptable"
@@ -1467,7 +1467,7 @@ msgstr ""
 
 #: [post]more
 msgid "Read more"
-msgstr "بیشتر ..."
+msgstr "بیشتر …"
 
 #: [post]comments_disabled
 msgid "Comments disabled"

@@ -225,7 +225,7 @@ msgstr "Ielādē"
 
 #: [create]placeholder
 msgid "…and start playing"
-msgstr "...un uzsākt atskaņošanu "
+msgstr "…un uzsākt atskaņošanu "
 
 #: [error]not_acceptable
 msgid "Not Acceptable"

@@ -2091,7 +2091,7 @@ msgstr ""
 
 #: [global]loading
 msgid "Loading…"
-msgstr "Se încarcă..."
+msgstr "Se încarcă…"
 
 #: [global]or
 msgid "Or"

@@ -224,7 +224,7 @@ msgstr "Завантаження"
 
 #: [create]placeholder
 msgid "…and start playing"
-msgstr "...та почніть грати"
+msgstr "…та почніть грати"
 
 #: [error]not_acceptable
 msgid "Not Acceptable"
