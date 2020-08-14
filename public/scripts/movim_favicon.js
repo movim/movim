@@ -23,7 +23,7 @@ var MovimFavicon = {
                 ctx.drawImage(faviconImage, 0, 0, 32, 32);
 
                 ctx.textAlign = 'center';
-                ctx.font = '19px bold serif';
+                ctx.font = 'bold 18px Open Sans';
 
                 radius = 5;
                 x = large ? 4 : 12;
@@ -49,7 +49,7 @@ var MovimFavicon = {
 
                 ctx.fillStyle = "#fff";
                 counterTextX = large ? 18 : 22;
-                ctx.fillText( counter , counterTextX , 29, w);
+                ctx.fillText( counter , counterTextX , 28, w);
 
                 // In case the counter was reset in the meantime
                 if (MovimFavicon.tmpCounter > 0) {
