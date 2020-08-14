@@ -68,7 +68,7 @@ class Rooms extends Base
         $this->ajaxHttpGet();
         $this->rpc('Chat_ajaxGet');
 
-        Notification::toast($this->__('chatrooms.destroyed'));
+        Toast::send($this->__('chatrooms.destroyed'));
     }
 
     public function onConnected($packet)
@@ -80,7 +80,7 @@ class Rooms extends Base
     public function onDisconnected($packet)
     {
         $this->onPresence($packet->content);
-        Notification::toast($this->__('chatrooms.disconnected'));
+        Toast::send($this->__('chatrooms.disconnected'));
     }
 
     public function onBookmarkGet($packet)
@@ -98,7 +98,7 @@ class Rooms extends Base
 
     public function onBookmarkSynchronized($packet)
     {
-        Notification::toast($this->__('chatrooms.synchronized', $packet->content));
+        Toast::send($this->__('chatrooms.synchronized', $packet->content));
     }
 
     public function onBookmarkSet($packet)
@@ -109,7 +109,7 @@ class Rooms extends Base
             $this->ajaxJoin($conference->conference, $conference->nick);
         }
 
-        Notification::toast($this->__('bookmarks.updated'));
+        Toast::send($this->__('bookmarks.updated'));
         $this->ajaxHttpGet();
     }
 
@@ -305,30 +305,30 @@ class Rooms extends Base
 
     public function onConflict()
     {
-        Notification::toast($this->__('chatrooms.conflict'));
+        Toast::send($this->__('chatrooms.conflict'));
     }
 
     public function onRegistrationRequired($packet)
     {
-        Notification::toast($this->__('chatrooms.registrationrequired'));
+        Toast::send($this->__('chatrooms.registrationrequired'));
         $this->ajaxExit($packet->content);
     }
 
     public function onRemoteServerNotFound($packet)
     {
-        Notification::toast($this->__('chatrooms.remoteservernotfound'));
+        Toast::send($this->__('chatrooms.remoteservernotfound'));
         $this->ajaxExit($packet->content);
     }
 
     public function onItemNotFound($packet)
     {
-        Notification::toast($this->__('chatrooms.itemnotfound'));
+        Toast::send($this->__('chatrooms.itemnotfound'));
         $this->ajaxExit($packet->content);
     }
 
     public function onNotAuthorized($packet)
     {
-        Notification::toast($this->__('chatrooms.notauthorized'));
+        Toast::send($this->__('chatrooms.notauthorized'));
         $this->ajaxExit($packet->content);
     }
 

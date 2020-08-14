@@ -52,7 +52,6 @@ var Notification = {
             sec*1000);
     },
     refresh : function(keys) {
-        console.log(keys);
         var counters = document.querySelectorAll('.counter');
         for(i = 0; i < counters.length; i++) {
             var n = counters[i];
@@ -122,24 +121,6 @@ var Notification = {
     current : function(key) {
         Notification.notifs_key = key;
         Notification_ajaxCurrent(Notification.notifs_key);
-    },
-    toast : function(title) {
-        // Android notification
-        if (typeof Android !== 'undefined') {
-            Android.showToast(title);
-            return;
-        }
-
-        target = document.getElementById('toast');
-
-        if (target) {
-            target.innerHTML = title;
-        }
-
-        setTimeout(function() {
-            target = document.getElementById('toast');
-            target.innerHTML = '';
-        }, 3000);
     },
     snackbar : function(html, time) {
         if (typeof Android !== 'undefined'

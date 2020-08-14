@@ -45,7 +45,6 @@
                 <p class="all">
                    Pako.js <a href="https://github.com/nodeca/pako">nodeca/pako
                    </a> under MIT<br />
-                   Favico.js - Miroslav Magda <a href="http://lab.ejci.net/favico.js/">lab.ejci.net/favico.js</a> under GPL and MIT<br/>
                    Markdown - Michel Fortin <a href="http://michelf.ca/projects/php-markdown/">michelf.ca</a> ©Michel Fortin<br/>
                    Template Engine - RainTPL - Federico Ulfo <a href="http://www.raintpl.com/">www.raintpl.com</a> under MIT<br/>
                    Embed - Oscar Otero <a href="https://github.com/oscarotero/Embed">GitHub Embed</a> under MIT<br/>

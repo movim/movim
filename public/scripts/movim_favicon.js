@@ -58,22 +58,13 @@ var MovimFavicon = {
     },
 
     set: function(url) {
-        document.querySelector('link[sizes="' + MovimFavicon.sizes + '"]').remove();
-
-        // We create a favicon link
-        var linkElement = document.createElement('link');
-        linkElement.rel = 'icon';
-        linkElement.sizes = MovimFavicon.sizes;
-        linkElement.type = 'image/png';
-        linkElement.href = url;
-
-        document.head.appendChild(linkElement);
+        link = document.querySelector('link[sizes="' + MovimFavicon.sizes + '"]');
+        link.href = url;
     },
 
     init: function() {
         link = document.querySelector('link[sizes="' + MovimFavicon.sizes + '"]');
         MovimFavicon.originalUrl = link.href;
-        MovimFavicon.set(link.href);
     }
 }
 

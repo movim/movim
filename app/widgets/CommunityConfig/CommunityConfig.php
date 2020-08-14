@@ -42,17 +42,17 @@ class CommunityConfig extends Base
     public function onAvatarSet($packet)
     {
         $this->rpc('Dialog_ajaxClear');
-        Notification::toast($this->__('avatar.updated'));
+        Toast::send($this->__('avatar.updated'));
     }
 
     public function onConfigSaved()
     {
-        Notification::toast($this->__('communityaffiliation.config_saved'));
+        Toast::send($this->__('communityaffiliation.config_saved'));
     }
 
     public function onConfigError($packet)
     {
-        Notification::toast(
+        Toast::send(
             $packet->content ??
             $this->__('communityaffiliation.config_error')
         );

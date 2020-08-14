@@ -21,11 +21,6 @@ class Notification extends Base
         RPC::call('Notification.counter', 'chat', $user->unreads(null, true));
     }
 
-    public static function toast($title)
-    {
-        RPC::call('Notification.toast', $title);
-    }
-
     public static function rpcCall($rpc)
     {
         self::$rpcCall = $rpc;
@@ -183,12 +178,8 @@ class Notification extends Base
         $session = Session::start();
         $notifs = $session->get('notifs') ?? [];
 
-        $chatCount = (\App\User::me())->unreads(null, true, true);
-        if ($chatCount) $notifs['chat'] = $chatCount;
-
-        if (!empty($notifs)) {
-            RPC::call('Notification.refresh', $notifs);
-        }
+        $notifs['chat'] = (\App\User::me())->unreads(null, true, true);
+        RPC::call('Notification.refresh', $notifs);
     }
 
     /**
@@ -199,6 +190,9 @@ class Notification extends Base
      */
     public function ajaxCurrent($key)
     {
+        // Clear the specific keys
+        if (strpos($key, '|') !== false) (new Notification)->ajaxClear($key);
+
         $session = Session::start();
 
         // If the page was blurred

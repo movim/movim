@@ -99,7 +99,7 @@ class RoomsUtils extends Base
     public function onAvatarSet($packet)
     {
         $this->rpc('Dialog_ajaxClear');
-        Notification::toast($this->__('avatar.updated'));
+        Toast::send($this->__('avatar.updated'));
     }
 
     /**
@@ -193,9 +193,9 @@ class RoomsUtils extends Base
     public function ajaxAddConfirm($form)
     {
         if (!$this->validateRoom($form->jid->value)) {
-            Notification::toast($this->__('chatrooms.bad_id'));
+            Toast::send($this->__('chatrooms.bad_id'));
         } elseif (trim($form->name->value) == '') {
-            Notification::toast($this->__('chatrooms.empty_name'));
+            Toast::send($this->__('chatrooms.empty_name'));
         } else {
             $this->rpc('Rooms_ajaxExit', $form->jid->value);
 
@@ -272,7 +272,7 @@ class RoomsUtils extends Base
               ->setInvite($form->invite->value)
               ->request();
 
-            Notification::toast($this->__('room.invited'));
+            Toast::send($this->__('room.invited'));
             $this->rpc('Dialog_ajaxClear');
         }
     }

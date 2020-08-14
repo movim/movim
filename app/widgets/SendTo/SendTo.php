@@ -56,7 +56,7 @@ class SendTo extends Base
     {
         $file->type = 'xmpp';
 
-        Notification::toast($muc
+        Toast::send($muc
             ? $this->__('sendto.shared_chatroom')
             : $this->__('sendto.shared_contact')
         );

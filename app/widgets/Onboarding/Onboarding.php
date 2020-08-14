@@ -30,12 +30,12 @@ class Onboarding extends Base
     public function ajaxEnablePublic()
     {
         $this->user->setPublic();
-        Notification::toast($this->__('vcard.public'));
+        Toast::send($this->__('vcard.public'));
     }
 
     public function ajaxEnableRestricted()
     {
         $this->user->setPrivate();
-        Notification::toast($this->__('vcard.restricted'));
+        Toast::send($this->__('vcard.restricted'));
     }
 }

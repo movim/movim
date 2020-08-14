@@ -74,16 +74,22 @@ class Chat extends \Movim\Widget\Base
 
     public function onNotificationCounterClear($params)
     {
-        list($page, $first, $room) = array_pad($params, 3, null);
+        list($page, $jid) = array_pad($params, 3, null);
 
         if ($page === 'chat') {
-            $this->prepareMessages($first, ($room === 'room'), true);
+            // Check if the jid is a connected chatroom
+            $presence = $this->user->session->presences()
+                ->where('jid', $jid)
+                ->where('mucjid', $this->user->id)
+                ->first();
+
+            $this->prepareMessages($jid, ($presence), true);
         }
     }
 
     public function onPublishError($packet)
     {
-        Notification::toast(
+        Toast::send(
             $packet->content ??
             $this->__('chat.publish_error')
         );
@@ -196,7 +202,7 @@ class Chat extends \Movim\Widget\Base
 
     public function onMAMRetrieved()
     {
-        Notification::toast($this->__('chat.mam_retrieval'));
+        Toast::send($this->__('chat.mam_retrieval'));
     }
 
     public function onMAMMucRetrieved($packet)
@@ -215,7 +221,7 @@ class Chat extends \Movim\Widget\Base
 
     public function onRoomConfigError($packet)
     {
-        Notification::toast($packet->content);
+        Toast::send($packet->content);
     }
 
     public function onRoomConfig($packet)
@@ -239,7 +245,7 @@ class Chat extends \Movim\Widget\Base
         $r->setTo($packet->content)
           ->request();
 
-        Notification::toast($this->__('chatroom.config_saved'));
+        Toast::send($this->__('chatroom.config_saved'));
     }
 
     private function setState(string $jid, string $message, $first = true)
@@ -341,7 +347,7 @@ class Chat extends \Movim\Widget\Base
             }
 
             $this->prepareMessages($room, true);
-            $this->rpc('Notification.current', 'chat|'.$room.'|room');
+            $this->rpc('Notification.current', 'chat|'.$room);
             $this->rpc('Notification.clearAndroid', $this->route('chat', [$room, 'room']));
             $this->rpc('Chat.scrollToSeparator');
         } else {
@@ -650,7 +656,7 @@ class Chat extends \Movim\Widget\Base
 
         if ($messages->count() > 0) {
             if ($prepend) {
-                Notification::toast($this->__('message.history', $messages->count()));
+                Toast::send($this->__('message.history', $messages->count()));
             } else {
                 $messages = $messages->reverse();
             }
@@ -993,11 +999,9 @@ class Chat extends \Movim\Widget\Base
             }
 
             $message->icon = firstLetterCapitalize($message->resource);
+        }
 
-            if ($message->seen === false) {
-                $message->seen = ('chat|'.$message->jidfrom.'|room' == $n->getCurrent());
-            }
-        } elseif($message->seen === false) {
+        if($message->seen === false) {
             $message->seen = ('chat|'.$message->jidfrom == $n->getCurrent());
         }
 

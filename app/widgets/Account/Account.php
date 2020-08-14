@@ -23,7 +23,7 @@ class Account extends \Movim\Widget\Base
     public function onPasswordChanged()
     {
         $this->rpc('Account.resetPassword');
-        Notification::toast($this->__('account.password_changed'));
+        Toast::send($this->__('account.password_changed'));
 
         $this->rpc('Presence_ajaxLogout');
     }
@@ -38,7 +38,7 @@ class Account extends \Movim\Widget\Base
     public function onRegistered()
     {
         $this->rpc('MovimTpl.fill', '#account_gateways', $this->prepareGateways());
-        Notification::toast($this->__('client.registered'));
+        Toast::send($this->__('client.registered'));
     }
 
     public function onRegister($package)
@@ -65,7 +65,7 @@ class Account extends \Movim\Widget\Base
 
     public function onRegisterError($packet)
     {
-        Notification::toast(
+        Toast::send(
             $packet->content ??
             $this->__('error.oops')
         );
@@ -89,11 +89,11 @@ class Account extends \Movim\Widget\Base
                    ->request();
             } else {
                 $this->rpc('Account.resetPassword');
-                Notification::toast($this->__('account.password_not_same'));
+                Toast::send($this->__('account.password_not_same'));
             }
         } else {
             $this->rpc('Account.resetPassword');
-            Notification::toast($this->__('account.password_not_valid'));
+            Toast::send($this->__('account.password_not_valid'));
         }
     }
 
@@ -123,7 +123,7 @@ class Account extends \Movim\Widget\Base
             $da = new Remove;
             $da->request();
         } else {
-            Notification::toast($this->__('account.delete_text_error'));
+            Toast::send($this->__('account.delete_text_error'));
         }
     }
 

@@ -39,7 +39,7 @@ class Config extends Base
 
         $this->refreshConfig();
 
-        Notification::toast($this->__('config.updated'));
+        Toast::send($this->__('config.updated'));
     }
 
     public function onMAMConfig($package)
@@ -51,7 +51,7 @@ class Config extends Base
 
     public function onMAMConfigSaved()
     {
-        Notification::toast($this->__('config.mam_saved'));
+        Toast::send($this->__('config.mam_saved'));
     }
 
     public function ajaxMAMGetConfig()
@@ -72,7 +72,7 @@ class Config extends Base
     {
         if (!$this->validateForm($data)) {
             $this->refreshConfig();
-            Notification::toast($this->__('config.not_valid'));
+            Toast::send($this->__('config.not_valid'));
             return;
         }
 

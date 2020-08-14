@@ -30,22 +30,22 @@ class Upload extends Base
 
     public function onError()
     {
-        Notification::toast($this->__('upload.error_failed'));
+        Toast::send($this->__('upload.error_failed'));
     }
 
     public function onErrorFileTooLarge()
     {
-        Notification::toast($this->__('upload.error_filesize'));
+        Toast::send($this->__('upload.error_filesize'));
     }
 
     public function onErrorResourceConstraint()
     {
-        Notification::toast($this->__('upload.error_resource_constraint'));
+        Toast::send($this->__('upload.error_resource_constraint'));
     }
 
     public function onErrorNotAllowed()
     {
-        Notification::toast($this->__('upload.error_not_allowed'));
+        Toast::send($this->__('upload.error_not_allowed'));
     }
 
     public function ajaxRequest()
@@ -72,6 +72,6 @@ class Upload extends Base
 
     public function ajaxFailed()
     {
-        Notification::toast($this->__('upload.error_failed'));
+        Toast::send($this->__('upload.error_failed'));
     }
 }

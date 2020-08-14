@@ -17,7 +17,7 @@ class Api extends Base
 
         if (isset($json) && $json->status == 200) {
             $this->rpc('MovimUtils.reloadThis');
-            Notification::toast($this->__('api.conf_updated'));
+            Toast::send($this->__('api.conf_updated'));
         }
     }
 

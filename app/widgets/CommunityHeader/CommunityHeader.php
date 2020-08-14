@@ -43,7 +43,7 @@ class CommunityHeader extends Base
 
     public function onTestPublishError($packet)
     {
-        Notification::toast($this->__('publishbrief.no_publication'));
+        Toast::send($this->__('publishbrief.no_publication'));
     }
 
     public function onSubscribed($packet)
@@ -52,12 +52,12 @@ class CommunityHeader extends Base
 
         $this->ajaxGetMetadata($origin, $node);
 
-        Notification::toast($this->__('communityheader.subscribed'));
+        Toast::send($this->__('communityheader.subscribed'));
     }
 
     public function onSubscriptionUnsupported($packet)
     {
-        Notification::toast($this->__('communityheader.subscription_unsupported'));
+        Toast::send($this->__('communityheader.subscription_unsupported'));
     }
 
     public function onUnsubscribed($packet)
@@ -66,7 +66,7 @@ class CommunityHeader extends Base
 
         $this->ajaxGetMetadata($origin, $node);
 
-        Notification::toast($this->__('communityheader.unsubscribed'));
+        Toast::send($this->__('communityheader.unsubscribed'));
     }
 
     public function ajaxGetMetadata($origin, $node)

@@ -34,7 +34,7 @@ class Vcard4 extends Base
     {
         $html = $this->prepareForm($packet->content);
 
-        Notification::toast($this->__('vcard.updated'));
+        Toast::send($this->__('vcard.updated'));
 
         $this->rpc('MovimTpl.fill', '#vcard_form', $html);
         $this->rpc('MovimUtils.applyAutoheight');
@@ -42,12 +42,12 @@ class Vcard4 extends Base
 
     public function onMyVcard4Received()
     {
-        Notification::toast($this->__('vcard.updated'));
+        Toast::send($this->__('vcard.updated'));
     }
 
     public function onMyVcard4NotReceived()
     {
-        Notification::toast($this->__('vcard.not_updated'));
+        Toast::send($this->__('vcard.not_updated'));
     }
 
     public function ajaxGetVcard()
@@ -115,7 +115,7 @@ class Vcard4 extends Base
     {
         if (Validator::regex('/^[a-z_\-\d]{3,64}$/i')->validate($nickname)) {
             if (\App\User::where('nickname', $nickname)->where('id', '!=', $this->user->id)->first()) {
-                Notification::toast($this->__('profile.nickname_conflict'));
+                Toast::send($this->__('profile.nickname_conflict'));
                 return;
             }
 
@@ -124,9 +124,9 @@ class Vcard4 extends Base
             $this->ajaxGetVcard();
 
             (new Dialog)->ajaxClear();
-            Notification::toast($this->__('profile.nickname_saved'));
+            Toast::send($this->__('profile.nickname_saved'));
         } else {
-            Notification::toast($this->__('profile.nickname_error'));
+            Toast::send($this->__('profile.nickname_error'));
         }
     }
 
@@ -134,10 +134,10 @@ class Vcard4 extends Base
     {
         if ($value == true) {
             $this->user->setPublic();
-            Notification::toast($this->__('vcard.public'));
+            Toast::send($this->__('vcard.public'));
         } else {
             $this->user->setPrivate();
-            Notification::toast($this->__('vcard.restricted'));
+            Toast::send($this->__('vcard.restricted'));
         }
     }
 
