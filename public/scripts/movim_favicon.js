@@ -1,8 +1,11 @@
 var MovimFavicon = {
     originalUrl: null,
     sizes: '128x128',
+    tmpCounter: 0,
 
     counter: function(counter) {
+        MovimFavicon.tmpCounter = counter;
+
         link = document.querySelector('link[sizes="' + MovimFavicon.sizes + '"]');
 
         if (counter > 0) {
@@ -48,7 +51,10 @@ var MovimFavicon = {
                 counterTextX = large ? 18 : 22;
                 ctx.fillText( counter , counterTextX , 29, w);
 
-                MovimFavicon.set(canvas.toDataURL());
+                // In case the counter was reset in the meantime
+                if (MovimFavicon.tmpCounter > 0) {
+                    MovimFavicon.set(canvas.toDataURL());
+                }
             }
 
             faviconImage.src = MovimFavicon.originalUrl;
