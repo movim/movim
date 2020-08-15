@@ -8,7 +8,25 @@ ul#chats_widget_list ~ .placeholder {
 
 ul#chats_widget_list li {
     transition: opacity 0.2s ease-in-out;
+    overflow: hidden;
     box-sizing: border-box;
+    max-height: 20rem;
+}
+
+ul#chats_widget_list li.closing {
+    max-height: 0rem;
+}
+
+ul#chats_widget_list li.closing.to_left {
+    transform: translateX(-100%);
+}
+
+ul#chats_widget_list li.closing.to_right {
+    transform: translateX(100%);
+}
+
+ul#chats_widget_list li.moving {
+    transition: transform 0.2s, max-height 0.2s ease-in-out 0.3s;
 }
 
 ul#chats_widget_list li.close {
@@ -17,4 +35,8 @@ ul#chats_widget_list li.close {
 
 ul#chats_widget_list:empty ~ .placeholder {
     display: block;
+}
+
+div#scroll_block.freeze {
+    overflow: hidden;
 }

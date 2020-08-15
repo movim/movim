@@ -17,7 +17,7 @@
     <?php $this->widget('Upload');?>
     <?php $this->widget('Chat');?>
     <?php $this->widget('ChatActions');?>
-    <div>
+    <div id="scroll_block">
         <?php $this->widget('Chats');?>
         <?php $this->widget('Rooms');?>
         <?php $this->widget('RoomsUtils');?>

@@ -26,7 +26,7 @@ var Chats = {
 
                 items[i].onmousedown = function(e) {
                     if (e.which == 2) {
-                        Chats_ajaxClose(this.dataset.jid, (MovimUtils.urlParts().params[0] === this.dataset.jid));
+                        Chats.closeItem(this, false);
                         e.preventDefault();
                     }
                 }
@@ -34,13 +34,15 @@ var Chats = {
                 items[i].addEventListener('touchstart', function(event) {
                     Chats.startX = event.targetTouches[0].pageX;
                     Chats.startY = event.targetTouches[0].pageY;
+
+                    this.classList.remove('moving');
                 }, true);
 
                 items[i].addEventListener('touchmove', function(event) {
                     moveX = Math.abs(parseInt(event.targetTouches[0].pageX - Chats.startX));
-                    moveY = Math.abs(parseInt(event.targetTouches[0].pageY - Chats.startY));
 
-                    if (moveX > 15 && moveX > moveY && moveY < 15) {
+                    if (moveX > 25) {
+                        document.querySelector('#scroll_block').classList.add('freeze');
                         if (moveX > this.offsetWidth/2) {
                             this.classList.add('close');
                         } else {
@@ -57,13 +59,14 @@ var Chats = {
                 }, true);
 
                 items[i].addEventListener('touchend', function(event) {
-                    if (event.changedTouches[0]) {
-                        moveX = Math.abs(parseInt(event.changedTouches[0].pageX - Chats.startX));
-                        moveY = Math.abs(parseInt(event.changedTouches[0].pageY - Chats.startY));
+                    document.querySelector('#scroll_block').classList.remove('freeze');
+                    this.classList.add('moving');
 
-                        if (moveX > this.offsetWidth/2 && moveY < this.offsetHeight) {
-                            this.style.display = 'none';
-                            Chats_ajaxClose(this.dataset.jid, (MovimUtils.urlParts().params[0] === this.dataset.jid));
+                    if (event.changedTouches[0]) {
+                        moveX = parseInt(event.changedTouches[0].pageX - Chats.startX);
+
+                        if (Math.abs(moveX) > this.offsetWidth/2) {
+                            Chats.closeItem(this, (moveX < 0));
                         }
                     }
 
@@ -78,6 +81,15 @@ var Chats = {
             }
             i++;
         }
+    },
+    closeItem(li, toLeft) {
+        li.classList.add('moving');
+        li.classList.add('closing');
+        li.classList.add(toLeft ? 'to_left' : 'to_right');
+
+        window.setTimeout(() => {
+            Chats_ajaxClose(li.dataset.jid, (MovimUtils.urlParts().params[0] === li.dataset.jid));
+        }, 500);
     },
     prepend: function(from, html) {
         MovimTpl.remove('#' + MovimUtils.cleanupId(from + '_chat_item'));
