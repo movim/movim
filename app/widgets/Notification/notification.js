@@ -76,6 +76,7 @@ var Notification = {
             if (n.dataset.key != null
             && n.dataset.key == key) {
                 if (counter > 100) counter = '+100';
+                if (counter == 0) counter = '';
                 n.innerHTML = counter;
             }
         }
