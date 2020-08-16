@@ -1,6 +1,7 @@
 var Chats = {
     startX: 0,
     startY: 0,
+    slideAuthorized: false,
 
     refresh: function(clearAllActives = false) {
         var list = document.querySelector('#chats_widget_list');
@@ -31,6 +32,8 @@ var Chats = {
                     }
                 }
 
+                clientWidth = Math.abs(document.body.clientWidth);
+
                 items[i].addEventListener('touchstart', function(event) {
                     Chats.startX = event.targetTouches[0].pageX;
                     Chats.startY = event.targetTouches[0].pageY;
@@ -40,8 +43,10 @@ var Chats = {
 
                 items[i].addEventListener('touchmove', function(event) {
                     moveX = Math.abs(parseInt(event.targetTouches[0].pageX - Chats.startX));
+                    moveY = Math.abs(parseInt(event.targetTouches[0].pageY - Chats.startY));
+                    delay = 20;
 
-                    if (moveX > 25) {
+                    if (moveX > delay && moveX <= clientWidth) {
                         document.querySelector('#scroll_block').classList.add('freeze');
                         if (moveX > this.offsetWidth/2) {
                             this.classList.add('close');
@@ -49,9 +54,15 @@ var Chats = {
                             this.classList.remove('close');
                         }
 
-                        this.style.transform = 'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, '
-                            + parseInt(event.targetTouches[0].pageX - Chats.startX)
-                            +', 0, 0, 1)';
+                        if (moveY < delay) {
+                            Chats.slideAuthorized = true;
+                        }
+
+                        if (Chats.slideAuthorized) {
+                            this.style.transform = 'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, '
+                                + (parseInt(event.targetTouches[0].pageX - Chats.startX) - delay)
+                                +', 0, 0, 1)';
+                        }
                     } else {
                         this.style.transform = '';
                         this.classList.remove('close');
@@ -65,13 +76,14 @@ var Chats = {
                     if (event.changedTouches[0]) {
                         moveX = parseInt(event.changedTouches[0].pageX - Chats.startX);
 
-                        if (Math.abs(moveX) > this.offsetWidth/2) {
+                        if (Math.abs(moveX) > this.offsetWidth/2 && Chats.slideAuthorized) {
                             Chats.closeItem(this, (moveX < 0));
                         }
                     }
 
                     this.style.transform = '';
                     this.classList.remove('close');
+                    Chats.slideAuthorized = false;
                     Chats.startX = Chats.startY = 0;
                 }, true);
             }
