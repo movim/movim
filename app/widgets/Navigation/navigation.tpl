@@ -1,5 +1,18 @@
-<ul class="list active" dir="ltr">
+<ul id="navigation" class="list active" dir="ltr">
     {if="$c->getUser()->hasPubsub()"}
+    <a class="classic on_desktop"
+       href="{$c->route('publish')}"
+       title="{$c->__('page.publish')}">
+        <li {if="$page == 'publish'"}class="active"{/if}>
+            <span class="primary icon">
+                <i class="material-icons">post_add</i>
+            </span>
+            <div>
+                <p class="normal">{$c->__('page.publish')}</p>
+            </div>
+        </li>
+    </a>
+    <hr />
     <a class="classic"
        href="{$c->route('news')}"
        title="{$c->__('page.news')}">
