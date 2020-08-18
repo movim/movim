@@ -101,7 +101,7 @@ var Chats = {
         li.classList.add(toLeft ? 'to_left' : 'to_right');
 
         window.setTimeout(() => {
-            //Chats_ajaxClose(li.dataset.jid, (MovimUtils.urlParts().params[0] === li.dataset.jid));
+            Chats_ajaxClose(li.dataset.jid, (MovimUtils.urlParts().params[0] === li.dataset.jid));
         }, 350);
     },
     prepend: function(from, html) {
