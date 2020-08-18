@@ -80,10 +80,11 @@ var Chats = {
 
                     if (Math.abs(Chats.translateX) > this.offsetWidth/2 && Chats.slideAuthorized) {
                         Chats.closeItem(this, (Chats.translateX < 0));
+                    } else {
+                        this.classList.remove('close');
                     }
 
                     this.style.transform = '';
-                    this.classList.remove('close');
                     Chats.slideAuthorized = false;
                     Chats.startX = Chats.startY = Chats.translateX = Chats.translateY = 0;
                 }, true);
@@ -96,12 +97,11 @@ var Chats = {
         }
     },
     closeItem(li, toLeft) {
-        li.classList.add('moving');
         li.classList.add('closing');
         li.classList.add(toLeft ? 'to_left' : 'to_right');
 
         window.setTimeout(() => {
-            Chats_ajaxClose(li.dataset.jid, (MovimUtils.urlParts().params[0] === li.dataset.jid));
+            //Chats_ajaxClose(li.dataset.jid, (MovimUtils.urlParts().params[0] === li.dataset.jid));
         }, 350);
     },
     prepend: function(from, html) {

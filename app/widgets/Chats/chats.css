@@ -13,8 +13,13 @@ ul#chats_widget_list li {
     max-height: 10rem;
 }
 
+ul#chats_widget_list li.moving {
+    transition: transform 0.2s, max-height 0.2s ease-in-out 0.4s;
+}
+
 ul#chats_widget_list li.closing {
-    max-height: 0rem;
+    transition: transform 0.2s, max-height 0.2s ease-in-out 0.4s;
+    max-height: 0;
 }
 
 ul#chats_widget_list li.closing.to_left {
@@ -23,10 +28,6 @@ ul#chats_widget_list li.closing.to_left {
 
 ul#chats_widget_list li.closing.to_right {
     transform: translateX(100%);
-}
-
-ul#chats_widget_list li.moving {
-    transition: transform 0.15s, max-height 0.15s ease-in-out 0.2s;
 }
 
 ul#chats_widget_list li.close {
