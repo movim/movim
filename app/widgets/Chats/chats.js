@@ -102,7 +102,7 @@ var Chats = {
 
         window.setTimeout(() => {
             Chats_ajaxClose(li.dataset.jid, (MovimUtils.urlParts().params[0] === li.dataset.jid));
-        }, 350);
+        }, 600);
     },
     prepend: function(from, html) {
         MovimTpl.remove('#' + MovimUtils.cleanupId(from + '_chat_item'));
