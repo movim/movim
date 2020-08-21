@@ -51,10 +51,12 @@ class Syndication extends Base
         $alternate->setAttribute('rel', 'alternate');
 
         if ($contact != null) {
-            $feed->appendChild($dom->createElement('title', __('feed.title', $contact->truename)));
+            $feed->appendChild($title = $dom->createElement('title'));
+            $title->appendChild($dom->createTextNode(__('feed.title', $contact->truename)));
 
             $feed->appendChild($author = $dom->createElement('author'));
-            $author->appendChild($dom->createElement('name', $contact->truename));
+            $author->appendChild($name = $dom->createElement('name'));
+            $name->appendChild($dom->createTextNode($contact->truename));
             $author->appendChild($dom->createElement('uri', $this->route('blog', $from)));
 
             $feed->appendChild($dom->createElement('logo', $contact->getPhoto('l')));
@@ -65,13 +67,15 @@ class Syndication extends Base
 
         if ($item != null) {
             if ($item->name) {
-                $feed->appendChild($dom->createElement('title', $item->name));
+                $feed->appendChild($title = $dom->createElement('title'));
+                $title->appendChild($dom->createTextNode($item->name));
             } else {
                 $feed->appendChild($dom->createElement('title', $item->node));
             }
 
             if ($item->description) {
-                $feed->appendChild($dom->createElement('subtitle', $item->description));
+                $feed->appendChild($subtitle = $dom->createElement('subtitle'));
+                $subtitle->appendChild($dom->createTextNode($item->description));
             } else {
                 $feed->appendChild($dom->createElement('subtitle', $item->server));
             }
@@ -90,7 +94,8 @@ class Syndication extends Base
             $feed->appendChild($entry = $dom->createElement('entry'));
 
             if ($post->title) {
-                $entry->appendChild($dom->createElement('title', $post->title));
+                $entry->appendChild($title = $dom->createElement('title'));
+                $title->appendChild($dom->createTextNode($post->title));
             } else {
                 $entry->appendChild($dom->createElement('title', __('post.default_title')));
             }
