@@ -33,11 +33,11 @@
                         {loop="$roster->presences"}
                             {if="$value->capability && $value->capability->isJingle()"}
                                 <span title="{$c->__('button.audio_call')}" class="control icon active"
-                                    onclick="VisioLink.openVisio('{$value->jid}');">
+                                    onclick="VisioLink.openVisio('{$value->jid|echapJS}');">
                                     <i class="material-icons">phone</i>
                                 </span>
                                 <span title="{$c->__('button.video_call')}" class="control icon active"
-                                    onclick="VisioLink.openVisio('{$value->jid}', '', true);">
+                                    onclick="VisioLink.openVisio('{$value->jid|echapJS}', '', true);">
                                     <i class="material-icons">videocam</i>
                                 </span>
                                 {break}

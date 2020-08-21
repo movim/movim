@@ -98,7 +98,7 @@ class Visio extends Base
             5,
             null,
             null,
-            'VisioLink.openVisio(\''.$data['from'].'\', \''.$data['id'].'\', '.$withVideoParameter.'); Dialog_ajaxClear()'
+            'VisioLink.openVisio(\''.echapJS($data['from']).'\', \''.$data['id'].'\', '.$withVideoParameter.'); Dialog_ajaxClear()'
         );
     }
 
@@ -114,7 +114,7 @@ class Visio extends Base
     public function onProceed($packet)
     {
         $data = $packet->content;
-        $this->rpc('Visio.onProceed', $data['from'], $data['id']);
+        $this->rpc('Visio.onProceed', echapJS($data['from']), $data['id']);
     }
 
     public function onAccept($packet)
