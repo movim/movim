@@ -383,9 +383,12 @@ class SDPtoJingle
                                 }
                             }
 
-                            if (isset($args['generation'])) {
-                                $candidate->addAttribute('generation', $args['generation']);
-                            }
+                            $candidate->addAttribute('generation',
+                                isset($args['generation'])
+                                    ? $args['generation']
+                                    : 0
+                            );
+
                             if (isset($args['id'])) {
                                 $candidate->addAttribute('id', $args['id']);
                             }
