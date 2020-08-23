@@ -252,6 +252,9 @@
                 <p class="line active" onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')">
                     {if="$roster"}
                         {$roster->truename}
+                    {elseif="strpos($contact->jid, '/') != false"}
+                        {$exploded = explodeJid($contact->jid)}
+                        {$exploded.resource}
                     {else}
                         {$contact->truename}
                     {/if}
