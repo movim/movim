@@ -129,10 +129,28 @@
                         {$c->__('button.chat')}
                     </p>
                     {if="isset($message)"}
-                        {if="preg_match('#^\?OTR#', $message->body)"}
+                        {if="$message->retracted"}
+                            <p><i class="material-icons">delete</i> {$c->__('message.retracted')}</p>
+                        {elseif="$message->encrypted"}
                             <p><i class="material-icons">lock</i> {$c->__('message.encrypted')}</p>
+                        {elseif="$message->file"}
+                            <p>
+                                {if="$message->jidfrom == $message->user_id"}
+                                    <span class="moderator">{$c->__('chats.me')}:</span>
+                                {/if}
+                                {if="typeIsPicture($message->file['type'])"}
+                                    <i class="material-icons">image</i> {$c->__('chats.picture')}
+                                {else}
+                                    <i class="material-icons">insert_drive_file</i> {$c->__('avatar.file')}
+                                {/if}
+                            </p>
                         {elseif="stripTags($message->body) != ''"}
-                            <p class="line">{$message->body|stripTags}</p>
+                            {if="$message->jidfrom == $message->user_id"}
+                                <span class="moderator">{$c->__('chats.me')}:</span>
+                            {/if}
+                            {autoescape="off"}
+                                {$message->body|stripTags|addEmojis}
+                            {/autoescape}
                         {/if}
                     {/if}
                 </div>

@@ -239,7 +239,7 @@
 
             <span
                 title="{$c->__('button.close')}"
-                class="control icon active"
+                class="control icon active divided"
                 onclick="Chats_ajaxClose('{$jid|echapJS}', true);">
                 <i class="material-icons">close</i>
             </span>
