@@ -92,7 +92,7 @@
 
             {if="$roster && $roster->presences->count() > 0"}
                 {loop="$roster->presences"}
-                    {if="$value->capability && $value->capability->isJingle()"}
+                    {if="$value->capability && $value->capability->isJingleAudio()"}
                         <li onclick="VisioLink.openVisio('{$value->jid|echapJS}');">
                             <span class="primary icon green">
                                 <i class="material-icons">phone</i>
@@ -101,6 +101,8 @@
                                 <p class="normal">{$c->__('button.audio_call')}</p>
                             </div>
                         </li>
+                    {/if}
+                    {if="$value->capability && $value->capability->isJingleVideo()"}
                         <li onclick="VisioLink.openVisio('{$value->jid|echapJS}', '', true);">
                             <span class="primary icon green">
                                 <i class="material-icons">videocam</i>

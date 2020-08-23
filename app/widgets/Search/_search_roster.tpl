@@ -34,11 +34,13 @@
             {/if}
             {if="$value->presences->count() > 0"}
                 {loop="$value->presences"}
-                    {if="$value->capability && $value->capability->isJingle()"}
+                    {if="$value->capability && $value->capability->isJingleAudio()"}
                         <span title="{$c->__('button.audio_call')}" class="control icon active gray"
                             onclick="VisioLink.openVisio('{$value->jid|echapJS}');">
                             <i class="material-icons">phone</i>
                         </span>
+                    {/if}
+                    {if="$value->capability && $value->capability->isJingleVideo()"}
                         <span title="{$c->__('button.video_call')}" class="control icon active gray"
                             onclick="VisioLink.openVisio('{$value->jid|echapJS}', '', true);">
                             <i class="material-icons">videocam</i>

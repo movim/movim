@@ -222,9 +222,15 @@ class Info extends Model
         return (in_array($feature, unserialize($this->attributes['features'])));
     }
 
-    public function isJingle()
+    public function isJingleAudio()
     {
         return $this->hasFeature('urn:xmpp:jingle:apps:rtp:audio')
+            && $this->hasFeature('urn:xmpp:jingle-message:0');
+    }
+
+    public function isJingleVideo()
+    {
+        return $this->hasFeature('urn:xmpp:jingle:apps:rtp:video')
             && $this->hasFeature('urn:xmpp:jingle-message:0');
     }
 
