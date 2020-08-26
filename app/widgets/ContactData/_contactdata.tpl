@@ -145,12 +145,14 @@
                                 {/if}
                             </p>
                         {elseif="stripTags($message->body) != ''"}
-                            {if="$message->jidfrom == $message->user_id"}
-                                <span class="moderator">{$c->__('chats.me')}:</span>
-                            {/if}
-                            {autoescape="off"}
-                                {$message->body|stripTags|addEmojis}
-                            {/autoescape}
+                            <p>
+                                {if="$message->jidfrom == $message->user_id"}
+                                    <span class="moderator">{$c->__('chats.me')}:</span>
+                                {/if}
+                                {autoescape="off"}
+                                    {$message->body|stripTags|addEmojis}
+                                {/autoescape}
+                            </p>
                         {/if}
                     {/if}
                 </div>
