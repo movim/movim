@@ -8,7 +8,7 @@ use Movim\Widget\Wrapper;
 class Builder
 {
     private $_view = '';
-    private $title = '';
+    private $title = APP_TITLE;
     private $content = '';
     private $css = [];
     private $scripts = [];
@@ -137,7 +137,7 @@ class Builder
         $title = $this->title;
 
         if (isset($widgets->title)) {
-            $title .= ' – ' . $widgets->title;
+            $title .= ' • ' . $widgets->title;
         }
 
         $meta = $dom->createElement('meta');

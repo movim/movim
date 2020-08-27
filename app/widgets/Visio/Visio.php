@@ -16,6 +16,10 @@ class Visio extends Base
         $this->addjs('visio.js');
         $this->addjs('visio_utils.js');
 
+        $this->title = $this->getView() == 'visio'
+        ? __('button.video_call')
+        : __('button.audio_call');
+
         $this->registerEvent('jinglepropose', 'onPropose');
         $this->registerEvent('jingleproceed', 'onProceed');
         $this->registerEvent('jingleaccept', 'onAccept');

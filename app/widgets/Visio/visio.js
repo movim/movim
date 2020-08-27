@@ -198,6 +198,10 @@ var Visio = {
     },
 
     onTerminate: (reason) => {
+        if (typeof Android !== 'undefined') {
+            Android.closePopUpWebview();
+        }
+
         if (!Visio.withVideo) {
             let localStream = Visio.localAudio.srcObject;
 
@@ -245,6 +249,11 @@ var Visio = {
         button.querySelector('i').innerText = 'close';
 
         button.onclick = () => window.close();
+
+        // And we force close the window after 2sec
+        window.setTimeout(() => {
+            window.close();
+        }, 2000);
     },
 
     goodbye: (reason) => {
