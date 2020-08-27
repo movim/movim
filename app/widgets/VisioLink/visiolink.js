@@ -3,6 +3,11 @@ var VisioLink = {
         Notification.incomingAnswer();
         var idUrl = id ? '/' + id : '';
         var page = withVideo ? 'visio' : 'visioaudio';
-        VisioLink.window = window.open('?' + page + '/' + from + idUrl, '', 'width=600,height=400,status=0,titlebar=0,toolbar=0,menubar=0');
+
+        if (typeof Android !== 'undefined') {
+            Android.openVisio(BASE_URI + '?' + page + '/' + from + idUrl);
+        } else {
+            VisioLink.window = window.open('?' + page + '/' + from + idUrl, '', 'width=600,height=400,status=0,titlebar=0,toolbar=0,menubar=0');
+        }
     }
 }
