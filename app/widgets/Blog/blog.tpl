@@ -78,6 +78,10 @@
                     </a>
                 </span>
                 <div>
+                    <a class="button oppose color gray" title="{$c->__('communityheader.subscribe')}"
+                        href="xmpp:{$server}?pubsub;action=subscribe;node={$node}">
+                        <i class="material-icons">add</i> <span class="on_desktop">{$c->__('communityheader.subscribe')}</span>
+                    </a>
                     <p>
                         <a href="{$c->route('node', [$server, $node])}">
                             {if="$item != null && $item->name"}
