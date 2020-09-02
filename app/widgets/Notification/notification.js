@@ -75,9 +75,10 @@ var Notification = {
             var n = counters[i];
             if (n.dataset.key != null
             && n.dataset.key == key) {
-                if (counter > 100) counter = '+100';
-                if (counter == 0) counter = '';
-                n.innerHTML = counter;
+                var htmlCounter = String(counter);
+                if (counter > 100) htmlCounter = '+100';
+                if (counter == 0) htmlCounter = '';
+                n.innerHTML = htmlCounter;
             }
         }
 

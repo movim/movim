@@ -151,7 +151,6 @@ class Menu extends Base
 
         $this->rpc('MovimTpl.fill', '#menu_widget', $html);
         $this->rpc('MovimUtils.enhanceArticlesContent');
-        $this->rpc('Menu.refresh');
     }
 
     public function prepareList($type = 'all', $server = null, $node = null, $page = 0)
