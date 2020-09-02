@@ -217,6 +217,7 @@ main > div:first-child:nth-last-child(2) + div {
 
     main.slide > div:first-child:nth-last-child(2).moving {
         transition: transform .25s var(--decelerate-easing);
+        will-change: transform;
     }
 
     main.slide.enabled > div:first-child:nth-last-child(2) {
@@ -225,6 +226,7 @@ main > div:first-child:nth-last-child(2) + div {
 
     main.slide.enabled > div:first-child:nth-last-child(2).moving {
         transition: transform .25s var(--accelerate-easing);
+        will-change: transform;
     }
 
     main.slide.enabled > div:first-child:nth-last-child(2) + div {

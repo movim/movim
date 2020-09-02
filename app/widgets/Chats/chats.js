@@ -62,9 +62,12 @@ var Chats = {
                             Chats.slideAuthorized = true;
                         }
 
+                        var moveX = parseInt(event.targetTouches[0].pageX - Chats.startX);
+                        moveX = moveX < 0 ? (moveX + delay) : (moveX - delay);
+
                         if (Chats.slideAuthorized) {
                             this.style.transform = 'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, '
-                                + (parseInt(event.targetTouches[0].pageX - Chats.startX) - delay)
+                                + moveX
                                 +', 0, 0, 1)';
                         }
                     } else {

@@ -10,14 +10,16 @@ ul#chats_widget_list li {
     transition: opacity 0.2s ease-in-out;
     overflow: hidden;
     box-sizing: border-box;
-    max-height: 10rem;
+    max-height: 8rem;
 }
 
 ul#chats_widget_list li.moving {
+    will-change: transform;
     transition: transform 0.1s, max-height 0.2s ease-in-out 0.2s;
 }
 
 ul#chats_widget_list li.closing {
+    will-change: transform;
     transition: transform 0.1s, max-height 0.2s ease-in-out 0.2s;
     max-height: 0;
 }
