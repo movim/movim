@@ -2,9 +2,6 @@
     <header class="fixed">
         <ul class="list">
             <li>
-                <span class="primary icon color transparent active" onclick="Visio.onTerminate();">
-                    <i class="material-icons">close</i>
-                </span>
                 <span id="toggle_fullscreen" class="control icon color transparent active" onclick="VisioUtils.toggleFullScreen()">
                     <i class="material-icons">fullscreen</i>
                 </span>

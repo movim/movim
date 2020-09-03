@@ -63,7 +63,14 @@ class SendTo extends Base
         $this->rpc('Drawer.clear');
 
         $c = new Chat;
-        $c->ajaxHttpDaemonSendMessage($to, !empty($message) ? $message : $this->__('sendto.shared_with'), $muc, false, false, $file);
+        $c->ajaxHttpDaemonSendMessage(
+            $to,
+            !empty($message) ? $message : $this->__('sendto.shared_with'),
+            $muc,
+            false,
+            false,
+            $file
+        );
     }
 
     public function ajaxGetMoreContacts(string $uri)
