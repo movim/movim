@@ -39,7 +39,3 @@ ul#chats_widget_list li.close {
 ul#chats_widget_list:empty ~ .placeholder {
     display: block;
 }
-
-div#scroll_block.freeze {
-    overflow: hidden;
-}

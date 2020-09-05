@@ -50,8 +50,6 @@ var Chats = {
                     delay = 20;
 
                     if (Math.abs(Chats.translateX) > delay && Math.abs(Chats.translateX) <= clientWidth) {
-                        document.querySelector('#scroll_block').classList.add('freeze');
-
                         if (Math.abs(Chats.translateX) > this.offsetWidth/2) {
                             this.classList.add('close');
                         } else {
@@ -77,8 +75,6 @@ var Chats = {
                 }, true);
 
                 items[i].addEventListener('touchend', function(event) {
-                    document.querySelector('#scroll_block').classList.remove('freeze');
-
                     this.classList.add('moving');
 
                     if (Math.abs(Chats.translateX) > this.offsetWidth/2 && Chats.slideAuthorized) {
