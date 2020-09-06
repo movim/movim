@@ -198,10 +198,6 @@ var Visio = {
     },
 
     onTerminate: (reason) => {
-        if (typeof Android !== 'undefined') {
-            Android.closePopUpWebview();
-        }
-
         if (!Visio.withVideo) {
             let localStream = Visio.localAudio.srcObject;
 
@@ -248,11 +244,21 @@ var Visio = {
         button.querySelector('i').className = 'material-icons';
         button.querySelector('i').innerText = 'close';
 
-        button.onclick = () => window.close();
+        button.onclick = () => {
+            window.close();
+
+            if (typeof Android !== 'undefined') {
+                Android.closePopUpWebview();
+            }
+        }
 
         // And we force close the window after 2sec
         window.setTimeout(() => {
             window.close();
+
+            if (typeof Android !== 'undefined') {
+                Android.closePopUpWebview();
+            }
         }, 2000);
     },
 
