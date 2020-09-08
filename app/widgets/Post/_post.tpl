@@ -240,7 +240,7 @@
         </ul>
     {/if}
 
-    {if="$post->pictures()->count() > 0 && !$post->isBrief() && !$post->isShort()"}
+    {if="$post->pictures()->count() > 0 && !$post->isBrief() && !$post->isShort() && !$public"}
         <ul class="list">
             <li class="subheader">
                 <div>

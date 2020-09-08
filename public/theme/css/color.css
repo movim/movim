@@ -57,8 +57,13 @@ table tr th {
     background-color: var(--movim-gray);
 }
 
-.color.dark *.divided > *:not(:last-child) {
+.color.dark *.divided > *:not(:last-child),
+.color.dark hr {
     border-color: rgba(255, 255, 255, 0.05);
+}
+
+body:not(.nightmode) .color.dark ul.list.active li:hover:not(.subheader) {
+    background-color: rgba(var(--movim-font), 0.3);
 }
 
 ul li.date > div > p.normal,

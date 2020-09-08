@@ -103,7 +103,10 @@ class Session extends Model
 
     public function getUploadService()
     {
-        return Info::where('parent', $this->host)
+        return Info::where(function($query) {
+                        $query->where('parent', $this->host)
+                            ->orWhere('server', $this->host);
+                    })
                    ->whereCategory('store')
                    ->whereType('file')
                    ->where('features', 'like', '%urn:xmpp:http:upload:0%')
