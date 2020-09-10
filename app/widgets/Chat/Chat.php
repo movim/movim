@@ -751,7 +751,20 @@ class Chat extends \Movim\Widget\Base
             return;
         }
 
-        \App\Message::jid($jid)->delete();
+        \App\Message::whereIn('id', function ($query) use ($jid) {
+            $jidFromToMessages = DB::table('messages')
+                ->where('user_id', $this->user->id)
+                ->where('jidfrom', $jid)
+                ->unionAll(DB::table('messages')
+                    ->where('user_id', $this->user->id)
+                    ->where('jidto', $jid)
+                );
+
+            $query->select('id')->from(
+                $jidFromToMessages,
+                'messages'
+            )->where('user_id', $this->user->id);
+        })->delete();
 
         $this->ajaxGet($jid);
     }
