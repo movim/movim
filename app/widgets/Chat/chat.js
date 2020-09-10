@@ -292,6 +292,8 @@ var Chat = {
     },
     checkEmojis: function(value, reaction, noColon)
     {
+        value = value.toLowerCase();
+
         listSelector = reaction
             ? '#emojisearchbar + .emojis .results'
             : '.chat_box .emojis';
