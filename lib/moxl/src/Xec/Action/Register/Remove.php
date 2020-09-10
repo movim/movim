@@ -17,4 +17,10 @@ class Remove extends Action
     {
         $this->deliver();
     }
+
+    public function error($errorid, $message)
+    {
+        $this->pack($message);
+        $this->deliver();
+    }
 }
