@@ -18,10 +18,11 @@ $connector = new React\Socket\TimeoutConnector(
 
 // DNS
 $config = React\Dns\Config\Config::loadSystemConfigBlocking();
+\Utils::debug(serialize($config));
 $server = $config->nameservers ? reset($config->nameservers) : '8.8.8.8';
 
 $factory = new React\Dns\Resolver\Factory();
-$dns = $factory->createCached($server, $loop);
+$dns = $factory->create($server, $loop);
 
 // We load and register all the widgets
 $wrapper = \Movim\Widget\Wrapper::getInstance();

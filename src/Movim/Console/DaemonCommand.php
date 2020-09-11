@@ -108,7 +108,7 @@ class DaemonCommand extends Command
         );
 
         $socketApi = new Reactor('unix://' . API_SOCKET, $loop);
-        new Api($socketApi, $core);
+        new Api($loop, $socketApi, $core);
 
         (new IoServer($app, $socket, $loop))->run();
     }
