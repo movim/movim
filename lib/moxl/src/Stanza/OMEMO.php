@@ -20,7 +20,6 @@ class OMEMO
         $publish->appendChild($item);
 
         $list = $dom->createElement('list');
-        //$list->setAttribute('xmlns', 'urn:xmpp:omemo:0');
         $list->setAttribute('xmlns', 'eu.siacs.conversations.axolotl');
         $item->appendChild($list);
 
@@ -60,16 +59,14 @@ class OMEMO
         $pubsub->setAttribute('xmlns', 'http://jabber.org/protocol/pubsub');
 
         $publish = $dom->createElement('publish');
-        //$publish->setAttribute('node', 'urn:xmpp:omemo:0:movim');
         $publish->setAttribute('node', 'eu.siacs.conversations.axolotl.bundles:'.$id);
         $pubsub->appendChild($publish);
 
         $item = $dom->createElement('item');
-        //$item->setAttribute('id', $id);
+        $item->setAttribute('id', 'current');
         $publish->appendChild($item);
 
         $bundle = $dom->createElement('bundle');
-        //$bundle->setAttribute('xmlns', 'urn:xmpp:omemo:0');
         $bundle->setAttribute('xmlns', 'eu.siacs.conversations.axolotl');
         $item->appendChild($bundle);
 
@@ -119,7 +116,6 @@ class OMEMO
 
         $encrypted = $dom->createElement('encrypted');
         $encrypted->setAttribute('xmlns', 'eu.siacs.conversations.axolotl');
-        //$encrypted->setAttribute('xmlns', 'urn:xmpp:omemo:0');
         $root->appendChild($encrypted);
 
         $header = $dom->createElement('header');
