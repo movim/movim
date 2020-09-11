@@ -42,6 +42,7 @@ v0.18 (trunk)
  * Create a new Toast widget
  * Remove favico.js and rewrite it to a custom pure Javascript
  * Fix some notifications issues
+ * Added support for XEP-0368: SRV records for XMPP over TLS
 
 v0.17.1
 ---------------------------

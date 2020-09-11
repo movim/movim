@@ -7,6 +7,8 @@ use Movim\Bootstrap;
 use Movim\RPC;
 use Movim\Session;
 
+use React\Promise\Timer;
+
 $bootstrap = new Bootstrap;
 $bootstrap->boot();
 
@@ -18,7 +20,6 @@ $connector = new React\Socket\TimeoutConnector(
 
 // DNS
 $config = React\Dns\Config\Config::loadSystemConfigBlocking();
-\Utils::debug(serialize($config));
 $server = $config->nameservers ? reset($config->nameservers) : '8.8.8.8';
 
 $factory = new React\Dns\Resolver\Factory();
@@ -29,6 +30,7 @@ $wrapper = \Movim\Widget\Wrapper::getInstance();
 $wrapper->registerAll($bootstrap->getWidgets());
 
 $xmppSocket = null;
+$directTLSSocket = false;
 
 $parser = new \Moxl\Parser(function ($node) {
     \Moxl\Xec\Handler::handle($node);
@@ -67,6 +69,11 @@ function writeOut($msg = null)
     }
 }
 
+function logOut($log)
+{
+    fwrite(STDERR, colorize(getenv('sid'), 'yellow')." : ".$log."\n");
+}
+
 function writeXMPP($xml)
 {
     global $xmppSocket;
@@ -77,8 +84,102 @@ function writeXMPP($xml)
         $xmppSocket->write(trim($xml));
 
         if (getenv('debug')) {
-            fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
+            logOut(colorize(trim($xml).' ', 'yellow') . colorize('sent to XMPP', 'green'));
         }
+    }
+}
+
+function enableEncryption($stream): bool
+{
+    logOut(colorize('Enable TLS on the socket', 'blue')."\n");
+
+    $session = Session::start();
+    stream_set_blocking($stream, 1);
+    stream_context_set_option($stream, 'ssl', 'SNI_enabled', false);
+    stream_context_set_option($stream, 'ssl', 'peer_name', $session->get('host'));
+    stream_context_set_option($stream, 'ssl', 'allow_self_signed', false);
+
+    // See http://php.net/manual/en/function.stream-socket-enable-crypto.php#119122
+    $crypto_method = STREAM_CRYPTO_METHOD_TLS_CLIENT;
+
+    if (defined('STREAM_CRYPTO_METHOD_TLSv1_3_CLIENT')) {
+        $crypto_method |= STREAM_CRYPTO_METHOD_TLSv1_3_CLIENT;
+    }
+
+    if (defined('STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT')) {
+        $crypto_method |= STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT;
+        $crypto_method |= STREAM_CRYPTO_METHOD_TLSv1_1_CLIENT;
+    }
+
+    set_error_handler('handleSSLErrors');
+    $out = stream_socket_enable_crypto($stream, 1, $crypto_method);
+    restore_error_handler();
+
+    if ($out !== true) {
+        $evt = new Movim\Widget\Event;
+        $evt->run('ssl_error');
+
+        shutdown();
+        return false;
+    }
+
+    return true;
+}
+
+function handleClientDNS(array $results, $dns, $connector, $xmppBehaviour)
+{
+    if (count($results) > 1) {
+        $port = 5222;
+        global $directTLSSocket;
+
+        if ($results['directtls'] !== false && $results['directtls'][0]['target'] !== '.'
+         && $results['starttls'] !== false) {
+            if ($results['starttls'][0]['priority'] > $results['directtls'][0]['priority']) {
+                $host = $results['starttls'][0]['target'];
+                $port = $results['starttls'][0]['port'];
+                logOut(colorize('Picked STARTTLS', 'blue'));
+            } else {
+                $host = $results['directtls'][0]['target'];
+                $port = $results['directtls'][0]['port'];
+                $directTLSSocket = true;
+                logOut(colorize('Picked DirectTLS', 'blue'));
+            }
+        } elseif ($results['directtls'] !== false && $results['directtls'][0]['target'] !== '.') {
+            $host = $results['directtls'][0]['target'];
+            $port = $results['directtls'][0]['port'];
+            $directTLSSocket = true;
+            logOut(colorize('Picked DirectTLS', 'blue'));
+        } elseif ($results['starttls'] !== false) {
+            $host = $results['starttls'][0]['target'];
+            $port = $results['starttls'][0]['port'];
+            logOut(colorize('Picked STARTTLS', 'blue'));
+        } else {
+            // No SRV, we fallback to the default host
+            $session = Session::start();
+            $host = $session->get('host');
+        }
+
+        logOut(colorize('Resolving '.$host.':'.$port, 'blue'));
+
+        React\Promise\any([
+            $dns->resolve($host, React\Dns\Model\Message::TYPE_AAAA),
+            //$dns->resolve($host, React\Dns\Model\Message::TYPE_A)
+        ])->then(function ($ip) use ($port, $connector, $xmppBehaviour) {
+            logOut(colorize('Connect to '.$ip.':'.$port, 'blue'));
+
+            $connector->connect('['.$ip.']:'. $port)
+                ->then(
+                    $xmppBehaviour,
+                    function () {
+                        $evt = new Movim\Widget\Event;
+                        $evt->run('timeout_error');
+                        $this->cancel();
+                    }
+                );
+        }, function() {
+            $evt = new Movim\Widget\Event;
+            $evt->run('dns_error');
+        });
     }
 }
 
@@ -127,58 +228,36 @@ $wsSocketBehaviour = function ($msg) use (&$xmppSocket, &$connector, &$xmppBehav
                 break;
 
             case 'register':
-                $port = 5222;
-                $host = $msg->host;
+                // Set the host, useful for the CN certificate check
+                $session = Session::start();
+                $session->set('host', $msg->host);
 
-                $dns->resolveAll('_xmpp-client._tcp.' . $msg->host, React\Dns\Model\Message::TYPE_SRV)
+                global $loop;
+                $results = [];
+
+                Timer\timeout($dns->resolveAll('_xmpps-client._tcp.' . $msg->host, React\Dns\Model\Message::TYPE_SRV), 3.0, $loop)
                     ->then(
-                        function ($resolved) use (&$host, &$port, &$msg) {
-                            $host = $resolved[0]['target'];
-                            $port = $resolved[0]['port'];
-
-                            if (getenv('verbose')) {
-                                fwrite(
-                                    STDERR,
-                                    colorize(
-                                        getenv('sid'),
-                                        'yellow'
-                                    )." : ".
-                                        colorize('Resolved target '.$host.' from '.$msg->host, 'blue').
-                                        "\n"
-                                );
-                            }
+                        function ($resolved) use (&$results, &$dns, $connector, $xmppBehaviour) {
+                            $results['directtls'] = $resolved;
+                            handleClientDNS($results, $dns, $connector, $xmppBehaviour);
+                        },
+                        function ($rejected) use (&$results, &$dns, $connector, $xmppBehaviour) {
+                            $results['directtls'] = false;
+                            handleClientDNS($results, $dns, $connector, $xmppBehaviour);
                         }
-                    )
-                    ->always(function () use (&$connector, &$xmppBehaviour, &$dns, &$host, &$port) {
-                        $dns->resolve($host, React\Dns\Model\Message::TYPE_AAAA)
-                            ->then(
-                                function ($ip) use (&$connector, &$xmppBehaviour, $host, $port) {
-                                    if (getenv('verbose')) {
-                                        fwrite(
-                                            STDERR,
-                                            colorize(
-                                                getenv('sid'),
-                                                'yellow'
-                                            )." : ".
-                                                colorize('Connection to '.$host.' ('.$ip.')', 'blue').
-                                                "\n"
-                                        );
-                                    }
+                    );
 
-                                    $connector->connect('['.$ip.']:'. $port)
-                                              ->then($xmppBehaviour)
-                                              ->otherwise(function () {
-                                                  $evt = new Movim\Widget\Event;
-                                                  $evt->run('timeout_error');
-                                                  $this->cancel();
-                                              });
-                                }
-                            )
-                            ->otherwise(function () {
-                                $evt = new Movim\Widget\Event;
-                                $evt->run('dns_error');
-                            });
-                    });
+                Timer\timeout($dns->resolveAll('_xmpp-client._tcp.' . $msg->host, React\Dns\Model\Message::TYPE_SRV), 3.0, $loop)
+                    ->then(
+                        function ($resolved) use (&$results, &$dns, $connector, $xmppBehaviour) {
+                            $results['starttls'] = $resolved;
+                            handleClientDNS($results, $dns, $connector, $xmppBehaviour);
+                        },
+                        function ($rejected) use (&$results, &$dns, $connector, $xmppBehaviour) {
+                            $results['starttls'] = false;
+                            handleClientDNS($results, $dns, $connector, $xmppBehaviour);
+                        }
+                    );
 
                 break;
         }
@@ -189,12 +268,18 @@ $wsSocketBehaviour = function ($msg) use (&$xmppSocket, &$connector, &$xmppBehav
 
 $xmppBehaviour = function (React\Socket\Connection $stream) use (&$xmppSocket, $parser, &$timestampReceive) {
     global $wsSocket;
+    global $directTLSSocket;
 
     $xmppSocket = $stream;
 
+    if ($directTLSSocket) {
+        enableEncryption($xmppSocket->stream);
+        stream_set_blocking($xmppSocket->stream, 0);
+    }
+
     if (getenv('verbose')) {
-        fwrite(STDERR, colorize(getenv('sid'), 'yellow')." : ".colorize('XMPP socket launched', 'blue')."\n");
-        fwrite(STDERR, colorize(getenv('sid'), 'yellow')." launched : ".\sizeToCleanSize(memory_get_usage())."\n");
+        logOut(colorize('XMPP socket launched', 'blue'));
+        logOut(" launched : ".\sizeToCleanSize(memory_get_usage()));
     }
 
     $xmppSocket->on('data', function ($message) use (&$xmppSocket, $parser, &$timestampReceive) {
@@ -202,7 +287,7 @@ $xmppBehaviour = function (React\Socket\Connection $stream) use (&$xmppSocket, $
             $restart = false;
 
             if (getenv('debug')) {
-                fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received', 'green')."\n");
+                logOut(colorize($message.' ', 'yellow') . colorize('received', 'green'));
             }
 
             if ($message == '</stream:stream>') {
@@ -210,34 +295,11 @@ $xmppBehaviour = function (React\Socket\Connection $stream) use (&$xmppSocket, $
                 shutdown();
             } elseif ($message == "<proceed xmlns='urn:ietf:params:xml:ns:xmpp-tls'/>"
                   || $message == '<proceed xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>') {
-                $session = Session::start();
-                stream_set_blocking($xmppSocket->stream, 1);
-                stream_context_set_option($xmppSocket->stream, 'ssl', 'SNI_enabled', false);
-                stream_context_set_option($xmppSocket->stream, 'ssl', 'peer_name', $session->get('host'));
-                stream_context_set_option($xmppSocket->stream, 'ssl', 'allow_self_signed', true);
-
-                // See http://php.net/manual/en/function.stream-socket-enable-crypto.php#119122
-                $crypto_method = STREAM_CRYPTO_METHOD_TLS_CLIENT;
-
-                if (defined('STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT')) {
-                    $crypto_method |= STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT;
-                    $crypto_method |= STREAM_CRYPTO_METHOD_TLSv1_1_CLIENT;
-                }
-
-                set_error_handler('handleSSLErrors');
-                $out = stream_socket_enable_crypto($xmppSocket->stream, 1, $crypto_method);
-                restore_error_handler();
-
-                if ($out !== true) {
-                    $evt = new Movim\Widget\Event;
-                    $evt->run('ssl_error');
-
-                    shutdown();
-                    return;
-                }
+                $success = enableEncryption($xmppSocket->stream);
+                if (!$success) return;
 
                 if (getenv('verbose')) {
-                    fwrite(STDERR, colorize(getenv('sid'), 'yellow')." : ".colorize('TLS enabled', 'blue')."\n");
+                    logOut(colorize('TLS enabled', 'blue')."\n");
                 }
 
                 $restart = true;
@@ -253,7 +315,7 @@ $xmppBehaviour = function (React\Socket\Connection $stream) use (&$xmppSocket, $
             }
 
             if (!$parser->parse($message)) {
-                fwrite(STDERR, colorize(getenv('sid'), 'yellow')." ".$parser->getError()."\n");
+                logOut($parser->getError());
             }
         }
     });
