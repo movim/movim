@@ -18,7 +18,9 @@
         title="{$c->__('status.disconnect')}">
         <i class="material-icons">exit_to_app</i>
     </span>
-    <p class="line bold normal" onclick="MovimUtils.reload('{$c->route('contact', $me->jid)}')">
-        {$me->truename}
-    </p>
+    <div>
+        <p class="line bold normal" onclick="MovimUtils.reload('{$c->route('contact', $me->jid)}')">
+            {$me->truename}
+        </p>
+    </div>
 </li>
