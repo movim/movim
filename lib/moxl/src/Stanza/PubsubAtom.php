@@ -188,9 +188,9 @@ class PubsubAtom
         }
 
         if ($this->published != false) {
-            $entry->appendChild($dom->createElement('published', date(DATE_ISO8601, $this->published)));
+            $entry->appendChild($dom->createElement('published', date('c', $this->published)));
         } else {
-            $entry->appendChild($dom->createElement('published', gmdate(DATE_ISO8601)));
+            $entry->appendChild($dom->createElement('published', gmdate('c')));
         }
 
         if (is_array($this->tags)) {
@@ -205,7 +205,7 @@ class PubsubAtom
         if ($this->reply) {
             $entry->setAttribute('xmlns:thr', 'http://purl.org/syndication/thread/1.0');
         }
-        $entry->appendChild($dom->createElement('updated', gmdate(DATE_ISO8601)));
+        $entry->appendChild($dom->createElement('updated', gmdate('c')));
 
         return $dom->documentElement;
     }

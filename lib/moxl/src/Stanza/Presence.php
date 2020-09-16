@@ -52,7 +52,7 @@ class Presence
         if ($last > 0) {
             $timestamp = time() - $last;
             $idle = $dom->createElementNS('urn:xmpp:idle:1', 'idle');
-            $idle->setAttribute('since', gmdate(DATE_ISO8601, $timestamp));
+            $idle->setAttribute('since', gmdate('c', $timestamp));
             $root->appendChild($idle);
         }
 
