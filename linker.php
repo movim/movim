@@ -14,16 +14,22 @@ $bootstrap->boot();
 
 $loop = React\EventLoop\Factory::create();
 
-$connector = new React\Socket\TimeoutConnector(
-    new React\Socket\TcpConnector($loop), 5.0, $loop
-);
-
 // DNS
 $config = React\Dns\Config\Config::loadSystemConfigBlocking();
 $server = $config->nameservers ? reset($config->nameservers) : '8.8.8.8';
 
 $factory = new React\Dns\Resolver\Factory();
 $dns = $factory->create($server, $loop);
+
+// TCP Connector
+$connector = new React\Socket\HappyEyeBallsConnector(
+    $loop,
+    new React\Socket\TcpConnector($loop, ['timeout' => 5.0]),
+    $dns
+);
+/*$connector = new React\Socket\TimeoutConnector(
+    new React\Socket\TcpConnector($loop), 5.0, $loop
+);*/
 
 // We load and register all the widgets
 $wrapper = \Movim\Widget\Wrapper::getInstance();
@@ -91,7 +97,7 @@ function writeXMPP($xml)
 
 function enableEncryption($stream): bool
 {
-    logOut(colorize('Enable TLS on the socket', 'blue')."\n");
+    logOut(colorize('Enable TLS on the socket', 'blue'));
 
     $session = Session::start();
     stream_set_blocking($stream, 1);
@@ -133,7 +139,7 @@ function handleClientDNS(array $results, $dns, $connector, $xmppBehaviour)
         global $directTLSSocket;
 
         if ($results['directtls'] !== false && $results['directtls'][0]['target'] !== '.'
-         && $results['starttls'] !== false) {
+         && $results['starttls'] !== false && $results['starttls'][0]['target'] !== '.') {
             if ($results['starttls'][0]['priority'] > $results['directtls'][0]['priority']) {
                 $host = $results['starttls'][0]['target'];
                 $port = $results['starttls'][0]['port'];
@@ -149,7 +155,7 @@ function handleClientDNS(array $results, $dns, $connector, $xmppBehaviour)
             $port = $results['directtls'][0]['port'];
             $directTLSSocket = true;
             logOut(colorize('Picked DirectTLS', 'blue'));
-        } elseif ($results['starttls'] !== false) {
+        } elseif ($results['starttls'] !== false && $results['starttls'][0]['target'] !== '.') {
             $host = $results['starttls'][0]['target'];
             $port = $results['starttls'][0]['port'];
             logOut(colorize('Picked STARTTLS', 'blue'));
@@ -159,27 +165,15 @@ function handleClientDNS(array $results, $dns, $connector, $xmppBehaviour)
             $host = $session->get('host');
         }
 
-        logOut(colorize('Resolving '.$host.':'.$port, 'blue'));
-
-        React\Promise\any([
-            $dns->resolve($host, React\Dns\Model\Message::TYPE_AAAA),
-            //$dns->resolve($host, React\Dns\Model\Message::TYPE_A)
-        ])->then(function ($ip) use ($port, $connector, $xmppBehaviour) {
-            logOut(colorize('Connect to '.$ip.':'.$port, 'blue'));
-
-            $connector->connect('['.$ip.']:'. $port)
-                ->then(
-                    $xmppBehaviour,
-                    function () {
-                        $evt = new Movim\Widget\Event;
-                        $evt->run('timeout_error');
-                        $this->cancel();
-                    }
-                );
-        }, function() {
-            $evt = new Movim\Widget\Event;
-            $evt->run('dns_error');
-        });
+        logOut(colorize('Connect to '.$host.':'.$port, 'blue'));
+        $connector->connect($host.':'.$port)->then(
+            $xmppBehaviour,
+            function () {
+                $evt = new Movim\Widget\Event;
+                $evt->run('timeout_error');
+                $this->cancel();
+            }
+        );
     }
 }
 
@@ -230,7 +224,13 @@ $wsSocketBehaviour = function ($msg) use (&$xmppSocket, &$connector, &$xmppBehav
             case 'register':
                 // Set the host, useful for the CN certificate check
                 $session = Session::start();
-                $session->set('host', $msg->host);
+
+                // If the host is already set, we already launched the registration process
+                if ($session->get('host')) {
+                    return;
+                } else {
+                    $session->set('host', $msg->host);
+                }
 
                 global $loop;
                 $results = [];
@@ -299,7 +299,7 @@ $xmppBehaviour = function (React\Socket\Connection $stream) use (&$xmppSocket, $
                 if (!$success) return;
 
                 if (getenv('verbose')) {
-                    logOut(colorize('TLS enabled', 'blue')."\n");
+                    logOut(colorize('TLS enabled', 'blue'));
                 }
 
                 $restart = true;
