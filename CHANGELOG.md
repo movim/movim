@@ -1,7 +1,10 @@
 Movim Changelog
 ================
 
-v0.18 (trunk)
+v0.19 (trunk)
+---------------------------
+
+v0.18
 ---------------------------
  * Keep the scroll to the "last read" message when opening a discussion
  * Unify the Chat top bar design between one-to-one and chatrooms
@@ -43,6 +46,7 @@ v0.18 (trunk)
  * Remove favico.js and rewrite it to a custom pure Javascript
  * Fix some notifications issues
  * Added support for XEP-0368: SRV records for XMPP over TLS
+ * Use Happy EyeBalls for the IP resolution
 
 v0.17.1
 ---------------------------
