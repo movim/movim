@@ -46,14 +46,7 @@ $timestampReceive = $timestampSend = time();
 
 function handleSSLErrors($errno, $errstr)
 {
-    fwrite(
-        STDERR,
-        colorize(getenv('sid'), 'yellow').
-        " : ".colorize($errno, 'red').
-        " ".
-        colorize($errstr, 'red').
-        "\n"
-    );
+    logOut(colorize('SSL Error '.$errno.': '.$errstr, 'red'));
 }
 
 // Temporary linker killer
@@ -101,7 +94,7 @@ function enableEncryption($stream): bool
 
     $session = Session::start();
     stream_set_blocking($stream, 1);
-    stream_context_set_option($stream, 'ssl', 'SNI_enabled', false);
+    stream_context_set_option($stream, 'ssl', 'SNI_enabled', true);
     stream_context_set_option($stream, 'ssl', 'peer_name', $session->get('host'));
     stream_context_set_option($stream, 'ssl', 'allow_self_signed', false);
 
@@ -181,6 +174,8 @@ function shutdown()
 {
     global $loop;
     global $wsSocket;
+
+    logOut(colorize('Shutdown', 'blue'));
 
     $wsSocket->close();
     $loop->stop();

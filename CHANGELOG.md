@@ -1,8 +1,9 @@
 Movim Changelog
 ================
 
-v0.19 (trunk)
+v0.18.1 (trunk)
 ---------------------------
+ * Enable SNI for SSL auth to fix DirectTLS connection with some XMPP servers
 
 v0.18
 ---------------------------
