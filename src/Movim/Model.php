@@ -33,7 +33,7 @@ class Model extends EloquentModel
      * @return Builder
      * @throws Exception
      */
-    protected function setKeysForSaveQuery(Builder $query)
+    protected function setKeysForSaveQuery($query)
     {
         foreach ($this->getKeyName() as $key) {
             if (! isset($this->$key)) {
