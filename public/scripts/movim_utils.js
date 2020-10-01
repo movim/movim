@@ -70,7 +70,11 @@ var MovimUtils = {
         window.history.pushState(null, '', url);
     },
     redirect: function(url) {
-        window.location.href = url;
+        var location = window.location.href;
+
+        if (location.substring(0, location.indexOf('#')) !== url) {
+            window.location.href = url;
+        }
     },
     reload: function(uri) {
         window.location.replace(uri);

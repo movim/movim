@@ -200,7 +200,7 @@ class Core implements MessageComponentInterface
     private function cleanupEncryptedPasswords()
     {
         // Delete encrypted passwords after 7 days without update
-        EncryptedPassword::where('updated_at', '<', date(MOVIM_SQL_DATE, time()-60*60*24*7))
+        EncryptedPassword::where('updated_at', '<', date(MOVIM_SQL_DATE, time()-(60*60*24*7)))
             ->delete();
     }
 
