@@ -27,9 +27,6 @@ $connector = new React\Socket\HappyEyeBallsConnector(
     new React\Socket\TcpConnector($loop, ['timeout' => 5.0]),
     $dns
 );
-/*$connector = new React\Socket\TimeoutConnector(
-    new React\Socket\TcpConnector($loop), 5.0, $loop
-);*/
 
 // We load and register all the widgets
 $wrapper = \Movim\Widget\Wrapper::getInstance();

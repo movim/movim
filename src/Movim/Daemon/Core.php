@@ -4,11 +4,14 @@ namespace Movim\Daemon;
 
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
-use Movim\Daemon\Session;
-use Dflydev\FigCookies\Cookies;
-use App\Session as DBSession;
-
 use Symfony\Component\Console\Input\InputInterface;
+use Dflydev\FigCookies\Cookies;
+
+use Movim\Daemon\Session;
+
+use App\Session as DBSession;
+use App\EncryptedPassword;
+
 
 class Core implements MessageComponentInterface
 {
@@ -183,13 +186,21 @@ class Core implements MessageComponentInterface
             }
 
             $this->cleanupDBSessions();
+            $this->cleanupEncryptedPasswords();
         });
     }
 
     private function cleanupDBSessions()
     {
         DBSession::where('active', false)
-            ->where('created_at', date(MOVIM_SQL_DATE, time()-60))
+            ->where('created_at', '<', date(MOVIM_SQL_DATE, time()-60))
+            ->delete();
+    }
+
+    private function cleanupEncryptedPasswords()
+    {
+        // Delete encrypted passwords after 7 days without update
+        EncryptedPassword::where('updated_at', '<', date(MOVIM_SQL_DATE, time()-60*60*24*7))
             ->delete();
     }
 

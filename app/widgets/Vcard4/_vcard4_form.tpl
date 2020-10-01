@@ -39,7 +39,7 @@
     <div class="block">
         <div class="select">
             <select name="country">
-                <option value=""></option>
+                <option value="">{$c->__('position.country')}</option>
                 {loop="$countries"}
                     <option
                     {if="$value == $contact->adrcountry"}
