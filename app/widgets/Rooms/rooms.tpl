@@ -18,7 +18,7 @@
                 <i class="material-icons">group_add</i>
             </span>
             <div>
-                <p class="normal line" onclick="RoomsExplore_ajaxSearch();">{$c->__('rooms.add')}</p>
+                <p class="normal line" onclick="RoomsExplore_ajaxSearch();">{$c->__('rooms.search_or_join')}</p>
             </div>
         </li>
     </ul>

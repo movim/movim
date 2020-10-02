@@ -1,7 +1,6 @@
+<h3>{$c->__('communityaffiliation.roles')}</h3>
+<br />
 <ul class="list">
-    <li class="subheader">
-        <p>Roles</p>
-    </li>
     {loop="$affiliations"}
         {$role = $key}
         {loop="$affiliations[$role]"}
@@ -89,6 +88,7 @@
                 <p>
                     <a href="#" onclick="CommunityAffiliations.update('addaffiliation')"
                        class="button green color">
+                        <i class="material-icons">add</i>
                         {$c->__('button.add')}
                     </a>
                 </p>

@@ -1,9 +1,17 @@
 <section>
     <form name="bookmarkmucadd">
-        {if="isset($conference)"}
+        {if="$gateways->isNotEmpty() && !isset($conference)"}
+            <h3>{$c->__('rooms.search_or_join')}</h3>
+        {elseif="isset($conference)"}
             <h3>{$c->__('rooms.edit')}</h3>
+        {elseif="isset($id)"}
+            <h3>{$c->__('rooms.join')}</h3>
         {else}
             <h3>{$c->__('rooms.add')}</h3>
+        {/if}
+
+        {if="isset($id)"}
+            <h4>{$id}</h4>
         {/if}
 
         {if="$gateways->isNotEmpty() && !isset($conference)"}
@@ -27,26 +35,6 @@
 
         <div id="gateway_rooms"></div>
 
-        <div>
-            <input
-                {if="isset($conference)"}
-                    value="{$conference->conference}" readonly
-                {elseif="isset($id)"}
-                    value="{$id}" readonly
-                {/if}
-                name="jid"
-                {if="isset($mucservice)"}
-                    placeholder="chatroom@{$mucservice->server}"
-                {else}
-                    placeholder="chatroom@server.com"
-                {/if}
-                type="email"
-                list="suggestions"
-                oninput="Rooms.suggest()"
-                required />
-            <label>{$c->__('chatrooms.id')}</label>
-        </div>
-
         <datalist id="suggestions">
         </datalist>
 
@@ -61,9 +49,32 @@
                 {/if}
                 name="name"
                 placeholder="{$c->__('chatrooms.name_placeholder')}"
+                {if="!isset($id)"}
+                    onblur="RoomsUtils_ajaxResolveSlug(this.value)"
+                {/if}
                 required />
             <label>{$c->__('chatrooms.name')}</label>
         </div>
+
+        {if="isset($id)"}
+            <input type="hidden" value="{$id}" name="jid"/>
+        {else}
+            <div>
+                <input
+                    name="jid"
+                    {if="isset($mucservice)"}
+                        placeholder="chatroom@{$mucservice->server}"
+                    {else}
+                        placeholder="chatroom@server.com"
+                    {/if}
+                    type="email"
+                    list="suggestions"
+                    oninput="Rooms.suggest()"
+                    required />
+                <label>{$c->__('chatrooms.id')}</label>
+            </div>
+        {/if}
+
         <div>
             <input
                 {if="isset($conference) && !empty($conference->nick)"}

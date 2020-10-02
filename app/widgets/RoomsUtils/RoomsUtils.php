@@ -7,7 +7,7 @@ use Moxl\Xec\Action\Muc\Destroy;
 use Moxl\Xec\Action\Disco\Items;
 use Moxl\Xec\Action\Bookmark2\Set;
 use Moxl\Xec\Action\Bookmark2\Delete;
-use \Moxl\Xec\Action\Bookmark\Synchronize;
+use Moxl\Xec\Action\Bookmark\Synchronize;
 
 use Movim\Widget\Base;
 use Movim\Picture;
@@ -15,6 +15,7 @@ use Movim\Picture;
 use App\Conference;
 
 use Respect\Validation\Validator;
+use Cocur\Slugify\Slugify;
 
 class RoomsUtils extends Base
 {
@@ -185,6 +186,19 @@ class RoomsUtils extends Base
         $this->rpc('Rooms.setDefaultServices', $this->user->session->getChatroomsServices());
 
         Dialog::fill($view->draw('_rooms_add'));
+    }
+
+    /**
+     * Resolve the room slug from the name
+     */
+    public function ajaxResolveSlug($name)
+    {
+        $services = $this->user->session->getChatroomsServices();
+        $slugified = (new Slugify)->slugify($name);
+
+        if ($services->isNotEmpty() && !empty($slugified)) {
+            $this->rpc('Rooms.setJid', $slugified.'@'. $services->first()->server);
+        }
     }
 
     /**

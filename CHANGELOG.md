@@ -6,6 +6,7 @@ v0.18.1 (trunk)
  * Enable SNI for SSL auth to fix DirectTLS connection with some XMPP servers
  * Fix #884, Don't reload page on status posting
  * Fix #921, Delete encrypted passwords after 7 days
+ * Small redesign of the Chatrooms create/join form
 
 v0.18
 ---------------------------

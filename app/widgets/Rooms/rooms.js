@@ -24,6 +24,14 @@ var Rooms = {
         document.querySelector('form[name="bookmarkmucadd"] input[name=name]').value = name;
     },
 
+    setJid: function(slugifiedJid) {
+        let input = document.querySelector('form[name=bookmarkmucadd] input[name=jid]');
+
+        if (input && input.value === '') {
+            input.value = slugifiedJid;
+        }
+    },
+
     suggest: function() {
         let input = document.querySelector('form[name=bookmarkmucadd] input[name=jid]');
 
