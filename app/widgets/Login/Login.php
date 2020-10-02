@@ -185,9 +185,9 @@ class Login extends Base
 
             if ($user) {
                 $ciphertext = $user->encryptedPasswords()->find($deviceId);
-                $ciphertext->touch();
 
                 if ($ciphertext) {
+                    $ciphertext->touch();
                     $password = Crypto::decrypt($ciphertext->data, $key);
                     $this->doLogin($login, $password, $deviceId);
                 } else {

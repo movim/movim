@@ -1196,16 +1196,16 @@
         },
         {
             "name": "illuminate/collections",
-            "version": "v8.7.1",
+            "version": "v8.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
-                "reference": "a4afcfaabcac3dd14178b541917b5534684a17eb"
+                "reference": "406686622f946b905d34825e40e5f855f7899009"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/collections/zipball/a4afcfaabcac3dd14178b541917b5534684a17eb",
-                "reference": "a4afcfaabcac3dd14178b541917b5534684a17eb",
+                "url": "https://api.github.com/repos/illuminate/collections/zipball/406686622f946b905d34825e40e5f855f7899009",
+                "reference": "406686622f946b905d34825e40e5f855f7899009",
                 "shasum": ""
             },
             "require": {
@@ -1242,11 +1242,11 @@
             ],
             "description": "The Illuminate Collections package.",
             "homepage": "https://laravel.com",
-            "time": "2020-09-22T12:52:21+00:00"
+            "time": "2020-09-30T13:09:00+00:00"
         },
         {
             "name": "illuminate/container",
-            "version": "v8.7.1",
+            "version": "v8.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
@@ -1293,7 +1293,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v8.7.1",
+            "version": "v8.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -1337,16 +1337,16 @@
         },
         {
             "name": "illuminate/database",
-            "version": "v8.7.1",
+            "version": "v8.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "e963eabd33558e4a8eba38a114895d81d993531e"
+                "reference": "c81f98a48cd908c7c5174ae49fe8d2465a9da606"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/e963eabd33558e4a8eba38a114895d81d993531e",
-                "reference": "e963eabd33558e4a8eba38a114895d81d993531e",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/c81f98a48cd908c7c5174ae49fe8d2465a9da606",
+                "reference": "c81f98a48cd908c7c5174ae49fe8d2465a9da606",
                 "shasum": ""
             },
             "require": {
@@ -1397,11 +1397,11 @@
                 "orm",
                 "sql"
             ],
-            "time": "2020-09-29T15:38:58+00:00"
+            "time": "2020-10-02T14:17:12+00:00"
         },
         {
             "name": "illuminate/macroable",
-            "version": "v8.7.1",
+            "version": "v8.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/macroable.git",
@@ -1443,7 +1443,7 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v8.7.1",
+            "version": "v8.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
