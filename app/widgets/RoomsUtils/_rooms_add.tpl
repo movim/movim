@@ -1,13 +1,11 @@
 <section>
     <form name="bookmarkmucadd">
-        {if="$gateways->isNotEmpty() && !isset($conference)"}
-            <h3>{$c->__('rooms.search_or_join')}</h3>
-        {elseif="isset($conference)"}
+        {if="isset($conference)"}
             <h3>{$c->__('rooms.edit')}</h3>
         {elseif="isset($id)"}
             <h3>{$c->__('rooms.join')}</h3>
         {else}
-            <h3>{$c->__('rooms.add')}</h3>
+            <h3>{$c->__('rooms.create_or_join')}</h3>
         {/if}
 
         {if="isset($id)"}

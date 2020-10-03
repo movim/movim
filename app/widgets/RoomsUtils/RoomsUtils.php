@@ -13,6 +13,7 @@ use Movim\Widget\Base;
 use Movim\Picture;
 
 use App\Conference;
+use App\Info;
 
 use Respect\Validation\Validator;
 use Cocur\Slugify\Slugify;
@@ -193,11 +194,15 @@ class RoomsUtils extends Base
      */
     public function ajaxResolveSlug($name)
     {
-        $services = $this->user->session->getChatroomsServices();
+        $service = Info::where('parent', $this->user->session->host)
+                   ->whereCategory('conference')
+                   ->whereType('text')
+                   ->first();
+
         $slugified = (new Slugify)->slugify($name);
 
-        if ($services->isNotEmpty() && !empty($slugified)) {
-            $this->rpc('Rooms.setJid', $slugified.'@'. $services->first()->server);
+        if ($service && !empty($slugified)) {
+            $this->rpc('Rooms.setJid', $slugified.'@'. $service->server);
         }
     }
 
