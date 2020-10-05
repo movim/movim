@@ -2,7 +2,12 @@ var Tabs = {
     create : function() {
         // We search all the div with "tab" class
         var tabs = document.querySelectorAll('.tabelem');
+
+        if (tabs.length == 0) return;
+
         var current = null;
+
+        document.querySelector('#navtabs').innerHTML = '';
 
         // We create the list
         for (var i=0; i<tabs.length; i++) {

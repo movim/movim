@@ -53,7 +53,7 @@ class User extends Model
                         ->where('seen', false)
                         ->where('jidfrom', '!=', $this->id)
                         ->where(function ($query) use ($quoted) {
-                            $query->whereIn('type', ['chat', 'headline'])
+                            $query->whereIn('type', ['chat', 'headline', 'invitation'])
                                 ->orWhere(function ($query) use ($quoted) {
                                     $query->where('type', 'groupchat')
                                           ->whereNull('subject');

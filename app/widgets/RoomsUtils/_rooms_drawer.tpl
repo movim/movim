@@ -21,10 +21,21 @@
                         {/autoescape}
                     </span>
                 {/if}
+                <span title="{$c->__('chatroom.config')}"
+                      class="control icon active"
+                      onclick="RoomsUtils_ajaxAdd('{$room|echapJS}'); Drawer.clear()">
+                    <i class="material-icons">edit</i>
+                </span>
+                <span title="{$c->__('button.delete')}"
+                      class="control icon active"
+                      onclick="RoomsUtils_ajaxRemove('{$room|echapJS}'); Drawer.clear()">
+                    <i class="material-icons">delete</i>
+                </span>
+
                 <div>
-                    {if="$conference && $conference->name"}
+                    {if="$conference && $conference->title"}
                         <p class="line" title="{$room}">
-                            {$conference->name}
+                            {$conference->title}
                         </p>
                         <p class="line">{$room}</p>
                     {else}
@@ -36,27 +47,55 @@
             </li>
         </ul>
     </header>
-    <ul class="list">
-        <p class="all">
-            {if="$conference->subject"}
-                <li>
-                    <span class="primary icon gray">
-                        <i class="material-icons">short_text</i>
-                    </span>
-                    <div>
-                        <p class="all normal">
-                            {autoescape="off"}
-                                {$conference->subject|addUrls}
-                            {/autoescape}
-                        </p>
-                    </div>
-                </li>
-            {/if}
-        </p>
-        {if="$conference->info && $conference->info->mucpublic"}
+
+    <ul class="list middle">
+        {if="$conference->isGroupChat()"}
+            <li>
+                <span class="primary icon gray">
+                    <i class="material-icons">people_alt</i>
+                </span>
+                <div>
+                    <a class="button flat oppose" >
+
+
+                    </a>
+                    <p class="line">{$c->__('room.group_chat')}</p>
+                    <p class="all">{$c->__('room.group_chat_text')}</p>
+                </div>
+            </li>
+        {else}
             <li>
                 <span class="primary icon gray">
                     <i class="material-icons">wifi_tethering</i>
+                </span>
+                <div>
+                    <p class="line">{$c->__('room.channel')}</p>
+                    <p class="all">{$c->__('room.channel_text')}</p>
+                </div>
+            </li>
+        {/if}
+    </ul>
+    <ul class="list">
+        {if="$conference->subject"}
+            <li>
+                <span class="primary icon gray">
+                    <i class="material-icons">short_text</i>
+                </span>
+                <div>
+                    <p class="line">{$c->__('page.about')}</p>
+                    <p class="all">
+                        {autoescape="off"}
+                            {$conference->subject|addUrls}
+                        {/autoescape}
+                    </p>
+                </div>
+            </li>
+        {/if}
+
+        {if="$conference->info && $conference->info->mucpublic"}
+            <li>
+                <span class="primary icon gray">
+                    <i class="material-icons">explore</i>
                 </span>
                 <div>
                     <p class="line">{$c->__('room.public_muc')}</p>
@@ -64,7 +103,7 @@
                 </div>
             </li>
         {/if}
-        {if="$conference->info && !$conference->info->mucsemianonymous"}
+        {if="!$conference->isGroupChat() && $conference->info && !$conference->info->mucsemianonymous"}
             <li>
                 <span class="primary icon gray">
                     <i class="material-icons">face</i>
@@ -76,10 +115,20 @@
             </li>
         {/if}
 
+        <li class="subheader">
+            <div>
+                <p>{$c->__('room.notify_title')}</p>
+            </div>
+        </li>
+
         {if="$conference->notify == 0"}
             <li>
                 <span class="primary icon gray">
                     <i class="material-icons">notifications_off</i>
+                </span>
+                <span class="control icon gray active"
+                      onclick="RoomsUtils_ajaxAdd('{$room|echapJS}'); Drawer.clear()">
+                    <i class="material-icons">settings</i>
                 </span>
                 <div>
                     <p class="line">{$c->__('room.notify_title')}</p>
@@ -91,6 +140,10 @@
                 <span class="primary icon gray">
                     <i class="material-icons">notifications_active</i>
                 </span>
+                <span class="control icon gray active"
+                      onclick="RoomsUtils_ajaxAdd('{$room|echapJS}'); Drawer.clear()">
+                    <i class="material-icons">settings</i>
+                </span>
                 <div>
                     <p class="line">{$c->__('room.notify_title')}</p>
                     <p class="line">{$c->__('room.notify_always')}</p>
@@ -101,6 +154,10 @@
                 <span class="primary icon gray">
                     <i class="material-icons">notifications</i>
                 </span>
+                <span class="control icon gray active"
+                      onclick="RoomsUtils_ajaxAdd('{$room|echapJS}'); Drawer.clear()">
+                    <i class="material-icons">settings</i>
+                </span>
                 <div>
                     <p class="line">{$c->__('room.notify_title')}</p>
                     <p class="line">{$c->__('room.notify_quoted')}</p>
@@ -109,96 +166,164 @@
         {/if}
     </ul>
 
-    {if="$conference->pictures()->count() > 0"}
-        <ul class="list">
-            <li class="subheader">
-                <div>
-                    <p>
-                        {$c->__('general.pictures')}
-                    </p>
-                </div>
-            </li>
-        </ul>
-        <ul class="grid active">
-            {loop="$conference->pictures()->take(8)->get()"}
-                <li style="background-image: url('{$value->file['uri']|protectPicture}')"
-                    onclick="Preview_ajaxShow('{$value->file['uri']}')">
-                    <i class="material-icons">visibility</i>
+    <br />
+    <ul class="tabs" id="navtabs"></ul>
+
+    {if="$conference->isGroupChat()"}
+        <div class="tabelem" title="{$c->__('room.group_chat_members')}" id="room_members">
+            <ul class="list">
+                <li class="active" onclick="RoomsUtils_ajaxAskInvite('{$conference->conference|echapJS}'); Drawer.clear();">
+                    <span class="primary icon gray">
+                        <i class="material-icons">person_add</i>
+                    </span>
+                    <span class="control icon gray">
+                        <i class="material-icons">chevron_right</i>
+                    </span>
+                    <div>
+                        <p class="line normal">
+                            {$c->__('room.group_chat_add')}
+                        </p>
+                    </div>
                 </li>
-            {/loop}
-        </ul>
-    {/if}
+            </ul>
+            <ul class="list thin">
+                {loop="$members"}
+                    {$presence = $presences->where('mucjid', $value->jid)->first()}
 
-    <ul class="list thin">
-        <li class="subheader">
-            <div>
-                <p>
-                    <span class="info">{$list|count}</span>
-                    {$c->__('chatrooms.users')}
-                </p>
-            </div>
-        </li>
-        {loop="$list"}
-            <li class="{if="$value->last > 60"} inactive{/if}"
-                title="{$value->resource}">
-
-                {if="$url = $value->conferencePicture"}
-                    <span class="primary icon bubble small status {$value->presencekey}">
-                        <img src="{$url}">
-                    </span>
-                {else}
-                    <span class="primary icon bubble small color {$value->resource|stringToColor} status {$value->presencekey}">
-                        <i class="material-icons">people</i>
-                    </span>
-                {/if}
-                {if="$value->mucaffiliation == 'owner'"}
-                    <span class="control icon yellow" title="{$c->__('rooms.owner')}">
-                        <i class="material-icons">star</i>
-                    </span>
-                {elseif="$value->mucaffiliation == 'admin'"}
-                    <span class="control icon gray" title="{$c->__('rooms.admin')}">
-                        <i class="material-icons">star</i>
-                    </span>
-                {/if}
-                {if="$value->mucrole == 'visitor'"}
-                    <span class="control icon gray" title="{$c->__('rooms.visitor')}">
-                        <i class="material-icons">speaker_notes_off</i>
-                    </span>
-                {/if}
-                {if="$value->mucjid != $me"}
-                    <span class="control icon active gray divided" onclick="
-                        Chats_ajaxOpen('{$value->mucjid|echapJS}');
-                        Chat_ajaxGet('{$value->mucjid|echapJS}');
-                        Drawer_ajaxClear();">
-                        <i class="material-icons">comment</i>
-                    </span>
-                {/if}
-                <div>
-                    <p class="line normal">
-                        {if="$value->mucjid && strpos($value->mucjid, '/') == false"}
-                            {if="$value->mucjid == $me"}
-                                {$value->resource}
-                            {else}
-                                <a href="{$c->route('contact', $value->mucjid)}">{$value->resource}</a>
-                            {/if}
+                    <li title="{$value->truename}">
+                        {if="$value->contact && $url = $value->contact->getPhoto('s')"}
+                            <span class="primary icon bubble small status {if="$presence"}{$presence->presencekey}{/if}">
+                                <img src="{$url}">
+                            </span>
                         {else}
-                            {$value->resource}
-                        {/if}
-                        {if="$value->capability"}
-                            <span class="second" title="{$value->capability->name}">
-                                <i class="material-icons">{$value->capability->getDeviceIcon()}</i>
+                            <span class="primary icon bubble small color {$value->jid|stringToColor} status {if="$presence"}{$presence->presencekey}{/if}">
+                                <i class="material-icons">people</i>
                             </span>
                         {/if}
-                    </p>
-                    {if="$value->seen"}
-                        <p class="line">
-                            {$c->__('last.title')} {$value->seen|strtotime|prepareDate:true,true}
+                        {if="$value->affiliation == 'owner'"}
+                            <span class="control icon yellow" title="{$c->__('rooms.owner')}">
+                                <i class="material-icons">star</i>
+                            </span>
+                        {elseif="$value->affiliation == 'admin'"}
+                            <span class="control icon gray" title="{$c->__('rooms.admin')}">
+                                <i class="material-icons">star</i>
+                            </span>
+                        {/if}
+                        {if="$value->jid != $me"}
+                            <span class="control icon active gray divided" onclick="
+                                Chats_ajaxOpen('{$value->jid|echapJS}');
+                                Chat_ajaxGet('{$value->jid|echapJS}');
+                                Drawer_ajaxClear();">
+                                <i class="material-icons">comment</i>
+                            </span>
+                        {/if}
+                        <div>
+                            <p class="line normal">
+                                {if="$value->jid == $me"}
+                                    {$value->truename}
+                                {else}
+                                    <a href="{$c->route('contact', $value->jid)}">{$value->truename}</a>
+                                {/if}
+                            </p>
+                        </div>
+                    </li>
+                {/loop}
+            </ul>
+        </div>
+    {else}
+        <div class="tabelem" title="{$c->__('room.channel_users')}" id="room_users">
+            <ul class="list">
+                <li class="active" onclick="RoomsUtils_ajaxAskInvite('{$conference->conference|echapJS}'); Drawer.clear();">
+                    <span class="primary icon gray">
+                        <i class="material-icons">person_add</i>
+                    </span>
+                    <span class="control icon gray">
+                        <i class="material-icons">chevron_right</i>
+                    </span>
+                    <div>
+                        <p class="line normal">
+                            {$c->__('room.invite')}
                         </p>
-                    {elseif="$value->status"}
-                        <p class="line" title="{$value->status}">{$value->status}</p>
-                    {/if}
-                </div>
-            </li>
-        {/loop}
-    </ul>
+                    </div>
+                </li>
+            </ul>
+            <ul class="list thin">
+                {loop="$presences"}
+                    <li class="{if="$value->last > 60"} inactive{/if}"
+                        title="{$value->resource}">
+
+                        {if="$url = $value->conferencePicture"}
+                            <span class="primary icon bubble small status {$value->presencekey}">
+                                <img src="{$url}">
+                            </span>
+                        {else}
+                            <span class="primary icon bubble small color {$value->resource|stringToColor} status {$value->presencekey}">
+                                <i class="material-icons">people</i>
+                            </span>
+                        {/if}
+                        {if="$value->mucaffiliation == 'owner'"}
+                            <span class="control icon yellow" title="{$c->__('rooms.owner')}">
+                                <i class="material-icons">star</i>
+                            </span>
+                        {elseif="$value->mucaffiliation == 'admin'"}
+                            <span class="control icon gray" title="{$c->__('rooms.admin')}">
+                                <i class="material-icons">star</i>
+                            </span>
+                        {/if}
+                        {if="$value->mucrole == 'visitor'"}
+                            <span class="control icon gray" title="{$c->__('rooms.visitor')}">
+                                <i class="material-icons">speaker_notes_off</i>
+                            </span>
+                        {/if}
+                        {if="$value->mucjid != $me"}
+                            <span class="control icon active gray divided" onclick="
+                                Chats_ajaxOpen('{$value->mucjid|echapJS}');
+                                Chat_ajaxGet('{$value->mucjid|echapJS}');
+                                Drawer_ajaxClear();">
+                                <i class="material-icons">comment</i>
+                            </span>
+                        {/if}
+                        <div>
+                            <p class="line normal">
+                                {if="$value->mucjid && strpos($value->mucjid, '/') == false"}
+                                    {if="$value->mucjid == $me"}
+                                        {$value->resource}
+                                    {else}
+                                        <a href="{$c->route('contact', $value->mucjid)}">{$value->resource}</a>
+                                    {/if}
+                                {else}
+                                    {$value->resource}
+                                {/if}
+                                {if="$value->capability"}
+                                    <span class="second" title="{$value->capability->name}">
+                                        <i class="material-icons">{$value->capability->getDeviceIcon()}</i>
+                                    </span>
+                                {/if}
+                            </p>
+                            {if="$value->seen"}
+                                <p class="line">
+                                    {$c->__('last.title')} {$value->seen|strtotime|prepareDate:true,true}
+                                </p>
+                            {elseif="$value->status"}
+                                <p class="line" title="{$value->status}">{$value->status}</p>
+                            {/if}
+                        </div>
+                    </li>
+                {/loop}
+            </ul>
+        </div>
+    {/if}
+
+    {if="$conference->pictures()->count() > 0"}
+        <div class="tabelem" title="{$c->__('general.pictures')}" id="room_medias">
+            <ul class="grid active">
+                {loop="$conference->pictures()->take(16)->get()"}
+                    <li style="background-image: url('{$value->file['uri']|protectPicture}')"
+                        onclick="Preview_ajaxShow('{$value->file['uri']}')">
+                        <i class="material-icons">visibility</i>
+                    </li>
+                {/loop}
+            </ul>
+        </div>
+    {/if}
 </section>

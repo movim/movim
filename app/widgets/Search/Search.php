@@ -21,11 +21,12 @@ class Search extends Base
         $this->addcss('search.css');
     }
 
-    public function ajaxRequest()
+    public function ajaxRequest($chatroomActions = false)
     {
         $view = $this->tpl();
 
         $view->assign('empty', $this->prepareSearch(''));
+        $view->assign('chatroomactions', $chatroomActions);
         Drawer::fill($view->draw('_search'), true);
 
         $this->rpc('Search.init');

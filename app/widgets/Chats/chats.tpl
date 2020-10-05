@@ -5,9 +5,6 @@
                 {$c->__('page.chats')}
             </p>
         </div>
-        <span class="control icon active gray" onclick="Search_ajaxRequest()">
-            <i class="material-icons">person_search</i>
-        </span>
     </li>
 </ul>
 <ul id="chats_widget_list" class="list middle active divided spaced">

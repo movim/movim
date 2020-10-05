@@ -29,6 +29,7 @@
                 </ul>
             </header>
             <?php $this->widget('Tabs');?>
+            <ul class="tabs" id="navtabs"></ul>
             <?php $this->widget('Communities'); ?>
             <?php if (\App\User::me()->hasPubsub()) { ?>
                 <?php $this->widget('CommunitySubscriptions'); ?>

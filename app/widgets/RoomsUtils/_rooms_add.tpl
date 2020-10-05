@@ -1,11 +1,13 @@
 <section>
     <form name="bookmarkmucadd">
-        {if="isset($conference)"}
-            <h3>{$c->__('rooms.edit')}</h3>
-        {elseif="isset($id)"}
-            <h3>{$c->__('rooms.join')}</h3>
+        {if="$create"}
+            <h3>{$c->__('rooms.create')}</h3>
         {else}
-            <h3>{$c->__('rooms.create_or_join')}</h3>
+            {if="isset($conference)"}
+                <h3>{$c->__('rooms.edit')}</h3>
+            {else}
+                <h3>{$c->__('rooms.join')}</h3>
+            {/if}
         {/if}
 
         {if="isset($id)"}
@@ -36,25 +38,56 @@
         <datalist id="suggestions">
         </datalist>
 
-        <div>
-            <input
-                {if="isset($conference)"}
-                    value="{$conference->name}"
-                {elseif="isset($info)"}
-                    value="{$info->name}"
-                {elseif="isset($name)"}
-                    value="{$name}"
-                {/if}
-                name="name"
-                placeholder="{$c->__('chatrooms.name_placeholder')}"
-                {if="!isset($id)"}
+        {if="$create"}
+            <div>
+                <ul class="list middle">
+                    <li class="wide">
+                        <span class="control">
+                            <div class="radio">
+                                <input name="type" value="groupchat"
+                                    id="type_groupchat" type="radio"
+                                    checked>
+                                <label for="type_groupchat"></label>
+                            </div>
+                        </span>
+                        <div>
+                            <p>{$c->__('room.group_chat')}</p>
+                            <p>{$c->__('room.group_chat_text')}</p>
+                        </div>
+                    </li>
+                    <li class="wide">
+                        <span class="control">
+                            <div class="radio">
+                                <input name="type" value="channel"
+                                    id="type_channel" type="radio">
+                                <label for="type_channel"></label>
+                            </div>
+                        </span>
+                        <div>
+                            <p>{$c->__('room.channel')}</p>
+                            <p>{$c->__('room.channel_text')}</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <input
+                    {if="isset($conference)"}
+                        value="{$conference->name}"
+                    {elseif="isset($info)"}
+                        value="{$info->name}"
+                    {elseif="isset($name)"}
+                        value="{$name}"
+                    {/if}
+                    name="name"
+                    placeholder="{$c->__('chatrooms.name_placeholder')}"
                     onblur="RoomsUtils_ajaxResolveSlug(this.value)"
-                {/if}
-                required />
-            <label>{$c->__('chatrooms.name')}</label>
-        </div>
+                    required />
+                <label>{$c->__('chatrooms.name')}</label>
+            </div>
+        {/if}
 
-        {if="isset($id)"}
+        {if="isset($id) && !$create"}
             <input type="hidden" value="{$id}" name="jid"/>
         {else}
             <div>
@@ -70,6 +103,23 @@
                     oninput="Rooms.suggest()"
                     required />
                 <label>{$c->__('chatrooms.id')}</label>
+            </div>
+        {/if}
+
+        {if="!$create"}
+            <div>
+                <input
+                    {if="isset($conference)"}
+                        value="{$conference->name}"
+                    {elseif="isset($info)"}
+                        value="{$info->name}"
+                    {elseif="isset($name)"}
+                        value="{$name}"
+                    {/if}
+                    name="name"
+                    placeholder="{$c->__('chatrooms.name_placeholder')}"
+                    required />
+                <label>{$c->__('chatrooms.name')}</label>
             </div>
         {/if}
 
@@ -90,7 +140,8 @@
                     <option value="never" {if="isset($conference) && $conference->notify == 0"}selected{/if}>
                         {$c->__('room.notify_never')}
                     </option>
-                    <option value="quoted" {if="isset($conference) && $conference->notify == 1"}selected{/if}>
+                    <option value="quoted" {if="isset($conference) && $conference->notify == 1"}selected{/if}
+                        {if="!isset($conference)"}selected{/if}>
                         {$c->__('room.notify_quoted')}
                     </option>
                     <option value="always" {if="isset($conference) && $conference->notify == 2"}selected{/if}>

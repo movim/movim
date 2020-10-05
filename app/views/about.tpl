@@ -15,6 +15,7 @@
             </ul>
         </header>
         <?php $this->widget('Tabs');?>
+        <ul class="tabs" id="navtabs"></ul>
 
         <?php $this->widget('About');?>
         <?php $this->widget('Help');?>

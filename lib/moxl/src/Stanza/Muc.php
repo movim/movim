@@ -102,4 +102,141 @@ class Muc
         $xml = \Moxl\API::iqWrapper($query, $to, 'set');
         \Moxl\API::request($xml);
     }
+
+    public static function createGroupChat($to, $name)
+    {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $query = $dom->createElementNS('http://jabber.org/protocol/muc#owner', 'query');
+        $dom->appendChild($query);
+
+        $x = $dom->createElementNS('jabber:x:data', 'x');
+        $x->setAttribute('type', 'submit');
+        $query->appendChild($x);
+
+        $field = $dom->createElement('field');
+        $field->setAttribute('var', 'FORM_TYPE');
+        $x->appendChild($field);
+        $value = $dom->createElement('value', 'http://jabber.org/protocol/muc#roomconfig');
+        $field->appendChild($value);
+
+        $field = $dom->createElement('field');
+        $field->setAttribute('var', 'muc#roomconfig_roomname');
+        $x->appendChild($field);
+        $value = $dom->createElement('value', $name);
+        $field->appendChild($value);
+
+        $field = $dom->createElement('field');
+        $field->setAttribute('var', 'muc#roomconfig_persistentroom');
+        $x->appendChild($field);
+        $value = $dom->createElement('value', 'true');
+        $field->appendChild($value);
+
+        $field = $dom->createElement('field');
+        $field->setAttribute('var', 'muc#roomconfig_changesubject');
+        $x->appendChild($field);
+        $value = $dom->createElement('value', 'false');
+        $field->appendChild($value);
+
+        $field = $dom->createElement('field');
+        $field->setAttribute('var', 'muc#roomconfig_membersonly');
+        $x->appendChild($field);
+        $value = $dom->createElement('value', 'true');
+        $field->appendChild($value);
+
+        $field = $dom->createElement('field');
+        $field->setAttribute('var', 'muc#roomconfig_whois');
+        $x->appendChild($field);
+        $value = $dom->createElement('value', 'anyone');
+        $field->appendChild($value);
+
+        $field = $dom->createElement('field');
+        $field->setAttribute('var', 'muc#roomconfig_publicroom');
+        $x->appendChild($field);
+        $value = $dom->createElement('value', 'false');
+        $field->appendChild($value);
+
+        $field = $dom->createElement('field');
+        $field->setAttribute('var', 'muc#muc#roomconfig_allowpm');
+        $x->appendChild($field);
+        $value = $dom->createElement('value', 'none');
+        $field->appendChild($value);
+
+        $xml = \Moxl\API::iqWrapper($query, $to, 'set');
+        \Moxl\API::request($xml);
+    }
+
+    public static function createChannel($to, $name)
+    {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $query = $dom->createElementNS('http://jabber.org/protocol/muc#owner', 'query');
+        $dom->appendChild($query);
+
+        $x = $dom->createElementNS('jabber:x:data', 'x');
+        $x->setAttribute('type', 'submit');
+        $query->appendChild($x);
+
+        $field = $dom->createElement('field');
+        $field->setAttribute('var', 'FORM_TYPE');
+        $x->appendChild($field);
+        $value = $dom->createElement('value', 'http://jabber.org/protocol/muc#roomconfig');
+        $field->appendChild($value);
+
+        $field = $dom->createElement('field');
+        $field->setAttribute('var', 'muc#roomconfig_roomname');
+        $x->appendChild($field);
+        $value = $dom->createElement('value', $name);
+        $field->appendChild($value);
+
+        $field = $dom->createElement('field');
+        $field->setAttribute('var', 'muc#roomconfig_persistentroom');
+        $x->appendChild($field);
+        $value = $dom->createElement('value', 'true');
+        $field->appendChild($value);
+
+        $field = $dom->createElement('field');
+        $field->setAttribute('var', 'muc#roomconfig_changesubject');
+        $x->appendChild($field);
+        $value = $dom->createElement('value', 'false');
+        $field->appendChild($value);
+
+        $field = $dom->createElement('field');
+        $field->setAttribute('var', 'muc#roomconfig_membersonly');
+        $x->appendChild($field);
+        $value = $dom->createElement('value', 'false');
+        $field->appendChild($value);
+
+        $field = $dom->createElement('field');
+        $field->setAttribute('var', 'muc#roomconfig_whois');
+        $x->appendChild($field);
+        $value = $dom->createElement('value', 'moderators');
+        $field->appendChild($value);
+
+        $field = $dom->createElement('field');
+        $field->setAttribute('var', 'muc#roomconfig_publicroom');
+        $x->appendChild($field);
+        $value = $dom->createElement('value', 'true');
+        $field->appendChild($value);
+
+        $field = $dom->createElement('field');
+        $field->setAttribute('var', 'muc#muc#roomconfig_allowpm');
+        $x->appendChild($field);
+        $value = $dom->createElement('value', 'anyone');
+        $field->appendChild($value);
+
+        $xml = \Moxl\API::iqWrapper($query, $to, 'set');
+        \Moxl\API::request($xml);
+    }
+
+    public static function getMembers($to, $affiliation)
+    {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $query = $dom->createElementNS('http://jabber.org/protocol/muc#admin', 'query');
+
+        $item = $dom->createElement('item');
+        $item->setAttribute('affiliation', $affiliation);
+        $query->appendChild($item);
+
+        $xml = \Moxl\API::iqWrapper($query, $to, 'get');
+        \Moxl\API::request($xml);
+    }
 }

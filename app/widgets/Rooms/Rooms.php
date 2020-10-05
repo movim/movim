@@ -3,6 +3,7 @@
 use Moxl\Xec\Action\Disco\Request;
 use Moxl\Xec\Action\Presence\Muc;
 use Moxl\Xec\Action\Presence\Unavailable;
+use Moxl\Xec\Action\Muc\GetMembers;
 
 use Movim\Session;
 use Movim\ChatStates;
@@ -146,7 +147,7 @@ class Rooms extends Base
         $conference = $this->user->session->conferences()
                                           ->where('conference', $room)
                                           ->with('info', 'contact', 'presence')
-                                          ->withCount('unreads', 'quoted')
+                                          ->withCount('unreads', 'quoted', 'presences')
                                           ->first();
 
         if ($conference) {
@@ -158,7 +159,7 @@ class Rooms extends Base
     {
         $conferences = $this->user->session->conferences()
                                            ->with('info', 'contact', 'presence')
-                                           ->withCount('unreads', 'quoted')
+                                           ->withCount('unreads', 'quoted', 'presences')
                                            ->get();
 
         $this->rpc('Rooms.clearRooms');
@@ -211,6 +212,10 @@ class Rooms extends Base
             $r->setTo($jid['server'])
               ->request();
         }
+
+        $m = new GetMembers;
+        $m->setTo($room)
+          ->request();
 
         if ($noNotify) {
             $p->noNotify();

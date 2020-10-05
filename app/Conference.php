@@ -66,6 +66,13 @@ class Conference extends Model
                     ->where('mucjid', \App\User::me()->id);
     }
 
+    public function members()
+    {
+        return $this->hasMany('App\Member', 'conference', 'conference')
+                    ->orderBy('role')
+                    ->orderBy('affiliation', 'desc');
+    }
+
     public function pictures()
     {
         return $this->hasMany('App\Message', 'jidfrom', 'conference')
@@ -124,6 +131,25 @@ class Conference extends Model
         return self::$notifications[$this->notify];
     }
 
+    public function getTitleAttribute()
+    {
+        if ($this->isGroupChat() && $this->members()->count() > 0) {
+            $title = '';
+            $i = 0;
+            foreach ($this->members()->take(3)->get() as $member) {
+                $title .= $member->truename;
+                if ($i < 2) $title .= ', ';
+                $i++;
+            }
+
+            if ($this->members()->count() > 3) $title .= '…';
+
+            return $title;
+        }
+
+        return $this->name;
+    }
+
     public function getSubjectAttribute()
     {
         $subject = \App\User::me()
@@ -141,6 +167,16 @@ class Conference extends Model
     {
         if ($this->contact) {
             return $this->contact->getPhoto($size);
+        }
+
+        return false;
+    }
+
+    // https://docs.modernxmpp.org/client/groupchat/#types-of-chat
+    public function isGroupChat()
+    {
+        if ($this->info) {
+            return $this->info->mucmembersonly && !$this->info->mucsemianonymous;
         }
 
         return false;

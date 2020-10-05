@@ -18,6 +18,9 @@
     <?php $this->widget('Chat');?>
     <?php $this->widget('ChatActions');?>
     <div id="scroll_block">
+        <a class="button action color" onclick="Search_ajaxRequest(true)">
+            <i class="material-icons">add</i>
+        </a>
         <?php $this->widget('Chats');?>
         <?php $this->widget('Rooms');?>
         <?php $this->widget('RoomsUtils');?>
@@ -25,5 +28,6 @@
 </main>
 
 <?php $this->widget('Snap');?>
+<?php $this->widget('Tabs');?>
 <?php $this->widget('Draw');?>
 <?php $this->widget('RoomsExplore');?>

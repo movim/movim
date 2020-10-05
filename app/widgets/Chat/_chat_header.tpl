@@ -30,7 +30,12 @@
                         {$conference->name|firstLetterCapitalize|addEmojis}
                     {/autoescape}
             {/if}
-                {if="$conference->connected"}
+                {if="$conference->isGroupChat()"}
+                    {$count = $conference->members()->count()}
+                    <span class="counter alt">
+                        {if="$count > 99"}99+{else}{$count}{/if}
+                    </span>
+                {elseif="$conference->connected"}
                     {$count = $conference->presences()->count()}
                     <span class="counter alt">
                         {if="$count > 99"}99+{else}{$count}{/if}
@@ -53,9 +58,9 @@
             </span>
 
             <div>
-                {if="$conference && $conference->name"}
+                {if="$conference && $conference->title"}
                     <p class="line active" title="{$jid|echapJS}" onclick="RoomsUtils_ajaxShowSubject('{$jid|echapJS}')">
-                        {$conference->name}
+                        {$conference->title}
                         {if="$conference->notify == 0"}
                             <span class="second" title="{$c->__('room.notify_never')}">
                                 <i class="material-icons">notifications_off</i>
@@ -77,15 +82,14 @@
                     <p>{$c->__('button.connecting')}…</p>
                 {elseif="$conference && $subject = $conference->subject"}
                     <p class="line active" title="{$subject}" onclick="RoomsUtils_ajaxShowSubject('{$jid|echapJS}')">
-                        {if="$conference->info && $conference->info->mucpublic"}
-                            <span title="{$c->__('room.public_muc_text')}">
-                                {$c->__('room.public_muc')} <i class="material-icons">wifi_tethering</i>
+                        {if="$conference->isGroupChat()"}
+                            <span title="{$c->__('room.group_chat_text')}">
+                                <i class="material-icons">people_alt</i> {$c->__('room.group_chat')}
                             </span>
                             ·
-                        {/if}
-                        {if="$conference->info && !$conference->info->mucsemianonymous"}
-                            <span title="{$c->__('room.nonanonymous_muc_text')}">
-                                {$c->__('room.nonanonymous_muc')} <i class="material-icons">face</i>
+                        {else}
+                            <span title="{$c->__('room.channel_text')}">
+                                <i class="material-icons">wifi_tethering</i> {$c->__('room.channel')}
                             </span>
                             ·
                         {/if}
@@ -93,15 +97,14 @@
                     </p>
                 {else}
                     <p class="line active" id="{$jid|cleanupId}-state" onclick="RoomsUtils_ajaxShowSubject('{$jid|echapJS}')">
-                        {if="$conference->info && $conference->info->mucpublic"}
-                            <span title="{$c->__('room.public_muc_text')}">
-                                {$c->__('room.public_muc')} <i class="material-icons">wifi_tethering</i>
+                        {if="$conference->isGroupChat()"}
+                            <span title="{$c->__('room.group_chat_text')}">
+                                <i class="material-icons">people_alt</i> {$c->__('room.group_chat')}
                             </span>
                             ·
-                        {/if}
-                        {if="$conference->info && !$conference->info->mucsemianonymous"}
-                            <span title="{$c->__('room.nonanonymous_muc_text')}">
-                                {$c->__('room.nonanonymous_muc')} <i class="material-icons">face</i>
+                        {else}
+                            <span title="{$c->__('room.channel_text')}">
+                                <i class="material-icons">wifi_tethering</i> {$c->__('room.channel')}
                             </span>
                             ·
                         {/if}
@@ -163,25 +166,6 @@
             {/if}
                 <div>
                     <p class="normal">{$c->__('chat.report_abuse')}</p>
-                </div>
-            </li>
-        {/if}
-
-        <li class="divided" onclick="RoomsUtils_ajaxAskInvite('{$jid|echapJS}');">
-            <div>
-                <p class="normal">{$c->__('room.invite')}</p>
-            </div>
-        </li>
-
-        <li onclick="RoomsUtils_ajaxAdd('{$jid|echapJS}');">
-            <div>
-                <p class="normal">{$c->__('chatroom.config')}</p>
-            </div>
-        </li>
-        {if="!$anon"}
-            <li onclick="RoomsUtils_ajaxRemove('{$jid|echapJS}')">
-                <div>
-                    <p class="normal">{$c->__('button.delete')}</p>
                 </div>
             </li>
         {/if}

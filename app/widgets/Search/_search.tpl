@@ -1,4 +1,35 @@
 <section id="search">
+    {if="$chatroomactions"}
+        <ul class="list active">
+            <li onclick="RoomsExplore_ajaxSearch();">
+                <span class="primary icon gray">
+                    <i class="material-icons">explore</i>
+                </span>
+                <span class="control icon gray">
+                    <i class="material-icons">chevron_right</i>
+                </span>
+                <div>
+                    <p class="line normal">
+                        {$c->__('rooms.join')}
+                    </p>
+                </div>
+            </li>
+            <li onclick="RoomsUtils_ajaxAdd(false, null, true); Drawer.clear()">
+                <span class="primary icon gray">
+                    <i class="material-icons">group_add</i>
+                </span>
+                <span class="control icon gray">
+                    <i class="material-icons">chevron_right</i>
+                </span>
+                <div>
+                    <p class="line normal">
+                        {$c->__('rooms.create')}
+                    </p>
+                </div>
+            </li>
+        </ul>
+        <hr />
+    {/if}
     <ul id="roster" class="list spin"></ul>
 
     <div id="results">

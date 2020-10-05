@@ -13,21 +13,23 @@
         >
             {$url = $value->getPhoto('m')}
             {if="$url"}
-                <span class="primary icon bubble
+                <span class="primary icon bubble active
                     {if="!$value->presence || $value->presence->value > 4"}
                         disabled
                     {else}
                         status {$value->presence->presencekey}
                     {/if}"
-                    style="background-image: url({$url});">
+                    style="background-image: url({$url});"
+                    onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}')">
                 </span>
             {else}
-                <span class="primary icon bubble color {$value->jid|stringToColor}
+                <span class="primary icon bubble color active {$value->jid|stringToColor}
                     {if="!$value->presence || $value->presence->value > 4"}
                         disabled
                     {else}
                         status {$value->presence->presencekey}
                     {/if}"
+                    onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}')"
                 >
                     <i class="material-icons">person</i>
                 </span>
@@ -51,9 +53,6 @@
             {/if}
             <span class="control icon active gray" onclick="Search.chat('{$value->jid|echapJS}')">
                 <i class="material-icons">comment</i>
-            </span>
-            <span class="control icon active gray" onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}')">
-                <i class="material-icons">person</i>
             </span>
             <div>
                 <p class="normal line">

@@ -1,7 +1,10 @@
 <li id="{$conference->conference|cleanupId}"
     data-jid="{$conference->conference}"
     {if="$conference->nick != null"} data-nick="{$conference->nick}" {/if}
-    class="room {if="$conference->connected"}connected{/if}">
+    class="room
+        {if="$conference->connected"}connected{/if}
+        {if="$conference->isGroupChat()"}groupchat{/if}
+    ">
     {$url = $conference->getPhoto()}
     {if="$url"}
         <span class="primary icon bubble color small
@@ -26,7 +29,7 @@
 
     <div>
         <p class="normal line">
-            {if="$conference->connected"}
+            {if="!$conference->isGroupChat() && $conference->connected"}
                 {$count = $conference->presences()->count()}
                 <span title="{$c->__('communitydata.sub', $count)}"
                     class="info
@@ -34,32 +37,20 @@
                             moderator
                         {/if}
                     ">
-                    {if="$conference->info && $conference->info->mucpublic"}
-                        <i class="material-icons" title="{$c->__('room.public_muc_text')}">wifi_tethering</i>
-                    {/if}
-                    {if="$conference->info && !$conference->info->mucsemianonymous"}
-                        <i class="material-icons" title="{$c->__('room.nonanonymous_muc_text')}">face</i>
-                    {/if}
                     {$count} <i class="material-icons">people</i>
                 </span>
-            {elseif="isset($info) && $info->occupants > 0"}
+            {elseif="!$conference->isGroupChat() && isset($info) && $info->occupants > 0"}
                 <span title="{$c->__('communitydata.sub', $info->occupants)}"
                     class="info
                         {if="$conference->connected && $conference->presence->mucrole == 'moderator'"}
                             moderator
                         {/if}
                     ">
-                    {if="$conference->info && $conference->info->mucpublic"}
-                        <i class="material-icons" title="{$c->__('room.public_muc_text')}">wifi_tethering</i>
-                    {/if}
-                    {if="$conference->info && !$conference->info->mucsemianonymous"}
-                        <i class="material-icons" title="{$c->__('room.nonanonymous_muc_text')}">face</i>
-                    {/if}
                     {$info->occupants} <i class="material-icons">people</i>
                 </span>
             {/if}
 
-            <span title="{$conference->conference}">{$conference->name}</span>
+            <span title="{$conference->conference}">{$conference->title}</span>
             <span class="second">
                 {if="$conference->notify == 0"}
                     <i class="material-icons" title="{$c->__('room.notify_never')}">notifications_off</i>

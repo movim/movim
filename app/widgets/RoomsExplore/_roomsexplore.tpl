@@ -1,4 +1,18 @@
 <section>
+    <ul class="list active">
+        <li onclick="RoomsUtils_ajaxAdd(); Drawer.clear();">
+            <span class="primary icon gray">
+                <i class="material-icons">input</i>
+            </span>
+            <span class="control icon gray">
+                <i class="material-icons">chevron_right</i>
+            </span>
+            <div>
+                <p class="normal line">{$c->__('rooms.join_custom')}</p>
+            </div>
+        </li>
+    </ul>
+    <hr />
     <ul class="list divided spaced middle" id="roomsexplore_local"></ul>
     <ul class="list divided spaced middle" id="roomsexplore_global"></ul>
 </section>

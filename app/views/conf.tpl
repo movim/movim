@@ -28,6 +28,7 @@
         </header>
 
         <?php $this->widget('Tabs');?>
+        <ul class="tabs" id="navtabs"></ul>
         <?php $this->widget('Vcard4');?>
         <?php if (\App\User::me()->hasPubsub()) { ?>
             <?php $this->widget('Avatar');?>

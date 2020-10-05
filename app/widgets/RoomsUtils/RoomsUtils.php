@@ -4,6 +4,8 @@ use Moxl\Xec\Action\Vcard\Set as VcardSet;
 use Moxl\Xec\Action\Message\Invite;
 use Moxl\Xec\Action\Muc\SetSubject;
 use Moxl\Xec\Action\Muc\Destroy;
+use Moxl\Xec\Action\Muc\CreateChannel;
+use Moxl\Xec\Action\Muc\CreateGroupChat;
 use Moxl\Xec\Action\Disco\Items;
 use Moxl\Xec\Action\Bookmark2\Set;
 use Moxl\Xec\Action\Bookmark2\Delete;
@@ -46,12 +48,21 @@ class RoomsUtils extends Base
         $view = $this->tpl();
         $view->assign('conference', $conference);
         $view->assign('room', $room);
-        $view->assign('list', $conference->presences()
-            ->with('capability')
-            ->get());
+
+        $view->assign('presences', $conference->presences()
+             ->with('capability')
+             ->get());
+
+        if ($conference->isGroupChat()) {
+            $view->assign('members', $conference->members()
+                 ->with('contact')
+                 ->get());
+        }
+
         $view->assign('me', $this->user->id);
 
         Drawer::fill($view->draw('_rooms_drawer'));
+        $this->rpc('Tabs.create');
     }
 
         /**
@@ -155,7 +166,7 @@ class RoomsUtils extends Base
     /**
      * @brief Display the add room form
      */
-    public function ajaxAdd($room = false, $name = null)
+    public function ajaxAdd($room = false, $name = null, $create = false)
     {
         $view = $this->tpl();
 
@@ -168,6 +179,7 @@ class RoomsUtils extends Base
                                              ->whereType('text')
                                              ->first());
         $view->assign('id', $room);
+        $view->assign('create', $create);
         $view->assign(
             'conference',
             $this->user->session->conferences()
