@@ -14,29 +14,31 @@
             <h4>{$id}</h4>
         {/if}
 
-        {if="$gateways->isNotEmpty() && !isset($conference)"}
-            <div>
-                <div class="select">
-                    <select onchange="RoomsUtils_ajaxDiscoGateway(this.value)">
-                        <option value="">{$c->__('rooms.default_room')}</option>
-                        {loop="$gateways"}
-                            <option value="{$value->server}">
-                                {$value->name}
-                                {if="$value->identities()->first()"}
-                                    ({$value->identities()->first()->type})
-                                {/if}
-                            </option>
-                        {/loop}
-                    </select>
+        {if="!$create"}
+            {if="$gateways->isNotEmpty() && !isset($conference)"}
+                <div>
+                    <div class="select">
+                        <select onchange="RoomsUtils_ajaxDiscoGateway(this.value)">
+                            <option value="">{$c->__('rooms.default_room')}</option>
+                            {loop="$gateways"}
+                                <option value="{$value->server}">
+                                    {$value->name}
+                                    {if="$value->identities()->first()"}
+                                        ({$value->identities()->first()->type})
+                                    {/if}
+                                </option>
+                            {/loop}
+                        </select>
+                    </div>
+                    <label>{$c->__('rooms.type_room')}</label>
                 </div>
-                <label>{$c->__('rooms.type_room')}</label>
-            </div>
+            {/if}
+
+            <div id="gateway_rooms"></div>
+
+            <datalist id="suggestions">
+            </datalist>
         {/if}
-
-        <div id="gateway_rooms"></div>
-
-        <datalist id="suggestions">
-        </datalist>
 
         {if="$create"}
             <div>
