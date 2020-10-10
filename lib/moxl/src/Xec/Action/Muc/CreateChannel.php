@@ -9,6 +9,9 @@ class CreateChannel extends Action
 {
     protected $_to;
     protected $_name;
+    protected $_nick;
+    protected $_autojoin;
+    protected $_notify;
 
     public function request()
     {
@@ -18,7 +21,13 @@ class CreateChannel extends Action
 
     public function handle($stanza, $parent = false)
     {
-        $this->pack($this->_to);
+        $this->pack([
+            'jid' => $this->_to,
+            'name' => $this->_name,
+            'nick' => $this->_nick,
+            'autojoin' => $this->_autojoin,
+            'notify' => $this->_notify,
+        ]);
         $this->deliver();
     }
 }

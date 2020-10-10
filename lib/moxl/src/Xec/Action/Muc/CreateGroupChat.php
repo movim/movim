@@ -18,7 +18,13 @@ class CreateGroupChat extends Action
 
     public function handle($stanza, $parent = false)
     {
-        $this->pack($this->_to);
+        $this->pack([
+            'jid' => $this->_to,
+            'name' => $this->_name,
+            'nick' => $this->_nick,
+            'autojoin' => $this->_autojoin,
+            'notify' => $this->_notify,
+        ]);
         $this->deliver();
     }
 }

@@ -399,7 +399,8 @@ input[type=button].flat:focus {
 body > nav.active ~ main .button.action,
 body > div.dialog:not(:empty) ~ main .button.action,
 body > div.drawer:not(:empty):not(.empty) ~ main .button.action {
-    transform: scale(0);
+    transform: scale(0.9);
+    opacity: 0;
 }
 
 .button.action,

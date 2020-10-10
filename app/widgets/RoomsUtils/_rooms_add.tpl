@@ -40,8 +40,11 @@
 
         {if="$create"}
             <div>
-                <ul class="list middle">
-                    <li class="wide">
+                <ul class="list middle fill">
+                    <li>
+                        <span class="primary icon gray">
+                            <i class="material-icons">people_alt</i>
+                        </span>
                         <span class="control">
                             <div class="radio">
                                 <input name="type" value="groupchat"
@@ -55,7 +58,10 @@
                             <p>{$c->__('room.group_chat_text')}</p>
                         </div>
                     </li>
-                    <li class="wide">
+                    <li>
+                        <span class="primary icon gray">
+                            <i class="material-icons">wifi_tethering</i>
+                        </span>
                         <span class="control">
                             <div class="radio">
                                 <input name="type" value="channel"
@@ -180,7 +186,12 @@
         </button>
         <button
             class="button flat"
-            onclick="RoomsUtils_ajaxAddConfirm(MovimUtils.formToJson('bookmarkmucadd'));">
+            {if="$create"}
+                onclick="RoomsUtils_ajaxAddCreate(MovimUtils.formToJson('bookmarkmucadd'));"
+            {else}
+                onclick="RoomsUtils_ajaxAddConfirm(MovimUtils.formToJson('bookmarkmucadd'));"
+            {/if}
+            >
             {if="isset($conference)"}
                 {$c->__('button.edit')}
             {else}

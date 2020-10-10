@@ -10,6 +10,7 @@ use Moxl\Xec\Action\Disco\Items;
 use Moxl\Xec\Action\Bookmark2\Set;
 use Moxl\Xec\Action\Bookmark2\Delete;
 use Moxl\Xec\Action\Bookmark\Synchronize;
+use Moxl\Xec\Payload\Packet;
 
 use Movim\Widget\Base;
 use Movim\Picture;
@@ -27,6 +28,8 @@ class RoomsUtils extends Base
         $this->registerEvent('vcard_set_handle', 'onAvatarSet', 'chat');
         $this->registerEvent('disco_items_nosave_handle', 'onDiscoGateway');
         $this->registerEvent('disco_items_nosave_error', 'onDiscoGatewayError');
+        $this->registerEvent('muc_creategroupchat_handle', 'onChatroomCreated');
+        $this->registerEvent('muc_createchannel_handle', 'onChatroomCreated');
     }
 
     /**
@@ -65,7 +68,7 @@ class RoomsUtils extends Base
         $this->rpc('Tabs.create');
     }
 
-        /**
+    /**
      * @brief Get the avatar form
      */
     public function ajaxGetAvatar($room)
@@ -113,6 +116,35 @@ class RoomsUtils extends Base
     {
         $this->rpc('Dialog_ajaxClear');
         Toast::send($this->__('avatar.updated'));
+    }
+
+    /**
+     * @brief If a chatroom is successfuly created
+     */
+    public function onChatroomCreated($packet)
+    {
+        $values = $packet->content;
+
+        $conference = $this->user->session->conferences()
+            ->where('conference', $values['jid'])
+            ->first();
+
+        if (!$conference) $conference = new Conference;
+
+        $conference->conference = $values['jid'];
+        $conference->name = $values['name'];
+        $conference->autojoin = $values['autojoin'];
+        $conference->nick = $values['nick'];
+        $conference->notify = $values['notify'];
+
+        $conferenceSave = clone $conference;
+        $conference->delete();
+
+        $b = new Set;
+        $b->setConference($conferenceSave)
+            ->request();
+
+        $this->rpc('Dialog_ajaxClear');
     }
 
     /**
@@ -219,6 +251,36 @@ class RoomsUtils extends Base
     }
 
     /**
+     * @brief Create a chatroom
+     */
+    public function ajaxAddCreate($form)
+    {
+        if (!$this->validateRoom($form->jid->value)) {
+            Toast::send($this->__('chatrooms.bad_id'));
+        } elseif (trim($form->name->value) == '') {
+            Toast::send($this->__('chatrooms.empty_name'));
+        } else {
+            if ($form->type->value == 'groupchat') {
+                $cgc = new CreateGroupChat;
+                $cgc->setTo(strtolower($form->jid->value))
+                    ->setName($form->name->value)
+                    ->setAutoJoin($form->autojoin->value)
+                    ->setNick($form->nick->value)
+                    ->setNotify((int)array_flip(Conference::$notifications)[$form->notify->value])
+                    ->request();
+            } elseif ($form->type->value == 'channel') {
+                $cgc = new CreateChannel;
+                $cgc->setTo(strtolower($form->jid->value))
+                    ->setName($form->name->value)
+                    ->setAutoJoin($form->autojoin->value)
+                    ->setNick($form->nick->value)
+                    ->setNotify((int)array_flip(Conference::$notifications)[$form->notify->value])
+                    ->request();
+            }
+        }
+    }
+
+    /**
      * @brief Confirm the room add
      */
     public function ajaxAddConfirm($form)
@@ -230,26 +292,16 @@ class RoomsUtils extends Base
         } else {
             $this->rpc('Rooms_ajaxExit', $form->jid->value);
 
-            $conference = $this->user->session->conferences()
-                 ->where('conference', strtolower($form->jid->value))
-                 ->first();
+            $packet = new Packet;
+            $packet->content = [
+                'jid' => $form->jid->value,
+                'name' => $form->name->value,
+                'nick' => $form->nick->value,
+                'autojoin' => $form->autojoin->value,
+                'notify' => (int)array_flip(Conference::$notifications)[$form->notify->value],
+            ];
 
-            if (!$conference) $conference = new Conference;
-
-            $conference->conference = strtolower($form->jid->value);
-            $conference->name = $form->name->value;
-            $conference->autojoin = $form->autojoin->value;
-            $conference->nick = $form->nick->value;
-            $conference->notify = (int)array_flip(Conference::$notifications)[$form->notify->value];
-
-            $conferenceSave = clone $conference;
-            $conference->delete();
-
-            $b = new Set;
-            $b->setConference($conferenceSave)
-              ->request();
-
-            $this->rpc('Dialog_ajaxClear');
+            $this->onChatroomCreated($packet);
         }
     }
 

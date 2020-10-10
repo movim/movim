@@ -155,11 +155,11 @@ class Muc
         $value = $dom->createElement('value', 'false');
         $field->appendChild($value);
 
-        $field = $dom->createElement('field');
-        $field->setAttribute('var', 'muc#muc#roomconfig_allowpm');
+        /*$field = $dom->createElement('field');
+        $field->setAttribute('var', 'muc#roomconfig_allowpm');
         $x->appendChild($field);
         $value = $dom->createElement('value', 'none');
-        $field->appendChild($value);
+        $field->appendChild($value);*/
 
         $xml = \Moxl\API::iqWrapper($query, $to, 'set');
         \Moxl\API::request($xml);
@@ -217,11 +217,11 @@ class Muc
         $value = $dom->createElement('value', 'true');
         $field->appendChild($value);
 
-        $field = $dom->createElement('field');
+        /*$field = $dom->createElement('field');
         $field->setAttribute('var', 'muc#muc#roomconfig_allowpm');
         $x->appendChild($field);
         $value = $dom->createElement('value', 'anyone');
-        $field->appendChild($value);
+        $field->appendChild($value);*/
 
         $xml = \Moxl\API::iqWrapper($query, $to, 'set');
         \Moxl\API::request($xml);

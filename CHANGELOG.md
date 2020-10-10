@@ -7,6 +7,8 @@ v0.18.1 (trunk)
  * Fix #884, Don't reload page on status posting
  * Fix #921, Delete encrypted passwords after 7 days
  * Small redesign of the Chatrooms create/join form
+ * Add support of Multi-user Chats Modern XMPP standard
+ * Chats/Rooms redesign, common button to start/create a conversation
 
 v0.18
 ---------------------------

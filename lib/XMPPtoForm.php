@@ -161,11 +161,8 @@ class XMPPtoForm
         $ul->setAttribute('class', 'list fill');
         $container->appendChild($ul);
 
-        $content = $this->html->createElement('content');
-        $ul->appendChild($content);
-
         $li = $this->html->createElement('li');
-        $content->appendChild($li);
+        $ul->appendChild($li);
 
         $primary = $this->html->createElement('span');
         $primary->setAttribute('class', 'primary icon gray');
