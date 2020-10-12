@@ -34,9 +34,9 @@ class PublishBrief extends Base
         }
 
         if ($node == 'urn:xmpp:microblog:0') {
-            $this->rpc('MovimUtils.redirect', $this->route('news'));
+            $this->rpc('MovimUtils.softRedirect', $this->route('news'));
         } else {
-            $this->rpc('MovimUtils.redirect', $this->route('community', [$to, $node]));
+            $this->rpc('MovimUtils.softRedirect', $this->route('community', [$to, $node]));
         }
     }
 

@@ -70,6 +70,9 @@ var MovimUtils = {
         window.history.pushState(null, '', url);
     },
     redirect: function(url) {
+        window.location.href = url;
+    },
+    softRedirect: function(url) {
         var location = window.location.href;
 
         if (location.substring(0, location.indexOf('#')) !== url) {
