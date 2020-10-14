@@ -133,6 +133,10 @@ class Conference extends Model
 
     public function getTitleAttribute()
     {
+        if (!empty($this->name)) {
+            return $this->name;
+        }
+
         if ($this->isGroupChat() && $this->members()->count() > 0) {
             $title = '';
             $i = 0;
@@ -147,7 +151,7 @@ class Conference extends Model
             return $title;
         }
 
-        return $this->name;
+        return $this->conference;
     }
 
     public function getSubjectAttribute()
