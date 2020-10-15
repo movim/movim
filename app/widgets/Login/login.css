@@ -82,10 +82,6 @@ body main {
     color: gray;
 }
 
-#login_widget ul.invite span.primary + span.primary {
-    left: 5rem;
-}
-
 #login_widget ul.invite span.primary + span.primary ~ p {
     padding-left: 12rem;
 }
