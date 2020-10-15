@@ -267,11 +267,6 @@ class Rooms extends Base
         // We clear the presences from the buffer cache and then the DB
         $pb = PresenceBuffer::getInstance();
         $this->user->session->conferences()
-            ->where('conference', $room)
-            ->first()->presences->each(function ($presence) use ($pb) {
-                $pb->remove($presence);
-            });
-        $this->user->session->conferences()
              ->where('conference', $room)
              ->first()->presences()->delete();
 

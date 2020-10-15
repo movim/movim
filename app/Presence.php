@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Illuminate\Database\Capsule\Manager as DB;
+
 use Movim\Model;
 use Movim\Picture;
 use Movim\Session;
@@ -104,19 +106,8 @@ class Presence extends Model
 
     public static function findByStanza($stanza)
     {
-        $buffer = PresenceBuffer::getInstance();
         $temporary = new self;
         $temporary->set($stanza);
-
-        if ($buffer->saved($temporary)) {
-            $jid = explode('/', (string)$stanza->attributes()->from);
-            return self::firstOrNew([
-                'session_id' => SESSION_ID,
-                'jid' => $jid[0],
-                'resource' => isset($jid[1]) ? $jid[1] : ''
-            ]);
-        }
-
         return $temporary;
     }
 

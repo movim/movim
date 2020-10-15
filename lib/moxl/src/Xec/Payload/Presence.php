@@ -49,7 +49,6 @@ class Presence extends Payload
                             }
 
                             if ($cCount > 1) {
-                                PresenceBuffer::getInstance()->remove($presence);
                                 $presence->delete();
                                 break;
                             }
@@ -72,7 +71,6 @@ class Presence extends Payload
 
                     if ($presence->value == 5 && !empty($presence->resource)) {
                         $presence->delete();
-                        PresenceBuffer::getInstance()->remove($presence);
                     }
                 }
 

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Capsule\Manager as DB;
 use App\Presence;
 
 class PresenceBuffer
@@ -9,9 +10,6 @@ class PresenceBuffer
     protected static $instance;
     private $_models = null;
     private $_calls = null;
-
-    // Historically processed presences, to prevent useless DB lookup
-    private $_saved = [];
 
     public static function getInstance()
     {
@@ -34,17 +32,34 @@ class PresenceBuffer
         });
     }
 
-    public function saved(Presence $presence)
-    {
-        return array_key_exists($this->getPresenceKey($presence), $this->_saved);
-    }
-
     public function save()
     {
-        if ($this->_models->isNotEmpty()) {
+        if ($this->_models->count() > 0) {
             try {
+                DB::beginTransaction();
+
+                // We delete all the presences that might already be there
+                $table = DB::table('presences');
+                $first = $this->_models->shift();
+                $table = $table->where([
+                    ['session_id', $first['session_id']],
+                    ['jid', $first['jid']],
+                    ['resource', $first['resource']],
+                ]);
+                $this->_models->each(function ($presence) use ($table) {
+                    $table->orWhere([
+                        ['session_id', $presence['session_id']],
+                        ['jid', $presence['jid']],
+                        ['resource', $presence['resource']],
+                    ]);
+                });
+                $table->delete();
+
+                // And we save it
                 Presence::insert($this->_models->toArray());
+                DB::commit();
             } catch (\Exception $e) {
+                DB::rollback();
                 \Utils::error($e->getMessage());
             }
             $this->_models = collect();
@@ -60,21 +75,9 @@ class PresenceBuffer
 
     public function append(Presence $presence, $call)
     {
-        // Only presences that can be inserted, not updated
-        if ($presence->created_at == null) {
             $key = $this->getPresenceKey($presence);
-            $this->_saved[$key] = 1;
             $this->_models[$key] = $presence->toArray();
             $this->_calls->push($call);
-        } else {
-            $presence->save();
-            $call();
-        }
-    }
-
-    public function remove(Presence $presence)
-    {
-        unset($this->_saved[$this->getPresenceKey($presence)]);
     }
 
     private function getPresenceKey(Presence $presence)
