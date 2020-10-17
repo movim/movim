@@ -1,6 +1,6 @@
 #
 # Translators:
-# Lazalatin <inactive+Lazalatin@transifex.com>, 2015
+# a9da1daea11d7960a1b6b8bfb4ef2632_b05ed48 <16327868bab12392b248b0f6f68a1655_152836>, 2015
 # Christian <christian-pauly@posteo.de>, 2017
 # Dominik George <nik@naturalnet.de>, 2017-2019
 # Fabian Thiele <fabian.thiele@posteo.de>, 2016
@@ -115,16 +115,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-07 08:54+0200\n"
-"PO-Revision-Date: 2020-03-22 14:19+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"POT-Creation-Date: 2020-10-17 11:51+0200\n"
+"PO-Revision-Date: 2020-08-07 10:18+0000\n"
+"Last-Translator: Transifex Bot <>\n"
 "Language-Team: German (http://www.transifex.com/movim/movim/language/de/)\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 2.5.0\n"
+"X-Generator: Translate Toolkit 2.5.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -489,9 +489,8 @@ msgid "Message Published"
 msgstr "Nachricht veröffentlicht"
 
 #: [message]react
-#, fuzzy
 msgid "Add a reaction"
-msgstr "Kontakt hinzufügen"
+msgstr ""
 
 #: [message]retract
 msgid "Retract"
@@ -570,10 +569,9 @@ msgid "See the profile"
 msgstr "Profil ansehen"
 
 #: [chat]clear
-#, fuzzy
 msgctxt "[chat]clear"
 msgid "Clear the history"
-msgstr "Historie löschen"
+msgstr ""
 
 #: [chat]edit_previous
 msgid "Edit last message"
@@ -600,15 +598,13 @@ msgid "Synchronizing the history, please wait…"
 msgstr "Synchronisiere die History, bitte warten…"
 
 #: [chat]clear_history
-#, fuzzy
 msgctxt "[chat]clear_history"
 msgid "Clear the history"
-msgstr "Historie löschen"
+msgstr ""
 
 #: [chat]clear_history_text
-#, fuzzy
 msgid "You are going to delete %s messages, are you sure?"
-msgstr "Sie sind dabei Ihren Beitrag zu löschen. Möchten Sie fortfahren?"
+msgstr ""
 
 #: [chatroom]members
 msgid "Members"
@@ -956,19 +952,16 @@ msgid "Archiving preferences saved"
 msgstr "Archivierungseinstellungen gespeichert"
 
 #: [config]notification_title
-#, fuzzy
 msgid "Audio notifications"
-msgstr "Keine neuen Benachrichtigungen"
+msgstr ""
 
 #: [config]notification_call
-#, fuzzy
 msgid "Incoming call"
-msgstr "im Gespräch"
+msgstr ""
 
 #: [config]notification_chat
-#, fuzzy
 msgid "Incoming message"
-msgstr "Informationsnachricht"
+msgstr ""
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -1615,14 +1608,12 @@ msgid "No content to preview"
 msgstr "Kein Inhalt zur Vorschau"
 
 #: [publishbrief]title
-#, fuzzy
 msgid "Post title"
-msgstr "Beitrag gelöscht"
+msgstr ""
 
 #: [publishbrief]content
-#, fuzzy
 msgid "Markdown content"
-msgstr "Ohne Inhalt"
+msgstr ""
 
 #: [publishbrief]valid_url
 msgid "Please enter a valid URL"
@@ -1633,9 +1624,8 @@ msgid "You can format your content using Markdown"
 msgstr "Sie können ihren Text mithilfe der Markdown-Sprache formatieren"
 
 #: [publishbrief]draft_saved
-#, fuzzy
 msgid "Draft saved"
-msgstr "Einstellungen gespeichert"
+msgstr ""
 
 #: [publishbrief]rich_editor
 msgid "Rich text editor"
@@ -1653,12 +1643,23 @@ msgstr "Weitere Hilfe"
 msgid "Markdown syntax manual"
 msgstr "Markdown-Anleitung"
 
-#: [rooms]add
-msgid "Search or join a chatroom"
-msgstr "Einen Chatraum suchen oder hinzufügen"
+#: [rooms]create
+#, fuzzy
+msgid "Create a chatroom"
+msgstr "Chatraum bearbeiten"
 
 #: [rooms]edit
 msgid "Edit a chatroom"
+msgstr "Chatraum bearbeiten"
+
+#: [rooms]join
+#, fuzzy
+msgid "Join a chatroom"
+msgstr "Chatraum bearbeiten"
+
+#: [rooms]join_custom
+#, fuzzy
+msgid "Join a custom chatroom"
 msgstr "Chatraum bearbeiten"
 
 #: [rooms]empty_text1
@@ -1750,8 +1751,16 @@ msgid "%s rooms synchronized"
 msgstr "%s Räume  synchronisiert"
 
 #: [chatrooms]users
-msgid "Users in the room"
-msgstr "Nutzer im Raum"
+#, fuzzy
+msgctxt "[chatrooms]users"
+msgid "Users"
+msgstr "Benutzername"
+
+#: [chatrooms]members
+#, fuzzy
+msgctxt "[chatrooms]members"
+msgid "Members"
+msgstr "Mitglieder"
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a correct nickname (2 to 40 characters)"
@@ -1789,10 +1798,6 @@ msgstr "Lesezeichen aktualisiert"
 msgid "Public chatroom"
 msgstr "Öffentlicher Chatraum"
 
-#: [room]no_room
-msgid "Please provide a room address"
-msgstr "Bitte eine Raumadresse übermitteln"
-
 #: [room]anonymous_text1
 msgid "You are currently logged as an anonymous user."
 msgstr "Sie sind momentan als anonymer Benutzer angemeldet."
@@ -1804,10 +1809,6 @@ msgstr "Sie können mit einem eigenen Konto beitreten oder ein neues Konto erste
 #: [room]anonymous_login
 msgid "Login on %s"
 msgstr "Bei %s anmelden"
-
-#: [room]nick
-msgid "Your nickname"
-msgstr "Ihr Spitzname"
 
 #: [room]invite
 msgid "Invite a contact"
@@ -1837,6 +1838,40 @@ msgstr "Öffentliche Profile"
 msgid "The participants of this chatroom can see each other's profile"
 msgstr "Die Mitglieder dieses Raums können die Profile der anderen sehen"
 
+#: [room]group_chat
+#, fuzzy
+msgid "Group Chat"
+msgstr "Gruppe"
+
+#: [room]group_chat_text
+msgid "Private group chat with invited members"
+msgstr ""
+
+#: [room]group_chat_add
+#, fuzzy
+msgid "Add a new member"
+msgstr "Einen Kommentar hinzufügen"
+
+#: [room]group_chat_members
+#, fuzzy
+msgctxt "[room]group_chat_members"
+msgid "Members"
+msgstr "Mitglieder"
+
+#: [room]channel
+msgid "Channel"
+msgstr ""
+
+#: [room]channel_users
+#, fuzzy
+msgctxt "[room]channel_users"
+msgid "Users"
+msgstr "Benutzername"
+
+#: [room]channel_text
+msgid "Public channel that can be publicly discoverable and joineable"
+msgstr ""
+
 #: [room]notify_never
 msgid "Never notify"
 msgstr ""
@@ -1846,9 +1881,8 @@ msgid "Notify when quoted"
 msgstr ""
 
 #: [room]notify_always
-#, fuzzy
 msgid "Always notify"
-msgstr "Immer"
+msgstr ""
 
 #: [roomsexplore]no_local
 msgid "No chatrooms found localy"
@@ -2980,8 +3014,14 @@ msgstr "Die API ist nicht erreichbar, bitte später erneut versuchen"
 msgid "Type here"
 msgstr "Hier schreiben"
 
-#~ msgid "Adult content blocked"
-#~ msgstr "Erwachseneninhalt blockiert"
+#~ msgid "Search or join a chatroom"
+#~ msgstr "Einen Chatraum suchen oder hinzufügen"
 
-#~ msgid "Some adult content has been blocked on this page. You can enable the display of adult content in the configuration page."
-#~ msgstr "Einige Erwachseneninhalte wurden auf dieser Seite blockiert. Sie können die Anzeige auf der Konfigurationsseite aktivieren."
+#~ msgid "Users in the room"
+#~ msgstr "Nutzer im Raum"
+
+#~ msgid "Please provide a room address"
+#~ msgstr "Bitte eine Raumadresse übermitteln"
+
+#~ msgid "Your nickname"
+#~ msgstr "Ihr Spitzname"

@@ -102,16 +102,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-07 08:54+0200\n"
-"PO-Revision-Date: 2019-11-02 09:40+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"POT-Creation-Date: 2020-10-17 11:51+0200\n"
+"PO-Revision-Date: 2020-08-07 10:18+0000\n"
+"Last-Translator: Transifex Bot <>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/movim/movim/language/cs_CZ/)\n"
 "Language: cs_CZ\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
-"X-Generator: Translate Toolkit 2.4.0\n"
+"X-Generator: Translate Toolkit 2.5.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -274,9 +274,8 @@ msgid "Only suggest chatrooms, Communities and other contents that are available
 msgstr ""
 
 #: [chatonly]title
-#, fuzzy
 msgid "Chat only"
-msgstr "Konverzace"
+msgstr ""
 
 #: [chatonly]text
 msgid "Disable all the social feature (Communities, Blog…) and keep only the chat ones"
@@ -477,9 +476,8 @@ msgid "Message Published"
 msgstr "Zpráva zveřejněna"
 
 #: [message]react
-#, fuzzy
 msgid "Add a reaction"
-msgstr "Přidej kontakt"
+msgstr ""
 
 #: [message]retract
 msgid "Retract"
@@ -494,9 +492,8 @@ msgid "Encrypted message"
 msgstr "Zašifrovaná zpráva"
 
 #: [message]retracted
-#, fuzzy
 msgid "Retracted message"
-msgstr "Zašifrovaná zpráva"
+msgstr ""
 
 #: [message]composing
 msgid "Composing…"
@@ -559,10 +556,9 @@ msgid "See the profile"
 msgstr "Zobrazit profil"
 
 #: [chat]clear
-#, fuzzy
 msgctxt "[chat]clear"
 msgid "Clear the history"
-msgstr "Vymazat historii"
+msgstr ""
 
 #: [chat]edit_previous
 msgid "Edit last message"
@@ -589,15 +585,13 @@ msgid "Synchronizing the history, please wait…"
 msgstr ""
 
 #: [chat]clear_history
-#, fuzzy
 msgctxt "[chat]clear_history"
 msgid "Clear the history"
-msgstr "Vymazat historii"
+msgstr ""
 
 #: [chat]clear_history_text
-#, fuzzy
 msgid "You are going to delete %s messages, are you sure?"
-msgstr "Odstraníte tento příspěvek, potvrďte prosím akci"
+msgstr ""
 
 #: [chatroom]members
 msgid "Members"
@@ -945,18 +939,16 @@ msgid "Archiving preferences saved"
 msgstr ""
 
 #: [config]notification_title
-#, fuzzy
 msgid "Audio notifications"
-msgstr "Žádná nová oznámení"
+msgstr ""
 
 #: [config]notification_call
 msgid "Incoming call"
 msgstr ""
 
 #: [config]notification_chat
-#, fuzzy
 msgid "Incoming message"
-msgstr "Informační zpráva"
+msgstr ""
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -1499,9 +1491,8 @@ msgid "Liked your publication"
 msgstr ""
 
 #: [post]commented
-#, fuzzy
 msgid "Commented"
-msgstr "Komentáře"
+msgstr ""
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1604,14 +1595,12 @@ msgid "No content to preview"
 msgstr "Žádný obsah k nahlédnutí"
 
 #: [publishbrief]title
-#, fuzzy
 msgid "Post title"
-msgstr "Příspěvek smazán"
+msgstr ""
 
 #: [publishbrief]content
-#, fuzzy
 msgid "Markdown content"
-msgstr "Žádný obsah"
+msgstr ""
 
 #: [publishbrief]valid_url
 msgid "Please enter a valid URL"
@@ -1622,9 +1611,8 @@ msgid "You can format your content using Markdown"
 msgstr "Můžete svůj obsah formátovat syntaxí Markdown"
 
 #: [publishbrief]draft_saved
-#, fuzzy
 msgid "Draft saved"
-msgstr "Konfigurace uložena"
+msgstr ""
 
 #: [publishbrief]rich_editor
 msgid "Rich text editor"
@@ -1642,13 +1630,22 @@ msgstr "Další pomoc"
 msgid "Markdown syntax manual"
 msgstr "Návod na syntaxi Markdown"
 
-#: [rooms]add
+#: [rooms]create
 #, fuzzy
-msgid "Search or join a chatroom"
-msgstr "Kde najdu seznam chatroomů?"
+msgid "Create a chatroom"
+msgstr "Připojeni do konverzace"
 
 #: [rooms]edit
 msgid "Edit a chatroom"
+msgstr ""
+
+#: [rooms]join
+#, fuzzy
+msgid "Join a chatroom"
+msgstr "Veřejné konverzace"
+
+#: [rooms]join_custom
+msgid "Join a custom chatroom"
 msgstr ""
 
 #: [rooms]empty_text1
@@ -1712,9 +1709,8 @@ msgid "Visitor"
 msgstr ""
 
 #: [rooms]explore_placeholder
-#, fuzzy
 msgid "Name or description"
-msgstr "Žádné odběry"
+msgstr ""
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -1741,8 +1737,16 @@ msgid "%s rooms synchronized"
 msgstr ""
 
 #: [chatrooms]users
-msgid "Users in the room"
-msgstr "Uživatelé v této konverzaci"
+#, fuzzy
+msgctxt "[chatrooms]users"
+msgid "Users"
+msgstr "Uživatelské jméno"
+
+#: [chatrooms]members
+#, fuzzy
+msgctxt "[chatrooms]members"
+msgid "Members"
+msgstr "Členi"
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a correct nickname (2 to 40 characters)"
@@ -1769,9 +1773,8 @@ msgid "The chatroom doesn’t exists"
 msgstr ""
 
 #: [chatrooms]notauthorized
-#, fuzzy
 msgid "A password is required"
-msgstr "Heslo bylo aktualizováno"
+msgstr ""
 
 #: [bookmarks]updated
 msgid "Bookmarks updated"
@@ -1780,10 +1783,6 @@ msgstr "Záložky aktualizovány"
 #: [room]anonymous_title
 msgid "Public chatroom"
 msgstr "Veřejné konverzace"
-
-#: [room]no_room
-msgid "Please provide a room address"
-msgstr "Zadejte prosím adresu konverzace"
 
 #: [room]anonymous_text1
 msgid "You are currently logged as an anonymous user."
@@ -1796,10 +1795,6 @@ msgstr "Můžete se přihlásit pomocí svého účtu, nebo si jej vytvořit na 
 #: [room]anonymous_login
 msgid "Login on %s"
 msgstr "Přihlásit na %s"
-
-#: [room]nick
-msgid "Your nickname"
-msgstr "Vaše přezdívka"
 
 #: [room]invite
 msgid "Invite a contact"
@@ -1829,6 +1824,40 @@ msgstr ""
 msgid "The participants of this chatroom can see each other's profile"
 msgstr ""
 
+#: [room]group_chat
+#, fuzzy
+msgid "Group Chat"
+msgstr "Skupina"
+
+#: [room]group_chat_text
+msgid "Private group chat with invited members"
+msgstr ""
+
+#: [room]group_chat_add
+#, fuzzy
+msgid "Add a new member"
+msgstr "Přidat komentář"
+
+#: [room]group_chat_members
+#, fuzzy
+msgctxt "[room]group_chat_members"
+msgid "Members"
+msgstr "Členi"
+
+#: [room]channel
+msgid "Channel"
+msgstr ""
+
+#: [room]channel_users
+#, fuzzy
+msgctxt "[room]channel_users"
+msgid "Users"
+msgstr "Uživatelské jméno"
+
+#: [room]channel_text
+msgid "Public channel that can be publicly discoverable and joineable"
+msgstr ""
+
 #: [room]notify_never
 msgid "Never notify"
 msgstr ""
@@ -1838,9 +1867,8 @@ msgid "Notify when quoted"
 msgstr ""
 
 #: [room]notify_always
-#, fuzzy
 msgid "Always notify"
-msgstr "Vždy"
+msgstr ""
 
 #: [roomsexplore]no_local
 msgid "No chatrooms found localy"
@@ -1891,9 +1919,8 @@ msgid "Send it to a contact"
 msgstr ""
 
 #: [sendto]chatroom
-#, fuzzy
 msgid "Share it in a chatroom"
-msgstr "Kde najdu seznam chatroomů?"
+msgstr ""
 
 #: [sendto]shared_with
 msgid "Post shared"
@@ -1904,9 +1931,8 @@ msgid "Post shared with your contact"
 msgstr ""
 
 #: [sendto]shared_chatroom
-#, fuzzy
 msgid "Post shared within the chatroom"
-msgstr "Připojeni do konverzace"
+msgstr ""
 
 #: [sendto]more_contacts
 msgid "More contacts"
@@ -2073,9 +2099,8 @@ msgid "…ringing"
 msgstr ""
 
 #: [visio]declined
-#, fuzzy
 msgid "declined"
-msgstr "nedefinovaný"
+msgstr ""
 
 #: [visio]in_call
 msgid "in call"
@@ -2975,11 +3000,11 @@ msgstr "API je nedostupná, zkuste to znovu později"
 msgid "Type here"
 msgstr "Pište sem"
 
-#~ msgid "Adult content blocked"
-#~ msgstr "Obsah pro dospělé zablokován"
+#~ msgid "Users in the room"
+#~ msgstr "Uživatelé v této konverzaci"
 
-#~ msgid "Custom CSS URL for your blog"
-#~ msgstr "Vlastní URL CSS pro váš blog"
+#~ msgid "Please provide a room address"
+#~ msgstr "Zadejte prosím adresu konverzace"
 
-#~ msgid "The communities, news feed and profile have been disabled for the moment."
-#~ msgstr "Komunity, zeď novinek a profil byly proteď vypnuty"
+#~ msgid "Your nickname"
+#~ msgstr "Vaše přezdívka"

@@ -102,16 +102,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-07 08:54+0200\n"
-"PO-Revision-Date: 2020-04-05 08:41+0000\n"
-"Last-Translator: Slavko <linux@slavino.sk>\n"
+"POT-Creation-Date: 2020-10-17 11:51+0200\n"
+"PO-Revision-Date: 2020-08-07 10:18+0000\n"
+"Last-Translator: Transifex Bot <>\n"
 "Language-Team: Slovak (Slovakia) (http://www.transifex.com/movim/movim/language/sk_SK/)\n"
 "Language: sk_SK\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);\n"
-"X-Generator: Translate Toolkit 2.5.0\n"
+"X-Generator: Translate Toolkit 2.5.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -175,7 +175,7 @@ msgstr "Zadané heslá sa nezhodujú"
 
 #: [account]delete
 msgid "Delete your account"
-msgstr "Zmazať tvoj účet"
+msgstr "Zmazať svoj účet"
 
 #: [account]delete_text
 msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts and publications)."
@@ -476,9 +476,8 @@ msgid "Message Published"
 msgstr "Správa uverejnená"
 
 #: [message]react
-#, fuzzy
 msgid "Add a reaction"
-msgstr "Pridať kontakt"
+msgstr ""
 
 #: [message]retract
 msgid "Retract"
@@ -518,7 +517,7 @@ msgstr "↑ na úpravu predošlej správy"
 
 #: [message]emoji_help
 msgid ":shortcut: to insert an emoji"
-msgstr ""
+msgstr ":skratka: na vloženie emoji"
 
 #: [chat]attention
 msgid "%s needs your attention"
@@ -557,10 +556,9 @@ msgid "See the profile"
 msgstr "Pozrieť profil"
 
 #: [chat]clear
-#, fuzzy
 msgctxt "[chat]clear"
 msgid "Clear the history"
-msgstr "Vymazať históriu"
+msgstr ""
 
 #: [chat]edit_previous
 msgid "Edit last message"
@@ -587,15 +585,13 @@ msgid "Synchronizing the history, please wait…"
 msgstr "Synchronizácia histórie, prosím počkajte…"
 
 #: [chat]clear_history
-#, fuzzy
 msgctxt "[chat]clear_history"
 msgid "Clear the history"
-msgstr "Vymazať históriu"
+msgstr ""
 
 #: [chat]clear_history_text
-#, fuzzy
 msgid "You are going to delete %s messages, are you sure?"
-msgstr "Odstraňujete tento príspevok, prosím potvrďte svoju akciu"
+msgstr ""
 
 #: [chatroom]members
 msgid "Members"
@@ -723,7 +719,7 @@ msgstr "Zdá sa, že teraz nemožno nájsť žiadne komunity"
 
 #: [communityaffiliation]subscriptions
 msgid "Subscriptions"
-msgstr "Prihlásenia"
+msgstr "Odbery"
 
 #: [communityaffiliation]deleted
 msgid "Community deleted successfully"
@@ -860,7 +856,7 @@ msgstr "Ahoj"
 
 #: [communitysubscriptions]empty_text1
 msgid "Here you will be able to manage all your subscriptions."
-msgstr "Tu môžete spracovať svoje odbery."
+msgstr "Tu môžete spravovať svoje odbery."
 
 #: [communitysubscriptions]empty_text2
 msgid "You don’t have any group subscriptions yet."
@@ -943,19 +939,16 @@ msgid "Archiving preferences saved"
 msgstr "Nastavenia archivovania uložené"
 
 #: [config]notification_title
-#, fuzzy
 msgid "Audio notifications"
-msgstr "Žiadne nové upozornenia"
+msgstr ""
 
 #: [config]notification_call
-#, fuzzy
 msgid "Incoming call"
-msgstr "hovorí"
+msgstr ""
 
 #: [config]notification_chat
-#, fuzzy
 msgid "Incoming message"
-msgstr "Informácia"
+msgstr ""
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -1035,7 +1028,7 @@ msgstr "Ostatné účty"
 
 #: [general]tune
 msgid "Is Listening"
-msgstr ""
+msgstr "Počúva"
 
 #: [general]pictures
 msgid "Pictures"
@@ -1451,7 +1444,7 @@ msgstr "Tento príspevok je súkromný"
 
 #: [post]public_url
 msgid "Public URL of this post"
-msgstr "Verejná URL othoto príspevku"
+msgstr "Verejná URL tohoto príspevku"
 
 #: [post]delete_title [post]delete
 msgid "Delete this post"
@@ -1475,7 +1468,7 @@ msgstr "Čítať ďalej"
 
 #: [post]comments_disabled
 msgid "Comments disabled"
-msgstr "Komentáre vpynuté"
+msgstr "Komentáre vypnuté"
 
 #: [post]comment_published
 msgid "Comment published"
@@ -1551,7 +1544,7 @@ msgstr "V stránke konfigurácie môžete popísať sám seba a pridať si zauj�
 
 #: [status]disconnect
 msgid "Disconnect"
-msgstr "Odpojený"
+msgstr "Odhlásiť"
 
 #: [status]updated
 msgid "Status updated"
@@ -1602,14 +1595,12 @@ msgid "No content to preview"
 msgstr "Žiadny obsah na ukážku"
 
 #: [publishbrief]title
-#, fuzzy
 msgid "Post title"
-msgstr "Príspevok odstránený"
+msgstr ""
 
 #: [publishbrief]content
-#, fuzzy
 msgid "Markdown content"
-msgstr "Žiadny obsah"
+msgstr ""
 
 #: [publishbrief]valid_url
 msgid "Please enter a valid URL"
@@ -1620,9 +1611,8 @@ msgid "You can format your content using Markdown"
 msgstr "Svoj obsah môžete formátovať pomocou Markdown"
 
 #: [publishbrief]draft_saved
-#, fuzzy
 msgid "Draft saved"
-msgstr "Konfigurácia uložená"
+msgstr ""
 
 #: [publishbrief]rich_editor
 msgid "Rich text editor"
@@ -1640,12 +1630,23 @@ msgstr "Ďalšia pomoc"
 msgid "Markdown syntax manual"
 msgstr "Manuál syntaxe Markdown"
 
-#: [rooms]add
-msgid "Search or join a chatroom"
-msgstr "Hľadať alebo vstúpiť do miestnosti"
+#: [rooms]create
+#, fuzzy
+msgid "Create a chatroom"
+msgstr "Upraviť miestnosť"
 
 #: [rooms]edit
 msgid "Edit a chatroom"
+msgstr "Upraviť miestnosť"
+
+#: [rooms]join
+#, fuzzy
+msgid "Join a chatroom"
+msgstr "Upraviť miestnosť"
+
+#: [rooms]join_custom
+#, fuzzy
+msgid "Join a custom chatroom"
 msgstr "Upraviť miestnosť"
 
 #: [rooms]empty_text1
@@ -1678,7 +1679,7 @@ msgstr "Štandardná miestnosť"
 
 #: [rooms]gateway_room
 msgid "Gateway room"
-msgstr ""
+msgstr "Bránová miestnosť"
 
 #: [rooms]show_all
 msgid "Show all the rooms"
@@ -1737,8 +1738,16 @@ msgid "%s rooms synchronized"
 msgstr "Synchronizované miestnosti: %s"
 
 #: [chatrooms]users
-msgid "Users in the room"
-msgstr "Používatelia v miestnosti"
+#, fuzzy
+msgctxt "[chatrooms]users"
+msgid "Users"
+msgstr "Meno používateľa"
+
+#: [chatrooms]members
+#, fuzzy
+msgctxt "[chatrooms]members"
+msgid "Members"
+msgstr "Členovia"
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a correct nickname (2 to 40 characters)"
@@ -1776,10 +1785,6 @@ msgstr "Záložky aktualizované"
 msgid "Public chatroom"
 msgstr "Verejná miestnosť"
 
-#: [room]no_room
-msgid "Please provide a room address"
-msgstr "Prosím, zadajte adresu miestnosti"
-
 #: [room]anonymous_text1
 msgid "You are currently logged as an anonymous user."
 msgstr "Ste prihlásený ako anonymný požuívateľ."
@@ -1791,10 +1796,6 @@ msgstr "Môžete vstúpiť pomocou svojho vlastného účtu alebo si môžete vy
 #: [room]anonymous_login
 msgid "Login on %s"
 msgstr ""
-
-#: [room]nick
-msgid "Your nickname"
-msgstr "Vaša prezývka"
 
 #: [room]invite
 msgid "Invite a contact"
@@ -1824,6 +1825,40 @@ msgstr "Verejné profily"
 msgid "The participants of this chatroom can see each other's profile"
 msgstr "Členovia tejto miestnosti môžu vidieť profil všetkých ostatných"
 
+#: [room]group_chat
+#, fuzzy
+msgid "Group Chat"
+msgstr "Skupina"
+
+#: [room]group_chat_text
+msgid "Private group chat with invited members"
+msgstr ""
+
+#: [room]group_chat_add
+#, fuzzy
+msgid "Add a new member"
+msgstr "Pridať komentár"
+
+#: [room]group_chat_members
+#, fuzzy
+msgctxt "[room]group_chat_members"
+msgid "Members"
+msgstr "Členovia"
+
+#: [room]channel
+msgid "Channel"
+msgstr ""
+
+#: [room]channel_users
+#, fuzzy
+msgctxt "[room]channel_users"
+msgid "Users"
+msgstr "Meno používateľa"
+
+#: [room]channel_text
+msgid "Public channel that can be publicly discoverable and joineable"
+msgstr ""
+
 #: [room]notify_never
 msgid "Never notify"
 msgstr ""
@@ -1833,9 +1868,8 @@ msgid "Notify when quoted"
 msgstr ""
 
 #: [room]notify_always
-#, fuzzy
 msgid "Always notify"
-msgstr "Vždy"
+msgstr ""
 
 #: [roomsexplore]no_local
 msgid "No chatrooms found localy"
@@ -2204,7 +2238,7 @@ msgstr "Požadovaná udalosť „%s” nie je registrovaná."
 
 #: [error]whoops
 msgid "Whoops!"
-msgstr ""
+msgstr "Hops!"
 
 #: [error]websocket
 msgid "Movim cannot talk with the server, please try again later"
@@ -2216,7 +2250,7 @@ msgstr "Opätovné pripojenie k serveru…"
 
 #: [error]oops
 msgid "Oops!"
-msgstr ""
+msgstr "Hups!"
 
 #: [button]call
 msgid "Call"
@@ -2280,7 +2314,7 @@ msgstr "Odpovedať"
 
 #: [button]unregister
 msgid "Unregister"
-msgstr ""
+msgstr "Odvolať"
 
 #: [button]save
 msgid "Save"
@@ -2365,7 +2399,7 @@ msgstr "Pondelok"
 
 #: [day]tuesday
 msgid "Tuesday"
-msgstr "Utokork"
+msgstr "Utorok"
 
 #: [day]wednesday
 msgid "Wednesday"
@@ -2967,8 +3001,14 @@ msgstr "API nie je dostupné, skúste neskôr"
 msgid "Type here"
 msgstr "Píšte tu"
 
-#~ msgid "Adult content blocked"
-#~ msgstr "Obsah pre dospelých blokovaný"
+#~ msgid "Search or join a chatroom"
+#~ msgstr "Hľadať alebo vstúpiť do miestnosti"
 
-#~ msgid "Some adult content has been blocked on this page. You can enable the display of adult content in the configuration page."
-#~ msgstr "nejaký obsah pre dospelých bol na tejto stránke blokovaný. Môžete povoliť zobrazenie obsahu pre dospelých v stránke konfigurácie."
+#~ msgid "Users in the room"
+#~ msgstr "Používatelia v miestnosti"
+
+#~ msgid "Please provide a room address"
+#~ msgstr "Prosím, zadajte adresu miestnosti"
+
+#~ msgid "Your nickname"
+#~ msgstr "Vaša prezývka"

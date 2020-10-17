@@ -107,9 +107,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-07 08:54+0200\n"
-"PO-Revision-Date: 2020-07-28 09:02+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"POT-Creation-Date: 2020-10-17 11:51+0200\n"
+"PO-Revision-Date: 2020-08-07 10:18+0000\n"
+"Last-Translator: Transifex Bot <>\n"
 "Language-Team: French (France) (http://www.transifex.com/movim/movim/language/fr_FR/)\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
@@ -1635,13 +1635,21 @@ msgstr "Aide supplémentaire"
 msgid "Markdown syntax manual"
 msgstr "Manuel d'utilisation de la syntaxe Markdown"
 
-#: [rooms]add
-msgid "Search or join a chatroom"
-msgstr "Rechercher ou rejoindre un salon"
+#: [rooms]create
+msgid "Create a chatroom"
+msgstr "Créer un salon de discussion"
 
 #: [rooms]edit
 msgid "Edit a chatroom"
 msgstr "Éditer un salon de discussion"
+
+#: [rooms]join
+msgid "Join a chatroom"
+msgstr "Rejoindre un salon de discussion"
+
+#: [rooms]join_custom
+msgid "Join a custom chatroom"
+msgstr ""
 
 #: [rooms]empty_text1
 msgid "You don’t have any chatroom yet."
@@ -1732,8 +1740,16 @@ msgid "%s rooms synchronized"
 msgstr "%s salons synchronisés"
 
 #: [chatrooms]users
-msgid "Users in the room"
-msgstr "Utilisateurs du salon"
+#, fuzzy
+msgctxt "[chatrooms]users"
+msgid "Users"
+msgstr "Nom d’utilisateur"
+
+#: [chatrooms]members
+#, fuzzy
+msgctxt "[chatrooms]members"
+msgid "Members"
+msgstr "Membres"
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a correct nickname (2 to 40 characters)"
@@ -1771,10 +1787,6 @@ msgstr "Signets mis à jour"
 msgid "Public chatroom"
 msgstr "Salon public"
 
-#: [room]no_room
-msgid "Please provide a room address"
-msgstr "Merci d'entrer l'adresse d'un salon"
-
 #: [room]anonymous_text1
 msgid "You are currently logged as an anonymous user."
 msgstr "Vous êtes actuellement connecté en tant qu'anonyme"
@@ -1786,10 +1798,6 @@ msgstr "Vous pouvez vous connecter en utilisant votre propre compte ou en créer
 #: [room]anonymous_login
 msgid "Login on %s"
 msgstr "Connexion sur %s"
-
-#: [room]nick
-msgid "Your nickname"
-msgstr "Votre surnom"
 
 #: [room]invite
 msgid "Invite a contact"
@@ -1818,6 +1826,40 @@ msgstr "Profils publiques"
 #: [room]nonanonymous_muc_text
 msgid "The participants of this chatroom can see each other's profile"
 msgstr "Les participants de ce salon peuvent voir leurs profils réciproquement"
+
+#: [room]group_chat
+#, fuzzy
+msgid "Group Chat"
+msgstr "Groupe"
+
+#: [room]group_chat_text
+msgid "Private group chat with invited members"
+msgstr ""
+
+#: [room]group_chat_add
+#, fuzzy
+msgid "Add a new member"
+msgstr "Commenter"
+
+#: [room]group_chat_members
+#, fuzzy
+msgctxt "[room]group_chat_members"
+msgid "Members"
+msgstr "Membres"
+
+#: [room]channel
+msgid "Channel"
+msgstr ""
+
+#: [room]channel_users
+#, fuzzy
+msgctxt "[room]channel_users"
+msgid "Users"
+msgstr "Nom d’utilisateur"
+
+#: [room]channel_text
+msgid "Public channel that can be publicly discoverable and joineable"
+msgstr ""
 
 #: [room]notify_never
 msgid "Never notify"
@@ -2961,8 +3003,14 @@ msgstr "L’API est indisponible pour le moment, réessayez plus tard."
 msgid "Type here"
 msgstr "Rédigez votre message ici"
 
-#~ msgid "Adult content blocked"
-#~ msgstr "Contenu réservé aux adultes bloqué"
+#~ msgid "Search or join a chatroom"
+#~ msgstr "Rechercher ou rejoindre un salon"
 
-#~ msgid "Some adult content has been blocked on this page. You can enable the display of adult content in the configuration page."
-#~ msgstr "Du contenu réservé aux adultes a été bloqué sur cette page. Vous pouvez activer la consultation du contenu restreint dans la configuration."
+#~ msgid "Users in the room"
+#~ msgstr "Utilisateurs du salon"
+
+#~ msgid "Please provide a room address"
+#~ msgstr "Merci d'entrer l'adresse d'un salon"
+
+#~ msgid "Your nickname"
+#~ msgstr "Votre surnom"

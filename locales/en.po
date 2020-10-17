@@ -98,16 +98,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-07 08:54+0200\n"
-"PO-Revision-Date: 2019-11-02 09:40+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"POT-Creation-Date: 2020-10-17 11:51+0200\n"
+"PO-Revision-Date: 2020-08-07 10:18+0000\n"
+"Last-Translator: Transifex Bot <>\n"
 "Language-Team: English (http://www.transifex.com/movim/movim/language/en/)\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 2.4.0\n"
+"X-Generator: Translate Toolkit 2.5.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -270,13 +270,12 @@ msgid "Only suggest chatrooms, Communities and other contents that are available
 msgstr "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
 
 #: [chatonly]title
-#, fuzzy
 msgid "Chat only"
-msgstr "Chat"
+msgstr "Chat only"
 
 #: [chatonly]text
 msgid "Disable all the social feature (Communities, Blog…) and keep only the chat ones"
-msgstr ""
+msgstr "Disable all the social feature (Communities, Blog…) and keep only the chat ones"
 
 #: [credentials]title
 msgid "Administration Credential"
@@ -317,7 +316,7 @@ msgstr "Description"
 
 #: [information]description_placeholder
 msgid "General description of the instance"
-msgstr ""
+msgstr "General description of the instance"
 
 #: [information]info1
 msgid "This message will be displayed on the login page. It can be used to link the Terms and Conditions of your Movim instance for example."
@@ -473,13 +472,12 @@ msgid "Message Published"
 msgstr "Message Published"
 
 #: [message]react
-#, fuzzy
 msgid "Add a reaction"
-msgstr "Add a contact"
+msgstr "Add a reaction"
 
 #: [message]retract
 msgid "Retract"
-msgstr ""
+msgstr "Retract"
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
@@ -490,9 +488,8 @@ msgid "Encrypted message"
 msgstr "Encrypted message"
 
 #: [message]retracted
-#, fuzzy
 msgid "Retracted message"
-msgstr "Encrypted message"
+msgstr "Retracted message"
 
 #: [message]composing
 msgid "Composing…"
@@ -555,7 +552,6 @@ msgid "See the profile"
 msgstr "See the profile"
 
 #: [chat]clear
-#, fuzzy
 msgctxt "[chat]clear"
 msgid "Clear the history"
 msgstr "Clear the history"
@@ -582,18 +578,16 @@ msgstr "An error occured when sending the message"
 
 #: [chat]mam_retrieval
 msgid "Synchronizing the history, please wait…"
-msgstr ""
+msgstr "Synchronizing the history, please wait…"
 
 #: [chat]clear_history
-#, fuzzy
 msgctxt "[chat]clear_history"
 msgid "Clear the history"
 msgstr "Clear the history"
 
 #: [chat]clear_history_text
-#, fuzzy
 msgid "You are going to delete %s messages, are you sure?"
-msgstr "You are going to delete this post, please confirm your action"
+msgstr "You are going to delete %s messages, are you sure?"
 
 #: [chatroom]members
 msgid "Members"
@@ -645,7 +639,7 @@ msgstr "Me"
 
 #: [chats]picture
 msgid "Picture"
-msgstr ""
+msgstr "Picture"
 
 #: [button]chat
 msgid "Chat"
@@ -797,14 +791,12 @@ msgid "Public page"
 msgstr "Public page"
 
 #: [communitydata]publishmodel_publishers
-#, fuzzy
 msgid "Only publishers can publish"
-msgstr "The publishers can publish"
+msgstr "Only publishers can publish"
 
 #: [communitydata]publishmodel_subscribers
-#, fuzzy
 msgid "Only subscribers can publish"
-msgstr "The subscribers can publish"
+msgstr "Only subscribers can publish"
 
 #: [communityheader]subscribe
 msgid "Subscribe"
@@ -943,19 +935,16 @@ msgid "Archiving preferences saved"
 msgstr "Archiving preferences saved"
 
 #: [config]notification_title
-#, fuzzy
 msgid "Audio notifications"
-msgstr "No new notifications"
+msgstr "Audio notifications"
 
 #: [config]notification_call
-#, fuzzy
 msgid "Incoming call"
-msgstr "in call"
+msgstr "Incoming call"
 
 #: [config]notification_chat
-#, fuzzy
 msgid "Incoming message"
-msgstr "Information Message"
+msgstr "Incoming message"
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -1039,7 +1028,7 @@ msgstr "Is Listening"
 
 #: [general]pictures
 msgid "Pictures"
-msgstr ""
+msgstr "Pictures"
 
 #: [position]legend
 msgid "Geographic Position"
@@ -1431,11 +1420,11 @@ msgstr "Public posts from users"
 
 #: [post]read_time_singular
 msgid "%s minute"
-msgstr ""
+msgstr "%s minute"
 
 #: [post]read_time_plural
 msgid "%s minutes"
-msgstr ""
+msgstr "%s minutes"
 
 #: [post]public
 msgid "Publish this post publicly?"
@@ -1498,9 +1487,8 @@ msgid "Liked your publication"
 msgstr "Liked your publication"
 
 #: [post]commented
-#, fuzzy
 msgid "Commented"
-msgstr "Comments"
+msgstr "Commented"
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1603,14 +1591,12 @@ msgid "No content to preview"
 msgstr "No content to preview"
 
 #: [publishbrief]title
-#, fuzzy
 msgid "Post title"
-msgstr "Post deleted"
+msgstr "Post title"
 
 #: [publishbrief]content
-#, fuzzy
 msgid "Markdown content"
-msgstr "No content"
+msgstr "Markdown content"
 
 #: [publishbrief]valid_url
 msgid "Please enter a valid URL"
@@ -1621,13 +1607,12 @@ msgid "You can format your content using Markdown"
 msgstr "You can format your content using Markdown"
 
 #: [publishbrief]draft_saved
-#, fuzzy
 msgid "Draft saved"
-msgstr "Configuration saved"
+msgstr "Draft saved"
 
 #: [publishbrief]rich_editor
 msgid "Rich text editor"
-msgstr ""
+msgstr "Rich text editor"
 
 #: [publishhelp]title [page]help
 msgid "Help"
@@ -1641,13 +1626,23 @@ msgstr "More help"
 msgid "Markdown syntax manual"
 msgstr "Markdown syntax manual"
 
-#: [rooms]add
+#: [rooms]create
 #, fuzzy
-msgid "Search or join a chatroom"
-msgstr "Add or join a chatroom"
+msgid "Create a chatroom"
+msgstr "Edit a chatroom"
 
 #: [rooms]edit
 msgid "Edit a chatroom"
+msgstr "Edit a chatroom"
+
+#: [rooms]join
+#, fuzzy
+msgid "Join a chatroom"
+msgstr "Edit a chatroom"
+
+#: [rooms]join_custom
+#, fuzzy
+msgid "Join a custom chatroom"
 msgstr "Edit a chatroom"
 
 #: [rooms]empty_text1
@@ -1711,9 +1706,8 @@ msgid "Visitor"
 msgstr "Visitor"
 
 #: [rooms]explore_placeholder
-#, fuzzy
 msgid "Name or description"
-msgstr "No subscriptions"
+msgstr "Name or description"
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -1740,8 +1734,16 @@ msgid "%s rooms synchronized"
 msgstr "%s rooms synchronized"
 
 #: [chatrooms]users
-msgid "Users in the room"
-msgstr "Users in the room"
+#, fuzzy
+msgctxt "[chatrooms]users"
+msgid "Users"
+msgstr "Username"
+
+#: [chatrooms]members
+#, fuzzy
+msgctxt "[chatrooms]members"
+msgid "Members"
+msgstr "Members"
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a correct nickname (2 to 40 characters)"
@@ -1764,14 +1766,12 @@ msgid "Chatroom cannot be joined, registration required"
 msgstr "Chatroom cannot be joined, registration required"
 
 #: [chatrooms]itemnotfound
-#, fuzzy
 msgid "The chatroom doesn’t exists"
-msgstr "This server doesn’t exists"
+msgstr "The chatroom doesn’t exists"
 
 #: [chatrooms]notauthorized
-#, fuzzy
 msgid "A password is required"
-msgstr "The password has been updated"
+msgstr "A password is required"
 
 #: [bookmarks]updated
 msgid "Bookmarks updated"
@@ -1780,10 +1780,6 @@ msgstr "Bookmarks updated"
 #: [room]anonymous_title
 msgid "Public chatroom"
 msgstr "Public chatroom"
-
-#: [room]no_room
-msgid "Please provide a room address"
-msgstr "Please provide a room address"
 
 #: [room]anonymous_text1
 msgid "You are currently logged as an anonymous user."
@@ -1796,10 +1792,6 @@ msgstr "You can join using your own account or create one on the login page by l
 #: [room]anonymous_login
 msgid "Login on %s"
 msgstr "Login on %s"
-
-#: [room]nick
-msgid "Your nickname"
-msgstr "Your nickname"
 
 #: [room]invite
 msgid "Invite a contact"
@@ -1829,30 +1821,63 @@ msgstr "Public profiles"
 msgid "The participants of this chatroom can see each other's profile"
 msgstr "The participants of this chatroom can see each other's profile"
 
+#: [room]group_chat
+#, fuzzy
+msgid "Group Chat"
+msgstr "Group"
+
+#: [room]group_chat_text
+msgid "Private group chat with invited members"
+msgstr ""
+
+#: [room]group_chat_add
+#, fuzzy
+msgid "Add a new member"
+msgstr "Add a comment"
+
+#: [room]group_chat_members
+#, fuzzy
+msgctxt "[room]group_chat_members"
+msgid "Members"
+msgstr "Members"
+
+#: [room]channel
+msgid "Channel"
+msgstr ""
+
+#: [room]channel_users
+#, fuzzy
+msgctxt "[room]channel_users"
+msgid "Users"
+msgstr "Username"
+
+#: [room]channel_text
+msgid "Public channel that can be publicly discoverable and joineable"
+msgstr ""
+
 #: [room]notify_never
 msgid "Never notify"
-msgstr ""
+msgstr "Never notify"
 
 #: [room]notify_quoted
 msgid "Notify when quoted"
-msgstr ""
+msgstr "Notify when quoted"
 
 #: [room]notify_always
-#, fuzzy
 msgid "Always notify"
-msgstr "Always"
+msgstr "Always notify"
 
 #: [roomsexplore]no_local
 msgid "No chatrooms found localy"
-msgstr ""
+msgstr "No chatrooms found localy"
 
 #: [roomsexplore]global_title
 msgid "Global search"
-msgstr ""
+msgstr "Global search"
 
 #: [roomsexplore]no_global
 msgid "No chatrooms found globaly"
-msgstr ""
+msgstr "No chatrooms found globaly"
 
 #: [search]keyword
 msgid "What are you looking for?"
@@ -1891,9 +1916,8 @@ msgid "Send it to a contact"
 msgstr "Send it to a contact"
 
 #: [sendto]chatroom
-#, fuzzy
 msgid "Share it in a chatroom"
-msgstr "Edit a chatroom"
+msgstr "Share it in a chatroom"
 
 #: [sendto]shared_with
 msgid "Post shared"
@@ -1904,9 +1928,8 @@ msgid "Post shared with your contact"
 msgstr "Post shared with your contact"
 
 #: [sendto]shared_chatroom
-#, fuzzy
 msgid "Post shared within the chatroom"
-msgstr "Post shared with your contact"
+msgstr "Post shared within the chatroom"
 
 #: [sendto]more_contacts
 msgid "More contacts"
@@ -1918,7 +1941,7 @@ msgstr "Statistics"
 
 #: [sticker]title
 msgid "Stickers"
-msgstr ""
+msgstr "Stickers"
 
 #: [sticker]sent
 msgid "A sticker has been sent using Movim"
@@ -1974,11 +1997,11 @@ msgstr "You exceeded the quota"
 
 #: [upload]drag_drop
 msgid "Drag and drop your file in this area"
-msgstr ""
+msgstr "Drag and drop your file in this area"
 
 #: [upload]max_size
 msgid "Max file size %s"
-msgstr ""
+msgstr "Max file size %s"
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -2050,7 +2073,7 @@ msgstr "Movim is currently working in degraded mode"
 
 #: [degraded]text_1
 msgid "Your server doesn’t support XMPP Pubsub persistence or the social features (communities, news feed and profile) are disabled by the administrator."
-msgstr ""
+msgstr "Your server doesn’t support XMPP Pubsub persistence or the social features (communities, news feed and profile) are disabled by the administrator."
 
 #: [degraded]text_2
 msgid "Please contact your server administrator to see if this feature can be enabled."
@@ -2062,20 +2085,19 @@ msgstr "…is calling you"
 
 #: [visio]video_call
 msgid "Incoming video call"
-msgstr ""
+msgstr "Incoming video call"
 
 #: [visio]audio_call
 msgid "Incoming audio call"
-msgstr ""
+msgstr "Incoming audio call"
 
 #: [visio]ringing
 msgid "…ringing"
 msgstr "…ringing"
 
 #: [visio]declined
-#, fuzzy
 msgid "declined"
-msgstr "undefined"
+msgstr "declined"
 
 #: [visio]in_call
 msgid "in call"
@@ -2111,7 +2133,7 @@ msgstr "Or"
 
 #: [global]change_pod
 msgid "Switch to another pod"
-msgstr ""
+msgstr "Switch to another pod"
 
 #: [page]communities
 msgid "Communities"
@@ -2232,11 +2254,11 @@ msgstr "Call"
 
 #: [button]audio_call
 msgid "Audio Call"
-msgstr ""
+msgstr "Audio Call"
 
 #: [button]video_call
 msgid "Video Call"
-msgstr ""
+msgstr "Video Call"
 
 #: [button]validate
 msgid "Validate"
@@ -2361,7 +2383,7 @@ msgstr "Sign Up"
 
 #: [button]send_to
 msgid "Send to"
-msgstr ""
+msgstr "Send to"
 
 #: [day]title
 msgid "Day"
@@ -2929,23 +2951,23 @@ msgstr "Original post deleted"
 
 #: [filesize]byte
 msgid "B"
-msgstr ""
+msgstr "B"
 
 #: [filesize]kilobyte
 msgid "KB"
-msgstr ""
+msgstr "KB"
 
 #: [filesize]megabyte
 msgid "MB"
-msgstr ""
+msgstr "MB"
 
 #: [filesize]gigabyte
 msgid "GB"
-msgstr ""
+msgstr "GB"
 
 #: [filesize]terabyte
 msgid "TB"
-msgstr ""
+msgstr "TB"
 
 #: [affiliation]publisher
 msgid "Publisher"
@@ -2975,17 +2997,14 @@ msgstr "The API is not reachable, try again later"
 msgid "Type here"
 msgstr "Type here"
 
-#~ msgid "Adult content blocked"
-#~ msgstr "Adult content blocked"
+#~ msgid "Search or join a chatroom"
+#~ msgstr "Search or join a chatroom"
 
-#~ msgid "Some adult content has been blocked on this page. You can enable the display of adult content in the configuration page."
-#~ msgstr "Some adult content has been blocked on this page. You can enable the display of adult content in the configuration page."
+#~ msgid "Users in the room"
+#~ msgstr "Users in the room"
 
-#~ msgid "Custom CSS URL for your blog"
-#~ msgstr "Custom CSS URL for your blog"
+#~ msgid "Please provide a room address"
+#~ msgstr "Please provide a room address"
 
-#~ msgid "Your server doesn’t support XMPP Pubsub persistence."
-#~ msgstr "Your server doesn’t support XMPP Pubsub persistence."
-
-#~ msgid "The communities, news feed and profile have been disabled for the moment."
-#~ msgstr "The communities, news feed and profile have been disabled for the moment."
+#~ msgid "Your nickname"
+#~ msgstr "Your nickname"

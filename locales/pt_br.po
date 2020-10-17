@@ -1,6 +1,6 @@
 #
 # Translators:
-# any fix, 2020
+# avw, 2020
 # Christopher Ribeiro <christo_campiglia@hotmail.com>, 2018
 # Danilo Silva, 2019
 # Evandro Alves Rodrigues <evandro.rodrigues@conab.gov.br>, 2017,2019
@@ -109,9 +109,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-07 08:54+0200\n"
+"POT-Creation-Date: 2020-10-17 11:51+0200\n"
 "PO-Revision-Date: 2020-08-14 15:27+0000\n"
-"Last-Translator: any fix\n"
+"Last-Translator: avw\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/movim/movim/language/pt_BR/)\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -1639,12 +1639,23 @@ msgstr "Mais ajuda"
 msgid "Markdown syntax manual"
 msgstr "Manual de sintaxe Markdown"
 
-#: [rooms]add
-msgid "Search or join a chatroom"
-msgstr "Buscar ou ingressar em uma sala de bate-papo"
+#: [rooms]create
+#, fuzzy
+msgid "Create a chatroom"
+msgstr "Editar uma Sala de Bate-papo"
 
 #: [rooms]edit
 msgid "Edit a chatroom"
+msgstr "Editar uma Sala de Bate-papo"
+
+#: [rooms]join
+#, fuzzy
+msgid "Join a chatroom"
+msgstr "Editar uma Sala de Bate-papo"
+
+#: [rooms]join_custom
+#, fuzzy
+msgid "Join a custom chatroom"
 msgstr "Editar uma Sala de Bate-papo"
 
 #: [rooms]empty_text1
@@ -1736,8 +1747,16 @@ msgid "%s rooms synchronized"
 msgstr "%s salas sincronizadas"
 
 #: [chatrooms]users
-msgid "Users in the room"
-msgstr "Usuários na sala"
+#, fuzzy
+msgctxt "[chatrooms]users"
+msgid "Users"
+msgstr "Nome de usuário"
+
+#: [chatrooms]members
+#, fuzzy
+msgctxt "[chatrooms]members"
+msgid "Members"
+msgstr "Membros"
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a correct nickname (2 to 40 characters)"
@@ -1775,10 +1794,6 @@ msgstr "Favoritos atualizados"
 msgid "Public chatroom"
 msgstr "Sala de Bate-papo pública"
 
-#: [room]no_room
-msgid "Please provide a room address"
-msgstr "Por favor informe um endereço de sala"
-
 #: [room]anonymous_text1
 msgid "You are currently logged as an anonymous user."
 msgstr "Você está atualmente conectado como um usuário anônimo."
@@ -1790,10 +1805,6 @@ msgstr "Você pode entrar utilizando sua conta ou criando uma nova na pagina de 
 #: [room]anonymous_login
 msgid "Login on %s"
 msgstr "Conectar em %s"
-
-#: [room]nick
-msgid "Your nickname"
-msgstr "Seu apelido"
 
 #: [room]invite
 msgid "Invite a contact"
@@ -1822,6 +1833,40 @@ msgstr "Perfis públicos"
 #: [room]nonanonymous_muc_text
 msgid "The participants of this chatroom can see each other's profile"
 msgstr "Os participantes dessa sala de bate-papo podem visualizar o perfil de cada um"
+
+#: [room]group_chat
+#, fuzzy
+msgid "Group Chat"
+msgstr "Grupo"
+
+#: [room]group_chat_text
+msgid "Private group chat with invited members"
+msgstr ""
+
+#: [room]group_chat_add
+#, fuzzy
+msgid "Add a new member"
+msgstr "Adicionar um comentário"
+
+#: [room]group_chat_members
+#, fuzzy
+msgctxt "[room]group_chat_members"
+msgid "Members"
+msgstr "Membros"
+
+#: [room]channel
+msgid "Channel"
+msgstr ""
+
+#: [room]channel_users
+#, fuzzy
+msgctxt "[room]channel_users"
+msgid "Users"
+msgstr "Nome de usuário"
+
+#: [room]channel_text
+msgid "Public channel that can be publicly discoverable and joineable"
+msgstr ""
 
 #: [room]notify_never
 msgid "Never notify"
@@ -2964,3 +3009,15 @@ msgstr "A API está inalcançável, tente mais tarde"
 #: [field]type_here
 msgid "Type here"
 msgstr "Digite aqui"
+
+#~ msgid "Search or join a chatroom"
+#~ msgstr "Buscar ou ingressar em uma sala de bate-papo"
+
+#~ msgid "Users in the room"
+#~ msgstr "Usuários na sala"
+
+#~ msgid "Please provide a room address"
+#~ msgstr "Por favor informe um endereço de sala"
+
+#~ msgid "Your nickname"
+#~ msgstr "Seu apelido"

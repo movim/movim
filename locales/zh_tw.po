@@ -99,16 +99,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-07 08:54+0200\n"
-"PO-Revision-Date: 2019-11-02 09:40+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"POT-Creation-Date: 2020-10-17 11:51+0200\n"
+"PO-Revision-Date: 2020-08-07 10:18+0000\n"
+"Last-Translator: Transifex Bot <>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/movim/movim/language/zh_TW/)\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Translate Toolkit 2.4.0\n"
+"X-Generator: Translate Toolkit 2.5.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -271,9 +271,8 @@ msgid "Only suggest chatrooms, Communities and other contents that are available
 msgstr "只有建議的聊天室，社群和其他內容可以使用在 XMPP 伺服器及相關服務"
 
 #: [chatonly]title
-#, fuzzy
 msgid "Chat only"
-msgstr "聊天"
+msgstr ""
 
 #: [chatonly]text
 msgid "Disable all the social feature (Communities, Blog…) and keep only the chat ones"
@@ -474,9 +473,8 @@ msgid "Message Published"
 msgstr "訊息已發佈"
 
 #: [message]react
-#, fuzzy
 msgid "Add a reaction"
-msgstr "創建帳戶"
+msgstr ""
 
 #: [message]retract
 msgid "Retract"
@@ -491,9 +489,8 @@ msgid "Encrypted message"
 msgstr "已加密訊息"
 
 #: [message]retracted
-#, fuzzy
 msgid "Retracted message"
-msgstr "已加密訊息"
+msgstr ""
 
 #: [message]composing
 msgid "Composing…"
@@ -556,10 +553,9 @@ msgid "See the profile"
 msgstr "檢視個人設定"
 
 #: [chat]clear
-#, fuzzy
 msgctxt "[chat]clear"
 msgid "Clear the history"
-msgstr "清除紀錄"
+msgstr ""
 
 #: [chat]edit_previous
 msgid "Edit last message"
@@ -586,10 +582,9 @@ msgid "Synchronizing the history, please wait…"
 msgstr ""
 
 #: [chat]clear_history
-#, fuzzy
 msgctxt "[chat]clear_history"
 msgid "Clear the history"
-msgstr "清除紀錄"
+msgstr ""
 
 #: [chat]clear_history_text
 msgid "You are going to delete %s messages, are you sure?"
@@ -941,18 +936,16 @@ msgid "Archiving preferences saved"
 msgstr ""
 
 #: [config]notification_title
-#, fuzzy
 msgid "Audio notifications"
-msgstr "管理者"
+msgstr ""
 
 #: [config]notification_call
 msgid "Incoming call"
 msgstr ""
 
 #: [config]notification_chat
-#, fuzzy
 msgid "Incoming message"
-msgstr "資訊"
+msgstr ""
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -1495,9 +1488,8 @@ msgid "Liked your publication"
 msgstr ""
 
 #: [post]commented
-#, fuzzy
 msgid "Commented"
-msgstr "社群名稱"
+msgstr ""
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1616,9 +1608,8 @@ msgid "You can format your content using Markdown"
 msgstr ""
 
 #: [publishbrief]draft_saved
-#, fuzzy
 msgid "Draft saved"
-msgstr "已儲存設置"
+msgstr ""
 
 #: [publishbrief]rich_editor
 msgid "Rich text editor"
@@ -1636,12 +1627,22 @@ msgstr ""
 msgid "Markdown syntax manual"
 msgstr ""
 
-#: [rooms]add
-msgid "Search or join a chatroom"
-msgstr ""
+#: [rooms]create
+#, fuzzy
+msgid "Create a chatroom"
+msgstr "已連線到聊天室"
 
 #: [rooms]edit
 msgid "Edit a chatroom"
+msgstr ""
+
+#: [rooms]join
+#, fuzzy
+msgid "Join a chatroom"
+msgstr "已連線到聊天室"
+
+#: [rooms]join_custom
+msgid "Join a custom chatroom"
 msgstr ""
 
 #: [rooms]empty_text1
@@ -1705,9 +1706,8 @@ msgid "Visitor"
 msgstr ""
 
 #: [rooms]explore_placeholder
-#, fuzzy
 msgid "Name or description"
-msgstr "描述"
+msgstr ""
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -1734,8 +1734,16 @@ msgid "%s rooms synchronized"
 msgstr ""
 
 #: [chatrooms]users
-msgid "Users in the room"
-msgstr ""
+#, fuzzy
+msgctxt "[chatrooms]users"
+msgid "Users"
+msgstr "使用者名稱"
+
+#: [chatrooms]members
+#, fuzzy
+msgctxt "[chatrooms]members"
+msgid "Members"
+msgstr "成員"
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a correct nickname (2 to 40 characters)"
@@ -1762,9 +1770,8 @@ msgid "The chatroom doesn’t exists"
 msgstr ""
 
 #: [chatrooms]notauthorized
-#, fuzzy
 msgid "A password is required"
-msgstr "密碼已更新"
+msgstr ""
 
 #: [bookmarks]updated
 msgid "Bookmarks updated"
@@ -1772,10 +1779,6 @@ msgstr "書籤已更新"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
-msgstr ""
-
-#: [room]no_room
-msgid "Please provide a room address"
 msgstr ""
 
 #: [room]anonymous_text1
@@ -1788,10 +1791,6 @@ msgstr ""
 
 #: [room]anonymous_login
 msgid "Login on %s"
-msgstr ""
-
-#: [room]nick
-msgid "Your nickname"
 msgstr ""
 
 #: [room]invite
@@ -1820,6 +1819,38 @@ msgstr ""
 
 #: [room]nonanonymous_muc_text
 msgid "The participants of this chatroom can see each other's profile"
+msgstr ""
+
+#: [room]group_chat
+msgid "Group Chat"
+msgstr ""
+
+#: [room]group_chat_text
+msgid "Private group chat with invited members"
+msgstr ""
+
+#: [room]group_chat_add
+msgid "Add a new member"
+msgstr ""
+
+#: [room]group_chat_members
+#, fuzzy
+msgctxt "[room]group_chat_members"
+msgid "Members"
+msgstr "成員"
+
+#: [room]channel
+msgid "Channel"
+msgstr ""
+
+#: [room]channel_users
+#, fuzzy
+msgctxt "[room]channel_users"
+msgid "Users"
+msgstr "使用者名稱"
+
+#: [room]channel_text
+msgid "Public channel that can be publicly discoverable and joineable"
 msgstr ""
 
 #: [room]notify_never
@@ -1895,9 +1926,8 @@ msgid "Post shared with your contact"
 msgstr ""
 
 #: [sendto]shared_chatroom
-#, fuzzy
 msgid "Post shared within the chatroom"
-msgstr "已連線到聊天室"
+msgstr ""
 
 #: [sendto]more_contacts
 msgid "More contacts"

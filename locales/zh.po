@@ -4,6 +4,8 @@
 # HydroChLorica, 2017
 # kashing <shing3232@gmail.com>, 2015-2016
 # Lei feng, 2015
+# Nobita Nobi <896876269@qq.com>, 2020
+# steve jobs <vicdorke@gmail.com>, 2020
 # Wangrui Enderex <jwr030521@gmail.com>, 2016
 # Zhao Rui <renyuneyun@gmail.com>, 2015
 # 三三 <gihub@mail.best33.com>, 2016
@@ -107,16 +109,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-07 08:54+0200\n"
-"PO-Revision-Date: 2019-11-02 09:40+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"POT-Creation-Date: 2020-10-17 11:51+0200\n"
+"PO-Revision-Date: 2020-08-27 15:19+0000\n"
+"Last-Translator: Nobita Nobi <896876269@qq.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Translate Toolkit 2.4.0\n"
+"X-Generator: Translate Toolkit 2.5.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -188,15 +190,15 @@ msgstr "你将会删除你的 XMPP 账号以及所有相关的信息（基本资
 
 #: [account]delete_text_confirm
 msgid "Type your full username"
-msgstr ""
+msgstr "键入您的完整用户名"
 
 #: [account]delete_text_error
 msgid "Please provide a valid username."
-msgstr ""
+msgstr "请提供有效的用户名。"
 
 #: [account]gateway_title
 msgid "Gateways"
-msgstr ""
+msgstr "网关"
 
 #: [account]clear
 msgid "Leave this instance"
@@ -252,7 +254,7 @@ msgstr "操作"
 
 #: [adhoc]completed
 msgid "Action completed"
-msgstr ""
+msgstr "动作已完成"
 
 #: [admin]general
 msgid "General Settings"
@@ -279,13 +281,12 @@ msgid "Only suggest chatrooms, Communities and other contents that are available
 msgstr "只建议可用于此 XMPP 服务器和关联服务的聊天室，社区和其它内容。"
 
 #: [chatonly]title
-#, fuzzy
 msgid "Chat only"
-msgstr "聊天"
+msgstr "仅聊天"
 
 #: [chatonly]text
 msgid "Disable all the social feature (Communities, Blog…) and keep only the chat ones"
-msgstr ""
+msgstr "禁用所有社交功能（社区、博客…），只保留聊天功能"
 
 #: [credentials]title
 msgid "Administration Credential"
@@ -326,15 +327,15 @@ msgstr "描述"
 
 #: [information]description_placeholder
 msgid "General description of the instance"
-msgstr ""
+msgstr "实例的一般描述"
 
 #: [information]info1
 msgid "This message will be displayed on the login page. It can be used to link the Terms and Conditions of your Movim instance for example."
-msgstr ""
+msgstr "此消息将显示在登录页面上。例如，它可以用于链接Movim实例的条款和条件。"
 
 #: [information]info2
 msgid "Leave this field blank if you don’t want to show any message."
-msgstr ""
+msgstr "如果不想显示任何消息，请将此字段留空。"
 
 #: [information]label
 msgctxt "[information]label"
@@ -451,7 +452,7 @@ msgstr "摄像头"
 
 #: [avatar]cheese
 msgid "Cheese!"
-msgstr ""
+msgstr "茄子"
 
 #: [avatar]snapshot
 msgid "Take a webcam snapshot"
@@ -482,13 +483,12 @@ msgid "Message Published"
 msgstr "消息已发布"
 
 #: [message]react
-#, fuzzy
 msgid "Add a reaction"
-msgstr "添加联系人"
+msgstr "添加反应"
 
 #: [message]retract
 msgid "Retract"
-msgstr ""
+msgstr "撤回"
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
@@ -499,17 +499,16 @@ msgid "Encrypted message"
 msgstr "消息已加密"
 
 #: [message]retracted
-#, fuzzy
 msgid "Retracted message"
-msgstr "消息已加密"
+msgstr "撤回的消息"
 
 #: [message]composing
 msgid "Composing…"
-msgstr ""
+msgstr "正在写…"
 
 #: [message]paused
 msgid "Paused…"
-msgstr ""
+msgstr "已暂停"
 
 #: [message]gone
 msgid "Contact gone"
@@ -521,11 +520,11 @@ msgstr "获取了 %s 条消息"
 
 #: [message]edit_help
 msgid "↑ to edit your previous message"
-msgstr ""
+msgstr "↑编辑以前的消息"
 
 #: [message]emoji_help
 msgid ":shortcut: to insert an emoji"
-msgstr ""
+msgstr ":shortcut: 插入表情符号"
 
 #: [chat]attention
 msgid "%s needs your attention"
@@ -533,7 +532,7 @@ msgstr "%s 需要您的注意"
 
 #: [chat]placeholder
 msgid "Your message here…"
-msgstr ""
+msgstr "你的消息在这里…"
 
 #: [chat]smileys
 msgid "Smileys"
@@ -549,7 +548,7 @@ msgstr "此处还没有内容…"
 
 #: [chat]new_text
 msgid "Don’t be shy, send a first message to start the discussion"
-msgstr ""
+msgstr "别害羞，发送首个消息开始讨论"
 
 #: [chat]invitation
 msgid "You received an invitation to join a chatroom"
@@ -564,7 +563,6 @@ msgid "See the profile"
 msgstr "查看个人资料"
 
 #: [chat]clear
-#, fuzzy
 msgctxt "[chat]clear"
 msgid "Clear the history"
 msgstr "清除历史"
@@ -579,30 +577,28 @@ msgstr "举报滥用行为"
 
 #: [chat]jingle_start
 msgid "Call started"
-msgstr ""
+msgstr "通话开始"
 
 #: [chat]jingle_end
 msgid "Call ended"
-msgstr ""
+msgstr "通话结束"
 
 #: [chat]publish_error
 msgid "An error occured when sending the message"
-msgstr ""
+msgstr "发送消息时出现错误"
 
 #: [chat]mam_retrieval
 msgid "Synchronizing the history, please wait…"
-msgstr ""
+msgstr "正在同步历史，请稍等"
 
 #: [chat]clear_history
-#, fuzzy
 msgctxt "[chat]clear_history"
 msgid "Clear the history"
 msgstr "清除历史"
 
 #: [chat]clear_history_text
-#, fuzzy
 msgid "You are going to delete %s messages, are you sure?"
-msgstr "您将移除以下的帖子，请确认"
+msgstr "确定删除%s条消息吗？"
 
 #: [chatroom]members
 msgid "Members"
@@ -638,11 +634,11 @@ msgstr "管理"
 
 #: [chats]empty_title
 msgid "No chats yet…"
-msgstr ""
+msgstr "暂无聊天…"
 
 #: [chats]empty
 msgid "Start a new conversation by clicking on the %s button."
-msgstr ""
+msgstr " 点击 %s 按钮，开始新对话。"
 
 #: [chats]add
 msgid "Chat with a contact"
@@ -650,11 +646,11 @@ msgstr "同联系人聊天"
 
 #: [chats]me
 msgid "Me"
-msgstr ""
+msgstr "我"
 
 #: [chats]picture
 msgid "Picture"
-msgstr ""
+msgstr "图片"
 
 #: [button]chat
 msgid "Chat"
@@ -682,15 +678,15 @@ msgstr "社群服务器"
 
 #: [communities]disco
 msgid "Communities server discovered"
-msgstr ""
+msgstr "已发现的社区服务器"
 
 #: [communities]disco_error
 msgid "This server doesn’t exists"
-msgstr ""
+msgstr "此服务器不存在"
 
 #: [communities]interesting
 msgid "Communities you might like"
-msgstr ""
+msgstr "你可能喜欢的社区"
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -722,11 +718,11 @@ msgstr "你不能在此服务器上创建社群"
 
 #: [communitiesservers]empty_title
 msgid "No Communities Servers yet…"
-msgstr ""
+msgstr "暂无社区服务器…"
 
 #: [communitiesservers]empty_text
 msgid "It seems that we can't find any communities for the moment"
-msgstr ""
+msgstr "暂時找不到社区"
 
 #: [communityaffiliation]subscriptions
 msgid "Subscriptions"
@@ -746,11 +742,11 @@ msgstr "你将要删除下列的社群。请确认你的操作。"
 
 #: [communityaffiliation]delete_clean_text
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
-msgstr ""
+msgstr "看来这个社区已经不存在了。 要从订阅中删除它吗？"
 
 #: [communityaffiliation]config_error
 msgid "Error during the application of the node configuration"
-msgstr ""
+msgstr "应用节点配置期時出错"
 
 #: [communityaffiliation]owners
 msgid "Owners"
@@ -779,19 +775,19 @@ msgstr "开放"
 
 #: [communityconfig]publish_model_open_text
 msgid "Everyone can publish"
-msgstr ""
+msgstr "每个人都可以发布"
 
 #: [communityconfig]publish_model_publishers_text
 msgid "The publishers can publish"
-msgstr ""
+msgstr "发布者可以发布"
 
 #: [communityconfig]publish_model_subscribers_title
 msgid "Subscribers"
-msgstr ""
+msgstr "订阅者"
 
 #: [communityconfig]publish_model_subscribers_text
 msgid "The subscribers can publish"
-msgstr ""
+msgstr "订阅者可以发布"
 
 #: [communitydata]sub
 msgid "%s subscribers"
@@ -807,11 +803,11 @@ msgstr "公共页面"
 
 #: [communitydata]publishmodel_publishers
 msgid "Only publishers can publish"
-msgstr ""
+msgstr "只有发布者可以发布"
 
 #: [communitydata]publishmodel_subscribers
 msgid "Only subscribers can publish"
-msgstr ""
+msgstr "只有订阅者可以发布"
 
 #: [communityheader]subscribe
 msgid "Subscribe"
@@ -871,7 +867,7 @@ msgstr "您可以在这里管理您的所有订阅"
 
 #: [communitysubscriptions]empty_text2
 msgid "You don’t have any group subscriptions yet."
-msgstr ""
+msgstr "尚未订阅任何群组。"
 
 #: [config]general
 msgid "General"
@@ -923,11 +919,11 @@ msgstr "通过深色来放松你的眼睛"
 
 #: [config]chatmain
 msgid "Main chat page"
-msgstr ""
+msgstr "主聊天页面"
 
 #: [config]chatmain_text
 msgid "Make the chat page as the default one"
-msgstr ""
+msgstr "将聊天页面设为默认页面"
 
 #: [config]mam
 msgid "Archiving preferences"
@@ -950,19 +946,16 @@ msgid "Archiving preferences saved"
 msgstr "已保存归档选项"
 
 #: [config]notification_title
-#, fuzzy
 msgid "Audio notifications"
-msgstr "没有新的提醒"
+msgstr "音频通知"
 
 #: [config]notification_call
-#, fuzzy
 msgid "Incoming call"
-msgstr "通话中"
+msgstr "來电"
 
 #: [config]notification_chat
-#, fuzzy
 msgid "Incoming message"
-msgstr "通知消息"
+msgstr "收到的消息"
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -970,7 +963,7 @@ msgstr "验证确认"
 
 #: [confirm]description
 msgid "The following platform would like your confirmation to authentify this account"
-msgstr ""
+msgstr "以下平台希望您确认，验证该帐户"
 
 #: [confirm]code
 msgid "Authentication code"
@@ -1046,7 +1039,7 @@ msgstr "是在听"
 
 #: [general]pictures
 msgid "Pictures"
-msgstr ""
+msgstr "图片"
 
 #: [position]legend
 msgid "Geographic Position"
@@ -1078,7 +1071,7 @@ msgstr "最后一次访问"
 
 #: [clients]title
 msgid "Clients information"
-msgstr ""
+msgstr "客户端信息"
 
 #: [explore]last_registered
 msgid "Last registered"
@@ -1162,31 +1155,31 @@ msgstr "常见问题"
 
 #: [faq]permission_title
 msgid "What does the permission setting do?"
-msgstr ""
+msgstr "权限设置有何用？"
 
 #: [faq]permission_text
 msgid "By default the content is only available to your contacts. You can make your profile and publications public by enabling the related setting."
-msgstr ""
+msgstr "默认情况下，内容仅对联系人可用。 你可以通过启用相关设置来公开个人资料和发布內容。"
 
 #: [faq]permission_community_title
 msgid "How does it applies on Communities posts?"
-msgstr ""
+msgstr "它如何用于社区帖子？"
 
 #: [faq]permission_community_text
 msgid "Similary to your blog publications except that, by default, the posts are only available to the members or subscribers of the Community (except if you explicitly open all the Community content)"
-msgstr ""
+msgstr "类似于您的博客出版物，但默认情况下，这些帖子仅对社区的成员或订阅者可用（除非您明确打开所有社区内容）"
 
 #: [faq]chatrooms_title
 msgid "Where can I find a list of chatrooms?"
-msgstr ""
+msgstr "我在哪里可以找到聊天室的列表？"
 
 #: [faq]find_contacts_title
 msgid "Where can I find my contacts?"
-msgstr ""
+msgstr "联系人在哪里？"
 
 #: [faq]find_contacts_text
 msgid "By opening the search panel."
-msgstr ""
+msgstr "通过打开搜索面板。"
 
 #: [apps]question
 msgid "Have you already tried Movim on other platforms?"
@@ -1242,7 +1235,7 @@ msgstr "XMPP 域错误，您的账户不是一个正确的 Jabber ID"
 
 #: [error]data_missings
 msgid "Some data are missing!"
-msgstr ""
+msgstr "部分数据不见了！"
 
 #: [error]wrong_password
 msgid "Wrong password"
@@ -1414,7 +1407,7 @@ msgstr "帖子已删除"
 
 #: [post]hot
 msgid "What’s Hot"
-msgstr ""
+msgstr "流行"
 
 #: [post]hot_text
 msgid "Posts recently published in communities that you are not subscribed (yet)"
@@ -1438,11 +1431,11 @@ msgstr "用户的公开帖"
 
 #: [post]read_time_singular
 msgid "%s minute"
-msgstr ""
+msgstr "%s分钟"
 
 #: [post]read_time_plural
 msgid "%s minutes"
-msgstr ""
+msgstr "%s分钟"
 
 #: [post]public
 msgid "Publish this post publicly?"
@@ -1490,11 +1483,11 @@ msgstr "评论已发布"
 
 #: [post]comment_like_published
 msgid "Liked"
-msgstr ""
+msgstr "喜欢了"
 
 #: [post]comment_publish_error
 msgid "The comment cannot be published"
-msgstr ""
+msgstr "无法发布评论"
 
 #: [post]comment_deleted
 msgid "Comment deleted"
@@ -1502,10 +1495,9 @@ msgstr "评论已删除"
 
 #: [post]liked
 msgid "Liked your publication"
-msgstr ""
+msgstr "喜欢了你发布的內容"
 
 #: [post]commented
-#, fuzzy
 msgid "Commented"
 msgstr "评论"
 
@@ -1539,7 +1531,7 @@ msgstr "噢！您好！"
 
 #: [hello]enter_paragraph
 msgid "It seems that you’re new there! Welcome on Movim!"
-msgstr ""
+msgstr "你是新人吧！欢迎來到Movim! "
 
 #: [hello]menu_title
 msgid "Check the Menu"
@@ -1547,11 +1539,11 @@ msgstr "检查菜单"
 
 #: [hello]menu_paragraph
 msgid "All the main Movim features are accessible there. Don’t hesitate to navigate through the pages to discover more!"
-msgstr ""
+msgstr "Movim之主要特性可在此访问。 请随时浏览页面，发现更多内容！"
 
 #: [hello]profile_title
 msgid "Looks like you didn’t complete your profile yet"
-msgstr ""
+msgstr "尚未完成个人资料"
 
 #: [hello]profile_paragraph
 msgid "You can go in the Configuration page to describe yourself and put a nice picture"
@@ -1571,7 +1563,7 @@ msgstr "在线"
 
 #: [status]logout_confirm
 msgid "Do you really want to log out?"
-msgstr ""
+msgstr "确认登出？"
 
 #: [publishbrief]placeholder
 msgid "What’s new?"
@@ -1587,7 +1579,7 @@ msgstr "添加链接"
 
 #: [publishbrief]add_snap
 msgid "Take a picture"
-msgstr ""
+msgstr "拍照"
 
 #: [publishbrief]no_title
 msgid "Please provide a title"
@@ -1610,14 +1602,12 @@ msgid "No content to preview"
 msgstr "无内容可预览"
 
 #: [publishbrief]title
-#, fuzzy
 msgid "Post title"
-msgstr "帖子已删除"
+msgstr "帖子标题"
 
 #: [publishbrief]content
-#, fuzzy
 msgid "Markdown content"
-msgstr "没有内容"
+msgstr ""
 
 #: [publishbrief]valid_url
 msgid "Please enter a valid URL"
@@ -1628,13 +1618,12 @@ msgid "You can format your content using Markdown"
 msgstr "你可以使用 Markdown 来格式化内容"
 
 #: [publishbrief]draft_saved
-#, fuzzy
 msgid "Draft saved"
-msgstr "配置已保存"
+msgstr "草稿已保存"
 
 #: [publishbrief]rich_editor
 msgid "Rich text editor"
-msgstr ""
+msgstr "富文本编辑器"
 
 #: [publishhelp]title [page]help
 msgid "Help"
@@ -1648,18 +1637,28 @@ msgstr "更多帮助"
 msgid "Markdown syntax manual"
 msgstr "Markdown 语法手册"
 
-#: [rooms]add
+#: [rooms]create
 #, fuzzy
-msgid "Search or join a chatroom"
+msgid "Create a chatroom"
 msgstr "修改聊天室"
 
 #: [rooms]edit
 msgid "Edit a chatroom"
 msgstr "修改聊天室"
 
+#: [rooms]join
+#, fuzzy
+msgid "Join a chatroom"
+msgstr "修改聊天室"
+
+#: [rooms]join_custom
+#, fuzzy
+msgid "Join a custom chatroom"
+msgstr "修改聊天室"
+
 #: [rooms]empty_text1
 msgid "You don’t have any chatroom yet."
-msgstr ""
+msgstr "您还没有任何聊天室。"
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
@@ -1671,19 +1670,19 @@ msgstr ""
 
 #: [rooms]empty_synchronize_text
 msgid "Try to synchronize them to the new room bookmarking system"
-msgstr ""
+msgstr "尝试将房间同步到新的书签系统"
 
 #: [rooms]empty_synchronize_button
 msgid "Synchronize"
-msgstr ""
+msgstr "同步"
 
 #: [rooms]type_room
 msgid "Type of room"
-msgstr ""
+msgstr "房间类型"
 
 #: [rooms]default_room
 msgid "Standard room"
-msgstr ""
+msgstr "标准房间"
 
 #: [rooms]gateway_room
 msgid "Gateway room"
@@ -1691,19 +1690,19 @@ msgstr ""
 
 #: [rooms]show_all
 msgid "Show all the rooms"
-msgstr ""
+msgstr "显示所有房间"
 
 #: [rooms]hide_disconnected
 msgid "Hide disconnected rooms"
-msgstr ""
+msgstr "隐藏断开的房间"
 
 #: [rooms]destroy_title
 msgid "Destroy the room"
-msgstr ""
+msgstr "销毁房间"
 
 #: [rooms]destroy_text
 msgid "Are you sure that you want to definitely destroy the following room?"
-msgstr ""
+msgstr "确定销毁下列房间？"
 
 #: [rooms]owner [affiliation]owner
 msgid "Owner"
@@ -1711,16 +1710,15 @@ msgstr "所有者"
 
 #: [rooms]admin
 msgid "Admin"
-msgstr ""
+msgstr "管理员"
 
 #: [rooms]visitor
 msgid "Visitor"
-msgstr ""
+msgstr "访客"
 
 #: [rooms]explore_placeholder
-#, fuzzy
 msgid "Name or description"
-msgstr "没有订阅"
+msgstr "名称或描叙"
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -1744,11 +1742,19 @@ msgstr "用户名为空"
 
 #: [chatrooms]synchronized
 msgid "%s rooms synchronized"
-msgstr ""
+msgstr "已同步 %s 个房间"
 
 #: [chatrooms]users
-msgid "Users in the room"
-msgstr "聊天室用户"
+#, fuzzy
+msgctxt "[chatrooms]users"
+msgid "Users"
+msgstr "用户名"
+
+#: [chatrooms]members
+#, fuzzy
+msgctxt "[chatrooms]members"
+msgid "Members"
+msgstr "成员"
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a correct nickname (2 to 40 characters)"
@@ -1764,7 +1770,7 @@ msgstr "在连线后加入此聊天室"
 
 #: [chatrooms]destroyed
 msgid "Room destroyed"
-msgstr ""
+msgstr "房间已销毁"
 
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
@@ -1772,12 +1778,11 @@ msgstr "无法加入聊天室，需要注册"
 
 #: [chatrooms]itemnotfound
 msgid "The chatroom doesn’t exists"
-msgstr ""
+msgstr "聊天室不存在"
 
 #: [chatrooms]notauthorized
-#, fuzzy
 msgid "A password is required"
-msgstr "密码已经更新了"
+msgstr "需要密码"
 
 #: [bookmarks]updated
 msgid "Bookmarks updated"
@@ -1787,13 +1792,9 @@ msgstr "书签已更新"
 msgid "Public chatroom"
 msgstr "公共聊天室"
 
-#: [room]no_room
-msgid "Please provide a room address"
-msgstr "请提供一个聊天室地址"
-
 #: [room]anonymous_text1
 msgid "You are currently logged as an anonymous user."
-msgstr ""
+msgstr "现以匿名用户登录"
 
 #: [room]anonymous_text2
 msgid "You can join using your own account or create one on the login page by loging out using the cross in the top-right corner."
@@ -1802,10 +1803,6 @@ msgstr "你可以使用你自己的账号或新建一个来登录，只需要登
 #: [room]anonymous_login
 msgid "Login on %s"
 msgstr "登录在%s"
-
-#: [room]nick
-msgid "Your nickname"
-msgstr "你的昵称"
 
 #: [room]invite
 msgid "Invite a contact"
@@ -1821,36 +1818,69 @@ msgstr "将此链接发送给你的联系人"
 
 #: [room]public_muc
 msgid "Public"
-msgstr ""
+msgstr "公开的"
 
 #: [room]public_muc_text
 msgid "This chatroom is publicly discoverable"
-msgstr ""
+msgstr "此聊天室公开可见"
 
 #: [room]nonanonymous_muc
 msgid "Public profiles"
-msgstr ""
+msgstr "公开的个人资料"
 
 #: [room]nonanonymous_muc_text
 msgid "The participants of this chatroom can see each other's profile"
+msgstr "此聊天室的参与者可以看到彼此的个人资料"
+
+#: [room]group_chat
+#, fuzzy
+msgid "Group Chat"
+msgstr "分组"
+
+#: [room]group_chat_text
+msgid "Private group chat with invited members"
+msgstr ""
+
+#: [room]group_chat_add
+#, fuzzy
+msgid "Add a new member"
+msgstr "添加评论"
+
+#: [room]group_chat_members
+#, fuzzy
+msgctxt "[room]group_chat_members"
+msgid "Members"
+msgstr "成员"
+
+#: [room]channel
+msgid "Channel"
+msgstr ""
+
+#: [room]channel_users
+#, fuzzy
+msgctxt "[room]channel_users"
+msgid "Users"
+msgstr "用户名"
+
+#: [room]channel_text
+msgid "Public channel that can be publicly discoverable and joineable"
 msgstr ""
 
 #: [room]notify_never
 msgid "Never notify"
-msgstr ""
+msgstr "永不通知"
 
 #: [room]notify_quoted
 msgid "Notify when quoted"
-msgstr ""
+msgstr "被提及時通知"
 
 #: [room]notify_always
-#, fuzzy
 msgid "Always notify"
-msgstr "总是"
+msgstr "总是通知"
 
 #: [roomsexplore]no_local
 msgid "No chatrooms found localy"
-msgstr ""
+msgstr "在本地找不到聊天室"
 
 #: [roomsexplore]global_title
 msgid "Global search"
@@ -1874,19 +1904,19 @@ msgstr ""
 
 #: [search]no_contacts_title
 msgid "No contacts yet?"
-msgstr ""
+msgstr "暂无联系人？"
 
 #: [search]no_contacts_text
 msgid "Find one by searching for his name or id"
-msgstr ""
+msgstr "通过搜索名字或 id 找人"
 
 #: [search]tags
 msgid "Tags"
-msgstr ""
+msgstr "标签"
 
 #: [search]show_complete_roster
 msgid "Show all the contacts"
-msgstr ""
+msgstr "显示所有联系人"
 
 #: [sendto]attach
 msgid "Attach to a blog publication"
@@ -1894,12 +1924,11 @@ msgstr ""
 
 #: [sendto]contact
 msgid "Send it to a contact"
-msgstr ""
+msgstr "发送给联系人"
 
 #: [sendto]chatroom
-#, fuzzy
 msgid "Share it in a chatroom"
-msgstr "修改聊天室"
+msgstr "在聊天室中分享"
 
 #: [sendto]shared_with
 msgid "Post shared"
@@ -1907,16 +1936,15 @@ msgstr ""
 
 #: [sendto]shared_contact
 msgid "Post shared with your contact"
-msgstr ""
+msgstr "与联系人分享的帖子"
 
 #: [sendto]shared_chatroom
-#, fuzzy
 msgid "Post shared within the chatroom"
-msgstr "已连接到聊天室"
+msgstr "在聊天室中分享的帖子"
 
 #: [sendto]more_contacts
 msgid "More contacts"
-msgstr ""
+msgstr "更多联系人"
 
 #: [statistics]title
 msgid "Statistics"
@@ -1936,7 +1964,7 @@ msgstr "Movim 是一个去中心化的社交网络，在建立一个新账户之
 
 #: [subscribe]server_question
 msgid "Your server here?"
-msgstr ""
+msgstr "你的服务器在这里？"
 
 #: [subscribe]server_contact
 msgid "Contact us to add yours to the officially supported servers list"
@@ -1972,19 +2000,19 @@ msgstr "上传失败"
 
 #: [upload]error_not_allowed
 msgid "You are not allowed to upload a file"
-msgstr ""
+msgstr "无权上传文件"
 
 #: [upload]error_resource_constraint
 msgid "You exceeded the quota"
-msgstr ""
+msgstr "超出配额了"
 
 #: [upload]drag_drop
 msgid "Drag and drop your file in this area"
-msgstr ""
+msgstr "将文件拖放到此区域"
 
 #: [upload]max_size
 msgid "Max file size %s"
-msgstr ""
+msgstr "文件大小 上限是%s"
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -2008,39 +2036,39 @@ msgstr "现在您的档案是保密的"
 
 #: [profile]info
 msgid "Configure your instance nickname"
-msgstr ""
+msgstr "配置实例昵称"
 
 #: [profile]privacy_question
 msgid "Is this profile public?"
-msgstr ""
+msgstr "这个档案是公开的吗？"
 
 #: [profile]privacy_info
 msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
-msgstr ""
+msgstr "请注意！ 如果公开你的个人资料，下列所有信息将对所有Movim用户以及整个Internet可见。"
 
 #: [profile]nickname_info
 msgid "Set a local nickname to allow the other users of the instance to find you easily."
-msgstr ""
+msgstr "设置本地昵称，以便本实例的其他用户轻松找到你。"
 
 #: [profile]nickname_set
 msgid "Your nickname is %s."
-msgstr ""
+msgstr "你的昵称是%s。"
 
 #: [profile]nickname_placeholder
 msgid "John_Bob96"
-msgstr ""
+msgstr "John_Bob96"
 
 #: [profile]nickname_error
 msgid "Your nickname should only contains letters, numbers, - and _"
-msgstr ""
+msgstr "昵称只能包含字母、数字、-（半角连字符）以及 _（半角下划线）"
 
 #: [profile]nickname_conflict
 msgid "The nickname is already registered"
-msgstr ""
+msgstr "昵称已注册"
 
 #: [profile]nickname_saved
 msgid "Nickname saved"
-msgstr ""
+msgstr "昵称已保存"
 
 #: [save]submit [button]submit
 msgid "Submit"
@@ -2056,7 +2084,7 @@ msgstr "Movim 正在降级模式中运行"
 
 #: [degraded]text_1
 msgid "Your server doesn’t support XMPP Pubsub persistence or the social features (communities, news feed and profile) are disabled by the administrator."
-msgstr ""
+msgstr "您的服务器不支持XMPP Pubsub持久性，或者管理员已禁用社交功能(社区、新闻源和个人资料)。"
 
 #: [degraded]text_2
 msgid "Please contact your server administrator to see if this feature can be enabled."
@@ -2068,20 +2096,19 @@ msgstr "在呼叫你"
 
 #: [visio]video_call
 msgid "Incoming video call"
-msgstr ""
+msgstr "视频來电"
 
 #: [visio]audio_call
 msgid "Incoming audio call"
-msgstr ""
+msgstr "音频來电"
 
 #: [visio]ringing
 msgid "…ringing"
 msgstr "响铃中"
 
 #: [visio]declined
-#, fuzzy
 msgid "declined"
-msgstr "未定义"
+msgstr ""
 
 #: [visio]in_call
 msgid "in call"
@@ -2097,15 +2124,15 @@ msgstr "连接中"
 
 #: [visio]ended
 msgid "call ended"
-msgstr ""
+msgstr "通话结束"
 
 #: [global]no_js
 msgid "Movim requires Javascript to be enabled to work properly."
-msgstr ""
+msgstr "Movim需要启用JavaScript方能正常工作。"
 
 #: [global]description
 msgid "Movim is a kickass distributed social networking platform that protect your privacy and comes with a set of awesome features."
-msgstr ""
+msgstr "Movim是一个kickass分布式社交网络平台，可保护隐私并具有一系列令人惊叹的特性。"
 
 #: [global]loading
 msgid "Loading…"
@@ -2169,7 +2196,7 @@ msgstr "登录"
 
 #: [page]not_found
 msgid "Not Found"
-msgstr ""
+msgstr "没找到"
 
 #: [page]feed
 msgid "Feed"
@@ -2210,7 +2237,7 @@ msgstr "不能加载文件 '%s'"
 
 #: [error]widget_load_error
 msgid "Requested widget '%s' doesn’t exist."
-msgstr ""
+msgstr "请求的控件 '%s' 不存在。"
 
 #: [error]widget_call_error
 msgid "Requested event '%s' not registered."
@@ -2226,7 +2253,7 @@ msgstr "Movim 无法与服务器通信，请稍后再试"
 
 #: [error]websocket_connect
 msgid "Reconnection to the server…"
-msgstr ""
+msgstr "重新连接服务器…"
 
 #: [error]oops
 msgid "Oops!"
@@ -2238,11 +2265,11 @@ msgstr "拨打"
 
 #: [button]audio_call
 msgid "Audio Call"
-msgstr ""
+msgstr "音频通话"
 
 #: [button]video_call
 msgid "Video Call"
-msgstr ""
+msgstr "视频通话"
 
 #: [button]validate
 msgid "Validate"
@@ -2262,7 +2289,7 @@ msgstr "删除"
 
 #: [button]destroy
 msgid "Destroy"
-msgstr ""
+msgstr "销毁"
 
 #: [button]cancel
 msgid "Cancel"
@@ -2367,7 +2394,7 @@ msgstr "注册"
 
 #: [button]send_to
 msgid "Send to"
-msgstr ""
+msgstr "发给"
 
 #: [day]title
 msgid "Day"
@@ -2935,23 +2962,23 @@ msgstr "原帖子已被删除"
 
 #: [filesize]byte
 msgid "B"
-msgstr ""
+msgstr "B"
 
 #: [filesize]kilobyte
 msgid "KB"
-msgstr ""
+msgstr "KB"
 
 #: [filesize]megabyte
 msgid "MB"
-msgstr ""
+msgstr "MB"
 
 #: [filesize]gigabyte
 msgid "GB"
-msgstr ""
+msgstr "GB"
 
 #: [filesize]terabyte
 msgid "TB"
-msgstr ""
+msgstr "TB"
 
 #: [affiliation]publisher
 msgid "Publisher"
@@ -2959,11 +2986,11 @@ msgstr "发布者"
 
 #: [affiliation]publish-only
 msgid "Publish only"
-msgstr ""
+msgstr "仅发布"
 
 #: [affiliation]member
 msgid "Member"
-msgstr ""
+msgstr "成员"
 
 #: [affiliation]no-aff
 msgid "No affiliation"
@@ -2981,14 +3008,14 @@ msgstr "API 无法连接，请稍后重试"
 msgid "Type here"
 msgstr "在此输入"
 
-#~ msgid "Adult content blocked"
-#~ msgstr "成人内容已被屏蔽"
+#~ msgid "Search or join a chatroom"
+#~ msgstr "檢索或加入聊天室"
 
-#~ msgid "Some adult content has been blocked on this page. You can enable the display of adult content in the configuration page."
-#~ msgstr "此页面上的一些成人内容已经被屏蔽。你可以在配置页面开启成人内容的显示。"
+#~ msgid "Users in the room"
+#~ msgstr "聊天室用户"
 
-#~ msgid "Custom CSS URL for your blog"
-#~ msgstr "你博客自定义 CSS 的 URL"
+#~ msgid "Please provide a room address"
+#~ msgstr "请提供一个聊天室地址"
 
-#~ msgid "The communities, news feed and profile have been disabled for the moment."
-#~ msgstr "社群、消息流以及个人资料当前已被禁用"
+#~ msgid "Your nickname"
+#~ msgstr "你的昵称"

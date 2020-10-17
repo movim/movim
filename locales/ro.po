@@ -99,16 +99,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-07 08:54+0200\n"
-"PO-Revision-Date: 2019-11-02 09:40+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"POT-Creation-Date: 2020-10-17 11:51+0200\n"
+"PO-Revision-Date: 2020-08-07 10:18+0000\n"
+"Last-Translator: Transifex Bot <>\n"
 "Language-Team: Romanian (http://www.transifex.com/movim/movim/language/ro/)\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
-"X-Generator: Translate Toolkit 2.4.0\n"
+"X-Generator: Translate Toolkit 2.5.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -271,9 +271,8 @@ msgid "Only suggest chatrooms, Communities and other contents that are available
 msgstr ""
 
 #: [chatonly]title
-#, fuzzy
 msgid "Chat only"
-msgstr "Chat"
+msgstr ""
 
 #: [chatonly]text
 msgid "Disable all the social feature (Communities, Blog…) and keep only the chat ones"
@@ -474,9 +473,8 @@ msgid "Message Published"
 msgstr "Mesaj publicat"
 
 #: [message]react
-#, fuzzy
 msgid "Add a reaction"
-msgstr "Adaugă un contact"
+msgstr ""
 
 #: [message]retract
 msgid "Retract"
@@ -491,9 +489,8 @@ msgid "Encrypted message"
 msgstr "Mesaj criptat"
 
 #: [message]retracted
-#, fuzzy
 msgid "Retracted message"
-msgstr "Mesaj criptat"
+msgstr ""
 
 #: [message]composing
 msgid "Composing…"
@@ -939,18 +936,16 @@ msgid "Archiving preferences saved"
 msgstr ""
 
 #: [config]notification_title
-#, fuzzy
 msgid "Audio notifications"
-msgstr "Administrare"
+msgstr ""
 
 #: [config]notification_call
 msgid "Incoming call"
 msgstr ""
 
 #: [config]notification_chat
-#, fuzzy
 msgid "Incoming message"
-msgstr "Mesaj criptat"
+msgstr ""
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -1493,9 +1488,8 @@ msgid "Liked your publication"
 msgstr ""
 
 #: [post]commented
-#, fuzzy
 msgid "Commented"
-msgstr "Comunități"
+msgstr ""
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1614,9 +1608,8 @@ msgid "You can format your content using Markdown"
 msgstr ""
 
 #: [publishbrief]draft_saved
-#, fuzzy
 msgid "Draft saved"
-msgstr "Configurare salvată"
+msgstr ""
 
 #: [publishbrief]rich_editor
 msgid "Rich text editor"
@@ -1634,12 +1627,22 @@ msgstr ""
 msgid "Markdown syntax manual"
 msgstr ""
 
-#: [rooms]add
-msgid "Search or join a chatroom"
-msgstr ""
+#: [rooms]create
+#, fuzzy
+msgid "Create a chatroom"
+msgstr "Conectat la chatroom"
 
 #: [rooms]edit
 msgid "Edit a chatroom"
+msgstr ""
+
+#: [rooms]join
+#, fuzzy
+msgid "Join a chatroom"
+msgstr "Conectat la chatroom"
+
+#: [rooms]join_custom
+msgid "Join a custom chatroom"
 msgstr ""
 
 #: [rooms]empty_text1
@@ -1703,9 +1706,8 @@ msgid "Visitor"
 msgstr ""
 
 #: [rooms]explore_placeholder
-#, fuzzy
 msgid "Name or description"
-msgstr "Fără abonamente"
+msgstr ""
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -1732,8 +1734,16 @@ msgid "%s rooms synchronized"
 msgstr ""
 
 #: [chatrooms]users
-msgid "Users in the room"
-msgstr ""
+#, fuzzy
+msgctxt "[chatrooms]users"
+msgid "Users"
+msgstr "Utilizator"
+
+#: [chatrooms]members
+#, fuzzy
+msgctxt "[chatrooms]members"
+msgid "Members"
+msgstr "Membri"
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a correct nickname (2 to 40 characters)"
@@ -1760,9 +1770,8 @@ msgid "The chatroom doesn’t exists"
 msgstr ""
 
 #: [chatrooms]notauthorized
-#, fuzzy
 msgid "A password is required"
-msgstr "Parola a fost actualizată"
+msgstr ""
 
 #: [bookmarks]updated
 msgid "Bookmarks updated"
@@ -1770,10 +1779,6 @@ msgstr ""
 
 #: [room]anonymous_title
 msgid "Public chatroom"
-msgstr ""
-
-#: [room]no_room
-msgid "Please provide a room address"
 msgstr ""
 
 #: [room]anonymous_text1
@@ -1787,10 +1792,6 @@ msgstr "Vă puteți alătura cu ajutorul contului dvs. propriu sau creați unul 
 #: [room]anonymous_login
 msgid "Login on %s"
 msgstr "Conectare pe %s"
-
-#: [room]nick
-msgid "Your nickname"
-msgstr "Porecla ta"
 
 #: [room]invite
 msgid "Invite a contact"
@@ -1818,6 +1819,39 @@ msgstr ""
 
 #: [room]nonanonymous_muc_text
 msgid "The participants of this chatroom can see each other's profile"
+msgstr ""
+
+#: [room]group_chat
+#, fuzzy
+msgid "Group Chat"
+msgstr "Grup"
+
+#: [room]group_chat_text
+msgid "Private group chat with invited members"
+msgstr ""
+
+#: [room]group_chat_add
+msgid "Add a new member"
+msgstr ""
+
+#: [room]group_chat_members
+#, fuzzy
+msgctxt "[room]group_chat_members"
+msgid "Members"
+msgstr "Membri"
+
+#: [room]channel
+msgid "Channel"
+msgstr ""
+
+#: [room]channel_users
+#, fuzzy
+msgctxt "[room]channel_users"
+msgid "Users"
+msgstr "Utilizator"
+
+#: [room]channel_text
+msgid "Public channel that can be publicly discoverable and joineable"
 msgstr ""
 
 #: [room]notify_never
@@ -1893,9 +1927,8 @@ msgid "Post shared with your contact"
 msgstr ""
 
 #: [sendto]shared_chatroom
-#, fuzzy
 msgid "Post shared within the chatroom"
-msgstr "Conectat la chatroom"
+msgstr ""
 
 #: [sendto]more_contacts
 msgid "More contacts"
@@ -2963,5 +2996,5 @@ msgstr ""
 msgid "Type here"
 msgstr ""
 
-#~ msgid "Custom CSS URL for your blog"
-#~ msgstr "URL personalizat pentru CSS-ul blogului dumneavoastră"
+#~ msgid "Your nickname"
+#~ msgstr "Porecla ta"

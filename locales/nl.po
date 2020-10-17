@@ -108,16 +108,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-07 08:54+0200\n"
-"PO-Revision-Date: 2019-11-02 09:40+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"POT-Creation-Date: 2020-10-17 11:51+0200\n"
+"PO-Revision-Date: 2020-08-07 10:18+0000\n"
+"Last-Translator: Transifex Bot <>\n"
 "Language-Team: Dutch (http://www.transifex.com/movim/movim/language/nl/)\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 2.4.0\n"
+"X-Generator: Translate Toolkit 2.5.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -280,9 +280,8 @@ msgid "Only suggest chatrooms, Communities and other contents that are available
 msgstr "Alleen chatkamers, gemeenschappen en andere inhoud aanbevelen die beschikbaar is op de XMPP-server en gerelateerde diensten"
 
 #: [chatonly]title
-#, fuzzy
 msgid "Chat only"
-msgstr "Chat"
+msgstr ""
 
 #: [chatonly]text
 msgid "Disable all the social feature (Communities, Blog…) and keep only the chat ones"
@@ -483,9 +482,8 @@ msgid "Message Published"
 msgstr "Bericht gepubliceerd"
 
 #: [message]react
-#, fuzzy
 msgid "Add a reaction"
-msgstr "Voeg een contact toe"
+msgstr ""
 
 #: [message]retract
 msgid "Retract"
@@ -500,9 +498,8 @@ msgid "Encrypted message"
 msgstr "Geëncrypteerd bericht"
 
 #: [message]retracted
-#, fuzzy
 msgid "Retracted message"
-msgstr "Geëncrypteerd bericht"
+msgstr ""
 
 #: [message]composing
 msgid "Composing…"
@@ -565,10 +562,9 @@ msgid "See the profile"
 msgstr "Bekijk profiel"
 
 #: [chat]clear
-#, fuzzy
 msgctxt "[chat]clear"
 msgid "Clear the history"
-msgstr "Verwijder geschiedenis"
+msgstr ""
 
 #: [chat]edit_previous
 msgid "Edit last message"
@@ -595,15 +591,13 @@ msgid "Synchronizing the history, please wait…"
 msgstr ""
 
 #: [chat]clear_history
-#, fuzzy
 msgctxt "[chat]clear_history"
 msgid "Clear the history"
-msgstr "Verwijder geschiedenis"
+msgstr ""
 
 #: [chat]clear_history_text
-#, fuzzy
 msgid "You are going to delete %s messages, are you sure?"
-msgstr "Weet je zeker dat je dit bericht wil verwijderen?"
+msgstr ""
 
 #: [chatroom]members
 msgid "Members"
@@ -951,18 +945,16 @@ msgid "Archiving preferences saved"
 msgstr ""
 
 #: [config]notification_title
-#, fuzzy
 msgid "Audio notifications"
-msgstr "Geen nieuwe meldingen"
+msgstr ""
 
 #: [config]notification_call
 msgid "Incoming call"
 msgstr ""
 
 #: [config]notification_chat
-#, fuzzy
 msgid "Incoming message"
-msgstr "Informatieve Melding"
+msgstr ""
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -1505,9 +1497,8 @@ msgid "Liked your publication"
 msgstr ""
 
 #: [post]commented
-#, fuzzy
 msgid "Commented"
-msgstr "Reacties"
+msgstr ""
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1610,14 +1601,12 @@ msgid "No content to preview"
 msgstr "Geen voorbeeld beschikbaar"
 
 #: [publishbrief]title
-#, fuzzy
 msgid "Post title"
-msgstr "bericht verwijderd"
+msgstr ""
 
 #: [publishbrief]content
-#, fuzzy
 msgid "Markdown content"
-msgstr "Geen inhoud"
+msgstr ""
 
 #: [publishbrief]valid_url
 msgid "Please enter a valid URL"
@@ -1628,9 +1617,8 @@ msgid "You can format your content using Markdown"
 msgstr "je kunt je inhoud opmaken met Markdown"
 
 #: [publishbrief]draft_saved
-#, fuzzy
 msgid "Draft saved"
-msgstr "Instellingen opgeslagen"
+msgstr ""
 
 #: [publishbrief]rich_editor
 msgid "Rich text editor"
@@ -1648,13 +1636,23 @@ msgstr "Meer help"
 msgid "Markdown syntax manual"
 msgstr "Markdown syntax handleiding"
 
-#: [rooms]add
+#: [rooms]create
 #, fuzzy
-msgid "Search or join a chatroom"
+msgid "Create a chatroom"
 msgstr "Bewerk een chat-ruimte"
 
 #: [rooms]edit
 msgid "Edit a chatroom"
+msgstr "Bewerk een chat-ruimte"
+
+#: [rooms]join
+#, fuzzy
+msgid "Join a chatroom"
+msgstr "Bewerk een chat-ruimte"
+
+#: [rooms]join_custom
+#, fuzzy
+msgid "Join a custom chatroom"
 msgstr "Bewerk een chat-ruimte"
 
 #: [rooms]empty_text1
@@ -1718,9 +1716,8 @@ msgid "Visitor"
 msgstr ""
 
 #: [rooms]explore_placeholder
-#, fuzzy
 msgid "Name or description"
-msgstr "Geen abonnementen"
+msgstr ""
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -1747,8 +1744,16 @@ msgid "%s rooms synchronized"
 msgstr ""
 
 #: [chatrooms]users
-msgid "Users in the room"
-msgstr "Gebruikers in de room"
+#, fuzzy
+msgctxt "[chatrooms]users"
+msgid "Users"
+msgstr "Gebruikersnaam"
+
+#: [chatrooms]members
+#, fuzzy
+msgctxt "[chatrooms]members"
+msgid "Members"
+msgstr "Leden"
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a correct nickname (2 to 40 characters)"
@@ -1775,9 +1780,8 @@ msgid "The chatroom doesn’t exists"
 msgstr ""
 
 #: [chatrooms]notauthorized
-#, fuzzy
 msgid "A password is required"
-msgstr "Je wachtwoord is bijgewerkt"
+msgstr ""
 
 #: [bookmarks]updated
 msgid "Bookmarks updated"
@@ -1786,10 +1790,6 @@ msgstr "Favoriet bijgewerkt"
 #: [room]anonymous_title
 msgid "Public chatroom"
 msgstr "Openbare chatroom"
-
-#: [room]no_room
-msgid "Please provide a room address"
-msgstr "Voer een adres in van een chatroom"
 
 #: [room]anonymous_text1
 msgid "You are currently logged as an anonymous user."
@@ -1802,10 +1802,6 @@ msgstr ""
 #: [room]anonymous_login
 msgid "Login on %s"
 msgstr "Login op %s"
-
-#: [room]nick
-msgid "Your nickname"
-msgstr "Jouw nickname"
 
 #: [room]invite
 msgid "Invite a contact"
@@ -1835,6 +1831,40 @@ msgstr ""
 msgid "The participants of this chatroom can see each other's profile"
 msgstr ""
 
+#: [room]group_chat
+#, fuzzy
+msgid "Group Chat"
+msgstr "Groep"
+
+#: [room]group_chat_text
+msgid "Private group chat with invited members"
+msgstr ""
+
+#: [room]group_chat_add
+#, fuzzy
+msgid "Add a new member"
+msgstr "Reactie toevoegen"
+
+#: [room]group_chat_members
+#, fuzzy
+msgctxt "[room]group_chat_members"
+msgid "Members"
+msgstr "Leden"
+
+#: [room]channel
+msgid "Channel"
+msgstr ""
+
+#: [room]channel_users
+#, fuzzy
+msgctxt "[room]channel_users"
+msgid "Users"
+msgstr "Gebruikersnaam"
+
+#: [room]channel_text
+msgid "Public channel that can be publicly discoverable and joineable"
+msgstr ""
+
 #: [room]notify_never
 msgid "Never notify"
 msgstr ""
@@ -1844,9 +1874,8 @@ msgid "Notify when quoted"
 msgstr ""
 
 #: [room]notify_always
-#, fuzzy
 msgid "Always notify"
-msgstr "altijd"
+msgstr ""
 
 #: [roomsexplore]no_local
 msgid "No chatrooms found localy"
@@ -1897,9 +1926,8 @@ msgid "Send it to a contact"
 msgstr ""
 
 #: [sendto]chatroom
-#, fuzzy
 msgid "Share it in a chatroom"
-msgstr "Bewerk een chat-ruimte"
+msgstr ""
 
 #: [sendto]shared_with
 msgid "Post shared"
@@ -1910,9 +1938,8 @@ msgid "Post shared with your contact"
 msgstr ""
 
 #: [sendto]shared_chatroom
-#, fuzzy
 msgid "Post shared within the chatroom"
-msgstr "Verbonden met de chatroom"
+msgstr ""
 
 #: [sendto]more_contacts
 msgid "More contacts"
@@ -2079,9 +2106,8 @@ msgid "…ringing"
 msgstr ""
 
 #: [visio]declined
-#, fuzzy
 msgid "declined"
-msgstr "ongedefiniëerd"
+msgstr ""
 
 #: [visio]in_call
 msgid "in call"
@@ -2981,8 +3007,11 @@ msgstr "De API is niet bereikbaar, probeer later nog eens"
 msgid "Type here"
 msgstr "Typ hier"
 
-#~ msgid "Adult content blocked"
-#~ msgstr "Volwassen inhoud geblokkeerd"
+#~ msgid "Users in the room"
+#~ msgstr "Gebruikers in de room"
 
-#~ msgid "Custom CSS URL for your blog"
-#~ msgstr "Link naar eigen CSS voor je openbare blog"
+#~ msgid "Please provide a room address"
+#~ msgstr "Voer een adres in van een chatroom"
+
+#~ msgid "Your nickname"
+#~ msgstr "Jouw nickname"

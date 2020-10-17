@@ -112,16 +112,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-07 08:54+0200\n"
-"PO-Revision-Date: 2019-11-02 09:40+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"POT-Creation-Date: 2020-10-17 11:51+0200\n"
+"PO-Revision-Date: 2020-08-07 10:18+0000\n"
+"Last-Translator: Transifex Bot <>\n"
 "Language-Team: Russian (http://www.transifex.com/movim/movim/language/ru/)\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
-"X-Generator: Translate Toolkit 2.4.0\n"
+"X-Generator: Translate Toolkit 2.5.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -284,9 +284,8 @@ msgid "Only suggest chatrooms, Communities and other contents that are available
 msgstr "Показывать предложения чат комнат, сообществ и прочего контента, который находится на пользовательском и связанным с пользовательским XMPP сервером"
 
 #: [chatonly]title
-#, fuzzy
 msgid "Chat only"
-msgstr "Чат"
+msgstr ""
 
 #: [chatonly]text
 msgid "Disable all the social feature (Communities, Blog…) and keep only the chat ones"
@@ -487,9 +486,8 @@ msgid "Message Published"
 msgstr "Сообщение опубликовано"
 
 #: [message]react
-#, fuzzy
 msgid "Add a reaction"
-msgstr "Добавить контакт"
+msgstr ""
 
 #: [message]retract
 msgid "Retract"
@@ -504,9 +502,8 @@ msgid "Encrypted message"
 msgstr "Зашифрованное сообщение"
 
 #: [message]retracted
-#, fuzzy
 msgid "Retracted message"
-msgstr "Зашифрованное сообщение"
+msgstr ""
 
 #: [message]composing
 msgid "Composing…"
@@ -569,10 +566,9 @@ msgid "See the profile"
 msgstr "Смотреть профиль"
 
 #: [chat]clear
-#, fuzzy
 msgctxt "[chat]clear"
 msgid "Clear the history"
-msgstr "Очистить историю"
+msgstr ""
 
 #: [chat]edit_previous
 msgid "Edit last message"
@@ -599,15 +595,13 @@ msgid "Synchronizing the history, please wait…"
 msgstr ""
 
 #: [chat]clear_history
-#, fuzzy
 msgctxt "[chat]clear_history"
 msgid "Clear the history"
-msgstr "Очистить историю"
+msgstr ""
 
 #: [chat]clear_history_text
-#, fuzzy
 msgid "You are going to delete %s messages, are you sure?"
-msgstr "Вы собираетесь удалить этот пост. Пожалуйста, подтвердите это."
+msgstr ""
 
 #: [chatroom]members
 msgid "Members"
@@ -811,14 +805,12 @@ msgid "Public page"
 msgstr "Публичная страница"
 
 #: [communitydata]publishmodel_publishers
-#, fuzzy
 msgid "Only publishers can publish"
-msgstr "Редакторы могут публиковать"
+msgstr ""
 
 #: [communitydata]publishmodel_subscribers
-#, fuzzy
 msgid "Only subscribers can publish"
-msgstr "Подписчики могут публиковать"
+msgstr ""
 
 #: [communityheader]subscribe
 msgid "Subscribe"
@@ -957,19 +949,16 @@ msgid "Archiving preferences saved"
 msgstr "Архивные настройки сохранены"
 
 #: [config]notification_title
-#, fuzzy
 msgid "Audio notifications"
-msgstr "Нет новых уведомлений"
+msgstr ""
 
 #: [config]notification_call
-#, fuzzy
 msgid "Incoming call"
-msgstr "звонит"
+msgstr ""
 
 #: [config]notification_chat
-#, fuzzy
 msgid "Incoming message"
-msgstr "Информационное сообщение"
+msgstr ""
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -1512,9 +1501,8 @@ msgid "Liked your publication"
 msgstr "Нравится Ваша публикация"
 
 #: [post]commented
-#, fuzzy
 msgid "Commented"
-msgstr "Комментарии"
+msgstr ""
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1617,14 +1605,12 @@ msgid "No content to preview"
 msgstr "Нет контента для предпросмотра"
 
 #: [publishbrief]title
-#, fuzzy
 msgid "Post title"
-msgstr "Запись удалена"
+msgstr ""
 
 #: [publishbrief]content
-#, fuzzy
 msgid "Markdown content"
-msgstr "Нет данных"
+msgstr ""
 
 #: [publishbrief]valid_url
 msgid "Please enter a valid URL"
@@ -1635,9 +1621,8 @@ msgid "You can format your content using Markdown"
 msgstr "Вы можете использовать форматирование Markdown"
 
 #: [publishbrief]draft_saved
-#, fuzzy
 msgid "Draft saved"
-msgstr "Настройки сохранены"
+msgstr ""
 
 #: [publishbrief]rich_editor
 msgid "Rich text editor"
@@ -1655,13 +1640,23 @@ msgstr "Больше помощи"
 msgid "Markdown syntax manual"
 msgstr "Помощник по синтаксису Markdown"
 
-#: [rooms]add
+#: [rooms]create
 #, fuzzy
-msgid "Search or join a chatroom"
+msgid "Create a chatroom"
 msgstr "Изменить комнату"
 
 #: [rooms]edit
 msgid "Edit a chatroom"
+msgstr "Изменить комнату"
+
+#: [rooms]join
+#, fuzzy
+msgid "Join a chatroom"
+msgstr "Изменить комнату"
+
+#: [rooms]join_custom
+#, fuzzy
+msgid "Join a custom chatroom"
 msgstr "Изменить комнату"
 
 #: [rooms]empty_text1
@@ -1725,9 +1720,8 @@ msgid "Visitor"
 msgstr ""
 
 #: [rooms]explore_placeholder
-#, fuzzy
 msgid "Name or description"
-msgstr "Нет подписок"
+msgstr ""
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -1754,8 +1748,16 @@ msgid "%s rooms synchronized"
 msgstr ""
 
 #: [chatrooms]users
-msgid "Users in the room"
-msgstr "Пользователи в комнате"
+#, fuzzy
+msgctxt "[chatrooms]users"
+msgid "Users"
+msgstr "Имя пользователя"
+
+#: [chatrooms]members
+#, fuzzy
+msgctxt "[chatrooms]members"
+msgid "Members"
+msgstr "Участники"
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a correct nickname (2 to 40 characters)"
@@ -1778,14 +1780,12 @@ msgid "Chatroom cannot be joined, registration required"
 msgstr "Невозможно войти в комнату, необходима регистрация"
 
 #: [chatrooms]itemnotfound
-#, fuzzy
 msgid "The chatroom doesn’t exists"
-msgstr "Такого сервера не существует"
+msgstr ""
 
 #: [chatrooms]notauthorized
-#, fuzzy
 msgid "A password is required"
-msgstr "Пароль был изменен"
+msgstr ""
 
 #: [bookmarks]updated
 msgid "Bookmarks updated"
@@ -1794,10 +1794,6 @@ msgstr "Закладки обновлены"
 #: [room]anonymous_title
 msgid "Public chatroom"
 msgstr "Публичная комната"
-
-#: [room]no_room
-msgid "Please provide a room address"
-msgstr "Адрес комнаты"
 
 #: [room]anonymous_text1
 msgid "You are currently logged as an anonymous user."
@@ -1810,10 +1806,6 @@ msgstr "Вы можете присоединиться используя сво
 #: [room]anonymous_login
 msgid "Login on %s"
 msgstr "Войти на %s"
-
-#: [room]nick
-msgid "Your nickname"
-msgstr "Ваш псевдоним"
 
 #: [room]invite
 msgid "Invite a contact"
@@ -1843,6 +1835,40 @@ msgstr ""
 msgid "The participants of this chatroom can see each other's profile"
 msgstr "Участники этой чат-комнаты могут видеть профиль  друг друга"
 
+#: [room]group_chat
+#, fuzzy
+msgid "Group Chat"
+msgstr "Группа"
+
+#: [room]group_chat_text
+msgid "Private group chat with invited members"
+msgstr ""
+
+#: [room]group_chat_add
+#, fuzzy
+msgid "Add a new member"
+msgstr "Добавить комментарий"
+
+#: [room]group_chat_members
+#, fuzzy
+msgctxt "[room]group_chat_members"
+msgid "Members"
+msgstr "Участники"
+
+#: [room]channel
+msgid "Channel"
+msgstr ""
+
+#: [room]channel_users
+#, fuzzy
+msgctxt "[room]channel_users"
+msgid "Users"
+msgstr "Имя пользователя"
+
+#: [room]channel_text
+msgid "Public channel that can be publicly discoverable and joineable"
+msgstr ""
+
 #: [room]notify_never
 msgid "Never notify"
 msgstr ""
@@ -1852,9 +1878,8 @@ msgid "Notify when quoted"
 msgstr ""
 
 #: [room]notify_always
-#, fuzzy
 msgid "Always notify"
-msgstr "Всегда"
+msgstr ""
 
 #: [roomsexplore]no_local
 msgid "No chatrooms found localy"
@@ -1905,9 +1930,8 @@ msgid "Send it to a contact"
 msgstr "Отослать контакту"
 
 #: [sendto]chatroom
-#, fuzzy
 msgid "Share it in a chatroom"
-msgstr "Изменить комнату"
+msgstr ""
 
 #: [sendto]shared_with
 msgid "Post shared"
@@ -1918,9 +1942,8 @@ msgid "Post shared with your contact"
 msgstr "Вы поделились постом с вашим контактом"
 
 #: [sendto]shared_chatroom
-#, fuzzy
 msgid "Post shared within the chatroom"
-msgstr "Вы поделились постом с вашим контактом"
+msgstr ""
 
 #: [sendto]more_contacts
 msgid "More contacts"
@@ -2087,9 +2110,8 @@ msgid "…ringing"
 msgstr "…звонит"
 
 #: [visio]declined
-#, fuzzy
 msgid "declined"
-msgstr "не определено"
+msgstr ""
 
 #: [visio]in_call
 msgid "in call"
@@ -2989,14 +3011,11 @@ msgstr "API недоступен, попробуйте позже"
 msgid "Type here"
 msgstr "Введите здесь"
 
-#~ msgid "Adult content blocked"
-#~ msgstr "Контент для взрослых заблокирован"
+#~ msgid "Users in the room"
+#~ msgstr "Пользователи в комнате"
 
-#~ msgid "Some adult content has been blocked on this page. You can enable the display of adult content in the configuration page."
-#~ msgstr "Контент для взрослых заблокирован на этой странице. Вы можете включить отображение оного в настройках."
+#~ msgid "Please provide a room address"
+#~ msgstr "Адрес комнаты"
 
-#~ msgid "Custom CSS URL for your blog"
-#~ msgstr "Указать URL собственного CSS для вашего блога"
-
-#~ msgid "The communities, news feed and profile have been disabled for the moment."
-#~ msgstr "Сообщества, новости и профили на данный момент, отключены."
+#~ msgid "Your nickname"
+#~ msgstr "Ваш псевдоним"

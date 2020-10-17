@@ -99,16 +99,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-07 08:54+0200\n"
-"PO-Revision-Date: 2019-11-02 09:40+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"POT-Creation-Date: 2020-10-17 11:51+0200\n"
+"PO-Revision-Date: 2020-08-07 10:18+0000\n"
+"Last-Translator: Transifex Bot <>\n"
 "Language-Team: Danish (http://www.transifex.com/movim/movim/language/da/)\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 2.4.0\n"
+"X-Generator: Translate Toolkit 2.5.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -271,9 +271,8 @@ msgid "Only suggest chatrooms, Communities and other contents that are available
 msgstr ""
 
 #: [chatonly]title
-#, fuzzy
 msgid "Chat only"
-msgstr "Chat"
+msgstr ""
 
 #: [chatonly]text
 msgid "Disable all the social feature (Communities, Blog…) and keep only the chat ones"
@@ -474,9 +473,8 @@ msgid "Message Published"
 msgstr "Besked publiceret"
 
 #: [message]react
-#, fuzzy
 msgid "Add a reaction"
-msgstr "Tilføj en kommentar"
+msgstr ""
 
 #: [message]retract
 msgid "Retract"
@@ -491,9 +489,8 @@ msgid "Encrypted message"
 msgstr "Krypteret meddelelse"
 
 #: [message]retracted
-#, fuzzy
 msgid "Retracted message"
-msgstr "Krypteret meddelelse"
+msgstr ""
 
 #: [message]composing
 msgid "Composing…"
@@ -590,9 +587,8 @@ msgid "Clear the history"
 msgstr ""
 
 #: [chat]clear_history_text
-#, fuzzy
 msgid "You are going to delete %s messages, are you sure?"
-msgstr "Du er ved at slette dette indlæg, bekræft venligst din handling"
+msgstr ""
 
 #: [chatroom]members
 msgid "Members"
@@ -940,18 +936,16 @@ msgid "Archiving preferences saved"
 msgstr ""
 
 #: [config]notification_title
-#, fuzzy
 msgid "Audio notifications"
-msgstr "Administration"
+msgstr ""
 
 #: [config]notification_call
 msgid "Incoming call"
 msgstr ""
 
 #: [config]notification_chat
-#, fuzzy
 msgid "Incoming message"
-msgstr "Informationsbesked"
+msgstr ""
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -1494,9 +1488,8 @@ msgid "Liked your publication"
 msgstr ""
 
 #: [post]commented
-#, fuzzy
 msgid "Commented"
-msgstr "Kommentarer"
+msgstr ""
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1599,14 +1592,12 @@ msgid "No content to preview"
 msgstr "Intet indhold at forhåndsvise"
 
 #: [publishbrief]title
-#, fuzzy
 msgid "Post title"
-msgstr "Indlæg slettet"
+msgstr ""
 
 #: [publishbrief]content
-#, fuzzy
 msgid "Markdown content"
-msgstr "Intet indhold"
+msgstr ""
 
 #: [publishbrief]valid_url
 msgid "Please enter a valid URL"
@@ -1617,9 +1608,8 @@ msgid "You can format your content using Markdown"
 msgstr "Du kan formatere indhold ved brug af Markdown"
 
 #: [publishbrief]draft_saved
-#, fuzzy
 msgid "Draft saved"
-msgstr "Opsætning gemt"
+msgstr ""
 
 #: [publishbrief]rich_editor
 msgid "Rich text editor"
@@ -1637,12 +1627,22 @@ msgstr "Mere hjælp"
 msgid "Markdown syntax manual"
 msgstr "Markdown-syntaksmanual"
 
-#: [rooms]add
-msgid "Search or join a chatroom"
-msgstr ""
+#: [rooms]create
+#, fuzzy
+msgid "Create a chatroom"
+msgstr "Forbundet til chatrummet"
 
 #: [rooms]edit
 msgid "Edit a chatroom"
+msgstr ""
+
+#: [rooms]join
+#, fuzzy
+msgid "Join a chatroom"
+msgstr "Offentligt chatrum"
+
+#: [rooms]join_custom
+msgid "Join a custom chatroom"
 msgstr ""
 
 #: [rooms]empty_text1
@@ -1706,9 +1706,8 @@ msgid "Visitor"
 msgstr ""
 
 #: [rooms]explore_placeholder
-#, fuzzy
 msgid "Name or description"
-msgstr "Ingen abonnementer"
+msgstr ""
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -1735,8 +1734,16 @@ msgid "%s rooms synchronized"
 msgstr ""
 
 #: [chatrooms]users
-msgid "Users in the room"
-msgstr "Brugere i rummet"
+#, fuzzy
+msgctxt "[chatrooms]users"
+msgid "Users"
+msgstr "Brugernavn"
+
+#: [chatrooms]members
+#, fuzzy
+msgctxt "[chatrooms]members"
+msgid "Members"
+msgstr "Medlemmer"
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a correct nickname (2 to 40 characters)"
@@ -1763,9 +1770,8 @@ msgid "The chatroom doesn’t exists"
 msgstr ""
 
 #: [chatrooms]notauthorized
-#, fuzzy
 msgid "A password is required"
-msgstr "Adgangskoden er opdateret"
+msgstr ""
 
 #: [bookmarks]updated
 msgid "Bookmarks updated"
@@ -1774,10 +1780,6 @@ msgstr "Bogmærker opdateret"
 #: [room]anonymous_title
 msgid "Public chatroom"
 msgstr "Offentligt chatrum"
-
-#: [room]no_room
-msgid "Please provide a room address"
-msgstr "Angiv venligst en adresse til rummet"
 
 #: [room]anonymous_text1
 msgid "You are currently logged as an anonymous user."
@@ -1790,10 +1792,6 @@ msgstr "Du kan deltage med din egen konto, eller du kan oprette en fra logind-si
 #: [room]anonymous_login
 msgid "Login on %s"
 msgstr "Log ind på %s"
-
-#: [room]nick
-msgid "Your nickname"
-msgstr "Dit kælenavn"
 
 #: [room]invite
 msgid "Invite a contact"
@@ -1821,6 +1819,40 @@ msgstr ""
 
 #: [room]nonanonymous_muc_text
 msgid "The participants of this chatroom can see each other's profile"
+msgstr ""
+
+#: [room]group_chat
+#, fuzzy
+msgid "Group Chat"
+msgstr "Gruppe"
+
+#: [room]group_chat_text
+msgid "Private group chat with invited members"
+msgstr ""
+
+#: [room]group_chat_add
+#, fuzzy
+msgid "Add a new member"
+msgstr "Tilføj en kommentar"
+
+#: [room]group_chat_members
+#, fuzzy
+msgctxt "[room]group_chat_members"
+msgid "Members"
+msgstr "Medlemmer"
+
+#: [room]channel
+msgid "Channel"
+msgstr ""
+
+#: [room]channel_users
+#, fuzzy
+msgctxt "[room]channel_users"
+msgid "Users"
+msgstr "Brugernavn"
+
+#: [room]channel_text
+msgid "Public channel that can be publicly discoverable and joineable"
 msgstr ""
 
 #: [room]notify_never
@@ -1896,9 +1928,8 @@ msgid "Post shared with your contact"
 msgstr ""
 
 #: [sendto]shared_chatroom
-#, fuzzy
 msgid "Post shared within the chatroom"
-msgstr "Forbundet til chatrummet"
+msgstr ""
 
 #: [sendto]more_contacts
 msgid "More contacts"
@@ -2065,9 +2096,8 @@ msgid "…ringing"
 msgstr ""
 
 #: [visio]declined
-#, fuzzy
 msgid "declined"
-msgstr "udefineret"
+msgstr ""
 
 #: [visio]in_call
 msgid "in call"
@@ -2967,5 +2997,11 @@ msgstr "API'et kan ikke nåes, prøv igen senere"
 msgid "Type here"
 msgstr "Skriv her"
 
-#~ msgid "Custom CSS URL for your blog"
-#~ msgstr "Brugervalgt CSS URL til din blog"
+#~ msgid "Users in the room"
+#~ msgstr "Brugere i rummet"
+
+#~ msgid "Please provide a room address"
+#~ msgstr "Angiv venligst en adresse til rummet"
+
+#~ msgid "Your nickname"
+#~ msgstr "Dit kælenavn"

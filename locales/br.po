@@ -99,16 +99,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-07 08:54+0200\n"
-"PO-Revision-Date: 2019-11-02 09:40+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"POT-Creation-Date: 2020-10-17 11:51+0200\n"
+"PO-Revision-Date: 2020-08-07 10:18+0000\n"
+"Last-Translator: Transifex Bot <>\n"
 "Language-Team: Breton (http://www.transifex.com/movim/movim/language/br/)\n"
 "Language: br\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=5; plural=((n%10 == 1) && (n%100 != 11) && (n%100 !=71) && (n%100 !=91) ? 0 :(n%10 == 2) && (n%100 != 12) && (n%100 !=72) && (n%100 !=92) ? 1 :(n%10 ==3 || n%10==4 || n%10==9) && (n%100 < 10 || n% 100 > 19) && (n%100 < 70 || n%100 > 79) && (n%100 < 90 || n%100 > 99) ? 2 :(n != 0 && n % 1000000 == 0) ? 3 : 4);\n"
-"X-Generator: Translate Toolkit 2.4.0\n"
+"X-Generator: Translate Toolkit 2.5.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -271,9 +271,8 @@ msgid "Only suggest chatrooms, Communities and other contents that are available
 msgstr ""
 
 #: [chatonly]title
-#, fuzzy
 msgid "Chat only"
-msgstr "Flapva"
+msgstr ""
 
 #: [chatonly]text
 msgid "Disable all the social feature (Communities, Blog…) and keep only the chat ones"
@@ -474,9 +473,8 @@ msgid "Message Published"
 msgstr ""
 
 #: [message]react
-#, fuzzy
 msgid "Add a reaction"
-msgstr "Krouadur ar gont"
+msgstr ""
 
 #: [message]retract
 msgid "Retract"
@@ -1629,12 +1627,20 @@ msgstr ""
 msgid "Markdown syntax manual"
 msgstr ""
 
-#: [rooms]add
-msgid "Search or join a chatroom"
+#: [rooms]create
+msgid "Create a chatroom"
 msgstr ""
 
 #: [rooms]edit
 msgid "Edit a chatroom"
+msgstr ""
+
+#: [rooms]join
+msgid "Join a chatroom"
+msgstr ""
+
+#: [rooms]join_custom
+msgid "Join a custom chatroom"
 msgstr ""
 
 #: [rooms]empty_text1
@@ -1726,8 +1732,15 @@ msgid "%s rooms synchronized"
 msgstr ""
 
 #: [chatrooms]users
-msgid "Users in the room"
+msgctxt "[chatrooms]users"
+msgid "Users"
 msgstr ""
+
+#: [chatrooms]members
+#, fuzzy
+msgctxt "[chatrooms]members"
+msgid "Members"
+msgstr "Du"
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a correct nickname (2 to 40 characters)"
@@ -1754,9 +1767,8 @@ msgid "The chatroom doesn’t exists"
 msgstr ""
 
 #: [chatrooms]notauthorized
-#, fuzzy
 msgid "A password is required"
-msgstr "Hizivaet eo bet ar ger-tremen"
+msgstr ""
 
 #: [bookmarks]updated
 msgid "Bookmarks updated"
@@ -1764,10 +1776,6 @@ msgstr ""
 
 #: [room]anonymous_title
 msgid "Public chatroom"
-msgstr ""
-
-#: [room]no_room
-msgid "Please provide a room address"
 msgstr ""
 
 #: [room]anonymous_text1
@@ -1780,10 +1788,6 @@ msgstr ""
 
 #: [room]anonymous_login
 msgid "Login on %s"
-msgstr ""
-
-#: [room]nick
-msgid "Your nickname"
 msgstr ""
 
 #: [room]invite
@@ -1812,6 +1816,37 @@ msgstr ""
 
 #: [room]nonanonymous_muc_text
 msgid "The participants of this chatroom can see each other's profile"
+msgstr ""
+
+#: [room]group_chat
+msgid "Group Chat"
+msgstr ""
+
+#: [room]group_chat_text
+msgid "Private group chat with invited members"
+msgstr ""
+
+#: [room]group_chat_add
+msgid "Add a new member"
+msgstr ""
+
+#: [room]group_chat_members
+#, fuzzy
+msgctxt "[room]group_chat_members"
+msgid "Members"
+msgstr "Du"
+
+#: [room]channel
+msgid "Channel"
+msgstr ""
+
+#: [room]channel_users
+msgctxt "[room]channel_users"
+msgid "Users"
+msgstr ""
+
+#: [room]channel_text
+msgid "Public channel that can be publicly discoverable and joineable"
 msgstr ""
 
 #: [room]notify_never

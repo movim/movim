@@ -1,6 +1,7 @@
 #
 # Translators:
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2014
+# Krunoslav Tomorad <krunoslav.tomorad@gmail.com>, 2019
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -99,16 +100,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-07 08:54+0200\n"
-"PO-Revision-Date: 2019-11-02 09:40+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"POT-Creation-Date: 2020-10-17 11:51+0200\n"
+"PO-Revision-Date: 2020-08-07 10:18+0000\n"
+"Last-Translator: Transifex Bot <>\n"
 "Language-Team: Croatian (http://www.transifex.com/movim/movim/language/hr/)\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Translate Toolkit 2.4.0\n"
+"X-Generator: Translate Toolkit 2.5.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -116,7 +117,7 @@ msgstr "Hvala"
 
 #: [about]developers
 msgid "Developers"
-msgstr "Programeri"
+msgstr "Razvijatelji"
 
 #: [about]translators
 msgid "Translators"
@@ -124,11 +125,11 @@ msgstr "Prevoditelji"
 
 #: [about]translators_text
 msgid "Thanks to all the translators"
-msgstr ""
+msgstr "Hvala svim prevoditeljima!"
 
 #: [about]software
 msgid "Software"
-msgstr "Softver"
+msgstr "Programska podrška"
 
 #: [about]resources
 msgid "Resources"
@@ -140,135 +141,135 @@ msgstr "API"
 
 #: [about]info
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
-msgstr ""
+msgstr "Movim je komunikacijska platforma temeljena na XMPP-u. Sav projekt, izuzev programa i resursa navedenih u nastavku, je licenciran pod licencijom "
 
 #: [account]title [page]account
 msgid "Account"
-msgstr ""
+msgstr "Račun"
 
 #: [account]password_change_title
 msgid "Change my password"
-msgstr ""
+msgstr "Promijeni moju zaporku"
 
 #: [account]password [credentials]password [form]password [input]password
 msgid "Password"
-msgstr ""
+msgstr "Zaporka"
 
 #: [account]password_confirmation
 msgid "Password confirmation"
-msgstr ""
+msgstr "Potvrda zaporke"
 
 #: [account]password_changed
 msgid "The password has been updated"
-msgstr ""
+msgstr "Zaporka je promijenjena"
 
 #: [account]password_not_valid
 msgid "Please provide a valid password (6 characters minimum)"
-msgstr ""
+msgstr "Molim, upišite valjanu zaporku (ne manje od šest znakova)"
 
 #: [account]password_not_same
 msgid "The provided passwords are not the same"
-msgstr ""
+msgstr "Upisane zaporke se ne podudaraju"
 
 #: [account]delete
 msgid "Delete your account"
-msgstr ""
+msgstr "Obrišite svoj račun"
 
 #: [account]delete_text
 msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts and publications)."
-msgstr ""
+msgstr "Obrisat ćete svoj XMPP račun te sve podatke vezane uza nj (profil, kontakte i objave)."
 
 #: [account]delete_text_confirm
 msgid "Type your full username"
-msgstr ""
+msgstr "Upišite svoje puno korisničko ime"
 
 #: [account]delete_text_error
 msgid "Please provide a valid username."
-msgstr ""
+msgstr "Molim, upišite valjano korisničko ime"
 
 #: [account]gateway_title
 msgid "Gateways"
-msgstr ""
+msgstr "Pristupnici"
 
 #: [account]clear
 msgid "Leave this instance"
-msgstr ""
+msgstr "Napusti ovu instanciju"
 
 #: [account]clear_text
 msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
-msgstr ""
+msgstr "Obrisat ćete sve podatke povezane s vašim računom na ovoj instanciji Movima (profil, kontakte i objave)."
 
 #: [account]clear_text_confirm
 msgid "This action will not delete your account but will disconnect you from this instance."
-msgstr ""
+msgstr "Ovime ćete se odspojiti s ove instancije Movima, ali nećete obrisati svoj račun."
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
-msgstr ""
+msgstr "Izradi novi račun"
 
 #: [create]notfound
 msgid "No account creation form found on the server"
-msgstr ""
+msgstr "Obrazac za izradu računa nije pronađen na poslužitelju"
 
 #: [create]server_on
 msgid "on"
-msgstr ""
+msgstr "u"
 
 #: [create]successfull
 msgid "Your acccount has been successfully registered"
-msgstr ""
+msgstr "Vaš je račun uspješno izrađen"
 
 #: [create]loading
 msgid "Loading"
-msgstr ""
+msgstr "Učitavam"
 
 #: [create]placeholder
 msgid "…and start playing"
-msgstr ""
+msgstr "i pokreni reprodukciju"
 
 #: [error]not_acceptable
 msgid "Not Acceptable"
-msgstr ""
+msgstr "Nije prihvatljivo"
 
 #: [error]service_unavailable
 msgid "The registration system of this server is currently unavailable"
-msgstr ""
+msgstr "Sustav za izradu računa na ovome poslužitelju trenutno nije dostupan"
 
 #: [error]forbidden
 msgid "Registration forbidden"
-msgstr ""
+msgstr "Prijava je odbijena"
 
 #: [adhoc]title
 msgid "Actions"
-msgstr ""
+msgstr "Radnje"
 
 #: [adhoc]completed
 msgid "Action completed"
-msgstr ""
+msgstr "Radnja je dovršena"
 
 #: [admin]general
 msgid "General Settings"
-msgstr ""
+msgstr "Općenite postavke"
 
 #: [general]theme
 msgid "Theme"
-msgstr ""
+msgstr "Tema"
 
 #: [general]language
 msgid "Default language"
-msgstr ""
+msgstr "Zadani jezik"
 
 #: [general]log_verbosity
 msgid "Log verbosity"
-msgstr ""
+msgstr "Opširnost zapisa sustava"
 
 #: [restrictsuggestions]title
 msgid "Restrict suggestions"
-msgstr ""
+msgstr "Ograniči prijedloge"
 
 #: [restrictsuggestions]text
 msgid "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
-msgstr ""
+msgstr "Predlaži samo sobe za čavrljanje, zajednice te ostali sadržaj koji je dostupan na korisnikovom poslužitelju za XMPP i na s njime povezanim uslugama"
 
 #: [chatonly]title
 msgid "Chat only"
@@ -280,40 +281,40 @@ msgstr ""
 
 #: [credentials]title
 msgid "Administration Credential"
-msgstr ""
+msgstr "Pristupni podaci za administraciju"
 
 #: [credentials]username [input]username
 msgid "Username"
-msgstr ""
+msgstr "Korisničko ime"
 
 #: [credentials]re_password
 msgid "Retype password"
-msgstr ""
+msgstr "Ponovite zaporku"
 
 #: [whitelist]title
 msgid "Whitelisted XMPP Servers"
-msgstr ""
+msgstr "Dopušteni poslužitelji za XMPP"
 
 #: [whitelist]info1
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
-msgstr ""
+msgstr "Ako želite odrediti popis dopuštenih poslužitelja na vašoj Movim instanciji te samim tim zabraniti veze prema svima ostalim, molim upišite njihove domene ovdje (odvojene zarezom, npr. movim.eu,jabber.fr)"
 
 #: [whitelist]info2
 msgid "Leave this field blank if you allow the access to all the XMPP accounts."
-msgstr ""
+msgstr "Ostavite ovo polje praznim želite li dopustiti pristup svim poslužiteljima za XMPP."
 
 #: [whitelist]label
 msgid "List of whitelisted XMPP servers"
-msgstr ""
+msgstr "Popis dopuštenih poslužitelja za XMPP"
 
 #: [information]title
 msgctxt "[information]title"
 msgid "Information Message"
-msgstr ""
+msgstr "Pozdravna poruka"
 
 #: [information]description [communityconfig]description
 msgid "Description"
-msgstr ""
+msgstr "Opis"
 
 #: [information]description_placeholder
 msgid "General description of the instance"
@@ -321,156 +322,156 @@ msgstr ""
 
 #: [information]info1
 msgid "This message will be displayed on the login page. It can be used to link the Terms and Conditions of your Movim instance for example."
-msgstr ""
+msgstr "Ova će se poruka prikazati na prijavnoj stranici. Između ostalog, možete ju koristiti kako biste postavili poveznicu na Uvjete korištenja koji vrijede na vašoj instanciji Movima."
 
 #: [information]info2
 msgid "Leave this field blank if you don’t want to show any message."
-msgstr ""
+msgstr "Ostavite ovo polje praznim ukoliko ne želite prikazati nikakvu poruku."
 
 #: [information]label
 msgctxt "[information]label"
 msgid "Information Message"
-msgstr ""
+msgstr "Pozdravna poruka"
 
 #: [xmpp]title
 msgid "Default XMPP server"
-msgstr ""
+msgstr "Zadani poslužitelj za XMPP"
 
 #: [xmpp]domain
 msgid "Main XMPP server domain"
-msgstr ""
+msgstr "Glavna domena poslužitelja za XMPP"
 
 #: [xmpp]description
 msgid "Main XMPP server description"
-msgstr ""
+msgstr "Opis glavnog poslužitelja za XMPP"
 
 #: [xmpp]country
 msgid "Main XMPP server country"
-msgstr ""
+msgstr "Država u kojoj se nalazi glavni poslužitelj za XMPP"
 
 #: [xmpp]country_pick
 msgid "Pick a country in the list"
-msgstr ""
+msgstr "Odaberite državu na popisu"
 
 #: [log]empty
 msgid "Empty"
-msgstr ""
+msgstr "Prazno"
 
 #: [log]syslog
 msgid "Syslog"
-msgstr ""
+msgstr "Zapisnik sustava"
 
 #: [log]syslog_files
 msgid "Syslog and files"
-msgstr ""
+msgstr "Zapisnik sustava i datoteke"
 
 #: [adminsessions]title
 msgid "Sessions"
-msgstr ""
+msgstr "Sjednice"
 
 #: [admin]compatibility
 msgid "General Overview"
-msgstr ""
+msgstr "Općeniti pregled"
 
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim’s %s directory"
-msgstr ""
+msgstr "Prava na čitanje i pisanje za internetski poslužitelj u mapi Movima %s"
 
 #: [compatibility]websocket
 msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
-msgstr ""
+msgstr "Pogreška veze WebSocketa, provjerite je li Movimov servis pokrenut i je li dostupan"
 
 #: [schema]browser
 msgid "Browser"
-msgstr ""
+msgstr "Preglednik"
 
 #: [schema]movim
 msgid "Movim Core"
-msgstr ""
+msgstr "Jezgra Movima"
 
 #: [schema]daemon
 msgid "Movim Daemon"
-msgstr ""
+msgstr "Servis Movima"
 
 #: [schema]database
 msgid "Database"
-msgstr ""
+msgstr "Baza podataka"
 
 #: [schema]xmpp
 msgid "XMPP"
-msgstr ""
+msgstr "XMPP"
 
 #: [api]info
 msgid "Here you can register your pod on the official %sMovim API%s"
-msgstr ""
+msgstr "Ovdje možete prijaviti svoju instanciju Movima na službenom %sMovim API-ju%s"
 
 #: [api]register
 msgid "Your pod is not registered on the API"
-msgstr ""
+msgstr "Vaša instancija Movima nije prijavljena na API-ju"
 
 #: [api]registered
 msgid "Your pod is registered on the API"
-msgstr ""
+msgstr "Vaša instancija Movima je prijavljena na API-ju"
 
 #: [api]wait
 msgid "Your pod is not yet validated"
-msgstr ""
+msgstr "Vaša instancija Movima još nije ovjerena"
 
 #: [api]validated
 msgid "Your pod is validated"
-msgstr ""
+msgstr "Vaše je instancija Movima ovjerena"
 
 #: [api]unregister
 msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
-msgstr ""
+msgstr "Zatražili ste uklanjanje vaše instancije Movima s API-ja. Ovaj će zahtjev biti proveden unutar nekoliko sati."
 
 #: [api]conf_updated [config]updated
 msgid "Configuration updated"
-msgstr ""
+msgstr "Konfiguracija je obnovljena"
 
 #: [avatar]file
 msgid "File"
-msgstr ""
+msgstr "Datoteka"
 
 #: [avatar]use_it
 msgid "Use it"
-msgstr ""
+msgstr "Upotrijebi je"
 
 #: [avatar]webcam
 msgid "Webcam"
-msgstr ""
+msgstr "Internetska kamera"
 
 #: [avatar]cheese
 msgid "Cheese!"
-msgstr ""
+msgstr "Smiješak!"
 
 #: [avatar]snapshot
 msgid "Take a webcam snapshot"
-msgstr ""
+msgstr "Okini sliku s kamerom"
 
 #: [avatar]updated
 msgid "Avatar Updated"
-msgstr ""
+msgstr "Profilna slika je ažurirana"
 
 #: [avatar]not_updated
 msgid "Avatar Not Updated"
-msgstr ""
+msgstr "Profilna slika nije ažurirana"
 
 #: [avatar]missing
 msgid "No avatar defined yet"
-msgstr ""
+msgstr "Profilna slika još nije postavljena"
 
 #: [blog]title [feed]title
 msgid "%s’s feed"
-msgstr ""
+msgstr "Objave korisnika %s"
 
 #: [blog]private
 msgid "This content is private, please login to see it"
-msgstr ""
+msgstr "Ovaj sadržaj je privatan, molim prijavite se kako biste ga vidjeli"
 
 #: [message]published
 msgid "Message Published"
-msgstr ""
+msgstr "Poruka je objavljena"
 
 #: [message]react
 msgid "Add a reaction"
@@ -482,11 +483,11 @@ msgstr ""
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
-msgstr ""
+msgstr "Vaša se poruka nije mogla poslati, molim pokušajte kasnije"
 
 #: [message]encrypted
 msgid "Encrypted message"
-msgstr ""
+msgstr "Šifrirana poruka"
 
 #: [message]retracted
 msgid "Retracted message"
@@ -494,63 +495,63 @@ msgstr ""
 
 #: [message]composing
 msgid "Composing…"
-msgstr ""
+msgstr "Piše…"
 
 #: [message]paused
 msgid "Paused…"
-msgstr ""
+msgstr "Zaustavljeno…"
 
 #: [message]gone
 msgid "Contact gone"
-msgstr ""
+msgstr "Kontakt je otišao"
 
 #: [message]history
 msgid "%s messages retrieved"
-msgstr ""
+msgstr "%s poruke dohvaćene"
 
 #: [message]edit_help
 msgid "↑ to edit your previous message"
-msgstr ""
+msgstr "Pritisnite ↑ da biste uredili svoju prethodnu poruku"
 
 #: [message]emoji_help
 msgid ":shortcut: to insert an emoji"
-msgstr ""
+msgstr "Upišite :prečac: za unos emojija"
 
 #: [chat]attention
 msgid "%s needs your attention"
-msgstr ""
+msgstr "%s zahtijeva vašu pažnju"
 
 #: [chat]placeholder
 msgid "Your message here…"
-msgstr ""
+msgstr "Upišite svoju poruku ovdje…"
 
 #: [chat]smileys
 msgid "Smileys"
-msgstr ""
+msgstr "Smješci"
 
 #: [chat]frequent
 msgid "Frequent contacts"
-msgstr ""
+msgstr "Česti kontakti"
 
 #: [chat]new_title
 msgid "Nothing here yet…"
-msgstr ""
+msgstr "Ovdje nema još ničega…"
 
 #: [chat]new_text
 msgid "Don’t be shy, send a first message to start the discussion"
-msgstr ""
+msgstr "Nemojte se sramiti, pošaljite prvu poruku da biste otpočeli razgovor"
 
 #: [chat]invitation
 msgid "You received an invitation to join a chatroom"
-msgstr ""
+msgstr "Pozvani ste u sobu za razgovor"
 
 #: [chat]invitation_join
 msgid "Join %s"
-msgstr ""
+msgstr "Pridružite se u %s"
 
 #: [chat]profile
 msgid "See the profile"
-msgstr ""
+msgstr "Pogledajte profil"
 
 #: [chat]clear
 msgctxt "[chat]clear"
@@ -559,23 +560,23 @@ msgstr ""
 
 #: [chat]edit_previous
 msgid "Edit last message"
-msgstr ""
+msgstr "Uredite posljednju poruku"
 
 #: [chat]report_abuse
 msgid "Report abuse"
-msgstr ""
+msgstr "Prijavite zloporabu"
 
 #: [chat]jingle_start
 msgid "Call started"
-msgstr ""
+msgstr "Poziv je započet"
 
 #: [chat]jingle_end
 msgid "Call ended"
-msgstr ""
+msgstr "Poziv je završen"
 
 #: [chat]publish_error
 msgid "An error occured when sending the message"
-msgstr ""
+msgstr "Došlo je do pogreške prilikom slanja poruke"
 
 #: [chat]mam_retrieval
 msgid "Synchronizing the history, please wait…"
@@ -592,51 +593,51 @@ msgstr ""
 
 #: [chatroom]members
 msgid "Members"
-msgstr ""
+msgstr "Članovi"
 
 #: [chatroom]connected [chatrooms]connected
 msgid "Connected to the chatroom"
-msgstr ""
+msgstr "Povezani ste u sobu za razgovor"
 
 #: [chatroom]disconnected [chatrooms]disconnected
 msgid "Disconnected from the chatroom"
-msgstr ""
+msgstr "Odspojili ste se od sobe za razgovor"
 
 #: [chatroom]config [communityaffiliation]configuration [page]configuration
 msgid "Configuration"
-msgstr ""
+msgstr "Postavke"
 
 #: [chatroom]config_saved [communityaffiliation]config_saved
 msgid "Configuration saved"
-msgstr ""
+msgstr "Postavke su spremljene"
 
 #: [chatroom]subject
 msgid "Subject"
-msgstr ""
+msgstr "Naslov"
 
 #: [chatroom]subject_changed
 msgid "Subject changed"
-msgstr ""
+msgstr "Naslov je spremljen"
 
 #: [chatroom]administration [page]administration
 msgid "Administration"
-msgstr ""
+msgstr "Upravljanje"
 
 #: [chats]empty_title
 msgid "No chats yet…"
-msgstr ""
+msgstr "Još nema poruka…"
 
 #: [chats]empty
 msgid "Start a new conversation by clicking on the %s button."
-msgstr ""
+msgstr "Započnite novi razgovor pritiskom na gumb %s."
 
 #: [chats]add
 msgid "Chat with a contact"
-msgstr ""
+msgstr "Pišite kontaktu"
 
 #: [chats]me
 msgid "Me"
-msgstr ""
+msgstr "Ja"
 
 #: [chats]picture
 msgid "Picture"
@@ -644,152 +645,152 @@ msgstr ""
 
 #: [button]chat
 msgid "Chat"
-msgstr ""
+msgstr "Razgovor"
 
 #: [button]new
 msgid "New conversation"
-msgstr ""
+msgstr "Novi razgovor"
 
 #: [communities]empty_text
 msgid "Discover, follow and share"
-msgstr ""
+msgstr "Istraži, zaprati i podijeli"
 
 #: [communities]counter
 msgid "%s communities"
-msgstr ""
+msgstr "%s zajednica"
 
 #: [communities]search_server
 msgid "Search for a new server"
-msgstr ""
+msgstr "Potraži novi poslužitelj"
 
 #: [communities]servers
 msgid "Communities servers"
-msgstr ""
+msgstr "Poslužitelji zajednice"
 
 #: [communities]disco
 msgid "Communities server discovered"
-msgstr ""
+msgstr "Poslužitelj zajednice je otkriven"
 
 #: [communities]disco_error
 msgid "This server doesn’t exists"
-msgstr ""
+msgstr "Ovaj poslužitelj ne postoji"
 
 #: [communities]interesting
 msgid "Communities you might like"
-msgstr ""
+msgstr "Zajednice koje bi vam se mogle svidjeti"
 
 #: [communitiesserver]created
 msgid "Community created successfully"
-msgstr ""
+msgstr "Zajednica je uspješno pokrenuta"
 
 #: [communitiesserver]empty_server
 msgid "There is no Communities yet on this server."
-msgstr ""
+msgstr "Na ovom poslužitelju još nema pokrenutih zajednica"
 
 #: [communitiesserver]add
 msgid "Create a new community on %s"
-msgstr ""
+msgstr "Pokrenite novu zajednicu na %s"
 
 #: [communitiesserver]name
 msgid "Community name"
-msgstr ""
+msgstr "Naziv zajednice"
 
 #: [communitiesserver]name_example
 msgid "My Little Pony - Fan Club"
-msgstr ""
+msgstr "Klub ljubitelja ponija"
 
 #: [communitiesserver]name_error
 msgid "Please provide a valid community name (4 characters minimum)"
-msgstr ""
+msgstr "Molim upišite valjan naziv zajednice (ne manje od četiri znaka)"
 
 #: [communitiesserver]no_creation
 msgid "You cannot create a new community on this server"
-msgstr ""
+msgstr "Ne možete pokrenuti novu zajednicu na ovom poslužitelju"
 
 #: [communitiesservers]empty_title
 msgid "No Communities Servers yet…"
-msgstr ""
+msgstr "Još nema poslužitelja za zajednice…"
 
 #: [communitiesservers]empty_text
 msgid "It seems that we can't find any communities for the moment"
-msgstr ""
+msgstr "Trenutno ne možemo pronaći nijednu zajednicu"
 
 #: [communityaffiliation]subscriptions
 msgid "Subscriptions"
-msgstr ""
+msgstr "Pretplate"
 
 #: [communityaffiliation]deleted
 msgid "Community deleted successfully"
-msgstr ""
+msgstr "Zajednica je uspješno zatvorena"
 
 #: [communityaffiliation]delete_title
 msgid "Delete the community"
-msgstr ""
+msgstr "Zatvori zajednicu"
 
 #: [communityaffiliation]delete_text
 msgid "You are going to delete the following community. Please confirm your action."
-msgstr ""
+msgstr "Zatvorit ćete sljedeću zajednicu. Molim potvrditi da to želite napraviti."
 
 #: [communityaffiliation]delete_clean_text
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
-msgstr ""
+msgstr "Čini se je zajednica više ne postoji. Želite li ju maknuti s popisa vaših pretplata?"
 
 #: [communityaffiliation]config_error
 msgid "Error during the application of the node configuration"
-msgstr ""
+msgstr "Došlo je do pogreške kod primjene postavki čvora."
 
 #: [communityaffiliation]owners
 msgid "Owners"
-msgstr ""
+msgstr "Vlasnici"
 
 #: [communityaffiliation]publishers
 #: [communityconfig]publish_model_publishers_title
 msgid "Publishers"
-msgstr ""
+msgstr "Izdavači"
 
 #: [communityaffiliation]roles
 msgid "Roles"
-msgstr ""
+msgstr "Uloge"
 
 #: [communityaffiliation]role_set
 msgid "Role correctly set"
-msgstr ""
+msgstr "Uloga je ispravno postavljena"
 
 #: [communityconfig]publication
 msgid "Publication"
-msgstr ""
+msgstr "Izdanje"
 
 #: [communityconfig]publish_model_open_title
 msgid "Open"
-msgstr ""
+msgstr "Otvoreni"
 
 #: [communityconfig]publish_model_open_text
 msgid "Everyone can publish"
-msgstr ""
+msgstr "Svatko može objavljivati"
 
 #: [communityconfig]publish_model_publishers_text
 msgid "The publishers can publish"
-msgstr ""
+msgstr "Izdavači mogu objavljivati"
 
 #: [communityconfig]publish_model_subscribers_title
 msgid "Subscribers"
-msgstr ""
+msgstr "Pretplatnici"
 
 #: [communityconfig]publish_model_subscribers_text
 msgid "The subscribers can publish"
-msgstr ""
+msgstr "Pretplatnici mogu objavljivati"
 
 #: [communitydata]sub
 msgid "%s subscribers"
-msgstr ""
+msgstr "%s pretplatnika"
 
 #: [communitydata]num
 msgid "%s posts"
-msgstr ""
+msgstr "%s objava"
 
 #: [communitydata]public
 msgid "Public page"
-msgstr ""
+msgstr "Javna stranica"
 
 #: [communitydata]publishmodel_publishers
 msgid "Only publishers can publish"
@@ -801,107 +802,107 @@ msgstr ""
 
 #: [communityheader]subscribe
 msgid "Subscribe"
-msgstr ""
+msgstr "Pretplati"
 
 #: [communityheader]unsubscribe
 msgid "Unsubscribe"
-msgstr ""
+msgstr "Otkaži pretplatu"
 
 #: [communityheader]subscribed
 msgid "Subscribed"
-msgstr ""
+msgstr "Pretplatili ste se"
 
 #: [communityheader]unsubscribed
 msgid "Unsubscribed"
-msgstr ""
+msgstr "Otkazali ste pretplatu"
 
 #: [communityheader]subscription_unsupported
 msgid "The subscriptions are disabled for this community"
-msgstr ""
+msgstr "Za ovu su zajednicu pretplate onemogućene"
 
 #: [communityheader]label_label
 msgid "Give a label for this community"
-msgstr ""
+msgstr "Dodajte opis ovoj zajednici"
 
 #: [communityheader]label_placeholder
 msgid "My Community Name"
-msgstr ""
+msgstr "Naziv zajednice"
 
 #: [communityheader]share_subscription
 msgid "Share this subscription publicly"
-msgstr ""
+msgstr "Javno podijelite ovu pretplatu"
 
 #: [communityheader]share_subscription_text
 msgid "It will appear on your profile"
-msgstr ""
+msgstr "Vidjet će se na vašem profilu"
 
 #: [communityheader]unsubscribe_text
 msgid "You are going to unsubscribe from this community"
-msgstr ""
+msgstr "Otkazat ćete pretplatu na ovu zajednicu"
 
 #: [communityheader]sure [delete]title
 msgid "Are you sure?"
-msgstr ""
+msgstr "Jeste li sigurni?"
 
 #: [communitysubscriptions]subscriptions
 msgid "My Subscriptions"
-msgstr ""
+msgstr "Moje pretplate"
 
 #: [communitysubscriptions]empty_title
 msgid "Hello"
-msgstr ""
+msgstr "Bok"
 
 #: [communitysubscriptions]empty_text1
 msgid "Here you will be able to manage all your subscriptions."
-msgstr ""
+msgstr "Ovdje možete upravljati svojim pretplatama"
 
 #: [communitysubscriptions]empty_text2
 msgid "You don’t have any group subscriptions yet."
-msgstr ""
+msgstr "Još nemate pretplata na grupe"
 
 #: [config]general
 msgid "General"
-msgstr ""
+msgstr "Općenito"
 
 #: [config]language
 msgid "Language"
-msgstr ""
+msgstr "Jezik"
 
 #: [config]roster
 msgid "Roster display"
-msgstr ""
+msgstr "Prikaz radne liste"
 
 #: [config]roster_show
 msgid "Show the offline contacts"
-msgstr ""
+msgstr "Prikaži izvanmrežne kontakte"
 
 #: [config]roster_hide
 msgid "Hide the offline contacts"
-msgstr ""
+msgstr "Sakrij izvanmrežne kontakte"
 
 #: [config]appearence
 msgid "Appearence"
-msgstr ""
+msgstr "Izgled"
 
 #: [config]not_valid
 msgid "Configuration invalid"
-msgstr ""
+msgstr "Neispravne postavke"
 
 #: [config]advanced
 msgid "Advanced Configuration"
-msgstr ""
+msgstr "Napredne postavke"
 
 #: [config]nsfw
 msgid "Display adult content"
-msgstr ""
+msgstr "Prikaži sadržaj za odrasle"
 
 #: [config]nsfw_text
 msgid "Will allow you to read the posts tagged with the #nsfw tag"
-msgstr ""
+msgstr "Dopustit će vam pregledavanje objava koje su označene oznakom #nsfw"
 
 #: [config]night_mode
 msgid "Night Mode"
-msgstr ""
+msgstr "Noćni način"
 
 #: [config]night_mode_text
 msgid "Use dark colors to rest your eyes"
@@ -1627,12 +1628,22 @@ msgstr ""
 msgid "Markdown syntax manual"
 msgstr ""
 
-#: [rooms]add
-msgid "Search or join a chatroom"
-msgstr ""
+#: [rooms]create
+#, fuzzy
+msgid "Create a chatroom"
+msgstr "Povezani ste u sobu za razgovor"
 
 #: [rooms]edit
 msgid "Edit a chatroom"
+msgstr ""
+
+#: [rooms]join
+#, fuzzy
+msgid "Join a chatroom"
+msgstr "Povezani ste u sobu za razgovor"
+
+#: [rooms]join_custom
+msgid "Join a custom chatroom"
 msgstr ""
 
 #: [rooms]empty_text1
@@ -1724,8 +1735,16 @@ msgid "%s rooms synchronized"
 msgstr ""
 
 #: [chatrooms]users
-msgid "Users in the room"
-msgstr ""
+#, fuzzy
+msgctxt "[chatrooms]users"
+msgid "Users"
+msgstr "Korisničko ime"
+
+#: [chatrooms]members
+#, fuzzy
+msgctxt "[chatrooms]members"
+msgid "Members"
+msgstr "Članovi"
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a correct nickname (2 to 40 characters)"
@@ -1763,10 +1782,6 @@ msgstr ""
 msgid "Public chatroom"
 msgstr ""
 
-#: [room]no_room
-msgid "Please provide a room address"
-msgstr ""
-
 #: [room]anonymous_text1
 msgid "You are currently logged as an anonymous user."
 msgstr ""
@@ -1777,10 +1792,6 @@ msgstr ""
 
 #: [room]anonymous_login
 msgid "Login on %s"
-msgstr ""
-
-#: [room]nick
-msgid "Your nickname"
 msgstr ""
 
 #: [room]invite
@@ -1809,6 +1820,38 @@ msgstr ""
 
 #: [room]nonanonymous_muc_text
 msgid "The participants of this chatroom can see each other's profile"
+msgstr ""
+
+#: [room]group_chat
+msgid "Group Chat"
+msgstr ""
+
+#: [room]group_chat_text
+msgid "Private group chat with invited members"
+msgstr ""
+
+#: [room]group_chat_add
+msgid "Add a new member"
+msgstr ""
+
+#: [room]group_chat_members
+#, fuzzy
+msgctxt "[room]group_chat_members"
+msgid "Members"
+msgstr "Članovi"
+
+#: [room]channel
+msgid "Channel"
+msgstr ""
+
+#: [room]channel_users
+#, fuzzy
+msgctxt "[room]channel_users"
+msgid "Users"
+msgstr "Korisničko ime"
+
+#: [room]channel_text
+msgid "Public channel that can be publicly discoverable and joineable"
 msgstr ""
 
 #: [room]notify_never

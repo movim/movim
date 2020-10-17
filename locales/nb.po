@@ -4,7 +4,7 @@
 # Dominik George <nik@naturalnet.de>, 2017-2018
 # pere <pere-transifex@hungry.com>, 2017
 # Ruben Solvang <rsolvang@gmail.com>, 2016-2017
-# tyler moss <inactive+protonbeta@transifex.com>, 2016
+# 1b09ca809bd1d57b09c4d19f89cfcafa_19f763a <9a173cebe69c399e2bc3c9d455cdd880_367693>, 2016
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -103,16 +103,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-07 08:54+0200\n"
-"PO-Revision-Date: 2019-11-02 09:40+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"POT-Creation-Date: 2020-10-17 11:51+0200\n"
+"PO-Revision-Date: 2020-08-07 10:18+0000\n"
+"Last-Translator: Transifex Bot <>\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://www.transifex.com/movim/movim/language/nb_NO/)\n"
 "Language: nb_NO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 2.4.0\n"
+"X-Generator: Translate Toolkit 2.5.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -275,9 +275,8 @@ msgid "Only suggest chatrooms, Communities and other contents that are available
 msgstr ""
 
 #: [chatonly]title
-#, fuzzy
 msgid "Chat only"
-msgstr "Samtale"
+msgstr ""
 
 #: [chatonly]text
 msgid "Disable all the social feature (Communities, Blog…) and keep only the chat ones"
@@ -478,9 +477,8 @@ msgid "Message Published"
 msgstr "Melding publisert"
 
 #: [message]react
-#, fuzzy
 msgid "Add a reaction"
-msgstr "Legg til kontakt"
+msgstr ""
 
 #: [message]retract
 msgid "Retract"
@@ -495,9 +493,8 @@ msgid "Encrypted message"
 msgstr "Kryptert melding"
 
 #: [message]retracted
-#, fuzzy
 msgid "Retracted message"
-msgstr "Kryptert melding"
+msgstr ""
 
 #: [message]composing
 msgid "Composing…"
@@ -560,10 +557,9 @@ msgid "See the profile"
 msgstr "Se profilen"
 
 #: [chat]clear
-#, fuzzy
 msgctxt "[chat]clear"
 msgid "Clear the history"
-msgstr "Nullstill historien"
+msgstr ""
 
 #: [chat]edit_previous
 msgid "Edit last message"
@@ -590,15 +586,13 @@ msgid "Synchronizing the history, please wait…"
 msgstr ""
 
 #: [chat]clear_history
-#, fuzzy
 msgctxt "[chat]clear_history"
 msgid "Clear the history"
-msgstr "Nullstill historien"
+msgstr ""
 
 #: [chat]clear_history_text
-#, fuzzy
 msgid "You are going to delete %s messages, are you sure?"
-msgstr "Du er i ferd med å slette innlegget, bekreft handlingen"
+msgstr ""
 
 #: [chatroom]members
 msgid "Members"
@@ -802,14 +796,12 @@ msgid "Public page"
 msgstr "Offentlig side"
 
 #: [communitydata]publishmodel_publishers
-#, fuzzy
 msgid "Only publishers can publish"
-msgstr "Utgivere kan publisere"
+msgstr ""
 
 #: [communitydata]publishmodel_subscribers
-#, fuzzy
 msgid "Only subscribers can publish"
-msgstr "Abonnentene kan publisere"
+msgstr ""
 
 #: [communityheader]subscribe
 msgid "Subscribe"
@@ -948,19 +940,16 @@ msgid "Archiving preferences saved"
 msgstr "Arkivinstillinger lagret"
 
 #: [config]notification_title
-#, fuzzy
 msgid "Audio notifications"
-msgstr "Ingen nye varsler"
+msgstr ""
 
 #: [config]notification_call
-#, fuzzy
 msgid "Incoming call"
-msgstr "i en samtale"
+msgstr ""
 
 #: [config]notification_chat
-#, fuzzy
 msgid "Incoming message"
-msgstr "Informasjonsmelding"
+msgstr ""
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -1503,9 +1492,8 @@ msgid "Liked your publication"
 msgstr ""
 
 #: [post]commented
-#, fuzzy
 msgid "Commented"
-msgstr "Kommentarer"
+msgstr ""
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1608,14 +1596,12 @@ msgid "No content to preview"
 msgstr "Ingen innhold å forhåndsvise"
 
 #: [publishbrief]title
-#, fuzzy
 msgid "Post title"
-msgstr "Innlegg slettet"
+msgstr ""
 
 #: [publishbrief]content
-#, fuzzy
 msgid "Markdown content"
-msgstr "Ingen innhold"
+msgstr ""
 
 #: [publishbrief]valid_url
 msgid "Please enter a valid URL"
@@ -1626,9 +1612,8 @@ msgid "You can format your content using Markdown"
 msgstr "Du kan formatere tekst og innhold med Markdown-syntaks"
 
 #: [publishbrief]draft_saved
-#, fuzzy
 msgid "Draft saved"
-msgstr "Oppsett lagret"
+msgstr ""
 
 #: [publishbrief]rich_editor
 msgid "Rich text editor"
@@ -1646,13 +1631,23 @@ msgstr "Mer hjelp"
 msgid "Markdown syntax manual"
 msgstr "Bruksanvisning for tekstformatering"
 
-#: [rooms]add
+#: [rooms]create
 #, fuzzy
-msgid "Search or join a chatroom"
+msgid "Create a chatroom"
 msgstr "Rediger et samtalerom"
 
 #: [rooms]edit
 msgid "Edit a chatroom"
+msgstr "Rediger et samtalerom"
+
+#: [rooms]join
+#, fuzzy
+msgid "Join a chatroom"
+msgstr "Rediger et samtalerom"
+
+#: [rooms]join_custom
+#, fuzzy
+msgid "Join a custom chatroom"
 msgstr "Rediger et samtalerom"
 
 #: [rooms]empty_text1
@@ -1716,9 +1711,8 @@ msgid "Visitor"
 msgstr ""
 
 #: [rooms]explore_placeholder
-#, fuzzy
 msgid "Name or description"
-msgstr "Ingen abonnement"
+msgstr ""
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -1745,8 +1739,16 @@ msgid "%s rooms synchronized"
 msgstr ""
 
 #: [chatrooms]users
-msgid "Users in the room"
-msgstr "Brukere i rommet"
+#, fuzzy
+msgctxt "[chatrooms]users"
+msgid "Users"
+msgstr "Brukernavn"
+
+#: [chatrooms]members
+#, fuzzy
+msgctxt "[chatrooms]members"
+msgid "Members"
+msgstr "Medlemer"
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a correct nickname (2 to 40 characters)"
@@ -1769,14 +1771,12 @@ msgid "Chatroom cannot be joined, registration required"
 msgstr "Kunne ikke bli med i samtalerommet, registrering er påkrevd."
 
 #: [chatrooms]itemnotfound
-#, fuzzy
 msgid "The chatroom doesn’t exists"
-msgstr "Denne tjeneren eksisterer ikke"
+msgstr ""
 
 #: [chatrooms]notauthorized
-#, fuzzy
 msgid "A password is required"
-msgstr "Passordet er oppdatert"
+msgstr ""
 
 #: [bookmarks]updated
 msgid "Bookmarks updated"
@@ -1785,10 +1785,6 @@ msgstr "Bokmerke oppdatert"
 #: [room]anonymous_title
 msgid "Public chatroom"
 msgstr "Offentlig samtalerom"
-
-#: [room]no_room
-msgid "Please provide a room address"
-msgstr "Oppgi samtalerommets adresse"
 
 #: [room]anonymous_text1
 msgid "You are currently logged as an anonymous user."
@@ -1801,10 +1797,6 @@ msgstr "Du kan bli med ved å bruke din egen konto eller opprette en ny på pål
 #: [room]anonymous_login
 msgid "Login on %s"
 msgstr "Logg inn på %s"
-
-#: [room]nick
-msgid "Your nickname"
-msgstr "Ditt kallenavn"
 
 #: [room]invite
 msgid "Invite a contact"
@@ -1834,6 +1826,40 @@ msgstr ""
 msgid "The participants of this chatroom can see each other's profile"
 msgstr ""
 
+#: [room]group_chat
+#, fuzzy
+msgid "Group Chat"
+msgstr "Gruppe"
+
+#: [room]group_chat_text
+msgid "Private group chat with invited members"
+msgstr ""
+
+#: [room]group_chat_add
+#, fuzzy
+msgid "Add a new member"
+msgstr "Legg til kommentar"
+
+#: [room]group_chat_members
+#, fuzzy
+msgctxt "[room]group_chat_members"
+msgid "Members"
+msgstr "Medlemer"
+
+#: [room]channel
+msgid "Channel"
+msgstr ""
+
+#: [room]channel_users
+#, fuzzy
+msgctxt "[room]channel_users"
+msgid "Users"
+msgstr "Brukernavn"
+
+#: [room]channel_text
+msgid "Public channel that can be publicly discoverable and joineable"
+msgstr ""
+
 #: [room]notify_never
 msgid "Never notify"
 msgstr ""
@@ -1843,9 +1869,8 @@ msgid "Notify when quoted"
 msgstr ""
 
 #: [room]notify_always
-#, fuzzy
 msgid "Always notify"
-msgstr "Alltid"
+msgstr ""
 
 #: [roomsexplore]no_local
 msgid "No chatrooms found localy"
@@ -1896,9 +1921,8 @@ msgid "Send it to a contact"
 msgstr ""
 
 #: [sendto]chatroom
-#, fuzzy
 msgid "Share it in a chatroom"
-msgstr "Rediger et samtalerom"
+msgstr ""
 
 #: [sendto]shared_with
 msgid "Post shared"
@@ -1909,9 +1933,8 @@ msgid "Post shared with your contact"
 msgstr ""
 
 #: [sendto]shared_chatroom
-#, fuzzy
 msgid "Post shared within the chatroom"
-msgstr "Koble til gruppesamtale"
+msgstr ""
 
 #: [sendto]more_contacts
 msgid "More contacts"
@@ -2078,9 +2101,8 @@ msgid "…ringing"
 msgstr "…ringer"
 
 #: [visio]declined
-#, fuzzy
 msgid "declined"
-msgstr "udefinert"
+msgstr ""
 
 #: [visio]in_call
 msgid "in call"
@@ -2980,14 +3002,11 @@ msgstr "API-et kan ikke nås, prøv igjen senere"
 msgid "Type here"
 msgstr "Skriv her"
 
-#~ msgid "Adult content blocked"
-#~ msgstr "Innhold for voksne blokkert"
+#~ msgid "Users in the room"
+#~ msgstr "Brukere i rommet"
 
-#~ msgid "Some adult content has been blocked on this page. You can enable the display of adult content in the configuration page."
-#~ msgstr "Noe innhold for voksne er blokkert på denne siden.  Du kan aktivere visning av voksent innhold på oppsettsiden."
+#~ msgid "Please provide a room address"
+#~ msgstr "Oppgi samtalerommets adresse"
 
-#~ msgid "Custom CSS URL for your blog"
-#~ msgstr "Egen CSS-nettadresse for din blogg"
-
-#~ msgid "The communities, news feed and profile have been disabled for the moment."
-#~ msgstr "Samfunnene, nyhetsstrømmene og profilene har blitt deaktivert inntil videre."
+#~ msgid "Your nickname"
+#~ msgstr "Ditt kallenavn"
