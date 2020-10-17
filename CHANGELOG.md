@@ -9,6 +9,7 @@ v0.18.1 (trunk)
  * Small redesign of the Chatrooms create/join form
  * Add support of Multi-user Chats Modern XMPP standard
  * Chats/Rooms redesign, common button to start/create a conversation
+ * Improve the PresenceBuffer SQL requests
 
 v0.18
 ---------------------------
