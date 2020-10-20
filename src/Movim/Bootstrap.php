@@ -167,9 +167,6 @@ class Bootstrap
             'password' => $conf['password'],
             'charset' => ($conf['type'] == 'mysql') ? 'utf8mb4' : 'utf8',
             'collation' => ($conf['type'] == 'mysql') ? 'utf8mb4_unicode_ci' : 'utf8_unicode_ci',
-            'options' => [
-                //\PDO::ATTR_PERSISTENT => false,
-            ]
         ]);
 
         /**
