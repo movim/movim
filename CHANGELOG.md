@@ -10,6 +10,7 @@ v0.18.1 (trunk)
  * Add support of Multi-user Chats Modern XMPP standard
  * Chats/Rooms redesign, common button to start/create a conversation
  * Improve the PresenceBuffer SQL requests
+ * Automatically close SQL connections after a few seconds
 
 v0.18
 ---------------------------

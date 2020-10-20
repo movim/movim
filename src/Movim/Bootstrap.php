@@ -7,6 +7,9 @@ define('DOCUMENT_ROOT', dirname(__FILE__, 3));
 use App\Configuration;
 use Illuminate\Database\Capsule\Manager as Capsule;
 
+use Illuminate\Events\Dispatcher;
+use Illuminate\Container\Container;
+
 use App\Session as DBSession;
 use App\User as DBUser;
 
@@ -156,15 +159,42 @@ class Bootstrap
 
         $capsule = new Capsule;
         $capsule->addConnection([
-          'driver' => $conf['type'],
-          'host' => $conf['host'],
-          'port' => $conf['port'],
-          'database' => $conf['database'],
-          'username' => $conf['username'],
-          'password' => $conf['password'],
-          'charset' => ($conf['type'] == 'mysql') ? 'utf8mb4' : 'utf8',
-          'collation' => ($conf['type'] == 'mysql') ? 'utf8mb4_unicode_ci' : 'utf8_unicode_ci',
+            'driver' => $conf['type'],
+            'host' => $conf['host'],
+            'port' => $conf['port'],
+            'database' => $conf['database'],
+            'username' => $conf['username'],
+            'password' => $conf['password'],
+            'charset' => ($conf['type'] == 'mysql') ? 'utf8mb4' : 'utf8',
+            'collation' => ($conf['type'] == 'mysql') ? 'utf8mb4_unicode_ci' : 'utf8_unicode_ci',
+            'options' => [
+                //\PDO::ATTR_PERSISTENT => false,
+            ]
         ]);
+
+        /**
+         * If no SQL request is executed after a few seconds, we close the connection.
+         * Eloquent is taking care of reconnecting automatically when a new request is made
+         */
+        global $loop;
+
+        if ($loop) {
+            global $sqlQueryExecuted;
+
+            $loop->addPeriodicTimer(1, function () use ($capsule, &$sqlQueryExecuted) {
+                if ($sqlQueryExecuted < time() - 3 /* 3sec */
+                && $capsule->getConnection()->getRawPdo() != null) {
+                    $capsule->getConnection()->disconnect();
+                }
+            });
+
+            $dispatcher = new Dispatcher(new Container);
+            $dispatcher->listen('Illuminate\Database\Events\QueryExecuted', function ($query) use (&$sqlQueryExecuted) {
+                $sqlQueryExecuted = time();
+            });
+
+            $capsule->setEventDispatcher($dispatcher);
+        }
 
         $capsule->bootEloquent();
         $capsule->setAsGlobal();

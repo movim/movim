@@ -9,10 +9,10 @@ use Movim\Session;
 
 use React\Promise\Timer;
 
+$loop = React\EventLoop\Factory::create();
+
 $bootstrap = new Bootstrap;
 $bootstrap->boot();
-
-$loop = React\EventLoop\Factory::create();
 
 // DNS
 $config = React\Dns\Config\Config::loadSystemConfigBlocking();
@@ -39,7 +39,7 @@ $parser = new \Moxl\Parser(function ($node) {
     \Moxl\Xec\Handler::handle($node);
 });
 
-$timestampReceive = $timestampSend = time();
+$timestampReceive = $timestampSend = $sqlQueryExecuted = time();
 
 function handleSSLErrors($errno, $errstr)
 {
