@@ -108,15 +108,15 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-10-17 11:51+0200\n"
-"PO-Revision-Date: 2020-08-07 10:18+0000\n"
-"Last-Translator: Transifex Bot <>\n"
+"PO-Revision-Date: 2020-10-20 07:45+0000\n"
+"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: French (France) (http://www.transifex.com/movim/movim/language/fr_FR/)\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Translate Toolkit 2.5.1\n"
+"X-Generator: Translate Toolkit 3.1.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -1649,7 +1649,7 @@ msgstr "Rejoindre un salon de discussion"
 
 #: [rooms]join_custom
 msgid "Join a custom chatroom"
-msgstr ""
+msgstr "Joindre un salon de discussion personnalisé"
 
 #: [rooms]empty_text1
 msgid "You don’t have any chatroom yet."
@@ -1740,13 +1740,11 @@ msgid "%s rooms synchronized"
 msgstr "%s salons synchronisés"
 
 #: [chatrooms]users
-#, fuzzy
 msgctxt "[chatrooms]users"
 msgid "Users"
-msgstr "Nom d’utilisateur"
+msgstr "Utilisateurs"
 
 #: [chatrooms]members
-#, fuzzy
 msgctxt "[chatrooms]members"
 msgid "Members"
 msgstr "Membres"
@@ -1828,38 +1826,34 @@ msgid "The participants of this chatroom can see each other's profile"
 msgstr "Les participants de ce salon peuvent voir leurs profils réciproquement"
 
 #: [room]group_chat
-#, fuzzy
 msgid "Group Chat"
 msgstr "Groupe"
 
 #: [room]group_chat_text
 msgid "Private group chat with invited members"
-msgstr ""
+msgstr "Groupe privé avec des membres invités"
 
 #: [room]group_chat_add
-#, fuzzy
 msgid "Add a new member"
-msgstr "Commenter"
+msgstr "Ajouter un nouveau membre"
 
 #: [room]group_chat_members
-#, fuzzy
 msgctxt "[room]group_chat_members"
 msgid "Members"
 msgstr "Membres"
 
 #: [room]channel
 msgid "Channel"
-msgstr ""
+msgstr "Salon"
 
 #: [room]channel_users
-#, fuzzy
 msgctxt "[room]channel_users"
 msgid "Users"
-msgstr "Nom d’utilisateur"
+msgstr "Utilisateurs"
 
 #: [room]channel_text
 msgid "Public channel that can be publicly discoverable and joineable"
-msgstr ""
+msgstr "Salon publique pouvant être découvert et joint librement"
 
 #: [room]notify_never
 msgid "Never notify"
@@ -2007,7 +2001,7 @@ msgstr "Cliquez-déposez vos fichier sur cette zone"
 
 #: [upload]max_size
 msgid "Max file size %s"
-msgstr ""
+msgstr "Taille maximale des fichiers %s"
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -2957,23 +2951,23 @@ msgstr "Billet original supprimé"
 
 #: [filesize]byte
 msgid "B"
-msgstr ""
+msgstr "o"
 
 #: [filesize]kilobyte
 msgid "KB"
-msgstr ""
+msgstr "Ko"
 
 #: [filesize]megabyte
 msgid "MB"
-msgstr ""
+msgstr "Mo"
 
 #: [filesize]gigabyte
 msgid "GB"
-msgstr ""
+msgstr "Go"
 
 #: [filesize]terabyte
 msgid "TB"
-msgstr ""
+msgstr "To"
 
 #: [affiliation]publisher
 msgid "Publisher"
@@ -3002,15 +2996,3 @@ msgstr "L’API est indisponible pour le moment, réessayez plus tard."
 #: [field]type_here
 msgid "Type here"
 msgstr "Rédigez votre message ici"
-
-#~ msgid "Search or join a chatroom"
-#~ msgstr "Rechercher ou rejoindre un salon"
-
-#~ msgid "Users in the room"
-#~ msgstr "Utilisateurs du salon"
-
-#~ msgid "Please provide a room address"
-#~ msgstr "Merci d'entrer l'adresse d'un salon"
-
-#~ msgid "Your nickname"
-#~ msgstr "Votre surnom"
