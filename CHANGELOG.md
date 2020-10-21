@@ -11,6 +11,7 @@ v0.18.1 (trunk)
  * Chats/Rooms redesign, common button to start/create a conversation
  * Improve the PresenceBuffer SQL requests
  * Automatically close SQL connections after a few seconds
+ * Conferences and Subscriptions multiple inserts SQL optimisations
 
 v0.18
 ---------------------------

@@ -651,6 +651,7 @@ class Chat extends \Movim\Widget\Base
             : $messages->whereIn('type', $this->_messageTypes);
 
         $messages = $messages->orderBy('published', 'desc')
+                             ->withCount('reactions')
                              ->take($this->_pagination)
                              ->get();
 
@@ -800,7 +801,7 @@ class Chat extends \Movim\Widget\Base
         $messagesRequest = clone $messagesQuery;
         $messagesCount = clone $messagesQuery;
 
-        $messages = $messagesRequest->orderBy('published', 'desc')->take($this->_pagination)->get();
+        $messages = $messagesRequest->withCount('reactions')->orderBy('published', 'desc')->take($this->_pagination)->get();
         $unreadsCount = $messagesCount->where('seen', false)->count();
 
         if ($unreadsCount > 0) {
@@ -957,7 +958,7 @@ class Chat extends \Movim\Widget\Base
         }
 
         // Reactions
-        if ($message->reactions()->count()) {
+        if ($message->reactions_count) {
             $message->reactionsHtml = $this->prepareReactions($message);
         }
 

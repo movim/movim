@@ -22,6 +22,11 @@ class Conference extends Model
         'session_id'    => SESSION_ID
     ];
 
+    public static function saveMany(array $conferences)
+    {
+        return Conference::insert($conferences);
+    }
+
     public function session()
     {
         return $this->hasOne('App\Session');
@@ -184,5 +189,22 @@ class Conference extends Model
         }
 
         return false;
+    }
+
+    public function toArray()
+    {
+        $now = \Carbon\Carbon::now();
+        return [
+            'session_id' => $this->attributes['session_id'] ?? null,
+            'conference' => $this->attributes['conference']  ?? null,
+            'name' => $this->attributes['name'] ?? null,
+            'nick' => $this->attributes['nick'] ?? null,
+            'autojoin' => $this->attributes['autojoin'] ?? null,
+            'created_at' => $this->attributes['created_at'] ?? $now,
+            'updated_at' => $this->attributes['updated_at'] ?? $now,
+            'extensions' => $this->attributes['extensions'] ?? null,
+            'bookmarkversion' => $this->attributes['bookmarkversion'] ?? 0,
+            'notify' => $this->attributes['notify'] ?? 1,
+        ];
     }
 }

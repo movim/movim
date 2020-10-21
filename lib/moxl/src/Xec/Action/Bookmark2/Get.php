@@ -25,11 +25,15 @@ class Get extends Action
             ->where('bookmarkversion', (int)$this->_version)
             ->delete();
 
+        $conferences = [];
+
         foreach ($stanza->pubsub->items->item as $c) {
             $conference = new Conference;
             $conference->set($c);
-            $conference->save();
+            array_push($conferences, $conference->toArray());
         }
+
+        Conference::saveMany($conferences);
 
         $this->pack($this->_version);
         $this->deliver();

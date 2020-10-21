@@ -10,6 +10,11 @@ class Subscription extends Model
     protected $primaryKey = ['jid', 'server', 'node'];
     protected $guarded = [];
 
+    public static function saveMany(array $conferences)
+    {
+        return Subscription::insert($conferences);
+    }
+
     public function info()
     {
         return $this->hasOne('App\Info', 'server', 'server')
@@ -19,5 +24,20 @@ class Subscription extends Model
     public function contact()
     {
         return $this->hasOne('App\Contact', 'id', 'jid');
+    }
+
+    public function toArray()
+    {
+        $now = \Carbon\Carbon::now();
+        return [
+            'jid' => $this->attributes['jid'] ?? null,
+            'server' => $this->attributes['server']  ?? null,
+            'node' => $this->attributes['node'] ?? null,
+            'subid' => $this->attributes['subid'] ?? null,
+            'title' => $this->attributes['title'] ?? null,
+            'public' => $this->attributes['public'] ?? false,
+            'created_at' => $this->attributes['created_at'] ?? $now,
+            'updated_at' => $this->attributes['updated_at'] ?? $now,
+        ];
     }
 }

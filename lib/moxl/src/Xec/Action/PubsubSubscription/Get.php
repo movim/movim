@@ -2,6 +2,7 @@
 
 namespace Moxl\Xec\Action\PubsubSubscription;
 
+use App\Subscription;
 use Moxl\Xec\Action\Pubsub\Errors;
 use Moxl\Stanza\Pubsub;
 
@@ -22,6 +23,8 @@ class Get extends Errors
                        ->where('public', ($this->_pepnode == 'urn:xmpp:pubsub:subscription'))
                        ->delete();
 
+        $subscriptions = [];
+
         foreach ($stanza->pubsub->items->children() as $i) {
             $subscription = \App\Subscription::firstOrNew([
                 'jid' => $this->_to,
@@ -32,8 +35,13 @@ class Get extends Errors
             if ($this->_pepnode == 'urn:xmpp:pubsub:subscription') {
                 $subscription->public = true;
             }
-            $subscription->save();
+
+            if (!$subscription->exists) {
+                array_push($subscriptions, $subscription->toArray());
+            }
         }
+
+        Subscription::saveMany($subscriptions);
 
         $this->pack($this->_to);
         $this->deliver();
