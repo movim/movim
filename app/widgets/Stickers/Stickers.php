@@ -131,7 +131,7 @@ class Stickers extends \Movim\Widget\Base
     /**
      * @brief Show the smiley Poppin
      */
-    public function ajaxReaction(string $mid)
+    public function ajaxReaction(string $mid = null)
     {
         $view = $this->tpl();
 

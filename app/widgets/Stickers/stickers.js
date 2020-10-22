@@ -29,10 +29,11 @@ var Stickers = {
             emojis[i].onclick = function() {
                 if (mid) {
                     Chat_ajaxHttpDaemonSendReaction(mid, this.dataset.emoji);
-                    Dialog_ajaxClear();
                 } else {
                     Stickers.addSmiley(this);
                 }
+
+                Dialog_ajaxClear();
             }
 
             i++;

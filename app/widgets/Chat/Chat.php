@@ -957,8 +957,8 @@ class Chat extends \Movim\Widget\Base
             }
         }
 
-        // Reactions
-        if ($message->reactions_count) {
+        // reactions_count if cached, if not, reload it from the DB
+        if ($message->reactions_count ?? $message->reactions()->count()) {
             $message->reactionsHtml = $this->prepareReactions($message);
         }
 

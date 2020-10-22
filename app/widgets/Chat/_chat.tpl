@@ -28,6 +28,11 @@
                   onclick="Stickers_ajaxShow('{$jid}')">
                 <i class="material-icons flip-vert">note</i>
             </span>
+            <span class="emojis control icon gray primary_action"
+                    title="{$c->__('sticker.title')}"
+                    onclick="Stickers_ajaxReaction()">
+                <i class="material-icons">face</i>
+            </span>
             {if="$c->getUser()->hasUpload()"}
                 <span class="attach control icon" onclick="Chat.toggleAttach()">
                     <i class="material-icons">add_circle</i>

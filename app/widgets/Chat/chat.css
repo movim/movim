@@ -145,9 +145,9 @@ main:not(.enabled) #chat_widget {
 }
 
 #chat_widget .chat_box.compose > ul.list > li > ul.list.actions,
-#chat_widget .chat_box:not(.compose) > ul.list > li > .control.attach ~ .control.send,
-#chat_widget .chat_box.compose > ul.list > li > .control.attach ~ .control:not(.send),
-#chat_widget .chat_box.compose > ul.list > li > .control:not(.send) {
+#chat_widget .chat_box:not(.compose) > ul.list > li > .control.attach ~ .control.send:not(.emojis),
+#chat_widget .chat_box.compose > ul.list > li > .control.attach ~ .control:not(.send):not(.emojis),
+#chat_widget .chat_box.compose > ul.list > li > .control:not(.send):not(.emojis) {
     display: none;
 }
 
