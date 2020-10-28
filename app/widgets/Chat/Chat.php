@@ -25,6 +25,7 @@ class Chat extends \Movim\Widget\Base
     private $_pagination = 50;
     private $_wrapper = [];
     private $_messageTypes = ['chat', 'headline', 'invitation', 'jingle_start', 'jingle_end'];
+    private $_mucPresences = [];
 
     public function load()
     {
@@ -815,6 +816,19 @@ class Chat extends \Movim\Widget\Base
             \App\Message::whereIn('mid', $messagesClear->where('seen', false)->pluck('mid'))->update(['seen' => true]);
         }
 
+        // Prepare the muc presences if possible
+        $firstMessage = $messages->first();
+        if ($firstMessage && $firstMessage->type == 'groupchat') {
+            $this->_mucPresences = $this->user->session->presences()
+                ->where('jid', $firstMessage->jidfrom)
+                ->where('muc', true)
+                ->whereIn('resource', $messages->pluck('resource')->unique())
+                ->get()
+                ->keyBy(function($presence) {
+                    return $presence->jid.$presence->resource;
+                });
+        }
+
         if (!$seenOnly) {
             $messages = $messages->reverse();
 
@@ -997,24 +1011,24 @@ class Chat extends \Movim\Widget\Base
 
             // Cache the resolved presences for a while
             $key = $message->jidfrom.$message->resource;
-            if (!isset($this->mucPresences[$key])) {
-                $this->mucPresences[$key] = $this->user->session->presences()
+            if (!isset($this->_mucPresences[$key])) {
+                $this->_mucPresences[$key] = $this->user->session->presences()
                            ->where('jid', $message->jidfrom)
                            ->where('resource', $message->resource)
                            ->where('muc', true)
                            ->first();
             }
 
-            if ($this->mucPresences[$key] && $this->mucPresences[$key] !== true) {
-                if ($url = $this->mucPresences[$key]->conferencePicture) {
+            if ($this->_mucPresences[$key] && $this->_mucPresences[$key] !== true) {
+                if ($url = $this->_mucPresences[$key]->conferencePicture) {
                     $message->icon_url = $url;
                 }
 
-                $message->moderator = ($this->mucPresences[$key]->mucrole == 'moderator');
-                $message->mine = $message->seen = ($this->mucPresences[$key]->mucjid == $this->user->id);
+                $message->moderator = ($this->_mucPresences[$key]->mucrole == 'moderator');
+                $message->mine = $message->seen = ($this->_mucPresences[$key]->mucjid == $this->user->id);
 
             } else {
-                $this->mucPresences[$key] = true;
+                $this->_mucPresences[$key] = true;
             }
 
             $message->icon = firstLetterCapitalize($message->resource);

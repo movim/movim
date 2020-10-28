@@ -3,7 +3,10 @@
 namespace App;
 
 use Illuminate\Database\Capsule\Manager as DB;
+use Moxl\Xec\Action\Disco\Request;
+
 use App\Presence;
+use App\Info;
 
 class PresenceBuffer
 {
@@ -59,6 +62,31 @@ class PresenceBuffer
                 // And we save it
                 Presence::insert($this->_models->toArray());
                 DB::commit();
+
+                /**
+                 * Handle the Capabilities
+                 */
+                $nodes = collect();
+                $this->_models->each(function ($presence) use (&$nodes) {
+                    $nodes->put($presence['node'], $presence['jid'].'/'.$presence['resource']);
+                });
+
+                $infos = Info::whereIn('node', $nodes->keys())->get();
+
+                // Remove the already saved capabilities
+                $infos->each(function ($info) use (&$nodes) {
+                    if ($nodes->has($info->node) && !$info->isEmptyFeatures()) {
+                        $nodes->pull($info->node);
+                    }
+                });
+
+                // Request the others
+                $nodes->each(function ($to, $node) {
+                    $d = new Request;
+                    $d->setTo($to)
+                      ->setNode($node)
+                      ->request();
+                });
             } catch (\Exception $e) {
                 DB::rollback();
                 \Utils::error($e->getMessage());
@@ -76,9 +104,9 @@ class PresenceBuffer
 
     public function append(Presence $presence, $call)
     {
-            $key = $this->getPresenceKey($presence);
-            $this->_models[$key] = $presence->toArray();
-            $this->_calls->push($call);
+        $key = $this->getPresenceKey($presence);
+        $this->_models[$key] = $presence->toArray();
+        $this->_calls->push($call);
     }
 
     private function getPresenceKey(Presence $presence)

@@ -151,7 +151,8 @@ class Handler
             //'0981a46bbfa88b3500c4bccda18ccb89' => 'Location',
             '9c8ed44d4528a66484b0fbd44b0a9070' => 'Nickname',
 
-            'd8ea912a151202700bb399c9e04d205f' => 'Caps',
+            // Should be handled by the PresenceBuffer, to be removed !
+            //'d8ea912a151202700bb399c9e04d205f' => 'Caps',
 
             '40ed26a65a25ab8bf809dd998d541d95' => 'PingPong',
 

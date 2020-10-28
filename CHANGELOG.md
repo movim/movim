@@ -12,6 +12,8 @@ v0.18.1 (trunk)
  * Improve the PresenceBuffer SQL requests
  * Automatically close SQL connections after a few seconds
  * Conferences and Subscriptions multiple inserts SQL optimisations
+ * Handle Caps in PresenceBuffer to save lots of SQL request
+ * Preload the MUC Presences when preparing groups of Messages in Chat
 
 v0.18
 ---------------------------

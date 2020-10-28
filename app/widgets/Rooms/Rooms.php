@@ -114,7 +114,7 @@ class Rooms extends Base
         if ($conference) {
             $this->onPresence($conference->conference);
         } else {
-            $this->ajaxHttpGet();
+            $this->rpc('Rooms_ajaxHttpGet');
         }
     }
 
