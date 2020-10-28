@@ -9,7 +9,6 @@ use Movim\Session;
 use Movim\ChatStates;
 use Movim\Widget\Base;
 
-use App\PresenceBuffer;
 use App\Conference;
 
 use Respect\Validation\Validator;
@@ -111,7 +110,12 @@ class Rooms extends Base
         }
 
         Toast::send($this->__('bookmarks.updated'));
-        $this->ajaxHttpGet();
+
+        if ($conference) {
+            $this->onPresence($conference->conference);
+        } else {
+            $this->ajaxHttpGet();
+        }
     }
 
     private function setState(string $room, bool $composing)
@@ -265,7 +269,6 @@ class Rooms extends Base
         }
 
         // We clear the presences from the buffer cache and then the DB
-        $pb = PresenceBuffer::getInstance();
         $this->user->session->conferences()
              ->where('conference', $room)
              ->first()->presences()->delete();

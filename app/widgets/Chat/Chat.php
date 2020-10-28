@@ -107,10 +107,6 @@ class Chat extends \Movim\Widget\Base
             return;
         }
 
-        if (!$message->encrypted) {
-            $this->rpc('Chat.appendMessagesWrapper', $this->prepareMessage($message, $from));
-        }
-
         if ($message->file) {
             $rawbody = (typeIsPicture($message->file['type']))
                 ? '🖼️ ' . $this->__('chats.picture')
@@ -165,10 +161,19 @@ class Chat extends \Movim\Widget\Base
                     $this->route('chat', [$contact->jid, 'room'])
                 );
             } elseif ($message->type == 'groupchat') {
+                if ($conference && $conference->notify == 0) {
+                    $message->seen = true;
+                    $message->save();
+                }
+
                 $chatStates->clearState($from, $message->resource);
             }
 
             $this->onChatState($chatStates->getState($from));
+        }
+
+        if (!$message->encrypted) {
+            $this->rpc('Chat.appendMessagesWrapper', $this->prepareMessage($message, $from));
         }
 
         $this->event('chat_counter', $this->user->unreads());
