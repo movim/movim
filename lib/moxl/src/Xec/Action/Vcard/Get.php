@@ -39,11 +39,14 @@ class Get extends Action
         $notify = true;
 
         /**
-         * Specific case if the returned stanza didn't contained a hash
-         * received trough a presence, we save it then we don't request
-         * it each time
+         * Specific case if the returned stanza didn't contained a hash received trough a
+         * presence or is different, we save it then we don't request it each time
          */
-        if  ($this->_avatarhash && !$contact->avatarhash) {
+        if  ($this->_avatarhash
+        && (
+            empty($contact->avatarhash)
+            || $contact->avatarhash != $this->_avatarhash)
+        ) {
             $contact->avatarhash = $this->_avatarhash;
             $notify = false;
         }

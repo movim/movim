@@ -74,36 +74,6 @@ class Presence extends Model
         return (new Picture)->get($this->mucjid, 120);
     }
 
-    public function getRefreshableAttribute()
-    {
-        if (!$this->avatarhash) {
-            return false;
-        }
-
-        $jid = ($this->muc)
-                ? ($this->mucjid)
-                    ? $this->mucjid
-                    : $this->jid.'/'.$this->resource
-                : $this->jid;
-
-        $contact = \App\Contact::where('avatarhash', (string)$this->avatarhash)->first();
-
-        /*
-         * Another contact had the same avatar
-         */
-        if ($contact
-        && $contact->id != $jid
-        && $this->muc) {
-            $p = new Picture;
-            $p->fromKey($contact->id);
-            $p->set($jid);
-
-            return false;
-        }
-
-        return ($contact) ? false : $jid;
-    }
-
     public static function findByStanza($stanza)
     {
         $temporary = new self;
@@ -180,7 +150,9 @@ class Presence extends Model
                         }
                         break;
                     case 'vcard-temp:x:update':
-                        $this->avatarhash = (string)$c->photo;
+                        if (!empty((string)$c->photo)) {
+                            $this->avatarhash = (string)$c->photo;
+                        }
                         break;
                 }
             }
@@ -229,7 +201,7 @@ class Presence extends Model
             'mucrole' => $this->attributes['mucrole'] ?? null,
             'created_at' => $this->attributes['created_at'] ?? $now,
             'updated_at' => $this->attributes['updated_at'] ?? $now,
-            'avatarhash' => $this->attributes['avatar_hash'] ?? null,
+            'avatarhash' => $this->attributes['avatarhash'] ?? null,
         ];
     }
 }

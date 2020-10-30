@@ -4,9 +4,12 @@ namespace App;
 
 use Illuminate\Database\Capsule\Manager as DB;
 use Moxl\Xec\Action\Disco\Request;
+use Moxl\Xec\Action\Vcard\Get;
 
+use Movim\Picture;
 use App\Presence;
 use App\Info;
+use App\Contact;
 
 class PresenceBuffer
 {
@@ -87,6 +90,55 @@ class PresenceBuffer
                       ->setNode($node)
                       ->request();
                 });
+
+                /**
+                 * Handle the Vcards
+                 */
+                $avatarHashes = collect();
+                $this->_models->each(function ($presence) use (&$avatarHashes) {
+                    if (isset($presence['avatarhash'])) {
+                        $fullJid = !empty($presence['resource'])
+                            ? $presence['jid'].'/'.$presence['resource']
+                            : $presence['jid'];
+
+                        $jid = ($presence['muc'])
+                            ? (($presence['mucjid'])
+                                ? $presence['mucjid']
+                                : $fullJid)
+                            : $presence['jid'];
+
+                        $avatarHashes->put($presence['avatarhash'], $jid);
+                    }
+                });
+
+                if ($avatarHashes->count() > 0) {
+                    $contacts = Contact::whereIn('avatarhash', $avatarHashes->keys())
+                                        ->get();
+
+                    // Remove the existing Contacts
+                    $contacts->each(function ($contact) use (&$avatarHashes) {
+                        // If the contact stored is actually the one we received the presence from
+                        if ($avatarHashes->get($contact->avatarhash) == $contact->id) {
+                            $avatarHashes->pull($contact->avatarhash);
+                        }
+                        // It's another contact that has the same avatar and we are in a MUC
+                        /*elseif (strpos($avatarHashes->get($contact->avatarhash), '/') != false) {
+                            $p = new Picture;
+                            \Utils::debug('COPY '.$contact->id.' to '.$avatarHashes->get($contact->avatarhash));
+                            $p->fromKey($contact->id);
+                            $p->set($avatarHashes->get($contact->avatarhash));
+                        }*/
+                    });
+
+                    // Request the others
+                    $avatarHashes->each(function ($jid, $avatarhash) {
+                        $r = new Get;
+                        $r->setAvatarhash($avatarhash)
+                          ->setTo($jid)
+                          ->request();
+                    });
+                }
+
             } catch (\Exception $e) {
                 DB::rollback();
                 \Utils::error($e->getMessage());

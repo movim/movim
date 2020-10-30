@@ -14,6 +14,7 @@ v0.18.1 (trunk)
  * Conferences and Subscriptions multiple inserts SQL optimisations
  * Handle Caps in PresenceBuffer to save lots of SQL request
  * Preload the MUC Presences when preparing groups of Messages in Chat
+ * Handle vcard-temp avatars refresh in PresenceBuffer to also save some SQL requests
 
 v0.18
 ---------------------------
