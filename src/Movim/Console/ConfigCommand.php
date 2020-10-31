@@ -98,5 +98,7 @@ class ConfigCommand extends Command
                 );
             }
         }
+
+        return 1;
     }
 }

@@ -23,19 +23,49 @@ class EmojisToJsonCommand extends Command
         $emojis = (Emoji::getInstance())->getEmojis();
 
         foreach ($emojis as $key => $value) {
-            if  (strpos($key, '-') === false) {
-                $filtered[$key] = $value;
-            }
+            $value = str_replace([
+                '+ ',
+                'ZERO WIDTH JOINER ',
+                'EMOJI MODIFIER FITZPATRICK',
+                'MAN ',
+                'WOMAN ',
+                'FEMALE ',
+                'MALE ',
+                'EMOJI COMPONENT ',
+                '  '
+            ], [
+                '',
+                '',
+                '',
+                '',
+                '',
+                '',
+                '',
+                '',
+                ' '
+            ], $value);
+            echo $value."\n";
+            $filtered[$key] = $value;
         }
 
         $json = [];
         foreach ($filtered as $key => $value) {
-            sscanf('U+'.$key, 'U+%x', $codepoint);
-            $json[emojiShortcut($value)] = ['e' => \IntlChar::chr($codepoint), 'c' => $key];
+            $emojiCode = '';
+            $exploded = explode('-', $key);
+            foreach ($exploded as $keyElement) {
+                $emojiCode .= '\u{'.$keyElement.'}';
+            }
+
+            $json[emojiShortcut($value)] = ['e' => $emojiCode, 'c' => $key];
         }
 
-        \file_put_contents(PUBLIC_PATH.'scripts/movim_emojis_list.js', 'var emojis = '.\json_encode($json));
+        $encoded = \json_encode($json);
+        $encoded = str_replace('\\\\', '\\', $encoded);
+
+        \file_put_contents(PUBLIC_PATH.'scripts/movim_emojis_list.js', 'var emojis = '.$encoded);
 
         $output->writeln('<info>'.\count($json).' emojis saved</info>');
+
+        return 1;
     }
 }

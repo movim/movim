@@ -15,6 +15,7 @@ v0.18.1 (trunk)
  * Handle Caps in PresenceBuffer to save lots of SQL request
  * Preload the MUC Presences when preparing groups of Messages in Chat
  * Handle vcard-temp avatars refresh in PresenceBuffer to also save some SQL requests
+ * Add ~1500 new emojis to the Javascript selector
 
 v0.18
 ---------------------------
