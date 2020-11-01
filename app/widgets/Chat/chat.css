@@ -330,6 +330,36 @@ main:not(.enabled) #chat_widget {
     min-width: 23rem;
 }
 
+/* Parent */
+
+#chat_widget div.parent {
+    border-left: 0.25rem solid gray;
+    padding: 0 1rem;
+}
+
+#chat_widget .bubble div.parent {
+    margin: 0.25rem 0;
+}
+
+#chat_widget div.parent:hover {
+    cursor: pointer;
+    background-color: rgba(var(--movim-font), 0.04);
+}
+
+#chat_widget div.parent span,
+#chat_widget div.parent p {
+    font-size: 1.6rem;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 2.4rem;
+}
+
+#chat_widget .bubble div.parent p {
+    color: rgba(var(--movim-font), 0.60);
+}
+
 /* Emojis */
 
 #chat_widget .bubble ul.reactions {
@@ -337,6 +367,7 @@ main:not(.enabled) #chat_widget {
 }
 
 #chat_widget .bubble div span.reaction,
+#chat_widget .bubble div span.reply,
 #chat_widget .bubble div span.actions,
 #chat_widget .bubble ul.reactions li {
     list-style-type: none;
@@ -351,6 +382,11 @@ main:not(.enabled) #chat_widget {
     border: solid 1px transparent;
 }
 
+#chat_widget .bubble > div {
+    padding-right: 7rem;
+    margin-right: -7rem;
+}
+
 #chat_widget .bubble ul.reactions li i {
     padding: 0;
 }
@@ -361,17 +397,23 @@ main:not(.enabled) #chat_widget {
 }
 
 #chat_widget .bubble div span.reaction,
+#chat_widget .bubble div span.reply,
 #chat_widget .bubble div span.actions,
 #chat_widget .bubble ul.reactions:empty {
     display: none;
 }
 
 #chat_widget li:not(.oppose) .bubble div:hover ul.reactions:empty ~ span.reaction,
+#chat_widget li:not(.oppose) .bubble div:hover span.reply[data-mid],
 #chat_widget li.oppose .bubble:not(.sticker) div:hover span.actions {
     display: inline-flex;
     position: absolute;
     left: 100%;
     transform: translate(-1.5rem, -0.25rem);
+}
+
+#chat_widget li:not(.oppose) .bubble div:hover span.reply {
+    padding-left: 5rem;
 }
 
 #chat_widget li.oppose .bubble:not(.sticker) div:hover span.actions {
@@ -382,7 +424,12 @@ main:not(.enabled) #chat_widget {
     transform: translate(-1.5rem, -3.75rem);
 }
 
+#chat_widget li:not(.oppose) .bubble.sticker div:hover ul.reactions:empty ~ span.reply {
+    transform: translate(-1.5rem, -3.75rem);
+}
+
 #chat_widget .bubble div span.reaction:hover,
+#chat_widget .bubble div span.reply:hover,
 #chat_widget .bubble div span.actions:hover,
 #chat_widget .bubble ul.reactions li:hover {
     cursor: pointer;
@@ -410,4 +457,15 @@ main:not(.enabled) #chat_widget {
 
 #chat_widget .bubble ul.card.list .info {
     display: none;
+}
+
+/* Reply */
+
+#reply {
+    margin: 0 0.5rem;
+}
+
+#reply li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(var(--movim-font), 0.12);
 }

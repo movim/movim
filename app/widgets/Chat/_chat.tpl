@@ -21,6 +21,7 @@
 </div>
 <div class="chat_box">
     <ul class="list thin fill">
+        <div id="reply"></div>
         <li class="emojis"></li>
         <li>
             <span class="primary icon gray primary_action"

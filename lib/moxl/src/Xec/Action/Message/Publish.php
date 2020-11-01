@@ -17,14 +17,20 @@ class Publish extends Action
     protected $_file = false;
     protected $_attachid = false;
     protected $_originid = false;
+    protected $_threadid = false;
+    protected $_parentthreadid = false;
 
     public function request()
     {
         $this->store($this->_id);
         if ($this->_muc) {
-            Muc::message($this->_to, $this->_content, $this->_html, $this->_id, $this->_file, $this->_attachid, [], $this->_originid);
+            Muc::message($this->_to, $this->_content, $this->_html, $this->_id,
+                         $this->_file, $this->_attachid, [], $this->_originid,
+                         $this->_threadid, $this->_parentthreadid);
         } else {
-            Message::message($this->_to, $this->_content, $this->_html, $this->_id, $this->_replace, $this->_file, $this->_attachid, [], $this->_originid);
+            Message::message($this->_to, $this->_content, $this->_html, $this->_id,
+                             $this->_replace, $this->_file, $this->_attachid, [],
+                             $this->_originid, $this->_threadid, $this->_parentthreadid);
         }
     }
 

@@ -16,6 +16,7 @@ v0.18.1 (trunk)
  * Preload the MUC Presences when preparing groups of Messages in Chat
  * Handle vcard-temp avatars refresh in PresenceBuffer to also save some SQL requests
  * Add ~1500 new emojis to the Javascript selector
+ * Implement XEP-0201: Best Practices for Message Threads and add Reply feature
 
 v0.18
 ---------------------------

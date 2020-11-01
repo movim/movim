@@ -368,7 +368,8 @@ class Chat extends \Movim\Widget\Base
      * @param string $message
      * @return void
      */
-    public function ajaxHttpDaemonSendMessage($to, $message = false, $muc = false, $resource = false, $replace = false, $file = false)
+    public function ajaxHttpDaemonSendMessage($to, $message = false, $muc = false,
+        $resource = false, $replace = false, $file = false, $replyToMid = false)
     {
         $message = trim($message);
         $resolvedFile = resolvePictureFileFromUrl($message);
@@ -398,12 +399,23 @@ class Chat extends \Movim\Widget\Base
         } else {
             $m = new \App\Message;
             $m->id          = generateUUID();
+            $m->thread      = generateUUID();
             $m->originid    = generateUUID();
             $m->replaceid   = $m->id;
             $m->user_id     = $this->user->id;
             $m->jidto       = echapJid($to);
             $m->jidfrom     = $this->user->id;
             $m->published   = gmdate('Y-m-d H:i:s');
+        }
+
+        if ($replyToMid) {
+            $reply = $this->user->messages()
+                          ->where('mid', $replyToMid)
+                          ->first();
+
+            if ($reply) {
+                $m->parentthread = $reply->thread;
+            }
         }
 
         // TODO: make this boolean configurable
@@ -436,6 +448,8 @@ class Chat extends \Movim\Widget\Base
         }
 
         $p->setId($m->id);
+        $p->setThreadid($m->thread);
+        $p->setParentthreadid($m->parentthread);
         $p->setOriginid($m->originid);
 
         if ($muc) {
@@ -603,6 +617,7 @@ class Chat extends \Movim\Widget\Base
             $this->rpc('Chat.setTextarea', htmlspecialchars_decode($m->body), $m->mid);
         }
     }
+
     /**
      * @brief Get the a sent message
      *
@@ -619,6 +634,34 @@ class Chat extends \Movim\Widget\Base
         && !isset($m->file)) {
             $this->rpc('Chat.setTextarea', htmlspecialchars_decode($m->body), $mid);
         }
+    }
+
+    /**
+     * @brief Reply to a message
+     *
+     * @param string $mid
+     * @return void
+     */
+    public function ajaxHttpDaemonReply($mid)
+    {
+        $m = $this->user->messages()
+                        ->where('mid', $mid)
+                        ->first();
+
+        if (isset($m->thread)) {
+            $view = $this->tpl();
+            $view->assign('message', $m);
+            $this->rpc('MovimTpl.fill', '#reply', $view->draw('_chat_reply'));
+            $this->rpc('Chat.focus');
+        }
+    }
+
+    /**
+     * Clear the Reply box
+     */
+    public function ajaxClearReply()
+    {
+        $this->rpc('MovimTpl.fill', '#reply', '');
     }
 
     /**
@@ -976,6 +1019,35 @@ class Chat extends \Movim\Widget\Base
             }
         }
 
+        // Parent
+        if ($message->parent) {
+            if ($message->parent->file) {
+                $message->parent->body = (typeIsPicture($message->parent->file['type']))
+                    ? '<i class="material-icons">image</i> '.__('chats.picture')
+                    : '<i class="material-icons">insert_drive_file</i> '.__('avatar.file');
+            }
+
+            // Resolve the parent from
+
+            if ($message->parent->type == 'groupchat') {
+                $message->parent->resolveColor();
+                $message->parent->fromName = $message->parent->resource;
+            } else {
+                // TODO optimize
+                $roster = $this->user->session->contacts()
+                            ->where('jid', $message->parent->jidfrom)
+                            ->first();
+
+                $contactFromName = $message->parent->from
+                    ? $message->parent->from->truename
+                    : $message->parent->jidfrom;
+
+                $message->parent->fromName = $roster
+                    ? $roster->truename
+                    : $contactFromName;
+            }
+        }
+
         // reactions_count if cached, if not, reload it from the DB
         if ($message->reactions_count ?? $message->reactions()->count()) {
             $message->reactionsHtml = $this->prepareReactions($message);
@@ -1007,7 +1079,7 @@ class Chat extends \Movim\Widget\Base
         $n = new Notification;
 
         if ($message->type == 'groupchat') {
-            $message->color = stringToColor($message->session_id . $message->resource . $message->type);
+            $message->resolveColor();
 
             // Cache the resolved presences for a while
             $key = $message->jidfrom.$message->resource;

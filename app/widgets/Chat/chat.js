@@ -135,7 +135,15 @@ var Chat = {
                 xhr = Chat_ajaxHttpDaemonCorrect(jid, text, textarea.dataset.mid);
                 delete textarea.dataset.mid;
             } else {
-                xhr = Chat_ajaxHttpDaemonSendMessage(jid, text, muc);
+                var reply = document.querySelector('#reply > div');
+                replyMid = false;
+
+                if (reply) {
+                    replyMid = reply.dataset.mid;
+                    reply.remove();
+                };
+
+                xhr = Chat_ajaxHttpDaemonSendMessage(jid, text, muc, false, false, false, replyMid);
             }
 
             xhr.onreadystatechange = function() {
@@ -497,6 +505,43 @@ var Chat = {
             i++;
         }
     },
+    setParentScrollBehaviour : function()
+    {
+        let toParents = document.querySelectorAll('#chat_widget div.parent');
+        let i = 0;
+
+        while (i < toParents.length) {
+            toParents[i].onclick = function() {
+                var parentMsg = document.getElementById(this.dataset.parentId);
+                if (!parentMsg) {
+                    parentMsg = document.getElementById(this.dataset.parentReplaceId)
+                }
+                if (parentMsg) {
+                    scrollToLi = parentMsg.parentNode.parentNode;
+                    document.querySelector('#chat_widget .contained').scrollTo({
+                        top: scrollToLi.offsetTop - 60,
+                        left: 0,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+
+            i++;
+        }
+    },
+    setReplyButtonBehaviour : function()
+    {
+        let replies = document.querySelectorAll('#chat_widget span.reply');
+        let i = 0;
+
+        while (i < replies.length) {
+            replies[i].onclick = function() {
+                Chat_ajaxHttpDaemonReply(this.dataset.mid);
+            }
+
+            i++;
+        }
+    },
     setActionsButtonBehaviour : function()
     {
         let actions = document.querySelectorAll('#chat_widget .contained:not(.muc) span.actions');
@@ -584,7 +629,9 @@ var Chat = {
 
         Chat.setScrollBehaviour();
         Chat.setReactionButtonBehaviour();
+        Chat.setReplyButtonBehaviour();
         Chat.setActionsButtonBehaviour();
+        Chat.setParentScrollBehaviour();
     },
     appendMessage : function(idjidtime, data, prepend) {
         if (data.body === null) return;
@@ -659,6 +706,7 @@ var Chat = {
         var span = msg.querySelector('span:not(.reaction)');
         var p = msg.getElementsByTagName('p')[0];
         var reaction = msg.querySelector('span.reaction');
+        var reply = msg.querySelector('span.reply');
         var actions = msg.querySelector('span.actions');
         var reactions = msg.querySelector('ul.reactions');
 
@@ -670,6 +718,10 @@ var Chat = {
             span.className = 'info';
             p = document.createElement('p');
             reaction = reaction.cloneNode(true);
+
+            if (reply) {
+                reply = reply.cloneNode(true);
+            }
 
             if (actions) {
                 actions = actions.cloneNode(true);
@@ -757,9 +809,19 @@ var Chat = {
             msg.appendChild(resourceSpan);
         }
 
+        // Parent
+        if (data.parent) {
+            msg.appendChild(Chat.getParentHtml(data.parent));
+        }
+
         msg.appendChild(p);
         msg.appendChild(reactions);
         msg.appendChild(span);
+
+        if (data.thread !== null) {
+            reply.dataset.mid = data.mid;
+            msg.appendChild(reply);
+        }
 
         reaction.dataset.mid = data.mid;
         msg.appendChild(reaction);
@@ -952,6 +1014,29 @@ var Chat = {
         i.innerText = 'check';
         i.setAttribute('title', delivered);
         return i;
+    },
+    getParentHtml: function(parent) {
+        var div = document.createElement('div');
+        div.classList.add('parent');
+        div.dataset.parentReplaceId = parent.replaceid
+        div.dataset.parentId = parent.id;
+
+        var span = document.createElement('span');
+
+        if (parent.color) {
+            span.classList.add('resource');
+            span.classList.add(parent.color);
+        }
+
+        span.classList.add('from');
+        span.innerHTML = parent.fromName;
+        div.appendChild(span);
+
+        var p = document.createElement('p');
+        p.innerHTML = parent.body;
+        div.appendChild(p);
+
+        return div;
     },
     getDisplayedIcoHtml: function(displayed) {
         var i = document.createElement('i');

@@ -25,13 +25,14 @@
 
     <div class="bubble">
         <div>
-            <div>
-                <p></p>
-            </div>
+            <p></p>
             <ul class="reactions"></ul>
             <span class="info"></span>
             <span class="reaction" title="{$c->__('message.react')}">
                 +<i class="material-icons">mood</i>
+            </span>
+            <span class="reply" title="{$c->__('button.reply')}">
+                <i class="material-icons">reply</i>
             </span>
             {if="!$muc"}
                 <span class="actions">

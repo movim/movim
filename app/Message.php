@@ -17,7 +17,7 @@ class Message extends Model
 
     protected $guarded = [];
 
-    protected $with = ['reactions'];
+    protected $with = ['reactions', 'parent.from'];
 
     protected $attributes = [
         'type'    => 'chat'
@@ -35,6 +35,16 @@ class Message extends Model
         } catch (\Exception $e) {
             \Utils::error($e->getMessage());
         }
+    }
+
+    public function parent()
+    {
+        return $this->belongsTo('App\Message', 'parentthread', 'thread');
+    }
+
+    public function from()
+    {
+        return $this->belongsTo('App\Contact', 'jidfrom', 'id');
     }
 
     public function user()
@@ -211,6 +221,10 @@ class Message extends Model
 
             if ($stanza->thread) {
                 $this->thread = (string)$stanza->thread;
+
+                if ($stanza->thread->attributes()->parent) {
+                    $this->parentthread = (string)$stanza->thread->attributes()->parent;
+                }
             }
 
             if ($this->type == 'groupchat') {
@@ -455,6 +469,15 @@ class Message extends Model
                 $this->body = $old;
             }
         }
+    }
+
+    public function resolveColor()
+    {
+        $this->color = stringToColor(
+            $this->session_id . $this->resource . $this->type
+        );
+
+        return $this->color;
     }
 
     public function valid()

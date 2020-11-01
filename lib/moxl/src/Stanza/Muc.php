@@ -8,9 +8,12 @@ use Movim\Session;
 
 class Muc
 {
-    public static function message($to, $content = false, $html = false, $id = false, $file = false, $parentId = false, array $reactions = [], $originId = false)
+    public static function message($to, $content = false, $html = false, $id = false,
+        $file = false, $parentId = false, array $reactions = [], $originId = false,
+        $threadId = false, $parentThreadId = false)
     {
-        Message::maker($to, $content, $html, 'groupchat', false, false, $id, false, $file, false, $parentId, $reactions, $originId);
+        Message::maker($to, $content, $html, 'groupchat', false, false, $id, false, $file,
+            false, $parentId, $reactions, $originId, $threadId, $parentThreadId);
     }
 
     public static function active($to)

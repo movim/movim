@@ -124,7 +124,6 @@ class PresenceBuffer
                         // It's another contact that has the same avatar and we are in a MUC
                         /*elseif (strpos($avatarHashes->get($contact->avatarhash), '/') != false) {
                             $p = new Picture;
-                            \Utils::debug('COPY '.$contact->id.' to '.$avatarHashes->get($contact->avatarhash));
                             $p->fromKey($contact->id);
                             $p->set($avatarHashes->get($contact->avatarhash));
                         }*/

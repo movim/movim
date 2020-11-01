@@ -67,6 +67,7 @@ class Stickers extends \Movim\Widget\Base
         $m->published = gmdate('Y-m-d H:i:s');
 
         $m->id      = generateUUID();
+        $m->thread  = generateUUID();
         $m->type    = 'chat';
         $m->resource = $this->user->session->resource;
 

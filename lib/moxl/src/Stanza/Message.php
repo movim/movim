@@ -19,7 +19,9 @@ class Message
         $invite = false,
         $parentId = false,
         array $reactions = [],
-        $originId = false
+        $originId = false,
+        $threadid = false,
+        $parentthreadid = false
     ) {
         $session = Session::start();
 
@@ -47,6 +49,17 @@ class Message
         if (explodeJid($to)['resource'] !== null) {
             $xuser = $dom->createElementNS('http://jabber.org/protocol/muc#user', 'x');
             $root->appendChild($xuser);
+        }
+
+        // Thread
+        if ($threadid) {
+            $thread = $dom->createElement('thread', $threadid);
+
+            if ($parentthreadid) {
+                $thread->setAttribute('parent', $parentthreadid);
+            }
+
+            $root->appendChild($thread);
         }
 
         // Chatstates
@@ -189,9 +202,12 @@ class Message
         \Moxl\API::request($dom->saveXML($dom->documentElement));
     }
 
-    public static function message($to, $content = false, $html = false, $id = false, $replace = false, $file = false, $parentId = false, array $reactions = [], $originId = false)
+    public static function message($to, $content = false, $html = false, $id = false,
+        $replace = false, $file = false, $parentId = false, array $reactions = [],
+        $originId = false, $threadId = false, $parentThreadId = false)
     {
-        self::maker($to, $content, $html, 'chat', 'active', 'request', $id, $replace, $file, false, $parentId, $reactions, $originId);
+        self::maker($to, $content, $html, 'chat', 'active', 'request', $id, $replace,
+            $file, false, $parentId, $reactions, $originId, $threadId, $parentThreadId);
     }
 
     public static function receipt($to, $id)
