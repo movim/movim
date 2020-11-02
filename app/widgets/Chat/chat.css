@@ -412,7 +412,7 @@ main:not(.enabled) #chat_widget {
     transform: translate(-1.5rem, -0.25rem);
 }
 
-#chat_widget li:not(.oppose) .bubble div:hover span.reply {
+#chat_widget li:not(.oppose) .bubble div:hover ul.reactions:empty ~ span.reply {
     padding-left: 5rem;
 }
 
