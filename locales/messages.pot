@@ -97,7 +97,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-17 11:51+0200\n"
+"POT-Creation-Date: 2020-11-03 23:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1935,7 +1935,7 @@ msgid "No contacts yet?"
 msgstr ""
 
 #: [search]no_contacts_text
-msgid "Find one by searching for his name or id"
+msgid "Find one by searching for their name or id"
 msgstr ""
 
 #: [search]tags
