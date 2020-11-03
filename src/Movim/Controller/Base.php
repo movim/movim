@@ -62,6 +62,7 @@ class Base
     {
         $url = Route::urlize($page, $params);
         header('Location: '. $url);
+        exit;
     }
 
     public function display()

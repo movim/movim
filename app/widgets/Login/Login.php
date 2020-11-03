@@ -169,7 +169,7 @@ class Login extends Base
         $this->doLogin($login, $password);
     }
 
-    public function ajaxQuickLogin($deviceId, $login, $key)
+    public function ajaxQuickLogin($deviceId, $login, $key, $check = false)
     {
         $validate_login = Validator::stringType()->length(1, 254);
 
@@ -187,6 +187,11 @@ class Login extends Base
                 $ciphertext = $user->encryptedPasswords()->find($deviceId);
 
                 if ($ciphertext) {
+                    if ($check) {
+                        $this->rpc('Login.quickLoginRegister');
+                        return;
+                    }
+
                     $ciphertext->touch();
                     $password = Crypto::decrypt($ciphertext->data, $key);
                     $this->doLogin($login, $password, $deviceId);

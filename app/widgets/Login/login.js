@@ -45,8 +45,17 @@ var Login = {
     quickLogin : function() {
         if (localStorage.getItem('quickHost') != null
         && localStorage.getItem('quickKey') != null) {
-            MovimWebsocket.connection.register(localStorage.getItem('quickHost'));
+            Login_ajaxQuickLogin(
+                localStorage.getItem('quickDeviceId'),
+                localStorage.getItem('quickLogin'),
+                localStorage.getItem('quickKey'),
+                true // check is we can actually quick login before registering
+            );
         }
+    },
+
+    quickLoginRegister : function () {
+        MovimWebsocket.connection.register(localStorage.getItem('quickHost'));
     }
 }
 

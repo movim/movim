@@ -86,11 +86,7 @@ class Front extends Base
 
             // If the controller ask to display a different page
             if ($request != $c->name) {
-                $new_name = $c->name;
-                $c = $this->loadController($new_name);
-                $c->name = $new_name;
-                $c->load();
-                $c->dispatch();
+                $this->redirect('login');
             }
 
             // We display the page !
