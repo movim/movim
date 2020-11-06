@@ -414,7 +414,9 @@ class Chat extends \Movim\Widget\Base
                           ->first();
 
             if ($reply) {
-                $m->parentthread = $reply->thread;
+                // See https://xmpp.org/extensions/xep-0201.html#new
+                $m->thread = $reply->thread;
+                $m->parentmid = $reply->mid;
             }
         }
 
@@ -449,7 +451,6 @@ class Chat extends \Movim\Widget\Base
 
         $p->setId($m->id);
         $p->setThreadid($m->thread);
-        $p->setParentthreadid($m->parentthread);
         $p->setOriginid($m->originid);
 
         if ($muc) {

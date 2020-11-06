@@ -20,8 +20,7 @@ class Message
         $parentId = false,
         array $reactions = [],
         $originId = false,
-        $threadid = false,
-        $parentthreadid = false
+        $threadid = false
     ) {
         $session = Session::start();
 
@@ -54,10 +53,6 @@ class Message
         // Thread
         if ($threadid) {
             $thread = $dom->createElement('thread', $threadid);
-
-            if ($parentthreadid) {
-                $thread->setAttribute('parent', $parentthreadid);
-            }
 
             $root->appendChild($thread);
         }

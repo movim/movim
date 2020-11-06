@@ -39,7 +39,7 @@ class Message extends Model
 
     public function parent()
     {
-        return $this->belongsTo('App\Message', 'parentthread', 'thread');
+        return $this->belongsTo('App\Message', 'parentmid', 'mid');
     }
 
     public function from()
@@ -222,8 +222,15 @@ class Message extends Model
             if ($stanza->thread) {
                 $this->thread = (string)$stanza->thread;
 
-                if ($stanza->thread->attributes()->parent) {
-                    $this->parentthread = (string)$stanza->thread->attributes()->parent;
+                // Resolve the parent message if it exists
+                $parent = $this->user->messages()
+                    ->jid($this->jidfrom)
+                    ->where('thread', $this->thread)
+                    ->orderBy('published', 'asc')
+                    ->first();
+
+                if ($parent) {
+                    $this->parentmid = $parent->mid;
                 }
             }
 

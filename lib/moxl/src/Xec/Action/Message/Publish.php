@@ -18,7 +18,6 @@ class Publish extends Action
     protected $_attachid = false;
     protected $_originid = false;
     protected $_threadid = false;
-    protected $_parentthreadid = false;
 
     public function request()
     {
@@ -26,11 +25,11 @@ class Publish extends Action
         if ($this->_muc) {
             Muc::message($this->_to, $this->_content, $this->_html, $this->_id,
                          $this->_file, $this->_attachid, [], $this->_originid,
-                         $this->_threadid, $this->_parentthreadid);
+                         $this->_threadid);
         } else {
             Message::message($this->_to, $this->_content, $this->_html, $this->_id,
                              $this->_replace, $this->_file, $this->_attachid, [],
-                             $this->_originid, $this->_threadid, $this->_parentthreadid);
+                             $this->_originid, $this->_threadid);
         }
     }
 
