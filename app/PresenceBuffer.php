@@ -156,8 +156,7 @@ class PresenceBuffer
 
     public function append(Presence $presence, $call)
     {
-        $key = $this->getPresenceKey($presence);
-        $this->_models[$key] = $presence->toArray();
+        $this->_models[$this->getPresenceKey($presence)] = $presence->toArray();
         $this->_calls->push($call);
     }
 
