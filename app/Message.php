@@ -500,9 +500,10 @@ class Message extends Model
             && (!isset($this->attributes['oldid']) || strlen($this->attributes['oldid']) < 64);
     }
 
+    // toArray is already used
     public function toRawArray()
     {
-        return [
+        $array = [
             'user_id' => $this->attributes['user_id'] ?? null,
             'id' => $this->attributes['id'] ?? null,
             'oldid' => $this->attributes['oldid'] ?? null,
@@ -519,7 +520,6 @@ class Message extends Model
             'displayed' => $this->attributes['displayed'] ?? null,
             'quoted' => $this->attributes['quoted'] ?? false,
             'markable' => $this->attributes['markable'] ?? false,
-            'picture' => $this->attributes['picture'] ?? null,
             'sticker' => $this->attributes['sticker'] ?? null,
             'file' => isset($this->attributes['file']) ? $this->attributes['file'] : null,
             'created_at' => $this->attributes['created_at'] ?? null,
@@ -530,6 +530,24 @@ class Message extends Model
             'originid' => $this->attributes['originid'] ?? null,
             'retracted' => $this->attributes['retracted'] ?? false,
             'resolved' => $this->attributes['resolved'] ?? false,
+            'picture' => $this->attributes['picture'] ?? false,
+            'parentmid' => $this->attributes['parentmid'] ?? null,
         ];
+
+        // Generate a proper mid
+        if (empty($this->attributes['mid'])) {
+            $array['mid'] = $this->getNextStatementId();
+        }
+
+        return $array;
+    }
+
+    public function getNextStatementId()
+    {
+        $next_id = DB::select("select nextval('messages_mid_seq'::regclass)");
+        $val = intval($next_id['0']->nextval);
+
+        \Utils::debug('GENERATED '.$val);
+        return $val;
     }
 }

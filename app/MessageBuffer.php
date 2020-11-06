@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Illuminate\Database\Capsule\Manager as DB;
+
 use App\Message;
 
 class MessageBuffer
@@ -21,16 +23,48 @@ class MessageBuffer
 
     public function __construct()
     {
+        global $loop;
+
         $this->_models = collect();
         $this->_calls = collect();
+
+        $loop->addPeriodicTimer(0.5, function () {
+            $this->save();
+        });
     }
 
     public function save()
     {
         if ($this->_models->isNotEmpty()) {
             try {
+                DB::beginTransaction();
+
+                $this->_models->each(function ($message) {
+                    \Utils::debug('MID INS '.serialize($message['mid']));
+                });
+
+                // We delete all the presences that might already be there
+                $table = DB::table('messages');
+                $first = $this->_models->first();
+                $table = $table->where([
+                    ['user_id', $first['user_id']],
+                    ['jidfrom', $first['jidfrom']],
+                    ['id', $first['id']],
+                ]);
+
+                $this->_models->skip(1)->each(function ($message) use ($table) {
+                    $table->orWhere([
+                        ['user_id', $message['user_id']],
+                        ['jidfrom', $message['jidfrom']],
+                        ['id', $message['id']],
+                    ]);
+                });
+                $table->delete();
+
                 Message::insert($this->_models->toArray());
+                DB::commit();
             } catch (\Exception $e) {
+                DB::rollback();
                 \Utils::error($e->getMessage());
             }
 
@@ -47,12 +81,7 @@ class MessageBuffer
 
     public function append(Message $message, $call)
     {
-        if ($message->created_at == null && $message->updated_at == null) {
-            $this->_models[$message->jidfrom.$message->id] = $message->toRawArray();
-            $this->_calls->push($call);
-        } else {
-            $message->save();
-            $call();
-        }
+        $this->_models[$message->user_id.$message->jidfrom.$message->id] = $message->toRawArray();
+        $this->_calls->push($call);
     }
 }
