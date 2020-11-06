@@ -185,6 +185,11 @@ class Message
                 $reactionsn->appendChild($reaction);
             }
             $root->appendChild($reactionsn);
+
+            // Force the storage of the reactions in the archive
+            $store = $dom->createElement('store');
+            $store->setAttribute('xmlns', 'urn:xmpp:hints');
+            $root->appendChild($store);
         }
 
         if ($originId != false) {
