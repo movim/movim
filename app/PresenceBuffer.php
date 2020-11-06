@@ -71,7 +71,8 @@ class PresenceBuffer
                  */
                 $nodes = collect();
                 $this->_models->each(function ($presence) use (&$nodes) {
-                    $nodes->put($presence['node'], $presence['jid'].'/'.$presence['resource']);
+                    $resource = !empty($presence['resource']) ? '/' . $presence['resource'] : '';
+                    $nodes->put($presence['node'], $presence['jid'] . $resource);
                 });
 
                 $infos = Info::whereIn('node', $nodes->keys())->get();
