@@ -6,7 +6,6 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Moxl\Xec\Action\Disco\Request;
 use Moxl\Xec\Action\Vcard\Get;
 
-use Movim\Picture;
 use App\Presence;
 use App\Info;
 use App\Contact;

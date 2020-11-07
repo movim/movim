@@ -26,6 +26,7 @@ class AddParentMidToMessagesTable extends Migration
         $this->disableForeignKeyCheck();
 
         $this->schema->table('messages', function (Blueprint $table) {
+            $table->dropForeign('messages_parentmid_foreign');
             $table->dropColumn('parentmid');
             $table->string('parentthread', 128)->nullable();
         });

@@ -229,7 +229,7 @@ class Message extends Model
                     ->orderBy('published', 'asc')
                     ->first();
 
-                if ($parent) {
+                if ($parent && $parent->mid != $this->mid) {
                     $this->parentmid = $parent->mid;
                 }
             }
@@ -535,8 +535,11 @@ class Message extends Model
         ];
 
         // Generate a proper mid
-        if (empty($this->attributes['mid'])) {
+        if (empty($this->attributes['mid'])
+        || ($this->attributes['mid'] && $this->attributes['mid'] == 1)) {
             $array['mid'] = $this->getNextStatementId();
+        } else {
+            $array['mid'] = $this->attributes['mid'];
         }
 
         return $array;
@@ -545,9 +548,6 @@ class Message extends Model
     public function getNextStatementId()
     {
         $next_id = DB::select("select nextval('messages_mid_seq'::regclass)");
-        $val = intval($next_id['0']->nextval);
-
-        \Utils::debug('GENERATED '.$val);
-        return $val;
+        return intval($next_id['0']->nextval);
     }
 }
