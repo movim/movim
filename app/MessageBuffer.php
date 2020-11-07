@@ -23,25 +23,21 @@ class MessageBuffer
 
     public function __construct()
     {
-        global $loop;
+        //global $loop;
 
         $this->_models = collect();
         $this->_calls = collect();
 
-        $loop->addPeriodicTimer(0.5, function () {
+        /*$loop->addPeriodicTimer(0.5, function () {
             $this->save();
-        });
+        });*/
     }
 
     public function save()
     {
-        if ($this->_models->isNotEmpty()) {
+        if ($this->_models->count() > 0) {
             try {
                 DB::beginTransaction();
-
-                $this->_models->each(function ($message) {
-                    \Utils::debug('MID INS '.serialize($message['mid']));
-                });
 
                 // We delete all the presences that might already be there
                 $table = DB::table('messages');
@@ -61,11 +57,11 @@ class MessageBuffer
                 });
                 $table->delete();
 
+                \Utils::debug('INSERT '.$this->_models->count());
                 Message::insert($this->_models->toArray());
                 DB::commit();
             } catch (\Exception $e) {
                 DB::rollback();
-                \Utils::error($e->getMessage());
             }
 
             $this->_models = collect();
@@ -81,7 +77,12 @@ class MessageBuffer
 
     public function append(Message $message, $call)
     {
-        $this->_models[$message->user_id.$message->jidfrom.$message->id] = $message->toRawArray();
-        $this->_calls->push($call);
+        //if (empty($message->mid)) {
+            $this->_models[$message->user_id.$message->jidfrom.$message->id] = $message->toRawArray();
+            $this->_calls->push($call);
+        /*} else {
+            $message->save();
+            $call();
+        }*/
     }
 }
