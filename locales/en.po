@@ -98,7 +98,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-17 11:51+0200\n"
+"POT-Creation-Date: 2020-11-09 08:57+0200\n"
 "PO-Revision-Date: 2020-08-07 10:18+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: English (http://www.transifex.com/movim/movim/language/en/)\n"
@@ -1896,7 +1896,8 @@ msgid "No contacts yet?"
 msgstr "No contacts yet?"
 
 #: [search]no_contacts_text
-msgid "Find one by searching for his name or id"
+#, fuzzy
+msgid "Find one by searching for their name or id"
 msgstr "Find one by searching for his name or id"
 
 #: [search]tags

@@ -109,7 +109,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-17 11:51+0200\n"
+"POT-Creation-Date: 2020-11-09 08:57+0200\n"
 "PO-Revision-Date: 2020-08-27 15:19+0000\n"
 "Last-Translator: Nobita Nobi <896876269@qq.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -1907,7 +1907,8 @@ msgid "No contacts yet?"
 msgstr "暂无联系人？"
 
 #: [search]no_contacts_text
-msgid "Find one by searching for his name or id"
+#, fuzzy
+msgid "Find one by searching for their name or id"
 msgstr "通过搜索名字或 id 找人"
 
 #: [search]tags

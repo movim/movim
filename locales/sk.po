@@ -102,7 +102,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-17 11:51+0200\n"
+"POT-Creation-Date: 2020-11-09 08:57+0200\n"
 "PO-Revision-Date: 2020-08-07 10:18+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: Slovak (Slovakia) (http://www.transifex.com/movim/movim/language/sk_SK/)\n"
@@ -1900,7 +1900,8 @@ msgid "No contacts yet?"
 msgstr "Zatiaľ žiadne kontakty?"
 
 #: [search]no_contacts_text
-msgid "Find one by searching for his name or id"
+#, fuzzy
+msgid "Find one by searching for their name or id"
 msgstr "Nájdite niekoho zadaním jeho mena alebo ID"
 
 #: [search]tags
