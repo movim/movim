@@ -19,7 +19,7 @@
         "ext-imagick": "*",
         "ext-json": "*",
 
-        "wikimedia/composer-merge-plugin": "^1.4",
+        "fabiang/sasl": "^1.0.1",
         "rain/raintpl": "^3.1.1",
         "michelf/php-markdown": "^1.9",
 
