@@ -14,6 +14,7 @@ use Ratchet\WebSocket\WsServer;
 
 use Movim\Daemon\Core;
 use Movim\Daemon\Api;
+use Movim\i18n\Locale;
 use App\Configuration;
 
 use Phinx\Migration\Manager;
@@ -92,6 +93,14 @@ class DaemonCommand extends Command
             exit;
         }
 
+        $locale = Locale::start();
+
+        $locale->compileIni();
+        $output->writeln('<info>Compiled hash file</info>');
+        $locale->compilePos();
+        $output->writeln('<info>Compiled po files</info>');
+
+
         $output->writeln('<info>Movim daemon launched</info>');
         $output->writeln('<info>Base URL: '.$baseuri.'</info>');
 
@@ -111,5 +120,7 @@ class DaemonCommand extends Command
         new Api($loop, $socketApi, $core);
 
         (new IoServer($app, $socket, $loop))->run();
+
+        return 0;
     }
 }

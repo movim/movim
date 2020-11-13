@@ -3,9 +3,9 @@
  * Return an array containing all the presents languages in i18n/
  *
  */
-function get_lang_list()
+function getLangList()
 {
-    $lang_list = array(
+    $lang_list = [
         'aa' => "Afar",
         'ab' => "Abkhazian",
         'ach' => "Acholi",
@@ -201,8 +201,7 @@ function get_lang_list()
         'zh' => "&#20013;&#25991;", // chinois (ecriture simplifiee)
         'zh_tw' => "&#21488;&#28771;&#20013;&#25991;", // chinois taiwan (ecr. traditionnelle)
         'zu' => "Zulu"
-
-    );
+    ];
 
     return $lang_list;
 }

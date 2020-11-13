@@ -231,12 +231,12 @@ class Chats extends Base
             $messages = collect();
 
             $jidFromToMessages = DB::table('messages')
-            ->where('user_id', $this->user->id)
-            ->whereIn('jidfrom', array_keys($chats))
-            ->unionAll(DB::table('messages')
                 ->where('user_id', $this->user->id)
-                ->whereIn('jidto', array_keys($chats))
-            );
+                ->whereIn('jidfrom', array_keys($chats))
+                ->unionAll(DB::table('messages')
+                    ->where('user_id', $this->user->id)
+                    ->whereIn('jidto', array_keys($chats))
+                );
 
             $selectedMessages = $this->user->messages()
                 ->joinSub(
@@ -284,7 +284,9 @@ class Chats extends Base
         return $view->draw('_chats_empty_item');
     }
 
-    public function prepareChat(string $jid, App\Contact $contact, App\Roster $roster = null, App\Message $message = null, $status = null, $active = false)
+    public function prepareChat(
+        string $jid, App\Contact $contact, App\Roster $roster = null,
+        App\Message $message = null, $status = null, $active = false)
     {
         if (!$this->validateJid($jid)) {
             return;

@@ -9,8 +9,22 @@ class Locale
     public $language;
     public $hash = [];
 
+    private $iniCache = CACHE_PATH.'locales.ini.cache';
+
     private function __construct()
     {
+        if (file_exists($this->iniCache)) {
+            include $this->iniCache;
+            $this->hash = $hashes;
+        } else {
+            $this->compileIni();
+            $this->compilePos();
+        }
+    }
+
+    public function compileIni()
+    {
+        $this->hash = [];
         $this->loadIni(
             LOCALES_PATH . 'locales.ini',
             true,
@@ -23,6 +37,32 @@ class Locale
             if (file_exists($path)) {
                 $this->loadIni($path);
             }
+        }
+
+        $locales = fopen($this->iniCache, "w") or die("Unable to open file!");
+        fwrite($locales, '<?php' . PHP_EOL . '$hashes = '.var_export($this->hash,true) . ';' . PHP_EOL . '?>');
+        fclose($locales);
+    }
+
+    public function compilePos()
+    {
+        // Clear
+        foreach (
+            glob(
+                CACHE_PATH.
+                '*.po.cache',
+                GLOB_NOSORT
+            ) as $cacheFile) {
+            @unlink($cacheFile);
+        }
+
+        // Cache
+        foreach (array_keys($this->getList()) as $language) {
+            $this->load($language);
+
+            $locales = fopen(CACHE_PATH.$language.'.po.cache', "w") or die("Unable to open file!");
+            fwrite($locales, '<?php' . PHP_EOL . '$translations = '.var_export($this->translations,true) . ';' . PHP_EOL . '?>');
+            fclose($locales);
         }
     }
 
@@ -59,14 +99,14 @@ class Locale
     {
         require_once('languages.php');
 
-        $lang_list = get_lang_list();
+        $langList = getLangList();
         $dir = scandir(LOCALES_PATH);
         $po = [];
         foreach ($dir as $files) {
             $explode = explode('.', $files);
             if (end($explode) == 'po'
-            && array_key_exists($explode[0], $lang_list)) {
-                $po[$explode[0]] = $lang_list[$explode[0]];
+            && array_key_exists($explode[0], $langList)) {
+                $po[$explode[0]] = $langList[$explode[0]];
             }
         }
 
@@ -87,6 +127,7 @@ class Locale
         }
 
         $arr = explode('.', $key);
+
         if (is_array($this->hash)
         && array_key_exists($arr[0], $this->hash)
         && array_key_exists($arr[1], $this->hash[$arr[0]])) {
@@ -186,6 +227,14 @@ class Locale
      */
     public function loadPo()
     {
+        // Load from the cache
+        $cacheFile = CACHE_PATH . $this->language . '.po.cache';
+        if (file_exists($cacheFile) && is_readable($cacheFile)) {
+            include $cacheFile;
+            $this->translations = $translations;
+            return;
+        }
+
         $pofile = LOCALES_PATH . $this->language . '.po';
 
         if (!file_exists($pofile) || !is_readable($pofile)) {

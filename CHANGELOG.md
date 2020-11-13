@@ -17,6 +17,7 @@ v0.18.1 (trunk)
  * Handle vcard-temp avatars refresh in PresenceBuffer to also save some SQL requests
  * Add ~1500 new emojis to the Javascript selector
  * Implement XEP-0201: Best Practices for Message Threads and add Reply feature
+ * Add a cache for translations, refreshed when the daemon is launched or by a explicit command
 
 v0.18
 ---------------------------
