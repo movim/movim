@@ -20,6 +20,7 @@ class Route extends Base
                 'ajax'          => false,
                 'ajaxd'         => false,
                 'admin'         => false,
+                'adminlogin'    => false,
                 'blog'          => ['f', 'i'],
                 'chat'          => ['f', 'r'],
                 'community'     => ['s', 'n', 'i'],

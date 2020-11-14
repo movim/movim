@@ -11,7 +11,7 @@ class AdminController extends Base
         if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
             $this->page->setTitle(__('page.administration'));
         } else {
-            $this->name = 'adminlogin';
+            $this->redirect('adminlogin');
         }
     }
 }

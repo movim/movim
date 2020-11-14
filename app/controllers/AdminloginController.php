@@ -8,6 +8,7 @@ class AdminloginController extends Base
     public function dispatch()
     {
         $this->page->setTitle(__('page.administration'));
+        session_start();
 
         $configuration = Configuration::findOrNew(1);
 
@@ -16,7 +17,10 @@ class AdminloginController extends Base
         && (password_verify($_POST['password'], $configuration->password)
             || $configuration->password == sha1($_POST['password']))) {
             $_SESSION['admin'] = true;
-            $this->name = 'admin';
+        }
+
+        if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
+            $this->redirect('admin');
         }
     }
 }

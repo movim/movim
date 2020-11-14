@@ -47,7 +47,8 @@
     "config": {
         "platform": {
             "php": "7.3"
-        }
+        },
+        "optimize-autoloader": true
     },
     "scripts": {
         "movim:migrate": "vendor/bin/phinx migrate --ansi",
@@ -56,12 +57,5 @@
     "scripts-descriptions": {
         "movim:migrate": "Migrate the database",
         "movim:rollback": "Rollback the changes"
-    },
-    "extra": {
-        "merge-plugin": {
-            "include": [
-                "lib/moxl/composer.json"
-            ]
-        }
     }
 }
