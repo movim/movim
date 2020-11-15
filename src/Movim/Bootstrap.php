@@ -187,10 +187,6 @@ class Bootstrap
 
             $dispatcher = new Dispatcher(new Container);
             $dispatcher->listen('Illuminate\Database\Events\QueryExecuted', function ($query) use (&$sqlQueryExecuted) {
-                if (strstr($query->sql, 'presences')) {
-                    \Utils::error($query->sql);
-                    \Utils::error(serialize($query->bindings));
-                }
                 $sqlQueryExecuted = time();
             });
 
