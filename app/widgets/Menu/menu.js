@@ -6,17 +6,17 @@ var Menu = {
         if (parts.hash != '') {
             switch (parts.hash) {
                 case 'communities':
-                    Menu_ajaxGetNews(page);
+                    Menu_ajaxHttpGetNews(page);
                     break;
                 case 'contacts':
-                    Menu_ajaxGetFeed(page);
+                    Menu_ajaxHttpGetFeed(page);
                     break;
                 case 'blog':
-                    Menu_ajaxGetMe(page);
+                    Menu_ajaxHttpGetMe(page);
                     break;
             }
         } else {
-            Menu_ajaxGetAll(page);
+            Menu_ajaxHttpGetAll(page);
         }
     },
 

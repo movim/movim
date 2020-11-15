@@ -19,6 +19,7 @@ v0.18.1 (trunk)
  * Implement XEP-0201: Best Practices for Message Threads and add Reply feature
  * Add a cache for translations, refreshed when the daemon is launched or by a explicit command
  * Make NewsNav asynchrone
+ * Make Menu pure Ajax HTTP based
 
 v0.18
 ---------------------------

@@ -120,27 +120,27 @@ class Menu extends Base
         }
     }
 
-    public function ajaxGetAll($page = 0)
+    public function ajaxHttpGetAll($page = 0)
     {
         $this->ajaxGet('all', null, null, $page);
     }
 
-    public function ajaxGetNews($page = 0)
+    public function ajaxHttpGetNews($page = 0)
     {
         $this->ajaxGet('news', null, null, $page);
     }
 
-    public function ajaxGetFeed($page = 0)
+    public function ajaxHttpGetFeed($page = 0)
     {
         $this->ajaxGet('feed', null, null, $page);
     }
 
-    public function ajaxGetNode($server = null, $node = null, $page = 0)
+    public function ajaxHttpGetNode($server = null, $node = null, $page = 0)
     {
         $this->ajaxGet('node', $server, $node, $page);
     }
 
-    public function ajaxGetMe($page = 0)
+    public function ajaxHttpGetMe($page = 0)
     {
         $this->ajaxGet('me', null, null, $page);
     }
