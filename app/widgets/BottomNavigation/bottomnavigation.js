@@ -1,1 +1,5 @@
-MovimWebsocket.initiate(() => BottomNavigation_ajaxHttpRefresh());
+MovimWebsocket.initiate(() => {
+    if (MovimUtils.isMobile()) {
+        BottomNavigation_ajaxHttpRefresh()
+    }
+});

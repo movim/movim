@@ -252,8 +252,8 @@ var Chat = {
                     return;
                 }
 
-                if ((window.matchMedia('(max-width: 1024px)').matches && !event.shiftKey)
-                || (window.matchMedia('(min-width: 1025px)').matches && event.shiftKey)) {
+                if ((MovimUtils.isMobile() && !event.shiftKey)
+                || (!MovimUtils.isMobile() && event.shiftKey)) {
                     return;
                 }
 

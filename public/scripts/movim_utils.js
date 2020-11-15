@@ -25,6 +25,9 @@ var MovimUtils = {
     cleanupId: function(string) {
         return 'id-' + string.replace(/([^a-z0-9]+)/gi, '-').toLowerCase();
     },
+    isMobile: function() {
+        return window.matchMedia('(max-width: 1024px)').matches;
+    },
     disconnect: function() {
         window.location.replace(ERROR_URI);
     },

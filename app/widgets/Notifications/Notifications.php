@@ -159,6 +159,7 @@ class Notifications extends Base
         ->orderBy('published', 'desc')
         ->limit(30)
         ->get();
+
         $since = \App\Cache::c('notifs_since');
         if (!$since) {
             $since = date(MOVIM_SQL_DATE, 0);
