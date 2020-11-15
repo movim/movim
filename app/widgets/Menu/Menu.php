@@ -4,6 +4,8 @@ use Movim\Widget\Base;
 
 include_once WIDGETS_PATH.'Post/Post.php';
 
+use Illuminate\Database\Capsule\Manager as DB;
+
 class Menu extends Base
 {
     private $_paging = 10;
@@ -37,10 +39,16 @@ class Menu extends Base
 
         if ($since) {
             $count = \App\Post::whereIn('id', function ($query) {
-                $query = $query->select('id')->from('posts');
-                $query = \App\Post::withContactsScope($query);
-                $query = \App\Post::withMineScope($query);
-                $query = \App\Post::withSubscriptionsScope($query);
+                $filters = DB::table('posts')->where('id', -1);
+
+                $filters = \App\Post::withMineScope($filters);
+                $filters = \App\Post::withContactsScope($filters);
+                $filters = \App\Post::withSubscriptionsScope($filters);
+
+                $query->select('id')->from(
+                    $filters,
+                    'posts'
+                );
             })->withoutComments()->where('published', '>', $since)->count();
         } else {
             $count = 0;
@@ -158,10 +166,16 @@ class Menu extends Base
         $view = $this->tpl();
 
         $posts = \App\Post::whereIn('id', function ($query) {
-            $query = $query->select('id')->from('posts');
-            $query = \App\Post::withContactsScope($query);
-            $query = \App\Post::withMineScope($query);
-            $query = \App\Post::withSubscriptionsScope($query);
+            $filters = DB::table('posts')->where('id', -1);
+
+            $filters = \App\Post::withMineScope($filters);
+            $filters = \App\Post::withContactsScope($filters);
+            $filters = \App\Post::withSubscriptionsScope($filters);
+
+            $query->select('id')->from(
+                $filters,
+                'posts'
+            );
         });
 
         $since = \App\Cache::c('since');
@@ -180,16 +194,21 @@ class Menu extends Base
         $items = \App\Post::skip($page * $this->_paging + $count)->withoutComments();
 
         $items->whereIn('id', function ($query) use ($type) {
-            $query = $query->select('id')->from('posts');
+            $filters = DB::table('posts')->where('id', -1);
 
             if (in_array($type, ['all', 'feed'])) {
-                $query = \App\Post::withContactsScope($query);
-                $query = \App\Post::withMineScope($query);
+                $filters = \App\Post::withContactsScope($filters);
+                $filters = \App\Post::withMineScope($filters);
             }
 
             if (in_array($type, ['all', 'news'])) {
-                $query = \App\Post::withSubscriptionsScope($query);
+                $filters = \App\Post::withSubscriptionsScope($filters);
             }
+
+            $query->select('id')->from(
+                $filters,
+                'posts'
+            );
         });
 
         $view->assign('previous', $this->route('news', $page-1));

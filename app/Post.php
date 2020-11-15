@@ -178,12 +178,14 @@ class Post extends Model
 
     protected function withContactsScope($query)
     {
-        return $query->orWhereIn('posts.server', function ($query) {
-            $query->from('rosters')
-                  ->select('jid')
-                  ->where('session_id', SESSION_ID)
-                  ->where('subscription', 'both');
-        });
+        return $query->unionAll(DB::table('posts')
+            ->whereIn('posts.server', function ($query) {
+                $query->from('rosters')
+                    ->select('jid')
+                    ->where('session_id', SESSION_ID)
+                    ->where('subscription', 'both');
+            })
+        );
     }
 
     public function scopeWithContacts($query)
@@ -193,12 +195,10 @@ class Post extends Model
 
     protected function withMineScope($query)
     {
-        return $query->orWhereIn('id', function ($query) {
-            $query->select('id')
-                  ->from('posts')
-                  ->where('node', 'urn:xmpp:microblog:0')
-                  ->where('server', \App\User::me()->id);
-        });
+        return $query->unionAll(DB::table('posts')
+            ->where('node', 'urn:xmpp:microblog:0')
+            ->where('server', \App\User::me()->id)
+        );
     }
 
     public function scopeWithMine($query)
@@ -208,20 +208,18 @@ class Post extends Model
 
     protected function withSubscriptionsScope($query)
     {
-        return $query->orWhereIn('id', function ($query) {
-            $query->select('id')
-                  ->from('posts')
-                  ->whereIn('server', function ($query) {
-                      $query->select('server')
-                          ->from('subscriptions')
-                          ->where('jid', \App\User::me()->id);
-                  })
-                  ->whereIn('node', function ($query) {
-                      $query->select('node')
-                          ->from('subscriptions')
-                          ->where('jid', \App\User::me()->id);
-                  });
-        });
+        return $query->unionAll(DB::table('posts')
+            ->whereIn('server', function ($query) {
+                $query->select('server')
+                    ->from('subscriptions')
+                    ->where('jid', \App\User::me()->id);
+            })
+            ->whereIn('node', function ($query) {
+                $query->select('node')
+                    ->from('subscriptions')
+                    ->where('jid', \App\User::me()->id);
+            })
+        );
     }
 
     public function scopeWithSubscriptions($query)

@@ -73,11 +73,16 @@ class Search extends Base
                           ->whereIn('tag_id', $tagIds);
                 })
                 ->whereIn('id', function ($query) {
-                    $query = $query->select('id')->from('posts');
+                    $filters = DB::table('posts')->where('id', -1);
 
-                    $query = Post::withContactsScope($query);
-                    $query = Post::withMineScope($query);
-                    $query = Post::withSubscriptionsScope($query);
+                    $filters = \App\Post::withMineScope($filters);
+                    $filters = \App\Post::withContactsScope($filters);
+                    $filters = \App\Post::withSubscriptionsScope($filters);
+
+                    $query->select('id')->from(
+                        $filters,
+                        'posts'
+                    );
                 })
                 ->orderBy('published', 'desc')
                 ->take(5)
