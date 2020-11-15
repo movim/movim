@@ -24,8 +24,10 @@ class Presence extends Payload
             && isset($stanza->attributes()->id)) {
             // Let's drop errors with an id, useless for us
         } else {
+            \Utils::error('FIND');
             $presence = DBPresence::findByStanza($stanza);
             $presence->set($stanza);
+            \Utils::error('SETTED');
 
             PresenceBuffer::getInstance()->append($presence, function () use ($presence, $stanza) {
                 if ($presence->muc
@@ -53,6 +55,7 @@ class Presence extends Payload
                                 $this->method('unavailable_handle');
                                 $this->pack($presence);
                             }
+                            \Utils::error('DELIVERED');
 
                             $this->deliver();
                             break;

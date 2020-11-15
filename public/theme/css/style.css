@@ -164,7 +164,7 @@ main > div.large > * {
 }
 
 main > aside {
-    max-width: 45rem;
+    width: 45rem;
 }
 
 main > aside + div {
