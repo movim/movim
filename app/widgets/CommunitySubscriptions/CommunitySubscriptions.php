@@ -6,6 +6,11 @@ class CommunitySubscriptions extends Base
 {
     private $_list_server;
 
+    public function load()
+    {
+        $this->addjs('communitysubscriptions.js');
+    }
+
     public function checkNewServer($node)
     {
         $r = ($this->_list_server != $node->server);
@@ -13,7 +18,7 @@ class CommunitySubscriptions extends Base
         return $r;
     }
 
-    public function prepareSubscriptions()
+    public function ajaxHttpGet()
     {
         $view = $this->tpl();
         $view->assign('subscriptions', $this->user->subscriptions()
@@ -21,6 +26,6 @@ class CommunitySubscriptions extends Base
             ->orderBy('server')->orderBy('node')
             ->get());
 
-        return $view->draw('_communitysubscriptions');
+        $this->rpc('MovimTpl.fill', '#subscriptions', $view->draw('_communitysubscriptions'));
     }
 }
