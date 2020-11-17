@@ -6,7 +6,7 @@
     width: 100%;
     height: calc(100% - 7rem);
     box-shadow: 0 2.5rem 5rem rgba(0,0,0,0.30), 0 2rem 1.5rem rgba(0,0,0,0.22);
-    transition: transform .25s var(--decelerate-easing);
+    transition: transform .25s ease-in-out, opacity .25s ease-in-out;
 }
 
 .drawer + .drawer_close.button.color {
@@ -42,8 +42,9 @@
 }
 
 .drawer.empty {
-    transition-timing-function: var(--accelerate-easing);
-    transform: translateY(100%);
+    transition-timing-function: ease-in-out;
+    transform: translateY(10%);
+    opacity: 0;
     pointer-events: none;
 }
 

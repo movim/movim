@@ -1,4 +1,4 @@
-.contact_data ul.list:first-child li:first-child img {
+.contact_data ul.list:first-child li:first-child img.avatar {
     height: 25rem;
     margin-left: 5rem;
     display: inline-block;
