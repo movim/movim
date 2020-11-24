@@ -73,11 +73,14 @@ body.nightmode .toast {
 }
 
 .snackbar#status_websocket:not(.hide) ~ main,
-.snackbar#status_websocket:not(.hide) ~ div.drawer,
 .snackbar#status_websocket:not(.hide) ~ div.dialog {
     opacity: 0.5;
     pointer-events: none;
     filter: grayscale(1);
+}
+
+.snackbar#status_websocket:not(.hide) ~ div.drawer {
+    opacity: 0;
 }
 
 .snackbar#status_websocket span.control {

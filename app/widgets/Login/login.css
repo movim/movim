@@ -49,6 +49,10 @@ body main {
     display: block;
 }
 
+#login_widget li.info {
+    padding: 0.5rem 0;
+}
+
 #login_widget span.info,
 #login_widget li.info p {
     text-align: center;
@@ -59,6 +63,10 @@ body main {
     line-height: 4rem;
     display: block;
     margin-bottom: 1.25rem;
+}
+
+#login_widget form {
+    margin-top: 1rem;
 }
 
 #login_widget form > div:last-child {

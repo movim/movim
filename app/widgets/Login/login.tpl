@@ -20,7 +20,6 @@
 
     <div id="form" class="dialog">
         <section>
-            <h3>{$c->__('page.login')}</h3>
             {if="$invitation != null"}
                 <br />
                 <ul class="list middle invite">
@@ -60,6 +59,25 @@
                         placeholder="{$c->__('form.password')}"/>
                     <label for="password">{$c->__('form.password')}</label>
                 </div>
+
+                <ul class="list thin">
+                    <li class="info">
+                        <div>
+                            <p></p>
+                            <p class="center">
+                                {if="!empty($whitelist)"}
+                                    {$c->__('form.whitelist_info')} :
+                                    {loop="$whitelist"}
+                                        {$value}
+                                    {/loop}
+                                {else}
+                                    {$c->__('form.connect_info')}
+                                {/if}
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+
                 <div>
                     <ul class="list thin">
                         <li>
@@ -89,20 +107,6 @@
                         {autoescape="off"}
                             {$info}
                         {/autoescape}
-                    </div>
-                </li>
-            </ul>
-            {/if}
-
-            {if="!empty($whitelist)"}
-            <ul class="list thin">
-                <li class="info">
-                    <div>
-                        <p></p>
-                        <p class="center normal">{$c->__('form.whitelist_info')} :
-                        {loop="$whitelist"}
-                            {$value}
-                        {/loop}</p>
                     </div>
                 </li>
             </ul>
