@@ -104,6 +104,9 @@ var Notification = {
 
             if (typeof window.electron !== 'undefined')
                 window.electron.notification(false);
+
+            if (typeof window.rambox !== 'undefined')
+                window.rambox.setUnreadCount(0);
         } else {
             document.title =
                 Notification.tab_counter1
@@ -116,6 +119,9 @@ var Notification = {
 
             if (typeof window.electron !== 'undefined')
                 window.electron.notification(Notification.tab_counter1 + Notification.tab_counter2);
+
+            if (typeof window.rambox !== 'undefined')
+                window.rambox.setUnreadCount(Notification.tab_counter1 + Notification.tab_counter2);
         }
     },
     current : function(key) {
