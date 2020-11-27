@@ -30,6 +30,7 @@
                         {$conference->name|firstLetterCapitalize|addEmojis}
                     {/autoescape}
             {/if}
+            {if="$conference"}
                 {if="$conference->isGroupChat()"}
                     {$count = $conference->members()->count()}
                     <span class="counter alt">
@@ -41,6 +42,7 @@
                         {if="$count > 99"}99+{else}{$count}{/if}
                     </span>
                 {/if}
+            {/if}
                 </span>
 
             {if="$conference && $conference->info && $conference->info->related"}
