@@ -22,7 +22,7 @@
                 <ul class="list middle">
                     <li>
                         <div>
-                            <p class="center"><?php echo __('page.communities'); ?></p>
+                            <p class="center"><?php echo __('page.explore'); ?></p>
                             <p class="center line"><?php echo __('communities.empty_text'); ?></p>
                         </div>
                     </li>

@@ -29,11 +29,11 @@
     {/if}
     <a class="classic"
        href="{$c->route('community')}"
-       title="{$c->__('page.communities')}">
+       title="{$c->__('page.explore')}">
         <li {if="$page == 'community'"}class="active"{/if}>
-            <span class="primary icon"><i class="material-icons">group_work</i></span>
+            <span class="primary icon"><i class="material-icons">explore</i></span>
             <div>
-                <p class="normal">{$c->__('page.communities')}</p>
+                <p class="normal">{$c->__('page.explore')}</p>
             </div>
         </li>
     </a>

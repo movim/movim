@@ -17,9 +17,9 @@
     {/if}
     <li {if="$page == 'community'"}class="active"{/if}
         onclick="MovimUtils.reload('{$c->route('community')}')"
-        title="{$c->__('page.communities')}"
+        title="{$c->__('page.explore')}"
     >
-        <span class="primary icon"><i class="material-icons">group_work</i></span>
+        <span class="primary icon"><i class="material-icons">explore</i></span>
     </li>
     <li onclick="Search_ajaxRequest()"
         title="{$c->__('button.search')}"

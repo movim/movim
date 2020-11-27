@@ -21,7 +21,6 @@ class Communities extends Base
         $view = $this->tpl();
 
         $posts = \App\Post::withoutComments()
-            ->restrictToCommunities()
             ->restrictNSFW()
             ->restrictUserHost()
             ->recents()

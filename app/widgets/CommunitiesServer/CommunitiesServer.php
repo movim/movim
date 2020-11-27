@@ -118,12 +118,35 @@ class CommunitiesServer extends \Movim\Widget\Base
     {
         $item = \App\Info::where('server', $origin)->where('node', '')->first();
 
+        $nodes = \App\Info::where('infos.server', $origin)
+            ->where('infos.node', '!=', '')
+            ->leftJoinSub(
+                function ($query) use ($origin) {
+                    $query->selectRaw('max(published) as published, server, node')
+                        ->from('posts')
+                        ->where('posts.server', $origin)
+                        ->groupBy(['server', 'node']);
+                },
+                'recents',
+                function ($join) {
+                    $join->on('recents.server', 'infos.server')
+                        ->on('recents.node', 'infos.node');
+                }
+            )->orderBy('published', 'desc')
+            ->get(['infos.*', 'published']);
+
+        // Lets push back the null content last
+        $nodes = $nodes->reject(function($node){
+            return $node->published == null;
+        })
+        ->merge($nodes->filter(function($node){
+            return $node->published == null;
+            })
+        );
+
         $view = $this->tpl();
         $view->assign('item', $item);
-        $view->assign('nodes', \App\Info::where('server', $origin)
-                                        ->where('node', '!=', '')
-                                        ->orderBy('occupants', 'desc')
-                                        ->get());
+        $view->assign('nodes', $nodes);
         $view->assign('server', $origin);
 
         if (isset($item->name)) {
