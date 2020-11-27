@@ -14,15 +14,20 @@ class NewsNav extends Base
     public function ajaxHttpGet($page, $server)
     {
         $view = $this->tpl();
-        $blogs = \App\Post::where('open', true)
-                          ->orderBy('posts.published', 'desc')
-                          ->restrictToMicroblog()
-                          ->restrictUserHost()
-                          ->restrictNSFW()
-                          ->recents()
-                          ->take(6)
-                          ->get()
-                          ->shuffle();
+
+        $blogs = collect();
+
+        if ($page == 'news') {
+            $blogs = \App\Post::where('open', true)
+                ->orderBy('posts.published', 'desc')
+                ->restrictToMicroblog()
+                ->restrictUserHost()
+                ->restrictNSFW()
+                ->recents()
+                ->take(6)
+                ->get()
+                ->shuffle();
+        }
 
         $view->assign('blogs', $blogs);
 

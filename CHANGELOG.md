@@ -20,6 +20,9 @@ v0.18.1 (trunk)
  * Add a cache for translations, refreshed when the daemon is launched or by a explicit command
  * Make NewsNav asynchrone
  * Make Menu pure Ajax HTTP based
+ * Add "More" button in Communities
+ * Order Communities in Servers by last published
+ * Rename Communities page in Explore
 
 v0.18
 ---------------------------

@@ -1,4 +1,4 @@
-{if="$page == 'news'"}
+{if="$blogs->isNotEmpty()"}
     <ul class="list active middle card shadow">
         <li class="subheader">
             <div>
@@ -24,7 +24,7 @@
         </span>
         {/if}
         <div>
-            <p>{$c->__('page.communities')}</p>
+            <p>{$c->__('page.explore')}</p>
         </div>
     </li>
 

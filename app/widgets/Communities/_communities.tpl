@@ -67,10 +67,8 @@
 <br />
 {/if}
 
-<ul class="list flex third middle active card">
-    {loop="$posts"}
-        {autoescape="off"}
-            {$c->prepareTicket($value)}
-        {/autoescape}
-    {/loop}
-</ul>
+<div id="communities_posts">
+    {autoescape="off"}
+        {$c->preparePosts()}
+    {/autoescape}
+</div>
