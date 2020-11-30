@@ -22,7 +22,7 @@ class Menu extends Base
 
     public function onRetract($packet)
     {
-        $this->ajaxGetAll();
+        $this->ajaxHttpGetAll();
     }
 
     public function onStream($count)
