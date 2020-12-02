@@ -305,6 +305,14 @@ function typeIsPicture(string $type): bool
 }
 
 /**
+ * Check if the mimetype is a video
+ */
+function typeIsVideo(string $type): bool
+{
+    return in_array($type, ['video/webm', 'video/mp4']);
+}
+
+/**
  * Check if the mimetype is an audio file
  */
 function typeIsAudio(string $type): bool

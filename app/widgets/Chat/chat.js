@@ -980,6 +980,13 @@ var Chat = {
         div.setAttribute('class', 'file');
 
         if (file.name) {
+            if (file.type == 'video/webm' || file.type == 'video/mp4') {
+                var video = document.createElement('video');
+                video.setAttribute('src', file.uri);
+                video.setAttribute('controls', 'controls');
+                div.appendChild(video);
+            }
+
             var a = document.createElement('a');
 
             if (sticker == null) {

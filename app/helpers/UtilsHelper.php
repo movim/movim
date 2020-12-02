@@ -659,10 +659,16 @@ function resolvePictureFileFromUrl(string $url)
 
         if ($headers['http_code'] == 200
         && isset($headers['content_type'])
-        && typeIsPicture($headers['content_type'])
+        && (typeIsPicture($headers['content_type']) || typeIsVideo($headers['content_type']))
         && $headers['download_content_length'] > 100) {
+            $name = '';
+            $path = parse_url($url, PHP_URL_PATH);
+            if ($path) {
+                $name = basename($path);
+            }
+
             $file = new \stdClass;
-            $file->name = $url;
+            $file->name = !empty($name) ? $name : $url;
             $file->type = $headers['content_type'];
             $file->size = $headers['download_content_length'];
             $file->uri  = $url;

@@ -23,6 +23,7 @@ v0.18.1 (trunk)
  * Add "More" button in Communities
  * Order Communities in Servers by last published
  * Rename Communities page in Explore
+ * Add WebM and H264 video embedding support in the Chat
 
 v0.18
 ---------------------------

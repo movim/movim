@@ -219,12 +219,17 @@ main:not(.enabled) #chat_widget {
     cursor: pointer;
 }
 
-#chat_widget li div.bubble.sticker img:not(.emoji):not(.hfr) {
+#chat_widget li div.bubble.sticker img:not(.emoji):not(.hfr),
+#chat_widget ul li div.bubble.file video {
     border-radius: 0.5rem;
     margin-bottom: 0.5rem;
     margin-top: 0.5rem;
     width: auto;
     max-height: 150px;
+}
+
+#chat_widget ul li div.bubble.file video {
+    display: block;
 }
 
 #chat_widget li div.bubble.sticker.file img:not(.emoji):not(.hfr) {
@@ -425,10 +430,12 @@ main:not(.enabled) #chat_widget {
     transform: translate(-1.5rem, -0.25rem);
 }
 
+#chat_widget li:not(.oppose) .bubble.file div:hover ul.reactions:empty ~ span.reaction,
 #chat_widget li:not(.oppose) .bubble.sticker div:hover ul.reactions:empty ~ span.reaction {
     transform: translate(-1.5rem, -3.75rem);
 }
 
+#chat_widget li:not(.oppose) .bubble.file div:hover ul.reactions:empty ~ span.reply,
 #chat_widget li:not(.oppose) .bubble.sticker div:hover ul.reactions:empty ~ span.reply {
     transform: translate(-1.5rem, -3.75rem);
 }
