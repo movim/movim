@@ -7,7 +7,7 @@
                 </p>
             </div>
             <span class="control icon active gray" onclick="Rooms.toggleEdit()">
-                <i class="material-icons flip-hor">view_list</i>
+                <i class="material-icons">rule</i>
             </span>
         </li>
     </ul>
