@@ -109,9 +109,14 @@ class Chat extends \Movim\Widget\Base
         }
 
         if ($message->file) {
-            $rawbody = (typeIsPicture($message->file['type']))
-                ? '🖼️ ' . $this->__('chats.picture')
-                : '📄 ' . $this->__('avatar.file');
+            $rawbody = '📄 ' . $this->__('avatar.file');
+
+            if (typeIsPicture($message->file['type'])) {
+                $rawbody = '🖼️ ' . $this->__('chats.picture');
+            }
+            if (typeIsVideo($message->file['type'])) {
+                $rawbody = '🎞️ ' . $this->__('chats.video');
+            }
         }
 
         if ($message->user_id == $message->jidto
