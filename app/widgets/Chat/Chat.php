@@ -990,8 +990,13 @@ class Chat extends \Movim\Widget\Base
             }
 
             $url = parse_url($message->file['uri']);
+
             // Other image websites
             if (\array_key_exists('host', $url)) {
+                $file = $message->file;
+                $file['host'] = $url['host'];
+                $message->file = $file;
+
                 switch ($url['host']) {
                     case 'i.imgur.com':
                         $thumb = getImgurThumbnail($message->file['uri']);

@@ -319,12 +319,26 @@ main:not(.enabled) #chat_widget {
     padding: 1rem 0;
 }
 
+#chat_widget div.file:not(.bubble) p {
+    max-width: 31rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    line-height: 1.25rem;
+}
+
+#chat_widget div.file:not(.bubble) p ~ span.host:before {
+    content: '';
+    height: 0;
+    display: block;
+}
+
 #chat_widget div.file:not(.bubble) span.size {
     display: inline-block;
     margin-right: 5rem;
 }
 
-#chat_widget div.file:not(.bubble) p + span.size:before {
+#chat_widget div.file:not(.bubble) p ~ span.size:before {
     content: '–';
     margin: 0 0.75rem;
 }

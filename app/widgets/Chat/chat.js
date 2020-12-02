@@ -992,6 +992,7 @@ var Chat = {
             if (sticker == null) {
                 var link = document.createElement('p');
                 link.textContent = file.name;
+                link.setAttribute('title', file.name);
                 a.appendChild(link);
             }
             a.setAttribute('href', file.uri);
@@ -999,6 +1000,14 @@ var Chat = {
             a.setAttribute('rel', 'noopener');
 
             div.appendChild(a);
+
+            if (file.host) {
+                var host = document.createElement('span');
+                host.innerHTML = file.host;
+                host.setAttribute('class', 'host');
+
+                a.appendChild(host);
+            }
 
             var span = document.createElement('span');
             span.innerHTML = file.cleansize;
