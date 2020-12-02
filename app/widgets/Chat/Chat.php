@@ -1028,12 +1028,15 @@ class Chat extends \Movim\Widget\Base
         // Parent
         if ($message->parent) {
             if ($message->parent->file) {
-                $message->parent->body = (typeIsPicture($message->parent->file['type']))
-                    ? '<i class="material-icons">image</i> '.__('chats.picture')
-                    : '<i class="material-icons">insert_drive_file</i> '.__('avatar.file');
-            }
+                $message->parent->body = '<i class="material-icons">insert_drive_file</i> '.__('avatar.file');
 
-            // Resolve the parent from
+                if (typeIsPicture($message->parent->file['type'])) {
+                    $message->parent->body = '<i class="material-icons">image</i> '.__('chats.picture');
+                }
+                if (typeIsVideo($message->parent->file['type'])) {
+                    $message->parent->body = '<i class="material-icons">local_movies</i> '.__('chats.video');
+                }
+            }
 
             if ($message->parent->type == 'groupchat') {
                 $message->parent->resolveColor();

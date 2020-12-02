@@ -22,6 +22,8 @@
                     <p class="line">
                         {if="typeIsPicture($message->file['type'])"}
                             <i class="material-icons">image</i> {$c->__('chats.picture')}
+                        {elseif="typeIsVideo($message->file['type'])"}
+                            <i class="material-icons">local_movies</i> {$c->__('chats.video')}
                         {else}
                             <i class="material-icons">insert_drive_file</i> {$c->__('avatar.file')}
                         {/if}
