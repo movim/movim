@@ -338,7 +338,7 @@ main:not(.enabled) #chat_widget {
     margin-right: 5rem;
 }
 
-#chat_widget div.file:not(.bubble) p ~ span.size:before {
+#chat_widget div.file:not(.bubble) span.size:before {
     content: '–';
     margin: 0 0.75rem;
 }
