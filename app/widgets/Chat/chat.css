@@ -324,7 +324,7 @@ main:not(.enabled) #chat_widget {
     text-overflow: ellipsis;
     white-space: nowrap;
     display: inline-block;
-    line-height: 1.25rem;
+    margin-bottom: -0.5rem;
 }
 
 #chat_widget div.file:not(.bubble) p ~ span.host:before {
