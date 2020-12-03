@@ -984,7 +984,19 @@ var Chat = {
                 var video = document.createElement('video');
                 video.setAttribute('src', file.uri);
                 video.setAttribute('controls', 'controls');
+                video.setAttribute('loop', 'loop');
+
+                // Tenor implementation
+                if (file.host && file.host == 'media.tenor.com') {
+                    video.setAttribute('autoplay', 'autoplay');
+                }
+
                 div.appendChild(video);
+            }
+
+            // Tenor implementation
+            if (file.host && file.host == 'media.tenor.com') {
+                return div;
             }
 
             var a = document.createElement('a');

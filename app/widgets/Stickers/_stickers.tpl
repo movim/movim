@@ -28,6 +28,11 @@
 </section>
 <div>
     <ul class="tabs narrow">
+        {if="$gifEnabled"}
+            <li onclick="Stickers_ajaxShow('{$jid}')">
+                <a href="#"><i class="material-icons" style="font-size: 5rem;">gif</i></a>
+            </li>
+        {/if}
         {loop="$packs"}
             <li onclick="Stickers_ajaxShow('{$jid}', '{$value}')" {if="$value == $pack"}class="active"{/if}>
                 <a href="#"><img alt=":sticker:" class="emoji medium" src="/stickers/{$value}/icon.png"></a>

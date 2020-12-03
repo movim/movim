@@ -24,6 +24,7 @@ v0.18.1 (trunk)
  * Order Communities in Servers by last published
  * Rename Communities page in Explore
  * Add WebM and H264 video embedding support in the Chat
+ * Add Tenor support for GIF/videos search and integration in Chat
 
 v0.18
 ---------------------------

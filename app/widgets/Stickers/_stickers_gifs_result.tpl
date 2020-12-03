@@ -1,0 +1,10 @@
+<video
+    class="brick"
+    poster="{$gif.preview}"
+    loop
+    preload="none"
+    width="{$gif.width}"
+    height="{$gif.height}"
+    src="{$gif.url}"
+    type="video/webm">
+</video>

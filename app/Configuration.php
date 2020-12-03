@@ -14,6 +14,7 @@ class Configuration extends Model
         'description',
         'info',
         'unregister',
+        'gifapikey',
         'restrictsuggestions',
         'locale',
         'loglevel',

@@ -5,8 +5,12 @@ use Moxl\Xec\Action\BOB\Answer;
 
 use Respect\Validation\Validator;
 
+use App\Configuration;
+
 class Stickers extends \Movim\Widget\Base
 {
+    private $paginate = 20;
+
     public function load()
     {
         $this->addcss('stickers.css');
@@ -107,11 +111,13 @@ class Stickers extends \Movim\Widget\Base
             return;
         }
 
-        $packs = $this->getPacks();
+        $configuration = Configuration::get();
+        $isGifEnabled = !empty($configuration->gifapikey);
 
+        $packs = $this->getPacks();
         $pack = isset($pack) ? $pack : current($packs);
 
-        if (in_array($pack, $packs)) {
+        if (!$isGifEnabled) {
             $files = scandir(PUBLIC_PATH.'/stickers/'.$pack);
 
             array_shift($files);
@@ -122,10 +128,18 @@ class Stickers extends \Movim\Widget\Base
             $view->assign('stickers', $files);
             $view->assign('packs', $packs);
             $view->assign('pack', $pack);
+            $view->assign('gifEnabled', $isGifEnabled);
             $view->assign('info', parse_ini_file(PUBLIC_PATH.'/stickers/'.$pack.'/info.ini'));
             $view->assign('path', $this->respath('stickers', false, false, true));
 
             Drawer::fill($view->draw('_stickers'), true);
+        } else {
+            $view = $this->tpl();
+            $view->assign('jid', $to);
+            $view->assign('packs', $packs);
+
+            Drawer::fill($view->draw('_stickers_gifs'), true);
+            $this->rpc('Stickers.setGifsSearchEvent', $to);
         }
     }
 
@@ -142,6 +156,46 @@ class Stickers extends \Movim\Widget\Base
 
         Dialog::fill($view->draw('_stickers_reactions'));
         $this->rpc('Stickers.setEmojisEvent', $mid);
+    }
+
+    /**
+     * @brief Search for gifs
+     */
+    public function ajaxHttpSearchGifs($keyword, int $page = 0)
+    {
+        $configuration = Configuration::get();
+        $apiKey = $configuration->gifapikey;
+
+        if (empty($apiKey)) return;
+
+        $keyword = filter_var($keyword, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+        $results = requestURL(
+            'https://api.tenor.com/v1/search?q='.$keyword.
+            '&key='.$apiKey.
+            '&limit='.$this->paginate.
+            '&pos='.($page*$this->paginate)
+        );
+
+        $view = $this->tpl();
+
+        if ($results) {
+            $results = \json_decode($results);
+
+            if ($results) {
+                foreach ($results->results as $result) {
+                    $gif = [
+                        'url' => $result->media[0]->tinywebm->url,
+                        'preview' => $result->media[0]->tinywebm->preview,
+                        'width' => $result->media[0]->tinywebm->dims[0],
+                        'height' => $result->media[0]->tinywebm->dims[1],
+                    ];
+                    $view->assign('gif', $gif);
+                    $this->rpc('MovimTpl.append', '#gifs .masonry', $view->draw('_stickers_gifs_result'));
+                }
+            }
+        }
+
+        $this->rpc('Stickers.setGifsEvents');
     }
 
     /**

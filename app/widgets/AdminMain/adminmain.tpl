@@ -162,6 +162,25 @@
         </li>
     </ul>
 
+    <h3>{$c->__('tenor.title')}</h3>
+
+    <div>
+        <input type="text" name="gifapikey" id="gifapikey" placeholder="123ABC" value="{$conf->gifapikey}" />
+        <label for="info">{$c->__('tenor.label')}</label>
+    </div>
+
+    <ul class="list thick">
+        <li>
+            <span class="primary icon bubble color blue">
+                <i class="material-icons">gif</i>
+            </span>
+            <div>
+                <p>{$c->__('tenor.info1')}</p>
+                <p><a href="https://tenor.com/" target="_blank">{$c->__('tenor.info2')}</a></p>
+            </div>
+        </li>
+    </ul>
+
     <br />
     <h3>{$c->__('credentials.title')}</h3>
 
