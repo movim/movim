@@ -983,12 +983,13 @@ var Chat = {
             if (file.type == 'video/webm' || file.type == 'video/mp4') {
                 var video = document.createElement('video');
                 video.setAttribute('src', file.uri);
-                video.setAttribute('controls', 'controls');
                 video.setAttribute('loop', 'loop');
 
                 // Tenor implementation
                 if (file.host && file.host == 'media.tenor.com') {
                     video.setAttribute('autoplay', 'autoplay');
+                } else {
+                    video.setAttribute('controls', 'controls');
                 }
 
                 div.appendChild(video);

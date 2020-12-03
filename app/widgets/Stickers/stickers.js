@@ -88,7 +88,7 @@ var Stickers = {
                 );
 
                 Drawer.clear();
-            });
+            }, {once:true});
 
             i++;
         }
