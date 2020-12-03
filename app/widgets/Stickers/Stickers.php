@@ -115,9 +115,9 @@ class Stickers extends \Movim\Widget\Base
         $isGifEnabled = !empty($configuration->gifapikey);
 
         $packs = $this->getPacks();
-        $pack = isset($pack) ? $pack : current($packs);
+        //$pack = isset($pack) ? $pack : current($packs);
 
-        if (!$isGifEnabled) {
+        if (!$isGifEnabled || isset($pack)) {
             $files = scandir(PUBLIC_PATH.'/stickers/'.$pack);
 
             array_shift($files);
@@ -169,6 +169,8 @@ class Stickers extends \Movim\Widget\Base
         if (empty($apiKey)) return;
 
         $keyword = filter_var($keyword, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+        $keyword = str_replace(' ', '+', $keyword);
+
         $results = requestURL(
             'https://api.tenor.com/v1/search?q='.$keyword.
             '&key='.$apiKey.

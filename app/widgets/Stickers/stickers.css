@@ -24,11 +24,13 @@
 }
 
 #gifssearchbar {
-    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(var(--movim-font), 0.12);
+    margin-bottom: 0.5rem;
 }
 
 #gifs {
-    height: calc(100% - 6rem);
+    height: calc(100% - 6.25rem);
     overflow-x: hidden;
 }
 
