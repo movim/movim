@@ -420,6 +420,7 @@ ul li div.bubble span.info {
 
 ul li div.bubble span.info:empty:before {
     content: "\a0";
+    line-height: 2.5rem;
 }
 
 ul li div.bubble > div:last-child span.info {
