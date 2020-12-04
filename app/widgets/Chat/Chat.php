@@ -371,7 +371,8 @@ class Chat extends \Movim\Widget\Base
      * @brief Send a message
      */
     public function ajaxHttpDaemonSendMessage(string $to, string $message, bool $muc = false,
-        bool $resource = false, ?Message $replace = null, $file = null, ?string $replyToMid = null) {
+        bool $resource = false, ?Message $replace = null, $file = null,
+        ?int $replyToMid = 0) {
 
         $messageFile = null;
 
@@ -398,7 +399,7 @@ class Chat extends \Movim\Widget\Base
      */
     public function sendMessage(string $to, string $message = '', bool $muc = false,
         ?string $resource = null, ?Message $replace = null, ?MessageFile $file = null,
-        ?string $replyToMid = null)
+        ?int $replyToMid = 0)
     {
         $body = ($file != null && $file->type != 'xmpp')
             ? $file->uri
@@ -432,7 +433,7 @@ class Chat extends \Movim\Widget\Base
             $m->published   = gmdate('Y-m-d H:i:s');
         }
 
-        if ($replyToMid !== null) {
+        if ($replyToMid !== 0) {
             $reply = $this->user->messages()
                           ->where('mid', $replyToMid)
                           ->first();
