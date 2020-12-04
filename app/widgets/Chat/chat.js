@@ -143,7 +143,7 @@ var Chat = {
                     reply.remove();
                 };
 
-                xhr = Chat_ajaxHttpDaemonSendMessage(jid, text, muc, false, false, false, replyMid);
+                xhr = Chat_ajaxHttpDaemonSendMessage(jid, text, muc, false, null, null, replyMid);
             }
 
             xhr.onreadystatechange = function() {
@@ -985,6 +985,12 @@ var Chat = {
                 video.setAttribute('src', file.uri);
                 video.setAttribute('loop', 'loop');
 
+                if (file.thumbnail) {
+                    video.setAttribute('poster', file.thumbnail.uri);
+                    video.setAttribute('width', file.thumbnail.width);
+                    video.setAttribute('height', file.thumbnail.height);
+                }
+
                 // Tenor implementation
                 if (file.host && file.host == 'media.tenor.com') {
                     video.setAttribute('autoplay', 'autoplay');
@@ -1172,7 +1178,14 @@ MovimWebsocket.attach(function() {
 
 if (typeof Upload != 'undefined') {
     Upload.attach(function(file) {
-        Chat_ajaxHttpDaemonSendMessage(Chat.getTextarea().dataset.jid, false, Boolean(Chat.getTextarea().dataset.muc), false, false, file);
+        Chat_ajaxHttpDaemonSendMessage(
+            Chat.getTextarea().dataset.jid,
+            false,
+            Boolean(Chat.getTextarea().dataset.muc),
+            false,
+            null,
+            file
+        );
     });
 }
 

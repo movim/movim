@@ -6,6 +6,7 @@ use Moxl\Xec\Action\BOB\Answer;
 use Respect\Validation\Validator;
 
 use App\Configuration;
+use App\MessageFile;
 
 class Stickers extends \Movim\Widget\Base
 {
@@ -40,7 +41,7 @@ class Stickers extends \Movim\Widget\Base
           ->request();
     }
 
-    public function ajaxSend($to, $pack, $file, $muc = false)
+    public function ajaxSend(string $to, string $pack, $file, bool $muc = false)
     {
         if (!$this->validateJid($to)) {
             return;
@@ -105,7 +106,7 @@ class Stickers extends \Movim\Widget\Base
         }
     }
 
-    public function ajaxShow($to, $pack = null)
+    public function ajaxShow(string $to, $pack = null)
     {
         if (!$this->validateJid($to)) {
             return;
@@ -161,7 +162,7 @@ class Stickers extends \Movim\Widget\Base
     /**
      * @brief Search for gifs
      */
-    public function ajaxHttpSearchGifs($keyword, int $page = 0)
+    public function ajaxHttpSearchGifs(string $keyword, int $page = 0)
     {
         $configuration = Configuration::get();
         $apiKey = $configuration->gifapikey;
@@ -186,6 +187,7 @@ class Stickers extends \Movim\Widget\Base
             if ($results) {
                 foreach ($results->results as $result) {
                     $gif = [
+                        'id' => $result->id,
                         'url' => $result->media[0]->tinywebm->url,
                         'preview' => $result->media[0]->tinywebm->preview,
                         'width' => $result->media[0]->tinywebm->dims[0],
@@ -198,6 +200,47 @@ class Stickers extends \Movim\Widget\Base
         }
 
         $this->rpc('Stickers.setGifsEvents');
+    }
+
+    /**
+     * Resolve a GIF and share it as a message
+     */
+    public function ajaxSendGif(string $to, int $gifId, bool $muc = false)
+    {
+        $configuration = Configuration::get();
+        $apiKey = $configuration->gifapikey;
+
+        if (empty($apiKey)) return;
+
+        $results = requestURL(
+            'https://api.tenor.com/v1/gifs?ids='.$gifId.
+            '&key='.$apiKey
+        );
+
+        if ($results) {
+            $results = \json_decode($results);
+
+            if ($results) {
+                $result = $results->results[0];
+
+                $messageFile = new MessageFile;
+
+                $messageFile->name = $result->url;
+                $messageFile->uri = $result->media[0]->tinywebm->url;
+                $messageFile->type = 'video/webm';
+                $messageFile->size = $result->media[0]->tinywebm->size;
+
+                $messageFile->thumbnail->type = 'image/png';
+                $messageFile->thumbnail->uri = $result->media[0]->tinywebm->preview;
+                $messageFile->thumbnail->width = $result->media[0]->tinywebm->dims[0];
+                $messageFile->thumbnail->height = $result->media[0]->tinywebm->dims[1];
+
+                $chat = new \Chat;
+                $chat->sendMessage(
+                    $to, false, $muc,
+                    false, null, $messageFile);
+            }
+        }
     }
 
     /**

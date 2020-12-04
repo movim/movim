@@ -7,6 +7,7 @@ use Moxl\Xec\Action\Muc\GetConfig;
 use Moxl\Xec\Action\Muc\SetConfig;
 
 use App\Message;
+use App\MessageFile;
 use App\Reaction;
 
 use Moxl\Xec\Action\BOB\Request;
@@ -276,7 +277,7 @@ class Chat extends \Movim\Widget\Base
         $this->rpc('Chat.setGeneralElements', $date, $separator);
     }
 
-    public function ajaxClearCounter($jid)
+    public function ajaxClearCounter(string $jid)
     {
         $this->prepareMessages($jid, false, true);
         $this->event('chat_counter', $this->user->unreads());
@@ -285,7 +286,7 @@ class Chat extends \Movim\Widget\Base
     /**
      * Get the header
      */
-    public function ajaxGetHeader($jid, $muc = false)
+    public function ajaxGetHeader(string $jid, bool $muc = false)
     {
         $this->rpc(
             'MovimTpl.fill',
@@ -301,7 +302,7 @@ class Chat extends \Movim\Widget\Base
      * @brief Get a discussion
      * @param string $jid
      */
-    public function ajaxGet($jid = null, $light = false)
+    public function ajaxGet(string $jid = null, ?bool $light = false)
     {
         if ($jid == null) {
             $this->rpc('MovimTpl.hidePanel');
@@ -368,20 +369,38 @@ class Chat extends \Movim\Widget\Base
 
     /**
      * @brief Send a message
+     */
+    public function ajaxHttpDaemonSendMessage(string $to, string $message, bool $muc = false,
+        bool $resource = false, ?Message $replace = null, $file = null, ?bool $replyToMid = false) {
+
+        $messageFile = null;
+
+        if ($file) {
+            $messageFile = new MessageFile;
+            $messageFile->import($file);
+
+            if (!$messageFile->valid) $messageFile = null;
+        } else {
+            $message = trim($message);
+            $resolvedFile = resolvePictureFileFromUrl($message);
+            if ($resolvedFile != false) $messageFile = $resolvedFile;
+        }
+
+        $this->sendMessage($to, $message, $muc, $resource, $replace, $messageFile, $replyToMid);
+    }
+
+    /**
+     * @brief Send a resolved message
      *
      * @param string $to
      * @param string $message
      * @return void
      */
-    public function ajaxHttpDaemonSendMessage(string $to, $message = false, $muc = false,
-        $resource = false, $replace = false, $file = false, $replyToMid = false)
+    public function sendMessage(string $to, string $message = '', bool $muc = false,
+        ?string $resource = null, ?Message $replace = null, ?MessageFile $file = null,
+        $replyToMid = false)
     {
-        $message = trim($message);
-        $resolvedFile = resolvePictureFileFromUrl($message);
-
-        if ($resolvedFile != false) $file = $resolvedFile;
-
-        $body = ($file != false && $file->type != 'xmpp')
+        $body = ($file != null && $file->type != 'xmpp')
             ? $file->uri
             : $message;
 
@@ -440,7 +459,7 @@ class Chat extends \Movim\Widget\Base
 
         $m->body      = $body;
 
-        if ($resource != false) {
+        if ($resource != null) {
             $to = $to . '/' . $resource;
         }
 
@@ -496,21 +515,21 @@ class Chat extends \Movim\Widget\Base
      * @param string $message
      * @return void
      */
-    public function ajaxHttpDaemonCorrect($to, $message, $mid)
+    public function ajaxHttpDaemonCorrect(string $to, $message = '', int $mid)
     {
         $replace = $this->user->messages()
                         ->where('mid', $mid)
                         ->first();
 
         if ($replace) {
-            $this->ajaxHttpDaemonSendMessage($to, $message, false, false, $replace);
+            $this->sendMessage($to, $message, false, null, $replace);
         }
     }
 
     /**
      * @brief Send a reaction
      */
-    public function ajaxHttpDaemonSendReaction($mid, string $emoji)
+    public function ajaxHttpDaemonSendReaction(string $mid, string $emoji)
     {
         $parentMessage = $this->user->messages()
                         ->where('mid', $mid)

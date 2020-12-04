@@ -1,4 +1,5 @@
 <video
+    data-id="{$gif.id}"
     class="brick"
     poster="{$gif.preview}"
     loop

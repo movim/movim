@@ -301,6 +301,22 @@ class Message extends Model
                         }
                     }
 
+                    if ($stanza->reference->{'media-sharing'}->file->thumbnail
+                    && (string)$stanza->reference->{'media-sharing'}->file->thumbnail->attributes()->xmlns == 'urn:xmpp:thumbs:1') {
+                        $thumbnailAttributes = $stanza->reference->{'media-sharing'}->file->thumbnail->attributes();
+
+                        if (!filter_var((string)$thumbnailAttributes->uri, FILTER_VALIDATE_URL) === false) {
+                            $thumbnail = [
+                                'width' => (int)$thumbnailAttributes->width,
+                                'height' => (int)$thumbnailAttributes->height,
+                                'type' => (string)$thumbnailAttributes->{'media-type'},
+                                'uri' => (string)$thumbnailAttributes->uri
+                            ];
+
+                            $filetmp['thumbnail'] = $thumbnail;
+                        }
+                    }
+
                     if (array_key_exists('uri', $filetmp)
                     && array_key_exists('type', $filetmp)
                     && array_key_exists('size', $filetmp)

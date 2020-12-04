@@ -1,6 +1,7 @@
 var Stickers = {
     timer : null,
     stickersPage : 0,
+    file : null,
 
     addSmiley: function(element) {
         Chat.insertAtCursor(element.dataset.emoji);
@@ -81,9 +82,9 @@ var Stickers = {
                 e.target.pause();
             });
             gifs[i].addEventListener('click', e => {
-                Chat_ajaxHttpDaemonSendMessage(
+                Stickers_ajaxSendGif(
                     Chat.getTextarea().dataset.jid,
-                    e.target.src,
+                    e.target.dataset.id,
                     Boolean(Chat.getTextarea().dataset.muc)
                 );
 

@@ -5,6 +5,10 @@ use Illuminate\Database\Capsule\Manager as DB;
 
 use Respect\Validation\Validator;
 
+use App\Contact;
+use App\Message;
+use App\Roster;
+
 class Chats extends Base
 {
     public function load()
@@ -284,9 +288,8 @@ class Chats extends Base
         return $view->draw('_chats_empty_item');
     }
 
-    public function prepareChat(
-        string $jid, App\Contact $contact, App\Roster $roster = null,
-        App\Message $message = null, $status = null, $active = false)
+    public function prepareChat(string $jid, Contact $contact, Roster $roster = null,
+        Message $message = null, string $status = null, bool $active = false)
     {
         if (!$this->validateJid($jid)) {
             return;
@@ -307,26 +310,26 @@ class Chats extends Base
         return $view->draw('_chats_item');
     }
 
-    public function resolveContactFromJid($jid)
+    public function resolveContactFromJid(string $jid): Contact
     {
-        $contact = App\Contact::find($jid);
-        return $contact ? $contact : new App\Contact(['id' => $jid]);
+        $contact = Contact::find($jid);
+        return $contact ? $contact : new Contact(['id' => $jid]);
     }
 
-    public function resolveRosterFromJid($jid)
+    public function resolveRosterFromJid(string $jid): ?Roster
     {
         return $this->user->session->contacts()->where('jid', $jid)
                     ->with('presence.capability')->first();
     }
 
-    public function resolveMessageFromJid($jid)
+    public function resolveMessageFromJid(string $jid): ?Message
     {
         return \App\Message::jid($jid)
             ->orderBy('published', 'desc')
             ->first();
     }
 
-    private function validateJid($jid)
+    private function validateJid(string $jid): bool
     {
         return (Validator::stringType()
             ->noWhitespace()

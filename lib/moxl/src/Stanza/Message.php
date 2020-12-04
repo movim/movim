@@ -150,6 +150,17 @@ class Message
                 $sreference->setAttribute('type', 'data');
                 $sreference->setAttribute('uri', $file->uri);
 
+                if (isset($file->thumbnail->uri)) {
+                    $thumbnail = $dom->createElement('thumbnail');
+                    $thumbnail->setAttribute('xmlns', 'urn:xmpp:thumbs:1');
+                    $thumbnail->setAttribute('media-type', $file->thumbnail->type);
+                    $thumbnail->setAttribute('uri', $file->thumbnail->uri);
+                    $thumbnail->setAttribute('width', $file->thumbnail->width);
+                    $thumbnail->setAttribute('height', $file->thumbnail->height);
+
+                    $filen->appendChild($thumbnail);
+                }
+
                 $sources->appendChild($sreference);
             } else {
                 $reference->setAttribute('uri', $file->uri);

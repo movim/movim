@@ -45,7 +45,7 @@ class User extends Model
         return $this->hasMany('App\Message');
     }
 
-    public function unreads(string $jid = null, bool $quoted = false, $cached = false): int
+    public function unreads(string $jid = null, bool $quoted = false, bool $cached = false): int
     {
         if ($this->unreads !== null && $cached) return $this->unreads;
 

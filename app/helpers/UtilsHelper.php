@@ -1,5 +1,6 @@
 <?php
 
+use App\MessageFile;
 use Monolog\Logger;
 use Monolog\Handler\SyslogHandler;
 use Monolog\Handler\StreamHandler;
@@ -652,7 +653,7 @@ function requestHeaders(string $url, $timeout = 2)
 /**
  * Check if a URL is a valid picture
  */
-function resolvePictureFileFromUrl(string $url)
+function resolvePictureFileFromUrl(string $url) : ? MessageFile
 {
     if (filter_var($url, FILTER_VALIDATE_URL)) {
         $headers = requestHeaders($url);
@@ -667,7 +668,7 @@ function resolvePictureFileFromUrl(string $url)
                 $name = basename($path);
             }
 
-            $file = new \stdClass;
+            $file = new MessageFile;
             $file->name = !empty($name) ? $name : $url;
             $file->type = $headers['content_type'];
             $file->size = $headers['download_content_length'];
@@ -677,7 +678,7 @@ function resolvePictureFileFromUrl(string $url)
         }
     }
 
-    return false;
+    return null;
 }
 
 /**
