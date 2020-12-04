@@ -373,7 +373,7 @@ class Chat extends \Movim\Widget\Base
      * @param string $message
      * @return void
      */
-    public function ajaxHttpDaemonSendMessage($to, $message = false, $muc = false,
+    public function ajaxHttpDaemonSendMessage(string $to, $message = false, $muc = false,
         $resource = false, $replace = false, $file = false, $replyToMid = false)
     {
         $message = trim($message);

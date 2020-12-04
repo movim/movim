@@ -420,7 +420,6 @@ ul li div.bubble span.info {
 
 ul li div.bubble span.info:empty:before {
     content: "\a0";
-    display: block;
 }
 
 ul li div.bubble > div:last-child span.info {
@@ -429,7 +428,7 @@ ul li div.bubble > div:last-child span.info {
 
 
 ul li div.bubble:not(.file) > div:last-child span.info {
-    height: 3rem;
+    height: 2.25rem;
 }
 
 ul li.oppose div.bubble.file > div:last-child span.info {
