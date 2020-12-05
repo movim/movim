@@ -37,9 +37,7 @@
 #gifs .masonry {
     display: flex;
     flex-flow: row wrap;
-    width: calc(100% - 1.25rem);
-    margin-left: 1.5rem;
-    margin-top: 1.5rem;
+    margin: 1rem;
 }
 
 #gifs .masonry:not(:empty) + .placeholder {
@@ -49,11 +47,10 @@
 #gifs .masonry .brick {
     flex: auto;
     display: block;
-    height: 19rem;
-    min-width: 10rem;
+    height: 20rem;
     max-width: calc(50% - 2rem);
     object-fit: cover;
-    margin: 0 2rem 2rem 0;
+    margin: 1rem;
     border-radius: 0.5rem;
 }
 
