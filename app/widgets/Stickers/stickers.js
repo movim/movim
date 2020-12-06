@@ -51,8 +51,10 @@ var Stickers = {
             clearTimeout(Stickers.timer);
 
             Stickers.timer = setTimeout(() => {
-                const gifs = document.querySelector('#gifs .masonry');
-                gifs.innerHTML = '';
+                const gifsF = document.querySelector('#gifs .masonry.first');
+                gifsF.innerHTML = '';
+                const gifsS = document.querySelector('#gifs .masonry.second');
+                gifsS.innerHTML = '';
                 Stickers.stickersPage = 0;
 
                 if (search.value !== '') {
@@ -82,13 +84,13 @@ var Stickers = {
                 e.target.pause();
             });
             gifs[i].addEventListener('click', e => {
+                e.target.classList.add('clicked');
+                Drawer.clear();
                 Stickers_ajaxSendGif(
                     Chat.getTextarea().dataset.jid,
                     e.target.dataset.id,
                     Boolean(Chat.getTextarea().dataset.muc)
                 );
-
-                Drawer.clear();
             }, {once:true});
 
             i++;

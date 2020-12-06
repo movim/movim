@@ -35,26 +35,41 @@
 }
 
 #gifs .masonry {
-    display: flex;
-    flex-flow: row wrap;
-    margin: 1rem;
+    width: calc(50% - 3.5rem);
+    float: left;
+    margin-top: 2rem;
 }
 
-#gifs .masonry:not(:empty) + .placeholder {
+#gifs .masonry.first {
+    margin-left: 2rem;
+    margin-right: 1rem;
+}
+
+#gifs .masonry.second {
+    margin-right: 2rem;
+    margin-left: 1rem;
+}
+
+#gifs .masonry.first:not(:empty) + .masonry.second:not(:empty) + .placeholder {
     display: none;
 }
 
 #gifs .masonry .brick {
-    flex: auto;
-    display: block;
-    height: 20rem;
-    max-width: calc(50% - 2rem);
+    width: 100%;
+    height: auto;
+    max-height: 40rem;
+    display: inline-block;
     object-fit: cover;
-    margin: 1rem;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+}
+
+#gifs .masonry .brick.clicked {
+    opacity: 0.5;
+    pointer-events: none;
 }
 
 #gifs .masonry .brick:hover {
     cursor: pointer;
-    box-shadow: 0 0 0.5rem rgba(var(--movim-font), 0.7), 0 0 1rem rgba(var(--movim-font), 0.3);
+    box-shadow: 0 0 0 0.5rem rgba(var(--movim-font), 0.25);
 }

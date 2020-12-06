@@ -185,6 +185,7 @@ class Stickers extends \Movim\Widget\Base
             $results = \json_decode($results);
 
             if ($results) {
+                $i = 0;
                 foreach ($results->results as $result) {
                     $gif = [
                         'id' => $result->id,
@@ -194,7 +195,13 @@ class Stickers extends \Movim\Widget\Base
                         'height' => $result->media[0]->tinywebm->dims[1],
                     ];
                     $view->assign('gif', $gif);
-                    $this->rpc('MovimTpl.append', '#gifs .masonry', $view->draw('_stickers_gifs_result'));
+
+                    $column = $i % 2 == 0
+                        ? '.first'
+                        : '.second';
+
+                    $this->rpc('MovimTpl.append', '#gifs .masonry'.$column, $view->draw('_stickers_gifs_result'));
+                    $i ++;
                 }
             }
         }

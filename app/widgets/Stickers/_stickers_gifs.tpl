@@ -1,5 +1,6 @@
 <section id="gifs" class="scroll">
-    <div class="masonry"></div>
+    <div class="masonry first"></div>
+    <div class="masonry second"></div>
     <div class="placeholder">
         <i class="material-icons">search</i>
         <h1>{$c->__('sticker.gif_title')}</h1>
