@@ -35,7 +35,7 @@
 }
 
 #gifs .masonry {
-    width: calc(50% - 3.5rem);
+    width: calc(50% - 3rem);
     float: left;
     margin-top: 2rem;
 }
