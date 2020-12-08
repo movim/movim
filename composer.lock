@@ -514,16 +514,16 @@
         },
         {
             "name": "dflydev/fig-cookies",
-            "version": "v2.0.2",
+            "version": "v2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dflydev/dflydev-fig-cookies.git",
-                "reference": "ba0b1a3d7982946ed98c9544f460ffb67a69e359"
+                "reference": "aa3c3a6224fea4ca2c05cf6b8285ce023ff41d9b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dflydev/dflydev-fig-cookies/zipball/ba0b1a3d7982946ed98c9544f460ffb67a69e359",
-                "reference": "ba0b1a3d7982946ed98c9544f460ffb67a69e359",
+                "url": "https://api.github.com/repos/dflydev/dflydev-fig-cookies/zipball/aa3c3a6224fea4ca2c05cf6b8285ce023ff41d9b",
+                "reference": "aa3c3a6224fea4ca2c05cf6b8285ce023ff41d9b",
                 "shasum": ""
             },
             "require": {
@@ -566,9 +566,9 @@
             ],
             "support": {
                 "issues": "https://github.com/dflydev/dflydev-fig-cookies/issues",
-                "source": "https://github.com/dflydev/dflydev-fig-cookies/tree/v2.0.2"
+                "source": "https://github.com/dflydev/dflydev-fig-cookies/tree/v2.0.3"
             },
-            "time": "2020-12-04T16:41:16+00:00"
+            "time": "2020-12-07T16:40:59+00:00"
         },
         {
             "name": "doctrine/cache",
