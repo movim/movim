@@ -202,7 +202,7 @@ class Chats extends Base
         $this->user->messages()
             ->select('jidfrom')
             ->where('seen', false)
-            ->where('type', 'chat')
+            ->whereIn('type', ['chat', 'headline', 'invitation'])
             ->where('jidfrom', '!=', $this->user->id)
             ->groupBy('jidfrom')
             ->pluck('jidfrom')

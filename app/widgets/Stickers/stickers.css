@@ -35,19 +35,19 @@
 }
 
 #gifs .masonry {
-    width: calc(50% - 3rem);
+    width: calc(50% - 1.75rem);
     float: left;
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 
 #gifs .masonry.first {
-    margin-left: 2rem;
-    margin-right: 1rem;
+    margin-left: 1rem;
+    margin-right: 0.75rem;
 }
 
 #gifs .masonry.second {
-    margin-right: 2rem;
-    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-left: 0.75rem;
 }
 
 #gifs .masonry.first:not(:empty) + .masonry.second:not(:empty) + .placeholder {
@@ -61,7 +61,7 @@
     display: inline-block;
     object-fit: cover;
     border-radius: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 #gifs .masonry .brick.clicked {
