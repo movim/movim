@@ -1278,7 +1278,7 @@
         },
         {
             "name": "illuminate/bus",
-            "version": "v8.17.2",
+            "version": "v8.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/bus.git",
@@ -1331,16 +1331,16 @@
         },
         {
             "name": "illuminate/collections",
-            "version": "v8.17.2",
+            "version": "v8.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
-                "reference": "2bdc9852420668396d1557f725293aca99bb4e9e"
+                "reference": "4647141880c193a0edaa91754004d8bc7471e56b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/collections/zipball/2bdc9852420668396d1557f725293aca99bb4e9e",
-                "reference": "2bdc9852420668396d1557f725293aca99bb4e9e",
+                "url": "https://api.github.com/repos/illuminate/collections/zipball/4647141880c193a0edaa91754004d8bc7471e56b",
+                "reference": "4647141880c193a0edaa91754004d8bc7471e56b",
                 "shasum": ""
             },
             "require": {
@@ -1349,7 +1349,7 @@
                 "php": "^7.3|^8.0"
             },
             "suggest": {
-                "symfony/var-dumper": "Required to use the dump method (^5.1)."
+                "symfony/var-dumper": "Required to use the dump method (^5.1.4)."
             },
             "type": "library",
             "extra": {
@@ -1381,11 +1381,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2020-11-30T15:23:45+00:00"
+            "time": "2020-12-08T17:15:16+00:00"
         },
         {
             "name": "illuminate/container",
-            "version": "v8.17.2",
+            "version": "v8.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
@@ -1436,7 +1436,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v8.17.2",
+            "version": "v8.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -1484,16 +1484,16 @@
         },
         {
             "name": "illuminate/database",
-            "version": "v8.17.2",
+            "version": "v8.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "1ce3cd597b3907ae543987a807c10718ed03c3d4"
+                "reference": "98e0ab090b5a6616e554ca126842facb8426c262"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/1ce3cd597b3907ae543987a807c10718ed03c3d4",
-                "reference": "1ce3cd597b3907ae543987a807c10718ed03c3d4",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/98e0ab090b5a6616e554ca126842facb8426c262",
+                "reference": "98e0ab090b5a6616e554ca126842facb8426c262",
                 "shasum": ""
             },
             "require": {
@@ -1504,7 +1504,7 @@
                 "illuminate/macroable": "^8.0",
                 "illuminate/support": "^8.0",
                 "php": "^7.3|^8.0",
-                "symfony/console": "^5.1"
+                "symfony/console": "^5.1.4"
             },
             "suggest": {
                 "doctrine/dbal": "Required to rename columns and drop SQLite columns (^2.6|^3.0).",
@@ -1513,7 +1513,7 @@
                 "illuminate/events": "Required to use the observers with Eloquent (^8.0).",
                 "illuminate/filesystem": "Required to use the migrations (^8.0).",
                 "illuminate/pagination": "Required to paginate the result set (^8.0).",
-                "symfony/finder": "Required to use Eloquent model factories (^5.1)."
+                "symfony/finder": "Required to use Eloquent model factories (^5.1.4)."
             },
             "type": "library",
             "extra": {
@@ -1548,11 +1548,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2020-11-30T15:12:51+00:00"
+            "time": "2020-12-08T22:03:59+00:00"
         },
         {
             "name": "illuminate/events",
-            "version": "v8.17.2",
+            "version": "v8.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/events.git",
@@ -1607,7 +1607,7 @@
         },
         {
             "name": "illuminate/macroable",
-            "version": "v8.17.2",
+            "version": "v8.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/macroable.git",
@@ -1653,7 +1653,7 @@
         },
         {
             "name": "illuminate/pipeline",
-            "version": "v8.17.2",
+            "version": "v8.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/pipeline.git",
@@ -1701,16 +1701,16 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v8.17.2",
+            "version": "v8.18.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "c8910d52254408c7245dd8044fb3e5b09292673f"
+                "reference": "89581f651b63c63fae87449d224f7cb1087e62d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/c8910d52254408c7245dd8044fb3e5b09292673f",
-                "reference": "c8910d52254408c7245dd8044fb3e5b09292673f",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/89581f651b63c63fae87449d224f7cb1087e62d8",
+                "reference": "89581f651b63c63fae87449d224f7cb1087e62d8",
                 "shasum": ""
             },
             "require": {
@@ -1730,8 +1730,8 @@
             "suggest": {
                 "illuminate/filesystem": "Required to use the composer class (^8.0).",
                 "ramsey/uuid": "Required to use Str::uuid() (^4.0).",
-                "symfony/process": "Required to use the composer class (^5.1).",
-                "symfony/var-dumper": "Required to use the dd function (^5.1).",
+                "symfony/process": "Required to use the composer class (^5.1.4).",
+                "symfony/var-dumper": "Required to use the dd function (^5.1.4).",
                 "vlucas/phpdotenv": "Required to use the Env class and env helper (^5.2)."
             },
             "type": "library",
@@ -1764,7 +1764,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2020-11-29T20:24:47+00:00"
+            "time": "2020-12-08T17:15:16+00:00"
         },
         {
             "name": "michelf/php-markdown",
