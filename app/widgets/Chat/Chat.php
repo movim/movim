@@ -359,6 +359,7 @@ class Chat extends \Movim\Widget\Base
                 $this->rpc('Chat.focus');
             }
 
+            $this->rpc('Chat.setObservers');
             $this->prepareMessages($room, true);
             $this->rpc('Notification.current', 'chat|'.$room);
             $this->rpc('Notification.clearAndroid', $this->route('chat', [$room, 'room']));
