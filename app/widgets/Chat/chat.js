@@ -10,6 +10,9 @@ var Chat = {
     lastHeight: null,
     lastScroll: null,
 
+    // Intersection discussion observer
+    discussionObserver: null,
+
     // Chat state
     composing: false,
     since: null,
@@ -463,6 +466,23 @@ var Chat = {
 
         discussion.scrollTop = discussion.scrollHeight;
     },
+    setObservers : function ()
+    {
+        var options = {
+            root: Chat.getDiscussion(),
+            rootMargin: '0px',
+            threshold: 1.0
+        };
+        Chat.discussionObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entrie) => {
+                if (entrie.target.classList.contains('gif') && entrie.isIntersecting == true) {
+                    entrie.target.play();
+                } else {
+                    entrie.target.pause();
+                }
+            });
+        }, options);
+    },
     scrollToSeparator : function ()
     {
         var discussion = Chat.getDiscussion();
@@ -528,6 +548,12 @@ var Chat = {
 
             i++;
         }
+    },
+    setVideoObserverBehaviour : function()
+    {
+        document.querySelectorAll('.file video').forEach((video) => {
+            Chat.discussionObserver.observe(video);
+        });
     },
     setReplyButtonBehaviour : function()
     {
@@ -632,6 +658,7 @@ var Chat = {
         Chat.setReplyButtonBehaviour();
         Chat.setActionsButtonBehaviour();
         Chat.setParentScrollBehaviour();
+        Chat.setVideoObserverBehaviour();
     },
     appendMessage : function(idjidtime, data, prepend) {
         if (data.body === null) return;
@@ -993,7 +1020,7 @@ var Chat = {
 
                 // Tenor implementation
                 if (file.host && file.host == 'media.tenor.com') {
-                    video.setAttribute('autoplay', 'autoplay');
+                    video.classList.add('gif');
                 } else {
                     video.setAttribute('controls', 'controls');
                 }

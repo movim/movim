@@ -327,6 +327,14 @@ function typeIsAudio(string $type): bool
 }
 
 /**
+ * Validate a media type
+ */
+function isMimeType(string $mimeType): bool
+{
+    return preg_match('/\w+\/[-+.\w]+/', $mimeType) == 1;
+}
+
+/**
  * Return a color generated from the string
  */
 function stringToColor($string): string

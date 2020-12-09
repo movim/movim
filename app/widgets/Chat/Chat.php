@@ -323,6 +323,7 @@ class Chat extends \Movim\Widget\Base
                 $this->rpc('Chat.focus');
             }
 
+            $this->rpc('Chat.setObservers');
             $this->prepareMessages($jid);
             $this->rpc('Notification.current', 'chat|'.$jid);
             $this->rpc('Notification.clearAndroid', $this->route('chat', [$jid]));
@@ -401,7 +402,7 @@ class Chat extends \Movim\Widget\Base
         ?string $resource = null, ?Message $replace = null, ?MessageFile $file = null,
         ?int $replyToMid = 0)
     {
-        $body = ($file != null && $file->type != 'xmpp')
+        $body = ($file != null && $file->type != 'xmpp/uri')
             ? $file->uri
             : $message;
 

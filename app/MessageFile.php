@@ -7,7 +7,7 @@ use stdClass;
 
 class MessageFile {
     public $name;
-    public $size;
+    public $size = 0;
     public $type;
     public $uri;
 
@@ -22,9 +22,17 @@ class MessageFile {
 
     public function import($file)
     {
-        if (Validator::url()->validate($file->uri)) {
+        // XMPP URI validation
+        $uri = explodeXMPPURI($file->uri);
+
+        if (($uri['type'] != null || Validator::url()->validate($file->uri))
+        && isMimeType($file->type)) {
             $this->name = (string)$file->name;
-            $this->size = (int)$file->size;
+
+            if (isset($file->size)) {
+                $this->size = (int)$file->size;
+            }
+
             $this->type = (string)$file->type;
             $this->uri = $file->uri;
 

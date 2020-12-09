@@ -1,5 +1,6 @@
 <?php
 
+use App\MessageFile;
 use Movim\Widget\Base;
 
 class SendTo extends Base
@@ -54,7 +55,11 @@ class SendTo extends Base
 
     public function ajaxSend(string $to, $file, $muc = false, $message = false)
     {
-        $file->type = 'xmpp';
+        $file->type = 'xmpp/uri'; // Internal placeholder
+        $file->name = $this->__('sendto.shared_with');
+
+        $messageFile = new MessageFile;
+        $messageFile->import($file);
 
         Toast::send($muc
             ? $this->__('sendto.shared_chatroom')
@@ -69,7 +74,7 @@ class SendTo extends Base
             $muc,
             false,
             null,
-            $file
+            $messageFile
         );
     }
 

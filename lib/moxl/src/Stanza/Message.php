@@ -138,9 +138,18 @@ class Message
                 $filen->setAttribute('xmlns', 'urn:xmpp:jingle:apps:file-transfer:4');
                 $media->appendChild($filen);
 
-                $filen->appendChild($dom->createElement('media-type', $file->type));
-                $filen->appendChild($dom->createElement('name', $file->name));
-                $filen->appendChild($dom->createElement('size', $file->size));
+                // xmpp/uri is an internal placeholder
+                if ($file->type != 'xmpp/uri') {
+                    $filen->appendChild($dom->createElement('media-type', $file->type));
+                }
+
+                if (!empty((string)$file->name)) {
+                    $filen->appendChild($dom->createElement('name', $file->name));
+                }
+
+                if ((int)$file->size > 0) {
+                    $filen->appendChild($dom->createElement('size', $file->size));
+                }
 
                 $sources = $dom->createElement('sources');
                 $media->appendChild($sources);
