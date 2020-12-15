@@ -11,9 +11,12 @@ class RPC
     public static function call($funcname, ...$args)
     {
         $payload = [
-            'func' => $funcname,
-            'params' => $args,
+            'f' => $funcname
         ];
+
+        if (!empty($args)) {
+            $payload['p'] = $args;
+        }
 
         if (php_sapi_name() != 'cli') {
             array_push(self::$json, $payload);

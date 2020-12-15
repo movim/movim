@@ -103,11 +103,11 @@ var MovimWebsocket = {
             var obj = JSON.parse(e.data);
 
             if (obj != null) {
-                if (obj.func == 'registered') {
+                if (obj.f == 'registered') {
                     MovimWebsocket.launchRegistered();
                 }
 
-                if (obj.func == 'started') {
+                if (obj.f == 'started') {
                     // If the linker was started but we're not on the login page
                     if (!['login', 'account', 'accountnext', 'tag', 'admin', 'adminlogin', 'about'].includes(MovimUtils.urlParts().page)) {
                         MovimUtils.disconnect();
@@ -116,11 +116,11 @@ var MovimWebsocket = {
                     }
                 }
 
-                if (obj.func == 'disconnected') {
+                if (obj.f == 'disconnected') {
                     MovimUtils.disconnect();
                 }
 
-                if (obj.func == 'pong') {
+                if (obj.f == 'pong') {
                     MovimWebsocket.pong = true;
                 }
 
@@ -254,24 +254,24 @@ var MovimWebsocket = {
     },
 
     handle : function(funcall) {
-        if (funcall.func != null && (typeof window[funcall.func] == 'function')) {
+        if (funcall.f != null && (typeof window[funcall.f] == 'function')) {
             try {
-                window[funcall.func].apply(null, funcall.params);
+                window[funcall.f].apply(null, funcall.p);
             } catch(err) {
                 console.log("Error caught: "
                     + err.toString()
                     + " - "
-                    + funcall.func
+                    + funcall.f
                     + ":"
-                    + JSON.stringify(funcall.params)
+                    + JSON.stringify(funcall.p)
                 );
             }
-        } else if (funcall.func != null) {
-            var funcs  = funcall.func.split('.');
+        } else if (funcall.f != null) {
+            var funcs  = funcall.f.split('.');
             var called = funcs[0];
             if (typeof window[called] == 'object'
             && typeof window[funcs[0]][funcs[1]] != 'undefined') {
-                window[funcs[0]][funcs[1]].apply(null, funcall.params);
+                window[funcs[0]][funcs[1]].apply(null, funcall.p);
             }
         }
     },
