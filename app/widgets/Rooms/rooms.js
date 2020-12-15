@@ -98,6 +98,16 @@ var Rooms = {
         }
 
         Rooms.refresh();
+    },
+
+    setUnread: function(id, unread) {
+        var element = document.querySelector('#rooms_widget ul.list.rooms #' + id);
+
+        if (unread) {
+            element.classList.add('unread');
+        } else {
+            element.classList.remove('unread');
+        }
     }
 }
 

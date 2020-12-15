@@ -31,6 +31,10 @@
     opacity: 0.5;
 }
 
+#rooms_widget ul.list.rooms li.connected.unread {
+    order: -1;
+}
+
 #rooms_widget ul.list.rooms li.connected {
     order: 1;
 }

@@ -11,7 +11,7 @@ class RPC
     public static function call($funcname, ...$args)
     {
         $payload = [
-            'f' => $funcname
+            'func' => $funcname
         ];
 
         if (!empty($args)) {

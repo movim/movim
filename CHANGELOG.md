@@ -25,6 +25,7 @@ v0.18.1 (trunk)
  * Rename Communities page in Explore
  * Add WebM and H264 video embedding support in the Chat
  * Add Tenor support for GIF/videos search and integration in Chat
+ * Set first the chatrooms with unread messages
 
 v0.18
 ---------------------------

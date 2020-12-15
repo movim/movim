@@ -56,11 +56,13 @@ class Rooms extends Base
     {
         $message = $packet->content;
 
-        $chatStates = ChatStates::getInstance();
-        $chatStates->clearState($message->jidfrom, $message->resource);
+        if ($message->type == 'groupchat') {
+            $chatStates = ChatStates::getInstance();
+            $chatStates->clearState($message->jidfrom, $message->resource);
 
-        $this->onChatState($chatStates->getState($message->jidfrom));
-        $this->setCounter($message->jidfrom);
+            $this->onChatState($chatStates->getState($message->jidfrom));
+            $this->setCounter($message->jidfrom);
+        }
     }
 
     public function onDestroyed($packet)
@@ -143,6 +145,9 @@ class Rooms extends Base
                 '#' . cleanupId($room.'_rooms_primary'),
                 $this->prepareRoomCounter($conference, $conference->getPhoto())
             );
+
+            $unread = ($conference->unreads_count > 0 || $conference->quoted_count > 0);
+            $this->rpc('Rooms.setUnread', cleanupId($room), $unread);
         }
     }
 

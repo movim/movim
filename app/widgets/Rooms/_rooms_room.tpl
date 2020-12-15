@@ -4,6 +4,7 @@
     class="room
         {if="$conference->connected"}connected{/if}
         {if="$conference->isGroupChat()"}groupchat{/if}
+        {if="$conference->unreads_count > 0 || $conference->quoted_count > 0"}unread{/if}
     ">
     {$url = $conference->getPhoto()}
     {if="$url"}

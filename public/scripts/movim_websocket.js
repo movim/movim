@@ -103,11 +103,11 @@ var MovimWebsocket = {
             var obj = JSON.parse(e.data);
 
             if (obj != null) {
-                if (obj.f == 'registered') {
+                if (obj.func == 'registered') {
                     MovimWebsocket.launchRegistered();
                 }
 
-                if (obj.f == 'started') {
+                if (obj.func == 'started') {
                     // If the linker was started but we're not on the login page
                     if (!['login', 'account', 'accountnext', 'tag', 'admin', 'adminlogin', 'about'].includes(MovimUtils.urlParts().page)) {
                         MovimUtils.disconnect();
@@ -116,11 +116,11 @@ var MovimWebsocket = {
                     }
                 }
 
-                if (obj.f == 'disconnected') {
+                if (obj.func == 'disconnected') {
                     MovimUtils.disconnect();
                 }
 
-                if (obj.f == 'pong') {
+                if (obj.func == 'pong') {
                     MovimWebsocket.pong = true;
                 }
 
@@ -254,20 +254,20 @@ var MovimWebsocket = {
     },
 
     handle : function(funcall) {
-        if (funcall.f != null && (typeof window[funcall.f] == 'function')) {
+        if (funcall.func != null && (typeof window[funcall.func] == 'function')) {
             try {
-                window[funcall.f].apply(null, funcall.p);
+                window[funcall.func].apply(null, funcall.p);
             } catch(err) {
                 console.log("Error caught: "
                     + err.toString()
                     + " - "
-                    + funcall.f
+                    + funcall.func
                     + ":"
                     + JSON.stringify(funcall.p)
                 );
             }
-        } else if (funcall.f != null) {
-            var funcs  = funcall.f.split('.');
+        } else if (funcall.func != null) {
+            var funcs  = funcall.func.split('.');
             var called = funcs[0];
             if (typeof window[called] == 'object'
             && typeof window[funcs[0]][funcs[1]] != 'undefined') {
