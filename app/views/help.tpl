@@ -9,6 +9,8 @@
     <?php $this->widget('Navigation');?>
 </nav>
 
+<?php $this->widget('BottomNavigation');?>
+
 <main>
     <div>
         <header>

@@ -10,6 +10,8 @@
         <?php $this->widget('Presence');?>
         <?php $this->widget('Navigation');?>
     </nav>
+
+    <?php $this->widget('BottomNavigation');?>
 <?php } ?>
 
 <main style="background-color: var(--movim-background);">

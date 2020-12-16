@@ -205,6 +205,8 @@ function explodeXMPPURI(string $uri): array
             if (isset($params['node'])) {
                 return ['type' => 'community', 'params' => [$uri['path'], $params['node']]];
             }
+        } elseif(isset($uri['host']) && isset($uri['user'])) {
+            return ['type' => 'contact', 'params' => $uri['user'].'@'.$uri['host']];
         } else {
             return ['type' => 'contact', 'params' => $uri['path']];
         }

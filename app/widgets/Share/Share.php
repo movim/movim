@@ -12,7 +12,7 @@ class Share extends Base
         $this->addjs('share.js');
     }
 
-    public function ajaxGet($link)
+    public function ajaxHttpGet($link)
     {
         $validate_url = Validator::url();
 
