@@ -150,7 +150,7 @@ var MovimTpl = {
             moveX = event.targetTouches[0].pageX;
             MovimTpl.translateX = parseInt(moveX - MovimTpl.startX);
 
-            if (nav.classList.contains('active') && MovimTpl.startX > clientWidth - 150) {
+            if (nav.classList.contains('active') && MovimTpl.translateX - delay < 0) {
                 MovimTpl.menuDragged = true;
                 event.stopPropagation();
                 nav.style.transform = 'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, '
