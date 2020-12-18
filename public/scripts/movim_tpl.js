@@ -5,9 +5,11 @@
  */
 
 var MovimTpl = {
-    dragged : false,
-    moving : false,
-    percent : false,
+    startX: 0,
+    startY: 0,
+    translateX: 0,
+    menuDragged: false,
+
     append : function(selector, html) {
         target = document.querySelector(selector);
         if (target) {
@@ -115,54 +117,56 @@ var MovimTpl = {
     },
     touchEvents: function() {
         nav = document.querySelector('body > nav');
+        clientWidth = Math.abs(document.body.clientWidth);
+        delay = 20;
 
         if (nav == null) return;
 
         document.body.addEventListener('touchstart', function(event) {
-            startX = event.targetTouches[0].pageX;
-            startY = event.targetTouches[0].pageY;
-
-            if (
-            (
-                (startX < document.body.clientWidth/35 && startY > 56)
-                ||
-                (nav.classList.contains('active') && startX > document.body.clientWidth - 50)
-            )
-            && MovimTpl.dragged == false) {
-                nav.classList.add('moving');
-                MovimTpl.dragged = true;
-            }
+            MovimTpl.startX = event.targetTouches[0].pageX;
+            MovimTpl.startY = event.targetTouches[0].pageY;
+            nav.classList.remove('moving');
         }, true);
 
         document.body.addEventListener('touchmove', function(event) {
             moveX = event.targetTouches[0].pageX;
+            MovimTpl.translateX = parseInt(moveX - MovimTpl.startX);
 
-            if (MovimTpl.dragged) {
-                event.preventDefault();
+            if (nav.classList.contains('active') && MovimTpl.startX > clientWidth - 150) {
+                MovimTpl.menuDragged = true;
+                event.stopPropagation();
+                nav.style.transform = 'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, '
+                + (MovimTpl.translateX - delay)
+                +', 0, 0, 1)';
+            } else if (!nav.classList.contains('active')
+                    && MovimTpl.startX < clientWidth/35
+                    && MovimTpl.startY > 56
+                    && MovimTpl.translateX > delay) {
+                MovimTpl.menuDragged = true;
                 event.stopPropagation();
 
-                position = moveX - document.body.clientWidth;
-
-                MovimTpl.percent = 1 - Math.abs(moveX) / Math.abs(document.body.clientWidth);
-                nav.style.transform = 'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, '+position+', 0, 0, 1)';
+                nav.style.transform = 'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, '
+                    + (MovimTpl.translateX - clientWidth - delay)
+                    +', 0, 0, 1)';
             }
         }, true);
 
         document.body.addEventListener('touchend', function(event) {
+            nav.classList.add('moving');
             nav.style.transform = '';
 
-            if (MovimTpl.dragged) {
-                nav.classList.remove('moving');
+            percent = MovimTpl.translateX / clientWidth;
 
-                if (!nav.classList.contains('active')
-                && MovimTpl.percent < 0.80) {
-                    nav.classList.add('active');
-                } else if (MovimTpl.percent > 0.20) {
+            if (MovimTpl.menuDragged) {
+                if (nav.classList.contains('active') && percent < -0.2) {
                     nav.classList.remove('active');
+                } else if (percent > 0.1) {
+                    nav.classList.add('active');
                 }
             }
 
-            MovimTpl.dragged = false;
+            MovimTpl.startX = MovimTpl.startY = MovimTpl.translateX = 0;
+            MovimTpl.menuDragged = false;
         }, true);
     }
 };

@@ -35,6 +35,7 @@ var Chats = {
                 }
 
                 clientWidth = Math.abs(document.body.clientWidth);
+                delay = 20;
 
                 items[i].addEventListener('touchstart', function(event) {
                     Chats.startX = event.targetTouches[0].pageX;
@@ -46,8 +47,6 @@ var Chats = {
                 items[i].addEventListener('touchmove', function(event) {
                     Chats.translateX = parseInt(event.targetTouches[0].pageX - Chats.startX);
                     Chats.translateY = parseInt(event.targetTouches[0].pageY - Chats.startY);
-
-                    delay = 20;
 
                     if (Math.abs(Chats.translateX) > delay && Math.abs(Chats.translateX) <= clientWidth) {
                         if (Math.abs(Chats.translateX) > this.offsetWidth/2) {

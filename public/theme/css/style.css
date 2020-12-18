@@ -90,11 +90,11 @@ body > nav li { /* Little hack for the navbar */
         transform: translateX(-100%);
     }
 
-    body > nav:not(.moving) {
+    body > nav.moving {
         transition: transform .25s var(--decelerate-easing);
     }
 
-    body > nav.active:not(.moving) {
+    body > nav.active.moving {
         transition: transform .25s var(--accelerate-easing);
         transform: translateX(0%);
     }
