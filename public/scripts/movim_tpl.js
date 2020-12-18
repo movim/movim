@@ -118,7 +118,9 @@ var MovimTpl = {
 
         if (nav == null) return;
 
-        document.body.addEventListener('touchstart', function(event) {
+        nav.addEventListener('touchstart', function(event) {
+            //event.preventDefault();
+
             startX = event.targetTouches[0].pageX;
             startY = event.targetTouches[0].pageY;
 
@@ -134,7 +136,9 @@ var MovimTpl = {
             }
         }, true);
 
-        document.body.addEventListener('touchmove', function(event) {
+        nav.addEventListener('touchmove', function(event) {
+            //event.preventDefault();
+
             moveX = event.targetTouches[0].pageX;
 
             if (MovimTpl.dragged) {
@@ -148,7 +152,9 @@ var MovimTpl = {
             }
         }, true);
 
-        document.body.addEventListener('touchend', function(event) {
+        nav.addEventListener('touchend', function(event) {
+            event.preventDefault();
+
             nav.style.transform = '';
 
             if (MovimTpl.dragged) {
