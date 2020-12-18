@@ -117,6 +117,7 @@ var MovimTpl = {
     },
     touchEvents: function() {
         nav = document.querySelector('body > nav');
+        mainDiv = document.querySelector('body > main > div:not(#chat_widget)');
         clientWidth = Math.abs(document.body.clientWidth);
         delay = 20;
 
@@ -128,7 +129,24 @@ var MovimTpl = {
             nav.classList.remove('moving');
         }, true);
 
-        document.body.addEventListener('touchmove', function(event) {
+        mainDiv.addEventListener('touchmove', function(event) {
+            moveX = event.targetTouches[0].pageX;
+            MovimTpl.translateX = parseInt(moveX - MovimTpl.startX);
+
+            if (!nav.classList.contains('active')
+                    && MovimTpl.startX < clientWidth/20
+                    && MovimTpl.startY > 56
+                    && MovimTpl.translateX > delay) {
+                MovimTpl.menuDragged = true;
+                event.stopPropagation();
+
+                nav.style.transform = 'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, '
+                    + (MovimTpl.translateX - clientWidth - delay)
+                    +', 0, 0, 1)';
+            }
+        }, true);
+
+        nav.addEventListener('touchmove', function(event) {
             moveX = event.targetTouches[0].pageX;
             MovimTpl.translateX = parseInt(moveX - MovimTpl.startX);
 
@@ -138,16 +156,6 @@ var MovimTpl = {
                 nav.style.transform = 'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, '
                 + (MovimTpl.translateX - delay)
                 +', 0, 0, 1)';
-            } else if (!nav.classList.contains('active')
-                    && MovimTpl.startX < clientWidth/35
-                    && MovimTpl.startY > 56
-                    && MovimTpl.translateX > delay) {
-                MovimTpl.menuDragged = true;
-                event.stopPropagation();
-
-                nav.style.transform = 'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, '
-                    + (MovimTpl.translateX - clientWidth - delay)
-                    +', 0, 0, 1)';
             }
         }, true);
 
