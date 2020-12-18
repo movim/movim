@@ -2,7 +2,7 @@
 <hr />
 {if="$reply != null"}
     <ul class="list thick active recessed"
-        onclick="MovimUtils.reload('{$c->route('post', [$reply->server, $reply->node, $reply->nodeid])}')">
+        onclick="window.location.replace('{$c->route('post', [$reply->server, $reply->node, $reply->nodeid])}')">
         <li>
             {if="$reply->picture"}
                 <span
