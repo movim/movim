@@ -42,10 +42,9 @@ main:not(.enabled) #chat_widget {
 
 #chat_widget ul.list.actions {
     right: -1rem;
-    bottom: 7rem;
     position: absolute;
     opacity: 0;
-    transform: translateY(5%) scaleY(0.98);
+    transform: translateY(-19rem) scaleY(0.98);
     transition: transform 0.2s, opacity 0.2s;
     pointer-events: none;
 }
@@ -53,7 +52,7 @@ main:not(.enabled) #chat_widget {
 #chat_widget span.control.enabled + ul.list.actions {
     opacity: 1;
     z-index: 2;
-    transform: translateY(0) scaleY(1);
+    transform: translateY(-21.5rem) scaleY(1);
     pointer-events: initial;
 }
 
