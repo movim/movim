@@ -810,7 +810,7 @@ var Chat = {
             span.appendChild(Chat.getEditedIcoHtml());
         }
 
-        if (data.user_id == data.jidfrom) {
+        if (data.user_id == data.jidfrom || (data.type == 'groupchat' && data.mine)) {
             if (data.displayed) {
                 span.appendChild(Chat.getDisplayedIcoHtml(data.displayed));
             } else if (data.delivered) {

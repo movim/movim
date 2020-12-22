@@ -192,6 +192,11 @@ class Message extends Model
             $this->type = (string)$stanza->attributes()->type;
         }
 
+        // If it's a MUC message, we assume that the server already handled it
+        if ($this->type == 'groupchat') {
+            $this->delivered = gmdate('Y-m-d H:i:s');
+        }
+
         if (isset($jid[1])
         && $this->type !== 'groupchat'
         && $stanza->x
