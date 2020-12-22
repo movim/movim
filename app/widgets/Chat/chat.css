@@ -480,7 +480,7 @@ main:not(.enabled) #chat_widget {
 }
 
 #chat_widget .bubble ul.card.list li span.primary:not(.thumb) {
-    margin-top: 1rem;
+    margin: 1rem 0;
 }
 
 #chat_widget .bubble span.resource + ul.card.list li {
