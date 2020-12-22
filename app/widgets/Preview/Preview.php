@@ -24,6 +24,19 @@ class Preview extends Base
         $this->rpc('MovimTpl.fill', '#preview', $view->draw('_preview'));
     }
 
+    public function ajaxGallery($url, $number = 0)
+    {
+        if (!Validator::url($url)->validate($url)) {
+            return;
+        }
+
+        $view = $this->tpl();
+        $view->assign('embed', \App\Url::resolve($url));
+        $view->assign('imagenumber', $number);
+
+        $this->rpc('MovimTpl.fill', '#preview', $view->draw('_preview_gallery'));
+    }
+
     public function ajaxHide()
     {
         $this->rpc('MovimTpl.fill', '#preview', '');

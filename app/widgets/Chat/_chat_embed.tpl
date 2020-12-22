@@ -1,7 +1,11 @@
 <li class="block">
     {if="!empty($embed->images)"}
         <span class="primary icon thumb active color {$embed->url|stringToColor}"
-            onclick="Preview_ajaxShow('{$embed->images[0]['url']|protectPicture}')"
+            {if="count($embed->images) > 1"}
+                onclick="Preview_ajaxGallery('{$embed->url}', 0)"
+            {else}
+                onclick="Preview_ajaxShow('{$embed->images[0]['url']|protectPicture}')"
+            {/if}
             style="background-image: url({$embed->images[0]['url']|protectPicture})"
             >
             {if="count($embed->images) > 1"}

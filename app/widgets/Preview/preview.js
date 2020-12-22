@@ -9,6 +9,8 @@ movimAddOnload(function() {
         if (document.querySelector('#preview').innerHTML == '') return;
 
         if (!document.querySelector('#preview img').contains(e.target)
+        && !document.querySelector('#preview .prevnext.prev').contains(e.target)
+        && !document.querySelector('#preview .prevnext.next').contains(e.target)
         && !document.querySelector('#preview .buttons').contains(e.target)) {
             Preview_ajaxHide();
         }

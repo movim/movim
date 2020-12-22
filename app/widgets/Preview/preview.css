@@ -29,6 +29,49 @@
     text-align: center;
 }
 
+#preview .prevnext {
+    font-size: 5rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+    line-height: 7rem;
+    width: 7rem;
+    border-radius: 100%;
+    color: white;
+    height: 7rem;
+    text-align: center;
+
+    position: absolute;
+    top: calc(50% - 3.5rem);
+
+    display: none;
+}
+
+#preview .prevnext.enabled {
+    display: inline-block;
+}
+
+#preview .prevnext.prev {
+    left: 1.5rem;
+}
+
+#preview .prevnext.next {
+    right: 1.5rem;
+}
+
+#preview .counter {
+    color: white;
+    font-size: 1.75rem;
+    line-height: 5rem;
+    display: block;
+    text-align: center;
+    position: absolute;
+}
+
+#preview .prevnext:hover {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
 /* Previewable */
 .previewable {
     display: inline-block;
