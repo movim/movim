@@ -374,6 +374,7 @@ ul li div.bubble p {
     font-size: 1.75rem;
     word-wrap: break-word;
     white-space: pre-wrap;
+    word-break: normal;
     position: relative;
 }
 

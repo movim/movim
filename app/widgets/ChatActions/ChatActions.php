@@ -1,5 +1,7 @@
 <?php
 
+use App\Url;
+
 use Moxl\Xec\Action\Message\Retract;
 
 include_once WIDGETS_PATH.'ContactActions/ContactActions.php';
@@ -88,6 +90,12 @@ class ChatActions extends \Movim\Widget\Base
             if ($picture != false) {
                 $message->file = (array)$picture;
                 $this->rpc('Chat.refreshMessage', $message->mid);
+            } else {
+                try {
+                    Url::resolve(trim($message->body));
+                    $message->urlid = Url::$id;
+                    $this->rpc('Chat.refreshMessage', $message->mid);
+                } catch (\Exception $e) {}
             }
 
             $message->resolved = true;

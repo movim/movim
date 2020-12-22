@@ -601,7 +601,7 @@ function generateKey($size)
     return $hash;
 }
 
-define('DEFAULT_HTTP_USER_AGENT', 'Mozilla/5.0 (X11; Linux x86_64; rv:74.0) Gecko/20100101 Firefox/74.0');
+define('DEFAULT_HTTP_USER_AGENT', 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://google.com/bot.html)');
 
 /*
  * @desc Request a simple url

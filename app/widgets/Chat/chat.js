@@ -822,11 +822,6 @@ var Chat = {
             reactions.innerHTML = data.reactionsHtml;
         }
 
-        if (data.card) {
-            bubble.querySelector('div.bubble').classList.add('file');
-            msg.appendChild(Chat.getCardHtml(data.card));
-        }
-
         if (isMuc) {
             var resourceSpan = document.createElement('span');
             resourceSpan.classList.add('resource');
@@ -834,6 +829,11 @@ var Chat = {
             resourceSpan.innerText = data.resource;
 
             msg.appendChild(resourceSpan);
+        }
+
+        if (data.card) {
+            bubble.querySelector('div.bubble').classList.add('file');
+            msg.appendChild(Chat.getCardHtml(data.card));
         }
 
         // Parent
@@ -867,8 +867,8 @@ var Chat = {
             elem.parentElement.replaceChild(msg, elem);
             mergeMsg = true;
 
-            // If the previous message was not a file and is replaced by it
-            if (data.file != null) {
+            // If the previous message was not a file or card and is replaced by it
+            if (data.file != null || data.card != null) {
                 msg.parentElement.classList.add('file');
             }
 
@@ -997,9 +997,13 @@ var Chat = {
     },
     getCardHtml: function(card) {
         var ul = document.createElement('ul');
-        ul.setAttribute('class', 'card list noanim active');
-
+        ul.setAttribute('class', 'card list middle noanim');
         ul.innerHTML = card;
+
+        if (ul.querySelector('li').getAttribute('onclick')) {
+            ul.classList.add('active');
+        }
+
         return ul;
     },
     getFileHtml: function(file, sticker) {

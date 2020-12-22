@@ -9,7 +9,7 @@ use Moxl\Xec\Action\Muc\SetConfig;
 use App\Message;
 use App\MessageFile;
 use App\Reaction;
-
+use App\Url;
 use Moxl\Xec\Action\BOB\Request;
 use Moxl\Xec\Action\Disco\Request as DiscoRequest;
 
@@ -421,7 +421,8 @@ class Chat extends \Movim\Widget\Base
 
             \App\Message::where('id', $oldid)->update([
                 'id' => $m->id,
-                'replaceid' => $m->id
+                'replaceid' => $m->id,
+                'resolved' => false
             ]);
         } else {
             $m = new \App\Message;
@@ -1049,6 +1050,16 @@ class Chat extends \Movim\Widget\Base
                         $message->card = $p->prepareTicket($post);
                     }
                     break;
+            }
+        }
+
+        if ($message->resolvedUrl && !$message->file
+        && !$message->card && !$message->sticker) {
+            $resolved = $message->resolvedUrl->cache;
+            if ($resolved) {
+                $tpl = $this->tpl();
+                $tpl->assign('embed', $resolved);
+                $message->card = $tpl->draw('_chat_embed');
             }
         }
 

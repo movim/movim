@@ -9,17 +9,16 @@ use Embed\Http\CurlDispatcher;
 
 class Url extends Model
 {
-    protected $primaryKey = 'hash';
-    protected $keyType = 'string';
-    public $incrementing = false;
+    public static $id = 0;
 
     public static function resolve($url)
     {
         if (Validator::url()->validate($url)) {
             $hash = hash('sha256', $url);
-            $cached = \App\Url::find($hash);
+            $cached = \App\Url::where('hash', $hash)->first();
 
             if ($cached) {
+                self::$id = $cached->id;
                 return $cached->cache;
             } else {
                 $cached = new \App\Url;
@@ -28,6 +27,8 @@ class Url extends Model
 
             $cached->cache = $url;
             $cached->save();
+
+            self::$id = $cached->id;
 
             return $cached->cache;
         }
@@ -42,7 +43,8 @@ class Url extends Model
     {
         $dispatcher = new CurlDispatcher([
             CURLOPT_CONNECTTIMEOUT => 5,
-            CURLOPT_TIMEOUT => 5
+            CURLOPT_TIMEOUT => 5,
+            CURLOPT_USERAGENT => DEFAULT_HTTP_USER_AGENT,
         ]);
 
         $embed = new EmbedLight(\Embed\Embed::create($url, null, $dispatcher));

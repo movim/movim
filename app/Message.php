@@ -17,7 +17,7 @@ class Message extends Model
 
     protected $guarded = [];
 
-    protected $with = ['reactions', 'parent.from'];
+    protected $with = ['reactions', 'parent.from', 'resolvedUrl'];
 
     protected $attributes = [
         'type'    => 'chat'
@@ -40,6 +40,11 @@ class Message extends Model
     public function parent()
     {
         return $this->belongsTo('App\Message', 'parentmid', 'mid');
+    }
+
+    public function resolvedUrl()
+    {
+        return $this->belongsTo('App\Url', 'urlid', 'id');
     }
 
     public function from()
@@ -141,6 +146,9 @@ class Message extends Model
 
     public function set($stanza, $parent = false)
     {
+        // We reset the URL resolution to refresh it once the message is displayed
+        $this->resolved = false;
+
         $this->id = ($stanza->{'stanza-id'} && $stanza->{'stanza-id'}->attributes()->id)
             ? (string)$stanza->{'stanza-id'}->attributes()->id
             : 'm_' . generateUUID();

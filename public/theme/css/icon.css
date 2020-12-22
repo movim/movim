@@ -66,6 +66,7 @@ span.icon.primary.thumb {
     margin-left: -1.5rem;
     align-self: stretch;
     height: auto;
+    text-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
 }
 
 ul.fill li span.icon.primary.thumb {

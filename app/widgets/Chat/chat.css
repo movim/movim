@@ -476,7 +476,19 @@ main:not(.enabled) #chat_widget {
 /* Card */
 
 #chat_widget .bubble ul.card.list {
-    max-width: 55rem;
+    max-width: 45rem;
+}
+
+#chat_widget .bubble ul.card.list li span.primary:not(.thumb) {
+    margin-top: 1rem;
+}
+
+#chat_widget .bubble span.resource + ul.card.list li {
+    margin-top: 0.5rem;
+}
+
+#chat_widget .bubble ul.card.list li {
+    margin-bottom: 0.5rem;
 }
 
 #chat_widget .bubble ul.card.list .info {

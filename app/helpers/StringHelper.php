@@ -369,7 +369,11 @@ function stringToColor($string): string
  */
 function stripTags($string): string
 {
-    return strip_tags(preg_replace('/(<\/[^>]+?>)(<[^>\/][^>]*?>)/', '$1 $2', $string));
+    return strip_tags(
+        preg_replace('/\s+/', ' ',
+            preg_replace('/(<\/[^>]+?>)(<[^>\/][^>]*?>)/', '$1 $2', $string)
+        )
+    );
 }
 
 /**
