@@ -12,7 +12,7 @@ class Picture
     private $_folder = 'cache/';
     private $_key;
     private $_bin  = false;
-    private $_formats = ['jpeg' => '.jpg', 'png' => '.png'];
+    private $_formats = ['jpeg' => '.jpg', 'png' => '.png', 'webp' => '.webp'];
 
     /**
      * @desc Load a bin picture from an URL

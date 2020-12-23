@@ -49,7 +49,7 @@ class Route extends Base
             ];
     }
 
-    public function find()
+    public function find($page = null)
     {
         $this->fix($_GET, $_SERVER['QUERY_STRING']);
 
@@ -58,7 +58,7 @@ class Route extends Base
         unset($_GET[$uri]);
         $request = explode('/', $uri);
 
-        $this->_page = array_shift($request);
+        $this->_page = $page ?? array_shift($request);
 
         if (isset($this->_routes[$this->_page])) {
             $route = $this->_routes[$this->_page];
@@ -104,7 +104,10 @@ class Route extends Base
         if (isset($routes[$page])) {
             $uri = BASE_URI . '?'. $page;
 
-            if ($params != false) {
+            // Specific case for picture that is in a subdirectory for caching purposes
+            if ($page == 'picture') {
+                $uri = BASE_URI . 'picture/?'.rawurlencode($params);
+            } elseif ($params != false) {
                 if (is_array($params)) {
                     foreach ($params as $value) {
                         $uri .= '/' . rawurlencode($value);

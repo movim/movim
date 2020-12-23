@@ -4,7 +4,7 @@
             {if="count($embed->images) > 1"}
                 onclick="Preview_ajaxGallery('{$embed->url}', 0)"
             {else}
-                onclick="Preview_ajaxShow('{$embed->images[0]['url']|protectPicture}')"
+                onclick="Preview_ajaxShow('{$embed->images[0]['url']}')"
             {/if}
             style="background-image: url({$embed->images[0]['url']|protectPicture})"
             >

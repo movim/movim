@@ -7,10 +7,10 @@ use Movim\RPC;
 
 class Front extends Base
 {
-    public function handle()
+    public function handle($forcePage = null)
     {
         $r = new Route;
-        $page = $r->find();
+        $page = $r->find($forcePage);
 
         if ($page === null) {
             $this->redirect($r->getRedirect());

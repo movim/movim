@@ -5,7 +5,7 @@
         </span>
     </li>
 </ul>
-<img src="{$url}" title="{$url}" class="transparent"/>
+<img src="{$url|protectPicture}" title="{$url}" class="transparent"/>
 <span class="prevnext prev"></span>
 <span class="prevnext next"></span>
 <div class="buttons">
