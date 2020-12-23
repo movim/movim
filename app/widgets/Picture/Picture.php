@@ -48,7 +48,7 @@ class Picture extends Base
             if ($compress) {
                 $picture = new MovimPicture;
                 $picture->fromBin($body);
-                $body = $picture->set(false, 'webp', 85);
+                $body = $picture->set(false, 'webp', 95);
 
                 if ($body->getImageWidth() > $this->sizeLimit || $body->getImageHeight() > $this->sizeLimit) {
                     $body->adaptiveResizeImage($this->sizeLimit, $this->sizeLimit, true, false);
