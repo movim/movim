@@ -26,6 +26,9 @@ v0.18.1 (trunk)
  * Add WebM and H264 video embedding support in the Chat
  * Add Tenor support for GIF/videos search and integration in Chat
  * Set first the chatrooms with unread messages
+ * Resolve also the Message URLs to display a proper embed element
+ * Move the picture proxy under picture/ to allow server caching (with fastcgi_cache for example)
+ * Remove picture proxy redirection and enforce the proxy for all the pictures
 
 v0.18
 ---------------------------
