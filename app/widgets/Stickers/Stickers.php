@@ -116,9 +116,12 @@ class Stickers extends \Movim\Widget\Base
         $isGifEnabled = !empty($configuration->gifapikey);
 
         $packs = $this->getPacks();
-        //$pack = isset($pack) ? $pack : current($packs);
 
-        if (!$isGifEnabled || isset($pack)) {
+        if (!$isGifEnabled && $pack == null) {
+            $pack = current($packs);
+        }
+
+        if (isset($pack)) {
             $files = scandir(PUBLIC_PATH.'/stickers/'.$pack);
 
             array_shift($files);
