@@ -10,7 +10,7 @@ figure div {
     width: 20%;
     margin-top: -2.5em;
     margin-left: -10%;
-    background-color: #EEE;
+    background-color: var(--movim-background);
     border-radius: 0.2em;
     text-align: center;
     position: absolute;
@@ -28,7 +28,7 @@ figure div#webserver {
     width: 26%;
     border-radius: 0.2em;
     height: 22em;
-    border: 0.5em dashed #F5F5F5;
+    border: 0.5em dashed var(--movim-background);
     left: 46%;
     background-color: transparent;
     top: 10%;
@@ -50,7 +50,7 @@ figure div.link {
 }
 
 figure div.link i {
-    background-color: #FFF;
+    background-color: var(--movim-background);
     margin-top: -2rem;
     padding: 1.5rem 1rem;
     border-radius: 6rem;
