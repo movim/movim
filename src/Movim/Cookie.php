@@ -30,10 +30,15 @@ class Cookie
         return time()+604800;
     }
 
+    public static function clearCookieHeader()
+    {
+        header_remove('Set-Cookie');
+    }
+
     private static function setCookie($key)
     {
         if (!headers_sent()) {
-            header_remove('Set-Cookie');
+            self::clearCookieHeader();
             setcookie('MOVIM_SESSION_ID', $key, [
                 'expires' => self::getTime(),
                 'path' => '/',

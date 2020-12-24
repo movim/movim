@@ -76,11 +76,16 @@ class Front extends Base
 
         $c = $this->loadController($request);
 
-        Cookie::refresh();
-
         if (is_callable([$c, 'load'])) {
             $c->name = $request;
             $c->load();
+
+            if ($c->set_cookie) {
+                Cookie::refresh();
+            } else {
+                Cookie::clearCookieHeader();
+            }
+
             $c->checkSession();
             $c->dispatch();
 
@@ -89,7 +94,7 @@ class Front extends Base
                 $this->redirect('login');
             }
 
-            // We display the page !
+            // We display the page!
             $c->display();
         } else {
             \Utils::info('Could not call the load method on the current controller');
