@@ -18,7 +18,8 @@ class Picture extends Base
         && $headers["download_content_length"] <= $this->compressLimit
         && typeIsPicture($headers['content_type'])) {
             $compress = (
-                $headers["download_content_length"] < $this->compressLimit
+                $headers["download_content_length"] > SMALL_PICTURE_LIMIT * 0.5
+                && $headers["download_content_length"] < $this->compressLimit
             );
 
             $limit = $compress
