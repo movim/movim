@@ -43,8 +43,9 @@ main:not(.enabled) #chat_widget {
 #chat_widget ul.list.actions {
     right: -1rem;
     position: absolute;
+    bottom: 7rem;
     opacity: 0;
-    transform: translateY(-19rem) scaleY(0.98);
+    transform: translateY(5%) scaleY(0.98);
     transition: transform 0.2s, opacity 0.2s;
     pointer-events: none;
 }
@@ -52,7 +53,7 @@ main:not(.enabled) #chat_widget {
 #chat_widget span.control.enabled + ul.list.actions {
     opacity: 1;
     z-index: 2;
-    transform: translateY(-21.5rem) scaleY(1);
+    transform: translateY(0) scaleY(1);
     pointer-events: initial;
 }
 
@@ -481,6 +482,10 @@ main:not(.enabled) #chat_widget {
 
 #chat_widget .bubble ul.card.list li span.primary:not(.thumb) {
     margin: 1rem 0;
+}
+
+#chat_widget .bubble ul.card.list li span.primary:not(.thumb) img {
+    display: inline-block;
 }
 
 #chat_widget .bubble span.resource + ul.card.list li {

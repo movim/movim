@@ -1,7 +1,6 @@
 ul.list > * > li,
 ul.list > li {
     clear: both;
-    position: relative;
     display: flex;
     align-items: center;
     padding: 0 1.5rem;
@@ -40,11 +39,6 @@ ul.list.middle li:not(.subheader) > *:not(.primary):not(.control):not(.bubble) {
 
 ul.list.thick li:not(.subheader) > *:not(.primary):not(.control):not(.bubble) {
     padding: 1.5rem 0;
-}
-
-ul.list li > *:not(p, .hide, form) {
-    display: inline-block;
-    top: 0;
 }
 
 /* Active list items */
