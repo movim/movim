@@ -48,12 +48,18 @@ class ContactActions extends Base
 
         $tpl = $this->tpl();
         $tpl->assign('contact', \App\Contact::firstOrNew(['id' => $jid]));
-        $tpl->assign('pictures', \App\Message::jid($jid)
-                                             ->where('picture', true)
-                                             ->orderBy('published', 'desc')
-                                             ->take(8)
-                                             ->get());
-        $tpl->assign('roster', $this->user->session->contacts()->where('jid', $jid)->first());
+        if ($jid != $this->user->id) {
+            $tpl->assign('pictures', \App\Message::jid($jid)
+                                                ->where('picture', true)
+                                                ->orderBy('published', 'desc')
+                                                ->take(8)
+                                                ->get());
+            $tpl->assign('roster', $this->user->session->contacts()->where('jid', $jid)->first());
+        } else {
+            $tpl->assign('pictures', collect());
+            $tpl->assign('roster', null);
+        }
+
         $tpl->assign('clienttype', getClientTypes());
 
         Drawer::fill($tpl->draw('_contactactions_drawer'));
