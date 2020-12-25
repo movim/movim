@@ -973,16 +973,16 @@
         },
         {
             "name": "embed/embed",
-            "version": "v3.4.12",
+            "version": "v3.4.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/Embed.git",
-                "reference": "0ba0aabbdfd252d4b8fe908c5559efe34b640569"
+                "reference": "99f6d95aebd94251573e4f4febf14bc6aba28697"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/0ba0aabbdfd252d4b8fe908c5559efe34b640569",
-                "reference": "0ba0aabbdfd252d4b8fe908c5559efe34b640569",
+                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/99f6d95aebd94251573e4f4febf14bc6aba28697",
+                "reference": "99f6d95aebd94251573e4f4febf14bc6aba28697",
                 "shasum": ""
             },
             "require": {
@@ -1026,9 +1026,9 @@
             "support": {
                 "email": "oom@oscarotero.com",
                 "issues": "https://github.com/oscarotero/Embed/issues",
-                "source": "https://github.com/oscarotero/Embed/tree/v3.4.12"
+                "source": "https://github.com/oscarotero/Embed/tree/v3.4.13"
             },
-            "time": "2020-12-16T20:16:17+00:00"
+            "time": "2020-12-24T09:42:20+00:00"
         },
         {
             "name": "evenement/evenement",
