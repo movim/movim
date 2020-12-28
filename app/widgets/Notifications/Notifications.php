@@ -154,7 +154,9 @@ class Notifications extends Base
         $notifs = \App\Post::whereIn('parent_id', function ($query) {
             $query->select('id')
                   ->from('posts')
-                  ->where('aid', $this->user->id);
+                  ->where('aid', $this->user->id)
+                  ->orderBy('published', 'desc')
+                  ->limit(15);
         })
         ->orderBy('published', 'desc')
         ->limit(30)
