@@ -134,7 +134,7 @@ var MovimTpl = {
             MovimTpl.translateX = parseInt(moveX - MovimTpl.startX);
 
             if (!nav.classList.contains('active')
-                    && MovimTpl.startX < 28
+                    && MovimTpl.startX < clientWidth/15
                     && MovimTpl.startY > 56
                     && MovimTpl.translateX < (clientWidth/2) + delay
                     && MovimTpl.translateX > delay) {
