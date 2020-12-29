@@ -242,7 +242,8 @@ class Message extends Model
                     ->orderBy('published', 'asc')
                     ->first();
 
-                if ($parent && $parent->mid != $this->mid) {
+                if ($parent && $parent->mid != $this->mid
+                 && $parent->replaceid != $this->replaceid) {
                     $this->parentmid = $parent->mid;
                 }
             }
