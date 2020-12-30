@@ -9,7 +9,6 @@
                 action
             {/if}
         {/if}
-        {if="$active"}active{/if}
         "
     title="{$contact->jid}{if="isset($message)"} · {$message->published|strtotime|prepareDate}{/if}">
     {$url = $contact->getPhoto()}

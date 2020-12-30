@@ -22,7 +22,9 @@ class Chats extends Base
         $this->registerEvent('message', 'onMessage');
         $this->registerEvent('presence', 'onPresence', 'chat');
         $this->registerEvent('chatstate', 'onChatState', 'chat');
-        $this->registerEvent('chat_open', 'onChatOpen', 'chat');
+        // Bug: In Chat::ajaxGet, Notification.current might come after this event
+        // so we don't set the filter
+        $this->registerEvent('chat_open', 'onChatOpen', /* 'chat'*/);
     }
 
     public function onMessage($packet)
@@ -54,11 +56,10 @@ class Chats extends Base
                 $jid,
                 $this->resolveContactFromJid($jid),
                 $this->resolveRosterFromJid($jid),
-                $this->resolveMessageFromJid($jid),
-                null,
-                true
+                $this->resolveMessageFromJid($jid)
             )
         );
+        $this->rpc('Chats.setActive', $jid);
         $this->rpc('Chats.refresh');
     }
 
@@ -145,14 +146,14 @@ class Chats extends Base
         }
 
         $chats = \App\Cache::c('chats');
+
         if ($chats == null) {
             $chats = [];
         }
 
         unset($chats[$jid]);
 
-        if (/*!array_key_exists($jid, $chats)
-                && */$jid != $this->user->id) {
+        if ($jid != $this->user->id) {
             $chats[$jid] = 1;
 
             if ($history) {
@@ -185,6 +186,9 @@ class Chats extends Base
         unset($chats[$jid]);
         \App\Cache::c('chats', $chats);
 
+        $tpl = $this->tpl();
+        $tpl->cacheClear('_chats_item', $jid);
+
         $this->rpc('MovimTpl.remove', '#' . cleanupId($jid . '_chat_item'));
         $this->rpc('Chat_ajaxClearCounter', $jid);
         $this->rpc('Chats.refresh');
@@ -194,37 +198,33 @@ class Chats extends Base
         }
     }
 
-    public function prepareChats($emptyItems = false)
+    public function prepareChats()
     {
-        $unreads = [];
-
-        // Get the chats with unread messages
-        $this->user->messages()
-            ->select('jidfrom')
-            ->where('seen', false)
-            ->whereIn('type', ['chat', 'headline', 'invitation'])
-            ->where('jidfrom', '!=', $this->user->id)
-            ->groupBy('jidfrom')
-            ->pluck('jidfrom')
-            ->each(function ($item) use (&$unreads) {
-                $unreads[$item] = 1;
-            });
-
-        // Append the open chats
-        $chats = \App\Cache::c('chats');
-
-        $chats = array_merge(
-            is_array($chats) ? $chats : [],
-            $unreads
-        );
-
-        $view = $this->tpl();
+        $chats = $this->resolveChats();
 
         if (!isset($chats)) {
             return '';
         }
 
-        if ($emptyItems == false) {
+        $html = '';
+        $view = $this->tpl();
+
+        // Check if we got already in the cache
+        foreach (array_reverse($chats) as $key => $value) {
+            $cached = $view->cached('_chats_item', $key);
+
+            if ($cached) {
+                $html .= $cached;
+            } else if ($this->validateJid($key)) {
+                $html = '';
+                break;
+            }
+        }
+
+        // If not we fully rebuild it
+        if ($html == '') {
+            $view->cacheClear('_chats_item');
+
             $contacts = App\Contact::whereIn('id', array_keys($chats))->get()->keyBy('id');
             foreach (array_keys($chats) as $jid) {
                 if (!$contacts->has($jid)) {
@@ -269,27 +269,19 @@ class Chats extends Base
                 }
             }
 
-            $view->assign('rosters', $this->user->session->contacts()->whereIn('jid', array_keys($chats))
-                                        ->with('presence.capability')->get()->keyBy('jid'));
-            $view->assign('contacts', $contacts);
-            $view->assign('messages', $messages);
+            $rosters = $this->user->session->contacts()->whereIn('jid', array_keys($chats))
+                            ->with('presence.capability')->get()->keyBy('jid');
+
+            foreach (array_reverse($chats) as $key => $value) {
+                $html .= $this->prepareChat($key, $contacts->get($key), $rosters->get($key), $messages->get($key));
+            }
         }
 
-        $view->assign('chats', array_reverse($chats));
-        $view->assign('emptyItems', $emptyItems);
-
-        return $view->draw('_chats');
-    }
-
-    public function prepareEmptyChat($jid)
-    {
-        $view = $this->tpl();
-        $view->assign('jid', $jid);
-        return $view->draw('_chats_empty_item');
+        return $html;
     }
 
     public function prepareChat(string $jid, Contact $contact, Roster $roster = null,
-        Message $message = null, string $status = null, bool $active = false)
+        Message $message = null, string $status = null)
     {
         if (!$this->validateJid($jid)) {
             return;
@@ -300,14 +292,13 @@ class Chats extends Base
         $view->assign('status', $status);
         $view->assign('contact', $contact);
         $view->assign('roster', $roster);
-        $view->assign('active', $active);
         $view->assign('count', $this->user->unreads($jid));
 
         if ($status == null) {
             $view->assign('message', $message);
         }
 
-        return $view->draw('_chats_item');
+        return $view->cache('_chats_item', $jid);
     }
 
     public function resolveContactFromJid(string $jid): Contact
@@ -327,6 +318,39 @@ class Chats extends Base
         return \App\Message::jid($jid)
             ->orderBy('published', 'desc')
             ->first();
+    }
+
+    private function resolveChats(): array
+    {
+        $unreads = [];
+
+        // Get the chats with unread messages
+        $this->user->messages()
+            ->select('jidfrom')
+            ->where('seen', false)
+            ->whereIn('type', ['chat', 'headline', 'invitation'])
+            ->where('jidfrom', '!=', $this->user->id)
+            ->groupBy('jidfrom')
+            ->pluck('jidfrom')
+            ->each(function ($item) use (&$unreads) {
+                $unreads[$item] = 1;
+            });
+
+        // Append the open chats
+        $chats = \App\Cache::c('chats');
+        $chats = is_array($chats) ? $chats : [];
+
+        // Clean the unreads from the open ones
+        foreach (array_keys($chats) as $jid) {
+            if (array_key_exists($jid, $unreads)) {
+                unset($unreads[$jid]);
+            }
+        }
+
+        return array_merge(
+            $unreads,
+            is_array($chats) ? $chats : [],
+        );
     }
 
     private function validateJid(string $jid): bool

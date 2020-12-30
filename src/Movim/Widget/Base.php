@@ -169,7 +169,7 @@ class Base
             : '';
     }
 
-    protected function tpl(): Tpl
+    protected function tpl(): Partial
     {
         return new Partial($this);
     }

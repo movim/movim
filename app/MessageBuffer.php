@@ -57,7 +57,6 @@ class MessageBuffer
                 });
                 $table->delete();
 
-                \Utils::debug('INSERT '.$this->_models->count());
                 Message::insert($this->_models->toArray());
                 DB::commit();
             } catch (\Exception $e) {

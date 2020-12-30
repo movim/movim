@@ -39,7 +39,9 @@ class Rooms extends Base
         $this->registerEvent('presence_muc_erroritemnotfound', 'onItemNotFound');
         $this->registerEvent('presence_muc_errornotauthorized', 'onNotAuthorized');
 
-        $this->registerEvent('chat_open_room', 'onChatOpen', 'chat');
+        // Bug: In Chat::ajaxGet, Notification.current might come after this event
+        // so we don't set the filter
+        $this->registerEvent('chat_open_room', 'onChatOpen'/*, 'chat'*/);
     }
 
     public function onChatOpen(string $room)

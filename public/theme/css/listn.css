@@ -181,7 +181,7 @@ ul li div.bubble:after {
 
 /* Size automagicaly the content */
 
-ul.list li > div > p.filler:before {
+/*ul.list li > div > p.filler:before {
     content: "…";
     color: transparent;
     width: 100%;
@@ -202,7 +202,7 @@ ul.list li:nth-child(2n) > div > p.filler:before {
 
 ul.list li:nth-child(2n) > div > p.filler + p.filler:before {
     background-size: 60% 35%;
-}
+}*/
 
 ul.list li > div > p {
     box-sizing: border-box;

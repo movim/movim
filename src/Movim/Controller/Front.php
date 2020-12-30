@@ -77,6 +77,12 @@ class Front extends Base
         $c = $this->loadController($request);
 
         if (is_callable([$c, 'load'])) {
+
+            // Useful for the daemon
+            if (php_sapi_name() != 'cli' && $request == 'login') {
+                file_put_contents(CACHE_PATH.'baseuri', BASE_URI);
+            }
+
             $c->name = $request;
             $c->load();
 

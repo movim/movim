@@ -9,7 +9,7 @@
 </ul>
 <ul id="chats_widget_list" class="list middle active divided spaced">
     {autoescape="off"}
-        {$c->prepareChats(true)}
+        {$c->prepareChats()}
     {/autoescape}
 </ul>
 

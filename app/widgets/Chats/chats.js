@@ -5,7 +5,11 @@ var Chats = {
     translateY: 0,
     slideAuthorized: false,
 
-    refresh: function(clearAllActives = false) {
+    setActive: function(jid) {
+        MovimUtils.addClass('#' + MovimUtils.cleanupId(jid + '_chat_item'), 'active');
+    },
+
+    refresh: function(clearAllActives) {
         var list = document.querySelector('#chats_widget_list');
         var trim = list.innerHTML.trim();
 
@@ -109,4 +113,4 @@ var Chats = {
     }
 };
 
-MovimWebsocket.initiate(() => Chats_ajaxHttpGet());
+movimAddOnload(() => Chats.refresh());

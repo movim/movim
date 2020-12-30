@@ -112,11 +112,6 @@ class Bootstrap
         define('API_SOCKET', CACHE_PATH . 'socketapi.sock');
 
         define('MOVIM_API', 'https://api.movim.eu/');
-
-        // Useful for the daemon
-        if (php_sapi_name() != 'cli') {
-            file_put_contents(CACHE_PATH.'baseuri', BASE_URI);
-        }
     }
 
     private function getVersion()

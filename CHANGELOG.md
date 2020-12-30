@@ -29,6 +29,8 @@ v0.18.1 (trunk)
  * Resolve also the Message URLs to display a proper embed element
  * Move the picture proxy under picture/ to allow server caching (with fastcgi_cache for example)
  * Remove picture proxy redirection and enforce the proxy for all the pictures
+ * Add a cache layer in Widget template system
+ * Use the cache layer in Chats items and remove the Chats item placeholder system
 
 v0.18
 ---------------------------

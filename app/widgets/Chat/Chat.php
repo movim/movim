@@ -279,8 +279,7 @@ class Chat extends \Movim\Widget\Base
 
     public function ajaxClearCounter(string $jid)
     {
-        $this->prepareMessages($jid, false, true);
-        $this->event('chat_counter', $this->user->unreads());
+        $this->prepareMessages($jid, false, true, false);
     }
 
     /**
@@ -859,7 +858,7 @@ class Chat extends \Movim\Widget\Base
         return $view->draw('_chat');
     }
 
-    public function prepareMessages($jid, $muc = false, $seenOnly = false)
+    public function prepareMessages($jid, $muc = false, $seenOnly = false, $event = true)
     {
         if (!$this->validateJid($jid)) {
             return;
@@ -925,7 +924,9 @@ class Chat extends \Movim\Widget\Base
             $this->rpc('Chat.appendMessagesWrapper', $this->_wrapper, false);
         }
 
-        $this->event($muc ? 'chat_open_room' : 'chat_open', $jid);
+        if ($event) {
+            $this->event($muc ? 'chat_open_room' : 'chat_open', $jid);
+        }
         $this->event('chat_counter', $this->user->unreads());
 
         $this->rpc('Chat.insertSeparator', $unreadsCount);
