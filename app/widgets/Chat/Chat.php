@@ -179,10 +179,7 @@ class Chat extends \Movim\Widget\Base
             $this->onChatState($chatStates->getState($from));
         }
 
-        if (!$message->encrypted) {
-            $this->rpc('Chat.appendMessagesWrapper', $this->prepareMessage($message, $from));
-        }
-
+        $this->rpc('Chat.appendMessagesWrapper', $this->prepareMessage($message, $from));
         $this->event('chat_counter', $this->user->unreads());
     }
 
@@ -740,9 +737,7 @@ class Chat extends \Movim\Widget\Base
             }
 
             foreach ($messages as $message) {
-                if (!$message->encrypted) {
-                    $this->prepareMessage($message);
-                }
+                $this->prepareMessage($message);
             }
 
             $this->rpc('Chat.appendMessagesWrapper', $this->_wrapper, $prepend);

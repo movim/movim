@@ -31,6 +31,7 @@ v0.18.1 (trunk)
  * Remove picture proxy redirection and enforce the proxy for all the pictures
  * Add a cache layer in Widget template system
  * Use the cache layer in Chats items and remove the Chats item placeholder system
+ * Display encrypted messages in the conversations
 
 v0.18
 ---------------------------
