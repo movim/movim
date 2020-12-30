@@ -15,6 +15,7 @@ class Chats extends Base
     {
         $this->addcss('chats.css');
         $this->addjs('chats.js');
+        $this->registerEvent('session_start_handle', 'onStart');
         $this->registerEvent('receiptack', 'onMessage', 'chat');
         $this->registerEvent('displayed', 'onMessage', 'chat');
         $this->registerEvent('retracted', 'onMessage', 'chat');
@@ -25,6 +26,12 @@ class Chats extends Base
         // Bug: In Chat::ajaxGet, Notification.current might come after this event
         // so we don't set the filter
         $this->registerEvent('chat_open', 'onChatOpen', /* 'chat'*/);
+    }
+
+    public function onStart($packet)
+    {
+        $tpl = $this->tpl();
+        $tpl->cacheClear('_chats_item');
     }
 
     public function onMessage($packet)
