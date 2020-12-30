@@ -136,13 +136,13 @@ var MovimTpl = {
             if (!nav.classList.contains('active')
                     && MovimTpl.startX < clientWidth/15
                     && MovimTpl.startY > 56
-                    && MovimTpl.translateX < (clientWidth/2) + delay
+                    && MovimTpl.translateX < nav.offsetWidth + delay
                     && MovimTpl.translateX > delay) {
                 MovimTpl.menuDragged = true;
                 event.stopPropagation();
 
                 nav.style.transform = 'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, '
-                    + (MovimTpl.translateX - (clientWidth/2) - delay)
+                    + (-nav.offsetWidth + MovimTpl.translateX - delay)
                     +', 0, 0, 1)';
             }
         }, true);
