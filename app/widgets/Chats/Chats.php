@@ -21,7 +21,7 @@ class Chats extends Base
         $this->registerEvent('retracted', 'onMessage', 'chat');
         $this->registerEvent('carbons', 'onMessage');
         $this->registerEvent('message', 'onMessage');
-        $this->registerEvent('presence', 'onPresence', 'chat');
+        $this->registerEvent('presence', 'onPresence'/*, 'chat'*/);
         $this->registerEvent('chatstate', 'onChatState', 'chat');
         // Bug: In Chat::ajaxGet, Notification.current might come after this event
         // so we don't set the filter
