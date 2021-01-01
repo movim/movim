@@ -150,6 +150,22 @@
         </li>
         {/if}
 
+        {if="$roster->group"}
+            <li>
+                <span class="primary icon gray">
+                    <i class="material-icons">recent_actors</i>
+                </span>
+                <div>
+                    <p>{$c->__('edit.group')}</p>
+                    <p>
+                        <span class="tag color {$roster->group|stringToColor}">
+                            {$roster->group}
+                        </span>
+                    </p>
+                </div>
+            </li>
+        {/if}
+
         {if="$contact->url != null"}
         <li>
             <span class="primary icon gray">

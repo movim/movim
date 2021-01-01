@@ -8,14 +8,14 @@
         <li
             id="{$value->jid|cleanupId}"
             title="{$value->jid}"
-            name="{$value->jid|cleanupId}-{$value->truename|cleanupId}-{$value->group|cleanupId}"
+            name="{$value->jid|cleanupId}-{$value->truename|cleanupId}-{$value->group|cleanupId}{if="$value->presence"}-{$value->presence->presencetext|cleanupId}{/if}"
             class="{if="$value->presence && $value->presence->value > 4"}faded{/if}"
         >
             {$url = $value->getPhoto('m')}
             {if="$url"}
                 <span class="primary icon bubble active
                     {if="!$value->presence || $value->presence->value > 4"}
-                        disabled
+                        faded
                     {else}
                         status {$value->presence->presencekey}
                     {/if}"
@@ -25,7 +25,7 @@
             {else}
                 <span class="primary icon bubble color active {$value->jid|stringToColor}
                     {if="!$value->presence || $value->presence->value > 4"}
-                        disabled
+                        faded
                     {else}
                         status {$value->presence->presencekey}
                     {/if}"
@@ -57,7 +57,7 @@
             <div>
                 <p class="normal line">
                     {$value->truename}
-                        {if="$value->group"}
+                    {if="$value->group"}
                         <span class="tag color {$value->group|stringToColor}">
                             {$value->group}
                         </span>

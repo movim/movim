@@ -2,8 +2,6 @@
 
 namespace App;
 
-use Illuminate\Database\Capsule\Manager as DB;
-
 use Movim\Model;
 use Movim\Picture;
 use Movim\Session;

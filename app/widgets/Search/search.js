@@ -32,11 +32,17 @@ var Search = {
         founds = [].slice.call(founds).slice(0, Search.rosterLimit);
 
         if (founds.length > 0) {
-            subheader.classList.add('found');
+            if (subheader) {
+                subheader.classList.add('found');
+            }
+
             showall.classList.add('found');
             founds.forEach(item => item.classList.add('found'));
         } else if (key != '') {
-            subheader.classList.remove('found');
+            if (subheader) {
+                subheader.classList.remove('found');
+            }
+
             showall.classList.remove('found');
         }
     },

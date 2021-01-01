@@ -40,24 +40,15 @@ document.addEventListener("DOMContentLoaded", () => {
 /**
  * The focus event doesn't seems to be triggered all the time ¯\_(ツ)_/¯
  */
-window.addEventListener('mouseover', function() {
+var onFocusedFunction = function() {
     if (isFocused) return;
 
     isFocused = true;
     for (var i = 0; i < onfocused.length; i++) {
         onfocused[i]();
     }
-});
+};
 
-window.addEventListener('focus', function() {
-    if (isFocused) return;
-
-    isFocused = true;
-    for (var i = 0; i < onfocused.length; i++) {
-        onfocused[i]();
-    }
-});
-
-window.addEventListener('blur', function() {
-    isFocused = false;
-});
+window.addEventListener('mouseover', onFocusedFunction);
+window.addEventListener('focus', onFocusedFunction);
+window.addEventListener('blur', function() { isFocused = false; });
