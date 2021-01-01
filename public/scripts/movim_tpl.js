@@ -141,9 +141,7 @@ var MovimTpl = {
                 MovimTpl.menuDragged = true;
                 event.stopPropagation();
 
-                nav.style.transform = 'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, '
-                    + (-nav.offsetWidth + MovimTpl.translateX - delay)
-                    +', 0, 0, 1)';
+                nav.style.transform = 'translateX(' + (-nav.offsetWidth + MovimTpl.translateX - delay) + 'px)';
             }
         }, true);
 
@@ -154,9 +152,7 @@ var MovimTpl = {
             if (nav.classList.contains('active') && MovimTpl.translateX - delay < 0) {
                 MovimTpl.menuDragged = true;
                 event.stopPropagation();
-                nav.style.transform = 'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, '
-                + (MovimTpl.translateX - delay)
-                +', 0, 0, 1)';
+                nav.style.transform = 'translateX(' + (MovimTpl.translateX - delay) + 'px)';
             }
         }, true);
 

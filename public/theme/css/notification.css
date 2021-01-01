@@ -101,10 +101,10 @@ body.nightmode .toast {
     }
 }
 
-@media screen and (max-width: 25rem) {
+@media screen and (max-width: 576px) {
     .snackbar,
     .toast {
         left: 1rem;
-        max-width: calc(100% - 2rem);
+        width: calc(100% - 2rem);
     }
 }

@@ -42,6 +42,8 @@ var Chats = {
                 delay = 20;
 
                 items[i].addEventListener('touchstart', function(event) {
+                    if (MovimTpl.menuDragged) return;
+
                     Chats.startX = event.targetTouches[0].pageX;
                     Chats.startY = event.targetTouches[0].pageY;
 
@@ -49,6 +51,8 @@ var Chats = {
                 }, true);
 
                 items[i].addEventListener('touchmove', function(event) {
+                    if (MovimTpl.menuDragged) return;
+
                     Chats.translateX = parseInt(event.targetTouches[0].pageX - Chats.startX);
                     Chats.translateY = parseInt(event.targetTouches[0].pageY - Chats.startY);
 
@@ -67,9 +71,7 @@ var Chats = {
                         moveX = moveX < 0 ? (moveX + delay) : (moveX - delay);
 
                         if (Chats.slideAuthorized) {
-                            this.style.transform = 'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, '
-                                + moveX
-                                +', 0, 0, 1)';
+                            this.style.transform = 'translateX(' + (moveX) + 'px)';
                         }
                     } else {
                         this.style.transform = '';
@@ -78,6 +80,8 @@ var Chats = {
                 }, true);
 
                 items[i].addEventListener('touchend', function(event) {
+                    if (MovimTpl.menuDragged) return;
+
                     this.classList.add('moving');
 
                     if (Math.abs(Chats.translateX) > this.offsetWidth/2 && Chats.slideAuthorized) {

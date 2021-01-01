@@ -331,6 +331,12 @@ window.addEventListener('focus', function() {
 document.addEventListener("DOMContentLoaded", function(event) {
     MovimWebsocket.statusBar = document.getElementById('status_websocket');
 
+    movimAddFocus(function() {
+        if (!MovimWebsocket.statusBar.classList.contains('hide')) {
+            MovimWebsocket.reconnect();
+        }
+    });
+
     // And we start it
     MovimWebsocket.init();
 });
