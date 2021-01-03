@@ -150,7 +150,7 @@
         </li>
         {/if}
 
-        {if="$roster->group"}
+        {if="$roster && $roster->group"}
             <li>
                 <span class="primary icon gray">
                     <i class="material-icons">recent_actors</i>
