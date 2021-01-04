@@ -85,19 +85,17 @@ class ChatActions extends \Movim\Widget\Base
                               ->first();
 
         if ($message && $message->resolved == false) {
-            try {
-                Url::resolve(trim($message->body));
-                $message->urlid = Url::$id;
+            $picture = resolvePictureFileFromUrl(trim($message->body));
+
+            if ($picture != false) {
+                $message->file = (array)$picture;
                 $this->rpc('Chat.refreshMessage', $message->mid);
-            } catch (\Exception $e) {}
-
-            if (!$message->urlid) {
-                $picture = resolvePictureFileFromUrl(trim($message->body));
-
-                if ($picture != false) {
-                    $message->file = (array)$picture;
+            } else {
+                try {
+                    Url::resolve(trim($message->body));
+                    $message->urlid = Url::$id;
                     $this->rpc('Chat.refreshMessage', $message->mid);
-                }
+                } catch (\Exception $e) {}
             }
 
             $message->resolved = true;

@@ -42,8 +42,8 @@ class Url extends Model
     public function setCacheAttribute($url)
     {
         $dispatcher = new CurlDispatcher([
-            CURLOPT_CONNECTTIMEOUT => 5,
-            CURLOPT_TIMEOUT => 5,
+            CURLOPT_CONNECTTIMEOUT => 10,
+            CURLOPT_TIMEOUT => 10,
             CURLOPT_USERAGENT => DEFAULT_HTTP_USER_AGENT,
         ]);
 
