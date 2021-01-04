@@ -149,6 +149,11 @@ var Chat = {
                 xhr = Chat_ajaxHttpDaemonSendMessage(jid, text, muc, false, null, null, replyMid);
             }
 
+            xhr.timeout = 10000;
+            xhr.ontimeout = function() {
+                Chat.failedMessage();
+            };
+
             xhr.onreadystatechange = function() {
                 if (this.readyState == 4) {
                     if (this.status >= 200 && this.status < 400) {
@@ -175,7 +180,7 @@ var Chat = {
     },
     failedMessage: function()
     {
-        Notification.toast(Chat.delivery_error);
+        Toast.send(Chat.delivery_error);
         Chat.sended = false;
         document.querySelector('.chat_box span.send').classList.remove('sending');
     },
@@ -391,6 +396,11 @@ var Chat = {
 
         MovimUtils.textareaAutoheight(textarea);
         textarea.focus();
+    },
+    setConfig(pagination, delivery_error)
+    {
+        Chat.pagination = pagination;
+        Chat.delivery_error = delivery_error;
     },
     setGeneralElements(date, separator)
     {
@@ -1203,6 +1213,7 @@ MovimWebsocket.attach(function() {
             }
         }
     } else {
+        Chat_ajaxHttpGetEmpty();
         Notification.current('chat');
     }
 });
@@ -1240,6 +1251,12 @@ window.addEventListener('resize', function() {
 
 movimAddOnload(function() {
     Chat.touchEvents();
+
+    // Really early panel showing in case we have a JID
+    var jid = MovimUtils.urlParts().params[0];
+    if (jid) {
+        MovimTpl.showPanel();
+    }
 });
 
 var state = 0;

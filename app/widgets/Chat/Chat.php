@@ -272,6 +272,7 @@ class Chat extends \Movim\Widget\Base
         $separator = $view->draw('_chat_separator');
 
         $this->rpc('Chat.setGeneralElements', $date, $separator);
+        $this->rpc('Chat.setConfig', $this->_pagination, $this->__("message.error"));
     }
 
     public function ajaxClearCounter(string $jid)
@@ -292,6 +293,11 @@ class Chat extends \Movim\Widget\Base
 
         $chatStates = ChatStates::getInstance();
         $this->onChatState($chatStates->getState($jid), false);
+    }
+
+    public function ajaxHttpGetEmpty()
+    {
+        $this->ajaxGet();
     }
 
     /**
@@ -1310,10 +1316,5 @@ class Chat extends \Movim\Widget\Base
     public function getSmileyPath($id)
     {
         return getSmileyPath($id);
-    }
-
-    public function display()
-    {
-        $this->view->assign('pagination', $this->_pagination);
     }
 }
