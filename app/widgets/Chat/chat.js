@@ -1213,7 +1213,10 @@ MovimWebsocket.attach(function() {
             }
         }
     } else {
-        Chat_ajaxHttpGetEmpty();
+        if (!MovimUtils.isMobile()) {
+            Chat_ajaxHttpGetEmpty();
+        }
+
         Notification.current('chat');
     }
 });
