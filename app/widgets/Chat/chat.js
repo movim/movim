@@ -316,7 +316,8 @@ var Chat = {
                 return false;
             }
 
-            if (url.protocol === "http:" || url.protocol === "https:") {
+            if ((url.protocol === "http:" || url.protocol === "https:")
+            && textarea.value == '') {
                 Chat.enableSending();
                 ChatActions_ajaxHttpResolveUrl(pastedData);
             }
