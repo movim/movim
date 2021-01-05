@@ -129,6 +129,7 @@ main:not(.enabled) #chat_widget {
 
 #chat_widget .chat_box span.control.send.sending {
     animation: loadingopacity 1s infinite alternate;
+    pointer-events: none;
 }
 
 #chat_widget .chat_box > ul.list > li {

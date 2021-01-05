@@ -101,6 +101,14 @@ class ChatActions extends \Movim\Widget\Base
             $message->resolved = true;
             $message->save();
         }
+    }
 
+    /**
+     * @brief Resolve a URL
+     */
+    public function ajaxHttpResolveUrl(string $url)
+    {
+        Url::resolve(trim($url));
+        $this->rpc('Chat.disableSending');
     }
 }

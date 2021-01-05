@@ -16,7 +16,7 @@ var Chat = {
     // Chat state
     composing: false,
     since: null,
-    sended: false,
+    sent: false,
 
     // Autocomplete vars.
     autocompleteList: null,
@@ -126,10 +126,9 @@ var Chat = {
 
         textarea.focus();
 
-        if (!Chat.sended) {
-            Chat.sended = true;
-
-            document.querySelector('.chat_box span.send').classList.add('sending');
+        if (!Chat.sent) {
+            Chat.sent = true;
+            Chat.enableSending();
 
             let xhr;
 
@@ -157,7 +156,7 @@ var Chat = {
             xhr.onreadystatechange = function() {
                 if (this.readyState == 4) {
                     if (this.status >= 200 && this.status < 400) {
-                        Chat.sendedMessage();
+                        Chat.sentMessage();
                     }
 
                     if (this.status >= 400 || this.status == 0) {
@@ -167,11 +166,17 @@ var Chat = {
             };
         }
     },
-    sendedMessage: function()
+    enableSending: function()
     {
-        Chat.sended = false;
-
+        document.querySelector('.chat_box span.send').classList.add('sending');
+    },
+    disableSending: function()
+    {
         document.querySelector('.chat_box span.send').classList.remove('sending');
+    },
+    sentMessage: function()
+    {
+        Chat.sent = false;
 
         var textarea = Chat.getTextarea();
         localStorage.removeItem(textarea.dataset.jid + '_message');
@@ -181,8 +186,8 @@ var Chat = {
     failedMessage: function()
     {
         Toast.send(Chat.delivery_error);
-        Chat.sended = false;
-        document.querySelector('.chat_box span.send').classList.remove('sending');
+        Chat.sent = false;
+        Chat.disableSending();
     },
     clearReplace: function()
     {
@@ -217,7 +222,7 @@ var Chat = {
     },
     focus: function()
     {
-        Chat.sended = false;
+        Chat.sent = false;
         Chat.composing = false;
         Chat.clearReplace();
         Chat.toggleAction();
@@ -299,6 +304,23 @@ var Chat = {
         textarea.onchange = function() {
             Chat.toggleAction();
         };
+
+        textarea.addEventListener('paste', function(e) {
+            let url;
+            let clipboardData = e.clipboardData || window.clipboardData;
+            let pastedData = clipboardData.getData('Text');
+
+            try {
+                url = new URL(pastedData);
+            } catch (_) {
+                return false;
+            }
+
+            if (url.protocol === "http:" || url.protocol === "https:") {
+                Chat.enableSending();
+                ChatActions_ajaxHttpResolveUrl(pastedData);
+            }
+        });
 
         if (document.documentElement.clientWidth > 1024) {
             textarea.focus();
