@@ -3,7 +3,9 @@ var Chat = {
     right: null,
     date: null,
     separator: null,
-    currentDate: null,
+
+    // Date time of the oldest message displayed
+    currentDateTime: null,
     edit: false,
 
     // Scroll
@@ -127,7 +129,6 @@ var Chat = {
         textarea.focus();
 
         if (!Chat.sent) {
-            Chat.sent = true;
             Chat.enableSending();
 
             let xhr;
@@ -168,15 +169,17 @@ var Chat = {
     },
     enableSending: function()
     {
+        Chat.sent = true;
         document.querySelector('.chat_box span.send').classList.add('sending');
     },
     disableSending: function()
     {
+        Chat.sent = false;
         document.querySelector('.chat_box span.send').classList.remove('sending');
     },
     sentMessage: function()
     {
-        Chat.sent = false;
+        Chat.disableSending();
 
         var textarea = Chat.getTextarea();
         localStorage.removeItem(textarea.dataset.jid + '_message');
@@ -186,7 +189,6 @@ var Chat = {
     failedMessage: function()
     {
         Toast.send(Chat.delivery_error);
-        Chat.sent = false;
         Chat.disableSending();
     },
     clearReplace: function()
@@ -429,7 +431,7 @@ var Chat = {
     {
         var div = document.createElement('div');
 
-        Chat.currentDate = null;
+        Chat.currentDateTime = null;
 
         div.innerHTML = date;
         Chat.date = div.firstChild.cloneNode(true);
@@ -440,7 +442,7 @@ var Chat = {
     {
         var div = document.createElement('div');
 
-        Chat.currentDate = null;
+        Chat.currentDateTime = null;
 
         div.innerHTML = left;
         Chat.left = div.firstChild.cloneNode(true);
@@ -457,7 +459,7 @@ var Chat = {
             && discussion.querySelectorAll('ul li div.bubble p').length >= Chat.pagination) {
                 Chat_ajaxGetHistory(
                     Chat.getTextarea().dataset.jid,
-                    Chat.currentDate,
+                    Chat.currentDateTime,
                     Chat.getTextarea().dataset.muc,
                     true);
             }
@@ -642,13 +644,24 @@ var Chat = {
             Chat.setScroll();
 
             for(date in page) {
+                let messageDateTime = page[date][Object.keys(page[date])[0]].published;
+
+                /**
+                 * We might have old messages reacted pushed by the server
+                 */
+                if (Chat.currentDateTime
+                && Chat.currentDateTime > messageDateTime
+                && !prepend) {
+                    return;
+                }
+
                 if (prepend === undefined || prepend === false) {
                     Chat.appendDate(date, prepend);
                 }
 
                 for(speakertime in page[date]) {
-                    if (!Chat.currentDate) {
-                        Chat.currentDate = page[date][speakertime].published;
+                    if (!Chat.currentDateTime) {
+                        Chat.currentDateTime = page[date][speakertime].published;
                     }
 
                     Chat.appendMessage(speakertime, page[date][speakertime], prepend);
@@ -945,7 +958,7 @@ var Chat = {
         }
 
         if (prepend) {
-            Chat.currentDate = data.published;
+            Chat.currentDateTime = data.published;
 
             // We prepend
             if (!mergeMsg) {
@@ -963,7 +976,7 @@ var Chat = {
         if (document.getElementById(MovimUtils.cleanupId(date)) && !prepend) return;
 
         dateNode = Chat.date.cloneNode(true);
-        dateNode.dataset.value = date;
+        dateNode.dataset.value = date.trim();
         dateNode.querySelector('p').innerHTML = date;
         dateNode.id = MovimUtils.cleanupId(date);
 
@@ -973,7 +986,7 @@ var Chat = {
             // If the date was already displayed we remove it
             if (dates.length > 0
             && dates[0].dataset.value == date) {
-                dates[0].parentNode.removeChild(dates[0]);
+                dates[0].remove();
             }
 
             list.insertBefore(dateNode, list.firstChild);
@@ -1227,7 +1240,7 @@ MovimWebsocket.attach(function() {
     var room = (MovimUtils.urlParts().params[1] === 'room');
     if (jid) {
         if (Boolean(document.getElementById(MovimUtils.cleanupId(jid) + '-conversation'))) {
-            Chat_ajaxGetHistory(jid, Chat.currentDate, room, false);
+            Chat_ajaxGetHistory(jid, Chat.currentDateTime, room, false);
         } else {
             if (room) {
                 Chat_ajaxGetRoom(jid);
