@@ -135,7 +135,7 @@ class Route extends Base
         $source = preg_replace_callback(
             '/(^|(?<=&))[^=[&]+/',
             function ($key) {
-                return bin2hex(urldecode($key[0]));
+                return bin2hex($key[0]);
             },
             $source
         );

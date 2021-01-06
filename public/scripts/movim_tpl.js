@@ -90,8 +90,9 @@ var MovimTpl = {
     },
     remove: function(selector) {
         target = document.querySelector(selector);
-        if (target)
-            target.parentNode.removeChild(target);
+        if (target) {
+            target.remove();
+        }
     },
     replace: function (selector, html) {
         target = document.querySelector(selector);

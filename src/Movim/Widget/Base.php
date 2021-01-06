@@ -259,7 +259,7 @@ class Base
     protected function get(string $name)
     {
         if (isset($_GET[$name])) {
-            return htmlentities($_GET[$name]);
+            return htmlentities(urldecode($_GET[$name]));
         }
     }
 

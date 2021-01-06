@@ -30,7 +30,7 @@ class Base
     protected function fetchGet($name)
     {
         if (isset($_GET[$name])) {
-            return htmlentities($_GET[$name]);
+            return htmlentities(urldecode($_GET[$name]));
         }
 
         return false;

@@ -43,7 +43,9 @@ var Search = {
                 subheader.classList.remove('found');
             }
 
-            showall.classList.remove('found');
+            if (showall) {
+                showall.classList.remove('found');
+            }
         }
     },
 
