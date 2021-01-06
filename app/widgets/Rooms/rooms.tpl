@@ -12,7 +12,7 @@
         </li>
     </ul>
 
-    <ul class="list rooms divided spaced thin active"></ul>
+    <ul class="list rooms divided spaced thin active spin"></ul>
 
     <ul class="list thick active spaced toggle_show">
         <li onclick="Rooms.toggleShowAll()">
