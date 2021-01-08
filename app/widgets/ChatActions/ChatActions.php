@@ -85,18 +85,17 @@ class ChatActions extends \Movim\Widget\Base
                               ->first();
 
         if ($message && $message->resolved == false) {
-            $picture = resolvePictureFileFromUrl(trim($message->body));
+            try {
+                $url = new Url;
+                $url->resolve(trim($message->body));
+                $message->urlid = $url->id;
 
-            if ($picture != false) {
-                $message->file = (array)$picture;
+                if ($url->file) {
+                    $message->file = (array)$url->file;
+                }
+
                 $this->rpc('Chat.refreshMessage', $message->mid);
-            } else {
-                try {
-                    Url::resolve(trim($message->body));
-                    $message->urlid = Url::$id;
-                    $this->rpc('Chat.refreshMessage', $message->mid);
-                } catch (\Exception $e) {}
-            }
+            } catch (\Exception $e) {}
 
             $message->resolved = true;
             $message->save();
@@ -108,7 +107,7 @@ class ChatActions extends \Movim\Widget\Base
      */
     public function ajaxHttpResolveUrl(string $url)
     {
-        Url::resolve(trim($url));
+        (new Url)->resolve(trim($url));
         $this->rpc('Chat.disableSending');
     }
 }

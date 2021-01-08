@@ -118,7 +118,13 @@ var Chat = {
 
         var text = textarea.value;
         var muc = Boolean(textarea.dataset.muc);
+        var mucReceipts = false;
         var jid = textarea.dataset.jid;
+
+        if (muc) {
+            var counter = document.querySelector('#chat_widget header span.counter');
+            mucReceipts = (counter && Boolean(counter.dataset.mucreceipts));
+        }
 
         Chat.removeSeparator();
         Chat.scrollTotally();
@@ -146,7 +152,7 @@ var Chat = {
                     reply.remove();
                 };
 
-                xhr = Chat_ajaxHttpDaemonSendMessage(jid, text, muc, false, null, null, replyMid);
+                xhr = Chat_ajaxHttpDaemonSendMessage(jid, text, muc, null, replyMid, mucReceipts);
             }
 
             xhr.timeout = 10000;
@@ -1263,8 +1269,6 @@ if (typeof Upload != 'undefined') {
             Chat.getTextarea().dataset.jid,
             false,
             Boolean(Chat.getTextarea().dataset.muc),
-            false,
-            null,
             file
         );
     });

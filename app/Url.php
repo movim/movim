@@ -9,16 +9,15 @@ use Embed\Http\CurlDispatcher;
 
 class Url extends Model
 {
-    public static $id = 0;
-
-    public static function resolve($url)
+    public function resolve($url)
     {
         if (Validator::url()->validate($url)) {
             $hash = hash('sha256', $url);
             $cached = \App\Url::where('hash', $hash)->first();
 
             if ($cached) {
-                self::$id = $cached->id;
+                $this->id = $cached->id;
+                $this->maybeResolveMessageFile($cached->cache);
                 return $cached->cache;
             } else {
                 $cached = new \App\Url;
@@ -28,9 +27,38 @@ class Url extends Model
             $cached->cache = $url;
             $cached->save();
 
-            self::$id = $cached->id;
+            $this->id = $cached->id;
+            $this->maybeResolveMessageFile($cached->cache);
 
             return $cached->cache;
+        }
+    }
+
+    public function maybeResolveMessageFile($cache)
+    {
+        if ($cache->title == $cache->url
+        && ((
+                $cache->type == 'photo'
+                && !empty($cache->images)
+                && typeIsPicture($cache->contentType)
+            ) || (
+                $cache->type == 'video'
+                && typeIsVideo($cache->contentType)
+            ))
+        ) {
+            $name = '';
+            $path = parse_url($cache->url, PHP_URL_PATH);
+            if ($path) {
+                $name = basename($path);
+            }
+
+            $file = new MessageFile;
+            $file->name = !empty($name) ? $name : $cache->url;
+            $file->type = $cache->contentType;
+            $file->size = 20000;//$cache->images[0]['size'];
+            $file->uri  = $cache->url;
+
+            $this->file = $file;
         }
     }
 

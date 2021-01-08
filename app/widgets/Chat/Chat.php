@@ -374,10 +374,14 @@ class Chat extends \Movim\Widget\Base
     /**
      * @brief Send a message
      */
-    public function ajaxHttpDaemonSendMessage(string $to, string $message, bool $muc = false,
-        bool $resource = false, ?Message $replace = null, $file = null,
-        ?int $replyToMid = 0) {
-
+    public function ajaxHttpDaemonSendMessage(
+        string $to,
+        string $message,
+        bool $muc = false,
+        $file = null,
+        ?int $replyToMid = 0,
+        ?bool $mucReceipts = false
+    ) {
         $messageFile = null;
 
         if ($file) {
@@ -386,12 +390,15 @@ class Chat extends \Movim\Widget\Base
 
             if (!$messageFile->valid) $messageFile = null;
         } else {
-            $message = trim($message);
-            $resolvedFile = resolvePictureFileFromUrl($message);
-            if ($resolvedFile != false) $messageFile = $resolvedFile;
+            $url = new Url;
+            $cache = $url->resolve(trim($message));
+
+            if ($cache && $url->file !== null) {
+                $messageFile = $url->file;
+            }
         }
 
-        $this->sendMessage($to, $message, $muc, $resource, $replace, $messageFile, $replyToMid);
+        $this->sendMessage($to, $message, $muc, null, $messageFile, $replyToMid, $mucReceipts);
     }
 
     /**
@@ -402,8 +409,8 @@ class Chat extends \Movim\Widget\Base
      * @return void
      */
     public function sendMessage(string $to, string $message = '', bool $muc = false,
-        ?string $resource = null, ?Message $replace = null, ?MessageFile $file = null,
-        ?int $replyToMid = 0)
+        ?Message $replace = null, ?MessageFile $file = null, ?int $replyToMid = 0,
+        ?bool $mucReceipts = false)
     {
         $body = ($file != null && $file->type != 'xmpp/uri')
             ? $file->uri
@@ -465,10 +472,6 @@ class Chat extends \Movim\Widget\Base
 
         $m->body      = $body;
 
-        if ($resource != null) {
-            $to = $to . '/' . $resource;
-        }
-
         // We decode URL codes to send the correct message to the XMPP server
         $p = new Publish;
         $p->setTo($to);
@@ -485,6 +488,10 @@ class Chat extends \Movim\Widget\Base
 
         if ($muc) {
             $p->setMuc();
+
+            if ($mucReceipts) {
+                $p->setMucReceipts();
+            }
         }
 
         if ($file) {
@@ -521,14 +528,14 @@ class Chat extends \Movim\Widget\Base
      * @param string $message
      * @return void
      */
-    public function ajaxHttpDaemonCorrect(string $to, $message = '', int $mid)
+    public function ajaxHttpDaemonCorrect(string $to, string $message = '', int $mid)
     {
         $replace = $this->user->messages()
                         ->where('mid', $mid)
                         ->first();
 
         if ($replace) {
-            $this->sendMessage($to, $message, false, null, $replace);
+            $this->sendMessage($to, $message, false, $replace);
         }
     }
 
@@ -801,7 +808,11 @@ class Chat extends \Movim\Widget\Base
             $message->displayed = gmdate('Y-m-d H:i:s');
             $message->save();
 
-            \Moxl\Stanza\Message::displayed($jid, $message->replaceid);
+            \Moxl\Stanza\Message::displayed(
+                $jid,
+                $message->replaceid,
+                $message->type
+            );
         }
     }
 

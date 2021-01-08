@@ -224,10 +224,10 @@ class Message
 
     public static function message($to, $content = false, $html = false, $id = false,
         $replace = false, $file = false, $parentId = false, array $reactions = [],
-        $originId = false, $threadId = false, $parentThreadId = false)
+        $originId = false, $threadId = false)
     {
         self::maker($to, $content, $html, 'chat', 'active', 'request', $id, $replace,
-            $file, false, $parentId, $reactions, $originId, $threadId, $parentThreadId);
+            $file, false, $parentId, $reactions, $originId, $threadId);
     }
 
     public static function receipt($to, $id)
@@ -235,9 +235,9 @@ class Message
         self::maker($to, false, false, 'chat', false, 'received', $id);
     }
 
-    public static function displayed($to, $id)
+    public static function displayed($to, $id, $type = 'chat')
     {
-        self::maker($to, false, false, 'chat', false, 'displayed', $id);
+        self::maker($to, false, false, $type, false, 'displayed', $id);
     }
 
     public static function invite($to, $id, $invite)

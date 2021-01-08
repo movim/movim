@@ -72,7 +72,6 @@ class SendTo extends Base
             $to,
             !empty($message) ? $message : $this->__('sendto.shared_with'),
             $muc,
-            false,
             null,
             $messageFile
         );

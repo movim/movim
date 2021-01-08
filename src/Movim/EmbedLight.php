@@ -10,6 +10,7 @@ class EmbedLight
         $this->description      = $embed->description;
         $this->url              = $embed->url;
         $this->type             = $embed->type;
+        $this->contentType      = $embed->getResponse()->getContentType();
         $this->tags             = $embed->tags;
         $this->image            = $embed->image;
         $this->imageWidth       = $embed->imageWidth;

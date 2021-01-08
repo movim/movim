@@ -31,7 +31,7 @@ class Preview extends Base
         }
 
         $view = $this->tpl();
-        $view->assign('embed', \App\Url::resolve($url));
+        $view->assign('embed', (new \App\Url)->resolve($url));
         $view->assign('imagenumber', $number);
 
         $this->rpc('MovimTpl.fill', '#preview', $view->draw('_preview_gallery'));

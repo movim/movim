@@ -12,6 +12,7 @@ class Publish extends Action
     protected $_content;
     protected $_html;
     protected $_muc = false;
+    protected $_mucreceipts = false;
     protected $_id = false;
     protected $_replace = false;
     protected $_file = false;
@@ -25,7 +26,7 @@ class Publish extends Action
         if ($this->_muc) {
             Muc::message($this->_to, $this->_content, $this->_html, $this->_id,
                          $this->_file, $this->_attachid, [], $this->_originid,
-                         $this->_threadid);
+                         $this->_threadid, $this->_mucreceipts);
         } else {
             Message::message($this->_to, $this->_content, $this->_html, $this->_id,
                              $this->_replace, $this->_file, $this->_attachid, [],
@@ -36,6 +37,12 @@ class Publish extends Action
     public function setMuc()
     {
         $this->_muc = true;
+        return $this;
+    }
+
+    public function setMucReceipts()
+    {
+        $this->_mucreceipts = true;
         return $this;
     }
 

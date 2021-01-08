@@ -32,6 +32,8 @@ v0.19 (trunk)
  * Add a cache layer in Widget template system
  * Use the cache layer in Chats items and remove the Chats item placeholder system
  * Display encrypted messages in the conversations
+ * Add Chat Markers support for GroupChat and small Channel (< 10)
+ * Simplify the URL resolving system to always use cache
 
 v0.18
 ---------------------------

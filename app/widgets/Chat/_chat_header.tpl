@@ -33,12 +33,12 @@
             {if="$conference"}
                 {if="$conference->isGroupChat()"}
                     {$count = $conference->members()->count()}
-                    <span class="counter alt">
+                    <span class="counter alt" data-mucreceipts="true">
                         {if="$count > 99"}99+{else}{$count}{/if}
                     </span>
                 {elseif="$conference->connected"}
                     {$count = $conference->presences()->count()}
-                    <span class="counter alt">
+                    <span class="counter alt" data-mucreceipts="{if="$conference->presences()->count() < 10"}true{/if}">
                         {if="$count > 99"}99+{else}{$count}{/if}
                     </span>
                 {/if}

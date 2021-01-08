@@ -102,7 +102,7 @@ var Upload = {
 
                 Upload.canvas = document.createElement('canvas');
 
-                if ([5,6,7,8].indexOf(orientation) > -1) {
+                if (orientation > 4 && orientation < 9) {
                     Upload.canvas.width = height;
                     Upload.canvas.height = width;
                 } else {
@@ -120,7 +120,6 @@ var Upload = {
                     case 6: ctx.transform(0, 1, -1, 0, height , 0); break;
                     case 7: ctx.transform(0, -1, -1, 0, height , width); break;
                     case 8: ctx.transform(0, -1, 1, 0, 0, width); break;
-                    default: ctx.transform(1, 0, 0, 1, 0, 0);
                 }
 
                 ctx.drawImage(image, 0, 0, width, height);

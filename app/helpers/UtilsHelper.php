@@ -651,37 +651,6 @@ function requestHeaders(string $url, $timeout = 2)
 }
 
 /**
- * Check if a URL is a valid picture
- */
-function resolvePictureFileFromUrl(string $url) : ? MessageFile
-{
-    if (filter_var($url, FILTER_VALIDATE_URL)) {
-        $headers = requestHeaders($url);
-
-        if ($headers['http_code'] == 200
-        && isset($headers['content_type'])
-        && (typeIsPicture($headers['content_type']) || typeIsVideo($headers['content_type']))
-        && $headers['download_content_length'] > 100) {
-            $name = '';
-            $path = parse_url($url, PHP_URL_PATH);
-            if ($path) {
-                $name = basename($path);
-            }
-
-            $file = new MessageFile;
-            $file->name = !empty($name) ? $name : $url;
-            $file->type = $headers['content_type'];
-            $file->size = $headers['download_content_length'];
-            $file->uri  = $url;
-
-            return $file;
-        }
-    }
-
-    return null;
-}
-
-/**
  * Request the internal API
  */
 function requestAPI(string $action, int $timeout = 2, $post = false)

@@ -248,7 +248,7 @@ class Stickers extends \Movim\Widget\Base
                 $chat = new \Chat;
                 $chat->sendMessage(
                     $to, false, $muc,
-                    false, null, $messageFile);
+                    null, $messageFile);
             }
         }
     }
