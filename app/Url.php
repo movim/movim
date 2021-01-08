@@ -40,9 +40,11 @@ class Url extends Model
         && ((
                 $cache->type == 'photo'
                 && !empty($cache->images)
+                && isset($cache->contentType)
                 && typeIsPicture($cache->contentType)
             ) || (
                 $cache->type == 'video'
+                && isset($cache->contentType)
                 && typeIsVideo($cache->contentType)
             ))
         ) {
