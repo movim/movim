@@ -60,7 +60,7 @@ var Search = {
         if (MovimUtils.urlParts().page === 'chat') {
             Drawer_ajaxClear();
             Chats_ajaxOpen(jid);
-            Chat_ajaxGet(jid);
+            Chat.get(jid);
         } else {
             Search_ajaxChat(jid);
         }

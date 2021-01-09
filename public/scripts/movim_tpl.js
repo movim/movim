@@ -50,7 +50,7 @@ var MovimTpl = {
             // If the panel is shown
         } else if (document.querySelector('main').classList.contains('enabled')) {
             if (MovimUtils.urlParts().page == 'chat') {
-                Chat_ajaxGet();
+                Chat.get();
             } else {
                 MovimTpl.hidePanel();
                 window.history.back();

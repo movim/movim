@@ -212,7 +212,7 @@
                         {if="$value->jid != $me"}
                             <span class="control icon active gray divided" onclick="
                                 Chats_ajaxOpen('{$value->jid|echapJS}');
-                                Chat_ajaxGet('{$value->jid|echapJS}');
+                                Chat.get('{$value->jid|echapJS}');
                                 Drawer_ajaxClear();">
                                 <i class="material-icons">comment</i>
                             </span>
@@ -278,7 +278,7 @@
                         {if="$value->mucjid != $me"}
                             <span class="control icon active gray divided" onclick="
                                 Chats_ajaxOpen('{$value->mucjid|echapJS}');
-                                Chat_ajaxGet('{$value->mucjid|echapJS}');
+                                Chat.get('{$value->mucjid|echapJS}');
                                 Drawer_ajaxClear();">
                                 <i class="material-icons">comment</i>
                             </span>

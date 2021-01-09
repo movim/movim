@@ -112,6 +112,16 @@ var Chat = {
         textarea.focus();
         Chat.toggleAction();
     },
+    get: function(jid, light)
+    {
+        if (jid != undefined) {
+            MovimTpl.showPanel();
+            var chat = document.querySelector('#chat_widget');
+            chat.innerHTML = '';
+        }
+
+        Chat_ajaxGet(jid, light);
+    },
     sendMessage: function()
     {
         var textarea = Chat.getTextarea();
@@ -1230,7 +1240,7 @@ var Chat = {
             chat.classList.add('moving');
             if (Chat.translateX > (clientWidth / 4) && Chat.slideAuthorized) {
                 MovimTpl.hidePanel();
-                Chat_ajaxGet(null, true);
+                Chat.get(null, true);
             }
             chat.style.transform = '';
             Chat.slideAuthorized = false;
@@ -1251,7 +1261,7 @@ MovimWebsocket.attach(function() {
             if (room) {
                 Chat_ajaxGetRoom(jid);
             } else {
-                Chat_ajaxGet(jid);
+                Chat.get(jid);
             }
         }
     } else {

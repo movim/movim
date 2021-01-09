@@ -25,7 +25,7 @@ var Chats = {
                     Rooms.refresh();
                     MovimUtils.addClass('ul#bottomnavigation', 'hidden');
 
-                    Chat_ajaxGet(this.dataset.jid);
+                    Chat.get(this.dataset.jid);
 
                     items.forEach(item => item.classList.remove('active'));
                     this.classList.add('active');

@@ -3,7 +3,7 @@
         <li>
             <span class="primary icon active"
                 {if="!$anon"}
-                    onclick="Chat_ajaxGet()"
+                    onclick="Chat.get()"
                 {/if}>
 
                 {if="!$anon"}
@@ -181,7 +181,7 @@
 {else}
     <ul class="list middle fill">
         <li id="chat_header">
-            <span onclick="Chat_ajaxGet()" class="primary icon active">
+            <span onclick="Chat.get()" class="primary icon active">
                 <i class="material-icons">arrow_back</i>
             </span>
 
