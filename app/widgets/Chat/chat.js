@@ -122,6 +122,14 @@ var Chat = {
 
         Chat_ajaxGet(jid, light);
     },
+    getRoom: function(jid)
+    {
+        MovimTpl.showPanel();
+        var chat = document.querySelector('#chat_widget');
+        chat.innerHTML = '';
+
+        Chat_ajaxGetRoom(jid);
+    },
     sendMessage: function()
     {
         var textarea = Chat.getTextarea();
@@ -186,12 +194,14 @@ var Chat = {
     enableSending: function()
     {
         Chat.sent = true;
-        document.querySelector('.chat_box span.send').classList.add('sending');
+        var send = document.querySelector('.chat_box span.send');
+        if (send) send.classList.add('sending');
     },
     disableSending: function()
     {
         Chat.sent = false;
-        document.querySelector('.chat_box span.send').classList.remove('sending');
+        var send = document.querySelector('.chat_box span.send');
+        if (send) send.classList.remove('sending');
     },
     sentMessage: function()
     {
@@ -1259,7 +1269,7 @@ MovimWebsocket.attach(function() {
             Chat_ajaxGetHistory(jid, Chat.currentDateTime, room, false);
         } else {
             if (room) {
-                Chat_ajaxGetRoom(jid);
+                Chat.getRoom(jid);
             } else {
                 Chat.get(jid);
             }

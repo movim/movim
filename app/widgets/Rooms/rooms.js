@@ -59,7 +59,7 @@ var Rooms = {
                     items.forEach(item => item.classList.remove('active'));
                     this.classList.add('active');
 
-                    Chat_ajaxGetRoom(this.dataset.jid);
+                    Chat.getRoom(this.dataset.jid);
                 }
             }
 
