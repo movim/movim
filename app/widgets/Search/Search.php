@@ -130,7 +130,7 @@ class Search extends Base
             ->notInRoster($this->user->session->id)
             ->orderByPresence()
             ->where('id', '!=', $this->user->id)
-            ->limit(16)
+            ->limit(20)
             ->get();
 
         $view->assign('users', $users);
