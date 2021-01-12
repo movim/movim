@@ -58,13 +58,13 @@ class Presence extends Base
         // We refresh the messages
         $c = new Chats;
         $c->ajaxGetHistory();
-        $this->onSessionUp();
         $this->ajaxServerCapsGet();
         $this->ajaxBookmarksGet();
         $this->ajaxPubsubSubscriptionsGet();
         $this->ajaxFeedRefresh();
         $this->ajaxServerDisco();
         $this->ajaxProfileRefresh();
+        $this->onSessionUp();
     }
 
     public function ajaxAskLogout()
