@@ -120,28 +120,37 @@ class Chats extends Base
      */
     public function ajaxGetHistory($jid = false)
     {
+        // The following requests seems to be heavy if the user has no
+        // messages yet in the database
+        $empty = ($this->user->messages()->count() == 0);
+
         $g = new \Moxl\Xec\Action\MAM\Get;
 
         if ($jid == false) {
-            $message = $this->user->messages()
-                                  ->orderBy('published', 'desc')
-                                  ->first();
-            if ($message) {
-                $g->setStart(strtotime($message->published));
+            if (!$empty) {
+                $message = $this->user->messages()
+                                ->orderBy('published', 'desc')
+                                ->first();
+
+                if ($message) {
+                    $g->setStart(strtotime($message->published));
+                }
             }
 
             $g->setLimit(150);
             $g->request();
         } elseif ($this->validateJid($jid)) {
-            $message = \App\Message::jid($jid)
-                ->orderBy('published', 'desc')
-                ->first();
-            $g->setJid(echapJid($jid));
+            if (!$empty) {
+                $message = \App\Message::jid($jid)
+                                       ->orderBy('published', 'desc')
+                                       ->first();
 
-            if ($message) {
-                $g->setStart(strtotime($message->published));
+                if ($message) {
+                    $g->setStart(strtotime($message->published));
+                }
             }
 
+            $g->setJid(echapJid($jid));
             $g->request();
         }
     }

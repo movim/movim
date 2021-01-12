@@ -92,6 +92,13 @@
             <i class="material-icons">receipt</i>
             <h1>{$c->__('menu.empty_title')}</h1>
             <h4>{$c->__('menu.empty')}</h4>
+            <h4>
+                <br />
+                <a class="button color green" href="{$c->route('community')}">
+                    <i class="material-icons">explore</i>
+                    {$c->__('button.discover')}
+                </a>
+            </h4>
         </div>
     </ul>
 {/if}

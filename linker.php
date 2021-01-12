@@ -263,6 +263,9 @@ $xmppBehaviour = function (React\Socket\Connection $stream) use (&$xmppSocket, $
 
     $xmppSocket = $stream;
 
+    $evt = new Movim\Widget\Event;
+    $evt->run('socket_connected');
+
     if (getenv('verbose')) {
         logOut(colorize('XMPP socket launched', 'blue'));
         logOut(" launched : ".\sizeToCleanSize(memory_get_usage()));

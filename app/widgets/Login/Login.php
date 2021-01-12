@@ -21,7 +21,9 @@ class Login extends Base
         $this->addcss('login.css');
         $this->addjs('login.js');
         $this->registerEvent('session_start_handle', 'onStart');
+        $this->registerEvent('saslsuccess', 'onSASLSuccess');
         $this->registerEvent('saslfailure', 'onSASLFailure');
+        $this->registerEvent('socket_connected', 'onConnected');
         $this->registerEvent('storage_get_handle', 'onConfig');
         $this->registerEvent('storage_get_error', 'onConfig');
         $this->registerEvent('ssl_error', 'onFailAuth');
@@ -43,6 +45,16 @@ class Login extends Base
         $s->setXmlns('movim:prefs')
               ->request();
         //}
+    }
+
+    public function onConnected($packet)
+    {
+        Toast::send($this->__('connection.socket_connected'));
+    }
+
+    public function onSASLSuccess($packet)
+    {
+        Toast::send($this->__('connection.authenticated'));
     }
 
     public function onConfig($packet)
