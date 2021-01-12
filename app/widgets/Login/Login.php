@@ -36,9 +36,6 @@ class Login extends Base
     {
         //$session = Session::start();
 
-        $p = new Presence;
-        $p->start();
-
         //if ($session->get('mechanism') != 'ANONYMOUS') {
         // We get the configuration
         $s = new Get;
@@ -59,6 +56,9 @@ class Login extends Base
 
     public function onConfig($packet)
     {
+        $p = new Presence;
+        $p->start();
+
         $this->rpc('MovimUtils.reloadThis');
     }
 
