@@ -99,7 +99,7 @@
                     </p>
                 {else}
                     <p class="line active" id="{$jid|cleanupId}-state" onclick="RoomsUtils_ajaxShowSubject('{$jid|echapJS}')">
-                        {if="$conference->isGroupChat()"}
+                        {if="$conference && $conference->isGroupChat()"}
                             <span title="{$c->__('room.group_chat_text')}">
                                 <i class="material-icons">people_alt</i> {$c->__('room.group_chat')}
                             </span>

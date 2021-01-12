@@ -34,6 +34,8 @@ v0.19 (trunk)
  * Display encrypted messages in the conversations
  * Add Chat Markers support for GroupChat and small Channel (< 10)
  * Simplify the URL resolving system to always use cache
+ * TLS encryption enabling is non blocking during connection
+ * Send the Presence a bit earlier on login
 
 v0.18
 ---------------------------

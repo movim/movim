@@ -6,7 +6,7 @@ gc_enable();
 use Movim\Bootstrap;
 use Movim\RPC;
 use Movim\Session;
-
+use React\Promise\Promise;
 use React\Promise\Timer;
 
 $loop = React\EventLoop\Factory::create();
@@ -24,7 +24,13 @@ $dns = $factory->create($server, $loop);
 // TCP Connector
 $connector = new React\Socket\HappyEyeBallsConnector(
     $loop,
-    new React\Socket\TcpConnector($loop, ['timeout' => 5.0]),
+    new React\Socket\Connector($loop, [
+        'timeout' => 5.0,
+        'tls' => [
+            'SNI_enabled' => true,
+            'allow_self_signed' => false
+        ]
+    ]),
     $dns
 );
 
@@ -33,7 +39,6 @@ $wrapper = \Movim\Widget\Wrapper::getInstance();
 $wrapper->registerAll($bootstrap->getWidgets());
 
 $xmppSocket = null;
-$directTLSSocket = false;
 
 $parser = new \Moxl\Parser(function ($node) {
     \Moxl\Xec\Handler::handle($node);
@@ -85,48 +90,38 @@ function writeXMPP($xml)
     }
 }
 
-function enableEncryption($stream): bool
+function enableEncryption($connection): Promise
 {
+    global $loop;
+
+    $encryption = new \React\Socket\StreamEncryption($loop, false);
     logOut(colorize('Enable TLS on the socket', 'blue'));
 
     $session = Session::start();
-    stream_set_blocking($stream, 1);
-    stream_context_set_option($stream, 'ssl', 'SNI_enabled', true);
-    stream_context_set_option($stream, 'ssl', 'peer_name', $session->get('host'));
-    stream_context_set_option($stream, 'ssl', 'allow_self_signed', false);
+    stream_context_set_option($connection->stream, 'ssl', 'SNI_enabled', true);
+    stream_context_set_option($connection->stream, 'ssl', 'peer_name', $session->get('host'));
+    stream_context_set_option($connection->stream, 'ssl', 'allow_self_signed', false);
 
-    // See http://php.net/manual/en/function.stream-socket-enable-crypto.php#119122
-    $crypto_method = STREAM_CRYPTO_METHOD_TLS_CLIENT;
+    return $encryption->enable($connection)->then(
+        function() {
+            logOut(colorize('TLS enabled', 'blue'));
+        },
+        function ($error) use ($connection) {
+            logOut(colorize('TLS error '.$error->getMessage(), 'blue'));
 
-    if (defined('STREAM_CRYPTO_METHOD_TLSv1_3_CLIENT')) {
-        $crypto_method |= STREAM_CRYPTO_METHOD_TLSv1_3_CLIENT;
-    }
+            $evt = new Movim\Widget\Event;
+            $evt->run('ssl_error');
 
-    if (defined('STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT')) {
-        $crypto_method |= STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT;
-        $crypto_method |= STREAM_CRYPTO_METHOD_TLSv1_1_CLIENT;
-    }
-
-    set_error_handler('handleSSLErrors');
-    $out = stream_socket_enable_crypto($stream, 1, $crypto_method);
-    restore_error_handler();
-
-    if ($out !== true) {
-        $evt = new Movim\Widget\Event;
-        $evt->run('ssl_error');
-
-        shutdown();
-        return false;
-    }
-
-    return true;
+            shutdown();
+        }
+    );
 }
 
 function handleClientDNS(array $results, $dns, $connector, $xmppBehaviour)
 {
     if (count($results) > 1) {
         $port = 5222;
-        global $directTLSSocket;
+        $directTLSSocket = false;
 
         if ($results['directtls'] !== false && $results['directtls'][0]['target'] !== '.'
          && $results['starttls'] !== false && $results['starttls'][0]['target'] !== '.') {
@@ -155,8 +150,13 @@ function handleClientDNS(array $results, $dns, $connector, $xmppBehaviour)
             $host = $session->get('host');
         }
 
-        logOut(colorize('Connect to '.$host.':'.$port, 'blue'));
-        $connector->connect($host.':'.$port)->then(
+        $socket = 'tcp://';
+        if ($directTLSSocket) $socket = 'tls://';
+        $socket .= $host.':'.$port;
+
+        logOut(colorize('Connect to '.$socket, 'blue'));
+
+        $connector->connect($socket)->then(
             $xmppBehaviour,
             function () {
                 $evt = new Movim\Widget\Event;
@@ -260,14 +260,8 @@ $wsSocketBehaviour = function ($msg) use (&$xmppSocket, &$connector, &$xmppBehav
 
 $xmppBehaviour = function (React\Socket\Connection $stream) use (&$xmppSocket, $parser, &$timestampReceive) {
     global $wsSocket;
-    global $directTLSSocket;
 
     $xmppSocket = $stream;
-
-    if ($directTLSSocket) {
-        enableEncryption($xmppSocket->stream);
-        stream_set_blocking($xmppSocket->stream, 0);
-    }
 
     if (getenv('verbose')) {
         logOut(colorize('XMPP socket launched', 'blue'));
@@ -276,7 +270,6 @@ $xmppBehaviour = function (React\Socket\Connection $stream) use (&$xmppSocket, $
 
     $xmppSocket->on('data', function ($message) use (&$xmppSocket, $parser, &$timestampReceive) {
         if (!empty($message)) {
-            $restart = false;
 
             if (getenv('debug')) {
                 logOut(colorize($message.' ', 'yellow') . colorize('received', 'green'));
@@ -287,24 +280,18 @@ $xmppBehaviour = function (React\Socket\Connection $stream) use (&$xmppSocket, $
                 shutdown();
             } elseif ($message == "<proceed xmlns='urn:ietf:params:xml:ns:xmpp-tls'/>"
                   || $message == '<proceed xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>') {
-                $success = enableEncryption($xmppSocket->stream);
-                if (!$success) return;
-
-                if (getenv('verbose')) {
-                    logOut(colorize('TLS enabled', 'blue'));
-                }
-
-                $restart = true;
+                enableEncryption($xmppSocket)->then(
+                    function() {
+                        $session = Session::start();
+                        \Moxl\Stanza\Stream::init($session->get('host'));
+                    },
+                    function() {
+                        return;
+                    }
+                );
             }
 
             $timestampReceive = time();
-
-            if ($restart) {
-                $session = Session::start();
-                \Moxl\Stanza\Stream::init($session->get('host'));
-                stream_set_blocking($xmppSocket->stream, 0);
-                $restart = false;
-            }
 
             if (!$parser->parse($message)) {
                 logOut($parser->getError());
