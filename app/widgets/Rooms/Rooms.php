@@ -182,6 +182,8 @@ class Rooms extends Base
         $this->rpc('Rooms.refresh');
         $this->rpc('Rooms.checkNoConnected');
 
+        $this->rpc('MovimUtils.removeClass', '#rooms_widget ul.list.rooms', 'spin');
+
         $view = $this->tpl();
         $this->rpc('MovimTpl.remove', '#rooms_widget ul.list.empty');
         $this->rpc('MovimTpl.appendAfter', '#rooms_widget ul.list.rooms', $view->draw('_rooms_empty'));

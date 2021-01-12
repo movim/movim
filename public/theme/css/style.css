@@ -368,14 +368,14 @@ img.avatar:not([src=""]) + .placeholder {
 }
 
 .placeholder > i:first-child {
-    font-size: 18rem;
+    font-size: 14rem;
     opacity: 0.3;
 }
 
 .placeholder h1 {
     color: #888;
-    font-size: 3rem;
-    line-height: 4rem;
+    font-size: 2.5rem;
+    line-height: 3rem;
     margin-bottom: 1rem;
 }
 
