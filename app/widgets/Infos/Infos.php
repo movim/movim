@@ -25,14 +25,11 @@ class Infos extends Base
         $clients = [];
 
         foreach ($presences as $presence) {
-            list($client, $version) = explode('#', $presence->node);
-            $parts = explode('/', $client);
-            $part = isset($parts[2]) ? $parts[2] : $client;
-            if (!isset($clients[$part])) {
-                $clients[$part] = 0;
+            if (!isset($clients[$presence->node])) {
+                $clients[$presence->node] = 0;
             }
 
-            $clients[$part]++;
+            $clients[$presence->node]++;
         }
 
         $resolvedClients = [];
@@ -75,7 +72,7 @@ class Infos extends Base
 
     private function getCapabilityName($node)
     {
-        $capability = \App\Info::where('node', 'like', '%' . $node . '%')->first();
+        $capability = \App\Info::where('node', $node)->first();
 
         if ($capability && !filter_var($capability->name, FILTER_VALIDATE_URL)) {
             $parts = explode(' ', $capability->name);
