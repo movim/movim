@@ -390,12 +390,14 @@ class Chat extends \Movim\Widget\Base
 
             if (!$messageFile->valid) $messageFile = null;
         } else {
-            $url = new Url;
-            $cache = $url->resolve(trim($message));
+            try {
+                $url = new Url;
+                $cache = $url->resolve(trim($message));
 
-            if ($cache && $url->file !== null) {
-                $messageFile = $url->file;
-            }
+                if ($cache && $url->file !== null) {
+                    $messageFile = $url->file;
+                }
+            } catch (\Exception $e) {}
         }
 
         $this->sendMessage($to, $message, $muc, null, $messageFile, $replyToMid, $mucReceipts);
