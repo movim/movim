@@ -173,14 +173,22 @@ class Contact extends Model
             ? (string)$vcard->url->uri
             : null;
 
-        $this->adrlocality = (string)$vcard->adr->locality;
-        $this->adrcountry = (string)$vcard->adr->country;
-        $this->adrpostalcode = (string)$vcard->adr->code;
+        $this->adrlocality = !empty($vcard->adr->locality)
+            ? (string)$vcard->adr->locality
+            : null;
+        $this->adrcountry = !empty($vcard->adr->locality)
+            ? (string)$vcard->adr->country
+            : null;
+        $this->adrpostalcode = !empty($vcard->adr->code)
+            ? (string)$vcard->adr->code
+            : null;
 
         $this->email = !empty($vcard->email->text)
             ? (string)$vcard->email->text
             : null;
-        $this->description = trim((string)$vcard->note->text);
+        $this->description = !empty($vcard->node->text)
+            ? trim((string)$vcard->note->text)
+            : null;
     }
 
     public function getPlace(): string

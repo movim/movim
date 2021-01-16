@@ -389,10 +389,12 @@ class Post extends Model
                         'name' => strtolower((string)$cat->attributes()->term)
                     ]);
 
-                    $this->tags[] = $tag->id;
+                    if ($tag) {
+                        $this->tags[] = $tag->id;
 
-                    if ($tag->tag == 'nsfw') {
-                        $this->nsfw = true;
+                        if ($tag->tag == 'nsfw') {
+                            $this->nsfw = true;
+                        }
                     }
                 }
             }
