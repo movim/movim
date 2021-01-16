@@ -5,7 +5,7 @@
         </span>
     </li>
 </ul>
-{if="!empty($embed->images)"}
+{if="$embed && !empty($embed->images)"}
     {$previous = $imagenumber-1}
     <span class="prevnext prev {if="$imagenumber > 0"}enabled{/if}"
         onclick="Preview_ajaxGallery('{$embed->url}', {$previous})">
