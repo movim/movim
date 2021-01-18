@@ -17,18 +17,22 @@
                 {$curl = $conference->getPhoto()}
             {/if}
 
-            {if="$curl"}
+            {if="isset($curl)"}
                 <span class="primary icon bubble color active {$conference->name|stringToColor}
                     {if="!$conference->connected"}disabled{/if}"
                     style="background-image: url({$curl});"
                     onclick="RoomsUtils_ajaxShowSubject('{$jid|echapJS}')">
-            {else}
+            {elseif="$conference"}
                 <span class="primary icon bubble color active {$conference->name|stringToColor}
                     {if="!$conference->connected"}disabled{/if}"
                     onclick="RoomsUtils_ajaxShowSubject('{$jid|echapJS}')">
                     {autoescape="off"}
                         {$conference->name|firstLetterCapitalize|addEmojis}
                     {/autoescape}
+            {else}
+                <span class="primary icon bubble color active {$jid|stringToColor}"
+                    onclick="RoomsUtils_ajaxShowSubject('{$jid|echapJS}')">
+                    {$jid|firstLetterCapitalize}
             {/if}
             {if="$conference"}
                 {if="$conference->isGroupChat()"}

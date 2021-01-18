@@ -29,9 +29,11 @@ class CommunityAffiliations extends Base
 
         $role = null;
 
-        foreach ($affiliations['owner'] as $r) {
-            if ($r['jid'] == $this->user->id) {
-                $role = 'owner';
+        if (array_key_exists('owner', $affiliations)) {
+            foreach ($affiliations['owner'] as $r) {
+                if ($r['jid'] == $this->user->id) {
+                    $role = 'owner';
+                }
             }
         }
 

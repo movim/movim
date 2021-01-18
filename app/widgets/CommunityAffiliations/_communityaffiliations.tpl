@@ -1,4 +1,4 @@
-{if="$role == 'owner'"}
+{if="$role == 'owner' && $info"}
     <ul class="list active">
         <li onclick="CommunityConfig_ajaxGetAvatar('{$info->server|echapJS}', '{$info->node|echapJS}')">
             <span class="primary icon gray">
