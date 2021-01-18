@@ -36,6 +36,7 @@ v0.19 (trunk)
  * Simplify the URL resolving system to always use cache
  * TLS encryption enabling is non blocking during connection
  * Send the Presence a bit earlier on login
+ * Add a "copy to clipboard" button in Preview
 
 v0.18
 ---------------------------

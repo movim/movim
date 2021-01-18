@@ -112,6 +112,14 @@ var MovimUtils = {
             textbox.style.height = hidden.scrollHeight + 'px';
         }
     },
+    copyToClipboard: function(text) {
+        var input = document.body.appendChild(document.createElement('input'));
+        input.value = text;
+        input.focus();
+        input.select();
+        document.execCommand('copy');
+        input.parentNode.removeChild(input);
+    },
     applyAutoheight: function() {
         var textareas = document.querySelectorAll('textarea[data-autoheight=true]')
 

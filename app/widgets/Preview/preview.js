@@ -1,10 +1,16 @@
+var Preview = {
+    copyToClipboard: function(text) {
+        MovimUtils.copyToClipboard(text);
+        Toast.send(Preview.copyNotification);
+    }
+}
+
 movimAddOnload(function() {
     document.addEventListener('keydown', function(e) {
         if (document.querySelector('#preview').innerHTML != '' && e.keyCode == 27) {
             Preview_ajaxHide();
         }
     }, false);
-
     document.addEventListener('click', function(e) {
         if (document.querySelector('#preview').innerHTML == '') return;
 
