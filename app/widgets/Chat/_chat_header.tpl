@@ -13,11 +13,13 @@
                 {/if}
             </span>
 
+            {$curl = false}
+
             {if="$conference"}
                 {$curl = $conference->getPhoto()}
             {/if}
 
-            {if="isset($curl)"}
+            {if="$curl"}
                 <span class="primary icon bubble color active {$conference->name|stringToColor}
                     {if="!$conference->connected"}disabled{/if}"
                     style="background-image: url({$curl});"

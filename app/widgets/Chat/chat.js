@@ -1090,7 +1090,8 @@ var Chat = {
                 video.setAttribute('src', file.uri);
                 video.setAttribute('loop', 'loop');
 
-                if (file.thumbnail) {
+                if (file.thumbnail && Object.keys(file.thumbnail).length !== 0) {
+                    console.log(file.thumbnail);
                     video.setAttribute('poster', file.thumbnail.uri);
                     video.setAttribute('width', file.thumbnail.width);
                     video.setAttribute('height', file.thumbnail.height);

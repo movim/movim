@@ -231,6 +231,7 @@ main:not(.enabled) #chat_widget {
 
 #chat_widget ul li div.bubble.file video {
     display: block;
+    max-height: 200px;
 }
 
 #chat_widget li div.bubble.sticker.file img:not(.emoji):not(.hfr) {
