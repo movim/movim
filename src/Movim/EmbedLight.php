@@ -40,6 +40,9 @@ class EmbedLight
             }
         }
 
+        // Reset the keys
+        $this->images = array_values($this->images);
+
         return $this;
     }
 }

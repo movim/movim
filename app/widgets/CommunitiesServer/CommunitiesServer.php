@@ -118,6 +118,8 @@ class CommunitiesServer extends \Movim\Widget\Base
     {
         $item = \App\Info::where('server', $origin)->where('node', '')->first();
 
+        if (!$item->isPubsubService()) return;
+
         $nodes = \App\Info::where('infos.server', $origin)
             ->where('infos.node', '!=', '')
             ->leftJoinSub(
