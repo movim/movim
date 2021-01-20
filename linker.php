@@ -125,7 +125,7 @@ function handleClientDNS(array $results, $dns, $connector, $xmppBehaviour)
 
         if ($results['directtls'] !== false && $results['directtls'][0]['target'] !== '.'
          && $results['starttls'] !== false && $results['starttls'][0]['target'] !== '.') {
-            if ($results['starttls'][0]['priority'] > $results['directtls'][0]['priority']) {
+            if ($results['starttls'][0]['priority'] < $results['directtls'][0]['priority']) {
                 $host = $results['starttls'][0]['target'];
                 $port = $results['starttls'][0]['port'];
                 logOut(colorize('Picked STARTTLS', 'blue'));
