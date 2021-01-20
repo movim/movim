@@ -70,7 +70,7 @@ class Presence extends Base
 
     public function ajaxSetFireBaseToken(string $token)
     {
-        $s = new MovimSession;
+        $s = MovimSession::start();
         $s->set('firebasetoken', $token);
     }
 

@@ -79,7 +79,7 @@ class Notification extends Base
                 $action = $group;
             }
 
-            $s = new Session;
+            $s = Session::start();
             $firebaseToken = $s->get('firebasetoken');
 
             // We have Firebase enabled
