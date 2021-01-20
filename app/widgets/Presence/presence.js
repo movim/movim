@@ -4,6 +4,10 @@ var Presence = {
         localStorage.removeItem('quickLogin');
         localStorage.removeItem('quickHost');
         localStorage.removeItem('quickKey');
+    },
+    setFirebaseToken : function(token) {
+        Presence_ajaxSetFireBaseToken(token);
+        Android.clearFirebaseToken();
     }
 }
 
