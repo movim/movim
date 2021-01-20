@@ -120,34 +120,35 @@ class Chats extends Base
      */
     public function ajaxGetHistory($jid = false)
     {
-        // The following requests seems to be heavy if the user has no
-        // messages yet in the database
-        $empty = ($this->user->messages()->count() == 0);
-
         $g = new \Moxl\Xec\Action\MAM\Get;
 
+        // The following requests seems to be heavy for PostgreSQL
+        // see https://stackoverflow.com/questions/40365098/why-is-postgres-not-using-my-index-on-a-simple-order-by-limit-1
+        // a little hack is needed to use corectly the indexes
         if ($jid == false) {
-            if (!$empty) {
-                $message = $this->user->messages()
-                                ->orderBy('published', 'desc')
-                                ->first();
+            $message = $this->user->messages();
 
-                if ($message) {
-                    $g->setStart(strtotime($message->published));
-                }
+            $message = (DB::getDriverName() == 'pgsql')
+                ? $message->orderByRaw('published desc nulls last')
+                : $message->orderBy('published', 'desc');
+            $message = $message->first();
+
+            if ($message && $message->published) {
+                $g->setStart(strtotime($message->published));
             }
 
             $g->setLimit(150);
             $g->request();
         } elseif ($this->validateJid($jid)) {
-            if (!$empty) {
-                $message = \App\Message::jid($jid)
-                                       ->orderBy('published', 'desc')
-                                       ->first();
+            $message = \App\Message::jid($jid);
 
-                if ($message) {
-                    $g->setStart(strtotime($message->published));
-                }
+            $message = (DB::getDriverName() == 'pgsql')
+                ? $message->orderByRaw('published desc nulls last')
+                : $message->orderBy('published', 'desc');
+            $message = $message->first();
+
+            if ($message && $message->published) {
+                $g->setStart(strtotime($message->published));
             }
 
             $g->setJid(echapJid($jid));
