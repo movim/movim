@@ -12,6 +12,7 @@ use Moxl\Xec\Action\PubsubSubscription\Get as GetPubsubSubscriptions;
 use Moxl\Stanza\Stream;
 
 use Movim\Daemon\Session;
+use Movim\Session as MovimSession;
 
 class Presence extends Base
 {
@@ -65,6 +66,12 @@ class Presence extends Base
         $this->ajaxServerDisco();
         $this->ajaxProfileRefresh();
         $this->onSessionUp();
+    }
+
+    public function ajaxSetFireBaseToken(string $token)
+    {
+        $s = new MovimSession;
+        $s->set('firebasetoken', $token);
     }
 
     public function ajaxAskLogout()

@@ -181,6 +181,32 @@
         </li>
     </ul>
 
+    <h3>{$c->__('firebase.title')}</h3>
+
+    <div>
+        <textarea type="text" name="firebaseauthorizationkey" id="firebaseauthorizationkey"
+            placeholder="FirebaseKey"
+            onclick="MovimUtils.textareaAutoheight(this);"
+            oninput="MovimUtils.textareaAutoheight(this);"/>{$conf->firebaseauthorizationkey}</textarea>
+        <label for="info">{$c->__('firebase.label')}</label>
+    </div>
+
+    <ul class="list thick">
+        <li>
+            <span class="primary icon bubble color blue">
+                <i class="material-icons">notifications_active</i>
+            </span>
+            <div>
+                <p>{$c->__('firebase.info1')}</p>
+                <p>
+                    <a href="https://console.firebase.google.com/" target="_blank">
+                        {$c->__('firebase.info2')}
+                    </a>
+                </p>
+            </div>
+        </li>
+    </ul>
+
     <br />
     <h3>{$c->__('credentials.title')}</h3>
 

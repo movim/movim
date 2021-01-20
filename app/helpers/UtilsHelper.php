@@ -606,7 +606,7 @@ define('DEFAULT_HTTP_USER_AGENT', 'Mozilla/5.0 (compatible; Googlebot/2.1; +http
 /*
  * @desc Request a simple url
  */
-function requestURL(string $url, int $timeout = 10, $post = false, bool $json = false)
+function requestURL(string $url, int $timeout = 10, $post = false, bool $json = false, array $headers = [])
 {
     $ch = curl_init($url);
 
@@ -618,10 +618,12 @@ function requestURL(string $url, int $timeout = 10, $post = false, bool $json = 
     curl_setopt($ch, CURLOPT_USERAGENT, DEFAULT_HTTP_USER_AGENT);
 
     if ($json) {
-        curl_setopt($ch, CURLOPT_HTTPHEADER, ['Accept: application/json']);
+        array_push($headers, 'Accept: application/json');
     }
 
-    if (is_array($post)) {
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+    if ($post) {
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
     }

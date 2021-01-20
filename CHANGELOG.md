@@ -37,6 +37,7 @@ v0.19 (trunk)
  * TLS encryption enabling is non blocking during connection
  * Send the Presence a bit earlier on login
  * Add a "copy to clipboard" button in Preview
+ * Firebase Push notification integration for the official client
 
 v0.18
 ---------------------------

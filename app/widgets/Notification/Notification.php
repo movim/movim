@@ -1,8 +1,11 @@
 <?php
 
+use Movim\Firebase;
 use Movim\Widget\Base;
 use Movim\RPC;
 use Movim\Session;
+
+use App\Configuration;
 
 class Notification extends Base
 {
@@ -75,7 +78,23 @@ class Notification extends Base
             if ($group != null) {
                 $action = $group;
             }
-            RPC::call('Notification.android', $title, $body, $picture, $action);
+
+            $s = new Session;
+            $firebaseToken = $s->get('firebasetoken');
+
+            // We have Firebase enabled
+            if ($firebaseToken) {
+                $configuration = Configuration::get();
+                $firebaseKey = $configuration->firebaseauthorizationkey;
+
+                if ($firebaseKey) {
+                    $fb = new Firebase($firebaseKey, $firebaseToken);
+                    $fb->notify($title, $body, $picture, $action);
+                }
+            } else {
+                // We try to deliver it trough the WebSocket
+                RPC::call('Notification.android', $title, $body, $picture, $action);
+            }
         }
 
         if (array_key_exists($first, $notifs)) {
