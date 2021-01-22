@@ -328,7 +328,7 @@ class Chat extends \Movim\Widget\Base
             $this->rpc('Chat.setObservers');
             $this->prepareMessages($jid);
             $this->rpc('Notification.current', 'chat|'.$jid);
-            $this->rpc('Notification.clearAndroid', $this->route('chat', [$jid]));
+            Notification::clearAndroid($this->route('chat', [$jid]));
             $this->rpc('Chat.scrollToSeparator');
         }
     }
@@ -364,7 +364,7 @@ class Chat extends \Movim\Widget\Base
             $this->rpc('Chat.setObservers');
             $this->prepareMessages($room, true);
             $this->rpc('Notification.current', 'chat|'.$room);
-            $this->rpc('Notification.clearAndroid', $this->route('chat', [$room, 'room']));
+            Notification::clearAndroid($this->route('chat', [$room, 'room']));
             $this->rpc('Chat.scrollToSeparator');
         } else {
             $this->rpc('RoomsUtils_ajaxAdd', $room);

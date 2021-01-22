@@ -33,6 +33,29 @@ class Notification extends Base
     }
 
     /**
+     * Clear the notification for Android using a local event and
+     * push notification event
+     */
+    public static function clearAndroid(string $action)
+    {
+        RPC::call('Notification.clearAndroid', $action);
+
+        $s = Session::start();
+        $firebaseToken = $s->get('firebasetoken');
+
+        // We have Firebase enabled
+        if ($firebaseToken) {
+            $configuration = Configuration::get();
+            $firebaseKey = $configuration->firebaseauthorizationkey;
+
+            if ($firebaseKey) {
+                $fb = new Firebase($firebaseKey, $firebaseToken);
+                $fb->clear($action);
+            }
+        }
+    }
+
+    /**
      * @brief Notify something
      *
      * @param string $key The key to group the notifications

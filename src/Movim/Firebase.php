@@ -15,8 +15,6 @@ class Firebase
 
     public function notify(string $title, string $body = null, string $image = null, string $action = null)
     {
-        $headers = ['Authorization:key='.$this->_key,'Content-Type:application/json'];
-
         $fields = [
             'to' => $this->_token,
             'data' => [
@@ -27,6 +25,25 @@ class Firebase
             ]
         ];
 
-        var_dump(requestURL('https://fcm.googleapis.com/fcm/send', 10, json_encode($fields), true, $headers));
+        $this->request($fields);
+    }
+
+    public function clear(string $action)
+    {
+        $fields = [
+            'to' => $this->_token,
+            'data' => [
+                'clear' => true,
+                'action' => $action
+            ]
+        ];
+
+        $this->request($fields);
+    }
+
+    private function request($fields)
+    {
+        $headers = ['Authorization:key='.$this->_key,'Content-Type:application/json'];
+        requestURL('https://fcm.googleapis.com/fcm/send', 10, json_encode($fields), true, $headers);
     }
 }
