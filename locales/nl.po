@@ -77,6 +77,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Presence/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Preview/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/PublishBrief/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/PublishHelp/locales.ini
@@ -108,8 +110,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-09 08:57+0200\n"
-"PO-Revision-Date: 2020-08-07 10:18+0000\n"
+"POT-Creation-Date: 2021-01-23 14:37+0200\n"
+"PO-Revision-Date: 2020-11-03 22:14+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: Dutch (http://www.transifex.com/movim/movim/language/nl/)\n"
 "Language: nl\n"
@@ -117,7 +119,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 2.5.1\n"
+"X-Generator: Translate Toolkit 3.1.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -229,11 +231,11 @@ msgstr "Je account is gecreëerd"
 
 #: [create]loading
 msgid "Loading"
-msgstr "Bezig met laden…"
+msgstr "Bezig met laden..."
 
 #: [create]placeholder
 msgid "…and start playing"
-msgstr "…en speel af"
+msgstr "...en speel af"
 
 #: [error]not_acceptable
 msgid "Not Acceptable"
@@ -360,6 +362,39 @@ msgstr "Standaard XMPP Server land"
 #: [xmpp]country_pick
 msgid "Pick a country in the list"
 msgstr "Selecteer een land uit de lijst"
+
+#: [tenor]title
+#, fuzzy
+msgid "Tenor integration"
+msgstr "Algemene informatie"
+
+#: [tenor]label
+msgid "Yout Tenor API Key"
+msgstr ""
+
+#: [tenor]info1
+msgid "Movim integrates the Tenor API to allow GIF search and publication in Chat"
+msgstr ""
+
+#: [tenor]info2
+msgid "Access Tenor and get your API key"
+msgstr ""
+
+#: [firebase]title
+msgid "Firebase Integration"
+msgstr ""
+
+#: [firebase]label
+msgid "Your Firebase Authorization Key"
+msgstr ""
+
+#: [firebase]info1
+msgid "Movim can send Push Notifications to the Movim Android app using Firebase"
+msgstr ""
+
+#: [firebase]info2
+msgid "Go to the Firebase panel to configure and generate your Authorization key"
+msgstr ""
 
 #: [log]empty
 msgid "Empty"
@@ -503,11 +538,11 @@ msgstr ""
 
 #: [message]composing
 msgid "Composing…"
-msgstr "Aan het schrijven…"
+msgstr "Aan het schrijven..."
 
 #: [message]paused
 msgid "Paused…"
-msgstr "Gepauzeerd…"
+msgstr "Gepauzeerd..."
 
 #: [message]gone
 msgid "Contact gone"
@@ -531,7 +566,7 @@ msgstr "%s heeft uw aandacht nodig"
 
 #: [chat]placeholder
 msgid "Your message here…"
-msgstr "Je bericht hier…"
+msgstr "Je bericht hier..."
 
 #: [chat]smileys
 msgid "Smileys"
@@ -543,7 +578,7 @@ msgstr "Frequente contacten"
 
 #: [chat]new_title
 msgid "Nothing here yet…"
-msgstr "Hier is nog niets…"
+msgstr "Hier is nog niets..."
 
 #: [chat]new_text
 msgid "Don’t be shy, send a first message to start the discussion"
@@ -633,7 +668,7 @@ msgstr "Beheer"
 
 #: [chats]empty_title
 msgid "No chats yet…"
-msgstr "Momenteel geen gesprekken…"
+msgstr "Momenteel geen gesprekken..."
 
 #: [chats]empty
 msgid "Start a new conversation by clicking on the %s button."
@@ -649,6 +684,10 @@ msgstr ""
 
 #: [chats]picture
 msgid "Picture"
+msgstr ""
+
+#: [chats]video
+msgid "Video"
 msgstr ""
 
 #: [button]chat
@@ -1288,12 +1327,26 @@ msgstr "Deze manier van aanmelden wordt door Movim niet ondersteund"
 msgid "The XMPP authentification failed"
 msgstr "Aanmelden bij XMPP is mislukt"
 
+#: [connection]socket_connected
+#, fuzzy
+msgid "Connected to the server"
+msgstr "Verbonden met de chatroom"
+
+#: [connection]authenticated
+#, fuzzy
+msgid "Authenticated to the server"
+msgstr "Lege Challenge van de server"
+
 #: [form]username
 msgid "My address"
 msgstr "Mijn adres"
 
 #: [form]whitelist_info
-msgid "You can login with accounts from these servers"
+msgid "Login with accounts from these servers"
+msgstr ""
+
+#: [form]connect_info
+msgid "Login using any XMPP account or create a new one"
 msgstr ""
 
 #: [form]connected
@@ -1334,7 +1387,7 @@ msgstr "Contactpersonen"
 
 #: [menu]add_post
 msgid "Write a new post…"
-msgstr "Schrijf een nieuw bericht…"
+msgstr "Schrijf een nieuw bericht..."
 
 #: [invitations]title
 msgid "Pending Invitations"
@@ -1564,6 +1617,10 @@ msgstr "aanwezigheid"
 msgid "Do you really want to log out?"
 msgstr ""
 
+#: [preview]link_copied
+msgid "Link copied to clipboard"
+msgstr ""
+
 #: [publishbrief]placeholder
 msgid "What’s new?"
 msgstr ""
@@ -1637,23 +1694,20 @@ msgid "Markdown syntax manual"
 msgstr "Markdown syntax handleiding"
 
 #: [rooms]create
-#, fuzzy
 msgid "Create a chatroom"
-msgstr "Bewerk een chat-ruimte"
+msgstr ""
 
 #: [rooms]edit
 msgid "Edit a chatroom"
 msgstr "Bewerk een chat-ruimte"
 
 #: [rooms]join
-#, fuzzy
 msgid "Join a chatroom"
-msgstr "Bewerk een chat-ruimte"
+msgstr ""
 
 #: [rooms]join_custom
-#, fuzzy
 msgid "Join a custom chatroom"
-msgstr "Bewerk een chat-ruimte"
+msgstr ""
 
 #: [rooms]empty_text1
 msgid "You don’t have any chatroom yet."
@@ -1744,16 +1798,14 @@ msgid "%s rooms synchronized"
 msgstr ""
 
 #: [chatrooms]users
-#, fuzzy
 msgctxt "[chatrooms]users"
 msgid "Users"
-msgstr "Gebruikersnaam"
+msgstr ""
 
 #: [chatrooms]members
-#, fuzzy
 msgctxt "[chatrooms]members"
 msgid "Members"
-msgstr "Leden"
+msgstr ""
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a correct nickname (2 to 40 characters)"
@@ -1832,34 +1884,30 @@ msgid "The participants of this chatroom can see each other's profile"
 msgstr ""
 
 #: [room]group_chat
-#, fuzzy
 msgid "Group Chat"
-msgstr "Groep"
+msgstr ""
 
 #: [room]group_chat_text
 msgid "Private group chat with invited members"
 msgstr ""
 
 #: [room]group_chat_add
-#, fuzzy
 msgid "Add a new member"
-msgstr "Reactie toevoegen"
+msgstr ""
 
 #: [room]group_chat_members
-#, fuzzy
 msgctxt "[room]group_chat_members"
 msgid "Members"
-msgstr "Leden"
+msgstr ""
 
 #: [room]channel
 msgid "Channel"
 msgstr ""
 
 #: [room]channel_users
-#, fuzzy
 msgctxt "[room]channel_users"
 msgid "Users"
-msgstr "Gebruikersnaam"
+msgstr ""
 
 #: [room]channel_text
 msgid "Public channel that can be publicly discoverable and joineable"
@@ -1956,6 +2004,19 @@ msgstr ""
 #: [sticker]sent
 msgid "A sticker has been sent using Movim"
 msgstr "Er is je een sticker toegezonden door Movim"
+
+#: [sticker]keyword
+#, fuzzy
+msgid "Type a keyword"
+msgstr "Wachtwoord herhalen"
+
+#: [sticker]gif_title
+msgid "Find a GIF"
+msgstr ""
+
+#: [sticker]gif_text
+msgid "Powered by Tenor"
+msgstr ""
 
 #: [subscribe]info
 msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
@@ -2135,7 +2196,7 @@ msgstr ""
 
 #: [global]loading
 msgid "Loading…"
-msgstr "Laden…"
+msgstr "Laden..."
 
 #: [global]or
 msgid "Or"
@@ -2393,6 +2454,15 @@ msgstr ""
 
 #: [button]send_to
 msgid "Send to"
+msgstr ""
+
+#: [button]more
+#, fuzzy
+msgid "More"
+msgstr "Meer help"
+
+#: [button]copy_link
+msgid "Copy Link"
 msgstr ""
 
 #: [day]title
@@ -3006,12 +3076,3 @@ msgstr "De API is niet bereikbaar, probeer later nog eens"
 #: [field]type_here
 msgid "Type here"
 msgstr "Typ hier"
-
-#~ msgid "Users in the room"
-#~ msgstr "Gebruikers in de room"
-
-#~ msgid "Please provide a room address"
-#~ msgstr "Voer een adres in van een chatroom"
-
-#~ msgid "Your nickname"
-#~ msgstr "Jouw nickname"

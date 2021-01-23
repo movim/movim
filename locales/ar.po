@@ -69,6 +69,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Presence/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Preview/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/PublishBrief/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/PublishHelp/locales.ini
@@ -100,8 +102,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-09 08:57+0200\n"
-"PO-Revision-Date: 2020-08-07 10:18+0000\n"
+"POT-Creation-Date: 2021-01-23 14:37+0200\n"
+"PO-Revision-Date: 2020-11-03 22:14+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: Arabic (http://www.transifex.com/movim/movim/language/ar/)\n"
 "Language: ar\n"
@@ -109,7 +111,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
-"X-Generator: Translate Toolkit 2.5.1\n"
+"X-Generator: Translate Toolkit 3.1.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -351,6 +353,39 @@ msgstr ""
 
 #: [xmpp]country_pick
 msgid "Pick a country in the list"
+msgstr ""
+
+#: [tenor]title
+#, fuzzy
+msgid "Tenor integration"
+msgstr "ضبط"
+
+#: [tenor]label
+msgid "Yout Tenor API Key"
+msgstr ""
+
+#: [tenor]info1
+msgid "Movim integrates the Tenor API to allow GIF search and publication in Chat"
+msgstr ""
+
+#: [tenor]info2
+msgid "Access Tenor and get your API key"
+msgstr ""
+
+#: [firebase]title
+msgid "Firebase Integration"
+msgstr ""
+
+#: [firebase]label
+msgid "Your Firebase Authorization Key"
+msgstr ""
+
+#: [firebase]info1
+msgid "Movim can send Push Notifications to the Movim Android app using Firebase"
+msgstr ""
+
+#: [firebase]info2
+msgid "Go to the Firebase panel to configure and generate your Authorization key"
 msgstr ""
 
 #: [log]empty
@@ -641,6 +676,10 @@ msgstr ""
 
 #: [chats]picture
 msgid "Picture"
+msgstr ""
+
+#: [chats]video
+msgid "Video"
 msgstr ""
 
 #: [button]chat
@@ -1280,12 +1319,24 @@ msgstr ""
 msgid "The XMPP authentification failed"
 msgstr "تعذّر استيثاق XMPP"
 
+#: [connection]socket_connected
+msgid "Connected to the server"
+msgstr ""
+
+#: [connection]authenticated
+msgid "Authenticated to the server"
+msgstr ""
+
 #: [form]username
 msgid "My address"
 msgstr "عنوان بريدي"
 
 #: [form]whitelist_info
-msgid "You can login with accounts from these servers"
+msgid "Login with accounts from these servers"
+msgstr ""
+
+#: [form]connect_info
+msgid "Login using any XMPP account or create a new one"
 msgstr ""
 
 #: [form]connected
@@ -1556,6 +1607,10 @@ msgstr ""
 msgid "Do you really want to log out?"
 msgstr ""
 
+#: [preview]link_copied
+msgid "Link copied to clipboard"
+msgstr ""
+
 #: [publishbrief]placeholder
 msgid "What’s new?"
 msgstr ""
@@ -1733,16 +1788,14 @@ msgid "%s rooms synchronized"
 msgstr ""
 
 #: [chatrooms]users
-#, fuzzy
 msgctxt "[chatrooms]users"
 msgid "Users"
-msgstr "اسم المستخدم"
+msgstr ""
 
 #: [chatrooms]members
-#, fuzzy
 msgctxt "[chatrooms]members"
 msgid "Members"
-msgstr "نوفمبر"
+msgstr ""
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a correct nickname (2 to 40 characters)"
@@ -1829,25 +1882,22 @@ msgid "Private group chat with invited members"
 msgstr ""
 
 #: [room]group_chat_add
-#, fuzzy
 msgid "Add a new member"
-msgstr "أضف تعليق"
+msgstr ""
 
 #: [room]group_chat_members
-#, fuzzy
 msgctxt "[room]group_chat_members"
 msgid "Members"
-msgstr "نوفمبر"
+msgstr ""
 
 #: [room]channel
 msgid "Channel"
 msgstr ""
 
 #: [room]channel_users
-#, fuzzy
 msgctxt "[room]channel_users"
 msgid "Users"
-msgstr "اسم المستخدم"
+msgstr ""
 
 #: [room]channel_text
 msgid "Public channel that can be publicly discoverable and joineable"
@@ -1943,6 +1993,19 @@ msgstr ""
 
 #: [sticker]sent
 msgid "A sticker has been sent using Movim"
+msgstr ""
+
+#: [sticker]keyword
+#, fuzzy
+msgid "Type a keyword"
+msgstr "أعِد كتابة كلمة السر"
+
+#: [sticker]gif_title
+msgid "Find a GIF"
+msgstr ""
+
+#: [sticker]gif_text
+msgid "Powered by Tenor"
 msgstr ""
 
 #: [subscribe]info
@@ -2381,6 +2444,14 @@ msgstr ""
 
 #: [button]send_to
 msgid "Send to"
+msgstr ""
+
+#: [button]more
+msgid "More"
+msgstr ""
+
+#: [button]copy_link
+msgid "Copy Link"
 msgstr ""
 
 #: [day]title

@@ -75,6 +75,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Presence/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Preview/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/PublishBrief/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/PublishHelp/locales.ini
@@ -106,8 +108,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-09 08:57+0200\n"
-"PO-Revision-Date: 2020-08-07 10:18+0000\n"
+"POT-Creation-Date: 2021-01-23 14:37+0200\n"
+"PO-Revision-Date: 2020-11-03 22:14+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: Italian (http://www.transifex.com/movim/movim/language/it/)\n"
 "Language: it\n"
@@ -115,7 +117,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 2.5.1\n"
+"X-Generator: Translate Toolkit 3.1.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -231,7 +233,7 @@ msgstr "Caricamento"
 
 #: [create]placeholder
 msgid "…and start playing"
-msgstr "…e inizia a giocare"
+msgstr "...e inizia a giocare"
 
 #: [error]not_acceptable
 msgid "Not Acceptable"
@@ -358,6 +360,39 @@ msgstr "Paese del server XMPP principale"
 #: [xmpp]country_pick
 msgid "Pick a country in the list"
 msgstr "Seleziona un paese nella lista"
+
+#: [tenor]title
+#, fuzzy
+msgid "Tenor integration"
+msgstr "Informazioni generali"
+
+#: [tenor]label
+msgid "Yout Tenor API Key"
+msgstr ""
+
+#: [tenor]info1
+msgid "Movim integrates the Tenor API to allow GIF search and publication in Chat"
+msgstr ""
+
+#: [tenor]info2
+msgid "Access Tenor and get your API key"
+msgstr ""
+
+#: [firebase]title
+msgid "Firebase Integration"
+msgstr ""
+
+#: [firebase]label
+msgid "Your Firebase Authorization Key"
+msgstr ""
+
+#: [firebase]info1
+msgid "Movim can send Push Notifications to the Movim Android app using Firebase"
+msgstr ""
+
+#: [firebase]info2
+msgid "Go to the Firebase panel to configure and generate your Authorization key"
+msgstr ""
 
 #: [log]empty
 msgid "Empty"
@@ -541,7 +576,7 @@ msgstr "Contatti frequenti"
 
 #: [chat]new_title
 msgid "Nothing here yet…"
-msgstr "Qui non c'è ancora nulla. Per ora…"
+msgstr "Qui non c'è ancora nulla. Per ora..."
 
 #: [chat]new_text
 msgid "Don’t be shy, send a first message to start the discussion"
@@ -647,6 +682,10 @@ msgstr ""
 
 #: [chats]picture
 msgid "Picture"
+msgstr ""
+
+#: [chats]video
+msgid "Video"
 msgstr ""
 
 #: [button]chat
@@ -1286,13 +1325,28 @@ msgstr "Meccanismo di autenticazione non supportato da Movim"
 msgid "The XMPP authentification failed"
 msgstr "L'autenticazione XMPP è fallita"
 
+#: [connection]socket_connected
+#, fuzzy
+msgid "Connected to the server"
+msgstr "Connesso alla chatroom"
+
+#: [connection]authenticated
+#, fuzzy
+msgid "Authenticated to the server"
+msgstr "Empty challenge dal server"
+
 #: [form]username
 msgid "My address"
 msgstr "Il mio indirizzo"
 
 #: [form]whitelist_info
-msgid "You can login with accounts from these servers"
+#, fuzzy
+msgid "Login with accounts from these servers"
 msgstr "Puoi entrare con account di questi server"
+
+#: [form]connect_info
+msgid "Login using any XMPP account or create a new one"
+msgstr ""
 
 #: [form]connected
 msgid "Connected"
@@ -1332,7 +1386,7 @@ msgstr "Contatti"
 
 #: [menu]add_post
 msgid "Write a new post…"
-msgstr "Scrivi un nuovo post…"
+msgstr "Scrivi un nuovo post..."
 
 #: [invitations]title
 msgid "Pending Invitations"
@@ -1562,6 +1616,10 @@ msgstr "Presenza"
 msgid "Do you really want to log out?"
 msgstr ""
 
+#: [preview]link_copied
+msgid "Link copied to clipboard"
+msgstr ""
+
 #: [publishbrief]placeholder
 msgid "What’s new?"
 msgstr ""
@@ -1635,23 +1693,20 @@ msgid "Markdown syntax manual"
 msgstr "Manuale di sintassi HTML"
 
 #: [rooms]create
-#, fuzzy
 msgid "Create a chatroom"
-msgstr "Modifica una chat room"
+msgstr ""
 
 #: [rooms]edit
 msgid "Edit a chatroom"
 msgstr "Modifica una chat room"
 
 #: [rooms]join
-#, fuzzy
 msgid "Join a chatroom"
-msgstr "Modifica una chat room"
+msgstr ""
 
 #: [rooms]join_custom
-#, fuzzy
 msgid "Join a custom chatroom"
-msgstr "Modifica una chat room"
+msgstr ""
 
 #: [rooms]empty_text1
 msgid "You don’t have any chatroom yet."
@@ -1742,16 +1797,14 @@ msgid "%s rooms synchronized"
 msgstr ""
 
 #: [chatrooms]users
-#, fuzzy
 msgctxt "[chatrooms]users"
 msgid "Users"
-msgstr "Nome utente"
+msgstr ""
 
 #: [chatrooms]members
-#, fuzzy
 msgctxt "[chatrooms]members"
 msgid "Members"
-msgstr "Partecipanti"
+msgstr ""
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a correct nickname (2 to 40 characters)"
@@ -1830,34 +1883,30 @@ msgid "The participants of this chatroom can see each other's profile"
 msgstr ""
 
 #: [room]group_chat
-#, fuzzy
 msgid "Group Chat"
-msgstr "Gruppo"
+msgstr ""
 
 #: [room]group_chat_text
 msgid "Private group chat with invited members"
 msgstr ""
 
 #: [room]group_chat_add
-#, fuzzy
 msgid "Add a new member"
-msgstr "Aggiungi un commento"
+msgstr ""
 
 #: [room]group_chat_members
-#, fuzzy
 msgctxt "[room]group_chat_members"
 msgid "Members"
-msgstr "Partecipanti"
+msgstr ""
 
 #: [room]channel
 msgid "Channel"
 msgstr ""
 
 #: [room]channel_users
-#, fuzzy
 msgctxt "[room]channel_users"
 msgid "Users"
-msgstr "Nome utente"
+msgstr ""
 
 #: [room]channel_text
 msgid "Public channel that can be publicly discoverable and joineable"
@@ -1954,6 +2003,19 @@ msgstr ""
 #: [sticker]sent
 msgid "A sticker has been sent using Movim"
 msgstr "è stato inviato uno sticker tramite Movim"
+
+#: [sticker]keyword
+#, fuzzy
+msgid "Type a keyword"
+msgstr "Ridigita la password"
+
+#: [sticker]gif_title
+msgid "Find a GIF"
+msgstr ""
+
+#: [sticker]gif_text
+msgid "Powered by Tenor"
+msgstr ""
 
 #: [subscribe]info
 msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
@@ -2089,7 +2151,7 @@ msgstr "Per favore, contatta l'amministratore del tuo server per sapere se quest
 
 #: [visio]calling
 msgid "…is calling you"
-msgstr "… ti sta chiamando"
+msgstr "... ti sta chiamando"
 
 #: [visio]video_call
 msgid "Incoming video call"
@@ -2101,7 +2163,7 @@ msgstr ""
 
 #: [visio]ringing
 msgid "…ringing"
-msgstr "… squillando …"
+msgstr "... squillando ..."
 
 #: [visio]declined
 msgid "declined"
@@ -2117,7 +2179,7 @@ msgstr "fallita"
 
 #: [visio]connecting
 msgid "…connecting"
-msgstr "… in collegamento …"
+msgstr "... in collegamento ..."
 
 #: [visio]ended
 msgid "call ended"
@@ -2133,7 +2195,7 @@ msgstr ""
 
 #: [global]loading
 msgid "Loading…"
-msgstr "Caricamento…"
+msgstr "Caricamento..."
 
 #: [global]or
 msgid "Or"
@@ -2306,7 +2368,7 @@ msgstr "Aggiornamento"
 
 #: [button]submitting
 msgid "Submitting"
-msgstr "Inviando…"
+msgstr "Inviando..."
 
 #: [button]register
 msgid "Register"
@@ -2391,6 +2453,15 @@ msgstr "Iscriviti"
 
 #: [button]send_to
 msgid "Send to"
+msgstr ""
+
+#: [button]more
+#, fuzzy
+msgid "More"
+msgstr "Ulteriore aiuto"
+
+#: [button]copy_link
+msgid "Copy Link"
 msgstr ""
 
 #: [day]title
@@ -3004,12 +3075,3 @@ msgstr "L'API non è raggiungibile, riprovare più tardi"
 #: [field]type_here
 msgid "Type here"
 msgstr "Digita qui"
-
-#~ msgid "Users in the room"
-#~ msgstr "Utenti nella stanza"
-
-#~ msgid "Please provide a room address"
-#~ msgstr "Inserisci un indirizzo per la stanza"
-
-#~ msgid "Your nickname"
-#~ msgstr "Il tuo nickname"

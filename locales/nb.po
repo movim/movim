@@ -72,6 +72,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Presence/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Preview/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/PublishBrief/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/PublishHelp/locales.ini
@@ -103,8 +105,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-09 08:57+0200\n"
-"PO-Revision-Date: 2020-08-07 10:18+0000\n"
+"POT-Creation-Date: 2021-01-23 14:37+0200\n"
+"PO-Revision-Date: 2020-11-03 22:14+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://www.transifex.com/movim/movim/language/nb_NO/)\n"
 "Language: nb_NO\n"
@@ -112,7 +114,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 2.5.1\n"
+"X-Generator: Translate Toolkit 3.1.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -355,6 +357,39 @@ msgstr "Forvalgt XMPP-tjenerland"
 #: [xmpp]country_pick
 msgid "Pick a country in the list"
 msgstr "Velg ut et land fra listen"
+
+#: [tenor]title
+#, fuzzy
+msgid "Tenor integration"
+msgstr "Generelle informasjoner"
+
+#: [tenor]label
+msgid "Yout Tenor API Key"
+msgstr ""
+
+#: [tenor]info1
+msgid "Movim integrates the Tenor API to allow GIF search and publication in Chat"
+msgstr ""
+
+#: [tenor]info2
+msgid "Access Tenor and get your API key"
+msgstr ""
+
+#: [firebase]title
+msgid "Firebase Integration"
+msgstr ""
+
+#: [firebase]label
+msgid "Your Firebase Authorization Key"
+msgstr ""
+
+#: [firebase]info1
+msgid "Movim can send Push Notifications to the Movim Android app using Firebase"
+msgstr ""
+
+#: [firebase]info2
+msgid "Go to the Firebase panel to configure and generate your Authorization key"
+msgstr ""
 
 #: [log]empty
 msgid "Empty"
@@ -644,6 +679,10 @@ msgstr ""
 
 #: [chats]picture
 msgid "Picture"
+msgstr ""
+
+#: [chats]video
+msgid "Video"
 msgstr ""
 
 #: [button]chat
@@ -1283,13 +1322,28 @@ msgstr "Autentiseringsmekanismen støttes ikke av Movim"
 msgid "The XMPP authentification failed"
 msgstr "XMPP-autentiseringen feilet"
 
+#: [connection]socket_connected
+#, fuzzy
+msgid "Connected to the server"
+msgstr "Koble til gruppesamtale"
+
+#: [connection]authenticated
+#, fuzzy
+msgid "Authenticated to the server"
+msgstr "Tom 'challange' fra tjeneren"
+
 #: [form]username
 msgid "My address"
 msgstr "Min adresse"
 
 #: [form]whitelist_info
-msgid "You can login with accounts from these servers"
+#, fuzzy
+msgid "Login with accounts from these servers"
 msgstr "Du kan logge inn med kontoer fra disse tjenerne"
+
+#: [form]connect_info
+msgid "Login using any XMPP account or create a new one"
+msgstr ""
 
 #: [form]connected
 msgid "Connected"
@@ -1559,6 +1613,10 @@ msgstr "Tilstedeværelse"
 msgid "Do you really want to log out?"
 msgstr ""
 
+#: [preview]link_copied
+msgid "Link copied to clipboard"
+msgstr ""
+
 #: [publishbrief]placeholder
 msgid "What’s new?"
 msgstr "Hva er nytt?"
@@ -1632,23 +1690,20 @@ msgid "Markdown syntax manual"
 msgstr "Bruksanvisning for tekstformatering"
 
 #: [rooms]create
-#, fuzzy
 msgid "Create a chatroom"
-msgstr "Rediger et samtalerom"
+msgstr ""
 
 #: [rooms]edit
 msgid "Edit a chatroom"
 msgstr "Rediger et samtalerom"
 
 #: [rooms]join
-#, fuzzy
 msgid "Join a chatroom"
-msgstr "Rediger et samtalerom"
+msgstr ""
 
 #: [rooms]join_custom
-#, fuzzy
 msgid "Join a custom chatroom"
-msgstr "Rediger et samtalerom"
+msgstr ""
 
 #: [rooms]empty_text1
 msgid "You don’t have any chatroom yet."
@@ -1739,16 +1794,14 @@ msgid "%s rooms synchronized"
 msgstr ""
 
 #: [chatrooms]users
-#, fuzzy
 msgctxt "[chatrooms]users"
 msgid "Users"
-msgstr "Brukernavn"
+msgstr ""
 
 #: [chatrooms]members
-#, fuzzy
 msgctxt "[chatrooms]members"
 msgid "Members"
-msgstr "Medlemer"
+msgstr ""
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a correct nickname (2 to 40 characters)"
@@ -1827,34 +1880,30 @@ msgid "The participants of this chatroom can see each other's profile"
 msgstr ""
 
 #: [room]group_chat
-#, fuzzy
 msgid "Group Chat"
-msgstr "Gruppe"
+msgstr ""
 
 #: [room]group_chat_text
 msgid "Private group chat with invited members"
 msgstr ""
 
 #: [room]group_chat_add
-#, fuzzy
 msgid "Add a new member"
-msgstr "Legg til kommentar"
+msgstr ""
 
 #: [room]group_chat_members
-#, fuzzy
 msgctxt "[room]group_chat_members"
 msgid "Members"
-msgstr "Medlemer"
+msgstr ""
 
 #: [room]channel
 msgid "Channel"
 msgstr ""
 
 #: [room]channel_users
-#, fuzzy
 msgctxt "[room]channel_users"
 msgid "Users"
-msgstr "Brukernavn"
+msgstr ""
 
 #: [room]channel_text
 msgid "Public channel that can be publicly discoverable and joineable"
@@ -1951,6 +2000,19 @@ msgstr ""
 #: [sticker]sent
 msgid "A sticker has been sent using Movim"
 msgstr "En klistrelapp har blitt sendt via Movim"
+
+#: [sticker]keyword
+#, fuzzy
+msgid "Type a keyword"
+msgstr "Gjenta passord"
+
+#: [sticker]gif_title
+msgid "Find a GIF"
+msgstr ""
+
+#: [sticker]gif_text
+msgid "Powered by Tenor"
+msgstr ""
 
 #: [subscribe]info
 msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
@@ -2388,6 +2450,15 @@ msgstr "Registrere"
 
 #: [button]send_to
 msgid "Send to"
+msgstr ""
+
+#: [button]more
+#, fuzzy
+msgid "More"
+msgstr "Mer hjelp"
+
+#: [button]copy_link
+msgid "Copy Link"
 msgstr ""
 
 #: [day]title
@@ -3001,12 +3072,3 @@ msgstr "API-et kan ikke nås, prøv igjen senere"
 #: [field]type_here
 msgid "Type here"
 msgstr "Skriv her"
-
-#~ msgid "Users in the room"
-#~ msgstr "Brukere i rommet"
-
-#~ msgid "Please provide a room address"
-#~ msgstr "Oppgi samtalerommets adresse"
-
-#~ msgid "Your nickname"
-#~ msgstr "Ditt kallenavn"
