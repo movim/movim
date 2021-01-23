@@ -40,18 +40,10 @@ class Notification extends Base
     {
         RPC::call('Notification.clearAndroid', $action);
 
-        $s = Session::start();
-        $firebaseToken = $s->get('firebasetoken');
+        $fb = self::resolveFirebase();
 
-        // We have Firebase enabled
-        if ($firebaseToken) {
-            $configuration = Configuration::get();
-            $firebaseKey = $configuration->firebaseauthorizationkey;
-
-            if ($firebaseKey) {
-                $fb = new Firebase($firebaseKey, $firebaseToken);
-                $fb->clear($action);
-            }
+        if ($fb) {
+            $fb->clear($action);
         }
     }
 
@@ -102,18 +94,10 @@ class Notification extends Base
                 $action = $group;
             }
 
-            $s = Session::start();
-            $firebaseToken = $s->get('firebasetoken');
+            $fb = self::resolveFirebase();
 
-            // We have Firebase enabled
-            if ($firebaseToken) {
-                $configuration = Configuration::get();
-                $firebaseKey = $configuration->firebaseauthorizationkey;
-
-                if ($firebaseKey) {
-                    $fb = new Firebase($firebaseKey, $firebaseToken);
-                    $fb->notify($title, $body, $picture, $action);
-                }
+            if ($fb) {
+                $fb->notify($title, $body, $picture, $action);
             } else {
                 // We try to deliver it trough the WebSocket
                 RPC::call('Notification.android', $title, $body, $picture, $action);
@@ -190,7 +174,6 @@ class Notification extends Base
             RPC::call('Notification.counter', $key, 0);
 
             $explode = explode('|', $key);
-
             $first = reset($explode);
 
             if (array_key_exists($first, $notifs)) {
@@ -253,5 +236,23 @@ class Notification extends Base
         $view->assign('onclick', $execute);
 
         return $view->draw('_notification');
+    }
+
+    private static function resolveFirebase(): ?Firebase
+    {
+        $s = Session::start();
+        $firebaseToken = $s->get('firebasetoken');
+
+        // We have Firebase enabled
+        if ($firebaseToken) {
+            $configuration = Configuration::get();
+            $firebaseKey = $configuration->firebaseauthorizationkey;
+
+            if ($firebaseKey) {
+                return new Firebase($firebaseKey, $firebaseToken);
+            }
+        }
+
+        return null;
     }
 }
