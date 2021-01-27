@@ -134,9 +134,11 @@
         </article>
     {else}
         {loop="$posts"}
-            {autoescape="off"}
-                {$c->preparePost($value)}
-            {/autoescape}
+            <div id="{$value->nodeid|cleanupId}" class="block large">
+                {autoescape="off"}
+                    {$c->preparePost($value)}
+                {/autoescape}
+            </div>
         {/loop}
     {/if}
     {if="isset($next)"}

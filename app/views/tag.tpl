@@ -6,6 +6,8 @@
     <?php $this->widget('Notifications');?>
     <?php $this->widget('SendTo');?>
 
+    <?php $this->widget('PostActions');?>
+
     <nav class="color dark">
         <?php $this->widget('Presence');?>
         <?php $this->widget('Navigation');?>
