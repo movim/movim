@@ -41,9 +41,8 @@ class Communities extends Base
         })->get();
 
         $view->assign('tags', $tags);
-        $view->assign('communities', $this->user->session->interestingCommunities()
+        $view->assign('communities', $this->user->session->interestingCommunities(6)
             ->inRandomOrder()
-            ->take(6)
             ->get());
 
         return $view->draw('_communities');

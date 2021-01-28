@@ -55,19 +55,23 @@ class Session extends Model
     /**
      * @brief Communities subscribed by my contacts that the session is not part of
      */
-    public function interestingCommunities()
+    public function interestingCommunities(int $limit = 10)
     {
         $where = '(server, node) in (
             select server, node from (
-                select count(*) as count, server, node
+                select count(*) as count, subscriptions.server, subscriptions.node, recents.published
                 from subscriptions
+                join (select max(published) as published, server, node
+                    from posts
+                    group by server, node) as recents on recents.server = subscriptions.server and recents.node = subscriptions.node
                 where public = true
                 and jid in (
                     select jid from rosters where session_id = \''. $this->id .'\'
                 )
-                and (server, node) not in (select server, node from subscriptions where jid = \''.$this->user_id.'\')
-                group by server, node
-                order by count desc
+                and (subscriptions.server, subscriptions.node) not in (select server, node from subscriptions where jid = \''.$this->user_id.'\')
+                group by subscriptions.server, subscriptions.node, published
+                order by published desc, count desc
+                limit '.$limit.'
             ) as sub';
 
         $configuration = Configuration::get();
