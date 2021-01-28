@@ -1,7 +1,7 @@
 <?php
-/*-
- * Copyright © 2018, 2019
- *	mirabilos <thorsten.glaser@teckids.org>
+/*
+ * SPDX-FileCopyrightText: 2018, 2019 - mirabilos <thorsten.glaser@teckids.org>
+ * SPDX-License-Identifier: MirOS 
  *
  * Provided that these terms and disclaimer and all copyright notices
  * are retained or reproduced in an accompanying document, permission

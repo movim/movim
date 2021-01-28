@@ -3,6 +3,11 @@
  * Return an array containing all the presents languages in i18n/
  *
  */
+ /*
+ * SPDX-FileCopyrightText: 2010 Jaussoin Timothee 
+ * SPDX-License-Identifier: AGPL-3.0-or-later
+ */
+
 function getLangList()
 {
     $lang_list = [
