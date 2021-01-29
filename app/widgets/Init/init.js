@@ -31,7 +31,3 @@ var Init = {
         localStorage.setObject(jid + '_Init' + Init.version, init);
     }
 }
-
-MovimWebsocket.attach(function() {
-    Init.checkNode();
-});

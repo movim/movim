@@ -72,4 +72,9 @@ class Init extends Base
           ->setMaxItems(1)
           ->request();
     }
+
+    public function display()
+    {
+        $this->view->assign('hasPubsub', $this->user->hasPubsub());
+    }
 }
