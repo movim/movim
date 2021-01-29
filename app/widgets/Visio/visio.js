@@ -53,7 +53,8 @@ var Visio = {
         };
 
         Visio.pc.onicecandidate = event => {
-            if (event.candidate && event.candidate.candidate != '') {
+            let candidate = event.candidate;
+            if (candidate && candidate.candidate && candidate.candidate.length > 0) {
                 Visio_ajaxCandidate(event.candidate, Visio.from, Visio.id);
             }
         };
@@ -170,6 +171,7 @@ var Visio = {
                 return Visio.pc.setLocalDescription(offer);
             })
             .then(function() {
+                console.log(Visio.pc.localDescription);
                 Visio_ajaxSessionInitiate(Visio.pc.localDescription, Visio.from, Visio.id);
             });
         } else {

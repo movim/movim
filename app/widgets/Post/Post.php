@@ -101,6 +101,7 @@ class Post extends Base
         $gi->setTo($server)
             ->setNode($node)
             ->setId($nodeid)
+            ->setManual()
             ->request();
 
         if ($p) {

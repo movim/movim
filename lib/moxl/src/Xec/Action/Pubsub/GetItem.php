@@ -14,12 +14,19 @@ class GetItem extends Errors
     protected $_id;
     protected $_askreply;
 
+    protected $_manual = false; // Use when we explicitely request an item
     protected $_parentid;
 
     public function request()
     {
         $this->store();
         Pubsub::getItem($this->_to, $this->_node, $this->_id);
+    }
+
+    public function setManual()
+    {
+        $this->_manual = true;
+        return $this;
     }
 
     public function handle($stanza, $parent = false)
@@ -45,12 +52,14 @@ class GetItem extends Errors
 
                     $p->save();
 
-                    if (is_array($this->_askreply)) {
-                        $this->pack(\App\Post::find($this->_askreply));
-                        $this->deliver();
-                    } else {
-                        $this->pack($p);
-                        $this->event('post', $this->packet);
+                    if (!$this->_manual) {
+                        if (is_array($this->_askreply)) {
+                            $this->pack(\App\Post::find($this->_askreply));
+                            $this->deliver();
+                        } else {
+                            $this->pack($p);
+                            $this->event('post', $this->packet);
+                        }
                     }
 
                     $this->pack($p);
