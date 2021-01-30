@@ -6,37 +6,60 @@ include_once WIDGETS_PATH . 'Post/Post.php';
 
 class Communities extends Base
 {
-    private $_page = 30;
+    private $_page = 20;
 
     public function load()
     {
         $this->addjs('communities.js');
     }
 
-    public function ajaxHttpGet()
+    public function ajaxHttpGetAll()
     {
         $this->rpc('MovimTpl.fill', '#communities', $this->prepareCommunities());
+        $this->rpc('MovimTpl.fill', '#communities_posts', $this->preparePosts());
     }
 
-    public function ajaxHttpGetPosts($page = 0)
+    public function ajaxHttpGetNews()
     {
-        $this->rpc('MovimTpl.append', '#communities_posts', $this->preparePosts($page));
+        $this->rpc('MovimTpl.fill', '#communities', $this->prepareCommunities('news'));
+        $this->rpc('MovimTpl.fill', '#communities_posts', $this->preparePosts(0, 'news'));
     }
 
-    public function prepareCommunities()
+    public function ajaxHttpGetFeed()
+    {
+        $this->rpc('MovimTpl.fill', '#communities', $this->prepareCommunities('feed'));
+        $this->rpc('MovimTpl.fill', '#communities_posts', $this->preparePosts(0, 'feed'));
+    }
+
+    public function ajaxHttpGetPosts($page = 0, $type = 'all')
+    {
+        $this->rpc('MovimTpl.append', '#communities_posts', $this->preparePosts($page, $type));
+    }
+
+    public function prepareCommunities($type = 'all')
     {
         $view = $this->tpl();
+        $view->assign('type', $type);
+
         return $view->draw('_communities');
     }
 
-    public function preparePosts($page = 0)
+    public function preparePosts($page = 0, $type = 'all')
     {
         $view = $this->tpl();
-        $posts = $this->getPosts()
-            ->take($this->_page)
+        $posts = $this->getPosts();
+
+        if ($type == 'news') {
+            $posts = $posts->restrictToCommunities();
+        } elseif ($type == 'feed') {
+            $posts = $posts->restrictToMicroblog();
+        }
+
+        $posts = $posts->take($this->_page)
             ->skip($this->_page * $page)
             ->get();
         $view->assign('posts', $posts);
+        $view->assign('type', $type);
         $view->assign('page',
             $posts->count() == $this->_page
                 ? $page + 1
