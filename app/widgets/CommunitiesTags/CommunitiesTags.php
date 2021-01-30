@@ -6,21 +6,19 @@ include_once WIDGETS_PATH . 'Post/Post.php';
 
 class CommunitiesTags extends Base
 {
-    public function load()
+    private function getPosts()
     {
-        $this->addjs('communitiestags.js');
+        return \App\Post::withoutComments()
+            ->restrictNSFW()
+            ->restrictUserHost()
+            ->recents()
+            ->orderBy('posts.published', 'desc')
+            ->where('open', true);
     }
 
-    public function ajaxHttpGet()
+    public function display()
     {
-        $this->rpc('MovimTpl.fill', '#communitiestags', $this->prepareCommunitiesTags());
-    }
-
-    public function prepareCommunitiesTags()
-    {
-        $view = $this->tpl();
-
-        $posts = $this->getPosts()->take(60)->get('id');
+        $posts = $this->getPosts()->take(30)->get('id');
 
         $tags = \App\Tag::whereIn('id', function ($query) use ($posts) {
             $query->select('tag_id')
@@ -33,18 +31,6 @@ class CommunitiesTags extends Base
             }, 'top');
         })->get();
 
-        $view->assign('tags', $tags);
-
-        return $view->draw('_communitiestags');
-    }
-
-    private function getPosts()
-    {
-        return \App\Post::withoutComments()
-            ->restrictNSFW()
-            ->restrictUserHost()
-            ->recents()
-            ->orderBy('posts.published', 'desc')
-            ->where('open', true);
+        $this->view->assign('tags', $tags);
     }
 }
