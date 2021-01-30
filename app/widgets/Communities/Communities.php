@@ -6,7 +6,7 @@ include_once WIDGETS_PATH . 'Post/Post.php';
 
 class Communities extends Base
 {
-    private $_page = 20;
+    private $_page = 18;
 
     public function load()
     {
