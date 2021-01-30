@@ -1,10 +1,5 @@
 {if="!$communities->isEmpty()"}
 <ul class="list middle flex third active all">
-    <li class="subheader block large">
-        <div>
-            <p>{$c->__('communities.interesting')}</p>
-        </div>
-    </li>
     {loop="$communities"}
         <li
             class="block"

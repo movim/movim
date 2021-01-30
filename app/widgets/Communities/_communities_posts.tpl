@@ -1,4 +1,16 @@
 <ul class="list flex third middle active card">
+    <li class="block" onclick="MovimUtils.redirect('{$c->route('explore', 'servers')}')">
+        <span class="primary icon">
+            <i class="material-icons">view_lists</i>
+        </span>
+        <span class="control icon">
+            <i class="material-icons">chevron_right</i>
+        </span>
+        <div>
+            <p>{$c->__('communities.servers')}</p>
+            <p>{$c->__('communities.servers_text')}</p>
+        </div>
+    </li>
     {loop="$posts"}
         {autoescape="off"}
             {$c->prepareTicket($value)}
