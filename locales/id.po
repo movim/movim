@@ -103,7 +103,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-23 14:37+0200\n"
+"POT-Creation-Date: 2021-01-30 15:18+0200\n"
 "PO-Revision-Date: 2020-11-03 22:14+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: Indonesian (http://www.transifex.com/movim/movim/language/id/)\n"
@@ -707,16 +707,17 @@ msgstr "Cari server baru"
 msgid "Communities servers"
 msgstr "Server komunitas"
 
+#: [communities]servers_text
+#, fuzzy
+msgid "Discover the Communities by servers"
+msgstr "Server komunitas"
+
 #: [communities]disco
 msgid "Communities server discovered"
 msgstr ""
 
 #: [communities]disco_error
 msgid "This server doesn’t exists"
-msgstr ""
-
-#: [communities]interesting
-msgid "Communities you might like"
 msgstr ""
 
 #: [communitiesserver]created
@@ -758,6 +759,11 @@ msgstr ""
 #: [communityaffiliation]subscriptions
 msgid "Subscriptions"
 msgstr "Langganan"
+
+#: [communityaffiliation]subscriptions_text
+#, fuzzy
+msgid "My Communities subscriptions"
+msgstr "Tidak ada langganan"
 
 #: [communityaffiliation]deleted
 msgid "Community deleted successfully"

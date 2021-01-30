@@ -106,7 +106,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-23 14:37+0200\n"
+"POT-Creation-Date: 2021-01-30 15:18+0200\n"
 "PO-Revision-Date: 2020-11-03 22:14+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: Japanese (http://www.transifex.com/movim/movim/language/ja/)\n"
@@ -710,6 +710,11 @@ msgstr "新しいサーバーを探す"
 msgid "Communities servers"
 msgstr "コミュニティサーバー"
 
+#: [communities]servers_text
+#, fuzzy
+msgid "Discover the Communities by servers"
+msgstr "コミュニティサーバー"
+
 #: [communities]disco
 msgid "Communities server discovered"
 msgstr "コミュニティサーバーを見つけました"
@@ -717,10 +722,6 @@ msgstr "コミュニティサーバーを見つけました"
 #: [communities]disco_error
 msgid "This server doesn’t exists"
 msgstr "このサーバーは存在しません"
-
-#: [communities]interesting
-msgid "Communities you might like"
-msgstr "おすすめのコミュニティ"
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -761,6 +762,11 @@ msgstr "現時点ではコミュニティは無いようです"
 #: [communityaffiliation]subscriptions
 msgid "Subscriptions"
 msgstr ""
+
+#: [communityaffiliation]subscriptions_text
+#, fuzzy
+msgid "My Communities subscriptions"
+msgstr "購読はありません"
 
 #: [communityaffiliation]deleted
 msgid "Community deleted successfully"
@@ -3073,3 +3079,6 @@ msgstr "APIにアクセスできません、後ほど再試行してください
 #: [field]type_here
 msgid "Type here"
 msgstr "ここに入力してください"
+
+#~ msgid "Communities you might like"
+#~ msgstr "おすすめのコミュニティ"

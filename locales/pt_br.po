@@ -111,7 +111,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-23 14:37+0200\n"
+"POT-Creation-Date: 2021-01-30 15:18+0200\n"
 "PO-Revision-Date: 2020-11-03 22:14+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/movim/movim/language/pt_BR/)\n"
@@ -716,6 +716,11 @@ msgstr "Procurar por um novo servidor"
 msgid "Communities servers"
 msgstr "Servidores comunitários"
 
+#: [communities]servers_text
+#, fuzzy
+msgid "Discover the Communities by servers"
+msgstr "Servidores comunitários"
+
 #: [communities]disco
 msgid "Communities server discovered"
 msgstr "Servidores comunitários localizados"
@@ -723,10 +728,6 @@ msgstr "Servidores comunitários localizados"
 #: [communities]disco_error
 msgid "This server doesn’t exists"
 msgstr "Este servidor não existe"
-
-#: [communities]interesting
-msgid "Communities you might like"
-msgstr "Comunidades das quais você pode gostar"
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -767,6 +768,11 @@ msgstr "Parece que não conseguimos localizar nenhuma comunidade por enquanto"
 #: [communityaffiliation]subscriptions
 msgid "Subscriptions"
 msgstr "Inscrições"
+
+#: [communityaffiliation]subscriptions_text
+#, fuzzy
+msgid "My Communities subscriptions"
+msgstr "Sem inscrições"
 
 #: [communityaffiliation]deleted
 msgid "Community deleted successfully"
@@ -3081,3 +3087,6 @@ msgstr "A API está inalcançável, tente mais tarde"
 #: [field]type_here
 msgid "Type here"
 msgstr "Digite aqui"
+
+#~ msgid "Communities you might like"
+#~ msgstr "Comunidades das quais você pode gostar"

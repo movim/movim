@@ -103,7 +103,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-23 14:37+0200\n"
+"POT-Creation-Date: 2021-01-30 15:18+0200\n"
 "PO-Revision-Date: 2020-11-04 07:45+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
 "Language-Team: Albanian (http://www.transifex.com/movim/movim/language/sq/)\n"
@@ -708,6 +708,11 @@ msgstr "Kërkoni për një shërbyes të ri"
 msgid "Communities servers"
 msgstr "Shërbyes bashkësish"
 
+#: [communities]servers_text
+#, fuzzy
+msgid "Discover the Communities by servers"
+msgstr "Shërbyes bashkësish"
+
 #: [communities]disco
 msgid "Communities server discovered"
 msgstr "U pikas shërbyes bashkësis"
@@ -715,10 +720,6 @@ msgstr "U pikas shërbyes bashkësis"
 #: [communities]disco_error
 msgid "This server doesn’t exists"
 msgstr "Ky shërbyes s’ekziston"
-
-#: [communities]interesting
-msgid "Communities you might like"
-msgstr "Bashkësi që mund t’ju pëlqejnë"
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -759,6 +760,11 @@ msgstr "Duket se për çastin s’gjejmë dot ndonjë bashkësi"
 #: [communityaffiliation]subscriptions
 msgid "Subscriptions"
 msgstr "Pajtime"
+
+#: [communityaffiliation]subscriptions_text
+#, fuzzy
+msgid "My Communities subscriptions"
+msgstr "S’ka pajtime"
 
 #: [communityaffiliation]deleted
 msgid "Community deleted successfully"
@@ -3071,3 +3077,6 @@ msgstr "API nuk kapet dot, riprovoni më vonë"
 #: [field]type_here
 msgid "Type here"
 msgstr "Shtypni këtu"
+
+#~ msgid "Communities you might like"
+#~ msgstr "Bashkësi që mund t’ju pëlqejnë"

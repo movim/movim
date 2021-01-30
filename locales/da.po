@@ -101,7 +101,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-23 14:37+0200\n"
+"POT-Creation-Date: 2021-01-30 15:18+0200\n"
 "PO-Revision-Date: 2020-11-03 22:14+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: Danish (http://www.transifex.com/movim/movim/language/da/)\n"
@@ -705,16 +705,16 @@ msgstr "Led efter en ny server"
 msgid "Communities servers"
 msgstr ""
 
+#: [communities]servers_text
+msgid "Discover the Communities by servers"
+msgstr ""
+
 #: [communities]disco
 msgid "Communities server discovered"
 msgstr ""
 
 #: [communities]disco_error
 msgid "This server doesn’t exists"
-msgstr ""
-
-#: [communities]interesting
-msgid "Communities you might like"
 msgstr ""
 
 #: [communitiesserver]created
@@ -756,6 +756,11 @@ msgstr ""
 #: [communityaffiliation]subscriptions
 msgid "Subscriptions"
 msgstr "Abonnementer"
+
+#: [communityaffiliation]subscriptions_text
+#, fuzzy
+msgid "My Communities subscriptions"
+msgstr "Ingen abonnementer"
 
 #: [communityaffiliation]deleted
 msgid "Community deleted successfully"

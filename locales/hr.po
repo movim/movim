@@ -102,7 +102,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-23 14:37+0200\n"
+"POT-Creation-Date: 2021-01-30 15:18+0200\n"
 "PO-Revision-Date: 2020-11-03 22:14+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: Croatian (http://www.transifex.com/movim/movim/language/hr/)\n"
@@ -706,6 +706,11 @@ msgstr "Potraži novi poslužitelj"
 msgid "Communities servers"
 msgstr "Poslužitelji zajednice"
 
+#: [communities]servers_text
+#, fuzzy
+msgid "Discover the Communities by servers"
+msgstr "Poslužitelji zajednice"
+
 #: [communities]disco
 msgid "Communities server discovered"
 msgstr "Poslužitelj zajednice je otkriven"
@@ -713,10 +718,6 @@ msgstr "Poslužitelj zajednice je otkriven"
 #: [communities]disco_error
 msgid "This server doesn’t exists"
 msgstr "Ovaj poslužitelj ne postoji"
-
-#: [communities]interesting
-msgid "Communities you might like"
-msgstr "Zajednice koje bi vam se mogle svidjeti"
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -757,6 +758,11 @@ msgstr "Trenutno ne možemo pronaći nijednu zajednicu"
 #: [communityaffiliation]subscriptions
 msgid "Subscriptions"
 msgstr "Pretplate"
+
+#: [communityaffiliation]subscriptions_text
+#, fuzzy
+msgid "My Communities subscriptions"
+msgstr "Moje pretplate"
 
 #: [communityaffiliation]deleted
 msgid "Community deleted successfully"
@@ -3066,3 +3072,6 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
+
+#~ msgid "Communities you might like"
+#~ msgstr "Zajednice koje bi vam se mogle svidjeti"

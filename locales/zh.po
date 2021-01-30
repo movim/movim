@@ -111,7 +111,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-23 14:37+0200\n"
+"POT-Creation-Date: 2021-01-30 15:18+0200\n"
 "PO-Revision-Date: 2020-11-03 22:14+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -716,6 +716,11 @@ msgstr "寻找一个新服务器"
 msgid "Communities servers"
 msgstr "社群服务器"
 
+#: [communities]servers_text
+#, fuzzy
+msgid "Discover the Communities by servers"
+msgstr "社群服务器"
+
 #: [communities]disco
 msgid "Communities server discovered"
 msgstr "已发现的社区服务器"
@@ -723,10 +728,6 @@ msgstr "已发现的社区服务器"
 #: [communities]disco_error
 msgid "This server doesn’t exists"
 msgstr "此服务器不存在"
-
-#: [communities]interesting
-msgid "Communities you might like"
-msgstr "你可能喜欢的社区"
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -767,6 +768,11 @@ msgstr "暂時找不到社区"
 #: [communityaffiliation]subscriptions
 msgid "Subscriptions"
 msgstr "订阅"
+
+#: [communityaffiliation]subscriptions_text
+#, fuzzy
+msgid "My Communities subscriptions"
+msgstr "没有订阅"
 
 #: [communityaffiliation]deleted
 msgid "Community deleted successfully"
@@ -3079,3 +3085,6 @@ msgstr "API 无法连接，请稍后重试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
+
+#~ msgid "Communities you might like"
+#~ msgstr "你可能喜欢的社区"

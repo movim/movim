@@ -104,7 +104,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-23 14:37+0200\n"
+"POT-Creation-Date: 2021-01-30 15:18+0200\n"
 "PO-Revision-Date: 2020-12-29 10:15+0000\n"
 "Last-Translator: Slavko <linux@slavino.sk>\n"
 "Language-Team: Slovak (Slovakia) (http://www.transifex.com/movim/movim/language/sk_SK/)\n"
@@ -709,6 +709,11 @@ msgstr "Nájsť nový server"
 msgid "Communities servers"
 msgstr "Komunitné servery"
 
+#: [communities]servers_text
+#, fuzzy
+msgid "Discover the Communities by servers"
+msgstr "Komunitné servery"
+
 #: [communities]disco
 msgid "Communities server discovered"
 msgstr "Objavené komunitné servery"
@@ -716,10 +721,6 @@ msgstr "Objavené komunitné servery"
 #: [communities]disco_error
 msgid "This server doesn’t exists"
 msgstr "Tento server neexistuje"
-
-#: [communities]interesting
-msgid "Communities you might like"
-msgstr "Komunity, ktoré sa Vám môžu páčiť"
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -760,6 +761,11 @@ msgstr "Zdá sa, že teraz nemožno nájsť žiadne komunity"
 #: [communityaffiliation]subscriptions
 msgid "Subscriptions"
 msgstr "Odbery"
+
+#: [communityaffiliation]subscriptions_text
+#, fuzzy
+msgid "My Communities subscriptions"
+msgstr "Žiadne odbery"
 
 #: [communityaffiliation]deleted
 msgid "Community deleted successfully"
@@ -3072,3 +3078,6 @@ msgstr "API nie je dostupné, skúste neskôr"
 #: [field]type_here
 msgid "Type here"
 msgstr "Píšte tu"
+
+#~ msgid "Communities you might like"
+#~ msgstr "Komunity, ktoré sa Vám môžu páčiť"

@@ -105,7 +105,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-23 14:37+0200\n"
+"POT-Creation-Date: 2021-01-30 15:18+0200\n"
 "PO-Revision-Date: 2020-11-03 22:14+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: Hungarian (http://www.transifex.com/movim/movim/language/hu/)\n"
@@ -709,6 +709,11 @@ msgstr "Új szerver keresése"
 msgid "Communities servers"
 msgstr "Közösségi szerverek"
 
+#: [communities]servers_text
+#, fuzzy
+msgid "Discover the Communities by servers"
+msgstr "Közösségi szerverek"
+
 #: [communities]disco
 msgid "Communities server discovered"
 msgstr ""
@@ -716,10 +721,6 @@ msgstr ""
 #: [communities]disco_error
 msgid "This server doesn’t exists"
 msgstr "Ez a szerver nem létezik"
-
-#: [communities]interesting
-msgid "Communities you might like"
-msgstr ""
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -760,6 +761,11 @@ msgstr ""
 #: [communityaffiliation]subscriptions
 msgid "Subscriptions"
 msgstr "Feliratkozások"
+
+#: [communityaffiliation]subscriptions_text
+#, fuzzy
+msgid "My Communities subscriptions"
+msgstr "Nincsenek feliratkozók"
 
 #: [communityaffiliation]deleted
 msgid "Community deleted successfully"
