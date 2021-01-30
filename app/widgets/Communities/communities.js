@@ -1,7 +1,7 @@
 var Communities = {
     morePosts: function(button, page) {
         button.remove();
-        Communities_ajaxHttpMorePosts(page);
+        Communities_ajaxHttpGetPosts(page);
     }
 }
 

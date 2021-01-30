@@ -1,71 +1,24 @@
-{if="$tags->isNotEmpty()"}
-    <ul class="list">
-        <li>
-            <div>
-                <p class="line normal">
-                    <a class="button flat disabled gray">
-                        <i class="material-icons">whatshot</i>
-                    </a>
-                    {loop="$tags"}
-                        <a class="button flat narrow" href="{$c->route('tag', $value->name)}">
-                            <i class="material-icons">tag</i>{$value->name}
-                        </a>
-                    {/loop}
-                </p>
-            </div>
-        </li>
-    </ul>
-{/if}
-
-{if="!$communities->isEmpty()"}
-<ul class="list middle flex third active all">
-    <li class="subheader block large">
-        <div>
-            <p>{$c->__('communities.interesting')}</p>
-        </div>
+<ul class="tabs wide">
+    <li {if="$type == 'all'"}class="active"{/if}>
+        <a href="#" onclick="Menu_ajaxHttpGetAll(); Menu.setLoad(this);">{$c->__('menu.all')}</a>
     </li>
-    {loop="$communities"}
-        <li
-            class="block"
-            onclick="MovimUtils.redirect('{$c->route('community', [$value->server, $value->node])}')"
-            title="{$value->server} - {$value->node}"
-        >
-            {$url = $value->getPhoto('m')}
-
-            {if="$url"}
-                <span class="primary icon bubble">
-                    <img src="{$url}"/>
-                </span>
-            {else}
-                <span class="primary icon bubble color {$value->node|stringToColor}">
-                    {$value->node|firstLetterCapitalize}
-                </span>
-            {/if}
-            <span class="control icon gray">
-                <i class="material-icons">chevron_right</i>
-            </span>
-            <div>
-                <p class="line normal">
-                    {if="$value->name"}
-                        {$value->name}
-                    {else}
-                        {$value->node}
-                    {/if}
-                    {if="$value->description"}
-                        <span class="second">
-                            {$value->description|strip_tags}
-                        </span>
-                    {/if}
-                </p>
-                <p class="line">
-                    {$value->server} / {$value->node}
-                </p>
-            </div>
-        </li>
-    {/loop}
+    <li {if="$type == 'news'"}class="active"{/if} >
+        <a href="#communities" class="on_desktop" onclick="Menu_ajaxHttpGetNews(); Menu.setLoad(this);" title="{$c->__('page.news')}">
+            {$c->__('page.communities')}
+        </a>
+        <a href="#communities" class="on_mobile" onclick="Menu_ajaxHttpGetNews(); Menu.setLoad(this);" title="{$c->__('page.news')}">
+            <i class="material-icons">group_work</i>
+        </a>
+    </li>
+    <li {if="$type == 'feed'"}class="active"{/if}>
+        <a href="#contacts" class="on_desktop" onclick="Menu_ajaxHttpGetFeed(); Menu.setLoad(this);" title="{$c->__('page.feed')}">
+            {$c->__('page.contacts')}
+        </a>
+        <a href="#contacts" class="on_mobile" onclick="Menu_ajaxHttpGetFeed(); Menu.setLoad(this);" title="{$c->__('page.feed')}">
+            <i class="material-icons">people</i>
+        </a>
+    </li>
 </ul>
-<br />
-{/if}
 
 <div id="communities_posts">
     {autoescape="off"}

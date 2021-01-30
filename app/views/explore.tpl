@@ -43,6 +43,8 @@
                     </li>
                 </ul>
             </header>
+            <?php $this->widget('CommunitiesTags'); ?>
+            <?php $this->widget('CommunitiesInteresting'); ?>
             <?php $this->widget('Communities'); ?>
         <?php } ?>
     </div>

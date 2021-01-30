@@ -18,7 +18,7 @@ class Communities extends Base
         $this->rpc('MovimTpl.fill', '#communities', $this->prepareCommunities());
     }
 
-    public function ajaxHttpMorePosts($page = 0)
+    public function ajaxHttpGetPosts($page = 0)
     {
         $this->rpc('MovimTpl.append', '#communities_posts', $this->preparePosts($page));
     }
@@ -26,25 +26,6 @@ class Communities extends Base
     public function prepareCommunities()
     {
         $view = $this->tpl();
-
-        $posts = $this->getPosts()->take($this->_page)->get('id');
-
-        $tags = \App\Tag::whereIn('id', function ($query) use ($posts) {
-            $query->select('tag_id')
-                  ->fromSub(function ($query) use ($posts) {
-                $query->selectRaw('tag_id, count(tag_id) as count')
-                    ->from('post_tag')
-                    ->groupBy('tag_id')
-                    ->orderBy('count', 'desc')
-                    ->whereIn('post_id', $posts->pluck('id'));
-            }, 'top');
-        })->get();
-
-        $view->assign('tags', $tags);
-        $view->assign('communities', $this->user->session->interestingCommunities(6)
-            ->inRandomOrder()
-            ->get());
-
         return $view->draw('_communities');
     }
 
