@@ -27,7 +27,7 @@ class Route extends Base
                 'conf'          => false,
                 'contact'       => ['s'],
                 'disconnect'    => ['err'],
-                'explore'      => false,
+                'explore'       => ['s'],
                 'feed'          => ['s', 'n'],
                 'help'          => false,
                 'infos'         => false,

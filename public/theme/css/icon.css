@@ -85,7 +85,8 @@ span.icon.bubble img:not(.emoji) {
     border-radius: 5rem;
 }
 
-span.icon.bubble > i {
+span.icon.bubble > i,
+span.icon.bubble > a > i {
     font-size: 3rem;
     line-height: 5rem;
 }
@@ -110,7 +111,8 @@ ul.list li span.icon.small:not(.bubble) > i {
 }
 
 span.icon.small.bubble:first-letter,
-span.icon.small.bubble > i {
+span.icon.small.bubble > i,
+span.icon.small.bubble > a > i {
     font-size: 2.25rem;
     line-height: 4rem;
 }

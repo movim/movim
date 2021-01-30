@@ -24,7 +24,6 @@
         <div>
             <?php $this->widget('CommunitiesServer'); ?>
         </div>
-
     <?php } else { ?>
         <aside>
             <?php $this->widget('CommunityData'); ?>

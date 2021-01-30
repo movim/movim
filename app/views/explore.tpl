@@ -17,19 +17,33 @@
 
 <main style="background-color: var(--movim-background)">
     <div class="large">
-        <header>
-            <ul class="list middle">
-                <li>
-                    <div>
-                        <p class="center"><?php echo __('page.explore'); ?></p>
-                        <p class="center line"><?php echo __('communities.empty_text'); ?></p>
-                    </div>
-                </li>
-            </ul>
-        </header>
-        <?php $this->widget('Tabs');?>
-        <ul class="tabs" id="navtabs"></ul>
-        <?php $this->widget('Communities'); ?>
-        <?php $this->widget('CommunitiesServers'); ?>
+        <?php if (!empty($_GET['s']) && $_GET['s'] == 'servers') { ?>
+            <header>
+                <ul class="list middle">
+                    <li>
+                        <span class="primary icon active" onclick="history.back()">
+                            <i class="material-icons">arrow_back</i>
+                        </span>
+                        <div>
+                            <p class="center"><?php echo __('communities.servers'); ?></p>
+                            <p class="center line"><?php echo __('communities.empty_text'); ?></p>
+                        </div>
+                    </li>
+                </ul>
+            </header>
+            <?php $this->widget('CommunitiesServers'); ?>
+        <?php } else { ?>
+            <header>
+                <ul class="list middle">
+                    <li>
+                        <div>
+                            <p class="center"><?php echo __('page.explore'); ?></p>
+                            <p class="center line"><?php echo __('communities.empty_text'); ?></p>
+                        </div>
+                    </li>
+                </ul>
+            </header>
+            <?php $this->widget('Communities'); ?>
+        <?php } ?>
     </div>
 </main>
