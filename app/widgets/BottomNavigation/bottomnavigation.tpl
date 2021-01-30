@@ -15,8 +15,8 @@
             </span>
         </li>
     {/if}
-    <li {if="$page == 'community'"}class="active"{/if}
-        onclick="MovimUtils.reload('{$c->route('community')}')"
+    <li {if="$page == 'explore' || $page == 'community'"}class="active"{/if}
+        onclick="MovimUtils.reload('{$c->route('explore')}')"
         title="{$c->__('page.explore')}"
     >
         <span class="primary icon"><i class="material-icons">explore</i></span>

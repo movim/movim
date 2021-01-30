@@ -16,27 +16,7 @@
 <?php $this->widget('BottomNavigation');?>
 
 <main style="background-color: var(--movim-background)">
-    <?php if (empty($_GET['s'])) { ?>
-        <div class="large">
-            <header>
-                <ul class="list middle">
-                    <li>
-                        <div>
-                            <p class="center"><?php echo __('page.explore'); ?></p>
-                            <p class="center line"><?php echo __('communities.empty_text'); ?></p>
-                        </div>
-                    </li>
-                </ul>
-            </header>
-            <?php $this->widget('Tabs');?>
-            <ul class="tabs" id="navtabs"></ul>
-            <?php $this->widget('Communities'); ?>
-            <?php if (\App\User::me()->hasPubsub()) { ?>
-                <?php $this->widget('CommunitySubscriptions'); ?>
-            <?php } ?>
-            <?php $this->widget('CommunitiesServers'); ?>
-        </div>
-    <?php } elseif (empty($_GET['n'])) { ?>
+    <?php if (empty($_GET['n'])) { ?>
         <aside>
             <?php $this->widget('CommunitiesServerInfo'); ?>
             <?php $this->widget('NewsNav');?>

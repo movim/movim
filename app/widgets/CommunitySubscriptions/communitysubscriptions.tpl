@@ -1,1 +1,1 @@
-<div id="subscriptions" class="tabelem spin" title="{$c->__('communitysubscriptions.subscriptions')}" data-mobileicon="bookmark"></div>
+<div id="subscriptions" class="tabelem spin"></div>
