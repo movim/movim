@@ -1,4 +1,3 @@
-<br />
 <ul class="list flex middle active card">
     <li class="block large" onclick="MovimUtils.redirect('{$c->route('explore', 'servers')}')">
         <span class="primary icon">

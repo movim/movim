@@ -30,8 +30,8 @@ ul#bottomnavigation li span:not(.counter) {
         display: flex;
     }
 
-    ul#bottomnavigation ~ main > div:not(#chat_widget) > div,
-    ul#bottomnavigation ~ main > div:not(#chat_widget) > article {
+    ul#bottomnavigation ~ main > div:not(#chat_widget) > div:last-child,
+    ul#bottomnavigation ~ main > div:not(#chat_widget) > article:last-child {
         padding-bottom: 6.5rem;
     }
 

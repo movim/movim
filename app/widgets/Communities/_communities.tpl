@@ -1,4 +1,4 @@
-<ul class="tabs wide">
+<!--<ul class="tabs wide">
     <li {if="$type == 'all'"}class="active"{/if}>
         <a href="#" onclick="Menu_ajaxHttpGetAll(); Menu.setLoad(this);">{$c->__('menu.all')}</a>
     </li>
@@ -18,7 +18,7 @@
             <i class="material-icons">people</i>
         </a>
     </li>
-</ul>
+</ul>-->
 
 <div id="communities_posts">
     {autoescape="off"}
