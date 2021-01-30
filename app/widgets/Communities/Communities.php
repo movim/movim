@@ -55,13 +55,22 @@ class Communities extends Base
             $posts = $posts->restrictToMicroblog();
         }
 
-        $posts = $posts->take($this->_page)
-            ->skip($this->_page * $page)
+        $posts = $posts->take(
+                ($page == 0 && $type == 'all')
+                    ? $this->_page -1
+                    : $this->_page
+            )
+            ->skip(
+                ($page != 0 && $type == 'all')
+                    ? (($this->_page * $page) - 1)
+                    : ($this->_page * $page)
+            )
             ->get();
         $view->assign('posts', $posts);
         $view->assign('type', $type);
+        $count = ($page == 0 && $type == 'all') ? $this->_page - 1 : $this->_page;
         $view->assign('page',
-            $posts->count() == $this->_page
+            $posts->count() == $count
                 ? $page + 1
                 : 0
         );

@@ -21,7 +21,6 @@
 </ul>
 
 {if="$page > 0"}
-    <hr />
     <br />
 
     <ul class="list thick" onclick="Communities.morePosts(this, {$page}, '{$type}')">
