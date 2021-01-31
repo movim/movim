@@ -36,6 +36,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Communities/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunitiesInteresting/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunitiesServer/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunitiesServers/locales.ini
@@ -109,7 +111,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-30 15:18+0200\n"
+"POT-Creation-Date: 2021-01-31 12:33+0200\n"
 "PO-Revision-Date: 2020-11-03 22:14+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: Spanish (http://www.transifex.com/movim/movim/language/es/)\n"
@@ -725,6 +727,10 @@ msgstr "Servidores de Comunidades descubiertos"
 #: [communities]disco_error
 msgid "This server doesn’t exists"
 msgstr "Este servidor no existe"
+
+#: [communitiesinteresting]about
+msgid "Communities you might like"
+msgstr "Comunidades que podrían gustarle"
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -3082,6 +3088,3 @@ msgstr "La API no se puede alcanzar, inténtalo de nuevo más tarde"
 #: [field]type_here
 msgid "Type here"
 msgstr "Escribe aquí"
-
-#~ msgid "Communities you might like"
-#~ msgstr "Comunidades que podrían gustarle"

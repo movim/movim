@@ -8,6 +8,11 @@
     </ul>
 {else}
     <ul class="list flex third middle active">
+        <li class="subheader block large">
+            <div>
+                <p>{$c->__('communities.servers')}</p>
+            </div>
+        </li>
         {loop="$servers"}
             {if="!filter_var($value->server, FILTER_VALIDATE_EMAIL)"}
                 <li class="block

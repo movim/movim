@@ -30,6 +30,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Communities/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunitiesInteresting/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunitiesServer/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunitiesServers/locales.ini
@@ -103,7 +105,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-30 15:18+0200\n"
+"POT-Creation-Date: 2021-01-31 12:33+0200\n"
 "PO-Revision-Date: 2020-11-04 07:45+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
 "Language-Team: Albanian (http://www.transifex.com/movim/movim/language/sq/)\n"
@@ -720,6 +722,10 @@ msgstr "U pikas shërbyes bashkësis"
 #: [communities]disco_error
 msgid "This server doesn’t exists"
 msgstr "Ky shërbyes s’ekziston"
+
+#: [communitiesinteresting]about
+msgid "Communities you might like"
+msgstr "Bashkësi që mund t’ju pëlqejnë"
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -3077,6 +3083,3 @@ msgstr "API nuk kapet dot, riprovoni më vonë"
 #: [field]type_here
 msgid "Type here"
 msgstr "Shtypni këtu"
-
-#~ msgid "Communities you might like"
-#~ msgstr "Bashkësi që mund t’ju pëlqejnë"

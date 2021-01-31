@@ -27,6 +27,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Communities/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunitiesInteresting/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunitiesServer/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunitiesServers/locales.ini
@@ -100,7 +102,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-30 15:18+0200\n"
+"POT-Creation-Date: 2021-01-31 12:33+0200\n"
 "PO-Revision-Date: 2020-11-03 22:14+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: Luxembourgish (http://www.transifex.com/movim/movim/language/lb/)\n"
@@ -713,6 +715,10 @@ msgstr ""
 
 #: [communities]disco_error
 msgid "This server doesn’t exists"
+msgstr ""
+
+#: [communitiesinteresting]about
+msgid "Communities you might like"
 msgstr ""
 
 #: [communitiesserver]created

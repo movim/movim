@@ -38,6 +38,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Communities/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunitiesInteresting/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunitiesServer/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunitiesServers/locales.ini
@@ -111,7 +113,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-30 15:18+0200\n"
+"POT-Creation-Date: 2021-01-31 12:33+0200\n"
 "PO-Revision-Date: 2020-11-03 22:14+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -728,6 +730,10 @@ msgstr "已发现的社区服务器"
 #: [communities]disco_error
 msgid "This server doesn’t exists"
 msgstr "此服务器不存在"
+
+#: [communitiesinteresting]about
+msgid "Communities you might like"
+msgstr "你可能喜欢的社区"
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -3085,6 +3091,3 @@ msgstr "API 无法连接，请稍后重试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
-
-#~ msgid "Communities you might like"
-#~ msgstr "你可能喜欢的社区"

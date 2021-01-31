@@ -43,6 +43,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Communities/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunitiesInteresting/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunitiesServer/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunitiesServers/locales.ini
@@ -116,7 +118,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-30 15:18+0200\n"
+"POT-Creation-Date: 2021-01-31 12:33+0200\n"
 "PO-Revision-Date: 2021-01-05 12:10+0000\n"
 "Last-Translator: Rus D <rus@zx22.ru>\n"
 "Language-Team: Russian (http://www.transifex.com/movim/movim/language/ru/)\n"
@@ -733,6 +735,10 @@ msgstr "Сервер сообщества обнаружен"
 #: [communities]disco_error
 msgid "This server doesn’t exists"
 msgstr "Такого сервера не существует"
+
+#: [communitiesinteresting]about
+msgid "Communities you might like"
+msgstr "Сообщества, которые могут вам понравиться"
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -3090,6 +3096,3 @@ msgstr "API недоступен, попробуйте позже"
 #: [field]type_here
 msgid "Type here"
 msgstr "Введите здесь"
-
-#~ msgid "Communities you might like"
-#~ msgstr "Сообщества, которые могут вам понравиться"
