@@ -89,10 +89,10 @@ function getPhoto($id, $size = 'm')
 {
     $sizes = [
         'xxl'   => [1280, 300],
-        'xl'    => [512 , false],
-        'l'     => [210 , false],
-        'm'     => [120 , false],
-        's'     => [50  , false],
+        'xl'    => [512, false],
+        'l'     => [210, false],
+        'm'     => [120, false],
+        's'     => [50, false],
         'o'     => [false, false]
     ];
 
@@ -135,11 +135,11 @@ function getXepNamespace()
         '0231' => ['name' => 'Bits of Binary',         'category' => 'chat',       'ns' => 'urn:xmpp:bob'],
         '0234' => ['name' => 'Jingle File Transfer',   'category' => 'jingle',     'ns' => 'urn:xmpp:jingle:apps:file-transfer:4'],
         '0249' => ['name' => 'Direct MUC Invitations', 'category' => 'chat',       'ns' => 'jabber:x:conference'],
-        '0277' => ['name' => 'Microblogging over XMPP','category' => 'social',     'ns' => 'urn:xmpp:microblog:0'],
+        '0277' => ['name' => 'Microblogging over XMPP', 'category' => 'social',    'ns' => 'urn:xmpp:microblog:0'],
         '0280' => ['name' => 'Message Carbons',        'category' => 'chat',       'ns' => 'urn:xmpp:carbons:2'],
         '0292' => ['name' => 'vCard4 Over XMPP',       'category' => 'profile',    'ns' => 'urn:xmpp:vcard4'],
         '0301' => ['name' => 'In-Band Real Time Text', 'category' => 'chat',       'ns' => 'urn:xmpp:rtt:0'],
-        '0308' => ['name' => 'Last Message Correction', 'category' => 'chat',       'ns' => 'urn:xmpp:message-correct:0'],
+        '0308' => ['name' => 'Last Message Correction', 'category' => 'chat',      'ns' => 'urn:xmpp:message-correct:0'],
         '0320' => ['name' => 'Use of DTLS-SRTP in Jingle Sessions', 'category' => 'jingle',     'ns' => 'urn:xmpp:jingle:apps:dtls:0'],
         '0327' => ['name' => 'Rayo', 'category' => 'rayo',       'ns' => 'urn:xmpp:rayo:0'],
         '0330' => ['name' => 'Pubsub Subscription',    'category' => 'social',     'ns' => 'urn:xmpp:pubsub:subscription'],
@@ -425,25 +425,25 @@ function getImgurThumbnail(string $uri)
 function getPresences()
 {
     return [
-            1 => __('presence.online'),
-            2 => __('presence.away'),
-            3 => __('presence.dnd'),
-            4 => __('presence.xa'),
-            5 => __('presence.offline'),
-            6 => __('presence.error')
-        ];
+        1 => __('presence.online'),
+        2 => __('presence.away'),
+        3 => __('presence.dnd'),
+        4 => __('presence.xa'),
+        5 => __('presence.offline'),
+        6 => __('presence.error')
+    ];
 }
 
 function getPresencesTxt()
 {
     return [
-                1 => 'online',
-                2 => 'away',
-                3 => 'dnd',
-                4 => 'xa',
-                5 => 'offline',
-                6 => 'server_error'
-            ];
+        1 => 'online',
+        2 => 'away',
+        3 => 'dnd',
+        4 => 'xa',
+        5 => 'offline',
+        6 => 'server_error'
+    ];
 }
 
 function getMood()
@@ -596,18 +596,34 @@ function generateKey($size)
 
     for ($i = 0; $i < $size; $i++) {
         $r = mt_rand(0, strlen($hash_chars) - 1);
-        $hash.= $hash_chars[$r];
+        $hash .= $hash_chars[$r];
     }
+
     return $hash;
 }
 
 define('DEFAULT_HTTP_USER_AGENT', 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://google.com/bot.html)');
+
+/**
+ * @desc Request a url async
+ */
+function requestAsyncURL(string $url, int $timeout = 10, array $headers = [])
+{
+    global $loop;
+    $browser = new React\Http\Browser($loop);
+
+    return $browser->withTimeout($timeout)->get($url, $headers);
+}
 
 /*
  * @desc Request a simple url
  */
 function requestURL(string $url, int $timeout = 10, $post = false, bool $json = false, array $headers = [])
 {
+    if ($json) {
+        array_push($headers, 'Accept: application/json');
+    }
+
     $ch = curl_init($url);
 
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -616,10 +632,6 @@ function requestURL(string $url, int $timeout = 10, $post = false, bool $json = 
     curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
     curl_setopt($ch, CURLOPT_USERAGENT, DEFAULT_HTTP_USER_AGENT);
-
-    if ($json) {
-        array_push($headers, 'Accept: application/json');
-    }
 
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
@@ -657,7 +669,7 @@ function requestHeaders(string $url, $timeout = 2)
  */
 function requestAPI(string $action, int $timeout = 2, $post = false)
 {
-    $ch = curl_init('http:/'.$action);
+    $ch = curl_init('http:/' . $action);
     curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
     curl_setopt($ch, CURLOPT_UNIX_SOCKET_PATH, API_SOCKET);
@@ -677,7 +689,7 @@ function requestAPI(string $action, int $timeout = 2, $post = false)
  */
 function getSmileyPath($id)
 {
-    return BASE_URI . 'theme/img/emojis/svg/'.$id.'.svg';
+    return BASE_URI . 'theme/img/emojis/svg/' . $id . '.svg';
 }
 
 /*

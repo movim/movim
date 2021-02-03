@@ -19,7 +19,7 @@ class Picture
      */
     public function fromURL($url)
     {
-        $bin = requestURL($url, 10);
+        $bin = requestURL($url);
         if ($bin) {
             $this->_bin = $bin;
         }

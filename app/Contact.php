@@ -96,7 +96,7 @@ class Contact extends Model
 
         if (filter_var((string)$vcard->vCard->PHOTO, FILTER_VALIDATE_URL)) {
             $this->photobin = base64_encode(
-                requestUrl((string)$vcard->vCard->PHOTO, 1)
+                requestURL((string)$vcard->vCard->PHOTO, 1)
             );
         } elseif ($vcard->vCard->PHOTO) {
             $this->photobin = (string)$vcard->vCard->PHOTO->BINVAL;

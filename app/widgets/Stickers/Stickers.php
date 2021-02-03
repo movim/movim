@@ -4,6 +4,7 @@ use Moxl\Xec\Action\Message\Publish;
 use Moxl\Xec\Action\BOB\Answer;
 
 use Respect\Validation\Validator;
+use Psr\Http\Message\ResponseInterface;
 
 use App\Configuration;
 use App\MessageFile;
@@ -165,7 +166,7 @@ class Stickers extends \Movim\Widget\Base
     /**
      * @brief Search for gifs
      */
-    public function ajaxHttpSearchGifs(string $keyword, int $page = 0)
+    public function ajaxSearchGifs(string $keyword, int $page = 0)
     {
         $configuration = Configuration::get();
         $apiKey = $configuration->gifapikey;
@@ -175,17 +176,15 @@ class Stickers extends \Movim\Widget\Base
         $keyword = filter_var($keyword, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
         $keyword = str_replace(' ', '+', $keyword);
 
-        $results = requestURL(
+        requestAsyncURL(
             'https://api.tenor.com/v1/search?q='.$keyword.
             '&key='.$apiKey.
             '&limit='.$this->paginate.
             '&pos='.($page*$this->paginate)
-        );
+        )->then(function (ResponseInterface $response) {
+            $view = $this->tpl();
 
-        $view = $this->tpl();
-
-        if ($results) {
-            $results = \json_decode($results);
+            $results = \json_decode($response->getBody());
 
             if ($results) {
                 $i = 0;
@@ -207,9 +206,9 @@ class Stickers extends \Movim\Widget\Base
                     $i ++;
                 }
             }
-        }
 
-        $this->rpc('Stickers.setGifsEvents');
+            $this->rpc('Stickers.setGifsEvents');
+        });
     }
 
     /**
@@ -222,13 +221,11 @@ class Stickers extends \Movim\Widget\Base
 
         if (empty($apiKey)) return;
 
-        $results = requestURL(
+        requestAsyncURL(
             'https://api.tenor.com/v1/gifs?ids='.$gifId.
             '&key='.$apiKey
-        );
-
-        if ($results) {
-            $results = \json_decode($results);
+        )->then(function (ResponseInterface $response) use ($to, $muc) {
+            $results = \json_decode($response->getBody());
 
             if ($results) {
                 $result = $results->results[0];
@@ -250,7 +247,7 @@ class Stickers extends \Movim\Widget\Base
                     $to, false, $muc,
                     null, $messageFile);
             }
-        }
+        });
     }
 
     /**

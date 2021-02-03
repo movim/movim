@@ -60,7 +60,7 @@ var Stickers = {
                 if (search.value !== '') {
                     document.querySelector('#gifssearchbar span.primary i').innerText = 'autorenew';
                     document.querySelector('#gifssearchbar span.primary').classList.add('spin');
-                    Stickers_ajaxHttpSearchGifs(search.value, Stickers.stickersPage);
+                    Stickers_ajaxSearchGifs(search.value, Stickers.stickersPage);
                 }
 
             }, 400);
