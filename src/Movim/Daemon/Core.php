@@ -116,7 +116,7 @@ class Core implements MessageComponentInterface
         } else {
             // WebSocket from the internal subprocess
             $sid = $this->getHeaderSid($conn);
-            if ($sid != null) {
+            if ($sid != null && isset($this->sessions[$sid])) {
                 $this->sessions[$sid]->attachInternal($conn);
 
                 $obj = new \StdClass;
