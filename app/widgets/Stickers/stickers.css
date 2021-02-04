@@ -56,12 +56,12 @@
 
 #gifs .masonry .brick {
     width: 100%;
-    height: auto;
     max-height: 40rem;
     display: inline-block;
     object-fit: cover;
     border-radius: 1rem;
     margin-bottom: 1rem;
+    background-color: var(--movim-background);
 }
 
 #gifs .masonry .brick.clicked {
