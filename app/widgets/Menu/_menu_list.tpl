@@ -94,7 +94,7 @@
             <h4>{$c->__('menu.empty')}</h4>
             <h4>
                 <br />
-                <a class="button color green" href="{$c->route('community')}">
+                <a class="button color green" href="{$c->route('explore')}">
                     <i class="material-icons">explore</i>
                     {$c->__('button.discover')}
                 </a>

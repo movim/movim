@@ -15,10 +15,10 @@
 
 {if="$posts->isNotEmpty()"}
 <ul class="list active middle card shadow">
-    <li class="subheader active" onclick="MovimUtils.redirect('{$c->route('community')}')">
+    <li class="subheader active" onclick="MovimUtils.redirect('{$c->route('explore')}')">
         {if="$page == 'news'"}
         <span class="control active icon gray">
-            <a href="{$c->route('community')}">
+            <a href="{$c->route('explore')}">
                 <i class="material-icons">chevron_right</i>
             </a>
         </span>
