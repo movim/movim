@@ -43,15 +43,18 @@ class Firebase
 
     private function request($fields)
     {
-        $headers = ['Authorization:key='.$this->_key,'Content-Type:application/json'];
+        $headers = [
+            'Authorization' => 'key=' . $this->_key,
+            'Content-Type' => 'application/json'
+        ];
 
         global $loop;
         $browser = new \React\Http\Browser($loop);
         $browser->withTimeout(10)
-                ->post(
-                    'https://fcm.googleapis.com/fcm/send',
-                    $headers,
-                    json_encode($fields)
-                );
+            ->post(
+                'https://fcm.googleapis.com/fcm/send',
+                $headers,
+                json_encode($fields)
+            );
     }
 }
