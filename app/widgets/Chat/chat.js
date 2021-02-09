@@ -414,9 +414,15 @@ var Chat = {
     {
         var currentEmoji = document.querySelector('.chat_box .emojis img.selected');
 
-        if (currentEmoji && currentEmoji.nextSibling) {
+        if (currentEmoji) {
             currentEmoji.classList.remove('selected');
-            currentEmoji.nextSibling.classList.add('selected');
+
+            if(currentEmoji.nextSibling) {
+                currentEmoji.nextSibling.classList.add('selected');
+            } else {
+                document.querySelector('.chat_box .emojis img:first-child').classList.add('selected');
+            }
+
             return true;
         }
 
@@ -426,9 +432,15 @@ var Chat = {
     {
         var currentEmoji = document.querySelector('.chat_box .emojis img.selected');
 
-        if (currentEmoji && currentEmoji.previousSibling) {
+        if (currentEmoji) {
             currentEmoji.classList.remove('selected');
-            currentEmoji.previousSibling.classList.add('selected');
+
+            if (currentEmoji.previousSibling) {
+                currentEmoji.previousSibling.classList.add('selected');
+            } else {
+                document.querySelector('.chat_box .emojis img:last-child').classList.add('selected');
+            }
+
             return true;
         }
 
