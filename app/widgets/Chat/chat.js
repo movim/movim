@@ -293,8 +293,8 @@ var Chat = {
                     return;
                 }
 
-                if ((MovimUtils.isMobile() && !event.shiftKey)
-                || (!MovimUtils.isMobile() && event.shiftKey)) {
+                if ((isTouch && !event.shiftKey)
+                || (!isTouch && event.shiftKey)) {
                     return;
                 }
 

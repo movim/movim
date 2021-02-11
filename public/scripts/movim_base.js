@@ -7,6 +7,7 @@
 var onloaders = [];
 var onfocused = [];
 var isFocused = false;
+var isTouch = false;
 
 /**
  * @brief Adds a function to the onload event
@@ -52,3 +53,4 @@ var onFocusedFunction = function() {
 window.addEventListener('mouseover', onFocusedFunction);
 window.addEventListener('focus', onFocusedFunction);
 window.addEventListener('blur', function() { isFocused = false; });
+window.addEventListener('ontouchstart', function() { isTouch = true; }, { once: true });
