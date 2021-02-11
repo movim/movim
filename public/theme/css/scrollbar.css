@@ -5,6 +5,10 @@
     width: 8px;
 }
 
+textarea::-webkit-scrollbar {
+    width: 0;
+}
+
 ::-webkit-scrollbar-button {
     display: none;
 }
