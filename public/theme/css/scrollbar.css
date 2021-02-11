@@ -1,19 +1,24 @@
 /* Webkit specific CSS for the scrollbars */
 
-@media screen and (min-width: 1025px) {
-    ::-webkit-scrollbar {
-        width: 1.3rem;
-    }
+::-webkit-scrollbar {
+    height: 5px;
+    width: 8px;
+}
 
-    ::-webkit-scrollbar-button {
-        display: none;
-    }
+::-webkit-scrollbar-button {
+    display: none;
+}
 
-    ::-webkit-scrollbar-thumb {
-        background-color: rgba(var(--movim-font), 0.2);
-    }
+::-webkit-scrollbar-thumb {
+    background-color: rgba(var(--movim-font), 0.1);
+    border-radius: 5px;
+}
 
-    ::-webkit-scrollbar-track {
-        background-color: rgba(var(--movim-font), 0.05);
-    }
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(var(--movim-font), 0.2);
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 5px;
 }

@@ -7,7 +7,8 @@ body {
     --movim-background: #EEE;
     --movim-gray: #232323;
     --movim-font: 0, 0, 0;
-    scrollbar-color: rgba(var(--movim-font), 0.3) rgba(var(--movim-font), 0.2);
+    scrollbar-color: rgba(var(--movim-font), 0.2) transparent;
+    scrollbar-width: thin;
 }
 
 body.nightmode {
@@ -16,7 +17,7 @@ body.nightmode {
     --movim-background: #192028;
     --movim-gray: var(--movim-accent);
     --movim-font: 255, 255, 255;
-    scrollbar-color: rgba(var(--movim-font), 0.1) rgba(var(--movim-background-main));
+    scrollbar-color: rgba(var(--movim-font), 0.1) transparent;
 }
 
 body {
