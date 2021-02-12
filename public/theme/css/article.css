@@ -187,3 +187,30 @@ article input[type=checkbox].spoiler + section label.spoiler {
 article section label.spoiler:hover {
     cursor: pointer;
 }
+
+/* Table */
+
+article table {
+    border-collapse: collapse;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+article table tbody tr:hover {
+    background-color: rgba(var(--movim-font), 0.05);
+}
+
+article table tbody tr td {
+    font-size: 1.8rem;
+}
+
+article table td {
+    padding: 0.3rem 0.5rem;
+    border: thin solid rgba(var(--movim-font), 0.20);
+}
+
+article table th {
+    padding: 0 0.5rem;
+    font-size: 1.7rem;
+    text-align: center;
+}
