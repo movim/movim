@@ -31,6 +31,7 @@ ul#bottomnavigation li span:not(.counter) {
     }
 
     ul#bottomnavigation ~ main > div:not(#chat_widget) > div:last-child,
+    ul#bottomnavigation ~ main > div:not(#chat_widget) > div.tabelem,
     ul#bottomnavigation ~ main > div:not(#chat_widget) > article:last-child {
         padding-bottom: 6.5rem;
     }
