@@ -38,6 +38,8 @@ v0.19 (trunk)
  * Send the Presence a bit earlier on login
  * Add a "copy to clipboard" button in Preview
  * Firebase Push notification integration for the official client
+ * Allow image pasting in Movim to trigger the Upload
+ * Allow global drag & drop in Movim to upload a file
 
 v0.18
 ---------------------------

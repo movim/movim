@@ -46,3 +46,36 @@
 #upload li.file:not(.preview) span.primary {
     display: none;
 }
+
+body.dropped:before,
+body.dropped:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    z-index: 3;
+}
+
+body.dropped:before {
+    content: '';
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+body.dropped:after {
+    border-radius: 2rem;
+    margin: 2rem;
+    border: 0.5rem solid gray;
+    border-style: dashed;
+    box-sizing: border-box;
+    width: calc(100% - 4rem);
+    height: calc(100% - 4rem);
+    font-family: 'Material Icons';
+    content: "\e2c6";
+    font-size: 10rem;
+    text-align: center;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

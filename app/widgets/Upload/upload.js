@@ -232,6 +232,10 @@ var Upload = {
     },
 
     attachEvents : function () {
+        if (Upload.file) {
+            Upload.preview(Upload.file);
+        }
+
         document.querySelector('#upload div.drop').addEventListener('drop', ev => {
             ev.preventDefault();
 
@@ -266,3 +270,56 @@ var Upload = {
         }, false);
     }
 }
+
+/**
+ * Handle the paste event
+ */
+window.addEventListener('paste', evt => {
+    const clipboardItems = evt.clipboardData.items;
+    const items = [].slice
+        .call(clipboardItems)
+        .filter(function(item) {
+            return item.type.indexOf('image') !== -1;
+        });
+
+    if (items.length === 0) {
+        return;
+    }
+
+    const item = items[0];
+    Upload.file = item.getAsFile();
+    Upload_ajaxRequest();
+});
+
+/**
+ * Handle the global drop event
+ */
+document.addEventListener("DOMContentLoaded", e => {
+    var mainDropArea = document.body;
+
+    mainDropArea.addEventListener('dragover', ev => {
+        if (document.getElementById('upload')) return;
+        ev.preventDefault();
+        mainDropArea.classList.add('dropped');
+    }, false);
+
+    mainDropArea.addEventListener('drop', ev => {
+        if (document.getElementById('upload')) return;
+        ev.preventDefault();
+
+        if (ev.dataTransfer.items.length > 0
+        && ev.dataTransfer.items[0].kind === 'file') {
+            var file = ev.dataTransfer.items[0].getAsFile();
+            Upload.file = file;
+            Upload_ajaxRequest();
+        }
+
+        mainDropArea.classList.remove('dropped');
+    }, false);
+
+    mainDropArea.addEventListener('dragleave', ev => {
+        if (document.getElementById('upload')) return;
+        ev.preventDefault();
+        mainDropArea.classList.remove('dropped');
+    }, false);
+});
