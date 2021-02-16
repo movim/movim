@@ -208,8 +208,8 @@ class PublishBrief extends Base
 
                     $imagenumber = $form->imagenumber->value;
 
-                    if (($embed->type == 'photo' || isset($embed->images))
-                    && $imagenumber != 'none' && is_int($imagenumber)) {
+                    if (($embed->type == 'photo' || !empty($embed->images))
+                    && array_key_exists($imagenumber, $embed->images)) {
                         $p->setImage(
                             $embed->images[$imagenumber]['url'],
                             $embed->title,
