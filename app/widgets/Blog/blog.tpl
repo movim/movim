@@ -118,7 +118,7 @@
     {/if}
 </header>
 
-<div class="card shadow" title="{$c->__('page.feed')}" id="blog" >
+<div class="card shadow" id="blog" >
     {if="$posts == null || $posts->isEmpty()"}
         <article class="block">
             <ul class="list simple thick">
