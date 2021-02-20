@@ -6,6 +6,20 @@ use Movim\Session;
 
 class OMEMO
 {
+    public static function getDeviceList($to)
+    {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $pubsub = $dom->createElement('pubsub');
+        $pubsub->setAttribute('xmlns', 'http://jabber.org/protocol/pubsub');
+
+        $publish = $dom->createElement('items');
+        $publish->setAttribute('node', 'eu.siacs.conversations.axolotl.devicelist');
+        $pubsub->appendChild($publish);
+
+        $xml = \Moxl\API::iqWrapper($pubsub, $to, 'get');
+        \Moxl\API::request($xml);
+    }
+
     public static function setDeviceList($ids)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
@@ -97,13 +111,11 @@ class OMEMO
     }
 
     public static function message(
-        $to,
-        $sid,
-        $key,
-        $rid,
-        $iv,
-        $payload,
-        $isprekey
+        string $to,
+        int $sid,
+        object $keys,
+        string $iv,
+        string $payload
     ) {
         $session = Session::start();
 
@@ -114,6 +126,12 @@ class OMEMO
         $root->setAttribute('to', str_replace(' ', '\40', $to));
         $root->setAttribute('id', $session->get('id'));
 
+        $encryption = $dom->createElement('encryption');
+        $encryption->setAttribute('xmlns', 'urn:xmpp:eme:0');
+        $encryption->setAttribute('name', 'OMEMOE');
+        $encryption->setAttribute('namespace', 'eu.siacs.conversations.axolotl');
+        $root->appendChild($encryption);
+
         $encrypted = $dom->createElement('encrypted');
         $encrypted->setAttribute('xmlns', 'eu.siacs.conversations.axolotl');
         $root->appendChild($encrypted);
@@ -122,14 +140,16 @@ class OMEMO
         $header->setAttribute('sid', $sid);
         $encrypted->appendChild($header);
 
-        $key = $dom->createElement('key', $key);
+        foreach ($keys as $rid => $value ) {
+            $key = $dom->createElement('key', $value->payload);
+            $key->setAttribute('rid', $rid);
 
-        if ($isprekey) {
-            $key->setAttribute('prekey', 'true');
+            if ($value->prekey) {
+                $key->setAttribute('prekey', 'true');
+            }
+
+            $header->appendChild($key);
         }
-
-        $key->setAttribute('rid', $rid);
-        $header->appendChild($key);
 
         $iv = $dom->createElement('iv', $iv);
         $header->appendChild($iv);

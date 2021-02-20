@@ -100,6 +100,11 @@ class Message extends Model
         return null;
     }
 
+    public function getOmemoheaderAttribute()
+    {
+        return unserialize($this->attributes['omemoheader']);
+    }
+
     public function getJidfromAttribute()
     {
         return \unechap($this->attributes['jidfrom']);
@@ -473,6 +478,18 @@ class Message extends Model
 
                 return $parentMessage;
             }
+        }
+
+        if (isset($stanza->encrypted)) {
+            \Utils::debug(serialize($stanza->asXML()));
+        }
+
+        # XEP-0384 OMEMO Encryption
+        if (isset($stanza->encrypted)
+         && $stanza->encrypted->attributes()->xmlns == 'eu.siacs.conversations.axolotl') {
+            $omemoHeader = new MessageOmemoHeader;
+            $omemoHeader->set($stanza);
+            $this->attributes['omemoheader'] = (string)$omemoHeader;
         }
 
         return $this;

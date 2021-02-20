@@ -50,6 +50,11 @@ class User extends Model
         return $this->hasMany('App\Draft');
     }
 
+    public function bundles()
+    {
+        return $this->hasMany('App\Bundle');
+    }
+
     public function getResolvedNicknameAttribute()
     {
         return $this->nickname ?? $this->id;

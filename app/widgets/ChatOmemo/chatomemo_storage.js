@@ -8,8 +8,22 @@ ChatOmemoStorage.prototype = {
         RECEIVING: 2,
     },
 
+    setIdentityKeyPair: function(identityKeyPair) {
+        return Promise.resolve(this.put('identityKey', {
+            'privKey': MovimUtils.arrayBufferToBase64(identityKeyPair.privKey),
+            'pubKey': MovimUtils.arrayBufferToBase64(identityKeyPair.pubKey)
+        }));
+    },
+
     getIdentityKeyPair: function () {
-        return Promise.resolve(this.get('identityKey'));
+        identityKeyPair = this.get('identityKey');
+        return Promise.resolve({
+            'privKey': MovimUtils.base64ToArrayBuffer(identityKeyPair.privKey),
+            'pubKey': MovimUtils.base64ToArrayBuffer(identityKeyPair.pubKey)
+        });
+    },
+    setLocalRegistrationId: function (registrationId) {
+        return Promise.resolve(this.put('registrationId', registrationId));
     },
     getLocalRegistrationId: function () {
         return Promise.resolve(this.get('registrationId'));
@@ -34,7 +48,6 @@ ChatOmemoStorage.prototype = {
             throw new Error("Tried to remove value for undefined/null key");
 
         localStorage.removeItem(key);
-        //delete this.store[key];
     },
 
     isTrustedIdentity: function (identifier, identityKey, direction) {
@@ -48,7 +61,8 @@ ChatOmemoStorage.prototype = {
         if (trusted === undefined) {
             return Promise.resolve(true);
         }
-        return Promise.resolve(util.toString(identityKey) === util.toString(trusted));
+        return Promise.resolve(true);
+        //return Promise.resolve(libsignal.util.toString(identityKey) === libsignal.util.toString(trusted));
     },
     loadIdentityKey: function (identifier) {
         if (identifier === null || identifier === undefined)
@@ -64,7 +78,7 @@ ChatOmemoStorage.prototype = {
         var existing = this.get('identityKey' + address.getName());
         this.put('identityKey' + address.getName(), identityKey)
 
-        if (existing && util.toString(identityKey) !== util.toString(existing)) {
+        if (existing && toString(identityKey) !== toString(existing)) {
             return Promise.resolve(true);
         } else {
             return Promise.resolve(false);
@@ -76,11 +90,16 @@ ChatOmemoStorage.prototype = {
     loadPreKey: function (keyId) {
         var res = this.get('25519KeypreKey' + keyId);
         if (res !== undefined) {
-            res = { pubKey: res.pubKey, privKey: res.privKey };
+            res = {
+                pubKey: MovimUtils.base64ToArrayBuffer(res.pubKey),
+                privKey: MovimUtils.base64ToArrayBuffer(res.privKey)
+            };
         }
         return Promise.resolve(res);
     },
     storePreKey: function (keyId, keyPair) {
+        keyPair.pubKey = MovimUtils.arrayBufferToBase64(keyPair.pubKey);
+        keyPair.privKey = MovimUtils.arrayBufferToBase64(keyPair.privKey);
         return Promise.resolve(this.put('25519KeypreKey' + keyId, keyPair));
     },
     removePreKey: function (keyId) {
@@ -91,12 +110,18 @@ ChatOmemoStorage.prototype = {
     loadSignedPreKey: function (keyId) {
         var res = this.get('25519KeysignedKey' + keyId);
         if (res !== undefined) {
-            res = { pubKey: res.pubKey, privKey: res.privKey };
+            res = {
+                pubKey: MovimUtils.base64ToArrayBuffer(res.keyPair.pubKey),
+                privKey: MovimUtils.base64ToArrayBuffer(res.keyPair.privKey)
+            };
         }
         return Promise.resolve(res);
     },
-    storeSignedPreKey: function (keyId, keyPair) {
-        return Promise.resolve(this.put('25519KeysignedKey' + keyId, keyPair));
+    storeSignedPreKey: function (keyId, key) {
+        key.keyPair.pubKey = MovimUtils.arrayBufferToBase64(key.keyPair.pubKey);
+        key.keyPair.privKey = MovimUtils.arrayBufferToBase64(key.keyPair.privKey);
+        key.signature = MovimUtils.arrayBufferToBase64(key.signature);
+        return Promise.resolve(this.put('25519KeysignedKey' + keyId, key));
     },
     removeSignedPreKey: function (keyId) {
         return Promise.resolve(this.remove('25519KeysignedKey' + keyId));
@@ -118,5 +143,11 @@ ChatOmemoStorage.prototype = {
             }
         }
         return Promise.resolve();
+    },
+    toString: function(thing) {
+        if (typeof thing == 'string') {
+            return thing;
+        }
+        return new dcodeIO.ByteBuffer.wrap(thing).toString('binary');
     }
 };

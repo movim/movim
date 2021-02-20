@@ -863,7 +863,7 @@ var Chat = {
         }
 
         if (data.id != null) {
-            msg.setAttribute('id', data.id);
+            msg.setAttribute('id', 'id' + data.id);
         }
 
         if (data.rtl) {
@@ -879,6 +879,20 @@ var Chat = {
             }
         } else {
             p.innerHTML = data.body;
+
+            // OMEMO handling
+            if (data.omemoheader) {
+                ChatOmemo.decrypt(data).then(plaintext => {
+                    if (plaintext) {
+                        let refreshP = document.querySelector('#id' + data.id + ' p');
+
+                        if (refreshP) {
+                            refreshP.innerHTML = plaintext;
+                            refreshP.classList.remove('encrypted');
+                        }
+                    }
+                });
+            }
         }
 
         if (data.file != null && data.card === undefined && data.file.type !== 'xmpp') {

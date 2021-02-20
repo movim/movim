@@ -5,10 +5,12 @@ namespace Moxl\Xec\Action\OMEMO;
 use Moxl\Xec\Action;
 use Moxl\Stanza\OMEMO;
 
+use App\Bundle;
+
 class GetBundle extends Action
 {
-    private $_to;
-    private $_id;
+    protected $_to;
+    protected $_id;
 
     public function request()
     {
@@ -19,22 +21,11 @@ class GetBundle extends Action
         );
     }
 
-    public function setTo($to)
-    {
-        $this->_to = $to;
-        return $this;
-    }
-
-    public function setId($id)
-    {
-        $this->_id = $id;
-        return $this;
-    }
-
     public function handle($stanza, $parent = false)
     {
-        $bd = new \Modl\Bundle;
-        $bd->set($stanza->pubsub->items->item, $this->_to, $this->_id);
+        $bd = new Bundle;
+        $bd->set($this->_to, $this->_id, $stanza->pubsub->items->item->bundle);
+        $bd->save();
 
         $this->pack($bd);
         $this->deliver();

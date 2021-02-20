@@ -9,11 +9,9 @@ class Message extends Action
 {
     private $_to;
     private $_sid;
-    private $_key;
-    private $_rid;
+    private $_keys;
     private $_iv;
     private $_payload;
-    private $_isprekey;
 
     public function request()
     {
@@ -21,11 +19,9 @@ class Message extends Action
         OMEMO::message(
             $this->_to,
             $this->_sid,
-            $this->_key,
-            $this->_rid,
+            $this->_keys,
             $this->_iv,
             $this->_payload,
-            $this->_isprekey
         );
     }
 
@@ -41,15 +37,9 @@ class Message extends Action
         return $this;
     }
 
-    public function setKey($key)
+    public function setKeys($keys)
     {
-        $this->_key = $key;
-        return $this;
-    }
-
-    public function setRid($rid)
-    {
-        $this->_rid = $rid;
+        $this->_keys = $keys;
         return $this;
     }
 
@@ -62,12 +52,6 @@ class Message extends Action
     public function setPayload($payload)
     {
         $this->_payload = $payload;
-        return $this;
-    }
-
-    public function setIsPreKey($isprekey)
-    {
-        $this->_isprekey = $isprekey;
         return $this;
     }
 }

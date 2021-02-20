@@ -238,6 +238,28 @@ var MovimUtils = {
     arrayBufferToBase64: function (ab) {
         return btoa((new Uint8Array(ab)).reduce((data, byte) => data + String.fromCharCode(byte), ''));
     },
+    base64ToArrayBuffer: function (base64) {
+        var binary_string = window.atob(base64);
+        var len = binary_string.length;
+        var bytes = new Uint8Array(len);
+        for (var i = 0; i < len; i++) {
+            bytes[i] = binary_string.charCodeAt(i);
+        }
+        return bytes.buffer;
+    },
+    stringToArrayBuffer: function (string) {
+        const bytes = new TextEncoder("utf-8").encode(string);
+        return bytes.buffer;
+    },
+    arrayBufferToString: function (ab) {
+        return new TextDecoder().decode(ab);
+    },
+    appendArrayBuffer: function (buffer1, buffer2) {
+        const tmp = new Uint8Array(buffer1.byteLength + buffer2.byteLength);
+        tmp.set(new Uint8Array(buffer1), 0);
+        tmp.set(new Uint8Array(buffer2), buffer1.byteLength);
+        return tmp.buffer;
+    },
     range: function (start, end) {
         return Array.from({ length: end - start + 1 }, (_, i) => i)
     }

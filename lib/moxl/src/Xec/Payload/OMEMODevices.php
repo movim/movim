@@ -14,8 +14,6 @@ class OMEMODevices extends Payload
 
         foreach ($list as $devices) {
             foreach ($devices as $device) {
-                //$first = $devices->children();
-
                 $gb = new GetBundle;
                 $gb->setTo($from)
                    ->setId((string)$device->attributes()->id)
