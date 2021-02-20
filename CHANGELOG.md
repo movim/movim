@@ -1,7 +1,10 @@
 Movim Changelog
 ================
 
-v0.19 (trunk)
+v0.20 (trunk)
+---------------------------
+
+v0.19
 ---------------------------
  * Enable SNI for SSL auth to fix DirectTLS connection with some XMPP servers
  * Fix #884, Don't reload page on status posting
