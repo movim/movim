@@ -1,5 +1,5 @@
 <ul class="list flex third middle active card">
-    {if="$type == 'all' && $page == 1"}
+    {if="$type == 'all' && ($page == 1 || $posts->count() < $limit)"}
         <li class="block" onclick="MovimUtils.redirect('{$c->route('explore', 'servers')}')">
             <span class="primary icon">
                 <i class="material-icons">view_lists</i>

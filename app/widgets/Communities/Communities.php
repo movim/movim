@@ -68,6 +68,7 @@ class Communities extends Base
             ->get();
         $view->assign('posts', $posts);
         $view->assign('type', $type);
+        $view->assign('limit', $this->_page);
         $count = ($page == 0 && $type == 'all') ? $this->_page - 1 : $this->_page;
         $view->assign('page',
             $posts->count() == $count
