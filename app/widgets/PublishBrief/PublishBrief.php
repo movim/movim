@@ -100,12 +100,12 @@ class PublishBrief extends Base
         if ($form->content->value != '') {
             $view = $this->tpl();
 
+            $content = htmlspecialchars($form->content->value, ENT_XML1 | ENT_COMPAT, 'UTF-8');
             $doc = new DOMDocument;
-
             $parser = new MarkdownExtra;
             $parser->hashtag_protection = true;
 
-            $doc->loadXML('<div>'.addHFR($parser->transform($form->content->value)).'</div>');
+            $doc->loadXML('<div>'.addHFR($parser->transform($content)).'</div>');
             $view->assign('title', $form->title->value);
             $view->assign('content', substr($doc->saveXML($doc->getElementsByTagName('div')->item(0)), 5, -6));
 
@@ -137,11 +137,11 @@ class PublishBrief extends Base
             }
 
             if (Validator::stringType()->notEmpty()->validate(trim($form->content->value))) {
-                $content = $form->content->value;
+                $content = htmlspecialchars($form->content->value, ENT_XML1 | ENT_COMPAT, 'UTF-8');
 
                 $parser = new MarkdownExtra;
                 $parser->hashtag_protection = true;
-                $content_xhtml = addHFR($parser->transform($content));
+                $contentXhtml = addHFR($parser->transform($content));
 
                 $tagsContent = getHashtags(htmlspecialchars($form->content->value));
                 if (is_array($tagsContent)) {
@@ -152,8 +152,8 @@ class PublishBrief extends Base
                     $p->setContent(htmlspecialchars($content));
                 }
 
-                if (!empty($content_xhtml)) {
-                    $p->setContentXhtml($content_xhtml);
+                if (!empty($contentXhtml)) {
+                    $p->setContentXhtml($contentXhtml);
                 }
             }
 

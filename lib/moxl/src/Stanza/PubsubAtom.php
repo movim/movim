@@ -2,8 +2,6 @@
 
 namespace Moxl\Stanza;
 
-use Moxl\Utils;
-
 class PubsubAtom
 {
     public $id;

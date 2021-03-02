@@ -7,6 +7,7 @@ v0.19.1 (trunk)
 * New CSS for articles table
 * Fix Notifications crash on MySQL
 * Fix MUC private message self Carbon handling
+* Fix a XML entities issues in Post content (#976)
 
 v0.19
 ---------------------------
