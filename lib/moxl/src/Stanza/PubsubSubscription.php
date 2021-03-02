@@ -14,7 +14,7 @@ class PubsubSubscription
         return sha1($id);
     }
 
-    public static function listAdd($server, $jid, $node, $title, $pepnode = 'urn:xmpp:pubsub:subscription')
+    public static function listAdd($server, $jid, $node, $title = null, $pepnode = 'urn:xmpp:pubsub:subscription')
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
 
@@ -34,8 +34,10 @@ class PubsubSubscription
         $subscription->setAttribute('node', $node);
         $item->appendChild($subscription);
 
-        $title = $dom->createElement('title', $title);
-        $subscription->appendChild($title);
+        if ($title) {
+            $title = $dom->createElement('title', $title);
+            $subscription->appendChild($title);
+        }
 
         $xml = \Moxl\API::iqWrapper($pubsub, false, 'set');
         \Moxl\API::request($xml);

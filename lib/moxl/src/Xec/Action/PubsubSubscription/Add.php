@@ -10,7 +10,7 @@ class Add extends Errors
     protected $_server;
     protected $_from;
     protected $_node;
-    protected $_data;
+    protected $_data = [];
     protected $_pepnode = 'urn:xmpp:pubsub:subscription';
 
     public function request()
@@ -20,7 +20,9 @@ class Add extends Errors
             $this->_server,
             $this->_from,
             $this->_node,
-            $this->_data['title'],
+            is_array($this->_data) && array_key_exists('title', $this->_data)
+                ? $this->_data['title']
+                : null,
             $this->_pepnode
         );
     }
