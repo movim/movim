@@ -51,12 +51,9 @@
             </div>
         </li>
 
-        {$old = null}
         {$delimiter = false}
         {loop="$notifs"}
-            {if="$value->parent_id != $old"}
-                {$parent = $value->getParent()}
-            {/if}
+            {$parent = $value->parent}
             {if="$parent"}
                 {if="!$delimiter && strtotime($value->published) < strtotime($since)"}
                     {$delimiter = true}
@@ -114,7 +111,6 @@
                         </p>
                     </div>
                 </li>
-                {$old = $value->parent_id}
             {/if}
         {/loop}
     </ul>

@@ -155,11 +155,11 @@ class Notifications extends Base
             $query->select('id')
                   ->from('posts')
                   ->where('aid', $this->user->id)
-                  ->orderBy('published', 'desc')
-                  ->limit(15);
+                  ->orderBy('published', 'desc');
         })
         ->orderBy('published', 'desc')
         ->limit(30)
+        ->with('parent')
         ->get();
 
         $since = \App\Cache::c('notifs_since');

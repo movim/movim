@@ -13,11 +13,19 @@
             </div>
         </li>
     {/if}
-    {loop="$posts"}
-        {autoescape="off"}
-            {$c->prepareTicket($value)}
-        {/autoescape}
-    {/loop}
+
+    {if="$posts->count() == 0"}
+        <div class="placeholder">
+            <i class="material-icons">receipt</i>
+            <h4>{$c->___('chat.new_title')}</h4>
+        </div>
+    {else}
+        {loop="$posts"}
+            {autoescape="off"}
+                {$c->prepareTicket($value)}
+            {/autoescape}
+        {/loop}
+    {/if}
 </ul>
 
 {if="$page > 0"}

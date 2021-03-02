@@ -39,6 +39,11 @@ class Post extends Model
                     ->where('like', false);
     }
 
+    public function parent()
+    {
+        return $this->hasOne('App\Post', 'id', 'parent_id');
+    }
+
     public function likes()
     {
         return $this->hasMany('App\Post', 'parent_id', 'id')
