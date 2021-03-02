@@ -134,12 +134,13 @@
             <i class="material-icons">computer</i> Apps
         </a>
         <br />
-
-        <a class="button flat color transparent on_android" href="movim://changepod">
-            <i class="material-icons">dns</i>
-            {$c->__('global.change_pod')}
-        </a>
     </footer>
+
+    <br />
+    <a class="button flat color transparent on_android" href="movim://changepod">
+        <i class="material-icons">dns</i>
+        {$c->__('global.change_pod')}
+    </a>
     <script type="text/javascript">
         if (typeof Android !== 'undefined') {
             MovimTpl.remove('#login_widget footer');
