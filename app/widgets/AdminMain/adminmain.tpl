@@ -83,6 +83,24 @@
                     <p class="all">{$c->__('chatonly.text')}</p>
                 </div>
             </li>
+            <li class="wide">
+                <span class="control">
+                    <div class="checkbox">
+                        <input
+                            {if="$conf->disableregistration"}
+                                checked
+                            {/if}
+                            type="checkbox"
+                            id="disableregistration"
+                            name="disableregistration"/>
+                        <label for="disableregistration"></label>
+                    </div>
+                </span>
+                <div>
+                    <p>{$c->__('disableregistration.title')}</p>
+                    <p class="all">{$c->__('disableregistration.text')}</p>
+                </div>
+            </li>
         </ul>
     </div>
 

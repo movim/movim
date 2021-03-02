@@ -12,6 +12,7 @@ class Configuration extends Model
 
     public $fillable = [
         'description',
+        'disableregistration',
         'firebaseauthorizationkey',
         'info',
         'unregister',
@@ -30,6 +31,7 @@ class Configuration extends Model
     protected $attributes = [
         'id'                    => 1,
         'unregister'            => false,
+        'disableregistration'   => false,
         'restrictsuggestions'   => false,
         'loglevel'              => 0,
         'locale'                => 'en',

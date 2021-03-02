@@ -1,8 +1,12 @@
 Movim Changelog
 ================
 
-v0.20 (trunk)
+v0.19.1 (trunk)
 ---------------------------
+* Add a checkbox to disable the Registration feature in the admin panel (#901)
+* New CSS for articles table
+* Fix Notifications crash on MySQL
+* Fix MUC private message self Carbon handling
 
 v0.19
 ---------------------------

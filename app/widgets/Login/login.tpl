@@ -89,9 +89,11 @@
                                         data-loading="{$c->__('button.connecting')}…"
                                         value="{$c->__('page.login')}"
                                         class="button color"/>
-                                    <a class="button flat" href="{$c->route('account')}">
-                                        {$c->__('button.sign_up')}
-                                    </a>
+                                    {if="!App\Configuration::get()->disableregistration"}
+                                        <a class="button flat" href="{$c->route('account')}">
+                                            {$c->__('button.sign_up')}
+                                        </a>
+                                    {/if}
                                 </p>
                             </div>
                         </li>

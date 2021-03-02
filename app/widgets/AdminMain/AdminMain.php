@@ -18,6 +18,7 @@ class AdminMain extends \Movim\Widget\Base
                 $configuration->password = password_hash($form['password'], PASSWORD_DEFAULT);
             }
 
+            $form['disableregistration'] = (isset($form['disableregistration']));
             $form['restrictsuggestions'] = (isset($form['restrictsuggestions']));
             $form['chatonly'] = (isset($form['chatonly']));
 

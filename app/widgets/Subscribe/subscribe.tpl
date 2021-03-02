@@ -18,15 +18,6 @@
                 </span>
                 <div>
                     <p>
-                        {if="!empty($config->xmppcountry)"}
-                            <span class="info">
-                                <img
-                                    class="flag"
-                                    title="{$config->xmppcountry}"
-                                    alt="{$config->xmppc}"
-                                    src="{$c->flagPath($config->xmppcountry)}"/>
-                            </span>
-                        {/if}
                         {$config->xmppdomain}
                     </p>
                     {if="!empty($config->xmppdescription)"}
@@ -50,13 +41,6 @@
             </span>
             <div>
                 <p>
-                    <span class="info">
-                    <img
-                        class="flag"
-                        title="{$value->geo_country}"
-                        alt="{$value->geo_country}"
-                        src="{$c->flagPath($value->geo_country)}"/>
-                    </span>
                     {$value->domain}
                 </p>
                 <p>

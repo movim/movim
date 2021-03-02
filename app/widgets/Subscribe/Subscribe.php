@@ -5,11 +5,6 @@ use Movim\Widget\Base;
 
 class Subscribe extends Base
 {
-    public function flagPath($country)
-    {
-        return BASE_URI.'theme/img/flags/'.strtolower($country).'.png';
-    }
-
     public function accountNext($server)
     {
         return $this->route('accountnext', [$server]);
