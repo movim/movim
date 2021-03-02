@@ -1,5 +1,5 @@
 .on_android {
-    display: inherit;
+    display: inherit !important;
 }
 
 body > nav,
