@@ -157,7 +157,7 @@ class Message extends Model
             $this->replaceid = $stanza->attributes()->id;
         }
 
-        $jid = explode('/', (string)$stanza->attributes()->from);
+        $from = explode('/', (string)$stanza->attributes()->from);
         $to = current(explode('/', (string)$stanza->attributes()->to));
 
         $this->user_id    = \App\User::me()->id;
@@ -167,7 +167,7 @@ class Message extends Model
         }
 
         if (!$this->jidfrom) {
-            $this->jidfrom    = $jid[0];
+            $this->jidfrom    = $from[0];
         }
 
         // If the message is from me
@@ -175,8 +175,8 @@ class Message extends Model
             $this->seen = true;
         }
 
-        if (isset($jid[1])) {
-            $this->resource = $jid[1];
+        if (isset($from[1])) {
+            $this->resource = $from[1];
         }
 
         if ($stanza->delay) {
@@ -197,12 +197,15 @@ class Message extends Model
             $this->delivered = gmdate('Y-m-d H:i:s');
         }
 
-        if (isset($jid[1])
-        && $this->type !== 'groupchat'
+        if ($this->type !== 'groupchat'
         && $stanza->x
         && (string)$stanza->x->attributes()->xmlns == 'http://jabber.org/protocol/muc#user') {
             $this->mucpm = true;
-            $this->jidfrom = $jid[0].'/'.$jid[1];
+            if ($parent && (string)$parent->attributes()->xmlns == 'urn:xmpp:forward:0') {
+                $this->jidto = (string)$stanza->attributes()->to;
+            } elseif (isset($from[1])) {
+                $this->jidfrom = $from[0].'/'.$from[1];
+            }
         }
 
         if ($stanza->body || $stanza->subject) {
