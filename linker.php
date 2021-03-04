@@ -90,7 +90,7 @@ function writeXMPP($xml)
     }
 }
 
-function enableEncryption($connection): Promise
+function enableEncryption($connection)
 {
     global $loop;
 
