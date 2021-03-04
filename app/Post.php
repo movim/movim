@@ -261,6 +261,16 @@ class Post extends Model
         return explodeJid($this->aid)['username'] ?? '';
     }
 
+    public function getDecodedContentAttribute()
+    {
+        return htmlspecialchars_decode($this->content, ENT_XML1 | ENT_COMPAT);
+    }
+
+    public function getDecodedContentRawAttribute()
+    {
+        return htmlspecialchars_decode($this->contentraw, ENT_XML1 | ENT_COMPAT);
+    }
+
     private function extractContent($contents)
     {
         $content = '';
