@@ -85,7 +85,7 @@
                         name="content"
                         placeholder="{$c->__('publishbrief.content_text')}"
                         data-autoheight="true"
-                        >{if="$post"}{$post->decodedContentraw}{elseif="$draft && !empty($draft->content)"}{$draft->decodedContent}{/if}</textarea>
+                        >{if="$post"}{$post->decodedContentraw}{elseif="$draft && !empty($draft->content)"}{$draft->content}{/if}</textarea>
                     {if="$extended"}
                         <label for="desc">{$c->__('publishbrief.content')}</label>
                         <span id="saved" class="info">
