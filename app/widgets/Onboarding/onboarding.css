@@ -6,9 +6,9 @@
 }
 
 #onboarding.public .placeholder {
-    background-image: url(/theme/img/public.svg);
+    background-image: url(../theme/img/public.svg);
 }
 
 #onboarding.popups .placeholder {
-    background-image: url(/theme/img/popups.svg);
+    background-image: url(../theme/img/popups.svg);
 }

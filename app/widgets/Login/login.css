@@ -9,7 +9,7 @@ body main {
 
 @media screen and (max-width: 600px) {
     body main {
-        background: url(/theme/img/logo_cloud.svg), radial-gradient(circle farthest-corner at right bottom,#5265ce 0,#213399 100%);
+        background: url(../theme/img/logo_cloud.svg), radial-gradient(circle farthest-corner at right bottom,#5265ce 0,#213399 100%);
         background-size: auto 2.6rem, 100% 100%;
         background-position: center 5rem, center ;
         background-repeat: no-repeat;
@@ -31,7 +31,7 @@ body main {
 }
 
 #login_widget footer > *:first-child {
-    background-image: url(/theme/img/logo.svg);
+    background-image: url(../theme/img/logo.svg);
     background-repeat: no-repeat;
     background-position: center 0;
     background-size: 22rem auto, 100% 100%;

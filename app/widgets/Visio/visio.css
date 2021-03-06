@@ -55,7 +55,7 @@ body {
     height: auto;
     border-radius: 0.25rem;
 
-    background-image: url('/theme/img/movim_cloud.svg');
+    background-image: url('../theme/img/movim_cloud.svg');
     background-position: center;
     background-repeat: no-repeat;
     background-color: rgba(255, 255, 255, 0.1);
