@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1fa826b936dc506917803d4a91dee861",
+    "content-hash": "b05f577eaeb5ac7df06edf61205808ce",
     "packages": [
         {
             "name": "cakephp/core",
@@ -3410,16 +3410,16 @@
         },
         {
             "name": "sokil/php-isocodes",
-            "version": "3.3.4",
+            "version": "3.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sokil/php-isocodes.git",
-                "reference": "8872d0d2a9289e132c386a6cf6c8f97399f75dbe"
+                "reference": "1b3d6911c61a8e929f30367ac7fac5b9f48f4d58"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sokil/php-isocodes/zipball/8872d0d2a9289e132c386a6cf6c8f97399f75dbe",
-                "reference": "8872d0d2a9289e132c386a6cf6c8f97399f75dbe",
+                "url": "https://api.github.com/repos/sokil/php-isocodes/zipball/1b3d6911c61a8e929f30367ac7fac5b9f48f4d58",
+                "reference": "1b3d6911c61a8e929f30367ac7fac5b9f48f4d58",
                 "shasum": ""
             },
             "require": {
@@ -3461,9 +3461,9 @@
             "description": "ISO country, subdivision, language, currency and script definitions and their translations. Based on pythons pycountry and Debian's iso-codes.",
             "support": {
                 "issues": "https://github.com/sokil/php-isocodes/issues",
-                "source": "https://github.com/sokil/php-isocodes/tree/3.3.4"
+                "source": "https://github.com/sokil/php-isocodes/tree/3.3.5"
             },
-            "time": "2021-02-17T08:52:03+00:00"
+            "time": "2021-03-02T08:18:52+00:00"
         },
         {
             "name": "symfony/config",

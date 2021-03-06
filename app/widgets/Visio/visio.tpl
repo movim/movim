@@ -6,11 +6,11 @@
                     <i class="material-icons">fullscreen</i>
                 </span>
                 <span id="toggle_audio" class="divided control icon color transparent active" onclick="VisioUtils.toggleAudio()">
-                    <i class="material-icons">mic</i>
+                    <i class="material-icons">mic_off</i>
                 </span>
                 {if="$withvideo"}
                     <span id="toggle_video" class="control icon color transparent active" onclick="VisioUtils.toggleVideo()">
-                        <i class="material-icons">videocam</i>
+                        <i class="material-icons">videocam_off</i>
                     </span>
                     <span id="switch_camera" class="control icon color transparent active">
                         <i class="material-icons">switch_camera</i>

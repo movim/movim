@@ -21,7 +21,7 @@ var Visio = {
 
     services: [],
 
-    init: function(id) {
+    init: function() {
         Visio.from = MovimUtils.urlParts().params[0];
 
         if (MovimUtils.urlParts().params[1] !== undefined) {
@@ -112,6 +112,10 @@ var Visio = {
             } else {
                 Visio.switchCamera.classList.remove('disabled');
                 Visio.localVideo.srcObject = stream;
+
+                // Toggle video icon
+                var cameraIcon = document.querySelector('#toggle_video i');
+                cameraIcon.innerText = 'videocam';
 
                 // Switch camera
                 VisioUtils.pcReplaceTrack(stream);

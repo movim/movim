@@ -7,14 +7,20 @@ var VisioUtils = {
     handleAudio: function() {
         VisioUtils.audioContext = new AudioContext();
 
-        var microphone = VisioUtils.audioContext.createMediaStreamSource(
-            Visio.withVideo
+        try {
+            var microphone = VisioUtils.audioContext.createMediaStreamSource(
+                Visio.withVideo
                 ? Visio.localVideo.srcObject
                 : Visio.localAudio.srcObject
-        );
+            );
+        } catch (error) {
+            logError(error);
+            return;
+        }
 
         var javascriptNode = VisioUtils.audioContext.createScriptProcessor(2048, 1, 1);
         var icon = document.querySelector('#toggle_audio i');
+        icon.innerText = 'mic';
 
         microphone.connect(javascriptNode);
         javascriptNode.connect(VisioUtils.audioContext.destination);
@@ -44,11 +50,16 @@ var VisioUtils = {
     handleRemoteAudio: function() {
         VisioUtils.remoteAudioContext = new AudioContext();
 
-        var remoteMicrophone = VisioUtils.remoteAudioContext.createMediaStreamSource(
-            Visio.withVideo
+        try {
+            var remoteMicrophone = VisioUtils.remoteAudioContext.createMediaStreamSource(
+                Visio.withVideo
                 ? Visio.remoteVideo.srcObject
                 : Visio.remoteAudio.srcObject
-        );
+            );
+        } catch (error) {
+            logError(error);
+            return;
+        }
 
         var remoteJavascriptNode = VisioUtils.remoteAudioContext.createScriptProcessor(2048, 1, 1);
         var remoteMeter = document.querySelector('#visio #remote_level');

@@ -29,6 +29,7 @@
 
 #rooms_widget ul.list.rooms li:not(.connected) span.primary {
     opacity: 0.5;
+    filter: grayscale(0.75);
 }
 
 #rooms_widget ul.list.rooms li.connected.unread {
