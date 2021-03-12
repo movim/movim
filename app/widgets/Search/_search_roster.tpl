@@ -34,6 +34,7 @@
                     <i class="material-icons">person</i>
                 </span>
             {/if}
+
             {if="$value->presences->count() > 0"}
                 {loop="$value->presences"}
                     {if="$value->capability && $value->capability->isJingleAudio()"}
@@ -51,7 +52,7 @@
                     {/if}
                 {/loop}
             {/if}
-            <span class="control icon active gray" onclick="Search.chat('{$value->jid|echapJS}')">
+            <span class="control icon active gray divided" onclick="Search.chat('{$value->jid|echapJS}')">
                 <i class="material-icons">comment</i>
             </span>
             <div>

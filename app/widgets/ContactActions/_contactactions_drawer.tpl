@@ -8,13 +8,15 @@
         <ul class="list thick">
             <li>
                 {if="$url"}
-                    <span class="primary icon bubble color
+                    <span onclick="MovimUtils.reload('{$c->route('contact', $roster->jid)}')"
+                    class="primary icon bubble color active
                         {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}
                     ">
                         <img src="{$url}">
                     </span>
                 {elseif="!$contact->isFromMuc()"}
-                    <span class="primary icon bubble color {$contact->id|stringToColor}
+                    <span  onclick="MovimUtils.reload('{$c->route('contact', $roster->jid)}')"
+                    class="primary icon bubble color {$contact->id|stringToColor} active
                         {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}
                     ">
                         <i class="material-icons">person</i>
@@ -87,137 +89,126 @@
         </ul>
     {/if}
 
-    {if="$pictures->count() > 0"}
-        <ul class="list">
-            <li class="subheader">
-                <div>
-                    <p>
-                        {$c->__('general.pictures')}
-                    </p>
-                </div>
-            </li>
-        </ul>
-        <ul class="grid active">
-            {loop="$pictures"}
-                <li style="background-image: url('{$value->file['uri']|protectPicture}')"
-                    onclick="Preview_ajaxShow('{$value->file['uri']}')">
-                    <i class="material-icons">visibility</i>
-                </li>
-            {/loop}
-        </ul>
-    {/if}
+    <ul class="tabs" id="navtabs"></ul>
 
-    <ul class="list middle">
-        <li class="subheader">
-            <div>
-                <p>
-                    {$c->__('vcard.title')}
-                </p>
-            </div>
-        </li>
-
-        {if="$roster && $roster->presence && $roster->presence->seen"}
-        <li>
-            <span class="primary icon gray">
-                <i class="material-icons">access_time</i>
-            </span>
-            <div>
-                <p>{$c->__('last.title')}</p>
-                <p>
-                    {$roster->presence->seen|strtotime|prepareDate:true,true}
-                </p>
-            </div>
-        </li>
-        {/if}
-
-        {if="$contact->fn != null"}
-        <li>
-            <span class="primary icon gray">{$contact->fn|firstLetterCapitalize}</span>
-            <div>
-                <p>{$c->__('general.name')}</p>
-                <p>{$contact->fn}</p>
-            </div>
-        </li>
-        {/if}
-
-        {if="$contact->nickname != null"}
-        <li>
-            <span class="primary icon gray">{$contact->nickname|firstLetterCapitalize}</span>
-            <div>
-                <p>{$c->__('general.nickname')}</p>
-                <p>{$contact->nickname}</p>
-            </div>
-        </li>
-        {/if}
-
-        {if="$roster && $roster->group"}
+    <div class="tabelem" title="{$c->__('vcard.title')}" id="contact_info">
+        <ul class="list middle">
+            {if="$roster && $roster->presence && $roster->presence->seen"}
             <li>
                 <span class="primary icon gray">
-                    <i class="material-icons">recent_actors</i>
+                    <i class="material-icons">access_time</i>
                 </span>
                 <div>
-                    <p>{$c->__('edit.group')}</p>
+                    <p>{$c->__('last.title')}</p>
                     <p>
-                        <span class="tag color {$roster->group|stringToColor}">
-                            {$roster->group}
-                        </span>
+                        {$roster->presence->seen|strtotime|prepareDate:true,true}
                     </p>
                 </div>
             </li>
-        {/if}
+            {/if}
 
-        {if="$contact->url != null"}
-        <li>
-            <span class="primary icon gray">
-                <i class="material-icons">link</i>
-            </span>
-            <div>
-                <p>{$c->__('general.website')}</p>
-                <p>
-                    {if="filter_var($contact->url, FILTER_VALIDATE_URL)"}
-                        <a href="{$contact->url}" target="_blank">{$contact->url}</a>
-                    {else}
-                        {$contact->url}
-                    {/if}
-                </p>
-            </div>
-        </li>
-        {/if}
+            {if="$contact->fn != null"}
+            <li>
+                <span class="primary icon gray">{$contact->fn|firstLetterCapitalize}</span>
+                <div>
+                    <p>{$c->__('general.name')}</p>
+                    <p>{$contact->fn}</p>
+                </div>
+            </li>
+            {/if}
 
-        {if="$contact->email != null"}
-        <li>
-            <span class="primary icon gray"><i class="material-icons">email</i></span>
-            <div>
-                <p>{$c->__('general.email')}</p>
-                <p><a href="mailto:{$contact->email}">{$contact->email}</a></p>
-            </div>
-        </li>
-        {/if}
+            {if="$contact->nickname != null"}
+            <li>
+                <span class="primary icon gray">{$contact->nickname|firstLetterCapitalize}</span>
+                <div>
+                    <p>{$c->__('general.nickname')}</p>
+                    <p>{$contact->nickname}</p>
+                </div>
+            </li>
+            {/if}
 
-        {if="$contact->description != null && trim($contact->description) != ''"}
-        <li>
-            <span class="primary icon gray"><i class="material-icons">subject</i></span>
-            <div>
-                <p>{$c->__('general.about')}</p>
-                <p class="all">
-                    {autoescape="off"}
-                        {$contact->description|nl2br}
-                    {/autoescape}
-                </p>
-            </div>
-        </li>
-        {/if}
+            {if="$roster && $roster->group"}
+                <li>
+                    <span class="primary icon gray">
+                        <i class="material-icons">recent_actors</i>
+                    </span>
+                    <div>
+                        <p>{$c->__('edit.group')}</p>
+                        <p>
+                            <span class="tag color {$roster->group|stringToColor}">
+                                {$roster->group}
+                            </span>
+                        </p>
+                    </div>
+                </li>
+            {/if}
 
-        {if="strtotime($contact->date) != 0"}
-        <li class="block">
-            <span class="primary icon gray"><i class="material-icons">cake</i></span>
-            <div>
-                <p>{$c->__('general.date_of_birth')}</p>
-                <p>{$contact->date|strtotime|prepareDate:false}</p>
-            </div>
-        </li>
-        {/if}
-    </ul>
+            {if="$contact->url != null"}
+            <li>
+                <span class="primary icon gray">
+                    <i class="material-icons">link</i>
+                </span>
+                <div>
+                    <p>{$c->__('general.website')}</p>
+                    <p>
+                        {if="filter_var($contact->url, FILTER_VALIDATE_URL)"}
+                            <a href="{$contact->url}" target="_blank">{$contact->url}</a>
+                        {else}
+                            {$contact->url}
+                        {/if}
+                    </p>
+                </div>
+            </li>
+            {/if}
+
+            {if="$contact->email != null"}
+            <li>
+                <span class="primary icon gray"><i class="material-icons">email</i></span>
+                <div>
+                    <p>{$c->__('general.email')}</p>
+                    <p><a href="mailto:{$contact->email}">{$contact->email}</a></p>
+                </div>
+            </li>
+            {/if}
+
+            {if="$contact->description != null && trim($contact->description) != ''"}
+            <li>
+                <span class="primary icon gray"><i class="material-icons">subject</i></span>
+                <div>
+                    <p>{$c->__('general.about')}</p>
+                    <p class="all">
+                        {autoescape="off"}
+                            {$contact->description|nl2br}
+                        {/autoescape}
+                    </p>
+                </div>
+            </li>
+            {/if}
+
+            {if="strtotime($contact->date) != 0"}
+            <li class="block">
+                <span class="primary icon gray"><i class="material-icons">cake</i></span>
+                <div>
+                    <p>{$c->__('general.date_of_birth')}</p>
+                    <p>{$contact->date|strtotime|prepareDate:false}</p>
+                </div>
+            </li>
+            {/if}
+        </ul>
+    </div>
+
+    {if="$pictures->count() > 0"}
+        <div class="tabelem" title="{$c->__('general.pictures')}" id="contact_medias">
+            <ul class="grid active">
+                {loop="$pictures"}
+                    <li style="background-image: url('{$value->file['uri']|protectPicture}')"
+                        onclick="Preview_ajaxShow('{$value->file['uri']}')">
+                        <i class="material-icons">visibility</i>
+                    </li>
+                {/loop}
+            </ul>
+        </div>
+    {/if}
 
     <br />
 </section>

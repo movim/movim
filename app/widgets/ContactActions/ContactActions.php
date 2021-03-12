@@ -52,7 +52,7 @@ class ContactActions extends Base
             $tpl->assign('pictures', \App\Message::jid($jid)
                                                 ->where('picture', true)
                                                 ->orderBy('published', 'desc')
-                                                ->take(8)
+                                                ->take(32)
                                                 ->get());
             $tpl->assign('roster', $this->user->session->contacts()->where('jid', $jid)->first());
         } else {
@@ -63,6 +63,7 @@ class ContactActions extends Base
         $tpl->assign('clienttype', getClientTypes());
 
         Drawer::fill($tpl->draw('_contactactions_drawer'));
+        $this->rpc('Tabs.create');
     }
 
     public function ajaxAdd($form)

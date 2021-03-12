@@ -5,7 +5,7 @@
         </div>
     </li>
     {loop="$users"}
-        <li class="block" title="{$value->jid}">
+        <li class="block active" title="{$value->jid}" onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}')">
             {$url = $value->getPhoto('m')}
             {if="$url"}
                 <span class="primary icon bubble
@@ -23,10 +23,6 @@
                     <i class="material-icons">person</i>
                 </span>
             {/if}
-
-            <span class="control icon active gray" onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}')">
-                <i class="material-icons">person</i>
-            </span>
 
             <div>
                 <p class="normal line">
