@@ -66,6 +66,7 @@ class GetItem extends Errors
                     $this->deliver();
                 } elseif (isset($item->metadata)
                 && (string)$item->metadata->attributes()->xmlns == 'urn:xmpp:avatar:metadata'
+                && isset($item->metadata->info)
                 && isset($item->metadata->info->attributes()->url)) {
                     $i = \App\Info::where('server', $this->_to)
                                   ->where('node', $this->_node)

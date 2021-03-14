@@ -8,14 +8,14 @@
         <ul class="list thick">
             <li>
                 {if="$url"}
-                    <span onclick="MovimUtils.reload('{$c->route('contact', $roster->jid)}')"
+                    <span onclick="MovimUtils.reload('{$c->route('contact', $jid)}')"
                     class="primary icon bubble color active
                         {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}
                     ">
                         <img src="{$url}">
                     </span>
                 {elseif="!$contact->isFromMuc()"}
-                    <span  onclick="MovimUtils.reload('{$c->route('contact', $roster->jid)}')"
+                    <span  onclick="MovimUtils.reload('{$c->route('contact', $jid)}')"
                     class="primary icon bubble color {$contact->id|stringToColor} active
                         {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}
                     ">

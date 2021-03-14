@@ -61,7 +61,7 @@
                 </span>
             {/if}
 
-            <span class="control icon show_context_menu active {if="!$conference->connected"}disabled{/if}">
+            <span class="control icon show_context_menu active {if="$conference && !$conference->connected"}disabled{/if}">
                 <i class="material-icons">more_vert</i>
             </span>
 
@@ -124,7 +124,7 @@
     </ul>
 
     <ul class="list context_menu thin active">
-        {if="$conference->presence && !$anon"}
+        {if="$conference && $conference->presence && !$anon"}
             {if="$conference->presence->mucrole == 'moderator' || $conference->presence->mucaffiliation == 'owner'"}
                 <li class="subheader">
                     <span class="control icon">
@@ -135,7 +135,7 @@
                     </div>
                 </li>
             {/if}
-            {if="$conference->presence->mucrole == 'moderator'"}
+            {if="$conference && $conference->presence->mucrole == 'moderator'"}
                 <li onclick="RoomsUtils_ajaxGetAvatar('{$jid|echapJS}')">
                     <div>
                         <p class="normal">{$c->__('page.avatar')}</p>
@@ -147,7 +147,7 @@
                     </div>
                 </li>
             {/if}
-            {if="$conference->presence->mucaffiliation == 'owner'"}
+            {if="$cpnference && $conference->presence->mucaffiliation == 'owner'"}
                 <li onclick="Chat_ajaxGetRoomConfig('{$jid|echapJS}')">
                     <div>
                         <p class="normal">{$c->__('chatroom.administration')}</p>

@@ -60,6 +60,7 @@ class ContactActions extends Base
             $tpl->assign('roster', null);
         }
 
+        $tpl->assign('jid', $jid);
         $tpl->assign('clienttype', getClientTypes());
 
         Drawer::fill($tpl->draw('_contactactions_drawer'));
