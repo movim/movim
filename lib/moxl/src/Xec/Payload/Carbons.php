@@ -27,6 +27,8 @@ class Carbons extends Payload
                 // Another client just displayed the message
                 $displayed = new Displayed;
                 $displayed->handle($message->displayed, $message);
+            } elseif (count($jingle_messages = $stanza->xpath('//*[@xmlns="urn:xmpp:jingle-message:0"]')) >= 1) {
+                \Moxl\Xec\Handler::handleNode($jingle_messages[0], $message);
             }
         }
     }
