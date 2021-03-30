@@ -1,4 +1,4 @@
-<section>
+<section id="publishpreview">
     {if="empty($title)"}
         <h3>{$c->__('publish.preview')}</h3>
     {else}
@@ -15,8 +15,6 @@
         </section>
     </article>
 </section>
-<div class="no_bar">
-    <button onclick="Dialog_ajaxClear()" class="button flat">
-        {$c->__('button.close')}
-    </button>
+<div>
+
 </div>

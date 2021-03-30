@@ -3,7 +3,6 @@
 use Movim\Widget\Base;
 
 use Respect\Validation\Validator;
-use App\User;
 
 include_once WIDGETS_PATH.'Post/Post.php';
 

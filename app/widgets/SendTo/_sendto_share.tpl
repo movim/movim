@@ -12,7 +12,7 @@
             {if="$c->getUser()->hasPubsub()"}
                 <li>
                     <span class="control icon active gray"
-                        onclick="MovimUtils.redirect('{$c->route('publish', [$post->server, $post->node, $post->nodeid, 'share'])}')">
+                        onclick="MovimUtils.redirect('{$c->route('publish', [$c->getUser()->id, 'urn:xmpp:microblog:0', '', $post->id])}')">
                         <i class="material-icons">share</i>
                     </span>
                     <div>

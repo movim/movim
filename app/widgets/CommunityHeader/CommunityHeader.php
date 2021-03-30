@@ -43,7 +43,7 @@ class CommunityHeader extends Base
 
     public function onTestPublishError($packet)
     {
-        Toast::send($this->__('publishbrief.no_publication'));
+        Toast::send($this->__('publish.no_publication'));
     }
 
     public function onSubscribed($packet)

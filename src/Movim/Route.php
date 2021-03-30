@@ -40,7 +40,7 @@ class Route extends Base
                 'post'          => ['s', 'n', 'i'],
                 'picture'       => ['url'],
                 'popuptest'     => false,
-                'publish'       => ['s', 'n', 'i', 'sh'],
+                'publish'       => ['s', 'n', 'i', 'r'],
                 'room'          => ['r'],
                 'share'         => ['url'],
                 'subscriptions' => false,

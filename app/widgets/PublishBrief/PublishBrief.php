@@ -19,8 +19,8 @@ class PublishBrief extends Base
         $this->registerEvent('pubsub_postpublish_handle', 'onPublish');
         $this->registerEvent('microblog_commentcreatenode_handle', 'onCommentNodeCreated');
 
-        $this->addjs('publishbrief.js');
-        $this->addcss('publishbrief.css');
+        $this->addjs('publish.js');
+        $this->addcss('publish.css');
     }
 
     public function onPublish($packet)
@@ -75,7 +75,7 @@ class PublishBrief extends Base
             '#publishbrief',
             $this->preparePublishBrief($server, $node, $id, $reply, $extended)
         );
-        $this->rpc('PublishBrief.checkEmbed');
+        $this->rpc('publish.checkEmbed');
     }
 
     public function ajaxHttpSaveDraft($form)
@@ -111,13 +111,13 @@ class PublishBrief extends Base
 
             Dialog::fill($view->draw('_publishbrief_preview'), true);
         } else {
-            Toast::send($this->__('publishbrief.no_content_preview'));
+            Toast::send($this->__('publish.no_content_preview'));
         }
     }
 
     public function ajaxHttpDaemonPublish($form)
     {
-        $this->rpc('PublishBrief.disableSend');
+        $this->rpc('publish.disableSend');
 
         Cache::c('draft', null);
 
@@ -232,8 +232,8 @@ class PublishBrief extends Base
             $p->request();
             $this->ajaxGet();
         } else {
-            $this->rpc('PublishBrief.enableSend');
-            Toast::send($this->__('publishbrief.no_title'));
+            $this->rpc('publish.enableSend');
+            Toast::send($this->__('publish.no_title'));
         }
     }
 
@@ -255,7 +255,7 @@ class PublishBrief extends Base
         }
 
         if (!Validator::url()->validate($url)) {
-            Toast::send($this->__('publishbrief.valid_url'));
+            Toast::send($this->__('publish.valid_url'));
             $this->ajaxClearEmbed();
             return;
         }
@@ -266,7 +266,7 @@ class PublishBrief extends Base
             $embed = (new \App\Url)->resolve($url);
             $this->rpc('MovimTpl.fill', '#publishbrief ul.embed', $this->prepareEmbed($embed, $imagenumber));
             if ($embed->type == 'link') {
-                $this->rpc('PublishBrief.setTitle', $embed->title);
+                $this->rpc('publish.setTitle', $embed->title);
             }
         } catch (Exception $e) {
             $this->ajaxClearEmbed();

@@ -22,8 +22,7 @@
         <?php $this->widget('NewsNav');?>
     </aside>
     <div>
-    <?php $this->widget('PublishBrief');?>
-    <?php $this->widget('Menu');?>
+        <?php $this->widget('Menu');?>
     </div>
 </main>
 

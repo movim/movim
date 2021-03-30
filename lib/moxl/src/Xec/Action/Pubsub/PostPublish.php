@@ -27,7 +27,6 @@ class PostPublish extends Errors
         }
 
         $this->store();
-
         Pubsub::postPublish($this->_to, $this->_node, $this->_atom);
     }
 
@@ -63,20 +62,32 @@ class PostPublish extends Errors
         return $this;
     }
 
-    public function setLink(
+    public function addLink(
         $href,
         $title = null,
         $type = 'text/html',
         $description = null,
         $logo = null
     ) {
-        $this->_atom->link = [
+        array_push($this->_atom->links, [
             'href'  => $href,
             'title' => $title,
             'type'  => $type,
             'description' => $description,
             'logo'  => $logo
-        ];
+        ]);
+
+        return $this;
+    }
+
+    public function addImage($href, $title = null, $type = null)
+    {
+        array_push($this->_atom->images, [
+            'href' => $href,
+            'title' => $title,
+            'type' => $type
+        ]);
+
         return $this;
     }
 
@@ -96,17 +107,6 @@ class PostPublish extends Errors
     public function setPublished($published)
     {
         $this->_atom->published = $published;
-        return $this;
-    }
-
-    public function setImage($href, $title = null, $type = null)
-    {
-        $this->_atom->image = [
-            'href' => $href,
-            'title' => $title,
-            'type' => $type
-        ];
-
         return $this;
     }
 

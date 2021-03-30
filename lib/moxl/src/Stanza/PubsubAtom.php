@@ -9,9 +9,10 @@ class PubsubAtom
     public $jid;
     public $content;
     public $title;
-    public $link;
 
-    public $image;
+    public $links = [];
+    public $images = [];
+
     public $contentxhtml = false;
 
     public $repost;
@@ -102,23 +103,25 @@ class PubsubAtom
             $entry->appendChild($link);
         }
 
-        if ($this->link && is_array($this->link)) {
-            $link = $dom->createElement('link');
-            $link->setAttribute('rel', 'related');
-            $link->setAttribute('href', $this->link['href']);
-            if ($this->link['type'] != null) {
-                $link->setAttribute('type', $this->link['type']);
+        foreach ($this->links as $link) {
+            if (is_array($link)) {
+                $linke = $dom->createElement('link');
+                $linke->setAttribute('rel', 'related');
+                $linke->setAttribute('href', $link['href']);
+                if ($link['type'] != null) {
+                    $linke->setAttribute('type', $link['type']);
+                }
+                if ($link['title'] != null) {
+                    $linke->setAttribute('title', $link['title']);
+                }
+                if ($link['description'] != null) {
+                    $linke->setAttribute('description', $link['description']);
+                }
+                if ($link['logo'] != null) {
+                    $linke->setAttribute('logo', $link['logo']);
+                }
+                $entry->appendChild($linke);
             }
-            if ($this->link['title'] != null) {
-                $link->setAttribute('title', $this->link['title']);
-            }
-            if ($this->link['description'] != null) {
-                $link->setAttribute('description', $this->link['description']);
-            }
-            if ($this->link['logo'] != null) {
-                $link->setAttribute('logo', $this->link['logo']);
-            }
-            $entry->appendChild($link);
         }
 
         if ($this->repost) {
@@ -134,17 +137,19 @@ class PubsubAtom
             $entry->appendChild($thr);
         }
 
-        if ($this->image && is_array($this->image)) {
-            $link = $dom->createElement('link');
-            $link->setAttribute('rel', 'enclosure');
-            $link->setAttribute('href', $this->image['href']);
-            if ($this->image['type'] != null) {
-                $link->setAttribute('type', $this->image['type']);
+        foreach ($this->images as $image) {
+            if (is_array($image)) {
+                $link = $dom->createElement('link');
+                $link->setAttribute('rel', 'enclosure');
+                $link->setAttribute('href', $image['href']);
+                if ($image['type'] != null) {
+                    $link->setAttribute('type', $image['type']);
+                }
+                if ($image['title'] != null) {
+                    $link->setAttribute('title', $image['title']);
+                }
+                $entry->appendChild($link);
             }
-            if ($this->image['title'] != null) {
-                $link->setAttribute('title', $this->image['title']);
-            }
-            $entry->appendChild($link);
         }
 
         /*if ($this->geo) {

@@ -181,11 +181,6 @@ var Snap = {
 Upload.attach((file) => {
     const page = MovimUtils.urlParts().page;
 
-    if (page != 'chat') {
-        document.querySelector('input[name=embed]').value = file.uri;
-        PublishBrief.checkEmbed();
-    }
-
     if (Snap.snap) Snap.end();
 });
 

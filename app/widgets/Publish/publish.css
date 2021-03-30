@@ -1,0 +1,43 @@
+#publishembeds li {
+    border: 1px solid rgba(var(--movim-font), 0.12);
+    border-radius: 0.5rem;
+}
+
+#publishembeds li {
+    padding-right: 0;
+}
+
+#publishpreview h3:first-child {
+    margin: 1rem 2rem 0;
+}
+
+#publish label span.save {
+    display: none;
+}
+
+#publish label span.save.saved {
+    display: initial;
+}
+#publish span.privacy {
+    margin-right: 1.75rem;
+}
+
+#publish span.privacy form > div .checkbox {
+    margin-top: calc(50% - 3rem);
+    width: 5rem;
+    height: 3.5rem;
+}
+
+#publish span.privacy form > div .checkbox > input[type="checkbox"] + label {
+    top: 0;
+    height: 3.5rem;
+    width: 3.5rem;
+}
+
+#publish span.privacy form > div .checkbox > input[type="checkbox"] + label i:before {
+    content: 'lock';
+}
+
+#publish span.privacy form > div .checkbox > input[type="checkbox"]:checked + label i:before {
+    content: 'wifi_tethering';
+}

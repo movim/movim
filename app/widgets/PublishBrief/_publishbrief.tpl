@@ -20,10 +20,10 @@
                         {elseif="$reply"}
                             {$c->__('button.share')}
                         {else}
-                            {$c->__('publishbrief.new')}
+                            {$c->__('publish.new')}
                         {/if}
                     </p>
-                    <p>{$c->__('publishbrief.rich_editor')}</p>
+                    <p>{$c->__('publish.rich_editor')}</p>
                 </div>
             </li>
         </ul>
@@ -40,7 +40,7 @@
         <li>
             {if="!$extended"}
                 <span class="control icon active gray"
-                    title="{$c->__('publishbrief.post')}"
+                    title="{$c->__('publish.post')}"
                     onclick="MovimUtils.reload('{$c->route('publish')}')">
                     <i class="material-icons">open_in_full</i>
                 </span>
@@ -65,14 +65,14 @@
                         rows="1"
                         required
                         data-autoheight="true"
-                        placeholder="{$c->__('publishbrief.placeholder')}"
+                        placeholder="{$c->__('publish.placeholder')}"
                         type="text">{if="$post"}{$post->title}{elseif="$draft && !empty($draft->title)"}{$draft->title}{elseif="$reply"}{$reply->title}{/if}</textarea>
                     {if="$extended"}
-                        <label for="desc">{$c->__('publishbrief.title')}</label>
+                        <label for="desc">{$c->__('publish.title')}</label>
                     {else}
                         <span id="saved" class="info">
                             <i class="material-icons">saved</i>
-                            {$c->__('publishbrief.draft_saved')}
+                            {$c->__('publish.draft_saved')}
                         </span>
                     {/if}
                 </div>
@@ -83,14 +83,14 @@
                         {/if}
                         dir="auto"
                         name="content"
-                        placeholder="{$c->__('publishbrief.content_text')}"
+                        placeholder="{$c->__('publish.content_text')}"
                         data-autoheight="true"
                         >{if="$post"}{$post->decodedContentraw}{elseif="$draft && !empty($draft->content)"}{$draft->content}{/if}</textarea>
                     {if="$extended"}
-                        <label for="desc">{$c->__('publishbrief.content')}</label>
+                        <label for="desc">{$c->__('publish.content')}</label>
                         <span id="saved" class="info">
                             <i class="material-icons">saved</i>
-                            {$c->__('publishbrief.draft_saved')}
+                            {$c->__('publish.draft_saved')}
                         </span>
                     {/if}
                 </div>
@@ -153,7 +153,7 @@
             </span>
             {if="$extended"}
                 <span class="control icon active gray"
-                    title="{$c->__('publishbrief.preview')}"
+                    title="{$c->__('publish.preview')}"
                     onclick="PublishBrief_ajaxPreview(MovimUtils.formToJson('brief'))">
                     <i class="material-icons">visibility</i>
                 </span>

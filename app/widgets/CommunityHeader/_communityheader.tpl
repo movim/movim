@@ -20,6 +20,10 @@
                 <span class="primary icon bubble">
                     <img src="{$url}"/>
                 </span>
+            {else}
+                <span class="primary icon bubble color {$info->node|stringToColor}">
+                    {$info->node|firstLetterCapitalize}
+                </span>
             {/if}
         {/if}
         <div>

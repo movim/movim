@@ -15,7 +15,7 @@
         <?php $this->widget('PublishHelp');?>
     </aside>
     <div>
-        <?php $this->widget('PublishBrief');?>
+        <?php $this->widget('Publish');?>
     </div>
 </main>
 

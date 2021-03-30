@@ -1,3 +1,9 @@
+{if="$contact->isMe()"}
+    <a href="{$c->route('publish')}" class="button action color" title="{$c->__('menu.add_post')}">
+        <i class="material-icons">post_add</i>
+    </a>
+{/if}
+
 <ul class="list thick">
     <li>
         <span class="control active icon gray" onclick="ContactActions_ajaxGetDrawer('{$contact->id|echapJS}')">

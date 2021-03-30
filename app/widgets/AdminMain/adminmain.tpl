@@ -175,7 +175,7 @@
             <div>
                 <p>{$c->__('information.info1')}</p>
                 <p>{$c->__('information.info2')}</p>
-                <p>{$c->__('publishbrief.content_text')}</p>
+                <p>{$c->__('publish.content_text')}</p>
             </div>
         </li>
     </ul>
