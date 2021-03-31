@@ -32,6 +32,10 @@
     margin-left: 2rem;
 }
 
+#publish textarea[name=content] {
+    min-height: 25rem;
+}
+
 #publish span.privacy form > div .checkbox > input[type="checkbox"] + label {
     top: 0;
     height: 3.5rem;
