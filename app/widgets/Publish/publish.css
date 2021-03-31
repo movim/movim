@@ -28,6 +28,10 @@
     height: 3.5rem;
 }
 
+#publish .button.send {
+    margin-left: 2rem;
+}
+
 #publish span.privacy form > div .checkbox > input[type="checkbox"] + label {
     top: 0;
     height: 3.5rem;

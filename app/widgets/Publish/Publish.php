@@ -109,6 +109,8 @@ class Publish extends Base
 
     public function ajaxPublish($id)
     {
+        $this->rpc('Publish.disableSend');
+
         $draft = $this->user->drafts()->find($id);
 
         if ($draft && !$draft->empty()) {
@@ -240,7 +242,7 @@ class Publish extends Base
             $p->request();
             $draft->delete();
         } else {
-            $this->rpc('publish.enableSend');
+            $this->rpc('Publish.enableSend');
             Toast::send($this->__('publish.no_title'));
         }
     }

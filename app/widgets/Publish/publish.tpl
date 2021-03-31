@@ -2,9 +2,6 @@
     <header>
         <ul class="list thick">
             <li>
-                <span class="control icon gray active on_mobile" onclick="PublishHelp_ajaxDrawer()">
-                    <i class="material-icons">help</i>
-                </span>
                 <span class="control privacy"
                 title="{$c->__('post.public')}">
                     <form>
@@ -156,19 +153,16 @@
                         </a>
                     {/if}
 
-                    <button class="button oppose color on_desktop" onclick="Publish.publish()">
+                    <button class="button send oppose color" onclick="Publish.publish()">
                         <i class="material-icons">send</i>
-                        {$c->__('page.publish')}
+                        <span class="on_desktop">{$c->__('page.publish')}</span>
                     </button>
-                    <button class="button oppose color on_mobile" onclick="Publish.publish()">
-                        <i class="material-icons">send</i>
-                    </button>
-                    <button class="button flat oppose gray on_desktop" onclick="Publish.preview()">
+                    <button class="button flat oppose gray" onclick="Publish.preview()">
                         <i class="material-icons">visibility</i>
-                        {$c->__('publish.preview')}
+                        <span class="on_desktop">{$c->__('publish.preview')}</span>
                     </button>
-                    <button class="button flat oppose gray on_mobile" onclick="Publish.preview()">
-                        <i class="material-icons">visibility</i>
+                    <button class="button flat oppose gray on_mobile" onclick="PublishHelp_ajaxDrawer()">
+                        <i class="material-icons">help</i>
                     </button>
                 </div>
             </li>
