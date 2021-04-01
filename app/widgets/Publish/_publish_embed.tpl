@@ -5,20 +5,21 @@
         <i class="material-icons">close</i>
     </span>
     {if="count($resolved->images) > 1"}
-        {if="$embed->imagenumber == 0"}
-            {$imagenumber = 0}
-        {else}
+        {if="$embed->imagenumber > 0"}
             {$imagenumber = $embed->imagenumber-1}
         {/if}
-        <span class="primary icon thumb active color gray"
+        <span class="primary icon thumb active {if="$embed->imagenumber > 0"}color gray{/if}"
             onclick="Publish_ajaxEmbedChooseImage({$embed->draft_id}, {$embed->id})"
-            style="background-image: url({$resolved->images[$imagenumber]['url']|protectPicture})"
-            title="{$resolved->images[$imagenumber]['width']} x {$resolved->images[$imagenumber]['height']} - {$resolved->images[$imagenumber]['size']|sizeToCleanSize}"
+
+            {if="$embed->imagenumber > 0"}
+                style="background-image: url({$resolved->images[$imagenumber]['url']|protectPicture})"
+                title="{$resolved->images[$imagenumber]['width']} x {$resolved->images[$imagenumber]['height']} - {$resolved->images[$imagenumber]['size']|sizeToCleanSize}"
+            {/if}
             >
             <i class="material-icons">collections</i>
         </span>
     {else}
-        {if="!empty($resolved->images)"}
+        {if="!empty($resolved->images) && (count($resolved->images) > 1 || $resolved->images[0]['url'] == $embed->url)"}
             <span class="primary icon thumb active color gray"
                 onclick="Preview_ajaxShow('{$resolved->images[0]['url']}')"
                 style="background-image: url({$resolved->images[0]['url']|protectPicture})">
