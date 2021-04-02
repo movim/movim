@@ -74,6 +74,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Preview/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Publish/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/PublishBrief/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/PublishHelp/locales.ini
@@ -105,7 +107,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-31 12:33+0200\n"
+"POT-Creation-Date: 2021-04-02 13:07+0200\n"
 "PO-Revision-Date: 2020-11-04 07:45+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
 "Language-Team: Albanian (http://www.transifex.com/movim/movim/language/sq/)\n"
@@ -295,6 +297,14 @@ msgstr "Emër përdoruesi"
 #: [credentials]re_password
 msgid "Retype password"
 msgstr "Rishtypeni fjalëkalimin"
+
+#: [disableregistration]title
+msgid "Disable the XMPP registration feature"
+msgstr ""
+
+#: [disableregistration]text
+msgid "Remove the XMPP registration flow and buttons from the interface"
+msgstr ""
 
 #: [whitelist]title
 msgid "Whitelisted XMPP Servers"
@@ -1472,7 +1482,7 @@ msgstr "Ç’është Në Modë"
 msgid "Posts recently published in communities that you are not subscribed (yet)"
 msgstr "Postime botuar së fundi në bashkësi te të cilat s’jeni pajtuar (ende)"
 
-#: [post]new [publishbrief]new
+#: [post]new [publish]new [publishbrief]new
 msgid "New post"
 msgstr "Postim i ri"
 
@@ -1628,63 +1638,63 @@ msgstr "Doni vërtet të dilni?"
 msgid "Link copied to clipboard"
 msgstr ""
 
-#: [publishbrief]placeholder
+#: [publish]placeholder [publishbrief]placeholder
 msgid "What’s new?"
 msgstr "Ç’ka të re?"
 
-#: [publishbrief]post
+#: [publish]post [publishbrief]post
 msgid "Write a post"
 msgstr "Shkruani një postim"
 
-#: [publishbrief]add_link
+#: [publish]add_link [publishbrief]add_link
 msgid "Add a link"
 msgstr "Shtoni një lidhje"
 
-#: [publishbrief]add_snap
+#: [publish]add_snap [publishbrief]add_snap
 msgid "Take a picture"
 msgstr "Bëni një foto"
 
-#: [publishbrief]no_title
+#: [publish]no_title [publishbrief]no_title
 msgid "Please provide a title"
 msgstr "Ju lutemi, jepni një titull"
 
-#: [publishbrief]preview
+#: [publish]preview [publishbrief]preview
 msgid "Preview"
 msgstr "Paraparje"
 
-#: [publishbrief]attach
+#: [publish]attach [publishbrief]attach
 msgid "Add a file or a picture"
 msgstr "Shtoni një kartelë ose një foto"
 
-#: [publishbrief]no_publication
+#: [publish]no_publication [publishbrief]no_publication
 msgid "You cannot publish a post here"
 msgstr "S’mund të botoni postim këtu"
 
-#: [publishbrief]no_content_preview
+#: [publish]no_content_preview [publishbrief]no_content_preview
 msgid "No content to preview"
 msgstr "S’ka lëndë për paraparje"
 
-#: [publishbrief]title
+#: [publish]title [publishbrief]title
 msgid "Post title"
 msgstr "Titull postimi"
 
-#: [publishbrief]content
+#: [publish]content [publishbrief]content
 msgid "Markdown content"
 msgstr "Lëndë Markdown"
 
-#: [publishbrief]valid_url
+#: [publish]valid_url [publishbrief]valid_url
 msgid "Please enter a valid URL"
 msgstr "Ju lutemi, jepni një URL të vlefshme"
 
-#: [publishbrief]content_text
+#: [publish]content_text [publishbrief]content_text
 msgid "You can format your content using Markdown"
 msgstr "Lëndën tuaj mund ta formatoni duke përdorur Markdown"
 
-#: [publishbrief]draft_saved
+#: [publish]draft_saved [publishbrief]draft_saved
 msgid "Draft saved"
 msgstr "Skica u ruajt"
 
-#: [publishbrief]rich_editor
+#: [publish]rich_editor [publishbrief]rich_editor
 msgid "Rich text editor"
 msgstr "Përpunues teksti të pasur"
 

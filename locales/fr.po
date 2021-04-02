@@ -80,6 +80,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Preview/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Publish/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/PublishBrief/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/PublishHelp/locales.ini
@@ -111,7 +113,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-31 12:33+0200\n"
+"POT-Creation-Date: 2021-04-02 13:07+0200\n"
 "PO-Revision-Date: 2021-01-30 14:25+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: French (France) (http://www.transifex.com/movim/movim/language/fr_FR/)\n"
@@ -301,6 +303,14 @@ msgstr "Nom d’utilisateur"
 #: [credentials]re_password
 msgid "Retype password"
 msgstr "Ressaisissez le mot de passe"
+
+#: [disableregistration]title
+msgid "Disable the XMPP registration feature"
+msgstr ""
+
+#: [disableregistration]text
+msgid "Remove the XMPP registration flow and buttons from the interface"
+msgstr ""
 
 #: [whitelist]title
 msgid "Whitelisted XMPP Servers"
@@ -1473,7 +1483,7 @@ msgstr "Quoi de neuf"
 msgid "Posts recently published in communities that you are not subscribed (yet)"
 msgstr "Billets récemment publiés dans les communautés auxquelles vous n'êtes pas (encore) inscrit"
 
-#: [post]new [publishbrief]new
+#: [post]new [publish]new [publishbrief]new
 msgid "New post"
 msgstr "Nouveau billet"
 
@@ -1629,63 +1639,63 @@ msgstr "Souhaitez-vous réellement vous déconnecter ?"
 msgid "Link copied to clipboard"
 msgstr "Lien copié dans le presse-papier"
 
-#: [publishbrief]placeholder
+#: [publish]placeholder [publishbrief]placeholder
 msgid "What’s new?"
 msgstr "Quoi de neuf ?"
 
-#: [publishbrief]post
+#: [publish]post [publishbrief]post
 msgid "Write a post"
 msgstr "Écrire un billet"
 
-#: [publishbrief]add_link
+#: [publish]add_link [publishbrief]add_link
 msgid "Add a link"
 msgstr "Ajouter un lien"
 
-#: [publishbrief]add_snap
+#: [publish]add_snap [publishbrief]add_snap
 msgid "Take a picture"
 msgstr "Prendre une photo"
 
-#: [publishbrief]no_title
+#: [publish]no_title [publishbrief]no_title
 msgid "Please provide a title"
 msgstr "Veuillez mettre un titre à votre publication"
 
-#: [publishbrief]preview
+#: [publish]preview [publishbrief]preview
 msgid "Preview"
 msgstr "Aperçu"
 
-#: [publishbrief]attach
+#: [publish]attach [publishbrief]attach
 msgid "Add a file or a picture"
 msgstr "Ajouter un fichier ou une image"
 
-#: [publishbrief]no_publication
+#: [publish]no_publication [publishbrief]no_publication
 msgid "You cannot publish a post here"
 msgstr "Vous ne pouvez pas publier de billet ici"
 
-#: [publishbrief]no_content_preview
+#: [publish]no_content_preview [publishbrief]no_content_preview
 msgid "No content to preview"
 msgstr "Pas de contenu à afficher"
 
-#: [publishbrief]title
+#: [publish]title [publishbrief]title
 msgid "Post title"
 msgstr "Titre de l'article"
 
-#: [publishbrief]content
+#: [publish]content [publishbrief]content
 msgid "Markdown content"
 msgstr "Contenu Markdown"
 
-#: [publishbrief]valid_url
+#: [publish]valid_url [publishbrief]valid_url
 msgid "Please enter a valid URL"
 msgstr "Veuillez entrer une URL valide"
 
-#: [publishbrief]content_text
+#: [publish]content_text [publishbrief]content_text
 msgid "You can format your content using Markdown"
 msgstr "Vous pouvez enrichir le contenu en utilisant Markdown"
 
-#: [publishbrief]draft_saved
+#: [publish]draft_saved [publishbrief]draft_saved
 msgid "Draft saved"
 msgstr "Brouillon sauvegardé"
 
-#: [publishbrief]rich_editor
+#: [publish]rich_editor [publishbrief]rich_editor
 msgid "Rich text editor"
 msgstr "Éditeur de texte enrichi"
 

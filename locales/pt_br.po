@@ -82,6 +82,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Preview/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Publish/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/PublishBrief/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/PublishHelp/locales.ini
@@ -113,7 +115,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-31 12:33+0200\n"
+"POT-Creation-Date: 2021-04-02 13:07+0200\n"
 "PO-Revision-Date: 2020-11-03 22:14+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/movim/movim/language/pt_BR/)\n"
@@ -303,6 +305,14 @@ msgstr "Nome de usuário"
 #: [credentials]re_password
 msgid "Retype password"
 msgstr "Digite a senha novamente"
+
+#: [disableregistration]title
+msgid "Disable the XMPP registration feature"
+msgstr ""
+
+#: [disableregistration]text
+msgid "Remove the XMPP registration flow and buttons from the interface"
+msgstr ""
 
 #: [whitelist]title
 msgid "Whitelisted XMPP Servers"
@@ -1480,7 +1490,7 @@ msgstr "O que há de novo"
 msgid "Posts recently published in communities that you are not subscribed (yet)"
 msgstr "Postagens recentemente publicadas em comunidades nas quais ainda não está inscrito"
 
-#: [post]new [publishbrief]new
+#: [post]new [publish]new [publishbrief]new
 msgid "New post"
 msgstr "Novo artigo"
 
@@ -1638,63 +1648,63 @@ msgstr "Você realmente quer sair?"
 msgid "Link copied to clipboard"
 msgstr ""
 
-#: [publishbrief]placeholder
+#: [publish]placeholder [publishbrief]placeholder
 msgid "What’s new?"
 msgstr "O que há de novo?"
 
-#: [publishbrief]post
+#: [publish]post [publishbrief]post
 msgid "Write a post"
 msgstr "Escrever uma postagem"
 
-#: [publishbrief]add_link
+#: [publish]add_link [publishbrief]add_link
 msgid "Add a link"
 msgstr "Adicionar um novo endereço"
 
-#: [publishbrief]add_snap
+#: [publish]add_snap [publishbrief]add_snap
 msgid "Take a picture"
 msgstr "Tirar uma fotografia"
 
-#: [publishbrief]no_title
+#: [publish]no_title [publishbrief]no_title
 msgid "Please provide a title"
 msgstr "Por favor forneça um título"
 
-#: [publishbrief]preview
+#: [publish]preview [publishbrief]preview
 msgid "Preview"
 msgstr "Visualizar"
 
-#: [publishbrief]attach
+#: [publish]attach [publishbrief]attach
 msgid "Add a file or a picture"
 msgstr "Adicione um arquivo ou imagem"
 
-#: [publishbrief]no_publication
+#: [publish]no_publication [publishbrief]no_publication
 msgid "You cannot publish a post here"
 msgstr "Você não pode publicar um artigo aqui"
 
-#: [publishbrief]no_content_preview
+#: [publish]no_content_preview [publishbrief]no_content_preview
 msgid "No content to preview"
 msgstr "Sem conteúdo para visualizar"
 
-#: [publishbrief]title
+#: [publish]title [publishbrief]title
 msgid "Post title"
 msgstr "Título da postagem"
 
-#: [publishbrief]content
+#: [publish]content [publishbrief]content
 msgid "Markdown content"
 msgstr "Conteúdo do Markdown"
 
-#: [publishbrief]valid_url
+#: [publish]valid_url [publishbrief]valid_url
 msgid "Please enter a valid URL"
 msgstr "Por favor informe um URL válido"
 
-#: [publishbrief]content_text
+#: [publish]content_text [publishbrief]content_text
 msgid "You can format your content using Markdown"
 msgstr "Você pode formatar o seu conteúdo utilizando Markdown"
 
-#: [publishbrief]draft_saved
+#: [publish]draft_saved [publishbrief]draft_saved
 msgid "Draft saved"
 msgstr "Rascunho guardado"
 
-#: [publishbrief]rich_editor
+#: [publish]rich_editor [publishbrief]rich_editor
 msgid "Rich text editor"
 msgstr "Editor de texto avançado"
 

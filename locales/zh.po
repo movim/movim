@@ -82,6 +82,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Preview/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Publish/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/PublishBrief/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/PublishHelp/locales.ini
@@ -113,7 +115,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-31 12:33+0200\n"
+"POT-Creation-Date: 2021-04-02 13:07+0200\n"
 "PO-Revision-Date: 2020-11-03 22:14+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -303,6 +305,14 @@ msgstr "用户名"
 #: [credentials]re_password
 msgid "Retype password"
 msgstr "重新输入密码"
+
+#: [disableregistration]title
+msgid "Disable the XMPP registration feature"
+msgstr ""
+
+#: [disableregistration]text
+msgid "Remove the XMPP registration flow and buttons from the interface"
+msgstr ""
 
 #: [whitelist]title
 msgid "Whitelisted XMPP Servers"
@@ -1480,7 +1490,7 @@ msgstr "流行"
 msgid "Posts recently published in communities that you are not subscribed (yet)"
 msgstr "在你（还）没订阅的群组中发表的新帖子"
 
-#: [post]new [publishbrief]new
+#: [post]new [publish]new [publishbrief]new
 msgid "New post"
 msgstr "新帖子"
 
@@ -1636,63 +1646,63 @@ msgstr "确认登出？"
 msgid "Link copied to clipboard"
 msgstr ""
 
-#: [publishbrief]placeholder
+#: [publish]placeholder [publishbrief]placeholder
 msgid "What’s new?"
 msgstr ""
 
-#: [publishbrief]post
+#: [publish]post [publishbrief]post
 msgid "Write a post"
 msgstr "发一篇帖子…"
 
-#: [publishbrief]add_link
+#: [publish]add_link [publishbrief]add_link
 msgid "Add a link"
 msgstr "添加链接"
 
-#: [publishbrief]add_snap
+#: [publish]add_snap [publishbrief]add_snap
 msgid "Take a picture"
 msgstr "拍照"
 
-#: [publishbrief]no_title
+#: [publish]no_title [publishbrief]no_title
 msgid "Please provide a title"
 msgstr "请提供一个标题"
 
-#: [publishbrief]preview
+#: [publish]preview [publishbrief]preview
 msgid "Preview"
 msgstr "预览"
 
-#: [publishbrief]attach
+#: [publish]attach [publishbrief]attach
 msgid "Add a file or a picture"
 msgstr "附加文件或图片"
 
-#: [publishbrief]no_publication
+#: [publish]no_publication [publishbrief]no_publication
 msgid "You cannot publish a post here"
 msgstr "你不能在这里发帖"
 
-#: [publishbrief]no_content_preview
+#: [publish]no_content_preview [publishbrief]no_content_preview
 msgid "No content to preview"
 msgstr "无内容可预览"
 
-#: [publishbrief]title
+#: [publish]title [publishbrief]title
 msgid "Post title"
 msgstr "帖子标题"
 
-#: [publishbrief]content
+#: [publish]content [publishbrief]content
 msgid "Markdown content"
 msgstr ""
 
-#: [publishbrief]valid_url
+#: [publish]valid_url [publishbrief]valid_url
 msgid "Please enter a valid URL"
 msgstr "请输入一个有效的URL"
 
-#: [publishbrief]content_text
+#: [publish]content_text [publishbrief]content_text
 msgid "You can format your content using Markdown"
 msgstr "你可以使用 Markdown 来格式化内容"
 
-#: [publishbrief]draft_saved
+#: [publish]draft_saved [publishbrief]draft_saved
 msgid "Draft saved"
 msgstr "草稿已保存"
 
-#: [publishbrief]rich_editor
+#: [publish]rich_editor [publishbrief]rich_editor
 msgid "Rich text editor"
 msgstr "富文本编辑器"
 

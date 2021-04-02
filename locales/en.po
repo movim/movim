@@ -71,6 +71,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Preview/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Publish/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/PublishBrief/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/PublishHelp/locales.ini
@@ -102,7 +104,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-31 12:33+0200\n"
+"POT-Creation-Date: 2021-04-02 13:07+0200\n"
 "PO-Revision-Date: 2020-11-03 22:14+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: English (http://www.transifex.com/movim/movim/language/en/)\n"
@@ -292,6 +294,14 @@ msgstr "Username"
 #: [credentials]re_password
 msgid "Retype password"
 msgstr "Retype password"
+
+#: [disableregistration]title
+msgid "Disable the XMPP registration feature"
+msgstr ""
+
+#: [disableregistration]text
+msgid "Remove the XMPP registration flow and buttons from the interface"
+msgstr ""
 
 #: [whitelist]title
 msgid "Whitelisted XMPP Servers"
@@ -1469,7 +1479,7 @@ msgstr "What’s Hot"
 msgid "Posts recently published in communities that you are not subscribed (yet)"
 msgstr "Posts recently published in communities that you are not subscribed (yet)"
 
-#: [post]new [publishbrief]new
+#: [post]new [publish]new [publishbrief]new
 msgid "New post"
 msgstr "New post"
 
@@ -1625,63 +1635,63 @@ msgstr "Do you really want to log out?"
 msgid "Link copied to clipboard"
 msgstr ""
 
-#: [publishbrief]placeholder
+#: [publish]placeholder [publishbrief]placeholder
 msgid "What’s new?"
 msgstr "What’s new?"
 
-#: [publishbrief]post
+#: [publish]post [publishbrief]post
 msgid "Write a post"
 msgstr "Write a post"
 
-#: [publishbrief]add_link
+#: [publish]add_link [publishbrief]add_link
 msgid "Add a link"
 msgstr "Add a link"
 
-#: [publishbrief]add_snap
+#: [publish]add_snap [publishbrief]add_snap
 msgid "Take a picture"
 msgstr "Take a picture"
 
-#: [publishbrief]no_title
+#: [publish]no_title [publishbrief]no_title
 msgid "Please provide a title"
 msgstr "Please provide a title"
 
-#: [publishbrief]preview
+#: [publish]preview [publishbrief]preview
 msgid "Preview"
 msgstr "Preview"
 
-#: [publishbrief]attach
+#: [publish]attach [publishbrief]attach
 msgid "Add a file or a picture"
 msgstr "Add a file or a picture"
 
-#: [publishbrief]no_publication
+#: [publish]no_publication [publishbrief]no_publication
 msgid "You cannot publish a post here"
 msgstr "You cannot publish a post here"
 
-#: [publishbrief]no_content_preview
+#: [publish]no_content_preview [publishbrief]no_content_preview
 msgid "No content to preview"
 msgstr "No content to preview"
 
-#: [publishbrief]title
+#: [publish]title [publishbrief]title
 msgid "Post title"
 msgstr "Post title"
 
-#: [publishbrief]content
+#: [publish]content [publishbrief]content
 msgid "Markdown content"
 msgstr "Markdown content"
 
-#: [publishbrief]valid_url
+#: [publish]valid_url [publishbrief]valid_url
 msgid "Please enter a valid URL"
 msgstr "Please enter a valid URL"
 
-#: [publishbrief]content_text
+#: [publish]content_text [publishbrief]content_text
 msgid "You can format your content using Markdown"
 msgstr "You can format your content using Markdown"
 
-#: [publishbrief]draft_saved
+#: [publish]draft_saved [publishbrief]draft_saved
 msgid "Draft saved"
 msgstr "Draft saved"
 
-#: [publishbrief]rich_editor
+#: [publish]rich_editor [publishbrief]rich_editor
 msgid "Rich text editor"
 msgstr "Rich text editor"
 

@@ -1,0 +1,189 @@
+#. extracted from ../app/widgets/AdminMain/locales.ini
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-02 13:07+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 3.3.2\n"
+
+#: [admin]general
+msgid "General Settings"
+msgstr ""
+
+#: [general]theme
+msgid "Theme"
+msgstr ""
+
+#: [general]language
+msgid "Default language"
+msgstr ""
+
+#: [general]log_verbosity
+msgid "Log verbosity"
+msgstr ""
+
+#: [restrictsuggestions]title
+msgid "Restrict suggestions"
+msgstr ""
+
+#: [restrictsuggestions]text
+msgid ""
+"Only suggest chatrooms, Communities and other contents that are available on "
+"the user XMPP server and related services"
+msgstr ""
+
+#: [chatonly]title
+msgid "Chat only"
+msgstr ""
+
+#: [chatonly]text
+msgid ""
+"Disable all the social feature (Communities, Blog…) and keep only the chat "
+"ones"
+msgstr ""
+
+#: [credentials]title
+msgid "Administration Credential"
+msgstr ""
+
+#: [credentials]username
+msgid "Username"
+msgstr ""
+
+#: [credentials]password
+msgid "Password"
+msgstr ""
+
+#: [credentials]re_password
+msgid "Retype password"
+msgstr ""
+
+#: [disableregistration]title
+msgid "Disable the XMPP registration feature"
+msgstr ""
+
+#: [disableregistration]text
+msgid "Remove the XMPP registration flow and buttons from the interface"
+msgstr ""
+
+#: [whitelist]title
+msgid "Whitelisted XMPP Servers"
+msgstr ""
+
+#: [whitelist]info1
+msgid ""
+"If you want to specify a list of authorized XMPP servers on your Movim pod "
+"and forbid the connection on all the others please put their domain name "
+"here, with comma (ex: movim.eu,jabber.fr)"
+msgstr ""
+
+#: [whitelist]info2
+msgid ""
+"Leave this field blank if you allow the access to all the XMPP accounts."
+msgstr ""
+
+#: [whitelist]label
+msgid "List of whitelisted XMPP servers"
+msgstr ""
+
+#: [information]title
+msgctxt "[information]title"
+msgid "Information Message"
+msgstr ""
+
+#: [information]description
+msgid "Description"
+msgstr ""
+
+#: [information]description_placeholder
+msgid "General description of the instance"
+msgstr ""
+
+#: [information]info1
+msgid ""
+"This message will be displayed on the login page. It can be used to link the "
+"Terms and Conditions of your Movim instance for example."
+msgstr ""
+
+#: [information]info2
+msgid "Leave this field blank if you don’t want to show any message."
+msgstr ""
+
+#: [information]label
+msgctxt "[information]label"
+msgid "Information Message"
+msgstr ""
+
+#: [xmpp]title
+msgid "Default XMPP server"
+msgstr ""
+
+#: [xmpp]domain
+msgid "Main XMPP server domain"
+msgstr ""
+
+#: [xmpp]description
+msgid "Main XMPP server description"
+msgstr ""
+
+#: [xmpp]country
+msgid "Main XMPP server country"
+msgstr ""
+
+#: [xmpp]country_pick
+msgid "Pick a country in the list"
+msgstr ""
+
+#: [tenor]title
+msgid "Tenor integration"
+msgstr ""
+
+#: [tenor]label
+msgid "Yout Tenor API Key"
+msgstr ""
+
+#: [tenor]info1
+msgid ""
+"Movim integrates the Tenor API to allow GIF search and publication in Chat"
+msgstr ""
+
+#: [tenor]info2
+msgid "Access Tenor and get your API key"
+msgstr ""
+
+#: [firebase]title
+msgid "Firebase Integration"
+msgstr ""
+
+#: [firebase]label
+msgid "Your Firebase Authorization Key"
+msgstr ""
+
+#: [firebase]info1
+msgid ""
+"Movim can send Push Notifications to the Movim Android app using Firebase"
+msgstr ""
+
+#: [firebase]info2
+msgid ""
+"Go to the Firebase panel to configure and generate your Authorization key"
+msgstr ""
+
+#: [log]empty
+msgid "Empty"
+msgstr ""
+
+#: [log]syslog
+msgid "Syslog"
+msgstr ""
+
+#: [log]syslog_files
+msgid "Syslog and files"
+msgstr ""
