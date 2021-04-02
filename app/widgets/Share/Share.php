@@ -12,15 +12,19 @@ class Share extends Base
         $this->addjs('share.js');
     }
 
-    public function ajaxHttpGet($link)
+    public function ajaxGet($link)
     {
-        $validate_url = Validator::url();
+        $validateUrl = Validator::url();
 
-        if ($validate_url->validate($link)
+        if ($validateUrl->validate($link)
         && substr($link, 0, 4) == 'http') {
+            // Pre-resolve the link
+            (new \App\Url)->resolve($link);
+
             $session = Session::start();
             $session->set('share_url', $link);
-            $this->rpc('Share.redirect', $this->route('news'));
+
+            $this->rpc('Share.redirect', $this->route('publish'));
         } else {
             $uri = \explodeXMPPURI($link);
 

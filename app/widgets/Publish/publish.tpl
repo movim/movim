@@ -70,7 +70,7 @@
             {if="isset($replyblock)"}
                 <li>
                     <span class="control icon gray active"
-                          onclick="MovimUtils.redirect('{$c->route('publish', [$draft->server, $draft->node, $draft->nodeid])}')">
+                          onclick="Publish.clearReply()">
                         <i class="material-icons">close</i>
                     </span>
                     <div>

@@ -5,6 +5,7 @@ use Moxl\Xec\Action\Microblog\CommentCreateNode;
 use Moxl\Xec\Action\Pubsub\Subscribe;
 
 use Movim\Widget\Base;
+use Movim\Session;
 
 use Michelf\MarkdownExtra;
 use Respect\Validation\Validator;
@@ -276,6 +277,17 @@ class Publish extends Base
         }
     }
 
+    public function ajaxTryResolveShareUrl($id)
+    {
+        $session = Session::start();
+        $shareUrl = $session->get('share_url');
+
+        if ($shareUrl) {
+            $this->ajaxAddEmbed($id, $shareUrl);
+            $session->remove('share_url');
+        }
+    }
+
     public function ajaxHttpRemoveEmbed($id, $embedId)
     {
         $draft = $this->user->drafts()->find($id);
@@ -303,6 +315,19 @@ class Publish extends Base
                 ? $this->__('post.public_yes')
                 : $this->__('post.public_no'));
         }
+    }
+
+    public function ajaxClearReply($id)
+    {
+        $draft = $this->user->drafts()->find($id);
+
+        if ($draft) {
+            $draft->reply_id = null;
+            $draft->save();
+
+            $this->rpc('MovimUtils.redirect', $this->route('publish', $draft->server, $draft->node, $draft->nodeid));
+        }
+
     }
 
     public function prepareEmbed(DraftEmbed $embed)
@@ -352,7 +377,9 @@ class Publish extends Base
         $server = $this->get('s') ?? $this->user->id;
         $node = $this->get('n') ?? $microblog;
         $nodeId = $this->get('i') ?? '';
-        $replyId = $this->get('r');
+        $replyServer = $this->get('rs');
+        $replyNode = $this->get('rn');
+        $replyNodeId = $this->get('ri');
 
         if ($node == $microblog) {
             $this->view->assign('icon', App\Contact::firstOrNew(['id' => $server]));
@@ -380,15 +407,20 @@ class Publish extends Base
             $draft->tryFillPost();
         }
 
-        $replyId = $draft->reply_id ?? $replyId;
+        // Reply
+        $reply = null;
 
-        if ($replyId) {
-            // Todo protect ?
-            $reply = Post::find($replyId);
+        if ($replyServer && $replyNode && $replyNodeId) {
+            $reply = Post::where('server', $replyServer)
+                            ->where('node', $replyNode)
+                            ->where('nodeid', $replyNodeId)
+                            ->first();
+        } elseif ($draft->reply_id) {
+            $reply = Post::find($draft->reply_id);
+        }
 
-            if ($reply) {
-                $draft->reply_id = $reply->id;
-            }
+        if ($reply) {
+            $draft->reply_id = $reply->id;
         } else {
             $draft->reply_id = null;
         }

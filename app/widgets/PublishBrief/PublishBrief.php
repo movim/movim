@@ -289,8 +289,8 @@ class PublishBrief extends Base
 
     public function ajaxClearEmbed()
     {
-        $session = Session::start();
-        $session->remove('share_url');
+        //$session = Session::start();
+        //$session->remove('share_url');
 
         $p = Cache::c('draft');
         if ($p && $p->link) {

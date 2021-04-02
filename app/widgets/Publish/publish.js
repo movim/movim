@@ -5,6 +5,8 @@ var Publish = {
     init: function() {
         let id = document.querySelector('#publish input[name=id]').value;
 
+        Publish_ajaxTryResolveShareUrl(id);
+
         document.querySelector('#publish textarea[name=title]').addEventListener('keyup', function(event) {
             if (Publish.titleTimeout) clearTimeout(Publish.titleTimeout);
             document.querySelector('#publish textarea[name=title] + label span.save').classList.remove('saved');
@@ -45,6 +47,11 @@ var Publish = {
     publish: function() {
         let id = document.querySelector('#publish input[name=id]').value;
         Publish_ajaxPublish(id);
+    },
+
+    clearReply: function() {
+        let id = document.querySelector('#publish input[name=id]').value;
+        Publish_ajaxClearReply(id);
     },
 
     addUrl: function() {
