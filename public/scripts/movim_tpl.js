@@ -99,7 +99,6 @@ var MovimTpl = {
         if (target) {
             var div = document.createElement('div');
             div.innerHTML = html;
-            console.log(html);
             var element = div.firstChild;
             replacedNode = target.parentNode.replaceChild(element, target);
         }
