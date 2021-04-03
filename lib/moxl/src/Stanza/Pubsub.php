@@ -306,33 +306,6 @@ class Pubsub
         \Moxl\API::request($xml);
     }
 
-    public static function setSubscriptions($to, $node, $data)
-    {
-        $subscriptions = "";
-        foreach ($data as $jid_subid => $subscription) {
-            list($jid, $subid) = split("_", $jid_subid);
-            $subscriptions .= '
-                <subscription
-                    jid="'.$jid.'" ';
-            if ($subid != null) {
-                $subscriptions .=
-                        'subid="'.$subid.'" ';
-            }
-            $subscriptions .= '
-                    subscription="'.$subscription.'" />';
-        }
-
-        $xml = '
-            <pubsub xmlns="http://jabber.org/protocol/pubsub#owner">
-                <subscriptions node="'.$node.'">
-                '.$subscriptions.'
-                </subscriptions>
-            </pubsub>';
-
-        $xml = \Moxl\API::iqWrapper($xml, $to, 'set');
-        \Moxl\API::request($xml);
-    }
-
     public static function getItems($to, $node, $paging = 10, $after = false, $before = null, $skip = 0)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');

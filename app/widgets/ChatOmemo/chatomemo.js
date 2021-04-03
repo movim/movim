@@ -66,10 +66,8 @@ var ChatOmemo = {
             console.log(error);
         });
     },
-    encrypt: async function () {
+    encrypt: async function (to, plaintext) {
         var store = new ChatOmemoStorage();
-
-        var plaintext = "Hi, this is an encrypted OMEMO message sent from Movim";
 
         // https://xmpp.org/extensions/attic/xep-0384-0.3.0.html#usecases-messagesend
 
@@ -93,7 +91,7 @@ var ChatOmemo = {
         let biv = MovimUtils.arrayBufferToBase64(iv);
         let payload = MovimUtils.arrayBufferToBase64(ciphertext);
         let deviceId = await store.getLocalRegistrationId();
-        let results = await this.encryptJid(keyAndTag, 'test@movim.eu');
+        let results = await this.encryptJid(keyAndTag, to);
 
         let messageKeys = {};
         results.map(result => {
@@ -103,13 +101,12 @@ var ChatOmemo = {
             };
         });
 
-        ChatOmemo_ajaxSendMessage(
-            'test@movim.eu',
-            deviceId,
-            messageKeys,
-            biv,
-            payload
-        );
+        return {
+            'sid': deviceId,
+            'keys': messageKeys,
+            'iv': biv,
+            'payload': payload
+        };
     },
     decrypt: async function (message) {
         if (message.omemoheader == undefined) return;

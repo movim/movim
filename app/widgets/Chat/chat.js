@@ -170,25 +170,37 @@ var Chat = {
                     reply.remove();
                 };
 
-                xhr = Chat_ajaxHttpDaemonSendMessage(jid, text, muc, null, replyMid, mucReceipts);
-            }
+                // Try to encrypt the message
+                let omemo = ChatOmemo.encrypt(jid, text);
+                if (omemo) {
+                    text = 'Encrypted message';
 
-            xhr.timeout = 10000;
-            xhr.ontimeout = function() {
-                Chat.failedMessage();
-            };
+                    // TODO, disable the other risky features
+                    omemo.then(omemoheader => {
+                        console.log(omemoheader);
+                        xhr = Chat_ajaxHttpDaemonSendMessage(jid, text, muc, null, replyMid, mucReceipts, omemoheader);
 
-            xhr.onreadystatechange = function() {
-                if (this.readyState == 4) {
-                    if (this.status >= 200 && this.status < 400) {
-                        Chat.sentMessage();
-                    }
+                        xhr.timeout = 10000;
+                        xhr.ontimeout = function() {
+                            Chat.failedMessage();
+                        };
 
-                    if (this.status >= 400 || this.status == 0) {
-                        Chat.failedMessage();
-                    }
+                        xhr.onreadystatechange = function() {
+                            if (this.readyState == 4) {
+                                if (this.status >= 200 && this.status < 400) {
+                                    Chat.sentMessage();
+                                }
+
+                                if (this.status >= 400 || this.status == 0) {
+                                    Chat.failedMessage();
+                                }
+                            }
+                        };
+                    });
                 }
-            };
+
+                //xhr = Chat_ajaxHttpDaemonSendMessage(jid, text, muc, null, replyMid, mucReceipts, omemo);
+            }
         }
     },
     enableSending: function()
@@ -882,6 +894,7 @@ var Chat = {
 
             // OMEMO handling
             if (data.omemoheader) {
+                p.innerHTML = data.omemoheader.payload;
                 ChatOmemo.decrypt(data).then(plaintext => {
                     if (plaintext) {
                         let refreshP = document.querySelector('#id' + data.id + ' p');

@@ -9,6 +9,7 @@ use Moxl\Xec\Action\Muc\SetConfig;
 use App\Contact;
 use App\Message;
 use App\MessageFile;
+use App\MessageOmemoHeader;
 use App\Reaction;
 use App\Url;
 use Moxl\Xec\Action\BOB\Request;
@@ -382,9 +383,11 @@ class Chat extends \Movim\Widget\Base
         bool $muc = false,
         $file = null,
         ?int $replyToMid = 0,
-        ?bool $mucReceipts = false
+        ?bool $mucReceipts = false,
+        $omemo = null
     ) {
         $messageFile = null;
+        $messageOMEMO = null;
 
         if ($file) {
             $messageFile = new MessageFile;
@@ -402,7 +405,12 @@ class Chat extends \Movim\Widget\Base
             } catch (\Exception $e) {}
         }
 
-        $this->sendMessage($to, $message, $muc, null, $messageFile, $replyToMid, $mucReceipts);
+        if ($omemo) {
+            $messageOMEMOHeader = new MessageOMEMOHeader;
+            $messageOMEMOHeader->import($omemo);
+        }
+
+        $this->sendMessage($to, $message, $muc, null, $messageFile, $replyToMid, $mucReceipts, $messageOMEMOHeader);
     }
 
     /**
@@ -414,7 +422,7 @@ class Chat extends \Movim\Widget\Base
      */
     public function sendMessage(string $to, string $message = '', bool $muc = false,
         ?Message $replace = null, ?MessageFile $file = null, ?int $replyToMid = 0,
-        ?bool $mucReceipts = false)
+        ?bool $mucReceipts = false, ?MessageOMEMOHeader $messageOMEMOHeader = null)
     {
         $body = ($file != null && $file->type != 'xmpp/uri')
             ? $file->uri
@@ -501,6 +509,11 @@ class Chat extends \Movim\Widget\Base
         if ($file) {
             $m->file = (array)$file;
             $p->setFile($file);
+        }
+
+        if ($messageOMEMOHeader) {
+            $m->omemoheader = (string)$messageOMEMOHeader;
+            $p->setMessageOMEMO($messageOMEMOHeader);
         }
 
         (ChatOwnState::getInstance())->halt();

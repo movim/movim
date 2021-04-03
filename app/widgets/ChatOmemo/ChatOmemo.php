@@ -3,7 +3,6 @@
 use Moxl\Xec\Action\OMEMO\AnnounceBundle;
 use Moxl\Xec\Action\OMEMO\GetDeviceList;
 use Moxl\Xec\Action\OMEMO\SetDeviceList;
-use Moxl\Xec\Action\OMEMO\Message;
 
 class ChatOmemo extends \Movim\Widget\Base
 {
@@ -29,22 +28,6 @@ class ChatOmemo extends \Movim\Widget\Base
         ];
 
         $this->rpc('ChatOmemo.handlePreKey', $bundle->jid, $bundle->bundle_id, $prekey);
-    }
-
-    public function ajaxSendMessage(string $to, int $sid, object $keys, string $iv, string $payload)
-    {
-        \Utils::debug($sid);
-        \Utils::debug(serialize($keys));
-        \Utils::debug($iv);
-        \Utils::debug($payload);
-
-        $m = new Message;
-        $m->setTo($to)
-          ->setSid($sid)
-          ->setKeys($keys)
-          ->setIv($iv)
-          ->setPayload($payload)
-          ->request();
     }
 
     public function ajaxGetDevicesList($to)

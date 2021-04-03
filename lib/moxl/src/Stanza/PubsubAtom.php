@@ -25,7 +25,7 @@ class PubsubAtom
     public $comments = false;
     public $open = false;
 
-    public $tags = array();
+    public $tags = [];
 
     public $published = false;
 
@@ -213,8 +213,8 @@ class PubsubAtom
         return $dom->documentElement;
     }
 
-    public function __toString()
+    /*public function __toString()
     {
         return $dom->saveXML($this->getDom());
-    }
+    }*/
 }
