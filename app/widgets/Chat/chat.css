@@ -513,6 +513,7 @@ main:not(.enabled) #chat_widget {
 #chat_widget li.oppose .bubble ul.card.list + * {
     clear: both;
     display: block;
+    text-align: right;
 }
 
 /* Reply */
