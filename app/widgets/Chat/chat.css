@@ -240,6 +240,10 @@ main:not(.enabled) #chat_widget {
     transition: opacity 0.2s ease-in-out;
 }
 
+#chat_widget li.oppose div.bubble.sticker.file img:not(.emoji):not(.hfr) {
+    float: right;
+}
+
 #chat_widget ul.list:after {
     content: " ";
     display: block;
@@ -500,6 +504,15 @@ main:not(.enabled) #chat_widget {
 
 #chat_widget .bubble ul.card.list .info {
     display: none;
+}
+
+#chat_widget li.oppose .bubble ul.card.list {
+    float: right;
+}
+
+#chat_widget li.oppose .bubble ul.card.list + * {
+    clear: both;
+    display: block;
 }
 
 /* Reply */
