@@ -109,8 +109,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-02 13:07+0200\n"
-"PO-Revision-Date: 2020-11-03 22:14+0000\n"
+"POT-Creation-Date: 2021-04-05 14:47+0200\n"
+"PO-Revision-Date: 2021-04-02 13:28+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: Hungarian (http://www.transifex.com/movim/movim/language/hu/)\n"
 "Language: hu\n"
@@ -118,7 +118,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.1.1\n"
+"X-Generator: Translate Toolkit 3.3.2\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -371,9 +371,8 @@ msgid "Pick a country in the list"
 msgstr "Válassz egy országot a listában"
 
 #: [tenor]title
-#, fuzzy
 msgid "Tenor integration"
-msgstr "Általános információ"
+msgstr ""
 
 #: [tenor]label
 msgid "Yout Tenor API Key"
@@ -722,9 +721,8 @@ msgid "Communities servers"
 msgstr "Közösségi szerverek"
 
 #: [communities]servers_text
-#, fuzzy
 msgid "Discover the Communities by servers"
-msgstr "Közösségi szerverek"
+msgstr ""
 
 #: [communities]disco
 msgid "Communities server discovered"
@@ -735,9 +733,8 @@ msgid "This server doesn’t exists"
 msgstr "Ez a szerver nem létezik"
 
 #: [communitiesinteresting]about
-#, fuzzy
 msgid "Communities you might like"
-msgstr "Közösség neve"
+msgstr ""
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -780,9 +777,8 @@ msgid "Subscriptions"
 msgstr "Feliratkozások"
 
 #: [communityaffiliation]subscriptions_text
-#, fuzzy
 msgid "My Communities subscriptions"
-msgstr "Nincsenek feliratkozók"
+msgstr ""
 
 #: [communityaffiliation]deleted
 msgid "Community deleted successfully"
@@ -1346,23 +1342,20 @@ msgid "The XMPP authentification failed"
 msgstr "Az XMPP azonosítás sikertelen volt."
 
 #: [connection]socket_connected
-#, fuzzy
 msgid "Connected to the server"
-msgstr "Csatlakozva a chat szobához"
+msgstr ""
 
 #: [connection]authenticated
-#, fuzzy
 msgid "Authenticated to the server"
-msgstr "Üres kihívás a szervertől"
+msgstr ""
 
 #: [form]username
 msgid "My address"
 msgstr "Én címem"
 
 #: [form]whitelist_info
-#, fuzzy
 msgid "Login with accounts from these servers"
-msgstr "Az alábbi szerverek fiókjaival be tudsz lépni"
+msgstr ""
 
 #: [form]connect_info
 msgid "Login using any XMPP account or create a new one"
@@ -2025,9 +2018,8 @@ msgid "A sticker has been sent using Movim"
 msgstr "Matricát küldtél a Movimmal"
 
 #: [sticker]keyword
-#, fuzzy
 msgid "Type a keyword"
-msgstr "Gépeld újra a jelszót"
+msgstr ""
 
 #: [sticker]gif_title
 msgid "Find a GIF"
@@ -2476,9 +2468,8 @@ msgid "Send to"
 msgstr ""
 
 #: [button]more
-#, fuzzy
 msgid "More"
-msgstr "Mégtöbb segítség"
+msgstr ""
 
 #: [button]copy_link
 msgid "Copy Link"

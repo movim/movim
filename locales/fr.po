@@ -113,8 +113,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-02 13:07+0200\n"
-"PO-Revision-Date: 2021-01-30 14:25+0000\n"
+"POT-Creation-Date: 2021-04-05 14:47+0200\n"
+"PO-Revision-Date: 2021-04-05 12:50+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: French (France) (http://www.transifex.com/movim/movim/language/fr_FR/)\n"
 "Language: fr_FR\n"
@@ -122,7 +122,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Translate Toolkit 3.3.0\n"
+"X-Generator: Translate Toolkit 3.3.2\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -306,11 +306,11 @@ msgstr "Ressaisissez le mot de passe"
 
 #: [disableregistration]title
 msgid "Disable the XMPP registration feature"
-msgstr ""
+msgstr "Désactiver l'inscription via XMPP"
 
 #: [disableregistration]text
 msgid "Remove the XMPP registration flow and buttons from the interface"
-msgstr ""
+msgstr "Retire la fonctionnalité de création de compte via XMPP de l'interface"
 
 #: [whitelist]title
 msgid "Whitelisted XMPP Servers"
@@ -725,9 +725,8 @@ msgid "Communities servers"
 msgstr "Serveurs de communautés"
 
 #: [communities]servers_text
-#, fuzzy
 msgid "Discover the Communities by servers"
-msgstr "Serveurs de communautés"
+msgstr "Découvrir les Communautés par serveurs"
 
 #: [communities]disco
 msgid "Communities server discovered"
@@ -782,9 +781,8 @@ msgid "Subscriptions"
 msgstr "Abonnements"
 
 #: [communityaffiliation]subscriptions_text
-#, fuzzy
 msgid "My Communities subscriptions"
-msgstr "Pas de Souscriptions"
+msgstr "Mes souscriptions de Communautés"
 
 #: [communityaffiliation]deleted
 msgid "Community deleted successfully"

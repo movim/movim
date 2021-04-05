@@ -115,8 +115,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-02 13:07+0200\n"
-"PO-Revision-Date: 2020-11-03 22:14+0000\n"
+"POT-Creation-Date: 2021-04-05 14:47+0200\n"
+"PO-Revision-Date: 2021-04-02 13:28+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
 "Language: zh_CN\n"
@@ -124,7 +124,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Translate Toolkit 3.1.1\n"
+"X-Generator: Translate Toolkit 3.3.2\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -377,9 +377,8 @@ msgid "Pick a country in the list"
 msgstr "选择一个国家"
 
 #: [tenor]title
-#, fuzzy
 msgid "Tenor integration"
-msgstr "一般信息"
+msgstr ""
 
 #: [tenor]label
 msgid "Yout Tenor API Key"
@@ -700,9 +699,8 @@ msgid "Picture"
 msgstr "图片"
 
 #: [chats]video
-#, fuzzy
 msgid "Video"
-msgstr "视频通话"
+msgstr ""
 
 #: [button]chat
 msgid "Chat"
@@ -729,9 +727,8 @@ msgid "Communities servers"
 msgstr "社群服务器"
 
 #: [communities]servers_text
-#, fuzzy
 msgid "Discover the Communities by servers"
-msgstr "社群服务器"
+msgstr ""
 
 #: [communities]disco
 msgid "Communities server discovered"
@@ -743,7 +740,7 @@ msgstr "此服务器不存在"
 
 #: [communitiesinteresting]about
 msgid "Communities you might like"
-msgstr "你可能喜欢的社区"
+msgstr ""
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -786,9 +783,8 @@ msgid "Subscriptions"
 msgstr "订阅"
 
 #: [communityaffiliation]subscriptions_text
-#, fuzzy
 msgid "My Communities subscriptions"
-msgstr "没有订阅"
+msgstr ""
 
 #: [communityaffiliation]deleted
 msgid "Community deleted successfully"
@@ -1352,23 +1348,20 @@ msgid "The XMPP authentification failed"
 msgstr "XMPP鉴别错误"
 
 #: [connection]socket_connected
-#, fuzzy
 msgid "Connected to the server"
-msgstr "重新连接服务器..."
+msgstr ""
 
 #: [connection]authenticated
-#, fuzzy
 msgid "Authenticated to the server"
-msgstr "重新连接服务器..."
+msgstr ""
 
 #: [form]username
 msgid "My address"
 msgstr "用户名"
 
 #: [form]whitelist_info
-#, fuzzy
 msgid "Login with accounts from these servers"
-msgstr "你可以用账户从这些服务器登录"
+msgstr ""
 
 #: [form]connect_info
 msgid "Login using any XMPP account or create a new one"
@@ -2031,9 +2024,8 @@ msgid "A sticker has been sent using Movim"
 msgstr "通过 Movim 发送了一张贴纸"
 
 #: [sticker]keyword
-#, fuzzy
 msgid "Type a keyword"
-msgstr "重新输入密码"
+msgstr ""
 
 #: [sticker]gif_title
 msgid "Find a GIF"
@@ -2482,9 +2474,8 @@ msgid "Send to"
 msgstr "发给"
 
 #: [button]more
-#, fuzzy
 msgid "More"
-msgstr "更多帮助"
+msgstr ""
 
 #: [button]copy_link
 msgid "Copy Link"

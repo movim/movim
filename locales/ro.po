@@ -105,8 +105,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-02 13:07+0200\n"
-"PO-Revision-Date: 2020-11-03 22:14+0000\n"
+"POT-Creation-Date: 2021-04-05 14:47+0200\n"
+"PO-Revision-Date: 2021-04-02 13:28+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: Romanian (http://www.transifex.com/movim/movim/language/ro/)\n"
 "Language: ro\n"
@@ -114,7 +114,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
-"X-Generator: Translate Toolkit 3.1.1\n"
+"X-Generator: Translate Toolkit 3.3.2\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -367,9 +367,8 @@ msgid "Pick a country in the list"
 msgstr ""
 
 #: [tenor]title
-#, fuzzy
 msgid "Tenor integration"
-msgstr "Conversație nouă"
+msgstr ""
 
 #: [tenor]label
 msgid "Yout Tenor API Key"
@@ -774,9 +773,8 @@ msgid "Subscriptions"
 msgstr "Abonamente"
 
 #: [communityaffiliation]subscriptions_text
-#, fuzzy
 msgid "My Communities subscriptions"
-msgstr "Fără abonamente"
+msgstr ""
 
 #: [communityaffiliation]deleted
 msgid "Community deleted successfully"
@@ -1340,9 +1338,8 @@ msgid "The XMPP authentification failed"
 msgstr ""
 
 #: [connection]socket_connected
-#, fuzzy
 msgid "Connected to the server"
-msgstr "Conectat la chatroom"
+msgstr ""
 
 #: [connection]authenticated
 msgid "Authenticated to the server"

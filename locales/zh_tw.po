@@ -105,8 +105,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-02 13:07+0200\n"
-"PO-Revision-Date: 2020-11-03 22:14+0000\n"
+"POT-Creation-Date: 2021-04-05 14:47+0200\n"
+"PO-Revision-Date: 2021-04-02 13:28+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/movim/movim/language/zh_TW/)\n"
 "Language: zh_TW\n"
@@ -114,7 +114,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Translate Toolkit 3.1.1\n"
+"X-Generator: Translate Toolkit 3.3.2\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -367,9 +367,8 @@ msgid "Pick a country in the list"
 msgstr "在列表中選擇一個國家"
 
 #: [tenor]title
-#, fuzzy
 msgid "Tenor integration"
-msgstr "新的對話"
+msgstr ""
 
 #: [tenor]label
 msgid "Yout Tenor API Key"
@@ -718,9 +717,8 @@ msgid "Communities servers"
 msgstr "社群伺服器"
 
 #: [communities]servers_text
-#, fuzzy
 msgid "Discover the Communities by servers"
-msgstr "社群伺服器"
+msgstr ""
 
 #: [communities]disco
 msgid "Communities server discovered"
@@ -731,9 +729,8 @@ msgid "This server doesn’t exists"
 msgstr ""
 
 #: [communitiesinteresting]about
-#, fuzzy
 msgid "Communities you might like"
-msgstr "社群名稱"
+msgstr ""
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -776,9 +773,8 @@ msgid "Subscriptions"
 msgstr ""
 
 #: [communityaffiliation]subscriptions_text
-#, fuzzy
 msgid "My Communities subscriptions"
-msgstr "社群伺服器"
+msgstr ""
 
 #: [communityaffiliation]deleted
 msgid "Community deleted successfully"
@@ -1342,9 +1338,8 @@ msgid "The XMPP authentification failed"
 msgstr "XMPP 驗證失敗"
 
 #: [connection]socket_connected
-#, fuzzy
 msgid "Connected to the server"
-msgstr "已連線到聊天室"
+msgstr ""
 
 #: [connection]authenticated
 msgid "Authenticated to the server"
@@ -2019,9 +2014,8 @@ msgid "A sticker has been sent using Movim"
 msgstr ""
 
 #: [sticker]keyword
-#, fuzzy
 msgid "Type a keyword"
-msgstr "重新輸入密碼"
+msgstr ""
 
 #: [sticker]gif_title
 msgid "Find a GIF"

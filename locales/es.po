@@ -5,6 +5,7 @@
 # Bikalkas <vicalcas@gmail.com.com>, 2015
 # Daniel D <Daniel.Dona@alu.uclm.es>, 2017
 # duven duven <duven@autistici.org>, 2018
+# Juanro49 <juanrobertogarciasanchez@gmail.com>, 2021
 # kosciuk <nhk.web@gmail.com>, 2016
 # Raúl <gomezromanr@gmail.com>, 2015
 # sergio, 2017
@@ -113,8 +114,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-02 13:07+0200\n"
-"PO-Revision-Date: 2020-11-03 22:14+0000\n"
+"POT-Creation-Date: 2021-04-05 14:47+0200\n"
+"PO-Revision-Date: 2021-04-02 13:28+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: Spanish (http://www.transifex.com/movim/movim/language/es/)\n"
 "Language: es\n"
@@ -122,7 +123,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.1.1\n"
+"X-Generator: Translate Toolkit 3.3.2\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -375,37 +376,36 @@ msgid "Pick a country in the list"
 msgstr "Seleccione un país de la lista"
 
 #: [tenor]title
-#, fuzzy
 msgid "Tenor integration"
-msgstr "Información general"
+msgstr "Integración de Tenor"
 
 #: [tenor]label
 msgid "Yout Tenor API Key"
-msgstr ""
+msgstr "Tu clave API de Tenor"
 
 #: [tenor]info1
 msgid "Movim integrates the Tenor API to allow GIF search and publication in Chat"
-msgstr ""
+msgstr "Movim integra la API de Tenor para permitir la búsqueda y publicación de GIF en Chats"
 
 #: [tenor]info2
 msgid "Access Tenor and get your API key"
-msgstr ""
+msgstr "Accede a Tenor y obtén tu clave API"
 
 #: [firebase]title
 msgid "Firebase Integration"
-msgstr ""
+msgstr "Integración de Firebase"
 
 #: [firebase]label
 msgid "Your Firebase Authorization Key"
-msgstr ""
+msgstr "Su clave de autorización de Firebase"
 
 #: [firebase]info1
 msgid "Movim can send Push Notifications to the Movim Android app using Firebase"
-msgstr ""
+msgstr "Movin puede enviar notificaciones Push a la app Movim para Android usando Firebase"
 
 #: [firebase]info2
 msgid "Go to the Firebase panel to configure and generate your Authorization key"
-msgstr ""
+msgstr "Ve al panel de Firebase para configurar y generar su clave de autorización"
 
 #: [log]empty
 msgid "Empty"
@@ -529,11 +529,11 @@ msgstr "Mensaje publicado"
 
 #: [message]react
 msgid "Add a reaction"
-msgstr ""
+msgstr "Añadir reacción"
 
 #: [message]retract
 msgid "Retract"
-msgstr ""
+msgstr "Eliminar"
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
@@ -541,7 +541,7 @@ msgstr "Su mensaje no ha podido ser enviado, por favor inténtelo más tarde"
 
 #: [message]encrypted
 msgid "Encrypted message"
-msgstr "Mensaje encriptado"
+msgstr "Mensaje cifrado"
 
 #: [message]retracted
 msgid "Retracted message"
@@ -610,7 +610,7 @@ msgstr "Ver el perfil"
 #: [chat]clear
 msgctxt "[chat]clear"
 msgid "Clear the history"
-msgstr ""
+msgstr "Eliminar historial"
 
 #: [chat]edit_previous
 msgid "Edit last message"
@@ -639,11 +639,11 @@ msgstr "Sincronizando el histórico, espere por favor..."
 #: [chat]clear_history
 msgctxt "[chat]clear_history"
 msgid "Clear the history"
-msgstr ""
+msgstr "Eliminar historial"
 
 #: [chat]clear_history_text
 msgid "You are going to delete %s messages, are you sure?"
-msgstr ""
+msgstr "Vas a eliminar %s mensajes, ¿Estás seguro?"
 
 #: [chatroom]members
 msgid "Members"
@@ -695,11 +695,11 @@ msgstr "Yo"
 
 #: [chats]picture
 msgid "Picture"
-msgstr ""
+msgstr "Imagen"
 
 #: [chats]video
 msgid "Video"
-msgstr ""
+msgstr "Vídeo"
 
 #: [button]chat
 msgid "Chat"
@@ -726,9 +726,8 @@ msgid "Communities servers"
 msgstr "Servidores de las Comunidades"
 
 #: [communities]servers_text
-#, fuzzy
 msgid "Discover the Communities by servers"
-msgstr "Servidores de las Comunidades"
+msgstr "Descubre las comunidades por servidores"
 
 #: [communities]disco
 msgid "Communities server discovered"
@@ -783,9 +782,8 @@ msgid "Subscriptions"
 msgstr "Suscripciones"
 
 #: [communityaffiliation]subscriptions_text
-#, fuzzy
 msgid "My Communities subscriptions"
-msgstr "No hay subscripciones"
+msgstr "Suscripciones a comunidades"
 
 #: [communityaffiliation]deleted
 msgid "Community deleted successfully"
@@ -1349,23 +1347,20 @@ msgid "The XMPP authentification failed"
 msgstr "La autentificación de XMPP ha fallado"
 
 #: [connection]socket_connected
-#, fuzzy
 msgid "Connected to the server"
-msgstr "Reconectando con el servidor..."
+msgstr ""
 
 #: [connection]authenticated
-#, fuzzy
 msgid "Authenticated to the server"
-msgstr "Reconectando con el servidor..."
+msgstr ""
 
 #: [form]username
 msgid "My address"
 msgstr "Mi dirección"
 
 #: [form]whitelist_info
-#, fuzzy
 msgid "Login with accounts from these servers"
-msgstr "Puedes iniciar sesión con cuentas de estos servidores"
+msgstr ""
 
 #: [form]connect_info
 msgid "Login using any XMPP account or create a new one"
@@ -2028,9 +2023,8 @@ msgid "A sticker has been sent using Movim"
 msgstr "Se envió una pegatina con Movim"
 
 #: [sticker]keyword
-#, fuzzy
 msgid "Type a keyword"
-msgstr "Escriba la contraseña de nuevo"
+msgstr ""
 
 #: [sticker]gif_title
 msgid "Find a GIF"
@@ -2479,9 +2473,8 @@ msgid "Send to"
 msgstr ""
 
 #: [button]more
-#, fuzzy
 msgid "More"
-msgstr "Más ayuda"
+msgstr ""
 
 #: [button]copy_link
 msgid "Copy Link"

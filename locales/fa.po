@@ -1,6 +1,7 @@
 #
 # Translators:
 # Alireza Mirsepassy <alirezamirsepassy@gmail.com>, 2017
+# revolt68 <ashrafnezhad@gmail.com>, 2021
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2013
 # mabna it <mabnaforti@gmail.com>, 2020
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -107,16 +108,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-02 13:07+0200\n"
-"PO-Revision-Date: 2020-12-10 11:10+0000\n"
-"Last-Translator: mabna it <mabnaforti@gmail.com>\n"
+"POT-Creation-Date: 2021-04-05 14:47+0200\n"
+"PO-Revision-Date: 2021-04-05 11:27+0000\n"
+"Last-Translator: revolt68 <ashrafnezhad@gmail.com>\n"
 "Language-Team: Persian (http://www.transifex.com/movim/movim/language/fa/)\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Translate Toolkit 3.1.1\n"
+"X-Generator: Translate Toolkit 3.3.2\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -204,7 +205,7 @@ msgstr "ترک کردن این سرور"
 
 #: [account]clear_text
 msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
-msgstr ""
+msgstr "در این نمونه Movim (مشخصات ، مخاطبین و نشریات) تمام اطلاعات نسبی مرتبط با حساب خود را حذف خواهید کرد."
 
 #: [account]clear_text_confirm
 msgid "This action will not delete your account but will disconnect you from this instance."
@@ -272,19 +273,19 @@ msgstr "میزان لاگ کردن"
 
 #: [restrictsuggestions]title
 msgid "Restrict suggestions"
-msgstr ""
+msgstr "پیشنهادات را محدود کنید"
 
 #: [restrictsuggestions]text
 msgid "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
-msgstr ""
+msgstr "فقط اتاق های گفتگو، انجمن ها و سایر مطالبی را که در سرور XMPP کاربر و سرویس های مرتبط در دسترس است، پیشنهاد دهید"
 
 #: [chatonly]title
 msgid "Chat only"
-msgstr ""
+msgstr "فقط گپ"
 
 #: [chatonly]text
 msgid "Disable all the social feature (Communities, Blog…) and keep only the chat ones"
-msgstr ""
+msgstr "همه ویژگی های اجتماعی (Communities ، Blog ...) را غیرفعال کنید و فقط موارد چت را حفظ کنید"
 
 #: [credentials]title
 msgid "Administration Credential"
@@ -300,11 +301,11 @@ msgstr "دوباره رمز عبور را بنویسید"
 
 #: [disableregistration]title
 msgid "Disable the XMPP registration feature"
-msgstr ""
+msgstr "ویژگی ثبت نام XMPP را غیرفعال کنید"
 
 #: [disableregistration]text
 msgid "Remove the XMPP registration flow and buttons from the interface"
-msgstr ""
+msgstr "جریان و دکمه های ثبت نام XMPP را از رابط حذف کنید"
 
 #: [whitelist]title
 msgid "Whitelisted XMPP Servers"
@@ -312,7 +313,7 @@ msgstr "سرور های XMPP مجاز"
 
 #: [whitelist]info1
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
-msgstr ""
+msgstr "اگر می خواهید لیستی از سرورهای مجاز XMPP را در غرفه Movim خود مشخص کنید و اتصال به دیگران را ممنوع کنید ، لطفاً نام دامنه آنها را با کاما در اینجا قرار دهید (مانند: movim.eu، jabber.fr)"
 
 #: [whitelist]info2
 msgid "Leave this field blank if you allow the access to all the XMPP accounts."
@@ -333,15 +334,15 @@ msgstr "توضیحات"
 
 #: [information]description_placeholder
 msgid "General description of the instance"
-msgstr ""
+msgstr "شرح عمومی نمونه"
 
 #: [information]info1
 msgid "This message will be displayed on the login page. It can be used to link the Terms and Conditions of your Movim instance for example."
-msgstr ""
+msgstr "این پیام در صفحه ورود به سیستم نمایش داده می شود. به عنوان مثال می تواند برای پیوند دادن شرایط و ضوابط مثال Movim شما استفاده شود."
 
 #: [information]info2
 msgid "Leave this field blank if you don’t want to show any message."
-msgstr ""
+msgstr "اگر نمی خواهید پیامی نشان دهید، این قسمت را خالی بگذارید."
 
 #: [information]label
 msgctxt "[information]label"
@@ -366,12 +367,11 @@ msgstr "کشور سرور اصلی"
 
 #: [xmpp]country_pick
 msgid "Pick a country in the list"
-msgstr ""
+msgstr "کشوری را در لیست انتخاب کنید"
 
 #: [tenor]title
-#, fuzzy
 msgid "Tenor integration"
-msgstr "گفتگوجدید"
+msgstr "ادغام Tenor"
 
 #: [tenor]label
 msgid "Yout Tenor API Key"
@@ -491,11 +491,11 @@ msgstr "دوربین"
 
 #: [avatar]cheese
 msgid "Cheese!"
-msgstr ""
+msgstr "پنیر!"
 
 #: [avatar]snapshot
 msgid "Take a webcam snapshot"
-msgstr ""
+msgstr "عکس فوری وب کم بگیرید"
 
 #: [avatar]updated
 msgid "Avatar Updated"
@@ -511,7 +511,7 @@ msgstr "هنوز هیچ آواتاری تعریف نشده"
 
 #: [blog]title [feed]title
 msgid "%s’s feed"
-msgstr ""
+msgstr "فید %s"
 
 #: [blog]private
 msgid "This content is private, please login to see it"
@@ -523,15 +523,15 @@ msgstr "پیام منتشر شد"
 
 #: [message]react
 msgid "Add a reaction"
-msgstr ""
+msgstr "یک واکنش اضافه کنید"
 
 #: [message]retract
 msgid "Retract"
-msgstr ""
+msgstr "پس گرفتن"
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
-msgstr ""
+msgstr "پیام شما ارسال نشد، لطفاً بعداً دوباره امتحان کنید"
 
 #: [message]encrypted
 msgid "Encrypted message"
@@ -776,9 +776,8 @@ msgid "Subscriptions"
 msgstr "مشترک ها"
 
 #: [communityaffiliation]subscriptions_text
-#, fuzzy
 msgid "My Communities subscriptions"
-msgstr "بدون عضو"
+msgstr ""
 
 #: [communityaffiliation]deleted
 msgid "Community deleted successfully"
@@ -1342,9 +1341,8 @@ msgid "The XMPP authentification failed"
 msgstr ""
 
 #: [connection]socket_connected
-#, fuzzy
 msgid "Connected to the server"
-msgstr "متصل به اتاق گپ"
+msgstr ""
 
 #: [connection]authenticated
 msgid "Authenticated to the server"
@@ -2019,9 +2017,8 @@ msgid "A sticker has been sent using Movim"
 msgstr ""
 
 #: [sticker]keyword
-#, fuzzy
 msgid "Type a keyword"
-msgstr "دوباره رمز عبور را بنویسید"
+msgstr ""
 
 #: [sticker]gif_title
 msgid "Find a GIF"
@@ -2470,9 +2467,8 @@ msgid "Send to"
 msgstr ""
 
 #: [button]more
-#, fuzzy
 msgid "More"
-msgstr "کمک بیشتر"
+msgstr ""
 
 #: [button]copy_link
 msgid "Copy Link"
@@ -2864,11 +2860,11 @@ msgstr ""
 
 #: [mood]surprised
 msgid "surprised"
-msgstr ""
+msgstr "غافلگیر شدن"
 
 #: [mood]thankful
 msgid "thankful"
-msgstr ""
+msgstr "سپاسگزار"
 
 #: [mood]thirsty
 msgid "thirsty"
@@ -2880,19 +2876,19 @@ msgstr ""
 
 #: [mood]undefined
 msgid "undefined"
-msgstr ""
+msgstr "تعریف نشده"
 
 #: [mood]weak
 msgid "weak"
-msgstr ""
+msgstr "ضعیف"
 
 #: [mood]worried
 msgid "worried"
-msgstr ""
+msgstr "نگران"
 
 #: [month]title
 msgid "Month"
-msgstr ""
+msgstr "ماه"
 
 #: [month]january
 msgid "January"
@@ -2932,15 +2928,15 @@ msgstr "سپتامبر"
 
 #: [month]october
 msgid "October"
-msgstr ""
+msgstr "اکتبر"
 
 #: [month]november
 msgid "November"
-msgstr ""
+msgstr "نوامبر"
 
 #: [month]december
 msgid "December"
-msgstr ""
+msgstr "دسامبر"
 
 #: [year]title
 msgid "Year"
@@ -2960,7 +2956,7 @@ msgstr "دیروز"
 
 #: [date]ago
 msgid "%d days ago"
-msgstr ""
+msgstr "%d روز قبل"
 
 #: [date]day
 msgid "day"
@@ -2976,11 +2972,11 @@ msgstr "مکان"
 
 #: [post]by
 msgid "by"
-msgstr ""
+msgstr "توسط"
 
 #: [post]geolocalisation
 msgid "Geolocalisation"
-msgstr ""
+msgstr "موقعیت مکانی"
 
 #: [post]email
 msgid "email"
@@ -3000,31 +2996,31 @@ msgstr "دریافت نوشته های قدیمی تر"
 
 #: [post]new_items
 msgid "%s new items"
-msgstr ""
+msgstr "%s آیتم جدید"
 
 #: [post]comment_error
 msgid "Comment publication error"
-msgstr ""
+msgstr "خطای انتشار نظر"
 
 #: [post]comments_get
 msgid "Get the comments"
-msgstr ""
+msgstr "نظرات را دریافت کنید"
 
 #: [post]comment_add
 msgid "Add a comment"
-msgstr ""
+msgstr "نظر اضافه کنید"
 
 #: [post]share
 msgid "Share with"
-msgstr ""
+msgstr "انتشار توسط"
 
 #: [post]share_everyone
 msgid "Everyone"
-msgstr ""
+msgstr "هر فردی"
 
 #: [post]updated
 msgid "Updated"
-msgstr ""
+msgstr "به روز شده"
 
 #: [post]content_not_found
 msgid "Content not found"
@@ -3044,23 +3040,23 @@ msgstr "نوشته اصلی حذف شده است"
 
 #: [filesize]byte
 msgid "B"
-msgstr ""
+msgstr "بایت"
 
 #: [filesize]kilobyte
 msgid "KB"
-msgstr ""
+msgstr "کیلوبایت"
 
 #: [filesize]megabyte
 msgid "MB"
-msgstr ""
+msgstr "مگابایت"
 
 #: [filesize]gigabyte
 msgid "GB"
-msgstr ""
+msgstr "گیگابایت"
 
 #: [filesize]terabyte
 msgid "TB"
-msgstr ""
+msgstr "ترابایت"
 
 #: [affiliation]publisher
 msgid "Publisher"
@@ -3068,11 +3064,11 @@ msgstr "منتشر کننده"
 
 #: [affiliation]publish-only
 msgid "Publish only"
-msgstr ""
+msgstr "فقط انتشار"
 
 #: [affiliation]member
 msgid "Member"
-msgstr ""
+msgstr "عضو"
 
 #: [affiliation]no-aff
 msgid "No affiliation"
@@ -3088,4 +3084,4 @@ msgstr ""
 
 #: [field]type_here
 msgid "Type here"
-msgstr ""
+msgstr "اینجا بنویسید"

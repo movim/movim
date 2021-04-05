@@ -121,8 +121,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-02 13:07+0200\n"
-"PO-Revision-Date: 2020-11-03 22:14+0000\n"
+"POT-Creation-Date: 2021-04-05 14:47+0200\n"
+"PO-Revision-Date: 2021-04-02 13:28+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: German (http://www.transifex.com/movim/movim/language/de/)\n"
 "Language: de\n"
@@ -130,7 +130,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.1.1\n"
+"X-Generator: Translate Toolkit 3.3.2\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -383,9 +383,8 @@ msgid "Pick a country in the list"
 msgstr "Wähle ein Land aus der Liste"
 
 #: [tenor]title
-#, fuzzy
 msgid "Tenor integration"
-msgstr "Allgemeine Informationen"
+msgstr ""
 
 #: [tenor]label
 msgid "Yout Tenor API Key"
@@ -734,9 +733,8 @@ msgid "Communities servers"
 msgstr "Gemeinschaftsserver"
 
 #: [communities]servers_text
-#, fuzzy
 msgid "Discover the Communities by servers"
-msgstr "Gemeinschaftsserver"
+msgstr ""
 
 #: [communities]disco
 msgid "Communities server discovered"
@@ -748,7 +746,7 @@ msgstr "Der Server existiert nicht."
 
 #: [communitiesinteresting]about
 msgid "Communities you might like"
-msgstr "Gemeinschaften, die du mögen könntest"
+msgstr ""
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -791,9 +789,8 @@ msgid "Subscriptions"
 msgstr "Abonnements"
 
 #: [communityaffiliation]subscriptions_text
-#, fuzzy
 msgid "My Communities subscriptions"
-msgstr "Keine Abonnements"
+msgstr ""
 
 #: [communityaffiliation]deleted
 msgid "Community deleted successfully"
@@ -1357,23 +1354,20 @@ msgid "The XMPP authentification failed"
 msgstr "XMPP-Authentifizierung ist fehlgeschlagen"
 
 #: [connection]socket_connected
-#, fuzzy
 msgid "Connected to the server"
-msgstr "Verbinde wieder zum Server…"
+msgstr ""
 
 #: [connection]authenticated
-#, fuzzy
 msgid "Authenticated to the server"
-msgstr "Verbinde wieder zum Server…"
+msgstr ""
 
 #: [form]username
 msgid "My address"
 msgstr "Adresse"
 
 #: [form]whitelist_info
-#, fuzzy
 msgid "Login with accounts from these servers"
-msgstr "Sie können sich mit Konten von diesen Servern anmelden"
+msgstr ""
 
 #: [form]connect_info
 msgid "Login using any XMPP account or create a new one"
@@ -2036,9 +2030,8 @@ msgid "A sticker has been sent using Movim"
 msgstr "Ein Sticker wurde versendet"
 
 #: [sticker]keyword
-#, fuzzy
 msgid "Type a keyword"
-msgstr "Passwort erneut eingeben"
+msgstr ""
 
 #: [sticker]gif_title
 msgid "Find a GIF"
@@ -2487,9 +2480,8 @@ msgid "Send to"
 msgstr ""
 
 #: [button]more
-#, fuzzy
 msgid "More"
-msgstr "Weitere Hilfe"
+msgstr ""
 
 #: [button]copy_link
 msgid "Copy Link"

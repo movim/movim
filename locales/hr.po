@@ -106,8 +106,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-02 13:07+0200\n"
-"PO-Revision-Date: 2020-11-03 22:14+0000\n"
+"POT-Creation-Date: 2021-04-05 14:47+0200\n"
+"PO-Revision-Date: 2021-04-02 13:28+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: Croatian (http://www.transifex.com/movim/movim/language/hr/)\n"
 "Language: hr\n"
@@ -115,7 +115,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Translate Toolkit 3.1.1\n"
+"X-Generator: Translate Toolkit 3.3.2\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -368,9 +368,8 @@ msgid "Pick a country in the list"
 msgstr "Odaberite državu na popisu"
 
 #: [tenor]title
-#, fuzzy
 msgid "Tenor integration"
-msgstr "Novi razgovor"
+msgstr ""
 
 #: [tenor]label
 msgid "Yout Tenor API Key"
@@ -719,9 +718,8 @@ msgid "Communities servers"
 msgstr "Poslužitelji zajednice"
 
 #: [communities]servers_text
-#, fuzzy
 msgid "Discover the Communities by servers"
-msgstr "Poslužitelji zajednice"
+msgstr ""
 
 #: [communities]disco
 msgid "Communities server discovered"
@@ -733,7 +731,7 @@ msgstr "Ovaj poslužitelj ne postoji"
 
 #: [communitiesinteresting]about
 msgid "Communities you might like"
-msgstr "Zajednice koje bi vam se mogle svidjeti"
+msgstr ""
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -776,9 +774,8 @@ msgid "Subscriptions"
 msgstr "Pretplate"
 
 #: [communityaffiliation]subscriptions_text
-#, fuzzy
 msgid "My Communities subscriptions"
-msgstr "Moje pretplate"
+msgstr ""
 
 #: [communityaffiliation]deleted
 msgid "Community deleted successfully"
@@ -1342,9 +1339,8 @@ msgid "The XMPP authentification failed"
 msgstr ""
 
 #: [connection]socket_connected
-#, fuzzy
 msgid "Connected to the server"
-msgstr "Povezani ste u sobu za razgovor"
+msgstr ""
 
 #: [connection]authenticated
 msgid "Authenticated to the server"
@@ -2019,9 +2015,8 @@ msgid "A sticker has been sent using Movim"
 msgstr ""
 
 #: [sticker]keyword
-#, fuzzy
 msgid "Type a keyword"
-msgstr "Ponovite zaporku"
+msgstr ""
 
 #: [sticker]gif_title
 msgid "Find a GIF"

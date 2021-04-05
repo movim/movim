@@ -108,8 +108,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-02 13:07+0200\n"
-"PO-Revision-Date: 2020-11-03 22:14+0000\n"
+"POT-Creation-Date: 2021-04-05 14:47+0200\n"
+"PO-Revision-Date: 2021-04-02 13:28+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/movim/movim/language/cs_CZ/)\n"
 "Language: cs_CZ\n"
@@ -117,7 +117,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
-"X-Generator: Translate Toolkit 3.1.1\n"
+"X-Generator: Translate Toolkit 3.3.2\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -370,9 +370,8 @@ msgid "Pick a country in the list"
 msgstr ""
 
 #: [tenor]title
-#, fuzzy
 msgid "Tenor integration"
-msgstr "Obecné informace"
+msgstr ""
 
 #: [tenor]label
 msgid "Yout Tenor API Key"
@@ -733,9 +732,8 @@ msgid "This server doesn’t exists"
 msgstr ""
 
 #: [communitiesinteresting]about
-#, fuzzy
 msgid "Communities you might like"
-msgstr "Název komunity"
+msgstr ""
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -778,9 +776,8 @@ msgid "Subscriptions"
 msgstr "Odběry"
 
 #: [communityaffiliation]subscriptions_text
-#, fuzzy
 msgid "My Communities subscriptions"
-msgstr "Žádné odběry"
+msgstr ""
 
 #: [communityaffiliation]deleted
 msgid "Community deleted successfully"
@@ -1344,14 +1341,12 @@ msgid "The XMPP authentification failed"
 msgstr "XMPP přihlášení selhalo"
 
 #: [connection]socket_connected
-#, fuzzy
 msgid "Connected to the server"
-msgstr "Připojeni do konverzace"
+msgstr ""
 
 #: [connection]authenticated
-#, fuzzy
 msgid "Authenticated to the server"
-msgstr "Prázdný Challenge od serveru"
+msgstr ""
 
 #: [form]username
 msgid "My address"
@@ -2022,9 +2017,8 @@ msgid "A sticker has been sent using Movim"
 msgstr "Nálepka byla odeslána pomocí Movim"
 
 #: [sticker]keyword
-#, fuzzy
 msgid "Type a keyword"
-msgstr "Zadejte heslo znovu"
+msgstr ""
 
 #: [sticker]gif_title
 msgid "Find a GIF"
@@ -2473,9 +2467,8 @@ msgid "Send to"
 msgstr ""
 
 #: [button]more
-#, fuzzy
 msgid "More"
-msgstr "Další pomoc"
+msgstr ""
 
 #: [button]copy_link
 msgid "Copy Link"

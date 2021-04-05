@@ -120,16 +120,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-02 13:07+0200\n"
-"PO-Revision-Date: 2021-01-05 12:10+0000\n"
-"Last-Translator: Rus D <rus@zx22.ru>\n"
+"POT-Creation-Date: 2021-04-05 14:47+0200\n"
+"PO-Revision-Date: 2021-04-02 13:28+0000\n"
+"Last-Translator: Transifex Bot <>\n"
 "Language-Team: Russian (http://www.transifex.com/movim/movim/language/ru/)\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
-"X-Generator: Translate Toolkit 3.1.1\n"
+"X-Generator: Translate Toolkit 3.3.2\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -382,9 +382,8 @@ msgid "Pick a country in the list"
 msgstr "Выберите страну из списка"
 
 #: [tenor]title
-#, fuzzy
 msgid "Tenor integration"
-msgstr "Общая информация"
+msgstr ""
 
 #: [tenor]label
 msgid "Yout Tenor API Key"
@@ -705,9 +704,8 @@ msgid "Picture"
 msgstr ""
 
 #: [chats]video
-#, fuzzy
 msgid "Video"
-msgstr "Видео звонок"
+msgstr ""
 
 #: [button]chat
 msgid "Chat"
@@ -734,9 +732,8 @@ msgid "Communities servers"
 msgstr "Сервера сообществ"
 
 #: [communities]servers_text
-#, fuzzy
 msgid "Discover the Communities by servers"
-msgstr "Сервера сообществ"
+msgstr ""
 
 #: [communities]disco
 msgid "Communities server discovered"
@@ -748,7 +745,7 @@ msgstr "Такого сервера не существует"
 
 #: [communitiesinteresting]about
 msgid "Communities you might like"
-msgstr "Сообщества, которые могут вам понравиться"
+msgstr ""
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -791,9 +788,8 @@ msgid "Subscriptions"
 msgstr "Подписки"
 
 #: [communityaffiliation]subscriptions_text
-#, fuzzy
 msgid "My Communities subscriptions"
-msgstr "Нет подписок"
+msgstr ""
 
 #: [communityaffiliation]deleted
 msgid "Community deleted successfully"
@@ -1357,23 +1353,20 @@ msgid "The XMPP authentification failed"
 msgstr "XMPP-аутентификация не прошла"
 
 #: [connection]socket_connected
-#, fuzzy
 msgid "Connected to the server"
-msgstr "Переподключение к серверу…"
+msgstr ""
 
 #: [connection]authenticated
-#, fuzzy
 msgid "Authenticated to the server"
-msgstr "Переподключение к серверу…"
+msgstr ""
 
 #: [form]username
 msgid "My address"
 msgstr "Мой адрес"
 
 #: [form]whitelist_info
-#, fuzzy
 msgid "Login with accounts from these servers"
-msgstr "Вы можете войти с помощью учетных записей с этих серверов"
+msgstr ""
 
 #: [form]connect_info
 msgid "Login using any XMPP account or create a new one"
@@ -2036,9 +2029,8 @@ msgid "A sticker has been sent using Movim"
 msgstr "Стикер был отправлен из Movim"
 
 #: [sticker]keyword
-#, fuzzy
 msgid "Type a keyword"
-msgstr "Введите пароль ещё раз"
+msgstr ""
 
 #: [sticker]gif_title
 msgid "Find a GIF"
@@ -2487,9 +2479,8 @@ msgid "Send to"
 msgstr ""
 
 #: [button]more
-#, fuzzy
 msgid "More"
-msgstr "Больше помощи"
+msgstr ""
 
 #: [button]copy_link
 msgid "Copy Link"

@@ -106,8 +106,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-02 13:07+0200\n"
-"PO-Revision-Date: 2020-11-03 22:14+0000\n"
+"POT-Creation-Date: 2021-04-05 14:47+0200\n"
+"PO-Revision-Date: 2021-04-02 13:28+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: Catalan (http://www.transifex.com/movim/movim/language/ca/)\n"
 "Language: ca\n"
@@ -115,7 +115,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.1.1\n"
+"X-Generator: Translate Toolkit 3.3.2\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -368,9 +368,8 @@ msgid "Pick a country in the list"
 msgstr "Escull un país de la llista"
 
 #: [tenor]title
-#, fuzzy
 msgid "Tenor integration"
-msgstr "Configuració"
+msgstr ""
 
 #: [tenor]label
 msgid "Yout Tenor API Key"
@@ -775,9 +774,8 @@ msgid "Subscriptions"
 msgstr "Subscripcions"
 
 #: [communityaffiliation]subscriptions_text
-#, fuzzy
 msgid "My Communities subscriptions"
-msgstr "No hi ha subscripcions"
+msgstr ""
 
 #: [communityaffiliation]deleted
 msgid "Community deleted successfully"
@@ -1341,9 +1339,8 @@ msgid "The XMPP authentification failed"
 msgstr ""
 
 #: [connection]socket_connected
-#, fuzzy
 msgid "Connected to the server"
-msgstr "Connectat a la sala de xat"
+msgstr ""
 
 #: [connection]authenticated
 msgid "Authenticated to the server"
@@ -2018,9 +2015,8 @@ msgid "A sticker has been sent using Movim"
 msgstr ""
 
 #: [sticker]keyword
-#, fuzzy
 msgid "Type a keyword"
-msgstr "Repeteix la contrasenya"
+msgstr ""
 
 #: [sticker]gif_title
 msgid "Find a GIF"

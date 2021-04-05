@@ -107,16 +107,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-02 13:07+0200\n"
-"PO-Revision-Date: 2020-11-29 23:06+0000\n"
-"Last-Translator: Rafał Kołucki <BluRafPL@gmail.com>\n"
+"POT-Creation-Date: 2021-04-05 14:47+0200\n"
+"PO-Revision-Date: 2021-04-02 13:28+0000\n"
+"Last-Translator: Transifex Bot <>\n"
 "Language-Team: Polish (http://www.transifex.com/movim/movim/language/pl/)\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
-"X-Generator: Translate Toolkit 3.1.1\n"
+"X-Generator: Translate Toolkit 3.3.2\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -369,9 +369,8 @@ msgid "Pick a country in the list"
 msgstr ""
 
 #: [tenor]title
-#, fuzzy
 msgid "Tenor integration"
-msgstr "Nowa rozmowa"
+msgstr ""
 
 #: [tenor]label
 msgid "Yout Tenor API Key"
@@ -720,9 +719,8 @@ msgid "Communities servers"
 msgstr "Serwery społeczności"
 
 #: [communities]servers_text
-#, fuzzy
 msgid "Discover the Communities by servers"
-msgstr "Serwery społeczności"
+msgstr ""
 
 #: [communities]disco
 msgid "Communities server discovered"
@@ -733,9 +731,8 @@ msgid "This server doesn’t exists"
 msgstr ""
 
 #: [communitiesinteresting]about
-#, fuzzy
 msgid "Communities you might like"
-msgstr "Nazwa społeczności"
+msgstr ""
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -778,9 +775,8 @@ msgid "Subscriptions"
 msgstr "Subskrypcje"
 
 #: [communityaffiliation]subscriptions_text
-#, fuzzy
 msgid "My Communities subscriptions"
-msgstr "Brak subskrypcji"
+msgstr ""
 
 #: [communityaffiliation]deleted
 msgid "Community deleted successfully"
@@ -1344,14 +1340,12 @@ msgid "The XMPP authentification failed"
 msgstr "Uwierzytelnienie XMPP nieudane"
 
 #: [connection]socket_connected
-#, fuzzy
 msgid "Connected to the server"
-msgstr "Połączony z pokojem rozmów"
+msgstr ""
 
 #: [connection]authenticated
-#, fuzzy
 msgid "Authenticated to the server"
-msgstr "Puste Wyzwanie dla serwera"
+msgstr ""
 
 #: [form]username
 msgid "My address"
@@ -2022,9 +2016,8 @@ msgid "A sticker has been sent using Movim"
 msgstr "Wysłano stickera za pomocą Movim"
 
 #: [sticker]keyword
-#, fuzzy
 msgid "Type a keyword"
-msgstr "Przepisz hasło"
+msgstr ""
 
 #: [sticker]gif_title
 msgid "Find a GIF"
@@ -2473,9 +2466,8 @@ msgid "Send to"
 msgstr ""
 
 #: [button]more
-#, fuzzy
 msgid "More"
-msgstr "Więcej pomocy"
+msgstr ""
 
 #: [button]copy_link
 msgid "Copy Link"

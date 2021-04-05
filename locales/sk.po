@@ -108,16 +108,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-02 13:07+0200\n"
-"PO-Revision-Date: 2020-12-29 10:15+0000\n"
-"Last-Translator: Slavko <linux@slavino.sk>\n"
+"POT-Creation-Date: 2021-04-05 14:47+0200\n"
+"PO-Revision-Date: 2021-04-02 13:28+0000\n"
+"Last-Translator: Transifex Bot <>\n"
 "Language-Team: Slovak (Slovakia) (http://www.transifex.com/movim/movim/language/sk_SK/)\n"
 "Language: sk_SK\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);\n"
-"X-Generator: Translate Toolkit 3.1.1\n"
+"X-Generator: Translate Toolkit 3.3.2\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -370,9 +370,8 @@ msgid "Pick a country in the list"
 msgstr "Zvoľte krajinu zo zoznamu"
 
 #: [tenor]title
-#, fuzzy
 msgid "Tenor integration"
-msgstr "Všeobecné informácie"
+msgstr ""
 
 #: [tenor]label
 msgid "Yout Tenor API Key"
@@ -693,9 +692,8 @@ msgid "Picture"
 msgstr "Obrázok"
 
 #: [chats]video
-#, fuzzy
 msgid "Video"
-msgstr "Video hovor"
+msgstr ""
 
 #: [button]chat
 msgid "Chat"
@@ -722,9 +720,8 @@ msgid "Communities servers"
 msgstr "Komunitné servery"
 
 #: [communities]servers_text
-#, fuzzy
 msgid "Discover the Communities by servers"
-msgstr "Komunitné servery"
+msgstr ""
 
 #: [communities]disco
 msgid "Communities server discovered"
@@ -736,7 +733,7 @@ msgstr "Tento server neexistuje"
 
 #: [communitiesinteresting]about
 msgid "Communities you might like"
-msgstr "Komunity, ktoré sa Vám môžu páčiť"
+msgstr ""
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -779,9 +776,8 @@ msgid "Subscriptions"
 msgstr "Odbery"
 
 #: [communityaffiliation]subscriptions_text
-#, fuzzy
 msgid "My Communities subscriptions"
-msgstr "Žiadne odbery"
+msgstr ""
 
 #: [communityaffiliation]deleted
 msgid "Community deleted successfully"
@@ -1345,23 +1341,20 @@ msgid "The XMPP authentification failed"
 msgstr "Autentifikácia XMPP zlyhala"
 
 #: [connection]socket_connected
-#, fuzzy
 msgid "Connected to the server"
-msgstr "Opätovné pripojenie k serveru…"
+msgstr ""
 
 #: [connection]authenticated
-#, fuzzy
 msgid "Authenticated to the server"
-msgstr "Opätovné pripojenie k serveru…"
+msgstr ""
 
 #: [form]username
 msgid "My address"
 msgstr "Moja adresa"
 
 #: [form]whitelist_info
-#, fuzzy
 msgid "Login with accounts from these servers"
-msgstr "Môžete sa prihlásiť pomocou účtov z týchto serverov"
+msgstr ""
 
 #: [form]connect_info
 msgid "Login using any XMPP account or create a new one"
@@ -2024,9 +2017,8 @@ msgid "A sticker has been sent using Movim"
 msgstr ""
 
 #: [sticker]keyword
-#, fuzzy
 msgid "Type a keyword"
-msgstr "Zopakujte heslo"
+msgstr ""
 
 #: [sticker]gif_title
 msgid "Find a GIF"
@@ -2475,9 +2467,8 @@ msgid "Send to"
 msgstr "Poslať"
 
 #: [button]more
-#, fuzzy
 msgid "More"
-msgstr "Ďalšia pomoc"
+msgstr ""
 
 #: [button]copy_link
 msgid "Copy Link"
