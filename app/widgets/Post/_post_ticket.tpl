@@ -1,7 +1,13 @@
 <li class="block" onclick="MovimUtils.redirect('{$c->route('post', [$post->server, $post->node, $post->nodeid])}')">
     {if="$post->picture != null"}
         <img class="main" src="{$post->picture->href|protectPicture}">
-        <span class="primary icon thumb color"
+        <span class="primary icon thumb color
+            {if="$post->contact"}
+                {$post->contact->jid|stringToColor}
+            {else}
+                {$post->node|stringToColor}
+            {/if}
+        "
             style="background-image: url({$post->picture->href|protectPicture});"
         >
             {if="$post->contact"}
