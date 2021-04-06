@@ -39,6 +39,20 @@ class ChatOmemo extends \Movim\Widget\Base
 
     public function ajaxAnnounceBundle($bundle)
     {
+        $devicesList = array_values($this->user->bundles()
+                                  ->select('bundle_id')
+                                  ->where('jid', $this->user->id)
+                                  ->pluck('bundle_id')
+                                  ->toArray());
+
+        if (($key = array_search($bundle->deviceId, $devicesList)) !== false) {
+            unset($devicesList[$key]);
+        }
+
+        array_push($devicesList, $bundle->deviceId);
+
+        \Utils::debug(serialize($devicesList));
+        /*
         $preKeys = [];
         foreach ($bundle->preKeys as $preKey) {
             array_push($preKeys, (string)$preKey->key);
@@ -54,6 +68,6 @@ class ChatOmemo extends \Movim\Widget\Base
 
         $sdl = new SetDeviceList;
         $sdl->setList([$bundle->deviceId])
-            ->request();
+            ->request();*/
     }
 }

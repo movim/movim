@@ -387,7 +387,7 @@ class Chat extends \Movim\Widget\Base
         $omemo = null
     ) {
         $messageFile = null;
-        $messageOMEMO = null;
+        $messageOMEMOHeader = null;
 
         if ($file) {
             $messageFile = new MessageFile;
@@ -424,6 +424,13 @@ class Chat extends \Movim\Widget\Base
         ?Message $replace = null, ?MessageFile $file = null, ?int $replyToMid = 0,
         ?bool $mucReceipts = false, ?MessageOMEMOHeader $messageOMEMOHeader = null)
     {
+        $tempId = null;
+
+        if ($messageOMEMOHeader) {
+            $tempId = $message;
+            $message = 'Encrypted OMEMO message sent';
+        }
+
         $body = ($file != null && $file->type != 'xmpp/uri')
             ? $file->uri
             : $message;
@@ -512,6 +519,7 @@ class Chat extends \Movim\Widget\Base
         }
 
         if ($messageOMEMOHeader) {
+            $m->encrypted = true;
             $m->omemoheader = (string)$messageOMEMOHeader;
             $p->setMessageOMEMO($messageOMEMOHeader);
         }
@@ -529,6 +537,11 @@ class Chat extends \Movim\Widget\Base
 
             $packet = new \Moxl\Xec\Payload\Packet;
             $packet->content = $m;
+
+            // We sent the published id back
+            if ($tempId) {
+                $this->rpc('Chat.sentId', $tempId, $m->id);
+            }
 
             // We refresh the Chats list
             $c = new Chats;

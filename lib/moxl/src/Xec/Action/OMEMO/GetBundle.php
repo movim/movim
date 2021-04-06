@@ -25,9 +25,20 @@ class GetBundle extends Action
     {
         $bd = new Bundle;
         $bd->set($this->_to, $this->_id, $stanza->pubsub->items->item->bundle);
-        $bd->save();
 
-        $this->pack($bd);
-        $this->deliver();
+        $localBd = Bundle::where('user_id', $bd->user_id)
+            ->where('bundle_id', $bd->bundle_id)
+            ->where('jid', $bd->jid)
+            ->first();
+
+        // Only refresh if the bundle is different
+        if (!$localBd || !$localBd->sameAs($bd)) {
+            if ($localBd) $localBd->delete();
+
+            $bd->save();
+
+            $this->pack($bd);
+            $this->deliver();
+        }
     }
 }

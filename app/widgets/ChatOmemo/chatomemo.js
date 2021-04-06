@@ -12,7 +12,9 @@ var ChatOmemo = {
         const identityKeyPair = await KeyHelper.generateIdentityKeyPair();
         const bundle = {};
         const identityKey = MovimUtils.arrayBufferToBase64(identityKeyPair.pubKey);
-        const deviceId = KeyHelper.generateRegistrationId();
+
+        const localDeviceId = store.getLocalRegistrationId();
+        const deviceId = localDeviceId ?? KeyHelper.generateRegistrationId();
 
         bundle['identityKey'] = identityKey;
         bundle['deviceId'] = deviceId;
@@ -150,8 +152,9 @@ var ChatOmemo = {
             console.log('No payload to decrypt');
         }
 
+        // One of our key was used, lets refresh the bundle
         if (key.prekey) {
-            // One of our key was used, let's refresh the bundle
+            //store.removePreKey(prekey);
         }
 
         let iv = MovimUtils.base64ToArrayBuffer(message.omemoheader.iv);

@@ -28,6 +28,16 @@ class Bundle extends Model
         $this->prekeys = serialize($prekeys);
     }
 
+    public function sameAs(Bundle $bundle)
+    {
+        return (
+            $this->attributes['prekeys'] == $bundle->attributes['prekeys']
+            && $this->attributes['prekeypublic'] == $bundle->attributes['prekeypublic']
+            && $this->attributes['prekeysignature'] == $bundle->attributes['prekeysignature']
+            && $this->attributes['identitykey'] == $bundle->attributes['identitykey']
+        );
+    }
+
     public function getPrekeysAttribute()
     {
         return unserialize($this->attributes['prekeys']);

@@ -32,6 +32,9 @@ var Chat = {
     translateY: 0,
     slideAuthorized: false,
 
+    // Temporary messages, for OMEMO local mesages
+    tempMessages: {},
+
     autocomplete: function(event, jid)
     {
         RoomsUtils_ajaxMucUsersAutocomplete(jid);
@@ -173,12 +176,13 @@ var Chat = {
                 // Try to encrypt the message
                 let omemo = ChatOmemo.encrypt(jid, text);
                 if (omemo) {
-                    text = 'Encrypted message';
-
                     // TODO, disable the other risky features
                     omemo.then(omemoheader => {
                         console.log(omemoheader);
-                        xhr = Chat_ajaxHttpDaemonSendMessage(jid, text, muc, null, replyMid, mucReceipts, omemoheader);
+                        tempId = omemoheader.tempId = Math.random().toString(36).substr(2, 15);
+                        Chat.tempMessages[tempId] = text;
+
+                        xhr = Chat_ajaxHttpDaemonSendMessage(jid, tempId, muc, null, replyMid, mucReceipts, omemoheader);
 
                         xhr.timeout = 10000;
                         xhr.ontimeout = function() {
@@ -201,6 +205,13 @@ var Chat = {
 
                 //xhr = Chat_ajaxHttpDaemonSendMessage(jid, text, muc, null, replyMid, mucReceipts, omemo);
             }
+        }
+    },
+    sentId: function(tempId, id)
+    {
+        if (Chat.tempMessages[tempId]) {
+            ChatOmemoDB.putMessage(id, Chat.tempMessages[tempId]);
+            delete Chat.tempMessages[tempId];
         }
     },
     enableSending: function()
@@ -862,6 +873,7 @@ var Chat = {
 
         if (data.encrypted) {
             p.classList.add('encrypted');
+            span.appendChild(Chat.getEncryptedIcoHtml());
         }
 
         if (data.body.match(/^\/me\s/)) {
@@ -1183,6 +1195,12 @@ var Chat = {
         }
 
         return div;
+    },
+    getEncryptedIcoHtml: function() {
+        var i = document.createElement('i');
+        i.className = 'material-icons';
+        i.innerText = 'lock';
+        return i;
     },
     getEditedIcoHtml: function() {
         var i = document.createElement('i');
