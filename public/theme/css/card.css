@@ -8,8 +8,7 @@
     object-fit: cover;
     left: -1rem;
     top: -1rem;
-    opacity: 0.2;
-    filter: blur(0.5rem);
+    opacity: 0.1;
 }
 
 .card img.main ~ div {
