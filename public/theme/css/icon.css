@@ -38,10 +38,15 @@ span.icon.top.preview {
 span.icon.primary.thumb {
     width: 7rem;
     line-height: 7rem;
-    margin-left: -1.5rem;
+    margin-left: -1rem;
     align-self: stretch;
     height: auto;
     text-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+}
+
+span.primary.overflow {
+    margin-left: -4.5rem;
+    margin-right: 0;
 }
 
 ul.fill li span.icon.primary.thumb {

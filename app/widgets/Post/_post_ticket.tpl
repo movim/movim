@@ -1,29 +1,39 @@
 <li class="block" onclick="MovimUtils.redirect('{$c->route('post', [$post->server, $post->node, $post->nodeid])}')">
     {if="$post->picture != null"}
         <img class="main" src="{$post->picture->href|protectPicture}">
-    {/if}
-    <span class="primary icon bubble color
-        {$url = false}
-        {if="$post->contact"}
-            {$post->contact->jid|stringToColor}
-        {else}
-            {$post->node|stringToColor}
-        {/if}"
-        {if="$post->contact"}
-            {$url = $post->contact->getPhoto('l')}
-            {if="$url"}
-                style="background-image: url({$url});"
-            {/if}
-        {/if}
-    >
-        {if="$url == false"}
+        <span class="primary icon thumb color"
+            style="background-image: url({$post->picture->href|protectPicture});"
+        >
             {if="$post->contact"}
                 {$post->contact->truename|firstLetterCapitalize}
             {else}
                 {$post->node|firstLetterCapitalize}
             {/if}
-        {/if}
-    </span>
+        </span>
+    {else}
+        <span class="primary icon bubble color
+            {if="$post->contact"}
+                {$post->contact->jid|stringToColor}
+            {else}
+                {$post->node|stringToColor}
+            {/if}"
+            {$url = false}
+            {if="$post->contact"}
+                {$url = $post->contact->getPhoto('l')}
+                {if="$url"}
+                    style="background-image: url({$url});"
+                {/if}
+            {/if}
+        >
+            {if="$url == false"}
+                {if="$post->contact"}
+                    {$post->contact->truename|firstLetterCapitalize}
+                {else}
+                    {$post->node|firstLetterCapitalize}
+                {/if}
+            {/if}
+        </span>
+    {/if}
     <div>
         <p class="line" {if="isset($post->title)"}title="{$post->title}"{/if}>
             {if="isset($post->title)"}
