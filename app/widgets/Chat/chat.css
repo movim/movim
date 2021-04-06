@@ -244,6 +244,10 @@ main:not(.enabled) #chat_widget {
     float: right;
 }
 
+#chat_widget li.oppose div.bubble.sticker.file img:not(.emoji):not(.hfr) + div.file {
+    clear: right;
+}
+
 #chat_widget ul.list:after {
     content: " ";
     display: block;
