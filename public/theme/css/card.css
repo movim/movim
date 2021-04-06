@@ -1,5 +1,21 @@
 /* Card */
 
+.card img.main {
+    position: absolute;
+    width: calc(100% + 2rem);
+    height: calc(100% + 2rem);
+    max-width: calc(100% + 2rem);
+    object-fit: cover;
+    left: -1rem;
+    top: -1rem;
+    opacity: 0.2;
+    filter: blur(0.5rem);
+}
+
+.card img.main ~ div {
+    z-index: 1;
+}
+
 .card > .block:not(.subheader):not(.simple) {
     animation: fadein 0.3s;
     border-radius: 0.65rem;
@@ -7,6 +23,7 @@
     overflow: hidden;
     margin-bottom: 1rem;
     box-sizing: border-box;
+    padding-left: 1rem;
 }
 
 .card.noanim > .block:not(.subheader):not(.simple) {

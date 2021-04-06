@@ -25,19 +25,19 @@ ul.list li > * {
     min-width: 0;
 }
 
-ul.list li:not(.subheader) > *:not(.primary):not(.control):not(.bubble) {
+ul.list li:not(.subheader) > *:not(.primary):not(.control):not(.bubble):not(.main) {
     padding: 0.25rem 0;
 }
 
-ul.list.thin li:not(.subheader) > *:not(.primary):not(.control):not(.bubble) {
+ul.list.thin li:not(.subheader) > *:not(.primary):not(.control):not(.bubble):not(.main) {
     padding: 0;
 }
 
-ul.list.middle li:not(.subheader) > *:not(.primary):not(.control):not(.bubble) {
+ul.list.middle li:not(.subheader) > *:not(.primary):not(.control):not(.bubble):not(.main) {
     padding: 0.75rem 0;
 }
 
-ul.list.thick li:not(.subheader) > *:not(.primary):not(.control):not(.bubble) {
+ul.list.thick li:not(.subheader) > *:not(.primary):not(.control):not(.bubble):not(.main) {
     padding: 1.5rem 0;
 }
 
