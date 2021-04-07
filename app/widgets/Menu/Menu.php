@@ -222,9 +222,13 @@ class Menu extends Base
             $view->assign('next', $this->route('news', $page+1, [], 'contacts'));
         }
 
-        $view->assign('items', $items
+        $items = $items
             ->orderBy('published', 'desc')
-            ->take($this->_paging)->get());
+            ->take($this->_paging)->get();
+
+        $items = resolveInfos($items);
+
+        $view->assign('items', $items);
         $view->assign('type', $type);
         $view->assign('page', $page);
         $view->assign('paging', $this->_paging);

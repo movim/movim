@@ -43,7 +43,10 @@ class NewsNav extends Base
             $posts->where('posts.server', $server);
         }
 
-        $view->assign('posts', $posts->get()->shuffle());
+        $posts = $posts->get()->shuffle();
+        $posts = resolveInfos($posts);
+
+        $view->assign('posts', $posts);
         $view->assign('page', $page);
 
         $this->rpc('MovimTpl.fill', '#newsnav', $view->draw('_newsnav'));

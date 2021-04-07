@@ -23,9 +23,19 @@
                     </span>
                 {/if}
             {else}
-                <span class="primary icon bubble color {$post->node|stringToColor}">
-                    {$post->node|firstLetterCapitalize}
-                </span>
+                {$url = null}
+                {if="$post->info != null"}
+                    {$url = $post->info->getPhoto('l')}
+                {/if}
+                {if="$url"}
+                    <span class="primary icon bubble">
+                        <img src="{$url}"/>
+                    </span>
+                {else}
+                    <span class="primary icon bubble color {$post->node|stringToColor}">
+                        {$post->node|firstLetterCapitalize}
+                    </span>
+                {/if}
             {/if}
 
             <div>

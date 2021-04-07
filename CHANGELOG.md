@@ -8,6 +8,9 @@ v0.19.1 (trunk)
 * Fix Notifications crash on MySQL
 * Fix MUC private message self Carbon handling
 * Fix a XML entities issues in Post content (#976)
+* Add resolveInfos() to resolve Info elements for Posts easily
+* New design for Post cards
+* Fix chat attachments alignements
 
 v0.19
 ---------------------------

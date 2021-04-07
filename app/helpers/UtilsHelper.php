@@ -82,6 +82,44 @@ function getClientTypes()
 }
 
 /**
+ * Resolve infos from a Posts collection
+ */
+function resolveInfos($postCollection)
+{
+    $serverNodes = $postCollection->map(function($item) {
+        return ['server' => $item->server, 'node' => $item->node];
+    })->unique(function ($item) {
+        return $item['server'].$item['node'];
+    });
+
+    if ($serverNodes->isNotEmpty()) {
+        $first = $serverNodes->first();
+        $infos = \App\Info::where([
+            'server' => $first['server'],
+            'node' => $first['node'],
+        ]);
+
+        $serverNodes->skip(1)->each(function ($serverNode) use ($infos) {
+            $infos->orWhere([
+                'server' => $serverNode['server'],
+                'node' => $serverNode['node'],
+            ]);
+        });
+
+        $infos = $infos->get()->keyBy(function ($item) {
+            return $item['server'].$item['node'];
+        });
+
+        $postCollection->map(function($item) use ($infos) {
+            $item->info = $infos->get($item->server.$item->node);
+            return $item;
+        });
+
+        return $postCollection;
+    }
+}
+
+/**
  * Return a picture with a specific size
  */
 function getPhoto($id, $size = 'm')

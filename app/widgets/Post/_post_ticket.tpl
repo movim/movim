@@ -24,11 +24,14 @@
                 {$post->node|stringToColor}
             {/if}"
             {$url = false}
-            {if="$post->contact"}
-                {$url = $post->contact->getPhoto('l')}
-                {if="$url"}
-                    style="background-image: url({$url});"
-                {/if}
+            {if="$post->info"}
+                {$url = $post->info->getPhoto('m')}
+            {/if}
+            {if="!$url && $post->contact"}
+                {$url = $post->contact->getPhoto('m')}
+            {/if}
+            {if="$url"}
+                style="background-image: url({$url});"
             {/if}
         >
             {if="$url == false"}

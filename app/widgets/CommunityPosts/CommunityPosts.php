@@ -132,6 +132,7 @@ class CommunityPosts extends Base
 
         $posts = \App\Post::where('server', $origin)->where('node', $node)
                           ->whereIn('nodeid', $ids)->get();
+        $posts = resolveInfos($posts);
 
         $postsWithKeys = [];
 

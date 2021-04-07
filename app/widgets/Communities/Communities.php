@@ -66,6 +66,9 @@ class Communities extends Base
                     : ($this->_page * $page)
             )
             ->get();
+
+        $posts = resolveInfos($posts);
+
         $view->assign('posts', $posts);
         $view->assign('type', $type);
         $view->assign('limit', $this->_page);
