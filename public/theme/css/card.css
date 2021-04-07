@@ -22,7 +22,6 @@
     overflow: hidden;
     margin-bottom: 1rem;
     box-sizing: border-box;
-    padding-left: 1rem;
 }
 
 .card.noanim > .block:not(.subheader):not(.simple) {
