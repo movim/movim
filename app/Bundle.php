@@ -38,6 +38,13 @@ class Bundle extends Model
         );
     }
 
+    public function getFingerprintAttribute()
+    {
+        $buffer = base64_decode($this->identitykey);
+        $hex = unpack('H*', $buffer);
+        return implode(' ', str_split(substr($hex[1], 2), 8));
+    }
+
     public function getPrekeysAttribute()
     {
         return unserialize($this->attributes['prekeys']);

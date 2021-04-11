@@ -4,6 +4,8 @@ const KEY_ALGO = {
     'name': 'AES-GCM',
     'length': 128
 };
+const NUM_PREKEYS = 50;
+const SIGNED_PREKEY_ID = 1234;
 
 var ChatOmemo = {
     generateBundle: async function () {
@@ -22,15 +24,46 @@ var ChatOmemo = {
         store.setLocalRegistrationId(deviceId);
         store.setIdentityKeyPair(identityKeyPair);
 
-        const signedPreKey = await KeyHelper.generateSignedPreKey(identityKeyPair, 1234);
-        console.log(signedPreKey);
+        const signedPreKey = await KeyHelper.generateSignedPreKey(identityKeyPair, SIGNED_PREKEY_ID);
+
         store.storeSignedPreKey(signedPreKey.keyId, signedPreKey);
         bundle['signedPreKey'] = {
             'id': signedPreKey.keyId,
-            'publicKey': signedPreKey.keyPair.privKey,
+            'publicKey': signedPreKey.keyPair.pubKey,
             'signature': signedPreKey.signature
         }
-        const keys = await Promise.all(MovimUtils.range(0, 25).map(id => KeyHelper.generatePreKey(id)));
+        const keys = await Promise.all(MovimUtils.range(0, NUM_PREKEYS).map(id => KeyHelper.generatePreKey(id)));
+        keys.forEach(k => store.storePreKey(k.keyId, k.keyPair));
+
+        const preKeys = keys.map(k => ({ 'id': k.keyId, 'key': k.keyPair.pubKey }));
+        bundle['preKeys'] = preKeys;
+
+        console.log(bundle);
+        ChatOmemo_ajaxAnnounceBundle(bundle);
+    },
+
+    refreshBundle: async function() {
+        var store = new ChatOmemoStorage();
+
+        const bundle = {};
+
+        // We get the base of the bundle from the store
+
+        let keyPair = await store.getIdentityKeyPair();
+
+        bundle['identityKey'] = MovimUtils.arrayBufferToBase64(keyPair.pubKey);
+        bundle['deviceId'] = await store.getLocalRegistrationId();
+
+        let signedPreKey = await store.loadSignedPreKey(SIGNED_PREKEY_ID);
+        bundle['signedPreKey'] = {
+            'id': signedPreKey.keyId,
+            'publicKey': MovimUtils.arrayBufferToBase64(signedPreKey.keyPair.pubKey),
+            'signature': MovimUtils.arrayBufferToBase64(signedPreKey.signature)
+        }
+
+        // We refresh all the preKeys
+
+        const keys = await Promise.all(MovimUtils.range(0, NUM_PREKEYS).map(id => KeyHelper.generatePreKey(id)));
         keys.forEach(k => store.storePreKey(k.keyId, k.keyPair));
 
         const preKeys = keys.map(k => ({ 'id': k.keyId, 'key': k.keyPair.pubKey }));
@@ -119,6 +152,8 @@ var ChatOmemo = {
             return maybeDecrypted;
         }
 
+        if (message.omemoheader.keys == undefined) return;
+
         var store = new ChatOmemoStorage();
         let deviceId = await store.getLocalRegistrationId();
 
@@ -154,7 +189,7 @@ var ChatOmemo = {
 
         // One of our key was used, lets refresh the bundle
         if (key.prekey) {
-            //store.removePreKey(prekey);
+            ChatOmemo.refreshBundle();
         }
 
         let iv = MovimUtils.base64ToArrayBuffer(message.omemoheader.iv);

@@ -72,7 +72,14 @@ class Account extends \Movim\Widget\Base
         );
     }
 
-    public function ajaxChangePassword($form)
+    public function ajaxChangePassword()
+    {
+        $view = $this->tpl();
+        $view->assign('jid', $this->user->id);
+        Dialog::fill($view->draw('_account_password'));
+    }
+
+    public function ajaxChangePasswordConfirm($form)
     {
         $validate = Validator::stringType()->length(6, 40);
         $p1 = $form->password->value;
@@ -83,18 +90,20 @@ class Account extends \Movim\Widget\Base
             if ($p1 == $p2) {
                 $arr = explodeJid($this->user->id);
 
+                $this->rpc('Dialog_ajaxClear');
+
                 $cp = new ChangePassword;
                 $cp->setTo($arr['server'])
                    ->setUsername($arr['username'])
                    ->setPassword($p1)
                    ->request();
             } else {
-                $this->rpc('Account.resetPassword');
                 Toast::send($this->__('account.password_not_same'));
+                $this->rpc('Account.resetPassword');
             }
         } else {
-            $this->rpc('Account.resetPassword');
             Toast::send($this->__('account.password_not_valid'));
+            $this->rpc('Account.resetPassword');
         }
     }
 
@@ -170,6 +179,7 @@ class Account extends \Movim\Widget\Base
 
     public function display()
     {
+        $this->view->assign('fingerprints', $this->user->bundles()->where('jid', $this->user->id)->get());
         $this->view->assign('gateways', $this->prepareGateways());
     }
 }

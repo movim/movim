@@ -111,8 +111,12 @@ ChatOmemoStorage.prototype = {
         var res = this.get('25519KeysignedKey' + keyId);
         if (res !== undefined) {
             res = {
-                pubKey: MovimUtils.base64ToArrayBuffer(res.keyPair.pubKey),
-                privKey: MovimUtils.base64ToArrayBuffer(res.keyPair.privKey)
+                keyPair: {
+                    pubKey: MovimUtils.base64ToArrayBuffer(res.keyPair.pubKey),
+                    privKey: MovimUtils.base64ToArrayBuffer(res.keyPair.privKey),
+                },
+                signature: MovimUtils.base64ToArrayBuffer(res.signature),
+                keyId: keyId
             };
         }
         return Promise.resolve(res);

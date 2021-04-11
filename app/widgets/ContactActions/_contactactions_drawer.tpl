@@ -89,6 +89,30 @@
         </ul>
     {/if}
 
+    {if="$fingerprints->count() > 0"}
+        <ul class="list middle">
+            <li class="subheader">
+                <div>
+                    <p>{$c->__('omemo.fingerprints')}</p>
+                </div>
+            </li>
+            {loop="$fingerprints"}
+                <li>
+                    <span class="primary icon gray">
+                        <i class="material-icons">fingerprint</i>
+                    </span>
+                    <div>
+                        <p class="normal">
+                            <span class="fingerprint">
+                                {$value->fingerprint}
+                            </span>
+                        </p>
+                    </div>
+                </li>
+            {/loop}
+        </ul>
+    {/if}
+
     <ul class="tabs" id="navtabs"></ul>
 
     <div class="tabelem" title="{$c->__('vcard.title')}" id="contact_info">

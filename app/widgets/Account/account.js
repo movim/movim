@@ -2,7 +2,7 @@ var Account = {
     resetPassword : function() {
         var form = document.querySelector('form[name=password]');
         form.reset();
-        form.querySelector('a.button').className = 'button color oppose';
+        document.querySelector('#password_save').className = 'button color flat';
     }
 }
 

@@ -51,8 +51,6 @@ class ChatOmemo extends \Movim\Widget\Base
 
         array_push($devicesList, $bundle->deviceId);
 
-        \Utils::debug(serialize($devicesList));
-        /*
         $preKeys = [];
         foreach ($bundle->preKeys as $preKey) {
             array_push($preKeys, (string)$preKey->key);
@@ -67,7 +65,7 @@ class ChatOmemo extends \Movim\Widget\Base
            ->request();
 
         $sdl = new SetDeviceList;
-        $sdl->setList([$bundle->deviceId])
-            ->request();*/
+        $sdl->setList($devicesList)
+            ->request();
     }
 }
