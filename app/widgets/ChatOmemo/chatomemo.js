@@ -210,6 +210,11 @@ var ChatOmemo = {
         ChatOmemoDB.putMessage(message.id, plaintext);
         return plaintext;
     },
+    hasSessionOpened(jid) {
+        return Object.keys(localStorage)
+                     .filter(key => key.startsWith('session' + jid))
+                     .length > 0;
+    },
     encryptJid: function (plaintext, jid) {
         let promises = Object.keys(localStorage)
             .filter(key => key.startsWith('session' + jid))

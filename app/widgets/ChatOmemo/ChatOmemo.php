@@ -20,11 +20,12 @@ class ChatOmemo extends \Movim\Widget\Base
     {
         $bundle = $packet->content;
 
+        $pickedKey = array_rand($bundle->prekeys);
         $prekey = [
             'identitykey' => $bundle->identitykey,
             'prekeypublic' => $bundle->prekeypublic,
             'prekeysignature' => $bundle->prekeysignature,
-            'prekey' => ['id' => array_key_first($bundle->prekeys), 'value' => $bundle->prekeys[array_key_first($bundle->prekeys)]]
+            'prekey' => ['id' => $pickedKey, 'value' => $bundle->prekeys[$pickedKey]]
         ];
 
         $this->rpc('ChatOmemo.handlePreKey', $bundle->jid, $bundle->bundle_id, $prekey);

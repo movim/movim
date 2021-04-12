@@ -333,6 +333,7 @@ class Chat extends \Movim\Widget\Base
             $this->rpc('Notification.current', 'chat|'.$jid);
             Notification::clearAndroid($this->route('chat', [$jid]));
             $this->rpc('Chat.scrollToSeparator');
+            $this->rpc('Chat.checkOmemoSession', $jid);
         }
     }
 

@@ -22,7 +22,7 @@ class Message
         array $reactions = [],
         $originId = false,
         $threadid = false,
-        $messageOMEMO = null
+        ?MessageOmemoHeader $messageOMEMO = null
     ) {
         $session = Session::start();
 
@@ -238,7 +238,7 @@ class Message
 
     public static function message($to, $content = false, $html = false, $id = false,
         $replace = false, $file = false, $parentId = false, array $reactions = [],
-        $originId = false, $threadId = false, MessageOmemoHeader $messageOMEMO)
+        $originId = false, $threadId = false, ?MessageOmemoHeader $messageOMEMO = null)
     {
         self::maker($to, $content, $html, 'chat', 'active', 'request', $id, $replace,
             $file, false, $parentId, $reactions, $originId, $threadId, $messageOMEMO);

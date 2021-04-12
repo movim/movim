@@ -173,37 +173,45 @@ var Chat = {
                     reply.remove();
                 };
 
-                // Try to encrypt the message
-                let omemo = ChatOmemo.encrypt(jid, text);
-                if (omemo) {
-                    // TODO, disable the other risky features
-                    omemo.then(omemoheader => {
-                        console.log(omemoheader);
-                        tempId = omemoheader.tempId = Math.random().toString(36).substr(2, 15);
-                        Chat.tempMessages[tempId] = text;
+                let timeout = 10000;
+                let onTimeout = function() {
+                    Chat.failedMessage();
+                };
 
-                        xhr = Chat_ajaxHttpDaemonSendMessage(jid, tempId, muc, null, replyMid, mucReceipts, omemoheader);
+                let onReadyStateChange = function() {
+                    if (this.readyState == 4) {
+                        if (this.status >= 200 && this.status < 400) {
+                            Chat.sentMessage();
+                        }
 
-                        xhr.timeout = 10000;
-                        xhr.ontimeout = function() {
+                        if (this.status >= 400 || this.status == 0) {
                             Chat.failedMessage();
-                        };
+                        }
+                    }
+                };
 
-                        xhr.onreadystatechange = function() {
-                            if (this.readyState == 4) {
-                                if (this.status >= 200 && this.status < 400) {
-                                    Chat.sentMessage();
-                                }
+                if (textarea.dataset.encrypted == 'true') {
+                    // Try to encrypt the message
+                    let omemo = ChatOmemo.encrypt(jid, text);
+                    if (omemo) {
+                        // TODO, disable the other risky features
+                        omemo.then(omemoheader => {
+                            tempId = omemoheader.tempId = Math.random().toString(36).substr(2, 15);
+                            Chat.tempMessages[tempId] = text;
 
-                                if (this.status >= 400 || this.status == 0) {
-                                    Chat.failedMessage();
-                                }
-                            }
-                        };
-                    });
+                            xhr = Chat_ajaxHttpDaemonSendMessage(jid, tempId, muc, null, replyMid, mucReceipts, omemoheader);
+
+                            xhr.timeout = timeout;
+                            xhr.ontimeout = onTimeout;
+                            xhr.onreadystatechange = onReadyStateChange;
+                        });
+                    }
+                } else {
+                    xhr = Chat_ajaxHttpDaemonSendMessage(jid, text, muc, null, replyMid, mucReceipts);
+                    xhr.timeout = timeout;
+                    xhr.ontimeout = onTimeout;
+                    xhr.onreadystatechange = onReadyStateChange;
                 }
-
-                //xhr = Chat_ajaxHttpDaemonSendMessage(jid, text, muc, null, replyMid, mucReceipts, omemo);
             }
         }
     },
@@ -213,6 +221,12 @@ var Chat = {
             ChatOmemoDB.putMessage(id, Chat.tempMessages[tempId]);
             delete Chat.tempMessages[tempId];
         }
+    },
+    checkOmemoSession: function(jid)
+    {
+        let enabled = ChatOmemo.hasSessionOpened(jid);
+        let textarea = Chat.getTextarea();
+        textarea.dataset.encrypted = enabled;
     },
     enableSending: function()
     {
