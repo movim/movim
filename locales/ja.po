@@ -1923,7 +1923,7 @@ msgid "Users"
 msgstr "ユーザー"
 
 #: [room]channel_text
-msgid "Public channel that can be publicly discoverable and joineable"
+msgid "Public channel that can be publicly discoverable and joinable"
 msgstr "公開されていて検索・参加可能なパブリックチャンネル"
 
 #: [room]notify_never
