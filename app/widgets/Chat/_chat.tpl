@@ -87,6 +87,9 @@
                             placeholder="{$c->__('chat.placeholder')}"
                         {/if}
                     ></textarea>
+                    <span class="encrypted">
+                        <i class="material-icons">lock</i>
+                    </span>
                 </div>
             </form>
         </li>

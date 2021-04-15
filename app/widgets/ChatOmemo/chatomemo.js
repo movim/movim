@@ -9,13 +9,17 @@ const SIGNED_PREKEY_ID = 1234;
 
 var ChatOmemo = {
     generateBundle: async function () {
+        ChatOmemo_ajaxNotifyGeneratingBundle();
+    },
+
+    doGenerateBundle: async function () {
         var store = new ChatOmemoStorage();
 
         const identityKeyPair = await KeyHelper.generateIdentityKeyPair();
         const bundle = {};
         const identityKey = MovimUtils.arrayBufferToBase64(identityKeyPair.pubKey);
 
-        const localDeviceId = store.getLocalRegistrationId();
+        const localDeviceId = await store.getLocalRegistrationId();
         const deviceId = localDeviceId ?? KeyHelper.generateRegistrationId();
 
         bundle['identityKey'] = identityKey;
@@ -38,7 +42,7 @@ var ChatOmemo = {
         const preKeys = keys.map(k => ({ 'id': k.keyId, 'key': k.keyPair.pubKey }));
         bundle['preKeys'] = preKeys;
 
-        console.log(bundle);
+        ChatOmemo_ajaxNotifyGeneratedBundle();
         ChatOmemo_ajaxAnnounceBundle(bundle);
     },
 
@@ -69,7 +73,6 @@ var ChatOmemo = {
         const preKeys = keys.map(k => ({ 'id': k.keyId, 'key': k.keyPair.pubKey }));
         bundle['preKeys'] = preKeys;
 
-        console.log(bundle);
         ChatOmemo_ajaxAnnounceBundle(bundle);
     },
 
@@ -79,7 +82,7 @@ var ChatOmemo = {
 
         var sessionBuilder = new libsignal.SessionBuilder(store, address);
 
-        var promise = sessionBuilder.processPreKey({
+        sessionBuilder.processPreKey({
             registrationId: 0,
             identityKey: MovimUtils.base64ToArrayBuffer(preKey.identitykey),
             signedPreKey: {
@@ -91,14 +94,12 @@ var ChatOmemo = {
                 keyId: preKey.prekey.id,
                 publicKey: MovimUtils.base64ToArrayBuffer(preKey.prekey.value)
             }
-        });
-
-        promise.then(function onsuccess() {
+        }).then(function onsuccess() {
             console.log('success');
-        });
-
-        promise.catch(function onerror(error) {
+            Chat.setOmemoState(jid);
+        }).catch(function onerror(error) {
             console.log(error);
+            Chat.setOmemoState(jid);
         });
     },
     encrypt: async function (to, plaintext) {
@@ -214,6 +215,11 @@ var ChatOmemo = {
         return Object.keys(localStorage)
                      .filter(key => key.startsWith('session' + jid))
                      .length > 0;
+    },
+    getSessionBundlesIds(jid) {
+        return Object.keys(localStorage)
+                     .filter(key => key.startsWith('session' + jid))
+                     .map(key => key.substring(key.lastIndexOf('.') + 1));
     },
     encryptJid: function (plaintext, jid) {
         let promises = Object.keys(localStorage)

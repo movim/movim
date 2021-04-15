@@ -224,9 +224,20 @@ var Chat = {
     },
     checkOmemoSession: function(jid)
     {
+        // Try to get the missing bundles, todo: refresh more recent ones
+        if (!Chat.setOmemoState(jid)) {
+            ChatOmemo_ajaxGetBundles(jid, ChatOmemo.getSessionBundlesIds(jid));
+        }
+    },
+    setOmemoState: function(jid)
+    {
         let enabled = ChatOmemo.hasSessionOpened(jid);
         let textarea = Chat.getTextarea();
-        textarea.dataset.encrypted = enabled;
+        if (textarea) {
+            textarea.dataset.encrypted = enabled;
+        }
+
+        return enabled;
     },
     enableSending: function()
     {

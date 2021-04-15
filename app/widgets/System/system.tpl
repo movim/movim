@@ -4,3 +4,4 @@ var ERROR_URI = '{$error_uri}';
 var SMALL_PICTURE_LIMIT = {$small_picture_limit};
 var NOTIFICATION_CHAT = {if="$user && $user->notificationchat === true"}true{else}false{/if};
 var NOTIFICATION_CALL = {if="$user && $user->notificationcall === true"}true{else}false{/if};
+var USER_JID = {if="$user"}'{$user->id}'{else}false{/if};

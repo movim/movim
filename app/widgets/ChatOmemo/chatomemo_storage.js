@@ -1,5 +1,5 @@
 function ChatOmemoStorage() {
-    this.store = {};
+    this.jid = USER_JID;
 }
 
 ChatOmemoStorage.prototype = {
@@ -8,26 +8,6 @@ ChatOmemoStorage.prototype = {
         RECEIVING: 2,
     },
 
-    setIdentityKeyPair: function(identityKeyPair) {
-        return Promise.resolve(this.put('identityKey', {
-            'privKey': MovimUtils.arrayBufferToBase64(identityKeyPair.privKey),
-            'pubKey': MovimUtils.arrayBufferToBase64(identityKeyPair.pubKey)
-        }));
-    },
-
-    getIdentityKeyPair: function () {
-        identityKeyPair = this.get('identityKey');
-        return Promise.resolve({
-            'privKey': MovimUtils.base64ToArrayBuffer(identityKeyPair.privKey),
-            'pubKey': MovimUtils.base64ToArrayBuffer(identityKeyPair.pubKey)
-        });
-    },
-    setLocalRegistrationId: function (registrationId) {
-        return Promise.resolve(this.put('registrationId', registrationId));
-    },
-    getLocalRegistrationId: function () {
-        return Promise.resolve(this.get('registrationId'));
-    },
     put: function (key, value) {
         if (key === undefined || value === undefined || key === null || value === null)
             throw new Error("Tried to store undefined/null");
@@ -50,6 +30,27 @@ ChatOmemoStorage.prototype = {
         localStorage.removeItem(key);
     },
 
+    setIdentityKeyPair: function(identityKeyPair) {
+        return Promise.resolve(this.put(this.jid + '.identityKey', {
+            'privKey': MovimUtils.arrayBufferToBase64(identityKeyPair.privKey),
+            'pubKey': MovimUtils.arrayBufferToBase64(identityKeyPair.pubKey)
+        }));
+    },
+    getIdentityKeyPair: function () {
+        identityKeyPair = this.get(this.jid + '.identityKey');
+        return Promise.resolve({
+            'privKey': MovimUtils.base64ToArrayBuffer(identityKeyPair.privKey),
+            'pubKey': MovimUtils.base64ToArrayBuffer(identityKeyPair.pubKey)
+        });
+    },
+
+    setLocalRegistrationId: function (registrationId) {
+        return Promise.resolve(this.put(this.jid + '.registrationId', registrationId));
+    },
+    getLocalRegistrationId: function () {
+        return Promise.resolve(this.get(this.jid + '.registrationId'));
+    },
+
     isTrustedIdentity: function (identifier, identityKey, direction) {
         if (identifier === null || identifier === undefined) {
             throw new Error("tried to check identity key for undefined/null key");
@@ -57,7 +58,7 @@ ChatOmemoStorage.prototype = {
         if (!(identityKey instanceof ArrayBuffer)) {
             throw new Error("Expected identityKey to be an ArrayBuffer");
         }
-        var trusted = this.get('identityKey' + identifier);
+        var trusted = this.get(this.jid + '.identityKey' + identifier);
         if (trusted === undefined) {
             return Promise.resolve(true);
         }
@@ -67,7 +68,7 @@ ChatOmemoStorage.prototype = {
     loadIdentityKey: function (identifier) {
         if (identifier === null || identifier === undefined)
             throw new Error("Tried to get identity key for undefined/null key");
-        return Promise.resolve(this.get('identityKey' + identifier));
+        return Promise.resolve(this.get(this.jid + '.identityKey' + identifier));
     },
     saveIdentity: function (identifier, identityKey) {
         if (identifier === null || identifier === undefined)
@@ -75,8 +76,8 @@ ChatOmemoStorage.prototype = {
 
         var address = new libsignal.SignalProtocolAddress.fromString(identifier);
 
-        var existing = this.get('identityKey' + address.getName());
-        this.put('identityKey' + address.getName(), identityKey)
+        var existing = this.get(this.jid + '.identityKey' + address.getName());
+        this.put(this.jid + '.identityKey' + address.getName(), identityKey)
 
         if (existing && toString(identityKey) !== toString(existing)) {
             return Promise.resolve(true);
@@ -86,9 +87,8 @@ ChatOmemoStorage.prototype = {
 
     },
 
-    /* Returns a prekeypair object or undefined */
     loadPreKey: function (keyId) {
-        var res = this.get('25519KeypreKey' + keyId);
+        var res = this.get(this.jid + '.25519KeypreKey' + keyId);
         if (res !== undefined) {
             res = {
                 pubKey: MovimUtils.base64ToArrayBuffer(res.pubKey),
@@ -100,15 +100,14 @@ ChatOmemoStorage.prototype = {
     storePreKey: function (keyId, keyPair) {
         keyPair.pubKey = MovimUtils.arrayBufferToBase64(keyPair.pubKey);
         keyPair.privKey = MovimUtils.arrayBufferToBase64(keyPair.privKey);
-        return Promise.resolve(this.put('25519KeypreKey' + keyId, keyPair));
+        return Promise.resolve(this.put(this.jid + '.25519KeypreKey' + keyId, keyPair));
     },
     removePreKey: function (keyId) {
-        return Promise.resolve(this.remove('25519KeypreKey' + keyId));
+        return Promise.resolve(this.remove(this.jid + '.25519KeypreKey' + keyId));
     },
 
-    /* Returns a signed keypair object or undefined */
     loadSignedPreKey: function (keyId) {
-        var res = this.get('25519KeysignedKey' + keyId);
+        var res = this.get(this.jid + '.25519KeysignedKey' + keyId);
         if (res !== undefined) {
             res = {
                 keyPair: {
@@ -125,27 +124,27 @@ ChatOmemoStorage.prototype = {
         key.keyPair.pubKey = MovimUtils.arrayBufferToBase64(key.keyPair.pubKey);
         key.keyPair.privKey = MovimUtils.arrayBufferToBase64(key.keyPair.privKey);
         key.signature = MovimUtils.arrayBufferToBase64(key.signature);
-        return Promise.resolve(this.put('25519KeysignedKey' + keyId, key));
+        return Promise.resolve(this.put(this.jid + '.25519KeysignedKey' + keyId, key));
     },
     removeSignedPreKey: function (keyId) {
-        return Promise.resolve(this.remove('25519KeysignedKey' + keyId));
+        return Promise.resolve(this.remove(this.jid + '.25519KeysignedKey' + keyId));
     },
 
     loadSession: function (identifier) {
-        return Promise.resolve(this.get('session' + identifier));
+        return Promise.resolve(this.get(this.jid + '.session' + identifier));
     },
     storeSession: function (identifier, record) {
-        return Promise.resolve(this.put('session' + identifier, record));
+        return Promise.resolve(this.put(this.jid + '.session' + identifier, record));
     },
     removeSession: function (identifier) {
-        return Promise.resolve(this.remove('session' + identifier));
+        return Promise.resolve(this.remove(this.jid + '.session' + identifier));
     },
     removeAllSessions: function (identifier) {
-        for (var id in this.store) {
-            if (id.startsWith('session' + identifier)) {
-                delete this.store[id];
-            }
+        for (key in Object.keys(localStorage)
+            .filter(key => key.startsWith(this.jid + '.session' + identifier))) {
+            this.remove(key);
         }
+
         return Promise.resolve();
     },
     toString: function(thing) {

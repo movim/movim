@@ -1,5 +1,6 @@
 <?php
 
+use App\Bundle;
 use Moxl\Xec\Action\OMEMO\AnnounceBundle;
 use Moxl\Xec\Action\OMEMO\GetDeviceList;
 use Moxl\Xec\Action\OMEMO\SetDeviceList;
@@ -19,16 +20,35 @@ class ChatOmemo extends \Movim\Widget\Base
     public function onBundle($packet)
     {
         $bundle = $packet->content;
-
-        $pickedKey = array_rand($bundle->prekeys);
-        $prekey = [
-            'identitykey' => $bundle->identitykey,
-            'prekeypublic' => $bundle->prekeypublic,
-            'prekeysignature' => $bundle->prekeysignature,
-            'prekey' => ['id' => $pickedKey, 'value' => $bundle->prekeys[$pickedKey]]
-        ];
-
+        $prekey = $this->extractPreKey($bundle);
         $this->rpc('ChatOmemo.handlePreKey', $bundle->jid, $bundle->bundle_id, $prekey);
+    }
+
+    public function ajaxNotifyGeneratingBundle()
+    {
+        Toast::send($this->__('omemo.generating_bundle'));
+        $this->rpc('ChatOmemo.doGenerateBundle');
+    }
+
+    public function ajaxNotifyGeneratedBundle()
+    {
+        Toast::send($this->__('omemo.generated_bundle'));
+    }
+
+    public function ajaxGetBundles(string $jid, array $exceptBundleIds = [])
+    {
+        $bundles = $this->user->bundles()->where('jid', $jid);
+
+        if (!empty($exceptBundleIds)) {
+            $bundles = $bundles->whereNotIn('bundle_id', $exceptBundleIds);
+        }
+
+        $bundles = $bundles->get();
+
+        foreach ($bundles as $bundle) {
+            $prekey = $this->extractPreKey($bundle);
+            $this->rpc('ChatOmemo.handlePreKey', $bundle->jid, $bundle->bundle_id, $prekey);
+        }
     }
 
     public function ajaxGetDevicesList($to)
@@ -68,5 +88,16 @@ class ChatOmemo extends \Movim\Widget\Base
         $sdl = new SetDeviceList;
         $sdl->setList($devicesList)
             ->request();
+    }
+
+    private function extractPreKey(Bundle $bundle): array
+    {
+        $pickedKey = array_rand($bundle->prekeys);
+        return [
+            'identitykey' => $bundle->identitykey,
+            'prekeypublic' => $bundle->prekeypublic,
+            'prekeysignature' => $bundle->prekeysignature,
+            'prekey' => ['id' => $pickedKey, 'value' => $bundle->prekeys[$pickedKey]]
+        ];
     }
 }

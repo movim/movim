@@ -117,6 +117,19 @@ main:not(.enabled) #chat_widget {
     overflow-y: auto;
 }
 
+#chat_widget .chat_box form textarea + span.encrypted {
+    display: none;
+}
+
+#chat_widget .chat_box form textarea[data-encrypted=true] + span.encrypted {
+    display: inline-block;
+    font-size: 2rem;
+    position: absolute;
+    right: 1rem;
+    top: 0;
+    opacity: 0.25;
+}
+
 #chat_widget .chat_box span.primary,
 #chat_widget .chat_box span.control:not(.button):not(.color) {
     font-size: 3.5rem;
