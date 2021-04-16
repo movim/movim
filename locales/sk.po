@@ -1921,7 +1921,7 @@ msgid "Users"
 msgstr "Používatelia"
 
 #: [room]channel_text
-msgid "Public channel that can be publicly discoverable and joineable"
+msgid "Public channel that can be publicly discoverable and joinable"
 msgstr "Verejný kanál je dostupný vo verejnom zozname a možno do neho vstúpiť"
 
 #: [room]notify_never
