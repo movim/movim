@@ -38,6 +38,9 @@ ChatOmemoStorage.prototype = {
     },
     getIdentityKeyPair: function () {
         identityKeyPair = this.get(this.jid + '.identityKey');
+
+        if (!identityKeyPair) return Promise.reject();
+
         return Promise.resolve({
             'privKey': MovimUtils.base64ToArrayBuffer(identityKeyPair.privKey),
             'pubKey': MovimUtils.base64ToArrayBuffer(identityKeyPair.pubKey)
@@ -139,7 +142,15 @@ ChatOmemoStorage.prototype = {
     removeSession: function (identifier) {
         return Promise.resolve(this.remove(this.jid + '.session' + identifier));
     },
-    removeAllSessions: function (identifier) {
+    removeAllSessions: function () {
+        for (key in Object.keys(localStorage)
+            .filter(key => key.startsWith(this.jid + '.session'))) {
+            this.remove(key);
+        }
+
+        return Promise.resolve();
+    },
+    removeAllSessionsOfJid: function (identifier) {
         for (key in Object.keys(localStorage)
             .filter(key => key.startsWith(this.jid + '.session' + identifier))) {
             this.remove(key);

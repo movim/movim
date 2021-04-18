@@ -15,6 +15,8 @@ var ChatOmemo = {
     doGenerateBundle: async function () {
         var store = new ChatOmemoStorage();
 
+        store.removeAllSessions();
+
         const identityKeyPair = await KeyHelper.generateIdentityKeyPair();
         const bundle = {};
         const identityKey = MovimUtils.arrayBufferToBase64(identityKeyPair.pubKey);
@@ -82,7 +84,7 @@ var ChatOmemo = {
 
         var sessionBuilder = new libsignal.SessionBuilder(store, address);
 
-        sessionBuilder.processPreKey({
+        var promise = sessionBuilder.processPreKey({
             registrationId: 0,
             identityKey: MovimUtils.base64ToArrayBuffer(preKey.identitykey),
             signedPreKey: {
@@ -94,12 +96,16 @@ var ChatOmemo = {
                 keyId: preKey.prekey.id,
                 publicKey: MovimUtils.base64ToArrayBuffer(preKey.prekey.value)
             }
-        }).then(function onsuccess() {
+        })
+
+        promise.then(function onsuccess() {
             console.log('success');
-            Chat.setOmemoState(jid);
-        }).catch(function onerror(error) {
+            if (Chat !== undefined) Chat.setOmemoState(jid);
+        });
+
+        promise.catch(function onerror(error) {
             console.log(error);
-            Chat.setOmemoState(jid);
+            if (Chat !== undefined) Chat.setOmemoState(jid);
         });
     },
     encrypt: async function (to, plaintext) {
@@ -213,17 +219,17 @@ var ChatOmemo = {
     },
     hasSessionOpened(jid) {
         return Object.keys(localStorage)
-                     .filter(key => key.startsWith('session' + jid))
+                     .filter(key => key.startsWith(USER_JID + '.session' + jid))
                      .length > 0;
     },
     getSessionBundlesIds(jid) {
         return Object.keys(localStorage)
-                     .filter(key => key.startsWith('session' + jid))
+                     .filter(key => key.startsWith(USER_JID + '.session' + jid))
                      .map(key => key.substring(key.lastIndexOf('.') + 1));
     },
     encryptJid: function (plaintext, jid) {
         let promises = Object.keys(localStorage)
-            .filter(key => key.startsWith('session' + jid))
+            .filter(key => key.startsWith(USER_JID + '.session' + jid))
             .map(key => key.split(/[\s.]+/).pop())
             .map(deviceId => this.encryptDevice(plaintext, jid, deviceId) );
 

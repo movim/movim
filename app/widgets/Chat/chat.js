@@ -1169,7 +1169,6 @@ var Chat = {
                 video.setAttribute('loop', 'loop');
 
                 if (file.thumbnail && Object.keys(file.thumbnail).length !== 0) {
-                    console.log(file.thumbnail);
                     video.setAttribute('poster', file.thumbnail.uri);
                     video.setAttribute('width', file.thumbnail.width);
                     video.setAttribute('height', file.thumbnail.height);

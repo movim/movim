@@ -127,6 +127,23 @@ class Account extends \Movim\Widget\Base
         $this->onRemoved();
     }
 
+    public function ajaxHttpGetFingerprints($identity)
+    {
+        $view = $this->tpl();
+
+        $fingerprints = $this->user->bundles()->where('jid', $this->user->id)->get();
+        foreach($fingerprints as $fingerprint) {
+            $fingerprint->self = ($fingerprint->identitykey == $identity);
+        }
+
+        $view->assign('fingerprints', $fingerprints->sortByDesc('self'));
+
+        $this->rpc('MovimTpl.fill',
+            '#account_fingerprints',
+            $view->draw('_account_fingerprints')
+        );
+    }
+
     public function ajaxRemoveAccountConfirm($form)
     {
         if ($form->jid->value == $this->user->id) {
@@ -179,7 +196,6 @@ class Account extends \Movim\Widget\Base
 
     public function display()
     {
-        $this->view->assign('fingerprints', $this->user->bundles()->where('jid', $this->user->id)->get());
         $this->view->assign('gateways', $this->prepareGateways());
     }
 }

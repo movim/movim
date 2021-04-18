@@ -468,6 +468,10 @@ img.avatar:not([src=""]) + .placeholder {
     line-height: 3rem;
 }
 
+.fingerprint.self {
+    font-weight: bold;
+}
+
 /* Spinner */
 
 div#spinner {

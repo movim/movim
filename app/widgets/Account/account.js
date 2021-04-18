@@ -7,5 +7,12 @@ var Account = {
 }
 
 MovimWebsocket.attach(function() {
+    let omemoStorage = new ChatOmemoStorage;
+    omemoStorage.getIdentityKeyPair().then(keyPair => {
+        Account_ajaxHttpGetFingerprints(MovimUtils.arrayBufferToBase64(keyPair.pubKey));
+    }).catch(a => {
+        Account_ajaxHttpGetFingerprints();
+    });
+
     Notification.current('account');
 });
