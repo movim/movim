@@ -19,9 +19,40 @@ class ChatOmemo extends \Movim\Widget\Base
 
     public function onBundle($packet)
     {
-        $bundle = $packet->content;
+        /*$bundle = $packet->content;
         $prekey = $this->extractPreKey($bundle);
-        $this->rpc('ChatOmemo.handlePreKey', $bundle->jid, $bundle->bundle_id, $prekey);
+        $this->rpc('ChatOmemo.handlePreKey', $bundle->jid, $bundle->bundle_id, $prekey);*/
+    }
+
+    public function ajaxGetMissingSessions(string $jid)
+    {
+        $bundles = $this->user->bundles()
+            ->where('jid', $jid)
+            ->where('has_session', false)
+            ->get();
+
+        $preKeys = [];
+
+        foreach ($bundles as $bundle) {
+            $preKeys[$bundle->bundle_id] = $this->extractPreKey($bundle);
+        }
+
+        Toast::send($this->__('omemo.building_sessions'));
+
+        $this->rpc('ChatOmemo.handlePreKeys', $jid, $preKeys);
+    }
+
+    public function ajaxHttpSetBundleSession(string $jid, string $bundleId)
+    {
+        $bundle = $this->user->bundles()
+            ->where('jid', $jid)
+            ->where('bundle_id', $bundleId)
+            ->first();
+
+        if ($bundle) {
+            $bundle->has_session = true;
+            $bundle->save();
+        }
     }
 
     public function ajaxNotifyGeneratingBundle()
@@ -35,7 +66,7 @@ class ChatOmemo extends \Movim\Widget\Base
         Toast::send($this->__('omemo.generated_bundle'));
     }
 
-    public function ajaxGetBundles(string $jid, array $exceptBundleIds = [])
+    /*public function ajaxGetBundles(string $jid, array $exceptBundleIds = [])
     {
         $bundles = $this->user->bundles()->where('jid', $jid);
 
@@ -49,7 +80,7 @@ class ChatOmemo extends \Movim\Widget\Base
             $prekey = $this->extractPreKey($bundle);
             $this->rpc('ChatOmemo.handlePreKey', $bundle->jid, $bundle->bundle_id, $prekey);
         }
-    }
+    }*/
 
     public function ajaxGetDevicesList($to)
     {

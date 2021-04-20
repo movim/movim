@@ -117,16 +117,18 @@ main:not(.enabled) #chat_widget {
     overflow-y: auto;
 }
 
-#chat_widget .chat_box form textarea + span.encrypted {
+#chat_widget .chat_box form textarea ~ span.encrypted,
+#chat_widget .chat_box form textarea ~ span.encrypted_loading {
     display: none;
 }
 
-#chat_widget .chat_box form textarea[data-encrypted=true] + span.encrypted {
+#chat_widget .chat_box form textarea[data-encryptedstate="yes"] ~ span.encrypted,
+#chat_widget .chat_box form textarea[data-encryptedstate="build"] ~ span.encrypted_loading {
     display: inline-block;
-    font-size: 2rem;
+    font-size: 2.5rem;
     position: absolute;
     right: 1rem;
-    top: 0;
+    top: -0.5rem;
     opacity: 0.25;
 }
 

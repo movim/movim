@@ -190,7 +190,9 @@ var Chat = {
                     }
                 };
 
-                if (textarea.dataset.encrypted == 'true') {
+                if (textarea.dataset.encryptedstate == 'build') {
+                    ChatOmemo_ajaxGetMissingSessions(jid);
+                } else if (textarea.dataset.encryptedstate == 'yes') {
                     // Try to encrypt the message
                     let omemo = ChatOmemo.encrypt(jid, text);
                     if (omemo) {
@@ -222,23 +224,34 @@ var Chat = {
             delete Chat.tempMessages[tempId];
         }
     },
-    checkOmemoSession: function(jid)
+    setOmemoSessions: function(jid, sessions)
     {
-        // Try to get the missing bundles, todo: refresh more recent ones
-        if (!Chat.setOmemoState(jid)) {
-            ChatOmemo_ajaxGetBundles(jid, ChatOmemo.getSessionBundlesIds(jid));
-        }
-    },
-    setOmemoState: function(jid)
-    {
-        let enabled = ChatOmemo.hasSessionOpened(jid);
-        let textarea = Chat.getTextarea();
-        if (textarea) {
-            textarea.dataset.encrypted = enabled;
+        sessions = Object.values(sessions);
+        let state = 'no';
+
+        /**
+         * 0 no sessions, no encryption
+         * 1 all the sessions are built, encrypt
+         * 2 some sessions need to be built, build then encrypt
+         */
+        if (sessions.length > 0) {
+            if (sessions.every(good => good)) {
+                state = 'yes';
+            } else {
+                state = 'build';
+            }
         }
 
-        return enabled;
+        Chat.setOmemoState(state);
     },
+    setOmemoState: function(state)
+    {
+        let textarea = Chat.getTextarea();
+        if (textarea) {
+            textarea.dataset.encryptedstate = state;
+        }
+    },
+
     enableSending: function()
     {
         Chat.sent = true;
@@ -964,6 +977,7 @@ var Chat = {
             if (data.displayed) {
                 span.appendChild(Chat.getDisplayedIcoHtml(data.displayed));
             } else if (data.delivered) {
+                console.log(data);
                 span.appendChild(Chat.getDeliveredIcoHtml(data.delivered));
             }
         }
@@ -1010,9 +1024,9 @@ var Chat = {
             msg.appendChild(actions);
         }
 
-        var elem = document.getElementById(data.oldid);
+        var elem = document.getElementById('id' + data.oldid);
         if (!elem) {
-            elem = document.getElementById(data.id);
+            elem = document.getElementById('id' + data.id);
         }
 
         if (elem) {

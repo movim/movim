@@ -90,6 +90,9 @@
                     <span class="encrypted">
                         <i class="material-icons">lock</i>
                     </span>
+                    <span class="encrypted_loading">
+                        <i class="material-icons">lock_clock</i>
+                    </span>
                 </div>
             </form>
         </li>

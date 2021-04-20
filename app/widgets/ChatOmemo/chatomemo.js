@@ -78,6 +78,19 @@ var ChatOmemo = {
         ChatOmemo_ajaxAnnounceBundle(bundle);
     },
 
+    handlePreKeys: function (jid, preKeys) {
+        let promises = [];
+
+        Object.entries(preKeys).forEach(([deviceId, preKey]) => {
+            promises.push(ChatOmemo.handlePreKey(jid, deviceId, preKey));
+        });
+
+        Promise.all(promises).then(results => {
+            Chat.setOmemoState('yes');
+            Chat.disableSending();
+            Chat.sendMessage();
+        });
+    },
     handlePreKey: function (jid, deviceId, preKey) {
         var store = new ChatOmemoStorage();
         var address = new libsignal.SignalProtocolAddress(jid, deviceId);
@@ -99,15 +112,17 @@ var ChatOmemo = {
         })
 
         promise.then(function onsuccess() {
-            console.log('success');
-            if (Chat !== undefined) Chat.setOmemoState(jid);
+            console.log('success ' + jid + ':' + deviceId);
+            ChatOmemo_ajaxHttpSetBundleSession(jid, deviceId);
         });
 
         promise.catch(function onerror(error) {
             console.log(error);
-            if (Chat !== undefined) Chat.setOmemoState(jid);
         });
+
+        return promise;
     },
+
     encrypt: async function (to, plaintext) {
         var store = new ChatOmemoStorage();
 

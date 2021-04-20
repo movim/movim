@@ -11,6 +11,7 @@ class CreateBundlesTable extends Migration
             $table->string('user_id', 64);
             $table->integer('bundle_id');
             $table->string('jid', 128);
+            $table->boolean('has_session')->default(false);
 
             $table->text('prekeypublic');
             $table->text('prekeysignature');
