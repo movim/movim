@@ -812,7 +812,7 @@ class Chat extends \Movim\Widget\Base
 
             \Moxl\Stanza\Message::displayed(
                 $jid,
-                $message->replaceid,
+                $message->originid ?? $message->replaceid,
                 $message->type
             );
         }

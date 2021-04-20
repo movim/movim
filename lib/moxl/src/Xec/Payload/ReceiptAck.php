@@ -8,7 +8,7 @@ class ReceiptAck extends Payload
     public function handle($stanza, $parent = false)
     {
         $message = \App\User::me()->messages()
-                                  ->where('replaceid', (string)$stanza->attributes()->id)
+                                  ->where('originid', (string)$stanza->attributes()->id)
                                   ->where('jidfrom', current(explode('/', (string)$parent->attributes()->to)))
                                   ->first();
 

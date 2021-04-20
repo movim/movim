@@ -8,12 +8,16 @@ class ReceiptRequest extends Payload
     public function handle($stanza, $parent = false)
     {
         $from = (string)$parent->attributes()->from;
-        $id = (string)$parent->attributes()->id;
+
+        $id = ($parent->{'origin-id'}
+            && $parent->{'origin-id'}->attributes()->xmlns == 'urn:xmpp:sid:0')
+            ? (string)$parent->{'origin-id'}->attributes()->id
+            : (string)$parent->attributes()->id;
 
         \Moxl\Stanza\Message::receipt($from, $id);
 
         $message = \App\User::me()->messages()
-                                  ->where('id', $id)
+                                  ->where('originid', $id)
                                   ->where('jidfrom', current(explode('/', $from)))
                                   ->first();
 

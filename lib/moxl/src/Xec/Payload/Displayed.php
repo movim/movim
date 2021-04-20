@@ -7,7 +7,7 @@ class Displayed extends Payload
     public function handle($stanza, $parent = false)
     {
         $message = \App\User::me()->messages()
-                                  ->where('replaceid', (string)$stanza->attributes()->id)
+                                  ->where('originid', (string)$stanza->attributes()->id)
                                   ->where('jidfrom', current(explode('/',
                                     'groupchat' == (string)$parent->attributes()->type
                                         ? (string)$parent->attributes()->from

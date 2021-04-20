@@ -11,6 +11,7 @@ v0.19.1 (trunk)
 * Add resolveInfos() to resolve Info elements for Posts easily
 * New design for Post cards
 * Fix chat attachments alignements
+* Fix message delivery receipt and chat markers issues with Dino and Conversations
 
 v0.19
 ---------------------------
