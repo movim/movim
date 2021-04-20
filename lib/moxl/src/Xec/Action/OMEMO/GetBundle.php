@@ -33,7 +33,10 @@ class GetBundle extends Action
 
         // Only refresh if the bundle is different
         if (!$localBd || !$localBd->sameAs($bd)) {
-            if ($localBd) $localBd->delete();
+            if ($localBd) {
+                $bd->has_session = $localBd->has_session;
+                $localBd->delete();
+            }
 
             $bd->save();
 

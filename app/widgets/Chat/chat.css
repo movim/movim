@@ -118,18 +118,23 @@ main:not(.enabled) #chat_widget {
 }
 
 #chat_widget .chat_box form textarea ~ span.encrypted,
+#chat_widget .chat_box form textarea ~ span.encrypted_disabled,
 #chat_widget .chat_box form textarea ~ span.encrypted_loading {
     display: none;
 }
 
-#chat_widget .chat_box form textarea[data-encryptedstate="yes"] ~ span.encrypted,
-#chat_widget .chat_box form textarea[data-encryptedstate="build"] ~ span.encrypted_loading {
+#chat_widget .chat_box form textarea[data-encryptedstate="yes"],
+#chat_widget .chat_box form textarea[data-encryptedstate="build"] {
+    width: calc(100% - 4.5rem);
+}
+
+#chat_widget .chat_box form textarea[data-encryptedstate="yes"] ~ span.control.icon.encrypted,
+#chat_widget .chat_box form textarea[data-encryptedstate="build"] ~ span.control.icon.encrypted_loading {
     display: inline-block;
-    font-size: 2.5rem;
+    font-size: 2.75rem;
     position: absolute;
-    right: 1rem;
-    top: -0.5rem;
-    opacity: 0.25;
+    right: 0;
+    bottom: -0.35rem;
 }
 
 #chat_widget .chat_box span.primary,

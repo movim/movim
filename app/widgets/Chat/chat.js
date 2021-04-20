@@ -977,7 +977,6 @@ var Chat = {
             if (data.displayed) {
                 span.appendChild(Chat.getDisplayedIcoHtml(data.displayed));
             } else if (data.delivered) {
-                console.log(data);
                 span.appendChild(Chat.getDeliveredIcoHtml(data.delivered));
             }
         }

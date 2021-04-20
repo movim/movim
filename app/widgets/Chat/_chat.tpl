@@ -87,11 +87,14 @@
                             placeholder="{$c->__('chat.placeholder')}"
                         {/if}
                     ></textarea>
-                    <span class="encrypted">
+                    <span class="control icon encrypted" title="{$c->__('omemo.encrypted')}">
                         <i class="material-icons">lock</i>
                     </span>
-                    <span class="encrypted_loading">
-                        <i class="material-icons">lock_clock</i>
+                    <span class="control icon encrypted_disabled" title="{$c->__('omemo.encrypted_disabled')}">
+                        <i class="material-icons">no_encryption</i>
+                    </span>
+                    <span class="control icon encrypted_loading" title="{$c->__('omemo.encrypted_loading')}">
+                        <i class="material-icons">lock_open</i>
                     </span>
                 </div>
             </form>
