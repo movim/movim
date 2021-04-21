@@ -1307,17 +1307,34 @@ class Chat extends \Movim\Widget\Base
             ->get();
         $view->assign('top', $top);
 
+        return $view->draw('_chat_empty');
+    }
+
+    public function ajaxHttpGetExplore($page = 0)
+    {
+        $this->rpc('MovimTpl.fill', '#chat_explore', $this->prepareExplore($page));
+    }
+
+    public function prepareExplore($page = 0)
+    {
+        $view = $this->tpl();
+
+        $pagination = 6;
+
         $users = Contact::public()
             ->notInRoster($this->user->session->id)
             ->orderByPresence()
             ->where('id', '!=', $this->user->id)
-            ->limit(6)
+            ->skip($page * $pagination)
+            ->take($pagination + 1)
             ->get();
 
         $view->assign('presencestxt', getPresencesTxt());
         $view->assign('users', $users);
+        $view->assign('pagination', $pagination);
+        $view->assign('page', $page);
 
-        return $view->draw('_chat_empty');
+        return $view->draw('_chat_explore');
     }
 
     private function prepareComposeList(array $list)

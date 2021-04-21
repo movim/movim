@@ -9,7 +9,11 @@ main:not(.enabled) #chat_widget {
     overflow-y: auto;
 }
 
-#chat_widget > div,
+#chat_explore {
+    width: 100%;
+}
+
+#chat_widget > div:not(#chat_explore),
 #chat_widget > header {
     max-width: 100%;
     width: 100%;
@@ -205,7 +209,7 @@ main:not(.enabled) #chat_widget {
     padding-left: 2rem;
 }
 
-#chat_widget div:not(.chat_box) li span.icon:not(.thumb) { /** .thumb is for cards **/
+#chat_widget div:not(.chat_box):not(#chat_explore) li span.icon:not(.thumb) { /** .thumb is for cards **/
     align-self: flex-start;
     margin: 0;
 }
