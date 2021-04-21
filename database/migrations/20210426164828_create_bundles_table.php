@@ -8,10 +8,10 @@ class CreateBundlesTable extends Migration
     public function up()
     {
         $this->schema->create('bundles', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('user_id', 64);
             $table->integer('bundle_id');
             $table->string('jid', 128);
-            $table->boolean('has_session')->default(false);
 
             $table->text('prekeypublic');
             $table->text('prekeysignature');
@@ -19,13 +19,26 @@ class CreateBundlesTable extends Migration
             $table->text('prekeys');
             $table->timestamps();
 
-            $table->primary(['user_id', 'bundle_id', 'jid']);
+            $table->unique(['user_id', 'bundle_id', 'jid']);
             $table->index('user_id');
+        });
+
+        $this->schema->create('bundle_sessions', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('bundle_id')->unsigned();
+            $table->string('device_id', 64);
+
+            $table->foreign('bundle_id')
+                  ->references('id')->on('bundles')
+                  ->onDelete('cascade');
+
+            $table->timestamps();
         });
     }
 
     public function down()
     {
+        $this->schema->drop('bundle_sessions');
         $this->schema->drop('bundles');
     }
 }

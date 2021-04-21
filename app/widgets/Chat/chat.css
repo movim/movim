@@ -124,11 +124,13 @@ main:not(.enabled) #chat_widget {
 }
 
 #chat_widget .chat_box form textarea[data-encryptedstate="yes"],
+#chat_widget .chat_box form textarea[data-encryptedstate="disabled"],
 #chat_widget .chat_box form textarea[data-encryptedstate="build"] {
     width: calc(100% - 4.5rem);
 }
 
 #chat_widget .chat_box form textarea[data-encryptedstate="yes"] ~ span.control.icon.encrypted,
+#chat_widget .chat_box form textarea[data-encryptedstate="disabled"] ~ span.control.icon.encrypted_disabled,
 #chat_widget .chat_box form textarea[data-encryptedstate="build"] ~ span.control.icon.encrypted_loading {
     display: inline-block;
     font-size: 2.75rem;
@@ -350,6 +352,7 @@ main:not(.enabled) #chat_widget {
     font-size: 0;
 }
 
+#chat_widget textarea#chat_textarea ~ span.control:hover,
 #chat_widget .primary_action:hover,
 #emojisearchbar + .emojis img:hover {
     cursor: pointer;

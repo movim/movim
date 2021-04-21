@@ -226,23 +226,36 @@ var Chat = {
     },
     setOmemoSessions: function(jid, sessions)
     {
-        sessions = Object.values(sessions);
-        let state = 'no';
+        var store = new ChatOmemoStorage();
 
-        /**
-         * 0 no sessions, no encryption
-         * 1 all the sessions are built, encrypt
-         * 2 some sessions need to be built, build then encrypt
-         */
-        if (sessions.length > 0) {
-            if (sessions.every(good => good)) {
-                state = 'yes';
-            } else {
-                state = 'build';
-            }
-        }
+        // Only resolve the local sessions
+        store.getLocalRegistrationId().then(localDeviceId => {
+            sessions = Object.values(sessions);
+            sessions = sessions.map(devices => devices.includes(String(localDeviceId)));
 
-        Chat.setOmemoState(state);
+             ChatOmemo.getContactState(jid).then(enabled => {
+                 let state = 'no';
+
+                if (enabled) {
+                    /**
+                     * 0 no sessions, no encryption
+                     * 1 all the sessions are built, encrypt
+                     * 2 some sessions need to be built, build then encrypt
+                     */
+                    if (sessions.length > 0) {
+                        if (sessions.every(good => good)) {
+                            state = 'yes';
+                        } else {
+                            state = 'build';
+                        }
+                    }
+                } else {
+                    state = 'disabled';
+                }
+
+                Chat.setOmemoState(state);
+             });
+        });
     },
     setOmemoState: function(state)
     {

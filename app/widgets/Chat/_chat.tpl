@@ -29,7 +29,7 @@
                   onclick="Stickers_ajaxShow('{$jid}')">
                 <i class="material-icons flip-vert">note</i>
             </span>
-            <span class="emojis control icon gray primary_action"
+            <span class="emojis control icon gray primary_action on_desktop"
                     title="{$c->__('sticker.title')}"
                     onclick="Stickers_ajaxReaction()">
                 <i class="material-icons">face</i>
@@ -87,10 +87,12 @@
                             placeholder="{$c->__('chat.placeholder')}"
                         {/if}
                     ></textarea>
-                    <span class="control icon encrypted" title="{$c->__('omemo.encrypted')}">
+                    <span class="control icon encrypted" title="{$c->__('omemo.encrypted')}"
+                        onclick="ChatOmemo.disableContactState('{$jid}')">
                         <i class="material-icons">lock</i>
                     </span>
-                    <span class="control icon encrypted_disabled" title="{$c->__('omemo.encrypted_disabled')}">
+                    <span class="control icon encrypted_disabled" title="{$c->__('omemo.encrypted_disabled')}"
+                        onclick="ChatOmemo.enableContactState('{$jid}')">
                         <i class="material-icons">no_encryption</i>
                     </span>
                     <span class="control icon encrypted_loading" title="{$c->__('omemo.encrypted_loading')}">

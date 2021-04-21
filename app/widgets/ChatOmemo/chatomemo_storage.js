@@ -158,6 +158,15 @@ ChatOmemoStorage.prototype = {
 
         return Promise.resolve();
     },
+
+    setContactState: function (jid, state) {
+        return Promise.resolve(this.put(this.jid + '.contact' + jid, state));
+    },
+    getContactState: function (jid) {
+        let state = Boolean(this.get(this.jid + '.contact' + jid));
+        return Promise.resolve(state);
+    },
+
     toString: function(thing) {
         if (typeof thing == 'string') {
             return thing;

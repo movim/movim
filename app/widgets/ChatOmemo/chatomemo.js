@@ -113,7 +113,9 @@ var ChatOmemo = {
 
         promise.then(function onsuccess() {
             console.log('success ' + jid + ':' + deviceId);
-            ChatOmemo_ajaxHttpSetBundleSession(jid, deviceId);
+            store.getLocalRegistrationId().then(localDeviceId => {
+                ChatOmemo_ajaxHttpSetBundleSession(jid, deviceId, localDeviceId);
+            });
         });
 
         promise.catch(function onerror(error) {
@@ -231,6 +233,20 @@ var ChatOmemo = {
 
         ChatOmemoDB.putMessage(message.id, plaintext);
         return plaintext;
+    },
+    enableContactState: function (jid) {
+        var store = new ChatOmemoStorage();
+        store.setContactState(jid, true);
+        Chat_ajaxGet(jid);
+    },
+    disableContactState: function (jid) {
+        var store = new ChatOmemoStorage();
+        store.setContactState(jid, false);
+        Chat.setOmemoState("disabled");
+    },
+    getContactState: async function(jid) {
+        var store = new ChatOmemoStorage();
+        return store.getContactState(jid);
     },
     hasSessionOpened(jid) {
         return Object.keys(localStorage)

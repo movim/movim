@@ -1,6 +1,7 @@
 <?php
 
 use App\Bundle;
+use App\BundleSession;
 use Moxl\Xec\Action\OMEMO\AnnounceBundle;
 use Moxl\Xec\Action\OMEMO\GetDeviceList;
 use Moxl\Xec\Action\OMEMO\SetDeviceList;
@@ -28,7 +29,8 @@ class ChatOmemo extends \Movim\Widget\Base
     {
         $bundles = $this->user->bundles()
             ->where('jid', $jid)
-            ->where('has_session', false)
+            // TODO fixme
+            //->where('has_session', false)
             ->get();
 
         $preKeys = [];
@@ -42,16 +44,21 @@ class ChatOmemo extends \Movim\Widget\Base
         $this->rpc('ChatOmemo.handlePreKeys', $jid, $preKeys);
     }
 
-    public function ajaxHttpSetBundleSession(string $jid, string $bundleId)
+    public function ajaxHttpSetBundleSession(string $jid, string $bundleId, string $deviceId)
     {
         $bundle = $this->user->bundles()
             ->where('jid', $jid)
             ->where('bundle_id', $bundleId)
+            ->with('sessions')
             ->first();
 
         if ($bundle) {
-            $bundle->has_session = true;
-            $bundle->save();
+            if (!in_array($deviceId, (array)$bundle->sessions->pluck('device_id'))) {
+                $bundleSession = new BundleSession;
+                $bundleSession->bundle_id = $bundle->id;
+                $bundleSession->device_id = $deviceId;
+                $bundleSession->save();
+            }
         }
     }
 

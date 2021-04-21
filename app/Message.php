@@ -480,10 +480,6 @@ class Message extends Model
             }
         }
 
-        if (isset($stanza->encrypted)) {
-            \Utils::debug(serialize($stanza->asXML()));
-        }
-
         # XEP-0384 OMEMO Encryption
         if (isset($stanza->encrypted)
          && $stanza->encrypted->attributes()->xmlns == 'eu.siacs.conversations.axolotl') {

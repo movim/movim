@@ -9,6 +9,11 @@ class Bundle extends Model
     public $incrementing = false;
     protected $primaryKey = ['user_id', 'jid', 'bundle_id'];
 
+    public function sessions()
+    {
+        return $this->hasMany('App\BundleSession', 'bundle_id', 'id');
+    }
+
     public function set(string $jid, string $bundleId, $bundle)
     {
         $this->user_id = \App\User::me()->id;
@@ -31,7 +36,8 @@ class Bundle extends Model
     public function sameAs(Bundle $bundle)
     {
         return (
-            $this->attributes['prekeys'] == $bundle->attributes['prekeys']
+            isset($this->attributes['prekeys'])
+            && $this->attributes['prekeys'] == $bundle->attributes['prekeys']
             && $this->attributes['prekeypublic'] == $bundle->attributes['prekeypublic']
             && $this->attributes['prekeysignature'] == $bundle->attributes['prekeysignature']
             && $this->attributes['identitykey'] == $bundle->attributes['identitykey']

@@ -23,24 +23,24 @@ class GetBundle extends Action
 
     public function handle($stanza, $parent = false)
     {
-        $bd = new Bundle;
-        $bd->set($this->_to, $this->_id, $stanza->pubsub->items->item->bundle);
-
-        $localBd = Bundle::where('user_id', $bd->user_id)
-            ->where('bundle_id', $bd->bundle_id)
-            ->where('jid', $bd->jid)
+        $bundle = Bundle::where('user_id', \App\User::me()->id)
+            ->where('jid', $this->_to)
+            ->where('bundle_id', $this->_id)
             ->first();
 
+        if (!$bundle) {
+            $bundle = new Bundle;
+        }
+
+        $oldBundle = clone $bundle;
+
+        $bundle->set($this->_to, $this->_id, $stanza->pubsub->items->item->bundle);
+
         // Only refresh if the bundle is different
-        if (!$localBd || !$localBd->sameAs($bd)) {
-            if ($localBd) {
-                $bd->has_session = $localBd->has_session;
-                $localBd->delete();
-            }
+        if (!$oldBundle->sameAs($bundle)) {
+            $bundle->save();
 
-            $bd->save();
-
-            $this->pack($bd);
+            $this->pack($bundle);
             $this->deliver();
         }
     }
