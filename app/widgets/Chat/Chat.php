@@ -6,6 +6,7 @@ use Moxl\Xec\Action\Message\Reactions;
 use Moxl\Xec\Action\Muc\GetConfig;
 use Moxl\Xec\Action\Muc\SetConfig;
 
+use App\Contact;
 use App\Message;
 use App\MessageFile;
 use App\Reaction;
@@ -1305,6 +1306,16 @@ class Chat extends \Movim\Widget\Base
             ->take(16)
             ->get();
         $view->assign('top', $top);
+
+        $users = Contact::public()
+            ->notInRoster($this->user->session->id)
+            ->orderByPresence()
+            ->where('id', '!=', $this->user->id)
+            ->limit(6)
+            ->get();
+
+        $view->assign('presencestxt', getPresencesTxt());
+        $view->assign('users', $users);
 
         return $view->draw('_chat_empty');
     }

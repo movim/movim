@@ -49,6 +49,11 @@ table tr th {
     color: rgba(var(--movim-font), 0.54);
 }
 
+.highlighted {
+    background-color: rgba(var(--movim-font), 0.035);
+    border-radius: 0.5rem;
+}
+
 .color {
     background-color: #607D8B;
     color: white;
