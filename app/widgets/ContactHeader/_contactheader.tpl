@@ -28,7 +28,7 @@
             {if="$contact->isMe()"}
                 <span class="control icon active gray divided" onclick="MovimUtils.redirect('{$c->route('conf')}')"
                     title="{$c->__('button.add')}">
-                    <i class="material-icons">settings</i>
+                    <i class="material-icons">edit</i>
                 </span>
             {else}
                 <span class="control icon active gray divided" onclick="ContactActions_ajaxAddAsk('{$contact->id|echapJS}')"

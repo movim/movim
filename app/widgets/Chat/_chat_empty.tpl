@@ -54,7 +54,7 @@
             </div>
         </li>
     </ul>
-    <ul class="list flex thick active highlighted">
+    <ul class="list flex middle active highlighted">
         {loop="$users"}
             <li class="block" title="{$value->jid}" onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}')">
                 <span class="control icon gray">

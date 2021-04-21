@@ -100,7 +100,7 @@
        title="{$c->__('page.configuration')}">
         <li {if="$page == 'conf'"}class="active"{/if}>
             <span class="primary icon">
-                <i class="material-icons">settings</i>
+                <i class="material-icons">tune</i>
             </span>
             <div>
                 <p class="normal">{$c->__('page.configuration')}</p>

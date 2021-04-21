@@ -347,9 +347,10 @@ hr.thick {
 img.avatar {
     margin: 0 auto;
     max-height: 34rem;
-    border-radius: 0.25rem;
+    border-radius: 0.5rem;
     display: block;
     max-width: 100%;
+    margin-bottom: 1.5rem;
 }
 
 img.avatar:not([src=""]) + .placeholder {

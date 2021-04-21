@@ -1303,7 +1303,7 @@ class Chat extends \Movim\Widget\Base
             ->where('value', '<', 5)
             ->whereNotIn('rosters.jid', array_keys($chats))
             ->with('presence.capability')
-            ->take(16)
+            ->take(14)
             ->get();
         $view->assign('top', $top);
 
