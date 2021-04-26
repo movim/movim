@@ -57,7 +57,9 @@ class Url extends Model
             $file = new MessageFile;
             $file->name = !empty($name) ? $name : $cache->url;
             $file->type = $cache->contentType;
-            $file->size = 20000;//$cache->images[0]['size'];
+            $file->size = (!empty($cache->images[0]) && array_key_exists('size', $cache->images[0]))
+                ? $cache->images[0]['size']
+                : 20000;
             $file->uri  = $cache->url;
 
             $this->file = $file;

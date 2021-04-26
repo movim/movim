@@ -21,6 +21,22 @@
     align-self: center;
     border-radius: 0.5rem;
     margin-top: -1rem;
+    position: relative;
+}
+
+#preview .pinfo {
+    position: absolute;
+    bottom: 12rem;
+    background-color: rgba(0, 0, 0, 0.75);
+    font-size: 1.75rem;
+    line-height: 3.5rem;
+    padding: 0 2rem;
+    border-radius: 2rem;
+    transition: opacity .3s cubic-bezier(.4,0,.2,1);
+}
+
+#preview img:hover ~ .pinfo{
+    opacity: 0.25;
 }
 
 #preview .buttons {

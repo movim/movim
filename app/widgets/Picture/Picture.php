@@ -57,6 +57,11 @@ class Picture extends Base
 
                 header_remove('Content-Type');
                 header('Content-Type: image/webp');
+
+                $name = parse_url($url, PHP_URL_PATH);
+                if (!empty($name)) {
+                    header('Content-Disposition: attachment; filename="'.$name.'"');
+                }
             } else {
                 foreach ($headers as $header) {
                     if (strtolower(substr($header, 0, strlen('Content-Type:'))) === 'content-type:') {

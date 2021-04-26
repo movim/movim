@@ -110,7 +110,6 @@ class ChatActions extends \Movim\Widget\Base
         try {
             (new Url)->resolve(trim($url));
         } catch (\Exception $e) {}
-
         $this->rpc('Chat.disableSending');
     }
 }

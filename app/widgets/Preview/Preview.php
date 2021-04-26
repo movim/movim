@@ -19,6 +19,11 @@ class Preview extends Base
         }
 
         $view = $this->tpl();
+        try {
+            $view->assign('embed', (new \App\Url)->resolve($url));
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+        }
         $view->assign('url', $url);
 
         $this->rpc('MovimTpl.fill', '#preview', $view->draw('_preview'));

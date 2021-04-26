@@ -12,7 +12,7 @@ class Picture
     private $_folder = 'cache/';
     private $_key;
     private $_bin  = false;
-    private $_formats = ['jpeg' => '.jpg', 'png' => '.png', 'webp' => '.webp'];
+    private $_formats = ['jpeg' => '.jpg', 'png' => '.png', 'webp' => '.webp', 'gif' => '.gif'];
 
     /**
      * @desc Load a bin picture from an URL
@@ -244,7 +244,9 @@ class Picture
                 }
 
                 $im->readImageBlob($this->_bin);
+
                 if ($im != false) {
+                    $im = $im->coalesceImages();
                     $im->setImageFormat($format);
 
                     if ($format == 'jpeg') {
@@ -263,7 +265,8 @@ class Picture
                     }
 
                     if ($path) {
-                        $im->writeImage($path);
+                        $im = $im->deconstructImages();
+                        $im->writeImages($path, true);
                         $im->clear();
                         return true;
                     }

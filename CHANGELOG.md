@@ -12,6 +12,8 @@ v0.19.1 (trunk)
 * New design for Post cards
 * Fix chat attachments alignements
 * Fix message delivery receipt and chat markers issues with Dino and Conversations
+* Improve animated GIF preview
+* Add picture resolution and size to Preview
 
 v0.19
 ---------------------------

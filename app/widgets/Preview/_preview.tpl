@@ -6,6 +6,9 @@
     </li>
 </ul>
 <img src="{$url|protectPicture}" title="{$url}" class="transparent"/>
+{if="!empty($embed->images) && array_key_exists('size', $embed->images[0])"}
+    <span class="pinfo">{$embed->imageWidth} × {$embed->imageHeight} - {$embed->images[0]['size']|sizeToCleanSize}</span>
+{/if}
 <span class="prevnext prev"></span>
 <span class="prevnext next"></span>
 <div class="buttons">
