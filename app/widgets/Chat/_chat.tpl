@@ -9,7 +9,7 @@
         <i class="material-icons">expand_more</i>
     </a>
     <section id="{$jid|cleanupId}-messages">
-        <ul class="list spin" id="{$jid|cleanupId}-conversation"></ul>
+        <ul class="list spin conversation" id="{$jid|cleanupId}-conversation"></ul>
         <div class="placeholder">
             <i class="material-icons">chat</i>
             <h1>{$c->__('chat.new_title')}</h1>

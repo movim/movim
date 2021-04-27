@@ -97,6 +97,7 @@ main:not(.enabled) #chat_widget {
 #chat_widget .chat_box {
     background-color: rgba(var(--movim-background-main), 1);
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+    position: relative;
 }
 
 #chat_widget .chat_box ul {
@@ -131,7 +132,24 @@ main:not(.enabled) #chat_widget {
     color: rgba(var(--movim-font), 0.54);
 }
 
-#chat_widget .chat_box span.control.send.sending {
+#chat_widget .chat_box:before {
+    position: absolute;
+    display: block;
+    background-color: rgb(var(--movim-main));
+    width: 0;
+    height: 0.25rem;
+    content: '';
+    top: -0.25rem;
+    transition: width 5s ease-in-out, opacity 0.2s ease-in-out;
+    opacity: 0;
+}
+
+#chat_widget .chat_box.sending:before {
+    width: 100%;
+    opacity: 1;
+}
+
+#chat_widget .chat_box.sending span.control.send {
     animation: loadingopacity 1s infinite alternate;
     pointer-events: none;
 }
@@ -209,7 +227,7 @@ main:not(.enabled) #chat_widget {
     padding-left: 2rem;
 }
 
-#chat_widget div:not(.chat_box):not(#chat_explore) li span.icon:not(.thumb) { /** .thumb is for cards **/
+#chat_widget div:not(.chat_box):not(#chat_explore) ul.conversation > li > span.icon {
     align-self: flex-start;
     margin: 0;
 }

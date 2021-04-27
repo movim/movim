@@ -194,13 +194,13 @@ var Chat = {
     enableSending: function()
     {
         Chat.sent = true;
-        var send = document.querySelector('.chat_box span.send');
+        var send = document.querySelector('.chat_box');
         if (send) send.classList.add('sending');
     },
     disableSending: function()
     {
         Chat.sent = false;
-        var send = document.querySelector('.chat_box span.send');
+        var send = document.querySelector('.chat_box');
         if (send) send.classList.remove('sending');
     },
     sentMessage: function()
