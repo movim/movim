@@ -6,6 +6,14 @@
     </li>
 </ul>
 {if="$embed && !empty($embed->images)"}
+    <img src="{$embed->images[$imagenumber]['url']|protectPicture}"
+        title="{$embed->images[$imagenumber]['url']}"
+        class="transparent"/>
+
+    {if="array_key_exists('size', $embed->images[$imagenumber])"}
+        <span class="pinfo">{$embed->images[$imagenumber]['width']} × {$embed->images[$imagenumber]['height']} - {$embed->images[$imagenumber]['size']|sizeToCleanSize}</span>
+    {/if}
+
     {$previous = $imagenumber-1}
     <span class="prevnext prev {if="$imagenumber > 0"}enabled{/if}"
         onclick="Preview_ajaxGallery('{$embed->url}', {$previous})">
@@ -18,9 +26,6 @@
         <i class="material-icons">chevron_right</i>
     </span>
 
-    <img src="{$embed->images[$imagenumber]['url']|protectPicture}"
-         title="{$embed->images[$imagenumber]['url']}"
-         class="transparent"/>
     <span class="counter">{$imagenumber+1} / {$embed->images|count}</span>
     <div class="buttons">
         <a class="button flat color transparent" href="{$embed->images[$imagenumber]['url']}" target="_blank" download title="{$c->__('button.save')}">
