@@ -256,10 +256,12 @@
         </ul>
         <ul class="grid active">
             {loop="$post->pictures"}
-                <li style="background-image: url('{$value->href|protectPicture}')"
+                <li
                     {if="$public"}
+                        style="background-image: url('{$value->href}')"
                         onclick="window.location.href = '{$value->href}'"
                     {else}
+                        style="background-image: url('{$value->href|protectPicture}')"
                         onclick="Preview_ajaxShow('{$value->href}')"
                     {/if}
                 >

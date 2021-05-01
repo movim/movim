@@ -55,8 +55,11 @@
         </div>
         <?php $this->widget('Dialog');?>
         <?php $this->widget('Drawer');?>
-        <?php $this->widget('Preview');?>
         <?php $this->widget('Confirm');?>
+
+        <?php if (!$this->public) { ?>
+            <?php $this->widget('Preview');?>
+        <?php } ?>
         <%content%>
     </body>
 </html>
