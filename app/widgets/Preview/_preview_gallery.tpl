@@ -11,7 +11,12 @@
         class="transparent"/>
 
     {if="array_key_exists('size', $embed->images[$imagenumber])"}
-        <span class="pinfo">{$embed->images[$imagenumber]['width']} × {$embed->images[$imagenumber]['height']} - {$embed->images[$imagenumber]['size']|sizeToCleanSize}</span>
+        <span class="pinfo">
+            {$embed->images[$imagenumber]['width']} × {$embed->images[$imagenumber]['height']}
+            {if="$embed->images[$imagenumber]['size'] != 0"}
+                - {$embed->images[$imagenumber]['size']|sizeToCleanSize}
+            {/if}
+        </span>
     {/if}
 
     {$previous = $imagenumber-1}

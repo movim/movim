@@ -7,7 +7,12 @@
 </ul>
 <img src="{$url|protectPicture}" title="{$url}" class="transparent"/>
 {if="!empty($embed->images) && array_key_exists('size', $embed->images[0])"}
-    <span class="pinfo">{$embed->imageWidth} × {$embed->imageHeight} - {$embed->images[0]['size']|sizeToCleanSize}</span>
+    <span class="pinfo">
+        {$embed->images[0]['width']} × {$embed->images[0]['height']}
+        {if="$embed->images[0]['size'] != 0"}
+            - {$embed->images[0]['size']|sizeToCleanSize}
+        {/if}
+    </span>
 {/if}
 <span class="prevnext prev"></span>
 <span class="prevnext next"></span>

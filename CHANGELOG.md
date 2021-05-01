@@ -14,6 +14,7 @@ v0.19.1 (trunk)
 * Fix message delivery receipt and chat markers issues with Dino and Conversations
 * Improve animated GIF preview
 * Add picture resolution and size to Preview
+* Fix attached pictures for long posts on public pages
 
 v0.19
 ---------------------------

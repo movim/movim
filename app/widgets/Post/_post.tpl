@@ -240,12 +240,16 @@
         </ul>
     {/if}
 
-    {if="$post->pictures()->count() > 0 && !$post->isBrief() && !$post->isShort() && !$public"}
+    {if="$post->pictures()->count() > 0 && !$post->isBrief() && !$post->isShort()"}
         <ul class="list">
             <li class="subheader">
                 <div>
                     <p>
                         {$c->__('general.pictures')}
+                        <span class="second">
+                            {$post->pictures()->count()}
+                            <i class="material-icons">image</i>
+                        </span>
                     </p>
                 </div>
             </li>
@@ -253,7 +257,12 @@
         <ul class="grid active">
             {loop="$post->pictures"}
                 <li style="background-image: url('{$value->href|protectPicture}')"
-                    onclick="Preview_ajaxShow('{$value->href}')">
+                    {if="$public"}
+                        onclick="window.location.href = '{$value->href}'"
+                    {else}
+                        onclick="Preview_ajaxShow('{$value->href}')"
+                    {/if}
+                >
                     <i class="material-icons">visibility</i>
                 </li>
             {/loop}
