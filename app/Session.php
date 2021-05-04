@@ -10,6 +10,7 @@ class Session extends Model
 {
     protected $fillable = ['id'];
     protected $keyType = 'string';
+    protected $with = ['serverCapability'];
     public $incrementing = false;
 
     public function user()
@@ -27,6 +28,11 @@ class Session extends Model
         return $this->hasOne('App\Presence', 'jid', 'user_id')
                     ->where('resource', $this->resource)
                     ->where('session_id', $this->id);
+    }
+
+    public function serverCapability()
+    {
+        return $this->hasOne('App\Info', 'server', 'host')->where('node', '');
     }
 
     public function contacts()

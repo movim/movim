@@ -1,5 +1,18 @@
-#avatar_form div#avatar_preview {
-    flex: 1 1 20%;
-    text-align: center;
-    padding-top: 2rem;
+#avatar {
+    min-height: 14rem;
+}
+
+#avatar li {
+    padding-left: 0.5rem;
+}
+
+#avatar span.primary {
+    min-width: 10rem;
+    height: 10rem;
+    margin-right: 1rem;
+}
+
+#avatar span.primary i {
+    line-height: 10rem;
+    font-size: 5rem;
 }

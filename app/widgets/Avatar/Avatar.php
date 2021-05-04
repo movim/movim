@@ -26,27 +26,29 @@ class Avatar extends \Movim\Widget\Base
 
     public function onGetAvatar($packet)
     {
-        $this->rpc('MovimTpl.fill', '#avatar_form', $this->prepareForm());
+        $this->rpc('MovimTpl.fill', '#avatar', $this->prepareForm());
+        $this->rpc('Dialog_ajaxClear');
         Toast::send($this->__('avatar.updated'));
     }
 
     public function onMyAvatarError()
     {
-        $this->rpc('MovimTpl.fill', '#avatar_form', $this->prepareForm());
+        $this->rpc('MovimTpl.fill', '#avatar', $this->prepareForm());
         Toast::send($this->__('avatar.not_updated'));
     }
 
     public function prepareForm()
     {
         $avatarform = $this->tpl();
-
-        $p = new Picture;
-        $p->get($this->user->id);
-
-        $avatarform->assign('photobin', $p->toBase());
         $avatarform->assign('me', \App\Contact::firstOrNew(['id' => $this->user->id]));
+        return $avatarform->draw('_avatar');
+    }
 
-        return $avatarform->draw('_avatar_form');
+    public function ajaxGetForm()
+    {
+        $view = $this->tpl();
+        $view->assign('me', \App\Contact::firstOrNew(['id' => $this->user->id]));
+        Dialog::fill($view->draw('_avatar_form'));
     }
 
     public function ajaxGetAvatar()
@@ -56,9 +58,9 @@ class Avatar extends \Movim\Widget\Base
           ->request();
     }
 
-    public function ajaxDisplay()
+    public function ajaxHttpGetCurrent()
     {
-        $this->rpc('MovimTpl.fill', '#avatar_form', $this->prepareForm());
+        $this->rpc('MovimTpl.fill', '#avatar', $this->prepareForm());
     }
 
     public function ajaxSubmit($avatar)

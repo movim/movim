@@ -151,10 +151,15 @@ class User extends Model
     public function hasPubsub()
     {
         $configuration = Configuration::get();
-
         return (!$configuration->chatonly
             && $this->capability
             && $this->capability->hasFeature('http://jabber.org/protocol/pubsub#persistent-items')
+            && ($this->capability->hasFeature('http://jabber.org/protocol/pubsub#multi-items')
+                || (
+                    $this->session->serverCapability
+                    && $this->session->serverCapability->hasFeature('http://jabber.org/protocol/pubsub#multi-items')
+                )
+            )
         );
     }
 
