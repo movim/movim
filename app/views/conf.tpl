@@ -14,10 +14,10 @@
 
 <main>
     <div>
-        <header>
+        <header class="on_desktop">
             <ul class="list middle">
                 <li>
-                    <span id="menu" class="primary icon active gray" >
+                    <span id="menu" class="primary icon gray" >
                         <i class="material-icons">tune</i>
                     </span>
                     <div>
