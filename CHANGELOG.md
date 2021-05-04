@@ -15,6 +15,9 @@ v0.19.1 (trunk)
 * Improve animated GIF preview
 * Add picture resolution and size to Preview
 * Fix attached pictures for long posts on public pages
+* Enforces pubsub#multi-items support to ensure a good Movim-XMPP server compatibiliy
+* Redesign the avatar widget and integrate it in the Profile tab
+
 
 v0.19
 ---------------------------
