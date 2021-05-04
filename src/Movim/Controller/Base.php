@@ -98,9 +98,10 @@ class Base
         $this->page->addScript('movim_electron.js');
         $this->page->addScript('movim_avatar.js');
         $this->page->addScript('movim_emojis_list.js');
+        $this->page->addScript('movim_rpc.js');
+        $this->page->addScript('movim_tpl.js');
 
         if (!$this->public) {
-            $this->page->addScript('movim_tpl.js');
             $this->page->addScript('movim_websocket.js');
         }
 

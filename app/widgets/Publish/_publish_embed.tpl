@@ -21,7 +21,7 @@
     {else}
         {if="!empty($resolved->images) && (count($resolved->images) > 1 || $resolved->images[0]['url'] == $embed->url)"}
             <span class="primary icon thumb active color gray"
-                onclick="Preview_ajaxShow('{$resolved->images[0]['url']}')"
+                onclick="Preview_ajaxHttpShow('{$resolved->images[0]['url']}')"
                 style="background-image: url({$resolved->images[0]['url']|protectPicture})">
                 <i class="material-icons">image</i>
             </span>

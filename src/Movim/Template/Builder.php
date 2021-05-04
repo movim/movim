@@ -64,9 +64,7 @@ class Builder
         $outp = ob_get_clean();
 
         $scripts = $this->printCSS();
-        if (!$public) {
-            $scripts .= $this->printScripts();
-        }
+        $scripts .= $this->printScripts();
 
         $outp = str_replace(
             ['<%scripts%>', '<%meta%>', '<%content%>', '<%title%>', '<%dir%>'],

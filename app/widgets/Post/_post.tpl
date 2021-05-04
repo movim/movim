@@ -259,11 +259,10 @@
                 <li
                     {if="$public"}
                         style="background-image: url('{$value->href}')"
-                        onclick="window.location.href = '{$value->href}'"
                     {else}
                         style="background-image: url('{$value->href|protectPicture}')"
-                        onclick="Preview_ajaxShow('{$value->href}')"
                     {/if}
+                    onclick="Preview_ajaxHttpShow('{$value->href}')"
                 >
                     <i class="material-icons">visibility</i>
                 </li>

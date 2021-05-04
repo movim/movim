@@ -26,6 +26,7 @@
 
 #preview .pinfo {
     position: absolute;
+    color: white;
     bottom: 12rem;
     background-color: rgba(0, 0, 0, 0.75);
     font-size: 1.75rem;

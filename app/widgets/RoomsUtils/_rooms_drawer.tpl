@@ -319,7 +319,7 @@
             <ul class="grid active">
                 {loop="$conference->pictures()->take(16)->get()"}
                     <li style="background-image: url('{$value->file['uri']|protectPicture}')"
-                        onclick="Preview_ajaxShow('{$value->file['uri']}')">
+                        onclick="Preview_ajaxHttpShow('{$value->file['uri']}')">
                         <i class="material-icons">visibility</i>
                     </li>
                 {/loop}

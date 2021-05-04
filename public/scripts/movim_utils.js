@@ -150,7 +150,7 @@ var MovimUtils = {
                     img.parentNode.insertBefore(div, img);
                     div.classList.add('previewable');
                     img.classList.add('active');
-                    img.addEventListener('click', () => Preview_ajaxShow(img.src))
+                    img.addEventListener('click', () => Preview_ajaxHttpShow(img.src))
 
                     div.appendChild(img);
                 }

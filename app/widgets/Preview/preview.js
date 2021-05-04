@@ -8,7 +8,7 @@ var Preview = {
 movimAddOnload(function() {
     document.addEventListener('keydown', function(e) {
         if (document.querySelector('#preview').innerHTML != '' && e.keyCode == 27) {
-            Preview_ajaxHide();
+            Preview_ajaxHttpHide();
         }
     }, false);
     document.addEventListener('click', function(e) {
@@ -18,7 +18,7 @@ movimAddOnload(function() {
         && !document.querySelector('#preview .prevnext.prev').contains(e.target)
         && !document.querySelector('#preview .prevnext.next').contains(e.target)
         && !document.querySelector('#preview .buttons').contains(e.target)) {
-            Preview_ajaxHide();
+            Preview_ajaxHttpHide();
         }
     }, false);
 });
