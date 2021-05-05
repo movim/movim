@@ -34,6 +34,25 @@ class CommunityData extends Base
           ->request();
     }
 
+    public function prepareCard($info)
+    {
+        $view = $this->tpl();
+        $view->assign('info', $info);
+        $view->assign('num', 0);
+
+        if ($info) {
+            $view->assign('num',
+                ($info->items > 0)
+                    ? $info->items
+                    : \App\Post::where('server', $info->server)
+                           ->where('node', $info->node)
+                           ->count()
+            );
+        }
+
+        return $view->draw('_communitydata_card');
+    }
+
     public function prepareData($origin, $node)
     {
         $view = $this->tpl();

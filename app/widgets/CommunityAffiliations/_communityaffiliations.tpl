@@ -104,38 +104,7 @@
 {/if}
 
 {if="$subscriptions->isNotEmpty()"}
-<ul class="list card active thin">
-    <li class="subheader">
-        <div>
-            <p>{$c->__('communityaffiliation.subscriptions')}</p>
-        </div>
-    </li>
-    {loop="$subscriptions"}
-        <li title="{$value->jid}"
-            onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}')">
-            {if="$value->contact"}
-                {$url = $value->contact->getPhoto('m')}
-                {if="$url"}
-                    <span class="primary icon bubble small"
-                        style="background-image: url({$url});">
-                    </span>
-                {else}
-                    <span class="primary icon bubble small color {$value->jid|stringToColor}">
-                        {$value->contact->truename|firstLetterCapitalize:true}
-                    </span>
-                {/if}
-                <div>
-                    <p class="normal">{$value->contact->truename}</p>
-                </div>
-            {else}
-                <span class="primary icon bubble small color {$value->jid|stringToColor}">
-                    {$value->jid|firstLetterCapitalize:true}
-                </span>
-                <div>
-                    <p class="normal">{$value->jid}</p>
-                </div>
-            {/if}
-        </li>
-    {/loop}
-</ul>
+    {autoescape="off"}
+        {$c->prepareSubscriptionsList($subscriptions)}
+    {/autoescape}
 {/if}

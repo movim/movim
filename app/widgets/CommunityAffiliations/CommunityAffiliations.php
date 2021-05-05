@@ -131,6 +131,14 @@ class CommunityAffiliations extends Base
         return \App\Contact::firstOrNew(['id' => $jid]);
     }
 
+    public function prepareSubscriptionsList($subscriptions)
+    {
+        $view = $this->tpl();
+        $view->assign('subscriptions', $subscriptions);
+
+        return $view->draw('_communityaffiliations_subscriptions_list');
+    }
+
     public function ajaxGetAffiliations($origin, $node)
     {
         if (!$this->validateServerNode($origin, $node)) {

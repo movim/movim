@@ -1,91 +1,9 @@
 <br />
 
-{$url = $contact->getPhoto('l')}
-{if="$url"}
-<ul class="list middle">
-    <li>
-        <div>
-            <p class="center">
-                <img class="avatar" src="{$url}">
-            </p>
-        </div>
-    </li>
-</ul>
-{/if}
+{autoescape="off"}
+    {$c->prepareCard($contact, $roster)}
+{/autoescape}
 
-<div class="block">
-    <ul class="list middle">
-        <li>
-            <div>
-                <p class="normal center	">
-                    {$contact->truename}
-                    {if="isset($roster) && isset($roster->presence)"}
-                        <span class="second">{$roster->presence->presencetext}</span>
-                    {/if}
-                </p>
-
-                {if="$roster && $roster->presence && $roster->presence->seen"}
-                    <p class="center">
-                        <span class="second">
-                            {$c->__('last.title')} {$roster->presence->seen|strtotime|prepareDate:true,true}
-                        </span>
-                    </p>
-                {/if}
-                {if="$contact->email"}
-                    <p class="center"><a href="mailto:{$contact->email}">{$contact->email}</a></p>
-                {/if}
-                {if="$contact->description != null && trim($contact->description) != ''"}
-                    <p class="center all" title="{$contact->description}">
-                        {autoescape="off"}
-                            {$contact->description|nl2br|addEmojis}
-                        {/autoescape}
-                    </p>
-                {/if}
-            </div>
-        </li>
-        <!--<li>
-            <span class="primary icon gray">
-                <i class="material-icons">accounts</i>
-            </span>
-            <p class="normal">{$c->__('communitydata.sub', 0)}</p>
-        </li>-->
-    </ul>
-
-    {if="$contact->url != null"}
-        <ul class="list thin">
-            <li>
-                <span class="primary icon gray"><i class="material-icons">link</i></span>
-                <div>
-                    <p class="normal line">
-                        {if="filter_var($contact->url, FILTER_VALIDATE_URL)"}
-                            <a href="{$contact->url}" target="_blank">{$contact->url}</a>
-                        {else}
-                            {$contact->url}
-                        {/if}
-                    </p>
-                </div>
-            </li>
-        </ul>
-    {/if}
-
-    {if="$contact->adrlocality != null || $contact->adrcountry != null"}
-        <ul class="list middle">
-            <li>
-                <span class="primary icon gray"><i class="material-icons">location_city</i></span>
-                <div>
-                    {if="$contact->adrlocality != null"}
-                        <p class="normal">{$contact->adrlocality}</p>
-                    {/if}
-                    {if="$contact->adrcountry != null"}
-                        <p {if="$contact->adrlocality == null"}class="normal"{/if}>
-                            {$contact->adrcountry}
-                        </p>
-                    {/if}
-                </div>
-            </li>
-        </ul>
-    {/if}
-</div>
 <div class="block">
     <ul class="list middle active divided spaced">
         {if="!$contact->isMe()"}
@@ -223,51 +141,6 @@
     </ul>
 </div>
 
-{if="count($subscriptions) > 0"}
-    <ul class="list active large">
-        <li class="subheader large">
-            <div>
-                <p>
-                    <span class="info">{$subscriptions|count}</span>
-                    {$c->__('page.communities')}
-                </p>
-            </div>
-        </li>
-        {loop="$subscriptions"}
-            <a href="{$c->route('community', [$value->server, $value->node])}">
-                <li title="{$value->server} - {$value->node}">
-                    {if="$value->info"}
-                        {$url = $value->info->getPhoto('m')}
-                    {/if}
-
-                    {if="$url"}
-                        <span class="primary icon bubble">
-                            <img src="{$url}"/>
-                        </span>
-                    {else}
-                        <span class="primary icon bubble color {$value->node|stringToColor}">
-                            {$value->node|firstLetterCapitalize}
-                        </span>
-                    {/if}
-                    <span class="control icon gray">
-                        <i class="material-icons">chevron_right</i>
-                    </span>
-                    <div>
-                        <p class="line normal">
-                            {if="$value->info && $value->info->name"}
-                                {$value->info->name}
-                            {elseif="$value->name"}
-                                {$value->name}
-                            {else}
-                                {$value->node}
-                            {/if}
-                        </p>
-                        {if="$value->info && $value->info->description"}
-                            <p class="line">{$value->info->description|strip_tags}</p>
-                        {/if}
-                    </div>
-                </li>
-            </a>
-        {/loop}
-    </ul>
-{/if}
+{autoescape="off"}
+    {$c->prepareSubscriptions($subscriptions)}
+{/autoescape}

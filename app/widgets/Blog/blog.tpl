@@ -21,9 +21,6 @@
                             {$c->__('blog.title', $contact->truename)}
                         </a>
                     </p>
-                        {if="$contact->description"}
-                            <p>{$contact->description}</p>
-                        {/if}
                     <p>
                         {$c->__('page.blog')}
                     </p>

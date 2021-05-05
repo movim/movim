@@ -9,7 +9,6 @@ class ContactData extends Base
     public function load()
     {
         $this->addjs('contactdata.js');
-        $this->addcss('contactdata.css');
         $this->registerEvent('vcard_get_handle', 'onVcardReceived', 'contact');
         $this->registerEvent('vcard4_get_handle', 'onVcardReceived', 'contact');
     }
@@ -41,6 +40,23 @@ class ContactData extends Base
         $view->assign('roster', $this->user->session->contacts()->where('jid', $jid)->first());
 
         return $view->draw('_contactdata');
+    }
+
+    public function prepareCard($contact, $roster = null)
+    {
+        $view = $this->tpl();
+        $view->assign('contact', $contact);
+        $view->assign('roster', $roster);
+
+        return $view->draw('_contactdata_card');
+    }
+
+    public function prepareSubscriptions($subscriptions)
+    {
+        $view = $this->tpl();
+        $view->assign('subscriptions', $subscriptions);
+
+        return $view->draw('_contactdata_subscriptions');
     }
 
     public function ajaxRefresh($jid)

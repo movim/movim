@@ -18,6 +18,8 @@ v0.19.1 (trunk)
 * Enforces pubsub#multi-items support to ensure a good Movim-XMPP server compatibiliy
 * Redesign the avatar widget and integrate it in the Profile tab
 * Move from OpenSans to Roboto for the default font
+* Move to a two columns design for blogs and communities public pages
+* Refactor and unify some views between the public and private widgets
 
 v0.19
 ---------------------------
