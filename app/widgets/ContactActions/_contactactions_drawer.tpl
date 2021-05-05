@@ -178,7 +178,7 @@
                     <p>{$c->__('general.about')}</p>
                     <p class="all">
                         {autoescape="off"}
-                            {$contact->description|nl2br}
+                            {$contact->description|nl2br|addEmojis}
                         {/autoescape}
                     </p>
                 </div>

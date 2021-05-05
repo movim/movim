@@ -37,7 +37,7 @@
                 {if="$contact->description != null && trim($contact->description) != ''"}
                     <p class="center all" title="{$contact->description}">
                         {autoescape="off"}
-                            {$contact->description|nl2br}
+                            {$contact->description|nl2br|addEmojis}
                         {/autoescape}
                     </p>
                 {/if}

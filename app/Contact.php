@@ -186,7 +186,7 @@ class Contact extends Model
         $this->email = !empty($vcard->email->text)
             ? (string)$vcard->email->text
             : null;
-        $this->description = !empty($vcard->node->text)
+        $this->description = !empty($vcard->note->text)
             ? trim((string)$vcard->note->text)
             : null;
     }
