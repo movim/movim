@@ -23,8 +23,11 @@ class ContactDataPublic extends Base
         $user = \App\User::where('nickname', $jid)->first();
         if ($user) {
             $jid = $user->id;
+        } else {
+            $user = \App\User::where('id', $jid)->first();
         }
 
+        $this->view->assign('public', ($user && (bool)$user->public));
         $this->view->assign('contact', App\Contact::firstOrNew(['id' => $jid]));
         $this->view->assign('subscriptions', \App\Subscription::where('jid', $jid)
                                                               ->where('public', true)
