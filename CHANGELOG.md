@@ -17,7 +17,7 @@ v0.19.1 (trunk)
 * Fix attached pictures for long posts on public pages
 * Enforces pubsub#multi-items support to ensure a good Movim-XMPP server compatibiliy
 * Redesign the avatar widget and integrate it in the Profile tab
-
+* Move from OpenSans to Roboto for the default font
 
 v0.19
 ---------------------------

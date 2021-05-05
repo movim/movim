@@ -22,7 +22,7 @@ var MovimFavicon = {
             }
 
             ctx.textAlign = 'center';
-            ctx.font = 'bold 18px Open Sans';
+            ctx.font = 'bold 18px Roboto';
 
             radius = 5;
             x = large ? 4 : 12;
