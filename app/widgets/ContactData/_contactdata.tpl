@@ -209,7 +209,7 @@
         <a href="{$contact->getBlogUrl()}" target="_blank" class="block large simple">
             <li>
                 <span class="primary icon">
-                    <i class="material-icons">wifi_tethering</i>
+                    <i class="material-icons">open_in_new</i>
                 </span>
                 <span class="control icon">
                     <i class="material-icons">chevron_right</i>

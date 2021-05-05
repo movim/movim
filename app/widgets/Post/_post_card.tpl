@@ -202,7 +202,7 @@
                                 class="button narrow icon flat gray oppose"
                                 target="_blank"
                                 href="{$post->openlink->href}">
-                                <i class="material-icons">wifi_tethering</i>
+                                <i class="material-icons">open_in_new</i>
                             </a>
                         {else}
                             <a  class="button narrow icon flat gray on_desktop oppose"

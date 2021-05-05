@@ -224,7 +224,7 @@
         <ul class="list thick">
             <li>
                 <span class="primary icon gray">
-                    <i class="material-icons">wifi_tethering</i>
+                    <i class="material-icons">open_in_new</i>
                 </span>
                 <div>
                     <p class="line normal">
