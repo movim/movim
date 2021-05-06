@@ -2,7 +2,7 @@
     {if="!empty($embed->images)"}
         <span class="primary icon thumb active color {$embed->url|stringToColor}"
             {if="count($embed->images) > 1"}
-                onclick="Preview_ajaxGallery('{$embed->url}', 0)"
+                onclick="Preview_ajaxHttpGallery('{$embed->url}', 0)"
             {else}
                 onclick="Preview_ajaxHttpShow('{$embed->images[0]['url']}')"
             {/if}

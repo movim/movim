@@ -21,13 +21,13 @@
 
     {$previous = $imagenumber-1}
     <span class="prevnext prev {if="$imagenumber > 0"}enabled{/if}"
-        onclick="Preview_ajaxGallery('{$embed->url}', {$previous})">
+        onclick="Preview_ajaxHttpGallery('{$embed->url}', {$previous})">
         <i class="material-icons">chevron_left</i>
     </span>
 
     {$next = $imagenumber+1}
     <span class="prevnext next {if="$imagenumber+1 < count($embed->images)"}enabled{/if}"
-        onclick="Preview_ajaxGallery('{$embed->url}', {$next})">
+        onclick="Preview_ajaxHttpGallery('{$embed->url}', {$next})">
         <i class="material-icons">chevron_right</i>
     </span>
 
