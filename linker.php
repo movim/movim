@@ -158,7 +158,9 @@ function handleClientDNS(array $results, $dns, $connector, $xmppBehaviour)
 
         $connector->connect($socket)->then(
             $xmppBehaviour,
-            function () {
+            function (\Exception $error) {
+                logOut(colorize($error->getMessage(), 'red'));
+
                 $evt = new Movim\Widget\Event;
                 $evt->run('timeout_error');
                 $this->cancel();
