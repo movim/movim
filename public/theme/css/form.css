@@ -43,7 +43,6 @@ form > div > textarea,
 #hiddendiv {
     border: none;
     resize: none;
-    font-family: sans-serif;
     line-height: 3rem;
     box-sizing: border-box;
 }
