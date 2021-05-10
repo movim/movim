@@ -6,6 +6,7 @@
 <?php $this->widget('Search');?>
 <?php $this->widget('Notifications');?>
 <?php $this->widget('SendTo');?>
+<?php $this->widget('Tabs');?>
 
 <?php $this->widget('ContactActions');?>
 <?php $this->widget('PostActions');?>
