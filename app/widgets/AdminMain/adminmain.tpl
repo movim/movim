@@ -1,8 +1,6 @@
-<div id="admingen" class="tabelem padded_top_bottom" title="{$c->__('admin.general')}">
+<div id="admingen" class="tabelem" title="{$c->__('admin.general')}">
 <form name="admin" id="adminform" action="#" method="post">
     <input type="hidden" name="adminform" id="adminform" value="true"/>
-    <br />
-    <h3>{$c->__('admin.general')}</h3>
     <div>
         <label for="da">{$c->__('general.language')}</label>
         <div class="select">
@@ -225,28 +223,12 @@
         </li>
     </ul>
 
-    <br />
-    <h3>{$c->__('credentials.title')}</h3>
-
-    <div>
-        <label for="username">{$c->__('credentials.username')}</label>
-        <input type="text" id="username" name="username" value="{$conf->username}"/>
-    </div>
-    <div class="clear"></div>
-
-    <div>
-        <input type="password" id="password" name="password" value="" placeholder="{$c->__('credentials.password')}"/>
-        <label for="password">{$c->__('credentials.password')}</label>
-    </div>
-    <div>
-        <input type="password" id="repassword" name="repassword" value="" placeholder="{$c->__('credentials.re_password')}"/>
-        <label for="repassword">{$c->__('credentials.re_password')}</label>
-    </div>
-
     <input
     type="submit"
-    class="button color green oppose"
+    class="button color oppose"
     value="{$c->__('button.save')}"/>
     <div class="clear"></div>
+
+    <br />
 </form>
 </div>

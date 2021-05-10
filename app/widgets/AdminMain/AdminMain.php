@@ -10,20 +10,11 @@ class AdminMain extends \Movim\Widget\Base
 
         $configuration = Configuration::get();
 
-        if (isset($form) && !empty($form) && isset($form['adminform'])) {
-            if (isset($form['password'])
-            && isset($form['repassword'])
-            && $form['password'] != '' && $form['repassword'] != ''
-            && $form['password'] == $form['repassword']) {
-                $configuration->password = password_hash($form['password'], PASSWORD_DEFAULT);
-            }
-
+        if (isset($form) && !empty($form) && isset($form['adminform']) && \App\User::me()->admin) {
             $form['disableregistration'] = (isset($form['disableregistration']));
             $form['restrictsuggestions'] = (isset($form['restrictsuggestions']));
             $form['chatonly'] = (isset($form['chatonly']));
 
-            unset($form['password']);
-            unset($form['repassword']);
             unset($form['submit']);
             unset($form['adminform']);
 

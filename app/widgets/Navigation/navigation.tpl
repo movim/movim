@@ -107,6 +107,22 @@
             </div>
         </li>
     </a>
+
+    {if="$c->getUser()->admin"}
+    <a class="classic"
+       href="{$c->route('admin')}"
+       title="{$c->__('page.configuration')}">
+        <li {if="$page == 'admin'"}class="active"{/if}>
+            <span class="primary icon">
+                <i class="material-icons">manage_accounts</i>
+            </span>
+            <div>
+                <p class="normal">{$c->__('page.administration')}</p>
+            </div>
+        </li>
+    </a>
+    {/if}
+
     <a class="classic"
         href="{$c->route('help')}"
         title="{$c->__('page.help')}">

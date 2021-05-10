@@ -11,6 +11,6 @@ class AdminSessions extends Base
 
     public function display()
     {
-        $this->view->assign('sessions', \App\Session::get());
+        $this->view->assign('sessions', \App\Session::with('user')->get());
     }
 }
