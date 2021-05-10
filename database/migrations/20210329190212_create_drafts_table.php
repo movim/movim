@@ -7,6 +7,8 @@ class CreateDraftsTable extends Migration
 {
     public function up()
     {
+        $this->disableForeignKeyCheck();
+
         $this->schema->create('drafts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('user_id', 256);
@@ -37,17 +39,23 @@ class CreateDraftsTable extends Migration
             $table->integer('imagenumber')->default(0);
             $table->timestamps();
 
-            $table->unique(['draft_id', 'url']);
-
             $table->foreign('draft_id')
                   ->references('id')->on('drafts')
                   ->onDelete('cascade');
+
+            $table->unique(['draft_id', 'url']);
         });
+
+        $this->enableForeignKeyCheck();
     }
 
     public function down()
     {
+        $this->disableForeignKeyCheck();
+
         $this->schema->drop('embeds');
         $this->schema->drop('drafts');
+
+        $this->enableForeignKeyCheck();
     }
 }
