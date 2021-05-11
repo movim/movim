@@ -15,7 +15,7 @@ use Ratchet\WebSocket\WsServer;
 use Movim\Daemon\Core;
 use Movim\Daemon\Api;
 use Movim\i18n\Locale;
-use App\Configuration;
+use App\User;
 
 use Phinx\Migration\Manager;
 use Phinx\Config\Config;
@@ -83,14 +83,11 @@ class DaemonCommand extends Command
             exit;
         }
 
-        $configuration = Configuration::get();
+        if (User::where('admin', true)->count() == 0) {
+            $output->writeln('<comment>Please set at least one user as an admin once its account is logged in</comment>');
 
-        if (empty($configuration->username) || empty($configuration->password)) {
-            $output->writeln('<comment>Please set a username and password for the admin panel (https://yourmovimdomain/?admin)</comment>');
-
-            $output->writeln('<info>To set those credentials run</info>');
-            $output->writeln('<info>php daemon.php config --username=USERNAME --password=PASSWORD</info>');
-            exit;
+            $output->writeln('<info>To set an existing user admin</info>');
+            $output->writeln('<info>php daemon.php setAdmin {jid}</info>'."\n");
         }
 
         $locale = Locale::start();

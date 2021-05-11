@@ -6,6 +6,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Input\InputOption;
 
 use App\User;
 
@@ -16,7 +17,13 @@ class SetAdmin extends Command
         $this
             ->setName('setAdmin')
             ->setDescription('Set an account admin')
-            ->addArgument('jid', InputArgument::REQUIRED, 'User Jabber ID');
+            ->addArgument('jid', InputArgument::REQUIRED, 'User Jabber ID')
+            ->addOption(
+                'remove',
+                'r',
+                InputOption::VALUE_NONE,
+                'Remove the admin role'
+            );
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -24,9 +31,15 @@ class SetAdmin extends Command
         $user = User::find($input->getArgument('jid'));
 
         if ($user) {
-            $user->admin = true;
+            if ($input->getOption('remove')) {
+                $user->admin = false;
+                $output->writeln('<info>User '.$input->getArgument('jid').' is not admin anymore</info>');
+            } else {
+                $user->admin = true;
+                $output->writeln('<info>User '.$input->getArgument('jid').' is now admin</info>');
+            }
+
             $user->save();
-            $output->writeln('<info>User '.$input->getArgument('jid').' is now admin</info>');
 
             return 0;
         }
