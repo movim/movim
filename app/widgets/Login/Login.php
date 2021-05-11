@@ -95,6 +95,7 @@ class Login extends Base
         }
 
         $this->view->assign('pop', User::count());
+        $this->view->assign('admins', User::where('admin', true)->get());
         $this->view->assign('connected', (int)requestAPI('started', 2));
         $this->view->assign('error', $this->prepareError());
 

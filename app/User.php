@@ -50,6 +50,11 @@ class User extends Model
         return $this->hasMany('App\Draft');
     }
 
+    public function getResolvedNicknameAttribute()
+    {
+        return $this->nickname ?? $this->id;
+    }
+
     public function unreads(string $jid = null, bool $quoted = false, bool $cached = false): int
     {
         if ($this->unreads !== null && $cached) return $this->unreads;

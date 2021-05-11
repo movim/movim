@@ -113,8 +113,52 @@
                 </li>
             </ul>
             {/if}
+        </section>
+    </div>
 
+    <div id="form" class="dialog more">
+        <section>
             <span class="info">{$c->__('form.connected')} {$connected} / {$pop}</span>
+            {if="$admins->count() > 0"}
+                <ul class="list thin active">
+                    <li class="subheader">
+                        <p>
+                            {$c->__('form.pod_admins')}
+                        </p>
+                    </li>
+                    {loop="$admins"}
+                        {$contact = $value->contact}
+                        <li class="block" onclick="MovimUtils.redirect('{$c->route('blog', $value->resolvedNickname)}')">
+                            <span class="control gray icon">
+                                <i class="material-icons">chevron_right</i>
+                            </span>
+                            {$url = null}
+                            {if="$contact"}
+                                {$url = $contact->getPhoto()}
+                            {/if}
+                            {if="$url"}
+                                <span class="primary icon bubble small">
+                                    <img src="{$url}">
+                                </span>
+                            {else}
+                                <span class="primary icon bubble small color {$value->id|stringToColor}">
+                                    <i class="material-icons">person</i>
+                                </span>
+                            {/if}
+                            <div>
+                                <p class="line normal" title="{$value->resolvedNickname}">
+                                    {if="$contact"}
+                                        {$contact->truename}
+                                        <span class="second">{$value->resolvedNickname}</span>
+                                    {else}
+                                        {$value->resolvedNickname}
+                                    {/if}
+                                </p>
+                            </div>
+                        </li>
+                    {/loop}
+                </ul>
+            {/if}
         </section>
     </div>
 

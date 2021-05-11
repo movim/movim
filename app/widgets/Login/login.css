@@ -7,6 +7,15 @@ body main {
     margin-top: 10%;
 }
 
+#login_widget .dialog.more {
+    margin-top: 2rem;
+    padding: 1rem 0;
+}
+
+#login_widget .dialog.more > section {
+    overflow-y: hidden;
+}
+
 @media screen and (max-width: 600px) {
     body main {
         background: url(../theme/img/logo_cloud.svg), radial-gradient(circle farthest-corner at right bottom,#5265ce 0,#213399 100%);
@@ -62,10 +71,10 @@ body main {
 #login_widget span.info {
     line-height: 4rem;
     display: block;
-    margin-bottom: 1.25rem;
+    margin: 0;
 }
 
-#login_widget form {
+#login_widget form:first-child {
     margin-top: 1rem;
 }
 
