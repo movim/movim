@@ -83,16 +83,6 @@ class DaemonCommand extends Command
             exit;
         }
 
-        $configuration = Configuration::get();
-
-        if (empty($configuration->username) || empty($configuration->password)) {
-            $output->writeln('<comment>Please set a username and password for the admin panel (https://yourmovimdomain/?admin)</comment>');
-
-            $output->writeln('<info>To set those credentials run</info>');
-            $output->writeln('<info>php daemon.php config --username=USERNAME --password=PASSWORD</info>');
-            exit;
-        }
-
         $locale = Locale::start();
 
         $locale->compileIni();
