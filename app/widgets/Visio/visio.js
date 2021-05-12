@@ -19,6 +19,8 @@ var Visio = {
     videoSelect: undefined,
     switchCamera: undefined,
 
+    inboundStream: null,
+
     services: [],
 
     init: function() {
@@ -44,10 +46,27 @@ var Visio = {
         Visio.pc = new RTCPeerConnection(configuration);
 
         Visio.pc.ontrack = event => {
+            console.log(event);
             if (Visio.withVideo) {
-                Visio.remoteVideo.srcObject = event.streams[0];
+                if (event.streams && event.streams[0]) {
+                    Visio.remoteVideo.srcObject = event.streams[0];
+                } else {
+                    if (!Visio.inboundStream) {
+                        Visio.inboundStream = new MediaStream();
+                        Visio.remoteVideo.srcObject = Visio.inboundStream;
+                    }
+                    Visio.inboundStream.addTrack(event.track);
+                }
             } else {
-                Visio.remoteAudio.srcObject = event.streams[0];
+                if (event.streams && event.streams[0]) {
+                    Visio.remoteAudio.srcObject = event.streams[0];
+                } else {
+                    if (!Visio.inboundStream) {
+                        Visio.inboundStream = new MediaStream();
+                        Visio.remoteAudio.srcObject = Visio.inboundStream;
+                    }
+                    Visio.inboundStream.addTrack(event.track);
+                }
                 VisioUtils.handleRemoteAudio();
             }
         };
@@ -175,7 +194,6 @@ var Visio = {
                 return Visio.pc.setLocalDescription(offer);
             })
             .then(function() {
-                console.log(Visio.pc.localDescription);
                 Visio_ajaxSessionInitiate(Visio.pc.localDescription, Visio.from, Visio.id);
             });
         } else {

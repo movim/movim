@@ -13,7 +13,7 @@ body main {
 }
 
 #login_widget .dialog.more > section {
-    overflow-y: hidden;
+    overflow: hidden;
 }
 
 @media screen and (max-width: 600px) {
