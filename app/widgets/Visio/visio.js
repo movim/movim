@@ -23,6 +23,8 @@ var Visio = {
 
     services: [],
 
+    tracksTypes: [],
+
     init: function() {
         Visio.from = MovimUtils.urlParts().params[0];
 
@@ -57,6 +59,9 @@ var Visio = {
                     }
                     Visio.inboundStream.addTrack(event.track);
                 }
+
+                VisioUtils.setRemoteAudioState('mic');
+                VisioUtils.setRemoteVideoState('videocam');
             } else {
                 if (event.streams && event.streams[0]) {
                     Visio.remoteAudio.srcObject = event.streams[0];
@@ -68,7 +73,10 @@ var Visio = {
                     Visio.inboundStream.addTrack(event.track);
                 }
                 VisioUtils.handleRemoteAudio();
+                VisioUtils.setRemoteAudioState('mic');
             }
+
+            Visio.tracksTypes['mid'+event.transceiver.mid] = event.track.kind;
         };
 
         Visio.pc.onicecandidate = event => {
@@ -96,6 +104,32 @@ var Visio = {
         }
 
         Visio.gotStream();
+    },
+
+    onMute: function(name) {
+        if (Visio.tracksTypes[name]) {
+            if (Visio.tracksTypes[name] == 'audio') {
+                VisioUtils.setRemoteAudioState('mic_off');
+            }
+
+            if (Visio.tracksTypes[name] == 'video') {
+                document.querySelector('#remote_video').classList.add('muted');
+                VisioUtils.setRemoteVideoState('videocam_off');
+            }
+        }
+    },
+
+    onUnmute: function(name) {
+        if (Visio.tracksTypes[name]) {
+            if (Visio.tracksTypes[name] == 'audio') {
+                VisioUtils.setRemoteAudioState('mic');
+            }
+
+            if (Visio.tracksTypes[name] == 'video') {
+                document.querySelector('#remote_video').classList.remove('muted');
+                VisioUtils.setRemoteVideoState('videocam');
+            }
+        }
     },
 
     setServices: function(services) {

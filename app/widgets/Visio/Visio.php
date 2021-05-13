@@ -4,6 +4,8 @@ use Moxl\Xec\Action\Jingle\SessionPropose;
 use Moxl\Xec\Action\Jingle\SessionAccept;
 use Moxl\Xec\Action\Jingle\SessionInitiate;
 use Moxl\Xec\Action\Jingle\SessionTerminate;
+use Moxl\Xec\Action\Jingle\SessionMute;
+use Moxl\Xec\Action\Jingle\SessionUnmute;
 
 use Movim\Widget\Base;
 use Movim\Session;
@@ -30,6 +32,8 @@ class Visio extends Base
         $this->registerEvent('jingle_sessionaccept', 'onAcceptSDP');
         $this->registerEvent('jingle_transportinfo', 'onCandidate');
         $this->registerEvent('jingle_sessionterminate', 'onTerminate');
+        $this->registerEvent('jingle_sessionmute', 'onMute');
+        $this->registerEvent('jingle_sessionunmute', 'onUnmute');
         $this->registerEvent('externalservices_get_handle', 'onExternalServices');
         $this->registerEvent('externalservices_get_error', 'onExternalServicesError');
     }
@@ -165,6 +169,16 @@ class Visio extends Base
         $this->rpc('Visio.onTerminate', $reason);
     }
 
+    public function onMute($name)
+    {
+        $this->rpc('Visio.onMute', $name);
+    }
+
+    public function onUnmute($name)
+    {
+        $this->rpc('Visio.onUnmute', $name);
+    }
+
     public function ajaxPropose($to, $id, $withVideo = false)
     {
         $p = new SessionPropose;
@@ -179,6 +193,24 @@ class Visio extends Base
         $p = new SessionAccept;
         $p->setTo($to)
           ->setId($id)
+          ->request();
+    }
+
+    public function ajaxMute($to, $id, $name)
+    {
+        $p = new SessionMute;
+        $p->setTo($to)
+          ->setId($id)
+          ->setName($name)
+          ->request();
+    }
+
+    public function ajaxUnmute($to, $id, $name)
+    {
+        $p = new SessionUnmute;
+        $p->setTo($to)
+          ->setId($id)
+          ->setName($name)
           ->request();
     }
 

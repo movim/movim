@@ -94,6 +94,46 @@ class Jingle
         \Moxl\API::request($xml);
     }
 
+    public static function sessionMute($to, $sid, $name = false)
+    {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $jingle = $dom->createElementNS('urn:xmpp:jingle:1', 'jingle');
+        $jingle->setAttribute('action', 'session-info');
+        $jingle->setAttribute('sid', $sid);
+
+        $mute = $dom->createElement('mute');
+        $mute->setAttribute('xmlns', 'urn:xmpp:jingle:apps:rtp:info:1');
+
+        if ($name) {
+            $mute->setAttribute('name', $name);
+        }
+
+        $jingle->appendChild($mute);
+
+        $xml = \Moxl\API::iqWrapper($jingle, $to, 'set');
+        \Moxl\API::request($xml);
+    }
+
+    public static function sessionUnmute($to, $sid, $name = false)
+    {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $jingle = $dom->createElementNS('urn:xmpp:jingle:1', 'jingle');
+        $jingle->setAttribute('action', 'session-info');
+        $jingle->setAttribute('sid', $sid);
+
+        $mute = $dom->createElement('unmute');
+        $mute->setAttribute('xmlns', 'urn:xmpp:jingle:apps:rtp:info:1');
+
+        if ($name) {
+            $mute->setAttribute('name', $name);
+        }
+
+        $jingle->appendChild($mute);
+
+        $xml = \Moxl\API::iqWrapper($jingle, $to, 'set');
+        \Moxl\API::request($xml);
+    }
+
     public static function unknownSession($to, $id)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');

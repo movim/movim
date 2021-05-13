@@ -59,6 +59,14 @@ class Jingle extends Payload
                     $message->save();
                     $this->event('jingle_sessioninitiate', [$stanza, $from]);
                     break;
+                case 'session-info':
+                    if ($stanza->mute) {
+                        $this->event('jingle_sessionmute', 'mid'.(string)$stanza->mute->attributes()->name);
+                    }
+                    if ($stanza->unmute) {
+                        $this->event('jingle_sessionunmute', 'mid'.(string)$stanza->unmute->attributes()->name);
+                    }
+                    break;
                 case 'transport-info':
                     $this->event('jingle_transportinfo', $stanza);
                     break;

@@ -113,9 +113,11 @@ var VisioUtils = {
         if (rtc && rtc.track.enabled == 1) {
             rtc.track.enabled = 0;
             button.innerText = 'mic_off';
+            Visio_ajaxUnmute(Visio.from, Visio.id, 'voice');
         } else if (rtc) {
             rtc.track.enabled = 1;
             button.innerText = 'mic';
+            Visio_ajaxMute(Visio.from, Visio.id, 'voice');
         }
     },
 
@@ -127,11 +129,25 @@ var VisioUtils = {
             if (rtc.track.enabled == 1) {
                 rtc.track.enabled = 0;
                 button.innerText = 'videocam_off';
+                document.querySelector('#video').classList.add('muted');
+                Visio_ajaxUnmute(Visio.from, Visio.id, 'webcam');
             } else {
                 rtc.track.enabled = 1;
                 button.innerText = 'videocam';
+                document.querySelector('#video').classList.remove('muted');
+                Visio_ajaxMute(Visio.from, Visio.id, 'webcam');
             }
         }
+    },
+
+    setRemoteAudioState: function(icon) {
+        var voice = document.querySelector('#remote_state i.voice');
+        voice.innerHTML = icon;
+    },
+
+    setRemoteVideoState: function(icon) {
+        var webcam = document.querySelector('#remote_state i.webcam');
+        webcam.innerHTML = icon;
     },
 
     toggleMainButton: function() {

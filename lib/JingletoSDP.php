@@ -259,7 +259,7 @@ class JingletoSDP
                                 "\r\na=fingerprint:".
                                 $content->transport->fingerprint->attributes()->hash.
                                 ' '.
-                                $content->transport->fingerprint;
+                                strtoupper($content->transport->fingerprint);
                         }
 
                         if (isset($content->transport->fingerprint->attributes()->setup)) {

@@ -55,6 +55,13 @@
         <video id="video" autoplay muted poster="/theme/img/empty.png"></video>
     {/if}
 
+    <span id="remote_state">
+        <i class="voice material-icons"></i>
+        {if="$withvideo"}
+            <i class="webcam material-icons"></i>
+        {/if}
+    </span>
+
     <div class="controls">
         <a id="main" class="button action color gray">
             <i class="material-icons">phone</i>

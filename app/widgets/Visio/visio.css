@@ -97,6 +97,28 @@ body {
     animation: Rotate 2000ms infinite;
 }
 
+#visio #remote_state {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+}
+
+#visio #remote_state i {
+    font-size: 2rem;
+    margin-right: 1rem;
+    opacity: 0.5;
+}
+
+#visio #video,
+#visio #remote_video {
+    transition: opacity 0.5s ease-in-out;
+}
+
+#visio #video.muted,
+#visio #remote_video.muted {
+    opacity: 0;
+}
+
 @-webkit-keyframes Rotate {
     0% {-webkit-transform:rotate(0deg);}
     4% {-webkit-transform:rotate(-22.5deg);}
