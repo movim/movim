@@ -6,59 +6,130 @@ var Snap = {
     wait: undefined,
     imageCapture: null,
 
-    gotStream: function() {
-        const constraints = {
-            video: {
-                deviceId: Snap.videoSelect.value,
-                width: { ideal: 4096 },
-                height: { ideal: 4096 }
-            }
+    init: function() {
+        Snap.snap = document.querySelector('#snap');
+        Snap.canvas = document.querySelector('#snap canvas');
+        Snap.wait = document.querySelector("#snap #snapwait");
+
+        Snap.video = document.querySelector('#snap video');
+        Snap.videoSelect = document.querySelector('#snap select#snapsource');
+
+        Snap.close();
+
+        Snap.getStream().then(Snap.getDevices).then(Snap.gotDevices);
+
+        document.querySelector("#snap #snapshoot").onclick = () => {
+            Snap.shoot();
         };
 
-        if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-            navigator.mediaDevices.getUserMedia(constraints)
-                .then(stream => {
-                    snap.classList = 'shoot';
+        document.querySelector("#snap #snapswitch").onclick = () => {
+            Snap.snap.classList = 'init';
 
-                    Snap.video.srcObject = stream;
-                    Snap.video.play();
+            Snap.videoSelect.selectedIndex++;
 
-                    // We try to use ImageCapture
-                    if (typeof(ImageCapture) != 'undefined') {
-                        const track = stream.getVideoTracks()[0];
-                        Snap.imageCapture = new ImageCapture(track);
-                    }
+            // No empty selection
+            if (Snap.videoSelect.selectedIndex == -1) {
+                Snap.videoSelect.selectedIndex++;
+            }
 
-                    // If we cancel after the authorization was given
-                    if (Snap.snap.classList == '') {
-                        Snap.close();
-                    };
-                });
-        }
+            Snap.getStream();
+        };
+
+        Snap.snap.classList = 'init';
+
+        document.querySelector("#snap #snapupload").onclick = () => {
+            Snap.snap.classList = 'wait';
+            Upload.init();
+        };
+
+        document.querySelector("#snap #snapdraw").onclick = () => {
+            Snap.snap.classList = '';
+            Snap.close();
+            Draw.init(Snap.canvas);
+        };
+
+        document.querySelector("#snap #snapback").onclick = () => {
+            Snap.snap.classList = '';
+            Snap.close();
+        };
+
+        document.querySelector("#snap #snapclose").onclick = () => {
+            Snap.snap.classList = 'shoot';
+            Snap.video.play();
+            Upload.abort();
+        };
     },
+
+    close: function() {
+        if (!Snap.video) return;
+
+        let stream = Snap.video.srcObject;
+
+        if (stream) {
+            stream.getTracks().forEach(function(track) {
+                track.stop();
+            });
+        }
+
+        Snap.video.srcObject = null;
+    },
+
+    getStream: function() {
+        Snap.snap.classList = 'wait';
+
+        if (Snap.video.srcObject) {
+            Snap.video.srcObject.getTracks().forEach(track => track.stop());
+        }
+
+        const videoSource = Snap.videoSelect.value;
+        const constraints = {
+            video: {deviceId: videoSource ? {exact: videoSource} : undefined}
+        };
+
+        return navigator.mediaDevices.getUserMedia(constraints)
+            .then(Snap.gotStream);
+    },
+
+    gotStream: function(stream) {
+        Snap.snap.classList = 'shoot';
+
+        Snap.videoSelect.selectedIndex = [...Snap.videoSelect.options].
+            findIndex(option => option.text === stream.getVideoTracks()[0].label);
+        Snap.video.srcObject = stream;
+
+        // We try to use ImageCapture
+        if (typeof(ImageCapture) != 'undefined') {
+            const track = stream.getVideoTracks()[0];
+            Snap.imageCapture = new ImageCapture(track);
+        }
+
+        // If we cancel after the authorization was given
+        if (Snap.snap.classList == '') {
+            Snap.close();
+        };
+    },
+
+    getDevices: function() {
+        return navigator.mediaDevices.enumerateDevices();
+    },
+
     gotDevices: function(deviceInfos) {
-        Snap.videoSelect.innerText = '';
+        Snap.videoSelect.innerHTML = '';
 
-        const ids = [];
+        console.log('Available input and output devices:', deviceInfos);
+        for (const deviceInfo of deviceInfos) {
+            const option = document.createElement('option');
+            option.value = deviceInfo.deviceId;
 
-        for (let i = 0; i !== deviceInfos.length; ++i) {
-            const deviceInfo = deviceInfos[i];
+            if (deviceInfo.kind === 'videoinput') {
+                option.text = deviceInfo.label || `Camera ${videoSelect.length + 1}`;
+                Snap.videoSelect.appendChild(option);
+            }
 
-            if (deviceInfo.kind === 'videoinput' && !ids.includes(deviceInfo.deviceId)) {
-                const option = document.createElement('option');
-                option.value = deviceInfo.deviceId;
-                option.text = deviceInfo.label;
-                Snap.videoSelect.add(option);
-                ids.push(deviceInfo.deviceId);
+            if (Snap.videoSelect.options.length >= 2) {
+                document.querySelector("#snap #snapswitch").classList.add('enabled');
             }
         }
-
-        if (ids.length >= 2) {
-            document.querySelector("#snap #snapswitch").classList.add('enabled');
-        }
-
-        Snap.videoSelect.addEventListener('change', () => Snap.gotStream());
-        Snap.gotStream();
     },
     shoot: function() {
         if (Snap.imageCapture) {
@@ -101,86 +172,15 @@ var Snap = {
         var context = Snap.canvas.getContext('2d');
         context.clearRect(0, 0, Snap.canvas.width, Snap.canvas.height);
     },
-    close: function() {
-        if (!Snap.video) return;
-
-        let stream = Snap.video.srcObject;
-
-        if (stream) {
-            stream.getTracks().forEach(function(track) {
-                track.stop();
-            });
-        }
-
-        Snap.video.srcObject = null;
-    },
     end: function() {
         Snap.snap.classList = '';
         Snap.wait.style.backgroundImage = '';
         Snap.close();
-    },
-    init : function() {
-        Snap.snap = document.querySelector('#snap');
-        Snap.canvas = document.querySelector('#snap canvas');
-        Snap.wait = document.querySelector("#snap #snapwait");
-
-        Snap.video = document.querySelector('#snap video');
-        Snap.videoSelect = document.querySelector('#snap select#snapsource');
-
-        Snap.close(); // Just in case
-
-        navigator.mediaDevices.enumerateDevices().then(devices => Snap.gotDevices(devices));
-
-        Snap.video.play();
-
-        document.querySelector("#snap #snapshoot").onclick = () => {
-            Snap.shoot();
-        };
-
-        document.querySelector("#snap #snapswitch").onclick = () => {
-            Snap.snap.classList = 'init';
-
-            Snap.videoSelect.selectedIndex++;
-
-            // No empty selection
-            if (Snap.videoSelect.selectedIndex == -1) {
-                Snap.videoSelect.selectedIndex++;
-            }
-
-            Snap.close();
-            Snap.gotStream();
-        };
-
-        Snap.snap.classList = 'init';
-
-        document.querySelector("#snap #snapupload").onclick = () => {
-            Snap.snap.classList = 'wait';
-            Upload.init();
-        };
-
-        document.querySelector("#snap #snapdraw").onclick = () => {
-            Snap.snap.classList = '';
-            Snap.close();
-
-            Draw.init(Snap.canvas);
-        };
-
-        document.querySelector("#snap #snapback").onclick = () => {
-            Snap.snap.classList = '';
-            Snap.close();
-        };
-
-        document.querySelector("#snap #snapclose").onclick = () => {
-            Snap.snap.classList = 'shoot';
-            Snap.video.play();
-            Upload.abort();
-        };
     }
 }
 
 Upload.attach((file) => {
     const page = MovimUtils.urlParts().page;
-
     if (Snap.snap) Snap.end();
 });
 
