@@ -105,7 +105,7 @@ class Jingle
         $mute->setAttribute('xmlns', 'urn:xmpp:jingle:apps:rtp:info:1');
 
         if ($name) {
-            $mute->setAttribute('name', $name);
+            $mute->setAttribute('name', substr($name, 3));
         }
 
         $jingle->appendChild($mute);
@@ -125,7 +125,7 @@ class Jingle
         $mute->setAttribute('xmlns', 'urn:xmpp:jingle:apps:rtp:info:1');
 
         if ($name) {
-            $mute->setAttribute('name', $name);
+            $mute->setAttribute('name', substr($name, 3));
         }
 
         $jingle->appendChild($mute);

@@ -109,33 +109,35 @@ var VisioUtils = {
     toggleAudio: function() {
         var button = document.querySelector('#toggle_audio i');
         var rtc = Visio.pc.getSenders().find(rtc => rtc.track && rtc.track.kind == 'audio');
+        var mid = Visio.pc.getTransceivers().filter(t => t.sender.track.id == rtc.track.id)[0].mid;
 
         if (rtc && rtc.track.enabled == 1) {
             rtc.track.enabled = 0;
             button.innerText = 'mic_off';
-            Visio_ajaxUnmute(Visio.from, Visio.id, 'voice');
+            Visio_ajaxUnmute(Visio.from, Visio.id, 'mid' + mid);
         } else if (rtc) {
             rtc.track.enabled = 1;
             button.innerText = 'mic';
-            Visio_ajaxMute(Visio.from, Visio.id, 'voice');
+            Visio_ajaxMute(Visio.from, Visio.id, 'mid' + mid);
         }
     },
 
     toggleVideo: function() {
         var button = document.querySelector('#toggle_video i');
         var rtc = Visio.pc.getSenders().find(rtc => rtc.track && rtc.track.kind == 'video');
+        var mid = Visio.pc.getTransceivers().filter(t => t.sender.track.id == rtc.track.id)[0].mid;
 
         if (rtc) {
             if (rtc.track.enabled == 1) {
                 rtc.track.enabled = 0;
                 button.innerText = 'videocam_off';
                 document.querySelector('#video').classList.add('muted');
-                Visio_ajaxUnmute(Visio.from, Visio.id, 'webcam');
+                Visio_ajaxUnmute(Visio.from, Visio.id, 'mid' + mid);
             } else {
                 rtc.track.enabled = 1;
                 button.innerText = 'videocam';
                 document.querySelector('#video').classList.remove('muted');
-                Visio_ajaxMute(Visio.from, Visio.id, 'webcam');
+                Visio_ajaxMute(Visio.from, Visio.id, 'mid' + mid);
             }
         }
     },
