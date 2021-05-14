@@ -264,7 +264,7 @@ var VisioUtils = {
                 Visio.videoSelect.selectedIndex++;
             }
 
-            Visio.gotStream();
+            Visio.getStream();
         };
     },
 
@@ -280,21 +280,17 @@ var VisioUtils = {
     gotDevices: function(deviceInfos) {
         Visio.videoSelect.innerText = '';
 
-        const ids = [];
-
-        for (let i = 0; i !== deviceInfos.length; ++i) {
-            const deviceInfo = deviceInfos[i];
-
-            if (deviceInfo.kind === 'videoinput' && !ids.includes(deviceInfo.deviceId)) {
+        for (const deviceInfo of deviceInfos) {
+            if (deviceInfo.kind === 'videoinput') {
                 const option = document.createElement('option');
                 option.value = deviceInfo.deviceId;
-                option.text = deviceInfo.label;
-                Visio.videoSelect.add(option);
-                ids.push(deviceInfo.deviceId);
+                option.text = deviceInfo.label || `Camera ${videoSelect.length + 1}`;
+
+                Visio.videoSelect.appendChild(option);
             }
         }
 
-        if (ids.length >= 2) {
+        if (Visio.videoSelect.options.length >= 2) {
             document.querySelector("#visio #switch_camera").classList.add('enabled');
         }
     }

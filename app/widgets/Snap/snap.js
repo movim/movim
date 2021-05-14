@@ -116,19 +116,18 @@ var Snap = {
     gotDevices: function(deviceInfos) {
         Snap.videoSelect.innerHTML = '';
 
-        console.log('Available input and output devices:', deviceInfos);
         for (const deviceInfo of deviceInfos) {
-            const option = document.createElement('option');
-            option.value = deviceInfo.deviceId;
-
             if (deviceInfo.kind === 'videoinput') {
+                const option = document.createElement('option');
+                option.value = deviceInfo.deviceId;
                 option.text = deviceInfo.label || `Camera ${videoSelect.length + 1}`;
+
                 Snap.videoSelect.appendChild(option);
             }
+        }
 
-            if (Snap.videoSelect.options.length >= 2) {
-                document.querySelector("#snap #snapswitch").classList.add('enabled');
-            }
+        if (Snap.videoSelect.options.length >= 2) {
+            document.querySelector("#snap #snapswitch").classList.add('enabled');
         }
     },
     shoot: function() {

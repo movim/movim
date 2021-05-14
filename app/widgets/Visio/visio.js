@@ -48,7 +48,6 @@ var Visio = {
         Visio.pc = new RTCPeerConnection(configuration);
 
         Visio.pc.ontrack = event => {
-            console.log(event);
             if (Visio.withVideo) {
                 if (event.streams && event.streams[0]) {
                     Visio.remoteVideo.srcObject = event.streams[0];
@@ -103,7 +102,7 @@ var Visio = {
             VisioUtils.switchCameraSetup();
         }
 
-        Visio.gotStream();
+        Visio.getStream();
     },
 
     onMute: function(name) {
@@ -136,7 +135,7 @@ var Visio = {
         Visio.services = services;
     },
 
-    gotStream: function() {
+    getStream: function() {
         if (Visio.withVideo) {
             // On Android where you can't have both camera enabled at the same time
             var videoTrack = Visio.pc.getSenders().find(rtc => rtc.track && rtc.track.kind == 'video');
@@ -150,9 +149,11 @@ var Visio = {
             video: false
         };
 
+        const videoSource = Visio.videoSelect.value;
+
         if (Visio.withVideo) {
             constraints.video = {
-                deviceId: Visio.videoSelect.value,
+                deviceId: videoSource ? {exact: videoSource} : undefined,
                 facingMode: 'user',
                 width: { ideal: 4096 },
                 height: { ideal: 4096 }
@@ -172,7 +173,6 @@ var Visio = {
 
                 // Switch camera
                 VisioUtils.pcReplaceTrack(stream);
-
                 VisioUtils.enableScreenSharingButton();
             }
 
