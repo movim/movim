@@ -264,6 +264,7 @@ var VisioUtils = {
                 Visio.videoSelect.selectedIndex++;
             }
 
+            Toast.send(Visio.videoSelect.options[Visio.videoSelect.selectedIndex].label);
             Visio.getStream();
         };
     },

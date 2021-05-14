@@ -32,6 +32,7 @@ var Snap = {
                 Snap.videoSelect.selectedIndex++;
             }
 
+            Toast.send(Snap.videoSelect.options[Snap.videoSelect.selectedIndex].label);
             Snap.getStream();
         };
 
@@ -83,7 +84,11 @@ var Snap = {
 
         const videoSource = Snap.videoSelect.value;
         const constraints = {
-            video: {deviceId: videoSource ? {exact: videoSource} : undefined}
+            video: {
+                deviceId: videoSource ? {exact: videoSource} : undefined,
+                width: { ideal: 4096 },
+                height: { ideal: 4096 }
+            }
         };
 
         return navigator.mediaDevices.getUserMedia(constraints)
