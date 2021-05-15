@@ -19,7 +19,7 @@ class MessageOmemoHeader
 
     public function set($stanza)
     {
-        $this->sid = (string)$stanza->encrypted->header->attributes()->sid;
+        $this->sid = (int)$stanza->encrypted->header->attributes()->sid;
         $this->iv = (string)$stanza->encrypted->header->iv;
         $this->payload = (string)$stanza->encrypted->payload;
 

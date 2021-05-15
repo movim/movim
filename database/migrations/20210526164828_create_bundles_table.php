@@ -13,8 +13,10 @@ class CreateBundlesTable extends Migration
             $table->integer('bundle_id');
             $table->string('jid', 128);
 
-            $table->text('prekeypublic');
-            $table->text('prekeysignature');
+            $table->integer('signedprekeyid');
+            $table->text('signedprekeypublic');
+            $table->text('signedprekeysignature');
+
             $table->text('identitykey');
             $table->text('prekeys');
             $table->timestamps();

@@ -12,7 +12,7 @@ ChatOmemoStorage.prototype = {
         if (key === undefined || value === undefined || key === null || value === null)
             throw new Error("Tried to store undefined/null");
 
-        localStorage.setObject(key, value);
+        return localStorage.setObject(key, value);
     },
     get: function (key, defaultValue) {
         if (key === null || key === undefined)
@@ -65,13 +65,13 @@ ChatOmemoStorage.prototype = {
         if (trusted === undefined) {
             return Promise.resolve(true);
         }
-        return Promise.resolve(true);
-        //return Promise.resolve(libsignal.util.toString(identityKey) === libsignal.util.toString(trusted));
+
+        return Promise.resolve(libsignal.util.toString(identityKey) === libsignal.util.toString(trusted));
     },
     loadIdentityKey: function (identifier) {
         if (identifier === null || identifier === undefined)
             throw new Error("Tried to get identity key for undefined/null key");
-        return Promise.resolve(this.get(this.jid + '.identityKey' + identifier));
+        return Promise.resolve(MovimUtils.base64ToArrayBuffer(this.get(this.jid + '.identityKey' + identifier)));
     },
     saveIdentity: function (identifier, identityKey) {
         if (identifier === null || identifier === undefined)
@@ -80,7 +80,7 @@ ChatOmemoStorage.prototype = {
         var address = new libsignal.SignalProtocolAddress.fromString(identifier);
 
         var existing = this.get(this.jid + '.identityKey' + address.getName());
-        this.put(this.jid + '.identityKey' + address.getName(), identityKey)
+        this.put(this.jid + '.identityKey' + address.getName(), MovimUtils.arrayBufferToBase64(identityKey))
 
         if (existing && toString(identityKey) !== toString(existing)) {
             return Promise.resolve(true);
@@ -143,17 +143,19 @@ ChatOmemoStorage.prototype = {
         return Promise.resolve(this.remove(this.jid + '.session' + identifier));
     },
     removeAllSessions: function () {
-        for (key in Object.keys(localStorage)
-            .filter(key => key.startsWith(this.jid + '.session'))) {
-            this.remove(key);
+        let filtered = Object.keys(localStorage).filter(key => key.startsWith(this.jid + '.session'));
+
+        for (id in filtered) {
+            this.remove(filtered[key]);
         }
 
         return Promise.resolve();
     },
     removeAllSessionsOfJid: function (identifier) {
-        for (key in Object.keys(localStorage)
-            .filter(key => key.startsWith(this.jid + '.session' + identifier))) {
-            this.remove(key);
+        let filtered = Object.keys(localStorage).filter(key => key.startsWith(this.jid + '.session' + identifier));
+
+        for (id in filtered) {
+            this.remove(filtered[id]);
         }
 
         return Promise.resolve();

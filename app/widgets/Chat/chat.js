@@ -136,8 +136,8 @@ var Chat = {
     sendMessage: function()
     {
         var textarea = Chat.getTextarea();
-
         var text = textarea.value;
+
         var muc = Boolean(textarea.dataset.muc);
         var mucReceipts = false;
         var jid = textarea.dataset.jid;
@@ -233,8 +233,8 @@ var Chat = {
             sessions = Object.values(sessions);
             sessions = sessions.map(devices => devices.includes(String(localDeviceId)));
 
-             ChatOmemo.getContactState(jid).then(enabled => {
-                 let state = 'no';
+            ChatOmemo.getContactState(jid).then(enabled => {
+                let state = 'no';
 
                 if (enabled) {
                     /**
@@ -243,18 +243,16 @@ var Chat = {
                      * 2 some sessions need to be built, build then encrypt
                      */
                     if (sessions.length > 0) {
-                        if (sessions.every(good => good)) {
-                            state = 'yes';
-                        } else {
-                            state = 'build';
-                        }
+                        state = (sessions.every(good => good))
+                            ? 'yes'
+                            : 'build';
                     }
                 } else {
                     state = 'disabled';
                 }
 
                 Chat.setOmemoState(state);
-             });
+            });
         });
     },
     setOmemoState: function(state)

@@ -19,12 +19,11 @@ var ChatOmemo = {
 
         const identityKeyPair = await KeyHelper.generateIdentityKeyPair();
         const bundle = {};
-        const identityKey = MovimUtils.arrayBufferToBase64(identityKeyPair.pubKey);
 
         const localDeviceId = await store.getLocalRegistrationId();
         const deviceId = localDeviceId ?? KeyHelper.generateRegistrationId();
 
-        bundle['identityKey'] = identityKey;
+        bundle['identityKey'] = MovimUtils.arrayBufferToBase64(identityKeyPair.pubKey);
         bundle['deviceId'] = deviceId;
 
         store.setLocalRegistrationId(deviceId);
@@ -88,28 +87,30 @@ var ChatOmemo = {
         Promise.all(promises).then(results => {
             Chat.setOmemoState('yes');
             Chat.disableSending();
-            Chat.sendMessage();
+
+            if (Chat.getTextarea().value.length > 0) {
+                Chat.sendMessage();
+            }
         });
     },
-    handlePreKey: function (jid, deviceId, preKey) {
+    handlePreKey: async function (jid, deviceId, preKey) {
         var store = new ChatOmemoStorage();
         var address = new libsignal.SignalProtocolAddress(jid, deviceId);
 
         var sessionBuilder = new libsignal.SessionBuilder(store, address);
-
         var promise = sessionBuilder.processPreKey({
-            registrationId: 0,
+            registrationId: parseInt(deviceId, 10),
             identityKey: MovimUtils.base64ToArrayBuffer(preKey.identitykey),
             signedPreKey: {
-                keyId: 1,
-                publicKey: MovimUtils.base64ToArrayBuffer(preKey.prekeypublic),
-                signature: MovimUtils.base64ToArrayBuffer(preKey.prekeysignature)
+                keyId: parseInt(preKey.signedprekeyid, 10),
+                publicKey: MovimUtils.base64ToArrayBuffer(preKey.signedprekeypublic),
+                signature: MovimUtils.base64ToArrayBuffer(preKey.signedprekeysignature)
             },
             preKey: {
                 keyId: preKey.prekey.id,
                 publicKey: MovimUtils.base64ToArrayBuffer(preKey.prekey.value)
             }
-        })
+        });
 
         promise.then(function onsuccess() {
             console.log('success ' + jid + ':' + deviceId);
@@ -190,7 +191,7 @@ var ChatOmemo = {
         let plainKey;
 
         try {
-            plainKey = await this.decryptDevice(atob(key.payload), key.prekey, message.jidfrom, message.omemoheader.sid);
+            plainKey = await this.decryptDevice(MovimUtils.base64ToArrayBuffer(key.payload), key.prekey, message.jidfrom, message.omemoheader.sid);
         } catch (err) {
             console.log('Error during decryption: ' + err);
             return;
@@ -269,7 +270,7 @@ var ChatOmemo = {
         });
     },
     encryptDevice: function (plaintext, jid, deviceId) {
-        var address = new libsignal.SignalProtocolAddress(jid, deviceId);
+        var address = new libsignal.SignalProtocolAddress(jid, parseInt(deviceId, 10));
         var store = new ChatOmemoStorage();
         var sessionCipher = new libsignal.SessionCipher(store, address);
 
@@ -277,16 +278,15 @@ var ChatOmemo = {
             .then(payload => ({ 'payload': payload, 'device': deviceId }));
     },
     decryptDevice: async function(ciphertext, preKey, jid, deviceId) {
-        var address = new libsignal.SignalProtocolAddress(jid, deviceId);
+        var address = new libsignal.SignalProtocolAddress(jid, parseInt(deviceId, 10));
         var store = new ChatOmemoStorage();
         var sessionCipher = new libsignal.SessionCipher(store, address);
-
         let plaintextBuffer;
 
         if (preKey) {
-           plaintextBuffer = await sessionCipher.decryptPreKeyWhisperMessage(ciphertext, 'binary');
+            plaintextBuffer = await sessionCipher.decryptPreKeyWhisperMessage(ciphertext, 'binary');
         } else {
-           plaintextBuffer = await sessionCipher.decryptWhisperMessage(ciphertext, 'binary');
+            plaintextBuffer = await sessionCipher.decryptWhisperMessage(ciphertext, 'binary');
         }
 
         return plaintextBuffer;

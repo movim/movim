@@ -103,7 +103,7 @@
                     </span>
                     <div>
                         <p class="normal">
-                            <span class="fingerprint">
+                            <span class="fingerprint" title="{$value->bundle_id}">
                                 {$value->fingerprint}
                             </span>
                         </p>

@@ -20,8 +20,10 @@ class Bundle extends Model
         $this->jid = $jid;
         $this->bundle_id = $bundleId;
 
-        $this->prekeypublic = (string)$bundle->signedPreKeyPublic;
-        $this->prekeysignature = (string)$bundle->signedPreKeySignature;
+        $this->signedprekeypublic = (string)$bundle->signedPreKeyPublic;
+        $this->signedprekeyid = (int)$bundle->signedPreKeyPublic->attributes()->signedPreKeyId;
+        $this->signedprekeysignature = (string)$bundle->signedPreKeySignature;
+
         $this->identitykey = (string)$bundle->identityKey;
 
         $prekeys = [];
@@ -38,8 +40,9 @@ class Bundle extends Model
         return (
             isset($this->attributes['prekeys'])
             && $this->attributes['prekeys'] == $bundle->attributes['prekeys']
-            && $this->attributes['prekeypublic'] == $bundle->attributes['prekeypublic']
-            && $this->attributes['prekeysignature'] == $bundle->attributes['prekeysignature']
+            && $this->attributes['signedprekeypublic'] == $bundle->attributes['signedprekeypublic']
+            && $this->attributes['signedprekeyid'] == $bundle->attributes['signedprekeyid']
+            && $this->attributes['signedprekeysignature'] == $bundle->attributes['signedprekeysignature']
             && $this->attributes['identitykey'] == $bundle->attributes['identitykey']
         );
     }

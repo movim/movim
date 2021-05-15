@@ -133,8 +133,9 @@ class ChatOmemo extends \Movim\Widget\Base
         $pickedKey = array_rand($bundle->prekeys);
         return [
             'identitykey' => $bundle->identitykey,
-            'prekeypublic' => $bundle->prekeypublic,
-            'prekeysignature' => $bundle->prekeysignature,
+            'signedprekeypublic' => $bundle->signedprekeypublic,
+            'signedprekeyid' => $bundle->signedprekeyid,
+            'signedprekeysignature' => $bundle->signedprekeysignature,
             'prekey' => ['id' => $pickedKey, 'value' => $bundle->prekeys[$pickedKey]]
         ];
     }
