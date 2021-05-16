@@ -38,7 +38,7 @@
     {/if}
 </header>
 
-{if="($public && $post->openlink) || !$public"}
+{if="($public && $post->open) || !$public"}
     <ul class="list thick">
         <li>
             {if="$repost"}
@@ -78,9 +78,17 @@
                     {/if}
                 {/if}
             {else}
+                {$url = null}
+                {if="$post->info != null"}
+                    {$url = $post->info->getPhoto('l')}
+                {/if}
                 {if="$post->nsfw"}
                     <span class="primary icon bubble color red tiny">
                         +18
+                    </span>
+                {elseif="$url"}
+                    <span class="primary icon bubble">
+                        <img src="{$url}"/>
                     </span>
                 {elseif="$post->logo"}
                     <span class="primary icon bubble">

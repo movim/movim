@@ -199,6 +199,8 @@ class Blog extends Base
         $this->view->assign('contact', $this->_contact);
         $this->view->assign('mode', $this->_mode);
         $this->view->assign('next', $this->_next);
+
+        $this->_posts = resolveInfos($this->_posts);
         $this->view->assign('posts', $this->_posts);
 
         $this->view->assign('tag', $this->_tag);
