@@ -20,7 +20,7 @@ class GetDeviceList extends Action
         \App\User::me()->bundles()->where('jid', $this->_to)->delete();
 
         foreach ($stanza->pubsub->items->item as $item) {
-            if ((string)$item->attributes()->id == 'current') {
+            if ((string)$item->attributes()->id == 'current' || $stanza->pubsub->items->count() == 1) {
                 foreach ($item->list->device as $device) {
                     $gb = new GetBundle;
                     $gb->setTo($this->_to)

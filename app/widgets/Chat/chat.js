@@ -191,7 +191,7 @@ var Chat = {
                 };
 
                 if (textarea.dataset.encryptedstate == 'build') {
-                    ChatOmemo_ajaxGetMissingSessions(jid);
+                    ChatOmemo.buildMissingSessions(jid);
                 } else if (textarea.dataset.encryptedstate == 'yes') {
                     // Try to encrypt the message
                     let omemo = ChatOmemo.encrypt(jid, text);
@@ -248,7 +248,11 @@ var Chat = {
                             : 'build';
                     }
                 } else {
-                    state = 'disabled';
+                    if (sessions.length > 0) {
+                        state = (sessions.every(good => good))
+                            ? 'disabled'
+                            : 'build';
+                    }
                 }
 
                 Chat.setOmemoState(state);

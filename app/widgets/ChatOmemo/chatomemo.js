@@ -88,7 +88,7 @@ var ChatOmemo = {
             Chat.setOmemoState('yes');
             Chat.disableSending();
 
-            if (Chat.getTextarea().value.length > 0) {
+            if (Chat.getTextarea() && Chat.getTextarea().value.length > 0) {
                 Chat.sendMessage();
             }
         });
@@ -269,6 +269,12 @@ var ChatOmemo = {
             return result;
         });
     },
+    buildMissingSessions: function (jid) {
+        var store = new ChatOmemoStorage();
+        store.getLocalRegistrationId().then(deviceId => {
+            ChatOmemo_ajaxGetMissingSessions(jid, deviceId);
+        });
+    },
     encryptDevice: function (plaintext, jid, deviceId) {
         var address = new libsignal.SignalProtocolAddress(jid, parseInt(deviceId, 10));
         var store = new ChatOmemoStorage();
@@ -281,14 +287,9 @@ var ChatOmemo = {
         var address = new libsignal.SignalProtocolAddress(jid, parseInt(deviceId, 10));
         var store = new ChatOmemoStorage();
         var sessionCipher = new libsignal.SessionCipher(store, address);
-        let plaintextBuffer;
 
-        if (preKey) {
-            plaintextBuffer = await sessionCipher.decryptPreKeyWhisperMessage(ciphertext, 'binary');
-        } else {
-            plaintextBuffer = await sessionCipher.decryptWhisperMessage(ciphertext, 'binary');
-        }
-
-        return plaintextBuffer;
+        return (preKey)
+            ? await sessionCipher.decryptPreKeyWhisperMessage(ciphertext, 'binary')
+            : await sessionCipher.decryptWhisperMessage(ciphertext, 'binary');
     }
 }

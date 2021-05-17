@@ -25,12 +25,15 @@ class ChatOmemo extends \Movim\Widget\Base
         $this->rpc('ChatOmemo.handlePreKey', $bundle->jid, $bundle->bundle_id, $prekey);*/
     }
 
-    public function ajaxGetMissingSessions(string $jid)
+    public function ajaxGetMissingSessions(string $jid, string $deviceId)
     {
         $bundles = $this->user->bundles()
             ->where('jid', $jid)
-            // TODO fixme
-            //->where('has_session', false)
+            ->whereNotIn('id', function($query) use ($deviceId) {
+                $query->select('bundle_id')
+                      ->from('bundle_sessions')
+                      ->where('device_id', $deviceId);
+            })
             ->get();
 
         $preKeys = [];
