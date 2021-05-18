@@ -54,6 +54,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/ContactDataPublic/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Draw/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
@@ -107,7 +109,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-05 14:47+0200\n"
+"POT-Creation-Date: 2021-05-18 22:11+0200\n"
 "PO-Revision-Date: 2021-04-02 16:40+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
 "Language-Team: Albanian (http://www.transifex.com/movim/movim/language/sq/)\n"
@@ -373,7 +375,8 @@ msgid "Tenor integration"
 msgstr "Integrim me Tenor"
 
 #: [tenor]label
-msgid "Yout Tenor API Key"
+#, fuzzy
+msgid "Your Tenor API Key"
 msgstr "Kyçi juaj API për Tenor"
 
 #: [tenor]info1
@@ -415,6 +418,10 @@ msgstr "Syslog dhe kartela"
 #: [adminsessions]title
 msgid "Sessions"
 msgstr "Sesione"
+
+#: [adminsessions]text
+msgid "Currently connected users on the pod"
+msgstr ""
 
 #: [admin]compatibility
 msgid "General Overview"
@@ -507,6 +514,16 @@ msgstr "Avatari S’u Përditësua"
 #: [avatar]missing
 msgid "No avatar defined yet"
 msgstr "S’ka ende avatar të përcaktuar"
+
+#: [avatar]change
+#, fuzzy
+msgid "Change my avatar"
+msgstr "Ndryshoje fjalëkalimin tim"
+
+#: [avatar]upload_new
+#, fuzzy
+msgid "Upload a new picture"
+msgstr "Bëni një foto"
 
 #: [blog]title [feed]title
 msgid "%s’s feed"
@@ -1128,7 +1145,8 @@ msgid "Last registered"
 msgstr "Regjistruar së fundi"
 
 #: [explore]explore
-msgid "Find some new friends"
+#, fuzzy
+msgid "Find some new contacts"
 msgstr "Gjeni ca shokë të rinj"
 
 #: [edit]title [button]edit
@@ -1194,6 +1212,11 @@ msgstr "Ftoje"
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
 msgstr "Ky kontakt gjendet në listën tuaj të kontakteve, por nuk ka pajtim mes dy llogarive"
+
+#: [contactdatapublic]no_data
+#, fuzzy
+msgid "No public data found"
+msgstr "Publikimet e mia"
 
 #: [draw]title
 msgid "Draw"
@@ -1370,6 +1393,11 @@ msgstr "Popullsi"
 #: [form]invite_chatroom
 msgid "%s invited you to join a chatroom"
 msgstr "%s ju ftoi të hyni në një dhomë fjalosjesh"
+
+#: [form]pod_admins
+#, fuzzy
+msgid "Administrated by"
+msgstr "Administrim"
 
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"

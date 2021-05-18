@@ -57,6 +57,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/ContactDataPublic/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Draw/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
@@ -110,7 +112,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-05 14:47+0200\n"
+"POT-Creation-Date: 2021-05-18 22:11+0200\n"
 "PO-Revision-Date: 2021-04-02 13:28+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: Japanese (http://www.transifex.com/movim/movim/language/ja/)\n"
@@ -376,7 +378,7 @@ msgid "Tenor integration"
 msgstr ""
 
 #: [tenor]label
-msgid "Yout Tenor API Key"
+msgid "Your Tenor API Key"
 msgstr ""
 
 #: [tenor]info1
@@ -418,6 +420,10 @@ msgstr "システムログとファイル"
 #: [adminsessions]title
 msgid "Sessions"
 msgstr "セッション"
+
+#: [adminsessions]text
+msgid "Currently connected users on the pod"
+msgstr ""
 
 #: [admin]compatibility
 msgid "General Overview"
@@ -510,6 +516,16 @@ msgstr "アバターが更新されていません"
 #: [avatar]missing
 msgid "No avatar defined yet"
 msgstr "アバターが設定されていません"
+
+#: [avatar]change
+#, fuzzy
+msgid "Change my avatar"
+msgstr "パスワードを変更する"
+
+#: [avatar]upload_new
+#, fuzzy
+msgid "Upload a new picture"
+msgstr "写真を撮る"
 
 #: [blog]title [feed]title
 msgid "%s’s feed"
@@ -1131,7 +1147,8 @@ msgid "Last registered"
 msgstr "最終登録"
 
 #: [explore]explore
-msgid "Find some new friends"
+#, fuzzy
+msgid "Find some new contacts"
 msgstr "新しい友達を見つける"
 
 #: [edit]title [button]edit
@@ -1197,6 +1214,11 @@ msgstr "招待"
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
 msgstr "この連絡先はあなたの連絡先リストに登録されていますが、これらのアカウントの間で購読はしていません"
+
+#: [contactdatapublic]no_data
+#, fuzzy
+msgid "No public data found"
+msgstr "自分の投稿"
 
 #: [draw]title
 msgid "Draw"
@@ -1373,6 +1395,11 @@ msgstr "人口"
 #: [form]invite_chatroom
 msgid "%s invited you to join a chatroom"
 msgstr "%sがあなたをチャットルームに招待しています"
+
+#: [form]pod_admins
+#, fuzzy
+msgid "Administrated by"
+msgstr "システム管理"
 
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"

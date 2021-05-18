@@ -55,6 +55,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/ContactDataPublic/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Draw/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
@@ -108,7 +110,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-05 14:47+0200\n"
+"POT-Creation-Date: 2021-05-18 22:11+0200\n"
 "PO-Revision-Date: 2021-04-02 13:28+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: Slovak (Slovakia) (http://www.transifex.com/movim/movim/language/sk_SK/)\n"
@@ -374,7 +376,7 @@ msgid "Tenor integration"
 msgstr ""
 
 #: [tenor]label
-msgid "Yout Tenor API Key"
+msgid "Your Tenor API Key"
 msgstr ""
 
 #: [tenor]info1
@@ -416,6 +418,10 @@ msgstr "Syslog a súbory"
 #: [adminsessions]title
 msgid "Sessions"
 msgstr "Relácie"
+
+#: [adminsessions]text
+msgid "Currently connected users on the pod"
+msgstr ""
 
 #: [admin]compatibility
 msgid "General Overview"
@@ -508,6 +514,16 @@ msgstr "Avatar neaktualizovaný"
 #: [avatar]missing
 msgid "No avatar defined yet"
 msgstr "Avatar ešte nie je definovaný"
+
+#: [avatar]change
+#, fuzzy
+msgid "Change my avatar"
+msgstr "Zmeniť svoje heslo"
+
+#: [avatar]upload_new
+#, fuzzy
+msgid "Upload a new picture"
+msgstr "Získať obrázok"
 
 #: [blog]title [feed]title
 msgid "%s’s feed"
@@ -1129,7 +1145,8 @@ msgid "Last registered"
 msgstr "Naposledy registrovaný"
 
 #: [explore]explore
-msgid "Find some new friends"
+#, fuzzy
+msgid "Find some new contacts"
 msgstr "Nájsť nových priateľov"
 
 #: [edit]title [button]edit
@@ -1195,6 +1212,11 @@ msgstr "Pozvať"
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
 msgstr "Tento kontakt je v zozname Vašich kontaktov, ale neexistuje odber medzi týmito dvomi účtami"
+
+#: [contactdatapublic]no_data
+#, fuzzy
+msgid "No public data found"
+msgstr "Moje príspevky"
 
 #: [draw]title
 msgid "Draw"
@@ -1371,6 +1393,11 @@ msgstr ""
 #: [form]invite_chatroom
 msgid "%s invited you to join a chatroom"
 msgstr "%s Vás pozval vstúpiť do miestnosti"
+
+#: [form]pod_admins
+#, fuzzy
+msgid "Administrated by"
+msgstr "Asministrácia"
 
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"

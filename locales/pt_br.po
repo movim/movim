@@ -62,6 +62,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/ContactDataPublic/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Draw/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
@@ -115,7 +117,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-05 14:47+0200\n"
+"POT-Creation-Date: 2021-05-18 22:11+0200\n"
 "PO-Revision-Date: 2021-04-02 13:28+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/movim/movim/language/pt_BR/)\n"
@@ -381,7 +383,7 @@ msgid "Tenor integration"
 msgstr ""
 
 #: [tenor]label
-msgid "Yout Tenor API Key"
+msgid "Your Tenor API Key"
 msgstr ""
 
 #: [tenor]info1
@@ -423,6 +425,10 @@ msgstr "Syslog e arquivos"
 #: [adminsessions]title
 msgid "Sessions"
 msgstr "Sessões"
+
+#: [adminsessions]text
+msgid "Currently connected users on the pod"
+msgstr ""
 
 #: [admin]compatibility
 msgid "General Overview"
@@ -515,6 +521,16 @@ msgstr "Avatar Não Atualizado"
 #: [avatar]missing
 msgid "No avatar defined yet"
 msgstr "Avatar não definido ainda"
+
+#: [avatar]change
+#, fuzzy
+msgid "Change my avatar"
+msgstr "Alterar minha senha"
+
+#: [avatar]upload_new
+#, fuzzy
+msgid "Upload a new picture"
+msgstr "Tirar uma fotografia"
 
 #: [blog]title [feed]title
 msgid "%s’s feed"
@@ -1136,7 +1152,8 @@ msgid "Last registered"
 msgstr "Último login"
 
 #: [explore]explore
-msgid "Find some new friends"
+#, fuzzy
+msgid "Find some new contacts"
 msgstr "Encontrar alguns novos amigos"
 
 #: [edit]title [button]edit
@@ -1202,6 +1219,11 @@ msgstr "Convidar"
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
 msgstr "Este contato está em sua lista de contatos mas não há conexão entre as duas contas"
+
+#: [contactdatapublic]no_data
+#, fuzzy
+msgid "No public data found"
+msgstr "Minhas publicações"
 
 #: [draw]title
 msgid "Draw"
@@ -1378,6 +1400,11 @@ msgstr "População"
 #: [form]invite_chatroom
 msgid "%s invited you to join a chatroom"
 msgstr "%slhe convidou para uma sala de chat"
+
+#: [form]pod_admins
+#, fuzzy
+msgid "Administrated by"
+msgstr "Administração"
 
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"

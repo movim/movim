@@ -56,6 +56,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/ContactDataPublic/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Draw/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
@@ -109,7 +111,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-05 14:47+0200\n"
+"POT-Creation-Date: 2021-05-18 22:11+0200\n"
 "PO-Revision-Date: 2021-04-02 13:28+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://www.transifex.com/movim/movim/language/nb_NO/)\n"
@@ -375,7 +377,7 @@ msgid "Tenor integration"
 msgstr ""
 
 #: [tenor]label
-msgid "Yout Tenor API Key"
+msgid "Your Tenor API Key"
 msgstr ""
 
 #: [tenor]info1
@@ -417,6 +419,10 @@ msgstr "Syslog og filer"
 #: [adminsessions]title
 msgid "Sessions"
 msgstr "Sesjoner"
+
+#: [adminsessions]text
+msgid "Currently connected users on the pod"
+msgstr ""
 
 #: [admin]compatibility
 msgid "General Overview"
@@ -509,6 +515,16 @@ msgstr "Avataren er ikke oppdatert"
 #: [avatar]missing
 msgid "No avatar defined yet"
 msgstr "Ingen avatar angitt enda"
+
+#: [avatar]change
+#, fuzzy
+msgid "Change my avatar"
+msgstr "Endre passordet mitt"
+
+#: [avatar]upload_new
+#, fuzzy
+msgid "Upload a new picture"
+msgstr "Opplastingen feilet"
 
 #: [blog]title [feed]title
 msgid "%s’s feed"
@@ -1130,7 +1146,8 @@ msgid "Last registered"
 msgstr "Sist registrert"
 
 #: [explore]explore
-msgid "Find some new friends"
+#, fuzzy
+msgid "Find some new contacts"
 msgstr "Finn nye kontakter"
 
 #: [edit]title [button]edit
@@ -1196,6 +1213,11 @@ msgstr "Inviter"
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
 msgstr ""
+
+#: [contactdatapublic]no_data
+#, fuzzy
+msgid "No public data found"
+msgstr "Mine innlegg"
 
 #: [draw]title
 msgid "Draw"
@@ -1372,6 +1394,11 @@ msgstr "Populasjon"
 #: [form]invite_chatroom
 msgid "%s invited you to join a chatroom"
 msgstr "%s inviterte deg til å ta del i et samtalerom"
+
+#: [form]pod_admins
+#, fuzzy
+msgid "Administrated by"
+msgstr "Administrasjon"
 
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"

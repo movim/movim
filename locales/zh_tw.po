@@ -52,6 +52,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/ContactDataPublic/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Draw/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
@@ -105,7 +107,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-05 14:47+0200\n"
+"POT-Creation-Date: 2021-05-18 22:11+0200\n"
 "PO-Revision-Date: 2021-04-02 13:28+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/movim/movim/language/zh_TW/)\n"
@@ -371,7 +373,7 @@ msgid "Tenor integration"
 msgstr ""
 
 #: [tenor]label
-msgid "Yout Tenor API Key"
+msgid "Your Tenor API Key"
 msgstr ""
 
 #: [tenor]info1
@@ -412,6 +414,10 @@ msgstr "系統日誌和檔案"
 
 #: [adminsessions]title
 msgid "Sessions"
+msgstr ""
+
+#: [adminsessions]text
+msgid "Currently connected users on the pod"
 msgstr ""
 
 #: [admin]compatibility
@@ -505,6 +511,15 @@ msgstr "圖示未更新"
 #: [avatar]missing
 msgid "No avatar defined yet"
 msgstr "未定義圖示"
+
+#: [avatar]change
+#, fuzzy
+msgid "Change my avatar"
+msgstr "變更我的密碼"
+
+#: [avatar]upload_new
+msgid "Upload a new picture"
+msgstr ""
 
 #: [blog]title [feed]title
 msgid "%s’s feed"
@@ -1126,8 +1141,9 @@ msgid "Last registered"
 msgstr ""
 
 #: [explore]explore
-msgid "Find some new friends"
-msgstr ""
+#, fuzzy
+msgid "Find some new contacts"
+msgstr "常聯絡的"
 
 #: [edit]title [button]edit
 msgid "Edit"
@@ -1191,6 +1207,10 @@ msgstr ""
 
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
+msgstr ""
+
+#: [contactdatapublic]no_data
+msgid "No public data found"
 msgstr ""
 
 #: [draw]title
@@ -1368,6 +1388,11 @@ msgstr ""
 #: [form]invite_chatroom
 msgid "%s invited you to join a chatroom"
 msgstr ""
+
+#: [form]pod_admins
+#, fuzzy
+msgid "Administrated by"
+msgstr "管理者"
 
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"

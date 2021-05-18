@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-05 14:47+0200\n"
+"POT-Creation-Date: 2021-05-18 22:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,4 +43,12 @@ msgstr ""
 
 #: [avatar]missing
 msgid "No avatar defined yet"
+msgstr ""
+
+#: [avatar]change
+msgid "Change my avatar"
+msgstr ""
+
+#: [avatar]upload_new
+msgid "Upload a new picture"
 msgstr ""
