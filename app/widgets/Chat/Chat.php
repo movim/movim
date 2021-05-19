@@ -1303,7 +1303,7 @@ class Chat extends \Movim\Widget\Base
             ->where('value', '<', 5)
             ->whereNotIn('rosters.jid', array_keys($chats))
             ->with('presence.capability')
-            ->take(14)
+            ->take(12)
             ->get();
         $view->assign('top', $top);
 
@@ -1319,7 +1319,7 @@ class Chat extends \Movim\Widget\Base
     {
         $view = $this->tpl();
 
-        $pagination = 6;
+        $pagination = 8;
 
         $users = Contact::public()
             ->notInRoster($this->user->session->id)
