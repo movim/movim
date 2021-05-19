@@ -18,7 +18,12 @@
         {/if}
     </script>
 
+    <div class="logo"></div>
+
     <div id="form" class="dialog">
+        {if="$banner"}
+            <img class="banner" src="{$banner}">
+        {/if}
         <section>
             {if="$invitation != null"}
                 <br />
@@ -100,31 +105,20 @@
                     </ul>
                 </div>
             </form>
-
-            {if="isset($info)"}
-            <ul class="list thin card">
-                <li class="info">
-                    <div>
-                        <p></p>
-                        {autoescape="off"}
-                            {$info}
-                        {/autoescape}
-                    </div>
-                </li>
-            </ul>
-            {/if}
         </section>
     </div>
 
     <div id="form" class="dialog more">
         <section>
-            <span class="info">{$c->__('form.connected')} {$connected} / {$pop}</span>
+            <span class="info">{$c->__('form.connected')}: {$connected} - {$c->__('form.population')}: {$pop}</span>
             {if="$admins->count() > 0"}
                 <ul class="list thin active">
                     <li class="subheader">
-                        <p>
-                            {$c->__('form.pod_admins')}
-                        </p>
+                        <div>
+                            <p>
+                                {$c->__('form.pod_admins')}
+                            </p>
+                        </div>
                     </li>
                     {loop="$admins"}
                         {$contact = $value->contact}
@@ -148,8 +142,7 @@
                             <div>
                                 <p class="line normal" title="{$value->resolvedNickname}">
                                     {if="$contact"}
-                                        {$contact->truename}
-                                        <span class="second">{$value->resolvedNickname}</span>
+                                        {$contact->truename}<span class="second">{$value->resolvedNickname}</span>
                                     {else}
                                         {$value->resolvedNickname}
                                     {/if}
@@ -159,6 +152,35 @@
                     {/loop}
                 </ul>
             {/if}
+
+            {if="isset($info)"}
+                <ul class="list thin card">
+                    <li class="info">
+                        <div>
+                            <p></p>
+                            {autoescape="off"}
+                                {$info}
+                            {/autoescape}
+                        </div>
+                    </li>
+                </ul>
+            {/if}
+
+            <ul class="list middle">
+                <a href="https://f-droid.org/packages/com.movim.movim/" target="_blank">
+                    <li class="block active">
+                        <span class="primary icon bubble green">
+                            <i class="material-icons">adb</i>
+                        </span>
+                        <div>
+                            <p class="line">{$c->__('apps.phone')}<p>
+                            <p class="all">
+                                {$c->__('apps.android')}
+                            </p>
+                        </div>
+                    </li>
+                </a>
+            </ul>
         </section>
     </div>
 
@@ -172,21 +194,17 @@
         <a href="https://movim.eu" target="_blank" class="on_desktop"></a>
         <!--<a class="button flat color green" href="https://play.google.com/store/apps/details?id=com.movim.movim" target="_blank">
             <i class="material-icons">android</i> Play Store
-        </a>-->
-        <a class="button flat color blue" href="https://f-droid.org/packages/com.movim.movim/" target="_blank">
-            <i class="material-icons">android</i> F-Droid
         </a>
         <a class="button flat color purple on_desktop" href="https://movim.eu/#apps" target="_blank">
             <i class="material-icons">computer</i> Apps
+        </a>-->
+        <a class="button flat color transparent on_android" href="movim://changepod">
+            <i class="material-icons">dns</i>
+            {$c->__('global.change_pod')}
         </a>
+
         <br />
     </footer>
-
-    <br />
-    <a class="button flat color transparent on_android" href="movim://changepod">
-        <i class="material-icons">dns</i>
-        {$c->__('global.change_pod')}
-    </a>
     <script type="text/javascript">
         if (typeof Android !== 'undefined') {
             MovimTpl.remove('#login_widget footer');

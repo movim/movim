@@ -1,15 +1,36 @@
 body main {
-    background: radial-gradient(circle farthest-corner at right bottom,#5265ce 0,#213399 100%);
+    background: radial-gradient(circle farthest-corner at right bottom,#3F51B5 0,#222e75 100%);
+    display: flex;
+    align-items: center;
+}
+
+#login_widget {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    width: 100rem;
 }
 
 #login_widget .dialog {
     position: relative;
-    margin-top: 10%;
+    margin: 0 auto;
+    top: 0;
+    left: initial;
+    width: initial;
+    flex: 0 1 calc(50% - 2rem);
 }
 
 #login_widget .dialog.more {
-    margin-top: 2rem;
     padding: 1rem 0;
+}
+
+#login_widget .dialog .banner {
+    max-width: 100%;
+    padding: 0;
+    margin-top: -1rem;
+    object-fit: cover;
+    max-height: 18rem;
+    width: 100%;
 }
 
 #login_widget .dialog.more > section {
@@ -18,14 +39,24 @@ body main {
 
 @media screen and (max-width: 600px) {
     body main {
-        background: url(../theme/img/logo_cloud.svg), radial-gradient(circle farthest-corner at right bottom,#5265ce 0,#213399 100%);
-        background-size: auto 2.6rem, 100% 100%;
-        background-position: center 5rem, center ;
-        background-repeat: no-repeat;
+        align-items: initial;
+    }
+
+    #login_widget {
+        display: initial;
     }
 
     #login_widget .dialog {
-        margin-top: 17.5%;
+        margin: 1.5rem 1rem;
+    }
+
+    #login_widget .logo {
+        display: block;
+        background: url(../theme/img/logo_cloud.svg);
+        background-size: auto 2.6rem, 100% 100%;
+        background-position: center 3rem, center ;
+        background-repeat: no-repeat;
+        height: 8rem;
     }
 }
 
@@ -34,6 +65,7 @@ body main {
 }
 
 #login_widget footer {
+    flex: 0 1 100%;
     position: relative;
     text-align: center;
     padding-top: 3rem;
@@ -66,6 +98,10 @@ body main {
 #login_widget li.info p {
     text-align: center;
     max-height: 100%;
+}
+
+#login_widget li.info p {
+    text-align: justify;
 }
 
 #login_widget span.info {

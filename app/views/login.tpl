@@ -2,7 +2,5 @@
 <?php $this->widget('Toast');?>
 
 <main>
-    <div>
-        <?php $this->widget('Login'); ?>
-    </div>
+    <?php $this->widget('Login'); ?>
 </main>

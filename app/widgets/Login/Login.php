@@ -73,6 +73,7 @@ class Login extends Base
             $this->view->assign('info', $parser->transform($configuration->info));
         }
 
+        $this->view->assign('banner', $configuration->banner);
         $this->view->assign('whitelist', $configuration->xmppwhitelist);
 
         if (isset($configuration->xmppdomain)
