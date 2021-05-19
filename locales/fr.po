@@ -7,6 +7,7 @@
 # Jaussoin Timothée <edhelas@movim.eu>, 2015-2021
 # Maxime Buquet <tidusx62@gmail.com>, 2015
 # Raphael J <contact@raphael-jolivet.name>, 2018
+# The Cat, 2021
 # Thirty Thirds <thirtythirds@gmail.com>, 2015-2017
 # Tom <caporaldead@gmail.com>, 2015
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -115,8 +116,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-18 22:11+0200\n"
-"PO-Revision-Date: 2021-04-05 12:50+0000\n"
+"POT-Creation-Date: 2021-05-19 23:54+0200\n"
+"PO-Revision-Date: 2021-05-19 21:53+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: French (France) (http://www.transifex.com/movim/movim/language/fr_FR/)\n"
 "Language: fr_FR\n"
@@ -381,7 +382,6 @@ msgid "Tenor integration"
 msgstr "Intégration Tenor"
 
 #: [tenor]label
-#, fuzzy
 msgid "Your Tenor API Key"
 msgstr "Votre clef d'API Tenor"
 
@@ -427,7 +427,7 @@ msgstr "Sessions"
 
 #: [adminsessions]text
 msgid "Currently connected users on the pod"
-msgstr ""
+msgstr "Utilisateurs actuellement connectés sur l'instance"
 
 #: [admin]compatibility
 msgid "General Overview"
@@ -522,14 +522,12 @@ msgid "No avatar defined yet"
 msgstr "Aucun avatar défini pour le moment"
 
 #: [avatar]change
-#, fuzzy
 msgid "Change my avatar"
-msgstr "Changer de mot de passe"
+msgstr "Modifier mon avatar"
 
 #: [avatar]upload_new
-#, fuzzy
 msgid "Upload a new picture"
-msgstr "Prendre une photo"
+msgstr "Téléverser une nouvelle image"
 
 #: [blog]title [feed]title
 msgid "%s’s feed"
@@ -1151,9 +1149,8 @@ msgid "Last registered"
 msgstr "Dernier enregistré"
 
 #: [explore]explore
-#, fuzzy
 msgid "Find some new contacts"
-msgstr "Cherche de nouveaux amis"
+msgstr "Trouvez de nouveaux contacts"
 
 #: [edit]title [button]edit
 msgid "Edit"
@@ -1220,9 +1217,8 @@ msgid "This contact is in your contact list but there is no subscription between
 msgstr "Ce contact est présent dans votre liste mais il n'y a aucune souscriptions entre vos deux comptes"
 
 #: [contactdatapublic]no_data
-#, fuzzy
 msgid "No public data found"
-msgstr "Mes publications"
+msgstr "Aucunes données publiques trouvées"
 
 #: [draw]title
 msgid "Draw"
@@ -1401,9 +1397,8 @@ msgid "%s invited you to join a chatroom"
 msgstr "%s vous a invité à rejoindre un salon de discussion"
 
 #: [form]pod_admins
-#, fuzzy
 msgid "Administrated by"
-msgstr "Administration"
+msgstr "Administré par"
 
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
@@ -1955,7 +1950,7 @@ msgstr "Utilisateurs"
 
 #: [room]channel_text
 msgid "Public channel that can be publicly discoverable and joinable"
-msgstr "Salon publique pouvant être découvert et joint librement"
+msgstr "Chaîne publique qui peut être librement consultable et joignable"
 
 #: [room]notify_never
 msgid "Never notify"
