@@ -53,7 +53,7 @@
     </ul>
 {/if}
 
-{if="$items->isNotEmpty()"}
+{if="$items && $items->isNotEmpty()"}
     <div id="menu_refresh"></div>
     <div class="list card shadow" id="menu_wrapper">
 

@@ -11,6 +11,7 @@
         {loop="$subscriptions"}
             <a href="{$c->route('community', [$value->server, $value->node])}">
                 <li title="{$value->server} - {$value->node}">
+                    {$url = null}
                     {if="$value->info"}
                         {$url = $value->info->getPhoto('m')}
                     {/if}

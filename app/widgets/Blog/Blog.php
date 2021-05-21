@@ -200,7 +200,9 @@ class Blog extends Base
         $this->view->assign('mode', $this->_mode);
         $this->view->assign('next', $this->_next);
 
-        $this->_posts = resolveInfos($this->_posts);
+        if ($this->_posts) {
+            $this->_posts = resolveInfos($this->_posts);
+        }
         $this->view->assign('posts', $this->_posts);
 
         $this->view->assign('tag', $this->_tag);
