@@ -48,6 +48,8 @@ class CommunityData extends Base
                            ->where('node', $info->node)
                            ->count()
             );
+        } else {
+            return '';
         }
 
         return $view->draw('_communitydata_card');

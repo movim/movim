@@ -1,3 +1,4 @@
+{$url = null}
 {$url = $info->getPhoto('l')}
 {if="$url"}
     <ul class="list">
