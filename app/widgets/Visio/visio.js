@@ -149,9 +149,9 @@ var Visio = {
             video: false
         };
 
-        const videoSource = Visio.videoSelect.value;
-
         if (Visio.withVideo) {
+            const videoSource = Visio.videoSelect.value;
+
             constraints.video = {
                 deviceId: videoSource ? {exact: videoSource} : undefined,
                 facingMode: 'user',
