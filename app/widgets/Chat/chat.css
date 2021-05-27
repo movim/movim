@@ -387,7 +387,7 @@ main:not(.enabled) #chat_widget {
     margin: 0.25rem 0;
 }
 
-#chat_widget div.parent:hover {
+#chat_widget div.parent[data-parent-id]:hover {
     cursor: pointer;
     background-color: rgba(var(--movim-font), 0.04);
 }
@@ -404,6 +404,7 @@ main:not(.enabled) #chat_widget {
 
 #chat_widget .bubble div.parent p {
     color: rgba(var(--movim-font), 0.60);
+    white-space: pre-wrap;
 }
 
 /* Emojis */

@@ -925,6 +925,8 @@ var Chat = {
         // Parent
         if (data.parent) {
             msg.appendChild(Chat.getParentHtml(data.parent));
+        } else if (data.parentQuote) {
+            msg.appendChild(Chat.getSimpleParentHtml(data.parentQuote));
         }
 
         msg.appendChild(p);
@@ -1167,6 +1169,16 @@ var Chat = {
         i.innerText = 'check';
         i.setAttribute('title', delivered);
         return i;
+    },
+    getSimpleParentHtml: function(parentQuote) {
+        var div = document.createElement('div');
+        div.classList.add('parent');
+
+        var p = document.createElement('p');
+        p.innerHTML = parentQuote;
+        div.appendChild(p);
+
+        return div;
     },
     getParentHtml: function(parent) {
         var div = document.createElement('div');

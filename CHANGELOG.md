@@ -20,6 +20,7 @@ v0.19.1 (trunk)
 * Move from OpenSans to Roboto for the default font
 * Move to a two columns design for blogs and communities public pages
 * Refactor and unify some views between the public and private widgets
+* Handle proper > quotes in the Chat bubbles
 
 v0.19
 ---------------------------
