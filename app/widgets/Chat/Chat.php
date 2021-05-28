@@ -1111,14 +1111,16 @@ class Chat extends \Movim\Widget\Base
             }
         } else {
             // Let's try to support "quoted" messages
-            $quote = '&gt;';
+            $quote = '&gt; ';
             $parent = '';
             $remains = '';
+            $endOfQuote = false;
 
             foreach (explode(PHP_EOL, $message->body) as $line) {
-                if (substr($line, 0, strlen($quote)) == $quote) {
-                    $parent .= trim(substr($line, strlen($quote)))."\n";
+                if (substr($line, 0, strlen($quote)) == $quote && $endOfQuote == false) {
+                    $parent .= substr($line, strlen($quote))."\n";
                 } else {
+                    $endOfQuote = true;
                     $remains .= $line."\n";
                 }
             }
