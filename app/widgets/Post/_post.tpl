@@ -46,55 +46,42 @@
             {else}
                 {$contact = $post->contact}
             {/if}
+            {if="$post->nsfw"}
+                <span class="primary icon bubble color red tiny">
+                    +18
+                </span>
+            {elseif="$post->isMicroblog()"}
+                {if="$post->contact"}
+                    {$url = $contact->getPhoto('m')}
 
-            {if="$post->isMicroblog()"}
-                {if="$post->nsfw"}
-                    <span class="primary icon bubble color red tiny">
-                        +18
-                    </span>
-                {else}
-                    {if="$post->contact"}
-                        {$url = $contact->getPhoto('m')}
-
-                        {if="$url"}
-                            <span class="icon primary bubble">
-                                <a href="#" onclick="Post_ajaxGetContact('{$contact->jid}')">
-                                    <img src="{$url}">
-                                </a>
-                            </span>
-                        {else}
-                            <span class="icon primary bubble color {$contact->jid|stringToColor}">
-                                <a href="#" onclick="Post_ajaxGetContact('{$contact->jid}')">
-                                    <i class="material-icons">person</i>
-                                </a>
-                            </span>
-                        {/if}
+                    {if="$url"}
+                        <span class="icon primary bubble">
+                            <a href="#" onclick="Post_ajaxGetContact('{$contact->jid}')">
+                                <img src="{$url}">
+                            </a>
+                        </span>
                     {else}
-                        <span class="icon primary bubble color {$post->aid|stringToColor}">
-                            <a href="#" onclick="Post_ajaxGetContact('{$post->aid}')">
+                        <span class="icon primary bubble color {$contact->jid|stringToColor}">
+                            <a href="#" onclick="Post_ajaxGetContact('{$contact->jid}')">
                                 <i class="material-icons">person</i>
                             </a>
                         </span>
                     {/if}
+                {else}
+                    <span class="icon primary bubble color {$post->aid|stringToColor}">
+                        <a href="#" onclick="Post_ajaxGetContact('{$post->aid}')">
+                            <i class="material-icons">person</i>
+                        </a>
+                    </span>
                 {/if}
             {else}
                 {$url = null}
-                {if="$post->info != null"}
-                    {$url = $post->info->getPhoto('l')}
+                {if="$info != null"}
+                    {$url = $info->getPhoto('l')}
                 {/if}
-                {if="$post->nsfw"}
-                    <span class="primary icon bubble color red tiny">
-                        +18
-                    </span>
-                {elseif="$url"}
+                {if="$url"}
                     <span class="primary icon bubble">
                         <img src="{$url}"/>
-                    </span>
-                {elseif="$post->logo"}
-                    <span class="primary icon bubble">
-                        <a href="{$c->route('community', [$post->server, $post->node])}">
-                            <img src="{$post->getLogo()}">
-                        </a>
                     </span>
                 {else}
                     <span class="primary icon bubble color {$post->node|stringToColor}">

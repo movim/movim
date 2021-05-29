@@ -228,6 +228,9 @@ class Post extends Base
 
             $view->assign('nsfw', $this->user->nsfw);
             $view->assign('post', $p);
+            $view->assign('info', \App\Info::where('server', $p->server)
+                                           ->where('node', $p->node)
+                                           ->first());
 
             return ($card)
                 ? $view->draw('_post_card')
