@@ -975,7 +975,6 @@ class Chat extends \Movim\Widget\Base
         } else {
             $message->addUrls();
             $message->body = $emoji->replace($message->body);
-            $message->body = addHFR($message->body);
         }
 
         if (isset($message->subject) && $message->type == 'headline') {

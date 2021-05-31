@@ -7,7 +7,7 @@ use Moxl\Xec\Action\Pubsub\Subscribe;
 use Movim\Widget\Base;
 use Movim\Session;
 
-use Michelf\MarkdownExtra;
+use League\CommonMark\CommonMarkConverter;
 use Respect\Validation\Validator;
 use Cocur\Slugify\Slugify;
 
@@ -92,13 +92,13 @@ class Publish extends Base
 
         if (!$draft->empty()) {
             $view = $this->tpl();
-
-            $content = htmlspecialchars($draft->content, ENT_XML1 | ENT_COMPAT, 'UTF-8');
             $doc = new DOMDocument;
-            $parser = new MarkdownExtra;
-            $parser->hashtag_protection = true;
+            $converter = new CommonMarkConverter([
+                'html_input' => 'escape',
+                'allow_unsafe_links' => true,
+            ]);
 
-            $doc->loadXML('<div>'.addHFR($parser->transform($content)).'</div>');
+            $doc->loadXML('<div>'.$converter->convertToHtml($draft->content).'</div>');
             $view->assign('title', $draft->title);
             $view->assign('content', substr($doc->saveXML($doc->getElementsByTagName('div')->item(0)), 5, -6));
 
@@ -131,19 +131,21 @@ class Publish extends Base
             }
 
             if (Validator::stringType()->notEmpty()->validate(trim($draft->content))) {
-                $content = htmlspecialchars($draft->content, ENT_XML1 | ENT_COMPAT, 'UTF-8');
 
-                $parser = new MarkdownExtra;
-                $parser->hashtag_protection = true;
-                $contentXhtml = addHFR($parser->transform($content));
+                $converter = new CommonMarkConverter([
+                    'html_input' => 'escape',
+                    'allow_unsafe_links' => true,
+                ]);
 
-                $tagsContent = getHashtags(htmlspecialchars($draft->content));
+                $contentXhtml = $converter->convertToHtml($draft->content);
+
+                $tagsContent = getHashtags($draft->content);
                 if (is_array($tagsContent)) {
                     $tags = array_merge($tags, $tagsContent);
                 }
 
-                if (!empty($content)) {
-                    $p->setContent(htmlspecialchars($content));
+                if (!empty($draft->content)) {
+                    $p->setContent($draft->content);
                 }
 
                 if (!empty($contentXhtml)) {

@@ -97,7 +97,7 @@
                 <p class="all">
                     {if="$value->contentraw"}
                         {autoescape="off"}
-                            {$value->contentraw|addHashtagsLinks|addHFR|prepareString}
+                            {$value->contentraw|addHashtagsLinks|prepareString}
                         {autoescape/}
                     {else}
                         {autoescape="off"}

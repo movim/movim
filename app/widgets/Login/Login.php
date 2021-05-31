@@ -5,7 +5,7 @@ use Moxl\Xec\Action\Storage\Get;
 use Respect\Validation\Validator;
 use Defuse\Crypto\Key;
 use Defuse\Crypto\Crypto;
-use Michelf\MarkdownExtra;
+use League\CommonMark\CommonMarkConverter;
 
 use App\Configuration;
 use App\User;
@@ -67,10 +67,12 @@ class Login extends Base
         $configuration = Configuration::get();
 
         if (!empty($configuration->info)) {
-            $parser = new MarkdownExtra;
-            $parser->hashtag_protection = true;
+            $converter = new CommonMarkConverter([
+                'html_input' => 'strip',
+                'allow_unsafe_links' => false,
+            ]);
 
-            $this->view->assign('info', $parser->transform($configuration->info));
+            $this->view->assign('info', $converter->convertToHtml($configuration->info));
         }
 
         $this->view->assign('banner', $configuration->banner);

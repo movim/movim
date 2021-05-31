@@ -21,6 +21,7 @@ v0.19.1 (trunk)
 * Move to a two columns design for blogs and communities public pages
 * Refactor and unify some views between the public and private widgets
 * Handle proper > quotes in the Chat bubbles
+* Replace michelf/php-markdown with league/commonmark
 
 v0.19
 ---------------------------

@@ -21,9 +21,8 @@
 
         "fabiang/sasl": "^1.0.1",
         "rain/raintpl": "^3.1.1",
-        "michelf/php-markdown": "^1.9",
-
         "embed/embed": "^v3.4",
+        "league/commonmark": "^1.6",
 
         "respect/validation": "^2.0",
         "ezyang/htmlpurifier": "^4.13",

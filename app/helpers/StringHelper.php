@@ -77,22 +77,6 @@ function addHashtagsLinks($string)
     }, $string);
 }
 
-function addHFR($string)
-{
-    // HFR EasterEgg
-    return preg_replace_callback(
-        '/\[:([\w\s-]+)([:\d])*\]/',
-        function ($match) {
-            $num = '';
-            if (count($match) == 3) {
-                $num = $match[2].'/';
-            }
-            return '<img class="hfr" title="'.$match[0].'" alt="'.$match[0].'" src="http://forum-images.hardware.fr/images/perso/'.$num.$match[1].'.gif"/>';
-        },
-        $string
-    );
-}
-
 function addEmojis($string, bool $noTitle = false)
 {
     $emoji = \Movim\Emoji::getInstance();
