@@ -131,6 +131,19 @@ class ChatOmemo extends \Movim\Widget\Base
             ->request();
     }
 
+    public function ajaxRefreshDeviceList()
+    {
+        $devicesList = array_values($this->user->bundles()
+                                  ->select('bundle_id')
+                                  ->where('jid', $this->user->id)
+                                  ->pluck('bundle_id')
+                                  ->toArray());
+
+        $sdl = new SetDeviceList;
+        $sdl->setList($devicesList)
+            ->request();
+    }
+
     private function extractPreKey(Bundle $bundle): array
     {
         $pickedKey = array_rand($bundle->prekeys);

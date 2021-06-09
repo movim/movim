@@ -151,6 +151,9 @@ ChatOmemoStorage.prototype = {
 
         return Promise.resolve();
     },
+    checkJidHasSessions: function (identifier) {
+        return Object.keys(localStorage).filter(key => key.startsWith(this.jid + '.session' + identifier)).length > 0;
+    },
     removeAllSessionsOfJid: function (identifier) {
         let filtered = Object.keys(localStorage).filter(key => key.startsWith(this.jid + '.session' + identifier));
 

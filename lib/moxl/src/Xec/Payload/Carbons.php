@@ -16,13 +16,11 @@ class Carbons extends Payload
                 $m = \App\Message::findByStanza($message);
                 $m->set($message, $stanza->forwarded);
 
-                if (!$m->encrypted) {
-                    $m->save();
-                    $m->clearUnreads();
+                $m->save();
+                $m->clearUnreads();
 
-                    $this->pack($m);
-                    $this->deliver();
-                }
+                $this->pack($m);
+                $this->deliver();
             } elseif ($message->displayed) {
                 // Another client just displayed the message
                 $displayed = new Displayed;

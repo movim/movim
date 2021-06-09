@@ -151,10 +151,13 @@ var ChatOmemo = {
         let biv = MovimUtils.arrayBufferToBase64(iv);
         let payload = MovimUtils.arrayBufferToBase64(ciphertext);
         let deviceId = await store.getLocalRegistrationId();
-        let results = await this.encryptJid(keyAndTag, to);
+        let remoteKeys = await this.encryptJid(keyAndTag, to);
+        let ownKeys = await this.encryptJid(keyAndTag, store.jid);
+
+        remoteKeys = remoteKeys.concat(ownKeys);
 
         let messageKeys = {};
-        results.map(result => {
+        remoteKeys.map(result => {
             messageKeys[result.device] = {
                 payload : btoa(result.payload.body),
                 prekey : 3 == parseInt(result.payload.type, 10)
@@ -181,6 +184,12 @@ var ChatOmemo = {
 
         var store = new ChatOmemoStorage();
         let deviceId = await store.getLocalRegistrationId();
+
+        if (store.checkJidHasSessions(message.jidfrom) == false) {
+            console.log('No existing session for this JID');
+            //ChatOmemo_ajaxGetDevicesList(message.jidfrom);
+            return;
+        }
 
         if (message.omemoheader.keys[deviceId] == undefined) {
             console.log('Message not encrypted for this device');
@@ -272,7 +281,12 @@ var ChatOmemo = {
     buildMissingSessions: function (jid) {
         var store = new ChatOmemoStorage();
         store.getLocalRegistrationId().then(deviceId => {
-            ChatOmemo_ajaxGetMissingSessions(jid, deviceId);
+            if (deviceId) {
+                ChatOmemo_ajaxGetMissingSessions(jid, deviceId);
+            } else {
+                ChatOmemo.generateBundle();
+                return false;
+            }
         });
     },
     encryptDevice: function (plaintext, jid, deviceId) {

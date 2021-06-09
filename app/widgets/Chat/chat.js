@@ -191,7 +191,9 @@ var Chat = {
                 };
 
                 if (textarea.dataset.encryptedstate == 'build') {
-                    ChatOmemo.buildMissingSessions(jid);
+                    if (!ChatOmemo.buildMissingSessions(jid)) {
+                        Chat.failedMessage();
+                    }
                 } else if (textarea.dataset.encryptedstate == 'yes') {
                     // Try to encrypt the message
                     let omemo = ChatOmemo.encrypt(jid, text);
@@ -961,12 +963,13 @@ var Chat = {
             if (data.omemoheader) {
                 p.innerHTML = data.omemoheader.payload;
                 ChatOmemo.decrypt(data).then(plaintext => {
-                    if (plaintext) {
-                        let refreshP = document.querySelector('#id' + data.id + ' p');
-
-                        if (refreshP) {
+                    let refreshP = document.querySelector('#id' + data.id + ' p');
+                    if (refreshP) {
+                        if (plaintext) {
                             refreshP.innerHTML = plaintext;
                             refreshP.classList.remove('encrypted');
+                        } else {
+                            refreshP.classList.add('error');
                         }
                     }
                 });
@@ -1025,7 +1028,7 @@ var Chat = {
         msg.appendChild(reactions);
         msg.appendChild(span);
 
-        if (data.thread !== null) {
+        if (data.thread !== null && reply) {
             reply.dataset.mid = data.mid;
             msg.appendChild(reply);
         }
