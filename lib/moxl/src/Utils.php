@@ -16,6 +16,7 @@ class Utils
 
             //'urn:xmpp:omemo:0:movim',
             //'urn:xmpp:omemo:0:movim+notify',
+            'eu.siacs.conversations.axolotl.devicelist',
             'eu.siacs.conversations.axolotl.devicelist+notify',
 
             'urn:xmpp:sid:0',

@@ -161,11 +161,16 @@ ChatOmemoStorage.prototype = {
             this.remove(filtered[id]);
         }
 
+        this.remove(this.jid + '.contact' + identifier);
+
         return Promise.resolve();
     },
 
     setContactState: function (jid, state) {
         return Promise.resolve(this.put(this.jid + '.contact' + jid, state));
+    },
+    hasContactState: function(jid) {
+        return (this.get(this.jid + '.contact' + jid) !== undefined);
     },
     getContactState: function (jid) {
         let state = Boolean(this.get(this.jid + '.contact' + jid));

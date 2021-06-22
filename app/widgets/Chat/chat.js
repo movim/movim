@@ -32,7 +32,7 @@ var Chat = {
     translateY: 0,
     slideAuthorized: false,
 
-    // Temporary messages, for OMEMO local mesages
+    // Temporary messages, for OMEMO local messages
     tempMessages: {},
 
     autocomplete: function(event, jid)

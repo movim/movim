@@ -8,6 +8,8 @@ const NUM_PREKEYS = 50;
 const SIGNED_PREKEY_ID = 1234;
 
 var ChatOmemo = {
+    requestedDevicesListFrom: null,
+
     generateBundle: async function () {
         ChatOmemo_ajaxNotifyGeneratingBundle();
     },
@@ -85,6 +87,15 @@ var ChatOmemo = {
         });
 
         Promise.all(promises).then(results => {
+            var store = new ChatOmemoStorage();
+
+            /**
+             * First time we handle a session, we enforce the OMEMO state to true
+             */
+            if (!store.hasContactState(jid)) {
+                store.setContactState(jid, true);
+            }
+
             Chat.setOmemoState('yes');
             Chat.disableSending();
 
@@ -187,7 +198,17 @@ var ChatOmemo = {
 
         if (store.checkJidHasSessions(message.jidfrom) == false) {
             console.log('No existing session for this JID');
-            //ChatOmemo_ajaxGetDevicesList(message.jidfrom);
+
+            /**
+             * We received a message for us, but we don't have any sessions built yet
+             * this can happen when we don't have the presence of the contact or that we
+             * freshly added it to our roster
+             */
+            if (Object.keys(message.omemoheader.keys).includes(String(deviceId))
+            && ChatOmemo.requestedDevicesListFrom != message.jidfrom) {
+                ChatOmemo.requestedDevicesListFrom = message.jidfrom;
+                ChatOmemo_ajaxGetDevicesList(message.jidfrom);
+            }
             return;
         }
 
