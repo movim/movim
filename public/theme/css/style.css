@@ -209,6 +209,9 @@ main > div:first-child:nth-last-child(2) + div {
         position: absolute;
         top: 0;
         left: 0;
+    }
+
+    main.slide > div:first-child:nth-last-child(2) + div {
         transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
     }
 
