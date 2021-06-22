@@ -146,7 +146,7 @@ main {
 
 nav ~ main {
     width: calc(100% - 7rem);
-    border-radius: 0.5rem 0 0 0.5rem;
+    border-radius: 0.75rem 0 0 0.75rem;
 }
 
 main > div {

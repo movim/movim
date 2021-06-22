@@ -59,7 +59,7 @@
 
 @media screen and (min-width: 570px) {
     .drawer {
-        border-radius: 0.5rem 0.5rem 0 0;
+        border-radius: 0.75rem 0.75rem 0 0;
         width: 70rem;
         left: calc(50% - 35rem);
     }
