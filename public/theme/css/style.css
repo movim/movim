@@ -74,6 +74,7 @@ body > div.dialog:not(:empty) ~ nav,
 body > nav.active ~ main {
     opacity: 0.3;
     pointer-events: none;
+    transform: translateX(6rem);
 }
 
 body > nav li { /* Little hack for the navbar */
@@ -123,7 +124,7 @@ main {
     position: absolute;
     right: 0;
     top: 0;
-    transition: opacity 0.3s ease-in-out;
+    transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
     overflow-y: auto;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch; /* Hack to have a non-blocking scrolling in iOS… */
@@ -142,6 +143,7 @@ main {
 
 nav ~ main {
     width: calc(100% - 7rem);
+    border-radius: 0.5rem 0 0 0.5rem;
 }
 
 main > div {
@@ -193,6 +195,7 @@ main > div:first-child:nth-last-child(2) + div {
     nav ~ main {
         overflow-x: hidden;
         width: 100%;
+        border-radius: 0;
     }
 
     nav ~ main.slide {
@@ -206,7 +209,7 @@ main > div:first-child:nth-last-child(2) + div {
         position: absolute;
         top: 0;
         left: 0;
-        transition: opacity 0.3s ease-in-out;
+        transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
     }
 
     main.slide > div:first-child:nth-last-child(2) {
@@ -231,6 +234,7 @@ main > div:first-child:nth-last-child(2) + div {
 
     main.slide.enabled > div:first-child:nth-last-child(2) + div {
         opacity: 0.3;
+        transform: translateX(-2rem);
     }
 
     main > aside + div {
