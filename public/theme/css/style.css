@@ -74,6 +74,9 @@ body > div.dialog:not(:empty) ~ nav,
 body > nav.active ~ main {
     opacity: 0.3;
     pointer-events: none;
+}
+
+body > nav.active ~ main {
     transform: translateX(6rem);
 }
 
