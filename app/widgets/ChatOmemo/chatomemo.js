@@ -10,6 +10,15 @@ const SIGNED_PREKEY_ID = 1234;
 var ChatOmemo = {
     requestedDevicesListFrom: null,
 
+    initGenerateBundle: async function() {
+        var store = new ChatOmemoStorage();
+        const localDeviceId = await store.getLocalRegistrationId();
+
+        if (localDeviceId == undefined) {
+            ChatOmemo.generateBundle();
+        }
+    },
+
     generateBundle: async function () {
         ChatOmemo_ajaxNotifyGeneratingBundle();
     },
@@ -128,6 +137,8 @@ var ChatOmemo = {
             store.getLocalRegistrationId().then(localDeviceId => {
                 ChatOmemo_ajaxHttpSetBundleSession(jid, deviceId, localDeviceId);
             });
+
+            Chat.setOmemoState('yes');
         });
 
         promise.catch(function onerror(error) {
@@ -328,3 +339,7 @@ var ChatOmemo = {
             : await sessionCipher.decryptWhisperMessage(ciphertext, 'binary');
     }
 }
+
+MovimWebsocket.attach(function() {
+    ChatOmemo.initGenerateBundle();
+});

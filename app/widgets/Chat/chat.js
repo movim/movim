@@ -927,6 +927,7 @@ var Chat = {
         }
 
         if (data.encrypted) {
+            msg.classList.add('encrypted');
             p.classList.add('encrypted');
             span.appendChild(Chat.getEncryptedIcoHtml());
         }

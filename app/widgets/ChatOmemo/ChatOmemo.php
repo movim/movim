@@ -20,9 +20,9 @@ class ChatOmemo extends \Movim\Widget\Base
 
     public function onBundle($packet)
     {
-        /*$bundle = $packet->content;
+        $bundle = $packet->content;
         $prekey = $this->extractPreKey($bundle);
-        $this->rpc('ChatOmemo.handlePreKey', $bundle->jid, $bundle->bundle_id, $prekey);*/
+        $this->rpc('ChatOmemo.handlePreKey', $bundle->jid, $bundle->bundle_id, $prekey);
     }
 
     public function ajaxGetMissingSessions(string $jid, string $deviceId)
@@ -76,26 +76,13 @@ class ChatOmemo extends \Movim\Widget\Base
         Toast::send($this->__('omemo.generated_bundle'));
     }
 
-    /*public function ajaxGetBundles(string $jid, array $exceptBundleIds = [])
-    {
-        $bundles = $this->user->bundles()->where('jid', $jid);
-
-        if (!empty($exceptBundleIds)) {
-            $bundles = $bundles->whereNotIn('bundle_id', $exceptBundleIds);
-        }
-
-        $bundles = $bundles->get();
-
-        foreach ($bundles as $bundle) {
-            $prekey = $this->extractPreKey($bundle);
-            $this->rpc('ChatOmemo.handlePreKey', $bundle->jid, $bundle->bundle_id, $prekey);
-        }
-    }*/
-
     public function ajaxGetDevicesList($to)
     {
+        Toast::send($this->__('omemo.resolving_devices'));
+
         $gdl = new GetDeviceList;
         $gdl->setTo($to)
+            ->setNotifyBundle(true)
             ->request();
     }
 

@@ -8,11 +8,18 @@ use Moxl\Stanza\OMEMO;
 class GetDeviceList extends Action
 {
     protected $_to;
+    protected $_notifyBundle = false;
 
     public function request()
     {
         $this->store();
         OMEMO::getDeviceList($this->_to);
+    }
+
+    public function setNotifyBundle(bool $notifyBundle)
+    {
+        $this->_notifyBundle = $notifyBundle;
+        return $this;
     }
 
     public function handle($stanza, $parent = false)
@@ -24,10 +31,13 @@ class GetDeviceList extends Action
                 foreach ($item->list->device as $device) {
                     $gb = new GetBundle;
                     $gb->setTo($this->_to)
-                        ->setId((string)$device->attributes()->id)
-                        ->request();
+                       ->setNotifyBundle($this->_notifyBundle)
+                       ->setId((string)$device->attributes()->id)
+                       ->request();
                 }
             }
         }
+
+        $this->deliver();
     }
 }

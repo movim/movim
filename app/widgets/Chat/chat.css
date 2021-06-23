@@ -181,6 +181,10 @@ main:not(.enabled) #chat_widget {
     padding: 0 0.5rem;
 }
 
+#chat_widget .chat_box > ul.list > li form {
+    margin-right: 0;
+}
+
 #chat_widget .chat_box > ul.list > li > .control {
     transition: transform 0.2s;
 }
@@ -475,7 +479,7 @@ main:not(.enabled) #chat_widget {
 
 #chat_widget li:not(.oppose) .bubble div:hover ul.reactions:empty ~ span.reaction,
 #chat_widget li:not(.oppose) .bubble div:hover span.reply[data-mid],
-#chat_widget li.oppose .bubble:not(.sticker) div:hover span.actions {
+#chat_widget li.oppose .bubble:not(.sticker) div:not(.encrypted):hover span.actions {
     display: inline-flex;
     position: absolute;
     left: 100%;

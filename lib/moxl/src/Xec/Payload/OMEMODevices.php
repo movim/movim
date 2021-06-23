@@ -20,5 +20,7 @@ class OMEMODevices extends Payload
                    ->request();
             }
         }
+
+        $this->deliver();
     }
 }

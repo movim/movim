@@ -11,6 +11,7 @@ class GetBundle extends Action
 {
     protected $_to;
     protected $_id;
+    protected $_notifyBundle = false;
 
     public function request()
     {
@@ -19,6 +20,12 @@ class GetBundle extends Action
             $this->_to,
             $this->_id
         );
+    }
+
+    public function setNotifyBundle(bool $notifyBundle)
+    {
+        $this->_notifyBundle = $notifyBundle;
+        return $this;
     }
 
     public function handle($stanza, $parent = false)
@@ -40,8 +47,10 @@ class GetBundle extends Action
         if (!$oldBundle->sameAs($bundle)) {
             $bundle->save();
 
-            $this->pack($bundle);
-            $this->deliver();
+            if ($this->_notifyBundle) {
+                $this->pack($bundle);
+                $this->deliver();
+            }
         }
     }
 }
