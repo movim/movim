@@ -5,6 +5,7 @@
 <?php $this->widget('Stickers');?>
 <?php $this->widget('Notifications');?>
 <?php $this->widget('ContactActions');?>
+<?php $this->widget('ChatOmemo');?>
 
 <nav class="color dark">
     <?php $this->widget('Presence');?>

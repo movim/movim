@@ -5,6 +5,7 @@
 <?php $this->widget('Upload'); ?>
 <?php $this->widget('Notifications');?>
 <?php $this->widget('SendTo');?>
+<?php $this->widget('ChatOmemo');?>
 
 <?php $this->widget('PostActions');?>
 

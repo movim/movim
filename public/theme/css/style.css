@@ -460,6 +460,18 @@ img.avatar:not([src=""]) + .placeholder {
     pointer-events: none;
 }
 
+/* Fingerprint */
+.fingerprint {
+    font-family: monospace;
+    max-width: 44rem;
+    display: block;
+    line-height: 3rem;
+}
+
+.fingerprint.self {
+    font-weight: bold;
+}
+
 /* Spinner */
 
 div#spinner {

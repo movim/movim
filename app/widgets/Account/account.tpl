@@ -1,40 +1,14 @@
 <div class="tabelem" title="{$c->__('account.title')}" id="account_widget">
-    <div id="account_gateways">
-        {autoescape="off"}
-            {$gateways}
-        {/autoescape}
-    </div>
-    <ul class="list middle divided ">
-        <li class="subheader">
-            <div>
-                <p>{$c->__('account.password_change_title')}</p>
-            </div>
-        </li>
-        <li>
-            <span class="primary icon gray">
+    <ul class="list middle active">
+        <li onclick="Account_ajaxChangePassword()">
+            <span class="primary icon">
                 <i class="material-icons">vpn_key</i>
             </span>
-            <form name="password">
-                <div>
-                    <input type="password" placeholder="Choose a nice password" name="password"/>
-                    <label>{$c->__('account.password')}</label>
-                </div>
-                <div>
-                    <input type="password" placeholder="Type your password again" name="password_confirmation"/>
-                    <label>{$c->__('account.password_confirmation')}</label>
-                </div>
-                <a onclick="
-                        Account_ajaxChangePassword(MovimUtils.formToJson('password'));
-                        this.className='button oppose inactive';" class="button color oppose">
-                    {$c->__('button.save')}
-                </a>
-            </form>
-        </li>
-    </ul>
-    <ul class="list middle active">
-        <li class="subheader">
+            <span class="control icon gray">
+                <i class="material-icons">chevron_right</i>
+            </span>
             <div>
-                <p>{$c->__('account.clear')}</p>
+                <p class="normal line">{$c->__('account.password_change_title')}</p>
             </div>
         </li>
         <li onclick="Account_ajaxClearAccount()">
@@ -46,13 +20,6 @@
             </span>
             <div>
                 <p class="normal line">{$c->__('account.clear')}</p>
-            </div>
-        </li>
-    </ul>
-    <ul class="list middle active">
-        <li class="subheader">
-            <div>
-                <p>{$c->__('account.delete')}</p>
             </div>
         </li>
         <li onclick="Account_ajaxRemoveAccount()">
@@ -67,4 +34,10 @@
             </div>
         </li>
     </ul>
+    <div id="account_fingerprints"></div>
+    <div id="account_gateways">
+        {autoescape="off"}
+            {$gateways}
+        {/autoescape}
+    </div>
 </div>

@@ -1,5 +1,7 @@
 <?php
 
+// TODO Remove me
+
 namespace Moxl\Xec\Payload;
 
 class OMEMOMovim extends Payload

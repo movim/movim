@@ -2,6 +2,7 @@
 
 namespace Moxl\Xec\Action\Message;
 
+use App\MessageOmemoHeader;
 use Moxl\Xec\Action;
 use Moxl\Stanza\Message;
 use Moxl\Stanza\Muc;
@@ -20,6 +21,9 @@ class Publish extends Action
     protected $_originid = false;
     protected $_threadid = false;
 
+    // OMEMO
+    protected $_messageOMEMO;
+
     public function request()
     {
         $this->store($this->_id);
@@ -30,7 +34,7 @@ class Publish extends Action
         } else {
             Message::message($this->_to, $this->_content, $this->_html, $this->_id,
                              $this->_replace, $this->_file, $this->_attachid, [],
-                             $this->_originid, $this->_threadid);
+                             $this->_originid, $this->_threadid, $this->_messageOMEMO);
         }
     }
 
@@ -38,6 +42,11 @@ class Publish extends Action
     {
         $this->_muc = true;
         return $this;
+    }
+
+    public function setMessageOMEMO(MessageOmemoHeader $messageOMEMO)
+    {
+        $this->_messageOMEMO = $messageOMEMO;
     }
 
     public function setMucReceipts()

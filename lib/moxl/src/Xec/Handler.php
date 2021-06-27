@@ -174,6 +174,8 @@ class Handler
             '09ef1b34cf40fdd954f10d6e5075ee5c' => 'Carbons',
             '201fa54dd93e3403611830213f5f9fbc' => 'Carbons',//?
 
+            'da6b60476aeab672ac0afe3ff27dc6a4' => 'OMEMODevices',
+
             '9a0cd265cabedadea095d8572d26167e' => 'StreamError',
 
             'b95746de5ddc3fa5fbf28906c017d9d8' => 'STARTTLS',

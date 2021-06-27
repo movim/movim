@@ -6,6 +6,20 @@ use Movim\Session;
 
 class OMEMO
 {
+    public static function getDeviceList($to)
+    {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $pubsub = $dom->createElement('pubsub');
+        $pubsub->setAttribute('xmlns', 'http://jabber.org/protocol/pubsub');
+
+        $publish = $dom->createElement('items');
+        $publish->setAttribute('node', 'eu.siacs.conversations.axolotl.devicelist');
+        $pubsub->appendChild($publish);
+
+        $xml = \Moxl\API::iqWrapper($pubsub, $to, 'get');
+        \Moxl\API::request($xml);
+    }
+
     public static function setDeviceList($ids)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
@@ -20,7 +34,6 @@ class OMEMO
         $publish->appendChild($item);
 
         $list = $dom->createElement('list');
-        //$list->setAttribute('xmlns', 'urn:xmpp:omemo:0');
         $list->setAttribute('xmlns', 'eu.siacs.conversations.axolotl');
         $item->appendChild($list);
 
@@ -60,16 +73,14 @@ class OMEMO
         $pubsub->setAttribute('xmlns', 'http://jabber.org/protocol/pubsub');
 
         $publish = $dom->createElement('publish');
-        //$publish->setAttribute('node', 'urn:xmpp:omemo:0:movim');
         $publish->setAttribute('node', 'eu.siacs.conversations.axolotl.bundles:'.$id);
         $pubsub->appendChild($publish);
 
         $item = $dom->createElement('item');
-        //$item->setAttribute('id', $id);
+        $item->setAttribute('id', 'current');
         $publish->appendChild($item);
 
         $bundle = $dom->createElement('bundle');
-        //$bundle->setAttribute('xmlns', 'urn:xmpp:omemo:0');
         $bundle->setAttribute('xmlns', 'eu.siacs.conversations.axolotl');
         $item->appendChild($bundle);
 
@@ -97,50 +108,5 @@ class OMEMO
 
         $xml = \Moxl\API::iqWrapper($pubsub, false, 'set');
         \Moxl\API::request($xml);
-    }
-
-    public static function message(
-        $to,
-        $sid,
-        $key,
-        $rid,
-        $iv,
-        $payload,
-        $isprekey
-    ) {
-        $session = Session::start();
-
-        $dom = new \DOMDocument('1.0', 'UTF-8');
-        $root = $dom->createElementNS('jabber:client', 'message');
-        $dom->appendChild($root);
-        $root->setAttribute('type', 'chat');
-        $root->setAttribute('to', str_replace(' ', '\40', $to));
-        $root->setAttribute('id', $session->get('id'));
-
-        $encrypted = $dom->createElement('encrypted');
-        $encrypted->setAttribute('xmlns', 'eu.siacs.conversations.axolotl');
-        //$encrypted->setAttribute('xmlns', 'urn:xmpp:omemo:0');
-        $root->appendChild($encrypted);
-
-        $header = $dom->createElement('header');
-        $header->setAttribute('sid', $sid);
-        $encrypted->appendChild($header);
-
-        $key = $dom->createElement('key', $key);
-
-        if ($isprekey) {
-            $key->setAttribute('prekey', 'true');
-        }
-
-        $key->setAttribute('rid', $rid);
-        $header->appendChild($key);
-
-        $iv = $dom->createElement('iv', $iv);
-        $header->appendChild($iv);
-
-        $payload = $dom->createElement('payload', $payload);
-        $encrypted->appendChild($payload);
-
-        \Moxl\API::request($dom->saveXML($dom->documentElement));
     }
 }

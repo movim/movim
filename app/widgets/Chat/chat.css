@@ -117,6 +117,32 @@ main:not(.enabled) #chat_widget {
     overflow-y: auto;
 }
 
+#chat_widget .chat_box form textarea ~ span.encrypted,
+#chat_widget .chat_box form textarea ~ span.encrypted_disabled,
+#chat_widget .chat_box form textarea ~ span.encrypted_loading {
+    display: none;
+}
+
+#chat_widget .chat_box form textarea ~ span.encrypted_loading {
+    opacity: 0.5;
+}
+
+#chat_widget .chat_box form textarea[data-encryptedstate="yes"],
+#chat_widget .chat_box form textarea[data-encryptedstate="disabled"],
+#chat_widget .chat_box form textarea[data-encryptedstate="build"] {
+    width: calc(100% - 4.5rem);
+}
+
+#chat_widget .chat_box form textarea[data-encryptedstate="yes"] ~ span.control.icon.encrypted,
+#chat_widget .chat_box form textarea[data-encryptedstate="disabled"] ~ span.control.icon.encrypted_disabled,
+#chat_widget .chat_box form textarea[data-encryptedstate="build"] ~ span.control.icon.encrypted_loading {
+    display: inline-block;
+    font-size: 2.75rem;
+    position: absolute;
+    right: 0;
+    bottom: -0.35rem;
+}
+
 #chat_widget .chat_box span.primary,
 #chat_widget .chat_box span.control:not(.button):not(.color) {
     font-size: 3.5rem;
@@ -157,6 +183,10 @@ main:not(.enabled) #chat_widget {
 #chat_widget .chat_box > ul.list > li {
     min-height: 0;
     padding: 0 0.5rem;
+}
+
+#chat_widget .chat_box > ul.list > li form {
+    margin-right: 0;
 }
 
 #chat_widget .chat_box > ul.list > li > .control {
@@ -330,6 +360,7 @@ main:not(.enabled) #chat_widget {
     font-size: 0;
 }
 
+#chat_widget textarea#chat_textarea ~ span.control:hover,
 #chat_widget .primary_action:hover,
 #emojisearchbar + .emojis img:hover {
     cursor: pointer;
@@ -452,7 +483,7 @@ main:not(.enabled) #chat_widget {
 
 #chat_widget li:not(.oppose) .bubble div:hover ul.reactions:empty ~ span.reaction,
 #chat_widget li:not(.oppose) .bubble div:hover span.reply[data-mid],
-#chat_widget li.oppose .bubble:not(.sticker) div:hover span.actions {
+#chat_widget li.oppose .bubble:not(.sticker) div:not(.encrypted):hover span.actions {
     display: inline-flex;
     position: absolute;
     left: 100%;

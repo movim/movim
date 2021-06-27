@@ -60,6 +60,7 @@ class ContactActions extends Base
             $tpl->assign('roster', null);
         }
 
+        $tpl->assign('fingerprints', $this->user->bundles()->where('jid', $jid)->get());
         $tpl->assign('jid', $jid);
         $tpl->assign('clienttype', getClientTypes());
 

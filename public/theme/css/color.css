@@ -103,7 +103,7 @@ span.icon span.counter.alt {
 
 /* Elements */
 
-.button.red,    .icon.red   , span.resource.red      { color: #F44336; }
+.button.red,    .icon.red   , span.resource.red, p.encrypted.error { color: #F44336; }
 .button.purple, .icon.purple, span.resource.purple   { color: #9C27B0; }
 .button.indigo, .icon.indigo, span.resource.indigo   { color: #3F51B5; }
 .button.blue,   .icon.blue  , span.resource.blue     { color: #2196F3; }

@@ -2,6 +2,7 @@
 
 namespace Moxl\Stanza;
 
+use App\MessageOmemoHeader;
 use Movim\Session;
 
 class Message
@@ -20,7 +21,8 @@ class Message
         $parentId = false,
         array $reactions = [],
         $originId = false,
-        $threadid = false
+        $threadid = false,
+        ?MessageOmemoHeader $messageOMEMO = null
     ) {
         $session = Session::start();
 
@@ -219,15 +221,27 @@ class Message
             $root->appendChild($origin);
         }
 
+        // OMEMO
+        if ($messageOMEMO) {
+            $encryption = $dom->createElement('encryption');
+            $encryption->setAttribute('xmlns', 'urn:xmpp:eme:0');
+            $encryption->setAttribute('name', 'OMEMOE');
+            $encryption->setAttribute('namespace', 'eu.siacs.conversations.axolotl');
+            $root->appendChild($encryption);
+
+            $messageOMEMOXML = $dom->importNode($messageOMEMO->getDom(), true);
+            $root->appendChild($messageOMEMOXML);
+        }
+
         \Moxl\API::request($dom->saveXML($dom->documentElement));
     }
 
     public static function message($to, $content = false, $html = false, $id = false,
         $replace = false, $file = false, $parentId = false, array $reactions = [],
-        $originId = false, $threadId = false)
+        $originId = false, $threadId = false, ?MessageOmemoHeader $messageOMEMO = null)
     {
         self::maker($to, $content, $html, 'chat', 'active', 'request', $id, $replace,
-            $file, false, $parentId, $reactions, $originId, $threadId);
+            $file, false, $parentId, $reactions, $originId, $threadId, $messageOMEMO);
     }
 
     public static function receipt($to, $id)

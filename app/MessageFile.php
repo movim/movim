@@ -5,7 +5,8 @@ namespace App;
 use Respect\Validation\Validator;
 use stdClass;
 
-class MessageFile {
+class MessageFile
+{
     public $name;
     public $size = 0;
     public $type;

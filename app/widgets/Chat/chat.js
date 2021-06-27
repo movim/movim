@@ -32,6 +32,9 @@ var Chat = {
     translateY: 0,
     slideAuthorized: false,
 
+    // Temporary messages, for OMEMO local messages
+    tempMessages: {},
+
     autocomplete: function(event, jid)
     {
         RoomsUtils_ajaxMucUsersAutocomplete(jid);
@@ -133,8 +136,8 @@ var Chat = {
     sendMessage: function()
     {
         var textarea = Chat.getTextarea();
-
         var text = textarea.value;
+
         var muc = Boolean(textarea.dataset.muc);
         var mucReceipts = false;
         var jid = textarea.dataset.jid;
@@ -170,27 +173,102 @@ var Chat = {
                     reply.remove();
                 };
 
-                xhr = Chat_ajaxHttpDaemonSendMessage(jid, text, muc, null, replyMid, mucReceipts);
-            }
+                let timeout = 10000;
+                let onTimeout = function() {
+                    Chat.failedMessage();
+                };
 
-            xhr.timeout = 10000;
-            xhr.ontimeout = function() {
-                Chat.failedMessage();
-            };
+                let onReadyStateChange = function() {
+                    if (this.readyState == 4) {
+                        if (this.status >= 200 && this.status < 400) {
+                            Chat.sentMessage();
+                        }
 
-            xhr.onreadystatechange = function() {
-                if (this.readyState == 4) {
-                    if (this.status >= 200 && this.status < 400) {
-                        Chat.sentMessage();
+                        if (this.status >= 400 || this.status == 0) {
+                            Chat.failedMessage();
+                        }
                     }
+                };
 
-                    if (this.status >= 400 || this.status == 0) {
+                if (textarea.dataset.encryptedstate == 'build') {
+                    if (!ChatOmemo.buildMissingSessions(jid)) {
                         Chat.failedMessage();
                     }
+                } else if (textarea.dataset.encryptedstate == 'yes') {
+                    // Try to encrypt the message
+                    let omemo = ChatOmemo.encrypt(jid, text);
+                    if (omemo) {
+                        // TODO, disable the other risky features
+                        omemo.then(omemoheader => {
+                            tempId = omemoheader.tempId = Math.random().toString(36).substr(2, 15);
+                            Chat.tempMessages[tempId] = text;
+
+                            xhr = Chat_ajaxHttpDaemonSendMessage(jid, tempId, muc, null, replyMid, mucReceipts, omemoheader);
+
+                            xhr.timeout = timeout;
+                            xhr.ontimeout = onTimeout;
+                            xhr.onreadystatechange = onReadyStateChange;
+                        });
+                    }
+                } else {
+                    xhr = Chat_ajaxHttpDaemonSendMessage(jid, text, muc, null, replyMid, mucReceipts);
+                    xhr.timeout = timeout;
+                    xhr.ontimeout = onTimeout;
+                    xhr.onreadystatechange = onReadyStateChange;
                 }
-            };
+            }
         }
     },
+    sentId: function(tempId, id)
+    {
+        if (Chat.tempMessages[tempId]) {
+            ChatOmemoDB.putMessage(id, Chat.tempMessages[tempId]);
+            delete Chat.tempMessages[tempId];
+        }
+    },
+    setOmemoSessions: function(jid, sessions)
+    {
+        var store = new ChatOmemoStorage();
+
+        // Only resolve the local sessions
+        store.getLocalRegistrationId().then(localDeviceId => {
+            sessions = Object.values(sessions);
+            sessions = sessions.map(devices => devices.includes(String(localDeviceId)));
+
+            ChatOmemo.getContactState(jid).then(enabled => {
+                let state = 'no';
+
+                if (enabled) {
+                    /**
+                     * 0 no sessions, no encryption
+                     * 1 all the sessions are built, encrypt
+                     * 2 some sessions need to be built, build then encrypt
+                     */
+                    if (sessions.length > 0) {
+                        state = (sessions.every(good => good))
+                            ? 'yes'
+                            : 'build';
+                    }
+                } else {
+                    if (sessions.length > 0) {
+                        state = (sessions.every(good => good))
+                            ? 'disabled'
+                            : 'build';
+                    }
+                }
+
+                Chat.setOmemoState(state);
+            });
+        });
+    },
+    setOmemoState: function(state)
+    {
+        let textarea = Chat.getTextarea();
+        if (textarea) {
+            textarea.dataset.encryptedstate = state;
+        }
+    },
+
     enableSending: function()
     {
         Chat.sent = true;
@@ -849,7 +927,9 @@ var Chat = {
         }
 
         if (data.encrypted) {
+            msg.classList.add('encrypted');
             p.classList.add('encrypted');
+            span.appendChild(Chat.getEncryptedIcoHtml());
         }
 
         if (data.body.match(/^\/me\s/)) {
@@ -863,7 +943,7 @@ var Chat = {
         }
 
         if (data.id != null) {
-            msg.setAttribute('id', data.id);
+            msg.setAttribute('id', 'id' + data.id);
         }
 
         if (data.rtl) {
@@ -879,6 +959,22 @@ var Chat = {
             }
         } else {
             p.innerHTML = data.body;
+
+            // OMEMO handling
+            if (data.omemoheader) {
+                p.innerHTML = data.omemoheader.payload;
+                ChatOmemo.decrypt(data).then(plaintext => {
+                    let refreshP = document.querySelector('#id' + data.id + ' p');
+                    if (refreshP) {
+                        if (plaintext) {
+                            refreshP.innerHTML = plaintext;
+                            refreshP.classList.remove('encrypted');
+                        } else {
+                            refreshP.classList.add('error');
+                        }
+                    }
+                });
+            }
         }
 
         if (data.file != null && data.card === undefined && data.file.type !== 'xmpp') {
@@ -933,7 +1029,7 @@ var Chat = {
         msg.appendChild(reactions);
         msg.appendChild(span);
 
-        if (data.thread !== null) {
+        if (data.thread !== null && reply) {
             reply.dataset.mid = data.mid;
             msg.appendChild(reply);
         }
@@ -946,9 +1042,9 @@ var Chat = {
             msg.appendChild(actions);
         }
 
-        var elem = document.getElementById(data.oldid);
+        var elem = document.getElementById('id' + data.oldid);
         if (!elem) {
-            elem = document.getElementById(data.id);
+            elem = document.getElementById('id' + data.id);
         }
 
         if (elem) {
@@ -1105,7 +1201,6 @@ var Chat = {
                 video.setAttribute('loop', 'loop');
 
                 if (file.thumbnail && Object.keys(file.thumbnail).length !== 0) {
-                    console.log(file.thumbnail);
                     video.setAttribute('poster', file.thumbnail.uri);
                     video.setAttribute('width', file.thumbnail.width);
                     video.setAttribute('height', file.thumbnail.height);
@@ -1156,6 +1251,12 @@ var Chat = {
         }
 
         return div;
+    },
+    getEncryptedIcoHtml: function() {
+        var i = document.createElement('i');
+        i.className = 'material-icons';
+        i.innerText = 'lock';
+        return i;
     },
     getEditedIcoHtml: function() {
         var i = document.createElement('i');

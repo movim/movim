@@ -9,6 +9,7 @@ use Moxl\Xec\Action\Muc\SetConfig;
 use App\Contact;
 use App\Message;
 use App\MessageFile;
+use App\MessageOmemoHeader;
 use App\Reaction;
 use App\Url;
 use Moxl\Xec\Action\BOB\Request;
@@ -32,6 +33,7 @@ class Chat extends \Movim\Widget\Base
     public function load()
     {
         $this->addjs('chat.js');
+
         $this->addcss('chat.css');
         $this->registerEvent('carbons', 'onMessage');
         $this->registerEvent('message', 'onMessage');
@@ -331,6 +333,23 @@ class Chat extends \Movim\Widget\Base
             $this->rpc('Notification.current', 'chat|'.$jid);
             Notification::clearAndroid($this->route('chat', [$jid]));
             $this->rpc('Chat.scrollToSeparator');
+
+            $sessions = [];
+            $bundles = $this->user->bundles()
+                ->where('jid', $jid)
+                ->with('sessions')
+                ->get();
+
+            foreach ($bundles as $bundle) {
+                $sessions[$bundle->bundle_id] = $bundle->sessions->pluck('device_id');
+            }
+
+            // Check if we might need to build new sessions and if we already have built
+            // ones
+            $this->rpc('Chat.setOmemoSessions',
+                $jid,
+                $sessions
+            );
         }
     }
 
@@ -381,9 +400,11 @@ class Chat extends \Movim\Widget\Base
         bool $muc = false,
         $file = null,
         ?int $replyToMid = 0,
-        ?bool $mucReceipts = false
+        ?bool $mucReceipts = false,
+        $omemo = null
     ) {
         $messageFile = null;
+        $messageOMEMOHeader = null;
 
         if ($file) {
             $messageFile = new MessageFile;
@@ -401,7 +422,12 @@ class Chat extends \Movim\Widget\Base
             } catch (\Exception $e) {}
         }
 
-        $this->sendMessage($to, $message, $muc, null, $messageFile, $replyToMid, $mucReceipts);
+        if ($omemo) {
+            $messageOMEMOHeader = new MessageOMEMOHeader;
+            $messageOMEMOHeader->import($omemo);
+        }
+
+        $this->sendMessage($to, $message, $muc, null, $messageFile, $replyToMid, $mucReceipts, $messageOMEMOHeader);
     }
 
     /**
@@ -413,8 +439,15 @@ class Chat extends \Movim\Widget\Base
      */
     public function sendMessage(string $to, string $message = '', bool $muc = false,
         ?Message $replace = null, ?MessageFile $file = null, ?int $replyToMid = 0,
-        ?bool $mucReceipts = false)
+        ?bool $mucReceipts = false, ?MessageOMEMOHeader $messageOMEMOHeader = null)
     {
+        $tempId = null;
+
+        if ($messageOMEMOHeader) {
+            $tempId = $message;
+            $message = 'Encrypted OMEMO message sent';
+        }
+
         $body = ($file != null && $file->type != 'xmpp/uri')
             ? $file->uri
             : $message;
@@ -502,6 +535,12 @@ class Chat extends \Movim\Widget\Base
             $p->setFile($file);
         }
 
+        if ($messageOMEMOHeader) {
+            $m->encrypted = true;
+            $m->omemoheader = (string)$messageOMEMOHeader;
+            $p->setMessageOMEMO($messageOMEMOHeader);
+        }
+
         (ChatOwnState::getInstance())->halt();
 
         $p->request();
@@ -515,6 +554,11 @@ class Chat extends \Movim\Widget\Base
 
             $packet = new \Moxl\Xec\Payload\Packet;
             $packet->content = $m;
+
+            // We sent the published id back
+            if ($tempId) {
+                $this->rpc('Chat.sentId', $tempId, $m->id);
+            }
 
             // We refresh the Chats list
             $c = new Chats;
@@ -969,7 +1013,7 @@ class Chat extends \Movim\Widget\Base
         if ($message->retracted) {
             $message->body = '<i class="material-icons">delete</i> '.__('message.retracted');
         } elseif ($message->encrypted) {
-            $message->body = '<i class="material-icons">lock</i> '.__('message.encrypted');
+            $message->body = __('message.encrypted');
         } elseif (isset($message->html) && !isset($message->file)) {
             $message->body = $message->html;
         } else {

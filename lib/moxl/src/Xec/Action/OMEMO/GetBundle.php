@@ -5,10 +5,13 @@ namespace Moxl\Xec\Action\OMEMO;
 use Moxl\Xec\Action;
 use Moxl\Stanza\OMEMO;
 
+use App\Bundle;
+
 class GetBundle extends Action
 {
-    private $_to;
-    private $_id;
+    protected $_to;
+    protected $_id;
+    protected $_notifyBundle = false;
 
     public function request()
     {
@@ -19,24 +22,35 @@ class GetBundle extends Action
         );
     }
 
-    public function setTo($to)
+    public function setNotifyBundle(bool $notifyBundle)
     {
-        $this->_to = $to;
-        return $this;
-    }
-
-    public function setId($id)
-    {
-        $this->_id = $id;
+        $this->_notifyBundle = $notifyBundle;
         return $this;
     }
 
     public function handle($stanza, $parent = false)
     {
-        $bd = new \Modl\Bundle;
-        $bd->set($stanza->pubsub->items->item, $this->_to, $this->_id);
+        $bundle = Bundle::where('user_id', \App\User::me()->id)
+            ->where('jid', $this->_to)
+            ->where('bundle_id', $this->_id)
+            ->first();
 
-        $this->pack($bd);
-        $this->deliver();
+        if (!$bundle) {
+            $bundle = new Bundle;
+        }
+
+        $oldBundle = clone $bundle;
+
+        $bundle->set($this->_to, $this->_id, $stanza->pubsub->items->item->bundle);
+
+        // Only refresh if the bundle is different
+        if (!$oldBundle->sameAs($bundle)) {
+            $bundle->save();
+
+            if ($this->_notifyBundle) {
+                $this->pack($bundle);
+                $this->deliver();
+            }
+        }
     }
 }

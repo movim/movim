@@ -26,7 +26,6 @@
         {/if}
         <section>
             {if="$invitation != null"}
-                <br />
                 <ul class="list middle invite">
                     <li>
                         {$url = $contact->getPhoto('m')}
