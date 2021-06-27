@@ -280,11 +280,13 @@ var ChatOmemo = {
         var store = new ChatOmemoStorage();
         store.setContactState(jid, true);
         Chat_ajaxGet(jid);
+        ChatOmemo_ajaxEnableContactState();
     },
     disableContactState: function (jid) {
         var store = new ChatOmemoStorage();
         store.setContactState(jid, false);
         Chat.setOmemoState("disabled");
+        ChatOmemo_ajaxDisableContactState();
     },
     getContactState: async function(jid) {
         var store = new ChatOmemoStorage();

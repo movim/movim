@@ -71,6 +71,21 @@ class ChatOmemo extends \Movim\Widget\Base
         $this->rpc('ChatOmemo.doGenerateBundle');
     }
 
+    public function ajaxEnablingContactState()
+    {
+        Toast::send($this->__('omemo.encrypted_loading'));
+    }
+
+    public function ajaxEnableContactState()
+    {
+        Toast::send($this->__('omemo.enable_contact'));
+    }
+
+    public function ajaxDisableContactState()
+    {
+        Toast::send($this->__('omemo.disable_contact'));
+    }
+
     public function ajaxNotifyGeneratedBundle()
     {
         Toast::send($this->__('omemo.generated_bundle'));
