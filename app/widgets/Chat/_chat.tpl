@@ -96,7 +96,7 @@
                         <i class="material-icons">no_encryption</i>
                     </span>
                     <span class="control icon encrypted_loading" title="{$c->__('omemo.encrypted_loading')}"
-                        onclick="ChatOmemo_ajaxEnablingContactState()">
+                        onclick="ChatOmemo.disableContactState('{$jid}');">
                         <i class="material-icons">lock_clock</i>
                     </span>
                 </div>

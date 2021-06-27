@@ -251,9 +251,10 @@ var Chat = {
                     }
                 } else {
                     if (sessions.length > 0) {
-                        state = (sessions.every(good => good))
+                        state = 'disabled';
+                        /*state = (sessions.every(good => good))
                             ? 'disabled'
-                            : 'build';
+                            : 'build';*/
                     }
                 }
 
