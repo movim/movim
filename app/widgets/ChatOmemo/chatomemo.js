@@ -297,19 +297,9 @@ var ChatOmemo = {
         var store = new ChatOmemoStorage();
         return store.getContactState(jid);
     },
-    hasSessionOpened(jid) {
-        return Object.keys(localStorage)
-                     .filter(key => key.startsWith(USER_JID + '.session' + jid))
-                     .length > 0;
-    },
-    getSessionBundlesIds(jid) {
-        return Object.keys(localStorage)
-                     .filter(key => key.startsWith(USER_JID + '.session' + jid))
-                     .map(key => key.substring(key.lastIndexOf('.') + 1));
-    },
     encryptJid: function (plaintext, jid) {
-        let promises = Object.keys(localStorage)
-            .filter(key => key.startsWith(USER_JID + '.session' + jid))
+        var store = new ChatOmemoStorage();
+        let promises = store.filter('.session' + jid)
             .map(key => key.split(/[\s.]+/).pop())
             .map(deviceId => this.encryptDevice(plaintext, jid, deviceId) );
 
