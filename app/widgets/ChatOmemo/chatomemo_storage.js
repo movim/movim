@@ -8,17 +8,21 @@ ChatOmemoStorage.prototype = {
         RECEIVING: 2,
     },
 
+    // Storage is versionned to ensure a proper reset when changes are made
+    storageVersion: '1',
+
+    // Generic methods
     put: function (key, value) {
         if (key === undefined || value === undefined || key === null || value === null)
             throw new Error("Tried to store undefined/null");
 
-        return localStorage.setObject(key, value);
+        return localStorage.setObject(this.storageVersion + '.' + key, value);
     },
     get: function (key, defaultValue) {
         if (key === null || key === undefined)
             throw new Error("Tried to get value for undefined/null key");
-        if (key in localStorage) {
-            return localStorage.getObject(key);
+        if (this.storageVersion + '.' + key in localStorage) {
+            return localStorage.getObject(this.storageVersion + '.' + key);
         } else {
             return defaultValue;
         }
@@ -27,9 +31,13 @@ ChatOmemoStorage.prototype = {
         if (key === null || key === undefined)
             throw new Error("Tried to remove value for undefined/null key");
 
-        localStorage.removeItem(key);
+        localStorage.removeItem(this.storageVersion + '.' + key);
+    },
+    filter: function (search) {
+        return Object.keys(localStorage).filter(key => key.startsWith(this.storageVersion + '.' + this.jid + search));
     },
 
+    // OMEMO specific methods
     setIdentityKeyPair: function(identityKeyPair) {
         return Promise.resolve(this.put(this.jid + '.identityKey', {
             'privKey': MovimUtils.arrayBufferToBase64(identityKeyPair.privKey),
@@ -109,7 +117,7 @@ ChatOmemoStorage.prototype = {
         return Promise.resolve(this.remove(this.jid + '.25519KeypreKey' + keyId));
     },
 
-    loadSignedPreKey: function (keyId) {
+    loadCompleteSignedPreKey: function (keyId) {
         var res = this.get(this.jid + '.25519KeysignedKey' + keyId);
         if (res !== undefined) {
             res = {
@@ -121,7 +129,10 @@ ChatOmemoStorage.prototype = {
                 keyId: keyId
             };
         }
-        return Promise.resolve(res);
+        return res;
+    },
+    loadSignedPreKey: function (keyId) {
+        return Promise.resolve(this.loadCompleteSignedPreKey(keyId).keyPair);
     },
     storeSignedPreKey: function (keyId, key) {
         key.keyPair.pubKey = MovimUtils.arrayBufferToBase64(key.keyPair.pubKey);
@@ -143,19 +154,22 @@ ChatOmemoStorage.prototype = {
         return Promise.resolve(this.remove(this.jid + '.session' + identifier));
     },
     removeAllSessions: function () {
-        let filtered = Object.keys(localStorage).filter(key => key.startsWith(this.jid + '.session'));
+        let filtered = this.filter('.session');
 
-        for (id in filtered) {
+        for (key in filtered) {
             this.remove(filtered[key]);
         }
 
         return Promise.resolve();
     },
+    getSessions: function (identifier) {
+        return this.filter('.session' + identifier);
+    },
     checkJidHasSessions: function (identifier) {
-        return Object.keys(localStorage).filter(key => key.startsWith(this.jid + '.session' + identifier)).length > 0;
+        return this.filter('.session' + identifier).length > 0;
     },
     removeAllSessionsOfJid: function (identifier) {
-        let filtered = Object.keys(localStorage).filter(key => key.startsWith(this.jid + '.session' + identifier));
+        let filtered = this.filter('.session' + identifier);
 
         for (id in filtered) {
             this.remove(filtered[id]);

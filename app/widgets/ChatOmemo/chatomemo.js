@@ -5,7 +5,7 @@ const KEY_ALGO = {
     'length': 128
 };
 const NUM_PREKEYS = 50;
-const SIGNED_PREKEY_ID = 1234;
+const SIGNED_PREKEY_ID = 1;
 
 var ChatOmemo = {
     requestedDevicesListFrom: null,
@@ -70,7 +70,7 @@ var ChatOmemo = {
         bundle['identityKey'] = MovimUtils.arrayBufferToBase64(keyPair.pubKey);
         bundle['deviceId'] = await store.getLocalRegistrationId();
 
-        let signedPreKey = await store.loadSignedPreKey(SIGNED_PREKEY_ID);
+        let signedPreKey = store.loadCompleteSignedPreKey(SIGNED_PREKEY_ID);
         bundle['signedPreKey'] = {
             'id': signedPreKey.keyId,
             'publicKey': MovimUtils.arrayBufferToBase64(signedPreKey.keyPair.pubKey),
@@ -117,20 +117,27 @@ var ChatOmemo = {
         var store = new ChatOmemoStorage();
         var address = new libsignal.SignalProtocolAddress(jid, deviceId);
 
-        var sessionBuilder = new libsignal.SessionBuilder(store, address);
-        var promise = sessionBuilder.processPreKey({
-            registrationId: parseInt(deviceId, 10),
-            identityKey: MovimUtils.base64ToArrayBuffer(preKey.identitykey),
-            signedPreKey: {
-                keyId: parseInt(preKey.signedprekeyid, 10),
-                publicKey: MovimUtils.base64ToArrayBuffer(preKey.signedprekeypublic),
-                signature: MovimUtils.base64ToArrayBuffer(preKey.signedprekeysignature)
-            },
-            preKey: {
-                keyId: preKey.prekey.id,
-                publicKey: MovimUtils.base64ToArrayBuffer(preKey.prekey.value)
-            }
-        });
+        const session = await store.loadSession(address.toString());
+
+        // If we already have a session we don't have to build it
+        if (session) {
+            var promise = Promise.resolve();
+        } else {
+            var sessionBuilder = new libsignal.SessionBuilder(store, address);
+            var promise = sessionBuilder.processPreKey({
+                registrationId: parseInt(deviceId, 10),
+                identityKey: MovimUtils.base64ToArrayBuffer(preKey.identitykey),
+                signedPreKey: {
+                    keyId: parseInt(preKey.signedprekeyid, 10),
+                    publicKey: MovimUtils.base64ToArrayBuffer(preKey.signedprekeypublic),
+                    signature: MovimUtils.base64ToArrayBuffer(preKey.signedprekeysignature)
+                },
+                preKey: {
+                    keyId: preKey.prekey.id,
+                    publicKey: MovimUtils.base64ToArrayBuffer(preKey.prekey.value)
+                }
+            });
+        }
 
         promise.then(function onsuccess() {
             console.log('success ' + jid + ':' + deviceId);
@@ -206,22 +213,7 @@ var ChatOmemo = {
 
         var store = new ChatOmemoStorage();
         let deviceId = await store.getLocalRegistrationId();
-
-        if (store.checkJidHasSessions(message.jidfrom) == false) {
-            console.log('No existing session for this JID');
-
-            /**
-             * We received a message for us, but we don't have any sessions built yet
-             * this can happen when we don't have the presence of the contact or that we
-             * freshly added it to our roster
-             */
-            if (Object.keys(message.omemoheader.keys).includes(String(deviceId))
-            && ChatOmemo.requestedDevicesListFrom != message.jidfrom) {
-                ChatOmemo.requestedDevicesListFrom = message.jidfrom;
-                ChatOmemo_ajaxGetDevicesList(message.jidfrom);
-            }
-            return;
-        }
+        let originalSessionsNumber = store.getSessions(message.jidfrom).length;
 
         if (message.omemoheader.keys[deviceId] == undefined) {
             console.log('Message not encrypted for this device');
@@ -272,6 +264,19 @@ var ChatOmemo = {
         }, importedKey, ciphertextAndAuthenticationTag);
 
         let plaintext = MovimUtils.arrayBufferToString(decryptedBuffer);
+
+        /**
+         * We received a message for us, and a session was created from it, we might have
+         * some more sessions to build
+         */
+        if (store.getSessions(message.jidfrom).length > originalSessionsNumber
+        && Object.keys(message.omemoheader.keys).includes(String(deviceId))
+        && ChatOmemo.requestedDevicesListFrom != message.jidfrom) {
+            console.log('A new session was created from the incoming message, refresh the contact devices');
+
+            ChatOmemo.requestedDevicesListFrom = message.jidfrom;
+            ChatOmemo_ajaxGetDevicesList(message.jidfrom);
+        }
 
         ChatOmemoDB.putMessage(message.id, plaintext);
         return plaintext;
