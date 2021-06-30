@@ -191,9 +191,15 @@ var Chat = {
                 };
 
                 if (textarea.dataset.encryptedstate == 'build') {
-                    if (!ChatOmemo.buildMissingSessions(jid)) {
-                        Chat.failedMessage();
-                    }
+                    var store = new ChatOmemoStorage();
+                    store.getLocalRegistrationId().then(deviceId => {
+                        if (deviceId) {
+                            ChatOmemo_ajaxGetMissingSessions(jid, deviceId);
+                        } else {
+                            Chat.disableSending();
+                            ChatOmemo.generateBundle();
+                        }
+                    });
                 } else if (textarea.dataset.encryptedstate == 'yes') {
                     // Try to encrypt the message
                     let omemo = ChatOmemo.encrypt(jid, text);

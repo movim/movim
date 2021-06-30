@@ -307,17 +307,6 @@ var ChatOmemo = {
             return result;
         });
     },
-    buildMissingSessions: function (jid) {
-        var store = new ChatOmemoStorage();
-        store.getLocalRegistrationId().then(deviceId => {
-            if (deviceId) {
-                ChatOmemo_ajaxGetMissingSessions(jid, deviceId);
-            } else {
-                ChatOmemo.generateBundle();
-                return false;
-            }
-        });
-    },
     encryptDevice: function (plaintext, jid, deviceId) {
         var address = new libsignal.SignalProtocolAddress(jid, parseInt(deviceId, 10));
         var store = new ChatOmemoStorage();
