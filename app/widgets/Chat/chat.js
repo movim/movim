@@ -959,11 +959,9 @@ var Chat = {
                 p.classList.add('previewable');
             }
         } else {
-            p.innerHTML = data.body;
-
             // OMEMO handling
             if (data.omemoheader) {
-                p.innerHTML = data.omemoheader.payload;
+                p.innerHTML = data.omemoheader.payload.substr(0, data.omemoheader.payload.length/2);
                 ChatOmemo.decrypt(data).then(plaintext => {
                     let refreshP = document.querySelector('#id' + data.id + ' p');
                     if (refreshP) {
@@ -975,6 +973,8 @@ var Chat = {
                         }
                     }
                 });
+            } else {
+                p.innerHTML = data.body;
             }
         }
 
