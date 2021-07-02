@@ -171,7 +171,7 @@ class Notifications extends Base
         $view->assign('hearth', addEmojis('♥'));
         $view->assign('notifs', $notifs);
         $view->assign('since', $since);
-        $view->assign('invitations', $invitations);
+        $view->assign('invitations', array_reverse($invitations));
 
         return $view->draw('_notifications');
     }
