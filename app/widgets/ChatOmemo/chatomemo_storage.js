@@ -165,6 +165,9 @@ ChatOmemoStorage.prototype = {
     getSessions: function (identifier) {
         return this.filter('.session' + identifier);
     },
+    getSessionsIds: function (identifier) {
+        return this.filter('.session' + identifier).map(sessionId => sessionId.split('.').pop());
+    },
     checkJidHasSessions: function (identifier) {
         return this.filter('.session' + identifier).length > 0;
     },

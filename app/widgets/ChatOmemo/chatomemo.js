@@ -16,6 +16,8 @@ var ChatOmemo = {
 
         if (localDeviceId == undefined) {
             ChatOmemo.generateBundle();
+        } else {
+            ChatOmemo_ajaxGetSelfMissingSessions(store.getSessionsIds(USER_JID));
         }
     },
 

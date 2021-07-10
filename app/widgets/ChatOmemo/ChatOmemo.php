@@ -36,15 +36,36 @@ class ChatOmemo extends \Movim\Widget\Base
             })
             ->get();
 
-        $preKeys = [];
+        if (!empty($bundles)) {
+            $preKeys = [];
 
-        foreach ($bundles as $bundle) {
-            $preKeys[$bundle->bundle_id] = $this->extractPreKey($bundle);
+            foreach ($bundles as $bundle) {
+                $preKeys[$bundle->bundle_id] = $this->extractPreKey($bundle);
+            }
+
+            Toast::send($this->__('omemo.building_sessions'));
+            $this->rpc('ChatOmemo.handlePreKeys', $jid, $preKeys);
+        }
+    }
+
+    public function ajaxGetSelfMissingSessions(array $resolvedDeviceIds)
+    {
+        $bundles = $this->user->bundles()
+            ->where('jid', $this->user->id)
+            ->whereNotIn('bundle_id', $resolvedDeviceIds)
+            ->get();
+
+        if ($bundles->count() > 0) {
+            $preKeys = [];
+
+            foreach ($bundles as $bundle) {
+                $preKeys[$bundle->bundle_id] = $this->extractPreKey($bundle);
+            }
+
+            Toast::send($this->__('omemo.building_own_sessions'));
+            $this->rpc('ChatOmemo.handlePreKeys', $this->user->id, $preKeys);
         }
 
-        Toast::send($this->__('omemo.building_sessions'));
-
-        $this->rpc('ChatOmemo.handlePreKeys', $jid, $preKeys);
     }
 
     public function ajaxHttpSetBundleSession(string $jid, string $bundleId, string $deviceId)

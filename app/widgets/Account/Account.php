@@ -127,13 +127,15 @@ class Account extends \Movim\Widget\Base
         $this->onRemoved();
     }
 
-    public function ajaxHttpGetFingerprints($identity)
+    public function ajaxHttpGetFingerprints($identity, array $resolvedDeviceIds)
     {
         $view = $this->tpl();
 
         $fingerprints = $this->user->bundles()->where('jid', $this->user->id)->get();
+
         foreach($fingerprints as $fingerprint) {
             $fingerprint->self = ($fingerprint->identitykey == $identity);
+            $fingerprint->built = in_array($fingerprint->bundle_id, $resolvedDeviceIds);
         }
 
         $view->assign('fingerprints', $fingerprints->sortByDesc('self'));

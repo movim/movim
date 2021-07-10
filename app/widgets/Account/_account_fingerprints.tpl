@@ -7,7 +7,7 @@
         </li>
         {loop="$fingerprints"}
             <li>
-                <span class="primary icon {if="$value->self"}green{else}gray{/if}">
+                <span class="primary icon {if="$value->self"}green{elseif="$value->built"}blue{else}gray{/if}">
                     <i class="material-icons">fingerprint</i>
                 </span>
                 <div>
