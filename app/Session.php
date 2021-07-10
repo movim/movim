@@ -23,6 +23,11 @@ class Session extends Model
         return $this->hasMany('App\Presence');
     }
 
+    public function ownPresences()
+    {
+        return $this->hasMany('App\Presence')->where('jid', $this->user_id);
+    }
+
     public function presence()
     {
         return $this->hasOne('App\Presence', 'jid', 'user_id')

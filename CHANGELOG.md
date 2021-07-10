@@ -22,6 +22,8 @@ v0.19.1 (trunk)
 * Refactor and unify some views between the public and private widgets
 * Handle proper > quotes in the Chat bubbles
 * Replace michelf/php-markdown with league/commonmark
+* Add OMEMO basic support for one-to-one chat
+* Show contact self presences in the Account tab in the configuration page
 
 v0.19
 ---------------------------

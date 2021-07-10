@@ -15,5 +15,7 @@ MovimWebsocket.attach(function() {
         Account_ajaxHttpGetFingerprints(null, store.getSessionsIds(USER_JID));
     });
 
+    Account_ajaxHttpGetPresences();
+
     Notification.current('account');
 });

@@ -34,6 +34,7 @@
             </div>
         </li>
     </ul>
+    <div id="account_presences"></div>
     <div id="account_fingerprints"></div>
     <div id="account_gateways">
         {autoescape="off"}

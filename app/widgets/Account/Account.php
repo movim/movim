@@ -127,6 +127,23 @@ class Account extends \Movim\Widget\Base
         $this->onRemoved();
     }
 
+    public function ajaxHttpGetPresences()
+    {
+        $view = $this->tpl();
+
+        $presences = $this->user->session->ownPresences;
+
+        if ($presences->count() > 0) {
+            $view->assign('presences', $presences);
+            $view->assign('clienttype', getClientTypes());
+
+            $this->rpc('MovimTpl.fill',
+                '#account_presences',
+                $view->draw('_account_presences')
+            );
+        }
+    }
+
     public function ajaxHttpGetFingerprints($identity, array $resolvedDeviceIds)
     {
         $view = $this->tpl();
