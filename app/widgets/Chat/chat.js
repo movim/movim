@@ -313,8 +313,11 @@ var Chat = {
     {
         var textarea = Chat.getTextarea();
         if (textarea.value == ''
+        && !Chat.isEncrypted()
         && Boolean(textarea.dataset.muc) == false) {
             Chat_ajaxLast(textarea.dataset.jid);
+        } else {
+            Toast.send(Chat.action_impossible_encrypted_error);
         }
     },
     editMessage: function(mid)
@@ -359,7 +362,7 @@ var Chat = {
                 return;
             }
 
-            if (event.keyCode == 38) {
+            if (event.keyCode == 38 && !Chat.isEncrypted()) {
                 Chat.editPrevious();
             } else if (event.keyCode == 40
             && (this.value == '' || Chat.edit == true)) {
@@ -430,7 +433,7 @@ var Chat = {
             }
 
             if ((url.protocol === "http:" || url.protocol === "https:")
-            && textarea.value == '') {
+            && textarea.value == '' && !Chat.isEncrypted()) {
                 Chat.enableSending();
                 ChatActions_ajaxHttpResolveUrl(pastedData);
             }
@@ -545,10 +548,11 @@ var Chat = {
         MovimUtils.textareaAutoheight(textarea);
         textarea.focus();
     },
-    setConfig(pagination, delivery_error)
+    setConfig(pagination, delivery_error, action_impossible_encrypted_error)
     {
         Chat.pagination = pagination;
         Chat.delivery_error = delivery_error;
+        Chat.action_impossible_encrypted_error = action_impossible_encrypted_error;
     },
     setGeneralElements(date, separator)
     {
@@ -972,7 +976,19 @@ var Chat = {
                     let refreshP = document.querySelector('#id' + data.id + ' p');
                     if (refreshP) {
                         if (plaintext) {
-                            refreshP.innerHTML = plaintext;
+                            // If the plaintext is a URL
+                            if (Chat.isValidHttpUrl(plaintext)) {
+                                refreshP.innerHTML = '';
+                                var a = document.createElement('a');
+                                a.textContent = plaintext;
+                                a.setAttribute('href', plaintext);
+                                a.setAttribute('target', '_blank');
+                                a.setAttribute('rel', 'noopener');
+                                refreshP.appendChild(a);
+                            } else {
+                                refreshP.innerHTML = plaintext;
+                            }
+
                             refreshP.classList.remove('encrypted');
                         } else {
                             refreshP.classList.add('error');
@@ -1346,6 +1362,9 @@ var Chat = {
         var textarea = document.querySelector('#chat_textarea');
         if (textarea) return textarea;
     },
+    isEncrypted: function() {
+        return (Chat.getTextarea() && Chat.getTextarea().dataset.encryptedstate == 'yes');
+    },
     getDiscussion: function() {
         return document.querySelector('#chat_widget div.contained');
     },
@@ -1391,6 +1410,17 @@ var Chat = {
             Chat.slideAuthorized = false;
             Chat.startX = Chat.translateX = Chat.startY = Chat.translateY = 0;
         }, true);
+    },
+    isValidHttpUrl: function(string) {
+        let url;
+
+        try {
+          url = new URL(string);
+        } catch (_) {
+          return false;
+        }
+
+        return url.protocol === "http:" || url.protocol === "https:";
     }
 };
 

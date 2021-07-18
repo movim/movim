@@ -275,7 +275,11 @@ class Chat extends \Movim\Widget\Base
         $separator = $view->draw('_chat_separator');
 
         $this->rpc('Chat.setGeneralElements', $date, $separator);
-        $this->rpc('Chat.setConfig', $this->_pagination, $this->__("message.error"));
+        $this->rpc('Chat.setConfig',
+            $this->_pagination,
+            $this->__('message.error'),
+            $this->__('chat.action_impossible_encrypted')
+        );
     }
 
     public function ajaxClearCounter(string $jid)

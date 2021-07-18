@@ -12,7 +12,13 @@ var ChatOmemoDB = {
             db.createObjectStore(ChatOmemoDB.storeName, { keyPath: "id" });
         }
 
-        ChatOmemoDB.db = db;
+        db.onsuccess = function() {
+            ChatOmemoDB.db = db;
+        }
+
+        db.onerror = function() {
+            console.log('Movim Decrypted Messages database cannot be opened properly');
+        }
     },
 
     putMessage: async function(id, body) {
