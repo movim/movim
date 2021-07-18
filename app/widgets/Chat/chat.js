@@ -763,7 +763,7 @@ var Chat = {
 
         return true;
     },
-    appendMessagesWrapper : function(page, prepend)
+    appendMessagesWrapper : async function(page, prepend)
     {
         var discussion = Chat.getDiscussion();
 
@@ -771,6 +771,17 @@ var Chat = {
             if (discussion == null) return;
 
             Chat.setScroll();
+
+            // Get all the messages keys
+            var ids = [];
+            Object.values(page).forEach(pageByDate => {
+                Object.values(pageByDate).map(message => ids.push(message.id));
+            });
+
+            // Try to preload the OMEMO messages from the cache
+            if (ids.length > 2) {
+                await ChatOmemoDB.loadMessagesByIds(ids);
+            }
 
             for(date in page) {
                 let messageDateTime = page[date][Object.keys(page[date])[0]].published;
