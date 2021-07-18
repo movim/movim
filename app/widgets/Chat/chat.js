@@ -829,7 +829,7 @@ var Chat = {
             if (textarea && lastMessage) {
                 Chat_ajaxDisplayed(
                     textarea.dataset.jid,
-                    lastMessage.id
+                    lastMessage.id.substr(2) // 'id' is appended to the id
                 );
             }
         } else if (discussion !== null) {
