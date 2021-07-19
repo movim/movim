@@ -775,7 +775,9 @@ var Chat = {
             // Get all the messages keys
             var ids = [];
             Object.values(page).forEach(pageByDate => {
-                Object.values(pageByDate).map(message => ids.push(message.id));
+                Object.values(pageByDate).map(message => {
+                    if (message.omemoheader) ids.push(message.id)
+                });
             });
 
             // Try to preload the OMEMO messages from the cache

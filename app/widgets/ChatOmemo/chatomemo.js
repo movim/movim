@@ -219,6 +219,7 @@ var ChatOmemo = {
 
         if (message.omemoheader.keys[deviceId] == undefined) {
             console.log('Message not encrypted for this device');
+            ChatOmemoDB.putMessage(message.id, false);
             return;
         }
 
