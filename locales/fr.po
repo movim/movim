@@ -1908,7 +1908,7 @@ msgstr "Envoyer ce lien à vos contacts"
 
 #: [room]public_muc
 msgid "Public"
-msgstr "Publique"
+msgstr "Public"
 
 #: [room]public_muc_text
 msgid "This chatroom is publicly discoverable"
