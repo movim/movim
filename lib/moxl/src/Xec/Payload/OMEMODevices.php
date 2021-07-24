@@ -12,15 +12,17 @@ class OMEMODevices extends Payload
 
         $list = $stanza->items->item->list;
 
-        foreach ($list as $devices) {
-            foreach ($devices as $device) {
-                $gb = new GetBundle;
-                $gb->setTo($from)
-                   ->setId((string)$device->attributes()->id)
-                   ->request();
+        if ($list) {
+            foreach ($list as $devices) {
+                foreach ($devices as $device) {
+                    $gb = new GetBundle;
+                    $gb->setTo($from)
+                       ->setId((string)$device->attributes()->id)
+                       ->request();
+                }
             }
-        }
 
-        $this->deliver();
+            $this->deliver();
+        }
     }
 }

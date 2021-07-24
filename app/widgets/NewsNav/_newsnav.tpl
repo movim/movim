@@ -1,4 +1,4 @@
-{if="$blogs->isNotEmpty()"}
+{if="$blogs && $blogs->isNotEmpty()"}
     <ul class="list active middle card shadow">
         <li class="subheader">
             <div>
@@ -13,7 +13,7 @@
     </ul>
 {/if}
 
-{if="$posts->isNotEmpty()"}
+{if="$posts && $posts->isNotEmpty()"}
 <ul class="list active middle card shadow">
     <li class="subheader active" onclick="MovimUtils.redirect('{$c->route('explore')}')">
         {if="$page == 'news'"}

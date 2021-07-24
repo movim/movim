@@ -133,7 +133,7 @@ class Core implements MessageComponentInterface
             $this->sessions[$sid]->messageIn($msg);
         } else {
             $sid = $this->getHeaderSid($from);
-            if ($sid != null) {
+            if ($sid != null && isset($this->sessions[$sid])) {
                 $this->sessions[$sid]->messageOut($msg);
             }
         }

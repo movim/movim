@@ -71,19 +71,23 @@ class Publish extends Base
     public function ajaxHttpSaveTitle($id, $title)
     {
         $draft = $this->user->drafts()->find($id);
-        $draft->title = $title;
-        $draft->save();
 
-        $this->rpc('MovimUtils.addClass', '#publish textarea[name=title] + label span.save', 'saved');
+        if ($draft) {
+            $draft->title = $title;
+            $draft->save();
+            $this->rpc('MovimUtils.addClass', '#publish textarea[name=title] + label span.save', 'saved');
+        }
     }
 
     public function ajaxHttpSaveContent($id, $content)
     {
         $draft = $this->user->drafts()->find($id);
-        $draft->content = $content;
-        $draft->save();
 
-        $this->rpc('MovimUtils.addClass', '#publish textarea[name=content] + label span.save', 'saved');
+        if ($draft) {
+            $draft->content = $content;
+            $draft->save();
+            $this->rpc('MovimUtils.addClass', '#publish textarea[name=content] + label span.save', 'saved');
+        }
     }
 
     public function ajaxPreview($id)
