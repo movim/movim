@@ -53,4 +53,4 @@ var onFocusedFunction = function() {
 window.addEventListener('mouseover', onFocusedFunction);
 window.addEventListener('focus', onFocusedFunction);
 window.addEventListener('blur', function() { isFocused = false; });
-window.addEventListener('ontouchstart', function() { isTouch = true; }, { once: true });
+window.addEventListener('touchstart', function() { isTouch = true; }, { once: true });
