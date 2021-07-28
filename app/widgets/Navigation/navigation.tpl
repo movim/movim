@@ -75,9 +75,7 @@
        href="{$c->route('subscriptions')}"
        title="{$c->__('communityaffiliation.subscriptions')}">
         <li {if="$page == 'subscriptions'"}class="active"{/if}>
-            <span class="primary icon">
-                <i class="material-icons">bookmarks</i>
-            </span>
+            <span class="primary icon"><i class="material-icons">bookmarks</i></span>
             <div>
                 <p class="normal">{$c->__('communityaffiliation.subscriptions')}</p>
             </div>

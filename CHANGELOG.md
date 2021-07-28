@@ -24,6 +24,7 @@ v0.19.1 (trunk)
 * Replace michelf/php-markdown with league/commonmark
 * Add OMEMO basic support for one-to-one chat
 * Show contact self presences in the Account tab in the configuration page
+* New design for the general navigation bar on desktop
 
 v0.19
 ---------------------------
