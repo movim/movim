@@ -1966,7 +1966,7 @@ msgid "Always notify"
 msgstr "常に通知する"
 
 #: [roomsexplore]no_local
-msgid "No chatrooms found localy"
+msgid "No chatrooms found locally"
 msgstr "ローカルでチャットルームが見つかりませんでした"
 
 #: [roomsexplore]global_title
@@ -1974,7 +1974,7 @@ msgid "Global search"
 msgstr "グローバル検索"
 
 #: [roomsexplore]no_global
-msgid "No chatrooms found globaly"
+msgid "No chatrooms found globally"
 msgstr "グローバルでチャットルームが見つかりませんでした"
 
 #: [search]keyword

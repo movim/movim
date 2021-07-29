@@ -14,7 +14,7 @@ msgstr ""
 "X-Generator: Translate Toolkit 3.3.2\n"
 
 #: [roomsexplore]no_local
-msgid "No chatrooms found localy"
+msgid "No chatrooms found locally"
 msgstr ""
 
 #: [roomsexplore]global_title
@@ -22,5 +22,5 @@ msgid "Global search"
 msgstr ""
 
 #: [roomsexplore]no_global
-msgid "No chatrooms found globaly"
+msgid "No chatrooms found globally"
 msgstr ""
