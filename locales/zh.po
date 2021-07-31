@@ -1971,7 +1971,7 @@ msgid "Always notify"
 msgstr "总是通知"
 
 #: [roomsexplore]no_local
-msgid "No chatrooms found localy"
+msgid "No chatrooms found locally"
 msgstr "在本地找不到聊天室"
 
 #: [roomsexplore]global_title
@@ -1979,7 +1979,7 @@ msgid "Global search"
 msgstr ""
 
 #: [roomsexplore]no_global
-msgid "No chatrooms found globaly"
+msgid "No chatrooms found globally"
 msgstr ""
 
 #: [search]keyword

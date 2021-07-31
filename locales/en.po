@@ -1961,16 +1961,16 @@ msgid "Always notify"
 msgstr "Always notify"
 
 #: [roomsexplore]no_local
-msgid "No chatrooms found localy"
-msgstr "No chatrooms found localy"
+msgid "No chatrooms found locally"
+msgstr "No chatrooms found locally"
 
 #: [roomsexplore]global_title
 msgid "Global search"
 msgstr "Global search"
 
 #: [roomsexplore]no_global
-msgid "No chatrooms found globaly"
-msgstr "No chatrooms found globaly"
+msgid "No chatrooms found globally"
+msgstr "No chatrooms found globally"
 
 #: [search]keyword
 msgid "What are you looking for?"

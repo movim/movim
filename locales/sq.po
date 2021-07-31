@@ -1964,7 +1964,7 @@ msgid "Always notify"
 msgstr "Njofto përherë"
 
 #: [roomsexplore]no_local
-msgid "No chatrooms found localy"
+msgid "No chatrooms found locally"
 msgstr "S’u gjetën dhoma fjalosjes vendore"
 
 #: [roomsexplore]global_title
@@ -1972,7 +1972,7 @@ msgid "Global search"
 msgstr "Kërkim global"
 
 #: [roomsexplore]no_global
-msgid "No chatrooms found globaly"
+msgid "No chatrooms found globally"
 msgstr "S’u gjetën dhoma fjalosjesh globale"
 
 #: [search]keyword
