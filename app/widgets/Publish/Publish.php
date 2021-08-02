@@ -94,7 +94,7 @@ class Publish extends Base
     {
         $draft = $this->user->drafts()->find($id);
 
-        if (!$draft->empty()) {
+        if ($draft->isNotEmpty()) {
             $view = $this->tpl();
             $doc = new DOMDocument;
             $converter = new CommonMarkConverter([
@@ -118,7 +118,7 @@ class Publish extends Base
 
         $draft = $this->user->drafts()->find($id);
 
-        if ($draft && !$draft->empty()) {
+        if ($draft && $draft->isNotEmpty()) {
             $p = new PostPublish;
             $p->setFrom($this->user->id)
                 ->setTo($draft->server)

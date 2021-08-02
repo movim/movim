@@ -159,10 +159,36 @@ var Chat = {
             Chat.enableSending();
 
             let xhr;
+            let timeout = 10000;
+            let onTimeout = function() {
+                Chat.failedMessage();
+            };
+
+            let onReadyStateChange = function() {
+                if (this.readyState == 4) {
+                    if (this.status >= 200 && this.status < 400) {
+                        Chat.sentMessage();
+                    }
+
+                    if (this.status >= 400 || this.status == 0) {
+                        Chat.failedMessage();
+                    }
+                }
+            };
 
             if (Chat.edit) {
                 Chat.edit = false;
-                xhr = Chat_ajaxHttpDaemonCorrect(jid, text, textarea.dataset.mid);
+
+                if (text == '') {
+                    Chat.disableSending();
+                } else {
+                    xhr = Chat_ajaxHttpDaemonCorrect(jid, text, textarea.dataset.mid);
+                }
+
+                xhr.timeout = timeout;
+                xhr.ontimeout = onTimeout;
+                xhr.onreadystatechange = onReadyStateChange;
+
                 delete textarea.dataset.mid;
             } else {
                 var reply = document.querySelector('#reply > div');
@@ -171,23 +197,6 @@ var Chat = {
                 if (reply) {
                     replyMid = reply.dataset.mid;
                     reply.remove();
-                };
-
-                let timeout = 10000;
-                let onTimeout = function() {
-                    Chat.failedMessage();
-                };
-
-                let onReadyStateChange = function() {
-                    if (this.readyState == 4) {
-                        if (this.status >= 200 && this.status < 400) {
-                            Chat.sentMessage();
-                        }
-
-                        if (this.status >= 400 || this.status == 0) {
-                            Chat.failedMessage();
-                        }
-                    }
                 };
 
                 if (textarea.dataset.encryptedstate == 'build') {
@@ -312,9 +321,10 @@ var Chat = {
     editPrevious: function()
     {
         var textarea = Chat.getTextarea();
-        if (textarea.value == ''
-        && !Chat.isEncrypted()
-        && Boolean(textarea.dataset.muc) == false) {
+
+        if (textarea.value != '' || Boolean(textarea.dataset.muc) == true) return;
+
+        if (!Chat.isEncrypted()) {
             Chat_ajaxLast(textarea.dataset.jid);
         } else {
             Toast.send(Chat.action_impossible_encrypted_error);

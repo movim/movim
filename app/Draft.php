@@ -30,9 +30,9 @@ class Draft extends Model
         return $this->hasOne('App\Post', 'id', 'reply_id');
     }
 
-    public function empty()
+    public function isNotEmpty()
     {
-        return empty($this->title) && empty($this->content);
+        return !empty($this->title);
     }
 
     public function tryFillPost()

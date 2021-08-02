@@ -52,10 +52,10 @@
 
                 <div>
                     <p class="line">
-                        {if="$draft->empty()"}
-                            {$c->__('publish.new')}
-                        {else}
+                        {if="$draft->isNotEmpty()"}
                             {$c->__('button.edit')}
+                        {else}
+                            {$c->__('publish.new')}
                         {/if}
                     </p>
                     <p>{$c->__('publish.rich_editor')}</p>
