@@ -42,7 +42,7 @@ class RoomsExplore extends Base
     public function onGlobalSearchError($packet)
     {
         $this->rpc('MovimTpl.fill', '#roomsexplore_global', '');
-        $this->searchLocaly($packet->content);
+        $this->searchLocally($packet->content);
     }
 
     /**
@@ -64,7 +64,7 @@ class RoomsExplore extends Base
         $configuration = \App\Configuration::get();
 
         if ($configuration->restrictsuggestions) {
-            $this->searchLocaly($keyword);
+            $this->searchLocally($keyword);
         } else {
             $s = new Search;
             $s->setKeyword($keyword)
@@ -72,7 +72,7 @@ class RoomsExplore extends Base
         }
     }
 
-    private function searchLocaly($keyword = false)
+    private function searchLocally($keyword = false)
     {
         $view = $this->tpl();
         $rooms = \App\Info::whereCategory('conference')

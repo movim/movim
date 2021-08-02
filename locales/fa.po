@@ -1963,7 +1963,7 @@ msgid "Always notify"
 msgstr "همیشه به من اطلاع بده"
 
 #: [roomsexplore]no_local
-msgid "No chatrooms found localy"
+msgid "No chatrooms found locally"
 msgstr "هیچ چت روم محلی ایی پیدا نشد"
 
 #: [roomsexplore]global_title
@@ -1971,7 +1971,7 @@ msgid "Global search"
 msgstr "سرچ کلی"
 
 #: [roomsexplore]no_global
-msgid "No chatrooms found globaly"
+msgid "No chatrooms found globally"
 msgstr ""
 
 #: [search]keyword
