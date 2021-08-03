@@ -5,17 +5,17 @@ namespace Movim\Daemon;
 use Movim\Bootstrap;
 
 use Psr\Http\Message\ServerRequestInterface;
-use React\Socket\Server as Reactor;
 use React\EventLoop\LoopInterface;
 
 use React\Http\Server;
 use React\Http\Message\Response;
+use React\Socket\SocketServer;
 
 class Api
 {
     private $_core;
 
-    public function __construct(LoopInterface $loop, Reactor $socket, Core $core)
+    public function __construct(LoopInterface $loop, SocketServer $socket, Core $core)
     {
         $this->_core = &$core;
         $api = &$this;

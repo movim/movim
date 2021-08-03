@@ -6,10 +6,9 @@ gc_enable();
 use Movim\Bootstrap;
 use Movim\RPC;
 use Movim\Session;
-use React\Promise\Promise;
 use React\Promise\Timer;
 
-$loop = React\EventLoop\Factory::create();
+$loop = React\EventLoop\Loop::get();
 
 $bootstrap = new Bootstrap;
 $bootstrap->boot();
@@ -19,12 +18,12 @@ $config = React\Dns\Config\Config::loadSystemConfigBlocking();
 $server = $config->nameservers ? reset($config->nameservers) : '8.8.8.8';
 
 $factory = new React\Dns\Resolver\Factory();
-$dns = $factory->create($server, $loop);
+$dns = $factory->create($server);
 
 // TCP Connector
 $connector = new React\Socket\HappyEyeBallsConnector(
     $loop,
-    new React\Socket\Connector($loop, [
+    new React\Socket\Connector([
         'timeout' => 5.0,
         'tls' => [
             'SNI_enabled' => true,

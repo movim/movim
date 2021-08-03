@@ -19,29 +19,29 @@
         "ext-imagick": "*",
         "ext-json": "*",
 
-        "fabiang/sasl": "^1.0.1",
+        "fabiang/sasl": "^1.0.3",
         "rain/raintpl": "^3.1.1",
         "embed/embed": "^v3.4",
         "league/commonmark": "^1.6",
 
         "respect/validation": "^2.0",
         "ezyang/htmlpurifier": "^4.13",
-        "symfony/console": "^5.1",
+        "symfony/console": "^5.3",
         "cocur/slugify": "^4.0",
-        "dflydev/fig-cookies": "^2.0",
-        "defuse/php-encryption": "^2.2.1",
+        "dflydev/fig-cookies": "^3.0",
+        "defuse/php-encryption": "^2.3.1",
 
-        "robmorgan/phinx": "^0.12.4",
+        "robmorgan/phinx": "^0.12.7",
         "illuminate/database": "^8.0",
-        "doctrine/dbal": "^2.10",
+        "doctrine/dbal": "^3.1",
 
         "cboden/ratchet": "^0.4.3",
-        "react/child-process": "^0.6.1",
-        "react/http": "^1.0.0",
-        "react/dns": "^1.5.0",
-        "monolog/monolog": "^2.1.1",
+        "react/child-process": "^0.6.3",
+        "react/http": "^1.4.0",
+        "react/dns": "^1.8.0",
+        "monolog/monolog": "^2.3.0",
         "ratchet/pawl": "^0.3.5",
-        "illuminate/events": "^8.10"
+        "illuminate/events": "^8.53"
     },
     "config": {
         "platform": {

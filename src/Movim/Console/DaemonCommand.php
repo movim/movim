@@ -21,8 +21,8 @@ use Phinx\Migration\Manager;
 use Phinx\Config\Config;
 use Symfony\Component\Console\Output\NullOutput;
 
-use React\EventLoop\Factory;
-use React\Socket\Server as Reactor;
+use React\EventLoop\Loop;
+use React\Socket\SocketServer;
 
 class DaemonCommand extends Command
 {
@@ -71,7 +71,7 @@ class DaemonCommand extends Command
             exit;
         }
 
-        $loop = Factory::create();
+        $loop = Loop::get();
 
         if ($input->getOption('url') && Validator::url()->notEmpty()->validate($input->getOption('url'))) {
             $baseuri = rtrim($input->getOption('url'), '/') . '/';
@@ -108,12 +108,11 @@ class DaemonCommand extends Command
         $core = new Core($loop, $baseuri, $input);
         $app  = new HttpServer(new WsServer($core));
 
-        $socket = new Reactor(
-            $input->getOption('interface').':'.$input->getOption('port'),
-            $loop
+        $socket = new SocketServer(
+            $input->getOption('interface').':'.$input->getOption('port')
         );
 
-        $socketApi = new Reactor('unix://' . API_SOCKET, $loop);
+        $socketApi = new SocketServer('unix://' . API_SOCKET);
         new Api($loop, $socketApi, $core);
 
         (new IoServer($app, $socket, $loop))->run();
