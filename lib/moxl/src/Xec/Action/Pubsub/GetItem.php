@@ -4,7 +4,6 @@ namespace Moxl\Xec\Action\Pubsub;
 
 use Moxl\Stanza\Pubsub;
 use Moxl\Xec\Action\Pubsub\Errors;
-
 use Movim\Picture;
 
 class GetItem extends Errors

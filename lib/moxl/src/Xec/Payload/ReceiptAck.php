@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Moxl\Xec\Payload;
 
 class ReceiptAck extends Payload

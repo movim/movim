@@ -4,7 +4,6 @@ namespace Moxl\Xec\Action\Presence;
 
 use Moxl\Xec\Action;
 use Moxl\Stanza\Presence;
-
 use Movim\Session;
 use App\PresenceBuffer;
 

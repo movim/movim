@@ -2,8 +2,6 @@
 
 namespace Moxl\Xec\Payload;
 
-use Moxl\Xec\Action\Vcard\Get;
-
 use Movim\Session;
 use App\Presence as DBPresence;
 use App\PresenceBuffer;

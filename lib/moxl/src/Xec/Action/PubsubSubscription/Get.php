@@ -2,9 +2,9 @@
 
 namespace Moxl\Xec\Action\PubsubSubscription;
 
-use App\Subscription;
 use Moxl\Xec\Action\Pubsub\Errors;
 use Moxl\Stanza\Pubsub;
+use App\Subscription;
 
 class Get extends Errors
 {

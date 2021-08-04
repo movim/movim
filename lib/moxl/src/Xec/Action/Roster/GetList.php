@@ -5,7 +5,6 @@ namespace Moxl\Xec\Action\Roster;
 use Moxl\Xec\Action;
 use Moxl\Stanza\Roster;
 use App\Roster as DBRoster;
-use App\User as DBUser;
 
 class GetList extends Action
 {

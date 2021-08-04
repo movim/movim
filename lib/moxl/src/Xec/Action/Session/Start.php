@@ -4,8 +4,6 @@ namespace Moxl\Xec\Action\Session;
 
 use Moxl\Xec\Action;
 use Moxl\Stanza\Stream;
-use Moxl\Utils;
-
 use Movim\Session;
 
 class Start extends Action

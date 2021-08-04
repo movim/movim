@@ -14,8 +14,6 @@ class Utils
             'urn:xmpp:pubsub:subscription',
             'urn:xmpp:pubsub:subscription+notify',
 
-            //'urn:xmpp:omemo:0:movim',
-            //'urn:xmpp:omemo:0:movim+notify',
             'eu.siacs.conversations.axolotl.devicelist',
             'eu.siacs.conversations.axolotl.devicelist+notify',
 

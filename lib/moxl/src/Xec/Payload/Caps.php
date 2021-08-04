@@ -3,7 +3,6 @@
 namespace Moxl\Xec\Payload;
 
 use Moxl\Xec\Action\Disco\Request;
-
 use App\Info;
 
 class Caps extends Payload

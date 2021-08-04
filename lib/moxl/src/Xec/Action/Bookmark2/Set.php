@@ -2,9 +2,9 @@
 
 namespace Moxl\Xec\Action\Bookmark2;
 
-use App\Conference;
 use Moxl\Xec\Action;
 use Moxl\Stanza\Bookmark2;
+use App\Conference;
 
 class Set extends Action
 {

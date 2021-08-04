@@ -4,7 +4,6 @@ namespace Moxl\Xec\Action\Muc;
 
 use Moxl\Xec\Action;
 use Moxl\Stanza\Muc;
-
 use App\Member;
 
 class GetMembers extends Action

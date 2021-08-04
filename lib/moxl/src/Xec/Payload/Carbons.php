@@ -2,8 +2,6 @@
 
 namespace Moxl\Xec\Payload;
 
-use Movim\User;
-
 class Carbons extends Payload
 {
     public function handle($stanza, $parent = false)

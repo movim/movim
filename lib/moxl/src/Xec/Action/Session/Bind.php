@@ -4,7 +4,6 @@ namespace Moxl\Xec\Action\Session;
 
 use Moxl\Xec\Action;
 use Moxl\Stanza\Stream;
-use Moxl\Utils;
 
 class Bind extends Action
 {

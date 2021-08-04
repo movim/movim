@@ -4,7 +4,6 @@ namespace Moxl\Xec\Action\OMEMO;
 
 use Moxl\Xec\Action;
 use Moxl\Stanza\OMEMO;
-
 use App\Bundle;
 
 class GetBundle extends Action

@@ -2,7 +2,6 @@
 
 namespace Moxl\Xec\Action\Microblog;
 
-use Moxl\Xec\Action;
 use Moxl\Stanza\Pubsub;
 use Moxl\Stanza\PubsubAtom;
 use Moxl\Xec\Action\Pubsub\Errors;

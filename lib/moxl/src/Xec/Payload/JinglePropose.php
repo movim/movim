@@ -2,8 +2,8 @@
 
 namespace Moxl\Xec\Payload;
 
-use Movim\Session;
 use Moxl\Xec\Action\Jingle\SessionReject;
+use Movim\Session;
 
 class JinglePropose extends Payload
 {

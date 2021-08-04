@@ -3,8 +3,7 @@
 namespace Moxl\Xec\Payload;
 
 use Movim\Session;
-
-use App\MessageBuffer;
+//use App\MessageBuffer;
 
 class MAMResult extends Payload
 {

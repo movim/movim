@@ -4,7 +4,6 @@ namespace Moxl\Xec\Action\BOB;
 
 use Moxl\Xec\Action;
 use Moxl\Stanza\BOB;
-
 use Movim\Picture;
 
 class Request extends Action
@@ -21,7 +20,6 @@ class Request extends Action
 
     public function handle($stanza, $parent = false)
     {
-        $type = (string)$stanza->data->attributes()->type;
         $data = (string)$stanza->data;
 
         $p = new Picture;

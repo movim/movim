@@ -2,10 +2,10 @@
 
 namespace Moxl\Xec\Action\Message;
 
-use App\MessageOmemoHeader;
 use Moxl\Xec\Action;
 use Moxl\Stanza\Message;
 use Moxl\Stanza\Muc;
+use App\MessageOmemoHeader;
 
 class Publish extends Action
 {

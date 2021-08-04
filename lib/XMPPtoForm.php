@@ -2,14 +2,12 @@
 
 class XMPPtoForm
 {
-    private $fieldset;
     private $xmpp;
     private $stanza;
     private $html;
 
     public function __construct()
     {
-        $this->fieldset = 0;
         $this->html = new \DOMDocument('1.0', 'UTF-8');
         $this->xmpp = '';
     }

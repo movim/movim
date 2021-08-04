@@ -4,9 +4,8 @@ namespace Moxl\Xec\Action\MAM;
 
 use Moxl\Xec\Action;
 use Moxl\Stanza\MAM;
-
 use Movim\Session;
-use App\MessageBuffer;
+//use App\MessageBuffer;
 
 class Get extends Action
 {
