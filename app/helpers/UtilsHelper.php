@@ -646,8 +646,7 @@ define('DEFAULT_HTTP_USER_AGENT', 'Mozilla/5.0 (compatible; Googlebot/2.1; +http
  */
 function requestAsyncURL(string $url, int $timeout = 10, array $headers = [])
 {
-    global $loop;
-    $browser = new React\Http\Browser($loop);
+    $browser = new React\Http\Browser;
 
     return $browser->withTimeout($timeout)->get($url, $headers);
 }

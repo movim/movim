@@ -7,7 +7,7 @@ use Movim\Bootstrap;
 use Psr\Http\Message\ServerRequestInterface;
 use React\EventLoop\LoopInterface;
 
-use React\Http\Server;
+use React\Http\HttpServer;
 use React\Http\Message\Response;
 use React\Socket\SocketServer;
 
@@ -15,7 +15,7 @@ class Api
 {
     private $_core;
 
-    public function __construct(LoopInterface $loop, SocketServer $socket, Core $core)
+    public function __construct(SocketServer $socket, Core $core)
     {
         $this->_core = &$core;
         $api = &$this;
@@ -54,7 +54,7 @@ class Api
             );
         };
 
-        $server = new Server($loop, $handler);
+        $server = new HttpServer($handler);
         $server->on('error', function (\Throwable $e) {
             (new Bootstrap)->exceptionHandler($e);
         });

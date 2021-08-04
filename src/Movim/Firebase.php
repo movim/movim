@@ -48,8 +48,7 @@ class Firebase
             'Content-Type' => 'application/json'
         ];
 
-        global $loop;
-        $browser = new \React\Http\Browser($loop);
+        $browser = new \React\Http\Browser;
         $browser->withTimeout(10)
             ->post(
                 'https://fcm.googleapis.com/fcm/send',
