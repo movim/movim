@@ -134,6 +134,7 @@ class RoomsUtils extends Base
         $conference->conference = $values['jid'];
         $conference->name = $values['name'];
         $conference->autojoin = $values['autojoin'];
+        $conference->pinned = $values['pinned'];
         $conference->nick = $values['nick'];
         $conference->notify = $values['notify'];
 
@@ -265,6 +266,7 @@ class RoomsUtils extends Base
                 $cgc->setTo(strtolower($form->jid->value))
                     ->setName($form->name->value)
                     ->setAutoJoin($form->autojoin->value)
+                    ->setPinned($form->pinned->value)
                     ->setNick($form->nick->value)
                     ->setNotify((int)array_flip(Conference::$notifications)[$form->notify->value])
                     ->request();
@@ -273,6 +275,7 @@ class RoomsUtils extends Base
                 $cgc->setTo(strtolower($form->jid->value))
                     ->setName($form->name->value)
                     ->setAutoJoin($form->autojoin->value)
+                    ->setPinned($form->pinned->value)
                     ->setNick($form->nick->value)
                     ->setNotify((int)array_flip(Conference::$notifications)[$form->notify->value])
                     ->request();
@@ -298,6 +301,7 @@ class RoomsUtils extends Base
                 'name' => $form->name->value,
                 'nick' => $form->nick->value,
                 'autojoin' => $form->autojoin->value,
+                'pinned' => $form->pinned->value,
                 'notify' => (int)array_flip(Conference::$notifications)[$form->notify->value],
             ];
 

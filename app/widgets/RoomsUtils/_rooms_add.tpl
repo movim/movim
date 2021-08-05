@@ -159,9 +159,12 @@
             </div>
             <label>{$c->__('room.notify_title')}</label>
         </div>
-        <div>
-            <ul class="list thick fill">
+        <div class="control">
+            <ul class="list middle fill">
                 <li class="wide">
+                    <span class="primary icon gray">
+                        <i class="material-icons">login</i>
+                    </span>
                     <span class="control">
                         <div class="checkbox">
                             <input
@@ -177,6 +180,31 @@
                     <div>
                         <p></p>
                         <p class="normal">{$c->__('chatrooms.autojoin')}</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="control">
+            <ul class="list middle fill">
+                <li class="wide">
+                    <span class="primary icon gray">
+                        <i class="material-icons">push_pin</i>
+                    </span>
+                    <span class="control">
+                        <div class="checkbox">
+                            <input
+                                {if="isset($conference) && $conference->pinned"}
+                                    checked
+                                {/if}
+                                type="checkbox"
+                                id="pinned"
+                                name="pinned"/>
+                            <label for="pinned"></label>
+                        </div>
+                    </span>
+                    <div>
+                        <p></p>
+                        <p class="normal">{$c->__('chatrooms.pinned')}</p>
                     </div>
                 </li>
             </ul>

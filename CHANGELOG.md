@@ -26,6 +26,7 @@ v0.19.1 (trunk)
 * Show contact self presences in the Account tab in the configuration page
 * New design for the general navigation bar on desktop
 * Redesign the Contact and Communities information block and drawer to be more compact
+* Allow chatrooms to be pinned in Bookmarks2 using a Movim pin extension
 
 v0.19
 ---------------------------

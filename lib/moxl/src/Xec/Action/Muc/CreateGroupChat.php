@@ -23,6 +23,7 @@ class CreateGroupChat extends Action
             'name' => $this->_name,
             'nick' => $this->_nick,
             'autojoin' => $this->_autojoin,
+            'pinned' => $this->_pinned,
             'notify' => $this->_notify,
         ]);
         $this->deliver();

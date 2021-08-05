@@ -3,6 +3,7 @@
     {if="$conference->nick != null"} data-nick="{$conference->nick}" {/if}
     class="room
         {if="$conference->connected"}connected{/if}
+        {if="$conference->pinned"}pinned{/if}
         {if="$conference->isGroupChat()"}groupchat{/if}
         {if="$conference->unreads_count > 0 || $conference->quoted_count > 0"}unread{/if}
     ">
@@ -53,6 +54,9 @@
 
             <span title="{$conference->conference}">{$conference->title}</span>
             <span class="second">
+                {if="$conference->pinned"}
+                    <i class="material-icons" title="{$c->__('room.pinned')}">push_pin</i>
+                {/if}
                 {if="$conference->notify == 0"}
                     <i class="material-icons" title="{$c->__('room.notify_never')}">notifications_off</i>
                 {elseif="$conference->notify == 2"}

@@ -56,9 +56,15 @@ class Bookmark2
 
         if ($conf->notify !== null) {
             $notifications = $dom->createElement('notifications');
-            $notifications->setAttribute('xmlns', Conference::$xmlns);
+            $notifications->setAttribute('xmlns', Conference::$xmlnsNotifications);
             $notifications->setAttribute('notify', $conf->notificationKey);
             $extensions->appendChild($notifications);
+        }
+
+        if ($conf->pinned == true) {
+            $pinned = $dom->createElement('pinned');
+            $pinned->setAttribute('xmlns', Conference::$xmlnsPinned);
+            $extensions->appendChild($pinned);
         }
 
         // Publish option

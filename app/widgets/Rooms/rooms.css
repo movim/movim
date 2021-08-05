@@ -32,6 +32,18 @@
     filter: grayscale(0.75);
 }
 
+#rooms_widget ul.list.rooms li.pinned {
+    order: -2;
+}
+
+#rooms_widget ul.list.rooms li.pinned.connected {
+    order: -3;
+}
+
+#rooms_widget ul.list.rooms li.pinned.connected.unread {
+    order: -4;
+}
+
 #rooms_widget ul.list.rooms li.connected.unread {
     order: -1;
 }

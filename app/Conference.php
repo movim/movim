@@ -8,10 +8,11 @@ class Conference extends Model
 {
     public $incrementing = false;
     protected $primaryKey = ['session_id', 'conference'];
-    protected $fillable = ['conference', 'name', 'nick', 'autojoin'];
+    protected $fillable = ['conference', 'name', 'nick', 'autojoin', 'pinned'];
     protected $with = ['contact'];
 
-    public static $xmlns = 'xmpp:movim.eu/notifications:0';
+    public static $xmlnsNotifications = 'xmpp:movim.eu/notifications:0';
+    public static $xmlnsPinned = 'xmpp:movim.eu/pinned:0';
     public static $notifications = [
         0 => 'never',
         1 => 'quoted',
@@ -110,11 +111,17 @@ class Conference extends Model
 
         if ($item->conference->extensions) {
             if ($item->conference->extensions && $item->conference->extensions->notifications
-            && $item->conference->extensions->notifications->attributes()->xmlns == self::$xmlns) {
+            && $item->conference->extensions->notifications->attributes()->xmlns == self::$xmlnsNotifications) {
                 $this->notify = (int)array_flip(self::$notifications)[
                     (string)$item->conference->extensions->notifications->attributes()->notify
                 ];
                 unset($item->conference->extensions->notifications);
+            }
+
+            if ($item->conference->extensions && $item->conference->extensions->pinned
+            && $item->conference->extensions->pinned->attributes()->xmlns == self::$xmlnsPinned) {
+                $this->pinned = true;
+                unset($item->conference->extensions->pinned);
             }
 
             $this->extensions = $item->conference->extensions->asXML();
@@ -200,6 +207,7 @@ class Conference extends Model
             'name' => $this->attributes['name'] ?? null,
             'nick' => $this->attributes['nick'] ?? null,
             'autojoin' => $this->attributes['autojoin'] ?? null,
+            'pinned' => $this->attributes['pinned'] ?? false,
             'created_at' => $this->attributes['created_at'] ?? $now,
             'updated_at' => $this->attributes['updated_at'] ?? $now,
             'extensions' => $this->attributes['extensions'] ?? null,
