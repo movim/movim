@@ -50,176 +50,83 @@
                     {/if}
                 {/if}
                 <div>
-                    <p class="line">{$contact->truename}</p>
+                    <p class="line">
+                        {$contact->truename}
+                        {if="$roster && $roster->group"}
+                            <span class="tag color {$roster->group|stringToColor}">{$roster->group}</span>
+                        {/if}
+                    </p>
                     <p class="line">{$contact->id}</p>
                 </div>
             </li>
         </ul>
     </header>
 
-    {if="$roster && $roster->presences->count() > 0"}
-        <ul class="list middle">
-            <li class="subheader">
-                <div>
-                    <p>{$c->__('clients.title')}</p>
-                </div>
-            </li>
-            {loop="$roster->presences"}
-                {if="$value->capability"}
-                    <li class="block">
-                        <span class="primary icon gray status {$value->presencekey}">
-                            <i class="material-icons">
-                                {$value->capability->getDeviceIcon()}
-                            </i>
-                        </span>
-                        <div>
-                            <p class="normal line">
-                                {$value->capability->name}
-                                <span class="second">{$value->resource}</span>
-                            </p>
-                            {if="$value->capability->identities()->first() && isset($clienttype[$value->capability->identities()->first()->type])"}
-                                <p class="line">
-                                    {$clienttype[$value->capability->identities()->first()->type]}
-                                </p>
-                            {/if}
-                        </div>
-                    </li>
-                {/if}
-            {/loop}
-        </ul>
-    {/if}
+    <ul class="list middle">
+        <li>
+            <div>
+                <p class="normal">
+                    {if="$contact->fn != null"}
+                        {$contact->fn}
+                        {if="$contact->nickname != null"}
+                         <span class="second">{$contact->nickname}</span>
+                        {/if}
+                    {elseif="$contact->nickname != null"}
+                        {$contact->nickname}
+                    {/if}
+                </p>
+                <p class="all">
+                    {if="$contact->description != null && trim($contact->description) != ''"}
+                        {autoescape="off"}
+                            {$contact->description|trim|nl2br|addEmojis}
+                        {/autoescape}
+                        <br />
+                    {/if}
 
-    {if="$fingerprints->count() > 0"}
-        <ul class="list middle">
-            <li class="subheader">
-                <div>
-                    <p>{$c->__('omemo.fingerprints')}</p>
-                </div>
-            </li>
-            {loop="$fingerprints"}
-                <li>
-                    <span class="primary icon gray">
-                        <i class="material-icons">fingerprint</i>
-                    </span>
-                    <div>
-                        <p class="normal">
-                            <span class="fingerprint" title="{$value->bundle_id}">
-                                {$value->fingerprint}
-                            </span>
-                        </p>
-                    </div>
-                </li>
-            {/loop}
-        </ul>
-    {/if}
+                    {if="$roster && $roster->presence && $roster->presence->seen"}
+                        <br />
+                        <i class="material-icons icon-text">schedule</i>
+                        {$c->__('last.title')} {$roster->presence->seen|strtotime|prepareDate:true,true}
+                    {/if}
 
-    <ul class="tabs" id="navtabs"></ul>
+                    {if="$contact->adrlocality != null || $contact->adrcountry != null"}
+                        <br />
+                        <i class="material-icons icon-text">place</i>
+                        {if="$contact->adrlocality != null"}
+                            {$contact->adrlocality}
+                        {/if}
+                        {if="$contact->adrcountry != null"}
+                            {$contact->adrcountry}
+                        {/if}
+                    {/if}
 
-    <div class="tabelem" title="{$c->__('vcard.title')}" id="contact_info">
-        <ul class="list middle">
-            {if="$roster && $roster->presence && $roster->presence->seen"}
-            <li>
-                <span class="primary icon gray">
-                    <i class="material-icons">access_time</i>
-                </span>
-                <div>
-                    <p>{$c->__('last.title')}</p>
-                    <p>
-                        {$roster->presence->seen|strtotime|prepareDate:true,true}
-                    </p>
-                </div>
-            </li>
-            {/if}
+                    {if="strtotime($contact->date) != 0"}
+                        <br />
+                        <i class="material-icons icon-text">cake</i>
+                        <a href="mailto:{$contact->email}">{$contact->date|strtotime|prepareDate:false}</a>
+                    {/if}
 
-            {if="$contact->fn != null"}
-            <li>
-                <span class="primary icon gray">{$contact->fn|firstLetterCapitalize}</span>
-                <div>
-                    <p>{$c->__('general.name')}</p>
-                    <p>{$contact->fn}</p>
-                </div>
-            </li>
-            {/if}
+                    {if="$contact->email"}
+                        <br />
+                        <i class="material-icons icon-text">email</i>
+                        <a href="mailto:{$contact->email}">{$contact->email}</a>
+                    {/if}
 
-            {if="$contact->nickname != null"}
-            <li>
-                <span class="primary icon gray">{$contact->nickname|firstLetterCapitalize}</span>
-                <div>
-                    <p>{$c->__('general.nickname')}</p>
-                    <p>{$contact->nickname}</p>
-                </div>
-            </li>
-            {/if}
-
-            {if="$roster && $roster->group"}
-                <li>
-                    <span class="primary icon gray">
-                        <i class="material-icons">recent_actors</i>
-                    </span>
-                    <div>
-                        <p>{$c->__('edit.group')}</p>
-                        <p>
-                            <span class="tag color {$roster->group|stringToColor}">
-                                {$roster->group}
-                            </span>
-                        </p>
-                    </div>
-                </li>
-            {/if}
-
-            {if="$contact->url != null"}
-            <li>
-                <span class="primary icon gray">
-                    <i class="material-icons">link</i>
-                </span>
-                <div>
-                    <p>{$c->__('general.website')}</p>
-                    <p>
+                    {if="$contact->url != null"}
+                        <br />
+                        <i class="material-icons icon-text">link</i>
                         {if="filter_var($contact->url, FILTER_VALIDATE_URL)"}
                             <a href="{$contact->url}" target="_blank">{$contact->url}</a>
                         {else}
                             {$contact->url}
                         {/if}
-                    </p>
-                </div>
-            </li>
-            {/if}
+                    {/if}
+                </p>
+            </div>
+        </li>
+    </ul>
 
-            {if="$contact->email != null"}
-            <li>
-                <span class="primary icon gray"><i class="material-icons">email</i></span>
-                <div>
-                    <p>{$c->__('general.email')}</p>
-                    <p><a href="mailto:{$contact->email}">{$contact->email}</a></p>
-                </div>
-            </li>
-            {/if}
-
-            {if="$contact->description != null && trim($contact->description) != ''"}
-            <li>
-                <span class="primary icon gray"><i class="material-icons">subject</i></span>
-                <div>
-                    <p>{$c->__('general.about')}</p>
-                    <p class="all">
-                        {autoescape="off"}
-                            {$contact->description|nl2br|addEmojis}
-                        {/autoescape}
-                    </p>
-                </div>
-            </li>
-            {/if}
-
-            {if="strtotime($contact->date) != 0"}
-            <li class="block">
-                <span class="primary icon gray"><i class="material-icons">cake</i></span>
-                <div>
-                    <p>{$c->__('general.date_of_birth')}</p>
-                    <p>{$contact->date|strtotime|prepareDate:false}</p>
-                </div>
-            </li>
-            {/if}
-        </ul>
-    </div>
+    <ul class="tabs" id="navtabs"></ul>
 
     {if="$pictures->count() > 0"}
         <div class="tabelem" title="{$c->__('general.pictures')}" id="contact_medias">
@@ -228,6 +135,66 @@
                     <li style="background-image: url('{$value->file['uri']|protectPicture}')"
                         onclick="Preview_ajaxHttpShow('{$value->file['uri']}')">
                         <i class="material-icons">visibility</i>
+                    </li>
+                {/loop}
+            </ul>
+        </div>
+    {/if}
+
+    {if="$roster && $roster->presences->count() > 0"}
+        <div class="tabelem" title="{$c->__('clients.title')}" id="clients">
+            <ul class="list middle">
+                <li class="subheader">
+                    <div>
+                        <p>{$c->__('clients.title_full')}</p>
+                    </div>
+                </li>
+                {loop="$roster->presences"}
+                    {if="$value->capability"}
+                        <li class="block">
+                            <span class="primary icon gray status {$value->presencekey}">
+                                <i class="material-icons">
+                                    {$value->capability->getDeviceIcon()}
+                                </i>
+                            </span>
+                            <div>
+                                <p class="normal line">
+                                    {$value->capability->name}
+                                    <span class="second">{$value->resource}</span>
+                                </p>
+                                {if="$value->capability->identities()->first() && isset($clienttype[$value->capability->identities()->first()->type])"}
+                                    <p class="line">
+                                        {$clienttype[$value->capability->identities()->first()->type]}
+                                    </p>
+                                {/if}
+                            </div>
+                        </li>
+                    {/if}
+                {/loop}
+            </ul>
+        </div>
+    {/if}
+
+    {if="$fingerprints->count() > 0"}
+        <div class="tabelem" title="{$c->__('omemo.fingerprints_title')}" id="omemo_fingerprints">
+            <ul class="list middle">
+                <li class="subheader">
+                    <div>
+                        <p>{$c->__('omemo.fingerprints')}</p>
+                    </div>
+                </li>
+                {loop="$fingerprints"}
+                    <li>
+                        <span class="primary icon gray">
+                            <i class="material-icons">fingerprint</i>
+                        </span>
+                        <div>
+                            <p class="normal">
+                                <span class="fingerprint" title="{$value->bundle_id}">
+                                    {$value->fingerprint}
+                                </span>
+                            </p>
+                        </div>
                     </li>
                 {/loop}
             </ul>

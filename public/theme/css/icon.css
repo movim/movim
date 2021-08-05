@@ -153,6 +153,14 @@ span.icon span.counter > i {
     margin-right: 0.1rem;
 }
 
+/* Text icon */
+i.icon-text {
+    font-size: 2.5rem;
+    margin: 0 0.25rem;
+    line-height: 3rem;
+    vertical-align: middle;
+}
+
 /* Composing */
 
 span.icon.composing:after {

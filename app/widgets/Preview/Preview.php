@@ -19,6 +19,7 @@ class Preview extends Base
         }
 
         $view = $this->tpl();
+
         try {
             $view->assign('embed', (new \App\Url)->resolve($url));
         } catch (Exception $e) {

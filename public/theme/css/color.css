@@ -26,6 +26,7 @@ body {
 
 body > *,
 .context_menu,
+.icon-text,
 input, textarea, select {
     color: rgba(var(--movim-font), 0.87);
 }

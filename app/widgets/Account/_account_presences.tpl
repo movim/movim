@@ -1,7 +1,7 @@
 <ul class="list middle">
     <li class="subheader">
         <div>
-            <p>{$c->__('clients.title')}</p>
+            <p>{$c->__('clients.title_full')}</p>
         </div>
     </li>
     {loop="$presences"}

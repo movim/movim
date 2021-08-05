@@ -360,7 +360,6 @@ img.avatar {
     border-radius: 0.5rem;
     display: block;
     max-width: 100%;
-    margin-bottom: 1.5rem;
 }
 
 img.avatar:not([src=""]) + .placeholder {

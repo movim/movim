@@ -25,6 +25,7 @@ v0.19.1 (trunk)
 * Add OMEMO basic support for one-to-one chat
 * Show contact self presences in the Account tab in the configuration page
 * New design for the general navigation bar on desktop
+* Redesign the Contact and Communities information block and drawer to be more compact
 
 v0.19
 ---------------------------
