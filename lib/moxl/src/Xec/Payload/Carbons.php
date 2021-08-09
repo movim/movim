@@ -23,6 +23,14 @@ class Carbons extends Payload
                 // Another client just displayed the message
                 $displayed = new Displayed;
                 $displayed->handle($message->displayed, $message);
+            } elseif (count($jingle_messages = $stanza->xpath('//*[@xmlns="urn:xmpp:jingle-message:0"]')) >= 1) {
+                $callto = current(explode('/', (string)$message->attributes()->to));
+                if ($callto == \App\User::me()->id || $callto == "") {
+                    // We get carbons for calls other clients make as well as calls other clients receive
+                    // So make sure we only ring when we see a call _to_ us
+                    // Or with no "to", which means from ourselves to ourselves, like another client's <accept>
+                    \Moxl\Xec\Handler::handleNode($jingle_messages[0], $message);
+                }
             }
         }
     }
