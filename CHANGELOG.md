@@ -27,6 +27,7 @@ v0.19.1 (trunk)
 * New design for the general navigation bar on desktop
 * Redesign the Contact and Communities information block and drawer to be more compact
 * Allow chatrooms to be pinned in Bookmarks2 using a Movim pin extension
+* Add Links tab in Contact and Conferences drawer
 
 v0.19
 ---------------------------

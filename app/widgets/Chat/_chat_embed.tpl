@@ -24,8 +24,17 @@
         </span>
     {/if}
 
-    <div>
+    {if="$withlink"}
+        <span class="control icon gray" onclick="MovimUtils.openInNew('{$embed->url}')">
+            <i class="material-icons">open_in_new</i>
+        </span>
+    {/if}
+
+    <div  {if="$withlink"}onclick="MovimUtils.openInNew('{$embed->url}')"{/if}>
         <p class="line">{$embed->title}</p>
         <p class="line">{$embed->description}</p>
+        {if="$withlink"}
+            <p class="line"><a href="#">{$embed->url}</a></p>
+        {/if}
     </div>
 </li>

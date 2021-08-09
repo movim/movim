@@ -82,6 +82,9 @@ var MovimUtils = {
             window.location.href = url;
         }
     },
+    openInNew: function (url) {
+        window.open(url, '_blank');
+    },
     reload: function (uri) {
         window.location.replace(uri);
     },

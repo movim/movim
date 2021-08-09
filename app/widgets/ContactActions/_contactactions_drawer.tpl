@@ -141,6 +141,21 @@
         </div>
     {/if}
 
+    {if="$links->count() > 0"}
+        <div class="tabelem" title="{$c->__('general.links')}" id="room_links">
+            <ul class="active list thick">
+                {loop="$links"}
+                    {autoescape="off"}
+                        {$resolved = $value->resolvedUrl->cache}
+                        {if="$resolved"}
+                            {$c->prepareEmbedUrl($resolved)}
+                        {/if}
+                    {/autoescape}
+                {/loop}
+            </ul>
+        </div>
+    {/if}
+
     {if="$roster && $roster->presences->count() > 0"}
         <div class="tabelem" title="{$c->__('clients.title')}" id="clients">
             <ul class="list middle">

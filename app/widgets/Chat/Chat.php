@@ -22,6 +22,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Movim\Picture;
 use Movim\ChatStates;
 use Movim\ChatOwnState;
+use Movim\EmbedLight;
 
 class Chat extends \Movim\Widget\Base
 {
@@ -1120,9 +1121,7 @@ class Chat extends \Movim\Widget\Base
         && !$message->card && !$message->sticker) {
             $resolved = $message->resolvedUrl->cache;
             if ($resolved) {
-                $tpl = $this->tpl();
-                $tpl->assign('embed', $resolved);
-                $message->card = $tpl->draw('_chat_embed');
+                $message->card =  $this->prepareEmbed($resolved);
             }
         }
 
@@ -1290,6 +1289,14 @@ class Chat extends \Movim\Widget\Base
         }
 
         return $this->_wrapper;
+    }
+
+    public function prepareEmbed(EmbedLight $embed, bool $withLink = false)
+    {
+        $tpl = $this->tpl();
+        $tpl->assign('embed', $embed);
+        $tpl->assign('withlink', $withLink);
+        return $tpl->draw('_chat_embed');
     }
 
     public function prepareReactions(Message $message)

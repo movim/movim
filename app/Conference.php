@@ -88,6 +88,16 @@ class Conference extends Model
                     ->orderBy('published', 'desc');
     }
 
+    public function links()
+    {
+        return $this->hasMany('App\Message', 'jidfrom', 'conference')
+                    ->where('user_id', \App\User::me()->id)
+                    ->where('type', 'groupchat')
+                    ->whereNotNull('urlid')
+                    ->where('picture', false)
+                    ->orderBy('published', 'desc');
+    }
+
     public function info()
     {
         return $this->hasOne('App\Info', 'server', 'conference')

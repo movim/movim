@@ -20,6 +20,9 @@ use App\Info;
 
 use Respect\Validation\Validator;
 use Cocur\Slugify\Slugify;
+use Movim\EmbedLight;
+
+include_once WIDGETS_PATH.'Chat/Chat.php';
 
 class RoomsUtils extends Base
 {
@@ -444,6 +447,11 @@ class RoomsUtils extends Base
     public function ajaxResetGatewayRooms()
     {
         $this->rpc('MovimTpl.fill', '#gateway_rooms', '');
+    }
+
+    public function prepareEmbedUrl(EmbedLight $embed)
+    {
+        return (new Chat)->prepareEmbed($embed, true);
     }
 
     /**

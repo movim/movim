@@ -1,11 +1,14 @@
 <?php
 
+use Movim\EmbedLight;
 use Movim\Widget\Base;
 
 use Moxl\Xec\Action\Roster\AddItem;
 use Moxl\Xec\Action\Presence\Subscribe;
 
 use Respect\Validation\Validator;
+
+include_once WIDGETS_PATH.'Chat/Chat.php';
 
 class ContactActions extends Base
 {
@@ -52,11 +55,18 @@ class ContactActions extends Base
             $tpl->assign('pictures', \App\Message::jid($jid)
                                                 ->where('picture', true)
                                                 ->orderBy('published', 'desc')
-                                                ->take(32)
+                                                ->take(24)
+                                                ->get());
+            $tpl->assign('links', \App\Message::jid($jid)
+                                                ->where('picture', false)
+                                                ->whereNotNull('urlid')
+                                                ->orderBy('published', 'desc')
+                                                ->take(24)
                                                 ->get());
             $tpl->assign('roster', $this->user->session->contacts()->where('jid', $jid)->first());
         } else {
             $tpl->assign('pictures', collect());
+            $tpl->assign('links', collect());
             $tpl->assign('roster', null);
         }
 
@@ -93,6 +103,11 @@ class ContactActions extends Base
         $c->ajaxOpen($jid);
 
         $this->rpc('MovimUtils.redirect', $this->route('chat', $jid));
+    }
+
+    public function prepareEmbedUrl(EmbedLight $embed)
+    {
+        return (new Chat)->prepareEmbed($embed, true);
     }
 
     /**
