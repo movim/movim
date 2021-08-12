@@ -112,7 +112,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-19 23:54+0200\n"
-"PO-Revision-Date: 2021-04-02 13:28+0000\n"
+"PO-Revision-Date: 2021-07-31 13:24+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://www.transifex.com/movim/movim/language/nb_NO/)\n"
 "Language: nb_NO\n"
@@ -517,14 +517,12 @@ msgid "No avatar defined yet"
 msgstr "Ingen avatar angitt enda"
 
 #: [avatar]change
-#, fuzzy
 msgid "Change my avatar"
-msgstr "Endre passordet mitt"
+msgstr ""
 
 #: [avatar]upload_new
-#, fuzzy
 msgid "Upload a new picture"
-msgstr "Opplastingen feilet"
+msgstr ""
 
 #: [blog]title [feed]title
 msgid "%s’s feed"
@@ -1146,9 +1144,8 @@ msgid "Last registered"
 msgstr "Sist registrert"
 
 #: [explore]explore
-#, fuzzy
 msgid "Find some new contacts"
-msgstr "Finn nye kontakter"
+msgstr ""
 
 #: [edit]title [button]edit
 msgid "Edit"
@@ -1215,9 +1212,8 @@ msgid "This contact is in your contact list but there is no subscription between
 msgstr ""
 
 #: [contactdatapublic]no_data
-#, fuzzy
 msgid "No public data found"
-msgstr "Mine innlegg"
+msgstr ""
 
 #: [draw]title
 msgid "Draw"
@@ -1396,9 +1392,8 @@ msgid "%s invited you to join a chatroom"
 msgstr "%s inviterte deg til å ta del i et samtalerom"
 
 #: [form]pod_admins
-#, fuzzy
 msgid "Administrated by"
-msgstr "Administrasjon"
+msgstr ""
 
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"

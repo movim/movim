@@ -11,7 +11,7 @@
 # No <quetschwalze@punkbeer.me>, 2015
 # Peter Grman <peter.grman@gmail.com>, 2016
 # Henri <h.chilla97@gmail.com>, 2016
-# Rob Jacob <jr@jaxfab.net>, 2016
+# dbd0fc79e069aa359d552fe33b3bbf67_0532028, 2016
 # Roland <rasos@alton.at>, 2016
 # Rüdiger Holzmann <bernhard@cyng.tk>, 2015
 # bbccd56199dff1756d18cc89f7ff4628, 2018
@@ -124,7 +124,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-19 23:54+0200\n"
-"PO-Revision-Date: 2021-04-02 13:28+0000\n"
+"PO-Revision-Date: 2021-07-31 13:24+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: German (http://www.transifex.com/movim/movim/language/de/)\n"
 "Language: de\n"
@@ -529,14 +529,12 @@ msgid "No avatar defined yet"
 msgstr "Noch wurde kein Avatar festgelegt"
 
 #: [avatar]change
-#, fuzzy
 msgid "Change my avatar"
-msgstr "Mein Passwort ändern"
+msgstr ""
 
 #: [avatar]upload_new
-#, fuzzy
 msgid "Upload a new picture"
-msgstr "Nimm ein Foto auf"
+msgstr ""
 
 #: [blog]title [feed]title
 msgid "%s’s feed"
@@ -1158,9 +1156,8 @@ msgid "Last registered"
 msgstr "Zuletzt angemeldet"
 
 #: [explore]explore
-#, fuzzy
 msgid "Find some new contacts"
-msgstr "Neue Freunde finden"
+msgstr ""
 
 #: [edit]title [button]edit
 msgid "Edit"
@@ -1227,9 +1224,8 @@ msgid "This contact is in your contact list but there is no subscription between
 msgstr "Der Kontakt ist in Ihrer Kontaktliste, aber es gibt keine Verbindung zwischen den beiden Konten"
 
 #: [contactdatapublic]no_data
-#, fuzzy
 msgid "No public data found"
-msgstr "Meine Veröffentlichungen"
+msgstr ""
 
 #: [draw]title
 msgid "Draw"
@@ -1408,9 +1404,8 @@ msgid "%s invited you to join a chatroom"
 msgstr "%shat Sie eingeladen, einen Chatraum zu betreten"
 
 #: [form]pod_admins
-#, fuzzy
 msgid "Administrated by"
-msgstr "Administration"
+msgstr ""
 
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
@@ -1978,7 +1973,7 @@ msgstr ""
 
 #: [roomsexplore]no_local
 msgid "No chatrooms found locally"
-msgstr "Keine lokalen Chaträume gefunden"
+msgstr ""
 
 #: [roomsexplore]global_title
 msgid "Global search"
@@ -1986,7 +1981,7 @@ msgstr "Globale Suche"
 
 #: [roomsexplore]no_global
 msgid "No chatrooms found globally"
-msgstr "Keine globalen Chaträume gefunden"
+msgstr ""
 
 #: [search]keyword
 msgid "What are you looking for?"

@@ -123,7 +123,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-19 23:54+0200\n"
-"PO-Revision-Date: 2021-04-02 13:28+0000\n"
+"PO-Revision-Date: 2021-07-31 13:24+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: Russian (http://www.transifex.com/movim/movim/language/ru/)\n"
 "Language: ru\n"
@@ -528,14 +528,12 @@ msgid "No avatar defined yet"
 msgstr "Аватар не установлен"
 
 #: [avatar]change
-#, fuzzy
 msgid "Change my avatar"
-msgstr "Изменить мой пароль"
+msgstr ""
 
 #: [avatar]upload_new
-#, fuzzy
 msgid "Upload a new picture"
-msgstr "Сфотографировать "
+msgstr ""
 
 #: [blog]title [feed]title
 msgid "%s’s feed"
@@ -1157,9 +1155,8 @@ msgid "Last registered"
 msgstr "Последний зарегестрированый"
 
 #: [explore]explore
-#, fuzzy
 msgid "Find some new contacts"
-msgstr "Найдите новых друзей"
+msgstr ""
 
 #: [edit]title [button]edit
 msgid "Edit"
@@ -1226,9 +1223,8 @@ msgid "This contact is in your contact list but there is no subscription between
 msgstr "Контакт находится в Вашем контакт-листе, однако он не авторизован между аккаунтами"
 
 #: [contactdatapublic]no_data
-#, fuzzy
 msgid "No public data found"
-msgstr "Мои публикации"
+msgstr ""
 
 #: [draw]title
 msgid "Draw"
@@ -1407,9 +1403,8 @@ msgid "%s invited you to join a chatroom"
 msgstr "%s пригласил вас в комнату"
 
 #: [form]pod_admins
-#, fuzzy
 msgid "Administrated by"
-msgstr "Администрирование"
+msgstr ""
 
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
@@ -1977,7 +1972,7 @@ msgstr ""
 
 #: [roomsexplore]no_local
 msgid "No chatrooms found locally"
-msgstr "Локальных комнат не найдено"
+msgstr ""
 
 #: [roomsexplore]global_title
 msgid "Global search"

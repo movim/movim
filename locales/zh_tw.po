@@ -108,7 +108,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-19 23:54+0200\n"
-"PO-Revision-Date: 2021-04-02 13:28+0000\n"
+"PO-Revision-Date: 2021-07-31 13:24+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/movim/movim/language/zh_TW/)\n"
 "Language: zh_TW\n"
@@ -513,9 +513,8 @@ msgid "No avatar defined yet"
 msgstr "未定義圖示"
 
 #: [avatar]change
-#, fuzzy
 msgid "Change my avatar"
-msgstr "變更我的密碼"
+msgstr ""
 
 #: [avatar]upload_new
 msgid "Upload a new picture"
@@ -1141,9 +1140,8 @@ msgid "Last registered"
 msgstr ""
 
 #: [explore]explore
-#, fuzzy
 msgid "Find some new contacts"
-msgstr "常聯絡的"
+msgstr ""
 
 #: [edit]title [button]edit
 msgid "Edit"
@@ -1390,9 +1388,8 @@ msgid "%s invited you to join a chatroom"
 msgstr ""
 
 #: [form]pod_admins
-#, fuzzy
 msgid "Administrated by"
-msgstr "管理者"
+msgstr ""
 
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"

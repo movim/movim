@@ -112,7 +112,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-19 23:54+0200\n"
-"PO-Revision-Date: 2021-04-02 13:28+0000\n"
+"PO-Revision-Date: 2021-07-31 13:24+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: Hungarian (http://www.transifex.com/movim/movim/language/hu/)\n"
 "Language: hu\n"
@@ -517,9 +517,8 @@ msgid "No avatar defined yet"
 msgstr "Még nincs megadva avatar"
 
 #: [avatar]change
-#, fuzzy
 msgid "Change my avatar"
-msgstr "Megváltoztatom a jelszavam"
+msgstr ""
 
 #: [avatar]upload_new
 msgid "Upload a new picture"
@@ -1145,9 +1144,8 @@ msgid "Last registered"
 msgstr "Utoljára regisztrálva"
 
 #: [explore]explore
-#, fuzzy
 msgid "Find some new contacts"
-msgstr "Találj néhány új barátot"
+msgstr ""
 
 #: [edit]title [button]edit
 msgid "Edit"
@@ -1214,9 +1212,8 @@ msgid "This contact is in your contact list but there is no subscription between
 msgstr "Ez az partner a partnerlistádon van, de nincsenek feliratkozások a két fiók között."
 
 #: [contactdatapublic]no_data
-#, fuzzy
 msgid "No public data found"
-msgstr "Közzétételeim"
+msgstr ""
 
 #: [draw]title
 msgid "Draw"
@@ -1395,9 +1392,8 @@ msgid "%s invited you to join a chatroom"
 msgstr "%s meghívott, hogy csatlakozz egy chatszobához"
 
 #: [form]pod_admins
-#, fuzzy
 msgid "Administrated by"
-msgstr "Adminisztráció"
+msgstr ""
 
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"

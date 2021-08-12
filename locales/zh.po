@@ -5,7 +5,7 @@
 # kashing <shing3232@gmail.com>, 2015-2016
 # Lei feng, 2015
 # Nobita Nobi <896876269@qq.com>, 2020
-# steve jobs <vicdorke@gmail.com>, 2020
+# Finn Dean <vicdorke@gmail.com>, 2020
 # Wangrui Enderex <jwr030521@gmail.com>, 2016
 # Zhao Rui <renyuneyun@gmail.com>, 2015
 # 三三 <gihub@mail.best33.com>, 2016
@@ -118,7 +118,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-19 23:54+0200\n"
-"PO-Revision-Date: 2021-04-02 13:28+0000\n"
+"PO-Revision-Date: 2021-07-31 13:24+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
 "Language: zh_CN\n"
@@ -523,14 +523,12 @@ msgid "No avatar defined yet"
 msgstr "暂无头像"
 
 #: [avatar]change
-#, fuzzy
 msgid "Change my avatar"
-msgstr "更改我的密码"
+msgstr ""
 
 #: [avatar]upload_new
-#, fuzzy
 msgid "Upload a new picture"
-msgstr "拍照"
+msgstr ""
 
 #: [blog]title [feed]title
 msgid "%s’s feed"
@@ -1152,9 +1150,8 @@ msgid "Last registered"
 msgstr "最近注册的"
 
 #: [explore]explore
-#, fuzzy
 msgid "Find some new contacts"
-msgstr "寻找些新朋友"
+msgstr ""
 
 #: [edit]title [button]edit
 msgid "Edit"
@@ -1221,9 +1218,8 @@ msgid "This contact is in your contact list but there is no subscription between
 msgstr "该联系人在你的联系人列表中，但两账户之间没有订阅"
 
 #: [contactdatapublic]no_data
-#, fuzzy
 msgid "No public data found"
-msgstr "我的发布"
+msgstr ""
 
 #: [draw]title
 msgid "Draw"
@@ -1402,9 +1398,8 @@ msgid "%s invited you to join a chatroom"
 msgstr "%s 邀请你加入一个聊天室"
 
 #: [form]pod_admins
-#, fuzzy
 msgid "Administrated by"
-msgstr "管理"
+msgstr ""
 
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
@@ -1972,7 +1967,7 @@ msgstr "总是通知"
 
 #: [roomsexplore]no_local
 msgid "No chatrooms found locally"
-msgstr "在本地找不到聊天室"
+msgstr ""
 
 #: [roomsexplore]global_title
 msgid "Global search"

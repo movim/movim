@@ -117,8 +117,8 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-19 23:54+0200\n"
-"PO-Revision-Date: 2021-05-19 21:53+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"PO-Revision-Date: 2021-07-31 13:24+0000\n"
+"Last-Translator: Transifex Bot <>\n"
 "Language-Team: French (France) (http://www.transifex.com/movim/movim/language/fr_FR/)\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
@@ -1908,7 +1908,7 @@ msgstr "Envoyer ce lien à vos contacts"
 
 #: [room]public_muc
 msgid "Public"
-msgstr "Publique"
+msgstr "Public"
 
 #: [room]public_muc_text
 msgid "This chatroom is publicly discoverable"
@@ -1966,7 +1966,7 @@ msgstr "Toujours notifier"
 
 #: [roomsexplore]no_local
 msgid "No chatrooms found locally"
-msgstr "Pas de salons de discussion trouvés localement"
+msgstr ""
 
 #: [roomsexplore]global_title
 msgid "Global search"
@@ -1974,7 +1974,7 @@ msgstr "Recherche globale"
 
 #: [roomsexplore]no_global
 msgid "No chatrooms found globally"
-msgstr "Pas de salons de discussion trouvés globalement"
+msgstr ""
 
 #: [search]keyword
 msgid "What are you looking for?"

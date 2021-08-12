@@ -111,8 +111,8 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-19 23:54+0200\n"
-"PO-Revision-Date: 2021-04-05 11:27+0000\n"
-"Last-Translator: revolt68 <ashrafnezhad@gmail.com>\n"
+"PO-Revision-Date: 2021-07-31 13:24+0000\n"
+"Last-Translator: Transifex Bot <>\n"
 "Language-Team: Persian (http://www.transifex.com/movim/movim/language/fa/)\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
@@ -516,14 +516,12 @@ msgid "No avatar defined yet"
 msgstr "هنوز هیچ آواتاری تعریف نشده"
 
 #: [avatar]change
-#, fuzzy
 msgid "Change my avatar"
-msgstr "تغییر رمز عبور"
+msgstr ""
 
 #: [avatar]upload_new
-#, fuzzy
 msgid "Upload a new picture"
-msgstr "آپلود ناموفق بود"
+msgstr ""
 
 #: [blog]title [feed]title
 msgid "%s’s feed"
@@ -1145,9 +1143,8 @@ msgid "Last registered"
 msgstr ""
 
 #: [explore]explore
-#, fuzzy
 msgid "Find some new contacts"
-msgstr "مخاطبین اخیر"
+msgstr ""
 
 #: [edit]title [button]edit
 msgid "Edit"
@@ -1394,9 +1391,8 @@ msgid "%s invited you to join a chatroom"
 msgstr ""
 
 #: [form]pod_admins
-#, fuzzy
 msgid "Administrated by"
-msgstr "مدیریت"
+msgstr ""
 
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
@@ -1964,7 +1960,7 @@ msgstr "همیشه به من اطلاع بده"
 
 #: [roomsexplore]no_local
 msgid "No chatrooms found locally"
-msgstr "هیچ چت روم محلی ایی پیدا نشد"
+msgstr ""
 
 #: [roomsexplore]global_title
 msgid "Global search"

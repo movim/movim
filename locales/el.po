@@ -108,7 +108,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-19 23:54+0200\n"
-"PO-Revision-Date: 2021-04-02 13:28+0000\n"
+"PO-Revision-Date: 2021-07-31 13:24+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: Greek (http://www.transifex.com/movim/movim/language/el/)\n"
 "Language: el\n"
@@ -513,9 +513,8 @@ msgid "No avatar defined yet"
 msgstr ""
 
 #: [avatar]change
-#, fuzzy
 msgid "Change my avatar"
-msgstr "Αλλαγή κωδικού"
+msgstr ""
 
 #: [avatar]upload_new
 msgid "Upload a new picture"
@@ -1209,9 +1208,8 @@ msgid "This contact is in your contact list but there is no subscription between
 msgstr ""
 
 #: [contactdatapublic]no_data
-#, fuzzy
 msgid "No public data found"
-msgstr "Κοινοποιησή επαφής"
+msgstr ""
 
 #: [draw]title
 msgid "Draw"

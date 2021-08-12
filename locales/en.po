@@ -107,7 +107,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-19 23:54+0200\n"
-"PO-Revision-Date: 2021-04-02 13:28+0000\n"
+"PO-Revision-Date: 2021-07-31 13:24+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: English (http://www.transifex.com/movim/movim/language/en/)\n"
 "Language: en\n"
@@ -372,9 +372,8 @@ msgid "Tenor integration"
 msgstr "Tenor integration"
 
 #: [tenor]label
-#, fuzzy
 msgid "Your Tenor API Key"
-msgstr "Yout Tenor API Key"
+msgstr "Your Tenor API Key"
 
 #: [tenor]info1
 msgid "Movim integrates the Tenor API to allow GIF search and publication in Chat"
@@ -418,7 +417,7 @@ msgstr "Sessions"
 
 #: [adminsessions]text
 msgid "Currently connected users on the pod"
-msgstr ""
+msgstr "Currently connected users on the pod"
 
 #: [admin]compatibility
 msgid "General Overview"
@@ -513,14 +512,12 @@ msgid "No avatar defined yet"
 msgstr "No avatar defined yet"
 
 #: [avatar]change
-#, fuzzy
 msgid "Change my avatar"
-msgstr "Change my password"
+msgstr "Change my avatar"
 
 #: [avatar]upload_new
-#, fuzzy
 msgid "Upload a new picture"
-msgstr "Take a picture"
+msgstr "Upload a new picture"
 
 #: [blog]title [feed]title
 msgid "%s’s feed"
@@ -1142,9 +1139,8 @@ msgid "Last registered"
 msgstr "Last registered"
 
 #: [explore]explore
-#, fuzzy
 msgid "Find some new contacts"
-msgstr "Find some new friends"
+msgstr "Find some new contacts"
 
 #: [edit]title [button]edit
 msgid "Edit"
@@ -1211,9 +1207,8 @@ msgid "This contact is in your contact list but there is no subscription between
 msgstr "This contact is in your contact list but there is no subscription between the two accounts"
 
 #: [contactdatapublic]no_data
-#, fuzzy
 msgid "No public data found"
-msgstr "My publications"
+msgstr "No public data found"
 
 #: [draw]title
 msgid "Draw"
@@ -1392,9 +1387,8 @@ msgid "%s invited you to join a chatroom"
 msgstr "%s invited you to join a chatroom"
 
 #: [form]pod_admins
-#, fuzzy
 msgid "Administrated by"
-msgstr "Administration"
+msgstr "Administrated by"
 
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"

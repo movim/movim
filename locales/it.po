@@ -115,7 +115,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-19 23:54+0200\n"
-"PO-Revision-Date: 2021-04-02 13:28+0000\n"
+"PO-Revision-Date: 2021-07-31 13:24+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: Italian (http://www.transifex.com/movim/movim/language/it/)\n"
 "Language: it\n"
@@ -520,14 +520,12 @@ msgid "No avatar defined yet"
 msgstr "Nessuna foto del profilo impostata"
 
 #: [avatar]change
-#, fuzzy
 msgid "Change my avatar"
-msgstr "Modifica la mia password"
+msgstr ""
 
 #: [avatar]upload_new
-#, fuzzy
 msgid "Upload a new picture"
-msgstr "Caricamento fallito"
+msgstr ""
 
 #: [blog]title [feed]title
 msgid "%s’s feed"
@@ -1149,9 +1147,8 @@ msgid "Last registered"
 msgstr "Ultimo iscritto"
 
 #: [explore]explore
-#, fuzzy
 msgid "Find some new contacts"
-msgstr "Cerca nuovi amici"
+msgstr ""
 
 #: [edit]title [button]edit
 msgid "Edit"
@@ -1218,9 +1215,8 @@ msgid "This contact is in your contact list but there is no subscription between
 msgstr "Questo utente è nella tua lista di contatti ma non c'è sottoscrizione tra i due account"
 
 #: [contactdatapublic]no_data
-#, fuzzy
 msgid "No public data found"
-msgstr "Le mie pubblicazioni"
+msgstr ""
 
 #: [draw]title
 msgid "Draw"
@@ -1399,9 +1395,8 @@ msgid "%s invited you to join a chatroom"
 msgstr "%s ti invita ad entrare in una chatroom"
 
 #: [form]pod_admins
-#, fuzzy
 msgid "Administrated by"
-msgstr "Amministrazione"
+msgstr ""
 
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"

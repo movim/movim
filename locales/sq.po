@@ -110,7 +110,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-19 23:54+0200\n"
-"PO-Revision-Date: 2021-04-02 16:40+0000\n"
+"PO-Revision-Date: 2021-08-01 10:44+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
 "Language-Team: Albanian (http://www.transifex.com/movim/movim/language/sq/)\n"
 "Language: sq\n"
@@ -375,9 +375,8 @@ msgid "Tenor integration"
 msgstr "Integrim me Tenor"
 
 #: [tenor]label
-#, fuzzy
 msgid "Your Tenor API Key"
-msgstr "Kyçi juaj API për Tenor"
+msgstr "Kyçi Juaj për API Tenor"
 
 #: [tenor]info1
 msgid "Movim integrates the Tenor API to allow GIF search and publication in Chat"
@@ -421,7 +420,7 @@ msgstr "Sesione"
 
 #: [adminsessions]text
 msgid "Currently connected users on the pod"
-msgstr ""
+msgstr "Përdorues aktualisht të lidhur te nyja"
 
 #: [admin]compatibility
 msgid "General Overview"
@@ -516,14 +515,12 @@ msgid "No avatar defined yet"
 msgstr "S’ka ende avatar të përcaktuar"
 
 #: [avatar]change
-#, fuzzy
 msgid "Change my avatar"
-msgstr "Ndryshoje fjalëkalimin tim"
+msgstr "Ndrysho avatarin tim"
 
 #: [avatar]upload_new
-#, fuzzy
 msgid "Upload a new picture"
-msgstr "Bëni një foto"
+msgstr "Ngarkoni një foto të re"
 
 #: [blog]title [feed]title
 msgid "%s’s feed"
@@ -1145,9 +1142,8 @@ msgid "Last registered"
 msgstr "Regjistruar së fundi"
 
 #: [explore]explore
-#, fuzzy
 msgid "Find some new contacts"
-msgstr "Gjeni ca shokë të rinj"
+msgstr "Gjeni ca kontakte të reja"
 
 #: [edit]title [button]edit
 msgid "Edit"
@@ -1214,9 +1210,8 @@ msgid "This contact is in your contact list but there is no subscription between
 msgstr "Ky kontakt gjendet në listën tuaj të kontakteve, por nuk ka pajtim mes dy llogarive"
 
 #: [contactdatapublic]no_data
-#, fuzzy
 msgid "No public data found"
-msgstr "Publikimet e mia"
+msgstr "S’u gjetën të dhëna publike"
 
 #: [draw]title
 msgid "Draw"
@@ -1395,9 +1390,8 @@ msgid "%s invited you to join a chatroom"
 msgstr "%s ju ftoi të hyni në një dhomë fjalosjesh"
 
 #: [form]pod_admins
-#, fuzzy
 msgid "Administrated by"
-msgstr "Administrim"
+msgstr "Administruar nga"
 
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
@@ -1949,7 +1943,7 @@ msgstr "Përdorues"
 
 #: [room]channel_text
 msgid "Public channel that can be publicly discoverable and joinable"
-msgstr "Kanal publik që mund të zbulohet publikisht dhe mund të hyhet publikisht"
+msgstr "Kanal publik që mund të zbulohet publikisht dhe në të të hyhet publikisht "
 
 #: [room]notify_never
 msgid "Never notify"
@@ -1965,7 +1959,7 @@ msgstr "Njofto përherë"
 
 #: [roomsexplore]no_local
 msgid "No chatrooms found locally"
-msgstr "S’u gjetën dhoma fjalosjes vendore"
+msgstr "S’u gjetën dhoma vendore fjalosjesh"
 
 #: [roomsexplore]global_title
 msgid "Global search"
@@ -1973,7 +1967,7 @@ msgstr "Kërkim global"
 
 #: [roomsexplore]no_global
 msgid "No chatrooms found globally"
-msgstr "S’u gjetën dhoma fjalosjesh globale"
+msgstr "S’u gjetën dhoma globale fjalosjesh"
 
 #: [search]keyword
 msgid "What are you looking for?"

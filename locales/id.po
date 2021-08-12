@@ -110,7 +110,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-05-19 23:54+0200\n"
-"PO-Revision-Date: 2021-04-02 13:28+0000\n"
+"PO-Revision-Date: 2021-07-31 13:24+0000\n"
 "Last-Translator: Transifex Bot <>\n"
 "Language-Team: Indonesian (http://www.transifex.com/movim/movim/language/id/)\n"
 "Language: id\n"
@@ -515,9 +515,8 @@ msgid "No avatar defined yet"
 msgstr "Belum ada avatar didefinisikan sebelumnya"
 
 #: [avatar]change
-#, fuzzy
 msgid "Change my avatar"
-msgstr "Rubah kata sandi saya"
+msgstr ""
 
 #: [avatar]upload_new
 msgid "Upload a new picture"
@@ -1143,9 +1142,8 @@ msgid "Last registered"
 msgstr "Terdaftar terakhir"
 
 #: [explore]explore
-#, fuzzy
 msgid "Find some new contacts"
-msgstr "Temukan teman baru"
+msgstr ""
 
 #: [edit]title [button]edit
 msgid "Edit"
@@ -1212,9 +1210,8 @@ msgid "This contact is in your contact list but there is no subscription between
 msgstr ""
 
 #: [contactdatapublic]no_data
-#, fuzzy
 msgid "No public data found"
-msgstr "Publikasi saya"
+msgstr ""
 
 #: [draw]title
 msgid "Draw"
@@ -1393,9 +1390,8 @@ msgid "%s invited you to join a chatroom"
 msgstr ""
 
 #: [form]pod_admins
-#, fuzzy
 msgid "Administrated by"
-msgstr "Administrasi"
+msgstr ""
 
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
