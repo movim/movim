@@ -525,7 +525,7 @@ img.transparent {
 }
 
 @keyframes loadingopacity {
-    from { opacity: 0.4; }
+    from { opacity: 0.2; }
     to { opacity: 1; }
 }
 

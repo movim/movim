@@ -147,6 +147,7 @@ main:not(.enabled) #chat_widget {
 #chat_widget .chat_box span.control:not(.button):not(.color) {
     font-size: 3.5rem;
     color: rgba(var(--movim-font), 0.68);
+    animation: fadein 0.3s;
 }
 
 #chat_widget .chat_box span.control:not(.button) i {
@@ -166,7 +167,7 @@ main:not(.enabled) #chat_widget {
     height: 0.25rem;
     content: '';
     top: -0.25rem;
-    transition: width 25s cubic-bezier(.68,0,0,1), opacity 0.2s ease-in-out;
+    transition: width 10s ease-in-out, opacity 0.2s ease-in-out;
     opacity: 0;
 }
 
@@ -175,8 +176,14 @@ main:not(.enabled) #chat_widget {
     opacity: 1;
 }
 
+#chat_widget .chat_box.finished:before {
+    transition: width 1s cubic-bezier(.68,0,0,1), opacity 3s ease-in-out;
+    width: 100%;
+    opacity: 0;
+}
+
 #chat_widget .chat_box.sending span.control.send {
-    animation: loadingopacity 1s infinite alternate;
+    animation: loadingopacity 0.7s infinite alternate;
     pointer-events: none;
 }
 

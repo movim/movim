@@ -289,14 +289,26 @@ var Chat = {
     {
         Chat.sent = true;
         var send = document.querySelector('.chat_box');
-        if (send) send.classList.add('sending');
+        if (send) {
+            send.classList.add('sending');
+            send.classList.remove('finished');
+        }
     },
     disableSending: function()
     {
         Chat.sent = false;
         var send = document.querySelector('.chat_box');
-        if (send) send.classList.remove('sending');
+        if (send) {
+            send.classList.remove('sending');
+        }
     },
+    finishedSending: function()
+    {
+        Chat.sent = false;
+        var send = document.querySelector('.chat_box');
+        if (send) send.classList.add('finished');
+    },
+
     sentMessage: function()
     {
         Chat.disableSending();
@@ -445,7 +457,21 @@ var Chat = {
             if ((url.protocol === "http:" || url.protocol === "https:")
             && textarea.value == '' && !Chat.isEncrypted()) {
                 Chat.enableSending();
-                ChatActions_ajaxHttpResolveUrl(pastedData);
+
+                console.log('enable');
+                xhr = ChatActions_ajaxHttpResolveUrl(pastedData);
+                xhr.timeout = 5000;
+                xhr.ontimeout = function() {
+                    console.log('disable');
+                    Chat.disableSending();
+                    Chat.finishedSending();
+                };
+                xhr.onreadystatechange = function() {
+                    if (this.readyState == 4) {
+                        Chat.disableSending();
+                        Chat.finishedSending();
+                    }
+                };
             }
         });
 
