@@ -140,6 +140,13 @@ var Upload = {
                     Upload.prepare(file);
                 }
             } else {
+                // Also create the canvas for other usages like drawing
+                Upload.canvas = document.createElement('canvas');
+                Upload.canvas.width = image.naturalWidth;
+                Upload.canvas.height = image.naturalHeight;
+                ctx = Upload.canvas.getContext("2d");
+                ctx.drawImage(image, 0, 0, image.naturalWidth, image.naturalHeight);
+
                 Upload.prepare(file);
             }
         });
