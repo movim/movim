@@ -103,7 +103,7 @@
                     {if="strtotime($contact->date) != 0"}
                         <br />
                         <i class="material-icons icon-text">cake</i>
-                        <a href="mailto:{$contact->email}">{$contact->date|strtotime|prepareDate:false}</a>
+                        {$contact->date|strtotime|prepareDate:false}
                     {/if}
 
                     {if="$contact->email"}
