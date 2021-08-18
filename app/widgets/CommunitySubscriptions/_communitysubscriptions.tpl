@@ -50,10 +50,18 @@
                         {else}
                             {$value->node}
                         {/if}
+
                     </p>
-                    {if="$value->info && $value->info->description"}
-                        <p class="line">{$value->info->description|strip_tags}</p>
-                    {/if}
+                    <p class="line">
+                        {if="$value->info && $value->info->description"}
+                            {$value->info->description|strip_tags}
+                        {else}
+                            {$value->node}
+                        {/if}
+                        {if="$value->public"}
+                            <span class="tag color gray">{$c->__('room.public_muc')}</span>
+                        {/if}
+                    </p>
                 </div>
             </li>
         {/loop}

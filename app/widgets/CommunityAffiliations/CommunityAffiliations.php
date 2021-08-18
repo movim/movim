@@ -131,12 +131,31 @@ class CommunityAffiliations extends Base
         return \App\Contact::firstOrNew(['id' => $jid]);
     }
 
-    public function prepareSubscriptionsList($subscriptions)
+    public function preparePublicSubscriptionsList($subscriptions)
     {
         $view = $this->tpl();
-        $view->assign('subscriptions', $subscriptions);
 
-        return $view->draw('_communityaffiliations_subscriptions_list');
+        $sortedSubscriptions = collect();
+
+        if ($this->user && $this->user->session) {
+            $rosterJids = $this->user->session->contacts->pluck('jid')->toArray();
+
+            foreach ($subscriptions as $subscription) {
+                $subscription->setAttribute('in_roster', in_array($subscription->jid, $rosterJids));
+
+                if ($subscription->in_roster) {
+                    $sortedSubscriptions->push($subscription);
+                } else {
+                    $sortedSubscriptions->prepend($subscription);
+                }
+            }
+        } else {
+            $sortedSubscriptions = $subscriptions;
+        }
+
+        $view->assign('subscriptions', $sortedSubscriptions);
+
+        return $view->draw('_communityaffiliations_public_subscriptions_list');
     }
 
     public function ajaxGetAffiliations($origin, $node)

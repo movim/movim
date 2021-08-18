@@ -6,7 +6,7 @@
 
     {if="$subscriptions->isNotEmpty()"}
         {autoescape="off"}
-            {$c->prepareSubscriptions($subscriptions)}
+            {$c->preparePublicSubscriptions($subscriptions)}
         {/autoescape}
     {/if}
 </ul>

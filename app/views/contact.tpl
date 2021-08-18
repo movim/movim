@@ -19,6 +19,7 @@
 <main style="background-color: var(--movim-background);">
     <aside>
         <?php $this->widget('ContactData'); ?>
+        <?php $this->widget('ContactSubscriptions'); ?>
         <?php $this->widget('AdHoc'); ?>
     </aside>
     <div>

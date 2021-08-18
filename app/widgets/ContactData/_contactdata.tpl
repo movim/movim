@@ -140,7 +140,3 @@
         </a>
     </ul>
 </div>
-
-{autoescape="off"}
-    {$c->prepareSubscriptions($subscriptions)}
-{/autoescape}

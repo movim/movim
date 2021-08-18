@@ -105,6 +105,6 @@
 
 {if="$subscriptions->isNotEmpty()"}
     {autoescape="off"}
-        {$c->prepareSubscriptionsList($subscriptions)}
+        {$c->preparePublicSubscriptionsList($subscriptions)}
     {/autoescape}
 {/if}

@@ -19,9 +19,9 @@ class Get extends Errors
 
     public function handle($stanza, $parent = false)
     {
-        \App\User::me()->subscriptions()
-                       ->where('public', ($this->_pepnode == 'urn:xmpp:pubsub:subscription'))
-                       ->delete();
+        Subscription::where('jid', $this->_to)
+                    ->where('public', ($this->_pepnode == 'urn:xmpp:pubsub:subscription'))
+                    ->delete();
 
         $subscriptions = [];
 
@@ -29,14 +29,23 @@ class Get extends Errors
             $subscription = \App\Subscription::firstOrNew([
                 'jid' => $this->_to,
                 'server' => (string)$i->subscription->attributes()->server,
-                'node' => (string)$i->subscription->attributes()->node
+                'node' => (string)$i->subscription->attributes()->node,
+                //'public' => ($this->_pepnode == 'urn:xmpp:pubsub:subscription')
             ]);
 
+            $insertAsWell = false;
+
             if ($this->_pepnode == 'urn:xmpp:pubsub:subscription') {
+                // Remove the private subscriptions to insert the public ones
+                if ($subscription->exists && $subscription->public == false) {
+                    $subscription->delete();
+                    $insertAsWell = true;
+                }
+
                 $subscription->public = true;
             }
 
-            if (!$subscription->exists) {
+            if (!$subscription->exists || $insertAsWell) {
                 array_push($subscriptions, $subscription->toArray());
             }
         }

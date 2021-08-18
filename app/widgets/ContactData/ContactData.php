@@ -34,8 +34,6 @@ class ContactData extends Base
                         ->orderBy('published', 'desc')
                         ->first()
         );
-        $view->assign('subscriptions', \App\Subscription::where('jid', $jid)
-             ->where('public', true)->get());
         $view->assign('contact', App\Contact::firstOrNew(['id' => $jid]));
         $view->assign('roster', $this->user->session->contacts()->where('jid', $jid)->first());
 
@@ -49,14 +47,6 @@ class ContactData extends Base
         $view->assign('roster', $roster);
 
         return $view->draw('_contactdata_card');
-    }
-
-    public function prepareSubscriptions($subscriptions)
-    {
-        $view = $this->tpl();
-        $view->assign('subscriptions', $subscriptions);
-
-        return $view->draw('_contactdata_subscriptions');
     }
 
     public function ajaxRefresh($jid)

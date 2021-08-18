@@ -10,9 +10,9 @@ class Subscription extends Model
     protected $primaryKey = ['jid', 'server', 'node'];
     protected $guarded = [];
 
-    public static function saveMany(array $conferences)
+    public static function saveMany(array $subscriptions)
     {
-        return Subscription::insert($conferences);
+        return Subscription::insert($subscriptions);
     }
 
     public function info()
