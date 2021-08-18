@@ -146,7 +146,7 @@ class CommunityAffiliations extends Base
                 if ($subscription->in_roster) {
                     $sortedSubscriptions->prepend($subscription);
                 } else {
-                    $sortedSubscriptions->append($subscription);
+                    $sortedSubscriptions->push($subscription);
                 }
             }
         } else {
