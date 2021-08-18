@@ -144,9 +144,9 @@ class CommunityAffiliations extends Base
                 $subscription->setAttribute('in_roster', in_array($subscription->jid, $rosterJids));
 
                 if ($subscription->in_roster) {
-                    $sortedSubscriptions->push($subscription);
-                } else {
                     $sortedSubscriptions->prepend($subscription);
+                } else {
+                    $sortedSubscriptions->append($subscription);
                 }
             }
         } else {

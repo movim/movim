@@ -29,7 +29,7 @@
                         {$value->jid|firstLetterCapitalize:true}
                     </span>
                     <div>
-                        <p class="normal">{if="$value->in_roster"}IN ROSTER{/if}{$value->jid}</p>
+                        <p class="normal">{$value->jid}</p>
                     </div>
                 {/if}
             </li>
