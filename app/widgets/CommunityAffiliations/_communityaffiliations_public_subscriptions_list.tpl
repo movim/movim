@@ -1,7 +1,7 @@
 <ul class="list card active thin">
     <li class="subheader">
         <div>
-            <p>{$c->__('communityaffiliation.public_subscrptions')}</p>
+            <p>{$c->__('communityaffiliation.public_subscriptions')}</p>
         </div>
     </li>
     {loop="$subscriptions"}

@@ -107,6 +107,14 @@
     {autoescape="off"}
         {$c->preparePublicSubscriptionsList($rostersubscriptions)}
     {/autoescape}
+{else}
+    <ul class="list card active thin">
+        <li class="subheader">
+            <div>
+                <p>{$c->__('communityaffiliation.public_subscriptions')}</p>
+            </div>
+        </li>
+    </ul>
 {/if}
 
 {if="$allsubscriptionscount > 0"}
