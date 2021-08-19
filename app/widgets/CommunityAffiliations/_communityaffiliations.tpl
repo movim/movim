@@ -107,7 +107,7 @@
     {autoescape="off"}
         {$c->preparePublicSubscriptionsList($rostersubscriptions)}
     {/autoescape}
-{else}
+{elseif="$allsubscriptionscount > 0"}
     <ul class="list card active thin">
         <li class="subheader">
             <div>
