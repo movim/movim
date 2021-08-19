@@ -103,8 +103,22 @@
 </ul>
 {/if}
 
-{if="$subscriptions->isNotEmpty()"}
+{if="$rostersubscriptions->isNotEmpty()"}
     {autoescape="off"}
-        {$c->preparePublicSubscriptionsList($subscriptions)}
+        {$c->preparePublicSubscriptionsList($rostersubscriptions)}
     {/autoescape}
+{/if}
+
+{if="$allsubscriptionscount > 0"}
+    <ul class="list active">
+        <li onclick="CommunityAffiliations_ajaxShowFullPublicSubscriptionsList('{$server}', '{$node}')">
+            <span class="primary icon gray">
+                <i class="material-icons">unfold_more</i>
+            </span>
+            <div>
+                <p>{$c->__('button.more')}</p>
+                <p>{$c->__('communitydata.sub', $allsubscriptionscount)}</p>
+            </div>
+        </li>
+    </ul>
 {/if}

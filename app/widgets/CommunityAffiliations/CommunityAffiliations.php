@@ -42,11 +42,22 @@ class CommunityAffiliations extends Base
         $view->assign('info', \App\Info::where('server', $origin)
                                        ->where('node', $node)
                                        ->first());
+        $view->assign('server', $origin);
+        $view->assign('node', $node);
         $view->assign('affiliations', $affiliations);
-        $view->assign('subscriptions', \App\Subscription::where('server', $origin)
+        $view->assign('rostersubscriptions', \App\Subscription::where('server', $origin)
                 ->where('node', $node)
                 ->where('public', true)
+                ->whereIn('jid', function ($query) {
+                    $query->from('rosters')
+                          ->select('jid')
+                          ->where('session_id', SESSION_ID);
+                })
                 ->get());
+        $view->assign('allsubscriptionscount', \App\Subscription::where('server', $origin)
+                ->where('node', $node)
+                ->where('public', true)
+                ->count());
 
         $this->rpc(
             'MovimTpl.fill',
@@ -131,31 +142,15 @@ class CommunityAffiliations extends Base
         return \App\Contact::firstOrNew(['id' => $jid]);
     }
 
-    public function preparePublicSubscriptionsList($subscriptions)
+    public function ajaxShowFullPublicSubscriptionsList($origin, $node)
     {
         $view = $this->tpl();
+        $view->assign('subscriptions', \App\Subscription::where('server', $origin)
+                ->where('node', $node)
+                ->where('public', true)
+                ->get());
 
-        $sortedSubscriptions = collect();
-
-        if ($this->user && $this->user->session) {
-            $rosterJids = $this->user->session->contacts->pluck('jid')->toArray();
-
-            foreach ($subscriptions as $subscription) {
-                $subscription->setAttribute('in_roster', in_array($subscription->jid, $rosterJids));
-
-                if ($subscription->in_roster) {
-                    $sortedSubscriptions->prepend($subscription);
-                } else {
-                    $sortedSubscriptions->push($subscription);
-                }
-            }
-        } else {
-            $sortedSubscriptions = $subscriptions;
-        }
-
-        $view->assign('subscriptions', $sortedSubscriptions);
-
-        return $view->draw('_communityaffiliations_public_subscriptions_list');
+        Dialog::fill($view->draw('_communityaffiliations_public_subscriptions_dialog'), true);
     }
 
     public function ajaxGetAffiliations($origin, $node)
@@ -236,6 +231,33 @@ class CommunityAffiliations extends Base
                ->setData([$form->jid->value => $form->role->value])
                ->request();
         }
+    }
+
+    public function preparePublicSubscriptionsList($subscriptions)
+    {
+        $view = $this->tpl();
+
+        $sortedSubscriptions = collect();
+
+        if ($this->user && $this->user->session) {
+            $rosterJids = $this->user->session->contacts->pluck('jid')->toArray();
+
+            foreach ($subscriptions as $subscription) {
+                $subscription->setAttribute('in_roster', in_array($subscription->jid, $rosterJids));
+
+                if ($subscription->in_roster) {
+                    $sortedSubscriptions->prepend($subscription);
+                } else {
+                    $sortedSubscriptions->push($subscription);
+                }
+            }
+        } else {
+            $sortedSubscriptions = $subscriptions;
+        }
+
+        $view->assign('subscriptions', $sortedSubscriptions);
+
+        return $view->draw('_communityaffiliations_public_subscriptions_list');
     }
 
     private function validateServerNode($origin, $node)
