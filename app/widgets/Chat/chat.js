@@ -1025,19 +1025,7 @@ var Chat = {
                     let refreshP = document.querySelector('#id' + data.id + ' p');
                     if (refreshP) {
                         if (plaintext) {
-                            // If the plaintext is a URL
-                            if (Chat.isValidHttpUrl(plaintext)) {
-                                refreshP.innerHTML = '';
-                                var a = document.createElement('a');
-                                a.textContent = plaintext;
-                                a.setAttribute('href', plaintext);
-                                a.setAttribute('target', '_blank');
-                                a.setAttribute('rel', 'noopener');
-                                refreshP.appendChild(a);
-                            } else {
-                                refreshP.innerHTML = plaintext;
-                            }
-
+                            refreshP.innerHTML = MovimUtils.linkify(plaintext);
                             refreshP.classList.remove('encrypted');
                         } else {
                             refreshP.classList.add('error');
