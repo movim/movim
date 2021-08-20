@@ -111,13 +111,10 @@ function readTime($content)
 function getHashtags($string): array
 {
     $hashtags = [];
-    preg_match_all("/(#\w+)/u", $string, $matches);
+    preg_match_all("/(^| )#(\w+)/u", $string, $matches);
 
     if ($matches) {
-        $hashtagsArray = array_count_values($matches[0]);
-        $hashtags = array_map(function ($tag) {
-            return substr($tag, 1);
-        }, array_keys($hashtagsArray));
+        $hashtags = $matches[2];
     }
 
     return $hashtags;
