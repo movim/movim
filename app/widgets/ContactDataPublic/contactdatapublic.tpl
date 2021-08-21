@@ -6,7 +6,7 @@
         {/autoescape}
 
         {autoescape="off"}
-            {$c->prepareSubscriptions($subscriptions)}
+            {$c->prepareSubscriptions($jid)}
         {/autoescape}
     {else}
         <div class="block">

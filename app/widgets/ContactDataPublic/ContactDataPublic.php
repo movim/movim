@@ -3,6 +3,7 @@
 use Movim\Widget\Base;
 
 include_once WIDGETS_PATH.'ContactData/ContactData.php';
+include_once WIDGETS_PATH.'ContactSubscriptions/ContactSubscriptions.php';
 
 class ContactDataPublic extends Base
 {
@@ -11,9 +12,9 @@ class ContactDataPublic extends Base
         return (new ContactData)->prepareCard($contact);
     }
 
-    public function prepareSubscriptions($subscriptions)
+    public function prepareSubscriptions($jid)
     {
-        return (new ContactData)->prepareSubscriptions($subscriptions);
+        return (new ContactSubscriptions)->prepareSubscriptions($jid);
     }
 
     public function display()
@@ -29,9 +30,6 @@ class ContactDataPublic extends Base
 
         $this->view->assign('public', ($user && (bool)$user->public));
         $this->view->assign('contact', App\Contact::firstOrNew(['id' => $jid]));
-        $this->view->assign('subscriptions', \App\Subscription::where('jid', $jid)
-                                                              ->where('public', true)
-                                                              ->get());
         $this->view->assign('jid', $jid);
     }
 }
