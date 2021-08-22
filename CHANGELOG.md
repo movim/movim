@@ -29,6 +29,8 @@ v0.19.1 (trunk)
 * Allow chatrooms to be pinned in Bookmarks2 using a Movim pin extension
 * Add Links tab in Contact and Conferences drawer
 * Fix picture drawing size before uploading a picture
+* Improve the microphone level indicator in Visio
+* Remember the last selected microphone and camera in Visio
 
 v0.19
 ---------------------------

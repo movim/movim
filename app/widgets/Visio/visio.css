@@ -25,6 +25,10 @@ body {
     text-align: center;
 }
 
+#visio #main {
+    outline: 0.5rem solid transparent;
+}
+
 #visio .infos #remote_level {
     overflow: hidden;
     border-radius: 100%;
@@ -107,6 +111,7 @@ body {
     font-size: 2rem;
     margin-right: 1rem;
     opacity: 0.5;
+    color: white;
 }
 
 #visio #video,

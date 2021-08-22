@@ -149,11 +149,22 @@ var Visio = {
             video: false
         };
 
+        if (localStorage.getItem('defaultMicrophone')) {
+            constraints.audio = {
+                deviceId: localStorage.getItem('defaultMicrophone')
+            }
+        }
+
         if (Visio.withVideo) {
             const videoSource = Visio.videoSelect.value;
+            var defaultCamera = undefined;
+
+            if (localStorage.getItem('defaultCamera')) {
+                defaultCamera = localStorage.getItem('defaultMicrophone');
+            }
 
             constraints.video = {
-                deviceId: videoSource ? {exact: videoSource} : undefined,
+                deviceId: videoSource ? {exact: videoSource} : defaultCamera,
                 facingMode: 'user',
                 width: { ideal: 4096 },
                 height: { ideal: 4096 }
@@ -161,6 +172,15 @@ var Visio = {
         }
 
         navigator.mediaDevices.getUserMedia(constraints).then(stream => {
+            var tracks = stream.getTracks();
+            for(var i = 0; i < tracks.length; i++){
+                if (tracks[i].getSettings().channelCount) {
+                    localStorage.setItem('defaultMicrophone', tracks[i].getSettings().deviceId);
+                } else {
+                    localStorage.setItem('defaultCamera', tracks[i].getSettings().deviceId);
+                }
+            }
+
             if (!Visio.withVideo) {
                 Visio.localAudio.srcObject = stream;
             } else {

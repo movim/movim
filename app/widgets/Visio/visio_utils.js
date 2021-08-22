@@ -20,6 +20,7 @@ var VisioUtils = {
 
         var javascriptNode = VisioUtils.audioContext.createScriptProcessor(2048, 1, 1);
         var icon = document.querySelector('#toggle_audio i');
+        var mainButton = document.getElementById('main');
         icon.innerText = 'mic';
 
         microphone.connect(javascriptNode);
@@ -36,7 +37,8 @@ var VisioUtils = {
             instant = Math.sqrt(sum / inpt.length);
             VisioUtils.maxLevel = Math.max(VisioUtils.maxLevel, instant);
 
-            var level = Math.log2((instant/VisioUtils.maxLevel)+1);
+            var base = (instant/VisioUtils.maxLevel);
+            var level = (base > 0.01) ? base**.3 : 0;
 
             if (level < 0.02) {
                 icon.style.color = 'rgb(255, 255, 255, 1)';
@@ -44,6 +46,13 @@ var VisioUtils = {
                 var inverse = 255-(level.toPrecision(2)*255);
                 icon.style.color = 'rgb(' + inverse + ', 255, ' + inverse + ')';
             }
+
+            if (mainButton.classList.contains('red')) {
+                mainButton.style.outlineColor = 'rgba(255, 255, 255, ' + level + ')';
+            } else {
+                mainButton.style.outlineColor = 'transparent';
+            }
+
         }
     },
 
@@ -78,11 +87,8 @@ var VisioUtils = {
             instant = Math.sqrt(sum / inpt.length);
             VisioUtils.remoteMaxLevel = Math.max(VisioUtils.remoteMaxLevel, instant);
 
-            var level = Math.log2((instant/VisioUtils.remoteMaxLevel)+1);
-            if (level < 0.02) {
-                level = 0;
-                VisioUtils.remoteMaxLevel = 0;
-            }
+            var base = (instant/VisioUtils.remoteMaxLevel);
+            var level = (base > 0.01) ? base**.3 : 0;
 
             remoteMeter.style.borderColor = 'rgba(255, 255, 255, ' + level + ')';
         }
