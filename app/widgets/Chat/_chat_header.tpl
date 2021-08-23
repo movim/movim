@@ -1,16 +1,10 @@
 {if="$muc"}
     <ul class="list middle">
         <li>
-            <span class="primary icon active"
-                {if="!$anon"}
-                    onclick="Chat.get()"
-                {/if}>
-
-                {if="!$anon"}
-                    <i class="material-icons">arrow_back</i>
-                {else}
-                    <i class="material-icons">comments</i>
-                {/if}
+            <span class="primary icon active" id="chatheadercounter" onclick="Chat.get()">
+                {autoescape="off"}
+                    {$counter}
+                {/autoescape}
             </span>
 
             {$curl = false}
@@ -187,8 +181,10 @@
 {else}
     <ul class="list middle fill">
         <li id="chat_header">
-            <span onclick="Chat.get()" class="primary icon active">
-                <i class="material-icons">arrow_back</i>
+            <span class="primary icon active" id="chatheadercounter" onclick="Chat.get()">
+                {autoescape="off"}
+                    {$counter}
+                {/autoescape}
             </span>
 
             {$url = $contact->getPhoto()}

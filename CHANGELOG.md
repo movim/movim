@@ -31,6 +31,7 @@ v0.19.1 (trunk)
 * Fix picture drawing size before uploading a picture
 * Improve the microphone level indicator in Visio
 * Remember the last selected microphone and camera in Visio
+* Add the chat counter on the back button of opened conversations on mobile
 
 v0.19
 ---------------------------

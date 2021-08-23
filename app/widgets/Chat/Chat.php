@@ -53,6 +53,8 @@ class Chat extends \Movim\Widget\Base
         $this->registerEvent('presence_muc_handle', 'onMucConnected', 'chat');
         $this->registerEvent('message_publish_error', 'onPublishError', 'chat');
 
+        $this->registerEvent('chat_counter', 'onCounter', 'chat');
+
         $this->registerEvent('bob_request_handle', 'onSticker');
         $this->registerEvent('notification_counter_clear', 'onNotificationCounterClear');
     }
@@ -76,6 +78,18 @@ class Chat extends \Movim\Widget\Base
     public function onRetracted($packet)
     {
         $this->onMessage($packet, false, true);
+    }
+
+    public function onCounter($count)
+    {
+        $this->rpc('MovimTpl.fill', '#chatheadercounter', $this->prepareChatCounter($count));
+    }
+
+    private function prepareChatCounter(int $count = 0)
+    {
+        $view = $this->tpl();
+        $view->assign('count', $count);
+        return $view->draw('_chat_counter');
     }
 
     public function onNotificationCounterClear($params)
@@ -1337,6 +1351,11 @@ class Chat extends \Movim\Widget\Base
                      ->first()
         );
         $view->assign('anon', false);
+        $view->assign('counter',
+            $this->prepareChatCounter(
+                $this->user->unreads(null, false, true)
+            )
+        );
 
         if ($muc) {
             $view->assign('conference', $this->user->session->conferences()

@@ -591,3 +591,16 @@ main:not(.enabled) #chat_widget {
     padding: 0.5rem 0;
     border-bottom: 1px solid rgba(var(--movim-font), 0.12);
 }
+
+/* Counter */
+
+#chat_widget #chatheadercounter .counter {
+    margin-top: 1rem;
+}
+
+
+@media screen and (min-width: 1025px) {
+    #chat_widget #chatheadercounter .counter {
+        display: none;
+    }
+}
