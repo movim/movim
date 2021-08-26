@@ -35,7 +35,7 @@ class CreateDraftsTable extends Migration
         $this->schema->create('embeds', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('draft_id')->unsigned();
-            $table->text('url');
+            $table->string('url', 384);
             $table->integer('imagenumber')->default(0);
             $table->timestamps();
 
