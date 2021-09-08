@@ -967,6 +967,7 @@ var Chat = {
             msg = document.createElement('div');
             span = document.createElement('span');
             span.className = 'info';
+
             p = document.createElement('p');
             reaction = reaction.cloneNode(true);
 
@@ -1071,6 +1072,10 @@ var Chat = {
             resourceSpan.innerText = data.resource;
 
             msg.appendChild(resourceSpan);
+        }
+
+        if (data.published) {
+            span.title = data.published;
         }
 
         if (data.card) {
