@@ -5,20 +5,24 @@ use Movim\Picture as MovimPicture;
 
 class Picture extends Base
 {
-    private $compressLimit = SMALL_PICTURE_LIMIT * 4;
+    private $compressLimit = SMALL_PICTURE_LIMIT * 10;
     private $sizeLimit = 1920;
 
     public function display()
     {
         $url = urldecode($this->get('url'));
+        $parsedUrl = parse_url($url);
+
+        if ($parsedUrl['host'] == 'i.imgur.com') {
+            $url = getImgurThumbnail($url);
+        }
 
         $headers = requestHeaders($url);
 
-        if ($headers['http_code'] == 200
-        && $headers["download_content_length"] <= $this->compressLimit
+        if ($headers["download_content_length"] <= $this->compressLimit
         && typeIsPicture($headers['content_type'])) {
             $compress = (
-                $headers["download_content_length"] > SMALL_PICTURE_LIMIT * 0.5
+                $headers["download_content_length"] > SMALL_PICTURE_LIMIT * 0.25
                 && $headers["download_content_length"] < $this->compressLimit
             );
 
@@ -57,11 +61,6 @@ class Picture extends Base
 
                 header_remove('Content-Type');
                 header('Content-Type: image/webp');
-
-                $name = parse_url($url, PHP_URL_PATH);
-                if (!empty($name)) {
-                    header('Content-Disposition: attachment; filename="'.$name.'"');
-                }
             } else {
                 foreach ($headers as $header) {
                     if (strtolower(substr($header, 0, strlen('Content-Type:'))) === 'content-type:') {
@@ -70,6 +69,9 @@ class Picture extends Base
                 }
             }
 
+            if (!empty($parsedUrl['path'])) {
+                header('Content-Disposition: attachment; filename="'.basename($parsedUrl['path']).'"');
+            }
             header('Cache-Control: max-age=' . 3600*24);
             print $body;
             return;
