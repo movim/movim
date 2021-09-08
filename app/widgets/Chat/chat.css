@@ -167,7 +167,7 @@ main:not(.enabled) #chat_widget {
     height: 0.25rem;
     content: '';
     top: -0.25rem;
-    transition: width 10s ease-in-out, opacity 0.2s ease-in-out;
+    transition: width 5s ease-in-out, opacity 0.2s ease-in-out;
     opacity: 0;
 }
 

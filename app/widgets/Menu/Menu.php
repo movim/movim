@@ -226,7 +226,9 @@ class Menu extends Base
             ->orderBy('published', 'desc')
             ->take($this->_paging)->get();
 
-        $items = resolveInfos($items);
+        if ($items->isNotEmpty()) {
+            $items = resolveInfos($items);
+        }
 
         $view->assign('items', $items);
         $view->assign('type', $type);

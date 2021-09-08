@@ -67,7 +67,9 @@ class Communities extends Base
             )
             ->get();
 
-        $posts = resolveInfos($posts);
+        if ($posts->isNotEmpty()) {
+            $posts = resolveInfos($posts);
+        }
 
         $view->assign('posts', $posts);
         $view->assign('type', $type);

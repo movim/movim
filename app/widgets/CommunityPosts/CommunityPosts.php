@@ -132,12 +132,14 @@ class CommunityPosts extends Base
 
         $posts = \App\Post::where('server', $origin)->where('node', $node)
                           ->whereIn('nodeid', $ids)->get();
-        $posts = resolveInfos($posts);
-
         $postsWithKeys = [];
 
-        foreach ($posts as $key => $post) {
-            $postsWithKeys[$post->nodeid] = $post;
+        if ($posts->isNotEmpty()) {
+            $posts = resolveInfos($posts);
+
+            foreach ($posts as $key => $post) {
+                $postsWithKeys[$post->nodeid] = $post;
+            }
         }
 
         $view = $this->tpl();

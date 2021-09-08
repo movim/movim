@@ -44,7 +44,10 @@ class NewsNav extends Base
         }
 
         $posts = $posts->get()->shuffle();
-        $posts = resolveInfos($posts);
+
+        if ($posts->isNotEmpty()) {
+            $posts = resolveInfos($posts);
+        }
 
         $view->assign('posts', $posts);
         $view->assign('page', $page);
