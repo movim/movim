@@ -734,6 +734,7 @@ function getSmileyPath($id)
 function protectPicture($url)
 {
     $emptyPicture =  \Movim\Route::urlize('picture', '');
+    $emptyPicture = preg_replace("(^//)", 'https://', $emptyPicture);
 
     // The picture is already protected
     if (substr($url, 0, strlen($emptyPicture)) === $emptyPicture) {
