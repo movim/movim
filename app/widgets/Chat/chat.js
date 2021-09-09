@@ -419,7 +419,7 @@ var Chat = {
             }
         };
 
-        textarea.onkeyup = function(event) {
+        textarea.oninput = function() {
             localStorage.setItem(this.dataset.jid + '_message', this.value);
 
             // A little timeout to not spam the server with composing states
@@ -430,18 +430,11 @@ var Chat = {
                 }
             }, 3000);
 
-            Chat.toggleAction();
-        };
-
-        textarea.oninput = function() {
             MovimUtils.textareaAutoheight(this);
             Chat.checkEmojis(this.value);
             Chat.scrollRestore();
-        }
-
-        textarea.onchange = function() {
             Chat.toggleAction();
-        };
+        }
 
         textarea.addEventListener('paste', function(e) {
             let url;
@@ -473,6 +466,8 @@ var Chat = {
                     }
                 };
             }
+
+            Chat.toggleAction();
         });
 
         if (document.documentElement.clientWidth > 1024) {
@@ -1520,7 +1515,7 @@ window.addEventListener('resize', function() {
 });
 
 movimAddOnload(function() {
-    Chat.touchEvents();
+    if (MovimUtils.isMobile()) Chat.touchEvents();
 
     // Really early panel showing in case we have a JID
     var jid = MovimUtils.urlParts().params[0];

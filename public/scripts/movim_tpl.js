@@ -178,6 +178,6 @@ var MovimTpl = {
 };
 
 movimAddOnload(function() {
-    MovimTpl.touchEvents();
+    if (MovimUtils.isMobile()) MovimTpl.touchEvents();
     document.body.addEventListener('click', MovimTpl.toggleContextMenu, false);
 });
