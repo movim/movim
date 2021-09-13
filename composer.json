@@ -11,7 +11,7 @@
         }
     },
     "require": {
-        "php": ">=7.3.0",
+        "php": ">=7.4.0",
         "ext-curl": "*",
         "ext-gd": "*",
         "ext-dom": "*",
@@ -24,15 +24,16 @@
         "embed/embed": "^v3.4",
         "league/commonmark": "^1.6",
 
-        "respect/validation": "^2.0",
+        "respect/validation": "^2.2",
         "ezyang/htmlpurifier": "^4.13",
         "symfony/console": "^5.3",
         "cocur/slugify": "^4.0",
         "dflydev/fig-cookies": "^3.0",
         "defuse/php-encryption": "^2.3.1",
 
-        "robmorgan/phinx": "^0.12.7",
-        "illuminate/database": "^8.0",
+        "robmorgan/phinx": "^0.12",
+        "illuminate/database": "^8.60",
+        "illuminate/events": "^8.60",
         "doctrine/dbal": "^3.1",
 
         "cboden/ratchet": "^0.4.3",
@@ -40,12 +41,11 @@
         "react/http": "^1.4.0",
         "react/dns": "^1.8.0",
         "monolog/monolog": "^2.3.0",
-        "ratchet/pawl": "^0.3.5",
-        "illuminate/events": "^8.53"
+        "ratchet/pawl": "^0.3.5"
     },
     "config": {
         "platform": {
-            "php": "7.3"
+            "php": "7.4"
         },
         "optimize-autoloader": true
     },
