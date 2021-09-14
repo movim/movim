@@ -28,6 +28,24 @@
     <div class="clear"></div>
 
     <div>
+        <input type="text" name="banner" id="banner" placeholder="http://server.tld/banner.jpg" value="{$conf->banner}" />
+        <label for="description">{$c->__('information.banner')}</label>
+    </div>
+
+    <ul class="list thin">
+        <li>
+            <span class="primary icon bubble gray">
+                <i class="material-icons">help</i>
+            </span>
+            <div>
+                <p class="normal">{$c->__('information.banner_info')}</p>
+            </div>
+        </li>
+    </ul>
+
+    <div class="clear"></div>
+
+    <div>
         <div class="select">
             <select id="loglevel" name="loglevel">
                 {loop="$logs"}
@@ -142,10 +160,10 @@
         <label for="xmppwhitelist">{$c->__('whitelist.label')}</label>
     </div>
 
-    <ul class="list thick">
+    <ul class="list thin">
         <li>
-            <span class="primary icon bubble color blue">
-                <i class="material-icons">info</i>
+            <span class="primary icon bubble gray">
+                <i class="material-icons">help</i>
             </span>
             <div>
                 <p>{$c->__('whitelist.info1')}</p>
@@ -167,8 +185,8 @@
 
     <ul class="list thick">
         <li>
-            <span class="primary icon bubble color blue">
-                <i class="material-icons">info</i>
+            <span class="primary icon bubble gray">
+                <i class="material-icons">help</i>
             </span>
             <div>
                 <p>{$c->__('information.info1')}</p>
@@ -187,7 +205,7 @@
 
     <ul class="list thick">
         <li>
-            <span class="primary icon bubble color blue">
+            <span class="primary icon bubble gray">
                 <i class="material-icons">gif</i>
             </span>
             <div>
@@ -207,9 +225,9 @@
         <label for="info">{$c->__('firebase.label')}</label>
     </div>
 
-    <ul class="list thick">
+    <ul class="list thin">
         <li>
-            <span class="primary icon bubble color blue">
+            <span class="primary icon bubble gray">
                 <i class="material-icons">notifications_active</i>
             </span>
             <div>

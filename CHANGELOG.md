@@ -32,6 +32,7 @@ v0.19.1 (trunk)
 * Improve the microphone level indicator in Visio
 * Remember the last selected microphone and camera in Visio
 * Add the chat counter on the back button of opened conversations on mobile
+* Add a banner URL configuration to set a banner for the pod from the admin panel
 
 v0.19
 ---------------------------
