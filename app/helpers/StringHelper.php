@@ -170,6 +170,7 @@ function getCid($string)
 function explodeXMPPURI(string $uri): array
 {
     $uri = parse_url($uri);
+    $microblogNamespace = urlencode('urn:xmpp:microblog:0');
 
     if ($uri && $uri['scheme'] == 'xmpp') {
         if (isset($uri['query'])) {
@@ -179,12 +180,14 @@ function explodeXMPPURI(string $uri): array
 
             $params = explodeQueryParams($uri['query']);
 
-            if (isset($params['node']) && isset($params['item'])) {
-                return ['type' => 'post', 'params' => [$uri['path'], $params['node'], $params['item']]];
-            }
+            if (isset($params['node']) && $params['node'] != $microblogNamespace) {
+                if (isset($params['item'])) {
+                    return ['type' => 'post', 'params' => [$uri['path'], $params['node'], $params['item']]];
+                }
 
-            if (isset($params['node'])) {
                 return ['type' => 'community', 'params' => [$uri['path'], $params['node']]];
+            } else if (isset($params['node']) && $params['node'] == $microblogNamespace) {
+                return ['type' => 'contact', 'params' => $uri['path']];
             }
         } elseif(isset($uri['host']) && isset($uri['user'])) {
             return ['type' => 'contact', 'params' => $uri['user'].'@'.$uri['host']];
