@@ -7,18 +7,29 @@ use Movim\Model;
 class Bundle extends Model
 {
     public $incrementing = false;
-    protected $primaryKey = ['user_id', 'jid', 'bundle_id'];
+    protected $primaryKey = ['user_id', 'jid', 'bundleid'];
 
     public function sessions()
     {
         return $this->hasMany('App\BundleSession', 'bundle_id', 'id');
     }
 
+    public function messages()
+    {
+        return $this->hasMany('App\Message', 'bundleid', 'bundleid')
+                    ->where('user_id', \App\User::me()->id);
+    }
+
+    public function getLatestMessage()
+    {
+        return $this->messages()->orderBy('published', 'desc')->first();
+    }
+
     public function set(string $jid, string $bundleId, $bundle)
     {
         $this->user_id = \App\User::me()->id;
         $this->jid = $jid;
-        $this->bundle_id = $bundleId;
+        $this->bundleid = $bundleId;
 
         $this->signedprekeypublic = (string)$bundle->signedPreKeyPublic;
         $this->signedprekeyid = (int)$bundle->signedPreKeyPublic->attributes()->signedPreKeyId;

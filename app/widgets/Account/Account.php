@@ -152,7 +152,7 @@ class Account extends \Movim\Widget\Base
 
         foreach($fingerprints as $fingerprint) {
             $fingerprint->self = ($fingerprint->identitykey == $identity);
-            $fingerprint->built = in_array($fingerprint->bundle_id, $resolvedDeviceIds);
+            $fingerprint->built = in_array($fingerprint->bundleid, $resolvedDeviceIds);
         }
 
         $view->assign('fingerprints', $fingerprints->sortByDesc('self'));

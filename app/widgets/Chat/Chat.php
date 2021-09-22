@@ -360,7 +360,7 @@ class Chat extends \Movim\Widget\Base
                 ->get();
 
             foreach ($bundles as $bundle) {
-                $sessions[$bundle->bundle_id] = $bundle->sessions->pluck('device_id');
+                $sessions[$bundle->bundleid] = $bundle->sessions->pluck('deviceid');
             }
 
             // Check if we might need to build new sessions and if we already have built
@@ -557,6 +557,7 @@ class Chat extends \Movim\Widget\Base
         if ($messageOMEMOHeader) {
             $m->encrypted = true;
             $m->omemoheader = (string)$messageOMEMOHeader;
+            $m->bundleid = $messageOMEMOHeader->sid;
             $p->setMessageOMEMO($messageOMEMOHeader);
         }
 

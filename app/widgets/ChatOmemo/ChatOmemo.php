@@ -22,7 +22,7 @@ class ChatOmemo extends \Movim\Widget\Base
     {
         $bundle = $packet->content;
         $prekey = $this->extractPreKey($bundle);
-        $this->rpc('ChatOmemo.handlePreKey', $bundle->jid, $bundle->bundle_id, $prekey);
+        $this->rpc('ChatOmemo.handlePreKey', $bundle->jid, $bundle->bundleid, $prekey);
     }
 
     public function ajaxGetMissingSessions(string $jid, string $deviceId)
@@ -32,7 +32,7 @@ class ChatOmemo extends \Movim\Widget\Base
             ->whereNotIn('id', function($query) use ($deviceId) {
                 $query->select('bundle_id')
                       ->from('bundle_sessions')
-                      ->where('device_id', $deviceId);
+                      ->where('deviceid', $deviceId);
             })
             ->get();
 
@@ -40,7 +40,7 @@ class ChatOmemo extends \Movim\Widget\Base
             $preKeys = [];
 
             foreach ($bundles as $bundle) {
-                $preKeys[$bundle->bundle_id] = $this->extractPreKey($bundle);
+                $preKeys[$bundle->bundleid] = $this->extractPreKey($bundle);
             }
 
             Toast::send($this->__('omemo.building_sessions'));
@@ -52,14 +52,14 @@ class ChatOmemo extends \Movim\Widget\Base
     {
         $bundles = $this->user->bundles()
             ->where('jid', $this->user->id)
-            ->whereNotIn('bundle_id', $resolvedDeviceIds)
+            ->whereNotIn('bundleid', $resolvedDeviceIds)
             ->get();
 
         if ($bundles->count() > 0) {
             $preKeys = [];
 
             foreach ($bundles as $bundle) {
-                $preKeys[$bundle->bundle_id] = $this->extractPreKey($bundle);
+                $preKeys[$bundle->bundleid] = $this->extractPreKey($bundle);
             }
 
             Toast::send($this->__('omemo.building_own_sessions'));
@@ -72,17 +72,15 @@ class ChatOmemo extends \Movim\Widget\Base
     {
         $bundle = $this->user->bundles()
             ->where('jid', $jid)
-            ->where('bundle_id', $bundleId)
+            ->where('bundleid', $bundleId)
             ->with('sessions')
             ->first();
 
-        if ($bundle) {
-            if (!in_array($deviceId, (array)$bundle->sessions->pluck('device_id'))) {
-                $bundleSession = new BundleSession;
-                $bundleSession->bundle_id = $bundle->id;
-                $bundleSession->device_id = $deviceId;
-                $bundleSession->save();
-            }
+        if ($bundle && !in_array($deviceId, (array)$bundle->sessions->pluck('deviceid'))) {
+            $bundleSession = new BundleSession;
+            $bundleSession->bundle_id = $bundle->id;
+            $bundleSession->deviceid = $deviceId;
+            $bundleSession->save();
         }
     }
 
@@ -125,9 +123,9 @@ class ChatOmemo extends \Movim\Widget\Base
     public function ajaxAnnounceBundle($bundle)
     {
         $devicesList = array_values($this->user->bundles()
-                                  ->select('bundle_id')
+                                  ->select('bundleid')
                                   ->where('jid', $this->user->id)
-                                  ->pluck('bundle_id')
+                                  ->pluck('bundleid')
                                   ->toArray());
 
         if (($key = array_search($bundle->deviceId, $devicesList)) !== false) {
@@ -157,9 +155,9 @@ class ChatOmemo extends \Movim\Widget\Base
     public function ajaxRefreshDeviceList()
     {
         $devicesList = array_values($this->user->bundles()
-                                  ->select('bundle_id')
+                                  ->select('bundleid')
                                   ->where('jid', $this->user->id)
-                                  ->pluck('bundle_id')
+                                  ->pluck('bundleid')
                                   ->toArray());
 
         $sdl = new SetDeviceList;

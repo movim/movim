@@ -486,6 +486,7 @@ class Message extends Model
             $omemoHeader = new MessageOmemoHeader;
             $omemoHeader->set($stanza);
             $this->attributes['omemoheader'] = (string)$omemoHeader;
+            $this->attributes['bundleid'] = (int)$omemoHeader->sid;
         }
 
         return $this;

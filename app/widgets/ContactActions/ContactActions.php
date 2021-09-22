@@ -14,6 +14,7 @@ class ContactActions extends Base
 {
     public function load()
     {
+        $this->addjs('contactactions.js');
         $this->registerEvent('roster_additem_handle', 'onAdd', 'contact');
         $this->registerEvent('roster_removeitem_handle', 'onDelete');
         $this->registerEvent('roster_updateitem_handle', 'onUpdate');
@@ -70,12 +71,27 @@ class ContactActions extends Base
             $tpl->assign('roster', null);
         }
 
-        $tpl->assign('fingerprints', $this->user->bundles()->where('jid', $jid)->get());
+        $hasFingerprints = ($this->user->bundles()->where('jid', $jid)->count() > 0);
+
         $tpl->assign('jid', $jid);
         $tpl->assign('clienttype', getClientTypes());
+        $tpl->assign('hasfingerprints', $hasFingerprints);
 
         Drawer::fill($tpl->draw('_contactactions_drawer'));
         $this->rpc('Tabs.create');
+
+        if ($hasFingerprints) {
+            $this->rpc('ContactActions.getDrawerFingerprints', $jid);
+        }
+    }
+
+    public function ajaxGetDrawerFingerprints($jid, $deviceId)
+    {
+        $tpl = $this->tpl();
+        $tpl->assign('fingerprints', $this->user->bundles()->where('jid', $jid)->with('sessions')->get());
+        $tpl->assign('deviceid', $deviceId);
+
+        $this->rpc('MovimTpl.fill', '#omemo_fingerprints', $tpl->draw('_contactactions_drawer_fingerprints'));
     }
 
     public function ajaxAdd($form)

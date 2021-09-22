@@ -4,7 +4,7 @@ namespace App;
 
 class MessageOmemoHeader
 {
-    private $sid;
+    public $sid;
     private $keys = [];
     private $iv;
     private $payload;

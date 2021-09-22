@@ -190,30 +190,8 @@
         </div>
     {/if}
 
-    {if="$fingerprints->count() > 0"}
-        <div class="tabelem" title="{$c->__('omemo.fingerprints_title')}" id="omemo_fingerprints">
-            <ul class="list middle">
-                <li class="subheader">
-                    <div>
-                        <p>{$c->__('omemo.fingerprints')}</p>
-                    </div>
-                </li>
-                {loop="$fingerprints"}
-                    <li>
-                        <span class="primary icon gray">
-                            <i class="material-icons">fingerprint</i>
-                        </span>
-                        <div>
-                            <p class="normal">
-                                <span class="fingerprint" title="{$value->bundle_id}">
-                                    {$value->fingerprint}
-                                </span>
-                            </p>
-                        </div>
-                    </li>
-                {/loop}
-            </ul>
-        </div>
+    {if="$hasfingerprints"}
+        <div class="tabelem spin" title="{$c->__('omemo.fingerprints_title')}" id="omemo_fingerprints"></div>
     {/if}
 
     <br />
