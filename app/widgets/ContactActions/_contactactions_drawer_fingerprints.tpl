@@ -21,11 +21,6 @@
                         {$value->fingerprint}
                     </span>
                 </p>
-                {$latestMessage = $value->getLatestMessage()}
-                {if="$latestMessage"}
-                    <p class="line">{$c->__('omemo.last_message')}: {$latestMessage|strtotime|prepareTime}</p>
-                {/if}
-
             </div>
         </li>
     {/loop}
