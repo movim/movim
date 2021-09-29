@@ -157,7 +157,7 @@ ChatOmemoStorage.prototype = {
         let filtered = this.filter('.session');
 
         for (key in filtered) {
-            this.remove(filtered[key]);
+            localStorage.removeItem(filtered[key]);
         }
 
         return Promise.resolve();
@@ -175,7 +175,7 @@ ChatOmemoStorage.prototype = {
         let filtered = this.filter('.session' + identifier);
 
         for (id in filtered) {
-            this.remove(filtered[id]);
+            localStorage.removeItem(filtered[id]);
         }
 
         this.remove(this.jid + '.contact' + identifier);
