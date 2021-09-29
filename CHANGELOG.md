@@ -33,6 +33,7 @@ v0.19.1 (trunk)
 * Remember the last selected microphone and camera in Visio
 * Add the chat counter on the back button of opened conversations on mobile
 * Add a banner URL configuration to set a banner for the pod from the admin panel
+* Add support for the Unicode 13.0 emojis release through Twemoji 13.1.0
 
 v0.19
 ---------------------------

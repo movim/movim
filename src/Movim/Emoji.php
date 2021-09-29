@@ -32,7 +32,7 @@ class Emoji
     private $_regex = [
         // Some easy cases first
         '/[#*0-9]\x{20E3}
-         |\x{1F3F3}(?:\x{FE0F}\x{200D}\x{1F308})?
+         |\x{1F3F3}(?:\x{FE0F}\x{200D}\x{1F308}|\x{FE0F}\x{200D}\x{26A7}\x{FE0F})?
          |\x{1F3F4}(?:\x{200D}\x{2620}\x{FE0F}|\x{E0067}\x{E0062}
           (?:\x{E0065}\x{E006E}\x{E0067}|\x{E0073}\x{E0063}\x{E0074}|\x{E0077}\x{E006C}\x{E0073})\x{E007F})?
          |\x{1F441}(?:\x{200D}\x{1F5E8})?
@@ -56,7 +56,7 @@ class Emoji
         '/[\x{261D}\x{26F7}-\x{270D}\x{1F1E6}-\x{1F1FF}\x{1F385}\x{1F3C2}-\x{1F3CC}\x{1F442}-\x{1F487}\x{1F4AA}\x{1F574}-\x{1F596}\x{1F645}-\x{1F6CC}\x{1F918}-\x{1F9DD}]
           [\x{1F1E6}-\x{1F1FF}\x{1F3FB}-\x{1F3FF}]/ux',
         // Individual codepoints last
-        '/[\x{203C}\x{2049}\x{2139}-\x{21AA}\x{231A}-\x{23FA}\x{24C2}\x{25AA}-\x{27BF}\x{2934}-\x{2B55}\x{3030}-\x{3299}\x{1F004}-\x{1F9E6}]/u'
+        '/[\x{203C}\x{2049}\x{2139}-\x{21AA}\x{231A}-\x{23FA}\x{24C2}\x{25AA}-\x{27BF}\x{2934}-\x{2B55}\x{3030}-\x{3299}\x{1F004}-\x{1F9FF}\x{1FA70}-\x{1FAFF}]/u'
     ];
 
     protected function __construct()
