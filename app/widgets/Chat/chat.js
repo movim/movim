@@ -495,6 +495,7 @@ var Chat = {
             Object.keys(emojis).filter(key => key.indexOf(
                     value.substr(value.lastIndexOf(':') + 1)
                 ) > -1)
+            .filter(key => key.indexOf('type') == -1)
             .slice(0, 40)
             .forEach(found => {
                 var img = document.createElement('img');
