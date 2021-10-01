@@ -59,12 +59,19 @@ class Get extends Action
             $this->pack($this->_to);
         }
 
+        if ($this->_jid) {
+            $this->method('handle_contact');
+            $this->pack($this->_jid);
+        }
+
         $this->deliver();
 
         if (isset($stanza->fin)
         && (!isset($stanza->fin->attributes()->complete) || $stanza->fin->attributes()->complete != 'true')
         && isset($stanza->fin->set) && $stanza->fin->set->attributes()->xmlns == 'http://jabber.org/protocol/rsm'
-        && isset($stanza->fin->set->last)) {
+        && isset($stanza->fin->set->last)
+        && $this->_after != (string)$stanza->fin->set->last // prevent loop
+        ) {
             $g = new Get;
             $g->setJid($this->_jid);
             $g->setTo($this->_to);

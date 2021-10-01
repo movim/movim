@@ -110,7 +110,7 @@ class Message extends Model
         return \unechap($this->attributes['jidfrom']);
     }
 
-    public static function findByStanza($stanza)
+    public static function findByStanza($stanza, $instanciateOnly = false)
     {
         $jidfrom = current(explode('/', (string)$stanza->attributes()->from));
 
@@ -128,15 +128,31 @@ class Message extends Model
         /**
          * If not we just create or load a message
          */
-        $id = ($stanza->{'stanza-id'} && $stanza->{'stanza-id'}->attributes()->id)
-            ? (string)$stanza->{'stanza-id'}->attributes()->id
-            : 'm_' . generateUUID();
+        if ($stanza->{'stanza-id'} && $stanza->{'stanza-id'}->attributes()->id) {
+            $id = (string)$stanza->{'stanza-id'}->attributes()->id;
 
-        return self::firstOrNew([
-            'user_id' => \App\User::me()->id,
-            'id' => $id,
-            'jidfrom' => $jidfrom
-        ]);
+            if ($instanciateOnly) {
+                $message = new Message;
+                $message->user_id = \App\User::me()->id;
+                $message->id = $id;
+                $message->jidfrom = $jidfrom;
+                return $message;
+            } else {
+                return self::firstOrNew([
+                    'user_id' => \App\User::me()->id,
+                    'id' => $id,
+                    'jidfrom' => $jidfrom
+                ]);
+            }
+        } else {
+            $message = new Message;
+            $message->user_id = \App\User::me()->id;
+            $message->id = 'm_' . generateUUID();
+            $message->jidfrom = $jidfrom;
+            return $message;
+        }
+
+
     }
 
     public function clearUnreads()

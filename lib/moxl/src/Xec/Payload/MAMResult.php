@@ -15,7 +15,11 @@ class MAMResult extends Payload
         if ($stanza->forwarded->delay
         && isset($stanza->attributes()->queryid)
         && $session->get('mamid'.(string)$stanza->attributes()->queryid) == true) {
-            $message = \App\Message::findByStanza($stanza->forwarded->message);
+            /**
+             * Optimisation: Force the message to be only instanciated, without requesting
+             * the database because the MessageBuffer bellow will take care of that
+             */
+            $message = \App\Message::findByStanza($stanza->forwarded->message/*, true*/);
             $message = $message->set($stanza->forwarded->message, $stanza->forwarded);
 
             if ($message->type == 'groupchat') {
@@ -29,6 +33,11 @@ class MAMResult extends Payload
             if (!$message->encrypted
             && $message->valid()
             && (!$message->isEmpty() || $message->isSubject())) {
+                // Set the "old" message as seen
+                if (\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $message->published)->addWeek()->isBefore(\Carbon\Carbon::now())) {
+                    $message->seen = true;
+                }
+
                 //MessageBuffer::getInstance()->append($message, function() use ($message) {
                     $message->save();
                     $message->clearUnreads();

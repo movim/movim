@@ -135,9 +135,12 @@ class Chats extends Base
 
             if ($message && $message->published) {
                 $g->setStart(strtotime($message->published));
+            } else {
+                // We only sync up the last month the first time
+                $g->setStart(\Carbon\Carbon::now()->subMonth()->timestamp);
             }
 
-            $g->setLimit(150);
+            $g->setLimit(250);
             $g->request();
         } elseif ($this->validateJid($jid)) {
             $message = \App\Message::jid($jid);
@@ -149,6 +152,9 @@ class Chats extends Base
 
             if ($message && $message->published) {
                 $g->setStart(strtotime($message->published));
+            } else {
+                $g->setLimit(150);
+                $g->setBefore(true);
             }
 
             $g->setJid(echapJid($jid));

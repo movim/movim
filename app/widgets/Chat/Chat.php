@@ -44,6 +44,7 @@ class Chat extends \Movim\Widget\Base
         $this->registerEvent('displayed', 'onMessage', 'chat');
         $this->registerEvent('mam_get_handle', 'onMAMRetrieved');
         $this->registerEvent('mam_get_handle_muc', 'onMAMMucRetrieved', 'chat');
+        $this->registerEvent('mam_get_handle_contact', 'onMAMContactRetrieved', 'chat');
         $this->registerEvent('chatstate', 'onChatState', 'chat');
         //$this->registerEvent('subject', 'onConferenceSubject', 'chat'); Spam the UI during authentication
         $this->registerEvent('muc_setsubject_handle', 'onConferenceSubject', 'chat');
@@ -235,6 +236,11 @@ class Chat extends \Movim\Widget\Base
     public function onMAMMucRetrieved($packet)
     {
         $this->ajaxGetRoom($packet->content, true, true);
+    }
+
+    public function onMAMContactRetrieved($packet)
+    {
+        $this->ajaxGet($packet->content, true);
     }
 
     public function onMucConnected($packet)
@@ -799,7 +805,6 @@ class Chat extends \Movim\Widget\Base
         $messages = \App\Message::jid($jid)
             ->where('published', $prepend ? '<' : '>', date(MOVIM_SQL_DATE, strtotime($date)));
 
-
         $messages = $muc
             ? $messages->where('type', 'groupchat')->whereNull('subject')
             : $messages->whereIn('type', $this->_messageTypes);
@@ -1001,6 +1006,11 @@ class Chat extends \Movim\Widget\Base
 
             $this->rpc('Chat.setSpecificElements', $left, $right);
             $this->rpc('Chat.appendMessagesWrapper', $this->_wrapper, false);
+        }
+
+        if ($messages->count() == 0 && !$muc) {
+            $chats = new Chats;
+            $chats->ajaxGetHistory($jid);
         }
 
         if ($event) {

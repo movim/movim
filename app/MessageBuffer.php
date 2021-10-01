@@ -39,7 +39,7 @@ class MessageBuffer
             try {
                 DB::beginTransaction();
 
-                // We delete all the presences that might already be there
+                // We delete all the messages that might already be there
                 $table = DB::table('messages');
                 $first = $this->_models->first();
                 $table = $table->where([
