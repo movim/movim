@@ -106,7 +106,7 @@ class Emoji
 
     public function isSingleEmoji(): bool
     {
-        return $this->_string === $this->_lastEmoji && $this->_string !== null;
+        return trim($this->_string) === $this->_lastEmoji && $this->_string !== null;
     }
 
     public function getLastSingleEmojiURL()
