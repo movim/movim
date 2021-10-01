@@ -1009,8 +1009,8 @@ class Chat extends \Movim\Widget\Base
         }
 
         if ($messages->count() == 0 && !$muc) {
-            $chats = new Chats;
-            $chats->ajaxGetHistory($jid);
+            //$chats = new Chats;
+            //$chats->ajaxGetHistory($jid);
         }
 
         if ($event) {
