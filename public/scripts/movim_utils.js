@@ -257,6 +257,10 @@ var MovimUtils = {
     arrayBufferToString: function (ab) {
         return new TextDecoder().decode(ab);
     },
+    hexToArrayBuffer: function (hex) {
+        const typedArray = new Uint8Array(hex.match(/[\da-f]{2}/gi).map(h => parseInt(h, 16)));
+        return typedArray.buffer;
+    },
     appendArrayBuffer: function (buffer1, buffer2) {
         const tmp = new Uint8Array(buffer1.byteLength + buffer2.byteLength);
         tmp.set(new Uint8Array(buffer1), 0);

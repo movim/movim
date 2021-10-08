@@ -1022,7 +1022,8 @@ var Chat = {
                     let refreshP = document.querySelector('#id' + data.id + ' p');
                     if (refreshP) {
                         if (plaintext) {
-                            refreshP.innerHTML = MovimUtils.linkify(plaintext);
+                            let linkified = MovimUtils.linkify(plaintext);
+                            refreshP.innerHTML = ChatOmemo.searchEncryptedFile(linkified);
                             refreshP.classList.remove('encrypted');
                         } else {
                             refreshP.classList.add('error');

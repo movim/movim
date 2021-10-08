@@ -6,6 +6,7 @@ const KEY_ALGO = {
 };
 const NUM_PREKEYS = 50;
 const SIGNED_PREKEY_ID = 1;
+const AESGCM_REGEX = /^aesgcm:\/\/([^#]+\/([^\/]+\.([a-z0-9]+)))#([a-z0-9]+)/i;
 
 var ChatOmemo = {
     requestedDevicesListFrom: null,
@@ -326,6 +327,57 @@ var ChatOmemo = {
         return (preKey)
             ? await sessionCipher.decryptPreKeyWhisperMessage(ciphertext, 'binary')
             : await sessionCipher.decryptWhisperMessage(ciphertext, 'binary');
+    },
+    searchEncryptedFile: function(plaintext) {
+        let lines = plaintext.split('\n');
+        let matches = lines[0].match(AESGCM_REGEX);
+
+        if (!matches) {
+           return plaintext;
+        }
+        let [match, , filename, extension, hash] = matches;
+        return '<i class="material-icons">file_download</i> <a href="#" class="encrypted_file" onclick="ChatOmemo.getEncryptedFile(\''
+            + lines[0]
+            + '\')">'
+                + filename
+            + '</a>';
+    },
+    getEncryptedFile: async function(encryptedUrl) {
+        Chat.enableSending();
+
+        let [, url, filename, , hash] = encryptedUrl.match(AESGCM_REGEX);
+        url = 'https://' + url;
+        let response;
+
+        try {
+            response = await fetch(url)
+        } catch(e) {
+            console.log('Cannot get the following file: ' + url)
+            return null;
+        }
+
+        if (response.status >= 200 && response.status < 400) {
+            let cipher = await response.arrayBuffer();
+            const iv = hash.slice(0, 24);
+            const key = hash.slice(24);
+
+            const keyObj = await crypto.subtle.importKey('raw', MovimUtils.hexToArrayBuffer(key), 'AES-GCM', false, ['decrypt']);
+            const algo = {
+                'name': 'AES-GCM',
+                'iv': MovimUtils.hexToArrayBuffer(iv),
+            };
+            let plainFile = await crypto.subtle.decrypt(algo, keyObj, cipher);
+
+            const file = new File([plainFile], filename);
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(file);
+            link.download = filename;
+            link.click();
+
+            Chat.disableSending();
+
+            URL.revokeObjectURL(link.href)
+        }
     }
 }
 
