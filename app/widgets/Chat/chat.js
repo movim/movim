@@ -1087,8 +1087,8 @@ var Chat = {
         }
 
         msg.appendChild(p);
-        msg.appendChild(reactions);
         msg.appendChild(span);
+        msg.appendChild(reactions);
 
         if (data.thread !== null && reply) {
             reply.dataset.mid = data.mid;
