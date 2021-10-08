@@ -64,46 +64,38 @@
 
             <div>
                 <p class="line active" title="{$jid|echapJS}" onclick="RoomsUtils_ajaxShowSubject('{$jid|echapJS}')">
-                {if="$conference && $conference->title"}
-                    {$conference->title}
-                    {if="$conference->notify == 0"}
-                        <span class="second" title="{$c->__('room.notify_never')}">
-                            <i class="material-icons">notifications_off</i>
-                        </span>
-                    {elseif="$conference->notify == 2"}
-                        <span class="second" title="{$c->__('room.notify_always')}">
-                            <i class="material-icons">notifications_active</i>
-                        </span>
+                    {if="$conference && $conference->title"}
+                        {$conference->title}
+                        {if="$conference->notify == 0"}
+                            <span class="second" title="{$c->__('room.notify_never')}">
+                                <i class="material-icons">notifications_off</i>
+                            </span>
+                        {elseif="$conference->notify == 2"}
+                            <span class="second" title="{$c->__('room.notify_always')}">
+                                <i class="material-icons">notifications_active</i>
+                            </span>
+                        {/if}
+                    {else}
+                        {$jid|echapJS}
                     {/if}
-                {else}
-                    {$jid|echapJS}
-                {/if}
                     {if="$conference && $subject = $conference->subject"}
                         <span class="second" title="{$subject}">
                             {if="$conference->isGroupChat()"}
-                                <span title="{$c->__('room.group_chat_text')}">
-                                    <i class="material-icons">people_alt</i> {$c->__('room.group_chat')}
-                                </span>
+                                <i class="material-icons">people_alt</i> {$c->__('room.group_chat')}
                                 ·
                             {else}
-                                <span title="{$c->__('room.channel_text')}">
-                                    <i class="material-icons">wifi_tethering</i> {$c->__('room.channel')}
-                                </span>
+                                <i class="material-icons">wifi_tethering</i> {$c->__('room.channel')}
                                 ·
                             {/if}
                             {$subject}
                         </span>
                     {else}
-                        <span class="second" id="{$jid|cleanupId}-state">
+                        <span class="second">
                             {if="$conference && $conference->isGroupChat()"}
-                                <span title="{$c->__('room.group_chat_text')}">
-                                    <i class="material-icons">people_alt</i> {$c->__('room.group_chat')}
-                                </span>
+                                <i class="material-icons">people_alt</i> {$c->__('room.group_chat')}
                                 ·
                             {else}
-                                <span title="{$c->__('room.channel_text')}">
-                                    <i class="material-icons">wifi_tethering</i> {$c->__('room.channel')}
-                                </span>
+                                <i class="material-icons">wifi_tethering</i> {$c->__('room.channel')}
                                 ·
                             {/if}
                             {$jid|echapJS}
