@@ -2,7 +2,7 @@
     {$url = $contact->getPhoto()}
     <header class="big"
         {if="$url"}
-            style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.5) 100%), url('{$contact->getPhoto('xxl')}');"
+            style="background-image: linear-gradient(to bottom, rgba(23,23,23,0.8) 0%, rgba(23,23,23,0.5) 100%), url('{$contact->getPhoto('xxl')}');"
         {/if}
         >
         <ul class="list thick">

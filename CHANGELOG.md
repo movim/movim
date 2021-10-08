@@ -36,6 +36,7 @@ v0.19.1 (trunk)
 * Add support for the Unicode 13.0 emojis release through Twemoji 13.1.0
 * Smarter MAM sync, only retrieve the last month on first sync, set as seen all the "older than one week messages" and do a MAM request when no history when opening a contact chat
 * Add support for AESGCM encrypted files (receive only)
+* New chatrooms header design
 
 v0.19
 ---------------------------

@@ -72,6 +72,14 @@ class Presence extends Model
         return (new Picture)->get($this->mucjid, 120);
     }
 
+    public function getConferenceColorAttribute()
+    {
+        return stringToColor(
+            $this->resource . 'groupchat'
+        );
+    }
+
+
     public static function findByStanza($stanza)
     {
         $temporary = new self;

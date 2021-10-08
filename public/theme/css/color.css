@@ -172,6 +172,10 @@ form textarea:focus:invalid + label {
     box-shadow: 0px 2px 0px #FBC02D;
 }
 
+body:not(.nightmode) header.fixed ul.list li > div > p span.second {
+    color: rgba(var(--movim-background-main), 0.60);
+}
+
 ul.list li > div > p:nth-last-of-type(3) + p:not(.normal):not(.main),
 ul.list li > div > p:nth-last-of-type(2) + p:not(.normal):not(.main) {
     color: rgba(var(--movim-font), 0.60);

@@ -544,7 +544,7 @@ class Message extends Model
     public function resolveColor()
     {
         $this->color = stringToColor(
-            $this->session_id . $this->resource . $this->type
+            $this->resource . $this->type
         );
 
         return $this->color;

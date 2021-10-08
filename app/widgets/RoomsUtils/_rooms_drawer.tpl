@@ -5,7 +5,7 @@
 <section class="scroll">
     <header class="big"
         {if="$curl"}
-            style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.5) 100%), url('{$conference->getPhoto('xxl')}');"
+            style="background-image: linear-gradient(to bottom, rgba(23,23,23,0.8) 0%, rgba(23,23,23,0.5) 100%), url('{$conference->getPhoto('xxl')}');"
         {/if}
     >
         <ul class="list thick">
