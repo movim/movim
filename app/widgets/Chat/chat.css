@@ -98,25 +98,6 @@ main:not(.enabled) #chat_widget {
     position: relative;
 }
 
-#chat_widget .chat_box:before {
-    content: "";
-    display: block;
-    width: calc(100% - 19.25rem);
-    height: calc(100% - 0.75rem);
-    box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.1);
-    background-color: rgba(var(--movim-background-main));
-    position: absolute;
-    top: 0.25rem;
-    left: 6.5rem;
-    border-radius: 0.75rem;
-}
-
-@media screen and (max-width: 1024px) {
-    #chat_widget .chat_box:before {
-        width: calc(100% - 13.5rem);
-    }
-}
-
 #chat_widget .chat_box ul {
     margin: 0;
     max-width: 100%;
@@ -124,12 +105,13 @@ main:not(.enabled) #chat_widget {
 
 #chat_widget .chat_box form > div {
     min-height: 0;
+    top: -2rem;
 }
 
 #chat_widget .chat_box form textarea {
     padding-top: 0;
     margin-top: 3rem;
-    margin-bottom: -0.5rem;
+    margin-bottom: -1rem;
     max-height: 50vh;
     overflow-y: auto;
     width: calc(100% - 0.5rem);
@@ -158,7 +140,7 @@ main:not(.enabled) #chat_widget {
     font-size: 2.75rem;
     position: absolute;
     right: 0;
-    bottom: -0.35rem;
+    bottom: -0.6rem;
 }
 
 #chat_widget .chat_box span.primary,
@@ -211,8 +193,21 @@ main:not(.enabled) #chat_widget {
 }
 
 #chat_widget .chat_box > ul.list > li form {
-    margin: 0.1rem 1.25rem;
-    margin-right: 1rem;
+    position: relative;
+    padding: 0.5rem 0.25rem;
+}
+
+#chat_widget .chat_box > ul.list > li form:before {
+    content: "";
+    display: block;
+    width: calc(100% + 1.25rem);
+    height: calc(100% - 0.75rem);
+    box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.1);
+    background-color: rgba(var(--movim-background-main));
+    position: absolute;
+    top: 0.25rem;
+    left: -1rem;
+    border-radius: 0.75rem;
 }
 
 #chat_widget .chat_box > ul.list > li > .control {
@@ -251,13 +246,14 @@ main:not(.enabled) #chat_widget {
 
 /* Emojis */
 
-#chat_widget .chat_box .emojis:not(:empty) {
+#chat_widget .chat_box li.emojis:not(:empty) {
     text-align: center;
     margin-top: 0.25rem;
     max-height: 10.5rem;
     overflow: hidden;
     flex-wrap: wrap;
     justify-content: center;
+    border-top: 1px solid rgba(var(--movim-font), 0.12);
 }
 
 #chat_widget .chat_box .emojis img {
@@ -602,13 +598,13 @@ main:not(.enabled) #chat_widget {
 
 /* Reply */
 
-#reply {
+#reply:not(:empty) {
     margin: 0 0.5rem;
+    border-top: 1px solid rgba(var(--movim-font), 0.12);
 }
 
 #reply li {
     padding: 0.5rem 0;
-    border-bottom: 1px solid rgba(var(--movim-font), 0.12);
 }
 
 /* Counter */
