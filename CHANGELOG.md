@@ -37,6 +37,7 @@ v0.19.1 (trunk)
 * Smarter MAM sync, only retrieve the last month on first sync, set as seen all the "older than one week messages" and do a MAM request when no history when opening a contact chat
 * Add support for AESGCM encrypted files (receive only)
 * New chatrooms header design
+* New design for the chatbox
 
 v0.19
 ---------------------------

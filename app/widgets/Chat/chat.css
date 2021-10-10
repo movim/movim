@@ -95,9 +95,26 @@ main:not(.enabled) #chat_widget {
 /* Chat box */
 
 #chat_widget .chat_box {
-    background-color: rgba(var(--movim-background-main), 1);
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
     position: relative;
+}
+
+#chat_widget .chat_box:before {
+    content: "";
+    display: block;
+    width: calc(100% - 19.25rem);
+    height: calc(100% - 0.75rem);
+    box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.1);
+    background-color: rgba(var(--movim-background-main));
+    position: absolute;
+    top: 0.25rem;
+    left: 6.5rem;
+    border-radius: 1rem;
+}
+
+@media screen and (max-width: 1024px) {
+    #chat_widget .chat_box:before {
+        width: calc(100% - 13.5rem);
+    }
 }
 
 #chat_widget .chat_box ul {
@@ -115,6 +132,7 @@ main:not(.enabled) #chat_widget {
     margin-bottom: -0.5rem;
     max-height: 50vh;
     overflow-y: auto;
+    width: calc(100% - 0.5rem);
 }
 
 #chat_widget .chat_box form textarea ~ span.encrypted,
@@ -159,7 +177,7 @@ main:not(.enabled) #chat_widget {
     color: rgba(var(--movim-font), 0.54);
 }
 
-#chat_widget .chat_box:before {
+#chat_widget .chat_box:after {
     position: absolute;
     display: block;
     background-color: rgb(var(--movim-main));
@@ -171,12 +189,12 @@ main:not(.enabled) #chat_widget {
     opacity: 0;
 }
 
-#chat_widget .chat_box.sending:before {
+#chat_widget .chat_box.sending:after {
     width: 100%;
     opacity: 1;
 }
 
-#chat_widget .chat_box.finished:before {
+#chat_widget .chat_box.finished:after {
     transition: width 1s cubic-bezier(.68,0,0,1), opacity 3s ease-in-out;
     width: 100%;
     opacity: 0;
@@ -193,7 +211,8 @@ main:not(.enabled) #chat_widget {
 }
 
 #chat_widget .chat_box > ul.list > li form {
-    margin-right: 0;
+    margin: 0.1rem 1.5rem;
+    margin-right: 1rem;
 }
 
 #chat_widget .chat_box > ul.list > li > .control {

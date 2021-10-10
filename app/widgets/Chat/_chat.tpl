@@ -20,7 +20,7 @@
     </section>
 </div>
 <div class="chat_box">
-    <ul class="list thin fill">
+    <ul class="list fill">
         <div id="reply"></div>
         <li class="emojis"></li>
         <li>
