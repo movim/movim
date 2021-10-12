@@ -4,11 +4,7 @@
         {$curl = $conference->getPhoto()}
     {/if}
 
-    <ul class="list middle"
-        {if="$curl"}
-            style="background-image: linear-gradient(to bottom, rgba(23,23,23,0.9) 0%, rgba(23,23,23,1) 100%), url('{$conference->getPhoto('xxl')}');"
-        {/if}
-    >
+    <ul class="list middle">
         <li>
             <span class="primary icon active" id="chatheadercounter" onclick="Chat.get()">
                 {autoescape="off"}
@@ -110,8 +106,7 @@
                     {elseif="$conference && $conference->connected"}
                         {$connected = $conference->presences()->take(25)->get()}
                         {loop="$connected"}
-                            <span class="resource {$value->conferenceColor}"
-                                onclick="Chat.quoteMUC('{$value->resource}', true);">
+                            <span onclick="Chat.quoteMUC('{$value->resource}', true);">
                                 {$value->resource}
                             </span>{if="$key < $connected->count() -1"}, {/if}
                         {/loop}
