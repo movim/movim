@@ -188,9 +188,10 @@ main:not(.enabled) #chat_widget {
     pointer-events: none;
 }
 
-#chat_widget .chat_box > ul.list > li {
+#chat_widget .chat_box > ul.list > li:not(:empty) {
     min-height: 0;
     padding: 0.5rem;
+    padding-top: 0;
 }
 
 #chat_widget .chat_box > ul.list > li form {
