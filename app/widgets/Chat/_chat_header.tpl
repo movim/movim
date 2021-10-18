@@ -74,44 +74,37 @@
                     {else}
                         {$jid|echapJS}
                     {/if}
-                    {if="$conference && $subject = $conference->subject"}
-                        <span class="second" title="{$subject}">
-                            {if="$conference->isGroupChat()"}
-                                <i class="material-icons">people_alt</i> {$c->__('room.group_chat')}
-                                ·
-                            {else}
-                                <i class="material-icons">wifi_tethering</i> {$c->__('room.channel')}
-                                ·
-                            {/if}
+
+                    <span class="second">
+                        {if="$conference && $conference->isGroupChat()"}
+                            <i class="material-icons">people_alt</i> {$c->__('room.group_chat')}
+                        {else}
+                            <i class="material-icons">wifi_tethering</i> {$c->__('room.channel')}
+                        {/if}
+                    </span>
+
+                    {if="$conference && $conference->isGroupChat() && $subject = $conference->subject"}
+                        ·<span class="second" title="{$subject}">
                             {$subject}
-                        </span>
-                    {else}
-                        <span class="second">
-                            {if="$conference && $conference->isGroupChat()"}
-                                <i class="material-icons">people_alt</i> {$c->__('room.group_chat')}
-                                ·
-                            {else}
-                                <i class="material-icons">wifi_tethering</i> {$c->__('room.channel')}
-                                ·
-                            {/if}
-                            {$jid|echapJS}
                         </span>
                     {/if}
                 </p>
 
                 <p class="compose first line" id="{$jid|cleanupId}-state"></p>
                 <p class="line active">
-                    {if="$conference && !$conference->connected"}
-                        {$c->__('button.connecting')}…
-                    {elseif="$conference && $conference->connected"}
-                        {$connected = $conference->presences()->take(25)->get()}
-                        {loop="$connected"}
-                            <span onclick="Chat.quoteMUC('{$value->resource}', true);">
-                                {$value->resource}
-                            </span>{if="$key < $connected->count() -1"}, {/if}
-                        {/loop}
-                    {else}
-                        <p></p>
+                    {if="$conference"}
+                        {if="!$conference->connected"}
+                            {$c->__('button.connecting')}…
+                        {elseif="$conference->connected && $conference->isGroupChat()"}
+                            {$connected = $conference->presences()->take(25)->get()}
+                            {loop="$connected"}
+                                <span onclick="Chat.quoteMUC('{$value->resource}', true);">
+                                    {$value->resource}
+                                </span>{if="$key < $connected->count() -1"}, {/if}
+                            {/loop}
+                        {else}
+                            {$conference->subject}
+                        {/if}
                     {/if}
                 </p>
             </div>
