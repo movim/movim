@@ -18,9 +18,9 @@
 <span class="prevnext next"></span>
 <div class="buttons">
     <a class="button flat color transparent" href="{$url}" target="_blank" download title="{$c->__('button.save')}">
-        <i class="material-icons">content_copy</i> {$c->__('button.save')}
+        <i class="material-icons">get_app</i> {$c->__('button.save')}
     </a>
     <a class="button flat color transparent" href="#" onclick="Preview.copyToClipboard('{$url}')" title="{$c->__('button.copy_link')}">
-        <i class="material-icons">link</i> {$c->__('button.copy_link')}
+        <i class="material-icons">content_copy</i> {$c->__('button.copy_link')}
     </a>
 </div>
