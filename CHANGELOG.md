@@ -38,6 +38,8 @@ v0.19.1 (trunk)
 * Add support for AESGCM encrypted files (receive only)
 * New chatrooms header design
 * New design for the chatbox
+* Allow discussions links to be copied to the clipboard
+* Display recent public contact posts in the drawer
 
 v0.19
 ---------------------------

@@ -27,6 +27,7 @@ ul.grid.active > li:hover {
 ul.grid.active > li i {
     font-size: 4rem;
     color: white;
+    text-shadow: 0 0 2rem rgba(0, 0, 0, 0.5);
 }
 
 ul.grid.active > li span {

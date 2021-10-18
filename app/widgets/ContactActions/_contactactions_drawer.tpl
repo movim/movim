@@ -126,6 +126,16 @@
         </li>
     </ul>
 
+    {if="$posts->count() > 0"}
+        <ul class="list card flex active middle">
+            {loop="$posts"}
+                {autoescape="off"}
+                    {$c->prepareTicket($value)}
+                {/autoescape}
+            {/loop}
+        </ul>
+    {/if}
+
     <ul class="tabs" id="navtabs"></ul>
 
     {if="$pictures->count() > 0"}
@@ -143,7 +153,7 @@
 
     {if="$links->count() > 0"}
         <div class="tabelem" title="{$c->__('general.links')}" id="room_links">
-            <ul class="active list thick">
+            <ul class="list thick">
                 {loop="$links"}
                     {autoescape="off"}
                         {$resolved = $value->resolvedUrl->cache}

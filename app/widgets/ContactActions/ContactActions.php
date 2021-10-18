@@ -9,6 +9,7 @@ use Moxl\Xec\Action\Presence\Subscribe;
 use Respect\Validation\Validator;
 
 include_once WIDGETS_PATH.'Chat/Chat.php';
+include_once WIDGETS_PATH . 'Post/Post.php';
 
 class ContactActions extends Base
 {
@@ -76,6 +77,13 @@ class ContactActions extends Base
         $tpl->assign('jid', $jid);
         $tpl->assign('clienttype', getClientTypes());
         $tpl->assign('hasfingerprints', $hasFingerprints);
+        $tpl->assign('posts', \App\Post::where('server', $jid)
+            ->restrictToMicroblog()
+            ->where('open', true)
+            ->orderBy('published', 'desc')
+            ->take(4)
+            ->get()
+        );
 
         Drawer::fill($tpl->draw('_contactactions_drawer'));
         $this->rpc('Tabs.create');
@@ -123,7 +131,12 @@ class ContactActions extends Base
 
     public function prepareEmbedUrl(EmbedLight $embed)
     {
-        return (new Chat)->prepareEmbed($embed, true);
+        return (new \Chat)->prepareEmbed($embed, true);
+    }
+
+    public function prepareTicket(\App\Post $post)
+    {
+        return (new \Post)->prepareTicket($post);
     }
 
     /**

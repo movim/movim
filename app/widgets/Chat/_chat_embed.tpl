@@ -25,12 +25,15 @@
     {/if}
 
     {if="$withlink"}
-        <span class="control icon gray" onclick="MovimUtils.openInNew('{$embed->url}')">
+        <span class="control icon gray active" onclick="Preview.copyToClipboard('{$embed->url}')">
+            <i class="material-icons">content_copy</i>
+        </span>
+        <span class="control icon gray active" onclick="MovimUtils.openInNew('{$embed->url}')">
             <i class="material-icons">open_in_new</i>
         </span>
     {/if}
 
-    <div  {if="$withlink"}onclick="MovimUtils.openInNew('{$embed->url}')"{/if}>
+    <div>
         <p class="line">{$embed->title}</p>
         <p class="line">{$embed->description}</p>
         {if="$withlink"}
