@@ -123,7 +123,7 @@
                     </div>
                 </li>
             {/if}
-            {if="$conference && $conference->presence->mucrole == 'moderator'"}
+            {if="$conference->presence->mucrole == 'moderator'"}
                 <li onclick="RoomsUtils_ajaxGetAvatar('{$jid|echapJS}')">
                     <div>
                         <p class="normal">{$c->__('page.avatar')}</p>
@@ -135,7 +135,7 @@
                     </div>
                 </li>
             {/if}
-            {if="$conference && $conference->presence->mucaffiliation == 'owner'"}
+            {if="$conference->presence->mucaffiliation == 'owner'"}
                 <li onclick="Chat_ajaxGetRoomConfig('{$jid|echapJS}')">
                     <div>
                         <p class="normal">{$c->__('chatroom.administration')}</p>
@@ -162,6 +162,14 @@
             {/if}
                 <div>
                     <p class="normal">{$c->__('chat.report_abuse')}</p>
+                </div>
+            </li>
+        {/if}
+
+        {if="$conference && $conference->isGroupChat()"}
+            <li class="on_mobile" onclick="Chat.editPrevious()">
+                <div>
+                    <p class="normal">{$c->__('chat.edit_previous')}</p>
                 </div>
             </li>
         {/if}

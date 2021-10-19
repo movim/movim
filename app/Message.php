@@ -115,17 +115,6 @@ class Message extends Model
         $jidfrom = current(explode('/', (string)$stanza->attributes()->from));
 
         /**
-         * If this stanza replaces another one, we load the original message
-         */
-        if ($stanza->replace) {
-            return self::firstOrNew([
-                'user_id' => \App\User::me()->id,
-                'replaceid' => (string)$stanza->replace->attributes()->id,
-                'jidfrom' => $jidfrom
-            ]);
-        }
-
-        /**
          * If not we just create or load a message
          */
         if ($stanza->{'stanza-id'} && $stanza->{'stanza-id'}->attributes()->id) {
@@ -174,10 +163,6 @@ class Message extends Model
             ? (string)$stanza->{'stanza-id'}->attributes()->id
             : 'm_' . generateUUID();
 
-        if ($stanza->attributes()->id) {
-            $this->replaceid = $stanza->attributes()->id;
-        }
-
         $from = explode('/', (string)$stanza->attributes()->from);
         $to = current(explode('/', (string)$stanza->attributes()->to));
 
@@ -214,7 +199,7 @@ class Message extends Model
         }
 
         // If it's a MUC message, we assume that the server already handled it
-        if ($this->type == 'groupchat') {
+        if ($this->isMuc()) {
             $this->delivered = gmdate('Y-m-d H:i:s');
         }
 
@@ -230,10 +215,6 @@ class Message extends Model
         }
 
         if ($stanza->body || $stanza->subject) {
-            /*if (isset($stanza->attributes()->id)) {
-                $this->id = (string)$stanza->attributes()->id;
-            }*/
-
             if ($stanza->body) {
                 $this->body = (string)$stanza->body;
             }
@@ -243,7 +224,7 @@ class Message extends Model
                 explodeJid($this->jidfrom)['server'],
                 ['conf.hipchat.com', 'conf.btf.hipchat.com']
             )
-            && $this->type == 'groupchat'
+            && $this->isMuc()
             && $stanza->x
             && $stanza->x->attributes()->xmlns == 'http://hipchat.com/protocol/muc#room'
             && $stanza->x->card) {
@@ -272,7 +253,7 @@ class Message extends Model
                 }
             }
 
-            if ($this->type == 'groupchat') {
+            if ($this->isMuc()) {
                 $presence = $this->user->session->presences()
                                  ->where('jid', $this->jidfrom)
                                  ->where('mucjid', $this->user->id)
@@ -411,31 +392,8 @@ class Message extends Model
             }
 
             if ($stanza->replace
-            && $this->user->messages()
-                ->where('jidfrom', $this->jidfrom)
-                ->where('replaceid', $this->replaceid)
-                ->count() == 0
-            ) {
-                $message = $this->user->messages()
-                                ->where('jidfrom', $this->jidfrom)
-                                ->where('replaceid', (string)$stanza->replace->attributes()->id)
-                                ->first();
-
-                if ($message) {
-                    $this->oldid = $message->id;
-                }
-
-                /**
-                 * We prepare the existing message to be edited in the DB
-                 */
-                try {
-                    Message::where('replaceid', (string)$stanza->replace->attributes()->id)
-                           ->where('user_id', $this->user_id)
-                           ->where('jidfrom', $this->jidfrom)
-                           ->update(['id' => $this->id]);
-                } catch (\Exception $e) {
-                    \Utils::error($e->getMessage());
-                }
+            && (string)$stanza->replace->attributes()->xmlns == 'urn:xmpp:message-correct:0') {
+                $this->replaceid = (string)$stanza->replace->attributes()->id;
             }
 
             if (isset($stanza->x->invite)) {
@@ -450,16 +408,16 @@ class Message extends Model
             $this->subject = (string)$stanza->x->attributes()->jid;
         }
 
-        # XEP-xxxx: Message Reactions
+        # XEP-0444: Message Reactions
         elseif (isset($stanza->reactions)
             && $stanza->reactions->attributes()->xmlns == 'urn:xmpp:reactions:0') {
 
             $parentMessage = \App\Message::jid($this->jidfrom)
-                ->where('replaceid', (string)$stanza->reactions->attributes()->to)
+                ->where('id', (string)$stanza->reactions->attributes()->to)
                 ->first();
 
             if ($parentMessage) {
-                $resource = ($this->type == 'groupchat')
+                $resource = $this->isMuc()
                     ? $this->resource
                     : $this->jidfrom;
 
@@ -508,7 +466,7 @@ class Message extends Model
         return $this;
     }
 
-    public function isEmpty()
+    public function isEmpty(): bool
     {
         return (empty($this->body)
             && empty($this->file)
@@ -516,7 +474,12 @@ class Message extends Model
         );
     }
 
-    public function isSubject()
+    public function isMuc(): bool
+    {
+        return ($this->type == 'groupchat');
+    }
+
+    public function isSubject(): bool
     {
         return !empty($this->subject);
     }

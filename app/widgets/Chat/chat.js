@@ -334,7 +334,10 @@ var Chat = {
     {
         var textarea = Chat.getTextarea();
 
-        if (textarea.value != '' || Boolean(textarea.dataset.muc) == true) return;
+        if (textarea.value != ''
+        || (Boolean(textarea.dataset.muc) && Boolean(textarea.dataset.mucGroup) == false)) {
+            return;
+        }
 
         if (!Chat.isEncrypted()) {
             Chat_ajaxLast(textarea.dataset.jid);
@@ -342,14 +345,14 @@ var Chat = {
             Toast.send(Chat.action_impossible_encrypted_error);
         }
     },
-    editMessage: function(mid)
+    /*editMessage: function(mid)
     {
         var textarea = Chat.getTextarea();
         if (textarea.value == ''
         && Boolean(textarea.dataset.muc) == false) {
             Chat_ajaxEdit(mid);
         }
-    },
+    },*/
     resolveMessage: function(mid)
     {
         ChatActions_ajaxHttpResolveMessage(mid);
@@ -1003,6 +1006,10 @@ var Chat = {
             msg.setAttribute('id', 'id' + data.id);
         }
 
+        if (data.originid != null) {
+            msg.dataset.originid = 'oid-' + data.originid + MovimUtils.cleanupId(data.jidfrom);
+        }
+
         if (data.rtl) {
             msg.setAttribute('dir', 'rtl');
         }
@@ -1046,7 +1053,7 @@ var Chat = {
             p.appendChild(Chat.getFileHtml(data.file, data.sticker));
         }
 
-        if (data.oldid) {
+        if (data.replaceid) {
             span.appendChild(Chat.getEditedIcoHtml());
         }
 
@@ -1104,7 +1111,15 @@ var Chat = {
             msg.appendChild(actions);
         }
 
-        var elem = document.getElementById('id' + data.oldid);
+        var elem;
+        var textarea = Chat.getTextarea();
+
+        if (data.replaceid && (Boolean(textarea.dataset.muc) == false || Boolean(textarea.dataset.mucGroup) == true)) {
+            // Might introduce a security issue, two close JIDs might return a similar originid
+            elem = document.querySelector("[data-originid=oid-" + data.replaceid + MovimUtils.cleanupId(data.jidfrom) + "]");
+            msg.dataset.originid = 'oid-' + data.replaceid + MovimUtils.cleanupId(data.jidfrom);
+        }
+
         if (!elem) {
             elem = document.getElementById('id' + data.id);
         }

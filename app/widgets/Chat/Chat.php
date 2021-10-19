@@ -481,30 +481,15 @@ class Chat extends \Movim\Widget\Base
             return;
         }
 
-        $oldid = null;
-
-        if ($replace) {
-            $oldid = $replace->id;
-
-            $m = $replace;
-            $m->id = generateUUID();
-
-            \App\Message::where('id', $oldid)->update([
-                'id' => $m->id,
-                'replaceid' => $m->id,
-                'resolved' => false
-            ]);
-        } else {
-            $m = new \App\Message;
-            $m->id          = generateUUID();
-            $m->thread      = generateUUID();
-            $m->originid    = generateUUID();
-            $m->replaceid   = $m->id;
-            $m->user_id     = $this->user->id;
-            $m->jidto       = echapJid($to);
-            $m->jidfrom     = $this->user->id;
-            $m->published   = gmdate('Y-m-d H:i:s');
-        }
+        $m = new \App\Message;
+        $m->id          = generateUUID();
+        $m->thread      = generateUUID();
+        $m->originid    = $m->id;
+        $m->replaceid   = $replace ? $replace->originid : null;
+        $m->user_id     = $this->user->id;
+        $m->jidto       = echapJid($to);
+        $m->jidfrom     = $this->user->id;
+        $m->published   = gmdate('Y-m-d H:i:s');
 
         if ($replyToMid !== 0) {
             $reply = $this->user->messages()
@@ -518,10 +503,8 @@ class Chat extends \Movim\Widget\Base
             }
         }
 
-        // TODO: make this boolean configurable
         $m->markable = true;
         $m->seen = true;
-
         $m->type    = 'chat';
         $m->resource = $this->user->session->resource;
 
@@ -536,13 +519,8 @@ class Chat extends \Movim\Widget\Base
         // We decode URL codes to send the correct message to the XMPP server
         $p = new Publish;
         $p->setTo($to);
-        //$p->setHTML($m->html);
         $p->setContent($m->body);
-
-        if ($replace != false) {
-            $p->setReplace($oldid);
-        }
-
+        $p->setReplace($m->replaceid);
         $p->setId($m->id);
         $p->setThreadid($m->thread);
         $p->setOriginid($m->originid);
@@ -573,9 +551,9 @@ class Chat extends \Movim\Widget\Base
 
         /* Is it really clean ? */
         if (!$p->getMuc()) {
-            $m->oldid = $oldid;
             $m->body = htmlentities(trim($m->body), ENT_XML1, 'UTF-8');
             $m->save();
+
             $m = $m->fresh();
 
             $packet = new \Moxl\Xec\Payload\Packet;
@@ -608,7 +586,7 @@ class Chat extends \Movim\Widget\Base
                         ->first();
 
         if ($replace) {
-            $this->sendMessage($to, $message, false, $replace);
+            $this->sendMessage($to, $message, $replace->isMuc(), $replace);
         }
     }
 
@@ -679,7 +657,7 @@ class Chat extends \Movim\Widget\Base
                 ? $parentMessage->jidfrom
                 : $parentMessage->jidto)
               ->setId(\generateUUID())
-              ->setParentId($parentMessage->replaceid)
+              ->setParentId($parentMessage->id)
               ->setReactions($newEmojis->pluck('emoji')->toArray());
 
             if ($parentMessage->type == 'groupchat') {
@@ -723,14 +701,39 @@ class Chat extends \Movim\Widget\Base
                         ->orderBy('published', 'desc')
                         ->first();
 
-        if (!isset($m->sticker)
-        && !isset($m->file)) {
-            $this->rpc('Chat.setTextarea', htmlspecialchars_decode($m->body), $m->mid);
+        // Try groupchats
+        if (!$m) {
+            $m = $this->user->messages()
+                            ->where('type', 'groupchat')
+                            ->where('jidfrom', $to)
+                            ->where('jidto', $this->user->id)
+                            ->orderBy('published', 'desc')
+                            ->first();
+        }
+
+        // We might get an already edited message, be sure to load the id of the original one
+        $mid = $m->mid;
+
+        if ($m && !empty($m->replaceid)) {
+            $originalMessage = $this->user->messages()
+                                        ->where('originid', $m->replaceid)
+                                        ->first();
+
+            if ($originalMessage) {
+                $mid = $originalMessage->mid;
+            }
+        }
+
+        if ($m
+        && !isset($m->sticker)
+        && !isset($m->file)
+        && !empty($m->body)) {
+            $this->rpc('Chat.setTextarea', htmlspecialchars_decode($m->body), $mid);
         }
     }
 
     /**
-     * @brief Get the a sent message
+     * @brief Get a sent message
      *
      * @param string $mid
      * @return void
@@ -741,7 +744,8 @@ class Chat extends \Movim\Widget\Base
                         ->where('mid', $mid)
                         ->first();
 
-        if (!isset($m->sticker)
+        if ($m
+        && !isset($m->sticker)
         && !isset($m->file)) {
             $this->rpc('Chat.setTextarea', htmlspecialchars_decode($m->body), $mid);
         }
@@ -938,6 +942,13 @@ class Chat extends \Movim\Widget\Base
         $view->assign('jid', $jid);
         $view->assign('muc', $muc);
         $view->assign('emoji', prepareString('😀'));
+
+        if ($muc) {
+            $view->assign('conference', $this->user->session->conferences()
+                                             ->where('conference', $jid)
+                                             ->with('info')
+                                             ->first());
+        }
 
         return $view->draw('_chat');
     }

@@ -8,14 +8,14 @@
                 <p class="normal">{$c->__('message.react')}</p>
             </div>
         </li>
-        <li onclick="ChatActions_ajaxEditMessage({$message->mid})">
+        <!--<li onclick="ChatActions_ajaxEditMessage({$message->mid})">
             <span class="control icon gray">
                 <i class="material-icons">edit</i>
             </span>
             <div>
                 <p class="normal">{$c->__('button.edit')}</p>
             </div>
-        </li>
+        </li>-->
         <li onclick="ChatActions_ajaxHttpDaemonRetract({$message->mid})">
             <span class="control icon gray">
                 <i class="material-icons">delete</i>

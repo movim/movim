@@ -78,10 +78,11 @@
                         id="chat_textarea"
                         data-jid="{$jid}"
                         data-muc="{if="$muc"}true{/if}"
-                        {$rand = rand(0, 4)}
-                        {if="$rand == 4 && !$muc"}
+                        data-muc-group="{if="$conference && $conference->isGroupChat()"}true{/if}"
+                        {$rand = rand(0, 2)}
+                        {if="$rand == 2 && (!$muc || $conference && $conference->isGroupChat())"}
                             placeholder="{$c->__('message.edit_help')}"
-                        {elseif="$rand == 3"}
+                        {elseif="$rand == 1"}
                             placeholder="{$c->__('message.emoji_help')}"
                         {else}
                             placeholder="{$c->__('chat.placeholder')}"

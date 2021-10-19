@@ -9,8 +9,8 @@ use Movim\Session;
 class Muc
 {
     public static function message($to, $content = false, $html = false, $id = false,
-        $file = false, $parentId = false, array $reactions = [], $originId = false,
-        $threadId = false, $mucReceipts = false)
+        $replace = false, $file = false, $parentId = false, array $reactions = [],
+        $originId = false, $threadId = false, $mucReceipts = false)
     {
         Message::maker(
             $to,
@@ -20,7 +20,7 @@ class Muc
             $mucReceipts, // chatstates required as well
             $mucReceipts ? 'request' : false,
             $id,
-            false,
+            $replace,
             $file,
             false,
             $parentId,

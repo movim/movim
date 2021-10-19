@@ -37,11 +37,11 @@ class ChatActions extends \Movim\Widget\Base
     /**
      * @brief Edit a message
      */
-    public function ajaxEditMessage($mid)
+    /*public function ajaxEditMessage($mid)
     {
         $this->rpc('Dialog.clear');
         $this->rpc('Chat.editMessage', $mid);
-    }
+    }*/
 
     /**
      * @brief Retract a message
