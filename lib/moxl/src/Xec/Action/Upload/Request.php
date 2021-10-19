@@ -21,10 +21,23 @@ class Request extends Action
     public function handle($stanza, $parent = false)
     {
         if ($stanza->slot) {
-            $this->pack([
+            $params = [
                 'get' => (string)$stanza->slot->get->attributes()->url,
-                'put' => (string)$stanza->slot->put->attributes()->url
-            ]);
+                'put' => (string)$stanza->slot->put->attributes()->url,
+                'headers' => null
+            ];
+
+            if ($stanza->slot->put->header) {
+                $headers = [];
+
+                foreach($stanza->slot->put->header as $header) {
+                    $headers[(string)$header->attributes()->name] = (string)$header;
+                }
+
+                $params['headers'] = $headers;
+            }
+
+            $this->pack($params);
             $this->deliver();
         }
     }

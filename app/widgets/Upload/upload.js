@@ -189,7 +189,7 @@ var Upload = {
         }
     },
 
-    request : function(get, put) {
+    request : function(get, put, headers) {
         Upload.get = get;
         Upload.xhr = new XMLHttpRequest();
 
@@ -228,6 +228,12 @@ var Upload = {
         }
 
         Upload.xhr.open("PUT", put, true);
+
+        if (typeof headers == 'object') {
+            for (const key in headers) {
+                Upload.xhr.setRequestHeader(key, headers[key]);
+            }
+        }
 
         if (Upload.file != null) {
             Upload.xhr.send(Upload.file);

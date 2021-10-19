@@ -24,8 +24,8 @@ class Upload extends Base
 
     public function onRequested($package)
     {
-        list($get, $put) = array_values($package->content);
-        $this->rpc('Upload.request', $get, $put);
+        list($get, $put, $headers) = array_values($package->content);
+        $this->rpc('Upload.request', $get, $put, $headers);
     }
 
     public function onError()

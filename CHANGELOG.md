@@ -40,6 +40,7 @@ v0.19.1 (trunk)
 * New design for the chatbox
 * Allow discussions links to be copied to the clipboard
 * Display recent public contact posts in the drawer
+* Add support of HTTP headers in the PUT request in HTTP Upload
 
 v0.19
 ---------------------------
