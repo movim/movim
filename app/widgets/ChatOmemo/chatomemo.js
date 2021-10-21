@@ -212,11 +212,14 @@ var ChatOmemo = {
             return maybeDecrypted;
         }
 
+        // Resolved jid from a muc message
+        var jid = message.mucjid ?? message.jidfrom;
+
         if (message.omemoheader.keys == undefined) return;
 
         var store = new ChatOmemoStorage();
         let deviceId = await store.getLocalRegistrationId();
-        let originalSessionsNumber = store.getSessions(message.jidfrom).length;
+        let originalSessionsNumber = store.getSessions(jid).length;
 
         if (message.omemoheader.keys[deviceId] == undefined) {
             console.log('Message not encrypted for this device');
@@ -228,7 +231,7 @@ var ChatOmemo = {
         let plainKey;
 
         try {
-            plainKey = await this.decryptDevice(MovimUtils.base64ToArrayBuffer(key.payload), key.prekey, message.jidfrom, message.omemoheader.sid);
+            plainKey = await this.decryptDevice(MovimUtils.base64ToArrayBuffer(key.payload), key.prekey, jid, message.omemoheader.sid);
         } catch (err) {
             console.log('Error during decryption: ' + err);
             return;
@@ -273,13 +276,13 @@ var ChatOmemo = {
          * We received a message for us, and a session was created from it, we might have
          * some more sessions to build
          */
-        if (store.getSessions(message.jidfrom).length > originalSessionsNumber
+        if (store.getSessions(jid).length > originalSessionsNumber
         && Object.keys(message.omemoheader.keys).includes(String(deviceId))
-        && ChatOmemo.requestedDevicesListFrom != message.jidfrom) {
+        && ChatOmemo.requestedDevicesListFrom != jid) {
             console.log('A new session was created from the incoming message, refresh the contact devices');
 
-            ChatOmemo.requestedDevicesListFrom = message.jidfrom;
-            ChatOmemo_ajaxGetDevicesList(message.jidfrom);
+            ChatOmemo.requestedDevicesListFrom = jid;
+            ChatOmemo_ajaxGetDevicesList(jid);
         }
 
         ChatOmemoDB.putMessage(message.id, plaintext);

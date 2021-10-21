@@ -3,7 +3,9 @@ var MovimFavicon = {
     originalIcon: null,
     sizes: '128x128',
 
-    counter: function(counter) {
+    counter: function(counterTab1, counterTab2) {
+        var counter = counterTab1 + counterTab2;
+
         link = document.querySelector('link[sizes="' + MovimFavicon.sizes + '"]');
 
         canvas = document.createElement("canvas");
@@ -34,7 +36,7 @@ var MovimFavicon = {
             var b = y + h;
 
             ctx.beginPath();
-            ctx.fillStyle = '#FF5722';
+            ctx.fillStyle = counterTab2 > 0 ? '#E91E63' : '#FF5722';
             ctx.moveTo(x+radius, y);
             ctx.lineTo(r-radius, y);
             ctx.quadraticCurveTo(r, y, r, y+radius);

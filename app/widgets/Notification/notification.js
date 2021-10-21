@@ -99,7 +99,7 @@ var Notification = {
     },
     displayTab : function() {
         if (Notification.tab_counter1 == 0 && Notification.tab_counter2 == 0) {
-            MovimFavicon.counter(0);
+            MovimFavicon.counter(0, 0);
             document.title = Notification.document_title;
 
             if (typeof window.electron !== 'undefined')
@@ -115,7 +115,7 @@ var Notification = {
                 + ' • '
                 + Notification.document_title;
 
-            MovimFavicon.counter(Notification.tab_counter1 + Notification.tab_counter2);
+            MovimFavicon.counter(Notification.tab_counter1, Notification.tab_counter2);
 
             if (typeof window.electron !== 'undefined')
                 window.electron.notification(Notification.tab_counter1 + Notification.tab_counter2);

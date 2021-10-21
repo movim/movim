@@ -382,7 +382,7 @@ class Chat extends \Movim\Widget\Base
      * @brief Get a chatroom
      * @param string $jid
      */
-    public function ajaxGetRoom($room, $light = false, $noConnect = false)
+    public function ajaxGetRoom(string $room, $light = false, $noConnect = false)
     {
         if (!$this->validateJid($room)) {
             return;
@@ -1262,6 +1262,7 @@ class Chat extends \Movim\Widget\Base
                 }
 
                 $message->moderator = ($this->_mucPresences[$key]->mucrole == 'moderator');
+                $message->mucjid = $this->_mucPresences[$key]->mucjid;
                 $message->mine = $message->seen = ($this->_mucPresences[$key]->mucjid == $this->user->id);
 
             } else {

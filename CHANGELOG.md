@@ -127,6 +127,7 @@ v0.18
  * Fix some notifications issues
  * Added support for XEP-0368: SRV records for XMPP over TLS
  * Use Happy EyeBalls for the IP resolution
+ * Change counter color in favicon when post notification
 
 v0.17.1
 ---------------------------
