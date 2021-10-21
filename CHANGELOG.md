@@ -41,6 +41,8 @@ v0.19.1 (trunk)
 * Allow discussions links to be copied to the clipboard
 * Display recent public contact posts in the drawer
 * Add support of HTTP headers in the PUT request in HTTP Upload
+* Allow MUC messages to be edited (only in MUC Groups)
+* Refactor the message edition architecture to support several editions
 
 v0.19
 ---------------------------
