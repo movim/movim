@@ -359,6 +359,7 @@ class Chat extends \Movim\Widget\Base
             Notification::clearAndroid($this->route('chat', [$jid]));
             $this->rpc('Chat.scrollToSeparator');
 
+            // OMEMO
             $sessions = [];
             $bundles = $this->user->bundles()
                 ->where('jid', $jid)

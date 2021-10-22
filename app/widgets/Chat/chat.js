@@ -1007,7 +1007,7 @@ var Chat = {
         }
 
         if (data.originid != null) {
-            msg.dataset.originid = 'oid-' + data.originid + MovimUtils.cleanupId(data.jidfrom);
+            msg.dataset.originid = 'oid-' + MovimUtils.hash(data.originid + data.jidfrom);
         }
 
         if (data.rtl) {
@@ -1115,9 +1115,8 @@ var Chat = {
         var textarea = Chat.getTextarea();
 
         if (data.replaceid && (Boolean(textarea.dataset.muc) == false || Boolean(textarea.dataset.mucGroup) == true)) {
-            // Might introduce a security issue, two close JIDs might return a similar originid
-            elem = document.querySelector("[data-originid=oid-" + data.replaceid + MovimUtils.cleanupId(data.jidfrom) + "]");
-            msg.dataset.originid = 'oid-' + data.replaceid + MovimUtils.cleanupId(data.jidfrom);
+            elem = document.querySelector("[data-originid=oid-" + MovimUtils.hash(data.replaceid + data.jidfrom) + "]");
+            msg.dataset.originid = 'oid-' + MovimUtils.hash(data.replaceid + data.jidfrom);
         }
 
         if (!elem) {
