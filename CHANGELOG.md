@@ -1,7 +1,7 @@
 Movim Changelog
 ================
 
-v0.19.1 (trunk)
+v0.20 (trunk)
 ---------------------------
 * Add a checkbox to disable the Registration feature in the admin panel (#901)
 * New CSS for articles table
@@ -43,6 +43,7 @@ v0.19.1 (trunk)
 * Add support of HTTP headers in the PUT request in HTTP Upload
 * Allow MUC messages to be edited (only in MUC Groups)
 * Refactor the message edition architecture to support several editions
+* Change counter color in favicon when post notification
 
 v0.19
 ---------------------------
@@ -127,7 +128,6 @@ v0.18
  * Fix some notifications issues
  * Added support for XEP-0368: SRV records for XMPP over TLS
  * Use Happy EyeBalls for the IP resolution
- * Change counter color in favicon when post notification
 
 v0.17.1
 ---------------------------
