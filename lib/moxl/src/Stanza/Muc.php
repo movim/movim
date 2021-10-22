@@ -5,12 +5,14 @@ namespace Moxl\Stanza;
 use Moxl\Stanza\Message;
 
 use Movim\Session;
+use App\MessageOmemoHeader;
 
 class Muc
 {
     public static function message($to, $content = false, $html = false, $id = false,
         $replace = false, $file = false, $parentId = false, array $reactions = [],
-        $originId = false, $threadId = false, $mucReceipts = false)
+        $originId = false, $threadId = false, $mucReceipts = false,
+        ?MessageOmemoHeader $messageOMEMO = null)
     {
         Message::maker(
             $to,
@@ -26,7 +28,8 @@ class Muc
             $parentId,
             $reactions,
             $originId,
-            $threadId);
+            $threadId,
+            $messageOMEMO);
     }
 
     public static function active($to)

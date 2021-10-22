@@ -34,6 +34,8 @@ var Chat = {
 
     // Temporary messages, for OMEMO local messages
     tempMessages: {},
+    // Local list of the room members, used to encrypt the messages
+    groupChatMembers: [],
 
     autocomplete: function(event, jid)
     {
@@ -203,7 +205,11 @@ var Chat = {
                     var store = new ChatOmemoStorage();
                     store.getLocalRegistrationId().then(deviceId => {
                         if (deviceId) {
-                            ChatOmemo_ajaxGetMissingSessions(jid, deviceId);
+                            if (Boolean(textarea.dataset.muc) == true) {
+                                ChatOmemo_ajaxGetMissingRoomSessions(jid, deviceId);
+                            } else {
+                                ChatOmemo_ajaxGetMissingSessions(jid, deviceId);
+                            }
                         } else {
                             Chat.disableSending();
                             ChatOmemo.generateBundle();
@@ -211,7 +217,7 @@ var Chat = {
                     });
                 } else if (textarea.dataset.encryptedstate == 'yes') {
                     // Try to encrypt the message
-                    let omemo = ChatOmemo.encrypt(jid, text);
+                    let omemo = ChatOmemo.encrypt(jid, text, Boolean(textarea.dataset.muc));
                     if (omemo) {
                         // TODO, disable the other risky features
                         omemo.then(omemoheader => {
@@ -240,6 +246,10 @@ var Chat = {
             ChatOmemoDB.putMessage(id, Chat.tempMessages[tempId]);
             delete Chat.tempMessages[tempId];
         }
+    },
+    setGroupChatMembers: function(members)
+    {
+        Chat.groupChatMembers = members;
     },
     setOmemoSessions: function(jid, sessions)
     {

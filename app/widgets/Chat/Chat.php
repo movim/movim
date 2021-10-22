@@ -370,8 +370,6 @@ class Chat extends \Movim\Widget\Base
                 $sessions[$bundle->bundleid] = $bundle->sessions->pluck('deviceid');
             }
 
-            // Check if we might need to build new sessions and if we already have built
-            // ones
             $this->rpc('Chat.setOmemoSessions',
                 $jid,
                 $sessions
@@ -389,11 +387,11 @@ class Chat extends \Movim\Widget\Base
             return;
         }
 
-        $r = $this->user->session->conferences()->where('conference', $room)->first();
+        $conference = $this->user->session->conferences()->where('conference', $room)->with('members')->first();
 
-        if ($r) {
-            if (!$r->connected && !$noConnect) {
-                $this->rpc('Rooms_ajaxJoin', $r->conference, $r->nick);
+        if ($conference) {
+            if (!$conference->connected && !$noConnect) {
+                $this->rpc('Rooms_ajaxJoin', $conference->conference, $conference->nick);
             }
 
             if ($light == false) {
@@ -412,6 +410,29 @@ class Chat extends \Movim\Widget\Base
             $this->rpc('Notification.current', 'chat|'.$room);
             Notification::clearAndroid($this->route('chat', [$room, 'room']));
             $this->rpc('Chat.scrollToSeparator');
+
+            // OMEMO
+            if ($conference->isGroupChat()) {
+                $sessions = [];
+                $bundles = $this->user->bundles()
+                    ->whereIn('jid', function ($query) use ($room) {
+                        $query->select('jid')
+                            ->from('members')
+                            ->where('conference', $room);
+                    })
+                    ->with('sessions')
+                    ->get();
+
+                foreach ($bundles as $bundle) {
+                    $sessions[$bundle->bundleid] = $bundle->sessions->pluck('deviceid');
+                }
+
+                $this->rpc('Chat.setGroupChatMembers', $conference->members->pluck('jid')->toArray());
+                $this->rpc('Chat.setOmemoSessions',
+                    $room,
+                    $sessions
+                );
+            }
         } else {
             $this->rpc('RoomsUtils_ajaxAdd', $room);
         }
@@ -550,6 +571,11 @@ class Chat extends \Movim\Widget\Base
 
         $p->request();
 
+        // We sent the published id back
+        if ($tempId) {
+            $this->rpc('Chat.sentId', $tempId, $m->id);
+        }
+
         /* Is it really clean ? */
         if (!$p->getMuc()) {
             $m->body = htmlentities(trim($m->body), ENT_XML1, 'UTF-8');
@@ -559,11 +585,6 @@ class Chat extends \Movim\Widget\Base
 
             $packet = new \Moxl\Xec\Payload\Packet;
             $packet->content = $m;
-
-            // We sent the published id back
-            if ($tempId) {
-                $this->rpc('Chat.sentId', $tempId, $m->id);
-            }
 
             // We refresh the Chats list
             $c = new Chats;

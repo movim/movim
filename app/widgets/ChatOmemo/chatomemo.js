@@ -95,7 +95,8 @@ var ChatOmemo = {
         let promises = [];
 
         Object.entries(preKeys).forEach(([deviceId, preKey]) => {
-            promises.push(ChatOmemo.handlePreKey(jid, deviceId, preKey));
+            // The prekey.jid is different from the jid when resolving a MUC
+            promises.push(ChatOmemo.handlePreKey(preKey.jid, deviceId, preKey));
         });
 
         Promise.all(promises).then(results => {
@@ -158,7 +159,7 @@ var ChatOmemo = {
         return promise;
     },
 
-    encrypt: async function (to, plaintext) {
+    encrypt: async function (to, plaintext, muc) {
         var store = new ChatOmemoStorage();
 
         // https://xmpp.org/extensions/attic/xep-0384-0.3.0.html#usecases-messagesend
@@ -183,13 +184,22 @@ var ChatOmemo = {
         let biv = MovimUtils.arrayBufferToBase64(iv);
         let payload = MovimUtils.arrayBufferToBase64(ciphertext);
         let deviceId = await store.getLocalRegistrationId();
-        let remoteKeys = await this.encryptJid(keyAndTag, to);
         let ownKeys = await this.encryptJid(keyAndTag, store.jid);
 
-        remoteKeys = remoteKeys.concat(ownKeys);
+        let remoteKeys = [];
+
+        if (muc) {
+            for (member of Chat.groupChatMembers) {
+                remoteKeys = remoteKeys.concat(await this.encryptJid(keyAndTag, member));
+            }
+        } else {
+            remoteKeys = await this.encryptJid(keyAndTag, to);
+        }
+
+        ownKeys = ownKeys.concat(remoteKeys);
 
         let messageKeys = {};
-        remoteKeys.map(result => {
+        ownKeys.map(result => {
             messageKeys[result.device] = {
                 payload : btoa(result.payload.body),
                 prekey : 3 == parseInt(result.payload.type, 10)
@@ -206,7 +216,11 @@ var ChatOmemo = {
     decrypt: async function (message) {
         if (message.omemoheader == undefined) return;
 
-        let maybeDecrypted = await ChatOmemoDB.getMessage(message.id);
+        let resolvedId = message.mine
+            ? message.originid
+            : message.id;
+
+        let maybeDecrypted = await ChatOmemoDB.getMessage(resolvedId);
 
         if (maybeDecrypted !== undefined) {
             return maybeDecrypted;
@@ -223,7 +237,7 @@ var ChatOmemo = {
 
         if (message.omemoheader.keys[deviceId] == undefined) {
             console.log('Message not encrypted for this device');
-            ChatOmemoDB.putMessage(message.id, false);
+            ChatOmemoDB.putMessage(resolvedId, false);
             return;
         }
 
@@ -233,6 +247,7 @@ var ChatOmemo = {
         try {
             plainKey = await this.decryptDevice(MovimUtils.base64ToArrayBuffer(key.payload), key.prekey, jid, message.omemoheader.sid);
         } catch (err) {
+            ChatOmemoDB.putMessage(resolvedId, false);
             console.log('Error during decryption: ' + err);
             return;
         }
@@ -285,13 +300,19 @@ var ChatOmemo = {
             ChatOmemo_ajaxGetDevicesList(jid);
         }
 
-        ChatOmemoDB.putMessage(message.id, plaintext);
+        ChatOmemoDB.putMessage(resolvedId, plaintext);
         return plaintext;
     },
-    enableContactState: function (jid) {
+    enableContactState: function (jid, muc) {
         var store = new ChatOmemoStorage();
         store.setContactState(jid, true);
-        Chat_ajaxGet(jid);
+
+        if (muc) {
+            Chat_ajaxGetRoom(jid);
+        } else {
+            Chat_ajaxGet(jid);
+        }
+
         ChatOmemo_ajaxEnableContactState();
     },
     disableContactState: function (jid) {

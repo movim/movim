@@ -36,6 +36,29 @@ class ChatOmemo extends \Movim\Widget\Base
             })
             ->get();
 
+        $this->prepareAndHandleSessions($jid, $bundles);
+    }
+
+    public function ajaxGetMissingRoomSessions(string $room, string $deviceId)
+    {
+        $bundles = $this->user->bundles()
+            ->whereIn('jid', function ($query) use ($room) {
+                $query->select('jid')
+                    ->from('members')
+                    ->where('conference', $room);
+            })
+            ->whereNotIn('id', function($query) use ($deviceId) {
+                $query->select('bundle_id')
+                      ->from('bundle_sessions')
+                      ->where('deviceid', $deviceId);
+            })
+            ->get();
+
+        $this->prepareAndHandleSessions($room, $bundles);
+    }
+
+    private function prepareAndHandleSessions(string $jid, $bundles)
+    {
         if (!empty($bundles)) {
             $preKeys = [];
 
@@ -169,6 +192,7 @@ class ChatOmemo extends \Movim\Widget\Base
     {
         $pickedKey = array_rand($bundle->prekeys);
         return [
+            'jid' => $bundle->jid,
             'identitykey' => $bundle->identitykey,
             'signedprekeypublic' => $bundle->signedprekeypublic,
             'signedprekeyid' => $bundle->signedprekeyid,

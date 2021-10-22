@@ -78,7 +78,7 @@
                         id="chat_textarea"
                         data-jid="{$jid}"
                         data-muc="{if="$muc"}true{/if}"
-                        data-muc-group="{if="$conference && $conference->isGroupChat()"}true{/if}"
+                        data-muc-group="{if="isset($conference) && $conference->isGroupChat()"}true{/if}"
                         {$rand = rand(0, 2)}
                         {if="$rand == 2 && (!$muc || $conference && $conference->isGroupChat())"}
                             placeholder="{$c->__('message.edit_help')}"
@@ -93,7 +93,7 @@
                         <i class="material-icons">lock</i>
                     </span>
                     <span class="control icon encrypted_disabled" title="{$c->__('omemo.encrypted_disabled')}"
-                        onclick="ChatOmemo.enableContactState('{$jid}')">
+                        onclick="ChatOmemo.enableContactState('{$jid}', {if="$muc"}true{else}false{/if})">
                         <i class="material-icons">no_encryption</i>
                     </span>
                     <span class="control icon encrypted_loading" title="{$c->__('omemo.encrypted_loading')}"
