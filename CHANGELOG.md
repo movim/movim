@@ -44,6 +44,7 @@ v0.20 (trunk)
 * Allow MUC messages to be edited (only in MUC Groups)
 * Refactor the message edition architecture to support several editions
 * Change counter color in favicon when post notification
+* Add OMEMO support for MUC Groups
 
 v0.19
 ---------------------------
