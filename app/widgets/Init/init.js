@@ -9,9 +9,8 @@ var Init = {
         var jid = username.replace('@', 'at');
         var init = localStorage.getObject(jid + '_Init' + Init.version) || {};
         if (init.initialized != 'true') {
-            Init_ajaxCreatePersistentStorage('storage:bookmarks');
             Init_ajaxCreatePersistentStorage('urn:xmpp:pubsub:movim-public-subscription', 1000);
-            Init_ajaxCreatePersistentStorage('urn:xmpp:bookmarks:0', 1000);
+            Init_ajaxCreatePersistentStorage('urn:xmpp:bookmarks:1', 1000);
             Init_ajaxCreatePersistentPEPStorage('urn:xmpp:vcard4');
             Init_ajaxCreatePersistentPEPStorage('urn:xmpp:avatar:data');
             Init_ajaxCreatePersistentPEPStorage('http://jabber.org/protocol/geoloc');
