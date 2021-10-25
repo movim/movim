@@ -248,7 +248,7 @@ class Message extends Model
                     ->first();
 
                 if ($parent && $parent->mid != $this->mid
-                 && $parent->replaceid != $this->replaceid) {
+                 && $parent->originid != $this->originid) {
                     $this->parentmid = $parent->mid;
                 }
             }
