@@ -5,6 +5,11 @@
     overflow: hidden;
 }
 
+code *, pre * {
+    font-style: normal;
+    font-weight: normal;
+}
+
 main:not(.enabled) #chat_widget {
     overflow-y: auto;
 }
