@@ -1056,6 +1056,12 @@ class Chat extends \Movim\Widget\Base
 
     public function prepareMessage(&$message, $jid = null)
     {
+        $message->body = (preg_replace ('/```((.|\n)*?)(```|\z)/', "<pre>$1</pre>", $message->body));
+        $message->body = (preg_replace ('/(`(?!`).*?`)/', "<code>$1</code>", $message->body));
+        $message->body = (preg_replace ('/(\*.*?\*)/', "<b>$1</b>", $message->body));
+        $message->body = (preg_replace ('/(_.*?_)/', "<em>$1</em>", $message->body));
+        $message->body = (preg_replace ('/(~.*?~)/', "<s>$1</s>", $message->body));
+
         if ($jid != $message->jidto && $jid != $message->jidfrom && $jid != null) {
             return $this->_wrapper;
         }
