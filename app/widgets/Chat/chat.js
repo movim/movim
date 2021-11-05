@@ -1002,16 +1002,6 @@ var Chat = {
             span.appendChild(Chat.getEncryptedIcoHtml());
         }
 
-        if (data.body.match(/^\/me\s/)) {
-            p.classList.add('quote');
-            data.body = data.body.substr(4);
-        }
-
-        if (data.body.match(/^\/code\s/)) {
-            p.classList.add('code');
-            data.body = data.body.substr(6).trim();
-        }
-
         if (data.id != null) {
             msg.setAttribute('id', 'id' + data.id);
         }
