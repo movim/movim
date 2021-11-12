@@ -1,15 +1,24 @@
-Movim - Decentralized social platform
-=====================================
+<h1 align="center">Movim</h1>
 
+<p align="center"><img src="https://movim.eu/img/vectorial.svg"/></p>
+<h3 align="center">Decentralized social and IM platform</h3>
+
+About
+-----
 Movim is a social and chat platform that act as a web frontend for the XMPP protocol.
 
-![movim logo](https://movim.eu/img/home.png)
+![movim screenshot](https://movim.eu/img/home.png)
 
 Installation
 ------------
 Please refer to the installation instructions that are available on the GitHub Wiki: https://github.com/movim/movim/wiki
 
-Movim is also available as a [Docker image](https://github.com/movim/movim_docker) or as a [Debian package](https://packages.debian.org/movim).
+Movim is also available as a [Docker image](https://github.com/movim/movim_docker).
+
+Security report
+---------------
+
+See `SECURITY.md`.
 
 Support Us
 ----------
@@ -39,4 +48,4 @@ Help us translate Movim on https://www.transifex.com/projects/p/movim/.
 
 License
 -------
-Movim is released under the terms of the AGPLv3 license. See COPYING for more details.
+Movim is released under the terms of the AGPLv3 license. See `COPYING` for more details.
