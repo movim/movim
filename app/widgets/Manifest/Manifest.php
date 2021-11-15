@@ -10,32 +10,45 @@ class Manifest extends Base
             'name'          => APP_TITLE,
             'short_name'    => APP_TITLE,
             'description'   => __('global.description'),
+            'scope'         => BASE_URI,
             'icons'         => [
                 [
-                    'src' => BASE_URI . 'theme/img/app/48.png',
-                    'sizes' => '48x48',
-                    'type' => 'image/png'
+                    'src' => BASE_URI . 'theme/img/app/vectorial_square.svg',
+                    'sizes' => '512x512',
+                    'type' => 'image/svg+xml',
+                    'purpose' => 'maskable'
                 ],
                 [
-                    'src' => BASE_URI . 'theme/img/app/96.png',
-                    'sizes' => '96x96',
-                    'type' => 'image/png'
-                ],
-                [
-                    'src' => BASE_URI . 'theme/img/app/128.png',
-                    'sizes' => '128x128',
-                    'type' => 'image/png'
+                    'src' => BASE_URI . 'theme/img/app/vectorial.png',
+                    'sizes' => '512x512',
+                    'type' => 'image/png',
+                    'purpose' => 'maskable'
                 ],
                 [
                     'src' => BASE_URI . 'theme/img/app/512.png',
                     'sizes' => '512x512',
-                    'type' => 'image/png'
-                ],
+                    'type' => 'image/png',
+                    'purpose' => 'any'
+                ]
             ],
-            'display'=> 'standalone',
-            'orientation' => 'portrait-primary',
-            'background-color' => '#1C1D5',
-            'theme-color' => '#1C1D5'
+            'shortcuts'     => [
+                [
+                    'name'  => $this->__('page.chats'),
+                    'url'   => $this->route('chat')
+                ],
+                [
+                    'name'  => $this->__('page.publish'),
+                    'url'   => $this->route('publish')
+                ],
+                [
+                    'name'  => $this->__('page.news'),
+                    'url'   => $this->route('news')
+                ]
+            ],
+            'display'       => 'standalone',
+            'orientation'   => 'portrait-primary',
+            'background-color' => '#3F51B5',
+            'theme-color'   => '#10151A'
         ];
 
         $this->view->assign('json', json_encode($infos));
