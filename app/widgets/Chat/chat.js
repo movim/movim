@@ -464,11 +464,9 @@ var Chat = {
             && textarea.value == '' && !Chat.isEncrypted()) {
                 Chat.enableSending();
 
-                console.log('enable');
                 xhr = ChatActions_ajaxHttpResolveUrl(pastedData);
                 xhr.timeout = 5000;
                 xhr.ontimeout = function() {
-                    console.log('disable');
                     Chat.disableSending();
                     Chat.finishedSending();
                 };

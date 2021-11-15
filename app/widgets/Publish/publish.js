@@ -12,7 +12,6 @@ var Publish = {
             document.querySelector('#publish textarea[name=title] + label span.save').classList.remove('saved');
 
             Publish.titleTimeout = setTimeout(function () {
-                console.log('trigger');
                 Publish_ajaxHttpSaveTitle(id, event.target.value);
             }, 1000);
         });

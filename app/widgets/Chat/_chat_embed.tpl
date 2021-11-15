@@ -34,8 +34,8 @@
     {/if}
 
     <div>
-        <p class="line">{$embed->title}</p>
-        <p class="line">{$embed->description}</p>
+        <p class="line" title="{$embed->title}">{$embed->title}</p>
+        <p class="line" title="{$embed->description}">{$embed->description}</p>
         {if="$withlink"}
             <p class="line"><a href="#">{$embed->url}</a></p>
         {/if}
