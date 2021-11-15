@@ -141,6 +141,10 @@ class Bootstrap
             ? str_replace('//', '/', $_SERVER['HTTP_HOST'] . $path)
             : $path;
 
+        if (substr($uri, -8, 8) == 'picture/') {
+            $uri = substr($uri, 0, strlen($uri) - 8);
+        }
+
         return $uri;
     }
 
