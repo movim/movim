@@ -110,8 +110,6 @@ class Bootstrap
         define('MOVIM_SQL_DATE', 'Y-m-d H:i:s');
 
         define('API_SOCKET', CACHE_PATH . 'socketapi.sock');
-
-        define('MOVIM_API', 'https://api.movim.eu/');
     }
 
     private function getVersion()

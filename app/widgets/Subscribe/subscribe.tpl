@@ -28,27 +28,17 @@
                 </div>
             </li>
         {/if}
-        {loop="$servers"}
         <li
             class="block"
-            onclick="MovimUtils.redirect('{$c->route('accountnext', [$value->domain, false])}')">
-            <span class="primary icon bubble color {$value->description|stringToColor}">
-                {if="isset($value->checked) && $value->checked"}
-                    <i class="material-icons">star</i>
-                {else}
-                    {$value->domain|firstLetterCapitalize}
-                {/if}
+            onclick="MovimUtils.redirect('{$c->route('accountnext', ['movim.eu', false])}')">
+            <span class="primary icon bubble color green">
+                <img src="theme/img/app/vectorial.png">
             </span>
             <div>
-                <p>
-                    {$value->domain}
-                </p>
-                <p>
-                    {$value->description}<br />
-                </p>
+                <p>movim.eu</p>
+                <p>Official Movim XMPP Server<br /></p>
             </div>
         </li>
-        {/loop}
     </ul>
     <ul class="list thick">
         <li class="block">

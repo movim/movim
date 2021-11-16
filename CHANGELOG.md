@@ -45,6 +45,7 @@ v0.20 (trunk)
 * Refactor the message edition architecture to support several editions
 * Change counter color in favicon when post notification
 * Add OMEMO support for MUC Groups
+* Remove the old API code
 
 v0.19
 ---------------------------
