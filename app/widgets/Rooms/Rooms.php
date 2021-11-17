@@ -38,6 +38,10 @@ class Rooms extends Base
         $this->registerEvent('presence_muc_errorremoteservernotfound', 'onRemoteServerNotFound');
         $this->registerEvent('presence_muc_erroritemnotfound', 'onItemNotFound');
         $this->registerEvent('presence_muc_errornotauthorized', 'onNotAuthorized');
+        $this->registerEvent('presence_muc_errorforbidden', 'onForbidden');
+        $this->registerEvent('presence_muc_errorjidmalformed', 'onJidMalformed');
+        $this->registerEvent('presence_muc_errornotacceptable', 'onNotAcceptable');
+        $this->registerEvent('presence_muc_errorserviceunavailable', 'onServiceUnavailable');
 
         // Bug: In Chat::ajaxGet, Notification.current might come after this event
         // so we don't set the filter
@@ -342,6 +346,30 @@ class Rooms extends Base
     public function onNotAuthorized($packet)
     {
         Toast::send($this->__('chatrooms.notauthorized'));
+        $this->ajaxExit($packet->content);
+    }
+
+    public function onForbidden($packet)
+    {
+        Toast::send($this->__('chatrooms.forbidden'));
+        $this->ajaxExit($packet->content);
+    }
+
+    public function onJidMalformed($packet)
+    {
+        Toast::send($this->__('chatrooms.jidmalformed'));
+        $this->ajaxExit($packet->content);
+    }
+
+    public function onNotAcceptable($packet)
+    {
+        Toast::send($this->__('chatrooms.notacceptable'));
+        $this->ajaxExit($packet->content);
+    }
+
+    public function onServiceUnavailable($packet)
+    {
+        Toast::send($this->__('chatrooms.serviceunavailable'));
         $this->ajaxExit($packet->content);
     }
 

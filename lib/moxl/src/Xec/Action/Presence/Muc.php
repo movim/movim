@@ -122,6 +122,30 @@ class Muc extends Action
         $this->deliver();
     }
 
+    public function errorJidMalformed($stanza, $parent = false)
+    {
+        $this->pack($this->_to);
+        $this->deliver();
+    }
+
+    public function errorNotAcceptable($stanza, $parent = false)
+    {
+        $this->pack($this->_to);
+        $this->deliver();
+    }
+
+    public function errorServiceUnavailable($stanza, $parent = false)
+    {
+        $this->pack($this->_to);
+        $this->deliver();
+    }
+
+    public function errorForbidden($stanza, $parent = false)
+    {
+        $this->pack($this->_to);
+        $this->deliver();
+    }
+
     public function errorConflict($stanza, $message)
     {
         if (substr_count($this->_nickname, '_') > 5) {
