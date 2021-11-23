@@ -155,12 +155,27 @@ class Account extends \Movim\Widget\Base
             $fingerprint->built = in_array($fingerprint->bundleid, $resolvedDeviceIds);
         }
 
-        $view->assign('fingerprints', $fingerprints->sortByDesc('self'));
+        $fingerprints = $fingerprints->sortByDesc('self')->keyBy('bundleid');
+
+        $latests = \App\Message::selectRaw('max(published) as latest, bundleid')
+                               ->where('user_id', $this->user->id)
+                               ->where('jidfrom', $this->user->id)
+                               ->groupBy('bundleid')
+                               ->pluck('latest', 'bundleid');
+
+        foreach ($fingerprints->keys() as $key) {
+            $fingerprints[$key]->latest = $latests->has($key)
+                ? $latests[$key]
+                : null;
+        }
+
+        $view->assign('fingerprints', $fingerprints);
 
         $this->rpc('MovimTpl.fill',
             '#account_fingerprints',
             $view->draw('_account_fingerprints')
         );
+        $this->rpc('Account.resolveSessionsStates');
     }
 
     public function ajaxRemoveAccountConfirm($form)

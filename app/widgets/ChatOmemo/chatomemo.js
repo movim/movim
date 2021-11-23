@@ -329,10 +329,16 @@ var ChatOmemo = {
         var store = new ChatOmemoStorage();
         let promises = store.filter('.session' + jid)
             .map(key => key.split(/[\s.]+/).pop())
-            .map(deviceId => this.encryptDevice(plaintext, jid, deviceId) );
+            .map(deviceId => store.getSessionState(jid + '.' + deviceId).then(state => {
+                if (state) {
+                    return this.encryptDevice(plaintext, jid, deviceId);
+                }
+
+                return Promise.resolve(false);
+            }));
 
         return Promise.all(promises).then(result => {
-            return result;
+            return result.filter(encrypted => encrypted !== false);
         });
     },
     encryptDevice: function (plaintext, jid, deviceId) {

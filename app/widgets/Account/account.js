@@ -3,6 +3,21 @@ var Account = {
         var form = document.querySelector('form[name=password]');
         form.reset();
         document.querySelector('#password_save').className = 'button color flat';
+    },
+    resolveSessionsStates : function() {
+        var store = new ChatOmemoStorage();
+        store.getSessionsIds(store.jid).map(id => {
+            store.getSessionState(store.jid + '.' + id).then(state => {
+                if (state) {
+                    let checkbox = document.querySelector('input[name=accountsessionstate_' + id + ']');
+                    checkbox.checked = true;
+                }
+            })
+        });
+    },
+    toggleFingerprintState : function(checkbox) {
+        var store = new ChatOmemoStorage();
+        store.setSessionState(checkbox.dataset.identifier, checkbox.checked);
     }
 }
 

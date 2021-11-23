@@ -194,6 +194,20 @@ ChatOmemoStorage.prototype = {
         return Promise.resolve(state);
     },
 
+    getSessionState: function (identifier) {
+        return this.loadSession(identifier).then(json => {
+            let session = JSON.parse(json);
+            return (session.state === true || session.state === undefined);
+        });
+    },
+    setSessionState: function (identifier, enabled) {
+        this.loadSession(identifier).then(json => {
+            let session = JSON.parse(json);
+            session.state = Boolean(enabled);
+            this.storeSession(identifier, JSON.stringify(session));
+        });
+    },
+
     toString: function(thing) {
         if (typeof thing == 'string') {
             return thing;

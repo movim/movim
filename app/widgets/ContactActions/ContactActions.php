@@ -95,11 +95,30 @@ class ContactActions extends Base
 
     public function ajaxGetDrawerFingerprints($jid, $deviceId)
     {
+        $fingerprints = $this->user->bundles()
+                                   ->where('jid', $jid)
+                                   ->with('sessions')
+                                   ->get()
+                                   ->keyBy('bundleid');
+
+        $latests = \App\Message::selectRaw('max(published) as latest, bundleid')
+                               ->where('user_id', $this->user->id)
+                               ->where('jidfrom', $jid)
+                               ->groupBy('bundleid')
+                               ->pluck('latest', 'bundleid');
+
+        foreach ($fingerprints->keys() as $key) {
+            $fingerprints[$key]->latest = $latests->has($key)
+                ? $latests[$key]
+                : null;
+        }
+
         $tpl = $this->tpl();
-        $tpl->assign('fingerprints', $this->user->bundles()->where('jid', $jid)->with('sessions')->get());
+        $tpl->assign('fingerprints', $fingerprints);
         $tpl->assign('deviceid', $deviceId);
 
         $this->rpc('MovimTpl.fill', '#omemo_fingerprints', $tpl->draw('_contactactions_drawer_fingerprints'));
+        $this->rpc('ContactActions.resolveSessionsStates', $jid);
     }
 
     public function ajaxAdd($form)
