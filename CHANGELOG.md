@@ -46,6 +46,7 @@ v0.20 (trunk)
 * Change counter color in favicon when post notification
 * Add OMEMO support for MUC Groups
 * Remove the old API code
+* Add support of XEP-0393: Message Styling
 
 v0.19
 ---------------------------
