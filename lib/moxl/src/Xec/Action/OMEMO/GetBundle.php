@@ -29,26 +29,28 @@ class GetBundle extends Action
 
     public function handle($stanza, $parent = false)
     {
-        $bundle = Bundle::where('user_id', \App\User::me()->id)
-            ->where('jid', $this->_to)
-            ->where('bundleid', $this->_id)
-            ->first();
+        if ($stanza->pubsub->items->item->bundle) {
+            $bundle = Bundle::where('user_id', \App\User::me()->id)
+                ->where('jid', $this->_to)
+                ->where('bundleid', $this->_id)
+                ->first();
 
-        if (!$bundle) {
-            $bundle = new Bundle;
-        }
+            if (!$bundle) {
+                $bundle = new Bundle;
+            }
 
-        $oldBundle = clone $bundle;
+            $oldBundle = clone $bundle;
 
-        $bundle->set($this->_to, $this->_id, $stanza->pubsub->items->item->bundle);
+            $bundle->set($this->_to, $this->_id, $stanza->pubsub->items->item->bundle);
 
-        // Only refresh if the bundle is different
-        if (!$oldBundle->sameAs($bundle)) {
-            $bundle->save();
+            // Only refresh if the bundle is different
+            if (!$oldBundle->sameAs($bundle)) {
+                $bundle->save();
 
-            if ($this->_notifyBundle) {
-                $this->pack($bundle);
-                $this->deliver();
+                if ($this->_notifyBundle) {
+                    $this->pack($bundle);
+                    $this->deliver();
+                }
             }
         }
     }

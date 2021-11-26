@@ -20,6 +20,7 @@ class Picture extends Base
         $headers = requestHeaders($url);
 
         if ($headers["download_content_length"] <= $this->compressLimit
+        && isset($headers['content_type'])
         && typeIsPicture($headers['content_type'])) {
             $compress = (
                 $headers["download_content_length"] > SMALL_PICTURE_LIMIT * 0.25
