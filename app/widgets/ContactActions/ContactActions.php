@@ -98,6 +98,7 @@ class ContactActions extends Base
         $fingerprints = $this->user->bundles()
                                    ->where('jid', $jid)
                                    ->with('sessions')
+                                   ->with('capability.identities')
                                    ->get()
                                    ->keyBy('bundleid');
 
@@ -116,6 +117,7 @@ class ContactActions extends Base
         $tpl = $this->tpl();
         $tpl->assign('fingerprints', $fingerprints);
         $tpl->assign('deviceid', $deviceId);
+        $tpl->assign('clienttype', getClientTypes());
 
         $this->rpc('MovimTpl.fill', '#omemo_fingerprints', $tpl->draw('_contactactions_drawer_fingerprints'));
         $this->rpc('ContactActions.resolveSessionsStates', $jid);

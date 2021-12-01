@@ -33,7 +33,8 @@ class Presence extends Model
 
     public function capability()
     {
-        return $this->hasOne('App\Info', 'node', 'node');
+        return $this->hasOne('App\Info', 'node', 'node')
+                    ->whereNull('server');
     }
 
     public function contact()

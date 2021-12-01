@@ -14,6 +14,8 @@ use Moxl\Stanza\Stream;
 use Movim\Daemon\Session;
 use Movim\Session as MovimSession;
 
+use App\BundleCapabilityResolver;
+
 class Presence extends Base
 {
     public function load()
@@ -48,6 +50,9 @@ class Presence extends Base
     public function start()
     {
         $this->rpc('Notification.inhibit', 15);
+
+        // Load the BundleCapabilityResolved
+        BundleCapabilityResolver::getInstance()->load();
 
         // http://xmpp.org/extensions/xep-0280.html
         \Moxl\Stanza\Carbons::enable();

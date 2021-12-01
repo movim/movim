@@ -47,6 +47,7 @@ v0.20 (trunk)
 * Add OMEMO support for MUC Groups
 * Remove the old API code
 * Add support of XEP-0393: Message Styling
+* Add a BundleCapabilityResolver to link OMEMO bundles with the capability/info table
 
 v0.19
 ---------------------------

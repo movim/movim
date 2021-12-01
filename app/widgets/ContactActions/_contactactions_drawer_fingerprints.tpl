@@ -34,9 +34,18 @@
                                 {$value->fingerprint}
                             </span>
                         </p>
-                        {if="isset($value->latest)"}
-                            <p>{$c->__('omemo.last_activity')}: {$value->latest|strtotime|prepareDate:true}</p>
-                        {/if}
+                        <p class="line">
+                           {if="$value->capability"}
+                                {$value->capability->name}&nbsp;
+                                <i class="material-icons">{$value->capability->getDeviceIcon()}</i>
+                            {/if}
+                            {if="$value->capability && isset($value->latest)"}
+                            &nbsp;-&nbsp;
+                            {/if}
+                            {if="isset($value->latest)"}
+                                {$c->__('omemo.last_activity')}: {$value->latest|strtotime|prepareDate:true}
+                            {/if}
+                        </p>
                     </div>
                 </li>
             {/loop}

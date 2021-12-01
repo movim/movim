@@ -2,6 +2,7 @@
 
 namespace Moxl\Xec\Payload;
 
+use App\BundleCapabilityResolver;
 use Movim\ChatStates;
 
 class Message extends Payload
@@ -38,6 +39,10 @@ class Message extends Payload
         && (!$message->isEmpty() || $message->isSubject())) {
             $message->save();
             $message = $message->fresh();
+
+            if ($message->bundleid) {
+                BundleCapabilityResolver::getInstance()->resolve($message);
+            }
 
             if ($message && ($message->body || $message->subject)) {
                 $this->pack($message);

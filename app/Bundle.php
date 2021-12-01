@@ -14,16 +14,11 @@ class Bundle extends Model
         return $this->hasMany('App\BundleSession', 'bundle_id', 'id');
     }
 
-    /*public function messages()
+    public function capability()
     {
-        return $this->hasMany('App\Message', 'bundleid', 'bundleid')
-                    ->where('user_id', \App\User::me()->id);
+        return $this->hasOne('App\Info', 'node', 'node')
+                    ->whereNull('server');
     }
-
-    public function getLatestMessage()
-    {
-        return $this->messages()->orderBy('published', 'desc')->first();
-    }*/
 
     public function set(string $jid, string $bundleId, $bundle)
     {
