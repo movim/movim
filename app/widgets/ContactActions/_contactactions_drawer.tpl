@@ -138,32 +138,12 @@
 
     <ul class="tabs" id="navtabs"></ul>
 
-    {if="$pictures->count() > 0"}
-        <div class="tabelem" title="{$c->__('general.pictures')}" id="contact_medias">
-            <ul class="grid active">
-                {loop="$pictures"}
-                    <li style="background-image: url('{$value->file['uri']|protectPicture}')"
-                        onclick="Preview_ajaxHttpShow('{$value->file['uri']}')">
-                        <i class="material-icons">visibility</i>
-                    </li>
-                {/loop}
-            </ul>
-        </div>
+    {if="$picturesCount > 0"}
+        <div class="tabelem spin" title="{$c->__('general.pictures')}" id="contact_pictures"></div>
     {/if}
 
-    {if="$links->count() > 0"}
-        <div class="tabelem" title="{$c->__('general.links')}" id="room_links">
-            <ul class="list thick">
-                {loop="$links"}
-                    {autoescape="off"}
-                        {$resolved = $value->resolvedUrl->cache}
-                        {if="$resolved"}
-                            {$c->prepareEmbedUrl($resolved)}
-                        {/if}
-                    {/autoescape}
-                {/loop}
-            </ul>
-        </div>
+    {if="$linksCount > 0"}
+        <div class="tabelem spin" title="{$c->__('general.links')}" id="contact_links"></div>
     {/if}
 
     {if="$roster && $roster->presences->count() > 0"}

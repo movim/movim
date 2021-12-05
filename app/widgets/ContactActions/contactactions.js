@@ -5,6 +5,14 @@ var ContactActions = {
             ContactActions_ajaxGetDrawerFingerprints(jid, deviceId);
         });
     },
+    morePictures(button, jid, page) {
+        button.remove();
+        ContactActions_ajaxHttpGetPictures(jid, page);
+    },
+    moreLinks(button, jid, page) {
+        button.remove();
+        ContactActions_ajaxHttpGetLinks(jid, page);
+    },
     resolveSessionsStates : function(jid) {
         var store = new ChatOmemoStorage();
 

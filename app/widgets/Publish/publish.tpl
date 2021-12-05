@@ -74,7 +74,7 @@
                         <i class="material-icons">close</i>
                     </span>
                     <div>
-                        <ul class="list">
+                        <ul class="list card shadow middle" id="publishreply">
                             {autoescape="off"}
                                 {$replyblock}
                             {/autoescape}

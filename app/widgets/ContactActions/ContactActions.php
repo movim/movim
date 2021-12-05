@@ -13,6 +13,9 @@ include_once WIDGETS_PATH . 'Post/Post.php';
 
 class ContactActions extends Base
 {
+    private $_picturesPagination = 20;
+    private $_linksPagination = 12;
+
     public function load()
     {
         $this->addjs('contactactions.js');
@@ -53,18 +56,21 @@ class ContactActions extends Base
 
         $tpl = $this->tpl();
         $tpl->assign('contact', \App\Contact::firstOrNew(['id' => $jid]));
+
+        $picturesCount = 0;
+        $linksCount = 0;
+
         if ($jid != $this->user->id) {
-            $tpl->assign('pictures', \App\Message::jid($jid)
-                                                ->where('picture', true)
-                                                ->orderBy('published', 'desc')
-                                                ->take(24)
-                                                ->get());
-            $tpl->assign('links', \App\Message::jid($jid)
-                                                ->where('picture', false)
-                                                ->whereNotNull('urlid')
-                                                ->orderBy('published', 'desc')
-                                                ->take(24)
-                                                ->get());
+            $picturesCount = \App\Message::jid($jid)
+                ->where('picture', true)
+                ->orderBy('published', 'desc')
+                ->count();
+            $linksCount = \App\Message::jid($jid)
+                ->where('picture', false)
+                ->whereNotNull('urlid')
+                ->count();
+            $tpl->assign('picturesCount', $picturesCount);
+            $tpl->assign('linksCount', $linksCount);
             $tpl->assign('roster', $this->user->session->contacts()->where('jid', $jid)->first());
         } else {
             $tpl->assign('pictures', collect());
@@ -87,6 +93,14 @@ class ContactActions extends Base
 
         Drawer::fill($tpl->draw('_contactactions_drawer'));
         $this->rpc('Tabs.create');
+
+        if ($picturesCount > 0) {
+            $this->rpc('ContactActions_ajaxHttpGetPictures', $jid);
+        }
+
+        if ($linksCount > 0) {
+            $this->rpc('ContactActions_ajaxHttpGetLinks', $jid);
+        }
 
         if ($hasFingerprints) {
             $this->rpc('ContactActions.getDrawerFingerprints', $jid);
@@ -148,6 +162,55 @@ class ContactActions extends Base
         $c->ajaxOpen($jid);
 
         $this->rpc('MovimUtils.redirect', $this->route('chat', $jid));
+    }
+
+    public function ajaxHttpGetPictures($jid, $page = 0)
+    {
+        $tpl = $this->tpl();
+
+        $more = false;
+        $pictures = \App\Message::jid($jid)
+            ->where('picture', true)
+            ->orderBy('published', 'desc')
+            ->take($this->_picturesPagination + 1)
+            ->skip($this->_picturesPagination * $page)
+            ->get();
+
+        if ($pictures->count() == $this->_picturesPagination + 1) {
+            $pictures->pop();
+            $more = true;
+        }
+        $tpl->assign('pictures', $pictures);
+        $tpl->assign('more', $more);
+        $tpl->assign('page', $page);
+        $tpl->assign('jid', $jid);
+
+        $this->rpc('MovimTpl.append', '#contact_pictures', $tpl->draw('_contactactions_drawer_pictures'));
+    }
+
+    public function ajaxHttpGetLinks($jid, $page = 0)
+    {
+        $tpl = $this->tpl();
+
+        $more = false;
+        $links = \App\Message::jid($jid)
+            ->where('picture', false)
+            ->whereNotNull('urlid')
+            ->orderBy('published', 'desc')
+            ->take($this->_linksPagination + 1)
+            ->skip($this->_linksPagination * $page)
+            ->get();
+
+        if ($links->count() == $this->_linksPagination + 1) {
+            $links->pop();
+            $more = true;
+        }
+        $tpl->assign('links', $links);
+        $tpl->assign('more', $more);
+        $tpl->assign('page', $page);
+        $tpl->assign('jid', $jid);
+
+        $this->rpc('MovimTpl.append', '#contact_links', $tpl->draw('_contactactions_drawer_links'));
     }
 
     public function prepareEmbedUrl(EmbedLight $embed)

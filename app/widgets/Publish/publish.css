@@ -49,3 +49,7 @@
 #publish span.privacy form > div .checkbox > input[type="checkbox"]:checked + label i:before {
     content: 'wifi_tethering';
 }
+
+#publishreply {
+    margin-bottom: -1rem;
+}
