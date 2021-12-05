@@ -178,7 +178,7 @@ main:not(.enabled) #chat_widget {
 }
 
 #chat_widget .chat_box.finished:after {
-    transition: width 1s cubic-bezier(.68,0,0,1), opacity 3s ease-in-out;
+    transition: width 1s cubic-bezier(.68,0,0,1), opacity 1s ease-in-out;
     width: 100%;
     opacity: 0;
 }
