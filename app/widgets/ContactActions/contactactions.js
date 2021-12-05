@@ -7,6 +7,7 @@ var ContactActions = {
     },
     resolveSessionsStates : function(jid) {
         var store = new ChatOmemoStorage();
+
         store.getSessionsIds(jid).map(id => {
             store.getSessionState(jid + '.' + id).then(state => {
                 if (state) {
@@ -14,6 +15,12 @@ var ContactActions = {
                     checkbox.checked = true;
                 }
             })
+        });
+
+        store.getContactState(jid).then(enabled => {
+            if (!enabled) {
+                document.querySelector('#omemo_fingerprints ul.list').classList.add('disabled');
+            }
         });
     },
     toggleFingerprintState : function(checkbox) {
