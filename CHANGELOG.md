@@ -48,7 +48,7 @@ v0.20 (trunk)
 * Remove the old API code
 * Add support of XEP-0393: Message Styling
 * Add a BundleCapabilityResolver to link OMEMO bundles with the capability/info table
-* Add pagination for Pictures and Links in the ContactDrawer
+* Add pagination for Pictures and Links in the Contact and Room drawers
 
 v0.19
 ---------------------------

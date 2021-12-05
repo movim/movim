@@ -315,30 +315,10 @@
     {/if}
 
     {if="$conference->pictures()->count() > 0"}
-        <div class="tabelem" title="{$c->__('general.pictures')}" id="room_medias">
-            <ul class="grid active">
-                {loop="$conference->pictures()->take(24)->get()"}
-                    <li style="background-image: url('{$value->file['uri']|protectPicture}')"
-                        onclick="Preview_ajaxHttpShow('{$value->file['uri']}')">
-                        <i class="material-icons">visibility</i>
-                    </li>
-                {/loop}
-            </ul>
-        </div>
+        <div class="tabelem spin" title="{$c->__('general.pictures')}" id="room_pictures"></div>
     {/if}
 
     {if="$conference->links()->count() > 0"}
-        <div class="tabelem" title="{$c->__('general.links')}" id="room_links">
-            <ul class="active list thick">
-                {loop="$conference->links()->take(24)->get()"}
-                    {autoescape="off"}
-                        {$resolved = $value->resolvedUrl->cache}
-                        {if="$resolved"}
-                            {$c->prepareEmbedUrl($resolved)}
-                        {/if}
-                    {/autoescape}
-                {/loop}
-            </ul>
-        </div>
+        <div class="tabelem spin" title="{$c->__('general.links')}" id="room_links"></div>
     {/if}
 </section>

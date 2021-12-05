@@ -26,6 +26,9 @@ include_once WIDGETS_PATH.'Chat/Chat.php';
 
 class RoomsUtils extends Base
 {
+    private $_picturesPagination = 20;
+    private $_linksPagination = 12;
+
     public function load()
     {
         $this->registerEvent('vcard_set_handle', 'onAvatarSet', 'chat');
@@ -33,6 +36,8 @@ class RoomsUtils extends Base
         $this->registerEvent('disco_items_nosave_error', 'onDiscoGatewayError');
         $this->registerEvent('muc_creategroupchat_handle', 'onChatroomCreated');
         $this->registerEvent('muc_createchannel_handle', 'onChatroomCreated');
+
+        $this->addjs('roomsutils.js');
     }
 
     /**
@@ -51,9 +56,14 @@ class RoomsUtils extends Base
 
         if (!$conference) return;
 
+        $picturesCount = $conference->pictures()->count();
+        $linksCount = $conference->links()->count();
+
         $view = $this->tpl();
         $view->assign('conference', $conference);
         $view->assign('room', $room);
+        $view->assign('picturesCount', $picturesCount);
+        $view->assign('linksCount', $linksCount);
 
         $view->assign('presences', $conference->presences()
              ->with('capability')
@@ -69,6 +79,14 @@ class RoomsUtils extends Base
 
         Drawer::fill($view->draw('_rooms_drawer'));
         $this->rpc('Tabs.create');
+
+        if ($picturesCount > 0) {
+            $this->rpc('RoomsUtils_ajaxHttpGetPictures', $room);
+        }
+
+        if ($linksCount > 0) {
+            $this->rpc('RoomsUtils_ajaxHttpGetLinks', $room);
+        }
     }
 
     /**
@@ -394,6 +412,78 @@ class RoomsUtils extends Base
         $d = new Destroy;
         $d->setTo($room)
           ->request();
+    }
+
+    /**
+     * @brief Get a page of pictures in the drawer
+     */
+    public function ajaxHttpGetPictures($room, $page = 0)
+    {
+        if (!$this->validateRoom($room)) {
+            return;
+        }
+
+        $conference = $this->user->session->conferences()
+            ->where('conference', $room)
+            ->with('info')
+            ->first();
+
+        if (!$conference) return;
+
+        $tpl = $this->tpl();
+
+        $more = false;
+        $pictures = $conference->pictures()
+            ->take($this->_picturesPagination + 1)
+            ->skip($this->_picturesPagination * $page)
+            ->get();
+
+        if ($pictures->count() == $this->_picturesPagination + 1) {
+            $pictures->pop();
+            $more = true;
+        }
+        $tpl->assign('pictures', $pictures);
+        $tpl->assign('more', $more);
+        $tpl->assign('page', $page);
+        $tpl->assign('room', $room);
+
+        $this->rpc('MovimTpl.append', '#room_pictures', $tpl->draw('_rooms_drawer_pictures'));
+    }
+
+    /**
+     * @brief Get a page of links in the drawer
+     */
+    public function ajaxHttpGetLinks($room, $page = 0)
+    {
+        if (!$this->validateRoom($room)) {
+            return;
+        }
+
+        $conference = $this->user->session->conferences()
+            ->where('conference', $room)
+            ->with('info')
+            ->first();
+
+        if (!$conference) return;
+
+        $tpl = $this->tpl();
+
+        $more = false;
+        $links = $conference->links()
+            ->take($this->_linksPagination + 1)
+            ->skip($this->_linksPagination * $page)
+            ->get();
+
+        if ($links->count() == $this->_linksPagination + 1) {
+            $links->pop();
+            $more = true;
+        }
+        $tpl->assign('links', $links);
+        $tpl->assign('more', $more);
+        $tpl->assign('page', $page);
+        $tpl->assign('room', $room);
+
+        $this->rpc('MovimTpl.append', '#room_links', $tpl->draw('_rooms_drawer_links'));
     }
 
     /**
