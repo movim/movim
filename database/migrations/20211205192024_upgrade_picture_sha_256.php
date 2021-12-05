@@ -4,7 +4,7 @@ use App\Contact;
 use App\Info;
 use Movim\Migration;
 
-class UpgradePictureSha512 extends Migration
+class UpgradePictureSha256 extends Migration
 {
     public function up()
     {

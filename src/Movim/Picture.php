@@ -14,7 +14,7 @@ class Picture
     private $_bin  = false;
     private $_formats = ['jpeg' => '.jpg', 'png' => '.png', 'webp' => '.webp', 'gif' => '.gif'];
 
-    public static $hash = 'sha512'; // Cache need to be cleared in a migration if changed
+    public static $hash = 'sha256'; // Cache need to be cleared in a migration if changed
 
     /**
      * @desc Load a bin picture from an URL
