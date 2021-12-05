@@ -14,6 +14,8 @@ class Picture
     private $_bin  = false;
     private $_formats = ['jpeg' => '.jpg', 'png' => '.png', 'webp' => '.webp', 'gif' => '.gif'];
 
+    public static $hash = 'sha512'; // Cache need to be cleared in a migration if changed
+
     /**
      * @desc Load a bin picture from an URL
      */
@@ -32,7 +34,7 @@ class Picture
     {
         return $this->fromPath(
             $this->_path.
-            md5($key).
+            hash(Picture::$hash, $key).
             $this->_formats[DEFAULT_PICTURE_FORMAT]
         );
     }
@@ -99,7 +101,7 @@ class Picture
      */
     public function isOld($key, $format = DEFAULT_PICTURE_FORMAT)
     {
-        $original = $this->_path.md5($key).$this->_formats[$format];
+        $original = $this->_path.hash(Picture::$hash, $key).$this->_formats[$format];
         return (!file_exists($original) || (file_exists($original)
              && filemtime($original) < time() - 3600 * DEFAULT_PICTURE_EXPIRATION_HOURS));
     }
@@ -128,14 +130,14 @@ class Picture
 
         $this->_key = $key;
 
-        $original = $this->_path.md5($this->_key).$this->_formats[$format];
+        $original = $this->_path.hash(Picture::$hash, $this->_key).$this->_formats[$format];
 
         // We request the original picture
         if ($width == false) {
             if (file_exists($original)) {
                 $this->fromPath($original);
                 return urilize(
-                    $this->_folder . md5($this->_key) . $this->_formats[$format],
+                    $this->_folder . hash(Picture::$hash, $this->_key) . $this->_formats[$format],
                     $noTime
                 );
             }
@@ -143,17 +145,17 @@ class Picture
 
         // We request a specific size
         if (file_exists(
-            $this->_path.md5($this->_key) .
+            $this->_path.hash(Picture::$hash, $this->_key) .
             '_' . $width.$this->_formats[$format]
             )
         ) {
             $this->fromPath(
-                $this->_path.md5($this->_key) .
+                $this->_path.hash(Picture::$hash, $this->_key) .
                 '_' . $width.$this->_formats[$format]
             );
 
             return urilize(
-                $this->_folder.md5($this->_key) .
+                $this->_folder.hash(Picture::$hash, $this->_key) .
                 '_' . $width.$this->_formats[$format],
                 $noTime
             );
@@ -164,7 +166,7 @@ class Picture
             $this->_createThumbnail($width, $height);
 
             return urilize(
-                $this->_folder.md5($this->_key) .
+                $this->_folder.hash(Picture::$hash, $this->_key) .
                 '_' . $width . $this->_formats[$format],
                 $noTime
             );
@@ -202,7 +204,7 @@ class Picture
 
         if ($key) {
             $this->_key = $key;
-            $path = $this->_path.md5($this->_key).$this->_formats[$format];
+            $path = $this->_path.hash(Picture::$hash, $this->_key).$this->_formats[$format];
 
             // If the file exist we replace it
             if (file_exists($path) && $this->_bin) {
@@ -212,11 +214,11 @@ class Picture
                 foreach (
                     glob(
                         $this->_path.
-                        md5($key).
+                        hash(Picture::$hash, $key).
                         '*'.$this->_formats[$format],
                         GLOB_NOSORT
-                    ) as $path_thumb) {
-                    @unlink($path_thumb);
+                    ) as $pathThumb) {
+                    @unlink($pathThumb);
                 }
             }
         } else {
@@ -294,7 +296,7 @@ class Picture
             $height = $width;
         }
 
-        $path = $this->_path.md5($this->_key).'_'.$width.$this->_formats[$format];
+        $path = $this->_path.hash(Picture::$hash, $this->_key).'_'.$width.$this->_formats[$format];
 
         $im = new \Imagick;
 
