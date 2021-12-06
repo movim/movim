@@ -32,6 +32,17 @@ class Remove extends Errors
                            ->delete();
         }
 
+        $this->pack(['server' => $this->_server, 'node' => $this->_node]);
         $this->deliver();
+    }
+
+    public function errorItemNotFound($stanza)
+    {
+        $this->handle($stanza, $parent = false);
+    }
+
+    public function errorUnexpectedRequest($stanza)
+    {
+        $this->handle($stanza, $parent = false);
     }
 }

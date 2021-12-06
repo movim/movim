@@ -18,7 +18,7 @@ class CommunityHeader extends Base
         $this->registerEvent('disco_request_handle', 'onDiscoRequest', 'community');
         $this->registerEvent('pubsub_subscribe_handle', 'onSubscribed');
         $this->registerEvent('pubsub_subscribe_errorunsupported', 'onSubscriptionUnsupported');
-        $this->registerEvent('pubsub_unsubscribe_handle', 'onUnsubscribed');
+        $this->registerEvent('pubsubsubscription_remove_handle', 'onUnsubscribed');
         $this->registerEvent('pubsub_testpostpublish_handle', 'onTestPublish');
         $this->registerEvent('pubsub_testpostpublish_error', 'onTestPublishError');
 

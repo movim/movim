@@ -73,6 +73,7 @@ class GetItem extends Errors
 
                     if ($i && $i->avatarhash !== (string)$item->metadata->info->attributes()->id) {
                         $p = new Picture;
+
                         $p->fromURL((string)$item->metadata->info->attributes()->url);
                         $p->set((string)$item->metadata->info->attributes()->id);
 
