@@ -14,5 +14,6 @@ $application->add(new Movim\Console\ConfigCommand);
 $application->add(new Movim\Console\DaemonCommand);
 $application->add(new Movim\Console\EmojisToJsonCommand);
 $application->add(new Movim\Console\CompileLanguages);
+$application->add(new Movim\Console\CompileStickers);
 $application->add(new Movim\Console\SetAdmin);
 $application->run();

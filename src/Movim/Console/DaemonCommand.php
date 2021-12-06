@@ -97,6 +97,8 @@ class DaemonCommand extends Command
         $locale->compilePos();
         $output->writeln('<info>Compiled po files</info>');
 
+        $count = compileStickers();
+        $output->writeln('<info>'.$count.' stickers compiled</info>');
 
         $output->writeln('<info>Movim daemon launched</info>');
         $output->writeln('<info>Base URL: '.$baseuri.'</info>');

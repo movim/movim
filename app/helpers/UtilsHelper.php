@@ -745,6 +745,25 @@ function protectPicture($url)
 }
 
 /*
+ * @desc Copy the stickers in the public cache
+ */
+function compileStickers(): int
+{
+    $count = 0;
+
+    foreach (glob(PUBLIC_PATH . '/stickers/*/*.png', GLOB_NOSORT) as $path) {
+        $key = basename($path, '.png');
+
+        if ($key != 'icon') {
+            $count++;
+            copy($path, PUBLIC_CACHE_PATH.hash(Picture::$hash, $key).'.png');
+        }
+    }
+
+    return $count;
+}
+
+/*
  * @desc Translate something
  */
 function __()
