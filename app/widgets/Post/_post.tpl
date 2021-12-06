@@ -215,20 +215,24 @@
         {$c->preparePostLinks($post)}
     {/autoescape}
 
-    {if="$post->openlink && !$public"}
-        <ul class="list thick">
-            <li>
+    {if="$post->openlink && (!defined('BASE_BOST') || $post->openlink->url.host != BASE_HOST)"}
+        <ul class="list middle active">
+            <li onclick="MovimUtils.openInNew('{$post->openlink->href}')">
                 <span class="primary icon gray">
+                    <i class="material-icons">wifi_tethering</i>
+                </span>
+                <span class="control icon gray">
                     <i class="material-icons">open_in_new</i>
                 </span>
                 <div>
                     <p class="line normal">
                         {$c->__('post.public_yes')}
                     </p>
-                    <p>
-                        <a target="_blank" href="{$post->openlink->href}">
-                            {$c->__('post.public_url')} · {$post->openlink->url.host}
-                        </a>
+                    <p class="line">
+                        <a href="#">{$post->openlink->url.host}</a>
+                        {if="$post->openlink->url.path != '/'"}
+                            <span class="second sticked">{$post->openlink->url.path}</span>
+                        {/if}
                     </p>
                 </div>
             </li>

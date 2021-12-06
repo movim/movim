@@ -171,6 +171,10 @@ ul.list li > div > p > span.second {
     margin-left: 0.5rem;
 }
 
+ul.list li > div > p > span.second.sticked {
+    margin-left: 0;
+}
+
 ul.list li > div > p > span.info,
 ul li div.bubble:after {
     float: right;
