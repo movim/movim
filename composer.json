@@ -35,13 +35,13 @@
         "illuminate/database": "^8.60",
         "illuminate/events": "^8.60",
         "doctrine/dbal": "^3.1",
-
-        "cboden/ratchet": "^0.4.3",
-        "react/child-process": "^0.6.3",
-        "react/http": "^1.4.0",
-        "react/dns": "^1.8.0",
         "monolog/monolog": "^2.3.0",
-        "ratchet/pawl": "^0.3.5"
+
+        "cboden/ratchet": "^0.4.4",
+        "react/child-process": "^0.6.4",
+        "react/http": "^1.5.0",
+        "react/dns": "^1.8.0",
+        "ratchet/pawl": "^0.4.1"
     },
     "config": {
         "platform": {
