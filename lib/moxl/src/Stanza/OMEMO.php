@@ -2,8 +2,6 @@
 
 namespace Moxl\Stanza;
 
-use Movim\Session;
-
 class OMEMO
 {
     public static function getDeviceList($to)
@@ -31,6 +29,7 @@ class OMEMO
         $pubsub->appendChild($publish);
 
         $item = $dom->createElement('item');
+        $item->setAttribute('id', 'current');
         $publish->appendChild($item);
 
         $list = $dom->createElement('list');
