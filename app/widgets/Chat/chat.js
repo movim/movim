@@ -350,7 +350,7 @@ var Chat = {
         }
 
         if (!Chat.isEncrypted()) {
-            Chat_ajaxLast(textarea.dataset.jid);
+            Chat_ajaxLast(textarea.dataset.jid, Boolean(textarea.dataset.muc));
         } else {
             Toast.send(Chat.action_impossible_encrypted_error);
         }
@@ -1034,7 +1034,7 @@ var Chat = {
             if (data.omemoheader) {
                 p.innerHTML = data.omemoheader.payload.substr(0, data.omemoheader.payload.length/2);
                 ChatOmemo.decrypt(data).then(plaintext => {
-                    let refreshP = document.querySelector('#id' + data.id + ' p');
+                    let refreshP = document.querySelector('#id' + data.id + ' p.encrypted');
                     if (refreshP) {
                         if (plaintext) {
                             let linkified = MovimUtils.linkify(plaintext);
@@ -1370,6 +1370,7 @@ var Chat = {
         div.classList.add('parent');
         div.dataset.parentReplaceId = parent.replaceid
         div.dataset.parentId = parent.id;
+        div.id = 'parent' + parent.id;
 
         var span = document.createElement('span');
 
@@ -1383,8 +1384,23 @@ var Chat = {
         div.appendChild(span);
 
         var p = document.createElement('p');
-        p.innerHTML = parent.body;
         div.appendChild(p);
+
+        if (parent.omemoheader) {
+            p.innerHTML = parent.omemoheader.payload.substr(0, parent.omemoheader.payload.length/2);
+            ChatOmemo.decrypt(parent).then(plaintext => {
+                let refreshP = document.querySelector('#parent' + parent.id + ' p');
+                if (refreshP) {
+                    if (plaintext) {
+                        refreshP.innerHTML = plaintext;
+                    } else {
+                        refreshP.classList.add('error');
+                    }
+                }
+            });
+        } else {
+            p.innerHTML = parent.body;
+        }
 
         return div;
     },

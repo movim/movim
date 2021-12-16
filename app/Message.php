@@ -17,7 +17,7 @@ class Message extends Model
 
     protected $guarded = [];
 
-    protected $with = ['reactions', 'parent.from', 'resolvedUrl'];
+    protected $with = ['reactions', 'parent.from', 'resolvedUrl', 'replace'];
 
     protected $attributes = [
         'type'    => 'chat'
@@ -40,6 +40,11 @@ class Message extends Model
     public function parent()
     {
         return $this->belongsTo('App\Message', 'parentmid', 'mid');
+    }
+
+    public function replace()
+    {
+        return $this->belongsTo('App\Message', 'replaceid', 'originid')->without('replace');
     }
 
     public function resolvedUrl()
@@ -393,6 +398,7 @@ class Message extends Model
 
             if ($stanza->replace
             && (string)$stanza->replace->attributes()->xmlns == 'urn:xmpp:message-correct:0') {
+                // Here the replaceid could be a bad one, we will handle it later
                 $this->replaceid = (string)$stanza->replace->attributes()->id;
             }
 

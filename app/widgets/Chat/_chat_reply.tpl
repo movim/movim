@@ -28,6 +28,8 @@
                             <i class="material-icons">insert_drive_file</i> {$c->__('avatar.file')}
                         {/if}
                     </p>
+                {elseif="$message->encrypted"}
+                    <p class="line"><i class="material-icons">lock</i> {$c->__('message.encrypted')}</p>
                 {else}
                     <p class="line">{$message->body}</p>
                 {/if}

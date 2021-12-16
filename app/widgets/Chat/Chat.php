@@ -716,22 +716,33 @@ class Chat extends \Movim\Widget\Base
      * @param string $to
      * @return void
      */
-    public function ajaxLast($to)
+    public function ajaxLast($to, $muc = false)
     {
-        $m = $this->user->messages()
-                        ->where('jidto', $to)
-                        ->orderBy('published', 'desc')
-                        ->first();
+        if ($muc) {
+            // Resolve the current presence
+            $presence = $this->user->session->presences()
+            ->where('jid', $to)
+            ->where('muc', true)
+            ->where('mucjid', $this->user->id)
+            ->first();
 
-        // Try groupchats
-        if (!$m) {
+            if ($presence) {
+                $m = $this->user->messages()
+                          ->where('type', 'groupchat')
+                          ->where('jidfrom', $to)
+                          ->where('jidto', $this->user->id)
+                          ->where('resource', $presence->resource)
+                          ->orderBy('published', 'desc')
+                          ->first();
+            }
+        } else {
             $m = $this->user->messages()
-                            ->where('type', 'groupchat')
-                            ->where('jidfrom', $to)
-                            ->where('jidto', $this->user->id)
+                            ->where('jidto', $to)
                             ->orderBy('published', 'desc')
                             ->first();
         }
+
+        if (!$m) return;
 
         // We might get an already edited message, be sure to load the id of the original one
         $mid = $m->mid;
@@ -1299,6 +1310,15 @@ class Chat extends \Movim\Widget\Base
             }
 
             $message->icon = firstLetterCapitalize($message->resource);
+        }
+
+        // Handle faulty replacing messages
+        if ($message->replace
+        && ($message->replace->jidfrom != $message->jidfrom
+         || $message->replace->resource != $message->resource)
+        ) {
+            unset($message->replace);
+            unset($message->replaceid);
         }
 
         if($message->seen === false) {
