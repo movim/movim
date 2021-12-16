@@ -18,6 +18,8 @@ class GetMembers extends Action
         $this->store();
         Muc::getMembers($this->_to, 'member');
         $this->store();
+        Muc::getMembers($this->_to, 'outcast');
+        $this->store();
         Muc::getMembers($this->_to, 'owner');
         $this->store($this->lastStanzaId);
         Muc::getMembers($this->_to, 'admin');

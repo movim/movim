@@ -314,6 +314,41 @@
         </div>
     {/if}
 
+    {if="$banned->count() > 0"}
+        <div class="tabelem" title="{$c->__('chatrooms.banned')}" id="room_banned">
+            <ul class="list thin">
+                {loop="$banned"}
+                    <li title="{$value->truename}">
+                        {if="$value->contact && $url = $value->contact->getPhoto('s')"}
+                            <span class="primary icon bubble small">
+                                <img src="{$url}">
+                            </span>
+                        {else}
+                            <span class="primary icon bubble small color {$value->jid|stringToColor}">
+                                <i class="material-icons">people</i>
+                            </span>
+                        {/if}
+                        <span class="control icon active gray divided" onclick="
+                            Chats_ajaxOpen('{$value->jid|echapJS}');
+                            Chat.get('{$value->jid|echapJS}');
+                            Drawer_ajaxClear();">
+                            <i class="material-icons">comment</i>
+                        </span>
+                        <div>
+                            <p class="line normal">
+                                {if="$value->jid == $me"}
+                                    {$value->truename}
+                                {else}
+                                    <a href="{$c->route('contact', $value->jid)}">{$value->truename}</a>
+                                {/if}
+                            </p>
+                        </div>
+                    </li>
+                {/loop}
+            </ul>
+        </div>
+    {/if}
+
     {if="$conference->pictures()->count() > 0"}
         <div class="tabelem spin" title="{$c->__('general.pictures')}" id="room_pictures"></div>
     {/if}

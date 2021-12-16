@@ -72,8 +72,14 @@ class RoomsUtils extends Base
         if ($conference->isGroupChat()) {
             $view->assign('members', $conference->members()
                  ->with('contact')
+                 ->where('affiliation', '!=', 'outcast')
                  ->get());
         }
+
+        $view->assign('banned', $conference->members()
+             ->with('contact')
+             ->where('affiliation', '=', 'outcast')
+             ->get());
 
         $view->assign('me', $this->user->id);
 
