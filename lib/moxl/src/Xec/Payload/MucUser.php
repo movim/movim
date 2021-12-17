@@ -25,12 +25,8 @@ class MucUser extends Payload
                 $member->jid = $jid;
             }
 
-            if ($member && in_array((string)$stanza->item->attributes()->affiliation, ['outcast', 'none'])) {
-                $member->delete();
-            } else {
-                $member->affiliation = (string)$stanza->item->attributes()->affiliation;
-                $member->save();
-            }
+            $member->affiliation = (string)$stanza->item->attributes()->affiliation;
+            $member->save();
         }
     }
 }

@@ -217,6 +217,13 @@
                                 <i class="material-icons">comment</i>
                             </span>
                         {/if}
+                        {if="$conference->presence && ($conference->presence->mucrole == 'moderator' || $conference->presence->mucaffiliation == 'owner')"}
+                            <span class="control icon active gray divided" onclick="
+                                RoomsUtils_ajaxChangeAffiliation('{$conference->conference|echapJS}', '{$value->jid|echapJS}');
+                                Drawer_ajaxClear();">
+                                <i class="material-icons">manage_accounts</i>
+                            </span>
+                        {/if}
                         <div>
                             <p class="line normal">
                                 {if="$value->jid == $me"}
@@ -283,6 +290,13 @@
                                 <i class="material-icons">comment</i>
                             </span>
                         {/if}
+                        {if="$conference->presence && ($conference->presence->mucrole == 'moderator' || $conference->presence->mucaffiliation == 'owner')"}
+                            <span class="control icon active gray divided" onclick="
+                                RoomsUtils_ajaxChangeAffiliation('{$conference->conference|echapJS}', '{$value->mucjid|echapJS}');
+                                Drawer_ajaxClear();">
+                                <i class="material-icons">manage_accounts</i>
+                            </span>
+                        {/if}
                         <div>
                             <p class="line normal">
                                 {if="$value->mucjid && strpos($value->mucjid, '/') == false"}
@@ -316,6 +330,21 @@
 
     {if="$banned->count() > 0"}
         <div class="tabelem" title="{$c->__('chatrooms.banned')}" id="room_banned">
+            <ul class="list">
+                <li class="active" onclick="RoomsUtils_ajaxAddBanned('{$conference->conference|echapJS}'); Drawer.clear();">
+                    <span class="primary icon gray">
+                        <i class="material-icons">person_add</i>
+                    </span>
+                    <span class="control icon gray">
+                        <i class="material-icons">chevron_right</i>
+                    </span>
+                    <div>
+                        <p class="line normal">
+                            {$c->__('room.banned_add')}
+                        </p>
+                    </div>
+                </li>
+            </ul>
             <ul class="list thin">
                 {loop="$banned"}
                     <li title="{$value->truename}">
@@ -328,6 +357,11 @@
                                 <i class="material-icons">people</i>
                             </span>
                         {/if}
+                        <span class="control icon gray active"
+                              onclick="RoomsUtils_ajaxRemoveBanned('{$conference->conference|echapJS}', '{$value->jid|echapJS}'); Drawer.clear();"
+                              title="{$c->__('room.banned_remove')}">
+                            <i class="material-icons">close</i>
+                        </span>
                         <span class="control icon active gray divided" onclick="
                             Chats_ajaxOpen('{$value->jid|echapJS}');
                             Chat.get('{$value->jid|echapJS}');
@@ -342,6 +376,7 @@
                                     <a href="{$c->route('contact', $value->jid)}">{$value->truename}</a>
                                 {/if}
                             </p>
+                            <p class="line">{$value->jid}</p>
                         </div>
                     </li>
                 {/loop}

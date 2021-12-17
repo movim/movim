@@ -122,6 +122,26 @@ class Muc
         \Moxl\API::request($xml);
     }
 
+    public static function changeAffiliation(string $to, string $jid, string $affiliation, ?string $reason)
+    {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $query = $dom->createElementNS('http://jabber.org/protocol/muc#admin', 'query');
+        $dom->appendChild($query);
+
+        $item = $dom->createElement('item');
+        $item->setAttribute('affiliation', $affiliation);
+        $item->setAttribute('jid', $jid);
+        $query->appendChild($item);
+
+        if ($reason) {
+            $reason = $dom->createElement('reason', $reason);
+            $item->appendChild($reason);
+        }
+
+        $xml = \Moxl\API::iqWrapper($query, $to, 'set');
+        \Moxl\API::request($xml);
+    }
+
     public static function createGroupChat($to, $name)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');

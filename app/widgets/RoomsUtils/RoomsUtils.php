@@ -21,6 +21,7 @@ use App\Info;
 use Respect\Validation\Validator;
 use Cocur\Slugify\Slugify;
 use Movim\EmbedLight;
+use Moxl\Xec\Action\Muc\ChangeAffiliation;
 
 include_once WIDGETS_PATH.'Chat/Chat.php';
 
@@ -36,6 +37,8 @@ class RoomsUtils extends Base
         $this->registerEvent('disco_items_nosave_error', 'onDiscoGatewayError');
         $this->registerEvent('muc_creategroupchat_handle', 'onChatroomCreated');
         $this->registerEvent('muc_createchannel_handle', 'onChatroomCreated');
+        $this->registerEvent('muc_changeaffiliation_handle', 'onAffiliationChanged');
+        $this->registerEvent('muc_changeaffiliation_errornotallowed', 'onAffiliationChangeUnauthorized');
 
         $this->addjs('roomsutils.js');
     }
@@ -70,9 +73,8 @@ class RoomsUtils extends Base
              ->get());
 
         if ($conference->isGroupChat()) {
-            $view->assign('members', $conference->members()
+            $view->assign('members', $conference->activeMembers()
                  ->with('contact')
-                 ->where('affiliation', '!=', 'outcast')
                  ->get());
         }
 
@@ -143,6 +145,44 @@ class RoomsUtils extends Base
     {
         $this->rpc('Dialog_ajaxClear');
         Toast::send($this->__('avatar.updated'));
+    }
+
+    /**
+     * @brief Affiliation changed for a user
+     */
+    public function onAffiliationChanged($packet)
+    {
+        $affiliation = $packet->content;
+
+        switch ($affiliation) {
+            case 'owner':
+                Toast::send($this->__('room.affiliation_owner_changed'));
+                break;
+
+            case 'admin':
+                Toast::send($this->__('room.affiliation_admin_changed'));
+                break;
+
+            case 'member':
+                Toast::send($this->__('room.affiliation_member_changed'));
+                break;
+
+            case 'outcast':
+                Toast::send($this->__('room.affiliation_outcast_changed'));
+                break;
+
+            case 'none':
+                Toast::send($this->__('room.affiliation_none_changed'));
+                break;
+        }
+    }
+
+    /**
+     * @brief When the affiliation change is unauthorized
+     */
+    public function onAffiliationChangeUnauthorized($packet)
+    {
+        Toast::send($this->__('room.change_affiliation_unauthorized'));
     }
 
     /**
@@ -526,6 +566,115 @@ class RoomsUtils extends Base
               ->disableSave()
               ->request();
         }
+    }
+
+    /**
+     * @brief Show the ban form
+     */
+    public function ajaxAddBanned(string $room)
+    {
+        if (!$this->validateRoom($room)) {
+            return;
+        }
+
+        $view = $this->tpl();
+        $view->assign('room', $this->user->session->conferences()
+                                 ->where('conference', $room)
+                                 ->first());
+
+        Dialog::fill($view->draw('_rooms_ban'));
+    }
+
+    /**
+     * @brief Ban someone
+     */
+    public function ajaxAddBannedConfirm(string $room, $form)
+    {
+        if (!$this->validateRoom($room)) {
+            return;
+        }
+
+        $p = new ChangeAffiliation;
+        $p = $p->setTo($room)
+               ->setJid($form->jid->value)
+               ->setAffiliation('outcast');
+
+        if (!empty($form->reason->value)) {
+            $p = $p->setReason($form->reason->value);
+        }
+
+        $p->request();
+    }
+
+    /**
+     * @brief Show the unban form
+     */
+    public function ajaxRemoveBanned(string $room, string $jid)
+    {
+        if (!$this->validateRoom($room)) {
+            return;
+        }
+
+        $view = $this->tpl();
+        $view->assign('room', $this->user->session->conferences()
+                                 ->where('conference', $room)
+                                 ->first());
+        $view->assign('jid', $jid);
+
+        Dialog::fill($view->draw('_rooms_unban'));
+    }
+
+    /**
+     * @brief Unban someone
+     */
+    public function ajaxRemoveBannedConfirm(string $room, string $jid)
+    {
+        if (!$this->validateRoom($room)) {
+            return;
+        }
+
+        $p = new ChangeAffiliation;
+        $p->setTo($room)
+          ->setJid($jid)
+          ->setAffiliation('none')
+          ->request();
+    }
+
+    /**
+     * @brief Show the change affiliation form
+     */
+    public function ajaxChangeAffiliation(string $room, string $jid)
+    {
+        if (!$this->validateRoom($room)) {
+            return;
+        }
+
+        $conference = $this->user->session->conferences()
+                           ->where('conference', $room)
+                           ->first();
+
+        $view = $this->tpl();
+        $view->assign('room', $conference);
+        $view->assign('member', $conference->members()->where('jid', $jid)->first());
+        $view->assign('jid', $jid);
+
+        Dialog::fill($view->draw('_rooms_change_affiliation'));
+    }
+
+    /**
+     * @brief Change the affiliation
+     */
+    public function ajaxChangeAffiliationConfirm(string $room, $form)
+    {
+        if (!$this->validateRoom($room)) {
+            return;
+        }
+
+        $p = new ChangeAffiliation;
+        $p->setTo($room)
+          ->setJid($form->jid->value)
+          ->setAffiliation($form->affiliation->value)
+          ->request();
     }
 
     public function onDiscoGateway($packet)

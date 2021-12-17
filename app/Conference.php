@@ -79,6 +79,15 @@ class Conference extends Model
                     ->orderBy('affiliation', 'desc');
     }
 
+    public function activeMembers()
+    {
+        return $this->hasMany('App\Member', 'conference', 'conference')
+                    ->where('affiliation', '!=', 'outcast')
+                    ->where('affiliation', '!=', 'none')
+                    ->orderBy('role')
+                    ->orderBy('affiliation', 'desc');
+    }
+
     public function pictures()
     {
         return $this->hasMany('App\Message', 'jidfrom', 'conference')
