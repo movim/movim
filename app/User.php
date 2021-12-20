@@ -71,7 +71,16 @@ class User extends Model
                             $query->whereIn('type', ['chat', 'headline', 'invitation'])
                                 ->orWhere(function ($query) use ($quoted) {
                                     $query->where('type', 'groupchat')
-                                          ->whereNull('subject');
+                                          ->whereNull('subject')
+                                          ->whereIn('jidfrom', function ($query) {
+                                            $query->select('conference')
+                                                  ->from('conferences')
+                                                  ->where('session_id', function ($query) {
+                                                      $query->select('id')
+                                                            ->from('sessions')
+                                                            ->where('user_id', $this->id);
+                                                  });
+                                          });
 
                                     if ($quoted) {
                                         $query->where('quoted', true);
