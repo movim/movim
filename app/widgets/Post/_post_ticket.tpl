@@ -44,7 +44,7 @@
         </span>
     {/if}
     <div>
-        <p class="line" {if="isset($post->title)"}title="{$post->title}"{/if}>
+        <p class="line two" {if="isset($post->title)"}title="{$post->title}"{/if}>
             {if="isset($post->title)"}
                 {autoescape="off"}
                     {$post->title|prepareString}

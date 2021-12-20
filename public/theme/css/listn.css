@@ -166,6 +166,13 @@ ul.list li > div > p.line {
     white-space: nowrap;
 }
 
+ul.list li > div > p.line.two {
+    white-space: initial;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
 ul.list li > div > p > span.second {
     color: gray;
     margin-left: 0.5rem;
@@ -184,29 +191,6 @@ ul li div.bubble:after {
 }
 
 /* Size automagicaly the content */
-
-/*ul.list li > div > p.filler:before {
-    content: "…";
-    color: transparent;
-    width: 100%;
-    display: block;
-    background-image: linear-gradient(to right, rgba(var(--movim-font), 0.15), rgba(var(--movim-font), 0.10));
-    background-size: 100% 40%;
-    background-position: center left;
-    background-repeat: no-repeat;
-}
-
-ul.list li > div > p.filler + p.filler:before {
-    background-size: 70% 35%;
-}
-
-ul.list li:nth-child(2n) > div > p.filler:before {
-    background-size: 90% 40%;
-}
-
-ul.list li:nth-child(2n) > div > p.filler + p.filler:before {
-    background-size: 60% 35%;
-}*/
 
 ul.list li > div > p {
     box-sizing: border-box;
@@ -356,7 +340,7 @@ ul li div.bubble.file {
     margin-bottom: 1rem;
 }
 
-ul li div.bubble ul.card p:not(:last-child) {
+ul li div.bubble ul.card p:not(.line):not(:last-child) {
     display: block;
 }
 
