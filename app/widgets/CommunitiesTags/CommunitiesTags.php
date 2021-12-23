@@ -8,12 +8,17 @@ class CommunitiesTags extends Base
 {
     private function getPosts()
     {
-        return \App\Post::withoutComments()
+        $posts = \App\Post::withoutComments()
             ->restrictNSFW()
             ->restrictUserHost()
             ->recents()
-            ->orderBy('posts.published', 'desc')
-            ->where('open', true);
+            ->orderBy('posts.published', 'desc');
+
+        if ($this->_view == 'community') {
+            $posts->where('posts.server', $this->get('s'));
+        }
+
+        return $posts->where('open', true);
     }
 
     public function display()
@@ -31,6 +36,7 @@ class CommunitiesTags extends Base
             }, 'top');
         })->get();
 
+        $this->view->assign('community', ($this->_view == 'community'));
         $this->view->assign('tags', $tags);
     }
 }

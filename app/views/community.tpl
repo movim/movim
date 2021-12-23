@@ -20,6 +20,7 @@
     <?php if (empty($_GET['n'])) { ?>
         <aside>
             <?php $this->widget('CommunitiesServerInfo'); ?>
+            <?php $this->widget('CommunitiesTags'); ?>
             <?php $this->widget('NewsNav');?>
         </aside>
         <div>

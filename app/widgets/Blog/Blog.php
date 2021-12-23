@@ -63,7 +63,7 @@ class Blog extends Base
             }
         } elseif ($this->_view == 'tag' && $this->validateTag($this->get('t'))) {
             $this->_mode = 'tag';
-            $this->_tag = strtolower($this->get('t'));
+            $this->_tag = strtolower(html_entity_decode($this->get('t')));
             $this->title = '#'.$this->_tag;
         } else {
             $this->_from = $this->get('f');
