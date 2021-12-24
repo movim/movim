@@ -6,6 +6,7 @@
 
 ul.flex li.block {
     border-radius: 0.65rem;
+    transition: background 0.3s ease;
 }
 
 .flex .block:not(.subheader) {
