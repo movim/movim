@@ -11,7 +11,7 @@
         {/if}
 
         {if="isset($id)"}
-            <h4>{$id}</h4>
+            <h4 class="line">{$id}</h4>
         {/if}
 
         {if="!$create"}

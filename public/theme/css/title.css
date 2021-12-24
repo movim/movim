@@ -65,3 +65,12 @@ span.info i:not(:last-child) {
 label, span.info b { /* Caption */
     font-weight: 600;
 }
+
+h1.line,
+h2.line,
+h3.line,
+h4.line {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
