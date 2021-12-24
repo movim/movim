@@ -10,15 +10,10 @@
             {/if}
             <li>
                 <div>
-                    <p class="{if="!$community"}line{/if} normal">
-                        {if="!$community"}
-                            <a class="button flat disabled gray">
-                                <i class="material-icons">whatshot</i>
-                            </a>
-                        {/if}
+                    <p class="{if="!$community"}line two center{/if} normal">
                         {loop="$tags"}
-                            <a class="button flat narrow" href="{$c->route('tag', $value->name)}">
-                                <i class="material-icons">tag</i>{$value->name}
+                            <a class="chip outline" href="{$c->route('tag', $value->name)}">
+                                <i class="material-icons icon gray">tag</i>{$value->name}
                             </a>
                         {/loop}
                     </p>

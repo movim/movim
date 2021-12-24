@@ -50,6 +50,7 @@ v0.20 (trunk)
 * Add a BundleCapabilityResolver to link OMEMO bundles with the capability/info table
 * Add pagination for Pictures and Links in the Contact and Room drawers
 * Implement affiliations modification and ban/unban in Rooms
+* Introducing Material Chips in the design, use them for the tags
 
 v0.19
 ---------------------------

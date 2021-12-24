@@ -359,7 +359,7 @@ input[type=button]:hover {
 .button.flat:hover,
 .button.flat.on,
 input[type=button].flat:hover {
-    background-color: rgba(153, 153, 153, 0.2);
+    background-color: rgba(var(--movim-element-action), 0.2);
 }
 
 .button:focus,
@@ -369,7 +369,7 @@ input[type=button]:focus {
 
 .button.flat:focus,
 input[type=button].flat:focus {
-    background-color: rgba(153, 153, 153, 0.4);
+    background-color: rgba(var(--movim-element-action), 0.4);
 }
 
 .button.action {

@@ -78,6 +78,7 @@ class Base
         $this->page->addCSS('icon.css');
         $this->page->addCSS('dialog.css');
         $this->page->addCSS('card.css');
+        $this->page->addCSS('chip.css');
         $this->page->addCSS('table.css');
         $this->page->addCSS('color.css');
         $this->page->addCSS('block.css');

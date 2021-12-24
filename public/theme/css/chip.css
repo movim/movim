@@ -1,0 +1,30 @@
+.chip {
+    display: inline-block;
+    line-height: 4rem;
+    padding: 0 2rem;
+    font-size: 1.75rem;
+    margin: 0 0.5rem;
+    border-radius: 1rem;
+    color: rgb(var(--movim-font));
+    background-color: rgb(var(--movim-background-main));
+    transition: background 0.3s ease;
+}
+
+.chip i {
+    margin: 0 1rem;
+    margin-left: -1rem;
+    font-size: 2rem;
+}
+
+.chip:hover {
+    background-color: rgba(var(--movim-element-action), 0.2);
+}
+
+.chip:focus {
+    background-color: rgba(var(--movim-element-action), 0.4);
+}
+
+.chip.outline {
+    outline: 1px solid rgba(var(--movim-font), 0.12);
+    outline-offset: -1px;
+}
