@@ -95,6 +95,7 @@ class Post extends Base
         $p = \App\Post::where('server', $server)
                       ->where('node', $node)
                       ->where('nodeid', $nodeid)
+                      ->with('tags')
                       ->first();
 
         $gi = new GetItem;

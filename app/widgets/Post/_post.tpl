@@ -215,6 +215,22 @@
         {$c->preparePostLinks($post)}
     {/autoescape}
 
+    {if="$post->tags()->count() > 0"}
+        <ul class="list">
+            <li>
+                <div>
+                    <p class="normal">
+                        {loop="$post->tags()->get()"}
+                            <a class="chip outline" href="{$c->route('tag', $value->name)}">
+                                <i class="material-icons icon gray">tag</i>{$value->name}
+                            </a>
+                        {/loop}
+                    </p>
+                </div>
+            </li>
+        </ul>
+    {/if}
+
     {if="$post->openlink && (!defined('BASE_BOST') || $post->openlink->url.host != BASE_HOST)"}
         <ul class="list middle active">
             <li onclick="MovimUtils.openInNew('{$post->openlink->href}')">
