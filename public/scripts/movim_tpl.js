@@ -180,5 +180,10 @@ var MovimTpl = {
 movimAddOnload(function() {
     if (MovimUtils.isMobile()) MovimTpl.touchEvents();
     document.body.addEventListener('click', MovimTpl.toggleContextMenu, false);
-    window.addEventListener('popstate', e => MovimTpl.back());
+    window.addEventListener('popstate', e => {
+        // Prevent empty href to trigger the event
+        if (window.location.href.substring(window.location.href.length -1) != '#') {
+            MovimTpl.back()
+        }
+    });
 });
