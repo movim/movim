@@ -224,7 +224,7 @@ class CommunityAffiliations extends Base
         $caps = \App\Info::where('server', $origin)->first();
 
         if (Validator::in($caps ? array_keys($caps->getPubsubRoles()) : [])->validate($form->role->value)
-        && Validator::stringType()->length(3, 100)->validate($form->jid->value)) {
+        && Validator::stringType()->length(2, 100)->validate($form->jid->value)) {
             $sa = new SetAffiliations;
             $sa->setTo($origin)
                ->setNode($node)
@@ -262,10 +262,10 @@ class CommunityAffiliations extends Base
 
     private function validateServerNode($origin, $node)
     {
-        $validate_server = Validator::stringType()->noWhitespace()->length(6, 40);
-        $validate_node = Validator::stringType()->length(3, 100);
+        $validateServer = Validator::stringType()->noWhitespace()->length(6, 40);
+        $validateNode = Validator::stringType()->length(2, 100);
 
-        return ($validate_server->validate($origin)
-             && $validate_node->validate($node));
+        return ($validateServer->validate($origin)
+             && $validateNode->validate($node));
     }
 }

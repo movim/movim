@@ -402,7 +402,7 @@ class Post extends Model
                     if ($tag) {
                         $this->tags[] = $tag->id;
 
-                        if ($tag->tag == 'nsfw') {
+                        if ($tag->name == 'nsfw') {
                             $this->nsfw = true;
                         }
                     }

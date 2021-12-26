@@ -210,11 +210,11 @@ class Blog extends Base
 
     private function validateServerNode($server, $node)
     {
-        $validate_server = Validator::stringType()->noWhitespace()->length(6, 40);
-        $validate_node = Validator::stringType()->length(3, 100);
+        $validateServer = Validator::stringType()->noWhitespace()->length(6, 40);
+        $validateNode = Validator::stringType()->length(2, 100);
 
-        return ($validate_server->validate($server)
-             && $validate_node->validate($node));
+        return ($validateServer->validate($server)
+             && $validateNode->validate($node));
     }
 
     private function validateTag($tag)

@@ -67,8 +67,8 @@ class CommunitiesServers extends Base
      */
     private function validateServer($origin)
     {
-        $validate_server = Validator::noWhitespace()->alnum('.-_')->length(6, 40);
-        return ($validate_server->validate($origin));
+        $validateServer = Validator::noWhitespace()->alnum('.-_')->length(6, 40);
+        return ($validateServer->validate($origin));
     }
 
     public function prepareCommunities()
