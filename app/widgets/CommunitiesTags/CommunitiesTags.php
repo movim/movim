@@ -34,7 +34,7 @@ class CommunitiesTags extends Base
                     ->orderBy('count', 'desc')
                     ->whereIn('post_id', $posts->pluck('id'));
             }, 'top');
-        })->get();
+        })->take(30)->get();
 
         $this->view->assign('community', ($this->_view == 'community'));
         $this->view->assign('tags', $tags);
