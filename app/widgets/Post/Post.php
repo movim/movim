@@ -241,12 +241,10 @@ class Post extends Base
         return $this->prepareNotFound();
     }
 
-    public function prepareTicket(\App\Post $post, $big = false)
+    public function prepareTicket(\App\Post $post)
     {
         $view = $this->tpl();
         $view->assign('post', $post);
-        $view->assign('big', $big);
-
         return $view->draw('_post_ticket');
     }
 
