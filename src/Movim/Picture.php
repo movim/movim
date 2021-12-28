@@ -253,13 +253,22 @@ class Picture
 
                     if ($format == 'jpeg') {
                         $im->setImageCompression(\Imagick::COMPRESSION_JPEG);
-                        $im->setImageAlphaChannel(11);
                         $im->setInterlaceScheme(\Imagick::INTERLACE_PLANE);
+
                         // Put 11 as a value for now, see http://php.net/manual/en/imagick.flattenimages.php#116956
                         //$im->setImageAlphaChannel(Imagick::ALPHACHANNEL_REMOVE);
+                        $im->setImageAlphaChannel(11);
                         $im->setImageBackgroundColor('#ffffff');
-                        $im->setImageCompressionQuality($quality);
                         $im = $im->mergeImageLayers(\Imagick::LAYERMETHOD_FLATTEN);
+                    }
+
+                    if ($format == 'webp') {
+                        $im->setImageAlphaChannel(\Imagick::ALPHACHANNEL_ACTIVATE);
+                        $im->setBackgroundColor(new \ImagickPixel('transparent'));
+                    }
+
+                    if ($format == 'jpeg' || $format == 'webp') {
+                        $im->setImageCompressionQuality($quality);
                     }
 
                     if (empty($im->getImageProperties('png:gAMA'))) {
