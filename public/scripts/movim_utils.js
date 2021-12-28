@@ -153,7 +153,7 @@ var MovimUtils = {
             .replace(/>/g, '&gt;');
     },
     enhanceArticlesContent: function () {
-        document.querySelectorAll('article section > div  video')
+        document.querySelectorAll('article section > div video')
             .forEach(item => item.setAttribute('controls', 'controls'));
 
         document.querySelectorAll('article section > div a:not(.innertag)')
@@ -163,12 +163,14 @@ var MovimUtils = {
             .forEach(img => {
                 if (img.parentNode.localName != 'a') {
                     var div = document.createElement('div');
-                    img.parentNode.insertBefore(div, img);
-                    div.classList.add('previewable');
-                    img.classList.add('active');
-                    img.addEventListener('click', () => Preview_ajaxHttpShow(img.src))
+                    if (!img.parentNode.classList.contains('previewable')) {
+                        img.parentNode.insertBefore(div, img);
+                        div.classList.add('previewable');
+                        img.classList.add('active');
+                        img.addEventListener('click', () => Preview_ajaxHttpShow(img.src))
 
-                    div.appendChild(img);
+                        div.appendChild(img);
+                    }
                 }
             });
     },

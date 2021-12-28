@@ -196,7 +196,10 @@
             </div>
         {elseif="$post->isShort()"}
             {loop="$post->pictures"}
-                <img class="big_picture" type="{$value->type}"
+                <img class="big_picture"
+                     type="{$value->type}"
+                     title="{$value->title}"
+                     alt="{$value->title}"
                      src="{$value->href}"/>
             {/loop}
         {/if}
@@ -272,6 +275,7 @@
         <ul class="grid active">
             {loop="$post->pictures"}
                 <li
+                    title="{$value->title}"
                     {if="$public"}
                         style="background-image: url('{$value->href}')"
                     {else}

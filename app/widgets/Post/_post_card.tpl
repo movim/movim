@@ -111,8 +111,11 @@
                         </div>
                     {elseif="$post->isShort()"}
                         {loop="$post->pictures"}
-                            <img class="big_picture" type="{$value->type}"
-                                 src="{$value->href|protectPicture}" alt="{$value->title}">
+                            <img class="big_picture"
+                                 type="{$value->type}"
+                                 src="{$value->href|protectPicture}"
+                                 title="{$value->title}"
+                                 alt="{$value->title}">
                         {/loop}
                     {/if}
                 </div>
@@ -133,8 +136,11 @@
                             </div>
                         {elseif="$post->isShort()"}
                             {loop="$post->pictures"}
-                                <img class="big_picture" type="{$value->type}"
-                                     src="{$value->href|protectPicture}" alt="{$value->title}">
+                                <img class="big_picture"
+                                     type="{$value->type}"
+                                     title="{$value->title}"
+                                     alt="{$value->title}"
+                                     src="{$value->href|protectPicture}">
                             {/loop}
                         {/if}
                         {autoescape="off"}
