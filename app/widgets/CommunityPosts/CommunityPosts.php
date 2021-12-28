@@ -11,7 +11,8 @@ include_once WIDGETS_PATH.'Post/Post.php';
 
 class CommunityPosts extends Base
 {
-    private $_paging = 10;
+    private $_paging = 12;
+    private $_beforeAfter = 'b=';
 
     public function load()
     {
@@ -25,10 +26,10 @@ class CommunityPosts extends Base
 
     public function onItemsId($packet)
     {
-        list($origin, $node, $ids, $first, $last, $count, $paginated, $before)
+        list($origin, $node, $ids, $first, $last, $count, $paginated, $before, $after, $query)
             = array_values($packet->content);
 
-        $this->displayItems($origin, $node, $ids, $first, $last, $count, $paginated, $before);
+        $this->displayItems($origin, $node, $ids, $first, $last, $count, $paginated, $before, $after, $query);
     }
 
     public function onItemsError($packet)
@@ -59,13 +60,15 @@ class CommunityPosts extends Base
         $last = false,
         $count = false,
         $paginated = false,
-        $before = null
+        $before = null,
+        $after = null,
+        $query = null
     ) {
         if (!$this->validateServerNode($origin, $node)) {
             return;
         }
 
-        $html = $this->prepareCommunity($origin, $node, 0, $ids, $first, $last, $count, $before);
+        $html = $this->prepareCommunity($origin, $node, 0, $ids, $first, $last, $count, $before, $after, $query);
 
         $slugify = new Slugify;
         $this->rpc(
@@ -82,7 +85,7 @@ class CommunityPosts extends Base
         $c->ajaxGetDrawer($jid);
     }
 
-    public function ajaxGetItems($origin, $node, $before = 'empty')
+    public function ajaxGetItems($origin, $node, $before = 'empty', $query = null)
     {
         if (!$this->validateServerNode($origin, $node)) {
             return;
@@ -91,9 +94,17 @@ class CommunityPosts extends Base
         $r = new GetItems;
         $r->setTo($origin)
           ->setNode($node)
-          ->setPaging($this->_paging)
-          ->setBefore($before)
-          ->request();
+          ->setPaging($this->_paging);
+
+        $r = (strpos($before, $this->_beforeAfter) === 0)
+            ? $r->setAfter(substr($before, strlen($this->_beforeAfter)))
+            : $r->setBefore($before);
+
+        if ($query) {
+            $r->setQuery($query);
+        }
+
+        $r->request();
     }
 
     public function ajaxClear()
@@ -113,6 +124,11 @@ class CommunityPosts extends Base
         return (new \Post)->preparePost($p, false, true);
     }
 
+    public function prepareTicket($p)
+    {
+        return (new \Post)->prepareTicket($p);
+    }
+
     private function prepareCommunity(
         $origin,
         $node,
@@ -121,13 +137,19 @@ class CommunityPosts extends Base
         $first = false,
         $last = false,
         $count = false,
-        $before = null
+        $before = null,
+        $after = null,
+        $query = null
     ) {
         $ids = is_array($ids) ? $ids : [];
         foreach ($ids as $key => $id) {
             if (empty($id)) {
                 unset($ids[$key]);
             }
+        }
+
+        if (empty($ids)) {
+            return $this->prepareEmpty();
         }
 
         $posts = \App\Post::where('server', $origin)->where('node', $node)
@@ -150,6 +172,7 @@ class CommunityPosts extends Base
         $view->assign('ids', $ids);
         $view->assign('posts', $postsWithKeys);
         $view->assign('before', $before);
+        $view->assign('after', $after);
         $view->assign('info', \App\Info::where('server', $origin)
                                        ->where('node', $node)
                                        ->first());
@@ -158,6 +181,19 @@ class CommunityPosts extends Base
                                            ->where('node', $node)
                                            ->first());
         $view->assign('paging', $this->_paging);
+
+        // For now we detect if a node is a gallery if all the publications have an attached picture
+        // and if the post contents are short.
+        $shortCount = 0;
+
+        $gallery = $posts->every(function ($post) use (&$shortCount) {
+            if ($post->isShort()) $shortCount++;
+            return $post->picture != null;
+        });
+
+        if ($gallery && $shortCount < $posts->count()/2) $gallery = false;
+
+        $view->assign('gallery', $gallery);
 
         $view->assign('publicposts', ($ids == false)
             ? \App\Post::where('server', $origin)
@@ -173,9 +209,17 @@ class CommunityPosts extends Base
         $view->assign('last', $last);
         $view->assign('count', $count);
 
-        $view->assign('goback', $this->route(
+
+        if ($first) {
+            $view->assign('previouspage', $this->route(
+                $node == 'urn:xmpp:microblog:0' ? 'contact' : 'community',
+                [$origin, $node, $this->_beforeAfter.$first, $query]
+            ));
+        }
+
+        $view->assign('nextpage', $this->route(
             $node == 'urn:xmpp:microblog:0' ? 'contact' : 'community',
-            [$origin, $node, $last]
+            [$origin, $node, $last, $query]
         ));
 
         $html = $view->draw('_communityposts');

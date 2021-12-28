@@ -4,7 +4,7 @@
             <i class="material-icons">comment</i>
         </span>
         <div>
-            <p class="normal">{$c->__('post.comments_disabled')}</p>
+            <p class="normal line">{$c->__('post.comments_disabled')}</p>
         </div>
     </li>
 

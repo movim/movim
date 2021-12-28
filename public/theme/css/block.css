@@ -81,3 +81,38 @@ ul.flex li.block {
         column-count: 1;
     }
 }
+
+/* Gallery */
+
+ul.flex.gallery li.block {
+    flex-direction: column;
+    justify-content: center;
+}
+
+ul.flex.gallery li.block p a.node,
+ul.flex.gallery li.block > img + span,
+ul.flex.gallery li.block > span.primary {
+    display: none;
+}
+
+ul.flex.gallery li.block div {
+    flex: initial;
+    text-align: center;
+}
+
+ul.flex.gallery li.block img.main {
+    position: relative;
+    opacity: 1;
+    height: initial;
+    max-height: 35rem;
+    max-width: calc(100% + 3rem);
+    width: calc(100% + 3rem);
+    left: 0;
+    top: 0;
+    flex: 0;
+    margin-bottom: 0.5rem;
+}
+
+ul.flex.gallery li.block img.main:after {
+    content: attr(alt);
+}

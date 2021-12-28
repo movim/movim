@@ -1,23 +1,35 @@
 {if="!empty($ids)"}
-    <ul class="list card shadow">
+    <ul class="list card shadow flex {if="$gallery"}third gallery active{/if}">
     {loop="$ids"}
         {if="isset($posts[$value])"}
-            <div id="{$value|cleanupId}" class="block large">
+            {if="$gallery"}
                 {autoescape="off"}
-                    {$c->preparePost($posts[$value])}
+                    {$c->prepareTicket($posts[$value])}
                 {/autoescape}
-            </div>
+            {else}
+                <div id="{$value|cleanupId}" class="block large">
+                    {autoescape="off"}
+                        {$c->preparePost($posts[$value])}
+                    {/autoescape}
+                </div>
+            {/if}
         {/if}
     {/loop}
     </ul>
 {elseif="$publicposts->isNotEmpty()"}
-    <ul class="list card shadow">
+    <ul class="list card shadow {if="$gallery"}third gallery active{/if}">
     {loop="$publicposts"}
-        <div id="{$value->nodeid|cleanupId}" class="block large">
+        {if="$gallery"}
             {autoescape="off"}
-                {$c->preparePost($value)}
+                {$c->prepareTicket($value)}
             {/autoescape}
-        </div>
+        {else}
+            <div id="{$value|cleanupId}" class="block large">
+                {autoescape="off"}
+                    {$c->preparePost($value)}
+                {/autoescape}
+            </div>
+        {/if}
     {/loop}
     </ul>
 {else}
@@ -27,18 +39,18 @@
     </div>
 {/if}
 
-<ul class="list thick" id="goback">
+<ul class="list thick" id="nextpage">
     <li class="block">
         <div>
             <p class="center">
-                {if="$before != null || $page > 0"}
-                <a class="button flat" href="#" onclick="history.back()">
+                {if="(isset($previouspage) && (($before != null && $before != 'empty') || $after != null)) || $page > 0"}
+                <a class="button flat" href="{$previouspage}">
                     <i class="material-icons">keyboard_arrow_left</i>
                     {$c->__('button.previous')}
                 </a>
                 {/if}
                 {if="$last"}
-                <a class="button flat" href="{$goback}" title="{$c->__('post.older')}">
+                <a class="button flat" href="{$nextpage}" title="{$c->__('post.older')}">
                     {$c->__('button.next')}
                     <i class="material-icons">keyboard_arrow_right</i>
                 </a>

@@ -306,7 +306,7 @@ class Pubsub
         \Moxl\API::request($xml);
     }
 
-    public static function getItems($to, $node, $paging = 10, $after = false, $before = null, $skip = 0)
+    public static function getItems($to, $node, $paging = 10, $after = false, $before = null, $skip = 0, $query = null)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
@@ -327,7 +327,7 @@ class Pubsub
             $set->appendChild($dom->createElement('max', $paging));
 
             $pubsub->appendChild($set);
-        } elseif ($before && $before !== null) {
+        } elseif ($before && $before !== null && $before != 'empty') {
             $set = $dom->createElement('set');
             $set->setAttribute('xmlns', 'http://jabber.org/protocol/rsm');
             $set->appendChild($dom->createElement('before', $before));
@@ -336,6 +336,28 @@ class Pubsub
             $pubsub->appendChild($set);
         } else {
             $items->setAttribute('max_items', $paging);
+        }
+
+        if ($query) {
+            $x = $dom->createElement('x');
+            $x->setAttribute('xmlns', 'jabber:x:data');
+            $x->setAttribute('type', 'submit');
+            $pubsub->appendChild($x);
+
+            $field = $dom->createElement('field');
+            $field->setAttribute('var', 'FORM_TYPE');
+            $field->setAttribute('type', 'hidden');
+            $x->appendChild($field);
+
+            $value = $dom->createElement('value', 'xmpp:linkmauve.fr/gallery');
+            $field->appendChild($value);
+
+            $field = $dom->createElement('field');
+            $field->setAttribute('var', 'xmpp:linkmauve.fr/gallery#with-tag');
+            $x->appendChild($field);
+
+            $value = $dom->createElement('value', $query);
+            $field->appendChild($value);
         }
 
         $pubsub->appendChild($items);

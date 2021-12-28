@@ -68,7 +68,8 @@
 
             {if="!$post->isMicroblog()"}
                 {if="$post->contact"}·{/if}
-                <a title="{$post->server} / {$post->node}"
+                <a class="node"
+                   title="{$post->server} / {$post->node}"
                    href="{$c->route('community', [$post->server, $post->node])}">
                    {$post->node}
                 </a>

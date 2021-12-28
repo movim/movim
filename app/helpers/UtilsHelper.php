@@ -639,7 +639,8 @@ function generateKey($size)
     return $hash;
 }
 
-define('DEFAULT_HTTP_USER_AGENT', 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://google.com/bot.html)');
+//define('DEFAULT_HTTP_USER_AGENT', 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://google.com/bot.html)');
+define('DEFAULT_HTTP_USER_AGENT', 'Mozilla/5.0 (Android 4.4; Mobile; rv:41.0) Gecko/41.0 Firefox/41.0');
 
 /**
  * @desc Request a url async

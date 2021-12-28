@@ -22,7 +22,7 @@ class Route extends Base
                 'admin'         => false,
                 'blog'          => ['f', 'i'],
                 'chat'          => ['f', 'r'],
-                'community'     => ['s', 'n', 'i'],
+                'community'     => ['s', 'n', 'i', 'q'],
                 'conf'          => false,
                 'contact'       => ['s'],
                 'disconnect'    => ['err'],
