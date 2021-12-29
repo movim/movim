@@ -67,7 +67,7 @@
                 {/if}
             </p>
             <p class="line on_desktop">
-                <a href="{$c->route('community', [$server, $info->node])}">
+                <a href="{$c->route('community', [$server])}">
                     {$server}
                 </a>
             </p>
