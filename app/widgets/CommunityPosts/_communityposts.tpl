@@ -1,5 +1,5 @@
 {if="!empty($ids)"}
-    <ul class="list card shadow flex {if="$gallery"}third gallery active{/if}">
+    <ul class="list card shadow {if="$gallery"}flex third gallery active{/if}">
     {loop="$ids"}
         {if="isset($posts[$value])"}
             {if="$gallery"}
@@ -17,7 +17,7 @@
     {/loop}
     </ul>
 {elseif="$publicposts->isNotEmpty()"}
-    <ul class="list card shadow {if="$gallery"}third gallery active{/if}">
+    <ul class="list card shadow {if="$gallery"}flex third gallery active{/if}">
     {loop="$publicposts"}
         {if="$gallery"}
             {autoescape="off"}

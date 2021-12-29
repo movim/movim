@@ -17,11 +17,13 @@
         {if="$info != null"}
             {$url = $info->getPhoto('l')}
             {if="$url"}
-                <span class="primary icon bubble">
+                <span class="primary icon bubble active"
+                      onclick="MovimUtils.reload('{$c->route('community', [$server, $info->node])}')">
                     <img src="{$url}"/>
                 </span>
             {else}
-                <span class="primary icon bubble color {$info->node|stringToColor}">
+                <span class="primary icon bubble color {$info->node|stringToColor} active"
+                      onclick="MovimUtils.reload('{$c->route('community', [$server, $info->node])}')">
                     {$info->node|firstLetterCapitalize}
                 </span>
             {/if}
@@ -65,7 +67,9 @@
                 {/if}
             </p>
             <p class="line on_desktop">
-                {$server}
+                <a href="{$c->route('community', [$server, $info->node])}">
+                    {$server}
+                </a>
             </p>
         </div>
     </li>
