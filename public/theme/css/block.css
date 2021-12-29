@@ -52,7 +52,7 @@ ul.flex li.block {
     width: 100%;
 }
 
-@media screen and (min-width: 613px) and (max-width: 900px) {
+@media screen and (min-width: 451px) and (max-width: 900px) {
     .flex .block:not(.subheader),
     .flex.third .block:not(.subheader) {
         flex: 0 1 50%;
@@ -68,7 +68,7 @@ ul.flex li.block {
     }
 }
 
-@media screen and (max-width: 612px) {
+@media screen and (max-width: 450px) {
     .flex .block:not(.subheader),
     .flex.card .block:not(.subheader),
     .flex.third .block:not(.subheader),
