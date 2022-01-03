@@ -11,11 +11,21 @@ class ChatOmemo extends \Movim\Widget\Base
     public function load()
     {
         $this->registerEvent('omemo_getbundle_handle', 'onBundle');
+        $this->registerEvent('omemodevices', 'onDevices');
 
         $this->addjs('libsignal_protocol.js');
         $this->addjs('chatomemo.js');
         $this->addjs('chatomemo_storage.js');
         $this->addjs('chatomemo_db.js');
+    }
+
+    public function onDevices($packet)
+    {
+        list($from, $devices) = array_values($packet->content);
+
+        if ($from == $this->user->id) {
+            $this->rpc('ChatOmemo.ownDevicesReceived', $devices);
+        }
     }
 
     public function onBundle($packet)

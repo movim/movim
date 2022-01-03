@@ -10,7 +10,10 @@ var Account = {
             store.getSessionState(store.jid + '.' + id).then(state => {
                 if (state) {
                     let checkbox = document.querySelector('input[name=accountsessionstate_' + id + ']');
-                    checkbox.checked = true;
+
+                    if (checkbox) {
+                        checkbox.checked = true;
+                    }
                 }
             })
         });

@@ -10,6 +10,7 @@ const AESGCM_REGEX = /^aesgcm:\/\/([^#]+\/([^\/]+\.([a-z0-9]+)))#([a-z0-9]+)/i;
 
 var ChatOmemo = {
     requestedDevicesListFrom: null,
+    refreshed: false,
 
     initGenerateBundle: async function() {
         var store = new ChatOmemoStorage();
@@ -89,6 +90,16 @@ var ChatOmemo = {
         bundle['preKeys'] = preKeys;
 
         ChatOmemo_ajaxAnnounceBundle(bundle);
+    },
+
+    ownDevicesReceived: async function (devices) {
+        var store = new ChatOmemoStorage();
+        const localDeviceId = await store.getLocalRegistrationId();
+
+        if (!devices.includes(localDeviceId) && ChatOmemo.refreshed == false) {
+            ChatOmemo.refreshBundle();
+            ChatOmemo.refreshed = true;
+        }
     },
 
     handlePreKeys: function (jid, preKeys) {
