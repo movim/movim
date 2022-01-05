@@ -206,9 +206,17 @@ var Chat = {
                     store.getLocalRegistrationId().then(deviceId => {
                         if (deviceId) {
                             if (Boolean(textarea.dataset.muc) == true) {
-                                ChatOmemo_ajaxGetMissingRoomSessions(jid, deviceId);
+                                var bundlesIds = {};
+                                Chat.groupChatMembers.forEach(member => {
+                                    let bundles = store.getSessionsIds(member);
+                                    if (bundles.length > 0) {
+                                        bundlesIds[member] = bundles;
+                                    }
+                                });
+
+                                ChatOmemo_ajaxGetMissingRoomSessions(jid, bundlesIds);
                             } else {
-                                ChatOmemo_ajaxGetMissingSessions(jid, deviceId);
+                                ChatOmemo_ajaxGetMissingSessions(jid, store.getSessionsIds(jid));
                             }
                         } else {
                             Chat.disableSending();
@@ -251,42 +259,38 @@ var Chat = {
     {
         Chat.groupChatMembers = members;
     },
-    setOmemoSessions: function(jid, sessions)
+
+    setBundlesIds: function(jid, bundlesIds)
     {
         var store = new ChatOmemoStorage();
 
-        // Only resolve the local sessions
-        store.getLocalRegistrationId().then(localDeviceId => {
-            sessions = Object.values(sessions);
-            sessions = sessions.map(devices => devices.includes(String(localDeviceId)));
+        let build = false;
+        for (const jid in bundlesIds) {
+            if (!bundlesIds[jid].every(bundleId => store.getSessionsIds(jid).includes(bundleId.toString()))) {
+                build = true;
+                break;
+            }
+        }
 
-            ChatOmemo.getContactState(jid).then(enabled => {
-                let state = 'no';
+        ChatOmemo.getContactState(jid).then(enabled => {
+            let state = 'no';
 
-                if (enabled) {
-                    /**
-                     * 0 no sessions, no encryption
-                     * 1 all the sessions are built, encrypt
-                     * 2 some sessions need to be built, build then encrypt
-                     */
-                    if (sessions.length > 0) {
-                        state = (sessions.every(good => good))
-                            ? 'yes'
-                            : 'build';
-                    }
-                } else {
-                    if (sessions.length > 0) {
-                        state = 'disabled';
-                        /*state = (sessions.every(good => good))
-                            ? 'disabled'
-                            : 'build';*/
-                    }
+            if (enabled) {
+                if (Object.keys(bundlesIds).length > 0) {
+                    state = build
+                        ? 'build'
+                        : 'yes';
                 }
+            } else {
+                if (Object.keys(bundlesIds).length > 0) {
+                    state = 'disabled';
+                }
+            }
 
-                Chat.setOmemoState(state);
-            });
+            Chat.setOmemoState(state);
         });
     },
+
     setOmemoState: function(state)
     {
         let textarea = Chat.getTextarea();

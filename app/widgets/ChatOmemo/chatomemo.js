@@ -62,7 +62,7 @@ var ChatOmemo = {
         ChatOmemo_ajaxAnnounceBundle(bundle);
     },
 
-    refreshBundle: async function() {
+    refreshBundle: async function(publishOnly) {
         var store = new ChatOmemoStorage();
 
         const bundle = {};
@@ -81,12 +81,25 @@ var ChatOmemo = {
             'signature': MovimUtils.arrayBufferToBase64(signedPreKey.signature)
         }
 
-        // We refresh all the preKeys
+        // We refresh or load all the preKeys
 
-        const keys = await Promise.all(MovimUtils.range(0, NUM_PREKEYS).map(id => KeyHelper.generatePreKey(id)));
-        keys.forEach(k => store.storePreKey(k.keyId, k.keyPair));
+        let keys = [];
+        let preKeys = [];
 
-        const preKeys = keys.map(k => ({ 'id': k.keyId, 'key': k.keyPair.pubKey }));
+        if (publishOnly) {
+            keys = await Promise.all(MovimUtils.range(0, NUM_PREKEYS).map(id => store.loadPreKey(id)));
+
+            let counter = -1;
+            preKeys = keys.map(k => {
+                counter++;
+                return { 'id': counter, 'key': MovimUtils.arrayBufferToBase64(k.pubKey) };
+            });
+        } else {
+            keys = await Promise.all(MovimUtils.range(0, NUM_PREKEYS).map(id => KeyHelper.generatePreKey(id)));
+            keys.forEach(k => store.storePreKey(k.keyId, k.keyPair));
+            preKeys = keys.map(k => ({ 'id': k.keyId, 'key': k.keyPair.pubKey }));
+        }
+
         bundle['preKeys'] = preKeys;
 
         ChatOmemo_ajaxAnnounceBundle(bundle);
@@ -97,7 +110,7 @@ var ChatOmemo = {
         const localDeviceId = await store.getLocalRegistrationId();
 
         if (!devices.includes(localDeviceId) && ChatOmemo.refreshed == false) {
-            ChatOmemo.refreshBundle();
+            ChatOmemo.refreshBundle(true);
             ChatOmemo.refreshed = true;
         }
     },
@@ -156,10 +169,6 @@ var ChatOmemo = {
 
         promise.then(function onsuccess() {
             console.log('success ' + jid + ':' + deviceId);
-            store.getLocalRegistrationId().then(localDeviceId => {
-                ChatOmemo_ajaxHttpSetBundleSession(jid, deviceId, localDeviceId);
-            });
-
             Chat.setOmemoState('yes');
         });
 
@@ -168,6 +177,15 @@ var ChatOmemo = {
         });
 
         return promise;
+    },
+
+    closeSessions: async function (jid, devicesIds) {
+        var store = new ChatOmemoStorage();
+
+        devicesIds.forEach(deviceId => {
+            var address = new libsignal.SignalProtocolAddress(jid, deviceId);
+            store.removeSession(address);
+        })
     },
 
     encrypt: async function (to, plaintext, muc) {

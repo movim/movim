@@ -186,6 +186,9 @@ ChatOmemoStorage.prototype = {
     setContactState: function (jid, state) {
         return Promise.resolve(this.put(this.jid + '.contact' + jid, state));
     },
+    removeContactState: function (jid) {
+        return Promise.resolve(this.remove(this.jid + '.contact' + jid));
+    },
     hasContactState: function(jid) {
         return (this.get(this.jid + '.contact' + jid) !== undefined);
     },

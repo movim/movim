@@ -1,7 +1,6 @@
 <?php
 
 use App\Bundle;
-use App\BundleSession;
 use Moxl\Xec\Action\OMEMO\AnnounceBundle;
 use Moxl\Xec\Action\OMEMO\GetDeviceList;
 use Moxl\Xec\Action\OMEMO\SetDeviceList;
@@ -35,50 +34,54 @@ class ChatOmemo extends \Movim\Widget\Base
         $this->rpc('ChatOmemo.handlePreKey', $bundle->jid, $bundle->bundleid, $prekey);
     }
 
-    public function ajaxGetMissingSessions(string $jid, string $deviceId)
+    public function ajaxGetMissingSessions(string $jid, array $resolvedDeviceIds)
     {
         $bundles = $this->user->bundles()
             ->where('jid', $jid)
-            ->whereNotIn('id', function($query) use ($deviceId) {
-                $query->select('bundle_id')
-                      ->from('bundle_sessions')
-                      ->where('deviceid', $deviceId);
-            })
+            ->whereNotIn('bundleid', $resolvedDeviceIds)
             ->get();
 
         $this->prepareAndHandleSessions($jid, $bundles);
+        $this->closeMissingSessions($jid, $resolvedDeviceIds);
     }
 
-    public function ajaxGetMissingRoomSessions(string $room, string $deviceId)
+    public function ajaxGetMissingRoomSessions(string $room, $resolvedDeviceIds)
     {
+        $flattenBundles = collect();
+        foreach ($resolvedDeviceIds as $member => $bundlesIds) {
+            foreach ($bundlesIds as $bundleId) {
+                $flattenBundles->push([$member, $bundleId]);
+            }
+        }
+
         $bundles = $this->user->bundles()
             ->whereIn('jid', function ($query) use ($room) {
                 $query->select('jid')
                     ->from('members')
                     ->where('conference', $room);
             })
-            ->whereNotIn('id', function($query) use ($deviceId) {
-                $query->select('bundle_id')
-                      ->from('bundle_sessions')
-                      ->where('deviceid', $deviceId);
+            ->whereNotIn('id', function($query) use ($flattenBundles) {
+                $query = $query->select('id')
+                      ->from('bundles');
+
+                $bundle = $flattenBundles->shift();
+                if ($bundle) {
+                    $query->where(function ($query) use ($bundle) {
+                        $query->where('jid', $bundle[0])
+                              ->where('bundleid', $bundle[1]);
+                    });
+                }
+
+                foreach ($flattenBundles as $bundle) {
+                    $query->orWhere(function ($query) use ($bundle) {
+                        $query->where('jid', $bundle[0])
+                              ->where('bundleid', $bundle[1]);
+                    });
+                }
             })
             ->get();
 
         $this->prepareAndHandleSessions($room, $bundles);
-    }
-
-    private function prepareAndHandleSessions(string $jid, $bundles)
-    {
-        if (!empty($bundles)) {
-            $preKeys = [];
-
-            foreach ($bundles as $bundle) {
-                $preKeys[$bundle->bundleid] = $this->extractPreKey($bundle);
-            }
-
-            Toast::send($this->__('omemo.building_sessions'));
-            $this->rpc('ChatOmemo.handlePreKeys', $jid, $preKeys);
-        }
     }
 
     public function ajaxGetSelfMissingSessions(array $resolvedDeviceIds)
@@ -99,21 +102,36 @@ class ChatOmemo extends \Movim\Widget\Base
             $this->rpc('ChatOmemo.handlePreKeys', $this->user->id, $preKeys);
         }
 
+        $this->closeMissingSessions($this->user->id, $resolvedDeviceIds);
     }
 
-    public function ajaxHttpSetBundleSession(string $jid, string $bundleId, string $deviceId)
+    private function prepareAndHandleSessions(string $jid, $bundles)
     {
-        $bundle = $this->user->bundles()
-            ->where('jid', $jid)
-            ->where('bundleid', $bundleId)
-            ->with('sessions')
-            ->first();
+        if (!empty($bundles)) {
+            $preKeys = [];
 
-        if ($bundle && !in_array($deviceId, (array)$bundle->sessions->pluck('deviceid'))) {
-            $bundleSession = new BundleSession;
-            $bundleSession->bundle_id = $bundle->id;
-            $bundleSession->deviceid = $deviceId;
-            $bundleSession->save();
+            foreach ($bundles as $bundle) {
+                $preKeys[$bundle->bundleid] = $this->extractPreKey($bundle);
+            }
+
+            Toast::send($this->__('omemo.building_sessions'));
+            $this->rpc('ChatOmemo.handlePreKeys', $jid, $preKeys);
+        }
+    }
+
+    private function closeMissingSessions(string $jid, array $resolvedDeviceIds)
+    {
+        $devicesIds = array_values(
+            collect($resolvedDeviceIds)->diff(
+                $this->user->bundles()
+                        ->where('jid', $jid)
+                        ->whereIn('bundleid', $resolvedDeviceIds)
+                        ->pluck('bundleid')
+                        ->toArray())->toArray()
+        );
+
+        if (count($devicesIds) > 0) {
+            $this->rpc('ChatOmemo.closeSessions', $jid, $devicesIds);
         }
     }
 

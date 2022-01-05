@@ -12,7 +12,7 @@ class OMEMODevices extends Payload
         $from   = (string)$parent->attributes()->from;
         $list = $stanza->items->item->list;
 
-        if ($list && (string)$stanza->items->item->attributes()->id == 'current') {
+        if ($list) {
             $devicesIds = [];
 
             foreach ($list as $devices) {

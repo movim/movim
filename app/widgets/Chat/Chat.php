@@ -360,19 +360,17 @@ class Chat extends \Movim\Widget\Base
             $this->rpc('Chat.scrollToSeparator');
 
             // OMEMO
-            $sessions = [];
-            $bundles = $this->user->bundles()
-                ->where('jid', $jid)
-                ->with('sessions')
-                ->get();
-
-            foreach ($bundles as $bundle) {
-                $sessions[$bundle->bundleid] = $bundle->sessions->pluck('deviceid');
-            }
-
-            $this->rpc('Chat.setOmemoSessions',
+            $this->rpc(
+                'Chat.setBundlesIds',
                 $jid,
-                $sessions
+                $this->user->bundles()
+                     ->where('jid', $jid)
+                     ->select(['bundleid', 'jid'])
+                     ->get()
+                     ->mapToGroups(function ($tuple) {
+                        return [$tuple['jid'] => $tuple['bundleid']];
+                    })
+                    ->toArray()
             );
         }
     }
@@ -414,23 +412,23 @@ class Chat extends \Movim\Widget\Base
             // OMEMO
             if ($conference->isGroupChat()) {
                 $sessions = [];
-                $bundles = $this->user->bundles()
-                    ->whereIn('jid', function ($query) use ($room) {
-                        $query->select('jid')
-                            ->from('members')
-                            ->where('conference', $room);
-                    })
-                    ->with('sessions')
-                    ->get();
-
-                foreach ($bundles as $bundle) {
-                    $sessions[$bundle->bundleid] = $bundle->sessions->pluck('deviceid');
-                }
 
                 $this->rpc('Chat.setGroupChatMembers', $conference->members->pluck('jid')->toArray());
-                $this->rpc('Chat.setOmemoSessions',
+                $this->rpc(
+                    'Chat.setBundlesIds',
                     $room,
-                    $sessions
+                    $this->user->bundles()
+                         ->whereIn('jid', function ($query) use ($room) {
+                            $query->select('jid')
+                                ->from('members')
+                                ->where('conference', $room);
+                         })
+                         ->select(['bundleid', 'jid'])
+                         ->get()
+                         ->mapToGroups(function ($tuple) {
+                            return [$tuple['jid'] => $tuple['bundleid']];
+                        })
+                        ->toArray()
                 );
             }
         } else {

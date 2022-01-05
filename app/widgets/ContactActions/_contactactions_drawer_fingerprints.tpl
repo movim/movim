@@ -8,14 +8,8 @@
             </li>
             {loop="$fingerprints"}
                 <li>
-                    {$sessionsCount = $value->sessions->count()}
-
-                    <span class="primary icon {if="$sessionsCount > 0 && $value->sessions->pluck('deviceid')->contains($deviceid)"}blue{else}gray{/if}"
-                        title="{$c->__('omemo.sessions_built', $sessionsCount)}">
+                    <span class="primary icon gray" id="sessionicon_{$value->bundleid}">
                         <i class="material-icons">fingerprint</i>
-                        {if="$sessionsCount > 1"}
-                            <span class="counter alt" data-mucreceipts="true">{$sessionsCount}</span>
-                        {/if}
                     </span>
                     <span class="control">
                         <div class="checkbox">

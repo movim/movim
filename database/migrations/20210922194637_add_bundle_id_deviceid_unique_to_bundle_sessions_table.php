@@ -1,15 +1,15 @@
 <?php
 
 use Movim\Migration;
-use Illuminate\Database\Schema\Blueprint;
 
-use App\BundleSession;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Capsule\Manager as DB;
 
 class AddBundleIdDeviceIdUniqueToBundleSessionsTable extends Migration
 {
     public function up()
     {
-        BundleSession::truncate();
+        DB::table('bundle_sessions')->truncate();
 
         $this->schema->table('bundle_sessions', function (Blueprint $table) {
             $table->renameColumn('device_id', 'deviceid');

@@ -111,7 +111,6 @@ class ContactActions extends Base
     {
         $fingerprints = $this->user->bundles()
                                    ->where('jid', $jid)
-                                   ->with('sessions')
                                    ->with('capability.identities')
                                    ->get()
                                    ->keyBy('bundleid');

@@ -9,11 +9,6 @@ class Bundle extends Model
     public $incrementing = false;
     protected $primaryKey = ['user_id', 'jid', 'bundleid'];
 
-    public function sessions()
-    {
-        return $this->hasMany('App\BundleSession', 'bundle_id', 'id');
-    }
-
     public function capability()
     {
         return $this->hasOne('App\Info', 'node', 'node')
