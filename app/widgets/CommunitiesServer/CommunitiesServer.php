@@ -1,5 +1,6 @@
 <?php
 
+use Moxl\Xec\Action\Disco\Request;
 use Moxl\Xec\Action\Disco\Items;
 use Respect\Validation\Validator;
 use Moxl\Xec\Action\Pubsub\Create;
@@ -68,6 +69,9 @@ class CommunitiesServer extends \Movim\Widget\Base
             Toast::send($this->__('communitiesserver.disco_error'));
             return;
         }
+
+        $r = new Request;
+        $r->setTo($origin)->request();
 
         $r = new Items;
         $r->setTo($origin)->request();
