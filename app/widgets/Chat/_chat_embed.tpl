@@ -37,6 +37,8 @@
         <p class="line two" title="{$embed->title}">{$embed->title}</p>
         {if="!empty($embed->description)"}
             <p class="line" title="{$embed->description}">{$embed->description}</p>
+        {else}
+            <p class="line"></p>
         {/if}
         {if="$withlink"}
             <p class="line"><a href="#">{$embed->url}</a></p>

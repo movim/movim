@@ -446,7 +446,7 @@ function firstLetterCapitalize($string, bool $firstOnly = false): string
 /**
  * Return a clean string that can be used for HTML ids
  */
-function cleanupId(string $string = '', bool $withHash = false): string
+function cleanupId($string = '', bool $withHash = false): string
 {
     $id = 'id-' . strtolower(preg_replace('/([^a-z0-9]+)/i', '-', $string));
     return $withHash ? $id . '-' . substr(hash('sha256', $string), 0, 6) : $id;
