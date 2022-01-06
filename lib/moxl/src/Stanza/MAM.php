@@ -26,7 +26,7 @@ class MAM
 
     public static function get(
         $to = null,
-        $id,
+        $id = null,
         $jid = false,
         $start = false,
         $end = false,

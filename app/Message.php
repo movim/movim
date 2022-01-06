@@ -107,7 +107,7 @@ class Message extends Model
 
     public function getOmemoheaderAttribute()
     {
-        return unserialize($this->attributes['omemoheader']);
+        return $this->attributes['omemoheader'] !== null ? unserialize($this->attributes['omemoheader']) : null;
     }
 
     public function getJidfromAttribute()

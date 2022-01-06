@@ -599,7 +599,7 @@ class Chat extends \Movim\Widget\Base
      * @param string $message
      * @return void
      */
-    public function ajaxHttpDaemonCorrect(string $to, string $message = '', int $mid)
+    public function ajaxHttpDaemonCorrect(string $to, int $mid, string $message = '')
     {
         $replace = $this->user->messages()
                         ->where('mid', $mid)

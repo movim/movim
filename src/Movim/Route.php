@@ -111,10 +111,10 @@ class Route extends Base
             } elseif ($params != false) {
                 if (is_array($params)) {
                     foreach ($params as $value) {
-                        $uri .= '/' . rawurlencode($value);
+                        $uri .= '/' . rawurlencode($value ?? '');
                     }
                 } else {
-                    $uri .= '/' . rawurlencode($params);
+                    $uri .= '/' . rawurlencode($params ?? '');
                 }
             }
 

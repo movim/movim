@@ -7,7 +7,7 @@ use Moxl\Stanza\Vcard;
 
 class Set extends Action
 {
-    protected $_to;
+    protected $_to = false;
     protected $_data;
 
     public function request()

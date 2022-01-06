@@ -310,7 +310,8 @@ class Contact extends Model
 
     public function isOld(): bool
     {
-        return (strtotime($this->updated) < mktime( // We update the 1 day old vcards
+        return $this->updated !== null
+        && (strtotime($this->updated) < mktime( // We update the 1 day old vcards
                                     gmdate("H"),
             gmdate("i")-10,
             gmdate("s"),

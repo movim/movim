@@ -120,7 +120,7 @@ class Locale
      * @param $key The key to translate
      * @param $args Arguments to pass to sprintf
      */
-    public function translate(string $key, $args = false)
+    public function translate(string $key, $args = false): string
     {
         if (empty($key)) {
             return $key;

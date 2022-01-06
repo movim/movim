@@ -1,38 +1,38 @@
 {if="$me->hasPubsub()"}
 <form name="vcard4" id="vcard4form" class="flex">
     <div class="block">
-        <input dir="auto" type="text" name="fn" value="{$contact->fn}" placeholder="{$c->__('general.name')}">
+        <input dir="auto" type="text" name="fn" value="{$contact->fn ?? ''}" placeholder="{$c->__('general.name')}">
         <label for="fn">{$c->__('general.name')}</label>
     </div>
     <div class="block">
-        <input dir="auto" type="text" name="name" value="{$contact->name}" placeholder="{$c->__('general.nickname')}">
+        <input dir="auto" type="text" name="name" value="{$contact->name ?? ''}" placeholder="{$c->__('general.nickname')}">
         <label for="name">{$c->__('general.nickname')}</label>
     </div>
 
     <div class="block">
-        <input type="email" name="email" value="{$contact->email}" placeholder="{$c->__('general.email')}">
+        <input type="email" name="email" value="{$contact->email ?? ''}" placeholder="{$c->__('general.email')}">
         <label for="fn">{$c->__('general.email')}</label>
     </div>
 
     <div class="block">
-        <input type="date" name="date" value="{$contact->getDate()}" placeholder="YYYY-M-MDD-MM">
+        <input type="date" name="date" value="{$contact->getDate() ?? ''}" placeholder="YYYY-M-MDD-MM">
         <label for="date">{$c->__('general.date_of_birth')}</label>
     </div>
 
     <div class="block large">
-        <input type="url" name ="url" value="{$contact->url}" placeholder="https://mywebsite.com/">
+        <input type="url" name ="url" value="{$contact->url ?? ''}" placeholder="https://mywebsite.com/">
         <label for="url">{$c->__('general.website')}</label>
     </div>
 
     <div class="block large">
-        <textarea dir="auto" name="desc" id="desctext" placeholder="{$c->__('general.about')}" data-autoheight="true">{$desc}</textarea>
+        <textarea dir="auto" name="desc" id="desctext" placeholder="{$c->__('general.about')}" data-autoheight="true">{$desc ?? ''}</textarea>
         <label for="desc">{$c->__('general.about')}</label>
     </div>
 
     <div class="clear padded"></div>
 
     <div class="block">
-        <input dir="auto" type="text" name ="locality" class="content" value="{$contact->adrlocality}" placeholder="{$c->__('position.locality')}">
+        <input dir="auto" type="text" name ="locality" class="content" value="{$contact->adrlocality ?? ''}" placeholder="{$c->__('position.locality')}">
         <label for="url">{$c->__('position.locality')}</label>
     </div>
 

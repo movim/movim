@@ -295,7 +295,7 @@ class Visio extends Base
            ->request();
     }
 
-    public function ajaxTerminate($to, $reason = 'success', $sid)
+    public function ajaxTerminate($to, $sid, $reason = 'success')
     {
         Session::start()->remove('jingleSid');
 

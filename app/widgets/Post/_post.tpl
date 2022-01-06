@@ -198,9 +198,12 @@
             {loop="$post->pictures"}
                 <img class="big_picture"
                      type="{$value->type}"
-                     title="{$value->title}"
-                     alt="{$value->title}"
-                     src="{$value->href}"/>
+                     src="{$value->href}"
+                     {if="!empty($value)"}
+                         title="{$value->title}"
+                         alt="{$value->title}"
+                     {/if}
+                />
             {/loop}
         {/if}
         {autoescape="off"}

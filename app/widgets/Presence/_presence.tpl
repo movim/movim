@@ -1,4 +1,4 @@
-<li title="{$c->__('privacy.my_profile')}">
+<li>
     {$url = $me->getPhoto()}
     {if="$url"}
         <span

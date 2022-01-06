@@ -13,9 +13,9 @@
         <div class="placeholder">
             <i class="material-icons">chat</i>
             <h1>{$c->__('chat.new_title')}</h1>
-            <h4>{$c->___('chat.new_text')}</h4>
-            <h4>{$c->___('message.edit_help')}</h4>
-            <h4>{$c->___('message.emoji_help')}</h4>
+            <h4>{$c->__('chat.new_text')}</h4>
+            <h4>{$c->__('message.edit_help')}</h4>
+            <h4>{$c->__('message.emoji_help')}</h4>
         </div>
     </section>
 </div>

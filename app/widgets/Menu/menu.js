@@ -11,9 +11,6 @@ var Menu = {
                 case 'contacts':
                     Menu_ajaxHttpGetFeed(page);
                     break;
-                case 'blog':
-                    Menu_ajaxHttpGetMe(page);
-                    break;
             }
         } else {
             Menu_ajaxHttpGetAll(page);

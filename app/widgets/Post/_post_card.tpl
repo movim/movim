@@ -114,8 +114,11 @@
                             <img class="big_picture"
                                  type="{$value->type}"
                                  src="{$value->href|protectPicture}"
-                                 title="{$value->title}"
-                                 alt="{$value->title}">
+                                 {if="!empty($value->title)"}
+                                    title="{$value->title}"
+                                    alt="{$value->title}"
+                                 {/if}
+                            >
                         {/loop}
                     {/if}
                 </div>
@@ -138,9 +141,12 @@
                             {loop="$post->pictures"}
                                 <img class="big_picture"
                                      type="{$value->type}"
-                                     title="{$value->title}"
-                                     alt="{$value->title}"
-                                     src="{$value->href|protectPicture}">
+                                     src="{$value->href|protectPicture}"
+                                     {if="!empty($value->title)"}
+                                        title="{$value->title}"
+                                        alt="{$value->title}"
+                                     {/if}
+                                >
                             {/loop}
                         {/if}
                         {autoescape="off"}

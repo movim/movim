@@ -35,7 +35,9 @@
 
     <div>
         <p class="line two" title="{$embed->title}">{$embed->title}</p>
-        <p class="line" title="{$embed->description}">{$embed->description}</p>
+        {if="!empty($embed->description)"}
+            <p class="line" title="{$embed->description}">{$embed->description}</p>
+        {/if}
         {if="$withlink"}
             <p class="line"><a href="#">{$embed->url}</a></p>
         {/if}

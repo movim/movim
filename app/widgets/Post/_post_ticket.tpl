@@ -4,8 +4,10 @@
     {if="$post->picture != null"}
         <img class="main"
              src="{$post->picture->href|protectPicture}"
-             alt="{$post->picture->title}"
-             title="{$post->picture->title}">
+             {if="!empty($post->picture->title)"}
+                alt="{$post->picture->title}"
+                title="{$post->picture->title}"
+             {/if}>
         <span class="primary icon thumb color
             {if="$post->contact"}
                 {$post->contact->jid|stringToColor}

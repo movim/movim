@@ -421,7 +421,7 @@ function purifyHTML($string, $base = null): string
 /**
  * Check if a string is RTL
  */
-function isRTL($string): bool
+function isRTL(string $string): bool
 {
     return preg_match('/\p{Arabic}|\p{Hebrew}/u', $string);
 }
@@ -446,7 +446,7 @@ function firstLetterCapitalize($string, bool $firstOnly = false): string
 /**
  * Return a clean string that can be used for HTML ids
  */
-function cleanupId($string, $withHash = false)
+function cleanupId(string $string = '', bool $withHash = false): string
 {
     $id = 'id-' . strtolower(preg_replace('/([^a-z0-9]+)/i', '-', $string));
     return $withHash ? $id . '-' . substr(hash('sha256', $string), 0, 6) : $id;

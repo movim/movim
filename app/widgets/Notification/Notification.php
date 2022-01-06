@@ -79,7 +79,7 @@ class Notification extends Base
             RPC::call('Notification.desktop', $title, $body, $picture, $action, $execute);
         }
 
-        $notifs_key = $session->get('notifs_key');
+        $notifsKey = $session->get('notifsKey');
 
         if ($notifs == null) {
             $notifs = [];
@@ -89,7 +89,7 @@ class Notification extends Base
         $first = reset($explode);
 
         // What we receive is not what it's on the screen on Android
-        if ($key != null && $key != $notifs_key && $title != null) {
+        if ($key != null && $key != $notifsKey && $title != null) {
             if ($group != null) {
                 $action = $group;
             }
@@ -111,7 +111,7 @@ class Notification extends Base
         }
 
         // Don't notify
-        if ($notifs_key != null && $key == $notifs_key) {
+        if ($notifsKey != null && $key == $notifsKey) {
             return;
         }
 
@@ -153,7 +153,7 @@ class Notification extends Base
     public function getCurrent()
     {
         $session = Session::start();
-        return $session->get('notifs_key');
+        return $session->get('notifsKey');
     }
 
     /**
@@ -198,7 +198,9 @@ class Notification extends Base
     public function ajaxGet()
     {
         $session = Session::start();
-        $notifs = $session->get('notifs') ?? [];
+        $notifs = $session->get('notifs');
+
+        if ($notifs == false) $notifs = [];
 
         $notifs['chat'] = (\App\User::me())->unreads();
         RPC::call('Notification.refresh', $notifs);
@@ -218,11 +220,11 @@ class Notification extends Base
         $session = Session::start();
 
         // If the page was blurred
-        if ($session->get('notifs_key') === 'blurred') {
+        if ($session->get('notifsKey') === 'blurred') {
             $this->event('notification_counter_clear', explode('|', $key));
         }
 
-        $session->set('notifs_key', $key);
+        $session->set('notifsKey', $key);
     }
 
     private function prepareSnackbar($title, $body = null, $picture = null, $action = null, $execute = null)

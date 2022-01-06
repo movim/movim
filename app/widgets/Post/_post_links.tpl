@@ -12,7 +12,7 @@
             <div>
                 <p class="normal line">
                     <a target="_blank" href="{$value->href}" title="{$value->href}">
-                        {if="isset($value->title)"}
+                        {if="!empty($value->title)"}
                             {$value->title}
                         {else}
                             {$value->href}

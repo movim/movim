@@ -12,7 +12,7 @@ class Vcard
         \Moxl\API::request($xml);
     }
 
-    public static function set($to = false, $data)
+    public static function set($to, $data)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $vcard = $dom->createElementNS('vcard-temp', 'vCard');

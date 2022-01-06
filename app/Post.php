@@ -411,8 +411,8 @@ class Post extends Model
         }
 
         // Extract more tags if possible
-        $tagsContent = getHashtags(htmlspecialchars($this->title))
-                     + getHashtags(htmlspecialchars($this->contentraw));
+        $tagsContent = getHashtags(htmlspecialchars($this->title ?? ''))
+                     + getHashtags(htmlspecialchars($this->contentraw ?? ''));
         foreach ($tagsContent as $tag) {
             $tag = \App\Tag::firstOrCreateSafe([
                 'name' => strtolower((string)$tag)
@@ -647,7 +647,7 @@ class Post extends Model
 
     public function isRTL()
     {
-        return (isRTL($this->contentraw) || isRTL($this->title));
+        return (isRTL($this->contentraw ?? '') || isRTL($this->title));
     }
 
     public function isComment()

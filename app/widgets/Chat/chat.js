@@ -184,7 +184,7 @@ var Chat = {
                 if (text == '') {
                     Chat.disableSending();
                 } else {
-                    xhr = Chat_ajaxHttpDaemonCorrect(jid, text, textarea.dataset.mid);
+                    xhr = Chat_ajaxHttpDaemonCorrect(jid, textarea.dataset.mid, text);
                 }
 
                 xhr.timeout = timeout;

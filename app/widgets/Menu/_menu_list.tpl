@@ -22,37 +22,6 @@
     </ul>
 </header>
 
-{if="$type == 'me' && $c->getUser()->hasPubsub() && $page == 0"}
-    <ul class="list active on_desktop flex">
-        <a href="{$c->route('contact', $jid)}" class="block">
-            <li>
-                <span class="primary icon">
-                    <i class="material-icons">person</i>
-                </span>
-                <span class="control icon">
-                    <i class="material-icons">chevron_right</i>
-                </span>
-                <div>
-                    <p class="normal line">{$c->__('privacy.my_profile')}</p>
-                </div>
-            </li>
-        </a>
-        <a href="{$c->route('blog', $jid)}" target="_blank" class="block">
-            <li>
-                <span class="primary icon">
-                    <i class="material-icons">open_in_new</i>
-                </span>
-                <span class="control icon">
-                    <i class="material-icons">chevron_right</i>
-                </span>
-                <div>
-                    <p class="normal line">{$c->__('hello.blog_title')}</p>
-                </div>
-            </li>
-        </a>
-    </ul>
-{/if}
-
 {if="$items && $items->isNotEmpty()"}
     <div id="menu_refresh"></div>
     <div class="list card shadow" id="menu_wrapper">

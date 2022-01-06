@@ -143,16 +143,6 @@ class Menu extends Base
         $this->ajaxGet('feed', null, null, $page);
     }
 
-    public function ajaxHttpGetNode($server = null, $node = null, $page = 0)
-    {
-        $this->ajaxGet('node', $server, $node, $page);
-    }
-
-    public function ajaxHttpGetMe($page = 0)
-    {
-        $this->ajaxGet('me', null, null, $page);
-    }
-
     public function ajaxGet($type = 'all', $server = null, $node = null, $page = 0)
     {
         $html = $this->prepareList($type, $server, $node, $page);

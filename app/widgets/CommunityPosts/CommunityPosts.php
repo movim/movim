@@ -96,9 +96,11 @@ class CommunityPosts extends Base
           ->setNode($node)
           ->setPaging($this->_paging);
 
-        $r = (strpos($before, $this->_beforeAfter) === 0)
-            ? $r->setAfter(substr($before, strlen($this->_beforeAfter)))
-            : $r->setBefore($before);
+        if ($before !== null) {
+            $r = (strpos($before, $this->_beforeAfter) === 0)
+                ? $r->setAfter(substr($before, strlen($this->_beforeAfter)))
+                : $r->setBefore($before);
+        }
 
         if ($query) {
             $r->setQuery($query);
