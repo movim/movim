@@ -27,15 +27,15 @@ class Wrapper
     {
         $widgets_dir = scandir(APP_PATH ."widgets/");
 
-        foreach ($widgets_dir as $widget_dir) {
-            if (is_dir(APP_PATH ."widgets/".$widget_dir) &&
-                $widget_dir != '..' &&
-                $widget_dir != '.') {
-                if (in_array($widget_dir, $load)) {
-                    $this->loadWidget($widget_dir, true);
+        foreach ($widgets_dir as $widgetDir) {
+            if (is_dir(APP_PATH ."widgets/".$widgetDir) &&
+                $widgetDir != '..' &&
+                $widgetDir != '.') {
+                if (in_array($widgetDir, $load)) {
+                    $this->loadWidget($widgetDir, true);
                 }
 
-                array_push($this->_widgets, $widget_dir);
+                array_push($this->_widgets, $widgetDir);
             }
         }
     }
@@ -169,20 +169,20 @@ class Wrapper
                     foreach ($widget->events[$key] as $method) {
                         /*
                          * We check if the method need to be called if the
-                         * session notifs_key is set to a specific value
+                         * session notifsKey is set to a specific value
                          */
                         if (is_array($widget->filters)
                         && array_key_exists($key . '_' . $method, $widget->filters)) {
                             $session = Session::start();
-                            $notifs_key = $session->get('notifs_key');
+                            $notifsKey = $session->get('notifs_key');
 
-                            if ($notifs_key == 'blurred') {
+                            if ($notifsKey == 'blurred') {
                                 $widget->{$method}($data);
                             } else {
-                                $explode = explode('|', $notifs_key);
-                                $notif_key = reset($explode);
+                                $explode = explode('|', $notifsKey);
+                                $notifKey = reset($explode);
 
-                                if ($notif_key == $widget->filters[$key . '_' . $method]) {
+                                if ($notifKey == $widget->filters[$key . '_' . $method]) {
                                     $widget->{$method}($data);
                                 }
                             }

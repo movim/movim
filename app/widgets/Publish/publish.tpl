@@ -95,7 +95,7 @@
                             required
                             data-autoheight="true"
                             placeholder="{$c->__('publish.placeholder')}"
-                            type="text">{$draft->title}</textarea>
+                            type="text">{$draft->title ?? ''}</textarea>
                         <label for="desc">{$c->__('publish.title')} <span class="save"><i class="material-icons">check</i></span></label>
                     </div>
                     <div>
@@ -104,7 +104,7 @@
                             name="content"
                             placeholder="{$c->__('publish.content_text')}"
                             data-autoheight="true"
-                            >{$draft->content}</textarea>
+                            >{$draft->content ?? ''}</textarea>
                         <label for="desc">{$c->__('publish.content')} <span class="save"><i class="material-icons">check</i></span></label>
                     </div>
                 </form>

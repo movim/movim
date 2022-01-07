@@ -56,7 +56,9 @@ class PubsubAtom
         }
 
         $author = $dom->createElement('author');
-        $author->appendChild($dom->createElement('name', $this->name));
+        if ($this->name) {
+            $author->appendChild($dom->createElement('name', $this->name));
+        }
         $author->appendChild($dom->createElement('uri', 'xmpp:'.$this->jid));
         $entry->appendChild($author);
 
