@@ -20,10 +20,16 @@ var ContactActions = {
             store.getSessionState(jid + '.' + id).then(state => {
                 if (state) {
                     let icon = document.querySelector('span#sessionicon_' + id);
-                    icon.classList.remove('blue');
-                    icon.classList.add('blue');
+                    if (icon) {
+                        icon.classList.remove('blue');
+                        icon.classList.add('blue');
+                    }
+
                     let checkbox = document.querySelector('input[name=sessionstate_' + id + ']');
-                    checkbox.checked = true;
+
+                    if (checkbox) {
+                        checkbox.checked = true;
+                    }
                 }
             })
         });
