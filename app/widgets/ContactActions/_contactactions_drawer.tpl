@@ -100,7 +100,7 @@
                         {/if}
                     {/if}
 
-                    {if="strtotime($contact->date) != 0"}
+                    {if="$contact->date && strtotime($contact->date) != 0"}
                         <br />
                         <i class="material-icons icon-text">cake</i>
                         {$contact->date|strtotime|prepareDate:false}
