@@ -266,9 +266,22 @@ var Chat = {
 
         let build = false;
         for (const jid in bundlesIds) {
-            if (!bundlesIds[jid].every(bundleId => store.getSessionsIds(jid).includes(bundleId.toString()))) {
+            let storedSessionsIds = store.getSessionsIds(jid);
+
+            // We need to build new sessions
+            if (!bundlesIds[jid].every(bundleId => storedSessionsIds.includes(bundleId.toString()))) {
                 build = true;
                 break;
+            }
+
+            // We need to close a few sessions
+            if (storedSessionsIds.length > bundlesIds[jid].length) {
+                storedSessionsIds.forEach(storedSessionsId => {
+                    if (!bundlesIds[jid].includes(parseInt(storedSessionsId))) {
+                        var address = new libsignal.SignalProtocolAddress(jid, storedSessionsId);
+                        store.removeSession(address);
+                    }
+                });
             }
         }
 
