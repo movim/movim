@@ -138,11 +138,11 @@
 
     <ul class="tabs" id="navtabs"></ul>
 
-    {if="$picturesCount > 0"}
+    {if="isset($picturesCount) && $picturesCount > 0"}
         <div class="tabelem spin" title="{$c->__('general.pictures')}" id="contact_pictures"></div>
     {/if}
 
-    {if="$linksCount > 0"}
+    {if="isset($linksCount) && $linksCount > 0"}
         <div class="tabelem spin" title="{$c->__('general.links')}" id="contact_links"></div>
     {/if}
 

@@ -41,7 +41,7 @@ class JingletoSDP
     public function getSessionId()
     {
         $s = Session::start();
-        return substr(base_convert($s->get('jingleSid'), 30, 10), 0, 6);
+        return substr(base_convert($s->get('jingleSid') ?? '', 30, 10), 0, 6);
     }
 
     public function generate()

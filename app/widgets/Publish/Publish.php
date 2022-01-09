@@ -331,7 +331,7 @@ class Publish extends Base
             $draft->reply_id = null;
             $draft->save();
 
-            $this->rpc('MovimUtils.redirect', $this->route('publish', $draft->server, $draft->node, $draft->nodeid));
+            $this->rpc('MovimUtils.redirect', $this->route('publish', [$draft->server, $draft->node, $draft->nodeid]));
         }
 
     }

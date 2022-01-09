@@ -98,7 +98,7 @@ class Route extends Base
         return $this->_redirect;
     }
 
-    public static function urlize($page, $params = false, $get = [], $tab = false)
+    public static function urlize(string $page, $params = false, array $get = [], $tab = false)
     {
         $routes = (new Route)->_routes;
 

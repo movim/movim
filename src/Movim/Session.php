@@ -24,7 +24,7 @@ class Session
     /**
      * Gets a session variable. Returns false if doesn't exist.
      */
-    public function get($varname)
+    public function get(string $varname)
     {
         if (\array_key_exists($varname, $this->values)) {
             return $this->values[$varname]->value;

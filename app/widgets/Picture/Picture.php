@@ -51,7 +51,7 @@ class Picture extends Base
             $headers = preg_split('/[\r\n]+/', substr($response, 0, $header_size));
             $body = substr($response, $header_size);
 
-            if ($compress) {
+            if ($compress && $body) {
                 $picture = new MovimPicture;
                 $picture->fromBin($body);
                 $body = $picture->set(false, 'webp', 85);

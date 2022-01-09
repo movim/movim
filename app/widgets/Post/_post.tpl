@@ -199,7 +199,7 @@
                 <img class="big_picture"
                      type="{$value->type}"
                      src="{$value->href}"
-                     {if="!empty($value)"}
+                     {if="!empty($value->title)"}
                          title="{$value->title}"
                          alt="{$value->title}"
                      {/if}
@@ -237,7 +237,7 @@
         </ul>
     {/if}
 
-    {if="$post->openlink && (!defined('BASE_BOST') || $post->openlink->url.host != BASE_HOST)"}
+    {if="$post->openlink && $post->openlink->url && (!defined('BASE_HOST') || $post->openlink->url.host != BASE_HOST)"}
         <ul class="list middle active">
             <li onclick="MovimUtils.openInNew('{$post->openlink->href}')">
                 <span class="primary icon gray">
