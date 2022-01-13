@@ -8,16 +8,18 @@
             <p>{$c->__('rooms.empty_text2')}</p>
         </div>
     </li>
-    <li>
-        <span class="primary icon purple">
-            <i class="material-icons">help</i>
-        </span>
-        <span class="control icon active" onclick="RoomsUtils_ajaxSyncBookmark()">
-            <i class="material-icons">sync</i>
-        </span>
-        <div>
-            <p>{$c->__('rooms.empty_synchronize_title')}</p>
-            <p>{$c->__('rooms.empty_synchronize_text')}</p>
-        </div>
-    </li>
+    {if="!$c->getUser()->hasBookmarksConvertion()"}
+        <li>
+            <span class="primary icon purple">
+                <i class="material-icons">help</i>
+            </span>
+            <span class="control icon active" onclick="RoomsUtils_ajaxSyncBookmark()">
+                <i class="material-icons">sync</i>
+            </span>
+            <div>
+                <p>{$c->__('rooms.empty_synchronize_title')}</p>
+                <p>{$c->__('rooms.empty_synchronize_text')}</p>
+            </div>
+        </li>
+    {/if}
 </ul>

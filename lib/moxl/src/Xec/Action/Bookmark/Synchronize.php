@@ -58,4 +58,9 @@ class Synchronize extends Action
             $this->deliver();
         }
     }
+
+    public function error($stanza, $parent = false)
+    {
+        $this->deliver();
+    }
 }

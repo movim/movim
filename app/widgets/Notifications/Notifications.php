@@ -71,7 +71,7 @@ class Notifications extends Base
         ->where('aid', '!=', $this->user->id)->count();
 
         $session = Session::start();
-        $notifs = $session->get('activenotifs');
+        $notifs = $session->get('activenotifs', []);
 
         if (is_array($notifs)) {
             $count += count($notifs);
@@ -100,7 +100,7 @@ class Notifications extends Base
 
         // TODO : move in Moxl
         $session = Session::start();
-        $notifs = $session->get('activenotifs');
+        $notifs = $session->get('activenotifs', []);
 
         unset($notifs[$jid]);
 
@@ -122,7 +122,7 @@ class Notifications extends Base
 
         // TODO : move in Moxl
         $session = Session::start();
-        $notifs = $session->get('activenotifs');
+        $notifs = $session->get('activenotifs', []);
 
         unset($notifs[$jid]);
 
@@ -144,11 +144,10 @@ class Notifications extends Base
         $invitations = [];
 
         $session = Session::start();
-        $notifs = $session->get('activenotifs');
-        if (is_array($notifs)) {
-            foreach ($notifs as $key => $value) {
-                array_push($invitations, \App\Contact::firstOrNew(['id' =>$key]));
-            }
+        $notifs = $session->get('activenotifs', []);
+
+        foreach ($notifs as $key => $value) {
+            array_push($invitations, \App\Contact::firstOrNew(['id' =>$key]));
         }
 
         $notifs = \App\Post::whereIn('parent_id', function ($query) {

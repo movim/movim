@@ -41,18 +41,16 @@
                 </div>
                 <div>
                     <datalist id="group_list" style="display: none;">
-                        {if="is_array($groups)"}
-                            {loop="$groups"}
-                                <option value="{$value}"/>
-                            {/loop}
-                        {/if}
+                        {loop="$groups"}
+                            <option value="{$value}"/>
+                        {/loop}
                     </datalist>
                     <input
                         name="group"
                         list="group_list"
                         id="group"
                         placeholder="{$c->__('edit.group')}"
-                        value="{$contact->groupname}"/>
+                        value="{$contact->groupname ?? ''}"/>
                     <label for="group">{$c->__('edit.group')}</label>
                 </div>
             </form>

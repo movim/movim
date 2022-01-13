@@ -22,7 +22,7 @@ class Vcard4 extends Base
 
         $vcardform->assign('me', $this->user);
         $vcardform->assign('contact', $contact);
-        $vcardform->assign('desc', trim($contact->description));
+        $vcardform->assign('desc', trim($contact->description ?? ''));
         $vcardform->assign('countries', getCountries());
 
         $contact->isValidDate();

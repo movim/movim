@@ -22,7 +22,11 @@ class Roster
 
         $item = $dom->createElement('item');
         $item->setAttribute('jid', $to);
-        $item->setAttribute('name', $name);
+
+        if (!empty($name)) {
+            $item->setAttribute('name', $name);
+        }
+
         $roster->appendChild($item);
 
         if (!empty($group)) {

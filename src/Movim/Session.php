@@ -24,13 +24,13 @@ class Session
     /**
      * Gets a session variable. Returns false if doesn't exist.
      */
-    public function get(string $varname)
+    public function get(string $varname, $defaultValue = false)
     {
         if (\array_key_exists($varname, $this->values)) {
             return $this->values[$varname]->value;
         }
 
-        return false;
+        return $defaultValue;
     }
 
     /**

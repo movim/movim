@@ -43,7 +43,11 @@ class ContactActions extends Base
     {
         $view = $this->tpl();
         $view->assign('contact', App\Contact::firstOrNew(['id' => $jid]));
-        $view->assign('groups', $this->user->session->contacts()->select('group')->groupBy('group')->pluck('group')->toArray());
+        $view->assign('groups', $this->user->session->contacts()
+                                                    ->select('group')
+                                                    ->whereNotNull('group')
+                                                    ->distinct()
+                                                    ->pluck('group'));
 
         Dialog::fill($view->draw('_contactactions_add'));
     }

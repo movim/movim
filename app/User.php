@@ -167,6 +167,11 @@ class User extends Model
         return ($this->capability && $this->capability->hasFeature('urn:xmpp:mam:2'));
     }
 
+    public function hasBookmarksConvertion()
+    {
+        return ($this->capability && $this->capability->hasFeature('urn:xmpp:bookmarks:1#compat'));
+    }
+
     public function hasPubsub()
     {
         $configuration = Configuration::get();
