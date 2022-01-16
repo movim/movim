@@ -56,6 +56,10 @@
     order: 0;
 }
 
+#rooms_widget ul.toggle_show li div > p:first-child {
+    line-height: initial;
+}
+
 #rooms_widget ul.list.rooms:empty ~ ul.toggle_show,
 #rooms_widget ul.list.rooms:not(:empty):not(.all) ~ ul.toggle_show li span.primary i:first-child,
 #rooms_widget ul.list.rooms:not(:empty).all ~ ul.toggle_show li span.primary i:last-child,
