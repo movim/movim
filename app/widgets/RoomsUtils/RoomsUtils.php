@@ -39,6 +39,7 @@ class RoomsUtils extends Base
         $this->registerEvent('muc_createchannel_handle', 'onChatroomCreated');
         $this->registerEvent('muc_changeaffiliation_handle', 'onAffiliationChanged');
         $this->registerEvent('muc_changeaffiliation_errornotallowed', 'onAffiliationChangeUnauthorized');
+        $this->registerEvent('message_invite_error', 'onInviteError');
 
         $this->addjs('roomsutils.js');
     }
@@ -429,6 +430,11 @@ class RoomsUtils extends Base
             Toast::send($this->__('room.invited'));
             $this->rpc('Dialog_ajaxClear');
         }
+    }
+
+    public function onInviteError($packet)
+    {
+        Toast::send($packet->content);
     }
 
     /**

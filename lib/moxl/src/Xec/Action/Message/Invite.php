@@ -14,6 +14,20 @@ class Invite extends Action
 
     public function request()
     {
+        $this->store($this->_id);
         Message::invite($this->_to, $this->_id, $this->_invite);
+    }
+
+    public function handle($stanza, $parent = false)
+    {
+        $this->deliver();
+    }
+
+    public function error($id, $message = false)
+    {
+        if ($message) {
+            $this->pack($message);
+            $this->deliver();
+        }
     }
 }
