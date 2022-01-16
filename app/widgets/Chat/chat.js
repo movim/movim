@@ -229,7 +229,7 @@ var Chat = {
                     if (omemo) {
                         // TODO, disable the other risky features
                         omemo.then(omemoheader => {
-                            tempId = omemoheader.tempId = Math.random().toString(36).substr(2, 15);
+                            tempId = omemoheader.tempId = Math.random().toString(36).substring(2, 15);
                             Chat.tempMessages[tempId] = text;
 
                             xhr = Chat_ajaxHttpDaemonSendMessage(jid, tempId, muc, null, replyMid, mucReceipts, omemoheader);

@@ -133,12 +133,15 @@ var ChatOmemo = {
                 store.setContactState(jid, true);
             }
 
-            Chat.setOmemoState('yes');
-            Chat.disableSending();
+            let textarea = Chat.getTextarea();
+            if (textarea && textarea.dataset.jid == jid) {
+                Chat.setOmemoState('yes');
+                Chat.disableSending();
 
-            if (Chat.getTextarea() && Chat.getTextarea().value.length > 0) {
-                Chat.sendMessage();
-            }
+                if (Chat.getTextarea().value.length > 0) {
+                    Chat.sendMessage();
+                }
+             }
         });
     },
     handlePreKey: async function (jid, deviceId, preKey) {
@@ -169,7 +172,11 @@ var ChatOmemo = {
 
         promise.then(function onsuccess() {
             console.log('success ' + jid + ':' + deviceId);
-            Chat.setOmemoState('yes');
+
+            let textarea = Chat.getTextarea();
+            if (textarea && textarea.dataset.jid == jid) {
+                Chat.setOmemoState('yes');
+            }
         });
 
         promise.catch(function onerror(error) {
