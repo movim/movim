@@ -224,18 +224,6 @@ class Message extends Model
                 $this->body = (string)$stanza->body;
             }
 
-            # HipChat MUC specific cards
-            if (in_array(
-                explodeJid($this->jidfrom)['server'],
-                ['conf.hipchat.com', 'conf.btf.hipchat.com']
-            )
-            && $this->isMuc()
-            && $stanza->x
-            && $stanza->x->attributes()->xmlns == 'http://hipchat.com/protocol/muc#room'
-            && $stanza->x->card) {
-                $this->body = trim(html_entity_decode($this->body));
-            }
-
             $this->markable = (bool)($stanza->markable);
 
             if ($stanza->subject) {
