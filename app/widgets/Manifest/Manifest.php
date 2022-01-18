@@ -47,8 +47,8 @@ class Manifest extends Base
             ],
             'display'       => 'standalone',
             'orientation'   => 'portrait-primary',
-            'background-color' => '#3F51B5',
-            'theme-color'   => '#10151A'
+            'background_color' => '#3F51B5',
+            'theme_color'   => '#10151A'
         ];
 
         $this->view->assign('json', json_encode($infos));
