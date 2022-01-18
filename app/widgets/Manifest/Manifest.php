@@ -33,7 +33,8 @@ class Manifest extends Base
                 [
                     'src' => BASE_URI . 'theme/img/app/192.png',
                     'sizes' => '192x192',
-                    'type' => 'image/png'
+                    'type' => 'image/png',
+                    'purpose' => 'any'
                 ]
             ],
             'shortcuts'     => [

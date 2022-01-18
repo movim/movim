@@ -8,6 +8,7 @@
         <%meta%>
         <meta name="application-name" content="<?php echo APP_TITLE; ?>">
         <link rel="manifest" href="<?php echo \Movim\Route::urlize('manifest'); ?>" />
+        <link rel="apple-touch-icon" href="<?php $this->linkFile('img/app/192_square.png');?>"/>
         <link rel="icon" type="image/png" href="<?php $this->linkFile('img/app/128.png');?>" sizes="128x128">
         <script src="<?php echo
             \Movim\Route::urlize('system') .
