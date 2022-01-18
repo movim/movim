@@ -54,3 +54,12 @@ window.addEventListener('mouseover', onFocusedFunction);
 window.addEventListener('focus', onFocusedFunction);
 window.addEventListener('blur', function() { isFocused = false; });
 window.addEventListener('touchstart', function() { isTouch = true; }, { once: true });
+
+/**
+ * Register a service worker for the Progressive Web App
+ */
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+      .register('/scripts/movim_sw.js')
+      .then(() => { console.log('Service Worker Registered'); });
+  }
