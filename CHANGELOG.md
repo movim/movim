@@ -52,6 +52,7 @@ v0.20 (trunk)
 * Implement affiliations modification and ban/unban in Rooms
 * Introducing Material Chips in the design, use them for the tags
 * Prepare PHP 8.1 support
+* Movim can now be installed as a Progressive Web App
 
 v0.19
 ---------------------------
