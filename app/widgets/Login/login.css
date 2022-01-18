@@ -138,3 +138,7 @@ body main {
 #login_widget ul.invite span.primary + span.primary ~ p {
     padding-left: 12rem;
 }
+
+#login #pwa {
+    display: none;
+}

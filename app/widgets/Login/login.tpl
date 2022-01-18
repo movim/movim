@@ -165,20 +165,19 @@
                 </ul>
             {/if}
 
-            <ul class="list middle">
-                <a href="https://f-droid.org/packages/com.movim.movim/" target="_blank">
-                    <li class="block active">
-                        <span class="primary icon bubble green">
-                            <i class="material-icons">adb</i>
-                        </span>
-                        <div>
-                            <p class="line">{$c->__('apps.phone')}<p>
-                            <p class="all">
-                                {$c->__('apps.android')}
-                            </p>
-                        </div>
-                    </li>
-                </a>
+            <ul class="list middle" id="pwa">
+                <li class="block active">
+                    <span class="primary icon bubble gray">
+                        <i class="material-icons on_desktop">install_desktop</i>
+                        <i class="material-icons on_mobile">install_mobile</i>
+                    </span>
+                    <div>
+                        <p class="line">{$c->__('apps.install')}<p>
+                        <p class="all">
+                            {$c->__('apps.install_text')}
+                        </p>
+                    </div>
+                </li>
             </ul>
         </section>
     </div>

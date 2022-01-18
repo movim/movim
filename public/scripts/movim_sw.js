@@ -7,7 +7,7 @@ self.addEventListener('install', (e) => {
 
             // Fonts
             '/theme/fonts/MaterialIcons/font.css',
-            '/theme/fonts/MaterialIcons/MaterialIconsRegular.woff2',
+            '/theme/fonts/MaterialIcons/MaterialIcons-Regular.woff2',
             '/theme/fonts/Roboto/font.css',
             '/theme/fonts/Roboto/KFOlCnqEu92Fr1MmSU5fCRc4EsA.woff2',
             '/theme/fonts/Roboto/KFOlCnqEu92Fr1MmSU5fABc4EsA.woff2',

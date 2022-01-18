@@ -60,6 +60,6 @@ window.addEventListener('touchstart', function() { isTouch = true; }, { once: tr
  */
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker
-      .register('/scripts/movim_sw.js')
-      .then(() => { console.log('Service Worker Registered'); });
-  }
+        .register('/scripts/movim_sw.js')
+        .then(() => { console.log('Service Worker Registered'); });
+}
