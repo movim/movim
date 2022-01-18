@@ -29,6 +29,11 @@ class Manifest extends Base
                     'sizes' => '512x512',
                     'type' => 'image/png',
                     'purpose' => 'any'
+                ],
+                [
+                    'src' => BASE_URI . 'theme/img/app/192.png',
+                    'sizes' => '192x192',
+                    'type' => 'image/png'
                 ]
             ],
             'shortcuts'     => [
@@ -49,7 +54,7 @@ class Manifest extends Base
             'orientation'   => 'portrait-primary',
             'background_color' => '#3F51B5',
             'theme_color'   => '#10151A',
-            'start_url'     => '?login',
+            'start_url'     => '/?login',
         ];
 
         $this->view->assign('json', json_encode($infos));
