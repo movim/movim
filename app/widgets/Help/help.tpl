@@ -83,9 +83,6 @@
                 <p class="all">
                     {$c->__('apps.android')}
                     <br />
-                    <!--<a class="button flat" href="https://play.google.com/store/apps/details?id=com.movim.movim" target="_blank">
-                        <i class="material-icons">android</i> Play Store
-                    </a>-->
                     <a class="button flat" href="https://f-droid.org/packages/com.movim.movim/" target="_blank">
                         <i class="material-icons">adb</i> F-Droid
                     </a>
@@ -97,19 +94,6 @@
                     </a>
                     <a class="button flat" href="https://f-droid.org/packages/eu.siacs.conversations/" target="_blank">
                         <i class="material-icons">adb</i> F-Droid
-                    </a>
-                </p>
-            </div>
-        </li>
-        <li class="block">
-            <span class="primary icon bubble color purple">
-                <i class="material-icons">desktop_windows</i>
-            </span>
-            <div>
-                <p>{$c->__('apps.computer')}<p>
-                <p class="all">
-                    <a href="https://movim.eu/#apps" target="_blank">
-                        {$c->__('apps.computer_text')}
                     </a>
                 </p>
             </div>
