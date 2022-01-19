@@ -80,7 +80,8 @@ main:not(.enabled) #chat_widget {
     animation: none;
     opacity: 0;
     transform: scale(90%);
-    bottom: 7.25rem;
+    position: absolute;
+    top: -6.25rem;
     right: 0.75rem;
     pointer-events: none;
 }
