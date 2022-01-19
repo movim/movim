@@ -721,7 +721,7 @@ var Chat = {
         var discussion = Chat.getDiscussion();
         if (discussion == null) return;
 
-        var button = discussion.querySelector('.button.action');
+        var button = document.querySelector('#chat_widget #scroll_down.button.action');
 
         if (Chat.isScrolled()) {
             button.classList.remove('show');
