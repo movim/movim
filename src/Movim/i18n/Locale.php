@@ -163,6 +163,7 @@ class Locale
             return $string;
         } else {
             \Utils::info('Locale: Translation key "'.$key.'" not found');
+            return $arr[1];
         }
     }
 

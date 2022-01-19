@@ -165,7 +165,7 @@
                 </ul>
             {/if}
 
-            <ul class="list middle" id="pwa">
+            <ul class="list middle hide" id="pwa">
                 <li class="block active">
                     <span class="primary icon bubble gray">
                         <i class="material-icons on_desktop">install_desktop</i>

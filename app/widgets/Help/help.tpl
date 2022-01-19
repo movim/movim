@@ -68,32 +68,59 @@
     </ul>
     <br />
     <hr />
-    <ul class="list thick block">
+    <ul class="list thick block hide" id="pwa">
         <li class="subheader">
             <div>
-                <p>{$c->__('apps.question')}</p>
+                <p>{$c->__('apps.title')}</p>
+            </div>
+        </li>
+        <li class="block active">
+            <span class="primary icon gray">
+                <i class="material-icons on_desktop">install_desktop</i>
+                <i class="material-icons on_mobile">install_mobile</i>
+            </span>
+            <span class="control icon gray">
+                <i class="material-icons">chevron_right</i>
+            </span>
+            <div>
+                <p class="line">{$c->__('apps.install')}<p>
+                <p class="all">
+                    {$c->__('apps.install_text')}
+                </p>
+            </div>
+        </li>
+    </ul>
+    <ul class="list">
+        <li class="subheader">
+            <div>
+                <p>{$c->__('apps.recommend')}</p>
             </div>
         </li>
         <li class="block">
-            <span class="primary icon bubble color green">
+            <span class="primary icon green">
                 <i class="material-icons">android</i>
             </span>
             <div>
-                <p>{$c->__('apps.phone')}<p>
-                <p class="all">
-                    {$c->__('apps.android')}
-                    <br />
-                    <a class="button flat" href="https://f-droid.org/packages/com.movim.movim/" target="_blank">
-                        <i class="material-icons">adb</i> F-Droid
-                    </a>
-                    <br />
-                    {$c->__('apps.recommend')} Conversations
-                    <br />
+                <p class="normal line">
+                    Conversations
                     <a class="button flat" href="https://play.google.com/store/apps/details?id=eu.siacs.conversations" target="_blank">
                         <i class="material-icons">android</i> Play Store
                     </a>
                     <a class="button flat" href="https://f-droid.org/packages/eu.siacs.conversations/" target="_blank">
                         <i class="material-icons">adb</i> F-Droid
+                    </a>
+                </p>
+            </div>
+        </li>
+        <li class="block">
+            <span class="primary icon purple">
+                <i class="material-icons">computer</i>
+            </span>
+            <div>
+                <p class="normal line">
+                    Dino
+                    <a class="button flat" href="https://dino.im/" target="_blank">
+                        <i class="material-icons">open_in_new</i> Website
                     </a>
                 </p>
             </div>
@@ -107,7 +134,6 @@
                     <p class="normal">{$c->__('contact.title')}</p>
                 </div>
             </li>
-            <hr />
             {$addresses = array_unique(array_merge($info->adminaddresses, $info->abuseaddresses, $info->supportaddresses, $info->securityaddresses))}
             {loop="$addresses"}
                 <li class="block">

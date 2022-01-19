@@ -43,10 +43,8 @@
             <div>
                 <p>{$c->__('about.software')}</p>
                 <p class="all">
-                   Pako.js <a href="https://github.com/nodeca/pako">nodeca/pako
-                   </a> under MIT<br />
-                   Markdown - Michel Fortin <a href="http://michelf.ca/projects/php-markdown/">michelf.ca</a> ©Michel Fortin<br/>
-                   Template Engine - RainTPL - Federico Ulfo <a href="http://www.raintpl.com/">www.raintpl.com</a> under MIT<br/>
+                   CommonMark - <a href="https://commonmark.thephpleague.com/">league/commonmark</a> under BSD-3-Clause License <br/>
+                   Template Engine - RainTPL - Federico Ulfo - <a href="http://www.raintpl.com/">www.raintpl.com</a> under MIT<br/>
                    Embed - Oscar Otero <a href="https://github.com/oscarotero/Embed">GitHub Embed</a> under MIT<br/>
                    Database engine - Eloquent - <a href="https://github.com/illuminate/database">Illuminate/Database</a> under MIT<br/>
                    WebSocket and Daemon engine - ReactPHP -  <a href="http://socketo.me/">socketo.me</a> ©Chris Boden<br/>

@@ -63,3 +63,29 @@ if ('serviceWorker' in navigator) {
         .register('sw.js')
         .then(() => { console.log('Service Worker Registered'); });
 }
+
+
+movimAddOnload(function() {
+    /**
+     * Handle the PWA install button
+     */
+     const pwaButton = document.querySelector('#pwa');
+
+     window.addEventListener('beforeinstallprompt', (e) => {
+         e.preventDefault();
+         deferredPrompt = e;
+         pwaButton.style.display = 'initial';
+
+         pwaButton.addEventListener('click', () => {
+             deferredPrompt.prompt();
+
+             deferredPrompt.userChoice.then((choiceResult) => {
+                 if (choiceResult.outcome === 'accepted') {
+                     console.log('Movim App installed');
+                 }
+
+                 deferredPrompt = null;
+             });
+         });
+     });
+});

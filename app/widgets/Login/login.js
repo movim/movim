@@ -94,6 +94,7 @@ MovimWebsocket.register(function()
 movimAddOnload(function() {
     // We had the autocomplete system
     var login = document.querySelector('input#username');
+
     login.addEventListener('input', function() {
         if (this.value.indexOf('@') == -1) {
             document.querySelector('input#complete').value = this.value + '@' + Login.domain;
@@ -109,30 +110,4 @@ movimAddOnload(function() {
     login.addEventListener('blur', function() {
         this.value = document.querySelector('input#complete').value;
     });
-
-
-    /**
-     * Handle the PWA install button
-     */
-    const pwaButton = document.querySelector('#pwa');
-    pwaButton.style.display = 'none';
-
-    window.addEventListener('beforeinstallprompt', (e) => {
-        e.preventDefault();
-        deferredPrompt = e;
-        pwaButton.style.display = 'initial';
-
-        pwaButton.addEventListener('click', () => {
-            deferredPrompt.prompt();
-
-            deferredPrompt.userChoice.then((choiceResult) => {
-                if (choiceResult.outcome === 'accepted') {
-                    console.log('Movim App installed');
-                }
-
-                deferredPrompt = null;
-            });
-        });
-    });
-
 });
