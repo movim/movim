@@ -4,14 +4,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-19 23:54+0200\n"
+"POT-Creation-Date: 2022-01-20 21:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 3.3.2\n"
+"X-Generator: Translate Toolkit 3.4.1\n"
 
 #: [rooms]create
 msgid "Create a chatroom"
@@ -30,7 +30,7 @@ msgid "Join a custom chatroom"
 msgstr ""
 
 #: [rooms]empty_text1
-msgid "You don’t have any chatroom yet."
+msgid "You don’t have any chatrooms yet."
 msgstr ""
 
 #: [rooms]empty_text2
@@ -62,7 +62,7 @@ msgid "Gateway room"
 msgstr ""
 
 #: [rooms]show_all
-msgid "Show all the rooms"
+msgid "Show all rooms"
 msgstr ""
 
 #: [rooms]hide_disconnected
@@ -74,14 +74,16 @@ msgid "Destroy the room"
 msgstr ""
 
 #: [rooms]destroy_text
-msgid "Are you sure that you want to definitely destroy the following room?"
+msgid "Are you sure you want to permanently destroy the following room?"
 msgstr ""
 
 #: [rooms]owner
+msgctxt "[rooms]owner"
 msgid "Owner"
 msgstr ""
 
 #: [rooms]admin
+msgctxt "[rooms]admin"
 msgid "Admin"
 msgstr ""
 
@@ -98,7 +100,7 @@ msgid "Chatrooms"
 msgstr ""
 
 #: [chatrooms]id
-msgid "Chat Room ID"
+msgid "Chatroom ID"
 msgstr ""
 
 #: [chatrooms]name
@@ -133,6 +135,10 @@ msgstr ""
 msgid "\"%s rooms synchronized\""
 msgstr ""
 
+#: [chatrooms]not_synchronized
+msgid "No rooms to synchronize found"
+msgstr ""
+
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
 msgid "Users"
@@ -141,6 +147,10 @@ msgstr ""
 #: [chatrooms]members
 msgctxt "[chatrooms]members"
 msgid "Members"
+msgstr ""
+
+#: [chatrooms]banned
+msgid "Banned"
 msgstr ""
 
 #: [chatrooms]bad_nickname
@@ -153,6 +163,10 @@ msgstr ""
 
 #: [chatrooms]autojoin
 msgid "Join this chatroom on connect"
+msgstr ""
+
+#: [chatrooms]pinned
+msgid "Pin this chatroom"
 msgstr ""
 
 #: [chatrooms]destroyed
@@ -169,6 +183,22 @@ msgstr ""
 
 #: [chatrooms]notauthorized
 msgid "A password is required"
+msgstr ""
+
+#: [chatrooms]forbidden
+msgid "You are not allowed to join this chatroom"
+msgstr ""
+
+#: [chatrooms]jidmalformed
+msgid "Your nickname is not valid"
+msgstr ""
+
+#: [chatrooms]notacceptable
+msgid "Not acceptable"
+msgstr ""
+
+#: [chatrooms]serviceunavailable
+msgid "The chatroom occupant limit has been reached"
 msgstr ""
 
 #: [bookmarks]updated
@@ -238,6 +268,30 @@ msgctxt "[room]group_chat_members"
 msgid "Members"
 msgstr ""
 
+#: [room]banned_add
+msgid "Ban someone"
+msgstr ""
+
+#: [room]banned_remove
+msgid "Unban"
+msgstr ""
+
+#: [room]change_affiliation
+msgid "Change the user affiliation"
+msgstr ""
+
+#: [room]change_affiliation_unauthorized
+msgid "You are not authorized to change this affiliation"
+msgstr ""
+
+#: [room]affiliation
+msgid "Affiliation"
+msgstr ""
+
+#: [room]reason
+msgid "Reason"
+msgstr ""
+
 #: [room]channel
 msgid "Channel"
 msgstr ""
@@ -265,4 +319,46 @@ msgstr ""
 
 #: [room]notify_always
 msgid "Always notify"
+msgstr ""
+
+#: [room]pinned
+msgid "Pinned"
+msgstr ""
+
+#: [room]affiliation_owner
+msgctxt "[room]affiliation_owner"
+msgid "Owner"
+msgstr ""
+
+#: [room]affiliation_admin
+msgctxt "[room]affiliation_admin"
+msgid "Admin"
+msgstr ""
+
+#: [room]affiliation_member
+msgid "Member"
+msgstr ""
+
+#: [room]affiliation_none
+msgid "No affiliation"
+msgstr ""
+
+#: [room]affiliation_owner_changed
+msgid "User granted as owner"
+msgstr ""
+
+#: [room]affiliation_admin_changed
+msgid "User granted as admin"
+msgstr ""
+
+#: [room]affiliation_member_changed
+msgid "User granted as member"
+msgstr ""
+
+#: [room]affiliation_outcast_changed
+msgid "User banned"
+msgstr ""
+
+#: [room]affiliation_none_changed
+msgid "Affiliation removed for the user"
 msgstr ""

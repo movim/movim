@@ -7,6 +7,7 @@
 # Nobita Nobi <896876269@qq.com>, 2020
 # Finn Dean <vicdorke@gmail.com>, 2020
 # Wangrui Enderex <jwr030521@gmail.com>, 2016
+# z h, 2021
 # Zhao Rui <renyuneyun@gmail.com>, 2015
 # 三三 <gihub@mail.best33.com>, 2016
 # ヨイツの賢狼ホロ, 2018
@@ -33,6 +34,8 @@
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/ChatOmemo/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -117,16 +120,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-19 23:54+0200\n"
-"PO-Revision-Date: 2021-07-31 13:24+0000\n"
-"Last-Translator: Transifex Bot <>\n"
+"POT-Creation-Date: 2022-01-20 21:05+0200\n"
+"PO-Revision-Date: 2022-01-20 19:38+0000\n"
+"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Translate Toolkit 3.3.2\n"
+"X-Generator: Translate Toolkit 3.4.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -310,11 +313,11 @@ msgstr "重新输入密码"
 
 #: [disableregistration]title
 msgid "Disable the XMPP registration feature"
-msgstr ""
+msgstr "禁用XMPP注册功能"
 
 #: [disableregistration]text
 msgid "Remove the XMPP registration flow and buttons from the interface"
-msgstr ""
+msgstr "从界面中删除XMPP注册流和按钮"
 
 #: [whitelist]title
 msgid "Whitelisted XMPP Servers"
@@ -344,6 +347,14 @@ msgstr "描述"
 #: [information]description_placeholder
 msgid "General description of the instance"
 msgstr "实例的一般描述"
+
+#: [information]banner
+msgid "Main banner"
+msgstr ""
+
+#: [information]banner_info
+msgid "Ensure that the picture is not too large and can be reached from any webpages"
+msgstr ""
 
 #: [information]info1
 msgid "This message will be displayed on the login page. It can be used to link the Terms and Conditions of your Movim instance for example."
@@ -380,35 +391,35 @@ msgstr "选择一个国家"
 
 #: [tenor]title
 msgid "Tenor integration"
-msgstr ""
+msgstr "Tenor集成"
 
 #: [tenor]label
 msgid "Your Tenor API Key"
-msgstr ""
+msgstr "您的Tenor API密钥"
 
 #: [tenor]info1
 msgid "Movim integrates the Tenor API to allow GIF search and publication in Chat"
-msgstr ""
+msgstr "Movim集成了Tenor API，允许在聊天室中搜索和发布GIF"
 
 #: [tenor]info2
 msgid "Access Tenor and get your API key"
-msgstr ""
+msgstr "访问Tenor并获取API密钥"
 
 #: [firebase]title
 msgid "Firebase Integration"
-msgstr ""
+msgstr "Firebase集成"
 
 #: [firebase]label
 msgid "Your Firebase Authorization Key"
-msgstr ""
+msgstr "您的Firebase授权密钥"
 
 #: [firebase]info1
 msgid "Movim can send Push Notifications to the Movim Android app using Firebase"
-msgstr ""
+msgstr "Movim可以使用Firebase向Movim Android应用程序发送推送通知"
 
 #: [firebase]info2
 msgid "Go to the Firebase panel to configure and generate your Authorization key"
-msgstr ""
+msgstr "转到Firebase面板配置并生成您的授权密钥"
 
 #: [log]empty
 msgid "Empty"
@@ -428,7 +439,7 @@ msgstr "会话"
 
 #: [adminsessions]text
 msgid "Currently connected users on the pod"
-msgstr ""
+msgstr "pod上当前已连接的用户"
 
 #: [admin]compatibility
 msgid "General Overview"
@@ -436,7 +447,7 @@ msgstr "概览"
 
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim’s %s directory"
-msgstr ""
+msgstr "Movim服务器的%s 读写权限目录"
 
 #: [compatibility]websocket
 msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
@@ -464,23 +475,23 @@ msgstr "XMPP"
 
 #: [api]info
 msgid "Here you can register your pod on the official %sMovim API%s"
-msgstr "在这里你可以在官方的 %s Movim API %s 中注册你的容器"
+msgstr "在这里你可以在官方的 %s Movim API %s 中注册你的pod"
 
 #: [api]register
 msgid "Your pod is not registered on the API"
-msgstr "你的容器还没注册在接口上."
+msgstr "你的pod还没注册在API上."
 
 #: [api]registered
 msgid "Your pod is registered on the API"
-msgstr "你的容器已注册在接口上."
+msgstr "你的pod已注册在API上."
 
 #: [api]wait
 msgid "Your pod is not yet validated"
-msgstr "你的容器还没验证"
+msgstr "您的pod还没验证"
 
 #: [api]validated
 msgid "Your pod is validated"
-msgstr "你的容器已验证"
+msgstr "您的pod已验证"
 
 #: [api]unregister
 msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
@@ -504,7 +515,7 @@ msgstr "摄像头"
 
 #: [avatar]cheese
 msgid "Cheese!"
-msgstr "茄子"
+msgstr "微笑:D"
 
 #: [avatar]snapshot
 msgid "Take a webcam snapshot"
@@ -524,15 +535,15 @@ msgstr "暂无头像"
 
 #: [avatar]change
 msgid "Change my avatar"
-msgstr ""
+msgstr "更换头像"
 
 #: [avatar]upload_new
 msgid "Upload a new picture"
-msgstr ""
+msgstr "上传新图片"
 
 #: [blog]title [feed]title
 msgid "%s’s feed"
-msgstr ""
+msgstr "来自%s"
 
 #: [blog]private
 msgid "This content is private, please login to see it"
@@ -554,7 +565,7 @@ msgstr "撤回"
 msgid "Your message could not be sent, please try again later"
 msgstr "无法发送消息，请稍后再试"
 
-#: [message]encrypted
+#: [message]encrypted [omemo]encrypted
 msgid "Encrypted message"
 msgstr "消息已加密"
 
@@ -660,6 +671,10 @@ msgstr "清除历史"
 msgid "You are going to delete %s messages, are you sure?"
 msgstr "确定删除%s条消息吗？"
 
+#: [chat]action_impossible_encrypted
+msgid "Action impossible in encrypted chats"
+msgstr ""
+
 #: [chatroom]members
 msgid "Members"
 msgstr "成员"
@@ -692,6 +707,58 @@ msgstr "主题已改变"
 msgid "Administration"
 msgstr "管理"
 
+#: [omemo]fingerprints_title
+msgid "Fingerprints"
+msgstr ""
+
+#: [omemo]fingerprints
+msgid "OMEMO Fingerprints"
+msgstr ""
+
+#: [omemo]generating_bundle
+msgid "Generating the encryption keys, please wait…"
+msgstr ""
+
+#: [omemo]generated_bundle
+msgid "Encryption keys generated"
+msgstr ""
+
+#: [omemo]resolving_devices
+msgid "Resolving OMEMO devices"
+msgstr ""
+
+#: [omemo]building_sessions
+msgid "Building encryption sessions"
+msgstr ""
+
+#: [omemo]building_own_sessions
+msgid "Building own encryption sessions"
+msgstr ""
+
+#: [omemo]encrypted_disabled
+msgid "Encryption disabled"
+msgstr ""
+
+#: [omemo]encrypted_loading
+msgid "Send a message to build the encrypted session"
+msgstr ""
+
+#: [omemo]enable_contact
+msgid "Enabling encryption for the contact"
+msgstr ""
+
+#: [omemo]disable_contact
+msgid "Disabling encryption for the contact"
+msgstr ""
+
+#: [omemo]last_activity
+msgid "Last activity"
+msgstr ""
+
+#: [omemo]sessions_built
+msgid "%s sessions built"
+msgstr ""
+
 #: [chats]empty_title
 msgid "No chats yet…"
 msgstr "暂无聊天..."
@@ -714,7 +781,7 @@ msgstr "图片"
 
 #: [chats]video
 msgid "Video"
-msgstr ""
+msgstr "视频"
 
 #: [button]chat
 msgid "Chat"
@@ -742,7 +809,7 @@ msgstr "社群服务器"
 
 #: [communities]servers_text
 msgid "Discover the Communities by servers"
-msgstr ""
+msgstr "通过服务器发现社区"
 
 #: [communities]disco
 msgid "Communities server discovered"
@@ -754,7 +821,7 @@ msgstr "此服务器不存在"
 
 #: [communitiesinteresting]about
 msgid "Communities you might like"
-msgstr ""
+msgstr "你可能喜欢的社区"
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -796,9 +863,13 @@ msgstr "暂時找不到社区"
 msgid "Subscriptions"
 msgstr "订阅"
 
+#: [communityaffiliation]public_subscriptions
+msgid "Public subscriptions"
+msgstr ""
+
 #: [communityaffiliation]subscriptions_text
 msgid "My Communities subscriptions"
-msgstr ""
+msgstr "我的社区订阅"
 
 #: [communityaffiliation]deleted
 msgid "Community deleted successfully"
@@ -938,8 +1009,8 @@ msgid "Here you will be able to manage all your subscriptions."
 msgstr "您可以在这里管理您的所有订阅"
 
 #: [communitysubscriptions]empty_text2
-msgid "You don’t have any group subscriptions yet."
-msgstr "尚未订阅任何群组。"
+msgid "You don’t have any community subscriptions yet."
+msgstr ""
 
 #: [config]general
 msgid "General"
@@ -1113,6 +1184,10 @@ msgstr "是在听"
 msgid "Pictures"
 msgstr "图片"
 
+#: [general]links
+msgid "Links"
+msgstr ""
+
 #: [position]legend
 msgid "Geographic Position"
 msgstr "地理位置"
@@ -1131,7 +1206,7 @@ msgstr "心情"
 
 #: [mood]im
 msgid "I’m "
-msgstr ""
+msgstr "我是"
 
 #: [listen]title
 msgid "Listening"
@@ -1142,6 +1217,10 @@ msgid "Last seen"
 msgstr "最后一次访问"
 
 #: [clients]title
+msgid "Clients"
+msgstr ""
+
+#: [clients]title_full
 msgid "Clients information"
 msgstr "客户端信息"
 
@@ -1151,7 +1230,7 @@ msgstr "最近注册的"
 
 #: [explore]explore
 msgid "Find some new contacts"
-msgstr ""
+msgstr "寻找一些新的联系人"
 
 #: [edit]title [button]edit
 msgid "Edit"
@@ -1219,11 +1298,11 @@ msgstr "该联系人在你的联系人列表中，但两账户之间没有订阅
 
 #: [contactdatapublic]no_data
 msgid "No public data found"
-msgstr ""
+msgstr "找不到数据"
 
 #: [draw]title
 msgid "Draw"
-msgstr ""
+msgstr "照片"
 
 #: [faq]title
 msgid "Frequently Asked Questions"
@@ -1257,29 +1336,21 @@ msgstr "联系人在哪里？"
 msgid "By opening the search panel."
 msgstr "通过打开搜索面板。"
 
-#: [apps]question
-msgid "Have you already tried Movim on other platforms?"
-msgstr "你是否已经在其他平台上尝试过 Movim了？"
+#: [apps]title
+msgid "Applications"
+msgstr ""
 
-#: [apps]phone
-msgid "Apps for your phone"
-msgstr "手机上的应用"
+#: [apps]install
+msgid "Movim App"
+msgstr ""
 
-#: [apps]android
-msgid "Try out our official Android app"
-msgstr "尝试我们的官方 Android 应用"
+#: [apps]install_text
+msgid "Install Movim on your device"
+msgstr ""
 
 #: [apps]recommend
 msgid "We also recommend"
 msgstr "我们也推荐使用"
-
-#: [apps]computer
-msgid "Apps for your computer"
-msgstr "电脑上的应用"
-
-#: [apps]computer_text
-msgid "Our official apps are available on our website"
-msgstr "我们的官方应用可以从我们的网站获取"
 
 #: [contact]title
 msgid "Administrators & Contact"
@@ -1367,11 +1438,11 @@ msgstr "XMPP鉴别错误"
 
 #: [connection]socket_connected
 msgid "Connected to the server"
-msgstr ""
+msgstr "已连接到服务器"
 
 #: [connection]authenticated
 msgid "Authenticated to the server"
-msgstr ""
+msgstr "对服务器进行身份验证"
 
 #: [form]username
 msgid "My address"
@@ -1379,11 +1450,11 @@ msgstr "用户名"
 
 #: [form]whitelist_info
 msgid "Login with accounts from these servers"
-msgstr ""
+msgstr "使用来自这些服务器的帐户登录"
 
 #: [form]connect_info
 msgid "Login using any XMPP account or create a new one"
-msgstr ""
+msgstr "使用任何XMPP帐户登录或创建新帐户"
 
 #: [form]connected
 msgid "Connected"
@@ -1399,7 +1470,7 @@ msgstr "%s 邀请你加入一个聊天室"
 
 #: [form]pod_admins
 msgid "Administrated by"
-msgstr ""
+msgstr "管理员更改"
 
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
@@ -1593,14 +1664,6 @@ msgstr "喜欢了你发布的內容"
 msgid "Commented"
 msgstr "评论"
 
-#: [hello]blog_title
-msgid "Visit your public blog"
-msgstr "访问你的公开博客"
-
-#: [hello]blog_text
-msgid "See your public posts and share them with all your contacts"
-msgstr "查看你的公开帖并与你所有联系人分享"
-
 #: [hello]contact_post
 msgid "Contact post"
 msgstr "联系人帖子"
@@ -1659,11 +1722,11 @@ msgstr "确认登出？"
 
 #: [preview]link_copied
 msgid "Link copied to clipboard"
-msgstr ""
+msgstr "链接复制到剪贴板"
 
 #: [publish]placeholder [publishbrief]placeholder
 msgid "What’s new?"
-msgstr ""
+msgstr "有什么新鲜事吗?"
 
 #: [publish]post [publishbrief]post
 msgid "Write a post"
@@ -1703,7 +1766,7 @@ msgstr "帖子标题"
 
 #: [publish]content [publishbrief]content
 msgid "Markdown content"
-msgstr ""
+msgstr "Markdown内容"
 
 #: [publish]valid_url [publishbrief]valid_url
 msgid "Please enter a valid URL"
@@ -1735,7 +1798,7 @@ msgstr "Markdown 语法手册"
 
 #: [rooms]create
 msgid "Create a chatroom"
-msgstr ""
+msgstr "创建一个聊天室"
 
 #: [rooms]edit
 msgid "Edit a chatroom"
@@ -1743,15 +1806,15 @@ msgstr "修改聊天室"
 
 #: [rooms]join
 msgid "Join a chatroom"
-msgstr ""
+msgstr "加入一个聊天室"
 
 #: [rooms]join_custom
 msgid "Join a custom chatroom"
-msgstr ""
+msgstr "加入一个自定义聊天室"
 
 #: [rooms]empty_text1
-msgid "You don’t have any chatroom yet."
-msgstr "您还没有任何聊天室。"
+msgid "You don’t have any chatrooms yet."
+msgstr ""
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
@@ -1759,7 +1822,7 @@ msgstr "点击新建按钮来添加一个。"
 
 #: [rooms]empty_synchronize_title
 msgid "You had some rooms previously listed?"
-msgstr ""
+msgstr "你有一些之前列好的房间?"
 
 #: [rooms]empty_synchronize_text
 msgid "Try to synchronize them to the new room bookmarking system"
@@ -1779,11 +1842,11 @@ msgstr "标准房间"
 
 #: [rooms]gateway_room
 msgid "Gateway room"
-msgstr ""
+msgstr "局域网房间"
 
 #: [rooms]show_all
-msgid "Show all the rooms"
-msgstr "显示所有房间"
+msgid "Show all rooms"
+msgstr ""
 
 #: [rooms]hide_disconnected
 msgid "Hide disconnected rooms"
@@ -1794,16 +1857,18 @@ msgid "Destroy the room"
 msgstr "销毁房间"
 
 #: [rooms]destroy_text
-msgid "Are you sure that you want to definitely destroy the following room?"
-msgstr "确定销毁下列房间？"
+msgid "Are you sure you want to permanently destroy the following room?"
+msgstr ""
 
-#: [rooms]owner [affiliation]owner
+#: [rooms]owner
+msgctxt "[rooms]owner"
 msgid "Owner"
-msgstr "所有者"
+msgstr ""
 
 #: [rooms]admin
+msgctxt "[rooms]admin"
 msgid "Admin"
-msgstr "管理员"
+msgstr ""
 
 #: [rooms]visitor
 msgid "Visitor"
@@ -1818,8 +1883,8 @@ msgid "Chatrooms"
 msgstr "聊天室"
 
 #: [chatrooms]id
-msgid "Chat Room ID"
-msgstr "聊天室 ID"
+msgid "Chatroom ID"
+msgstr ""
 
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
@@ -1837,14 +1902,22 @@ msgstr "用户名为空"
 msgid "%s rooms synchronized"
 msgstr "已同步 %s 个房间"
 
+#: [chatrooms]not_synchronized
+msgid "No rooms to synchronize found"
+msgstr ""
+
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
 msgid "Users"
-msgstr ""
+msgstr "用户"
 
 #: [chatrooms]members
 msgctxt "[chatrooms]members"
 msgid "Members"
+msgstr "成员"
+
+#: [chatrooms]banned
+msgid "Banned"
 msgstr ""
 
 #: [chatrooms]bad_nickname
@@ -1858,6 +1931,10 @@ msgstr "用户名已被使用"
 #: [chatrooms]autojoin
 msgid "Join this chatroom on connect"
 msgstr "在连线后加入此聊天室"
+
+#: [chatrooms]pinned
+msgid "Pin this chatroom"
+msgstr ""
 
 #: [chatrooms]destroyed
 msgid "Room destroyed"
@@ -1874,6 +1951,22 @@ msgstr "聊天室不存在"
 #: [chatrooms]notauthorized
 msgid "A password is required"
 msgstr "需要密码"
+
+#: [chatrooms]forbidden
+msgid "You are not allowed to join this chatroom"
+msgstr ""
+
+#: [chatrooms]jidmalformed
+msgid "Your nickname is not valid"
+msgstr ""
+
+#: [chatrooms]notacceptable
+msgid "Not acceptable"
+msgstr ""
+
+#: [chatrooms]serviceunavailable
+msgid "The chatroom occupant limit has been reached"
+msgstr ""
 
 #: [bookmarks]updated
 msgid "Bookmarks updated"
@@ -1925,33 +2018,57 @@ msgstr "此聊天室的参与者可以看到彼此的个人资料"
 
 #: [room]group_chat
 msgid "Group Chat"
-msgstr ""
+msgstr "聊天群"
 
 #: [room]group_chat_text
 msgid "Private group chat with invited members"
-msgstr ""
+msgstr "与受邀成员进行私人群组聊天"
 
 #: [room]group_chat_add
 msgid "Add a new member"
-msgstr ""
+msgstr "添加成员"
 
 #: [room]group_chat_members
 msgctxt "[room]group_chat_members"
 msgid "Members"
+msgstr "成员"
+
+#: [room]banned_add
+msgid "Ban someone"
+msgstr ""
+
+#: [room]banned_remove
+msgid "Unban"
+msgstr ""
+
+#: [room]change_affiliation
+msgid "Change the user affiliation"
+msgstr ""
+
+#: [room]change_affiliation_unauthorized
+msgid "You are not authorized to change this affiliation"
+msgstr ""
+
+#: [room]affiliation
+msgid "Affiliation"
+msgstr ""
+
+#: [room]reason
+msgid "Reason"
 msgstr ""
 
 #: [room]channel
 msgid "Channel"
-msgstr ""
+msgstr "频道"
 
 #: [room]channel_users
 msgctxt "[room]channel_users"
 msgid "Users"
-msgstr ""
+msgstr "用户"
 
 #: [room]channel_text
 msgid "Public channel that can be publicly discoverable and joinable"
-msgstr ""
+msgstr "可公开发现和可连接的公共通道"
 
 #: [room]notify_never
 msgid "Never notify"
@@ -1965,17 +2082,59 @@ msgstr "被提及時通知"
 msgid "Always notify"
 msgstr "总是通知"
 
+#: [room]pinned
+msgid "Pinned"
+msgstr ""
+
+#: [room]affiliation_owner
+msgctxt "[room]affiliation_owner"
+msgid "Owner"
+msgstr ""
+
+#: [room]affiliation_admin
+msgctxt "[room]affiliation_admin"
+msgid "Admin"
+msgstr ""
+
+#: [room]affiliation_member [affiliation]member
+msgid "Member"
+msgstr "成员"
+
+#: [room]affiliation_none [affiliation]no-aff
+msgid "No affiliation"
+msgstr "没有关系"
+
+#: [room]affiliation_owner_changed
+msgid "User granted as owner"
+msgstr ""
+
+#: [room]affiliation_admin_changed
+msgid "User granted as admin"
+msgstr ""
+
+#: [room]affiliation_member_changed
+msgid "User granted as member"
+msgstr ""
+
+#: [room]affiliation_outcast_changed
+msgid "User banned"
+msgstr ""
+
+#: [room]affiliation_none_changed
+msgid "Affiliation removed for the user"
+msgstr ""
+
 #: [roomsexplore]no_local
 msgid "No chatrooms found locally"
-msgstr ""
+msgstr "本地没有聊天室"
 
 #: [roomsexplore]global_title
 msgid "Global search"
-msgstr ""
+msgstr "全球搜索"
 
 #: [roomsexplore]no_global
 msgid "No chatrooms found globally"
-msgstr ""
+msgstr "全球没有聊天室"
 
 #: [search]keyword
 msgid "What are you looking for?"
@@ -1987,7 +2146,7 @@ msgstr "使用 Ctrl + M 打开我"
 
 #: [search]placeholder
 msgid "#cats, username@server.com, John…"
-msgstr ""
+msgstr "#cats, username@server.com, John…"
 
 #: [search]no_contacts_title
 msgid "No contacts yet?"
@@ -1995,7 +2154,7 @@ msgstr "暂无联系人？"
 
 #: [search]no_contacts_text
 msgid "Find one by searching for their name or id"
-msgstr ""
+msgstr "通过搜索他们的名字或id找到一个"
 
 #: [search]tags
 msgid "Tags"
@@ -2007,7 +2166,7 @@ msgstr "显示所有联系人"
 
 #: [sendto]attach
 msgid "Attach to a blog publication"
-msgstr ""
+msgstr "附在博客出版物上"
 
 #: [sendto]contact
 msgid "Send it to a contact"
@@ -2019,7 +2178,7 @@ msgstr "在聊天室中分享"
 
 #: [sendto]shared_with
 msgid "Post shared"
-msgstr ""
+msgstr "私密"
 
 #: [sendto]shared_contact
 msgid "Post shared with your contact"
@@ -2039,7 +2198,7 @@ msgstr "统计"
 
 #: [sticker]title
 msgid "Stickers"
-msgstr ""
+msgstr "贴纸"
 
 #: [sticker]sent
 msgid "A sticker has been sent using Movim"
@@ -2047,15 +2206,15 @@ msgstr "通过 Movim 发送了一张贴纸"
 
 #: [sticker]keyword
 msgid "Type a keyword"
-msgstr ""
+msgstr "输入一个关键字"
 
 #: [sticker]gif_title
 msgid "Find a GIF"
-msgstr ""
+msgstr "找到一个GIF图片"
 
 #: [sticker]gif_text
 msgid "Powered by Tenor"
-msgstr ""
+msgstr "由Tenor提供支持"
 
 #: [subscribe]info
 msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
@@ -2207,7 +2366,7 @@ msgstr "响铃中"
 
 #: [visio]declined
 msgid "declined"
-msgstr ""
+msgstr "拒绝"
 
 #: [visio]in_call
 msgid "in call"
@@ -2243,7 +2402,7 @@ msgstr "或者"
 
 #: [global]change_pod
 msgid "Switch to another pod"
-msgstr ""
+msgstr "切换到另一个pod"
 
 #: [page]communities
 msgid "Communities"
@@ -2497,10 +2656,14 @@ msgstr "发给"
 
 #: [button]more
 msgid "More"
-msgstr ""
+msgstr "更多"
 
 #: [button]copy_link
 msgid "Copy Link"
+msgstr "复制链接"
+
+#: [input]optional
+msgid "Optional"
 msgstr ""
 
 #: [day]title
@@ -2541,7 +2704,7 @@ msgstr "Bot"
 
 #: [client]console
 msgid "Console"
-msgstr ""
+msgstr "操作台"
 
 #: [client]desktop
 msgid "Desktop"
@@ -3087,6 +3250,10 @@ msgstr "GB"
 msgid "TB"
 msgstr "TB"
 
+#: [affiliation]owner
+msgid "Owner"
+msgstr "所有者"
+
 #: [affiliation]publisher
 msgid "Publisher"
 msgstr "发布者"
@@ -3095,17 +3262,9 @@ msgstr "发布者"
 msgid "Publish only"
 msgstr "仅发布"
 
-#: [affiliation]member
-msgid "Member"
-msgstr "成员"
-
-#: [affiliation]no-aff
-msgid "No affiliation"
-msgstr ""
-
 #: [affiliation]outcast
 msgid "Outcast"
-msgstr ""
+msgstr "丢弃"
 
 #: [api]error
 msgid "The API is not reachable, try again later"

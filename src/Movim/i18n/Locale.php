@@ -61,7 +61,7 @@ class Locale
             $this->load($language);
 
             $locales = fopen(CACHE_PATH.$language.'.po.cache', "w") or die("Unable to open file!");
-            fwrite($locales, '<?php' . PHP_EOL . '$translations = '.var_export($this->translations,true) . ';' . PHP_EOL . '?>');
+            fwrite($locales, '<?php' . PHP_EOL . '$translations = '.var_export($this->translations, true) . ';' . PHP_EOL . '?>');
             fclose($locales);
         }
     }
@@ -237,7 +237,6 @@ class Locale
         }
 
         $pofile = LOCALES_PATH . $this->language . '.po';
-
         if (!file_exists($pofile) || !is_readable($pofile)) {
             return false;
         }

@@ -27,6 +27,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/ChatOmemo/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Communities/locales.ini
@@ -110,16 +112,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-19 23:54+0200\n"
-"PO-Revision-Date: 2021-07-31 13:24+0000\n"
-"Last-Translator: Transifex Bot <>\n"
+"POT-Creation-Date: 2022-01-20 21:05+0200\n"
+"PO-Revision-Date: 2022-01-20 19:38+0000\n"
+"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Slovak (Slovakia) (http://www.transifex.com/movim/movim/language/sk_SK/)\n"
 "Language: sk_SK\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);\n"
-"X-Generator: Translate Toolkit 3.3.2\n"
+"X-Generator: Translate Toolkit 3.4.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -338,6 +340,14 @@ msgstr "Popis"
 msgid "General description of the instance"
 msgstr "Všeobecný popis tejto inštancie"
 
+#: [information]banner
+msgid "Main banner"
+msgstr ""
+
+#: [information]banner_info
+msgid "Ensure that the picture is not too large and can be reached from any webpages"
+msgstr ""
+
 #: [information]info1
 msgid "This message will be displayed on the login page. It can be used to link the Terms and Conditions of your Movim instance for example."
 msgstr "Táto správa bude zobrazená na prihlasovacej stránke. Môže byť použitá napr. na odkazy na Požiadavky a podmienky svojej inštancie Movim."
@@ -547,7 +557,7 @@ msgstr "Odvolať"
 msgid "Your message could not be sent, please try again later"
 msgstr "Vašu správu nemožno odoslať, prosím, skúste neskôr"
 
-#: [message]encrypted
+#: [message]encrypted [omemo]encrypted
 msgid "Encrypted message"
 msgstr "Šifrovaná správa"
 
@@ -653,6 +663,10 @@ msgstr "Vymazať históriu"
 msgid "You are going to delete %s messages, are you sure?"
 msgstr "Chystáte sa zmazať %s správ, ste si istí?"
 
+#: [chat]action_impossible_encrypted
+msgid "Action impossible in encrypted chats"
+msgstr ""
+
 #: [chatroom]members
 msgid "Members"
 msgstr "Členovia"
@@ -684,6 +698,58 @@ msgstr "Predmet zmenený"
 #: [chatroom]administration [page]administration
 msgid "Administration"
 msgstr "Asministrácia"
+
+#: [omemo]fingerprints_title
+msgid "Fingerprints"
+msgstr ""
+
+#: [omemo]fingerprints
+msgid "OMEMO Fingerprints"
+msgstr ""
+
+#: [omemo]generating_bundle
+msgid "Generating the encryption keys, please wait…"
+msgstr ""
+
+#: [omemo]generated_bundle
+msgid "Encryption keys generated"
+msgstr ""
+
+#: [omemo]resolving_devices
+msgid "Resolving OMEMO devices"
+msgstr ""
+
+#: [omemo]building_sessions
+msgid "Building encryption sessions"
+msgstr ""
+
+#: [omemo]building_own_sessions
+msgid "Building own encryption sessions"
+msgstr ""
+
+#: [omemo]encrypted_disabled
+msgid "Encryption disabled"
+msgstr ""
+
+#: [omemo]encrypted_loading
+msgid "Send a message to build the encrypted session"
+msgstr ""
+
+#: [omemo]enable_contact
+msgid "Enabling encryption for the contact"
+msgstr ""
+
+#: [omemo]disable_contact
+msgid "Disabling encryption for the contact"
+msgstr ""
+
+#: [omemo]last_activity
+msgid "Last activity"
+msgstr ""
+
+#: [omemo]sessions_built
+msgid "%s sessions built"
+msgstr ""
 
 #: [chats]empty_title
 msgid "No chats yet…"
@@ -788,6 +854,10 @@ msgstr "Zdá sa, že teraz nemožno nájsť žiadne komunity"
 #: [communityaffiliation]subscriptions
 msgid "Subscriptions"
 msgstr "Odbery"
+
+#: [communityaffiliation]public_subscriptions
+msgid "Public subscriptions"
+msgstr ""
 
 #: [communityaffiliation]subscriptions_text
 msgid "My Communities subscriptions"
@@ -931,8 +1001,8 @@ msgid "Here you will be able to manage all your subscriptions."
 msgstr "Tu môžete spravovať svoje odbery."
 
 #: [communitysubscriptions]empty_text2
-msgid "You don’t have any group subscriptions yet."
-msgstr "Zatiaľ nemáte žiadne skupiny odberov."
+msgid "You don’t have any community subscriptions yet."
+msgstr ""
 
 #: [config]general
 msgid "General"
@@ -1106,6 +1176,10 @@ msgstr "Počúva"
 msgid "Pictures"
 msgstr "Obrázky"
 
+#: [general]links
+msgid "Links"
+msgstr ""
+
 #: [position]legend
 msgid "Geographic Position"
 msgstr "Geografická pozícia"
@@ -1135,6 +1209,10 @@ msgid "Last seen"
 msgstr "Naposledy videný"
 
 #: [clients]title
+msgid "Clients"
+msgstr ""
+
+#: [clients]title_full
 msgid "Clients information"
 msgstr "Informácie o klientovi"
 
@@ -1250,29 +1328,21 @@ msgstr "Kde môžem nájsť svoje kontakty?"
 msgid "By opening the search panel."
 msgstr "Otvorením panela hľadania."
 
-#: [apps]question
-msgid "Have you already tried Movim on other platforms?"
-msgstr "Už ste skúsili Movim na iných platformách?"
+#: [apps]title
+msgid "Applications"
+msgstr ""
 
-#: [apps]phone
-msgid "Apps for your phone"
-msgstr "Aplikácie pre Váš telefón"
+#: [apps]install
+msgid "Movim App"
+msgstr ""
 
-#: [apps]android
-msgid "Try out our official Android app"
-msgstr "Skúste oficiálnu aplikáciu Android"
+#: [apps]install_text
+msgid "Install Movim on your device"
+msgstr ""
 
 #: [apps]recommend
 msgid "We also recommend"
 msgstr "Odporúčame aj"
-
-#: [apps]computer
-msgid "Apps for your computer"
-msgstr "Aplikácie pre Vás počítač"
-
-#: [apps]computer_text
-msgid "Our official apps are available on our website"
-msgstr "Naše oficiálne aplikácie sú dostupné na našej webovej stránke"
 
 #: [contact]title
 msgid "Administrators & Contact"
@@ -1586,14 +1656,6 @@ msgstr "Ocenil Vaše uverejnenie"
 msgid "Commented"
 msgstr "Komentoval"
 
-#: [hello]blog_title
-msgid "Visit your public blog"
-msgstr "Navštívte svoj verejný blog"
-
-#: [hello]blog_text
-msgid "See your public posts and share them with all your contacts"
-msgstr "Zobrazte svoje verejné príspevky a zdieľajte ich so všetkými svojimi kontaktmi"
-
 #: [hello]contact_post
 msgid "Contact post"
 msgstr "Príspevky kontaktu"
@@ -1743,8 +1805,8 @@ msgid "Join a custom chatroom"
 msgstr "Vstúpiť do zadanej miestnosti"
 
 #: [rooms]empty_text1
-msgid "You don’t have any chatroom yet."
-msgstr "Nemáte zatiaľ žiadnu miestnosť."
+msgid "You don’t have any chatrooms yet."
+msgstr ""
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
@@ -1775,8 +1837,8 @@ msgid "Gateway room"
 msgstr "Bránová miestnosť"
 
 #: [rooms]show_all
-msgid "Show all the rooms"
-msgstr "Zobraziť všetky miestnosti"
+msgid "Show all rooms"
+msgstr ""
 
 #: [rooms]hide_disconnected
 msgid "Hide disconnected rooms"
@@ -1787,16 +1849,18 @@ msgid "Destroy the room"
 msgstr "Odstrániť miestnosť"
 
 #: [rooms]destroy_text
-msgid "Are you sure that you want to definitely destroy the following room?"
-msgstr "Naozaj chcete úplne odstrániť nasledujúcu miestnosť?"
+msgid "Are you sure you want to permanently destroy the following room?"
+msgstr ""
 
-#: [rooms]owner [affiliation]owner
+#: [rooms]owner
+msgctxt "[rooms]owner"
 msgid "Owner"
-msgstr "Vlastník"
+msgstr ""
 
 #: [rooms]admin
+msgctxt "[rooms]admin"
 msgid "Admin"
-msgstr "Správca"
+msgstr ""
 
 #: [rooms]visitor
 msgid "Visitor"
@@ -1811,8 +1875,8 @@ msgid "Chatrooms"
 msgstr "Chatové miestnosti"
 
 #: [chatrooms]id
-msgid "Chat Room ID"
-msgstr "ID chatovej miestnosti"
+msgid "Chatroom ID"
+msgstr ""
 
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
@@ -1830,6 +1894,10 @@ msgstr "Prázdne meno"
 msgid "%s rooms synchronized"
 msgstr "Synchronizované miestnosti: %s"
 
+#: [chatrooms]not_synchronized
+msgid "No rooms to synchronize found"
+msgstr ""
+
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
 msgid "Users"
@@ -1839,6 +1907,10 @@ msgstr "Používatelia"
 msgctxt "[chatrooms]members"
 msgid "Members"
 msgstr "Členovia"
+
+#: [chatrooms]banned
+msgid "Banned"
+msgstr ""
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a correct nickname (2 to 40 characters)"
@@ -1851,6 +1923,10 @@ msgstr "Používateľské meno už existuje"
 #: [chatrooms]autojoin
 msgid "Join this chatroom on connect"
 msgstr "Vstúpiť do miestnosti pri prihlásení"
+
+#: [chatrooms]pinned
+msgid "Pin this chatroom"
+msgstr ""
 
 #: [chatrooms]destroyed
 msgid "Room destroyed"
@@ -1867,6 +1943,22 @@ msgstr "Chatová miestnosť neexistuje"
 #: [chatrooms]notauthorized
 msgid "A password is required"
 msgstr "Je vyžadované heslo"
+
+#: [chatrooms]forbidden
+msgid "You are not allowed to join this chatroom"
+msgstr ""
+
+#: [chatrooms]jidmalformed
+msgid "Your nickname is not valid"
+msgstr ""
+
+#: [chatrooms]notacceptable
+msgid "Not acceptable"
+msgstr ""
+
+#: [chatrooms]serviceunavailable
+msgid "The chatroom occupant limit has been reached"
+msgstr ""
 
 #: [bookmarks]updated
 msgid "Bookmarks updated"
@@ -1933,6 +2025,30 @@ msgctxt "[room]group_chat_members"
 msgid "Members"
 msgstr "Členovia"
 
+#: [room]banned_add
+msgid "Ban someone"
+msgstr ""
+
+#: [room]banned_remove
+msgid "Unban"
+msgstr ""
+
+#: [room]change_affiliation
+msgid "Change the user affiliation"
+msgstr ""
+
+#: [room]change_affiliation_unauthorized
+msgid "You are not authorized to change this affiliation"
+msgstr ""
+
+#: [room]affiliation
+msgid "Affiliation"
+msgstr ""
+
+#: [room]reason
+msgid "Reason"
+msgstr ""
+
 #: [room]channel
 msgid "Channel"
 msgstr "Kanál"
@@ -1957,6 +2073,48 @@ msgstr "Upozorniť pri citovaní"
 #: [room]notify_always
 msgid "Always notify"
 msgstr "Vždy upozorniť"
+
+#: [room]pinned
+msgid "Pinned"
+msgstr ""
+
+#: [room]affiliation_owner
+msgctxt "[room]affiliation_owner"
+msgid "Owner"
+msgstr ""
+
+#: [room]affiliation_admin
+msgctxt "[room]affiliation_admin"
+msgid "Admin"
+msgstr ""
+
+#: [room]affiliation_member [affiliation]member
+msgid "Member"
+msgstr "Člen"
+
+#: [room]affiliation_none [affiliation]no-aff
+msgid "No affiliation"
+msgstr "Bez pričlenenia"
+
+#: [room]affiliation_owner_changed
+msgid "User granted as owner"
+msgstr ""
+
+#: [room]affiliation_admin_changed
+msgid "User granted as admin"
+msgstr ""
+
+#: [room]affiliation_member_changed
+msgid "User granted as member"
+msgstr ""
+
+#: [room]affiliation_outcast_changed
+msgid "User banned"
+msgstr ""
+
+#: [room]affiliation_none_changed
+msgid "Affiliation removed for the user"
+msgstr ""
 
 #: [roomsexplore]no_local
 msgid "No chatrooms found locally"
@@ -2495,6 +2653,10 @@ msgstr "Viac"
 #: [button]copy_link
 msgid "Copy Link"
 msgstr "Kopírovať odkaz"
+
+#: [input]optional
+msgid "Optional"
+msgstr ""
 
 #: [day]title
 msgid "Day"
@@ -3080,6 +3242,10 @@ msgstr "GB"
 msgid "TB"
 msgstr "TB"
 
+#: [affiliation]owner
+msgid "Owner"
+msgstr "Vlastník"
+
 #: [affiliation]publisher
 msgid "Publisher"
 msgstr "Vydavateľ"
@@ -3087,14 +3253,6 @@ msgstr "Vydavateľ"
 #: [affiliation]publish-only
 msgid "Publish only"
 msgstr "Len vydavateľ"
-
-#: [affiliation]member
-msgid "Member"
-msgstr "Člen"
-
-#: [affiliation]no-aff
-msgid "No affiliation"
-msgstr "Bez pričlenenia"
 
 #: [affiliation]outcast
 msgid "Outcast"

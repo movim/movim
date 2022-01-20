@@ -2,7 +2,7 @@
 # Translators:
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012
 # Rossen Karpuzov <rkarpuzov@yahoo.com>, 2021
-# Rossen Karpuzov <rkarpuzov@yahoo.com>, 2020-2021
+# Rossen Karpuzov <rkarpuzov@yahoo.com>, 2020-2022
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -25,6 +25,8 @@
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/ChatOmemo/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -109,16 +111,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-19 23:54+0200\n"
-"PO-Revision-Date: 2021-08-10 09:20+0000\n"
-"Last-Translator: Rossen Karpuzov <rkarpuzov@yahoo.com>\n"
+"POT-Creation-Date: 2022-01-20 21:05+0200\n"
+"PO-Revision-Date: 2022-01-20 19:38+0000\n"
+"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/movim/movim/language/bg/)\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.3.2\n"
+"X-Generator: Translate Toolkit 3.4.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -337,6 +339,14 @@ msgstr "Описание"
 msgid "General description of the instance"
 msgstr "Основно описание на инстанцията"
 
+#: [information]banner
+msgid "Main banner"
+msgstr ""
+
+#: [information]banner_info
+msgid "Ensure that the picture is not too large and can be reached from any webpages"
+msgstr ""
+
 #: [information]info1
 msgid "This message will be displayed on the login page. It can be used to link the Terms and Conditions of your Movim instance for example."
 msgstr "Това съобщение ще се покаже на страницата за вход. То може да се използва за свързване на Общите условия на вашия екземпляр на Movim например."
@@ -546,7 +556,7 @@ msgstr "Оттегляне"
 msgid "Your message could not be sent, please try again later"
 msgstr "Вашето съобщение не може да бъде изпратено, моля, опитайте отново по-късно "
 
-#: [message]encrypted
+#: [message]encrypted [omemo]encrypted
 msgid "Encrypted message"
 msgstr "Шифровано съобщение"
 
@@ -652,6 +662,10 @@ msgstr "Изчисти историята"
 msgid "You are going to delete %s messages, are you sure?"
 msgstr " Ще изтриете%s съобщения, сигурни ли сте?"
 
+#: [chat]action_impossible_encrypted
+msgid "Action impossible in encrypted chats"
+msgstr ""
+
 #: [chatroom]members
 msgid "Members"
 msgstr "Членове"
@@ -683,6 +697,58 @@ msgstr "Темата е променена"
 #: [chatroom]administration [page]administration
 msgid "Administration"
 msgstr "Администрация"
+
+#: [omemo]fingerprints_title
+msgid "Fingerprints"
+msgstr ""
+
+#: [omemo]fingerprints
+msgid "OMEMO Fingerprints"
+msgstr ""
+
+#: [omemo]generating_bundle
+msgid "Generating the encryption keys, please wait…"
+msgstr ""
+
+#: [omemo]generated_bundle
+msgid "Encryption keys generated"
+msgstr ""
+
+#: [omemo]resolving_devices
+msgid "Resolving OMEMO devices"
+msgstr ""
+
+#: [omemo]building_sessions
+msgid "Building encryption sessions"
+msgstr ""
+
+#: [omemo]building_own_sessions
+msgid "Building own encryption sessions"
+msgstr ""
+
+#: [omemo]encrypted_disabled
+msgid "Encryption disabled"
+msgstr ""
+
+#: [omemo]encrypted_loading
+msgid "Send a message to build the encrypted session"
+msgstr ""
+
+#: [omemo]enable_contact
+msgid "Enabling encryption for the contact"
+msgstr ""
+
+#: [omemo]disable_contact
+msgid "Disabling encryption for the contact"
+msgstr ""
+
+#: [omemo]last_activity
+msgid "Last activity"
+msgstr ""
+
+#: [omemo]sessions_built
+msgid "%s sessions built"
+msgstr ""
 
 #: [chats]empty_title
 msgid "No chats yet…"
@@ -787,6 +853,10 @@ msgstr "Изглежда, че за момента не можем да наме
 #: [communityaffiliation]subscriptions
 msgid "Subscriptions"
 msgstr "Абонаменти"
+
+#: [communityaffiliation]public_subscriptions
+msgid "Public subscriptions"
+msgstr ""
 
 #: [communityaffiliation]subscriptions_text
 msgid "My Communities subscriptions"
@@ -930,7 +1000,7 @@ msgid "Here you will be able to manage all your subscriptions."
 msgstr "Тук ще можете да управлявате всичките си абонаменти."
 
 #: [communitysubscriptions]empty_text2
-msgid "You don’t have any group subscriptions yet."
+msgid "You don’t have any community subscriptions yet."
 msgstr ""
 
 #: [config]general
@@ -959,7 +1029,7 @@ msgstr "Външен вид"
 
 #: [config]not_valid
 msgid "Configuration invalid"
-msgstr "Конфигурирането е невалидно"
+msgstr "Конфигурирането е неправилно"
 
 #: [config]advanced
 msgid "Advanced Configuration"
@@ -1105,6 +1175,10 @@ msgstr ""
 msgid "Pictures"
 msgstr "Картинки"
 
+#: [general]links
+msgid "Links"
+msgstr ""
+
 #: [position]legend
 msgid "Geographic Position"
 msgstr "Географско положение"
@@ -1134,6 +1208,10 @@ msgid "Last seen"
 msgstr "Последно видян/а"
 
 #: [clients]title
+msgid "Clients"
+msgstr ""
+
+#: [clients]title_full
 msgid "Clients information"
 msgstr "Информация за клиенти"
 
@@ -1249,29 +1327,21 @@ msgstr "Къде мога да намеря контактите си?"
 msgid "By opening the search panel."
 msgstr "Чрез отваряне на панела за търсене."
 
-#: [apps]question
-msgid "Have you already tried Movim on other platforms?"
-msgstr "Опитвали ли сте вече Movim на други платформи?"
+#: [apps]title
+msgid "Applications"
+msgstr ""
 
-#: [apps]phone
-msgid "Apps for your phone"
-msgstr "Приложения за вашия телефон"
+#: [apps]install
+msgid "Movim App"
+msgstr ""
 
-#: [apps]android
-msgid "Try out our official Android app"
-msgstr "Изпробвайте нашето официално приложение за Android"
+#: [apps]install_text
+msgid "Install Movim on your device"
+msgstr ""
 
 #: [apps]recommend
 msgid "We also recommend"
 msgstr "Ние също препоръчваме"
-
-#: [apps]computer
-msgid "Apps for your computer"
-msgstr "Приложения за вашия компютър "
-
-#: [apps]computer_text
-msgid "Our official apps are available on our website"
-msgstr "Нашите официални приложения са достъпни на нашия уебсайт"
 
 #: [contact]title
 msgid "Administrators & Contact"
@@ -1335,11 +1405,11 @@ msgstr "Непозната грешка"
 
 #: [error]login_format
 msgid "Invalid username format"
-msgstr "Невалиден формат на потребителското име"
+msgstr "Неправилен формат на потребителското име"
 
 #: [error]password_format
 msgid "Invalid password format"
-msgstr "Невалиден формат на паролата"
+msgstr "Неправилен формат на паролата"
 
 #: [error]unauthorized
 msgid "Your XMPP server is unauthorized"
@@ -1585,14 +1655,6 @@ msgstr "Харесана ваша публикация"
 msgid "Commented"
 msgstr "Коментирано"
 
-#: [hello]blog_title
-msgid "Visit your public blog"
-msgstr "Посетете вашия публичен блог"
-
-#: [hello]blog_text
-msgid "See your public posts and share them with all your contacts"
-msgstr "Вижте публичните си публикации и ги споделете с всичките си контакти"
-
 #: [hello]contact_post
 msgid "Contact post"
 msgstr "Публикация за връзка"
@@ -1742,8 +1804,8 @@ msgid "Join a custom chatroom"
 msgstr "Присъедини се към персонализирана чат стая"
 
 #: [rooms]empty_text1
-msgid "You don’t have any chatroom yet."
-msgstr "Все още нямате чат стая."
+msgid "You don’t have any chatrooms yet."
+msgstr ""
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
@@ -1755,7 +1817,7 @@ msgstr ""
 
 #: [rooms]empty_synchronize_text
 msgid "Try to synchronize them to the new room bookmarking system"
-msgstr ""
+msgstr "Опитайте се да ги синхронизирате с новата система за маркиране на стаи"
 
 #: [rooms]empty_synchronize_button
 msgid "Synchronize"
@@ -1774,8 +1836,8 @@ msgid "Gateway room"
 msgstr "Стая за портал"
 
 #: [rooms]show_all
-msgid "Show all the rooms"
-msgstr "Покажи всички стаи"
+msgid "Show all rooms"
+msgstr ""
 
 #: [rooms]hide_disconnected
 msgid "Hide disconnected rooms"
@@ -1786,16 +1848,18 @@ msgid "Destroy the room"
 msgstr "Унищожи стая"
 
 #: [rooms]destroy_text
-msgid "Are you sure that you want to definitely destroy the following room?"
-msgstr "Сигурни ли сте, че искате да унищожите следната стая?"
+msgid "Are you sure you want to permanently destroy the following room?"
+msgstr ""
 
-#: [rooms]owner [affiliation]owner
+#: [rooms]owner
+msgctxt "[rooms]owner"
 msgid "Owner"
-msgstr "Собственик"
+msgstr ""
 
 #: [rooms]admin
+msgctxt "[rooms]admin"
 msgid "Admin"
-msgstr "Админ"
+msgstr ""
 
 #: [rooms]visitor
 msgid "Visitor"
@@ -1810,8 +1874,8 @@ msgid "Chatrooms"
 msgstr "Стаи за разговори"
 
 #: [chatrooms]id
-msgid "Chat Room ID"
-msgstr "ID на чат стая"
+msgid "Chatroom ID"
+msgstr ""
 
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
@@ -1829,6 +1893,10 @@ msgstr "Празно име"
 msgid "%s rooms synchronized"
 msgstr "%s стаи напаснати"
 
+#: [chatrooms]not_synchronized
+msgid "No rooms to synchronize found"
+msgstr ""
+
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
 msgid "Users"
@@ -1838,6 +1906,10 @@ msgstr "Потребители"
 msgctxt "[chatrooms]members"
 msgid "Members"
 msgstr "Членове"
+
+#: [chatrooms]banned
+msgid "Banned"
+msgstr ""
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a correct nickname (2 to 40 characters)"
@@ -1850,6 +1922,10 @@ msgstr "Потребителското име е вече заето"
 #: [chatrooms]autojoin
 msgid "Join this chatroom on connect"
 msgstr "Присъединете се към тази чат стая при свързване"
+
+#: [chatrooms]pinned
+msgid "Pin this chatroom"
+msgstr ""
 
 #: [chatrooms]destroyed
 msgid "Room destroyed"
@@ -1866,6 +1942,22 @@ msgstr "Стаята за разговори не съществува"
 #: [chatrooms]notauthorized
 msgid "A password is required"
 msgstr "Нужна е парола"
+
+#: [chatrooms]forbidden
+msgid "You are not allowed to join this chatroom"
+msgstr ""
+
+#: [chatrooms]jidmalformed
+msgid "Your nickname is not valid"
+msgstr ""
+
+#: [chatrooms]notacceptable
+msgid "Not acceptable"
+msgstr ""
+
+#: [chatrooms]serviceunavailable
+msgid "The chatroom occupant limit has been reached"
+msgstr ""
 
 #: [bookmarks]updated
 msgid "Bookmarks updated"
@@ -1932,6 +2024,30 @@ msgctxt "[room]group_chat_members"
 msgid "Members"
 msgstr "Членове"
 
+#: [room]banned_add
+msgid "Ban someone"
+msgstr ""
+
+#: [room]banned_remove
+msgid "Unban"
+msgstr ""
+
+#: [room]change_affiliation
+msgid "Change the user affiliation"
+msgstr ""
+
+#: [room]change_affiliation_unauthorized
+msgid "You are not authorized to change this affiliation"
+msgstr ""
+
+#: [room]affiliation
+msgid "Affiliation"
+msgstr ""
+
+#: [room]reason
+msgid "Reason"
+msgstr ""
+
 #: [room]channel
 msgid "Channel"
 msgstr "Канал"
@@ -1956,6 +2072,48 @@ msgstr "Уведомете при цитиране"
 #: [room]notify_always
 msgid "Always notify"
 msgstr "Винаги уведомявайте"
+
+#: [room]pinned
+msgid "Pinned"
+msgstr ""
+
+#: [room]affiliation_owner
+msgctxt "[room]affiliation_owner"
+msgid "Owner"
+msgstr ""
+
+#: [room]affiliation_admin
+msgctxt "[room]affiliation_admin"
+msgid "Admin"
+msgstr ""
+
+#: [room]affiliation_member [affiliation]member
+msgid "Member"
+msgstr "Член"
+
+#: [room]affiliation_none [affiliation]no-aff
+msgid "No affiliation"
+msgstr ""
+
+#: [room]affiliation_owner_changed
+msgid "User granted as owner"
+msgstr ""
+
+#: [room]affiliation_admin_changed
+msgid "User granted as admin"
+msgstr ""
+
+#: [room]affiliation_member_changed
+msgid "User granted as member"
+msgstr ""
+
+#: [room]affiliation_outcast_changed
+msgid "User banned"
+msgstr ""
+
+#: [room]affiliation_none_changed
+msgid "Affiliation removed for the user"
+msgstr ""
 
 #: [roomsexplore]no_local
 msgid "No chatrooms found locally"
@@ -2494,6 +2652,10 @@ msgstr "Повече"
 #: [button]copy_link
 msgid "Copy Link"
 msgstr "Копирай връзка"
+
+#: [input]optional
+msgid "Optional"
+msgstr ""
 
 #: [day]title
 msgid "Day"
@@ -3079,20 +3241,16 @@ msgstr "ГБ"
 msgid "TB"
 msgstr "ТБ"
 
+#: [affiliation]owner
+msgid "Owner"
+msgstr "Собственик"
+
 #: [affiliation]publisher
 msgid "Publisher"
 msgstr "Издател"
 
 #: [affiliation]publish-only
 msgid "Publish only"
-msgstr ""
-
-#: [affiliation]member
-msgid "Member"
-msgstr "Член"
-
-#: [affiliation]no-aff
-msgid "No affiliation"
 msgstr ""
 
 #: [affiliation]outcast

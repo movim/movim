@@ -24,6 +24,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/ChatOmemo/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Communities/locales.ini
@@ -107,16 +109,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-19 23:54+0200\n"
-"PO-Revision-Date: 2021-07-31 13:24+0000\n"
-"Last-Translator: Transifex Bot <>\n"
+"POT-Creation-Date: 2022-01-20 21:05+0200\n"
+"PO-Revision-Date: 2022-01-20 19:38+0000\n"
+"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Breton (http://www.transifex.com/movim/movim/language/br/)\n"
 "Language: br\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=5; plural=((n%10 == 1) && (n%100 != 11) && (n%100 !=71) && (n%100 !=91) ? 0 :(n%10 == 2) && (n%100 != 12) && (n%100 !=72) && (n%100 !=92) ? 1 :(n%10 ==3 || n%10==4 || n%10==9) && (n%100 < 10 || n% 100 > 19) && (n%100 < 70 || n%100 > 79) && (n%100 < 90 || n%100 > 99) ? 2 :(n != 0 && n % 1000000 == 0) ? 3 : 4);\n"
-"X-Generator: Translate Toolkit 3.3.2\n"
+"X-Generator: Translate Toolkit 3.4.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -335,6 +337,14 @@ msgstr ""
 msgid "General description of the instance"
 msgstr ""
 
+#: [information]banner
+msgid "Main banner"
+msgstr ""
+
+#: [information]banner_info
+msgid "Ensure that the picture is not too large and can be reached from any webpages"
+msgstr ""
+
 #: [information]info1
 msgid "This message will be displayed on the login page. It can be used to link the Terms and Conditions of your Movim instance for example."
 msgstr ""
@@ -544,7 +554,7 @@ msgstr ""
 msgid "Your message could not be sent, please try again later"
 msgstr ""
 
-#: [message]encrypted
+#: [message]encrypted [omemo]encrypted
 msgid "Encrypted message"
 msgstr ""
 
@@ -650,6 +660,10 @@ msgstr ""
 msgid "You are going to delete %s messages, are you sure?"
 msgstr ""
 
+#: [chat]action_impossible_encrypted
+msgid "Action impossible in encrypted chats"
+msgstr ""
+
 #: [chatroom]members
 msgid "Members"
 msgstr ""
@@ -680,6 +694,58 @@ msgstr ""
 
 #: [chatroom]administration [page]administration
 msgid "Administration"
+msgstr ""
+
+#: [omemo]fingerprints_title
+msgid "Fingerprints"
+msgstr ""
+
+#: [omemo]fingerprints
+msgid "OMEMO Fingerprints"
+msgstr ""
+
+#: [omemo]generating_bundle
+msgid "Generating the encryption keys, please wait…"
+msgstr ""
+
+#: [omemo]generated_bundle
+msgid "Encryption keys generated"
+msgstr ""
+
+#: [omemo]resolving_devices
+msgid "Resolving OMEMO devices"
+msgstr ""
+
+#: [omemo]building_sessions
+msgid "Building encryption sessions"
+msgstr ""
+
+#: [omemo]building_own_sessions
+msgid "Building own encryption sessions"
+msgstr ""
+
+#: [omemo]encrypted_disabled
+msgid "Encryption disabled"
+msgstr ""
+
+#: [omemo]encrypted_loading
+msgid "Send a message to build the encrypted session"
+msgstr ""
+
+#: [omemo]enable_contact
+msgid "Enabling encryption for the contact"
+msgstr ""
+
+#: [omemo]disable_contact
+msgid "Disabling encryption for the contact"
+msgstr ""
+
+#: [omemo]last_activity
+msgid "Last activity"
+msgstr ""
+
+#: [omemo]sessions_built
+msgid "%s sessions built"
 msgstr ""
 
 #: [chats]empty_title
@@ -784,6 +850,10 @@ msgstr ""
 
 #: [communityaffiliation]subscriptions
 msgid "Subscriptions"
+msgstr ""
+
+#: [communityaffiliation]public_subscriptions
+msgid "Public subscriptions"
 msgstr ""
 
 #: [communityaffiliation]subscriptions_text
@@ -928,7 +998,7 @@ msgid "Here you will be able to manage all your subscriptions."
 msgstr ""
 
 #: [communitysubscriptions]empty_text2
-msgid "You don’t have any group subscriptions yet."
+msgid "You don’t have any community subscriptions yet."
 msgstr ""
 
 #: [config]general
@@ -1103,6 +1173,10 @@ msgstr ""
 msgid "Pictures"
 msgstr ""
 
+#: [general]links
+msgid "Links"
+msgstr ""
+
 #: [position]legend
 msgid "Geographic Position"
 msgstr ""
@@ -1132,6 +1206,10 @@ msgid "Last seen"
 msgstr ""
 
 #: [clients]title
+msgid "Clients"
+msgstr ""
+
+#: [clients]title_full
 msgid "Clients information"
 msgstr ""
 
@@ -1247,28 +1325,20 @@ msgstr ""
 msgid "By opening the search panel."
 msgstr ""
 
-#: [apps]question
-msgid "Have you already tried Movim on other platforms?"
+#: [apps]title
+msgid "Applications"
 msgstr ""
 
-#: [apps]phone
-msgid "Apps for your phone"
+#: [apps]install
+msgid "Movim App"
 msgstr ""
 
-#: [apps]android
-msgid "Try out our official Android app"
+#: [apps]install_text
+msgid "Install Movim on your device"
 msgstr ""
 
 #: [apps]recommend
 msgid "We also recommend"
-msgstr ""
-
-#: [apps]computer
-msgid "Apps for your computer"
-msgstr ""
-
-#: [apps]computer_text
-msgid "Our official apps are available on our website"
 msgstr ""
 
 #: [contact]title
@@ -1583,14 +1653,6 @@ msgstr ""
 msgid "Commented"
 msgstr ""
 
-#: [hello]blog_title
-msgid "Visit your public blog"
-msgstr ""
-
-#: [hello]blog_text
-msgid "See your public posts and share them with all your contacts"
-msgstr ""
-
 #: [hello]contact_post
 msgid "Contact post"
 msgstr ""
@@ -1740,7 +1802,7 @@ msgid "Join a custom chatroom"
 msgstr ""
 
 #: [rooms]empty_text1
-msgid "You don’t have any chatroom yet."
+msgid "You don’t have any chatrooms yet."
 msgstr ""
 
 #: [rooms]empty_text2
@@ -1772,7 +1834,7 @@ msgid "Gateway room"
 msgstr ""
 
 #: [rooms]show_all
-msgid "Show all the rooms"
+msgid "Show all rooms"
 msgstr ""
 
 #: [rooms]hide_disconnected
@@ -1784,14 +1846,16 @@ msgid "Destroy the room"
 msgstr ""
 
 #: [rooms]destroy_text
-msgid "Are you sure that you want to definitely destroy the following room?"
+msgid "Are you sure you want to permanently destroy the following room?"
 msgstr ""
 
-#: [rooms]owner [affiliation]owner
+#: [rooms]owner
+msgctxt "[rooms]owner"
 msgid "Owner"
 msgstr ""
 
 #: [rooms]admin
+msgctxt "[rooms]admin"
 msgid "Admin"
 msgstr ""
 
@@ -1808,7 +1872,7 @@ msgid "Chatrooms"
 msgstr ""
 
 #: [chatrooms]id
-msgid "Chat Room ID"
+msgid "Chatroom ID"
 msgstr ""
 
 #: [chatrooms]name_placeholder
@@ -1827,6 +1891,10 @@ msgstr ""
 msgid "%s rooms synchronized"
 msgstr ""
 
+#: [chatrooms]not_synchronized
+msgid "No rooms to synchronize found"
+msgstr ""
+
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
 msgid "Users"
@@ -1835,6 +1903,10 @@ msgstr ""
 #: [chatrooms]members
 msgctxt "[chatrooms]members"
 msgid "Members"
+msgstr ""
+
+#: [chatrooms]banned
+msgid "Banned"
 msgstr ""
 
 #: [chatrooms]bad_nickname
@@ -1847,6 +1919,10 @@ msgstr ""
 
 #: [chatrooms]autojoin
 msgid "Join this chatroom on connect"
+msgstr ""
+
+#: [chatrooms]pinned
+msgid "Pin this chatroom"
 msgstr ""
 
 #: [chatrooms]destroyed
@@ -1863,6 +1939,22 @@ msgstr ""
 
 #: [chatrooms]notauthorized
 msgid "A password is required"
+msgstr ""
+
+#: [chatrooms]forbidden
+msgid "You are not allowed to join this chatroom"
+msgstr ""
+
+#: [chatrooms]jidmalformed
+msgid "Your nickname is not valid"
+msgstr ""
+
+#: [chatrooms]notacceptable
+msgid "Not acceptable"
+msgstr ""
+
+#: [chatrooms]serviceunavailable
+msgid "The chatroom occupant limit has been reached"
 msgstr ""
 
 #: [bookmarks]updated
@@ -1930,6 +2022,30 @@ msgctxt "[room]group_chat_members"
 msgid "Members"
 msgstr ""
 
+#: [room]banned_add
+msgid "Ban someone"
+msgstr ""
+
+#: [room]banned_remove
+msgid "Unban"
+msgstr ""
+
+#: [room]change_affiliation
+msgid "Change the user affiliation"
+msgstr ""
+
+#: [room]change_affiliation_unauthorized
+msgid "You are not authorized to change this affiliation"
+msgstr ""
+
+#: [room]affiliation
+msgid "Affiliation"
+msgstr ""
+
+#: [room]reason
+msgid "Reason"
+msgstr ""
+
 #: [room]channel
 msgid "Channel"
 msgstr ""
@@ -1953,6 +2069,48 @@ msgstr ""
 
 #: [room]notify_always
 msgid "Always notify"
+msgstr ""
+
+#: [room]pinned
+msgid "Pinned"
+msgstr ""
+
+#: [room]affiliation_owner
+msgctxt "[room]affiliation_owner"
+msgid "Owner"
+msgstr ""
+
+#: [room]affiliation_admin
+msgctxt "[room]affiliation_admin"
+msgid "Admin"
+msgstr ""
+
+#: [room]affiliation_member [affiliation]member
+msgid "Member"
+msgstr ""
+
+#: [room]affiliation_none [affiliation]no-aff
+msgid "No affiliation"
+msgstr ""
+
+#: [room]affiliation_owner_changed
+msgid "User granted as owner"
+msgstr ""
+
+#: [room]affiliation_admin_changed
+msgid "User granted as admin"
+msgstr ""
+
+#: [room]affiliation_member_changed
+msgid "User granted as member"
+msgstr ""
+
+#: [room]affiliation_outcast_changed
+msgid "User banned"
+msgstr ""
+
+#: [room]affiliation_none_changed
+msgid "Affiliation removed for the user"
 msgstr ""
 
 #: [roomsexplore]no_local
@@ -2491,6 +2649,10 @@ msgstr ""
 
 #: [button]copy_link
 msgid "Copy Link"
+msgstr ""
+
+#: [input]optional
+msgid "Optional"
 msgstr ""
 
 #: [day]title
@@ -3077,20 +3239,16 @@ msgstr ""
 msgid "TB"
 msgstr ""
 
+#: [affiliation]owner
+msgid "Owner"
+msgstr ""
+
 #: [affiliation]publisher
 msgid "Publisher"
 msgstr ""
 
 #: [affiliation]publish-only
 msgid "Publish only"
-msgstr ""
-
-#: [affiliation]member
-msgid "Member"
-msgstr ""
-
-#: [affiliation]no-aff
-msgid "No affiliation"
 msgstr ""
 
 #: [affiliation]outcast
