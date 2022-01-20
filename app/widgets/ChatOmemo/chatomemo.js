@@ -265,11 +265,20 @@ var ChatOmemo = {
         // Resolved jid from a muc message
         var jid = message.mucjid ?? message.jidfrom;
 
+        // No keys
         if (message.omemoheader.keys == undefined) return;
 
         var store = new ChatOmemoStorage();
         let deviceId = await store.getLocalRegistrationId();
         let originalSessionsNumber = store.getSessions(jid).length;
+
+        // We don't have any sessions from this message yet
+        if (originalSessionsNumber == 0) {
+            console.log('No sessions found for this contact, refresh the list: ' + jid);
+            ChatOmemo.requestedDevicesListFrom = jid;
+            ChatOmemo_ajaxGetDevicesList(jid);
+            return;
+        }
 
         if (message.omemoheader.keys[deviceId] == undefined) {
             console.log('Message not encrypted for this device');
@@ -285,6 +294,9 @@ var ChatOmemo = {
         } catch (err) {
             ChatOmemoDB.putMessage(resolvedId, false);
             console.log('Error during decryption: ' + err);
+
+            var address = new libsignal.SignalProtocolAddress(jid, message.omemoheader.sid);
+            store.removeSession(address);
             return;
         }
 
@@ -330,7 +342,7 @@ var ChatOmemo = {
         if (store.getSessions(jid).length > originalSessionsNumber
         && Object.keys(message.omemoheader.keys).includes(String(deviceId))
         && ChatOmemo.requestedDevicesListFrom != jid) {
-            console.log('A new session was created from the incoming message, refresh the contact devices');
+            console.log('A new session was created from the incoming message, refresh the contact devices for ' + jid);
 
             ChatOmemo.requestedDevicesListFrom = jid;
             ChatOmemo_ajaxGetDevicesList(jid);
