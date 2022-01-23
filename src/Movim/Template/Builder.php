@@ -177,7 +177,7 @@ class Builder
             $meta->setAttribute('name', 'description');
             $meta->setAttribute('content', $widgets->description);
             $metas->appendChild($meta);
-        } else {
+        } else if (!empty(Configuration::get()->description)) {
             $meta = $dom->createElement('meta');
             $meta->setAttribute('name', 'description');
             $meta->setAttribute('content', Configuration::get()->description);
