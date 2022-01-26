@@ -15,11 +15,18 @@ class ContactHeader extends Base
         $this->registerEvent('roster_additem_handle', 'onUpdate');
         $this->registerEvent('roster_updateitem_handle', 'onUpdate', 'contact');
         $this->registerEvent('roster_removeitem_handle', 'onUpdate', 'contact');
+        $this->registerEvent('vcard_get_handle', 'onVcardReceived', 'contact');
+        $this->registerEvent('vcard4_get_handle', 'onVcardReceived', 'contact');
     }
 
     public function onUpdate($packet)
     {
-        $this->rpc('MovimTpl.fill', '#contact_header', $this->prepareHeader($packet->content));
+        $this->rpc('MovimTpl.fill', '#'.cleanupId($packet->content) . '_contact_header', $this->prepareHeader($packet->content));
+    }
+
+    public function onVcardReceived($packet)
+    {
+        $this->rpc('MovimTpl.fill', '#'.cleanupId($packet->content->id) . '_contact_header', $this->prepareHeader($packet->content->id));
     }
 
     public function ajaxEditContact($jid)

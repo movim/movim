@@ -11,7 +11,7 @@
         <ul class="list thick">
             <li>
                 {if="$curl"}
-                    <span class="primary icon bubble color active {$conference->name|stringToColor}"
+                    <span class="primary icon bubble active"
                         style="background-image: url({$curl});">
                     </span>
                 {else}

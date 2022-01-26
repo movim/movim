@@ -2,7 +2,7 @@
 
 namespace Moxl\Xec\Payload;
 
-use Movim\Picture;
+use Movim\Image;
 
 class Avatar extends Payload
 {
@@ -10,9 +10,10 @@ class Avatar extends Payload
     {
         $jid = current(explode('/', (string)$parent->attributes()->from));
 
-        $p = new Picture;
+        $p = new Image;
         $p->fromBase((string)$stanza->items->item->data);
-        $p->set($jid);
+        $p->setKey($jid);
+        $p->save();
 
         $this->event('vcard', \App\Contact::firstOrNew(['id' => $jid]));
     }

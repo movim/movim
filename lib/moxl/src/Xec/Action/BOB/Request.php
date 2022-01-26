@@ -4,7 +4,7 @@ namespace Moxl\Xec\Action\BOB;
 
 use Moxl\Xec\Action;
 use Moxl\Stanza\BOB;
-use Movim\Picture;
+use Movim\Image;
 
 class Request extends Action
 {
@@ -22,9 +22,10 @@ class Request extends Action
     {
         $data = (string)$stanza->data;
 
-        $p = new Picture;
+        $p = new Image;
         $p->fromBase($data);
-        $p->set($this->_cid, 'png');
+        $p->setKey($this->_cid);
+        $p->save(false, false, 'png');
 
         $this->pack(['to' => $this->_to, 'cid' => $this->_cid]);
         $this->deliver();

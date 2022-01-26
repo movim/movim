@@ -9,7 +9,7 @@
             <li>
                 {if="$url"}
                     <span onclick="MovimUtils.reload('{$c->route('contact', $jid)}')"
-                    class="primary icon bubble color active
+                    class="primary icon bubble active
                         {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}
                     ">
                         <img src="{$url}">

@@ -3,7 +3,7 @@
 use Monolog\Logger;
 use Monolog\Handler\SyslogHandler;
 use Monolog\Handler\StreamHandler;
-use Movim\Picture;
+use Movim\Image;
 
 class Utils
 {
@@ -122,7 +122,7 @@ function resolveInfos($postCollection)
 /**
  * Return a picture with a specific size
  */
-function getPhoto($id, $size = 'm')
+function getPhoto(string $key, string $size = 'm')
 {
     $sizes = [
         'xxl'   => [1280, 300],
@@ -133,7 +133,7 @@ function getPhoto($id, $size = 'm')
         'o'     => [false, false]
     ];
 
-    return (new Picture)->get($id, $sizes[$size][0], $sizes[$size][1]);
+    return Image::getOrCreate($key, $sizes[$size][0], $sizes[$size][1]);
 }
 
 /**
@@ -757,7 +757,7 @@ function compileStickers(): int
 
         if ($key != 'icon') {
             $count++;
-            copy($path, PUBLIC_CACHE_PATH.hash(Picture::$hash, $key).'.png');
+            copy($path, PUBLIC_CACHE_PATH.hash(Image::$hash, $key).'.png');
         }
     }
 

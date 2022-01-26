@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Capsule\Manager as DB;
 
 use Respect\Validation\Validator;
-use Movim\Picture;
+use Movim\Image;
 
 class Contact extends Model
 {
@@ -114,16 +114,17 @@ class Contact extends Model
             return;
         }
 
-        $p = new Picture;
+        $p = new Image;
+        $p->setKey($this->id);
         $p->fromBase($this->photobin);
-        $p->set($this->id);
+        $p->save();
 
         unset($this->photobin);
     }
 
     public function getPhoto($size = 'm')
     {
-        return getPhoto($this->id, $size);
+        return !empty($this->id) ? getPhoto($this->id, $size) : null;
     }
 
     public function setLocation($stanza)

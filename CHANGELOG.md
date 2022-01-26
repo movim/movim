@@ -53,6 +53,7 @@ v0.20 (trunk)
 * Introducing Material Chips in the design, use them for the tags
 * Prepare PHP 8.1 support
 * Movim can now be installed as a Progressive Web App
+* Rewrite Picture to Image and add transparent images support, default pictures are compressed to webp
 
 v0.19
 ---------------------------

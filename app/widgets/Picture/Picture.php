@@ -1,7 +1,7 @@
 <?php
 
 use Movim\Widget\Base;
-use Movim\Picture as MovimPicture;
+use Movim\Image;
 
 class Picture extends Base
 {
@@ -51,13 +51,16 @@ class Picture extends Base
             $headers = preg_split('/[\r\n]+/', substr($response, 0, $header_size));
             $body = substr($response, $header_size);
 
-            if ($compress && $body) {
-                $picture = new MovimPicture;
-                $picture->fromBin($body);
-                $body = $picture->set(false, 'webp', 85);
+            $p = null;
 
-                if ($body->getImageWidth() > $this->sizeLimit || $body->getImageHeight() > $this->sizeLimit) {
-                    $body->adaptiveResizeImage($this->sizeLimit, $this->sizeLimit, true, false);
+            if ($compress && $body) {
+                $p = new Image;
+                $p->fromBin($body);
+                $p->inMemory();
+                $p->save(false, false, DEFAULT_PICTURE_FORMAT, 85);
+
+                if ($p->getImage()->getImageWidth() > $this->sizeLimit || $p->getImage()->getImageHeight() > $this->sizeLimit) {
+                    $p->getImage()->adaptiveResizeImage($this->sizeLimit, $this->sizeLimit, true, false);
                 }
 
                 header_remove('Content-Type');
@@ -74,7 +77,9 @@ class Picture extends Base
                 header('Content-Disposition: attachment; filename="'.basename($parsedUrl['path']).'"');
             }
             header('Cache-Control: max-age=' . 3600*24);
-            print $body;
+
+            print $p ? $p->getImage() : $body;
+
             return;
         }
 

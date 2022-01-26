@@ -13,7 +13,7 @@
             </span>
 
             {if="$curl"}
-                <span class="primary icon bubble color active {$conference->name|stringToColor}
+                <span class="primary icon bubble active
                     {if="!$conference->connected"}disabled{/if}"
                     style="background-image: url({$curl});"
                     onclick="RoomsUtils_ajaxShowSubject('{$jid|echapJS}')">
@@ -191,7 +191,7 @@
 
             {$url = $contact->getPhoto()}
             {if="$url"}
-                <span class="primary icon bubble active color
+                <span class="primary icon bubble active
                     {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}"
                     onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')">
                     <img src="{$url}">

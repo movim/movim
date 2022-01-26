@@ -8,7 +8,7 @@
         <li
             id="{$value->jid|cleanupId}"
             title="{$value->jid}"
-            name="{$value->jid|cleanupId}-{$value->truename|cleanupId}-{$value->group|cleanupId}{if="$value->presence"}-{$value->presence->presencetext|cleanupId}{/if}"
+            name="{$value->jid|cleanupId}-{if="$value->truename"}{$value->truename|cleanupId}{/if}-{if="$value->group"}{$value->group|cleanupId}{/if}{if="$value->presence"}-{$value->presence->presencetext|cleanupId}{/if}"
             class="{if="$value->presence && $value->presence->value > 4"}faded{/if}"
         >
             {$url = $value->getPhoto('m')}

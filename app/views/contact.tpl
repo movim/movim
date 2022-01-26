@@ -24,6 +24,6 @@
     </aside>
     <div>
         <?php $this->widget('ContactHeader'); ?>
-        <?php $this->widget('CommunityPosts'); ?>
+        <?php //$this->widget('CommunityPosts'); ?>
     </div>
 </main>

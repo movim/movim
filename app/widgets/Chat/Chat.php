@@ -19,10 +19,10 @@ use Respect\Validation\Validator;
 
 use Illuminate\Database\Capsule\Manager as DB;
 
-use Movim\Picture;
 use Movim\ChatStates;
 use Movim\ChatOwnState;
 use Movim\EmbedLight;
+use Movim\Image;
 
 class Chat extends \Movim\Widget\Base
 {
@@ -1106,9 +1106,7 @@ class Chat extends \Movim\Widget\Base
 
         // Sticker message
         if (isset($message->sticker)) {
-            $p = new Picture;
-            $sticker = $p->get($message->sticker, false, false, 'png');
-            $stickerSize = $p->getSize();
+            $sticker = Image::getOrCreate($message->sticker, false, false, 'png');
 
             if ($sticker == false
             && $message->jidfrom != $message->session) {
@@ -1118,6 +1116,11 @@ class Chat extends \Movim\Widget\Base
                     ->setCid($message->sticker)
                     ->request();
             } else {
+                $p = new Image;
+                $p->setKey($message->sticker);
+                $p->load();
+                $stickerSize = $p->getGeometry();
+
                 $message->sticker = [
                     'url' => $sticker,
                     'width' => $stickerSize['width'],

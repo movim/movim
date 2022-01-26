@@ -8,7 +8,7 @@ use Psr\Http\Message\ResponseInterface;
 
 use App\Configuration;
 use App\MessageFile;
-use Movim\Picture;
+use Movim\Image;
 
 class Stickers extends \Movim\Widget\Base
 {
@@ -32,7 +32,7 @@ class Stickers extends \Movim\Widget\Base
         list($c, $ext) = explode('@', $cid);
         list($sh, $key) = explode('+', $c);
 
-        $base64 = base64_encode(file_get_contents(PUBLIC_CACHE_PATH.hash(Picture::$hash, $key).'.png'));
+        $base64 = base64_encode(file_get_contents(PUBLIC_CACHE_PATH.hash(Image::$hash, $key).'.png'));
 
         $a = new Answer;
         $a->setTo($to)
@@ -58,8 +58,8 @@ class Stickers extends \Movim\Widget\Base
         }
 
         // Caching the picture
-        if (!file_exists(PUBLIC_CACHE_PATH.hash(Picture::$hash, $key).'.png')) {
-            copy($filepath, PUBLIC_CACHE_PATH.hash(Picture::$hash, $key).'.png');
+        if (!file_exists(PUBLIC_CACHE_PATH.hash(Image::$hash, $key).'.png')) {
+            copy($filepath, PUBLIC_CACHE_PATH.hash(Image::$hash, $key).'.png');
         }
 
         // Creating a message

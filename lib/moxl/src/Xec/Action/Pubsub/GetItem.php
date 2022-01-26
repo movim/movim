@@ -4,7 +4,8 @@ namespace Moxl\Xec\Action\Pubsub;
 
 use Moxl\Stanza\Pubsub;
 use Moxl\Xec\Action\Pubsub\Errors;
-use Movim\Picture;
+
+use Movim\Image;
 
 class GetItem extends Errors
 {
@@ -72,10 +73,10 @@ class GetItem extends Errors
                                   ->first();
 
                     if ($i && $i->avatarhash !== (string)$item->metadata->info->attributes()->id) {
-                        $p = new Picture;
-
+                        $p = new Image;
                         $p->fromURL((string)$item->metadata->info->attributes()->url);
-                        $p->set((string)$item->metadata->info->attributes()->id);
+                        $p->setKey((string)$item->metadata->info->attributes()->id);
+                        $p->save();
 
                         $i->avatarhash = (string)$item->metadata->info->attributes()->id;
                         $i->save();

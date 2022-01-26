@@ -9,8 +9,7 @@
     ">
     {$url = $conference->getPhoto()}
     {if="$url"}
-        <span class="primary icon bubble color small
-            {$conference->name|stringToColor}"
+        <span class="primary icon bubble small"
             id="{$conference->conference|cleanupId}-rooms-primary"
             style="background-image: url({$url});">
             {autoescape="off"}

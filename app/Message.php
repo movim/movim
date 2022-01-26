@@ -3,7 +3,7 @@
 namespace App;
 
 use Movim\Model;
-use Movim\Picture;
+use Movim\Image;
 use Movim\Route;
 
 use Illuminate\Database\QueryException;
@@ -277,10 +277,11 @@ class Message extends Model
                     if (substr((string)$results[0], 0, 10) == 'data:image') {
                         $str = explode('base64,', $results[0]);
                         if (isset($str[1])) {
-                            $p = new Picture;
+                            $p = new Image;
                             $p->fromBase(urldecode($str[1]));
                             $key = sha1(urldecode($str[1]));
-                            $p->set($key, 'png');
+                            $p->setKey($key);
+                            $p->save(false, false, 'png');
 
                             $this->sticker = $key;
                         }

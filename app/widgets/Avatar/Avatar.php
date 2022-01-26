@@ -1,9 +1,8 @@
 <?php
 
+use Movim\Image;
 use Moxl\Xec\Action\Avatar\Get;
 use Moxl\Xec\Action\Avatar\Set;
-
-use Movim\Picture;
 
 class Avatar extends \Movim\Widget\Base
 {
@@ -65,15 +64,18 @@ class Avatar extends \Movim\Widget\Base
 
     public function ajaxSubmit($avatar)
     {
-        $p = new Picture;
+        $tempKey = \generateKey(6);
+
+        $p = new Image;
         $p->fromBase($avatar->photobin->value);
+        $p->setKey($tempKey);
+        $p->save(false, false, 'jpeg', 60);
 
-        $p->set('temp', 'jpeg', 60);
-
-        $p = new Picture;
-        $p->get('temp');
+        // Reload
+        $p->load();
 
         $r = new Set;
         $r->setData($p->toBase())->request();
+        $p->remove();
     }
 }

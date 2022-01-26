@@ -13,7 +13,7 @@ use Moxl\Xec\Action\Bookmark\Synchronize;
 use Moxl\Xec\Payload\Packet;
 
 use Movim\Widget\Base;
-use Movim\Picture;
+use Movim\Image;
 
 use App\Conference;
 use App\Info;
@@ -124,13 +124,15 @@ class RoomsUtils extends Base
             return;
         }
 
-        $p = new Picture;
+        $tempKey = \generateKey(6);
+
+        $p = new Image;
         $p->fromBase($form->photobin->value);
+        $p->setKey($tempKey);
+        $p->save(false, false, 'jpeg', 60);
 
-        $p->set('temp', 'jpeg', 60);
-
-        $p = new Picture;
-        $p->get('temp');
+        // Reload
+        $p->load();
 
         $vcard = new stdClass;
         $vcard->photobin = new stdClass;

@@ -1,5 +1,6 @@
 <?php
 
+use Movim\Image;
 use Movim\Widget\Base;
 
 use Moxl\Xec\Action\Pubsub\GetConfig;
@@ -7,8 +8,6 @@ use Moxl\Xec\Action\Pubsub\SetConfig;
 use Moxl\Xec\Action\Avatar\Set as AvatarSet;
 
 use Respect\Validation\Validator;
-
-use Movim\Picture;
 
 class CommunityConfig extends Base
 {
@@ -80,14 +79,18 @@ class CommunityConfig extends Base
 
         $key = $origin.$node.'avatar';
 
-        $p = new Picture;
+        $p = new Image;
         $p->fromBase($form->photobin->value);
-        $p->set($key, 'jpeg', 60);
+        $p->setKey($key);
+        $p->save(false, false, 'jpeg', 60);
+
+        // Reload the freshly compressed picture
+        $p->load();
 
         $r = new AvatarSet;
         $r->setTo($origin)
           ->setNode($node)
-          ->setUrl($p->getOriginal($key))
+          ->setUrl(Image::getOrCreate($key, false, false, 'jpeg', true))
           ->setData($p->toBase())->request();
     }
 

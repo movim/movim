@@ -3,10 +3,8 @@
 namespace App;
 
 use Movim\Model;
-use Movim\Picture;
+use Movim\Image;
 use Movim\Session;
-
-use App\PresenceBuffer;
 
 class Presence extends Model
 {
@@ -70,7 +68,7 @@ class Presence extends Model
 
     public function getConferencePictureAttribute()
     {
-        return (new Picture)->get($this->mucjid, 120);
+        return Image::getOrCreate($this->mucjid, 120);
     }
 
     public function getConferenceColorAttribute()
