@@ -1118,7 +1118,7 @@ class Chat extends \Movim\Widget\Base
             } else {
                 $p = new Image;
                 $p->setKey($message->sticker);
-                $p->load();
+                $p->load('png');
                 $stickerSize = $p->getGeometry();
 
                 $message->sticker = [

@@ -757,7 +757,7 @@ function compileStickers(): int
 
         if ($key != 'icon') {
             $count++;
-            copy($path, PUBLIC_CACHE_PATH.hash(Image::$hash, $key).'.png');
+            copy($path, PUBLIC_CACHE_PATH.hash(Image::$hash, $key).'_o.png');
         }
     }
 
