@@ -244,6 +244,14 @@ class Message
             $file, false, $parentId, $reactions, $originId, $threadId, $messageOMEMO);
     }
 
+    public static function simpleMessage($to, $content = false, $html = false, $id = false,
+    $replace = false, $file = false, $parentId = false, array $reactions = [],
+    $originId = false, $threadId = false, ?MessageOmemoHeader $messageOMEMO = null)
+    {
+        self::maker($to, $content, $html, 'chat', false, false, $id, $replace,
+            $file, false, $parentId, $reactions, $originId, $threadId, $messageOMEMO);
+    }
+
     public static function receipt($to, $id)
     {
         self::maker($to, false, false, 'chat', false, 'received', $id);

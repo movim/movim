@@ -21,7 +21,7 @@ class Reactions extends Action
         if ($this->_muc) {
             Muc::message($this->_to, false, false, $this->_id, false, false, $this->_parentid, $this->_reactions);
         } else {
-            Message::message($this->_to, false, false, $this->_id, false, false, $this->_parentid, $this->_reactions);
+            Message::simpleMessage($this->_to, false, false, $this->_id, false, false, $this->_parentid, $this->_reactions);
         }
     }
 
