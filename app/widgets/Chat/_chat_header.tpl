@@ -102,7 +102,7 @@
                                     {$value->resource}
                                 </span>{if="$key < $connected->count() -1"}, {/if}
                             {/loop}
-                        {else}
+                        {elseif="!empty($conference->subject)"}
                             {$conference->subject}
                         {/if}
                     {/if}
