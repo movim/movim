@@ -411,6 +411,17 @@ class Message extends Model
                 ->where('id', (string)$stanza->reactions->attributes()->to)
                 ->first();
 
+            // Specific case if the user is reacting to its own message
+            if (!$parentMessage && !$this->isMuc()) {
+                $parentMessage = \App\Message::jid($this->jidfrom)
+                    ->where('originid', (string)$stanza->reactions->attributes()->to)
+                    ->first();
+
+                if ($parentMessage && $parentMessage->jidfrom != $this->jidfrom) {
+                    $parentMessage == null;
+                }
+            }
+
             if ($parentMessage) {
                 $resource = $this->isMuc()
                     ? $this->resource

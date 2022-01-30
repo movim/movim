@@ -677,7 +677,9 @@ class Chat extends \Movim\Widget\Base
                 ? $parentMessage->jidfrom
                 : $parentMessage->jidto)
               ->setId(\generateUUID())
-              ->setParentId($parentMessage->isMuc() ? $parentMessage->id : $parentMessage->originid)
+              ->setParentId(!$parentMessage->isMuc() && $parentMessage->originid
+                ? $parentMessage->originid
+                : $parentMessage->id)
               ->setReactions($newEmojis->pluck('emoji')->toArray());
 
             if ($parentMessage->type == 'groupchat') {
