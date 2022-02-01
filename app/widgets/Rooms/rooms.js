@@ -37,13 +37,15 @@ var Rooms = {
 
         if (input && input.value != '' && !input.value.includes('@')) {
             let suggestions = document.querySelector('datalist#suggestions');
-            suggestions.textContent = '';
+            if (suggestions) {
+                suggestions.textContent = '';
 
-            Rooms.default_services.forEach(function(item) {
-               var option = document.createElement('option');
-               option.value = input.value + '@' + item.server;
-               suggestions.appendChild(option);
-            });
+                Rooms.default_services.forEach(function(item) {
+                   var option = document.createElement('option');
+                   option.value = input.value + '@' + item.server;
+                   suggestions.appendChild(option);
+                });
+            }
         }
     },
 

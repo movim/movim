@@ -21,7 +21,10 @@ use App\Info;
 use Respect\Validation\Validator;
 use Cocur\Slugify\Slugify;
 use Movim\EmbedLight;
+use Movim\Session;
 use Moxl\Xec\Action\Muc\ChangeAffiliation;
+use Moxl\Xec\Action\Presence\Muc;
+use Moxl\Xec\Action\Presence\Unavailable;
 
 include_once WIDGETS_PATH.'Chat/Chat.php';
 
@@ -40,6 +43,10 @@ class RoomsUtils extends Base
         $this->registerEvent('muc_changeaffiliation_handle', 'onAffiliationChanged');
         $this->registerEvent('muc_changeaffiliation_errornotallowed', 'onAffiliationChangeUnauthorized');
         $this->registerEvent('message_invite_error', 'onInviteError');
+
+        $this->registerEvent('presence_muc_create_handle', 'onMucCreated');
+        $this->registerEvent('presence_muc_errornotallowed', 'onPresenceMucNotAllowed');
+        $this->registerEvent('presence_muc_errorgone', 'onPresenceMucNotAllowed');
 
         $this->addjs('roomsutils.js');
     }
@@ -150,6 +157,16 @@ class RoomsUtils extends Base
         Toast::send($this->__('avatar.updated'));
     }
 
+    public function onMucCreated($packet)
+    {
+        $this->rpc('RoomsUtils.configureCreatedRoom');
+    }
+
+    public function onPresenceMucNotAllowed($packet)
+    {
+        Toast::send($this->__('chatrooms.notallowed'));
+    }
+
     /**
      * @brief Affiliation changed for a user
      */
@@ -193,6 +210,8 @@ class RoomsUtils extends Base
      */
     public function onChatroomCreated($packet)
     {
+        Toast::send($this->__('chatrooms.created'));
+
         $values = $packet->content;
 
         $conference = $this->user->session->conferences()
@@ -214,6 +233,19 @@ class RoomsUtils extends Base
         $b = new Set;
         $b->setConference($conferenceSave)
             ->request();
+
+        // Disconnect properly
+        $nick = $values['nick'] ?? $this->user->session->username;
+        $session = Session::start();
+        $session->remove($values['jid'] . '/' .$nick);
+
+        $pu = new Unavailable;
+        $pu->setTo($values['jid'])
+           ->setResource($nick)
+           ->request();
+
+        $this->user->session->presences()->where('jid', $values['jid'])->delete();
+        //$this->rpc('RoomsUtils.configureDisconnect', $values['jid']);
 
         $this->rpc('Dialog_ajaxClear');
     }
@@ -331,13 +363,26 @@ class RoomsUtils extends Base
         } elseif (trim($form->name->value) == '') {
             Toast::send($this->__('chatrooms.empty_name'));
         } else {
+            $m = new Muc;
+            $m->enableCreate()
+              ->setTo(strtolower($form->jid->value))
+              ->setNickname($form->nick->value ?? $this->user->session->username)
+              ->request();
+        }
+    }
+
+    public function ajaxConfigureCreated($form)
+    {
+        if (!$this->validateRoom($form->jid->value)) {
+            Toast::send($this->__('chatrooms.bad_id'));
+        } else {
             if ($form->type->value == 'groupchat') {
                 $cgc = new CreateGroupChat;
                 $cgc->setTo(strtolower($form->jid->value))
                     ->setName($form->name->value)
                     ->setAutoJoin($form->autojoin->value)
                     ->setPinned($form->pinned->value)
-                    ->setNick($form->nick->value)
+                    ->setNick($form->nick->value ?? $this->user->session->username)
                     ->setNotify((int)array_flip(Conference::$notifications)[$form->notify->value])
                     ->request();
             } elseif ($form->type->value == 'channel') {

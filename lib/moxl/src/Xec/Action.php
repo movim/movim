@@ -25,7 +25,10 @@ abstract class Action extends Payload
     {
         if (substr($name, 0, 3) == 'set') {
             $property = '_' . strtolower(substr($name, 3));
-            $this->$property = $args[0];
+
+            if (array_key_exists(0, $args)) {
+                $this->$property = $args[0];
+            }
 
             return $this;
         }

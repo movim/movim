@@ -13,6 +13,7 @@ class Muc extends Action
     protected $_nickname;
     protected $_mam = false;
     protected $_mam2 = false;
+    protected $_create = false;
 
     // Disable the event
     protected $_notify = true;
@@ -38,6 +39,12 @@ class Muc extends Action
         $session->set($this->_to . '/' .$this->_nickname, $this->stanzaId);
 
         Presence::muc($this->_to, $this->_nickname, $this->_mam);
+    }
+
+    public function enableCreate()
+    {
+        $this->_create = true;
+        return $this;
     }
 
     public function enableMAM()
@@ -92,10 +99,18 @@ class Muc extends Action
             $g->request();
         }
 
-        PresenceBuffer::getInstance()->append($presence, function () use ($presence) {
-            $this->pack([$presence, $this->_notify]);
+        if ($this->_create) {
+            $presence->save();
+
+            $this->method('create_handle');
+            $this->pack($presence);
             $this->deliver();
-        });
+        } else {
+            PresenceBuffer::getInstance()->append($presence, function () use ($presence) {
+                $this->pack([$presence, $this->_notify]);
+                $this->deliver();
+            });
+        }
     }
 
     public function errorRegistrationRequired($stanza, $parent = false)
@@ -111,6 +126,18 @@ class Muc extends Action
     }
 
     public function errorNotAuthorized($stanza, $parent = false)
+    {
+        $this->pack($this->_to);
+        $this->deliver();
+    }
+
+    public function errorGone($stanza, $parent = false)
+    {
+        $this->pack($this->_to);
+        $this->deliver();
+    }
+
+    public function errorNotAllowed($stanza, $parent = false)
     {
         $this->pack($this->_to);
         $this->deliver();

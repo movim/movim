@@ -22,7 +22,9 @@ var Search = {
 
         if (key == '') {
             document.querySelectorAll(selector + ':nth-child(-n+' + (Search.rosterLimit+1) + ')').forEach(item => item.classList.add('found'));
-            document.querySelector(selector + ':last-child').classList.add('found');
+            if (document.querySelector(selector + ':last-child')) {
+                document.querySelector(selector + ':last-child').classList.add('found');
+            }
         };
 
         var founds = document.querySelectorAll(

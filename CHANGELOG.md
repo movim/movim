@@ -54,6 +54,7 @@ v0.20 (trunk)
 * Prepare PHP 8.1 support
 * Movim can now be installed as a Progressive Web App
 * Rewrite Picture to Image and add transparent images support, default pictures are compressed to webp
+* Implement the MUC creation flow https://xmpp.org/extensions/xep-0045.html#createroom, fix #1039
 
 v0.19
 ---------------------------
