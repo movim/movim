@@ -1101,10 +1101,10 @@ class Chat extends \Movim\Widget\Base
 
         // XEP-0393
         // $message->body = (preg_replace ('/```((.|\n)*?)(```|\z)/', "<pre>$1</pre>", $message->body));
-        $message->body = (preg_replace ('/(?<!\S)(`(?!`).*?`)(?!\S)/', "<code>$1</code>", $message->body));
-        $message->body = (preg_replace ('/(?<!\S)(\*.*?\*)(?!\S)/', "<b>$1</b>", $message->body));
-        $message->body = (preg_replace ('/(?<!\S)(_.*?_)(?!\S)/', "<em>$1</em>", $message->body));
-        $message->body = (preg_replace ('/(?<!\S)(~.*?~)(?!\S)/', "<s>$1</s>", $message->body));
+        $message->body = (preg_replace ('/(?<=^|[\s,\*,_,~])(`(?!\s).+?(?<!\s)`)/', "$1</code>", $message->body));
+        $message->body = (preg_replace ('/(?<=^|[\s,_,`,~])(\*(?!\s).+?(?<!\s)\*)/', "<b>$1</b>", $message->body));
+        $message->body = (preg_replace ('/(?<=^|[\s,\*,`,~])(_(?!\s).+?(?<!\s)_)/', "<em>$1</em>", $message->body));
+        $message->body = (preg_replace ('/(?<=^|[\s,\*,_,`])(~(?!\s).+?(?<!\s)~)/', "<s>$1</s>", $message->body));
 
         // Sticker message
         if (isset($message->sticker)) {
