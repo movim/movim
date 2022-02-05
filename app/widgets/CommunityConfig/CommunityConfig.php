@@ -85,13 +85,14 @@ class CommunityConfig extends Base
         $p->save(false, false, 'jpeg', 60);
 
         // Reload the freshly compressed picture
-        $p->load();
+        $p->load('jpeg');
 
         $r = new AvatarSet;
         $r->setTo($origin)
           ->setNode($node)
           ->setUrl(Image::getOrCreate($key, false, false, 'jpeg', true))
-          ->setData($p->toBase())->request();
+          ->setData($p->toBase())
+          ->request();
     }
 
     public function ajaxGetConfig($origin, $node, $advanced = false)

@@ -204,7 +204,7 @@ class Image
                 $this->_im->setInterlaceScheme(\Imagick::INTERLACE_PLANE);
 
                 // Put 11 as a value for now, see http://php.net/manual/en/imagick.flattenimages.php#116956
-                $this->_im->setImageAlphaChannel(Imagick::ALPHACHANNEL_REMOVE);
+                $this->_im->setImageAlphaChannel(\Imagick::ALPHACHANNEL_REMOVE);
                 //$this->_im->setImageAlphaChannel(11);
                 $this->_im->setImageBackgroundColor('#ffffff');
             }

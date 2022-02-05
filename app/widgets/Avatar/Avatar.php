@@ -64,18 +64,18 @@ class Avatar extends \Movim\Widget\Base
 
     public function ajaxSubmit($avatar)
     {
-        $tempKey = \generateKey(6);
-
         $p = new Image;
         $p->fromBase($avatar->photobin->value);
-        $p->setKey($tempKey);
+        $p->setKey($this->user->id.'avatar');
         $p->save(false, false, 'jpeg', 60);
 
         // Reload
-        $p->load();
+        $p->load('jpeg');
 
         $r = new Set;
         $r->setData($p->toBase())->request();
         $p->remove();
+
+        $p->remove('jpeg');
     }
 }
