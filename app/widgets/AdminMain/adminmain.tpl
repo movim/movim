@@ -134,23 +134,6 @@
         <label for="xmppdescription">{$c->__('xmpp.description')}</label>
     </div>
 
-    <div>
-        <div class="select">
-            <select id="xmppcountry" name="xmppcountry">
-                <option value="">{$c->__('xmpp.country_pick')}</option>
-                {loop="$countries"}
-                    <option value="{$key}"
-                    {if="$conf->xmppcountry == $key"}
-                        selected="selected"
-                    {/if}>
-                        {$value}
-                    </option>
-                {/loop}
-            </select>
-        </div>
-        <label for="xmppcountry">{$c->__('xmpp.country')}</label>
-    </div>
-
     <br />
 
     <h3>{$c->__('whitelist.title')}</h3>
@@ -215,6 +198,7 @@
         </li>
     </ul>
 
+    <!-- Firebase is currently disabled
     <h3>{$c->__('firebase.title')}</h3>
 
     <div>
@@ -240,6 +224,7 @@
             </div>
         </li>
     </ul>
+    -->
 
     <input
     type="submit"

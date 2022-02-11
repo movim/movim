@@ -24,7 +24,6 @@ class Configuration extends Model
         'password',
         'xmppdomain',
         'xmppdescription',
-        'xmppcountry',
         'xmppwhitelist'
     ];
 

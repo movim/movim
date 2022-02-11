@@ -65,12 +65,6 @@ class ConfigCommand extends Command
                 'The default XMPP server description'
             )
             ->addOption(
-                'xmppcountry',
-                null,
-                InputOption::VALUE_REQUIRED,
-                'The default XMPP server country'
-            )
-            ->addOption(
                 'xmppwhitelist',
                 null,
                 InputOption::VALUE_REQUIRED,
