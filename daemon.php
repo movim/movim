@@ -7,7 +7,7 @@ require dirname(__FILE__) . '/vendor/autoload.php';
 use Symfony\Component\Console\Application;
 
 $bootstrap = new Movim\Bootstrap;
-$bootstrap->boot($argv[1] == 'help');
+$bootstrap->boot(isset($argv[1]) && $argv[1] == 'help');
 
 $application = new Application;
 $application->add(new Movim\Console\ConfigCommand);
