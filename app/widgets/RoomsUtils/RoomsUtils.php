@@ -98,7 +98,7 @@ class RoomsUtils extends Base
             $query->select('jid')
                 ->from('members')
                 ->where('conference', $room);
-        })->count() > 0);
+        })->count() > 0 && $conference->isGroupChat());
 
         $view->assign('hasfingerprints', $hasFingerprints);
 
