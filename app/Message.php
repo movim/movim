@@ -452,8 +452,9 @@ class Message extends Model
 
                 try {
                     Reaction::insert($emojis);
-                } catch (QueryException $exception) {
+                } catch (QueryException $e) {
                     // Duplicate ?
+                    \Utils::error($e->getMessage());
                 }
 
                 return $parentMessage;
