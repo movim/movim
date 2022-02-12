@@ -8,8 +8,10 @@ class Upload extends Base
 {
     public function load()
     {
-        $this->addjs('upload.js');
-        $this->addcss('upload.css');
+        if ($this->user->hasUpload()) {
+            $this->addjs('upload.js');
+            $this->addcss('upload.css');
+        }
 
         $this->registerEvent('upload_request_handle', 'onRequested');
         $this->registerEvent('upload_request_error', 'onError');

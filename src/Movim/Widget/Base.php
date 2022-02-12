@@ -32,9 +32,8 @@ class Base
             $this->_view = $view;
         }
 
-        $this->load();
-
         $this->user = \App\User::me();
+        $this->load();
         $this->name = get_class($this);
 
         // If light loading enabled, we stop here
