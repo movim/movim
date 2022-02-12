@@ -8,7 +8,7 @@
             </li>
             {loop="$fingerprints"}
                 <li>
-                    <span class="primary icon gray" id="sessionicon_{$value->bundleid}">
+                    <span class="primary icon gray" id="sessionicon_{$value->jid}_{$value->bundleid}">
                         <i class="material-icons">fingerprint</i>
                     </span>
                     <span class="control">
@@ -16,10 +16,10 @@
                             <input
                                 type="checkbox"
                                 data-identifier="{$value->jid}.{$value->bundleid}"
-                                id="sessionstate_{$value->bundleid}"
-                                name="sessionstate_{$value->bundleid}"
+                                id="sessionstate_{$value->jid|cleanupId}_{$value->bundleid}"
+                                name="sessionstate_{$value->jid|cleanupId}_{$value->bundleid}"
                                 onchange="ContactActions.toggleFingerprintState(this)"/>
-                            <label for="sessionstate_{$value->bundleid}"></label>
+                            <label for="sessionstate_{$value->jid|cleanupId}_{$value->bundleid}"></label>
                         </div>
                     </span>
                     <div>

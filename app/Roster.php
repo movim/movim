@@ -15,6 +15,15 @@ class Roster extends Model
         'session_id'    => SESSION_ID
     ];
 
+    public function save(array $options = [])
+    {
+        try {
+            parent::save($options);
+        } catch (\Exception $e) {
+            \Utils::error($e->getMessage());
+        }
+    }
+
     public function session()
     {
         return $this->hasOne('App\Session');

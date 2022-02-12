@@ -391,4 +391,8 @@
     {if="$conference->links()->count() > 0"}
         <div class="tabelem spin" title="{$c->__('general.links')}" id="room_links"></div>
     {/if}
+
+    {if="$hasfingerprints"}
+        <div class="tabelem spin" title="{$c->__('omemo.fingerprints_title')}" id="room_omemo_fingerprints"></div>
+    {/if}
 </section>

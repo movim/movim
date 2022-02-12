@@ -13,7 +13,7 @@ class Presence extends Payload
         // Subscribe request
         if ((string)$stanza->attributes()->type == 'subscribe') {
             $session = Session::start();
-            $notifs = $session->get('activenotifs');
+            $notifs = $session->get('activenotifs', []);
 
             $notifs[(string)$stanza->attributes()->from] = 'sub';
             $session->set('activenotifs', $notifs);

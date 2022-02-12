@@ -16,6 +16,7 @@ use Movim\Widget\Base;
 use Movim\Image;
 
 use App\Conference;
+use App\Contact;
 use App\Info;
 
 use Respect\Validation\Validator;
@@ -93,6 +94,14 @@ class RoomsUtils extends Base
 
         $view->assign('me', $this->user->id);
 
+        $hasFingerprints = ($this->user->bundles()->whereIn('jid', function ($query) use ($room) {
+            $query->select('jid')
+                ->from('members')
+                ->where('conference', $room);
+        })->count() > 0);
+
+        $view->assign('hasfingerprints', $hasFingerprints);
+
         Drawer::fill($view->draw('_rooms_drawer'));
         $this->rpc('Tabs.create');
 
@@ -103,6 +112,37 @@ class RoomsUtils extends Base
         if ($linksCount > 0) {
             $this->rpc('RoomsUtils_ajaxHttpGetLinks', $room);
         }
+
+        if ($hasFingerprints) {
+            $this->rpc('RoomsUtils.getDrawerFingerprints', $room);
+        }
+    }
+
+    public function ajaxGetDrawerFingerprints($room, $deviceId)
+    {
+        $fingerprints = $this->user->bundles()
+                                   ->whereIn('jid', function ($query) use ($room) {
+                                        $query->select('jid')
+                                            ->from('members')
+                                            ->where('conference', $room);
+                                   })
+                                   ->with('capability.identities')
+                                   ->get()
+                                   ->mapToGroups(function ($tuple) {
+                                      return [$tuple['jid'] => $tuple];
+                                   });
+
+        $tpl = $this->tpl();
+        $tpl->assign('fingerprints', $fingerprints);
+        $tpl->assign('deviceid', $deviceId);
+        $tpl->assign('clienttype', getClientTypes());
+        $tpl->assign('contacts', Contact::whereIn('id', $fingerprints->keys())->get()->keyBy('id'));
+
+        $this->rpc('MovimTpl.fill', '#room_omemo_fingerprints', $tpl->draw('_rooms_drawer_fingerprints'));
+        foreach ($fingerprints as $jid => $value) {
+            $this->rpc('ContactActions.resolveSessionsStates', $jid, true);
+        }
+        $this->rpc('RoomsUtils.resolveRoomEncryptionState', $room);
     }
 
     /**

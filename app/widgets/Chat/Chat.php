@@ -411,8 +411,6 @@ class Chat extends \Movim\Widget\Base
 
             // OMEMO
             if ($conference->isGroupChat()) {
-                $sessions = [];
-
                 $this->rpc('Chat.setGroupChatMembers', $conference->members->pluck('jid')->toArray());
                 $this->rpc(
                     'Chat.setBundlesIds',
