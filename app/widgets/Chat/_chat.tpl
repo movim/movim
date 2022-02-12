@@ -16,7 +16,7 @@
         </div>
     </section>
 </div>
-<div class="chat_box">
+<div class="chat_box {if="isset($conference) && $conference->presence && $conference->presence->mucrole == 'visitor'"}disabled{/if}">
     <a id="scroll_down" class="button action color small semi" onclick="Chat.scrollTotally()">
         <i class="material-icons">expand_more</i>
     </a>
@@ -80,7 +80,9 @@
                         data-muc="{if="$muc"}true{/if}"
                         data-muc-group="{if="isset($conference) && $conference->isGroupChat()"}true{/if}"
                         {$rand = rand(0, 2)}
-                        {if="$rand == 2 && (!$muc || $conference && $conference->isGroupChat())"}
+                        {if="isset($conference) && $conference->presence && $conference->presence->mucrole == 'visitor'"}
+                            placeholder="{$c->__('message.visitor_help')}"
+                        {elseif="$rand == 2 && (!$muc || $conference && $conference->isGroupChat())"}
                             placeholder="{$c->__('message.edit_help')}"
                         {elseif="$rand == 1"}
                             placeholder="{$c->__('message.emoji_help')}"
