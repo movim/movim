@@ -179,7 +179,7 @@ class RoomsUtils extends Base
         $p->save(false, false, 'jpeg', 60);
 
         // Reload
-        $p->load();
+        $p->load('jpeg');
 
         $vcard = new stdClass;
         $vcard->photobin = new stdClass;
