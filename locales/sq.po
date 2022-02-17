@@ -1,7 +1,7 @@
 #
 # Translators:
 # Besnik Bleta <besnik@programeshqip.org>, 2018
-# Besnik Bleta <besnik@programeshqip.org>, 2020-2021
+# Besnik Bleta <besnik@programeshqip.org>, 2018,2020-2021
 # Besnik Bleta <besnik@programeshqip.org>, 2018-2020
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
@@ -111,8 +111,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-20 21:05+0200\n"
-"PO-Revision-Date: 2022-01-20 19:38+0000\n"
+"POT-Creation-Date: 2022-02-17 08:56+0200\n"
+"PO-Revision-Date: 2022-02-17 07:57+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Albanian (http://www.transifex.com/movim/movim/language/sq/)\n"
 "Language: sq\n"
@@ -341,11 +341,11 @@ msgstr "Përshkrim i përgjithshëm i instancës"
 
 #: [information]banner
 msgid "Main banner"
-msgstr ""
+msgstr "Banderolë kryesore"
 
 #: [information]banner_info
 msgid "Ensure that the picture is not too large and can be reached from any webpages"
-msgstr ""
+msgstr "Siguroni që fotoja të mos jetë shumë e madhe dhe të mund të kapet pre cilësdo faqeje web"
 
 #: [information]info1
 msgid "This message will be displayed on the login page. It can be used to link the Terms and Conditions of your Movim instance for example."
@@ -588,6 +588,10 @@ msgstr "↑ që të përpunoni mesazhin tuaj të mëparshëm"
 msgid ":shortcut: to insert an emoji"
 msgstr ":shkurtore: që të futni një emoxhi"
 
+#: [message]visitor_help
+msgid "You are not allowed to send messages in this conference"
+msgstr ""
+
 #: [chat]attention
 msgid "%s needs your attention"
 msgstr "%s lyp vëmendjen tuaj"
@@ -664,7 +668,7 @@ msgstr "Do të fshini %s mesazhe, jeni i sigurt?"
 
 #: [chat]action_impossible_encrypted
 msgid "Action impossible in encrypted chats"
-msgstr ""
+msgstr "Veprim i pamundur në fjalosje të fshehtëzuara"
 
 #: [chatroom]members
 msgid "Members"
@@ -700,19 +704,19 @@ msgstr "Administrim"
 
 #: [omemo]fingerprints_title
 msgid "Fingerprints"
-msgstr ""
+msgstr "Shenja gishtash"
 
 #: [omemo]fingerprints
 msgid "OMEMO Fingerprints"
-msgstr ""
+msgstr "Shenja gishtash OMEMO"
 
 #: [omemo]generating_bundle
 msgid "Generating the encryption keys, please wait…"
-msgstr ""
+msgstr "Po prodhohen kyçet e fshehtëzimit, ju lutemi, pritni…"
 
 #: [omemo]generated_bundle
 msgid "Encryption keys generated"
-msgstr ""
+msgstr "Kyçet e fshehtëzimit u prodhuan"
 
 #: [omemo]resolving_devices
 msgid "Resolving OMEMO devices"
@@ -728,27 +732,27 @@ msgstr ""
 
 #: [omemo]encrypted_disabled
 msgid "Encryption disabled"
-msgstr ""
+msgstr "Fshehtëzimi u çaktivizua"
 
 #: [omemo]encrypted_loading
 msgid "Send a message to build the encrypted session"
-msgstr ""
+msgstr "Që të krijohet sesioni i fshehtëzuar, dërgoni një mesazh"
 
 #: [omemo]enable_contact
 msgid "Enabling encryption for the contact"
-msgstr ""
+msgstr "Po aktivizohet fshehtëzimi për kontaktin"
 
 #: [omemo]disable_contact
 msgid "Disabling encryption for the contact"
-msgstr ""
+msgstr "Po çaktivizohet fshehtëzimi për kontaktin"
 
 #: [omemo]last_activity
 msgid "Last activity"
-msgstr ""
+msgstr "Veprimtaria e fundit"
 
 #: [omemo]sessions_built
 msgid "%s sessions built"
-msgstr ""
+msgstr "%s sesione të krijuar"
 
 #: [chats]empty_title
 msgid "No chats yet…"
@@ -856,7 +860,7 @@ msgstr "Pajtime"
 
 #: [communityaffiliation]public_subscriptions
 msgid "Public subscriptions"
-msgstr ""
+msgstr "Pajtime publike"
 
 #: [communityaffiliation]subscriptions_text
 msgid "My Communities subscriptions"
@@ -1001,7 +1005,7 @@ msgstr "Këtu do të jeni në gjendje të administroni krejt pajtimet tuaja."
 
 #: [communitysubscriptions]empty_text2
 msgid "You don’t have any community subscriptions yet."
-msgstr ""
+msgstr "Ende s’keni ndonjë pajtim në bashkësi."
 
 #: [config]general
 msgid "General"
@@ -1177,7 +1181,7 @@ msgstr "Foto"
 
 #: [general]links
 msgid "Links"
-msgstr ""
+msgstr "Lidhje"
 
 #: [position]legend
 msgid "Geographic Position"
@@ -1209,7 +1213,7 @@ msgstr "Parë së fundi"
 
 #: [clients]title
 msgid "Clients"
-msgstr ""
+msgstr "Klientë"
 
 #: [clients]title_full
 msgid "Clients information"
@@ -1329,15 +1333,15 @@ msgstr "Duke hapur panelin e kërkimeve."
 
 #: [apps]title
 msgid "Applications"
-msgstr ""
+msgstr "Aplikacione"
 
 #: [apps]install
 msgid "Movim App"
-msgstr ""
+msgstr "Aplikacion Movim"
 
 #: [apps]install_text
 msgid "Install Movim on your device"
-msgstr ""
+msgstr "Instaloni Movim-in në pajisjen tuaj"
 
 #: [apps]recommend
 msgid "We also recommend"
@@ -1805,7 +1809,7 @@ msgstr "Hyni në një dhomë vetjake fjalosjeje"
 
 #: [rooms]empty_text1
 msgid "You don’t have any chatrooms yet."
-msgstr ""
+msgstr "Ende s’keni ndonjë dhomë bisedash."
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
@@ -1837,7 +1841,7 @@ msgstr "Dhomë kanali"
 
 #: [rooms]show_all
 msgid "Show all rooms"
-msgstr ""
+msgstr "Shfaqi krejt dhomat"
 
 #: [rooms]hide_disconnected
 msgid "Hide disconnected rooms"
@@ -1849,17 +1853,17 @@ msgstr "Asgjësoje dhomën"
 
 #: [rooms]destroy_text
 msgid "Are you sure you want to permanently destroy the following room?"
-msgstr ""
+msgstr "Jeni i sigurt se doni të asgjësohet përgjithnjë dhoma vijuese?"
 
 #: [rooms]owner
 msgctxt "[rooms]owner"
 msgid "Owner"
-msgstr ""
+msgstr "Pronar"
 
 #: [rooms]admin
 msgctxt "[rooms]admin"
 msgid "Admin"
-msgstr ""
+msgstr "Përgjegjës"
 
 #: [rooms]visitor
 msgid "Visitor"
@@ -1875,7 +1879,7 @@ msgstr "Dhoma fjalosjeje"
 
 #: [chatrooms]id
 msgid "Chatroom ID"
-msgstr ""
+msgstr "ID Dhome Bisedash"
 
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
@@ -1895,7 +1899,7 @@ msgstr "U njëkohësuan %s dhoma"
 
 #: [chatrooms]not_synchronized
 msgid "No rooms to synchronize found"
-msgstr ""
+msgstr "S’u gjet dhomë për njëkohësim"
 
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
@@ -1909,7 +1913,7 @@ msgstr "Anëtarë"
 
 #: [chatrooms]banned
 msgid "Banned"
-msgstr ""
+msgstr "I dëbuar"
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a correct nickname (2 to 40 characters)"
@@ -1925,7 +1929,7 @@ msgstr "Hyr në këtë dhomë bisedash gjatë lidhjes"
 
 #: [chatrooms]pinned
 msgid "Pin this chatroom"
-msgstr ""
+msgstr "Fiksoje këtë dhome fjalosjesh"
 
 #: [chatrooms]destroyed
 msgid "Room destroyed"
@@ -1945,18 +1949,26 @@ msgstr "Lypset një fjalëkalim"
 
 #: [chatrooms]forbidden
 msgid "You are not allowed to join this chatroom"
-msgstr ""
+msgstr "S’keni leje të hyni në këtë dhomë fjalosjesh"
 
 #: [chatrooms]jidmalformed
 msgid "Your nickname is not valid"
-msgstr ""
+msgstr "Nofka juaj s’është e vlefshme"
 
 #: [chatrooms]notacceptable
 msgid "Not acceptable"
-msgstr ""
+msgstr "I papranueshëm"
 
 #: [chatrooms]serviceunavailable
 msgid "The chatroom occupant limit has been reached"
+msgstr "Është mbërritur në kufirin e pjesëmarrësve në dhomë"
+
+#: [chatrooms]notallowed
+msgid "You are not allowed to create a chatroom there"
+msgstr ""
+
+#: [chatrooms]created
+msgid "Chatroom created"
 msgstr ""
 
 #: [bookmarks]updated
@@ -2026,27 +2038,27 @@ msgstr "Anëtarë"
 
 #: [room]banned_add
 msgid "Ban someone"
-msgstr ""
+msgstr "Dëboni dikë"
 
 #: [room]banned_remove
 msgid "Unban"
-msgstr ""
+msgstr "Hiqini dëbimin"
 
 #: [room]change_affiliation
 msgid "Change the user affiliation"
-msgstr ""
+msgstr "Ndryshoni përshoqërimin e përdoruesit"
 
 #: [room]change_affiliation_unauthorized
 msgid "You are not authorized to change this affiliation"
-msgstr ""
+msgstr "S’jeni i autorizuar të ndryshoni këtë përshoqërim"
 
 #: [room]affiliation
 msgid "Affiliation"
-msgstr ""
+msgstr "Përshoqërim"
 
 #: [room]reason
 msgid "Reason"
-msgstr ""
+msgstr "Arsye"
 
 #: [room]channel
 msgid "Channel"
@@ -2059,7 +2071,7 @@ msgstr "Përdorues"
 
 #: [room]channel_text
 msgid "Public channel that can be publicly discoverable and joinable"
-msgstr "Kanal publik që mund të zbulohet publikisht dhe në të të hyhet publikisht "
+msgstr "Kanal publik që mund të zbulohet publikisht dhe në të të hyhet publikisht"
 
 #: [room]notify_never
 msgid "Never notify"
@@ -2075,17 +2087,17 @@ msgstr "Njofto përherë"
 
 #: [room]pinned
 msgid "Pinned"
-msgstr ""
+msgstr "E fiksuar"
 
 #: [room]affiliation_owner
 msgctxt "[room]affiliation_owner"
 msgid "Owner"
-msgstr ""
+msgstr "Pronar"
 
 #: [room]affiliation_admin
 msgctxt "[room]affiliation_admin"
 msgid "Admin"
-msgstr ""
+msgstr "Përgjegjës"
 
 #: [room]affiliation_member [affiliation]member
 msgid "Member"
@@ -2097,23 +2109,23 @@ msgstr "Pa përshoqërim"
 
 #: [room]affiliation_owner_changed
 msgid "User granted as owner"
-msgstr ""
+msgstr "Përdoruesi u lejua si pronar."
 
 #: [room]affiliation_admin_changed
 msgid "User granted as admin"
-msgstr ""
+msgstr "Përdoruesi u lejua si përgjegjës"
 
 #: [room]affiliation_member_changed
 msgid "User granted as member"
-msgstr ""
+msgstr "Përdorues u lejua si anëtar"
 
 #: [room]affiliation_outcast_changed
 msgid "User banned"
-msgstr ""
+msgstr "Përdoruesi u dëbua"
 
 #: [room]affiliation_none_changed
 msgid "Affiliation removed for the user"
-msgstr ""
+msgstr "Për përdoruesin u hoq përshoqërim"
 
 #: [roomsexplore]no_local
 msgid "No chatrooms found locally"
@@ -2313,7 +2325,7 @@ msgstr "Nofka juaj duhet të përmbajë vetëm shkronja, numra, - dhe _"
 
 #: [profile]nickname_conflict
 msgid "The nickname is already registered"
-msgstr "Nofka është tashmë e regjistruar."
+msgstr "Nofka është tashmë e regjistruar"
 
 #: [profile]nickname_saved
 msgid "Nickname saved"
@@ -2655,7 +2667,7 @@ msgstr "Kopjo Lidhjen"
 
 #: [input]optional
 msgid "Optional"
-msgstr ""
+msgstr "Opsional"
 
 #: [day]title
 msgid "Day"

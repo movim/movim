@@ -111,8 +111,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-20 21:05+0200\n"
-"PO-Revision-Date: 2022-01-20 19:38+0000\n"
+"POT-Creation-Date: 2022-02-17 08:56+0200\n"
+"PO-Revision-Date: 2022-02-17 07:57+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/movim/movim/language/bg/)\n"
 "Language: bg\n"
@@ -341,11 +341,11 @@ msgstr "Основно описание на инстанцията"
 
 #: [information]banner
 msgid "Main banner"
-msgstr ""
+msgstr "Основен банер"
 
 #: [information]banner_info
 msgid "Ensure that the picture is not too large and can be reached from any webpages"
-msgstr ""
+msgstr "Уверете се, че картината не е твърде голяма и може да бъде достигната от всякакви уеб страници"
 
 #: [information]info1
 msgid "This message will be displayed on the login page. It can be used to link the Terms and Conditions of your Movim instance for example."
@@ -588,6 +588,10 @@ msgstr "↑ за да редактирате предишното си съоб�
 msgid ":shortcut: to insert an emoji"
 msgstr ":shortcut: за да вмъкнете емоджи"
 
+#: [message]visitor_help
+msgid "You are not allowed to send messages in this conference"
+msgstr ""
+
 #: [chat]attention
 msgid "%s needs your attention"
 msgstr "%sсе нуждае от вашето внимание "
@@ -704,15 +708,15 @@ msgstr ""
 
 #: [omemo]fingerprints
 msgid "OMEMO Fingerprints"
-msgstr ""
+msgstr "OMEMO Пръстови отпечатъци"
 
 #: [omemo]generating_bundle
 msgid "Generating the encryption keys, please wait…"
-msgstr ""
+msgstr "Създаване на шифроващи ключове, моля изкачайте..."
 
 #: [omemo]generated_bundle
 msgid "Encryption keys generated"
-msgstr ""
+msgstr "Шифроващите ключове са създадени"
 
 #: [omemo]resolving_devices
 msgid "Resolving OMEMO devices"
@@ -728,7 +732,7 @@ msgstr ""
 
 #: [omemo]encrypted_disabled
 msgid "Encryption disabled"
-msgstr ""
+msgstr "Шифроването е забранено"
 
 #: [omemo]encrypted_loading
 msgid "Send a message to build the encrypted session"
@@ -744,7 +748,7 @@ msgstr ""
 
 #: [omemo]last_activity
 msgid "Last activity"
-msgstr ""
+msgstr "Последна активност"
 
 #: [omemo]sessions_built
 msgid "%s sessions built"
@@ -764,7 +768,7 @@ msgstr "Чат с контакт"
 
 #: [chats]me
 msgid "Me"
-msgstr "Мен"
+msgstr "Аз"
 
 #: [chats]picture
 msgid "Picture"
@@ -856,7 +860,7 @@ msgstr "Абонаменти"
 
 #: [communityaffiliation]public_subscriptions
 msgid "Public subscriptions"
-msgstr ""
+msgstr "Публични абонаменти"
 
 #: [communityaffiliation]subscriptions_text
 msgid "My Communities subscriptions"
@@ -1177,7 +1181,7 @@ msgstr "Картинки"
 
 #: [general]links
 msgid "Links"
-msgstr ""
+msgstr "Връзки"
 
 #: [position]legend
 msgid "Geographic Position"
@@ -1209,7 +1213,7 @@ msgstr "Последно видян/а"
 
 #: [clients]title
 msgid "Clients"
-msgstr ""
+msgstr "Клиенти"
 
 #: [clients]title_full
 msgid "Clients information"
@@ -1329,15 +1333,15 @@ msgstr "Чрез отваряне на панела за търсене."
 
 #: [apps]title
 msgid "Applications"
-msgstr ""
+msgstr "Приложения"
 
 #: [apps]install
 msgid "Movim App"
-msgstr ""
+msgstr "Movim App"
 
 #: [apps]install_text
 msgid "Install Movim on your device"
-msgstr ""
+msgstr "Инсталирайте Movim на вашето устройство"
 
 #: [apps]recommend
 msgid "We also recommend"
@@ -1837,7 +1841,7 @@ msgstr "Стая за портал"
 
 #: [rooms]show_all
 msgid "Show all rooms"
-msgstr ""
+msgstr "Покажи всички стаи"
 
 #: [rooms]hide_disconnected
 msgid "Hide disconnected rooms"
@@ -1854,12 +1858,12 @@ msgstr ""
 #: [rooms]owner
 msgctxt "[rooms]owner"
 msgid "Owner"
-msgstr ""
+msgstr "Собственик"
 
 #: [rooms]admin
 msgctxt "[rooms]admin"
 msgid "Admin"
-msgstr ""
+msgstr "Админ"
 
 #: [rooms]visitor
 msgid "Visitor"
@@ -1875,7 +1879,7 @@ msgstr "Стаи за разговори"
 
 #: [chatrooms]id
 msgid "Chatroom ID"
-msgstr ""
+msgstr "Чат стая ID"
 
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
@@ -1909,7 +1913,7 @@ msgstr "Членове"
 
 #: [chatrooms]banned
 msgid "Banned"
-msgstr ""
+msgstr "Ограничени"
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a correct nickname (2 to 40 characters)"
@@ -1925,7 +1929,7 @@ msgstr "Присъединете се към тази чат стая при с�
 
 #: [chatrooms]pinned
 msgid "Pin this chatroom"
-msgstr ""
+msgstr "Забоди тази чат стая"
 
 #: [chatrooms]destroyed
 msgid "Room destroyed"
@@ -1949,14 +1953,22 @@ msgstr ""
 
 #: [chatrooms]jidmalformed
 msgid "Your nickname is not valid"
-msgstr ""
+msgstr "Вашият псевдоним не е правилен"
 
 #: [chatrooms]notacceptable
 msgid "Not acceptable"
-msgstr ""
+msgstr "Непозволен/а"
 
 #: [chatrooms]serviceunavailable
 msgid "The chatroom occupant limit has been reached"
+msgstr ""
+
+#: [chatrooms]notallowed
+msgid "You are not allowed to create a chatroom there"
+msgstr ""
+
+#: [chatrooms]created
+msgid "Chatroom created"
 msgstr ""
 
 #: [bookmarks]updated
@@ -1973,11 +1985,11 @@ msgstr "В момента сте влезли като анонимен потр
 
 #: [room]anonymous_text2
 msgid "You can join using your own account or create one on the login page by loging out using the cross in the top-right corner."
-msgstr ""
+msgstr "Можете да се присъедините, като използвате свой собствен акаунт или да създадете такъв на страницата за вход, като излезете с помощта на кръста в горния десен ъгъл."
 
 #: [room]anonymous_login
 msgid "Login on %s"
-msgstr ""
+msgstr "Вход на %s"
 
 #: [room]invite
 msgid "Invite a contact"
@@ -2026,11 +2038,11 @@ msgstr "Членове"
 
 #: [room]banned_add
 msgid "Ban someone"
-msgstr ""
+msgstr "Ограничи някой"
 
 #: [room]banned_remove
 msgid "Unban"
-msgstr ""
+msgstr "Освободи"
 
 #: [room]change_affiliation
 msgid "Change the user affiliation"
@@ -2285,7 +2297,7 @@ msgstr "Потребителският ви профил вече е огран�
 
 #: [profile]info
 msgid "Configure your instance nickname"
-msgstr ""
+msgstr "Изберете Ваш настоящ псевдоним"
 
 #: [profile]privacy_question
 msgid "Is this profile public?"
@@ -2293,11 +2305,11 @@ msgstr "Профила публичен ли е?"
 
 #: [profile]privacy_info
 msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
-msgstr ""
+msgstr "Моля, обърнете внимание! Като направите своя профил публичен, цялата информация, изброена по-долу, ще бъде достъпна за всички потребители на Movim и в целия Интернет."
 
 #: [profile]nickname_info
 msgid "Set a local nickname to allow the other users of the instance to find you easily."
-msgstr ""
+msgstr "Задайте местен псевдоним, за да позволите на други потребители тук да ви открият лесно."
 
 #: [profile]nickname_set
 msgid "Your nickname is %s."
@@ -2377,7 +2389,7 @@ msgstr "приключен разговор"
 
 #: [global]no_js
 msgid "Movim requires Javascript to be enabled to work properly."
-msgstr ""
+msgstr "Movim изисква Javascript да е разрешен, за да работи коректно."
 
 #: [global]description
 msgid "Movim is a kickass distributed social networking platform that protect your privacy and comes with a set of awesome features."
@@ -2441,7 +2453,7 @@ msgstr "Относно"
 
 #: [page]login
 msgid "Login"
-msgstr ""
+msgstr "Вход"
 
 #: [page]not_found
 msgid "Not Found"

@@ -7,6 +7,7 @@
 # Jaussoin Timothée <edhelas@movim.eu>, 2017
 # j k <yky.yode@gmail.com>, 2016
 # Johann Philipp Strathausen <strathausen@gmail.com>, 2015
+# Lyn, 2022
 # Maurice Breznik <valentingehrke@gmx.de>, 2015
 # No <quetschwalze@punkbeer.me>, 2015
 # Peter Grman <peter.grman@gmail.com>, 2016
@@ -125,8 +126,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-20 21:05+0200\n"
-"PO-Revision-Date: 2022-01-20 19:38+0000\n"
+"POT-Creation-Date: 2022-02-17 08:56+0200\n"
+"PO-Revision-Date: 2022-02-17 07:57+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: German (http://www.transifex.com/movim/movim/language/de/)\n"
 "Language: de\n"
@@ -359,7 +360,7 @@ msgstr ""
 
 #: [information]banner_info
 msgid "Ensure that the picture is not too large and can be reached from any webpages"
-msgstr ""
+msgstr "Stellen Sie sicher, dass das Bild nicht zu groß ist und von allen Webseiten erreichbar"
 
 #: [information]info1
 msgid "This message will be displayed on the login page. It can be used to link the Terms and Conditions of your Movim instance for example."
@@ -412,7 +413,7 @@ msgstr ""
 
 #: [firebase]title
 msgid "Firebase Integration"
-msgstr ""
+msgstr "Firebase Integration"
 
 #: [firebase]label
 msgid "Your Firebase Authorization Key"
@@ -444,7 +445,7 @@ msgstr "Sitzungen"
 
 #: [adminsessions]text
 msgid "Currently connected users on the pod"
-msgstr ""
+msgstr "Zurzeit verbundene Nutzer auf dem Pod"
 
 #: [admin]compatibility
 msgid "General Overview"
@@ -540,11 +541,11 @@ msgstr "Noch wurde kein Avatar festgelegt"
 
 #: [avatar]change
 msgid "Change my avatar"
-msgstr ""
+msgstr "Avatar ändern"
 
 #: [avatar]upload_new
 msgid "Upload a new picture"
-msgstr ""
+msgstr "Neues Bild hochladen"
 
 #: [blog]title [feed]title
 msgid "%s’s feed"
@@ -560,11 +561,11 @@ msgstr "Nachricht veröffentlicht"
 
 #: [message]react
 msgid "Add a reaction"
-msgstr ""
+msgstr "Reaktion hinzufügen"
 
 #: [message]retract
 msgid "Retract"
-msgstr ""
+msgstr "Nachricht löschen"
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
@@ -601,6 +602,10 @@ msgstr "↑ um deine letzte Nachricht zu editieren "
 #: [message]emoji_help
 msgid ":shortcut: to insert an emoji"
 msgstr ":shortcut: um ein Emoji einzufügen"
+
+#: [message]visitor_help
+msgid "You are not allowed to send messages in this conference"
+msgstr ""
 
 #: [chat]attention
 msgid "%s needs your attention"
@@ -641,7 +646,7 @@ msgstr "Profil ansehen"
 #: [chat]clear
 msgctxt "[chat]clear"
 msgid "Clear the history"
-msgstr ""
+msgstr "Nachrichtenverlauf löschen"
 
 #: [chat]edit_previous
 msgid "Edit last message"
@@ -670,15 +675,15 @@ msgstr "Synchronisiere die History, bitte warten…"
 #: [chat]clear_history
 msgctxt "[chat]clear_history"
 msgid "Clear the history"
-msgstr ""
+msgstr "Nachrichtenverlauf löschen"
 
 #: [chat]clear_history_text
 msgid "You are going to delete %s messages, are you sure?"
-msgstr ""
+msgstr "Sie sind im Begriff %s Nachrichten zu löschen, sind Sie sicher?"
 
 #: [chat]action_impossible_encrypted
 msgid "Action impossible in encrypted chats"
-msgstr ""
+msgstr "Aktion unmöglich in verschlüsselten Chats"
 
 #: [chatroom]members
 msgid "Members"
@@ -714,11 +719,11 @@ msgstr "Administration"
 
 #: [omemo]fingerprints_title
 msgid "Fingerprints"
-msgstr ""
+msgstr "Fingerabdrücke"
 
 #: [omemo]fingerprints
 msgid "OMEMO Fingerprints"
-msgstr ""
+msgstr "OMEMO Fingerabdrücke"
 
 #: [omemo]generating_bundle
 msgid "Generating the encryption keys, please wait…"
@@ -1099,11 +1104,11 @@ msgstr ""
 
 #: [config]notification_call
 msgid "Incoming call"
-msgstr ""
+msgstr "Eingehender Anruf"
 
 #: [config]notification_chat
 msgid "Incoming message"
-msgstr ""
+msgstr "Neue Nachricht"
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -1235,7 +1240,7 @@ msgstr "Zuletzt angemeldet"
 
 #: [explore]explore
 msgid "Find some new contacts"
-msgstr ""
+msgstr "Neue Kontakte finden"
 
 #: [edit]title [button]edit
 msgid "Edit"
@@ -1455,7 +1460,7 @@ msgstr "Adresse"
 
 #: [form]whitelist_info
 msgid "Login with accounts from these servers"
-msgstr ""
+msgstr "Mit Konten dieser Server einloggen"
 
 #: [form]connect_info
 msgid "Login using any XMPP account or create a new one"
@@ -1803,7 +1808,7 @@ msgstr "Markdown-Anleitung"
 
 #: [rooms]create
 msgid "Create a chatroom"
-msgstr ""
+msgstr "Chatraum erstellen"
 
 #: [rooms]edit
 msgid "Edit a chatroom"
@@ -1811,11 +1816,11 @@ msgstr "Chatraum bearbeiten"
 
 #: [rooms]join
 msgid "Join a chatroom"
-msgstr ""
+msgstr "Chatraum betreten"
 
 #: [rooms]join_custom
 msgid "Join a custom chatroom"
-msgstr ""
+msgstr "Benutzerdefinierter Chatraum"
 
 #: [rooms]empty_text1
 msgid "You don’t have any chatrooms yet."
@@ -1851,7 +1856,7 @@ msgstr "Gateway-Raum"
 
 #: [rooms]show_all
 msgid "Show all rooms"
-msgstr ""
+msgstr "Alle Chaträume anzeigen"
 
 #: [rooms]hide_disconnected
 msgid "Hide disconnected rooms"
@@ -1863,7 +1868,7 @@ msgstr "Raum zerstören"
 
 #: [rooms]destroy_text
 msgid "Are you sure you want to permanently destroy the following room?"
-msgstr ""
+msgstr "Sind Sie sicher, dass Sie den folgenden Raum zerstören wollen?"
 
 #: [rooms]owner
 msgctxt "[rooms]owner"
@@ -1889,7 +1894,7 @@ msgstr "Chaträume"
 
 #: [chatrooms]id
 msgid "Chatroom ID"
-msgstr ""
+msgstr "Chatraum ID"
 
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
@@ -1909,7 +1914,7 @@ msgstr "%s Räume  synchronisiert"
 
 #: [chatrooms]not_synchronized
 msgid "No rooms to synchronize found"
-msgstr ""
+msgstr "Keine Räume zur Synchronisation gefunden"
 
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
@@ -1939,7 +1944,7 @@ msgstr "Diesen Chatraum beim Verbinden betreten"
 
 #: [chatrooms]pinned
 msgid "Pin this chatroom"
-msgstr ""
+msgstr "Chatraum merken"
 
 #: [chatrooms]destroyed
 msgid "Room destroyed"
@@ -1959,7 +1964,7 @@ msgstr "Ein Passwort ist erforderlich"
 
 #: [chatrooms]forbidden
 msgid "You are not allowed to join this chatroom"
-msgstr ""
+msgstr "Sie sind nicht berechtigt, diesen Raum zu betreten"
 
 #: [chatrooms]jidmalformed
 msgid "Your nickname is not valid"
@@ -1971,6 +1976,14 @@ msgstr ""
 
 #: [chatrooms]serviceunavailable
 msgid "The chatroom occupant limit has been reached"
+msgstr "Die maximale Teilnehmerzahl für diesen Chatraum wurde erreicht"
+
+#: [chatrooms]notallowed
+msgid "You are not allowed to create a chatroom there"
+msgstr ""
+
+#: [chatrooms]created
+msgid "Chatroom created"
 msgstr ""
 
 #: [bookmarks]updated
@@ -2359,11 +2372,11 @@ msgstr "…ruft Sie an"
 
 #: [visio]video_call
 msgid "Incoming video call"
-msgstr ""
+msgstr "Eingehender Videoanruf"
 
 #: [visio]audio_call
 msgid "Incoming audio call"
-msgstr ""
+msgstr "Eingehender Sprachanruf"
 
 #: [visio]ringing
 msgid "…ringing"

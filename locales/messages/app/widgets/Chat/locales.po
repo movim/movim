@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-20 21:05+0200\n"
+"POT-Creation-Date: 2022-02-17 08:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -59,6 +59,10 @@ msgstr ""
 
 #: [message]emoji_help
 msgid ":shortcut: to insert an emoji"
+msgstr ""
+
+#: [message]visitor_help
+msgid "You are not allowed to send messages in this conference"
 msgstr ""
 
 #: [chat]attention

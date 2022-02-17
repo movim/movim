@@ -118,8 +118,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-20 21:05+0200\n"
-"PO-Revision-Date: 2022-01-20 19:55+0000\n"
+"POT-Creation-Date: 2022-02-17 08:56+0200\n"
+"PO-Revision-Date: 2022-02-17 08:01+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: French (France) (http://www.transifex.com/movim/movim/language/fr_FR/)\n"
 "Language: fr_FR\n"
@@ -594,6 +594,10 @@ msgstr "↑ pour éditer votre précédent message"
 #: [message]emoji_help
 msgid ":shortcut: to insert an emoji"
 msgstr ":raccourci: pour insérer un emoji"
+
+#: [message]visitor_help
+msgid "You are not allowed to send messages in this conference"
+msgstr "Vous n'êtes pas autorisé à envoyer des messages dans ce salon"
 
 #: [chat]attention
 msgid "%s needs your attention"
@@ -1965,6 +1969,14 @@ msgstr "Non autorisé"
 #: [chatrooms]serviceunavailable
 msgid "The chatroom occupant limit has been reached"
 msgstr "La limite du nombre d'occupants maximum a été atteinte"
+
+#: [chatrooms]notallowed
+msgid "You are not allowed to create a chatroom there"
+msgstr "Vous n'êtes pas autorisé à créer un salon ici"
+
+#: [chatrooms]created
+msgid "Chatroom created"
+msgstr "Salon créé"
 
 #: [bookmarks]updated
 msgid "Bookmarks updated"
