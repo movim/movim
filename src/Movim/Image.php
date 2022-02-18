@@ -223,6 +223,23 @@ class Image
                 $this->_im->setOption('png:exclude-chunk', 'gAMA');
             }
 
+            // Auto-rotate
+            switch($this->_im->getImageOrientation()) {
+                case \Imagick::ORIENTATION_BOTTOMRIGHT:
+                    $this->_im->rotateimage("#000", 180);
+                    break;
+
+                case \Imagick::ORIENTATION_RIGHTTOP:
+                    $this->_im->rotateimage("#000", 90);
+                    break;
+
+                case \Imagick::ORIENTATION_LEFTBOTTOM:
+                    $this->_im->rotateimage("#000", -90);
+                    break;
+            }
+
+            $this->_im->setImageOrientation(\Imagick::ORIENTATION_TOPLEFT);
+
             // Resize
             if (!$height) {
                 $height = $width;
