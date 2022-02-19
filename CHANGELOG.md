@@ -1,7 +1,10 @@
 Movim Changelog
 ================
 
-v0.20 (trunk)
+v0.21 (trunk)
+---------------------------
+
+v0.20
 ---------------------------
 * Add a checkbox to disable the Registration feature in the admin panel (#901)
 * New CSS for articles table
