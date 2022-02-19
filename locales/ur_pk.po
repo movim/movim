@@ -1,8 +1,5 @@
 #
 # Translators:
-# Besnik Bleta <besnik@programeshqip.org>, 2018
-# Besnik Bleta <besnik@programeshqip.org>, 2018,2020-2022
-# Besnik Bleta <besnik@programeshqip.org>, 2018-2020
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -112,10 +109,10 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-02-17 08:56+0200\n"
-"PO-Revision-Date: 2022-02-17 10:17+0000\n"
-"Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
-"Language-Team: Albanian (http://www.transifex.com/movim/movim/language/sq/)\n"
-"Language: sq\n"
+"PO-Revision-Date: 2022-02-17 07:57+0000\n"
+"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"Language-Team: Urdu (Pakistan) (http://www.transifex.com/movim/movim/language/ur_PK/)\n"
+"Language: ur_PK\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -124,103 +121,103 @@ msgstr ""
 
 #: [about]thanks
 msgid "Thanks"
-msgstr "Faleminderit"
+msgstr ""
 
 #: [about]developers
 msgid "Developers"
-msgstr "Zhvillues"
+msgstr ""
 
 #: [about]translators
 msgid "Translators"
-msgstr "Përkthyes"
+msgstr ""
 
 #: [about]translators_text
 msgid "Thanks to all the translators"
-msgstr "Faleminderit për krejt përkthyesit"
+msgstr ""
 
 #: [about]software
 msgid "Software"
-msgstr "Software"
+msgstr ""
 
 #: [about]resources
 msgid "Resources"
-msgstr "Burime"
+msgstr ""
 
 #: [about]api [schema]api [api]title
 msgid "API"
-msgstr "API"
+msgstr ""
 
 #: [about]info
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
-msgstr "Movim është një platformë komunikimesh me bazë XMPP. Krejt projektet, me përjashtim të software-it dhe burimeve vijuese, gjenden nën"
+msgstr ""
 
 #: [account]title [page]account
 msgid "Account"
-msgstr "Llogari"
+msgstr ""
 
 #: [account]password_change_title
 msgid "Change my password"
-msgstr "Ndryshoje fjalëkalimin tim"
+msgstr ""
 
 #: [account]password [credentials]password [form]password [input]password
 msgid "Password"
-msgstr "Fjalëkalim"
+msgstr ""
 
 #: [account]password_confirmation
 msgid "Password confirmation"
-msgstr "Ripohim fjalëkalimi"
+msgstr ""
 
 #: [account]password_changed
 msgid "The password has been updated"
-msgstr "Fjalëkalimi u përditësua"
+msgstr ""
 
 #: [account]password_not_valid
 msgid "Please provide a valid password (6 characters minimum)"
-msgstr "Ju lutemi, jepni një fjalëkalim të vlefshëm (minimumi 6 shenja)"
+msgstr ""
 
 #: [account]password_not_same
 msgid "The provided passwords are not the same"
-msgstr "Fjalëkalimet e dhëna s’janë të njëjtë"
+msgstr ""
 
 #: [account]delete
 msgid "Delete your account"
-msgstr "Fshijeni llogarinë tuaj"
+msgstr ""
 
 #: [account]delete_text
 msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts and publications)."
-msgstr "Do të fshini llogarinë tuaj XMPP dhe krejt të dhënat relative të lidhura me të (profil, kontakte dhe publikime)."
+msgstr ""
 
 #: [account]delete_text_confirm
 msgid "Type your full username"
-msgstr "Shtypni emrin tuaj të plotë të përdoruesit"
+msgstr ""
 
 #: [account]delete_text_error
 msgid "Please provide a valid username."
-msgstr "Ju lutemi, jepni një emër përdoruesi të vlefshëm."
+msgstr ""
 
 #: [account]gateway_title
 msgid "Gateways"
-msgstr "Kanale"
+msgstr ""
 
 #: [account]clear
 msgid "Leave this instance"
-msgstr "Braktiseni këtë instancë"
+msgstr ""
 
 #: [account]clear_text
 msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
-msgstr "Do të fshini llogarinë krejt të dhënat relative të lidhura me llogarinë tuaj në këtë instancë Movim (profil, kontakte dhe publikime)."
+msgstr ""
 
 #: [account]clear_text_confirm
 msgid "This action will not delete your account but will disconnect you from this instance."
-msgstr "Ky veprim s’do të fshijë llogarinë tuaj, por do t’ju shkëpusë nga kjo instancë."
+msgstr ""
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
-msgstr "Krijoni një llogari të re"
+msgstr ""
 
 #: [create]notfound
 msgid "No account creation form found on the server"
-msgstr "S’u gjet në shërbyes formular krijimi llogarish"
+msgstr ""
 
 #: [create]server_on
 msgid "on"
@@ -228,281 +225,281 @@ msgstr ""
 
 #: [create]successfull
 msgid "Your acccount has been successfully registered"
-msgstr "Llogaria juaj u regjistrua me sukses"
+msgstr ""
 
 #: [create]loading
 msgid "Loading"
-msgstr "Po ngarkohet"
+msgstr ""
 
 #: [create]placeholder
 msgid "…and start playing"
-msgstr "…dhe po fillohet të luhet"
+msgstr ""
 
 #: [error]not_acceptable
 msgid "Not Acceptable"
-msgstr "I papranueshëm"
+msgstr ""
 
 #: [error]service_unavailable
 msgid "The registration system of this server is currently unavailable"
-msgstr "Sistemi i regjistrimeve në këtë shërbyes është i pakapshëm hëpërhë"
+msgstr ""
 
 #: [error]forbidden
 msgid "Registration forbidden"
-msgstr "Regjistrim i ndaluar"
+msgstr ""
 
 #: [adhoc]title
 msgid "Actions"
-msgstr "Veprime"
+msgstr ""
 
 #: [adhoc]completed
 msgid "Action completed"
-msgstr "Veprim i plotësuar"
+msgstr ""
 
 #: [admin]general
 msgid "General Settings"
-msgstr "Rregullime të Përgjithshme"
+msgstr ""
 
 #: [general]theme
 msgid "Theme"
-msgstr "Temë"
+msgstr ""
 
 #: [general]language
 msgid "Default language"
-msgstr "Gjuhë parazgjedhje"
+msgstr ""
 
 #: [general]log_verbosity
 msgid "Log verbosity"
-msgstr "Shkallë hollësish te regjistri"
+msgstr ""
 
 #: [restrictsuggestions]title
 msgid "Restrict suggestions"
-msgstr "Kufizoji këshillat"
+msgstr ""
 
 #: [restrictsuggestions]text
 msgid "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
-msgstr "Sugjero vetëm dhoma fjalosjeje, bashkësi dhe lëndë tjetër që janë të gatshme te shërbyesi XMPP i përdoruesit dhe shërbime të lidhura me të"
+msgstr ""
 
 #: [chatonly]title
 msgid "Chat only"
-msgstr "Vetëm fjalosje"
+msgstr ""
 
 #: [chatonly]text
 msgid "Disable all the social feature (Communities, Blog…) and keep only the chat ones"
-msgstr "Çaktivizo krejt veçoritë e shoqërorëve (Bashkësi, Blog…) dhe mbaj vetëm ato për fjalosje"
+msgstr ""
 
 #: [credentials]title
 msgid "Administration Credential"
-msgstr "Kredenciale Administrimi"
+msgstr ""
 
 #: [credentials]username [input]username
 msgid "Username"
-msgstr "Emër përdoruesi"
+msgstr ""
 
 #: [credentials]re_password
 msgid "Retype password"
-msgstr "Rishtypeni fjalëkalimin"
+msgstr ""
 
 #: [disableregistration]title
 msgid "Disable the XMPP registration feature"
-msgstr "Çaktivizo veçorinë e regjistrimit XMPP"
+msgstr ""
 
 #: [disableregistration]text
 msgid "Remove the XMPP registration flow and buttons from the interface"
-msgstr "Hiq nga ndërfaqja pjesën dhe butonat për regjistrim XMPP"
+msgstr ""
 
 #: [whitelist]title
 msgid "Whitelisted XMPP Servers"
-msgstr "Shërbyes XMPP të Lejuar"
+msgstr ""
 
 #: [whitelist]info1
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
-msgstr "Nëse doni të përcaktoni një listë shërbyesish të autorizuar XMPP te nyja juaj Movim dhe të ndaloni lidhjen te krejt të tjerët, ju lutemi, vendosini emrat e tyre këtu, ndarë me presje (p.sh.: movim.eu,jabber.fr)"
+msgstr ""
 
 #: [whitelist]info2
 msgid "Leave this field blank if you allow the access to all the XMPP accounts."
-msgstr "Lëreni të zbrazët këtë fushë, nëse lejoni hyrje te krejt llogaritë XMPP."
+msgstr ""
 
 #: [whitelist]label
 msgid "List of whitelisted XMPP servers"
-msgstr "Listë shërbyesidh XMPP të lejuar"
+msgstr ""
 
 #: [information]title
 msgctxt "[information]title"
 msgid "Information Message"
-msgstr "Mesazh Informacioni"
+msgstr ""
 
 #: [information]description [communityconfig]description
 msgid "Description"
-msgstr "Përshkrim"
+msgstr ""
 
 #: [information]description_placeholder
 msgid "General description of the instance"
-msgstr "Përshkrim i përgjithshëm i instancës"
+msgstr ""
 
 #: [information]banner
 msgid "Main banner"
-msgstr "Banderolë kryesore"
+msgstr ""
 
 #: [information]banner_info
 msgid "Ensure that the picture is not too large and can be reached from any webpages"
-msgstr "Siguroni që fotoja të mos jetë shumë e madhe dhe të mund të kapet pre cilësdo faqeje web"
+msgstr ""
 
 #: [information]info1
 msgid "This message will be displayed on the login page. It can be used to link the Terms and Conditions of your Movim instance for example."
-msgstr "Ky mesazh do të shfaqet te faqja e hyrjeve. Mund të përdoret, për shembull, për të lidhur ndarjen Terma dhe Kushte të instancës tuaj Movim."
+msgstr ""
 
 #: [information]info2
 msgid "Leave this field blank if you don’t want to show any message."
-msgstr "Lëreni këtë fushë të zbrazët, nëse s’doni të shfaqet ndonjë mesazh."
+msgstr ""
 
 #: [information]label
 msgctxt "[information]label"
 msgid "Information Message"
-msgstr "Mesazh Informacioni"
+msgstr ""
 
 #: [xmpp]title
 msgid "Default XMPP server"
-msgstr "Shërbyes XMPP parazgjedhje"
+msgstr ""
 
 #: [xmpp]domain
 msgid "Main XMPP server domain"
-msgstr "Përkatësia e shërbyesit kryesor XMPP"
+msgstr ""
 
 #: [xmpp]description
 msgid "Main XMPP server description"
-msgstr "Përshkrimi i shërbyesit kryesor XMPP"
+msgstr ""
 
 #: [xmpp]country
 msgid "Main XMPP server country"
-msgstr "Vend shërbyesi kryesor XMPP"
+msgstr ""
 
 #: [xmpp]country_pick
 msgid "Pick a country in the list"
-msgstr "Zgjidhni një vend te lista"
+msgstr ""
 
 #: [tenor]title
 msgid "Tenor integration"
-msgstr "Integrim me Tenor"
+msgstr ""
 
 #: [tenor]label
 msgid "Your Tenor API Key"
-msgstr "Kyçi Juaj për API Tenor"
+msgstr ""
 
 #: [tenor]info1
 msgid "Movim integrates the Tenor API to allow GIF search and publication in Chat"
-msgstr "Movim integrohet me API-n Tenor për të lejuar kërkim dhe shfaqje GIF-esh në Fjalosje"
+msgstr ""
 
 #: [tenor]info2
 msgid "Access Tenor and get your API key"
-msgstr "Hyni në Tenor dhe merrni Kyçin tuaj API"
+msgstr ""
 
 #: [firebase]title
 msgid "Firebase Integration"
-msgstr "Integrim me Firebase"
+msgstr ""
 
 #: [firebase]label
 msgid "Your Firebase Authorization Key"
-msgstr "Kyçi juaj i autorizimit për Firebase"
+msgstr ""
 
 #: [firebase]info1
 msgid "Movim can send Push Notifications to the Movim Android app using Firebase"
-msgstr "Movim mund të dërgojë Njoftime Push te aplikacioni Movim Android duke përdorur Firebase-in"
+msgstr ""
 
 #: [firebase]info2
 msgid "Go to the Firebase panel to configure and generate your Authorization key"
-msgstr "Kaloni te paneli i Firebase-it që të formësoni dhe prodhoni kyçin tuaj të Mirëfilltësimt"
+msgstr ""
 
 #: [log]empty
 msgid "Empty"
-msgstr "E zbrazët"
+msgstr ""
 
 #: [log]syslog
 msgid "Syslog"
-msgstr "Syslog"
+msgstr ""
 
 #: [log]syslog_files
 msgid "Syslog and files"
-msgstr "Syslog dhe kartela"
+msgstr ""
 
 #: [adminsessions]title
 msgid "Sessions"
-msgstr "Sesione"
+msgstr ""
 
 #: [adminsessions]text
 msgid "Currently connected users on the pod"
-msgstr "Përdorues aktualisht të lidhur te nyja"
+msgstr ""
 
 #: [admin]compatibility
 msgid "General Overview"
-msgstr "Përmbledhje e Përgjithshme"
+msgstr ""
 
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim’s %s directory"
-msgstr "Të drejta shkrimi dhe leximi për shërbyesin te drejtoria %s e Movim-it"
+msgstr ""
 
 #: [compatibility]websocket
 msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
-msgstr "Gabim lidhjeje me WebSocket, shihni nëse Demoni Movim Daemon xhiron dhe mund të kapet"
+msgstr ""
 
 #: [schema]browser
 msgid "Browser"
-msgstr "Shfletues"
+msgstr ""
 
 #: [schema]movim
 msgid "Movim Core"
-msgstr "Baza e Movim-it"
+msgstr ""
 
 #: [schema]daemon
 msgid "Movim Daemon"
-msgstr "Demon Movim-i"
+msgstr ""
 
 #: [schema]database
 msgid "Database"
-msgstr "Bazë të dhënash"
+msgstr ""
 
 #: [schema]xmpp
 msgid "XMPP"
-msgstr "XMPP"
+msgstr ""
 
 #: [api]info
 msgid "Here you can register your pod on the official %sMovim API%s"
-msgstr "Këtu mund të regjistroni nyjën tuaj te  %sAPI Movim%s zyrtar"
+msgstr ""
 
 #: [api]register
 msgid "Your pod is not registered on the API"
-msgstr "Nyja juaj s’është e regjistruar te API"
+msgstr ""
 
 #: [api]registered
 msgid "Your pod is registered on the API"
-msgstr "Nyja juaj është e regjistruar te API"
+msgstr ""
 
 #: [api]wait
 msgid "Your pod is not yet validated"
-msgstr "Nyja juaj s’është vleftësuar ende"
+msgstr ""
 
 #: [api]validated
 msgid "Your pod is validated"
-msgstr "Nyja juaj është vleftësuar"
+msgstr ""
 
 #: [api]unregister
 msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
-msgstr "Kërkuat të hiqeni nga API, kjo kërkesë do të përmbushet brenda disa orësh"
+msgstr ""
 
 #: [api]conf_updated [config]updated
 msgid "Configuration updated"
-msgstr "Formësimi u përditësua"
+msgstr ""
 
 #: [avatar]file
 msgid "File"
-msgstr "Kartelë"
+msgstr ""
 
 #: [avatar]use_it
 msgid "Use it"
-msgstr "Përdore"
+msgstr ""
 
 #: [avatar]webcam
 msgid "Webcam"
-msgstr "Kamerë"
+msgstr ""
 
 #: [avatar]cheese
 msgid "Cheese!"
@@ -510,2396 +507,2396 @@ msgstr ""
 
 #: [avatar]snapshot
 msgid "Take a webcam snapshot"
-msgstr "Bëni një foto me kamerën"
+msgstr ""
 
 #: [avatar]updated
 msgid "Avatar Updated"
-msgstr "Avatari u Përditësua"
+msgstr ""
 
 #: [avatar]not_updated
 msgid "Avatar Not Updated"
-msgstr "Avatari S’u Përditësua"
+msgstr ""
 
 #: [avatar]missing
 msgid "No avatar defined yet"
-msgstr "S’ka ende avatar të përcaktuar"
+msgstr ""
 
 #: [avatar]change
 msgid "Change my avatar"
-msgstr "Ndrysho avatarin tim"
+msgstr ""
 
 #: [avatar]upload_new
 msgid "Upload a new picture"
-msgstr "Ngarkoni një foto të re"
+msgstr ""
 
 #: [blog]title [feed]title
 msgid "%s’s feed"
-msgstr "Prurje për %s"
+msgstr ""
 
 #: [blog]private
 msgid "This content is private, please login to see it"
-msgstr "Kjo lëndë është private, që ta shihni, ju lutemi, bëni hyrjen"
+msgstr ""
 
 #: [message]published
 msgid "Message Published"
-msgstr "Mesazhi u Botua"
+msgstr ""
 
 #: [message]react
 msgid "Add a reaction"
-msgstr "Shtoni reagim"
+msgstr ""
 
 #: [message]retract
 msgid "Retract"
-msgstr "Tërhiqe"
+msgstr ""
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
-msgstr "Mesazhi juaj s’u dërgua dot, ju lutemi, riprovoni më vonë"
+msgstr ""
 
 #: [message]encrypted [omemo]encrypted
 msgid "Encrypted message"
-msgstr "Mesazh i fshehtëzuar"
+msgstr ""
 
 #: [message]retracted
 msgid "Retracted message"
-msgstr "Mesazh i tërhequr"
+msgstr ""
 
 #: [message]composing
 msgid "Composing…"
-msgstr "Po hartohet…"
+msgstr ""
 
 #: [message]paused
 msgid "Paused…"
-msgstr "Pushuar…"
+msgstr ""
 
 #: [message]gone
 msgid "Contact gone"
-msgstr "Kontakti ka avulluar"
+msgstr ""
 
 #: [message]history
 msgid "%s messages retrieved"
-msgstr "U morën %s mesazhe"
+msgstr ""
 
 #: [message]edit_help
 msgid "↑ to edit your previous message"
-msgstr "↑ që të përpunoni mesazhin tuaj të mëparshëm"
+msgstr ""
 
 #: [message]emoji_help
 msgid ":shortcut: to insert an emoji"
-msgstr ":shkurtore: që të futni një emoxhi"
+msgstr ""
 
 #: [message]visitor_help
 msgid "You are not allowed to send messages in this conference"
-msgstr "S’keni leje të dërgoni mesazhe në këtë konferencë"
+msgstr ""
 
 #: [chat]attention
 msgid "%s needs your attention"
-msgstr "%s lyp vëmendjen tuaj"
+msgstr ""
 
 #: [chat]placeholder
 msgid "Your message here…"
-msgstr "Mesazhi juaj këtu…"
+msgstr ""
 
 #: [chat]smileys
 msgid "Smileys"
-msgstr "Emotikone"
+msgstr ""
 
 #: [chat]frequent
 msgid "Frequent contacts"
-msgstr "Kontakte të shpeshtë"
+msgstr ""
 
 #: [chat]new_title
 msgid "Nothing here yet…"
-msgstr "Ende pa gjë këtu…"
+msgstr ""
 
 #: [chat]new_text
 msgid "Don’t be shy, send a first message to start the discussion"
-msgstr "Mos kini turp, dërgoni një mesazh të parë për të filluar diskutimin"
+msgstr ""
 
 #: [chat]invitation
 msgid "You received an invitation to join a chatroom"
-msgstr "Morët një ftesë për të hyrë në një dhomë fjalosjesh"
+msgstr ""
 
 #: [chat]invitation_join
 msgid "Join %s"
-msgstr "Hyni te %s"
+msgstr ""
 
 #: [chat]profile
 msgid "See the profile"
-msgstr "Shihni profilin"
+msgstr ""
 
 #: [chat]clear
 msgctxt "[chat]clear"
 msgid "Clear the history"
-msgstr "Spastroje historikun"
+msgstr ""
 
 #: [chat]edit_previous
 msgid "Edit last message"
-msgstr "Përpunoni mesazhin e fundit"
+msgstr ""
 
 #: [chat]report_abuse
 msgid "Report abuse"
-msgstr "Njoftoni shpërdorim"
+msgstr ""
 
 #: [chat]jingle_start
 msgid "Call started"
-msgstr "Thirrja filloi"
+msgstr ""
 
 #: [chat]jingle_end
 msgid "Call ended"
-msgstr "Thirrja përfundoi"
+msgstr ""
 
 #: [chat]publish_error
 msgid "An error occured when sending the message"
-msgstr "Ndodhi një gabim teksa dërgohej mesazhi"
+msgstr ""
 
 #: [chat]mam_retrieval
 msgid "Synchronizing the history, please wait…"
-msgstr "Po njëkohësohet historiku, ju lutemi, prisni…"
+msgstr ""
 
 #: [chat]clear_history
 msgctxt "[chat]clear_history"
 msgid "Clear the history"
-msgstr "Spastroje historikun"
+msgstr ""
 
 #: [chat]clear_history_text
 msgid "You are going to delete %s messages, are you sure?"
-msgstr "Do të fshini %s mesazhe, jeni i sigurt?"
+msgstr ""
 
 #: [chat]action_impossible_encrypted
 msgid "Action impossible in encrypted chats"
-msgstr "Veprim i pamundur në fjalosje të fshehtëzuara"
+msgstr ""
 
 #: [chatroom]members
 msgid "Members"
-msgstr "Anëtarë"
+msgstr ""
 
 #: [chatroom]connected [chatrooms]connected
 msgid "Connected to the chatroom"
-msgstr "U lidh te dhoma e fjalosjeve"
+msgstr ""
 
 #: [chatroom]disconnected [chatrooms]disconnected
 msgid "Disconnected from the chatroom"
-msgstr "U shkëput nga dhoma e fjalosjeve"
+msgstr ""
 
 #: [chatroom]config [communityaffiliation]configuration [page]configuration
 msgid "Configuration"
-msgstr "Formësim"
+msgstr ""
 
 #: [chatroom]config_saved [communityaffiliation]config_saved
 msgid "Configuration saved"
-msgstr "Formësim u ruajt"
+msgstr ""
 
 #: [chatroom]subject
 msgid "Subject"
-msgstr "Subjekt"
+msgstr ""
 
 #: [chatroom]subject_changed
 msgid "Subject changed"
-msgstr "Subjekti u ndryshua"
+msgstr ""
 
 #: [chatroom]administration [page]administration
 msgid "Administration"
-msgstr "Administrim"
+msgstr ""
 
 #: [omemo]fingerprints_title
 msgid "Fingerprints"
-msgstr "Shenja gishtash"
+msgstr ""
 
 #: [omemo]fingerprints
 msgid "OMEMO Fingerprints"
-msgstr "Shenja gishtash OMEMO"
+msgstr ""
 
 #: [omemo]generating_bundle
 msgid "Generating the encryption keys, please wait…"
-msgstr "Po prodhohen kyçet e fshehtëzimit, ju lutemi, pritni…"
+msgstr ""
 
 #: [omemo]generated_bundle
 msgid "Encryption keys generated"
-msgstr "Kyçet e fshehtëzimit u prodhuan"
+msgstr ""
 
 #: [omemo]resolving_devices
 msgid "Resolving OMEMO devices"
-msgstr "Po ftillohen pajisje OMEMO"
+msgstr ""
 
 #: [omemo]building_sessions
 msgid "Building encryption sessions"
-msgstr "Po krijohen sesione fshehtëzimi"
+msgstr ""
 
 #: [omemo]building_own_sessions
 msgid "Building own encryption sessions"
-msgstr "Po krijohen sesione të vetët fshehtëzimi"
+msgstr ""
 
 #: [omemo]encrypted_disabled
 msgid "Encryption disabled"
-msgstr "Fshehtëzimi u çaktivizua"
+msgstr ""
 
 #: [omemo]encrypted_loading
 msgid "Send a message to build the encrypted session"
-msgstr "Që të krijohet sesioni i fshehtëzuar, dërgoni një mesazh"
+msgstr ""
 
 #: [omemo]enable_contact
 msgid "Enabling encryption for the contact"
-msgstr "Po aktivizohet fshehtëzimi për kontaktin"
+msgstr ""
 
 #: [omemo]disable_contact
 msgid "Disabling encryption for the contact"
-msgstr "Po çaktivizohet fshehtëzimi për kontaktin"
+msgstr ""
 
 #: [omemo]last_activity
 msgid "Last activity"
-msgstr "Veprimtaria e fundit"
+msgstr ""
 
 #: [omemo]sessions_built
 msgid "%s sessions built"
-msgstr "%s sesione të krijuar"
+msgstr ""
 
 #: [chats]empty_title
 msgid "No chats yet…"
-msgstr "Ende pa fjalosje…"
+msgstr ""
 
 #: [chats]empty
 msgid "Start a new conversation by clicking on the %s button."
-msgstr "Filloni një bisedë të re duke klikuar mbi butonin %s."
+msgstr ""
 
 #: [chats]add
 msgid "Chat with a contact"
-msgstr "Fjalosuni me një kontakt"
+msgstr ""
 
 #: [chats]me
 msgid "Me"
-msgstr "Unë"
+msgstr ""
 
 #: [chats]picture
 msgid "Picture"
-msgstr "Foto"
+msgstr ""
 
 #: [chats]video
 msgid "Video"
-msgstr "Video"
+msgstr ""
 
 #: [button]chat
 msgid "Chat"
-msgstr "Fjalosje"
+msgstr ""
 
 #: [button]new
 msgid "New conversation"
-msgstr "Bisedë e re"
+msgstr ""
 
 #: [communities]empty_text
 msgid "Discover, follow and share"
-msgstr "Zbuloni, ndiqni dhe ndani me të tjerët"
+msgstr ""
 
 #: [communities]counter
 msgid "%s communities"
-msgstr "%s bashkësi"
+msgstr ""
 
 #: [communities]search_server
 msgid "Search for a new server"
-msgstr "Kërkoni për një shërbyes të ri"
+msgstr ""
 
 #: [communities]servers
 msgid "Communities servers"
-msgstr "Shërbyes bashkësish"
+msgstr ""
 
 #: [communities]servers_text
 msgid "Discover the Communities by servers"
-msgstr "Zbuloni Bashkësi sipas shërbyesish"
+msgstr ""
 
 #: [communities]disco
 msgid "Communities server discovered"
-msgstr "U pikas shërbyes bashkësis"
+msgstr ""
 
 #: [communities]disco_error
 msgid "This server doesn’t exists"
-msgstr "Ky shërbyes s’ekziston"
+msgstr ""
 
 #: [communitiesinteresting]about
 msgid "Communities you might like"
-msgstr "Bashkësi që mund t’ju pëlqejnë"
+msgstr ""
 
 #: [communitiesserver]created
 msgid "Community created successfully"
-msgstr "Bashkësia u krijua me sukses"
+msgstr ""
 
 #: [communitiesserver]empty_server
 msgid "There is no Communities yet on this server."
-msgstr "Në këtë shërbyes s’ka ende Bashkësi."
+msgstr ""
 
 #: [communitiesserver]add
 msgid "Create a new community on %s"
-msgstr "Krijoni një bashkësi të re në %s"
+msgstr ""
 
 #: [communitiesserver]name
 msgid "Community name"
-msgstr "Emër bashkësie"
+msgstr ""
 
 #: [communitiesserver]name_example
 msgid "My Little Pony - Fan Club"
-msgstr "Gjelbërim Ngado - Shoqatë"
+msgstr ""
 
 #: [communitiesserver]name_error
 msgid "Please provide a valid community name (4 characters minimum)"
-msgstr "Ju lutemi, jepni një emër bashkësie të vlefshëm (minimumi 4 shenja)"
+msgstr ""
 
 #: [communitiesserver]no_creation
 msgid "You cannot create a new community on this server"
-msgstr "S’mund të krijoni një bashkësi të re në këtë shërbyes"
+msgstr ""
 
 #: [communitiesservers]empty_title
 msgid "No Communities Servers yet…"
-msgstr "Ende pa Shërbyes Bashkësie…"
+msgstr ""
 
 #: [communitiesservers]empty_text
 msgid "It seems that we can't find any communities for the moment"
-msgstr "Duket se për çastin s’gjejmë dot ndonjë bashkësi"
+msgstr ""
 
 #: [communityaffiliation]subscriptions
 msgid "Subscriptions"
-msgstr "Pajtime"
+msgstr ""
 
 #: [communityaffiliation]public_subscriptions
 msgid "Public subscriptions"
-msgstr "Pajtime publike"
+msgstr ""
 
 #: [communityaffiliation]subscriptions_text
 msgid "My Communities subscriptions"
-msgstr "Pajtimet e mia në Bashkësi"
+msgstr ""
 
 #: [communityaffiliation]deleted
 msgid "Community deleted successfully"
-msgstr "Bashkësia u fshi me sukses"
+msgstr ""
 
 #: [communityaffiliation]delete_title
 msgid "Delete the community"
-msgstr "Fshije bashkësinë"
+msgstr ""
 
 #: [communityaffiliation]delete_text
 msgid "You are going to delete the following community. Please confirm your action."
-msgstr "Ju ndan një hap nga fshirja e bashkësisë vijuese. Ju lutemi, ripohoni veprimin tuaj."
+msgstr ""
 
 #: [communityaffiliation]delete_clean_text
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
-msgstr "Duket se ajo bashkësi s’ekziston më. Doni të hiqet nga pajtimet tuaja?"
+msgstr ""
 
 #: [communityaffiliation]config_error
 msgid "Error during the application of the node configuration"
-msgstr "Gabim gjatë zbatimit të formësimit të nyjës"
+msgstr ""
 
 #: [communityaffiliation]owners
 msgid "Owners"
-msgstr "Pronarë"
+msgstr ""
 
 #: [communityaffiliation]publishers
 #: [communityconfig]publish_model_publishers_title
 msgid "Publishers"
-msgstr "Botues"
+msgstr ""
 
 #: [communityaffiliation]roles
 msgid "Roles"
-msgstr "Role"
+msgstr ""
 
 #: [communityaffiliation]role_set
 msgid "Role correctly set"
-msgstr "Roli u caktua saktë"
+msgstr ""
 
 #: [communityconfig]publication
 msgid "Publication"
-msgstr "Botim"
+msgstr ""
 
 #: [communityconfig]publish_model_open_title
 msgid "Open"
-msgstr "I hapur"
+msgstr ""
 
 #: [communityconfig]publish_model_open_text
 msgid "Everyone can publish"
-msgstr "Cilido mund të botojë"
+msgstr ""
 
 #: [communityconfig]publish_model_publishers_text
 msgid "The publishers can publish"
-msgstr "Botuesit mund të botojnë"
+msgstr ""
 
 #: [communityconfig]publish_model_subscribers_title
 msgid "Subscribers"
-msgstr "Pajtimtarë"
+msgstr ""
 
 #: [communityconfig]publish_model_subscribers_text
 msgid "The subscribers can publish"
-msgstr "Pajtimtarët mund të botojnë"
+msgstr ""
 
 #: [communitydata]sub
 msgid "%s subscribers"
-msgstr "%s pajtimtarë"
+msgstr ""
 
 #: [communitydata]num
 msgid "%s posts"
-msgstr "%s postime"
+msgstr ""
 
 #: [communitydata]public
 msgid "Public page"
-msgstr "Faqe publike"
+msgstr ""
 
 #: [communitydata]publishmodel_publishers
 msgid "Only publishers can publish"
-msgstr "Vetëm botuesit mund të botojnë"
+msgstr ""
 
 #: [communitydata]publishmodel_subscribers
 msgid "Only subscribers can publish"
-msgstr "Vetëm pajtimtarët mund të botojnë"
+msgstr ""
 
 #: [communityheader]subscribe
 msgid "Subscribe"
-msgstr "Pajtomë"
+msgstr ""
 
 #: [communityheader]unsubscribe
 msgid "Unsubscribe"
-msgstr "Shpajtomë"
+msgstr ""
 
 #: [communityheader]subscribed
 msgid "Subscribed"
-msgstr "U pajtuat"
+msgstr ""
 
 #: [communityheader]unsubscribed
 msgid "Unsubscribed"
-msgstr "U shpajtuat"
+msgstr ""
 
 #: [communityheader]subscription_unsupported
 msgid "The subscriptions are disabled for this community"
-msgstr "Pajtimet janë të çaktivizuara për këtë bashkësi"
+msgstr ""
 
 #: [communityheader]label_label
 msgid "Give a label for this community"
-msgstr "Jepni një etiketë për këtë bashkësi"
+msgstr ""
 
 #: [communityheader]label_placeholder
 msgid "My Community Name"
-msgstr "Emër i Bashkësisë Time"
+msgstr ""
 
 #: [communityheader]share_subscription
 msgid "Share this subscription publicly"
-msgstr "Ndajeni këtë pajtim publikisht"
+msgstr ""
 
 #: [communityheader]share_subscription_text
 msgid "It will appear on your profile"
-msgstr "Do të shfaqet te profili juaj"
+msgstr ""
 
 #: [communityheader]unsubscribe_text
 msgid "You are going to unsubscribe from this community"
-msgstr "Ju ndan një hap nga shpajtimi prej kësaj bashkësie"
+msgstr ""
 
 #: [communityheader]sure [delete]title
 msgid "Are you sure?"
-msgstr "Jeni i sigurt?"
+msgstr ""
 
 #: [communitysubscriptions]subscriptions
 msgid "My Subscriptions"
-msgstr "Pajtimet e Mia"
+msgstr ""
 
 #: [communitysubscriptions]empty_title
 msgid "Hello"
-msgstr "Tungjatjeta"
+msgstr ""
 
 #: [communitysubscriptions]empty_text1
 msgid "Here you will be able to manage all your subscriptions."
-msgstr "Këtu do të jeni në gjendje të administroni krejt pajtimet tuaja."
+msgstr ""
 
 #: [communitysubscriptions]empty_text2
 msgid "You don’t have any community subscriptions yet."
-msgstr "Ende s’keni ndonjë pajtim në bashkësi."
+msgstr ""
 
 #: [config]general
 msgid "General"
-msgstr "Të përgjithshme"
+msgstr ""
 
 #: [config]language
 msgid "Language"
-msgstr "Gjuhë"
+msgstr ""
 
 #: [config]roster
 msgid "Roster display"
-msgstr "Shfaqje emërtese"
+msgstr ""
 
 #: [config]roster_show
 msgid "Show the offline contacts"
-msgstr "Shfaqi kontaktet që s’janë në linjë"
+msgstr ""
 
 #: [config]roster_hide
 msgid "Hide the offline contacts"
-msgstr "Fshihi kontaktet që s’janë në linjë"
+msgstr ""
 
 #: [config]appearence
 msgid "Appearence"
-msgstr "Dukje"
+msgstr ""
 
 #: [config]not_valid
 msgid "Configuration invalid"
-msgstr "Formësim i pavlefshëm"
+msgstr ""
 
 #: [config]advanced
 msgid "Advanced Configuration"
-msgstr "Formësim i Thelluar"
+msgstr ""
 
 #: [config]nsfw
 msgid "Display adult content"
-msgstr "Shfaq lëndë të rriturish"
+msgstr ""
 
 #: [config]nsfw_text
 msgid "Will allow you to read the posts tagged with the #nsfw tag"
-msgstr "Do t’ju lejojë të lexoni postimet e etiketuara me etiketën #nsfw"
+msgstr ""
 
 #: [config]night_mode
 msgid "Night Mode"
-msgstr "Mënyra Mbrëmje"
+msgstr ""
 
 #: [config]night_mode_text
 msgid "Use dark colors to rest your eyes"
-msgstr "Përdorni ngjyra të errëta për të çlodhur sytë"
+msgstr ""
 
 #: [config]chatmain
 msgid "Main chat page"
-msgstr "Faqja e fjalosjes kryesore"
+msgstr ""
 
 #: [config]chatmain_text
 msgid "Make the chat page as the default one"
-msgstr "Bëje faqen e fjalosjes si atë parazgjedhje"
+msgstr ""
 
 #: [config]mam
 msgid "Archiving preferences"
-msgstr "Parapëlqime arkivimi"
+msgstr ""
 
 #: [config]mam_text
 msgid "Server-side archiving preferences"
-msgstr "Parapëlqime arkivimi më anë të shërbyesit"
+msgstr ""
 
 #: [config]mam_always
 msgid "Always"
-msgstr "Përherë"
+msgstr ""
 
 #: [config]mam_never
 msgid "Never"
-msgstr "Kurrë"
+msgstr ""
 
 #: [config]mam_saved
 msgid "Archiving preferences saved"
-msgstr "Parapëlqimet e arkivimit u ruajtën"
+msgstr ""
 
 #: [config]notification_title
 msgid "Audio notifications"
-msgstr "Njoftime audio"
+msgstr ""
 
 #: [config]notification_call
 msgid "Incoming call"
-msgstr "Thirrje ardhëse"
+msgstr ""
 
 #: [config]notification_chat
 msgid "Incoming message"
-msgstr "Mesazh ardhës"
+msgstr ""
 
 #: [confirm]title
 msgid "Confirmation of authentication"
-msgstr "Ripohim i mirëfilltësimit"
+msgstr ""
 
 #: [confirm]description
 msgid "The following platform would like your confirmation to authentify this account"
-msgstr "Platforma vijuese do të donte ripohimin tuaj që të mirëfilltësohet kjo llogari"
+msgstr ""
 
 #: [confirm]code
 msgid "Authentication code"
-msgstr "Kod mirëfilltësimi"
+msgstr ""
 
 #: [roster]add_title
 msgid "Add a contact"
-msgstr "Shtoni një kontakt"
+msgstr ""
 
 #: [roster]add_contact_info1
 msgid "Enter the Jabber ID of your contact."
-msgstr "Jepni ID-në Jabber të kontaktit tuaj."
+msgstr ""
 
 #: [roster]add_contact_info2
 msgid "Press enter to validate."
-msgstr "Shtypni Enter që të vleftësohet."
+msgstr ""
 
 #: [roster]added
 msgid "Contact added"
-msgstr "Kontakti u shtua"
+msgstr ""
 
 #: [roster]updated
 msgid "Contact updated"
-msgstr "Kontakti u përditësua"
+msgstr ""
 
 #: [roster]deleted
 msgid "Contact deleted"
-msgstr "Kontakti u fshi"
+msgstr ""
 
 #: [general]legend
 msgid "General Information"
-msgstr "Të dhëna të Përgjithshme"
+msgstr ""
 
 #: [general]name [chatrooms]name
 msgid "Name"
-msgstr "Emër"
+msgstr ""
 
 #: [general]nickname [chatrooms]nickname
 msgid "Nickname"
-msgstr "Nofkë"
+msgstr ""
 
 #: [general]date_of_birth
 msgid "Date of Birth"
-msgstr "Datëlindje"
+msgstr ""
 
 #: [general]gender
 msgid "Gender"
-msgstr "Gjini"
+msgstr ""
 
 #: [general]marital
 msgid "Marital Status"
-msgstr "Gjendje Civile"
+msgstr ""
 
 #: [general]email
 msgid "Email"
-msgstr "Email"
+msgstr ""
 
 #: [general]website
 msgid "Website"
-msgstr "Sajt"
+msgstr ""
 
 #: [general]about
 msgid "About Me"
-msgstr "Rreth Meje"
+msgstr ""
 
 #: [general]accounts
 msgid "Other Accounts"
-msgstr "Llogari të Tjera"
+msgstr ""
 
 #: [general]tune
 msgid "Is Listening"
-msgstr "Po Dëgjon"
+msgstr ""
 
 #: [general]pictures
 msgid "Pictures"
-msgstr "Foto"
+msgstr ""
 
 #: [general]links
 msgid "Links"
-msgstr "Lidhje"
+msgstr ""
 
 #: [position]legend
 msgid "Geographic Position"
-msgstr "Pozicion Gjeografik"
+msgstr ""
 
 #: [position]locality
 msgid "Locality"
-msgstr "Lokalitet"
+msgstr ""
 
 #: [position]country
 msgid "Country"
-msgstr "Vend"
+msgstr ""
 
 #: [mood]title
 msgid "Mood"
-msgstr "Humor"
+msgstr ""
 
 #: [mood]im
 msgid "I’m "
-msgstr "Jam "
+msgstr ""
 
 #: [listen]title
 msgid "Listening"
-msgstr "Duke Dëgjuar"
+msgstr ""
 
 #: [last]title
 msgid "Last seen"
-msgstr "Parë së fundi"
+msgstr ""
 
 #: [clients]title
 msgid "Clients"
-msgstr "Klientë"
+msgstr ""
 
 #: [clients]title_full
 msgid "Clients information"
-msgstr "Të dhëna klientësh"
+msgstr ""
 
 #: [explore]last_registered
 msgid "Last registered"
-msgstr "Regjistruar së fundi"
+msgstr ""
 
 #: [explore]explore
 msgid "Find some new contacts"
-msgstr "Gjeni ca kontakte të reja"
+msgstr ""
 
 #: [edit]title [button]edit
 msgid "Edit"
-msgstr "Përpunojeni"
+msgstr ""
 
 #: [edit]alias
 msgid "Alias"
-msgstr "Alias"
+msgstr ""
 
 #: [edit]group
 msgid "Group"
-msgstr "Grup"
+msgstr ""
 
 #: [delete]text
 msgid "You are going to delete one of your contacts, please confirm your action"
-msgstr "Ju ndan një hap nga fshirja e njërit prej kontakte ve tuaja, ju lutemi, ripohoni veprimin tuaj"
+msgstr ""
 
 #: [age]years
 msgid "%s years"
-msgstr "%s vjet"
+msgstr ""
 
 #: [blog]last
 msgid "Last public post"
-msgstr "Postimi i fundit publik"
+msgstr ""
 
 #: [blog]visit
 msgid "Visit the blog to see all the public posts"
-msgstr "Vizitoni blogun që të shihni krejt postimet publike"
+msgstr ""
 
 #: [subscription]to
 msgid "You can see this contact status"
-msgstr "Mund të shihni gjendjen e këtij kontakti"
+msgstr ""
 
 #: [subscription]to_button
 msgid "Share my status"
-msgstr "Ndaje gjendjen time me të tjerë"
+msgstr ""
 
 #: [subscription]to_text
 msgid "But this contact cannot see yours"
-msgstr "Por ky kontakt s’mund të shohë tuajt"
+msgstr ""
 
 #: [subscription]from
 msgid "You are not subscribed to this contact"
-msgstr "S’jeni i pajtuar te ky kontakt"
+msgstr ""
 
 #: [subscription]from_button
 msgid "Ask to subscribe"
-msgstr "Kërkoni pajtim"
+msgstr ""
 
 #: [subscription]from_text
 msgid "But this contact can still see if you are online"
-msgstr "Por ky kontakt mundet ende të shohë nëse jeni në linjë"
+msgstr ""
 
 #: [subscription]nil
 msgid "No subscriptions"
-msgstr "S’ka pajtime"
+msgstr ""
 
 #: [subscription]nil_button [button]invite
 msgid "Invite"
-msgstr "Ftoje"
+msgstr ""
 
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
-msgstr "Ky kontakt gjendet në listën tuaj të kontakteve, por nuk ka pajtim mes dy llogarive"
+msgstr ""
 
 #: [contactdatapublic]no_data
 msgid "No public data found"
-msgstr "S’u gjetën të dhëna publike"
+msgstr ""
 
 #: [draw]title
 msgid "Draw"
-msgstr "Vizatim"
+msgstr ""
 
 #: [faq]title
 msgid "Frequently Asked Questions"
-msgstr "Pyetje të Bëra Shpesh"
+msgstr ""
 
 #: [faq]permission_title
 msgid "What does the permission setting do?"
-msgstr "Ç’kryen ky rregullim lejeje?"
+msgstr ""
 
 #: [faq]permission_text
 msgid "By default the content is only available to your contacts. You can make your profile and publications public by enabling the related setting."
-msgstr "Si parazgjedhje, te lënda mund të hyjnë vetëm kontaktet tuaja. Profilin dhe publikimet tuaja mund t’i bëni publike duke aktivizuar rregullimin përkatës."
+msgstr ""
 
 #: [faq]permission_community_title
 msgid "How does it applies on Communities posts?"
-msgstr "Si zbatohet kjo në postime Bashkësie?"
+msgstr ""
 
 #: [faq]permission_community_text
 msgid "Similary to your blog publications except that, by default, the posts are only available to the members or subscribers of the Community (except if you explicitly open all the Community content)"
-msgstr "Në mënyrë të ngjashme me publikimet në blogun tuaj, hiq, si parazgjedhje, postimet që mund të shihen vetëm nga anëtarët ose pajtimtarët e Bashkësisë (hiq rastin kur hapni shprehimisht krejt lëndën e Bashkësisë)"
+msgstr ""
 
 #: [faq]chatrooms_title
 msgid "Where can I find a list of chatrooms?"
-msgstr "Ku mund të gjej një listë dhomas bisedash?"
+msgstr ""
 
 #: [faq]find_contacts_title
 msgid "Where can I find my contacts?"
-msgstr "Ku mund t’i kontaktet e mia?"
+msgstr ""
 
 #: [faq]find_contacts_text
 msgid "By opening the search panel."
-msgstr "Duke hapur panelin e kërkimeve."
+msgstr ""
 
 #: [apps]title
 msgid "Applications"
-msgstr "Aplikacione"
+msgstr ""
 
 #: [apps]install
 msgid "Movim App"
-msgstr "Aplikacion Movim"
+msgstr ""
 
 #: [apps]install_text
 msgid "Install Movim on your device"
-msgstr "Instaloni Movim-in në pajisjen tuaj"
+msgstr ""
 
 #: [apps]recommend
 msgid "We also recommend"
-msgstr "Këshillojmë gjithashtu"
+msgstr ""
 
 #: [contact]title
 msgid "Administrators & Contact"
-msgstr "Përgjegjës & Kontakte"
+msgstr ""
 
 #: [chatroom]question
 msgid "Chat with the Movim team?"
-msgstr "Doni të bisedoni me ekipin e Movim-it?"
+msgstr ""
 
 #: [chatroom]button
 msgid "Add the chatroom"
-msgstr "Shtoje dhomën e fjalosjeve"
+msgstr ""
 
 #: [error]username
 msgid "Wrong username"
-msgstr "Emër përdoruesi i gabuar"
+msgstr ""
 
 #: [error]jid
 msgid "Invalid JID"
-msgstr "JID i pavlefshëm"
+msgstr ""
 
 #: [error]empty_challenge
 msgid "Empty Challenge from the server"
-msgstr "Sfidë e pavlefshme prej shërbyesit"
+msgstr ""
 
 #: [error]dns
 msgid "XMPP Domain error, your account is not a correct Jabber ID"
-msgstr "Gabim përkatësie XMPP, llogaria juaj s’është ID Jabber e saktë"
+msgstr ""
 
 #: [error]data_missings
 msgid "Some data are missing!"
-msgstr "Mungojnë disa të dhëna!"
+msgstr ""
 
 #: [error]wrong_password
 msgid "Wrong password"
-msgstr "Fjalëkalim i gabuar"
+msgstr ""
 
 #: [error]internal
 msgid "Internal server error"
-msgstr "Gabim i brendshëm shërbyesi"
+msgstr ""
 
 #: [error]session
 msgid "Session error"
-msgstr "Gabim sesioni"
+msgstr ""
 
 #: [error]account_created
 msgid "Account successfully created"
-msgstr "Llogaria u krijua me sukses"
+msgstr ""
 
 #: [error]timeout
 msgid "The server takes too much time to respond"
-msgstr "Shërbyesi po ha shumë kohë për t’u përgjigjur"
+msgstr ""
 
 #: [error]impossible
 msgid "Impossible login"
-msgstr "Hyrje e pamundshme"
+msgstr ""
 
 #: [error]default
 msgid "Unknown error"
-msgstr "Gabim i panjohur"
+msgstr ""
 
 #: [error]login_format
 msgid "Invalid username format"
-msgstr "Format i pavlefshëm emrash përdoruesish"
+msgstr ""
 
 #: [error]password_format
 msgid "Invalid password format"
-msgstr "Format i pavlefshëm fjalëkalimesh"
+msgstr ""
 
 #: [error]unauthorized
 msgid "Your XMPP server is unauthorized"
-msgstr "Shërbyesi juaj XMPP është i paautorizuar"
+msgstr ""
 
 #: [error]wrong_account
 msgid "Movim failed to authenticate. You entered wrong data"
-msgstr "Movim-i s’arriti të bëjë mirëfilltësimin. Dhatë të dhëna të gabuara"
+msgstr ""
 
 #: [error]mechanism
 msgid "Authentication mechanism not supported by Movim"
-msgstr "Mekanizëm mirëfilltësimi i pambuluar nga Movim"
+msgstr ""
 
 #: [error]fail_auth
 msgid "The XMPP authentification failed"
-msgstr "Mirëfilltësimi XMPP dështoi"
+msgstr ""
 
 #: [connection]socket_connected
 msgid "Connected to the server"
-msgstr "I lidhur te shërbyesi"
+msgstr ""
 
 #: [connection]authenticated
 msgid "Authenticated to the server"
-msgstr "U bë mirëfilltësimi kundrejt shërbyesit"
+msgstr ""
 
 #: [form]username
 msgid "My address"
-msgstr "Adresa ime"
+msgstr ""
 
 #: [form]whitelist_info
 msgid "Login with accounts from these servers"
-msgstr "Hyrje me llogari nga këta shërbyes"
+msgstr ""
 
 #: [form]connect_info
 msgid "Login using any XMPP account or create a new one"
-msgstr "Hyrje duke përdorur çfarëdo llogarie XMPP ose duke krijuar një të re"
+msgstr ""
 
 #: [form]connected
 msgid "Connected"
-msgstr "I lidhur"
+msgstr ""
 
 #: [form]population
 msgid "Population"
-msgstr "Popullsi"
+msgstr ""
 
 #: [form]invite_chatroom
 msgid "%s invited you to join a chatroom"
-msgstr "%s ju ftoi të hyni në një dhomë fjalosjesh"
+msgstr ""
 
 #: [form]pod_admins
 msgid "Administrated by"
-msgstr "Administruar nga"
+msgstr ""
 
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
-msgstr "Nofkë e gabuar (mes 4 dhe 40 shenjash)"
+msgstr ""
 
 #: [menu]empty_title
 msgid "No news yet…"
-msgstr "Ende pa lajme…"
+msgstr ""
 
 #: [menu]empty
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
-msgstr "Mirë se vini te prurja juaj e lajmeve, këtu do të shihni krejt postimet e botuara nga kontaktet tuaj dhe në bashkësi te të cilat jeni pajtuar."
+msgstr ""
 
 #: [menu]all
 msgid "All"
-msgstr "Krejt"
+msgstr ""
 
 #: [menu]mine
 msgid "My publications"
-msgstr "Publikimet e mia"
+msgstr ""
 
 #: [menu]contacts [page]contacts
 msgid "Contacts"
-msgstr "Kontakte"
+msgstr ""
 
 #: [menu]add_post
 msgid "Write a new post…"
-msgstr "Shkruani një postim të ri…"
+msgstr ""
 
 #: [invitations]title
 msgid "Pending Invitations"
-msgstr "Ftesa Pezull"
+msgstr ""
 
 #: [invitations]wants_to_talk
 msgid "%s wants to talk with you"
-msgstr "%s dëshiron të flasë me ju"
+msgstr ""
 
 #: [notifs]title [onboarding]notifications_title [room]notify_title
 msgid "Notifications"
-msgstr "Njoftime"
+msgstr ""
 
 #: [notifs]empty
 msgid "No new notifications"
-msgstr "S’ka njoftime të reja"
+msgstr ""
 
 #: [onboarding]notifications_text
 msgid "Movim can notify you when a new post is published or if you receive messages"
-msgstr "Movim-i mund t’ju njoftojë kur botohet një postim i ri ose kur merrni mesazhe"
+msgstr ""
 
 #: [onboarding]notifications_text_second
 msgid "You can always disable them afterwards"
-msgstr "Mundeni përherë t’i çaktivizoni më pas"
+msgstr ""
 
 #: [onboarding]public_title
 msgid "Public profile"
-msgstr "Profil publik"
+msgstr ""
 
 #: [onboarding]public_text
 msgid "Make your profile public and allow other users to find you and make new contacts more easily"
-msgstr "Bëjeni profilin tuaj publik dhe lejojuni përdoruesve të tjerë t’ju gjejnë dhe të krijoni kontakte të reja më lehtë"
+msgstr ""
 
 #: [onboarding]public_text_second
 msgid "You can always disable this in the configuration afterwards"
-msgstr "Këtë mundeni përherë ta çaktivizoni më pas te formësimi"
+msgstr ""
 
 #: [onboarding]popups_title
 msgid "Popups"
-msgstr "Flluska"
+msgstr ""
 
 #: [onboarding]popups_text
 msgid "Movim is using popups for the video-conference feature, they are sometime blocked by the browsers"
-msgstr "Movim përdor flluska për veçorinë videokonferenca, ndonjëherë ato bllokohen nga shfletuesi"
+msgstr ""
 
 #: [onboarding]popups_text_second
 msgid "Please be sure that they are enabled to use this feature properly"
-msgstr "Ju lutemi, për ta përdorur si duhet këtë veçori, sigurohuni që janë të aktivizuara"
+msgstr ""
 
 #: [post]news_feed
 msgid "News Feed"
-msgstr "Prurje Lajmesh"
+msgstr ""
 
 #: [post]placeholder
 msgid "Discover and register to the groups you are interested in"
-msgstr "Zbuloni dhe regjistroni grupe për të cilët jeni të interesuar"
+msgstr ""
 
 #: [post]content
 msgid "Content"
-msgstr "Lëndë"
+msgstr ""
 
 #: [post]published
 msgid "Post published"
-msgstr "Postimi u botua"
+msgstr ""
 
 #: [post]deleted
 msgid "Post deleted"
-msgstr "Postimi u fshi"
+msgstr ""
 
 #: [post]hot
 msgid "What’s Hot"
-msgstr "Ç’është Në Modë"
+msgstr ""
 
 #: [post]hot_text
 msgid "Posts recently published in communities that you are not subscribed (yet)"
-msgstr "Postime botuar së fundi në bashkësi te të cilat s’jeni pajtuar (ende)"
+msgstr ""
 
 #: [post]new [publish]new [publishbrief]new
 msgid "New post"
-msgstr "Postim i ri"
+msgstr ""
 
 #: [post]repost
 msgid "This is a re-post from %s"
-msgstr "Ky është një ripostim nga %s"
+msgstr ""
 
 #: [post]repost_profile
 msgid "See %s profile"
-msgstr "Shihni profilin e %s"
+msgstr ""
 
 #: [post]blog_last
 msgid "Public posts from users"
-msgstr "Postime publike nga përdorues"
+msgstr ""
 
 #: [post]read_time_singular
 msgid "%s minute"
-msgstr "%s minutë"
+msgstr ""
 
 #: [post]read_time_plural
 msgid "%s minutes"
-msgstr "%s minuta"
+msgstr ""
 
 #: [post]public
 msgid "Publish this post publicly?"
-msgstr "Të botohet ky postim publikisht?"
+msgstr ""
 
 #: [post]public_yes
 msgid "This post is public"
-msgstr "Ky postim është publik"
+msgstr ""
 
 #: [post]public_no
 msgid "This post is private"
-msgstr "Ky postim është privat"
+msgstr ""
 
 #: [post]public_url
 msgid "Public URL of this post"
-msgstr "URL publike e këtij postimi"
+msgstr ""
 
 #: [post]delete_title [post]delete
 msgid "Delete this post"
-msgstr "Fshije këtë postim"
+msgstr ""
 
 #: [post]delete_text
 msgid "You are going to delete this post, please confirm your action"
-msgstr "Ju ndan një hap nga fshirja e këtij postimi, ju lutemi, ripohoni veprimin tuaj"
+msgstr ""
 
 #: [post]delete_comment
 msgid "Are you sure that you want to delete this comment?"
-msgstr "Jeni i sigurt se doni të fshihet ky koment?"
+msgstr ""
 
 #: [post]discover
 msgid "Discover more articles on the communities page"
-msgstr "Zbuloni më tepër artikuj te faqet e bashkësisë"
+msgstr ""
 
 #: [post]more
 msgid "Read more"
-msgstr "Lexoni më tepër"
+msgstr ""
 
 #: [post]comments_disabled
 msgid "Comments disabled"
-msgstr "Komentet janë çaktivizuar"
+msgstr ""
 
 #: [post]comment_published
 msgid "Comment published"
-msgstr "Komenti u botua"
+msgstr ""
 
 #: [post]comment_like_published
 msgid "Liked"
-msgstr "U pëlqye"
+msgstr ""
 
 #: [post]comment_publish_error
 msgid "The comment cannot be published"
-msgstr "Komenti s’botohet dot"
+msgstr ""
 
 #: [post]comment_deleted
 msgid "Comment deleted"
-msgstr "Komenti u fshi"
+msgstr ""
 
 #: [post]liked
 msgid "Liked your publication"
-msgstr "Pëlqeu botimin tuaj"
+msgstr ""
 
 #: [post]commented
 msgid "Commented"
-msgstr "I komentuar"
+msgstr ""
 
 #: [hello]contact_post
 msgid "Contact post"
-msgstr "Postim kontakti"
+msgstr ""
 
 #: [hello]share_title
 msgid "Universal share button"
-msgstr "Buton i përgjithshëm ndarjesh"
+msgstr ""
 
 #: [hello]share_text
 msgid "Bookmark or drag and drop the following button in your toolbar and use it on all the pages you want to share on Movim"
-msgstr "Faqeruajini ose tërhiqeni dhe lëreni butonin vijues te paneli juaj dhe përdoreni për krejt faqet që doni të ndani me të tjerët në Movim"
+msgstr ""
 
 #: [hello]share_button
 msgid "Share on Movim"
-msgstr "Ndajeni me të tjerë në Movim"
+msgstr ""
 
 #: [hello]enter_title
 msgid "Oh! Hello!"
-msgstr "Oh! Tungjatjeta!"
+msgstr ""
 
 #: [hello]enter_paragraph
 msgid "It seems that you’re new there! Welcome on Movim!"
-msgstr "Duket se jeni i ri këtu! Mirë se vini në Movim!"
+msgstr ""
 
 #: [hello]menu_title
 msgid "Check the Menu"
-msgstr "Shihni Menunë"
+msgstr ""
 
 #: [hello]menu_paragraph
 msgid "All the main Movim features are accessible there. Don’t hesitate to navigate through the pages to discover more!"
-msgstr "Krejt veçoritë kryesore të Movim-it mund të përdoren nga këtu. Mos ngurroni të lëvizni nëpër faqe që të zbuloni të tjera!"
+msgstr ""
 
 #: [hello]profile_title
 msgid "Looks like you didn’t complete your profile yet"
-msgstr "Duket se nuk e keni plotësuar ende profilin tuaj"
+msgstr ""
 
 #: [hello]profile_paragraph
 msgid "You can go in the Configuration page to describe yourself and put a nice picture"
-msgstr "Mund të shkoni te faqja Formësim që të jepni një përshkrim për veten dhe për të vendosur një foto të hijshme"
+msgstr ""
 
 #: [status]disconnect
 msgid "Disconnect"
-msgstr "Shkëputu"
+msgstr ""
 
 #: [status]updated
 msgid "Status updated"
-msgstr "Gjendja u përditësua"
+msgstr ""
 
 #: [status]presence
 msgid "Presence"
-msgstr "Prani"
+msgstr ""
 
 #: [status]logout_confirm
 msgid "Do you really want to log out?"
-msgstr "Doni vërtet të dilni?"
+msgstr ""
 
 #: [preview]link_copied
 msgid "Link copied to clipboard"
-msgstr "Lidhja u kopjua në të papastër"
+msgstr ""
 
 #: [publish]placeholder [publishbrief]placeholder
 msgid "What’s new?"
-msgstr "Ç’ka të re?"
+msgstr ""
 
 #: [publish]post [publishbrief]post
 msgid "Write a post"
-msgstr "Shkruani një postim"
+msgstr ""
 
 #: [publish]add_link [publishbrief]add_link
 msgid "Add a link"
-msgstr "Shtoni një lidhje"
+msgstr ""
 
 #: [publish]add_snap [publishbrief]add_snap
 msgid "Take a picture"
-msgstr "Bëni një foto"
+msgstr ""
 
 #: [publish]no_title [publishbrief]no_title
 msgid "Please provide a title"
-msgstr "Ju lutemi, jepni një titull"
+msgstr ""
 
 #: [publish]preview [publishbrief]preview
 msgid "Preview"
-msgstr "Paraparje"
+msgstr ""
 
 #: [publish]attach [publishbrief]attach
 msgid "Add a file or a picture"
-msgstr "Shtoni një kartelë ose një foto"
+msgstr ""
 
 #: [publish]no_publication [publishbrief]no_publication
 msgid "You cannot publish a post here"
-msgstr "S’mund të botoni postim këtu"
+msgstr ""
 
 #: [publish]no_content_preview [publishbrief]no_content_preview
 msgid "No content to preview"
-msgstr "S’ka lëndë për paraparje"
+msgstr ""
 
 #: [publish]title [publishbrief]title
 msgid "Post title"
-msgstr "Titull postimi"
+msgstr ""
 
 #: [publish]content [publishbrief]content
 msgid "Markdown content"
-msgstr "Lëndë Markdown"
+msgstr ""
 
 #: [publish]valid_url [publishbrief]valid_url
 msgid "Please enter a valid URL"
-msgstr "Ju lutemi, jepni një URL të vlefshme"
+msgstr ""
 
 #: [publish]content_text [publishbrief]content_text
 msgid "You can format your content using Markdown"
-msgstr "Lëndën tuaj mund ta formatoni duke përdorur Markdown"
+msgstr ""
 
 #: [publish]draft_saved [publishbrief]draft_saved
 msgid "Draft saved"
-msgstr "Skica u ruajt"
+msgstr ""
 
 #: [publish]rich_editor [publishbrief]rich_editor
 msgid "Rich text editor"
-msgstr "Përpunues teksti të pasur"
+msgstr ""
 
 #: [publishhelp]title [page]help
 msgid "Help"
-msgstr "Ndihmë"
+msgstr ""
 
 #: [publishhelp]more
 msgid "More help"
-msgstr "Më tepër ndihmë"
+msgstr ""
 
 #: [publishhelp]manual
 msgid "Markdown syntax manual"
-msgstr "Doracak sintakse Markdown"
+msgstr ""
 
 #: [rooms]create
 msgid "Create a chatroom"
-msgstr "Krijoni një dhomë fjalosjeje"
+msgstr ""
 
 #: [rooms]edit
 msgid "Edit a chatroom"
-msgstr "Përpunoni një dhomë bisedash"
+msgstr ""
 
 #: [rooms]join
 msgid "Join a chatroom"
-msgstr "Hyni në një dhomë fjalosjeje"
+msgstr ""
 
 #: [rooms]join_custom
 msgid "Join a custom chatroom"
-msgstr "Hyni në një dhomë vetjake fjalosjeje"
+msgstr ""
 
 #: [rooms]empty_text1
 msgid "You don’t have any chatrooms yet."
-msgstr "Ende s’keni ndonjë dhomë bisedash."
+msgstr ""
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
-msgstr "Shtoni një duke klikuar mbi butonin e shtimeve."
+msgstr ""
 
 #: [rooms]empty_synchronize_title
 msgid "You had some rooms previously listed?"
-msgstr "Keni ndonjë dhomë prej më parë?"
+msgstr ""
 
 #: [rooms]empty_synchronize_text
 msgid "Try to synchronize them to the new room bookmarking system"
-msgstr "Provoni t’i njëkohësoni me sistemin e faqerojtjes së dhomës së re"
+msgstr ""
 
 #: [rooms]empty_synchronize_button
 msgid "Synchronize"
-msgstr "Njëkohësoje"
+msgstr ""
 
 #: [rooms]type_room
 msgid "Type of room"
-msgstr "Lloj dhome"
+msgstr ""
 
 #: [rooms]default_room
 msgid "Standard room"
-msgstr "Dhomë standarde"
+msgstr ""
 
 #: [rooms]gateway_room
 msgid "Gateway room"
-msgstr "Dhomë kanali"
+msgstr ""
 
 #: [rooms]show_all
 msgid "Show all rooms"
-msgstr "Shfaqi krejt dhomat"
+msgstr ""
 
 #: [rooms]hide_disconnected
 msgid "Hide disconnected rooms"
-msgstr "Fshihi dhomat e shkëputura"
+msgstr ""
 
 #: [rooms]destroy_title
 msgid "Destroy the room"
-msgstr "Asgjësoje dhomën"
+msgstr ""
 
 #: [rooms]destroy_text
 msgid "Are you sure you want to permanently destroy the following room?"
-msgstr "Jeni i sigurt se doni të asgjësohet përgjithnjë dhoma vijuese?"
+msgstr ""
 
 #: [rooms]owner
 msgctxt "[rooms]owner"
 msgid "Owner"
-msgstr "Pronar"
+msgstr ""
 
 #: [rooms]admin
 msgctxt "[rooms]admin"
 msgid "Admin"
-msgstr "Përgjegjës"
+msgstr ""
 
 #: [rooms]visitor
 msgid "Visitor"
-msgstr "Vizitor"
+msgstr ""
 
 #: [rooms]explore_placeholder
 msgid "Name or description"
-msgstr "Emër ose përshkrim"
+msgstr ""
 
 #: [chatrooms]title
 msgid "Chatrooms"
-msgstr "Dhoma fjalosjeje"
+msgstr ""
 
 #: [chatrooms]id
 msgid "Chatroom ID"
-msgstr "ID Dhome Bisedash"
+msgstr ""
 
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
-msgstr "Dhoma Ime e Parapëlqyer"
+msgstr ""
 
 #: [chatrooms]bad_id
 msgid "Bad Chatroom ID"
-msgstr "ID e gabuar Dhome Bisedash"
+msgstr ""
 
 #: [chatrooms]empty_name
 msgid "Empty name"
-msgstr "Emër i zbrazët"
+msgstr ""
 
 #: [chatrooms]synchronized
 msgid "%s rooms synchronized"
-msgstr "U njëkohësuan %s dhoma"
+msgstr ""
 
 #: [chatrooms]not_synchronized
 msgid "No rooms to synchronize found"
-msgstr "S’u gjet dhomë për njëkohësim"
+msgstr ""
 
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
 msgid "Users"
-msgstr "Përdorues"
+msgstr ""
 
 #: [chatrooms]members
 msgctxt "[chatrooms]members"
 msgid "Members"
-msgstr "Anëtarë"
+msgstr ""
 
 #: [chatrooms]banned
 msgid "Banned"
-msgstr "I dëbuar"
+msgstr ""
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a correct nickname (2 to 40 characters)"
-msgstr "Ju lutemi, jepni një nofkë të saktë (2 deri në 40 shenja)"
+msgstr ""
 
 #: [chatrooms]conflict
 msgid "Username already taken"
-msgstr "Emër përdoruesi tashmë i zënë"
+msgstr ""
 
 #: [chatrooms]autojoin
 msgid "Join this chatroom on connect"
-msgstr "Hyr në këtë dhomë bisedash gjatë lidhjes"
+msgstr ""
 
 #: [chatrooms]pinned
 msgid "Pin this chatroom"
-msgstr "Fiksoje këtë dhome fjalosjesh"
+msgstr ""
 
 #: [chatrooms]destroyed
 msgid "Room destroyed"
-msgstr "Dhoma u asgjësua"
+msgstr ""
 
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
-msgstr "S’hyhet dot te dhomë bisedash, lypset regjistrim"
+msgstr ""
 
 #: [chatrooms]itemnotfound
 msgid "The chatroom doesn’t exists"
-msgstr "Dhoma e fjalosjeve s’ekziston"
+msgstr ""
 
 #: [chatrooms]notauthorized
 msgid "A password is required"
-msgstr "Lypset një fjalëkalim"
+msgstr ""
 
 #: [chatrooms]forbidden
 msgid "You are not allowed to join this chatroom"
-msgstr "S’keni leje të hyni në këtë dhomë fjalosjesh"
+msgstr ""
 
 #: [chatrooms]jidmalformed
 msgid "Your nickname is not valid"
-msgstr "Nofka juaj s’është e vlefshme"
+msgstr ""
 
 #: [chatrooms]notacceptable
 msgid "Not acceptable"
-msgstr "I papranueshëm"
+msgstr ""
 
 #: [chatrooms]serviceunavailable
 msgid "The chatroom occupant limit has been reached"
-msgstr "Është mbërritur në kufirin e pjesëmarrësve në dhomë"
+msgstr ""
 
 #: [chatrooms]notallowed
 msgid "You are not allowed to create a chatroom there"
-msgstr "S’keni leje të krijoni dhomë bisedash këtu"
+msgstr ""
 
 #: [chatrooms]created
 msgid "Chatroom created"
-msgstr "Dhoma e bisedave u krijua"
+msgstr ""
 
 #: [bookmarks]updated
 msgid "Bookmarks updated"
-msgstr "Faqerojtësit u përditësuan"
+msgstr ""
 
 #: [room]anonymous_title
 msgid "Public chatroom"
-msgstr "Dhomë publike bisedash"
+msgstr ""
 
 #: [room]anonymous_text1
 msgid "You are currently logged as an anonymous user."
-msgstr "Hëpërhë keni bërë hyrjen si përdorues anonim."
+msgstr ""
 
 #: [room]anonymous_text2
 msgid "You can join using your own account or create one on the login page by loging out using the cross in the top-right corner."
-msgstr "Mund të merrni pjesë duke përdorur llogarinë tuaj ose duke krijuar një te faqja e hyrjeve, pasi të keni dalë duke përdorur kryqin në cepin e djathtë sipër."
+msgstr ""
 
 #: [room]anonymous_login
 msgid "Login on %s"
-msgstr "Bëni hyrjen te %s"
+msgstr ""
 
 #: [room]invite
 msgid "Invite a contact"
-msgstr "Ftoni një kontakt"
+msgstr ""
 
 #: [room]invited
 msgid "Invitation sent"
-msgstr "Ftesa u dërgua"
+msgstr ""
 
 #: [room]invite_code
 msgid "Send this link to your contacts"
-msgstr "Dërgojani këtë lidhje kontakteve tuaja"
+msgstr ""
 
 #: [room]public_muc
 msgid "Public"
-msgstr "Publike"
+msgstr ""
 
 #: [room]public_muc_text
 msgid "This chatroom is publicly discoverable"
-msgstr "Kjo dhomë bisedash mund të zbulohet publikisht"
+msgstr ""
 
 #: [room]nonanonymous_muc
 msgid "Public profiles"
-msgstr "Profile publike"
+msgstr ""
 
 #: [room]nonanonymous_muc_text
 msgid "The participants of this chatroom can see each other's profile"
-msgstr "Pjesëmarrësit e kësaj dhome bisedash mund të shohin profilin e njëri-tjetrit"
+msgstr ""
 
 #: [room]group_chat
 msgid "Group Chat"
-msgstr "Fjalosje Në Grup"
+msgstr ""
 
 #: [room]group_chat_text
 msgid "Private group chat with invited members"
-msgstr "Fjalosje private në grup me anëtarë të ftuar"
+msgstr ""
 
 #: [room]group_chat_add
 msgid "Add a new member"
-msgstr "Shtoni një anëtar të ri"
+msgstr ""
 
 #: [room]group_chat_members
 msgctxt "[room]group_chat_members"
 msgid "Members"
-msgstr "Anëtarë"
+msgstr ""
 
 #: [room]banned_add
 msgid "Ban someone"
-msgstr "Dëboni dikë"
+msgstr ""
 
 #: [room]banned_remove
 msgid "Unban"
-msgstr "Hiqini dëbimin"
+msgstr ""
 
 #: [room]change_affiliation
 msgid "Change the user affiliation"
-msgstr "Ndryshoni përshoqërimin e përdoruesit"
+msgstr ""
 
 #: [room]change_affiliation_unauthorized
 msgid "You are not authorized to change this affiliation"
-msgstr "S’jeni i autorizuar të ndryshoni këtë përshoqërim"
+msgstr ""
 
 #: [room]affiliation
 msgid "Affiliation"
-msgstr "Përshoqërim"
+msgstr ""
 
 #: [room]reason
 msgid "Reason"
-msgstr "Arsye"
+msgstr ""
 
 #: [room]channel
 msgid "Channel"
-msgstr "Kanal"
+msgstr ""
 
 #: [room]channel_users
 msgctxt "[room]channel_users"
 msgid "Users"
-msgstr "Përdorues"
+msgstr ""
 
 #: [room]channel_text
 msgid "Public channel that can be publicly discoverable and joinable"
-msgstr "Kanal publik që mund të zbulohet publikisht dhe në të të hyhet publikisht"
+msgstr ""
 
 #: [room]notify_never
 msgid "Never notify"
-msgstr "Mos njofto kurrë"
+msgstr ""
 
 #: [room]notify_quoted
 msgid "Notify when quoted"
-msgstr "Njofto kur citohet"
+msgstr ""
 
 #: [room]notify_always
 msgid "Always notify"
-msgstr "Njofto përherë"
+msgstr ""
 
 #: [room]pinned
 msgid "Pinned"
-msgstr "E fiksuar"
+msgstr ""
 
 #: [room]affiliation_owner
 msgctxt "[room]affiliation_owner"
 msgid "Owner"
-msgstr "Pronar"
+msgstr ""
 
 #: [room]affiliation_admin
 msgctxt "[room]affiliation_admin"
 msgid "Admin"
-msgstr "Përgjegjës"
+msgstr ""
 
 #: [room]affiliation_member [affiliation]member
 msgid "Member"
-msgstr "Anëtar"
+msgstr ""
 
 #: [room]affiliation_none [affiliation]no-aff
 msgid "No affiliation"
-msgstr "Pa përshoqërim"
+msgstr ""
 
 #: [room]affiliation_owner_changed
 msgid "User granted as owner"
-msgstr "Përdoruesi u lejua si pronar."
+msgstr ""
 
 #: [room]affiliation_admin_changed
 msgid "User granted as admin"
-msgstr "Përdoruesi u lejua si përgjegjës"
+msgstr ""
 
 #: [room]affiliation_member_changed
 msgid "User granted as member"
-msgstr "Përdorues u lejua si anëtar"
+msgstr ""
 
 #: [room]affiliation_outcast_changed
 msgid "User banned"
-msgstr "Përdoruesi u dëbua"
+msgstr ""
 
 #: [room]affiliation_none_changed
 msgid "Affiliation removed for the user"
-msgstr "Për përdoruesin u hoq përshoqërim"
+msgstr ""
 
 #: [roomsexplore]no_local
 msgid "No chatrooms found locally"
-msgstr "S’u gjetën dhoma vendore fjalosjesh"
+msgstr ""
 
 #: [roomsexplore]global_title
 msgid "Global search"
-msgstr "Kërkim global"
+msgstr ""
 
 #: [roomsexplore]no_global
 msgid "No chatrooms found globally"
-msgstr "S’u gjetën dhoma globale fjalosjesh"
+msgstr ""
 
 #: [search]keyword
 msgid "What are you looking for?"
-msgstr "Ç’po kërkoni?"
+msgstr ""
 
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
-msgstr "Hapmë duke përdorur Ctrl + M"
+msgstr ""
 
 #: [search]placeholder
 msgid "#cats, username@server.com, John…"
-msgstr "#daci, emërpërdoruesi@shërbyes.com, Abaz…"
+msgstr ""
 
 #: [search]no_contacts_title
 msgid "No contacts yet?"
-msgstr "Ende pa kontakte?"
+msgstr ""
 
 #: [search]no_contacts_text
 msgid "Find one by searching for their name or id"
-msgstr "Gjeni një duke kërkuar për emrin ose ID-në e tij"
+msgstr ""
 
 #: [search]tags
 msgid "Tags"
-msgstr "Etiketa"
+msgstr ""
 
 #: [search]show_complete_roster
 msgid "Show all the contacts"
-msgstr "Shfaqi krejt kontaktet"
+msgstr ""
 
 #: [sendto]attach
 msgid "Attach to a blog publication"
-msgstr "Bashkëngjitni te një botim blohu"
+msgstr ""
 
 #: [sendto]contact
 msgid "Send it to a contact"
-msgstr "Dërgojani një kontakti"
+msgstr ""
 
 #: [sendto]chatroom
 msgid "Share it in a chatroom"
-msgstr "Ndajeni me të tjerë në një dhomë bisedash"
+msgstr ""
 
 #: [sendto]shared_with
 msgid "Post shared"
-msgstr "Postimi u nda me të tjerë"
+msgstr ""
 
 #: [sendto]shared_contact
 msgid "Post shared with your contact"
-msgstr "Postimi u nda me kontaktin tuaj"
+msgstr ""
 
 #: [sendto]shared_chatroom
 msgid "Post shared within the chatroom"
-msgstr "Postimi u nda brenda dhomës së bisedave"
+msgstr ""
 
 #: [sendto]more_contacts
 msgid "More contacts"
-msgstr "Më tepër kontakte"
+msgstr ""
 
 #: [statistics]title
 msgid "Statistics"
-msgstr "Statistika"
+msgstr ""
 
 #: [sticker]title
 msgid "Stickers"
-msgstr "Ngjitës"
+msgstr ""
 
 #: [sticker]sent
 msgid "A sticker has been sent using Movim"
-msgstr "Është dërguar një ngjitëse duke përdorur Movim-in"
+msgstr ""
 
 #: [sticker]keyword
 msgid "Type a keyword"
-msgstr "Shtypni një fjalëkyçe"
+msgstr ""
 
 #: [sticker]gif_title
 msgid "Find a GIF"
-msgstr "Gjeni një GIF"
+msgstr ""
 
 #: [sticker]gif_text
 msgid "Powered by Tenor"
-msgstr "Bazuar Tenor"
+msgstr ""
 
 #: [subscribe]info
 msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
-msgstr "Movim-i është një rrjet shoqëror i decentralizuar, përpara se të krijoni një llogari të re, lypset të zgjidhni një shërbyes ku të regjistroheni."
+msgstr ""
 
 #: [subscribe]server_question
 msgid "Your server here?"
-msgstr "Doni këtu shërbyesin tuaj?"
+msgstr ""
 
 #: [subscribe]server_contact
 msgid "Contact us to add yours to the officially supported servers list"
-msgstr "Lidhuni me ne që të shtoni tuajin te lista e shërbyesve të mbuluar zyrtarisht"
+msgstr ""
 
 #: [feed]nope
 msgid "No public feed for this contact"
-msgstr "S’ka prurje publike për këtë kontakt"
+msgstr ""
 
 #: [feed]nope_contact
 msgid "No contact specified"
-msgstr "S’u përcaktua kontakt"
+msgstr ""
 
 #: [upload]title [button]upload
 msgid "Upload"
-msgstr "Ngarkoje"
+msgstr ""
 
 #: [upload]choose
 msgid "Choose a file to upload"
-msgstr "Zgjidhni një kartelë për ngarkim"
+msgstr ""
 
 #: [upload]info
 msgid "Large pictures will be resized and compressed"
-msgstr "Figurat e mëdha do të ripërmasohen dhe ngjeshen"
+msgstr ""
 
 #: [upload]error_filesize
 msgid "File too large"
-msgstr "Kartelë shumë e madhe"
+msgstr ""
 
 #: [upload]error_failed
 msgid "Upload failed"
-msgstr "Ngarkimi dështoi"
+msgstr ""
 
 #: [upload]error_not_allowed
 msgid "You are not allowed to upload a file"
-msgstr "S’keni leje të ngarkoni kartelë"
+msgstr ""
 
 #: [upload]error_resource_constraint
 msgid "You exceeded the quota"
-msgstr "Keni tejkaluar kuotat"
+msgstr ""
 
 #: [upload]drag_drop
 msgid "Drag and drop your file in this area"
-msgstr "Tërhiqini dhe i lini kartelat te kjo zonë"
+msgstr ""
 
 #: [upload]max_size
 msgid "Max file size %s"
-msgstr "Madhësi maksimum kartelash %s"
+msgstr ""
 
 #: [vcard]title [page]profile
 msgid "Profile"
-msgstr "Profil"
+msgstr ""
 
 #: [vcard]updated
 msgid "Profile Updated"
-msgstr "Profili u Përditësua"
+msgstr ""
 
 #: [vcard]not_updated
 msgid "Profile Not Updated"
-msgstr "Profili S’u Përditësua"
+msgstr ""
 
 #: [vcard]public
 msgid "Your profile is now public"
-msgstr "Profili juaj tani është publik"
+msgstr ""
 
 #: [vcard]restricted
 msgid "Your profile is now restricted"
-msgstr "Profili juaj tani është i kufizuar"
+msgstr ""
 
 #: [profile]info
 msgid "Configure your instance nickname"
-msgstr "Formësoni nofkën tuaj për instancën"
+msgstr ""
 
 #: [profile]privacy_question
 msgid "Is this profile public?"
-msgstr "A është publik ky profil?"
+msgstr ""
 
 #: [profile]privacy_info
 msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
-msgstr "Ju lutemi, bëni kujdes! Duke e kaluar profilin tuaj si publik, krejt të dhënat e radhitura më poshtë do të jenë të dukshme për krejt përdoruesit e Movim-it dhe në krejt Internetin."
+msgstr ""
 
 #: [profile]nickname_info
 msgid "Set a local nickname to allow the other users of the instance to find you easily."
-msgstr "Caktoni një nofkë vendore për të lejuar përdoruesit e tjerë të instancës t’ju gjejnë kollaj."
+msgstr ""
 
 #: [profile]nickname_set
 msgid "Your nickname is %s."
-msgstr "Nofka juaj është %s."
+msgstr ""
 
 #: [profile]nickname_placeholder
 msgid "John_Bob96"
-msgstr "Vajti_dhe_ky45"
+msgstr ""
 
 #: [profile]nickname_error
 msgid "Your nickname should only contains letters, numbers, - and _"
-msgstr "Nofka juaj duhet të përmbajë vetëm shkronja, numra, - dhe _"
+msgstr ""
 
 #: [profile]nickname_conflict
 msgid "The nickname is already registered"
-msgstr "Nofka është tashmë e regjistruar"
+msgstr ""
 
 #: [profile]nickname_saved
 msgid "Nickname saved"
-msgstr "Nofka u ruajt"
+msgstr ""
 
 #: [save]submit [button]submit
 msgid "Submit"
-msgstr "Parashtroje"
+msgstr ""
 
 #: [save]reset [button]reset
 msgid "Reset"
-msgstr "Riktheje në fillimet"
+msgstr ""
 
 #: [degraded]title
 msgid "Movim is currently working in degraded mode"
-msgstr "Movim-i po punon nën mundësitë e veta"
+msgstr ""
 
 #: [degraded]text_1
 msgid "Your server doesn’t support XMPP Pubsub persistence or the social features (communities, news feed and profile) are disabled by the administrator."
-msgstr "Shërbyesi juaj nuk mbulon <em>persistence</em> Pubsub XMPP apo veçori të tjera shoqërorësh (bashkësi, prurje lajmesh dhe profil) janë çaktivizuar nga përgjegjësi."
+msgstr ""
 
 #: [degraded]text_2
 msgid "Please contact your server administrator to see if this feature can be enabled."
-msgstr "Ju lutemi, lidhuni me përgjegjësin e shërbyesit tuaj për të parë nëse mund të aktivizohet kjo veçori."
+msgstr ""
 
 #: [visio]calling
 msgid "…is calling you"
-msgstr "…po ju thërret"
+msgstr ""
 
 #: [visio]video_call
 msgid "Incoming video call"
-msgstr "Thirrje video ardhëse"
+msgstr ""
 
 #: [visio]audio_call
 msgid "Incoming audio call"
-msgstr "Thirrje audio ardhëse"
+msgstr ""
 
 #: [visio]ringing
 msgid "…ringing"
-msgstr "…po bie zilja"
+msgstr ""
 
 #: [visio]declined
 msgid "declined"
-msgstr "u hodh poshtë"
+msgstr ""
 
 #: [visio]in_call
 msgid "in call"
-msgstr "në thirrje"
+msgstr ""
 
 #: [visio]failed
 msgid "failed"
-msgstr "dështoi"
+msgstr ""
 
 #: [visio]connecting
 msgid "…connecting"
-msgstr "…po lidhet"
+msgstr ""
 
 #: [visio]ended
 msgid "call ended"
-msgstr "thirrja përfundoi"
+msgstr ""
 
 #: [global]no_js
 msgid "Movim requires Javascript to be enabled to work properly."
-msgstr "Që të funksionojë si duhet, Movim-i lyp që Javascript-i të jetë  akivizuar."
+msgstr ""
 
 #: [global]description
 msgid "Movim is a kickass distributed social networking platform that protect your privacy and comes with a set of awesome features."
-msgstr "Movim është një platformë rrjeti shoqëror të shpërndarë, që mbron privatësinë tuaj dhe ju sjell një grup veçorish njëra më e mirë se tjetra."
+msgstr ""
 
 #: [global]loading
 msgid "Loading…"
-msgstr "Po ngarkohet…"
+msgstr ""
 
 #: [global]or
 msgid "Or"
-msgstr "Ose"
+msgstr ""
 
 #: [global]change_pod
 msgid "Switch to another pod"
-msgstr "Kaloni te një nyjë tjetër"
+msgstr ""
 
 #: [page]communities
 msgid "Communities"
-msgstr "Bashkësi"
+msgstr ""
 
 #: [page]home
 msgid "Home"
-msgstr "Kreu"
+msgstr ""
 
 #: [page]explore
 msgid "Explore"
-msgstr "Eksploroni"
+msgstr ""
 
 #: [page]account_creation
 msgid "Account Creation"
-msgstr "Krijim Llogarie"
+msgstr ""
 
 #: [page]news
 msgid "News"
-msgstr "Lajme"
+msgstr ""
 
 #: [page]avatar
 msgid "Avatar"
-msgstr "Avatar"
+msgstr ""
 
 #: [page]chats
 msgid "Chats"
-msgstr "Fjalosje"
+msgstr ""
 
 #: [page]publish
 msgid "Publish"
-msgstr "Botoje"
+msgstr ""
 
 #: [page]post
 msgid "Post"
-msgstr "Postoni"
+msgstr ""
 
 #: [page]blog
 msgid "Blog"
-msgstr "Blog"
+msgstr ""
 
 #: [page]about
 msgid "About"
-msgstr "Rreth"
+msgstr ""
 
 #: [page]login
 msgid "Login"
-msgstr "Hyrje"
+msgstr ""
 
 #: [page]not_found
 msgid "Not Found"
-msgstr "S’u Gjet"
+msgstr ""
 
 #: [page]feed
 msgid "Feed"
-msgstr "Prurje"
+msgstr ""
 
 #: [page]posts
 msgid "Posts"
-msgstr "Postime"
+msgstr ""
 
 #: [page]gallery
 msgid "Gallery"
-msgstr "Galeri"
+msgstr ""
 
 #: [page]visio
 msgid "Visio-conference"
-msgstr "Konferencë Visio"
+msgstr ""
 
 #: [page]share
 msgctxt "[page]share"
 msgid "Share"
-msgstr "Ndajeni me të tjerët"
+msgstr ""
 
 #: [page]room
 msgid "Room"
-msgstr "Dhomë"
+msgstr ""
 
 #: [page]tag
 msgid "Tag"
-msgstr "Etiketë"
+msgstr ""
 
 #: [error]error
 msgid "Error: %s"
-msgstr "Gabim: %s"
+msgstr ""
 
 #: [error]cannot_load_file
 msgid "Cannot load file '%s'"
-msgstr "S’ngarkohet dot kartela '%s'"
+msgstr ""
 
 #: [error]widget_load_error
 msgid "Requested widget '%s' doesn’t exist."
-msgstr "Widget-i '%s' s’ekziston."
+msgstr ""
 
 #: [error]widget_call_error
 msgid "Requested event '%s' not registered."
-msgstr "Akti i kërkuar '%s' s’është i regjistruar."
+msgstr ""
 
 #: [error]whoops
 msgid "Whoops!"
-msgstr "Ooh!"
+msgstr ""
 
 #: [error]websocket
 msgid "Movim cannot talk with the server, please try again later"
-msgstr "Movim-i s’komunikon dot me shërbyesin, ju lutemi, riprovoni më vonë"
+msgstr ""
 
 #: [error]websocket_connect
 msgid "Reconnection to the server…"
-msgstr "Rilidhje me shërbyesin…"
+msgstr ""
 
 #: [error]oops
 msgid "Oops!"
-msgstr "Oooh!"
+msgstr ""
 
 #: [button]call
 msgid "Call"
-msgstr "Thirre"
+msgstr ""
 
 #: [button]audio_call
 msgid "Audio Call"
-msgstr "Thirrje Audio"
+msgstr ""
 
 #: [button]video_call
 msgid "Video Call"
-msgstr "Thirrje Video"
+msgstr ""
 
 #: [button]validate
 msgid "Validate"
-msgstr "Vleftësoje"
+msgstr ""
 
 #: [button]refresh
 msgid "Refresh"
-msgstr "Rifreskoje"
+msgstr ""
 
 #: [button]add
 msgid "Add"
-msgstr "Shtoni"
+msgstr ""
 
 #: [button]delete
 msgid "Delete"
-msgstr "Fshije"
+msgstr ""
 
 #: [button]destroy
 msgid "Destroy"
-msgstr "Asgjësoje"
+msgstr ""
 
 #: [button]cancel
 msgid "Cancel"
-msgstr "Anuloje"
+msgstr ""
 
 #: [button]close
 msgid "Close"
-msgstr "Mbylle"
+msgstr ""
 
 #: [button]update
 msgid "Update"
-msgstr "Përditësoje"
+msgstr ""
 
 #: [button]updating
 msgid "Updating"
-msgstr "Po përditësohet"
+msgstr ""
 
 #: [button]submitting
 msgid "Submitting"
-msgstr "Po parashtrohet"
+msgstr ""
 
 #: [button]register
 msgid "Register"
-msgstr "Regjistrohuni"
+msgstr ""
 
 #: [button]reply
 msgid "Reply"
-msgstr "Përgjigjuni"
+msgstr ""
 
 #: [button]unregister
 msgid "Unregister"
-msgstr "Çregjistrohuni"
+msgstr ""
 
 #: [button]save
 msgid "Save"
-msgstr "Ruaje"
+msgstr ""
 
 #: [button]clear
 msgid "Clear"
-msgstr "Pastroje"
+msgstr ""
 
 #: [button]connecting
 msgid "Connecting"
-msgstr "Po lidhet"
+msgstr ""
 
 #: [button]bool_yes
 msgid "Yes"
-msgstr "Po"
+msgstr ""
 
 #: [button]bool_no
 msgid "No"
-msgstr "Jo"
+msgstr ""
 
 #: [button]return
 msgid "Return"
-msgstr "Kthehu"
+msgstr ""
 
 #: [button]accept
 msgid "Accept"
-msgstr "Pranoje"
+msgstr ""
 
 #: [button]refuse
 msgid "Refuse"
-msgstr "Hidhe poshtë"
+msgstr ""
 
 #: [button]next
 msgid "Next"
-msgstr "Pasuesi"
+msgstr ""
 
 #: [button]previous
 msgid "Previous"
-msgstr "I mëparshmi"
+msgstr ""
 
 #: [button]search
 msgid "Search"
-msgstr "Kërkoni"
+msgstr ""
 
 #: [button]share
 msgctxt "[button]share"
 msgid "Share"
-msgstr "Ndajeni me të tjerët"
+msgstr ""
 
 #: [button]discover
 msgid "Discover"
-msgstr "Zbuloni"
+msgstr ""
 
 #: [button]like
 msgid "Like"
-msgstr "Pëlqim"
+msgstr ""
 
 #: [button]not_now
 msgid "Not Now"
-msgstr "Jo Tani"
+msgstr ""
 
 #: [button]enable
 msgid "Enable"
-msgstr "Aktivizoje"
+msgstr ""
 
 #: [button]sign_up
 msgid "Sign Up"
-msgstr "Regjistrohuni"
+msgstr ""
 
 #: [button]send_to
 msgid "Send to"
-msgstr "Dërgoje te"
+msgstr ""
 
 #: [button]more
 msgid "More"
-msgstr "Më tepër"
+msgstr ""
 
 #: [button]copy_link
 msgid "Copy Link"
-msgstr "Kopjo Lidhjen"
+msgstr ""
 
 #: [input]optional
 msgid "Optional"
-msgstr "Opsional"
+msgstr ""
 
 #: [day]title
 msgid "Day"
-msgstr "Ditë"
+msgstr ""
 
 #: [day]monday
 msgid "Monday"
-msgstr "E hënë"
+msgstr ""
 
 #: [day]tuesday
 msgid "Tuesday"
-msgstr "E martë"
+msgstr ""
 
 #: [day]wednesday
 msgid "Wednesday"
-msgstr "E mërkurë"
+msgstr ""
 
 #: [day]thursday
 msgid "Thursday"
-msgstr "E enjte"
+msgstr ""
 
 #: [day]friday
 msgid "Friday"
-msgstr "E premte"
+msgstr ""
 
 #: [day]saturday
 msgid "Saturday"
-msgstr "E shtunë"
+msgstr ""
 
 #: [day]sunday
 msgid "Sunday"
-msgstr "E diel"
+msgstr ""
 
 #: [client]bot
 msgid "Bot"
-msgstr "Robot"
+msgstr ""
 
 #: [client]console
 msgid "Console"
-msgstr "Konsolë"
+msgstr ""
 
 #: [client]desktop
 msgid "Desktop"
-msgstr "Desktop"
+msgstr ""
 
 #: [client]phone
 msgid "Phone"
-msgstr "Telefon"
+msgstr ""
 
 #: [client]web
 msgid "Web"
-msgstr "Web"
+msgstr ""
 
 #: [client]registered
 msgid "Registered"
-msgstr "I regjistruar"
+msgstr ""
 
 #: [presence]online
 msgid "Online"
-msgstr "Në linjë"
+msgstr ""
 
 #: [presence]away
 msgid "Away"
-msgstr "I larguar"
+msgstr ""
 
 #: [presence]dnd
 msgid "Do Not Disturb"
-msgstr "Mos Më Bezdisni"
+msgstr ""
 
 #: [presence]xa
 msgid "Extended Away"
-msgstr "Largim i Zgjeruar"
+msgstr ""
 
 #: [presence]offline
 msgid "Offline"
-msgstr "Jo në linjë"
+msgstr ""
 
 #: [presence]error
 msgid "Error"
-msgstr "Gabim"
+msgstr ""
 
 #: [mood]afraid
 msgid "afraid"
-msgstr "i frikësuar"
+msgstr ""
 
 #: [mood]amazed
 msgid "amazed"
-msgstr "i mahnitur"
+msgstr ""
 
 #: [mood]amorous
 msgid "amorous"
-msgstr "i dashuruar"
+msgstr ""
 
 #: [mood]angry
 msgid "angry"
-msgstr "i nxehur"
+msgstr ""
 
 #: [mood]annoyed
 msgid "annoyed"
-msgstr "i bezdisur"
+msgstr ""
 
 #: [mood]anxious
 msgid "anxious"
-msgstr "i merakosur"
+msgstr ""
 
 #: [mood]aroused
 msgid "aroused"
-msgstr "i eksituar"
+msgstr ""
 
 #: [mood]ashamed
 msgid "ashamed"
-msgstr "i turpëruar"
+msgstr ""
 
 #: [mood]bored
 msgid "bored"
-msgstr "i mërzitur"
+msgstr ""
 
 #: [mood]brave
 msgid "brave"
-msgstr "trim"
+msgstr ""
 
 #: [mood]calm
 msgid "calm"
-msgstr "i qetë"
+msgstr ""
 
 #: [mood]cautious
 msgid "cautious"
-msgstr "i matur"
+msgstr ""
 
 #: [mood]cold
 msgid "cold"
-msgstr "i ftohtë"
+msgstr ""
 
 #: [mood]confident
 msgid "confident"
-msgstr "me vetëbesim"
+msgstr ""
 
 #: [mood]confused
 msgid "confused"
-msgstr "toruahumbur"
+msgstr ""
 
 #: [mood]contemplative
 msgid "contemplative"
-msgstr "soditës"
+msgstr ""
 
 #: [mood]contented
 msgid "contented"
-msgstr "i kënaqur"
+msgstr ""
 
 #: [mood]cranky
 msgid "cranky"
-msgstr "zevzek"
+msgstr ""
 
 #: [mood]crazy
 msgid "crazy"
-msgstr "i lojtur"
+msgstr ""
 
 #: [mood]creative
 msgid "creative"
-msgstr "krijues"
+msgstr ""
 
 #: [mood]curious
 msgid "curious"
-msgstr "kureshtar"
+msgstr ""
 
 #: [mood]dejected
 msgid "dejected"
-msgstr "i dëshpëruar"
+msgstr ""
 
 #: [mood]depressed
 msgid "depressed"
-msgstr "i ligështuar"
+msgstr ""
 
 #: [mood]disappointed
 msgid "disappointed"
-msgstr "i zhgënjyer"
+msgstr ""
 
 #: [mood]disgusted
 msgid "disgusted"
-msgstr "i neveritur"
+msgstr ""
 
 #: [mood]dismayed
 msgid "dismayed"
-msgstr "i tronditur"
+msgstr ""
 
 #: [mood]distracted
 msgid "distracted"
-msgstr "i shpërqendruar"
+msgstr ""
 
 #: [mood]embarrassed
 msgid "embarrassed"
-msgstr "i turpëruar"
+msgstr ""
 
 #: [mood]envious
 msgid "envious"
-msgstr "ziliqar"
+msgstr ""
 
 #: [mood]excited
 msgid "excited"
-msgstr "i ngazëllyer"
+msgstr ""
 
 #: [mood]flirtatious
 msgid "flirtatious"
-msgstr "joshës"
+msgstr ""
 
 #: [mood]frustrated
 msgid "frustrated"
-msgstr "i bezdisur"
+msgstr ""
 
 #: [mood]grateful
 msgid "grateful"
-msgstr "mirënjohës"
+msgstr ""
 
 #: [mood]grieving
 msgid "grieving"
-msgstr "i pikëlluar"
+msgstr ""
 
 #: [mood]grumpy
 msgid "grumpy"
-msgstr "gërnjar"
+msgstr ""
 
 #: [mood]guilty
 msgid "guilty"
-msgstr "fajtor"
+msgstr ""
 
 #: [mood]happy
 msgid "happy"
-msgstr "i lumtur"
+msgstr ""
 
 #: [mood]hopeful
 msgid "hopeful"
-msgstr "optimist"
+msgstr ""
 
 #: [mood]hot
 msgid "hot"
@@ -2907,19 +2904,19 @@ msgstr ""
 
 #: [mood]humbled
 msgid "humbled"
-msgstr "i përulur"
+msgstr ""
 
 #: [mood]humiliated
 msgid "humiliated"
-msgstr "i poshtëruar"
+msgstr ""
 
 #: [mood]hungry
 msgid "hungry"
-msgstr "i uritur"
+msgstr ""
 
 #: [mood]hurt
 msgid "hurt"
-msgstr "i lënduar"
+msgstr ""
 
 #: [mood]impressed
 msgid "impressed"
@@ -2927,343 +2924,343 @@ msgstr ""
 
 #: [mood]in_awe
 msgid "in awe"
-msgstr "i mahnitur"
+msgstr ""
 
 #: [mood]in_love
 msgid "in love"
-msgstr "i dashuruar"
+msgstr ""
 
 #: [mood]indignant
 msgid "indignant"
-msgstr "i zemëruar"
+msgstr ""
 
 #: [mood]interested
 msgid "interested"
-msgstr "i interesuar"
+msgstr ""
 
 #: [mood]intoxicated
 msgid "intoxicated"
-msgstr "i helmuar"
+msgstr ""
 
 #: [mood]invincible
 msgid "invincible"
-msgstr "i pamposhtur"
+msgstr ""
 
 #: [mood]jealous
 msgid "jealous"
-msgstr "xheloz"
+msgstr ""
 
 #: [mood]lonely
 msgid "lonely"
-msgstr "i vetmuar"
+msgstr ""
 
 #: [mood]lost
 msgid "lost"
-msgstr "i humbur"
+msgstr ""
 
 #: [mood]lucky
 msgid "lucky"
-msgstr "fatlum"
+msgstr ""
 
 #: [mood]mean
 msgid "mean"
-msgstr "shpirtvogël"
+msgstr ""
 
 #: [mood]moody
 msgid "moody"
-msgstr "i zymtë"
+msgstr ""
 
 #: [mood]nervous
 msgid "nervous"
-msgstr "nervoz"
+msgstr ""
 
 #: [mood]neutral
 msgid "neutral"
-msgstr "asnjanës"
+msgstr ""
 
 #: [mood]offended
 msgid "offended"
-msgstr "i fyer"
+msgstr ""
 
 #: [mood]outraged
 msgid "outraged"
-msgstr "i tërbuar"
+msgstr ""
 
 #: [mood]playful
 msgid "playful"
-msgstr "lojcak"
+msgstr ""
 
 #: [mood]proud
 msgid "proud"
-msgstr "krenar"
+msgstr ""
 
 #: [mood]relaxed
 msgid "relaxed"
-msgstr "i çlodhur"
+msgstr ""
 
 #: [mood]relieved
 msgid "relieved"
-msgstr "i lehtësuar"
+msgstr ""
 
 #: [mood]restless
 msgid "restless"
-msgstr "i palodhur"
+msgstr ""
 
 #: [mood]sad
 msgid "sad"
-msgstr "i trishtuar"
+msgstr ""
 
 #: [mood]sarcastic
 msgid "sarcastic"
-msgstr "shpotitës"
+msgstr ""
 
 #: [mood]satisfied
 msgid "satisfied"
-msgstr "i kënaqur"
+msgstr ""
 
 #: [mood]serious
 msgid "serious"
-msgstr "serioz"
+msgstr ""
 
 #: [mood]shocked
 msgid "shocked"
-msgstr "i tronditur"
+msgstr ""
 
 #: [mood]shy
 msgid "shy"
-msgstr "i turpshëm"
+msgstr ""
 
 #: [mood]sick
 msgid "sick"
-msgstr "i sëmurë"
+msgstr ""
 
 #: [mood]sleepy
 msgid "sleepy"
-msgstr "përgjumësh"
+msgstr ""
 
 #: [mood]spontaneous
 msgid "spontaneous"
-msgstr "i çlirët"
+msgstr ""
 
 #: [mood]stressed
 msgid "stressed"
-msgstr "i stresuar"
+msgstr ""
 
 #: [mood]strong
 msgid "strong"
-msgstr "i fortë"
+msgstr ""
 
 #: [mood]surprised
 msgid "surprised"
-msgstr "i befasuar"
+msgstr ""
 
 #: [mood]thankful
 msgid "thankful"
-msgstr "mirënjohës"
+msgstr ""
 
 #: [mood]thirsty
 msgid "thirsty"
-msgstr "i etur"
+msgstr ""
 
 #: [mood]tired
 msgid "tired"
-msgstr "i lodhur"
+msgstr ""
 
 #: [mood]undefined
 msgid "undefined"
-msgstr "i papërcaktuar"
+msgstr ""
 
 #: [mood]weak
 msgid "weak"
-msgstr "i dobët"
+msgstr ""
 
 #: [mood]worried
 msgid "worried"
-msgstr "i shqetësuar"
+msgstr ""
 
 #: [month]title
 msgid "Month"
-msgstr "Muaj"
+msgstr ""
 
 #: [month]january
 msgid "January"
-msgstr "Janar"
+msgstr ""
 
 #: [month]february
 msgid "February"
-msgstr "Shkurt"
+msgstr ""
 
 #: [month]march
 msgid "March"
-msgstr "Mars"
+msgstr ""
 
 #: [month]april
 msgid "April"
-msgstr "Prill"
+msgstr ""
 
 #: [month]may
 msgid "May"
-msgstr "Maj"
+msgstr ""
 
 #: [month]june
 msgid "June"
-msgstr "Qershor"
+msgstr ""
 
 #: [month]july
 msgid "July"
-msgstr "Korrik"
+msgstr ""
 
 #: [month]august
 msgid "August"
-msgstr "Gusht"
+msgstr ""
 
 #: [month]september
 msgid "September"
-msgstr "Shtator"
+msgstr ""
 
 #: [month]october
 msgid "October"
-msgstr "Tetor"
+msgstr ""
 
 #: [month]november
 msgid "November"
-msgstr "Nëntor"
+msgstr ""
 
 #: [month]december
 msgid "December"
-msgstr "Dhjetor"
+msgstr ""
 
 #: [year]title
 msgid "Year"
-msgstr "Vit"
+msgstr ""
 
 #: [date]today
 msgid "Today"
-msgstr "Sot"
+msgstr ""
 
 #: [date]tomorrow
 msgid "Tomorrow"
-msgstr "Nesër"
+msgstr ""
 
 #: [date]yesterday
 msgid "Yesterday"
-msgstr "Dje"
+msgstr ""
 
 #: [date]ago
 msgid "%d days ago"
-msgstr "%d ditë më parë"
+msgstr ""
 
 #: [date]day
 msgid "day"
-msgstr "ditë"
+msgstr ""
 
 #: [post]title
 msgid "Title"
-msgstr "Titull"
+msgstr ""
 
 #: [post]place
 msgid "Place"
-msgstr "Vend"
+msgstr ""
 
 #: [post]by
 msgid "by"
-msgstr "nga"
+msgstr ""
 
 #: [post]geolocalisation
 msgid "Geolocalisation"
-msgstr "Gjeovendëzim"
+msgstr ""
 
 #: [post]email
 msgid "email"
-msgstr "email"
+msgstr ""
 
 #: [post]empty
 msgid "No content"
-msgstr "S’ka lëndë"
+msgstr ""
 
 #: [post]no_comments
 msgid "No comments yet"
-msgstr "Ende pa komente"
+msgstr ""
 
 #: [post]older
 msgid "Get older posts"
-msgstr "Merr postime më të vjetra"
+msgstr ""
 
 #: [post]new_items
 msgid "%s new items"
-msgstr "%s zëra të rinj"
+msgstr ""
 
 #: [post]comment_error
 msgid "Comment publication error"
-msgstr "Gabim botimi komenti"
+msgstr ""
 
 #: [post]comments_get
 msgid "Get the comments"
-msgstr "Merrni komentet"
+msgstr ""
 
 #: [post]comment_add
 msgid "Add a comment"
-msgstr "Shtoni një koment"
+msgstr ""
 
 #: [post]share
 msgid "Share with"
-msgstr "Ndajeni me"
+msgstr ""
 
 #: [post]share_everyone
 msgid "Everyone"
-msgstr "Cilido"
+msgstr ""
 
 #: [post]updated
 msgid "Updated"
-msgstr "U përditësua"
+msgstr ""
 
 #: [post]content_not_found
 msgid "Content not found"
-msgstr "S'u gjet lëndë"
+msgstr ""
 
 #: [post]default_title
 msgid "Contact publication"
-msgstr "Publikim kontakti"
+msgstr ""
 
 #: [post]comments
 msgid "Comments"
-msgstr "Komente"
+msgstr ""
 
 #: [post]original_deleted
 msgid "Original post deleted"
-msgstr "Postimi origjinal u fshi"
+msgstr ""
 
 #: [filesize]byte
 msgid "B"
-msgstr "B"
+msgstr ""
 
 #: [filesize]kilobyte
 msgid "KB"
-msgstr "KB"
+msgstr ""
 
 #: [filesize]megabyte
 msgid "MB"
-msgstr "MB"
+msgstr ""
 
 #: [filesize]gigabyte
 msgid "GB"
-msgstr "GB"
+msgstr ""
 
 #: [filesize]terabyte
 msgid "TB"
-msgstr "TB"
+msgstr ""
 
 #: [affiliation]owner
 msgid "Owner"
-msgstr "Pronar"
+msgstr ""
 
 #: [affiliation]publisher
 msgid "Publisher"
-msgstr "Botues"
+msgstr ""
 
 #: [affiliation]publish-only
 msgid "Publish only"
-msgstr "Thjesht botoje"
+msgstr ""
 
 #: [affiliation]outcast
 msgid "Outcast"
@@ -3271,8 +3268,8 @@ msgstr ""
 
 #: [api]error
 msgid "The API is not reachable, try again later"
-msgstr "API nuk kapet dot, riprovoni më vonë"
+msgstr ""
 
 #: [field]type_here
 msgid "Type here"
-msgstr "Shtypni këtu"
+msgstr ""
