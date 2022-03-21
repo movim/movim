@@ -153,7 +153,6 @@ class Chat extends \Movim\Widget\Base
                 : null;
 
             if ($contact != null
-            && !$message->encrypted
             && $message->type != 'groupchat'
             && !$message->oldid) {
                 $roster = $this->user->session->contacts()->where('jid', $from)->first();
@@ -163,7 +162,9 @@ class Chat extends \Movim\Widget\Base
                 Notification::append(
                     'chat|'.$from,
                     $roster ? $roster->truename : $contact->truename,
-                    $rawbody,
+                    $message->encrypted && is_array($message->omemoheader)
+                        ? "🔒 " . substr($message->omemoheader['payload'], 0, strlen($message->omemoheader['payload'])/2)
+                        : $rawbody,
                     $contact->getPhoto(),
                     4,
                     $this->route('chat', $contact->jid)
@@ -917,7 +918,7 @@ class Chat extends \Movim\Widget\Base
 
             \Moxl\Stanza\Message::displayed(
                 $jid,
-                $message->originid ?? $message->replaceid,
+                $message->originid ?? $message->id,
                 $message->type
             );
         }
