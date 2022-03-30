@@ -3,6 +3,7 @@ Movim Changelog
 
 v0.21 (trunk)
 ---------------------------
+ * Implement XEP-0461: Message Replies
 
 v0.20
 ---------------------------

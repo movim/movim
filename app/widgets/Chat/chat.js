@@ -785,6 +785,7 @@ var Chat = {
         while (i < replies.length) {
             replies[i].onclick = function() {
                 if (this.dataset.mid) {
+                    console.log(this.dataset.mid);
                     Chat_ajaxHttpDaemonReply(this.dataset.mid);
                 }
             }
@@ -1123,7 +1124,10 @@ var Chat = {
         msg.appendChild(span);
         msg.appendChild(reactions);
 
-        if (data.thread !== null && reply) {
+        var textarea = Chat.getTextarea();
+
+        if ((data.id !== null && data.id.substr(0, 2) != 'm_' && reply)
+         || (data.originid !== null && (Boolean(textarea.dataset.muc) == false || Boolean(textarea.dataset.mucGroup) == true))) {
             reply.dataset.mid = data.mid;
             msg.appendChild(reply);
         }
@@ -1137,7 +1141,6 @@ var Chat = {
         }
 
         var elem;
-        var textarea = Chat.getTextarea();
 
         if (data.replaceid && (Boolean(textarea.dataset.muc) == false || Boolean(textarea.dataset.mucGroup) == true)) {
             elem = document.querySelector("[data-originid=oid-" + MovimUtils.hash(data.replaceid + data.jidfrom) + "]");

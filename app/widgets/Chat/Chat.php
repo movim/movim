@@ -510,6 +510,8 @@ class Chat extends \Movim\Widget\Base
         $m->jidfrom     = $this->user->id;
         $m->published   = gmdate('Y-m-d H:i:s');
 
+        $reply = null;
+
         if ($replyToMid !== 0) {
             $reply = $this->user->messages()
                           ->where('mid', $replyToMid)
@@ -533,12 +535,9 @@ class Chat extends \Movim\Widget\Base
             $m->jidfrom     = $to;
         }
 
-        $m->body      = $body;
-
         // We decode URL codes to send the correct message to the XMPP server
         $p = new Publish;
         $p->setTo($to);
-        $p->setContent($m->body);
         $p->setReplace($m->replaceid);
         $p->setId($m->id);
         $p->setThreadid($m->thread);
@@ -556,6 +555,33 @@ class Chat extends \Movim\Widget\Base
             $m->file = (array)$file;
             $p->setFile($file);
         }
+
+        if ($reply) {
+            // https://xmpp.org/extensions/xep-0461.html#business-id
+            if ($reply->type == 'groupchat' && substr($reply->id, 0, 2) != 'm_') {
+                // stanza-id only
+                $p->setReplyid($reply->id);
+            } elseif ($reply->type != 'groupchat' && $reply->originid) {
+                $p->setReplyid($reply->originid);
+            } elseif ($reply->type != 'groupchat' && substr($reply->id, 0, 2) != 'm_') {
+                $p->setReplyid($reply->id);
+            }
+
+            $p->setReplyto($reply->jidfrom.'/'.$reply->resource);
+
+            // Prepend quoted message body
+            $quotedBody = preg_replace('/^/m', '> ', $reply->body) . "\n";
+            $p->setReplyquotedbodylength(
+                mb_strlen(htmlspecialchars($quotedBody, ENT_NOQUOTES))
+            );
+
+            $p->setContent($quotedBody . $body);
+        } else {
+            $p->setContent($body);
+        }
+
+        $m->body = $body;
+
 
         if ($messageOMEMOHeader) {
             $m->encrypted = true;
@@ -795,7 +821,7 @@ class Chat extends \Movim\Widget\Base
                         ->where('mid', $mid)
                         ->first();
 
-        if (isset($m->thread)) {
+        if (($m->id && substr($m->id, 0, 2) != 'm_') || isset($m->thread)) {
             $view = $this->tpl();
             $view->assign('message', $m);
             $this->rpc('MovimTpl.fill', '#reply', $view->draw('_chat_reply'));

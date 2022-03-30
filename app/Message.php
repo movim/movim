@@ -122,7 +122,11 @@ class Message extends Model
         /**
          * If not we just create or load a message
          */
-        if ($stanza->{'stanza-id'} && $stanza->{'stanza-id'}->attributes()->id) {
+        if ($stanza->{'stanza-id'} && $stanza->{'stanza-id'}->attributes()->id
+         && ($stanza->{'stanza-id'}->attributes()->by == $jidfrom
+              || $stanza->{'stanza-id'}->attributes()->by == \App\User::me()->id
+            )
+        ) {
             $id = (string)$stanza->{'stanza-id'}->attributes()->id;
 
             if ($instanciateOnly) {
@@ -145,8 +149,6 @@ class Message extends Model
             $message->jidfrom = $jidfrom;
             return $message;
         }
-
-
     }
 
     public function clearUnreads()
@@ -164,9 +166,7 @@ class Message extends Model
         // We reset the URL resolution to refresh it once the message is displayed
         $this->resolved = false;
 
-        $this->id = ($stanza->{'stanza-id'} && $stanza->{'stanza-id'}->attributes()->id)
-            ? (string)$stanza->{'stanza-id'}->attributes()->id
-            : 'm_' . generateUUID();
+        $this->id = 'm_' . generateUUID();
 
         $from = explode('/', (string)$stanza->attributes()->from);
         $to = current(explode('/', (string)$stanza->attributes()->to));
@@ -203,6 +203,15 @@ class Message extends Model
             $this->type = (string)$stanza->attributes()->type;
         }
 
+        // stanza-id
+        if ($stanza->{'stanza-id'} && $stanza->{'stanza-id'}->attributes()->id
+         && ($stanza->{'stanza-id'}->attributes()->by == $this->jidfrom
+              || $stanza->{'stanza-id'}->attributes()->by == \App\User::me()->id
+            )
+        ) {
+            $this->id = (string)$stanza->{'stanza-id'}->attributes()->id;
+        }
+
         // If it's a MUC message, we assume that the server already handled it
         if ($this->isMuc()) {
             $this->delivered = gmdate('Y-m-d H:i:s');
@@ -230,10 +239,33 @@ class Message extends Model
                 $this->subject = (string)$stanza->subject;
             }
 
-            if ($stanza->thread) {
+            // Reply can be handled by XEP-0461: Message Replies or by the threadid Jabber mechanism
+            if ($stanza->reply && $stanza->reply->attributes()->xmlns == 'urn:xmpp:reply:0') {
+                $parent = $this->user->messages()
+                            ->jid($this->jidfrom)
+                            ->where(
+                                ($this->type == 'groupchat') ? 'id' : 'originid',
+                                (string)$stanza->reply->attributes()->id
+                            )
+                            ->orderBy('published', 'asc')
+                            ->first();
+
+                if ($parent && $parent->mid != $this->mid
+                 && $parent->originid != $this->originid) {
+                    $this->parentmid = $parent->mid;
+                }
+
+                if ($stanza->fallback && $stanza->fallback->attributes()->xmlns == 'urn:xmpp:feature-fallback:0'
+                 && $stanza->fallback->attributes()->for == 'urn:xmpp:reply:0') {
+                    $this->body = trim(mb_substr(
+                        $this->body,
+                        (int)$stanza->fallback->body->attributes()->end
+                        // might need to handle start
+                    ));
+                }
+            } else if ($stanza->thread) {
                 $this->thread = (string)$stanza->thread;
 
-                // Resolve the parent message if it exists
                 $parent = $this->user->messages()
                     ->jid($this->jidfrom)
                     ->where('thread', $this->thread)

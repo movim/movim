@@ -11,7 +11,8 @@ class Muc
 {
     public static function message($to, $content = false, $html = false, $id = false,
         $replace = false, $file = false, $parentId = false, array $reactions = [],
-        $originId = false, $threadId = false, $mucReceipts = false,
+        $originId = false, $threadId = false, $mucReceipts = false, $replyId = false,
+        $replyTo = false, $replyQuotedBodyLength = 0,
         ?MessageOmemoHeader $messageOMEMO = null)
     {
         Message::maker(
@@ -29,6 +30,9 @@ class Muc
             $reactions,
             $originId,
             $threadId,
+            $replyId,
+            $replyTo,
+            $replyQuotedBodyLength,
             $messageOMEMO);
     }
 

@@ -461,7 +461,63 @@
             <xmpp:version>0.1.0</xmpp:version>
         </xmpp:SupportedXep>
     </implements>
+    <implements>
+        <xmpp:SupportedXep>
+            <xmpp:xep rdf:resource="https://xmpp.org/extensions/xep-0461.html"/>
+            <xmpp:status>complete</xmpp:status>
+            <xmpp:version>0.1.0</xmpp:version>
+        </xmpp:SupportedXep>
+    </implements>
 
+    <release>
+        <Version>
+            <revision>0.20</revision>
+            <created>2022-02-19</created>
+            <file-release rdf:resource="https://github.com/movim/movim/releases/tag/v0.20"/>
+        </Version>
+    </release>
+    <release>
+        <Version>
+            <revision>0.19</revision>
+            <created>2021-02-20</created>
+            <file-release rdf:resource="https://github.com/movim/movim/releases/tag/v0.19"/>
+        </Version>
+    </release>
+    <release>
+        <Version>
+            <revision>0.18</revision>
+            <created>2020-09-27</created>
+            <file-release rdf:resource="https://github.com/movim/movim/releases/tag/v0.18"/>
+        </Version>
+    </release>
+    <release>
+        <Version>
+            <revision>0.17.1</revision>
+            <created>2020-03-22</created>
+            <file-release rdf:resource="https://github.com/movim/movim/releases/tag/v0.17.1"/>
+        </Version>
+    </release>
+    <release>
+        <Version>
+            <revision>0.17</revision>
+            <created>2020-02-14</created>
+            <file-release rdf:resource="https://github.com/movim/movim/releases/tag/v0.17"/>
+        </Version>
+    </release>
+    <release>
+        <Version>
+            <revision>0.16.1</revision>
+            <created>2019-12-06</created>
+            <file-release rdf:resource="https://github.com/movim/movim/releases/tag/v0.16.1"/>
+        </Version>
+    </release>
+    <release>
+        <Version>
+            <revision>0.16</revision>
+            <created>2019-10-18</created>
+            <file-release rdf:resource="https://github.com/movim/movim/releases/tag/v0.16"/>
+        </Version>
+    </release>
     <release>
         <Version>
             <revision>0.15</revision>

@@ -15,6 +15,8 @@ class Carbons extends Payload
                 $m->set($message, $stanza->forwarded);
 
                 $m->save();
+                $m = $m->fresh();
+
                 $m->clearUnreads();
 
                 $this->pack($m);

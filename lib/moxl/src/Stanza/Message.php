@@ -21,7 +21,10 @@ class Message
         $parentId = false,
         array $reactions = [],
         $originId = false,
-        $threadid = false,
+        $threadId = false,
+        $replyId = false,
+        $replyTo = false,
+        $replyQuotedBodyLength = 0,
         ?MessageOmemoHeader $messageOMEMO = null
     ) {
         $session = Session::start();
@@ -53,10 +56,31 @@ class Message
         }
 
         // Thread
-        if ($threadid) {
-            $thread = $dom->createElement('thread', $threadid);
+        if ($threadId) {
+            $thread = $dom->createElement('thread', $threadId);
 
             $root->appendChild($thread);
+        }
+
+        // Message replies
+        if ($replyId != false && $replyTo != false) {
+            $reply = $dom->createElementNS('urn:xmpp:reply:0', 'reply');
+            $reply->setAttribute('id', $replyId);
+            $reply->setAttribute('to', $replyTo);
+            $root->appendChild($reply);
+
+            if ($replyQuotedBodyLength > 0) {
+                $fallback = $dom->createElementNS('urn:xmpp:feature-fallback:0', 'fallback');
+                $fallback->setAttribute('for', 'urn:xmpp:reply:0');
+
+                $fallbackBody = $dom->createElement('body');
+                $fallbackBody->setAttribute('start', 0);
+                $fallbackBody->setAttribute('end', $replyQuotedBodyLength);
+
+                $fallback->appendChild($fallbackBody);
+
+                $root->appendChild($fallback);
+            }
         }
 
         // Chatstates
@@ -238,18 +262,22 @@ class Message
 
     public static function message($to, $content = false, $html = false, $id = false,
         $replace = false, $file = false, $parentId = false, array $reactions = [],
-        $originId = false, $threadId = false, ?MessageOmemoHeader $messageOMEMO = null)
+        $originId = false, $threadId = false, $replyId = false, $replyTo = false,
+        $replyQuotedBodyLength = 0, ?MessageOmemoHeader $messageOMEMO = null)
     {
         self::maker($to, $content, $html, 'chat', 'active', 'request', $id, $replace,
-            $file, false, $parentId, $reactions, $originId, $threadId, $messageOMEMO);
+            $file, false, $parentId, $reactions, $originId, $threadId, $replyId,
+            $replyTo, $replyQuotedBodyLength, $messageOMEMO);
     }
 
     public static function simpleMessage($to, $content = false, $html = false, $id = false,
     $replace = false, $file = false, $parentId = false, array $reactions = [],
-    $originId = false, $threadId = false, ?MessageOmemoHeader $messageOMEMO = null)
+    $originId = false, $threadId = false, $replyId = false, $replyTo = false,
+    $replyQuotedBodyLength = 0, ?MessageOmemoHeader $messageOMEMO = null)
     {
         self::maker($to, $content, $html, 'chat', false, false, $id, $replace,
-            $file, false, $parentId, $reactions, $originId, $threadId, $messageOMEMO);
+            $file, false, $parentId, $reactions, $originId, $threadId, $replyId,
+            $replyTo, $replyQuotedBodyLength, $messageOMEMO);
     }
 
     public static function receipt($to, $id)
