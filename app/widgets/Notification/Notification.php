@@ -7,7 +7,6 @@ use Movim\Session;
 use Minishlink\WebPush\WebPush;
 use Minishlink\WebPush\Subscription;
 
-use App\Configuration;
 use App\PushSubscription;
 
 class Notification extends Base

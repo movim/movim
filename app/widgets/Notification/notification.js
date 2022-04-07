@@ -158,7 +158,8 @@ var Notification = {
                         if (pushSubscription == null) {
                             // Register the push notification subcription
                             registration.pushManager.subscribe({
-                                userVisibleOnly: true
+                                userVisibleOnly: true,
+                                applicationServerKey: VAPID_PUBLIC_KEY
                             }).then(function(subscription) {
                                 Notification.registerPushSubscription(subscription);
                             }).catch(function(e) {
