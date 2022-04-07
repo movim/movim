@@ -41,9 +41,6 @@ self.addEventListener('install', (e) => {
     );
 });
 
-
-// Hopla boumd
-
 self.addEventListener('push', function(e) {
     var json = e.data.json();
     var options = {
