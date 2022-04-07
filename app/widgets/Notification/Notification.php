@@ -1,11 +1,14 @@
 <?php
 
-use Movim\Firebase;
 use Movim\Widget\Base;
 use Movim\RPC;
 use Movim\Session;
 
+use Minishlink\WebPush\WebPush;
+use Minishlink\WebPush\Subscription;
+
 use App\Configuration;
+use App\PushSubscription;
 
 class Notification extends Base
 {
@@ -14,6 +17,18 @@ class Notification extends Base
     {
         $this->addjs('notification.js');
         $this->registerEvent('chat_counter', 'onChatCounter');
+        $this->registerEvent('session_up', 'onSessionUp');
+        $this->registerEvent('session_down', 'onSessionDown');
+    }
+
+    public function onSessionUp()
+    {
+        Session::start()->remove('session_down');
+    }
+
+    public function onSessionDown()
+    {
+        Session::start()->set('session_down', true);
     }
 
     public function onChatCounter(int $count = 0)
@@ -39,12 +54,6 @@ class Notification extends Base
     public static function clearAndroid(string $action)
     {
         RPC::call('Notification.clearAndroid', $action);
-
-        $fb = self::resolveFirebase();
-
-        if ($fb) {
-            $fb->clear($action);
-        }
     }
 
     /**
@@ -76,7 +85,49 @@ class Notification extends Base
         $notifs = $session->get('notifs');
 
         if ($title != null) {
-            RPC::call('Notification.desktop', $title, $body, $picture, $action, $execute);
+            $webPush = null;
+
+            if (Session::start()->get('session_down')) {
+                $keys = json_decode(file_get_contents(CACHE_PATH . 'vapid_keys.json'));
+
+                $webPush = new WebPush([
+                    'VAPID' => [
+                        'subject' => 'https://movim.eu',
+                        'publicKey' => $keys->publicKey,
+                        'privateKey' => $keys->privateKey
+                    ]
+                ]);
+            }
+
+            // Push notification
+            if ($webPush) {
+                foreach (\App\User::me()->pushSubscriptions()->get() as $pushSubscription) {
+                    $subscription = Subscription::create([
+                        'endpoint' => $pushSubscription->endpoint,
+                        'contentEncoding' => 'aesgcm',
+                        'keys' => [
+                            'auth' => $pushSubscription->auth,
+                            'p256dh' => $pushSubscription->p256dh
+                        ]
+                    ]);
+
+                    $webPush->sendOneNotification(
+                        $subscription,
+                        json_encode([
+                            'title' => $title,
+                            'body' => $body,
+                            'picture' => $picture,
+                            'action' => $action,
+                            'execute' => $execute,
+                        ])
+                    );
+                }
+
+            // Normal notification
+            } else {
+                RPC::call('Notification.desktop', $title, $body, $picture, $action, $execute);
+            }
+
         }
 
         $notifsKey = $session->get('notifs_key');
@@ -94,14 +145,8 @@ class Notification extends Base
                 $action = $group;
             }
 
-            $fb = self::resolveFirebase();
-
-            if ($fb) {
-                $fb->notify($title, $body, $picture, $action);
-            } else {
-                // We try to deliver it trough the WebSocket
-                RPC::call('Notification.android', $title, $body, $picture, $action);
-            }
+            // We try to deliver it trough the WebSocket
+            RPC::call('Notification.android', $title, $body, $picture, $action);
         }
 
         if (array_key_exists($first, $notifs)) {
@@ -227,6 +272,32 @@ class Notification extends Base
         $session->set('notifs_key', $key);
     }
 
+    /**
+     * @brief Register a push notification subscription
+     *
+     * @param string $endpoint
+     * @param string $auth
+     * @param string $p256dh
+     */
+    public function ajaxRegisterPushSubscrition(string $endpoint, string $auth, string $p256dh, ?string $userAgent)
+    {
+        $pushSubscription = $this->user->pushSubscriptions()->where('endpoint', $endpoint)->first();
+
+        \Utils::debug(serialize($userAgent));
+        $p = $pushSubscription ?? new PushSubscription;
+        $p->user_id = $this->user->id;
+        $p->endpoint = $endpoint;
+        $p->auth = $auth;
+        $p->p256dh = $p256dh;
+
+        if ($userAgent) {
+            $p->browser = getBrowser($userAgent);
+            $p->platform = getPlatform($userAgent);
+        }
+
+        $p->save();
+    }
+
     private function prepareSnackbar($title, $body = null, $picture = null, $action = null, $execute = null)
     {
         $view = $this->tpl();
@@ -238,23 +309,5 @@ class Notification extends Base
         $view->assign('onclick', $execute);
 
         return $view->draw('_notification');
-    }
-
-    private static function resolveFirebase(): ?Firebase
-    {
-        $s = Session::start();
-        $firebaseToken = $s->get('firebasetoken');
-
-        // We have Firebase enabled
-        if ($firebaseToken) {
-            $configuration = Configuration::get();
-            $firebaseKey = $configuration->firebaseauthorizationkey;
-
-            if ($firebaseKey) {
-                return new Firebase($firebaseKey, $firebaseToken);
-            }
-        }
-
-        return null;
     }
 }

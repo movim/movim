@@ -55,6 +55,11 @@ class User extends Model
         return $this->hasMany('App\Bundle');
     }
 
+    public function pushSubscriptions()
+    {
+        return $this->hasMany('App\PushSubscription');
+    }
+
     public function getResolvedNicknameAttribute()
     {
         return $this->nickname ?? $this->id;

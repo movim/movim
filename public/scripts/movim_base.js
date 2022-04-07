@@ -61,7 +61,9 @@ window.addEventListener('touchstart', function() { isTouch = true; }, { once: tr
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker
         .register('sw.js')
-        .then(() => { console.log('Service Worker Registered'); });
+        .then(() => {
+            console.log('Service Worker Registered');
+        });
 }
 
 

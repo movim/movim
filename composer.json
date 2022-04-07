@@ -41,7 +41,8 @@
         "react/child-process": "^0.6.4",
         "react/http": "^1.5.0",
         "react/dns": "^1.8.0",
-        "ratchet/pawl": "^0.4.1"
+        "ratchet/pawl": "^0.4.1",
+        "minishlink/web-push": "^7.0"
     },
     "config": {
         "platform": {

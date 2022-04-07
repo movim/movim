@@ -198,34 +198,6 @@
         </li>
     </ul>
 
-    <!-- Firebase is currently disabled
-    <h3>{$c->__('firebase.title')}</h3>
-
-    <div>
-        <textarea type="text" name="firebaseauthorizationkey" id="firebaseauthorizationkey"
-            placeholder="FirebaseKey"
-            onclick="MovimUtils.textareaAutoheight(this);"
-            oninput="MovimUtils.textareaAutoheight(this);"/>{$conf->firebaseauthorizationkey}</textarea>
-        <label for="info">{$c->__('firebase.label')}</label>
-    </div>
-
-    <ul class="list thin">
-        <li>
-            <span class="primary icon bubble gray">
-                <i class="material-icons">notifications_active</i>
-            </span>
-            <div>
-                <p>{$c->__('firebase.info1')}</p>
-                <p>
-                    <a href="https://console.firebase.google.com/" target="_blank">
-                        {$c->__('firebase.info2')}
-                    </a>
-                </p>
-            </div>
-        </li>
-    </ul>
-    -->
-
     <input
     type="submit"
     class="button color oppose"

@@ -13,7 +13,6 @@ class Configuration extends Model
     public $fillable = [
         'description',
         'disableregistration',
-        'firebaseauthorizationkey',
         'info',
         'unregister',
         'gifapikey',

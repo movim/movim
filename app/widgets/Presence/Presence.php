@@ -73,12 +73,6 @@ class Presence extends Base
         $this->onSessionUp();
     }
 
-    public function ajaxSetFireBaseToken(string $token)
-    {
-        $s = MovimSession::start();
-        $s->set('firebasetoken', $token);
-    }
-
     public function ajaxAskLogout()
     {
         $view = $this->tpl();

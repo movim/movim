@@ -151,7 +151,24 @@ var Notification = {
         || Notification.focused
         || typeof DesktopNotification === 'undefined') return;
 
-        if (DesktopNotification.permission === "granted") {
+        if (DesktopNotification.permission === 'granted') {
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.getRegistration('sw.js').then((registration) => {
+                    registration.pushManager.getSubscription().then((pushSubscription) => {
+                        if (pushSubscription == null) {
+                            // Register the push notification subcription
+                            registration.pushManager.subscribe({
+                                userVisibleOnly: true
+                            }).then(function(subscription) {
+                                Notification.registerPushSubscription(subscription);
+                            }).catch(function(e) {
+                                console.error('Unable to subscribe to push', e);
+                            });
+                        }
+                    });
+                });
+            }
+
             var notification = new DesktopNotification(title, { icon: picture, body: body });
 
             if (action !== null) {
@@ -169,7 +186,7 @@ var Notification = {
                     this.close();
                 }
             }
-        } else if (DesktopNotification.permission !== "denied") {
+        } else if (DesktopNotification.permission !== 'denied') {
             DesktopNotification.requestPermission();
         }
     },
@@ -190,6 +207,14 @@ var Notification = {
             Notification.focused = true;
             Notification.current(Notification.notifs_key);
         }
+    },
+    registerPushSubscription(subscription) {
+        Notification_ajaxRegisterPushSubscrition(
+            subscription.endpoint,
+            MovimUtils.arrayBufferToBase64(subscription.getKey('auth')),
+            MovimUtils.arrayBufferToBase64(subscription.getKey('p256dh')),
+            window.navigator.userAgent
+        );
     }
 }
 

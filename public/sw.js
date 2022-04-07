@@ -41,6 +41,44 @@ self.addEventListener('install', (e) => {
     );
 });
 
+
+// Hopla boumd
+
+self.addEventListener('push', function(e) {
+    var json = e.data.json();
+    var options = {
+      body: json.body,
+      icon: json.picture,
+      vibrate: [100, 50, 100],
+      data: { url: json.action },
+      actions: [{action: "action", title: 'Open chat'}]
+    };
+    e.waitUntil(
+        self.registration.showNotification(json.title, options)
+    );
+});
+
+self.addEventListener('notificationclick', function(e) {
+    e.notification.close();
+
+    e.waitUntil(clients.matchAll({
+        type: 'window'
+    }).then(function(clientList) {
+        for (var i = 0; i < clientList.length; i++) {
+            var client = clientList[i];
+
+            if (client.url == e.notification.data.url && 'focus' in client) {
+                return client.focus();
+            }
+        }
+
+        if (clients.openWindow) {
+            return clients.openWindow(e.notification.data.url);
+        }
+    }));
+}
+, false);
+
 self.addEventListener('fetch', (e) => {
     e.respondWith(
         caches.match(e.request).then((response) => response || fetch(e.request)),

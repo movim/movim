@@ -2,6 +2,7 @@
 
 namespace Movim\Daemon;
 
+use App\Cache;
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
 use Symfony\Component\Console\Input\InputInterface;
@@ -12,6 +13,7 @@ use Movim\Daemon\Session;
 use App\Session as DBSession;
 use App\EncryptedPassword;
 
+use Minishlink\WebPush\VAPID;
 
 class Core implements MessageComponentInterface
 {
@@ -37,6 +39,7 @@ class Core implements MessageComponentInterface
 
         DBSession::whereNotNull('id')->delete();
 
+        // API_SOCKET ?
         if (file_exists(CACHE_PATH . 'socketapi.sock')) {
             unlink(CACHE_PATH . 'socketapi.sock');
         }
@@ -47,6 +50,13 @@ class Core implements MessageComponentInterface
         ));
 
         $this->registerCleaner();
+
+        // Generate Push Notification
+        if (!file_exists(CACHE_PATH . 'vapid_keys.json')) {
+            echo colorize("Generate and store the Push Notification VAPID keys", 'green')."\n";
+            $keyset = VAPID::createVapidKeys();
+            file_put_contents(CACHE_PATH . 'vapid_keys.json', json_encode($keyset));
+        }
     }
 
     public function setWebsocket($port)
