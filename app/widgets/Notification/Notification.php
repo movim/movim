@@ -47,15 +47,6 @@ class Notification extends Base
     }
 
     /**
-     * Clear the notification for Android using a local event and
-     * push notification event
-     */
-    public static function clearAndroid(string $action)
-    {
-        RPC::call('Notification.clearAndroid', $action);
-    }
-
-    /**
      * @brief Notify something
      *
      * @param string $key The key to group the notifications
@@ -117,7 +108,9 @@ class Notification extends Base
                             'body' => $body,
                             'picture' => $picture,
                             'action' => $action,
+                            'group' => $group,
                             'execute' => $execute,
+                            'button' => __('button.open')
                         ])
                     );
                 }
@@ -137,16 +130,6 @@ class Notification extends Base
 
         $explode = explode('|', $key);
         $first = reset($explode);
-
-        // What we receive is not what it's on the screen on Android
-        if ($key != null && $key != $notifsKey && $title != null) {
-            if ($group != null) {
-                $action = $group;
-            }
-
-            // We try to deliver it trough the WebSocket
-            RPC::call('Notification.android', $title, $body, $picture, $action);
-        }
 
         if (array_key_exists($first, $notifs)) {
             $notifs[$first]++;

@@ -48,7 +48,7 @@ self.addEventListener('push', function(e) {
       icon: json.picture,
       vibrate: [100, 50, 100],
       data: { url: json.action },
-      actions: [{action: "action", title: 'Open chat'}]
+      actions: [{action: "action", title: json.button}]
     };
     e.waitUntil(
         self.registration.showNotification(json.title, options)

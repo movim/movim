@@ -129,8 +129,7 @@ var Notification = {
         Notification_ajaxCurrent(Notification.notifs_key);
     },
     snackbar : function(html, time) {
-        if (typeof Android !== 'undefined'
-        || Notification.inhibed == true) return;
+        if (Notification.inhibed == true) return;
 
         target = document.getElementById('snackbar');
 
@@ -189,18 +188,6 @@ var Notification = {
             }
         } else if (DesktopNotification.permission !== 'denied') {
             DesktopNotification.requestPermission();
-        }
-    },
-    android : function(title, body, picture, action) {
-        if (typeof Android !== 'undefined') {
-            Android.showNotification(title, body, picture, action);
-            return;
-        }
-    },
-    clearAndroid : function(action) {
-        if (typeof Android !== 'undefined') {
-            Android.clearNotifications(action);
-            return;
         }
     },
     focus : function() {

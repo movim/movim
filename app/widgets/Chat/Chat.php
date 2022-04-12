@@ -357,7 +357,6 @@ class Chat extends \Movim\Widget\Base
             $this->rpc('Chat.setObservers');
             $this->prepareMessages($jid);
             $this->rpc('Notification.current', 'chat|'.$jid);
-            Notification::clearAndroid($this->route('chat', [$jid]));
             $this->rpc('Chat.scrollToSeparator');
 
             // OMEMO
@@ -407,7 +406,6 @@ class Chat extends \Movim\Widget\Base
             $this->rpc('Chat.setObservers');
             $this->prepareMessages($room, true);
             $this->rpc('Notification.current', 'chat|'.$room);
-            Notification::clearAndroid($this->route('chat', [$room, 'room']));
             $this->rpc('Chat.scrollToSeparator');
 
             // OMEMO

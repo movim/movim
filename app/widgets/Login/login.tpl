@@ -190,22 +190,10 @@
 
     <footer>
         <a href="https://movim.eu" target="_blank" class="on_desktop"></a>
-        <!--<a class="button flat color green" href="https://play.google.com/store/apps/details?id=com.movim.movim" target="_blank">
-            <i class="material-icons">android</i> Play Store
-        </a>
-        <a class="button flat color purple on_desktop" href="https://movim.eu/#apps" target="_blank">
-            <i class="material-icons">computer</i> Apps
-        </a>-->
         <a class="button flat color transparent on_android" href="movim://changepod">
             <i class="material-icons">dns</i>
             {$c->__('global.change_pod')}
         </a>
-
         <br />
     </footer>
-    <script type="text/javascript">
-        if (typeof Android !== 'undefined') {
-            MovimTpl.remove('#login_widget footer');
-        }
-    </script>
 </div>

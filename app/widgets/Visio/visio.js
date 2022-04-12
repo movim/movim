@@ -324,19 +324,11 @@ var Visio = {
 
         button.onclick = () => {
             window.close();
-
-            if (typeof Android !== 'undefined') {
-                Android.closePopUpWebview();
-            }
         }
 
         // And we force close the window after 2sec
         window.setTimeout(() => {
             window.close();
-
-            if (typeof Android !== 'undefined') {
-                Android.closePopUpWebview();
-            }
         }, 2000);
     },
 
