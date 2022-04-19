@@ -83,7 +83,7 @@ class Manifest extends Base
             ],
             'display'       => 'standalone',
             'orientation'   => 'portrait-primary',
-            'background_color' => '#222e75',
+            'background_color' => '#10151A',
             'theme_color'   => '#10151A',
             'start_url'     => '/?login',
         ];
