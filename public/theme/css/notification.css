@@ -6,7 +6,7 @@
     position: fixed;
     z-index: 4;
     min-height: 6rem;
-    max-height: 11rem;
+    max-height: 10rem;
     width: 48rem;
     height: auto;
     color: white;
@@ -16,7 +16,6 @@
     transition: opacity 0.2s ease, transform 0.4s ease;
     background-color: var(--movim-gray);
     transform: translateY(0);
-    bottom: 3rem;
 }
 
 body.nightmode .snackbar,
@@ -36,28 +35,35 @@ body.nightmode .toast {
     margin: -1rem -2rem;
     display: block;
     margin: -2rem -1rem;
-    padding: 2rem 1rem;
+    transition: border 0.2s ease;
+    border: 2px solid transparent;
+    padding: calc(2rem - 2px) calc(1rem - 2px);
 }
 
 .snackbar > a:hover {
-    border: 3px solid rgba(255, 255, 255, 0.2);
-    padding: calc(2rem - 3px) calc(1rem - 3px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 .snackbar {
-    right: 2.8rem;
+    right: 1rem;
     border-radius: 0.25rem;
     opacity: 1;
     padding: 2rem 1rem;
+    top: 1rem;
 }
 
 .toast {
     left: calc(50% - 24rem);
     line-height: 2.5rem;
     border-radius: 0.75rem;
+    bottom: 3rem;
 }
 
-.snackbar:empty,
+.snackbar:empty {
+    opacity: 0;
+    transform: translateY(-100%);
+}
+
 .toast:empty {
     opacity: 0;
     transform: translateY(100%);
@@ -95,7 +101,6 @@ body.nightmode .toast {
 }
 
 @media screen and (max-width: 1024px) {
-    .snackbar,
     .toast {
         bottom: 7.5rem;
     }

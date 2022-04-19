@@ -44,7 +44,6 @@ class Presence extends Base
     public function onMyPresence($packet)
     {
         $this->rpc('MovimTpl.fill', '#presence_widget', $this->preparePresence());
-        Toast::send($this->__('status.updated'));
     }
 
     public function start()
