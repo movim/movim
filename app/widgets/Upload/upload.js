@@ -19,6 +19,16 @@ var Upload = {
         }
     },
 
+    openFile : function() {
+        Upload.clear();
+        document.querySelector('input#file').click();
+    },
+
+    openImage : function() {
+        Upload.clear();
+        document.querySelector('input#image').click();
+    },
+
     attach : function(func) {
         if (typeof(func) === "function") {
             this.attached.push(func);
@@ -65,6 +75,7 @@ var Upload = {
         Upload.uploadButton = document.querySelector('#upload_button');
 
         var resolvedFile = file ? file : document.getElementById('file').files[0];
+        var resolvedFile = resolvedFile ? resolvedFile : document.getElementById('image').files[0];
         Upload.name = resolvedFile.name;
         Upload.check(resolvedFile);
     },
@@ -211,6 +222,7 @@ var Upload = {
             && (Upload.xhr.status >= 200 && Upload.xhr.status < 400)) {
                 Dialog.clear();
                 Upload.launchAttached();
+                Upload.clear();
 
                 if (Upload.uploadButton) {
                     Upload.uploadButton.classList.remove('disabled');
@@ -242,6 +254,13 @@ var Upload = {
 
     abort : function() {
         if (Upload.xhr) Upload.xhr.abort();
+        Upload.clear();
+    },
+
+    clear : function() {
+        document.getElementById('file').value = null;
+        document.getElementById('image').value = null;
+        Upload.file = null;
     },
 
     attachEvents : function () {

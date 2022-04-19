@@ -2,8 +2,11 @@
     <h3>{$c->__('upload.title')}</h3>
     <ul class="list thick">
         <li>
-            <span class="primary icon">
-                <i class="material-icons">attach_file</i>
+            <span class="control icon active divided" onclick="Upload.openImage()">
+                <i class="material-icons">image</i>
+            </span>
+            <span class="control icon active" onclick="Upload.openFile()">
+                <i class="material-icons">insert_drive_file</i>
             </span>
             <div>
                 <p>{$c->__('upload.choose')}</p>
@@ -12,6 +15,7 @@
                 {/if}
                 <p>
                     <input type="file" id="file" onchange="Upload.preview()"/>
+                    <input type="file" id="image" accept="image/*" onchange="Upload.preview()"/>
                 </p>
             </div>
         </li>
