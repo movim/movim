@@ -1308,30 +1308,33 @@
         },
         {
             "name": "fabiang/sasl",
-            "version": "v1.0.3",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabiang/sasl.git",
-                "reference": "1ea6a403f2f2eb6cea69881c10c4605d52121d89"
+                "reference": "6e9e4bfddf5e40f7147e346d4fd73576bc9e94a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabiang/sasl/zipball/1ea6a403f2f2eb6cea69881c10c4605d52121d89",
-                "reference": "1ea6a403f2f2eb6cea69881c10c4605d52121d89",
+                "url": "https://api.github.com/repos/fabiang/sasl/zipball/6e9e4bfddf5e40f7147e346d4fd73576bc9e94a9",
+                "reference": "6e9e4bfddf5e40f7147e346d4fd73576bc9e94a9",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.3.3 || ^7.0 || ^8.0"
+                "php": "^5.3.3 || ^7.0 || ~8.0.0 || ~8.1.0"
             },
             "require-dev": {
                 "behat/behat": "^3.6",
-                "codeclimate/php-test-reporter": "@dev",
-                "phpunit/php-invoker": "^1.1",
-                "phpunit/phpunit": "^5.7 || ^6.5 || ^7.5 || ^8.5 || ^9.5",
-                "satooshi/php-coveralls": "^0.6.1"
+                "phpunit/phpunit": ">=4.8",
+                "slevomat/coding-standard": "*",
+                "squizlabs/php_codesniffer": "*",
+                "vimeo/psalm": "*"
             },
             "type": "library",
             "autoload": {
+                "files": [
+                    "src/throwable.php"
+                ],
                 "psr-4": {
                     "Fabiang\\Sasl\\": "src/"
                 }
@@ -1368,9 +1371,9 @@
             ],
             "support": {
                 "issues": "https://github.com/fabiang/sasl/issues",
-                "source": "https://github.com/fabiang/sasl/tree/v1.0.3"
+                "source": "https://github.com/fabiang/sasl/tree/v1.1.0"
             },
-            "time": "2021-02-15T11:51:02+00:00"
+            "time": "2022-04-21T13:35:11+00:00"
         },
         {
             "name": "fgrosse/phpasn1",
