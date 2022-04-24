@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <title><%title%></title>
 
-        <meta name="theme-color" content="#1C1D5B" />
+        <meta name="theme-color" content="<?php if (!$this->public && isLogged() && \App\User::me()->nightmode) { ?>#10151A<?php } else { ?>#1C1D5B<?php } ?>" />
         <%meta%>
         <meta name="application-name" content="<?php echo APP_TITLE; ?>">
         <link rel="manifest" href="<?php echo \Movim\Route::urlize('manifest'); ?>" />
