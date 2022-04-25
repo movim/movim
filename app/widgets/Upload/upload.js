@@ -168,10 +168,10 @@ var Upload = {
         Upload.file = file;
 
         var preview = document.querySelector('#upload img.preview_picture');
+        var fileInfo = document.querySelector('#upload li.file');
 
         // If the preview system is there
         if (preview) {
-            var fileInfo = document.querySelector('#upload li.file');
             var toDraw = fileInfo.querySelector('span.primary');
             fileInfo.classList.remove('preview');
             fileInfo.querySelector('p.name').innerText = Upload.name;
@@ -196,7 +196,13 @@ var Upload = {
         }
 
         if (Upload.uploadButton) {
-            Upload.uploadButton.classList.remove('disabled');
+            console.log(document.querySelector('#upload p.limit'));
+            console.log(document.querySelector('#upload p.limit').dataset.limit);
+            if (!document.querySelector('#upload p.limit') || document.querySelector('#upload p.limit').dataset.limit >= file.size) {
+                Upload.uploadButton.classList.remove('disabled');
+            } else {
+                Upload.uploadButton.classList.add('disabled');
+            }
         }
     },
 

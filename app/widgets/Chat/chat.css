@@ -309,6 +309,11 @@ main:not(.enabled) #chat_widget {
 #chat_widget ul li div.bubble.file video {
     display: block;
     max-height: 200px;
+    background-color: rgba(var(--movim-font), 0.15);
+}
+
+#chat_widget ul li div.bubble.file video:not(.gif) {
+    height: 200px;
 }
 
 #chat_widget li div.bubble.sticker.file img:not(.emoji):not(.hfr) {

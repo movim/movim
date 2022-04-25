@@ -1308,6 +1308,8 @@ var Chat = {
                     video.setAttribute('poster', file.thumbnail.uri);
                     video.setAttribute('width', file.thumbnail.width);
                     video.setAttribute('height', file.thumbnail.height);
+                } else {
+                    video.setAttribute('poster', BASE_URI + 'theme/img/poster.svg');
                 }
 
                 // Tenor implementation
@@ -1315,6 +1317,7 @@ var Chat = {
                     video.classList.add('gif');
                 } else {
                     video.setAttribute('controls', 'controls');
+                    video.setAttribute('preload', 'metadata');
                 }
 
                 div.appendChild(video);
