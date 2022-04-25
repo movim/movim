@@ -436,6 +436,11 @@ li.action div.action .button {
         right: calc(70% - 3rem);
     }
 
+    /* Fix to prevent bad button position when the Websocket is not connected */
+    .snackbar#status_websocket:not(.hide) ~ main > div:first-child:nth-last-child(2) + div .button.action {
+        right: calc(70% + 2rem);
+    }
+
     aside ~ * .button.action {
         right: calc(50% - 20rem);
     }
