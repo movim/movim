@@ -9,6 +9,20 @@ class NewsNav extends Base
     public function load()
     {
         $this->addjs('newsnav.js');
+        $this->registerEvent('pubsub_getitem_handle', 'onItem', 'news');
+    }
+
+    public function onItem($packet)
+    {
+        $post = $packet->content;
+
+        if ($post && $post->isComment()) {
+            $post = $post->getParent();
+        }
+
+        if ($post) {
+            $this->rpc('MovimTpl.fill', '#newsnav #'.cleanupId($post->nodeid), $this->prepareTicket($post));
+        }
     }
 
     public function ajaxHttpGet($page, $server)

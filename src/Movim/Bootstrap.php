@@ -300,7 +300,7 @@ class Bootstrap
         'CommunityHeader','CommunityPosts','CommunitiesServer','CommunitiesServers',
         'Confirm','ContactActions','Chat','ChatOmemo','Chats','Config','ContactData','ContactHeader',
         'ContactSubscriptions','Dialog','Drawer','Init','Login','LoginAnonymous','Menu','Navigation',
-        'Notification', 'Notifications','Post','PostActions','Presence','Publish','Rooms',
+        'Notification', 'Notifications','NewsNav','Post','PostActions','Presence','Publish','Rooms',
         'RoomsExplore', 'RoomsUtils', 'Stickers','Toast','Upload','Vcard4','Visio','VisioLink'];
     }
 

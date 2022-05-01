@@ -9,23 +9,9 @@ class PostActions extends Base
 {
     public function load()
     {
-        $this->registerEvent('pubsub_getitem_handle', 'onItem');
         $this->registerEvent('pubsub_postdelete_handle', 'onDelete');
         $this->registerEvent('pubsub_postdelete', 'onDelete');
         $this->addjs('postactions.js');
-    }
-
-    public function onItem($packet)
-    {
-        $post = $packet->content;
-
-        if ($post && $post->isComment()) {
-            $post = $post->getParent();
-        }
-
-        if ($post) {
-            $this->rpc('MovimTpl.fill', '#'.cleanupId($post->nodeid), $this->preparePost($post));
-        }
     }
 
     public function onDelete($packet)

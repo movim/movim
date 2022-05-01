@@ -15,9 +15,23 @@ class Menu extends Base
         $this->registerEvent('post', 'onPost');
         $this->registerEvent('post_retract', 'onRetract', 'news');
         $this->registerEvent('pubsub_postdelete', 'onRetract', 'news');
+        $this->registerEvent('pubsub_getitem_handle', 'onItem', 'news');
 
         $this->addjs('menu.js');
         $this->addcss('menu.css');
+    }
+
+    public function onItem($packet)
+    {
+        $post = $packet->content;
+
+        if ($post && $post->isComment()) {
+            $post = $post->getParent();
+        }
+
+        if ($post) {
+            $this->rpc('MovimTpl.fill', '#menu_widget #'.cleanupId($post->nodeid), $this->preparePost($post));
+        }
     }
 
     public function onRetract($packet)
