@@ -72,7 +72,7 @@ class Login extends Base
                 'allow_unsafe_links' => false,
             ]);
 
-            $this->view->assign('info', $converter->convertToHtml($configuration->info));
+            $this->view->assign('info', $converter->convert($configuration->info));
         }
 
         $this->view->assign('banner', $configuration->banner);

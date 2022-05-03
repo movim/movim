@@ -102,7 +102,7 @@ class Publish extends Base
                 'allow_unsafe_links' => true,
             ]);
 
-            $doc->loadXML('<div>'.$converter->convertToHtml($draft->content).'</div>');
+            $doc->loadXML('<div>'.$converter->convert($draft->content).'</div>');
             $view->assign('title', $draft->title);
             $view->assign('content', substr($doc->saveXML($doc->getElementsByTagName('div')->item(0)), 5, -6));
 
@@ -141,7 +141,7 @@ class Publish extends Base
                     'allow_unsafe_links' => true,
                 ]);
 
-                $contentXhtml = $converter->convertToHtml($draft->content);
+                $contentXhtml = $converter->convert($draft->content);
 
                 $tagsContent = getHashtags($draft->content);
                 if (is_array($tagsContent)) {
