@@ -16,7 +16,7 @@
 
 <?php $this->widget('BottomNavigation');?>
 
-<main style="background-color: var(--movim-background)">
+<main style="background-color: rgb(var(--movim-background))">
     <?php if (empty($_GET['n'])) { ?>
         <aside>
             <?php $this->widget('CommunitiesServerInfo'); ?>

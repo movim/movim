@@ -31,8 +31,8 @@
         <li
             class="block"
             onclick="MovimUtils.redirect('{$c->route('accountnext', ['movim.eu', false])}')">
-            <span class="primary icon bubble color green">
-                <img src="theme/img/app/vectorial.png">
+            <span class="primary icon bubble">
+                <img src="theme/img/app/vectorial_square.svg">
             </span>
             <div>
                 <p>movim.eu</p>

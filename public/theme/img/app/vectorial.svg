@@ -1,19 +1,103 @@
-<?xml version="1.0"?>
-<svg version="1.1" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
- <defs>
-  <filter id="c" x="-.142" y="-.244" width="1.285" height="1.489">
-   <feGaussianBlur stdDeviation="10.686"/>
-  </filter>
-  <linearGradient id="b" x1="40" x2="200" y1="40" y2="200" gradientUnits="userSpaceOnUse">
-   <stop stop-color="#345cca" offset="0"/>
-   <stop stop-color="#5d47c6" offset="1"/>
-  </linearGradient>
-  <linearGradient id="a" x1="125" x2="174.95" y1="65" y2="210.1" gradientUnits="userSpaceOnUse">
-   <stop stop-color="#344394" offset="0"/>
-   <stop stop-color="#7c45df" offset="1"/>
-  </linearGradient>
- </defs>
- <circle cx="120" cy="120" r="110" fill="url(#b)" stroke="url(#a)" stroke-width="3"/>
- <path transform="scale(.91667)" d="m112.916 82.039c-20.51 0-37.137 16.627-37.137 37.137 0 1.594 0.10688 3.1707 0.30171 4.7118-0.29375-9e-3 -0.58624-0.0232-0.88201-0.0232-17.434-7e-5 -31.567 14.133-31.567 31.567 0 17.434 14.133 31.567 31.567 31.567h122.44c14.357 0 25.996-11.639 25.996-25.996 0-14.357-11.639-25.996-25.996-25.996-0.0468 0-0.093-2.5e-4 -0.13928 0 0.0334-0.64832 0.0696-1.293 0.0696-1.9497 0-20.51-16.627-37.137-37.137-37.137-5.7242 0-11.15 1.3077-15.992 3.6209-6.5596-10.507-18.221-17.501-31.52-17.501z" fill="#332949" opacity=".45896" filter="url(#c)"/>                                                                    
- <path d="m101.59 73.35c-18.232 0-33.011 14.78-33.011 33.011 0 1.4169 0.095 2.8184 0.26819 4.1883-0.26111-8e-3 -0.5211-0.0206-0.78401-0.0206-15.497-9e-5 -28.059 12.562-28.059 28.059 0 15.497 12.563 28.059 28.059 28.059h108.83c12.762 0 23.108-10.346 23.108-23.108 0-12.762-10.346-23.108-23.108-23.108-0.0416 0-0.0827-2.2e-4 -0.1238 0 0.0297-0.57629 0.0619-1.1493 0.0619-1.7331 0-18.231-14.78-33.011-33.011-33.011-5.0882 0-9.9111 1.1624-14.215 3.2186-5.8308-9.3396-16.197-15.556-28.018-15.556z" fill="#fff"/>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.1"
+   viewBox="0 0 240 240"
+   id="svg23"
+   sodipodi:docname="vectorial.svg"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   inkscape:export-filename="/var/www/html/movim/public/theme/img/app/512.png"
+   inkscape:export-xdpi="204.8"
+   inkscape:export-ydpi="204.8"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview25"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="2.08"
+     inkscape:cx="119.95192"
+     inkscape:cy="120.19231"
+     inkscape:window-width="1920"
+     inkscape:window-height="1025"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg23" />
+  <defs
+     id="defs15">
+    <filter
+       id="c"
+       x="-0.14247762"
+       y="-0.24434544"
+       width="1.2849552"
+       height="1.4886909">
+      <feGaussianBlur
+         stdDeviation="10.686"
+         id="feGaussianBlur2" />
+    </filter>
+    <linearGradient
+       id="b"
+       x1="40"
+       x2="200"
+       y1="40"
+       y2="200"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         stop-color="#345cca"
+         offset="0"
+         id="stop5"
+         style="stop-color:#5452c9;stop-opacity:1" />
+      <stop
+         stop-color="#5d47c6"
+         offset="1"
+         id="stop7"
+         style="stop-color:#413fb5;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient
+       id="a"
+       x1="125"
+       x2="174.95"
+       y1="65"
+       y2="210.1"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         stop-color="#344394"
+         offset="0"
+         id="stop10" />
+      <stop
+         stop-color="#7c45df"
+         offset="1"
+         id="stop12"
+         style="stop-color:#5553be;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <circle
+     cx="120"
+     cy="120"
+     fill="url(#b)"
+     stroke="url(#a)"
+     stroke-width="3"
+     id="circle17"
+     r="110"
+     inkscape:export-filename="/var/www/html/movim/public/theme/img/16.png"
+     inkscape:export-xdpi="6.8899999"
+     inkscape:export-ydpi="6.8899999" />
+  <path
+     transform="scale(.91667)"
+     d="m112.916 82.039c-20.51 0-37.137 16.627-37.137 37.137 0 1.594 0.10688 3.1707 0.30171 4.7118-0.29375-9e-3 -0.58624-0.0232-0.88201-0.0232-17.434-7e-5 -31.567 14.133-31.567 31.567 0 17.434 14.133 31.567 31.567 31.567h122.44c14.357 0 25.996-11.639 25.996-25.996 0-14.357-11.639-25.996-25.996-25.996-0.0468 0-0.093-2.5e-4 -0.13928 0 0.0334-0.64832 0.0696-1.293 0.0696-1.9497 0-20.51-16.627-37.137-37.137-37.137-5.7242 0-11.15 1.3077-15.992 3.6209-6.5596-10.507-18.221-17.501-31.52-17.501z"
+     fill="#332949"
+     opacity=".45896"
+     filter="url(#c)"
+     id="path19" />
+  <path
+     d="m101.59 73.35c-18.232 0-33.011 14.78-33.011 33.011 0 1.4169 0.095 2.8184 0.26819 4.1883-0.26111-8e-3 -0.5211-0.0206-0.78401-0.0206-15.497-9e-5 -28.059 12.562-28.059 28.059 0 15.497 12.563 28.059 28.059 28.059h108.83c12.762 0 23.108-10.346 23.108-23.108 0-12.762-10.346-23.108-23.108-23.108-0.0416 0-0.0827-2.2e-4 -0.1238 0 0.0297-0.57629 0.0619-1.1493 0.0619-1.7331 0-18.231-14.78-33.011-33.011-33.011-5.0882 0-9.9111 1.1624-14.215 3.2186-5.8308-9.3396-16.197-15.556-28.018-15.556z"
+     fill="#fff"
+     id="path21" />
 </svg>

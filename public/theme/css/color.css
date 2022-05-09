@@ -2,27 +2,29 @@
 
 body {
     --movim-main: 255, 87, 34;
-    --movim-accent: #3F51B5;
+    --movim-accent: 65, 63, 181;
     --movim-background-main: 255, 255, 255;
-    --movim-background: #EEE;
-    --movim-gray: #232323;
+    --movim-background: 238, 238, 238;
+    --movim-gray: 35, 35, 35;
     --movim-font: 0, 0, 0;
     --movim-element-action: 153, 153, 153;
     scrollbar-color: rgba(var(--movim-font), 0.2) transparent;
     scrollbar-width: thin;
+
+    --movim-red: #F44336;
 }
 
 body.nightmode {
-    --movim-accent: #10151A;
+    --movim-accent: 16, 21, 26;
     --movim-background-main: 20,26,33;
-    --movim-background: #192028;
+    --movim-background: 25, 32, 40;
     --movim-gray: var(--movim-accent);
     --movim-font: 255, 255, 255;
     scrollbar-color: rgba(var(--movim-font), 0.1) transparent;
 }
 
 body {
-    background-color: var(--movim-gray);
+    background-color: rgb(var(--movim-gray));
 }
 
 body > *,
@@ -62,7 +64,7 @@ table tr th {
 }
 
 .color.dark {
-    background-color: var(--movim-gray);
+    background-color: rgb(var(--movim-gray));
 }
 
 .color.dark *.divided > *:not(:last-child),
@@ -100,37 +102,37 @@ form > div .radio > input[type="radio"]:checked + label {
 }
 
 span.icon span.counter.alt {
-    background-color: var(--movim-accent);
+    background-color: rgb(var(--movim-accent));
 }
 
 /* Elements */
 
-.button.red,    .icon.red   , span.resource.red, p.encrypted.error { color: #F44336; }
+.button.red,    .icon.red   , span.resource.red, p.encrypted.error { color: var(--movim-red); }
 .button.purple, .icon.purple, span.resource.purple   { color: #9C27B0; }
 .button.indigo, .icon.indigo, span.resource.indigo   { color: #3F51B5; }
 .button.blue,   .icon.blue  , span.resource.blue     { color: #2196F3; }
 .button.green,  .icon.green , span.resource.green    { color: #689F38; }
 ul li div.bubble.moderator:after,
 ul li div > p > span.moderator,
-.button.orange, .icon.orange, span.resource.orange { color: #FF9800; }
+.button.orange, .icon.orange, span.resource.orange   { color: #FF9800; }
 .button.yellow, .icon.yellow, span.resource.yellow   { color: #FBC02D; }
 .button.brown,  .icon.brown , span.resource.brown    { color: #795548; }
 ul li.action > div.action,
 ul li.action > form > div.action,
 .button.gray,   .icon.gray  , span.resource.gray     { color: #9E9E9E; }
-.button.black,  .icon.black , span.resource.black    { color: #000; }
-.button.lime,   .icon.lime  , span.resource.lime  { color: #CDDC39 }
-.button.cyan,   .icon.cyan  , span.resource.cyan  { color: #00bcd4 }
-.button.teal,   .icon.teal  , span.resource.teal  { color: #009688 }
-.button.pink,   .icon.pink  , span.resource.pink  { color: #e91e63 }
+.button.black,  .icon.black , span.resource.black    { color: #000000; }
+.button.lime,   .icon.lime  , span.resource.lime     { color: #CDDC39 }
+.button.cyan,   .icon.cyan  , span.resource.cyan     { color: #00bcd4 }
+.button.teal,   .icon.teal  , span.resource.teal     { color: #009688 }
+.button.pink,   .icon.pink  , span.resource.pink     { color: #e91e63 }
 .button.dorange,.icon.dorange  , span.resource.dorange  { color: #ff5722 }
-.button.lblue,  .icon.lblue  , span.resource.lblue  { color: #03a9f4 }
-.button.amber,  .icon.anber  , span.resource.amber  { color: #ffc107 }
-.button.bgray,  .icon.bgray  , span.resource.bgray  { color: #607d8b }
+.button.lblue,  .icon.lblue  , span.resource.lblue   { color: #03a9f4 }
+.button.amber,  .icon.anber  , span.resource.amber   { color: #ffc107 }
+.button.bgray,  .icon.bgray  , span.resource.bgray   { color: #607d8b }
 
 .color          { color: white; background-color: #607D8B; border-color: #607D8B }
 span.icon:not(.composing).status.dnd:after,
-.color.red      { color: white; background-color: #F44336; border-color: #F44336 }
+.color.red      { color: white; background-color: var(--movim-red); border-color: var(--movim-red) }
 span.icon:not(.composing).status.xa:after,
 .color.purple   { color: white; background-color: #9C27B0; border-color: #9C27B0 }
 .color.indigo   { color: white; background-color: #3F51B5; border-color: #3F51B5 }
@@ -144,7 +146,7 @@ span.icon:not(.composing).status.away:after,
 span.icon:not(.composing).status.server_error:after,
 .color.brown    { color: white; background-color: #795548; border-color: #795548 }
 .color.gray     { color: white; background-color: #9E9E9E; border-color: #9E9E9E }
-.color.black    { color: white; background-color: #000;    border-color: #000 }
+.color.black    { color: white; background-color: #000000; border-color: #000000 }
 .color.lime     { color: white; background-color: #CDDC39; border-color: #CDDC39 }
 .color.cyan     { color: white; background-color: #00bcd4; border-color: #00bcd4 }
 .color.teal     { color: white; background-color: #009688; border-color: #009688 }
@@ -159,13 +161,13 @@ span.icon:not(.composing).status.server_error:after,
 
 form > div > input:focus:invalid,
 form > div > input:focus:required {
-    box-shadow: 0px 2px 0px #F44336;
+    box-shadow: 0px 2px 0px var(--movim-red);
 }
 
 form > div > input:invalid,
 form input:focus:invalid + label,
 form textarea:focus:invalid + label {
-    color: #F44336;
+    color: var(--movim-red);
 }
 
 /* Chat edit */
@@ -196,9 +198,9 @@ input[type=button].color,
 main > div > header.fixed,
 header.big,
 main > header {
-    background-color: var(--movim-accent);
+    background-color: rgb(var(--movim-accent));
     color: white;
-    border-color: var(--movim-accent);
+    border-color: rgb(var(--movim-accent));
 }
 
 .snackbar ul.list li > div > p,

@@ -61,7 +61,7 @@
     object-fit: cover;
     border-radius: 1rem;
     margin-bottom: 1rem;
-    background-color: var(--movim-background);
+    background-color: rgb(var(--movim-background));
 }
 
 #gifs .masonry .brick.clicked {

@@ -28,7 +28,7 @@ body > nav > ul.list li > p:nth-last-of-type(2) + p {
         transform: translateY(-50%);
         width: 0;
         height: 0;
-        background-color: var(--movim-background);
+        background-color: rgb(var(--movim-background));
         opacity: 0.9;
         border-radius: 0.5rem 0 0 0.5rem;
         transition: height .2s linear, width .2s linear;

@@ -14,13 +14,13 @@
     box-sizing: border-box;
     pointer-events: none;
     transition: opacity 0.2s ease, transform 0.4s ease;
-    background-color: var(--movim-gray);
+    background-color: rgb(var(--movim-gray));
     transform: translateY(0);
 }
 
 body.nightmode .snackbar,
 body.nightmode .toast {
-    background-color: var(--movim-background);
+    background-color: rgb(var(--movim-background));
 }
 
 .toast,

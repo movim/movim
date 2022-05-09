@@ -3,7 +3,7 @@ var MovimFavicon = {
     originalIcon: null,
     sizes: '128x128',
 
-    counter: function(counterTab1, counterTab2) {
+    counter: function (counterTab1, counterTab2) {
         var counter = counterTab1 + counterTab2;
 
         link = document.querySelector('link[sizes="' + MovimFavicon.sizes + '"]');
@@ -36,32 +36,34 @@ var MovimFavicon = {
             var b = y + h;
 
             ctx.beginPath();
-            ctx.fillStyle = counterTab2 > 0 ? '#E91E63' : '#FF5722';
-            ctx.moveTo(x+radius, y);
-            ctx.lineTo(r-radius, y);
-            ctx.quadraticCurveTo(r, y, r, y+radius);
-            ctx.lineTo(r, y+h-radius);
-            ctx.quadraticCurveTo(r, b, r-radius, b);
-            ctx.lineTo(x+radius, b);
-            ctx.quadraticCurveTo(x, b, x, b-radius);
-            ctx.lineTo(x, y+radius);
-            ctx.quadraticCurveTo(x, y, x+radius, y);
+            ctx.fillStyle = counterTab2 > 0
+                ? 'rgb(' + getComputedStyle(document.body).getPropertyValue('--movim-red') + ')'
+                : 'rgb(' + getComputedStyle(document.body).getPropertyValue('--movim-main') + ')';
+            ctx.moveTo(x + radius, y);
+            ctx.lineTo(r - radius, y);
+            ctx.quadraticCurveTo(r, y, r, y + radius);
+            ctx.lineTo(r, y + h - radius);
+            ctx.quadraticCurveTo(r, b, r - radius, b);
+            ctx.lineTo(x + radius, b);
+            ctx.quadraticCurveTo(x, b, x, b - radius);
+            ctx.lineTo(x, y + radius);
+            ctx.quadraticCurveTo(x, y, x + radius, y);
             ctx.fill();
 
             ctx.fillStyle = "#fff";
             counterTextX = large ? 18 : 22;
-            ctx.fillText( counter , counterTextX , 28, w);
+            ctx.fillText(counter, counterTextX, 28, w);
         }
 
         MovimFavicon.set(canvas.toDataURL());
     },
 
-    set: function(url) {
+    set: function (url) {
         link = document.querySelector('link[sizes="' + MovimFavicon.sizes + '"]');
         link.href = url;
     },
 
-    init: function() {
+    init: function () {
         link = document.querySelector('link[sizes="' + MovimFavicon.sizes + '"]');
         MovimFavicon.originalUrl = link.href;
         MovimFavicon.originalIcon = new Image();
@@ -69,6 +71,6 @@ var MovimFavicon = {
     }
 }
 
-movimAddOnload(function() {
+movimAddOnload(function () {
     MovimFavicon.init();
 });

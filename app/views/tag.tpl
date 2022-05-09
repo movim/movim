@@ -17,7 +17,7 @@
     <?php $this->widget('BottomNavigation');?>
 <?php } ?>
 
-<main style="background-color: var(--movim-background);">
+<main style="background-color: rgb(var(--movim-background));">
     <?php if (isLogged()) { ?>
         <aside>
             <?php $this->widget('NewsNav');?>

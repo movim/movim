@@ -1,5 +1,5 @@
 body main {
-    background: radial-gradient(circle farthest-corner at right bottom,#3F51B5 0,#222e75 100%);
+    background: radial-gradient(circle farthest-corner at right bottom, rgb(var(--movim-main)) 0, rgb(var(--movim-accent)) 90%);
     display: flex;
     align-items: center;
 }
@@ -68,15 +68,15 @@ body main {
     flex: 0 1 100%;
     position: relative;
     text-align: center;
-    padding-top: 3rem;
+    padding-top: 6rem;
 }
 
 #login_widget footer > *:first-child {
-    background-image: url(../theme/img/logo.svg);
+    background-image: url(../theme/img/logo_cloud.svg);
     background-repeat: no-repeat;
     background-position: center 0;
-    background-size: 22rem auto, 100% 100%;
-    height: 10rem;
+    background-size: 7rem auto, 100% 100%;
+    height: 7rem;
     width: 100%;
     display: block;
 }
