@@ -37,7 +37,7 @@ var MovimFavicon = {
 
             ctx.beginPath();
             ctx.fillStyle = counterTab2 > 0
-                ? 'rgb(' + getComputedStyle(document.body).getPropertyValue('--movim-red') + ')'
+                ? getComputedStyle(document.body).getPropertyValue('--movim-red')
                 : 'rgb(' + getComputedStyle(document.body).getPropertyValue('--movim-main') + ')';
             ctx.moveTo(x + radius, y);
             ctx.lineTo(r - radius, y);
