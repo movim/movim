@@ -27,7 +27,7 @@ class Config extends Base
         $l = Movim\i18n\Locale::start();
 
         $view->assign('languages', $l->getList());
-        $view->assign('conf', User::me());
+        $view->assign('conf', $this->user);
 
         return $view->draw('_config_form');
     }
@@ -87,9 +87,35 @@ class Config extends Base
           ->request();
     }
 
+    public function ajaxEditNickname()
+    {
+        $view = $this->tpl();
+        $view->assign('me', $this->user);
+        Dialog::fill($view->draw('_config_nickname'));
+    }
+
+    public function ajaxSaveNickname(string $nickname)
+    {
+        if (Validator::regex('/^[a-z_\-\d]{3,64}$/i')->validate($nickname)) {
+            if (\App\User::where('nickname', $nickname)->where('id', '!=', $this->user->id)->first()) {
+                Toast::send($this->__('profile.nickname_conflict'));
+                return;
+            }
+
+            $this->user->nickname = $nickname;
+            $this->user->save();
+            $this->refreshConfig();
+
+            (new Dialog)->ajaxClear();
+            Toast::send($this->__('profile.nickname_saved'));
+        } else {
+            Toast::send($this->__('profile.nickname_error'));
+        }
+    }
+
     private function refreshConfig()
     {
-        $this->rpc('MovimTpl.fill', '#config_widget', $this->prepareConfigForm());
+        $this->rpc('MovimTpl.fill', '#config_widget_form', $this->prepareConfigForm());
     }
 
     private function validateForm($data)

@@ -61,7 +61,7 @@ class Vcard4 extends Base
     {
         $c = $this->user->contact;
 
-        if (Validator::stringType()->length(0, 40)->validate($vcard->name->value)) {
+        if (Validator::stringType()->notEmpty()->validate($vcard->name->value)) {
             $c->name    = $vcard->name->value;
             $n = new Nickname;
             $n->setNickname($c->name)
@@ -72,23 +72,22 @@ class Vcard4 extends Base
             $c->date    = $vcard->date->value;
         }
 
-        if (Validator::stringType()->length(0, 40)->validate($vcard->fn->value)) {
+        if (Validator::stringType()->notEmpty()->validate($vcard->fn->value)) {
             $c->fn      = $vcard->fn->value;
         }
 
-        if (Validator::url()->validate($vcard->url->value)) {
+        if (Validator::url()->notEmpty()->validate($vcard->url->value)) {
             $c->url     = $vcard->url->value;
-        } else {
-            $c->url     = '';
         }
 
-        $c->adrlocality     = $vcard->locality->value;
-        $c->adrcountry      = $vcard->country->value;
+        if (Validator::stringType()->notEmpty()->validate($vcard->locality->value)
+         && Validator::stringType()->notEmpty()->validate($vcard->country->value)) {
+            $c->adrlocality     = $vcard->locality->value;
+            $c->adrcountry      = $vcard->country->value;
+        }
 
-        if (Validator::email()->validate($vcard->email->value)) {
+        if (Validator::email()->notEmpty()->validate($vcard->email->value)) {
             $c->email   = $vcard->email->value;
-        } else {
-            $c->email = '';
         }
 
         if (Validator::stringType()->validate($vcard->desc->value)) {
@@ -97,37 +96,10 @@ class Vcard4 extends Base
 
         $c->save();
 
+        $c->jid = $this->user->id;
+
         $r = new Set;
         $r->setData($c)->request();
-
-        $r = new Moxl\Xec\Action\Vcard\Set;
-        $r->setData($vcard)->request();
-    }
-
-    public function ajaxEditNickname()
-    {
-        $view = $this->tpl();
-        $view->assign('me', $this->user);
-        Dialog::fill($view->draw('_vcard4_nickname'));
-    }
-
-    public function ajaxSaveNickname(string $nickname)
-    {
-        if (Validator::regex('/^[a-z_\-\d]{3,64}$/i')->validate($nickname)) {
-            if (\App\User::where('nickname', $nickname)->where('id', '!=', $this->user->id)->first()) {
-                Toast::send($this->__('profile.nickname_conflict'));
-                return;
-            }
-
-            $this->user->nickname = $nickname;
-            $this->user->save();
-            $this->ajaxGetVcard();
-
-            (new Dialog)->ajaxClear();
-            Toast::send($this->__('profile.nickname_saved'));
-        } else {
-            Toast::send($this->__('profile.nickname_error'));
-        }
     }
 
     public function ajaxChangePrivacy($value)

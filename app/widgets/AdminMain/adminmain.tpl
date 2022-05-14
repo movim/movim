@@ -38,7 +38,7 @@
                 <i class="material-icons">help</i>
             </span>
             <div>
-                <p class="normal">{$c->__('information.banner_info')}</p>
+                <p class="normal all">{$c->__('information.banner_info')}</p>
             </div>
         </li>
     </ul>

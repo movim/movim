@@ -1,7 +1,27 @@
-<form enctype="multipart/form-data" method="post" action="index.php" name="general">
+<form enctype="multipart/form-data" method="post" action="index.php" name="general" onchange="Config_ajaxSubmit(MovimUtils.formToJson('general'));">
     <ul class="list fill">
         <li class="subheader"><div><p>{$c->__('config.general')}</p></div></li>
     </ul>
+
+    <ul class="list fill middle active">
+        <li onclick="Config_ajaxEditNickname()">
+            <span class="control icon gray">
+                <i class="material-icons">chevron_right</i>
+            </span>
+            <span class="primary icon gray">
+                <i class="material-icons">account_circle</i>
+            </span>
+            <div>
+                <p>{$c->__('profile.info')}</p>
+                <p class="all">{$c->__('profile.nickname_info')}</p>
+                {if="!empty($conf->nickname)"}
+                    <p>{$c->__('profile.nickname_set', $conf->nickname)}</p>
+                {/if}
+            </div>
+        </li>
+        <br />
+    </ul>
+
 
     <div class="block">
         <div class="select">
@@ -133,16 +153,4 @@
             </li>
         </ul>
     </div>
-
-    <div class="clear padded"></div>
-    <button
-        type="button"
-        onclick="
-            Config_ajaxSubmit(MovimUtils.formToJson('general'));
-            this.className='button color orange inactive oppose';
-            this.onclick=null;"
-        class="button color oppose" >
-        {$c->__('button.save')}
-    </button>
-    <div class="clear"></div>
 </form>

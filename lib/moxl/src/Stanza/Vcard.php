@@ -18,44 +18,44 @@ class Vcard
         $vcard = $dom->createElementNS('vcard-temp', 'vCard');
 
         if (isset($data->fn)) {
-            $vcard->appendChild($dom->createElement('FN', $data->fn->value));
+            $vcard->appendChild($dom->createElement('FN', $data->fn));
         }
         if (isset($data->name)) {
-            $vcard->appendChild($dom->createElement('NICKNAME', $data->name->value));
+            $vcard->appendChild($dom->createElement('NICKNAME', $data->name));
         }
         if (isset($data->url)) {
-            $vcard->appendChild($dom->createElement('URL', $data->url->value));
+            $vcard->appendChild($dom->createElement('URL', $data->url));
         }
         if (isset($data->date)) {
-            $vcard->appendChild($dom->createElement('BDAY', $data->date->value));
+            $vcard->appendChild($dom->createElement('BDAY', $data->date));
         }
 
         if (isset($data->email)) {
             $email = $dom->createElement('EMAIL');
-            $email->appendChild($dom->createElement('USERID', $data->email->value));
+            $email->appendChild($dom->createElement('USERID', $data->email));
             $vcard->appendChild($email);
         }
 
-        if (isset($data->country) || isset($data->locality) || isset($data->postalcode)) {
+        if (isset($data->adrcountry) || isset($data->adrlocality) || isset($data->adrpostalcode)) {
             $adr = $dom->createElement('ADR');
 
-            if (isset($data->locality)) {
-                $adr->appendChild($dom->createElement('LOCALITY', $data->locality->value));
+            if (isset($data->adrlocality)) {
+                $adr->appendChild($dom->createElement('LOCALITY', $data->adrlocality));
             }
 
-            if (isset($data->postalcode)) {
-                $adr->appendChild($dom->createElement('PCODE', $data->postalcode->value));
+            if (isset($data->adrpostalcode)) {
+                $adr->appendChild($dom->createElement('PCODE', $data->adrpostalcode));
             }
 
-            if (isset($data->country)) {
-                $adr->appendChild($dom->createElement('CTRY', $data->country->value));
+            if (isset($data->adrcountry)) {
+                $adr->appendChild($dom->createElement('CTRY', $data->adrcountry));
             }
 
             $vcard->appendChild($adr);
         }
 
         if (isset($data->desc)) {
-            $vcard->appendChild($dom->createElement('DESC', $data->desc->value));
+            $vcard->appendChild($dom->createElement('DESC', $data->desc));
         }
 
         if (isset($data->photobin) && isset($data->phototype)) {

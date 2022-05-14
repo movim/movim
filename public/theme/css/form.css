@@ -1,5 +1,9 @@
 /* Form */
 
+input {
+    filter: none;
+}
+
 li > form {
     display: block;
 }
@@ -20,18 +24,18 @@ li > form > div:not(.control) { /* If we put the form in a list */
     top: -1.5rem;
 }
 
-form > div > label {
+form > div label {
     position: absolute;
     top: 1.5rem;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
     max-width: 100%;
-    left: 0; /* We force the left align */
+    /*left: 0;*/ /* We force the left align */
 }
 
 
-*[dir="rtl"] form > div > label {
+*[dir="rtl"] form > div label {
     right: 0;
 }
 
@@ -39,7 +43,7 @@ form > div.icon {
     padding-left: 9rem;
 }
 
-form > div > textarea,
+form > div textarea,
 #hiddendiv {
     border: none;
     resize: none;
@@ -47,7 +51,7 @@ form > div > textarea,
     box-sizing: border-box;
 }
 
-form > div > .select:not(.multi):after {
+form > div .select:not(.multi):after {
     font-family: 'Material Icons';
     content: "\e5c5";
     display: block;
@@ -59,16 +63,16 @@ form > div > .select:not(.multi):after {
     pointer-events: none;
 }
 
-*[dir="rtl"] form > div > .select::after {
+*[dir="rtl"] form > div .select::after {
     left: 1.25rem;
     right: auto;
 }
 
-form > div > .select:hover:after {
+form > div .select:hover:after {
     color: #555;
 }
 
-form > div > .select select {
+form > div .select select {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -112,16 +116,16 @@ main > header form > div:not(.clear):not(.control) > .select select {
 
 /* Webkit weird CSS, sic */
 
-form > div > .select select,
-form > div > input:not([type=submit]),
-form > div > textarea {
+form > div .select select,
+form > div input:not([type=submit]),
+form > div textarea {
     outline-width: 0;
 }
 
-form > div > .labeled,
-form > div > .select,
-form > div > input:not([type=submit]),
-form > div > textarea {
+form > div .labeled,
+form > div .select,
+form > div input:not([type=submit]),
+form > div textarea {
     display: block;
     padding: 1rem 0;
     padding-top: 4rem;
@@ -134,9 +138,9 @@ form > div > textarea {
     overflow: hidden; /* Fixme */
 }
 
-form > div > .select,
-form > div > input:not([type=submit]),
-form > div > textarea {
+form > div .select,
+form > div input:not([type=submit]),
+form > div textarea {
     box-shadow: 0px 1px 0px rgba(var(--movim-font), 0.12);
 }
 
@@ -145,7 +149,7 @@ form > div > p {
     padding-top: 1.5rem;
 }
 
-form > div > .select {
+form > div .select {
     position: relative;
     padding-top: 4rem;
     padding-bottom: 0;
@@ -158,10 +162,10 @@ form > div.compact > textarea {
 }
 
 /* Webkit hack */
-form > div > input:not([type=submit]):-webkit-autofill {
+form > div input:not([type=submit]):-webkit-autofill {
     -webkit-box-shadow: 0 0 0 50px white inset;
 }
-form > div > input:not([type=submit]):-webkit-autofill:focus {
+form > div input:not([type=submit]):-webkit-autofill:focus {
     box-shadow: 0;
     -webkit-text-fill-color: #333;
 }
@@ -281,14 +285,14 @@ form > div .radio > input[type="radio"]:checked + label:hover {
 
 /* Disabled */
 
-form > div > input:disabled,
-form > div > input:disabled + label {
+form > div input:disabled,
+form > div input:disabled + label {
     opacity: 0.5;
 }
 
 /* Readonly */
 
-form > div > input[readonly] {
+form > div input[readonly] {
     opacity: 0.75;
 }
 

@@ -18,7 +18,7 @@
     <button onclick="Dialog_ajaxClear();" class="button flat">
         {$c->__('button.close')}
     </button>
-    <button onclick="Vcard4_ajaxSaveNickname(document.querySelector('form[name=nickname] input#nickname').value)" class="button flat">
+    <button onclick="Config_ajaxSaveNickname(document.querySelector('form[name=nickname] input#nickname').value)" class="button flat">
         {$c->__('button.save')}
     </button>
 </div>
