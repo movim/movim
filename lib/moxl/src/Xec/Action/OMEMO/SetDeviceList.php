@@ -20,4 +20,9 @@ class SetDeviceList extends Action
         $this->_list = $list;
         return $this;
     }
+
+    public function handle($stanza, $parent = false)
+    {
+        $this->deliver();
+    }
 }

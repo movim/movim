@@ -21,18 +21,20 @@ var Account = {
     toggleFingerprintState : function(checkbox) {
         var store = new ChatOmemoStorage();
         store.setSessionState(checkbox.dataset.identifier, checkbox.checked);
+    },
+    refreshFingerprints : function() {
+        let omemoStorage = new ChatOmemoStorage;
+
+        omemoStorage.getIdentityKeyPair().then(keyPair => {
+            Account_ajaxHttpGetFingerprints(MovimUtils.arrayBufferToBase64(keyPair.pubKey), omemoStorage.getSessionsIds(USER_JID));
+        }).catch(a => {
+            Account_ajaxHttpGetFingerprints(null, store.getSessionsIds(USER_JID));
+        });
     }
 }
 
 MovimWebsocket.attach(function() {
-    let omemoStorage = new ChatOmemoStorage;
-
-    omemoStorage.getIdentityKeyPair().then(keyPair => {
-        Account_ajaxHttpGetFingerprints(MovimUtils.arrayBufferToBase64(keyPair.pubKey), omemoStorage.getSessionsIds(USER_JID));
-    }).catch(a => {
-        Account_ajaxHttpGetFingerprints(null, store.getSessionsIds(USER_JID));
-    });
-
+    Account.refreshFingerprints();
     Account_ajaxHttpGetPresences();
 
     Notification.current('account');

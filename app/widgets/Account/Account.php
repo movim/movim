@@ -1,5 +1,6 @@
 <?php
 
+use Moxl\Xec\Action\OMEMO\DeleteBundle;
 use Moxl\Xec\Action\Register\ChangePassword;
 use Moxl\Xec\Action\Register\Remove;
 use Moxl\Xec\Action\Register\Get;
@@ -19,6 +20,12 @@ class Account extends \Movim\Widget\Base
         $this->registerEvent('register_get_errorfeaturenotimplemented', 'onRegisterError', 'account');
         $this->registerEvent('register_set_handle', 'onRegistered', 'account');
         $this->registerEvent('register_set_error', 'onRegisterError', 'account');
+        $this->registerEvent('omemo_setdevicelist_handle', 'onDeviceList', 'account');
+    }
+
+    public function onDeviceList()
+    {
+        $this->rpc('Account.refreshFingerprints');
     }
 
     public function onPasswordChanged()
@@ -176,6 +183,23 @@ class Account extends \Movim\Widget\Base
             $view->draw('_account_fingerprints')
         );
         $this->rpc('Account.resolveSessionsStates');
+    }
+
+    public function ajaxDeleteBundleConfirm(int $id)
+    {
+        $view = $this->tpl();
+        $view->assign('bundle', $this->user->bundles()
+                                           ->where('jid', $this->user->id)
+                                           ->where('bundleid', $id)
+                                           ->first());
+        Dialog::fill($view->draw('_account_delete_bundle'));
+    }
+
+    public function ajaxDeleteBundle(int $id)
+    {
+        $db = new DeleteBundle;
+        $db->setId($id)
+           ->request();
     }
 
     public function ajaxRemoveAccountConfirm($form)
