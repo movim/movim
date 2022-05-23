@@ -42,14 +42,16 @@ class XMPPtoForm
                     $this->outP($element);
                     break;
                 case 'field':
-                    if (isset($element->media)
-                    && (string)$element->media->attributes()->xmlns == 'urn:xmpp:media-element'
-                    && isset($element->media->uri)) {
+                    if (
+                        isset($element->media)
+                        && (string)$element->media->attributes()->xmlns == 'urn:xmpp:media-element'
+                        && isset($element->media->uri)
+                    ) {
                         $uri = parse_url($element->media->uri);
                         switch ($uri['scheme']) {
                             case 'cid':
-                                foreach ($this->stanza->xpath('//data[@cid=\''.$uri['path'].'\']') as $data) {
-                                    $this->outImage('data:'.$data->attributes()->type.';base64,'.(string)$data);
+                                foreach ($this->stanza->xpath('//data[@cid=\'' . $uri['path'] . '\']') as $data) {
+                                    $this->outImage('data:' . $data->attributes()->type . ';base64,' . (string)$data);
                                 }
                                 break;
                             case 'http':
@@ -65,7 +67,11 @@ class XMPPtoForm
                                 $this->outCheckbox($element);
                                 break;
                             case 'text-single':
-                                $this->outInput($element, '');
+                                if ($element['var'] == 'muc#roomconfig_pubsub') {
+                                    $this->outSelectPubsubNode($element);
+                                } else {
+                                    $this->outInput($element, '');
+                                }
                                 break;
                             case 'text-multi':
                                 $this->outTextarea($element);
@@ -102,7 +108,7 @@ class XMPPtoForm
                 case 'username':
                 case 'email':
                 case 'password':
-                        $this->outGeneric($element->getName());
+                    $this->outGeneric($element->getName());
                     break;
                 default:
                     //$this->html .= '';
@@ -119,7 +125,7 @@ class XMPPtoForm
         $input = $this->html->createElement('input');
         $input->setAttribute('type', $s);
         $input->setAttribute('id', $s);
-        $input->setAttribute('name', 'generic_'.$s);
+        $input->setAttribute('name', 'generic_' . $s);
         $input->setAttribute('required', 'required');
 
         $div->appendChild($input);
@@ -284,6 +290,61 @@ class XMPPtoForm
         $input->setAttribute('value', $s->value);
 
         $this->html->appendChild($input);
+    }
+
+    private function outSelectPubsubNode($s)
+    {
+        $container = $this->html->createElement('div');
+        $this->html->appendChild($container);
+
+        $div = $this->html->createElement('div');
+        $div->setAttribute('class', 'select');
+
+        $container->appendChild($div);
+
+        $select = $this->html->createElement('select');
+        $select->setAttribute('type', $s['type']);
+        $select->setAttribute('label', $s['label']);
+        $select->setAttribute('id', $s['var']);
+        $select->setAttribute('name', $s['var']);
+
+        $subscriptions = \App\User::me()->subscriptions()
+            ->where('node', 'not like', 'urn:xmpp:microblog:0:comments/%')
+            ->orderBy('server')->orderBy('node')
+            ->get();
+
+        $server = null;
+
+        $option = $this->html->createElement('option', '-');
+        $option->setAttribute('value', '');
+        $select->appendChild($option);
+
+        foreach ($subscriptions as $subscription) {
+            if ($subscription->server != $server) {
+                $optgroup = $this->html->createElement('optgroup');
+                $optgroup->setAttribute('label', $subscription->server);
+                $select->appendChild($optgroup);
+            }
+
+            $value = 'xmpp:' . $subscription->server . '?;node=' . $subscription->node;
+            $option = $this->html->createElement('option', $subscription->node);
+            $option->setAttribute('value', $value);
+
+            if ($value == $s->value) {
+                $option->setAttribute('selected', 'selected');
+            }
+
+            $optgroup->appendChild($option);
+
+            $server = $subscription->server;
+        }
+
+        $div->appendChild($select);
+
+        $label = $this->html->createElement('label', __('input.muc_pubsub_node'));
+        $label->setAttribute('for', $s['var']);
+        $label->setAttribute('title', __('input.muc_pubsub_node'));
+        $container->appendChild($label);
     }
 
     private function outList($s, bool $multi = false)

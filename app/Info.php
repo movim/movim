@@ -156,10 +156,11 @@ class Info extends Model
 
     public function getRelatedAttribute()
     {
-        if ($this->identities->contains('category', 'pubsub') && $this->identities->contains('type', 'leaf')) {
+        // Dangerous for now
+        /*if ($this->identities->contains('category', 'pubsub') && $this->identities->contains('type', 'leaf')) {
             return \App\Info::where('related', 'xmpp:'.$this->server.'?;node='.$this->node)
                 ->first();
-        }
+        }*/
 
         if (isset($this->attributes['related'])
         && $this->identities->contains('category', 'conference') && $this->identities->contains('type', 'text')) {

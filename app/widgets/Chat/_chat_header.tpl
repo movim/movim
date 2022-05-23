@@ -46,12 +46,24 @@
 
             {if="$conference && $conference->info && $conference->info->related"}
                 {$related = $conference->info->related}
-                <span
-                    class="control icon active"
-                    title="{$c->__('page.communities')} · {$related->name}"
-                    onclick="MovimUtils.redirect('{$c->route('community', [$related->server, $related->node])}')">
-                    <i class="material-icons">group_work</i>
-                </span>
+
+                {$url = $related->getPhoto('m')}
+
+                {if="$url"}
+                    <span
+                        title="{$c->__('page.communities')} · {$related->name}"
+                        onclick="MovimUtils.redirect('{$c->route('community', [$related->server, $related->node])}')"
+                        class="control icon bubble active small">
+                        <img src="{$url}"/>
+                    </span>
+                {else}
+                    <span
+                        title="{$c->__('page.communities')} · {$related->name}"
+                        onclick="MovimUtils.redirect('{$c->route('community', [$related->server, $related->node])}')"
+                        class="control icon bubble small color {$value->node|stringToColor}">
+                        {$value->node|firstLetterCapitalize}
+                    </span>
+                {/if}
             {/if}
 
             <span class="control icon show_context_menu active {if="$conference && !$conference->connected"}disabled{/if}">
