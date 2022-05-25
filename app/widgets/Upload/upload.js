@@ -196,8 +196,6 @@ var Upload = {
         }
 
         if (Upload.uploadButton) {
-            console.log(document.querySelector('#upload p.limit'));
-            console.log(document.querySelector('#upload p.limit').dataset.limit);
             if (!document.querySelector('#upload p.limit') || document.querySelector('#upload p.limit').dataset.limit >= file.size) {
                 Upload.uploadButton.classList.remove('disabled');
             } else {

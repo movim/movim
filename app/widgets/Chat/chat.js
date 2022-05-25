@@ -785,7 +785,6 @@ var Chat = {
         while (i < replies.length) {
             replies[i].onclick = function() {
                 if (this.dataset.mid) {
-                    console.log(this.dataset.mid);
                     Chat_ajaxHttpDaemonReply(this.dataset.mid);
                 }
             }
