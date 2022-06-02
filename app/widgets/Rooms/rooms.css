@@ -66,7 +66,7 @@
 #rooms_widget ul.list.rooms:not(:empty):not(.all) ~ ul.toggle_show li div > p:first-child,
 #rooms_widget ul.list.rooms:not(:empty).all ~ ul.toggle_show li div > p:last-child,
 #rooms_widget ul.list.rooms:not(:empty) ~ ul.empty,
-#rooms_widget ul.list.rooms:not(.has_disconnected) ~ ul.toggle_show {
+#rooms_widget ul.list.rooms:not(.different_states) ~ ul.toggle_show {
     display: none;
 }
 

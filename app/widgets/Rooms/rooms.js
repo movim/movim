@@ -11,7 +11,7 @@ var Rooms = {
 
     checkNoConnected: function() {
         if (!document.querySelector('#rooms_widget ul.list.rooms li.connected')) {
-            Rooms.toggleShowAll();
+            document.querySelector('#rooms_widget ul.list.rooms').classList.add('all');
         }
     },
 
@@ -54,8 +54,8 @@ var Rooms = {
         var items = document.querySelectorAll('#rooms_widget ul.list.rooms li:not(.subheader)');
         var i = 0;
 
-        var hasDisconnected = false;
-        list.classList.remove('has_disconnected');
+        var differentStates = false;
+        list.classList.remove('different_states');
 
         while(i < items.length)
         {
@@ -70,8 +70,11 @@ var Rooms = {
                 }
             }
 
-            if (!hasDisconnected && !items[i].classList.contains('connected')) {
-                hasDisconnected = true;
+
+            if (i >= 1
+             && !differentStates
+             && items[i-1].classList.contains('connected') != items[i].classList.contains('connected')) {
+                differentStates = true;
             }
 
             items[i].classList.remove('active');
@@ -79,8 +82,10 @@ var Rooms = {
             i++;
         }
 
-        if (hasDisconnected) {
-            list.classList.add('has_disconnected');
+        if (differentStates) {
+            list.classList.add('different_states');
+        } else {
+            Rooms.checkNoConnected();
         }
     },
 
