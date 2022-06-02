@@ -265,6 +265,10 @@ ul.tabs {
     font-size: 0;
 }
 
+ul.tabs:empty {
+    display: none;
+}
+
 ul.tabs.wide > li {
     width: 33.33%;
     float: left;

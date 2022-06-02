@@ -50,8 +50,13 @@ var Rooms = {
     },
 
     refresh: function() {
+        var list = document.querySelector('#rooms_widget ul.list.rooms');
         var items = document.querySelectorAll('#rooms_widget ul.list.rooms li:not(.subheader)');
         var i = 0;
+
+        var hasDisconnected = false;
+        list.classList.remove('has_disconnected');
+
         while(i < items.length)
         {
             if (items[i].dataset.jid != null) {
@@ -65,9 +70,17 @@ var Rooms = {
                 }
             }
 
+            if (!hasDisconnected && !items[i].classList.contains('connected')) {
+                hasDisconnected = true;
+            }
+
             items[i].classList.remove('active');
 
             i++;
+        }
+
+        if (hasDisconnected) {
+            list.classList.add('has_disconnected');
         }
     },
 

@@ -44,6 +44,9 @@ var ContactActions = {
     },
     toggleFingerprintState : function(checkbox) {
         var store = new ChatOmemoStorage();
-        store.setSessionState(checkbox.dataset.identifier, checkbox.checked);
+        let set = store.setSessionState(checkbox.dataset.identifier, checkbox.checked);
+        if (!set) setTimeout(() => {
+            checkbox.checked = false;
+        }, 300);
     }
 }

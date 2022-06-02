@@ -199,15 +199,21 @@ ChatOmemoStorage.prototype = {
 
     getSessionState: function (identifier) {
         return this.loadSession(identifier).then(json => {
-            let session = JSON.parse(json);
-            return (session.state === true || session.state === undefined);
+            if (json !== undefined) {
+                let session = JSON.parse(json);
+                return (session.state === true || session.state === undefined);
+            }
+
+            return false;
         });
     },
     setSessionState: function (identifier, enabled) {
         this.loadSession(identifier).then(json => {
-            let session = JSON.parse(json);
-            session.state = Boolean(enabled);
-            this.storeSession(identifier, JSON.stringify(session));
+            if (json !== undefined) {
+                let session = JSON.parse(json);
+                session.state = Boolean(enabled);
+                this.storeSession(identifier, JSON.stringify(session));
+            }
         });
     },
 
