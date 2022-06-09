@@ -1,5 +1,5 @@
 <section id="stickers" class="scroll">
-    <ul class="list flex quarter">
+    <ul class="list flex fourth">
         {loop="$stickers"}
             {if="strlen($value) == 44"}
             <li class="block" onclick="Stickers.zoom(this, '{$jid}', '{$pack}', '{$value}');">

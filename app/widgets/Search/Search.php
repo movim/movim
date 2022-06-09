@@ -160,6 +160,7 @@ class Search extends Base
         $view = $this->tpl();
 
         $view->assign('presencestxt', getPresencesTxt());
+        $view->assign('presences', getPresences());
         $view->assign('users', $users);
 
         return $view->draw('_search_results_contacts');

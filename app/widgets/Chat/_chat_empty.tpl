@@ -2,7 +2,7 @@
     <i class="material-icons">forum</i>
 </div>
 
-<ul class="list flex quarter card shadow compact middle active">
+<ul class="list flex fifth card shadow compact middle active">
     {if="$top->isNotEmpty()"}
         <li class="subheader block large">
             <div>
@@ -39,7 +39,14 @@
                             </span>
                         {/if}
                     </p>
-                    <p class="line">{$value->jid}</p>
+
+                    {if="$value->presence && $value->presence->seen"}
+                        <p class="line">
+                            {$c->__('last.title')} {$value->presence->seen|strtotime|prepareDate:true,true}
+                        </p>
+                    {elseif="$value->presence"}
+                        <p class="line">{$value->presence->presencetext}</p>
+                    {/if}
                 </div>
             </li>
         {/loop}

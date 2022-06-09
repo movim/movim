@@ -32,6 +32,8 @@
                     <p class="line" title="{$value->description|strip_tags}">
                         {$value->description|strip_tags|truncate:80}
                     </p>
+                {elseif="$value->value"}
+                    <p class="line">{$presences[$value->value]}</p>
                 {/if}
             </div>
         </li>
