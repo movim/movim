@@ -8,6 +8,11 @@ ul.list > li {
     position: relative;
 }
 
+ul.list.compact > li {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
 header:not(.big) > ul.list > li,
 nav > ul.list > li,
 ul.list.fill > li,
@@ -23,6 +28,7 @@ ul.list li > * {
     order: 2;
     flex: 1;
     min-width: 0;
+    max-width: 100%;
 }
 
 ul.list li:not(.subheader) > *:not(.primary):not(.control):not(.bubble):not(.main) {
@@ -79,6 +85,11 @@ ul.list li .primary {
     height: 5rem;
     line-height: 5rem;
     flex: 0 0 5rem;
+}
+
+
+ul.list.compact > li .primary {
+    width: 5rem;
 }
 
 ul.list li > span.primary {
@@ -146,6 +157,10 @@ ul.list.thick li:not(.subheader) .primary.bubble:not(.small) {
 
 ul.list li .primary ~ *:not(.primary):not(.control):not(.bubble) {
     margin-left: 1rem;
+}
+
+ul.list.compact li .primary ~ *:not(.primary):not(.control):not(.bubble) {
+    margin-left: 0.5rem;
 }
 
 ul.list li .control ~ *:not(.primary):not(.control):not(.bubble) {

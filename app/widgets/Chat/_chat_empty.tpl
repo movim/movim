@@ -2,7 +2,7 @@
     <i class="material-icons">forum</i>
 </div>
 
-<ul class="list flex middle active">
+<ul class="list flex quarter card shadow compact middle active">
     {if="$top->isNotEmpty()"}
         <li class="subheader block large">
             <div>
@@ -13,9 +13,6 @@
         {loop="$top"}
             <li class="block {if="$value->last > 60"} inactive{/if}"
                 onclick="Chats_ajaxOpen('{$value->jid|echapJS}'); Chat.get('{$value->jid|echapJS}');">
-                <span class="control icon gray">
-                    <i class="material-icons">comment</i>
-                </span>
                 {$url = $value->getPhoto('m')}
                 {if="$url"}
                     <span class="primary icon bubble

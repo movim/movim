@@ -1,7 +1,10 @@
 .flex {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.flex.card {
+    gap: 0 1rem;
 }
 
 ul.flex li.block {
@@ -10,16 +13,10 @@ ul.flex li.block {
 }
 
 .flex .block:not(.subheader) {
-    flex: 0 1 50%;
     overflow: hidden;
 }
 
-.flex.card {
-    margin: 0 0.75rem;
-}
-
 .flex.card .block:not(.subheader) {
-    flex: 0 1 calc(50% - 0.5rem);
     min-height: 5rem;
 }
 
@@ -27,18 +24,17 @@ ul.flex li.block {
     margin-bottom: 0;
 }
 
-.flex.third .block:not(.large) {
-    flex: 0 1 33.33%;
-    max-width: 33.33%;
+.flex.third {
+    grid-template-columns: repeat(3, 1fr);
 }
 
-.flex.third.card .block:not(.large) {
-    max-width: calc(33.33% - 0.5rem);
+.flex.quarter {
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .flex .block.large,
 .flex.card .block.large {
-    flex: 0 1 100%;
+    grid-column: 1/-1;
 }
 
 .column {
@@ -53,14 +49,16 @@ ul.flex li.block {
 }
 
 @media screen and (min-width: 451px) and (max-width: 900px) {
-    .flex .block:not(.subheader),
-    .flex.third .block:not(.subheader) {
-        flex: 0 1 50%;
-        max-width: 50%;
+    .flex {
+        grid-template-columns: repeat(1, 1fr);
     }
 
-    .flex.third.card .block:not(.subheader) {
-        max-width: calc(50% - 0.5rem);
+    .flex.flex.third {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .flex.quarter {
+        grid-template-columns: repeat(3, 1fr);
     }
 
     .column {
@@ -69,12 +67,13 @@ ul.flex li.block {
 }
 
 @media screen and (max-width: 450px) {
-    .flex .block:not(.subheader),
-    .flex.card .block:not(.subheader),
-    .flex.third .block:not(.subheader),
-    .flex.third.card .block:not(.subheader) {
-        flex: 0 1 100%;
-        max-width: 100%;
+    .flex,
+    .flex.flex.third {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .flex.quarter {
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .column {
@@ -85,6 +84,7 @@ ul.flex li.block {
 /* Gallery */
 
 ul.flex.gallery li.block {
+    display: flex;
     flex-direction: column;
     justify-content: center;
 }
