@@ -30,7 +30,7 @@
                     </span>
                 {/if}
                 <div>
-                    <p class="line">
+                    <p class="line" title="{$value->truename}">
                         {$value->truename}
 
                         {if="$value->presence && $value->presence->capability"}
@@ -41,7 +41,7 @@
                     </p>
 
                     {if="$value->presence && $value->presence->seen"}
-                        <p class="line">
+                        <p class="line" title="{$c->__('last.title')} {$value->presence->seen|strtotime|prepareDate:true,true}">
                             {$c->__('last.title')} {$value->presence->seen|strtotime|prepareDate:true,true}
                         </p>
                     {elseif="$value->presence"}
