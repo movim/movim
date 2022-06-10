@@ -46,6 +46,8 @@
                         </p>
                     {elseif="$value->presence"}
                         <p class="line">{$value->presence->presencetext}</p>
+                    {else}
+                        <p></p>
                     {/if}
                 </div>
             </li>
