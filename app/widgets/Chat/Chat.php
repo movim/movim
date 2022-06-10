@@ -158,10 +158,18 @@ class Chat extends \Movim\Widget\Base
                 $roster = $this->user->session->contacts()->where('jid', $from)->first();
                 $chatStates->clearState($from);
 
+                $name = $roster ? $roster->truename : $contact->truename;
+
+                // Specific case where the message is a MUC PM
+                $jid = explodeJid($message->jidfrom);
+                if ($jid['username'] == $name && $jid['resource'] == $message->resource) {
+                    $name = $message->resource;
+                }
+
                 Notification::rpcCall('Notification.incomingMessage');
                 Notification::append(
                     'chat|'.$from,
-                    $roster ? $roster->truename : $contact->truename,
+                    $name,
                     $message->encrypted && is_array($message->omemoheader)
                         ? "🔒 " . substr($message->omemoheader['payload'], 0, strlen($message->omemoheader['payload'])/2)
                         : $rawbody,
