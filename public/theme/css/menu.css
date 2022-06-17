@@ -18,37 +18,20 @@ body > nav > ul.list li > p:nth-last-of-type(2) + p {
     color: gray;
 }
 
+body > nav > ul.list.active li:not(.subheader):before {
+    content: '';
+    display: block;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+    position: absolute;
+    top: 0.5rem;
+    left: 0.6rem;
+    width: calc(100% - 1.25rem);
+    height: calc(100% - 1rem);
+    border-radius: 0.5rem;
+}
+
 @media screen and (min-width: 1025px) {
-    body > nav > ul.list li:after {
-        content: "";
-        display: block;
-        position: absolute;
-        right: -1px;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 0;
-        height: 0;
-        background-color: rgb(var(--movim-background));
-        opacity: 0.9;
-        border-radius: 0.5rem 0 0 0.5rem;
-        transition: height .2s linear, width .2s linear;
-    }
-    body > nav > ul.list li:hover:after {
-        height: 2rem;
-        width: 0.5rem;
-    }
-
-    @keyframes navactive {
-        from { height: 2rem; }
-        to   { height: 95%; }
-    }
-
-    body > nav > ul.list li.active:after {
-        animation: navactive .2s;
-        width: 0.5rem;
-        height: 95%;
-    }
-
     body > nav > ul.list.active li > span.primary > i {
         transition: opacity .2s linear;
     }
@@ -69,7 +52,7 @@ ul.oppose {
     width: 100%;
 }
 
-@media screen and (max-height: 500px) {
+@media screen and (max-height: 42rem) {
     ul.oppose {
         bottom: initial;
     }

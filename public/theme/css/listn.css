@@ -59,6 +59,12 @@ ul.list li > span:not(.color).active:hover {
     cursor: pointer;
 }
 
+/* Navigation exceptions */
+body > nav > ul.list.active li.active:not(.subheader),
+body > nav > ul.list.active li:hover:not(.subheader) {
+    background-color: transparent;
+}
+
 ul.list li > span.color.active:hover {
     opacity: 0.8;
     cursor: pointer;

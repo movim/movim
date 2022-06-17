@@ -72,8 +72,14 @@ table tr th {
     border-color: rgba(255, 255, 255, 0.05);
 }
 
-body:not(.nightmode) .color.dark ul.list.active li:hover:not(.subheader) {
-    background-color: rgba(var(--movim-font), 0.3);
+body > nav > ul.list.active li.active:not(.subheader):before,
+body > nav > ul.list.active li:hover:not(.subheader):before {
+    background-color: rgba(var(--movim-background), 0.1);
+}
+
+body.nightmode > nav > ul.list.active li.active:not(.subheader):before,
+body.nightmode > nav > ul.list.active li:hover:not(.subheader):before {
+    background-color: rgba(var(--movim-background), 0.3);
 }
 
 ul li.date > div > p.normal,

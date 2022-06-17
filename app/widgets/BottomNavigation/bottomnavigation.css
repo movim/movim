@@ -37,6 +37,7 @@ ul#bottomnavigation li span:not(.counter) {
     }
 
     body > div.dialog:not(:empty) ~ ul#bottomnavigation,
+    body > div#drawer:not(.empty) ~ ul#bottomnavigation,
     nav.active + ul#bottomnavigation,
     ul#bottomnavigation.hidden {
         transform: translateY(100%);
