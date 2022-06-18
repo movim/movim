@@ -79,7 +79,7 @@ body > nav > ul.list.active li:hover:not(.subheader):before {
 
 body.nightmode > nav > ul.list.active li.active:not(.subheader):before,
 body.nightmode > nav > ul.list.active li:hover:not(.subheader):before {
-    background-color: rgba(var(--movim-background), 0.3);
+    background-color: rgba(var(--movim-background), 0.7);
 }
 
 ul li.date > div > p.normal,

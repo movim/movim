@@ -10,6 +10,10 @@ body > nav > ul.list li {
     padding-left: 0.5rem;
 }
 
+body > nav > ul.list li div {
+    z-index: 0;
+}
+
 body > nav.color.dark > ul a {
     color: white;
 }
