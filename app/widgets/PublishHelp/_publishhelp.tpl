@@ -91,7 +91,7 @@
     </li>
     <li>
         <span class="primary icon color bubble blue">
-            <i class="material-icons">star</i>
+            <i class="material-icons">help</i>
         </span>
         <span class="control icon gray">
             <i class="material-icons">chevron_right</i>
@@ -101,8 +101,8 @@
                 {$c->__('publishhelp.manual')}
             </p>
             <p class="line">
-                <a href="http://daringfireball.net/projects/markdown/syntax" target="_blank">
-                    http://daringfireball.net/projects/markdown/syntax
+                <a href="https://commonmark.org/help/" target="_blank">
+                    Markdown Reference
                 </a>
             </p>
         </div>
