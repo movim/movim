@@ -1,6 +1,7 @@
 #
 # Translators:
 # Sinyeol An <soundlake@gmail.com>, 2018-2019
+# 조수연, 2022
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -109,9 +110,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-17 08:56+0200\n"
-"PO-Revision-Date: 2022-02-17 07:57+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"POT-Creation-Date: 2022-06-26 08:14+0200\n"
+"PO-Revision-Date: 2015-06-24 09:45+0000\n"
+"Last-Translator: 조수연, 2022\n"
 "Language-Team: Korean (http://www.transifex.com/movim/movim/language/ko/)\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
@@ -146,7 +147,7 @@ msgstr "자원"
 
 #: [about]api [schema]api [api]title
 msgid "API"
-msgstr ""
+msgstr "API"
 
 #: [about]info
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
@@ -190,19 +191,19 @@ msgstr "당신은 당신의 XMPP 계정과 그와 관련된 모든 정보들을 
 
 #: [account]delete_text_confirm
 msgid "Type your full username"
-msgstr ""
+msgstr "사용자 이름 전체를 입력하세요"
 
 #: [account]delete_text_error
 msgid "Please provide a valid username."
-msgstr ""
+msgstr "올바른 사용자 이름을 입력해주세요."
 
 #: [account]gateway_title
 msgid "Gateways"
-msgstr ""
+msgstr "게이트웨이"
 
 #: [account]clear
 msgid "Leave this instance"
-msgstr ""
+msgstr "이 인스턴스에서 나가기"
 
 #: [account]clear_text
 msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
@@ -210,6 +211,14 @@ msgstr "당신은 당신의 계정과 관련된 모든 정보들을 삭제할 �
 
 #: [account]clear_text_confirm
 msgid "This action will not delete your account but will disconnect you from this instance."
+msgstr "이 작업을 수행해도 계정이 삭제되지는 않지만 이 인스턴스에서 연결이 끊어집니다."
+
+#: [account]delete_bundle_title
+msgid "OMEMO Key deletion"
+msgstr ""
+
+#: [account]delete_bundle_text
+msgid "Your are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
 msgstr ""
 
 #: [create]title [subscribe]title
@@ -218,47 +227,47 @@ msgstr "새 계정 만들기"
 
 #: [create]notfound
 msgid "No account creation form found on the server"
-msgstr ""
+msgstr "서버에서 계정 생성 양식을 찾을 수 없습니다"
 
 #: [create]server_on
 msgid "on"
-msgstr ""
+msgstr "켜기"
 
 #: [create]successfull
 msgid "Your acccount has been successfully registered"
-msgstr ""
+msgstr "계정이 성공적으로 등록되었습니다"
 
 #: [create]loading
 msgid "Loading"
-msgstr ""
+msgstr "로딩 중"
 
 #: [create]placeholder
 msgid "…and start playing"
-msgstr ""
+msgstr "...시작합니다"
 
 #: [error]not_acceptable
 msgid "Not Acceptable"
-msgstr ""
+msgstr "허용되지 않음"
 
 #: [error]service_unavailable
 msgid "The registration system of this server is currently unavailable"
-msgstr ""
+msgstr "현재 이 서버의 등록 시스템을 사용할 수 없습니다."
 
 #: [error]forbidden
 msgid "Registration forbidden"
-msgstr ""
+msgstr "등록 금지"
 
 #: [adhoc]title
 msgid "Actions"
-msgstr ""
+msgstr "작업"
 
 #: [adhoc]completed
 msgid "Action completed"
-msgstr ""
+msgstr "작업 완료"
 
 #: [admin]general
 msgid "General Settings"
-msgstr ""
+msgstr "일반 설정"
 
 #: [general]theme
 msgid "Theme"
@@ -266,193 +275,177 @@ msgstr "테마"
 
 #: [general]language
 msgid "Default language"
-msgstr ""
+msgstr "기본 언어"
 
 #: [general]log_verbosity
 msgid "Log verbosity"
-msgstr ""
+msgstr "상세 로그"
 
 #: [restrictsuggestions]title
 msgid "Restrict suggestions"
-msgstr ""
+msgstr "추천 중지"
 
 #: [restrictsuggestions]text
 msgid "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
-msgstr ""
+msgstr "사용자 XMPP 서버 및 관련 서비스에서 사용할 수 있는 채팅방, 커뮤니티 및 기타 콘텐츠만 추천합니다"
 
 #: [chatonly]title
 msgid "Chat only"
-msgstr ""
+msgstr "채팅 전용"
 
 #: [chatonly]text
 msgid "Disable all the social feature (Communities, Blog…) and keep only the chat ones"
-msgstr ""
+msgstr "모든 소셜 기능(커뮤니티, 블로그 등)을 비활성화하고 채팅 기능만 유지합니다"
 
 #: [credentials]title
 msgid "Administration Credential"
-msgstr ""
+msgstr "관리 자격 증명"
 
 #: [credentials]username [input]username
 msgid "Username"
-msgstr ""
+msgstr "사용자 이름"
 
 #: [credentials]re_password
 msgid "Retype password"
-msgstr ""
+msgstr "비밀번호 재입력"
 
 #: [disableregistration]title
 msgid "Disable the XMPP registration feature"
-msgstr ""
+msgstr "XMPP 등록 기능 비활성화"
 
 #: [disableregistration]text
 msgid "Remove the XMPP registration flow and buttons from the interface"
-msgstr ""
+msgstr "인터페이스에서 XMPP 등록 흐름 및 버튼을 제거합니다"
 
 #: [whitelist]title
 msgid "Whitelisted XMPP Servers"
-msgstr ""
+msgstr "화이트리스트에 등록된 XMPP 서버"
 
 #: [whitelist]info1
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
-msgstr ""
+msgstr "Movim 포드에 승인된 XMPP 서버 목록을 지정하고 다른 모든 서버에 대한 연결을 금지하려면 여기에 해당 도메인 이름을 쉼표와 함께 입력하세요(예: movim.eu,jabber.fr)."
 
 #: [whitelist]info2
 msgid "Leave this field blank if you allow the access to all the XMPP accounts."
-msgstr ""
+msgstr "모든 XMPP 계정에 대한 액세스를 허용하는 경우 이 필드를 비워 둡니다."
 
 #: [whitelist]label
 msgid "List of whitelisted XMPP servers"
-msgstr ""
+msgstr "화이트리스트 XMPP 서버 목록"
 
 #: [information]title
 msgctxt "[information]title"
 msgid "Information Message"
-msgstr ""
+msgstr "정보 메시지"
 
 #: [information]description [communityconfig]description
 msgid "Description"
-msgstr ""
+msgstr "설명"
 
 #: [information]description_placeholder
 msgid "General description of the instance"
-msgstr ""
+msgstr "인스턴스에 대한 일반 설명"
 
 #: [information]banner
 msgid "Main banner"
-msgstr ""
+msgstr "메인 배너"
 
 #: [information]banner_info
 msgid "Ensure that the picture is not too large and can be reached from any webpages"
-msgstr ""
+msgstr "사진이 너무 크지 않고 모든 웹페이지에서 접근할 수 있는지 확인해주세요"
 
 #: [information]info1
 msgid "This message will be displayed on the login page. It can be used to link the Terms and Conditions of your Movim instance for example."
-msgstr ""
+msgstr "이 메시지는 로그인 페이지에 표시됩니다. 예를 들어 Movim 인스턴스의 이용 약관을 연결하는 데 사용할 수 있습니다."
 
 #: [information]info2
 msgid "Leave this field blank if you don’t want to show any message."
-msgstr ""
+msgstr "메시지를 표시하지 않으려면 이 필드를 공백으로 둡니다."
 
 #: [information]label
 msgctxt "[information]label"
 msgid "Information Message"
-msgstr ""
+msgstr "정보 메시지"
 
 #: [xmpp]title
 msgid "Default XMPP server"
-msgstr ""
+msgstr "기본 XMPP 서버"
 
 #: [xmpp]domain
 msgid "Main XMPP server domain"
-msgstr ""
+msgstr "기본 XMPP 서버 도메인"
 
 #: [xmpp]description
 msgid "Main XMPP server description"
-msgstr ""
+msgstr "기본 XMPP 서버 설명"
 
 #: [xmpp]country
 msgid "Main XMPP server country"
-msgstr ""
+msgstr "메인 XMPP 서버 국가"
 
 #: [xmpp]country_pick
 msgid "Pick a country in the list"
-msgstr ""
+msgstr "목록에서 국가 선택"
 
 #: [tenor]title
 msgid "Tenor integration"
-msgstr ""
+msgstr "Tenor 통합"
 
 #: [tenor]label
 msgid "Your Tenor API Key"
-msgstr ""
+msgstr "Tenor API 키"
 
 #: [tenor]info1
 msgid "Movim integrates the Tenor API to allow GIF search and publication in Chat"
-msgstr ""
+msgstr "Movim은 Tenor API를 통합하여 채팅에서 GIF 검색 및 게시를 허용합니다."
 
 #: [tenor]info2
 msgid "Access Tenor and get your API key"
-msgstr ""
-
-#: [firebase]title
-msgid "Firebase Integration"
-msgstr ""
-
-#: [firebase]label
-msgid "Your Firebase Authorization Key"
-msgstr ""
-
-#: [firebase]info1
-msgid "Movim can send Push Notifications to the Movim Android app using Firebase"
-msgstr ""
-
-#: [firebase]info2
-msgid "Go to the Firebase panel to configure and generate your Authorization key"
-msgstr ""
+msgstr "Tener에 액세스하여 API 키 받기"
 
 #: [log]empty
 msgid "Empty"
-msgstr ""
+msgstr "비우기"
 
 #: [log]syslog
 msgid "Syslog"
-msgstr ""
+msgstr "Syslog"
 
 #: [log]syslog_files
 msgid "Syslog and files"
-msgstr ""
+msgstr "Syslog 및 파일"
 
 #: [adminsessions]title
 msgid "Sessions"
-msgstr ""
+msgstr "세션"
 
 #: [adminsessions]text
 msgid "Currently connected users on the pod"
-msgstr ""
+msgstr "현재 포드에서 연결된 사용자"
 
 #: [admin]compatibility
 msgid "General Overview"
-msgstr ""
+msgstr "일반 개요"
 
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim’s %s directory"
-msgstr ""
+msgstr "Movim의 %s 디렉토리에 있는 웹 서버에 대한 읽기 및 쓰기 권한"
 
 #: [compatibility]websocket
 msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
-msgstr ""
+msgstr "WebSocket 연결 오류. Movim 데몬이 실행 중이고 연결할 수 있는지 확인해주세요."
 
 #: [schema]browser
 msgid "Browser"
-msgstr ""
+msgstr "브라우저"
 
 #: [schema]movim
 msgid "Movim Core"
-msgstr ""
+msgstr "Movim 코어"
 
 #: [schema]daemon
 msgid "Movim Daemon"
-msgstr ""
+msgstr "Movim 데몬"
 
 #: [schema]database
 msgid "Database"
@@ -460,2031 +453,2023 @@ msgstr "데이터베이스"
 
 #: [schema]xmpp
 msgid "XMPP"
-msgstr ""
+msgstr "XMPP"
 
 #: [api]info
 msgid "Here you can register your pod on the official %sMovim API%s"
-msgstr ""
+msgstr "여기에서 공식 %s Movim API %s에 포드를 등록할 수 있습니다."
 
 #: [api]register
 msgid "Your pod is not registered on the API"
-msgstr ""
+msgstr "포드가 API에 등록되어 있지 않습니다."
 
 #: [api]registered
 msgid "Your pod is registered on the API"
-msgstr ""
+msgstr "포드가 API에 등록되어 있습니다."
 
 #: [api]wait
 msgid "Your pod is not yet validated"
-msgstr ""
+msgstr "포드가 아직 검증되지 않았습니다."
 
 #: [api]validated
 msgid "Your pod is validated"
-msgstr ""
+msgstr "포드가 검증되었습니다."
 
 #: [api]unregister
 msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
-msgstr ""
+msgstr "API에서 제거하도록 요청했습니다. 이 요청은 몇 시간 후에 처리됩니다."
 
 #: [api]conf_updated [config]updated
 msgid "Configuration updated"
-msgstr ""
+msgstr "설정이 업데이트됨"
 
 #: [avatar]file
 msgid "File"
-msgstr ""
+msgstr "파일"
 
 #: [avatar]use_it
 msgid "Use it"
-msgstr ""
+msgstr "사용하시오"
 
 #: [avatar]webcam
 msgid "Webcam"
-msgstr ""
+msgstr "웹캠"
 
 #: [avatar]cheese
 msgid "Cheese!"
-msgstr ""
+msgstr "치즈!"
 
 #: [avatar]snapshot
 msgid "Take a webcam snapshot"
-msgstr ""
+msgstr "웹캠 스냅샷 찍기"
 
 #: [avatar]updated
 msgid "Avatar Updated"
-msgstr ""
+msgstr "아바타 업데이트됨"
 
 #: [avatar]not_updated
 msgid "Avatar Not Updated"
-msgstr ""
+msgstr "아바타가 업데이트되지 않음"
 
 #: [avatar]missing
 msgid "No avatar defined yet"
-msgstr ""
+msgstr "아직 정의된 아바타 없음"
 
 #: [avatar]change
 msgid "Change my avatar"
-msgstr ""
+msgstr "내 아바타 변경"
 
 #: [avatar]upload_new
 msgid "Upload a new picture"
-msgstr ""
+msgstr "새 사진 업로드"
 
 #: [blog]title [feed]title
 msgid "%s’s feed"
-msgstr ""
+msgstr "%s의 피드"
 
 #: [blog]private
 msgid "This content is private, please login to see it"
-msgstr ""
+msgstr "이 콘텐츠는 비공개입니다. 보려면 로그인하세요."
 
 #: [message]published
 msgid "Message Published"
-msgstr ""
+msgstr "게시된 메시지"
 
 #: [message]react
 msgid "Add a reaction"
-msgstr ""
+msgstr "리액션 추가"
 
 #: [message]retract
 msgid "Retract"
-msgstr ""
+msgstr "취소하다"
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
-msgstr ""
+msgstr "메시지를 보낼 수 없습니다. 나중에 다시 시도해 주세요."
 
 #: [message]encrypted [omemo]encrypted
 msgid "Encrypted message"
-msgstr ""
+msgstr "암호화된 메시지"
 
 #: [message]retracted
 msgid "Retracted message"
-msgstr ""
+msgstr "취소된 메시지"
 
 #: [message]composing
 msgid "Composing…"
-msgstr ""
+msgstr "구성 중..."
 
 #: [message]paused
 msgid "Paused…"
-msgstr ""
+msgstr "일시 중지됨"
 
 #: [message]gone
 msgid "Contact gone"
-msgstr ""
+msgstr "대화 상대 떠남"
 
 #: [message]history
 msgid "%s messages retrieved"
-msgstr ""
+msgstr "%s개의 메시지 검색됨"
 
 #: [message]edit_help
 msgid "↑ to edit your previous message"
-msgstr ""
+msgstr "↑ 이전 메시지를 편집하려면"
 
 #: [message]emoji_help
 msgid ":shortcut: to insert an emoji"
-msgstr ""
+msgstr ":shortcut: 이모티콘을 삽입하려면"
 
 #: [message]visitor_help
 msgid "You are not allowed to send messages in this conference"
-msgstr ""
+msgstr "이 컨퍼런스에서 메시지를 보낼 수 없습니다."
 
 #: [chat]attention
 msgid "%s needs your attention"
-msgstr ""
+msgstr "%s에 관심이 있으신가요?"
 
 #: [chat]placeholder
 msgid "Your message here…"
-msgstr ""
+msgstr "여기에 당신의 메시지가 있습니다."
 
 #: [chat]smileys
 msgid "Smileys"
-msgstr ""
+msgstr "스마일리"
 
 #: [chat]frequent
 msgid "Frequent contacts"
-msgstr ""
+msgstr "자주 사용하는 연락처"
 
 #: [chat]new_title
 msgid "Nothing here yet…"
-msgstr ""
+msgstr "아직 아무것도 없어요"
 
 #: [chat]new_text
 msgid "Don’t be shy, send a first message to start the discussion"
-msgstr ""
+msgstr "부끄러워하지 말고 디스커션을 시작하기 위해 첫 메시지를 보내보세요."
 
 #: [chat]invitation
 msgid "You received an invitation to join a chatroom"
-msgstr ""
+msgstr "채팅방 초대를 받았습니다."
 
 #: [chat]invitation_join
 msgid "Join %s"
-msgstr ""
+msgstr "가입 %s"
 
 #: [chat]profile
 msgid "See the profile"
-msgstr ""
+msgstr "프로필 보기"
 
 #: [chat]clear
 msgctxt "[chat]clear"
 msgid "Clear the history"
-msgstr ""
+msgstr "기록 지우기"
 
 #: [chat]edit_previous
 msgid "Edit last message"
-msgstr ""
+msgstr "마지막 메시지 수정"
 
 #: [chat]report_abuse
 msgid "Report abuse"
-msgstr ""
+msgstr "신고하기"
 
 #: [chat]jingle_start
 msgid "Call started"
-msgstr ""
+msgstr "통화 시작됨"
 
 #: [chat]jingle_end
 msgid "Call ended"
-msgstr ""
+msgstr "통화 종료"
 
 #: [chat]publish_error
 msgid "An error occured when sending the message"
-msgstr ""
+msgstr "메시지를 보내는 동안 오류가 발생했습니다."
 
 #: [chat]mam_retrieval
 msgid "Synchronizing the history, please wait…"
-msgstr ""
+msgstr "기록을 동기화하는 중입니다. 잠시 기다려 주세요..."
 
 #: [chat]clear_history
 msgctxt "[chat]clear_history"
 msgid "Clear the history"
-msgstr ""
+msgstr "기록 지우기"
 
 #: [chat]clear_history_text
 msgid "You are going to delete %s messages, are you sure?"
-msgstr ""
+msgstr "%s개의 메시지를 삭제하시겠습니까?"
 
 #: [chat]action_impossible_encrypted
 msgid "Action impossible in encrypted chats"
-msgstr ""
+msgstr "암호화된 채팅에서 수행할 수 없는 작업"
 
 #: [chatroom]members
 msgid "Members"
-msgstr ""
+msgstr "멤버"
 
 #: [chatroom]connected [chatrooms]connected
 msgid "Connected to the chatroom"
-msgstr ""
+msgstr "채팅방에 연결됨"
 
 #: [chatroom]disconnected [chatrooms]disconnected
 msgid "Disconnected from the chatroom"
-msgstr ""
+msgstr "채팅방에서 연결이 끊어짐"
 
 #: [chatroom]config [communityaffiliation]configuration [page]configuration
 msgid "Configuration"
-msgstr ""
+msgstr "환경 설정"
 
 #: [chatroom]config_saved [communityaffiliation]config_saved
 msgid "Configuration saved"
-msgstr ""
+msgstr "설정이 저장됨"
 
 #: [chatroom]subject
 msgid "Subject"
-msgstr ""
+msgstr "제목"
 
 #: [chatroom]subject_changed
 msgid "Subject changed"
-msgstr ""
+msgstr "제목이 변경됨"
 
 #: [chatroom]administration [page]administration
 msgid "Administration"
-msgstr ""
+msgstr "관리"
 
 #: [omemo]fingerprints_title
 msgid "Fingerprints"
-msgstr ""
+msgstr "지문"
 
 #: [omemo]fingerprints
 msgid "OMEMO Fingerprints"
-msgstr ""
+msgstr "OMEMO 지문"
 
 #: [omemo]generating_bundle
 msgid "Generating the encryption keys, please wait…"
-msgstr ""
+msgstr "암호화 키를 생성하는 중입니다. 잠시 기다려 주세요."
 
 #: [omemo]generated_bundle
 msgid "Encryption keys generated"
-msgstr ""
+msgstr "암호화 키 생성"
 
 #: [omemo]resolving_devices
 msgid "Resolving OMEMO devices"
-msgstr ""
+msgstr "OMEMO 장치 해결"
 
 #: [omemo]building_sessions
 msgid "Building encryption sessions"
-msgstr ""
+msgstr "암호화 세션 구축"
 
 #: [omemo]building_own_sessions
 msgid "Building own encryption sessions"
-msgstr ""
+msgstr "자체 암호화 세션 구축"
 
 #: [omemo]encrypted_disabled
 msgid "Encryption disabled"
-msgstr ""
+msgstr "암호화 비활성화됨"
 
 #: [omemo]encrypted_loading
 msgid "Send a message to build the encrypted session"
-msgstr ""
+msgstr "암호화된 세션을 구축하기 위해 메시지 보내기"
 
 #: [omemo]enable_contact
 msgid "Enabling encryption for the contact"
-msgstr ""
+msgstr "연락처에 대한 암호화 활성화"
 
 #: [omemo]disable_contact
 msgid "Disabling encryption for the contact"
-msgstr ""
+msgstr "연락처에 대한 암호화 비활성화"
 
 #: [omemo]last_activity
 msgid "Last activity"
-msgstr ""
+msgstr "마지막 활동"
 
 #: [omemo]sessions_built
 msgid "%s sessions built"
-msgstr ""
+msgstr "%s개 세션 구축"
 
 #: [chats]empty_title
 msgid "No chats yet…"
-msgstr ""
+msgstr "아직 채팅이 없습니다"
 
 #: [chats]empty
 msgid "Start a new conversation by clicking on the %s button."
-msgstr ""
+msgstr "%s 버튼을 클릭하여 새 대화를 시작하세요."
 
 #: [chats]add
 msgid "Chat with a contact"
-msgstr ""
+msgstr "대화 상대와 채팅"
 
 #: [chats]me
 msgid "Me"
-msgstr ""
+msgstr "나"
 
 #: [chats]picture
 msgid "Picture"
-msgstr ""
+msgstr "사진"
 
 #: [chats]video
 msgid "Video"
-msgstr ""
+msgstr "영상"
 
 #: [button]chat
 msgid "Chat"
-msgstr ""
+msgstr "채팅"
 
 #: [button]new
 msgid "New conversation"
-msgstr ""
+msgstr "새 대화"
 
 #: [communities]empty_text
 msgid "Discover, follow and share"
-msgstr ""
+msgstr "검색, 팔로우, 공유"
 
 #: [communities]counter
 msgid "%s communities"
-msgstr ""
+msgstr "%s개 커뮤니티"
 
 #: [communities]search_server
 msgid "Search for a new server"
-msgstr ""
+msgstr "새 서버 검색"
 
 #: [communities]servers
 msgid "Communities servers"
-msgstr ""
+msgstr "커뮤니티 서버"
 
 #: [communities]servers_text
 msgid "Discover the Communities by servers"
-msgstr ""
+msgstr "서버별 커뮤니티 검색"
 
 #: [communities]disco
 msgid "Communities server discovered"
-msgstr ""
+msgstr "커뮤니티 서버가 검색됨"
 
 #: [communities]disco_error
 msgid "This server doesn’t exists"
-msgstr ""
+msgstr "이 서버는 존재하지 않습니다."
 
 #: [communitiesinteresting]about
 msgid "Communities you might like"
-msgstr ""
+msgstr "당신이 좋아할 만한 커뮤니티"
 
 #: [communitiesserver]created
 msgid "Community created successfully"
-msgstr ""
+msgstr "커뮤니티가 성공적으로 생성됨"
 
 #: [communitiesserver]empty_server
 msgid "There is no Communities yet on this server."
-msgstr ""
+msgstr "이 서버에는 아직 커뮤니티가 없습니다."
 
 #: [communitiesserver]add
 msgid "Create a new community on %s"
-msgstr ""
+msgstr "%s에 새 커뮤니티 만들기"
 
 #: [communitiesserver]name
 msgid "Community name"
-msgstr ""
+msgstr "커뮤니티 이름"
 
 #: [communitiesserver]name_example
 msgid "My Little Pony - Fan Club"
-msgstr ""
+msgstr "마이 리틀 포니 - 팬클럽"
 
 #: [communitiesserver]name_error
 msgid "Please provide a valid community name (4 characters minimum)"
-msgstr ""
+msgstr "알맞은 커뮤니티 이름을 입력해주세요(최소 4글자 이상)"
 
 #: [communitiesserver]no_creation
 msgid "You cannot create a new community on this server"
-msgstr ""
+msgstr "이 서버에 새 커뮤니티를 만들 수 없습니다."
 
 #: [communitiesservers]empty_title
 msgid "No Communities Servers yet…"
-msgstr ""
+msgstr "커뮤니티 서버가 아직 없습니다."
 
 #: [communitiesservers]empty_text
 msgid "It seems that we can't find any communities for the moment"
-msgstr ""
+msgstr "현재 커뮤니티를 찾을 수 없는 것 같습니다."
 
 #: [communityaffiliation]subscriptions
 msgid "Subscriptions"
-msgstr ""
+msgstr "구독"
 
 #: [communityaffiliation]public_subscriptions
 msgid "Public subscriptions"
-msgstr ""
+msgstr "공개 구독"
 
 #: [communityaffiliation]subscriptions_text
 msgid "My Communities subscriptions"
-msgstr ""
+msgstr "내 커뮤니티 구독"
 
 #: [communityaffiliation]deleted
 msgid "Community deleted successfully"
-msgstr ""
+msgstr "커뮤니티가 성공적으로 삭제됨"
 
 #: [communityaffiliation]delete_title
 msgid "Delete the community"
-msgstr ""
+msgstr "커뮤니티 삭제"
 
 #: [communityaffiliation]delete_text
 msgid "You are going to delete the following community. Please confirm your action."
-msgstr ""
+msgstr "다음 커뮤니티를 삭제하려고 합니다. 작업을 확인해주세요."
 
 #: [communityaffiliation]delete_clean_text
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
-msgstr ""
+msgstr "이 커뮤니티는 더 이상 존재하지 않는 것 같습니다. 구독에서 삭제하시겠습니까?"
 
 #: [communityaffiliation]config_error
 msgid "Error during the application of the node configuration"
-msgstr ""
+msgstr "노드 설정을 적용하는 동안 오류가 발생했습니다."
 
 #: [communityaffiliation]owners
 msgid "Owners"
-msgstr ""
+msgstr "소유자"
 
 #: [communityaffiliation]publishers
 #: [communityconfig]publish_model_publishers_title
 msgid "Publishers"
-msgstr ""
+msgstr "게시자"
 
 #: [communityaffiliation]roles
 msgid "Roles"
-msgstr ""
+msgstr "역할"
 
 #: [communityaffiliation]role_set
 msgid "Role correctly set"
-msgstr ""
+msgstr "역할이 올바르게 설정됨"
 
 #: [communityconfig]publication
 msgid "Publication"
-msgstr ""
+msgstr "게시"
 
-#: [communityconfig]publish_model_open_title
-msgid "Open"
-msgstr ""
+#: [communityconfig]publish_model_open_title [room]public_muc
+msgid "Public"
+msgstr "공공"
 
 #: [communityconfig]publish_model_open_text
 msgid "Everyone can publish"
-msgstr ""
+msgstr "누구나 게시할 수 있습니다."
 
 #: [communityconfig]publish_model_publishers_text
 msgid "The publishers can publish"
-msgstr ""
+msgstr "게시자는 게시할 수 있습니다."
 
 #: [communityconfig]publish_model_subscribers_title
 msgid "Subscribers"
-msgstr ""
+msgstr "구독자"
 
 #: [communityconfig]publish_model_subscribers_text
 msgid "The subscribers can publish"
-msgstr ""
+msgstr "구독자는 게시할 수 있습니다."
 
 #: [communitydata]sub
 msgid "%s subscribers"
-msgstr ""
+msgstr "구독자 %s명"
 
 #: [communitydata]num
 msgid "%s posts"
-msgstr ""
+msgstr "게시물 %s개"
 
 #: [communitydata]public
 msgid "Public page"
-msgstr ""
+msgstr "공개 페이지"
 
 #: [communitydata]publishmodel_publishers
 msgid "Only publishers can publish"
-msgstr ""
+msgstr "게시자만 게시할 수 있습니다."
 
 #: [communitydata]publishmodel_subscribers
 msgid "Only subscribers can publish"
-msgstr ""
+msgstr "구독자만 게시할 수 있습니다."
 
 #: [communityheader]subscribe
 msgid "Subscribe"
-msgstr ""
+msgstr "구독"
 
 #: [communityheader]unsubscribe
 msgid "Unsubscribe"
-msgstr ""
+msgstr "구독 취소"
 
 #: [communityheader]subscribed
 msgid "Subscribed"
-msgstr ""
+msgstr "구독됨"
 
 #: [communityheader]unsubscribed
 msgid "Unsubscribed"
-msgstr ""
+msgstr "구독 취소됨"
 
 #: [communityheader]subscription_unsupported
 msgid "The subscriptions are disabled for this community"
-msgstr ""
+msgstr "이 커뮤니티에 대한 구독이 비활성화되었습니다."
 
 #: [communityheader]label_label
 msgid "Give a label for this community"
-msgstr ""
+msgstr "이 커뮤니티에 레이블 지정"
 
 #: [communityheader]label_placeholder
 msgid "My Community Name"
-msgstr ""
+msgstr "내 커뮤니티 이름"
 
 #: [communityheader]share_subscription
 msgid "Share this subscription publicly"
-msgstr ""
+msgstr "이 구독을 공개적으로 공유합니다."
 
 #: [communityheader]share_subscription_text
 msgid "It will appear on your profile"
-msgstr ""
+msgstr "프로필에 표시됩니다"
 
 #: [communityheader]unsubscribe_text
 msgid "You are going to unsubscribe from this community"
-msgstr ""
+msgstr "이 커뮤니티의 구독을 취소하려고 합니다."
 
 #: [communityheader]sure [delete]title
 msgid "Are you sure?"
-msgstr ""
+msgstr "확실합니까?"
 
 #: [communitysubscriptions]subscriptions
 msgid "My Subscriptions"
-msgstr ""
+msgstr "내 구독"
 
 #: [communitysubscriptions]empty_title
 msgid "Hello"
-msgstr ""
+msgstr "안녕하세요"
 
 #: [communitysubscriptions]empty_text1
 msgid "Here you will be able to manage all your subscriptions."
-msgstr ""
+msgstr "여기에서 모든 구독을 관리할 수 있습니다."
 
 #: [communitysubscriptions]empty_text2
 msgid "You don’t have any community subscriptions yet."
-msgstr ""
+msgstr "커뮤니티 구독이 아직 없습니다."
 
 #: [config]general
 msgid "General"
-msgstr ""
+msgstr "일반"
 
 #: [config]language
 msgid "Language"
-msgstr ""
+msgstr "언어"
 
 #: [config]roster
 msgid "Roster display"
-msgstr ""
+msgstr "명단 표시"
 
 #: [config]roster_show
 msgid "Show the offline contacts"
-msgstr ""
+msgstr "오프라인 연락처 표시"
 
 #: [config]roster_hide
 msgid "Hide the offline contacts"
-msgstr ""
+msgstr "오프라인 연락처 숨기기"
 
 #: [config]appearence
 msgid "Appearence"
-msgstr ""
+msgstr "모양"
 
 #: [config]not_valid
 msgid "Configuration invalid"
-msgstr ""
+msgstr "설정이 잘못됨"
 
 #: [config]advanced
 msgid "Advanced Configuration"
-msgstr ""
+msgstr "고급 설정"
 
 #: [config]nsfw
 msgid "Display adult content"
-msgstr ""
+msgstr "성인 콘텐츠 표시"
 
 #: [config]nsfw_text
 msgid "Will allow you to read the posts tagged with the #nsfw tag"
-msgstr ""
+msgstr "#후방주의 태그가 지정된 게시물을 읽을 수 있습니다."
 
 #: [config]night_mode
 msgid "Night Mode"
-msgstr ""
+msgstr "나이트 모드"
 
 #: [config]night_mode_text
 msgid "Use dark colors to rest your eyes"
-msgstr ""
+msgstr "눈을 쉬게 하기 위해 어두운 색을 사용하세요."
 
 #: [config]chatmain
 msgid "Main chat page"
-msgstr ""
+msgstr "기본 채팅 페이지"
 
 #: [config]chatmain_text
 msgid "Make the chat page as the default one"
-msgstr ""
+msgstr "채팅 페이지를 기본 페이지로 설정"
 
 #: [config]mam
 msgid "Archiving preferences"
-msgstr ""
+msgstr "아카이빙 설정"
 
 #: [config]mam_text
 msgid "Server-side archiving preferences"
-msgstr ""
+msgstr "서버 측 아카이빙 설정"
 
 #: [config]mam_always
 msgid "Always"
-msgstr ""
+msgstr "항상"
 
 #: [config]mam_never
 msgid "Never"
-msgstr ""
+msgstr "절대 아님"
 
 #: [config]mam_saved
 msgid "Archiving preferences saved"
-msgstr ""
+msgstr "아카이빙 설정이 저장됨"
 
 #: [config]notification_title
 msgid "Audio notifications"
-msgstr ""
+msgstr "오디오 알림"
 
 #: [config]notification_call
 msgid "Incoming call"
-msgstr ""
+msgstr "수신 전화"
 
 #: [config]notification_chat
 msgid "Incoming message"
-msgstr ""
+msgstr "수신 메시지"
 
 #: [confirm]title
 msgid "Confirmation of authentication"
-msgstr ""
+msgstr "인증 확인"
 
 #: [confirm]description
 msgid "The following platform would like your confirmation to authentify this account"
-msgstr ""
+msgstr "다음 플랫폼은 이 계정을 인증하기 위해 확인을 요청합니다."
 
 #: [confirm]code
 msgid "Authentication code"
-msgstr ""
+msgstr "인증 코드"
 
 #: [roster]add_title
 msgid "Add a contact"
-msgstr ""
+msgstr "연락처 추가"
 
 #: [roster]add_contact_info1
 msgid "Enter the Jabber ID of your contact."
-msgstr ""
+msgstr "Jabber ID를 입력합니다."
 
 #: [roster]add_contact_info2
 msgid "Press enter to validate."
-msgstr ""
+msgstr "인증하려면 엔터를 누르세요."
 
 #: [roster]added
 msgid "Contact added"
-msgstr ""
+msgstr "연락처 추가됨"
 
 #: [roster]updated
 msgid "Contact updated"
-msgstr ""
+msgstr "연락처 업데이트됨"
 
 #: [roster]deleted
 msgid "Contact deleted"
-msgstr ""
+msgstr "연락처 삭제됨"
 
 #: [general]legend
 msgid "General Information"
-msgstr ""
+msgstr "일반 정보"
 
 #: [general]name [chatrooms]name
 msgid "Name"
-msgstr ""
+msgstr "이름"
 
 #: [general]nickname [chatrooms]nickname
 msgid "Nickname"
-msgstr ""
+msgstr "닉네임"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
-msgstr ""
+msgstr "생일"
 
 #: [general]gender
 msgid "Gender"
-msgstr ""
+msgstr "성별"
 
 #: [general]marital
 msgid "Marital Status"
-msgstr ""
+msgstr "결혼 여부"
 
 #: [general]email
 msgid "Email"
-msgstr ""
+msgstr "이메일"
 
 #: [general]website
 msgid "Website"
-msgstr ""
+msgstr "웹사이트"
 
 #: [general]about
 msgid "About Me"
-msgstr ""
+msgstr "나에 대해서"
 
 #: [general]accounts
 msgid "Other Accounts"
-msgstr ""
+msgstr "기타 계정"
 
 #: [general]tune
 msgid "Is Listening"
-msgstr ""
+msgstr "듣고 있는 중"
 
 #: [general]pictures
 msgid "Pictures"
-msgstr ""
+msgstr "사진"
 
 #: [general]links
 msgid "Links"
-msgstr ""
+msgstr "링크"
 
 #: [position]legend
 msgid "Geographic Position"
-msgstr ""
+msgstr "지리적 위치"
 
 #: [position]locality
 msgid "Locality"
-msgstr ""
+msgstr "소재지"
 
 #: [position]country
 msgid "Country"
-msgstr ""
+msgstr "나라"
 
 #: [mood]title
 msgid "Mood"
-msgstr ""
+msgstr "기분"
 
 #: [mood]im
 msgid "I’m "
-msgstr ""
+msgstr "나는"
 
 #: [listen]title
 msgid "Listening"
-msgstr ""
+msgstr "들으면서"
 
 #: [last]title
 msgid "Last seen"
-msgstr ""
+msgstr "마지막으로 본"
 
 #: [clients]title
 msgid "Clients"
-msgstr ""
+msgstr "고객"
 
 #: [clients]title_full
 msgid "Clients information"
-msgstr ""
+msgstr "고객 정보"
 
 #: [explore]last_registered
 msgid "Last registered"
-msgstr ""
+msgstr "마지막 등록"
 
 #: [explore]explore
 msgid "Find some new contacts"
-msgstr ""
+msgstr "새로운 친구 찾기"
 
 #: [edit]title [button]edit
 msgid "Edit"
-msgstr ""
+msgstr "수정"
 
 #: [edit]alias
 msgid "Alias"
-msgstr ""
+msgstr "별명"
 
 #: [edit]group
 msgid "Group"
-msgstr ""
+msgstr "그룹"
 
 #: [delete]text
 msgid "You are going to delete one of your contacts, please confirm your action"
-msgstr ""
+msgstr "연락처 중 하나를 삭제하려고 합니다. 작업을 확인해주세요."
 
 #: [age]years
 msgid "%s years"
-msgstr ""
+msgstr "%s 년"
 
 #: [blog]last
 msgid "Last public post"
-msgstr ""
+msgstr "마지막 공개 게시물"
 
 #: [blog]visit
 msgid "Visit the blog to see all the public posts"
-msgstr ""
+msgstr "모든 공개 게시물을 보려면 블로그를 방문하세요."
 
 #: [subscription]to
 msgid "You can see this contact status"
-msgstr ""
+msgstr "이 연락처의 상태를 볼 수 있습니다."
 
 #: [subscription]to_button
 msgid "Share my status"
-msgstr ""
+msgstr "내 상태 공유"
 
 #: [subscription]to_text
 msgid "But this contact cannot see yours"
-msgstr ""
+msgstr "그러나 이 계정은 귀하의 계정을 볼 수 없습니다."
 
 #: [subscription]from
 msgid "You are not subscribed to this contact"
-msgstr ""
+msgstr "이 계정을 구독하고 있지 않습니다"
 
 #: [subscription]from_button
 msgid "Ask to subscribe"
-msgstr ""
+msgstr "구독 요청"
 
 #: [subscription]from_text
 msgid "But this contact can still see if you are online"
-msgstr ""
+msgstr "하지만 이 계정은 여전히 귀하가 온라인 상태인지 확인할 수 있습니다."
 
 #: [subscription]nil
 msgid "No subscriptions"
-msgstr ""
+msgstr "구독 없음"
 
 #: [subscription]nil_button [button]invite
 msgid "Invite"
-msgstr ""
+msgstr "초대"
 
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
-msgstr ""
+msgstr "이 계정은 연락처 목록에 있지만 두 계정 간에 구독이 없습니다."
 
 #: [contactdatapublic]no_data
 msgid "No public data found"
-msgstr ""
+msgstr "공개 데이터를 찾을 수 없습니다"
 
 #: [draw]title
 msgid "Draw"
-msgstr ""
+msgstr "그리기"
 
 #: [faq]title
 msgid "Frequently Asked Questions"
-msgstr ""
+msgstr "자주 묻는 질문"
 
 #: [faq]permission_title
 msgid "What does the permission setting do?"
-msgstr ""
+msgstr "권한 설정에서 무엇을 할 수 있습니까?"
 
 #: [faq]permission_text
 msgid "By default the content is only available to your contacts. You can make your profile and publications public by enabling the related setting."
-msgstr ""
+msgstr "기본적으로 콘텐츠는 연락처에 있는 사람만 볼 수 있습니다. 관련 설정을 활성화하면 프로필과 게시물을 공개할 수 있습니다."
 
 #: [faq]permission_community_title
 msgid "How does it applies on Communities posts?"
-msgstr ""
+msgstr "커뮤니티 게시물에는 어떻게 적용되나요?"
 
 #: [faq]permission_community_text
 msgid "Similary to your blog publications except that, by default, the posts are only available to the members or subscribers of the Community (except if you explicitly open all the Community content)"
-msgstr ""
+msgstr "블로그 게시물과 유사하지만 기본적으로 게시물은 커뮤니티 멤버 또는 구독자만 사용할 수 있습니다(모든 커뮤니티 콘텐츠를 명시적으로 공개하는 경우는 제외)."
 
 #: [faq]chatrooms_title
 msgid "Where can I find a list of chatrooms?"
-msgstr ""
+msgstr "채팅방 목록은 어디서 찾을 수 있나요?"
 
 #: [faq]find_contacts_title
 msgid "Where can I find my contacts?"
-msgstr ""
+msgstr "내 대화 상대는 어디에서 찾을 수 있습니까?"
 
 #: [faq]find_contacts_text
 msgid "By opening the search panel."
-msgstr ""
+msgstr "검색 패널을 엽니다."
 
 #: [apps]title
 msgid "Applications"
-msgstr ""
+msgstr "어플리케이션"
 
 #: [apps]install
 msgid "Movim App"
-msgstr ""
+msgstr "Movim 앱"
 
 #: [apps]install_text
 msgid "Install Movim on your device"
-msgstr ""
+msgstr "디바이스에 Movim 설치"
 
 #: [apps]recommend
 msgid "We also recommend"
-msgstr ""
+msgstr "우리는 또한 추천합니다"
 
 #: [contact]title
 msgid "Administrators & Contact"
-msgstr ""
+msgstr "관리자 및 연락처"
 
 #: [chatroom]question
 msgid "Chat with the Movim team?"
-msgstr ""
+msgstr "Movim 팀과 채팅하시겠습니까?"
 
 #: [chatroom]button
 msgid "Add the chatroom"
-msgstr ""
+msgstr "채팅방 추가"
 
 #: [error]username
 msgid "Wrong username"
-msgstr ""
+msgstr "잘못된 사용자 이름"
 
 #: [error]jid
 msgid "Invalid JID"
-msgstr ""
+msgstr "잘못된 JID"
 
 #: [error]empty_challenge
 msgid "Empty Challenge from the server"
-msgstr ""
+msgstr "서버에서 챌린지 비우기"
 
 #: [error]dns
 msgid "XMPP Domain error, your account is not a correct Jabber ID"
-msgstr ""
+msgstr "XMPP 도메인 오류, 계정이 올바른 Jabber ID가 아닙니다."
 
 #: [error]data_missings
 msgid "Some data are missing!"
-msgstr ""
+msgstr "일부 데이터가 누락되었습니다!"
 
 #: [error]wrong_password
 msgid "Wrong password"
-msgstr ""
+msgstr "잘못된 비밀번호"
 
 #: [error]internal
 msgid "Internal server error"
-msgstr ""
+msgstr "인터넷 서버 오류"
 
 #: [error]session
 msgid "Session error"
-msgstr ""
+msgstr "세션 오류"
 
 #: [error]account_created
 msgid "Account successfully created"
-msgstr ""
+msgstr "계정이 성공적으로 생성되었습니다."
 
 #: [error]timeout
 msgid "The server takes too much time to respond"
-msgstr ""
+msgstr "서버가 응답하는 데 너무 많은 시간이 걸립니다."
 
 #: [error]impossible
 msgid "Impossible login"
-msgstr ""
+msgstr "로그인 불가"
 
 #: [error]default
 msgid "Unknown error"
-msgstr ""
+msgstr "알수없는 오류"
 
 #: [error]login_format
 msgid "Invalid username format"
-msgstr ""
+msgstr "잘못된 사용자 이름 형식"
 
 #: [error]password_format
 msgid "Invalid password format"
-msgstr ""
+msgstr "잘못된 비밀번호 형식"
 
 #: [error]unauthorized
 msgid "Your XMPP server is unauthorized"
-msgstr ""
+msgstr "XMPP 서버가 인증되지 않았습니다."
 
 #: [error]wrong_account
 msgid "Movim failed to authenticate. You entered wrong data"
-msgstr ""
+msgstr "Movim이 인증에 실패했습니다. 잘못된 데이터를 입력했습니다"
 
 #: [error]mechanism
 msgid "Authentication mechanism not supported by Movim"
-msgstr ""
+msgstr "인증 메커니즘이 Movim에서 지원되지 않음"
 
 #: [error]fail_auth
 msgid "The XMPP authentification failed"
-msgstr ""
+msgstr "XMPP 인증 실패"
 
 #: [connection]socket_connected
 msgid "Connected to the server"
-msgstr ""
+msgstr "서버에 연결됨"
 
 #: [connection]authenticated
 msgid "Authenticated to the server"
-msgstr ""
+msgstr "서버에 인증됨"
 
 #: [form]username
 msgid "My address"
-msgstr ""
+msgstr "내 주소"
 
 #: [form]whitelist_info
 msgid "Login with accounts from these servers"
-msgstr ""
+msgstr "이 서버의 계정으로 로그인"
 
 #: [form]connect_info
 msgid "Login using any XMPP account or create a new one"
-msgstr ""
+msgstr "XMPP 계정을 사용하여 로그인하거나 새 계정을 만드세요."
 
 #: [form]connected
 msgid "Connected"
-msgstr ""
+msgstr "연결됨"
 
 #: [form]population
 msgid "Population"
-msgstr ""
+msgstr "인구"
 
 #: [form]invite_chatroom
 msgid "%s invited you to join a chatroom"
-msgstr ""
+msgstr "%s이 당신을 채팅방에 초대했습니다."
 
 #: [form]pod_admins
 msgid "Administrated by"
-msgstr ""
+msgstr "관리 대상"
 
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
-msgstr ""
+msgstr "잘못된 닉네임(4~40자)"
 
 #: [menu]empty_title
 msgid "No news yet…"
-msgstr ""
+msgstr "아직 소식이 없습니다..."
 
 #: [menu]empty
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
-msgstr ""
+msgstr "뉴스 피드에 오신 것을 환영합니다. 여기에 당신이 구독한 연락처와 커뮤니티에서 게시된 모든 게시물이 표시됩니다."
 
 #: [menu]all
 msgid "All"
-msgstr ""
+msgstr "모두"
 
 #: [menu]mine
 msgid "My publications"
-msgstr ""
+msgstr "내 게시물"
 
 #: [menu]contacts [page]contacts
 msgid "Contacts"
-msgstr ""
+msgstr "연락처"
 
 #: [menu]add_post
 msgid "Write a new post…"
-msgstr ""
+msgstr "새 게시물 작성…"
 
 #: [invitations]title
 msgid "Pending Invitations"
-msgstr ""
+msgstr "대기 중인 초대"
 
 #: [invitations]wants_to_talk
 msgid "%s wants to talk with you"
-msgstr ""
+msgstr "%s이 당신과 이야기하고 싶어 합니다"
 
 #: [notifs]title [onboarding]notifications_title [room]notify_title
 msgid "Notifications"
-msgstr ""
+msgstr "알림"
 
 #: [notifs]empty
 msgid "No new notifications"
-msgstr ""
+msgstr "새 알림 없음"
 
 #: [onboarding]notifications_text
 msgid "Movim can notify you when a new post is published or if you receive messages"
-msgstr ""
+msgstr "새 게시물이 게시되거나 메시지를 받으면 Movim에서 알릴 수 있습니다."
 
 #: [onboarding]notifications_text_second
 msgid "You can always disable them afterwards"
-msgstr ""
+msgstr "나중에 언제든지 비활성화할 수 있습니다."
 
 #: [onboarding]public_title
 msgid "Public profile"
-msgstr ""
+msgstr "공개 프로필"
 
 #: [onboarding]public_text
 msgid "Make your profile public and allow other users to find you and make new contacts more easily"
-msgstr ""
+msgstr "프로필을 공개하여 다른 사용자가 쉽게 당신을 찾고 추가할 수 있도록 합니다."
 
 #: [onboarding]public_text_second
 msgid "You can always disable this in the configuration afterwards"
-msgstr ""
+msgstr "나중에 설정에서 이 기능을 비활성화할 수 있습니다."
 
 #: [onboarding]popups_title
 msgid "Popups"
-msgstr ""
+msgstr "팝업"
 
 #: [onboarding]popups_text
 msgid "Movim is using popups for the video-conference feature, they are sometime blocked by the browsers"
-msgstr ""
+msgstr "Movim이 화상 회의 기능을 위해 팝업을 사용하고 있으며, 때때로 브라우저에 의해 차단됩니다."
 
 #: [onboarding]popups_text_second
 msgid "Please be sure that they are enabled to use this feature properly"
-msgstr ""
+msgstr "이 기능을 올바르게 사용하도록 설정되어 있는지 확인해주세요."
 
 #: [post]news_feed
 msgid "News Feed"
-msgstr ""
+msgstr "뉴스 피드"
 
 #: [post]placeholder
 msgid "Discover and register to the groups you are interested in"
-msgstr ""
+msgstr "관심 있는 그룹을 검색하고 등록하세요."
 
 #: [post]content
 msgid "Content"
-msgstr ""
+msgstr "콘텐츠"
 
 #: [post]published
 msgid "Post published"
-msgstr ""
+msgstr "게시물 게시됨"
 
 #: [post]deleted
 msgid "Post deleted"
-msgstr ""
+msgstr "게시물 삭제됨"
 
 #: [post]hot
 msgid "What’s Hot"
-msgstr ""
+msgstr "최신 소식"
 
 #: [post]hot_text
 msgid "Posts recently published in communities that you are not subscribed (yet)"
-msgstr ""
+msgstr "(아직) 구독하지 않은 커뮤니티에서 최근에 게시된 게시물"
 
 #: [post]new [publish]new [publishbrief]new
 msgid "New post"
-msgstr ""
+msgstr "새 게시물"
 
 #: [post]repost
 msgid "This is a re-post from %s"
-msgstr ""
+msgstr "%s님의 재포스팅입니다."
 
 #: [post]repost_profile
 msgid "See %s profile"
-msgstr ""
+msgstr "%s님의 프로필 보기"
 
 #: [post]blog_last
 msgid "Public posts from users"
-msgstr ""
+msgstr "사용자의 공개 게시물"
 
 #: [post]read_time_singular
 msgid "%s minute"
-msgstr ""
+msgstr "%s분"
 
 #: [post]read_time_plural
 msgid "%s minutes"
-msgstr ""
+msgstr "%s분"
 
 #: [post]public
 msgid "Publish this post publicly?"
-msgstr ""
+msgstr "이 게시물을 공개적으로 게시하시겠습니까?"
 
 #: [post]public_yes
 msgid "This post is public"
-msgstr ""
+msgstr "공개 게시물입니다."
 
 #: [post]public_no
 msgid "This post is private"
-msgstr ""
+msgstr "비공개 게시물입니다."
 
 #: [post]public_url
 msgid "Public URL of this post"
-msgstr ""
+msgstr "이 게시물의 공개 URL"
 
 #: [post]delete_title [post]delete
 msgid "Delete this post"
-msgstr ""
+msgstr "이 게시물 삭제"
 
 #: [post]delete_text
 msgid "You are going to delete this post, please confirm your action"
-msgstr ""
+msgstr "이 게시물을 삭제하려고 합니다. 작업을 확인해주세요."
 
 #: [post]delete_comment
 msgid "Are you sure that you want to delete this comment?"
-msgstr ""
+msgstr "이 댓글을 삭제하시겠습니까?"
 
 #: [post]discover
 msgid "Discover more articles on the communities page"
-msgstr ""
+msgstr "커뮤니티 페이지에서 더 많은 아티클을 찾아보세요."
 
 #: [post]more
 msgid "Read more"
-msgstr ""
+msgstr "더 읽기"
 
 #: [post]comments_disabled
 msgid "Comments disabled"
-msgstr ""
+msgstr "댓글 비활성화됨"
 
 #: [post]comment_published
 msgid "Comment published"
-msgstr ""
+msgstr "댓글 게시됨"
 
 #: [post]comment_like_published
 msgid "Liked"
-msgstr ""
+msgstr "좋아요"
 
 #: [post]comment_publish_error
 msgid "The comment cannot be published"
-msgstr ""
+msgstr "댓글을 게시할 수 없습니다."
 
 #: [post]comment_deleted
 msgid "Comment deleted"
-msgstr ""
+msgstr "댓글 삭제됨"
 
 #: [post]liked
 msgid "Liked your publication"
-msgstr ""
+msgstr "당신의 게시물을 좋아합니다"
 
 #: [post]commented
 msgid "Commented"
-msgstr ""
+msgstr "댓글을 달았습니다"
 
 #: [hello]contact_post
 msgid "Contact post"
-msgstr ""
+msgstr "연락처의 게시물"
 
 #: [hello]share_title
 msgid "Universal share button"
-msgstr ""
+msgstr "전체 공유 버튼"
 
 #: [hello]share_text
 msgid "Bookmark or drag and drop the following button in your toolbar and use it on all the pages you want to share on Movim"
-msgstr ""
+msgstr "도구 모음에서 다음 버튼을 북마크에 추가하거나 끌어다 놓고 Movim에서 공유하려는 모든 페이지에서 사용하세요."
 
 #: [hello]share_button
 msgid "Share on Movim"
-msgstr ""
+msgstr "Movim에서 공유"
 
 #: [hello]enter_title
 msgid "Oh! Hello!"
-msgstr ""
+msgstr "오! 안녕하세요!"
 
 #: [hello]enter_paragraph
 msgid "It seems that you’re new there! Welcome on Movim!"
-msgstr ""
+msgstr "새로 오신 것 같습니다! Movim에 오신 것을 환영합니다!"
 
 #: [hello]menu_title
 msgid "Check the Menu"
-msgstr ""
+msgstr "메뉴를 확인해보세요"
 
 #: [hello]menu_paragraph
 msgid "All the main Movim features are accessible there. Don’t hesitate to navigate through the pages to discover more!"
-msgstr ""
+msgstr "Movim의 모든 주요 기능에 액세스할 수 있습니다. 페이지를 탐색하여 더 많은 것을 알아보세요!"
 
 #: [hello]profile_title
 msgid "Looks like you didn’t complete your profile yet"
-msgstr ""
+msgstr "아직 프로필을 작성하지 않은 것 같습니다."
 
 #: [hello]profile_paragraph
 msgid "You can go in the Configuration page to describe yourself and put a nice picture"
-msgstr ""
+msgstr "설정 페이지로 이동하여 스스로를 설명하고 멋진 사진을 추가할 수 있습니다."
 
 #: [status]disconnect
 msgid "Disconnect"
-msgstr ""
-
-#: [status]updated
-msgid "Status updated"
-msgstr ""
+msgstr "연결 해제"
 
 #: [status]presence
 msgid "Presence"
-msgstr ""
+msgstr "있음"
 
 #: [status]logout_confirm
 msgid "Do you really want to log out?"
-msgstr ""
+msgstr "로그아웃하시겠습니까?"
 
 #: [preview]link_copied
 msgid "Link copied to clipboard"
-msgstr ""
+msgstr "링크가 클립보드에 복사됨"
 
 #: [publish]placeholder [publishbrief]placeholder
 msgid "What’s new?"
-msgstr ""
+msgstr "새로운 소식"
 
 #: [publish]post [publishbrief]post
 msgid "Write a post"
-msgstr ""
+msgstr "게시물 작성"
 
 #: [publish]add_link [publishbrief]add_link
 msgid "Add a link"
-msgstr ""
+msgstr "링크 추가"
 
 #: [publish]add_snap [publishbrief]add_snap
 msgid "Take a picture"
-msgstr ""
+msgstr "사진 찍기"
 
 #: [publish]no_title [publishbrief]no_title
 msgid "Please provide a title"
-msgstr ""
+msgstr "제목을 입력하세요"
 
 #: [publish]preview [publishbrief]preview
 msgid "Preview"
-msgstr ""
+msgstr "미리보기"
 
 #: [publish]attach [publishbrief]attach
 msgid "Add a file or a picture"
-msgstr ""
+msgstr "파일 또는 사진 추가"
 
 #: [publish]no_publication [publishbrief]no_publication
 msgid "You cannot publish a post here"
-msgstr ""
+msgstr "여기에 게시물을 게시할 수 없습니다."
 
 #: [publish]no_content_preview [publishbrief]no_content_preview
 msgid "No content to preview"
-msgstr ""
+msgstr "미리 볼 콘텐츠가 없습니다."
 
 #: [publish]title [publishbrief]title
 msgid "Post title"
-msgstr ""
+msgstr "게시물 제목"
 
 #: [publish]content [publishbrief]content
 msgid "Markdown content"
-msgstr ""
+msgstr "마크다운 콘텐츠"
 
 #: [publish]valid_url [publishbrief]valid_url
 msgid "Please enter a valid URL"
-msgstr ""
+msgstr "올바른 URL을 입력 해주세요"
 
 #: [publish]content_text [publishbrief]content_text
 msgid "You can format your content using Markdown"
-msgstr ""
+msgstr "마크다운을 사용하여 콘텐츠 형식을 지정할 수 있습니다."
 
 #: [publish]draft_saved [publishbrief]draft_saved
 msgid "Draft saved"
-msgstr ""
+msgstr "임시 저장됨"
 
 #: [publish]rich_editor [publishbrief]rich_editor
 msgid "Rich text editor"
-msgstr ""
+msgstr "서식 지정 에디터"
 
 #: [publishhelp]title [page]help
 msgid "Help"
-msgstr ""
+msgstr "도움말"
 
 #: [publishhelp]more
 msgid "More help"
-msgstr ""
+msgstr "추가 도움말"
 
 #: [publishhelp]manual
 msgid "Markdown syntax manual"
-msgstr ""
+msgstr "마크다운 문법 매뉴얼"
 
 #: [rooms]create
 msgid "Create a chatroom"
-msgstr ""
+msgstr "채팅방 만들기"
 
 #: [rooms]edit
 msgid "Edit a chatroom"
-msgstr ""
+msgstr "채팅방 수정하기"
 
 #: [rooms]join
 msgid "Join a chatroom"
-msgstr ""
+msgstr "채팅방에 참여하기"
 
 #: [rooms]join_custom
 msgid "Join a custom chatroom"
-msgstr ""
+msgstr "커스텀 채팅방에 참여하기"
 
 #: [rooms]empty_text1
 msgid "You don’t have any chatrooms yet."
-msgstr ""
+msgstr "아직 채팅방이 없습니다."
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
-msgstr ""
+msgstr "추가 버튼을 클릭하여 하나를 추가하세요."
 
 #: [rooms]empty_synchronize_title
 msgid "You had some rooms previously listed?"
-msgstr ""
+msgstr "몇 개의 채팅방이 이전에 있었습니까?"
 
 #: [rooms]empty_synchronize_text
 msgid "Try to synchronize them to the new room bookmarking system"
-msgstr ""
+msgstr "새 채팅방 북마크 시스템에 동기화해 보세요."
 
 #: [rooms]empty_synchronize_button
 msgid "Synchronize"
-msgstr ""
+msgstr "동기화"
 
 #: [rooms]type_room
 msgid "Type of room"
-msgstr ""
+msgstr "채팅방 유형"
 
 #: [rooms]default_room
 msgid "Standard room"
-msgstr ""
+msgstr "일반 채팅방"
 
 #: [rooms]gateway_room
 msgid "Gateway room"
-msgstr ""
+msgstr "게이트웨이 채팅방"
 
 #: [rooms]show_all
 msgid "Show all rooms"
-msgstr ""
+msgstr "모든 채팅방 보기"
 
 #: [rooms]hide_disconnected
 msgid "Hide disconnected rooms"
-msgstr ""
+msgstr "연결이 끊긴 채팅방 숨기기"
 
 #: [rooms]destroy_title
 msgid "Destroy the room"
-msgstr ""
+msgstr "채팅방 삭제하기"
 
 #: [rooms]destroy_text
 msgid "Are you sure you want to permanently destroy the following room?"
-msgstr ""
+msgstr "다음 채팅방을 영구적으로 삭제하시겠습니까?"
 
 #: [rooms]owner
 msgctxt "[rooms]owner"
 msgid "Owner"
-msgstr ""
+msgstr "소유자"
 
 #: [rooms]admin
 msgctxt "[rooms]admin"
 msgid "Admin"
-msgstr ""
+msgstr "관리자"
 
 #: [rooms]visitor
 msgid "Visitor"
-msgstr ""
+msgstr "방문자"
 
 #: [rooms]explore_placeholder
 msgid "Name or description"
-msgstr ""
+msgstr "이름 또는 설명"
 
 #: [chatrooms]title
 msgid "Chatrooms"
-msgstr ""
+msgstr "채팅방"
 
 #: [chatrooms]id
 msgid "Chatroom ID"
-msgstr ""
+msgstr "채팅방 ID"
 
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
-msgstr ""
+msgstr "내가 좋아하는 채팅방"
 
 #: [chatrooms]bad_id
 msgid "Bad Chatroom ID"
-msgstr ""
+msgstr "잘못된 채팅방 ID"
 
 #: [chatrooms]empty_name
 msgid "Empty name"
-msgstr ""
+msgstr "비어있는 이름"
 
 #: [chatrooms]synchronized
 msgid "%s rooms synchronized"
-msgstr ""
+msgstr "%s개의 채팅방이 동기화됨"
 
 #: [chatrooms]not_synchronized
 msgid "No rooms to synchronize found"
-msgstr ""
+msgstr "동기화할 채팅방이 없습니다"
 
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
 msgid "Users"
-msgstr ""
+msgstr "사용자"
 
 #: [chatrooms]members
 msgctxt "[chatrooms]members"
 msgid "Members"
-msgstr ""
+msgstr "멤버"
 
 #: [chatrooms]banned
 msgid "Banned"
-msgstr ""
+msgstr "금지"
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a correct nickname (2 to 40 characters)"
-msgstr ""
+msgstr "올바른 닉네임을 입력하세요. (2~40자)"
 
 #: [chatrooms]conflict
 msgid "Username already taken"
-msgstr ""
+msgstr "이미 사용중인 이름입니다"
 
 #: [chatrooms]autojoin
 msgid "Join this chatroom on connect"
-msgstr ""
+msgstr "연결 시 이 채팅방에 참여하기"
 
 #: [chatrooms]pinned
 msgid "Pin this chatroom"
-msgstr ""
+msgstr "이 채팅방 고정하기"
 
 #: [chatrooms]destroyed
 msgid "Room destroyed"
-msgstr ""
+msgstr "채팅방이 삭제됨"
 
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
-msgstr ""
+msgstr "채팅방에 참여할 수 없습니다. 등록이 필요합니다."
 
 #: [chatrooms]itemnotfound
 msgid "The chatroom doesn’t exists"
-msgstr ""
+msgstr "채팅방이 존재하지 않습니다"
 
 #: [chatrooms]notauthorized
 msgid "A password is required"
-msgstr ""
+msgstr "비밀번호가 필요합니다"
 
 #: [chatrooms]forbidden
 msgid "You are not allowed to join this chatroom"
-msgstr ""
+msgstr "이 채팅방에 참여할 수 없습니다."
 
 #: [chatrooms]jidmalformed
 msgid "Your nickname is not valid"
-msgstr ""
+msgstr "닉네임이 유효하지 않습니다"
 
 #: [chatrooms]notacceptable
 msgid "Not acceptable"
-msgstr ""
+msgstr "허용되지 않음"
 
 #: [chatrooms]serviceunavailable
 msgid "The chatroom occupant limit has been reached"
-msgstr ""
+msgstr "채팅방 인원 제한에 도달했습니다."
 
 #: [chatrooms]notallowed
 msgid "You are not allowed to create a chatroom there"
-msgstr ""
+msgstr "채팅방을 만들 수 없습니다."
 
 #: [chatrooms]created
 msgid "Chatroom created"
-msgstr ""
+msgstr "채팅방 생성됨"
 
 #: [bookmarks]updated
 msgid "Bookmarks updated"
-msgstr ""
+msgstr "북마크 업데이트됨"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
-msgstr ""
+msgstr "공개 채팅방"
 
 #: [room]anonymous_text1
 msgid "You are currently logged as an anonymous user."
-msgstr ""
+msgstr "현재 익명 사용자로 로그인되어 있습니다."
 
 #: [room]anonymous_text2
 msgid "You can join using your own account or create one on the login page by loging out using the cross in the top-right corner."
-msgstr ""
+msgstr "계정을 사용하여 참여하거나 오른쪽 상단 모서리에 있는 십자 기호를 사용해 로그아웃하여 로그인 페이지에서 계정을 만들 수 있습니다."
 
 #: [room]anonymous_login
 msgid "Login on %s"
-msgstr ""
+msgstr "%s에 로그인"
 
 #: [room]invite
 msgid "Invite a contact"
-msgstr ""
+msgstr "대화 상대 초대"
 
 #: [room]invited
 msgid "Invitation sent"
-msgstr ""
+msgstr "초대장 전송됨"
 
 #: [room]invite_code
 msgid "Send this link to your contacts"
-msgstr ""
-
-#: [room]public_muc
-msgid "Public"
-msgstr ""
+msgstr "대화 상대에게 이 링크 보내기"
 
 #: [room]public_muc_text
 msgid "This chatroom is publicly discoverable"
-msgstr ""
+msgstr "공개적으로 검색 가능한 채팅방입니다."
 
 #: [room]nonanonymous_muc
 msgid "Public profiles"
-msgstr ""
+msgstr "공개 프로필"
 
 #: [room]nonanonymous_muc_text
 msgid "The participants of this chatroom can see each other's profile"
-msgstr ""
+msgstr "이 대화방의 참가자는 서로의 프로필을 볼 수 있습니다."
 
 #: [room]group_chat
 msgid "Group Chat"
-msgstr ""
+msgstr "그룹 채팅"
 
 #: [room]group_chat_text
 msgid "Private group chat with invited members"
-msgstr ""
+msgstr "초대된 멤버들과의 비공개 그룹 채팅"
 
 #: [room]group_chat_add
 msgid "Add a new member"
-msgstr ""
+msgstr "새 멤버 추가"
 
 #: [room]group_chat_members
 msgctxt "[room]group_chat_members"
 msgid "Members"
-msgstr ""
+msgstr "멤버"
 
 #: [room]banned_add
 msgid "Ban someone"
-msgstr ""
+msgstr "누군가를 차단하기"
 
 #: [room]banned_remove
 msgid "Unban"
-msgstr ""
+msgstr "차단 해제"
 
 #: [room]change_affiliation
 msgid "Change the user affiliation"
-msgstr ""
+msgstr "사용자 소속 변경"
 
 #: [room]change_affiliation_unauthorized
 msgid "You are not authorized to change this affiliation"
-msgstr ""
+msgstr "이 소속을 변경할 권한이 없습니다."
 
 #: [room]affiliation
 msgid "Affiliation"
-msgstr ""
+msgstr "소속"
 
 #: [room]reason
 msgid "Reason"
-msgstr ""
+msgstr "사유"
 
 #: [room]channel
 msgid "Channel"
-msgstr ""
+msgstr "채널"
 
 #: [room]channel_users
 msgctxt "[room]channel_users"
 msgid "Users"
-msgstr ""
+msgstr "사용자"
 
 #: [room]channel_text
 msgid "Public channel that can be publicly discoverable and joinable"
-msgstr ""
+msgstr "공개적으로 검색 및 가입할 수 있는 공개 채널"
 
 #: [room]notify_never
 msgid "Never notify"
-msgstr ""
+msgstr "알림 안 함"
 
 #: [room]notify_quoted
 msgid "Notify when quoted"
-msgstr ""
+msgstr "인용 시 알림"
 
 #: [room]notify_always
 msgid "Always notify"
-msgstr ""
+msgstr "항상 알림"
 
 #: [room]pinned
 msgid "Pinned"
-msgstr ""
+msgstr "고정"
 
 #: [room]affiliation_owner
 msgctxt "[room]affiliation_owner"
 msgid "Owner"
-msgstr ""
+msgstr "소유자"
 
 #: [room]affiliation_admin
 msgctxt "[room]affiliation_admin"
 msgid "Admin"
-msgstr ""
+msgstr "관리자"
 
 #: [room]affiliation_member [affiliation]member
 msgid "Member"
-msgstr ""
+msgstr "멤버"
 
 #: [room]affiliation_none [affiliation]no-aff
 msgid "No affiliation"
-msgstr ""
+msgstr "권한 없음"
 
 #: [room]affiliation_owner_changed
 msgid "User granted as owner"
-msgstr ""
+msgstr "소유자 권한의 사용자"
 
 #: [room]affiliation_admin_changed
 msgid "User granted as admin"
-msgstr ""
+msgstr "관리자 권한의 사용자"
 
 #: [room]affiliation_member_changed
 msgid "User granted as member"
-msgstr ""
+msgstr "멤버 권한의 사용자"
 
 #: [room]affiliation_outcast_changed
 msgid "User banned"
-msgstr ""
+msgstr "차단된 사용자"
 
 #: [room]affiliation_none_changed
 msgid "Affiliation removed for the user"
-msgstr ""
+msgstr "사용자의 권한이 제거됨"
 
 #: [roomsexplore]no_local
 msgid "No chatrooms found locally"
-msgstr ""
+msgstr "로컬에서 대화방을 찾을 수 없습니다."
 
 #: [roomsexplore]global_title
 msgid "Global search"
-msgstr ""
+msgstr "글로벌 검색"
 
 #: [roomsexplore]no_global
 msgid "No chatrooms found globally"
-msgstr ""
+msgstr "글로벌로 검색된 채팅방이 없습니다."
 
 #: [search]keyword
 msgid "What are you looking for?"
-msgstr ""
+msgstr "무엇을 찾고 있나요?"
 
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
-msgstr ""
+msgstr "Ctrl + M을 사용하여 열기"
 
 #: [search]placeholder
 msgid "#cats, username@server.com, John…"
-msgstr ""
+msgstr "#고양이, username@server.com, 철수…"
 
 #: [search]no_contacts_title
 msgid "No contacts yet?"
-msgstr ""
+msgstr "아직 연락처가 없습니까?"
 
 #: [search]no_contacts_text
 msgid "Find one by searching for their name or id"
-msgstr ""
+msgstr "이름 또는 ID를 검색"
 
 #: [search]tags
 msgid "Tags"
-msgstr ""
+msgstr "태그"
 
 #: [search]show_complete_roster
 msgid "Show all the contacts"
-msgstr ""
+msgstr "모든 연락처 표시"
 
 #: [sendto]attach
 msgid "Attach to a blog publication"
-msgstr ""
+msgstr "블로그 게시물에 첨부"
 
 #: [sendto]contact
 msgid "Send it to a contact"
-msgstr ""
+msgstr "연락처로 보내기"
 
 #: [sendto]chatroom
 msgid "Share it in a chatroom"
-msgstr ""
+msgstr "채팅방에서 공유"
 
 #: [sendto]shared_with
 msgid "Post shared"
-msgstr ""
+msgstr "게시물 공유"
 
 #: [sendto]shared_contact
 msgid "Post shared with your contact"
-msgstr ""
+msgstr "대화 상대와 공유한 게시물"
 
 #: [sendto]shared_chatroom
 msgid "Post shared within the chatroom"
-msgstr ""
+msgstr "채팅방 내에서 공유된 게시물"
 
 #: [sendto]more_contacts
 msgid "More contacts"
-msgstr ""
+msgstr "연락처 더보기"
 
 #: [statistics]title
 msgid "Statistics"
-msgstr ""
+msgstr "통계"
 
 #: [sticker]title
 msgid "Stickers"
-msgstr ""
+msgstr "스티커"
 
 #: [sticker]sent
 msgid "A sticker has been sent using Movim"
-msgstr ""
+msgstr "Movim을 사용하여 스티커를 보냈습니다."
 
 #: [sticker]keyword
 msgid "Type a keyword"
-msgstr ""
+msgstr "키워드 입력"
 
 #: [sticker]gif_title
 msgid "Find a GIF"
-msgstr ""
+msgstr "GIF 찾기"
 
 #: [sticker]gif_text
 msgid "Powered by Tenor"
-msgstr ""
+msgstr "Tenor 제공"
 
 #: [subscribe]info
 msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
-msgstr ""
+msgstr "Movim은 탈중앙화 소셜 네트워크로, 새 계정을 만들기 전에 등록할 서버를 선택해야 합니다."
 
 #: [subscribe]server_question
 msgid "Your server here?"
-msgstr ""
+msgstr "당신의 서버가 여기인가요?"
 
 #: [subscribe]server_contact
 msgid "Contact us to add yours to the officially supported servers list"
-msgstr ""
+msgstr "공식적으로 지원되는 서버 목록에 추가하려면 저희에게 문의해주세요."
 
 #: [feed]nope
 msgid "No public feed for this contact"
-msgstr ""
+msgstr "이 계정에 대한 공개된 피드가 없습니다."
 
 #: [feed]nope_contact
 msgid "No contact specified"
-msgstr ""
+msgstr "지정된 연락처가 없습니다."
 
 #: [upload]title [button]upload
 msgid "Upload"
-msgstr ""
+msgstr "업로드"
 
 #: [upload]choose
 msgid "Choose a file to upload"
-msgstr ""
+msgstr "업로드할 파일 선택"
 
 #: [upload]info
 msgid "Large pictures will be resized and compressed"
-msgstr ""
+msgstr "큰 사진은 크기가 조정되고 압축됩니다."
 
 #: [upload]error_filesize
 msgid "File too large"
-msgstr ""
+msgstr "파일이 너무 큽니다"
 
 #: [upload]error_failed
 msgid "Upload failed"
-msgstr ""
+msgstr "업로드 실패"
 
 #: [upload]error_not_allowed
 msgid "You are not allowed to upload a file"
-msgstr ""
+msgstr "파일을 업로드할 수 없습니다."
 
 #: [upload]error_resource_constraint
 msgid "You exceeded the quota"
-msgstr ""
+msgstr "한도를 초과했습니다."
 
 #: [upload]drag_drop
 msgid "Drag and drop your file in this area"
-msgstr ""
+msgstr "이 영역에 파일을 끌어다 놓으세요."
 
 #: [upload]max_size
 msgid "Max file size %s"
-msgstr ""
+msgstr "최대 파일 크기 %s"
 
 #: [vcard]title [page]profile
 msgid "Profile"
-msgstr ""
+msgstr "프로필"
 
 #: [vcard]updated
 msgid "Profile Updated"
-msgstr ""
+msgstr "프로필 업데이트됨"
 
 #: [vcard]not_updated
 msgid "Profile Not Updated"
-msgstr ""
+msgstr "프로필이 업데이트되지 않음"
 
 #: [vcard]public
 msgid "Your profile is now public"
-msgstr ""
+msgstr "프로필이 공개되었습니다."
 
 #: [vcard]restricted
 msgid "Your profile is now restricted"
-msgstr ""
+msgstr "이제 프로필이 제한됩니다."
 
 #: [profile]info
 msgid "Configure your instance nickname"
-msgstr ""
+msgstr "인스턴스 닉네임 설정"
 
 #: [profile]privacy_question
 msgid "Is this profile public?"
-msgstr ""
+msgstr "이 프로필을 공개할까요?"
 
 #: [profile]privacy_info
 msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
-msgstr ""
+msgstr "주의해주세요! 프로필을 공개하면 아래 나열된 모든 정보가 모든 Movim 사용자와 모든 인터넷에서 사용될 수 있습니다."
 
 #: [profile]nickname_info
 msgid "Set a local nickname to allow the other users of the instance to find you easily."
-msgstr ""
+msgstr "인스턴스의 다른 사용자가 쉽게 찾을 수 있도록 로컬 닉네임을 설정합니다."
 
 #: [profile]nickname_set
 msgid "Your nickname is %s."
-msgstr ""
+msgstr "당신의 닉네임은 %s예요 "
 
 #: [profile]nickname_placeholder
 msgid "John_Bob96"
-msgstr ""
+msgstr "John_Bob96"
 
 #: [profile]nickname_error
 msgid "Your nickname should only contains letters, numbers, - and _"
-msgstr ""
+msgstr "닉네임은 문자, 숫자, - 및 _만 포함해야 합니다."
 
 #: [profile]nickname_conflict
 msgid "The nickname is already registered"
-msgstr ""
+msgstr "닉네임이 이미 등록되어 있습니다."
 
 #: [profile]nickname_saved
 msgid "Nickname saved"
-msgstr ""
+msgstr "닉네임 저장됨"
 
 #: [save]submit [button]submit
 msgid "Submit"
-msgstr ""
+msgstr "제출"
 
 #: [save]reset [button]reset
 msgid "Reset"
-msgstr ""
+msgstr "리셋"
 
 #: [degraded]title
 msgid "Movim is currently working in degraded mode"
-msgstr ""
+msgstr "Movim은 현재 성능 저하 모드에서 작동하고 있습니다."
 
 #: [degraded]text_1
 msgid "Your server doesn’t support XMPP Pubsub persistence or the social features (communities, news feed and profile) are disabled by the administrator."
-msgstr ""
+msgstr "서버가 XMPP Pubsub persistence을 지원하지 않거나 관리자가 소셜 기능(커뮤니티, 뉴스 피드 및 프로필)을 비활성화했습니다."
 
 #: [degraded]text_2
 msgid "Please contact your server administrator to see if this feature can be enabled."
-msgstr ""
+msgstr "이 기능을 활성화할 수 있는지 확인하려면 서버 관리자에게 문의하세요."
 
 #: [visio]calling
 msgid "…is calling you"
-msgstr ""
+msgstr "전화 오는 중"
 
 #: [visio]video_call
 msgid "Incoming video call"
-msgstr ""
+msgstr "수신 영상 통화"
 
 #: [visio]audio_call
 msgid "Incoming audio call"
-msgstr ""
+msgstr "수신 오디오 통화"
 
 #: [visio]ringing
 msgid "…ringing"
-msgstr ""
+msgstr "전화 오는 중"
 
 #: [visio]declined
 msgid "declined"
-msgstr ""
+msgstr "거절"
 
 #: [visio]in_call
 msgid "in call"
-msgstr ""
+msgstr "통화 중"
 
 #: [visio]failed
 msgid "failed"
-msgstr ""
+msgstr "실패함"
 
 #: [visio]connecting
 msgid "…connecting"
-msgstr ""
+msgstr "연결 중"
 
 #: [visio]ended
 msgid "call ended"
-msgstr ""
+msgstr "통화 종료"
 
 #: [global]no_js
 msgid "Movim requires Javascript to be enabled to work properly."
-msgstr ""
+msgstr "Movim이 제대로 작동하려면 Javascript가 활성화되어야 합니다."
 
 #: [global]description
 msgid "Movim is a kickass distributed social networking platform that protect your privacy and comes with a set of awesome features."
-msgstr ""
+msgstr "Movim은 개인 정보를 보호하고 일련의 멋진 기능과 함께 제공되는 강력한 분산형 소셜 네트워킹 플랫폼입니다."
 
 #: [global]loading
 msgid "Loading…"
-msgstr ""
+msgstr "로딩 중"
 
 #: [global]or
 msgid "Or"
-msgstr ""
+msgstr "또는"
 
 #: [global]change_pod
 msgid "Switch to another pod"
-msgstr ""
+msgstr "다른 포드로 전환"
 
 #: [page]communities
 msgid "Communities"
-msgstr ""
+msgstr "커뮤니티"
 
 #: [page]home
 msgid "Home"
-msgstr ""
+msgstr "홈"
 
 #: [page]explore
 msgid "Explore"
-msgstr ""
+msgstr "탐색"
 
 #: [page]account_creation
 msgid "Account Creation"
-msgstr ""
+msgstr "계정 생성"
 
 #: [page]news
 msgid "News"
-msgstr ""
+msgstr "뉴스"
 
 #: [page]avatar
 msgid "Avatar"
-msgstr ""
+msgstr "아바타"
 
 #: [page]chats
 msgid "Chats"
-msgstr ""
+msgstr "채팅"
 
 #: [page]publish
 msgid "Publish"
-msgstr ""
+msgstr "게시"
 
 #: [page]post
 msgid "Post"
-msgstr ""
+msgstr "게시물"
 
 #: [page]blog
 msgid "Blog"
-msgstr ""
+msgstr "블로그"
 
 #: [page]about
 msgid "About"
-msgstr ""
+msgstr "에 대해"
 
 #: [page]login
 msgid "Login"
-msgstr ""
+msgstr "로그인"
 
 #: [page]not_found
 msgid "Not Found"
-msgstr ""
+msgstr "찾을 수 없음"
 
 #: [page]feed
 msgid "Feed"
-msgstr ""
+msgstr "피드"
 
 #: [page]posts
 msgid "Posts"
-msgstr ""
+msgstr "포스트"
 
 #: [page]gallery
 msgid "Gallery"
-msgstr ""
+msgstr "갤러리"
 
 #: [page]visio
 msgid "Visio-conference"
-msgstr ""
+msgstr "화상 회의"
 
 #: [page]share
 msgctxt "[page]share"
 msgid "Share"
-msgstr ""
+msgstr "공유하기"
 
 #: [page]room
 msgid "Room"
-msgstr ""
+msgstr "채팅방"
 
 #: [page]tag
 msgid "Tag"
-msgstr ""
+msgstr "태그"
 
 #: [error]error
 msgid "Error: %s"
@@ -2492,107 +2477,107 @@ msgstr "에러: %s"
 
 #: [error]cannot_load_file
 msgid "Cannot load file '%s'"
-msgstr ""
+msgstr "'%s'파일을 로드할 수 없습니다."
 
 #: [error]widget_load_error
 msgid "Requested widget '%s' doesn’t exist."
-msgstr ""
+msgstr "요청한 위젯 '%s'이 존재하지 않습니다."
 
 #: [error]widget_call_error
 msgid "Requested event '%s' not registered."
-msgstr ""
+msgstr "요청한 이벤트 '%s'가 등록되지 않았습니다."
 
 #: [error]whoops
 msgid "Whoops!"
-msgstr ""
+msgstr "이런!"
 
 #: [error]websocket
 msgid "Movim cannot talk with the server, please try again later"
-msgstr ""
+msgstr "Movim이 서버와 통신할 수 없습니다. 나중에 다시 시도해 주세요."
 
 #: [error]websocket_connect
 msgid "Reconnection to the server…"
-msgstr ""
+msgstr "서버에 재접속…"
 
 #: [error]oops
 msgid "Oops!"
-msgstr ""
+msgstr "앗!"
 
 #: [button]call
 msgid "Call"
-msgstr ""
+msgstr "통화"
 
 #: [button]audio_call
 msgid "Audio Call"
-msgstr ""
+msgstr "음성 통화"
 
 #: [button]video_call
 msgid "Video Call"
-msgstr ""
+msgstr "영상 통화"
 
 #: [button]validate
 msgid "Validate"
-msgstr ""
+msgstr "확인"
 
 #: [button]refresh
 msgid "Refresh"
-msgstr ""
+msgstr "새로 고침"
 
 #: [button]add
 msgid "Add"
-msgstr ""
+msgstr "추가하기"
 
 #: [button]delete
 msgid "Delete"
-msgstr ""
+msgstr "삭제하기"
 
 #: [button]destroy
 msgid "Destroy"
-msgstr ""
+msgstr "닫기"
 
 #: [button]cancel
 msgid "Cancel"
-msgstr ""
+msgstr "취소하기"
 
 #: [button]close
 msgid "Close"
-msgstr ""
+msgstr "닫기"
 
 #: [button]update
 msgid "Update"
-msgstr ""
+msgstr "업데이트"
 
 #: [button]updating
 msgid "Updating"
-msgstr ""
+msgstr "업데이트 중"
 
 #: [button]submitting
 msgid "Submitting"
-msgstr ""
+msgstr "제출 중"
 
 #: [button]register
 msgid "Register"
-msgstr ""
+msgstr "등록하기"
 
 #: [button]reply
 msgid "Reply"
-msgstr ""
+msgstr "응답"
 
 #: [button]unregister
 msgid "Unregister"
-msgstr ""
+msgstr "등록 취소"
 
 #: [button]save
 msgid "Save"
-msgstr ""
+msgstr "저장하기"
 
 #: [button]clear
 msgid "Clear"
-msgstr ""
+msgstr "지우기"
 
 #: [button]connecting
 msgid "Connecting"
-msgstr ""
+msgstr "연결 중"
 
 #: [button]bool_yes
 msgid "Yes"
@@ -2604,36 +2589,36 @@ msgstr "아니요"
 
 #: [button]return
 msgid "Return"
-msgstr ""
+msgstr "되돌리기"
 
 #: [button]accept
 msgid "Accept"
-msgstr ""
+msgstr "수락하기"
 
 #: [button]refuse
 msgid "Refuse"
-msgstr ""
+msgstr "거절하기"
 
 #: [button]next
 msgid "Next"
-msgstr ""
+msgstr "다음"
 
 #: [button]previous
 msgid "Previous"
-msgstr ""
+msgstr "이전"
 
 #: [button]search
 msgid "Search"
-msgstr ""
+msgstr "검색"
 
 #: [button]share
 msgctxt "[button]share"
 msgid "Share"
-msgstr ""
+msgstr "공유하기"
 
 #: [button]discover
 msgid "Discover"
-msgstr ""
+msgstr "탐색하기"
 
 #: [button]like
 msgid "Like"
@@ -2641,35 +2626,43 @@ msgstr "좋아요"
 
 #: [button]not_now
 msgid "Not Now"
-msgstr ""
+msgstr "지금은 아님"
 
 #: [button]enable
 msgid "Enable"
-msgstr ""
+msgstr "활성화"
 
 #: [button]sign_up
 msgid "Sign Up"
-msgstr ""
+msgstr "가입하기"
 
 #: [button]send_to
 msgid "Send to"
-msgstr ""
+msgstr "보내기"
 
 #: [button]more
 msgid "More"
-msgstr ""
+msgstr "더보기"
 
 #: [button]copy_link
 msgid "Copy Link"
-msgstr ""
+msgstr "링크 복사"
+
+#: [button]open
+msgid "Open"
+msgstr "공개"
 
 #: [input]optional
 msgid "Optional"
+msgstr "선택 사항"
+
+#: [input]muc_pubsub_node
+msgid "Associated Community"
 msgstr ""
 
 #: [day]title
 msgid "Day"
-msgstr ""
+msgstr "요일"
 
 #: [day]monday
 msgid "Monday"
@@ -2701,27 +2694,27 @@ msgstr "일요일"
 
 #: [client]bot
 msgid "Bot"
-msgstr ""
+msgstr "봇"
 
 #: [client]console
 msgid "Console"
-msgstr ""
+msgstr "콘솔"
 
 #: [client]desktop
 msgid "Desktop"
-msgstr ""
+msgstr "데스크탑"
 
 #: [client]phone
 msgid "Phone"
-msgstr ""
+msgstr "휴대폰"
 
 #: [client]web
 msgid "Web"
-msgstr ""
+msgstr "웹"
 
 #: [client]registered
 msgid "Registered"
-msgstr ""
+msgstr "등록됨"
 
 #: [presence]online
 msgid "Online"
@@ -2729,15 +2722,15 @@ msgstr "온라인"
 
 #: [presence]away
 msgid "Away"
-msgstr ""
+msgstr "자리 비움"
 
 #: [presence]dnd
 msgid "Do Not Disturb"
-msgstr ""
+msgstr "방해 금지"
 
 #: [presence]xa
 msgid "Extended Away"
-msgstr ""
+msgstr "오래 자리 비움"
 
 #: [presence]offline
 msgid "Offline"
@@ -2749,339 +2742,339 @@ msgstr "에러"
 
 #: [mood]afraid
 msgid "afraid"
-msgstr ""
+msgstr "두려운"
 
 #: [mood]amazed
 msgid "amazed"
-msgstr ""
+msgstr "놀란"
 
 #: [mood]amorous
 msgid "amorous"
-msgstr ""
+msgstr "요염한"
 
 #: [mood]angry
 msgid "angry"
-msgstr ""
+msgstr "화난"
 
 #: [mood]annoyed
 msgid "annoyed"
-msgstr ""
+msgstr "짜증난"
 
 #: [mood]anxious
 msgid "anxious"
-msgstr ""
+msgstr "불안한"
 
 #: [mood]aroused
 msgid "aroused"
-msgstr ""
+msgstr "흥분한"
 
 #: [mood]ashamed
 msgid "ashamed"
-msgstr ""
+msgstr "부끄러운"
 
 #: [mood]bored
 msgid "bored"
-msgstr ""
+msgstr "지루한"
 
 #: [mood]brave
 msgid "brave"
-msgstr ""
+msgstr "용감한"
 
 #: [mood]calm
 msgid "calm"
-msgstr ""
+msgstr "침착한"
 
 #: [mood]cautious
 msgid "cautious"
-msgstr ""
+msgstr "신중한"
 
 #: [mood]cold
 msgid "cold"
-msgstr ""
+msgstr "차가운"
 
 #: [mood]confident
 msgid "confident"
-msgstr ""
+msgstr "자신감 있는"
 
 #: [mood]confused
 msgid "confused"
-msgstr ""
+msgstr "혼란스러운"
 
 #: [mood]contemplative
 msgid "contemplative"
-msgstr ""
+msgstr "사색하는"
 
 #: [mood]contented
 msgid "contented"
-msgstr ""
+msgstr " 만족하는"
 
 #: [mood]cranky
 msgid "cranky"
-msgstr ""
+msgstr "까칠한"
 
 #: [mood]crazy
 msgid "crazy"
-msgstr ""
+msgstr "미친"
 
 #: [mood]creative
 msgid "creative"
-msgstr ""
+msgstr "창의적인"
 
 #: [mood]curious
 msgid "curious"
-msgstr ""
+msgstr "궁금한"
 
 #: [mood]dejected
 msgid "dejected"
-msgstr ""
+msgstr "낙담한"
 
 #: [mood]depressed
 msgid "depressed"
-msgstr ""
+msgstr "우울한"
 
 #: [mood]disappointed
 msgid "disappointed"
-msgstr ""
+msgstr "실망한"
 
 #: [mood]disgusted
 msgid "disgusted"
-msgstr ""
+msgstr "메스꺼워하는"
 
 #: [mood]dismayed
 msgid "dismayed"
-msgstr ""
+msgstr "경악한"
 
 #: [mood]distracted
 msgid "distracted"
-msgstr ""
+msgstr "산만한"
 
 #: [mood]embarrassed
 msgid "embarrassed"
-msgstr ""
+msgstr "당황스러운"
 
 #: [mood]envious
 msgid "envious"
-msgstr ""
+msgstr "부러운"
 
 #: [mood]excited
 msgid "excited"
-msgstr ""
+msgstr "흥분한"
 
 #: [mood]flirtatious
 msgid "flirtatious"
-msgstr ""
+msgstr "추파를 던지는"
 
 #: [mood]frustrated
 msgid "frustrated"
-msgstr ""
+msgstr "좌절한"
 
 #: [mood]grateful
 msgid "grateful"
-msgstr ""
+msgstr "감사하는"
 
 #: [mood]grieving
 msgid "grieving"
-msgstr ""
+msgstr "비통한"
 
 #: [mood]grumpy
 msgid "grumpy"
-msgstr ""
+msgstr "성격이 나쁜"
 
 #: [mood]guilty
 msgid "guilty"
-msgstr ""
+msgstr "죄책감이 드는"
 
 #: [mood]happy
 msgid "happy"
-msgstr ""
+msgstr "행복한"
 
 #: [mood]hopeful
 msgid "hopeful"
-msgstr ""
+msgstr "희망에 찬"
 
 #: [mood]hot
 msgid "hot"
-msgstr ""
+msgstr "더운"
 
 #: [mood]humbled
 msgid "humbled"
-msgstr ""
+msgstr "겸손한"
 
 #: [mood]humiliated
 msgid "humiliated"
-msgstr ""
+msgstr "굴욕적인"
 
 #: [mood]hungry
 msgid "hungry"
-msgstr ""
+msgstr "배고픈"
 
 #: [mood]hurt
 msgid "hurt"
-msgstr ""
+msgstr "아픈"
 
 #: [mood]impressed
 msgid "impressed"
-msgstr ""
+msgstr "감명받은"
 
 #: [mood]in_awe
 msgid "in awe"
-msgstr ""
+msgstr "경외감이 드는"
 
 #: [mood]in_love
 msgid "in love"
-msgstr ""
+msgstr "사랑에 빠진"
 
 #: [mood]indignant
 msgid "indignant"
-msgstr ""
+msgstr "분개한"
 
 #: [mood]interested
 msgid "interested"
-msgstr ""
+msgstr "관심 있는"
 
 #: [mood]intoxicated
 msgid "intoxicated"
-msgstr ""
+msgstr " 취한"
 
 #: [mood]invincible
 msgid "invincible"
-msgstr ""
+msgstr "무적의"
 
 #: [mood]jealous
 msgid "jealous"
-msgstr ""
+msgstr "질투난"
 
 #: [mood]lonely
 msgid "lonely"
-msgstr ""
+msgstr "외로운"
 
 #: [mood]lost
 msgid "lost"
-msgstr ""
+msgstr "상심한"
 
 #: [mood]lucky
 msgid "lucky"
-msgstr ""
+msgstr "운이 좋은"
 
 #: [mood]mean
 msgid "mean"
-msgstr ""
+msgstr "인색한"
 
 #: [mood]moody
 msgid "moody"
-msgstr ""
+msgstr "변덕스러운"
 
 #: [mood]nervous
 msgid "nervous"
-msgstr ""
+msgstr "불안한"
 
 #: [mood]neutral
 msgid "neutral"
-msgstr ""
+msgstr " 중립적인"
 
 #: [mood]offended
 msgid "offended"
-msgstr ""
+msgstr "기분이 상한"
 
 #: [mood]outraged
 msgid "outraged"
-msgstr ""
+msgstr "격분한"
 
 #: [mood]playful
 msgid "playful"
-msgstr ""
+msgstr "장난기 많은"
 
 #: [mood]proud
 msgid "proud"
-msgstr ""
+msgstr "자랑스러운"
 
 #: [mood]relaxed
 msgid "relaxed"
-msgstr ""
+msgstr "느긋한"
 
 #: [mood]relieved
 msgid "relieved"
-msgstr ""
+msgstr "안도하는"
 
 #: [mood]restless
 msgid "restless"
-msgstr ""
+msgstr "가만히 못 있는"
 
 #: [mood]sad
 msgid "sad"
-msgstr ""
+msgstr "슬픈"
 
 #: [mood]sarcastic
 msgid "sarcastic"
-msgstr ""
+msgstr "비꼬는"
 
 #: [mood]satisfied
 msgid "satisfied"
-msgstr ""
+msgstr "만족한"
 
 #: [mood]serious
 msgid "serious"
-msgstr ""
+msgstr "심각한"
 
 #: [mood]shocked
 msgid "shocked"
-msgstr ""
+msgstr "충격받은"
 
 #: [mood]shy
 msgid "shy"
-msgstr ""
+msgstr "부끄러운"
 
 #: [mood]sick
 msgid "sick"
-msgstr ""
+msgstr "아픈"
 
 #: [mood]sleepy
 msgid "sleepy"
-msgstr ""
+msgstr "졸린"
 
 #: [mood]spontaneous
 msgid "spontaneous"
-msgstr ""
+msgstr "자발적인"
 
 #: [mood]stressed
 msgid "stressed"
-msgstr ""
+msgstr "스트레스를 받는"
 
 #: [mood]strong
 msgid "strong"
-msgstr ""
+msgstr "강한"
 
 #: [mood]surprised
 msgid "surprised"
-msgstr ""
+msgstr "놀란"
 
 #: [mood]thankful
 msgid "thankful"
-msgstr ""
+msgstr "감사하는"
 
 #: [mood]thirsty
 msgid "thirsty"
-msgstr ""
+msgstr "목마른"
 
 #: [mood]tired
 msgid "tired"
-msgstr ""
+msgstr "피곤한"
 
 #: [mood]undefined
 msgid "undefined"
-msgstr ""
+msgstr "확실하지 않은"
 
 #: [mood]weak
 msgid "weak"
-msgstr ""
+msgstr "약한"
 
 #: [mood]worried
 msgid "worried"
-msgstr ""
+msgstr "걱정스러운"
 
 #: [month]title
 msgid "Month"
-msgstr ""
+msgstr "월"
 
 #: [month]january
 msgid "January"
@@ -3133,7 +3126,7 @@ msgstr "12월"
 
 #: [year]title
 msgid "Year"
-msgstr ""
+msgstr "년"
 
 #: [date]today
 msgid "Today"
@@ -3149,11 +3142,11 @@ msgstr "어제"
 
 #: [date]ago
 msgid "%d days ago"
-msgstr ""
+msgstr "%d일 전"
 
 #: [date]day
 msgid "day"
-msgstr ""
+msgstr "일"
 
 #: [post]title
 msgid "Title"
@@ -3161,15 +3154,15 @@ msgstr "제목"
 
 #: [post]place
 msgid "Place"
-msgstr ""
+msgstr "장소"
 
 #: [post]by
 msgid "by"
-msgstr ""
+msgstr "작성자"
 
 #: [post]geolocalisation
 msgid "Geolocalisation"
-msgstr ""
+msgstr "지리적 위치"
 
 #: [post]email
 msgid "email"
@@ -3185,92 +3178,107 @@ msgstr "아직 댓글이 없습니다"
 
 #: [post]older
 msgid "Get older posts"
-msgstr ""
+msgstr "이전 게시물 가져오기"
 
 #: [post]new_items
 msgid "%s new items"
-msgstr ""
+msgstr "%s개의 새로운 항목"
 
 #: [post]comment_error
 msgid "Comment publication error"
-msgstr ""
+msgstr "댓글 게시 오류"
 
 #: [post]comments_get
 msgid "Get the comments"
-msgstr ""
+msgstr "댓글 가져오기"
 
 #: [post]comment_add
 msgid "Add a comment"
-msgstr ""
+msgstr "댓글 추가"
 
 #: [post]share
 msgid "Share with"
-msgstr ""
+msgstr "공유"
 
 #: [post]share_everyone
 msgid "Everyone"
-msgstr ""
+msgstr "모두"
 
 #: [post]updated
 msgid "Updated"
-msgstr ""
+msgstr "업데이트됨"
 
 #: [post]content_not_found
 msgid "Content not found"
-msgstr ""
+msgstr "콘텐츠를 찾을 수 없음"
 
 #: [post]default_title
 msgid "Contact publication"
-msgstr ""
+msgstr "연락처의 게시물"
 
 #: [post]comments
 msgid "Comments"
-msgstr ""
+msgstr "댓글"
 
 #: [post]original_deleted
 msgid "Original post deleted"
-msgstr ""
+msgstr "원본 게시물 삭제됨"
 
 #: [filesize]byte
 msgid "B"
-msgstr ""
+msgstr "B"
 
 #: [filesize]kilobyte
 msgid "KB"
-msgstr ""
+msgstr "KB"
 
 #: [filesize]megabyte
 msgid "MB"
-msgstr ""
+msgstr "MB"
 
 #: [filesize]gigabyte
 msgid "GB"
-msgstr ""
+msgstr "GB"
 
 #: [filesize]terabyte
 msgid "TB"
-msgstr ""
+msgstr "TB"
 
 #: [affiliation]owner
 msgid "Owner"
-msgstr ""
+msgstr "소유자"
 
 #: [affiliation]publisher
 msgid "Publisher"
-msgstr ""
+msgstr "발행자"
 
 #: [affiliation]publish-only
 msgid "Publish only"
-msgstr ""
+msgstr "게시 전용"
 
 #: [affiliation]outcast
 msgid "Outcast"
-msgstr ""
+msgstr "차단한 사람"
 
 #: [api]error
 msgid "The API is not reachable, try again later"
-msgstr ""
+msgstr "API에 연결할 수 없습니다. 나중에 다시 시도하십시오."
 
 #: [field]type_here
 msgid "Type here"
-msgstr ""
+msgstr "여기에 입력하세요"
+
+#~ msgid "Firebase Integration"
+#~ msgstr "Firebase 통합"
+
+#~ msgid "Your Firebase Authorization Key"
+#~ msgstr "Firebase 인증 키"
+
+#~ msgid "Movim can send Push Notifications to the Movim Android app using Firebase"
+#~ msgstr "Movim은 Firebase를 사용하여 Movim 안드로이드 앱에 푸시 알림을 보낼 수 있습니다."
+
+#~ msgid "Go to the Firebase panel to configure and generate your Authorization key"
+#~ msgstr "Firebase 패널로 이동하여 인증 키를 구성하고 생성합니다."
+
+#~ msgid "Status updated"
+#~ msgstr "상태 업데이트됨"

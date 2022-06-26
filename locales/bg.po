@@ -111,7 +111,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-17 08:56+0200\n"
+"POT-Creation-Date: 2022-06-26 08:14+0200\n"
 "PO-Revision-Date: 2022-02-17 07:57+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/movim/movim/language/bg/)\n"
@@ -213,6 +213,14 @@ msgstr "Ще изтриете всяка свързана информация �
 #: [account]clear_text_confirm
 msgid "This action will not delete your account but will disconnect you from this instance."
 msgstr "Това действие няма да изтрие сметката ви, но ще ви изхвърли от тази инстанция."
+
+#: [account]delete_bundle_title
+msgid "OMEMO Key deletion"
+msgstr ""
+
+#: [account]delete_bundle_text
+msgid "Your are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
+msgstr ""
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
@@ -395,22 +403,6 @@ msgstr "Movim интегрира Tenor API за да позволи търсен
 #: [tenor]info2
 msgid "Access Tenor and get your API key"
 msgstr "Достъпете Tenor и вземете API ключ"
-
-#: [firebase]title
-msgid "Firebase Integration"
-msgstr "Firebase Интеграция"
-
-#: [firebase]label
-msgid "Your Firebase Authorization Key"
-msgstr "Вашият Firebase оторизационен ключ"
-
-#: [firebase]info1
-msgid "Movim can send Push Notifications to the Movim Android app using Firebase"
-msgstr "Movim може да изпрати Push известия към Movim Android приложение ползвайки Firebase"
-
-#: [firebase]info2
-msgid "Go to the Firebase panel to configure and generate your Authorization key"
-msgstr "Отидете в панела на Firebase, за да конфигурирате и създадете вашият оторизационен ключ."
 
 #: [log]empty
 msgid "Empty"
@@ -907,9 +899,9 @@ msgstr "Правилно зададена роля"
 msgid "Publication"
 msgstr "Публикация"
 
-#: [communityconfig]publish_model_open_title
-msgid "Open"
-msgstr "Отвори"
+#: [communityconfig]publish_model_open_title [room]public_muc
+msgid "Public"
+msgstr "Публична"
 
 #: [communityconfig]publish_model_open_text
 msgid "Everyone can publish"
@@ -1703,10 +1695,6 @@ msgstr "Можете да отидете на страницата за конф
 msgid "Disconnect"
 msgstr "Прекъснете връзката"
 
-#: [status]updated
-msgid "Status updated"
-msgstr "Състоянието е актуализирано"
-
 #: [status]presence
 msgid "Presence"
 msgstr "Присъствие"
@@ -2002,10 +1990,6 @@ msgstr "Поканата е изпратена"
 #: [room]invite_code
 msgid "Send this link to your contacts"
 msgstr "Изпратете тази връзка на вашите контакти"
-
-#: [room]public_muc
-msgid "Public"
-msgstr "Публична"
 
 #: [room]public_muc_text
 msgid "This chatroom is publicly discoverable"
@@ -2665,8 +2649,16 @@ msgstr "Повече"
 msgid "Copy Link"
 msgstr "Копирай връзка"
 
+#: [button]open
+msgid "Open"
+msgstr "Отвори"
+
 #: [input]optional
 msgid "Optional"
+msgstr ""
+
+#: [input]muc_pubsub_node
+msgid "Associated Community"
 msgstr ""
 
 #: [day]title
@@ -3276,3 +3268,18 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
+
+#~ msgid "Firebase Integration"
+#~ msgstr "Firebase Интеграция"
+
+#~ msgid "Your Firebase Authorization Key"
+#~ msgstr "Вашият Firebase оторизационен ключ"
+
+#~ msgid "Movim can send Push Notifications to the Movim Android app using Firebase"
+#~ msgstr "Movim може да изпрати Push известия към Movim Android приложение ползвайки Firebase"
+
+#~ msgid "Go to the Firebase panel to configure and generate your Authorization key"
+#~ msgstr "Отидете в панела на Firebase, за да конфигурирате и създадете вашият оторизационен ключ."
+
+#~ msgid "Status updated"
+#~ msgstr "Състоянието е актуализирано"

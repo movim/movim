@@ -74,7 +74,7 @@ class Pubsub
         \Moxl\API::request($xml);
     }
 
-    public static function delete($to = false, $node)
+    public static function delete($to, $node)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub#owner', 'pubsub');

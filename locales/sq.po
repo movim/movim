@@ -111,7 +111,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-17 08:56+0200\n"
+"POT-Creation-Date: 2022-06-26 08:14+0200\n"
 "PO-Revision-Date: 2022-02-17 10:17+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
 "Language-Team: Albanian (http://www.transifex.com/movim/movim/language/sq/)\n"
@@ -213,6 +213,14 @@ msgstr "Do të fshini llogarinë krejt të dhënat relative të lidhura me lloga
 #: [account]clear_text_confirm
 msgid "This action will not delete your account but will disconnect you from this instance."
 msgstr "Ky veprim s’do të fshijë llogarinë tuaj, por do t’ju shkëpusë nga kjo instancë."
+
+#: [account]delete_bundle_title
+msgid "OMEMO Key deletion"
+msgstr ""
+
+#: [account]delete_bundle_text
+msgid "Your are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
+msgstr ""
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
@@ -395,22 +403,6 @@ msgstr "Movim integrohet me API-n Tenor për të lejuar kërkim dhe shfaqje GIF-
 #: [tenor]info2
 msgid "Access Tenor and get your API key"
 msgstr "Hyni në Tenor dhe merrni Kyçin tuaj API"
-
-#: [firebase]title
-msgid "Firebase Integration"
-msgstr "Integrim me Firebase"
-
-#: [firebase]label
-msgid "Your Firebase Authorization Key"
-msgstr "Kyçi juaj i autorizimit për Firebase"
-
-#: [firebase]info1
-msgid "Movim can send Push Notifications to the Movim Android app using Firebase"
-msgstr "Movim mund të dërgojë Njoftime Push te aplikacioni Movim Android duke përdorur Firebase-in"
-
-#: [firebase]info2
-msgid "Go to the Firebase panel to configure and generate your Authorization key"
-msgstr "Kaloni te paneli i Firebase-it që të formësoni dhe prodhoni kyçin tuaj të Mirëfilltësimt"
 
 #: [log]empty
 msgid "Empty"
@@ -907,9 +899,9 @@ msgstr "Roli u caktua saktë"
 msgid "Publication"
 msgstr "Botim"
 
-#: [communityconfig]publish_model_open_title
-msgid "Open"
-msgstr "I hapur"
+#: [communityconfig]publish_model_open_title [room]public_muc
+msgid "Public"
+msgstr "Publike"
 
 #: [communityconfig]publish_model_open_text
 msgid "Everyone can publish"
@@ -1703,10 +1695,6 @@ msgstr "Mund të shkoni te faqja Formësim që të jepni një përshkrim për ve
 msgid "Disconnect"
 msgstr "Shkëputu"
 
-#: [status]updated
-msgid "Status updated"
-msgstr "Gjendja u përditësua"
-
 #: [status]presence
 msgid "Presence"
 msgstr "Prani"
@@ -2002,10 +1990,6 @@ msgstr "Ftesa u dërgua"
 #: [room]invite_code
 msgid "Send this link to your contacts"
 msgstr "Dërgojani këtë lidhje kontakteve tuaja"
-
-#: [room]public_muc
-msgid "Public"
-msgstr "Publike"
 
 #: [room]public_muc_text
 msgid "This chatroom is publicly discoverable"
@@ -2665,9 +2649,17 @@ msgstr "Më tepër"
 msgid "Copy Link"
 msgstr "Kopjo Lidhjen"
 
+#: [button]open
+msgid "Open"
+msgstr "I hapur"
+
 #: [input]optional
 msgid "Optional"
 msgstr "Opsional"
+
+#: [input]muc_pubsub_node
+msgid "Associated Community"
+msgstr ""
 
 #: [day]title
 msgid "Day"
@@ -3276,3 +3268,18 @@ msgstr "API nuk kapet dot, riprovoni më vonë"
 #: [field]type_here
 msgid "Type here"
 msgstr "Shtypni këtu"
+
+#~ msgid "Firebase Integration"
+#~ msgstr "Integrim me Firebase"
+
+#~ msgid "Your Firebase Authorization Key"
+#~ msgstr "Kyçi juaj i autorizimit për Firebase"
+
+#~ msgid "Movim can send Push Notifications to the Movim Android app using Firebase"
+#~ msgstr "Movim mund të dërgojë Njoftime Push te aplikacioni Movim Android duke përdorur Firebase-in"
+
+#~ msgid "Go to the Firebase panel to configure and generate your Authorization key"
+#~ msgstr "Kaloni te paneli i Firebase-it që të formësoni dhe prodhoni kyçin tuaj të Mirëfilltësimt"
+
+#~ msgid "Status updated"
+#~ msgstr "Gjendja u përditësua"

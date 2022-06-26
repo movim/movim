@@ -109,7 +109,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-17 08:56+0200\n"
+"POT-Creation-Date: 2022-06-26 08:14+0200\n"
 "PO-Revision-Date: 2022-02-17 07:57+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Vietnamese (http://www.transifex.com/movim/movim/language/vi/)\n"
@@ -210,6 +210,14 @@ msgstr ""
 
 #: [account]clear_text_confirm
 msgid "This action will not delete your account but will disconnect you from this instance."
+msgstr ""
+
+#: [account]delete_bundle_title
+msgid "OMEMO Key deletion"
+msgstr ""
+
+#: [account]delete_bundle_text
+msgid "Your are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
 msgstr ""
 
 #: [create]title [subscribe]title
@@ -392,22 +400,6 @@ msgstr ""
 
 #: [tenor]info2
 msgid "Access Tenor and get your API key"
-msgstr ""
-
-#: [firebase]title
-msgid "Firebase Integration"
-msgstr ""
-
-#: [firebase]label
-msgid "Your Firebase Authorization Key"
-msgstr ""
-
-#: [firebase]info1
-msgid "Movim can send Push Notifications to the Movim Android app using Firebase"
-msgstr ""
-
-#: [firebase]info2
-msgid "Go to the Firebase panel to configure and generate your Authorization key"
 msgstr ""
 
 #: [log]empty
@@ -905,8 +897,8 @@ msgstr ""
 msgid "Publication"
 msgstr ""
 
-#: [communityconfig]publish_model_open_title
-msgid "Open"
+#: [communityconfig]publish_model_open_title [room]public_muc
+msgid "Public"
 msgstr ""
 
 #: [communityconfig]publish_model_open_text
@@ -1701,10 +1693,6 @@ msgstr ""
 msgid "Disconnect"
 msgstr ""
 
-#: [status]updated
-msgid "Status updated"
-msgstr ""
-
 #: [status]presence
 msgid "Presence"
 msgstr ""
@@ -1999,10 +1987,6 @@ msgstr ""
 
 #: [room]invite_code
 msgid "Send this link to your contacts"
-msgstr ""
-
-#: [room]public_muc
-msgid "Public"
 msgstr ""
 
 #: [room]public_muc_text
@@ -2663,8 +2647,16 @@ msgstr ""
 msgid "Copy Link"
 msgstr ""
 
+#: [button]open
+msgid "Open"
+msgstr ""
+
 #: [input]optional
 msgid "Optional"
+msgstr ""
+
+#: [input]muc_pubsub_node
+msgid "Associated Community"
 msgstr ""
 
 #: [day]title

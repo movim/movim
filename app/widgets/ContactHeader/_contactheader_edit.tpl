@@ -17,7 +17,7 @@
             <datalist id="group_list" style="display: none;">
                 {if="is_array($groups)"}
                     {loop="$groups"}
-                        <option value="{$value}"/>
+                        <option value="{$value ?? ''}"/>
                     {/loop}
                 {/if}
             </datalist>
@@ -26,7 +26,7 @@
                 list="group_list"
                 id="group"
                 placeholder="{$c->__('edit.group')}"
-                value="{$contact->group}"/>
+                value="{$contact->group ?? ''}"/>
             <label for="group">{$c->__('edit.group')}</label>
         </div>
         <input type="hidden" name="jid" value="{$contact->jid}"/>

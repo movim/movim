@@ -274,8 +274,12 @@ class Post extends Model
             switch ($c->attributes()->type) {
                 case 'html':
                 case 'xhtml':
+                    $import = null;
                     $dom = new \DOMDocument('1.0', 'utf-8');
-                    $import = @dom_import_simplexml($c->children());
+                    if ($c->children() instanceof \DOMElement) {
+                        $import = @dom_import_simplexml($c->children());
+                    }
+
                     if ($import == null) {
                         $import = dom_import_simplexml($c);
                     }

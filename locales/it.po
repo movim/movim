@@ -116,7 +116,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-17 08:56+0200\n"
+"POT-Creation-Date: 2022-06-26 08:14+0200\n"
 "PO-Revision-Date: 2022-02-17 07:57+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Italian (http://www.transifex.com/movim/movim/language/it/)\n"
@@ -218,6 +218,14 @@ msgstr "Eliminerai tutte le informazioni associate al tuo account su questa inst
 #: [account]clear_text_confirm
 msgid "This action will not delete your account but will disconnect you from this instance."
 msgstr "Questa azione non eliminerà il tuo account ma ti disconnetterà da questa istanza."
+
+#: [account]delete_bundle_title
+msgid "OMEMO Key deletion"
+msgstr ""
+
+#: [account]delete_bundle_text
+msgid "Your are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
+msgstr ""
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
@@ -399,22 +407,6 @@ msgstr ""
 
 #: [tenor]info2
 msgid "Access Tenor and get your API key"
-msgstr ""
-
-#: [firebase]title
-msgid "Firebase Integration"
-msgstr ""
-
-#: [firebase]label
-msgid "Your Firebase Authorization Key"
-msgstr ""
-
-#: [firebase]info1
-msgid "Movim can send Push Notifications to the Movim Android app using Firebase"
-msgstr ""
-
-#: [firebase]info2
-msgid "Go to the Firebase panel to configure and generate your Authorization key"
 msgstr ""
 
 #: [log]empty
@@ -912,9 +904,9 @@ msgstr "Ruolo impostato correttamente"
 msgid "Publication"
 msgstr "Pubblicazione"
 
-#: [communityconfig]publish_model_open_title
-msgid "Open"
-msgstr "Apri"
+#: [communityconfig]publish_model_open_title [room]public_muc
+msgid "Public"
+msgstr ""
 
 #: [communityconfig]publish_model_open_text
 msgid "Everyone can publish"
@@ -1708,10 +1700,6 @@ msgstr "Puoi andare nella pagina delle Configuazioni per descriverti e inserire 
 msgid "Disconnect"
 msgstr "Disconnetti"
 
-#: [status]updated
-msgid "Status updated"
-msgstr "Stato aggiornato"
-
 #: [status]presence
 msgid "Presence"
 msgstr "Presenza"
@@ -2007,10 +1995,6 @@ msgstr "Invito spedito"
 #: [room]invite_code
 msgid "Send this link to your contacts"
 msgstr "Manda questo link ai tuoi contatti"
-
-#: [room]public_muc
-msgid "Public"
-msgstr ""
 
 #: [room]public_muc_text
 msgid "This chatroom is publicly discoverable"
@@ -2670,8 +2654,16 @@ msgstr ""
 msgid "Copy Link"
 msgstr ""
 
+#: [button]open
+msgid "Open"
+msgstr "Apri"
+
 #: [input]optional
 msgid "Optional"
+msgstr ""
+
+#: [input]muc_pubsub_node
+msgid "Associated Community"
 msgstr ""
 
 #: [day]title
@@ -3281,3 +3273,6 @@ msgstr "L'API non è raggiungibile, riprovare più tardi"
 #: [field]type_here
 msgid "Type here"
 msgstr "Digita qui"
+
+#~ msgid "Status updated"
+#~ msgstr "Stato aggiornato"
