@@ -440,13 +440,13 @@ class Message extends Model
             && $stanza->reactions->attributes()->xmlns == 'urn:xmpp:reactions:0') {
 
             $parentMessage = \App\Message::jid($this->jidfrom)
-                ->where('id', (string)$stanza->reactions->attributes()->to)
+                ->where('id', (string)$stanza->reactions->attributes()->id)
                 ->first();
 
             // Specific case if the user is reacting to its own message
             if (!$parentMessage && !$this->isMuc()) {
                 $parentMessage = \App\Message::jid($this->jidfrom)
-                    ->where('originid', (string)$stanza->reactions->attributes()->to)
+                    ->where('originid', (string)$stanza->reactions->attributes()->id)
                     ->first();
 
                 if ($parentMessage && $parentMessage->jidfrom != $this->jidfrom) {

@@ -224,7 +224,7 @@ class Message
         if ($parentId != false) {
             $reactionsn = $dom->createElement('reactions');
             $reactionsn->setAttribute('xmlns', 'urn:xmpp:reactions:0');
-            $reactionsn->setAttribute('to', $parentId);
+            $reactionsn->setAttribute('id', $parentId);
 
             foreach ($reactions as $emoji) {
                 $reaction = $dom->createElement('reaction', $emoji);
