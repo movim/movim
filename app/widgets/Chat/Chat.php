@@ -1377,7 +1377,9 @@ class Chat extends \Movim\Widget\Base
         if ($message->type == 'invitation') {
             $view = $this->tpl();
             $view->assign('message', $message);
-            $message->body = $view->draw('_chat_invitation');
+            $message->body = ($message->jidfrom == $this->user->id)
+                ? $view->draw('_chat_invitation_self')
+                : $view->draw('_chat_invitation');
         }
 
         if ($message->type == 'jingle_start') {

@@ -18,7 +18,7 @@ use Movim\Image;
 use App\Conference;
 use App\Contact;
 use App\Info;
-
+use App\Message;
 use Respect\Validation\Validator;
 use Cocur\Slugify\Slugify;
 use Movim\EmbedLight;
@@ -508,12 +508,38 @@ class RoomsUtils extends Base
         }
 
         if (!empty($form->invite->value)) {
+            $id = generateUUID();
             $i = new Invite;
             $i->setTo($form->to->value)
-              ->setId(generateUUID())
+              ->setId($id)
               ->setInvite($form->invite->value)
               ->request();
 
+            // Create and save a message in the database to display the invitation
+            $m = new Message;
+
+            $m->user_id = $this->user->id;
+            $m->id = $id;
+            $m->type = 'invitation';
+            $m->subject = $form->to->value;
+            $m->jidfrom = $this->user->id;
+            $m->jidto = $form->invite->value;
+            $m->published = gmdate('Y-m-d H:i:s');
+            $m->body = '';
+            $m->markable = true;
+            $m->seen = true;
+            $m->resource = $this->user->session->resource;
+            $m->save();
+
+            $m = $m->fresh();
+
+            $packet = new \Moxl\Xec\Payload\Packet;
+            $packet->content = $m;
+
+            (new Chats)->onMessage($packet);
+            (new Chat)->onMessage($packet);
+
+            // Notify
             Toast::send($this->__('room.invited'));
             $this->rpc('Dialog_ajaxClear');
         }

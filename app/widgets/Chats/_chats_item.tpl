@@ -80,6 +80,8 @@
                 <p><i class="material-icons">delete</i> {$c->__('message.retracted')}</p>
             {elseif="$message->encrypted"}
                 <p><i class="material-icons">lock</i> {$c->__('message.encrypted')}</p>
+            {elseif="$message->type == 'invitation'"}
+            <p><i class="material-icons">outgoing_mail</i> {$c->__('message.invitation')}</p>
             {elseif="$message->file"}
                 <p>
                     {if="$message->jidfrom == $message->user_id"}
