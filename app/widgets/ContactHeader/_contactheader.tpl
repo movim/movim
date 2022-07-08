@@ -6,9 +6,6 @@
 
 <ul class="list thick">
     <li>
-        <span class="control active icon gray" onclick="ContactActions_ajaxGetDrawer('{$contact->id|echapJS}')">
-            <i class="material-icons">more_horiz</i>
-        </span>
         {if="!$contact->isMe()"}
             <span class="control icon active gray" onclick="ContactActions_ajaxChat('{$contact->id|echapJS}')"
                 title="{$c->__('button.chat')}">
@@ -42,18 +39,18 @@
         </span>
         {$url = $contact->getPhoto('m')}
         {if="$url"}
-            <span class="primary icon bubble">
+            <span class="primary icon bubble active" onclick="ContactActions_ajaxGetDrawer('{$contact->id|echapJS}')">
                 <img src="{$url}">
             </span>
         {/if}
         <div>
-            <p class="line">
+            <p class="line active" onclick="ContactActions_ajaxGetDrawer('{$contact->id|echapJS}')">
                 {$contact->truename}
                 {if="$roster && $roster->group"}
                     <span class="tag color {$roster->group|stringToColor}">{$roster->group}</span>
                 {/if}
             </p>
-            <p class="line">
+            <p class="line active" onclick="ContactActions_ajaxGetDrawer('{$contact->id|echapJS}')">
                 {$contact->id}
             </p>
         </div>

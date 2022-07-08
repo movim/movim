@@ -6,6 +6,7 @@ ul.list > li {
     padding: 0 1.5rem;
     box-sizing: border-box;
     position: relative;
+    transition: background-color 0.15s ease;
 }
 
 ul.list.compact > li {
@@ -29,6 +30,7 @@ ul.list li > * {
     flex: 1;
     min-width: 0;
     max-width: 100%;
+    transition: background-color 0.15s ease;
 }
 
 ul.list li:not(.subheader) > *:not(.primary):not(.control):not(.bubble):not(.main) {
@@ -77,7 +79,6 @@ ul.list.active.all li:active,
 ul.tabs > li:active,
 ul.list li > span:not(.color).active:active {
     background-color: rgba(var(--movim-font), 0.08);
-    transition: background-color 0.15s ease;
 }
 
 ul.list li > span.color.active:active {
@@ -216,6 +217,10 @@ ul li div.bubble:after {
 ul.list li > div > p {
     box-sizing: border-box;
     width: auto;
+}
+
+ul.list li > div > p.active:hover {
+    cursor: pointer;
 }
 
 ul.list > * > li > div > p:first-of-type,
@@ -424,6 +429,10 @@ ul li div.bubble span.info {
     float: right;
     clear: right;
     padding-left: 1rem;
+}
+
+ul li div.bubble.file span.info {
+    margin-top: 1rem;
 }
 
 ul li div.bubble span.info:empty:before {

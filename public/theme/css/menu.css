@@ -22,16 +22,15 @@ body > nav > ul.list li > p:nth-last-of-type(2) + p {
     color: gray;
 }
 
-body > nav > ul.list.active li:not(.subheader):before {
+body > nav > ul.list.active li:before {
     content: '';
     display: block;
-    background-color: transparent;
     transition: background-color 0.3s ease;
     position: absolute;
-    top: 0.5rem;
+    top: 0.45rem;
     left: 0.6rem;
     width: calc(100% - 1.25rem);
-    height: calc(100% - 1rem);
+    height: calc(100% - 0.9rem);
     border-radius: 0.5rem;
 }
 

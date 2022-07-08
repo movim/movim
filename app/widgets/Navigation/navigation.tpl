@@ -13,8 +13,7 @@
         </li>
     </a>
     <hr />
-    <a class="classic"
-       href="{$c->route('news')}"
+    <a href="{$c->route('news')}"
        title="{$c->__('page.news')}">
         <li {if="$page == 'news' || $page == 'post'"}class="active"{/if}>
             <span class="primary icon">
@@ -27,8 +26,7 @@
         </li>
     </a>
     {/if}
-    <a class="classic"
-       href="{$c->route('explore')}"
+    <a href="{$c->route('explore')}"
        title="{$c->__('page.explore')}">
         <li {if="$page == 'explore' || $page == 'community'"}class="active"{/if}>
             <span class="primary icon"><i class="material-icons">explore</i></span>
@@ -37,7 +35,7 @@
             </div>
         </li>
     </a>
-    <a class="classic" href="{$c->route('chat')}"
+    <a href="{$c->route('chat')}"
        id="chatbutton"
        title="{$c->__('page.chats')}">
         <li {if="$page == 'chat'"}class="active"{/if}>
@@ -55,8 +53,7 @@
 </ul>
 
 <ul class="list divided oppose active" dir="ltr">
-    <a class="classic"
-       href="#">
+    <a href="#">
         <li onclick="Notifications_ajaxRequest()"
             title="{$c->__('notifs.title')}"
         >
@@ -71,8 +68,7 @@
     </a>
 
     {if="$c->getUser()->hasPubsub()"}
-    <a class="classic"
-       href="{$c->route('subscriptions')}"
+    <a href="{$c->route('subscriptions')}"
        title="{$c->__('communityaffiliation.subscriptions')}">
         <li {if="$page == 'subscriptions'"}class="active"{/if}>
             <span class="primary icon"><i class="material-icons">bookmarks</i></span>
@@ -93,8 +89,7 @@
             <p class="normal">{$c->__('button.search')}</p>
         </div>
     </li>
-    <a class="classic"
-       href="{$c->route('conf')}"
+    <a href="{$c->route('conf')}"
        title="{$c->__('page.configuration')}">
         <li {if="$page == 'conf'"}class="active"{/if}>
             <span class="primary icon">
@@ -107,8 +102,7 @@
     </a>
 
     {if="$c->getUser()->admin"}
-    <a class="classic"
-       href="{$c->route('admin')}"
+    <a href="{$c->route('admin')}"
        title="{$c->__('page.configuration')}">
         <li {if="$page == 'admin'"}class="active"{/if}>
             <span class="primary icon">
@@ -121,9 +115,8 @@
     </a>
     {/if}
 
-    <a class="classic"
-        href="{$c->route('help')}"
-        title="{$c->__('page.help')}">
+    <a href="{$c->route('help')}"
+       title="{$c->__('page.help')}">
         <li {if="$page == 'help'"}class="active"{/if}>
             <span class="primary icon">
                 <i class="material-icons">help</i>

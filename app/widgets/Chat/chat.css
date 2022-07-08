@@ -19,10 +19,6 @@ main:not(.enabled) #chat_widget {
     width: 100%;
 }
 
-#chat_widget > header p.active:hover {
-    cursor: pointer;
-}
-
 #chat_widget p.compose:not(.first):not(:empty),
 #chat_widget p.compose:not(.first):empty + p {
     animation: fadein 0.3s;
@@ -472,6 +468,11 @@ main:not(.enabled) #chat_widget {
 
 #chat_widget .bubble ul.reactions {
     margin-right: 5rem;
+    margin-bottom: -0.25rem;
+}
+
+#chat_widget .bubble:not(.file) ul.reactions {
+    margin-top: 0.25rem;
 }
 
 #chat_widget .bubble div span.reaction,

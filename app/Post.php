@@ -387,7 +387,8 @@ class Post extends Model
         // Tags parsing
         if ($entry->entry->category) {
             if ($entry->entry->category->count() == 1
-            && isset($entry->entry->category->attributes()->term)) {
+            && isset($entry->entry->category->attributes()->term)
+            && !empty(trim($entry->entry->category->attributes()->term))) {
                 $tag = \App\Tag::firstOrCreateSafe([
                     'name' => strtolower((string)$entry->entry->category->attributes()->term)
                 ]);
@@ -399,15 +400,17 @@ class Post extends Model
                 }
             } else {
                 foreach ($entry->entry->category as $cat) {
-                    $tag = \App\Tag::firstOrCreateSafe([
-                        'name' => strtolower((string)$cat->attributes()->term)
-                    ]);
+                    if (!empty(trim((string)$cat->attributes()->term))) {
+                        $tag = \App\Tag::firstOrCreateSafe([
+                            'name' => strtolower((string)$cat->attributes()->term)
+                        ]);
 
-                    if ($tag) {
-                        $this->tags[] = $tag->id;
+                        if ($tag) {
+                            $this->tags[] = $tag->id;
 
-                        if ($tag->name == 'nsfw') {
-                            $this->nsfw = true;
+                            if ($tag->name == 'nsfw') {
+                                $this->nsfw = true;
+                            }
                         }
                     }
                 }

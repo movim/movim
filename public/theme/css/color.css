@@ -72,14 +72,12 @@ table tr th {
     border-color: rgba(255, 255, 255, 0.05);
 }
 
-body > nav > ul.list.active li.active:not(.subheader):before,
-body > nav > ul.list.active li:hover:not(.subheader):before {
-    background-color: rgba(var(--movim-background), 0.1);
+body > nav > ul.list.active li.active:before {
+    background-color: rgba(var(--movim-element-action), 0.1);
 }
 
-body.nightmode > nav > ul.list.active li.active:not(.subheader):before,
-body.nightmode > nav > ul.list.active li:hover:not(.subheader):before {
-    background-color: rgba(var(--movim-background), 0.7);
+body > nav > ul.list.active li:not(.active):hover:before {
+    background-color: rgba(var(--movim-element-action), 0.05);
 }
 
 ul li.date > div > p.normal,
@@ -218,7 +216,6 @@ main > header ul.list li > div > p:nth-last-of-type(2) + p {
 /* Gray accent : orange */
 
 .tabs,
-.tabs li.active a:not(.classic):not(.action),
 .button,
 header:not(.big) .icon a,
 a {
