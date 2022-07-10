@@ -5,6 +5,7 @@ v0.21 (trunk)
 ---------------------------
  * Implement XEP-0461: Message Replies
  * Add PWA Push Notification support through the service worker
+ * CSS fixes
 
 v0.20
 ---------------------------
