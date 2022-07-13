@@ -48,4 +48,4 @@ Help us translate Movim on https://www.transifex.com/projects/p/movim/.
 
 License
 -------
-Movim is released under the terms of the AGPLv3 license. See `COPYING` for more details.
+Movim is released under the terms of the AGPLv3 license. See [COPYING](./COPYING) for more details.
