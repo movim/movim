@@ -5,7 +5,7 @@
 
 About
 -----
-Movim is a social and chat platform that act as a web frontend for the XMPP protocol.
+Movim is a social and chat platform that acts as a web frontend for the XMPP protocol.
 
 ![movim screenshot](https://movim.eu/img/home.png)
 
