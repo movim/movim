@@ -18,7 +18,7 @@ Movim is also available as a [Docker image](https://github.com/movim/movim_docke
 Security report
 ---------------
 
-See `SECURITY.md`.
+See [SECURITY.md](./SECURITY.md).
 
 Support Us
 ----------
