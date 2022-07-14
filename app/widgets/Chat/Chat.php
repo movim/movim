@@ -866,7 +866,7 @@ class Chat extends \Movim\Widget\Base
      */
     public function ajaxGetHistory($jid, $date, $muc = false, $prepend = true)
     {
-        if (!$this->validateJid($jid)) {
+        if (!$this->validateJid($jid) && isset($date)) {
             return;
         }
 
@@ -1108,7 +1108,9 @@ class Chat extends \Movim\Widget\Base
         $emoji = \Movim\Emoji::getInstance();
 
         // URL messages
-        $message->url = filter_var(trim($message->body), FILTER_VALIDATE_URL);
+        if (!empty($message->body)) {
+            $message->url = filter_var(trim($message->body), FILTER_VALIDATE_URL);
+        }
 
         // If the message doesn't contain a file but is a URL, we try to resolve it
         if (!$message->file && $message->url && $message->resolved == false) {

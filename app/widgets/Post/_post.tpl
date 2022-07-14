@@ -278,7 +278,9 @@
         <ul class="grid active">
             {loop="$post->pictures"}
                 <li
-                    title="{$value->title}"
+                    {if="isset($value->title)"}
+                        title="{$value->title}"
+                    {/if}
                     {if="$public"}
                         style="background-image: url('{$value->href}')"
                     {else}
