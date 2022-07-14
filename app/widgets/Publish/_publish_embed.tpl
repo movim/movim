@@ -1,5 +1,7 @@
 {$resolved = $embed->resolve()}
 
+{if="$resolved"}
+
 <li class="block" id="{$embed->HTMLId}">
     <span class="control active icon gray" onclick="Publish_ajaxHttpRemoveEmbed({$embed->draft_id}, {$embed->id})">
         <i class="material-icons">close</i>
@@ -66,3 +68,5 @@
         </p>
     </div>
 </li>
+
+{/if}
