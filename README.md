@@ -5,7 +5,7 @@
 
 About
 -----
-Movim is a social and chat platform that act as a web frontend for the XMPP protocol.
+Movim is a social and chat platform that acts as a web frontend for the XMPP protocol.
 
 ![movim screenshot](https://movim.eu/img/home.png)
 
@@ -18,7 +18,7 @@ Movim is also available as a [Docker image](https://github.com/movim/movim_docke
 Security report
 ---------------
 
-See `SECURITY.md`.
+See [SECURITY.md](./SECURITY.md).
 
 Support Us
 ----------
@@ -48,4 +48,4 @@ Help us translate Movim on https://www.transifex.com/projects/p/movim/.
 
 License
 -------
-Movim is released under the terms of the AGPLv3 license. See `COPYING` for more details.
+Movim is released under the terms of the AGPLv3 license. See [COPYING](./COPYING) for more details.
