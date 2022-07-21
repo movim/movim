@@ -1,0 +1,53 @@
+your.domain.tld {
+	# You need to change:
+	# Your domain/subdomain
+	# The unix php socket used to match the one of your system
+	# The port you set for movim under /ws/*
+	# The root directory where movim is installed <path-to>
+	# Remember the installation guide on the wiki, the caddy user should have read and write acces to the files under /public and must have exectue permissions for the daemon running chown -R caddy:caddy movim should fix any issue
+	# Feel free to delete all comments
+	
+	encode zstd gzip 
+
+	@static path /stickers/* /cache/* /theme/* /scripts/*.js #No need to use a @name matcher but is a bit more organized 
+	
+	handle @static {
+		root * /path-to/movim/public
+		file_server
+	}
+
+	handle {
+		reverse_proxy unix//run/php/php7.4-fpm.sock {
+			transport fastcgi {
+				env SCRIPT_FILENAME /path-to/movim/public/index.php
+			}
+		}
+	}
+
+	handle /picture/* {
+		reverse_proxy unix//run/php/php7.4-fpm.sock {
+			transport fastcgi {
+				env SCRIPT_FILENAME /path-to/movim/public/picture/index.php
+			}
+		}
+	}
+
+	handle /ws/* {
+		reverse_proxy localhost:8080
+	}
+	
+	#Security options can ignore or delete
+	
+	header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+	header X-XSS-Protection "1; mode=block"
+	header X-Content-Type-Options "nosniff"
+	header X-Frame-Options "DENY"
+	header -Server
+	header / {
+		Content-Security-Policy = "upgrade-insecure-requests; default-src 'self'; style-src 'self'; script-src 'self'; img-src 'self'; object-src 'self'; worker-src 'self'; manifest-src 'self';"
+		Referrer-Policy = "strict-origin-when-cross-origin"
+		Permissions-Policy = "fullscreen=(self)"
+		cache-control = "max-age=0,no-cache,no-store,must-revalidate" # This disables caching may want to deactivate
+		X-Robots-Tag "noindex, nofollow, noarchive, nosnippet, notranslate, noimageindex" # Should work against indexing engines like google for more privacy
+	}
+}
