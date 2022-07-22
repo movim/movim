@@ -21,7 +21,7 @@
 
         "fabiang/sasl": "^1.1.0",
         "rain/raintpl": "^3.1.1",
-        "embed/embed": "^v3.4",
+        "embed/embed": "^v4.0",
         "league/commonmark": "2.3.*",
 
         "respect/validation": "^2.2",

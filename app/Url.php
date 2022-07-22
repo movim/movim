@@ -5,7 +5,11 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Respect\Validation\Validator;
 use Movim\EmbedLight;
-use Embed\Http\CurlDispatcher;
+
+use Embed\Embed;
+use Embed\Http\Crawler;
+use Embed\Http\CurlClient;
+use Movim\EmbedImagesExtractor;
 
 class Url extends Model
 {
@@ -37,16 +41,7 @@ class Url extends Model
     public function maybeResolveMessageFile($cache)
     {
         if ($cache->title == $cache->url
-        && ((
-                $cache->type == 'photo'
-                && !empty($cache->images)
-                && isset($cache->contentType)
-                && typeIsPicture($cache->contentType)
-            ) || (
-                $cache->type == 'video'
-                && isset($cache->contentType)
-                && typeIsVideo($cache->contentType)
-            ))
+        && ($cache->type == 'image' || $cache->type == 'video')
         ) {
             $name = '';
             $path = parse_url($cache->url, PHP_URL_PATH);
@@ -73,13 +68,35 @@ class Url extends Model
 
     public function setCacheAttribute($url)
     {
-        $dispatcher = new CurlDispatcher([
-            CURLOPT_CONNECTTIMEOUT => 10,
-            CURLOPT_TIMEOUT => 10,
-            CURLOPT_USERAGENT => DEFAULT_HTTP_USER_AGENT,
+        $client = new CurlClient;
+        $client->setSettings([
+            'max_redirs' => 3,               // see CURLOPT_MAXREDIRS
+            'connect_timeout' => 5,          // see CURLOPT_CONNECTTIMEOUT
+            'timeout' => 5,                  // see CURLOPT_TIMEOUT
+            'ssl_verify_host' => 2,          // see CURLOPT_SSL_VERIFYHOST
+            'ssl_verify_peer' => 1,          // see CURLOPT_SSL_VERIFYPEER
+            'follow_location' => true,       // see CURLOPT_FOLLOWLOCATION
+            'user_agent' => DEFAULT_HTTP_USER_AGENT,
         ]);
 
-        $embed = new EmbedLight(\Embed\Embed::create($url, null, $dispatcher));
-        $this->attributes['cache'] = base64_encode(serialize($embed));
+        try {
+            $embed = new Embed(new Crawler($client));
+            $configuration = Configuration::get();
+
+            if (!empty($configuration->twittertoken)) {
+                $embed->setSettings([
+                    'twitter:token' => $configuration->twittertoken
+                ]);
+            }
+
+            $embed->getExtractorFactory()->addDetector('images', EmbedImagesExtractor::class);
+            $info = $embed->get($url);
+
+            $embed = new EmbedLight($info);
+
+            $this->attributes['cache'] = base64_encode(serialize($embed));
+        } catch (\Exception $e) {
+            error_log($e->getMessage());
+        }
     }
 }

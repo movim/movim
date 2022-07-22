@@ -20,9 +20,7 @@ function addUrls($string, bool $preview = false)
                 if ($preview) {
                     try {
                         $embed = Embed\Embed::create($match[0]);
-                        if ($embed->type == 'photo'
-                        && $embed->images[0]['width'] <= 1024
-                        && $embed->images[0]['height'] <= 1024) {
+                        if ($embed->type == 'image') {
                             $content = '<img src="'.$match[0].'"/>';
                         } elseif ($embed->type == 'link') {
                             $content .= ' - '. $embed->title . ' - ' . $embed->providerName;
@@ -440,6 +438,7 @@ function invertSign($num)
 function firstLetterCapitalize($string, bool $firstOnly = false): string
 {
     $size = ($firstOnly) ? 1 : 2;
+    $string = empty($string) ? 'M' : $string;
     return mb_convert_case(mb_substr($string, 0, $size), MB_CASE_TITLE);
 }
 

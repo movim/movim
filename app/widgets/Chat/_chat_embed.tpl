@@ -17,7 +17,7 @@
     {else}
         <span class="primary icon bubble gray">
             {if="$embed->providerIcon"}
-                <img src="{$embed->providerIcon}"/>
+                <img src="{$embed->providerIcon|protectPicture}"/>
             {else}
                 <i class="material-icons">link</i>
             {/if}

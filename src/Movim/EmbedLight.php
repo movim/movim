@@ -6,43 +6,56 @@ class EmbedLight
 {
     public function __construct($embed)
     {
-        $this->title            = $embed->title;
+        $this->title            = $embed->title ? (string)$embed->title : (string)$embed->url;
         $this->description      = $embed->description;
-        $this->url              = $embed->url;
-        $this->type             = $embed->type;
-        $this->contentType      = $embed->getResponse()->getContentType();
-        $this->tags             = $embed->tags;
-        $this->image            = $embed->image;
-        $this->imageWidth       = $embed->imageWidth;
-        $this->imageHeight      = $embed->imageHeight;
-        $this->images           = $embed->images;
-        $this->authorName       = $embed->authorName;
-        $this->authorUrl        = $embed->authorUrl;
-        $this->providerIcon     = $embed->providerIcon;
-        $this->providerIcons    = $embed->providerIcons;
+        $this->url              = (string)$embed->url;
+        $this->contentType      = $embed->getResponse()->getHeader('content-type')[0];
+
+        $this->type = 'text';
+
+        if (typeIsPicture($this->contentType)) {
+            $this->type = 'image';
+        } elseif (typeIsVideo($this->contentType)) {
+            $this->type = 'video';
+        }
+
+        $this->tags             = (array)$embed->keywords;
+        $this->authorName       = $embed->authorName ? (string)$embed->authorName : null;
+        $this->authorUrl        = $embed->authorUrl ? (string)$embed->authorUrl : null;
+        $this->providerIcon     = $embed->icon ? (string)$embed->icon : null;
         $this->providerName     = $embed->providerName;
-        $this->providerUrl      = $embed->providerUrl;
+        $this->providerUrl      = $embed->providerUrl ? (string)$embed->providerUrl : null;
         $this->publishedTime    = $embed->publishedTime;
         $this->license          = $embed->license;
 
-        // Adjust the default behavior of Embed by using the file size for the images size
-        foreach ($embed->getDispatcher()->getAllResponses() as $response) {
-            foreach ($this->images as $key => $image) {
-                if ($image['url'] == $response->getUrl()) {
-                    $this->images[$key]['size'] = $response->getHeader('Content-Length');
-                }
-            }
-        }
+        // Images
+        $this->images           = [];
 
-        foreach ($this->images as $key => $image) {
-            if ($key != 0 && $image['width'] < 512 && $image['height'] < 512) {
-                unset($this->images[$key]);
+        if ($this->type == 'image') {
+            $this->images = [
+                [
+                    'url' => (string)$embed->url,
+                    'size' => $embed->getResponse()->getHeader('content-length')[0]
+                ]
+            ];
+        }  elseif ($embed->image) {
+            $this->images = [
+                [
+                    'url' => (string)$embed->image,
+                    'size' => 0
+                ]
+            ];
+        } /*elseif($embed->images) {
+            foreach ($embed->images as $key => $image) {
+                $this->images[$key] = [
+                    'url' => (string)$key,
+                    'size' => 0
+                ];
             }
-        }
+        }*/
 
         // Reset the keys
         $this->images = array_values($this->images);
-
         return $this;
     }
 }

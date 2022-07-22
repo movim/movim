@@ -15,7 +15,7 @@
 
             {if="$embed->imagenumber > 0"}
                 style="background-image: url({$resolved->images[$imagenumber]['url']|protectPicture})"
-                title="{$resolved->images[$imagenumber]['width']} x {$resolved->images[$imagenumber]['height']} - {$resolved->images[$imagenumber]['size']|sizeToCleanSize}"
+                title="{$resolved->images[$imagenumber]['size']|sizeToCleanSize}"
             {/if}
             >
             <i class="material-icons">collections</i>
@@ -39,7 +39,7 @@
     {/if}
 
     <div>
-        {if="$resolved->type == 'photo'"}
+        {if="$resolved->type == 'image'"}
             <p class="line">{$resolved->images[$embed->imagenumber]['width']} x {$resolved->images[$embed->imagenumber]['height']}</p>
             <p class="line">{$resolved->images[$embed->imagenumber]['size']|sizeToCleanSize}</p>
         {else}
