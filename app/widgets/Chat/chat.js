@@ -1284,7 +1284,7 @@ var Chat = {
     },
     getCardHtml: function(card) {
         var ul = document.createElement('ul');
-        ul.setAttribute('class', 'card list middle noanim');
+        ul.setAttribute('class', 'card list middle noanim shadow');
         ul.innerHTML = card;
 
         if (ul.querySelector('li').getAttribute('onclick')) {

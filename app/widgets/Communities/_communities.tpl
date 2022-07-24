@@ -20,6 +20,4 @@
     </li>
 </ul>
 
-<br />
-
 <div id="communities_posts" class="spin" style="min-height: 30rem;"></div>

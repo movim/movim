@@ -30,6 +30,7 @@ body {
 body > *,
 .context_menu,
 .icon-text,
+.tabs a,
 input, textarea, select {
     color: rgba(var(--movim-font), 0.87);
 }
@@ -48,7 +49,6 @@ ul.list li span.control.divided:before {
 }
 
 label, span.info,
-.tabs a,
 table tr th {
     color: rgba(var(--movim-font), 0.54);
 }
@@ -71,14 +71,18 @@ table tr th {
 .color.dark hr {
     border-color: rgba(255, 255, 255, 0.05);
 }
-
+/*
 body > nav > ul.list.active li.active:before {
-    background-color: rgba(var(--movim-element-action), 0.1);
+    background-color: rgba(var(--movim-element-action), 0.08);
+}
+
+body > nav > ul.list.active li:not(.active):active:before {
+    background-color: rgba(var(--movim-element-action), 0.08);
 }
 
 body > nav > ul.list.active li:not(.active):hover:before {
-    background-color: rgba(var(--movim-element-action), 0.05);
-}
+    background-color: rgba(var(--movim-element-action), 0.04);
+}*/
 
 ul li.date > div > p.normal,
 .dialog, .drawer, ul.context_menu,

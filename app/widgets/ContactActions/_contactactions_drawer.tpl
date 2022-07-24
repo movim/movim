@@ -28,7 +28,7 @@
                     </span>
                 {/if}
                 {if="!$contact->isMe()"}
-                    <span class="control icon active divided" onclick="ContactActions_ajaxChat('{$contact->id|echapJS}')">
+                    <span class="control icon active divided" onclick="Search.chat('{$contact->id|echapJS}')">
                         <i class="material-icons">comment</i>
                     </span>
                     {if="$roster && $roster->presences->count() > 0"}

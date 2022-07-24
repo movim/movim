@@ -22,6 +22,7 @@
     border-radius: 0.5rem;
     margin-top: -1rem;
     position: relative;
+    animation: zoom 0.3s;
 }
 
 #preview .pinfo {
@@ -44,6 +45,7 @@
     position: absolute;
     bottom: 1rem;
     text-align: center;
+    animation: fadein 0.3s;
 }
 
 #preview .prevnext {

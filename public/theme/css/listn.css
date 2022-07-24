@@ -57,18 +57,7 @@ ul.list li.active:hover,
 ul.list.active li.active:not(.subheader),
 ul.tabs > li:hover,
 ul.list li > span:not(.color).active:hover {
-    background-color: rgba(var(--movim-font), 0.04);
-    cursor: pointer;
-}
-
-/* Navigation exceptions */
-body > nav > ul.list.active li.active:not(.subheader),
-body > nav > ul.list.active li:hover:not(.subheader) {
-    background-color: transparent;
-}
-
-ul.list li > span.color.active:hover {
-    opacity: 0.8;
+    background-color: rgba(var(--movim-element-action), 0.1);
     cursor: pointer;
 }
 
@@ -78,7 +67,7 @@ ul.list.active li:active:not(.subheader),
 ul.list.active.all li:active,
 ul.tabs > li:active,
 ul.list li > span:not(.color).active:active {
-    background-color: rgba(var(--movim-font), 0.08);
+    background-color: rgba(var(--movim-element-action), 0.2);
 }
 
 ul.list li > span.color.active:active {
@@ -432,7 +421,7 @@ ul li div.bubble span.info {
 }
 
 ul li div.bubble.file span.info {
-    margin-top: 1rem;
+    /*margin-top: 0.25rem;*/
 }
 
 ul li div.bubble span.info:empty:before {
