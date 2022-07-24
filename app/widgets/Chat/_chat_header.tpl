@@ -127,9 +127,6 @@
         {if="$conference && $conference->presence && !$anon"}
             {if="$conference->presence->mucrole == 'moderator' || $conference->presence->mucaffiliation == 'owner'"}
                 <li class="subheader">
-                    <span class="control icon">
-                        <i class="material-icons">settings</i>
-                    </span>
                     <div>
                         <p class="line">{$c->__('chatroom.administration')}</p>
                     </div>
