@@ -1,0 +1,26 @@
+<div class="tabelem padded_top_bottom" title="{$c->__('blocked.title')}" id="blocked_widget">
+    <ul class="list thick">
+        <li>
+            <span class="primary icon gray">
+                <i class="material-icons">info</i>
+            </span>
+            <div>
+                <p class="line normal">{$c->__('blocked.info')}</p>
+                <p class="line">{$c->__('blocked.info2')}</p>
+            </div>
+        </li>
+    </ul>
+    <ul class="list thin" id="blocked_widget_list">{loop="$blocked"}<li id="blocked-{$value->id|cleanupId}">
+            <span class="control icon active divided"
+                onclick="Blocked_ajaxUnblockContact('{$value->id|echapJS}')">
+                <i class="material-icons">close</i>
+            </span>
+            <div>
+                <p class="line normal">{$value->id} <span class="second">{$value->created_at|strtotime|prepareDate}</span></p>
+            </div>
+        </li>{/loop}</ul>
+    <div class="placeholder">
+        <i class="material-icons">block</i>
+        <h4>{$c->__('blocked.placeholder')}</h4>
+    </div>
+</div>

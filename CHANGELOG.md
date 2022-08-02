@@ -7,6 +7,7 @@ v0.21 (trunk)
  * Add PWA Push Notification support through the service worker
  * CSS fixes
  * Upgrade Embed to v4.x and add Twitter integration
+ * Add contact blocklist feature
 
 v0.20
 ---------------------------

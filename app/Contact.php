@@ -279,6 +279,11 @@ class Contact extends Model
         );
     }
 
+    public function isBlocked(): bool
+    {
+        return \App\User::me()->hasBlocked($this->id);
+    }
+
     public function isEmpty(): bool
     {
         $this->isValidDate();

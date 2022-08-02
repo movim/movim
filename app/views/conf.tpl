@@ -37,5 +37,6 @@
         <?php } ?>
         <?php $this->widget('Account');?>
         <?php $this->widget('AdHoc');?>
+        <?php $this->widget('Blocked');?>
     </div>
 </main>

@@ -10,6 +10,11 @@ class Presence extends Payload
 {
     public function handle($stanza, $parent = false)
     {
+        $jid = explodeJid($stanza->attributes()->from);
+        if (\App\User::me()->hasBlocked($jid['jid'])) {
+            return;
+        }
+
         // Subscribe request
         if ((string)$stanza->attributes()->type == 'subscribe') {
             $session = Session::start();

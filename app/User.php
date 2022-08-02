@@ -15,6 +15,7 @@ class User extends Model
     public $incrementing = false;
     private static $me = null;
     private $unreads = null;
+    private $blocked = [];
 
     public function save(array $options = [])
     {
@@ -58,6 +59,11 @@ class User extends Model
     public function pushSubscriptions()
     {
         return $this->hasMany('App\PushSubscription');
+    }
+
+    public function reported()
+    {
+        return $this->belongsToMany('App\Reported')->withTimestamps();
     }
 
     public function getResolvedNicknameAttribute()
@@ -138,6 +144,9 @@ class User extends Model
     {
         $contact = Contact::firstOrNew(['id' => $this->id]);
         $contact->save();
+
+        // Load the blocked accounts in memory
+        $this->refreshBlocked();
     }
 
     public function setConfig(array $config)
@@ -208,4 +217,15 @@ class User extends Model
         $this->attributes['public'] = false;
         $this->save();
     }
+
+    public function refreshBlocked()
+    {
+        $this->blocked = $this->reported()->get()->pluck('id')->toArray();
+    }
+
+    public function hasBlocked(string $jid): bool
+    {
+        return in_array($jid, $this->blocked);
+    }
+
 }

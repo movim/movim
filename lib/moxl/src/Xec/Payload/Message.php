@@ -21,6 +21,10 @@ class Message extends Payload
         $message = \App\Message::findByStanza($stanza);
         $message = $message->set($stanza, $parent);
 
+        if ($message->type == 'chat' && \App\User::me()->hasBlocked($message->jidfrom)) {
+            return;
+        }
+
         if ($stanza->composing || $stanza->paused || $stanza->active) {
             $from = ($message->type == 'groupchat')
                 ? $message->jidfrom.'/'.$message->resource
