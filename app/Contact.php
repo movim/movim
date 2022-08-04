@@ -281,7 +281,7 @@ class Contact extends Model
 
     public function isBlocked(): bool
     {
-        return \App\User::me()->hasBlocked($this->id);
+        return \App\User::me()->hasBlocked($this->id, true);
     }
 
     public function isEmpty(): bool

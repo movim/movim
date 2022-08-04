@@ -15,7 +15,10 @@ class User extends Model
     public $incrementing = false;
     private static $me = null;
     private $unreads = null;
-    private $blocked = [];
+
+    private $blockListInitialized = false;
+    private $userBlocked = [];
+    private $globalBlocked = [];
 
     public function save(array $options = [])
     {
@@ -144,9 +147,6 @@ class User extends Model
     {
         $contact = Contact::firstOrNew(['id' => $this->id]);
         $contact->save();
-
-        // Load the blocked accounts in memory
-        $this->refreshBlocked();
     }
 
     public function setConfig(array $config)
@@ -220,12 +220,22 @@ class User extends Model
 
     public function refreshBlocked()
     {
-        $this->blocked = $this->reported()->get()->pluck('id')->toArray();
+        $this->blockListInitialized = true;
+        $this->userBlocked = (array)$this->reported()->get()->pluck('id')->toArray();
+        $this->globalBlocked = (array)Reported::where('blocked', true)->get()->pluck('id')->toArray();
     }
 
-    public function hasBlocked(string $jid): bool
+    public function hasBlocked(string $jid, bool $localOnly = false): bool
     {
-        return in_array($jid, $this->blocked);
+        if ($this->blockListInitialized == false) {
+            $this->refreshBlocked();
+        }
+
+        if ($localOnly) {
+            return in_array($jid, $this->userBlocked);
+        }
+
+        return in_array($jid, $this->userBlocked) || in_array($jid, $this->globalBlocked);
     }
 
 }

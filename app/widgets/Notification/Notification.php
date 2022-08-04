@@ -265,7 +265,6 @@ class Notification extends Base
     {
         $pushSubscription = $this->user->pushSubscriptions()->where('endpoint', $endpoint)->first();
 
-        \Utils::debug(serialize($userAgent));
         $p = $pushSubscription ?? new PushSubscription;
         $p->user_id = $this->user->id;
         $p->endpoint = $endpoint;

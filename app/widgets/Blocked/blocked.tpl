@@ -11,12 +11,15 @@
         </li>
     </ul>
     <ul class="list thin" id="blocked_widget_list">{loop="$blocked"}<li id="blocked-{$value->id|cleanupId}">
+            <span class="primary icon gray">
+                <i class="material-icons">person</i>
+            </span>
             <span class="control icon active divided"
                 onclick="Blocked_ajaxUnblockContact('{$value->id|echapJS}')">
                 <i class="material-icons">close</i>
             </span>
             <div>
-                <p class="line normal">{$value->id} <span class="second">{$value->created_at|strtotime|prepareDate}</span></p>
+                <p class="line normal">{$value->id} <span class="info">{$value->created_at|strtotime|prepareDate}</span></p>
             </div>
         </li>{/loop}</ul>
     <div class="placeholder">

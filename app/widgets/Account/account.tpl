@@ -1,5 +1,5 @@
 <div class="tabelem" title="{$c->__('account.title')}" id="account_widget">
-    <ul class="list middle active">
+    <ul class="list active">
         <li onclick="Account_ajaxChangePassword()">
             <span class="primary icon">
                 <i class="material-icons">vpn_key</i>

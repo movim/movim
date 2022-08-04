@@ -33,6 +33,7 @@
 
             <?php $this->widget('AdminMain');?>
             <?php $this->widget('AdminSessions');?>
+            <?php $this->widget('AdminReported');?>
         <?php } ?>
     </div>
 </main>

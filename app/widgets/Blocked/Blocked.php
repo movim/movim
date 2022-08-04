@@ -7,9 +7,6 @@ class Blocked extends \Movim\Widget\Base
         $this->addcss('blocked.css');
     }
 
-    /**
-     * @brief Unblock the contact
-     */
     public function ajaxUnblockContact(string $jid)
     {
         $this->user->reported()->detach($jid);
@@ -22,6 +19,6 @@ class Blocked extends \Movim\Widget\Base
 
     public function display()
     {
-        $this->view->assign('blocked', $this->user->reported()->get());
+        $this->view->assign('blocked', $this->user->reported()->orderBy('reported_user.created_at', 'desc')->get());
     }
 }
