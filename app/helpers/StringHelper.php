@@ -40,7 +40,8 @@ function addUrls($string, bool $preview = false)
                             '\">'.
                             $content.
                             '</a>'
-                        );
+                        ).
+                        ($lastTag !== false ? $lastTag : '');
                     }
                     return stripslashes(
                         '<a href=\"'.
@@ -48,7 +49,8 @@ function addUrls($string, bool $preview = false)
                         '\">'.
                         $content.
                         '</a>'
-                    );
+                    ).
+                    ($lastTag !== false ? $lastTag : '');
                 }
 
                 if (in_array(parse_url($content, PHP_URL_SCHEME), ['http', 'https'])) {
