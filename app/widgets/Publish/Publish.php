@@ -205,17 +205,17 @@ class Publish extends Base
                 $resolved = $embed->resolve();
 
                 // The url is an image
-                if (is_array($resolved->images) && count($resolved->images) == 1
+                if ($resolved->type == 'image'
                 && $resolved->images[0]['url'] == $embed->url) {
                     $p->addImage(
                         $resolved->images[0]['url'],
                         $resolved->title,
-                        $resolved->images[0]['mime']
+                        $resolved->contentType
                     );
                 }
 
                 // The url is a gallery
-                elseif (is_array($resolved->images) && count($resolved->images) > 1) {
+                /*elseif (is_array($resolved->images) && count($resolved->images) > 1) {
                     // If an image was picked (0 is not picked)
                     if ($embed->imagenumber > 0 && array_key_exists($embed->imagenumber-1, $resolved->images)) {
                         $p->addImage(
@@ -232,7 +232,7 @@ class Publish extends Base
                         $resolved->description,
                         $resolved->providerIcon
                     );
-                }
+                }*/
 
                 // The url is a link
                 else {

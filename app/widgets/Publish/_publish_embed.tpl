@@ -22,7 +22,7 @@
         </span>
     {else}
         {if="!empty($resolved->images) && (count($resolved->images) > 1 || $resolved->images[0]['url'] == $embed->url)"}
-            <span class="primary icon thumb active color gray"
+            <span class="primary icon thumb active color"
                 onclick="Preview_ajaxHttpShow('{$resolved->images[0]['url']}')"
                 style="background-image: url({$resolved->images[0]['url']|protectPicture})">
                 <i class="material-icons">image</i>
@@ -40,32 +40,25 @@
 
     <div>
         {if="$resolved->type == 'image'"}
-            <p class="line">{$resolved->images[$embed->imagenumber]['width']} x {$resolved->images[$embed->imagenumber]['height']}</p>
+            <p class="line">
+                {if="$resolved->images[0]['url'] == $embed->url"}
+                    {$c->__('chats.picture')}
+                {elseif="!empty($resolved->images) && count($resolved->images) > 1"}
+                    {$c->__('chats.picture')}
+                    {if="$embed->imagenumber == 0"}
+                        -
+                    {else}
+                        {$embed->imagenumber}
+                    {/if}
+                    /
+                    {$resolved->images|count}
+                {/if}
+            </p>
             <p class="line">{$resolved->images[$embed->imagenumber]['size']|sizeToCleanSize}</p>
         {else}
             <p class="line">{$resolved->title}</p>
             <p class="line">{$resolved->description}</p>
         {/if}
-
-        <p class="line">
-            {if="$resolved->images[0]['url'] == $embed->url"}
-                {$c->__('chats.picture')}
-                ·
-            {elseif="!empty($resolved->images) && count($resolved->images) > 1"}
-                {$c->__('chats.picture')}
-                {if="$embed->imagenumber == 0"}
-                    -
-                {else}
-                    {$embed->imagenumber}
-                {/if}
-                /
-                {$resolved->images|count}
-                ·
-            {/if}
-            <a href="{$resolved->url}" target="_blank">
-                {$resolved->url}
-            </a>
-        </p>
     </div>
 </li>
 

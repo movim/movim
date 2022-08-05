@@ -56,7 +56,7 @@ ul.list.active.all li:hover,
 ul.list li.active:hover,
 ul.list.active li.active:not(.subheader),
 ul.tabs > li:hover,
-ul.list li > span:not(.color).active:hover {
+ul.list li > span.active:hover {
     background-color: rgba(var(--movim-element-action), 0.1);
     cursor: pointer;
 }
@@ -66,7 +66,7 @@ ul.list li > span:not(.color).active:hover {
 ul.list.active li:active:not(.subheader),
 ul.list.active.all li:active,
 ul.tabs > li:active,
-ul.list li > span:not(.color).active:active {
+ul.list li > span.active:active {
     background-color: rgba(var(--movim-element-action), 0.2);
 }
 
