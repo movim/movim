@@ -1,4 +1,4 @@
-<div class="tabelem padded_top_bottom" title="{$c->__('blocked.title')}" id="blocked_widget">
+<div class="tabelem padded_top_bottom" title="{$c->__('blocked.title')}" data-mobileicon="block" id="blocked_widget">
     <ul class="list thick">
         <li>
             <span class="primary icon gray">

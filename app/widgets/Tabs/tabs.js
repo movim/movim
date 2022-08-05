@@ -18,7 +18,7 @@ var Tabs = {
             var li = document.createElement('li');
             li.setAttribute('class', tabs[i].id);
             li.onclick = function() { Tabs.change(this) };
-
+            li.setAttribute('title', tabs[i].title);
 
             var a = document.createElement('a');
             a.href = '#';

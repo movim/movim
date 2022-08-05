@@ -81,7 +81,11 @@
             {elseif="$message->encrypted"}
                 <p><i class="material-icons">lock</i> {$c->__('message.encrypted')}</p>
             {elseif="$message->type == 'invitation'"}
-            <p><i class="material-icons">outgoing_mail</i> {$c->__('message.invitation')}</p>
+                <p><i class="material-icons">outgoing_mail</i> {$c->__('message.invitation')}</p>
+            {elseif="$message->type == 'jingle_start'"}
+                <p><i class="material-icons">call</i> {$c->__('chat.jingle_start')}</p>
+            {elseif="$message->type == 'jingle_end'"}
+                <p><i class="material-icons">call_end</i> {$c->__('chat.jingle_end')}</p>
             {elseif="$message->file"}
                 <p>
                     {if="$message->jidfrom == $message->user_id"}

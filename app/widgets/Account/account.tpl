@@ -1,4 +1,4 @@
-<div class="tabelem" title="{$c->__('account.title')}" id="account_widget">
+<div class="tabelem" title="{$c->__('account.title')}" data-mobileicon="account_circle" id="account_widget">
     <ul class="list active">
         <li onclick="Account_ajaxChangePassword()">
             <span class="primary icon">
