@@ -19,7 +19,10 @@
                 <i class="material-icons">close</i>
             </span>
             <div>
-                <p class="line normal">{$value->id} <span class="info">{$value->created_at|strtotime|prepareDate}</span></p>
+                <p class="line normal">
+                    <span class="info">{$value->created_at|strtotime|prepareDate}</span>
+                    {$value->id}
+                </p>
             </div>
         </li>{/loop}</ul>
     <div class="placeholder">
