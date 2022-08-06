@@ -7,7 +7,9 @@ v0.21 (trunk)
  * Add PWA Push Notification support through the service worker
  * CSS fixes
  * Upgrade Embed to v4.x and add Twitter integration
- * Add contact blocklist feature
+ * Add a JID blocking feature
+ * Add a pod wise JID blocking feature for admins
+ * Add the VisioConfig widget in the configuration to configure the default microphone and camera
 
 v0.20
 ---------------------------

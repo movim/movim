@@ -1,0 +1,43 @@
+#visioconfig_widget .level {
+    display: block;
+}
+
+#visioconfig_widget .level span {
+    display: inline-block;
+    width: calc(10% - 0.75rem);
+    margin: 0.25rem;
+    height: 1.5rem;
+    border-radius: 0.25rem;
+}
+
+#visioconfig_widget .level span.disabled {
+    opacity: 0.3;
+    transition: opacity 1s ease-out;
+}
+
+#visioconfig_widget .level span {
+    opacity: 1;
+}
+
+#visioconfig_widget #camera_preview {
+    background-color: rgba(0, 0, 0, 0.15);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    min-height: 30rem;
+}
+
+#visioconfig_widget #camera_preview ul.list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 30rem;
+}
+
+#visioconfig_widget #camera_preview.enabled video {
+    display: initial;
+}
+
+#visioconfig_widget #camera_preview video,
+#visioconfig_widget #camera_preview.enabled ul.list {
+    display: none;
+}
