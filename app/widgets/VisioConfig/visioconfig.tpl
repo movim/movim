@@ -73,7 +73,7 @@
                             <li>
                                 <div>
                                     <p class="line center normal">
-                                        <span class="button small flat gray" onclick="VisioConfig.testCamera();"><i class="material-icons">videocam</i> Preview</span>
+                                        <span class="button small flat gray" onclick="VisioConfig.testCamera();"><i class="material-icons">videocam</i> {$c->__('publish.preview')}</span>
                                     </p>
                                 </div>
                             </li>
