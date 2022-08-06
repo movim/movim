@@ -15,6 +15,9 @@ var VisioConfig = {
         cameraSelect.addEventListener('change', VisioConfig.changeDefaultCamera);
         cameraSelect.innerText = '';
 
+        microphoneFound = false;
+        cameraFound = false;
+
         for (const deviceInfo of deviceInfos) {
             if (deviceInfo.kind === 'audioinput') {
                 const option = document.createElement('option');
@@ -23,6 +26,7 @@ var VisioConfig = {
 
                 if (deviceInfo.deviceId == localStorage.defaultMicrophone) {
                     option.selected = true;
+                    microphoneFound = true;
                 }
 
                 microphoneSelect.appendChild(option);
@@ -35,11 +39,22 @@ var VisioConfig = {
 
                 if (deviceInfo.deviceId == localStorage.defaultCamera) {
                     option.selected = true;
+                    cameraFound = true;
                 }
 
                 cameraSelect.appendChild(option);
             }
         }
+
+        if (microphoneFound == false) {
+            localStorage.defaultMicrophone = microphoneSelect.value;
+        }
+
+        if (cameraFound == false) {
+            localStorage.defaultCamera = cameraSelect.value;
+        }
+
+        VisioConfig.testMicrophone();
     },
 
     testMicrophone: function () {
@@ -143,5 +158,4 @@ var VisioConfig = {
 
 MovimWebsocket.attach(() => {
     VisioConfig.init();
-    VisioConfig.testMicrophone();
 });
