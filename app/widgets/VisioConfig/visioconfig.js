@@ -1,5 +1,6 @@
 var VisioConfig = {
     micMaxLevel: 0,
+    audioContext: null,
 
     init: function () {
         navigator.mediaDevices.enumerateDevices().then(devices => VisioConfig.gotDevices(devices));
@@ -77,14 +78,16 @@ var VisioConfig = {
         navigator.mediaDevices.getUserMedia({
             audio: audioContraint
         }).then(function (stream) {
-            console.log(stream);
+            if (VisioConfig.audioContext) {
+                VisioConfig.audioContext.close();
+            }
 
-            let micContext = new AudioContext();
-            let microphone = micContext.createMediaStreamSource(stream);
-            var javascriptNode = micContext.createScriptProcessor(2048, 1, 1);
+            VisioConfig.audioContext = new AudioContext();
+            let microphone = VisioConfig.audioContext.createMediaStreamSource(stream);
+            var javascriptNode = VisioConfig.audioContext.createScriptProcessor(2048, 1, 1);
 
             microphone.connect(javascriptNode);
-            javascriptNode.connect(micContext.destination);
+            javascriptNode.connect(VisioConfig.audioContext.destination);
 
             javascriptNode.onaudioprocess = function(event) {
                 var inpt = event.inputBuffer.getChannelData(0);

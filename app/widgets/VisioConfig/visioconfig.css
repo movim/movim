@@ -11,7 +11,7 @@
 }
 
 #visioconfig_widget .level span.disabled {
-    opacity: 0.3;
+    opacity: 0.2;
     transition: opacity 1s ease-out;
 }
 
