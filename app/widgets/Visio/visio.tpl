@@ -19,7 +19,13 @@
                         <i class="material-icons">screen_share</i>
                     </span>
                 {/if}
-                <div><p></p></div>
+                <div>
+                    <p></p>
+                    <p id="no_mic_sound" class="disabled all">
+                        <i class="material-icons">mic_none</i>
+                        {$c->__('visioconfig.no_mic_sound')}
+                    </p>
+                </div>
             </li>
         </ul>
     </header>

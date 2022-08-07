@@ -89,7 +89,7 @@ var VisioConfig = {
             microphone.connect(javascriptNode);
             javascriptNode.connect(VisioConfig.audioContext.destination);
 
-            isMuteStep = 0;
+            let isMuteStep = 0;
 
             javascriptNode.onaudioprocess = function(event) {
                 var inpt = event.inputBuffer.getChannelData(0);

@@ -1,5 +1,5 @@
 var Toast = {
-    send : function(title) {
+    send : function(title, timeout) {
         target = document.getElementById('toast');
 
         if (target) {
@@ -9,6 +9,6 @@ var Toast = {
         setTimeout(function() {
             target = document.getElementById('toast');
             target.innerHTML = '';
-        }, 3000);
+        }, timeout ?? 3000);
     }
 }

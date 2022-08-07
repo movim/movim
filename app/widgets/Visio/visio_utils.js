@@ -22,6 +22,8 @@ var VisioUtils = {
         var icon = document.querySelector('#toggle_audio i');
         var mainButton = document.getElementById('main');
         icon.innerText = 'mic';
+        let isMuteStep = 0;
+        var noMicSound = document.querySelector('#no_mic_sound');
 
         microphone.connect(javascriptNode);
         javascriptNode.connect(VisioUtils.audioContext.destination);
@@ -40,11 +42,16 @@ var VisioUtils = {
             var base = (instant/VisioUtils.maxLevel);
             var level = (base > 0.01) ? base**.3 : 0;
 
-            if (level < 0.02) {
-                icon.style.color = 'rgb(255, 255, 255, 1)';
+            if (level == 0) {
+                isMuteStep++;
             } else {
-                var inverse = 255-(level.toPrecision(2)*255);
-                icon.style.color = 'rgb(' + inverse + ', 255, ' + inverse + ')';
+                isMuteStep = 0;
+            }
+
+            if (isMuteStep > 250) {
+                noMicSound.classList.remove('disabled');
+            } else {
+                noMicSound.classList.add('disabled');
             }
 
             if (mainButton.classList.contains('red')) {

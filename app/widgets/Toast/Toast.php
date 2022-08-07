@@ -10,8 +10,8 @@ class Toast extends Base
         $this->addjs('toast.js');
     }
 
-    public static function send($title)
+    public static function send($title, int $timeout = 3000)
     {
-        RPC::call('Toast.send', $title);
+        RPC::call('Toast.send', $title, $timeout);
     }
 }

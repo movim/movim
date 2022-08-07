@@ -92,6 +92,17 @@ body {
     text-shadow: 0 0 3rem black;
 }
 
+#visio header #no_mic_sound.disabled {
+    display: none;
+}
+
+#visio header #no_mic_sound {
+    animation: fadein 0.3s;
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+    margin: 0 1rem;
+}
+
 #visio .button.action {
     right: calc(50% - 3.5rem);
 }
