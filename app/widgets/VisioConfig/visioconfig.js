@@ -7,7 +7,6 @@ var VisioConfig = {
     },
 
     gotDevices: function (deviceInfos) {
-        console.log(deviceInfos);
         let microphoneSelect = document.querySelector('select[name=default_microphone]');
         microphoneSelect.addEventListener('change', VisioConfig.changeDefaultMicrophone);
         microphoneSelect.innerText = '';
@@ -85,9 +84,12 @@ var VisioConfig = {
             VisioConfig.audioContext = new AudioContext();
             let microphone = VisioConfig.audioContext.createMediaStreamSource(stream);
             var javascriptNode = VisioConfig.audioContext.createScriptProcessor(2048, 1, 1);
+            let noMicSound = document.querySelector('#visioconfig_widget #no_mic_sound');
 
             microphone.connect(javascriptNode);
             javascriptNode.connect(VisioConfig.audioContext.destination);
+
+            isMuteStep = 0;
 
             javascriptNode.onaudioprocess = function(event) {
                 var inpt = event.inputBuffer.getChannelData(0);
@@ -105,15 +107,27 @@ var VisioConfig = {
 
                 let step = 0;
 
-                document.querySelectorAll('.level span').forEach(span => {
-                    if (step < Math.floor(level * 10)) {
-                        span.classList.remove('disabled');
-                    } else {
-                        span.classList.add('disabled');
-                    }
+                if (level == 0) {
+                    isMuteStep++;
+                } else {
+                    isMuteStep = 0;
+                }
 
-                    step++;
-                });
+                if (isMuteStep > 50) {
+                    noMicSound.classList.remove('disabled');
+                } else {
+                    noMicSound.classList.add('disabled');
+
+                    document.querySelectorAll('.level span').forEach(span => {
+                        if (step < Math.floor(level * 10)) {
+                            span.classList.remove('disabled');
+                        } else {
+                            span.classList.add('disabled');
+                        }
+
+                        step++;
+                    });
+                }
             }
         })
         .catch(function (err) {

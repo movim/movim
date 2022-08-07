@@ -33,11 +33,16 @@
     min-height: 30rem;
 }
 
+#visioconfig_widget #no_mic_sound {
+    animation: fadein 0.3s;
+}
+
 #visioconfig_widget #camera_preview.enabled video {
     display: initial;
 }
 
 #visioconfig_widget #camera_preview video,
-#visioconfig_widget #camera_preview.enabled ul.list {
+#visioconfig_widget #camera_preview.enabled ul.list,
+#visioconfig_widget #no_mic_sound.disabled {
     display: none;
 }

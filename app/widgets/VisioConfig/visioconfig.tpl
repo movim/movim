@@ -47,6 +47,15 @@
                         <span class="color red"></span>
                     </div>
                 </li>
+                <li id="no_mic_sound" class="disabled">
+                    <span class="primary icon small red">
+                        <i class="material-icons">mic_none</i>
+                    </span>
+                    <div>
+                        <p>{$c->__('visioconfig.no_mic_sound')}</p>
+                        <p>{$c->__('visioconfig.no_mic_sound2')}</p>
+                    </div>
+                </li>
             </ul>
             <ul class="list">
                 <li class="subheader">
