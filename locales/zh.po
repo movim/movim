@@ -23,6 +23,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/AdminMain/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/AdminReported/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/AdminSessions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/AdminTest/locales.ini
@@ -30,6 +32,8 @@
 #. extracted from ../app/widgets/Api/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Avatar/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Blocked/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -115,12 +119,14 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Visio/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/VisioConfig/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../locales/locales.ini
 msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-26 08:14+0200\n"
+"POT-Creation-Date: 2022-08-07 14:14+0200\n"
 "PO-Revision-Date: 2022-02-17 07:57+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -413,6 +419,23 @@ msgstr "Movim集成了Tenor API，允许在聊天室中搜索和发布GIF"
 msgid "Access Tenor and get your API key"
 msgstr "访问Tenor并获取API密钥"
 
+#: [twitter]title
+#, fuzzy
+msgid "Twitter integration"
+msgstr "Tenor集成"
+
+#: [twitter]label
+msgid "Your Twitter Token"
+msgstr ""
+
+#: [twitter]info1
+msgid "The Twitter integration allow Movim to embed and extract the Tweets shared on the instance"
+msgstr ""
+
+#: [twitter]info2
+msgid "Generate your Token on the Developer Twitter website"
+msgstr ""
+
 #: [log]empty
 msgid "Empty"
 msgstr "空的"
@@ -424,6 +447,19 @@ msgstr "系统日志"
 #: [log]syslog_files
 msgid "Syslog and files"
 msgstr "系统日志和文件"
+
+#: [adminreported]reported_by
+#, fuzzy
+msgid "Reported by %s users"
+msgstr "举报滥用行为"
+
+#: [adminreported]info
+msgid "Those accounts were reported by some Movim users"
+msgstr ""
+
+#: [adminreported]info2
+msgid "You can choose to block them for all the other users"
+msgstr ""
 
 #: [adminsessions]title
 msgid "Sessions"
@@ -533,6 +569,42 @@ msgstr "更换头像"
 msgid "Upload a new picture"
 msgstr "上传新图片"
 
+#: [blocked]title
+#, fuzzy
+msgid "Blocked"
+msgstr "惊讶"
+
+#: [blocked]block_account
+#, fuzzy
+msgid "Block the account"
+msgstr "其它帐号"
+
+#: [blocked]unblock_account
+#, fuzzy
+msgid "Unblock the account"
+msgstr "其它帐号"
+
+#: [blocked]account_blocked
+#, fuzzy
+msgid "Account blocked"
+msgstr "帐户"
+
+#: [blocked]account_unblocked
+msgid "Account unblocked"
+msgstr ""
+
+#: [blocked]placeholder
+msgid "You will find here the users you have blocked"
+msgstr ""
+
+#: [blocked]info
+msgid "The following users are blocked by Movim and cannot contact you anymore"
+msgstr ""
+
+#: [blocked]info2
+msgid "The administrator is also aware of this list and can therefore block those users system wide"
+msgstr ""
+
 #: [blog]title [feed]title
 msgid "%s’s feed"
 msgstr "来自%s"
@@ -568,6 +640,11 @@ msgstr "撤回的消息"
 #: [message]composing
 msgid "Composing…"
 msgstr "正在写..."
+
+#: [message]invitation
+#, fuzzy
+msgid "Invitation"
+msgstr "邀请已发送"
 
 #: [message]paused
 msgid "Paused…"
@@ -619,6 +696,11 @@ msgstr "别害羞，发送首个消息开始讨论"
 
 #: [chat]invitation
 msgid "You received an invitation to join a chatroom"
+msgstr "你收到了加入聊天室的邀请"
+
+#: [chat]invitation_self
+#, fuzzy
+msgid "You sent an invitation to join a chatroom"
 msgstr "你收到了加入聊天室的邀请"
 
 #: [chat]invitation_join
@@ -2379,6 +2461,48 @@ msgstr "连接中"
 #: [visio]ended
 msgid "call ended"
 msgstr "通话结束"
+
+#: [visioconfig]title
+msgid "Video & Voice"
+msgstr ""
+
+#: [visioconfig]help
+msgid "Configure the default devices used by Movim"
+msgstr ""
+
+#: [visioconfig]microphone
+msgid "Microphone"
+msgstr ""
+
+#: [visioconfig]microphone_label
+msgid "Default microphone"
+msgstr ""
+
+#: [visioconfig]camera
+msgid "Camera"
+msgstr ""
+
+#: [visioconfig]camera_label
+#, fuzzy
+msgid "Default camera"
+msgstr "默认语言"
+
+#: [visioconfig]default_microphone_changed
+msgid "Default microphone changed"
+msgstr ""
+
+#: [visioconfig]default_camera_changed
+#, fuzzy
+msgid "Default camera changed"
+msgstr "默认语言"
+
+#: [visioconfig]no_mic_sound
+msgid "No sound detected from your microphone"
+msgstr ""
+
+#: [visioconfig]no_mic_sound2
+msgid "Try to select another source or check your system settings"
+msgstr ""
 
 #: [global]no_js
 msgid "Movim requires Javascript to be enabled to work properly."

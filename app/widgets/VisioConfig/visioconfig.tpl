@@ -7,7 +7,6 @@
             <div>
                 <p class="line normal">{$c->__('visioconfig.title')}</p>
                 <p class="all">{$c->__('visioconfig.help')}</p>
-                <p class="all">{$c->__('visioconfig.help2')}</p>
             </div>
         </li>
     </ul>

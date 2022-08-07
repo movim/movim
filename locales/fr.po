@@ -21,6 +21,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/AdminMain/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/AdminReported/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/AdminSessions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/AdminTest/locales.ini
@@ -28,6 +30,8 @@
 #. extracted from ../app/widgets/Api/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Avatar/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Blocked/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -113,21 +117,23 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Visio/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/VisioConfig/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../locales/locales.ini
 msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-26 08:14+0200\n"
-"PO-Revision-Date: 2022-02-17 08:01+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"POT-Creation-Date: 2022-08-07 14:14+0200\n"
+"PO-Revision-Date: 2015-06-24 09:45+0000\n"
+"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>, 2015-2022\n"
 "Language-Team: French (France) (http://www.transifex.com/movim/movim/language/fr_FR/)\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Translate Toolkit 3.4.1\n"
+"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+"X-Generator: Translate Toolkit 3.7.2\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -223,11 +229,11 @@ msgstr "Cette action ne va pas supprimer votre compte mais va vous déconnecter 
 
 #: [account]delete_bundle_title
 msgid "OMEMO Key deletion"
-msgstr ""
+msgstr "Suppression de clef OMEMO"
 
 #: [account]delete_bundle_text
 msgid "Your are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
-msgstr ""
+msgstr "Vous allez supprimer la clef OMEMO suivante. Vos contacts ne pourront plus vous envoyer de messages chiffrés en utilisant cette clef. Cette action ne peut être annulée. Êtes-vous sûr ?"
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
@@ -411,6 +417,22 @@ msgstr "Movim intègre l'API Tenor et permet la recherche et la publication de G
 msgid "Access Tenor and get your API key"
 msgstr "Récupérer votre clef sur Tenor"
 
+#: [twitter]title
+msgid "Twitter integration"
+msgstr "Intégration Twitter"
+
+#: [twitter]label
+msgid "Your Twitter Token"
+msgstr "Votre token Twitter"
+
+#: [twitter]info1
+msgid "The Twitter integration allow Movim to embed and extract the Tweets shared on the instance"
+msgstr "L'intégration Twitter permet à Movim d'extraire et intégrer les Tweets partagés sur l'instance"
+
+#: [twitter]info2
+msgid "Generate your Token on the Developer Twitter website"
+msgstr "Générez votre token sur la section développeurs du site Twitter"
+
 #: [log]empty
 msgid "Empty"
 msgstr "Vide"
@@ -422,6 +444,18 @@ msgstr "Journal système (syslog)"
 #: [log]syslog_files
 msgid "Syslog and files"
 msgstr "Journal système et fichiers"
+
+#: [adminreported]reported_by
+msgid "Reported by %s users"
+msgstr "Signalé par %s utilisateur"
+
+#: [adminreported]info
+msgid "Those accounts were reported by some Movim users"
+msgstr "Ces comptes ont été signalés par certains utilisateurs"
+
+#: [adminreported]info2
+msgid "You can choose to block them for all the other users"
+msgstr "Vous pouvez les bloquer pour l'ensemble des autres utilisateurs"
 
 #: [adminsessions]title
 msgid "Sessions"
@@ -531,6 +565,38 @@ msgstr "Modifier mon avatar"
 msgid "Upload a new picture"
 msgstr "Téléverser une nouvelle image"
 
+#: [blocked]title
+msgid "Blocked"
+msgstr "Bloqué"
+
+#: [blocked]block_account
+msgid "Block the account"
+msgstr "Bloquer le compte"
+
+#: [blocked]unblock_account
+msgid "Unblock the account"
+msgstr "Débloquer le compte"
+
+#: [blocked]account_blocked
+msgid "Account blocked"
+msgstr "Compte bloqué"
+
+#: [blocked]account_unblocked
+msgid "Account unblocked"
+msgstr "Compte débloqué"
+
+#: [blocked]placeholder
+msgid "You will find here the users you have blocked"
+msgstr "Ci-dessous les compte utilisateurs que vous avez bloqué"
+
+#: [blocked]info
+msgid "The following users are blocked by Movim and cannot contact you anymore"
+msgstr "Les comptes suivant sont bloqués par Movim et ne peuvent plus vous contacter"
+
+#: [blocked]info2
+msgid "The administrator is also aware of this list and can therefore block those users system wide"
+msgstr "Les administrateurs sont également au courant de cette liste et peuvent choisir de bloquer ces comptes au niveau de l'instance"
+
 #: [blog]title [feed]title
 msgid "%s’s feed"
 msgstr "Flux de %s"
@@ -566,6 +632,10 @@ msgstr "Message rétracté"
 #: [message]composing
 msgid "Composing…"
 msgstr "Rédige…"
+
+#: [message]invitation
+msgid "Invitation"
+msgstr "Invitation"
 
 #: [message]paused
 msgid "Paused…"
@@ -618,6 +688,10 @@ msgstr "Ne soyez pas timide, envoyez un premier message pour commencer la discus
 #: [chat]invitation
 msgid "You received an invitation to join a chatroom"
 msgstr "Vous êtes invité à rejoindre un salon de discussion"
+
+#: [chat]invitation_self
+msgid "You sent an invitation to join a chatroom"
+msgstr "Vous avez envoyé une invitation pour rejoindre un salon"
 
 #: [chat]invitation_join
 msgid "Join %s"
@@ -2378,6 +2452,46 @@ msgstr "…mise en relation"
 msgid "call ended"
 msgstr "appel terminé"
 
+#: [visioconfig]title
+msgid "Video & Voice"
+msgstr "Voix & Vidéo"
+
+#: [visioconfig]help
+msgid "Configure the default devices used by Movim"
+msgstr "Configurer les périphériques par défaut utilisés par Movim"
+
+#: [visioconfig]microphone
+msgid "Microphone"
+msgstr "Microphone"
+
+#: [visioconfig]microphone_label
+msgid "Default microphone"
+msgstr "Microphone par défaut"
+
+#: [visioconfig]camera
+msgid "Camera"
+msgstr "Caméra"
+
+#: [visioconfig]camera_label
+msgid "Default camera"
+msgstr "Caméra par défaut"
+
+#: [visioconfig]default_microphone_changed
+msgid "Default microphone changed"
+msgstr "Changement du microphone par défaut"
+
+#: [visioconfig]default_camera_changed
+msgid "Default camera changed"
+msgstr "Changement de la caméra par défaut"
+
+#: [visioconfig]no_mic_sound
+msgid "No sound detected from your microphone"
+msgstr "Aucun son détecté venant de votre microphone"
+
+#: [visioconfig]no_mic_sound2
+msgid "Try to select another source or check your system settings"
+msgstr "Veuillez sélectionner une autre source ou vérifiez vos paramètres système"
+
 #: [global]no_js
 msgid "Movim requires Javascript to be enabled to work properly."
 msgstr "Movim nécessite JavaScript pour fonctionner correctement."
@@ -2666,7 +2780,7 @@ msgstr "Optionnel"
 
 #: [input]muc_pubsub_node
 msgid "Associated Community"
-msgstr ""
+msgstr "Communautés associés"
 
 #: [day]title
 msgid "Day"
@@ -3275,18 +3389,3 @@ msgstr "L’API est indisponible pour le moment, réessayez plus tard."
 #: [field]type_here
 msgid "Type here"
 msgstr "Rédigez votre message ici"
-
-#~ msgid "Firebase Integration"
-#~ msgstr "Intégration Firebase"
-
-#~ msgid "Your Firebase Authorization Key"
-#~ msgstr "Votre clef d'autorisation Firebase"
-
-#~ msgid "Movim can send Push Notifications to the Movim Android app using Firebase"
-#~ msgstr "Movim peut envoyer des notifications Push à l'application Movim sur Android via Firebase"
-
-#~ msgid "Go to the Firebase panel to configure and generate your Authorization key"
-#~ msgstr "Visitez votre panneau d’administration Firebase pour configurer et générer votre clef d'autorisation"
-
-#~ msgid "Status updated"
-#~ msgstr "Statut mis à jour"
