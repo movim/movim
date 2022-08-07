@@ -14,6 +14,14 @@ class Message extends Payload
             return;
         }
 
+        // Retracted messages are handled by Retracted
+        if ($stanza->{'apply-to'}
+        && $stanza->{'apply-to'}->attributes()->xmlns == 'urn:xmpp:fasten:0'
+        && $stanza->{'apply-to'}->retract
+        && $stanza->{'apply-to'}->retract->attributes()->xmlns == 'urn:xmpp:message-retract:0') {
+            return;
+        }
+
         if ($stanza->attributes()->type == 'error') {
             return;
         }

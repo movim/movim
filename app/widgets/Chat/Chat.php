@@ -154,6 +154,7 @@ class Chat extends \Movim\Widget\Base
 
             if ($contact != null
             && $message->type != 'groupchat'
+            && !$message->retracted
             && !$message->oldid) {
                 $roster = $this->user->session->contacts()->where('jid', $from)->first();
                 $chatStates->clearState($from);
@@ -180,6 +181,7 @@ class Chat extends \Movim\Widget\Base
             }
             // If it's a groupchat message
             elseif ($message->type == 'groupchat'
+                && !$message->retracted
                 && $conference
                 && (($conference->notify == 1 && $message->quoted) // When quoted
                   || $conference->notify == 2) // Always

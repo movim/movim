@@ -333,6 +333,20 @@ class Message
         $retract->setAttribute('xmlns', 'urn:xmpp:message-retract:0');
         $apply->appendChild($retract);
 
+        // Hints
+        $store = $dom->createElement('store');
+        $store->setAttribute('xmlns', 'urn:xmpp:hints');
+        $root->appendChild($store);
+
+        // Fallback
+        $fallback = $dom->createElementNS('urn:xmpp:feature-fallback:0', 'fallback');
+        $root->appendChild($fallback);
+
+        $body = $dom->createElement('body');
+        $bodyContent = $dom->createTextNode(__('message.retract_body'));
+        $body->appendChild($bodyContent);
+        $root->appendChild($body);
+
         \Moxl\API::request($dom->saveXML($dom->documentElement));
     }
 }
