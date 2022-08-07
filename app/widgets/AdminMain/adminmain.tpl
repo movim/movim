@@ -1,4 +1,4 @@
-<div id="admingen" class="tabelem padded_top_bottom" title="{$c->__('admin.general')}">
+<div id="admingen" class="tabelem padded_top_bottom" title="{$c->__('admin.general')}" data-mobileicon="manage_accounts">
 <form name="admin" id="adminform" action="#" method="post">
     <input type="hidden" name="adminform" id="adminform" value="true"/>
     <div>

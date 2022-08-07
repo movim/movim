@@ -1,4 +1,4 @@
-<div id="adminsessions" class="tabelem" title="{$c->__("adminsessions.title")}">
+<div id="adminsessions" class="tabelem" title="{$c->__("adminsessions.title")}" data-mobileicon="group">
     <ul class="list middle flex active">
         <li class="subheader block large">
             <div>
