@@ -259,7 +259,7 @@ class Visio extends Base
         $this->rpc('Visio.setServices', [['urls' => array_slice($servers, 0, 2)]]);
     }
 
-    public function ajaxSessionAccept($sdp, $to, $id)
+    public function ajaxSessionAccept($sdp, string $to, string $id)
     {
         $stj = new SDPtoJingle(
             $sdp->sdp,
@@ -275,8 +275,9 @@ class Visio extends Base
            ->request();
     }
 
-    public function ajaxCandidate($sdp, $to, $id)
+    public function ajaxCandidate($sdp, string $to, string $id)
     {
+        // Firefox is passing the ufrag as an argument, Chrome as a parameter in the candidate
         $ufrag = $sdp->usernameFragment ?? null;
 
         $stj = new SDPtoJingle(
@@ -295,7 +296,7 @@ class Visio extends Base
            ->request();
     }
 
-    public function ajaxTerminate($to, $sid, $reason = 'success')
+    public function ajaxTerminate(string $to, string $sid, $reason = 'success')
     {
         Session::start()->remove('jingleSid');
 

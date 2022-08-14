@@ -23,7 +23,7 @@ class SDPtoJingle
     private $rtcp_fb_cache = [];
 
     private $regex = [
-      'candidate'       => "/^a=candidate:(\w{1,32}) (\d{1,5}) (udp|tcp) (\d{1,10}) ([a-zA-Z0-9:\.]{1,45}) (\d{1,5}) (typ) (host|srflx|prflx|relay)\s?(.+)?/i",
+      'candidate'       => "/^a=candidate:(\w{1,32}) (\d{1,5}) (udp|tcp) (\d{1,10}) ([a-zA-Z0-9:\.]{1,45}) (\d{1,5}) (typ) (host|srflx|prflx|relay|ufrag)\s?(.+)?/i",
       'sess_id'         => "/^o=(\S+) (\d+)/i",
       'group'           => "/^a=group:(\S+) (.+)/i",
       'rtpmap'          => "/^a=rtpmap:(\d+) (([^\s\/]+)(\/(\d+)(\/([^\s\/]+))?)?)?/i",
@@ -388,6 +388,10 @@ class SDPtoJingle
                                     ? $args['generation']
                                     : 0
                             );
+
+                            if (isset($args['ufrag'])) {
+                                $this->ufrag = $args['ufrag'];
+                            }
 
                             if (isset($args['id'])) {
                                 $candidate->addAttribute('id', $args['id']);
