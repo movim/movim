@@ -168,17 +168,17 @@ class Message extends Model
 
         $this->id = 'm_' . generateUUID();
 
-        $from = explode('/', (string)$stanza->attributes()->from);
-        $to = current(explode('/', (string)$stanza->attributes()->to));
+        $jidTo = explodeJid((string)$stanza->attributes()->to);
+        $jidFrom = explodeJid((string)$stanza->attributes()->from);
 
         $this->user_id    = \App\User::me()->id;
 
         if (!$this->jidto) {
-            $this->jidto      = $to;
+            $this->jidto      = $jidTo['jid'];
         }
 
         if (!$this->jidfrom) {
-            $this->jidfrom    = $from[0];
+            $this->jidfrom    = $jidFrom['jid'];
         }
 
         // If the message is from me
@@ -186,8 +186,8 @@ class Message extends Model
             $this->seen = true;
         }
 
-        if (isset($from[1])) {
-            $this->resource = $from[1];
+        if (isset($jidFrom['resource'])) {
+            $this->resource = $jidFrom['resource'];
         }
 
         if ($stanza->delay) {
@@ -223,8 +223,8 @@ class Message extends Model
             $this->mucpm = true;
             if ($parent && (string)$parent->attributes()->xmlns == 'urn:xmpp:forward:0') {
                 $this->jidto = (string)$stanza->attributes()->to;
-            } elseif (isset($from[1])) {
-                $this->jidfrom = $from[0].'/'.$from[1];
+            } elseif (isset($jidFrom['resource'])) {
+                $this->jidfrom = $jidFrom['jid'].'/'.$jidFrom['resource'];
             }
         }
 

@@ -232,6 +232,9 @@
                                     <a href="{$c->route('contact', $value->jid)}">{$value->truename}</a>
                                 {/if}
                             </p>
+                            {if="$presence"}
+                                <p>{$presence->resource}</p>
+                            {/if}
                         </div>
                     </li>
                 {/loop}
