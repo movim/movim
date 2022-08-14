@@ -599,7 +599,6 @@ class Chat extends \Movim\Widget\Base
 
         $m->body = $body;
 
-
         if ($messageOMEMOHeader) {
             $m->encrypted = true;
             $m->omemoheader = (string)$messageOMEMOHeader;

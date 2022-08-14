@@ -1120,19 +1120,21 @@ var Chat = {
         }
 
         msg.appendChild(p);
-        msg.appendChild(reactions);
         msg.appendChild(span);
+        msg.appendChild(reactions);
 
         var textarea = Chat.getTextarea();
+
+        if (data.id.substr(0, 2) != 'm_') {
+            reaction.dataset.mid = data.mid;
+            msg.appendChild(reaction);
+        }
 
         if ((data.id !== null && data.id.substr(0, 2) != 'm_' && reply)
          || (data.originid !== null && (Boolean(textarea.dataset.muc) == false || Boolean(textarea.dataset.mucGroup) == true))) {
             reply.dataset.mid = data.mid;
             msg.appendChild(reply);
         }
-
-        reaction.dataset.mid = data.mid;
-        msg.appendChild(reaction);
 
         if (actions) {
             actions.dataset.mid = data.mid;
