@@ -605,7 +605,7 @@ function varToIcons(string $var)
         return $icons[$var];
     }
 
-    return 'check_box';
+    return 'noise_control_off';
 }
 
 /**
