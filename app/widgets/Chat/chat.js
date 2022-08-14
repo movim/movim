@@ -1120,8 +1120,8 @@ var Chat = {
         }
 
         msg.appendChild(p);
-        msg.appendChild(span);
         msg.appendChild(reactions);
+        msg.appendChild(span);
 
         var textarea = Chat.getTextarea();
 

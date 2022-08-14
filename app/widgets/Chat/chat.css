@@ -467,12 +467,12 @@ main:not(.enabled) #chat_widget {
 /* Emojis */
 
 #chat_widget .bubble ul.reactions {
-    margin-right: 5rem;
     margin-bottom: -0.25rem;
 }
 
 #chat_widget .bubble:not(.file) ul.reactions {
     margin-top: 0.25rem;
+    display: inline-block;
 }
 
 #chat_widget .bubble div span.reaction,

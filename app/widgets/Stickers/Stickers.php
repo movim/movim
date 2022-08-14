@@ -84,6 +84,7 @@ class Stickers extends \Movim\Widget\Base
         $p = new Publish;
         $p->setTo($m->jidto)
           ->setContent($m->body)
+          ->setThreadid($m->thread)
           ->setHTML($html)
           ->setId($m->id);
 

@@ -58,7 +58,6 @@ class Message
         // Thread
         if ($threadId) {
             $thread = $dom->createElement('thread', $threadId);
-
             $root->appendChild($thread);
         }
 

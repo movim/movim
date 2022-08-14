@@ -420,13 +420,9 @@ ul li div.bubble span.info {
     padding-left: 1rem;
 }
 
-ul li div.bubble.file span.info {
-    /*margin-top: 0.25rem;*/
-}
-
 ul li div.bubble span.info:empty:before {
-    content: "\a0";
-    line-height: 2.5rem;
+/*    content: "\a0";
+    line-height: 2.5rem;*/
 }
 
 ul li div.bubble > div:last-child span.info {

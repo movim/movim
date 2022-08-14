@@ -565,25 +565,34 @@ class Chat extends \Movim\Widget\Base
         }
 
         if ($reply) {
+            $quotable = false;
+
             // https://xmpp.org/extensions/xep-0461.html#business-id
             if ($reply->type == 'groupchat' && substr($reply->id, 0, 2) != 'm_') {
                 // stanza-id only
                 $p->setReplyid($reply->id);
+                $quotable = true;
             } elseif ($reply->type != 'groupchat' && $reply->originid) {
                 $p->setReplyid($reply->originid);
+                $quotable = true;
             } elseif ($reply->type != 'groupchat' && substr($reply->id, 0, 2) != 'm_') {
                 $p->setReplyid($reply->id);
+                $quotable = true;
             }
 
-            $p->setReplyto($reply->jidfrom.'/'.$reply->resource);
+            if ($quotable) {
+                $p->setReplyto($reply->jidfrom.'/'.$reply->resource);
 
-            // Prepend quoted message body
-            $quotedBody = preg_replace('/^/m', '> ', $reply->body) . "\n";
-            $p->setReplyquotedbodylength(
-                mb_strlen(htmlspecialchars($quotedBody, ENT_NOQUOTES))
-            );
+                // Prepend quoted message body
+                $quotedBody = preg_replace('/^/m', '> ', $reply->body) . "\n";
+                $p->setReplyquotedbodylength(
+                    mb_strlen(htmlspecialchars($quotedBody, ENT_NOQUOTES))
+                );
 
-            $p->setContent($quotedBody . $body);
+                $p->setContent($quotedBody . $body);
+            } else {
+                $p->setContent($body);
+            }
         } else {
             $p->setContent($body);
         }
