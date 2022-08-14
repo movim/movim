@@ -26,11 +26,13 @@ class Muclumbus
         $field->appendChild($dom->createElement('value', 'https://xmlns.zombofant.net/muclumbus/search/1.0#params'));
         $x->appendChild($field);
 
-        $q = $dom->createElement('field');
-        $q->setAttribute('var', 'q');
-        $q->setAttribute('type', 'text-single');
-        $q->appendChild($dom->createElement('value', $keyword));
-        $x->appendChild($q);
+        if (!empty($keyword)) {
+            $q = $dom->createElement('field');
+            $q->setAttribute('var', 'q');
+            $q->setAttribute('type', 'text-single');
+            $q->appendChild($dom->createElement('value', $keyword));
+            $x->appendChild($q);
+        }
 
         $xml = \Moxl\API::iqWrapper($search, 'rodrigo.de.mucobedo@dreckshal.de', 'get');
         \Moxl\API::request($xml);

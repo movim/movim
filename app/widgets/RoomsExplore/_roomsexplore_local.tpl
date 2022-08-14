@@ -32,17 +32,20 @@
                 </span>
             {/if}
             <div>
-                <p class="line">{$value->name}
-                    <span class="second">{$value->server}</span>
+                <p class="line">
+                    {$value->name ?? ''}
+                    {if="$value->server"}
+                        <span class="second">{$value->server}</span>
+                    {/if}
                 </p>
-                <p class="line" title="{$value->description}">
+                <p class="line" title="{$value->description ?? ''}">
                     {if="$value->occupants > 0"}
                         <span title="{$c->__('communitydata.sub', $value->occupants)}">
                             {$value->occupants} <i class="material-icons">people</i>
                         </span>
                     {/if}
                     {if="$value->occupants > 0 && !empty($value->description)"} · {/if}
-                    {$value->description}
+                    {$value->description ?? ''}
                 </p>
             </div>
         </li>
