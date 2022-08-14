@@ -31,7 +31,7 @@ class Jingle extends Payload
 
             switch ($action) {
                 case 'session-initiate':
-                    $message->type = 'jingle_start';
+                    $message->type = 'jingle_incoming';
                     $message->save();
                     $this->event('jingle_sessioninitiate', [$stanza, $from]);
                     break;
@@ -52,7 +52,7 @@ class Jingle extends Payload
                     $this->event('jingle_sessionterminate', (string)$stanza->reason->children()[0]->getName());
                     break;
                 case 'session-accept':
-                    $message->type = 'jingle_start';
+                    $message->type = 'jingle_outgoing';
                     $message->save();
                     $this->event('jingle_sessionaccept', $stanza);
                     break;

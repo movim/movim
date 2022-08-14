@@ -17,6 +17,22 @@ class SessionTerminate extends Action
         Jingle::sessionTerminate($this->_to, $this->_jingleSid, $this->_reason);
     }
 
+    public function handle($stanza, $parent = false)
+    {
+        $userid = \App\User::me()->id;
+        $message = new \App\Message;
+        $message->user_id = $userid;
+        $message->id = 'm_' . generateUUID();
+        $message->jidto = $userid;
+        $message->jidfrom = current(explode('/', $this->_to));
+        $message->published = gmdate('Y-m-d H:i:s');
+        $message->thread = $this->_jingleSid;
+        $message->type = 'jingle_end';
+        $message->save();
+
+        $this->event('jingle_sessionterminate', $this->_reason);
+    }
+
     public function setJingleSid($jingleSid)
     {
         $this->_jingleSid = $jingleSid;

@@ -37,6 +37,9 @@ var Chat = {
     // Local list of the room members, used to encrypt the messages
     groupChatMembers: [],
 
+    // Jingle types
+    jingleTypes: ['jingle_incoming', 'jingle_outgoing', 'jingle_end'],
+
     autocomplete: function(event, jid)
     {
         RoomsUtils_ajaxMucUsersAutocomplete(jid);
@@ -935,7 +938,7 @@ var Chat = {
             && (data.sticker === undefined || data.sticker === null)
             && !refBubble.querySelector('div.bubble').classList.contains('sticker')
             && !refBubble.querySelector('div.bubble').classList.contains('file')
-            && ['jingle_start'].indexOf(data.type) < 0
+            && Chat.jingleTypes.indexOf(data.type) < 0
         ) {
             bubble = msgStack.parentNode;
             mergeMsg = true;
@@ -971,10 +974,6 @@ var Chat = {
             } else {
                 bubble.classList.add('sequel');
             }
-        }
-
-        if (['jingle_start'].indexOf(data.type) >= 0) {
-            bubble.querySelector('div.bubble').classList.add('call');
         }
 
         var msg = bubble.querySelector('div.bubble > div');

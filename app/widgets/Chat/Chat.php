@@ -28,7 +28,7 @@ class Chat extends \Movim\Widget\Base
 {
     private $_pagination = 50;
     private $_wrapper = [];
-    private $_messageTypes = ['chat', 'headline', 'invitation', 'jingle_start', 'jingle_end'];
+    private $_messageTypes = ['chat', 'headline', 'invitation', 'jingle_incoming', 'jingle_outgoing', 'jingle_end'];
     private $_mucPresences = [];
 
     public function load()
@@ -1396,10 +1396,16 @@ class Chat extends \Movim\Widget\Base
                 : $view->draw('_chat_invitation');
         }
 
-        if ($message->type == 'jingle_start') {
+        if ($message->type == 'jingle_incoming') {
             $view = $this->tpl();
             $view->assign('message', $message);
-            $message->body = $view->draw('_chat_jingle_start');
+            $message->body = $view->draw('_chat_jingle_incoming');
+        }
+
+        if ($message->type == 'jingle_outgoing') {
+            $view = $this->tpl();
+            $view->assign('message', $message);
+            $message->body = $view->draw('_chat_jingle_outgoing');
         }
 
         if ($message->type == 'jingle_end') {
@@ -1407,12 +1413,9 @@ class Chat extends \Movim\Widget\Base
             $view->assign('message', $message);
             $view->assign('diff', false);
 
-            $start = Message::where(
-                [
-                    'type' =>'jingle_start',
-                    'thread'=> $message->thread
-                ]
-            )->first();
+            $start = Message::where('thread', $message->thread)
+                ->whereIn('type', ['jingle_incoming', 'jingle_outgoing'])
+                ->first();
 
             if ($start) {
                 $diff = (new DateTime($start->created_at))

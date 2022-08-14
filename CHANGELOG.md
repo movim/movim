@@ -11,6 +11,8 @@ v0.21 (trunk)
  * Add a pod wise JID blocking feature for admins
  * Add the VisioConfig widget in the configuration to configure the default microphone and camera
  * Add sound level detection during call and configuration and display warning if the mic is muted
+ * Display messages for incoming and outgoing call and fix related issues
+ * Fix the handling of MUC resources with / (#1044)
 
 v0.20
 ---------------------------
