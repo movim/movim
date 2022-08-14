@@ -68,7 +68,7 @@
         },
         {
             "name": "cakephp/core",
-            "version": "4.4.3",
+            "version": "4.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/core.git",
@@ -125,7 +125,7 @@
         },
         {
             "name": "cakephp/database",
-            "version": "4.4.3",
+            "version": "4.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/database.git",
@@ -180,16 +180,16 @@
         },
         {
             "name": "cakephp/datasource",
-            "version": "4.4.3",
+            "version": "4.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/datasource.git",
-                "reference": "2f890a6b8d8b33da2d26fcb486ecf5484d9ab014"
+                "reference": "f0dd560edbaf6dac8045e7804c25d2e8e6ef0d3c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/datasource/zipball/2f890a6b8d8b33da2d26fcb486ecf5484d9ab014",
-                "reference": "2f890a6b8d8b33da2d26fcb486ecf5484d9ab014",
+                "url": "https://api.github.com/repos/cakephp/datasource/zipball/f0dd560edbaf6dac8045e7804c25d2e8e6ef0d3c",
+                "reference": "f0dd560edbaf6dac8045e7804c25d2e8e6ef0d3c",
                 "shasum": ""
             },
             "require": {
@@ -234,11 +234,11 @@
                 "issues": "https://github.com/cakephp/cakephp/issues",
                 "source": "https://github.com/cakephp/datasource"
             },
-            "time": "2022-07-06T14:29:38+00:00"
+            "time": "2022-07-28T08:59:25+00:00"
         },
         {
             "name": "cakephp/utility",
-            "version": "4.4.3",
+            "version": "4.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/utility.git",
@@ -360,21 +360,21 @@
         },
         {
             "name": "cocur/slugify",
-            "version": "v4.1.0",
+            "version": "v4.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cocur/slugify.git",
-                "reference": "2611e6081dbbb05837a16ed339c0451923d4046e"
+                "reference": "7e7d03067d1075b1147090b3e1df672dfffb9dc3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cocur/slugify/zipball/2611e6081dbbb05837a16ed339c0451923d4046e",
-                "reference": "2611e6081dbbb05837a16ed339c0451923d4046e",
+                "url": "https://api.github.com/repos/cocur/slugify/zipball/7e7d03067d1075b1147090b3e1df672dfffb9dc3",
+                "reference": "7e7d03067d1075b1147090b3e1df672dfffb9dc3",
                 "shasum": ""
             },
             "require": {
                 "ext-mbstring": "*",
-                "php": ">=7.1"
+                "php": "^7.1 || ~8.0.0 || ~8.1.0"
             },
             "conflict": {
                 "symfony/config": "<3.4 || >=4,<4.3",
@@ -428,9 +428,9 @@
             ],
             "support": {
                 "issues": "https://github.com/cocur/slugify/issues",
-                "source": "https://github.com/cocur/slugify/tree/v4.1.0"
+                "source": "https://github.com/cocur/slugify/tree/v4.2.0"
             },
-            "time": "2022-01-11T20:51:10+00:00"
+            "time": "2022-08-13T15:23:32+00:00"
         },
         {
             "name": "composer/ca-bundle",
