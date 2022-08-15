@@ -31,6 +31,9 @@ class SessionTerminate extends Action
         $message->save();
 
         $this->event('jingle_sessionterminate', $this->_reason);
+
+        $this->pack($message);
+        $this->event('jingle_message');
     }
 
     public function setJingleSid($jingleSid)

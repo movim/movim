@@ -56,6 +56,8 @@ class Chat extends \Movim\Widget\Base
 
         $this->registerEvent('chat_counter', 'onCounter', 'chat');
 
+        $this->registerEvent('jingle_message', 'onJingleMessage');
+
         $this->registerEvent('bob_request_handle', 'onSticker');
         $this->registerEvent('notification_counter_clear', 'onNotificationCounterClear');
     }
@@ -69,6 +71,11 @@ class Chat extends \Movim\Widget\Base
                 $this->ajaxGetHeader($jid);
             }
         }
+    }
+
+    public function onJingleMessage($packet)
+    {
+        $this->onMessage($packet, false, false);
     }
 
     public function onMessageReceipt($packet)
@@ -124,7 +131,7 @@ class Chat extends \Movim\Widget\Base
 
         $rawbody = $message->body;
 
-        if ($message->isEmpty()) {
+        if ($message->isEmpty() && !in_array($message->type, ['jingle_incoming', 'jingle_outgoing', 'jingle_end'])) {
             return;
         }
 
@@ -141,6 +148,7 @@ class Chat extends \Movim\Widget\Base
 
         if ($message->user_id == $message->jidto
         && !$history
+        && !$message->isEmpty()
         && $message->seen == false
         && $message->jidfrom != $message->jidto) {
             $from = $message->jidfrom;

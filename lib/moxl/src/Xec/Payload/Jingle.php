@@ -34,6 +34,9 @@ class Jingle extends Payload
                     $message->type = 'jingle_incoming';
                     $message->save();
                     $this->event('jingle_sessioninitiate', [$stanza, $from]);
+
+                    $this->pack($message);
+                    $this->event('jingle_message');
                     break;
                 case 'session-info':
                     if ($stanza->mute) {
@@ -50,11 +53,17 @@ class Jingle extends Payload
                     $message->type = 'jingle_end';
                     $message->save();
                     $this->event('jingle_sessionterminate', (string)$stanza->reason->children()[0]->getName());
+
+                    $this->pack($message);
+                    $this->event('jingle_message');
                     break;
                 case 'session-accept':
                     $message->type = 'jingle_outgoing';
                     $message->save();
                     $this->event('jingle_sessionaccept', $stanza);
+
+                    $this->pack($message);
+                    $this->event('jingle_message');
                     break;
             }
         } else {

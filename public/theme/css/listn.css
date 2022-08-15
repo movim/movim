@@ -414,6 +414,10 @@ ul li.oppose div.bubble:not(.sticker):not(.file) {
     padding: 1rem 1rem 1rem 1.5rem;
 }
 
+ul li div.bubble p i.icon {
+    margin-right: 0.25rem;
+}
+
 ul li div.bubble span.info {
     float: right;
     clear: right;
