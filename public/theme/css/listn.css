@@ -424,9 +424,8 @@ ul li div.bubble span.info {
     padding-left: 1rem;
 }
 
-ul li div.bubble span.info:empty:before {
-/*    content: "\a0";
-    line-height: 2.5rem;*/
+ul li div.bubble span.info:empty {
+    min-height: 2.5rem;
 }
 
 ul li div.bubble > div:last-child span.info {
