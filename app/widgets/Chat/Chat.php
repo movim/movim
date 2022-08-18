@@ -591,12 +591,12 @@ class Chat extends \Movim\Widget\Base
             if ($quotable) {
                 $p->setReplyto($reply->jidfrom.'/'.$reply->resource);
 
-                // Prepend quoted message body
-                $quotedBody = preg_replace('/^/m', '> ', $reply->body) . "\n";
                 $p->setReplyquotedbodylength(
-                    mb_strlen(htmlspecialchars($quotedBody, ENT_NOQUOTES))
+                    mb_strlen(htmlspecialchars($reply->body, ENT_NOQUOTES)) + 2 // 2 = > quote character
                 );
 
+                // Prepend quoted message body
+                $quotedBody = preg_replace('/^/m', '> ', $reply->body) . "\n";
                 $p->setContent($quotedBody . $body);
             } else {
                 $p->setContent($body);

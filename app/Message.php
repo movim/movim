@@ -204,12 +204,15 @@ class Message extends Model
         }
 
         // stanza-id
-        if ($stanza->{'stanza-id'} && $stanza->{'stanza-id'}->attributes()->id
+        if ($this->type == 'groupchat' && $stanza->{'stanza-id'} && $stanza->{'stanza-id'}->attributes()->id
          && ($stanza->{'stanza-id'}->attributes()->by == $this->jidfrom
               || $stanza->{'stanza-id'}->attributes()->by == \App\User::me()->id
             )
         ) {
             $this->id = (string)$stanza->{'stanza-id'}->attributes()->id;
+        // origin-id
+        } else if ($this->type == 'chat' && $stanza->{'origin-id'} && $stanza->{'origin-id'}->attributes()->id) {
+            $this->id = (string)$stanza->{'origin-id'}->attributes()->id;
         }
 
         // If it's a MUC message, we assume that the server already handled it
@@ -257,11 +260,11 @@ class Message extends Model
 
                 if ($stanza->fallback && $stanza->fallback->attributes()->xmlns == 'urn:xmpp:feature-fallback:0'
                  && $stanza->fallback->attributes()->for == 'urn:xmpp:reply:0') {
-                    $this->body = trim(mb_substr(
-                        $this->body,
+                    $this->body = htmlspecialchars(trim(mb_substr(
+                        htmlspecialchars_decode($this->body, ENT_NOQUOTES),
                         (int)$stanza->fallback->body->attributes()->end
                         // might need to handle start
-                    ));
+                    )), ENT_NOQUOTES);
                 }
             } else if ($stanza->thread) {
                 $this->thread = (string)$stanza->thread;
