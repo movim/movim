@@ -9,14 +9,17 @@ class EmbedLight
         $this->title            = $embed->title ? (string)$embed->title : (string)$embed->url;
         $this->description      = $embed->description;
         $this->url              = (string)$embed->url;
-        $this->contentType      = $embed->getResponse()->getHeader('content-type')[0];
 
         $this->type = 'text';
 
-        if (typeIsPicture($this->contentType)) {
-            $this->type = 'image';
-        } elseif (typeIsVideo($this->contentType)) {
-            $this->type = 'video';
+        if (!empty($embed->getResponse()->getHeader('content-type'))) {
+            $this->contentType      = $embed->getResponse()->getHeader('content-type')[0];
+
+            if (typeIsPicture($this->contentType)) {
+                $this->type = 'image';
+            } elseif (typeIsVideo($this->contentType)) {
+                $this->type = 'video';
+            }
         }
 
         $this->tags             = (array)$embed->keywords;
