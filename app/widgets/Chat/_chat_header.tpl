@@ -58,10 +58,10 @@
                     </span>
                 {else}
                     <span
-                        title="{$c->__('page.communities')} · {$related->name}"
+                        title="{$c->__('page.communities')} · {if="$related->name"}{$related->name}{else}{$related->node}{/if}"
                         onclick="MovimUtils.redirect('{$c->route('community', [$related->server, $related->node])}')"
-                        class="control icon bubble small color {$value->node|stringToColor}">
-                        {$value->node|firstLetterCapitalize}
+                        class="control icon bubble active small color {$related->node|stringToColor}">
+                        {$related->node|firstLetterCapitalize}
                     </span>
                 {/if}
             {/if}
