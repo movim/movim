@@ -7,4 +7,5 @@ var Config = {
 
 MovimWebsocket.attach(function() {
     Config_ajaxMAMGetConfig();
+    Config_ajaxHttpPushGetConfig();
 });

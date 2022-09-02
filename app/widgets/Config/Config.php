@@ -68,6 +68,14 @@ class Config extends Base
           ->request();
     }
 
+    public function ajaxHttpPushGetConfig()
+    {
+        $view = $this->tpl();
+        $view->assign('pushSubscriptions', $this->user->pushSubscriptions);
+
+        $this->rpc('MovimTpl.fill', '#config_widget_push', $view->draw('_config_push'));
+    }
+
     public function ajaxSubmit($data)
     {
         if (!$this->validateForm($data)) {

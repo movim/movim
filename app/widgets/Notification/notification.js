@@ -153,6 +153,8 @@ var Notification = {
         if (DesktopNotification.permission === 'granted') {
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.getRegistration('sw.js').then((registration) => {
+                    if (!registration) return;
+
                     registration.pushManager.getSubscription().then((pushSubscription) => {
                         if (pushSubscription == null) {
                             // Register the push notification subcription
@@ -222,6 +224,17 @@ if (typeof MovimWebsocket != 'undefined') {
 
         movimAddFocus(function() {
             Notification.focus();
+        });
+
+        // Test
+        navigator.serviceWorker.getRegistration('sw.js').then((registration) => {
+            console.log('REGISTRATION');
+            console.log(registration);
+            if (!registration) return;
+
+            registration.pushManager.getSubscription().then((pushSubscription) => {
+                console.log(pushSubscription);
+            });
         });
     });
 }
