@@ -39,6 +39,7 @@
                         {/if}
                     </div>
                 </li>
+                {if="$value->self"}<br /><hr /><br />{/if}
             {/loop}
         </ul>
     </div>

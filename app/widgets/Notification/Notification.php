@@ -91,7 +91,7 @@ class Notification extends Base
 
             // Push notification
             if ($webPush) {
-                foreach (\App\User::me()->pushSubscriptions()->get() as $pushSubscription) {
+                foreach (\App\User::me()->pushSubscriptions()->where('enabled', true)->get() as $pushSubscription) {
                     $subscription = Subscription::create([
                         'endpoint' => $pushSubscription->endpoint,
                         'contentEncoding' => 'aesgcm',
@@ -115,11 +115,10 @@ class Notification extends Base
                     );
                 }
 
-            // Normal notification
+                // Normal notification
             } else {
                 RPC::call('Notification.desktop', $title, $body, $picture, $action, $execute);
             }
-
         }
 
         $notifsKey = $session->get('notifs_key');

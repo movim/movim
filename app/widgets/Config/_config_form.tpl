@@ -113,8 +113,8 @@
         </ul>
     </div>
     <div class="block">
-        <ul class="list fill">
-            <li class="subheader"><div><p>{$c->__('config.notification_title')}</p></div></li>
+        <ul class="list fill flex ">
+            <li class="subheader large block"><div><p>{$c->__('config.notification_title')}</p></div></li>
             <li>
                 <span class="primary icon gray">
                     <i class="material-icons">call</i>

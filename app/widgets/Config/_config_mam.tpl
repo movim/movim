@@ -1,5 +1,4 @@
-<br /><hr /><br/>
-
+<br />
 <ul class="list fill">
     <li class="subheader"><div><p>{$c->__('config.mam')}</p></div></li>
 </ul>

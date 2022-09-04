@@ -225,16 +225,5 @@ if (typeof MovimWebsocket != 'undefined') {
         movimAddFocus(function() {
             Notification.focus();
         });
-
-        // Test
-        navigator.serviceWorker.getRegistration('sw.js').then((registration) => {
-            console.log('REGISTRATION');
-            console.log(registration);
-            if (!registration) return;
-
-            registration.pushManager.getSubscription().then((pushSubscription) => {
-                console.log(pushSubscription);
-            });
-        });
     });
 }

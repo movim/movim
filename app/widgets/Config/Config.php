@@ -68,12 +68,27 @@ class Config extends Base
           ->request();
     }
 
-    public function ajaxHttpPushGetConfig()
+    public function ajaxHttpPushGetConfig(?string $endpoint = null)
     {
+        $pushSubscriptions = $this->user->pushSubscriptions;
+
+        foreach ($pushSubscriptions as $pushSubscription) {
+            $pushSubscription->self = ($pushSubscription->endpoint == $endpoint);
+        }
+
+        $pushSubscriptions = $pushSubscriptions->sortByDesc('self');
+
         $view = $this->tpl();
-        $view->assign('pushSubscriptions', $this->user->pushSubscriptions);
+        $view->assign('pushSubscriptions', $pushSubscriptions);
 
         $this->rpc('MovimTpl.fill', '#config_widget_push', $view->draw('_config_push'));
+    }
+
+    public function ajaxHttpTogglePushConfig(int $id, bool $enabled)
+    {
+        $pushSubscription = $this->user->pushSubscriptions()->where('id', $id)->firstOrFail();
+        $pushSubscription->enabled = $enabled;
+        $pushSubscription->save();
     }
 
     public function ajaxSubmit($data)
