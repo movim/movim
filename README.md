@@ -1,6 +1,6 @@
 <h1 align="center">Movim</h1>
 
-<p align="center"><img src="https://movim.eu/img/vectorial.svg"/></p>
+<p align="center"><img src="https://movim.eu/img/128.png"/></p>
 <h3 align="center">Decentralized social and IM platform</h3>
 
 About
