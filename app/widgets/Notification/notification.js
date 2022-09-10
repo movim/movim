@@ -151,25 +151,7 @@ var Notification = {
         || typeof DesktopNotification === 'undefined')) return;
 
         if (DesktopNotification.permission === 'granted') {
-            if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.getRegistration('sw.js').then((registration) => {
-                    if (!registration) return;
-
-                    registration.pushManager.getSubscription().then((pushSubscription) => {
-                        if (pushSubscription == null) {
-                            // Register the push notification subcription
-                            registration.pushManager.subscribe({
-                                userVisibleOnly: true,
-                                applicationServerKey: VAPID_PUBLIC_KEY
-                            }).then(function(subscription) {
-                                Notification.registerPushSubscription(subscription);
-                            }).catch(function(e) {
-                                console.error('Unable to subscribe to push', e);
-                            });
-                        }
-                    });
-                });
-            }
+            Notification.checkPushSubscription();
 
             var notification = new DesktopNotification(
                 title,
@@ -206,6 +188,29 @@ var Notification = {
         if (Notification.focused == false) {
             Notification.focused = true;
             Notification.current(Notification.notifs_key);
+        }
+    },
+    checkPushSubscription() {
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.getRegistration('sw.js').then((registration) => {
+                if (!registration) return;
+
+                registration.pushManager.getSubscription().then((pushSubscription) => {
+                    if (pushSubscription == null) {
+                        // Register the push notification subcription
+                        registration.pushManager.subscribe({
+                            userVisibleOnly: true,
+                            applicationServerKey: VAPID_PUBLIC_KEY
+                        }).then(function(subscription) {
+                            Notification.registerPushSubscription(subscription);
+                        }).catch(function(e) {
+                            console.error('Unable to subscribe to push', e);
+                        });
+                    } else {
+                        Notification_ajaxHttpTouchPushSubscription(pushSubscription.endpoint);
+                    }
+                });
+            });
         }
     },
     registerPushSubscription(subscription) {

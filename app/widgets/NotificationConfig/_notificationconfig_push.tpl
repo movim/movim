@@ -33,7 +33,7 @@
                     </span>
                     <div>
                         <p class="normal">
-                            <span class="info">{$value->created_at|strtotime|prepareDate}</span>
+                            <span class="info">{$value->updated_at|strtotime|prepareDate}</span>
                             {$value->browser ?? $c->__('notificationconfig.unknown_browser')}
                         </p>
                         <p>{$value->platform ?? $c->__('notificationconfig.unknown_platform')}</p>

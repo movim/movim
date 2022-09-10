@@ -279,6 +279,15 @@ class Notification extends Base
     }
 
     /**
+     * @brief Refresh a push notification subscription
+     */
+    public function ajaxHttpTouchPushSubscription(string $endpoint)
+    {
+        $pushSubscription = $this->user->pushSubscriptions()->where('endpoint', $endpoint)->firstOrFail();
+        $pushSubscription->touch();
+    }
+
+    /**
      * @brief Request user permission to show notifications
      */
     public function ajaxRequest()
