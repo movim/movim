@@ -7,7 +7,6 @@ use Moxl\Xec\Action\MAM\GetConfig;
 use Moxl\Xec\Action\MAM\SetConfig;
 
 use Respect\Validation\Validator;
-use App\User;
 
 class Config extends Base
 {

@@ -112,45 +112,4 @@
             </li>
         </ul>
     </div>
-    <div class="block">
-        <ul class="list fill">
-            <li class="subheader"><div><p>{$c->__('config.notification_title')}</p></div></li>
-            <li>
-                <span class="primary icon gray">
-                    <i class="material-icons">call</i>
-                </span>
-                <span class="control">
-                    <div class="checkbox">
-                        <input
-                            {if="$conf->notificationcall"}checked{/if}
-                            type="checkbox"
-                            id="notificationcall"
-                            name="notificationcall"/>
-                        <label for="notificationcall"></label>
-                    </div>
-                </span>
-                <div>
-                    <p class="normal line">{$c->__('config.notification_call')}</p>
-                </div>
-            </li>
-            <li>
-                <span class="primary icon gray">
-                    <i class="material-icons">forum</i>
-                </span>
-                <span class="control">
-                    <div class="checkbox">
-                        <input
-                            {if="$conf->notificationchat"}checked{/if}
-                            type="checkbox"
-                            id="notificationchat"
-                            name="notificationchat"/>
-                        <label for="notificationchat"></label>
-                    </div>
-                </span>
-                <div>
-                    <p class="normal line">{$c->__('config.notification_chat')}</p>
-                </div>
-            </li>
-        </ul>
-    </div>
 </form>

@@ -2,8 +2,6 @@
 
 use Movim\Widget\Base;
 
-use Moxl\Xec\Action\Jingle\SessionReject;
-
 class VisioConfig extends Base
 {
     public function load()

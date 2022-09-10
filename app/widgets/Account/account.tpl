@@ -1,5 +1,17 @@
 <div class="tabelem" title="{$c->__('account.title')}" data-mobileicon="account_circle" id="account_widget">
+    <div id="account_presences"></div>
+    <div id="account_fingerprints"></div>
+    <div id="account_gateways">
+        {autoescape="off"}
+            {$gateways}
+        {/autoescape}
+    </div>
     <ul class="list active">
+        <li class="subheader">
+            <div>
+                <p>{$c->__('account.account_management')}</p>
+            </div>
+        </li>
         <li onclick="Account_ajaxChangePassword()">
             <span class="primary icon">
                 <i class="material-icons">vpn_key</i>
@@ -34,11 +46,4 @@
             </div>
         </li>
     </ul>
-    <div id="account_presences"></div>
-    <div id="account_fingerprints"></div>
-    <div id="account_gateways">
-        {autoescape="off"}
-            {$gateways}
-        {/autoescape}
-    </div>
 </div>
