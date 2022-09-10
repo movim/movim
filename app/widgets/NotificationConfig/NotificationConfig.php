@@ -19,7 +19,7 @@ class NotificationConfig extends Base
             $pushSubscription->self = ($pushSubscription->endpoint == $endpoint);
         }
 
-        $pushSubscriptions = $pushSubscriptions->sortByDesc('self')->sortByDesc('updated_at');
+        $pushSubscriptions = $pushSubscriptions->sortByDesc('self');
 
         $view = $this->tpl();
         $view->assign('pushSubscriptions', $pushSubscriptions);
