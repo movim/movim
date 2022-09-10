@@ -133,6 +133,8 @@ var ChatOmemo = {
                 store.setContactState(jid, true);
             }
 
+            if (!Chat) return;
+
             let textarea = Chat.getTextarea();
             if (textarea && textarea.dataset.jid == jid) {
                 Chat.setOmemoState('yes');
@@ -172,6 +174,8 @@ var ChatOmemo = {
 
         promise.then(function onsuccess() {
             console.log('success ' + jid + ':' + deviceId);
+
+            if (!Chat) return;
 
             let textarea = Chat.getTextarea();
             if (textarea && textarea.dataset.jid == jid) {

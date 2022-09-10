@@ -278,6 +278,32 @@ class Notification extends Base
         $p->save();
     }
 
+    /**
+     * @brief Request user permission to show notifications
+     */
+    public function ajaxRequest()
+    {
+        $view = $this->tpl();
+        Dialog::fill($view->draw('_notification_request'));
+    }
+
+    public function ajaxRequestGranted()
+    {
+        RPC::call('Notification.desktop',
+            $this->__('notification.request_title'),
+            $this->__('notification.request_granted'),
+            null,
+            null,
+            null,
+            true
+        );
+    }
+
+    public function ajaxRequestDenied()
+    {
+        Toast::send($this->__('notification.request_denied'));
+    }
+
     private function prepareSnackbar($title, $body = null, $picture = null, $action = null, $execute = null)
     {
         $view = $this->tpl();

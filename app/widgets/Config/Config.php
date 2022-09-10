@@ -7,7 +7,6 @@ use Moxl\Xec\Action\MAM\GetConfig;
 use Moxl\Xec\Action\MAM\SetConfig;
 
 use Respect\Validation\Validator;
-use App\User;
 
 class Config extends Base
 {
@@ -66,29 +65,6 @@ class Config extends Base
         $s = new SetConfig;
         $s->setDefault($value)
           ->request();
-    }
-
-    public function ajaxHttpPushGetConfig(?string $endpoint = null)
-    {
-        $pushSubscriptions = $this->user->pushSubscriptions;
-
-        foreach ($pushSubscriptions as $pushSubscription) {
-            $pushSubscription->self = ($pushSubscription->endpoint == $endpoint);
-        }
-
-        $pushSubscriptions = $pushSubscriptions->sortByDesc('self');
-
-        $view = $this->tpl();
-        $view->assign('pushSubscriptions', $pushSubscriptions);
-
-        $this->rpc('MovimTpl.fill', '#config_widget_push', $view->draw('_config_push'));
-    }
-
-    public function ajaxHttpTogglePushConfig(int $id, bool $enabled)
-    {
-        $pushSubscription = $this->user->pushSubscriptions()->where('id', $id)->firstOrFail();
-        $pushSubscription->enabled = $enabled;
-        $pushSubscription->save();
     }
 
     public function ajaxSubmit($data)

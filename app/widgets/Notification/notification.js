@@ -145,14 +145,14 @@ var Notification = {
         target = document.getElementById('snackbar');
         target.innerHTML = '';
     },
-    desktop : function(title, body, picture, action, execute) {
-        if (Notification.inhibed == true
+    desktop : function(title, body, picture, action, execute, force) {
+        if (!force && (Notification.inhibed == true
         || Notification.focused
-        || typeof DesktopNotification === 'undefined') return;
+        || typeof DesktopNotification === 'undefined')) return;
 
         if (DesktopNotification.permission === 'granted') {
             if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.getRegistration('sw.js').then((registration) => {
+                navigator.serviceWorker.getRegistration('sw.js').then((registration) => {console.log('hop');
                     if (!registration) return;
 
                     registration.pushManager.getSubscription().then((pushSubscription) => {
@@ -171,7 +171,10 @@ var Notification = {
                 });
             }
 
-            var notification = new DesktopNotification(title, { icon: picture, body: body });
+            var notification = new DesktopNotification(
+                title,
+                { icon: picture, body: body, tag: action }
+            );
 
             if (action !== null) {
                 notification.onclick = function() {
@@ -189,8 +192,15 @@ var Notification = {
                 }
             }
         } else if (DesktopNotification.permission !== 'denied') {
-            DesktopNotification.requestPermission();
+            Notification_ajaxRequest();
         }
+    },
+    request : function() {
+        DesktopNotification.requestPermission().then((permission) => {
+            (permission == 'granted')
+                ? Notification_ajaxRequestGranted()
+                : Notification_ajaxRequestDenied();
+        });
     },
     focus : function() {
         if (Notification.focused == false) {

@@ -4,13 +4,13 @@
         <ul class="list fill card">
             <li class="subheader">
                 <div>
-                    <p>{$c->__('config.push_subscriptions')}</p>
+                    <p>{$c->__('notificationconfig.push_subscriptions')}</p>
                 </div>
             </li>
             <li>
                 <div>
                     <p></p>
-                    <p>{$c->__('config.push_subscriptions_text')}</p>
+                    <p>{$c->__('notificationconfig.push_subscriptions_text')}</p>
                 </div>
             </li>
             <br />
@@ -27,15 +27,16 @@
                                 id="pushsubscription_state_{$value->id}"
                                 name="pushsubscription_state_{$value->id}"
                                 {if="$value->enabled"}checked{/if}
-                                onchange="Config_ajaxHttpTogglePushConfig({$value->id}, this.checked)"/>
+                                onchange="NotificationConfig_ajaxTogglePushConfig({$value->id}, this.checked)"/>
                             <label for="pushsubscription_state_{$value->id}"></label>
                         </div>
                     </span>
                     <div>
                         <p class="normal">
-                            {$value->browser ?? $c->__('config.unknown_browser')}
+                            <span class="info">{$value->created_at|strtotime|prepareDate}</span>
+                            {$value->browser ?? $c->__('notificationconfig.unknown_browser')}
                         </p>
-                        <p>{$value->platform ?? $c->__('config.unknown_platform')}</p>
+                        <p>{$value->platform ?? $c->__('notificationconfig.unknown_platform')}</p>
                     </div>
                 </li>
                 {if="$value->self"}<br /><hr /><br />{/if}
