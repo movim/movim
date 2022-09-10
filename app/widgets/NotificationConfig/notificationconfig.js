@@ -5,7 +5,6 @@ MovimWebsocket.attach(function() {
     }
 
     navigator.serviceWorker.getRegistration('sw.js').then((registration) => {
-        console.log(registration);
         if (!registration) {
             NotificationConfig_ajaxHttpPushGetConfig();
             return;

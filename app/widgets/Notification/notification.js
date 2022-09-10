@@ -152,7 +152,7 @@ var Notification = {
 
         if (DesktopNotification.permission === 'granted') {
             if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.getRegistration('sw.js').then((registration) => {console.log('hop');
+                navigator.serviceWorker.getRegistration('sw.js').then((registration) => {
                     if (!registration) return;
 
                     registration.pushManager.getSubscription().then((pushSubscription) => {
