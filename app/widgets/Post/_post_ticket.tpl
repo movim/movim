@@ -17,11 +17,6 @@
         "
             style="background-image: url({$post->picture->href|protectPicture});"
         >
-            {if="$post->contact"}
-                {$post->contact->truename|firstLetterCapitalize}
-            {else}
-                {$post->node|firstLetterCapitalize}
-            {/if}
         </span>
     {else}
         <span class="primary icon bubble color

@@ -150,12 +150,12 @@ nav ~ main {
 }
 
 main > div {
-    width: 84rem;
+    width: 92rem;
     max-width: 100%;
 }
 
 main > div > * {
-    max-width: 84rem;
+    max-width: 92rem;
     margin: 0 auto;
 }
 
@@ -323,7 +323,7 @@ main > div:first-child:nth-last-child(2) + div {
 }
 
 .actions.fixed > div:last-child > * { /* Little hack to fake the 100% width that overflow the parent */
-    max-width: 84rem;
+    max-width: 92rem;
     margin: 0 auto;
 }
 

@@ -38,7 +38,8 @@
 }
 
 #visioconfig_widget #camera_preview.enabled video {
-    display: initial;
+    display: block;
+    margin: 0 auto;
 }
 
 #visioconfig_widget #camera_preview video,

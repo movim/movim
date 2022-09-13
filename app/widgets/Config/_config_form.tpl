@@ -24,28 +24,37 @@
 
 
     <div class="block">
-        <div class="select">
-            <select name="language" id="language" value="{$conf->language}">
-                <option value="en">English (default)</option>
-                    {loop="$languages"}
-                        {if="$key == $conf->language"}
-                            <option
-                                value="{$key}"
-                                dir="auto"
-                                selected="selected">
-                                {$value}
-                            </option>
-                        {else}
-                            <option
-                                dir="auto"
-                                value="{$key}">
-                                {$value}
-                            </option>
-                        {/if}
-                    {/loop}
-            </select>
-        </div>
-        <label for="language">{$c->__('config.language')}</label>
+        <ul class="list fill">
+            <li>
+                <span class="primary icon gray">
+                    <i class="material-icons">language</i>
+                </span>
+                <div>
+                    <div class="select">
+                        <select name="language" id="language" value="{$conf->language}">
+                            <option value="en">English (default)</option>
+                                {loop="$languages"}
+                                    {if="$key == $conf->language"}
+                                        <option
+                                            value="{$key}"
+                                            dir="auto"
+                                            selected="selected">
+                                            {$value}
+                                        </option>
+                                    {else}
+                                        <option
+                                            dir="auto"
+                                            value="{$key}">
+                                            {$value}
+                                        </option>
+                                    {/if}
+                                {/loop}
+                        </select>
+                    </div>
+                    <label for="language">{$c->__('config.language')}</label>
+                </div>
+            </li>
+        </ul>
     </div>
 
     <div class="block">
@@ -72,7 +81,7 @@
 
             <li>
                 <span class="primary icon gray">
-                    18+
+                    <i class="material-icons">explicit</i>
                 </span>
                 <span class="control">
                     <div class="checkbox">
