@@ -1,4 +1,4 @@
-<ul class="list middle">
+<ul class="list fill middle">
     <li>
         <span class="primary icon gray">
             <i class="material-icons">public</i>
@@ -31,7 +31,7 @@
 {if="$me->hasPubsub()"}
 <form name="vcard4" id="vcard4form">
     <div>
-        <ul class="list">
+        <ul class="list fill">
             <li>
                 <span class="primary icon gray">
                     <i class="material-icons">face</i>
@@ -135,7 +135,7 @@
     </div>
 </form>
 {else}
-<ul class="list thick">
+<ul class="list fill thick">
     <li>
         <span class="primary icon orange bubble color">
             <i class="material-icons">warning</i>

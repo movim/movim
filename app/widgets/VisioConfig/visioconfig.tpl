@@ -1,5 +1,5 @@
 <div class="tabelem padded_top_bottom" title="{$c->__('visioconfig.title')}" data-mobileicon="video_settings" id="visioconfig_widget">
-    <ul class="list thick">
+    <ul class="list fill thick">
         <li>
             <span class="primary icon gray">
                 <i class="material-icons">info</i>
@@ -12,7 +12,7 @@
     </ul>
     <form>
         <div>
-            <ul class="list">
+            <ul class="list fill">
                 <li class="subheader">
                     <div>
                         <p>{$c->__('visioconfig.microphone')}</p>
@@ -30,7 +30,7 @@
                     </div>
                 </li>
             </ul>
-            <ul class="list thin">
+            <ul class="list fill thin">
                 <li>
                     <span class="primary icon small"></span>
                     <div class="level">
@@ -56,7 +56,7 @@
                     </div>
                 </li>
             </ul>
-            <ul class="list">
+            <ul class="list fill">
                 <li class="subheader">
                     <div>
                         <p>{$c->__('visioconfig.camera')}</p>

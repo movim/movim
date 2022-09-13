@@ -1,4 +1,4 @@
-<ul class="list divided active spaced">
+<ul class="list fill divided active spaced">
     {if="!empty($list)"}
     <li class="subheader">
         <div>

@@ -1,7 +1,7 @@
 {if="$fingerprints->count() > 0"}
 <form>
     <div>
-        <ul class="list middle">
+        <ul class="list fill middle">
             <li class="subheader">
                 <div>
                     <p>{$c->__('omemo.fingerprints')}</p>

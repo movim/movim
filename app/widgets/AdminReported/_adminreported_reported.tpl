@@ -1,6 +1,6 @@
 <form id="adminreported_widget_list">
     <div>
-        <ul class="list thick">
+        <ul class="list fill thick">
             <li>
                 <span class="primary icon gray">
                     <i class="material-icons">info</i>
@@ -11,7 +11,7 @@
                 </div>
             </li>
         </ul>
-        <ul class="list">
+        <ul class="list fill">
             {loop="$reported"}
                 <li id="reported-{$value->id|cleanupId}">
                     <span class="primary">

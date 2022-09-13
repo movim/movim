@@ -1,5 +1,5 @@
 {if="$gateways->isNotEmpty()"}
-<ul class="list active middle divided">
+<ul class="list fill active middle divided">
     <li class="subheader">
         <div>
             <p>{$c->__('account.gateway_title')}</p>

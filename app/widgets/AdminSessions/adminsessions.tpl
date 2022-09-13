@@ -1,5 +1,5 @@
-<div id="adminsessions" class="tabelem" title="{$c->__("adminsessions.title")}" data-mobileicon="group">
-    <ul class="list middle flex active">
+<div id="adminsessions" class="tabelem padded_top_bottom" title="{$c->__("adminsessions.title")}" data-mobileicon="group">
+    <ul class="list fill middle flex active">
         <li class="subheader block large">
             <div>
                 <p>{$c->__('adminsessions.text')} <span class="second">{$sessions|count}</span></p>

@@ -1,4 +1,4 @@
-<ul class="list middle">
+<ul class="list fill middle">
     <li class="subheader">
         <div>
             <p>{$c->__('clients.title_full')}</p>
