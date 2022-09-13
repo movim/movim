@@ -29,6 +29,7 @@ class Info extends Model
                 $this->identities()->delete();
                 $this->identities()->saveMany($this->freshIdentities);
             }
+
         } catch (\Exception $e) {
             /**
              * Existing info are saved in the DB
@@ -338,14 +339,14 @@ class Info extends Model
                             $this->created = toSQLDate($field->value);
                             break;
                         case 'pubsub#access_model':
-                            $this->pubsubaccessmodel = $field->value;
+                            $this->pubsubaccessmodel = (string)$field->value;
                             break;
                         case 'pubsub#publish_model':
-                            $this->pubsubpublishmodel = $field->value;
+                            $this->pubsubpublishmodel = (string)$field->value;
                             break;
                         case 'muc#roominfo_pubsub':
                             if (!empty((string)$field->value)) {
-                                $this->related = $field->value;
+                                $this->related = (string)$field->value;
                             }
                             break;
                         case 'muc#roominfo_description':

@@ -38,7 +38,14 @@ class Request extends Action
                           ->first();
 
         if ($found) {
-            $found->set($stanza, $this->_node, $this->_parent);
+            $found->set(
+                $stanza,
+                $this->_node,
+                // If a parent was previously set, we keep it
+                ($found->parent && !$this->_parent)
+                    ? $found->parent
+                    : $this->_parent
+            );
             $found->save();
             $info = $found;
         } else {
