@@ -122,8 +122,8 @@ ul.flex.gallery li.block img.main {
     width: calc(100% + 3rem);
     left: 0;
     top: 0;
-    flex: 0;
-    margin-bottom: 0.5rem;
+    flex: 0 0 60%;
+    mask-image: linear-gradient(to bottom, black 40%, transparent);
 }
 
 ul.flex.gallery li.block img.main:after {

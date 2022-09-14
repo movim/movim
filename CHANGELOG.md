@@ -13,6 +13,9 @@ v0.21 (trunk)
  * Add sound level detection during call and configuration and display warning if the mic is muted
  * Display messages for incoming and outgoing call and fix related issues
  * Fix the handling of MUC resources with / (#1044)
+ * Fix Roster pushes initiated by the server should update movim's roster (#1084)
+ * Fix gateway presence handling (#1083)
+ * Small redesign of the configuration page to make things more coherent
 
 v0.20
 ---------------------------
