@@ -38,17 +38,7 @@ article section.limited {
     max-height: 60rem;
     overflow: hidden;
     margin: 0;
-}
-
-article section.limited:after {
-    content: "";
-    display: block;
-    background: linear-gradient(to bottom, rgba(var(--movim-background-main), 0), rgba(var(--movim-background-main), 1));
-    width: 100%;
-    height: 10rem;
-    position: absolute;
-    bottom: 0;
-    pointer-events: none;
+    mask-image: linear-gradient(to bottom, black calc(100% - 10rem), transparent);
 }
 
 @media screen and (max-width: 1024px) {
