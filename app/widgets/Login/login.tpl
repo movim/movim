@@ -43,7 +43,10 @@
                         {/if}
                         <div>
                             <p></p>
-                            <p class="all">{$c->__('form.invite_chatroom', $contact->truename)}: {$invitation->resource}</p>
+                            <p class="all">
+                                {$c->__('form.invite_chatroom', $contact->truename)}:
+                                <a href="xmpp:{$invitation->resource}?join">{$invitation->resource}</a>
+                            </p>
                         </div>
                     </li>
                 </ul>

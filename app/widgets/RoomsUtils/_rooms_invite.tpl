@@ -20,10 +20,17 @@
         </div>
         <h2 style="text-align: center;">{$c->__('global.or')}</h2>
         <div>
-            <input
-                readonly
-                value="{$c->route('login', $invite->code)}">
-            <label>{$c->__('room.invite_code')}</label>
+            <ul class="list fill">
+                <li>
+                    <span class="control icon gray active" onclick="Preview.copyToClipboard('{$c->route('login', $invite->code)}')">
+                        <i class="material-icons">content_copy</i>
+                    </span>
+                    <div>
+                        <input readonly value="{$c->route('login', $invite->code)}">
+                        <label>{$c->__('room.invite_code')}</label>
+                    </div>
+                </li>
+            </ul>
         </div>
     </section>
     <div class="no_bar">
