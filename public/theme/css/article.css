@@ -38,6 +38,7 @@ article section.limited {
     max-height: 60rem;
     overflow: hidden;
     margin: 0;
+    -webkit-mask-image: linear-gradient(to bottom, black calc(100% - 10rem), transparent);
     mask-image: linear-gradient(to bottom, black calc(100% - 10rem), transparent);
 }
 
