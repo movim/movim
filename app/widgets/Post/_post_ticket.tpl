@@ -8,7 +8,7 @@
                 alt="{$post->picture->title}"
                 title="{$post->picture->title}"
              {/if}>
-        <span class="primary icon thumb color
+        <span class="control icon thumb color
             {if="$post->contact"}
                 {$post->contact->jid|stringToColor}
             {else}
@@ -18,30 +18,18 @@
             style="background-image: url({$post->picture->href|protectPicture});"
         >
         </span>
-    {else}
-        <span class="primary icon bubble color
-            {if="$post->contact"}
-                {$post->contact->jid|stringToColor}
-            {else}
-                {$post->node|stringToColor}
-            {/if}"
+    {elseif="!$post->contact"}
+        <span class="control icon bubble color {$post->node|stringToColor}"
             {$url = false}
             {if="$post->info"}
                 {$url = $post->info->getPhoto('m')}
-            {/if}
-            {if="!$url && $post->contact"}
-                {$url = $post->contact->getPhoto('m')}
             {/if}
             {if="$url"}
                 style="background-image: url({$url});"
             {/if}
         >
             {if="$url == false"}
-                {if="$post->contact"}
-                    {$post->contact->truename|firstLetterCapitalize}
-                {else}
-                    {$post->node|firstLetterCapitalize}
-                {/if}
+                {$post->node|firstLetterCapitalize}
             {/if}
         </span>
     {/if}
@@ -58,6 +46,15 @@
         <p dir="auto">{autoescape="off"}{$post->getSummary()|prepareString}{/autoescape}</p>
         <p>
             {if="$post->contact"}
+                {$url = $post->contact->getPhoto('s')}
+                <span class="icon bubble color tiny {$post->contact->jid|stringToColor}"
+                    {if="$url"}
+                        style="background-image: url('{$url}');">
+                    {else}
+                        >
+                        {$post->contact->truename|firstLetterCapitalize}
+                    {/if}
+                </span>
                 <a href="{$c->route('contact', $post->contact->jid)}">
                     {$post->contact->truename}
                 </a>

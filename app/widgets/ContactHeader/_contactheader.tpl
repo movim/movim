@@ -24,7 +24,7 @@
         {else}
             {if="$contact->isMe()"}
                 <span class="control icon active gray divided" onclick="MovimUtils.redirect('{$c->route('conf')}')"
-                    title="{$c->__('button.add')}">
+                    title="{$c->__('button.edit')}">
                     <i class="material-icons">edit</i>
                 </span>
             {else}

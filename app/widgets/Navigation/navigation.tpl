@@ -1,6 +1,6 @@
 <ul id="navigation" class="list active" dir="ltr">
     {if="$c->getUser()->hasPubsub()"}
-    <a class="classic on_desktop"
+    <a class="classic"
        href="{$c->route('publish')}"
        title="{$c->__('page.publish')}">
         <li {if="$page == 'publish'"}class="active"{/if}>

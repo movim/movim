@@ -115,9 +115,10 @@ class CommunityPosts extends Base
         $this->rpc('MovimTpl.fill', '#communityposts', $html);
     }
 
-    public function prepareEmpty()
+    public function prepareEmpty($origin = '')
     {
         $view = $this->tpl();
+        $view->assign('me', $origin == $this->user->id);
         return $view->draw('_communityposts_empty');
     }
 
@@ -151,7 +152,7 @@ class CommunityPosts extends Base
         }
 
         if (empty($ids)) {
-            return $this->prepareEmpty();
+            return $this->prepareEmpty($origin);
         }
 
         $posts = \App\Post::where('server', $origin)->where('node', $node)

@@ -109,7 +109,16 @@
                     </div>
                 </form>
             </li>
-
+        </ul>
+        <ul class="list thin">
+            <li>
+                <div>
+                    <p></p>
+                    <p><i class="material-icons">lightbulb</i>{$c->__('publish.help_hashtag')}</p>
+                </div>
+            </li>
+        </ul>
+        <ul class="list">
             <li>
                 <ul class="list flex card" id="publishembeds">
                     {loop="$draft->embeds"}

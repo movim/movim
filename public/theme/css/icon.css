@@ -35,14 +35,20 @@ span.icon.top.preview {
     height: 25rem;
 }
 
-span.icon.primary.thumb {
+span.icon.primary.thumb,
+span.icon.control.thumb {
     width: 7rem;
     line-height: 7rem;
-    margin-left: -1.5rem;
-    margin-right: 0.5rem;
+    margin-right: -1.5rem;
+    margin-left: 0.5rem;
     align-self: stretch;
     height: auto;
     text-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+}
+
+span.icon.primary.thumb {
+    margin-left: -1.5rem;
+    margin-right: 0.5rem;
 }
 
 span.primary.overflow {
@@ -52,6 +58,10 @@ span.primary.overflow {
 
 ul.fill li span.icon.primary.thumb {
     margin-left: 0;
+}
+
+ul.fill li span.icon.control.thumb {
+    margin-right: 0;
 }
 
 span.icon.bubble {
@@ -159,6 +169,15 @@ i.icon-text {
     margin: 0 0.25rem;
     line-height: 3rem;
     vertical-align: middle;
+}
+
+/* Tiny icon */
+p span.icon.tiny {
+    width: 2rem;
+    display: inline-block;
+    height: 2rem;
+    margin-right: 0.5rem;
+    vertical-align: sub;
 }
 
 /* Composing */
