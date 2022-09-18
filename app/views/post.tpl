@@ -8,6 +8,7 @@
 <?php $this->widget('SendTo');?>
 <?php $this->widget('Tabs');?>
 <?php $this->widget('ChatOmemo');?>
+<?php $this->widget('Location');?>
 
 <?php $this->widget('ContactActions');?>
 <?php $this->widget('PostActions');?>

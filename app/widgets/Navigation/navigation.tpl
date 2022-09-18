@@ -54,6 +54,18 @@
 
 <ul class="list divided oppose active" dir="ltr">
     <a href="#">
+        <li onclick="Location_ajaxToggle()"
+            title="{$c->__('location.title')}"
+            id="location_widget">
+            <span class="primary icon disabled">
+                <i class="material-icons">place</i>
+            </span>
+            <div>
+                <p class="normal line">{$c->__('location.title')}</p>
+            </div>
+        </li>
+    </a>
+    <a href="#">
         <li onclick="Notifications_ajaxRequest()"
             title="{$c->__('notifs.title')}"
         >

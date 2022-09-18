@@ -9,7 +9,7 @@
 {if="!empty($embed->images) && array_key_exists('size', $embed->images[0])"}
     <span class="pinfo">
         {if="$embed->images[0]['size'] != 0"}
-            {$embed->images[0]['size']|sizeToCleanSize}
+            {$embed->images[0]['size']|humanSize}
         {/if}
     </span>
 {/if}

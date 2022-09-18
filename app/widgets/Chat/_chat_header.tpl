@@ -264,6 +264,10 @@
                 </p>
                 <p class="compose first line active" id="{$jid|cleanupId}-state" onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')"></p>
                 <p class="line active" onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')">
+                    {if="$contact->locationDistance != null"}
+                        <i class="material-icons">place</i>
+                        {$contact->locationDistance|humanDistance} •
+                    {/if}
                     {if="$roster && $roster->presence && $roster->presence->seen"}
                         {$c->__('last.title')} {$roster->presence->seen|strtotime|prepareDate:true,true}
                     {elseif="$roster && $roster->presence && !empty($roster->presence->status)"}

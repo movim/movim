@@ -60,6 +60,16 @@
                         {$contact->url}
                     {/if}
                 {/if}
+
+                {if="$contact->locationDistance != null"}
+                    <br />
+                    <i class="material-icons icon-text">place</i>
+                    <a href="{$contact->locationUrl}" target="_blank">{$contact->locationDistance|humanDistance}</a> - {$contact->loctimestamp|strtotime|prepareDate:true,true}
+                {elseif="$contact->hasLocation()"}
+                    <br />
+                    <i class="material-icons icon-text">place</i>
+                    <a href="{$contact->locationUrl}" target="_blank">{$c->__('location.last_published')}</a> - {$contact->loctimestamp|strtotime|prepareDate:true,true}
+                {/if}
             </p>
         </div>
     </li>

@@ -17,7 +17,7 @@ class Get extends Action
 
     public function handle($stanza, $parent = false)
     {
-        if ($vcard = $stanza->pubsub->items->item) {
+        if ($stanza->pubsub->items->item) {
             $contact = \App\Contact::firstOrNew(['id' => $this->_to]);
             $contact->setVcard4($stanza->pubsub->items->item->vcard);
             $contact->save();

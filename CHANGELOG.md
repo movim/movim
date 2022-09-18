@@ -16,6 +16,9 @@ v0.21 (trunk)
  * Fix Roster pushes initiated by the server should update movim's roster (#1084)
  * Fix gateway presence handling (#1083)
  * Small redesign of the configuration page to make things more coherent
+ * Implement XEP-0080: User Location
+ * Add new Location widget
+ * Show distance with a contact if both locations are enabled
 
 v0.20
 ---------------------------

@@ -11,7 +11,7 @@
             <div>
                 <p>{$c->__('upload.choose')}</p>
                 {if="isset($service->description)"}
-                    <p class="limit" data-limit="{$service->description}">{$c->__('upload.max_size', sizeToCleanSize($service->description))}</p>
+                    <p class="limit" data-limit="{$service->description}">{$c->__('upload.max_size', humanSize($service->description))}</p>
                 {/if}
                 <p>
                     <input type="file" id="file" onchange="Upload.preview()"/>

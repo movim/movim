@@ -15,7 +15,7 @@
 
             {if="$embed->imagenumber > 0"}
                 style="background-image: url({$resolved->images[$imagenumber]['url']|protectPicture})"
-                title="{$resolved->images[$imagenumber]['size']|sizeToCleanSize}"
+                title="{$resolved->images[$imagenumber]['size']|humanSize}"
             {/if}
             >
             <i class="material-icons">collections</i>
@@ -54,7 +54,7 @@
                     {$resolved->images|count}
                 {/if}
             </p>
-            <p class="line">{$resolved->images[$embed->imagenumber]['size']|sizeToCleanSize}</p>
+            <p class="line">{$resolved->images[$embed->imagenumber]['size']|humanSize}</p>
         {else}
             <p class="line">{$resolved->title}</p>
             <p class="line">{$resolved->description}</p>

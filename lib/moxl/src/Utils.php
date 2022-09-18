@@ -67,8 +67,8 @@ class Utils
             'http://jabber.org/protocol/disco#info',
             'http://jabber.org/protocol/disco#items',
             //'http://jabber.org/protocol/activity',
-            //'http://jabber.org/protocol/geoloc',
-            //'http://jabber.org/protocol/geoloc+notify',
+            'http://jabber.org/protocol/geoloc',
+            'http://jabber.org/protocol/geoloc+notify',
             'http://jabber.org/protocol/pubsub',
             //'http://jabber.org/protocol/tune',
             //'http://jabber.org/protocol/tune+notify'

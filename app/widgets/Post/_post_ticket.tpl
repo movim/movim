@@ -78,8 +78,8 @@
             {if="$count > 0"}
                 {$count} <i class="material-icons">chat_bubble_outline</i>
             {/if}
-            <span class="info">
-                {$post->published|strtotime|prepareDate}
+            <span class="info" title="{$post->published|strtotime|prepareDate}">
+                {$post->published|strtotime|prepareDate:true,true}
             </span>
         </p>
     </div>

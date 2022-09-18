@@ -4,6 +4,7 @@
 <?php $this->widget('VisioLink');?>
 <?php $this->widget('Notifications');?>
 <?php $this->widget('SendTo');?>
+<?php $this->widget('Location');?>
 
 <nav class="color dark">
     <?php $this->widget('Presence');?>

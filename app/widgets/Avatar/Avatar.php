@@ -64,6 +64,8 @@ class Avatar extends \Movim\Widget\Base
 
     public function ajaxSubmit($avatar)
     {
+        if (empty($avatar->photobin->value)) return;
+
         $p = new Image;
         $p->fromBase($avatar->photobin->value);
         $p->setKey($this->user->id.'avatar');

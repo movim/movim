@@ -721,6 +721,28 @@ function requestAPI(string $action, int $timeout = 2, $post = false)
     return curl_errno($ch) == 0 ? $content : false;
 }
 
+/**
+ * @desc Get distance between two coordinates
+ *
+ * @param float $latitudeFrom
+ * @param float $longitudeFrom
+ * @param float $latitudeTo
+ * @param float $longitudeTo
+ *
+ * @return float [km]
+ */
+function getDistance(float $latitudeFrom, float $longitudeFrom, float $latitudeTo, float $longitudeTo): float
+{
+    $rad = M_PI / 180;
+
+    $theta = $longitudeFrom - $longitudeTo;
+    $dist = sin($latitudeFrom * $rad)
+        * sin($latitudeTo * $rad) +  cos($latitudeFrom * $rad)
+        * cos($latitudeTo * $rad) * cos($theta * $rad);
+
+    return acos($dist) / $rad * 60 *  1.853;
+}
+
 /*
  * @desc Get the URI of a smiley
  */
