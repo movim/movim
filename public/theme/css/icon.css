@@ -119,11 +119,6 @@ span.icon.status:after {
     top: 3rem;
     position: absolute;
 
-    font-family: 'Material Icons';
-    font-size: 1.5rem;
-    line-height: 2rem;
-    text-align: center;
-
     border-radius: 2em;
     background-color: #DDD;
     box-shadow: -0.1rem -0.1rem 0.5rem rgba(0, 0, 0, 0.2);
@@ -131,6 +126,10 @@ span.icon.status:after {
 
 span.icon.status.location:after {
     content: 'place';
+    font-family: 'Material Icons';
+    font-size: 1.5rem;
+    line-height: 2rem;
+    text-align: center;
 }
 
 /* Weird bug */
