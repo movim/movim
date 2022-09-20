@@ -7,7 +7,6 @@
 <div class="block">
     <ul class="list middle active divided spaced">
         {if="!$contact->isMe()"}
-
             {if="$roster && $roster->presences->count() > 0"}
                 {loop="$roster->presences"}
                     {if="$value->capability && $value->capability->isJingleAudio()"}

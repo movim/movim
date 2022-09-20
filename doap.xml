@@ -156,6 +156,13 @@
     </implements>
     <implements>
         <xmpp:SupportedXep>
+            <xmpp:xep rdf:resource="https://xmpp.org/extensions/xep-0080.html"/>
+            <xmpp:status>complete</xmpp:status>
+            <xmpp:version>1.9</xmpp:version>
+        </xmpp:SupportedXep>
+    </implements>
+    <implements>
+        <xmpp:SupportedXep>
             <xmpp:xep rdf:resource="https://xmpp.org/extensions/xep-0084.html"/>
             <xmpp:status>complete</xmpp:status>
             <xmpp:version>1.1.2</xmpp:version>

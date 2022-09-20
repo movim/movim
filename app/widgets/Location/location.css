@@ -1,0 +1,21 @@
+#location_widget span.primary.searching:before,
+#location_toggle .placeholder.searching:before {
+    content: '';
+    display: block;
+    width: 5rem;
+    height: 5rem;
+    position: absolute;
+    background-color: white;
+    left: 0.5rem;
+    top: 0.25rem;
+    opacity: 0.5;
+    border-radius: 50%;
+    animation: ripple 1.5s ease-out infinite;
+}
+
+#location_toggle .placeholder.searching:before {
+    width: 12rem;
+    height: 12rem;
+    left: calc(50% - 6rem);
+    top: calc(50% - 8rem);
+}

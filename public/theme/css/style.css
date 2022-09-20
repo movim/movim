@@ -529,6 +529,18 @@ img.transparent {
     to { opacity: 1; }
 }
 
+@keyframes ripple {
+    from {
+        opacity: 0.5;
+        transform: scale(0.1);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(1);
+    }
+}
+
 body {
     --standard-easing: cubic-bezier(0.4, 0.0, 0.2, 1);
     --accelerate-easing: cubic-bezier(0.167, 0.167, 0, 1);

@@ -269,7 +269,7 @@ $xmppBehaviour = function (React\Socket\Connection $stream) use (&$xmppSocket, $
 
     if (getenv('verbose')) {
         logOut(colorize('XMPP socket launched', 'blue'));
-        logOut(" launched : ".\sizeToCleanSize(memory_get_usage()));
+        logOut(" launched : ".\humanSize(memory_get_usage()));
     }
 
     $xmppSocket->on('data', function ($message) use (&$xmppSocket, $parser, &$timestampReceive) {

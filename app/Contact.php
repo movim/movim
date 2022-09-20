@@ -127,24 +127,69 @@ class Contact extends Model
         return !empty($this->id) ? getPhoto($this->id, $size) : null;
     }
 
-    public function setLocation($stanza)
+    public function setLocation($item)
     {
-        $this->loclatitude      = (string)$stanza->items->item->geoloc->lat;
-        $this->loclongitude     = (string)$stanza->items->item->geoloc->lon;
-        $this->localtitude      = (int)$stanza->items->item->geoloc->alt;
-        $this->loccountry       = (string)$stanza->items->item->geoloc->country;
-        $this->loccountrycode   = (string)$stanza->items->item->geoloc->countrycode;
-        $this->locregion        = (string)$stanza->items->item->geoloc->region;
-        $this->locpostalcode    = (string)$stanza->items->item->geoloc->postalcode;
-        $this->loclocality      = (string)$stanza->items->item->geoloc->locality;
-        $this->locstreet        = (string)$stanza->items->item->geoloc->street;
-        $this->locbuilding      = (string)$stanza->items->item->geoloc->building;
-        $this->loctext          = (string)$stanza->items->item->geoloc->text;
-        $this->locuri           = (string)$stanza->items->item->geoloc->uri;
-        $this->loctimestamp = date(
-            'Y-m-d H:i:s',
-            strtotime((string)$stanza->items->item->geoloc->timestamp)
-        );
+        // Clear
+        $this->loclatitude = $this->loclongitude = $this->localtitude = $this->loccountry
+        = $this->loccountrycode = $this->locregion = $this->locpostalcode = $this->loclocality
+        = $this->locstreet = $this->locbuilding = $this->loctext = $this->locuri
+        = $this->loctimestamp = null;
+
+        // Fill
+        if ($item->geoloc->lat && isLatitude((float)$item->geoloc->lat)) {
+            $this->loclatitude      = (string)$item->geoloc->lat;
+        }
+
+        if ($item->geoloc->lon && isLongitude((float)$item->geoloc->lon)) {
+            $this->loclongitude     = (string)$item->geoloc->lon;
+        }
+
+        if ($item->geoloc->alt) {
+            $this->localtitude      = (int)$item->geoloc->alt;
+        }
+
+        if ($item->geoloc->country) {
+            $this->loccountry       = (string)$item->geoloc->country;
+        }
+
+        if ($item->geoloc->countrycode) {
+            $this->loccountrycode   = (string)$item->geoloc->countrycode;
+        }
+
+        if ($item->geoloc->region) {
+            $this->locregion        = (string)$item->geoloc->region;
+        }
+
+        if ($item->geoloc->postalcode) {
+            $this->locpostalcode    = (string)$item->geoloc->postalcode;
+        }
+
+        if ($item->geoloc->locality) {
+            $this->loclocality      = (string)$item->geoloc->locality;
+        }
+
+        if ($item->geoloc->street) {
+            $this->locstreet        = (string)$item->geoloc->street;
+        }
+
+        if ($item->geoloc->building) {
+            $this->locbuilding      = (string)$item->geoloc->building;
+        }
+
+        if ($item->geoloc->text) {
+            $this->loctext          = (string)$item->geoloc->text;
+        }
+
+        if ($item->geoloc->uri) {
+            $this->locuri           = (string)$item->geoloc->uri;
+        }
+
+        if ($item->geoloc->timestamp) {
+            $this->loctimestamp = date(
+                'Y-m-d H:i:s',
+                strtotime((string)$item->geoloc->timestamp)
+            );
+        }
     }
 
     public function setTune($stanza)
@@ -192,34 +237,34 @@ class Contact extends Model
             : null;
     }
 
-    public function getPlace(): string
+    public function getLocationDistanceAttribute(): ?float
     {
-        $place = '';
+        if (in_array('loctimestamp', $this->attributes) && $this->attributes['loctimestamp'] != null
+         && \Carbon\Carbon::now()->subDay()->timestamp < strtotime($this->attributes['loctimestamp'])
+         && $this->attributes['loclatitude'] != null && $this->attributes['loclongitude'] != null) {
+            $me = User::me()->contact;
 
-        if ($this->loctext != '') {
-            $place .= $this->loctext.' ';
-        } else {
-            if ($this->locbuilding != '') {
-                $place .= $this->locbuilding.' ';
-            }
-            if ($this->locstreet != '') {
-                $place .= $this->locstreet.'<br />';
-            }
-            if ($this->locpostalcode != '') {
-                $place .= $this->locpostalcode.' ';
-            }
-            if ($this->loclocality != '') {
-                $place .= $this->loclocality.'<br />';
-            }
-            if ($this->locregion != '') {
-                $place .= $this->locregion.' - ';
-            }
-            if ($this->loccountry != '') {
-                $place .= $this->loccountry;
+            if ($me->attributes['loclatitude'] != null && $me->attributes['loclongitude'] != null) {
+                return getDistance(
+                    $this->attributes['loclatitude'], $this->attributes['loclongitude'],
+                    $me->attributes['loclatitude'], $me->attributes['loclongitude'],
+                );
             }
         }
 
-        return $place;
+        return null;
+    }
+
+    public function getLocationUrlAttribute(): string
+    {
+        if (in_array('loctimestamp', $this->attributes) && $this->attributes['loctimestamp'] != null
+         && \Carbon\Carbon::now()->subDay()->timestamp < strtotime($this->attributes['loctimestamp'])
+         && $this->attributes['loclatitude'] != null && $this->attributes['loclongitude'] != null) {
+            return 'https://www.openstreetmap.org/'.
+                '?mlat='.round($this->attributes['loclatitude'], 4).
+                '&mlon='.round($this->attributes['loclongitude'], 4).
+                '/#map=13/';
+        }
     }
 
     public function getTruenameAttribute(): string
@@ -331,5 +376,10 @@ class Contact extends Model
     public function isMe(): bool
     {
         return ($this->id == \App\User::me()->id);
+    }
+
+    public function hasLocation()
+    {
+        return ($this->attributes['loclatitude'] != null && $this->attributes['loclongitude'] != null);
     }
 }

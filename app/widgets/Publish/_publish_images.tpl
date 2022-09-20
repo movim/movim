@@ -7,7 +7,7 @@
                 onclick="Publish_ajaxHttpSetImageNumber({$embed->draft_id}, {$embed->id}, {$key+1})">
                 <i class="material-icons">photo</i>
                 <span>
-                    {$value.width} × {$value.height} · {$value.size|sizeToCleanSize:0}
+                    {$value.width} × {$value.height} · {$value.size|humanSize:0}
                 </span>
             </li>
         {/loop}

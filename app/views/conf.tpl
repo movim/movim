@@ -5,6 +5,7 @@
 <?php $this->widget('Onboarding');?>
 <?php $this->widget('Notifications');?>
 <?php $this->widget('ChatOmemo');?>
+<?php $this->widget('Location');?>
 
 <nav class="color dark">
     <?php $this->widget('Presence');?>

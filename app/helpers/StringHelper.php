@@ -84,7 +84,7 @@ function addEmojis($string, bool $noTitle = false)
 }
 
 /**
- * Prepare the string (add the a to the links and show the smileys)
+ * @desc Prepare the string (add the a to the links and show the smileys)
  */
 function prepareString($string, bool $preview = false)
 {
@@ -92,7 +92,7 @@ function prepareString($string, bool $preview = false)
 }
 
 /**
- * Estimate the reading time of a content in minutes
+ * @desc Estimate the reading time of a content in minutes
  */
 function readTime($content)
 {
@@ -106,7 +106,7 @@ function readTime($content)
 }
 
 /**
- * Return the tags in a string
+ * @desc Return the tags in a string
  */
 function getHashtags($string): array
 {
@@ -121,7 +121,7 @@ function getHashtags($string): array
 }
 
 /**
- * Echap the JID
+ * @desc Echap the JID
  */
 function echapJid($jid): string
 {
@@ -129,7 +129,7 @@ function echapJid($jid): string
 }
 
 /**
- * Echap the anti-slashs for Javascript
+ * @desc Echap the anti-slashs for Javascript
  */
 function echapJS($string): string
 {
@@ -137,7 +137,7 @@ function echapJS($string): string
 }
 
 /**
- * Echap the anti-slashs for Javascript
+ * @desc Echap the anti-slashs for Javascript
  */
 function unechap($string): string
 {
@@ -145,7 +145,7 @@ function unechap($string): string
 }
 
 /**
- * Clean the resource of a jid
+ * @desc Clean the resource of a jid
  */
 function cleanJid($jid): string
 {
@@ -154,7 +154,7 @@ function cleanJid($jid): string
 }
 
 /**
- * Extract the CID
+ * @desc Extract the CID
  */
 function getCid($string)
 {
@@ -165,7 +165,7 @@ function getCid($string)
 }
 
 /**
- * Explode a XMPP URI
+ * @desc Explode a XMPP URI
  */
 function explodeXMPPURI(string $uri): array
 {
@@ -200,7 +200,7 @@ function explodeXMPPURI(string $uri): array
 }
 
 /**
- * Explode query parameters into an array
+ * @desc Explode query parameters into an array
  */
 function explodeQueryParams(string $query): array
 {
@@ -217,7 +217,7 @@ function explodeQueryParams(string $query): array
 }
 
 /**
- *  Explode JID
+ * @desc Explode JID
  */
 function explodeJid(string $jid): array
 {
@@ -243,9 +243,9 @@ function explodeJid(string $jid): array
 }
 
 /**
- * Return a human readable filesize
+ * @desc Return a human readable filesize
  */
-function sizeToCleanSize($bytes, int $precision = 2): string
+function humanSize($bytes, int $precision = 2): string
 {
     $units = [
         __('filesize.byte'),
@@ -261,6 +261,16 @@ function sizeToCleanSize($bytes, int $precision = 2): string
     $bytes /= pow(1024, $pow);
 
     return round($bytes, $precision) . ' ' . $units[$pow];
+}
+
+/**
+ * @desc Return a human readable distance in km
+ */
+function humanDistance(float $distance): string
+{
+    return ($distance < 1)
+        ? __('location.less_than_one_km')
+        : __('location.n_km_away', round($distance));
 }
 
 /**
@@ -283,7 +293,7 @@ function colorize($string, string $color): string
 }
 
 /**
- * Check if the mimetype is a picture
+ * @desc Check if the mimetype is a picture
  */
 function typeIsPicture(string $type): bool
 {
@@ -291,7 +301,7 @@ function typeIsPicture(string $type): bool
 }
 
 /**
- * Check if the mimetype is a video
+ * @desc Check if the mimetype is a video
  */
 function typeIsVideo(string $type): bool
 {
@@ -299,7 +309,7 @@ function typeIsVideo(string $type): bool
 }
 
 /**
- * Check if the mimetype is an audio file
+ * @desc Check if the mimetype is an audio file
  */
 function typeIsAudio(string $type): bool
 {
@@ -313,7 +323,7 @@ function typeIsAudio(string $type): bool
 }
 
 /**
- * Validate a media type
+ * @desc Validate a media type
  */
 function isMimeType(string $mimeType): bool
 {
@@ -321,7 +331,23 @@ function isMimeType(string $mimeType): bool
 }
 
 /**
- * Return a color generated from the string
+ * @desc Validate latitude
+ */
+function isLatitude(float $latitude): bool
+{
+    return $latitude > -90 && $latitude < 90;
+}
+
+/**
+ * @desc Validate longitude
+ */
+function isLongitude(float $longitude): bool
+{
+    return $longitude > -180 && $longitude < 180;
+}
+
+/**
+ * @desc Return a color generated from the string
  */
 function stringToColor($string): string
 {
@@ -349,7 +375,7 @@ function stringToColor($string): string
 }
 
 /**
- * Strip tags and add a whitespace
+ * @desc Strip tags and add a whitespace
  */
 function stripTags($string): string
 {
@@ -361,7 +387,7 @@ function stripTags($string): string
 }
 
 /**
- * To emoji shortcut
+ * @desc To emoji shortcut
  */
 function emojiShortcut($string): string
 {
@@ -375,7 +401,7 @@ function emojiShortcut($string): string
 }
 
 /**
- * Purify a string
+ * @desc Purify a string
  */
 function purifyHTML($string, $base = null): string
 {
@@ -419,7 +445,7 @@ function purifyHTML($string, $base = null): string
 }
 
 /**
- * Check if a string is RTL
+ * @desc Check if a string is RTL
  */
 function isRTL(string $string): bool
 {
@@ -427,7 +453,7 @@ function isRTL(string $string): bool
 }
 
 /**
- * Invert a number
+ * @desc Invert a number
  */
 function invertSign($num)
 {
@@ -435,7 +461,7 @@ function invertSign($num)
 }
 
 /**
- * Return the first two letters of a string
+ * @desc Return the first two letters of a string
  */
 function firstLetterCapitalize($string, bool $firstOnly = false): string
 {
@@ -445,7 +471,7 @@ function firstLetterCapitalize($string, bool $firstOnly = false): string
 }
 
 /**
- * Return a clean string that can be used for HTML ids
+ * @desc Return a clean string that can be used for HTML ids
  */
 function cleanupId(string $string = '', bool $withHash = false): string
 {
@@ -454,7 +480,7 @@ function cleanupId(string $string = '', bool $withHash = false): string
 }
 
 /**
- * Truncates the given string at the specified length.
+ * @desc Truncates the given string at the specified length.
  */
 function truncate($str, int $width): string
 {
@@ -462,7 +488,7 @@ function truncate($str, int $width): string
 }
 
 /**
- * Return the URI of a path with a timestamp
+ * @desc Return the URI of a path with a timestamp
  */
 function urilize($path, bool $noTime = false): string
 {
@@ -474,7 +500,7 @@ function urilize($path, bool $noTime = false): string
 }
 
 /**
- * Return a comma-separated list of joined array elements
+ * @desc Return a comma-separated list of joined array elements
  */
 function implodeCsv($value)
 {

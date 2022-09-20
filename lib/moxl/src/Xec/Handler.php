@@ -148,7 +148,7 @@ class Handler
 
             //'37ff18f136d5826c4426af5a23729e48' => 'Mood',
             //'6b38ed328fb77617c6e4a5ac9dda0ad2' => 'Tune',
-            //'0981a46bbfa88b3500c4bccda18ccb89' => 'Location',
+            '0981a46bbfa88b3500c4bccda18ccb89' => 'Location',
             '9c8ed44d4528a66484b0fbd44b0a9070' => 'Nickname',
 
             // Should be handled by the PresenceBuffer, to be removed !

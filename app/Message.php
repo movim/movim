@@ -96,7 +96,7 @@ class Message extends Model
             $file = unserialize($this->attributes['file']);
 
             if (\array_key_exists('size', $file)) {
-                $file['cleansize'] = sizeToCleanSize($file['size']);
+                $file['cleansize'] = humanSize($file['size']);
             }
 
             return $file;
