@@ -255,7 +255,7 @@ class Contact extends Model
         return null;
     }
 
-    public function getLocationUrlAttribute(): string
+    public function getLocationUrlAttribute(): ?string
     {
         if (in_array('loctimestamp', $this->attributes) && $this->attributes['loctimestamp'] != null
          && \Carbon\Carbon::now()->subDay()->timestamp < strtotime($this->attributes['loctimestamp'])
@@ -265,6 +265,8 @@ class Contact extends Model
                 '&mlon='.round($this->attributes['loclongitude'], 4).
                 '/#map=13/';
         }
+
+        return null;
     }
 
     public function getTruenameAttribute(): string
