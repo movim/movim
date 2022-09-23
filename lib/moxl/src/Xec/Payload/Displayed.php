@@ -17,6 +17,7 @@ class Displayed extends Payload
 
         if ($message && $message->displayed == null) {
             $message->displayed = gmdate('Y-m-d H:i:s');
+            $message->seen = true;
             $message->save();
 
             $this->pack($message);

@@ -133,7 +133,7 @@ class Message
 
             $root->appendChild($request);
 
-            if ($receipts != 'request') {
+            if ($receipts == 'received') {
                 $nostore = $dom->createElementNS('urn:xmpp:hints', 'no-store');
                 $root->appendChild($nostore);
 
