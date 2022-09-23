@@ -17,6 +17,7 @@ class Notifications extends Base
         $this->registerEvent('post', 'onPost');
         $this->registerEvent('pubsub_getitem_handle', 'onPost');
         $this->registerEvent('subscribe', 'onInvitations');
+        $this->registerEvent('roster', 'onRoster');
         $this->registerEvent('roster_additem_handle', 'onInvitations');
         $this->registerEvent('roster_updateitem_handle', 'onInvitations');
         $this->registerEvent('presence_subscribe_handle', 'onInvitations');
@@ -28,6 +29,16 @@ class Notifications extends Base
         $post = $packet->content;
         if ($post->isComment() && !$post->isMine()) {
             $this->ajaxSetCounter();
+        }
+    }
+
+    public function onRoster($packet)
+    {
+        $contact = $this->user->session->contacts()->where('jid', $packet->content)->first();
+
+        // If the invitation was accepted or removed from another connected client
+        if (($contact && $contact->subscription == 'both') || !$contact) {
+            $this->removeInvitation($packet->content);
         }
     }
 
@@ -120,6 +131,11 @@ class Notifications extends Base
         $p->setTo($jid)
           ->request();
 
+        $this->removeInvitation($jid);
+    }
+
+    private function removeInvitation($jid)
+    {
         // TODO : move in Moxl
         $session = Session::start();
         $notifs = $session->get('activenotifs', []);
@@ -132,6 +148,7 @@ class Notifications extends Base
         $n->ajaxClear('invite|'.$jid);
 
         Drawer::fill($this->prepareNotifications());
+
         $this->ajaxSetCounter();
     }
 

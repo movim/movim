@@ -28,6 +28,7 @@ class Roster extends Payload
                 $roster->save();
             }
 
+            $this->pack($jid);
             $this->deliver();
         }
     }
