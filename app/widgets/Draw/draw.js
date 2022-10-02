@@ -236,6 +236,7 @@ var Draw = {
                 this.classList.add('selected');
 
                 Draw.ctx.globalCompositeOperation = 'source-over';
+                console.log(window.getComputedStyle(colors[i].querySelector('span.primary')).backgroundColor);
                 Draw.ctx.strokeStyle = window.getComputedStyle(colors[i].querySelector('span.primary')).backgroundColor;
                 Draw.sctx.strokeStyle = window.getComputedStyle(colors[i].querySelector('span.primary')).backgroundColor;
             });

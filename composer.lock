@@ -68,16 +68,16 @@
         },
         {
             "name": "cakephp/core",
-            "version": "4.4.5",
+            "version": "4.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/core.git",
-                "reference": "77e53e3784863c1b8006464b82ab842ee7c58e6b"
+                "reference": "6c8c20a59c5d6b03809d5fbc7e1b2f1a5ba910fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/core/zipball/77e53e3784863c1b8006464b82ab842ee7c58e6b",
-                "reference": "77e53e3784863c1b8006464b82ab842ee7c58e6b",
+                "url": "https://api.github.com/repos/cakephp/core/zipball/6c8c20a59c5d6b03809d5fbc7e1b2f1a5ba910fd",
+                "reference": "6c8c20a59c5d6b03809d5fbc7e1b2f1a5ba910fd",
                 "shasum": ""
             },
             "require": {
@@ -121,20 +121,20 @@
                 "issues": "https://github.com/cakephp/cakephp/issues",
                 "source": "https://github.com/cakephp/core"
             },
-            "time": "2022-08-26T02:01:18+00:00"
+            "time": "2022-09-25T07:14:39+00:00"
         },
         {
             "name": "cakephp/database",
-            "version": "4.4.5",
+            "version": "4.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/database.git",
-                "reference": "eec6239b0734e2a4dfe212dc93bcd505c7d296ef"
+                "reference": "d33ced21bcf92390a9184c67c6feb8dfa61100d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/database/zipball/eec6239b0734e2a4dfe212dc93bcd505c7d296ef",
-                "reference": "eec6239b0734e2a4dfe212dc93bcd505c7d296ef",
+                "url": "https://api.github.com/repos/cakephp/database/zipball/d33ced21bcf92390a9184c67c6feb8dfa61100d9",
+                "reference": "d33ced21bcf92390a9184c67c6feb8dfa61100d9",
                 "shasum": ""
             },
             "require": {
@@ -176,20 +176,20 @@
                 "issues": "https://github.com/cakephp/cakephp/issues",
                 "source": "https://github.com/cakephp/database"
             },
-            "time": "2022-08-18T21:01:25+00:00"
+            "time": "2022-09-25T07:14:39+00:00"
         },
         {
             "name": "cakephp/datasource",
-            "version": "4.4.5",
+            "version": "4.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/datasource.git",
-                "reference": "6fbd1f49833dedf3bd351e1a98b18133a6b9e86c"
+                "reference": "4c95fdf1de61cbc8d8ab4b34643f4acc250fc569"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/datasource/zipball/6fbd1f49833dedf3bd351e1a98b18133a6b9e86c",
-                "reference": "6fbd1f49833dedf3bd351e1a98b18133a6b9e86c",
+                "url": "https://api.github.com/repos/cakephp/datasource/zipball/4c95fdf1de61cbc8d8ab4b34643f4acc250fc569",
+                "reference": "4c95fdf1de61cbc8d8ab4b34643f4acc250fc569",
                 "shasum": ""
             },
             "require": {
@@ -234,11 +234,11 @@
                 "issues": "https://github.com/cakephp/cakephp/issues",
                 "source": "https://github.com/cakephp/datasource"
             },
-            "time": "2022-08-18T20:55:21+00:00"
+            "time": "2022-09-25T07:14:39+00:00"
         },
         {
             "name": "cakephp/utility",
-            "version": "4.4.5",
+            "version": "4.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/utility.git",
@@ -1142,16 +1142,16 @@
         },
         {
             "name": "embed/embed",
-            "version": "v4.4.5",
+            "version": "v4.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/Embed.git",
-                "reference": "ed2c565a38d55d53967d394f15b628a01ad9b604"
+                "reference": "9cb2dff5c82201bbf653b7396d533d1914ff4517"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/ed2c565a38d55d53967d394f15b628a01ad9b604",
-                "reference": "ed2c565a38d55d53967d394f15b628a01ad9b604",
+                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/9cb2dff5c82201bbf653b7396d533d1914ff4517",
+                "reference": "9cb2dff5c82201bbf653b7396d533d1914ff4517",
                 "shasum": ""
             },
             "require": {
@@ -1211,7 +1211,7 @@
             "support": {
                 "email": "oom@oscarotero.com",
                 "issues": "https://github.com/oscarotero/Embed/issues",
-                "source": "https://github.com/oscarotero/Embed/tree/v4.4.5"
+                "source": "https://github.com/oscarotero/Embed/tree/v4.4.6"
             },
             "funding": [
                 {
@@ -1227,7 +1227,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-09-06T23:08:29+00:00"
+            "time": "2022-10-02T15:13:01+00:00"
         },
         {
             "name": "evenement/evenement",
@@ -1870,7 +1870,7 @@
         },
         {
             "name": "illuminate/bus",
-            "version": "v8.83.24",
+            "version": "v8.83.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/bus.git",
@@ -1923,7 +1923,7 @@
         },
         {
             "name": "illuminate/collections",
-            "version": "v8.83.24",
+            "version": "v8.83.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
@@ -1977,7 +1977,7 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v8.83.24",
+            "version": "v8.83.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
@@ -2028,7 +2028,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v8.83.24",
+            "version": "v8.83.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -2076,7 +2076,7 @@
         },
         {
             "name": "illuminate/database",
-            "version": "v8.83.24",
+            "version": "v8.83.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
@@ -2144,7 +2144,7 @@
         },
         {
             "name": "illuminate/events",
-            "version": "v8.83.24",
+            "version": "v8.83.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/events.git",
@@ -2199,7 +2199,7 @@
         },
         {
             "name": "illuminate/macroable",
-            "version": "v8.83.24",
+            "version": "v8.83.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/macroable.git",
@@ -2245,7 +2245,7 @@
         },
         {
             "name": "illuminate/pipeline",
-            "version": "v8.83.24",
+            "version": "v8.83.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/pipeline.git",
@@ -2293,7 +2293,7 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v8.83.24",
+            "version": "v8.83.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
