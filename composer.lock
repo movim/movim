@@ -4783,16 +4783,16 @@
         },
         {
             "name": "robmorgan/phinx",
-            "version": "0.12.12",
+            "version": "0.12.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/phinx.git",
-                "reference": "9a6ce1e7fdf0fa4e602ba5875b5bc9442ccaa115"
+                "reference": "6eb0f295e140ed2804d93396755f0ce9ada4ec07"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/phinx/zipball/9a6ce1e7fdf0fa4e602ba5875b5bc9442ccaa115",
-                "reference": "9a6ce1e7fdf0fa4e602ba5875b5bc9442ccaa115",
+                "url": "https://api.github.com/repos/cakephp/phinx/zipball/6eb0f295e140ed2804d93396755f0ce9ada4ec07",
+                "reference": "6eb0f295e140ed2804d93396755f0ce9ada4ec07",
                 "shasum": ""
             },
             "require": {
@@ -4863,9 +4863,9 @@
             ],
             "support": {
                 "issues": "https://github.com/cakephp/phinx/issues",
-                "source": "https://github.com/cakephp/phinx/tree/0.12.12"
+                "source": "https://github.com/cakephp/phinx/tree/0.12.13"
             },
-            "time": "2022-07-09T18:53:51+00:00"
+            "time": "2022-10-03T04:57:40+00:00"
         },
         {
             "name": "spomky-labs/base64url",

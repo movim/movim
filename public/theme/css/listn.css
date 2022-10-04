@@ -160,7 +160,7 @@ ul.list.compact li .primary ~ *:not(.primary):not(.control):not(.bubble) {
     margin-left: 0.5rem;
 }
 
-ul.list li .control ~ *:not(.primary):not(.control):not(.bubble) {
+ul.list:not(.gallery) li .control ~ *:not(.primary):not(.control):not(.bubble) {
     margin-right: 1rem;
 }
 

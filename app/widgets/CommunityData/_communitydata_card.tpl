@@ -1,16 +1,20 @@
 {$url = null}
 {$url = $info->getPhoto('l')}
-{if="$url"}
-    <ul class="list">
-        <li class="block large">
-            <div>
-                <p class="center">
+<ul class="list thin">
+    <li class="block large">
+        <div>
+            <p class="center all">
+                {if="$url"}
                     <img class="avatar" src="{$url}"/>
-                </p>
-            </div>
-        </li>
-    </ul>
-{/if}
+                {else}
+                    <span class="avatar icon color {$info->node|stringToColor}">
+                        {$info->node|firstLetterCapitalize}
+                    </span>
+                {/if}
+            </p>
+        </div>
+    </li>
+</ul>
 
 <ul class="list middle flex">
     <li class="block large">

@@ -8,7 +8,7 @@ include_once WIDGETS_PATH.'Post/Post.php';
 
 class Blog extends Base
 {
-    public $_paging = 8;
+    public $_paging = 9;
 
     private $_from;
     private $_node;
@@ -23,6 +23,9 @@ class Blog extends Base
 
     // Blog nickname
     private $_nickname = null;
+
+    // Is gallery
+    private $_gallery = false;
 
     public function load()
     {
@@ -178,6 +181,10 @@ class Blog extends Base
                 $this->_next = $this->route('node', [$this->_from, $this->_node], ['page' => $this->_page + 1]);
             }
         }
+
+        if ($this->_posts !== null) {
+            $this->_gallery = isPostGallery($this->_posts);
+        }
     }
 
     public function preparePost(\App\Post $post)
@@ -188,6 +195,11 @@ class Blog extends Base
             $post->server = $this->_nickname ?? $post->server;
             return (new Post)->preparePost($post, true);
         }
+    }
+
+    public function prepareTicket(\App\Post $post)
+    {
+        return (new \Post)->prepareTicket($post);
     }
 
     public function display()
@@ -204,6 +216,7 @@ class Blog extends Base
             $this->_posts = resolveInfos($this->_posts);
         }
         $this->view->assign('posts', $this->_posts);
+        $this->view->assign('gallery', $this->_gallery);
 
         $this->view->assign('tag', $this->_tag);
     }

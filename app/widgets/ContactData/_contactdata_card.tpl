@@ -1,15 +1,20 @@
+{$url = null}
 {$url = $contact->getPhoto('l')}
-{if="$url"}
-<ul class="list middle">
-    <li>
+<ul class="list">
+    <li class="block large">
         <div>
-            <p class="center">
-                <img class="avatar" src="{$url}"/>
+            <p class="center all">
+                {if="$url"}
+                    <img class="avatar" src="{$url}"/>
+                {else}
+                    <span class="avatar icon color {$contact->jid|stringToColor}">
+                        {$contact->jid|firstLetterCapitalize}
+                    </span>
+                {/if}
             </p>
         </div>
     </li>
 </ul>
-{/if}
 
 <ul class="list thick">
     <li>
@@ -61,11 +66,11 @@
                     {/if}
                 {/if}
 
-                {if="$contact->locationDistance != null"}
+                {if="$contact->locationDistance != null && $contact->locationUrl != null"}
                     <br />
                     <i class="material-icons icon-text">place</i>
                     <a href="{$contact->locationUrl}" target="_blank">{$contact->locationDistance|humanDistance}</a> - {$contact->loctimestamp|strtotime|prepareDate:true,true}
-                {elseif="$contact->hasLocation()"}
+                {elseif="$contact->hasLocation() && $contact->locationUrl != null"}
                     <br />
                     <i class="material-icons icon-text">place</i>
                     <a href="{$contact->locationUrl}" target="_blank">{$c->__('location.last_published')}</a> - {$contact->loctimestamp|strtotime|prepareDate:true,true}

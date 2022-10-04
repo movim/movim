@@ -185,18 +185,7 @@ class CommunityPosts extends Base
                                            ->first());
         $view->assign('paging', $this->_paging);
 
-        // For now we detect if a node is a gallery if all the publications have an attached picture
-        // and if the post contents are short.
-        $shortCount = 0;
-
-        $gallery = $posts->every(function ($post) use (&$shortCount) {
-            if ($post->isShort()) $shortCount++;
-            return $post->picture != null;
-        });
-
-        if ($gallery && $shortCount < $posts->count()/2) $gallery = false;
-
-        $view->assign('gallery', $gallery);
+        $view->assign('gallery', isPostGallery($posts));
 
         $view->assign('publicposts', ($ids == false)
             ? \App\Post::where('server', $origin)

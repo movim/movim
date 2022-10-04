@@ -99,7 +99,6 @@ ul.flex li.block {
 ul.flex.gallery li.block {
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
 
 ul.flex.gallery li.block p a.node,
@@ -110,21 +109,23 @@ ul.flex.gallery li.block > span.primary {
 
 ul.flex.gallery li.block div {
     flex: initial;
-    text-align: center;
+    margin-top: auto;
+    width: 100%;
 }
 
 ul.flex.gallery li.block img.main {
     position: relative;
     opacity: 1;
-    height: initial;
     max-height: 35rem;
+    height: initial;
     max-width: calc(100% + 3rem);
     width: calc(100% + 3rem);
     left: 0;
     top: 0;
     flex: 0 0 60%;
-    -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent);
-    mask-image: linear-gradient(to bottom, black 40%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, black calc(100% - 20rem), transparent);
+    mask-image: linear-gradient(to bottom, black calc(100% - 20rem), transparent);
+    margin-bottom: -10rem;
 }
 
 ul.flex.gallery li.block img.main:after {

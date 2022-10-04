@@ -115,7 +115,7 @@
     {/if}
 </header>
 
-<div class="card shadow" id="blog" >
+<ul class="list card shadow {if="$gallery"}middle flex third gallery active{/if}" id="blog" >
     {if="$posts == null || $posts->isEmpty()"}
         <article class="block">
             <ul class="list simple thick">
@@ -131,25 +131,32 @@
         </article>
     {else}
         {loop="$posts"}
-            <div id="{$value->nodeid|cleanupId}" class="block large">
+            {if="$gallery"}
                 {autoescape="off"}
-                    {$c->preparePost($value)}
+                    {$c->prepareTicket($value)}
                 {/autoescape}
-            </div>
+            {else}
+                <div id="{$value->nodeid|cleanupId}" class="block">
+                    {autoescape="off"}
+                        {$c->preparePost($value)}
+                    {/autoescape}
+                </div>
+            {/if}
         {/loop}
     {/if}
-    {if="isset($next)"}
-        <article>
-            <ul class="list active thick">
-                <a href="{$next}">
-                    <li id="history" class="block large">
-                        <span class="primary icon gray"><i class="material-icons">history</i></span>
-                        <div>
-                            <p class="normal line center">{$c->__('post.older')}</p>
-                        </div>
-                    </li>
-                </a>
-            </ul>
-        </article>
-    {/if}
-</div>
+</ul>
+
+{if="isset($next)"}
+    <ul class="list active thick">
+        <a href="{$next}">
+            <li id="history" class="block large">
+                <span class="primary icon gray"><i class="material-icons">history</i></span>
+                <div>
+                    <p class="normal line center">{$c->__('post.older')}</p>
+                </div>
+            </li>
+        </a>
+    </ul>
+{/if}
+
+<hr />

@@ -23,7 +23,7 @@ class CommunitiesTags extends Base
 
     public function display()
     {
-        $posts = $this->getPosts()->take(30)->get('id');
+        $posts = $this->getPosts()->take(20)->get('id');
 
         $tags = \App\Tag::whereIn('id', function ($query) use ($posts) {
             $query->select('tag_id')
@@ -34,7 +34,7 @@ class CommunitiesTags extends Base
                     ->orderBy('count', 'desc')
                     ->whereIn('post_id', $posts->pluck('id'));
             }, 'top');
-        })->take(30)->get();
+        })->take(20)->get();
 
         $this->view->assign('community', ($this->_view == 'community'));
         $this->view->assign('tags', $tags);

@@ -20,9 +20,9 @@
 <main style="background-color: rgb(var(--movim-background))">
     <?php if (empty($_GET['n'])) { ?>
         <aside>
-            <?php $this->widget('CommunitiesServerInfo'); ?>
             <?php $this->widget('CommunitiesTags'); ?>
             <?php $this->widget('NewsNav');?>
+            <?php $this->widget('CommunitiesServerInfo'); ?>
         </aside>
         <div>
             <?php $this->widget('CommunitiesServer'); ?>

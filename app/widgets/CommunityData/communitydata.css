@@ -1,4 +1,4 @@
-#community_data li:first-child img {
-    height: 25rem;
+#community_data li:first-child img.avatar,
+#community_data li:first-child span.avatar {
     display: inline-block;
 }

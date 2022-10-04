@@ -354,12 +354,21 @@ hr.thick {
 
 /* Avatar */
 
-img.avatar {
+img.avatar,
+span.avatar {
     margin: 0 auto;
-    max-height: 34rem;
     border-radius: 0.5rem;
     display: block;
     max-width: 100%;
+    background-color: rgb(var(--movim-background-main));
+    animation: fadein 0.2s;
+    line-height: 100%;
+}
+
+span.avatar.icon {
+    height: 25rem;
+    width: 25rem;
+    line-height: 25rem;
 }
 
 img.avatar:not([src=""]) + .placeholder {
