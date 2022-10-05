@@ -422,10 +422,6 @@ img.avatar:not([src=""]) + .placeholder {
 
 /* Display/hide */
 
-.on_android {
-    display: none !important;
-}
-
 .on_mobile {
     display: none !important;
 }

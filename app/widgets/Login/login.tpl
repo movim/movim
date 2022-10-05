@@ -190,13 +190,4 @@
             {$error}
         {/autoescape}
     </div>
-
-    <footer>
-        <a href="https://movim.eu" target="_blank" class="on_desktop"></a>
-        <a class="button flat color transparent on_android" href="movim://changepod">
-            <i class="material-icons">dns</i>
-            {$c->__('global.change_pod')}
-        </a>
-        <br />
-    </footer>
 </div>

@@ -19,6 +19,7 @@ v0.21 (trunk)
  * Implement XEP-0080: User Location
  * Add new Location widget
  * Show distance with a contact if both locations are enabled
+ * Reorganize and simplify the main menu, add a small submenu that pop on hover
 
 v0.20
 ---------------------------

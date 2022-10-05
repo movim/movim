@@ -14,6 +14,7 @@
     </a>
     <hr />
     <a href="{$c->route('news')}"
+       class="on_desktop"
        title="{$c->__('page.news')}">
         <li {if="$page == 'news' || $page == 'post'"}class="active"{/if}>
             <span class="primary icon">
@@ -27,6 +28,7 @@
     </a>
     {/if}
     <a href="{$c->route('explore')}"
+       class="on_desktop"
        title="{$c->__('page.explore')}">
         <li {if="$page == 'explore' || $page == 'community'"}class="active"{/if}>
             <span class="primary icon"><i class="material-icons">explore</i></span>
@@ -37,6 +39,7 @@
     </a>
     <a href="{$c->route('chat')}"
        id="chatbutton"
+       class="on_desktop"
        title="{$c->__('page.chats')}">
         <li {if="$page == 'chat'"}class="active"{/if}>
             <span class="primary icon" id="chatcounter">
@@ -48,11 +51,23 @@
                 <p class="normal">{$c->__('page.chats')}</p>
             </div>
         </li>
-
     </a>
 </ul>
 
-<ul class="list divided oppose active" dir="ltr">
+<ul class="list oppose active" dir="ltr">
+    <li onclick="Search_ajaxRequest()"
+    title="{$c->__('button.search')}"
+    >
+        <span class="primary icon">
+            <i class="material-icons">search</i>
+        </span>
+        <div>
+            <p class="normal">{$c->__('button.search')}</p>
+        </div>
+    </li>
+
+    <hr />
+
     <a href="#">
         <li onclick="Location_ajaxToggle()"
             title="{$c->__('location.title')}"
@@ -91,61 +106,6 @@
     </a>
     {/if}
 
-    <li onclick="Search_ajaxRequest()"
-        title="{$c->__('button.search')}"
-    >
-        <span class="primary icon">
-            <i class="material-icons">search</i>
-        </span>
-        <div>
-            <p class="normal">{$c->__('button.search')}</p>
-        </div>
-    </li>
-    <a href="{$c->route('conf')}"
-       title="{$c->__('page.configuration')}">
-        <li {if="$page == 'conf'"}class="active"{/if}>
-            <span class="primary icon">
-                <i class="material-icons">tune</i>
-            </span>
-            <div>
-                <p class="normal">{$c->__('page.configuration')}</p>
-            </div>
-        </li>
-    </a>
-
-    {if="$c->getUser()->admin"}
-    <a href="{$c->route('admin')}"
-       title="{$c->__('page.configuration')}">
-        <li {if="$page == 'admin'"}class="active"{/if}>
-            <span class="primary icon">
-                <i class="material-icons">manage_accounts</i>
-            </span>
-            <div>
-                <p class="normal">{$c->__('page.administration')}</p>
-            </div>
-        </li>
-    </a>
-    {/if}
-
-    <a href="{$c->route('help')}"
-       title="{$c->__('page.help')}">
-        <li {if="$page == 'help'"}class="active"{/if}>
-            <span class="primary icon">
-                <i class="material-icons">help</i>
-            </span>
-            <div>
-                <p class="normal">{$c->__('page.help')}</p>
-            </div>
-        </li>
-    </a>
-    <a class="classic on_android" href="movim://changepod">
-        <li>
-            <span class="primary icon bubble"><i class="material-icons">dns</i></span>
-            <div>
-                <p class="normal">{$c->__('global.change_pod')}</p>
-            </div>
-        </li>
-    </a>
     <a class="classic on_mobile" href="#">
         <li onclick="MovimTpl.toggleMenu()">
             <span class="primary icon bubble"><i class="material-icons">arrow_back</i></span>
@@ -154,12 +114,4 @@
             </div>
         </li>
     </a>
-    <li class="on_desktop"
-        onclick="Presence_ajaxAskLogout()"
-        title="{$c->__('status.disconnect')}">
-        <span class="primary icon"><i class="material-icons">exit_to_app</i></span>
-        <div>
-            <p class="normal">{$c->__('status.disconnect')}</p>
-        </div>
-    </li>
 </ul>

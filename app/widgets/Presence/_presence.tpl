@@ -19,11 +19,6 @@
             <i class="material-icons">person</i>
         </span>
     {/if}
-    <span class="control icon active"
-        onclick="Presence_ajaxAskLogout()"
-        title="{$c->__('status.disconnect')}">
-        <i class="material-icons">exit_to_app</i>
-    </span>
     <div>
         <p class="line bold normal" onclick="MovimUtils.reload('{$c->route('contact', $me->jid)}')">
             {$me->truename}

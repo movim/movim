@@ -1,7 +1,3 @@
-.on_android {
-    display: inherit !important;
-}
-
 body > nav,
 main > *,
 body #chat_widget header,
