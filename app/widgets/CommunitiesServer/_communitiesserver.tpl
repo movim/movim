@@ -1,5 +1,5 @@
 <header>
-    <ul class="list middle">
+    <ul class="list middle padded_top_bottom">
         <li>
             <span class="primary icon icon gray active" onclick="history.back()">
                 <i class="material-icons">arrow_back</i>
@@ -31,7 +31,7 @@
         </li>
     </ul>
 {else}
-    <ul class="list middle divided spaced active all flex">
+    <ul class="list middle divided spaced active all flex fill padded_top_bottom">
     {loop="$nodes"}
         <li
             class="block

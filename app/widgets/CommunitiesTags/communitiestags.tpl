@@ -1,6 +1,6 @@
 <div id="communitiestags">
     {if="$tags->isNotEmpty()"}
-        <ul class="list">
+        <ul class="list fill padded_top_bottom">
             {if="$community"}
                 <li class="subheader">
                     <div>

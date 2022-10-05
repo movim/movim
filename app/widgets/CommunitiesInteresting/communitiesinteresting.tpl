@@ -1,5 +1,5 @@
 {if="!$communities->isEmpty()"}
-<ul class="list middle flex third active all">
+<ul class="list middle flex third all fill padded_top_bottom">
     <li class="subheader block large">
         <div>
             <p>{$c->__('communitiesinteresting.about')}</p>
@@ -7,7 +7,7 @@
     </li>
     {loop="$communities"}
         <li
-            class="block"
+            class="block active"
             onclick="MovimUtils.redirect('{$c->route('community', [$value->server, $value->node])}')"
             title="{$value->server} - {$value->node}"
         >

@@ -116,8 +116,8 @@ ul.flex.gallery li.block div {
 ul.flex.gallery li.block img.main {
     position: relative;
     opacity: 1;
-    max-height: 35rem;
     height: initial;
+    max-height: 35rem;
     max-width: calc(100% + 3rem);
     width: calc(100% + 3rem);
     left: 0;
