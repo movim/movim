@@ -1,11 +1,8 @@
 <ul class="list flex third middle active card shadow">
     {if="$type == 'all' && ($page == 1 || $posts->count() < $limit)"}
         <li class="block" onclick="MovimUtils.redirect('{$c->route('explore', 'servers')}')">
-            <span class="primary icon">
-                <i class="material-icons">view_lists</i>
-            </span>
-            <span class="control icon">
-                <i class="material-icons">chevron_right</i>
+            <span class="primary icon bubble color">
+                <i class="material-icons">view_agenda</i>
             </span>
             <div>
                 <p>{$c->__('communities.servers')}</p>
