@@ -47,7 +47,7 @@
         <p>
             {if="$post->contact"}
                 {$url = $post->contact->getPhoto('s')}
-                <span class="icon bubble color tiny {$post->contact->jid|stringToColor}"
+                <span class="icon bubble tiny {if="$url == null"}color {$post->contact->jid|stringToColor}{/if}"
                     {if="$url"}
                         style="background-image: url('{$url}');">
                     {else}
@@ -61,24 +61,25 @@
             {/if}
 
             {if="!$post->isMicroblog()"}
-                {if="$post->contact"}·{/if}
                 <a class="node"
                    title="{$post->server} / {$post->node}"
                    href="{$c->route('community', [$post->server, $post->node])}">
+                   {if="$post->contact"}·{/if}
                    {$post->node}
                 </a>
             {/if}
 
-            {$count = $post->likes->count()}
-            {if="$count > 0"}
-                {$count} <i class="material-icons">favorite_border</i>
-            {/if}
-
-            {$count = $post->comments->count()}
-            {if="$count > 0"}
-                {$count} <i class="material-icons">chat_bubble_outline</i>
-            {/if}
             <span class="info" title="{$post->published|strtotime|prepareDate}">
+                {$count = $post->likes->count()}
+                {if="$count > 0"}
+                    {$count} <i class="material-icons">favorite_border</i> ·
+                {/if}
+
+                {$count = $post->comments->count()}
+                {if="$count > 0"}
+                    {$count} <i class="material-icons">chat_bubble_outline</i> ·
+                {/if}
+
                 {$post->published|strtotime|prepareDate:true,true}
             </span>
         </p>
