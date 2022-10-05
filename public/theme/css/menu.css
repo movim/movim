@@ -29,7 +29,7 @@ ul.oppose {
     width: 100%;
 }
 
-@media screen and (max-height: 47rem) {
+@media screen and (max-height: 34rem) {
     ul.oppose {
         bottom: initial;
     }
