@@ -202,6 +202,7 @@ class Presence extends Base
     public function display()
     {
         $contact = $this->user->contact;
+        $this->view->assign('page', $this->_view);
         $this->view->assign('me', ($contact == null) ? new App\Contact : $contact);
     }
 }
