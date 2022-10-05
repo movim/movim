@@ -31,7 +31,7 @@ ul.list li > * {
     flex: 1;
     min-width: 0;
     max-width: 100%;
-    transition: background-color 0.15s ease;
+    transition: filter 0.15s ease;
 }
 
 ul.list li:not(.subheader) > *:not(.primary):not(.control):not(.bubble):not(.main) {
@@ -57,8 +57,8 @@ ul.list.active.all li:hover,
 ul.list li.active:hover,
 ul.list.active li.active:not(.subheader),
 ul.tabs > li:hover,
-ul.list li > span.active:not(.color):hover {
-    background-color: rgba(var(--movim-element-action), 0.1);
+ul.list li > span.active:hover {
+    filter: grayscale(25%);
     cursor: pointer;
 }
 
@@ -68,7 +68,7 @@ ul.list.active li:active:not(.subheader),
 ul.list.active.all li:active,
 ul.tabs > li:active,
 ul.list li > span.active:active {
-    background-color: rgba(var(--movim-element-action), 0.2);
+    filter: grayscale(50%);
 }
 
 ul.list li > span.color.active:active {
