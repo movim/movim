@@ -204,7 +204,7 @@ class Rooms extends Base
      */
     public function ajaxJoin($room, $nickname = false, $noNotify = false)
     {
-        if (!$this->validateRoom($room)) {
+        if (!validateRoom($room)) {
             return;
         }
 
@@ -255,7 +255,7 @@ class Rooms extends Base
      */
     public function ajaxExit($room)
     {
-        if (!$this->validateRoom($room)) {
+        if (!validateRoom($room)) {
             return;
         }
 
@@ -377,15 +377,5 @@ class Rooms extends Base
     {
         Toast::send($this->__('chatrooms.serviceunavailable'));
         $this->ajaxExit($packet->content);
-    }
-
-    /**
-     * @brief Validate the room
-     *
-     * @param string $room
-     */
-    private function validateRoom($room)
-    {
-        return (Validator::stringType()->noWhitespace()->contains('@')->length(6, 256)->validate($room));
     }
 }

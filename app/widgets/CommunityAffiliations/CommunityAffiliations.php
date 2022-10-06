@@ -155,7 +155,7 @@ class CommunityAffiliations extends Base
 
     public function ajaxGetAffiliations($origin, $node)
     {
-        if (!$this->validateServerNode($origin, $node)) {
+        if (validateServerNode($origin, $node)) {
             return;
         }
 
@@ -166,7 +166,7 @@ class CommunityAffiliations extends Base
 
     public function ajaxGetSubscriptions($origin, $node, $notify = true)
     {
-        if (!$this->validateServerNode($origin, $node)) {
+        if (validateServerNode($origin, $node)) {
             return;
         }
 
@@ -179,7 +179,7 @@ class CommunityAffiliations extends Base
 
     public function ajaxDelete($origin, $node, $clean = false)
     {
-        if (!$this->validateServerNode($origin, $node)) {
+        if (validateServerNode($origin, $node)) {
             return;
         }
 
@@ -193,7 +193,7 @@ class CommunityAffiliations extends Base
 
     public function ajaxDeleteConfirm($origin, $node)
     {
-        if (!$this->validateServerNode($origin, $node)) {
+        if (validateServerNode($origin, $node)) {
             return;
         }
 
@@ -217,7 +217,7 @@ class CommunityAffiliations extends Base
 
     public function ajaxChangeAffiliation($origin, $node, $form)
     {
-        if (!$this->validateServerNode($origin, $node)) {
+        if (validateServerNode($origin, $node)) {
             return;
         }
 
@@ -258,14 +258,5 @@ class CommunityAffiliations extends Base
         $view->assign('subscriptions', $sortedSubscriptions);
 
         return $view->draw('_communityaffiliations_public_subscriptions_list');
-    }
-
-    private function validateServerNode($origin, $node)
-    {
-        $validateServer = Validator::stringType()->noWhitespace()->length(6, 40);
-        $validateNode = Validator::stringType()->length(2, 100);
-
-        return ($validateServer->validate($origin)
-             && $validateNode->validate($node));
     }
 }

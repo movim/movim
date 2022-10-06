@@ -32,23 +32,12 @@ class ContactSubscriptions extends Base
 
     public function ajaxRefresh($jid)
     {
-        if (!$this->validateJid($jid)) {
+        if (!validateJid($jid)) {
             return;
         }
 
         $ps = new GetPubsubSubscriptions;
         $ps->setTo(echapJid($jid))->request();
-    }
-
-    /**
-     * @brief Validate the jid
-     *
-     * @param string $jid
-     */
-    private function validateJid($jid)
-    {
-        $validate_jid = Validator::stringType()->noWhitespace()->length(6, 60);
-        return ($validate_jid->validate($jid));
     }
 
     public function display()

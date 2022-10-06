@@ -54,7 +54,7 @@ class ContactActions extends Base
 
     public function ajaxGetDrawer($jid)
     {
-        if (!$this->validateJid($jid)) {
+        if (!validateJid($jid)) {
             return;
         }
 
@@ -157,7 +157,7 @@ class ContactActions extends Base
 
     public function ajaxChat($jid)
     {
-        if (!$this->validateJid($jid)) {
+        if (!validateJid($jid)) {
             return;
         }
 
@@ -224,16 +224,5 @@ class ContactActions extends Base
     public function prepareTicket(\App\Post $post)
     {
         return (new \Post)->prepareTicket($post);
-    }
-
-    /**
-     * @brief Validate the jid
-     *
-     * @param string $jid
-     */
-    private function validateJid($jid)
-    {
-        $validate_jid = Validator::stringType()->noWhitespace()->length(6, 60);
-        return ($validate_jid->validate($jid));
     }
 }

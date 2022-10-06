@@ -65,7 +65,7 @@ class CommunitiesServer extends \Movim\Widget\Base
 
     public function ajaxDisco($origin)
     {
-        if (!$this->validateServer($origin)) {
+        if (!validateServer($origin)) {
             Toast::send($this->__('communitiesserver.disco_error'));
             return;
         }
@@ -82,7 +82,7 @@ class CommunitiesServer extends \Movim\Widget\Base
      */
     public function ajaxTestAdd($origin)
     {
-        if (!$this->validateServer($origin)) {
+        if (!validateServer($origin)) {
             return;
         }
 
@@ -93,7 +93,7 @@ class CommunitiesServer extends \Movim\Widget\Base
 
     public function ajaxAddConfirm($origin, $form)
     {
-        if (!$this->validateServer($origin)) {
+        if (!validateServer($origin)) {
             return;
         }
 
@@ -160,17 +160,6 @@ class CommunitiesServer extends \Movim\Widget\Base
         }
 
         return $view->draw('_communitiesserver');
-    }
-
-    /**
-     * @brief Validate the server
-     *
-     * @param string $origin
-     */
-    private function validateServer($origin)
-    {
-        $validateServer = Validator::noWhitespace()->alnum('.-_')->length(6, 40);
-        return ($validateServer->validate($origin));
     }
 
     public function display()

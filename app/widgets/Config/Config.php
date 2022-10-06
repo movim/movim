@@ -69,7 +69,7 @@ class Config extends Base
 
     public function ajaxSubmit($data)
     {
-        if (!$this->validateForm($data)) {
+        if (!validateForm($data)) {
             $this->refreshConfig();
             Toast::send($this->__('config.not_valid'));
             return;
@@ -115,13 +115,6 @@ class Config extends Base
     private function refreshConfig()
     {
         $this->rpc('MovimTpl.fill', '#config_widget_form', $this->prepareConfigForm());
-    }
-
-    private function validateForm($data)
-    {
-        $l = Movim\i18n\Locale::start();
-
-        return Validator::in(array_keys($l->getList()))->validate($data->language->value);
     }
 
     public function display()

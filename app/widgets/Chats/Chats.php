@@ -53,7 +53,7 @@ class Chats extends Base
 
     public function onChatOpen($jid)
     {
-        if (!$this->validateJid($jid)) {
+        if (!validateJid($jid)) {
             return;
         }
 
@@ -143,7 +143,7 @@ class Chats extends Base
 
             $g->setLimit(250);
             $g->request();
-        } elseif ($this->validateJid($jid)) {
+        } elseif (validateJid($jid)) {
             $message = \App\Message::jid($jid);
 
             $message = (DB::getDriverName() == 'pgsql')
@@ -165,7 +165,7 @@ class Chats extends Base
 
     public function ajaxOpen($jid, $history = true)
     {
-        if (!$this->validateJid($jid)) {
+        if (!validateJid($jid)) {
             return;
         }
 
@@ -202,7 +202,7 @@ class Chats extends Base
 
     public function ajaxClose($jid, $closeDiscussion = false)
     {
-        if (!$this->validateJid($jid)) {
+        if (!validateJid($jid)) {
             return;
         }
 
@@ -239,7 +239,7 @@ class Chats extends Base
 
             if ($cached) {
                 $html .= $cached;
-            } else if ($this->validateJid($key)) {
+            } else if (validateJid($key)) {
                 $html = '';
                 break;
             }
@@ -307,7 +307,7 @@ class Chats extends Base
     public function prepareChat(string $jid, Contact $contact, Roster $roster = null,
         Message $message = null, string $status = null)
     {
-        if (!$this->validateJid($jid)) {
+        if (!validateJid($jid)) {
             return;
         }
 
@@ -375,13 +375,5 @@ class Chats extends Base
             $unreads,
             is_array($chats) ? $chats : [],
         );
-    }
-
-    private function validateJid(string $jid): bool
-    {
-        return (Validator::stringType()
-            ->noWhitespace()
-            ->length(6, 80)
-            ->validate($jid));
     }
 }

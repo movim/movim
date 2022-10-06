@@ -64,7 +64,7 @@ class CommunityPosts extends Base
         $after = null,
         $query = null
     ) {
-        if (!$this->validateServerNode($origin, $node)) {
+        if (validateServerNode($origin, $node)) {
             return;
         }
 
@@ -87,7 +87,7 @@ class CommunityPosts extends Base
 
     public function ajaxGetItems($origin, $node, $before = 'empty', $query = null)
     {
-        if (!$this->validateServerNode($origin, $node)) {
+        if (validateServerNode($origin, $node)) {
             return;
         }
 
@@ -217,15 +217,6 @@ class CommunityPosts extends Base
         $html = $view->draw('_communityposts');
 
         return $html;
-    }
-
-    private function validateServerNode($origin, $node)
-    {
-        $validateServer = Validator::stringType()->noWhitespace()->length(6, 40);
-        $validateNode = Validator::stringType()->length(2, 100);
-
-        return ($validateServer->validate($origin)
-             && $validateNode->validate($node));
     }
 
     public function display()

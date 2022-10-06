@@ -58,7 +58,7 @@ class Publish extends Base
 
     public function ajaxCreateComments($server, $id)
     {
-        if (!$this->validateServerNode($server, $id)) {
+        if (validateServerNode($server, $id)) {
             return;
         }
 
@@ -439,14 +439,5 @@ class Publish extends Base
         }
 
         $this->view->assign('draft', $draft);
-    }
-
-    private function validateServerNode($server, $node)
-    {
-        $validateServer = Validator::stringType()->noWhitespace()->length(6, 40);
-        $validateNode = Validator::stringType()->length(2, 100);
-
-        return ($validateServer->validate($server)
-             && $validateNode->validate($node));
     }
 }

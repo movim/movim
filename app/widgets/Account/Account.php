@@ -214,7 +214,7 @@ class Account extends \Movim\Widget\Base
 
     public function ajaxGetRegistration($server)
     {
-        if (!$this->validateServer($server)) {
+        if (!validateServer($server)) {
             return;
         }
 
@@ -225,7 +225,7 @@ class Account extends \Movim\Widget\Base
 
     public function ajaxRegister($server, $form)
     {
-        if (!$this->validateServer($server)) {
+        if (!validateServer($server)) {
             return;
         }
         $s = new Set;
@@ -245,11 +245,6 @@ class Account extends \Movim\Widget\Base
         );
 
         return $view->draw('_account_gateways');
-    }
-
-    private function validateServer($server)
-    {
-        return (Validator::stringType()->noWhitespace()->length(6, 80)->validate($server));
     }
 
     public function display()

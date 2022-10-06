@@ -59,7 +59,7 @@ class CommunityConfig extends Base
 
     public function ajaxGetAvatar($origin, $node)
     {
-        if (!$this->validateServerNode($origin, $node)) {
+        if (validateServerNode($origin, $node)) {
             return;
         }
 
@@ -73,7 +73,7 @@ class CommunityConfig extends Base
 
     public function ajaxSetAvatar($origin, $node, $form)
     {
-        if (!$this->validateServerNode($origin, $node)) {
+        if (validateServerNode($origin, $node)) {
             return;
         }
 
@@ -97,7 +97,7 @@ class CommunityConfig extends Base
 
     public function ajaxGetConfig($origin, $node, $advanced = false)
     {
-        if (!$this->validateServerNode($origin, $node)) {
+        if (validateServerNode($origin, $node)) {
             return;
         }
 
@@ -114,7 +114,7 @@ class CommunityConfig extends Base
 
     public function ajaxSetConfig($data, $origin, $node)
     {
-        if (!$this->validateServerNode($origin, $node)) {
+        if (validateServerNode($origin, $node)) {
             return;
         }
 
@@ -123,14 +123,5 @@ class CommunityConfig extends Base
           ->setNode($node)
           ->setData($data)
           ->request();
-    }
-
-    private function validateServerNode($origin, $node)
-    {
-        $validateServer = Validator::stringType()->noWhitespace()->length(6, 40);
-        $validateNode = Validator::stringType()->length(2, 100);
-
-        return ($validateServer->validate($origin)
-             && $validateNode->validate($node));
     }
 }

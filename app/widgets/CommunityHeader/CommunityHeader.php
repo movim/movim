@@ -71,7 +71,7 @@ class CommunityHeader extends Base
 
     public function ajaxGetMetadata($origin, $node)
     {
-        if (!$this->validateServerNode($origin, $node)) {
+        if (validateServerNode($origin, $node)) {
             return;
         }
 
@@ -82,7 +82,7 @@ class CommunityHeader extends Base
 
     public function ajaxAskSubscribe($origin, $node)
     {
-        if (!$this->validateServerNode($origin, $node)) {
+        if (validateServerNode($origin, $node)) {
             return;
         }
 
@@ -99,7 +99,7 @@ class CommunityHeader extends Base
 
     public function ajaxSubscribe($form, $origin, $node)
     {
-        if (!$this->validateServerNode($origin, $node)) {
+        if (validateServerNode($origin, $node)) {
             return;
         }
 
@@ -121,7 +121,7 @@ class CommunityHeader extends Base
 
     public function ajaxAskUnsubscribe($origin, $node)
     {
-        if (!$this->validateServerNode($origin, $node)) {
+        if (validateServerNode($origin, $node)) {
             return;
         }
 
@@ -138,7 +138,7 @@ class CommunityHeader extends Base
 
     public function ajaxUnsubscribe($origin, $node)
     {
-        if (!$this->validateServerNode($origin, $node)) {
+        if (validateServerNode($origin, $node)) {
             return;
         }
 
@@ -168,7 +168,7 @@ class CommunityHeader extends Base
      */
     public function ajaxTestPublish($origin, $node)
     {
-        if (!$this->validateServerNode($origin, $node)) {
+        if (validateServerNode($origin, $node)) {
             return;
         }
 
@@ -202,15 +202,6 @@ class CommunityHeader extends Base
         $view->assign('server', $origin);
 
         return $view->draw('_communityheader');
-    }
-
-    private function validateServerNode($origin, $node)
-    {
-        $validateServer = Validator::stringType()->noWhitespace()->length(6, 40);
-        $validateNode = Validator::stringType()->length(2, 100);
-
-        return ($validateServer->validate($origin)
-             && $validateNode->validate($node));
     }
 
     public function display()

@@ -399,7 +399,7 @@ class Chat extends \Movim\Widget\Base
      */
     public function ajaxGetRoom(string $room, $light = false, $noConnect = false)
     {
-        if (!$this->validateJid($room)) {
+        if (!validateJid($room)) {
             return;
         }
 
@@ -869,7 +869,7 @@ class Chat extends \Movim\Widget\Base
      */
     public function ajaxSendComposing($to, $muc = false)
     {
-        if (!$this->validateJid($to)) {
+        if (!validateJid($to)) {
             return;
         }
 
@@ -884,7 +884,7 @@ class Chat extends \Movim\Widget\Base
      */
     public function ajaxGetHistory($jid, $date, $muc = false, $prepend = true)
     {
-        if (!$this->validateJid($jid) && isset($date)) {
+        if (!validateJid($jid) && isset($date)) {
             return;
         }
 
@@ -923,7 +923,7 @@ class Chat extends \Movim\Widget\Base
      */
     public function ajaxGetRoomConfig($room)
     {
-        if (!$this->validateJid($room)) {
+        if (!validateJid($room)) {
             return;
         }
 
@@ -939,7 +939,7 @@ class Chat extends \Movim\Widget\Base
      */
     public function ajaxSetRoomConfig($data, $room)
     {
-        if (!$this->validateJid($room)) {
+        if (!validateJid($room)) {
             return;
         }
 
@@ -954,7 +954,7 @@ class Chat extends \Movim\Widget\Base
      */
     public function ajaxDisplayed($jid, $id)
     {
-        if (!$this->validateJid($jid)) {
+        if (!validateJid($jid)) {
             return;
         }
 
@@ -995,7 +995,7 @@ class Chat extends \Movim\Widget\Base
      */
     public function ajaxClearHistoryConfirm($jid)
     {
-        if (!$this->validateJid($jid)) {
+        if (!validateJid($jid)) {
             return;
         }
 
@@ -1037,7 +1037,7 @@ class Chat extends \Movim\Widget\Base
 
     public function prepareMessages($jid, $muc = false, $seenOnly = false, $event = true)
     {
-        if (!$this->validateJid($jid)) {
+        if (!validateJid($jid)) {
             return;
         }
 
@@ -1568,16 +1568,6 @@ class Chat extends \Movim\Widget\Base
         $view = $this->tpl();
         $view->assign('list', implode(', ', $list));
         return $view->draw('_chat_compose_list');
-    }
-
-    /**
-     * @brief Validate the jid
-     *
-     * @param string $jid
-     */
-    private function validateJid($jid)
-    {
-        return (Validator::stringType()->noWhitespace()->length(6, 256)->validate($jid));
     }
 
     public function getSmileyPath($id)

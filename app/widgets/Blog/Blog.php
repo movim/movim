@@ -35,7 +35,7 @@ class Blog extends Base
             $this->_from = $this->get('s');
             $this->_node = $this->get('n');
 
-            if (!$this->validateServerNode($this->_from, $this->_node)) {
+            if (validateServerNode($this->_from, $this->_node)) {
                 return;
             }
 
@@ -64,7 +64,7 @@ class Blog extends Base
                     'href' => 'xmpp:' . rawurlencode($this->_from) . '?;node=' . rawurlencode($this->_node)
                 ];
             }
-        } elseif ($this->_view == 'tag' && $this->validateTag($this->get('t'))) {
+        } elseif ($this->_view == 'tag' && validateTag($this->get('t'))) {
             $this->_mode = 'tag';
             $this->_tag = strtolower(html_entity_decode($this->get('t')));
             $this->title = '#'.$this->_tag;
@@ -219,19 +219,5 @@ class Blog extends Base
         $this->view->assign('gallery', $this->_gallery);
 
         $this->view->assign('tag', $this->_tag);
-    }
-
-    private function validateServerNode($server, $node)
-    {
-        $validateServer = Validator::stringType()->noWhitespace()->length(6, 40);
-        $validateNode = Validator::stringType()->length(2, 100);
-
-        return ($validateServer->validate($server)
-             && $validateNode->validate($node));
-    }
-
-    private function validateTag($tag)
-    {
-        return Validator::stringType()->notEmpty()->validate($tag);
     }
 }

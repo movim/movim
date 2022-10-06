@@ -41,7 +41,7 @@ class CommunitiesServers extends Base
 
     public function ajaxDisco($origin)
     {
-        if (!$this->validateServer($origin)) {
+        if (!validateServer($origin)) {
             Toast::send($this->__('communities.disco_error'));
             return;
         }
@@ -58,17 +58,6 @@ class CommunitiesServers extends Base
     public function ajaxHttpGet()
     {
         $this->rpc('MovimTpl.fill', '#communities_servers', $this->prepareCommunities());
-    }
-
-    /**
-     * @brief Validate the server
-     *
-     * @param string $origin
-     */
-    private function validateServer($origin)
-    {
-        $validateServer = Validator::noWhitespace()->alnum('.-_')->length(6, 40);
-        return ($validateServer->validate($origin));
     }
 
     public function prepareCommunities()
