@@ -53,7 +53,8 @@
              </div>
          </li>
     </a>
-    <li onclick="Presence_ajaxAskLogout()"
+    <li class="on_desktop"
+        onclick="Presence_ajaxAskLogout()"
         title="{$c->__('status.disconnect')}">
         <span class="primary icon"><i class="material-icons">exit_to_app</i></span>
         <div>
