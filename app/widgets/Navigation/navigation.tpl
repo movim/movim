@@ -1,4 +1,4 @@
-<ul id="navigation" class="list active" dir="ltr">
+<ul class="navigation list active" dir="ltr">
     {if="$c->getUser()->hasPubsub()"}
         <li onclick="MovimUtils.reload('{$c->route('publish')}')"
             title="{$c->__('page.publish')}"
@@ -51,9 +51,10 @@
     </li>
 </ul>
 
-<ul class="list oppose active" dir="ltr">
+<ul class="navigation list oppose active" dir="ltr">
     <li onclick="Notifications_ajaxRequest()"
         title="{$c->__('notifs.title')}"
+        class="on_desktop"
     >
         <span class="primary icon">
             <i class="material-icons">notifications</i>
@@ -64,10 +65,11 @@
         </div>
     </li>
 
-    <hr />
+    <hr class="on_desktop"/>
 
     <li onclick="Search_ajaxRequest()"
-    title="{$c->__('button.search')}"
+        title="{$c->__('button.search')}"
+        class="on_desktop"
     >
         <span class="primary icon">
             <i class="material-icons">search</i>
@@ -100,10 +102,12 @@
         </li>
     {/if}
 
-    <li onclick="MovimTpl.toggleMenu()" class="on_mobile">
-        <span class="primary icon bubble"><i class="material-icons">arrow_back</i></span>
-        <div>
-            <p class="normal">{$c->__('button.close')}</p>
-        </div>
-    </li>
+    <a href="#" class="on_mobile">
+        <li onclick="MovimTpl.toggleMenu()">
+            <span class="primary icon bubble"><i class="material-icons">arrow_back</i></span>
+            <div>
+                <p class="normal">{$c->__('button.close')}</p>
+            </div>
+        </li>
+    </a>
 </ul>

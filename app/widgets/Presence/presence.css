@@ -2,13 +2,11 @@ ul#presence_widget li span.primary {
     opacity: 1;
 }
 
-@media screen and (min-width: 1025px) and (max-width: 1680px) {
+@media screen and (min-width: 1025px) {
     ul#presence_widget li span.control {
         display: none;
     }
-}
 
-@media screen and (min-width: 1025px) {
     ul#presence_widget_menu {
         max-height: 0;
         overflow: hidden;

@@ -17,48 +17,48 @@
     </li>
 </ul>
 
-<ul class="list active" id="presence_widget_menu" dir="ltr">
-    <a href="{$c->route('conf')}"
-        title="{$c->__('page.configuration')}">
-         <li {if="$page == 'conf'"}class="active"{/if}>
-             <span class="primary icon">
-                 <i class="material-icons">tune</i>
-             </span>
-             <div>
-                 <p class="normal">{$c->__('page.configuration')}</p>
-             </div>
-         </li>
-    </a>
+<ul class="navigation list active" id="presence_widget_menu" dir="ltr">
+    <li {if="$page == 'conf'"}class="active"{/if}
+        title="{$c->__('page.configuration')}"
+        onclick="MovimUtils.reload('{$c->route('conf')}')"
+    >
+        <span class="primary icon">
+            <i class="material-icons">tune</i>
+        </span>
+        <div>
+            <p class="normal line">{$c->__('page.configuration')}</p>
+        </div>
+    </li>
     {if="$c->getUser()->admin"}
-        <a href="{$c->route('admin')}"
-        title="{$c->__('page.configuration')}">
-            <li {if="$page == 'admin'"}class="active"{/if}>
-                <span class="primary icon">
-                    <i class="material-icons">manage_accounts</i>
-                </span>
-                <div>
-                    <p class="normal">{$c->__('page.administration')}</p>
-                </div>
-            </li>
-        </a>
+        <li {if="$page == 'admin'"}class="active"{/if}
+            onclick="MovimUtils.reload('{$c->route('admin')}')"
+            title="{$c->__('page.configuration')}">
+            <span class="primary icon">
+                <i class="material-icons">manage_accounts</i>
+            </span>
+            <div>
+                <p class="normal line">{$c->__('page.administration')}</p>
+            </div>
+        </li>
     {/if}
-    <a href="{$c->route('help')}"
-        title="{$c->__('page.help')}">
-         <li {if="$page == 'help'"}class="active"{/if}>
-             <span class="primary icon">
-                 <i class="material-icons">help</i>
-             </span>
-             <div>
-                 <p class="normal">{$c->__('page.help')}</p>
-             </div>
-         </li>
-    </a>
+
+    <li {if="$page == 'help'"}class="active"{/if}
+        onclick="MovimUtils.reload('{$c->route('help')}')"
+        title="{$c->__('page.help')}"
+    >
+        <span class="primary icon">
+            <i class="material-icons">help</i>
+        </span>
+        <div>
+            <p class="normal line">{$c->__('page.help')}</p>
+        </div>
+    </li>
     <li class="on_desktop"
         onclick="Presence_ajaxAskLogout()"
         title="{$c->__('status.disconnect')}">
         <span class="primary icon"><i class="material-icons">exit_to_app</i></span>
         <div>
-            <p class="normal">{$c->__('status.disconnect')}</p>
+            <p class="normal line">{$c->__('status.disconnect')}</p>
         </div>
     </li>
     <hr />

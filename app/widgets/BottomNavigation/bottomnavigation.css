@@ -7,11 +7,25 @@ ul#bottomnavigation {
     box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.2);;
     z-index: 2;
     display: none;
+    justify-content:center;
     transition: transform .3s cubic-bezier(.4,0,.2,1);
 }
 
 ul#bottomnavigation li {
     padding: 0.5rem;
+    text-align: center;
+    flex: 1;
+    position: relative;
+    transition: background-color 0.15s ease;
+}
+
+ul#bottomnavigation li:hover {
+    background-color: rgba(var(--movim-element-action), 0.1);
+    cursor: pointer;
+}
+
+ul#bottomnavigation li:active {
+    background-color: rgba(var(--movim-element-action), 0.2);
 }
 
 ul#bottomnavigation li:first-child {

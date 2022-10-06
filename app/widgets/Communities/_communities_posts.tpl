@@ -26,8 +26,6 @@
 </ul>
 
 {if="$page > 0"}
-    <br />
-
     <ul class="list thick" onclick="Communities.morePosts(this, {$page}, '{$type}')">
         <li class="active">
             <span class="primary icon gray">
