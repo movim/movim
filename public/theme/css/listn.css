@@ -59,11 +59,13 @@ ul.list.active li.active:not(.subheader),
 ul.tabs > li:hover {
     background-color: rgba(var(--movim-element-action), 0.1);
     cursor: pointer;
+    user-select: none;
 }
 
 ul.list li > span.active:hover {
     filter: grayscale(25%);
     cursor: pointer;
+    user-select: none;
 }
 
 /* Clicked list items */
