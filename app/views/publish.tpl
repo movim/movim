@@ -5,11 +5,15 @@
 <?php $this->widget('Upload'); ?>
 <?php $this->widget('Notifications');?>
 <?php $this->widget('Location');?>
+<?php $this->widget('ChatOmemo');?>
+<?php $this->widget('Location');?>
 
 <nav class="color dark">
     <?php $this->widget('Presence');?>
     <?php $this->widget('Navigation');?>
 </nav>
+
+<?php $this->widget('BottomNavigation');?>
 
 <main style="background-color: rgb(var(--movim-background));">
     <aside>
