@@ -21,10 +21,10 @@
     <div class="logo"></div>
 
     <div id="form" class="dialog">
-        {if="$banner"}
-            <img class="banner" src="{$banner}">
-        {/if}
         <section>
+            {if="$banner"}
+                <img class="banner" src="{$banner}">
+            {/if}
             {if="$invitation != null"}
                 <ul class="list middle invite">
                     <li>
