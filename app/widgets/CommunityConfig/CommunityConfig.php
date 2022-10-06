@@ -57,7 +57,7 @@ class CommunityConfig extends Base
 
     public function ajaxGetAvatar($origin, $node)
     {
-        if (validateServerNode($origin, $node)) {
+        if (!validateServerNode($origin, $node)) {
             return;
         }
 
@@ -71,7 +71,7 @@ class CommunityConfig extends Base
 
     public function ajaxSetAvatar($origin, $node, $form)
     {
-        if (validateServerNode($origin, $node)) {
+        if (!validateServerNode($origin, $node)) {
             return;
         }
 
@@ -95,7 +95,7 @@ class CommunityConfig extends Base
 
     public function ajaxGetConfig($origin, $node, $advanced = false)
     {
-        if (validateServerNode($origin, $node)) {
+        if (!validateServerNode($origin, $node)) {
             return;
         }
 
@@ -112,7 +112,7 @@ class CommunityConfig extends Base
 
     public function ajaxSetConfig($data, $origin, $node)
     {
-        if (validateServerNode($origin, $node)) {
+        if (!validateServerNode($origin, $node)) {
             return;
         }
 

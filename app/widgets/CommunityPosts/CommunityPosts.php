@@ -15,7 +15,6 @@ class CommunityPosts extends Base
 
     public function load()
     {
-        //$this->registerEvent('pubsub_getitemsid_handle', 'onItemsId');
         $this->registerEvent('pubsub_getitems_handle', 'onItemsId');
         $this->registerEvent('pubsub_getitems_error', 'onItemsError');
         $this->registerEvent('pubsub_getitemsid_error', 'onItemsError');
@@ -63,7 +62,7 @@ class CommunityPosts extends Base
         $after = null,
         $query = null
     ) {
-        if (validateServerNode($origin, $node)) {
+        if (!validateServerNode($origin, $node)) {
             return;
         }
 
@@ -86,7 +85,7 @@ class CommunityPosts extends Base
 
     public function ajaxGetItems($origin, $node, $before = 'empty', $query = null)
     {
-        if (validateServerNode($origin, $node)) {
+        if (!validateServerNode($origin, $node)) {
             return;
         }
 

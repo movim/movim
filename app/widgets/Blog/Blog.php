@@ -33,7 +33,7 @@ class Blog extends Base
             $this->_from = $this->get('s');
             $this->_node = $this->get('n');
 
-            if (validateServerNode($this->_from, $this->_node)) {
+            if (!validateServerNode($this->_from, $this->_node)) {
                 return;
             }
 

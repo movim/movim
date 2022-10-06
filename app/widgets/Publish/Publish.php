@@ -58,7 +58,7 @@ class Publish extends Base
 
     public function ajaxCreateComments($server, $id)
     {
-        if (validateServerNode($server, $id)) {
+        if (!validateServerNode($server, $id)) {
             return;
         }
 

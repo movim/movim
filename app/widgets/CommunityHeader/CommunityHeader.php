@@ -69,7 +69,7 @@ class CommunityHeader extends Base
 
     public function ajaxGetMetadata($origin, $node)
     {
-        if (validateServerNode($origin, $node)) {
+        if (!validateServerNode($origin, $node)) {
             return;
         }
 
@@ -80,7 +80,7 @@ class CommunityHeader extends Base
 
     public function ajaxAskSubscribe($origin, $node)
     {
-        if (validateServerNode($origin, $node)) {
+        if (!validateServerNode($origin, $node)) {
             return;
         }
 
@@ -97,7 +97,7 @@ class CommunityHeader extends Base
 
     public function ajaxSubscribe($form, $origin, $node)
     {
-        if (validateServerNode($origin, $node)) {
+        if (!validateServerNode($origin, $node)) {
             return;
         }
 
@@ -119,7 +119,7 @@ class CommunityHeader extends Base
 
     public function ajaxAskUnsubscribe($origin, $node)
     {
-        if (validateServerNode($origin, $node)) {
+        if (!validateServerNode($origin, $node)) {
             return;
         }
 
@@ -136,7 +136,7 @@ class CommunityHeader extends Base
 
     public function ajaxUnsubscribe($origin, $node)
     {
-        if (validateServerNode($origin, $node)) {
+        if (!validateServerNode($origin, $node)) {
             return;
         }
 
@@ -166,7 +166,7 @@ class CommunityHeader extends Base
      */
     public function ajaxTestPublish($origin, $node)
     {
-        if (validateServerNode($origin, $node)) {
+        if (!validateServerNode($origin, $node)) {
             return;
         }
 

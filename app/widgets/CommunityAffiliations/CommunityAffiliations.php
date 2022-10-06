@@ -155,7 +155,7 @@ class CommunityAffiliations extends Base
 
     public function ajaxGetAffiliations($origin, $node)
     {
-        if (validateServerNode($origin, $node)) {
+        if (!validateServerNode($origin, $node)) {
             return;
         }
 
@@ -166,7 +166,7 @@ class CommunityAffiliations extends Base
 
     public function ajaxGetSubscriptions($origin, $node, $notify = true)
     {
-        if (validateServerNode($origin, $node)) {
+        if (!validateServerNode($origin, $node)) {
             return;
         }
 
@@ -179,7 +179,7 @@ class CommunityAffiliations extends Base
 
     public function ajaxDelete($origin, $node, $clean = false)
     {
-        if (validateServerNode($origin, $node)) {
+        if (!validateServerNode($origin, $node)) {
             return;
         }
 
@@ -193,7 +193,7 @@ class CommunityAffiliations extends Base
 
     public function ajaxDeleteConfirm($origin, $node)
     {
-        if (validateServerNode($origin, $node)) {
+        if (!validateServerNode($origin, $node)) {
             return;
         }
 
@@ -217,7 +217,7 @@ class CommunityAffiliations extends Base
 
     public function ajaxChangeAffiliation($origin, $node, $form)
     {
-        if (validateServerNode($origin, $node)) {
+        if (!validateServerNode($origin, $node)) {
             return;
         }
 

@@ -98,7 +98,7 @@ class Search extends Base
                 ->limit(10)
                 ->get();
 
-            if (Validator::email()->validate($key)) {
+            if (validateJid($key)) {
                 $contact = new Contact;
                 $contact->id = $key;
                 $contacts->push($contact);
