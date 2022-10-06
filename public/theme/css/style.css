@@ -422,25 +422,29 @@ img.avatar:not([src=""]) + .placeholder {
 
 /* Display/hide */
 
-.on_mobile, .on_desktop {
+.on_mobile, .on_desktop, .on_mobile.material-icons {
     overflow: hidden;
 }
 
 .on_mobile {
     height: 0;
+    width: 0;
 }
 
 @media screen and (max-width: 1024px) {
     .on_mobile {
-        height: auto;
+        height: inherit;
+        width: inherit;
     }
 
     .on_mobile.material-icons {
-        height: auto;
+        height: inherit;
+        width: inherit;
     }
 
     .on_desktop {
         height: 0;
+        width: 0;
     }
 }
 

@@ -12,8 +12,6 @@
             </div>
         </li>
 
-        <hr />
-
         <li onclick="MovimUtils.reload('{$c->route('news')}')"
             class="on_desktop {if="$page == 'news' || $page == 'post'"}active{/if}"
             title="{$c->__('page.news')}"
