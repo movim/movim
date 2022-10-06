@@ -14,7 +14,7 @@
             {$url = $value->getPhoto('m')}
             {if="$url"}
                 <span class="primary icon bubble active
-                    {if="$contact->locationDistance"} location{/if}
+                    {if="$value->locationDistance"} location{/if}
                     {if="!$value->presence || $value->presence->value > 4"}
                         faded
                     {else}
@@ -25,7 +25,7 @@
                 </span>
             {else}
                 <span class="primary icon bubble color active {$value->jid|stringToColor}
-                    {if="$contact->locationDistance"} location{/if}
+                    {if="$value->locationDistance"} location{/if}
                     {if="!$value->presence || $value->presence->value > 4"}
                         faded
                     {else}
