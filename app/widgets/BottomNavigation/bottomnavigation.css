@@ -9,6 +9,7 @@ ul#bottomnavigation {
     display: none;
     justify-content:center;
     transition: transform .3s cubic-bezier(.4,0,.2,1);
+    user-select: none;
 }
 
 ul#bottomnavigation li {

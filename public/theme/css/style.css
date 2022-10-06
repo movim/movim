@@ -61,6 +61,7 @@ body > nav {
     position: absolute;
     overflow-y: auto;
     left: 0;
+    user-select: none;
 }
 
 body > nav.active {

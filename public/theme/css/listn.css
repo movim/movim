@@ -265,6 +265,7 @@ ul.list li > div > p:nth-last-of-type(2) + p.all {
 
 ul.list li.subheader {
     overflow: hidden;
+    user-select: none;
 }
 
 ul.list li.subheader > div > p {
@@ -283,6 +284,7 @@ ul.tabs {
     height: 5.5rem;
     line-height: 5.5rem;
     font-size: 0;
+    user-select: none;
 }
 
 ul.tabs:empty {
