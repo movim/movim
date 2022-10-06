@@ -6,8 +6,6 @@ use Moxl\Xec\Action\Roster\UpdateItem;
 use Moxl\Xec\Action\Roster\RemoveItem;
 use Moxl\Xec\Action\Presence\Unsubscribe;
 
-use Respect\Validation\Validator;
-
 class ContactHeader extends Base
 {
     public function load()

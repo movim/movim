@@ -7,8 +7,6 @@ use Moxl\Xec\Action\Pubsub\GetConfig;
 use Moxl\Xec\Action\Pubsub\SetConfig;
 use Moxl\Xec\Action\Avatar\Set as AvatarSet;
 
-use Respect\Validation\Validator;
-
 class CommunityConfig extends Base
 {
     public function load()

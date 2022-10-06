@@ -4,7 +4,6 @@ use Movim\Widget\Base;
 
 use Moxl\Xec\Action\Disco\Request;
 use Moxl\Xec\Action\Disco\Items;
-use Respect\Validation\Validator;
 
 class CommunitiesServers extends Base
 {

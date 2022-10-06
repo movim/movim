@@ -4,7 +4,6 @@ use Movim\Widget\Base;
 
 use Moxl\Xec\Action\Pubsub\GetItems;
 
-use Respect\Validation\Validator;
 use Cocur\Slugify\Slugify;
 
 include_once WIDGETS_PATH.'Post/Post.php';

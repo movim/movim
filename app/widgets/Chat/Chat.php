@@ -15,8 +15,6 @@ use App\Url;
 use Moxl\Xec\Action\BOB\Request;
 use Moxl\Xec\Action\Disco\Request as DiscoRequest;
 
-use Respect\Validation\Validator;
-
 use Illuminate\Database\Capsule\Manager as DB;
 
 use Movim\ChatStates;

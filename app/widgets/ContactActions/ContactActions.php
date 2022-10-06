@@ -6,8 +6,6 @@ use Movim\Widget\Base;
 use Moxl\Xec\Action\Roster\AddItem;
 use Moxl\Xec\Action\Presence\Subscribe;
 
-use Respect\Validation\Validator;
-
 include_once WIDGETS_PATH.'Chat/Chat.php';
 include_once WIDGETS_PATH . 'Post/Post.php';
 

@@ -9,8 +9,6 @@ use Moxl\Xec\Action\PubsubSubscription\Add as SubscriptionAdd;
 use Moxl\Xec\Action\PubsubSubscription\Remove as SubscriptionRemove;
 use Moxl\Xec\Action\Pubsub\TestPostPublish;
 
-use Respect\Validation\Validator;
-
 class CommunityHeader extends Base
 {
     public function load()

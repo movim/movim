@@ -2,8 +2,6 @@
 
 use Movim\Widget\Base;
 
-use Respect\Validation\Validator;
-
 class ContactData extends Base
 {
     public function load()

@@ -3,8 +3,6 @@
 use Movim\Widget\Base;
 use Illuminate\Database\Capsule\Manager as DB;
 
-use Respect\Validation\Validator;
-
 use App\Contact;
 use App\Message;
 use App\Roster;

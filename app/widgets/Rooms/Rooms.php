@@ -11,8 +11,6 @@ use Movim\Widget\Base;
 
 use App\Conference;
 
-use Respect\Validation\Validator;
-
 class Rooms extends Base
 {
     public function load()

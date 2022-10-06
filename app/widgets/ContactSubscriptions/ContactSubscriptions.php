@@ -2,7 +2,6 @@
 
 use Movim\Widget\Base;
 
-use Respect\Validation\Validator;
 use Moxl\Xec\Action\PubsubSubscription\Get as GetPubsubSubscriptions;
 
 class ContactSubscriptions extends Base

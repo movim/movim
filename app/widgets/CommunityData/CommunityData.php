@@ -4,8 +4,6 @@ use Moxl\Xec\Action\Pubsub\GetItem;
 
 use Movim\Widget\Base;
 
-use Respect\Validation\Validator;
-
 class CommunityData extends Base
 {
     public function load()

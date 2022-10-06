@@ -3,7 +3,6 @@
 use Moxl\Xec\Action\Message\Publish;
 use Moxl\Xec\Action\BOB\Answer;
 
-use Respect\Validation\Validator;
 use Psr\Http\Message\ResponseInterface;
 
 use App\Configuration;

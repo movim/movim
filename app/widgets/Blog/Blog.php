@@ -2,8 +2,6 @@
 
 use Movim\Widget\Base;
 
-use Respect\Validation\Validator;
-
 include_once WIDGETS_PATH.'Post/Post.php';
 
 class Blog extends Base
