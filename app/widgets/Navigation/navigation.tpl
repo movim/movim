@@ -93,7 +93,8 @@
     {if="$c->getUser()->hasPubsub()"}
         <li onclick="MovimUtils.reload('{$c->route('subscriptions')}')"
             title="{$c->__('communityaffiliation.subscriptions')}"
-            {if="$page == 'subscriptions'"}class="active"{/if}>
+            {if="$page == 'subscriptions'"}class="active"{/if}
+        >
             <span class="primary icon"><i class="material-icons">bookmarks</i></span>
             <div>
                 <p class="normal">{$c->__('communityaffiliation.subscriptions')}</p>
