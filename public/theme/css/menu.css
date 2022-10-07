@@ -1,5 +1,10 @@
 /* Menu */
 
+body > nav > ul:not(:first-child) li p:first-of-type {
+    height: 6rem;
+    line-height: 6rem;
+}
+
 body > nav > ul.list li {
     padding-left: 0.5rem;
 }
@@ -14,7 +19,7 @@ ul.oppose {
     width: 100%;
 }
 
-@media screen and (max-height: 33rem) {
+@media screen and (max-height: 28rem) {
     ul.oppose {
         bottom: initial;
     }
