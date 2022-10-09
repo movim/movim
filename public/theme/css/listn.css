@@ -63,22 +63,33 @@ ul.tabs > li:hover {
 }
 
 ul.list li > span.active:hover {
-    filter: grayscale(25%);
     cursor: pointer;
     user-select: none;
+}
+
+ul.list li > span.bubble.active:hover {
+    filter: grayscale(25%);
+}
+
+ul.list li > span:not(.bubble).active:hover {
+    background-color: rgba(var(--movim-element-action), 0.1);
 }
 
 /* Clicked list items */
 
 ul.list.active li:active:not(.subheader),
 ul.list.active.all li:active,
-ul.tabs > li:active, {
+ul.tabs > li:active {
     background-color: rgba(var(--movim-element-action), 0.2);
 }
 
 
-ul.list li > span.active:active {
+ul.list li > span.bubble.active:active {
     filter: grayscale(50%);
+}
+
+ul.list li > span:not(.bubble).active:active {
+    background-color: rgba(var(--movim-element-action), 0.2);
 }
 
 /* Main elements */
@@ -110,7 +121,7 @@ ul.list li > span.control:last-of-type {
 header > ul.list li > span.control:last-of-type,
 nav > ul.list li > span.control:last-of-type,
 ul.list.fill li > span.control:last-of-type,
-ul.list.controls li > span.control:last-of-type{
+ul.list.controls li > span.control:last-of-type {
     margin-right: 0;
 }
 

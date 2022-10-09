@@ -1,26 +1,27 @@
-<ul class="list middle flex">
-    <li class="block">
-        <span class="primary icon gray">
-            <i class="material-icons">comment</i>
-        </span>
-        <div>
-            <p class="normal line">{$c->__('post.comments_disabled')}</p>
-        </div>
-    </li>
-
-    <li class="block">
-        <p class="center">
-            {if="$c->getUser()->hasPubsub()"}
-                {if="isset($post)"}
-                    <button class="button icon flat gray" onclick="SendTo_ajaxSendSearch('{$post->getRef()}')">
-                        <i class="material-icons">send</i> {$c->__('button.send_to')}
-                    </button>
-                {else}
-                    <button class="button icon flat gray" onclick="Post.share()">
-                        <i class="material-icons">share</i> {$c->__('button.send_to')}
-                    </button>
-                {/if}
-            {/if}
-        </p>
-    </li>
+{if="$c->getUser()->hasPubsub()"}
+<ul class="list active flex">
+    {if="isset($post)"}
+        <li  class="block" onclick="SendTo_ajaxSendSearch('{$post->getRef()}')">
+            <span class="primary icon gray">
+                <i class="material-icons">send</i>
+            </span>
+            <div>
+                <p class="normal">
+                    {$c->__('button.send_to')}
+                </p>
+            </div>
+        </li>
+    {else}
+        <li class="block" onclick="Post.share()">
+            <span class="primary icon gray">
+                <i class="material-icons">share</i>
+            </span>
+            <div>
+                <p class="normal">
+                    {$c->__('button.send_to')}
+                </p>
+            </div>
+        </li>
+    {/if}
 </ul>
+{/if}

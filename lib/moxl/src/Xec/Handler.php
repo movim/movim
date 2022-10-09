@@ -78,12 +78,12 @@ class Handler
         } else {
             \Utils::info("Handler : No memory instance found for {$id}");
 
-            Handler::handleNode($child);
+            $handled = Handler::handleNode($child);
 
             foreach ($child->children() as $s1) {
-                Handler::handleNode($s1, $child);
+                $handled = Handler::handleNode($s1, $child);
                 foreach ($s1->children() as $s2) {
-                    Handler::handleNode($s2, $child);
+                    $handled = Handler::handleNode($s2, $child);
                 }
             }
         }
@@ -113,7 +113,7 @@ class Handler
         Handler::searchPayload($hash, $s, $sparent);
     }
 
-    public static function searchPayload($hash, $s, $sparent = false)
+    public static function searchPayload($hash, $s, $sparent = false): bool
     {
         $hashToClass = [
             '9a534a8b4d6324e23f4187123e406729' => 'Message',
@@ -195,9 +195,12 @@ class Handler
             $payload_class = new $classname;
             $payload_class->prepare($s, $sparent);
             $payload_class->handle($s, $sparent);
-        } else {
-            \Utils::info('Handler : This event is not listed');
+
+            return true;
         }
+
+        \Utils::info('Handler : This event is not listed');
+        return false;
     }
 
     /**

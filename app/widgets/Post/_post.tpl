@@ -238,8 +238,8 @@
     {/if}
 
     {if="$post->openlink && $post->openlink->url && (!defined('BASE_HOST') || $post->openlink->url.host != BASE_HOST)"}
-        <ul class="list middle active">
-            <li onclick="MovimUtils.openInNew('{$post->openlink->href}')">
+        <ul class="list middle flex active">
+            <li class="block large" onclick="MovimUtils.openInNew('{$post->openlink->href}')">
                 <span class="primary icon gray">
                     <i class="material-icons">wifi_tethering</i>
                 </span>
