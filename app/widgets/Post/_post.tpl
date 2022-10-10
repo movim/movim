@@ -125,6 +125,8 @@
                         {/if}
                         {$contact->truename}
                         {if="!$public"}</a>{/if} ·
+                    {elseif="$post->aname"}
+                        {$post->aname} ·
                     {/if}
                     {if="!$post->isMicroblog()"}
                         {if="!$public"}

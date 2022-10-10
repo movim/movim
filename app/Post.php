@@ -329,21 +329,24 @@ class Post extends Model
         $this->nodeid = (string)$entry->attributes()->id;
 
         // Get some informations on the author
-        if ($entry->entry->author->name) {
-            $this->aname = (string)$entry->entry->author->name;
-        }
-        if ($entry->entry->author->uri) {
-            $this->aid = substr((string)$entry->entry->author->uri, 5);
-        }
-        if ($entry->entry->author->email) {
-            $this->aemail = (string)$entry->entry->author->email;
-        }
+        $this->aname = ($entry->entry->author->name)
+            ? (string)$entry->entry->author->name
+            : null;
+
+        $this->aid = ($entry->entry->author->uri && substr((string)$entry->entry->author->uri, 5) == 'xmpp:')
+            ? substr((string)$entry->entry->author->uri, 5)
+            : null;
+
+        $this->aemail = ($entry->entry->author->email)
+            ? (string)$entry->entry->author->email
+            : null;
 
         // Non standard support
         if ($entry->entry->source && $entry->entry->source->author->name) {
             $this->aname = (string)$entry->entry->source->author->name;
         }
-        if ($entry->entry->source && $entry->entry->source->author->uri) {
+        if ($entry->entry->source && $entry->entry->source->author->uri
+         && substr((string)$entry->entry->source->author->uri, 5) == 'xmpp:') {
             $this->aid = substr((string)$entry->entry->source->author->uri, 5);
         }
 
@@ -506,11 +509,11 @@ class Post extends Model
 
             $att = new Attachment;
 
-            if (empty($enc['href']) || empty($enc['rel'])) {
+            if (empty($enc['href'])) {
                 continue;
             }
 
-            $att->rel = $enc['rel'];
+            $att->rel = $enc['rel'] ?? 'alternate';
             $att->href = $enc['href'];
             $att->category = 'other';
 
@@ -521,7 +524,7 @@ class Post extends Model
                 $att->description = $enc['description'];
             }
 
-            switch ($enc['rel']) {
+            switch ($att->rel) {
                 case 'enclosure':
                     if (isset($enc['type'])) {
                         $att->category = 'file';
