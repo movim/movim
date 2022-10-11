@@ -166,6 +166,10 @@ class Blog extends Base
                         ->take($this->_paging + 1)
                         ->get();
             }
+
+            if ($this->_posts !== null) {
+                $this->_gallery = isPostGallery($this->_posts);
+            }
         }
 
         if ($this->_posts !== null
@@ -178,10 +182,6 @@ class Blog extends Base
             } else {
                 $this->_next = $this->route('node', [$this->_from, $this->_node], ['page' => $this->_page + 1]);
             }
-        }
-
-        if ($this->_posts !== null) {
-            $this->_gallery = isPostGallery($this->_posts);
         }
     }
 

@@ -335,7 +335,7 @@ class Post extends Model
             ? (string)$entry->entry->author->name
             : null;
 
-        $this->aid = ($entry->entry->author->uri && substr((string)$entry->entry->author->uri, 5) == 'xmpp:')
+        $this->aid = ($entry->entry->author->uri && substr((string)$entry->entry->author->uri, 0, 5) == 'xmpp:')
             ? substr((string)$entry->entry->author->uri, 5)
             : null;
 
