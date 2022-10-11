@@ -258,7 +258,9 @@ class Post extends Model
             return $this->contact->truename;
         }
 
-        return explodeJid($this->aid)['username'] ?? '';
+        return $this->aid
+            ? explodeJid($this->aid)['username']
+            : '';
     }
 
     public function getDecodedContentRawAttribute()

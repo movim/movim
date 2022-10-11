@@ -13,8 +13,11 @@
                     <p class="line">
                         <a href="{$contact->locationUrl}" target="_blank">
                             {$c->__('location.last_published')}
-                        </a> -
-                        {$contact->loctimestamp|strtotime|prepareDate:true,true}
+                        </a>
+                        {if="$contact->loctimestamp"}
+                            -
+                            {$contact->loctimestamp|strtotime|prepareDate:true,true}
+                        {/if}
                     </p>
                 </div>
             </li>
