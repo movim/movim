@@ -31,7 +31,10 @@ class ChatOmemo extends \Movim\Widget\Base
     {
         $bundle = $packet->content;
         $prekey = $this->extractPreKey($bundle);
-        $this->rpc('ChatOmemo.handlePreKey', $bundle->jid, $bundle->bundleid, $prekey);
+
+        if ($prekey) {
+            $this->rpc('ChatOmemo.handlePreKey', $bundle->jid, $bundle->bundleid, $prekey);
+        }
     }
 
     public function ajaxGetMissingSessions(string $jid, array $resolvedDeviceIds)
@@ -95,7 +98,10 @@ class ChatOmemo extends \Movim\Widget\Base
             $preKeys = [];
 
             foreach ($bundles as $bundle) {
-                $preKeys[$bundle->bundleid] = $this->extractPreKey($bundle);
+                $prekey = $this->extractPreKey($bundle);
+                if ($prekey) {
+                    $preKeys[$bundle->bundleid] = $prekey;
+                }
             }
 
             Toast::send($this->__('omemo.building_own_sessions'));
@@ -111,7 +117,10 @@ class ChatOmemo extends \Movim\Widget\Base
             $preKeys = [];
 
             foreach ($bundles as $bundle) {
-                $preKeys[$bundle->bundleid] = $this->extractPreKey($bundle);
+                $prekey = $this->extractPreKey($bundle);
+                if ($prekey) {
+                    $preKeys[$bundle->bundleid] = $prekey;
+                }
             }
 
             Toast::send($this->__('omemo.building_sessions'));
@@ -216,8 +225,10 @@ class ChatOmemo extends \Movim\Widget\Base
             ->request();
     }
 
-    private function extractPreKey(Bundle $bundle): array
+    private function extractPreKey(Bundle $bundle): ?array
     {
+        if (empty($bundle->prekeys)) return null;
+
         $pickedKey = array_rand($bundle->prekeys);
         return [
             'jid' => $bundle->jid,
