@@ -49,14 +49,14 @@ class Emoji
              )
           )/ux',
         // Some more combinations (order is important!)
-        '/[\x{26F9}\x{1F3C3}-\x{1F3CC}\x{1F46E}\x{1F46F}\x{1F461}-\x{1F477}\x{1F481}-\x{1F487}\x{1F575}\x{1F645}-\x{1F64E}\x{1F6A3}\x{1F6B4}-\x{1F6B6}\x{1F926}\x{1F937}-\x{1F93E}\x{1F9D6}-\x{1F9DF}]
+        '/[\x{26F9}\x{1F3C3}-\x{1F3CC}\x{1F46E}\x{1F46F}\x{1F461}-\x{1F477}\x{1F481}-\x{1F487}\x{1F575}\x{1F645}-\x{1F64E}\x{1F6A3}\x{1F6B4}-\x{1F6B6}\x{1F926}\x{1F937}-\x{1F93E}\x{1F9D6}-\x{1F9DF}\x{1F979}\x{1F9CC}]
           [\x{FE0F}\x{1F3FB}-\x{1F3FF}]?
           \x{200D}[\x{2640}\x{2642}]\x{FE0F}
          /ux',
-        '/[\x{261D}\x{26F7}-\x{270D}\x{1F1E6}-\x{1F1FF}\x{1F385}\x{1F3C2}-\x{1F3CC}\x{1F442}-\x{1F487}\x{1F4AA}\x{1F574}-\x{1F596}\x{1F645}-\x{1F6CC}\x{1F918}-\x{1F9DD}]
+        '/[\x{261D}\x{26F7}-\x{270D}\x{1F1E6}-\x{1F1FF}\x{1F385}\x{1F3C2}-\x{1F3CC}\x{1F442}-\x{1F487}\x{1F4AA}\x{1F574}-\x{1F596}\x{1F645}-\x{1F6CC}\x{1F918}-\x{1F9DD}\x{1F6DD}-\x{1F6DF}\x{1F7F0}]
           [\x{1F1E6}-\x{1F1FF}\x{1F3FB}-\x{1F3FF}]/ux',
         // Individual codepoints last
-        '/[\x{203C}\x{2049}\x{2139}-\x{21AA}\x{231A}-\x{23FA}\x{24C2}\x{25AA}-\x{27BF}\x{2934}-\x{2B55}\x{3030}-\x{3299}\x{1F004}-\x{1F9FF}\x{1FA70}-\x{1FAFF}]/u'
+        '/[\x{203C}\x{2049}\x{2139}-\x{21AA}\x{231A}-\x{23FA}\x{24C2}\x{25AA}-\x{27BF}\x{2934}-\x{2B55}\x{3030}-\x{3299}\x{1F004}-\x{1F9FF}\x{1FAAA}-\x{1FAFF}]/u'
     ];
 
     protected function __construct()

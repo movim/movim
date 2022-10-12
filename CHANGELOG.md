@@ -20,6 +20,7 @@ v0.21 (trunk)
  * Add new Location widget
  * Show distance with a contact if both locations are enabled
  * Reorganize and simplify the main menu, add a small submenu that pop on hover
+ * Add support for the Unicode 14.0 emojis release through Twemoji 14.0.2
 
 v0.20
 ---------------------------
