@@ -71,7 +71,8 @@ class Emoji
 
     public function replace($string, bool $noTitle = false): string
     {
-        $this->_string = $string;
+        // Remove the Variation Selectors (Unicode block) for a proper comparison
+        $this->_string = preg_replace('/[\x{fe00}\x{fe0f}]/u', '', $string);
         $this->_lastEmoji = null;
 
         return preg_replace_callback($this->_regex, function ($matches) use ($noTitle) {
@@ -96,17 +97,17 @@ class Emoji
             $img->setAttribute('alt', $this->_emoji[$astext]);
             if (!$noTitle) {
                 $this->_lastEmojiTitle = emojiShortcut($this->_emoji[$astext]);
-                $img->setAttribute('title', ':'.$this->_lastEmojiTitle.':');
+                $img->setAttribute('title', ':' . $this->_lastEmojiTitle . ':');
             }
             $img->setAttribute('src', $this->_lastEmojiURL);
 
             return $dom->saveXML($dom->documentElement);
-        }, $string);
+        }, $this->_string);
     }
 
     public function isSingleEmoji(): bool
     {
-        return $this->_string !== null && trim($this->_string) === $this->_lastEmoji && $this->_string !== null;
+        return $this->_string !== null && trim($this->_string) === $this->_lastEmoji;
     }
 
     public function getLastSingleEmojiURL()
