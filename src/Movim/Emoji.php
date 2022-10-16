@@ -73,6 +73,7 @@ class Emoji
     {
         // Remove the Variation Selectors (Unicode block) for a proper comparison
         $this->_string = preg_replace('/[\x{fe00}\x{fe0f}]/u', '', $string);
+        //$this->_string = $string;
         $this->_lastEmoji = null;
 
         return preg_replace_callback($this->_regex, function ($matches) use ($noTitle) {
@@ -102,7 +103,7 @@ class Emoji
             $img->setAttribute('src', $this->_lastEmojiURL);
 
             return $dom->saveXML($dom->documentElement);
-        }, $this->_string);
+        }, $string);
     }
 
     public function isSingleEmoji(): bool
