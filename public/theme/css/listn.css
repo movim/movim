@@ -258,6 +258,7 @@ ul.list li > div > p:nth-last-of-type(3),
 ul.list li > div > p:nth-last-of-type(2) {
     line-height: 3rem;
     font-size: 2rem;
+    font-weight: bold;
     padding: 0;
 }
 

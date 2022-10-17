@@ -1,17 +1,17 @@
 /* Color */
 
 body {
-    --movim-main: 255, 87, 34;
-    --movim-accent: 65, 63, 181;
-    --movim-background-main: 255, 255, 255;
-    --movim-background: 238, 238, 238;
-    --movim-gray: 35, 35, 35;
-    --movim-font: 0, 0, 0;
-    --movim-element-action: 153, 153, 153;
-    scrollbar-color: rgba(var(--movim-font), 0.2) transparent;
+    --movim-main: 109, 161, 79;
+    --movim-accent: 147, 51, 6;
+    --movim-background-main: 254, 254, 254;
+    --movim-background: 245, 245, 220;
+    --movim-gray: 147, 51, 6;
+    --movim-font: 4, 4, 4;
+    --movim-element-action: 130, 211, 23; /*68, 63, 176;*/
+    scrollbar-color: rgba(var(--movim-font), 1) transparent;
     scrollbar-width: thin;
 
-    --movim-red: #F44336;
+    --movim-red: #DB1D00;
 }
 
 body.nightmode {

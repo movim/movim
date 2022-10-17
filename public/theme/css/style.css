@@ -41,7 +41,7 @@ body > * {
     box-sizing: border-box;
     position: relative;
     overflow: hidden;
-    font-family: 'Titillium Web', sans-serif;
+    font-family: 'Gemunu Libre', sans-serif;
 }
 
 body > script {
@@ -50,6 +50,8 @@ body > script {
 
 a, a:link, a:visited {
     text-decoration: none;
+    font-weight: bold;
+    font-style: oblique;
 }
 
 /* Navigation bar */

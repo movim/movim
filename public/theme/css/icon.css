@@ -65,7 +65,7 @@ ul.fill li span.icon.control.thumb {
 }
 
 span.icon.bubble {
-    border-radius: 5rem;
+    border-radius: 0.4rem;
     font-size: 2.25rem;
     user-select: none;
     -moz-user-select: none;
@@ -73,7 +73,7 @@ span.icon.bubble {
 }
 
 span.icon.bubble img:not(.emoji) {
-    border-radius: 5rem;
+    border-radius: 0.4rem;
 }
 
 span.icon.bubble > i,
