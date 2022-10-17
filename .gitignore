@@ -6,3 +6,4 @@
 *~
 /config/db.inc.php
 /composer.phar
+/set-permissions.sh
