@@ -574,15 +574,12 @@ class Chat extends \Movim\Widget\Base
             $quotable = false;
 
             // https://xmpp.org/extensions/xep-0461.html#business-id
-            if ($reply->isMuc() && substr($reply->id, 0, 2) != 'm_') {
+            if ($reply->isMuc()) {
                 // stanza-id only
-                $p->setReplyid($reply->id);
+                $p->setReplyid($reply->stanzaid);
                 $quotable = true;
-            } elseif (!$reply->isMuc() && $reply->originid) {
-                $p->setReplyid($reply->originid);
-                $quotable = true;
-            } elseif (!$reply->isMuc() && substr($reply->id, 0, 2) != 'm_') {
-                $p->setReplyid($reply->id);
+            } elseif ($reply->messageid) {
+                $p->setReplyid($reply->messageid);
                 $quotable = true;
             }
 

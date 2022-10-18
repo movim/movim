@@ -992,7 +992,10 @@ var Chat = {
             span.className = 'info';
 
             p = document.createElement('p');
-            reaction = reaction.cloneNode(true);
+
+            if (reaction) {
+                reaction = reaction.cloneNode(true);
+            }
 
             if (reply) {
                 reply = reply.cloneNode(true);
