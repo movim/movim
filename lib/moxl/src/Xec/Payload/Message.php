@@ -34,7 +34,7 @@ class Message extends Payload
         }
 
         if ($stanza->composing || $stanza->paused || $stanza->active) {
-            $from = ($message->type == 'groupchat')
+            $from = ($message->isMuc())
                 ? $message->jidfrom.'/'.$message->resource
                 : $message->jidfrom;
 
@@ -59,7 +59,7 @@ class Message extends Payload
             if ($message && ($message->body || $message->subject)) {
                 $this->pack($message);
 
-                if ($message->subject && $message->type == 'groupchat') {
+                if ($message->subject && $message->isMuc()) {
                     $this->event('subject');
                 }
 

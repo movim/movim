@@ -1124,11 +1124,10 @@ var Chat = {
 
         var textarea = Chat.getTextarea();
 
-        reaction.dataset.mid = data.mid;
-        msg.appendChild(reaction);
+        if ((data.type == 'groupchat' && data.stanzaid) || (data.type == 'chat' && data.messageid)) {
+            reaction.dataset.mid = data.mid;
+            msg.appendChild(reaction);
 
-        if ((data.id !== null && data.id.substr(0, 2) != 'm_' && reply)
-         || (data.originid !== null && (Boolean(textarea.dataset.muc) == false || Boolean(textarea.dataset.mucGroup) == true))) {
             reply.dataset.mid = data.mid;
             msg.appendChild(reply);
         }

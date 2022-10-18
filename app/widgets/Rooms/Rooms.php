@@ -61,7 +61,7 @@ class Rooms extends Base
     {
         $message = $packet->content;
 
-        if ($message->type == 'groupchat') {
+        if ($message->isMuc()) {
             $chatStates = ChatStates::getInstance();
             $chatStates->clearState($message->jidfrom, $message->resource);
 

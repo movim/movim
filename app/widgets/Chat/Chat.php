@@ -152,14 +152,14 @@ class Chat extends \Movim\Widget\Base
             $from = $message->jidfrom;
             $contact = App\Contact::firstOrNew(['id' => $from]);
 
-            $conference = $message->type == 'groupchat'
+            $conference = $message->isMuc()
                 ? $this->user->session
                     ->conferences()->where('conference', $from)
                     ->first()
                 : null;
 
             if ($contact != null
-            && $message->type != 'groupchat'
+            && !$message->isMuc()
             && !$message->retracted
             && !$message->oldid) {
                 $roster = $this->user->session->contacts()->where('jid', $from)->first();
@@ -186,7 +186,7 @@ class Chat extends \Movim\Widget\Base
                 );
             }
             // If it's a groupchat message
-            elseif ($message->type == 'groupchat'
+            elseif ($message->isMuc()
                 && !$message->retracted
                 && $conference
                 && (($conference->notify == 1 && $message->quoted) // When quoted
@@ -203,7 +203,7 @@ class Chat extends \Movim\Widget\Base
                     4,
                     $this->route('chat', [$contact->jid, 'room'])
                 );
-            } elseif ($message->type == 'groupchat') {
+            } elseif ($message->isMuc()) {
                 if ($conference && $conference->notify == 0) {
                     $message->seen = true;
                     $message->save();
@@ -574,14 +574,14 @@ class Chat extends \Movim\Widget\Base
             $quotable = false;
 
             // https://xmpp.org/extensions/xep-0461.html#business-id
-            if ($reply->type == 'groupchat' && substr($reply->id, 0, 2) != 'm_') {
+            if ($reply->isMuc() && substr($reply->id, 0, 2) != 'm_') {
                 // stanza-id only
                 $p->setReplyid($reply->id);
                 $quotable = true;
-            } elseif ($reply->type != 'groupchat' && $reply->originid) {
+            } elseif ($reply->isMuc() && $reply->originid) {
                 $p->setReplyid($reply->originid);
                 $quotable = true;
-            } elseif ($reply->type != 'groupchat' && substr($reply->id, 0, 2) != 'm_') {
+            } elseif ($reply->isMuc() && substr($reply->id, 0, 2) != 'm_') {
                 $p->setReplyid($reply->id);
                 $quotable = true;
             }
@@ -672,7 +672,7 @@ class Chat extends \Movim\Widget\Base
         if ($parentMessage && $emojiHandler->isSingleEmoji()) {
             // Try to load the MUC presence and resolve the resource
             $mucPresence = null;
-            if ($parentMessage->type == 'groupchat') {
+            if ($parentMessage->isMuc()) {
                 $mucPresence = $this->user->session->presences()
                                     ->where('jid', $parentMessage->jidfrom)
                                     ->where('mucjid', $this->user->id)
@@ -682,7 +682,7 @@ class Chat extends \Movim\Widget\Base
                 if (!$mucPresence) return;
             }
 
-            $jidfrom = ($parentMessage->type == 'groupchat')
+            $jidfrom = ($parentMessage->isMuc())
                 ? $mucPresence->resource
                 : $this->user->id;
 
@@ -697,18 +697,18 @@ class Chat extends \Movim\Widget\Base
             if ($emojis->where('emoji', $emoji)->count() == 0) {
                 $reaction = new Reaction;
                 $reaction->message_mid = $parentMessage->mid;
-                $reaction->jidfrom = ($parentMessage->type == 'groupchat')
+                $reaction->jidfrom = ($parentMessage->isMuc())
                     ? $this->user->session->username
                     : $this->user->id;
                 $reaction->emoji = $emoji;
 
-                if ($parentMessage->type != 'groupchat') {
+                if ($parentMessage->isMuc()) {
                     $reaction->save();
                 }
 
                 $newEmojis = $emojis->push($reaction);
             } else {
-                if ($parentMessage->type != 'groupchat') {
+                if ($parentMessage->isMuc()) {
                     $parentMessage->reactions()
                         ->where('jidfrom', $jidfrom)
                         ->where('emoji', $emoji)
@@ -724,18 +724,19 @@ class Chat extends \Movim\Widget\Base
                 ? $parentMessage->jidfrom
                 : $parentMessage->jidto)
               ->setId(\generateUUID())
-              ->setParentId(!$parentMessage->isMuc() && $parentMessage->originid
-                ? $parentMessage->originid
-                : $parentMessage->id)
+              // https://xmpp.org/extensions/xep-0444.html#business-id
+              ->setParentId(!$parentMessage->isMuc() && $parentMessage->messageid
+                ? $parentMessage->messageid
+                : $parentMessage->stanzaid)
               ->setReactions($newEmojis->pluck('emoji')->toArray());
 
-            if ($parentMessage->type == 'groupchat') {
+            if ($parentMessage->isMuc()) {
                 $r->setMuc();
             }
 
             $r->request();
 
-            if ($parentMessage->type != 'groupchat') {
+            if ($parentMessage->isMuc()) {
                 $packet = new \Moxl\Xec\Payload\Packet;
                 $packet->content = $parentMessage;
                 $this->onMessage($packet);
@@ -1064,7 +1065,7 @@ class Chat extends \Movim\Widget\Base
 
         // Prepare the muc presences if possible
         $firstMessage = $messages->first();
-        if ($firstMessage && $firstMessage->type == 'groupchat') {
+        if ($firstMessage && $firstMessage->isMuc()) {
             $this->_mucPresences = $this->user->session->presences()
                 ->where('jid', $firstMessage->jidfrom)
                 ->where('muc', true)
@@ -1266,7 +1267,7 @@ class Chat extends \Movim\Widget\Base
                 }
             }
 
-            if ($message->parent->type == 'groupchat') {
+            if ($message->parent->isMuc()) {
                 $message->parent->resolveColor();
                 $message->parent->fromName = $message->parent->resource;
             } else {
@@ -1335,7 +1336,7 @@ class Chat extends \Movim\Widget\Base
         $messageDBSeen = $message->seen;
         $n = new Notification;
 
-        if ($message->type == 'groupchat') {
+        if ($message->isMuc()) {
             $message->resolveColor();
 
             // Cache the resolved presences for a while
@@ -1385,7 +1386,7 @@ class Chat extends \Movim\Widget\Base
         }
 
         $msgkey = '<' . $message->jidfrom;
-        $msgkey .= ($message->type == 'groupchat' && $message->resource != null)
+        $msgkey .= ($message->isMuc() && $message->resource != null)
                     ? cleanupId($message->resource, true)
                     : '';
         $msgkey .= '>' . substr($message->published, 11, 5);

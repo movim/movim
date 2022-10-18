@@ -166,12 +166,16 @@ class Message extends Model
         // We reset the URL resolution to refresh it once the message is displayed
         $this->resolved = false;
 
-        $this->id = 'm_' . generateUUID();
-
         $jidTo = explodeJid((string)$stanza->attributes()->to);
         $jidFrom = explodeJid((string)$stanza->attributes()->from);
 
         $this->user_id    = \App\User::me()->id;
+
+        $this->id = 'm_' . generateUUID();
+
+        if ($stanza->attributes()->id) {
+            $this->messageid  = (string)$stanza->attributes()->id;
+        }
 
         if (!$this->jidto) {
             $this->jidto      = $jidTo['jid'];
@@ -203,16 +207,22 @@ class Message extends Model
             $this->type = (string)$stanza->attributes()->type;
         }
 
-        // stanza-id
-        if ($this->type == 'groupchat' && $stanza->{'stanza-id'} && $stanza->{'stanza-id'}->attributes()->id
-         && ($stanza->{'stanza-id'}->attributes()->by == $this->jidfrom
-              || $stanza->{'stanza-id'}->attributes()->by == \App\User::me()->id
+        // https://xmpp.org/extensions/xep-0359.html#stanza-id
+        if ($stanza->{'origin-id'}
+        && (string)$stanza->{'origin-id'}->attributes()->xmlns == 'urn:xmpp:sid:0') {
+            $this->originid = (string)$stanza->{'origin-id'}->attributes()->id;
+        }
+
+        // https://xmpp.org/extensions/xep-0359.html#origin-id for groupchat only
+        if ($this->isMuc()
+        && $stanza->{'stanza-id'}
+        && $stanza->{'stanza-id'}->attributes()->id
+        && (string)$stanza->{'stanza-id'}->attributes()->xmlns == 'urn:xmpp:sid:0'
+        && ($stanza->{'stanza-id'}->attributes()->by == $this->jidfrom
+            || $stanza->{'stanza-id'}->attributes()->by == \App\User::me()->id
             )
         ) {
-            $this->id = (string)$stanza->{'stanza-id'}->attributes()->id;
-        // origin-id
-        } else if ($this->type == 'chat' && $stanza->{'origin-id'} && $stanza->{'origin-id'}->attributes()->id) {
-            $this->id = (string)$stanza->{'origin-id'}->attributes()->id;
+            $this->stanzaid = (string)$stanza->{'stanza-id'}->attributes()->id;
         }
 
         // If it's a MUC message, we assume that the server already handled it
@@ -244,18 +254,11 @@ class Message extends Model
 
             // Reply can be handled by XEP-0461: Message Replies or by the threadid Jabber mechanism
             if ($stanza->reply && $stanza->reply->attributes()->xmlns == 'urn:xmpp:reply:0') {
-                $parent = $this->user->messages()
-                            ->jid($this->jidfrom)
-                            ->where(
-                                ($this->type == 'groupchat') ? 'id' : 'originid',
-                                (string)$stanza->reply->attributes()->id
-                            )
-                            ->orderBy('published', 'asc')
-                            ->first();
+                $parentMessage = $this->resolveParentMessage($this->jidfrom, (string)$stanza->reply->attributes()->id);
 
-                if ($parent && $parent->mid != $this->mid
-                 && $parent->originid != $this->originid) {
-                    $this->parentmid = $parent->mid;
+                if ($parentMessage && $parentMessage->mid != $this->mid
+                 && $parentMessage->originid != $this->originid) {
+                    $this->parentmid = $parentMessage->mid;
                 }
 
                 if ($stanza->fallback && $stanza->fallback->attributes()->xmlns == 'urn:xmpp:feature-fallback:0'
@@ -415,11 +418,6 @@ class Message extends Model
                 $this->encrypted = true;
             }
 
-            if ($stanza->{'origin-id'}
-            && (string)$stanza->{'origin-id'}->attributes()->xmlns == 'urn:xmpp:sid:0') {
-                $this->originid = (string)$stanza->{'origin-id'}->attributes()->id;
-            }
-
             if ($stanza->replace
             && (string)$stanza->replace->attributes()->xmlns == 'urn:xmpp:message-correct:0') {
                 // Here the replaceid could be a bad one, we will handle it later
@@ -442,20 +440,7 @@ class Message extends Model
         elseif (isset($stanza->reactions)
             && $stanza->reactions->attributes()->xmlns == 'urn:xmpp:reactions:0') {
 
-            $parentMessage = \App\Message::jid($this->jidfrom)
-                ->where('id', (string)$stanza->reactions->attributes()->id)
-                ->first();
-
-            // Specific case if the user is reacting to its own message
-            if (!$parentMessage && !$this->isMuc()) {
-                $parentMessage = \App\Message::jid($this->jidfrom)
-                    ->where('originid', (string)$stanza->reactions->attributes()->id)
-                    ->first();
-
-                if ($parentMessage && $parentMessage->jidfrom != $this->jidfrom) {
-                    $parentMessage == null;
-                }
-            }
+            $parentMessage = $this->resolveParentMessage($this->jidfrom, (string)$stanza->reactions->attributes()->id);
 
             if ($parentMessage) {
                 $resource = $this->isMuc()
@@ -617,5 +602,31 @@ class Message extends Model
     {
         $next_id = DB::select("select nextval('messages_mid_seq'::regclass)");
         return intval($next_id['0']->nextval);
+    }
+
+    // https://xmpp.org/extensions/xep-0444.html#business-id
+    // https://xmpp.org/extensions/xep-0461.html#business-id
+    private function resolveParentMessage(string $from, string $id): ?Message
+    {
+        $parentMessage = null;
+
+        if ($this->isMuc()) {
+            $parentMessage = $this->user->messages()->jid($from)
+                ->where('stanzaid', $id)
+                ->first();
+        } else {
+            $parentMessage = $this->user->messages()->jid($from)
+                ->where('messageid', $id)
+                ->first();
+
+            // Rare case, origin-id
+            if (!$parentMessage) {
+                $parentMessage = $this->user->messages()->jid($from)
+                    ->where('originid', $id)
+                    ->first();
+            }
+        }
+
+        return $parentMessage;
     }
 }
