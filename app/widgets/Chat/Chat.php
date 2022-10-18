@@ -841,7 +841,9 @@ class Chat extends \Movim\Widget\Base
                         ->where('mid', $mid)
                         ->first();
 
-        if (($m->id && substr($m->id, 0, 2) != 'm_') || isset($m->thread)) {
+        if (($m->isMuc() && $m->stanzaid)
+        || (!$m->isMuc() && $m->messageid)
+        || isset($m->thread) ) {
             $view = $this->tpl();
             $view->assign('message', $m);
             $this->rpc('MovimTpl.fill', '#reply', $view->draw('_chat_reply'));
