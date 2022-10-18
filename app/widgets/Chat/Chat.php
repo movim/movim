@@ -578,10 +578,10 @@ class Chat extends \Movim\Widget\Base
                 // stanza-id only
                 $p->setReplyid($reply->id);
                 $quotable = true;
-            } elseif ($reply->isMuc() && $reply->originid) {
+            } elseif (!$reply->isMuc() && $reply->originid) {
                 $p->setReplyid($reply->originid);
                 $quotable = true;
-            } elseif ($reply->isMuc() && substr($reply->id, 0, 2) != 'm_') {
+            } elseif (!$reply->isMuc() && substr($reply->id, 0, 2) != 'm_') {
                 $p->setReplyid($reply->id);
                 $quotable = true;
             }
@@ -702,13 +702,13 @@ class Chat extends \Movim\Widget\Base
                     : $this->user->id;
                 $reaction->emoji = $emoji;
 
-                if ($parentMessage->isMuc()) {
+                if (!$parentMessage->isMuc()) {
                     $reaction->save();
                 }
 
                 $newEmojis = $emojis->push($reaction);
             } else {
-                if ($parentMessage->isMuc()) {
+                if (!$parentMessage->isMuc()) {
                     $parentMessage->reactions()
                         ->where('jidfrom', $jidfrom)
                         ->where('emoji', $emoji)
@@ -736,7 +736,7 @@ class Chat extends \Movim\Widget\Base
 
             $r->request();
 
-            if ($parentMessage->isMuc()) {
+            if (!$parentMessage->isMuc()) {
                 $packet = new \Moxl\Xec\Payload\Packet;
                 $packet->content = $parentMessage;
                 $this->onMessage($packet);

@@ -37,7 +37,7 @@ class Chats extends Base
     {
         $message = $packet->content;
 
-        if ($message->isMuc()) {
+        if (!$message->isMuc()) {
             // If the message is from me
             if ($message->user_id == $message->jidto) {
                 $from = $message->jidfrom;
