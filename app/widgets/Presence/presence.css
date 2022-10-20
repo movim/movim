@@ -10,11 +10,12 @@ ul#presence_widget li span.primary {
     ul#presence_widget_menu {
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.5s ease;
+        transition: max-height 1.5s cubic-bezier(1,0,.45,1);
     }
 
     ul#presence_widget_menu:hover,
     ul#presence_widget:hover + ul#presence_widget_menu {
         max-height: 100%;
+        transition: max-height 0.5s ease-in-out;
     }
 }
