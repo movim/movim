@@ -10,13 +10,16 @@ var Rooms = {
     },
 
     checkNoConnected: function() {
-        if (!document.querySelector('#rooms_widget ul.list.rooms li.connected')) {
+        if (!document.querySelector('#rooms_widget ul.list.rooms li.connected')
+         && localStorage.getItem('rooms_all') == 'true'
+        ) {
             document.querySelector('#rooms_widget ul.list.rooms').classList.add('all');
         }
     },
 
     toggleShowAll: function(){
         document.querySelector('#rooms_widget ul.list.rooms').classList.toggle('all');
+        localStorage.setItem('rooms_all', document.querySelector('#rooms_widget ul.list.rooms').classList.contains('all'));
     },
 
     selectGatewayRoom : function(room, name) {
