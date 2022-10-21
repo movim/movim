@@ -84,7 +84,7 @@ span.icon.bubble > a > i {
 
 ul.list li span.icon.small {
     height: 4rem;
-    line-height: 3.5rem;
+    line-height: 3.8rem;
     font-size: 0; /* Only display the first letter */
     flex: 0 0 4rem;
     margin-left: 1rem;
