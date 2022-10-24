@@ -1,6 +1,8 @@
 @import url('../fonts/MaterialIcons/font.css?1');
 @import url('../fonts/Roboto/font.css?0');
-@import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre&family=Titillium+Web:wght@300&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre&family=Titillium+Web:wght@300&display=swap');*/
+@import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre');
+/*@import url('../fonts/GemunuLibre/GemunuLibre-VariableFont_wght.ttf');*/
 
 .emoji {
     width: 3rem;
