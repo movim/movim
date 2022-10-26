@@ -138,31 +138,31 @@ ul li.action > form > div.action,
 .button.amber,  .icon.anber  , span.resource.amber   { color: #ffc107 }
 .button.bgray,  .icon.bgray  , span.resource.bgray   { color: #607d8b }
 
-.color.red      { color: white; background-color: var(--movim-red); border-color: var(--movim-red) }
-.color          { color: white; background-color: #607D8B;/* border: 1px solid #191919 */}
+.color          { color: white; background-color: #607D8B; border-color: #607D8B }
 span.icon:not(.composing).status.dnd:after,
+.color.red      { color: white; background-color: var(--movim-red); border-color: var(--movim-red) }
 span.icon:not(.composing).status.xa:after,
-.color.purple   { color: white; background-color: #9C27B0; border: 1px solid #8889A9 }
-.color.indigo   { color: white; background-color: #3F51B5; border: 1px solid #8889A9 }
-.color.blue     { color: white; background-color: #2196F3; border: 1px solid #8889A9 }
+.color.purple   { color: white; background-color: #9C27B0; border-color: #9C27B0 }
+.color.indigo   { color: white; background-color: #3F51B5; border-color: #3F51B5 }
+.color.blue     { color: white; background-color: #2196F3; border-color: #2196F3 }
 span.icon:not(.composing).status.chat:after,
 span.icon:not(.composing).status.online:after,
-.color.green    { color: white; background-color: #689F38; border: 1px solid #8889A9 }
-.color.orange   { color: white; background-color: #FF9800; border: 1px solid #8889A9 }
+.color.green    { color: white; background-color: #689F38; border-color: #689F38 }
+.color.orange   { color: white; background-color: #FF9800; border-color: #FF9800 }
 span.icon:not(.composing).status.away:after,
-.color.yellow   { color: white; background-color: #FDD835; border: 1px solid #8889A9 }
+.color.yellow   { color: white; background-color: #FDD835; border-color: #FDD835 }
 span.icon:not(.composing).status.server_error:after,
-.color.brown    { color: white; background-color: #795548; border: 1px solid #8889A9 }
-.color.gray     { color: white; background-color: #9E9E9E; border: 1px solid #8889A9 }
-.color.black    { color: white; background-color: #000000; border: 1px solid #8889A9 }
-.color.lime     { color: white; background-color: #CDDC39; border: 1px solid #8889A9 }
-.color.cyan     { color: white; background-color: #00bcd4; border: 1px solid #8889A9 }
-.color.teal     { color: white; background-color: #009688; border: 1px solid #8889A9 }
-.color.pink     { color: white; background-color: #e91e63; border: 1px solid #8889A9 }
-.color.dorange  { color: white; background-color: #ff5722; border: 1px solid #8889A9 }
-.color.lblue    { color: white; background-color: #03a9f4; border: 1px solid #8889A9 }
-.color.amber    { color: white; background-color: #ffc107; border: 1px solid #8889A9 }
-.color.bgray    { color: white; background-color: #607d8b; border: 1px solid #8889A9 }
+.color.brown    { color: white; background-color: #795548; border-color: #795548 }
+.color.gray     { color: white; background-color: #9E9E9E; border-color: #9E9E9E }
+.color.black    { color: white; background-color: #000000; border-color: #000000 }
+.color.lime     { color: white; background-color: #CDDC39; border-color: #CDDC39 }
+.color.cyan     { color: white; background-color: #00bcd4; border-color: #00bcd4 }
+.color.teal     { color: white; background-color: #009688; border-color: #009688 }
+.color.pink     { color: white; background-color: #e91e63; border-color: #e91e63 }
+.color.dorange  { color: white; background-color: #ff5722; border-color: #ff5722 }
+.color.lblue    { color: white; background-color: #03a9f4; border-color: #03a9f4 }
+.color.amber    { color: white; background-color: #ffc107; border-color: #ffc107 }
+.color.bgray    { color: white; background-color: #607d8b; border-color: #607d8b }
 
 .color.transparent { color: white; background-color: rgba(0, 0, 0, 0); }
 .color.semi { color: rgba(var(--movim-font), 0.87); background-color: rgba(var(--movim-background-main), 0.75); }
@@ -206,9 +206,9 @@ input[type=button].color,
 main > div > header.fixed,
 header.big,
 main > header {
-    background-color: #232323;/*rgb(var(--movim-accent));*/
+    background-color: rgb(var(--movim-accent));
     color: white;
-    border-color: #232323;/*rgb(var(--movim-accent));*/
+    border-color: rgb(var(--movim-accent));
 }
 
 .snackbar ul.list li > div > p,
