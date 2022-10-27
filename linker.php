@@ -83,7 +83,7 @@ function writeXMPP($xml)
         $timestampSend = time();
         $xmppSocket->write(trim($xml));
 
-        if (getenv('debug')) {
+        if (config('daemon.debug')) {
             logOut(colorize(trim($xml).' ', 'yellow') . colorize('sent to XMPP', 'green'));
         }
     }
@@ -275,7 +275,7 @@ $xmppBehaviour = function (React\Socket\Connection $stream) use (&$xmppSocket, $
     $xmppSocket->on('data', function ($message) use (&$xmppSocket, $parser, &$timestampReceive) {
         if (!empty($message)) {
 
-            if (getenv('debug')) {
+            if (config('daemon.debug')) {
                 logOut(colorize($message.' ', 'yellow') . colorize('received', 'green'));
             }
 

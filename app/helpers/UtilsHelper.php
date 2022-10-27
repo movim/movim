@@ -1,5 +1,6 @@
 <?php
 
+use Monolog\Formatter\LineFormatter;
 use Monolog\Logger;
 use Monolog\Handler\SyslogHandler;
 use Monolog\Handler\StreamHandler;
@@ -7,23 +8,35 @@ use Movim\Image;
 
 class Utils
 {
+    /**
+     * Log an error
+     */
+    public static function error($logs)
+    {
+        $log = new Logger('movim');
+        $log->pushHandler(new SyslogHandler('movim'));
+
+        $stream = new StreamHandler(LOG_PATH . '/errors.log');
+        $stream->setFormatter(new LineFormatter(null, null, true));
+        $log->pushHandler($stream);
+
+        $log->error($logs);
+    }
+
+    /**
+     * Log an info
+     */
     public static function info($message)
     {
-        if (LOG_LEVEL != null && LOG_LEVEL > 0 && getenv('debug')) {
+        if (config('daemon.verbose')) {
             $log = new Logger('movim');
+            $log->pushHandler(new SyslogHandler('movim'));
 
-            $handler = new SyslogHandler('movim');
+            $stream = new StreamHandler(LOG_PATH . '/info.log');
+            $stream->setFormatter(new LineFormatter(null, null, true));
+            $log->pushHandler($stream);
 
-            if (LOG_LEVEL > 1) {
-                $log->pushHandler(new StreamHandler(LOG_PATH . '/info.log'));
-            }
-
-            $log->pushHandler($handler);
-
-            $errlines = explode("\n", $message);
-            foreach ($errlines as $txt) {
-                $log->info($txt);
-            }
+            $log->info($message);
         }
     }
 
@@ -40,21 +53,39 @@ class Utils
             $log->debug($logs);
         }
     }
+}
 
-    /**
-     * Log a string, only used for debug purposes
-     */
-    public static function error($logs)
-    {
-        $log = new Logger('movim');
-        $log->pushHandler(new SyslogHandler('movim'));
+/**
+ * Return a configuration variable
+ */
+function config(string $key, $default = null)
+{
+    $path = explode('.', $key);
+    $config = require(CONFIG_PATH . $path[0] . '.php');
 
-        if (defined('LOG_LEVEL') && LOG_LEVEL > 1) {
-            $log->pushHandler(new StreamHandler(LOG_PATH . '/errors.log'));
+    if (!isset($path[1])) return $config;
+
+    if (array_key_exists($path[1], $config) && !empty($config[$path[1]])) {
+        $casted = null;
+
+        switch ($config[$path[1]]) {
+            case 'true':
+                $casted = true;
+                break;
+
+            case 'false':
+                $casted = false;
+                break;
+
+            default:
+                $casted = $config[$path[1]];
+                break;
         }
 
-        $log->error($logs);
+        return $casted;
     }
+
+    return $default;
 }
 
 /**

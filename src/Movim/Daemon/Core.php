@@ -18,7 +18,6 @@ use Minishlink\WebPush\VAPID;
 class Core implements MessageComponentInterface
 {
     public $sessions = [];
-    private $input;
     private $key; // Random key generate by the daemon to authenticate the internal Websockets
 
     public $loop;
@@ -27,12 +26,11 @@ class Core implements MessageComponentInterface
     public $single = ['visio'];
     public $singlelocks = [];
 
-    public function __construct($loop, $baseuri, InputInterface $input)
+    public function __construct($loop, $baseuri)
     {
-        $this->input = $input;
         $this->key = \generateKey(32);
 
-        $this->setWebsocket($this->input->getOption('port'));
+        $this->setWebsocket(config('daemon.port'));
 
         $this->loop    = $loop;
         $this->baseuri = $baseuri;
@@ -113,12 +111,12 @@ class Core implements MessageComponentInterface
                     $this->loop,
                     $sid,
                     $this->baseuri,
-                    $this->input->getOption('port'),
+                    config('daemon.port'),
                     $this->key,
                     $language,
                     $offset,
-                    $this->input->getOption('verbose'),
-                    $this->input->getOption('debug')
+                    config('daemon.verbose'),
+                    config('daemon.debug')
                 );
             }
 

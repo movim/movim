@@ -4,5 +4,5 @@
 /cache
 /public/cache
 *~
-/config/db.inc.php
 /composer.phar
+.env

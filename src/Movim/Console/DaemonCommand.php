@@ -32,26 +32,6 @@ class DaemonCommand extends Command
             ->setName('start')
             ->setDescription('Start the daemon')
             ->addOption(
-                'url',
-                'u',
-                InputOption::VALUE_OPTIONAL,
-                'Public URL of your Movim instance'
-            )
-            ->addOption(
-                'port',
-                'p',
-                InputOption::VALUE_OPTIONAL,
-                'Port on which the daemon will listen',
-                8080
-            )
-            ->addOption(
-                'interface',
-                'i',
-                InputOption::VALUE_OPTIONAL,
-                'Interface on which the daemon will listen',
-                '127.0.0.1'
-            )
-            ->addOption(
                 'debug',
                 'd',
                 InputOption::VALUE_NONE,
@@ -73,13 +53,13 @@ class DaemonCommand extends Command
 
         $loop = Loop::get();
 
-        if ($input->getOption('url') && Validator::url()->notEmpty()->validate($input->getOption('url'))) {
-            $baseuri = rtrim($input->getOption('url'), '/') . '/';
+        if (config('daemon.url') && Validator::url()->notEmpty()->validate(config('daemon.url'))) {
+            $baseuri = rtrim(config('daemon.url'), '/') . '/';
         } elseif (file_exists(CACHE_PATH.'baseuri')) {
             $baseuri = file_get_contents(CACHE_PATH.'baseuri');
         } else {
             $output->writeln('<comment>Please load the login page once before starting the daemon to cache the public URL</comment>');
-            $output->writeln('<comment>or force a public URL using the --url parameter</comment>');
+            $output->writeln('<comment>or configure DAEMON_URL in .env</comment>');
             exit;
         }
 
@@ -107,11 +87,11 @@ class DaemonCommand extends Command
             $output->writeln("\n".'<comment>Debug is enabled, check the logs in syslog or '.DOCUMENT_ROOT.'/log/</comment>');
         }
 
-        $core = new Core($loop, $baseuri, $input);
+        $core = new Core($loop, $baseuri);
         $app  = new HttpServer(new WsServer($core));
 
         $socket = new SocketServer(
-            $input->getOption('interface').':'.$input->getOption('port')
+            config('daemon.interface') . ':' . config('daemon.port')
         );
 
         $socketApi = new SocketServer('unix://' . API_SOCKET);
