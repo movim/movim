@@ -11,7 +11,7 @@ Movim is a social and chat platform that acts as a web frontend for the XMPP pro
 
 Installation
 ------------
-Please refer to the installation instructions that are available on the GitHub Wiki: https://github.com/movim/movim/wiki
+Please refer to the installation instructions in the [INSTALL.md](INSTALL.md) file.
 
 Movim is also available as a [Docker image](https://github.com/movim/movim_docker).
 
