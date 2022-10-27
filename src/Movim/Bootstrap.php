@@ -10,6 +10,8 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 use Illuminate\Events\Dispatcher;
 use Illuminate\Container\Container;
 
+use Dotenv\Dotenv;
+
 use App\Session as DBSession;
 use App\User as DBUser;
 
@@ -18,6 +20,7 @@ class Bootstrap
     public function boot($dbOnly = false)
     {
         $this->setLogs();
+        $this->loadHelpers();
 
         if (!defined('APP_TITLE')) {
             $this->setConstants();
@@ -36,10 +39,8 @@ class Bootstrap
 
         $this->loadCommonLibraries();
         $this->loadDispatcher();
-        $this->loadHelpers();
 
         $this->setTimezone();
-        $this->setLogLevel();
         $this->startingSession();
         $this->loadLanguage();
     }
@@ -61,16 +62,12 @@ class Bootstrap
 
     private function setConstants()
     {
+        (Dotenv::createImmutable(DOCUMENT_ROOT))->load();
+
         define('APP_TITLE', 'Movim');
         define('APP_NAME', 'movim');
         define('APP_VERSION', $this->getVersion());
         define('SMALL_PICTURE_LIMIT', 768000);
-
-        if (file_exists(DOCUMENT_ROOT.'/config/db.inc.php')) {
-            require DOCUMENT_ROOT.'/config/db.inc.php';
-        } else {
-            throw new \Exception('Cannot find config/db.inc.php file');
-        }
 
         if (isset($_SERVER['HTTP_HOST'])) {
             define('BASE_HOST', $_SERVER['HTTP_HOST']);
@@ -81,32 +78,19 @@ class Bootstrap
         }
 
         define('BASE_URI', $this->getBaseUri());
-
-        if (isset($_COOKIE['MOVIM_SESSION_ID'])) {
-            define('SESSION_ID', $_COOKIE['MOVIM_SESSION_ID']);
-        } else {
-            define('SESSION_ID', getenv('sid'));
-        }
-
-        define('DB_TYPE', $conf['type']);
-        define('DB_HOST', $conf['host']);
-        define('DB_USERNAME', $conf['username']);
-        define('DB_PASSWORD', $conf['password']);
-        define('DB_PORT', $conf['port']);
-        define('DB_DATABASE', $conf['database']);
+        define('SESSION_ID', $_COOKIE['MOVIM_SESSION_ID'] ?? getenv('sid'));
 
         define('APP_PATH', DOCUMENT_ROOT . '/app/');
-        define('LIB_PATH', DOCUMENT_ROOT . '/lib/');
         define('LOCALES_PATH', DOCUMENT_ROOT . '/locales/');
-        define('CACHE_PATH', DOCUMENT_ROOT . '/cache/');
         define('PUBLIC_PATH', DOCUMENT_ROOT . '/public/');
         define('PUBLIC_CACHE_PATH', DOCUMENT_ROOT . '/public/cache/');
-        define('LOG_PATH', DOCUMENT_ROOT . '/log/');
         define('CONFIG_PATH', DOCUMENT_ROOT . '/config/');
-
         define('VIEWS_PATH', DOCUMENT_ROOT . '/app/views/');
-        define('HELPERS_PATH', DOCUMENT_ROOT . '/app/helpers/');
         define('WIDGETS_PATH', DOCUMENT_ROOT . '/app/widgets/');
+
+        define('LOG_PATH', config('paths.log'));
+        define('CACHE_PATH', config('paths.cache'));
+
         define('MOVIM_SQL_DATE', 'Y-m-d H:i:s');
 
         define('DEFAULT_PICTURE_FORMAT', 'webp');
@@ -117,8 +101,7 @@ class Bootstrap
 
     private function getVersion()
     {
-        $file = 'VERSION';
-        if ($f = fopen(DOCUMENT_ROOT.'/'.$file, 'r')) {
+        if ($f = fopen(DOCUMENT_ROOT.'/VERSION', 'r')) {
             return trim(fgets($f));
         }
     }
@@ -151,22 +134,16 @@ class Bootstrap
 
     private function loadCapsule()
     {
-        if (file_exists(DOCUMENT_ROOT.'/config/db.inc.php')) {
-            require DOCUMENT_ROOT.'/config/db.inc.php';
-        } else {
-            throw new \Exception('Cannot find config/db.inc.php file');
-        }
-
         $capsule = new Capsule;
         $capsule->addConnection([
-            'driver' => $conf['type'],
-            'host' => $conf['host'],
-            'port' => $conf['port'],
-            'database' => $conf['database'],
-            'username' => $conf['username'],
-            'password' => $conf['password'],
-            'charset' => ($conf['type'] == 'mysql') ? 'utf8mb4' : 'utf8',
-            'collation' => ($conf['type'] == 'mysql') ? 'utf8mb4_unicode_ci' : 'utf8_unicode_ci',
+            'driver'    => config('database.driver'),
+            'host'      => config('database.host'),
+            'port'      => config('database.port'),
+            'database'  => config('database.database'),
+            'username'  => config('database.username'),
+            'password'  => config('database.password'),
+            'charset'   => (config('database.driver') == 'mysql') ? 'utf8mb4' : 'utf8',
+            'collation' => (config('database.driver') == 'mysql') ? 'utf8mb4_unicode_ci' : 'utf8_unicode_ci',
         ]);
 
         /**
@@ -199,15 +176,15 @@ class Bootstrap
 
     private function loadCommonLibraries()
     {
-        require_once LIB_PATH . 'XMPPtoForm.php';
-        require_once LIB_PATH . 'SDPtoJingle.php';
-        require_once LIB_PATH . 'JingletoSDP.php';
+        require_once DOCUMENT_ROOT . '/lib/XMPPtoForm.php';
+        require_once DOCUMENT_ROOT . '/lib/SDPtoJingle.php';
+        require_once DOCUMENT_ROOT . '/lib/JingletoSDP.php';
     }
 
     private function loadHelpers()
     {
-        foreach (glob(HELPERS_PATH . '*Helper.php') as $file) {
-            require $file;
+        foreach (glob(DOCUMENT_ROOT.'/app/helpers/*Helper.php') as $file) {
+            require_once $file;
         }
     }
 
@@ -313,12 +290,17 @@ class Bootstrap
     {
         if (\is_array($trace)) $trace = '';
 
-        $error = $errstr . " in " . $errfile . ' (line ' . $errline . ")\n" . 'Trace' . "\n" . $trace;
+        $error = $errstr . " in " . $errfile . ' (line ' . $errline . ")\n";
+        $fullError = $error . 'Trace' . "\n" . $trace;
 
-        if (class_exists('Utils')) {
-            \Utils::error($error);
-        } else {
+        if (php_sapi_name() != 'cli' && ob_get_contents() == '') {
+            echo 'An error occured during the Movim boot check the ' . config('paths.log') . 'error.log file' . "\n";
+        }
+
+        if (php_sapi_name() == 'cli' || !class_exists('Utils')) {
             echo $error;
+        } else {
+            \Utils::error($fullError);
         }
 
         return false;

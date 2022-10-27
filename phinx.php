@@ -15,12 +15,12 @@ return [
         'default_database' => 'movim',
         'default_environment' => 'movim',
         'movim' => [
-            'adapter' => DB_TYPE,
-            'host' => DB_HOST,
-            'name' => DB_DATABASE,
-            'user' => DB_USERNAME,
-            'pass' => DB_PASSWORD,
-            'port' => DB_PORT
+            'adapter'   => config('database.driver'),
+            'host'      => config('database.host'),
+            'name'      => config('database.database'),
+            'user'      => config('database.username'),
+            'pass'      => config('database.password'),
+            'port'      => config('database.port'),
         ]
     ]
 ];
