@@ -757,9 +757,9 @@ var Chat = {
 
         while (i < toParents.length) {
             toParents[i].onclick = function() {
-                var parentMsg = document.getElementById(this.dataset.parentId);
+                var parentMsg = document.getElementById('id' + this.dataset.parentId);
                 if (!parentMsg) {
-                    parentMsg = document.getElementById(this.dataset.parentReplaceId)
+                    parentMsg = document.getElementById('id' + this.dataset.parentReplaceId)
                 }
                 if (parentMsg) {
                     scrollToLi = parentMsg.parentNode.parentNode;
