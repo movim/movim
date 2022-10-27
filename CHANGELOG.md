@@ -21,6 +21,8 @@ v0.21 (trunk)
  * Show distance with a contact if both locations are enabled
  * Reorganize and simplify the main menu, add a small submenu that pop on hover
  * Add support for the Unicode 14.0 emojis release through Twemoji 14.0.2
+ * Move the Movim configuration to DotEnv
+ * Use INSTALL.md as the new default to host the deployement page
 
 v0.20
 ---------------------------
