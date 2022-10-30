@@ -19,7 +19,7 @@
     max-height: calc(100% - 15rem);
     max-width: calc(100% - 2rem);
     align-self: center;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     margin-top: -1rem;
     position: relative;
     animation: zoom 0.3s;

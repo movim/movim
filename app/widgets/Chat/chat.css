@@ -206,7 +206,7 @@ main:not(.enabled) #chat_widget {
     background-color: rgba(var(--movim-background-main));
     position: absolute;
     top: 0;
-    border-radius: 0.75rem;
+    border-radius: 1rem;
 }
 
 #chat_widget .chat_box > ul.list > li > .control {
@@ -295,7 +295,7 @@ main:not(.enabled) #chat_widget {
 
 #chat_widget li div.bubble.sticker img:not(.emoji):not(.hfr),
 #chat_widget ul li div.bubble.file video {
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     margin-bottom: 0.5rem;
     margin-top: 0.5rem;
     width: auto;

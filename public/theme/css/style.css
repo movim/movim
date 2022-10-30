@@ -147,7 +147,7 @@ main {
 
 nav ~ main {
     width: calc(100% - 7rem);
-    border-radius: 0.75rem 0 0 0.75rem;
+    border-radius: 1rem 0 0 1rem;
 }
 
 main > div {
@@ -308,7 +308,7 @@ main > div:first-child:nth-last-child(2) + div {
     border-top-style: solid;
     border-bottom-width: 0;
     border-top-color: transparent;
-    border-radius: 0 0 0.75rem 0.75rem;
+    border-radius: 0 0 1.25rem 1.25rem;
 }
 
 .drawer.actions > div:last-child ul.tabs li.active {
