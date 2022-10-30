@@ -4,6 +4,10 @@
     padding: 1rem;
 }
 
+.flex.large {
+    padding: 0;
+}
+
 .flex.card {
     gap: 0 1rem;
 }

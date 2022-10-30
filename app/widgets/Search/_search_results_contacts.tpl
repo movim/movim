@@ -1,4 +1,5 @@
-<ul class="list flex">
+<hr />
+<ul class="list flex large">
     <li class="subheader block large">
         <div>
             <p>{$c->__('explore.explore')}</p>
