@@ -23,6 +23,8 @@ v0.21 (trunk)
  * Add support for the Unicode 14.0 emojis release through Twemoji 14.0.2
  * Move the Movim configuration to DotEnv
  * Use INSTALL.md as the new default to host the deployement page
+ * Replace support of XEP-0049 by XEP-0223 to save Movim configuration
+ * Handle vCard4 phone numbers
 
 v0.20
 ---------------------------
