@@ -396,6 +396,10 @@ class Contact extends Model
 
     public function hasLocation()
     {
-        return ($this->attributes['loclatitude'] != null && $this->attributes['loclongitude'] != null);
+        return (
+            array_key_exists('loclatitude', $this->attributes)
+            && array_key_exists('loclongitude', $this->attributes)
+            && $this->attributes['loclatitude'] != null
+            && $this->attributes['loclongitude'] != null);
     }
 }

@@ -59,7 +59,9 @@ class Syndication extends Base
             $name->appendChild($dom->createTextNode($contact->truename));
             $author->appendChild($dom->createElement('uri', $this->route('blog', $from)));
 
-            $feed->appendChild($dom->createElement('logo', $contact->getPhoto('l')));
+            if ($contact->getPhoto('l')) {
+                $feed->appendChild($dom->createElement('logo', $contact->getPhoto('l')));
+            }
 
             $self->setAttribute('href', $this->route('feed', $from));
             $alternate->setAttribute('href', $this->route('blog', $from));

@@ -13,7 +13,9 @@ class Picture extends Base
         $url = urldecode($this->get('url'));
         $parsedUrl = parse_url($url);
 
-        if ($parsedUrl['host'] == 'i.imgur.com') {
+        if (is_array($parsedUrl)
+            && array_key_exists('host', $parsedUrl)
+            && $parsedUrl['host'] == 'i.imgur.com') {
             $url = getImgurThumbnail($url);
         }
 
