@@ -516,7 +516,6 @@ class Chat extends \Movim\Widget\Base
 
         $m = new \App\Message;
         $m->id          = generateUUID();
-        $m->thread      = generateUUID();
         $m->originid    = $m->id;
         $m->replaceid   = $replace ? $replace->originid : null;
         $m->user_id     = $this->user->id;
@@ -554,7 +553,6 @@ class Chat extends \Movim\Widget\Base
         $p->setTo($to);
         $p->setReplace($m->replaceid);
         $p->setId($m->id);
-        $p->setThreadid($m->thread);
         $p->setOriginid($m->originid);
 
         if ($muc) {
