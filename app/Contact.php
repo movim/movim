@@ -232,6 +232,20 @@ class Contact extends Model
         $this->email = !empty($vcard->email->text)
             ? (string)$vcard->email->text
             : null;
+
+        if ($vcard->tel) {
+            $this->phone = !empty($vcard->tel->uri)
+                ? substr((string)$vcard->tel->uri, 4)
+                : null;
+
+            // Some clients uses text...
+            if ($this->phone == null) {
+                $this->phone = !empty($vcard->tel->text)
+                    ? (string)$vcard->tel->text
+                    : null;
+            }
+        }
+
         $this->description = !empty($vcard->note->text)
             ? trim((string)$vcard->note->text)
             : null;

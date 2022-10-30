@@ -84,13 +84,12 @@
                     {/if}
 
                     {if="$roster && $roster->presence && $roster->presence->seen"}
-                        <br />
                         <i class="material-icons icon-text">schedule</i>
                         {$c->__('last.title')} {$roster->presence->seen|strtotime|prepareDate:true,true}
+                        <br />
                     {/if}
 
                     {if="$contact->adrlocality != null || $contact->adrcountry != null"}
-                        <br />
                         <i class="material-icons icon-text">place</i>
                         {if="$contact->adrlocality != null"}
                             {$contact->adrlocality}
@@ -98,34 +97,41 @@
                         {if="$contact->adrcountry != null"}
                             {$contact->adrcountry}
                         {/if}
+                        <br />
                     {/if}
 
                     {if="$contact->date && strtotime($contact->date) != 0"}
-                        <br />
                         <i class="material-icons icon-text">cake</i>
                         {$contact->date|strtotime|prepareDate:false}
+                        <br />
                     {/if}
 
                     {if="$contact->email"}
-                        <br />
                         <i class="material-icons icon-text">email</i>
                         <a href="mailto:{$contact->email}">{$contact->email}</a>
+                        <br />
+                    {/if}
+
+                    {if="$contact->phone"}
+                        <i class="material-icons icon-text">phone</i>
+                        <a href="tel:{$contact->phone}">{$contact->phone}</a>
+                        <br />
                     {/if}
 
                     {if="$contact->url != null"}
-                        <br />
                         <i class="material-icons icon-text">link</i>
                         {if="filter_var($contact->url, FILTER_VALIDATE_URL)"}
                             <a href="{$contact->url}" target="_blank">{$contact->url}</a>
                         {else}
                             {$contact->url}
                         {/if}
+                        <br />
                     {/if}
 
                     {if="$contact->locationDistance != null"}
-                        <br />
                         <i class="material-icons icon-text">place</i>
                         <a href="{$contact->locationUrl}" target="_blank">{$contact->locationDistance|humanDistance}</a> - {$contact->loctimestamp|strtotime|prepareDate:true,true}
+                        <br />
                     {/if}
                 </p>
             </div>
