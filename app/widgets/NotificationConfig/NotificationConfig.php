@@ -51,8 +51,7 @@ class NotificationConfig extends Base
 
         // The user is updated in the Config widget
         $s = new Set;
-        $s->setXmlns('movim:prefs')
-          ->setData(serialize($config))
+        $s->setData(serialize($config))
           ->request();
     }
 

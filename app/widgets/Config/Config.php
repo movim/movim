@@ -81,8 +81,7 @@ class Config extends Base
         }
 
         $s = new Set;
-        $s->setXmlns('movim:prefs')
-          ->setData(serialize($config))
+        $s->setData(serialize($config))
           ->request();
     }
 

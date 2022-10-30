@@ -3,24 +3,24 @@
 namespace Moxl\Xec\Action\Storage;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza\Storage;
 
 use App\User;
+use Moxl\Stanza\Pubsub;
 
 class Get extends Action
 {
-    protected $_xmlns;
+    private $_xmlns = 'movim:prefs';
 
     public function request()
     {
         $this->store();
-        Storage::get($this->_xmlns);
+        Pubsub::getItem(false, $this->_xmlns, 'current');
     }
 
     public function handle($stanza, $parent = false)
     {
-        if ($stanza->query->data) {
-            $data = unserialize(trim((string)$stanza->query->data));
+        if ($stanza->pubsub->items->item) {
+            $data = unserialize(trim((string)$stanza->pubsub->items->item->data));
 
             if (is_array($data)) {
                 $me = User::me();

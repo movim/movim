@@ -98,13 +98,6 @@
     </implements>
     <implements>
         <xmpp:SupportedXep>
-            <xmpp:xep rdf:resource="https://xmpp.org/extensions/xep-0049.html"/>
-            <xmpp:status>complete</xmpp:status>
-            <xmpp:version>1.2</xmpp:version>
-        </xmpp:SupportedXep>
-    </implements>
-    <implements>
-        <xmpp:SupportedXep>
             <xmpp:xep rdf:resource="https://xmpp.org/extensions/xep-0050.html"/>
             <xmpp:status>partial</xmpp:status>
             <xmpp:version>1.2.2</xmpp:version>
@@ -277,6 +270,14 @@
             <xmpp:xep rdf:resource="https://xmpp.org/extensions/xep-0215.html"/>
             <xmpp:status>complete</xmpp:status>
             <xmpp:version>0.7</xmpp:version>
+        </xmpp:SupportedXep>
+    </implements>
+    <implements>
+        <xmpp:SupportedXep>
+            <xmpp:xep rdf:resource="https://xmpp.org/extensions/xep-0223.html"/>
+            <xmpp:status>complete</xmpp:status>
+            <xmpp:version>1.1</xmpp:version>
+            <xmpp:note>Movim configuration storage</xmpp:note>
         </xmpp:SupportedXep>
     </implements>
     <implements>

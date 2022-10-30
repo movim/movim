@@ -1,34 +1,51 @@
 <?php
 /*
- * Basic stanza for the XEP-0049 implementation
+ * Basic stanza for the XEP-0223 implementation
  */
 
 namespace Moxl\Stanza;
 
 class Storage
 {
-    private static function prepareQuery($xmlns, $data = false)
+    public static function publish($xmlns, $data)
     {
         $dom = new \DOMDocument('1.0', 'utf-8');
-        $query = $dom->createElementNS('jabber:iq:private', 'query');
-        $data = ($data)
-            ? $dom->createElement('data', $data)
-            : $dom->createElement('data');
-        $data->setAttribute('xmlns', $xmlns);
-        $query->appendchild($data);
 
-        return $query;
-    }
+        $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
+        $publish = $dom->createElement('publish');
+        $publish->setAttribute('node', $xmlns);
+        $pubsub->appendChild($publish);
 
-    public static function set($xmlns, $data)
-    {
-        $xml = \Moxl\API::iqWrapper(self::prepareQuery($xmlns, $data), false, 'set');
-        \Moxl\API::request($xml);
-    }
+        $item = $dom->createElement('item');
+        $item->setAttribute('id', 'current');
+        $item->appendChild($dom->createElement('data', $data));
+        $publish->appendChild($item);
 
-    public static function get($xmlns)
-    {
-        $xml = \Moxl\API::iqWrapper(self::prepareQuery($xmlns), false, 'get');
+        // Publish option
+        $publishOption = $dom->createElement('publish-option');
+        $x = $dom->createElement('x');
+        $x->setAttribute('xmlns', 'jabber:x:data');
+        $x->setAttribute('type', 'submit');
+        $publishOption->appendChild($x);
+
+        $field = $dom->createElement('field');
+        $field->setAttribute('var', 'FORM_TYPE');
+        $field->setAttribute('type', 'hidden');
+        $field->appendChild($dom->createElement('value', 'http://jabber.org/protocol/pubsub#publish-options'));
+        $x->appendChild($field);
+
+        $field = $dom->createElement('field');
+        $field->setAttribute('var', 'pubsub#persist_items');
+        $field->appendChild($dom->createElement('value', 'true'));
+        $x->appendChild($field);
+
+        $field->setAttribute('var', 'pubsub#access_model');
+        $field->appendChild($dom->createElement('value', 'whitelist'));
+        $x->appendChild($field);
+
+        $pubsub->appendChild($publishOption);
+
+        $xml = \Moxl\API::iqWrapper($pubsub, false, 'set');
         \Moxl\API::request($xml);
     }
 }

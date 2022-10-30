@@ -104,8 +104,7 @@ class Presence extends Base
     public function ajaxConfigGet()
     {
         $s = new Get;
-        $s->setXmlns('movim:prefs')
-          ->request();
+        $s->request();
     }
 
     public function ajaxPubsubSubscriptionsGet()

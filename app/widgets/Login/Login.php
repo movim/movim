@@ -38,9 +38,7 @@ class Login extends Base
 
         //if ($session->get('mechanism') != 'ANONYMOUS') {
         // We get the configuration
-        $s = new Get;
-        $s->setXmlns('movim:prefs')
-              ->request();
+        (new Get)->request();
         //}
     }
 

@@ -7,13 +7,13 @@ use Moxl\Stanza\Storage;
 
 class Set extends Action
 {
-    protected $_xmlns;
+    private $_xmlns = 'movim:prefs';
     protected $_data;
 
     public function request()
     {
         $this->store();
-        Storage::set($this->_xmlns, $this->_data);
+        Storage::publish($this->_xmlns, $this->_data);
     }
 
     public function handle($stanza, $parent = false)
