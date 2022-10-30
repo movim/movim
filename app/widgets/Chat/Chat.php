@@ -517,6 +517,7 @@ class Chat extends \Movim\Widget\Base
         $m = new \App\Message;
         $m->id          = generateUUID();
         $m->originid    = $m->id;
+        $m->messageid   = $m->id;
         $m->replaceid   = $replace ? $replace->originid : null;
         $m->user_id     = $this->user->id;
         $m->jidto       = echapJid($to);

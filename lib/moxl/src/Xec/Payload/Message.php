@@ -29,6 +29,11 @@ class Message extends Payload
         $message = \App\Message::findByStanza($stanza);
         $message = $message->set($stanza, $parent);
 
+        // parent message doesn't exists
+        if ($message == null) {
+            return;
+        }
+
         if ($message->type == 'chat' && \App\User::me()->hasBlocked($message->jidfrom)) {
             return;
         }

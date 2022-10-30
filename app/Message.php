@@ -479,6 +479,8 @@ class Message extends Model
 
                 return $parentMessage;
             }
+
+            return null;
         }
 
         # XEP-0384 OMEMO Encryption
