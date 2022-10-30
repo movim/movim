@@ -30,7 +30,7 @@
                     {autoescape="off"}
                         {$contact->description|trim|nl2br|addEmojis}
                     {/autoescape}
-                    <br />
+                    <br /><br />
                 {/if}
 
                 {if="$roster && $roster->presence && $roster->presence->seen"}

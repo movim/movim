@@ -1,5 +1,5 @@
 {if="$subscriptions->isEmpty()"}
-    <ul class="thick">
+    <ul class="thick fill">
         <div class="placeholder">
             <i class="material-icons">bookmark</i>
             <h1>{$c->__('communitysubscriptions.empty_title')}</h1>
@@ -7,7 +7,7 @@
         </li>
     </ul>
 {else}
-    <ul class="list middle flex third active all">
+    <ul class="list middle flex third active all fill">
         {loop="$subscriptions"}
             {if="$c->checkNewServer($value)"}
                 <li class="subheader block large"
@@ -40,9 +40,6 @@
                         {$value->node|firstLetterCapitalize}
                     </span>
                 {/if}
-                <span class="control icon gray">
-                    <i class="material-icons">chevron_right</i>
-                </span>
                 <div>
                     <p class="line normal">
                         {if="$value->info && $value->info->name"}
