@@ -35,6 +35,7 @@ class Rooms extends Base
         $this->registerEvent('presence_muc_errorconflict', 'onConflict');
         $this->registerEvent('presence_muc_errorregistrationrequired', 'onRegistrationRequired');
         $this->registerEvent('presence_muc_errorremoteservernotfound', 'onRemoteServerNotFound');
+        $this->registerEvent('presence_muc_errorremoteservertimeout', 'onRemoteServerTimeout');
         $this->registerEvent('presence_muc_erroritemnotfound', 'onItemNotFound');
         $this->registerEvent('presence_muc_errornotauthorized', 'onNotAuthorized');
         $this->registerEvent('presence_muc_errorforbidden', 'onForbidden');
@@ -338,6 +339,12 @@ class Rooms extends Base
     public function onRemoteServerNotFound($packet)
     {
         Toast::send($this->__('chatrooms.remoteservernotfound'));
+        $this->ajaxExit($packet->content);
+    }
+
+    public function onRemoteServerTimeout($packet)
+    {
+        Toast::send($this->__('chatrooms.remoteservertimeout'));
         $this->ajaxExit($packet->content);
     }
 

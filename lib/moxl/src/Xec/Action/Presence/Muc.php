@@ -173,6 +173,12 @@ class Muc extends Action
         $this->deliver();
     }
 
+    public function errorRemoteServerTimeout($stanza, $parent = false)
+    {
+        $this->pack($this->_to);
+        $this->deliver();
+    }
+
     public function errorConflict($stanza, $message)
     {
         if (substr_count($this->_nickname, '_') > 5) {
