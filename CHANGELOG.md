@@ -25,6 +25,7 @@ v0.21 (trunk)
  * Use INSTALL.md as the new default to host the deployement page
  * Replace support of XEP-0049 by XEP-0223 to save Movim configuration
  * Handle vCard4 phone numbers
+ * Update the CSS to Material 3, make things a bit more roundy
 
 v0.20
 ---------------------------

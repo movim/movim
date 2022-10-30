@@ -17,7 +17,7 @@
 
 .card > .block:not(.subheader):not(.simple) {
     animation: fadein 0.3s;
-    border-radius: 0.65rem;
+    border-radius: 1.25rem;
     border: 1px solid;
     overflow: hidden;
     margin-bottom: 1rem;
