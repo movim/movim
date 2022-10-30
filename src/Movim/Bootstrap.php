@@ -297,7 +297,7 @@ class Bootstrap
             echo 'An error occured during the Movim boot check the ' . config('paths.log') . 'error.log file' . "\n";
         }
 
-        if (php_sapi_name() == 'cli' || !class_exists('Utils')) {
+        if (php_sapi_name() == 'cli' && !class_exists('Utils')) {
             echo $error;
         } else {
             \Utils::error($fullError);

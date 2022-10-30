@@ -76,7 +76,7 @@ class Emoji
         //$this->_string = $string;
         $this->_lastEmoji = null;
 
-        return preg_replace_callback($this->_regex, function ($matches) use ($noTitle) {
+        $replaced = preg_replace_callback($this->_regex, function ($matches) use ($noTitle) {
             $astext = implode(
                 '-',
                 array_map(
@@ -104,6 +104,8 @@ class Emoji
 
             return $dom->saveXML($dom->documentElement);
         }, $string);
+
+        return $replaced ?? $string;
     }
 
     public function isSingleEmoji(): bool
