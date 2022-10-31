@@ -9,7 +9,7 @@
     overflow: hidden;
 
     box-shadow: 0 2rem 5rem rgba(0,0,0,0.30), 0 1rem 1.5rem rgba(0,0,0,0.22);
-    border-radius: 1.25rem;
+    border-radius: 1rem;
     z-index: 4;
     box-sizing: border-box;
     animation: zoom .25s ease-in-out;
