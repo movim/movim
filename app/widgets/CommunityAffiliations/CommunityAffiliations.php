@@ -68,7 +68,7 @@ class CommunityAffiliations extends Base
         // If the configuration is open, we fill it
         $view = $this->tpl();
 
-        $caps = \App\Info::where('server', $origin)->first();
+        $caps = \App\Info::where('server', $origin)->where('node', '')->first();
 
         $view->assign('subscriptions', \App\Subscription::where('server', $origin)
                 ->where('node', $node)
