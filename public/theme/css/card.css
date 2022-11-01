@@ -6,8 +6,9 @@
     height: calc(100% + 2rem);
     max-width: calc(100% + 2rem);
     object-fit: cover;
-    left: -1rem;
-    top: -1rem;
+    left: 0;
+    top: 0;
+    filter: blur(0.4rem);
     opacity: 0.1;
 }
 
