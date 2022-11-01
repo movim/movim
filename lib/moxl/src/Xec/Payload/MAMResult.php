@@ -9,7 +9,7 @@ class MAMResult extends Payload
 {
     public function handle($stanza, $parent = false)
     {
-        $to = current(explode('/', (string)$parent->attributes()->to));
+        $to = baseJid((string)$parent->attributes()->to);
         $session = Session::start();
 
         if ($stanza->forwarded->delay
@@ -23,7 +23,7 @@ class MAMResult extends Payload
             $message = $message->set($stanza->forwarded->message, $stanza->forwarded);
 
             if ($message->isMuc()) {
-                $message->jidfrom = current(explode('/', ($message->jidfrom)));
+                $message->jidfrom = baseJid(($message->jidfrom));
             }
 
             if (!empty($to) && empty($message->jidto)) {

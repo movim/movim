@@ -8,7 +8,7 @@ class PubsubSubscription extends Payload
 {
     public function handle($stanza, $parent = false)
     {
-        $from = current(explode('/', (string)$parent->attributes()->from));
+        $from = baseJid((string)$parent->attributes()->from);
 
         $g = new Get;
         $g->setTo($from)

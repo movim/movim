@@ -24,7 +24,7 @@ class SessionTerminate extends Action
         $message->user_id = $userid;
         $message->id = 'm_' . generateUUID();
         $message->jidto = $userid;
-        $message->jidfrom = current(explode('/', $this->_to));
+        $message->jidfrom = baseJid($this->_to);
         $message->published = gmdate('Y-m-d H:i:s');
         $message->thread = $this->_jingleSid;
         $message->type = 'jingle_end';

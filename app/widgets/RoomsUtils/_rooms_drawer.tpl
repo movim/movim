@@ -103,6 +103,17 @@
                 </div>
             </li>
         {/if}
+        {if="$conference->info && $conference->info->hasMAM()"}
+            <li>
+                <span class="primary icon gray">
+                    <i class="material-icons">archive</i>
+                </span>
+                <div>
+                    <p class="line">{$c->__('room.archived')}</p>
+                    <p class="all">{$c->__('room.archived_text')}</p>
+                </div>
+            </li>
+        {/if}
         {if="!$conference->isGroupChat() && $conference->info && !$conference->info->mucsemianonymous"}
             <li>
                 <span class="primary icon gray">

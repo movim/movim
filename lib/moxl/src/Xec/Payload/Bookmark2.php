@@ -8,7 +8,7 @@ class Bookmark2 extends Payload
 {
     public function handle($stanza, $parent = false)
     {
-        if (current(explode('/', (string)$parent->attributes()->from)) != \App\User::me()->id
+        if (baseJid((string)$parent->attributes()->from) != \App\User::me()->id
         || (string)$parent->attributes()->from == (string)$parent->attributes()->to) return;
 
         if ($stanza->items->retract) {

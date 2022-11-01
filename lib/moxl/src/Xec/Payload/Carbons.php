@@ -6,7 +6,7 @@ class Carbons extends Payload
 {
     public function handle($stanza, $parent = false)
     {
-        $parentfrom = current(explode('/', (string)$parent->attributes()->from));
+        $parentfrom = baseJid((string)$parent->attributes()->from);
         $message = $stanza->forwarded->message;
 
         if ($parentfrom == \App\User::me()->id) {
@@ -39,7 +39,7 @@ class Carbons extends Payload
                 $displayed = new Displayed;
                 $displayed->handle($message->displayed, $message);
             } elseif (count($jingle_messages = $stanza->xpath('//*[@xmlns="urn:xmpp:jingle-message:0"]')) >= 1) {
-                $callto = current(explode('/', (string)$message->attributes()->to));
+                $callto = baseJid((string)$message->attributes()->to);
                 if ($callto == \App\User::me()->id || $callto == "") {
                     // We get carbons for calls other clients make as well as calls other clients receive
                     // So make sure we only ring when we see a call _to_ us

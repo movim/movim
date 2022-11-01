@@ -110,7 +110,13 @@ class Conference extends Model
     public function info()
     {
         return $this->hasOne('App\Info', 'server', 'conference')
-                    ->where('node', '')
+                    ->where('node', function ($query) {
+                        $query->select('node')
+                              ->from('presences')
+                              ->whereColumn('jid', 'infos.server')
+                              ->where('resource', '')
+                              ->take(1);
+                    })
                     ->whereCategory('conference')
                     ->whereType('text');
     }

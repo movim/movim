@@ -963,11 +963,21 @@ class Chat extends \Movim\Widget\Base
             $message->displayed = gmdate('Y-m-d H:i:s');
             $message->save();
 
-            \Moxl\Stanza\Message::displayed(
-                $jid,
-                $message->originid ?? $message->id,
-                $message->type
-            );
+            if (!$message->isMuc()) {
+                \Moxl\Stanza\Message::displayed(
+                    $jid,
+                    $message->originid ?? $message->id,
+                    $message->type
+                );
+            }
+            // https://xmpp.org/extensions/xep-0333.html#rules-muc
+            elseif ($message->stanzaid) {
+                \Moxl\Stanza\Message::displayed(
+                    $jid,
+                    $message->stanzaid,
+                    $message->type
+                );
+            }
         }
     }
 

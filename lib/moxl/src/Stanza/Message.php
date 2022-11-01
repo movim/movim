@@ -279,9 +279,9 @@ class Message
             $replyTo, $replyQuotedBodyLength, $messageOMEMO);
     }
 
-    public static function receipt($to, $id)
+    public static function received($to, $id, $type = 'chat')
     {
-        self::maker($to, false, false, 'chat', false, 'received', $id);
+        self::maker($to, false, false, $type, false, 'received', $id);
     }
 
     public static function displayed($to, $id, $type = 'chat')

@@ -117,7 +117,7 @@ class Handler
     {
         $hashToClass = [
             '9a534a8b4d6324e23f4187123e406729' => 'Message',
-            '78e731027d8fd50ed642340b7c9a63b3' => 'Message',// TLS
+            '78e731027d8fd50ed642340b7c9a63b3' => 'Message', // TLS
 
             '89d8bb4741fd3a62e8b20e0d52a85a36' => 'MucUser',
 
@@ -134,7 +134,7 @@ class Handler
             'c539a0a12da7913eef6b8b5292e31e68' => 'Bookmark2', // bookmarks:1
 
             '1040105fc01bfac8a5ab81324875e382' => 'Presence',
-            '362b908ec9432a506f86bed0bae7bbb6' => 'Presence',// TLS
+            '362b908ec9432a506f86bed0bae7bbb6' => 'Presence', // TLS
             'a0e8e987b067b6b0470606f4f90d5362' => 'Roster',
 
             'fa9d41e26f664d9056618a4afe213861' => 'Post',
@@ -146,17 +146,10 @@ class Handler
             '4c9681f0e9aca8a5b65f86b8b80d490f' => 'DiscoInfo',
             '2bf34d156903518b18e58b4786c25d3b' => 'DiscoItems',
 
-            //'37ff18f136d5826c4426af5a23729e48' => 'Mood',
-            //'6b38ed328fb77617c6e4a5ac9dda0ad2' => 'Tune',
             '0981a46bbfa88b3500c4bccda18ccb89' => 'Location',
             '9c8ed44d4528a66484b0fbd44b0a9070' => 'Nickname',
 
-            // Should be handled by the PresenceBuffer, to be removed !
-            //'d8ea912a151202700bb399c9e04d205f' => 'Caps',
-
             '40ed26a65a25ab8bf809dd998d541d95' => 'PingPong',
-
-            //'cb52f989717d25441018703ea1bc9819' => 'Attention',
 
             '54c22c37d17c78ee657ea3d40547a970' => 'Version',
 
@@ -172,7 +165,7 @@ class Handler
             'd84d4b89d43e88a244197ccf499de8d8' => 'Jingle',
 
             '09ef1b34cf40fdd954f10d6e5075ee5c' => 'Carbons',
-            '201fa54dd93e3403611830213f5f9fbc' => 'Carbons',//?
+            //'201fa54dd93e3403611830213f5f9fbc' => 'Carbons', //?
 
             'da6b60476aeab672ac0afe3ff27dc6a4' => 'OMEMODevices',
 
@@ -186,7 +179,7 @@ class Handler
             'a5af6a9efd75060b5aca9b473f1ef756' => 'SASLSuccess',
             '53936dd4e1d64e1eeec6dfc95c431964' => 'SASLSuccess', // TLS
             'de175adc9063997df5b79817576ff659' => 'SASLFailure',
-            '0bc0f510b2b6ac432e8605267ebdc812' => 'SessionBind',#
+            '0bc0f510b2b6ac432e8605267ebdc812' => 'SessionBind',
             '128477f50347d98ee1213d71f27e8886' => 'SessionBind',
         ];
         if (isset($hashToClass[$hash])) {

@@ -28,8 +28,8 @@ abstract class Payload
     final public function prepare($stanza, $parent = false)
     {
         $this->packet->from = ($parent === false)
-            ? current(explode('/', (string)$stanza->attributes()->from))
-            : current(explode('/', (string)$parent->attributes()->from));
+            ? baseJid((string)$stanza->attributes()->from)
+            : baseJid((string)$parent->attributes()->from);
     }
 
     /**

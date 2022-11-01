@@ -246,6 +246,16 @@ class Info extends Model
         return $this->hasFeature('urn:xmpp:mam:2');
     }
 
+    public function hasMAM()
+    {
+        return $this->isMAM() || $this->isMAM2();
+    }
+
+    public function hasStanzaId()
+    {
+        return $this->hasFeature('urn:xmpp:sid:0');
+    }
+
     public function hasExternalServices()
     {
         return $this->hasFeature('urn:xmpp:extdisco:2');

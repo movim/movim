@@ -10,8 +10,8 @@ class MucUser extends Payload
     {
 
         if (isset($stanza->item)) {
-            $from = current(explode('/', (string)$parent->attributes()->from));
-            $jid = current(explode('/', (string)$stanza->item->attributes()->jid));
+            $from = baseJid((string)$parent->attributes()->from);
+            $jid = baseJid((string)$stanza->item->attributes()->jid);
 
             if (empty($jid)) return;
 

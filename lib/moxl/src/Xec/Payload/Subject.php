@@ -7,7 +7,7 @@ class Subject extends Payload
     public function handle($stanza, $parent = false)
     {
         $jid = explode('/', (string)$parent->attributes()->from);
-        $to = current(explode('/', (string)$parent->attributes()->to));
+        $to = baseJid((string)$parent->attributes()->to);
 
         if ($parent->subject) {
             $message = new \App\Message;
