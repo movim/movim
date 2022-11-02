@@ -1,15 +1,19 @@
 /* Card */
 
-.card img.main {
+.card img.main,
+.card div.main {
     position: absolute;
     width: calc(100% + 2rem);
     height: calc(100% + 2rem);
     max-width: calc(100% + 2rem);
     object-fit: cover;
     left: 0;
-    top: 0;
-    filter: blur(0.4rem);
+    top: -1rem;
     opacity: 0.1;
+}
+
+.card img.main {
+    filter: blur(0.4rem);
 }
 
 .card img.main ~ div {

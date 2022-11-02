@@ -23,6 +23,7 @@
                         <img src="{$url}">
                     </span>
                 {else}
+                    <div class="main color {$value->jid|stringToColor}"></div>
                     <span class="primary icon bubble color {$value->jid|stringToColor}
                         {if="$value->presence"}
                             status {$value->presence->presencekey}
