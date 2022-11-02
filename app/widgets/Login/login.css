@@ -1,5 +1,7 @@
 body main {
     background: radial-gradient(circle farthest-corner at right bottom, rgb(var(--movim-main)) 0, rgb(var(--movim-accent)) 90%);
+    background-image: url("/theme/img/toofast.bgtile.4x.sq.2.png"); /* fallback */
+    background-image: url("/theme/img/toofast.bgtile.4x.sq.2.png"), radial-gradient(circle farthest-corner at right bottom, rgb(var(--movim-main)) 0, rgb(var(--movim-accent)) 90%);
     display: flex;
     align-items: center;
 }
