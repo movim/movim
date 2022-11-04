@@ -39,7 +39,7 @@
 
         "cboden/ratchet": "^0.4.4",
         "react/child-process": "^0.6.4",
-        "react/http": "^1.6.0",
+        "react/http": "^1.8.0",
         "react/dns": "^1.9.0",
         "ratchet/pawl": "^0.4.1",
         "minishlink/web-push": "^7.0",
