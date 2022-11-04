@@ -17,10 +17,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/AdminSessions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/AdminTest/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Api/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Avatar/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blocked/locales.ini
@@ -49,6 +45,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityHeader/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunityPosts/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunitySubscriptions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Config/locales.ini
@@ -65,11 +63,17 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Location/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Login/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/LoginAnonymous/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Menu/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Notification/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/NotificationConfig/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Notifications/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -83,8 +87,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Publish/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/PublishBrief/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/PublishHelp/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Rooms/locales.ini
@@ -94,8 +96,6 @@
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/SendTo/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -116,7 +116,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-07 14:14+0200\n"
+"POT-Creation-Date: 2022-11-04 14:11+0200\n"
 "PO-Revision-Date: 2022-02-17 07:57+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Croatian (http://www.transifex.com/movim/movim/language/hr/)\n"
@@ -151,7 +151,7 @@ msgstr "Programska podrška"
 msgid "Resources"
 msgstr "Resursi"
 
-#: [about]api [schema]api [api]title
+#: [about]api
 msgid "API"
 msgstr "API"
 
@@ -162,6 +162,10 @@ msgstr "Movim je komunikacijska platforma temeljena na XMPP-u. Sav projekt, izuz
 #: [account]title [page]account
 msgid "Account"
 msgstr "Račun"
+
+#: [account]account_management
+msgid "Account management"
+msgstr ""
 
 #: [account]password_change_title
 msgid "Change my password"
@@ -458,66 +462,6 @@ msgstr "Sjednice"
 msgid "Currently connected users on the pod"
 msgstr ""
 
-#: [admin]compatibility
-msgid "General Overview"
-msgstr "Općeniti pregled"
-
-#: [compatibility]rights
-msgid "Read and write rights for the webserver in Movim’s %s directory"
-msgstr "Prava na čitanje i pisanje za internetski poslužitelj u mapi Movima %s"
-
-#: [compatibility]websocket
-msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
-msgstr "Pogreška veze WebSocketa, provjerite je li Movimov servis pokrenut i je li dostupan"
-
-#: [schema]browser
-msgid "Browser"
-msgstr "Preglednik"
-
-#: [schema]movim
-msgid "Movim Core"
-msgstr "Jezgra Movima"
-
-#: [schema]daemon
-msgid "Movim Daemon"
-msgstr "Servis Movima"
-
-#: [schema]database
-msgid "Database"
-msgstr "Baza podataka"
-
-#: [schema]xmpp
-msgid "XMPP"
-msgstr "XMPP"
-
-#: [api]info
-msgid "Here you can register your pod on the official %sMovim API%s"
-msgstr "Ovdje možete prijaviti svoju instanciju Movima na službenom %sMovim API-ju%s"
-
-#: [api]register
-msgid "Your pod is not registered on the API"
-msgstr "Vaša instancija Movima nije prijavljena na API-ju"
-
-#: [api]registered
-msgid "Your pod is registered on the API"
-msgstr "Vaša instancija Movima je prijavljena na API-ju"
-
-#: [api]wait
-msgid "Your pod is not yet validated"
-msgstr "Vaša instancija Movima još nije ovjerena"
-
-#: [api]validated
-msgid "Your pod is validated"
-msgstr "Vaše je instancija Movima ovjerena"
-
-#: [api]unregister
-msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
-msgstr "Zatražili ste uklanjanje vaše instancije Movima s API-ja. Ovaj će zahtjev biti proveden unutar nekoliko sati."
-
-#: [api]conf_updated [config]updated
-msgid "Configuration updated"
-msgstr "Konfiguracija je obnovljena"
-
 #: [avatar]file
 msgid "File"
 msgstr "Datoteka"
@@ -610,6 +554,10 @@ msgstr ""
 
 #: [message]retract
 msgid "Retract"
+msgstr ""
+
+#: [message]retract_body
+msgid "Your contact attempted to retract a previous message, but it's unsupported by your client"
 msgstr ""
 
 #: [message]error
@@ -711,9 +659,13 @@ msgstr "Uredite posljednju poruku"
 msgid "Report abuse"
 msgstr "Prijavite zloporabu"
 
-#: [chat]jingle_start
-msgid "Call started"
-msgstr "Poziv je započet"
+#: [chat]jingle_incoming [notificationconfig]audio_call
+msgid "Incoming call"
+msgstr ""
+
+#: [chat]jingle_outgoing
+msgid "Outgoing call"
+msgstr ""
 
 #: [chat]jingle_end
 msgid "Call ended"
@@ -1061,6 +1013,14 @@ msgstr "Otkazat ćete pretplatu na ovu zajednicu"
 msgid "Are you sure?"
 msgstr "Jeste li sigurni?"
 
+#: [communityposts]empty_me_text
+msgid "No publication yet? Write your first post to make people discover your profile"
+msgstr ""
+
+#: [communityposts]empty_me_button
+msgid "Publish my first post"
+msgstr ""
+
 #: [communitysubscriptions]subscriptions
 msgid "My Subscriptions"
 msgstr "Moje pretplate"
@@ -1101,6 +1061,10 @@ msgstr "Sakrij izvanmrežne kontakte"
 msgid "Appearence"
 msgstr "Izgled"
 
+#: [config]updated
+msgid "Configuration updated"
+msgstr "Konfiguracija je obnovljena"
+
 #: [config]not_valid
 msgid "Configuration invalid"
 msgstr "Neispravne postavke"
@@ -1133,10 +1097,6 @@ msgstr ""
 msgid "Make the chat page as the default one"
 msgstr ""
 
-#: [config]mam
-msgid "Archiving preferences"
-msgstr ""
-
 #: [config]mam_text
 msgid "Server-side archiving preferences"
 msgstr ""
@@ -1151,18 +1111,6 @@ msgstr ""
 
 #: [config]mam_saved
 msgid "Archiving preferences saved"
-msgstr ""
-
-#: [config]notification_title
-msgid "Audio notifications"
-msgstr ""
-
-#: [config]notification_call
-msgid "Incoming call"
-msgstr ""
-
-#: [config]notification_chat
-msgid "Incoming message"
 msgstr ""
 
 #: [confirm]title
@@ -1322,7 +1270,7 @@ msgid "Last public post"
 msgstr ""
 
 #: [blog]visit
-msgid "Visit the blog to see all the public posts"
+msgid "Visit the public blog"
 msgstr ""
 
 #: [subscription]to
@@ -1427,6 +1375,32 @@ msgstr ""
 
 #: [chatroom]button
 msgid "Add the chatroom"
+msgstr ""
+
+#: [location]title
+#, fuzzy
+msgid "My location"
+msgstr "Izdanje"
+
+#: [location]enabled_title
+#, fuzzy
+msgid "Currently shared with my contacts"
+msgstr "Pišite kontaktu"
+
+#: [location]disabled_title
+msgid "Currently disabled"
+msgstr ""
+
+#: [location]last_published
+msgid "My last published location"
+msgstr ""
+
+#: [location]less_than_one_km
+msgid "Less than a km away"
+msgstr ""
+
+#: [location]n_km_away
+msgid "%s km away"
 msgstr ""
 
 #: [error]username
@@ -1565,16 +1539,75 @@ msgstr ""
 msgid "Write a new post…"
 msgstr ""
 
+#: [notification]request_title
+msgid "Notifications request"
+msgstr ""
+
+#: [notification]request_info
+msgid "Movim requires your approval to display notifications"
+msgstr ""
+
+#: [notification]request_info2
+msgid "This authorization can be revoked at any time"
+msgstr ""
+
+#: [notification]request_button
+msgid "Request"
+msgstr ""
+
+#: [notification]request_granted
+msgid "Authorization granted"
+msgstr ""
+
+#: [notification]request_refused
+msgid "Authorization refused"
+msgstr ""
+
+#: [notificationconfig]title [notifs]title [onboarding]notifications_title
+#: [room]notify_title
+msgid "Notifications"
+msgstr ""
+
+#: [notificationconfig]audio_title
+msgid "Audio notifications"
+msgstr ""
+
+#: [notificationconfig]audio_chat
+msgid "Incoming message"
+msgstr ""
+
+#: [notificationconfig]push_subscriptions
+#, fuzzy
+msgid "Push notifications"
+msgstr "Izdanje"
+
+#: [notificationconfig]push_subscriptions_text
+msgid "Movim will send push notifications to the following registered devices"
+msgstr ""
+
+#: [notificationconfig]push_enabled
+msgid "Push notifications enabled for this device"
+msgstr ""
+
+#: [notificationconfig]push_disabled
+#, fuzzy
+msgid "Push notifications disabled for this device"
+msgstr "Za ovu su zajednicu pretplate onemogućene"
+
+#: [notificationconfig]unknown_browser
+msgid "Unknown browser"
+msgstr ""
+
+#: [notificationconfig]unknown_platform
+msgid "Unknown platform"
+msgstr ""
+
 #: [invitations]title
 msgid "Pending Invitations"
 msgstr ""
 
 #: [invitations]wants_to_talk
 msgid "%s wants to talk with you"
-msgstr ""
-
-#: [notifs]title [onboarding]notifications_title [room]notify_title
-msgid "Notifications"
 msgstr ""
 
 #: [notifs]empty
@@ -1641,7 +1674,7 @@ msgstr ""
 msgid "Posts recently published in communities that you are not subscribed (yet)"
 msgstr ""
 
-#: [post]new [publish]new [publishbrief]new
+#: [post]new [publish]new
 msgid "New post"
 msgstr ""
 
@@ -1785,64 +1818,68 @@ msgstr ""
 msgid "Link copied to clipboard"
 msgstr ""
 
-#: [publish]placeholder [publishbrief]placeholder
+#: [publish]placeholder
 msgid "What’s new?"
 msgstr ""
 
-#: [publish]post [publishbrief]post
+#: [publish]post
 msgid "Write a post"
 msgstr ""
 
-#: [publish]add_link [publishbrief]add_link
+#: [publish]add_link
 msgid "Add a link"
 msgstr ""
 
-#: [publish]add_snap [publishbrief]add_snap
+#: [publish]add_snap
 msgid "Take a picture"
 msgstr ""
 
-#: [publish]no_title [publishbrief]no_title
+#: [publish]no_title
 msgid "Please provide a title"
 msgstr ""
 
-#: [publish]preview [publishbrief]preview
+#: [publish]preview
 msgid "Preview"
 msgstr ""
 
-#: [publish]attach [publishbrief]attach
+#: [publish]attach
 msgid "Add a file or a picture"
 msgstr ""
 
-#: [publish]no_publication [publishbrief]no_publication
+#: [publish]no_publication
 msgid "You cannot publish a post here"
 msgstr ""
 
-#: [publish]no_content_preview [publishbrief]no_content_preview
+#: [publish]no_content_preview
 msgid "No content to preview"
 msgstr ""
 
-#: [publish]title [publishbrief]title
+#: [publish]title
 msgid "Post title"
 msgstr ""
 
-#: [publish]content [publishbrief]content
+#: [publish]content
 msgid "Markdown content"
 msgstr ""
 
-#: [publish]valid_url [publishbrief]valid_url
+#: [publish]valid_url
 msgid "Please enter a valid URL"
 msgstr ""
 
-#: [publish]content_text [publishbrief]content_text
+#: [publish]content_text
 msgid "You can format your content using Markdown"
 msgstr ""
 
-#: [publish]draft_saved [publishbrief]draft_saved
+#: [publish]draft_saved
 msgid "Draft saved"
 msgstr ""
 
-#: [publish]rich_editor [publishbrief]rich_editor
+#: [publish]rich_editor
 msgid "Rich text editor"
+msgstr ""
+
+#: [publish]help_hashtag
+msgid "Add #hashtags in your title or content to allow your article to be discovered"
 msgstr ""
 
 #: [publishhelp]title [page]help
@@ -2081,6 +2118,15 @@ msgstr ""
 msgid "The participants of this chatroom can see each other's profile"
 msgstr ""
 
+#: [room]archived
+msgid "Archived"
+msgstr ""
+
+#: [room]archived_text
+#, fuzzy
+msgid "The chatroom messages are archived"
+msgstr "%s poruke dohvaćene"
+
 #: [room]group_chat
 msgid "Group Chat"
 msgstr ""
@@ -2255,10 +2301,6 @@ msgstr ""
 
 #: [sendto]more_contacts
 msgid "More contacts"
-msgstr ""
-
-#: [statistics]title
-msgid "Statistics"
 msgstr ""
 
 #: [sticker]title
@@ -3388,3 +3430,48 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
+
+#~ msgid "General Overview"
+#~ msgstr "Općeniti pregled"
+
+#~ msgid "Read and write rights for the webserver in Movim’s %s directory"
+#~ msgstr "Prava na čitanje i pisanje za internetski poslužitelj u mapi Movima %s"
+
+#~ msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
+#~ msgstr "Pogreška veze WebSocketa, provjerite je li Movimov servis pokrenut i je li dostupan"
+
+#~ msgid "Browser"
+#~ msgstr "Preglednik"
+
+#~ msgid "Movim Core"
+#~ msgstr "Jezgra Movima"
+
+#~ msgid "Movim Daemon"
+#~ msgstr "Servis Movima"
+
+#~ msgid "Database"
+#~ msgstr "Baza podataka"
+
+#~ msgid "XMPP"
+#~ msgstr "XMPP"
+
+#~ msgid "Here you can register your pod on the official %sMovim API%s"
+#~ msgstr "Ovdje možete prijaviti svoju instanciju Movima na službenom %sMovim API-ju%s"
+
+#~ msgid "Your pod is not registered on the API"
+#~ msgstr "Vaša instancija Movima nije prijavljena na API-ju"
+
+#~ msgid "Your pod is registered on the API"
+#~ msgstr "Vaša instancija Movima je prijavljena na API-ju"
+
+#~ msgid "Your pod is not yet validated"
+#~ msgstr "Vaša instancija Movima još nije ovjerena"
+
+#~ msgid "Your pod is validated"
+#~ msgstr "Vaše je instancija Movima ovjerena"
+
+#~ msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
+#~ msgstr "Zatražili ste uklanjanje vaše instancije Movima s API-ja. Ovaj će zahtjev biti proveden unutar nekoliko sati."
+
+#~ msgid "Call started"
+#~ msgstr "Poziv je započet"

@@ -17,10 +17,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/AdminSessions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/AdminTest/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Api/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Avatar/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blocked/locales.ini
@@ -49,6 +45,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityHeader/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunityPosts/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunitySubscriptions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Config/locales.ini
@@ -65,11 +63,17 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Location/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Login/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/LoginAnonymous/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Menu/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Notification/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/NotificationConfig/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Notifications/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -83,8 +87,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Publish/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/PublishBrief/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/PublishHelp/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Rooms/locales.ini
@@ -94,8 +96,6 @@
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/SendTo/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -116,7 +116,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-07 14:14+0200\n"
+"POT-Creation-Date: 2022-11-04 14:11+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: 조수연, 2022\n"
 "Language-Team: Korean (http://www.transifex.com/movim/movim/language/ko/)\n"
@@ -151,7 +151,7 @@ msgstr "소프트웨어"
 msgid "Resources"
 msgstr "자원"
 
-#: [about]api [schema]api [api]title
+#: [about]api
 msgid "API"
 msgstr "API"
 
@@ -162,6 +162,10 @@ msgstr "Movim은 XMPP를 바탕으로 하는 커뮤니케이션 플랫폼입니�
 #: [account]title [page]account
 msgid "Account"
 msgstr "계정"
+
+#: [account]account_management
+msgid "Account management"
+msgstr ""
 
 #: [account]password_change_title
 msgid "Change my password"
@@ -459,66 +463,6 @@ msgstr "세션"
 msgid "Currently connected users on the pod"
 msgstr "현재 포드에서 연결된 사용자"
 
-#: [admin]compatibility
-msgid "General Overview"
-msgstr "일반 개요"
-
-#: [compatibility]rights
-msgid "Read and write rights for the webserver in Movim’s %s directory"
-msgstr "Movim의 %s 디렉토리에 있는 웹 서버에 대한 읽기 및 쓰기 권한"
-
-#: [compatibility]websocket
-msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
-msgstr "WebSocket 연결 오류. Movim 데몬이 실행 중이고 연결할 수 있는지 확인해주세요."
-
-#: [schema]browser
-msgid "Browser"
-msgstr "브라우저"
-
-#: [schema]movim
-msgid "Movim Core"
-msgstr "Movim 코어"
-
-#: [schema]daemon
-msgid "Movim Daemon"
-msgstr "Movim 데몬"
-
-#: [schema]database
-msgid "Database"
-msgstr "데이터베이스"
-
-#: [schema]xmpp
-msgid "XMPP"
-msgstr "XMPP"
-
-#: [api]info
-msgid "Here you can register your pod on the official %sMovim API%s"
-msgstr "여기에서 공식 %s Movim API %s에 포드를 등록할 수 있습니다."
-
-#: [api]register
-msgid "Your pod is not registered on the API"
-msgstr "포드가 API에 등록되어 있지 않습니다."
-
-#: [api]registered
-msgid "Your pod is registered on the API"
-msgstr "포드가 API에 등록되어 있습니다."
-
-#: [api]wait
-msgid "Your pod is not yet validated"
-msgstr "포드가 아직 검증되지 않았습니다."
-
-#: [api]validated
-msgid "Your pod is validated"
-msgstr "포드가 검증되었습니다."
-
-#: [api]unregister
-msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
-msgstr "API에서 제거하도록 요청했습니다. 이 요청은 몇 시간 후에 처리됩니다."
-
-#: [api]conf_updated [config]updated
-msgid "Configuration updated"
-msgstr "설정이 업데이트됨"
-
 #: [avatar]file
 msgid "File"
 msgstr "파일"
@@ -614,6 +558,10 @@ msgstr "리액션 추가"
 #: [message]retract
 msgid "Retract"
 msgstr "취소하다"
+
+#: [message]retract_body
+msgid "Your contact attempted to retract a previous message, but it's unsupported by your client"
+msgstr ""
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
@@ -714,9 +662,14 @@ msgstr "마지막 메시지 수정"
 msgid "Report abuse"
 msgstr "신고하기"
 
-#: [chat]jingle_start
-msgid "Call started"
-msgstr "통화 시작됨"
+#: [chat]jingle_incoming [notificationconfig]audio_call
+msgid "Incoming call"
+msgstr "수신 전화"
+
+#: [chat]jingle_outgoing
+#, fuzzy
+msgid "Outgoing call"
+msgstr "통화 중"
 
 #: [chat]jingle_end
 msgid "Call ended"
@@ -1064,6 +1017,15 @@ msgstr "이 커뮤니티의 구독을 취소하려고 합니다."
 msgid "Are you sure?"
 msgstr "확실합니까?"
 
+#: [communityposts]empty_me_text
+msgid "No publication yet? Write your first post to make people discover your profile"
+msgstr ""
+
+#: [communityposts]empty_me_button
+#, fuzzy
+msgid "Publish my first post"
+msgstr "이 게시물의 공개 URL"
+
 #: [communitysubscriptions]subscriptions
 msgid "My Subscriptions"
 msgstr "내 구독"
@@ -1104,6 +1066,10 @@ msgstr "오프라인 연락처 숨기기"
 msgid "Appearence"
 msgstr "모양"
 
+#: [config]updated
+msgid "Configuration updated"
+msgstr "설정이 업데이트됨"
+
 #: [config]not_valid
 msgid "Configuration invalid"
 msgstr "설정이 잘못됨"
@@ -1136,10 +1102,6 @@ msgstr "기본 채팅 페이지"
 msgid "Make the chat page as the default one"
 msgstr "채팅 페이지를 기본 페이지로 설정"
 
-#: [config]mam
-msgid "Archiving preferences"
-msgstr "아카이빙 설정"
-
 #: [config]mam_text
 msgid "Server-side archiving preferences"
 msgstr "서버 측 아카이빙 설정"
@@ -1155,18 +1117,6 @@ msgstr "절대 아님"
 #: [config]mam_saved
 msgid "Archiving preferences saved"
 msgstr "아카이빙 설정이 저장됨"
-
-#: [config]notification_title
-msgid "Audio notifications"
-msgstr "오디오 알림"
-
-#: [config]notification_call
-msgid "Incoming call"
-msgstr "수신 전화"
-
-#: [config]notification_chat
-msgid "Incoming message"
-msgstr "수신 메시지"
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -1325,8 +1275,8 @@ msgid "Last public post"
 msgstr "마지막 공개 게시물"
 
 #: [blog]visit
-msgid "Visit the blog to see all the public posts"
-msgstr "모든 공개 게시물을 보려면 블로그를 방문하세요."
+msgid "Visit the public blog"
+msgstr ""
 
 #: [subscription]to
 msgid "You can see this contact status"
@@ -1431,6 +1381,34 @@ msgstr "Movim 팀과 채팅하시겠습니까?"
 #: [chatroom]button
 msgid "Add the chatroom"
 msgstr "채팅방 추가"
+
+#: [location]title
+#, fuzzy
+msgid "My location"
+msgstr "내 게시물"
+
+#: [location]enabled_title
+#, fuzzy
+msgid "Currently shared with my contacts"
+msgstr "대화 상대와 공유한 게시물"
+
+#: [location]disabled_title
+#, fuzzy
+msgid "Currently disabled"
+msgstr "댓글 비활성화됨"
+
+#: [location]last_published
+#, fuzzy
+msgid "My last published location"
+msgstr "내 게시물"
+
+#: [location]less_than_one_km
+msgid "Less than a km away"
+msgstr ""
+
+#: [location]n_km_away
+msgid "%s km away"
+msgstr ""
 
 #: [error]username
 msgid "Wrong username"
@@ -1568,6 +1546,75 @@ msgstr "연락처"
 msgid "Write a new post…"
 msgstr "새 게시물 작성…"
 
+#: [notification]request_title
+#, fuzzy
+msgid "Notifications request"
+msgstr "알림"
+
+#: [notification]request_info
+msgid "Movim requires your approval to display notifications"
+msgstr ""
+
+#: [notification]request_info2
+msgid "This authorization can be revoked at any time"
+msgstr ""
+
+#: [notification]request_button
+msgid "Request"
+msgstr ""
+
+#: [notification]request_granted
+#, fuzzy
+msgid "Authorization granted"
+msgstr "인증 코드"
+
+#: [notification]request_refused
+#, fuzzy
+msgid "Authorization refused"
+msgstr "인증 코드"
+
+#: [notificationconfig]title [notifs]title [onboarding]notifications_title
+#: [room]notify_title
+msgid "Notifications"
+msgstr "알림"
+
+#: [notificationconfig]audio_title
+msgid "Audio notifications"
+msgstr "오디오 알림"
+
+#: [notificationconfig]audio_chat
+msgid "Incoming message"
+msgstr "수신 메시지"
+
+#: [notificationconfig]push_subscriptions
+#, fuzzy
+msgid "Push notifications"
+msgstr "오디오 알림"
+
+#: [notificationconfig]push_subscriptions_text
+#, fuzzy
+msgid "Movim will send push notifications to the following registered devices"
+msgstr "Movim은 Firebase를 사용하여 Movim 안드로이드 앱에 푸시 알림을 보낼 수 있습니다."
+
+#: [notificationconfig]push_enabled
+msgid "Push notifications enabled for this device"
+msgstr ""
+
+#: [notificationconfig]push_disabled
+#, fuzzy
+msgid "Push notifications disabled for this device"
+msgstr "이 커뮤니티에 대한 구독이 비활성화되었습니다."
+
+#: [notificationconfig]unknown_browser
+#, fuzzy
+msgid "Unknown browser"
+msgstr "알수없는 오류"
+
+#: [notificationconfig]unknown_platform
+#, fuzzy
+msgid "Unknown platform"
+msgstr "알수없는 오류"
+
 #: [invitations]title
 msgid "Pending Invitations"
 msgstr "대기 중인 초대"
@@ -1575,10 +1622,6 @@ msgstr "대기 중인 초대"
 #: [invitations]wants_to_talk
 msgid "%s wants to talk with you"
 msgstr "%s이 당신과 이야기하고 싶어 합니다"
-
-#: [notifs]title [onboarding]notifications_title [room]notify_title
-msgid "Notifications"
-msgstr "알림"
 
 #: [notifs]empty
 msgid "No new notifications"
@@ -1644,7 +1687,7 @@ msgstr "최신 소식"
 msgid "Posts recently published in communities that you are not subscribed (yet)"
 msgstr "(아직) 구독하지 않은 커뮤니티에서 최근에 게시된 게시물"
 
-#: [post]new [publish]new [publishbrief]new
+#: [post]new [publish]new
 msgid "New post"
 msgstr "새 게시물"
 
@@ -1788,65 +1831,69 @@ msgstr "로그아웃하시겠습니까?"
 msgid "Link copied to clipboard"
 msgstr "링크가 클립보드에 복사됨"
 
-#: [publish]placeholder [publishbrief]placeholder
+#: [publish]placeholder
 msgid "What’s new?"
 msgstr "새로운 소식"
 
-#: [publish]post [publishbrief]post
+#: [publish]post
 msgid "Write a post"
 msgstr "게시물 작성"
 
-#: [publish]add_link [publishbrief]add_link
+#: [publish]add_link
 msgid "Add a link"
 msgstr "링크 추가"
 
-#: [publish]add_snap [publishbrief]add_snap
+#: [publish]add_snap
 msgid "Take a picture"
 msgstr "사진 찍기"
 
-#: [publish]no_title [publishbrief]no_title
+#: [publish]no_title
 msgid "Please provide a title"
 msgstr "제목을 입력하세요"
 
-#: [publish]preview [publishbrief]preview
+#: [publish]preview
 msgid "Preview"
 msgstr "미리보기"
 
-#: [publish]attach [publishbrief]attach
+#: [publish]attach
 msgid "Add a file or a picture"
 msgstr "파일 또는 사진 추가"
 
-#: [publish]no_publication [publishbrief]no_publication
+#: [publish]no_publication
 msgid "You cannot publish a post here"
 msgstr "여기에 게시물을 게시할 수 없습니다."
 
-#: [publish]no_content_preview [publishbrief]no_content_preview
+#: [publish]no_content_preview
 msgid "No content to preview"
 msgstr "미리 볼 콘텐츠가 없습니다."
 
-#: [publish]title [publishbrief]title
+#: [publish]title
 msgid "Post title"
 msgstr "게시물 제목"
 
-#: [publish]content [publishbrief]content
+#: [publish]content
 msgid "Markdown content"
 msgstr "마크다운 콘텐츠"
 
-#: [publish]valid_url [publishbrief]valid_url
+#: [publish]valid_url
 msgid "Please enter a valid URL"
 msgstr "올바른 URL을 입력 해주세요"
 
-#: [publish]content_text [publishbrief]content_text
+#: [publish]content_text
 msgid "You can format your content using Markdown"
 msgstr "마크다운을 사용하여 콘텐츠 형식을 지정할 수 있습니다."
 
-#: [publish]draft_saved [publishbrief]draft_saved
+#: [publish]draft_saved
 msgid "Draft saved"
 msgstr "임시 저장됨"
 
-#: [publish]rich_editor [publishbrief]rich_editor
+#: [publish]rich_editor
 msgid "Rich text editor"
 msgstr "서식 지정 에디터"
+
+#: [publish]help_hashtag
+msgid "Add #hashtags in your title or content to allow your article to be discovered"
+msgstr ""
 
 #: [publishhelp]title [page]help
 msgid "Help"
@@ -2084,6 +2131,15 @@ msgstr "공개 프로필"
 msgid "The participants of this chatroom can see each other's profile"
 msgstr "이 대화방의 참가자는 서로의 프로필을 볼 수 있습니다."
 
+#: [room]archived
+msgid "Archived"
+msgstr ""
+
+#: [room]archived_text
+#, fuzzy
+msgid "The chatroom messages are archived"
+msgstr "%s개의 메시지 검색됨"
+
 #: [room]group_chat
 msgid "Group Chat"
 msgstr "그룹 채팅"
@@ -2259,10 +2315,6 @@ msgstr "채팅방 내에서 공유된 게시물"
 #: [sendto]more_contacts
 msgid "More contacts"
 msgstr "연락처 더보기"
-
-#: [statistics]title
-msgid "Statistics"
-msgstr "통계"
 
 #: [sticker]title
 msgid "Stickers"
@@ -3392,14 +3444,65 @@ msgstr "API에 연결할 수 없습니다. 나중에 다시 시도하십시오."
 msgid "Type here"
 msgstr "여기에 입력하세요"
 
+#~ msgid "General Overview"
+#~ msgstr "일반 개요"
+
+#~ msgid "Read and write rights for the webserver in Movim’s %s directory"
+#~ msgstr "Movim의 %s 디렉토리에 있는 웹 서버에 대한 읽기 및 쓰기 권한"
+
+#~ msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
+#~ msgstr "WebSocket 연결 오류. Movim 데몬이 실행 중이고 연결할 수 있는지 확인해주세요."
+
+#~ msgid "Browser"
+#~ msgstr "브라우저"
+
+#~ msgid "Movim Core"
+#~ msgstr "Movim 코어"
+
+#~ msgid "Movim Daemon"
+#~ msgstr "Movim 데몬"
+
+#~ msgid "Database"
+#~ msgstr "데이터베이스"
+
+#~ msgid "XMPP"
+#~ msgstr "XMPP"
+
+#~ msgid "Here you can register your pod on the official %sMovim API%s"
+#~ msgstr "여기에서 공식 %s Movim API %s에 포드를 등록할 수 있습니다."
+
+#~ msgid "Your pod is not registered on the API"
+#~ msgstr "포드가 API에 등록되어 있지 않습니다."
+
+#~ msgid "Your pod is registered on the API"
+#~ msgstr "포드가 API에 등록되어 있습니다."
+
+#~ msgid "Your pod is not yet validated"
+#~ msgstr "포드가 아직 검증되지 않았습니다."
+
+#~ msgid "Your pod is validated"
+#~ msgstr "포드가 검증되었습니다."
+
+#~ msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
+#~ msgstr "API에서 제거하도록 요청했습니다. 이 요청은 몇 시간 후에 처리됩니다."
+
+#~ msgid "Call started"
+#~ msgstr "통화 시작됨"
+
+#~ msgid "Archiving preferences"
+#~ msgstr "아카이빙 설정"
+
+#~ msgid "Visit the blog to see all the public posts"
+#~ msgstr "모든 공개 게시물을 보려면 블로그를 방문하세요."
+
+#~ msgid "Statistics"
+#~ msgstr "통계"
+
 #~ msgid "Firebase Integration"
 #~ msgstr "Firebase 통합"
 
 #~ msgid "Your Firebase Authorization Key"
 #~ msgstr "Firebase 인증 키"
-
-#~ msgid "Movim can send Push Notifications to the Movim Android app using Firebase"
-#~ msgstr "Movim은 Firebase를 사용하여 Movim 안드로이드 앱에 푸시 알림을 보낼 수 있습니다."
 
 #~ msgid "Go to the Firebase panel to configure and generate your Authorization key"
 #~ msgstr "Firebase 패널로 이동하여 인증 키를 구성하고 생성합니다."

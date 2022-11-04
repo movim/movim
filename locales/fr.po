@@ -25,10 +25,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/AdminSessions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/AdminTest/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Api/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Avatar/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blocked/locales.ini
@@ -57,6 +53,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityHeader/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunityPosts/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunitySubscriptions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Config/locales.ini
@@ -73,11 +71,17 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Location/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Login/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/LoginAnonymous/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Menu/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Notification/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/NotificationConfig/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Notifications/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -91,8 +95,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Publish/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/PublishBrief/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/PublishHelp/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Rooms/locales.ini
@@ -102,8 +104,6 @@
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/SendTo/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -124,7 +124,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-07 14:14+0200\n"
+"POT-Creation-Date: 2022-11-04 14:11+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>, 2015-2022\n"
 "Language-Team: French (France) (http://www.transifex.com/movim/movim/language/fr_FR/)\n"
@@ -159,7 +159,7 @@ msgstr "Logiciels"
 msgid "Resources"
 msgstr "Ressources"
 
-#: [about]api [schema]api [api]title
+#: [about]api
 msgid "API"
 msgstr "API"
 
@@ -170,6 +170,10 @@ msgstr "Movim est une plateforme de communication construite sur XMPP. L’inté
 #: [account]title [page]account
 msgid "Account"
 msgstr "Compte"
+
+#: [account]account_management
+msgid "Account management"
+msgstr ""
 
 #: [account]password_change_title
 msgid "Change my password"
@@ -465,66 +469,6 @@ msgstr "Sessions"
 msgid "Currently connected users on the pod"
 msgstr "Utilisateurs actuellement connectés sur l'instance"
 
-#: [admin]compatibility
-msgid "General Overview"
-msgstr "Aperçu général"
-
-#: [compatibility]rights
-msgid "Read and write rights for the webserver in Movim’s %s directory"
-msgstr "Droits de lecture et d’écriture pour le serveur web dans le dossier %s"
-
-#: [compatibility]websocket
-msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
-msgstr "Erreur de connexion WebSocket, vérifiez si le démon Movim est en cours d’exécution et s’il est joignable"
-
-#: [schema]browser
-msgid "Browser"
-msgstr "Navigateur"
-
-#: [schema]movim
-msgid "Movim Core"
-msgstr "Cœur de Movim"
-
-#: [schema]daemon
-msgid "Movim Daemon"
-msgstr "Démon Movim"
-
-#: [schema]database
-msgid "Database"
-msgstr "Base de données"
-
-#: [schema]xmpp
-msgid "XMPP"
-msgstr "XMPP"
-
-#: [api]info
-msgid "Here you can register your pod on the official %sMovim API%s"
-msgstr "Vous pouvez enregistrer ici votre pod sur %sl’API officielle%s"
-
-#: [api]register
-msgid "Your pod is not registered on the API"
-msgstr "Votre pod n’est pas enregistré dans l’API"
-
-#: [api]registered
-msgid "Your pod is registered on the API"
-msgstr "Votre pod est enregistré dans l’API"
-
-#: [api]wait
-msgid "Your pod is not yet validated"
-msgstr "Votre pod n’est pas encore validé"
-
-#: [api]validated
-msgid "Your pod is validated"
-msgstr "Votre pod est validé"
-
-#: [api]unregister
-msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
-msgstr "Votre demande de désinscription a été prise en compte, elle sera effective dans quelques heures"
-
-#: [api]conf_updated [config]updated
-msgid "Configuration updated"
-msgstr "Configuration mise à jour"
-
 #: [avatar]file
 msgid "File"
 msgstr "Fichier"
@@ -616,6 +560,10 @@ msgstr "Ajouter une réaction"
 #: [message]retract
 msgid "Retract"
 msgstr "Rétracter"
+
+#: [message]retract_body
+msgid "Your contact attempted to retract a previous message, but it's unsupported by your client"
+msgstr ""
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
@@ -714,9 +662,14 @@ msgstr "Éditer le dernier message"
 msgid "Report abuse"
 msgstr "Rapporter un abus"
 
-#: [chat]jingle_start
-msgid "Call started"
+#: [chat]jingle_incoming [notificationconfig]audio_call
+msgid "Incoming call"
 msgstr "Appel entrant"
+
+#: [chat]jingle_outgoing
+#, fuzzy
+msgid "Outgoing call"
+msgstr "en communication"
 
 #: [chat]jingle_end
 msgid "Call ended"
@@ -1064,6 +1017,15 @@ msgstr "Vous allez vous désinscrire de cette communauté"
 msgid "Are you sure?"
 msgstr "Êtes-vous sûr ?"
 
+#: [communityposts]empty_me_text
+msgid "No publication yet? Write your first post to make people discover your profile"
+msgstr ""
+
+#: [communityposts]empty_me_button
+#, fuzzy
+msgid "Publish my first post"
+msgstr "URL publique pour ce billet"
+
 #: [communitysubscriptions]subscriptions
 msgid "My Subscriptions"
 msgstr "Mes Souscriptions"
@@ -1104,6 +1066,10 @@ msgstr "Cacher les contacts hors ligne"
 msgid "Appearence"
 msgstr "Apparence"
 
+#: [config]updated
+msgid "Configuration updated"
+msgstr "Configuration mise à jour"
+
 #: [config]not_valid
 msgid "Configuration invalid"
 msgstr "Configuration non valide"
@@ -1136,10 +1102,6 @@ msgstr "Page chat principale"
 msgid "Make the chat page as the default one"
 msgstr "Ouvrir la partie chat par défaut lors du lancement"
 
-#: [config]mam
-msgid "Archiving preferences"
-msgstr "Paramètres d'archivage"
-
 #: [config]mam_text
 msgid "Server-side archiving preferences"
 msgstr "Paramètres d'archivage du serveur"
@@ -1155,18 +1117,6 @@ msgstr "Jamais"
 #: [config]mam_saved
 msgid "Archiving preferences saved"
 msgstr "Paramètres d'archivage sauvegardés"
-
-#: [config]notification_title
-msgid "Audio notifications"
-msgstr "Notifications audio"
-
-#: [config]notification_call
-msgid "Incoming call"
-msgstr "Appel entrant"
-
-#: [config]notification_chat
-msgid "Incoming message"
-msgstr "Message entrant"
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -1325,8 +1275,8 @@ msgid "Last public post"
 msgstr "Derniers billets publics"
 
 #: [blog]visit
-msgid "Visit the blog to see all the public posts"
-msgstr "Visiter le blog pour voir tous les billets publics"
+msgid "Visit the public blog"
+msgstr ""
 
 #: [subscription]to
 msgid "You can see this contact status"
@@ -1431,6 +1381,34 @@ msgstr "Discuter avec l’équipe de Movim ?"
 #: [chatroom]button
 msgid "Add the chatroom"
 msgstr "Ajouter le salon de discussion"
+
+#: [location]title
+#, fuzzy
+msgid "My location"
+msgstr "Mes publications"
+
+#: [location]enabled_title
+#, fuzzy
+msgid "Currently shared with my contacts"
+msgstr "Billet partagé avec votre contact"
+
+#: [location]disabled_title
+#, fuzzy
+msgid "Currently disabled"
+msgstr "Commentaires désactivés."
+
+#: [location]last_published
+#, fuzzy
+msgid "My last published location"
+msgstr "Mes publications"
+
+#: [location]less_than_one_km
+msgid "Less than a km away"
+msgstr ""
+
+#: [location]n_km_away
+msgid "%s km away"
+msgstr ""
 
 #: [error]username
 msgid "Wrong username"
@@ -1568,6 +1546,74 @@ msgstr "Contacts"
 msgid "Write a new post…"
 msgstr "Écrire un nouveau billet…"
 
+#: [notification]request_title
+#, fuzzy
+msgid "Notifications request"
+msgstr "Notifications"
+
+#: [notification]request_info
+msgid "Movim requires your approval to display notifications"
+msgstr ""
+
+#: [notification]request_info2
+msgid "This authorization can be revoked at any time"
+msgstr ""
+
+#: [notification]request_button
+msgid "Request"
+msgstr ""
+
+#: [notification]request_granted
+#, fuzzy
+msgid "Authorization granted"
+msgstr "Code d'authentification"
+
+#: [notification]request_refused
+#, fuzzy
+msgid "Authorization refused"
+msgstr "Code d'authentification"
+
+#: [notificationconfig]title [notifs]title [onboarding]notifications_title
+#: [room]notify_title
+msgid "Notifications"
+msgstr "Notifications"
+
+#: [notificationconfig]audio_title
+msgid "Audio notifications"
+msgstr "Notifications audio"
+
+#: [notificationconfig]audio_chat
+msgid "Incoming message"
+msgstr "Message entrant"
+
+#: [notificationconfig]push_subscriptions
+#, fuzzy
+msgid "Push notifications"
+msgstr "Notifications audio"
+
+#: [notificationconfig]push_subscriptions_text
+msgid "Movim will send push notifications to the following registered devices"
+msgstr ""
+
+#: [notificationconfig]push_enabled
+msgid "Push notifications enabled for this device"
+msgstr ""
+
+#: [notificationconfig]push_disabled
+#, fuzzy
+msgid "Push notifications disabled for this device"
+msgstr "Les souscriptions sont désactivées pour cette communauté"
+
+#: [notificationconfig]unknown_browser
+#, fuzzy
+msgid "Unknown browser"
+msgstr "Erreur inconnue"
+
+#: [notificationconfig]unknown_platform
+#, fuzzy
+msgid "Unknown platform"
+msgstr "Erreur inconnue"
+
 #: [invitations]title
 msgid "Pending Invitations"
 msgstr "Invitations en attente"
@@ -1575,10 +1621,6 @@ msgstr "Invitations en attente"
 #: [invitations]wants_to_talk
 msgid "%s wants to talk with you"
 msgstr "%s veut parler avec vous"
-
-#: [notifs]title [onboarding]notifications_title [room]notify_title
-msgid "Notifications"
-msgstr "Notifications"
 
 #: [notifs]empty
 msgid "No new notifications"
@@ -1644,7 +1686,7 @@ msgstr "Quoi de neuf"
 msgid "Posts recently published in communities that you are not subscribed (yet)"
 msgstr "Billets récemment publiés dans les communautés auxquelles vous n'êtes pas (encore) inscrit"
 
-#: [post]new [publish]new [publishbrief]new
+#: [post]new [publish]new
 msgid "New post"
 msgstr "Nouveau billet"
 
@@ -1788,65 +1830,69 @@ msgstr "Souhaitez-vous réellement vous déconnecter ?"
 msgid "Link copied to clipboard"
 msgstr "Lien copié dans le presse-papier"
 
-#: [publish]placeholder [publishbrief]placeholder
+#: [publish]placeholder
 msgid "What’s new?"
 msgstr "Quoi de neuf ?"
 
-#: [publish]post [publishbrief]post
+#: [publish]post
 msgid "Write a post"
 msgstr "Écrire un billet"
 
-#: [publish]add_link [publishbrief]add_link
+#: [publish]add_link
 msgid "Add a link"
 msgstr "Ajouter un lien"
 
-#: [publish]add_snap [publishbrief]add_snap
+#: [publish]add_snap
 msgid "Take a picture"
 msgstr "Prendre une photo"
 
-#: [publish]no_title [publishbrief]no_title
+#: [publish]no_title
 msgid "Please provide a title"
 msgstr "Veuillez mettre un titre à votre publication"
 
-#: [publish]preview [publishbrief]preview
+#: [publish]preview
 msgid "Preview"
 msgstr "Aperçu"
 
-#: [publish]attach [publishbrief]attach
+#: [publish]attach
 msgid "Add a file or a picture"
 msgstr "Ajouter un fichier ou une image"
 
-#: [publish]no_publication [publishbrief]no_publication
+#: [publish]no_publication
 msgid "You cannot publish a post here"
 msgstr "Vous ne pouvez pas publier de billet ici"
 
-#: [publish]no_content_preview [publishbrief]no_content_preview
+#: [publish]no_content_preview
 msgid "No content to preview"
 msgstr "Pas de contenu à afficher"
 
-#: [publish]title [publishbrief]title
+#: [publish]title
 msgid "Post title"
 msgstr "Titre de l'article"
 
-#: [publish]content [publishbrief]content
+#: [publish]content
 msgid "Markdown content"
 msgstr "Contenu Markdown"
 
-#: [publish]valid_url [publishbrief]valid_url
+#: [publish]valid_url
 msgid "Please enter a valid URL"
 msgstr "Veuillez entrer une URL valide"
 
-#: [publish]content_text [publishbrief]content_text
+#: [publish]content_text
 msgid "You can format your content using Markdown"
 msgstr "Vous pouvez enrichir le contenu en utilisant Markdown"
 
-#: [publish]draft_saved [publishbrief]draft_saved
+#: [publish]draft_saved
 msgid "Draft saved"
 msgstr "Brouillon sauvegardé"
 
-#: [publish]rich_editor [publishbrief]rich_editor
+#: [publish]rich_editor
 msgid "Rich text editor"
 msgstr "Éditeur de texte enrichi"
+
+#: [publish]help_hashtag
+msgid "Add #hashtags in your title or content to allow your article to be discovered"
+msgstr ""
 
 #: [publishhelp]title [page]help
 msgid "Help"
@@ -2084,6 +2130,15 @@ msgstr "Profils publiques"
 msgid "The participants of this chatroom can see each other's profile"
 msgstr "Les participants de ce salon peuvent voir leurs profils réciproquement"
 
+#: [room]archived
+msgid "Archived"
+msgstr ""
+
+#: [room]archived_text
+#, fuzzy
+msgid "The chatroom messages are archived"
+msgstr "%s messages récupérés"
+
 #: [room]group_chat
 msgid "Group Chat"
 msgstr "Groupe"
@@ -2259,10 +2314,6 @@ msgstr "Billet partagé dans le salon de discussion"
 #: [sendto]more_contacts
 msgid "More contacts"
 msgstr "Plus de contacts"
-
-#: [statistics]title
-msgid "Statistics"
-msgstr "Statistiques"
 
 #: [sticker]title
 msgid "Stickers"
@@ -3389,3 +3440,57 @@ msgstr "L’API est indisponible pour le moment, réessayez plus tard."
 #: [field]type_here
 msgid "Type here"
 msgstr "Rédigez votre message ici"
+
+#~ msgid "General Overview"
+#~ msgstr "Aperçu général"
+
+#~ msgid "Read and write rights for the webserver in Movim’s %s directory"
+#~ msgstr "Droits de lecture et d’écriture pour le serveur web dans le dossier %s"
+
+#~ msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
+#~ msgstr "Erreur de connexion WebSocket, vérifiez si le démon Movim est en cours d’exécution et s’il est joignable"
+
+#~ msgid "Browser"
+#~ msgstr "Navigateur"
+
+#~ msgid "Movim Core"
+#~ msgstr "Cœur de Movim"
+
+#~ msgid "Movim Daemon"
+#~ msgstr "Démon Movim"
+
+#~ msgid "Database"
+#~ msgstr "Base de données"
+
+#~ msgid "XMPP"
+#~ msgstr "XMPP"
+
+#~ msgid "Here you can register your pod on the official %sMovim API%s"
+#~ msgstr "Vous pouvez enregistrer ici votre pod sur %sl’API officielle%s"
+
+#~ msgid "Your pod is not registered on the API"
+#~ msgstr "Votre pod n’est pas enregistré dans l’API"
+
+#~ msgid "Your pod is registered on the API"
+#~ msgstr "Votre pod est enregistré dans l’API"
+
+#~ msgid "Your pod is not yet validated"
+#~ msgstr "Votre pod n’est pas encore validé"
+
+#~ msgid "Your pod is validated"
+#~ msgstr "Votre pod est validé"
+
+#~ msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
+#~ msgstr "Votre demande de désinscription a été prise en compte, elle sera effective dans quelques heures"
+
+#~ msgid "Call started"
+#~ msgstr "Appel entrant"
+
+#~ msgid "Archiving preferences"
+#~ msgstr "Paramètres d'archivage"
+
+#~ msgid "Visit the blog to see all the public posts"
+#~ msgstr "Visiter le blog pour voir tous les billets publics"
+
+#~ msgid "Statistics"
+#~ msgstr "Statistiques"

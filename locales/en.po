@@ -15,10 +15,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/AdminSessions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/AdminTest/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Api/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Avatar/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blocked/locales.ini
@@ -47,6 +43,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityHeader/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunityPosts/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunitySubscriptions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Config/locales.ini
@@ -63,11 +61,17 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Location/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Login/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/LoginAnonymous/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Menu/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Notification/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/NotificationConfig/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Notifications/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -81,8 +85,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Publish/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/PublishBrief/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/PublishHelp/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Rooms/locales.ini
@@ -92,8 +94,6 @@
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/SendTo/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -114,7 +114,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-07 14:14+0200\n"
+"POT-Creation-Date: 2022-11-04 14:11+0200\n"
 "PO-Revision-Date: 2022-02-17 07:57+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: English (http://www.transifex.com/movim/movim/language/en/)\n"
@@ -149,7 +149,7 @@ msgstr "Software"
 msgid "Resources"
 msgstr "Resources"
 
-#: [about]api [schema]api [api]title
+#: [about]api
 msgid "API"
 msgstr "API"
 
@@ -160,6 +160,10 @@ msgstr "Movim is an XMPP-based communication platform. All the project, except t
 #: [account]title [page]account
 msgid "Account"
 msgstr "Account"
+
+#: [account]account_management
+msgid "Account management"
+msgstr ""
 
 #: [account]password_change_title
 msgid "Change my password"
@@ -457,66 +461,6 @@ msgstr "Sessions"
 msgid "Currently connected users on the pod"
 msgstr "Currently connected users on the pod"
 
-#: [admin]compatibility
-msgid "General Overview"
-msgstr "General Overview"
-
-#: [compatibility]rights
-msgid "Read and write rights for the webserver in Movim’s %s directory"
-msgstr "Read and write rights for the webserver in Movim’s %s directory"
-
-#: [compatibility]websocket
-msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
-msgstr "WebSocket connection error, check if the Movim Daemon is running and is reachable"
-
-#: [schema]browser
-msgid "Browser"
-msgstr "Browser"
-
-#: [schema]movim
-msgid "Movim Core"
-msgstr "Movim Core"
-
-#: [schema]daemon
-msgid "Movim Daemon"
-msgstr "Movim Daemon"
-
-#: [schema]database
-msgid "Database"
-msgstr "Database"
-
-#: [schema]xmpp
-msgid "XMPP"
-msgstr "XMPP"
-
-#: [api]info
-msgid "Here you can register your pod on the official %sMovim API%s"
-msgstr "Here you can register your pod on the official %sMovim API%s"
-
-#: [api]register
-msgid "Your pod is not registered on the API"
-msgstr "Your pod is not registered on the API"
-
-#: [api]registered
-msgid "Your pod is registered on the API"
-msgstr "Your pod is registered on the API"
-
-#: [api]wait
-msgid "Your pod is not yet validated"
-msgstr "Your pod is not yet validated"
-
-#: [api]validated
-msgid "Your pod is validated"
-msgstr "Your pod is validated"
-
-#: [api]unregister
-msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
-msgstr "You asked to be removed from the API, this request will be processed in a couple of hours"
-
-#: [api]conf_updated [config]updated
-msgid "Configuration updated"
-msgstr "Configuration updated"
-
 #: [avatar]file
 msgid "File"
 msgstr "File"
@@ -612,6 +556,10 @@ msgstr "Add a reaction"
 #: [message]retract
 msgid "Retract"
 msgstr "Retract"
+
+#: [message]retract_body
+msgid "Your contact attempted to retract a previous message, but it's unsupported by your client"
+msgstr ""
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
@@ -712,9 +660,14 @@ msgstr "Edit last message"
 msgid "Report abuse"
 msgstr "Report abuse"
 
-#: [chat]jingle_start
-msgid "Call started"
-msgstr "Call started"
+#: [chat]jingle_incoming [notificationconfig]audio_call
+msgid "Incoming call"
+msgstr "Incoming call"
+
+#: [chat]jingle_outgoing
+#, fuzzy
+msgid "Outgoing call"
+msgstr "in call"
 
 #: [chat]jingle_end
 msgid "Call ended"
@@ -1062,6 +1015,15 @@ msgstr "You are going to unsubscribe from this community"
 msgid "Are you sure?"
 msgstr "Are you sure?"
 
+#: [communityposts]empty_me_text
+msgid "No publication yet? Write your first post to make people discover your profile"
+msgstr ""
+
+#: [communityposts]empty_me_button
+#, fuzzy
+msgid "Publish my first post"
+msgstr "Public URL of this post"
+
 #: [communitysubscriptions]subscriptions
 msgid "My Subscriptions"
 msgstr "My Subscriptions"
@@ -1102,6 +1064,10 @@ msgstr "Hide the offline contacts"
 msgid "Appearence"
 msgstr "Appearence"
 
+#: [config]updated
+msgid "Configuration updated"
+msgstr "Configuration updated"
+
 #: [config]not_valid
 msgid "Configuration invalid"
 msgstr "Configuration invalid"
@@ -1134,10 +1100,6 @@ msgstr "Main chat page"
 msgid "Make the chat page as the default one"
 msgstr "Make the chat page as the default one"
 
-#: [config]mam
-msgid "Archiving preferences"
-msgstr "Archiving preferences"
-
 #: [config]mam_text
 msgid "Server-side archiving preferences"
 msgstr "Server-side archiving preferences"
@@ -1153,18 +1115,6 @@ msgstr "Never"
 #: [config]mam_saved
 msgid "Archiving preferences saved"
 msgstr "Archiving preferences saved"
-
-#: [config]notification_title
-msgid "Audio notifications"
-msgstr "Audio notifications"
-
-#: [config]notification_call
-msgid "Incoming call"
-msgstr "Incoming call"
-
-#: [config]notification_chat
-msgid "Incoming message"
-msgstr "Incoming message"
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -1323,8 +1273,8 @@ msgid "Last public post"
 msgstr "Last public post"
 
 #: [blog]visit
-msgid "Visit the blog to see all the public posts"
-msgstr "Visit the blog to see all the public posts"
+msgid "Visit the public blog"
+msgstr ""
 
 #: [subscription]to
 msgid "You can see this contact status"
@@ -1429,6 +1379,34 @@ msgstr "Chat with the Movim team?"
 #: [chatroom]button
 msgid "Add the chatroom"
 msgstr "Add the chatroom"
+
+#: [location]title
+#, fuzzy
+msgid "My location"
+msgstr "My publications"
+
+#: [location]enabled_title
+#, fuzzy
+msgid "Currently shared with my contacts"
+msgstr "Post shared with your contact"
+
+#: [location]disabled_title
+#, fuzzy
+msgid "Currently disabled"
+msgstr "Comments disabled"
+
+#: [location]last_published
+#, fuzzy
+msgid "My last published location"
+msgstr "My publications"
+
+#: [location]less_than_one_km
+msgid "Less than a km away"
+msgstr ""
+
+#: [location]n_km_away
+msgid "%s km away"
+msgstr ""
 
 #: [error]username
 msgid "Wrong username"
@@ -1566,6 +1544,75 @@ msgstr "Contacts"
 msgid "Write a new post…"
 msgstr "Write a new post…"
 
+#: [notification]request_title
+#, fuzzy
+msgid "Notifications request"
+msgstr "Notifications"
+
+#: [notification]request_info
+msgid "Movim requires your approval to display notifications"
+msgstr ""
+
+#: [notification]request_info2
+msgid "This authorization can be revoked at any time"
+msgstr ""
+
+#: [notification]request_button
+msgid "Request"
+msgstr ""
+
+#: [notification]request_granted
+#, fuzzy
+msgid "Authorization granted"
+msgstr "Authentication code"
+
+#: [notification]request_refused
+#, fuzzy
+msgid "Authorization refused"
+msgstr "Authentication code"
+
+#: [notificationconfig]title [notifs]title [onboarding]notifications_title
+#: [room]notify_title
+msgid "Notifications"
+msgstr "Notifications"
+
+#: [notificationconfig]audio_title
+msgid "Audio notifications"
+msgstr "Audio notifications"
+
+#: [notificationconfig]audio_chat
+msgid "Incoming message"
+msgstr "Incoming message"
+
+#: [notificationconfig]push_subscriptions
+#, fuzzy
+msgid "Push notifications"
+msgstr "Audio notifications"
+
+#: [notificationconfig]push_subscriptions_text
+#, fuzzy
+msgid "Movim will send push notifications to the following registered devices"
+msgstr "Movim can send Push Notifications to the Movim Android app using Firebase"
+
+#: [notificationconfig]push_enabled
+msgid "Push notifications enabled for this device"
+msgstr ""
+
+#: [notificationconfig]push_disabled
+#, fuzzy
+msgid "Push notifications disabled for this device"
+msgstr "The subscriptions are disabled for this community"
+
+#: [notificationconfig]unknown_browser
+#, fuzzy
+msgid "Unknown browser"
+msgstr "Unknown error"
+
+#: [notificationconfig]unknown_platform
+#, fuzzy
+msgid "Unknown platform"
+msgstr "Unknown error"
+
 #: [invitations]title
 msgid "Pending Invitations"
 msgstr "Pending Invitations"
@@ -1573,10 +1620,6 @@ msgstr "Pending Invitations"
 #: [invitations]wants_to_talk
 msgid "%s wants to talk with you"
 msgstr "%s wants to talk with you"
-
-#: [notifs]title [onboarding]notifications_title [room]notify_title
-msgid "Notifications"
-msgstr "Notifications"
 
 #: [notifs]empty
 msgid "No new notifications"
@@ -1642,7 +1685,7 @@ msgstr "What’s Hot"
 msgid "Posts recently published in communities that you are not subscribed (yet)"
 msgstr "Posts recently published in communities that you are not subscribed (yet)"
 
-#: [post]new [publish]new [publishbrief]new
+#: [post]new [publish]new
 msgid "New post"
 msgstr "New post"
 
@@ -1786,65 +1829,69 @@ msgstr "Do you really want to log out?"
 msgid "Link copied to clipboard"
 msgstr "Link copied to clipboard"
 
-#: [publish]placeholder [publishbrief]placeholder
+#: [publish]placeholder
 msgid "What’s new?"
 msgstr "What’s new?"
 
-#: [publish]post [publishbrief]post
+#: [publish]post
 msgid "Write a post"
 msgstr "Write a post"
 
-#: [publish]add_link [publishbrief]add_link
+#: [publish]add_link
 msgid "Add a link"
 msgstr "Add a link"
 
-#: [publish]add_snap [publishbrief]add_snap
+#: [publish]add_snap
 msgid "Take a picture"
 msgstr "Take a picture"
 
-#: [publish]no_title [publishbrief]no_title
+#: [publish]no_title
 msgid "Please provide a title"
 msgstr "Please provide a title"
 
-#: [publish]preview [publishbrief]preview
+#: [publish]preview
 msgid "Preview"
 msgstr "Preview"
 
-#: [publish]attach [publishbrief]attach
+#: [publish]attach
 msgid "Add a file or a picture"
 msgstr "Add a file or a picture"
 
-#: [publish]no_publication [publishbrief]no_publication
+#: [publish]no_publication
 msgid "You cannot publish a post here"
 msgstr "You cannot publish a post here"
 
-#: [publish]no_content_preview [publishbrief]no_content_preview
+#: [publish]no_content_preview
 msgid "No content to preview"
 msgstr "No content to preview"
 
-#: [publish]title [publishbrief]title
+#: [publish]title
 msgid "Post title"
 msgstr "Post title"
 
-#: [publish]content [publishbrief]content
+#: [publish]content
 msgid "Markdown content"
 msgstr "Markdown content"
 
-#: [publish]valid_url [publishbrief]valid_url
+#: [publish]valid_url
 msgid "Please enter a valid URL"
 msgstr "Please enter a valid URL"
 
-#: [publish]content_text [publishbrief]content_text
+#: [publish]content_text
 msgid "You can format your content using Markdown"
 msgstr "You can format your content using Markdown"
 
-#: [publish]draft_saved [publishbrief]draft_saved
+#: [publish]draft_saved
 msgid "Draft saved"
 msgstr "Draft saved"
 
-#: [publish]rich_editor [publishbrief]rich_editor
+#: [publish]rich_editor
 msgid "Rich text editor"
 msgstr "Rich text editor"
+
+#: [publish]help_hashtag
+msgid "Add #hashtags in your title or content to allow your article to be discovered"
+msgstr ""
 
 #: [publishhelp]title [page]help
 msgid "Help"
@@ -2082,6 +2129,15 @@ msgstr "Public profiles"
 msgid "The participants of this chatroom can see each other's profile"
 msgstr "The participants of this chatroom can see each other's profile"
 
+#: [room]archived
+msgid "Archived"
+msgstr ""
+
+#: [room]archived_text
+#, fuzzy
+msgid "The chatroom messages are archived"
+msgstr "%s messages retrieved"
+
 #: [room]group_chat
 msgid "Group Chat"
 msgstr "Group Chat"
@@ -2257,10 +2313,6 @@ msgstr "Post shared within the chatroom"
 #: [sendto]more_contacts
 msgid "More contacts"
 msgstr "More contacts"
-
-#: [statistics]title
-msgid "Statistics"
-msgstr "Statistics"
 
 #: [sticker]title
 msgid "Stickers"
@@ -3390,14 +3442,65 @@ msgstr "The API is not reachable, try again later"
 msgid "Type here"
 msgstr "Type here"
 
+#~ msgid "General Overview"
+#~ msgstr "General Overview"
+
+#~ msgid "Read and write rights for the webserver in Movim’s %s directory"
+#~ msgstr "Read and write rights for the webserver in Movim’s %s directory"
+
+#~ msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
+#~ msgstr "WebSocket connection error, check if the Movim Daemon is running and is reachable"
+
+#~ msgid "Browser"
+#~ msgstr "Browser"
+
+#~ msgid "Movim Core"
+#~ msgstr "Movim Core"
+
+#~ msgid "Movim Daemon"
+#~ msgstr "Movim Daemon"
+
+#~ msgid "Database"
+#~ msgstr "Database"
+
+#~ msgid "XMPP"
+#~ msgstr "XMPP"
+
+#~ msgid "Here you can register your pod on the official %sMovim API%s"
+#~ msgstr "Here you can register your pod on the official %sMovim API%s"
+
+#~ msgid "Your pod is not registered on the API"
+#~ msgstr "Your pod is not registered on the API"
+
+#~ msgid "Your pod is registered on the API"
+#~ msgstr "Your pod is registered on the API"
+
+#~ msgid "Your pod is not yet validated"
+#~ msgstr "Your pod is not yet validated"
+
+#~ msgid "Your pod is validated"
+#~ msgstr "Your pod is validated"
+
+#~ msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
+#~ msgstr "You asked to be removed from the API, this request will be processed in a couple of hours"
+
+#~ msgid "Call started"
+#~ msgstr "Call started"
+
+#~ msgid "Archiving preferences"
+#~ msgstr "Archiving preferences"
+
+#~ msgid "Visit the blog to see all the public posts"
+#~ msgstr "Visit the blog to see all the public posts"
+
+#~ msgid "Statistics"
+#~ msgstr "Statistics"
+
 #~ msgid "Firebase Integration"
 #~ msgstr "Firebase Integration"
 
 #~ msgid "Your Firebase Authorization Key"
 #~ msgstr "Your Firebase Authorization Key"
-
-#~ msgid "Movim can send Push Notifications to the Movim Android app using Firebase"
-#~ msgstr "Movim can send Push Notifications to the Movim Android app using Firebase"
 
 #~ msgid "Go to the Firebase panel to configure and generate your Authorization key"
 #~ msgstr "Go to the Firebase panel to configure and generate your Authorization key"

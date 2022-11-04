@@ -27,10 +27,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/AdminSessions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/AdminTest/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Api/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Avatar/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blocked/locales.ini
@@ -59,6 +55,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityHeader/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunityPosts/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunitySubscriptions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Config/locales.ini
@@ -75,11 +73,17 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Location/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Login/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/LoginAnonymous/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Menu/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Notification/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/NotificationConfig/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Notifications/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -93,8 +97,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Publish/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/PublishBrief/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/PublishHelp/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Rooms/locales.ini
@@ -104,8 +106,6 @@
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/SendTo/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -126,7 +126,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-07 14:14+0200\n"
+"POT-Creation-Date: 2022-11-04 14:11+0200\n"
 "PO-Revision-Date: 2022-02-17 07:57+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -161,7 +161,7 @@ msgstr "软件"
 msgid "Resources"
 msgstr "资源文件"
 
-#: [about]api [schema]api [api]title
+#: [about]api
 msgid "API"
 msgstr "API"
 
@@ -172,6 +172,10 @@ msgstr "Movim 是一款基于 XMPP 的交流平台。除了以下的软件和资
 #: [account]title [page]account
 msgid "Account"
 msgstr "帐户"
+
+#: [account]account_management
+msgid "Account management"
+msgstr ""
 
 #: [account]password_change_title
 msgid "Change my password"
@@ -469,66 +473,6 @@ msgstr "会话"
 msgid "Currently connected users on the pod"
 msgstr "pod上当前已连接的用户"
 
-#: [admin]compatibility
-msgid "General Overview"
-msgstr "概览"
-
-#: [compatibility]rights
-msgid "Read and write rights for the webserver in Movim’s %s directory"
-msgstr "Movim服务器的%s 读写权限目录"
-
-#: [compatibility]websocket
-msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
-msgstr "WebSocket 连接错误， 请检查 Movim 的守护进程（Daemon）是否正在运行且可以访问"
-
-#: [schema]browser
-msgid "Browser"
-msgstr "浏览器"
-
-#: [schema]movim
-msgid "Movim Core"
-msgstr "Movim 核心"
-
-#: [schema]daemon
-msgid "Movim Daemon"
-msgstr "Movim 守护进程"
-
-#: [schema]database
-msgid "Database"
-msgstr "数据库"
-
-#: [schema]xmpp
-msgid "XMPP"
-msgstr "XMPP"
-
-#: [api]info
-msgid "Here you can register your pod on the official %sMovim API%s"
-msgstr "在这里你可以在官方的 %s Movim API %s 中注册你的pod"
-
-#: [api]register
-msgid "Your pod is not registered on the API"
-msgstr "你的pod还没注册在API上."
-
-#: [api]registered
-msgid "Your pod is registered on the API"
-msgstr "你的pod已注册在API上."
-
-#: [api]wait
-msgid "Your pod is not yet validated"
-msgstr "您的pod还没验证"
-
-#: [api]validated
-msgid "Your pod is validated"
-msgstr "您的pod已验证"
-
-#: [api]unregister
-msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
-msgstr "您请求从 API 中移除，该请求会在几小时内被处理"
-
-#: [api]conf_updated [config]updated
-msgid "Configuration updated"
-msgstr "配置已更新"
-
 #: [avatar]file
 msgid "File"
 msgstr "文件"
@@ -624,6 +568,10 @@ msgstr "添加反应"
 #: [message]retract
 msgid "Retract"
 msgstr "撤回"
+
+#: [message]retract_body
+msgid "Your contact attempted to retract a previous message, but it's unsupported by your client"
+msgstr ""
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
@@ -724,9 +672,14 @@ msgstr "编辑最后一条消息"
 msgid "Report abuse"
 msgstr "举报滥用行为"
 
-#: [chat]jingle_start
-msgid "Call started"
-msgstr "通话开始"
+#: [chat]jingle_incoming [notificationconfig]audio_call
+msgid "Incoming call"
+msgstr "來电"
+
+#: [chat]jingle_outgoing
+#, fuzzy
+msgid "Outgoing call"
+msgstr "通话中"
 
 #: [chat]jingle_end
 msgid "Call ended"
@@ -1074,6 +1027,15 @@ msgstr "你将要取消订阅这个社群"
 msgid "Are you sure?"
 msgstr "您确定么?"
 
+#: [communityposts]empty_me_text
+msgid "No publication yet? Write your first post to make people discover your profile"
+msgstr ""
+
+#: [communityposts]empty_me_button
+#, fuzzy
+msgid "Publish my first post"
+msgstr "该帖的公开 URL"
+
 #: [communitysubscriptions]subscriptions
 msgid "My Subscriptions"
 msgstr "我的订阅"
@@ -1114,6 +1076,10 @@ msgstr "隐藏离线的联系人"
 msgid "Appearence"
 msgstr "外观"
 
+#: [config]updated
+msgid "Configuration updated"
+msgstr "配置已更新"
+
 #: [config]not_valid
 msgid "Configuration invalid"
 msgstr "配置无效"
@@ -1146,10 +1112,6 @@ msgstr "主聊天页面"
 msgid "Make the chat page as the default one"
 msgstr "将聊天页面设为默认页面"
 
-#: [config]mam
-msgid "Archiving preferences"
-msgstr "存档选项"
-
 #: [config]mam_text
 msgid "Server-side archiving preferences"
 msgstr "服务器上的存档选项"
@@ -1165,18 +1127,6 @@ msgstr "从不"
 #: [config]mam_saved
 msgid "Archiving preferences saved"
 msgstr "已保存归档选项"
-
-#: [config]notification_title
-msgid "Audio notifications"
-msgstr "音频通知"
-
-#: [config]notification_call
-msgid "Incoming call"
-msgstr "來电"
-
-#: [config]notification_chat
-msgid "Incoming message"
-msgstr "收到的消息"
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -1335,8 +1285,8 @@ msgid "Last public post"
 msgstr "最后的公开帖子"
 
 #: [blog]visit
-msgid "Visit the blog to see all the public posts"
-msgstr "访问这个博客并查看公共帖子"
+msgid "Visit the public blog"
+msgstr ""
 
 #: [subscription]to
 msgid "You can see this contact status"
@@ -1441,6 +1391,34 @@ msgstr "和 Movim 开发团队交流？"
 #: [chatroom]button
 msgid "Add the chatroom"
 msgstr "添加这聊天室"
+
+#: [location]title
+#, fuzzy
+msgid "My location"
+msgstr "我的发布"
+
+#: [location]enabled_title
+#, fuzzy
+msgid "Currently shared with my contacts"
+msgstr "与联系人分享的帖子"
+
+#: [location]disabled_title
+#, fuzzy
+msgid "Currently disabled"
+msgstr "评论已禁用"
+
+#: [location]last_published
+#, fuzzy
+msgid "My last published location"
+msgstr "我的发布"
+
+#: [location]less_than_one_km
+msgid "Less than a km away"
+msgstr ""
+
+#: [location]n_km_away
+msgid "%s km away"
+msgstr ""
 
 #: [error]username
 msgid "Wrong username"
@@ -1578,6 +1556,75 @@ msgstr "联系人"
 msgid "Write a new post…"
 msgstr "发一篇新的帖子…"
 
+#: [notification]request_title
+#, fuzzy
+msgid "Notifications request"
+msgstr "提醒"
+
+#: [notification]request_info
+msgid "Movim requires your approval to display notifications"
+msgstr ""
+
+#: [notification]request_info2
+msgid "This authorization can be revoked at any time"
+msgstr ""
+
+#: [notification]request_button
+msgid "Request"
+msgstr ""
+
+#: [notification]request_granted
+#, fuzzy
+msgid "Authorization granted"
+msgstr "验证代码"
+
+#: [notification]request_refused
+#, fuzzy
+msgid "Authorization refused"
+msgstr "验证代码"
+
+#: [notificationconfig]title [notifs]title [onboarding]notifications_title
+#: [room]notify_title
+msgid "Notifications"
+msgstr "提醒"
+
+#: [notificationconfig]audio_title
+msgid "Audio notifications"
+msgstr "音频通知"
+
+#: [notificationconfig]audio_chat
+msgid "Incoming message"
+msgstr "收到的消息"
+
+#: [notificationconfig]push_subscriptions
+#, fuzzy
+msgid "Push notifications"
+msgstr "音频通知"
+
+#: [notificationconfig]push_subscriptions_text
+#, fuzzy
+msgid "Movim will send push notifications to the following registered devices"
+msgstr "Movim可以使用Firebase向Movim Android应用程序发送推送通知"
+
+#: [notificationconfig]push_enabled
+msgid "Push notifications enabled for this device"
+msgstr ""
+
+#: [notificationconfig]push_disabled
+#, fuzzy
+msgid "Push notifications disabled for this device"
+msgstr "此社群的订阅功能已被禁用"
+
+#: [notificationconfig]unknown_browser
+#, fuzzy
+msgid "Unknown browser"
+msgstr "未知错误"
+
+#: [notificationconfig]unknown_platform
+#, fuzzy
+msgid "Unknown platform"
+msgstr "未知错误"
+
 #: [invitations]title
 msgid "Pending Invitations"
 msgstr "待处理的邀请"
@@ -1585,10 +1632,6 @@ msgstr "待处理的邀请"
 #: [invitations]wants_to_talk
 msgid "%s wants to talk with you"
 msgstr "%s 想同您聊天"
-
-#: [notifs]title [onboarding]notifications_title [room]notify_title
-msgid "Notifications"
-msgstr "提醒"
 
 #: [notifs]empty
 msgid "No new notifications"
@@ -1654,7 +1697,7 @@ msgstr "流行"
 msgid "Posts recently published in communities that you are not subscribed (yet)"
 msgstr "在你（还）没订阅的群组中发表的新帖子"
 
-#: [post]new [publish]new [publishbrief]new
+#: [post]new [publish]new
 msgid "New post"
 msgstr "新帖子"
 
@@ -1798,65 +1841,69 @@ msgstr "确认登出？"
 msgid "Link copied to clipboard"
 msgstr "链接复制到剪贴板"
 
-#: [publish]placeholder [publishbrief]placeholder
+#: [publish]placeholder
 msgid "What’s new?"
 msgstr "有什么新鲜事吗?"
 
-#: [publish]post [publishbrief]post
+#: [publish]post
 msgid "Write a post"
 msgstr "发一篇帖子…"
 
-#: [publish]add_link [publishbrief]add_link
+#: [publish]add_link
 msgid "Add a link"
 msgstr "添加链接"
 
-#: [publish]add_snap [publishbrief]add_snap
+#: [publish]add_snap
 msgid "Take a picture"
 msgstr "拍照"
 
-#: [publish]no_title [publishbrief]no_title
+#: [publish]no_title
 msgid "Please provide a title"
 msgstr "请提供一个标题"
 
-#: [publish]preview [publishbrief]preview
+#: [publish]preview
 msgid "Preview"
 msgstr "预览"
 
-#: [publish]attach [publishbrief]attach
+#: [publish]attach
 msgid "Add a file or a picture"
 msgstr "附加文件或图片"
 
-#: [publish]no_publication [publishbrief]no_publication
+#: [publish]no_publication
 msgid "You cannot publish a post here"
 msgstr "你不能在这里发帖"
 
-#: [publish]no_content_preview [publishbrief]no_content_preview
+#: [publish]no_content_preview
 msgid "No content to preview"
 msgstr "无内容可预览"
 
-#: [publish]title [publishbrief]title
+#: [publish]title
 msgid "Post title"
 msgstr "帖子标题"
 
-#: [publish]content [publishbrief]content
+#: [publish]content
 msgid "Markdown content"
 msgstr "Markdown内容"
 
-#: [publish]valid_url [publishbrief]valid_url
+#: [publish]valid_url
 msgid "Please enter a valid URL"
 msgstr "请输入一个有效的URL"
 
-#: [publish]content_text [publishbrief]content_text
+#: [publish]content_text
 msgid "You can format your content using Markdown"
 msgstr "你可以使用 Markdown 来格式化内容"
 
-#: [publish]draft_saved [publishbrief]draft_saved
+#: [publish]draft_saved
 msgid "Draft saved"
 msgstr "草稿已保存"
 
-#: [publish]rich_editor [publishbrief]rich_editor
+#: [publish]rich_editor
 msgid "Rich text editor"
 msgstr "富文本编辑器"
+
+#: [publish]help_hashtag
+msgid "Add #hashtags in your title or content to allow your article to be discovered"
+msgstr ""
 
 #: [publishhelp]title [page]help
 msgid "Help"
@@ -2094,6 +2141,15 @@ msgstr "公开的个人资料"
 msgid "The participants of this chatroom can see each other's profile"
 msgstr "此聊天室的参与者可以看到彼此的个人资料"
 
+#: [room]archived
+msgid "Archived"
+msgstr ""
+
+#: [room]archived_text
+#, fuzzy
+msgid "The chatroom messages are archived"
+msgstr "获取了 %s 条消息"
+
 #: [room]group_chat
 msgid "Group Chat"
 msgstr "聊天群"
@@ -2269,10 +2325,6 @@ msgstr "在聊天室中分享的帖子"
 #: [sendto]more_contacts
 msgid "More contacts"
 msgstr "更多联系人"
-
-#: [statistics]title
-msgid "Statistics"
-msgstr "统计"
 
 #: [sticker]title
 msgid "Stickers"
@@ -3402,14 +3454,65 @@ msgstr "API 无法连接，请稍后重试"
 msgid "Type here"
 msgstr "在此输入"
 
+#~ msgid "General Overview"
+#~ msgstr "概览"
+
+#~ msgid "Read and write rights for the webserver in Movim’s %s directory"
+#~ msgstr "Movim服务器的%s 读写权限目录"
+
+#~ msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
+#~ msgstr "WebSocket 连接错误， 请检查 Movim 的守护进程（Daemon）是否正在运行且可以访问"
+
+#~ msgid "Browser"
+#~ msgstr "浏览器"
+
+#~ msgid "Movim Core"
+#~ msgstr "Movim 核心"
+
+#~ msgid "Movim Daemon"
+#~ msgstr "Movim 守护进程"
+
+#~ msgid "Database"
+#~ msgstr "数据库"
+
+#~ msgid "XMPP"
+#~ msgstr "XMPP"
+
+#~ msgid "Here you can register your pod on the official %sMovim API%s"
+#~ msgstr "在这里你可以在官方的 %s Movim API %s 中注册你的pod"
+
+#~ msgid "Your pod is not registered on the API"
+#~ msgstr "你的pod还没注册在API上."
+
+#~ msgid "Your pod is registered on the API"
+#~ msgstr "你的pod已注册在API上."
+
+#~ msgid "Your pod is not yet validated"
+#~ msgstr "您的pod还没验证"
+
+#~ msgid "Your pod is validated"
+#~ msgstr "您的pod已验证"
+
+#~ msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
+#~ msgstr "您请求从 API 中移除，该请求会在几小时内被处理"
+
+#~ msgid "Call started"
+#~ msgstr "通话开始"
+
+#~ msgid "Archiving preferences"
+#~ msgstr "存档选项"
+
+#~ msgid "Visit the blog to see all the public posts"
+#~ msgstr "访问这个博客并查看公共帖子"
+
+#~ msgid "Statistics"
+#~ msgstr "统计"
+
 #~ msgid "Firebase Integration"
 #~ msgstr "Firebase集成"
 
 #~ msgid "Your Firebase Authorization Key"
 #~ msgstr "您的Firebase授权密钥"
-
-#~ msgid "Movim can send Push Notifications to the Movim Android app using Firebase"
-#~ msgstr "Movim可以使用Firebase向Movim Android应用程序发送推送通知"
 
 #~ msgid "Go to the Firebase panel to configure and generate your Authorization key"
 #~ msgstr "转到Firebase面板配置并生成您的授权密钥"
