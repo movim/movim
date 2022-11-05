@@ -8,7 +8,7 @@
     {loop="$gateways"}
     <li onclick="Account_ajaxGetRegistration('{$value->server}')">
         <span class="primary icon bubble color gray status
-            {if="$value->presence"}{getPresencesTxt($value->presence->value)}{else}offline{/if}">
+            {if="$value->presence"} {$value->presence->presencekey} {else}offline{/if}">
             <i class="material-icons">swap_horiz</i>
         </span>
         <span class="control icon gray">

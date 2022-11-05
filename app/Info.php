@@ -184,7 +184,7 @@ class Info extends Model
      */
     public function getPresenceAttribute()
     {
-        return \App\User::me()->session->presences
+        return \App\User::me()->session->presences()
                     ->where('jid', $this->attributes['server'])
                     ->first();
     }
