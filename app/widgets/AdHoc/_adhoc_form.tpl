@@ -9,7 +9,7 @@
     <button onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.close')}
     </button>
-    <button data-jid="{$jid}" onclick="AdHoc.submit(this.dataset.jid)" class="button flat">
+    <button id="adhoc_action" data-jid="{$jid}" onclick="AdHoc.submit(this.dataset.jid)" class="button flat">
         {if="$actions != null"}
             {if="isset($actions->next)"}
                 {$c->__('button.next')}

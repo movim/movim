@@ -284,7 +284,10 @@ class Notification extends Base
     public function ajaxHttpTouchPushSubscription(string $endpoint)
     {
         $pushSubscription = $this->user->pushSubscriptions()->where('endpoint', $endpoint)->firstOrFail();
-        $pushSubscription->touch();
+
+        if ($pushSubscription) {
+            $pushSubscription->touch();
+        }
     }
 
     /**

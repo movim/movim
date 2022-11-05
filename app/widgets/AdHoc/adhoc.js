@@ -21,11 +21,26 @@ var AdHoc = {
             MovimUtils.textareaAutoheight(textareas[i]);
             i++;
         }
+
+        var form = document.querySelector('#dialog form[name=command]');
+        form.addEventListener('input', e => AdHoc.checkFormValidity());
+
+        AdHoc.checkFormValidity();
     },
     submit: function(jid) {
         var form = document.querySelector('#dialog form[name=command]');
         AdHoc_ajaxSubmit(jid, MovimUtils.formToJson('command'),
             form.dataset.node, form.dataset.sessionid);
+    },
+    checkFormValidity: function() {
+        var form = document.querySelector('#dialog form[name=command]');
+        var action = document.querySelector('#dialog #adhoc_action');
+
+        if (form.checkValidity()) {
+            action.classList.remove('disabled');
+        } else {
+            action.classList.add('disabled');
+        }
     }
 }
 

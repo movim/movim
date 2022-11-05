@@ -64,6 +64,10 @@
     padding-bottom: 0;
 }
 
+.dialog > section form p {
+    margin-top: 1rem;
+}
+
 /* List specific */
 .dialog > section form ul.list li > .primary {
     left: 0;

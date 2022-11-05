@@ -22,6 +22,11 @@ class MAMResult extends Payload
             $message = \App\Message::findByStanza($stanza->forwarded->message/*, true*/);
             $message = $message->set($stanza->forwarded->message, $stanza->forwarded);
 
+            // parent message doesn't exists
+            if ($message == null) {
+                return;
+            }
+
             if ($message->isMuc()) {
                 $message->jidfrom = baseJid(($message->jidfrom));
             }

@@ -49,11 +49,13 @@ class AccountNext extends \Movim\Widget\Base
     {
         $data = $packet->content;
 
-        $view = $this->tpl();
-        $html = $view->draw('_accountnext_registered');
+        if (isset($data->username)) {
+            $view = $this->tpl();
+            $html = $view->draw('_accountnext_registered');
 
-        $this->rpc('MovimTpl.fill', '#subscribe', $html);
-        $this->rpc('setUsername', $data->username->value);
+            $this->rpc('MovimTpl.fill', '#subscribe', $html);
+            $this->rpc('setUsername', $data->username->value);
+        }
     }
 
     public function onError()

@@ -35,6 +35,11 @@ form > div label {
     /*left: 0;*/ /* We force the left align */
 }
 
+form > div input[required] + label:after {
+    content: '✱';
+    margin-left: 1rem;
+}
+
 
 *[dir="rtl"] form > div label {
     right: 0;
