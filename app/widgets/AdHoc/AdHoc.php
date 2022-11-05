@@ -29,7 +29,6 @@ class AdHoc extends \Movim\Widget\Base
     public function onCommand($package)
     {
         $command = $package->content;
-        $attributes = (array)$command->attributes();
 
         $view = $this->tpl();
         $view->assign('jid', $package->from);
@@ -45,6 +44,7 @@ class AdHoc extends \Movim\Widget\Base
             $view->assign('form', $form);
             $view->assign('attributes', $command->attributes());
             $view->assign('actions', null);
+            $view->assign('status', (string)$command->attributes()->status);
             if (isset($command->actions)) {
                 $view->assign('actions', $command->actions);
             }
