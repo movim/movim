@@ -114,7 +114,7 @@
             <li>
                 <div>
                     <p></p>
-                    <p><i class="material-icons">lightbulb</i>{$c->__('publish.help_hashtag')}</p>
+                    <p><i class="material-icons">lightbulb</i> {$c->__('publish.help_hashtag')}</p>
                 </div>
             </li>
         </ul>

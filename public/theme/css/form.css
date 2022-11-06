@@ -35,9 +35,10 @@ form > div label {
     /*left: 0;*/ /* We force the left align */
 }
 
+form > div textarea[required] + label:after,
 form > div input[required] + label:after {
     content: '✱';
-    margin-left: 1rem;
+    margin-left: 0.5rem;
 }
 
 
