@@ -133,7 +133,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
-"X-Generator: Translate Toolkit 3.7.2\n"
+"X-Generator: Translate Toolkit 3.7.3\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -173,7 +173,7 @@ msgstr "Compte"
 
 #: [account]account_management
 msgid "Account management"
-msgstr ""
+msgstr "Gestion du compte"
 
 #: [account]password_change_title
 msgid "Change my password"
@@ -563,7 +563,7 @@ msgstr "Rétracter"
 
 #: [message]retract_body
 msgid "Your contact attempted to retract a previous message, but it's unsupported by your client"
-msgstr ""
+msgstr "Votre contact a tenté de rétracter un précédent message, malheureusement cette fonctionnalité n'est pas gérée par votre client"
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
@@ -667,9 +667,8 @@ msgid "Incoming call"
 msgstr "Appel entrant"
 
 #: [chat]jingle_outgoing
-#, fuzzy
 msgid "Outgoing call"
-msgstr "en communication"
+msgstr "Appels sortants"
 
 #: [chat]jingle_end
 msgid "Call ended"
@@ -1019,12 +1018,11 @@ msgstr "Êtes-vous sûr ?"
 
 #: [communityposts]empty_me_text
 msgid "No publication yet? Write your first post to make people discover your profile"
-msgstr ""
+msgstr "Pas encore de publications ? Écrivez votre premier article pour rendre votre profil visible"
 
 #: [communityposts]empty_me_button
-#, fuzzy
 msgid "Publish my first post"
-msgstr "URL publique pour ce billet"
+msgstr "Publier mon premier article"
 
 #: [communitysubscriptions]subscriptions
 msgid "My Subscriptions"
@@ -1276,7 +1274,7 @@ msgstr "Derniers billets publics"
 
 #: [blog]visit
 msgid "Visit the public blog"
-msgstr ""
+msgstr "Visiter le blog publique"
 
 #: [subscription]to
 msgid "You can see this contact status"
@@ -1383,32 +1381,28 @@ msgid "Add the chatroom"
 msgstr "Ajouter le salon de discussion"
 
 #: [location]title
-#, fuzzy
 msgid "My location"
-msgstr "Mes publications"
+msgstr "Ma position"
 
 #: [location]enabled_title
-#, fuzzy
 msgid "Currently shared with my contacts"
-msgstr "Billet partagé avec votre contact"
+msgstr "Actuellement partagé avec mes contact"
 
 #: [location]disabled_title
-#, fuzzy
 msgid "Currently disabled"
-msgstr "Commentaires désactivés."
+msgstr "Désactivé pour le moment"
 
 #: [location]last_published
-#, fuzzy
 msgid "My last published location"
-msgstr "Mes publications"
+msgstr "Ma dernière position publiée"
 
 #: [location]less_than_one_km
 msgid "Less than a km away"
-msgstr ""
+msgstr "À moins d'un km"
 
 #: [location]n_km_away
 msgid "%s km away"
-msgstr ""
+msgstr "À %s km"
 
 #: [error]username
 msgid "Wrong username"
@@ -1547,31 +1541,28 @@ msgid "Write a new post…"
 msgstr "Écrire un nouveau billet…"
 
 #: [notification]request_title
-#, fuzzy
 msgid "Notifications request"
-msgstr "Notifications"
+msgstr "Requêtes de notifications"
 
 #: [notification]request_info
 msgid "Movim requires your approval to display notifications"
-msgstr ""
+msgstr "Movim à besoin de votre accord afin d'afficher des notifications"
 
 #: [notification]request_info2
 msgid "This authorization can be revoked at any time"
-msgstr ""
+msgstr "Cette autorisation peut être révoquée à tout moment"
 
 #: [notification]request_button
 msgid "Request"
-msgstr ""
+msgstr "Demander"
 
 #: [notification]request_granted
-#, fuzzy
 msgid "Authorization granted"
-msgstr "Code d'authentification"
+msgstr "Autorisation accordée"
 
 #: [notification]request_refused
-#, fuzzy
 msgid "Authorization refused"
-msgstr "Code d'authentification"
+msgstr "Autorisation refusée"
 
 #: [notificationconfig]title [notifs]title [onboarding]notifications_title
 #: [room]notify_title
@@ -1587,32 +1578,28 @@ msgid "Incoming message"
 msgstr "Message entrant"
 
 #: [notificationconfig]push_subscriptions
-#, fuzzy
 msgid "Push notifications"
-msgstr "Notifications audio"
+msgstr "Notifications push"
 
 #: [notificationconfig]push_subscriptions_text
 msgid "Movim will send push notifications to the following registered devices"
-msgstr ""
+msgstr "Movim va envoyer notifications push aux appareils suivants"
 
 #: [notificationconfig]push_enabled
 msgid "Push notifications enabled for this device"
-msgstr ""
+msgstr "Notifications push activées pour cet appareil"
 
 #: [notificationconfig]push_disabled
-#, fuzzy
 msgid "Push notifications disabled for this device"
-msgstr "Les souscriptions sont désactivées pour cette communauté"
+msgstr "Notifications push désactivées pour cet appareil"
 
 #: [notificationconfig]unknown_browser
-#, fuzzy
 msgid "Unknown browser"
-msgstr "Erreur inconnue"
+msgstr "Navigateur inconnu"
 
 #: [notificationconfig]unknown_platform
-#, fuzzy
 msgid "Unknown platform"
-msgstr "Erreur inconnue"
+msgstr "Plateforme inconnue"
 
 #: [invitations]title
 msgid "Pending Invitations"
@@ -1892,7 +1879,7 @@ msgstr "Éditeur de texte enrichi"
 
 #: [publish]help_hashtag
 msgid "Add #hashtags in your title or content to allow your article to be discovered"
-msgstr ""
+msgstr "Ajouter des #hastag dans le titre ou le contenu de votre article pour être plus facilement découvert"
 
 #: [publishhelp]title [page]help
 msgid "Help"
@@ -2132,12 +2119,11 @@ msgstr "Les participants de ce salon peuvent voir leurs profils réciproquement"
 
 #: [room]archived
 msgid "Archived"
-msgstr ""
+msgstr "Archivé"
 
 #: [room]archived_text
-#, fuzzy
 msgid "The chatroom messages are archived"
-msgstr "%s messages récupérés"
+msgstr "Les messages du salon sont archivés"
 
 #: [room]group_chat
 msgid "Group Chat"
@@ -3440,57 +3426,3 @@ msgstr "L’API est indisponible pour le moment, réessayez plus tard."
 #: [field]type_here
 msgid "Type here"
 msgstr "Rédigez votre message ici"
-
-#~ msgid "General Overview"
-#~ msgstr "Aperçu général"
-
-#~ msgid "Read and write rights for the webserver in Movim’s %s directory"
-#~ msgstr "Droits de lecture et d’écriture pour le serveur web dans le dossier %s"
-
-#~ msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
-#~ msgstr "Erreur de connexion WebSocket, vérifiez si le démon Movim est en cours d’exécution et s’il est joignable"
-
-#~ msgid "Browser"
-#~ msgstr "Navigateur"
-
-#~ msgid "Movim Core"
-#~ msgstr "Cœur de Movim"
-
-#~ msgid "Movim Daemon"
-#~ msgstr "Démon Movim"
-
-#~ msgid "Database"
-#~ msgstr "Base de données"
-
-#~ msgid "XMPP"
-#~ msgstr "XMPP"
-
-#~ msgid "Here you can register your pod on the official %sMovim API%s"
-#~ msgstr "Vous pouvez enregistrer ici votre pod sur %sl’API officielle%s"
-
-#~ msgid "Your pod is not registered on the API"
-#~ msgstr "Votre pod n’est pas enregistré dans l’API"
-
-#~ msgid "Your pod is registered on the API"
-#~ msgstr "Votre pod est enregistré dans l’API"
-
-#~ msgid "Your pod is not yet validated"
-#~ msgstr "Votre pod n’est pas encore validé"
-
-#~ msgid "Your pod is validated"
-#~ msgstr "Votre pod est validé"
-
-#~ msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
-#~ msgstr "Votre demande de désinscription a été prise en compte, elle sera effective dans quelques heures"
-
-#~ msgid "Call started"
-#~ msgstr "Appel entrant"
-
-#~ msgid "Archiving preferences"
-#~ msgstr "Paramètres d'archivage"
-
-#~ msgid "Visit the blog to see all the public posts"
-#~ msgstr "Visiter le blog pour voir tous les billets publics"
-
-#~ msgid "Statistics"
-#~ msgstr "Statistiques"
