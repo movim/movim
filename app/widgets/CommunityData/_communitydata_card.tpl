@@ -41,7 +41,7 @@
                 {/if}
 
                 <br />
-                <i class="material-icons icon-text">receipt</i>
+                <i class="material-icons icon-text">article</i>
                 {$c->__('communitydata.num', $num)}
                 ·
                 <i class="material-icons icon-text">people</i>

@@ -55,7 +55,7 @@
             </p>
             <p class="line on_mobile" {if="$info != null && $info->description"}title="{$info->description|strip_tags}"{/if}>
                 {if="$num > 0"}
-                    <i class="material-icons">receipt</i> {$num}
+                    <i class="material-icons">article</i> {$num}
                 {/if}
                 {if="$info != null"}
                     · <i class="material-icons">people</i> {$info->occupants}

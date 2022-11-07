@@ -173,6 +173,7 @@ class Notifications extends Base
                   ->where('aid', $this->user->id)
                   ->orderBy('published', 'desc');
         })
+        ->where('aid', '!=', $this->user->id)
         ->orderBy('published', 'desc')
         ->limit(30)
         ->with('parent')

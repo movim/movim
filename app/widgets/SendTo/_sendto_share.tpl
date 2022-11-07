@@ -26,7 +26,7 @@
     <hr />
 
     {if="$conferences->isNotEmpty()"}
-        <ul class="list thin divided spaced">
+        <ul class="list thin">
             <li class="subheader">
                 <div>
                     <p>{$c->__('sendto.chatroom')}</p>
@@ -70,7 +70,7 @@
         </ul>
     {/if}
 
-    <ul class="list divided spaced" id="sendto_contacts">
+    <ul class="list thin" id="sendto_contacts">
         {autoescape="off"}
             {$c->prepareContacts($contacts, $uri, $openlink)}
         {/autoescape}

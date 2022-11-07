@@ -7,7 +7,7 @@
     <li class="{if="$value->presence && $value->presence->value > 4"}faded{/if}">
         {$url = $value->getPhoto('m')}
         {if="$url"}
-            <span class="primary icon bubble
+            <span class="primary icon bubble small
                 {if="!$value->presence || $value->presence->value > 4"}
                     disabled
                 {else}
@@ -16,7 +16,7 @@
                 style="background-image: url({$url});">
             </span>
         {else}
-            <span class="primary icon bubble color {$value->jid|stringToColor}
+            <span class="primary icon bubble small color {$value->jid|stringToColor}
                 {if="!$value->presence || $value->presence->value > 4"}
                     disabled
                 {else}
@@ -37,8 +37,9 @@
                         {$value->group}
                     </span>
                 {/if}
+
+                <span class="second">{$value->jid}</span>
             </p>
-            <p>{$value->jid}</p>
         </div>
     </li>
 {/loop}

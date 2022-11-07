@@ -58,7 +58,7 @@
 
     <ul class="thick active divided spaced" id="menu_wrapper">
         <div class="placeholder">
-            <i class="material-icons">receipt</i>
+            <i class="material-icons">article</i>
             <h1>{$c->__('menu.empty_title')}</h1>
             <h4>{$c->__('menu.empty')}</h4>
             <h4>

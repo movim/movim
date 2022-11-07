@@ -86,13 +86,17 @@ class Menu extends Base
         if ($post->isComment()
         && !$post->isMine()) {
             $contact = \App\Contact::firstOrNew(['id' => $post->aid]);
-            Notification::append(
-                'comments',
-                $contact->truename,
-                ($post->isLike()) ? __('post.liked') : $post->title,
-                $contact->getPhoto(),
-                2
-            );
+            $parent = $post->parent;
+
+            if ($parent) {
+                Notification::append(
+                    'comments',
+                    '📝 ' . $parent->title,
+                    ($post->isLike()) ? '❤️ ' .$contact->truename : $post->title,
+                    $contact->getPhoto(),
+                    2
+                );
+            }
         } elseif ($count > 0
         && (strtotime($post->published) > strtotime($since))) {
             if ($post->isMicroblog()) {
@@ -105,8 +109,8 @@ class Menu extends Base
                 if (!$post->isMine()) {
                     Notification::append(
                         'news',
+                        '📝' . $title,
                         $contact->truename,
-                        $title,
                         $contact->getPhoto(),
                         2,
                         $this->route('post', [$post->server, $post->node, $post->nodeid]),

@@ -13,7 +13,7 @@
 
     {if="$posts->count() == 0"}
         <div class="placeholder">
-            <i class="material-icons">receipt</i>
+            <i class="material-icons">article</i>
             <h4>{$c->__('chat.new_title')}</h4>
         </div>
     {else}
