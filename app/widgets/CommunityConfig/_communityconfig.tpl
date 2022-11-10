@@ -15,8 +15,8 @@
             <label for="pubsub#description">{$c->__('communityconfig.description')}</label>
         </div>
         <div>
-            <ul class="list middle labeled">
-                <li class="wide">
+            <ul class="list middle labeled fill">
+                <li>
                     <span class="control">
                         <div class="radio">
                             <input name="pubsub#publish_model" value="open"
@@ -30,7 +30,7 @@
                         <p>{$c->__('communityconfig.publish_model_open_text')}</p>
                     </div>
                 </li>
-                <li class="wide">
+                <li>
                     <span class="control">
                         <div class="radio">
                             <input name="pubsub#publish_model" value="publishers"
@@ -44,7 +44,7 @@
                         <p>{$c->__('communityconfig.publish_model_publishers_text')}</p>
                     </div>
                 </li>
-                <li class="wide">
+                <li>
                     <span class="control">
                         <div class="radio">
                             <input name="pubsub#publish_model" value="subscribers"

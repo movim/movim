@@ -6,7 +6,7 @@
             </span>
             <div>
                 <p class="line normal">{$c->__('blocked.info')}</p>
-                <p class="line">{$c->__('blocked.info2')}</p>
+                <p>{$c->__('blocked.info2')}</p>
             </div>
         </li>
     </ul>

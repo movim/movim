@@ -64,7 +64,7 @@
     padding-bottom: 0;
 }
 
-.dialog > section form p {
+.dialog > section form > p {
     margin-top: 1rem;
 }
 

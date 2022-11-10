@@ -203,7 +203,6 @@
                         </div>
                     </span>
                     <div>
-                        <p></p>
                         <p class="normal">{$c->__('chatrooms.pinned')}</p>
                     </div>
                 </li>
