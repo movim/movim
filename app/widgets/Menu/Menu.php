@@ -109,7 +109,7 @@ class Menu extends Base
                 if (!$post->isMine()) {
                     Notification::append(
                         'news',
-                        '📝' . $title,
+                        '📝 ' . $title,
                         $contact->truename,
                         $contact->getPhoto(),
                         2,
