@@ -1,11 +1,11 @@
 <h1 align="center">Movim</h1>
 
 <p align="center"><img src="https://movim.eu/img/128.png"/></p>
-<h3 align="center">Decentralized social and IM platform</h3>
+<h3 align="center">Federated blogging and chat platform</h3>
 
 About
 -----
-Movim is a social and chat platform that acts as a web frontend for the XMPP protocol.
+Movim is a federated blogging and chat platform that acts as a web frontend for the XMPP protocol.
 
 ![movim screenshot](https://movim.eu/img/home.png)
 
