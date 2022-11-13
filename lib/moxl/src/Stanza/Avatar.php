@@ -39,7 +39,7 @@ class Avatar
         \Moxl\API::request($xml);
     }
 
-    public static function setMetadata($data, $url = false, $to = false, $node = false)
+    public static function setMetadata($data, $url = false, $to = false, $node = false, $width = 350, $height = 350)
     {
         $decoded = base64_decode($data);
 
@@ -65,8 +65,8 @@ class Avatar
             $info->setAttribute('url', $url);
         }
 
-        $info->setAttribute('height', '410');
-        $info->setAttribute('width', '410');
+        $info->setAttribute('width', $width);
+        $info->setAttribute('height', $height);
         $info->setAttribute('type', 'image/jpeg');
         $info->setAttribute('id', sha1($decoded));
         $info->setAttribute('bytes', strlen($decoded));

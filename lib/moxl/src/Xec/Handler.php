@@ -155,6 +155,9 @@ class Handler
 
             '1cb493832467273efa384bbffa6dc35a' => 'Avatar',
             '0f59aa7fb0492a008df1b807e91dda3b' => 'AvatarMetadata',
+
+            '64d80ef76ceb442578e658fa39cde8c9' => 'BannerMetadata', // Movim specific for now
+
             '36fe2745bdc72b1682be2c008d547e3d' => 'Vcard4',
 
             '0923dd6b12f46f658b4273104a129ec9' => 'JinglePropose',

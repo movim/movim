@@ -4,37 +4,45 @@
     </a>
 {/if}
 
+{$banner = $contact->getBanner()}
+
+<header class="big top"
+        style="background-image:
+                linear-gradient(to top, rgba(23,23,23,0.9) 0, rgba(23,23,23,0.6) 7rem, rgba(23,23,23,0) 12rem),
+                url('{$banner}');
+              ">
+
 <ul class="list thick">
-    <li>
+    <li class="block large">
         {if="!$contact->isMe()"}
-            <span class="control icon active gray" onclick="ContactActions_ajaxChat('{$contact->id|echapJS}')"
+            <span class="control icon active white" onclick="ContactActions_ajaxChat('{$contact->id|echapJS}')"
                 title="{$c->__('button.chat')}">
                 <i class="material-icons">comment</i>
             </span>
         {/if}
         {if="$roster"}
-            <span class="control icon active gray divided" onclick="ContactHeader_ajaxEditContact('{$contact->id|echapJS}')"
+            <span class="control icon active white divided" onclick="ContactHeader_ajaxEditContact('{$contact->id|echapJS}')"
                 title="{$c->__('button.edit')}">
                 <i class="material-icons">edit</i>
             </span>
-            <span class="control icon active gray" onclick="ContactHeader_ajaxDeleteContact('{$contact->id|echapJS}')"
+            <span class="control icon active white" onclick="ContactHeader_ajaxDeleteContact('{$contact->id|echapJS}')"
                 title="{$c->__('button.delete')}">
                 <i class="material-icons">delete</i>
             </span>
         {else}
             {if="$contact->isMe()"}
-                <span class="control icon active gray divided" onclick="MovimUtils.redirect('{$c->route('conf')}')"
+                <span class="control icon active white divided" onclick="MovimUtils.redirect('{$c->route('conf')}')"
                     title="{$c->__('button.edit')}">
                     <i class="material-icons">edit</i>
                 </span>
             {else}
-                <span class="control icon active gray divided" onclick="ContactActions_ajaxAddAsk('{$contact->id|echapJS}')"
+                <span class="control icon active white divided" onclick="ContactActions_ajaxAddAsk('{$contact->id|echapJS}')"
                     title="{$c->__('button.add')}">
                     <i class="material-icons">person_add</i>
                 </span>
             {/if}
         {/if}
-        <span class="primary icon active gray" onclick="history.back()">
+        <span class="primary icon active white" onclick="history.back()">
             <i class="material-icons">arrow_back</i>
         </span>
         {$url = $contact->getPhoto('m')}
@@ -56,3 +64,4 @@
         </div>
     </li>
 </ul>
+{if="$banner"}</header>{/if}

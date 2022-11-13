@@ -25,6 +25,10 @@ class Utils
             'urn:xmpp:avatar:data',
             'urn:xmpp:avatar:metadata',
             'urn:xmpp:avatar:metadata+notify',
+
+            'urn:xmpp:movim-banner:0',
+            'urn:xmpp:movim-banner:0+notify',
+
             'urn:xmpp:receipts',
             'urn:xmpp:carbons:2',
             'jabber:iq:version',

@@ -9,8 +9,15 @@ header.big {
     margin-bottom: 0.5rem;
 }
 
+header.big.top {
+    border-radius: 0 0 1rem 1rem;
+    padding-top: 15rem;
+    margin-bottom: 1rem;
+}
+
 header.big ul li {
     padding-right: 0;
+    padding-left: 0;
 }
 
 /* Specific forms in header */

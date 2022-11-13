@@ -74,19 +74,21 @@ class GetItem extends Errors
 
                     if ($i && $i->avatarhash !== (string)$item->metadata->info->attributes()->id) {
                         $p = new Image;
-                        $p->fromURL((string)$item->metadata->info->attributes()->url);
-                        $p->setKey((string)$item->metadata->info->attributes()->id);
-                        $p->save();
 
-                        $i->avatarhash = (string)$item->metadata->info->attributes()->id;
-                        $i->save();
+                        if ($p->fromURL((string)$item->metadata->info->attributes()->url)) {
+                            $p->setKey((string)$item->metadata->info->attributes()->id);
+                            $p->save();
 
-                        $this->method('avatar');
-                        $this->pack([
-                            'server' => $this->_to,
-                            'node' => $this->_node
-                        ]);
-                        $this->deliver();
+                            $i->avatarhash = (string)$item->metadata->info->attributes()->id;
+                            $i->save();
+
+                            $this->method('avatar');
+                            $this->pack([
+                                'server' => $this->_to,
+                                'node' => $this->_node
+                            ]);
+                            $this->deliver();
+                        }
                     }
                 }
             }

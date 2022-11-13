@@ -127,6 +127,13 @@ class Contact extends Model
         return !empty($this->id) ? getPhoto($this->id, $size) : null;
     }
 
+    public function getBanner($size = 'xxl')
+    {
+        $banner = !empty($this->id) ? getPhoto($this->id . '_banner', $size) : null;
+
+        return $banner == null ? $this->getPhoto($size) : $banner;
+    }
+
     public function setLocation($item)
     {
         // Clear

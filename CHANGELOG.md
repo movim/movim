@@ -26,6 +26,7 @@ v0.21 (trunk)
  * Replace support of XEP-0049 by XEP-0223 to save Movim configuration
  * Handle vCard4 phone numbers
  * Update the CSS to Material 3, make things a bit more roundy
+ * Add contact banners support in Movim
 
 v0.20
 ---------------------------

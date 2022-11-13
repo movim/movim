@@ -11,6 +11,8 @@ class Set extends Action
     protected $_to = false;
     protected $_node = false;
     protected $_url = false;
+    protected $_widthMetadata = 350;
+    protected $_heightMetadata = 350;
 
     public function request()
     {
@@ -20,7 +22,20 @@ class Set extends Action
             Avatar::set($this->_data, $this->_to, $this->_node);
         }
 
-        Avatar::setMetadata($this->_data, $this->_url, $this->_to, $this->_node);
+        Avatar::setMetadata($this->_data, $this->_url, $this->_to, $this->_node,
+            $this->_widthMetadata, $this->_heightMetadata);
+    }
+
+    public function setWidthMetadata($width)
+    {
+        $this->_widthMetadata = $width;
+        return $this;
+    }
+
+    public function setHeightMetadata($height)
+    {
+        $this->_heightMetadata = $height;
+        return $this;
     }
 
     public function handle($stanza, $parent = false)

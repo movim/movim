@@ -727,7 +727,14 @@ function requestURL(string $url, int $timeout = 10, $post = false, bool $json = 
         curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
     }
 
+    // Disable SSL if the host requested is the local one
+    if (parse_url(config('daemon.url'), PHP_URL_HOST) == parse_url($url, PHP_URL_HOST)) {
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+    }
+
     $content = curl_exec($ch);
+
     return curl_errno($ch) == 0 ? $content : false;
 }
 
