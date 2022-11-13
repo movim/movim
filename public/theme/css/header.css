@@ -17,6 +17,9 @@ header.big.top {
 
 header.big ul li {
     padding-right: 0;
+}
+
+header.big.top ul li {
     padding-left: 0;
 }
 
