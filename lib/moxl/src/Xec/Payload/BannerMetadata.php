@@ -10,13 +10,22 @@ class BannerMetadata extends Payload
     {
         $jid = baseJid((string)$parent->attributes()->from);
 
+        $c = \App\Contact::firstOrNew(['id' => $jid]);
+
         if (isset($stanza->items->item->metadata->info)
          && isset($stanza->items->item->metadata->info->attributes()->url)) {
-            $p = new Image;
+            $info = $stanza->items->item->metadata->info->attributes();
 
-            if ($p->fromURL((string)$stanza->items->item->metadata->info->attributes()->url)) {
-                $p->setKey($jid . '_banner');
-                $p->save();
+            if ($info->id != $c->bannerhash) {
+                $c->bannerhash = $info->id;
+                $c->save();
+
+                $p = new Image;
+
+                if ($p->fromURL((string)$info->url)) {
+                    $p->setKey($jid . '_banner');
+                    $p->save();
+                }
             }
         }
     }
