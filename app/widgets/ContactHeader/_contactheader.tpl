@@ -7,9 +7,15 @@
 {$banner = $contact->getBanner()}
 
 <header class="big top"
-        style="background-image:
-                linear-gradient(to top, rgba(23,23,23,0.9) 0, rgba(23,23,23,0.6) 7rem, rgba(23,23,23,0) 12rem),
-                url('{$banner}');
+        style="
+                background-image:
+                linear-gradient(to top, rgba(23,23,23,0.9) 0, rgba(23,23,23,0.6) 5rem, rgba(23,23,23,0) 12rem),
+                {if="$banner"}
+                    url('{$banner}')
+                {else}
+                    linear-gradient(to bottom, {$contact->jid|stringToColor}, {$contact->jid|stringToColor})
+                {/if}
+                ;
               ">
 
 <ul class="list thick">
