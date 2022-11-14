@@ -15,7 +15,7 @@
                 onclick="Chats_ajaxOpen('{$value->jid|echapJS}'); Chat.get('{$value->jid|echapJS}');">
                 {$url = $value->getPhoto('m')}
                 {if="$url"}
-                    <img class="main" src="{$value->getPhoto('l')}">
+                    <img class="main" src="{$value->getBanner('l')}">
                     <span class="primary icon bubble
                         {if="$value->presence"}
                             status {$value->presence->presencekey}
