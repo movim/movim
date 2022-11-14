@@ -395,7 +395,8 @@ main:not(.enabled) #chat_widget {
 }
 
 #chat_widget div.quoted {
-    border-right: 4px solid rgb(var(--movim-main));
+    border-right: 3px solid rgb(var(--movim-main));
+    border-radius: 0 3px 3px;
 }
 
 /* File preview */
