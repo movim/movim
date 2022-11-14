@@ -6,14 +6,12 @@
 
 {$banner = $contact->getBanner()}
 
-<header class="big top"
+<header class="big top color {$contact->jid|stringToColor}"
         style="
                 background-image:
-                linear-gradient(to top, rgba(23,23,23,0.9) 0, rgba(23,23,23,0.6) 5rem, rgba(23,23,23,0) 12rem),
+                linear-gradient(to top, rgba(23,23,23,0.9) 0, rgba(23,23,23,0.6) 5rem, rgba(23,23,23,0) 12rem)
                 {if="$banner"}
-                    url('{$banner}')
-                {else}
-                    linear-gradient(to bottom, {$contact->jid|stringToColor}, {$contact->jid|stringToColor})
+                    , url('{$banner}')
                 {/if}
                 ;
               ">
