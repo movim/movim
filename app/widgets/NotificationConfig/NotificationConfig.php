@@ -13,7 +13,7 @@ class NotificationConfig extends Base
 
     public function ajaxHttpPushGetConfig(?string $endpoint = null)
     {
-        $pushSubscriptions = $this->user->pushSubscriptions;
+        $pushSubscriptions = $this->user->pushSubscriptions()->orderBy('activity_at', 'desc')->get();
 
         foreach ($pushSubscriptions as $pushSubscription) {
             $pushSubscription->self = ($pushSubscription->endpoint == $endpoint);

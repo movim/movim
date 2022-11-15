@@ -6,6 +6,7 @@ use Movim\Session;
 
 use Minishlink\WebPush\WebPush;
 use Minishlink\WebPush\Subscription;
+use Carbon\Carbon;
 
 use App\PushSubscription;
 
@@ -286,7 +287,8 @@ class Notification extends Base
         $pushSubscription = $this->user->pushSubscriptions()->where('endpoint', $endpoint)->firstOrFail();
 
         if ($pushSubscription) {
-            $pushSubscription->touch();
+            $pushSubscription->activity_at = Carbon::now();
+            $pushSubscription->save();
         }
     }
 
