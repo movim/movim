@@ -36,7 +36,7 @@
                 <li>
                     {$url = $value->getPhoto()}
                     {if="$url"}
-                        <span class="primary icon bubble color small {$value->name|stringToColor}"
+                        <span class="primary icon bubble small"
                             style="background-image: url({$url});">
                         </span>
                     {else}

@@ -4,13 +4,13 @@ namespace Moxl\Stanza;
 
 class Avatar
 {
-    public static function get($to)
+    public static function get($to, $node = false)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
 
         $items = $dom->createElement('items');
-        $items->setAttribute('node', 'urn:xmpp:avatar:data');
+        $items->setAttribute('node', $node ? $node : 'urn:xmpp:avatar:data');
         $pubsub->appendChild($items);
 
         $xml = \Moxl\API::iqWrapper($pubsub, $to, 'get');

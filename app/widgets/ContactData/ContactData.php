@@ -59,6 +59,9 @@ class ContactData extends Base
             $a = new Moxl\Xec\Action\Avatar\Get;
             $a->setTo(echapJid($jid))->request();
 
+            $a = new Moxl\Xec\Action\Banner\Get;
+            $a->setTo(echapJid($jid))->request();
+
             $v = new Moxl\Xec\Action\Vcard\Get;
             $v->setTo(echapJid($jid))->request();
 
