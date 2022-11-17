@@ -1,0 +1,22 @@
+# Service settings
+
+MOVIM_DIR="path/to/movim/installation" 
+MOVIM_USR="www-data"
+
+# Database configuration
+#DB_DRIVER=""
+#DB_HOST=""
+#DB_PORT=""
+#DB_DATABASE=""
+#DB_USERNAME=""
+#DB_PASSWORD=""
+
+# Daemon configuration
+#DAEMON_URL="" # Public URL of your Movim instance
+#DAEMON_PORT="8080" # Port on which the daemon will listen
+#DAEMON_INTERFACE="127.0.0.1" # Interface on which the daemon will listen, must be an IP
+#DAEMON_DEBUG="false"
+#DAEMON_VERBOSE="false"
+
+#CACHE_PATH="/cache/"
+#LOG_PATH="/log/"

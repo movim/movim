@@ -1,0 +1,9 @@
+#!/bin/bash
+# Author: <lyn1337> xmpp:yvelia@31337.one
+
+# Load config
+[ -r ./conf ] && . ./conf
+
+# Run Movim
+cd ${MOVIM_DIR}
+exec chpst -P -u ${MOVIM_USR} php daemon.php start
