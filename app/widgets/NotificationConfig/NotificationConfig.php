@@ -13,7 +13,9 @@ class NotificationConfig extends Base
 
     public function ajaxHttpPushGetConfig(?string $endpoint = null)
     {
-        $pushSubscriptions = $this->user->pushSubscriptions()->orderBy('activity_at', 'desc')->get();
+        $pushSubscriptions = config('database.driver') == 'mysql'
+            ? $this->user->pushSubscriptions()->orderByRaw('(activity_at is null), activity_at desc')->get()
+            : $this->user->pushSubscriptions()->orderByRaw('activity_at desc nulls last')->get();
 
         foreach ($pushSubscriptions as $pushSubscription) {
             $pushSubscription->self = ($pushSubscription->endpoint == $endpoint);

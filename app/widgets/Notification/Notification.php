@@ -92,7 +92,7 @@ class Notification extends Base
 
             // Push notification
             if ($webPush) {
-                foreach (\App\User::me()->pushSubscriptions()->where('enabled', true)->get() as $pushSubscription) {
+                foreach (\App\User::me()->pushSubscriptions()->where('enabled', true)->whereNotNull('activity_at')->get() as $pushSubscription) {
                     $subscription = Subscription::create([
                         'endpoint' => $pushSubscription->endpoint,
                         'contentEncoding' => 'aesgcm',
@@ -270,6 +270,7 @@ class Notification extends Base
         $p->endpoint = $endpoint;
         $p->auth = $auth;
         $p->p256dh = $p256dh;
+        $p->activity_at = Carbon::now();
 
         if ($userAgent) {
             $p->browser = getBrowser($userAgent);
