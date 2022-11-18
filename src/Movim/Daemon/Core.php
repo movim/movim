@@ -169,6 +169,8 @@ class Core implements MessageComponentInterface
                 unset($this->sessions[$sid]);
             }
         }
+
+        gc_collect_cycles();
     }
 
     public function forceClose($sid)

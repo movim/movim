@@ -6,13 +6,13 @@ use Movim\Session;
 
 class Handler
 {
-    public static function handle($child)
+    public static function handle(\SimpleXMLElement $child)
     {
         $id = (in_array($child->getName(), ['iq', 'presence', 'message']))
             ? (string)$child->attributes()->id
             : '';
 
-        $sess = Session::start();
+        $session = Session::start();
 
         /**
          * See Action/Presence/Muc
@@ -21,20 +21,20 @@ class Handler
             foreach ($child->x as $x) {
                 if ($x->attributes()->xmlns == 'http://jabber.org/protocol/muc') {
                     if ($id === '') {
-                        $id = $sess->get((string)$child->attributes()->from);
+                        $id = $session->get((string)$child->attributes()->from);
                     }
 
-                    $sess->remove((string)$child->attributes()->from);
+                    $session->delete((string)$child->attributes()->from);
                 }
             }
         }
 
         if ($id !== ''
-        && $sess->get($id) !== false) {
+        && $session->get($id) !== null) {
             \Utils::info("Handler : Memory instance found for {$id}");
 
-            $action = $sess->get($id);
-            $sess->remove($id);
+            $action = $session->get($id);
+            $session->delete($id);
 
             $error = false;
 

@@ -19,7 +19,7 @@ class Start extends Action
     public function handle($stanza, $parent = false)
     {
         $session = Session::start();
-        $session->remove('password');
+        $session->delete('password');
 
         $session = \App\User::me()->session;
         $session->active = true;

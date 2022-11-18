@@ -39,7 +39,7 @@ $wrapper->registerAll($bootstrap->getWidgets());
 
 $xmppSocket = null;
 
-$parser = new \Moxl\Parser(function ($node) {
+$parser = new \Moxl\Parser(function (\SimpleXMLElement $node) {
     \Moxl\Xec\Handler::handle($node);
 });
 

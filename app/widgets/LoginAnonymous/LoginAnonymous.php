@@ -32,20 +32,12 @@ class LoginAnonymous extends Base
         $host = 'anonymous.jappix.com';
         $password = 'AmISnowden?';
 
-        // We try to get the domain
-        $domain = \Moxl\Utils::getDomain($host);
-
         // We launch the XMPP socket
         $this->rpc('register', $host);
 
         // We set the username in the session
-        $s = Session::start();
-        $s->set('username', $username);
-
-        $s = new \Modl\Sessionx;
-        $s->init($username, $password, $host);
-        $s->loadMemory();
-        $sd->set($s);
+        $session = Session::start();
+        $session->set('username', $username);
 
         \Moxl\Stanza\Stream::init($host);
     }

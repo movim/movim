@@ -290,7 +290,7 @@ class Publish extends Base
 
         if ($shareUrl) {
             $this->ajaxAddEmbed($id, $shareUrl);
-            $session->remove('share_url');
+            $session->delete('share_url');
         }
     }
 

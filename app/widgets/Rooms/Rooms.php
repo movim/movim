@@ -295,7 +295,7 @@ class Rooms extends Base
 
         if ($resource) {
             $session = Session::start();
-            $session->remove($room . '/' .$resource);
+            $session->delete($room . '/' .$resource);
 
             $pu = new Unavailable;
             $pu->setTo($room)

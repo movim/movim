@@ -298,7 +298,7 @@ class Visio extends Base
 
     public function ajaxTerminate(string $to, string $sid, $reason = 'success')
     {
-        Session::start()->remove('jingleSid');
+        Session::start()->delete('jingleSid');
 
         $st = new SessionTerminate;
         $st->setTo($to)

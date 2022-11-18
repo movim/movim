@@ -23,7 +23,7 @@ class Notification extends Base
 
     public function onSessionUp()
     {
-        Session::start()->remove('session_down');
+        Session::start()->delete('session_down');
     }
 
     public function onSessionDown()
@@ -227,7 +227,7 @@ class Notification extends Base
         $session = Session::start();
         $notifs = $session->get('notifs');
 
-        if ($notifs == false) $notifs = [];
+        if ($notifs == null) $notifs = [];
 
         $notifs['chat'] = (\App\User::me())->unreads();
         RPC::call('Notification.refresh', $notifs);

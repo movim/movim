@@ -277,7 +277,7 @@ class RoomsUtils extends Base
         // Disconnect properly
         $nick = $values['nick'] ?? $this->user->session->username;
         $session = Session::start();
-        $session->remove($values['jid'] . '/' .$nick);
+        $session->delete($values['jid'] . '/' .$nick);
 
         $pu = new Unavailable;
         $pu->setTo($values['jid'])

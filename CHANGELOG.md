@@ -27,6 +27,7 @@ v0.21 (trunk)
  * Handle vCard4 phone numbers
  * Update the CSS to Material 3, make things a bit more roundy
  * Add contact banners support in Movim
+ * Implement PSR-16: Common Interface for Caching Libraries for the Movim Session
 
 v0.20
 ---------------------------
