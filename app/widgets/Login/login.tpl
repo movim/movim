@@ -168,6 +168,23 @@
                 </ul>
             {/if}
 
+            <ul class="list thin">
+                <li class="subheader">
+                    <div>
+                        <p>About Movim</p>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <p></p>
+                        <p>
+                            {$c->__('about_movim.info')} <br />
+                            <a href="https://movim.eu" target="_blank">{$c->__('about_movim.website', 'movim.eu')}</a>
+                        </p>
+                    </div>
+                </li>
+            </ul>
+
             <ul class="list middle hide" id="pwa">
                 <li class="block active">
                     <span class="primary icon bubble gray">
