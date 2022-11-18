@@ -68,4 +68,4 @@
         </div>
     </li>
 </ul>
-{if="$banner"}</header>{/if}
+</header>

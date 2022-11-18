@@ -1,33 +1,36 @@
 <header>
     {if="$mode == 'blog'"}
-    <ul class="list thick">
-        <li>
-            <span class="primary icon gray">
-                <i class="material-icons">edit</i>
-            </span>
-            {if="$contact"}
-                <span class="control icon active">
-                    <a
-                        href="{$c->route('feed', $contact->jid)}"
-                        target="_blank"
-                        title="Atom"
-                    >
-                        <i class="material-icons">rss_feed</i>
-                    </a>
-                </span>
-                <div>
-                    <p>
-                        <a href="{$contact->getBlogUrl()}">
-                            {$c->__('blog.title', $contact->truename)}
-                        </a>
-                    </p>
-                    <p>
-                        {$c->__('page.blog')}
-                    </p>
-                </div>
-            {/if}
-        </li>
-    </ul>
+        {$banner = $contact->getBanner()}
+        <header class="big top color {$contact->jid|stringToColor}"
+            style="
+                    background-image:
+                    linear-gradient(to top, rgba(23,23,23,0.9) 0, rgba(23,23,23,0.6) 5rem, rgba(23,23,23,0) 12rem)
+                    {if="$banner"}
+                        , url('{$banner}')
+                    {/if}
+                    ;
+                ">
+            <ul class="list thick">
+                <li>
+                    <span class="primary icon">
+                        <i class="material-icons">edit</i>
+                    </span>
+                    {if="$contact"}
+                        <span class="control icon active" onclick="MovimUtils.openInNew('{$c->route('feed', $contact->jid)}')">
+                            <i class="material-icons">rss_feed</i>
+                        </span>
+                        <div>
+                            <p>
+                                {$c->__('blog.title', $contact->truename)}
+                            </p>
+                            <p>
+                                {$c->__('page.blog')}
+                            </p>
+                        </div>
+                    {/if}
+                </li>
+            </ul>
+        </header>
     {elseif="$mode == 'tag'"}
     <ul class="list middle">
         <li>
@@ -115,7 +118,7 @@
     {/if}
 </header>
 
-<ul class="list card shadow {if="$gallery"}middle flex third gallery active{/if}" id="blog" >
+<ul class="list card shadow {if="$gallery"}middle flex third gallery large active{/if}" id="blog" >
     {if="$posts == null || $posts->isEmpty()"}
         <article class="block">
             <ul class="list simple thick">
