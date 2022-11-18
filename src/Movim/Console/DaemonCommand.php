@@ -70,15 +70,13 @@ class DaemonCommand extends Command
             $output->writeln('<info>php daemon.php setAdmin {jid}</info>'."\n");
         }
 
-        $locale = Locale::start();
+        $compileLanguages = new \React\ChildProcess\Process('exec php daemon.php compileLanguages');
+        $compileLanguages->start($loop);
+        $compileLanguages->on('exit', function ($out) use ($output) { $output->writeln('<info>Compiled po files</info>'); });
 
-        $locale->compileIni();
-        $output->writeln('<info>Compiled hash file</info>');
-        $locale->compilePos();
-        $output->writeln('<info>Compiled po files</info>');
-
-        $count = compileStickers();
-        $output->writeln('<info>'.$count.' stickers compiled</info>');
+        $compileStickers = new \React\ChildProcess\Process('exec php daemon.php compileStickers');
+        $compileStickers->start($loop);
+        $compileStickers->on('exit', function ($out) use ($output) { $output->writeln('<info>Stickers compiled</info>'); });
 
         $output->writeln('<info>Movim daemon launched</info>');
         $output->writeln('<info>Base URL: '.$baseuri.'</info>');
