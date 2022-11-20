@@ -140,6 +140,13 @@ var ChatOmemo = {
                 Chat.setOmemoState('yes');
                 Chat.disableSending();
 
+                // Refreshing the unencrypted messages
+                if (Boolean(textarea.dataset.muc)) {
+                    Chat_ajaxGetRoom(jid);
+                } else {
+                    Chat_ajaxGet(jid);
+                }
+
                 if (Chat.getTextarea().value.length > 0) {
                     Chat.sendMessage();
                 }
