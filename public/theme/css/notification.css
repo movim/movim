@@ -10,7 +10,6 @@
     width: 48rem;
     height: auto;
     color: white;
-    padding: 2rem 3rem;
     box-sizing: border-box;
     pointer-events: none;
     transition: opacity 0.2s ease, transform 0.4s ease;
@@ -23,39 +22,28 @@ body.nightmode .toast {
     background-color: rgb(var(--movim-background));
 }
 
-.toast,
-.snackbar p {
+.snackbar ul.active {
+    pointer-events: auto;
+}
+
+.toast {
+    padding: 2rem 3rem;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
 
-.snackbar > a {
-    pointer-events: auto;
-    margin: -1rem -2rem;
-    display: block;
-    margin: -2rem -1rem;
-    transition: border 0.2s ease;
-    border: 2px solid transparent;
-    padding: calc(2rem - 2px) calc(1rem - 2px);
-}
-
-.snackbar > a:hover {
-    border: 2px solid rgba(255, 255, 255, 0.2);
-}
-
 .snackbar {
     right: 1rem;
-    border-radius: 0.25rem;
+    border-radius: 1rem;
     opacity: 1;
-    padding: 2rem 1rem;
     top: 1rem;
 }
 
 .toast {
     left: calc(50% - 24rem);
     line-height: 2.5rem;
-    border-radius: 0.75rem;
+    border-radius: 1rem;
     bottom: 3rem;
 }
 

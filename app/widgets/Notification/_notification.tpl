@@ -1,21 +1,21 @@
-{if="isset($action)"}
-<a href="{$action}">
-{elseif="isset($onclick)"}
-<a href="#" onclick="{$onclick}; Notification.snackbarClear();">
-{/if}
-    <ul class="list">
-        <li>
+<ul class="list thick {if="isset($action) || isset($onclick)"}active{/if}"
+    {if="isset($action)"}
+        onclick="MovimUtils.softRedirect('{$action}')"
+    {elseif="isset($onclick)"}
+        onclick="{$onclick}; Notification.snackbarClear();"
+    {/if}
+>
+    <li>
         {if="isset($picture)"}
             <span class="primary icon bubble"><img src="{$picture}"></span>
+        {else}
+            <span class="primary icon gray"><i class="material-icons">notification</i></span>
         {/if}
         <div>
-            <p>{$title}</p>
+            <p class="normal">{$title}</p>
             {if="isset($body)"}
                 <p>{$body}</p>
             {/if}
         </div>
-        </li>
-    </ul>
-{if="isset($action) || isset($onclick)"}
-</a>
-{/if}
+    </li>
+</ul>
