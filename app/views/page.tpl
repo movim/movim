@@ -35,7 +35,7 @@
         <div id="hiddendiv"></div>
         <div id="snackbar" class="snackbar"></div>
         <div id="status_websocket" class="snackbar hide">
-            <ul class="list">
+            <ul class="list thick">
                 <li>
                     <span class="control icon gray">
                         <i class="material-icons">signal_cellular_null</i>
