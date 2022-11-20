@@ -11,9 +11,11 @@
                 <div>
                     <p class="line">{$c->__('location.enabled_title')}</p>
                     <p class="line">
-                        <a href="{$contact->locationUrl}" target="_blank">
-                            {$c->__('location.last_published')}
-                        </a>
+                        {if="$contact->locationUrl"}
+                            <a href="{$contact->locationUrl}" target="_blank">
+                                {$c->__('location.last_published')}
+                            </a>
+                        {/if}
                         {if="$contact->loctimestamp"}
                             -
                             {$contact->loctimestamp|strtotime|prepareDate:true,true}

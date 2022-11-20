@@ -285,7 +285,7 @@ class Notification extends Base
      */
     public function ajaxHttpTouchPushSubscription(string $endpoint)
     {
-        $pushSubscription = $this->user->pushSubscriptions()->where('endpoint', $endpoint)->firstOrFail();
+        $pushSubscription = $this->user->pushSubscriptions()->where('endpoint', $endpoint)->first();
 
         if ($pushSubscription) {
             $pushSubscription->activity_at = Carbon::now();

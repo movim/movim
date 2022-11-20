@@ -646,7 +646,7 @@ var Chat = {
 
         discussion.onscroll = function() {
             if (this.scrollTop < 1
-            && discussion.querySelectorAll('ul li div.bubble p').length >= Chat.pagination) {
+            && discussion.querySelectorAll('ul li div.bubble p').length >= Chat.pagination && Chat.currentDateTime) {
                 Chat_ajaxGetHistory(
                     Chat.getTextarea().dataset.jid,
                     Chat.currentDateTime,
@@ -1530,7 +1530,7 @@ MovimWebsocket.attach(function() {
     var jid = MovimUtils.urlParts().params[0];
     var room = (MovimUtils.urlParts().params[1] === 'room');
     if (jid) {
-        if (Boolean(document.getElementById(MovimUtils.cleanupId(jid) + '-conversation'))) {
+        if (Boolean(document.getElementById(MovimUtils.cleanupId(jid) + '-conversation')) && Chat.currentDateTime) {
             Chat_ajaxGetHistory(jid, Chat.currentDateTime, room, false);
         } else {
             if (room) {

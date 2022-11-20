@@ -881,7 +881,7 @@ class Chat extends \Movim\Widget\Base
      */
     public function ajaxGetHistory($jid, $date, $muc = false, $prepend = true)
     {
-        if (!validateJid($jid) && isset($date)) {
+        if (!validateJid($jid) || !isset($date)) {
             return;
         }
 

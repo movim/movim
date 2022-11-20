@@ -391,6 +391,7 @@ ul li div.bubble p {
     overflow: hidden;
     display: inline;
     max-width: 100%;
+    min-width: 20rem;
     font-size: 1.75rem;
     word-wrap: break-word;
     white-space: pre-wrap;
