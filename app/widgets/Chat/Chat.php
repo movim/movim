@@ -182,7 +182,9 @@ class Chat extends \Movim\Widget\Base
                         : $rawbody,
                     $contact->getPhoto(),
                     4,
-                    $this->route('chat', $contact->jid)
+                    null,
+                    null,
+                    'Search.chat(\''.echapJS($contact->jid).'\')'
                 );
             }
             // If it's a groupchat message
