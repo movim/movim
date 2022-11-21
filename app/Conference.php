@@ -113,6 +113,7 @@ class Conference extends Model
                     ->where('node', function ($query) {
                         $query->select('node')
                               ->from('presences')
+                              ->where('session_id', \App\User::me()->session->id)
                               ->whereColumn('jid', 'infos.server')
                               ->where('resource', '')
                               ->take(1);

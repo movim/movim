@@ -13,7 +13,7 @@
             {/if}
 
             {if="$url"}
-                <span class="primary icon bubble color {$value->name|stringToColor}"
+                <span class="primary icon bubble"
                     style="background-image: url({$url});">
                 </span>
             {else}
