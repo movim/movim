@@ -94,7 +94,7 @@ class Menu extends Base
                     '📝 ' . $parent->title,
                     ($post->isLike()) ? '❤️ ' .$contact->truename : $post->title,
                     $contact->getPhoto(),
-                    2
+                    4
                 );
             }
         } elseif ($count > 0
@@ -112,7 +112,7 @@ class Menu extends Base
                         '📝 ' . $title,
                         $contact->truename,
                         $contact->getPhoto(),
-                        2,
+                        4,
                         $this->route('post', [$post->server, $post->node, $post->nodeid]),
                         $this->route('contact', $post->server)
                     );
@@ -136,7 +136,7 @@ class Menu extends Base
                     $title,
                     $post->title,
                     $logo,
-                    2,
+                    4,
                     $this->route('post', [$post->server, $post->node, $post->nodeid]),
                     $this->route('community', [$post->server, $post->node])
                 );
