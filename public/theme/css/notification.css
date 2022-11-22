@@ -6,7 +6,6 @@
     position: fixed;
     z-index: 4;
     min-height: 6rem;
-    max-height: 10rem;
     width: 48rem;
     height: auto;
     color: white;
@@ -31,6 +30,7 @@ body.nightmode .toast {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    max-height: 10rem;
 }
 
 .snackbar {

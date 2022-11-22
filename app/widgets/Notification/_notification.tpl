@@ -12,9 +12,9 @@
             <span class="primary icon gray"><i class="material-icons">notification</i></span>
         {/if}
         <div>
-            <p class="normal">{$title}</p>
+            <p class="normal line two">{$title}</p>
             {if="isset($body)"}
-                <p>{$body}</p>
+                <p class="line two">{$body}</p>
             {/if}
         </div>
     </li>

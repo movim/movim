@@ -14,7 +14,7 @@ class API
 
         $me = \App\User::me();
 
-        if ($me->id && $me->session->resource) {
+        if ($me->id && $me->session && $me->session->resource) {
             $iq->setAttribute(
                 'from',
                 $me->id.'/'.$me->session->resource
