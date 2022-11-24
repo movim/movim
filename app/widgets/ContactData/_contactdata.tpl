@@ -64,7 +64,7 @@
                                 {/if}
                             </p>
                         {elseif="stripTags($message->body) != ''"}
-                            <p>
+                            <p class="line two">
                                 {if="$message->jidfrom == $message->user_id"}
                                     <span class="moderator">{$c->__('chats.me')}:</span>
                                 {/if}
