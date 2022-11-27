@@ -1,0 +1,150 @@
+name: Docker - build image on tag
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+#  DOCKERHUB_REPO: movim/movim
+  CTR_REPO: github.com/${{ github.repository }}_docker
+
+jobs:
+  build-debian:
+    name: Debian - Build & publish/update release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      # This is used to complete the identity challenge
+      # with sigstore/fulcio when running outside of PRs.
+      id-token: write
+    steps:
+      -
+        name: Check out repository code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      -
+        name: Fetch container repo
+        run: |
+          git clone https://${{ env.CTR_REPO }}
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      -
+        name: Log in to GHCR
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+#      -
+#        name: Log in to DockerHub
+#        if: github.event_name != 'pull_request'
+#        uses: docker/login-action@v2
+#        with:
+#          username: ${{ secrets.DOCKERHUB_USERNAME }}
+#          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      -
+        name: Extract build context and arguments
+        run: |
+          echo "DOCKERFILE_PATH=$(dirname $(find . -name Dockerfile.debian))" >> $GITHUB_ENV
+          echo "MOVIM_TAG=$(git describe --tag)" >> $GITHUB_ENV
+      -
+        name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+#            ${{ env.DOCKERHUB_REPO }}
+      -
+        name: Build and push ctr image
+        uses: docker/build-push-action@v3
+        with:
+          build-args: |
+            MOVIM_REPO=https://github.com/${{ github.repository }}.git
+            MOVIM_VERSION=${{ env.MOVIM_TAG }}
+          context: ${{ env.DOCKERFILE_PATH }}/.
+          file: ${{ env.DOCKERFILE_PATH }}/Dockerfile.debian
+          platforms: linux/amd64,linux/arm64
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+  build-alpine:
+    name: Alpine - Build & publish/update release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      # This is used to complete the identity challenge
+      # with sigstore/fulcio when running outside of PRs.
+      id-token: write
+    steps:
+      -
+        name: Check out repository code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      -
+        name: Fetch container repo
+        run: |
+          git clone https://${{ env.CTR_REPO }}
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      -
+        name: Log in to GHCR
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+#      -
+#        name: Log in to DockerHub
+#        if: github.event_name != 'pull_request'
+#        uses: docker/login-action@v2
+#        with:
+#          username: ${{ secrets.DOCKERHUB_USERNAME }}
+#          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      -
+        name: Extract build context and arguments
+        run: |
+          echo "DOCKERFILE_PATH=$(dirname $(find . -name Dockerfile.alpine))" >> $GITHUB_ENV
+          echo "MOVIM_TAG=$(git describe --tag)" >> $GITHUB_ENV
+      -
+        name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: |
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+#            ${{ env.DOCKERHUB_REPO }}
+          tags: |
+            latest-alpine
+            ${{ env.MOVIM_TAG }}-alpine
+      -
+        name: Build and push ctr image
+        uses: docker/build-push-action@v3
+        with:
+          build-args: |
+            MOVIM_REPO=https://github.com/${{ github.repository }}.git
+            MOVIM_VERSION=${{ env.MOVIM_TAG }}
+          context: ${{ env.DOCKERFILE_PATH }}/.
+          file: ${{ env.DOCKERFILE_PATH }}/Dockerfile.alpine
+          platforms: linux/amd64,linux/arm64
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
