@@ -91,8 +91,8 @@ class Menu extends Base
             if ($parent) {
                 Notification::append(
                     'comments',
-                    '📝 ' . $parent->title,
                     ($post->isLike()) ? '❤️ ' .$contact->truename : $post->title,
+                    '📝 ' . $parent->title,
                     $contact->getPhoto(),
                     4
                 );
@@ -109,8 +109,8 @@ class Menu extends Base
                 if (!$post->isMine()) {
                     Notification::append(
                         'news',
-                        '📝 ' . $title,
-                        $contact->truename,
+                        '📝 ' . $contact->truename,
+                        $title,
                         $contact->getPhoto(),
                         4,
                         $this->route('post', [$post->server, $post->node, $post->nodeid]),
