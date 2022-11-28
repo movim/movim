@@ -37,17 +37,17 @@
         <div id="status_websocket" class="snackbar hide">
             <ul class="list thick">
                 <li>
-                    <span class="control icon gray">
+                    <span class="primary icon gray">
                         <i class="material-icons">signal_cellular_null</i>
                     </span>
-                    <span class="control icon gray">
+                    <span class="primary icon gray">
                         <i class="material-icons">signal_cellular_off</i>
                     </span>
                     <div>
-                        <p class="normal">
+                        <p class="normal line two">
                             <?php echo __('error.websocket_connect'); ?>
                         </p>
-                        <p class="normal">
+                        <p class="line two">
                             <?php echo __('error.websocket'); ?>
                         </p>
                     </div>

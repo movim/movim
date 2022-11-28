@@ -77,12 +77,8 @@ body.nightmode .toast {
     opacity: 0;
 }
 
-.snackbar#status_websocket span.control {
-    right: 0;
-}
-
-.snackbar#status_websocket:not(.connect) span.control:nth-child(1),
-.snackbar#status_websocket.connect span.control:nth-child(2),
+.snackbar#status_websocket:not(.connect) span.primary:nth-child(1),
+.snackbar#status_websocket.connect span.primary:nth-child(2),
 .snackbar#status_websocket:not(.connect) p:nth-child(3),
 .snackbar#status_websocket.connect p:nth-child(4) {
     display: none;
