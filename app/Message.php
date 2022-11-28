@@ -286,11 +286,10 @@ class Message extends Model
 
                 if ($stanza->fallback && $stanza->fallback->attributes()->xmlns == 'urn:xmpp:feature-fallback:0'
                  && $stanza->fallback->attributes()->for == 'urn:xmpp:reply:0') {
-                    $this->body = htmlspecialchars(trim(mb_substr(
-                        htmlspecialchars_decode($this->body, ENT_NOQUOTES),
+                    $this->body = mb_substr(
+                        htmlspecialchars_decode($this->body, ENT_XML1),
                         (int)$stanza->fallback->body->attributes()->end
-                        // might need to handle start
-                    )), ENT_NOQUOTES);
+                    );
                 }
             } else if ($stanza->thread) {
                 $this->thread = (string)$stanza->thread;

@@ -586,13 +586,15 @@ class Chat extends \Movim\Widget\Base
 
             if ($quotable) {
                 $p->setReplyto($reply->jidfrom.'/'.$reply->resource);
+                $matches = [];
+                preg_match_all('/^/m', $reply->body, $matches);
 
                 $p->setReplyquotedbodylength(
-                    mb_strlen(htmlspecialchars($reply->body, ENT_NOQUOTES)) + 2 // 2 = > quote character
+                    mb_strlen($reply->body) + (2 * count($matches[0]))
                 );
 
                 // Prepend quoted message body
-                $quotedBody = preg_replace('/^/m', '> ', $reply->body) . "\n";
+                $quotedBody = preg_replace('/^/m', "> ", $reply->body);
                 $p->setContent($quotedBody . $body);
             } else {
                 $p->setContent($body);
