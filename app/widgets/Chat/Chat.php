@@ -182,7 +182,7 @@ class Chat extends \Movim\Widget\Base
                         : $rawbody,
                     $contact->getPhoto(),
                     4,
-                    null,
+                    $this->route('chat', $contact->jid),
                     null,
                     'Search.chat(\''.echapJS($contact->jid).'\')'
                 );
