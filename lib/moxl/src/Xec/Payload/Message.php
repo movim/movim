@@ -57,7 +57,7 @@ class Message extends Payload
             $message->save();
             $message = $message->fresh();
 
-            if ($message->bundleid) {
+            if ($message && $message->bundleid) {
                 BundleCapabilityResolver::getInstance()->resolve($message);
             }
 
