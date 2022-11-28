@@ -9,7 +9,7 @@ env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 #  DOCKERHUB_REPO: movim/movim
-  CTR_REPO: github.com/sando38/movim_docker
+  CTR_REPO: github.com/${{ github.repository }}_docker
 
 jobs:
   build-debian:
