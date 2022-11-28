@@ -178,7 +178,7 @@ class Wrapper
 
                             if ($notifsKey == 'blurred') {
                                 $widget->{$method}($data);
-                            } else {
+                            } elseif ($notifsKey != null) {
                                 $explode = explode('|', $notifsKey);
                                 $notifKey = reset($explode);
 
