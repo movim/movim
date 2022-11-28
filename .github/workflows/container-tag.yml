@@ -9,7 +9,7 @@ env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 #  DOCKERHUB_REPO: movim/movim
-  CTR_REPO: github.com/${{ github.repository }}_docker
+  CTR_REPO: github.com/sando38/movim_docker
 
 jobs:
   build-debian:
@@ -57,6 +57,8 @@ jobs:
         run: |
           echo "DOCKERFILE_PATH=$(dirname $(find . -name Dockerfile.debian))" >> $GITHUB_ENV
           echo "MOVIM_TAG=$(git describe --tag)" >> $GITHUB_ENV
+          curl -o movim.tar.gz -fSL "https://github.com/${{ github.repository }}/archive/$(git describe --tag).tar.gz"
+          echo "MOVIM_SHA512=$(sha512sum movim.tar.gz | awk '{print $1}')" >> $GITHUB_ENV
       -
         name: Docker meta
         id: meta
@@ -70,8 +72,9 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           build-args: |
-            MOVIM_REPO=https://github.com/${{ github.repository }}.git
+            MOVIM_SOURCE=https://github.com/${{ github.repository }}
             MOVIM_VERSION=${{ env.MOVIM_TAG }}
+            MOVIM_SHA512=${{ env.MOVIM_SHA512 }}
           context: ${{ env.DOCKERFILE_PATH }}/.
           file: ${{ env.DOCKERFILE_PATH }}/Dockerfile.debian
           platforms: linux/amd64,linux/arm64
@@ -124,6 +127,8 @@ jobs:
         run: |
           echo "DOCKERFILE_PATH=$(dirname $(find . -name Dockerfile.alpine))" >> $GITHUB_ENV
           echo "MOVIM_TAG=$(git describe --tag)" >> $GITHUB_ENV
+          curl -o movim.tar.gz -fSL "https://github.com/${{ github.repository }}/archive/$(git describe --tag).tar.gz"
+          echo "MOVIM_SHA512=$(sha512sum movim.tar.gz | awk '{print $1}')" >> $GITHUB_ENV
       -
         name: Docker meta
         id: meta
@@ -140,8 +145,9 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           build-args: |
-            MOVIM_REPO=https://github.com/${{ github.repository }}.git
+            MOVIM_SOURCE=https://github.com/${{ github.repository }}
             MOVIM_VERSION=${{ env.MOVIM_TAG }}
+            MOVIM_SHA512=${{ env.MOVIM_SHA512 }}
           context: ${{ env.DOCKERFILE_PATH }}/.
           file: ${{ env.DOCKERFILE_PATH }}/Dockerfile.alpine
           platforms: linux/amd64,linux/arm64
