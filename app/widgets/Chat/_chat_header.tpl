@@ -110,9 +110,7 @@
                         {elseif="$conference->connected && $conference->isGroupChat()"}
                             {$connected = $conference->presences()->take(25)->get()}
                             {loop="$connected"}
-                                <span onclick="Chat.quoteMUC('{$value->resource}', true);">
-                                    {$value->resource}
-                                </span>{if="$key < $connected->count() -1"}, {/if}
+                                <span onclick="Chat.quoteMUC('{$value->resource}', true);">{$value->resource}</span>{if="$key < $connected->count() -1"}, {/if}
                             {/loop}
                         {elseif="!empty($conference->subject)"}
                             {$conference->subject}
