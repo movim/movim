@@ -61,11 +61,6 @@ body.nightmode .toast {
     max-height: initial;
 }
 
-.snackbar#status_websocket p {
-    line-height: 2.55rem;
-    white-space: initial;
-}
-
 .snackbar#status_websocket:not(.hide) ~ main,
 .snackbar#status_websocket:not(.hide) ~ div.dialog {
     opacity: 0.5;

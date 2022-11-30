@@ -196,7 +196,7 @@ body:not(.nightmode) header.fixed ul.list li > div > p:nth-last-of-type(3) + p:n
 body:not(.nightmode) header.fixed ul.list li > div > p:nth-last-of-type(2) + p:not(.normal):not(.main),
 body:not(.nightmode) header.big ul.list li > div > p:nth-last-of-type(3) + p:not(.normal):not(.main),
 body:not(.nightmode) header.big ul.list li > div > p:nth-last-of-type(2) + p:not(.normal):not(.main),
-body:not(.nightmode) div#snackbar ul.list li > div > p:nth-last-of-type(2) + p:not(.normal):not(.main) {
+body:not(.nightmode) div.snackbar ul.list li > div > p:nth-last-of-type(2) + p:not(.normal):not(.main) {
     color: rgba(var(--movim-background-main), 0.80);
 }
 
