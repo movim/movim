@@ -590,12 +590,12 @@ class Chat extends \Movim\Widget\Base
                 preg_match_all('/^/m', $reply->body, $matches);
 
                 $p->setReplyquotedbodylength(
-                    mb_strlen($reply->body) + (2 * count($matches[0]))
+                    mb_strlen($reply->body) + (2 * count($matches[0])) + 1
                 );
 
                 // Prepend quoted message body
                 $quotedBody = preg_replace('/^/m', "> ", $reply->body);
-                $p->setContent($quotedBody . $body);
+                $p->setContent($quotedBody . "\n" . $body);
             } else {
                 $p->setContent($body);
             }
