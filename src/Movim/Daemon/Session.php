@@ -1,4 +1,8 @@
 <?php
+/*
+ * SPDX-FileCopyrightText: 2010 Jaussoin Timothée
+ * SPDX-License-Identifier: AGPL-3.0-or-later
+ */
 namespace Movim\Daemon;
 
 use Ratchet\ConnectionInterface;
