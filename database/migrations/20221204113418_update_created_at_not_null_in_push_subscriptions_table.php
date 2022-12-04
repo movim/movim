@@ -8,7 +8,7 @@ class UpdateCreatedAtNotNullInPushSubscriptionsTable extends Migration
 {
     public function up()
     {
-        PushSubscription::whereNull('created_at')->delete();
+        PushSubscription::whereNull('activity_at')->delete();
 
         $this->schema->table('push_subscriptions', function (Blueprint $table) {
             $table->datetime('activity_at')->nullable(false)->change();
