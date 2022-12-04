@@ -213,11 +213,11 @@ class Core implements MessageComponentInterface
     }
 
     /**
-     * @desc Delete push subscriptions without activity after two weeks
+     * @desc Delete push subscriptions without activity after a month
      */
     private function cleanupPushSubscriptions()
     {
-        PushSubscription::where('activity_at', '<', date(MOVIM_SQL_DATE, time()-(60*60*24*14)))
+        PushSubscription::where('activity_at', '<', date(MOVIM_SQL_DATE, time()-(60*60*24*30)))
             ->delete();
     }
 

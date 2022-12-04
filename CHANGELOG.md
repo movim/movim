@@ -29,7 +29,7 @@ v0.21 (trunk)
  * Add contact banners support in Movim
  * Implement PSR-16: Common Interface for Caching Libraries for the Movim Session
  * Fix multi-line fallback bodies in outgoing message replies have incorrect offsets (#1113)
- * Cleanup Push Notification subscriptions after two weeks of inactivity
+ * Cleanup Push Notification subscriptions after a month of inactivity
 
 v0.20
 ---------------------------
