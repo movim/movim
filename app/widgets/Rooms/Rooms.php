@@ -87,8 +87,10 @@ class Rooms extends Base
 
     public function onDisconnected($packet)
     {
-        $this->onPresence($packet->content->jid);
-        Toast::send($this->__('chatrooms.disconnected'));
+        if ($packet->content) {
+            $this->onPresence($packet->content->jid);
+            Toast::send($this->__('chatrooms.disconnected'));
+        }
     }
 
     public function onBookmarkGet($packet)

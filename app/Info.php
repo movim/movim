@@ -189,6 +189,15 @@ class Info extends Model
                     ->first();
     }
 
+    public function getGatewayTypeAttribute(): ?string
+    {
+        $identityType = $this->identities->filter(function ($value, $key) {
+            return $value->category == 'gateway';
+        })->first();
+
+        return $identityType ? $identityType->type : null;
+    }
+
     public function getPhoto($size = 'm')
     {
         return isset($this->attributes['avatarhash'])
