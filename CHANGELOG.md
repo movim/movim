@@ -23,11 +23,13 @@ v0.21 (trunk)
  * Add support for the Unicode 14.0 emojis release through Twemoji 14.0.2
  * Move the Movim configuration to DotEnv
  * Use INSTALL.md as the new default to host the deployement page
- * Replace support of XEP-0049 by XEP-0223 to save Movim configuration
+ * Replace support of XEP-0049 by XEP-0223 to save Movim configuration (#1105)
  * Handle vCard4 phone numbers
  * Update the CSS to Material 3, make things a bit more roundy
  * Add contact banners support in Movim
  * Implement PSR-16: Common Interface for Caching Libraries for the Movim Session
+ * Fix multi-line fallback bodies in outgoing message replies have incorrect offsets (#1113)
+ * Cleanup Push Notification subscriptions after two weeks of inactivity
 
 v0.20
 ---------------------------

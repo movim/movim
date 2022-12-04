@@ -16,7 +16,7 @@ use Movim\Daemon\Session;
 
 use App\Session as DBSession;
 use App\EncryptedPassword;
-
+use App\PushSubscription;
 use Minishlink\WebPush\VAPID;
 
 class Core implements MessageComponentInterface
@@ -201,6 +201,7 @@ class Core implements MessageComponentInterface
 
             $this->cleanupDBSessions();
             $this->cleanupEncryptedPasswords();
+            $this->cleanupPushSubscriptions();
         });
     }
 
@@ -211,9 +212,20 @@ class Core implements MessageComponentInterface
             ->delete();
     }
 
+    /**
+     * @desc Delete push subscriptions without activity after two weeks
+     */
+    private function cleanupPushSubscriptions()
+    {
+        PushSubscription::where('activity_at', '<', date(MOVIM_SQL_DATE, time()-(60*60*24*14)))
+            ->delete();
+    }
+
+    /**
+     * @desc Delete encrypted passwords after 7 days without update
+     */
     private function cleanupEncryptedPasswords()
     {
-        // Delete encrypted passwords after 7 days without update
         EncryptedPassword::where('updated_at', '<', date(MOVIM_SQL_DATE, time()-(60*60*24*7)))
             ->delete();
     }
