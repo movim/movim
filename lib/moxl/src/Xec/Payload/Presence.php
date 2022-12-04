@@ -32,35 +32,28 @@ class Presence extends Payload
             $presence->set($stanza);
 
             PresenceBuffer::getInstance()->append($presence, function () use ($presence, $stanza) {
-                if ($presence->muc
-                && isset($stanza->x)) {
-                    foreach ($stanza->x as $x) {
-                        if ($x->attributes()->xmlns == 'http://jabber.org/protocol/muc#user'
-                        && isset($stanza->x->status)
-                        && \in_array((int)$stanza->x->status->attributes()->code, [110, 332, 307, 301])) {
-                            // Spectrum2 specific bug, we can receive two self-presences, one with several caps items
-                            $cCount = 0;
-                            foreach ($stanza->children() as $key => $content) {
-                                if ($key == 'c') $cCount++;
-                            }
-
-                            if ($cCount > 1) {
-                                $presence->delete();
-                                break;
-                            }
-                            // So we drop it
-
-                            if ($presence->value != 5 && $presence->value != 6) {
-                                $this->method('muc_handle');
-                                $this->pack([$presence, false]);
-                            } elseif ($presence->value == 5) {
-                                $this->method('unavailable_handle');
-                                $this->pack($presence);
-                            }
-
-                            $this->deliver();
-                            break;
+                if ($presence->muc) {
+                    if ($presence->mucjid == \App\User::me()->id) {
+                        // Spectrum2 specific bug, we can receive two self-presences, one with several caps items
+                        $cCount = 0;
+                        foreach ($stanza->children() as $key => $content) {
+                            if ($key == 'c') $cCount++;
                         }
+
+                        if ($cCount > 1) {
+                            $presence->delete();
+                        }
+                        // So we drop it
+
+                        if ($presence->value != 5 && $presence->value != 6) {
+                            $this->method('muc_handle');
+                            $this->pack([$presence, false]);
+                        } elseif ($presence->value == 5) {
+                            $this->method('unavailable_handle');
+                            $this->pack($presence);
+                        }
+
+                        $this->deliver();
                     }
                 } else {
                     $this->pack($presence->roster);

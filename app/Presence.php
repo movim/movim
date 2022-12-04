@@ -139,7 +139,10 @@ class Presence extends Model
                          * If we were trying to connect to that particular MUC
                          * See Moxl\Xec\Action\Presence\Muc
                          */
-                        if ($session->get((string)$stanza->attributes()->from)) {
+                        if ($session->get((string)$stanza->attributes()->from)
+                        || (
+                            isset($c->status) && \in_array((int)$c->status->attributes()->code, [110, 332, 307, 301])
+                        )) {
                             $this->mucjid = \App\User::me()->id;
                         } elseif ($c->item->attributes()->jid) {
                             $this->mucjid = cleanJid((string)$c->item->attributes()->jid);
