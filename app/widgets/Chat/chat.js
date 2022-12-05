@@ -912,6 +912,7 @@ var Chat = {
         Chat.setVideoObserverBehaviour();
     },
     appendMessage : function(idjidtime, data, prepend) {
+        console.log(data);
         if (data.body === null) return;
 
         var bubble = null,

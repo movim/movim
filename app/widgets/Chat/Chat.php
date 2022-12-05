@@ -1377,6 +1377,11 @@ class Chat extends \Movim\Widget\Base
             $message->icon = firstLetterCapitalize($message->resource);
         }
 
+        // Only used for message replacement
+        $message->originid = $message->originid == null && !$message->isMuc()
+            ? $message->messageid
+            : null;
+
         // Handle faulty replacing messages
         if ($message->replace
         && ($message->replace->jidfrom != $message->jidfrom
