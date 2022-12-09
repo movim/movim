@@ -1033,8 +1033,8 @@ var Chat = {
             msg.setAttribute('id', 'id' + data.id);
         }
 
-        if (data.originid != null) {
-            msg.dataset.originid = 'oid-' + MovimUtils.hash(data.originid + data.jidfrom);
+        if (data.messageid != null) {
+            msg.dataset.messageid = 'messageid-' + MovimUtils.hash(data.messageid + data.jidfrom);
         }
 
         if (data.rtl) {
@@ -1143,8 +1143,9 @@ var Chat = {
         var elem;
 
         if (data.replaceid && (Boolean(textarea.dataset.muc) == false || Boolean(textarea.dataset.mucGroup) == true)) {
-            elem = document.querySelector("[data-originid=oid-" + MovimUtils.hash(data.replaceid + data.jidfrom) + "]");
-            msg.dataset.originid = 'oid-' + MovimUtils.hash(data.replaceid + data.jidfrom);
+            console.log('hop');
+            elem = document.querySelector("[data-messageid=messageid-" + MovimUtils.hash(data.replaceid + data.jidfrom) + "]");
+            msg.dataset.messageid = 'messageid-' + MovimUtils.hash(data.replaceid + data.jidfrom);
         }
 
         if (!elem) {
