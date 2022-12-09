@@ -87,8 +87,8 @@ class Rooms extends Base
 
     public function onDisconnected($packet)
     {
-        if ($packet->content && $packet->content->jid) {
-            $this->onPresence($packet->content->jid);
+        if ($packet->content) {
+            $this->onPresence($packet->content);
             Toast::send($this->__('chatrooms.disconnected'));
         }
     }
