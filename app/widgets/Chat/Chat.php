@@ -970,7 +970,7 @@ class Chat extends \Movim\Widget\Base
             if (!$message->isMuc()) {
                 \Moxl\Stanza\Message::displayed(
                     $jid,
-                    $message->originid ?? $message->id,
+                    $message->messageid,
                     $message->type
                 );
             }
