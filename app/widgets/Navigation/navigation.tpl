@@ -24,17 +24,17 @@
                 <p class="normal">{$c->__('page.news')}</p>
             </div>
         </li>
-    {/if}
 
-    <li onclick="MovimUtils.reload('{$c->route('explore')}')"
-        class="on_desktop {if="$page == 'explore' || $page == 'community'"}active{/if}"
-        title="{$c->__('page.explore')}"
-    >
-        <span class="primary icon"><i class="material-icons">explore</i></span>
-        <div>
-            <p class="normal">{$c->__('page.explore')}</p>
-        </div>
-    </li>
+        <li onclick="MovimUtils.reload('{$c->route('explore')}')"
+            class="on_desktop {if="$page == 'explore' || $page == 'community'"}active{/if}"
+            title="{$c->__('page.explore')}"
+        >
+            <span class="primary icon"><i class="material-icons">explore</i></span>
+            <div>
+                <p class="normal">{$c->__('page.explore')}</p>
+            </div>
+        </li>
+    {/if}
 
     <li onclick="MovimUtils.reload('{$c->route('chat')}')"
         class="on_desktop {if="$page == 'chat'"}active{/if}"
