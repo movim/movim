@@ -143,11 +143,11 @@ var Chat = {
         var textarea = Chat.getTextarea();
         var text = textarea.value;
 
-        var muc = Boolean(textarea.dataset.muc);
+        var isMuc = Boolean(textarea.dataset.muc);
         var mucReceipts = false;
         var jid = textarea.dataset.jid;
 
-        if (muc) {
+        if (isMuc) {
             var counter = document.querySelector('#chat_widget header span.counter');
             mucReceipts = (counter && Boolean(counter.dataset.mucreceipts));
         }
@@ -208,7 +208,7 @@ var Chat = {
                     var store = new ChatOmemoStorage();
                     store.getLocalRegistrationId().then(deviceId => {
                         if (deviceId) {
-                            if (Boolean(textarea.dataset.muc) == true) {
+                            if (isMuc) {
                                 var bundlesIds = {};
                                 Chat.groupChatMembers.forEach(member => {
                                     let bundles = store.getSessionsIds(member);
@@ -228,14 +228,14 @@ var Chat = {
                     });
                 } else if (textarea.dataset.encryptedstate == 'yes') {
                     // Try to encrypt the message
-                    let omemo = ChatOmemo.encrypt(jid, text, Boolean(textarea.dataset.muc));
+                    let omemo = ChatOmemo.encrypt(jid, text, isMuc);
                     if (omemo) {
                         // TODO, disable the other risky features
                         omemo.then(omemoheader => {
                             tempId = omemoheader.tempId = Math.random().toString(36).substring(2, 15);
                             Chat.tempMessages[tempId] = text;
 
-                            xhr = Chat_ajaxHttpDaemonSendMessage(jid, tempId, muc, null, replyMid, mucReceipts, omemoheader);
+                            xhr = Chat_ajaxHttpDaemonSendMessage(jid, tempId, isMuc, null, replyMid, mucReceipts, omemoheader);
 
                             xhr.timeout = timeout;
                             xhr.ontimeout = onTimeout;
@@ -243,7 +243,7 @@ var Chat = {
                         });
                     }
                 } else {
-                    xhr = Chat_ajaxHttpDaemonSendMessage(jid, text, muc, null, replyMid, mucReceipts);
+                    xhr = Chat_ajaxHttpDaemonSendMessage(jid, text, isMuc, null, replyMid, mucReceipts);
                     xhr.timeout = timeout;
                     xhr.ontimeout = onTimeout;
                     xhr.onreadystatechange = onReadyStateChange;
@@ -365,7 +365,7 @@ var Chat = {
         var textarea = Chat.getTextarea();
 
         if (textarea.value != ''
-        || (Boolean(textarea.dataset.muc) && Boolean(textarea.dataset.mucGroup) == false)) {
+        || (Boolean(textarea.dataset.muc) && !Boolean(textarea.dataset.mucGroup))) {
             return;
         }
 
@@ -379,7 +379,7 @@ var Chat = {
     {
         var textarea = Chat.getTextarea();
         if (textarea.value == ''
-        && Boolean(textarea.dataset.muc) == false) {
+        && !Boolean(textarea.dataset.muc)) {
             Chat_ajaxEdit(mid);
         }
     },*/
@@ -919,7 +919,8 @@ var Chat = {
             msgStack,
             refBubble;
 
-        var isMuc = (document.querySelector('#chat_widget div.contained').dataset.muc == 1);
+        var textarea = Chat.getTextarea();
+        var isMuc = Boolean(textarea.dataset.muc);
         var jidtime = idjidtime.substring(idjidtime.indexOf('<') + 1);
 
         if (prepend) {
@@ -1084,7 +1085,7 @@ var Chat = {
             span.appendChild(Chat.getEditedIcoHtml());
         }
 
-        if (data.user_id == data.jidfrom || (data.type == 'groupchat' && data.mine)) {
+        if (data.user_id == data.jidfrom || (isMuc && data.mine)) {
             if (data.displayed) {
                 span.appendChild(Chat.getDisplayedIcoHtml(data.displayed));
             } else if (data.delivered) {
@@ -1125,9 +1126,8 @@ var Chat = {
         msg.appendChild(span);
         msg.appendChild(reactions);
 
-        var textarea = Chat.getTextarea();
-
-        if ((data.type == 'groupchat' && data.stanzaid) || (data.type == 'chat' && data.messageid)) {
+        if ((isMuc && data.stanzaid)
+        || (!isMuc && data.messageid)) {
             reaction.dataset.mid = data.mid;
             msg.appendChild(reaction);
 
@@ -1142,8 +1142,7 @@ var Chat = {
 
         var elem;
 
-        if (data.replaceid && (Boolean(textarea.dataset.muc) == false || Boolean(textarea.dataset.mucGroup) == true)) {
-            console.log('hop');
+        if (data.replaceid && (!isMuc || Boolean(textarea.dataset.mucGroup) == true)) {
             elem = document.querySelector("[data-messageid=messageid-" + MovimUtils.hash(data.replaceid + data.jidfrom) + "]");
             msg.dataset.messageid = 'messageid-' + MovimUtils.hash(data.replaceid + data.jidfrom);
         }

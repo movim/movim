@@ -4,7 +4,7 @@
     {/autoescape}
 </header>
 
-<div id="{$jid|cleanupId}-discussion" class="contained {if="$muc"}muc{/if}" data-muc="{$muc}">
+<div id="{$jid|cleanupId}-discussion" class="contained {if="$muc"}muc{/if}">
     <section id="{$jid|cleanupId}-messages">
         <ul class="list spin conversation" id="{$jid|cleanupId}-conversation"></ul>
         <div class="placeholder">

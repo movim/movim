@@ -13,7 +13,7 @@ var Stickers = {
         if (element.classList.contains('zoomed')) {
             Drawer.clear();
 
-            var textarea = document.querySelector('#chat_textarea');
+            var textarea = Chat.getTextarea();
             Stickers_ajaxSend(jid, pack, value, Boolean(textarea.dataset.muc));
         }
 
