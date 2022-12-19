@@ -94,7 +94,7 @@ class Publish extends Base
     {
         $draft = $this->user->drafts()->find($id);
 
-        if ($draft->isNotEmpty()) {
+        if ($draft && $draft->isNotEmpty()) {
             $view = $this->tpl();
             $doc = new DOMDocument;
             $converter = new CommonMarkConverter([
