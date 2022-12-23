@@ -108,7 +108,7 @@
                         {if="!$conference->connected"}
                             {$c->__('button.connecting')}…
                         {elseif="$conference->connected && $conference->isGroupChat()"}
-                            {$connected = $conference->presences()->take(25)->get()}
+                            {$connected = $conference->otherPresences()->take(25)->get()}
                             {loop="$connected"}
                                 {$url = $value->conferencePicture}
                                 <span onclick="Chat.quoteMUC('{$value->resource}', true);" class="icon bubble tiny {if="!$url"}color {$value->resource|stringToColor}{/if}">

@@ -45,6 +45,11 @@ class Conference extends Model
                     ->orderBy('resource');
     }
 
+    public function otherPresences()
+    {
+        return $this->presences()->where('mucjid', '!=', \App\User::me()->id);
+    }
+
     public function unreads()
     {
         return $this->hasMany('App\Message', 'jidfrom', 'conference')
