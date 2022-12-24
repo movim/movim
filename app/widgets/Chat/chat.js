@@ -364,8 +364,7 @@ var Chat = {
     {
         var textarea = Chat.getTextarea();
 
-        if (textarea.value != ''
-        || (Boolean(textarea.dataset.muc) && !Boolean(textarea.dataset.mucGroup))) {
+        if (textarea.value != '') {
             return;
         }
 
@@ -1142,7 +1141,8 @@ var Chat = {
 
         var elem;
 
-        if (data.replaceid && (!isMuc || Boolean(textarea.dataset.mucGroup) == true)) {
+        // The following commented part introduces a security issue, see https://xmpp.org/extensions/xep-0308.html#security
+        if (data.replaceid /*&& (!isMuc || Boolean(textarea.dataset.mucGroup) == true)*/) {
             elem = document.querySelector("[data-messageid=messageid-" + MovimUtils.hash(data.replaceid + data.jidfrom) + "]");
             msg.dataset.messageid = 'messageid-' + MovimUtils.hash(data.replaceid + data.jidfrom);
         }

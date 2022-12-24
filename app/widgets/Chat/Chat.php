@@ -1384,8 +1384,11 @@ class Chat extends \Movim\Widget\Base
 
         // Handle faulty replacing messages
         if ($message->replace
-        && ($message->replace->jidfrom != $message->jidfrom
-         || $message->replace->resource != $message->resource)
+        && (
+            ($message->replace->jidfrom != $message->jidfrom || $message->replace->resource != $message->resource)
+            ||
+            ($message->isMuc() && !$this->_mucPresences[$message->jidfrom.$message->resource])
+        )
         ) {
             unset($message->replace);
             unset($message->replaceid);
