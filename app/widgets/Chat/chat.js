@@ -40,6 +40,9 @@ var Chat = {
     // Jingle types
     jingleTypes: ['jingle_incoming', 'jingle_outgoing', 'jingle_end'],
 
+    // Keep track of replaced messages hash when prepending (loading history)
+    replacedPrependHash: [],
+
     autocomplete: function(event, jid)
     {
         RoomsUtils_ajaxMucUsersAutocomplete(jid);
@@ -1035,6 +1038,12 @@ var Chat = {
 
         if (data.messageid != null) {
             msg.dataset.messageid = 'messageid-' + MovimUtils.hash(data.messageid + data.jidfrom);
+
+            /**
+             * If we prepend, we might have already a replacement message displayed, in
+             * that case we just stop here
+             */
+            if (prepend && this.replacedPrependHash.includes(msg.dataset.messageid)) return;
         }
 
         if (data.rtl) {
@@ -1145,6 +1154,10 @@ var Chat = {
         if (data.replaceid /*&& (!isMuc || Boolean(textarea.dataset.mucGroup) == true)*/) {
             elem = document.querySelector("[data-messageid=messageid-" + MovimUtils.hash(data.replaceid + data.jidfrom) + "]");
             msg.dataset.messageid = 'messageid-' + MovimUtils.hash(data.replaceid + data.jidfrom);
+
+            if (prepend) {
+                this.replacedPrependHash.push(msg.dataset.messageid);
+            }
         }
 
         if (!elem) {
