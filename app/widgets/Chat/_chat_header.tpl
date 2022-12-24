@@ -122,7 +122,7 @@
                                 {/if}
                             {/loop}
                         {elseif="!empty($conference->subject)"}
-                            {$conference->subject}
+                            <span onclick="RoomsUtils_ajaxShowSubject('{$jid|echapJS}')">{$conference->subject}</span>
                         {/if}
                     {/if}
                 </p>
