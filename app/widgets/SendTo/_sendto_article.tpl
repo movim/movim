@@ -23,12 +23,12 @@
                 {$url = $me->getPhoto()}
                 {if="$url"}
                     <span
-                        class="primary icon bubble status"
+                        class="primary icon bubble"
                         style="background-image: url({$url})">
                     </span>
                 {else}
                     <span
-                        class="primary icon bubble color {$me->jid|stringToColor} status">
+                        class="primary icon bubble color {$me->jid|stringToColor}">
                         <i class="material-icons">person</i>
                     </span>
                 {/if}
