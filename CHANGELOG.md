@@ -31,6 +31,7 @@ v0.21 (trunk)
  * Fix multi-line fallback bodies in outgoing message replies have incorrect offsets (#1113)
  * Cleanup Push Notification subscriptions after a month of inactivity
  * PEP based avatars now have preference over vcard-temp based ones
+ * Allow articles to be shared in Communities through a new Share button
 
 v0.20
 ---------------------------

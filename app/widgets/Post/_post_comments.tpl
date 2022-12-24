@@ -151,7 +151,20 @@
                 <button class="button flat gray" onclick="Post.comment()">
                     <i class="material-icons">add_comment</i> {$c->__('post.comment_add')}
                 </button>
-                <a class="button flat gray" onclick="SendTo_ajaxSendSearch('{$post->getRef()}')">
+                <a
+                    title="{$c->__('button.share')}"
+                    class="button flat gray"
+                    onclick="SendTo_ajaxShareArticle('{$post->getRef()}')"
+                    href="#"
+                >
+                    <i class="material-icons">repeat</i>
+                </a>
+                <a
+                    title="{$c->__('button.send_to')}"
+                    class="button flat gray"
+                    onclick="SendTo_ajaxSendContact('{$post->getRef()}')"
+                    href="#"
+                >
                     <i class="material-icons">send</i> {$c->__('button.send_to')}
                 </a>
             </p>

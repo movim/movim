@@ -309,7 +309,7 @@ class XMPPtoForm
         $select->setAttribute('name', $s['var']);
 
         $subscriptions = \App\User::me()->subscriptions()
-            ->where('node', 'not like', 'urn:xmpp:microblog:0:comments/%')
+            ->notComments()
             ->orderBy('server')->orderBy('node')
             ->get();
 

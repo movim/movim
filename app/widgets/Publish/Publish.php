@@ -22,6 +22,7 @@ class Publish extends Base
     public function load()
     {
         $this->registerEvent('pubsub_postpublish_handle', 'onPublish');
+        $this->registerEvent('pubsub_postpublish_errorforbidden', 'onPublishErrorForbidden');
         $this->registerEvent('microblog_commentcreatenode_handle', 'onCommentNodeCreated');
 
         $this->addjs('publish.js');
@@ -43,6 +44,13 @@ class Publish extends Base
         } else {
             $this->rpc('MovimUtils.softRedirect', $this->route('community', [$to, $node]));
         }
+    }
+
+    public function onPublishErrorForbidden($packet)
+    {
+        Toast::send($this->__('publish.publish_error_forbidden'));
+
+        $this->rpc('Publish.enableSend');
     }
 
     public function onCommentNodeCreated($packet)

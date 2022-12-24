@@ -1,6 +1,6 @@
 <section id="sendto">
     {if="$card"}
-        <ul class="list card middle">
+        <ul class="list card middle active">
             <li class="subheader">
                 <div>
                     <p>{$c->__('button.send_to')}</p>
@@ -9,21 +9,8 @@
             {autoescape="off"}
                 {$card}
             {/autoescape}
-            {if="$c->getUser()->hasPubsub()"}
-                <li>
-                    <span class="control icon active gray"
-                        onclick="MovimUtils.redirect('{$c->route('publish', [$c->getUser()->id, 'urn:xmpp:microblog:0', '', $post->server, $post->node, $post->nodeid])}')">
-                        <i class="material-icons">share</i>
-                    </span>
-                    <div>
-                        <p class="normal line">{$c->__('sendto.attach')}</p>
-                    </div>
-                </li>
-            {/if}
         </ul>
     {/if}
-
-    <hr />
 
     {if="$conferences->isNotEmpty()"}
         <ul class="list thin">
@@ -70,7 +57,7 @@
         </ul>
     {/if}
 
-    <ul class="list thin" id="sendto_contacts">
+    <ul class="list thin" id="sendto_share_contacts">
         {autoescape="off"}
             {$c->prepareContacts($contacts, $uri, $openlink)}
         {/autoescape}

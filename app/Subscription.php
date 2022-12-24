@@ -26,6 +26,11 @@ class Subscription extends Model
         return $this->hasOne('App\Contact', 'id', 'jid');
     }
 
+    public function scopeNotComments($query)
+    {
+        return $query->where('node', 'not like', 'urn:xmpp:microblog:0:comments/%');
+    }
+
     public function toArray()
     {
         $now = \Carbon\Carbon::now();

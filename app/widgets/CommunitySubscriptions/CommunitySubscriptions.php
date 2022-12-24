@@ -22,7 +22,7 @@ class CommunitySubscriptions extends Base
     {
         $view = $this->tpl();
         $view->assign('subscriptions', $this->user->subscriptions()
-            ->where('node', 'not like', 'urn:xmpp:microblog:0:comments/%')
+            ->notComments()
             ->orderBy('server')->orderBy('node')
             ->get());
 

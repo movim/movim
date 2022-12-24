@@ -1,0 +1,99 @@
+<section id="sendto">
+    {if="$card"}
+        <ul class="list card shadow middle">
+            <li class="subheader">
+                <div>
+                    <p>{$c->__('button.share')}</p>
+                </div>
+            </li>
+            {autoescape="off"}
+                {$card}
+            {/autoescape}
+        </ul>
+    {/if}
+
+    <ul class="list">
+        {if="$c->getUser()->hasPubsub()"}
+            <li class="subheader">
+                <div>
+                    <p>{$c->__('sendto.share')}</p>
+                </div>
+            </li>
+            <li>
+                {$url = $me->getPhoto()}
+                {if="$url"}
+                    <span
+                        class="primary icon bubble status"
+                        style="background-image: url({$url})">
+                    </span>
+                {else}
+                    <span
+                        class="primary icon bubble color {$me->jid|stringToColor} status">
+                        <i class="material-icons">person</i>
+                    </span>
+                {/if}
+                <span class="control icon active gray"
+                    onclick="MovimUtils.redirect('{$c->route('publish', [$c->getUser()->id, 'urn:xmpp:microblog:0', '', $post->server, $post->node, $post->nodeid])}')">
+                    <i class="material-icons">post_add</i>
+                </span>
+                <div>
+                    <p class="normal line">{$me->truename}</p>
+                </div>
+            </li>
+        {/if}
+    </ul>
+
+    <ul class="list middle">
+        <li class="subheader">
+            <div>
+                <p>{$c->__('communitysubscriptions.subscriptions')}</p>
+            </div>
+        </li>
+        {loop="$subscriptions"}
+            <li
+                class="block"
+                onclick="MovimUtils.redirect('{$c->route('publish', [$value->server, $value->node, '', $post->server, $post->node, $post->nodeid])}')"
+                title="{$value->server} - {$value->node}"
+            >
+                {$url = false}
+
+                {if="$value->info"}
+                    {$url = $value->info->getPhoto('m')}
+                {/if}
+
+                {if="$url"}
+                    <span class="primary icon bubble">
+                        <img src="{$url}"/>
+                    </span>
+                {else}
+                    <span class="primary icon bubble color {$value->node|stringToColor}">
+                        {$value->node|firstLetterCapitalize}
+                    </span>
+                {/if}
+                <span class="control icon active gray" onclick="">
+                    <i class="material-icons">post_add</i>
+                </span>
+                <div>
+                    <p class="line normal">
+                        {if="$value->info && $value->info->name"}
+                            {$value->info->name}
+                        {else}
+                            {$value->node}
+                        {/if}
+
+                    </p>
+                    <p class="line">
+                        {if="$value->public"}
+                            <span class="tag color gray">{$c->__('room.public_muc')}</span>
+                        {/if}
+                        {if="$value->info && $value->info->description"}
+                            {$value->info->description|strip_tags}
+                        {else}
+                            {$value->node}
+                        {/if}
+                    </p>
+                </div>
+            </li>
+        {/loop}
+    </ul>
+</section>

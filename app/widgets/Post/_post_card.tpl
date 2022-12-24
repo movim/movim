@@ -203,9 +203,16 @@
                     {/if}
                     {if="!$public"}
                         <a
+                            title="{$c->__('button.share')}"
+                            class="button narrow icon flat gray"
+                            onclick="SendTo_ajaxShareArticle('{$post->getRef()}')"
+                            href="#">
+                            <i class="material-icons">repeat</i>
+                        </a>
+                        <a
                             title="{$c->__('button.send_to')}"
                             class="button narrow icon flat gray"
-                            onclick="SendTo_ajaxSendSearch('{$post->getRef()}')"
+                            onclick="SendTo_ajaxSendContact('{$post->getRef()}')"
                             href="#">
                             <i class="material-icons">send</i>
                         </a>
