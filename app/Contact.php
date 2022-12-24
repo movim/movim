@@ -94,13 +94,17 @@ class Contact extends Model
             $this->adrcountry = (string)$vcard->vCard->ADR->CTRY;
         }
 
-        if (filter_var((string)$vcard->vCard->PHOTO, FILTER_VALIDATE_URL)) {
+        if (filter_var((string)$vcard->vCard->PHOTO, FILTER_VALIDATE_URL)
+         && in_array($this->avatartype, ['vcard-temp', null])) {
             $this->photobin = base64_encode(
                 requestURL((string)$vcard->vCard->PHOTO, 1)
             );
-        } elseif ($vcard->vCard->PHOTO) {
+            $this->avatartype = 'vcard-temp';
+        } elseif ($vcard->vCard->PHOTO
+         && in_array($this->avatartype, ['vcard-temp', null])) {
             $this->photobin = (string)$vcard->vCard->PHOTO->BINVAL;
             $this->avatarhash = sha1(base64_decode($this->photobin));
+            $this->avatartype = 'vcard-temp';
         }
 
         if ($vcard->vCard->DESC) {

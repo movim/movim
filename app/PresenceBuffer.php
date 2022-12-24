@@ -113,6 +113,7 @@ class PresenceBuffer
 
                 if ($avatarHashes->count() > 0) {
                     $contacts = Contact::whereIn('avatarhash', $avatarHashes->keys())
+                                        ->orWhere('avatartype', 'urn:xmpp:avatar:metadata')
                                         ->get();
 
                     // Remove the existing Contacts

@@ -17,6 +17,7 @@ class Avatar extends Payload
 
             if ($info->id != $c->avatarhash) {
                 $c->avatarhash = $info->id;
+                $c->avatartype = 'urn:xmpp:avatar:metadata';
                 $c->save();
 
                 $g = new Get;

@@ -41,7 +41,11 @@ class Set extends Action
     public function handle($stanza, $parent = false)
     {
         if ($this->_to == false && $this->_node == false) {
-            $this->pack(\App\User::me()->contact);
+            $me = \App\User::me()->contact;
+            $me->avatartype = 'urn:xmpp:avatar:metadata';
+            $me->save();
+
+            $this->pack($me);
             $this->deliver();
         } else {
             $this->method('pubsub');

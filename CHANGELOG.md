@@ -30,6 +30,7 @@ v0.21 (trunk)
  * Implement PSR-16: Common Interface for Caching Libraries for the Movim Session
  * Fix multi-line fallback bodies in outgoing message replies have incorrect offsets (#1113)
  * Cleanup Push Notification subscriptions after a month of inactivity
+ * PEP based avatars now have preference over vcard-temp based ones
 
 v0.20
 ---------------------------
