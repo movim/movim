@@ -57,30 +57,34 @@
 
 /* Rooms order */
 
-#rooms_widget ul.list.rooms li.connected.unread {
-    order: 3;
+#rooms_widget > ul.list.rooms > li {
+    order: -4;
 }
 
-#rooms_widget ul.list.rooms li.connected.pinned {
-    order: 2;
-}
-
-#rooms_widget ul.list.rooms li.connected.groupchat {
-    order: 1;
-}
-
-#rooms_widget ul.list.rooms li.unread {
-    order: -1;
-}
-
-#rooms_widget ul.list.rooms li.pinned {
-    order: -2;
-}
-
-#rooms_widget ul.list.rooms li.groupchat {
+#rooms_widget > ul.list.rooms > li.groupchat {
     order: -3;
 }
 
-#rooms_widget ul.list.rooms li {
-    order: -4;
+#rooms_widget > ul.list.rooms > li.pinned {
+    order: -2;
+}
+
+#rooms_widget > ul.list.rooms > li.unread {
+    order: -1;
+}
+
+#rooms_widget > ul.list.rooms > li.connected {
+    order: 0;
+}
+
+#rooms_widget > ul.list.rooms > li.connected.groupchat {
+    order: 1;
+}
+
+#rooms_widget > ul.list.rooms > li.connected.pinned {
+    order: 2;
+}
+
+#rooms_widget > ul.list.rooms > li.connected.unread {
+    order: 3;
 }
