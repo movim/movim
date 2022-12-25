@@ -115,16 +115,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-04 14:11+0200\n"
-"PO-Revision-Date: 2022-02-17 07:57+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"POT-Creation-Date: 2022-12-25 14:45+0200\n"
+"PO-Revision-Date: 2015-06-24 09:45+0000\n"
+"Last-Translator: akong <akong@aspa.idv.tw>, 2018\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/movim/movim/language/zh_TW/)\n"
 "Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Translate Toolkit 3.4.1\n"
+"X-Generator: Translate Toolkit 3.7.4\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -441,9 +441,8 @@ msgid "Syslog and files"
 msgstr "系統日誌和檔案"
 
 #: [adminreported]reported_by
-#, fuzzy
 msgid "Reported by %s users"
-msgstr "回報濫用"
+msgstr ""
 
 #: [adminreported]info
 msgid "Those accounts were reported by some Movim users"
@@ -465,22 +464,6 @@ msgstr ""
 msgid "File"
 msgstr "檔案"
 
-#: [avatar]use_it
-msgid "Use it"
-msgstr "使用這個"
-
-#: [avatar]webcam
-msgid "Webcam"
-msgstr "網路攝影機"
-
-#: [avatar]cheese
-msgid "Cheese!"
-msgstr ""
-
-#: [avatar]snapshot
-msgid "Take a webcam snapshot"
-msgstr "用網路攝影機拍照吧"
-
 #: [avatar]updated
 msgid "Avatar Updated"
 msgstr "圖示已更新"
@@ -501,23 +484,37 @@ msgstr ""
 msgid "Upload a new picture"
 msgstr ""
 
+#: [banner]change
+msgid "Change my banner"
+msgstr ""
+
+#: [banner]updated
+msgid "Banner Updated"
+msgstr ""
+
+#: [banner]not_updated
+msgid "Banner Not Updated"
+msgstr ""
+
+#: [banner]missing
+msgid "No banner defined yet"
+msgstr ""
+
 #: [blocked]title
 msgid "Blocked"
 msgstr ""
 
 #: [blocked]block_account
-#, fuzzy
 msgid "Block the account"
-msgstr "刪除您的帳號"
+msgstr ""
 
 #: [blocked]unblock_account
 msgid "Unblock the account"
 msgstr ""
 
 #: [blocked]account_blocked
-#, fuzzy
 msgid "Account blocked"
-msgstr "帳號"
+msgstr ""
 
 #: [blocked]account_unblocked
 msgid "Account unblocked"
@@ -576,9 +573,8 @@ msgid "Composing…"
 msgstr ""
 
 #: [message]invitation
-#, fuzzy
 msgid "Invitation"
-msgstr "管理者"
+msgstr ""
 
 #: [message]paused
 msgid "Paused…"
@@ -633,9 +629,8 @@ msgid "You received an invitation to join a chatroom"
 msgstr "您收到一則加入聊天室的邀請"
 
 #: [chat]invitation_self
-#, fuzzy
 msgid "You sent an invitation to join a chatroom"
-msgstr "您收到一則加入聊天室的邀請"
+msgstr ""
 
 #: [chat]invitation_join
 msgid "Join %s"
@@ -668,6 +663,18 @@ msgstr ""
 
 #: [chat]jingle_end
 msgid "Call ended"
+msgstr ""
+
+#: [chat]jingle_hours
+msgid "%s hours %s minutes"
+msgstr ""
+
+#: [chat]jingle_minutes
+msgid "%s minutes and %s seconds"
+msgstr ""
+
+#: [chat]jingle_seconds
+msgid "%s seconds"
 msgstr ""
 
 #: [chat]publish_error
@@ -1021,7 +1028,7 @@ msgid "Publish my first post"
 msgstr ""
 
 #: [communitysubscriptions]subscriptions
-msgid "My Subscriptions"
+msgid "Subscribed Communities"
 msgstr ""
 
 #: [communitysubscriptions]empty_title
@@ -1381,9 +1388,8 @@ msgid "My location"
 msgstr ""
 
 #: [location]enabled_title
-#, fuzzy
 msgid "Currently shared with my contacts"
-msgstr "跟聯絡人聊天"
+msgstr ""
 
 #: [location]disabled_title
 msgid "Currently disabled"
@@ -1509,6 +1515,14 @@ msgstr ""
 msgid "Administrated by"
 msgstr ""
 
+#: [about_movim]info
+msgid "Movim is a federated blogging and chat platform."
+msgstr ""
+
+#: [about_movim]website
+msgid "Visit the project official website %s."
+msgstr ""
+
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
 msgstr ""
@@ -1591,14 +1605,12 @@ msgid "Push notifications disabled for this device"
 msgstr ""
 
 #: [notificationconfig]unknown_browser
-#, fuzzy
 msgid "Unknown browser"
-msgstr "不明的錯誤"
+msgstr ""
 
 #: [notificationconfig]unknown_platform
-#, fuzzy
 msgid "Unknown platform"
-msgstr "不明的錯誤"
+msgstr ""
 
 #: [invitations]title
 msgid "Pending Invitations"
@@ -1880,6 +1892,10 @@ msgstr ""
 msgid "Add #hashtags in your title or content to allow your article to be discovered"
 msgstr ""
 
+#: [publish]publish_error_forbidden
+msgid "You are not authorized to publish there"
+msgstr ""
+
 #: [publishhelp]title [page]help
 msgid "Help"
 msgstr "求助"
@@ -2121,9 +2137,8 @@ msgid "Archived"
 msgstr ""
 
 #: [room]archived_text
-#, fuzzy
 msgid "The chatroom messages are archived"
-msgstr "%s 訊息檢索"
+msgstr ""
 
 #: [room]group_chat
 msgid "Group Chat"
@@ -2275,6 +2290,10 @@ msgstr ""
 
 #: [sendto]attach
 msgid "Attach to a blog publication"
+msgstr ""
+
+#: [sendto]share
+msgid "Share in a new publication"
 msgstr ""
 
 #: [sendto]contact
@@ -2510,18 +2529,16 @@ msgid "Camera"
 msgstr ""
 
 #: [visioconfig]camera_label
-#, fuzzy
 msgid "Default camera"
-msgstr "預設語言"
+msgstr ""
 
 #: [visioconfig]default_microphone_changed
 msgid "Default microphone changed"
 msgstr ""
 
 #: [visioconfig]default_camera_changed
-#, fuzzy
 msgid "Default camera changed"
-msgstr "預設語言"
+msgstr ""
 
 #: [visioconfig]no_mic_sound
 msgid "No sound detected from your microphone"
@@ -3428,42 +3445,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "General Overview"
-#~ msgstr "一般概述"
-
-#~ msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
-#~ msgstr "WebSocket 連線錯誤，確認一下假如 Movim 背景正在執行及可以使用"
-
-#~ msgid "Browser"
-#~ msgstr "瀏覽器"
-
-#~ msgid "Movim Core"
-#~ msgstr "Movim Core"
-
-#~ msgid "Movim Daemon"
-#~ msgstr "Movim 背景服務"
-
-#~ msgid "Database"
-#~ msgstr "資料庫"
-
-#~ msgid "XMPP"
-#~ msgstr "XMPP"
-
-#~ msgid "Here you can register your pod on the official %sMovim API%s"
-#~ msgstr "這裡您可以註冊您的 pod 在公開的 %sMovim API%s"
-
-#~ msgid "Your pod is not registered on the API"
-#~ msgstr "您的 pod 並沒有註冊在 API"
-
-#~ msgid "Your pod is registered on the API"
-#~ msgstr "您的 pod 已註冊在 API"
-
-#~ msgid "Your pod is not yet validated"
-#~ msgstr "您的 pod 是無效的"
-
-#~ msgid "Your pod is validated"
-#~ msgstr "您的 pod 是有效的"
-
-#~ msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
-#~ msgstr "您要求從 API 中移除，這個要求將會在幾個小時內執行"

@@ -118,16 +118,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-04 14:11+0200\n"
-"PO-Revision-Date: 2022-02-17 07:57+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"POT-Creation-Date: 2022-12-25 14:45+0200\n"
+"PO-Revision-Date: 2015-06-24 09:45+0000\n"
+"Last-Translator: Egon Borovan <egon.boro@gmail.com>, 2019\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/movim/movim/language/cs_CZ/)\n"
 "Language: cs_CZ\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
-"X-Generator: Translate Toolkit 3.4.1\n"
+"X-Generator: Translate Toolkit 3.7.4\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -467,22 +467,6 @@ msgstr ""
 msgid "File"
 msgstr "Soubor"
 
-#: [avatar]use_it
-msgid "Use it"
-msgstr "Použít"
-
-#: [avatar]webcam
-msgid "Webcam"
-msgstr "Webkamera"
-
-#: [avatar]cheese
-msgid "Cheese!"
-msgstr ""
-
-#: [avatar]snapshot
-msgid "Take a webcam snapshot"
-msgstr "Vyfotit webkamerou"
-
 #: [avatar]updated
 msgid "Avatar Updated"
 msgstr "Avatar aktualizován"
@@ -503,25 +487,37 @@ msgstr ""
 msgid "Upload a new picture"
 msgstr ""
 
+#: [banner]change
+msgid "Change my banner"
+msgstr ""
+
+#: [banner]updated
+msgid "Banner Updated"
+msgstr ""
+
+#: [banner]not_updated
+msgid "Banner Not Updated"
+msgstr ""
+
+#: [banner]missing
+msgid "No banner defined yet"
+msgstr ""
+
 #: [blocked]title
-#, fuzzy
 msgid "Blocked"
-msgstr "vylekaný"
+msgstr ""
 
 #: [blocked]block_account
-#, fuzzy
 msgid "Block the account"
-msgstr "Ostatní účty"
+msgstr ""
 
 #: [blocked]unblock_account
-#, fuzzy
 msgid "Unblock the account"
-msgstr "Ostatní účty"
+msgstr ""
 
 #: [blocked]account_blocked
-#, fuzzy
 msgid "Account blocked"
-msgstr "Účet"
+msgstr ""
 
 #: [blocked]account_unblocked
 msgid "Account unblocked"
@@ -580,9 +576,8 @@ msgid "Composing…"
 msgstr ""
 
 #: [message]invitation
-#, fuzzy
 msgid "Invitation"
-msgstr "Nevyřízené pozvánky"
+msgstr ""
 
 #: [message]paused
 msgid "Paused…"
@@ -637,9 +632,8 @@ msgid "You received an invitation to join a chatroom"
 msgstr "Obdržel jste pozvánku k přidání do chatovací místnosti"
 
 #: [chat]invitation_self
-#, fuzzy
 msgid "You sent an invitation to join a chatroom"
-msgstr "Obdržel jste pozvánku k přidání do chatovací místnosti"
+msgstr ""
 
 #: [chat]invitation_join
 msgid "Join %s"
@@ -672,6 +666,18 @@ msgstr ""
 
 #: [chat]jingle_end
 msgid "Call ended"
+msgstr ""
+
+#: [chat]jingle_hours
+msgid "%s hours %s minutes"
+msgstr ""
+
+#: [chat]jingle_minutes
+msgid "%s minutes and %s seconds"
+msgstr ""
+
+#: [chat]jingle_seconds
+msgid "%s seconds"
 msgstr ""
 
 #: [chat]publish_error
@@ -1021,13 +1027,12 @@ msgid "No publication yet? Write your first post to make people discover your pr
 msgstr ""
 
 #: [communityposts]empty_me_button
-#, fuzzy
 msgid "Publish my first post"
-msgstr "Veřejná URL tohoto příspěvku"
+msgstr ""
 
 #: [communitysubscriptions]subscriptions
-msgid "My Subscriptions"
-msgstr "Moje odběry"
+msgid "Subscribed Communities"
+msgstr ""
 
 #: [communitysubscriptions]empty_title
 msgid "Hello"
@@ -1382,24 +1387,20 @@ msgid "Add the chatroom"
 msgstr "Přidat do konverzace"
 
 #: [location]title
-#, fuzzy
 msgid "My location"
-msgstr "Moje příspěvky"
+msgstr ""
 
 #: [location]enabled_title
-#, fuzzy
 msgid "Currently shared with my contacts"
-msgstr "Zahájit konverzaci s kontaktem."
+msgstr ""
 
 #: [location]disabled_title
-#, fuzzy
 msgid "Currently disabled"
-msgstr "Komentáře vypnuty"
+msgstr ""
 
 #: [location]last_published
-#, fuzzy
 msgid "My last published location"
-msgstr "Moje příspěvky"
+msgstr ""
 
 #: [location]less_than_one_km
 msgid "Less than a km away"
@@ -1517,6 +1518,14 @@ msgstr ""
 msgid "Administrated by"
 msgstr ""
 
+#: [about_movim]info
+msgid "Movim is a federated blogging and chat platform."
+msgstr ""
+
+#: [about_movim]website
+msgid "Visit the project official website %s."
+msgstr ""
+
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
 msgstr "Nesprávné přihlašovací jméno (mezi 4 a 40 znaky)"
@@ -1546,9 +1555,8 @@ msgid "Write a new post…"
 msgstr "Napsat nový příspěvek"
 
 #: [notification]request_title
-#, fuzzy
 msgid "Notifications request"
-msgstr "Oznámení"
+msgstr ""
 
 #: [notification]request_info
 msgid "Movim requires your approval to display notifications"
@@ -1563,14 +1571,12 @@ msgid "Request"
 msgstr ""
 
 #: [notification]request_granted
-#, fuzzy
 msgid "Authorization granted"
-msgstr "Ověřovací kód"
+msgstr ""
 
 #: [notification]request_refused
-#, fuzzy
 msgid "Authorization refused"
-msgstr "Ověřovací kód"
+msgstr ""
 
 #: [notificationconfig]title [notifs]title [onboarding]notifications_title
 #: [room]notify_title
@@ -1586,9 +1592,8 @@ msgid "Incoming message"
 msgstr ""
 
 #: [notificationconfig]push_subscriptions
-#, fuzzy
 msgid "Push notifications"
-msgstr "Oznámení"
+msgstr ""
 
 #: [notificationconfig]push_subscriptions_text
 msgid "Movim will send push notifications to the following registered devices"
@@ -1603,14 +1608,12 @@ msgid "Push notifications disabled for this device"
 msgstr ""
 
 #: [notificationconfig]unknown_browser
-#, fuzzy
 msgid "Unknown browser"
-msgstr "Neznámá chyba"
+msgstr ""
 
 #: [notificationconfig]unknown_platform
-#, fuzzy
 msgid "Unknown platform"
-msgstr "Neznámá chyba"
+msgstr ""
 
 #: [invitations]title
 msgid "Pending Invitations"
@@ -1892,6 +1895,10 @@ msgstr ""
 msgid "Add #hashtags in your title or content to allow your article to be discovered"
 msgstr ""
 
+#: [publish]publish_error_forbidden
+msgid "You are not authorized to publish there"
+msgstr ""
+
 #: [publishhelp]title [page]help
 msgid "Help"
 msgstr "Pomoc"
@@ -2133,9 +2140,8 @@ msgid "Archived"
 msgstr ""
 
 #: [room]archived_text
-#, fuzzy
 msgid "The chatroom messages are archived"
-msgstr "Získáno %s zpráv"
+msgstr ""
 
 #: [room]group_chat
 msgid "Group Chat"
@@ -2287,6 +2293,10 @@ msgstr ""
 
 #: [sendto]attach
 msgid "Attach to a blog publication"
+msgstr ""
+
+#: [sendto]share
+msgid "Share in a new publication"
 msgstr ""
 
 #: [sendto]contact
@@ -2522,18 +2532,16 @@ msgid "Camera"
 msgstr ""
 
 #: [visioconfig]camera_label
-#, fuzzy
 msgid "Default camera"
-msgstr "Standardní jazyk"
+msgstr ""
 
 #: [visioconfig]default_microphone_changed
 msgid "Default microphone changed"
 msgstr ""
 
 #: [visioconfig]default_camera_changed
-#, fuzzy
 msgid "Default camera changed"
-msgstr "Standardní jazyk"
+msgstr ""
 
 #: [visioconfig]no_mic_sound
 msgid "No sound detected from your microphone"
@@ -3440,48 +3448,3 @@ msgstr "API je nedostupná, zkuste to znovu později"
 #: [field]type_here
 msgid "Type here"
 msgstr "Pište sem"
-
-#~ msgid "General Overview"
-#~ msgstr "Obecný přehled"
-
-#~ msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
-#~ msgstr "Problém WebSocket připojení; zkontrolujte, zda Movim Daemon běží a je dosažitelný"
-
-#~ msgid "Browser"
-#~ msgstr "Prohlížeč"
-
-#~ msgid "Movim Core"
-#~ msgstr "Movim jádro"
-
-#~ msgid "Movim Daemon"
-#~ msgstr "Movim daemon"
-
-#~ msgid "Database"
-#~ msgstr "Databáze"
-
-#~ msgid "XMPP"
-#~ msgstr "XMPP"
-
-#~ msgid "Your pod is not registered on the API"
-#~ msgstr "Váš pod není registrován na API"
-
-#~ msgid "Your pod is registered on the API"
-#~ msgstr "Váš pod je registrován na API"
-
-#~ msgid "Your pod is not yet validated"
-#~ msgstr "Váš pod zatím není potvrzen"
-
-#~ msgid "Your pod is validated"
-#~ msgstr "Váš pod je potvrzen"
-
-#~ msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
-#~ msgstr "Požádali jste o odebrání z API, žádost bude zpracována do několika hodin"
-
-#~ msgid "Visit the blog to see all the public posts"
-#~ msgstr "Navštivte blog pro zobrazení veřejných příspěvků"
-
-#~ msgid "Statistics"
-#~ msgstr "Statistiky"
-
-#~ msgid "Status updated"
-#~ msgstr "Stav aktualizován"

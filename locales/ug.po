@@ -1,6 +1,6 @@
 #
 # Translators:
-# Irriep Nala Novram <allannkorh@yahoo.fr>, 2017
+# Bala0997, 2022
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -117,38 +117,38 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-12-25 14:45+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
-"Last-Translator: Irriep Nala Novram <allannkorh@yahoo.fr>, 2017\n"
-"Language-Team: Breton (http://www.transifex.com/movim/movim/language/br/)\n"
-"Language: br\n"
+"Last-Translator: Bala0997, 2022\n"
+"Language-Team: Uyghur (http://www.transifex.com/movim/movim/language/ug/)\n"
+"Language: ug\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=5; plural=((n%10 == 1) && (n%100 != 11) && (n%100 !=71) && (n%100 !=91) ? 0 :(n%10 == 2) && (n%100 != 12) && (n%100 !=72) && (n%100 !=92) ? 1 :(n%10 ==3 || n%10==4 || n%10==9) && (n%100 < 10 || n% 100 > 19) && (n%100 < 70 || n%100 > 79) && (n%100 < 90 || n%100 > 99) ? 2 :(n != 0 && n % 1000000 == 0) ? 3 : 4);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Translate Toolkit 3.7.4\n"
 
 #: [about]thanks
 msgid "Thanks"
-msgstr "Trugarez"
+msgstr "رەھمەت"
 
 #: [about]developers
 msgid "Developers"
-msgstr "Diorroerien"
+msgstr "لايىھەلىگۈچى"
 
 #: [about]translators
 msgid "Translators"
-msgstr "Troerien"
+msgstr "تەرجىمانلار"
 
 #: [about]translators_text
 msgid "Thanks to all the translators"
-msgstr "Trugarez d'an holl droerien"
+msgstr "بارلىق تەرجىمانلارغا رەھمەت"
 
 #: [about]software
 msgid "Software"
-msgstr "Meziant"
+msgstr "يۇمتال"
 
 #: [about]resources
 msgid "Resources"
-msgstr ""
+msgstr "بايلىقلار"
 
 #: [about]api
 msgid "API"
@@ -156,55 +156,55 @@ msgstr "API"
 
 #: [about]info
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
-msgstr ""
+msgstr "مۇۋىم بولسا بىر XMPP-ئاساسىدىكى ئالاقە مۇنبىرى. بارلىق پروجېكىت، تۆۋەندىكى يۇمشاق دىتال ھەمدە بايلىقلاردىن باشقا، نى ئىشلىتىدۇ."
 
 #: [account]title [page]account
 msgid "Account"
-msgstr "Kont"
+msgstr "ھېسابات"
 
 #: [account]account_management
 msgid "Account management"
-msgstr ""
+msgstr "ھېسابات باشقۇرۇش"
 
 #: [account]password_change_title
 msgid "Change my password"
-msgstr "Kemm ma ger-tremen"
+msgstr "مەخپىي نۇمۇرنى ئۆزگەرتىش"
 
 #: [account]password [credentials]password [form]password [input]password
 msgid "Password"
-msgstr "Ger-tremen"
+msgstr "مەخپىي نۇمۇر"
 
 #: [account]password_confirmation
 msgid "Password confirmation"
-msgstr "Kadarnadur ar ger-tremen"
+msgstr "مەخپىي نۇمۇرنى جەزىملەشتۈرۈش"
 
 #: [account]password_changed
 msgid "The password has been updated"
-msgstr "Hizivaet eo bet ar ger-tremen"
+msgstr "مەخپىي نۇمۇر يېڭىلاندى"
 
 #: [account]password_not_valid
 msgid "Please provide a valid password (6 characters minimum)"
-msgstr "Roit ur ger-tremen reizh mar plij (6 arouezenn da vihanañ)"
+msgstr "بىر ئىناۋەتلىك مەخپىي نۇمۇرنى تەمىنلەڭ (كەمدە 6 ھەرىپ)"
 
 #: [account]password_not_same
 msgid "The provided passwords are not the same"
-msgstr "N'eo ket heñvel ar gerioù-tremen roet"
+msgstr "تەمىنلەنگەن مەخپىي نۇمۇرلار ئوخشاش ئەمەس"
 
 #: [account]delete
 msgid "Delete your account"
-msgstr "Dilemel ho kont"
+msgstr "ھېساباتىڭىزنى ئۈچۈرۈڭ"
 
 #: [account]delete_text
 msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts and publications)."
-msgstr "Emaoc'h o vont da zilemel ho kont XMPP hag an holl ditouroù liammet outañ (profil, darempredoù hag embannadennoù)."
+msgstr ""
 
 #: [account]delete_text_confirm
 msgid "Type your full username"
-msgstr ""
+msgstr "تۇلۇق ئىشلەتكۈچى نامىڭىزنى كىرگۈزۈڭ"
 
 #: [account]delete_text_error
 msgid "Please provide a valid username."
-msgstr ""
+msgstr "بىر ئىناۋەتلىك ئىشلەتكۈچى نامىنى تەمىنلەڭ."
 
 #: [account]gateway_title
 msgid "Gateways"
@@ -212,11 +212,11 @@ msgstr ""
 
 #: [account]clear
 msgid "Leave this instance"
-msgstr "Kuitaat an instañs-mañ"
+msgstr ""
 
 #: [account]clear_text
 msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
-msgstr "Emaoc'h o vont da zilemel an holl ditouroù liammet gant ho kont war an instañs-mañ eus Movin (profil, darempredoù hag embannadennoù)."
+msgstr ""
 
 #: [account]clear_text_confirm
 msgid "This action will not delete your account but will disconnect you from this instance."
@@ -224,7 +224,7 @@ msgstr ""
 
 #: [account]delete_bundle_title
 msgid "OMEMO Key deletion"
-msgstr ""
+msgstr "OMEMO ئاچقۇچىنى ئۆچۈرۈش"
 
 #: [account]delete_bundle_text
 msgid "Your are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
@@ -232,59 +232,59 @@ msgstr ""
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
-msgstr "Kouiñ ur gont nevez"
+msgstr "يېڭى ھېسابات ئېچىش"
 
 #: [create]notfound
 msgid "No account creation form found on the server"
-msgstr ""
+msgstr "بۇ مۇلازىمېتىردا ھېچقانداق ھېسابات ئېچىش جەدىۋېلى تېپىلمىدى"
 
 #: [create]server_on
 msgid "on"
-msgstr ""
+msgstr "دا"
 
 #: [create]successfull
 msgid "Your acccount has been successfully registered"
-msgstr ""
+msgstr "ھېساباتىڭىز مۇۋاپىقىيەتلىك تىزىملىتىلدى."
 
 #: [create]loading
 msgid "Loading"
-msgstr ""
+msgstr "يۈكلەۋاتىدۇ"
 
 #: [create]placeholder
 msgid "…and start playing"
-msgstr ""
+msgstr "...قۇيۇۋاتىدۇ"
 
 #: [error]not_acceptable
 msgid "Not Acceptable"
-msgstr ""
+msgstr "قۇبۇل قىلغىلى بولمايدۇ"
 
 #: [error]service_unavailable
 msgid "The registration system of this server is currently unavailable"
-msgstr ""
+msgstr "بۇ مۇلازىمېتىرنىڭ تىزىملىتىش سېستىمىسى نۆۋەتتە تەييار ئەمەس"
 
 #: [error]forbidden
 msgid "Registration forbidden"
-msgstr ""
+msgstr "تىزىملىتىش مەنئىي قىلىندى"
 
 #: [adhoc]title
 msgid "Actions"
-msgstr "Oberennoù"
+msgstr "ھەركەتلەر"
 
 #: [adhoc]completed
 msgid "Action completed"
-msgstr ""
+msgstr "ھەركەت تاماملاندى"
 
 #: [admin]general
 msgid "General Settings"
-msgstr ""
+msgstr "ئۇمۇمىي تەڭشەك"
 
 #: [general]theme
 msgid "Theme"
-msgstr ""
+msgstr "كۆرۈنۈش"
 
 #: [general]language
 msgid "Default language"
-msgstr ""
+msgstr "ئەسلىي تىل"
 
 #: [general]log_verbosity
 msgid "Log verbosity"
@@ -292,7 +292,7 @@ msgstr ""
 
 #: [restrictsuggestions]title
 msgid "Restrict suggestions"
-msgstr ""
+msgstr "تەۋسىيەنى چەكلەش"
 
 #: [restrictsuggestions]text
 msgid "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
@@ -300,35 +300,35 @@ msgstr ""
 
 #: [chatonly]title
 msgid "Chat only"
-msgstr ""
+msgstr "پەقەتلا پاراڭ"
 
 #: [chatonly]text
 msgid "Disable all the social feature (Communities, Blog…) and keep only the chat ones"
-msgstr ""
+msgstr "بارلىق ئىجتىمائىي ئالاھىدىلىكلەرنى (جامائەتلەر، بىلوگ...) يوق قىلىش ھەمدە پەقەتلا پاراڭلىشىشنى ساقلاپ قېلىش"
 
 #: [credentials]title
 msgid "Administration Credential"
-msgstr ""
+msgstr "باشقۇرغۇچى پارولى"
 
 #: [credentials]username [input]username
 msgid "Username"
-msgstr ""
+msgstr "ئىشلەتكۈچى نامى"
 
 #: [credentials]re_password
 msgid "Retype password"
-msgstr ""
+msgstr "مەخپىي نۇمۇرنى قايتا كىرگۈزۈش"
 
 #: [disableregistration]title
 msgid "Disable the XMPP registration feature"
-msgstr ""
+msgstr "XMPP تىزىملىتىش ئىقتىدارىنى يوق قىلىش"
 
 #: [disableregistration]text
 msgid "Remove the XMPP registration flow and buttons from the interface"
-msgstr ""
+msgstr "XMPP تىزىملىتىش ئېقىمى ھەمدە كۇنۇپكىسىنى ئۇلانمىدىن چىقىرىش"
 
 #: [whitelist]title
 msgid "Whitelisted XMPP Servers"
-msgstr ""
+msgstr "ئاق تىزىملىكتىكى XMPP مۇلازىمېتىرلىرى"
 
 #: [whitelist]info1
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
@@ -336,20 +336,20 @@ msgstr ""
 
 #: [whitelist]info2
 msgid "Leave this field blank if you allow the access to all the XMPP accounts."
-msgstr ""
+msgstr "ئەگەر سىز بارلىق XMPP ھېساباتلارنىڭ كىرىشىگە يول قويسىڭىز، بۇ ئۇرۇننى بوش قۇيۇڭ."
 
 #: [whitelist]label
 msgid "List of whitelisted XMPP servers"
-msgstr ""
+msgstr "ئاق تىزىملىكتىكى XMPP مۇلازىمېتىرلار تىزىملىكى"
 
 #: [information]title
 msgctxt "[information]title"
 msgid "Information Message"
-msgstr ""
+msgstr "تۇنۇشتۇرۇش ئۇچۇرى"
 
 #: [information]description [communityconfig]description
 msgid "Description"
-msgstr ""
+msgstr "تەسۋېرلەش"
 
 #: [information]description_placeholder
 msgid "General description of the instance"
@@ -357,11 +357,11 @@ msgstr ""
 
 #: [information]banner
 msgid "Main banner"
-msgstr ""
+msgstr "ئاساسلىق پىلاكات"
 
 #: [information]banner_info
 msgid "Ensure that the picture is not too large and can be reached from any webpages"
-msgstr ""
+msgstr "رەسىمنىڭ چوڭ ئەمەسلىكىگە ھەمدە بارلىق توربەتلەردىن يەتكىلى بۇلىدىغانلىقىغا كاپالەتلىك قىلىڭ"
 
 #: [information]info1
 msgid "This message will be displayed on the login page. It can be used to link the Terms and Conditions of your Movim instance for example."
@@ -369,32 +369,32 @@ msgstr ""
 
 #: [information]info2
 msgid "Leave this field blank if you don’t want to show any message."
-msgstr ""
+msgstr "ئەگەر سىز ھېچقانداق ئۇچۇر كۆرسەتمىسىڭىز، بۇ ئۇرۇننى بوش قۇيۇڭ."
 
 #: [information]label
 msgctxt "[information]label"
 msgid "Information Message"
-msgstr ""
+msgstr "تۇنۇشتۇرۇش ئۇچۇرى"
 
 #: [xmpp]title
 msgid "Default XMPP server"
-msgstr ""
+msgstr "سۈكۈتتىكى XMPP مۇلازىمېتىرى"
 
 #: [xmpp]domain
 msgid "Main XMPP server domain"
-msgstr ""
+msgstr "ئاساسىي XMPP مۇلازىمېتىر دائىرە نامى"
 
 #: [xmpp]description
 msgid "Main XMPP server description"
-msgstr ""
+msgstr "ئاساسىي XMPP مۇلازىمېتىر تەسۋىرى"
 
 #: [xmpp]country
 msgid "Main XMPP server country"
-msgstr ""
+msgstr "ئاساسىي XMPP مۇلازىمېتىر دۆلىتى"
 
 #: [xmpp]country_pick
 msgid "Pick a country in the list"
-msgstr ""
+msgstr "بۇ تىزىملىكتىكى بىر دۆلەتنى تاللاڭ"
 
 #: [tenor]title
 msgid "Tenor integration"
@@ -414,7 +414,7 @@ msgstr ""
 
 #: [twitter]title
 msgid "Twitter integration"
-msgstr ""
+msgstr "تۋىتىر بىرلەشتۈرۈش"
 
 #: [twitter]label
 msgid "Your Twitter Token"
@@ -430,31 +430,31 @@ msgstr ""
 
 #: [log]empty
 msgid "Empty"
-msgstr ""
+msgstr "قۇرۇق"
 
 #: [log]syslog
 msgid "Syslog"
-msgstr ""
+msgstr "سېستىما خاتىرىسى"
 
 #: [log]syslog_files
 msgid "Syslog and files"
-msgstr ""
+msgstr "سېستىما خاتىرىسى ھەمدە ھۆججەتلىرى"
 
 #: [adminreported]reported_by
 msgid "Reported by %s users"
-msgstr ""
+msgstr "%sئىشلەتكۈچى تەرىپىدىن دوكىلات قىلىندى"
 
 #: [adminreported]info
 msgid "Those accounts were reported by some Movim users"
-msgstr ""
+msgstr "ئۇ ھېساباتلار بەزى مۇۋىم ئىشلەتكۈچىلىرى تەرىپىدىن دوكىلات قىلىندى"
 
 #: [adminreported]info2
 msgid "You can choose to block them for all the other users"
-msgstr ""
+msgstr "سىز باشقا ئىشلەتكۈچىلەر ئۈچۈن ئۇلارنى چەكلىيەلەيسىز"
 
 #: [adminsessions]title
 msgid "Sessions"
-msgstr ""
+msgstr "باسقۇچلار"
 
 #: [adminsessions]text
 msgid "Currently connected users on the pod"
@@ -462,7 +462,7 @@ msgstr ""
 
 #: [avatar]file
 msgid "File"
-msgstr ""
+msgstr "ھۆججەت"
 
 #: [avatar]updated
 msgid "Avatar Updated"
@@ -470,19 +470,19 @@ msgstr ""
 
 #: [avatar]not_updated
 msgid "Avatar Not Updated"
-msgstr ""
+msgstr "باش سۈرەت يېڭىلانمىدى"
 
 #: [avatar]missing
 msgid "No avatar defined yet"
-msgstr ""
+msgstr "ھېچقانداق باش سۈرەت ئېنىقلانمىدى"
 
 #: [avatar]change
 msgid "Change my avatar"
-msgstr ""
+msgstr "باش سۈرەتنى ئۆزگەرتىش"
 
 #: [avatar]upload_new
 msgid "Upload a new picture"
-msgstr ""
+msgstr "يېڭى رەسىم چىقىرىش"
 
 #: [banner]change
 msgid "Change my banner"
@@ -502,35 +502,35 @@ msgstr ""
 
 #: [blocked]title
 msgid "Blocked"
-msgstr ""
+msgstr "چەكلەنگەن"
 
 #: [blocked]block_account
 msgid "Block the account"
-msgstr ""
+msgstr "بۇ ھېساباتنى چەكلەش"
 
 #: [blocked]unblock_account
 msgid "Unblock the account"
-msgstr ""
+msgstr "بۇ ھېساباتنى چەكلىمەسلىك"
 
 #: [blocked]account_blocked
 msgid "Account blocked"
-msgstr ""
+msgstr "ھېسابات چەكلەندى"
 
 #: [blocked]account_unblocked
 msgid "Account unblocked"
-msgstr ""
+msgstr "ھېسابات چەكلەنمىدى"
 
 #: [blocked]placeholder
 msgid "You will find here the users you have blocked"
-msgstr ""
+msgstr "سىز بۇ يەردە چەكلەنگەن ئىشلەتكۈچىلەرنى تاپالايسىز"
 
 #: [blocked]info
 msgid "The following users are blocked by Movim and cannot contact you anymore"
-msgstr ""
+msgstr "تۆۋەندىكى ئىشلەتكۈچىلەر مۇۋىم تەرىپىدىن چەكلەندى شۇڭا ئۇلار سىز بىلەن ئالاقىلىشالمايدۇ"
 
 #: [blocked]info2
 msgid "The administrator is also aware of this list and can therefore block those users system wide"
-msgstr ""
+msgstr "باشقۇرغۇچى بۇ تىزىملىكتىن خەۋەردار شۇڭلاشقا ئۇلارنى پۈتۈن سېستىمىدىن چەكلىيەلەيدۇ"
 
 #: [blog]title [feed]title
 msgid "%s’s feed"
@@ -538,132 +538,132 @@ msgstr ""
 
 #: [blog]private
 msgid "This content is private, please login to see it"
-msgstr ""
+msgstr "بۇ مەزمۇن شەخسىي، ئۇنى كۆرۈش ئۈچۈن كىرىڭ"
 
 #: [message]published
 msgid "Message Published"
-msgstr ""
+msgstr "ئۇچۇر ئەۋەتىلدى"
 
 #: [message]react
 msgid "Add a reaction"
-msgstr ""
+msgstr "بىر ئىنكاس قۇشۇڭ"
 
 #: [message]retract
 msgid "Retract"
-msgstr ""
+msgstr "قايتۇرۋېلىش"
 
 #: [message]retract_body
 msgid "Your contact attempted to retract a previous message, but it's unsupported by your client"
-msgstr ""
+msgstr "سىزنىڭ تۇنۇشىڭىز بىر ئاۋۋالقى ئۇچۇرنى قايتۇرماقچى بولدى، لىكىن سىزنىڭ خېرىدارىڭىز ئۇنى قوللىمايدۇ."
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
-msgstr ""
+msgstr "سىزنىڭ ئۇچۇرىڭىزنى ئەۋەتكىلى بولمىدى، بىر-ئازدىن كىيىن قايتا سىناپ بېقىڭ"
 
 #: [message]encrypted [omemo]encrypted
 msgid "Encrypted message"
-msgstr ""
+msgstr "شىفىرلانغان ئۇچۇر"
 
 #: [message]retracted
 msgid "Retracted message"
-msgstr ""
+msgstr "قايتۇرۋالغان ئۇچۇر"
 
 #: [message]composing
 msgid "Composing…"
-msgstr ""
+msgstr "يېزىۋاتىدۇ..."
 
 #: [message]invitation
 msgid "Invitation"
-msgstr ""
+msgstr "تەكلىپ"
 
 #: [message]paused
 msgid "Paused…"
-msgstr ""
+msgstr "توختىدى..."
 
 #: [message]gone
 msgid "Contact gone"
-msgstr ""
+msgstr "تۇنۇش كەتتى"
 
 #: [message]history
 msgid "%s messages retrieved"
-msgstr ""
+msgstr "%sئۇچۇر قايتۇرۋېلىندى"
 
 #: [message]edit_help
 msgid "↑ to edit your previous message"
-msgstr ""
+msgstr "↑ئاۋۋالقى ئۇچۇرىڭىزنى تەھرىرلەش ئۈچۈن"
 
 #: [message]emoji_help
 msgid ":shortcut: to insert an emoji"
-msgstr ""
+msgstr ": قىسقايول: چىراي ئىپادىسى كىرگۈزۈش ئۈچۈن"
 
 #: [message]visitor_help
 msgid "You are not allowed to send messages in this conference"
-msgstr ""
+msgstr "سىز بۇ يىغىندا ئۇچۇر ئەۋەتىشكە رۇخسەت قىلىنمىدىڭىز"
 
 #: [chat]attention
 msgid "%s needs your attention"
-msgstr ""
+msgstr "%sسىزنىڭ دىققىتىڭىزگە مۇھتاج"
 
 #: [chat]placeholder
 msgid "Your message here…"
-msgstr ""
+msgstr "سىزنىڭ ئۇچۇرىڭىز بۇ يەردە..."
 
 #: [chat]smileys
 msgid "Smileys"
-msgstr ""
+msgstr "كۈلۈمسىرەشلەر"
 
 #: [chat]frequent
 msgid "Frequent contacts"
-msgstr ""
+msgstr "دائىملىق تۇنۇشلار"
 
 #: [chat]new_title
 msgid "Nothing here yet…"
-msgstr ""
+msgstr "تېخى ھېچنىمە يوق..."
 
 #: [chat]new_text
 msgid "Don’t be shy, send a first message to start the discussion"
-msgstr ""
+msgstr "خىجىل بولماڭ، تۇنجى ئۇچۇرنى ئەۋەتىپ پاراڭنى باشلاڭ"
 
 #: [chat]invitation
 msgid "You received an invitation to join a chatroom"
-msgstr ""
+msgstr "سىز بۇ پاراڭخانىغا كىرىش ئۈچۈن بىر تەكلىپ تاپشۇرۋالدىڭىز"
 
 #: [chat]invitation_self
 msgid "You sent an invitation to join a chatroom"
-msgstr ""
+msgstr "سىز بۇ پاراڭخانىغا كىرىش ئۈچۈن بىر تەكلىپ ئەۋەتتىڭىز"
 
 #: [chat]invitation_join
 msgid "Join %s"
-msgstr ""
+msgstr "%sنى قېتىش"
 
 #: [chat]profile
 msgid "See the profile"
-msgstr ""
+msgstr "تەرجىمالىنى كۆرۈش"
 
 #: [chat]clear
 msgctxt "[chat]clear"
 msgid "Clear the history"
-msgstr ""
+msgstr "تارىخنى ئۆچۈرۈش"
 
 #: [chat]edit_previous
 msgid "Edit last message"
-msgstr ""
+msgstr "ئاخىرقى ئۇچۇرنى تەھرىرلەش"
 
 #: [chat]report_abuse
 msgid "Report abuse"
-msgstr ""
+msgstr "قالايمىقان ئىشلىتىشنى دوكىلات قىلىش"
 
 #: [chat]jingle_incoming [notificationconfig]audio_call
 msgid "Incoming call"
-msgstr ""
+msgstr "كەلگەن تېلىفۇن"
 
 #: [chat]jingle_outgoing
 msgid "Outgoing call"
-msgstr ""
+msgstr "ئۇرغان تېلىفۇن"
 
 #: [chat]jingle_end
 msgid "Call ended"
-msgstr ""
+msgstr "تېلىفۇن قۇيۇلدى"
 
 #: [chat]jingle_hours
 msgid "%s hours %s minutes"
@@ -679,188 +679,188 @@ msgstr ""
 
 #: [chat]publish_error
 msgid "An error occured when sending the message"
-msgstr ""
+msgstr "بۇ ئۇچۇرنى يوللاۋاتقاندا بىر خاتالىق كۆرۈلدى"
 
 #: [chat]mam_retrieval
 msgid "Synchronizing the history, please wait…"
-msgstr ""
+msgstr "تارىخنى ماس-قەدەملەۋاتىدۇ، بىردەم ساقلاڭ..."
 
 #: [chat]clear_history
 msgctxt "[chat]clear_history"
 msgid "Clear the history"
-msgstr ""
+msgstr "تارىخنى تازىلاش"
 
 #: [chat]clear_history_text
 msgid "You are going to delete %s messages, are you sure?"
-msgstr ""
+msgstr "سىز %sئۇچۇرنى ئۆچۈرمەكچى، جەزىملەشتۈرەمسىز؟"
 
 #: [chat]action_impossible_encrypted
 msgid "Action impossible in encrypted chats"
-msgstr ""
+msgstr "شىفىرلانغان پاراڭلاردا ھەركەت مۇمكىن ئەمەس"
 
 #: [chatroom]members
 msgid "Members"
-msgstr ""
+msgstr "ئەزالار"
 
 #: [chatroom]connected [chatrooms]connected
 msgid "Connected to the chatroom"
-msgstr ""
+msgstr "پاراڭخانىغا ئۇلاندى"
 
 #: [chatroom]disconnected [chatrooms]disconnected
 msgid "Disconnected from the chatroom"
-msgstr ""
+msgstr "بۇ پاراڭخانىدىن ئۈزۈلدى"
 
 #: [chatroom]config [communityaffiliation]configuration [page]configuration
 msgid "Configuration"
-msgstr "Kefluniadur"
+msgstr "تەڭشەك"
 
 #: [chatroom]config_saved [communityaffiliation]config_saved
 msgid "Configuration saved"
-msgstr ""
+msgstr "تەڭشەك ساقلاندى"
 
 #: [chatroom]subject
 msgid "Subject"
-msgstr ""
+msgstr "تېما"
 
 #: [chatroom]subject_changed
 msgid "Subject changed"
-msgstr ""
+msgstr "تېما ئۆزگەردى"
 
 #: [chatroom]administration [page]administration
 msgid "Administration"
-msgstr ""
+msgstr "باشقۇرۇش"
 
 #: [omemo]fingerprints_title
 msgid "Fingerprints"
-msgstr ""
+msgstr "بارماق ئىزلىرى"
 
 #: [omemo]fingerprints
 msgid "OMEMO Fingerprints"
-msgstr ""
+msgstr "OMEMO بارماق ئىزلىرى"
 
 #: [omemo]generating_bundle
 msgid "Generating the encryption keys, please wait…"
-msgstr ""
+msgstr "شىفىرلاش ئاچقۇچلىرىنى ياساۋاتىدۇ، بىردەم ساقلاڭ..."
 
 #: [omemo]generated_bundle
 msgid "Encryption keys generated"
-msgstr ""
+msgstr "شىفىرلاش ئاچقۇچلىرى ياسالدى"
 
 #: [omemo]resolving_devices
 msgid "Resolving OMEMO devices"
-msgstr ""
+msgstr "OMEMO ئۈسكۈنىلىرىنى بىر-تەرەپ قىلىۋاتىدۇ"
 
 #: [omemo]building_sessions
 msgid "Building encryption sessions"
-msgstr ""
+msgstr "شىفىرلەش باسقۇچلىرىنى قۇرۇۋاتىدۇ"
 
 #: [omemo]building_own_sessions
 msgid "Building own encryption sessions"
-msgstr ""
+msgstr "ئۆزىنىڭ شىفىرلاش باسقۇچلىرىنى قۇرۇۋاتىدۇ"
 
 #: [omemo]encrypted_disabled
 msgid "Encryption disabled"
-msgstr ""
+msgstr "شىفىرلاش يوق قىلىندى"
 
 #: [omemo]encrypted_loading
 msgid "Send a message to build the encrypted session"
-msgstr ""
+msgstr "شىفىرلانغان باسقۇچنى قۇرۇش ئۈچۈن بىر ئۇچۇر يوللاڭ"
 
 #: [omemo]enable_contact
 msgid "Enabling encryption for the contact"
-msgstr ""
+msgstr "بۇ تۇنۇش ئۈچۈن شىفىرلاشنى بار قىلىۋاتىدۇ"
 
 #: [omemo]disable_contact
 msgid "Disabling encryption for the contact"
-msgstr ""
+msgstr "بۇ تۇنۇش ئۈچۈن شىفىرلاشنى يوق قىلىۋاتىدۇ"
 
 #: [omemo]last_activity
 msgid "Last activity"
-msgstr ""
+msgstr "ئاخىرقى پائالىيەت"
 
 #: [omemo]sessions_built
 msgid "%s sessions built"
-msgstr ""
+msgstr "%sباسقۇچلار قۇرۇلدى"
 
 #: [chats]empty_title
 msgid "No chats yet…"
-msgstr ""
+msgstr "تېخى پاراڭ يوق"
 
 #: [chats]empty
 msgid "Start a new conversation by clicking on the %s button."
-msgstr ""
+msgstr "بۇ %sكۇنۇپكىنى بېسىش ئارقىلىق بىر يېڭى پاراڭنى باشلاڭ"
 
 #: [chats]add
 msgid "Chat with a contact"
-msgstr ""
+msgstr "بىر تۇنۇش بىلەن پاراڭلىشىڭ"
 
 #: [chats]me
 msgid "Me"
-msgstr ""
+msgstr "مەن"
 
 #: [chats]picture
 msgid "Picture"
-msgstr ""
+msgstr "رەسىم"
 
 #: [chats]video
 msgid "Video"
-msgstr ""
+msgstr "سىن"
 
 #: [button]chat
 msgid "Chat"
-msgstr "Flapva"
+msgstr "پاراڭ"
 
 #: [button]new
 msgid "New conversation"
-msgstr ""
+msgstr "يېڭى پاراڭ"
 
 #: [communities]empty_text
 msgid "Discover, follow and share"
-msgstr ""
+msgstr "بايقاڭ، ئەگىشىڭ ھەمدە ھەمبەھىرلەڭ"
 
 #: [communities]counter
 msgid "%s communities"
-msgstr ""
+msgstr "%sجامائەتلەر"
 
 #: [communities]search_server
 msgid "Search for a new server"
-msgstr ""
+msgstr "بىر يېڭى مۇلازىمېتىرنى ئىزدەڭ"
 
 #: [communities]servers
 msgid "Communities servers"
-msgstr ""
+msgstr "جامائەتلەر مۇلازىمېتىرلىرى"
 
 #: [communities]servers_text
 msgid "Discover the Communities by servers"
-msgstr ""
+msgstr "مۇلازىمېتىرلار بىلەن جامائەتلەرنى بايقاڭ"
 
 #: [communities]disco
 msgid "Communities server discovered"
-msgstr ""
+msgstr "جامائەتلەر مۇلازىمېتىرى بايقالدى"
 
 #: [communities]disco_error
 msgid "This server doesn’t exists"
-msgstr ""
+msgstr "بۇ مۇلازىمېتىر مەۋجۇت ئەمەس"
 
 #: [communitiesinteresting]about
 msgid "Communities you might like"
-msgstr ""
+msgstr "سىز ياقتۇرىدىغان جامائەتلەر"
 
 #: [communitiesserver]created
 msgid "Community created successfully"
-msgstr ""
+msgstr "جامائەت مۇۋاپىقىيەتلىك قۇرۇلدى"
 
 #: [communitiesserver]empty_server
 msgid "There is no Communities yet on this server."
-msgstr ""
+msgstr "بۇ مۇلازىمېتىردا تېخى بىرەر جامائەت يوق"
 
 #: [communitiesserver]add
 msgid "Create a new community on %s"
-msgstr ""
+msgstr "%sدا بىر يېڭى جامائەت قۇرۇش"
 
 #: [communitiesserver]name
 msgid "Community name"
-msgstr ""
+msgstr "جامائەت نامى"
 
 #: [communitiesserver]name_example
 msgid "My Little Pony - Fan Club"
@@ -868,164 +868,164 @@ msgstr ""
 
 #: [communitiesserver]name_error
 msgid "Please provide a valid community name (4 characters minimum)"
-msgstr ""
+msgstr "بىر ئىناۋەتلىك جامائەت نامىنى كىرگۈزۈڭ (ئەڭ كەمدە 4 ھەرىپ)"
 
 #: [communitiesserver]no_creation
 msgid "You cannot create a new community on this server"
-msgstr ""
+msgstr "سىز بۇ مۇلازىمېتىردا بىر يېڭى جامائەت قۇرالمايسىز"
 
 #: [communitiesservers]empty_title
 msgid "No Communities Servers yet…"
-msgstr ""
+msgstr "ھېچقانداق جامائەت مۇلازىمېتىرى يوق..."
 
 #: [communitiesservers]empty_text
 msgid "It seems that we can't find any communities for the moment"
-msgstr ""
+msgstr "بۇ پەيىتتە بىز ھېچقانداق جامائەتنى تاپالمايدىغاندەك قىلىمىز"
 
 #: [communityaffiliation]subscriptions
 msgid "Subscriptions"
-msgstr ""
+msgstr "مۇشتەرىلەر"
 
 #: [communityaffiliation]public_subscriptions
 msgid "Public subscriptions"
-msgstr ""
+msgstr "ئاممىۋى مۇشتەرىلەر"
 
 #: [communityaffiliation]subscriptions_text
 msgid "My Communities subscriptions"
-msgstr ""
+msgstr "مېنىڭ جامائەت مۇشتەرىلىرىم"
 
 #: [communityaffiliation]deleted
 msgid "Community deleted successfully"
-msgstr ""
+msgstr "جامائەت مۇۋاپىقىيەتلىك ئۆچۈرۈلدى"
 
 #: [communityaffiliation]delete_title
 msgid "Delete the community"
-msgstr ""
+msgstr "بۇ جامائەتنى ئۆچۈرۈڭ"
 
 #: [communityaffiliation]delete_text
 msgid "You are going to delete the following community. Please confirm your action."
-msgstr ""
+msgstr "سىز تۆۋەندىكى جامائەتنى ئۆچۈرىۋاتىسىز، ھەركىتىڭىزنى جەزىملەشتۈرۈڭ."
 
 #: [communityaffiliation]delete_clean_text
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
-msgstr ""
+msgstr "بۇ جامائەت ئەمدى مەۋجۇت ئەمەستەك قىلىدۇ. سىز ئۇنى مۇشتەرىلىكتىن ئۆچۈرەمسىز؟"
 
 #: [communityaffiliation]config_error
 msgid "Error during the application of the node configuration"
-msgstr ""
+msgstr "بۇ نوقتا تەڭشىكىنى يۈرگۈزىۋاتقاندا خاتالىق كۆرۈلدى"
 
 #: [communityaffiliation]owners
 msgid "Owners"
-msgstr ""
+msgstr "ئىگىلىرى"
 
 #: [communityaffiliation]publishers
 #: [communityconfig]publish_model_publishers_title
 msgid "Publishers"
-msgstr ""
+msgstr "چىقارغۇچىلار"
 
 #: [communityaffiliation]roles
 msgid "Roles"
-msgstr ""
+msgstr "روللار"
 
 #: [communityaffiliation]role_set
 msgid "Role correctly set"
-msgstr ""
+msgstr "رول توغرا بەلگىلەندى"
 
 #: [communityconfig]publication
 msgid "Publication"
-msgstr ""
+msgstr "ئېلان قىلىش"
 
 #: [communityconfig]publish_model_open_title [room]public_muc
 msgid "Public"
-msgstr ""
+msgstr "ئاممىۋىي"
 
 #: [communityconfig]publish_model_open_text
 msgid "Everyone can publish"
-msgstr ""
+msgstr "ھەممە ئادەم ئېلان قىلالايدۇ"
 
 #: [communityconfig]publish_model_publishers_text
 msgid "The publishers can publish"
-msgstr ""
+msgstr "ئېلان قىلغۇچىلار ئېلان قىلالايدۇ"
 
 #: [communityconfig]publish_model_subscribers_title
 msgid "Subscribers"
-msgstr ""
+msgstr "مۇشتەرى بولغۇچىلار"
 
 #: [communityconfig]publish_model_subscribers_text
 msgid "The subscribers can publish"
-msgstr ""
+msgstr "مۇشتەرى بولغۇچىلار ئېلان قىلالايدۇ"
 
 #: [communitydata]sub
 msgid "%s subscribers"
-msgstr ""
+msgstr "%sمۇشتەرى بولغۇچىلار"
 
 #: [communitydata]num
 msgid "%s posts"
-msgstr ""
+msgstr "%sيازمىلار"
 
 #: [communitydata]public
 msgid "Public page"
-msgstr ""
+msgstr "ئاممىۋىي بەت"
 
 #: [communitydata]publishmodel_publishers
 msgid "Only publishers can publish"
-msgstr ""
+msgstr "پەقەتلا ئېلان قىلغۇچىلار ئېلان قىلالايدۇ"
 
 #: [communitydata]publishmodel_subscribers
 msgid "Only subscribers can publish"
-msgstr ""
+msgstr "پەقەتلا مۇشتەرى بولغۇچىلار ئېلان قىلالايدۇ"
 
 #: [communityheader]subscribe
 msgid "Subscribe"
-msgstr ""
+msgstr "مۇشتەرى بۇلۇڭ"
 
 #: [communityheader]unsubscribe
 msgid "Unsubscribe"
-msgstr ""
+msgstr "مۇشتەرىلىكنى ئاخىرلاشتۇرۇڭ"
 
 #: [communityheader]subscribed
 msgid "Subscribed"
-msgstr ""
+msgstr "مۇشتەرى بۇلۇندى"
 
 #: [communityheader]unsubscribed
 msgid "Unsubscribed"
-msgstr ""
+msgstr "مۇشتەرىلىك ئاخىرلاشتى"
 
 #: [communityheader]subscription_unsupported
 msgid "The subscriptions are disabled for this community"
-msgstr ""
+msgstr "بۇ جامائەتكە مۇشتەرى بۇلۇش تاقالدى"
 
 #: [communityheader]label_label
 msgid "Give a label for this community"
-msgstr ""
+msgstr "بۇ جامائەت ئۈچۈن بىر بەلگە قۇيۇڭ"
 
 #: [communityheader]label_placeholder
 msgid "My Community Name"
-msgstr ""
+msgstr "مېنىڭ جامائەت ئىسمىم"
 
 #: [communityheader]share_subscription
 msgid "Share this subscription publicly"
-msgstr ""
+msgstr "بۇ مەشتەرىلىكنى ئاشكارە ھەمبەھىرلەڭ"
 
 #: [communityheader]share_subscription_text
 msgid "It will appear on your profile"
-msgstr ""
+msgstr "ئۇ سىزنىڭ تەرجىمالىڭىزدا كۆرسىتىلىدۇ"
 
 #: [communityheader]unsubscribe_text
 msgid "You are going to unsubscribe from this community"
-msgstr ""
+msgstr "سىز بۇ جامائەتكە مۇشتەرى بۇلۇشنى ئاخىرلاشتۇرىۋاتىسىز"
 
 #: [communityheader]sure [delete]title
 msgid "Are you sure?"
-msgstr ""
+msgstr "جەزىملەشتۈرەمسىز؟"
 
 #: [communityposts]empty_me_text
 msgid "No publication yet? Write your first post to make people discover your profile"
-msgstr ""
+msgstr "ھېچقانداق يازما يوقمۇ؟ سىزنىڭ تۇنجى يازمىڭىزنى چىقىرىپ كىشلەرگە سىزنىڭ تەرجىمالىڭىزنى بايقىتىڭ"
 
 #: [communityposts]empty_me_button
 msgid "Publish my first post"
-msgstr ""
+msgstr "مېنىڭ تۇنجى يازمامنى چىقىرىمەن"
 
 #: [communitysubscriptions]subscriptions
 msgid "Subscribed Communities"
@@ -1033,23 +1033,23 @@ msgstr ""
 
 #: [communitysubscriptions]empty_title
 msgid "Hello"
-msgstr ""
+msgstr "سالام"
 
 #: [communitysubscriptions]empty_text1
 msgid "Here you will be able to manage all your subscriptions."
-msgstr ""
+msgstr "بۇ يەردە سىزنىڭ بارلىق مۇشتەرىلىرىڭىزنى بىر-تەرەپ قىلالايسىز."
 
 #: [communitysubscriptions]empty_text2
 msgid "You don’t have any community subscriptions yet."
-msgstr ""
+msgstr "سىزنىڭ تېخى ھېچقانداق مۇشتەرىلىكىڭىز يوق."
 
 #: [config]general
 msgid "General"
-msgstr ""
+msgstr "ئۇمۇمىي"
 
 #: [config]language
 msgid "Language"
-msgstr "Yezh"
+msgstr "تىل"
 
 #: [config]roster
 msgid "Roster display"
@@ -1057,31 +1057,31 @@ msgstr ""
 
 #: [config]roster_show
 msgid "Show the offline contacts"
-msgstr ""
+msgstr "توردا ئەمەس تۇنۇشلارنى كۆرسىتىش"
 
 #: [config]roster_hide
 msgid "Hide the offline contacts"
-msgstr ""
+msgstr "توردا ئەمەس تۇنۇشلارنى يۇشۇرۇش"
 
 #: [config]appearence
 msgid "Appearence"
-msgstr ""
+msgstr "كۆرۈنۈش"
 
 #: [config]updated
 msgid "Configuration updated"
-msgstr ""
+msgstr "تەڭشەك يېڭىلاندى"
 
 #: [config]not_valid
 msgid "Configuration invalid"
-msgstr ""
+msgstr "تەڭشەك ئىناۋەتسىز"
 
 #: [config]advanced
 msgid "Advanced Configuration"
-msgstr ""
+msgstr "ئالىي تەڭشەك"
 
 #: [config]nsfw
 msgid "Display adult content"
-msgstr ""
+msgstr "سېرىق مەزمۇنىنى كۆرسىتىش"
 
 #: [config]nsfw_text
 msgid "Will allow you to read the posts tagged with the #nsfw tag"
@@ -1089,371 +1089,371 @@ msgstr ""
 
 #: [config]night_mode
 msgid "Night Mode"
-msgstr ""
+msgstr "كېچە ھالىتى"
 
 #: [config]night_mode_text
 msgid "Use dark colors to rest your eyes"
-msgstr ""
+msgstr "كۆزىڭىزنى ئەسلىگە قايتۇرۇش ئۈچۈن قاراڭغۇ رەڭلەرنى ئىشلىتىڭ"
 
 #: [config]chatmain
 msgid "Main chat page"
-msgstr ""
+msgstr "ئاساسىي پاراڭ بېتى"
 
 #: [config]chatmain_text
 msgid "Make the chat page as the default one"
-msgstr ""
+msgstr "بۇ چاراڭ بېتىنى سۈكۈت بەت قىلىڭ"
 
 #: [config]mam_text
 msgid "Server-side archiving preferences"
-msgstr ""
+msgstr "مۇلازىمېتىر-تەرەپتىكى ئارخىپلاش مايىللىقلىرى"
 
 #: [config]mam_always
 msgid "Always"
-msgstr ""
+msgstr "دائىم"
 
 #: [config]mam_never
 msgid "Never"
-msgstr ""
+msgstr "ھەرگىز"
 
 #: [config]mam_saved
 msgid "Archiving preferences saved"
-msgstr ""
+msgstr "ئارخىپلاش مايىللىقلىرى ساقلاندى"
 
 #: [confirm]title
 msgid "Confirmation of authentication"
-msgstr ""
+msgstr "دەلىللەشنى جەزىملەشتۈرۈش"
 
 #: [confirm]description
 msgid "The following platform would like your confirmation to authentify this account"
-msgstr ""
+msgstr "تۆۋەندىكى مۇنبەر سىزنىڭ ھېساباتىڭىزنى دەلىللىشىڭىزنى تەلەپ قىلىدۇ"
 
 #: [confirm]code
 msgid "Authentication code"
-msgstr ""
+msgstr "دەلىللەش كودى"
 
 #: [roster]add_title
 msgid "Add a contact"
-msgstr ""
+msgstr "بىر تۇنۇش قېتىش"
 
 #: [roster]add_contact_info1
 msgid "Enter the Jabber ID of your contact."
-msgstr ""
+msgstr "تۇنۇشىڭىزنىڭ جەبىر نۇمۇرىنى كىرگۈزۈڭ"
 
 #: [roster]add_contact_info2
 msgid "Press enter to validate."
-msgstr ""
+msgstr "كىرىشنى بېسىپ تەكشۈرۈڭ"
 
 #: [roster]added
 msgid "Contact added"
-msgstr ""
+msgstr "تۇنۇش قېتىلدى"
 
 #: [roster]updated
 msgid "Contact updated"
-msgstr ""
+msgstr "تۇنۇش يېڭىلاندى"
 
 #: [roster]deleted
 msgid "Contact deleted"
-msgstr ""
+msgstr "تۇنۇش ئۆچۈرۈلدى"
 
 #: [general]legend
 msgid "General Information"
-msgstr ""
+msgstr "ئۇمۇمىي ئۇچۇر"
 
 #: [general]name [chatrooms]name
 msgid "Name"
-msgstr "Anv"
+msgstr "ئىسىم"
 
 #: [general]nickname [chatrooms]nickname
 msgid "Nickname"
-msgstr "Lezanv"
+msgstr "تەخەللۇس"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
-msgstr "Devezh ganedigezh"
+msgstr "تۇغۇلغان كۈن"
 
 #: [general]gender
 msgid "Gender"
-msgstr "Jener"
+msgstr "جىنىس"
 
 #: [general]marital
 msgid "Marital Status"
-msgstr "Statud Familh"
+msgstr "توي قىلىش ئەھۋالى"
 
 #: [general]email
 msgid "Email"
-msgstr ""
+msgstr "ئېلىخەت"
 
 #: [general]website
 msgid "Website"
-msgstr "Lec'hienn web"
+msgstr "توربەت"
 
 #: [general]about
 msgid "About Me"
-msgstr "Diwar ma fenn"
+msgstr "مەن كىم"
 
 #: [general]accounts
 msgid "Other Accounts"
-msgstr ""
+msgstr "باشقا ھېسابات"
 
 #: [general]tune
 msgid "Is Listening"
-msgstr ""
+msgstr "ئاڭلاۋاتىدۇ"
 
 #: [general]pictures
 msgid "Pictures"
-msgstr ""
+msgstr "رەسىملەر"
 
 #: [general]links
 msgid "Links"
-msgstr ""
+msgstr "ئۇلىنىشلار"
 
 #: [position]legend
 msgid "Geographic Position"
-msgstr ""
+msgstr "جۇغراپىيلىك ئورۇن"
 
 #: [position]locality
 msgid "Locality"
-msgstr ""
+msgstr "رايۇن"
 
 #: [position]country
 msgid "Country"
-msgstr ""
+msgstr "دۆلەت"
 
 #: [mood]title
 msgid "Mood"
-msgstr ""
+msgstr "كەيپىيات"
 
 #: [mood]im
 msgid "I’m "
-msgstr ""
+msgstr "مەن بولسام"
 
 #: [listen]title
 msgid "Listening"
-msgstr ""
+msgstr "ئاڭلاۋاتىدۇ"
 
 #: [last]title
 msgid "Last seen"
-msgstr ""
+msgstr "ئاخىرقى كۆرۈش"
 
 #: [clients]title
 msgid "Clients"
-msgstr ""
+msgstr "خېرىدارلار"
 
 #: [clients]title_full
 msgid "Clients information"
-msgstr ""
+msgstr "خېرىدارلار ئۇچۇرى"
 
 #: [explore]last_registered
 msgid "Last registered"
-msgstr ""
+msgstr "ئاخىرقى تىزىملاتقان"
 
 #: [explore]explore
 msgid "Find some new contacts"
-msgstr ""
+msgstr "يېڭى تۇنۇشلارنى ئىزدەڭ"
 
 #: [edit]title [button]edit
 msgid "Edit"
-msgstr ""
+msgstr "تەھرىرلەش"
 
 #: [edit]alias
 msgid "Alias"
-msgstr "Alias"
+msgstr "تەخەللۇس"
 
 #: [edit]group
 msgid "Group"
-msgstr ""
+msgstr "توپ"
 
 #: [delete]text
 msgid "You are going to delete one of your contacts, please confirm your action"
-msgstr ""
+msgstr "سىز بىر تۇنۇشنى ئۆچۈرىۋاتىسىز، ھەركىتىڭىزنى جەزىملەشتۈرۈڭ"
 
 #: [age]years
 msgid "%s years"
-msgstr ""
+msgstr "%sيىللار"
 
 #: [blog]last
 msgid "Last public post"
-msgstr ""
+msgstr "ئاخىرقى ئاممىۋى يازما"
 
 #: [blog]visit
 msgid "Visit the public blog"
-msgstr ""
+msgstr "بۇ ئاممىۋىي بىلوگنى زىيارەت قىلىڭ"
 
 #: [subscription]to
 msgid "You can see this contact status"
-msgstr ""
+msgstr "سىز بۇ تۇنۇشنىڭ ھالىتىنى كۆرەلەيسىز"
 
 #: [subscription]to_button
 msgid "Share my status"
-msgstr ""
+msgstr "ھالىتىمنى ئورتاقلىشىمەن"
 
 #: [subscription]to_text
 msgid "But this contact cannot see yours"
-msgstr ""
+msgstr "لىكىن بۇ تۇنۇش سىزنىڭكىنى كۆرەلمەيدۇ"
 
 #: [subscription]from
 msgid "You are not subscribed to this contact"
-msgstr ""
+msgstr "سىز بۇ تۇنۇشقا ئەگەشمىدىڭىز"
 
 #: [subscription]from_button
 msgid "Ask to subscribe"
-msgstr ""
+msgstr "ئەگىشىشنى سوراڭ"
 
 #: [subscription]from_text
 msgid "But this contact can still see if you are online"
-msgstr ""
+msgstr "لىكىن بۇ تۇنۇش سىزنىڭ توردا ئىكەنلىكىڭىزنى تېخىچە كۆرەلەيدۇ"
 
 #: [subscription]nil
 msgid "No subscriptions"
-msgstr ""
+msgstr "مۇشتەرى يوق"
 
 #: [subscription]nil_button [button]invite
 msgid "Invite"
-msgstr ""
+msgstr "تەكلىپ قىلىڭ"
 
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
-msgstr ""
+msgstr "بۇ تۇنۇش سىزنىڭ ئالاقە تىزىملىكىڭىزدە بار لىكىن بۇ ئىككى ھېسابات ئارىسىدا ئۆز-ئارا ئەگىشىش يوق."
 
 #: [contactdatapublic]no_data
 msgid "No public data found"
-msgstr ""
+msgstr "ھېچقاندا ئاممىۋىي ئۇچۇر تېپىلمىدى"
 
 #: [draw]title
 msgid "Draw"
-msgstr ""
+msgstr "سىزىش"
 
 #: [faq]title
 msgid "Frequently Asked Questions"
-msgstr ""
+msgstr "دائىم سورالغان سۇئاللار"
 
 #: [faq]permission_title
 msgid "What does the permission setting do?"
-msgstr ""
+msgstr "بۇ ئىجازەت تەڭشىكى نېمە قىلىدۇ؟"
 
 #: [faq]permission_text
 msgid "By default the content is only available to your contacts. You can make your profile and publications public by enabling the related setting."
-msgstr ""
+msgstr "سۈكۈت ھالەتتە مەزمۇنلارنى پەقەت سىزنىڭ تۇنۇشلىرىڭىزلا كۆرەلەيدۇ. لىكىن سىز مۇناسىۋەتلىك تەڭشەكلەرنى ئۆزگەرتىش ئارقىلىق ئۇلارنى ھەممە ئادەم كۆرەلەيدىغان قىلالايسىز."
 
 #: [faq]permission_community_title
 msgid "How does it applies on Communities posts?"
-msgstr ""
+msgstr "ئۇ جامائەت يازمىلىرىغا قانداق تەدبىقلىنىدۇ؟"
 
 #: [faq]permission_community_text
 msgid "Similary to your blog publications except that, by default, the posts are only available to the members or subscribers of the Community (except if you explicitly open all the Community content)"
-msgstr ""
+msgstr "سىزنىڭ بىلوگ ئېلانلىرىڭىزغا ئوخشايدۇ، سۈكۈت ھالەتتە، بۇ يازمىلار پەقەت بۇ جامائەتنىڭ ئەزالىرىغىلا ياكى مۇشتەرى بولغۇچىلىرىغىلا كۆرۈنىدىغانلىقىنى ھېسابقا ئالمىغاندا ( سىزنىڭ ئاشكارە ھالدا بۇ جامائەتنىڭ بارلىق مەزمۇنلىرىنى ئاچمىسىڭىزلا)"
 
 #: [faq]chatrooms_title
 msgid "Where can I find a list of chatrooms?"
-msgstr ""
+msgstr "مەن قەيەردىن پاراڭخانىلارنىڭ تىزىملىكىنى تاپالايمەن؟"
 
 #: [faq]find_contacts_title
 msgid "Where can I find my contacts?"
-msgstr ""
+msgstr "مېنىڭ تۇنۇشلىرىمنى قەيەردىن تاپالايمەن؟"
 
 #: [faq]find_contacts_text
 msgid "By opening the search panel."
-msgstr ""
+msgstr "ئىزدەش سۇپىسىنى ئېچىش ئارقىلىق"
 
 #: [apps]title
 msgid "Applications"
-msgstr ""
+msgstr "قوللانمىلار"
 
 #: [apps]install
 msgid "Movim App"
-msgstr ""
+msgstr "مۇۋىم ئەپى"
 
 #: [apps]install_text
 msgid "Install Movim on your device"
-msgstr ""
+msgstr "مۇۋىمنى ئۈسكۈنىڭىزگە قاچىلاڭ"
 
 #: [apps]recommend
 msgid "We also recommend"
-msgstr ""
+msgstr "بىر يەنە تەۋسىيە قىلىمىز"
 
 #: [contact]title
 msgid "Administrators & Contact"
-msgstr ""
+msgstr "باشقۇرغۇچىلار ھەمدە تۇنۇش"
 
 #: [chatroom]question
 msgid "Chat with the Movim team?"
-msgstr ""
+msgstr "مۇۋىم ئەتىرىتى بىلەن پاراڭلىشامسىز؟"
 
 #: [chatroom]button
 msgid "Add the chatroom"
-msgstr ""
+msgstr "بۇ پاراڭخانىنى قېتىش"
 
 #: [location]title
 msgid "My location"
-msgstr ""
+msgstr "ئورنۇم"
 
 #: [location]enabled_title
 msgid "Currently shared with my contacts"
-msgstr ""
+msgstr "نۆۋەتتە تۇنۇشلىرىم بىلەن ئورتاقلاشقانلىرىم"
 
 #: [location]disabled_title
 msgid "Currently disabled"
-msgstr ""
+msgstr "نۆۋەتتە ئىتىكلەر"
 
 #: [location]last_published
 msgid "My last published location"
-msgstr ""
+msgstr "مېنىڭ ئاخىرقى چىقارغان ئورنۇم"
 
 #: [location]less_than_one_km
 msgid "Less than a km away"
-msgstr ""
+msgstr "بىر كىلومېتىردىن يېقىن"
 
 #: [location]n_km_away
 msgid "%s km away"
-msgstr ""
+msgstr "%sكىلومېتىر يىراقتا"
 
 #: [error]username
 msgid "Wrong username"
-msgstr "Anv-implijer direizh"
+msgstr "خاتا ئىشلەتكۈچى نامى"
 
 #: [error]jid
 msgid "Invalid JID"
-msgstr "JID direizh"
+msgstr "ئىناۋەتسىز ج نۇمۇرى"
 
 #: [error]empty_challenge
 msgid "Empty Challenge from the server"
-msgstr ""
+msgstr "بۇ مۇلازىمېتىردىن قۇرۇق چاقىرىق"
 
 #: [error]dns
 msgid "XMPP Domain error, your account is not a correct Jabber ID"
-msgstr "Kudenn Domani XMPP, ho kont n'eo ket un ID Jabber reizh"
+msgstr "XMPP دائىرە خاتالىقى، سىزنىڭ ھېساباتىڭىز بىر ئىناۋەتلىك جەبىر نۇمۇرى ئەمەس"
 
 #: [error]data_missings
 msgid "Some data are missing!"
-msgstr ""
+msgstr "بەزى ئۇچۇرلار يوق تۇرىدۇ!"
 
 #: [error]wrong_password
 msgid "Wrong password"
-msgstr "Ger-tremen direizh"
+msgstr "خاتا مەخپىي نۇمۇر"
 
 #: [error]internal
 msgid "Internal server error"
-msgstr "Fazi diabarzh ar servijer"
+msgstr "ئىچكى مۇلازىمېتىر خاتالىقى"
 
 #: [error]session
 msgid "Session error"
-msgstr "Fazi dalc'h"
+msgstr "باسقۇچ خاتالىقى"
 
 #: [error]account_created
 msgid "Account successfully created"
-msgstr "Kont krouet gant berzh"
+msgstr "ھېسابات مۇۋاپىقىيەتلىك قۇرۇلدى"
 
 #: [error]timeout
 msgid "The server takes too much time to respond"
-msgstr ""
+msgstr "بۇ مۇلازىمېتىر بەك ئۇزۇندا ئىنكاس قايتۇردى"
 
 #: [error]impossible
 msgid "Impossible login"
-msgstr ""
+msgstr "مۇمكىن بولمايدىغان كىرىش"
 
 #: [error]default
 msgid "Unknown error"
-msgstr "Fazi dianavezet"
+msgstr "ناتۇنۇش خاتالىق"
 
 #: [error]login_format
 msgid "Invalid username format"
@@ -1469,7 +1469,7 @@ msgstr ""
 
 #: [error]wrong_account
 msgid "Movim failed to authenticate. You entered wrong data"
-msgstr "N'eo ket deuet a-benn Movim da vezañ anavezet. Roadennoù fall ho peus ebarzhet."
+msgstr ""
 
 #: [error]mechanism
 msgid "Authentication mechanism not supported by Movim"
@@ -1477,7 +1477,7 @@ msgstr ""
 
 #: [error]fail_auth
 msgid "The XMPP authentification failed"
-msgstr "An dilesadur XMPP a zo c'hwitet"
+msgstr ""
 
 #: [connection]socket_connected
 msgid "Connected to the server"
@@ -1489,7 +1489,7 @@ msgstr ""
 
 #: [form]username
 msgid "My address"
-msgstr "Ma chomlec'h"
+msgstr ""
 
 #: [form]whitelist_info
 msgid "Login with accounts from these servers"
@@ -1898,7 +1898,7 @@ msgstr ""
 
 #: [publishhelp]title [page]help
 msgid "Help"
-msgstr "Sikour"
+msgstr ""
 
 #: [publishhelp]more
 msgid "More help"
@@ -2398,7 +2398,7 @@ msgstr ""
 
 #: [vcard]title [page]profile
 msgid "Profile"
-msgstr "Profil"
+msgstr ""
 
 #: [vcard]updated
 msgid "Profile Updated"
@@ -2454,11 +2454,11 @@ msgstr ""
 
 #: [save]submit [button]submit
 msgid "Submit"
-msgstr "Kas"
+msgstr ""
 
 #: [save]reset [button]reset
 msgid "Reset"
-msgstr " Adderaouekaat "
+msgstr ""
 
 #: [degraded]title
 msgid "Movim is currently working in degraded mode"
@@ -2574,7 +2574,7 @@ msgstr ""
 
 #: [page]home
 msgid "Home"
-msgstr "Degemer"
+msgstr ""
 
 #: [page]explore
 msgid "Explore"
@@ -2582,15 +2582,15 @@ msgstr ""
 
 #: [page]account_creation
 msgid "Account Creation"
-msgstr "Krouadur ar gont"
+msgstr ""
 
 #: [page]news
 msgid "News"
-msgstr "Nevezenti"
+msgstr ""
 
 #: [page]avatar
 msgid "Avatar"
-msgstr "Avatar"
+msgstr ""
 
 #: [page]chats
 msgid "Chats"
@@ -2622,7 +2622,7 @@ msgstr ""
 
 #: [page]feed
 msgid "Feed"
-msgstr "Gwazh"
+msgstr ""
 
 #: [page]posts
 msgid "Posts"
@@ -2651,11 +2651,11 @@ msgstr ""
 
 #: [error]error
 msgid "Error: %s"
-msgstr "Fazi: %s"
+msgstr ""
 
 #: [error]cannot_load_file
 msgid "Cannot load file '%s'"
-msgstr "N'haller ket kargañ ar restr '%s'"
+msgstr ""
 
 #: [error]widget_load_error
 msgid "Requested widget '%s' doesn’t exist."
@@ -2703,7 +2703,7 @@ msgstr ""
 
 #: [button]add
 msgid "Add"
-msgstr "Ouzhpennañ"
+msgstr ""
 
 #: [button]delete
 msgid "Delete"
@@ -2731,7 +2731,7 @@ msgstr ""
 
 #: [button]submitting
 msgid "Submitting"
-msgstr "O kas"
+msgstr ""
 
 #: [button]register
 msgid "Register"
@@ -2771,7 +2771,7 @@ msgstr ""
 
 #: [button]accept
 msgid "Accept"
-msgstr "Asantiñ"
+msgstr ""
 
 #: [button]refuse
 msgid "Refuse"
@@ -2840,31 +2840,31 @@ msgstr ""
 
 #: [day]title
 msgid "Day"
-msgstr "Devezh"
+msgstr ""
 
 #: [day]monday
 msgid "Monday"
-msgstr "Lun"
+msgstr ""
 
 #: [day]tuesday
 msgid "Tuesday"
-msgstr "Meurzh"
+msgstr ""
 
 #: [day]wednesday
 msgid "Wednesday"
-msgstr "Merc'her"
+msgstr ""
 
 #: [day]thursday
 msgid "Thursday"
-msgstr "Yaou"
+msgstr ""
 
 #: [day]friday
 msgid "Friday"
-msgstr "Gwener"
+msgstr ""
 
 #: [day]saturday
 msgid "Saturday"
-msgstr "Sadorn"
+msgstr ""
 
 #: [day]sunday
 msgid "Sunday"
@@ -2872,7 +2872,7 @@ msgstr ""
 
 #: [client]bot
 msgid "Bot"
-msgstr "Robot"
+msgstr ""
 
 #: [client]console
 msgid "Console"
@@ -2880,11 +2880,11 @@ msgstr ""
 
 #: [client]desktop
 msgid "Desktop"
-msgstr "Urzhiataer"
+msgstr ""
 
 #: [client]phone
 msgid "Phone"
-msgstr "Pellgomz"
+msgstr ""
 
 #: [client]web
 msgid "Web"
@@ -2896,23 +2896,23 @@ msgstr ""
 
 #: [presence]online
 msgid "Online"
-msgstr "Enlinenn"
+msgstr ""
 
 #: [presence]away
 msgid "Away"
-msgstr "Ezvezant"
+msgstr ""
 
 #: [presence]dnd
 msgid "Do Not Disturb"
-msgstr "Arabat direnkañ"
+msgstr ""
 
 #: [presence]xa
 msgid "Extended Away"
-msgstr "Ezvezant e-pad pell"
+msgstr ""
 
 #: [presence]offline
 msgid "Offline"
-msgstr "Digevreet"
+msgstr ""
 
 #: [presence]error
 msgid "Error"
@@ -3252,71 +3252,71 @@ msgstr ""
 
 #: [month]title
 msgid "Month"
-msgstr "Miz"
+msgstr ""
 
 #: [month]january
 msgid "January"
-msgstr "Genver"
+msgstr ""
 
 #: [month]february
 msgid "February"
-msgstr "C'hwevrer"
+msgstr ""
 
 #: [month]march
 msgid "March"
-msgstr "Meurzh"
+msgstr ""
 
 #: [month]april
 msgid "April"
-msgstr "Ebrel"
+msgstr ""
 
 #: [month]may
 msgid "May"
-msgstr "Mae"
+msgstr ""
 
 #: [month]june
 msgid "June"
-msgstr "Mezheven"
+msgstr ""
 
 #: [month]july
 msgid "July"
-msgstr "Gouere"
+msgstr ""
 
 #: [month]august
 msgid "August"
-msgstr "Eost"
+msgstr ""
 
 #: [month]september
 msgid "September"
-msgstr "Gwengolo"
+msgstr ""
 
 #: [month]october
 msgid "October"
-msgstr "Here"
+msgstr ""
 
 #: [month]november
 msgid "November"
-msgstr "Du"
+msgstr ""
 
 #: [month]december
 msgid "December"
-msgstr "Kerzu"
+msgstr ""
 
 #: [year]title
 msgid "Year"
-msgstr "Bloavezh"
+msgstr ""
 
 #: [date]today
 msgid "Today"
-msgstr "Hiziv"
+msgstr ""
 
 #: [date]tomorrow
 msgid "Tomorrow"
-msgstr "Warc'hoazh"
+msgstr ""
 
 #: [date]yesterday
 msgid "Yesterday"
-msgstr "Dec'h"
+msgstr ""
 
 #: [date]ago
 msgid "%d days ago"
@@ -3324,7 +3324,7 @@ msgstr ""
 
 #: [date]day
 msgid "day"
-msgstr "devezh"
+msgstr ""
 
 #: [post]title
 msgid "Title"
@@ -3356,7 +3356,7 @@ msgstr ""
 
 #: [post]older
 msgid "Get older posts"
-msgstr "Kaout postadurioù koshoc'h"
+msgstr ""
 
 #: [post]new_items
 msgid "%s new items"

@@ -115,16 +115,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-04 14:11+0200\n"
-"PO-Revision-Date: 2022-02-17 07:57+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"POT-Creation-Date: 2022-12-25 14:45+0200\n"
+"PO-Revision-Date: 2015-06-24 09:45+0000\n"
+"Last-Translator: Mikael H <silfursun@gmail.com>, 2016\n"
 "Language-Team: Finnish (http://www.transifex.com/movim/movim/language/fi/)\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.4.1\n"
+"X-Generator: Translate Toolkit 3.7.4\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -464,22 +464,6 @@ msgstr ""
 msgid "File"
 msgstr "Tiedosto"
 
-#: [avatar]use_it
-msgid "Use it"
-msgstr ""
-
-#: [avatar]webcam
-msgid "Webcam"
-msgstr "Webkamera"
-
-#: [avatar]cheese
-msgid "Cheese!"
-msgstr ""
-
-#: [avatar]snapshot
-msgid "Take a webcam snapshot"
-msgstr "Ota kuva webkameralla"
-
 #: [avatar]updated
 msgid "Avatar Updated"
 msgstr "Avatar päivitetty"
@@ -500,25 +484,37 @@ msgstr ""
 msgid "Upload a new picture"
 msgstr ""
 
+#: [banner]change
+msgid "Change my banner"
+msgstr ""
+
+#: [banner]updated
+msgid "Banner Updated"
+msgstr ""
+
+#: [banner]not_updated
+msgid "Banner Not Updated"
+msgstr ""
+
+#: [banner]missing
+msgid "No banner defined yet"
+msgstr ""
+
 #: [blocked]title
-#, fuzzy
 msgid "Blocked"
-msgstr "järkyttynyt"
+msgstr ""
 
 #: [blocked]block_account
-#, fuzzy
 msgid "Block the account"
-msgstr "Muut tilit"
+msgstr ""
 
 #: [blocked]unblock_account
-#, fuzzy
 msgid "Unblock the account"
-msgstr "Muut tilit"
+msgstr ""
 
 #: [blocked]account_blocked
-#, fuzzy
 msgid "Account blocked"
-msgstr "Tili"
+msgstr ""
 
 #: [blocked]account_unblocked
 msgid "Account unblocked"
@@ -577,9 +573,8 @@ msgid "Composing…"
 msgstr ""
 
 #: [message]invitation
-#, fuzzy
 msgid "Invitation"
-msgstr "Asetukset"
+msgstr ""
 
 #: [message]paused
 msgid "Paused…"
@@ -668,6 +663,18 @@ msgstr ""
 
 #: [chat]jingle_end
 msgid "Call ended"
+msgstr ""
+
+#: [chat]jingle_hours
+msgid "%s hours %s minutes"
+msgstr ""
+
+#: [chat]jingle_minutes
+msgid "%s minutes and %s seconds"
+msgstr ""
+
+#: [chat]jingle_seconds
+msgid "%s seconds"
 msgstr ""
 
 #: [chat]publish_error
@@ -1017,12 +1024,11 @@ msgid "No publication yet? Write your first post to make people discover your pr
 msgstr ""
 
 #: [communityposts]empty_me_button
-#, fuzzy
 msgid "Publish my first post"
-msgstr "Julkinen URL"
+msgstr ""
 
 #: [communitysubscriptions]subscriptions
-msgid "My Subscriptions"
+msgid "Subscribed Communities"
 msgstr ""
 
 #: [communitysubscriptions]empty_title
@@ -1382,19 +1388,16 @@ msgid "My location"
 msgstr ""
 
 #: [location]enabled_title
-#, fuzzy
 msgid "Currently shared with my contacts"
-msgstr "Keskustele kontaktin kanssa"
+msgstr ""
 
 #: [location]disabled_title
-#, fuzzy
 msgid "Currently disabled"
-msgstr "Kommentit pois käytöstä"
+msgstr ""
 
 #: [location]last_published
-#, fuzzy
 msgid "My last published location"
-msgstr "Julkaisu julkaistu"
+msgstr ""
 
 #: [location]less_than_one_km
 msgid "Less than a km away"
@@ -1512,6 +1515,14 @@ msgstr ""
 msgid "Administrated by"
 msgstr ""
 
+#: [about_movim]info
+msgid "Movim is a federated blogging and chat platform."
+msgstr ""
+
+#: [about_movim]website
+msgid "Visit the project official website %s."
+msgstr ""
+
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
 msgstr "Huono nimimerkki (4-40 merkkiä)"
@@ -1594,14 +1605,12 @@ msgid "Push notifications disabled for this device"
 msgstr ""
 
 #: [notificationconfig]unknown_browser
-#, fuzzy
 msgid "Unknown browser"
-msgstr "Tuntematon virhe"
+msgstr ""
 
 #: [notificationconfig]unknown_platform
-#, fuzzy
 msgid "Unknown platform"
-msgstr "Tuntematon virhe"
+msgstr ""
 
 #: [invitations]title
 msgid "Pending Invitations"
@@ -1881,6 +1890,10 @@ msgstr ""
 
 #: [publish]help_hashtag
 msgid "Add #hashtags in your title or content to allow your article to be discovered"
+msgstr ""
+
+#: [publish]publish_error_forbidden
+msgid "You are not authorized to publish there"
 msgstr ""
 
 #: [publishhelp]title [page]help
@@ -2279,6 +2292,10 @@ msgstr ""
 msgid "Attach to a blog publication"
 msgstr ""
 
+#: [sendto]share
+msgid "Share in a new publication"
+msgstr ""
+
 #: [sendto]contact
 msgid "Send it to a contact"
 msgstr ""
@@ -2512,18 +2529,16 @@ msgid "Camera"
 msgstr ""
 
 #: [visioconfig]camera_label
-#, fuzzy
 msgid "Default camera"
-msgstr "Oletuskieli"
+msgstr ""
 
 #: [visioconfig]default_microphone_changed
 msgid "Default microphone changed"
 msgstr ""
 
 #: [visioconfig]default_camera_changed
-#, fuzzy
 msgid "Default camera changed"
-msgstr "Oletuskieli"
+msgstr ""
 
 #: [visioconfig]no_mic_sound
 msgid "No sound detected from your microphone"
@@ -3430,27 +3445,3 @@ msgstr "API ei ole saatavilla, yritä myöhemmin uudelleen"
 #: [field]type_here
 msgid "Type here"
 msgstr "Kirjoita tähän"
-
-#~ msgid "Browser"
-#~ msgstr "Selain"
-
-#~ msgid "Movim Core"
-#~ msgstr "Movim ydin"
-
-#~ msgid "Movim Daemon"
-#~ msgstr "Movim daemon"
-
-#~ msgid "Database"
-#~ msgstr "Tietokanta"
-
-#~ msgid "XMPP"
-#~ msgstr "XMPP"
-
-#~ msgid "Visit the blog to see all the public posts"
-#~ msgstr "Käy blogissa ja lue katso julkiset julkaisut"
-
-#~ msgid "Statistics"
-#~ msgstr "Tilastot"
-
-#~ msgid "Status updated"
-#~ msgstr "Tila päivitetty"

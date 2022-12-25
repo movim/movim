@@ -2,6 +2,7 @@
 # Translators:
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012
 # Håkan Eriksson <erikxxon@gmail.com>, 2017
+# Lyn, 2022
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -116,16 +117,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-04 14:11+0200\n"
-"PO-Revision-Date: 2022-02-17 07:57+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"POT-Creation-Date: 2022-12-25 14:45+0200\n"
+"PO-Revision-Date: 2015-06-24 09:45+0000\n"
+"Last-Translator: Lyn, 2022\n"
 "Language-Team: Swedish (http://www.transifex.com/movim/movim/language/sv/)\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.4.1\n"
+"X-Generator: Translate Toolkit 3.7.4\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -141,7 +142,7 @@ msgstr "Översättare"
 
 #: [about]translators_text
 msgid "Thanks to all the translators"
-msgstr ""
+msgstr "Tack till alla översättare"
 
 #: [about]software
 msgid "Software"
@@ -177,11 +178,11 @@ msgstr "Lösenord"
 
 #: [account]password_confirmation
 msgid "Password confirmation"
-msgstr ""
+msgstr "Bekräfta nytt lösenord"
 
 #: [account]password_changed
 msgid "The password has been updated"
-msgstr ""
+msgstr "Lösenordet har ändrats"
 
 #: [account]password_not_valid
 msgid "Please provide a valid password (6 characters minimum)"
@@ -189,11 +190,11 @@ msgstr ""
 
 #: [account]password_not_same
 msgid "The provided passwords are not the same"
-msgstr ""
+msgstr "Lösenorden överensstämmer inte"
 
 #: [account]delete
 msgid "Delete your account"
-msgstr ""
+msgstr "Ta bort ditt konto"
 
 #: [account]delete_text
 msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts and publications)."
@@ -209,11 +210,11 @@ msgstr ""
 
 #: [account]gateway_title
 msgid "Gateways"
-msgstr ""
+msgstr "Gateways"
 
 #: [account]clear
 msgid "Leave this instance"
-msgstr ""
+msgstr "Lämna denna instans"
 
 #: [account]clear_text
 msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
@@ -249,7 +250,7 @@ msgstr ""
 
 #: [create]loading
 msgid "Loading"
-msgstr ""
+msgstr "Laddar"
 
 #: [create]placeholder
 msgid "…and start playing"
@@ -269,7 +270,7 @@ msgstr ""
 
 #: [adhoc]title
 msgid "Actions"
-msgstr ""
+msgstr "Aktioner"
 
 #: [adhoc]completed
 msgid "Action completed"
@@ -301,7 +302,7 @@ msgstr ""
 
 #: [chatonly]title
 msgid "Chat only"
-msgstr ""
+msgstr "Bara chat"
 
 #: [chatonly]text
 msgid "Disable all the social feature (Communities, Blog…) and keep only the chat ones"
@@ -350,7 +351,7 @@ msgstr ""
 
 #: [information]description [communityconfig]description
 msgid "Description"
-msgstr ""
+msgstr "Beskrivning"
 
 #: [information]description_placeholder
 msgid "General description of the instance"
@@ -395,7 +396,7 @@ msgstr ""
 
 #: [xmpp]country_pick
 msgid "Pick a country in the list"
-msgstr ""
+msgstr "Välj ett land från listan"
 
 #: [tenor]title
 msgid "Tenor integration"
@@ -465,22 +466,6 @@ msgstr ""
 msgid "File"
 msgstr ""
 
-#: [avatar]use_it
-msgid "Use it"
-msgstr ""
-
-#: [avatar]webcam
-msgid "Webcam"
-msgstr ""
-
-#: [avatar]cheese
-msgid "Cheese!"
-msgstr ""
-
-#: [avatar]snapshot
-msgid "Take a webcam snapshot"
-msgstr ""
-
 #: [avatar]updated
 msgid "Avatar Updated"
 msgstr ""
@@ -501,6 +486,22 @@ msgstr ""
 msgid "Upload a new picture"
 msgstr ""
 
+#: [banner]change
+msgid "Change my banner"
+msgstr ""
+
+#: [banner]updated
+msgid "Banner Updated"
+msgstr ""
+
+#: [banner]not_updated
+msgid "Banner Not Updated"
+msgstr ""
+
+#: [banner]missing
+msgid "No banner defined yet"
+msgstr ""
+
 #: [blocked]title
 msgid "Blocked"
 msgstr ""
@@ -514,9 +515,8 @@ msgid "Unblock the account"
 msgstr ""
 
 #: [blocked]account_blocked
-#, fuzzy
 msgid "Account blocked"
-msgstr "Konto"
+msgstr ""
 
 #: [blocked]account_unblocked
 msgid "Account unblocked"
@@ -548,7 +548,7 @@ msgstr ""
 
 #: [message]react
 msgid "Add a reaction"
-msgstr ""
+msgstr "Lägg till reaktion"
 
 #: [message]retract
 msgid "Retract"
@@ -640,7 +640,7 @@ msgstr ""
 
 #: [chat]profile
 msgid "See the profile"
-msgstr ""
+msgstr "Visa profilen"
 
 #: [chat]clear
 msgctxt "[chat]clear"
@@ -665,6 +665,18 @@ msgstr ""
 
 #: [chat]jingle_end
 msgid "Call ended"
+msgstr ""
+
+#: [chat]jingle_hours
+msgid "%s hours %s minutes"
+msgstr ""
+
+#: [chat]jingle_minutes
+msgid "%s minutes and %s seconds"
+msgstr ""
+
+#: [chat]jingle_seconds
+msgid "%s seconds"
 msgstr ""
 
 #: [chat]publish_error
@@ -702,7 +714,7 @@ msgstr ""
 
 #: [chatroom]config [communityaffiliation]configuration [page]configuration
 msgid "Configuration"
-msgstr ""
+msgstr "Inställningar"
 
 #: [chatroom]config_saved [communityaffiliation]config_saved
 msgid "Configuration saved"
@@ -718,15 +730,15 @@ msgstr ""
 
 #: [chatroom]administration [page]administration
 msgid "Administration"
-msgstr ""
+msgstr "Administration"
 
 #: [omemo]fingerprints_title
 msgid "Fingerprints"
-msgstr ""
+msgstr "Fingeravtryck"
 
 #: [omemo]fingerprints
 msgid "OMEMO Fingerprints"
-msgstr ""
+msgstr "OMEMO fingeravtryck"
 
 #: [omemo]generating_bundle
 msgid "Generating the encryption keys, please wait…"
@@ -814,7 +826,7 @@ msgstr ""
 
 #: [communities]search_server
 msgid "Search for a new server"
-msgstr ""
+msgstr "Hitta ny server"
 
 #: [communities]servers
 msgid "Communities servers"
@@ -874,15 +886,15 @@ msgstr ""
 
 #: [communityaffiliation]subscriptions
 msgid "Subscriptions"
-msgstr ""
+msgstr "Prenumerationer"
 
 #: [communityaffiliation]public_subscriptions
 msgid "Public subscriptions"
-msgstr ""
+msgstr "Offentliga prenumerationer"
 
 #: [communityaffiliation]subscriptions_text
 msgid "My Communities subscriptions"
-msgstr ""
+msgstr "Mina gemenskapsprenumerationer"
 
 #: [communityaffiliation]deleted
 msgid "Community deleted successfully"
@@ -1018,7 +1030,7 @@ msgid "Publish my first post"
 msgstr ""
 
 #: [communitysubscriptions]subscriptions
-msgid "My Subscriptions"
+msgid "Subscribed Communities"
 msgstr ""
 
 #: [communitysubscriptions]empty_title
@@ -1067,7 +1079,7 @@ msgstr ""
 
 #: [config]advanced
 msgid "Advanced Configuration"
-msgstr ""
+msgstr "Avancerade Inställningar"
 
 #: [config]nsfw
 msgid "Display adult content"
@@ -1151,15 +1163,15 @@ msgstr ""
 
 #: [general]name [chatrooms]name
 msgid "Name"
-msgstr ""
+msgstr "Namn"
 
 #: [general]nickname [chatrooms]nickname
 msgid "Nickname"
-msgstr ""
+msgstr "Smeknamn"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
-msgstr ""
+msgstr "Födelsedatum"
 
 #: [general]gender
 msgid "Gender"
@@ -1171,19 +1183,19 @@ msgstr ""
 
 #: [general]email
 msgid "Email"
-msgstr ""
+msgstr "E-Post"
 
 #: [general]website
 msgid "Website"
-msgstr ""
+msgstr "Webbsida"
 
 #: [general]about
 msgid "About Me"
-msgstr ""
+msgstr "Om mig"
 
 #: [general]accounts
 msgid "Other Accounts"
-msgstr ""
+msgstr "Andra konton"
 
 #: [general]tune
 msgid "Is Listening"
@@ -1203,11 +1215,11 @@ msgstr ""
 
 #: [position]locality
 msgid "Locality"
-msgstr ""
+msgstr "Plats"
 
 #: [position]country
 msgid "Country"
-msgstr ""
+msgstr "Land"
 
 #: [mood]title
 msgid "Mood"
@@ -1295,7 +1307,7 @@ msgstr ""
 
 #: [subscription]nil
 msgid "No subscriptions"
-msgstr ""
+msgstr "Ingen prenumerationer"
 
 #: [subscription]nil_button [button]invite
 msgid "Invite"
@@ -1505,6 +1517,14 @@ msgstr ""
 msgid "Administrated by"
 msgstr ""
 
+#: [about_movim]info
+msgid "Movim is a federated blogging and chat platform."
+msgstr ""
+
+#: [about_movim]website
+msgid "Visit the project official website %s."
+msgstr ""
+
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
 msgstr ""
@@ -1560,11 +1580,11 @@ msgstr ""
 #: [notificationconfig]title [notifs]title [onboarding]notifications_title
 #: [room]notify_title
 msgid "Notifications"
-msgstr ""
+msgstr "Aviseringar"
 
 #: [notificationconfig]audio_title
 msgid "Audio notifications"
-msgstr ""
+msgstr "Ljudaviseringar"
 
 #: [notificationconfig]audio_chat
 msgid "Incoming message"
@@ -1587,14 +1607,12 @@ msgid "Push notifications disabled for this device"
 msgstr ""
 
 #: [notificationconfig]unknown_browser
-#, fuzzy
 msgid "Unknown browser"
-msgstr "Okänt fel"
+msgstr ""
 
 #: [notificationconfig]unknown_platform
-#, fuzzy
 msgid "Unknown platform"
-msgstr "Okänt fel"
+msgstr ""
 
 #: [invitations]title
 msgid "Pending Invitations"
@@ -1618,7 +1636,7 @@ msgstr ""
 
 #: [onboarding]public_title
 msgid "Public profile"
-msgstr ""
+msgstr "Offentlig profil"
 
 #: [onboarding]public_text
 msgid "Make your profile public and allow other users to find you and make new contacts more easily"
@@ -1642,7 +1660,7 @@ msgstr ""
 
 #: [post]news_feed
 msgid "News Feed"
-msgstr ""
+msgstr "Nyhetsflödet"
 
 #: [post]placeholder
 msgid "Discover and register to the groups you are interested in"
@@ -1770,7 +1788,7 @@ msgstr ""
 
 #: [hello]share_button
 msgid "Share on Movim"
-msgstr ""
+msgstr "Dela på Movim"
 
 #: [hello]enter_title
 msgid "Oh! Hello!"
@@ -1798,7 +1816,7 @@ msgstr ""
 
 #: [status]disconnect
 msgid "Disconnect"
-msgstr ""
+msgstr "Logga ut"
 
 #: [status]presence
 msgid "Presence"
@@ -1876,13 +1894,17 @@ msgstr ""
 msgid "Add #hashtags in your title or content to allow your article to be discovered"
 msgstr ""
 
+#: [publish]publish_error_forbidden
+msgid "You are not authorized to publish there"
+msgstr ""
+
 #: [publishhelp]title [page]help
 msgid "Help"
-msgstr ""
+msgstr "Hjälp"
 
 #: [publishhelp]more
 msgid "More help"
-msgstr ""
+msgstr "Mer hjälp"
 
 #: [publishhelp]manual
 msgid "Markdown syntax manual"
@@ -2106,7 +2128,7 @@ msgstr ""
 
 #: [room]nonanonymous_muc
 msgid "Public profiles"
-msgstr ""
+msgstr "Offentliga profiler"
 
 #: [room]nonanonymous_muc_text
 msgid "The participants of this chatroom can see each other's profile"
@@ -2234,7 +2256,7 @@ msgstr ""
 
 #: [roomsexplore]global_title
 msgid "Global search"
-msgstr ""
+msgstr "Global sökning"
 
 #: [roomsexplore]no_global
 msgid "No chatrooms found globally"
@@ -2270,6 +2292,10 @@ msgstr ""
 
 #: [sendto]attach
 msgid "Attach to a blog publication"
+msgstr ""
+
+#: [sendto]share
+msgid "Share in a new publication"
 msgstr ""
 
 #: [sendto]contact
@@ -2374,11 +2400,11 @@ msgstr ""
 
 #: [vcard]title [page]profile
 msgid "Profile"
-msgstr ""
+msgstr "Profil"
 
 #: [vcard]updated
 msgid "Profile Updated"
-msgstr ""
+msgstr "Profil uppdaterad"
 
 #: [vcard]not_updated
 msgid "Profile Not Updated"
@@ -2478,7 +2504,7 @@ msgstr ""
 
 #: [visio]connecting
 msgid "…connecting"
-msgstr ""
+msgstr "…ansluta"
 
 #: [visio]ended
 msgid "call ended"
@@ -2505,18 +2531,16 @@ msgid "Camera"
 msgstr ""
 
 #: [visioconfig]camera_label
-#, fuzzy
 msgid "Default camera"
-msgstr "Standardspråk"
+msgstr ""
 
 #: [visioconfig]default_microphone_changed
 msgid "Default microphone changed"
 msgstr ""
 
 #: [visioconfig]default_camera_changed
-#, fuzzy
 msgid "Default camera changed"
-msgstr "Standardspråk"
+msgstr ""
 
 #: [visioconfig]no_mic_sound
 msgid "No sound detected from your microphone"
@@ -2556,7 +2580,7 @@ msgstr ""
 
 #: [page]explore
 msgid "Explore"
-msgstr ""
+msgstr "Utforska"
 
 #: [page]account_creation
 msgid "Account Creation"
@@ -2564,7 +2588,7 @@ msgstr ""
 
 #: [page]news
 msgid "News"
-msgstr ""
+msgstr "Nyheter"
 
 #: [page]avatar
 msgid "Avatar"
@@ -2572,7 +2596,7 @@ msgstr ""
 
 #: [page]chats
 msgid "Chats"
-msgstr ""
+msgstr "Chats"
 
 #: [page]publish
 msgid "Publish"
@@ -2697,7 +2721,7 @@ msgstr ""
 
 #: [button]close
 msgid "Close"
-msgstr ""
+msgstr "Stäng"
 
 #: [button]update
 msgid "Update"
@@ -2765,7 +2789,7 @@ msgstr ""
 
 #: [button]search
 msgid "Search"
-msgstr ""
+msgstr "Sök"
 
 #: [button]share
 msgctxt "[button]share"
@@ -3322,7 +3346,7 @@ msgstr ""
 
 #: [post]email
 msgid "email"
-msgstr ""
+msgstr "e-post"
 
 #: [post]empty
 msgid "No content"

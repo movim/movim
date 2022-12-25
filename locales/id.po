@@ -117,16 +117,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-04 14:11+0200\n"
-"PO-Revision-Date: 2022-02-17 07:57+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"POT-Creation-Date: 2022-12-25 14:45+0200\n"
+"PO-Revision-Date: 2015-06-24 09:45+0000\n"
+"Last-Translator: Fahmi <itsfahmiegerton@live.co.uk>, 2017\n"
 "Language-Team: Indonesian (http://www.transifex.com/movim/movim/language/id/)\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Translate Toolkit 3.4.1\n"
+"X-Generator: Translate Toolkit 3.7.4\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -466,22 +466,6 @@ msgstr ""
 msgid "File"
 msgstr "Berkas"
 
-#: [avatar]use_it
-msgid "Use it"
-msgstr "Gunakan"
-
-#: [avatar]webcam
-msgid "Webcam"
-msgstr "Webcam"
-
-#: [avatar]cheese
-msgid "Cheese!"
-msgstr ""
-
-#: [avatar]snapshot
-msgid "Take a webcam snapshot"
-msgstr "Ambil gambar dari webcam"
-
 #: [avatar]updated
 msgid "Avatar Updated"
 msgstr "Avatar Diperbarui"
@@ -502,25 +486,37 @@ msgstr ""
 msgid "Upload a new picture"
 msgstr ""
 
+#: [banner]change
+msgid "Change my banner"
+msgstr ""
+
+#: [banner]updated
+msgid "Banner Updated"
+msgstr ""
+
+#: [banner]not_updated
+msgid "Banner Not Updated"
+msgstr ""
+
+#: [banner]missing
+msgid "No banner defined yet"
+msgstr ""
+
 #: [blocked]title
-#, fuzzy
 msgid "Blocked"
-msgstr "kaget"
+msgstr ""
 
 #: [blocked]block_account
-#, fuzzy
 msgid "Block the account"
-msgstr "Akun Lainnya"
+msgstr ""
 
 #: [blocked]unblock_account
-#, fuzzy
 msgid "Unblock the account"
-msgstr "Akun Lainnya"
+msgstr ""
 
 #: [blocked]account_blocked
-#, fuzzy
 msgid "Account blocked"
-msgstr "Akun"
+msgstr ""
 
 #: [blocked]account_unblocked
 msgid "Account unblocked"
@@ -579,9 +575,8 @@ msgid "Composing…"
 msgstr ""
 
 #: [message]invitation
-#, fuzzy
 msgid "Invitation"
-msgstr "Undangan Tertunda"
+msgstr ""
 
 #: [message]paused
 msgid "Paused…"
@@ -670,6 +665,18 @@ msgstr ""
 
 #: [chat]jingle_end
 msgid "Call ended"
+msgstr ""
+
+#: [chat]jingle_hours
+msgid "%s hours %s minutes"
+msgstr ""
+
+#: [chat]jingle_minutes
+msgid "%s minutes and %s seconds"
+msgstr ""
+
+#: [chat]jingle_seconds
+msgid "%s seconds"
 msgstr ""
 
 #: [chat]publish_error
@@ -1019,13 +1026,12 @@ msgid "No publication yet? Write your first post to make people discover your pr
 msgstr ""
 
 #: [communityposts]empty_me_button
-#, fuzzy
 msgid "Publish my first post"
-msgstr "URL publik dari post ini"
+msgstr ""
 
 #: [communitysubscriptions]subscriptions
-msgid "My Subscriptions"
-msgstr "Langganan Saya"
+msgid "Subscribed Communities"
+msgstr ""
 
 #: [communitysubscriptions]empty_title
 msgid "Hello"
@@ -1380,24 +1386,20 @@ msgid "Add the chatroom"
 msgstr "Tambahkan ke chatroom"
 
 #: [location]title
-#, fuzzy
 msgid "My location"
-msgstr "Publikasi saya"
+msgstr ""
 
 #: [location]enabled_title
-#, fuzzy
 msgid "Currently shared with my contacts"
-msgstr "Mengobrol dengan sebuah kontak"
+msgstr ""
 
 #: [location]disabled_title
-#, fuzzy
 msgid "Currently disabled"
-msgstr "Komentar dinonaktifkan"
+msgstr ""
 
 #: [location]last_published
-#, fuzzy
 msgid "My last published location"
-msgstr "Publikasi saya"
+msgstr ""
 
 #: [location]less_than_one_km
 msgid "Less than a km away"
@@ -1515,6 +1517,14 @@ msgstr ""
 msgid "Administrated by"
 msgstr ""
 
+#: [about_movim]info
+msgid "Movim is a federated blogging and chat platform."
+msgstr ""
+
+#: [about_movim]website
+msgid "Visit the project official website %s."
+msgstr ""
+
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
 msgstr "Nama panggilan buruk (diantara 4 dan 40 karakter)"
@@ -1544,9 +1554,8 @@ msgid "Write a new post…"
 msgstr ""
 
 #: [notification]request_title
-#, fuzzy
 msgid "Notifications request"
-msgstr "Notifikasi"
+msgstr ""
 
 #: [notification]request_info
 msgid "Movim requires your approval to display notifications"
@@ -1582,9 +1591,8 @@ msgid "Incoming message"
 msgstr ""
 
 #: [notificationconfig]push_subscriptions
-#, fuzzy
 msgid "Push notifications"
-msgstr "Notifikasi"
+msgstr ""
 
 #: [notificationconfig]push_subscriptions_text
 msgid "Movim will send push notifications to the following registered devices"
@@ -1595,19 +1603,16 @@ msgid "Push notifications enabled for this device"
 msgstr ""
 
 #: [notificationconfig]push_disabled
-#, fuzzy
 msgid "Push notifications disabled for this device"
-msgstr "Langganan dinonaktifkan untuk komunitas ini"
+msgstr ""
 
 #: [notificationconfig]unknown_browser
-#, fuzzy
 msgid "Unknown browser"
-msgstr "Galat tidak diketahui"
+msgstr ""
 
 #: [notificationconfig]unknown_platform
-#, fuzzy
 msgid "Unknown platform"
-msgstr "Galat tidak diketahui"
+msgstr ""
 
 #: [invitations]title
 msgid "Pending Invitations"
@@ -1889,6 +1894,10 @@ msgstr ""
 msgid "Add #hashtags in your title or content to allow your article to be discovered"
 msgstr ""
 
+#: [publish]publish_error_forbidden
+msgid "You are not authorized to publish there"
+msgstr ""
+
 #: [publishhelp]title [page]help
 msgid "Help"
 msgstr "Bantuan"
@@ -2130,9 +2139,8 @@ msgid "Archived"
 msgstr ""
 
 #: [room]archived_text
-#, fuzzy
 msgid "The chatroom messages are archived"
-msgstr "%s pesan diambil"
+msgstr ""
 
 #: [room]group_chat
 msgid "Group Chat"
@@ -2284,6 +2292,10 @@ msgstr ""
 
 #: [sendto]attach
 msgid "Attach to a blog publication"
+msgstr ""
+
+#: [sendto]share
+msgid "Share in a new publication"
 msgstr ""
 
 #: [sendto]contact
@@ -2519,18 +2531,16 @@ msgid "Camera"
 msgstr ""
 
 #: [visioconfig]camera_label
-#, fuzzy
 msgid "Default camera"
-msgstr "Bahasa default"
+msgstr ""
 
 #: [visioconfig]default_microphone_changed
 msgid "Default microphone changed"
 msgstr ""
 
 #: [visioconfig]default_camera_changed
-#, fuzzy
 msgid "Default camera changed"
-msgstr "Bahasa default"
+msgstr ""
 
 #: [visioconfig]no_mic_sound
 msgid "No sound detected from your microphone"
@@ -3437,48 +3447,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "General Overview"
-#~ msgstr "Gambaran Umum"
-
-#~ msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
-#~ msgstr "Terjadi galat koneksi WebSocket, periksa kembali apakah Movim Daemon telah berjalan dan dapat dicapai"
-
-#~ msgid "Browser"
-#~ msgstr "Browser"
-
-#~ msgid "Movim Core"
-#~ msgstr "Movim Core"
-
-#~ msgid "Movim Daemon"
-#~ msgstr "Movim Daemon"
-
-#~ msgid "Database"
-#~ msgstr "Database"
-
-#~ msgid "XMPP"
-#~ msgstr "XMPP"
-
-#~ msgid "Here you can register your pod on the official %sMovim API%s"
-#~ msgstr "Disini anda dapat mendaftarkan pod anda ke official %sMovim API%s"
-
-#~ msgid "Your pod is not registered on the API"
-#~ msgstr "Pod anda tidak terdaftar dalam API"
-
-#~ msgid "Your pod is registered on the API"
-#~ msgstr "Pod anda telah terdaftar dalam API"
-
-#~ msgid "Your pod is not yet validated"
-#~ msgstr "Pod anda belum di validasi"
-
-#~ msgid "Your pod is validated"
-#~ msgstr "Pod anda sudah di validasi"
-
-#~ msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
-#~ msgstr "Anda meminta untuk dihapus dari API, permintaan ini akan diproses dalam beberapa jam"
-
-#~ msgid "Visit the blog to see all the public posts"
-#~ msgstr "Kunjungi blog untuk melihat semua post publik"
-
-#~ msgid "Status updated"
-#~ msgstr "Status diperbarui"

@@ -1,7 +1,7 @@
 #
 # Translators:
-# GenghisKhan <genghiskhan@gmx.ca>, 2016
-# GenghisKhan <genghiskhan@gmx.ca>, 2012
+# gk <genghiskhan@gmx.ca>, 2016
+# gk <genghiskhan@gmx.ca>, 2012
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -116,16 +116,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-04 14:11+0200\n"
-"PO-Revision-Date: 2022-02-17 07:57+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"POT-Creation-Date: 2022-12-25 14:45+0200\n"
+"PO-Revision-Date: 2015-06-24 09:45+0000\n"
+"Last-Translator: gk <genghiskhan@gmx.ca>, 2016\n"
 "Language-Team: Hebrew (http://www.transifex.com/movim/movim/language/he/)\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
-"X-Generator: Translate Toolkit 3.4.1\n"
+"X-Generator: Translate Toolkit 3.7.4\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -465,22 +465,6 @@ msgstr ""
 msgid "File"
 msgstr "קובץ"
 
-#: [avatar]use_it
-msgid "Use it"
-msgstr "השתמש בזה"
-
-#: [avatar]webcam
-msgid "Webcam"
-msgstr "מצלמת רשת"
-
-#: [avatar]cheese
-msgid "Cheese!"
-msgstr ""
-
-#: [avatar]snapshot
-msgid "Take a webcam snapshot"
-msgstr "קח תצלום בזק מתוך מצלמת רשת"
-
 #: [avatar]updated
 msgid "Avatar Updated"
 msgstr "אווטאר עודכן"
@@ -501,25 +485,37 @@ msgstr ""
 msgid "Upload a new picture"
 msgstr ""
 
+#: [banner]change
+msgid "Change my banner"
+msgstr ""
+
+#: [banner]updated
+msgid "Banner Updated"
+msgstr ""
+
+#: [banner]not_updated
+msgid "Banner Not Updated"
+msgstr ""
+
+#: [banner]missing
+msgid "No banner defined yet"
+msgstr ""
+
 #: [blocked]title
-#, fuzzy
 msgid "Blocked"
-msgstr "הלום"
+msgstr ""
 
 #: [blocked]block_account
-#, fuzzy
 msgid "Block the account"
-msgstr "חשבונות אחרים"
+msgstr ""
 
 #: [blocked]unblock_account
-#, fuzzy
 msgid "Unblock the account"
-msgstr "חשבונות אחרים"
+msgstr ""
 
 #: [blocked]account_blocked
-#, fuzzy
 msgid "Account blocked"
-msgstr "חשבון"
+msgstr ""
 
 #: [blocked]account_unblocked
 msgid "Account unblocked"
@@ -578,9 +574,8 @@ msgid "Composing…"
 msgstr ""
 
 #: [message]invitation
-#, fuzzy
 msgid "Invitation"
-msgstr "הזמנות תלויות ועומדות"
+msgstr ""
 
 #: [message]paused
 msgid "Paused…"
@@ -669,6 +664,18 @@ msgstr ""
 
 #: [chat]jingle_end
 msgid "Call ended"
+msgstr ""
+
+#: [chat]jingle_hours
+msgid "%s hours %s minutes"
+msgstr ""
+
+#: [chat]jingle_minutes
+msgid "%s minutes and %s seconds"
+msgstr ""
+
+#: [chat]jingle_seconds
+msgid "%s seconds"
 msgstr ""
 
 #: [chat]publish_error
@@ -1018,13 +1025,12 @@ msgid "No publication yet? Write your first post to make people discover your pr
 msgstr ""
 
 #: [communityposts]empty_me_button
-#, fuzzy
 msgid "Publish my first post"
-msgstr "URL פומבי של פרסום זה"
+msgstr ""
 
 #: [communitysubscriptions]subscriptions
-msgid "My Subscriptions"
-msgstr "ההרשמות שלי"
+msgid "Subscribed Communities"
+msgstr ""
 
 #: [communitysubscriptions]empty_title
 msgid "Hello"
@@ -1379,24 +1385,20 @@ msgid "Add the chatroom"
 msgstr "הוסף חדר שיחה"
 
 #: [location]title
-#, fuzzy
 msgid "My location"
-msgstr "הפרסומים שלי"
+msgstr ""
 
 #: [location]enabled_title
-#, fuzzy
 msgid "Currently shared with my contacts"
-msgstr "שיח עם איש קשר"
+msgstr ""
 
 #: [location]disabled_title
-#, fuzzy
 msgid "Currently disabled"
-msgstr "תגובות מנוטרלות"
+msgstr ""
 
 #: [location]last_published
-#, fuzzy
 msgid "My last published location"
-msgstr "הפרסומים שלי"
+msgstr ""
 
 #: [location]less_than_one_km
 msgid "Less than a km away"
@@ -1514,6 +1516,14 @@ msgstr ""
 msgid "Administrated by"
 msgstr ""
 
+#: [about_movim]info
+msgid "Movim is a federated blogging and chat platform."
+msgstr ""
+
+#: [about_movim]website
+msgid "Visit the project official website %s."
+msgstr ""
+
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
 msgstr ""
@@ -1596,14 +1606,12 @@ msgid "Push notifications disabled for this device"
 msgstr ""
 
 #: [notificationconfig]unknown_browser
-#, fuzzy
 msgid "Unknown browser"
-msgstr "שגיאה לא ידועה"
+msgstr ""
 
 #: [notificationconfig]unknown_platform
-#, fuzzy
 msgid "Unknown platform"
-msgstr "שגיאה לא ידועה"
+msgstr ""
 
 #: [invitations]title
 msgid "Pending Invitations"
@@ -1885,6 +1893,10 @@ msgstr ""
 msgid "Add #hashtags in your title or content to allow your article to be discovered"
 msgstr ""
 
+#: [publish]publish_error_forbidden
+msgid "You are not authorized to publish there"
+msgstr ""
+
 #: [publishhelp]title [page]help
 msgid "Help"
 msgstr "עזרה"
@@ -2126,9 +2138,8 @@ msgid "Archived"
 msgstr ""
 
 #: [room]archived_text
-#, fuzzy
 msgid "The chatroom messages are archived"
-msgstr "%s הודעות נתקבלו"
+msgstr ""
 
 #: [room]group_chat
 msgid "Group Chat"
@@ -2280,6 +2291,10 @@ msgstr ""
 
 #: [sendto]attach
 msgid "Attach to a blog publication"
+msgstr ""
+
+#: [sendto]share
+msgid "Share in a new publication"
 msgstr ""
 
 #: [sendto]contact
@@ -2515,18 +2530,16 @@ msgid "Camera"
 msgstr ""
 
 #: [visioconfig]camera_label
-#, fuzzy
 msgid "Default camera"
-msgstr "שפה משתמטת"
+msgstr ""
 
 #: [visioconfig]default_microphone_changed
 msgid "Default microphone changed"
 msgstr ""
 
 #: [visioconfig]default_camera_changed
-#, fuzzy
 msgid "Default camera changed"
-msgstr "שפה משתמטת"
+msgstr ""
 
 #: [visioconfig]no_mic_sound
 msgid "No sound detected from your microphone"
@@ -3433,36 +3446,3 @@ msgstr "API אינו נגיש, נסה שוב מאוחר יותר"
 #: [field]type_here
 msgid "Type here"
 msgstr "הקלד כאן"
-
-#~ msgid "General Overview"
-#~ msgstr "סקירה כללית"
-
-#~ msgid "Browser"
-#~ msgstr "דפדפן"
-
-#~ msgid "Database"
-#~ msgstr "מסד נתונים"
-
-#~ msgid "XMPP"
-#~ msgstr "XMPP"
-
-#~ msgid "Your pod is not registered on the API"
-#~ msgstr "השרת שלך אינו רשום API"
-
-#~ msgid "Your pod is registered on the API"
-#~ msgstr "השרת שלך הינו רשום API"
-
-#~ msgid "Your pod is not yet validated"
-#~ msgstr "השרת שלך עדיין לא קיבל תוקף"
-
-#~ msgid "Your pod is validated"
-#~ msgstr "השרת שלך הינו תקף"
-
-#~ msgid "Visit the blog to see all the public posts"
-#~ msgstr "בקר בבלוג כדי לצפות בכל הפרסומים הפומביים"
-
-#~ msgid "Statistics"
-#~ msgstr "סטטיסטיקה"
-
-#~ msgid "Status updated"
-#~ msgstr "מצב עודכן"

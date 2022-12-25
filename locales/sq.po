@@ -117,16 +117,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-04 14:11+0200\n"
-"PO-Revision-Date: 2022-02-17 10:17+0000\n"
-"Last-Translator: Besnik Bleta <besnik@programeshqip.org>\n"
+"POT-Creation-Date: 2022-12-25 14:45+0200\n"
+"PO-Revision-Date: 2015-06-24 09:45+0000\n"
+"Last-Translator: Besnik Bleta <besnik@programeshqip.org>, 2018,2020-2022\n"
 "Language-Team: Albanian (http://www.transifex.com/movim/movim/language/sq/)\n"
 "Language: sq\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.4.1\n"
+"X-Generator: Translate Toolkit 3.7.4\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -166,7 +166,7 @@ msgstr "Llogari"
 
 #: [account]account_management
 msgid "Account management"
-msgstr ""
+msgstr "Administrim llogarish"
 
 #: [account]password_change_title
 msgid "Change my password"
@@ -226,11 +226,11 @@ msgstr "Ky veprim s’do të fshijë llogarinë tuaj, por do t’ju shkëpusë n
 
 #: [account]delete_bundle_title
 msgid "OMEMO Key deletion"
-msgstr ""
+msgstr "Fshirje kyçi OMEMO"
 
 #: [account]delete_bundle_text
 msgid "Your are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
-msgstr ""
+msgstr "Ju ndan një hap nga asgjësimi i kyçit vijues OMEMO. Kontaktet tuaja s’do të jenë më në gjendje të fshehtëzojnë mesazhe duke përdorur atë kyç. Ky veprim s’mund të prapakthehet. Jeni i sigurt?"
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
@@ -415,21 +415,20 @@ msgid "Access Tenor and get your API key"
 msgstr "Hyni në Tenor dhe merrni Kyçin tuaj API"
 
 #: [twitter]title
-#, fuzzy
 msgid "Twitter integration"
-msgstr "Integrim me Tenor"
+msgstr "Integrim me Twitter"
 
 #: [twitter]label
 msgid "Your Twitter Token"
-msgstr ""
+msgstr "Token-i juaj në Twitter"
 
 #: [twitter]info1
 msgid "The Twitter integration allow Movim to embed and extract the Tweets shared on the instance"
-msgstr ""
+msgstr "Integrimi për Twitter i lejon Movim-it të trupëzojë dhe përftojë Tweets të ndarë te instanca"
 
 #: [twitter]info2
 msgid "Generate your Token on the Developer Twitter website"
-msgstr ""
+msgstr "Prodhoni Token-in tuaj te sajti Developer Twitter"
 
 #: [log]empty
 msgid "Empty"
@@ -444,17 +443,16 @@ msgid "Syslog and files"
 msgstr "Syslog dhe kartela"
 
 #: [adminreported]reported_by
-#, fuzzy
 msgid "Reported by %s users"
-msgstr "Njoftoni shpërdorim"
+msgstr "Raportuar nga %s përdorues"
 
 #: [adminreported]info
 msgid "Those accounts were reported by some Movim users"
-msgstr ""
+msgstr "Këto llogari janë raportuar nga disa përdorues Movim"
 
 #: [adminreported]info2
 msgid "You can choose to block them for all the other users"
-msgstr ""
+msgstr "Mund të zgjidhni bllokimin e tyre për krejt përdoruesit e tjerë"
 
 #: [adminsessions]title
 msgid "Sessions"
@@ -467,22 +465,6 @@ msgstr "Përdorues aktualisht të lidhur te nyja"
 #: [avatar]file
 msgid "File"
 msgstr "Kartelë"
-
-#: [avatar]use_it
-msgid "Use it"
-msgstr "Përdore"
-
-#: [avatar]webcam
-msgid "Webcam"
-msgstr "Kamerë"
-
-#: [avatar]cheese
-msgid "Cheese!"
-msgstr ""
-
-#: [avatar]snapshot
-msgid "Take a webcam snapshot"
-msgstr "Bëni një foto me kamerën"
 
 #: [avatar]updated
 msgid "Avatar Updated"
@@ -504,41 +486,53 @@ msgstr "Ndrysho avatarin tim"
 msgid "Upload a new picture"
 msgstr "Ngarkoni një foto të re"
 
+#: [banner]change
+msgid "Change my banner"
+msgstr ""
+
+#: [banner]updated
+msgid "Banner Updated"
+msgstr ""
+
+#: [banner]not_updated
+msgid "Banner Not Updated"
+msgstr ""
+
+#: [banner]missing
+msgid "No banner defined yet"
+msgstr ""
+
 #: [blocked]title
-#, fuzzy
 msgid "Blocked"
-msgstr "i tronditur"
+msgstr "Bllokuar"
 
 #: [blocked]block_account
-#, fuzzy
 msgid "Block the account"
-msgstr "Llogari të Tjera"
+msgstr "Bllokoje llogarinë"
 
 #: [blocked]unblock_account
-#, fuzzy
 msgid "Unblock the account"
-msgstr "Llogari të Tjera"
+msgstr "Zhbllokoje llogarinë"
 
 #: [blocked]account_blocked
-#, fuzzy
 msgid "Account blocked"
-msgstr "Llogari"
+msgstr "Llogaria është bllokuar"
 
 #: [blocked]account_unblocked
 msgid "Account unblocked"
-msgstr ""
+msgstr "Llogaria është zhbllokuar"
 
 #: [blocked]placeholder
 msgid "You will find here the users you have blocked"
-msgstr ""
+msgstr "Këtu do të gjeni përdoruesit që keni bllokuar"
 
 #: [blocked]info
 msgid "The following users are blocked by Movim and cannot contact you anymore"
-msgstr ""
+msgstr "Përdoruesit vijues janë bllokuar nga Movim-i dhe s’mund të lidhen më me ju"
 
 #: [blocked]info2
 msgid "The administrator is also aware of this list and can therefore block those users system wide"
-msgstr ""
+msgstr "Përgjegjësi është gjithashtu në dijeni të kësaj liste dhe mundet pra t’i bllokojë këta përdorues në krejt sistemin"
 
 #: [blog]title [feed]title
 msgid "%s’s feed"
@@ -562,7 +556,7 @@ msgstr "Tërhiqe"
 
 #: [message]retract_body
 msgid "Your contact attempted to retract a previous message, but it's unsupported by your client"
-msgstr ""
+msgstr "Kontakti juaj u përpoq të tërheqë një mesazh të mëparshëm, por kjo nuk mbulohet nga klienti juaj"
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
@@ -581,9 +575,8 @@ msgid "Composing…"
 msgstr "Po hartohet…"
 
 #: [message]invitation
-#, fuzzy
 msgid "Invitation"
-msgstr "Ftesa u dërgua"
+msgstr "Ftesë"
 
 #: [message]paused
 msgid "Paused…"
@@ -638,9 +631,8 @@ msgid "You received an invitation to join a chatroom"
 msgstr "Morët një ftesë për të hyrë në një dhomë fjalosjesh"
 
 #: [chat]invitation_self
-#, fuzzy
 msgid "You sent an invitation to join a chatroom"
-msgstr "Morët një ftesë për të hyrë në një dhomë fjalosjesh"
+msgstr "Dërguat një ftesë për të hyrë në një dhomë fjalosjesh"
 
 #: [chat]invitation_join
 msgid "Join %s"
@@ -668,13 +660,24 @@ msgid "Incoming call"
 msgstr "Thirrje ardhëse"
 
 #: [chat]jingle_outgoing
-#, fuzzy
 msgid "Outgoing call"
-msgstr "në thirrje"
+msgstr "Thirrje për dikë"
 
 #: [chat]jingle_end
 msgid "Call ended"
 msgstr "Thirrja përfundoi"
+
+#: [chat]jingle_hours
+msgid "%s hours %s minutes"
+msgstr ""
+
+#: [chat]jingle_minutes
+msgid "%s minutes and %s seconds"
+msgstr ""
+
+#: [chat]jingle_seconds
+msgid "%s seconds"
+msgstr ""
 
 #: [chat]publish_error
 msgid "An error occured when sending the message"
@@ -1020,16 +1023,15 @@ msgstr "Jeni i sigurt?"
 
 #: [communityposts]empty_me_text
 msgid "No publication yet? Write your first post to make people discover your profile"
-msgstr ""
+msgstr "Ende pa botim? Shkruani postimin tuaj të parë, që t’i bëni njerëzit të zbulojnë profilin tuaj"
 
 #: [communityposts]empty_me_button
-#, fuzzy
 msgid "Publish my first post"
-msgstr "URL publike e këtij postimi"
+msgstr ""
 
 #: [communitysubscriptions]subscriptions
-msgid "My Subscriptions"
-msgstr "Pajtimet e Mia"
+msgid "Subscribed Communities"
+msgstr ""
 
 #: [communitysubscriptions]empty_title
 msgid "Hello"
@@ -1277,7 +1279,7 @@ msgstr "Postimi i fundit publik"
 
 #: [blog]visit
 msgid "Visit the public blog"
-msgstr ""
+msgstr "V"
 
 #: [subscription]to
 msgid "You can see this contact status"
@@ -1384,32 +1386,28 @@ msgid "Add the chatroom"
 msgstr "Shtoje dhomën e fjalosjeve"
 
 #: [location]title
-#, fuzzy
 msgid "My location"
-msgstr "Publikimet e mia"
+msgstr "Vendndodhja ime"
 
 #: [location]enabled_title
-#, fuzzy
 msgid "Currently shared with my contacts"
-msgstr "Postimi u nda me kontaktin tuaj"
+msgstr "Aktualisht treguar kontakteve të mi"
 
 #: [location]disabled_title
-#, fuzzy
 msgid "Currently disabled"
-msgstr "Komentet janë çaktivizuar"
+msgstr "Aktualisht e çaktivizuar"
 
 #: [location]last_published
-#, fuzzy
 msgid "My last published location"
-msgstr "Publikimet e mia"
+msgstr "Vendndodhja ime e fundit e bërë publike"
 
 #: [location]less_than_one_km
 msgid "Less than a km away"
-msgstr ""
+msgstr "Më pak se një km larg"
 
 #: [location]n_km_away
 msgid "%s km away"
-msgstr ""
+msgstr "%s km larg"
 
 #: [error]username
 msgid "Wrong username"
@@ -1519,6 +1517,14 @@ msgstr "%s ju ftoi të hyni në një dhomë fjalosjesh"
 msgid "Administrated by"
 msgstr "Administruar nga"
 
+#: [about_movim]info
+msgid "Movim is a federated blogging and chat platform."
+msgstr ""
+
+#: [about_movim]website
+msgid "Visit the project official website %s."
+msgstr ""
+
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
 msgstr "Nofkë e gabuar (mes 4 dhe 40 shenjash)"
@@ -1548,31 +1554,28 @@ msgid "Write a new post…"
 msgstr "Shkruani një postim të ri…"
 
 #: [notification]request_title
-#, fuzzy
 msgid "Notifications request"
-msgstr "Njoftime"
+msgstr "Kërkesë njoftimesh"
 
 #: [notification]request_info
 msgid "Movim requires your approval to display notifications"
-msgstr ""
+msgstr "Movim-i lyp miratimin tuaj për të shfaqur njoftime"
 
 #: [notification]request_info2
 msgid "This authorization can be revoked at any time"
-msgstr ""
+msgstr "Ky autorizim mund të shfuqizohet në çfarëdo kohe"
 
 #: [notification]request_button
 msgid "Request"
-msgstr ""
+msgstr "Kërkesë"
 
 #: [notification]request_granted
-#, fuzzy
 msgid "Authorization granted"
-msgstr "Kod mirëfilltësimi"
+msgstr "U dha autorizim"
 
 #: [notification]request_refused
-#, fuzzy
 msgid "Authorization refused"
-msgstr "Kod mirëfilltësimi"
+msgstr "Autorizimi u hodh poshtë"
 
 #: [notificationconfig]title [notifs]title [onboarding]notifications_title
 #: [room]notify_title
@@ -1588,33 +1591,28 @@ msgid "Incoming message"
 msgstr "Mesazh ardhës"
 
 #: [notificationconfig]push_subscriptions
-#, fuzzy
 msgid "Push notifications"
-msgstr "Njoftime audio"
+msgstr "Njoftime push"
 
 #: [notificationconfig]push_subscriptions_text
-#, fuzzy
 msgid "Movim will send push notifications to the following registered devices"
-msgstr "Movim mund të dërgojë Njoftime Push te aplikacioni Movim Android duke përdorur Firebase-in"
+msgstr "Movim-i do të dërgojë njoftime push te pajisjet e mëposhtme të regjistruara"
 
 #: [notificationconfig]push_enabled
 msgid "Push notifications enabled for this device"
-msgstr ""
+msgstr "Njoftime push të aktivizuara për këtë pajisje"
 
 #: [notificationconfig]push_disabled
-#, fuzzy
 msgid "Push notifications disabled for this device"
-msgstr "Pajtimet janë të çaktivizuara për këtë bashkësi"
+msgstr "Njoftime push të çaktivizuara për këtë pajisje"
 
 #: [notificationconfig]unknown_browser
-#, fuzzy
 msgid "Unknown browser"
-msgstr "Gabim i panjohur"
+msgstr "Shfletues i panjohur"
 
 #: [notificationconfig]unknown_platform
-#, fuzzy
 msgid "Unknown platform"
-msgstr "Gabim i panjohur"
+msgstr "Platformë e panjohur"
 
 #: [invitations]title
 msgid "Pending Invitations"
@@ -1894,6 +1892,10 @@ msgstr "Përpunues teksti të pasur"
 
 #: [publish]help_hashtag
 msgid "Add #hashtags in your title or content to allow your article to be discovered"
+msgstr "Shtoni #hashtagë te titulli ose lënda juaj, që ta bëni artikullin tuaj të zbulueshëm"
+
+#: [publish]publish_error_forbidden
+msgid "You are not authorized to publish there"
 msgstr ""
 
 #: [publishhelp]title [page]help
@@ -2134,12 +2136,11 @@ msgstr "Pjesëmarrësit e kësaj dhome bisedash mund të shohin profilin e njër
 
 #: [room]archived
 msgid "Archived"
-msgstr ""
+msgstr "I arkivuar"
 
 #: [room]archived_text
-#, fuzzy
 msgid "The chatroom messages are archived"
-msgstr "U morën %s mesazhe"
+msgstr "Mesazhet e dhomës së fjalosjes janë arkivuar"
 
 #: [room]group_chat
 msgid "Group Chat"
@@ -2292,6 +2293,10 @@ msgstr "Shfaqi krejt kontaktet"
 #: [sendto]attach
 msgid "Attach to a blog publication"
 msgstr "Bashkëngjitni te një botim blohu"
+
+#: [sendto]share
+msgid "Share in a new publication"
+msgstr ""
 
 #: [sendto]contact
 msgid "Send it to a contact"
@@ -2507,45 +2512,43 @@ msgstr "thirrja përfundoi"
 
 #: [visioconfig]title
 msgid "Video & Voice"
-msgstr ""
+msgstr "Video & Zë"
 
 #: [visioconfig]help
 msgid "Configure the default devices used by Movim"
-msgstr ""
+msgstr "Formësoni pajisjet parazgjedhje të përdorura nga Movim"
 
 #: [visioconfig]microphone
 msgid "Microphone"
-msgstr ""
+msgstr "Mikrofon"
 
 #: [visioconfig]microphone_label
 msgid "Default microphone"
-msgstr ""
+msgstr "Mikrofon parazgjedhje"
 
 #: [visioconfig]camera
 msgid "Camera"
-msgstr ""
+msgstr "Kamerë"
 
 #: [visioconfig]camera_label
-#, fuzzy
 msgid "Default camera"
-msgstr "Gjuhë parazgjedhje"
+msgstr "Kamerë parazgjedhje"
 
 #: [visioconfig]default_microphone_changed
 msgid "Default microphone changed"
-msgstr ""
+msgstr "Mikrofoni parazgjedhje u ndryshua"
 
 #: [visioconfig]default_camera_changed
-#, fuzzy
 msgid "Default camera changed"
-msgstr "Gjuhë parazgjedhje"
+msgstr "Kamera parazgjedhje u ndryshua"
 
 #: [visioconfig]no_mic_sound
 msgid "No sound detected from your microphone"
-msgstr ""
+msgstr "S’u pikas zë nga mikrofoni juaj"
 
 #: [visioconfig]no_mic_sound2
 msgid "Try to select another source or check your system settings"
-msgstr ""
+msgstr "Provoni të përzgjidhni burim tjetër, ose shihni rregullimet e sistemit tuaj"
 
 #: [global]no_js
 msgid "Movim requires Javascript to be enabled to work properly."
@@ -2835,7 +2838,7 @@ msgstr "Opsional"
 
 #: [input]muc_pubsub_node
 msgid "Associated Community"
-msgstr ""
+msgstr "Bashkësi e Përshoqëruar"
 
 #: [day]title
 msgid "Day"
@@ -3435,7 +3438,7 @@ msgstr "Thjesht botoje"
 
 #: [affiliation]outcast
 msgid "Outcast"
-msgstr ""
+msgstr "përshoqëro &lt;zotëru"
 
 #: [api]error
 msgid "The API is not reachable, try again later"
@@ -3444,69 +3447,3 @@ msgstr "API nuk kapet dot, riprovoni më vonë"
 #: [field]type_here
 msgid "Type here"
 msgstr "Shtypni këtu"
-
-#~ msgid "General Overview"
-#~ msgstr "Përmbledhje e Përgjithshme"
-
-#~ msgid "Read and write rights for the webserver in Movim’s %s directory"
-#~ msgstr "Të drejta shkrimi dhe leximi për shërbyesin te drejtoria %s e Movim-it"
-
-#~ msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
-#~ msgstr "Gabim lidhjeje me WebSocket, shihni nëse Demoni Movim Daemon xhiron dhe mund të kapet"
-
-#~ msgid "Browser"
-#~ msgstr "Shfletues"
-
-#~ msgid "Movim Core"
-#~ msgstr "Baza e Movim-it"
-
-#~ msgid "Movim Daemon"
-#~ msgstr "Demon Movim-i"
-
-#~ msgid "Database"
-#~ msgstr "Bazë të dhënash"
-
-#~ msgid "XMPP"
-#~ msgstr "XMPP"
-
-#~ msgid "Here you can register your pod on the official %sMovim API%s"
-#~ msgstr "Këtu mund të regjistroni nyjën tuaj te  %sAPI Movim%s zyrtar"
-
-#~ msgid "Your pod is not registered on the API"
-#~ msgstr "Nyja juaj s’është e regjistruar te API"
-
-#~ msgid "Your pod is registered on the API"
-#~ msgstr "Nyja juaj është e regjistruar te API"
-
-#~ msgid "Your pod is not yet validated"
-#~ msgstr "Nyja juaj s’është vleftësuar ende"
-
-#~ msgid "Your pod is validated"
-#~ msgstr "Nyja juaj është vleftësuar"
-
-#~ msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
-#~ msgstr "Kërkuat të hiqeni nga API, kjo kërkesë do të përmbushet brenda disa orësh"
-
-#~ msgid "Call started"
-#~ msgstr "Thirrja filloi"
-
-#~ msgid "Archiving preferences"
-#~ msgstr "Parapëlqime arkivimi"
-
-#~ msgid "Visit the blog to see all the public posts"
-#~ msgstr "Vizitoni blogun që të shihni krejt postimet publike"
-
-#~ msgid "Statistics"
-#~ msgstr "Statistika"
-
-#~ msgid "Firebase Integration"
-#~ msgstr "Integrim me Firebase"
-
-#~ msgid "Your Firebase Authorization Key"
-#~ msgstr "Kyçi juaj i autorizimit për Firebase"
-
-#~ msgid "Go to the Firebase panel to configure and generate your Authorization key"
-#~ msgstr "Kaloni te paneli i Firebase-it që të formësoni dhe prodhoni kyçin tuaj të Mirëfilltësimt"
-
-#~ msgid "Status updated"
-#~ msgstr "Gjendja u përditësua"

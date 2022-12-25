@@ -116,16 +116,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-04 14:11+0200\n"
-"PO-Revision-Date: 2022-02-17 07:57+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"POT-Creation-Date: 2022-12-25 14:45+0200\n"
+"PO-Revision-Date: 2015-06-24 09:45+0000\n"
+"Last-Translator: T3rr0rz0n3 <zagur@voidnull.es>, 2019\n"
 "Language-Team: Catalan (http://www.transifex.com/movim/movim/language/ca/)\n"
 "Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.4.1\n"
+"X-Generator: Translate Toolkit 3.7.4\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -465,22 +465,6 @@ msgstr ""
 msgid "File"
 msgstr "Fitxer"
 
-#: [avatar]use_it
-msgid "Use it"
-msgstr "Utilitza'l"
-
-#: [avatar]webcam
-msgid "Webcam"
-msgstr "Càmera web"
-
-#: [avatar]cheese
-msgid "Cheese!"
-msgstr ""
-
-#: [avatar]snapshot
-msgid "Take a webcam snapshot"
-msgstr "Fer una instantània amb la càmera web"
-
 #: [avatar]updated
 msgid "Avatar Updated"
 msgstr "Avatar actualitzat"
@@ -501,24 +485,37 @@ msgstr ""
 msgid "Upload a new picture"
 msgstr ""
 
+#: [banner]change
+msgid "Change my banner"
+msgstr ""
+
+#: [banner]updated
+msgid "Banner Updated"
+msgstr ""
+
+#: [banner]not_updated
+msgid "Banner Not Updated"
+msgstr ""
+
+#: [banner]missing
+msgid "No banner defined yet"
+msgstr ""
+
 #: [blocked]title
 msgid "Blocked"
 msgstr ""
 
 #: [blocked]block_account
-#, fuzzy
 msgid "Block the account"
-msgstr "Altres comptes"
+msgstr ""
 
 #: [blocked]unblock_account
-#, fuzzy
 msgid "Unblock the account"
-msgstr "Altres comptes"
+msgstr ""
 
 #: [blocked]account_blocked
-#, fuzzy
 msgid "Account blocked"
-msgstr "Compte "
+msgstr ""
 
 #: [blocked]account_unblocked
 msgid "Account unblocked"
@@ -577,9 +574,8 @@ msgid "Composing…"
 msgstr ""
 
 #: [message]invitation
-#, fuzzy
 msgid "Invitation"
-msgstr "Convida"
+msgstr ""
 
 #: [message]paused
 msgid "Paused…"
@@ -668,6 +664,18 @@ msgstr ""
 
 #: [chat]jingle_end
 msgid "Call ended"
+msgstr ""
+
+#: [chat]jingle_hours
+msgid "%s hours %s minutes"
+msgstr ""
+
+#: [chat]jingle_minutes
+msgid "%s minutes and %s seconds"
+msgstr ""
+
+#: [chat]jingle_seconds
+msgid "%s seconds"
 msgstr ""
 
 #: [chat]publish_error
@@ -1021,8 +1029,8 @@ msgid "Publish my first post"
 msgstr ""
 
 #: [communitysubscriptions]subscriptions
-msgid "My Subscriptions"
-msgstr "Les Meves Subscripcions"
+msgid "Subscribed Communities"
+msgstr ""
 
 #: [communitysubscriptions]empty_title
 msgid "Hello"
@@ -1381,9 +1389,8 @@ msgid "My location"
 msgstr ""
 
 #: [location]enabled_title
-#, fuzzy
 msgid "Currently shared with my contacts"
-msgstr "Xateja amb un contacte"
+msgstr ""
 
 #: [location]disabled_title
 msgid "Currently disabled"
@@ -1507,6 +1514,14 @@ msgstr ""
 
 #: [form]pod_admins
 msgid "Administrated by"
+msgstr ""
+
+#: [about_movim]info
+msgid "Movim is a federated blogging and chat platform."
+msgstr ""
+
+#: [about_movim]website
+msgid "Visit the project official website %s."
 msgstr ""
 
 #: [login_anonymous]bad_username
@@ -1876,6 +1891,10 @@ msgstr ""
 
 #: [publish]help_hashtag
 msgid "Add #hashtags in your title or content to allow your article to be discovered"
+msgstr ""
+
+#: [publish]publish_error_forbidden
+msgid "You are not authorized to publish there"
 msgstr ""
 
 #: [publishhelp]title [page]help
@@ -2274,6 +2293,10 @@ msgstr ""
 msgid "Attach to a blog publication"
 msgstr ""
 
+#: [sendto]share
+msgid "Share in a new publication"
+msgstr ""
+
 #: [sendto]contact
 msgid "Send it to a contact"
 msgstr ""
@@ -2507,18 +2530,16 @@ msgid "Camera"
 msgstr ""
 
 #: [visioconfig]camera_label
-#, fuzzy
 msgid "Default camera"
-msgstr "Idioma per defecte"
+msgstr ""
 
 #: [visioconfig]default_microphone_changed
 msgid "Default microphone changed"
 msgstr ""
 
 #: [visioconfig]default_camera_changed
-#, fuzzy
 msgid "Default camera changed"
-msgstr "Idioma per defecte"
+msgstr ""
 
 #: [visioconfig]no_mic_sound
 msgid "No sound detected from your microphone"
@@ -3425,30 +3446,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "General Overview"
-#~ msgstr "Vista general"
-
-#~ msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
-#~ msgstr "Problema de connexió de WebSocket, comprova que el Movim Daemon estigui funcionant i sigui accessible"
-
-#~ msgid "Browser"
-#~ msgstr "Navegador"
-
-#~ msgid "Movim Core"
-#~ msgstr "Movim Core"
-
-#~ msgid "Movim Daemon"
-#~ msgstr "Dimoni Movim"
-
-#~ msgid "Database"
-#~ msgstr "Base de dades"
-
-#~ msgid "XMPP"
-#~ msgstr "XMPP"
-
-#~ msgid "Your pod is not registered on the API"
-#~ msgstr "El teu pod no està registrat a la API"
-
-#~ msgid "Visit the blog to see all the public posts"
-#~ msgstr "Visita el blog per veure totes les publicacions públiques"

@@ -116,16 +116,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-04 14:11+0200\n"
-"PO-Revision-Date: 2022-02-17 07:57+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"POT-Creation-Date: 2022-12-25 14:45+0200\n"
+"PO-Revision-Date: 2015-06-24 09:45+0000\n"
+"Last-Translator: Krunoslav Tomorad <krunoslav.tomorad@gmail.com>, 2019\n"
 "Language-Team: Croatian (http://www.transifex.com/movim/movim/language/hr/)\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Translate Toolkit 3.4.1\n"
+"X-Generator: Translate Toolkit 3.7.4\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -442,9 +442,8 @@ msgid "Syslog and files"
 msgstr "Zapisnik sustava i datoteke"
 
 #: [adminreported]reported_by
-#, fuzzy
 msgid "Reported by %s users"
-msgstr "Prijavite zloporabu"
+msgstr ""
 
 #: [adminreported]info
 msgid "Those accounts were reported by some Movim users"
@@ -466,22 +465,6 @@ msgstr ""
 msgid "File"
 msgstr "Datoteka"
 
-#: [avatar]use_it
-msgid "Use it"
-msgstr "Upotrijebi je"
-
-#: [avatar]webcam
-msgid "Webcam"
-msgstr "Internetska kamera"
-
-#: [avatar]cheese
-msgid "Cheese!"
-msgstr "Smiješak!"
-
-#: [avatar]snapshot
-msgid "Take a webcam snapshot"
-msgstr "Okini sliku s kamerom"
-
 #: [avatar]updated
 msgid "Avatar Updated"
 msgstr "Profilna slika je ažurirana"
@@ -502,23 +485,37 @@ msgstr ""
 msgid "Upload a new picture"
 msgstr ""
 
+#: [banner]change
+msgid "Change my banner"
+msgstr ""
+
+#: [banner]updated
+msgid "Banner Updated"
+msgstr ""
+
+#: [banner]not_updated
+msgid "Banner Not Updated"
+msgstr ""
+
+#: [banner]missing
+msgid "No banner defined yet"
+msgstr ""
+
 #: [blocked]title
 msgid "Blocked"
 msgstr ""
 
 #: [blocked]block_account
-#, fuzzy
 msgid "Block the account"
-msgstr "Obrišite svoj račun"
+msgstr ""
 
 #: [blocked]unblock_account
 msgid "Unblock the account"
 msgstr ""
 
 #: [blocked]account_blocked
-#, fuzzy
 msgid "Account blocked"
-msgstr "Račun"
+msgstr ""
 
 #: [blocked]account_unblocked
 msgid "Account unblocked"
@@ -577,9 +574,8 @@ msgid "Composing…"
 msgstr "Piše..."
 
 #: [message]invitation
-#, fuzzy
 msgid "Invitation"
-msgstr "Upravljanje"
+msgstr ""
 
 #: [message]paused
 msgid "Paused…"
@@ -634,9 +630,8 @@ msgid "You received an invitation to join a chatroom"
 msgstr "Pozvani ste u sobu za razgovor"
 
 #: [chat]invitation_self
-#, fuzzy
 msgid "You sent an invitation to join a chatroom"
-msgstr "Pozvani ste u sobu za razgovor"
+msgstr ""
 
 #: [chat]invitation_join
 msgid "Join %s"
@@ -670,6 +665,18 @@ msgstr ""
 #: [chat]jingle_end
 msgid "Call ended"
 msgstr "Poziv je završen"
+
+#: [chat]jingle_hours
+msgid "%s hours %s minutes"
+msgstr ""
+
+#: [chat]jingle_minutes
+msgid "%s minutes and %s seconds"
+msgstr ""
+
+#: [chat]jingle_seconds
+msgid "%s seconds"
+msgstr ""
 
 #: [chat]publish_error
 msgid "An error occured when sending the message"
@@ -1022,8 +1029,8 @@ msgid "Publish my first post"
 msgstr ""
 
 #: [communitysubscriptions]subscriptions
-msgid "My Subscriptions"
-msgstr "Moje pretplate"
+msgid "Subscribed Communities"
+msgstr ""
 
 #: [communitysubscriptions]empty_title
 msgid "Hello"
@@ -1378,14 +1385,12 @@ msgid "Add the chatroom"
 msgstr ""
 
 #: [location]title
-#, fuzzy
 msgid "My location"
-msgstr "Izdanje"
+msgstr ""
 
 #: [location]enabled_title
-#, fuzzy
 msgid "Currently shared with my contacts"
-msgstr "Pišite kontaktu"
+msgstr ""
 
 #: [location]disabled_title
 msgid "Currently disabled"
@@ -1511,6 +1516,14 @@ msgstr ""
 msgid "Administrated by"
 msgstr ""
 
+#: [about_movim]info
+msgid "Movim is a federated blogging and chat platform."
+msgstr ""
+
+#: [about_movim]website
+msgid "Visit the project official website %s."
+msgstr ""
+
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
 msgstr ""
@@ -1577,9 +1590,8 @@ msgid "Incoming message"
 msgstr ""
 
 #: [notificationconfig]push_subscriptions
-#, fuzzy
 msgid "Push notifications"
-msgstr "Izdanje"
+msgstr ""
 
 #: [notificationconfig]push_subscriptions_text
 msgid "Movim will send push notifications to the following registered devices"
@@ -1590,9 +1602,8 @@ msgid "Push notifications enabled for this device"
 msgstr ""
 
 #: [notificationconfig]push_disabled
-#, fuzzy
 msgid "Push notifications disabled for this device"
-msgstr "Za ovu su zajednicu pretplate onemogućene"
+msgstr ""
 
 #: [notificationconfig]unknown_browser
 msgid "Unknown browser"
@@ -1882,6 +1893,10 @@ msgstr ""
 msgid "Add #hashtags in your title or content to allow your article to be discovered"
 msgstr ""
 
+#: [publish]publish_error_forbidden
+msgid "You are not authorized to publish there"
+msgstr ""
+
 #: [publishhelp]title [page]help
 msgid "Help"
 msgstr ""
@@ -2123,9 +2138,8 @@ msgid "Archived"
 msgstr ""
 
 #: [room]archived_text
-#, fuzzy
 msgid "The chatroom messages are archived"
-msgstr "%s poruke dohvaćene"
+msgstr ""
 
 #: [room]group_chat
 msgid "Group Chat"
@@ -2277,6 +2291,10 @@ msgstr ""
 
 #: [sendto]attach
 msgid "Attach to a blog publication"
+msgstr ""
+
+#: [sendto]share
+msgid "Share in a new publication"
 msgstr ""
 
 #: [sendto]contact
@@ -2512,18 +2530,16 @@ msgid "Camera"
 msgstr ""
 
 #: [visioconfig]camera_label
-#, fuzzy
 msgid "Default camera"
-msgstr "Zadani jezik"
+msgstr ""
 
 #: [visioconfig]default_microphone_changed
 msgid "Default microphone changed"
 msgstr ""
 
 #: [visioconfig]default_camera_changed
-#, fuzzy
 msgid "Default camera changed"
-msgstr "Zadani jezik"
+msgstr ""
 
 #: [visioconfig]no_mic_sound
 msgid "No sound detected from your microphone"
@@ -3430,48 +3446,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "General Overview"
-#~ msgstr "Općeniti pregled"
-
-#~ msgid "Read and write rights for the webserver in Movim’s %s directory"
-#~ msgstr "Prava na čitanje i pisanje za internetski poslužitelj u mapi Movima %s"
-
-#~ msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
-#~ msgstr "Pogreška veze WebSocketa, provjerite je li Movimov servis pokrenut i je li dostupan"
-
-#~ msgid "Browser"
-#~ msgstr "Preglednik"
-
-#~ msgid "Movim Core"
-#~ msgstr "Jezgra Movima"
-
-#~ msgid "Movim Daemon"
-#~ msgstr "Servis Movima"
-
-#~ msgid "Database"
-#~ msgstr "Baza podataka"
-
-#~ msgid "XMPP"
-#~ msgstr "XMPP"
-
-#~ msgid "Here you can register your pod on the official %sMovim API%s"
-#~ msgstr "Ovdje možete prijaviti svoju instanciju Movima na službenom %sMovim API-ju%s"
-
-#~ msgid "Your pod is not registered on the API"
-#~ msgstr "Vaša instancija Movima nije prijavljena na API-ju"
-
-#~ msgid "Your pod is registered on the API"
-#~ msgstr "Vaša instancija Movima je prijavljena na API-ju"
-
-#~ msgid "Your pod is not yet validated"
-#~ msgstr "Vaša instancija Movima još nije ovjerena"
-
-#~ msgid "Your pod is validated"
-#~ msgstr "Vaše je instancija Movima ovjerena"
-
-#~ msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
-#~ msgstr "Zatražili ste uklanjanje vaše instancije Movima s API-ja. Ovaj će zahtjev biti proveden unutar nekoliko sati."
-
-#~ msgid "Call started"
-#~ msgstr "Poziv je započet"

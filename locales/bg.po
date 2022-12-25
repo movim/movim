@@ -117,16 +117,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-04 14:11+0200\n"
-"PO-Revision-Date: 2022-02-17 07:57+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"POT-Creation-Date: 2022-12-25 14:45+0200\n"
+"PO-Revision-Date: 2015-06-24 09:45+0000\n"
+"Last-Translator: Rossen Karpuzov <rkarpuzov@yahoo.com>, 2020-2022\n"
 "Language-Team: Bulgarian (http://www.transifex.com/movim/movim/language/bg/)\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.4.1\n"
+"X-Generator: Translate Toolkit 3.7.4\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -226,7 +226,7 @@ msgstr "Това действие няма да изтрие сметката в
 
 #: [account]delete_bundle_title
 msgid "OMEMO Key deletion"
-msgstr ""
+msgstr "Изтриване на ключове за OMEMO"
 
 #: [account]delete_bundle_text
 msgid "Your are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
@@ -415,13 +415,12 @@ msgid "Access Tenor and get your API key"
 msgstr "Достъпете Tenor и вземете API ключ"
 
 #: [twitter]title
-#, fuzzy
 msgid "Twitter integration"
-msgstr "Tenor вграждане"
+msgstr "Twitter интеграция"
 
 #: [twitter]label
 msgid "Your Twitter Token"
-msgstr ""
+msgstr "Вашия Twitter токен"
 
 #: [twitter]info1
 msgid "The Twitter integration allow Movim to embed and extract the Tweets shared on the instance"
@@ -444,13 +443,12 @@ msgid "Syslog and files"
 msgstr "Syslog и файлове"
 
 #: [adminreported]reported_by
-#, fuzzy
 msgid "Reported by %s users"
-msgstr "Съобщете за злоупотреба"
+msgstr "Докладвани от %s потребителя"
 
 #: [adminreported]info
 msgid "Those accounts were reported by some Movim users"
-msgstr ""
+msgstr "Тези сметки са докладвани от няколко Movim потребителя"
 
 #: [adminreported]info2
 msgid "You can choose to block them for all the other users"
@@ -467,22 +465,6 @@ msgstr "В момента свързани потребители на коше�
 #: [avatar]file
 msgid "File"
 msgstr "Файл"
-
-#: [avatar]use_it
-msgid "Use it"
-msgstr "Използвай го"
-
-#: [avatar]webcam
-msgid "Webcam"
-msgstr "Уеб камера"
-
-#: [avatar]cheese
-msgid "Cheese!"
-msgstr "Зеееле!"
-
-#: [avatar]snapshot
-msgid "Take a webcam snapshot"
-msgstr "Вземи снимка от уеб камерата"
 
 #: [avatar]updated
 msgid "Avatar Updated"
@@ -504,37 +486,49 @@ msgstr "Смени моя аватар"
 msgid "Upload a new picture"
 msgstr "Качи нова картинка"
 
+#: [banner]change
+msgid "Change my banner"
+msgstr ""
+
+#: [banner]updated
+msgid "Banner Updated"
+msgstr ""
+
+#: [banner]not_updated
+msgid "Banner Not Updated"
+msgstr ""
+
+#: [banner]missing
+msgid "No banner defined yet"
+msgstr ""
+
 #: [blocked]title
-#, fuzzy
 msgid "Blocked"
-msgstr "шокиран/а"
+msgstr "Спряна"
 
 #: [blocked]block_account
-#, fuzzy
 msgid "Block the account"
-msgstr "Други сметки"
+msgstr "Спри сметката"
 
 #: [blocked]unblock_account
-#, fuzzy
 msgid "Unblock the account"
-msgstr "Други сметки"
+msgstr "Позволи сметката"
 
 #: [blocked]account_blocked
-#, fuzzy
 msgid "Account blocked"
-msgstr "Сметка"
+msgstr "Сметката е спряна"
 
 #: [blocked]account_unblocked
 msgid "Account unblocked"
-msgstr ""
+msgstr "Сметката е пусната"
 
 #: [blocked]placeholder
 msgid "You will find here the users you have blocked"
-msgstr ""
+msgstr "Тук ще откриете поребителите, които сте спрели"
 
 #: [blocked]info
 msgid "The following users are blocked by Movim and cannot contact you anymore"
-msgstr ""
+msgstr "Следните потребители са спрени от Movim и не могат да се свържат с вас повече"
 
 #: [blocked]info2
 msgid "The administrator is also aware of this list and can therefore block those users system wide"
@@ -542,7 +536,7 @@ msgstr ""
 
 #: [blog]title [feed]title
 msgid "%s’s feed"
-msgstr "Емисии на%s"
+msgstr "Емисии на %s"
 
 #: [blog]private
 msgid "This content is private, please login to see it"
@@ -581,9 +575,8 @@ msgid "Composing…"
 msgstr "Създаване..."
 
 #: [message]invitation
-#, fuzzy
 msgid "Invitation"
-msgstr "Поканата е изпратена"
+msgstr "Покана"
 
 #: [message]paused
 msgid "Paused…"
@@ -607,7 +600,7 @@ msgstr ":shortcut: за да вмъкнете емоджи"
 
 #: [message]visitor_help
 msgid "You are not allowed to send messages in this conference"
-msgstr ""
+msgstr "Не ви е позволено да изпращате съобщения в конфренцията"
 
 #: [chat]attention
 msgid "%s needs your attention"
@@ -638,9 +631,8 @@ msgid "You received an invitation to join a chatroom"
 msgstr "Получихте покана да се присъедините в чат стая"
 
 #: [chat]invitation_self
-#, fuzzy
 msgid "You sent an invitation to join a chatroom"
-msgstr "Получихте покана да се присъедините в чат стая"
+msgstr "Изпратихте покана за присъединяване в чат стая"
 
 #: [chat]invitation_join
 msgid "Join %s"
@@ -668,13 +660,24 @@ msgid "Incoming call"
 msgstr "Входящо прозвъняване"
 
 #: [chat]jingle_outgoing
-#, fuzzy
 msgid "Outgoing call"
-msgstr "в разговор"
+msgstr ""
 
 #: [chat]jingle_end
 msgid "Call ended"
 msgstr "Разговора приключи"
+
+#: [chat]jingle_hours
+msgid "%s hours %s minutes"
+msgstr ""
+
+#: [chat]jingle_minutes
+msgid "%s minutes and %s seconds"
+msgstr ""
+
+#: [chat]jingle_seconds
+msgid "%s seconds"
+msgstr ""
 
 #: [chat]publish_error
 msgid "An error occured when sending the message"
@@ -695,7 +698,7 @@ msgstr " Ще изтриете%s съобщения, сигурни ли сте?
 
 #: [chat]action_impossible_encrypted
 msgid "Action impossible in encrypted chats"
-msgstr ""
+msgstr "Невъзможно действие в шифровани чатове"
 
 #: [chatroom]members
 msgid "Members"
@@ -731,7 +734,7 @@ msgstr "Администрация"
 
 #: [omemo]fingerprints_title
 msgid "Fingerprints"
-msgstr ""
+msgstr "Пръстови отпечатъци"
 
 #: [omemo]fingerprints
 msgid "OMEMO Fingerprints"
@@ -747,15 +750,15 @@ msgstr "Шифроващите ключове са създадени"
 
 #: [omemo]resolving_devices
 msgid "Resolving OMEMO devices"
-msgstr ""
+msgstr "Разрешаване на OMEMO устройства"
 
 #: [omemo]building_sessions
 msgid "Building encryption sessions"
-msgstr ""
+msgstr "Създаване на шифровани сесии"
 
 #: [omemo]building_own_sessions
 msgid "Building own encryption sessions"
-msgstr ""
+msgstr "Създаване на собствена шифрована сесия"
 
 #: [omemo]encrypted_disabled
 msgid "Encryption disabled"
@@ -763,15 +766,15 @@ msgstr "Шифроването е забранено"
 
 #: [omemo]encrypted_loading
 msgid "Send a message to build the encrypted session"
-msgstr ""
+msgstr "Изпрати съобщение, за да се създаде шифрованата сесия"
 
 #: [omemo]enable_contact
 msgid "Enabling encryption for the contact"
-msgstr ""
+msgstr "Разрешаване на шифроването за абоната"
 
 #: [omemo]disable_contact
 msgid "Disabling encryption for the contact"
-msgstr ""
+msgstr "Забраняване на шифроването за абоната"
 
 #: [omemo]last_activity
 msgid "Last activity"
@@ -779,7 +782,7 @@ msgstr "Последна активност"
 
 #: [omemo]sessions_built
 msgid "%s sessions built"
-msgstr ""
+msgstr "%s сесии създадени"
 
 #: [chats]empty_title
 msgid "No chats yet…"
@@ -1023,13 +1026,12 @@ msgid "No publication yet? Write your first post to make people discover your pr
 msgstr ""
 
 #: [communityposts]empty_me_button
-#, fuzzy
 msgid "Publish my first post"
-msgstr "Публичен URL адрес на този пост"
+msgstr ""
 
 #: [communitysubscriptions]subscriptions
-msgid "My Subscriptions"
-msgstr "Мои абонаменти"
+msgid "Subscribed Communities"
+msgstr ""
 
 #: [communitysubscriptions]empty_title
 msgid "Hello"
@@ -1041,7 +1043,7 @@ msgstr "Тук ще можете да управлявате всичките с
 
 #: [communitysubscriptions]empty_text2
 msgid "You don’t have any community subscriptions yet."
-msgstr ""
+msgstr "Все още нямате абонаменти за общности."
 
 #: [config]general
 msgid "General"
@@ -1384,24 +1386,20 @@ msgid "Add the chatroom"
 msgstr "Добавете стаята за разговори"
 
 #: [location]title
-#, fuzzy
 msgid "My location"
-msgstr "Мои публикации"
+msgstr ""
 
 #: [location]enabled_title
-#, fuzzy
 msgid "Currently shared with my contacts"
-msgstr "Чат с контакт"
+msgstr ""
 
 #: [location]disabled_title
-#, fuzzy
 msgid "Currently disabled"
-msgstr "Коментарите са забранени"
+msgstr ""
 
 #: [location]last_published
-#, fuzzy
 msgid "My last published location"
-msgstr "Мои публикации"
+msgstr ""
 
 #: [location]less_than_one_km
 msgid "Less than a km away"
@@ -1519,6 +1517,14 @@ msgstr "%sВи покани да се присъедините към чат с�
 msgid "Administrated by"
 msgstr "Администриране от"
 
+#: [about_movim]info
+msgid "Movim is a federated blogging and chat platform."
+msgstr ""
+
+#: [about_movim]website
+msgid "Visit the project official website %s."
+msgstr ""
+
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
 msgstr "Лош псевдоним (между 4 и 40 знака)"
@@ -1548,9 +1554,8 @@ msgid "Write a new post…"
 msgstr "Напишете нова публикация ..."
 
 #: [notification]request_title
-#, fuzzy
 msgid "Notifications request"
-msgstr "Известия"
+msgstr ""
 
 #: [notification]request_info
 msgid "Movim requires your approval to display notifications"
@@ -1565,14 +1570,12 @@ msgid "Request"
 msgstr ""
 
 #: [notification]request_granted
-#, fuzzy
 msgid "Authorization granted"
-msgstr "Код за удостоверяване"
+msgstr ""
 
 #: [notification]request_refused
-#, fuzzy
 msgid "Authorization refused"
-msgstr "Код за удостоверяване"
+msgstr ""
 
 #: [notificationconfig]title [notifs]title [onboarding]notifications_title
 #: [room]notify_title
@@ -1588,33 +1591,28 @@ msgid "Incoming message"
 msgstr "Входящо съобщение"
 
 #: [notificationconfig]push_subscriptions
-#, fuzzy
 msgid "Push notifications"
-msgstr "Звукови известия"
+msgstr ""
 
 #: [notificationconfig]push_subscriptions_text
-#, fuzzy
 msgid "Movim will send push notifications to the following registered devices"
-msgstr "Movim може да изпрати Push известия към Movim Android приложение ползвайки Firebase"
+msgstr ""
 
 #: [notificationconfig]push_enabled
 msgid "Push notifications enabled for this device"
 msgstr ""
 
 #: [notificationconfig]push_disabled
-#, fuzzy
 msgid "Push notifications disabled for this device"
-msgstr "Абонаментите са деактивирани за тази общност"
+msgstr ""
 
 #: [notificationconfig]unknown_browser
-#, fuzzy
 msgid "Unknown browser"
-msgstr "Непозната грешка"
+msgstr ""
 
 #: [notificationconfig]unknown_platform
-#, fuzzy
 msgid "Unknown platform"
-msgstr "Непозната грешка"
+msgstr ""
 
 #: [invitations]title
 msgid "Pending Invitations"
@@ -1896,6 +1894,10 @@ msgstr "Богат текстов редактор"
 msgid "Add #hashtags in your title or content to allow your article to be discovered"
 msgstr ""
 
+#: [publish]publish_error_forbidden
+msgid "You are not authorized to publish there"
+msgstr ""
+
 #: [publishhelp]title [page]help
 msgid "Help"
 msgstr "Помощ"
@@ -2012,11 +2014,11 @@ msgstr "Празно име"
 
 #: [chatrooms]synchronized
 msgid "%s rooms synchronized"
-msgstr "%s стаи напаснати"
+msgstr "%s стаи синхронизирани"
 
 #: [chatrooms]not_synchronized
 msgid "No rooms to synchronize found"
-msgstr ""
+msgstr "Не са открити стаи за синхронизиране"
 
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
@@ -2034,7 +2036,7 @@ msgstr "Ограничени"
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a correct nickname (2 to 40 characters)"
-msgstr ""
+msgstr "Моля, въведете правилен псевдоним (2 до 40 символа)"
 
 #: [chatrooms]conflict
 msgid "Username already taken"
@@ -2086,7 +2088,7 @@ msgstr ""
 
 #: [chatrooms]created
 msgid "Chatroom created"
-msgstr ""
+msgstr "Чат стаята е създадена"
 
 #: [bookmarks]updated
 msgid "Bookmarks updated"
@@ -2137,9 +2139,8 @@ msgid "Archived"
 msgstr ""
 
 #: [room]archived_text
-#, fuzzy
 msgid "The chatroom messages are archived"
-msgstr "%s извлечени съобщения"
+msgstr ""
 
 #: [room]group_chat
 msgid "Group Chat"
@@ -2180,7 +2181,7 @@ msgstr ""
 
 #: [room]reason
 msgid "Reason"
-msgstr ""
+msgstr "Причина"
 
 #: [room]channel
 msgid "Channel"
@@ -2209,17 +2210,17 @@ msgstr "Винаги уведомявайте"
 
 #: [room]pinned
 msgid "Pinned"
-msgstr ""
+msgstr "Забоден"
 
 #: [room]affiliation_owner
 msgctxt "[room]affiliation_owner"
 msgid "Owner"
-msgstr ""
+msgstr "Собственик"
 
 #: [room]affiliation_admin
 msgctxt "[room]affiliation_admin"
 msgid "Admin"
-msgstr ""
+msgstr "Админ"
 
 #: [room]affiliation_member [affiliation]member
 msgid "Member"
@@ -2243,7 +2244,7 @@ msgstr ""
 
 #: [room]affiliation_outcast_changed
 msgid "User banned"
-msgstr ""
+msgstr "Потребителя е забранен"
 
 #: [room]affiliation_none_changed
 msgid "Affiliation removed for the user"
@@ -2293,6 +2294,10 @@ msgstr "Показване на всичките контакти"
 msgid "Attach to a blog publication"
 msgstr "Прикачете към публикация в блога"
 
+#: [sendto]share
+msgid "Share in a new publication"
+msgstr ""
+
 #: [sendto]contact
 msgid "Send it to a contact"
 msgstr "Изпратете го на контакт"
@@ -2315,7 +2320,7 @@ msgstr ""
 
 #: [sendto]more_contacts
 msgid "More contacts"
-msgstr ""
+msgstr "Повече контакти"
 
 #: [sticker]title
 msgid "Stickers"
@@ -2323,7 +2328,7 @@ msgstr "Стикери"
 
 #: [sticker]sent
 msgid "A sticker has been sent using Movim"
-msgstr ""
+msgstr "Стикер е изпратен чрез Movim"
 
 #: [sticker]keyword
 msgid "Type a keyword"
@@ -2443,7 +2448,7 @@ msgstr ""
 
 #: [profile]nickname_conflict
 msgid "The nickname is already registered"
-msgstr ""
+msgstr "Псевдонимът е зает"
 
 #: [profile]nickname_saved
 msgid "Nickname saved"
@@ -2507,37 +2512,35 @@ msgstr "приключен разговор"
 
 #: [visioconfig]title
 msgid "Video & Voice"
-msgstr ""
+msgstr "Видео и глас"
 
 #: [visioconfig]help
 msgid "Configure the default devices used by Movim"
-msgstr ""
+msgstr "Настройка на подразбиращите се устройства ползвани от Movim"
 
 #: [visioconfig]microphone
 msgid "Microphone"
-msgstr ""
+msgstr "Микрофон"
 
 #: [visioconfig]microphone_label
 msgid "Default microphone"
-msgstr ""
+msgstr "Подразбиращ се микрофон"
 
 #: [visioconfig]camera
 msgid "Camera"
-msgstr ""
+msgstr "Камера"
 
 #: [visioconfig]camera_label
-#, fuzzy
 msgid "Default camera"
-msgstr "Език по подразбиране"
+msgstr "Подразбираща се камера"
 
 #: [visioconfig]default_microphone_changed
 msgid "Default microphone changed"
 msgstr ""
 
 #: [visioconfig]default_camera_changed
-#, fuzzy
 msgid "Default camera changed"
-msgstr "Език по подразбиране"
+msgstr ""
 
 #: [visioconfig]no_mic_sound
 msgid "No sound detected from your microphone"
@@ -2666,7 +2669,7 @@ msgstr ""
 
 #: [error]whoops
 msgid "Whoops!"
-msgstr ""
+msgstr "Опааа!"
 
 #: [error]websocket
 msgid "Movim cannot talk with the server, please try again later"
@@ -3359,7 +3362,7 @@ msgstr "Вземи по-стари публикации"
 
 #: [post]new_items
 msgid "%s new items"
-msgstr ""
+msgstr "%s нови неща"
 
 #: [post]comment_error
 msgid "Comment publication error"
@@ -3443,67 +3446,4 @@ msgstr ""
 
 #: [field]type_here
 msgid "Type here"
-msgstr ""
-
-#~ msgid "General Overview"
-#~ msgstr "Основен преглед"
-
-#~ msgid "Read and write rights for the webserver in Movim’s %s directory"
-#~ msgstr "Права за четене и запис за директорията в уебсървъра на Movim %s"
-
-#~ msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
-#~ msgstr "Грешка във връзката с WebSocket, проверете дали демона на Movim е стартиран и откриваем"
-
-#~ msgid "Browser"
-#~ msgstr "Браузър"
-
-#~ msgid "Movim Core"
-#~ msgstr "Movim Основа"
-
-#~ msgid "Movim Daemon"
-#~ msgstr "Movim Демон"
-
-#~ msgid "Database"
-#~ msgstr "База данни"
-
-#~ msgid "XMPP"
-#~ msgstr "XMPP"
-
-#~ msgid "Here you can register your pod on the official %sMovim API%s"
-#~ msgstr " Тук можете да регистрирате ваш кошер от официалния %sMovim API%s"
-
-#~ msgid "Your pod is not registered on the API"
-#~ msgstr "Вашият кошер не е регистриран в API "
-
-#~ msgid "Your pod is registered on the API"
-#~ msgstr "Вашият кошер е регистриран в API"
-
-#~ msgid "Your pod is not yet validated"
-#~ msgstr "Вашият кошер още не е потвърден"
-
-#~ msgid "Your pod is validated"
-#~ msgstr "Вашият кошер е потвърден"
-
-#~ msgid "Call started"
-#~ msgstr "Разговора започна"
-
-#~ msgid "Archiving preferences"
-#~ msgstr "Предпочитания за архивиране"
-
-#~ msgid "Visit the blog to see all the public posts"
-#~ msgstr "Посетете блога, за да видите всички публични публикации"
-
-#~ msgid "Statistics"
-#~ msgstr "Статистика"
-
-#~ msgid "Firebase Integration"
-#~ msgstr "Firebase Интеграция"
-
-#~ msgid "Your Firebase Authorization Key"
-#~ msgstr "Вашият Firebase оторизационен ключ"
-
-#~ msgid "Go to the Firebase panel to configure and generate your Authorization key"
-#~ msgstr "Отидете в панела на Firebase, за да конфигурирате и създадете вашият оторизационен ключ."
-
-#~ msgid "Status updated"
-#~ msgstr "Състоянието е актуализирано"
+msgstr "Пиши тук"
