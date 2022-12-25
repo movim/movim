@@ -41,11 +41,6 @@ form > div input[required] + label:after {
     margin-left: 0.5rem;
 }
 
-
-*[dir="rtl"] form > div label {
-    right: 0;
-}
-
 form > div.icon {
     padding-left: 9rem;
 }
@@ -309,6 +304,10 @@ form > div input[readonly] {
     float: right;
 }
 
+*[dir="rtl"] .button.oppose {
+    float: left;
+}
+
 .button:disabled,
 .button.inactive {
     opacity: 0.6;
@@ -447,6 +446,11 @@ li.action div.action .button {
         right: calc(70% - 3rem);
     }
 
+    *[dir="rtl"] main > div:first-child:nth-last-child(2) + div .button.action {
+        right: auto;
+        left: calc(70% + 4rem);
+    }
+
     /* Fix to prevent bad button position when the Websocket is not connected */
     .snackbar#status_websocket:not(.hide) ~ main > div:first-child:nth-last-child(2) + div .button.action {
         right: calc(70% + 2rem);
@@ -454,6 +458,11 @@ li.action div.action .button {
 
     aside ~ * .button.action {
         right: calc(50% - 20rem);
+    }
+
+    *[dir="rtl"] aside ~ * .button.action {
+        right: auto;
+        left: calc(50% - 13rem);
     }
 }
 

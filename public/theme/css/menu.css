@@ -25,6 +25,11 @@ ul.oppose {
     }
 }
 
+/* Specific case to handle rtl */
+body[dir="rtl"] > nav ul.list li .primary ~ *:not(.primary):not(.control):not(.bubble) {
+    margin-left: 1rem;
+}
+
 /* Navigation */
 
 ul.navigation li > span.primary > i {

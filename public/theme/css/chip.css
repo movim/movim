@@ -16,6 +16,11 @@
     font-size: 2rem;
 }
 
+*[dir="rtl"] .chip i {
+    margin-left: 0;
+    margin-right: -1rem;
+}
+
 .chip:hover {
     background-color: rgba(var(--movim-element-action), 0.2);
 }

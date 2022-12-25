@@ -118,6 +118,11 @@ ul.list li > span.control:last-of-type {
     margin-right: -1.5rem;
 }
 
+*[dir="rtl"] ul.list li > span.control:last-of-type {
+    margin-right: 0;
+    margin-left: -1.5rem;
+}
+
 header > ul.list li > span.control:last-of-type,
 nav > ul.list li > span.control:last-of-type,
 ul.list.fill li > span.control:last-of-type,
@@ -173,12 +178,27 @@ ul.list li .primary ~ *:not(.primary):not(.control):not(.bubble) {
     margin-left: 1rem;
 }
 
+*[dir="rtl"] ul.list li .primary ~ *:not(.primary):not(.control):not(.bubble) {
+    margin-left: 0;
+    margin-right: 1rem;
+}
+
 ul.list.compact li .primary ~ *:not(.primary):not(.control):not(.bubble) {
     margin-left: 0.5rem;
 }
 
+*[dir="rtl"] ul.list.compact li .primary ~ *:not(.primary):not(.control):not(.bubble) {
+    margin-left: 0;
+    margin-right: 0.5rem;
+}
+
 ul.list:not(.gallery) li .control ~ *:not(.primary):not(.control):not(.bubble) {
     margin-right: 1rem;
+}
+
+*[dir="rtl"] ul.list:not(.gallery) li .control ~ *:not(.primary):not(.control):not(.bubble)  {
+    margin-right: 0;
+    margin-left: 1rem;
 }
 
 ul.list li .primary > a,
@@ -217,6 +237,10 @@ ul li div.bubble:after {
     font-size: 1.5rem;
     color: gray;
     margin-left: 0.5rem;
+}
+
+*[dir="rtl"] ul.list li > div > p > span.info {
+    float: left;
 }
 
 /* Size automagicaly the content */
