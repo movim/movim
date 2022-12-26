@@ -168,12 +168,12 @@
                     <a class="button flat oppose"
                     {if="$public"}
                         {if="$post->isMicroblog()"}
-                        href="{$c->route('blog', [$post->server, $post->nodeid])}"
+                            onclick="MovimUtils.reload('{$c->route('blog', [$post->server, $post->nodeid])}')"
                         {else}
-                        href="{$c->route('node', [$post->server, $post->node, $post->nodeid])}"
+                            onclick="MovimUtils.reload('{$c->route('node', [$post->server, $post->node, $post->nodeid])}')"
                         {/if}
                     {else}
-                        href="{$c->route('post', [$post->server, $post->node, $post->nodeid])}"
+                        onclick="MovimUtils.reload('{$c->route('post', [$post->server, $post->node, $post->nodeid])}')"
                     {/if}>
                         <i class="material-icons on_desktop">add</i> {$c->__('post.more')}
                     </a>

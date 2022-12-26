@@ -1,6 +1,6 @@
 <li id="{$post->nodeid|cleanupId}"
     class="block"
-    onclick="MovimUtils.redirect('{$c->route('post', [$post->server, $post->node, $post->nodeid])}')">
+    onclick="MovimUtils.reload('{$c->route('post', [$post->server, $post->node, $post->nodeid])}')">
     {if="$post->picture != null"}
         <img class="main"
              src="{$post->picture->href|protectPicture}"

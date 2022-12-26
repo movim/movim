@@ -1,6 +1,6 @@
 <ul class="list thick {if="isset($action) || isset($onclick)"}active{/if}"
     {if="isset($onclick)"}
-        onclick="{$onclick}; Notification.snackbarClear();"
+        onclick="{$onclick}; Notif.snackbarClear();"
     {elseif="isset($action)"}
         onclick="MovimUtils.softRedirect('{$action}')"
     {/if}

@@ -7,7 +7,7 @@
             <button
                 name="submit"
                 class="button flat oppose"
-                onclick="Notification.request(); Dialog_ajaxClear()">
+                onclick="Notif.request(); Dialog_ajaxClear()">
                 {$c->__('notification.request_button')}
             </button>
             <p>{$c->__('notification.request_info')}</p>

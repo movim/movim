@@ -32,6 +32,7 @@ v0.21 (trunk)
  * Cleanup Push Notification subscriptions after a month of inactivity
  * PEP based avatars now have preference over vcard-temp based ones
  * Allow articles to be shared in Communities through a new Share button
+ * Add a soft reload feature for a smooth navigation
 
 v0.20
 ---------------------------

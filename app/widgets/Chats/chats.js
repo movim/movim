@@ -11,6 +11,9 @@ var Chats = {
 
     refresh: function(clearAllActives) {
         var list = document.querySelector('#chats_widget_list');
+
+        if (!list) return;
+
         var trim = list.innerHTML.trim();
 
         if (trim === '') list.innerHTML = trim;

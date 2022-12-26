@@ -1557,7 +1557,7 @@ MovimWebsocket.attach(function() {
             Chat_ajaxHttpGetEmpty();
         }
 
-        Notification.current('chat');
+        Notif.current('chat');
     }
 });
 

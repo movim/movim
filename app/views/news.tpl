@@ -1,7 +1,5 @@
 <?php $this->widget('Init');?>
 <?php $this->widget('VisioLink');?>
-<?php $this->widget('Notification');?>
-<?php $this->widget('Toast');?>
 <?php $this->widget('Upload');?>
 <?php $this->widget('Search');?>
 <?php $this->widget('Onboarding');?>

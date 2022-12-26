@@ -12,7 +12,6 @@ class ChatOmemo extends \Movim\Widget\Base
         $this->registerEvent('omemo_getbundle_handle', 'onBundle');
         $this->registerEvent('omemodevices', 'onDevices');
 
-        $this->addjs('libsignal_protocol.js');
         $this->addjs('chatomemo.js');
         $this->addjs('chatomemo_storage.js');
         $this->addjs('chatomemo_db.js');

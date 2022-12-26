@@ -8,12 +8,14 @@ namespace Movim\Template;
 use App\Configuration;
 use Movim\Controller\Ajax;
 use Movim\Widget\Wrapper;
+use stdClass;
 
 class Builder
 {
     private $_view = '';
     private $title = APP_TITLE;
     private $content = '';
+    private $commonContent = '';
     private $css = [];
     private $scripts = [];
     private $dir = 'ltr';
@@ -67,16 +69,40 @@ class Builder
         require($this->viewsPath($template));
         $outp = ob_get_clean();
 
-        $scripts = $this->printCSS();
+        $scripts = $this->printCSSs();
         $scripts .= $this->printScripts();
 
         $outp = str_replace(
-            ['<%scripts%>', '<%meta%>', '<%content%>', '<%title%>', '<%dir%>'],
-            [$scripts, $this->meta(), $this->content, $this->title(), $this->dir()],
+            ['<%scripts%>', '<%meta%>', '<%content%>', '<%common%>', '<%title%>', '<%dir%>'],
+            [$scripts, $this->meta(), $this->content, $this->commonContent, $this->title(), $this->dir()],
             $outp
         );
 
         return $outp;
+    }
+
+    /**
+     * Generate the page
+     */
+    public function softBuild(string $view, $public = false): stdClass
+    {
+        $this->_view = $view;
+        $this->public = $public;
+
+        $page = new stdClass;
+
+        $page->title = $this->title();
+
+        $widgets = Wrapper::getInstance();
+        $page->widgetsCSS = $widgets->loadcss();
+        $page->widgetsScripts = $widgets->loadjs();
+        $ajaxer = Ajax::getInstance();
+        $page->inlineScripts = $ajaxer->genJsContent();
+
+        $page->content = $this->content;
+        $page->commonContent = $this->commonContent;
+
+        return $page;
     }
 
     /**
@@ -235,7 +261,12 @@ class Builder
 
     public function setContent(string $data)
     {
-        $this->content .= $data;
+        $this->content = $data;
+    }
+
+    public function setCommonContent(string $data)
+    {
+        $this->commonContent = $data;
     }
 
     private function printScripts(): string
@@ -243,14 +274,12 @@ class Builder
         $out = '';
         $widgets = Wrapper::getInstance();
 
-        foreach (array_merge($this->scripts, $widgets->loadjs()) as $script) {
-            $dom = new \DOMDocument('1.0', 'UTF-8');
-            $s = $dom->createElement('script');
-            $s->setAttribute('type', 'text/javascript');
-            $s->setAttribute('src', $script);
-            $dom->appendChild($s);
+        foreach ($this->scripts as $script) {
+            $out .= $this->printScript($script, 'page');
+        }
 
-            $out .= $dom->saveHTML($dom->documentElement);
+        foreach ($widgets->loadjs() as $script) {
+            $out .= $this->printScript($script, 'widget');
         }
 
         $ajaxer = Ajax::getInstance();
@@ -259,22 +288,52 @@ class Builder
         return $out;
     }
 
-    private function printCSS()
+    private function printScript(string $script, string $class = ''): string
+    {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $s = $dom->createElement('script');
+        $s->setAttribute('type', 'text/javascript');
+        $s->setAttribute('src', $script);
+
+        if (!empty($class)) {
+            $s->setAttribute('class', $class);
+        }
+
+        $dom->appendChild($s);
+
+        return $dom->saveHTML($dom->documentElement);
+    }
+
+    private function printCSSs(): string
     {
         $out = '';
         $widgets = Wrapper::getInstance();
 
-        foreach (array_merge($this->css, $widgets->loadcss()) as $css) {
-            $dom = new \DOMDocument('1.0', 'UTF-8');
-            $s = $dom->createElement('link');
-            $s->setAttribute('rel', 'stylesheet');
-            $s->setAttribute('href', $css);
-            $dom->appendChild($s);
+        foreach ($this->css as $css) {
+            $out .= $this->printCSS($css, 'page');
+        }
 
-            $out .= $dom->saveHTML($dom->documentElement);
+        foreach ($widgets->loadcss() as $css) {
+            $out .= $this->printCSS($css, 'widget');
         }
 
         return $out;
+    }
+
+    private function printCSS(string $css, string $class = ''): string
+    {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $s = $dom->createElement('link');
+        $s->setAttribute('rel', 'stylesheet');
+        $s->setAttribute('href', $css);
+
+        if (!empty($class)) {
+            $s->setAttribute('class', $class);
+        }
+
+        $dom->appendChild($s);
+
+        return $dom->saveHTML($dom->documentElement);
     }
 
     /**

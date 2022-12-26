@@ -98,8 +98,68 @@ var MovimUtils = {
     openInNew: function (url) {
         window.open(url, '_blank');
     },
-    reload: function (uri) {
-        window.location.replace(uri);
+    reload: function (uri, noHistory) {
+        fetch(uri, {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        }).then(reponse => {
+            reponse.text().then(value => {
+                let page = JSON.parse(value);
+
+                if (noHistory != true) {
+                    history.pushState({soft: true}, '', uri);
+                }
+
+                MovimWebsocket.clear();
+
+                document.head.querySelectorAll('link[rel=stylesheet].widget').forEach(e => e.remove());
+                document.head.querySelectorAll('script[type=\'text/javascript\'].widget').forEach(e => e.remove());
+                document.head.querySelectorAll('script[type=\'text/javascript\'].inline').forEach(e => e.remove());
+
+                document.body.innerHTML = page.commonContent;
+                document.body.innerHTML += page.content;
+                document.title = page.title;
+
+                // CSS
+
+                page.widgetsCSS.forEach(url => {
+                    var css = document.createElement("link");
+                    css.setAttribute('rel', 'stylesheet');
+                    css.href = url;
+                    css.classList.add('widget');
+                    document.head.appendChild(css);
+                });
+
+                // Javascript
+
+                const promises = [];
+                page.widgetsScripts.forEach(script => {
+                    promises.push(new Promise(function (resolve, reject) {
+                        var js = document.createElement("script");
+                        js.src = script;
+                        js.setAttribute('type', 'text/javascript');
+                        js.onload = resolve;
+                        js.onerror = resolve;
+                        js.classList.add('widget');
+                        document.head.appendChild(js);
+                    }));
+                });
+
+                var js = document.createElement("script");
+                js.classList.add('inline');
+                js.innerHTML = page.inlineScripts;
+                document.head.appendChild(js);
+
+                // Events
+
+                Promise.all(promises).then(() => {
+                    MovimWebsocket.launchAttached();
+                    MovimWebsocket.launchInitiated();
+                });
+            });
+        });
     },
     reloadThis: function () {
         window.location.reload();

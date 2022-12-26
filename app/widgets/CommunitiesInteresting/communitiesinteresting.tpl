@@ -8,7 +8,7 @@
     {loop="$communities"}
         <li
             class="block active"
-            onclick="MovimUtils.redirect('{$c->route('community', [$value->server, $value->node])}')"
+            onclick="MovimUtils.reload('{$c->route('community', [$value->server, $value->node])}')"
             title="{$value->server} - {$value->node}"
         >
             {$url = $value->getPhoto('m')}

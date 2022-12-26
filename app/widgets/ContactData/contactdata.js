@@ -1,5 +1,5 @@
 MovimWebsocket.attach(function() {
-    Notification.current('contact');
+    Notif.current('contact');
 
     if (!MovimUtils.isMobile()) {
         var parts = MovimUtils.urlParts();

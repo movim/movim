@@ -10,7 +10,7 @@
                 {if="$post->isMine()"}
                     {if="$post->isEditable()"}
                         <span class="control icon active gray"
-                              onclick="MovimUtils.redirect('{$c->route('publish', [$post->server, $post->node, $post->nodeid])}')"
+                              onclick="MovimUtils.reload('{$c->route('publish', [$post->server, $post->node, $post->nodeid])}')"
                               title="{$c->__('button.edit')}">
                             <i class="material-icons">edit</i>
                         </span>
@@ -93,15 +93,15 @@
             {/if}
             {if="$public"}
                 <span class="control icon active">
-                    <a
+                    <a href="#"
                     {if="$public"}
                         {if="$post->isMicroblog()"}
-                            href="{$c->route('blog', [$post->server, $post->nodeid])}"
+                            onclick="MovimUtils.reload('{$c->route('blog', [$post->server, $post->nodeid])}')"
                         {else}
-                            href="{$c->route('node', [$post->server, $post->node, $post->nodeid])}"
+                            onclick="MovimUtils.reload('{$c->route('node', [$post->server, $post->node, $post->nodeid])}')"
                         {/if}
                     {else}
-                        href="{$c->route('post', [$post->server, $post->node, $post->nodeid])}"
+                        onclick="MovimUtils.reload('{$c->route('post', [$post->server, $post->node, $post->nodeid])}')"
                     {/if}
                     >
                         <i class="material-icons">chevron_right</i>
@@ -130,12 +130,12 @@
                     {/if}
                     {if="!$post->isMicroblog()"}
                         {if="!$public"}
-                        <a href="{$c->route('community', $post->server)}">
+                        <a href="#" onclick="MovimUtils.reload('{$c->route('community', $post->server)}')">
                         {/if}
                             {$post->server}
                         {if="!$public"}</a>{/if} /
                         {if="!$public"}
-                        <a href="{$c->route('community', [$post->server, $post->node])}">
+                        <a href="#" onclick="MovimUtils.reload('{$c->route('community', [$post->server, $post->node])}')">
                         {/if}
                             {$post->node}
                         {if="!$public"}</a>{/if} ·

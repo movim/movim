@@ -24,6 +24,6 @@ var Menu = {
 
 MovimWebsocket.attach(function() {
     Menu.init();
-    Notification_ajaxClear('news');
-    Notification.current('news');
+    Notif_ajaxClear('news');
+    Notif.current('news');
 });

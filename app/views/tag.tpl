@@ -1,7 +1,5 @@
 <?php if (isLogged()) { ?>
     <?php $this->widget('Search');?>
-    <?php $this->widget('Notification');?>
-    <?php $this->widget('Toast');?>
     <?php $this->widget('VisioLink');?>
     <?php $this->widget('Notifications');?>
     <?php $this->widget('SendTo');?>

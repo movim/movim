@@ -1,6 +1,4 @@
-var DesktopNotification = Notification;
-
-var Notification = {
+var Notif = {
     inhibed: false,
     focused: false,
     tab_counter1: 0,
@@ -24,27 +22,27 @@ var Notification = {
     incomingCall: function () {
         if (NOTIFICATION_CALL) {
             // From https://www.zedge.net/ringtone/466d15be-8fa0-32a1-b3dc-62c12a86b6da
-            Notification.audioCall = new Audio('theme/audio/call.ogg');
-            Notification.audioCall.addEventListener('ended', function () {
+            Notif.audioCall = new Audio('theme/audio/call.ogg');
+            Notif.audioCall.addEventListener('ended', function () {
                 this.currentTime = 0;
                 this.play();
             }, false);
-            Notification.audioCall.play();
+            Notif.audioCall.play();
         }
     },
     incomingAnswer: function () {
-        if (Notification.audioCall) {
-            Notification.audioCall.pause();
-            Notification.audioCall.currentTime = 0;
+        if (Notif.audioCall) {
+            Notif.audioCall.pause();
+            Notif.audioCall.currentTime = 0;
         }
     },
     inhibit: function (sec) {
-        Notification.inhibed = true;
+        Notif.inhibed = true;
 
         if (sec == null) sec = 5;
 
         setTimeout(function () {
-            Notification.inhibed = false;
+            Notif.inhibed = false;
         },
             sec * 1000);
     },
@@ -61,10 +59,10 @@ var Notification = {
 
         for (var key in keys) {
             var counter = keys[key];
-            Notification.setTab(key, counter);
+            Notif.setTab(key, counter);
         }
 
-        Notification.displayTab();
+        Notif.displayTab();
     },
     counter: function (key, counter) {
         var counters = document.querySelectorAll('.counter');
@@ -79,25 +77,25 @@ var Notification = {
             }
         }
 
-        Notification.setTab(key, counter);
-        Notification.displayTab();
+        Notif.setTab(key, counter);
+        Notif.displayTab();
     },
     setTab: function (key, counter) {
-        if (Notification.tab_counter1_key == key) {
-            Notification.tab_counter1 = counter;
+        if (Notif.tab_counter1_key == key) {
+            Notif.tab_counter1 = counter;
         }
-        if (Notification.tab_counter2_key == key) {
-            Notification.tab_counter2 = counter;
+        if (Notif.tab_counter2_key == key) {
+            Notif.tab_counter2 = counter;
         }
     },
     setTitle: function (title) {
-        Notification.document_title = title;
-        Notification.displayTab();
+        Notif.document_title = title;
+        Notif.displayTab();
     },
     displayTab: function () {
-        if (Notification.tab_counter1 == 0 && Notification.tab_counter2 == 0) {
+        if (Notif.tab_counter1 == 0 && Notif.tab_counter2 == 0) {
             MovimFavicon.counter(0, 0);
-            document.title = Notification.document_title;
+            document.title = Notif.document_title;
 
             if (typeof window.electron !== 'undefined')
                 window.electron.notification(false);
@@ -106,27 +104,27 @@ var Notification = {
                 window.rambox.setUnreadCount(0);
         } else {
             document.title =
-                Notification.tab_counter1
+                Notif.tab_counter1
                 + '∣'
-                + Notification.tab_counter2
+                + Notif.tab_counter2
                 + ' • '
-                + Notification.document_title;
+                + Notif.document_title;
 
-            MovimFavicon.counter(Notification.tab_counter1, Notification.tab_counter2);
+            MovimFavicon.counter(Notif.tab_counter1, Notif.tab_counter2);
 
             if (typeof window.electron !== 'undefined')
-                window.electron.notification(Notification.tab_counter1 + Notification.tab_counter2);
+                window.electron.notification(Notif.tab_counter1 + Notif.tab_counter2);
 
             if (typeof window.rambox !== 'undefined')
-                window.rambox.setUnreadCount(Notification.tab_counter1 + Notification.tab_counter2);
+                window.rambox.setUnreadCount(Notif.tab_counter1 + Notif.tab_counter2);
         }
     },
     current: function (key) {
-        Notification.notifs_key = key;
-        Notification_ajaxCurrent(Notification.notifs_key);
+        Notif.notifs_key = key;
+        Notif_ajaxCurrent(Notif.notifs_key);
     },
     snackbar: function (html, time) {
-        if (Notification.inhibed == true) return;
+        if (Notif.inhibed == true) return;
 
         target = document.getElementById('snackbar');
 
@@ -135,7 +133,7 @@ var Notification = {
         }
 
         setTimeout(function () {
-            Notification.snackbarClear();
+            Notif.snackbarClear();
         }, time * 1000);
     },
     snackbarClear: function () {
@@ -143,14 +141,14 @@ var Notification = {
         target.innerHTML = '';
     },
     desktop: function (title, body, picture, action, execute, force) {
-        if (!force && (Notification.inhibed == true
-            || Notification.focused
-            || typeof DesktopNotification === 'undefined')) return;
+        if (!force && (Notif.inhibed == true
+            || Notif.focused
+            || typeof Notification === 'undefined')) return;
 
-        if (DesktopNotification.permission === 'granted') {
-            Notification.checkPushSubscription();
+        if (Notification.permission === 'granted') {
+            Notif.checkPushSubscription();
 
-            var notification = new DesktopNotification(
+            var notification = new Notification(
                 title,
                 { icon: picture, body: body, tag: action }
             );
@@ -158,7 +156,7 @@ var Notification = {
             if (action !== null) {
                 notification.onclick = function () {
                     window.location.href = action;
-                    Notification.snackbarClear();
+                    Notif.snackbarClear();
                     this.close();
                 }
             }
@@ -166,25 +164,25 @@ var Notification = {
             if (execute !== null) {
                 notification.onclick = function () {
                     eval(execute);
-                    Notification.snackbarClear();
+                    Notif.snackbarClear();
                     this.close();
                 }
             }
-        } else if (DesktopNotification.permission !== 'denied') {
-            Notification_ajaxRequest();
+        } else if (Notification.permission !== 'denied') {
+            Notif_ajaxRequest();
         }
     },
     request: function () {
-        DesktopNotification.requestPermission().then((permission) => {
+        Notification.requestPermission().then((permission) => {
             (permission == 'granted')
-                ? Notification_ajaxRequestGranted()
-                : Notification_ajaxRequestDenied();
+                ? Notif_ajaxRequestGranted()
+                : Notif_ajaxRequestDenied();
         });
     },
     focus: function () {
-        if (Notification.focused == false) {
-            Notification.focused = true;
-            Notification.current(Notification.notifs_key);
+        if (Notif.focused == false) {
+            Notif.focused = true;
+            Notif.current(Notif.notifs_key);
         }
     },
     checkPushSubscription() {
@@ -199,19 +197,19 @@ var Notification = {
                             userVisibleOnly: true,
                             applicationServerKey: VAPID_PUBLIC_KEY
                         }).then(function (subscription) {
-                            Notification.registerPushSubscription(subscription);
+                            Notif.registerPushSubscription(subscription);
                         }).catch(function (e) {
                             console.error('Unable to subscribe to push', e);
                         });
                     } else {
-                        Notification_ajaxHttpTouchPushSubscription(pushSubscription.endpoint);
+                        Notif_ajaxHttpTouchPushSubscription(pushSubscription.endpoint);
                     }
                 });
             });
         }
     },
     registerPushSubscription(subscription) {
-        Notification_ajaxRegisterPushSubscrition(
+        Notif_ajaxRegisterPushSubscrition(
             subscription.endpoint,
             MovimUtils.arrayBufferToBase64(subscription.getKey('auth')),
             MovimUtils.arrayBufferToBase64(subscription.getKey('p256dh')),
@@ -220,22 +218,22 @@ var Notification = {
     }
 }
 
-Notification.document_title_init = document.title;
+Notif.document_title_init = document.title;
 
 if (typeof MovimWebsocket != 'undefined') {
     MovimWebsocket.attach(function () {
-        Notification.document_title = Notification.document_title_init;
-        Notification.tab_counter1 = Notification.tab_counter2 = 0;
-        Notification_ajaxGet();
-        Notification.current(Notification.notifs_key);
+        Notif.document_title = Notif.document_title_init;
+        Notif.tab_counter1 = Notif.tab_counter2 = 0;
+        Notif_ajaxGet();
+        Notif.current(Notif.notifs_key);
 
         window.addEventListener('blur', function () {
-            Notification.focused = false;
-            Notification_ajaxCurrent('blurred');
+            Notif.focused = false;
+            Notif_ajaxCurrent('blurred');
         });
 
         movimAddFocus(function () {
-            Notification.focus();
+            Notif.focus();
         });
     });
 }

@@ -33,7 +33,7 @@
                     </span>
                 {/if}
                 <span class="control icon active gray"
-                    onclick="MovimUtils.redirect('{$c->route('publish', [$c->getUser()->id, 'urn:xmpp:microblog:0', '', $post->server, $post->node, $post->nodeid])}')">
+                    onclick="MovimUtils.reload('{$c->route('publish', [$c->getUser()->id, 'urn:xmpp:microblog:0', '', $post->server, $post->node, $post->nodeid])}')">
                     <i class="material-icons">post_add</i>
                 </span>
                 <div>
@@ -52,7 +52,7 @@
         {loop="$subscriptions"}
             <li
                 class="block"
-                onclick="MovimUtils.redirect('{$c->route('publish', [$value->server, $value->node, '', $post->server, $post->node, $post->nodeid])}')"
+                onclick="MovimUtils.reload('{$c->route('publish', [$value->server, $value->node, '', $post->server, $post->node, $post->nodeid])}')"
                 title="{$value->server} - {$value->node}"
             >
                 {$url = false}

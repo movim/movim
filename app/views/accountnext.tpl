@@ -1,5 +1,3 @@
-<?php $this->widget('Notification');?>
-<?php $this->widget('Toast');?>
 <main>
     <div>
         <header>

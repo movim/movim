@@ -7,7 +7,7 @@ class Help extends Base
     public function ajaxAddChatroom()
     {
         $this->rpc(
-            'MovimUtils.redirect',
+            'MovimUtils.reload',
             $this->route('chat', ['movim@conference.movim.eu', 'room'])
         );
     }

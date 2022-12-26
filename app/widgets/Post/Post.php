@@ -110,7 +110,7 @@ class Post extends Base
 
             $this->rpc('MovimTpl.fill', '#post_widget.'.cleanupId($p->nodeid), $html);
             $this->rpc('MovimUtils.enhanceArticlesContent');
-            $this->rpc('Notification.setTitle', $this->__('page.post') . ' • ' . $p->title);
+            $this->rpc('Notif.setTitle', $this->__('page.post') . ' • ' . $p->title);
 
             // If the post is a reply but we don't have the original
             if ($p->isReply() && !$p->getReply()) {

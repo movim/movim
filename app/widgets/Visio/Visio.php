@@ -92,13 +92,13 @@ class Visio extends Base
 
         Dialog::fill($view->draw('_visio_dialog'), false, true);
 
-        $this->rpc('Notification.incomingCall');
+        $this->rpc('Notif.incomingCall');
 
         $withVideoParameter = $data['withVideo']
             ? 'true'
             : 'false';
 
-        Notification::append(
+        Notif::append(
             'call',
             $contact->truename,
             $this->__('visio.calling'),
@@ -127,7 +127,7 @@ class Visio extends Base
 
     public function onAccept($packet)
     {
-        $this->rpc('Notification.incomingAnswer');
+        $this->rpc('Notif.incomingAnswer');
         (new Dialog)->ajaxClear();
     }
 
@@ -163,7 +163,7 @@ class Visio extends Base
     public function onTerminate($reason)
     {
         // Stop calling sound and clear the Dialog if there
-        $this->rpc('Notification.incomingAnswer');
+        $this->rpc('Notif.incomingAnswer');
         (new Dialog)->ajaxClear();
 
         $this->rpc('Visio.onTerminate', $reason);

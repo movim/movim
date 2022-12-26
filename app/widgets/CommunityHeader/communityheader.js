@@ -1,5 +1,5 @@
 MovimWebsocket.attach(function() {
-    Notification.current('community');
+    Notif.current('community');
 
     var parts = MovimUtils.urlParts();
     if (parts.params.length > 0) {

@@ -48,7 +48,7 @@ class Presence extends Base
 
     public function start()
     {
-        $this->rpc('Notification.inhibit', 15);
+        $this->rpc('Notif.inhibit', 15);
 
         // Load the BundleCapabilityResolved
         BundleCapabilityResolver::getInstance()->load();

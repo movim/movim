@@ -63,7 +63,7 @@ class Chat extends \Movim\Widget\Base
     public function onPresence($packet)
     {
         if ($packet->content && $jid = $packet->content->jid) {
-            $arr = explode('|', (new Notification)->getCurrent());
+            $arr = explode('|', (new Notif)->getCurrent());
 
             if (isset($arr[1]) && $jid == $arr[1] && !$packet->content->muc) {
                 $this->ajaxGetHeader($jid);
@@ -173,8 +173,8 @@ class Chat extends \Movim\Widget\Base
                     $name = $message->resource;
                 }
 
-                Notification::rpcCall('Notification.incomingMessage');
-                Notification::append(
+                Notif::rpcCall('Notif.incomingMessage');
+                Notif::append(
                     'chat|'.$from,
                     $name,
                     $message->encrypted && is_array($message->omemoheader)
@@ -194,8 +194,8 @@ class Chat extends \Movim\Widget\Base
                 && (($conference->notify == 1 && $message->quoted) // When quoted
                   || $conference->notify == 2) // Always
                 && !$receipt) {
-                Notification::rpcCall('Notification.incomingMessage');
-                Notification::append(
+                Notif::rpcCall('Notif.incomingMessage');
+                Notif::append(
                     'chat|'.$from,
                     ($conference != null && $conference->name)
                         ? $conference->name
@@ -355,7 +355,7 @@ class Chat extends \Movim\Widget\Base
     {
         if ($jid == null) {
             $this->rpc('MovimTpl.hidePanel');
-            $this->rpc('Notification.current', 'chat');
+            $this->rpc('Notif.current', 'chat');
             $this->rpc('MovimUtils.pushState', $this->route('chat'));
             if ($light == false) {
                 $this->rpc('MovimTpl.fill', '#chat_widget', $this->prepareEmpty());
@@ -374,7 +374,7 @@ class Chat extends \Movim\Widget\Base
 
             $this->rpc('Chat.setObservers');
             $this->prepareMessages($jid);
-            $this->rpc('Notification.current', 'chat|'.$jid);
+            $this->rpc('Notif.current', 'chat|'.$jid);
             $this->rpc('Chat.scrollToSeparator');
 
             // OMEMO
@@ -423,7 +423,7 @@ class Chat extends \Movim\Widget\Base
 
             $this->rpc('Chat.setObservers');
             $this->prepareMessages($room, true);
-            $this->rpc('Notification.current', 'chat|'.$room);
+            $this->rpc('Notif.current', 'chat|'.$room);
             $this->rpc('Chat.scrollToSeparator');
 
             // OMEMO
@@ -1346,7 +1346,7 @@ class Chat extends \Movim\Widget\Base
         }
 
         $messageDBSeen = $message->seen;
-        $n = new Notification;
+        $n = new Notif;
 
         if ($message->isMuc()) {
             $message->resolveColor();

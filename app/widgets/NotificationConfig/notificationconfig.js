@@ -1,5 +1,5 @@
 MovimWebsocket.attach(function() {
-    if (DesktopNotification.permission !== 'granted') {
+    if (Notification.permission !== 'granted') {
         NotificationConfig_ajaxHttpRequest();
     }
 

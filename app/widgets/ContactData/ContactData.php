@@ -15,7 +15,7 @@ class ContactData extends Base
     {
         $contact = $packet->content;
         $this->rpc('MovimTpl.fill', '#'.cleanupId($contact->id) . '_contact_data', $this->prepareData($contact->id));
-        $this->rpc('Notification_ajaxGet');
+        $this->rpc('Notif_ajaxGet');
     }
 
     public function prepareData($jid)
@@ -69,7 +69,7 @@ class ContactData extends Base
             $r->setTo(echapJid($jid))->request();
         } else if ($contact) {
             $this->rpc('MovimTpl.fill', '#'.cleanupId($jid) . '_contact_data', $this->prepareData($jid));
-            $this->rpc('Notification_ajaxGet');
+            $this->rpc('Notif_ajaxGet');
         }
     }
 

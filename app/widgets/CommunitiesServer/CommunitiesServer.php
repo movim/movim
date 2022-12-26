@@ -156,7 +156,7 @@ class CommunitiesServer extends \Movim\Widget\Base
         $view->assign('server', $origin);
 
         if (isset($item->name)) {
-            $this->rpc('Notification.setTitle', $this->__('page.communities') . ' • ' . $item->name);
+            $this->rpc('Notif.setTitle', $this->__('page.communities') . ' • ' . $item->name);
         }
 
         return $view->draw('_communitiesserver');

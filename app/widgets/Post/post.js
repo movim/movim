@@ -19,7 +19,7 @@ var Post = {
 };
 
 MovimWebsocket.attach(function() {
-    Notification.current('post');
+    Notif.current('post');
 
     var parts = MovimUtils.urlParts();
 

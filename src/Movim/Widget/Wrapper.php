@@ -202,7 +202,7 @@ class Wrapper
     /**
      * @desc Returns the list of loaded CSS.
      */
-    public function loadcss()
+    public function loadcss(): array
     {
         return $this->css;
     }
@@ -210,7 +210,7 @@ class Wrapper
     /**
      * @desc Returns the list of loaded javascripts.
      */
-    public function loadjs()
+    public function loadjs(): array
     {
         return $this->js;
     }

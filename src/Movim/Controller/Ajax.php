@@ -26,14 +26,26 @@ class Ajax extends Base
     }
 
     /**
-     * Generates the javascript part of the ajax.
+     * Generates the inline javascript part
      */
     public function genJs()
+    {
+        $buffer = '<script type="text/javascript" class="inline">';
+        $buffer .= $this->genJsContent();
+        return $buffer . "</script>\n";
+    }
+
+    /**
+     * Generate the content of the inline javascript
+     */
+    public function genJsContent(): string
     {
         if (empty($this->funclist)) {
             return '';
         }
-        $buffer = '<script type="text/javascript">';
+
+        $buffer = '';
+
         foreach ($this->funclist as $key => $funcdef) {
             $parlist = implode(',', $funcdef['params']);
 
@@ -52,7 +64,7 @@ class Ajax extends Base
             $buffer .=")}";
         }
 
-        return $buffer . "</script>\n";
+        return $buffer;
     }
 
     /**

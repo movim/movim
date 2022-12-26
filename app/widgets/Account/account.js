@@ -37,5 +37,5 @@ MovimWebsocket.attach(function() {
     Account.refreshFingerprints();
     Account_ajaxHttpGetPresences();
 
-    Notification.current('account');
+    Notif.current('account');
 });

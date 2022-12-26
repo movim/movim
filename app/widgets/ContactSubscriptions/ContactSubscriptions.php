@@ -16,7 +16,7 @@ class ContactSubscriptions extends Base
     {
         $jid = $packet->content;
         $this->rpc('MovimTpl.fill', '#'.cleanupId($jid) . '_contact_subscriptions', $this->prepareSubscriptions($jid));
-        $this->rpc('Notification_ajaxGet');
+        $this->rpc('Notif_ajaxGet');
     }
 
     public function prepareSubscriptions($jid)

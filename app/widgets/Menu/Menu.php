@@ -89,7 +89,7 @@ class Menu extends Base
             $parent = $post->parent;
 
             if ($parent) {
-                Notification::append(
+                Notif::append(
                     'comments',
                     ($post->isLike()) ? '❤️ ' .$contact->truename : $post->title,
                     '📝 ' . $parent->title,
@@ -107,7 +107,7 @@ class Menu extends Base
                     : $post->title;
 
                 if (!$post->isMine()) {
-                    Notification::append(
+                    Notif::append(
                         'news',
                         '📝 ' . $contact->truename,
                         $title,
@@ -131,7 +131,7 @@ class Menu extends Base
                     $logo = $info->getPhoto('l');
                 }
 
-                Notification::append(
+                Notif::append(
                     'news',
                     $title,
                     $post->title,

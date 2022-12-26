@@ -209,6 +209,15 @@ var MovimWebsocket = {
         this.attached = [];
     },
 
+    clearInitiated : function() {
+        this.initiated = [];
+    },
+
+    clear: function() {
+        this.clearAttached();
+        this.clearInitiated();
+    },
+
     unregister : function() {
         this.connection.unregister();
     },

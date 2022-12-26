@@ -93,6 +93,7 @@ class Base
         $this->page->addCSS('scrollbar.css');
 
         $this->page->addScript('movim_utils.js');
+        $this->page->addScript('movim_e2ee.js');
         $this->page->addScript('movim_base.js');
         $this->page->addScript('movim_favicon.js');
         $this->page->addScript('movim_electron.js');
@@ -100,6 +101,7 @@ class Base
         $this->page->addScript('movim_emojis_list.js');
         $this->page->addScript('movim_rpc.js');
         $this->page->addScript('movim_tpl.js');
+        $this->page->addScript('libsignal_protocol.js');
 
         if (!$this->public) {
             $this->page->addScript('movim_websocket.js');
@@ -107,7 +109,19 @@ class Base
 
         $content = new Builder;
 
-        if ($this->raw) {
+        $headers = getallheaders();
+
+        $built = $content->build('common');
+        $this->page->setCommonContent($built);
+
+        if ($headers
+         && $headers['Accept'] == 'application/json'
+         && $headers['Content-Type'] == 'application/json') {
+            $built = $content->build($this->name);
+            $this->page->setContent($built);
+
+            echo json_encode($this->page->softBuild('page', $this->public));
+        } elseif ($this->raw) {
             echo $content->build($this->name);
             exit;
         } else {

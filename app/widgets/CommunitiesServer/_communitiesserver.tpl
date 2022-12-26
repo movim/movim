@@ -38,7 +38,7 @@
                 {if="$value->subscription == 'subscribed'"}action{/if}
                 {if="$value->occupants > 0"}condensed{/if}
                 "
-            onclick="MovimUtils.redirect('{$c->route('community', [$value->server, $value->node])}')"
+            onclick="MovimUtils.reload('{$c->route('community', [$value->server, $value->node])}')"
             title="{$value->server} - {$value->node}"
         >
             {if="$value->subscription == 'subscribed'"}

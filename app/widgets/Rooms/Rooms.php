@@ -43,7 +43,7 @@ class Rooms extends Base
         $this->registerEvent('presence_muc_errornotacceptable', 'onNotAcceptable');
         $this->registerEvent('presence_muc_errorserviceunavailable', 'onServiceUnavailable');
 
-        // Bug: In Chat::ajaxGet, Notification.current might come after this event
+        // Bug: In Chat::ajaxGet, Notif.current might come after this event
         // so we don't set the filter
         $this->registerEvent('chat_open_room', 'onChatOpen'/*, 'chat'*/);
     }

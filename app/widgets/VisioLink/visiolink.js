@@ -1,6 +1,6 @@
 var VisioLink = {
     openVisio: function(from, id, withVideo) {
-        Notification.incomingAnswer();
+        Notif.incomingAnswer();
         var idUrl = id ? '/' + id : '';
         var page = withVideo ? 'visio' : 'visioaudio';
 

@@ -52,14 +52,14 @@
                 {if="$url"}
                     <span
                         title="{$c->__('page.communities')} · {$related->name}"
-                        onclick="MovimUtils.redirect('{$c->route('community', [$related->server, $related->node])}')"
+                        onclick="MovimUtils.reload('{$c->route('community', [$related->server, $related->node])}')"
                         class="control icon bubble active small">
                         <img src="{$url}"/>
                     </span>
                 {else}
                     <span
                         title="{$c->__('page.communities')} · {if="$related->name"}{$related->name}{else}{$related->node}{/if}"
-                        onclick="MovimUtils.redirect('{$c->route('community', [$related->server, $related->node])}')"
+                        onclick="MovimUtils.reload('{$c->route('community', [$related->server, $related->node])}')"
                         class="control icon bubble active small color {$related->node|stringToColor}">
                         {$related->node|firstLetterCapitalize}
                     </span>

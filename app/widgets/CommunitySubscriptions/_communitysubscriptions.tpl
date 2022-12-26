@@ -11,7 +11,7 @@
         {loop="$subscriptions"}
             {if="$c->checkNewServer($value)"}
                 <li class="subheader block large"
-                    onclick="MovimUtils.redirect('{$c->route('community', $value->server)}')">
+                    onclick="MovimUtils.reload('{$c->route('community', $value->server)}')">
                     <span class="control icon gray">
                         <i class="material-icons">chevron_right</i>
                     </span>
@@ -22,7 +22,7 @@
             {/if}
             <li
                 class="block"
-                onclick="MovimUtils.redirect('{$c->route('community', [$value->server, $value->node])}')"
+                onclick="MovimUtils.reload('{$c->route('community', [$value->server, $value->node])}')"
                 title="{$value->server} - {$value->node}"
             >
                 {$url = false}
