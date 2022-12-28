@@ -157,6 +157,7 @@ var MovimUtils = {
                 Promise.all(promises).then(() => {
                     MovimWebsocket.launchAttached();
                     MovimWebsocket.launchInitiated();
+                    movimLaunchOnload();
                 });
             });
         });
