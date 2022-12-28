@@ -108,6 +108,4 @@ var Tabs = {
     }
 };
 
-document.addEventListener("DOMContentLoaded", function(event) {
-    Tabs.create();
-});
+MovimWebsocket.initiate(() => Tabs.create());
