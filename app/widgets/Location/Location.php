@@ -11,7 +11,8 @@ class Location extends Base
         $this->addjs('location.js');
         $this->addcss('location.css');
 
-        $this->registerEvent('mylocation', 'onMyLocation');
+        $this->registerEvent('location_publish_handle', 'onMyLocation');
+
     }
 
     public function onMyLocation($packet)

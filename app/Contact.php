@@ -282,7 +282,7 @@ class Contact extends Model
 
     public function getLocationUrlAttribute(): ?string
     {
-        if (in_array('loctimestamp', $this->attributes) && $this->attributes['loctimestamp'] != null
+        if (array_key_exists('loctimestamp', $this->attributes) && $this->attributes['loctimestamp'] != null
          && \Carbon\Carbon::now()->subDay()->timestamp < strtotime($this->attributes['loctimestamp'])
          && $this->attributes['loclatitude'] != null && $this->attributes['loclongitude'] != null) {
             return 'https://www.openstreetmap.org/'.
