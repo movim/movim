@@ -120,6 +120,7 @@ class Base
             $built = $content->build($this->name);
             $this->page->setContent($built);
 
+            header('Content-Type: application/json');
             echo json_encode($this->page->softBuild('page', $this->public));
         } elseif ($this->raw) {
             echo $content->build($this->name);
