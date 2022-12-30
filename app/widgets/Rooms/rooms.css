@@ -30,7 +30,7 @@
 
 #rooms_widget ul.list.rooms {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
 }
 
 #rooms_widget ul.list.rooms li:not(.connected) span.primary {
@@ -58,19 +58,19 @@
 /* Rooms order */
 
 #rooms_widget > ul.list.rooms > li {
-    order: -4;
+    order: 4;
 }
 
 #rooms_widget > ul.list.rooms > li.groupchat {
-    order: -3;
+    order: 3;
 }
 
 #rooms_widget > ul.list.rooms > li.pinned {
-    order: -2;
+    order: 2;
 }
 
 #rooms_widget > ul.list.rooms > li.unread {
-    order: -1;
+    order: 1;
 }
 
 #rooms_widget > ul.list.rooms > li.connected {
@@ -78,13 +78,13 @@
 }
 
 #rooms_widget > ul.list.rooms > li.connected.groupchat {
-    order: 1;
+    order: -1;
 }
 
 #rooms_widget > ul.list.rooms > li.connected.pinned {
-    order: 2;
+    order: -2;
 }
 
 #rooms_widget > ul.list.rooms > li.connected.unread {
-    order: 3;
+    order: -3;
 }
