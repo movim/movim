@@ -113,7 +113,6 @@ var MovimUtils = {
                 }
 
                 if (typeof MovimWebsocket != 'undefined') {
-                    console.log(typeof MovimWebsocket);
                     MovimWebsocket.clear();
                 }
 
