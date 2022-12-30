@@ -112,7 +112,10 @@ var MovimUtils = {
                     history.pushState({soft: true}, '', uri);
                 }
 
-                MovimWebsocket.clear();
+                if (typeof MovimWebsocket != 'undefined') {
+                    console.log(typeof MovimWebsocket);
+                    MovimWebsocket.clear();
+                }
 
                 document.head.querySelectorAll('link[rel=stylesheet].widget').forEach(e => e.remove());
                 document.head.querySelectorAll('script[type=\'text/javascript\'].widget').forEach(e => e.remove());
@@ -155,8 +158,11 @@ var MovimUtils = {
                 // Events
 
                 Promise.all(promises).then(() => {
-                    MovimWebsocket.launchAttached();
-                    MovimWebsocket.launchInitiated();
+                    if (typeof MovimWebsocket != 'undefined') {
+                        MovimWebsocket.launchAttached();
+                        MovimWebsocket.launchInitiated();
+                    }
+
                     movimLaunchOnload();
                 });
             });
