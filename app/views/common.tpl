@@ -38,3 +38,4 @@
 <?php $this->widget('Preview');?>
 <?php $this->widget('Notif');?>
 <?php $this->widget('Toast');?>
+<div id="endcommon" class="hide"></div>

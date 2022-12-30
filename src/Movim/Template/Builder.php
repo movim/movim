@@ -100,7 +100,6 @@ class Builder
         $page->inlineScripts = $ajaxer->genJsContent();
 
         $page->content = $this->content;
-        $page->commonContent = $this->commonContent;
 
         return $page;
     }

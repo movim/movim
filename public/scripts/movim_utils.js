@@ -117,8 +117,8 @@ var MovimUtils = {
                 document.head.querySelectorAll('link[rel=stylesheet].widget').forEach(e => e.remove());
                 document.head.querySelectorAll('script[type=\'text/javascript\'].widget').forEach(e => e.remove());
                 document.head.querySelectorAll('script[type=\'text/javascript\'].inline').forEach(e => e.remove());
+                document.querySelectorAll('#endcommon ~ *').forEach(e => e.remove());
 
-                document.body.innerHTML = page.commonContent;
                 document.body.innerHTML += page.content;
                 document.title = page.title;
 
