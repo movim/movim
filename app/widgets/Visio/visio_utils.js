@@ -135,6 +135,16 @@ var VisioUtils = {
         }
     },
 
+    toggleDtmf: function() {
+        document.querySelector('#visio #dtmf').classList.toggle('hide');
+    },
+
+    insertDtmf: function(s) {
+        var rtc = Visio.pc.getSenders().find(rtc => rtc.track && rtc.track.kind == 'audio');
+        if (!rtc) return;
+        rtc.dtmf.insertDTMF(s);
+    },
+
     toggleVideo: function() {
         var button = document.querySelector('#toggle_video i');
         var rtc = Visio.pc.getSenders().find(rtc => rtc.track && rtc.track.kind == 'video');

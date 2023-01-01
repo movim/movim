@@ -8,6 +8,11 @@
                 <span id="toggle_audio" class="divided control icon color transparent active" onclick="VisioUtils.toggleAudio()">
                     <i class="material-icons">mic_off</i>
                 </span>
+                {if="!$withvideo"}
+                    <span id="toggle_dtmf" class="control icon color transparent active" onclick="VisioUtils.toggleDtmf()">
+                        <i class="material-icons">dialpad</i>
+                    </span>
+                {/if}
                 {if="$withvideo"}
                     <span id="toggle_video" class="control icon color transparent active" onclick="VisioUtils.toggleVideo()">
                         <i class="material-icons">videocam_off</i>
@@ -59,6 +64,30 @@
         <video id="remote_video" autoplay poster="/theme/img/empty.png"></video>
         <video id="screen_sharing_video" autoplay muted poster="/theme/img/empty.png"></video>
         <video id="video" autoplay muted poster="/theme/img/empty.png"></video>
+    {/if}
+    {if="!$withvideo"}
+        <div id="dtmf" class="hide">
+            <div>
+                <button class="flat button" type="button" onclick="VisioUtils.insertDtmf('1')">1</button>
+                <button class="flat button" type="button" onclick="VisioUtils.insertDtmf('2')">2</button>
+                <button class="flat button" type="button" onclick="VisioUtils.insertDtmf('3')">3</button>
+            </div>
+            <div>
+                <button class="flat button" type="button" onclick="VisioUtils.insertDtmf('4')">4</button>
+                <button class="flat button" type="button" onclick="VisioUtils.insertDtmf('5')">5</button>
+                <button class="flat button" type="button" onclick="VisioUtils.insertDtmf('6')">6</button>
+            </div>
+            <div>
+                <button class="flat button" type="button" onclick="VisioUtils.insertDtmf('7')">7</button>
+                <button class="flat button" type="button" onclick="VisioUtils.insertDtmf('8')">8</button>
+                <button class="flat button" type="button" onclick="VisioUtils.insertDtmf('9')">9</button>
+            </div>
+            <div>
+                <button class="flat button" type="button" onclick="VisioUtils.insertDtmf('*')">*</button>
+                <button class="flat button" type="button" onclick="VisioUtils.insertDtmf('0')">0</button>
+                <button class="flat button" type="button" onclick="VisioUtils.insertDtmf('#')">#</button>
+            </div>
+        </div>
     {/if}
 
     <span id="remote_state">

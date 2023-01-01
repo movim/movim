@@ -135,6 +135,12 @@ body {
     opacity: 0;
 }
 
+#visio #dtmf {
+    font-size: 3em;
+    margin-top: calc(50vh - 8em);
+    text-align: center;
+}
+
 @-webkit-keyframes Rotate {
     0% {-webkit-transform:rotate(0deg);}
     4% {-webkit-transform:rotate(-22.5deg);}
