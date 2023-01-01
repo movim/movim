@@ -16,6 +16,25 @@ body {
     display: none;
 }
 
+#visio #dtmf {
+    top: calc(50% - 15rem);
+    position: absolute;
+    width: 100%;
+    text-align: center;
+}
+
+#visio #dtmf p.dtmf {
+    max-width: 10rem;
+    display: block;
+    margin: 0 auto;
+    margin-top: 2rem;
+    direction: rtl;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    mask-image: linear-gradient(to left, black calc(100% - 2rem), transparent);
+}
+
 #visio .infos {
     color: white;
     position: absolute;
@@ -23,6 +42,11 @@ body {
     width: 100%;
     z-index: -1;
     text-align: center;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#visio #dtmf:not(.hide) ~ .infos {
+    opacity: 0;
 }
 
 #visio #main {

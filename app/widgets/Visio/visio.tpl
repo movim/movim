@@ -5,6 +5,11 @@
                 <span id="toggle_fullscreen" class="control icon color transparent active" onclick="VisioUtils.toggleFullScreen()">
                     <i class="material-icons">fullscreen</i>
                 </span>
+                {if="!$withvideo"}
+                    <span id="toggle_dtmf" class="control icon color transparent active" onclick="VisioUtils.toggleDtmf()">
+                        <i class="material-icons">dialpad</i>
+                    </span>
+                {/if}
                 <span id="toggle_audio" class="divided control icon color transparent active" onclick="VisioUtils.toggleAudio()">
                     <i class="material-icons">mic_off</i>
                 </span>
@@ -30,6 +35,33 @@
         </ul>
     </header>
     <select id="visio_source"></select>
+
+    {if="!$withvideo"}
+        <div id="dtmf" class="hide">
+            <div>
+                <button class="flat button color gray" type="button" onclick="VisioUtils.insertDtmf('1')">1</button>
+                <button class="flat button color gray" type="button" onclick="VisioUtils.insertDtmf('2')">2</button>
+                <button class="flat button color gray" type="button" onclick="VisioUtils.insertDtmf('3')">3</button>
+            </div>
+            <div>
+                <button class="flat button color gray" type="button" onclick="VisioUtils.insertDtmf('4')">4</button>
+                <button class="flat button color gray" type="button" onclick="VisioUtils.insertDtmf('5')">5</button>
+                <button class="flat button color gray" type="button" onclick="VisioUtils.insertDtmf('6')">6</button>
+            </div>
+            <div>
+                <button class="flat button color gray" type="button" onclick="VisioUtils.insertDtmf('7')">7</button>
+                <button class="flat button color gray" type="button" onclick="VisioUtils.insertDtmf('8')">8</button>
+                <button class="flat button color gray" type="button" onclick="VisioUtils.insertDtmf('9')">9</button>
+            </div>
+            <div>
+                <button class="flat button color gray" type="button" onclick="VisioUtils.insertDtmf('*')">🞳</button>
+                <button class="flat button color gray" type="button" onclick="VisioUtils.insertDtmf('0')">0</button>
+                <button class="flat button color gray" type="button" onclick="VisioUtils.insertDtmf('#')">#</button>
+            </div>
+
+            <p class="dtmf"></p>
+        </div>
+    {/if}
 
     <ul class="list infos" class="list middle">
         {$url = $contact->getPhoto('l')}
