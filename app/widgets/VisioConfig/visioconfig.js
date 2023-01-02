@@ -140,7 +140,7 @@ var VisioConfig = {
 
     stopMicrophone: function() {
         VisioConfig.audioStream.getTracks().forEach(function(track) {
-            if (track.readyState == 'live' && track.kind === 'audio') {
+            if (track.kind === 'audio') {
                 track.stop();
             }
         });
