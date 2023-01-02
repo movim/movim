@@ -157,13 +157,12 @@ var MovimUtils = {
                 // Events
 
                 Promise.all(promises).then(() => {
-                    movimLaunchOnload();
-
                     if (typeof MovimWebsocket != 'undefined') {
                         MovimWebsocket.launchAttached();
                         MovimWebsocket.launchInitiated();
                     }
 
+                    movimLaunchOnload();
                 });
             });
         });

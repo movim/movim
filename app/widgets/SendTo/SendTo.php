@@ -22,7 +22,7 @@ class SendTo extends Base
             $shared->url = $post->openlink->href;
             $shared->text = $post->getSummary();
 
-            $this->rpc('navigator.share', $shared);
+            $this->rpc('SendTo.shareOs', $shared);
         }
     }
 
