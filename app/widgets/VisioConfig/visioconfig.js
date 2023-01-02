@@ -1,6 +1,7 @@
 var VisioConfig = {
     micMaxLevel: 0,
     audioContext: null,
+    audioStream: null,
 
     init: function () {
         navigator.mediaDevices.enumerateDevices().then(devices => VisioConfig.gotDevices(devices));
@@ -77,6 +78,8 @@ var VisioConfig = {
         navigator.mediaDevices.getUserMedia({
             audio: audioContraint
         }).then(function (stream) {
+            VisioConfig.audioStream = stream;
+
             if (VisioConfig.audioContext) {
                 VisioConfig.audioContext.close();
             }
@@ -135,6 +138,14 @@ var VisioConfig = {
         });
     },
 
+    stopMicrophone: function() {
+        VisioConfig.audioStream.getTracks().forEach(function(track) {
+            if (track.readyState == 'live' && track.kind === 'audio') {
+                track.stop();
+            }
+        });
+    },
+
     testCamera: function() {
         if (localStorage.defaultCamera) {
             videoConstraint = {
@@ -175,4 +186,10 @@ var VisioConfig = {
 
 MovimWebsocket.attach(() => {
     VisioConfig.init();
+});
+
+movimAddOnload(function() {
+    if (VisioConfig.audioStream) {
+        VisioConfig.stopMicrophone();
+    }
 });
