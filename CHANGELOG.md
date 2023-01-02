@@ -33,6 +33,7 @@ v0.21 (trunk)
  * PEP based avatars now have preference over vcard-temp based ones
  * Allow articles to be shared in Communities through a new Share button
  * Add a soft reload feature for a smooth navigation
+ * Share articles outside Movim in the PWA
 
 v0.20
 ---------------------------
