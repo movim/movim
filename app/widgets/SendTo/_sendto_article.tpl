@@ -12,6 +12,22 @@
         </ul>
     {/if}
 
+    {if="$osshare && $openlink"}
+        <ul class="list middle">
+            <li>
+                <span class="primary icon bubble gray">
+                    <i class="material-icons">share</i>
+                </span>
+                <span class="control icon active gray divided" onclick="SendTo_ajaxOsShare({$post->id})">
+                    <i class="material-icons">ios_share</i>
+                </span>
+                <div>
+                    <p class="line normal">{$c->__('sendto.os_share')}</p>
+                </div>
+            </li>
+        </ul>
+    {/if}
+
     <ul class="list">
         {if="$c->getUser()->hasPubsub()"}
             <li class="subheader">
@@ -32,7 +48,7 @@
                         <i class="material-icons">person</i>
                     </span>
                 {/if}
-                <span class="control icon active gray"
+                <span class="control icon active gray divided"
                     onclick="MovimUtils.reload('{$c->route('publish', [$c->getUser()->id, 'urn:xmpp:microblog:0', '', $post->server, $post->node, $post->nodeid])}')">
                     <i class="material-icons">post_add</i>
                 </span>
@@ -52,7 +68,6 @@
         {loop="$subscriptions"}
             <li
                 class="block"
-                onclick="MovimUtils.reload('{$c->route('publish', [$value->server, $value->node, '', $post->server, $post->node, $post->nodeid])}')"
                 title="{$value->server} - {$value->node}"
             >
                 {$url = false}
@@ -70,7 +85,7 @@
                         {$value->node|firstLetterCapitalize}
                     </span>
                 {/if}
-                <span class="control icon active gray" onclick="">
+                <span class="control icon active gray divided" onclick="MovimUtils.reload('{$c->route('publish', [$value->server, $value->node, '', $post->server, $post->node, $post->nodeid])}')">
                     <i class="material-icons">post_add</i>
                 </span>
                 <div>

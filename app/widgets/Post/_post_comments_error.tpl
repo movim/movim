@@ -1,9 +1,9 @@
 {if="$c->getUser()->hasPubsub()"}
 <ul class="list active flex">
     {if="isset($post)"}
-        <li  class="block" onclick="SendTo_ajaxShareArticle('{$post->getRef()}')">
+        <li  class="block" onclick="SendTo.shareArticle('{$post->getRef()}')">
             <span class="primary icon gray">
-                <i class="material-icons">repeat</i>
+                <i class="material-icons">share</i>
             </span>
             <div>
                 <p class="normal">

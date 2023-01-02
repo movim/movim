@@ -9,9 +9,24 @@ class SendTo extends Base
     public function load()
     {
         $this->addcss('sendto.css');
+        $this->addjs('sendto.js');
     }
 
-    public function ajaxShareArticle($link)
+    public function ajaxOsShare(int $postId)
+    {
+        $post = \App\Post::where('id', $postId)->first();
+
+        if ($post && $post->openlink) {
+            $shared = new stdClass;
+            $shared->title = $post->title;
+            $shared->url = $post->openlink->href;
+            $shared->text = $post->getSummary();
+
+            $this->rpc('navigator.share', $shared);
+        }
+    }
+
+    public function ajaxShareArticle($link, $osShare = false)
     {
         $view = $this->tpl();
 
@@ -20,6 +35,7 @@ class SendTo extends Base
         $view->assign('post', null);
         $view->assign('card', null);
         $view->assign('openlink', false);
+        $view->assign('osshare', $osShare);
 
         $this->resolveUriInView($uri, $view);
 

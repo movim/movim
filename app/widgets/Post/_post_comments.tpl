@@ -154,10 +154,10 @@
                 <a
                     title="{$c->__('button.share')}"
                     class="button flat gray"
-                    onclick="SendTo_ajaxShareArticle('{$post->getRef()}')"
+                    onclick="SendTo.shareArticle('{$post->getRef()}')"
                     href="#"
                 >
-                    <i class="material-icons">repeat</i> {$c->__('button.share')}
+                    <i class="material-icons">share</i> {$c->__('button.share')}
                 </a>
                 <a
                     title="{$c->__('button.send_to')}"
