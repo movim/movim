@@ -34,6 +34,7 @@ v0.21 (trunk)
  * Allow articles to be shared in Communities through a new Share button
  * Add a soft reload feature for a smooth navigation
  * Share articles outside Movim in the PWA
+ * Add DTMF support by @singpolyma (#1063)
 
 v0.20
 ---------------------------
