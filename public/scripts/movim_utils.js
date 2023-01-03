@@ -102,6 +102,10 @@ var MovimUtils = {
         // Rewrite the URL for a soft reload
         requestUri = uri.slice(0, uri.indexOf('?')) + '?soft/' + uri.slice(uri.indexOf('?') + 1);
 
+        let main = document.querySelector('main');
+        main.classList.add('loading');
+        main.classList.remove('finished');
+
         fetch(requestUri, {
             headers: {
                 'Accept': 'application/json',
@@ -109,6 +113,9 @@ var MovimUtils = {
             }
         }).then(reponse => {
             reponse.text().then(value => {
+                main.classList.add('finished');
+                main.classList.remove('loading');
+
                 let page = JSON.parse(value);
 
                 if (noHistory != true) {

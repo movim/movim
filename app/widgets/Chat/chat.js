@@ -1484,7 +1484,8 @@ var Chat = {
     touchEvents: function() {
         var chat = document.querySelector('#chat_widget');
         clientWidth = Math.abs(document.body.clientWidth);
-if (!chat) return;
+
+        if (!chat) return;
 
         chat.addEventListener('touchstart', function(event) {
             Chat.startX = event.targetTouches[0].pageX;

@@ -138,6 +138,31 @@ main {
     flex-direction: row-reverse;
 }
 
+main:before {
+    position: absolute;
+    display: block;
+    background-color: rgb(var(--movim-main));
+    width: 0;
+    height: 0.25rem;
+    content: '';
+    top: -0.25rem;
+    transition: width 2s ease-in-out, opacity 0.2s ease-in-out;
+    opacity: 0;
+    top: 0;
+    left: 0;
+}
+
+main.loading:before {
+    width: 100%;
+    opacity: 1;
+}
+
+main.finished:before {
+    transition: width 1s cubic-bezier(.68,0,0,1), opacity 1s ease-in-out;
+    width: 100%;
+    opacity: 0;
+}
+
 @media print {
     main {
         display: block;
