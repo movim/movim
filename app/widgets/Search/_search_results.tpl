@@ -5,7 +5,7 @@
 {/if}
 
 {if="isset($tags) && $tags->isNotEmpty()"}
-<ul class="list active flex">
+<ul class="list active flex large">
     <li class="subheader block large">
         <div>
             <p>{$c->__('search.tags')}</p>
