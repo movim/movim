@@ -112,7 +112,6 @@ var MovimUtils = {
             }
         }).then(reponse => {
             reponse.text().then(value => {
-                document.body.classList.add('finished');
                 document.body.classList.remove('loading');
 
                 let page = JSON.parse(value);
@@ -174,6 +173,8 @@ var MovimUtils = {
                     movimLaunchOnload();
                 });
             });
+        }).catch(error => {
+            document.body.classList.add('finished');
         });
     },
     reloadThis: function () {
