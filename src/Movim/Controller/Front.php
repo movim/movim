@@ -23,20 +23,6 @@ class Front extends Base
         }
     }
 
-    public function loadController($request)
-    {
-        $className = ucfirst($request).'Controller';
-        if (file_exists(APP_PATH . 'controllers/'.$className.'.php')) {
-            $controllerPath = APP_PATH . 'controllers/'.$className.'.php';
-        } else {
-            \Utils::error("Requested controller $className doesn't exist");
-            exit;
-        }
-
-        require_once $controllerPath;
-        return new $className();
-    }
-
     /**
      * Here we load, instanciate and execute the correct controller
      */
@@ -110,4 +96,19 @@ class Front extends Base
             \Utils::info('Could not call the load method on the current controller');
         }
     }
+
+    public function loadController($request)
+    {
+        $className = ucfirst($request).'Controller';
+        if (file_exists(APP_PATH . 'controllers/'.$className.'.php')) {
+            $controllerPath = APP_PATH . 'controllers/'.$className.'.php';
+        } else {
+            \Utils::error("Requested controller $className doesn't exist");
+            exit;
+        }
+
+        require_once $controllerPath;
+        return new $className();
+    }
+
 }

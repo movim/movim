@@ -99,7 +99,10 @@ var MovimUtils = {
         window.open(url, '_blank');
     },
     reload: function (uri, noHistory) {
-        fetch(uri, {
+        // Rewrite the URL for a soft reload
+        requestUri = uri.slice(0, uri.indexOf('?')) + '?soft/' + uri.slice(uri.indexOf('?') + 1);
+
+        fetch(requestUri, {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'

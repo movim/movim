@@ -63,6 +63,15 @@ class Route extends Base
         unset($_GET[$uri]);
         $request = explode('/', $uri);
 
+        /**
+         * For all the pages loaded using soft reload we remove the first element of the
+         * array. This ensure to have a different URL between the normal load and soft load
+         * and therefore prevent the browser to load the wrong page
+         */
+        if ($request[0] == 'soft') {
+            array_shift($request);
+        }
+
         $this->_page = $page ?? array_shift($request);
 
         if (isset($this->_routes[$this->_page])) {
