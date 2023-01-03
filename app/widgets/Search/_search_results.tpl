@@ -12,7 +12,7 @@
         </div>
     </li>
     {loop="$tags"}
-        <li class="block" onclick="MovimUtils.reload('{$c->route('tag', $value)}')">
+        <li class="block" onclick="MovimUtils.reload('{$c->route('tag', $value)}'); Drawer.clear();">
             <span class="primary icon gray">
                 #
             </span>
@@ -40,7 +40,7 @@
     </li>
     {loop="$communities"}
     <li
-        onclick="MovimUtils.reload('{$c->route('community', [$value->server, $value->node])}')"
+        onclick="MovimUtils.reload('{$c->route('community', [$value->server, $value->node])}'); Drawer.clear();"
         title="{$value->server} - {$value->node}"
     >
             {$url = $value->getPhoto('m')}

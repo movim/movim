@@ -21,7 +21,7 @@
                         status {$value->presence->presencekey}
                     {/if}"
                     style="background-image: url({$url});"
-                    onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}')">
+                    onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}'); Drawer.clear();">
                 </span>
             {else}
                 <span class="primary icon bubble color active {$value->jid|stringToColor}
@@ -31,7 +31,7 @@
                     {else}
                         status {$value->presence->presencekey}
                     {/if}"
-                    onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}')"
+                    onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}'); Drawer.clear();"
                 >
                     <i class="material-icons">person</i>
                 </span>
