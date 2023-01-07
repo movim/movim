@@ -284,7 +284,7 @@ class Message extends Model
                     $this->parentmid = $parentMessage->mid;
                 }
 
-                if ($stanza->fallback && $stanza->fallback->attributes()->xmlns == 'urn:xmpp:feature-fallback:0'
+                if ($stanza->fallback && $stanza->fallback->attributes()->xmlns == 'urn:xmpp:fallback:0'
                  && $stanza->fallback->attributes()->for == 'urn:xmpp:reply:0') {
                     $this->body = mb_substr(
                         htmlspecialchars_decode($this->body, ENT_XML1),
