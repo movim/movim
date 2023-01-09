@@ -35,6 +35,45 @@ class Avatar
         $data->setAttribute('xmlns', 'urn:xmpp:avatar:data');
         $item->appendChild($data);
 
+        $publishOption = $dom->createElement('publish-option');
+        $x = $dom->createElement('x');
+        $x->setAttribute('xmlns', 'jabber:x:data');
+        $x->setAttribute('type', 'submit');
+        $publishOption->appendChild($x);
+
+        $field = $dom->createElement('field');
+        $field->setAttribute('var', 'FORM_TYPE');
+        $field->setAttribute('type', 'hidden');
+        $field->appendChild($dom->createElement('value', 'http://jabber.org/protocol/pubsub#publish-options'));
+        $x->appendChild($field);
+
+        $field = $dom->createElement('field');
+        $field->setAttribute('var', 'pubsub#persist_items');
+        $field->appendChild($dom->createElement('value', 'true'));
+        $x->appendChild($field);
+
+        $field = $dom->createElement('field');
+        $field->setAttribute('var', 'pubsub#send_last_published_item');
+        $field->appendChild($dom->createElement('value', 'on_sub_and_presence'));
+        $x->appendChild($field);
+
+        $field = $dom->createElement('field');
+        $field->setAttribute('var', 'pubsub#deliver_payloads');
+        $field->appendChild($dom->createElement('value', 'true'));
+        $x->appendChild($field);
+
+        $field = $dom->createElement('field');
+        $field->setAttribute('var', 'pubsub#max_items');
+        $field->appendChild($dom->createElement('value', 1));
+        $x->appendChild($field);
+
+        $field = $dom->createElement('field');
+        $field->setAttribute('var', 'pubsub#access_model');
+        $field->appendChild($dom->createElement('value', 'presence'));
+        $x->appendChild($field);
+
+        $pubsub->appendChild($publishOption);
+
         $xml = \Moxl\API::iqWrapper($pubsub, $to, 'set');
         \Moxl\API::request($xml);
     }

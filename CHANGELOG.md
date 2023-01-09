@@ -35,6 +35,7 @@ v0.21 (trunk)
  * Add a soft reload feature for a smooth navigation
  * Share articles outside Movim in the PWA
  * Add DTMF support by @singpolyma (#1063)
+ * Remove the Init widget and replace it with publish-option forms (related to #1130)
 
 v0.20
 ---------------------------

@@ -96,6 +96,11 @@ class Bookmark2
         $x->appendChild($field);
 
         $field = $dom->createElement('field');
+        $field->setAttribute('var', 'pubsub#max_items');
+        $field->appendChild($dom->createElement('value', 'max'));
+        $x->appendChild($field);
+
+        $field = $dom->createElement('field');
         $field->setAttribute('var', 'pubsub#pubsub#notify_retract');
         $field->appendChild($dom->createElement('value', 'true'));
         $x->appendChild($field);

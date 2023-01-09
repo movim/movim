@@ -67,6 +67,11 @@ class Location
         $x->appendChild($field);
 
         $field = $dom->createElement('field');
+        $field->setAttribute('var', 'pubsub#max_items');
+        $field->appendChild($dom->createElement('value', 1));
+        $x->appendChild($field);
+
+        $field = $dom->createElement('field');
         $field->setAttribute('var', 'pubsub#access_model');
         $field->appendChild($dom->createElement('value', 'roster'));
         $x->appendChild($field);

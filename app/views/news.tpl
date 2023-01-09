@@ -1,4 +1,3 @@
-<?php $this->widget('Init');?>
 <?php $this->widget('VisioLink');?>
 <?php $this->widget('Upload');?>
 <?php $this->widget('Search');?>
