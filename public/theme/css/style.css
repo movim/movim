@@ -75,6 +75,7 @@ body > div.dialog:not(:empty) ~ nav,
 body > nav.active ~ main {
     opacity: 0.3;
     pointer-events: none;
+    filter: blur(0.15rem);
 }
 
 body > nav.active ~ main {
