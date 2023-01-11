@@ -29,7 +29,7 @@
             <p class="center all">
                 {if="$info->description != null && trim($info->description) != ''"}
                     {autoescape="off"}
-                        {$info->description|trim|nl2br|addEmojis}
+                        {$info->description|trim|nl2br|addEmojis|addUrls|addHashtagsLinks}
                     {/autoescape}
                     <br />
                 {/if}

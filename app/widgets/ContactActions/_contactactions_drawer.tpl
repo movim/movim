@@ -78,7 +78,7 @@
                 <p class="all">
                     {if="$contact->description != null && trim($contact->description) != ''"}
                         {autoescape="off"}
-                            {$contact->description|trim|nl2br|addEmojis}
+                            {$contact->description|trim|nl2br|addEmojis|addUrls|addHashtagsLinks}
                         {/autoescape}
                         <br /><br />
                     {/if}

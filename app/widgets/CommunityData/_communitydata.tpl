@@ -29,7 +29,7 @@
                             </span>
                         {/if}
                         {if="$related->description"}
-                            {$related->description}
+                            {$related->description|trim|nl2br|addEmojis}
                         {else}
                             {$related->server}
                         {/if}

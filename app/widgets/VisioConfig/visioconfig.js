@@ -140,6 +140,8 @@ var VisioConfig = {
     },
 
     stopMicrophone: function () {
+        if (!VisioConfig.audioStream) return;
+
         VisioConfig.audioStream.getTracks().forEach(function (track) {
             if (track.kind === 'audio') {
                 track.stop();
@@ -148,6 +150,8 @@ var VisioConfig = {
     },
 
     stopCamera: function () {
+        if (!VisioConfig.videoStream) return;
+
         VisioConfig.videoStream.getTracks().forEach(function (track) {
             if (track.kind === 'video') {
                 track.stop();
