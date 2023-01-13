@@ -33,17 +33,24 @@
             <ul class="list fill thin">
                 <li>
                     <span class="primary icon small"></span>
-                    <div class="level">
-                        <span class="color green"></span>
-                        <span class="color green"></span>
-                        <span class="color green"></span>
-                        <span class="color green"></span>
-                        <span class="color green"></span>
-                        <span class="color yellow"></span>
-                        <span class="color yellow"></span>
-                        <span class="color yellow"></span>
-                        <span class="color yellow"></span>
-                        <span class="color red"></span>
+                    <div id="mic_preview">
+                        <div class="level disabled">
+                            <span class="disabled color green"></span>
+                            <span class="disabled color green"></span>
+                            <span class="disabled color green"></span>
+                            <span class="disabled color green"></span>
+                            <span class="disabled color green"></span>
+                            <span class="disabled color yellow"></span>
+                            <span class="disabled color yellow"></span>
+                            <span class="disabled color yellow"></span>
+                            <span class="disabled color yellow"></span>
+                            <span class="disabled color red"></span>
+                        </div>
+                        <p class="center">
+                            <span class="button flat gray" onclick="VisioConfig.testMicrophone()">
+                                <i class="material-icons">mic</i> {$c->__('publish.preview')}
+                            </span>
+                        </p>
                     </div>
                 </li>
                 <li id="no_mic_sound" class="disabled">
@@ -81,7 +88,9 @@
                             <li>
                                 <div>
                                     <p class="line center normal">
-                                        <span class="button small flat gray" onclick="VisioConfig.testCamera();"><i class="material-icons">videocam</i> {$c->__('publish.preview')}</span>
+                                        <span class="button flat gray" onclick="VisioConfig.testCamera();">
+                                            <i class="material-icons">videocam</i> {$c->__('publish.preview')}
+                                        </span>
                                     </p>
                                 </div>
                             </li>

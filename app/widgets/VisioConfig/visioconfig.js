@@ -55,11 +55,11 @@ var VisioConfig = {
         if (cameraFound == false) {
             localStorage.defaultCamera = cameraSelect.value;
         }
-
-        VisioConfig.testMicrophone();
     },
 
     testMicrophone: function () {
+        document.querySelector('#mic_preview .level').classList.remove('disabled');
+
         document.querySelectorAll('.level span').forEach(span => {
             span.classList.add('disabled');
         });
