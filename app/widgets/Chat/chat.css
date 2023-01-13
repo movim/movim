@@ -441,8 +441,12 @@ main:not(.enabled) #chat_widget {
     padding: 0 1rem;
 }
 
-#chat_widget .bubble div.parent {
+#chat_widget .bubble div div.parent {
     margin: 0.25rem 0;
+}
+
+#chat_widget .bubble div + div div.parent {
+    margin-top: 1rem;
 }
 
 #chat_widget div.parent[data-parent-id]:hover {

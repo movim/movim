@@ -1314,7 +1314,7 @@ class Chat extends \Movim\Widget\Base
 
             if ($parent !== '') {
                 $message->parentQuote = $parent;
-                $message->body = $remains;
+                $message->body = trim($remains);
             }
         }
 
