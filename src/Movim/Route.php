@@ -74,9 +74,9 @@ class Route extends Base
 
         $this->_page = $page ?? array_shift($request);
 
-        if (isset($this->_routes[$this->_page])) {
-            $route = $this->_routes[$this->_page];
-        }
+        $route = isset($this->_routes[$this->_page])
+            ? $this->_routes[$this->_page]
+            : null;
 
         if (count($request)
             && is_array($route)
