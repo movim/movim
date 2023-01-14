@@ -1,6 +1,9 @@
 <header>
     {if="$mode == 'blog'"}
-        {$banner = $contact->getBanner()}
+        {$banner = null}
+        {if="$contact"}
+            {$banner = $contact->getBanner()}
+        {/if}
         <header class="big top color {$contact->jid|stringToColor}"
             style="
                     background-image:
