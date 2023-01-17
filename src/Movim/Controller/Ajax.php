@@ -3,6 +3,7 @@
  * SPDX-FileCopyrightText: 2010 Jaussoin Timothée
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
+
 namespace Movim\Controller;
 
 class Ajax extends Base
@@ -50,7 +51,7 @@ class Ajax extends Base
             $parlist = implode(',', $funcdef['params']);
 
             $buffer .= 'function ' . $funcdef['object'] . '_'
-                . $funcdef['funcname'] . "(${parlist}){";
+                . $funcdef['funcname'] . "(" . $parlist . "){";
 
             $function = "MWSs('";
             if ($funcdef['http'] === 1) $function = " return MWSa('";
@@ -60,8 +61,8 @@ class Ajax extends Base
                 $function .
                 $funcdef['object'] . "','" .
                 $funcdef['funcname'] . "'" .
-                (!empty($funcdef['params']) ? ",[${parlist}]" : '');
-            $buffer .=")}";
+                (!empty($funcdef['params']) ? ",[" . $parlist . "]" : '');
+            $buffer .= ")}";
         }
 
         return $buffer;
@@ -86,7 +87,7 @@ class Ajax extends Base
         if (preg_match('#^ajaxHttp#', $funcname)) $http = 1;
         if (preg_match('#^ajaxHttpDaemon#', $funcname)) $http = 2;
 
-        $this->funclist[$widget.$funcname] = [
+        $this->funclist[$widget . $funcname] = [
             'object' => $widget,
             'funcname' => $funcname,
             'params' => $params,

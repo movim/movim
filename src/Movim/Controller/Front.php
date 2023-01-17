@@ -61,6 +61,9 @@ class Front extends Base
                 'sid' => SESSION_ID,
                 'json' => rawurlencode(file_get_contents('php://input'))
             ]);
+
+            $rpc = new RPC;
+            $rpc->writeJSON();
             return;
         }
 

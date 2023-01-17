@@ -2,54 +2,73 @@
  * Short functions
  */
 function MWSa(widget, func, params) {
-    return MovimRPC.ajax(widget, func, params, false);
+    return MovimRPC.fetch(widget, func, params, false);
 }
 
 function MWSad(widget, func, params) {
-    return MovimRPC.ajax(widget, func, params, true);
+    return MovimRPC.fetch(widget, func, params, true);
 }
 
 var MovimRPC = {
-    ajax : function(widget, func, params, daemon) {
-        let xhr = new XMLHttpRequest;
+    fetchWithTimeout: async function (resource, options = {}) {
+        const { timeout = 5000 } = options;
 
+        const controller = new AbortController();
+
+        const id = setTimeout(() => controller.abort(), timeout);
+        const response = await fetch(resource, {
+            ...options,
+            signal: controller.signal
+        });
+        clearTimeout(id);
+
+        return response;
+    },
+
+    fetch: function (widget, func, params, daemon) {
         var body = {
-            'w' : widget,
-            'f' : func
+            'w': widget,
+            'f': func
         };
 
         if (params) body.p = params;
 
         var date = new Date();
 
-        xhr.open('POST', daemon ? '?ajaxd': '?ajax');
-        xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
-        xhr.setRequestHeader('Movim-Offset', date.getTimezoneOffset());
-        xhr.send(JSON.stringify(
-            {'func' : 'message', 'b' : body }
-        ));
+        let request = MovimRPC.fetchWithTimeout(BASE_URI + daemon ? '?ajaxd' : '?ajax', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Movim-Offset': date.getTimezoneOffset()
+            },
+            body: JSON.stringify(
+                { 'func': 'message', 'b': body }
+            )
+        });
 
         if (!daemon) {
-            xhr.addEventListener('readystatechange', function(e) {
-                if (this.readyState == 4 && this.status >= 200 && this.status < 400) {
-                    var obj = JSON.parse(this.response);
-                    for (funcall of obj) {
-                        MovimRPC.handle(funcall);
-                    }
-                } else if (this.readyState == 4 && this.status == 403) {
+            request.then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else if (response.status == 403) {
                     MovimUtils.disconnect();
+                }
+            }).then(data => {
+                for (funcall of data) {
+                    MovimRPC.handle(funcall);
                 }
             });
         }
 
-        return xhr;
+        return request;
     },
 
-    handle : function(funcall) {
+    handle: function (funcall) {
         if (funcall.func != null && (typeof window[funcall.func] == 'function')) {
             try {
                 window[funcall.func].apply(null, funcall.p);
-            } catch(err) {
+            } catch (err) {
                 console.log("Error caught: "
                     + err.toString()
                     + " - "
@@ -59,10 +78,10 @@ var MovimRPC = {
                 );
             }
         } else if (funcall.func != null) {
-            var funcs  = funcall.func.split('.');
+            var funcs = funcall.func.split('.');
             var called = funcs[0];
             if (typeof window[called] == 'object'
-            && typeof window[funcs[0]][funcs[1]] != 'undefined') {
+                && typeof window[funcs[0]][funcs[1]] != 'undefined') {
                 window[funcs[0]][funcs[1]].apply(null, funcall.p);
             }
         }

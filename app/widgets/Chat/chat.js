@@ -1,5 +1,5 @@
 var Chat = {
-    left : null,
+    left: null,
     right: null,
     date: null,
     separator: null,
@@ -43,12 +43,10 @@ var Chat = {
     // Keep track of replaced messages hash when prepending (loading history)
     replacedPrependHash: [],
 
-    autocomplete: function(event, jid)
-    {
+    autocomplete: function (event, jid) {
         RoomsUtils_ajaxMucUsersAutocomplete(jid);
     },
-    onAutocomplete: function(usersList)
-    {
+    onAutocomplete: function (usersList) {
         Chat.autocompleteList = usersList;
         usersList = Object.values(usersList);
 
@@ -63,8 +61,8 @@ var Chat = {
             Chat.lastAutocomplete = usersList[0];
             Chat.searchAutocomplete = null;
         } else if (typeof Chat.lastAutocomplete === 'string'
-        && Chat.lastAutocomplete.toLowerCase() == last
-        && Chat.searchAutocomplete == null) {
+            && Chat.lastAutocomplete.toLowerCase() == last
+            && Chat.searchAutocomplete == null) {
             var index = (usersList.indexOf(Chat.lastAutocomplete) == usersList.length - 1)
                 ? -1
                 : usersList.indexOf(Chat.lastAutocomplete);
@@ -77,8 +75,8 @@ var Chat = {
             Chat.searchAutocomplete = null;
         } else {
             // Searching for nicknames starting with
-            if (Chat.lastAutocomplete ==  null
-            || last != Chat.lastAutocomplete.toLowerCase()) {
+            if (Chat.lastAutocomplete == null
+                || last != Chat.lastAutocomplete.toLowerCase()) {
                 Chat.searchAutocomplete = last;
                 Chat.lastAutocomplete = null;
             }
@@ -96,8 +94,7 @@ var Chat = {
             }
         }
     },
-    quoteMUC: function(nickname, add)
-    {
+    quoteMUC: function (nickname, add) {
         var textarea = Chat.getTextarea();
         if (add) {
             if (textarea.value.search(nickname) === -1) {
@@ -109,8 +106,7 @@ var Chat = {
 
         textarea.focus();
     },
-    insertAtCursor: function(textToInsert)
-    {
+    insertAtCursor: function (textToInsert) {
         textarea = Chat.getTextarea();
 
         const value = textarea.value;
@@ -123,8 +119,7 @@ var Chat = {
         textarea.focus();
         Chat.toggleAction();
     },
-    get: function(jid, light)
-    {
+    get: function (jid, light) {
         if (jid != undefined) {
             MovimTpl.showPanel();
             var chat = document.querySelector('#chat_widget');
@@ -133,16 +128,14 @@ var Chat = {
 
         Chat_ajaxGet(jid, light);
     },
-    getRoom: function(jid)
-    {
+    getRoom: function (jid) {
         MovimTpl.showPanel();
         var chat = document.querySelector('#chat_widget');
         chat.innerHTML = '';
 
         Chat_ajaxGetRoom(jid);
     },
-    sendMessage: function()
-    {
+    sendMessage: function () {
         var textarea = Chat.getTextarea();
         var text = textarea.value;
 
@@ -166,36 +159,19 @@ var Chat = {
         if (!Chat.sent) {
             Chat.enableSending();
 
-            let xhr;
-            let timeout = 10000;
-            let onTimeout = function() {
-                Chat.failedMessage();
-            };
-
-            let onReadyStateChange = function() {
-                if (this.readyState == 4) {
-                    if (this.status >= 200 && this.status < 400) {
-                        Chat.sentMessage();
-                    }
-
-                    if (this.status >= 400 || this.status == 0) {
-                        Chat.failedMessage();
-                    }
-                }
-            };
-
             if (Chat.edit) {
                 Chat.edit = false;
 
                 if (text == '') {
                     Chat.disableSending();
                 } else {
-                    xhr = Chat_ajaxHttpDaemonCorrect(jid, textarea.dataset.mid, text);
+                    let correct = Chat_ajaxHttpDaemonCorrect(jid, textarea.dataset.mid, text);
+                    correct.then(e => {
+                        Chat.sentMessage();
+                    }).catch(e => {
+                        Chat.failedMessage();
+                    });
                 }
-
-                xhr.timeout = timeout;
-                xhr.ontimeout = onTimeout;
-                xhr.onreadystatechange = onReadyStateChange;
 
                 delete textarea.dataset.mid;
             } else {
@@ -238,36 +214,36 @@ var Chat = {
                             tempId = omemoheader.tempId = Math.random().toString(36).substring(2, 15);
                             Chat.tempMessages[tempId] = text;
 
-                            xhr = Chat_ajaxHttpDaemonSendMessage(jid, tempId, isMuc, null, replyMid, mucReceipts, omemoheader);
-
-                            xhr.timeout = timeout;
-                            xhr.ontimeout = onTimeout;
-                            xhr.onreadystatechange = onReadyStateChange;
+                            let request = Chat_ajaxHttpDaemonSendMessage(jid, tempId, isMuc, null, replyMid, mucReceipts, omemoheader);
+                            request.then(e => {
+                                Chat.sentMessage();
+                            }).catch(e => {
+                                Chat.failedMessage();
+                            });
                         });
                     }
                 } else {
-                    xhr = Chat_ajaxHttpDaemonSendMessage(jid, text, isMuc, null, replyMid, mucReceipts);
-                    xhr.timeout = timeout;
-                    xhr.ontimeout = onTimeout;
-                    xhr.onreadystatechange = onReadyStateChange;
+                    let request = Chat_ajaxHttpDaemonSendMessage(jid, text, isMuc, null, replyMid, mucReceipts);
+                    request.then(e => {
+                        Chat.sentMessage();
+                    }).catch(e => {
+                        Chat.failedMessage();
+                    });
                 }
             }
         }
     },
-    sentId: function(tempId, id)
-    {
+    sentId: function (tempId, id) {
         if (Chat.tempMessages[tempId]) {
             ChatOmemoDB.putMessage(id, Chat.tempMessages[tempId]);
             delete Chat.tempMessages[tempId];
         }
     },
-    setGroupChatMembers: function(members)
-    {
+    setGroupChatMembers: function (members) {
         Chat.groupChatMembers = members;
     },
 
-    setBundlesIds: function(jid, bundlesIds)
-    {
+    setBundlesIds: function (jid, bundlesIds) {
         var store = new ChatOmemoStorage();
 
         let build = false;
@@ -310,16 +286,14 @@ var Chat = {
         });
     },
 
-    setOmemoState: function(state)
-    {
+    setOmemoState: function (state) {
         let textarea = Chat.getTextarea();
         if (textarea) {
             textarea.dataset.encryptedstate = state;
         }
     },
 
-    enableSending: function()
-    {
+    enableSending: function () {
         Chat.sent = true;
         var send = document.querySelector('.chat_box');
         if (send) {
@@ -327,23 +301,20 @@ var Chat = {
             send.classList.remove('finished');
         }
     },
-    disableSending: function()
-    {
+    disableSending: function () {
         Chat.sent = false;
         var send = document.querySelector('.chat_box');
         if (send) {
             send.classList.remove('sending');
         }
     },
-    finishedSending: function()
-    {
+    finishedSending: function () {
         Chat.sent = false;
         var send = document.querySelector('.chat_box');
         if (send) send.classList.add('finished');
     },
 
-    sentMessage: function()
-    {
+    sentMessage: function () {
         Chat.disableSending();
 
         var textarea = Chat.getTextarea();
@@ -351,20 +322,17 @@ var Chat = {
         Chat.clearReplace();
         Chat.toggleAction();
     },
-    failedMessage: function()
-    {
+    failedMessage: function () {
         Toast.send(Chat.delivery_error);
         Chat.disableSending();
     },
-    clearReplace: function()
-    {
+    clearReplace: function () {
         Chat.edit = false;
         var textarea = Chat.getTextarea();
         textarea.value = localStorage.getItem(textarea.dataset.jid + '_message');
         MovimUtils.textareaAutoheight(textarea);
     },
-    editPrevious: function()
-    {
+    editPrevious: function () {
         var textarea = Chat.getTextarea();
 
         if (textarea.value != '') {
@@ -385,31 +353,28 @@ var Chat = {
             Chat_ajaxEdit(mid);
         }
     },*/
-    resolveMessage: function(mid)
-    {
+    resolveMessage: function (mid) {
         ChatActions_ajaxHttpResolveMessage(mid);
     },
-    refreshMessage: function(mid)
-    {
+    refreshMessage: function (mid) {
         Chat_ajaxRefreshMessage(mid);
     },
-    focus: function()
-    {
+    focus: function () {
         Chat.sent = false;
         Chat.composing = false;
         Chat.clearReplace();
         Chat.toggleAction();
 
         var textarea = Chat.getTextarea();
-        textarea.onkeydown = function(event) {
+        textarea.onkeydown = function (event) {
             if ((event.keyCode == 37 && Chat.tryPreviousEmoji())
-             || (event.keyCode == 39 && Chat.tryNextEmoji())) {
+                || (event.keyCode == 39 && Chat.tryNextEmoji())) {
                 event.preventDefault();
                 return;
             }
 
             if (this.dataset.muc
-            && event.keyCode == 9) {
+                && event.keyCode == 9) {
                 event.preventDefault();
                 if (Chat.autocompleteList == null) {
                     Chat.autocomplete(event, this.dataset.jid);
@@ -422,13 +387,13 @@ var Chat = {
             if (event.keyCode == 38 && !Chat.isEncrypted()) {
                 Chat.editPrevious();
             } else if (event.keyCode == 40
-            && (this.value == '' || Chat.edit == true)) {
+                && (this.value == '' || Chat.edit == true)) {
                 localStorage.removeItem(textarea.dataset.jid + '_message');
                 Chat.clearReplace();
             }
         };
 
-        textarea.onkeypress = function(event) {
+        textarea.onkeypress = function (event) {
             if (event.keyCode == 13) {
                 // An emoji was selected
                 var emoji = document.querySelector('.chat_box .emojis img.selected');
@@ -439,7 +404,7 @@ var Chat = {
                 }
 
                 if ((isTouch && !event.shiftKey)
-                || (!isTouch && event.shiftKey)) {
+                    || (!isTouch && event.shiftKey)) {
                     return;
                 }
 
@@ -454,12 +419,11 @@ var Chat = {
             }
         };
 
-        textarea.oninput = function() {
+        textarea.oninput = function () {
             localStorage.setItem(this.dataset.jid + '_message', this.value);
 
             // A little timeout to not spam the server with composing states
-            setTimeout(function()
-            {
+            setTimeout(function () {
                 if (Chat.since + 3000 < new Date().getTime()) {
                     Chat.composing = false;
                 }
@@ -471,7 +435,7 @@ var Chat = {
             Chat.toggleAction();
         }
 
-        textarea.addEventListener('paste', function(e) {
+        textarea.addEventListener('paste', function (e) {
             let url;
             let clipboardData = e.clipboardData || window.clipboardData;
             let pastedData = clipboardData.getData('Text');
@@ -483,21 +447,17 @@ var Chat = {
             }
 
             if ((url.protocol === "http:" || url.protocol === "https:")
-            && textarea.value == '' && !Chat.isEncrypted()) {
+                && textarea.value == '' && !Chat.isEncrypted()) {
                 Chat.enableSending();
 
-                xhr = ChatActions_ajaxHttpResolveUrl(pastedData);
-                xhr.timeout = 5000;
-                xhr.ontimeout = function() {
+                let resolve = ChatActions_ajaxHttpResolveUrl(pastedData);
+                resolve.then(e => {
                     Chat.disableSending();
                     Chat.finishedSending();
-                };
-                xhr.onreadystatechange = function() {
-                    if (this.readyState == 4) {
-                        Chat.disableSending();
-                        Chat.finishedSending();
-                    }
-                };
+                }).catch(e => {
+                    Chat.disableSending();
+                    Chat.finishedSending();
+                });
             }
 
             Chat.toggleAction();
@@ -509,8 +469,7 @@ var Chat = {
 
         Chat.autocompleteList = null;
     },
-    checkEmojis: function(value, reaction, noColon)
-    {
+    checkEmojis: function (value, reaction, noColon) {
         value = value.toLowerCase();
 
         listSelector = reaction
@@ -526,36 +485,35 @@ var Chat = {
             var first = true;
 
             Object.keys(emojis).filter(key => key.indexOf(
-                    value.substr(value.lastIndexOf(':') + 1)
-                ) > -1)
-            .filter(key => key.indexOf('type') == -1)
-            .slice(0, 40)
-            .forEach(found => {
-                var img = document.createElement('img');
-                img.setAttribute('src','theme/img/emojis/svg/' + emojis[found].c + '.svg');
-                img.classList.add('emoji');
-                if (reaction) img.classList.add('large');
+                value.substr(value.lastIndexOf(':') + 1)
+            ) > -1)
+                .filter(key => key.indexOf('type') == -1)
+                .slice(0, 40)
+                .forEach(found => {
+                    var img = document.createElement('img');
+                    img.setAttribute('src', 'theme/img/emojis/svg/' + emojis[found].c + '.svg');
+                    img.classList.add('emoji');
+                    if (reaction) img.classList.add('large');
 
-                if (first) {
-                    img.classList.add('selected');
-                    first = false;
-                }
+                    if (first) {
+                        img.classList.add('selected');
+                        first = false;
+                    }
 
-                img.title = ':' + found + ':';
-                img.dataset.emoji = emojis[found].e;
+                    img.title = ':' + found + ':';
+                    img.dataset.emoji = emojis[found].e;
 
-                if (!reaction) {
-                    img.addEventListener('click', e => {
-                        Chat.selectEmoji(e.target);
-                    });
-                }
+                    if (!reaction) {
+                        img.addEventListener('click', e => {
+                            Chat.selectEmoji(e.target);
+                        });
+                    }
 
-                emojisList.appendChild(img);
-            });
+                    emojisList.appendChild(img);
+                });
         }
     },
-    selectEmoji: function(emoji)
-    {
+    selectEmoji: function (emoji) {
         var emojisList = document.querySelector('.chat_box .emojis');
         var textarea = Chat.getTextarea();
 
@@ -563,14 +521,13 @@ var Chat = {
         emojisList.innerHTML = '';
         Chat.insertAtCursor(emoji.dataset.emoji + ' ');
     },
-    tryNextEmoji: function()
-    {
+    tryNextEmoji: function () {
         var currentEmoji = document.querySelector('.chat_box .emojis img.selected');
 
         if (currentEmoji) {
             currentEmoji.classList.remove('selected');
 
-            if(currentEmoji.nextSibling) {
+            if (currentEmoji.nextSibling) {
                 currentEmoji.nextSibling.classList.add('selected');
             } else {
                 document.querySelector('.chat_box .emojis img:first-child').classList.add('selected');
@@ -581,8 +538,7 @@ var Chat = {
 
         return false;
     },
-    tryPreviousEmoji: function()
-    {
+    tryPreviousEmoji: function () {
         var currentEmoji = document.querySelector('.chat_box .emojis img.selected');
 
         if (currentEmoji) {
@@ -599,8 +555,7 @@ var Chat = {
 
         return false;
     },
-    setTextarea: function(value, mid)
-    {
+    setTextarea: function (value, mid) {
         Chat.edit = true;
         var textarea = Chat.getTextarea();
         textarea.value = value;
@@ -613,14 +568,12 @@ var Chat = {
         MovimUtils.textareaAutoheight(textarea);
         textarea.focus();
     },
-    setConfig(pagination, delivery_error, action_impossible_encrypted_error)
-    {
+    setConfig(pagination, delivery_error, action_impossible_encrypted_error) {
         Chat.pagination = pagination;
         Chat.delivery_error = delivery_error;
         Chat.action_impossible_encrypted_error = action_impossible_encrypted_error;
     },
-    setGeneralElements(date, separator)
-    {
+    setGeneralElements(date, separator) {
         var div = document.createElement('div');
 
         Chat.currentDateTime = null;
@@ -630,8 +583,7 @@ var Chat = {
         div.innerHTML = separator;
         Chat.separator = div.firstChild.cloneNode(true);
     },
-    setSpecificElements : function(left, right)
-    {
+    setSpecificElements: function (left, right) {
         var div = document.createElement('div');
 
         Chat.currentDateTime = null;
@@ -641,14 +593,13 @@ var Chat = {
         div.innerHTML = right;
         Chat.right = div.firstChild.cloneNode(true);
     },
-    setScrollBehaviour : function()
-    {
+    setScrollBehaviour: function () {
         var discussion = Chat.getDiscussion();
         if (discussion == null) return;
 
-        discussion.onscroll = function() {
+        discussion.onscroll = function () {
             if (this.scrollTop < 1
-            && discussion.querySelectorAll('ul li div.bubble p').length >= Chat.pagination && Chat.currentDateTime) {
+                && discussion.querySelectorAll('ul li div.bubble p').length >= Chat.pagination && Chat.currentDateTime) {
                 Chat_ajaxGetHistory(
                     Chat.getTextarea().dataset.jid,
                     Chat.currentDateTime,
@@ -661,8 +612,7 @@ var Chat = {
 
         Chat.setScroll();
     },
-    setScroll : function ()
-    {
+    setScroll: function () {
         var discussion = Chat.getDiscussion();
         if (discussion == null) return;
 
@@ -671,12 +621,10 @@ var Chat = {
 
         Chat.scrollToggleButton();
     },
-    isScrolled : function ()
-    {
-        return Chat.lastHeight -5 <= Chat.lastScroll;
+    isScrolled: function () {
+        return Chat.lastHeight - 5 <= Chat.lastScroll;
     },
-    scrollRestore : function ()
-    {
+    scrollRestore: function () {
         var discussion = Chat.getDiscussion();
         if (!discussion) return;
 
@@ -686,15 +634,13 @@ var Chat = {
             discussion.scrollTop = Chat.lastScroll - discussion.clientHeight;
         }
     },
-    scrollTotally : function ()
-    {
+    scrollTotally: function () {
         var discussion = Chat.getDiscussion();
         if (discussion == null) return;
 
         discussion.scrollTop = discussion.scrollHeight;
     },
-    setObservers : function ()
-    {
+    setObservers: function () {
         var options = {
             root: Chat.getDiscussion(),
             rootMargin: '0px',
@@ -710,8 +656,7 @@ var Chat = {
             });
         }, options);
     },
-    scrollToSeparator : function ()
-    {
+    scrollToSeparator: function () {
         var discussion = Chat.getDiscussion();
         if (discussion == null) return;
 
@@ -721,8 +666,7 @@ var Chat = {
             Chat.setScroll();
         }
     },
-    scrollToggleButton : function ()
-    {
+    scrollToggleButton: function () {
         var discussion = Chat.getDiscussion();
         if (discussion == null) return;
 
@@ -734,31 +678,28 @@ var Chat = {
             button.classList.add('show');
         }
     },
-    removeSeparator: function()
-    {
+    removeSeparator: function () {
         var separator = Chat.getDiscussion().querySelector('li.separator');
         if (separator) separator.remove();
     },
-    setReactionButtonBehaviour : function()
-    {
+    setReactionButtonBehaviour: function () {
         let reactions = document.querySelectorAll('#chat_widget span.reaction');
         let i = 0;
 
         while (i < reactions.length) {
-            reactions[i].onclick = function() {
+            reactions[i].onclick = function () {
                 Stickers_ajaxReaction(this.dataset.mid);
             }
 
             i++;
         }
     },
-    setParentScrollBehaviour : function()
-    {
+    setParentScrollBehaviour: function () {
         let toParents = document.querySelectorAll('#chat_widget div.parent');
         let i = 0;
 
         while (i < toParents.length) {
-            toParents[i].onclick = function() {
+            toParents[i].onclick = function () {
                 var parentMsg = document.getElementById('id' + this.dataset.parentId);
                 if (!parentMsg) {
                     parentMsg = document.getElementById('id' + this.dataset.parentReplaceId)
@@ -776,19 +717,17 @@ var Chat = {
             i++;
         }
     },
-    setVideoObserverBehaviour : function()
-    {
+    setVideoObserverBehaviour: function () {
         document.querySelectorAll('.file video').forEach((video) => {
             Chat.discussionObserver.observe(video);
         });
     },
-    setReplyButtonBehaviour : function()
-    {
+    setReplyButtonBehaviour: function () {
         let replies = document.querySelectorAll('#chat_widget span.reply');
         let i = 0;
 
         while (i < replies.length) {
-            replies[i].onclick = function() {
+            replies[i].onclick = function () {
                 if (this.dataset.mid) {
                     Chat_ajaxHttpDaemonReply(this.dataset.mid);
                 }
@@ -797,21 +736,19 @@ var Chat = {
             i++;
         }
     },
-    setActionsButtonBehaviour : function()
-    {
+    setActionsButtonBehaviour: function () {
         let actions = document.querySelectorAll('#chat_widget .contained:not(.muc) span.actions');
         let i = 0;
 
         while (i < actions.length) {
-            actions[i].onclick = function() {
+            actions[i].onclick = function () {
                 ChatActions_ajaxShowMessageDialog(this.dataset.mid);
             }
 
             i++;
         }
     },
-    checkDiscussion : function(page)
-    {
+    checkDiscussion: function (page) {
         for (var firstKey in page) break;
         if (page[firstKey] == null) return false;
 
@@ -824,12 +761,11 @@ var Chat = {
             : firstMessage.jidfrom;
 
         if (document.getElementById(MovimUtils.cleanupId(contactJid) + '-discussion')
-        == null) return false;
+            == null) return false;
 
         return true;
     },
-    appendMessagesWrapper : async function(page, prepend)
-    {
+    appendMessagesWrapper: async function (page, prepend) {
         var discussion = Chat.getDiscussion();
 
         if (page && Chat.checkDiscussion(page)) {
@@ -850,15 +786,15 @@ var Chat = {
                 await ChatOmemoDB.loadMessagesByIds(ids);
             }
 
-            for(date in page) {
+            for (date in page) {
                 let messageDateTime = page[date][Object.keys(page[date])[0]].published;
 
                 /**
                  * We might have old messages reacted pushed by the server
                  */
                 if (Chat.currentDateTime
-                && Chat.currentDateTime > messageDateTime
-                && !prepend) {
+                    && Chat.currentDateTime > messageDateTime
+                    && !prepend) {
                     return;
                 }
 
@@ -866,7 +802,7 @@ var Chat = {
                     Chat.appendDate(date, prepend);
                 }
 
-                for(speakertime in page[date]) {
+                for (speakertime in page[date]) {
                     if (!Chat.currentDateTime) {
                         Chat.currentDateTime = page[date][speakertime].published;
                     }
@@ -913,7 +849,7 @@ var Chat = {
         Chat.setParentScrollBehaviour();
         Chat.setVideoObserverBehaviour();
     },
-    appendMessage : function(idjidtime, data, prepend) {
+    appendMessage: function (idjidtime, data, prepend) {
         if (data.body === null) return;
 
         var bubble = null,
@@ -931,7 +867,7 @@ var Chat = {
         } else {
             refBubble = document.querySelector("#chat_widget .contained section > ul > li:last-child");
             var stack = document.querySelectorAll("[data-bubble='" + jidtime + "']");
-            msgStack = stack[stack.length-1];
+            msgStack = stack[stack.length - 1];
         }
 
         if (msgStack != null
@@ -947,7 +883,7 @@ var Chat = {
             mergeMsg = true;
         } else {
             if (data.user_id == data.jidfrom
-            || data.mine) {
+                || data.mine) {
                 bubble = Chat.right.cloneNode(true);
                 if (data.mine) {
                     id = data.jidfrom;
@@ -989,7 +925,7 @@ var Chat = {
 
         // If there is already a msg in this bubble, create another div (next msg or replacement)
         if (bubble.querySelector('div.bubble p')
-        && bubble.querySelector('div.bubble p').innerHTML != '') {
+            && bubble.querySelector('div.bubble p').innerHTML != '') {
             msg = document.createElement('div');
             span = document.createElement('span');
             span.className = 'info';
@@ -1060,7 +996,7 @@ var Chat = {
         } else {
             // OMEMO handling
             if (data.omemoheader) {
-                p.innerHTML = data.omemoheader.payload.substr(0, data.omemoheader.payload.length/2);
+                p.innerHTML = data.omemoheader.payload.substr(0, data.omemoheader.payload.length / 2);
                 ChatOmemo.decrypt(data).then(plaintext => {
                     let refreshP = document.querySelector('#id' + data.id + ' p.encrypted');
                     if (refreshP) {
@@ -1135,7 +1071,7 @@ var Chat = {
         msg.appendChild(reactions);
 
         if ((isMuc && data.stanzaid)
-        || (!isMuc && data.messageid)) {
+            || (!isMuc && data.messageid)) {
             reaction.dataset.mid = data.mid;
             msg.appendChild(reaction);
 
@@ -1225,7 +1161,7 @@ var Chat = {
             }
         }
     },
-    appendDate: function(date, prepend) {
+    appendDate: function (date, prepend) {
         var list = document.querySelector('#chat_widget > div ul');
 
         if (document.getElementById(MovimUtils.cleanupId(date)) && !prepend) return;
@@ -1240,21 +1176,21 @@ var Chat = {
         if (prepend) {
             // If the date was already displayed we remove it
             if (dates.length > 0
-            && dates[0].dataset.value == date) {
+                && dates[0].dataset.value == date) {
                 dates[0].remove();
             }
 
             list.insertBefore(dateNode, list.firstChild);
         } else {
             if (dates.length > 0
-            && dates[dates.length-1].dataset.value == date) {
+                && dates[dates.length - 1].dataset.value == date) {
                 return;
             }
 
             list.appendChild(dateNode);
         }
     },
-    insertSeparator: function(counter) {
+    insertSeparator: function (counter) {
         separatorNode = Chat.separator.cloneNode(true);
 
         var list = document.querySelector('#chat_widget > div ul');
@@ -1268,7 +1204,7 @@ var Chat = {
             list.insertBefore(separatorNode, p.parentNode.parentNode.parentNode);
         }
     },
-    getStickerHtml: function(sticker) {
+    getStickerHtml: function (sticker) {
         var img = document.createElement('img');
         if (sticker.url) {
             if (sticker.thumb) {
@@ -1277,7 +1213,7 @@ var Chat = {
                 img.setAttribute('src', sticker.url);
             }
 
-            if (sticker.width)  img.setAttribute('width', sticker.width);
+            if (sticker.width) img.setAttribute('width', sticker.width);
             if (sticker.height) {
                 img.setAttribute('height', sticker.height);
             } else {
@@ -1296,7 +1232,7 @@ var Chat = {
 
         return img;
     },
-    getCardHtml: function(card) {
+    getCardHtml: function (card) {
         var ul = document.createElement('ul');
         ul.setAttribute('class', 'card list middle noanim shadow');
         ul.innerHTML = card;
@@ -1307,7 +1243,7 @@ var Chat = {
 
         return ul;
     },
-    getFileHtml: function(file, sticker) {
+    getFileHtml: function (file, sticker) {
         var div = document.createElement('div');
         div.setAttribute('class', 'file');
 
@@ -1372,26 +1308,26 @@ var Chat = {
 
         return div;
     },
-    getEncryptedIcoHtml: function() {
+    getEncryptedIcoHtml: function () {
         var i = document.createElement('i');
         i.className = 'material-icons';
         i.innerText = 'lock';
         return i;
     },
-    getEditedIcoHtml: function() {
+    getEditedIcoHtml: function () {
         var i = document.createElement('i');
         i.className = 'material-icons';
         i.innerText = 'edit';
         return i;
     },
-    getDeliveredIcoHtml: function(delivered) {
+    getDeliveredIcoHtml: function (delivered) {
         var i = document.createElement('i');
         i.className = 'material-icons';
         i.innerText = 'check';
         i.setAttribute('title', delivered);
         return i;
     },
-    getSimpleParentHtml: function(parentQuote) {
+    getSimpleParentHtml: function (parentQuote) {
         var div = document.createElement('div');
         div.classList.add('parent');
 
@@ -1401,7 +1337,7 @@ var Chat = {
 
         return div;
     },
-    getParentHtml: function(parent) {
+    getParentHtml: function (parent) {
         var div = document.createElement('div');
         div.classList.add('parent');
         div.dataset.parentReplaceId = parent.replaceid
@@ -1423,7 +1359,7 @@ var Chat = {
         div.appendChild(p);
 
         if (parent.omemoheader) {
-            p.innerHTML = parent.omemoheader.payload.substr(0, parent.omemoheader.payload.length/2);
+            p.innerHTML = parent.omemoheader.payload.substr(0, parent.omemoheader.payload.length / 2);
             ChatOmemo.decrypt(parent).then(plaintext => {
                 let refreshP = document.querySelector('#parent' + parent.id + ' p');
                 if (refreshP) {
@@ -1440,14 +1376,14 @@ var Chat = {
 
         return div;
     },
-    getDisplayedIcoHtml: function(displayed) {
+    getDisplayedIcoHtml: function (displayed) {
         var i = document.createElement('i');
         i.className = 'material-icons';
         i.innerText = 'done_all';
         i.setAttribute('title', displayed);
         return i;
     },
-    toggleAction: function() {
+    toggleAction: function () {
         var chatBox = document.querySelector('#chat_widget .chat_box');
 
         if (chatBox) {
@@ -1459,8 +1395,7 @@ var Chat = {
             }
         }
     },
-    toggleAttach: function(forceDisabled)
-    {
+    toggleAttach: function (forceDisabled) {
         var attach = document.querySelector('#chat_widget .chat_box span.attach');
 
         if (attach) {
@@ -1471,29 +1406,29 @@ var Chat = {
             }
         }
     },
-    getTextarea: function() {
+    getTextarea: function () {
         var textarea = document.querySelector('#chat_textarea');
         if (textarea) return textarea;
     },
-    isEncrypted: function() {
+    isEncrypted: function () {
         return (Chat.getTextarea() && Chat.getTextarea().dataset.encryptedstate == 'yes');
     },
-    getDiscussion: function() {
+    getDiscussion: function () {
         return document.querySelector('#chat_widget div.contained');
     },
-    touchEvents: function() {
+    touchEvents: function () {
         var chat = document.querySelector('#chat_widget');
         clientWidth = Math.abs(document.body.clientWidth);
 
         if (!chat) return;
 
-        chat.addEventListener('touchstart', function(event) {
+        chat.addEventListener('touchstart', function (event) {
             Chat.startX = event.targetTouches[0].pageX;
             Chat.startY = event.targetTouches[0].pageY;
             chat.classList.remove('moving');
         }, true);
 
-        chat.addEventListener('touchmove', function(event) {
+        chat.addEventListener('touchmove', function (event) {
             moveX = event.targetTouches[0].pageX;
             moveY = event.targetTouches[0].pageY;
             delay = 20;
@@ -1515,7 +1450,7 @@ var Chat = {
             }
         }, true);
 
-        chat.addEventListener('touchend', function(event) {
+        chat.addEventListener('touchend', function (event) {
             chat.classList.add('moving');
             if (Chat.translateX > (clientWidth / 4) && Chat.slideAuthorized) {
                 MovimTpl.hidePanel();
@@ -1526,20 +1461,20 @@ var Chat = {
             Chat.startX = Chat.translateX = Chat.startY = Chat.translateY = 0;
         }, true);
     },
-    isValidHttpUrl: function(string) {
+    isValidHttpUrl: function (string) {
         let url;
 
         try {
-          url = new URL(string);
+            url = new URL(string);
         } catch (_) {
-          return false;
+            return false;
         }
 
         return url.protocol === "http:" || url.protocol === "https:";
     }
 };
 
-MovimWebsocket.attach(function() {
+MovimWebsocket.attach(function () {
     Chat_ajaxInit();
 
     var jid = MovimUtils.urlParts().params[0];
@@ -1564,7 +1499,7 @@ MovimWebsocket.attach(function() {
 });
 
 if (typeof Upload != 'undefined') {
-    Upload.attach(function(file) {
+    Upload.attach(function (file) {
         Chat_ajaxHttpDaemonSendMessage(
             Chat.getTextarea().dataset.jid,
             false,
@@ -1574,7 +1509,7 @@ if (typeof Upload != 'undefined') {
     });
 }
 
-movimAddFocus(function() {
+movimAddFocus(function () {
     if (MovimWebsocket.connection) {
         var jid = MovimUtils.urlParts().params[0];
         if (jid) {
@@ -1583,16 +1518,16 @@ movimAddFocus(function() {
     }
 });
 
-document.addEventListener('focus', function() {
+document.addEventListener('focus', function () {
     var textarea = Chat.getTextarea();
     if (textarea) textarea.focus();
 });
 
-window.addEventListener('resize', function() {
+window.addEventListener('resize', function () {
     Chat.scrollRestore();
 });
 
-movimAddOnload(function() {
+movimAddOnload(function () {
     if (MovimUtils.isMobile()) Chat.touchEvents();
 
     // Really early panel showing in case we have a JID
