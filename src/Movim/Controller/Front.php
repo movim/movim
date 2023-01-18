@@ -32,7 +32,10 @@ class Front extends Base
             $parts = explode('/', parse_url($_SERVER['HTTP_REFERER'], PHP_URL_QUERY));
 
             if (isset($parts[0])) {
-                $c = $this->loadController($parts[0]);
+                // Ensure that there is no empty value sent from the referer
+                $page = str_replace('=', '', $parts[0]);
+
+                $c = $this->loadController($page);
                 if (is_callable([$c, 'load'])) $c->load();
 
                 $c->checkSession();
