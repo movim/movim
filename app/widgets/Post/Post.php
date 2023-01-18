@@ -106,7 +106,7 @@ class Post extends Base
             ->request();
 
         if ($p) {
-            $html = $this->preparePost($p);
+            $html = $this->preparePost($p, false, false, false);
 
             $this->rpc('MovimTpl.fill', '#post_widget.'.cleanupId($p->nodeid), $html);
             $this->rpc('MovimUtils.enhanceArticlesContent');
@@ -208,19 +208,24 @@ class Post extends Base
         return $view->draw('_post_not_found');
     }
 
-    public function preparePost(\App\Post $p, $public = false, $card = false)
+    public function preparePost(\App\Post $p, $public = false, $card = false, $requestComments = true)
     {
         if (isset($p)) {
             $view = $this->tpl();
 
             if ($p->hasCommentsNode()
             && !$public && !$card) {
-                $this->requestComments($p); // Broken in case of repost
+                if ($requestComments) {
+                    $this->requestComments($p); // Broken in case of repost
+                }
                 $view->assign('commentsdisabled', false);
             } elseif (!$card) {
                 $viewd = $this->tpl();
                 $viewd->assign('post', $p);
-                $view->assign('commentsdisabled', $viewd->draw('_post_comments_error'));
+
+                if ($requestComments) {
+                    $view->assign('commentsdisabled', $viewd->draw('_post_comments_error'));
+                }
             }
 
             $view->assign('public', $public);
