@@ -85,10 +85,10 @@ class Menu extends Base
 
         if ($post->isComment()
         && !$post->isMine()) {
-            $contact = \App\Contact::firstOrNew(['id' => $post->aid]);
+            $contact = \App\Contact::where('id', $post->aid)->first();
             $parent = $post->parent;
 
-            if ($parent) {
+            if ($parent && $contact) {
                 Notif::append(
                     'comments',
                     ($post->isLike()) ? '❤️ ' .$contact->truename : $post->title,

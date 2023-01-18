@@ -8,14 +8,14 @@
         <ul class="list thick">
             <li>
                 {if="$url"}
-                    <span onclick="MovimUtils.reload('{$c->route('contact', $jid)}')"
+                    <span onclick="MovimUtils.reload('{$c->route('contact', $jid)}'); Drawer.clear();"
                     class="primary icon bubble active
                         {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}
                     ">
                         <img src="{$url}">
                     </span>
                 {elseif="!$contact->isFromMuc()"}
-                    <span  onclick="MovimUtils.reload('{$c->route('contact', $jid)}')"
+                    <span  onclick="MovimUtils.reload('{$c->route('contact', $jid)}'); Drawer.clear();"
                     class="primary icon bubble color {$contact->id|stringToColor} active
                         {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}
                     ">
@@ -23,12 +23,12 @@
                     </span>
                 {/if}
                 {if="!$contact->isFromMuc()"}
-                    <span class="control icon active" onclick="MovimUtils.reload('{$c->route('contact', $contact->id)}')">
+                    <span class="control icon active" onclick="MovimUtils.reload('{$c->route('contact', $contact->id)}'); Drawer.clear();">
                         <i class="material-icons">person</i>
                     </span>
                 {/if}
                 {if="!$contact->isMe()"}
-                    <span class="control icon active divided" onclick="Search.chat('{$contact->id|echapJS}')">
+                    <span class="control icon active divided" onclick="Search.chat('{$contact->id|echapJS}'); Drawer.clear();">
                         <i class="material-icons">comment</i>
                     </span>
                     {if="$roster && $roster->presences->count() > 0"}

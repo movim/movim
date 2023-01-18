@@ -36,6 +36,9 @@ v0.21 (trunk)
  * Share articles outside Movim in the PWA
  * Add DTMF support by @singpolyma (#1063)
  * Remove the Init widget and replace it with publish-option forms (related to #1130)
+ * Fix Count only once likes from the same aid (#1134)
+ * Only set the aid if it equals the item publisher
+ * Configure new nodes and comments nodes with pubsub#itemreply = publisher
 
 v0.20
 ---------------------------

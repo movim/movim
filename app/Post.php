@@ -47,6 +47,13 @@ class Post extends Model
     public function likes()
     {
         return $this->hasMany('App\Post', 'parent_id', 'id')
+                    ->whereIn('id', function ($query) {
+                        $query->select(DB::raw('min(id) as id'))
+                              ->from('posts')
+                              ->where('like', true)
+                              ->groupByRaw('aid, parent_id');
+                    })
+                    ->whereNotNull('aid')
                     ->where('like', true);
     }
 
@@ -330,27 +337,31 @@ class Post extends Model
     {
         $this->nodeid = (string)$entry->attributes()->id;
 
-        // Get some informations on the author
-        $this->aname = ($entry->entry->author->name)
-            ? (string)$entry->entry->author->name
-            : null;
 
-        $this->aid = ($entry->entry->author->uri && substr((string)$entry->entry->author->uri, 0, 5) == 'xmpp:')
-            ? substr((string)$entry->entry->author->uri, 5)
-            : null;
+        // Ensure that the author is the publisher
+        if ($entry->entry->author && $entry->entry->author->uri
+        && 'xmpp:'.baseJid((string)$entry->attributes()->publisher) == (string)$entry->entry->author->uri) {
+            $this->aid = substr((string)$entry->entry->author->uri, 5);
 
-        $this->aemail = ($entry->entry->author->email)
-            ? (string)$entry->entry->author->email
-            : null;
+            $this->aname = ($entry->entry->author->name)
+                ? (string)$entry->entry->author->name
+                : null;
+
+            $this->aemail = ($entry->entry->author->email)
+                ? (string)$entry->entry->author->email
+                : null;
+        } else {
+            $this->aid = null;
+        }
 
         // Non standard support
-        if ($entry->entry->source && $entry->entry->source->author->name) {
+        /*if ($entry->entry->source && $entry->entry->source->author->name) {
             $this->aname = (string)$entry->entry->source->author->name;
         }
         if ($entry->entry->source && $entry->entry->source->author->uri
          && substr((string)$entry->entry->source->author->uri, 5) == 'xmpp:') {
             $this->aid = substr((string)$entry->entry->source->author->uri, 5);
-        }
+        }*/
 
         if (empty($this->aname)) {
             $this->aname = null;

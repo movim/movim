@@ -67,7 +67,9 @@ class XMPPtoForm
                                 $this->outCheckbox($element);
                                 break;
                             case 'text-single':
-                                if ($element['var'] == 'muc#roomconfig_pubsub') {
+                                if ($element['var'] == 'pubsub#max_items') {
+                                    $this->outInput($element, false, 'max');
+                                } elseif ($element['var'] == 'muc#roomconfig_pubsub') {
                                     $this->outSelectPubsubNode($element);
                                 } else {
                                     $this->outInput($element, '');
@@ -241,7 +243,7 @@ class XMPPtoForm
         $container->appendChild($label);
     }
 
-    private function outInput($s, $type = false)
+    private function outInput($s, $type = false, $forceValue = null)
     {
         $container = $this->html->createElement('div');
         $this->html->appendChild($container);
@@ -264,9 +266,14 @@ class XMPPtoForm
             $input->setAttribute('required', 'required');
         }
 
-        foreach ($s->children() as $value) {
-            if ($value->getName() == 'value') {
-                $input->setAttribute('value', $value);
+        if ($forceValue) {
+            $input->setAttribute('disabled', 'disabled');
+            $input->setAttribute('value', $forceValue);
+        } else {
+            foreach ($s->children() as $value) {
+                if ($value->getName() == 'value') {
+                    $input->setAttribute('value', $value);
+                }
             }
         }
 
