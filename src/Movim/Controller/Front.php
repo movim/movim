@@ -31,8 +31,8 @@ class Front extends Base
         if ($request == 'ajax' || $request == 'ajaxd') {
             $payload = json_decode(file_get_contents('php://input'));
 
-            if ($payload && $payload->b && $payload->b->p) {
-                $c = $this->loadController($payload->b->p);
+            if ($payload && $payload->b && $payload->b->c) {
+                $c = $this->loadController($payload->b->c);
                 if (is_callable([$c, 'load'])) $c->load();
 
                 $c->checkSession();
