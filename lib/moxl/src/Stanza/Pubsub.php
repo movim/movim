@@ -60,7 +60,7 @@ class Pubsub
         $field->setAttribute('var', 'pubsub#max_items');
         $x->appendChild($field);
 
-        $value = $dom->createElement('value', 1000);
+        $value = $dom->createElement('value', 'max');
         $field->appendChild($value);
 
         $field = $dom->createElement('field');
@@ -242,7 +242,7 @@ class Pubsub
         $field->setAttribute('var', 'pubsub#max_items');
         $x->appendChild($field);
 
-        $value = $dom->createElement('value', 1000);
+        $value = $dom->createElement('value', 'max');
         $field->appendChild($value);
 
         $field = $dom->createElement('field');
