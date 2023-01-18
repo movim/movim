@@ -31,7 +31,7 @@ class Front extends Base
         if ($request == 'ajax' || $request == 'ajaxd') {
             $payload = json_decode(file_get_contents('php://input'));
 
-            if ($payload) {
+            if ($payload && $payload->b && $payload->b->p) {
                 $c = $this->loadController($payload->b->p);
                 if (is_callable([$c, 'load'])) $c->load();
 
@@ -40,6 +40,9 @@ class Front extends Base
                     header('HTTP/1.0 403 Forbidden');
                     exit;
                 }
+            } else {
+                header('HTTP/1.0 403 Forbidden');
+                exit;
             }
         }
 
@@ -100,9 +103,9 @@ class Front extends Base
         }
     }
 
-    public function loadController($request)
+    public function loadController(string $page)
     {
-        $className = ucfirst($request).'Controller';
+        $className = ucfirst($page).'Controller';
         if (file_exists(APP_PATH . 'controllers/'.$className.'.php')) {
             $controllerPath = APP_PATH . 'controllers/'.$className.'.php';
         } else {
