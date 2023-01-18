@@ -27,6 +27,7 @@ var MovimRPC = {
 
     fetch: function (widget, func, params, daemon) {
         var body = {
+            'p': MovimUtils.urlParts().page,
             'w': widget,
             'f': func
         };

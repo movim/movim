@@ -29,13 +29,10 @@ class Front extends Base
     public function runRequest($request)
     {
         if ($request == 'ajax' || $request == 'ajaxd') {
-            $parts = explode('/', parse_url($_SERVER['HTTP_REFERER'], PHP_URL_QUERY));
+            $payload = json_decode(file_get_contents('php://input'));
 
-            if (isset($parts[0])) {
-                // Ensure that there is no empty value sent from the referer
-                $page = str_replace('=', '', $parts[0]);
-
-                $c = $this->loadController($page);
+            if ($payload) {
+                $c = $this->loadController($payload->b->p);
                 if (is_callable([$c, 'load'])) $c->load();
 
                 $c->checkSession();
