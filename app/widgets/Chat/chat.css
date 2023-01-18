@@ -364,31 +364,46 @@ main:not(.enabled) #chat_widget {
     margin: 0;
 }
 
-#emojisearchbar + .emojis {
-    padding: 0;
-    margin: 0 auto;
-    max-width: 55rem;
-    margin-bottom: 2rem;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    flex-wrap: wrap;
+#emojisearchbar form div {
+    min-height: 0;
 }
 
-#emojisearchbar + .emojis .results:not(:empty) ~ img {
-    /* hide default when results are not empty */
-    display: none;
+#emojisearchbar form div input {
+    margin: 0;
 }
 
-#emojisearchbar + .emojis img {
+#emojisearchbar ~ .emojis {
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+#emojisearchbar ~ .emojis.results,
+#emojisearchbar ~ .emojis:last-child {
+    margin-bottom: 1rem;
+}
+
+#emojisearchbar ~ .emojis img {
     text-align: center;
     padding: 1rem 1.5rem;
     font-size: 0;
+    position: relative;
+}
+
+#emojisearchbar ~ .emojis.main {
+    border-bottom: 1px solid rgba(var(--movim-font), 0.12);
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+#emojisearchbar ~ .emojis.results:empty,
+#emojisearchbar ~ .emojis.results:not(:empty) ~ .emojis {
+    display: none;
 }
 
 #chat_widget textarea#chat_textarea ~ span.control:hover,
 #chat_widget .primary_action:hover,
-#emojisearchbar + .emojis img:hover {
+#emojisearchbar ~ .emojis img:hover {
     cursor: pointer;
     background-color: rgba(var(--movim-font), 0.05);
     border-radius: 0.5rem;

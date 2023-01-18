@@ -473,7 +473,7 @@ var Chat = {
         value = value.toLowerCase();
 
         listSelector = reaction
-            ? '#emojisearchbar + .emojis .results'
+            ? '#emojisearchbar ~ .emojis.results'
             : '.chat_box .emojis';
 
         var emojisList = document.querySelector(listSelector);
@@ -1531,8 +1531,8 @@ movimAddOnload(function () {
     if (MovimUtils.isMobile()) Chat.touchEvents();
 
     // Really early panel showing in case we have a JID
-    var jid = MovimUtils.urlParts().params[0];
-    if (jid) {
+    var parts = MovimUtils.urlParts();
+    if (parts.page == 'chat' && parts.params[0]) {
         MovimTpl.showPanel();
     }
 });

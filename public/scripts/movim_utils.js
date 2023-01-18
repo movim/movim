@@ -105,7 +105,7 @@ var MovimUtils = {
         document.body.classList.add('loading');
         document.body.classList.remove('finished');
 
-        fetch(requestUri, {
+        MovimRPC.fetchWithTimeout(requestUri, {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'

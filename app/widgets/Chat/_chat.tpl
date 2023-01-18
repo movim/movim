@@ -22,6 +22,7 @@
     </a>
     <ul class="list fill">
         <div id="reply"></div>
+        <div id="attach"></div>
         <li class="emojis"></li>
         <li>
             <span class="primary icon gray primary_action"

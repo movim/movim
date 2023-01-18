@@ -26,7 +26,7 @@ var Stickers = {
         element.classList.add('zoomed');
     },
     setEmojisEvent(mid) {
-        const emojis = document.querySelectorAll('#emojisearchbar + .emojis img');
+        const emojis = document.querySelectorAll('#emojisearchbar ~ .emojis img');
         let i = 0;
 
         while (i < emojis.length) {
