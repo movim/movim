@@ -51,10 +51,9 @@ class Post extends Model
                         $query->select(DB::raw('min(id) as id'))
                               ->from('posts')
                               ->where('like', true)
+                              ->whereNotNull('aid')
                               ->groupByRaw('aid, parent_id');
-                    })
-                    ->whereNotNull('aid')
-                    ->where('like', true);
+                    });
     }
 
     public function openlink()
