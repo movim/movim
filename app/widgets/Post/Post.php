@@ -213,21 +213,23 @@ class Post extends Base
         if (isset($p)) {
             $view = $this->tpl();
 
+            $commentsDisabled = false;
+
             if ($p->hasCommentsNode()
             && !$public && !$card) {
                 if ($requestComments) {
                     $this->requestComments($p); // Broken in case of repost
                 }
-                $view->assign('commentsdisabled', false);
             } elseif (!$card) {
                 $viewd = $this->tpl();
                 $viewd->assign('post', $p);
 
                 if ($requestComments) {
-                    $view->assign('commentsdisabled', $viewd->draw('_post_comments_error'));
+                    $commentsDisabled = $viewd->draw('_post_comments_error');
                 }
             }
 
+            $view->assign('commentsdisabled', $commentsDisabled);
             $view->assign('public', $public);
             $view->assign('reply', $p->isReply() ? $p->getReply() : false);
             $view->assign('repost', $p->isRecycled() ? \App\Contact::find($p->server) : false);
