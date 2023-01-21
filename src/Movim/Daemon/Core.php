@@ -86,6 +86,15 @@ class Core implements MessageComponentInterface
     proxy_set_header X-Forwarded-Proto https;
     proxy_redirect off;
 }
+";
+
+        echo
+            "\n".
+            "--- ".colorize("Server Configuration - Caddy", 'purple')." ---".
+            "\n";
+            echo colorize("Add this in your configuration file", 'yellow')."\nhandle /ws/* {
+    reverse_proxy localhost:8080
+}
 
 ";
     }
