@@ -205,7 +205,7 @@ Add the following configuration to your Movim virtual-host to enable the cache:
 
 For caddy you may want to take a look at xcaddy and compiling the server with the following modules: [cache-handler](https://github.com/caddyserver/cache-handler), [cdp-cache](https://github.com/sillygod/cdp-cache)
 
-## 5. Admin panel
+## 6. Admin panel
 
 The admin panel is available directly from the Movim UI once an admin user is logged in.
 
