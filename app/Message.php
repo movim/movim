@@ -262,7 +262,53 @@ class Message extends Model
             }
         }
 
-        if ($stanza->body || $stanza->subject) {
+
+        # XEP-0444: Message Reactions
+        if (isset($stanza->reactions)
+            && $stanza->reactions->attributes()->xmlns == 'urn:xmpp:reactions:0') {
+
+            $parentMessage = $this->resolveParentMessage($this->jidfrom, (string)$stanza->reactions->attributes()->id);
+
+            if ($parentMessage) {
+                $resource = $this->isMuc()
+                    ? $this->resource
+                    : $this->jidfrom;
+
+                $parentMessage
+                    ->reactions()
+                    ->where('jidfrom', $resource)
+                    ->delete();
+
+                $emojis = [];
+                $now = \Carbon\Carbon::now();
+                $emoji = \Movim\Emoji::getInstance();
+
+                foreach ($stanza->reactions->reaction as $children) {
+                    $emoji->replace((string)$children);
+                    if ($emoji->isSingleEmoji()) {
+                        $reaction = new Reaction;
+                        $reaction->message_mid = $parentMessage->mid;
+                        $reaction->emoji = (string)$children;
+                        $reaction->jidfrom = $resource;
+                        $reaction->created_at = $now;
+                        $reaction->updated_at = $now;
+
+                        \array_push($emojis, $reaction->toArray());
+                    }
+                }
+
+                try {
+                    Reaction::insert($emojis);
+                } catch (QueryException $e) {
+                    // Duplicate ?
+                    \Utils::error($e->getMessage());
+                }
+
+                return $parentMessage;
+            }
+
+            return null;
+        } elseif ($stanza->body || $stanza->subject) {
             if ($stanza->body) {
                 $this->body = (string)$stanza->body;
             }
@@ -457,53 +503,6 @@ class Message extends Model
             $this->type = 'invitation';
             $this->body = (string)$stanza->x->attributes()->reason;
             $this->subject = (string)$stanza->x->attributes()->jid;
-        }
-
-        # XEP-0444: Message Reactions
-        elseif (isset($stanza->reactions)
-            && $stanza->reactions->attributes()->xmlns == 'urn:xmpp:reactions:0') {
-
-            $parentMessage = $this->resolveParentMessage($this->jidfrom, (string)$stanza->reactions->attributes()->id);
-
-            if ($parentMessage) {
-                $resource = $this->isMuc()
-                    ? $this->resource
-                    : $this->jidfrom;
-
-                $parentMessage
-                    ->reactions()
-                    ->where('jidfrom', $resource)
-                    ->delete();
-
-                $emojis = [];
-                $now = \Carbon\Carbon::now();
-                $emoji = \Movim\Emoji::getInstance();
-
-                foreach ($stanza->reactions->reaction as $children) {
-                    $emoji->replace((string)$children);
-                    if ($emoji->isSingleEmoji()) {
-                        $reaction = new Reaction;
-                        $reaction->message_mid = $parentMessage->mid;
-                        $reaction->emoji = (string)$children;
-                        $reaction->jidfrom = $resource;
-                        $reaction->created_at = $now;
-                        $reaction->updated_at = $now;
-
-                        \array_push($emojis, $reaction->toArray());
-                    }
-                }
-
-                try {
-                    Reaction::insert($emojis);
-                } catch (QueryException $e) {
-                    // Duplicate ?
-                    \Utils::error($e->getMessage());
-                }
-
-                return $parentMessage;
-            }
-
-            return null;
         }
 
         # XEP-0384 OMEMO Encryption
