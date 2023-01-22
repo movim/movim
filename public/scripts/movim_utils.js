@@ -166,13 +166,13 @@ var MovimUtils = {
                 document.head.appendChild(js);
 
                 // Events
-                movimLaunchOnload();
-
                 Promise.all(promises).then(() => {
                     if (typeof MovimWebsocket != 'undefined') {
                         MovimWebsocket.launchAttached();
                         MovimWebsocket.launchInitiated();
                     }
+
+                    movimLaunchOnload();
                 });
             });
         }).catch(error => {
