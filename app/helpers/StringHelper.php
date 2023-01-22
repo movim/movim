@@ -158,9 +158,13 @@ function cleanJid($jid): string
  */
 function getCid($string)
 {
-    preg_match("/(\w+)\@/", $string, $matches);
+    preg_match("/(\w+)\+(\w+)\@/", $string, $matches);
     if (is_array($matches) && count($matches) > 1) {
-        return $matches[1];
+        if ($matches[1] === "sha1") {
+            return $matches[2];
+        } else {
+            return $matches[1].'+'.$matches[2];
+        }
     }
 }
 

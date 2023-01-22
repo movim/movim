@@ -6,9 +6,13 @@ class BOB
 {
     public static function request($to, $cid)
     {
+        if (!strstr($cid, '+')) {
+            $cid = 'sha1+'.$cid;
+        }
+
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $data = $dom->createElementNS('urn:xmpp:bob', 'data');
-        $data->setAttribute('cid', 'sha1+'.$cid.'@bob.xmpp.org');
+        $data->setAttribute('cid', $cid.'@bob.xmpp.org');
 
         if (!empty($cid)) {
             \Moxl\API::request(\Moxl\API::iqWrapper($data, $to, 'get'));
