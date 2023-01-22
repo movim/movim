@@ -111,6 +111,9 @@ var MovimUtils = {
                 'Content-Type': 'application/json'
             }
         }).then(reponse => {
+            onloaders = [];
+            onfocused = [];
+
             reponse.text().then(value => {
                 document.body.classList.remove('loading');
 
