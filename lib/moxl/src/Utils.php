@@ -66,7 +66,6 @@ class Utils
             //'http://jabber.org/protocol/mood+notify',
             'http://jabber.org/protocol/xhtml-im',
             'http://jabber.org/protocol/chatstates',
-            'http://jabber.org/protocol/commands',
             'http://jabber.org/protocol/caps',
             'http://jabber.org/protocol/disco#info',
             'http://jabber.org/protocol/disco#items',
