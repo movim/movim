@@ -11,7 +11,8 @@ Movim is a federated blogging and chat platform that acts as a web frontend for 
 
 Installation
 ------------
-Please refer to the installation instructions in the [INSTALL.md](INSTALL.md) file.
+Please refer to the installation instructions in the [INSTALL.md](INSTALL.md) file,
+or check out the [Movim Wiki](https://github.com/movim/movim/wiki) for more information.
 
 Movim is also available as a [Docker image](https://github.com/movim/movim_docker).
 
