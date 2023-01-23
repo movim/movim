@@ -247,7 +247,7 @@ class Login extends Base
         }
 
         // We check if we already have an open session
-        $here = App\Session::where('hash', sha1($username.$password.$host))->first();
+//      $here = App\Session::where('hash', sha1($username.$password.$host))->first();
 
         $user = User::firstOrNew(['id' => $login]);
         $user->init();
@@ -266,7 +266,7 @@ class Login extends Base
 
             $this->rpc('Login.setQuick', $deviceId, $login, $host, $rkey->saveToAsciiSafeString());
         }
-
+/*
         if ($here) {
             $this->rpc('Login.setCookie', 'MOVIM_SESSION_ID', $here->id, date(DATE_COOKIE, Cookie::getTime()));
             $this->rpc('MovimUtils.redirect', $this->route('main'));
@@ -275,7 +275,7 @@ class Login extends Base
             $this->showErrorBlock('wrong_password');
             return;
         }
-
+*/
         $s = new App\Session;
         $s->init($username, $password, $host);
         $s->loadMemory();
