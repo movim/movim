@@ -35,6 +35,9 @@ class XMPPtoForm
 
     public function create()
     {
+        $reported = false;
+        $items = [];
+
         foreach ($this->xmpp->children() as $element) {
             switch ($element->getName()) {
                 case 'title':
@@ -43,6 +46,10 @@ class XMPPtoForm
                 case 'instructions':
                     $this->outP($element);
                     break;
+                case 'reported':
+                    $reported = $element;
+                case 'item':
+                    array_push($items, $element);
                 case 'field':
                     if (
                         isset($element->media)
@@ -135,6 +142,57 @@ class XMPPtoForm
                 default:
                     //$this->html .= '';
             }
+        }
+
+        if ($reported) {
+            $cols = [];
+            $colType = [];
+
+            $table = $this->html->createElement('table');
+            $table->setAttribute("class", "table");
+            $header = $this->html->createElement('tr');
+            foreach ($reported->children() as $element) {
+                if ($element->getName() != 'field') {
+                    continue;
+                }
+                array_push($cols, (string)$element->attributes()->var);
+                $type = isset($element->attributes()->type) ? $element->attributes()->type : 'text-single';
+                array_push($colType, $type);
+                $header->appendChild($this->html->createElement('th', (string)$element->attributes()->label));
+            }
+            $table->appendChild($header);
+
+            foreach ($items as $item) {
+                // fields in item are not required to be in the same order
+                // so order them by the order in reported
+                $cells = [];
+                foreach ($item->children() as $element) {
+                    if ($element->getName() != 'field') {
+                        continue;
+                    }
+                    $idx = array_search((string)$element->attributes()->var, $cols);
+                    if ($colType[$idx] == 'jid-single') {
+                        $link = $this->html->createElement('a', (string)$element->value);
+                        $link->setAttribute('href', Router::urlize('contact', $element->value));
+                        $cells[$idx] = $this->html->createElement('td');
+                        $cells[$idx]->appendChild($link);
+                    } else {
+                        $cells[$idx] = $this->html->createElement('td', (string)$element->value);
+                    }
+                }
+
+                $row = $this->html->createElement('tr');
+                for ($i = 0; $i < count($cols); $i++) {
+                    if (isset($cells[$i])) {
+                        $row->appendChild($cells[$i]);
+                    } else {
+                        $row->appendChild($this->html->createElement('td'));
+                    }
+                }
+                $table->appendChild($row);
+            }
+
+            $this->html->appendChild($table);
         }
     }
 
