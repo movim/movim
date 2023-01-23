@@ -3,6 +3,7 @@
 class XMPPtoForm
 {
     private $xmpp;
+    private $formType;
     private $stanza;
     private $html;
 
@@ -15,6 +16,7 @@ class XMPPtoForm
     public function getHTML(\SimpleXMLElement $xmpp, $stanza = false)
     {
         $this->xmpp = $xmpp;
+        $this->formType = $xmpp->attributes()->type;
         $this->stanza = $stanza;
         $this->create();
         return $this->html->saveHTML();
@@ -61,8 +63,24 @@ class XMPPtoForm
                         }
                     }
 
-                    if (isset($element->attributes()->type)) {
-                        switch ($element->attributes()->type) {
+                    $type = isset($element->attributes()->type) ? $element->attributes()->type : 'text-single';
+                    if ($this->formType == 'result') {
+                        switch ($type) {
+                            case 'boolean':
+                                $this->outCheckbox($element);
+                                break;
+                            case 'jid-single':
+                                $this->outLabel($this->html, $element);
+                                $link = $this->html->createElement('a', (string)$element->value);
+                                $link->setAttribute('href', Router::urlize('contact', $element->value));
+                                $this->html->appendChild($link);
+                                break;
+                            default:
+                                $this->outLabel($this->html, $element);
+                                $this->outP((string)$element->value);
+                        }
+                    } else {
+                        switch ($type) {
                             case 'boolean':
                                 $this->outCheckbox($element);
                                 break;
@@ -97,6 +115,7 @@ class XMPPtoForm
                                 $this->outInput($element, 'email');
                                 break;
                             case 'fixed':
+                                $this->outLabel($this->html, $element);
                                 $this->outP((string)$element->value);
                                 break;
                             default:
@@ -104,6 +123,7 @@ class XMPPtoForm
                                 break;
                         }
                     }
+
                     break;
                 case 'url':
                     break;
@@ -191,6 +211,10 @@ class XMPPtoForm
         $input->setAttribute('id', $s['var']);
         $input->setAttribute('name', $s['var']);
 
+        if ($this->formType == 'result') {
+            $input->setAttribute('disabled', 'disabled');
+        }
+
         if ($s->required) {
             $input->setAttribute('required', 'required');
         }
@@ -243,6 +267,19 @@ class XMPPtoForm
         $container->appendChild($label);
     }
 
+    private function outLabel($container, $s, $forceLabel = false)
+    {
+        if (!$forceLabel && !$s['label']) {
+            return;
+        }
+
+        $txt = $s['label'] ? $s['label'] : $s['var'];
+        $label = $this->html->createElement('label', $txt);
+        $label->setAttribute('for', $s['var']);
+        $label->setAttribute('title', $txt);
+        $container->appendChild($label);
+    }
+
     private function outInput($s, $type = false, $forceValue = null)
     {
         $container = $this->html->createElement('div');
@@ -283,10 +320,7 @@ class XMPPtoForm
 
         $container->appendChild($input);
 
-        $label = $this->html->createElement('label', $s['label']);
-        $label->setAttribute('for', $s['var']);
-        $label->setAttribute('title', $s['label']);
-        $container->appendChild($label);
+        $this->outLabel($container, $s, true);
     }
 
     private function outHiddeninput($s)
