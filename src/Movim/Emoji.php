@@ -28,10 +28,11 @@ namespace Movim;
 class Emoji
 {
     protected static $instance = null;
+
     private $_emoji;
     private $_string;
     private $_lastEmoji = null;
-    private $_lastEmojiURL = null;
+    private $_lastEmojiUrl = null;
     private $_lastEmojiTitle = null;
     private $_regex = [
         // Some easy cases first
@@ -73,7 +74,7 @@ class Emoji
         return $this->_emoji;
     }
 
-    public function replace($string, bool $noTitle = false): string
+    public function replace(string $string, bool $noTitle = false): string
     {
         // Remove the Variation Selectors (Unicode block) for a proper comparison
         $this->_string = preg_replace('/[\x{fe00}\x{fe0f}]/u', '', $string);
@@ -94,7 +95,7 @@ class Emoji
             }
 
             $this->_lastEmoji = $matches[0];
-            $this->_lastEmojiURL = BASE_URI . 'theme/img/emojis/svg/' . $astext . '.svg';
+            $this->_lastEmojiUrl = BASE_URI . 'theme/img/emojis/svg/' . $astext . '.svg';
 
             $dom = new \DOMDocument('1.0', 'UTF-8');
             $dom->appendChild($img = $dom->createElement('img'));
@@ -104,7 +105,7 @@ class Emoji
                 $this->_lastEmojiTitle = emojiShortcut($this->_emoji[$astext]);
                 $img->setAttribute('title', ':' . $this->_lastEmojiTitle . ':');
             }
-            $img->setAttribute('src', $this->_lastEmojiURL);
+            $img->setAttribute('src', $this->_lastEmojiUrl);
 
             return $dom->saveXML($dom->documentElement);
         }, $string);
@@ -119,7 +120,7 @@ class Emoji
 
     public function getLastSingleEmojiURL()
     {
-        return $this->_lastEmojiURL;
+        return $this->_lastEmojiUrl;
     }
 
     public function getLastSingleEmojiTitle()
@@ -132,7 +133,7 @@ class Emoji
         if (!isset(static::$instance)) {
             static::$instance = new Emoji;
         }
-        static::$instance->_emojisCount = 0;
+
         static::$instance->_string = null;
         static::$instance->_lastEmoji = null;
         static::$instance->_lastEmojiUrl = null;

@@ -156,6 +156,7 @@ class Stickers extends \Movim\Widget\Base
 
         $emojis = $this->tpl();
         $emojis->assign('mid', $mid);
+
         $view->assign('emojis', $emojis->draw('_stickers_emojis'));
 
         Dialog::fill($view->draw('_stickers_reactions'));

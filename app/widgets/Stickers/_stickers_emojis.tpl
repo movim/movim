@@ -10,7 +10,7 @@
                     placeholder="{$c->__('message.emoji_help')}"
                     oninput="
                         Chat.checkEmojis(this.value, true, true);
-                        Stickers.setEmojisEvent({$mid});
+                        Stickers.setEmojisEvent({if="$mid"}{$mid}{/if});
                     "
                     type="text">
             </div>
