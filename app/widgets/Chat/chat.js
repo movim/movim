@@ -986,31 +986,31 @@ var Chat = {
             msg.setAttribute('dir', 'rtl');
         }
 
+        // OMEMO handling
+        if (data.omemoheader) {
+            p.innerHTML = data.omemoheader.payload.substr(0, data.omemoheader.payload.length / 2);
+            ChatOmemo.decrypt(data).then(plaintext => {
+                let refreshP = document.querySelector('#id' + data.id + ' p.encrypted');
+                if (refreshP) {
+                    if (plaintext) {
+                        let linkified = MovimUtils.linkify(plaintext);
+                        refreshP.innerHTML = ChatOmemo.searchEncryptedFile(linkified);
+                        refreshP.classList.remove('encrypted');
+                    } else {
+                        refreshP.classList.add('error');
+                    }
+                }
+            });
+        } else {
+            p.innerHTML = data.body;
+        }
+
         if (data.sticker != null) {
             bubble.querySelector('div.bubble').classList.add('sticker');
             p.appendChild(Chat.getStickerHtml(data.sticker));
 
             if (data.file != null) {
                 p.classList.add('previewable');
-            }
-        } else {
-            // OMEMO handling
-            if (data.omemoheader) {
-                p.innerHTML = data.omemoheader.payload.substr(0, data.omemoheader.payload.length / 2);
-                ChatOmemo.decrypt(data).then(plaintext => {
-                    let refreshP = document.querySelector('#id' + data.id + ' p.encrypted');
-                    if (refreshP) {
-                        if (plaintext) {
-                            let linkified = MovimUtils.linkify(plaintext);
-                            refreshP.innerHTML = ChatOmemo.searchEncryptedFile(linkified);
-                            refreshP.classList.remove('encrypted');
-                        } else {
-                            refreshP.classList.add('error');
-                        }
-                    }
-                });
-            } else {
-                p.innerHTML = data.body;
             }
         }
 
@@ -1019,7 +1019,7 @@ var Chat = {
 
             // Ugly fix to clear the paragraph if the file contains a similar link
             if (p.querySelector('a') && p.querySelector('a').href == data.file.uri) {
-                p.innerHTML = '';
+                p.querySelector('a').remove();
             }
 
             p.appendChild(Chat.getFileHtml(data.file, data.sticker));
