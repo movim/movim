@@ -30,6 +30,9 @@ class Stickers extends \Movim\Widget\Base
 
         list($c, $ext) = explode('@', $cid);
         list($sh, $key) = explode('+', $c);
+        if ($sh !== "sha1") {
+            $key = $sh.'+'.$key;
+        }
 
         $base64 = base64_encode(file_get_contents(PUBLIC_CACHE_PATH.hash(Image::$hash, $key).'.png'));
 
