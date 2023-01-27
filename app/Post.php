@@ -594,12 +594,12 @@ class Post extends Model
     {
         $enclosures = [];
 
-        foreach (array_filter($this->attachments, function ($a) { return $a->rel == 'enclosure'; }) as $attachment)
+        foreach (array_filter($this->attachments, fn ($a) => $a->rel == 'enclosure') as $attachment)
         {
             array_push($enclosures, $attachment->href);
         }
 
-        foreach (array_filter($this->attachments, function ($a) { return $a->rel != 'enclosure'; }) as $key => $attachment)
+        foreach (array_filter($this->attachments, fn ($a) => $a->rel != 'enclosure') as $key => $attachment)
         {
             if (in_array($attachment->href, $enclosures)) {
                 unset($this->attachments[$key]);

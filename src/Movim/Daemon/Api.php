@@ -59,9 +59,7 @@ class Api
         };
 
         $server = new HttpServer($handler);
-        $server->on('error', function (\Throwable $e) {
-            (new Bootstrap)->exceptionHandler($e);
-        });
+        $server->on('error', fn (\Throwable $e) => (new Bootstrap)->exceptionHandler($e));
         $server->listen($socket);
     }
 

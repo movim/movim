@@ -191,9 +191,9 @@ class Info extends Model
 
     public function getGatewayTypeAttribute(): ?string
     {
-        $identityType = $this->identities->filter(function ($value, $key) {
-            return $value->category == 'gateway';
-        })->first();
+        $identityType = $this->identities->filter(fn ($value, $key) =>
+            $value->category == 'gateway'
+        )->first();
 
         return $identityType ? $identityType->type : null;
     }

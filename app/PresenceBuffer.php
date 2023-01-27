@@ -147,9 +147,7 @@ class PresenceBuffer
         }
 
         if ($this->_calls->isNotEmpty()) {
-            $this->_calls->each(function ($call) {
-                $call();
-            });
+            $this->_calls->each(fn ($call) => $call());
             $this->_calls = collect();
         }
     }

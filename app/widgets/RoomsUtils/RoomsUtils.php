@@ -128,9 +128,7 @@ class RoomsUtils extends Base
                                    })
                                    ->with('capability.identities')
                                    ->get()
-                                   ->mapToGroups(function ($tuple) {
-                                      return [$tuple['jid'] => $tuple];
-                                   });
+                                   ->mapToGroups(fn ($tuple) => [$tuple['jid'] => $tuple]);
 
         $tpl = $this->tpl();
         $tpl->assign('fingerprints', $fingerprints);

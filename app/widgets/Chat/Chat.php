@@ -385,9 +385,7 @@ class Chat extends \Movim\Widget\Base
                      ->where('jid', $jid)
                      ->select(['bundleid', 'jid'])
                      ->get()
-                     ->mapToGroups(function ($tuple) {
-                        return [$tuple['jid'] => $tuple['bundleid']];
-                    })
+                     ->mapToGroups(fn ($tuple) => [$tuple['jid'] => $tuple['bundleid']])
                     ->toArray()
             );
         }
@@ -440,9 +438,7 @@ class Chat extends \Movim\Widget\Base
                          })
                          ->select(['bundleid', 'jid'])
                          ->get()
-                         ->mapToGroups(function ($tuple) {
-                            return [$tuple['jid'] => $tuple['bundleid']];
-                        })
+                         ->mapToGroups(fn ($tuple) => [$tuple['jid'] => $tuple['bundleid']])
                         ->toArray()
                 );
             }
@@ -720,9 +716,7 @@ class Chat extends \Movim\Widget\Base
                         ->delete();
                 }
 
-                $newEmojis = $emojis->filter(function ($value, $key) use ($emoji) {
-                    return $value->emoji != $emoji;
-                });
+                $newEmojis = $emojis->filter(fn ($value, $key) => $value->emoji != $emoji);
             }
 
             $r->setTo($parentMessage->jidfrom != $parentMessage->user_id

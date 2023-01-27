@@ -138,9 +138,7 @@ function resolveInfos($postCollection)
 {
     $serverNodes = $postCollection->map(function($item) {
         return ['server' => $item->server, 'node' => $item->node];
-    })->unique(function ($item) {
-        return $item['server'].$item['node'];
-    });
+    })->unique(fn ($item) => $item['server'].$item['node']);
 
     if ($serverNodes->isNotEmpty()) {
         $first = $serverNodes->first();
@@ -156,9 +154,7 @@ function resolveInfos($postCollection)
             ]);
         });
 
-        $infos = $infos->get()->keyBy(function ($item) {
-            return $item['server'].$item['node'];
-        });
+        $infos = $infos->get()->keyBy(fn ($item) => $item['server'].$item['node']);
 
         $postCollection->map(function($item) use ($infos) {
             $item->info = $infos->get($item->server.$item->node);
