@@ -529,7 +529,7 @@ class Chat extends \Movim\Widget\Base
         $reply = null;
 
         // If the replaced message is quoting another one ensure that we keep the quote
-        if ($replace->parentmid) {
+        if ($replace && $replace->parentmid) {
             $replyToMid = $replace->parentmid;
         }
 
