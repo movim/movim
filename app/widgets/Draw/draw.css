@@ -45,6 +45,11 @@
 
 #draw .draw-top-nav {
     transition: transform 0.2s;
+    pointer-events: none;
+}
+
+#draw .draw-top-nav span {
+    pointer-events: auto;
 }
 
 #draw .draw-actions,
