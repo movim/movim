@@ -313,9 +313,12 @@ class Message extends Model
                 $this->body = (string)$stanza->body;
             }
 
-
             if ($stanza->subject) {
                 $this->subject = (string)$stanza->subject;
+            }
+
+            if ($stanza->thread) {
+                $this->thread = (string)$stanza->thread;
             }
 
             // XEP-0333: Chat Markers
@@ -337,9 +340,7 @@ class Message extends Model
                         (int)$stanza->fallback->body->attributes()->end
                     );
                 }
-            } else if ($stanza->thread) {
-                $this->thread = (string)$stanza->thread;
-
+            } else if ($this->thread) {
                 $parent = $this->user->messages()
                     ->jid($this->jidfrom)
                     ->where('thread', $this->thread)
