@@ -656,6 +656,10 @@ main:not(.enabled) #chat_widget {
     align-items: center;
 }
 
+#chat_widget div.file .audio_player .button {
+    padding: 0;
+}
+
 #chat_widget div.file .audio_player p {
     min-width: 10rem;
     text-align: center;
