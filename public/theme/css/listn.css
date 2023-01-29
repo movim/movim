@@ -451,7 +451,8 @@ ul li.oppose div.bubble.file {
     word-break: break-all;
 }
 
-ul li.oppose div.bubble:not(.sticker):not(.file) {
+ul li.oppose div.bubble:not(.sticker):not(.file),
+ul li div.bubble.file div.audio_player {
     background-color: rgba(var(--movim-background-main), 0.5);
     border-color: rgba(var(--movim-background-main), 0.5);
     border-radius: 1rem 0 1rem 1rem;

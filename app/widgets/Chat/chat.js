@@ -718,8 +718,67 @@ var Chat = {
         }
     },
     setVideoObserverBehaviour: function () {
-        document.querySelectorAll('.file video').forEach((video) => {
+        document.querySelectorAll('.file video').forEach(video => {
             Chat.discussionObserver.observe(video);
+        });
+    },
+    setAudioPlayersBehaviour: function () {
+        document.querySelectorAll('.audio_player').forEach((audioPlayer, index, audioPlayers) => {
+            var audio = audioPlayer.querySelector('audio');
+            var buttonPlayPause = audioPlayer.querySelector('span.play_pause');
+            var progressBar = audioPlayer.querySelector('input[type=range]');
+            var timer = audioPlayer.querySelector('p.timer');
+            let mouseDownOnSlider = false;
+
+            audio.onloadeddata = function () {
+                progressBar.value = 0;
+                timer.innerHTML = MovimUtils.cleanTime(audio.currentTime) + ' / ' + MovimUtils.cleanTime(audio.duration);
+            }
+
+            audio.ontimeupdate = function () {
+                if (!mouseDownOnSlider) {
+                    progressBar.value = audio.currentTime / audio.duration * 100;
+                    timer.innerHTML = MovimUtils.cleanTime(audio.currentTime) + ' / ' + MovimUtils.cleanTime(audio.duration);
+                }
+            }
+
+            audio.onplay = function () {
+                buttonPlayPause.querySelector('i').innerHTML = 'pause';
+            };
+
+            audio.onpause = function () {
+                buttonPlayPause.querySelector('i').innerHTML = 'play_arrow';
+            };
+
+            audio.onended = function () {
+                var maybeNext = audioPlayers[index + 1];
+
+                if (maybeNext) {
+                    maybeNext.querySelector('audio').play();
+                }
+            }
+
+            progressBar.onchange = function () {
+                const pct = progressBar.value / 100;
+                audio.currentTime = (audio.duration || 0) * pct;
+            }
+
+            progressBar.onmousedown = function() {
+                mouseDownOnSlider = true;
+            }
+
+            progressBar.onmouseup = function() {
+                mouseDownOnSlider = false;
+            }
+
+            buttonPlayPause.onclick = function () {
+                if (audio.paused) {
+                    document.querySelectorAll('.audio_player:not(#' + audioPlayer.id + ') audio').forEach(otherAudio => otherAudio.pause());
+                    audio.play();
+                } else {
+                    audio.pause();
+                }
+            };
         });
     },
     setReplyButtonBehaviour: function () {
@@ -848,6 +907,7 @@ var Chat = {
         Chat.setActionsButtonBehaviour();
         Chat.setParentScrollBehaviour();
         Chat.setVideoObserverBehaviour();
+        Chat.setAudioPlayersBehaviour();
     },
     appendMessage: function (idjidtime, data, prepend) {
         if (data.body === null) return;
@@ -1248,32 +1308,15 @@ var Chat = {
         div.setAttribute('class', 'file');
 
         if (file.name) {
-            if (file.type == 'video/webm' || file.type == 'video/mp4') {
-                var video = document.createElement('video');
-                video.setAttribute('src', file.uri);
-                video.setAttribute('loop', 'loop');
-
-                if (file.thumbnail && Object.keys(file.thumbnail).length !== 0) {
-                    video.setAttribute('poster', file.thumbnail.uri);
-                    video.setAttribute('width', file.thumbnail.width);
-                    video.setAttribute('height', file.thumbnail.height);
-                } else {
-                    video.setAttribute('poster', BASE_URI + 'theme/img/poster.svg');
-                }
-
-                // Tenor implementation
-                if (file.host && file.host == 'media.tenor.com') {
-                    video.classList.add('gif');
-                } else {
-                    video.setAttribute('controls', 'controls');
-                    video.setAttribute('preload', 'metadata');
-                }
-
-                div.appendChild(video);
+            if (file.type == 'audio/ogg' || file.type == 'audio/opus') {
+                div.appendChild(Chat.getAudioPlayer(file));
+            } else if (file.type == 'video/webm' || file.type == 'video/mp4') {
+                div.appendChild(Chat.getVideoPlayer(file));
             }
 
             // Tenor implementation
-            if (file.host && file.host == 'media.tenor.com') {
+            if (file.host && file.host == 'media.tenor.com'
+                || file.type == 'audio/ogg' || file.type == 'audio/opus') {
                 return div;
             }
 
@@ -1307,6 +1350,78 @@ var Chat = {
         }
 
         return div;
+    },
+    getAudioPlayer: function (file) {
+        var div = document.createElement('div');
+        div.setAttribute('title', file.name);
+        div.classList.add('audio_player');
+        div.id = file.id;
+
+        var audio = document.createElement('audio');
+        audio.setAttribute('src', file.uri);
+        //audio.setAttribute('controls', '');
+        div.appendChild(audio);
+
+
+        var playPauseButton = document.createElement('span');
+        playPauseButton.classList.add('button', 'flat', 'color');
+        playPauseButton.classList.add('play_pause');
+        var i = document.createElement('i');
+        i.className = 'material-icons';
+        i.innerText = 'play_arrow';
+        playPauseButton.appendChild(i);
+
+        div.appendChild(playPauseButton);
+
+        var progressBar = document.createElement('input');
+        progressBar.type = 'range';
+        progressBar.value = 0;
+        progressBar.setAttribute('min', 0);
+        progressBar.setAttribute('max', 100);
+        progressBar.setAttribute('step', 1);
+
+        div.appendChild(progressBar);
+
+        var timer = document.querySelector('p');
+        timer.classList.add('timer');
+
+        div.appendChild(timer);
+
+        var downloadButton = document.createElement('a');
+        downloadButton.classList.add('button', 'flat', 'gray');
+        downloadButton.href = file.uri;
+        downloadButton.target = '_blank';
+        var i = document.createElement('i');
+        i.className = 'material-icons';
+        i.innerText = 'file_download';
+        downloadButton.appendChild(i);
+
+        div.appendChild(downloadButton);
+
+        return div;
+    },
+    getVideoPlayer: function (file) {
+        var video = document.createElement('video');
+        video.setAttribute('src', file.uri);
+        video.setAttribute('loop', 'loop');
+
+        if (file.thumbnail && Object.keys(file.thumbnail).length !== 0) {
+            video.setAttribute('poster', file.thumbnail.uri);
+            video.setAttribute('width', file.thumbnail.width);
+            video.setAttribute('height', file.thumbnail.height);
+        } else {
+            video.setAttribute('poster', BASE_URI + 'theme/img/poster.svg');
+        }
+
+        // Tenor implementation
+        if (file.host && file.host == 'media.tenor.com') {
+            video.classList.add('gif');
+        } else {
+            video.setAttribute('controls', 'controls');
+            video.setAttribute('preload', 'metadata');
+        }
+
+        return video;
     },
     getEncryptedIcoHtml: function () {
         var i = document.createElement('i');

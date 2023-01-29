@@ -138,8 +138,9 @@ class Chat extends \Movim\Widget\Base
 
             if (typeIsPicture($message->file['type'])) {
                 $rawbody = '🖼️ ' . $this->__('chats.picture');
-            }
-            if (typeIsVideo($message->file['type'])) {
+            } elseif (typeIsAudio($message->file['type'])) {
+                $rawbody = '🎵 ' . $this->__('chats.audio');
+            } elseif (typeIsVideo($message->file['type'])) {
                 $rawbody = '🎞️ ' . $this->__('chats.video');
             }
         }
@@ -1190,6 +1191,8 @@ class Chat extends \Movim\Widget\Base
                     'height' => $stickerSize['height']
                 ];
             }
+
+            $message->body = '';
         }
 
         // Jumbo emoji
@@ -1217,6 +1220,11 @@ class Chat extends \Movim\Widget\Base
                     'picture' => true
                 ];
             }
+
+            // Set an id for all the files
+            $file = $message->file;
+            $file['id'] = hashId($file['uri']);
+            $message->file = $file;
 
             $url = parse_url($message->file['uri']);
 
@@ -1274,8 +1282,9 @@ class Chat extends \Movim\Widget\Base
 
                 if (typeIsPicture($message->parent->file['type'])) {
                     $message->parent->body = '<i class="material-icons">image</i> '.__('chats.picture');
-                }
-                if (typeIsVideo($message->parent->file['type'])) {
+                } elseif (typeIsAudio($message->parent->file['type'])) {
+                    $message->parent->body = '<i class="material-icons">equalizer</i> '.__('chats.audio');
+                } elseif (typeIsVideo($message->parent->file['type'])) {
                     $message->parent->body = '<i class="material-icons">local_movies</i> '.__('chats.video');
                 }
             }

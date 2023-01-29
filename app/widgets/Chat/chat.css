@@ -420,7 +420,7 @@ main:not(.enabled) #chat_widget {
     word-break: break-all;
 }
 
-#chat_widget div.file:not(.bubble) a {
+#chat_widget div.file:not(.bubble) a:not(.button) {
     padding: 1rem 0;
 }
 
@@ -646,5 +646,29 @@ main:not(.enabled) #chat_widget {
 @media screen and (min-width: 1025px) {
     #chat_widget #chatheadercounter .counter {
         display: none;
+    }
+}
+
+/* Audio player */
+
+#chat_widget div.file .audio_player {
+    display: flex;
+    align-items: center;
+}
+
+#chat_widget div.file .audio_player p {
+    min-width: 10rem;
+    text-align: center;
+    margin: 0;
+    margin-right: 1rem;
+}
+
+#chat_widget div.file .audio_player input[type=range] {
+    margin: 0 1rem;
+}
+
+@media screen and (max-width: 1024px) {
+    #chat_widget div.file .audio_player input[type=range] {
+        width: 15rem;
     }
 }

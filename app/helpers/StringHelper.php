@@ -492,6 +492,14 @@ function cleanupId(string $string = '', bool $withHash = false): string
 }
 
 /**
+ * @desc Return a clean string that can be used for HTML ids
+ */
+function hashId(string $string = ''): string
+{
+    return 'id-' . substr(hash('sha256', $string), 0, 6);
+}
+
+/**
  * @desc Truncates the given string at the specified length.
  */
 function truncate($str, int $width): string

@@ -79,6 +79,15 @@ var MovimUtils = {
 
         return json;
     },
+    cleanTime: function (seconds) {
+        var currentMinute = parseInt(seconds / 60) % 60,
+            currentSecondsLong = seconds % 60,
+            currentSeconds = currentSecondsLong.toFixed(),
+            currentTime = (currentMinute < 10 ? "0" + currentMinute : currentMinute)
+                + ":" + (currentSeconds < 10 ? "0" + currentSeconds : currentSeconds);
+
+        return currentTime;
+    },
     setTitle: function (title) {
         document.title = title;
     },
@@ -120,7 +129,7 @@ var MovimUtils = {
                 let page = JSON.parse(value);
 
                 if (noHistory != true) {
-                    history.pushState({soft: true}, '', uri);
+                    history.pushState({ soft: true }, '', uri);
                 }
 
                 if (typeof MovimWebsocket != 'undefined') {

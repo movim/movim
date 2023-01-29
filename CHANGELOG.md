@@ -39,6 +39,7 @@ v0.21 (trunk)
  * Fix Count only once likes from the same aid (#1134)
  * Only set the aid if it equals the item publisher
  * Configure new nodes and comments nodes with pubsub#itemreply = publisher
+ * Add audio files support and add a small audio player in the Chat
 
 v0.20
 ---------------------------
