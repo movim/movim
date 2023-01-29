@@ -1201,6 +1201,8 @@ class Chat extends \Movim\Widget\Base
                 'title' => ':'.$emoji->getLastSingleEmojiTitle().':',
                 'height' => 60,
             ];
+
+            $message->body = '';
         }
 
         // Attached file
