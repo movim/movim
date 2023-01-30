@@ -389,7 +389,8 @@ ul li div.bubble div[dir="rtl"] {
     text-align: right;
 }
 
-ul li div.bubble:not(.sticker):not(.file) {
+ul li div.bubble:not(.sticker):not(.file),
+ul li div.bubble.file div.audio_player {
     padding: 1rem 1rem 1rem 1.5rem;
     border-radius: 0 1rem 1rem;
     line-height: 2.75rem;
@@ -452,7 +453,7 @@ ul li.oppose div.bubble.file {
 }
 
 ul li.oppose div.bubble:not(.sticker):not(.file),
-ul li div.bubble.file div.audio_player {
+ul li.oppose div.bubble.file div.audio_player {
     background-color: rgba(var(--movim-background-main), 0.5);
     border-color: rgba(var(--movim-background-main), 0.5);
     border-radius: 1rem 0 1rem 1rem;

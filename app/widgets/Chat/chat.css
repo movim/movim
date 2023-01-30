@@ -654,6 +654,7 @@ main:not(.enabled) #chat_widget {
 #chat_widget div.file .audio_player {
     display: flex;
     align-items: center;
+    padding: 0.5rem 1rem;
 }
 
 #chat_widget div.file .audio_player .button {

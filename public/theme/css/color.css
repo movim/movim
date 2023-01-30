@@ -87,6 +87,7 @@ body > nav > ul.list.active li:not(.active):hover:before {
 ul li.date > div > p.normal,
 .dialog, .drawer, ul.context_menu,
 ul li div.bubble:not(.sticker):not(.file),
+ul li div.bubble.file div.audio_player,
 .card > .block:not(.subheader):not(.simple),
 ul.list.actions p,
 main {
