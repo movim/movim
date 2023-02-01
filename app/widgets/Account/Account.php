@@ -5,7 +5,6 @@ use Moxl\Xec\Action\Register\ChangePassword;
 use Moxl\Xec\Action\Register\Remove;
 use Moxl\Xec\Action\Register\Get;
 use Moxl\Xec\Action\Register\Set;
-use Respect\Validation\Validator;
 
 class Account extends \Movim\Widget\Base
 {

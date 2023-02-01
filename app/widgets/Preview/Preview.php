@@ -51,4 +51,9 @@ class Preview extends Base
     {
         $this->rpc('MovimTpl.fill', '#preview', '');
     }
+
+    public function ajaxCopyNotify()
+    {
+        Toast::send($this->__('preview.link_copied'));
+    }
 }
