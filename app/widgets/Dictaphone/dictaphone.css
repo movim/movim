@@ -1,0 +1,65 @@
+#dictaphone_widget {
+    display: none;
+    overflow: hidden;
+    margin: 0 0.5rem;
+}
+
+#dictaphone_widget.show {
+    display: block;
+    border-top: 1px solid rgba(var(--movim-font), 0.12);
+}
+
+#dictaphone_widget li {
+    padding: 0.5rem 0;
+}
+
+#dictaphone_widget li #play_pause:not(.enabled) {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+#dictaphone_widget li #play_pause:not(.enabled) ~ #audio_upload {
+    display: none;
+}
+
+#dictaphone_widget li div {
+    display: flex;
+}
+
+#dictaphone_widget li div #timer {
+    width: 13rem;
+    line-height: 5rem;
+}
+
+#dictaphone_widget li div p.rec {
+    font-size: 2rem;
+    font-weight: bold;
+    filter: saturate(0);
+    line-height: 5rem;
+}
+
+#dictaphone_widget li div input[type=range] {
+    width: 100%;
+}
+
+
+@media screen and (max-width: 1024px) {
+    #dictaphone_widget li div input[type=range] {
+        display: none;
+    }
+
+    #dictaphone_widget li div #timer {
+        width: 100%;
+    }
+}
+
+#dictaphone_widget li div p.rec:before {
+    font-family: 'Material Icons';
+    content: "\e061";
+    vertical-align: bottom;
+    margin-right: 0.5rem;
+}
+
+#dictaphone_widget li span#record:active ~ div p.rec  {
+    filter: saturate(1);
+}

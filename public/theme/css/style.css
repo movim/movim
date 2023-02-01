@@ -530,6 +530,35 @@ img.transparent {
     background-position: 0 0, 15px 15px;
 }
 
+/* Audio player */
+
+.audio_player {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.audio_player .button {
+    padding: 0;
+}
+
+div.bubble .audio_player p {
+    min-width: 10rem;
+    text-align: center;
+    margin: 0 1rem;
+}
+
+.audio_player input[type=range] {
+    margin: 0 1rem;
+}
+
+@media screen and (max-width: 1024px) {
+    .audio_player input[type=range] {
+        width: 15rem;
+    }
+}
+
 /* Animations */
 
 @keyframes fadein {

@@ -1364,7 +1364,7 @@ var Chat = {
 
 
         var playPauseButton = document.createElement('span');
-        playPauseButton.classList.add('button', 'flat', 'color');
+        playPauseButton.classList.add('button', 'flat','gray');
         playPauseButton.classList.add('play_pause');
         var i = document.createElement('i');
         i.className = 'material-icons';
@@ -1373,19 +1373,19 @@ var Chat = {
 
         div.appendChild(playPauseButton);
 
+        var timer = document.querySelector('p');
+        timer.classList.add('timer');
+
+        div.appendChild(timer);
+
         var progressBar = document.createElement('input');
         progressBar.type = 'range';
         progressBar.value = 0;
         progressBar.setAttribute('min', 0);
         progressBar.setAttribute('max', 100);
-        progressBar.setAttribute('step', 1);
+        progressBar.setAttribute('step', 0.1);
 
         div.appendChild(progressBar);
-
-        var timer = document.querySelector('p');
-        timer.classList.add('timer');
-
-        div.appendChild(timer);
 
         var downloadButton = document.createElement('a');
         downloadButton.classList.add('button', 'flat', 'gray');

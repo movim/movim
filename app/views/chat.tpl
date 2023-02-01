@@ -27,6 +27,7 @@
     </div>
 </main>
 
+<?php $this->widget('Dictaphone');?>
 <?php $this->widget('Snap');?>
 <?php $this->widget('Tabs');?>
 <?php $this->widget('Draw');?>

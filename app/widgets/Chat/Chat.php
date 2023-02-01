@@ -1,5 +1,7 @@
 <?php
 
+include_once WIDGETS_PATH.'Dictaphone/Dictaphone.php';
+
 use Moxl\Xec\Action\Message\Publish;
 use Moxl\Xec\Action\Message\Reactions;
 
@@ -7,7 +9,6 @@ use Moxl\Xec\Action\Muc\GetConfig;
 use Moxl\Xec\Action\Muc\SetConfig;
 
 use App\Contact;
-use App\Roster;
 use App\Message;
 use App\MessageFile;
 use App\MessageOmemoHeader;
@@ -29,7 +30,6 @@ class Chat extends \Movim\Widget\Base
     private $_wrapper = [];
     private $_messageTypes = ['chat', 'headline', 'invitation', 'jingle_incoming', 'jingle_outgoing', 'jingle_end'];
     private $_mucPresences = [];
-    private $_reactionsTruename = [];
 
     public function load()
     {
@@ -373,6 +373,8 @@ class Chat extends \Movim\Widget\Base
 
                 $this->rpc('MovimTpl.showPanel');
                 $this->rpc('Chat.focus');
+
+                (new \Dictaphone)->ajaxHttpGet();
             }
 
             $this->rpc('Chat.setObservers');
@@ -420,6 +422,8 @@ class Chat extends \Movim\Widget\Base
 
                 $this->rpc('MovimTpl.showPanel');
                 $this->rpc('Chat.focus');
+
+                (new \Dictaphone)->ajaxHttpGet();
             }
 
             $this->rpc('Chat.setObservers');

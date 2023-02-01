@@ -460,6 +460,11 @@ ul li.oppose div.bubble.file div.audio_player {
     padding: 1rem 1rem 1rem 1.5rem;
 }
 
+ul li.oppose div.bubble.file div.audio_player  {
+    padding: 0.5rem;
+    margin-bottom: 0.25rem;
+}
+
 ul li div.bubble p i.icon {
     margin-right: 0.25rem;
 }

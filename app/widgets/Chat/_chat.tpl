@@ -23,6 +23,7 @@
     <ul class="list fill">
         <div id="reply"></div>
         <div id="attach"></div>
+        <div id="dictaphone"></div>
         <li class="emojis"></li>
         <li>
             <span class="primary icon gray primary_action"
@@ -30,6 +31,13 @@
                   onclick="Stickers_ajaxShow('{$jid}')">
                 <i class="material-icons flip-vert">note</i>
             </span>
+            {if="$c->getUser()->hasUpload()"}
+                <span class="emojis control icon gray primary_action"
+                        title="{$c->__('chat.dictaphone')}"
+                        onclick="Dictaphone.toggle()">
+                    <i class="material-icons">mic</i>
+                </span>
+            {/if}
             <span class="emojis control icon gray primary_action on_desktop"
                     title="{$c->__('sticker.title')}"
                     onclick="Stickers_ajaxReaction()">
