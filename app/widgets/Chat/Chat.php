@@ -7,6 +7,7 @@ use Moxl\Xec\Action\Muc\GetConfig;
 use Moxl\Xec\Action\Muc\SetConfig;
 
 use App\Contact;
+use App\Roster;
 use App\Message;
 use App\MessageFile;
 use App\MessageOmemoHeader;
@@ -28,6 +29,7 @@ class Chat extends \Movim\Widget\Base
     private $_wrapper = [];
     private $_messageTypes = ['chat', 'headline', 'invitation', 'jingle_incoming', 'jingle_outgoing', 'jingle_end'];
     private $_mucPresences = [];
+    private $_reactionsTruename = [];
 
     public function load()
     {
@@ -151,7 +153,7 @@ class Chat extends \Movim\Widget\Base
         && $message->seen == false
         && $message->jidfrom != $message->jidto) {
             $from = $message->jidfrom;
-            $contact = App\Contact::firstOrNew(['id' => $from]);
+            $contact = Contact::firstOrNew(['id' => $from]);
 
             $conference = $message->isMuc()
                 ? $this->user->session
@@ -1098,12 +1100,12 @@ class Chat extends \Movim\Widget\Base
             $view = $this->tpl();
             $view->assign('jid', $jid);
 
-            $view->assign('contact', \App\Contact::firstOrNew(['id' => $jid]));
+            $view->assign('contact', Contact::firstOrNew(['id' => $jid]));
             $view->assign('me', false);
             $view->assign('muc', $muc);
             $left = $view->draw('_chat_bubble');
 
-            $view->assign('contact', \App\Contact::firstOrNew(['id' => $this->user->id]));
+            $view->assign('contact', Contact::firstOrNew(['id' => $this->user->id]));
             $view->assign('me', true);
             $view->assign('muc', $muc);
             $right = $view->draw('_chat_bubble');
@@ -1493,7 +1495,14 @@ class Chat extends \Movim\Widget\Base
                 $merged[$reaction->emoji] = [];
             }
 
-            $merged[$reaction->emoji][] = $reaction->jidfrom;
+            if (!$message->isMuc() && !array_key_exists($reaction->jidfrom, $this->_reactionsTruename)) {
+                $contact = Contact::where('id', $reaction->jidfrom)->first();
+                $this->_reactionsTruename[$reaction->jidfrom] = $contact ?? Roster::where('jid', $reaction->jidfrom)->first();
+            }
+
+            $merged[$reaction->emoji][] = $this->_reactionsTruename[$reaction->jidfrom]
+                ? $this->_reactionsTruename[$reaction->jidfrom]->truename
+                : $reaction->jidfrom;
         }
 
         $view->assign('message', $message);
@@ -1536,7 +1545,7 @@ class Chat extends \Movim\Widget\Base
             }
         } else {
             $view->assign('roster', $this->user->session->contacts()->where('jid', $jid)->first());
-            $view->assign('contact', \App\Contact::firstOrNew(['id' => $jid]));
+            $view->assign('contact', Contact::firstOrNew(['id' => $jid]));
         }
 
         return $view->draw('_chat_header');
