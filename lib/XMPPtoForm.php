@@ -1,5 +1,7 @@
 <?php
 
+use Movim\Route;
+
 class XMPPtoForm
 {
     private $xmpp;
@@ -79,7 +81,7 @@ class XMPPtoForm
                             case 'jid-single':
                                 $this->outLabel($this->html, $element);
                                 $link = $this->html->createElement('a', (string)$element->value);
-                                $link->setAttribute('href', Router::urlize('contact', $element->value));
+                                $link->setAttribute('href', Route::urlize('contact', $element->value));
                                 $this->html->appendChild($link);
                                 break;
                             default:
@@ -173,7 +175,7 @@ class XMPPtoForm
                     $idx = array_search((string)$element->attributes()->var, $cols);
                     if ($colType[$idx] == 'jid-single') {
                         $link = $this->html->createElement('a', (string)$element->value);
-                        $link->setAttribute('href', Router::urlize('contact', $element->value));
+                        $link->setAttribute('href', Route::urlize('contact', $element->value));
                         $cells[$idx] = $this->html->createElement('td');
                         $cells[$idx]->appendChild($link);
                     } else {
