@@ -1373,7 +1373,7 @@ var Chat = {
 
         div.appendChild(playPauseButton);
 
-        var timer = document.querySelector('p');
+        var timer = document.createElement('p');
         timer.classList.add('timer');
 
         div.appendChild(timer);
