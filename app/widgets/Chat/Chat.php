@@ -1495,14 +1495,7 @@ class Chat extends \Movim\Widget\Base
                 $merged[$reaction->emoji] = [];
             }
 
-            if (!$message->isMuc() && !array_key_exists($reaction->jidfrom, $this->_reactionsTruename)) {
-                $contact = Contact::where('id', $reaction->jidfrom)->first();
-                $this->_reactionsTruename[$reaction->jidfrom] = $contact ?? Roster::where('jid', $reaction->jidfrom)->first();
-            }
-
-            $merged[$reaction->emoji][] = $this->_reactionsTruename[$reaction->jidfrom]
-                ? $this->_reactionsTruename[$reaction->jidfrom]->truename
-                : $reaction->jidfrom;
+            $merged[$reaction->emoji][] = $reaction->jidfrom;
         }
 
         $view->assign('message', $message);

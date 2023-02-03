@@ -1,5 +1,5 @@
 {loop="$reactions"}
-    <li title="{$value|implodeCsv}"
+    <li {if="$message->isMuc()"}title="{$value|implodeCsv}"{/if}
         {if="in_array($me, $value)"}class="reacted"{/if}
         onclick="Chat_ajaxHttpDaemonSendReaction('{$message->mid}', '{$key}')">
         {autoescape="off"}
