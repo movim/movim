@@ -11,7 +11,13 @@ var Dictaphone = {
     audioStream: null,
 
     toggle: function () {
-        document.querySelector('#dictaphone_widget').classList.toggle('show');
+        let classList = document.querySelector('#dictaphone_widget').classList;
+        if (classList.contains('show')) {
+            classList.remove('show');
+            Dictaphone.clear();
+        } else {
+            classList.add('show');
+        }
     },
 
     init: function () {
@@ -37,6 +43,12 @@ var Dictaphone = {
 
     record: function () {
         const constraints = { audio: true };
+
+        if (localStorage.getItem('defaultMicrophone')) {
+            constraints.audio = {
+                deviceId: localStorage.getItem('defaultMicrophone')
+            }
+        }
 
         let mouseDownOnSlider = false;
 
