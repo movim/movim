@@ -55,7 +55,7 @@ var Dictaphone = {
         navigator.mediaDevices.getUserMedia(constraints).then(audioStream => {
             Dictaphone.audioStream = audioStream;
 
-            Dictaphone.mediaRecorder = new MediaRecorder(audioStream, { mimeType: 'audio/ogg; codecs=opus' });
+            Dictaphone.mediaRecorder = new MediaRecorder(audioStream, { mimeType: 'audio/webm; codecs=opus' });
 
             Dictaphone.mediaRecorder.ondataavailable = function (e) {
                 Dictaphone.chunks.push(e.data);
@@ -92,7 +92,7 @@ var Dictaphone = {
             }
 
             Dictaphone.audio.ontimeupdate = function () {
-                if (!mouseDownOnSlider) {
+                if (!mouseDownOnSlider && Dictaphone.audio.duration) {
                     Dictaphone.progressBar.value = Dictaphone.audio.currentTime / Dictaphone.audio.duration * 100;
                 }
 
@@ -133,7 +133,7 @@ var Dictaphone = {
     },
 
     updateRecordTimer: function () {
-        Dictaphone.timer.innerHTML = (Dictaphone.audio && Dictaphone.audio.duration > 0)
+        Dictaphone.timer.innerHTML = (Dictaphone.audio && Number.isFinite(Dictaphone.audio.duration))
             ? MovimUtils.cleanTime(Dictaphone.audio.currentTime) + ' / ' + MovimUtils.cleanTime(Dictaphone.audio.duration)
             : Dictaphone.timer.innerHTML = MovimUtils.cleanTime(0) + ' / ' + MovimUtils.cleanTime(Dictaphone.recordTimer);
     },

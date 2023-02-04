@@ -42,6 +42,10 @@
     width: 100%;
 }
 
+#dictaphone_widget li #play_pause:not(.enabled) ~ div input[type=range] {
+    pointer-events: none;
+    opacity: 0.5;
+}
 
 @media screen and (max-width: 1024px) {
     #dictaphone_widget li div input[type=range] {

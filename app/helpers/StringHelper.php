@@ -329,7 +329,7 @@ function typeIsAudio(string $type): bool
         $type,
         [
             'audio/aac', 'audio/ogg', 'video/ogg', 'audio/opus',
-            'audio/vorbis', 'audio/speex', 'audio/mpeg'
+            'audio/vorbis', 'audio/speex', 'audio/mpeg', 'audio/webm'
         ]
     );
 }

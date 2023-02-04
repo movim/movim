@@ -732,13 +732,15 @@ var Chat = {
 
             audio.onloadeddata = function () {
                 progressBar.value = 0;
-                timer.innerHTML = MovimUtils.cleanTime(audio.currentTime) + ' / ' + MovimUtils.cleanTime(audio.duration);
+                timer.innerHTML = MovimUtils.cleanTime(audio.currentTime) + ' / ' + MovimUtils.cleanTime(0);
             }
 
             audio.ontimeupdate = function () {
                 if (!mouseDownOnSlider) {
                     progressBar.value = audio.currentTime / audio.duration * 100;
-                    timer.innerHTML = MovimUtils.cleanTime(audio.currentTime) + ' / ' + MovimUtils.cleanTime(audio.duration);
+                    timer.innerHTML = MovimUtils.cleanTime(audio.currentTime)
+                        + ' / '
+                        + MovimUtils.cleanTime(Number.isFinite(audio.duration) ? audio.duration : 0);
                 }
             }
 
