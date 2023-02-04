@@ -17,6 +17,7 @@ var Dictaphone = {
             Dictaphone.clear();
         } else {
             classList.add('show');
+            Chat.scrollTotally();
         }
     },
 
