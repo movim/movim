@@ -154,12 +154,6 @@ class PostPublish extends Errors
 
     public function handle($stanza, $parent = false)
     {
-        $g = new GetItem;
-        $g->setTo($this->_to)
-          ->setNode($this->_node)
-          ->setId($this->_atom->id)
-          ->request();
-
         $this->pack([
             'to'        => $this->_to,
             'node'      => $this->_node,
