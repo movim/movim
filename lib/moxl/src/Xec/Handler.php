@@ -101,16 +101,22 @@ class Handler
             }
         }
 
+        $handledFirst = $handledSecond = false;
+
         if ($s->items && $s->items->attributes()->node) {
             $node = (string)$s->items->attributes()->node;
             $hash = md5($name.$ns.$node);
             \Utils::info('Handler : Searching a payload for "'.$name . ':' . $ns . ' [' . $node . ']", "'.$hash.'"');
-            Handler::searchPayload($hash, $s, $sparent);
+            $handledFirst = Handler::searchPayload($hash, $s, $sparent);
         }
 
         $hash = md5($name.$ns);
         \Utils::info('Handler : Searching a payload for "'.$name . ':' . $ns . '", "'.$hash.'"');
-        Handler::searchPayload($hash, $s, $sparent);
+        $handledSecond = Handler::searchPayload($hash, $s, $sparent);
+
+        if ($name == 'iq' && !$handledFirst && !$handledSecond) {
+            Handler::searchPayload('iq_error', $s, $sparent);
+        }
     }
 
     public static function searchPayload($hash, $s, $sparent = false): bool
@@ -184,7 +190,10 @@ class Handler
             'de175adc9063997df5b79817576ff659' => 'SASLFailure',
             '0bc0f510b2b6ac432e8605267ebdc812' => 'SessionBind',
             '128477f50347d98ee1213d71f27e8886' => 'SessionBind',
+
+            'iq_error' => 'IqError',
         ];
+
         if (isset($hashToClass[$hash])) {
             $classname = '\\Moxl\\Xec\\Payload\\'.$hashToClass[$hash];
 
