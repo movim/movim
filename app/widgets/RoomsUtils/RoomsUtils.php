@@ -362,11 +362,13 @@ class RoomsUtils extends Base
         $view->assign('username', $this->user->session->username);
         $view->assign(
             'gateways',
-            \App\Info::whereIn('server', function ($query) {
-                $query->select('jid')->from('presences');
-            })
-            ->whereCategory('gateway')
-            ->get()
+            \App\Info::select('name', 'server', 'parent')
+                ->whereCategory('gateway')
+                ->whereNotNull('parent')
+                ->groupBy('name', 'server', 'parent')
+                ->orderBy('parent')
+                ->orderBy('server')
+                ->get()
         );
 
         $this->rpc('Rooms.setDefaultServices', $this->user->session->getChatroomsServices());
