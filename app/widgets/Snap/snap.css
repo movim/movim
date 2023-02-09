@@ -58,12 +58,8 @@
     right: 0;
 }
 
-#snap span#snapswitch {
+#snap span#snapswitch:not(.enabled) {
     display: none;
-}
-
-#snap span#snapswitch.enabled {
-    display: inherit;
 }
 
 #snap span#snapclose {
