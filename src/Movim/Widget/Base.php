@@ -44,34 +44,34 @@ class Base
             return;
         }
 
-        // Put default widget init here.
-        $this->ajax = Ajax::getInstance();
+        if (php_sapi_name() != 'cli') {
+            // Put default widget init here.
+            $this->ajax = Ajax::getInstance();
 
-        if (!$this->ajax->isRegistered($this->name)) {
-            // Generating Ajax calls.
-            $refl = new \ReflectionClass($this->name);
-            $meths = $refl->getMethods();
+            if (!$this->ajax->isRegistered($this->name)) {
+                // Generating Ajax calls.
+                $refl = new \ReflectionClass($this->name);
+                $meths = $refl->getMethods();
 
-            foreach ($meths as $method) {
-                if (preg_match('#^ajax#', $method->name)) {
-                    $pars = $method->getParameters();
-                    $params = [];
-                    foreach ($pars as $param) {
-                        $params[] = $param->name;
+                foreach ($meths as $method) {
+                    if (preg_match('#^ajax#', $method->name)) {
+                        $pars = $method->getParameters();
+                        $params = [];
+                        foreach ($pars as $param) {
+                            $params[] = $param->name;
+                        }
+
+                        $this->ajax->defineFunction(
+                            $this->name,
+                            $method->name,
+                            $params
+                        );
                     }
-
-                    $this->ajax->defineFunction(
-                        $this->name,
-                        $method->name,
-                        $params
-                    );
                 }
+
+                $this->ajax->register($this->name);
             }
 
-            $this->ajax->register($this->name);
-        }
-
-        if (php_sapi_name() != 'cli') {
             $config = [
                 'tpl_dir'       => $this->respath('', true),
                 'cache_dir'     => CACHE_PATH,
