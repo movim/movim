@@ -78,12 +78,12 @@ class Handler
         } else {
             \Utils::info("Handler : No memory instance found for {$id}");
 
-            $handled = Handler::handleNode($child);
+            Handler::handleNode($child);
 
             foreach ($child->children() as $s1) {
-                $handled = Handler::handleNode($s1, $child);
+                Handler::handleNode($s1, $child);
                 foreach ($s1->children() as $s2) {
-                    $handled = Handler::handleNode($s2, $child);
+                    Handler::handleNode($s2, $child);
                 }
             }
         }

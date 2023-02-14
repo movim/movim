@@ -245,11 +245,6 @@ class Bootstrap
         date_default_timezone_set("UTC");
     }
 
-    private function setLogLevel()
-    {
-        define('LOG_LEVEL', (int)Configuration::get()->loglevel);
-    }
-
     private function startingSession()
     {
         if (SESSION_ID !== null) {

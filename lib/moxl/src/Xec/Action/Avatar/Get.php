@@ -20,7 +20,7 @@ class Get extends Action
     {
         $contact = \App\Contact::firstOrNew(['id' => $this->_to]);
         $contact->photobin  = (string)$stanza->pubsub->items->item->data;
-        $contact->createThumbnails();
+        $contact->saveBinAvatar();
         $contact->save();
 
         $this->pack($contact);

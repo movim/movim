@@ -19,8 +19,6 @@ class Base
     protected $name;
     protected $view;
 
-    protected $pure;        // To render the widget without the container
-
     protected $_view;
 
     public $events;
@@ -62,13 +60,15 @@ class Base
                         $params[] = $param->name;
                     }
 
-                    $this->ajax->defun(
+                    $this->ajax->defineFunction(
                         $this->name,
                         $method->name,
                         $params
                     );
                 }
             }
+
+            $this->ajax->register($this->name);
         }
 
         if (php_sapi_name() != 'cli') {
@@ -84,8 +84,6 @@ class Base
             $this->view->objectConfigure($config);
 
             $this->view->assign('c', $this);
-
-            $this->pure = false;
         }
     }
 

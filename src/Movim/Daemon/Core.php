@@ -6,10 +6,9 @@
 
 namespace Movim\Daemon;
 
-use App\Cache;
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
-use Symfony\Component\Console\Input\InputInterface;
+
 use Dflydev\FigCookies\Cookies;
 
 use Movim\Daemon\Session;

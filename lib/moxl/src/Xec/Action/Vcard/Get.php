@@ -34,7 +34,7 @@ class Get extends Action
     {
         $contact = \App\Contact::firstOrNew(['id' => $this->_to]);
         $contact->set($stanza, $this->_to);
-        $contact->createThumbnails();
+        $contact->saveBinAvatar();
 
         $notify = true;
 

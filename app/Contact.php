@@ -112,7 +112,7 @@ class Contact extends Model
         }
     }
 
-    public function createThumbnails()
+    public function saveBinAvatar()
     {
         if (!$this->photobin) {
             return;

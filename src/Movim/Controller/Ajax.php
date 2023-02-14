@@ -71,18 +71,24 @@ class Ajax extends Base
     /**
      * Check if the widget is registered
      */
-    public function isRegistered($widget)
+    public function isRegistered($widget): bool
     {
-        return array_key_exists($widget, $this->widgetlist);
+        return in_array($widget, $this->widgetlist);
+    }
+
+    /**
+     * Register a widget
+     */
+    public function register(string $widget)
+    {
+        array_push($this->widgetlist, $widget);
     }
 
     /**
      * Defines a new function.
      */
-    public function defun($widget, $funcname, array $params)
+    public function defineFunction(string $widget, string $funcname, array $params)
     {
-        array_push($this->widgetlist, $widget);
-
         $http = 0;
         if (preg_match('#^ajaxHttp#', $funcname)) $http = 1;
         if (preg_match('#^ajaxHttpDaemon#', $funcname)) $http = 2;

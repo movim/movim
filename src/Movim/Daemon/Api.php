@@ -9,7 +9,6 @@ namespace Movim\Daemon;
 use Movim\Bootstrap;
 
 use Psr\Http\Message\ServerRequestInterface;
-use React\EventLoop\LoopInterface;
 
 use React\Http\HttpServer;
 use React\Http\Message\Response;

@@ -18,7 +18,6 @@ use Ratchet\WebSocket\WsServer;
 
 use Movim\Daemon\Core;
 use Movim\Daemon\Api;
-use Movim\i18n\Locale;
 use App\User;
 
 use Phinx\Migration\Manager;
