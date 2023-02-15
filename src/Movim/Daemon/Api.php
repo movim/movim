@@ -48,6 +48,10 @@ class Api
                 case 'session':
                     $response = $api->getSession();
                     break;
+
+                case 'purifyhtml':
+                    $response = $api->purifyHtml($request->getParsedBody());
+                    break;
             }
 
             return new Response(
@@ -78,6 +82,11 @@ class Api
 
         return (array_key_exists($sid, $sessions)
         && $sessions[$sid] == true);
+    }
+
+    public function purifyHtml($post)
+    {
+        return purifyHTML(html_entity_decode($post['content']));
     }
 
     public function sessionsLinked()

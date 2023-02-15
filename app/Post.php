@@ -455,7 +455,7 @@ class Post extends Model
         $hash = hash('sha256', $this->content);
 
         if ($this->contenthash !== $hash) {
-            $this->contentcleaned = purifyHTML(html_entity_decode($this->content));
+            $this->contentcleaned = requestAPI('purifyhtml', 2, ['content' => $this->content]);
             $this->contenthash = $hash;
         }
 
