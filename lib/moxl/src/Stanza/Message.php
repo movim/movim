@@ -93,7 +93,11 @@ class Message
             $root->appendChild($chatstate);
 
             $body = $dom->createElement('body');
-            $bodyContent = $dom->createTextNode($content);
+
+
+            $bodyContent = (preg_match('(>|<|&)', $content) === 1)
+                ? $dom->createCDATASection($content)
+                : $dom->createTextNode($content);
             $body->appendChild($bodyContent);
             $root->appendChild($body);
         }
