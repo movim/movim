@@ -11,6 +11,6 @@
 
 {if="!empty($reactions)"}
     <li onclick="Stickers_ajaxReaction('{$message->mid}')" title="{$c->__('message.react')}">
-        +<i class="material-icons">mood</i>
+        <i class="material-icons">add_reaction</i>
     </li>
 {/if}

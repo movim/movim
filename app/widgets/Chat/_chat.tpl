@@ -41,7 +41,7 @@
             <span class="emojis control icon gray primary_action on_desktop"
                     title="{$c->__('sticker.title')}"
                     onclick="Stickers_ajaxReaction()">
-                <i class="material-icons">face</i>
+                <i class="material-icons">emoji_emotions</i>
             </span>
             {if="$c->getUser()->hasUpload()"}
                 <span class="attach control icon" onclick="Chat.toggleAttach()">

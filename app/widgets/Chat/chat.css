@@ -489,6 +489,7 @@ main:not(.enabled) #chat_widget {
 #chat_widget .bubble ul.reactions {
     margin-bottom: -0.25rem;
     margin-right: 5rem;
+    display: flex;
 }
 
 #chat_widget .bubble:not(.file) ul.reactions {
@@ -504,11 +505,15 @@ main:not(.enabled) #chat_widget {
     padding: 0 0.5rem;
     border-radius: 0.5rem;
     line-height: 3rem;
-    font-size: 1.75rem;
+    font-size: 2rem;
     margin: 0.25rem 0;
     display: inline-flex;
     z-index: 1;
     border: solid 1px transparent;
+}
+
+#chat_widget .bubble ul.reactions li {
+    margin-right: 0.5rem;
 }
 
 #chat_widget .bubble > div {
@@ -538,11 +543,11 @@ main:not(.enabled) #chat_widget {
     display: inline-flex;
     position: absolute;
     left: 100%;
-    transform: translate(-1.5rem, -0.25rem);
+    transform: translate(-0.75rem, -0.25rem);
 }
 
 #chat_widget li:not(.oppose) .bubble div:hover ul.reactions:empty ~ span.reaction + span.reply {
-    margin-left: 4rem;
+    margin-left: 3.5rem;
 }
 
 #chat_widget li:not(.oppose) .bubble div:hover ul.reactions:not(:empty) ~ span.reply,
