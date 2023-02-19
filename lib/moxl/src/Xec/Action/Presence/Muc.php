@@ -9,6 +9,8 @@ use App\PresenceBuffer;
 
 class Muc extends Action
 {
+    public static $mucId = 'MUC_ID';
+
     protected $_to;
     protected $_nickname;
     protected $_mam = false;
@@ -36,7 +38,7 @@ class Muc extends Action
          * Some servers doesn't return the ID, so save it in another session key-value
          * and use the to and nickname as a key ¯\_(ツ)_/¯
          */
-        $session->set($this->_to . '/' .$this->_nickname, $this->stanzaId);
+        $session->set(self::$mucId . $this->_to . '/' . $this->_nickname, $this->stanzaId);
 
         Presence::muc($this->_to, $this->_nickname, $this->_mam);
     }
@@ -76,17 +78,19 @@ class Muc extends Action
 
         if ($this->_mam) {
             $message = \App\User::me()->messages()
-                                    ->where('jidfrom', $this->_to)
-                                    ->whereNull('subject')
-                                    ->orderBy('published', 'desc')
-                                    ->first();
+                ->where('jidfrom', $this->_to)
+                ->whereNull('subject')
+                ->orderBy('published', 'desc')
+                ->first();
 
             $g = new \Moxl\Xec\Action\MAM\Get;
             $g->setTo($this->_to)
-              ->setLimit(300);
+                ->setLimit(300);
 
-            if (!empty($message)
-            && strtotime($message->published) > strtotime('-3 days')) {
+            if (
+                !empty($message)
+                && strtotime($message->published) > strtotime('-3 days')
+            ) {
                 $g->setStart(strtotime($message->published));
             } else {
                 $g->setStart(strtotime('-3 days'));
@@ -184,7 +188,7 @@ class Muc extends Action
         if (substr_count($this->_nickname, '_') > 5) {
             $this->deliver();
         } else {
-            $this->setNickname($this->_nickname.'_');
+            $this->setNickname($this->_nickname . '_');
             $this->request();
         }
     }

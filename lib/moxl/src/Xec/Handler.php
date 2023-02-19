@@ -14,21 +14,6 @@ class Handler
 
         $session = Session::start();
 
-        /**
-         * See Action/Presence/Muc
-         */
-        if ($child->getName() == 'presence' && isset($child->x)) {
-            foreach ($child->x as $x) {
-                if ($x->attributes()->xmlns == 'http://jabber.org/protocol/muc') {
-                    if ($id === '') {
-                        $id = $session->get((string)$child->attributes()->from);
-                    }
-
-                    $session->delete((string)$child->attributes()->from);
-                }
-            }
-        }
-
         if ($id !== ''
         && $session->get($id) !== null) {
             \Utils::info("Handler : Memory instance found for {$id}");

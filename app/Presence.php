@@ -5,6 +5,7 @@ namespace App;
 use Movim\Model;
 use Movim\Image;
 use Movim\Session;
+use Moxl\Xec\Action\Presence\Muc;
 
 class Presence extends Model
 {
@@ -26,13 +27,13 @@ class Presence extends Model
     public function roster()
     {
         return $this->hasOne('App\Roster', 'jid', 'jid')
-                    ->where('session_id', $this->session_id);
+            ->where('session_id', $this->session_id);
     }
 
     public function capability()
     {
         return $this->hasOne('App\Info', 'node', 'node')
-                    ->whereNull('server');
+            ->whereNull('server');
     }
 
     public function contact()
@@ -99,15 +100,17 @@ class Presence extends Model
 
         if ($stanza->c) {
             $this->node = (string)$stanza->c->attributes()->node .
-                     '#'. (string)$stanza->c->attributes()->ver;
+                '#' . (string)$stanza->c->attributes()->ver;
         }
 
         $this->priority = ($stanza->priority) ? (int)$stanza->priority : 0;
 
         if ((string)$stanza->attributes()->type == 'error') {
             $this->value = 6;
-        } elseif ((string)$stanza->attributes()->type == 'unavailable'
-               || (string)$stanza->attributes()->type == 'unsubscribed') {
+        } elseif (
+            (string)$stanza->attributes()->type == 'unavailable'
+            || (string)$stanza->attributes()->type == 'unsubscribed'
+        ) {
             $this->value = 5;
         } elseif ((string)$stanza->show == 'away') {
             $this->value = 2;
@@ -123,9 +126,6 @@ class Presence extends Model
         if ($stanza->x) {
             foreach ($stanza->children() as $name => $c) {
                 switch ($c->attributes()->xmlns) {
-                    /*case 'jabber:x:signed' :
-                        $this->publickey = (string)$c;
-                        break;*/
                     case 'http://jabber.org/protocol/muc#user':
                         if (!isset($c->item)) {
                             break;
@@ -139,10 +139,11 @@ class Presence extends Model
                          * If we were trying to connect to that particular MUC
                          * See Moxl\Xec\Action\Presence\Muc
                          */
-                        if ($session->get((string)$stanza->attributes()->from)
-                        || (
-                            isset($c->status) && \in_array((int)$c->status->attributes()->code, [110, 332, 307, 301])
-                        )) {
+                        if (
+                            $session->get(Muc::$mucId . (string)$stanza->attributes()->from)
+                            || (isset($c->status) && \in_array((int)$c->status->attributes()->code, [110, 332, 307, 301])
+                            )
+                        ) {
                             $this->mucjid = \App\User::me()->id;
                         } elseif ($c->item->attributes()->jid) {
                             $this->mucjid = cleanJid((string)$c->item->attributes()->jid);
