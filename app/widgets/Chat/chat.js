@@ -1169,10 +1169,14 @@ var Chat = {
             // If the previous message was not a file or card and is replaced by it
             if (data.file != null || data.card != null) {
                 msg.parentElement.classList.add('file');
+            } else {
+                msg.parentElement.classList.remove('file');
             }
 
             if (data.sticker != null) {
                 msg.parentElement.classList.add('sticker');
+            } else {
+                msg.parentElement.classList.remove('sticker');
             }
         } else {
             if (prepend) {
