@@ -13,7 +13,7 @@ class Locale
     public $language;
     public $hash = [];
 
-    private $iniCache = CACHE_PATH_RESOLVED.'locales.ini.cache';
+    private $iniCache = CACHE_PATH_RESOLVED . 'locales.ini.cache';
 
     private function __construct()
     {
@@ -44,17 +44,16 @@ class Locale
         }
 
         $locales = fopen($this->iniCache, "w") or die("Unable to open file!");
-        fwrite($locales, '<?php' . PHP_EOL . '$hashes = '.var_export($this->hash,true) . ';' . PHP_EOL . '?>');
+        fwrite($locales, '<?php' . PHP_EOL . '$hashes = ' . var_export($this->hash, true) . ';' . PHP_EOL . '?>');
         fclose($locales);
     }
 
     public function compilePos()
     {
         // Clear
-        foreach (
-            glob(
-                CACHE_PATH.
-                '*.po.cache',
+        foreach (glob(
+                CACHE_PATH_RESOLVED .
+                    '*.po.cache',
                 GLOB_NOSORT
             ) as $cacheFile) {
             @unlink($cacheFile);
@@ -64,8 +63,8 @@ class Locale
         foreach (array_keys($this->getList()) as $language) {
             $this->load($language);
 
-            $locales = fopen(CACHE_PATH.$language.'.po.cache', "w") or die("Unable to open file!");
-            fwrite($locales, '<?php' . PHP_EOL . '$translations = '.var_export($this->translations, true) . ';' . PHP_EOL . '?>');
+            $locales = fopen(CACHE_PATH_RESOLVED . $language . '.po.cache', "w") or die("Unable to open file!");
+            fwrite($locales, '<?php' . PHP_EOL . '$translations = ' . var_export($this->translations, true) . ';' . PHP_EOL . '?>');
             fclose($locales);
         }
     }
@@ -108,8 +107,10 @@ class Locale
         $po = [];
         foreach ($dir as $files) {
             $explode = explode('.', $files);
-            if (end($explode) == 'po'
-            && array_key_exists($explode[0], $langList)) {
+            if (
+                end($explode) == 'po'
+                && array_key_exists($explode[0], $langList)
+            ) {
                 $po[$explode[0]] = $langList[$explode[0]];
             }
         }
@@ -132,9 +133,11 @@ class Locale
 
         $arr = explode('.', $key);
 
-        if (is_array($this->hash)
-        && array_key_exists($arr[0], $this->hash)
-        && array_key_exists($arr[1], $this->hash[$arr[0]])) {
+        if (
+            is_array($this->hash)
+            && array_key_exists($arr[0], $this->hash)
+            && array_key_exists($arr[1], $this->hash[$arr[0]])
+        ) {
             $skey = $this->hash[$arr[0]][$arr[1]];
 
             if ($this->language == 'en') {
@@ -143,9 +146,11 @@ class Locale
                 } else {
                     $string = $skey[0];
                 }
-            } elseif (is_array($this->translations)
-            && array_key_exists($skey, $this->translations)
-            && isset($this->translations[$skey])) {
+            } elseif (
+                is_array($this->translations)
+                && array_key_exists($skey, $this->translations)
+                && isset($this->translations[$skey])
+            ) {
                 $string = $this->translations[$skey];
             } else {
                 /*if ($this->language != 'en') {
@@ -154,7 +159,7 @@ class Locale
                 if (is_string($skey)) {
                     $string = $skey;
                 } else {
-                    \Utils::info('Locale: Double definition for "'.$key.'" got '.serialize($skey));
+                    \Utils::info('Locale: Double definition for "' . $key . '" got ' . serialize($skey));
                     $string = $skey[0];
                 }
             }
@@ -166,7 +171,7 @@ class Locale
 
             return $string;
         } else {
-            \Utils::info('Locale: Translation key "'.$key.'" not found');
+            \Utils::info('Locale: Translation key "' . $key . '" not found');
             return $arr[1];
         }
     }
@@ -256,9 +261,11 @@ class Locale
         $last_token = "";
 
         while ($line = fgets($handle)) {
-            if ($line[0] == "#"
-            || trim(rtrim($line)) == ""
-            || preg_match('#^msgctxt#', $line)) {
+            if (
+                $line[0] == "#"
+                || trim(rtrim($line)) == ""
+                || preg_match('#^msgctxt#', $line)
+            ) {
                 continue;
             }
 
