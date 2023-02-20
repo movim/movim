@@ -342,7 +342,7 @@
         </div>
     {/if}
 
-    {if="$banned->count() > 0"}
+    {if="$conference->presence && ($conference->presence->mucrole == 'moderator' || $conference->presence->mucaffiliation == 'owner')"}
         <div class="tabelem" title="{$c->__('chatrooms.banned')}" id="room_banned">
             <ul class="list">
                 <li class="active" onclick="RoomsUtils_ajaxAddBanned('{$conference->conference|echapJS}'); Drawer.clear();">
@@ -359,42 +359,49 @@
                     </div>
                 </li>
             </ul>
-            <ul class="list thin">
-                {loop="$banned"}
-                    <li title="{$value->truename}">
-                        {if="$value->contact && $url = $value->contact->getPhoto('s')"}
-                            <span class="primary icon bubble small">
-                                <img src="{$url}">
+
+            {if="$banned->count() > 0"}
+                <ul class="list thin">
+                    {loop="$banned"}
+                        <li title="{$value->truename}">
+                            {if="$value->contact && $url = $value->contact->getPhoto('s')"}
+                                <span class="primary icon bubble small">
+                                    <img src="{$url}">
+                                </span>
+                            {else}
+                                <span class="primary icon bubble small color {$value->jid|stringToColor}">
+                                    <i class="material-icons">people</i>
+                                </span>
+                            {/if}
+                            <span class="control icon gray active"
+                                    onclick="RoomsUtils_ajaxRemoveBanned('{$conference->conference|echapJS}', '{$value->jid|echapJS}'); Drawer.clear();"
+                                    title="{$c->__('room.banned_remove')}">
+                                <i class="material-icons">close</i>
                             </span>
-                        {else}
-                            <span class="primary icon bubble small color {$value->jid|stringToColor}">
-                                <i class="material-icons">people</i>
+                            <span class="control icon active gray divided" onclick="
+                                Chats_ajaxOpen('{$value->jid|echapJS}');
+                                Chat.get('{$value->jid|echapJS}');
+                                Drawer_ajaxClear();">
+                                <i class="material-icons">comment</i>
                             </span>
-                        {/if}
-                        <span class="control icon gray active"
-                              onclick="RoomsUtils_ajaxRemoveBanned('{$conference->conference|echapJS}', '{$value->jid|echapJS}'); Drawer.clear();"
-                              title="{$c->__('room.banned_remove')}">
-                            <i class="material-icons">close</i>
-                        </span>
-                        <span class="control icon active gray divided" onclick="
-                            Chats_ajaxOpen('{$value->jid|echapJS}');
-                            Chat.get('{$value->jid|echapJS}');
-                            Drawer_ajaxClear();">
-                            <i class="material-icons">comment</i>
-                        </span>
-                        <div>
-                            <p class="line normal">
-                                {if="$value->jid == $me"}
-                                    {$value->truename}
-                                {else}
-                                    <a href="{$c->route('contact', $value->jid)}">{$value->truename}</a>
-                                {/if}
-                            </p>
-                            <p class="line">{$value->jid}</p>
-                        </div>
-                    </li>
-                {/loop}
-            </ul>
+                            <div>
+                                <p class="line normal">
+                                    {if="$value->jid == $me"}
+                                        {$value->truename}
+                                    {else}
+                                        <a href="{$c->route('contact', $value->jid)}">{$value->truename}</a>
+                                    {/if}
+                                </p>
+                                <p class="line">{$value->jid}</p>
+                            </div>
+                        </li>
+                    {/loop}
+                </ul>
+            {else}
+                <div class="placeholder">
+                    <i class="material-icons">remove_circle_outline</i>
+                </div>
+            {/if}
         </div>
     {/if}
 

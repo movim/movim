@@ -141,8 +141,7 @@ class Presence extends Model
                          */
                         if (
                             $session->get(Muc::$mucId . (string)$stanza->attributes()->from)
-                            || (isset($c->status) && \in_array((int)$c->status->attributes()->code, [110, 332, 307, 301])
-                            )
+                            || (isset($c->status) && (int)$c->status->attributes()->code == 110)
                         ) {
                             $this->mucjid = \App\User::me()->id;
                         } elseif ($c->item->attributes()->jid) {
