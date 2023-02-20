@@ -13,7 +13,7 @@ class Locale
     public $language;
     public $hash = [];
 
-    private $iniCache = CACHE_PATH.'locales.ini.cache';
+    private $iniCache = CACHE_PATH_RESOLVED.'locales.ini.cache';
 
     private function __construct()
     {
@@ -233,7 +233,7 @@ class Locale
     public function loadPo()
     {
         // Load from the cache
-        $cacheFile = CACHE_PATH . $this->language . '.po.cache';
+        $cacheFile = CACHE_PATH_RESOLVED . $this->language . '.po.cache';
         if (file_exists($cacheFile) && is_readable($cacheFile)) {
             include $cacheFile;
             $this->translations = $translations;

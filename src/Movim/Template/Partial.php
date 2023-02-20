@@ -18,7 +18,7 @@ class Partial extends Tpl
     {
         $this->objectConfigure([
             'tpl_dir'       => APP_PATH.'widgets/'.$widget->getName().'/',
-            'cache_dir'     => CACHE_PATH,
+            'cache_dir'     => CACHE_PATH_RESOLVED,
             'tpl_ext'       => 'tpl',
             'auto_escape'   => true
         ]);
@@ -50,7 +50,7 @@ class Partial extends Tpl
         } else {
             foreach (
                 glob(
-                    CACHE_PATH.
+                    CACHE_PATH_RESOLVED.
                     sha1(User::me()->id) .
                     '_' .
                     $templateFilePath .
@@ -76,6 +76,6 @@ class Partial extends Tpl
 
     private function resolvedCacheKey(string $templateFilePath, string $key): string
     {
-        return CACHE_PATH . sha1(User::me()->id) . '_' . $templateFilePath . '_' . cleanupId($key). $this->extension;
+        return CACHE_PATH_RESOLVED . sha1(User::me()->id) . '_' . $templateFilePath . '_' . cleanupId($key). $this->extension;
     }
 }

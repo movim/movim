@@ -16,7 +16,7 @@ class Utils
         $log = new Logger('movim');
         $log->pushHandler(new SyslogHandler('movim'));
 
-        $stream = new StreamHandler(LOG_PATH . '/errors.log');
+        $stream = new StreamHandler(LOG_PATH_RESOLVED . '/errors.log');
         $stream->setFormatter(new LineFormatter(null, null, true));
         $log->pushHandler($stream);
 
@@ -32,7 +32,7 @@ class Utils
             $log = new Logger('movim');
             $log->pushHandler(new SyslogHandler('movim'));
 
-            $stream = new StreamHandler(LOG_PATH . '/info.log');
+            $stream = new StreamHandler(LOG_PATH_RESOLVED . '/info.log');
             $stream->setFormatter(new LineFormatter(null, null, true));
             $log->pushHandler($stream);
 
@@ -46,7 +46,7 @@ class Utils
     public static function debug($logs)
     {
         $log = new Logger('movim');
-        $log->pushHandler(new StreamHandler(LOG_PATH . '/debug.log'));
+        $log->pushHandler(new StreamHandler(LOG_PATH_RESOLVED . '/debug.log'));
         if (is_array($logs)) {
             $log->debug('', $logs);
         } else {

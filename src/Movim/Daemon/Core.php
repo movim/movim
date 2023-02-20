@@ -41,8 +41,8 @@ class Core implements MessageComponentInterface
         DBSession::whereNotNull('id')->delete();
 
         // API_SOCKET ?
-        if (file_exists(CACHE_PATH . 'socketapi.sock')) {
-            unlink(CACHE_PATH . 'socketapi.sock');
+        if (file_exists(CACHE_PATH_RESOLVED . 'socketapi.sock')) {
+            unlink(CACHE_PATH_RESOLVED . 'socketapi.sock');
         }
 
         array_map('unlink', array_merge(
@@ -53,10 +53,10 @@ class Core implements MessageComponentInterface
         $this->registerCleaner();
 
         // Generate Push Notification
-        if (!file_exists(CACHE_PATH . 'vapid_keys.json')) {
+        if (!file_exists(CACHE_PATH_RESOLVED . 'vapid_keys.json')) {
             echo colorize("Generate and store the Push Notification VAPID keys", 'green')."\n";
             $keyset = VAPID::createVapidKeys();
-            file_put_contents(CACHE_PATH . 'vapid_keys.json', json_encode($keyset));
+            file_put_contents(CACHE_PATH_RESOLVED . 'vapid_keys.json', json_encode($keyset));
         }
     }
 

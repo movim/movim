@@ -8,7 +8,7 @@ class System extends Base
     {
         header('Content-Type: application/javascript');
 
-        $keys = json_decode(file_get_contents(CACHE_PATH . 'vapid_keys.json'));
+        $keys = json_decode(file_get_contents(CACHE_PATH_RESOLVED . 'vapid_keys.json'));
 
         $this->view->assign('base_host', BASE_HOST);
         $this->view->assign('base_uri', BASE_URI);
