@@ -1103,7 +1103,7 @@ var Chat = {
             reactions.innerHTML = data.reactionsHtml;
         }
 
-        if (isMuc) {
+        if (isMuc && data.resource) {
             var resourceSpan = document.createElement('span');
             resourceSpan.classList.add('resource');
             resourceSpan.classList.add(data.color);
@@ -1206,7 +1206,17 @@ var Chat = {
                     icon.innerHTML = data.icon;
                 }
 
-                icon.dataset.resource = data.resource;
+                if (data.resource) {
+                    icon.dataset.resource = data.resource;
+                } else {
+                    icon.innerHTML = '';
+
+                    var i = document.createElement('i');
+                    i.className = 'material-icons';
+                    i.innerText = 'notes';
+
+                    icon.appendChild(i);
+                }
             }
 
             if (data.quoted) {

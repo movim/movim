@@ -2,6 +2,7 @@
 
 namespace Moxl\Xec\Payload;
 
+use App\Message as Message;
 use Moxl\Stanza\Ack;
 use Moxl\Stanza\Jingle as JingleStanza;
 use Movim\Session;
@@ -15,14 +16,11 @@ class Jingle extends Payload
 
         $action = (string)$stanza->attributes()->action;
 
-        $userid = \App\User::me()->id;
-        $message = new \App\Message;
-        $message->user_id = $userid;
-        $message->id = 'm_' . generateUUID();
-        $message->jidto = $userid;
-        $message->jidfrom = baseJid((string)$from);
-        $message->published = gmdate('Y-m-d H:i:s');
-        $message->thread = (string)$stanza->attributes()->sid;
+        $message = Message::eventMessageFactory(
+            'jingle',
+            baseJid((string)$from),
+            (string)$stanza->attributes()->sid
+        );
 
         $sid = Session::start()->get('jingleSid');
 

@@ -152,6 +152,21 @@ class Message extends Model
         }
     }
 
+    public static function eventMessageFactory(string $type, string $from, string $thread): Message
+    {
+        $userid = \App\User::me()->id;
+        $message = new \App\Message;
+        $message->user_id = $userid;
+        $message->id = 'm_' . generateUUID();
+        $message->jidto = $userid;
+        $message->jidfrom = $from;
+        $message->published = gmdate('Y-m-d H:i:s');
+        $message->thread = $thread;
+        $message->type = $type;
+
+        return $message;
+    }
+
     public function clearUnreads()
     {
         if ($this->jidfrom == $this->user_id) {
