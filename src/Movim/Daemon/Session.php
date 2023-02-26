@@ -3,6 +3,7 @@
  * SPDX-FileCopyrightText: 2010 Jaussoin Timothée
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
+
 namespace Movim\Daemon;
 
 use Ratchet\ConnectionInterface;
@@ -16,7 +17,7 @@ class Session
     protected $sid;           // Session id
     protected $baseuri;
     public $process;       // Linker
-    public $internalSocket;// Linker to Session Websocket
+    public $internalSocket; // Linker to Session Websocket
 
     private $port;         // Daemon Websocket port
     private $key;          // Daemon secure key
@@ -31,6 +32,18 @@ class Session
 
     private $language;
     private $offset;
+
+    private $extensions = [
+        'xml',
+        'imagick',
+        'curl',
+        'dom',
+        'mbstring',
+        'pdo',
+        'pdo_pgsql',
+        'pdo_mysql',
+        'simplexml'
+    ];
 
     public function __construct(
         $loop,
@@ -65,7 +78,7 @@ class Session
         $this->clients->attach($conn);
 
         if ($this->verbose) {
-            echo colorize($this->sid, 'yellow'). " : ".colorize($conn->resourceId." connected\n", 'green');
+            echo colorize($this->sid, 'yellow') . " : " . colorize($conn->resourceId . " connected\n", 'green');
         }
 
         if ($this->countClients() > 0) {
@@ -78,7 +91,7 @@ class Session
         $this->internalSocket = $conn;
 
         if ($this->verbose) {
-            echo colorize($this->sid, 'yellow'). " : ".colorize($conn->resourceId." internal connected\n", 'green');
+            echo colorize($this->sid, 'yellow') . " : " . colorize($conn->resourceId . " internal connected\n", 'green');
         }
     }
 
@@ -87,7 +100,7 @@ class Session
         $this->clients->detach($conn);
 
         if ($this->verbose) {
-            echo colorize($this->sid, 'yellow'). " : ".colorize($conn->resourceId." deconnected\n", 'red');
+            echo colorize($this->sid, 'yellow') . " : " . colorize($conn->resourceId . " deconnected\n", 'red');
         }
 
         if ($this->countClients() == 0) {
@@ -107,9 +120,16 @@ class Session
 
     private function register($loop)
     {
+        // Only load the required extensions
+        $extensions = '-n ';
+
+        foreach ($this->extensions as $extension) {
+            $extensions .= '-dextension=' . $extension . '.so ';
+        }
+
         // Launching the linker
         $this->process = new \React\ChildProcess\Process(
-            'exec php linker.php ' . $this->sid,
+            'exec php '.$extensions.' linker.php ' . $this->sid,
             null,
             [
                 'sid'       => $this->sid,
@@ -127,7 +147,7 @@ class Session
         // The linker died, we close properly the session
         $this->process->on('exit', function ($output) {
             if ($this->verbose) {
-                echo colorize($this->sid, 'yellow'). " : ".colorize("linker killed \n", 'red');
+                echo colorize($this->sid, 'yellow') . " : " . colorize("linker killed \n", 'red');
             }
 
             $this->process = null;
