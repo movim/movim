@@ -129,7 +129,7 @@ class Session
 
         // Launching the linker
         $this->process = new \React\ChildProcess\Process(
-            'exec php '.$extensions.' linker.php ' . $this->sid,
+            'exec php '.$extensions.' -d=memory_limit=512M linker.php ' . $this->sid,
             null,
             [
                 'sid'       => $this->sid,
