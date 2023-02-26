@@ -76,7 +76,7 @@ class Front extends Base
 
             // Useful for the daemon
             if (php_sapi_name() != 'cli' && $request == 'login') {
-                file_put_contents(CACHE_PATH_RESOLVED.'baseuri', BASE_URI);
+                file_put_contents(CACHE_PATH.'baseuri', BASE_URI);
             }
 
             $c->name = $request;

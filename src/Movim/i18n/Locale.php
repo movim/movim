@@ -13,7 +13,7 @@ class Locale
     public $language;
     public $hash = [];
 
-    private $iniCache = CACHE_PATH_RESOLVED . 'locales.ini.cache';
+    private $iniCache = CACHE_PATH . 'locales.ini.cache';
 
     private function __construct()
     {
@@ -52,7 +52,7 @@ class Locale
     {
         // Clear
         foreach (glob(
-                CACHE_PATH_RESOLVED .
+                CACHE_PATH .
                     '*.po.cache',
                 GLOB_NOSORT
             ) as $cacheFile) {
@@ -63,7 +63,7 @@ class Locale
         foreach (array_keys($this->getList()) as $language) {
             $this->load($language);
 
-            $locales = fopen(CACHE_PATH_RESOLVED . $language . '.po.cache', "w") or die("Unable to open file!");
+            $locales = fopen(CACHE_PATH . $language . '.po.cache', "w") or die("Unable to open file!");
             fwrite($locales, '<?php' . PHP_EOL . '$translations = ' . var_export($this->translations, true) . ';' . PHP_EOL . '?>');
             fclose($locales);
         }
@@ -238,7 +238,7 @@ class Locale
     public function loadPo()
     {
         // Load from the cache
-        $cacheFile = CACHE_PATH_RESOLVED . $this->language . '.po.cache';
+        $cacheFile = CACHE_PATH . $this->language . '.po.cache';
         if (file_exists($cacheFile) && is_readable($cacheFile)) {
             include $cacheFile;
             $this->translations = $translations;

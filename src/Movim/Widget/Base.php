@@ -74,7 +74,7 @@ class Base
 
             $config = [
                 'tpl_dir'       => $this->respath('', true),
-                'cache_dir'     => CACHE_PATH_RESOLVED,
+                'cache_dir'     => CACHE_PATH,
                 'tpl_ext'       => 'tpl',
                 'auto_escape'   => true
             ];

@@ -23,13 +23,12 @@ class Bootstrap
 {
     public function boot($dbOnly = false)
     {
-        $this->setLogs();
         $this->loadHelpers();
+        $this->setLogs();
 
         if (!defined('APP_TITLE')) {
             $this->setConstants();
         }
-
         mb_internal_encoding('UTF-8');
 
         $this->loadCapsule();
@@ -51,7 +50,7 @@ class Bootstrap
 
     private function checkSystem()
     {
-        if (!file_exists(CACHE_PATH_RESOLVED) && !@mkdir(CACHE_PATH_RESOLVED)) {
+        if (!file_exists(CACHE_PATH) && !@mkdir(CACHE_PATH)) {
             throw new \Exception('Couldn’t create cache directory');
         }
 
@@ -59,7 +58,7 @@ class Bootstrap
             throw new \Exception('Couldn’t create public cache directory');
         }
 
-        if (!file_exists(LOG_PATH_RESOLVED) && !@mkdir(LOG_PATH_RESOLVED)) {
+        if (!file_exists(config('paths.log')) && !@mkdir(config('paths.log'))) {
             throw new \Exception('Couldn’t create log directory');
         }
     }
@@ -92,15 +91,14 @@ class Bootstrap
         define('VIEWS_PATH', DOCUMENT_ROOT . '/app/views/');
         define('WIDGETS_PATH', DOCUMENT_ROOT . '/app/widgets/');
 
-        define('LOG_PATH_RESOLVED', config('paths.log'));
-        define('CACHE_PATH_RESOLVED', config('paths.cache'));
+        define('CACHE_PATH', config('paths.cache'));
 
         define('MOVIM_SQL_DATE', 'Y-m-d H:i:s');
 
         define('DEFAULT_PICTURE_FORMAT', 'webp');
         define('DEFAULT_PICTURE_QUALITY', 95);
 
-        define('API_SOCKET', CACHE_PATH_RESOLVED . 'socketapi.sock');
+        define('API_SOCKET', CACHE_PATH . 'socketapi.sock');
     }
 
     private function getVersion()

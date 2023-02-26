@@ -58,8 +58,8 @@ class DaemonCommand extends Command
 
         if (config('daemon.url') && Validator::url()->notEmpty()->validate(config('daemon.url'))) {
             $baseuri = rtrim(config('daemon.url'), '/') . '/';
-        } elseif (file_exists(CACHE_PATH_RESOLVED.'baseuri')) {
-            $baseuri = file_get_contents(CACHE_PATH_RESOLVED.'baseuri');
+        } elseif (file_exists(CACHE_PATH.'baseuri')) {
+            $baseuri = file_get_contents(CACHE_PATH.'baseuri');
         } else {
             $output->writeln('<comment>Please load the login page once before starting the daemon to cache the public URL</comment>');
             $output->writeln('<comment>or configure DAEMON_URL in .env</comment>');

@@ -79,7 +79,7 @@ class Notif extends Base
             $webPush = null;
 
             if (Session::start()->get('session_down')) {
-                $keys = json_decode(file_get_contents(CACHE_PATH_RESOLVED . 'vapid_keys.json'));
+                $keys = json_decode(file_get_contents(CACHE_PATH . 'vapid_keys.json'));
 
                 $webPush = new WebPush([
                     'VAPID' => [

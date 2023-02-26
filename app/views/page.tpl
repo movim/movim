@@ -13,7 +13,7 @@
         <script src="<?php echo
             \Movim\Route::urlize('system') .
             '&t=' .
-            filemtime(CACHE_PATH_RESOLVED . 'socketapi.sock');
+            filemtime(CACHE_PATH . 'socketapi.sock');
             ?>"></script>
         <meta name="viewport" content="width=device-width, user-scalable=no">
         <%scripts%>
