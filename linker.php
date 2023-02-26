@@ -8,6 +8,8 @@ use Movim\RPC;
 use Movim\Session;
 use React\Promise\Timer;
 
+use App\PresenceBuffer;
+
 $loop = React\EventLoop\Loop::get();
 
 $bootstrap = new Bootstrap;
@@ -55,6 +57,12 @@ $loop->addPeriodicTimer(5, function () use (&$xmppSocket, &$timestampReceive, &$
     ) {
         $xmppSocket->close();
     }
+});
+
+// Buffer timers
+$loop->addPeriodicTimer(1, function () {
+    $pb = PresenceBuffer::getInstance();
+    $pb->save();
 });
 
 $wsSocket = null;

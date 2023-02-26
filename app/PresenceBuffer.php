@@ -27,14 +27,8 @@ class PresenceBuffer
 
     public function __construct()
     {
-        global $loop;
-
         $this->_models = collect();
         $this->_calls = collect();
-
-        $loop->addPeriodicTimer(1, function () {
-            $this->save();
-        });
     }
 
     public function save()
