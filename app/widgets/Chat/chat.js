@@ -386,9 +386,10 @@ var Chat = {
 
             if (event.keyCode == 38 && !Chat.isEncrypted()) {
                 Chat.editPrevious();
-            } else if (event.keyCode == 40
+            } else if (event.keyCode == 27
                 && (this.value == '' || Chat.edit == true)) {
                 localStorage.removeItem(textarea.dataset.jid + '_message');
+                textarea.classList.remove('edit');
                 Chat.clearReplace();
             }
         };
