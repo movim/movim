@@ -105,32 +105,33 @@ class PresenceBuffer
                     }
                 });
 
+                // Memory leak there
                 if ($avatarHashes->count() > 0) {
-                    $contacts = Contact::whereIn('avatarhash', $avatarHashes->keys())
+                    /*$contacts = Contact::whereIn('avatarhash', $avatarHashes->keys())
                                         ->orWhere('avatartype', 'urn:xmpp:avatar:metadata')
-                                        ->get();
+                                        ->get();*/
 
                     // Remove the existing Contacts
-                    $contacts->each(function ($contact) use (&$avatarHashes) {
+                    //$contacts->each(function ($contact) use (&$avatarHashes) {
                         // If the contact stored is actually the one we received the presence from
-                        if ($avatarHashes->get($contact->avatarhash) == $contact->id) {
+                    /*    if ($avatarHashes->get($contact->avatarhash) == $contact->id) {
                             $avatarHashes->pull($contact->avatarhash);
-                        }
+                        }*/
                         // It's another contact that has the same avatar and we are in a MUC
                         /*elseif (strpos($avatarHashes->get($contact->avatarhash), '/') != false) {
                             $p = new Picture;
                             $p->fromKey($contact->id);
                             $p->set($avatarHashes->get($contact->avatarhash));
                         }*/
-                    });
+                    //});
 
                     // Request the others
-                    $avatarHashes->each(function ($jid, $avatarhash) {
+                    /*$avatarHashes->each(function ($jid, $avatarhash) {
                         $r = new Get;
                         $r->setAvatarhash($avatarhash)
                           ->setTo($jid)
                           ->request();
-                    });
+                    });*/
                 }
 
             } catch (\Exception $e) {
