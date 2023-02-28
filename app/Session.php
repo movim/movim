@@ -108,7 +108,7 @@ class Session extends Model
         $this->username    = $username;
         $this->user_id     = $username . '@' . $host;
         $this->resource    = 'movim' . \generateKey(6);
-        $this->hash        = sha1($this->username . $password . $this->host);
+        $this->hash        = password_hash(Session::hashSession($this->username, $password, $this->host),  PASSWORD_DEFAULT);
         $this->active      = false;
 
         // TODO Cleanup
@@ -150,5 +150,10 @@ class Session extends Model
         $session->set('jid', $this->user_id);
         $session->set('host', $this->host);
         $session->set('username', $this->username);
+    }
+
+    public static function hashSession(string $username, string $password, string $host): string
+    {
+        return $username . '|' . $password . '|' . $host;
     }
 }

@@ -8,6 +8,7 @@ use Defuse\Crypto\Crypto;
 use League\CommonMark\CommonMarkConverter;
 
 use App\Configuration;
+use App\Session;
 use App\User;
 
 use Movim\Widget\Base;
@@ -247,7 +248,7 @@ class Login extends Base
         }
 
         // We check if we already have an open session
-        $here = App\Session::where('hash', sha1($username.$password.$host))->first();
+        $here = App\Session::where('username', $username)->where('host', $host)->first();
 
         $user = User::firstOrNew(['id' => $login]);
         $user->init();
@@ -267,7 +268,7 @@ class Login extends Base
             $this->rpc('Login.setQuick', $deviceId, $login, $host, $rkey->saveToAsciiSafeString());
         }
 
-        if ($here) {
+        if (password_verify(Session::hashSession($username, $password, $host), $here->hash)) {
             $this->rpc('Login.setCookie', 'MOVIM_SESSION_ID', $here->id, date(DATE_COOKIE, Cookie::getTime()));
             $this->rpc('MovimUtils.redirect', $this->route('main'));
             return;
