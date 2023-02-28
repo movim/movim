@@ -273,7 +273,7 @@ class Login extends Base
             $this->rpc('MovimUtils.redirect', $this->route('main'));
             return;
         } elseif (App\Session::where('username', $username)->where('host', $host)->exists()) {
-            $this->showErrorBlock('wrong_password');
+            $this->showErrorBlock('wrong_account');
             return;
         }
 
