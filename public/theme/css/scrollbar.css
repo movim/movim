@@ -1,3 +1,17 @@
+/* Firefox specific CSS for the scrollbars */
+
+* {
+    scrollbar-width: thin;
+}
+
+body {
+    scrollbar-color: rgba(var(--movim-font), 0.2) transparent;
+}
+
+body.nightmode {
+    scrollbar-color: rgba(var(--movim-font), 0.1) transparent;
+}
+
 /* Webkit specific CSS for the scrollbars */
 
 ::-webkit-scrollbar {

@@ -8,9 +8,6 @@ body {
     --movim-gray: 35, 35, 35;
     --movim-font: 0, 0, 0;
     --movim-element-action: 153, 153, 153;
-    scrollbar-color: rgba(var(--movim-font), 0.2) transparent;
-    scrollbar-width: thin;
-
     --movim-red: #F44336;
 }
 
@@ -20,7 +17,6 @@ body.nightmode {
     --movim-background: 25, 32, 40;
     --movim-gray: var(--movim-accent);
     --movim-font: 255, 255, 255;
-    scrollbar-color: rgba(var(--movim-font), 0.1) transparent;
 }
 
 body {
