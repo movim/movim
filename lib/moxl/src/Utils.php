@@ -90,7 +90,7 @@ class Utils
             $s = $s.$sup.'<';
         }
 
-        return base64_encode(sha1(utf8_encode($s), true));
+        return base64_encode(sha1(mb_convert_encoding($s, 'UTF-8', 'ISO-8859-1'), true));
     }
 
     // XEP-0106: JID Escaping
