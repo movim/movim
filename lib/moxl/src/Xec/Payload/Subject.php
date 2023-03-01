@@ -4,7 +4,7 @@ namespace Moxl\Xec\Payload;
 
 class Subject extends Payload
 {
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $jid = explode('/', (string)$parent->attributes()->from);
         $to = baseJid((string)$parent->attributes()->to);

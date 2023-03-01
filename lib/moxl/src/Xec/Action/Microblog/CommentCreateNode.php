@@ -16,7 +16,7 @@ class CommentCreateNode extends Action
         Pubsub::createCommentNode($this->_to, $this->_parentid);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $this->pack(['server' => $this->_to, 'parentid' => $this->_parentid]);
         $this->deliver();

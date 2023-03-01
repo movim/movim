@@ -15,7 +15,7 @@ class Get extends Action
         Vcard4::get($this->_to);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         if ($stanza->pubsub->items->item) {
             $contact = \App\Contact::firstOrNew(['id' => $this->_to]);
@@ -29,7 +29,7 @@ class Get extends Action
         }
     }
 
-    public function error($error)
+    public function error(string $errorId, ?string $message = null)
     {
         $r = new \Moxl\Xec\Action\Vcard\Get;
         $r->setTo($this->_to)->request();

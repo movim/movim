@@ -14,7 +14,7 @@ class GetList extends Action
         Roster::get();
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $rosters = [];
 

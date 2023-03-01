@@ -3,11 +3,11 @@
 namespace Moxl\Xec\Action\Pubsub;
 
 use Moxl\Stanza\Pubsub;
-use Moxl\Xec\Action\Pubsub\Errors;
+use Moxl\Xec\Action;
 
 use Movim\Image;
 
-class GetItem extends Errors
+class GetItem extends Action
 {
     protected $_to;
     protected $_node;
@@ -29,7 +29,7 @@ class GetItem extends Errors
         return $this;
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         if ($stanza->pubsub->items->item) {
             foreach ($stanza->pubsub->items->item as $item) {
@@ -99,27 +99,27 @@ class GetItem extends Errors
                ->setNode($this->_node)
                ->setId($this->_id);
 
-            $pd->handle($stanza);
+            $pd->handle();
         }
     }
 
-    public function errorItemNotFound($stanza, $parent = false)
+    public function errorItemNotFound(string $errorId, ?string $message = null)
     {
-        $this->errorServiceUnavailable($stanza, $parent);
+        $this->errorServiceUnavailable($errorId, $message);
     }
 
-    public function errorBadRequest($stanza, $parent = false)
+    public function errorBadRequest(string $errorId, ?string $message = null)
     {
-        $this->errorServiceUnavailable($stanza, $parent);
+        $this->errorServiceUnavailable($errorId, $message);
     }
 
-    public function errorServiceUnavailable($stanza, $parent = false)
+    public function errorServiceUnavailable(string $errorId, ?string $message = null)
     {
         $pd = new PostDelete;
         $pd->setTo($this->_to)
            ->setNode($this->_node)
            ->setId($this->_id);
 
-        $pd->handle($stanza);
+        $pd->handle();
     }
 }

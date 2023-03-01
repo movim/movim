@@ -15,7 +15,7 @@ class Subscribed extends Action
         Presence::subscribed($this->_to);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $this->pack($this->_to);
         $this->deliver();

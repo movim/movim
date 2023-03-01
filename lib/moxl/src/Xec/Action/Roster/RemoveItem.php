@@ -15,7 +15,7 @@ class RemoveItem extends Action
         Roster::remove($this->_to);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $contact = \App\User::me()
               ->session
@@ -30,9 +30,9 @@ class RemoveItem extends Action
         $this->deliver();
     }
 
-    public function errorItemNotFound($stanza)
+    public function errorItemNotFound(string $errorId, ?string $message = null)
     {
-        $this->handle($stanza, $parent = false);
+        $this->handle();
     }
 
     public function errorServiceUnavailable()

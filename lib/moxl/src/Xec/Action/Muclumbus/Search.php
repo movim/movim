@@ -15,7 +15,7 @@ class Search extends Action
         Muclumbus::search($this->_keyword);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $results = [];
 
@@ -33,7 +33,7 @@ class Search extends Action
         $this->deliver();
     }
 
-    public function error()
+    public function error(string $errorId, ?string $message = null)
     {
         $this->pack($this->_keyword);
         $this->deliver();

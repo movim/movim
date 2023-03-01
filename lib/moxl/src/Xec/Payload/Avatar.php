@@ -6,7 +6,7 @@ use Moxl\Xec\Action\Avatar\Get;
 
 class Avatar extends Payload
 {
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $jid = baseJid((string)$parent->attributes()->from);
 

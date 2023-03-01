@@ -4,7 +4,7 @@ namespace Moxl\Xec\Payload;
 
 class Carbons extends Payload
 {
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $parentfrom = baseJid((string)$parent->attributes()->from);
         $message = $stanza->forwarded->message;

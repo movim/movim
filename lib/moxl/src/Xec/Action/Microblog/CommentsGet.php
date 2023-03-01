@@ -25,7 +25,7 @@ class CommentsGet extends Action
         return $this;
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         if ($stanza->pubsub->items->item) {
             foreach ($stanza->pubsub->items->item as $item) {
@@ -44,7 +44,7 @@ class CommentsGet extends Action
         $this->deliver();
     }
 
-    public function error()
+    public function error(string $errorId, ?string $message = null)
     {
         $this->pack($this->_parentid);
         $this->deliver();

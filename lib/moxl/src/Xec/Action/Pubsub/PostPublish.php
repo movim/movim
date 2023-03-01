@@ -5,9 +5,9 @@ namespace Moxl\Xec\Action\Pubsub;
 use Moxl\Stanza\Pubsub;
 use Moxl\Stanza\PubsubAtom;
 use Moxl\Xec\Action\Pubsub\GetItem;
-use Moxl\Xec\Action\Pubsub\Errors;
+use Moxl\Xec\Action;
 
-class PostPublish extends Errors
+class PostPublish extends Action
 {
     private $_node;
     private $_to = '';
@@ -152,7 +152,7 @@ class PostPublish extends Errors
         return $this;
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $this->pack([
             'to'        => $this->_to,

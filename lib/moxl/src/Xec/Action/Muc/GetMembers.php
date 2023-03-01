@@ -25,7 +25,7 @@ class GetMembers extends Action
         Muc::getMembers($this->_to, 'admin');
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $i = 0;
 

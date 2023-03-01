@@ -25,7 +25,7 @@ class Request extends Action
         }
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $this->pack([$this->_to, $this->_node]);
 

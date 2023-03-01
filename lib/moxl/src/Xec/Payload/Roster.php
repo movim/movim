@@ -7,7 +7,7 @@ use App\User as DBUser;
 
 class Roster extends Payload
 {
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         if (!$parent->attributes()->from
          || (baseJid((string)$parent->attributes()->from) != \App\User::me()->id)

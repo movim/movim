@@ -4,7 +4,7 @@ namespace Moxl\Xec\Payload;
 
 class BOB extends Payload
 {
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $from = (string)$parent->attributes()->from;
         $cid = (string)$stanza->attributes()->cid;

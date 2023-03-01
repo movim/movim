@@ -67,7 +67,7 @@ class Muc extends Action
         return $this;
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $presence = \App\Presence::findByStanza($stanza);
         $presence->set($stanza);
@@ -117,73 +117,73 @@ class Muc extends Action
         }
     }
 
-    public function errorRegistrationRequired($stanza, $parent = false)
+    public function errorRegistrationRequired(string $errorId, ?string $message = null)
     {
         $this->pack($this->_to);
         $this->deliver();
     }
 
-    public function errorRemoteServerNotFound($stanza, $parent = false)
+    public function errorRemoteServerNotFound(string $errorId, ?string $message = null)
     {
         $this->pack($this->_to);
         $this->deliver();
     }
 
-    public function errorNotAuthorized($stanza, $parent = false)
+    public function errorNotAuthorized(string $errorId, ?string $message = null)
     {
         $this->pack($this->_to);
         $this->deliver();
     }
 
-    public function errorGone($stanza, $parent = false)
+    public function errorGone(string $errorId, ?string $message = null)
     {
         $this->pack($this->_to);
         $this->deliver();
     }
 
-    public function errorNotAllowed($stanza, $parent = false)
+    public function errorNotAllowed(string $errorId, ?string $message = null)
     {
         $this->pack($this->_to);
         $this->deliver();
     }
 
-    public function errorItemNotFound($stanza, $parent = false)
+    public function errorItemNotFound(string $errorId, ?string $message = null)
     {
         $this->pack($this->_to);
         $this->deliver();
     }
 
-    public function errorJidMalformed($stanza, $parent = false)
+    public function errorJidMalformed(string $errorId, ?string $message = null)
     {
         $this->pack($this->_to);
         $this->deliver();
     }
 
-    public function errorNotAcceptable($stanza, $parent = false)
+    public function errorNotAcceptable(string $errorId, ?string $message = null)
     {
         $this->pack($this->_to);
         $this->deliver();
     }
 
-    public function errorServiceUnavailable($stanza, $parent = false)
+    public function errorServiceUnavailable(string $errorId, ?string $message = null)
     {
         $this->pack($this->_to);
         $this->deliver();
     }
 
-    public function errorForbidden($stanza, $parent = false)
+    public function errorForbidden(string $errorId, ?string $message = null)
     {
         $this->pack($this->_to);
         $this->deliver();
     }
 
-    public function errorRemoteServerTimeout($stanza, $parent = false)
+    public function errorRemoteServerTimeout(string $errorId, ?string $message = null)
     {
         $this->pack($this->_to);
         $this->deliver();
     }
 
-    public function errorConflict($stanza, $message)
+    public function errorConflict(string $errorId, ?string $message = null)
     {
         if (substr_count($this->_nickname, '_') > 5) {
             $this->deliver();

@@ -7,7 +7,7 @@ use App\Session as DBSession;
 
 class Register extends Payload
 {
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $session = DBSession::find(SESSION_ID);
 

@@ -4,7 +4,7 @@ namespace Moxl\Xec\Payload;
 
 class Retracted extends Payload
 {
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         if ($parent->{'apply-to'} && $parent->{'apply-to'}->attributes()->xmlns == 'urn:xmpp:fasten:0') {
             $message = \App\User::me()->messages()

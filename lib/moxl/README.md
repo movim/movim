@@ -264,7 +264,7 @@ namespace Moxl\Xec\Payload;
 
 class SASLFailure extends Payload
 {
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $sd = new \Modl\SessionxDAO;
         $sd->delete(SESSION_ID);

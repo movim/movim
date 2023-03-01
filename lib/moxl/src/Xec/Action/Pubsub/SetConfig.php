@@ -3,9 +3,9 @@
 namespace Moxl\Xec\Action\Pubsub;
 
 use Moxl\Stanza\Pubsub;
-use Moxl\Xec\Action\Pubsub\Errors;
+use Moxl\Xec\Action;
 
-class SetConfig extends Errors
+class SetConfig extends Action
 {
     protected $_to;
     protected $_node;
@@ -17,13 +17,13 @@ class SetConfig extends Errors
         Pubsub::setConfig($this->_to, $this->_node, $this->_data);
     }
 
-    public function error($id, $message = '')
+    public function error(string $errorId, ?string $message = null)
     {
         $this->pack($message);
         $this->deliver();
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $this->deliver();
     }

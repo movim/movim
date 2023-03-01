@@ -6,7 +6,7 @@ use Moxl\Authentication;
 
 class SASLChallenge extends Payload
 {
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $auth = Authentication::getInstance();
         $challenge = base64_decode((string)$stanza);

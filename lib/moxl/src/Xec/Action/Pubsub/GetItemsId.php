@@ -3,10 +3,10 @@
 namespace Moxl\Xec\Action\Pubsub;
 
 use Moxl\Stanza\Disco;
-use Moxl\Xec\Action\Pubsub\Errors;
+use Moxl\Xec\Action;
 use Moxl\Xec\Action\Pubsub\GetItem;
 
-class GetItemsId extends Errors
+class GetItemsId extends Action
 {
     protected $_to;
     protected $_node;
@@ -21,7 +21,7 @@ class GetItemsId extends Errors
         Disco::items($this->_to, $this->_node);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $ids = [];
 
@@ -47,7 +47,7 @@ class GetItemsId extends Errors
         $this->deliver();
     }
 
-    public function error($errorid, $message)
+    public function error(string $errorId, ?string $message = null)
     {
         $this->pack(['server' => $this->_to, 'node' => $this->_node]);
         $this->deliver();

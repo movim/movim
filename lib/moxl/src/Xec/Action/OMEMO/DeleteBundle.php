@@ -15,7 +15,7 @@ class DeleteBundle extends Action
         Pubsub::delete(false, 'eu.siacs.conversations.axolotl.bundles:' . $this->_id);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         \App\User::me()->bundles()
                        ->where('jid', \App\User::me()->id)
@@ -33,8 +33,8 @@ class DeleteBundle extends Action
             ->request();
     }
 
-    public function error($stanza, $parent = false)
+    public function error(string $errorId, ?string $message = null)
     {
-        $this->handle($stanza, $parent);
+        $this->handle();
     }
 }

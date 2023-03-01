@@ -18,7 +18,7 @@ class Away extends Action
         Presence::away($this->_status, $this->_last);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $presence = DBPresence::findByStanza($stanza);
         $presence->set($stanza);

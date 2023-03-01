@@ -3,9 +3,9 @@
 namespace Moxl\Xec\Action\Pubsub;
 
 use Moxl\Stanza\Pubsub;
-use Moxl\Xec\Action\Pubsub\Errors;
+use Moxl\Xec\Action;
 
-class GetAffiliations extends Errors
+class GetAffiliations extends Action
 {
     protected $_to;
     protected $_node;
@@ -16,7 +16,7 @@ class GetAffiliations extends Errors
         Pubsub::getAffiliations($this->_to, $this->_node);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $tab = [];
         foreach ($stanza->pubsub->affiliations->children() as $i) {

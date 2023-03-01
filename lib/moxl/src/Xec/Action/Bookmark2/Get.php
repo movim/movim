@@ -17,7 +17,7 @@ class Get extends Action
         Bookmark2::get($this->_version);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         \App\User::me()
             ->session

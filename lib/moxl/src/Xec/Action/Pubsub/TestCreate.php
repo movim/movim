@@ -2,10 +2,10 @@
 
 namespace Moxl\Xec\Action\Pubsub;
 
-use Moxl\Xec\Action\Pubsub\Errors;
+use Moxl\Xec\Action;
 use Moxl\Stanza\Pubsub;
 
-class TestCreate extends Errors
+class TestCreate extends Action
 {
     protected $_to;
     protected $_node = 'test_node';
@@ -16,7 +16,7 @@ class TestCreate extends Errors
         Pubsub::create($this->_to, $this->_node, 'Test');
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         if ($stanza['type'] == 'result') {
             // We delete the test node we just created
@@ -28,7 +28,7 @@ class TestCreate extends Errors
         }
     }
 
-    public function error($error)
+    public function error(string $errorId, ?string $message = null)
     {
         $this->pack($this->_to);
         $this->deliver();

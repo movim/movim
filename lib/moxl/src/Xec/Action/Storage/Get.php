@@ -17,7 +17,7 @@ class Get extends Action
         Pubsub::getItem(false, $this->_xmlns, 'current');
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         if ($stanza->pubsub->items->item) {
             $data = unserialize(trim((string)$stanza->pubsub->items->item->data));
@@ -33,7 +33,7 @@ class Get extends Action
         }
     }
 
-    public function error($stanza, $parent = false)
+    public function error(string $errorId, ?string $message = null)
     {
         $this->deliver();
     }

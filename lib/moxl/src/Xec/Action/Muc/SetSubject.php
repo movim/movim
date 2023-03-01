@@ -16,7 +16,7 @@ class SetSubject extends Action
         Muc::setSubject($this->_to, $this->_subject);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $message = \App\Message::findByStanza($stanza);
         $message->set($stanza, $parent);

@@ -6,7 +6,7 @@ use Moxl\Stanza\Error;
 
 class DiscoItems extends Payload
 {
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $jid = (string)$parent->attributes()->from;
         $id = (string)$parent->attributes()->id;

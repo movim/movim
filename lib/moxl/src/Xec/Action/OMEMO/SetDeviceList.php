@@ -21,7 +21,7 @@ class SetDeviceList extends Action
         return $this;
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $this->deliver();
     }

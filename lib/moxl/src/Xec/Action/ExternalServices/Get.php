@@ -15,7 +15,7 @@ class Get extends Action
         ExternalServices::request($this->_to);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $services = [];
         foreach ($stanza->services->service as $service) {
@@ -40,7 +40,7 @@ class Get extends Action
         }
     }
 
-    public function error($stanza, $parent = false)
+    public function error(string $errorId, ?string $message = null)
     {
         $this->deliver();
     }

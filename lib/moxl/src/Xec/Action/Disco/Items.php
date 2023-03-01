@@ -36,7 +36,7 @@ class Items extends Action
         return $this;
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         if ($this->_save) {
             if ($this->_manual) {
@@ -98,7 +98,7 @@ class Items extends Action
         }
     }
 
-    public function error($error)
+    public function error(string $errorId, ?string $message = null)
     {
         if ($this->_manual) {
             $this->method('manual_error');

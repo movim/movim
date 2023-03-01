@@ -23,7 +23,7 @@ class Publish extends Action
         return $this;
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $from = baseJid((string)$stanza->attributes()->from);
 

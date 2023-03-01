@@ -2,10 +2,10 @@
 
 namespace Moxl\Xec\Action\PubsubSubscription;
 
-use Moxl\Xec\Action\Pubsub\Errors;
+use Moxl\Xec\Action;
 use Moxl\Stanza\PubsubSubscription;
 
-class Add extends Errors
+class Add extends Action
 {
     protected $_server;
     protected $_from;
@@ -27,7 +27,7 @@ class Add extends Errors
         );
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $subscription = \App\Subscription::firstOrNew([
             'jid' => $this->_from,

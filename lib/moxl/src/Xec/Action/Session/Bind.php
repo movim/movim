@@ -15,7 +15,7 @@ class Bind extends Action
         Stream::bindSet($this->_resource);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $session = \App\User::me()->session;
 

@@ -19,7 +19,7 @@ class CreateChannel extends Action
         Muc::createChannel($this->_to, $this->_name);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $this->pack([
             'jid' => $this->_to,

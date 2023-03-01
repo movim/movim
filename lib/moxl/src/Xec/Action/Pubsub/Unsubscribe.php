@@ -3,10 +3,10 @@
 namespace Moxl\Xec\Action\Pubsub;
 
 use Moxl\Stanza\Pubsub;
-use Moxl\Xec\Action\Pubsub\Errors;
+use Moxl\Xec\Action;
 use Moxl\Xec\Action\PubsubSubscription\Remove as SubscriptionRemove;
 
-class Unsubscribe extends Errors
+class Unsubscribe extends Action
 {
     protected $_to;
     protected $_from;
@@ -19,7 +19,7 @@ class Unsubscribe extends Errors
         Pubsub::unsubscribe($this->_to, $this->_from, $this->_node, $this->_subid);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $sa = new SubscriptionRemove;
         $sa->setServer($this->_to)
@@ -32,18 +32,18 @@ class Unsubscribe extends Errors
         $this->deliver();
     }
 
-    public function errorNotSubscribed($stanza)
+    public function errorNotSubscribed(string $errorId, ?string $message = null)
     {
-        $this->handle($stanza, $parent = false);
+        $this->handle();
     }
 
-    public function errorUnexpectedRequest($stanza)
+    public function errorUnexpectedRequest(string $errorId, ?string $message = null)
     {
-        $this->handle($stanza, $parent = false);
+        $this->handle();
     }
 
-    public function errorItemNotFound($stanza)
+    public function errorItemNotFound(string $errorId, ?string $message = null)
     {
-        $this->handle($stanza, $parent = false);
+        $this->handle();
     }
 }

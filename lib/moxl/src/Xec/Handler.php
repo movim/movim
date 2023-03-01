@@ -35,7 +35,7 @@ class Handler
                 $errors = $error->children();
                 $errorid = Handler::formatError($errors->getName());
 
-                $message = false;
+                $message = null;
 
                 if ($error->text) {
                     $message = (string)$error->text;
@@ -74,7 +74,7 @@ class Handler
         }
     }
 
-    public static function handleNode($s, $sparent = false)
+    public static function handleNode($s, ?\SimpleXMLElement $sparent = null)
     {
         $name = $s->getName();
         $ns = '';
@@ -104,7 +104,7 @@ class Handler
         }
     }
 
-    public static function searchPayload($hash, $s, $sparent = false): bool
+    public static function searchPayload($hash, $s, ?\SimpleXMLElement $sparent = null): bool
     {
         $hashToClass = [
             '9a534a8b4d6324e23f4187123e406729' => 'Message',

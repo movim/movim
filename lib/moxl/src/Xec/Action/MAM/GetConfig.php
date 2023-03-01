@@ -13,7 +13,7 @@ class GetConfig extends Action
         MAM::getConfig();
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $this->pack($stanza->prefs->attributes()->default);
         $this->deliver();

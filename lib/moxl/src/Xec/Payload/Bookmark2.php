@@ -6,7 +6,7 @@ use App\Conference;
 
 class Bookmark2 extends Payload
 {
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         if (baseJid((string)$parent->attributes()->from) != \App\User::me()->id
         || (string)$parent->attributes()->from == (string)$parent->attributes()->to) return;

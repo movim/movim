@@ -3,9 +3,9 @@
 namespace Moxl\Xec\Action\Pubsub;
 
 use Moxl\Stanza\Pubsub;
-use Moxl\Xec\Action\Pubsub\Errors;
+use Moxl\Xec\Action;
 
-class SetAffiliations extends Errors
+class SetAffiliations extends Action
 {
     protected $_to;
     protected $_node;
@@ -17,7 +17,7 @@ class SetAffiliations extends Errors
         Pubsub::setAffiliations($this->_to, $this->_node, $this->_data);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $ga = new GetAffiliations;
         $ga->setTo($this->_to)

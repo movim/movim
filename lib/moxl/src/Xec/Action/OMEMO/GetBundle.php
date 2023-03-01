@@ -27,7 +27,7 @@ class GetBundle extends Action
         return $this;
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         if ($stanza->pubsub->items->item->bundle) {
             $bundle = Bundle::where('user_id', \App\User::me()->id)

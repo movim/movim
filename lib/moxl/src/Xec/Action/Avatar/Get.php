@@ -16,7 +16,7 @@ class Get extends Action
         Avatar::get($this->_to, $this->_node);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $contact = \App\Contact::firstOrNew(['id' => $this->_to]);
         $contact->photobin  = (string)$stanza->pubsub->items->item->data;

@@ -18,7 +18,7 @@ class AddItem extends Action
         Roster::add($this->_to, $this->_name, $this->_group);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $roster = DBRoster::firstOrNew(['jid' => $this->_to]);
         $roster->group = $this->_group;

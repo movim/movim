@@ -8,7 +8,7 @@ use App\PresenceBuffer;
 
 class Presence extends Payload
 {
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $jid = explodeJid($stanza->attributes()->from);
         if (\App\User::me()->hasBlocked($jid['jid'])) {

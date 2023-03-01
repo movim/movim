@@ -6,10 +6,12 @@ use Moxl\Stanza\Iq;
 
 class IqError extends Payload
 {
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $to = (string)$stanza->attributes()->from;
-        $id = (string)$stanza->attributes()->id;
-        Iq::error($to, $id);
+        if ($stanza->attributes()->type != 'error') {
+            $to = (string)$stanza->attributes()->from;
+            $id = (string)$stanza->attributes()->id;
+            Iq::error($to, $id);
+        }
     }
 }

@@ -16,13 +16,13 @@ class SetConfig extends Action
         Muc::setConfig($this->_to, $this->_data);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $this->pack($this->_to);
         $this->deliver();
     }
 
-    public function error($id, $message = false)
+    public function error(string $errorId, ?string $message = null)
     {
         if ($message) {
             $this->pack($message);

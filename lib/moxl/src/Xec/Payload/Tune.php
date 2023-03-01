@@ -6,7 +6,7 @@ use App\Contact;
 
 class Tune extends Payload
 {
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $from = baseJid((string)$parent->attributes()->from);
 

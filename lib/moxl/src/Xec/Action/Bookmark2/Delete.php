@@ -16,7 +16,7 @@ class Delete extends Action
         Pubsub::postDelete(false, 'urn:xmpp:bookmarks:'.$this->_version, $this->_id);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         \App\User::me()->session->conferences()->where('conference', $this->_id)->delete();
         $this->deliver();

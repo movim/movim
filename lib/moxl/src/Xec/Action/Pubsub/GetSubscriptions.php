@@ -3,9 +3,9 @@
 namespace Moxl\Xec\Action\Pubsub;
 
 use Moxl\Stanza\Pubsub;
-use Moxl\Xec\Action\Pubsub\Errors;
+use Moxl\Xec\Action;
 
-class GetSubscriptions extends Errors
+class GetSubscriptions extends Action
 {
     protected $_to;
     protected $_node;
@@ -29,7 +29,7 @@ class GetSubscriptions extends Errors
         return $this;
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $tab = [];
 

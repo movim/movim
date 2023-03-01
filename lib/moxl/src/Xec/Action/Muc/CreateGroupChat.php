@@ -16,7 +16,7 @@ class CreateGroupChat extends Action
         Muc::createGroupChat($this->_to, $this->_name);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $this->pack([
             'jid' => $this->_to,

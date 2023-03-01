@@ -4,7 +4,7 @@ namespace Moxl\Xec\Payload;
 
 class Displayed extends Payload
 {
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         // Handle only MUC messages with a proper stanza-id
         $message = ('groupchat' == (string)$parent->attributes()->type)

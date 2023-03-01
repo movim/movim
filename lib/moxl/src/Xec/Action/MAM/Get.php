@@ -47,7 +47,7 @@ class Get extends Action
         return $this;
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $session = Session::start();
         $session->delete('mamid'.$this->_queryid);

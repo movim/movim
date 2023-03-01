@@ -9,7 +9,7 @@ use Movim\Session;
 
 class Jingle extends Payload
 {
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $from = (string)$parent->attributes()->from;
         $id   = (string)$parent->attributes()->id;

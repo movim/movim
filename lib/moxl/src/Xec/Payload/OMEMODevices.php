@@ -7,7 +7,7 @@ use Moxl\Xec\Action\OMEMO\GetBundle;
 
 class OMEMODevices extends Payload
 {
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $from   = (string)$parent->attributes()->from;
         $list = $stanza->items->item->list;

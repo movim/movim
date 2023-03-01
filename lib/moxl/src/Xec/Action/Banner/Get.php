@@ -17,7 +17,7 @@ class Get extends Action
         Avatar::get($this->_to, 'urn:xmpp:movim-banner:0');
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         if (isset($stanza->pubsub->items->item->metadata->info)
          && isset($stanza->pubsub->items->item->metadata->info->attributes()->url)) {
