@@ -113,8 +113,8 @@ function enableEncryption($connection)
         function ($error) use ($connection) {
             logOut(colorize('TLS error ' . $error->getMessage(), 'blue'));
 
-            $evt = new Movim\Widget\Event;
-            $evt->run('ssl_error');
+            $evt = new Movim\Widget\Base;
+            $evt->event('ssl_error');
 
             shutdown();
         }
@@ -167,8 +167,8 @@ function handleClientDNS(array $results, $dns, $connector, $xmppBehaviour)
             function (\Exception $error) {
                 logOut(colorize($error->getMessage(), 'red'));
 
-                $evt = new Movim\Widget\Event;
-                $evt->run('timeout_error');
+                $evt = new Movim\Widget\Base;
+                $evt->event('timeout_error');
                 $this->cancel();
             }
         );
@@ -210,8 +210,8 @@ $wsSocketBehaviour = function ($msg) use (&$xmppSocket, &$connector, &$xmppBehav
                     isset($xmppSocket)
                     && is_resource($xmppSocket->stream)
                 ) {
-                    $evt = new Movim\Widget\Event;
-                    $evt->run('session_' . $msg->func);
+                    $evt = new Movim\Widget\Base;
+                    $evt->event('session_' . $msg->func);
                 }
                 break;
 
@@ -273,8 +273,8 @@ $xmppBehaviour = function (React\Socket\Connection $stream) use (&$xmppSocket, $
 
     $xmppSocket = $stream;
 
-    $evt = new Movim\Widget\Event;
-    $evt->run('socket_connected');
+    $evt = new Movim\Widget\Base;
+    $evt->event('socket_connected');
 
     if (getenv('verbose')) {
         logOut(colorize('XMPP socket launched', 'blue'));

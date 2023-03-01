@@ -32,6 +32,7 @@ class RPC
     public function writeJSON()
     {
         echo json_encode(self::$json);
+        self::$json = [];
     }
 
     /**

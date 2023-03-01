@@ -139,19 +139,15 @@ class Wrapper
     /**
      * @desc Loads a widget and runs a particular function on it.
      *
-     * @param $widget_name is the name of the widget.
+     * @param $widgetName is the name of the widget.
      * @param $method is the function to be run.
      * @param $params is an array containing the parameters to
      *   be passed along to the method.
      * @return what the widget's method returns.
      */
-    public function runWidget(string $widget_name, string $method, array $params = null)
+    public function runWidget(string $widgetName, string $method, array $params = []): ?string
     {
-        $widget = $this->loadWidget($widget_name);
-
-        if (!is_array($params)) {
-            $params = [];
-        }
+        $widget = $this->loadWidget($widgetName);
 
         return $widget->$method(...$params);
     }
@@ -166,8 +162,8 @@ class Wrapper
     public function iterate(string $key, $data)
     {
         if (array_key_exists($key, $this->_events)) {
-            foreach ($this->_events[$key] as $widget_name) {
-                $widget = new $widget_name(true);
+            foreach ($this->_events[$key] as $widgetName) {
+                $widget = new $widgetName(true);
 
                 if (array_key_exists($key, $widget->events)) {
                     foreach ($widget->events[$key] as $method) {

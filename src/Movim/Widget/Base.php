@@ -132,8 +132,8 @@ class Base
      */
     public function event(string $key, $data = null)
     {
-        $e = new Event;
-        $e->run($key, $data);
+        $widgets = Wrapper::getInstance();
+        $widgets->iterate($key, $data);
     }
 
     /**
