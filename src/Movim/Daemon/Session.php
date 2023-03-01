@@ -39,9 +39,11 @@ class Session
         'curl',
         'dom',
         'mbstring',
+        'mysqli',
+        'mysqlnd',
         'pdo',
-        'pdo_pgsql',
         'pdo_mysql',
+        'pdo_pgsql',
         'simplexml'
     ];
 
