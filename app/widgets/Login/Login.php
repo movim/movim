@@ -268,7 +268,7 @@ class Login extends Base
             $this->rpc('Login.setQuick', $deviceId, $login, $host, $rkey->saveToAsciiSafeString());
         }
 
-        if (password_verify(Session::hashSession($username, $password, $host), $here->hash)) {
+        if ($here && password_verify(Session::hashSession($username, $password, $host), $here->hash)) {
             $this->rpc('Login.setCookie', 'MOVIM_SESSION_ID', $here->id, date(DATE_COOKIE, Cookie::getTime()));
             $this->rpc('MovimUtils.redirect', $this->route('main'));
             return;
