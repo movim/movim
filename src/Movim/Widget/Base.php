@@ -263,6 +263,8 @@ class Base
         if (isset($_GET[$name])) {
             return htmlentities(urldecode($_GET[$name]));
         }
+
+        return null;
     }
 
     /**
