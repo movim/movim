@@ -258,7 +258,7 @@ class Base
     /*
      * @brief Fetch and return get variables
      */
-    protected function get(string $name)
+    protected function get(string $name): ?string
     {
         if (isset($_GET[$name])) {
             return htmlentities(urldecode($_GET[$name]));
@@ -271,7 +271,7 @@ class Base
      * @param $method The function to call
      * @param $filter Only call this function if the session notif_key is good
      */
-    protected function registerEvent(string $key, string $method, $filter = null)
+    protected function registerEvent(string $key, string $method, ?string $filter = null)
     {
         if (!is_array($this->events)
         || !array_key_exists($key, $this->events)) {
