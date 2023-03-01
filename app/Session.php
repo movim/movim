@@ -154,6 +154,6 @@ class Session extends Model
 
     public static function hashSession(string $username, string $password, string $host): string
     {
-        return $username . '|' . $password . '|' . $host;
+        return $username . "\0" . $password . "\0" . $host;
     }
 }
