@@ -60,12 +60,30 @@ class PresenceBuffer
                 DB::commit();
 
                 /**
-                 * Handle the Capabilities
+                 * Handle the Capabilities & Vcards
                  */
                 $nodes = collect();
-                $this->_models->each(function ($presence) use (&$nodes) {
+                $avatarHashes = collect();
+
+                $this->_models->each(function ($presence) use (&$nodes, &$avatarHashes) {
+                    // Capabilities
                     $resource = !empty($presence['resource']) ? '/' . $presence['resource'] : '';
                     $nodes->put($presence['node'], $presence['jid'] . $resource);
+
+                    // Vcards
+                    if (isset($presence['avatarhash'])) {
+                        $fullJid = !empty($presence['resource'])
+                            ? $presence['jid'].'/'.$presence['resource']
+                            : $presence['jid'];
+
+                        $jid = ($presence['muc'])
+                            ? (($presence['mucjid'])
+                                ? $presence['mucjid']
+                                : $fullJid)
+                            : $presence['jid'];
+
+                        $avatarHashes->put($presence['avatarhash'], $jid);
+                    }
                 });
 
                 $infos = Info::whereIn('node', $nodes->keys())->get();
@@ -85,53 +103,33 @@ class PresenceBuffer
                       ->request();
                 });
 
-                /**
-                 * Handle the Vcards
-                 */
-                $avatarHashes = collect();
-                $this->_models->each(function ($presence) use (&$avatarHashes) {
-                    if (isset($presence['avatarhash'])) {
-                        $fullJid = !empty($presence['resource'])
-                            ? $presence['jid'].'/'.$presence['resource']
-                            : $presence['jid'];
-
-                        $jid = ($presence['muc'])
-                            ? (($presence['mucjid'])
-                                ? $presence['mucjid']
-                                : $fullJid)
-                            : $presence['jid'];
-
-                        $avatarHashes->put($presence['avatarhash'], $jid);
-                    }
-                });
-
                 // Memory leak there
                 if ($avatarHashes->count() > 0) {
-                    /*$contacts = Contact::whereIn('avatarhash', $avatarHashes->keys())
+                    $contacts = Contact::whereIn('avatarhash', $avatarHashes->keys())
                                         ->orWhere('avatartype', 'urn:xmpp:avatar:metadata')
-                                        ->get();*/
+                                        ->get();
 
                     // Remove the existing Contacts
-                    //$contacts->each(function ($contact) use (&$avatarHashes) {
+                    $contacts->each(function ($contact) use (&$avatarHashes) {
                         // If the contact stored is actually the one we received the presence from
-                    /*    if ($avatarHashes->get($contact->avatarhash) == $contact->id) {
+                        if ($avatarHashes->get($contact->avatarhash) == $contact->id) {
                             $avatarHashes->pull($contact->avatarhash);
-                        }*/
+                        }
                         // It's another contact that has the same avatar and we are in a MUC
                         /*elseif (strpos($avatarHashes->get($contact->avatarhash), '/') != false) {
                             $p = new Picture;
                             $p->fromKey($contact->id);
                             $p->set($avatarHashes->get($contact->avatarhash));
                         }*/
-                    //});
+                    });
 
-                    // Request the others
-                    /*$avatarHashes->each(function ($jid, $avatarhash) {
+                    // Request the others, take 20 max for the moment to prevent spamming issues
+                    $avatarHashes->take(20)->each(function ($jid, $avatarhash) {
                         $r = new Get;
                         $r->setAvatarhash($avatarhash)
                           ->setTo($jid)
                           ->request();
-                    });*/
+                    });
                 }
 
             } catch (\Exception $e) {
