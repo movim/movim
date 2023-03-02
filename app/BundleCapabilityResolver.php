@@ -28,6 +28,7 @@ class BundleCapabilityResolver
     {
         $this->_bundles = Bundle::where('user_id', \App\User::me()->id)
                                 ->whereNull('node')
+                                ->select('jid', 'bundleid')
                                 ->get()
                                 ->map(fn ($bundle) => $bundle->jid.'_'.$bundle->bundleid);
     }
