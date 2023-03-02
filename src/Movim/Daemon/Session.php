@@ -123,15 +123,20 @@ class Session
     private function register($loop)
     {
         // Only load the required extensions
-        $extensions = '-n ';
+        $configuration = '-n ';
 
         foreach ($this->extensions as $extension) {
-            $extensions .= '-dextension=' . $extension . '.so ';
+            $configuration .= '-dextension=' . $extension . '.so ';
+        }
+
+        // Enable Opcache
+        if (isOpcacheEnabled()) {
+            $configuration .= '-dzend_extension=opcache.so -dopcache.enable=1 -dopcache.enable_cli=1 ';
         }
 
         // Launching the linker
         $this->process = new \React\ChildProcess\Process(
-            'exec php '.$extensions.' -d=memory_limit=512M linker.php ' . $this->sid,
+            'exec php ' . $configuration . ' -d=memory_limit=512M linker.php ' . $this->sid,
             null,
             [
                 'sid'       => $this->sid,

@@ -29,6 +29,7 @@ class Bootstrap
         if (!defined('APP_TITLE')) {
             $this->setConstants();
         }
+
         mb_internal_encoding('UTF-8');
 
         $this->loadCapsule();

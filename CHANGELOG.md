@@ -41,6 +41,7 @@ v0.21 (trunk)
  * Configure new nodes and comments nodes with pubsub#itemreply = publisher
  * Add audio files support and add a small audio player in the Chat
  * Add affiliation change messages in the chatrooms
+ * Detecting and compiling Movim files for Opcache if enabled
 
 v0.20
 ---------------------------

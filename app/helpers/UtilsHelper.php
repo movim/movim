@@ -89,6 +89,46 @@ function config(string $key, $default = null)
 }
 
 /**
+ * Check if Opcache is enabled
+ */
+function isOpcacheEnabled(): bool
+{
+    return is_array(opcache_get_status());
+}
+
+/**
+ * List compilable Opcache files
+ */
+function listOpcacheCompilableFiles(): array
+{
+    $files = [];
+
+    foreach (['vendor', 'app', 'src'] as $dir) {
+        $directory = new \RecursiveDirectoryIterator(DOCUMENT_ROOT.'/'. $dir);
+        $iterator = new \RecursiveIteratorIterator($directory);
+        $regex = new \RegexIterator($iterator, '/^.+\.php$/i', \RecursiveRegexIterator::GET_MATCH);
+
+        foreach ($regex as $key => $file) {
+            array_push($files, $file[0]);
+        }
+    }
+
+    return $files;
+}
+
+/**
+ * Compile main files in Opcache
+ */
+function compileOpcache()
+{
+    error_reporting(0);
+    foreach (listOpcacheCompilableFiles() as $file) {
+        yield @opcache_compile_file($file);
+    }
+    error_reporting(1);
+}
+
+/**
  * Check if the session exists
  */
 function isLogged()
