@@ -12,7 +12,6 @@ use Moxl\Xec\Action\PubsubSubscription\Get as GetPubsubSubscriptions;
 use Moxl\Stanza\Stream;
 
 use Movim\Daemon\Session;
-use Movim\Session as MovimSession;
 
 use App\BundleCapabilityResolver;
 
