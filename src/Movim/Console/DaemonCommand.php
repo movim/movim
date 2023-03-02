@@ -10,7 +10,6 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Helper\ProgressBar;
 
 use Respect\Validation\Validator;
 
@@ -90,28 +89,15 @@ class DaemonCommand extends Command
             $output->writeln("\n" . '<comment>Debug is enabled, check the logs in syslog or ' . DOCUMENT_ROOT . '/log/</comment>');
         }
 
-        $output->writeln("\n--- ".colorize("Opcache", 'purple')." ---");
         if (isOpcacheEnabled()) {
-            $output->writeln('<info>Opcache is enabled compiling files...</info>');
-
-            $filesCount = count(listOpcacheCompilableFiles());
-
-            ProgressBar::setFormatDefinition('custom', '%current%/%max% | %message%');
-            $progressBar = new ProgressBar($output, $filesCount);
-            $progressBar->setFormat('custom');
-
-            foreach (compileOpcache() as $file) {
-                $progressBar->setMessage('Compiling...');
-                $progressBar->advance();
-            }
-
-            $progressBar->setMessage('Files compiled');
-            $progressBar->advance();
-            $output->writeln("");
+            $compileOpcache = new \React\ChildProcess\Process('exec php daemon.php compileOpcache');
+            $compileOpcache->start($loop);
+            $compileOpcache->on('exit', fn ($out) => $output->writeln('<info>Files compiled in Opcache</info>'));
         } else {
             $output->writeln('<error>Opcache is disabled, it is strongly advised to enable it in PHP CLI php.ini</error>');
-            $output->writeln('Set opcache.enable=1 and opcache.enable_cli=1');
+            $output->writeln('Set opcache.enable=1 and opcache.enable_cli=1 in the PHP CLI ini file');
         }
+
 
         $core = new Core($loop, $baseuri);
         $app  = new HttpServer(new WsServer($core));
