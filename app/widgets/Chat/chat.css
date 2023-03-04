@@ -501,7 +501,7 @@ main:not(.enabled) #chat_widget {
 #chat_widget .bubble div span.actions,
 #chat_widget .bubble ul.reactions li {
     list-style-type: none;
-    background-color: rgba(var(--movim-font), 0.1);
+    background-color: rgba(var(--movim-font), 0.05);
     padding: 0 0.5rem;
     border-radius: 0.5rem;
     line-height: 3rem;

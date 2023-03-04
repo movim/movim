@@ -384,7 +384,7 @@ hr.thick {
 img.avatar,
 span.avatar {
     margin: 0 auto;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
     display: block;
     max-width: 100%;
     background-color: rgb(var(--movim-background-main));
