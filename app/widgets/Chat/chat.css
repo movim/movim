@@ -511,7 +511,7 @@ main:not(.enabled) #chat_widget {
     padding: 0 0.5rem;
     border-radius: 0.5rem;
     line-height: 3rem;
-    font-size: 2rem;
+    font-size: 1.75rem;
     margin: 0.25rem 0;
     display: inline-flex;
     z-index: 1;
@@ -529,6 +529,7 @@ main:not(.enabled) #chat_widget {
 
 #chat_widget .bubble ul.reactions li i {
     padding: 0;
+    font-size: 2rem;
 }
 
 #chat_widget .bubble div span.reaction,
