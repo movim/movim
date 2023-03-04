@@ -238,7 +238,7 @@ a {
 }
 
 form > div .checkbox:before { background-color: rgba(var(--movim-main), 0.5); }
-form > div .checkbox > input[type="checkbox"]:checked + label { background-color: rgb(var(--movim-main)); }
+/*form > div .checkbox > input[type="checkbox"]:checked + label { background-color: rgb(var(--movim-main)); }*/
 
 form input:focus:not(:invalid) + label,
 form textarea:focus:not(:invalid) + label {

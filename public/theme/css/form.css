@@ -184,72 +184,80 @@ input[type=file] {
 form > div .checkbox > input[type="checkbox"],
 form > div .radio > input[type="radio"] {
     display: none;
+    display: inline;
+    width: 0;
+    height: 0;
 }
 
 form > div .checkbox {
     position: relative;
-    width: 4.5rem;
-    height: 2.25rem;
-    margin-top: calc(50% - 0.9rem);
+    width: 6rem;
+    height: 4rem;
+    margin-top: calc(50% - 2rem);
     direction: ltr;
 }
 
-form > div .checkbox:before,
-form > div .checkbox:after {
+form > div .checkbox > input[type="checkbox"]:before {
     content: '';
     display: block;
     position: absolute;
     height: 100%;
-    width: 50%;
+    width: 100%;
+    border: 0.3rem solid rgba(var(--movim-font), 0.2);
+    background-color: rgba(var(--movim-font), 0.12);
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
 }
 
-form > div .checkbox:before {
-    border-radius: 2rem 0 0 2rem;
-}
+form > div .checkbox > input[type="checkbox"]:before {
+    border-radius: 4rem;
 
-form > div .checkbox:after {
-    border-radius: 0 2rem 2rem 0;
-    background-color: rgba(var(--movim-font), 0.25);
-    right: 0;
-    top: 0;
 }
 
 form > div .checkbox > input[type="checkbox"] + label {
     z-index: 1;
     display: block;
-    background-color: #FAFAFA;
-    box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.5);
-    width: 3rem;
-    height: 3rem;
+    background-color: rgba(var(--movim-font), 0.2);
+    width: 2rem;
+    height: 2rem;
     border-radius: 2rem;
-    top: -0.4rem;
-    left: -0.2rem;
+    top: 1rem;
+    left: 1rem;
     position: relative;
     font-size: 2rem;
     text-align: center;
     line-height: normal;
 
-    transition: left 0.3s ease, box-shadow 0.1s ease;
+    transition: left 0.3s ease, top 0.2s ease, width 0.2s ease, height 0.2s ease, box-shadow 0.1s ease;
 }
 
 form > div .checkbox > input[type="checkbox"] + label i {
     vertical-align: middle;
-    color: #555;
-    line-height: 1.75em;
+    color: rgba(var(--movim-font), 0.5);
+    line-height: 1.5em;
 }
 
-form > div .checkbox > input[type="checkbox"] + label:hover,
-form > div .checkbox > input[type="checkbox"]:checked + label:hover {
+form > div .checkbox > input[type="checkbox"] + label:hover {
     cursor: pointer;
-    box-shadow: 0 0 0 1.75rem rgba(0, 0, 0, 0.05), 0 0.2rem 0.5rem rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 1.75rem rgba(var(--movim-font), 0.05);
+}
+
+form > div .checkbox > input[type="checkbox"]:checked:before {
+    background-color: rgb(var(--movim-main));
+    border-color: rgb(var(--movim-main));
 }
 
 form > div .checkbox > input[type="checkbox"]:checked + label {
-    left: 0.8em;
+    color: white;
+    width: 3rem;
+    height: 3rem;
+    left: 1.25em;
+    top: 0.25em;
+    background-color: white;
 }
 
 form > div .checkbox > input[type="checkbox"]:checked + label i {
-    color: white;
+    color: rgb(var(--movim-main));
 }
 
 /* Radio */
@@ -282,7 +290,7 @@ form > div .radio > input[type="radio"]:checked + label {
 }
 
 form > div .radio > input[type="radio"]:checked + label:hover {
-    box-shadow: inset 0 0 0rem 0.4rem rgb(var(--movim-background-main)), 0 0 0 1.5rem rgba(var(--movim-font), 0.1);
+    box-shadow: inset 0 0 0rem 0.4rem rgb(var(--movim-background-main)), 0 0 0 1.55rem rgba(var(--movim-font), 0.05);
 }
 
 /* Disabled */
@@ -323,11 +331,11 @@ input[type=button] {
     box-sizing: border-box;
     font-size: 2rem;
     font-weight: 700;
-    line-height: 4.5rem;
-    height: 4.5rem;
+    line-height: 5rem;
+    height: 5rem;
     margin: 0.75rem 0.25rem;
     border-radius: 3rem;
-    padding: 0 1.5rem;
+    padding: 0 2rem;
     border: 0;
     transition: background 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.5);
@@ -395,7 +403,7 @@ input[type=button].flat:focus {
     font-size: 3.5rem;
     animation: zoom 0.3s;
     padding: 0;
-    border-radius: 10rem;
+    border-radius: 2rem;
 }
 
 .button.action.small {
