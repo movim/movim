@@ -338,9 +338,16 @@ input[type=button] {
     padding: 0 2rem;
     border: 0;
     transition: background 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.5);
     background-image: none;
     user-select: none;
+}
+
+.button.color {
+    box-shadow: var(--elevation-1);
+}
+
+.button.color:hover {
+    box-shadow: var(--elevation-2);
 }
 
 p > .button,
@@ -421,13 +428,13 @@ body > div.drawer:not(:empty):not(.empty) ~ main .button.action {
 
 .button.action,
 ul.list.actions > li > p {
-    box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.23), 0 0.5rem 1.25rem rgba(0, 0, 0, 0.16);
+    box-shadow: var(--elevation-3);
 }
 
 ul.list.actions > li:hover .button.action,
 ul.list.actions > li:hover p,
 .button.action:hover {
-    background-image: linear-gradient(to bottom, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.1) 100%);
+    box-shadow: var(--elevation-4);
 }
 
 .button.action,

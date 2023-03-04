@@ -62,14 +62,16 @@
     border-radius: 1rem;
     margin-bottom: 1rem;
     background-color: rgb(var(--movim-background));
+    transition: box-shadow 0.3s ease-in-out;
 }
 
 #gifs .masonry .brick.clicked {
     opacity: 0.5;
     pointer-events: none;
+    box-shadow: var(--elevation-0);
 }
 
 #gifs .masonry .brick:hover {
     cursor: pointer;
-    box-shadow: 0 0 0 0.5rem rgba(var(--movim-font), 0.25);
+    box-shadow: var(--elevation-1);
 }

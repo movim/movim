@@ -67,7 +67,13 @@ main:not(.enabled) #chat_widget {
 
 #chat_widget ul.list.actions > li > span.control,
 #chat_widget ul.list.actions > li > div > p {
-    box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.23);
+    transition: box-shadow 0.3s ease;
+    box-shadow: var(--elevation-1);
+}
+
+#chat_widget ul.list.actions > li > span.control:hover,
+#chat_widget ul.list.actions > li > div > p:hover {
+    box-shadow: var(--elevation-2);
 }
 
 /* Scroll button */
@@ -202,7 +208,7 @@ main:not(.enabled) #chat_widget {
     display: block;
     width: 100%;
     height: 100%;
-    box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.1);
+    box-shadow: var(--elevation-1);
     background-color: rgba(var(--movim-background-main));
     position: absolute;
     top: 0;

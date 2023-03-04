@@ -90,6 +90,7 @@ class Base
         $this->page->addCSS('fonts.css');
         $this->page->addCSS('title.css');
         $this->page->addCSS('typo.css');
+        $this->page->addCSS('elevation.css');
         $this->page->addCSS('scrollbar.css');
 
         $this->page->addScript('movim_utils.js');
