@@ -527,9 +527,15 @@ main:not(.enabled) #chat_widget {
     margin-right: -7rem;
 }
 
+#chat_widget .bubble div span.reaction,
+#chat_widget .bubble div span.reply,
+#chat_widget .bubble div span.actions,
+#chat_widget .bubble ul.reactions li i {
+    font-size: 2rem;
+}
+
 #chat_widget .bubble ul.reactions li i {
     padding: 0;
-    font-size: 2rem;
 }
 
 #chat_widget .bubble div span.reaction,
