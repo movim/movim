@@ -42,6 +42,7 @@ v0.21 (trunk)
  * Add audio files support and add a small audio player in the Chat
  * Add affiliation change messages in the chatrooms
  * Detecting and compiling Movim files for Opcache if enabled
+ * Add basic support of XEP-0472: Pubsub Social Feed with Gallery view and toggle in the Communities
 
 v0.20
 ---------------------------
