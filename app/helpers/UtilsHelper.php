@@ -154,25 +154,6 @@ function getClientTypes()
 }
 
 /**
- * Check if Posts collection is gallery
- */
-function isPostGallery($postCollection): bool
-{
-    // For now we detect if a node is a gallery if all the publications have an attached picture
-    // and if the post contents are short.
-    $shortCount = 0;
-
-    $gallery = $postCollection->every(function ($post) use (&$shortCount) {
-        if ($post->isShort()) $shortCount++;
-        return $post->picture != null;
-    });
-
-    if ($gallery && $shortCount < $postCollection->count()/2) $gallery = false;
-
-    return $gallery;
-}
-
-/**
  * Resolve infos from a Posts collection
  */
 function resolveInfos($postCollection)
@@ -582,6 +563,7 @@ function varToIcons(string $var)
         'pubsub#notify_delete' => 'delete',
         'pubsub#notify_retract' => 'delete_sweep',
         'pubsub#persist_items' => 'save',
+        'pubsub#type' => 'space_dashboard',
         'pubsub#deliver_notifications' => 'notifications_active',
 
         // Muc

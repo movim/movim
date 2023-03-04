@@ -57,6 +57,12 @@
                     <i class="material-icons icon-text">assignment_turned_in</i>
                     {$c->__('communitydata.publishmodel_subscribers')}
                 {/if}
+                {if="$info->isGallery()"}
+                    <br />
+                    <i class="material-icons icon-text">grid_view</i>
+                    {$c->__('communityconfig.type_gallery_title')}
+                {/if}
+
             </p>
         </div>
     </li>

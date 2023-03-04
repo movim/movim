@@ -71,6 +71,10 @@
                     </span>
                 </p>
                 <p class="line">
+                    {if="$value->isGallery()"}
+                        <i class="material-icons">grid_view</i>
+                        ·
+                    {/if}
                     {if="$value->published"}
                         <i class="material-icons">update</i>
                         {$value->published|strtotime|prepareDate:true}
