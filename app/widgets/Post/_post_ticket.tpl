@@ -57,7 +57,7 @@
 
             <span class="info" title="{$post->published|strtotime|prepareDate}">
                 {$count = $post->pictures->count()}
-                {if="$count > 0"}
+                {if="$count > 1"}
                     {$count} <i class="material-icons">collections</i> ·
                 {/if}
 
