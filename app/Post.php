@@ -44,6 +44,12 @@ class Post extends Model
         return $this->hasOne('App\Post', 'id', 'parent_id');
     }
 
+    public function info()
+    {
+        return $this->hasOne('App\Info', 'server', 'server')
+                    ->where('node', $this->node);
+    }
+
     public function likes()
     {
         return $this->hasMany('App\Post', 'parent_id', 'id')

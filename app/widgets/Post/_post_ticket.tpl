@@ -18,6 +18,20 @@
             style="background-image: url({$post->picture->href|protectPicture});"
         >
         </span>
+    {elseif="!$post->contact"}
+        <span class="control icon bubble color {$post->node|stringToColor}"
+            {$url = false}
+            {if="$post->info"}
+                {$url = $post->info->getPhoto('m')}
+            {/if}
+            {if="$url"}
+                style="background-image: url({$url});"
+            {/if}
+        >
+            {if="$url == false"}
+                {$post->node|firstLetterCapitalize}
+            {/if}
+        </span>
     {/if}
     <div>
         <p class="line two" {if="isset($post->title)"}title="{$post->title}"{/if}>

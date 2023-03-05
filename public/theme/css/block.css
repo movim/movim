@@ -111,7 +111,8 @@ ul.flex.gallery li.block {
 
 ul.flex.gallery li.block p a.node,
 ul.flex.gallery li.block > img + span,
-ul.flex.gallery li.block > span.primary {
+ul.flex.gallery li.block > span.primary,
+ul.flex.gallery li.block > span.control {
     display: none;
 }
 
