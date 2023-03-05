@@ -190,7 +190,7 @@ function resolveInfos($postCollection)
 /**
  * Return a picture with a specific size
  */
-function getPhoto(string $key, string $size = 'm')
+function getPhoto(string $key, string $size = 'm'): ?string
 {
     $sizes = [
         'xxl'   => [1280, 300],

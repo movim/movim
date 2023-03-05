@@ -209,12 +209,16 @@ class Publish extends Base
                 $p->setReply($post->getRef());
             }
 
+            $hasImage = false;
+
             foreach ($draft->embeds as $embed) {
                 $resolved = $embed->resolve();
 
                 // The url is an image
                 if ($resolved->type == 'image'
                 && $resolved->images[0]['url'] == $embed->url) {
+                    if (!$hasImage) $hasImage = true;
+
                     $p->addImage(
                         $resolved->images[0]['url'],
                         $resolved->title,
@@ -252,6 +256,16 @@ class Publish extends Base
                         $resolved->providerIcon
                     );
                 }
+            }
+
+            $info = \App\Info::where('server', $draft->server)
+                            ->where('node', $draft->node)
+                            ->first();
+
+            if ($info && $info->isGallery() && !$hasImage) {
+                $this->rpc('Publish.enableSend');
+                Toast::send($this->__('publish.no_picture'));
+                return;
             }
 
             $p->request();

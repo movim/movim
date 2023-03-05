@@ -53,6 +53,11 @@
                         {if="$value->public"}
                             <span class="tag color gray">{$c->__('room.public_muc')}</span>
                         {/if}
+                        {if="$value->info && $value->info->isGallery()"}
+                            <i class="material-icons">grid_view</i>
+                            {$c->__('communityconfig.type_gallery_title')}
+                            ·
+                        {/if}
                         {if="$value->info && $value->info->description"}
                             {$value->info->description|strip_tags}
                         {else}

@@ -1,12 +1,12 @@
 {if="$info != null && $info->pubsubpublishmodel != null && $info->pubsubpublishmodel != 'publishers'"}
     {if="$info->pubsubpublishmodel == 'open' || ($info->pubsubpublishmodel == 'subscribers' && $subscription != null)"}
         <a class="button action color" title="{$c->__('menu.add_post')}" href="{$c->route('publish', [$server, $node])}">
-            <i class="material-icons">post_add</i>
+            <i class="material-icons">{if="$info->isGallery()"}add_photo_alternate{else}post_add{/if}</i>
         </a>
     {/if}
 {else}
     <a onclick="CommunityHeader_ajaxTestPublish('{$server}', '{$node}')" class="button action color" title="{$c->__('menu.add_post')}">
-        <i class="material-icons">post_add</i>
+        <i class="material-icons">{if="$info!= null && $info->isGallery()"}add_photo_alternate{else}post_add{/if}</i>
     </a>
 {/if}
 <ul class="list thick">
