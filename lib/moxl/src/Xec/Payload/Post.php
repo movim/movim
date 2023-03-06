@@ -8,7 +8,7 @@ class Post extends Payload
 {
     private $testid = 'test_post';
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $from   = (string)$parent->attributes()->from;
 

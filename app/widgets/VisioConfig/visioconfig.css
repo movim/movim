@@ -1,22 +1,33 @@
-#visioconfig_widget .level {
-    display: block;
+#visioconfig_widget #mic_preview {
+    height: 6rem;
 }
 
-#visioconfig_widget .level span {
+#visioconfig_widget #mic_preview .level {
+    display: block;
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
+#visioconfig_widget #mic_preview .level.disabled {
+    display: none;
+}
+
+#visioconfig_widget #mic_preview .level span {
     display: inline-block;
     width: calc(10% - 0.75rem);
     margin: 0.25rem;
     height: 1.5rem;
     border-radius: 0.25rem;
+    opacity: 1;
 }
 
-#visioconfig_widget .level span.disabled {
+#visioconfig_widget #mic_preview .level span.disabled {
     opacity: 0.2;
     transition: opacity 1s ease-out;
 }
 
-#visioconfig_widget .level span {
-    opacity: 1;
+#visioconfig_widget #mic_preview .level:not(.disabled) + p {
+    display: none;
 }
 
 #visioconfig_widget #camera_preview {

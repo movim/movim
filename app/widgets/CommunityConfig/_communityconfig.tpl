@@ -61,6 +61,45 @@
             </ul>
             <label>{$c->__('communityconfig.publication')}</label>
         </div>
+        <div>
+            <ul class="list middle labeled fill">
+                <li>
+                    <span class="primary icon gray">
+                        <i class="material-icons">view_agenda</i>
+                    </span>
+                    <span class="control">
+                        <div class="radio">
+                            <input name="pubsub#type" value="urn:xmpp:pubsub-social-feed:0"
+                                id="pubsub_type_feed" type="radio"
+                                {if="$config['pubsub#type'] == 'urn:xmpp:pubsub-social-feed:0'"}checked{/if}>
+                            <label for="pubsub_type_feed"></label>
+                        </div>
+                    </span>
+                    <div>
+                        <p>{$c->__('communityconfig.type_articles_title')}</p>
+                        <p>{$c->__('communityconfig.type_articles_text')}</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="primary icon gray">
+                        <i class="material-icons">grid_view</i>
+                    </span>
+                    <span class="control">
+                        <div class="radio">
+                            <input name="pubsub#type" value="urn:xmpp:pubsub-social-gallery:0"
+                                id="pubsub_type_gallery" type="radio"
+                                {if="$config['pubsub#type'] == 'urn:xmpp:pubsub-social-gallery:0'"}checked{/if}>
+                            <label for="pubsub_type_gallery"></label>
+                        </div>
+                    </span>
+                    <div>
+                        <p>{$c->__('communityconfig.type_gallery_title')}</p>
+                        <p>{$c->__('communityconfig.type_gallery_text')}</p>
+                    </div>
+                </li>
+            </ul>
+            <label>{$c->__('communityconfig.type')}</label>
+        </div>
         {else}
             {autoescape="off"}
                 {$form}

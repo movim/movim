@@ -6,7 +6,7 @@ use Movim\Session;
 
 class JingleReject extends Payload
 {
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         // We can only reject the current session
         $jingleSid = Session::start()->get('jingleSid');

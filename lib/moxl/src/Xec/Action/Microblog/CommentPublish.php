@@ -4,10 +4,10 @@ namespace Moxl\Xec\Action\Microblog;
 
 use Moxl\Stanza\Pubsub;
 use Moxl\Stanza\PubsubAtom;
-use Moxl\Xec\Action\Pubsub\Errors;
+use Moxl\Xec\Action;
 use Moxl\Xec\Action\Pubsub\GetItem;
 
-class CommentPublish extends Errors
+class CommentPublish extends Action
 {
     protected $_to;
     protected $_node;
@@ -67,7 +67,7 @@ class CommentPublish extends Errors
         return $this;
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $g = new GetItem;
         $g->setTo($this->_to)
@@ -80,7 +80,7 @@ class CommentPublish extends Errors
         $this->deliver();
     }
 
-    public function error()
+    public function error(string $errorId, ?string $message = null)
     {
         $this->deliver();
     }

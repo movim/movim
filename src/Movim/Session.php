@@ -1,8 +1,14 @@
 <?php
+/*
+ * SPDX-FileCopyrightText: 2010 Jaussoin Timothée
+ * SPDX-License-Identifier: AGPL-3.0-or-later
+ */
 
 namespace Movim;
 
-class Session
+use Psr\SimpleCache\CacheInterface;
+
+class Session implements CacheInterface
 {
     protected static $instance;
     protected static $sid = null;
@@ -21,39 +27,71 @@ class Session
         return self::$instance;
     }
 
-    /**
-     * Gets a session variable. Returns false if doesn't exist.
-     */
-    public function get(string $varname, $defaultValue = false)
+    public function get($key, $default = null)
     {
-        if (\array_key_exists($varname, $this->values)) {
-            return $this->values[$varname]->value;
+        if (\array_key_exists($key, $this->values)) {
+            return $this->values[$key]->value;
         }
 
-        return $defaultValue;
+        return $default;
     }
 
-    /**
-     * Sets a session variable. Returns $value.
-     */
-    public function set(string $varname, $value, bool $removable = false)
+    public function getMultiple($keys, $default = null)
+    {
+        $values = [];
+
+        foreach ($keys as $key) {
+            $values[$key] = $this->get($key);
+        }
+
+        return $values;
+    }
+
+    public function set($key, $value, $ttl = null): bool
     {
         $obj = new \StdClass;
-        $obj->removable = $removable;
+        $obj->removable = $ttl != null;
         $obj->value     = $value;
         $obj->time      = time();
 
-        $this->values[$varname] = $obj;
+        $this->values[$key] = $obj;
 
-        return $value;
+        return true;
     }
 
-    /**
-     * Deletes a variable from the session.
-     */
-    public function remove($varname)
+    public function setMultiple($values, $ttl = null): bool
     {
-        unset($this->values[$varname]);
+        foreach ($values as $key => $value) {
+            $this->set($key, $value, $ttl);
+        }
+
+        return true;
+    }
+
+    public function delete($key): bool
+    {
+        unset($this->values[$key]);
+        return true;
+    }
+
+    public function deleteMultiple($keys): bool
+    {
+        foreach ($keys as $key) {
+            $this->delete($key);
+        }
+
+        return true;
+    }
+
+    public function clear(): bool
+    {
+        $this->values = [];
+        return true;
+    }
+
+    public function has($key): bool
+    {
+        return array_key_exists($key, $this->values);
     }
 
     /**

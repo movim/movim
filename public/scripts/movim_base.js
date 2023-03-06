@@ -33,10 +33,17 @@ function movimAddFocus(func) {
  * @brief Function that is run once the page is loaded.
  */
 document.addEventListener("DOMContentLoaded", () => {
+    movimLaunchOnload();
+});
+
+/**
+ * @brief Execute onloader functions
+ */
+function movimLaunchOnload() {
     for (var i = 0; i < onloaders.length; i++) {
         onloaders[i]();
     }
-});
+}
 
 /**
  * The focus event doesn't seems to be triggered all the time ¯\_(ツ)_/¯

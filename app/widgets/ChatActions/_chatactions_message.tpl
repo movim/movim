@@ -2,7 +2,7 @@
     <ul class="list divided active">
         <li onclick="Stickers_ajaxReaction({$message->mid})">
             <span class="control icon gray">
-                <i class="material-icons">mood</i>
+                <i class="material-icons">add_reaction</i>
             </span>
             <div>
                 <p class="normal">{$c->__('message.react')}</p>

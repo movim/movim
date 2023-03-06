@@ -98,9 +98,9 @@ class AccountNext extends \Movim\Widget\Base
             $domain = $resolved[0]['target'];
         })->always(function () use ($host, &$domain) {
             // We create a new session or clear the old one
-            $s = Session::start();
-            $s->set('host', $host);
-            $s->set('domain', $domain);
+            $session = Session::start();
+            $session->set('host', $host);
+            $session->set('domain', $domain);
 
             \Moxl\Stanza\Stream::init($host);
         });

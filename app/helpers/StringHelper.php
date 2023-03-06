@@ -71,7 +71,7 @@ function addHashtagsLinks($string)
     return preg_replace_callback("/([\n\r\s>]|^)#(\w+)/u", function ($match) {
         return
             $match[1].
-            '<a class="innertag" href="'.\Movim\Route::urlize('tag', $match[2]).'">'.
+            '<a class="innertag" href="#" onclick="MovimUtils.reload(\''.\Movim\Route::urlize('tag', $match[2]).'\')">'.
             '#'.$match[2].
             '</a>';
     }, $string);
@@ -158,9 +158,13 @@ function cleanJid($jid): string
  */
 function getCid($string)
 {
-    preg_match("/(\w+)\@/", $string, $matches);
+    preg_match("/(\w+)\+(\w+)\@/", $string, $matches);
     if (is_array($matches) && count($matches) > 1) {
-        return $matches[1];
+        if ($matches[1] === "sha1") {
+            return $matches[2];
+        } else {
+            return $matches[1].'+'.$matches[2];
+        }
     }
 }
 
@@ -325,7 +329,7 @@ function typeIsAudio(string $type): bool
         $type,
         [
             'audio/aac', 'audio/ogg', 'video/ogg', 'audio/opus',
-            'audio/vorbis', 'audio/speex', 'audio/mpeg'
+            'audio/vorbis', 'audio/speex', 'audio/mpeg', 'audio/webm'
         ]
     );
 }
@@ -485,6 +489,14 @@ function cleanupId(string $string = '', bool $withHash = false): string
 {
     $id = 'id-' . strtolower(preg_replace('/([^a-z0-9]+)/i', '-', $string));
     return $withHash ? $id . '-' . substr(hash('sha256', $string), 0, 6) : $id;
+}
+
+/**
+ * @desc Return a clean string that can be used for HTML ids
+ */
+function hashId(string $string = ''): string
+{
+    return 'id-' . substr(hash('sha256', $string), 0, 6);
 }
 
 /**

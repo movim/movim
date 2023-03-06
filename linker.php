@@ -1,4 +1,5 @@
 <?php
+
 require __DIR__ . '/vendor/autoload.php';
 
 gc_enable();
@@ -7,6 +8,8 @@ use Movim\Bootstrap;
 use Movim\RPC;
 use Movim\Session;
 use React\Promise\Timer;
+
+use App\PresenceBuffer;
 
 $loop = React\EventLoop\Loop::get();
 
@@ -39,23 +42,28 @@ $wrapper->registerAll($bootstrap->getWidgets());
 
 $xmppSocket = null;
 
-$parser = new \Moxl\Parser(function ($node) {
-    \Moxl\Xec\Handler::handle($node);
-});
+$parser = new \Moxl\Parser(fn (\SimpleXMLElement $node) => \Moxl\Xec\Handler::handle($node));
 
 $timestampReceive = $timestampSend = $sqlQueryExecuted = time();
 
 function handleSSLErrors($errno, $errstr)
 {
-    logOut(colorize('SSL Error '.$errno.': '.$errstr, 'red'));
+    logOut(colorize('SSL Error ' . $errno . ': ' . $errstr, 'red'));
 }
 
 // Temporary linker killer
 $loop->addPeriodicTimer(5, function () use (&$xmppSocket, &$timestampReceive, &$timestampSend) {
-    if (($timestampSend < time() - 3600*24 /* 24h */ || $timestampReceive < time() - 60*30 /* 30min */)
-        && isset($xmppSocket)) {
+    if (($timestampSend < time() - 3600 * 24 /* 24h */ || $timestampReceive < time() - 60 * 30 /* 30min */)
+        && isset($xmppSocket)
+    ) {
         $xmppSocket->close();
     }
+});
+
+// Buffer timers
+$loop->addPeriodicTimer(1, function () {
+    $pb = PresenceBuffer::getInstance();
+    $pb->save();
 });
 
 $wsSocket = null;
@@ -71,7 +79,7 @@ function writeOut($msg = null)
 
 function logOut($log)
 {
-    fwrite(STDERR, colorize(getenv('sid'), 'yellow')." : ".$log."\n");
+    fwrite(STDERR, colorize(getenv('sid'), 'yellow') . " : " . $log . "\n");
 }
 
 function writeXMPP($xml)
@@ -84,7 +92,7 @@ function writeXMPP($xml)
         $xmppSocket->write(trim($xml));
 
         if (config('daemon.debug')) {
-            logOut(colorize(trim($xml).' ', 'yellow') . colorize('sent to XMPP', 'green'));
+            logOut(colorize(trim($xml) . ' ', 'yellow') . colorize('sent to XMPP', 'green'));
         }
     }
 }
@@ -102,14 +110,12 @@ function enableEncryption($connection)
     stream_context_set_option($connection->stream, 'ssl', 'allow_self_signed', false);
 
     return $encryption->enable($connection)->then(
-        function() {
-            logOut(colorize('TLS enabled', 'blue'));
-        },
+        fn () => logOut(colorize('TLS enabled', 'blue')),
         function ($error) use ($connection) {
-            logOut(colorize('TLS error '.$error->getMessage(), 'blue'));
+            logOut(colorize('TLS error ' . $error->getMessage(), 'blue'));
 
-            $evt = new Movim\Widget\Event;
-            $evt->run('ssl_error');
+            $evt = new Movim\Widget\Base;
+            $evt->event('ssl_error');
 
             shutdown();
         }
@@ -122,8 +128,10 @@ function handleClientDNS(array $results, $dns, $connector, $xmppBehaviour)
         $port = 5222;
         $directTLSSocket = false;
 
-        if ($results['directtls'] !== false && $results['directtls'][0]['target'] !== '.'
-         && $results['starttls'] !== false && $results['starttls'][0]['target'] !== '.') {
+        if (
+            $results['directtls'] !== false && $results['directtls'][0]['target'] !== '.'
+            && $results['starttls'] !== false && $results['starttls'][0]['target'] !== '.'
+        ) {
             if ($results['starttls'][0]['priority'] < $results['directtls'][0]['priority']) {
                 $host = $results['starttls'][0]['target'];
                 $port = $results['starttls'][0]['port'];
@@ -151,17 +159,17 @@ function handleClientDNS(array $results, $dns, $connector, $xmppBehaviour)
 
         $socket = 'tcp://';
         if ($directTLSSocket) $socket = 'tls://';
-        $socket .= $host.':'.$port;
+        $socket .= $host . ':' . $port;
 
-        logOut(colorize('Connect to '.$socket, 'blue'));
+        logOut(colorize('Connect to ' . $socket, 'blue'));
 
         $connector->connect($socket)->then(
             $xmppBehaviour,
             function (\Exception $error) {
                 logOut(colorize($error->getMessage(), 'red'));
 
-                $evt = new Movim\Widget\Event;
-                $evt->run('timeout_error');
+                $evt = new Movim\Widget\Base;
+                $evt->event('timeout_error');
                 $this->cancel();
             }
         );
@@ -199,10 +207,12 @@ $wsSocketBehaviour = function ($msg) use (&$xmppSocket, &$connector, &$xmppBehav
 
             case 'up':
             case 'down':
-                if (isset($xmppSocket)
-                && is_resource($xmppSocket->stream)) {
-                    $evt = new Movim\Widget\Event;
-                    $evt->run('session_'.$msg->func);
+                if (
+                    isset($xmppSocket)
+                    && is_resource($xmppSocket->stream)
+                ) {
+                    $evt = new Movim\Widget\Base;
+                    $evt->event('session_' . $msg->func);
                 }
                 break;
 
@@ -264,32 +274,34 @@ $xmppBehaviour = function (React\Socket\Connection $stream) use (&$xmppSocket, $
 
     $xmppSocket = $stream;
 
-    $evt = new Movim\Widget\Event;
-    $evt->run('socket_connected');
+    $evt = new Movim\Widget\Base;
+    $evt->event('socket_connected');
 
     if (getenv('verbose')) {
         logOut(colorize('XMPP socket launched', 'blue'));
-        logOut(" launched : ".\humanSize(memory_get_usage()));
+        logOut(" launched : " . \humanSize(memory_get_usage()));
     }
 
     $xmppSocket->on('data', function ($message) use (&$xmppSocket, $parser, &$timestampReceive) {
         if (!empty($message)) {
 
             if (config('daemon.debug')) {
-                logOut(colorize($message.' ', 'yellow') . colorize('received', 'green'));
+                logOut(colorize($message . ' ', 'yellow') . colorize('received', 'green'));
             }
 
             if ($message == '</stream:stream>') {
                 $xmppSocket->close();
                 shutdown();
-            } elseif ($message == "<proceed xmlns='urn:ietf:params:xml:ns:xmpp-tls'/>"
-                  || $message == '<proceed xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>') {
+            } elseif (
+                $message == "<proceed xmlns='urn:ietf:params:xml:ns:xmpp-tls'/>"
+                || $message == '<proceed xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>'
+            ) {
                 enableEncryption($xmppSocket)->then(
-                    function() {
+                    function () {
                         $session = Session::start();
                         \Moxl\Stanza\Stream::init($session->get('host'));
                     },
-                    function() {
+                    function () {
                         return;
                     }
                 );
@@ -303,12 +315,8 @@ $xmppBehaviour = function (React\Socket\Connection $stream) use (&$xmppSocket, $
         }
     });
 
-    $xmppSocket->on('error', function () {
-        shutdown();
-    });
-    $xmppSocket->on('close', function () {
-        shutdown();
-    });
+    $xmppSocket->on('error', fn () => shutdown());
+    $xmppSocket->on('close', fn () => shutdown());
 
     // And we say that we are ready !
     $obj = new \StdClass;

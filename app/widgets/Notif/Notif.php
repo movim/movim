@@ -10,12 +10,12 @@ use Carbon\Carbon;
 
 use App\PushSubscription;
 
-class Notification extends Base
+class Notif extends Base
 {
     public static $rpcCall = null;
     public function load()
     {
-        $this->addjs('notification.js');
+        $this->addjs('notif.js');
         $this->registerEvent('chat_counter', 'onChatCounter');
         $this->registerEvent('session_up', 'onSessionUp');
         $this->registerEvent('session_down', 'onSessionDown');
@@ -23,7 +23,7 @@ class Notification extends Base
 
     public function onSessionUp()
     {
-        Session::start()->remove('session_down');
+        Session::start()->delete('session_down');
     }
 
     public function onSessionDown()
@@ -33,7 +33,7 @@ class Notification extends Base
 
     public function onChatCounter(int $count = 0)
     {
-        RPC::call('Notification.counter', 'chat', $count);
+        RPC::call('Notif.counter', 'chat', $count);
     }
 
     public static function rpcCall($rpc)
@@ -92,7 +92,7 @@ class Notification extends Base
 
             // Push notification
             if ($webPush) {
-                foreach (\App\User::me()->pushSubscriptions()->where('enabled', true)->get() as $pushSubscription) {
+                foreach (\App\User::me()->pushSubscriptions()->where('enabled', true)->whereNotNull('activity_at')->get() as $pushSubscription) {
                     $subscription = Subscription::create([
                         'endpoint' => $pushSubscription->endpoint,
                         'contentEncoding' => 'aesgcm',
@@ -118,7 +118,7 @@ class Notification extends Base
 
                 // Normal notification
             } else {
-                RPC::call('Notification.desktop', $title, $body, $picture, $action, $execute);
+                RPC::call('Notif.desktop', $title, $body, $picture, $action, $execute);
             }
         }
 
@@ -143,10 +143,10 @@ class Notification extends Base
         }
 
         if ($first === 'chat') {
-            RPC::call('Notification.counter', $first, (\App\User::me())->unreads(null, true));
+            RPC::call('Notif.counter', $first, (\App\User::me())->unreads(null, true));
             self::executeRPC();
         } else {
-            RPC::call('Notification.counter', $first, $notifs[$first]);
+            RPC::call('Notif.counter', $first, $notifs[$first]);
             self::executeRPC();
         }
 
@@ -157,14 +157,14 @@ class Notification extends Base
                 $notifs[$key] = 1;
             }
 
-            RPC::call('Notification.counter', $key, $notifs[$key]);
+            RPC::call('Notif.counter', $key, $notifs[$key]);
             self::executeRPC();
         }
 
         if ($title != null) {
-            $n = new Notification;
+            $n = new Notif;
             RPC::call(
-                'Notification.snackbar',
+                'Notif.snackbar',
                 $n->prepareSnackbar($title, $body, $picture, $action, $execute),
                 $time
             );
@@ -175,7 +175,7 @@ class Notification extends Base
 
 
     /**
-     * @brief Get the current Notification key
+     * @brief Get the current Notif key
      */
     public function getCurrent()
     {
@@ -198,7 +198,7 @@ class Notification extends Base
             $counter = $notifs[$key];
             unset($notifs[$key]);
 
-            RPC::call('Notification.counter', $key, 0);
+            RPC::call('Notif.counter', $key, 0);
 
             $explode = explode('|', $key);
             $first = reset($explode);
@@ -208,9 +208,9 @@ class Notification extends Base
 
                 if ($notifs[$first] <= 0) {
                     unset($notifs[$first]);
-                    RPC::call('Notification.counter', $first, 0);
+                    RPC::call('Notif.counter', $first, 0);
                 } else {
-                    RPC::call('Notification.counter', $first, $notifs[$first]);
+                    RPC::call('Notif.counter', $first, $notifs[$first]);
                 }
             }
         }
@@ -227,10 +227,10 @@ class Notification extends Base
         $session = Session::start();
         $notifs = $session->get('notifs');
 
-        if ($notifs == false) $notifs = [];
+        if ($notifs == null) $notifs = [];
 
         $notifs['chat'] = (\App\User::me())->unreads();
-        RPC::call('Notification.refresh', $notifs);
+        RPC::call('Notif.refresh', $notifs);
     }
 
     /**
@@ -242,7 +242,7 @@ class Notification extends Base
     public function ajaxCurrent($key)
     {
         // Clear the specific keys
-        if (strpos($key, '|') !== false) (new Notification)->ajaxClear($key);
+        if (strpos($key, '|') !== false) (new Notif)->ajaxClear($key);
 
         $session = Session::start();
 
@@ -270,6 +270,7 @@ class Notification extends Base
         $p->endpoint = $endpoint;
         $p->auth = $auth;
         $p->p256dh = $p256dh;
+        $p->activity_at = Carbon::now();
 
         if ($userAgent) {
             $p->browser = getBrowser($userAgent);
@@ -284,7 +285,7 @@ class Notification extends Base
      */
     public function ajaxHttpTouchPushSubscription(string $endpoint)
     {
-        $pushSubscription = $this->user->pushSubscriptions()->where('endpoint', $endpoint)->firstOrFail();
+        $pushSubscription = $this->user->pushSubscriptions()->where('endpoint', $endpoint)->first();
 
         if ($pushSubscription) {
             $pushSubscription->activity_at = Carbon::now();
@@ -298,12 +299,12 @@ class Notification extends Base
     public function ajaxRequest()
     {
         $view = $this->tpl();
-        Dialog::fill($view->draw('_notification_request'));
+        Dialog::fill($view->draw('_notif_request'));
     }
 
     public function ajaxRequestGranted()
     {
-        RPC::call('Notification.desktop',
+        RPC::call('Notif.desktop',
             $this->__('notification.request_title'),
             $this->__('notification.request_granted'),
             null,
@@ -328,6 +329,6 @@ class Notification extends Base
         $view->assign('action', $action);
         $view->assign('onclick', $execute);
 
-        return $view->draw('_notification');
+        return $view->draw('_notif');
     }
 }

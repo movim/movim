@@ -14,7 +14,10 @@
         <ul class="list fill">
             {loop="$reported"}
                 <li id="reported-{$value->id|cleanupId}">
-                    <span class="primary">
+                    <span class="primary icon gray">
+                        <i class="material-icons">person</i>
+                    </span>
+                    <span class="control">
                         <div class="checkbox">
                             <input
                                 type="checkbox"

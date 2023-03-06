@@ -1,6 +1,6 @@
 <ul class="list flex third middle active card shadow">
     {if="$type == 'all' && ($page == 1 || $posts->count() < $limit)"}
-        <li class="block" onclick="MovimUtils.redirect('{$c->route('explore', 'servers')}')">
+        <li class="block" onclick="MovimUtils.reload('{$c->route('explore', 'servers')}')">
             <span class="primary icon bubble color">
                 <i class="material-icons">view_agenda</i>
             </span>

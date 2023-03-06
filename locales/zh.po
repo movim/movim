@@ -126,16 +126,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-04 14:11+0200\n"
-"PO-Revision-Date: 2022-02-17 07:57+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"POT-Creation-Date: 2022-12-25 14:45+0200\n"
+"PO-Revision-Date: 2015-06-24 09:45+0000\n"
+"Last-Translator: z h, 2021\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Translate Toolkit 3.4.1\n"
+"X-Generator: Translate Toolkit 3.7.4\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -424,9 +424,8 @@ msgid "Access Tenor and get your API key"
 msgstr "访问Tenor并获取API密钥"
 
 #: [twitter]title
-#, fuzzy
 msgid "Twitter integration"
-msgstr "Tenor集成"
+msgstr ""
 
 #: [twitter]label
 msgid "Your Twitter Token"
@@ -453,9 +452,8 @@ msgid "Syslog and files"
 msgstr "系统日志和文件"
 
 #: [adminreported]reported_by
-#, fuzzy
 msgid "Reported by %s users"
-msgstr "举报滥用行为"
+msgstr ""
 
 #: [adminreported]info
 msgid "Those accounts were reported by some Movim users"
@@ -477,22 +475,6 @@ msgstr "pod上当前已连接的用户"
 msgid "File"
 msgstr "文件"
 
-#: [avatar]use_it
-msgid "Use it"
-msgstr "用它"
-
-#: [avatar]webcam
-msgid "Webcam"
-msgstr "摄像头"
-
-#: [avatar]cheese
-msgid "Cheese!"
-msgstr "微笑:D"
-
-#: [avatar]snapshot
-msgid "Take a webcam snapshot"
-msgstr "进行摄像头快照"
-
 #: [avatar]updated
 msgid "Avatar Updated"
 msgstr "头像已更新"
@@ -513,25 +495,37 @@ msgstr "更换头像"
 msgid "Upload a new picture"
 msgstr "上传新图片"
 
+#: [banner]change
+msgid "Change my banner"
+msgstr ""
+
+#: [banner]updated
+msgid "Banner Updated"
+msgstr ""
+
+#: [banner]not_updated
+msgid "Banner Not Updated"
+msgstr ""
+
+#: [banner]missing
+msgid "No banner defined yet"
+msgstr ""
+
 #: [blocked]title
-#, fuzzy
 msgid "Blocked"
-msgstr "惊讶"
+msgstr ""
 
 #: [blocked]block_account
-#, fuzzy
 msgid "Block the account"
-msgstr "其它帐号"
+msgstr ""
 
 #: [blocked]unblock_account
-#, fuzzy
 msgid "Unblock the account"
-msgstr "其它帐号"
+msgstr ""
 
 #: [blocked]account_blocked
-#, fuzzy
 msgid "Account blocked"
-msgstr "帐户"
+msgstr ""
 
 #: [blocked]account_unblocked
 msgid "Account unblocked"
@@ -590,9 +584,8 @@ msgid "Composing…"
 msgstr "正在写..."
 
 #: [message]invitation
-#, fuzzy
 msgid "Invitation"
-msgstr "邀请已发送"
+msgstr ""
 
 #: [message]paused
 msgid "Paused…"
@@ -647,9 +640,8 @@ msgid "You received an invitation to join a chatroom"
 msgstr "你收到了加入聊天室的邀请"
 
 #: [chat]invitation_self
-#, fuzzy
 msgid "You sent an invitation to join a chatroom"
-msgstr "你收到了加入聊天室的邀请"
+msgstr ""
 
 #: [chat]invitation_join
 msgid "Join %s"
@@ -677,13 +669,24 @@ msgid "Incoming call"
 msgstr "來电"
 
 #: [chat]jingle_outgoing
-#, fuzzy
 msgid "Outgoing call"
-msgstr "通话中"
+msgstr ""
 
 #: [chat]jingle_end
 msgid "Call ended"
 msgstr "通话结束"
+
+#: [chat]jingle_hours
+msgid "%s hours %s minutes"
+msgstr ""
+
+#: [chat]jingle_minutes
+msgid "%s minutes and %s seconds"
+msgstr ""
+
+#: [chat]jingle_seconds
+msgid "%s seconds"
+msgstr ""
 
 #: [chat]publish_error
 msgid "An error occured when sending the message"
@@ -1032,13 +1035,12 @@ msgid "No publication yet? Write your first post to make people discover your pr
 msgstr ""
 
 #: [communityposts]empty_me_button
-#, fuzzy
 msgid "Publish my first post"
-msgstr "该帖的公开 URL"
+msgstr ""
 
 #: [communitysubscriptions]subscriptions
-msgid "My Subscriptions"
-msgstr "我的订阅"
+msgid "Subscribed Communities"
+msgstr ""
 
 #: [communitysubscriptions]empty_title
 msgid "Hello"
@@ -1393,24 +1395,20 @@ msgid "Add the chatroom"
 msgstr "添加这聊天室"
 
 #: [location]title
-#, fuzzy
 msgid "My location"
-msgstr "我的发布"
+msgstr ""
 
 #: [location]enabled_title
-#, fuzzy
 msgid "Currently shared with my contacts"
-msgstr "与联系人分享的帖子"
+msgstr ""
 
 #: [location]disabled_title
-#, fuzzy
 msgid "Currently disabled"
-msgstr "评论已禁用"
+msgstr ""
 
 #: [location]last_published
-#, fuzzy
 msgid "My last published location"
-msgstr "我的发布"
+msgstr ""
 
 #: [location]less_than_one_km
 msgid "Less than a km away"
@@ -1528,6 +1526,14 @@ msgstr "%s 邀请你加入一个聊天室"
 msgid "Administrated by"
 msgstr "管理员更改"
 
+#: [about_movim]info
+msgid "Movim is a federated blogging and chat platform."
+msgstr ""
+
+#: [about_movim]website
+msgid "Visit the project official website %s."
+msgstr ""
+
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
 msgstr "无效昵称（需在 4 到 40 字符之间）"
@@ -1557,9 +1563,8 @@ msgid "Write a new post…"
 msgstr "发一篇新的帖子…"
 
 #: [notification]request_title
-#, fuzzy
 msgid "Notifications request"
-msgstr "提醒"
+msgstr ""
 
 #: [notification]request_info
 msgid "Movim requires your approval to display notifications"
@@ -1574,14 +1579,12 @@ msgid "Request"
 msgstr ""
 
 #: [notification]request_granted
-#, fuzzy
 msgid "Authorization granted"
-msgstr "验证代码"
+msgstr ""
 
 #: [notification]request_refused
-#, fuzzy
 msgid "Authorization refused"
-msgstr "验证代码"
+msgstr ""
 
 #: [notificationconfig]title [notifs]title [onboarding]notifications_title
 #: [room]notify_title
@@ -1597,33 +1600,28 @@ msgid "Incoming message"
 msgstr "收到的消息"
 
 #: [notificationconfig]push_subscriptions
-#, fuzzy
 msgid "Push notifications"
-msgstr "音频通知"
+msgstr ""
 
 #: [notificationconfig]push_subscriptions_text
-#, fuzzy
 msgid "Movim will send push notifications to the following registered devices"
-msgstr "Movim可以使用Firebase向Movim Android应用程序发送推送通知"
+msgstr ""
 
 #: [notificationconfig]push_enabled
 msgid "Push notifications enabled for this device"
 msgstr ""
 
 #: [notificationconfig]push_disabled
-#, fuzzy
 msgid "Push notifications disabled for this device"
-msgstr "此社群的订阅功能已被禁用"
+msgstr ""
 
 #: [notificationconfig]unknown_browser
-#, fuzzy
 msgid "Unknown browser"
-msgstr "未知错误"
+msgstr ""
 
 #: [notificationconfig]unknown_platform
-#, fuzzy
 msgid "Unknown platform"
-msgstr "未知错误"
+msgstr ""
 
 #: [invitations]title
 msgid "Pending Invitations"
@@ -1905,6 +1903,10 @@ msgstr "富文本编辑器"
 msgid "Add #hashtags in your title or content to allow your article to be discovered"
 msgstr ""
 
+#: [publish]publish_error_forbidden
+msgid "You are not authorized to publish there"
+msgstr ""
+
 #: [publishhelp]title [page]help
 msgid "Help"
 msgstr "帮助"
@@ -2146,9 +2148,8 @@ msgid "Archived"
 msgstr ""
 
 #: [room]archived_text
-#, fuzzy
 msgid "The chatroom messages are archived"
-msgstr "获取了 %s 条消息"
+msgstr ""
 
 #: [room]group_chat
 msgid "Group Chat"
@@ -2301,6 +2302,10 @@ msgstr "显示所有联系人"
 #: [sendto]attach
 msgid "Attach to a blog publication"
 msgstr "附在博客出版物上"
+
+#: [sendto]share
+msgid "Share in a new publication"
+msgstr ""
 
 #: [sendto]contact
 msgid "Send it to a contact"
@@ -2535,18 +2540,16 @@ msgid "Camera"
 msgstr ""
 
 #: [visioconfig]camera_label
-#, fuzzy
 msgid "Default camera"
-msgstr "默认语言"
+msgstr ""
 
 #: [visioconfig]default_microphone_changed
 msgid "Default microphone changed"
 msgstr ""
 
 #: [visioconfig]default_camera_changed
-#, fuzzy
 msgid "Default camera changed"
-msgstr "默认语言"
+msgstr ""
 
 #: [visioconfig]no_mic_sound
 msgid "No sound detected from your microphone"
@@ -3453,69 +3456,3 @@ msgstr "API 无法连接，请稍后重试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
-
-#~ msgid "General Overview"
-#~ msgstr "概览"
-
-#~ msgid "Read and write rights for the webserver in Movim’s %s directory"
-#~ msgstr "Movim服务器的%s 读写权限目录"
-
-#~ msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
-#~ msgstr "WebSocket 连接错误， 请检查 Movim 的守护进程（Daemon）是否正在运行且可以访问"
-
-#~ msgid "Browser"
-#~ msgstr "浏览器"
-
-#~ msgid "Movim Core"
-#~ msgstr "Movim 核心"
-
-#~ msgid "Movim Daemon"
-#~ msgstr "Movim 守护进程"
-
-#~ msgid "Database"
-#~ msgstr "数据库"
-
-#~ msgid "XMPP"
-#~ msgstr "XMPP"
-
-#~ msgid "Here you can register your pod on the official %sMovim API%s"
-#~ msgstr "在这里你可以在官方的 %s Movim API %s 中注册你的pod"
-
-#~ msgid "Your pod is not registered on the API"
-#~ msgstr "你的pod还没注册在API上."
-
-#~ msgid "Your pod is registered on the API"
-#~ msgstr "你的pod已注册在API上."
-
-#~ msgid "Your pod is not yet validated"
-#~ msgstr "您的pod还没验证"
-
-#~ msgid "Your pod is validated"
-#~ msgstr "您的pod已验证"
-
-#~ msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
-#~ msgstr "您请求从 API 中移除，该请求会在几小时内被处理"
-
-#~ msgid "Call started"
-#~ msgstr "通话开始"
-
-#~ msgid "Archiving preferences"
-#~ msgstr "存档选项"
-
-#~ msgid "Visit the blog to see all the public posts"
-#~ msgstr "访问这个博客并查看公共帖子"
-
-#~ msgid "Statistics"
-#~ msgstr "统计"
-
-#~ msgid "Firebase Integration"
-#~ msgstr "Firebase集成"
-
-#~ msgid "Your Firebase Authorization Key"
-#~ msgstr "您的Firebase授权密钥"
-
-#~ msgid "Go to the Firebase panel to configure and generate your Authorization key"
-#~ msgstr "转到Firebase面板配置并生成您的授权密钥"
-
-#~ msgid "Status updated"
-#~ msgstr "状态已更新"

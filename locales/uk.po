@@ -1,6 +1,7 @@
 #
 # Translators:
 # Den Girnyk <great.antique@gmail.com>, 2016
+# sergey solovey, 2022
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -115,16 +116,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-04 14:11+0200\n"
-"PO-Revision-Date: 2022-02-17 07:57+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"POT-Creation-Date: 2022-12-25 14:45+0200\n"
+"PO-Revision-Date: 2015-06-24 09:45+0000\n"
+"Last-Translator: sergey solovey, 2022\n"
 "Language-Team: Ukrainian (http://www.transifex.com/movim/movim/language/uk/)\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != 11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || (n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
-"X-Generator: Translate Toolkit 3.4.1\n"
+"X-Generator: Translate Toolkit 3.7.4\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -156,7 +157,7 @@ msgstr "API"
 
 #: [about]info
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
-msgstr "Movim - це платформа для спілкування, основана на протоколі XMPP. Всі проекти, окрім наступного програмного запезпечення там ресурсів, ліцензовані"
+msgstr "Movim - це платформа для спілкування, основана на протоколі XMPP. Всі проекти, окрім наступного програмного забезпечення та ресурсів, ліцензовані"
 
 #: [account]title [page]account
 msgid "Account"
@@ -184,11 +185,11 @@ msgstr "Пароль був змінений"
 
 #: [account]password_not_valid
 msgid "Please provide a valid password (6 characters minimum)"
-msgstr ""
+msgstr "Будь ласка, введіть дійсний пароль (мінімум 6 символів)"
 
 #: [account]password_not_same
 msgid "The provided passwords are not the same"
-msgstr ""
+msgstr "Надані паролі не відповідають обраній мові"
 
 #: [account]delete
 msgid "Delete your account"
@@ -200,27 +201,27 @@ msgstr "Ви видалите вашого XMPP користувача та вс
 
 #: [account]delete_text_confirm
 msgid "Type your full username"
-msgstr ""
+msgstr "Введіть своє ім'я користувача"
 
 #: [account]delete_text_error
 msgid "Please provide a valid username."
-msgstr ""
+msgstr "Будь ласка, введіть дійсне ім’я користувача."
 
 #: [account]gateway_title
 msgid "Gateways"
-msgstr ""
+msgstr "Шлюзи"
 
 #: [account]clear
 msgid "Leave this instance"
-msgstr ""
+msgstr "Покинути цей сервер"
 
 #: [account]clear_text
 msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
-msgstr ""
+msgstr "Ви видалите всю відповідну інформацію, пов’язану з вашим обліковим записом у цьому екземплярі Movim (профіль, контакти та публікації)."
 
 #: [account]clear_text_confirm
 msgid "This action will not delete your account but will disconnect you from this instance."
-msgstr ""
+msgstr "Ця дія не видалить ваш обліковий запис, але від’єднає вас від цього сервера."
 
 #: [account]delete_bundle_title
 msgid "OMEMO Key deletion"
@@ -236,11 +237,11 @@ msgstr "Створити нового користувача"
 
 #: [create]notfound
 msgid "No account creation form found on the server"
-msgstr ""
+msgstr "На сервері не знайдено форми створення облікового запису"
 
 #: [create]server_on
 msgid "on"
-msgstr ""
+msgstr "Увімкн."
 
 #: [create]successfull
 msgid "Your acccount has been successfully registered"
@@ -256,7 +257,7 @@ msgstr "...та почніть грати"
 
 #: [error]not_acceptable
 msgid "Not Acceptable"
-msgstr ""
+msgstr "Не прийнятний"
 
 #: [error]service_unavailable
 msgid "The registration system of this server is currently unavailable"
@@ -264,7 +265,7 @@ msgstr "Система реєстрації даного сервера нара
 
 #: [error]forbidden
 msgid "Registration forbidden"
-msgstr ""
+msgstr "Реєстрація заборонена"
 
 #: [adhoc]title
 msgid "Actions"
@@ -272,19 +273,19 @@ msgstr "Дії"
 
 #: [adhoc]completed
 msgid "Action completed"
-msgstr ""
+msgstr "Зроблено"
 
 #: [admin]general
 msgid "General Settings"
-msgstr ""
+msgstr "Загальні налаштування"
 
 #: [general]theme
 msgid "Theme"
-msgstr ""
+msgstr "Теми"
 
 #: [general]language
 msgid "Default language"
-msgstr ""
+msgstr "Мова за замовчуванням"
 
 #: [general]log_verbosity
 msgid "Log verbosity"
@@ -300,11 +301,11 @@ msgstr ""
 
 #: [chatonly]title
 msgid "Chat only"
-msgstr ""
+msgstr "Тільки чат"
 
 #: [chatonly]text
 msgid "Disable all the social feature (Communities, Blog…) and keep only the chat ones"
-msgstr ""
+msgstr "Вимкніть усі соціальні функції (Спільноти, блог…) і збережіть лише чат"
 
 #: [credentials]title
 msgid "Administration Credential"
@@ -312,105 +313,105 @@ msgstr ""
 
 #: [credentials]username [input]username
 msgid "Username"
-msgstr ""
+msgstr "Ім'я користувача"
 
 #: [credentials]re_password
 msgid "Retype password"
-msgstr ""
+msgstr "Повторно введіть пароль"
 
 #: [disableregistration]title
 msgid "Disable the XMPP registration feature"
-msgstr ""
+msgstr "Вимкнути функцію реєстрації XMPP"
 
 #: [disableregistration]text
 msgid "Remove the XMPP registration flow and buttons from the interface"
-msgstr ""
+msgstr "Видалити кнопку реєстрації XMPP зі сторінки входу"
 
 #: [whitelist]title
 msgid "Whitelisted XMPP Servers"
-msgstr ""
+msgstr "Білий список XMPP серверів"
 
 #: [whitelist]info1
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
-msgstr ""
+msgstr "Якщо ви хочете вказати список доступних серверів XMPP на вашому сервері і заборонити підключення до всіх інших, будь ласка, введіть їх доменне ім'я тут через кому (наприклад: movim.eu,jabber.fr)"
 
 #: [whitelist]info2
 msgid "Leave this field blank if you allow the access to all the XMPP accounts."
-msgstr ""
+msgstr "Щоб надати доступ до всіх облікових записів XMPP, залиште це поле порожнім."
 
 #: [whitelist]label
 msgid "List of whitelisted XMPP servers"
-msgstr ""
+msgstr "Список серверів XMPP із білого списку"
 
 #: [information]title
 msgctxt "[information]title"
 msgid "Information Message"
-msgstr ""
+msgstr "Інформаційне повідомлення"
 
 #: [information]description [communityconfig]description
 msgid "Description"
-msgstr ""
+msgstr "Опис"
 
 #: [information]description_placeholder
 msgid "General description of the instance"
-msgstr ""
+msgstr "Загальний опис сервера"
 
 #: [information]banner
 msgid "Main banner"
-msgstr ""
+msgstr "Головний банер"
 
 #: [information]banner_info
 msgid "Ensure that the picture is not too large and can be reached from any webpages"
-msgstr ""
+msgstr "Переконайтеся, що зображення не надто велике та доступне з будь-якої веб-сторінки"
 
 #: [information]info1
 msgid "This message will be displayed on the login page. It can be used to link the Terms and Conditions of your Movim instance for example."
-msgstr ""
+msgstr "Це повідомлення відобразиться на сторінці входу. Його можна використовувати, наприклад, для відображення Загальних положень та умов вашого сервера Movim."
 
 #: [information]info2
 msgid "Leave this field blank if you don’t want to show any message."
-msgstr ""
+msgstr "Залиште це поле порожнім, якщо ви не хочете показувати жодне повідомлення."
 
 #: [information]label
 msgctxt "[information]label"
 msgid "Information Message"
-msgstr ""
+msgstr "Інформаційне повідомлення"
 
 #: [xmpp]title
 msgid "Default XMPP server"
-msgstr ""
+msgstr "Сервер XMPP за замовчуванням"
 
 #: [xmpp]domain
 msgid "Main XMPP server domain"
-msgstr ""
+msgstr "Поточний домен сервера XMPP"
 
 #: [xmpp]description
 msgid "Main XMPP server description"
-msgstr ""
+msgstr "Основний опис сервера XMPP"
 
 #: [xmpp]country
 msgid "Main XMPP server country"
-msgstr ""
+msgstr "Місцезнаходження сервера XMPP"
 
 #: [xmpp]country_pick
 msgid "Pick a country in the list"
-msgstr ""
+msgstr "Виберіть країну зі списку"
 
 #: [tenor]title
 msgid "Tenor integration"
-msgstr ""
+msgstr "Інтеграція з Tenor"
 
 #: [tenor]label
 msgid "Your Tenor API Key"
-msgstr ""
+msgstr "Ваш ключ інтеграції з Tenor API"
 
 #: [tenor]info1
 msgid "Movim integrates the Tenor API to allow GIF search and publication in Chat"
-msgstr ""
+msgstr "Movim інтегрує Tenor API, щоб дозволити пошук і публікацію GIF у чаті"
 
 #: [tenor]info2
 msgid "Access Tenor and get your API key"
-msgstr ""
+msgstr "Авторизуйтеся в Tenor та отримайте ключ API"
 
 #: [twitter]title
 msgid "Twitter integration"
@@ -430,15 +431,15 @@ msgstr ""
 
 #: [log]empty
 msgid "Empty"
-msgstr ""
+msgstr "Порожньо"
 
 #: [log]syslog
 msgid "Syslog"
-msgstr ""
+msgstr "Системні логи"
 
 #: [log]syslog_files
 msgid "Syslog and files"
-msgstr ""
+msgstr "Системні логи та файли"
 
 #: [adminreported]reported_by
 msgid "Reported by %s users"
@@ -454,50 +455,50 @@ msgstr ""
 
 #: [adminsessions]title
 msgid "Sessions"
-msgstr ""
+msgstr "Сесії"
 
 #: [adminsessions]text
 msgid "Currently connected users on the pod"
-msgstr ""
+msgstr "Підключені користувачі до серверу"
 
 #: [avatar]file
 msgid "File"
-msgstr ""
-
-#: [avatar]use_it
-msgid "Use it"
-msgstr ""
-
-#: [avatar]webcam
-msgid "Webcam"
-msgstr ""
-
-#: [avatar]cheese
-msgid "Cheese!"
-msgstr ""
-
-#: [avatar]snapshot
-msgid "Take a webcam snapshot"
-msgstr ""
+msgstr "Файл"
 
 #: [avatar]updated
 msgid "Avatar Updated"
-msgstr ""
+msgstr "Аватар оновлено"
 
 #: [avatar]not_updated
 msgid "Avatar Not Updated"
-msgstr ""
+msgstr "Аватар не оновлено"
 
 #: [avatar]missing
 msgid "No avatar defined yet"
-msgstr ""
+msgstr "Відсутній аватар"
 
 #: [avatar]change
 msgid "Change my avatar"
-msgstr ""
+msgstr "Змінити аватар"
 
 #: [avatar]upload_new
 msgid "Upload a new picture"
+msgstr "Завантажити нове зображення"
+
+#: [banner]change
+msgid "Change my banner"
+msgstr ""
+
+#: [banner]updated
+msgid "Banner Updated"
+msgstr ""
+
+#: [banner]not_updated
+msgid "Banner Not Updated"
+msgstr ""
+
+#: [banner]missing
+msgid "No banner defined yet"
 msgstr ""
 
 #: [blocked]title
@@ -505,18 +506,16 @@ msgid "Blocked"
 msgstr ""
 
 #: [blocked]block_account
-#, fuzzy
 msgid "Block the account"
-msgstr "Видалити вашого користувача"
+msgstr ""
 
 #: [blocked]unblock_account
 msgid "Unblock the account"
 msgstr ""
 
 #: [blocked]account_blocked
-#, fuzzy
 msgid "Account blocked"
-msgstr "Користувач"
+msgstr ""
 
 #: [blocked]account_unblocked
 msgid "Account unblocked"
@@ -536,19 +535,19 @@ msgstr ""
 
 #: [blog]title [feed]title
 msgid "%s’s feed"
-msgstr ""
+msgstr "%s канал"
 
 #: [blog]private
 msgid "This content is private, please login to see it"
-msgstr ""
+msgstr "Цей вміст є приватним, будь ласка, увійдіть, щоб побачити його"
 
 #: [message]published
 msgid "Message Published"
-msgstr ""
+msgstr "Повідомлення опубліковано"
 
 #: [message]react
 msgid "Add a reaction"
-msgstr ""
+msgstr "Додати реакцію"
 
 #: [message]retract
 msgid "Retract"
@@ -560,28 +559,27 @@ msgstr ""
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
-msgstr ""
+msgstr "Не вдалося надіслати ваше повідомлення, спробуйте пізніше"
 
 #: [message]encrypted [omemo]encrypted
 msgid "Encrypted message"
-msgstr ""
+msgstr "Зашифроване повідомлення"
 
 #: [message]retracted
 msgid "Retracted message"
-msgstr ""
+msgstr "Відкликане повідомлення"
 
 #: [message]composing
 msgid "Composing…"
-msgstr ""
+msgstr "Пише...."
 
 #: [message]invitation
-#, fuzzy
 msgid "Invitation"
-msgstr "Конфігурація"
+msgstr ""
 
 #: [message]paused
 msgid "Paused…"
-msgstr ""
+msgstr "Зупинився...."
 
 #: [message]gone
 msgid "Contact gone"
@@ -589,47 +587,47 @@ msgstr ""
 
 #: [message]history
 msgid "%s messages retrieved"
-msgstr ""
+msgstr "%sотриманих повідомлень"
 
 #: [message]edit_help
 msgid "↑ to edit your previous message"
-msgstr ""
+msgstr "↑ щоб відредагувати своє попереднє повідомлення"
 
 #: [message]emoji_help
 msgid ":shortcut: to insert an emoji"
-msgstr ""
+msgstr ":shortcut: для вставки емодзі"
 
 #: [message]visitor_help
 msgid "You are not allowed to send messages in this conference"
-msgstr ""
+msgstr "Вам заборонено надсилати повідомлення в цій конференції"
 
 #: [chat]attention
 msgid "%s needs your attention"
-msgstr ""
+msgstr "%sпотребує вашої уваги"
 
 #: [chat]placeholder
 msgid "Your message here…"
-msgstr ""
+msgstr "Ваше повідомлення тут…"
 
 #: [chat]smileys
 msgid "Smileys"
-msgstr ""
+msgstr "Емодзі"
 
 #: [chat]frequent
 msgid "Frequent contacts"
-msgstr ""
+msgstr "Часті контакти"
 
 #: [chat]new_title
 msgid "Nothing here yet…"
-msgstr ""
+msgstr "Тут ще нічого немає…"
 
 #: [chat]new_text
 msgid "Don’t be shy, send a first message to start the discussion"
-msgstr ""
+msgstr "Не соромтеся, надішліть перше повідомлення, щоб почати обговорення"
 
 #: [chat]invitation
 msgid "You received an invitation to join a chatroom"
-msgstr ""
+msgstr "Ви отримали запрошення приєднатися до чату"
 
 #: [chat]invitation_self
 msgid "You sent an invitation to join a chatroom"
@@ -637,24 +635,24 @@ msgstr ""
 
 #: [chat]invitation_join
 msgid "Join %s"
-msgstr ""
+msgstr "Приєднуйтесь %s"
 
 #: [chat]profile
 msgid "See the profile"
-msgstr ""
+msgstr "Переглянути профіль"
 
 #: [chat]clear
 msgctxt "[chat]clear"
 msgid "Clear the history"
-msgstr ""
+msgstr "Очистити історію"
 
 #: [chat]edit_previous
 msgid "Edit last message"
-msgstr ""
+msgstr "Відредагувати останнє повідомлення"
 
 #: [chat]report_abuse
 msgid "Report abuse"
-msgstr ""
+msgstr "Повідомити про порушення"
 
 #: [chat]jingle_incoming [notificationconfig]audio_call
 msgid "Incoming call"
@@ -666,40 +664,52 @@ msgstr ""
 
 #: [chat]jingle_end
 msgid "Call ended"
+msgstr "Дзвінок закінчено"
+
+#: [chat]jingle_hours
+msgid "%s hours %s minutes"
+msgstr ""
+
+#: [chat]jingle_minutes
+msgid "%s minutes and %s seconds"
+msgstr ""
+
+#: [chat]jingle_seconds
+msgid "%s seconds"
 msgstr ""
 
 #: [chat]publish_error
 msgid "An error occured when sending the message"
-msgstr ""
+msgstr "Під час надсилання повідомлення сталася помилка"
 
 #: [chat]mam_retrieval
 msgid "Synchronizing the history, please wait…"
-msgstr ""
+msgstr "Синхронізація історії, зачекайте…"
 
 #: [chat]clear_history
 msgctxt "[chat]clear_history"
 msgid "Clear the history"
-msgstr ""
+msgstr "Очистити історію"
 
 #: [chat]clear_history_text
 msgid "You are going to delete %s messages, are you sure?"
-msgstr ""
+msgstr "Ви дійсно бажаєте видалити %s повідомлень?"
 
 #: [chat]action_impossible_encrypted
 msgid "Action impossible in encrypted chats"
-msgstr ""
+msgstr "Дія неможлива в зашифрованих чатах"
 
 #: [chatroom]members
 msgid "Members"
-msgstr ""
+msgstr "Учасники"
 
 #: [chatroom]connected [chatrooms]connected
 msgid "Connected to the chatroom"
-msgstr ""
+msgstr "Підключено до чату"
 
 #: [chatroom]disconnected [chatrooms]disconnected
 msgid "Disconnected from the chatroom"
-msgstr ""
+msgstr "Відключено від чату"
 
 #: [chatroom]config [communityaffiliation]configuration [page]configuration
 msgid "Configuration"
@@ -707,7 +717,7 @@ msgstr "Конфігурація"
 
 #: [chatroom]config_saved [communityaffiliation]config_saved
 msgid "Configuration saved"
-msgstr ""
+msgstr "Конфігурацію збережено"
 
 #: [chatroom]subject
 msgid "Subject"
@@ -1019,7 +1029,7 @@ msgid "Publish my first post"
 msgstr ""
 
 #: [communitysubscriptions]subscriptions
-msgid "My Subscriptions"
+msgid "Subscribed Communities"
 msgstr ""
 
 #: [communitysubscriptions]empty_title
@@ -1060,7 +1070,7 @@ msgstr ""
 
 #: [config]updated
 msgid "Configuration updated"
-msgstr ""
+msgstr "Конфігурацію оновлено"
 
 #: [config]not_valid
 msgid "Configuration invalid"
@@ -1506,6 +1516,14 @@ msgstr ""
 msgid "Administrated by"
 msgstr ""
 
+#: [about_movim]info
+msgid "Movim is a federated blogging and chat platform."
+msgstr ""
+
+#: [about_movim]website
+msgid "Visit the project official website %s."
+msgstr ""
+
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
 msgstr ""
@@ -1873,6 +1891,10 @@ msgstr ""
 
 #: [publish]help_hashtag
 msgid "Add #hashtags in your title or content to allow your article to be discovered"
+msgstr ""
+
+#: [publish]publish_error_forbidden
+msgid "You are not authorized to publish there"
 msgstr ""
 
 #: [publishhelp]title [page]help
@@ -2269,6 +2291,10 @@ msgstr ""
 
 #: [sendto]attach
 msgid "Attach to a blog publication"
+msgstr ""
+
+#: [sendto]share
+msgid "Share in a new publication"
 msgstr ""
 
 #: [sendto]contact
@@ -3167,27 +3193,27 @@ msgstr ""
 
 #: [mood]serious
 msgid "serious"
-msgstr ""
+msgstr "серйозний"
 
 #: [mood]shocked
 msgid "shocked"
-msgstr ""
+msgstr "шокований"
 
 #: [mood]shy
 msgid "shy"
-msgstr ""
+msgstr "сором'язливий"
 
 #: [mood]sick
 msgid "sick"
-msgstr ""
+msgstr "хворий"
 
 #: [mood]sleepy
 msgid "sleepy"
-msgstr ""
+msgstr "сонний"
 
 #: [mood]spontaneous
 msgid "spontaneous"
-msgstr ""
+msgstr "спонтанний"
 
 #: [mood]stressed
 msgid "stressed"
@@ -3195,119 +3221,119 @@ msgstr ""
 
 #: [mood]strong
 msgid "strong"
-msgstr ""
+msgstr "сильний"
 
 #: [mood]surprised
 msgid "surprised"
-msgstr ""
+msgstr "здивований"
 
 #: [mood]thankful
 msgid "thankful"
-msgstr ""
+msgstr "вдячний"
 
 #: [mood]thirsty
 msgid "thirsty"
-msgstr ""
+msgstr "спраглий"
 
 #: [mood]tired
 msgid "tired"
-msgstr ""
+msgstr "втомлений"
 
 #: [mood]undefined
 msgid "undefined"
-msgstr ""
+msgstr "невизначений"
 
 #: [mood]weak
 msgid "weak"
-msgstr ""
+msgstr "слабкий"
 
 #: [mood]worried
 msgid "worried"
-msgstr ""
+msgstr "заклопотаний"
 
 #: [month]title
 msgid "Month"
-msgstr ""
+msgstr "Місяць"
 
 #: [month]january
 msgid "January"
-msgstr ""
+msgstr "Січень"
 
 #: [month]february
 msgid "February"
-msgstr ""
+msgstr "Лютий"
 
 #: [month]march
 msgid "March"
-msgstr ""
+msgstr "Березень"
 
 #: [month]april
 msgid "April"
-msgstr ""
+msgstr "Квітень"
 
 #: [month]may
 msgid "May"
-msgstr ""
+msgstr "Травень"
 
 #: [month]june
 msgid "June"
-msgstr ""
+msgstr "Червень"
 
 #: [month]july
 msgid "July"
-msgstr ""
+msgstr "Липень"
 
 #: [month]august
 msgid "August"
-msgstr ""
+msgstr "Серпень"
 
 #: [month]september
 msgid "September"
-msgstr ""
+msgstr "Вересень"
 
 #: [month]october
 msgid "October"
-msgstr ""
+msgstr "Жовтень"
 
 #: [month]november
 msgid "November"
-msgstr ""
+msgstr "Листопад"
 
 #: [month]december
 msgid "December"
-msgstr ""
+msgstr "Грудень"
 
 #: [year]title
 msgid "Year"
-msgstr ""
+msgstr "Рік"
 
 #: [date]today
 msgid "Today"
-msgstr ""
+msgstr "Сьогодні"
 
 #: [date]tomorrow
 msgid "Tomorrow"
-msgstr ""
+msgstr "Завтра"
 
 #: [date]yesterday
 msgid "Yesterday"
-msgstr ""
+msgstr "Вчора"
 
 #: [date]ago
 msgid "%d days ago"
-msgstr ""
+msgstr "%dднів тому"
 
 #: [date]day
 msgid "day"
-msgstr ""
+msgstr "день"
 
 #: [post]title
 msgid "Title"
-msgstr ""
+msgstr "Заголовок"
 
 #: [post]place
 msgid "Place"
-msgstr ""
+msgstr "Місце"
 
 #: [post]by
 msgid "by"
@@ -3315,23 +3341,23 @@ msgstr ""
 
 #: [post]geolocalisation
 msgid "Geolocalisation"
-msgstr ""
+msgstr "Геолокалізація"
 
 #: [post]email
 msgid "email"
-msgstr ""
+msgstr "Електронна пошта"
 
 #: [post]empty
 msgid "No content"
-msgstr ""
+msgstr "Вміст відсутній"
 
 #: [post]no_comments
 msgid "No comments yet"
-msgstr ""
+msgstr "Коментарі відсутні"
 
 #: [post]older
 msgid "Get older posts"
-msgstr ""
+msgstr "Отримати давнішні коментарі"
 
 #: [post]new_items
 msgid "%s new items"
@@ -3339,31 +3365,31 @@ msgstr ""
 
 #: [post]comment_error
 msgid "Comment publication error"
-msgstr ""
+msgstr "Помилка публікації коментаря"
 
 #: [post]comments_get
 msgid "Get the comments"
-msgstr ""
+msgstr "Отримати коментарі"
 
 #: [post]comment_add
 msgid "Add a comment"
-msgstr ""
+msgstr "Додати коментар"
 
 #: [post]share
 msgid "Share with"
-msgstr ""
+msgstr "Поділитися з ..."
 
 #: [post]share_everyone
 msgid "Everyone"
-msgstr ""
+msgstr "Всі"
 
 #: [post]updated
 msgid "Updated"
-msgstr ""
+msgstr "Оновлено"
 
 #: [post]content_not_found
 msgid "Content not found"
-msgstr ""
+msgstr "Вміст не знайдено"
 
 #: [post]default_title
 msgid "Contact publication"
@@ -3371,35 +3397,35 @@ msgstr ""
 
 #: [post]comments
 msgid "Comments"
-msgstr ""
+msgstr "Коментарі"
 
 #: [post]original_deleted
 msgid "Original post deleted"
-msgstr ""
+msgstr "Оригінал посту видалено"
 
 #: [filesize]byte
 msgid "B"
-msgstr ""
+msgstr "Б"
 
 #: [filesize]kilobyte
 msgid "KB"
-msgstr ""
+msgstr "КБ"
 
 #: [filesize]megabyte
 msgid "MB"
-msgstr ""
+msgstr "МБ"
 
 #: [filesize]gigabyte
 msgid "GB"
-msgstr ""
+msgstr "ГБ"
 
 #: [filesize]terabyte
 msgid "TB"
-msgstr ""
+msgstr "ТБ"
 
 #: [affiliation]owner
 msgid "Owner"
-msgstr ""
+msgstr "Власник"
 
 #: [affiliation]publisher
 msgid "Publisher"
@@ -3420,6 +3446,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "Database"
-#~ msgstr "База даних"

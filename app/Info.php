@@ -189,6 +189,15 @@ class Info extends Model
                     ->first();
     }
 
+    public function getGatewayTypeAttribute(): ?string
+    {
+        $identityType = $this->identities->filter(fn ($value, $key) =>
+            $value->category == 'gateway'
+        )->first();
+
+        return $identityType ? $identityType->type : null;
+    }
+
     public function getPhoto($size = 'm')
     {
         return isset($this->attributes['avatarhash'])
@@ -219,44 +228,49 @@ class Info extends Model
         return 'desktop_windows';
     }
 
-    public function hasFeature(string $feature)
+    public function hasFeature(string $feature): bool
     {
         return (in_array($feature, unserialize($this->attributes['features'])));
     }
 
-    public function isJingleAudio()
+    public function isGallery(): bool
+    {
+        return $this->type == 'urn:xmpp:pubsub-social-gallery:0';
+    }
+
+    public function isJingleAudio(): bool
     {
         return $this->hasFeature('urn:xmpp:jingle:apps:rtp:audio')
             && $this->hasFeature('urn:xmpp:jingle-message:0');
     }
 
-    public function isJingleVideo()
+    public function isJingleVideo(): bool
     {
         return $this->hasFeature('urn:xmpp:jingle:apps:rtp:video')
             && $this->hasFeature('urn:xmpp:jingle-message:0');
     }
 
-    public function isMAM()
+    public function isMAM(): bool
     {
         return $this->hasFeature('urn:xmpp:mam:1');
     }
 
-    public function isMAM2()
+    public function isMAM2(): bool
     {
         return $this->hasFeature('urn:xmpp:mam:2');
     }
 
-    public function hasMAM()
+    public function hasMAM(): bool
     {
         return $this->isMAM() || $this->isMAM2();
     }
 
-    public function hasStanzaId()
+    public function hasStanzaId(): bool
     {
         return $this->hasFeature('urn:xmpp:sid:0');
     }
 
-    public function hasExternalServices()
+    public function hasExternalServices(): bool
     {
         return $this->hasFeature('urn:xmpp:extdisco:2');
     }
@@ -344,6 +358,9 @@ class Info extends Model
                     switch ((string)$field->attributes()->var) {
                         case 'pubsub#title':
                             $this->name = (string)$field->value;
+                            break;
+                        case 'pubsub#type':
+                            $this->type = (string)$field->value;
                             break;
                         case 'pubsub#creation_date':
                             $this->created = toSQLDate($field->value);

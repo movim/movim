@@ -15,14 +15,14 @@ class Get extends Action
         Register::get($this->_to);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $this->prepare($stanza, $parent);
         $this->pack($stanza->query, $this->_to);
         $this->deliver();
     }
 
-    public function error($stanza)
+    public function error(string $errorId, ?string $message = null)
     {
         $this->deliver();
     }

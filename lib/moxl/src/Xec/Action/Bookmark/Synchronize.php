@@ -33,7 +33,7 @@ class Synchronize extends Action
           ->request();
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         if ($stanza->pubsub->items->item->storage) {
             $count = 0;
@@ -59,7 +59,7 @@ class Synchronize extends Action
         }
     }
 
-    public function error($stanza, $parent = false)
+    public function error(string $errorId, ?string $message = null)
     {
         $this->deliver();
     }

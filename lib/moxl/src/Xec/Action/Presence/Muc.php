@@ -9,6 +9,8 @@ use App\PresenceBuffer;
 
 class Muc extends Action
 {
+    public static $mucId = 'MUC_ID';
+
     protected $_to;
     protected $_nickname;
     protected $_mam = false;
@@ -36,7 +38,7 @@ class Muc extends Action
          * Some servers doesn't return the ID, so save it in another session key-value
          * and use the to and nickname as a key ¯\_(ツ)_/¯
          */
-        $session->set($this->_to . '/' .$this->_nickname, $this->stanzaId);
+        $session->set(self::$mucId . $this->_to . '/' . $this->_nickname, $this->stanzaId);
 
         Presence::muc($this->_to, $this->_nickname, $this->_mam);
     }
@@ -65,7 +67,7 @@ class Muc extends Action
         return $this;
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $presence = \App\Presence::findByStanza($stanza);
         $presence->set($stanza);
@@ -76,17 +78,19 @@ class Muc extends Action
 
         if ($this->_mam) {
             $message = \App\User::me()->messages()
-                                    ->where('jidfrom', $this->_to)
-                                    ->whereNull('subject')
-                                    ->orderBy('published', 'desc')
-                                    ->first();
+                ->where('jidfrom', $this->_to)
+                ->whereNull('subject')
+                ->orderBy('published', 'desc')
+                ->first();
 
             $g = new \Moxl\Xec\Action\MAM\Get;
             $g->setTo($this->_to)
-              ->setLimit(300);
+                ->setLimit(300);
 
-            if (!empty($message)
-            && strtotime($message->published) > strtotime('-3 days')) {
+            if (
+                !empty($message)
+                && strtotime($message->published) > strtotime('-3 days')
+            ) {
                 $g->setStart(strtotime($message->published));
             } else {
                 $g->setStart(strtotime('-3 days'));
@@ -113,78 +117,78 @@ class Muc extends Action
         }
     }
 
-    public function errorRegistrationRequired($stanza, $parent = false)
+    public function errorRegistrationRequired(string $errorId, ?string $message = null)
     {
         $this->pack($this->_to);
         $this->deliver();
     }
 
-    public function errorRemoteServerNotFound($stanza, $parent = false)
+    public function errorRemoteServerNotFound(string $errorId, ?string $message = null)
     {
         $this->pack($this->_to);
         $this->deliver();
     }
 
-    public function errorNotAuthorized($stanza, $parent = false)
+    public function errorNotAuthorized(string $errorId, ?string $message = null)
     {
         $this->pack($this->_to);
         $this->deliver();
     }
 
-    public function errorGone($stanza, $parent = false)
+    public function errorGone(string $errorId, ?string $message = null)
     {
         $this->pack($this->_to);
         $this->deliver();
     }
 
-    public function errorNotAllowed($stanza, $parent = false)
+    public function errorNotAllowed(string $errorId, ?string $message = null)
     {
         $this->pack($this->_to);
         $this->deliver();
     }
 
-    public function errorItemNotFound($stanza, $parent = false)
+    public function errorItemNotFound(string $errorId, ?string $message = null)
     {
         $this->pack($this->_to);
         $this->deliver();
     }
 
-    public function errorJidMalformed($stanza, $parent = false)
+    public function errorJidMalformed(string $errorId, ?string $message = null)
     {
         $this->pack($this->_to);
         $this->deliver();
     }
 
-    public function errorNotAcceptable($stanza, $parent = false)
+    public function errorNotAcceptable(string $errorId, ?string $message = null)
     {
         $this->pack($this->_to);
         $this->deliver();
     }
 
-    public function errorServiceUnavailable($stanza, $parent = false)
+    public function errorServiceUnavailable(string $errorId, ?string $message = null)
     {
         $this->pack($this->_to);
         $this->deliver();
     }
 
-    public function errorForbidden($stanza, $parent = false)
+    public function errorForbidden(string $errorId, ?string $message = null)
     {
         $this->pack($this->_to);
         $this->deliver();
     }
 
-    public function errorRemoteServerTimeout($stanza, $parent = false)
+    public function errorRemoteServerTimeout(string $errorId, ?string $message = null)
     {
         $this->pack($this->_to);
         $this->deliver();
     }
 
-    public function errorConflict($stanza, $message)
+    public function errorConflict(string $errorId, ?string $message = null)
     {
         if (substr_count($this->_nickname, '_') > 5) {
             $this->deliver();
         } else {
-            $this->setNickname($this->_nickname.'_');
+            $this->setNickname($this->_nickname . '_');
             $this->request();
         }
     }

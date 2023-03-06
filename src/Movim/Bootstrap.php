@@ -1,4 +1,8 @@
 <?php
+/*
+ * SPDX-FileCopyrightText: 2010 Jaussoin Timothée
+ * SPDX-License-Identifier: AGPL-3.0-or-later
+ */
 
 namespace Movim;
 
@@ -19,8 +23,8 @@ class Bootstrap
 {
     public function boot($dbOnly = false)
     {
-        $this->setLogs();
         $this->loadHelpers();
+        $this->setLogs();
 
         if (!defined('APP_TITLE')) {
             $this->setConstants();
@@ -55,7 +59,7 @@ class Bootstrap
             throw new \Exception('Couldn’t create public cache directory');
         }
 
-        if (!file_exists(LOG_PATH) && !@mkdir(LOG_PATH)) {
+        if (!file_exists(config('paths.log')) && !@mkdir(config('paths.log'))) {
             throw new \Exception('Couldn’t create log directory');
         }
     }
@@ -88,7 +92,6 @@ class Bootstrap
         define('VIEWS_PATH', DOCUMENT_ROOT . '/app/views/');
         define('WIDGETS_PATH', DOCUMENT_ROOT . '/app/widgets/');
 
-        define('LOG_PATH', config('paths.log'));
         define('CACHE_PATH', config('paths.cache'));
 
         define('MOVIM_SQL_DATE', 'Y-m-d H:i:s');
@@ -190,7 +193,7 @@ class Bootstrap
 
     private function loadDispatcher()
     {
-        require_once APP_PATH . 'widgets/Notification/Notification.php';
+        require_once APP_PATH . 'widgets/Notif/Notif.php';
     }
 
     /**
@@ -241,11 +244,6 @@ class Bootstrap
         date_default_timezone_set("UTC");
     }
 
-    private function setLogLevel()
-    {
-        define('LOG_LEVEL', (int)Configuration::get()->loglevel);
-    }
-
     private function startingSession()
     {
         if (SESSION_ID !== null) {
@@ -276,8 +274,8 @@ class Bootstrap
         'Communities','CommunityAffiliations','CommunityConfig','CommunityData',
         'CommunityHeader','CommunityPosts','CommunitiesServer','CommunitiesServers',
         'Confirm','ContactActions','Chat','ChatOmemo','Chats','Config','ContactData','ContactHeader',
-        'ContactSubscriptions','Dialog','Drawer','Init','Location','Login','LoginAnonymous',
-        'Menu','Navigation','Notification', 'Notifications','NewsNav','Post','PostActions',
+        'ContactSubscriptions','Dialog','Drawer','Location','Login',
+        'Menu','Navigation','Notif', 'Notifications','NewsNav','Post','PostActions',
         'Presence','Publish','Rooms','RoomsExplore', 'RoomsUtils', 'Stickers','Toast',
         'Upload','Vcard4','Visio','VisioLink'];
     }

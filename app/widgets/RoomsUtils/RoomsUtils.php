@@ -128,9 +128,7 @@ class RoomsUtils extends Base
                                    })
                                    ->with('capability.identities')
                                    ->get()
-                                   ->mapToGroups(function ($tuple) {
-                                      return [$tuple['jid'] => $tuple];
-                                   });
+                                   ->mapToGroups(fn ($tuple) => [$tuple['jid'] => $tuple]);
 
         $tpl = $this->tpl();
         $tpl->assign('fingerprints', $fingerprints);
@@ -277,7 +275,7 @@ class RoomsUtils extends Base
         // Disconnect properly
         $nick = $values['nick'] ?? $this->user->session->username;
         $session = Session::start();
-        $session->remove($values['jid'] . '/' .$nick);
+        $session->delete($values['jid'] . '/' .$nick);
 
         $pu = new Unavailable;
         $pu->setTo($values['jid'])
@@ -364,11 +362,13 @@ class RoomsUtils extends Base
         $view->assign('username', $this->user->session->username);
         $view->assign(
             'gateways',
-            \App\Info::whereIn('server', function ($query) {
-                $query->select('jid')->from('presences');
-            })
-            ->whereCategory('gateway')
-            ->get()
+            \App\Info::select('name', 'server', 'parent')
+                ->whereCategory('gateway')
+                ->whereNotNull('parent')
+                ->groupBy('name', 'server', 'parent')
+                ->orderBy('parent')
+                ->orderBy('server')
+                ->get()
         );
 
         $this->rpc('Rooms.setDefaultServices', $this->user->session->getChatroomsServices());

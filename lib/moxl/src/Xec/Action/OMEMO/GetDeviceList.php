@@ -22,7 +22,7 @@ class GetDeviceList extends Action
         return $this;
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         \App\User::me()->bundles()->where('jid', $this->_to)->delete();
 

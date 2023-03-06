@@ -13,7 +13,7 @@ var Stickers = {
         if (element.classList.contains('zoomed')) {
             Drawer.clear();
 
-            var textarea = document.querySelector('#chat_textarea');
+            var textarea = Chat.getTextarea();
             Stickers_ajaxSend(jid, pack, value, Boolean(textarea.dataset.muc));
         }
 
@@ -26,7 +26,7 @@ var Stickers = {
         element.classList.add('zoomed');
     },
     setEmojisEvent(mid) {
-        const emojis = document.querySelectorAll('#emojisearchbar + .emojis img');
+        const emojis = document.querySelectorAll('#emojisearchbar ~ .emojis img');
         let i = 0;
 
         while (i < emojis.length) {

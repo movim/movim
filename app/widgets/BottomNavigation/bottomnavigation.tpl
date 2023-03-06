@@ -14,13 +14,13 @@
                 <span data-key="news" class="counter"></span>
             </span>
         </li>
+        <li {if="$page == 'explore' || $page == 'community'"}class="active"{/if}
+            onclick="MovimUtils.reload('{$c->route('explore')}')"
+            title="{$c->__('page.explore')}"
+        >
+            <span class="primary icon"><i class="material-icons">explore</i></span>
+        </li>
     {/if}
-    <li {if="$page == 'explore' || $page == 'community'"}class="active"{/if}
-        onclick="MovimUtils.reload('{$c->route('explore')}')"
-        title="{$c->__('page.explore')}"
-    >
-        <span class="primary icon"><i class="material-icons">explore</i></span>
-    </li>
     <li onclick="Search_ajaxRequest()"
         title="{$c->__('button.search')}"
     >

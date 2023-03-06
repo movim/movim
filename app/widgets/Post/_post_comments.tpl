@@ -72,7 +72,7 @@
                     </span>
                 {/if}
             {else}
-                <span class="primary icon bubble color {$value->aid|stringToColor} small">
+                <span class="primary icon bubble {if="$value->aid"}color {$value->aid|stringToColor}{/if} small">
                     {if="$public"}
                         <i class="material-icons">person</i>
                     {else}
@@ -87,12 +87,16 @@
                     <span class="info" title="{$value->published|strtotime|prepareDate}">
                         {$value->published|strtotime|prepareDate:true,true}
                     </span>
-                    {if="$public"}
-                        {$value->truename}
-                    {else}
-                        <a href="{$c->route('contact', $value->aid)}">
+                    {if="$value->truename"}
+                        {if="$public"}
                             {$value->truename}
-                        </a>
+                        {else}
+                            <a href="{$c->route('contact', $value->aid)}">
+                                {$value->truename}
+                            </a>
+                        {/if}
+                    {else}
+                        {$c->__('post.unknown_contact')}
                     {/if}
                 </p>
                 <p class="all">
@@ -151,7 +155,20 @@
                 <button class="button flat gray" onclick="Post.comment()">
                     <i class="material-icons">add_comment</i> {$c->__('post.comment_add')}
                 </button>
-                <a class="button flat gray" onclick="SendTo_ajaxSendSearch('{$post->getRef()}')">
+                <a
+                    title="{$c->__('button.share')}"
+                    class="button flat gray"
+                    onclick="SendTo.shareArticle('{$post->getRef()}')"
+                    href="#"
+                >
+                    <i class="material-icons">share</i> {$c->__('button.share')}
+                </a>
+                <a
+                    title="{$c->__('button.send_to')}"
+                    class="button flat gray"
+                    onclick="SendTo_ajaxSendContact('{$post->getRef()}')"
+                    href="#"
+                >
                     <i class="material-icons">send</i> {$c->__('button.send_to')}
                 </a>
             </p>

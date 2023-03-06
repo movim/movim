@@ -1,7 +1,7 @@
 var Preview = {
     copyToClipboard: function(text) {
         MovimUtils.copyToClipboard(text);
-        Toast.send(Preview.copyNotification);
+        Preview_ajaxCopyNotify();
     }
 }
 

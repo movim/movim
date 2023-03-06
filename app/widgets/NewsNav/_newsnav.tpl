@@ -15,7 +15,7 @@
 
 {if="$posts && $posts->isNotEmpty()"}
 <ul class="list active middle card shadow">
-    <li class="subheader active" onclick="MovimUtils.redirect('{$c->route('explore')}')">
+    <li class="subheader active" onclick="MovimUtils.reload('{$c->route('explore')}')">
         {if="$page == 'news'"}
         <span class="control active icon gray">
             <a href="{$c->route('explore')}">

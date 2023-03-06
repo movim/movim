@@ -4,7 +4,7 @@
     {/autoescape}
 </header>
 
-<div id="{$jid|cleanupId}-discussion" class="contained {if="$muc"}muc{/if}" data-muc="{$muc}">
+<div id="{$jid|cleanupId}-discussion" class="contained {if="$muc"}muc{/if}">
     <section id="{$jid|cleanupId}-messages">
         <ul class="list spin conversation" id="{$jid|cleanupId}-conversation"></ul>
         <div class="placeholder">
@@ -22,6 +22,8 @@
     </a>
     <ul class="list fill">
         <div id="reply"></div>
+        <div id="attach"></div>
+        <div id="dictaphone"></div>
         <li class="emojis"></li>
         <li>
             <span class="primary icon gray primary_action"
@@ -29,10 +31,17 @@
                   onclick="Stickers_ajaxShow('{$jid}')">
                 <i class="material-icons flip-vert">note</i>
             </span>
+            {if="$c->getUser()->hasUpload()"}
+                <span class="emojis control icon gray primary_action"
+                        title="{$c->__('chat.dictaphone')}"
+                        onclick="Dictaphone.toggle()">
+                    <i class="material-icons">mic</i>
+                </span>
+            {/if}
             <span class="emojis control icon gray primary_action on_desktop"
                     title="{$c->__('sticker.title')}"
                     onclick="Stickers_ajaxReaction()">
-                <i class="material-icons">face</i>
+                <i class="material-icons">emoji_emotions</i>
             </span>
             {if="$c->getUser()->hasUpload()"}
                 <span class="attach control icon" onclick="Chat.toggleAttach()">

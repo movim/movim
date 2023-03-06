@@ -7,7 +7,7 @@ use App\Info;
 
 class Caps extends Payload
 {
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $node = $stanza->attributes()->node.'#'.$stanza->attributes()->ver;
         $to = (string)$parent->attributes()->from;

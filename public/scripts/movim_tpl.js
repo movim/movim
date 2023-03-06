@@ -9,6 +9,7 @@ var MovimTpl = {
     startY: 0,
     translateX: 0,
     menuDragged: false,
+    currentPage: '',
 
     append : function(selector, html) {
         target = document.querySelector(selector);
@@ -180,10 +181,18 @@ var MovimTpl = {
 movimAddOnload(function() {
     if (MovimUtils.isMobile()) MovimTpl.touchEvents();
     document.body.addEventListener('click', MovimTpl.toggleContextMenu, false);
-    /*window.addEventListener('popstate', e => {
-        // Prevent empty href to trigger the event
-        if (window.location.href.substring(window.location.href.length -1) != '#') {
-            MovimTpl.back()
+
+    MovimTpl.currentPage = window.location.search;
+
+    window.addEventListener('popstate', e => {
+        if (e.target.location.search == MovimTpl.currentPage) return;
+
+        if (e.state && e.state.soft) {
+            MovimUtils.reload(e.target.location.href, true);
+        } else {
+            history.back();
         }
-    });*/
+
+        MovimTpl.currentPage = e.target.location.search;
+    });
 });

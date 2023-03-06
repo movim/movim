@@ -94,13 +94,17 @@ class Contact extends Model
             $this->adrcountry = (string)$vcard->vCard->ADR->CTRY;
         }
 
-        if (filter_var((string)$vcard->vCard->PHOTO, FILTER_VALIDATE_URL)) {
+        if (filter_var((string)$vcard->vCard->PHOTO, FILTER_VALIDATE_URL)
+         && in_array($this->avatartype, ['vcard-temp', null])) {
             $this->photobin = base64_encode(
                 requestURL((string)$vcard->vCard->PHOTO, 1)
             );
-        } elseif ($vcard->vCard->PHOTO) {
+            $this->avatartype = 'vcard-temp';
+        } elseif ($vcard->vCard->PHOTO
+         && in_array($this->avatartype, ['vcard-temp', null])) {
             $this->photobin = (string)$vcard->vCard->PHOTO->BINVAL;
             $this->avatarhash = sha1(base64_decode($this->photobin));
+            $this->avatartype = 'vcard-temp';
         }
 
         if ($vcard->vCard->DESC) {
@@ -108,7 +112,7 @@ class Contact extends Model
         }
     }
 
-    public function createThumbnails()
+    public function saveBinAvatar()
     {
         if (!$this->photobin) {
             return;
@@ -278,7 +282,7 @@ class Contact extends Model
 
     public function getLocationUrlAttribute(): ?string
     {
-        if (in_array('loctimestamp', $this->attributes) && $this->attributes['loctimestamp'] != null
+        if (array_key_exists('loctimestamp', $this->attributes) && $this->attributes['loctimestamp'] != null
          && \Carbon\Carbon::now()->subDay()->timestamp < strtotime($this->attributes['loctimestamp'])
          && $this->attributes['loclatitude'] != null && $this->attributes['loclongitude'] != null) {
             return 'https://www.openstreetmap.org/'.

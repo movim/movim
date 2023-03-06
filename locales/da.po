@@ -115,16 +115,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-04 14:11+0200\n"
-"PO-Revision-Date: 2022-02-17 07:57+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"POT-Creation-Date: 2022-12-25 14:45+0200\n"
+"PO-Revision-Date: 2015-06-24 09:45+0000\n"
+"Last-Translator: Mikkel Kirkgaard Nielsen <memb_transifex@mikini.dk>, 2016\n"
 "Language-Team: Danish (http://www.transifex.com/movim/movim/language/da/)\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.4.1\n"
+"X-Generator: Translate Toolkit 3.7.4\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -464,22 +464,6 @@ msgstr ""
 msgid "File"
 msgstr "Fil"
 
-#: [avatar]use_it
-msgid "Use it"
-msgstr "Brug den"
-
-#: [avatar]webcam
-msgid "Webcam"
-msgstr "Webkamera"
-
-#: [avatar]cheese
-msgid "Cheese!"
-msgstr ""
-
-#: [avatar]snapshot
-msgid "Take a webcam snapshot"
-msgstr "Tag et webcam billede"
-
 #: [avatar]updated
 msgid "Avatar Updated"
 msgstr "Profilbillede opdateret"
@@ -500,25 +484,37 @@ msgstr ""
 msgid "Upload a new picture"
 msgstr ""
 
+#: [banner]change
+msgid "Change my banner"
+msgstr ""
+
+#: [banner]updated
+msgid "Banner Updated"
+msgstr ""
+
+#: [banner]not_updated
+msgid "Banner Not Updated"
+msgstr ""
+
+#: [banner]missing
+msgid "No banner defined yet"
+msgstr ""
+
 #: [blocked]title
-#, fuzzy
 msgid "Blocked"
-msgstr "chokeret"
+msgstr ""
 
 #: [blocked]block_account
-#, fuzzy
 msgid "Block the account"
-msgstr "Andre Konti"
+msgstr ""
 
 #: [blocked]unblock_account
-#, fuzzy
 msgid "Unblock the account"
-msgstr "Andre Konti"
+msgstr ""
 
 #: [blocked]account_blocked
-#, fuzzy
 msgid "Account blocked"
-msgstr "Konto"
+msgstr ""
 
 #: [blocked]account_unblocked
 msgid "Account unblocked"
@@ -577,9 +573,8 @@ msgid "Composing…"
 msgstr ""
 
 #: [message]invitation
-#, fuzzy
 msgid "Invitation"
-msgstr "Ventende invitationer"
+msgstr ""
 
 #: [message]paused
 msgid "Paused…"
@@ -668,6 +663,18 @@ msgstr ""
 
 #: [chat]jingle_end
 msgid "Call ended"
+msgstr ""
+
+#: [chat]jingle_hours
+msgid "%s hours %s minutes"
+msgstr ""
+
+#: [chat]jingle_minutes
+msgid "%s minutes and %s seconds"
+msgstr ""
+
+#: [chat]jingle_seconds
+msgid "%s seconds"
 msgstr ""
 
 #: [chat]publish_error
@@ -1017,13 +1024,12 @@ msgid "No publication yet? Write your first post to make people discover your pr
 msgstr ""
 
 #: [communityposts]empty_me_button
-#, fuzzy
 msgid "Publish my first post"
-msgstr "Publicer dette indlæg offentligt?"
+msgstr ""
 
 #: [communitysubscriptions]subscriptions
-msgid "My Subscriptions"
-msgstr "Mine Abonnementer"
+msgid "Subscribed Communities"
+msgstr ""
 
 #: [communitysubscriptions]empty_title
 msgid "Hello"
@@ -1378,24 +1384,20 @@ msgid "Add the chatroom"
 msgstr "Tilføj chatrummet"
 
 #: [location]title
-#, fuzzy
 msgid "My location"
-msgstr "Geolokalisering"
+msgstr ""
 
 #: [location]enabled_title
-#, fuzzy
 msgid "Currently shared with my contacts"
-msgstr "Snak med en kontakt"
+msgstr ""
 
 #: [location]disabled_title
-#, fuzzy
 msgid "Currently disabled"
-msgstr "Kommentarer slået fra"
+msgstr ""
 
 #: [location]last_published
-#, fuzzy
 msgid "My last published location"
-msgstr "Kontaktudgivelse"
+msgstr ""
 
 #: [location]less_than_one_km
 msgid "Less than a km away"
@@ -1513,6 +1515,14 @@ msgstr ""
 msgid "Administrated by"
 msgstr ""
 
+#: [about_movim]info
+msgid "Movim is a federated blogging and chat platform."
+msgstr ""
+
+#: [about_movim]website
+msgid "Visit the project official website %s."
+msgstr ""
+
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
 msgstr "Ugyldigt kælenavn (mellem 4 og 40 tegn)"
@@ -1595,14 +1605,12 @@ msgid "Push notifications disabled for this device"
 msgstr ""
 
 #: [notificationconfig]unknown_browser
-#, fuzzy
 msgid "Unknown browser"
-msgstr "Ukendt fejl"
+msgstr ""
 
 #: [notificationconfig]unknown_platform
-#, fuzzy
 msgid "Unknown platform"
-msgstr "Ukendt fejl"
+msgstr ""
 
 #: [invitations]title
 msgid "Pending Invitations"
@@ -1884,6 +1892,10 @@ msgstr ""
 msgid "Add #hashtags in your title or content to allow your article to be discovered"
 msgstr ""
 
+#: [publish]publish_error_forbidden
+msgid "You are not authorized to publish there"
+msgstr ""
+
 #: [publishhelp]title [page]help
 msgid "Help"
 msgstr "Hjælp"
@@ -2125,9 +2137,8 @@ msgid "Archived"
 msgstr ""
 
 #: [room]archived_text
-#, fuzzy
 msgid "The chatroom messages are archived"
-msgstr "%s beskeder hentet"
+msgstr ""
 
 #: [room]group_chat
 msgid "Group Chat"
@@ -2279,6 +2290,10 @@ msgstr ""
 
 #: [sendto]attach
 msgid "Attach to a blog publication"
+msgstr ""
+
+#: [sendto]share
+msgid "Share in a new publication"
 msgstr ""
 
 #: [sendto]contact
@@ -2514,18 +2529,16 @@ msgid "Camera"
 msgstr ""
 
 #: [visioconfig]camera_label
-#, fuzzy
 msgid "Default camera"
-msgstr "Standardsprog"
+msgstr ""
 
 #: [visioconfig]default_microphone_changed
 msgid "Default microphone changed"
 msgstr ""
 
 #: [visioconfig]default_camera_changed
-#, fuzzy
 msgid "Default camera changed"
-msgstr "Standardsprog"
+msgstr ""
 
 #: [visioconfig]no_mic_sound
 msgid "No sound detected from your microphone"
@@ -3432,48 +3445,3 @@ msgstr "API'et kan ikke nåes, prøv igen senere"
 #: [field]type_here
 msgid "Type here"
 msgstr "Skriv her"
-
-#~ msgid "General Overview"
-#~ msgstr "Generel oversigt"
-
-#~ msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
-#~ msgstr "WebSocket forbindelsesfejl, sørg for at Movim-serveren (daemon) kører og kan tilgås"
-
-#~ msgid "Browser"
-#~ msgstr "Browser"
-
-#~ msgid "Movim Core"
-#~ msgstr "Movim Core"
-
-#~ msgid "Movim Daemon"
-#~ msgstr "Movim Daemon"
-
-#~ msgid "Database"
-#~ msgstr "Database"
-
-#~ msgid "XMPP"
-#~ msgstr "XMPP"
-
-#~ msgid "Your pod is not registered on the API"
-#~ msgstr "Din pod er ikke registreret på API'et"
-
-#~ msgid "Your pod is registered on the API"
-#~ msgstr "Din pod er registreret på API'et"
-
-#~ msgid "Your pod is not yet validated"
-#~ msgstr "Din pod er ikke valideret endnu"
-
-#~ msgid "Your pod is validated"
-#~ msgstr "Din pod er valideret"
-
-#~ msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
-#~ msgstr "Du har spurgt om at blive fjernet fra API'et, denne forespørgsel vil blive behandlet i løbet af et par timer"
-
-#~ msgid "Visit the blog to see all the public posts"
-#~ msgstr "Gå til bloggen for at se alle de offentlige indlæg"
-
-#~ msgid "Statistics"
-#~ msgstr "Statistikker"
-
-#~ msgid "Status updated"
-#~ msgstr "Status opdateret"

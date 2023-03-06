@@ -44,10 +44,22 @@ class Post extends Model
         return $this->hasOne('App\Post', 'id', 'parent_id');
     }
 
+    public function info()
+    {
+        return $this->hasOne('App\Info', 'server', 'server')
+                    ->where('node', $this->node);
+    }
+
     public function likes()
     {
         return $this->hasMany('App\Post', 'parent_id', 'id')
-                    ->where('like', true);
+                    ->whereIn('id', function ($query) {
+                        $query->select(DB::raw('min(id) as id'))
+                              ->from('posts')
+                              ->where('like', true)
+                              ->whereNotNull('aid')
+                              ->groupByRaw('aid, parent_id');
+                    });
     }
 
     public function openlink()
@@ -330,27 +342,31 @@ class Post extends Model
     {
         $this->nodeid = (string)$entry->attributes()->id;
 
-        // Get some informations on the author
-        $this->aname = ($entry->entry->author->name)
-            ? (string)$entry->entry->author->name
-            : null;
 
-        $this->aid = ($entry->entry->author->uri && substr((string)$entry->entry->author->uri, 0, 5) == 'xmpp:')
-            ? substr((string)$entry->entry->author->uri, 5)
-            : null;
+        // Ensure that the author is the publisher
+        if ($entry->entry->author && $entry->entry->author->uri
+        && 'xmpp:'.baseJid((string)$entry->attributes()->publisher) == (string)$entry->entry->author->uri) {
+            $this->aid = substr((string)$entry->entry->author->uri, 5);
 
-        $this->aemail = ($entry->entry->author->email)
-            ? (string)$entry->entry->author->email
-            : null;
+            $this->aname = ($entry->entry->author->name)
+                ? (string)$entry->entry->author->name
+                : null;
+
+            $this->aemail = ($entry->entry->author->email)
+                ? (string)$entry->entry->author->email
+                : null;
+        } else {
+            $this->aid = null;
+        }
 
         // Non standard support
-        if ($entry->entry->source && $entry->entry->source->author->name) {
+        /*if ($entry->entry->source && $entry->entry->source->author->name) {
             $this->aname = (string)$entry->entry->source->author->name;
         }
         if ($entry->entry->source && $entry->entry->source->author->uri
          && substr((string)$entry->entry->source->author->uri, 5) == 'xmpp:') {
             $this->aid = substr((string)$entry->entry->source->author->uri, 5);
-        }
+        }*/
 
         if (empty($this->aname)) {
             $this->aname = null;
@@ -445,7 +461,7 @@ class Post extends Model
         $hash = hash('sha256', $this->content);
 
         if ($this->contenthash !== $hash) {
-            $this->contentcleaned = purifyHTML(html_entity_decode($this->content));
+            $this->contentcleaned = requestAPI('purifyhtml', 2, ['content' => $this->content]);
             $this->contenthash = $hash;
         }
 
@@ -584,12 +600,12 @@ class Post extends Model
     {
         $enclosures = [];
 
-        foreach (array_filter($this->attachments, function ($a) { return $a->rel == 'enclosure'; }) as $attachment)
+        foreach (array_filter($this->attachments, fn ($a) => $a->rel == 'enclosure') as $attachment)
         {
             array_push($enclosures, $attachment->href);
         }
 
-        foreach (array_filter($this->attachments, function ($a) { return $a->rel != 'enclosure'; }) as $key => $attachment)
+        foreach (array_filter($this->attachments, fn ($a) => $a->rel != 'enclosure') as $key => $attachment)
         {
             if (in_array($attachment->href, $enclosures)) {
                 unset($this->attachments[$key]);

@@ -1,4 +1,8 @@
 <?php
+/*
+ * SPDX-FileCopyrightText: 2010 Jaussoin Timothée
+ * SPDX-License-Identifier: AGPL-3.0-or-later
+ */
 
 namespace Movim\Template;
 
@@ -72,6 +76,6 @@ class Partial extends Tpl
 
     private function resolvedCacheKey(string $templateFilePath, string $key): string
     {
-        return CACHE_PATH . sha1(User::me()->id) . '_' . $templateFilePath . '_' . cleanupId($key). $this->extension;
+        return CACHE_PATH . sha1(User::me()->id) . '_' . $templateFilePath . '_' . hash('sha256', $key). $this->extension;
     }
 }

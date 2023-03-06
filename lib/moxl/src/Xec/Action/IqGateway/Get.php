@@ -15,7 +15,7 @@ class Get extends Action
         IqGateway::get($this->_to);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $this->prepare($stanza, $parent);
         $this->pack($stanza->query);

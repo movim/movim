@@ -52,14 +52,14 @@
                 {if="$url"}
                     <span
                         title="{$c->__('page.communities')} · {$related->name}"
-                        onclick="MovimUtils.redirect('{$c->route('community', [$related->server, $related->node])}')"
+                        onclick="MovimUtils.reload('{$c->route('community', [$related->server, $related->node])}')"
                         class="control icon bubble active small">
                         <img src="{$url}"/>
                     </span>
                 {else}
                     <span
                         title="{$c->__('page.communities')} · {if="$related->name"}{$related->name}{else}{$related->node}{/if}"
-                        onclick="MovimUtils.redirect('{$c->route('community', [$related->server, $related->node])}')"
+                        onclick="MovimUtils.reload('{$c->route('community', [$related->server, $related->node])}')"
                         class="control icon bubble active small color {$related->node|stringToColor}">
                         {$related->node|firstLetterCapitalize}
                     </span>
@@ -108,14 +108,21 @@
                         {if="!$conference->connected"}
                             {$c->__('button.connecting')}…
                         {elseif="$conference->connected && $conference->isGroupChat()"}
-                            {$connected = $conference->presences()->take(25)->get()}
+                            {$connected = $conference->otherPresences()->take(25)->get()}
                             {loop="$connected"}
-                                <span onclick="Chat.quoteMUC('{$value->resource}', true);">
-                                    {$value->resource}
-                                </span>{if="$key < $connected->count() -1"}, {/if}
+                                {$url = $value->conferencePicture}
+                                <span onclick="Chat.quoteMUC('{$value->resource}', true);" class="icon bubble tiny {if="!$url"}color {$value->resource|stringToColor}{/if}">
+                                    {if="$url"}
+                                        <img src="{$url}">
+                                    {else}
+                                        {$value->resource|firstLetterCapitalize}
+                                    {/if}
+                                </span><span onclick="Chat.quoteMUC('{$value->resource}', true);">{$value->resource}</span>
+                                {if="$key < $connected->count() -1"}
+                                {/if}
                             {/loop}
                         {elseif="!empty($conference->subject)"}
-                            {$conference->subject}
+                            <span onclick="RoomsUtils_ajaxShowSubject('{$jid|echapJS}')">{$conference->subject}</span>
                         {/if}
                     {/if}
                 </p>
@@ -175,13 +182,11 @@
             </li>
         {/if}
 
-        {if="$conference && $conference->isGroupChat()"}
-            <li class="on_mobile" onclick="Chat.editPrevious()">
-                <div>
-                    <p class="normal">{$c->__('chat.edit_previous')}</p>
-                </div>
-            </li>
-        {/if}
+        <li class="on_mobile" onclick="Chat.editPrevious()">
+            <div>
+                <p class="normal">{$c->__('chat.edit_previous')}</p>
+            </div>
+        </li>
 
         <li onclick="Rooms_ajaxExit('{$jid|echapJS}'); {if="$anon"}Presence_ajaxLogout(){/if}">
             <div>

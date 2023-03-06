@@ -6,7 +6,7 @@ use Moxl\Stanza\Ping;
 
 class PingPong extends Payload
 {
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $to = (string)$parent->attributes()->from;
         $id = (string)$parent->attributes()->id;

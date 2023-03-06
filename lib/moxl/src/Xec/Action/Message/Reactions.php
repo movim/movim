@@ -37,7 +37,7 @@ class Reactions extends Action
         return $this;
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         if ($this->_muc) {
             $m = new \Moxl\Xec\Payload\Message;

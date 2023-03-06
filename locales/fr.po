@@ -124,7 +124,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-04 14:11+0200\n"
+"POT-Creation-Date: 2022-12-25 14:45+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>, 2015-2022\n"
 "Language-Team: French (France) (http://www.transifex.com/movim/movim/language/fr_FR/)\n"
@@ -133,7 +133,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
-"X-Generator: Translate Toolkit 3.7.3\n"
+"X-Generator: Translate Toolkit 3.7.4\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -473,22 +473,6 @@ msgstr "Utilisateurs actuellement connectés sur l'instance"
 msgid "File"
 msgstr "Fichier"
 
-#: [avatar]use_it
-msgid "Use it"
-msgstr "Utiliser"
-
-#: [avatar]webcam
-msgid "Webcam"
-msgstr "Webcam"
-
-#: [avatar]cheese
-msgid "Cheese!"
-msgstr "Souriez !"
-
-#: [avatar]snapshot
-msgid "Take a webcam snapshot"
-msgstr "Prendre une photo avec votre webcam"
-
 #: [avatar]updated
 msgid "Avatar Updated"
 msgstr "Avatar mis à jour"
@@ -508,6 +492,22 @@ msgstr "Modifier mon avatar"
 #: [avatar]upload_new
 msgid "Upload a new picture"
 msgstr "Téléverser une nouvelle image"
+
+#: [banner]change
+msgid "Change my banner"
+msgstr "Changer ma bannière"
+
+#: [banner]updated
+msgid "Banner Updated"
+msgstr "Bannière mise à jour"
+
+#: [banner]not_updated
+msgid "Banner Not Updated"
+msgstr "Bannière non mise à jour"
+
+#: [banner]missing
+msgid "No banner defined yet"
+msgstr "Pas de bannière définie pour le moment"
 
 #: [blocked]title
 msgid "Blocked"
@@ -673,6 +673,18 @@ msgstr "Appels sortants"
 #: [chat]jingle_end
 msgid "Call ended"
 msgstr "Fin de l'appel"
+
+#: [chat]jingle_hours
+msgid "%s hours %s minutes"
+msgstr "%s heures et %s minutes"
+
+#: [chat]jingle_minutes
+msgid "%s minutes and %s seconds"
+msgstr "%s minutes et %s secondes"
+
+#: [chat]jingle_seconds
+msgid "%s seconds"
+msgstr "%s secondes"
 
 #: [chat]publish_error
 msgid "An error occured when sending the message"
@@ -1025,8 +1037,8 @@ msgid "Publish my first post"
 msgstr "Publier mon premier article"
 
 #: [communitysubscriptions]subscriptions
-msgid "My Subscriptions"
-msgstr "Mes Souscriptions"
+msgid "Subscribed Communities"
+msgstr "Communautés souscrites"
 
 #: [communitysubscriptions]empty_title
 msgid "Hello"
@@ -1512,6 +1524,14 @@ msgstr "%s vous a invité à rejoindre un salon de discussion"
 msgid "Administrated by"
 msgstr "Administré par"
 
+#: [about_movim]info
+msgid "Movim is a federated blogging and chat platform."
+msgstr "Movim est une plateforme de chat et de blogage fédérée."
+
+#: [about_movim]website
+msgid "Visit the project official website %s."
+msgstr "Visitez le site officiel du projet %s."
+
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
 msgstr "Mauvais surnom (entre 4 et 40 caractères)"
@@ -1880,6 +1900,10 @@ msgstr "Éditeur de texte enrichi"
 #: [publish]help_hashtag
 msgid "Add #hashtags in your title or content to allow your article to be discovered"
 msgstr "Ajouter des #hastag dans le titre ou le contenu de votre article pour être plus facilement découvert"
+
+#: [publish]publish_error_forbidden
+msgid "You are not authorized to publish there"
+msgstr "Vous n'êtes pas autorisé à publier ici"
 
 #: [publishhelp]title [page]help
 msgid "Help"
@@ -2276,6 +2300,10 @@ msgstr "Afficher tous les contacts"
 #: [sendto]attach
 msgid "Attach to a blog publication"
 msgstr "Attacher à un billet de blog"
+
+#: [sendto]share
+msgid "Share in a new publication"
+msgstr "Partager dans une nouvelle publication"
 
 #: [sendto]contact
 msgid "Send it to a contact"

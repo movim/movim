@@ -29,7 +29,7 @@
             <ul class="reactions"></ul>
             <span class="info"></span>
             <span class="reaction" title="{$c->__('message.react')}">
-                +<i class="material-icons">mood</i>
+                <i class="material-icons">add_reaction</i>
             </span>
             <span class="reply" title="{$c->__('button.reply')}">
                 <i class="material-icons">reply</i>

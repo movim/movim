@@ -13,12 +13,12 @@ class Remove extends Action
         Register::remove();
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $this->deliver();
     }
 
-    public function error($errorid, $message)
+    public function error(string $errorId, ?string $message = null)
     {
         $this->pack($message);
         $this->deliver();

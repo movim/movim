@@ -8,7 +8,7 @@
     <ul class="list card middle flex">
         {if="$info->related"}
             {$related = $info->related}
-            <li onclick="MovimUtils.redirect('{$c->route('chat', [$related->server,'room'])}')"
+            <li onclick="MovimUtils.reload('{$c->route('chat', [$related->server,'room'])}')"
                 class="block large active">
                 <span class="primary icon bubble gray">
                     <i class="material-icons">forum</i>
@@ -29,7 +29,7 @@
                             </span>
                         {/if}
                         {if="$related->description"}
-                            {$related->description}
+                            {$related->description|trim|nl2br|addEmojis}
                         {else}
                             {$related->server}
                         {/if}

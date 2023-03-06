@@ -100,6 +100,10 @@ ul.flex li.block {
 
 /* Gallery */
 
+ul.flex.gallery li.block.block:not(.subheader) {
+    min-height: 25rem;
+}
+
 ul.flex.gallery li.block {
     display: flex;
     flex-direction: column;
@@ -107,7 +111,8 @@ ul.flex.gallery li.block {
 
 ul.flex.gallery li.block p a.node,
 ul.flex.gallery li.block > img + span,
-ul.flex.gallery li.block > span.primary {
+ul.flex.gallery li.block > span.primary,
+ul.flex.gallery li.block > span.control {
     display: none;
 }
 

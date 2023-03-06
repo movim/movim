@@ -119,16 +119,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-04 14:11+0200\n"
-"PO-Revision-Date: 2022-02-17 07:57+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"POT-Creation-Date: 2022-12-25 14:45+0200\n"
+"PO-Revision-Date: 2015-06-24 09:45+0000\n"
+"Last-Translator: Dominik George <nik@naturalnet.de>, 2017-2018\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://www.transifex.com/movim/movim/language/nb_NO/)\n"
 "Language: nb_NO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.4.1\n"
+"X-Generator: Translate Toolkit 3.7.4\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -445,9 +445,8 @@ msgid "Syslog and files"
 msgstr "Syslog og filer"
 
 #: [adminreported]reported_by
-#, fuzzy
 msgid "Reported by %s users"
-msgstr "Melde misbruk"
+msgstr ""
 
 #: [adminreported]info
 msgid "Those accounts were reported by some Movim users"
@@ -469,22 +468,6 @@ msgstr ""
 msgid "File"
 msgstr "Fil"
 
-#: [avatar]use_it
-msgid "Use it"
-msgstr "Ta i bruk"
-
-#: [avatar]webcam
-msgid "Webcam"
-msgstr "Nettkamera"
-
-#: [avatar]cheese
-msgid "Cheese!"
-msgstr "Appelsin!"
-
-#: [avatar]snapshot
-msgid "Take a webcam snapshot"
-msgstr "Ta bilde med nettkameraet"
-
 #: [avatar]updated
 msgid "Avatar Updated"
 msgstr "Avataren er oppdatert"
@@ -505,25 +488,37 @@ msgstr ""
 msgid "Upload a new picture"
 msgstr ""
 
+#: [banner]change
+msgid "Change my banner"
+msgstr ""
+
+#: [banner]updated
+msgid "Banner Updated"
+msgstr ""
+
+#: [banner]not_updated
+msgid "Banner Not Updated"
+msgstr ""
+
+#: [banner]missing
+msgid "No banner defined yet"
+msgstr ""
+
 #: [blocked]title
-#, fuzzy
 msgid "Blocked"
-msgstr "sjokkert"
+msgstr ""
 
 #: [blocked]block_account
-#, fuzzy
 msgid "Block the account"
-msgstr "Andre kontoer"
+msgstr ""
 
 #: [blocked]unblock_account
-#, fuzzy
 msgid "Unblock the account"
-msgstr "Andre kontoer"
+msgstr ""
 
 #: [blocked]account_blocked
-#, fuzzy
 msgid "Account blocked"
-msgstr "Konto"
+msgstr ""
 
 #: [blocked]account_unblocked
 msgid "Account unblocked"
@@ -582,9 +577,8 @@ msgid "Composing…"
 msgstr "Oppretter…"
 
 #: [message]invitation
-#, fuzzy
 msgid "Invitation"
-msgstr "Invitasjon er sendt"
+msgstr ""
 
 #: [message]paused
 msgid "Paused…"
@@ -639,9 +633,8 @@ msgid "You received an invitation to join a chatroom"
 msgstr "Du mottok en invitasjon til å bli med i et samtalerom"
 
 #: [chat]invitation_self
-#, fuzzy
 msgid "You sent an invitation to join a chatroom"
-msgstr "Du mottok en invitasjon til å bli med i et samtalerom"
+msgstr ""
 
 #: [chat]invitation_join
 msgid "Join %s"
@@ -669,12 +662,23 @@ msgid "Incoming call"
 msgstr ""
 
 #: [chat]jingle_outgoing
-#, fuzzy
 msgid "Outgoing call"
-msgstr "i en samtale"
+msgstr ""
 
 #: [chat]jingle_end
 msgid "Call ended"
+msgstr ""
+
+#: [chat]jingle_hours
+msgid "%s hours %s minutes"
+msgstr ""
+
+#: [chat]jingle_minutes
+msgid "%s minutes and %s seconds"
+msgstr ""
+
+#: [chat]jingle_seconds
+msgid "%s seconds"
 msgstr ""
 
 #: [chat]publish_error
@@ -1024,13 +1028,12 @@ msgid "No publication yet? Write your first post to make people discover your pr
 msgstr ""
 
 #: [communityposts]empty_me_button
-#, fuzzy
 msgid "Publish my first post"
-msgstr "Dette innleggets offentlige nettadresse"
+msgstr ""
 
 #: [communitysubscriptions]subscriptions
-msgid "My Subscriptions"
-msgstr "Mine abonnement"
+msgid "Subscribed Communities"
+msgstr ""
 
 #: [communitysubscriptions]empty_title
 msgid "Hello"
@@ -1385,24 +1388,20 @@ msgid "Add the chatroom"
 msgstr "Legg til samtalerom"
 
 #: [location]title
-#, fuzzy
 msgid "My location"
-msgstr "Mine innlegg"
+msgstr ""
 
 #: [location]enabled_title
-#, fuzzy
 msgid "Currently shared with my contacts"
-msgstr "Prat med en kontakt"
+msgstr ""
 
 #: [location]disabled_title
-#, fuzzy
 msgid "Currently disabled"
-msgstr "Kommentarer er avskrudd"
+msgstr ""
 
 #: [location]last_published
-#, fuzzy
 msgid "My last published location"
-msgstr "Mine innlegg"
+msgstr ""
 
 #: [location]less_than_one_km
 msgid "Less than a km away"
@@ -1520,6 +1519,14 @@ msgstr "%s inviterte deg til å ta del i et samtalerom"
 msgid "Administrated by"
 msgstr ""
 
+#: [about_movim]info
+msgid "Movim is a federated blogging and chat platform."
+msgstr ""
+
+#: [about_movim]website
+msgid "Visit the project official website %s."
+msgstr ""
+
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
 msgstr "Ugyldig kallenavn (må være mellom 4 og 40 tegn)"
@@ -1549,9 +1556,8 @@ msgid "Write a new post…"
 msgstr "Skriv en ny melding…"
 
 #: [notification]request_title
-#, fuzzy
 msgid "Notifications request"
-msgstr "Varsel"
+msgstr ""
 
 #: [notification]request_info
 msgid "Movim requires your approval to display notifications"
@@ -1566,14 +1572,12 @@ msgid "Request"
 msgstr ""
 
 #: [notification]request_granted
-#, fuzzy
 msgid "Authorization granted"
-msgstr "Autentiseringskode"
+msgstr ""
 
 #: [notification]request_refused
-#, fuzzy
 msgid "Authorization refused"
-msgstr "Autentiseringskode"
+msgstr ""
 
 #: [notificationconfig]title [notifs]title [onboarding]notifications_title
 #: [room]notify_title
@@ -1589,9 +1593,8 @@ msgid "Incoming message"
 msgstr ""
 
 #: [notificationconfig]push_subscriptions
-#, fuzzy
 msgid "Push notifications"
-msgstr "Varsel"
+msgstr ""
 
 #: [notificationconfig]push_subscriptions_text
 msgid "Movim will send push notifications to the following registered devices"
@@ -1602,19 +1605,16 @@ msgid "Push notifications enabled for this device"
 msgstr ""
 
 #: [notificationconfig]push_disabled
-#, fuzzy
 msgid "Push notifications disabled for this device"
-msgstr "Dette samfunnet har skrudd av muligheten for å abonnere"
+msgstr ""
 
 #: [notificationconfig]unknown_browser
-#, fuzzy
 msgid "Unknown browser"
-msgstr "Ukjent feil"
+msgstr ""
 
 #: [notificationconfig]unknown_platform
-#, fuzzy
 msgid "Unknown platform"
-msgstr "Ukjent feil"
+msgstr ""
 
 #: [invitations]title
 msgid "Pending Invitations"
@@ -1896,6 +1896,10 @@ msgstr ""
 msgid "Add #hashtags in your title or content to allow your article to be discovered"
 msgstr ""
 
+#: [publish]publish_error_forbidden
+msgid "You are not authorized to publish there"
+msgstr ""
+
 #: [publishhelp]title [page]help
 msgid "Help"
 msgstr "Hjelp"
@@ -2137,9 +2141,8 @@ msgid "Archived"
 msgstr ""
 
 #: [room]archived_text
-#, fuzzy
 msgid "The chatroom messages are archived"
-msgstr "%s meldinger hentet"
+msgstr ""
 
 #: [room]group_chat
 msgid "Group Chat"
@@ -2291,6 +2294,10 @@ msgstr ""
 
 #: [sendto]attach
 msgid "Attach to a blog publication"
+msgstr ""
+
+#: [sendto]share
+msgid "Share in a new publication"
 msgstr ""
 
 #: [sendto]contact
@@ -2526,18 +2533,16 @@ msgid "Camera"
 msgstr ""
 
 #: [visioconfig]camera_label
-#, fuzzy
 msgid "Default camera"
-msgstr "Forvalgt språk"
+msgstr ""
 
 #: [visioconfig]default_microphone_changed
 msgid "Default microphone changed"
 msgstr ""
 
 #: [visioconfig]default_camera_changed
-#, fuzzy
 msgid "Default camera changed"
-msgstr "Forvalgt språk"
+msgstr ""
 
 #: [visioconfig]no_mic_sound
 msgid "No sound detected from your microphone"
@@ -3444,54 +3449,3 @@ msgstr "API-et kan ikke nås, prøv igjen senere"
 #: [field]type_here
 msgid "Type here"
 msgstr "Skriv her"
-
-#~ msgid "General Overview"
-#~ msgstr "Generell oversikt"
-
-#~ msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
-#~ msgstr "Klarer ikke koble til WebSocket, kontroller at Movim-tjenesten kjører og kan kontaktes"
-
-#~ msgid "Browser"
-#~ msgstr "Nettleser"
-
-#~ msgid "Movim Core"
-#~ msgstr "Movim Core"
-
-#~ msgid "Movim Daemon"
-#~ msgstr "Movim-tjenesten"
-
-#~ msgid "Database"
-#~ msgstr "Database"
-
-#~ msgid "XMPP"
-#~ msgstr "XMPP"
-
-#~ msgid "Here you can register your pod on the official %sMovim API%s"
-#~ msgstr "Her kan du registrere kapselen din på den offisielle %sMovim API%s"
-
-#~ msgid "Your pod is not registered on the API"
-#~ msgstr "Kapselen din er ikke registrert på API-et"
-
-#~ msgid "Your pod is registered on the API"
-#~ msgstr "Kapselen din er registrert på API-et"
-
-#~ msgid "Your pod is not yet validated"
-#~ msgstr "Kapselen din er ikke godkjent enda"
-
-#~ msgid "Your pod is validated"
-#~ msgstr "Kapselen din er godkjent"
-
-#~ msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
-#~ msgstr "Du spurte om å bli fjernet fra API-et og forespørselen din vil behandles i løpet av et par timer"
-
-#~ msgid "Archiving preferences"
-#~ msgstr "Arkivinstillinger"
-
-#~ msgid "Visit the blog to see all the public posts"
-#~ msgstr "Besøk bloggen for å se alle offentlige innlegg"
-
-#~ msgid "Statistics"
-#~ msgstr "Statistikk"
-
-#~ msgid "Status updated"
-#~ msgstr "Statusen er oppdatert"

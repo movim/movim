@@ -18,7 +18,7 @@ function getPrettyOffset($offset)
     $offset_prefix = $offset < 0 ? '-' : '+';
     $offset_formatted = gmdate('H:i', abs($offset));
 
-    return 'UTC'.$offset_prefix.$offset_formatted;
+    return 'UTC' . $offset_prefix . $offset_formatted;
 }
 
 /*
@@ -43,32 +43,32 @@ function generateTimezoneList()
         $timezones = array_merge($timezones, DateTimeZone::listIdentifiers($region));
     }
 
-    $timezone_offsets_summer = [];
-    $timezone_offsets_winter = [];
+    $timezoneOffsetsSummer = [];
+    $timezoneOffsetsWinter = [];
 
     foreach ($timezones as $timezone) {
         $tz = new DateTimeZone($timezone);
         $utc = new DateTimeZone('UTC');
-        $timezone_offsets_summer[$timezone] = $tz->getOffset(new DateTime('first day of August', $utc));
-        $timezone_offsets_winter[$timezone] = $tz->getOffset(new DateTime('first day of December', $utc));
+        $timezoneOffsetsSummer[$timezone] = $tz->getOffset(new DateTime('first day of August', $utc));
+        $timezoneOffsetsWinter[$timezone] = $tz->getOffset(new DateTime('first day of December', $utc));
     }
 
     // sort timezone by timezone name
-    ksort($timezone_offsets_summer);
-    ksort($timezone_offsets_winter);
+    ksort($timezoneOffsetsSummer);
+    ksort($timezoneOffsetsWinter);
 
-    $timezone_list = [];
+    $timezoneList = [];
 
-    foreach ($timezone_offsets_summer as $timezone => $offset) {
-        $pretty_summer_offset = getPrettyOffset($offset);
-        $pretty_winter_offset = getPrettyOffset($timezone_offsets_winter[$timezone]);
+    foreach ($timezoneOffsetsSummer as $timezone => $offset) {
+        $prettySummerOffset = getPrettyOffset($offset);
+        $prettyWinterOffset = getPrettyOffset($timezoneOffsetsWinter[$timezone]);
 
         $split = explode("/", $timezone);
 
-        $timezone_list[$timezone] = "$split[1]/$split[0] (Summer ${pretty_summer_offset} - Winter ${pretty_winter_offset})";
+        $timezoneList[$timezone] = $split[1] . '/' . $split[0] . ' (Summer ' . $prettySummerOffset . '- Winter' . $prettyWinterOffset . ')';
     }
 
-    ksort($timezone_list);
+    ksort($timezoneList);
 
-    return $timezone_list;
+    return $timezoneList;
 }

@@ -2,10 +2,10 @@
 
 namespace Moxl\Xec\Action\PubsubSubscription;
 
-use Moxl\Xec\Action\Pubsub\Errors;
+use Moxl\Xec\Action;
 use Moxl\Stanza\PubsubSubscription;
 
-class Remove extends Errors
+class Remove extends Action
 {
     protected $_server;
     protected $_from;
@@ -23,7 +23,7 @@ class Remove extends Errors
         );
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         if ($this->_pepnode == 'urn:xmpp:pubsub:movim-public-subscription') {
             \App\User::me()->subscriptions()
@@ -36,13 +36,13 @@ class Remove extends Errors
         $this->deliver();
     }
 
-    public function errorItemNotFound($stanza)
+    public function errorItemNotFound(string $errorId, ?string $message = null)
     {
-        $this->handle($stanza, $parent = false);
+        $this->handle();
     }
 
-    public function errorUnexpectedRequest($stanza)
+    public function errorUnexpectedRequest(string $errorId, ?string $message = null)
     {
-        $this->handle($stanza, $parent = false);
+        $this->handle();
     }
 }

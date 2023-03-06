@@ -1,6 +1,4 @@
 <?php $this->widget('Search');?>
-<?php $this->widget('Notification');?>
-<?php $this->widget('Toast');?>
 <?php $this->widget('VisioLink');?>
 <?php $this->widget('Stickers');?>
 <?php $this->widget('Notifications');?>
@@ -29,6 +27,7 @@
     </div>
 </main>
 
+<?php $this->widget('Dictaphone');?>
 <?php $this->widget('Snap');?>
 <?php $this->widget('Tabs');?>
 <?php $this->widget('Draw');?>

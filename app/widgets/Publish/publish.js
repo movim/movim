@@ -49,29 +49,21 @@ var Publish = {
     },
 
     preview: function () {
-        Publish.saveTitle().onreadystatechange = function () {
-            if (this.readyState == 4) {
-                Publish.saveContent().onreadystatechange = function () {
-                    if (this.readyState == 4) {
-                        let id = document.querySelector('#publish input[name=id]').value;
-                        Publish_ajaxPreview(id);
-                    }
-                }
-            }
-        }
+        Publish.saveTitle().then(e => {
+            Publish.saveContent().then(e => {
+                let id = document.querySelector('#publish input[name=id]').value;
+                Publish_ajaxPreview(id);
+            });
+        });
     },
 
     publish: function () {
-        Publish.saveTitle().onreadystatechange = function () {
-            if (this.readyState == 4) {
-                Publish.saveContent().onreadystatechange = function () {
-                    if (this.readyState == 4) {
-                        let id = document.querySelector('#publish input[name=id]').value;
-                        Publish_ajaxPublish(id);
-                    }
-                }
-            }
-        }
+        Publish.saveTitle().then(e => {
+            Publish.saveContent().then(e => {
+                let id = document.querySelector('#publish input[name=id]').value;
+                Publish_ajaxPublish(id);
+            });
+        });
     },
 
     clearReply: function () {

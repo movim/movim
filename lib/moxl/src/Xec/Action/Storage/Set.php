@@ -16,7 +16,7 @@ class Set extends Action
         Storage::publish($this->_xmlns, $this->_data);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $this->pack(unserialize($this->_data));
         $this->deliver();

@@ -1,4 +1,8 @@
 <?php
+/*
+ * SPDX-FileCopyrightText: 2010 Jaussoin Timothée
+ * SPDX-License-Identifier: AGPL-3.0-or-later
+ */
 namespace Movim\Controller;
 
 use Movim\Route;
@@ -19,30 +23,16 @@ class Front extends Base
         }
     }
 
-    public function loadController($request)
-    {
-        $className = ucfirst($request).'Controller';
-        if (file_exists(APP_PATH . 'controllers/'.$className.'.php')) {
-            $controllerPath = APP_PATH . 'controllers/'.$className.'.php';
-        } else {
-            \Utils::error("Requested controller $className doesn't exist");
-            exit;
-        }
-
-        require_once $controllerPath;
-        return new $className();
-    }
-
     /**
      * Here we load, instanciate and execute the correct controller
      */
     public function runRequest($request)
     {
         if ($request == 'ajax' || $request == 'ajaxd') {
-            $parts = explode('/', parse_url($_SERVER['HTTP_REFERER'], PHP_URL_QUERY));
+            $payload = json_decode(file_get_contents('php://input'));
 
-            if (isset($parts[0])) {
-                $c = $this->loadController($parts[0]);
+            if ($payload && $payload->b && $payload->b->c) {
+                $c = $this->loadController($payload->b->c);
                 if (is_callable([$c, 'load'])) $c->load();
 
                 $c->checkSession();
@@ -50,6 +40,9 @@ class Front extends Base
                     header('HTTP/1.0 403 Forbidden');
                     exit;
                 }
+            } else {
+                header('HTTP/1.0 403 Forbidden');
+                exit;
             }
         }
 
@@ -71,6 +64,9 @@ class Front extends Base
                 'sid' => SESSION_ID,
                 'json' => rawurlencode(file_get_contents('php://input'))
             ]);
+
+            $rpc = new RPC;
+            $rpc->writeJSON();
             return;
         }
 
@@ -106,4 +102,19 @@ class Front extends Base
             \Utils::info('Could not call the load method on the current controller');
         }
     }
+
+    public function loadController(string $page)
+    {
+        $className = ucfirst($page).'Controller';
+        if (file_exists(APP_PATH . 'controllers/'.$className.'.php')) {
+            $controllerPath = APP_PATH . 'controllers/'.$className.'.php';
+        } else {
+            \Utils::error("Requested controller $className doesn't exist");
+            exit;
+        }
+
+        require_once $controllerPath;
+        return new $className();
+    }
+
 }

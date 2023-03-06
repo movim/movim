@@ -18,7 +18,7 @@ class Request extends Action
         BOB::request($this->_to.'/'.$this->_resource, $this->_cid);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $data = (string)$stanza->data;
 

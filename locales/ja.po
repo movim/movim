@@ -120,16 +120,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-04 14:11+0200\n"
-"PO-Revision-Date: 2022-02-17 07:57+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"POT-Creation-Date: 2022-12-25 14:45+0200\n"
+"PO-Revision-Date: 2015-06-24 09:45+0000\n"
+"Last-Translator: Rintan, 2020-2021\n"
 "Language-Team: Japanese (http://www.transifex.com/movim/movim/language/ja/)\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Translate Toolkit 3.4.1\n"
+"X-Generator: Translate Toolkit 3.7.4\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -418,9 +418,8 @@ msgid "Access Tenor and get your API key"
 msgstr "Tenorにアクセスして、APIキーを入手"
 
 #: [twitter]title
-#, fuzzy
 msgid "Twitter integration"
-msgstr "Tenor連携"
+msgstr ""
 
 #: [twitter]label
 msgid "Your Twitter Token"
@@ -447,9 +446,8 @@ msgid "Syslog and files"
 msgstr "システムログとファイル"
 
 #: [adminreported]reported_by
-#, fuzzy
 msgid "Reported by %s users"
-msgstr "不正行為を報告"
+msgstr ""
 
 #: [adminreported]info
 msgid "Those accounts were reported by some Movim users"
@@ -471,22 +469,6 @@ msgstr ""
 msgid "File"
 msgstr "ファイル"
 
-#: [avatar]use_it
-msgid "Use it"
-msgstr "使用する"
-
-#: [avatar]webcam
-msgid "Webcam"
-msgstr "ウェブカメラ"
-
-#: [avatar]cheese
-msgid "Cheese!"
-msgstr "チーズ！"
-
-#: [avatar]snapshot
-msgid "Take a webcam snapshot"
-msgstr "ウェブカメラで写真を撮る"
-
 #: [avatar]updated
 msgid "Avatar Updated"
 msgstr "アバターがアップデートされました"
@@ -507,24 +489,37 @@ msgstr ""
 msgid "Upload a new picture"
 msgstr ""
 
+#: [banner]change
+msgid "Change my banner"
+msgstr ""
+
+#: [banner]updated
+msgid "Banner Updated"
+msgstr ""
+
+#: [banner]not_updated
+msgid "Banner Not Updated"
+msgstr ""
+
+#: [banner]missing
+msgid "No banner defined yet"
+msgstr ""
+
 #: [blocked]title
 msgid "Blocked"
 msgstr ""
 
 #: [blocked]block_account
-#, fuzzy
 msgid "Block the account"
-msgstr "他のアカウント"
+msgstr ""
 
 #: [blocked]unblock_account
-#, fuzzy
 msgid "Unblock the account"
-msgstr "他のアカウント"
+msgstr ""
 
 #: [blocked]account_blocked
-#, fuzzy
 msgid "Account blocked"
-msgstr "アカウント"
+msgstr ""
 
 #: [blocked]account_unblocked
 msgid "Account unblocked"
@@ -583,9 +578,8 @@ msgid "Composing…"
 msgstr "投稿中…"
 
 #: [message]invitation
-#, fuzzy
 msgid "Invitation"
-msgstr "招待を送信しました"
+msgstr ""
 
 #: [message]paused
 msgid "Paused…"
@@ -640,9 +634,8 @@ msgid "You received an invitation to join a chatroom"
 msgstr "チャットルームに招待されました"
 
 #: [chat]invitation_self
-#, fuzzy
 msgid "You sent an invitation to join a chatroom"
-msgstr "チャットルームに招待されました"
+msgstr ""
 
 #: [chat]invitation_join
 msgid "Join %s"
@@ -670,13 +663,24 @@ msgid "Incoming call"
 msgstr "着信"
 
 #: [chat]jingle_outgoing
-#, fuzzy
 msgid "Outgoing call"
-msgstr "通話中"
+msgstr ""
 
 #: [chat]jingle_end
 msgid "Call ended"
 msgstr "通話を終了"
+
+#: [chat]jingle_hours
+msgid "%s hours %s minutes"
+msgstr ""
+
+#: [chat]jingle_minutes
+msgid "%s minutes and %s seconds"
+msgstr ""
+
+#: [chat]jingle_seconds
+msgid "%s seconds"
+msgstr ""
 
 #: [chat]publish_error
 msgid "An error occured when sending the message"
@@ -1025,13 +1029,12 @@ msgid "No publication yet? Write your first post to make people discover your pr
 msgstr ""
 
 #: [communityposts]empty_me_button
-#, fuzzy
 msgid "Publish my first post"
-msgstr "この投稿の公開URL"
+msgstr ""
 
 #: [communitysubscriptions]subscriptions
-msgid "My Subscriptions"
-msgstr "自分の購読"
+msgid "Subscribed Communities"
+msgstr ""
 
 #: [communitysubscriptions]empty_title
 msgid "Hello"
@@ -1386,24 +1389,20 @@ msgid "Add the chatroom"
 msgstr "チャットルームを追加する"
 
 #: [location]title
-#, fuzzy
 msgid "My location"
-msgstr "自分の投稿"
+msgstr ""
 
 #: [location]enabled_title
-#, fuzzy
 msgid "Currently shared with my contacts"
-msgstr "あなたの連絡先に投稿が共有されました"
+msgstr ""
 
 #: [location]disabled_title
-#, fuzzy
 msgid "Currently disabled"
-msgstr "コメントは無効になっています"
+msgstr ""
 
 #: [location]last_published
-#, fuzzy
 msgid "My last published location"
-msgstr "自分の投稿"
+msgstr ""
 
 #: [location]less_than_one_km
 msgid "Less than a km away"
@@ -1521,6 +1520,14 @@ msgstr "%sがあなたをチャットルームに招待しています"
 msgid "Administrated by"
 msgstr ""
 
+#: [about_movim]info
+msgid "Movim is a federated blogging and chat platform."
+msgstr ""
+
+#: [about_movim]website
+msgid "Visit the project official website %s."
+msgstr ""
+
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
 msgstr "無効なニックネーム(4文字以上40文字以下)"
@@ -1550,9 +1557,8 @@ msgid "Write a new post…"
 msgstr "新しく投稿する…"
 
 #: [notification]request_title
-#, fuzzy
 msgid "Notifications request"
-msgstr "通知"
+msgstr ""
 
 #: [notification]request_info
 msgid "Movim requires your approval to display notifications"
@@ -1567,14 +1573,12 @@ msgid "Request"
 msgstr ""
 
 #: [notification]request_granted
-#, fuzzy
 msgid "Authorization granted"
-msgstr "認証コード"
+msgstr ""
 
 #: [notification]request_refused
-#, fuzzy
 msgid "Authorization refused"
-msgstr "認証コード"
+msgstr ""
 
 #: [notificationconfig]title [notifs]title [onboarding]notifications_title
 #: [room]notify_title
@@ -1590,9 +1594,8 @@ msgid "Incoming message"
 msgstr "新規メッセージ"
 
 #: [notificationconfig]push_subscriptions
-#, fuzzy
 msgid "Push notifications"
-msgstr "通知"
+msgstr ""
 
 #: [notificationconfig]push_subscriptions_text
 msgid "Movim will send push notifications to the following registered devices"
@@ -1603,19 +1606,16 @@ msgid "Push notifications enabled for this device"
 msgstr ""
 
 #: [notificationconfig]push_disabled
-#, fuzzy
 msgid "Push notifications disabled for this device"
-msgstr "このコミュニティでは購読が無効化されています"
+msgstr ""
 
 #: [notificationconfig]unknown_browser
-#, fuzzy
 msgid "Unknown browser"
-msgstr "原因不明のエラー"
+msgstr ""
 
 #: [notificationconfig]unknown_platform
-#, fuzzy
 msgid "Unknown platform"
-msgstr "原因不明のエラー"
+msgstr ""
 
 #: [invitations]title
 msgid "Pending Invitations"
@@ -1897,6 +1897,10 @@ msgstr "リッチテキストエディタ"
 msgid "Add #hashtags in your title or content to allow your article to be discovered"
 msgstr ""
 
+#: [publish]publish_error_forbidden
+msgid "You are not authorized to publish there"
+msgstr ""
+
 #: [publishhelp]title [page]help
 msgid "Help"
 msgstr "ヘルプ"
@@ -2138,9 +2142,8 @@ msgid "Archived"
 msgstr ""
 
 #: [room]archived_text
-#, fuzzy
 msgid "The chatroom messages are archived"
-msgstr "%s件のメッセージを受信しました"
+msgstr ""
 
 #: [room]group_chat
 msgid "Group Chat"
@@ -2293,6 +2296,10 @@ msgstr "全ての連絡先を表示"
 #: [sendto]attach
 msgid "Attach to a blog publication"
 msgstr "ブログの投稿に貼り付ける"
+
+#: [sendto]share
+msgid "Share in a new publication"
+msgstr ""
 
 #: [sendto]contact
 msgid "Send it to a contact"
@@ -2527,18 +2534,16 @@ msgid "Camera"
 msgstr ""
 
 #: [visioconfig]camera_label
-#, fuzzy
 msgid "Default camera"
-msgstr "標準の言語"
+msgstr ""
 
 #: [visioconfig]default_microphone_changed
 msgid "Default microphone changed"
 msgstr ""
 
 #: [visioconfig]default_camera_changed
-#, fuzzy
 msgid "Default camera changed"
-msgstr "標準の言語"
+msgstr ""
 
 #: [visioconfig]no_mic_sound
 msgid "No sound detected from your microphone"
@@ -3445,63 +3450,3 @@ msgstr "APIにアクセスできません、後ほど再試行してください
 #: [field]type_here
 msgid "Type here"
 msgstr "ここに入力してください"
-
-#~ msgid "General Overview"
-#~ msgstr "概要"
-
-#~ msgid "Read and write rights for the webserver in Movim’s %s directory"
-#~ msgstr "Movimの%sディレクトリにあるウェブサーバーの読み書き権限"
-
-#~ msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
-#~ msgstr "WebSocketの接続でエラーが発生しました。Movimデーモンが起動していてアクセスできることを確認してください。"
-
-#~ msgid "Browser"
-#~ msgstr "ブラウザー"
-
-#~ msgid "Movim Core"
-#~ msgstr "Movim コア"
-
-#~ msgid "Movim Daemon"
-#~ msgstr "Movim デーモン"
-
-#~ msgid "Database"
-#~ msgstr "データベース"
-
-#~ msgid "XMPP"
-#~ msgstr "XMPP"
-
-#~ msgid "Here you can register your pod on the official %sMovim API%s"
-#~ msgstr "ポッドを登録できる公式の%sMovim API%s"
-
-#~ msgid "Your pod is not registered on the API"
-#~ msgstr "あなたのポッドはAPIに登録されていません"
-
-#~ msgid "Your pod is registered on the API"
-#~ msgstr "あなたのポッドはAPIに登録されています"
-
-#~ msgid "Your pod is not yet validated"
-#~ msgstr "あなたのポッドは認証されていません"
-
-#~ msgid "Your pod is validated"
-#~ msgstr "あなたのポッドは認証されています"
-
-#~ msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
-#~ msgstr "APIからの削除をリクエストしましたが、このリクエストの処理には数時間かかります"
-
-#~ msgid "Call started"
-#~ msgstr "通話を開始"
-
-#~ msgid "Archiving preferences"
-#~ msgstr "設定をアーカイブ"
-
-#~ msgid "Visit the blog to see all the public posts"
-#~ msgstr "全ての公開投稿を表示するにはブログへアクセスしてください"
-
-#~ msgid "Statistics"
-#~ msgstr "統計"
-
-#~ msgid "Firebase Integration"
-#~ msgstr "Firebase連携"
-
-#~ msgid "Status updated"
-#~ msgstr "ステータスを更新しました"

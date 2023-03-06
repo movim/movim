@@ -6,11 +6,11 @@ your.domain.tld {
 	# The root directory where movim is installed <path-to>
 	# Remember the installation guide on the wiki, the caddy user should have read and write acces to the files under /public and must have exectue permissions for the daemon running chown -R caddy:caddy movim should fix any issue
 	# Feel free to delete all comments
-	
-	encode zstd gzip 
 
-	@static path /stickers/* /cache/* /theme/* /scripts/*.js #No need to use a @name matcher but is a bit more organized 
-	
+	encode zstd gzip
+
+	@static path /stickers/* /cache/* /theme/* /scripts/*.js #No need to use a @name matcher but is a bit more organized
+
 	handle @static {
 		root * /path-to/movim/public
 		file_server
@@ -35,9 +35,9 @@ your.domain.tld {
 	handle /ws/* {
 		reverse_proxy localhost:8080
 	}
-	
-	#Security options can ignore or delete
-	
+
+	#Security options you can ignore or delete
+
 	header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
 	header X-XSS-Protection "1; mode=block"
 	header X-Content-Type-Options "nosniff"

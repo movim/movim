@@ -18,12 +18,12 @@ class Invite extends Action
         Message::invite($this->_to, $this->_id, $this->_invite);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $this->deliver();
     }
 
-    public function error($id, $message = false)
+    public function error(string $errorId, ?string $message = null)
     {
         if ($message) {
             $this->pack($message);

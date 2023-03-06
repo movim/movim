@@ -165,6 +165,10 @@ class CommunityPosts extends Base
             }
         }
 
+        $info = \App\Info::where('server', $origin)
+                        ->where('node', $node)
+                        ->first();
+
         $view = $this->tpl();
 
         $view->assign('server', $origin);
@@ -174,16 +178,14 @@ class CommunityPosts extends Base
         $view->assign('posts', $postsWithKeys);
         $view->assign('before', $before);
         $view->assign('after', $after);
-        $view->assign('info', \App\Info::where('server', $origin)
-                                       ->where('node', $node)
-                                       ->first());
+        $view->assign('info', $info);
         $view->assign('subscription', $this->user->subscriptions()
                                            ->where('server', $origin)
                                            ->where('node', $node)
                                            ->first());
         $view->assign('paging', $this->_paging);
 
-        $view->assign('gallery', isPostGallery($posts));
+        $view->assign('gallery', $info && $info->isGallery());
 
         $view->assign('publicposts', ($ids == false)
             ? \App\Post::where('server', $origin)

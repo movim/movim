@@ -16,7 +16,7 @@ class Set extends Action
         Vcard::set($this->_to, $this->_data);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $this->pack($this->_to);
         $this->deliver();

@@ -30,6 +30,9 @@ class Stickers extends \Movim\Widget\Base
 
         list($c, $ext) = explode('@', $cid);
         list($sh, $key) = explode('+', $c);
+        if ($sh !== "sha1") {
+            $key = $sh.'+'.$key;
+        }
 
         $base64 = base64_encode(file_get_contents(PUBLIC_CACHE_PATH.hash(Image::$hash, $key).'.png'));
 
@@ -156,6 +159,7 @@ class Stickers extends \Movim\Widget\Base
 
         $emojis = $this->tpl();
         $emojis->assign('mid', $mid);
+
         $view->assign('emojis', $emojis->draw('_stickers_emojis'));
 
         Dialog::fill($view->draw('_stickers_reactions'));

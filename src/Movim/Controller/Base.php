@@ -1,4 +1,8 @@
 <?php
+/*
+ * SPDX-FileCopyrightText: 2010 Jaussoin Timothée
+ * SPDX-License-Identifier: AGPL-3.0-or-later
+ */
 
 namespace Movim\Controller;
 
@@ -86,14 +90,11 @@ class Base
         $this->page->addCSS('fonts.css');
         $this->page->addCSS('title.css');
         $this->page->addCSS('typo.css');
+        $this->page->addCSS('elevation.css');
         $this->page->addCSS('scrollbar.css');
 
-        // Load custom CSS for Android
-        if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == 'com.movim.movim') {
-            $this->page->addCSS('android.css');
-        }
-
         $this->page->addScript('movim_utils.js');
+        $this->page->addScript('movim_e2ee.js');
         $this->page->addScript('movim_base.js');
         $this->page->addScript('movim_favicon.js');
         $this->page->addScript('movim_electron.js');
@@ -101,6 +102,7 @@ class Base
         $this->page->addScript('movim_emojis_list.js');
         $this->page->addScript('movim_rpc.js');
         $this->page->addScript('movim_tpl.js');
+        $this->page->addScript('libsignal_protocol.js');
 
         if (!$this->public) {
             $this->page->addScript('movim_websocket.js');
@@ -108,7 +110,22 @@ class Base
 
         $content = new Builder;
 
-        if ($this->raw) {
+        $headers = getallheaders();
+
+        $built = $content->build('common');
+        $this->page->setCommonContent($built);
+
+        if ($headers
+         && array_key_exists('Accept', $headers)
+         && array_key_exists('Content-Type', $headers)
+         && $headers['Accept'] == 'application/json'
+         && $headers['Content-Type'] == 'application/json') {
+            $built = $content->build($this->name);
+            $this->page->setContent($built);
+
+            header('Content-Type: application/json');
+            echo json_encode($this->page->softBuild('page', $this->public));
+        } elseif ($this->raw) {
             echo $content->build($this->name);
             exit;
         } else {

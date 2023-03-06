@@ -6,7 +6,7 @@ use Moxl\Xec\Action\Session\Bind;
 
 class SessionBind extends Payload
 {
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $ss = new Bind;
         $ss->setResource(\App\User::me()->session->resource)

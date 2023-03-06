@@ -1,16 +1,33 @@
 <?php
+/*
+ * SPDX-FileCopyrightText: 2010 Jaussoin Timothée
+ * SPDX-License-Identifier: AGPL-3.0-or-later
+ */
 
 namespace Movim;
 
 class EmbedLight
 {
+    public string $title;
+    public ?string $description;
+
+    public string $url;
+    public string $type = 'text';
+    public ?string $contentType;
+    public array $tags = [];
+    public array $images = [];
+
+    public ?string $authorName;
+    public ?string $authorUrl;
+    public ?string $providerIcon;
+    public ?string $providerName;
+    public ?string $providerUrl;
+
     public function __construct($embed)
     {
         $this->title            = $embed->title ? (string)$embed->title : (string)$embed->url;
         $this->description      = $embed->description;
         $this->url              = (string)$embed->url;
-
-        $this->type = 'text';
 
         if (!empty($embed->getResponse()->getHeader('content-type'))) {
             $this->contentType      = $embed->getResponse()->getHeader('content-type')[0];
@@ -28,8 +45,6 @@ class EmbedLight
         $this->providerIcon     = $embed->icon ? (string)$embed->icon : null;
         $this->providerName     = $embed->providerName;
         $this->providerUrl      = $embed->providerUrl ? (string)$embed->providerUrl : null;
-        $this->publishedTime    = $embed->publishedTime;
-        $this->license          = $embed->license;
 
         // Images
         $this->images           = [];

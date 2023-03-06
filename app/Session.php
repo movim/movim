@@ -108,12 +108,12 @@ class Session extends Model
         $this->username    = $username;
         $this->user_id     = $username . '@' . $host;
         $this->resource    = 'movim' . \generateKey(6);
-        $this->hash        = sha1($this->username . $password . $this->host);
+        $this->hash        = password_hash(Session::hashSession($this->username, $password, $this->host),  PASSWORD_DEFAULT);
         $this->active      = false;
 
         // TODO Cleanup
-        $s = MemorySession::start();
-        $s->set('password', $password);
+        $session = MemorySession::start();
+        $session->set('password', $password);
     }
 
     public function getUploadService()
@@ -146,9 +146,14 @@ class Session extends Model
 
     public function loadMemory()
     {
-        $s = MemorySession::start();
-        $s->set('jid', $this->user_id);
-        $s->set('host', $this->host);
-        $s->set('username', $this->username);
+        $session = MemorySession::start();
+        $session->set('jid', $this->user_id);
+        $session->set('host', $this->host);
+        $session->set('username', $this->username);
+    }
+
+    public static function hashSession(string $username, string $password, string $host): string
+    {
+        return $username . "\0" . $password . "\0" . $host;
     }
 }

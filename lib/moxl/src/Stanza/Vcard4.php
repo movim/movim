@@ -118,6 +118,16 @@ class Vcard4
         $field->appendChild($dom->createElement('value', 'true'));
         $x->appendChild($field);
 
+        $field = $dom->createElement('field');
+        $field->setAttribute('var', 'pubsub#max_items');
+        $field->appendChild($dom->createElement('value', 1));
+        $x->appendChild($field);
+
+        $field = $dom->createElement('field');
+        $field->setAttribute('var', 'pubsub#access_model');
+        $field->appendChild($dom->createElement('value', 'presence'));
+        $x->appendChild($field);
+
         $pubsub->appendChild($publishOption);
 
         $xml = \Moxl\API::iqWrapper($pubsub, false, 'set');

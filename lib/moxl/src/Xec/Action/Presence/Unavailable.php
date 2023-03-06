@@ -18,14 +18,14 @@ class Unavailable extends Action
         Presence::unavailable($this->_to.'/'.$this->_resource, $this->_status, $this->_type);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $this->pack($this->_to);
         $this->deliver();
     }
 
-    public function error($stanza, $parent)
+    public function error(string $errorId, ?string $message = null)
     {
-        $this->handle($stanza, $parent);
+        $this->handle(null, null);
     }
 }

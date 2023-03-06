@@ -16,18 +16,26 @@
 
         {if="!$create"}
             {if="$gateways->isNotEmpty() && !isset($conference)"}
+                {$group = null}
                 <div>
                     <div class="select">
                         <select onchange="RoomsUtils_ajaxDiscoGateway(this.value)">
                             <option value="">{$c->__('rooms.default_room')}</option>
                             {loop="$gateways"}
+                                {if="$group != $value->parent"}
+                                    {if="$group != null"}
+                                        </optgroup>
+                                    {/if}
+                                    <optgroup label="{$value->parent}">
+                                {/if}
                                 <option value="{$value->server}">
                                     {$value->name}
-                                    {if="$value->identities()->first()"}
-                                        ({$value->identities()->first()->type})
-                                    {/if}
                                 </option>
+                                {$group = $value->parent}
                             {/loop}
+                            {if="$group != null"}
+                                </optgroup>
+                            {/if}
                         </select>
                     </div>
                     <label>{$c->__('rooms.type_room')}</label>

@@ -36,12 +36,12 @@
         <li class="block">
             <div>
                 <p class="center">
-                    <a class="button flat {if="$page == 0"}disabled{/if}" href="{$previous}">
+                    <a class="button flat {if="$page == 0"}disabled{/if}" href="#" onclick="MovimUtils.reload('{$next}')">
                         <i class="material-icons">keyboard_arrow_left</i>
                         {$c->__('button.previous')}
                     </a>
                     {if="count($items) == $paging"}
-                        <a class="button flat" href="{$next}" title="{$c->__('post.older')}">
+                        <a class="button flat" href="#" onclick="MovimUtils.reload('{$next}')" title="{$c->__('post.older')}">
                             {$c->__('button.next')}
                             <i class="material-icons">keyboard_arrow_right</i>
                         </a>

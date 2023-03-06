@@ -22,6 +22,8 @@
                     <p class="line">
                         {if="typeIsPicture($message->file['type'])"}
                             <i class="material-icons">image</i> {$c->__('chats.picture')}
+                        {elseif="typeIsAudio($message->file['type'])"}
+                            <i class="material-icons">equalizer</i> {$c->__('chats.audio')}
                         {elseif="typeIsVideo($message->file['type'])"}
                             <i class="material-icons">local_movies</i> {$c->__('chats.video')}
                         {else}

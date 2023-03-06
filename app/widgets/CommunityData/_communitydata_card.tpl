@@ -29,7 +29,7 @@
             <p class="center all">
                 {if="$info->description != null && trim($info->description) != ''"}
                     {autoescape="off"}
-                        {$info->description|trim|nl2br|addEmojis}
+                        {$info->description|trim|nl2br|addEmojis|addUrls|addHashtagsLinks}
                     {/autoescape}
                     <br />
                 {/if}
@@ -57,6 +57,12 @@
                     <i class="material-icons icon-text">assignment_turned_in</i>
                     {$c->__('communitydata.publishmodel_subscribers')}
                 {/if}
+                {if="$info->isGallery()"}
+                    <br />
+                    <i class="material-icons icon-text">grid_view</i>
+                    {$c->__('communityconfig.type_gallery_title')}
+                {/if}
+
             </p>
         </div>
     </li>

@@ -22,6 +22,7 @@ class Publish extends Base
     public function load()
     {
         $this->registerEvent('pubsub_postpublish_handle', 'onPublish');
+        $this->registerEvent('pubsub_postpublish_errorforbidden', 'onPublishErrorForbidden');
         $this->registerEvent('microblog_commentcreatenode_handle', 'onCommentNodeCreated');
 
         $this->addjs('publish.js');
@@ -43,6 +44,13 @@ class Publish extends Base
         } else {
             $this->rpc('MovimUtils.softRedirect', $this->route('community', [$to, $node]));
         }
+    }
+
+    public function onPublishErrorForbidden($packet)
+    {
+        Toast::send($this->__('publish.publish_error_forbidden'));
+
+        $this->rpc('Publish.enableSend');
     }
 
     public function onCommentNodeCreated($packet)
@@ -94,7 +102,7 @@ class Publish extends Base
     {
         $draft = $this->user->drafts()->find($id);
 
-        if ($draft->isNotEmpty()) {
+        if ($draft && $draft->isNotEmpty()) {
             $view = $this->tpl();
             $doc = new DOMDocument;
             $converter = new CommonMarkConverter([
@@ -201,12 +209,16 @@ class Publish extends Base
                 $p->setReply($post->getRef());
             }
 
+            $hasImage = false;
+
             foreach ($draft->embeds as $embed) {
                 $resolved = $embed->resolve();
 
                 // The url is an image
                 if ($resolved->type == 'image'
                 && $resolved->images[0]['url'] == $embed->url) {
+                    if (!$hasImage) $hasImage = true;
+
                     $p->addImage(
                         $resolved->images[0]['url'],
                         $resolved->title,
@@ -244,6 +256,16 @@ class Publish extends Base
                         $resolved->providerIcon
                     );
                 }
+            }
+
+            $info = \App\Info::where('server', $draft->server)
+                            ->where('node', $draft->node)
+                            ->first();
+
+            if ($info && $info->isGallery() && !$hasImage) {
+                $this->rpc('Publish.enableSend');
+                Toast::send($this->__('publish.no_picture'));
+                return;
             }
 
             $p->request();
@@ -290,7 +312,7 @@ class Publish extends Base
 
         if ($shareUrl) {
             $this->ajaxAddEmbed($id, $shareUrl);
-            $session->remove('share_url');
+            $session->delete('share_url');
         }
     }
 

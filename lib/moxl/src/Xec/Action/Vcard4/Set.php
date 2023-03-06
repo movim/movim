@@ -15,7 +15,7 @@ class Set extends Action
         Vcard4::set($this->_data);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $this->pack(\App\User::me()->contact);
         $this->deliver();

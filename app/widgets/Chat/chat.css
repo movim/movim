@@ -67,7 +67,13 @@ main:not(.enabled) #chat_widget {
 
 #chat_widget ul.list.actions > li > span.control,
 #chat_widget ul.list.actions > li > div > p {
-    box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.23);
+    transition: box-shadow 0.3s ease;
+    box-shadow: var(--elevation-1);
+}
+
+#chat_widget ul.list.actions > li > span.control:hover,
+#chat_widget ul.list.actions > li > div > p:hover {
+    box-shadow: var(--elevation-2);
 }
 
 /* Scroll button */
@@ -202,7 +208,7 @@ main:not(.enabled) #chat_widget {
     display: block;
     width: 100%;
     height: 100%;
-    box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.1);
+    box-shadow: var(--elevation-1);
     background-color: rgba(var(--movim-background-main));
     position: absolute;
     top: 0;
@@ -364,31 +370,46 @@ main:not(.enabled) #chat_widget {
     margin: 0;
 }
 
-#emojisearchbar + .emojis {
-    padding: 0;
-    margin: 0 auto;
-    max-width: 55rem;
-    margin-bottom: 2rem;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    flex-wrap: wrap;
+#emojisearchbar form div {
+    min-height: 0;
 }
 
-#emojisearchbar + .emojis .results:not(:empty) ~ img {
-    /* hide default when results are not empty */
-    display: none;
+#emojisearchbar form div input {
+    margin: 0;
 }
 
-#emojisearchbar + .emojis img {
+#emojisearchbar ~ .emojis {
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+#emojisearchbar ~ .emojis.results,
+#emojisearchbar ~ .emojis:last-child {
+    margin-bottom: 1rem;
+}
+
+#emojisearchbar ~ .emojis img {
     text-align: center;
     padding: 1rem 1.5rem;
     font-size: 0;
+    position: relative;
+}
+
+#emojisearchbar ~ .emojis.main {
+    border-bottom: 1px solid rgba(var(--movim-font), 0.12);
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+#emojisearchbar ~ .emojis.results:empty,
+#emojisearchbar ~ .emojis.results:not(:empty) ~ .emojis {
+    display: none;
 }
 
 #chat_widget textarea#chat_textarea ~ span.control:hover,
 #chat_widget .primary_action:hover,
-#emojisearchbar + .emojis img:hover {
+#emojisearchbar ~ .emojis img:hover {
     cursor: pointer;
     background-color: rgba(var(--movim-font), 0.05);
     border-radius: 0.5rem;
@@ -405,11 +426,11 @@ main:not(.enabled) #chat_widget {
     word-break: break-all;
 }
 
-#chat_widget div.file:not(.bubble) a {
+#chat_widget div.file:not(.bubble) a:not(.button) {
     padding: 1rem 0;
 }
 
-#chat_widget div.file:not(.bubble) p {
+#chat_widget div.file:not(.bubble) div:not(.audio_player) p {
     max-width: 31rem;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -441,8 +462,12 @@ main:not(.enabled) #chat_widget {
     padding: 0 1rem;
 }
 
-#chat_widget .bubble div.parent {
+#chat_widget .bubble div div.parent {
     margin: 0.25rem 0;
+}
+
+#chat_widget .bubble div + div div.parent {
+    margin-top: 1rem;
 }
 
 #chat_widget div.parent[data-parent-id]:hover {
@@ -470,6 +495,7 @@ main:not(.enabled) #chat_widget {
 #chat_widget .bubble ul.reactions {
     margin-bottom: -0.25rem;
     margin-right: 5rem;
+    display: flex;
 }
 
 #chat_widget .bubble:not(.file) ul.reactions {
@@ -481,7 +507,7 @@ main:not(.enabled) #chat_widget {
 #chat_widget .bubble div span.actions,
 #chat_widget .bubble ul.reactions li {
     list-style-type: none;
-    background-color: rgba(var(--movim-font), 0.1);
+    background-color: rgba(var(--movim-font), 0.05);
     padding: 0 0.5rem;
     border-radius: 0.5rem;
     line-height: 3rem;
@@ -492,9 +518,20 @@ main:not(.enabled) #chat_widget {
     border: solid 1px transparent;
 }
 
+#chat_widget .bubble ul.reactions li {
+    margin-right: 0.5rem;
+}
+
 #chat_widget .bubble > div {
     padding-right: 7rem;
     margin-right: -7rem;
+}
+
+#chat_widget .bubble div span.reaction,
+#chat_widget .bubble div span.reply,
+#chat_widget .bubble div span.actions,
+#chat_widget .bubble ul.reactions li i {
+    font-size: 2rem;
 }
 
 #chat_widget .bubble ul.reactions li i {
@@ -519,11 +556,11 @@ main:not(.enabled) #chat_widget {
     display: inline-flex;
     position: absolute;
     left: 100%;
-    transform: translate(-1.5rem, -0.25rem);
+    transform: translate(-0.75rem, -0.25rem);
 }
 
 #chat_widget li:not(.oppose) .bubble div:hover ul.reactions:empty ~ span.reaction + span.reply {
-    margin-left: 4rem;
+    margin-left: 3.5rem;
 }
 
 #chat_widget li:not(.oppose) .bubble div:hover ul.reactions:not(:empty) ~ span.reply,
@@ -563,7 +600,8 @@ main:not(.enabled) #chat_widget {
     height: 3rem;
     margin: 0;
     padding: 0;
-    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    order: 0;
 }
 
 #chat_widget .bubble ul.reactions:not(:empty) + span.info {

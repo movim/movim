@@ -1,4 +1,8 @@
 <?php
+/*
+ * SPDX-FileCopyrightText: 2010 Jaussoin Timothée
+ * SPDX-License-Identifier: AGPL-3.0-or-later
+ */
 
 namespace Movim;
 
@@ -59,11 +63,20 @@ class Route extends Base
         unset($_GET[$uri]);
         $request = explode('/', $uri);
 
+        /**
+         * For all the pages loaded using soft reload we remove the first element of the
+         * array. This ensure to have a different URL between the normal load and soft load
+         * and therefore prevent the browser to load the wrong page
+         */
+        if ($request[0] == 'soft') {
+            array_shift($request);
+        }
+
         $this->_page = $page ?? array_shift($request);
 
-        if (isset($this->_routes[$this->_page])) {
-            $route = $this->_routes[$this->_page];
-        }
+        $route = isset($this->_routes[$this->_page])
+            ? $this->_routes[$this->_page]
+            : null;
 
         if (count($request)
             && is_array($route)

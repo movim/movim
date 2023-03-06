@@ -2,15 +2,13 @@
 
 .snackbar,
 .toast {
-    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.23), 0px 3px 10px rgba(0, 0, 0, 0.16);
+    box-shadow: var(--elevation-3);
     position: fixed;
     z-index: 4;
     min-height: 6rem;
-    max-height: 10rem;
     width: 48rem;
     height: auto;
     color: white;
-    padding: 2rem 3rem;
     box-sizing: border-box;
     pointer-events: none;
     transition: opacity 0.2s ease, transform 0.4s ease;
@@ -23,39 +21,29 @@ body.nightmode .toast {
     background-color: rgb(var(--movim-background));
 }
 
-.toast,
-.snackbar p {
+.snackbar ul.active {
+    pointer-events: auto;
+}
+
+.toast {
+    padding: 2rem 3rem;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-}
-
-.snackbar > a {
-    pointer-events: auto;
-    margin: -1rem -2rem;
-    display: block;
-    margin: -2rem -1rem;
-    transition: border 0.2s ease;
-    border: 2px solid transparent;
-    padding: calc(2rem - 2px) calc(1rem - 2px);
-}
-
-.snackbar > a:hover {
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    max-height: 10rem;
 }
 
 .snackbar {
     right: 1rem;
-    border-radius: 0.25rem;
+    border-radius: 1rem;
     opacity: 1;
-    padding: 2rem 1rem;
     top: 1rem;
 }
 
 .toast {
     left: calc(50% - 24rem);
     line-height: 2.5rem;
-    border-radius: 0.75rem;
+    border-radius: 1rem;
     bottom: 3rem;
 }
 
@@ -73,11 +61,6 @@ body.nightmode .toast {
     max-height: initial;
 }
 
-.snackbar#status_websocket p {
-    line-height: 2.55rem;
-    white-space: initial;
-}
-
 .snackbar#status_websocket:not(.hide) ~ main,
 .snackbar#status_websocket:not(.hide) ~ div.dialog {
     opacity: 0.5;
@@ -89,12 +72,8 @@ body.nightmode .toast {
     opacity: 0;
 }
 
-.snackbar#status_websocket span.control {
-    right: 0;
-}
-
-.snackbar#status_websocket:not(.connect) span.control:nth-child(1),
-.snackbar#status_websocket.connect span.control:nth-child(2),
+.snackbar#status_websocket:not(.connect) span.primary:nth-child(1),
+.snackbar#status_websocket.connect span.primary:nth-child(2),
 .snackbar#status_websocket:not(.connect) p:nth-child(3),
 .snackbar#status_websocket.connect p:nth-child(4) {
     display: none;

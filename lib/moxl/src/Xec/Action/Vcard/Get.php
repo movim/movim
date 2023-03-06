@@ -30,11 +30,11 @@ class Get extends Action
         Vcard::get($this->_to);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $contact = \App\Contact::firstOrNew(['id' => $this->_to]);
         $contact->set($stanza, $this->_to);
-        $contact->createThumbnails();
+        $contact->saveBinAvatar();
 
         $notify = true;
 
@@ -60,7 +60,7 @@ class Get extends Action
         }
     }
 
-    public function error($error)
+    public function error(string $errorId, ?string $message = null)
     {
         $contact = \App\Contact::firstOrNew(['id' => $this->_to]);
         $contact->avatarrequested = false;

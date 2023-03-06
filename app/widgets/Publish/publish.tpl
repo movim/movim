@@ -25,7 +25,7 @@
                 <span
                     class="primary icon active"
                     {if="$draft->node == 'urn:xmpp:microblog:0'"}
-                        onclick="MovimUtils.redirect('{$c->route('news')}');"
+                        onclick="MovimUtils.reload('{$c->route('news')}');"
                     {else}
                         onclick="history.back();"
                     {/if}

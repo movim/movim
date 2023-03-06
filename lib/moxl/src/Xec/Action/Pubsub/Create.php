@@ -2,10 +2,10 @@
 
 namespace Moxl\Xec\Action\Pubsub;
 
-use Moxl\Xec\Action\Pubsub\Errors;
+use Moxl\Xec\Action;
 use Moxl\Stanza\Pubsub;
 
-class Create extends Errors
+class Create extends Action
 {
     protected $_to;
     protected $_node;
@@ -17,7 +17,7 @@ class Create extends Errors
         Pubsub::create($this->_to, $this->_node, $this->_name);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         if ($stanza["type"] == "result") {
             $this->pack(['server' => $this->_to, 'node' => $this->_node]);
@@ -25,7 +25,7 @@ class Create extends Errors
         }
     }
 
-    public function error($error)
+    public function error(string $errorId, ?string $message = null)
     {
         $this->event('creationerror', $this->_node);
     }

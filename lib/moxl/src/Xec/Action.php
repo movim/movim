@@ -34,5 +34,7 @@ abstract class Action extends Payload
         }
     }
 
+    public function error(string $errorId, ?string $message = null) {}
+
     abstract public function request();
 }

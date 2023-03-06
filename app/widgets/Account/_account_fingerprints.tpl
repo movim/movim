@@ -9,15 +9,15 @@
             </li>
             {loop="$fingerprints"}
                 <li>
-                    <span class="control icon {if="$value->self"}green{elseif="$value->built"}blue{else}gray{/if}">
+                    <span class="primary icon {if="$value->self"}green{elseif="$value->built"}blue{else}gray{/if}">
                         <i class="material-icons">fingerprint</i>
                     </span>
                     {if="!$value->self"}
-                        <span class="control active icon gray divided" onclick="Account_ajaxDeleteBundleConfirm({$value->bundleid})">
+                        <span class="control active icon gray" onclick="Account_ajaxDeleteBundleConfirm({$value->bundleid})">
                             <i class="material-icons">delete</i>
                         </span>
                     {/if}
-                    <span class="primary">
+                    <span class="control">
                         <div class="checkbox">
                             <input
                                 type="checkbox"

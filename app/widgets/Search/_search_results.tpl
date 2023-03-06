@@ -5,14 +5,14 @@
 {/if}
 
 {if="isset($tags) && $tags->isNotEmpty()"}
-<ul class="list active flex">
+<ul class="list active flex large">
     <li class="subheader block large">
         <div>
             <p>{$c->__('search.tags')}</p>
         </div>
     </li>
     {loop="$tags"}
-        <li class="block" onclick="MovimUtils.redirect('{$c->route('tag', $value)}')">
+        <li class="block" onclick="MovimUtils.reload('{$c->route('tag', $value)}'); Drawer.clear();">
             <span class="primary icon gray">
                 #
             </span>
@@ -40,7 +40,7 @@
     </li>
     {loop="$communities"}
     <li
-        onclick="MovimUtils.redirect('{$c->route('community', [$value->server, $value->node])}')"
+        onclick="MovimUtils.reload('{$c->route('community', [$value->server, $value->node])}'); Drawer.clear();"
         title="{$value->server} - {$value->node}"
     >
             {$url = $value->getPhoto('m')}

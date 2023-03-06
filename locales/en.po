@@ -114,16 +114,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-04 14:11+0200\n"
-"PO-Revision-Date: 2022-02-17 07:57+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"POT-Creation-Date: 2022-12-25 14:45+0200\n"
+"PO-Revision-Date: 2015-06-24 09:45+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: English (http://www.transifex.com/movim/movim/language/en/)\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.4.1\n"
+"X-Generator: Translate Toolkit 3.7.4\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -163,7 +163,7 @@ msgstr "Account"
 
 #: [account]account_management
 msgid "Account management"
-msgstr ""
+msgstr "Account management"
 
 #: [account]password_change_title
 msgid "Change my password"
@@ -223,11 +223,11 @@ msgstr "This action will not delete your account but will disconnect you from th
 
 #: [account]delete_bundle_title
 msgid "OMEMO Key deletion"
-msgstr ""
+msgstr "OMEMO Key deletion"
 
 #: [account]delete_bundle_text
 msgid "Your are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
-msgstr ""
+msgstr "Your are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
@@ -412,21 +412,20 @@ msgid "Access Tenor and get your API key"
 msgstr "Access Tenor and get your API key"
 
 #: [twitter]title
-#, fuzzy
 msgid "Twitter integration"
-msgstr "Tenor integration"
+msgstr "Twitter integration"
 
 #: [twitter]label
 msgid "Your Twitter Token"
-msgstr ""
+msgstr "Your Twitter Token"
 
 #: [twitter]info1
 msgid "The Twitter integration allow Movim to embed and extract the Tweets shared on the instance"
-msgstr ""
+msgstr "The Twitter integration allow Movim to embed and extract the Tweets shared on the instance"
 
 #: [twitter]info2
 msgid "Generate your Token on the Developer Twitter website"
-msgstr ""
+msgstr "Generate your Token on the Developer Twitter website"
 
 #: [log]empty
 msgid "Empty"
@@ -441,17 +440,16 @@ msgid "Syslog and files"
 msgstr "Syslog and files"
 
 #: [adminreported]reported_by
-#, fuzzy
 msgid "Reported by %s users"
-msgstr "Report abuse"
+msgstr "Reported by %s users"
 
 #: [adminreported]info
 msgid "Those accounts were reported by some Movim users"
-msgstr ""
+msgstr "Those accounts were reported by some Movim users"
 
 #: [adminreported]info2
 msgid "You can choose to block them for all the other users"
-msgstr ""
+msgstr "You can choose to block them for all the other users"
 
 #: [adminsessions]title
 msgid "Sessions"
@@ -464,22 +462,6 @@ msgstr "Currently connected users on the pod"
 #: [avatar]file
 msgid "File"
 msgstr "File"
-
-#: [avatar]use_it
-msgid "Use it"
-msgstr "Use it"
-
-#: [avatar]webcam
-msgid "Webcam"
-msgstr "Webcam"
-
-#: [avatar]cheese
-msgid "Cheese!"
-msgstr "Cheese!"
-
-#: [avatar]snapshot
-msgid "Take a webcam snapshot"
-msgstr "Take a webcam snapshot"
 
 #: [avatar]updated
 msgid "Avatar Updated"
@@ -501,41 +483,53 @@ msgstr "Change my avatar"
 msgid "Upload a new picture"
 msgstr "Upload a new picture"
 
+#: [banner]change
+msgid "Change my banner"
+msgstr "Change my banner"
+
+#: [banner]updated
+msgid "Banner Updated"
+msgstr "Banner Updated"
+
+#: [banner]not_updated
+msgid "Banner Not Updated"
+msgstr "Banner Not Updated"
+
+#: [banner]missing
+msgid "No banner defined yet"
+msgstr "No banner defined yet"
+
 #: [blocked]title
-#, fuzzy
 msgid "Blocked"
-msgstr "shocked"
+msgstr "Blocked"
 
 #: [blocked]block_account
-#, fuzzy
 msgid "Block the account"
-msgstr "Other Accounts"
+msgstr "Block the account"
 
 #: [blocked]unblock_account
-#, fuzzy
 msgid "Unblock the account"
-msgstr "Other Accounts"
+msgstr "Unblock the account"
 
 #: [blocked]account_blocked
-#, fuzzy
 msgid "Account blocked"
-msgstr "Account"
+msgstr "Account blocked"
 
 #: [blocked]account_unblocked
 msgid "Account unblocked"
-msgstr ""
+msgstr "Account unblocked"
 
 #: [blocked]placeholder
 msgid "You will find here the users you have blocked"
-msgstr ""
+msgstr "You will find here the users you have blocked"
 
 #: [blocked]info
 msgid "The following users are blocked by Movim and cannot contact you anymore"
-msgstr ""
+msgstr "The following users are blocked by Movim and cannot contact you anymore"
 
 #: [blocked]info2
 msgid "The administrator is also aware of this list and can therefore block those users system wide"
-msgstr ""
+msgstr "The administrator is also aware of this list and can therefore block those users system wide"
 
 #: [blog]title [feed]title
 msgid "%s’s feed"
@@ -559,7 +553,7 @@ msgstr "Retract"
 
 #: [message]retract_body
 msgid "Your contact attempted to retract a previous message, but it's unsupported by your client"
-msgstr ""
+msgstr "Your contact attempted to retract a previous message, but it's unsupported by your client"
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
@@ -578,9 +572,8 @@ msgid "Composing…"
 msgstr "Composing…"
 
 #: [message]invitation
-#, fuzzy
 msgid "Invitation"
-msgstr "Invitation sent"
+msgstr "Invitation"
 
 #: [message]paused
 msgid "Paused…"
@@ -635,9 +628,8 @@ msgid "You received an invitation to join a chatroom"
 msgstr "You received an invitation to join a chatroom"
 
 #: [chat]invitation_self
-#, fuzzy
 msgid "You sent an invitation to join a chatroom"
-msgstr "You received an invitation to join a chatroom"
+msgstr "You sent an invitation to join a chatroom"
 
 #: [chat]invitation_join
 msgid "Join %s"
@@ -665,13 +657,24 @@ msgid "Incoming call"
 msgstr "Incoming call"
 
 #: [chat]jingle_outgoing
-#, fuzzy
 msgid "Outgoing call"
-msgstr "in call"
+msgstr "Outgoing call"
 
 #: [chat]jingle_end
 msgid "Call ended"
 msgstr "Call ended"
+
+#: [chat]jingle_hours
+msgid "%s hours %s minutes"
+msgstr "%s hours %s minutes"
+
+#: [chat]jingle_minutes
+msgid "%s minutes and %s seconds"
+msgstr "%s minutes and %s seconds"
+
+#: [chat]jingle_seconds
+msgid "%s seconds"
+msgstr "%s seconds"
 
 #: [chat]publish_error
 msgid "An error occured when sending the message"
@@ -1017,16 +1020,15 @@ msgstr "Are you sure?"
 
 #: [communityposts]empty_me_text
 msgid "No publication yet? Write your first post to make people discover your profile"
-msgstr ""
+msgstr "No publication yet? Write your first post to make people discover your profile"
 
 #: [communityposts]empty_me_button
-#, fuzzy
 msgid "Publish my first post"
-msgstr "Public URL of this post"
+msgstr "Publish my first post"
 
 #: [communitysubscriptions]subscriptions
-msgid "My Subscriptions"
-msgstr "My Subscriptions"
+msgid "Subscribed Communities"
+msgstr "Subscribed Communities"
 
 #: [communitysubscriptions]empty_title
 msgid "Hello"
@@ -1274,7 +1276,7 @@ msgstr "Last public post"
 
 #: [blog]visit
 msgid "Visit the public blog"
-msgstr ""
+msgstr "Visit the public blog"
 
 #: [subscription]to
 msgid "You can see this contact status"
@@ -1381,32 +1383,28 @@ msgid "Add the chatroom"
 msgstr "Add the chatroom"
 
 #: [location]title
-#, fuzzy
 msgid "My location"
-msgstr "My publications"
+msgstr "My location"
 
 #: [location]enabled_title
-#, fuzzy
 msgid "Currently shared with my contacts"
-msgstr "Post shared with your contact"
+msgstr "Currently shared with my contacts"
 
 #: [location]disabled_title
-#, fuzzy
 msgid "Currently disabled"
-msgstr "Comments disabled"
+msgstr "Currently disabled"
 
 #: [location]last_published
-#, fuzzy
 msgid "My last published location"
-msgstr "My publications"
+msgstr "My last published location"
 
 #: [location]less_than_one_km
 msgid "Less than a km away"
-msgstr ""
+msgstr "Less than a km away"
 
 #: [location]n_km_away
 msgid "%s km away"
-msgstr ""
+msgstr "%s km away"
 
 #: [error]username
 msgid "Wrong username"
@@ -1516,6 +1514,14 @@ msgstr "%s invited you to join a chatroom"
 msgid "Administrated by"
 msgstr "Administrated by"
 
+#: [about_movim]info
+msgid "Movim is a federated blogging and chat platform."
+msgstr "Movim is a federated blogging and chat platform."
+
+#: [about_movim]website
+msgid "Visit the project official website %s."
+msgstr "Visit the project official website %s."
+
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
 msgstr "Bad nickname (between 4 and 40 characters)"
@@ -1545,31 +1551,28 @@ msgid "Write a new post…"
 msgstr "Write a new post…"
 
 #: [notification]request_title
-#, fuzzy
 msgid "Notifications request"
-msgstr "Notifications"
+msgstr "Notifications request"
 
 #: [notification]request_info
 msgid "Movim requires your approval to display notifications"
-msgstr ""
+msgstr "Movim requires your approval to display notifications"
 
 #: [notification]request_info2
 msgid "This authorization can be revoked at any time"
-msgstr ""
+msgstr "This authorization can be revoked at any time"
 
 #: [notification]request_button
 msgid "Request"
-msgstr ""
+msgstr "Request"
 
 #: [notification]request_granted
-#, fuzzy
 msgid "Authorization granted"
-msgstr "Authentication code"
+msgstr "Authorization granted"
 
 #: [notification]request_refused
-#, fuzzy
 msgid "Authorization refused"
-msgstr "Authentication code"
+msgstr "Authorization refused"
 
 #: [notificationconfig]title [notifs]title [onboarding]notifications_title
 #: [room]notify_title
@@ -1585,33 +1588,28 @@ msgid "Incoming message"
 msgstr "Incoming message"
 
 #: [notificationconfig]push_subscriptions
-#, fuzzy
 msgid "Push notifications"
-msgstr "Audio notifications"
+msgstr "Push notifications"
 
 #: [notificationconfig]push_subscriptions_text
-#, fuzzy
 msgid "Movim will send push notifications to the following registered devices"
-msgstr "Movim can send Push Notifications to the Movim Android app using Firebase"
+msgstr "Movim will send push notifications to the following registered devices"
 
 #: [notificationconfig]push_enabled
 msgid "Push notifications enabled for this device"
-msgstr ""
+msgstr "Push notifications enabled for this device"
 
 #: [notificationconfig]push_disabled
-#, fuzzy
 msgid "Push notifications disabled for this device"
-msgstr "The subscriptions are disabled for this community"
+msgstr "Push notifications disabled for this device"
 
 #: [notificationconfig]unknown_browser
-#, fuzzy
 msgid "Unknown browser"
-msgstr "Unknown error"
+msgstr "Unknown browser"
 
 #: [notificationconfig]unknown_platform
-#, fuzzy
 msgid "Unknown platform"
-msgstr "Unknown error"
+msgstr "Unknown platform"
 
 #: [invitations]title
 msgid "Pending Invitations"
@@ -1891,7 +1889,11 @@ msgstr "Rich text editor"
 
 #: [publish]help_hashtag
 msgid "Add #hashtags in your title or content to allow your article to be discovered"
-msgstr ""
+msgstr "Add #hashtags in your title or content to allow your article to be discovered"
+
+#: [publish]publish_error_forbidden
+msgid "You are not authorized to publish there"
+msgstr "You are not authorized to publish there"
 
 #: [publishhelp]title [page]help
 msgid "Help"
@@ -2131,12 +2133,11 @@ msgstr "The participants of this chatroom can see each other's profile"
 
 #: [room]archived
 msgid "Archived"
-msgstr ""
+msgstr "Archived"
 
 #: [room]archived_text
-#, fuzzy
 msgid "The chatroom messages are archived"
-msgstr "%s messages retrieved"
+msgstr "The chatroom messages are archived"
 
 #: [room]group_chat
 msgid "Group Chat"
@@ -2289,6 +2290,10 @@ msgstr "Show all the contacts"
 #: [sendto]attach
 msgid "Attach to a blog publication"
 msgstr "Attach to a blog publication"
+
+#: [sendto]share
+msgid "Share in a new publication"
+msgstr "Share in a new publication"
 
 #: [sendto]contact
 msgid "Send it to a contact"
@@ -2504,45 +2509,43 @@ msgstr "call ended"
 
 #: [visioconfig]title
 msgid "Video & Voice"
-msgstr ""
+msgstr "Video & Voice"
 
 #: [visioconfig]help
 msgid "Configure the default devices used by Movim"
-msgstr ""
+msgstr "Configure the default devices used by Movim"
 
 #: [visioconfig]microphone
 msgid "Microphone"
-msgstr ""
+msgstr "Microphone"
 
 #: [visioconfig]microphone_label
 msgid "Default microphone"
-msgstr ""
+msgstr "Default microphone"
 
 #: [visioconfig]camera
 msgid "Camera"
-msgstr ""
+msgstr "Camera"
 
 #: [visioconfig]camera_label
-#, fuzzy
 msgid "Default camera"
-msgstr "Default language"
+msgstr "Default camera"
 
 #: [visioconfig]default_microphone_changed
 msgid "Default microphone changed"
-msgstr ""
+msgstr "Default microphone changed"
 
 #: [visioconfig]default_camera_changed
-#, fuzzy
 msgid "Default camera changed"
-msgstr "Default language"
+msgstr "Default camera changed"
 
 #: [visioconfig]no_mic_sound
 msgid "No sound detected from your microphone"
-msgstr ""
+msgstr "No sound detected from your microphone"
 
 #: [visioconfig]no_mic_sound2
 msgid "Try to select another source or check your system settings"
-msgstr ""
+msgstr "Try to select another source or check your system settings"
 
 #: [global]no_js
 msgid "Movim requires Javascript to be enabled to work properly."
@@ -2832,7 +2835,7 @@ msgstr "Optional"
 
 #: [input]muc_pubsub_node
 msgid "Associated Community"
-msgstr ""
+msgstr "Associated Community"
 
 #: [day]title
 msgid "Day"
@@ -3441,69 +3444,3 @@ msgstr "The API is not reachable, try again later"
 #: [field]type_here
 msgid "Type here"
 msgstr "Type here"
-
-#~ msgid "General Overview"
-#~ msgstr "General Overview"
-
-#~ msgid "Read and write rights for the webserver in Movim’s %s directory"
-#~ msgstr "Read and write rights for the webserver in Movim’s %s directory"
-
-#~ msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
-#~ msgstr "WebSocket connection error, check if the Movim Daemon is running and is reachable"
-
-#~ msgid "Browser"
-#~ msgstr "Browser"
-
-#~ msgid "Movim Core"
-#~ msgstr "Movim Core"
-
-#~ msgid "Movim Daemon"
-#~ msgstr "Movim Daemon"
-
-#~ msgid "Database"
-#~ msgstr "Database"
-
-#~ msgid "XMPP"
-#~ msgstr "XMPP"
-
-#~ msgid "Here you can register your pod on the official %sMovim API%s"
-#~ msgstr "Here you can register your pod on the official %sMovim API%s"
-
-#~ msgid "Your pod is not registered on the API"
-#~ msgstr "Your pod is not registered on the API"
-
-#~ msgid "Your pod is registered on the API"
-#~ msgstr "Your pod is registered on the API"
-
-#~ msgid "Your pod is not yet validated"
-#~ msgstr "Your pod is not yet validated"
-
-#~ msgid "Your pod is validated"
-#~ msgstr "Your pod is validated"
-
-#~ msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
-#~ msgstr "You asked to be removed from the API, this request will be processed in a couple of hours"
-
-#~ msgid "Call started"
-#~ msgstr "Call started"
-
-#~ msgid "Archiving preferences"
-#~ msgstr "Archiving preferences"
-
-#~ msgid "Visit the blog to see all the public posts"
-#~ msgstr "Visit the blog to see all the public posts"
-
-#~ msgid "Statistics"
-#~ msgstr "Statistics"
-
-#~ msgid "Firebase Integration"
-#~ msgstr "Firebase Integration"
-
-#~ msgid "Your Firebase Authorization Key"
-#~ msgstr "Your Firebase Authorization Key"
-
-#~ msgid "Go to the Firebase panel to configure and generate your Authorization key"
-#~ msgstr "Go to the Firebase panel to configure and generate your Authorization key"
-
-#~ msgid "Status updated"
-#~ msgstr "Status updated"

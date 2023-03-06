@@ -1,11 +1,14 @@
 <?php
+/*
+ * SPDX-FileCopyrightText: 2010 Jaussoin Timothée
+ * SPDX-License-Identifier: AGPL-3.0-or-later
+ */
 
 namespace Movim\Daemon;
 
 use Movim\Bootstrap;
 
 use Psr\Http\Message\ServerRequestInterface;
-use React\EventLoop\LoopInterface;
 
 use React\Http\HttpServer;
 use React\Http\Message\Response;
@@ -45,6 +48,10 @@ class Api
                 case 'session':
                     $response = $api->getSession();
                     break;
+
+                case 'purifyhtml':
+                    $response = $api->purifyHtml($request->getParsedBody());
+                    break;
             }
 
             return new Response(
@@ -55,9 +62,7 @@ class Api
         };
 
         $server = new HttpServer($handler);
-        $server->on('error', function (\Throwable $e) {
-            (new Bootstrap)->exceptionHandler($e);
-        });
+        $server->on('error', fn (\Throwable $e) => (new Bootstrap)->exceptionHandler($e));
         $server->listen($socket);
     }
 
@@ -77,6 +82,11 @@ class Api
 
         return (array_key_exists($sid, $sessions)
         && $sessions[$sid] == true);
+    }
+
+    public function purifyHtml($post)
+    {
+        return purifyHTML(html_entity_decode($post['content']));
     }
 
     public function sessionsLinked()

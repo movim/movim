@@ -16,10 +16,10 @@ class Start extends Action
         Stream::sessionStart($this->_to);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $session = Session::start();
-        $session->remove('password');
+        $session->delete('password');
 
         $session = \App\User::me()->session;
         $session->active = true;

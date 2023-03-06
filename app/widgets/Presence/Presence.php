@@ -12,7 +12,6 @@ use Moxl\Xec\Action\PubsubSubscription\Get as GetPubsubSubscriptions;
 use Moxl\Stanza\Stream;
 
 use Movim\Daemon\Session;
-use Movim\Session as MovimSession;
 
 use App\BundleCapabilityResolver;
 
@@ -48,7 +47,7 @@ class Presence extends Base
 
     public function start()
     {
-        $this->rpc('Notification.inhibit', 15);
+        $this->rpc('Notif.inhibit', 15);
 
         // Load the BundleCapabilityResolved
         BundleCapabilityResolver::getInstance()->load();

@@ -7,7 +7,7 @@ use Movim\ChatStates;
 
 class Message extends Payload
 {
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         if ($stanza->confirm
         && $stanza->confirm->attributes()->xmlns == 'http://jabber.org/protocol/http-auth') {
@@ -57,7 +57,7 @@ class Message extends Payload
             $message->save();
             $message = $message->fresh();
 
-            if ($message->bundleid) {
+            if ($message && $message->bundleid) {
                 BundleCapabilityResolver::getInstance()->resolve($message);
             }
 

@@ -66,7 +66,6 @@ class Utils
             //'http://jabber.org/protocol/mood+notify',
             'http://jabber.org/protocol/xhtml-im',
             'http://jabber.org/protocol/chatstates',
-            'http://jabber.org/protocol/commands',
             'http://jabber.org/protocol/caps',
             'http://jabber.org/protocol/disco#info',
             'http://jabber.org/protocol/disco#items',
@@ -91,7 +90,7 @@ class Utils
             $s = $s.$sup.'<';
         }
 
-        return base64_encode(sha1(utf8_encode($s), true));
+        return base64_encode(sha1(mb_convert_encoding($s, 'UTF-8', 'ISO-8859-1'), true));
     }
 
     // XEP-0106: JID Escaping

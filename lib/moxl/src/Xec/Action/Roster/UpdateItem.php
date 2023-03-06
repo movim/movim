@@ -18,7 +18,7 @@ class UpdateItem extends Action
         Roster::update($this->_to, $this->_name, $this->_group);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $roster = \App\Roster::firstOrNew(['jid' => $this->_to]);
         $roster->name = $this->_name;

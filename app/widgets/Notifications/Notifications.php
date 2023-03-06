@@ -47,7 +47,7 @@ class Notifications extends Base
         if (is_string($from)) {
             $contact = App\Contact::firstOrNew(['id' => $from]);
 
-            Notification::append(
+            Notif::append(
                 'invite|'.$from,
                 $contact->truename,
                 $this->__('invitations.wants_to_talk', $contact->truename),
@@ -64,7 +64,7 @@ class Notifications extends Base
         Drawer::fill($this->prepareNotifications());
         \App\Cache::c('notifs_since', date(MOVIM_SQL_DATE));
         $this->ajaxSetCounter();
-        (new Notification)->ajaxClear('comments');
+        (new Notif)->ajaxClear('comments');
     }
 
     public function ajaxSetCounter()
@@ -116,7 +116,7 @@ class Notifications extends Base
         unset($notifs[$jid]);
 
         $session->set('activenotifs', $notifs);
-        $n = new Notification;
+        $n = new Notif;
         $n->ajaxClear('invite|'.$jid);
 
         Drawer::fill($this->prepareNotifications());
@@ -144,7 +144,7 @@ class Notifications extends Base
 
         $session->set('activenotifs', $notifs);
 
-        $n = new Notification;
+        $n = new Notif;
         $n->ajaxClear('invite|'.$jid);
 
         Drawer::fill($this->prepareNotifications());

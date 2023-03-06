@@ -1,6 +1,7 @@
 <?php
 
 use App\MessageFile;
+use Movim\Template\Partial;
 use Movim\Widget\Base;
 
 class SendTo extends Base
@@ -8,9 +9,48 @@ class SendTo extends Base
     public function load()
     {
         $this->addcss('sendto.css');
+        $this->addjs('sendto.js');
     }
 
-    public function ajaxSendSearch($link)
+    public function ajaxOsShare(int $postId)
+    {
+        $post = \App\Post::where('id', $postId)->first();
+
+        if ($post && $post->openlink) {
+            $shared = new stdClass;
+            $shared->title = $post->title;
+            $shared->url = $post->openlink->href;
+            $shared->text = $post->getSummary();
+
+            $this->rpc('SendTo.shareOs', $shared);
+        }
+    }
+
+    public function ajaxShareArticle($link, $osShare = false)
+    {
+        $view = $this->tpl();
+
+        $uri = explodeXMPPURI($link);
+
+        $view->assign('post', null);
+        $view->assign('card', null);
+        $view->assign('openlink', false);
+        $view->assign('osshare', $osShare);
+
+        $this->resolveUriInView($uri, $view);
+
+        $view->assign('subscriptions', $this->user->subscriptions()
+            ->notComments()
+            ->orderBy('server')->orderBy('node')
+            ->get());
+
+        $contact = $this->user->contact;
+        $view->assign('me', ($contact == null) ? new App\Contact : $contact);
+
+        Drawer::fill($view->draw('_sendto_article'));
+    }
+
+    public function ajaxSendContact($link)
     {
         $view = $this->tpl();
 
@@ -20,21 +60,7 @@ class SendTo extends Base
         $view->assign('card', null);
         $view->assign('openlink', false);
 
-        switch ($uri['type']) {
-            case 'post':
-                $post = \App\Post::where('server', $uri['params'][0])
-                    ->where('node',  $uri['params'][1])
-                    ->where('nodeid',  $uri['params'][2])
-                    ->first();
-
-                if ($post) {
-                    $p = new Post;
-                    $view->assign('post', $post);
-                    $view->assign('openlink', $post->openlink ? $post->openlink->href : false);
-                    $view->assign('card', $p->prepareTicket($post));
-                }
-                break;
-        }
+        $this->resolveUriInView($uri, $view);
 
         $view->assign('uri', $link);
         $conferences = $this->user->session->conferences()
@@ -80,7 +106,7 @@ class SendTo extends Base
     public function ajaxGetMoreContacts(string $uri)
     {
         $contacts = $this->user->session->topContacts()->with('presence')->get();
-        $this->rpc('MovimTpl.fill', '#sendto_contacts', $this->prepareContacts($contacts, $uri, ''));
+        $this->rpc('MovimTpl.fill', '#sendto_share_contacts', $this->prepareContacts($contacts, $uri, ''));
     }
 
     public function prepareContacts($contacts, string $uri, $openlink)
@@ -90,6 +116,25 @@ class SendTo extends Base
         $view->assign('contacts', $contacts);
         $view->assign('openlink', $openlink);
 
-        return $view->draw('_sendto_contacts');
+        return $view->draw('_sendto_share_contacts');
+    }
+
+    private function resolveUriInView(array $uri, Partial &$view)
+    {
+        switch ($uri['type']) {
+            case 'post':
+                $post = \App\Post::where('server', $uri['params'][0])
+                    ->where('node',  $uri['params'][1])
+                    ->where('nodeid',  $uri['params'][2])
+                    ->first();
+
+                if ($post) {
+                    $p = new Post;
+                    $view->assign('post', $post);
+                    $view->assign('openlink', $post->openlink ? $post->openlink->href : false);
+                    $view->assign('card', $p->prepareTicket($post));
+                }
+                break;
+        }
     }
 }

@@ -29,7 +29,7 @@
                 <span class="control icon red active" title="{$c->__('button.refuse')}" onclick="Notifications_ajaxRefuse('{$value->jid|echapJS}');">
                     <i class="material-icons">close</i>
                 </span>
-                <span class="control icon gray active" onclick="MovimUtils.redirect('{$c->route('contact', $value->jid)}')">
+                <span class="control icon gray active" onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}')">
                     <i class="material-icons">person</i>
                 </span>
                 <div>
@@ -95,13 +95,13 @@
                     {/if}
 
                     <div>
-                        <p class="line" onclick="MovimUtils.redirect('{$c->route('post', [$parent->server, $parent->node, $parent->nodeid])}')">
+                        <p class="line" onclick="MovimUtils.reload('{$c->route('post', [$parent->server, $parent->node, $parent->nodeid])}')">
                             {$value->truename}
                             <span class="second">
                                 {$parent->title}
                             </span>
                         </p>
-                        <p class="line" onclick="MovimUtils.redirect('{$c->route('post', [$parent->server, $parent->node, $parent->nodeid])}')">
+                        <p class="line" onclick="MovimUtils.reload('{$c->route('post', [$parent->server, $parent->node, $parent->nodeid])}')">
                             <span class="info">{$value->published|strtotime|prepareDate:true,true}</span>
                             {if="!$value->isLike()"}
                                 {$c->__('post.commented')}<span class="second">{$value->title}</span>

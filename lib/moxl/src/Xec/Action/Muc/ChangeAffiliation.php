@@ -29,13 +29,13 @@ class ChangeAffiliation extends Action
         return $this;
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $this->pack($this->_affiliation);
         $this->deliver();
     }
 
-    public function errorNotAllowed($stanza)
+    public function errorNotAllowed(string $errorId, ?string $message = null)
     {
         $this->deliver();
     }

@@ -18,7 +18,7 @@ MovimWebsocket.register(function()
 });
 
 MovimWebsocket.attach(function() {
-    Notification.current('accountnext');
+    Notif.current('accountnext');
 
     var domain = MovimUtils.urlParts().params[0];
     MovimWebsocket.connection.register(domain);

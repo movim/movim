@@ -1,18 +1,21 @@
 <?php
+/*
+ * SPDX-FileCopyrightText: 2010 Jaussoin Timothée
+ * SPDX-License-Identifier: AGPL-3.0-or-later
+ */
 
 namespace Movim\Daemon;
 
-use App\Cache;
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
-use Symfony\Component\Console\Input\InputInterface;
+
 use Dflydev\FigCookies\Cookies;
 
 use Movim\Daemon\Session;
 
 use App\Session as DBSession;
 use App\EncryptedPassword;
-
+use App\PushSubscription;
 use Minishlink\WebPush\VAPID;
 
 class Core implements MessageComponentInterface
@@ -81,6 +84,15 @@ class Core implements MessageComponentInterface
     proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
     proxy_set_header X-Forwarded-Proto https;
     proxy_redirect off;
+}
+";
+
+        echo
+            "\n".
+            "--- ".colorize("Server Configuration - Caddy", 'purple')." ---".
+            "\n";
+            echo colorize("Add this in your configuration file", 'yellow')."\nhandle /ws/* {
+    reverse_proxy localhost:8080
 }
 
 ";
@@ -169,6 +181,8 @@ class Core implements MessageComponentInterface
                 unset($this->sessions[$sid]);
             }
         }
+
+        gc_collect_cycles();
     }
 
     public function forceClose($sid)
@@ -195,6 +209,7 @@ class Core implements MessageComponentInterface
 
             $this->cleanupDBSessions();
             $this->cleanupEncryptedPasswords();
+            $this->cleanupPushSubscriptions();
         });
     }
 
@@ -205,9 +220,20 @@ class Core implements MessageComponentInterface
             ->delete();
     }
 
+    /**
+     * @desc Delete push subscriptions without activity after a month
+     */
+    private function cleanupPushSubscriptions()
+    {
+        PushSubscription::where('activity_at', '<', date(MOVIM_SQL_DATE, time()-(60*60*24*30)))
+            ->delete();
+    }
+
+    /**
+     * @desc Delete encrypted passwords after 7 days without update
+     */
     private function cleanupEncryptedPasswords()
     {
-        // Delete encrypted passwords after 7 days without update
         EncryptedPassword::where('updated_at', '<', date(MOVIM_SQL_DATE, time()-(60*60*24*7)))
             ->delete();
     }
@@ -220,9 +246,7 @@ class Core implements MessageComponentInterface
     public function getSessions()
     {
         return array_map(
-            function ($session) {
-                return $session->started;
-            },
+            fn ($session) => $session->started,
             $this->sessions
         );
     }

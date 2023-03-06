@@ -45,6 +45,11 @@ class Conference extends Model
                     ->orderBy('resource');
     }
 
+    public function otherPresences()
+    {
+        return $this->presences()->where('mucjid', '!=', \App\User::me()->id);
+    }
+
     public function unreads()
     {
         return $this->hasMany('App\Message', 'jidfrom', 'conference')
@@ -110,12 +115,16 @@ class Conference extends Model
     public function info()
     {
         return $this->hasOne('App\Info', 'server', 'conference')
-                    ->where('node', function ($query) {
-                        $query->select('node')
-                              ->from('presences')
-                              ->whereColumn('jid', 'infos.server')
-                              ->where('resource', '')
-                              ->take(1);
+                    ->where(function ($query) {
+                        $query->where('node', function ($query) {
+                            $query->select('node')
+                                ->from('presences')
+                                ->where('session_id', \App\User::me()->session->id)
+                                ->whereColumn('jid', 'infos.server')
+                                ->where('resource', '')
+                                ->take(1);
+                        })
+                        ->orWhere('node', '');
                     })
                     ->whereCategory('conference')
                     ->whereType('text');

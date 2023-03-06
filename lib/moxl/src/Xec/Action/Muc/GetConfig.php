@@ -15,7 +15,7 @@ class GetConfig extends Action
         Muc::getConfig($this->_to);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $this->pack(['config' => $stanza->query, 'room' => $this->_to]);
         $this->deliver();

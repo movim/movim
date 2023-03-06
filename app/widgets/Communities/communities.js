@@ -6,7 +6,7 @@ var Communities = {
 }
 
 MovimWebsocket.attach(function() {
-    Notification.current('community');
+    Notif.current('community');
 });
 
 MovimWebsocket.initiate(() => Communities_ajaxHttpGetAll());

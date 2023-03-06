@@ -136,4 +136,7 @@ var Rooms = {
     }
 }
 
-MovimWebsocket.initiate(() => Rooms_ajaxHttpGet());
+MovimWebsocket.initiate(() => {
+    Rooms_ajaxHttpGet()
+    Rooms.checkNoConnected();
+});

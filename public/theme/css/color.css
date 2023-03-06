@@ -87,6 +87,7 @@ body > nav > ul.list.active li:not(.active):hover:before {
 ul li.date > div > p.normal,
 .dialog, .drawer, ul.context_menu,
 ul li div.bubble:not(.sticker):not(.file),
+ul li div.bubble.file div.audio_player,
 .card > .block:not(.subheader):not(.simple),
 ul.list.actions p,
 main {
@@ -142,11 +143,17 @@ ul li.action > form > div.action,
 span.icon:not(.composing).status.dnd:after,
 .color.red      { color: white; background-color: var(--movim-red); border-color: var(--movim-red) }
 span.icon:not(.composing).status.xa:after,
+.color.slack,
+.color.discord,
 .color.purple   { color: white; background-color: #9C27B0; border-color: #9C27B0 }
+.color.signal,
+.color.mattermost,
 .color.indigo   { color: white; background-color: #3F51B5; border-color: #3F51B5 }
+.color.facebook,
 .color.blue     { color: white; background-color: #2196F3; border-color: #2196F3 }
 span.icon:not(.composing).status.chat:after,
 span.icon:not(.composing).status.online:after,
+.color.xmpp,
 .color.green    { color: white; background-color: #689F38; border-color: #689F38 }
 .color.orange   { color: white; background-color: #FF9800; border-color: #FF9800 }
 span.icon:not(.composing).status.away:after,
@@ -156,12 +163,17 @@ span.icon:not(.composing).status.server_error:after,
 .color.gray     { color: white; background-color: #9E9E9E; border-color: #9E9E9E }
 .color.black    { color: white; background-color: #000000; border-color: #000000 }
 .color.lime     { color: white; background-color: #CDDC39; border-color: #CDDC39 }
+.color.telegram,
 .color.cyan     { color: white; background-color: #00bcd4; border-color: #00bcd4 }
+.color.whatsapp,
 .color.teal     { color: white; background-color: #009688; border-color: #009688 }
 .color.pink     { color: white; background-color: #e91e63; border-color: #e91e63 }
+.color.hackernews,
 .color.dorange  { color: white; background-color: #ff5722; border-color: #ff5722 }
+.color.skype,
 .color.lblue    { color: white; background-color: #03a9f4; border-color: #03a9f4 }
 .color.amber    { color: white; background-color: #ffc107; border-color: #ffc107 }
+.color.steam,
 .color.bgray    { color: white; background-color: #607d8b; border-color: #607d8b }
 
 .color.transparent { color: white; background-color: rgba(0, 0, 0, 0); }
@@ -196,7 +208,7 @@ body:not(.nightmode) header.fixed ul.list li > div > p:nth-last-of-type(3) + p:n
 body:not(.nightmode) header.fixed ul.list li > div > p:nth-last-of-type(2) + p:not(.normal):not(.main),
 body:not(.nightmode) header.big ul.list li > div > p:nth-last-of-type(3) + p:not(.normal):not(.main),
 body:not(.nightmode) header.big ul.list li > div > p:nth-last-of-type(2) + p:not(.normal):not(.main),
-body:not(.nightmode) div#snackbar ul.list li > div > p:nth-last-of-type(2) + p:not(.normal):not(.main) {
+body:not(.nightmode) div.snackbar ul.list li > div > p:nth-last-of-type(2) + p:not(.normal):not(.main) {
     color: rgba(var(--movim-background-main), 0.80);
 }
 
@@ -211,8 +223,6 @@ main > header {
     border-color: rgb(var(--movim-accent));
 }
 
-.snackbar ul.list li > div > p,
-.snackbar ul.list li > div > p:nth-last-of-type(2) + p,
 main > header ul.list li > div > p:nth-last-of-type(2) + p {
     color: white;
 }
@@ -228,7 +238,7 @@ a {
 }
 
 form > div .checkbox:before { background-color: rgba(var(--movim-main), 0.5); }
-form > div .checkbox > input[type="checkbox"]:checked + label { background-color: rgb(var(--movim-main)); }
+/*form > div .checkbox > input[type="checkbox"]:checked + label { background-color: rgb(var(--movim-main)); }*/
 
 form input:focus:not(:invalid) + label,
 form textarea:focus:not(:invalid) + label {

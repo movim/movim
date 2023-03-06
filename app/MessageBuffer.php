@@ -23,14 +23,8 @@ class MessageBuffer
 
     public function __construct()
     {
-        //global $loop;
-
         $this->_models = collect();
         $this->_calls = collect();
-
-        /*$loop->addPeriodicTimer(0.5, function () {
-            $this->save();
-        });*/
     }
 
     public function save()
@@ -67,9 +61,7 @@ class MessageBuffer
         }
 
         if ($this->_calls->isNotEmpty()) {
-            $this->_calls->each(function ($call) {
-                $call();
-            });
+            $this->_calls->each(fn ($call) => $call());
             $this->_calls = collect();
         }
     }

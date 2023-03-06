@@ -23,13 +23,7 @@
 }
 
 #publish span.privacy form > div .checkbox {
-    margin-top: calc(50% - 3rem);
-    width: 5rem;
-    height: 3.5rem;
-}
-
-#publish .button.send {
-    margin-left: 2rem;
+    margin-top: calc(50% - 3.25rem);
 }
 
 #publish textarea[name=content] {
@@ -37,9 +31,14 @@
 }
 
 #publish span.privacy form > div .checkbox > input[type="checkbox"] + label {
-    top: 0;
-    height: 3.5rem;
-    width: 3.5rem;
+    top: 0.5rem;
+    left: 0.5rem;
+    height: 3rem;
+    width: 3rem;
+}
+
+#publish span.privacy form > div .checkbox > input[type="checkbox"]:checked + label {
+    left: 2.5rem;
 }
 
 #publish span.privacy form > div .checkbox > input[type="checkbox"] + label i:before {

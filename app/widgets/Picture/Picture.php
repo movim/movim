@@ -13,19 +13,22 @@ class Picture extends Base
         $url = urldecode($this->get('url'));
         $parsedUrl = parse_url($url);
 
-        if (is_array($parsedUrl)
+        if (
+            is_array($parsedUrl)
             && array_key_exists('host', $parsedUrl)
-            && $parsedUrl['host'] == 'i.imgur.com') {
+            && $parsedUrl['host'] == 'i.imgur.com'
+        ) {
             $url = getImgurThumbnail($url);
         }
 
         $headers = requestHeaders($url);
 
-        if ($headers["download_content_length"] <= $this->compressLimit
-        && isset($headers['content_type'])
-        && typeIsPicture($headers['content_type'])) {
-            $compress = (
-                $headers["download_content_length"] > SMALL_PICTURE_LIMIT * 0.25
+        if (
+            $headers["download_content_length"] <= $this->compressLimit
+            && isset($headers['content_type'])
+            && typeIsPicture($headers['content_type'])
+        ) {
+            $compress = ($headers["download_content_length"] > SMALL_PICTURE_LIMIT * 0.25
                 && $headers["download_content_length"] < $this->compressLimit
             );
 
@@ -66,7 +69,7 @@ class Picture extends Base
                 }
 
                 header_remove('Content-Type');
-                header('Content-Type: image/webp');
+                header('Content-Type: image/' . DEFAULT_PICTURE_FORMAT);
             } else {
                 foreach ($headers as $header) {
                     if (strtolower(substr($header, 0, strlen('Content-Type:'))) === 'content-type:') {
@@ -76,9 +79,9 @@ class Picture extends Base
             }
 
             if (!empty($parsedUrl['path'])) {
-                header('Content-Disposition: attachment; filename="'.basename($parsedUrl['path']).'"');
+                header('Content-Disposition: attachment; filename="' . basename($parsedUrl['path']) . '"');
             }
-            header('Cache-Control: max-age=' . 3600*24);
+            header('Cache-Control: max-age=' . 3600 * 24);
 
             print $p ? $p->getImage() : $body;
 

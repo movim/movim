@@ -1,6 +1,8 @@
 var VisioConfig = {
     micMaxLevel: 0,
     audioContext: null,
+    audioStream: null,
+    videoStream: null,
 
     init: function () {
         navigator.mediaDevices.enumerateDevices().then(devices => VisioConfig.gotDevices(devices));
@@ -53,11 +55,11 @@ var VisioConfig = {
         if (cameraFound == false) {
             localStorage.defaultCamera = cameraSelect.value;
         }
-
-        VisioConfig.testMicrophone();
     },
 
     testMicrophone: function () {
+        document.querySelector('#mic_preview .level').classList.remove('disabled');
+
         document.querySelectorAll('.level span').forEach(span => {
             span.classList.add('disabled');
         });
@@ -77,6 +79,8 @@ var VisioConfig = {
         navigator.mediaDevices.getUserMedia({
             audio: audioContraint
         }).then(function (stream) {
+            VisioConfig.audioStream = stream;
+
             if (VisioConfig.audioContext) {
                 VisioConfig.audioContext.close();
             }
@@ -91,19 +95,19 @@ var VisioConfig = {
 
             let isMuteStep = 0;
 
-            javascriptNode.onaudioprocess = function(event) {
+            javascriptNode.onaudioprocess = function (event) {
                 var inpt = event.inputBuffer.getChannelData(0);
                 var instant = 0.0;
                 var sum = 0.0;
 
-                for(var i = 0; i < inpt.length; ++i) {
+                for (var i = 0; i < inpt.length; ++i) {
                     sum += inpt[i] * inpt[i];
                 }
                 instant = Math.sqrt(sum / inpt.length);
                 VisioConfig.micMaxLevel = Math.max(VisioConfig.micMaxLevel, instant);
 
-                var base = (instant/VisioConfig.micMaxLevel);
-                var level = (base > 0.01) ? base**.3 : 0;
+                var base = (instant / VisioConfig.micMaxLevel);
+                var level = (base > 0.01) ? base ** .3 : 0;
 
                 let step = 0;
 
@@ -130,12 +134,32 @@ var VisioConfig = {
                 }
             }
         })
-        .catch(function (err) {
-            console.error(err);
+            .catch(function (err) {
+                console.error(err);
+            });
+    },
+
+    stopMicrophone: function () {
+        if (!VisioConfig.audioStream) return;
+
+        VisioConfig.audioStream.getTracks().forEach(function (track) {
+            if (track.kind === 'audio') {
+                track.stop();
+            }
         });
     },
 
-    testCamera: function() {
+    stopCamera: function () {
+        if (!VisioConfig.videoStream) return;
+
+        VisioConfig.videoStream.getTracks().forEach(function (track) {
+            if (track.kind === 'video') {
+                track.stop();
+            }
+        });
+    },
+
+    testCamera: function () {
         if (localStorage.defaultCamera) {
             videoConstraint = {
                 deviceId: {
@@ -149,15 +173,17 @@ var VisioConfig = {
         navigator.mediaDevices.getUserMedia({
             video: videoConstraint
         }).then(function (stream) {
+            VisioConfig.videoStream = stream;
+
             let camera = document.querySelector('#camera_preview video');
             camera.srcObject = stream;
             camera.play();
 
             document.querySelector('#camera_preview').classList.add('enabled');
         })
-        .catch(function (err) {
-            console.error(err);
-        });
+            .catch(function (err) {
+                console.error(err);
+            });
     },
 
     changeDefaultMicrophone: function (event) {
@@ -175,4 +201,11 @@ var VisioConfig = {
 
 MovimWebsocket.attach(() => {
     VisioConfig.init();
+});
+
+movimAddOnload(function () {
+    if (VisioConfig.audioStream) {
+        VisioConfig.stopMicrophone();
+        VisioConfig.stopCamera();
+    }
 });

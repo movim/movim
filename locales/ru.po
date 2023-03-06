@@ -1,6 +1,6 @@
 #
 # Translators:
-# Alexander Popov <alex.wayfer@gmail.com>, 2016
+# Alexander Popov (AlexWayfer) <alex.wayfer@gmail.com>, 2016
 # Alexander Radchenko <radchenkosasha@gmail.com>, 2016
 # Alexey Murz Korepov <murznn@gmail.com>, 2017
 # yanislavb <its@dark0ff.ru>, 2017
@@ -130,16 +130,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-04 14:11+0200\n"
-"PO-Revision-Date: 2022-02-17 07:57+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"POT-Creation-Date: 2022-12-25 14:45+0200\n"
+"PO-Revision-Date: 2015-06-24 09:45+0000\n"
+"Last-Translator: Rus D <rus@zx22.ru>, 2021\n"
 "Language-Team: Russian (http://www.transifex.com/movim/movim/language/ru/)\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
-"X-Generator: Translate Toolkit 3.4.1\n"
+"X-Generator: Translate Toolkit 3.7.4\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -456,9 +456,8 @@ msgid "Syslog and files"
 msgstr "Syslog и файлы"
 
 #: [adminreported]reported_by
-#, fuzzy
 msgid "Reported by %s users"
-msgstr "Сообщить о нарушении"
+msgstr ""
 
 #: [adminreported]info
 msgid "Those accounts were reported by some Movim users"
@@ -480,22 +479,6 @@ msgstr ""
 msgid "File"
 msgstr "Файл"
 
-#: [avatar]use_it
-msgid "Use it"
-msgstr "Использовать это"
-
-#: [avatar]webcam
-msgid "Webcam"
-msgstr "Веб-камера"
-
-#: [avatar]cheese
-msgid "Cheese!"
-msgstr "Скажите \"сы-ы-ыр\"! "
-
-#: [avatar]snapshot
-msgid "Take a webcam snapshot"
-msgstr "Сделать фотографиюс помощью веб-камеры"
-
 #: [avatar]updated
 msgid "Avatar Updated"
 msgstr "Аватар обновлен"
@@ -516,25 +499,37 @@ msgstr ""
 msgid "Upload a new picture"
 msgstr ""
 
+#: [banner]change
+msgid "Change my banner"
+msgstr ""
+
+#: [banner]updated
+msgid "Banner Updated"
+msgstr ""
+
+#: [banner]not_updated
+msgid "Banner Not Updated"
+msgstr ""
+
+#: [banner]missing
+msgid "No banner defined yet"
+msgstr ""
+
 #: [blocked]title
-#, fuzzy
 msgid "Blocked"
-msgstr "потрясенный"
+msgstr ""
 
 #: [blocked]block_account
-#, fuzzy
 msgid "Block the account"
-msgstr "Другие учётные записи"
+msgstr ""
 
 #: [blocked]unblock_account
-#, fuzzy
 msgid "Unblock the account"
-msgstr "Другие учётные записи"
+msgstr ""
 
 #: [blocked]account_blocked
-#, fuzzy
 msgid "Account blocked"
-msgstr "Учетная запись"
+msgstr ""
 
 #: [blocked]account_unblocked
 msgid "Account unblocked"
@@ -593,9 +588,8 @@ msgid "Composing…"
 msgstr "Сопоставление..."
 
 #: [message]invitation
-#, fuzzy
 msgid "Invitation"
-msgstr "Приглашение отправлено"
+msgstr ""
 
 #: [message]paused
 msgid "Paused…"
@@ -650,9 +644,8 @@ msgid "You received an invitation to join a chatroom"
 msgstr "Вы получили приглашение в комнату"
 
 #: [chat]invitation_self
-#, fuzzy
 msgid "You sent an invitation to join a chatroom"
-msgstr "Вы получили приглашение в комнату"
+msgstr ""
 
 #: [chat]invitation_join
 msgid "Join %s"
@@ -680,13 +673,24 @@ msgid "Incoming call"
 msgstr "Входящий звонок"
 
 #: [chat]jingle_outgoing
-#, fuzzy
 msgid "Outgoing call"
-msgstr "звонит"
+msgstr ""
 
 #: [chat]jingle_end
 msgid "Call ended"
 msgstr "Вызов завершён "
+
+#: [chat]jingle_hours
+msgid "%s hours %s minutes"
+msgstr ""
+
+#: [chat]jingle_minutes
+msgid "%s minutes and %s seconds"
+msgstr ""
+
+#: [chat]jingle_seconds
+msgid "%s seconds"
+msgstr ""
 
 #: [chat]publish_error
 msgid "An error occured when sending the message"
@@ -1035,13 +1039,12 @@ msgid "No publication yet? Write your first post to make people discover your pr
 msgstr ""
 
 #: [communityposts]empty_me_button
-#, fuzzy
 msgid "Publish my first post"
-msgstr "Публичная ссылка на этот пост"
+msgstr ""
 
 #: [communitysubscriptions]subscriptions
-msgid "My Subscriptions"
-msgstr "Мои Подписки"
+msgid "Subscribed Communities"
+msgstr ""
 
 #: [communitysubscriptions]empty_title
 msgid "Hello"
@@ -1396,24 +1399,20 @@ msgid "Add the chatroom"
 msgstr "Добавить чат-комнату"
 
 #: [location]title
-#, fuzzy
 msgid "My location"
-msgstr "Мои публикации"
+msgstr ""
 
 #: [location]enabled_title
-#, fuzzy
 msgid "Currently shared with my contacts"
-msgstr "Вы поделились постом с вашим контактом"
+msgstr ""
 
 #: [location]disabled_title
-#, fuzzy
 msgid "Currently disabled"
-msgstr "Комментарии отключены"
+msgstr ""
 
 #: [location]last_published
-#, fuzzy
 msgid "My last published location"
-msgstr "Мои публикации"
+msgstr ""
 
 #: [location]less_than_one_km
 msgid "Less than a km away"
@@ -1531,6 +1530,14 @@ msgstr "%s пригласил вас в комнату"
 msgid "Administrated by"
 msgstr ""
 
+#: [about_movim]info
+msgid "Movim is a federated blogging and chat platform."
+msgstr ""
+
+#: [about_movim]website
+msgid "Visit the project official website %s."
+msgstr ""
+
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
 msgstr "Неподходящий псевдоним (от 4 до 40 символов)"
@@ -1560,9 +1567,8 @@ msgid "Write a new post…"
 msgstr "Написать новый пост..."
 
 #: [notification]request_title
-#, fuzzy
 msgid "Notifications request"
-msgstr "Уведомления"
+msgstr ""
 
 #: [notification]request_info
 msgid "Movim requires your approval to display notifications"
@@ -1577,14 +1583,12 @@ msgid "Request"
 msgstr ""
 
 #: [notification]request_granted
-#, fuzzy
 msgid "Authorization granted"
-msgstr "Код аутентификации"
+msgstr ""
 
 #: [notification]request_refused
-#, fuzzy
 msgid "Authorization refused"
-msgstr "Код аутентификации"
+msgstr ""
 
 #: [notificationconfig]title [notifs]title [onboarding]notifications_title
 #: [room]notify_title
@@ -1600,9 +1604,8 @@ msgid "Incoming message"
 msgstr "Входящее сообщение"
 
 #: [notificationconfig]push_subscriptions
-#, fuzzy
 msgid "Push notifications"
-msgstr "Звуковые уведомления"
+msgstr ""
 
 #: [notificationconfig]push_subscriptions_text
 msgid "Movim will send push notifications to the following registered devices"
@@ -1613,19 +1616,16 @@ msgid "Push notifications enabled for this device"
 msgstr ""
 
 #: [notificationconfig]push_disabled
-#, fuzzy
 msgid "Push notifications disabled for this device"
-msgstr "Подписки отключены для этого сообщества"
+msgstr ""
 
 #: [notificationconfig]unknown_browser
-#, fuzzy
 msgid "Unknown browser"
-msgstr "Неизвестная ошибка"
+msgstr ""
 
 #: [notificationconfig]unknown_platform
-#, fuzzy
 msgid "Unknown platform"
-msgstr "Неизвестная ошибка"
+msgstr ""
 
 #: [invitations]title
 msgid "Pending Invitations"
@@ -1907,6 +1907,10 @@ msgstr ""
 msgid "Add #hashtags in your title or content to allow your article to be discovered"
 msgstr ""
 
+#: [publish]publish_error_forbidden
+msgid "You are not authorized to publish there"
+msgstr ""
+
 #: [publishhelp]title [page]help
 msgid "Help"
 msgstr "Помощь"
@@ -2148,9 +2152,8 @@ msgid "Archived"
 msgstr ""
 
 #: [room]archived_text
-#, fuzzy
 msgid "The chatroom messages are archived"
-msgstr "%s сообщений получено"
+msgstr ""
 
 #: [room]group_chat
 msgid "Group Chat"
@@ -2303,6 +2306,10 @@ msgstr ""
 #: [sendto]attach
 msgid "Attach to a blog publication"
 msgstr "Приложить к публикации блога"
+
+#: [sendto]share
+msgid "Share in a new publication"
+msgstr ""
 
 #: [sendto]contact
 msgid "Send it to a contact"
@@ -2537,18 +2544,16 @@ msgid "Camera"
 msgstr ""
 
 #: [visioconfig]camera_label
-#, fuzzy
 msgid "Default camera"
-msgstr "Язык по умолчанию"
+msgstr ""
 
 #: [visioconfig]default_microphone_changed
 msgid "Default microphone changed"
 msgstr ""
 
 #: [visioconfig]default_camera_changed
-#, fuzzy
 msgid "Default camera changed"
-msgstr "Язык по умолчанию"
+msgstr ""
 
 #: [visioconfig]no_mic_sound
 msgid "No sound detected from your microphone"
@@ -3455,60 +3460,3 @@ msgstr "API недоступен, попробуйте позже"
 #: [field]type_here
 msgid "Type here"
 msgstr "Введите здесь"
-
-#~ msgid "General Overview"
-#~ msgstr "Общие сведения"
-
-#~ msgid "Read and write rights for the webserver in Movim’s %s directory"
-#~ msgstr "Права на запись и чтение на веб-сервер в директории Movim’а %s"
-
-#~ msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
-#~ msgstr "Сбой соединения по протоколу WebSocket. Убедитесь, что служба Movim запущена и доступна по сети"
-
-#~ msgid "Browser"
-#~ msgstr "Браузер"
-
-#~ msgid "Movim Core"
-#~ msgstr "Ядро Movim"
-
-#~ msgid "Movim Daemon"
-#~ msgstr "Служба Movim"
-
-#~ msgid "Database"
-#~ msgstr "База данных"
-
-#~ msgid "XMPP"
-#~ msgstr "XMPP"
-
-#~ msgid "Here you can register your pod on the official %sMovim API%s"
-#~ msgstr "Здесь вы можете зарегистрировать ваш под на официальном API Movim"
-
-#~ msgid "Your pod is not registered on the API"
-#~ msgstr "Ваша установка не зарегистрирована в API"
-
-#~ msgid "Your pod is registered on the API"
-#~ msgstr "Ваша установка зарегистрирована в API"
-
-#~ msgid "Your pod is not yet validated"
-#~ msgstr "Ваша установка не прошла проверку"
-
-#~ msgid "Your pod is validated"
-#~ msgstr "Ваша установка прошла проверку"
-
-#~ msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
-#~ msgstr "Вы запросили удаление из API, данный запрос будет выполнен в течение нескольких часов"
-
-#~ msgid "Call started"
-#~ msgstr "Вызов начат"
-
-#~ msgid "Archiving preferences"
-#~ msgstr "Настройки архивирования"
-
-#~ msgid "Visit the blog to see all the public posts"
-#~ msgstr "Открыть блог для всех публикаций"
-
-#~ msgid "Statistics"
-#~ msgstr "Статистика"
-
-#~ msgid "Status updated"
-#~ msgstr "Статус обновлен"

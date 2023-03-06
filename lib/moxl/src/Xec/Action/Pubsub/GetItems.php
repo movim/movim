@@ -3,11 +3,11 @@
 namespace Moxl\Xec\Action\Pubsub;
 
 use Moxl\Stanza\Pubsub;
-use Moxl\Xec\Action\Pubsub\Errors;
+use Moxl\Xec\Action;
 
 use Movim\Image;
 
-class GetItems extends Errors
+class GetItems extends Action
 {
     protected $_to;
     protected $_node;
@@ -53,7 +53,7 @@ class GetItems extends Errors
         return $this;
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $ids = [];
 
@@ -131,7 +131,7 @@ class GetItems extends Errors
         $this->deliver();
     }
 
-    public function error($errorid, $message)
+    public function error(string $errorId, ?string $message = null)
     {
         $this->pack(['server' => $this->_to, 'node' => $this->_node]);
         $this->deliver();

@@ -69,7 +69,7 @@ class Message
             $root->appendChild($reply);
 
             if ($replyQuotedBodyLength > 0) {
-                $fallback = $dom->createElementNS('urn:xmpp:feature-fallback:0', 'fallback');
+                $fallback = $dom->createElementNS('urn:xmpp:fallback:0', 'fallback');
                 $fallback->setAttribute('for', 'urn:xmpp:reply:0');
 
                 $fallbackBody = $dom->createElement('body');
@@ -93,7 +93,11 @@ class Message
             $root->appendChild($chatstate);
 
             $body = $dom->createElement('body');
-            $bodyContent = $dom->createTextNode($content);
+
+
+            $bodyContent = (preg_match('(>|<|&)', $content) === 1)
+                ? $dom->createCDATASection($content)
+                : $dom->createTextNode($content);
             $body->appendChild($bodyContent);
             $root->appendChild($body);
         }
@@ -338,7 +342,7 @@ class Message
         $root->appendChild($store);
 
         // Fallback
-        $fallback = $dom->createElementNS('urn:xmpp:feature-fallback:0', 'fallback');
+        $fallback = $dom->createElementNS('urn:xmpp:fallback:0', 'fallback');
         $root->appendChild($fallback);
 
         $body = $dom->createElement('body');

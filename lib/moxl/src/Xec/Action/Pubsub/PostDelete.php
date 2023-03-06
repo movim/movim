@@ -3,9 +3,9 @@
 namespace Moxl\Xec\Action\Pubsub;
 
 use Moxl\Stanza\Pubsub;
-use Moxl\Xec\Action\Pubsub\Errors;
+use Moxl\Xec\Action;
 
-class PostDelete extends Errors
+class PostDelete extends Action
 {
     protected $_to;
     protected $_id;
@@ -17,7 +17,7 @@ class PostDelete extends Errors
         Pubsub::postDelete($this->_to, $this->_node, $this->_id);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         \App\Post::where('server', $this->_to)->where('node', $this->_node)
                  ->where('nodeid', $this->_id)->delete();
@@ -30,7 +30,7 @@ class PostDelete extends Errors
         $this->deliver();
     }
 
-    public function error($stanza)
+    public function error(string $errorId, ?string $message = null)
     {
         \App\Post::where('server', $this->_to)->where('node', $this->_node)
                  ->where('nodeid', $this->_id)->delete();

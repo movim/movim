@@ -1,8 +1,8 @@
 <li class="block"
     {if="$post->isMicroblog()"}
-        onclick="MovimUtils.redirect('{$c->route('contact', $post->server)}')"
+        onclick="MovimUtils.reload('{$c->route('contact', $post->server)}')"
     {else}
-        onclick="MovimUtils.redirect('{$c->route('community', [$post->server, $post->node])}')"
+        onclick="MovimUtils.reload('{$c->route('community', [$post->server, $post->node])}')"
     {/if}
     >
     <span class="control icon gray">

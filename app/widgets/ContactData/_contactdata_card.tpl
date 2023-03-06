@@ -28,7 +28,7 @@
             <p class="all center">
                 {if="$contact->description != null && trim($contact->description) != ''"}
                     {autoescape="off"}
-                        {$contact->description|trim|nl2br|addEmojis}
+                        {$contact->description|trim|nl2br|addEmojis|addUrls|addHashtagsLinks}
                     {/autoescape}
                     <br /><br />
                 {/if}
@@ -52,20 +52,20 @@
 
                 {if="$contact->email"}
                     <i class="material-icons icon-text">email</i>
-                    <a href="mailto:{$contact->email}">{$contact->email}</a>
+                    <a href="mailto:{$contact->email}" rel="me">{$contact->email}</a>
                     <br />
                 {/if}
 
                 {if="$contact->phone"}
                     <i class="material-icons icon-text">phone</i>
-                    <a href="tel:{$contact->phone}">{$contact->phone}</a>
+                    <a href="tel:{$contact->phone}" rel="me">{$contact->phone}</a>
                     <br />
                 {/if}
 
                 {if="$contact->url != null"}
                     <i class="material-icons icon-text">link</i>
                     {if="filter_var($contact->url, FILTER_VALIDATE_URL)"}
-                        <a href="{$contact->url}" target="_blank">{$contact->url}</a>
+                        <a href="{$contact->url}" target="_blank" rel="me">{$contact->url}</a>
                     {else}
                         {$contact->url}
                     {/if}

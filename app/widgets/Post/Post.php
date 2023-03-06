@@ -106,11 +106,11 @@ class Post extends Base
             ->request();
 
         if ($p) {
-            $html = $this->preparePost($p);
+            $html = $this->preparePost($p, false, false, false);
 
             $this->rpc('MovimTpl.fill', '#post_widget.'.cleanupId($p->nodeid), $html);
             $this->rpc('MovimUtils.enhanceArticlesContent');
-            $this->rpc('Notification.setTitle', $this->__('page.post') . ' • ' . $p->title);
+            $this->rpc('Notif.setTitle', $this->__('page.post') . ' • ' . $p->title);
 
             // If the post is a reply but we don't have the original
             if ($p->isReply() && !$p->getReply()) {
@@ -208,21 +208,28 @@ class Post extends Base
         return $view->draw('_post_not_found');
     }
 
-    public function preparePost(\App\Post $p, $public = false, $card = false)
+    public function preparePost(\App\Post $p, $public = false, $card = false, $requestComments = true)
     {
         if (isset($p)) {
             $view = $this->tpl();
 
+            $commentsDisabled = false;
+
             if ($p->hasCommentsNode()
             && !$public && !$card) {
-                $this->requestComments($p); // Broken in case of repost
-                $view->assign('commentsdisabled', false);
+                if ($requestComments) {
+                    $this->requestComments($p); // Broken in case of repost
+                }
             } elseif (!$card) {
                 $viewd = $this->tpl();
                 $viewd->assign('post', $p);
-                $view->assign('commentsdisabled', $viewd->draw('_post_comments_error'));
+
+                if ($requestComments) {
+                    $commentsDisabled = $viewd->draw('_post_comments_error');
+                }
             }
 
+            $view->assign('commentsdisabled', $commentsDisabled);
             $view->assign('public', $public);
             $view->assign('reply', $p->isReply() ? $p->getReply() : false);
             $view->assign('repost', $p->isRecycled() ? \App\Contact::find($p->server) : false);

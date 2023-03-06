@@ -17,7 +17,7 @@ class SetRole extends Action
         Muc::setRole($this->_to, $this->_nick, $this->_role);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $this->deliver();
     }

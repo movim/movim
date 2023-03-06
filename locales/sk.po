@@ -118,16 +118,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-04 14:11+0200\n"
-"PO-Revision-Date: 2022-02-17 07:57+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"POT-Creation-Date: 2022-12-25 14:45+0200\n"
+"PO-Revision-Date: 2015-06-24 09:45+0000\n"
+"Last-Translator: Slavko <linux@slavino.sk>, 2020-2021\n"
 "Language-Team: Slovak (Slovakia) (http://www.transifex.com/movim/movim/language/sk_SK/)\n"
 "Language: sk_SK\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);\n"
-"X-Generator: Translate Toolkit 3.4.1\n"
+"X-Generator: Translate Toolkit 3.7.4\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -416,9 +416,8 @@ msgid "Access Tenor and get your API key"
 msgstr "Prejsť na Tenor a získať kľúč API"
 
 #: [twitter]title
-#, fuzzy
 msgid "Twitter integration"
-msgstr "Integrácia Tenor"
+msgstr ""
 
 #: [twitter]label
 msgid "Your Twitter Token"
@@ -445,9 +444,8 @@ msgid "Syslog and files"
 msgstr "Syslog a súbory"
 
 #: [adminreported]reported_by
-#, fuzzy
 msgid "Reported by %s users"
-msgstr "Nahlásiť obťažovanie"
+msgstr ""
 
 #: [adminreported]info
 msgid "Those accounts were reported by some Movim users"
@@ -469,22 +467,6 @@ msgstr ""
 msgid "File"
 msgstr "Súbor"
 
-#: [avatar]use_it
-msgid "Use it"
-msgstr "Použiť"
-
-#: [avatar]webcam
-msgid "Webcam"
-msgstr "Webkamera"
-
-#: [avatar]cheese
-msgid "Cheese!"
-msgstr "Cheese!"
-
-#: [avatar]snapshot
-msgid "Take a webcam snapshot"
-msgstr "Urobiť snímok kamery"
-
 #: [avatar]updated
 msgid "Avatar Updated"
 msgstr "Avatar aktualizovaný"
@@ -505,25 +487,37 @@ msgstr ""
 msgid "Upload a new picture"
 msgstr ""
 
+#: [banner]change
+msgid "Change my banner"
+msgstr ""
+
+#: [banner]updated
+msgid "Banner Updated"
+msgstr ""
+
+#: [banner]not_updated
+msgid "Banner Not Updated"
+msgstr ""
+
+#: [banner]missing
+msgid "No banner defined yet"
+msgstr ""
+
 #: [blocked]title
-#, fuzzy
 msgid "Blocked"
-msgstr "šokovaný"
+msgstr ""
 
 #: [blocked]block_account
-#, fuzzy
 msgid "Block the account"
-msgstr "Ostatné účty"
+msgstr ""
 
 #: [blocked]unblock_account
-#, fuzzy
 msgid "Unblock the account"
-msgstr "Ostatné účty"
+msgstr ""
 
 #: [blocked]account_blocked
-#, fuzzy
 msgid "Account blocked"
-msgstr "Účet"
+msgstr ""
 
 #: [blocked]account_unblocked
 msgid "Account unblocked"
@@ -582,9 +576,8 @@ msgid "Composing…"
 msgstr "Píše…"
 
 #: [message]invitation
-#, fuzzy
 msgid "Invitation"
-msgstr "Pozvánka poslaná"
+msgstr ""
 
 #: [message]paused
 msgid "Paused…"
@@ -639,9 +632,8 @@ msgid "You received an invitation to join a chatroom"
 msgstr "Bola Vám doručená pozvánka na vstup do chatu"
 
 #: [chat]invitation_self
-#, fuzzy
 msgid "You sent an invitation to join a chatroom"
-msgstr "Bola Vám doručená pozvánka na vstup do chatu"
+msgstr ""
 
 #: [chat]invitation_join
 msgid "Join %s"
@@ -669,13 +661,24 @@ msgid "Incoming call"
 msgstr "Prichádzajúci hovor"
 
 #: [chat]jingle_outgoing
-#, fuzzy
 msgid "Outgoing call"
-msgstr "hovorí"
+msgstr ""
 
 #: [chat]jingle_end
 msgid "Call ended"
 msgstr "Hovor skončil"
+
+#: [chat]jingle_hours
+msgid "%s hours %s minutes"
+msgstr ""
+
+#: [chat]jingle_minutes
+msgid "%s minutes and %s seconds"
+msgstr ""
+
+#: [chat]jingle_seconds
+msgid "%s seconds"
+msgstr ""
 
 #: [chat]publish_error
 msgid "An error occured when sending the message"
@@ -1024,13 +1027,12 @@ msgid "No publication yet? Write your first post to make people discover your pr
 msgstr ""
 
 #: [communityposts]empty_me_button
-#, fuzzy
 msgid "Publish my first post"
-msgstr "Verejná URL tohoto príspevku"
+msgstr ""
 
 #: [communitysubscriptions]subscriptions
-msgid "My Subscriptions"
-msgstr "Moje odbery"
+msgid "Subscribed Communities"
+msgstr ""
 
 #: [communitysubscriptions]empty_title
 msgid "Hello"
@@ -1385,24 +1387,20 @@ msgid "Add the chatroom"
 msgstr "Pridať miestnosť"
 
 #: [location]title
-#, fuzzy
 msgid "My location"
-msgstr "Moje príspevky"
+msgstr ""
 
 #: [location]enabled_title
-#, fuzzy
 msgid "Currently shared with my contacts"
-msgstr "Príspevok zdieľaný s kontaktom"
+msgstr ""
 
 #: [location]disabled_title
-#, fuzzy
 msgid "Currently disabled"
-msgstr "Komentáre vypnuté"
+msgstr ""
 
 #: [location]last_published
-#, fuzzy
 msgid "My last published location"
-msgstr "Moje príspevky"
+msgstr ""
 
 #: [location]less_than_one_km
 msgid "Less than a km away"
@@ -1520,6 +1518,14 @@ msgstr "%s Vás pozval vstúpiť do miestnosti"
 msgid "Administrated by"
 msgstr ""
 
+#: [about_movim]info
+msgid "Movim is a federated blogging and chat platform."
+msgstr ""
+
+#: [about_movim]website
+msgid "Visit the project official website %s."
+msgstr ""
+
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
 msgstr "Zlá prezývka (4 až 40 znakov)"
@@ -1549,9 +1555,8 @@ msgid "Write a new post…"
 msgstr "Napísať nový príspevok…"
 
 #: [notification]request_title
-#, fuzzy
 msgid "Notifications request"
-msgstr "Upozornenia"
+msgstr ""
 
 #: [notification]request_info
 msgid "Movim requires your approval to display notifications"
@@ -1566,14 +1571,12 @@ msgid "Request"
 msgstr ""
 
 #: [notification]request_granted
-#, fuzzy
 msgid "Authorization granted"
-msgstr "Autentifikačný kód"
+msgstr ""
 
 #: [notification]request_refused
-#, fuzzy
 msgid "Authorization refused"
-msgstr "Autentifikačný kód"
+msgstr ""
 
 #: [notificationconfig]title [notifs]title [onboarding]notifications_title
 #: [room]notify_title
@@ -1589,33 +1592,28 @@ msgid "Incoming message"
 msgstr "Prichádzajúca správa"
 
 #: [notificationconfig]push_subscriptions
-#, fuzzy
 msgid "Push notifications"
-msgstr "Audio upozornenia"
+msgstr ""
 
 #: [notificationconfig]push_subscriptions_text
-#, fuzzy
 msgid "Movim will send push notifications to the following registered devices"
-msgstr "Movim môže poslať upozornenia Push do aplikácie Android Movim pomocou Firebase"
+msgstr ""
 
 #: [notificationconfig]push_enabled
 msgid "Push notifications enabled for this device"
 msgstr ""
 
 #: [notificationconfig]push_disabled
-#, fuzzy
 msgid "Push notifications disabled for this device"
-msgstr "Odbery tejto komunity sú vypnuté"
+msgstr ""
 
 #: [notificationconfig]unknown_browser
-#, fuzzy
 msgid "Unknown browser"
-msgstr "Neznáma chyba"
+msgstr ""
 
 #: [notificationconfig]unknown_platform
-#, fuzzy
 msgid "Unknown platform"
-msgstr "Neznáma chyba"
+msgstr ""
 
 #: [invitations]title
 msgid "Pending Invitations"
@@ -1897,6 +1895,10 @@ msgstr "Editor obohateného textu"
 msgid "Add #hashtags in your title or content to allow your article to be discovered"
 msgstr ""
 
+#: [publish]publish_error_forbidden
+msgid "You are not authorized to publish there"
+msgstr ""
+
 #: [publishhelp]title [page]help
 msgid "Help"
 msgstr "Pomocník"
@@ -2138,9 +2140,8 @@ msgid "Archived"
 msgstr ""
 
 #: [room]archived_text
-#, fuzzy
 msgid "The chatroom messages are archived"
-msgstr "Prijaté správy: %s"
+msgstr ""
 
 #: [room]group_chat
 msgid "Group Chat"
@@ -2293,6 +2294,10 @@ msgstr "Zobraziť všetky kontakty"
 #: [sendto]attach
 msgid "Attach to a blog publication"
 msgstr "Pripojiť k uverejneneniu v blogu"
+
+#: [sendto]share
+msgid "Share in a new publication"
+msgstr ""
 
 #: [sendto]contact
 msgid "Send it to a contact"
@@ -2527,18 +2532,16 @@ msgid "Camera"
 msgstr ""
 
 #: [visioconfig]camera_label
-#, fuzzy
 msgid "Default camera"
-msgstr "Predvolený jazyk"
+msgstr ""
 
 #: [visioconfig]default_microphone_changed
 msgid "Default microphone changed"
 msgstr ""
 
 #: [visioconfig]default_camera_changed
-#, fuzzy
 msgid "Default camera changed"
-msgstr "Predvolený jazyk"
+msgstr ""
 
 #: [visioconfig]no_mic_sound
 msgid "No sound detected from your microphone"
@@ -3445,69 +3448,3 @@ msgstr "API nie je dostupné, skúste neskôr"
 #: [field]type_here
 msgid "Type here"
 msgstr "Píšte tu"
-
-#~ msgid "General Overview"
-#~ msgstr "Všeobecný prehľad"
-
-#~ msgid "Read and write rights for the webserver in Movim’s %s directory"
-#~ msgstr "Práva čítania a zápisu webového servera v adresári Movim %s"
-
-#~ msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
-#~ msgstr "Chyba spojenia WebSocket, skontrolujte, že je spustený a dosiahnuteľný démon Movim"
-
-#~ msgid "Browser"
-#~ msgstr "Prehliadač"
-
-#~ msgid "Movim Core"
-#~ msgstr "Základ Movim"
-
-#~ msgid "Movim Daemon"
-#~ msgstr "Démon Movim"
-
-#~ msgid "Database"
-#~ msgstr "Databáza"
-
-#~ msgid "XMPP"
-#~ msgstr "XMPP"
-
-#~ msgid "Here you can register your pod on the official %sMovim API%s"
-#~ msgstr "Tu môžete registrovať svoj POD v oficiálnom %sAPI Movim%s"
-
-#~ msgid "Your pod is not registered on the API"
-#~ msgstr "Váš POD nie je registrovaný v API"
-
-#~ msgid "Your pod is registered on the API"
-#~ msgstr "Váš POD je registrovaný v API"
-
-#~ msgid "Your pod is not yet validated"
-#~ msgstr "Váš POD nie je overený "
-
-#~ msgid "Your pod is validated"
-#~ msgstr "Váš POD je overený"
-
-#~ msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
-#~ msgstr "Požiadali ste o odstránenie z API, požiadavka bude spracovaná za niekoľko hodín"
-
-#~ msgid "Call started"
-#~ msgstr "Hovor začal"
-
-#~ msgid "Archiving preferences"
-#~ msgstr "Nastavenia archivovania"
-
-#~ msgid "Visit the blog to see all the public posts"
-#~ msgstr "Navštívte blog na zobrazenie všetkých verejných príspevkov"
-
-#~ msgid "Statistics"
-#~ msgstr "Štatistiky"
-
-#~ msgid "Firebase Integration"
-#~ msgstr "Integrácia Firebase"
-
-#~ msgid "Your Firebase Authorization Key"
-#~ msgstr "Autorizačný kľúč Firebase"
-
-#~ msgid "Go to the Firebase panel to configure and generate your Authorization key"
-#~ msgstr "Prejsť do panela Firebase na nastavenie a generovanie autorizačného kľúča"
-
-#~ msgid "Status updated"
-#~ msgstr "Status aktualizovaný"

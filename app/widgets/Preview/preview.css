@@ -51,7 +51,7 @@
 #preview .prevnext {
     font-size: 5rem;
     background-color: rgba(0, 0, 0, 0.5);
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+    box-shadow: var(--elevation-1);
     line-height: 7rem;
     width: 7rem;
     border-radius: 100%;

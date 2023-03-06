@@ -1,4 +1,9 @@
 <?php
+/*
+ * SPDX-FileCopyrightText: 2010 Jaussoin Timothée
+ * SPDX-License-Identifier: AGPL-3.0-or-later
+ */
+
 namespace Movim\Controller;
 
 class Ajax extends Base
@@ -22,19 +27,31 @@ class Ajax extends Base
     }
 
     /**
-     * Generates the javascript part of the ajax.
+     * Generates the inline javascript part
      */
     public function genJs()
+    {
+        $buffer = '<script type="text/javascript" class="inline">';
+        $buffer .= $this->genJsContent();
+        return $buffer . "</script>\n";
+    }
+
+    /**
+     * Generate the content of the inline javascript
+     */
+    public function genJsContent(): string
     {
         if (empty($this->funclist)) {
             return '';
         }
-        $buffer = '<script type="text/javascript">';
+
+        $buffer = '';
+
         foreach ($this->funclist as $key => $funcdef) {
             $parlist = implode(',', $funcdef['params']);
 
             $buffer .= 'function ' . $funcdef['object'] . '_'
-                . $funcdef['funcname'] . "(${parlist}){";
+                . $funcdef['funcname'] . "(" . $parlist . "){";
 
             $function = "MWSs('";
             if ($funcdef['http'] === 1) $function = " return MWSa('";
@@ -44,33 +61,39 @@ class Ajax extends Base
                 $function .
                 $funcdef['object'] . "','" .
                 $funcdef['funcname'] . "'" .
-                (!empty($funcdef['params']) ? ",[${parlist}]" : '');
-            $buffer .=")}";
+                (!empty($funcdef['params']) ? ",[" . $parlist . "]" : '');
+            $buffer .= ")}";
         }
 
-        return $buffer . "</script>\n";
+        return $buffer;
     }
 
     /**
      * Check if the widget is registered
      */
-    public function isRegistered($widget)
+    public function isRegistered($widget): bool
     {
-        return array_key_exists($widget, $this->widgetlist);
+        return in_array($widget, $this->widgetlist);
+    }
+
+    /**
+     * Register a widget
+     */
+    public function register(string $widget)
+    {
+        array_push($this->widgetlist, $widget);
     }
 
     /**
      * Defines a new function.
      */
-    public function defun($widget, $funcname, array $params)
+    public function defineFunction(string $widget, string $funcname, array $params)
     {
-        array_push($this->widgetlist, $widget);
-
         $http = 0;
         if (preg_match('#^ajaxHttp#', $funcname)) $http = 1;
         if (preg_match('#^ajaxHttpDaemon#', $funcname)) $http = 2;
 
-        $this->funclist[$widget.$funcname] = [
+        $this->funclist[$widget . $funcname] = [
             'object' => $widget,
             'funcname' => $funcname,
             'params' => $params,

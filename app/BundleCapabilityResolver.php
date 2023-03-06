@@ -28,10 +28,9 @@ class BundleCapabilityResolver
     {
         $this->_bundles = Bundle::where('user_id', \App\User::me()->id)
                                 ->whereNull('node')
+                                ->select('jid', 'bundleid')
                                 ->get()
-                                ->map(function ($bundle) {
-                                    return $bundle->jid.'_'.$bundle->bundleid;
-                                });
+                                ->map(fn ($bundle) => $bundle->jid.'_'.$bundle->bundleid);
     }
 
     public function resolve(Message $message)
@@ -49,9 +48,9 @@ class BundleCapabilityResolver
                       ->where('bundleid', $message->bundleid)
                       ->update(['node' => $presence->node]);
 
-                $this->_bundles = $this->_bundles->reject(function ($value, $key) use ($message) {
-                    return $value == $message->jidfrom.'_'.$message->bundleid;
-                });
+                $this->_bundles = $this->_bundles->reject(fn ($value, $key) =>
+                    $value == $message->jidfrom.'_'.$message->bundleid
+                );
             }
         }
     }

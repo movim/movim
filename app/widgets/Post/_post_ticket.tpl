@@ -1,6 +1,6 @@
 <li id="{$post->nodeid|cleanupId}"
     class="block"
-    onclick="MovimUtils.redirect('{$c->route('post', [$post->server, $post->node, $post->nodeid])}')">
+    onclick="MovimUtils.reload('{$c->route('post', [$post->server, $post->node, $post->nodeid])}')">
     {if="$post->picture != null"}
         <img class="main"
              src="{$post->picture->href|protectPicture}"
@@ -70,6 +70,11 @@
             {/if}
 
             <span class="info" title="{$post->published|strtotime|prepareDate}">
+                {$count = $post->pictures->count()}
+                {if="$count > 1"}
+                    {$count} <i class="material-icons">collections</i> ·
+                {/if}
+
                 {$count = $post->likes->count()}
                 {if="$count > 0"}
                     {$count} <i class="material-icons">favorite_border</i> ·

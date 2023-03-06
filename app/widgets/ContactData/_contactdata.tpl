@@ -57,6 +57,8 @@
                                 {/if}
                                 {if="typeIsPicture($message->file['type'])"}
                                     <i class="material-icons">image</i> {$c->__('chats.picture')}
+                                {elseif="typeIsAudio($message->file['type'])"}
+                                    <i class="material-icons">equalizer</i> {$c->__('chats.audio')}
                                 {elseif="typeIsVideo($message->file['type'])"}
                                     <i class="material-icons">local_movies</i> {$c->__('chats.video')}
                                 {else}
@@ -64,7 +66,7 @@
                                 {/if}
                             </p>
                         {elseif="stripTags($message->body) != ''"}
-                            <p>
+                            <p class="line two">
                                 {if="$message->jidfrom == $message->user_id"}
                                     <span class="moderator">{$c->__('chats.me')}:</span>
                                 {/if}

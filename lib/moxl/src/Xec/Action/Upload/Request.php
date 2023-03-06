@@ -18,7 +18,7 @@ class Request extends Action
         Upload::request($this->_to, $this->_name, $this->_size, $this->_type);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         if ($stanza->slot) {
             $params = [
@@ -42,7 +42,7 @@ class Request extends Action
         }
     }
 
-    public function error($error)
+    public function error(string $errorId, ?string $message = null)
     {
         $this->pack($this->_to);
         $this->deliver();

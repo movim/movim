@@ -119,16 +119,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-04 14:11+0200\n"
-"PO-Revision-Date: 2022-02-17 07:57+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"POT-Creation-Date: 2022-12-25 14:45+0200\n"
+"PO-Revision-Date: 2015-06-24 09:45+0000\n"
+"Last-Translator: 386902c248cb697d9d6d058103e08443_c36ce9b <3e1ab06cc760e2987b063fda7f345e3f_237544>, 2018\n"
 "Language-Team: Hungarian (http://www.transifex.com/movim/movim/language/hu/)\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.4.1\n"
+"X-Generator: Translate Toolkit 3.7.4\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -445,9 +445,8 @@ msgid "Syslog and files"
 msgstr "Rendszernapló és fájlok"
 
 #: [adminreported]reported_by
-#, fuzzy
 msgid "Reported by %s users"
-msgstr "Visszaélés jelentése"
+msgstr ""
 
 #: [adminreported]info
 msgid "Those accounts were reported by some Movim users"
@@ -469,22 +468,6 @@ msgstr ""
 msgid "File"
 msgstr "Fájl"
 
-#: [avatar]use_it
-msgid "Use it"
-msgstr "Használd"
-
-#: [avatar]webcam
-msgid "Webcam"
-msgstr "Webkam"
-
-#: [avatar]cheese
-msgid "Cheese!"
-msgstr "Mosolyogj!"
-
-#: [avatar]snapshot
-msgid "Take a webcam snapshot"
-msgstr "Webkam pillanatkép készítése."
-
 #: [avatar]updated
 msgid "Avatar Updated"
 msgstr "Avatár frissítve"
@@ -505,25 +488,37 @@ msgstr ""
 msgid "Upload a new picture"
 msgstr ""
 
+#: [banner]change
+msgid "Change my banner"
+msgstr ""
+
+#: [banner]updated
+msgid "Banner Updated"
+msgstr ""
+
+#: [banner]not_updated
+msgid "Banner Not Updated"
+msgstr ""
+
+#: [banner]missing
+msgid "No banner defined yet"
+msgstr ""
+
 #: [blocked]title
-#, fuzzy
 msgid "Blocked"
-msgstr "sokkolt"
+msgstr ""
 
 #: [blocked]block_account
-#, fuzzy
 msgid "Block the account"
-msgstr "Egyéb felhasználói fiókok"
+msgstr ""
 
 #: [blocked]unblock_account
-#, fuzzy
 msgid "Unblock the account"
-msgstr "Egyéb felhasználói fiókok"
+msgstr ""
 
 #: [blocked]account_blocked
-#, fuzzy
 msgid "Account blocked"
-msgstr "Felhasználó"
+msgstr ""
 
 #: [blocked]account_unblocked
 msgid "Account unblocked"
@@ -582,9 +577,8 @@ msgid "Composing…"
 msgstr "Ír…"
 
 #: [message]invitation
-#, fuzzy
 msgid "Invitation"
-msgstr "Várakozó meghívások"
+msgstr ""
 
 #: [message]paused
 msgid "Paused…"
@@ -639,9 +633,8 @@ msgid "You received an invitation to join a chatroom"
 msgstr "Meghívást kaptál, hogy csatlakozz egy chatszobához"
 
 #: [chat]invitation_self
-#, fuzzy
 msgid "You sent an invitation to join a chatroom"
-msgstr "Meghívást kaptál, hogy csatlakozz egy chatszobához"
+msgstr ""
 
 #: [chat]invitation_join
 msgid "Join %s"
@@ -674,6 +667,18 @@ msgstr ""
 
 #: [chat]jingle_end
 msgid "Call ended"
+msgstr ""
+
+#: [chat]jingle_hours
+msgid "%s hours %s minutes"
+msgstr ""
+
+#: [chat]jingle_minutes
+msgid "%s minutes and %s seconds"
+msgstr ""
+
+#: [chat]jingle_seconds
+msgid "%s seconds"
 msgstr ""
 
 #: [chat]publish_error
@@ -1023,13 +1028,12 @@ msgid "No publication yet? Write your first post to make people discover your pr
 msgstr ""
 
 #: [communityposts]empty_me_button
-#, fuzzy
 msgid "Publish my first post"
-msgstr "A bejegyzés nyilvános URL-je"
+msgstr ""
 
 #: [communitysubscriptions]subscriptions
-msgid "My Subscriptions"
-msgstr "Feliratkozásaim"
+msgid "Subscribed Communities"
+msgstr ""
 
 #: [communitysubscriptions]empty_title
 msgid "Hello"
@@ -1384,24 +1388,20 @@ msgid "Add the chatroom"
 msgstr "Chatszoba hozzáadása"
 
 #: [location]title
-#, fuzzy
 msgid "My location"
-msgstr "Közzétételeim"
+msgstr ""
 
 #: [location]enabled_title
-#, fuzzy
 msgid "Currently shared with my contacts"
-msgstr "Beszélgetés egy partnerrel"
+msgstr ""
 
 #: [location]disabled_title
-#, fuzzy
 msgid "Currently disabled"
-msgstr "Kommentek letiltva"
+msgstr ""
 
 #: [location]last_published
-#, fuzzy
 msgid "My last published location"
-msgstr "Közzétételeim"
+msgstr ""
 
 #: [location]less_than_one_km
 msgid "Less than a km away"
@@ -1519,6 +1519,14 @@ msgstr "%s meghívott, hogy csatlakozz egy chatszobához"
 msgid "Administrated by"
 msgstr ""
 
+#: [about_movim]info
+msgid "Movim is a federated blogging and chat platform."
+msgstr ""
+
+#: [about_movim]website
+msgid "Visit the project official website %s."
+msgstr ""
+
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
 msgstr "Rossz becenév (4-40 karakter)"
@@ -1548,9 +1556,8 @@ msgid "Write a new post…"
 msgstr "Írj egy új bejegyzést…"
 
 #: [notification]request_title
-#, fuzzy
 msgid "Notifications request"
-msgstr "Értesítések"
+msgstr ""
 
 #: [notification]request_info
 msgid "Movim requires your approval to display notifications"
@@ -1565,14 +1572,12 @@ msgid "Request"
 msgstr ""
 
 #: [notification]request_granted
-#, fuzzy
 msgid "Authorization granted"
-msgstr "Hitelesítési kód"
+msgstr ""
 
 #: [notification]request_refused
-#, fuzzy
 msgid "Authorization refused"
-msgstr "Hitelesítési kód"
+msgstr ""
 
 #: [notificationconfig]title [notifs]title [onboarding]notifications_title
 #: [room]notify_title
@@ -1588,9 +1593,8 @@ msgid "Incoming message"
 msgstr ""
 
 #: [notificationconfig]push_subscriptions
-#, fuzzy
 msgid "Push notifications"
-msgstr "Értesítések"
+msgstr ""
 
 #: [notificationconfig]push_subscriptions_text
 msgid "Movim will send push notifications to the following registered devices"
@@ -1601,19 +1605,16 @@ msgid "Push notifications enabled for this device"
 msgstr ""
 
 #: [notificationconfig]push_disabled
-#, fuzzy
 msgid "Push notifications disabled for this device"
-msgstr "A feliratkozások le vannak tiltva ennek a közösségnek"
+msgstr ""
 
 #: [notificationconfig]unknown_browser
-#, fuzzy
 msgid "Unknown browser"
-msgstr "Ismeretlen hiba"
+msgstr ""
 
 #: [notificationconfig]unknown_platform
-#, fuzzy
 msgid "Unknown platform"
-msgstr "Ismeretlen hiba"
+msgstr ""
 
 #: [invitations]title
 msgid "Pending Invitations"
@@ -1895,6 +1896,10 @@ msgstr ""
 msgid "Add #hashtags in your title or content to allow your article to be discovered"
 msgstr ""
 
+#: [publish]publish_error_forbidden
+msgid "You are not authorized to publish there"
+msgstr ""
+
 #: [publishhelp]title [page]help
 msgid "Help"
 msgstr "Segítség"
@@ -2136,9 +2141,8 @@ msgid "Archived"
 msgstr ""
 
 #: [room]archived_text
-#, fuzzy
 msgid "The chatroom messages are archived"
-msgstr "%s üzenet betöltve"
+msgstr ""
 
 #: [room]group_chat
 msgid "Group Chat"
@@ -2290,6 +2294,10 @@ msgstr ""
 
 #: [sendto]attach
 msgid "Attach to a blog publication"
+msgstr ""
+
+#: [sendto]share
+msgid "Share in a new publication"
 msgstr ""
 
 #: [sendto]contact
@@ -2525,18 +2533,16 @@ msgid "Camera"
 msgstr ""
 
 #: [visioconfig]camera_label
-#, fuzzy
 msgid "Default camera"
-msgstr "Alapértelmezett nyelv"
+msgstr ""
 
 #: [visioconfig]default_microphone_changed
 msgid "Default microphone changed"
 msgstr ""
 
 #: [visioconfig]default_camera_changed
-#, fuzzy
 msgid "Default camera changed"
-msgstr "Alapértelmezett nyelv"
+msgstr ""
 
 #: [visioconfig]no_mic_sound
 msgid "No sound detected from your microphone"
@@ -3443,57 +3449,3 @@ msgstr "Az API nem elérhető, próbáld újra később"
 #: [field]type_here
 msgid "Type here"
 msgstr "Ide írj"
-
-#~ msgid "General Overview"
-#~ msgstr "Általános Áttekintés"
-
-#~ msgid "Read and write rights for the webserver in Movim’s %s directory"
-#~ msgstr "Olvasási és írási jogok a webszervernek a Movim %sgyökérmappájában"
-
-#~ msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
-#~ msgstr "WebSocket kapcsolódási hiba, ellenőrizd, hogy fut-e a Movim démon és hogy elérhető-e"
-
-#~ msgid "Browser"
-#~ msgstr "Böngésző"
-
-#~ msgid "Movim Core"
-#~ msgstr "Movim Core"
-
-#~ msgid "Movim Daemon"
-#~ msgstr "Movim Daemon"
-
-#~ msgid "Database"
-#~ msgstr "Adatbázis"
-
-#~ msgid "XMPP"
-#~ msgstr "XMPP"
-
-#~ msgid "Here you can register your pod on the official %sMovim API%s"
-#~ msgstr "Itt tudod regisztrálni hivatalosan a pododat: %sMovim API%s"
-
-#~ msgid "Your pod is not registered on the API"
-#~ msgstr "A podod nincs regisztrálva az API-n"
-
-#~ msgid "Your pod is registered on the API"
-#~ msgstr "A podod regisztálva van az API-n"
-
-#~ msgid "Your pod is not yet validated"
-#~ msgstr "A pododat még nem ellenőrizték"
-
-#~ msgid "Your pod is validated"
-#~ msgstr "A podod érvényesítve lett."
-
-#~ msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
-#~ msgstr "Azt kérted, hogy lekerülj az API-ról, a kérésedet pár órán belül feldolgozzuk."
-
-#~ msgid "Archiving preferences"
-#~ msgstr "Archiválási beállítások"
-
-#~ msgid "Visit the blog to see all the public posts"
-#~ msgstr "Menj a blogra, hogy minden nyilvános bejegyzését lásd"
-
-#~ msgid "Statistics"
-#~ msgstr "Statisztika"
-
-#~ msgid "Status updated"
-#~ msgstr "Állapot frissítve"

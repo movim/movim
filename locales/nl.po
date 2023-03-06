@@ -124,16 +124,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-04 14:11+0200\n"
-"PO-Revision-Date: 2022-02-17 07:57+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"POT-Creation-Date: 2022-12-25 14:45+0200\n"
+"PO-Revision-Date: 2015-06-24 09:45+0000\n"
+"Last-Translator: Robbie Deighton <deightonrobbie@gmail.com>, 2019\n"
 "Language-Team: Dutch (http://www.transifex.com/movim/movim/language/nl/)\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.4.1\n"
+"X-Generator: Translate Toolkit 3.7.4\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -450,9 +450,8 @@ msgid "Syslog and files"
 msgstr "Syslog en bestanden"
 
 #: [adminreported]reported_by
-#, fuzzy
 msgid "Reported by %s users"
-msgstr "Meld misbruik"
+msgstr ""
 
 #: [adminreported]info
 msgid "Those accounts were reported by some Movim users"
@@ -474,22 +473,6 @@ msgstr ""
 msgid "File"
 msgstr "Bestand"
 
-#: [avatar]use_it
-msgid "Use it"
-msgstr "Gebruik het"
-
-#: [avatar]webcam
-msgid "Webcam"
-msgstr "Webcam"
-
-#: [avatar]cheese
-msgid "Cheese!"
-msgstr ""
-
-#: [avatar]snapshot
-msgid "Take a webcam snapshot"
-msgstr "Neem een webcamfoto"
-
 #: [avatar]updated
 msgid "Avatar Updated"
 msgstr "Profielfoto geüpdated"
@@ -510,25 +493,37 @@ msgstr ""
 msgid "Upload a new picture"
 msgstr ""
 
+#: [banner]change
+msgid "Change my banner"
+msgstr ""
+
+#: [banner]updated
+msgid "Banner Updated"
+msgstr ""
+
+#: [banner]not_updated
+msgid "Banner Not Updated"
+msgstr ""
+
+#: [banner]missing
+msgid "No banner defined yet"
+msgstr ""
+
 #: [blocked]title
-#, fuzzy
 msgid "Blocked"
-msgstr "geschrokken"
+msgstr ""
 
 #: [blocked]block_account
-#, fuzzy
 msgid "Block the account"
-msgstr "Andere Accounts"
+msgstr ""
 
 #: [blocked]unblock_account
-#, fuzzy
 msgid "Unblock the account"
-msgstr "Andere Accounts"
+msgstr ""
 
 #: [blocked]account_blocked
-#, fuzzy
 msgid "Account blocked"
-msgstr "Account"
+msgstr ""
 
 #: [blocked]account_unblocked
 msgid "Account unblocked"
@@ -587,9 +582,8 @@ msgid "Composing…"
 msgstr "Aan het schrijven..."
 
 #: [message]invitation
-#, fuzzy
 msgid "Invitation"
-msgstr "Uitnodiging verzonden"
+msgstr ""
 
 #: [message]paused
 msgid "Paused…"
@@ -644,9 +638,8 @@ msgid "You received an invitation to join a chatroom"
 msgstr "Je hebt een uitnodiging ontvangen om je aan te sluiten bij  een chatruimte"
 
 #: [chat]invitation_self
-#, fuzzy
 msgid "You sent an invitation to join a chatroom"
-msgstr "Je hebt een uitnodiging ontvangen om je aan te sluiten bij  een chatruimte"
+msgstr ""
 
 #: [chat]invitation_join
 msgid "Join %s"
@@ -679,6 +672,18 @@ msgstr ""
 
 #: [chat]jingle_end
 msgid "Call ended"
+msgstr ""
+
+#: [chat]jingle_hours
+msgid "%s hours %s minutes"
+msgstr ""
+
+#: [chat]jingle_minutes
+msgid "%s minutes and %s seconds"
+msgstr ""
+
+#: [chat]jingle_seconds
+msgid "%s seconds"
 msgstr ""
 
 #: [chat]publish_error
@@ -1028,13 +1033,12 @@ msgid "No publication yet? Write your first post to make people discover your pr
 msgstr ""
 
 #: [communityposts]empty_me_button
-#, fuzzy
 msgid "Publish my first post"
-msgstr "Openbare URL van dit bericht"
+msgstr ""
 
 #: [communitysubscriptions]subscriptions
-msgid "My Subscriptions"
-msgstr "Mijn abonnementen"
+msgid "Subscribed Communities"
+msgstr ""
 
 #: [communitysubscriptions]empty_title
 msgid "Hello"
@@ -1389,24 +1393,20 @@ msgid "Add the chatroom"
 msgstr "Voeg de chatroom toe"
 
 #: [location]title
-#, fuzzy
 msgid "My location"
-msgstr "Mijn berichten"
+msgstr ""
 
 #: [location]enabled_title
-#, fuzzy
 msgid "Currently shared with my contacts"
-msgstr "Chat met een contactpersoon"
+msgstr ""
 
 #: [location]disabled_title
-#, fuzzy
 msgid "Currently disabled"
-msgstr "Reacties uitgeschakeld"
+msgstr ""
 
 #: [location]last_published
-#, fuzzy
 msgid "My last published location"
-msgstr "Mijn berichten"
+msgstr ""
 
 #: [location]less_than_one_km
 msgid "Less than a km away"
@@ -1524,6 +1524,14 @@ msgstr ""
 msgid "Administrated by"
 msgstr ""
 
+#: [about_movim]info
+msgid "Movim is a federated blogging and chat platform."
+msgstr ""
+
+#: [about_movim]website
+msgid "Visit the project official website %s."
+msgstr ""
+
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
 msgstr "Bijnaam niet mogelijk (moet tussen 4 en 40 tekens zijn)"
@@ -1553,9 +1561,8 @@ msgid "Write a new post…"
 msgstr "Schrijf een nieuw bericht..."
 
 #: [notification]request_title
-#, fuzzy
 msgid "Notifications request"
-msgstr "Meldingen"
+msgstr ""
 
 #: [notification]request_info
 msgid "Movim requires your approval to display notifications"
@@ -1570,14 +1577,12 @@ msgid "Request"
 msgstr ""
 
 #: [notification]request_granted
-#, fuzzy
 msgid "Authorization granted"
-msgstr "Authenticatiecode"
+msgstr ""
 
 #: [notification]request_refused
-#, fuzzy
 msgid "Authorization refused"
-msgstr "Authenticatiecode"
+msgstr ""
 
 #: [notificationconfig]title [notifs]title [onboarding]notifications_title
 #: [room]notify_title
@@ -1593,9 +1598,8 @@ msgid "Incoming message"
 msgstr ""
 
 #: [notificationconfig]push_subscriptions
-#, fuzzy
 msgid "Push notifications"
-msgstr "Meldingen"
+msgstr ""
 
 #: [notificationconfig]push_subscriptions_text
 msgid "Movim will send push notifications to the following registered devices"
@@ -1606,19 +1610,16 @@ msgid "Push notifications enabled for this device"
 msgstr ""
 
 #: [notificationconfig]push_disabled
-#, fuzzy
 msgid "Push notifications disabled for this device"
-msgstr "Abonneren is voor deze groep uitgeschakeld"
+msgstr ""
 
 #: [notificationconfig]unknown_browser
-#, fuzzy
 msgid "Unknown browser"
-msgstr "Onbekende fout"
+msgstr ""
 
 #: [notificationconfig]unknown_platform
-#, fuzzy
 msgid "Unknown platform"
-msgstr "Onbekende fout"
+msgstr ""
 
 #: [invitations]title
 msgid "Pending Invitations"
@@ -1900,6 +1901,10 @@ msgstr ""
 msgid "Add #hashtags in your title or content to allow your article to be discovered"
 msgstr ""
 
+#: [publish]publish_error_forbidden
+msgid "You are not authorized to publish there"
+msgstr ""
+
 #: [publishhelp]title [page]help
 msgid "Help"
 msgstr "Help"
@@ -2141,9 +2146,8 @@ msgid "Archived"
 msgstr ""
 
 #: [room]archived_text
-#, fuzzy
 msgid "The chatroom messages are archived"
-msgstr "%s berichten ontvangen"
+msgstr ""
 
 #: [room]group_chat
 msgid "Group Chat"
@@ -2295,6 +2299,10 @@ msgstr ""
 
 #: [sendto]attach
 msgid "Attach to a blog publication"
+msgstr ""
+
+#: [sendto]share
+msgid "Share in a new publication"
 msgstr ""
 
 #: [sendto]contact
@@ -2530,18 +2538,16 @@ msgid "Camera"
 msgstr ""
 
 #: [visioconfig]camera_label
-#, fuzzy
 msgid "Default camera"
-msgstr "Standaardtaal"
+msgstr ""
 
 #: [visioconfig]default_microphone_changed
 msgid "Default microphone changed"
 msgstr ""
 
 #: [visioconfig]default_camera_changed
-#, fuzzy
 msgid "Default camera changed"
-msgstr "Standaardtaal"
+msgstr ""
 
 #: [visioconfig]no_mic_sound
 msgid "No sound detected from your microphone"
@@ -3448,54 +3454,3 @@ msgstr "De API is niet bereikbaar, probeer later nog eens"
 #: [field]type_here
 msgid "Type here"
 msgstr "Typ hier"
-
-#~ msgid "General Overview"
-#~ msgstr "Algemeen Overzicht"
-
-#~ msgid "Read and write rights for the webserver in Movim’s %s directory"
-#~ msgstr "Lees - en schrijfrechten voor de webserver in Movim's %s folder"
-
-#~ msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
-#~ msgstr "Fout met de WebSocket-verbinding, controlleer of de Movim Daemon aanstaat en bereikbaar is"
-
-#~ msgid "Browser"
-#~ msgstr "Browser"
-
-#~ msgid "Movim Core"
-#~ msgstr "Movim Core"
-
-#~ msgid "Movim Daemon"
-#~ msgstr "Movim Daemon"
-
-#~ msgid "Database"
-#~ msgstr "Database"
-
-#~ msgid "XMPP"
-#~ msgstr "XMPP"
-
-#~ msgid "Here you can register your pod on the official %sMovim API%s"
-#~ msgstr "Registreer hier je pod in de officiële %sMovim API%s"
-
-#~ msgid "Your pod is not registered on the API"
-#~ msgstr "Je pod is niet geregistreerd op de API"
-
-#~ msgid "Your pod is registered on the API"
-#~ msgstr "Je pod is geregistreerd op de API"
-
-#~ msgid "Your pod is not yet validated"
-#~ msgstr "Je pod is nog niet gevalideerd"
-
-#~ msgid "Your pod is validated"
-#~ msgstr "Je pod is gevalideerd"
-
-#~ msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
-#~ msgstr "Je hebt gevraagd verwijderd te worden van de API, dit verzoek zal in enkele uren uitgevoerd worden"
-
-#~ msgid "Visit the blog to see all the public posts"
-#~ msgstr "Bezoek de blog om alle openbare berichten te zien"
-
-#~ msgid "Statistics"
-#~ msgstr "Statistieken"
-
-#~ msgid "Status updated"
-#~ msgstr "status bijgewerkt"

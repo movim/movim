@@ -2,10 +2,10 @@
 
 namespace Moxl\Xec\Action\Pubsub;
 
-use Moxl\Xec\Action\Pubsub\Errors;
+use Moxl\Xec\Action;
 use Moxl\Stanza\Pubsub;
 
-class Delete extends Errors
+class Delete extends Action
 {
     protected $_to;
     protected $_node;
@@ -16,7 +16,7 @@ class Delete extends Errors
         Pubsub::delete($this->_to, $this->_node);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         if ($stanza['type'] == 'result') {
             //delete from bookmark
@@ -34,7 +34,7 @@ class Delete extends Errors
         }
     }
 
-    public function error($stanza, $parent = false)
+    public function error(string $errorId, ?string $message = null)
     {
         //delete from bookmark
         \App\Subscription::where('server', $this->_to)

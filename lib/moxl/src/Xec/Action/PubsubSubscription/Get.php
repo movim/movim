@@ -2,11 +2,11 @@
 
 namespace Moxl\Xec\Action\PubsubSubscription;
 
-use Moxl\Xec\Action\Pubsub\Errors;
+use Moxl\Xec\Action;
 use Moxl\Stanza\Pubsub;
 use App\Subscription;
 
-class Get extends Errors
+class Get extends Action
 {
     protected $_to;
     protected $_pepnode = 'urn:xmpp:pubsub:subscription';
@@ -17,7 +17,7 @@ class Get extends Errors
         Pubsub::getItems($this->_to, $this->_pepnode, 1000);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         Subscription::where('jid', $this->_to)
                     ->where('public', ($this->_pepnode == 'urn:xmpp:pubsub:subscription'))

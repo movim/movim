@@ -22,7 +22,7 @@ class Chats extends Base
         $this->registerEvent('jingle_message', 'onMessage');
         $this->registerEvent('presence', 'onPresence'/*, 'chat'*/);
         $this->registerEvent('chatstate', 'onChatState', 'chat');
-        // Bug: In Chat::ajaxGet, Notification.current might come after this event
+        // Bug: In Chat::ajaxGet, Notif.current might come after this event
         // so we don't set the filter
         $this->registerEvent('chat_open', 'onChatOpen', /* 'chat'*/);
     }

@@ -3,9 +3,9 @@
 namespace Moxl\Xec\Action\Pubsub;
 
 use Moxl\Stanza\Pubsub;
-use Moxl\Xec\Action\Pubsub\Errors;
+use Moxl\Xec\Action;
 
-class GetConfig extends Errors
+class GetConfig extends Action
 {
     protected $_to;
     protected $_node;
@@ -23,7 +23,7 @@ class GetConfig extends Errors
         return $this;
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $this->pack([
             'config' => $stanza->pubsub->configure,

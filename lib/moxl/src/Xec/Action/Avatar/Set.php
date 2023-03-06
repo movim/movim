@@ -38,10 +38,14 @@ class Set extends Action
         return $this;
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         if ($this->_to == false && $this->_node == false) {
-            $this->pack(\App\User::me()->contact);
+            $me = \App\User::me()->contact;
+            $me->avatartype = 'urn:xmpp:avatar:metadata';
+            $me->save();
+
+            $this->pack($me);
             $this->deliver();
         } else {
             $this->method('pubsub');
@@ -50,17 +54,17 @@ class Set extends Action
         }
     }
 
-    public function errorFeatureNotImplemented($stanza)
+    public function errorFeatureNotImplemented(string $errorId, ?string $message = null)
     {
         $this->deliver();
     }
 
-    public function errorBadRequest($stanza)
+    public function errorBadRequest(string $errorId, ?string $message = null)
     {
         $this->deliver();
     }
 
-    public function errorNotAllowed($stanza)
+    public function errorNotAllowed(string $errorId, ?string $message = null)
     {
         $this->deliver();
     }

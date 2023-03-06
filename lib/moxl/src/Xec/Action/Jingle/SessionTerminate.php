@@ -17,7 +17,7 @@ class SessionTerminate extends Action
         Jingle::sessionTerminate($this->_to, $this->_jingleSid, $this->_reason);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $userid = \App\User::me()->id;
         $message = new \App\Message;

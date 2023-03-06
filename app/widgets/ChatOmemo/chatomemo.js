@@ -1,13 +1,5 @@
 var KeyHelper = libsignal.KeyHelper;
 
-const KEY_ALGO = {
-    'name': 'AES-GCM',
-    'length': 128
-};
-const NUM_PREKEYS = 50;
-const SIGNED_PREKEY_ID = 1;
-const AESGCM_REGEX = /^aesgcm:\/\/([^#]+\/([^\/]+\.([a-z0-9]+)))#([a-z0-9]+)/i;
-
 var ChatOmemo = {
     requestedDevicesListFrom: null,
     refreshed: false,
@@ -139,6 +131,13 @@ var ChatOmemo = {
             if (textarea && textarea.dataset.jid == jid) {
                 Chat.setOmemoState('yes');
                 Chat.disableSending();
+
+                // Refreshing the unencrypted messages
+                if (Boolean(textarea.dataset.muc)) {
+                    Chat_ajaxGetRoom(jid);
+                } else {
+                    Chat_ajaxGet(jid);
+                }
 
                 if (Chat.getTextarea().value.length > 0) {
                     Chat.sendMessage();

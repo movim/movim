@@ -168,7 +168,7 @@ class Blog extends Base
             }
 
             if ($this->_posts !== null) {
-                $this->_gallery = isPostGallery($this->_posts);
+                $this->_gallery = $this->_item && $this->_item->isGallery();
             }
         }
 

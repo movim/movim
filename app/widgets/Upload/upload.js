@@ -262,8 +262,14 @@ var Upload = {
     },
 
     clear : function() {
-        document.getElementById('file').value = null;
-        document.getElementById('image').value = null;
+        if (document.getElementById('file')) {
+            document.getElementById('file').value = null;
+        }
+
+        if (document.getElementById('image')) {
+            document.getElementById('image').value = null;
+        }
+
         Upload.file = null;
     },
 

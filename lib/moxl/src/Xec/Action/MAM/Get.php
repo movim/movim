@@ -21,11 +21,11 @@ class Get extends Action
 
     public function request()
     {
-        $sess = Session::start();
+        $session = Session::start();
 
         // Generating the queryid key.
         $this->_queryid = \generateKey(12);
-        $sess->set('mamid'.$this->_queryid, true);
+        $session->set('mamid'.$this->_queryid, true);
         $this->store();
 
         MAM::get(
@@ -47,10 +47,10 @@ class Get extends Action
         return $this;
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $sess = Session::start();
-        $sess->remove('mamid'.$this->_queryid);
+        $session = Session::start();
+        $session->delete('mamid'.$this->_queryid);
 
         //MessageBuffer::getInstance()->save();
 

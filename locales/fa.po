@@ -118,16 +118,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-04 14:11+0200\n"
-"PO-Revision-Date: 2022-02-17 07:57+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"POT-Creation-Date: 2022-12-25 14:45+0200\n"
+"PO-Revision-Date: 2015-06-24 09:45+0000\n"
+"Last-Translator: revolt68 <ashrafnezhad@gmail.com>, 2021\n"
 "Language-Team: Persian (http://www.transifex.com/movim/movim/language/fa/)\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Translate Toolkit 3.4.1\n"
+"X-Generator: Translate Toolkit 3.7.4\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -416,9 +416,8 @@ msgid "Access Tenor and get your API key"
 msgstr ""
 
 #: [twitter]title
-#, fuzzy
 msgid "Twitter integration"
-msgstr "ادغام Tenor"
+msgstr ""
 
 #: [twitter]label
 msgid "Your Twitter Token"
@@ -468,22 +467,6 @@ msgstr ""
 msgid "File"
 msgstr "فایل"
 
-#: [avatar]use_it
-msgid "Use it"
-msgstr "استفاده"
-
-#: [avatar]webcam
-msgid "Webcam"
-msgstr "دوربین"
-
-#: [avatar]cheese
-msgid "Cheese!"
-msgstr "پنیر!"
-
-#: [avatar]snapshot
-msgid "Take a webcam snapshot"
-msgstr "عکس فوری وب کم بگیرید"
-
 #: [avatar]updated
 msgid "Avatar Updated"
 msgstr "آواتار تغییر یافت"
@@ -504,24 +487,37 @@ msgstr ""
 msgid "Upload a new picture"
 msgstr ""
 
+#: [banner]change
+msgid "Change my banner"
+msgstr ""
+
+#: [banner]updated
+msgid "Banner Updated"
+msgstr ""
+
+#: [banner]not_updated
+msgid "Banner Not Updated"
+msgstr ""
+
+#: [banner]missing
+msgid "No banner defined yet"
+msgstr ""
+
 #: [blocked]title
 msgid "Blocked"
 msgstr ""
 
 #: [blocked]block_account
-#, fuzzy
 msgid "Block the account"
-msgstr "اکانت های دیگر"
+msgstr ""
 
 #: [blocked]unblock_account
-#, fuzzy
 msgid "Unblock the account"
-msgstr "اکانت های دیگر"
+msgstr ""
 
 #: [blocked]account_blocked
-#, fuzzy
 msgid "Account blocked"
-msgstr "حساب کاربری"
+msgstr ""
 
 #: [blocked]account_unblocked
 msgid "Account unblocked"
@@ -580,9 +576,8 @@ msgid "Composing…"
 msgstr ""
 
 #: [message]invitation
-#, fuzzy
 msgid "Invitation"
-msgstr "دعوت های در انتظار"
+msgstr ""
 
 #: [message]paused
 msgid "Paused…"
@@ -671,6 +666,18 @@ msgstr ""
 
 #: [chat]jingle_end
 msgid "Call ended"
+msgstr ""
+
+#: [chat]jingle_hours
+msgid "%s hours %s minutes"
+msgstr ""
+
+#: [chat]jingle_minutes
+msgid "%s minutes and %s seconds"
+msgstr ""
+
+#: [chat]jingle_seconds
+msgid "%s seconds"
 msgstr ""
 
 #: [chat]publish_error
@@ -1020,13 +1027,12 @@ msgid "No publication yet? Write your first post to make people discover your pr
 msgstr ""
 
 #: [communityposts]empty_me_button
-#, fuzzy
 msgid "Publish my first post"
-msgstr "لینک عمومی این نوشته"
+msgstr ""
 
 #: [communitysubscriptions]subscriptions
-msgid "My Subscriptions"
-msgstr "اشتراک های من"
+msgid "Subscribed Communities"
+msgstr ""
 
 #: [communitysubscriptions]empty_title
 msgid "Hello"
@@ -1381,19 +1387,16 @@ msgid "Add the chatroom"
 msgstr "اتاق گپ را اضافه کنید"
 
 #: [location]title
-#, fuzzy
 msgid "My location"
-msgstr "موقعیت مکانی"
+msgstr ""
 
 #: [location]enabled_title
-#, fuzzy
 msgid "Currently shared with my contacts"
-msgstr "با مخاطب گپ بزنید"
+msgstr ""
 
 #: [location]disabled_title
-#, fuzzy
 msgid "Currently disabled"
-msgstr "نظر دادن خاموش است"
+msgstr ""
 
 #: [location]last_published
 msgid "My last published location"
@@ -1515,6 +1518,14 @@ msgstr ""
 msgid "Administrated by"
 msgstr ""
 
+#: [about_movim]info
+msgid "Movim is a federated blogging and chat platform."
+msgstr ""
+
+#: [about_movim]website
+msgid "Visit the project official website %s."
+msgstr ""
+
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
 msgstr ""
@@ -1544,9 +1555,8 @@ msgid "Write a new post…"
 msgstr ""
 
 #: [notification]request_title
-#, fuzzy
 msgid "Notifications request"
-msgstr "اعلان ها"
+msgstr ""
 
 #: [notification]request_info
 msgid "Movim requires your approval to display notifications"
@@ -1582,9 +1592,8 @@ msgid "Incoming message"
 msgstr ""
 
 #: [notificationconfig]push_subscriptions
-#, fuzzy
 msgid "Push notifications"
-msgstr "اعلان ها"
+msgstr ""
 
 #: [notificationconfig]push_subscriptions_text
 msgid "Movim will send push notifications to the following registered devices"
@@ -1599,14 +1608,12 @@ msgid "Push notifications disabled for this device"
 msgstr ""
 
 #: [notificationconfig]unknown_browser
-#, fuzzy
 msgid "Unknown browser"
-msgstr "خطای ناشناخته"
+msgstr ""
 
 #: [notificationconfig]unknown_platform
-#, fuzzy
 msgid "Unknown platform"
-msgstr "خطای ناشناخته"
+msgstr ""
 
 #: [invitations]title
 msgid "Pending Invitations"
@@ -1886,6 +1893,10 @@ msgstr ""
 
 #: [publish]help_hashtag
 msgid "Add #hashtags in your title or content to allow your article to be discovered"
+msgstr ""
+
+#: [publish]publish_error_forbidden
+msgid "You are not authorized to publish there"
 msgstr ""
 
 #: [publishhelp]title [page]help
@@ -2284,6 +2295,10 @@ msgstr ""
 msgid "Attach to a blog publication"
 msgstr ""
 
+#: [sendto]share
+msgid "Share in a new publication"
+msgstr ""
+
 #: [sendto]contact
 msgid "Send it to a contact"
 msgstr ""
@@ -2517,18 +2532,16 @@ msgid "Camera"
 msgstr ""
 
 #: [visioconfig]camera_label
-#, fuzzy
 msgid "Default camera"
-msgstr "زبان پیشفرض"
+msgstr ""
 
 #: [visioconfig]default_microphone_changed
 msgid "Default microphone changed"
 msgstr ""
 
 #: [visioconfig]default_camera_changed
-#, fuzzy
 msgid "Default camera changed"
-msgstr "زبان پیشفرض"
+msgstr ""
 
 #: [visioconfig]no_mic_sound
 msgid "No sound detected from your microphone"
@@ -3435,21 +3448,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr "اینجا بنویسید"
-
-#~ msgid "General Overview"
-#~ msgstr "بررسی اجمالی عمومی"
-
-#~ msgid "Browser"
-#~ msgstr "مرورگر"
-
-#~ msgid "Movim Core"
-#~ msgstr "هسته موویم"
-
-#~ msgid "Movim Daemon"
-#~ msgstr "سیستم موویم"
-
-#~ msgid "Database"
-#~ msgstr "پایگاه داده"
-
-#~ msgid "XMPP"
-#~ msgstr "XMPP"

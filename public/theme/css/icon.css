@@ -121,7 +121,7 @@ span.icon.status:after {
     transition: border-radius 0.15s ease-in-out;
     border-radius: 2em;
     background-color: #DDD;
-    box-shadow: -0.1rem -0.1rem 0.5rem rgba(0, 0, 0, 0.2);
+    box-shadow: var(--elevation-0);
 }
 
 span.icon.status.location:after {
@@ -184,9 +184,13 @@ p span.icon.tiny {
     height: 2rem;
     display: inline-block;
     margin-right: 0.5rem;
-    vertical-align: middle;
+    vertical-align: text-top;
     font-size: 1rem;
     line-height: 2rem;
+}
+
+p span.icon.tiny:not(:first-child) {
+    margin-left: 0.75rem;
 }
 
 /* Composing */

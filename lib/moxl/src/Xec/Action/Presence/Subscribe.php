@@ -16,7 +16,7 @@ class Subscribe extends Action
         Presence::subscribe($this->_to, $this->_status);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $this->pack($this->_to);
         $this->deliver();

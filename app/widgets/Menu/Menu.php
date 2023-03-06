@@ -85,16 +85,16 @@ class Menu extends Base
 
         if ($post->isComment()
         && !$post->isMine()) {
-            $contact = \App\Contact::firstOrNew(['id' => $post->aid]);
+            $contact = \App\Contact::where('id', $post->aid)->first();
             $parent = $post->parent;
 
-            if ($parent) {
-                Notification::append(
+            if ($parent && $contact) {
+                Notif::append(
                     'comments',
-                    '📝 ' . $parent->title,
                     ($post->isLike()) ? '❤️ ' .$contact->truename : $post->title,
+                    '📝 ' . $parent->title,
                     $contact->getPhoto(),
-                    2
+                    4
                 );
             }
         } elseif ($count > 0
@@ -107,12 +107,12 @@ class Menu extends Base
                     : $post->title;
 
                 if (!$post->isMine()) {
-                    Notification::append(
+                    Notif::append(
                         'news',
-                        '📝 ' . $title,
-                        $contact->truename,
+                        '📝 ' . $contact->truename,
+                        $title,
                         $contact->getPhoto(),
-                        2,
+                        4,
                         $this->route('post', [$post->server, $post->node, $post->nodeid]),
                         $this->route('contact', $post->server)
                     );
@@ -131,12 +131,12 @@ class Menu extends Base
                     $logo = $info->getPhoto('l');
                 }
 
-                Notification::append(
+                Notif::append(
                     'news',
                     $title,
                     $post->title,
                     $logo,
-                    2,
+                    4,
                     $this->route('post', [$post->server, $post->node, $post->nodeid]),
                     $this->route('community', [$post->server, $post->node])
                 );

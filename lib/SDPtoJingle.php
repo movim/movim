@@ -81,9 +81,9 @@ class SDPtoJingle
 
     private function getSessionId()
     {
-        $s = Session::start();
+        $session = Session::start();
 
-        if ($sid = $s->get('jingleSid')) {
+        if ($sid = $session->get('jingleSid')) {
             return $sid;
         } else {
             $o = $this->arr[1];
@@ -347,8 +347,8 @@ class SDPtoJingle
                             break;
 
                         case 'pwd':
-                            $s = Session::start();
-                            $s->set('icePwd', $matches[1]);
+                            $session = Session::start();
+                            $session->set('icePwd', $matches[1]);
                             $this->transport->addAttribute('pwd', $matches[1]);
                             break;
 
@@ -416,10 +416,10 @@ class SDPtoJingle
                             }
 
                             // ufrag to the transport
-                            $s = Session::start();
-                            if ($this->ufrag && $s->get('icePwd')) {
+                            $session = Session::start();
+                            if ($this->ufrag && $session->get('icePwd')) {
                                 $this->transport->addAttribute('ufrag', $this->ufrag);
-                                $this->transport->addAttribute('pwd', $s->get('icePwd'));
+                                $this->transport->addAttribute('pwd', $session->get('icePwd'));
                             }
 
                             break;

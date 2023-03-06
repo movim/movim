@@ -18,17 +18,17 @@ class Submit extends Action
         AdHoc::submit($this->_to, $this->_node, $this->_data, $this->_sessionid);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $this->prepare($stanza, $parent);
         $this->pack($stanza->command);
         $this->deliver();
     }
 
-    public function error($errorid, $message)
+    public function error(string $errorId, ?string $message = null)
     {
         $this->pack([
-            'errorid' => $errorid,
+            'errorid' => $errorId,
             'message' => $message
         ]);
         $this->deliver();

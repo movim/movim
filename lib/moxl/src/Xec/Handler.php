@@ -6,35 +6,20 @@ use Movim\Session;
 
 class Handler
 {
-    public static function handle($child)
+    public static function handle(\SimpleXMLElement $child)
     {
         $id = (in_array($child->getName(), ['iq', 'presence', 'message']))
             ? (string)$child->attributes()->id
             : '';
 
-        $sess = Session::start();
-
-        /**
-         * See Action/Presence/Muc
-         */
-        if ($child->getName() == 'presence' && isset($child->x)) {
-            foreach ($child->x as $x) {
-                if ($x->attributes()->xmlns == 'http://jabber.org/protocol/muc') {
-                    if ($id === '') {
-                        $id = $sess->get((string)$child->attributes()->from);
-                    }
-
-                    $sess->remove((string)$child->attributes()->from);
-                }
-            }
-        }
+        $session = Session::start();
 
         if ($id !== ''
-        && $sess->get($id) !== false) {
+        && $session->get($id) !== null) {
             \Utils::info("Handler : Memory instance found for {$id}");
 
-            $action = $sess->get($id);
-            $sess->remove($id);
+            $action = $session->get($id);
+            $session->delete($id);
 
             $error = false;
 
@@ -50,7 +35,7 @@ class Handler
                 $errors = $error->children();
                 $errorid = Handler::formatError($errors->getName());
 
-                $message = false;
+                $message = null;
 
                 if ($error->text) {
                     $message = (string)$error->text;
@@ -78,18 +63,18 @@ class Handler
         } else {
             \Utils::info("Handler : No memory instance found for {$id}");
 
-            $handled = Handler::handleNode($child);
+            Handler::handleNode($child);
 
             foreach ($child->children() as $s1) {
-                $handled = Handler::handleNode($s1, $child);
+                Handler::handleNode($s1, $child);
                 foreach ($s1->children() as $s2) {
-                    $handled = Handler::handleNode($s2, $child);
+                    Handler::handleNode($s2, $child);
                 }
             }
         }
     }
 
-    public static function handleNode($s, $sparent = false)
+    public static function handleNode($s, ?\SimpleXMLElement $sparent = null)
     {
         $name = $s->getName();
         $ns = '';
@@ -101,19 +86,25 @@ class Handler
             }
         }
 
+        $handledFirst = $handledSecond = false;
+
         if ($s->items && $s->items->attributes()->node) {
             $node = (string)$s->items->attributes()->node;
             $hash = md5($name.$ns.$node);
             \Utils::info('Handler : Searching a payload for "'.$name . ':' . $ns . ' [' . $node . ']", "'.$hash.'"');
-            Handler::searchPayload($hash, $s, $sparent);
+            $handledFirst = Handler::searchPayload($hash, $s, $sparent);
         }
 
         $hash = md5($name.$ns);
         \Utils::info('Handler : Searching a payload for "'.$name . ':' . $ns . '", "'.$hash.'"');
-        Handler::searchPayload($hash, $s, $sparent);
+        $handledSecond = Handler::searchPayload($hash, $s, $sparent);
+
+        if ($name == 'iq' && !$handledFirst && !$handledSecond) {
+            Handler::searchPayload('iq_error', $s, $sparent);
+        }
     }
 
-    public static function searchPayload($hash, $s, $sparent = false): bool
+    public static function searchPayload($hash, $s, ?\SimpleXMLElement $sparent = null): bool
     {
         $hashToClass = [
             '9a534a8b4d6324e23f4187123e406729' => 'Message',
@@ -153,10 +144,10 @@ class Handler
 
             '54c22c37d17c78ee657ea3d40547a970' => 'Version',
 
-            '1cb493832467273efa384bbffa6dc35a' => 'Avatar',
-            '0f59aa7fb0492a008df1b807e91dda3b' => 'AvatarMetadata',
+            '1cb493832467273efa384bbffa6dc35a' => 'AvatarData',
+            '0f59aa7fb0492a008df1b807e91dda3b' => 'Avatar',
 
-            '64d80ef76ceb442578e658fa39cde8c9' => 'BannerMetadata', // Movim specific for now
+            '64d80ef76ceb442578e658fa39cde8c9' => 'Banner', // Movim specific for now
 
             '36fe2745bdc72b1682be2c008d547e3d' => 'Vcard4',
 
@@ -184,7 +175,10 @@ class Handler
             'de175adc9063997df5b79817576ff659' => 'SASLFailure',
             '0bc0f510b2b6ac432e8605267ebdc812' => 'SessionBind',
             '128477f50347d98ee1213d71f27e8886' => 'SessionBind',
+
+            'iq_error' => 'IqError',
         ];
+
         if (isset($hashToClass[$hash])) {
             $classname = '\\Moxl\\Xec\\Payload\\'.$hashToClass[$hash];
 

@@ -28,13 +28,13 @@ class Set extends Action
         return $this;
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $this->pack($this->_data);
         $this->deliver();
     }
 
-    public function error($id, $message = false)
+    public function error(string $errorId, ?string $message = null)
     {
         $this->pack($message);
         $this->deliver();

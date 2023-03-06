@@ -16,7 +16,7 @@ class Utils
         $log = new Logger('movim');
         $log->pushHandler(new SyslogHandler('movim'));
 
-        $stream = new StreamHandler(LOG_PATH . '/errors.log');
+        $stream = new StreamHandler(config('paths.log') . '/errors.log');
         $stream->setFormatter(new LineFormatter(null, null, true));
         $log->pushHandler($stream);
 
@@ -32,7 +32,7 @@ class Utils
             $log = new Logger('movim');
             $log->pushHandler(new SyslogHandler('movim'));
 
-            $stream = new StreamHandler(LOG_PATH . '/info.log');
+            $stream = new StreamHandler(config('paths.log') . '/info.log');
             $stream->setFormatter(new LineFormatter(null, null, true));
             $log->pushHandler($stream);
 
@@ -46,7 +46,7 @@ class Utils
     public static function debug($logs)
     {
         $log = new Logger('movim');
-        $log->pushHandler(new StreamHandler(LOG_PATH . '/debug.log'));
+        $log->pushHandler(new StreamHandler(config('paths.log') . '/debug.log'));
         if (is_array($logs)) {
             $log->debug('', $logs);
         } else {
@@ -89,6 +89,47 @@ function config(string $key, $default = null)
 }
 
 /**
+ * Check if Opcache is enabled
+ */
+function isOpcacheEnabled(): bool
+{
+    return is_array(opcache_get_status());
+}
+
+/**
+ * List compilable Opcache files
+ */
+function listOpcacheCompilableFiles(): array
+{
+    $files = [];
+
+    foreach (['vendor', 'app', 'src', 'lib'] as $dir) {
+        $directory = new \RecursiveDirectoryIterator(DOCUMENT_ROOT.'/'. $dir);
+        $iterator = new \RecursiveIteratorIterator($directory);
+        $regex = new \RegexIterator($iterator, '/^.+\.php$/i', \RecursiveRegexIterator::GET_MATCH);
+
+        foreach ($regex as $key => $file) {
+            array_push($files, $file[0]);
+        }
+    }
+
+    return $files;
+}
+
+/**
+ * Compile main files in Opcache
+ */
+function compileOpcache()
+{
+    error_reporting(0);
+    foreach (listOpcacheCompilableFiles() as $file) {
+        opcache_invalidate($file, true);
+        yield @opcache_compile_file($file);
+    }
+    error_reporting(1);
+}
+
+/**
  * Check if the session exists
  */
 function isLogged()
@@ -113,34 +154,13 @@ function getClientTypes()
 }
 
 /**
- * Check if Posts collection is gallery
- */
-function isPostGallery($postCollection): bool
-{
-    // For now we detect if a node is a gallery if all the publications have an attached picture
-    // and if the post contents are short.
-    $shortCount = 0;
-
-    $gallery = $postCollection->every(function ($post) use (&$shortCount) {
-        if ($post->isShort()) $shortCount++;
-        return $post->picture != null;
-    });
-
-    if ($gallery && $shortCount < $postCollection->count()/2) $gallery = false;
-
-    return $gallery;
-}
-
-/**
  * Resolve infos from a Posts collection
  */
 function resolveInfos($postCollection)
 {
     $serverNodes = $postCollection->map(function($item) {
         return ['server' => $item->server, 'node' => $item->node];
-    })->unique(function ($item) {
-        return $item['server'].$item['node'];
-    });
+    })->unique(fn ($item) => $item['server'].$item['node']);
 
     if ($serverNodes->isNotEmpty()) {
         $first = $serverNodes->first();
@@ -156,9 +176,7 @@ function resolveInfos($postCollection)
             ]);
         });
 
-        $infos = $infos->get()->keyBy(function ($item) {
-            return $item['server'].$item['node'];
-        });
+        $infos = $infos->get()->keyBy(fn ($item) => $item['server'].$item['node']);
 
         $postCollection->map(function($item) use ($infos) {
             $item->info = $infos->get($item->server.$item->node);
@@ -172,7 +190,7 @@ function resolveInfos($postCollection)
 /**
  * Return a picture with a specific size
  */
-function getPhoto(string $key, string $size = 'm')
+function getPhoto(string $key, string $size = 'm'): ?string
 {
     $sizes = [
         'xxl'   => [1280, 300],
@@ -533,96 +551,6 @@ function getPresencesTxt()
     ];
 }
 
-function getMood()
-{
-    return [
-        'afraid'        => __('mood.afraid'), // Impressed with fear or apprehension; in fear; apprehensive.
-        'amazed'        => __('mood.amazed'), // Astonished; confounded with fear, surprise or wonder.
-        'amorous'       => __('mood.amorous'), // Inclined to love; having a propensity to love, or to sexual enjoyment; loving, fond, affectionate, passionate, lustful, sexual, etc.
-        'angry'         => __('mood.angry'), // Displaying or feeling anger, i.e., a strong feeling of displeasure, hostility or antagonism towards someone or something, usually combined with an urge to harm.
-        'annoyed'       => __('mood.annoyed'), // To be disturbed or irritated, especially by continued or repeated acts.
-        'anxious'       => __('mood.anxious'), // Full of anxiety or disquietude; greatly concerned or solicitous, esp. respecting something future or unknown; being in painful suspense.
-        'aroused'       => __('mood.aroused'), // To be stimulated in one's feelings, especially to be sexually stimulated.
-        'ashamed'       => __('mood.ashamed'), // Feeling shame or guilt.
-        'bored'         => __('mood.bored'), // Suffering from boredom; uninterested, without attention.
-        'brave'         => __('mood.brave'), // Strong in the face of fear; courageous.
-        'calm'          => __('mood.calm'), // Peaceful, quiet.
-        'cautious'      => __('mood.cautious'), // Taking care or caution; tentative.
-        'cold'          => __('mood.cold'), // Feeling the sensation of coldness, especially to the point of discomfort.
-        'confident'     => __('mood.confident'), // Feeling very sure of or positive about something, especially about one's own capabilities.
-        'confused'      => __('mood.confused'), // Chaotic, jumbled or muddled.
-        'contemplative' => __('mood.contemplative'), // Feeling introspective or thoughtful.
-        'contented'     => __('mood.contented'), // Pleased at the satisfaction of a want or desire; satisfied.
-        'cranky'        => __('mood.cranky'), // Grouchy, irritable; easily upset.
-        'crazy'         => __('mood.crazy'), // Feeling out of control; feeling overly excited or enthusiastic.
-        'creative'      => __('mood.creative'), // Feeling original, expressive, or imaginative.
-        'curious'       => __('mood.curious'), // Inquisitive; tending to ask questions, investigate, or explore.
-        'dejected'      => __('mood.dejected'), // Feeling sad and dispirited.
-        'depressed'     => __('mood.depressed'), // Severely despondent and unhappy.
-        'disappointed'  => __('mood.disappointed'), // Defeated of expectation or hope; let down.
-        'disgusted'     => __('mood.disgusted'), // Filled with disgust; irritated and out of patience.
-        'dismayed'      => __('mood.dismayed'), // Feeling a sudden or complete loss of courage in the face of trouble or danger.
-        'distracted'    => __('mood.distracted'), // Having one's attention diverted; preoccupied.
-        'embarrassed'   => __('mood.embarrassed'), // Having a feeling of shameful discomfort.
-        'envious'       => __('mood.envious'), // Feeling pain by the excellence or good fortune of another.
-        'excited'       => __('mood.excited'), // Having great enthusiasm.
-        'flirtatious'   => __('mood.flirtatious'), // In the mood for flirting.
-        'frustrated'    => __('mood.frustrated'), // Suffering from frustration; dissatisfied, agitated, or discontented because one is unable to perform an action or fulfill a desire.
-        'grateful'      => __('mood.grateful'), // Feeling appreciation or thanks.
-        'grieving'      => __('mood.grieving'), // Feeling very sad about something, especially something lost; mournful; sorrowful.
-        'grumpy'        => __('mood.grumpy'), // Unhappy and irritable.
-        'guilty'        => __('mood.guilty'), // Feeling responsible for wrongdoing; feeling blameworthy.
-        'happy'         => __('mood.happy'), // Experiencing the effect of favourable fortune; having the feeling arising from the consciousness of well-being or of enjoyment; enjoying good of any kind, as peace, tranquillity, comfort; contented; joyous.
-        'hopeful'       => __('mood.hopeful'), // Having a positive feeling, belief, or expectation that something wished for can or will happen.
-        'hot'           => __('mood.hot'), // Feeling the sensation of heat, especially to the point of discomfort.
-        'humbled'       => __('mood.humbled'), // Having or showing a modest or low estimate of one's own importance; feeling lowered in dignity or importance.
-        'humiliated'    => __('mood.humiliated'), // Feeling deprived of dignity or self-respect.
-        'hungry'        => __('mood.hungry'), // Having a physical need for food.
-        'hurt'          => __('mood.hurt'), // Wounded, injured, or pained, whether physically or emotionally.
-        'impressed'     => __('mood.impressed'), // Favourably affected by something or someone.
-        'in_awe'        => __('mood.in_awe'), // Feeling amazement at something or someone; or feeling a combination of fear and reverence.
-        'in_love'       => __('mood.in_love'), // Feeling strong affection, care, liking, or attraction..
-        'indignant'     => __('mood.indignant'), // Showing anger or indignation, especially at something unjust or wrong.
-        'interested'    => __('mood.interested'), // Showing great attention to something or someone; having or showing interest.
-        'intoxicated'   => __('mood.intoxicated'), // Under the influence of alcohol; drunk.
-        'invincible'    => __('mood.invincible'), // Feeling as if one cannot be defeated, overcome or denied.
-        'jealous'       => __('mood.jealous'), // Fearful of being replaced in position or affection.
-        'lonely'        => __('mood.lonely'), // Feeling isolated, empty, or abandoned.
-        'lost'          => __('mood.lost'), // Unable to find one's way, either physically or emotionally.
-        'lucky'         => __('mood.lucky'), // Feeling as if one will be favored by luck.
-        'mean'          => __('mood.mean'), // Causing or intending to cause intentional harm; bearing ill will towards another; cruel; malicious.
-        'moody'         => __('mood.moody'), // Given to sudden or frequent changes of mind or feeling; temperamental.
-        'nervous'       => __('mood.nervous'), // Easily agitated or alarmed; apprehensive or anxious.
-        'neutral'       => __('mood.neutral'), // Not having a strong mood or emotional state.
-        'offended'      => __('mood.offended'), // Feeling emotionally hurt, displeased, or insulted.
-        'outraged'      => __('mood.outraged'), // Feeling resentful anger caused by an extremely violent or vicious attack, or by an offensive, immoral, or indecent act.
-        'playful'       => __('mood.playful'), // Interested in play; fun, recreational, unserious, lighthearted; joking, silly.
-        'proud'         => __('mood.proud'), // Feeling a sense of one's own worth or accomplishment.
-        'relaxed'       => __('mood.relaxed'), // Having an easy-going mood; not stressed; calm.
-        'relieved'      => __('mood.relieved'), // Feeling uplifted because of the removal of stress or discomfort.
-        'remorseful'    => __('mood.remorseful'), // Feeling regret or sadness for doing something wrong.
-        'restless'      => __('mood.restless'), // Without rest; unable to be still or quiet; uneasy; continually moving.
-        'sad'           => __('mood.sad'), // Feeling sorrow; sorrowful, mournful.
-        'sarcastic'     => __('mood.sarcastic'), // Mocking and ironical.
-        'satisfied'     => __('mood.satisfied'), // Pleased at the fulfillment of a need or desire.
-        'serious'       => __('mood.serious'), // Without humor or expression of happiness; grave in manner or disposition; earnest; thoughtful; solemn.
-        'shocked'       => __('mood.shocked'), // Surprised, startled, confused, or taken aback.
-        'shy'           => __('mood.shy'), // Feeling easily frightened or scared; timid; reserved or coy.
-        'sick'          => __('mood.sick'), // Feeling in poor health; ill.
-        'sleepy'        => __('mood.sleepy'), // Feeling the need for sleep.
-        'spontaneous'   => __('mood.spontaneous'), // Acting without planning; natural; impulsive.
-        'stressed'      => __('mood.stressed'), // Suffering emotional pressure.
-        'strong'        => __('mood.strong'), // Capable of producing great physical force; or, emotionally forceful, able, determined, unyielding.
-        'surprised'     => __('mood.surprised'), // Experiencing a feeling caused by something unexpected.
-        'thankful'      => __('mood.thankful'), // Showing appreciation or gratitude.
-        'thirsty'       => __('mood.thirsty'), // Feeling the need to drink.
-        'tired'         => __('mood.tired'), // In need of rest or sleep.
-        'undefined'     => __('mood.undefined'), // [Feeling any emotion not defined here.]
-        'weak'          => __('mood.weak'), // Lacking in force or ability, either physical or emotional.
-        'worried'       => __('mood.worried') // Thinking about unpleasant things that have happened or that might happen; feeling afraid and unhappy.
-    ];
-}
-
 /**
  * Map the XMPP form vars to Material icons
  */
@@ -635,6 +563,7 @@ function varToIcons(string $var)
         'pubsub#notify_delete' => 'delete',
         'pubsub#notify_retract' => 'delete_sweep',
         'pubsub#persist_items' => 'save',
+        'pubsub#type' => 'space_dashboard',
         'pubsub#deliver_notifications' => 'notifications_active',
 
         // Muc

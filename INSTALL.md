@@ -154,48 +154,30 @@ If everything runs as expected you should see:
 
 This daemon will be killed once your console is closed. Consider using `systemd` or `init` scripts to keep the daemon running in the foreground even after your disconnection. There are example startup files, like a `systemd` service file, in the [`etc/` directory](https://github.com/movim/movim/tree/master/etc).
 
-## 5. Configure your web server
+## 5. Web Server configuration
 
-When you launch the daemon, it will generate the configuration to apply to your web server to "proxify" the WebSockets and display it in the console.
+### 5.1. Virtualhost
 
-These configurations are dynamically generated to fit your current setup. Whether you use Apache or Nginx, both possible configuration will be displayed and will display even after you successfully applied them.
+Create a virtualhost on your prefered webserver and point the root to the `public/index.php` file. You can have a look at the [default configuration files that we provide](https://github.com/movim/movim/tree/master/etc) if you need some help about that part.
 
-Here is an example of generated configuration:
+### 5.2. Daemon Websocket proxy
 
-### For Apache
+When you launch the daemon, **it will generate the configuration** to apply to the Virtualhost file to "proxify" the WebSockets and display it in the console.
 
-> Enable the Proxy WebSocket module.
+These configurations are dynamically generated to fit your current setup. Whether you use Apache, Caddy or nginx, both possible configuration will be displayed and will display even after you successfully applied them.
 
-     # a2enmod proxy_wstunnel
-
-> Add this in your configuration file (default-ssl.conf)
-
-     ProxyPass /ws/ ws://localhost:8080/
-
-Note that default-ssl.conf is the file to edit **if you enabled HTTPS**, otherwise you should edit 000-default.conf. Also remember to restart Apache to make sure your new configuration has been applied correctly.
-
-### For Nginx
-
-> Add the following configuration
-
-     location /ws/ {
-         proxy_pass http://127.0.0.1:8080/;
-         proxy_http_version 1.1;
-         proxy_set_header Upgrade $http_upgrade;
-         proxy_set_header Connection "Upgrade";
-         proxy_set_header Host $host;
-         proxy_set_header X-Real-IP $remote_addr;
-         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-         proxy_set_header X-Forwarded-Proto https;
-         proxy_redirect off;
-     }
-
-#### Picture proxy cache
+### 5.3. Picture proxy cache
 
 Movim is automatically proxyfying the external pictures to protect its user IPs and prevent large pictures to be loaded without user consent.
 This internal proxy is already asking the browser to cache the pictures for a few hours.
 
 It is however **strongly recommended** to also setup a server side cache to prevent multiple users to request the same resource trough Movim.
+
+#### On Apache
+
+_To be completed_
+
+#### On nginx
 
 To do so you can configure ```fastcgi_cache``` on nginx, [check the related documentation](http://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_cache).
 
@@ -219,55 +201,11 @@ Add the following configuration to your Movim virtual-host to enable the cache:
         fastcgi_cache_valid any 7d;
     }
 
-### For Caddy
-You need of course to change the example file to your needs and usecase (like the php-fpm version would be different)
-
-```Caddyfile
-# Caddy automatically handles Certificates and updates the http connection to https
-your.domain.tld {
-
-    encode zstd gzip #Loseless compression
-
-    # Paths that the server needs to serve
-    @static path /stickers/* /cache/* /theme/* /scripts/*.js
-
-    handle @static {
-        root * /path-to/movim/public
-        file_server
-    }
-
-    # All other request go throught fpm into the movim index.php
-    handle {
-        reverse_proxy unix//run/php/php7.4-fpm.sock {
-            transport fastcgi {
-                env SCRIPT_FILENAME /path-to/movim/public/index.php
-            }
-        }
-    }
-
-    # Pictures need an special php script to be served
-    handle /picture/* {
-        reverse_proxy unix//run/php/php7.4-fpm.sock {
-            transport fastcgi {
-                env SCRIPT_FILENAME /path-to/movim/public/picture/index.php
-            }
-        }
-    }
-
-    # The header is automatically updated in all request made under /ws/
-    handle /ws/* {
-        reverse_proxy localhost:8080
-    }
-}
-```
-
-For the rest of the configuration you can have a look at the [default configuration files that we provide](https://github.com/movim/movim/tree/master/etc).
-
-#### Picture cache
+#### On Caddy
 
 For caddy you may want to take a look at xcaddy and compiling the server with the following modules: [cache-handler](https://github.com/caddyserver/cache-handler), [cdp-cache](https://github.com/sillygod/cdp-cache)
 
-## 5. Admin panel
+## 6. Admin panel
 
 The admin panel is available directly from the Movim UI once an admin user is logged in.
 

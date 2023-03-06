@@ -4,7 +4,7 @@ ul#bottomnavigation {
     left: 0;
     height: auto;
     width: 100%;
-    box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.2);;
+    box-shadow: var(--elevation-3);
     z-index: 2;
     display: none;
     justify-content:center;

@@ -43,7 +43,7 @@ class Rooms extends Base
         $this->registerEvent('presence_muc_errornotacceptable', 'onNotAcceptable');
         $this->registerEvent('presence_muc_errorserviceunavailable', 'onServiceUnavailable');
 
-        // Bug: In Chat::ajaxGet, Notification.current might come after this event
+        // Bug: In Chat::ajaxGet, Notif.current might come after this event
         // so we don't set the filter
         $this->registerEvent('chat_open_room', 'onChatOpen'/*, 'chat'*/);
     }
@@ -87,8 +87,10 @@ class Rooms extends Base
 
     public function onDisconnected($packet)
     {
-        $this->onPresence($packet->content);
-        Toast::send($this->__('chatrooms.disconnected'));
+        if ($packet->content) {
+            $this->onPresence($packet->content);
+            Toast::send($this->__('chatrooms.disconnected'));
+        }
     }
 
     public function onBookmarkGet($packet)
@@ -295,7 +297,7 @@ class Rooms extends Base
 
         if ($resource) {
             $session = Session::start();
-            $session->remove($room . '/' .$resource);
+            $session->delete($room . '/' .$resource);
 
             $pu = new Unavailable;
             $pu->setTo($room)

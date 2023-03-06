@@ -16,12 +16,12 @@ class SessionInitiate extends Action
         Jingle::sessionInitiate($this->_to, $this->_offer);
     }
 
-    public function errorItemNotFound($stanza)
+    public function errorItemNotFound(string $errorId, ?string $message = null)
     {
         $this->deliver();
     }
 
-    public function errorUnexpectedRequest($stanza)
+    public function errorUnexpectedRequest(string $errorId, ?string $message = null)
     {
         $this->deliver();
     }

@@ -17,7 +17,7 @@
             {if="!filter_var($value->server, FILTER_VALIDATE_EMAIL)"}
                 <li class="block
                     {if="$value->occupants == 0"}faded{/if}"
-                    onclick="MovimUtils.redirect('{$c->route('community', $value->server)}')">
+                    onclick="MovimUtils.reload('{$c->route('community', $value->server)}')">
                     <span class="primary icon bubble color {$value->server|stringToColor}">
                         {$value->server|firstLetterCapitalize}
                     </span>

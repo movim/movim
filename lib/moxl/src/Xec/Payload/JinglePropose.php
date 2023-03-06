@@ -7,7 +7,7 @@ use Movim\Session;
 
 class JinglePropose extends Payload
 {
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         // Another session is already started
         if (Session::start()->get('jingleSid')) {

@@ -7,8 +7,9 @@
     </li>
     {loop="$gateways"}
     <li onclick="Account_ajaxGetRegistration('{$value->server}')">
-        <span class="primary icon bubble color gray status
-            {if="$value->presence"} {$value->presence->presencekey} {else}offline{/if}">
+        <span class="primary icon bubble color
+            {if="$value->gatewayType"}{$value->gatewayType}{else}gray{/if} status
+            {if="$value->presence"} {$value->presence->presencekey} {else}offline disabled{/if}">
             <i class="material-icons">swap_horiz</i>
         </span>
         <span class="control icon gray">

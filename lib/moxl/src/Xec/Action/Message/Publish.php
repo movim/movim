@@ -69,7 +69,7 @@ class Publish extends Action
         return $this->_muc;
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         if ($this->_muc) {
             $m = new \Moxl\Xec\Payload\Message;
@@ -77,7 +77,7 @@ class Publish extends Action
         }
     }
 
-    public function error($id, $message = '')
+    public function error(string $errorId, ?string $message = null)
     {
         $this->pack($message);
         $this->deliver();

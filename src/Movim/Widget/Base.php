@@ -1,4 +1,8 @@
 <?php
+/*
+ * SPDX-FileCopyrightText: 2010 Jaussoin Timothée
+ * SPDX-License-Identifier: AGPL-3.0-or-later
+ */
 
 namespace Movim\Widget;
 
@@ -13,8 +17,7 @@ class Base
     protected $ajax;        // Contains ajax client code
     protected $user;
     protected $name;
-
-    protected $pure;        // To render the widget without the container
+    protected $view;
 
     protected $_view;
 
@@ -41,32 +44,34 @@ class Base
             return;
         }
 
-        // Put default widget init here.
-        $this->ajax = Ajax::getInstance();
-
-        if (!$this->ajax->isRegistered($this->name)) {
-            // Generating Ajax calls.
-            $refl = new \ReflectionClass($this->name);
-            $meths = $refl->getMethods();
-
-            foreach ($meths as $method) {
-                if (preg_match('#^ajax#', $method->name)) {
-                    $pars = $method->getParameters();
-                    $params = [];
-                    foreach ($pars as $param) {
-                        $params[] = $param->name;
-                    }
-
-                    $this->ajax->defun(
-                        $this->name,
-                        $method->name,
-                        $params
-                    );
-                }
-            }
-        }
-
         if (php_sapi_name() != 'cli') {
+            // Put default widget init here.
+            $this->ajax = Ajax::getInstance();
+
+            if (!$this->ajax->isRegistered($this->name)) {
+                // Generating Ajax calls.
+                $refl = new \ReflectionClass($this->name);
+                $meths = $refl->getMethods();
+
+                foreach ($meths as $method) {
+                    if (preg_match('#^ajax#', $method->name)) {
+                        $pars = $method->getParameters();
+                        $params = [];
+                        foreach ($pars as $param) {
+                            $params[] = $param->name;
+                        }
+
+                        $this->ajax->defineFunction(
+                            $this->name,
+                            $method->name,
+                            $params
+                        );
+                    }
+                }
+
+                $this->ajax->register($this->name);
+            }
+
             $config = [
                 'tpl_dir'       => $this->respath('', true),
                 'cache_dir'     => CACHE_PATH,
@@ -79,8 +84,6 @@ class Base
             $this->view->objectConfigure($config);
 
             $this->view->assign('c', $this);
-
-            $this->pure = false;
         }
     }
 
@@ -129,8 +132,8 @@ class Base
      */
     public function event(string $key, $data = null)
     {
-        $e = new Event;
-        $e->run($key, $data);
+        $widgets = Wrapper::getInstance();
+        $widgets->iterate($key, $data);
     }
 
     /**
@@ -255,11 +258,13 @@ class Base
     /*
      * @brief Fetch and return get variables
      */
-    protected function get(string $name)
+    protected function get(string $name): ?string
     {
         if (isset($_GET[$name])) {
             return htmlentities(urldecode($_GET[$name]));
         }
+
+        return null;
     }
 
     /**
@@ -268,7 +273,7 @@ class Base
      * @param $method The function to call
      * @param $filter Only call this function if the session notif_key is good
      */
-    protected function registerEvent(string $key, string $method, $filter = null)
+    protected function registerEvent(string $key, string $method, ?string $filter = null)
     {
         if (!is_array($this->events)
         || !array_key_exists($key, $this->events)) {

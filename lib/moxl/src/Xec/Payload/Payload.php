@@ -7,8 +7,8 @@ use Movim\Widget\Wrapper;
 
 abstract class Payload
 {
-    protected $method;
-    protected $packet;
+    protected ?string $method = null;
+    protected ?Packet $packet = null;
 
     /**
      * Constructor of class Payload.
@@ -25,9 +25,9 @@ abstract class Payload
      *
      * @return void
      */
-    final public function prepare($stanza, $parent = false)
+    final public function prepare(\SimpleXMLElement $stanza, ?\SimpleXMLElement $parent = null)
     {
-        $this->packet->from = ($parent === false)
+        $this->packet->from = ($parent === null)
             ? baseJid((string)$stanza->attributes()->from)
             : baseJid((string)$parent->attributes()->from);
     }
@@ -37,7 +37,7 @@ abstract class Payload
      *
      * @return void
      */
-    final public function deliver($content = null, $from = null)
+    final public function deliver($content = null, ?string $from = null)
     {
         if ($content !== null) {
             $this->pack($content, $from);
@@ -72,7 +72,7 @@ abstract class Payload
      *
      * @return void
      */
-    final public function event($key, $packet = null)
+    final public function event(string $key, $packet = null)
     {
         $wrapper = Wrapper::getInstance();
         $wrapper->iterate($key, $packet ? $packet : $this->packet);
@@ -83,7 +83,7 @@ abstract class Payload
      *
      * @return void
      */
-    final public function method($method)
+    final public function method(string $method)
     {
         $this->method = strtolower($method);
     }
@@ -93,7 +93,7 @@ abstract class Payload
      *
      * @return void
      */
-    final public function pack($content, $from = null)
+    final public function pack($content, ?string $from = null)
     {
         $this->packet->content = $content;
         if ($from != null) {
@@ -101,7 +101,7 @@ abstract class Payload
         }
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
     }
 }

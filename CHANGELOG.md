@@ -23,10 +23,26 @@ v0.21 (trunk)
  * Add support for the Unicode 14.0 emojis release through Twemoji 14.0.2
  * Move the Movim configuration to DotEnv
  * Use INSTALL.md as the new default to host the deployement page
- * Replace support of XEP-0049 by XEP-0223 to save Movim configuration
+ * Replace support of XEP-0049 by XEP-0223 to save Movim configuration (#1105)
  * Handle vCard4 phone numbers
  * Update the CSS to Material 3, make things a bit more roundy
  * Add contact banners support in Movim
+ * Implement PSR-16: Common Interface for Caching Libraries for the Movim Session
+ * Fix multi-line fallback bodies in outgoing message replies have incorrect offsets (#1113)
+ * Cleanup Push Notification subscriptions after a month of inactivity
+ * PEP based avatars now have preference over vcard-temp based ones
+ * Allow articles to be shared in Communities through a new Share button
+ * Add a soft reload feature for a smooth navigation
+ * Share articles outside Movim in the PWA
+ * Add DTMF support by @singpolyma (#1063)
+ * Remove the Init widget and replace it with publish-option forms (related to #1130)
+ * Fix Count only once likes from the same aid (#1134)
+ * Only set the aid if it equals the item publisher
+ * Configure new nodes and comments nodes with pubsub#itemreply = publisher
+ * Add audio files support and add a small audio player in the Chat
+ * Add affiliation change messages in the chatrooms
+ * Detecting and compiling Movim files for Opcache if enabled
+ * Add basic support of XEP-0472: Pubsub Social Feed with Gallery view and toggle in the Communities
 
 v0.20
 ---------------------------

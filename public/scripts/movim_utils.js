@@ -79,6 +79,15 @@ var MovimUtils = {
 
         return json;
     },
+    cleanTime: function (seconds) {
+        var currentMinute = parseInt(seconds / 60) % 60,
+            currentSecondsLong = seconds % 60,
+            currentSeconds = currentSecondsLong.toFixed(),
+            currentTime = (currentMinute < 10 ? "0" + currentMinute : currentMinute)
+                + ":" + (currentSeconds < 10 ? "0" + currentSeconds : currentSeconds);
+
+        return currentTime;
+    },
     setTitle: function (title) {
         document.title = title;
     },
@@ -98,8 +107,86 @@ var MovimUtils = {
     openInNew: function (url) {
         window.open(url, '_blank');
     },
-    reload: function (uri) {
-        window.location.replace(uri);
+    reload: function (uri, noHistory) {
+        // Rewrite the URL for a soft reload
+        requestUri = uri.slice(0, uri.indexOf('?')) + '?soft/' + uri.slice(uri.indexOf('?') + 1);
+
+        document.body.classList.add('loading');
+        document.body.classList.remove('finished');
+
+        MovimRPC.fetchWithTimeout(requestUri, {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        }).then(reponse => {
+            onloaders = [];
+            onfocused = [];
+
+            reponse.text().then(value => {
+                document.body.classList.remove('loading');
+
+                let page = JSON.parse(value);
+
+                if (noHistory != true) {
+                    history.pushState({ soft: true }, '', uri);
+                }
+
+                if (typeof MovimWebsocket != 'undefined') {
+                    MovimWebsocket.clear();
+                }
+
+                document.head.querySelectorAll('link[rel=stylesheet].widget').forEach(e => e.remove());
+                document.head.querySelectorAll('script[type=\'text/javascript\'].widget').forEach(e => e.remove());
+                document.head.querySelectorAll('script[type=\'text/javascript\'].inline').forEach(e => e.remove());
+                document.querySelectorAll('#endcommon ~ *').forEach(e => e.remove());
+
+                document.body.innerHTML += page.content;
+                document.title = page.title;
+
+                // CSS
+
+                page.widgetsCSS.forEach(url => {
+                    var css = document.createElement("link");
+                    css.setAttribute('rel', 'stylesheet');
+                    css.href = url;
+                    css.classList.add('widget');
+                    document.head.appendChild(css);
+                });
+
+                // Javascript
+
+                const promises = [];
+                page.widgetsScripts.forEach(script => {
+                    promises.push(new Promise(function (resolve, reject) {
+                        var js = document.createElement("script");
+                        js.src = script;
+                        js.setAttribute('type', 'text/javascript');
+                        js.onload = resolve;
+                        js.onerror = resolve;
+                        js.classList.add('widget');
+                        document.head.appendChild(js);
+                    }));
+                });
+
+                var js = document.createElement("script");
+                js.classList.add('inline');
+                js.innerHTML = page.inlineScripts;
+                document.head.appendChild(js);
+
+                // Events
+                Promise.all(promises).then(() => {
+                    if (typeof MovimWebsocket != 'undefined') {
+                        MovimWebsocket.launchAttached();
+                        MovimWebsocket.launchInitiated();
+                    }
+
+                    movimLaunchOnload();
+                });
+            });
+        }).catch(error => {
+            document.body.classList.add('finished');
+        });
     },
     reloadThis: function () {
         window.location.reload();

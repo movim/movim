@@ -17,7 +17,7 @@ class XA extends Action
         Presence::XA($this->_status);
     }
 
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $presence = DBPresence::findByStanza($stanza);
         $presence->set($stanza);

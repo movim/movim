@@ -38,7 +38,7 @@
                 {if="$value->subscription == 'subscribed'"}action{/if}
                 {if="$value->occupants > 0"}condensed{/if}
                 "
-            onclick="MovimUtils.redirect('{$c->route('community', [$value->server, $value->node])}')"
+            onclick="MovimUtils.reload('{$c->route('community', [$value->server, $value->node])}')"
             title="{$value->server} - {$value->node}"
         >
             {if="$value->subscription == 'subscribed'"}
@@ -71,6 +71,10 @@
                     </span>
                 </p>
                 <p class="line">
+                    {if="$value->isGallery()"}
+                        <i class="material-icons">grid_view</i>
+                        ·
+                    {/if}
                     {if="$value->published"}
                         <i class="material-icons">update</i>
                         {$value->published|strtotime|prepareDate:true}

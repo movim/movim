@@ -6,11 +6,13 @@ use Moxl\Stanza\Disco;
 
 class DiscoInfo extends Payload
 {
-    public function handle($stanza, $parent = false)
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $jid = (string)$parent->attributes()->from;
-        $id = (string)$parent->attributes()->id;
+        if ($parent->attributes()->type == 'get') {
+            $jid = (string)$parent->attributes()->from;
+            $id = (string)$parent->attributes()->id;
 
-        Disco::answer($jid, $id);
+            Disco::answer($jid, $id);
+        }
     }
 }

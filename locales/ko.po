@@ -116,7 +116,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-04 14:11+0200\n"
+"POT-Creation-Date: 2022-12-25 14:45+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: 조수연, 2022\n"
 "Language-Team: Korean (http://www.transifex.com/movim/movim/language/ko/)\n"
@@ -125,7 +125,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Translate Toolkit 3.4.1\n"
+"X-Generator: Translate Toolkit 3.7.4\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -149,7 +149,7 @@ msgstr "소프트웨어"
 
 #: [about]resources
 msgid "Resources"
-msgstr "자원"
+msgstr "리소스"
 
 #: [about]api
 msgid "API"
@@ -157,7 +157,7 @@ msgstr "API"
 
 #: [about]info
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
-msgstr "Movim은 XMPP를 바탕으로 하는 커뮤니케이션 플랫폼입니다. 다음 소프트웨어와 자원을 제외한 모든 프로젝트는 아래에"
+msgstr "Movim은 XMPP를 바탕으로 하는 커뮤니케이션 플랫폼입니다. 다음 소프트웨어와 리소스를 제외한 모든 프로젝트는 링크를 통해 보실 수 있어요."
 
 #: [account]title [page]account
 msgid "Account"
@@ -225,11 +225,11 @@ msgstr "이 작업을 수행해도 계정이 삭제되지는 않지만 이 인�
 
 #: [account]delete_bundle_title
 msgid "OMEMO Key deletion"
-msgstr ""
+msgstr "OMEMO 키 삭제"
 
 #: [account]delete_bundle_text
 msgid "Your are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
-msgstr ""
+msgstr "다음 OMEMO 키를 삭제합니다. 대화 상대가 해당 키를 사용하여 메시지를 더 이상 암호화할 수 없습니다. 이 작업은 되돌릴 수 없습니다. 진행하시겠습니까?"
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
@@ -414,9 +414,8 @@ msgid "Access Tenor and get your API key"
 msgstr "Tener에 액세스하여 API 키 받기"
 
 #: [twitter]title
-#, fuzzy
 msgid "Twitter integration"
-msgstr "Tenor 통합"
+msgstr ""
 
 #: [twitter]label
 msgid "Your Twitter Token"
@@ -443,9 +442,8 @@ msgid "Syslog and files"
 msgstr "Syslog 및 파일"
 
 #: [adminreported]reported_by
-#, fuzzy
 msgid "Reported by %s users"
-msgstr "신고하기"
+msgstr ""
 
 #: [adminreported]info
 msgid "Those accounts were reported by some Movim users"
@@ -467,61 +465,57 @@ msgstr "현재 포드에서 연결된 사용자"
 msgid "File"
 msgstr "파일"
 
-#: [avatar]use_it
-msgid "Use it"
-msgstr "사용하시오"
-
-#: [avatar]webcam
-msgid "Webcam"
-msgstr "웹캠"
-
-#: [avatar]cheese
-msgid "Cheese!"
-msgstr "치즈!"
-
-#: [avatar]snapshot
-msgid "Take a webcam snapshot"
-msgstr "웹캠 스냅샷 찍기"
-
 #: [avatar]updated
 msgid "Avatar Updated"
-msgstr "아바타 업데이트됨"
+msgstr "프로필 업데이트됨"
 
 #: [avatar]not_updated
 msgid "Avatar Not Updated"
-msgstr "아바타가 업데이트되지 않음"
+msgstr "프로필이 업데이트되지 않음"
 
 #: [avatar]missing
 msgid "No avatar defined yet"
-msgstr "아직 정의된 아바타 없음"
+msgstr "아직 프로필 없음"
 
 #: [avatar]change
 msgid "Change my avatar"
-msgstr "내 아바타 변경"
+msgstr "내 프로필 변경"
 
 #: [avatar]upload_new
 msgid "Upload a new picture"
 msgstr "새 사진 업로드"
 
+#: [banner]change
+msgid "Change my banner"
+msgstr ""
+
+#: [banner]updated
+msgid "Banner Updated"
+msgstr ""
+
+#: [banner]not_updated
+msgid "Banner Not Updated"
+msgstr ""
+
+#: [banner]missing
+msgid "No banner defined yet"
+msgstr ""
+
 #: [blocked]title
-#, fuzzy
 msgid "Blocked"
-msgstr "충격받은"
+msgstr ""
 
 #: [blocked]block_account
-#, fuzzy
 msgid "Block the account"
-msgstr "기타 계정"
+msgstr ""
 
 #: [blocked]unblock_account
-#, fuzzy
 msgid "Unblock the account"
-msgstr "기타 계정"
+msgstr ""
 
 #: [blocked]account_blocked
-#, fuzzy
 msgid "Account blocked"
-msgstr "계정"
+msgstr ""
 
 #: [blocked]account_unblocked
 msgid "Account unblocked"
@@ -580,9 +574,8 @@ msgid "Composing…"
 msgstr "구성 중..."
 
 #: [message]invitation
-#, fuzzy
 msgid "Invitation"
-msgstr "초대장 전송됨"
+msgstr ""
 
 #: [message]paused
 msgid "Paused…"
@@ -637,9 +630,8 @@ msgid "You received an invitation to join a chatroom"
 msgstr "채팅방 초대를 받았습니다."
 
 #: [chat]invitation_self
-#, fuzzy
 msgid "You sent an invitation to join a chatroom"
-msgstr "채팅방 초대를 받았습니다."
+msgstr ""
 
 #: [chat]invitation_join
 msgid "Join %s"
@@ -667,13 +659,24 @@ msgid "Incoming call"
 msgstr "수신 전화"
 
 #: [chat]jingle_outgoing
-#, fuzzy
 msgid "Outgoing call"
-msgstr "통화 중"
+msgstr ""
 
 #: [chat]jingle_end
 msgid "Call ended"
 msgstr "통화 종료"
+
+#: [chat]jingle_hours
+msgid "%s hours %s minutes"
+msgstr ""
+
+#: [chat]jingle_minutes
+msgid "%s minutes and %s seconds"
+msgstr ""
+
+#: [chat]jingle_seconds
+msgid "%s seconds"
+msgstr ""
 
 #: [chat]publish_error
 msgid "An error occured when sending the message"
@@ -1022,13 +1025,12 @@ msgid "No publication yet? Write your first post to make people discover your pr
 msgstr ""
 
 #: [communityposts]empty_me_button
-#, fuzzy
 msgid "Publish my first post"
-msgstr "이 게시물의 공개 URL"
+msgstr ""
 
 #: [communitysubscriptions]subscriptions
-msgid "My Subscriptions"
-msgstr "내 구독"
+msgid "Subscribed Communities"
+msgstr ""
 
 #: [communitysubscriptions]empty_title
 msgid "Hello"
@@ -1188,7 +1190,7 @@ msgstr "웹사이트"
 
 #: [general]about
 msgid "About Me"
-msgstr "나에 대해서"
+msgstr "자기소개"
 
 #: [general]accounts
 msgid "Other Accounts"
@@ -1212,11 +1214,11 @@ msgstr "지리적 위치"
 
 #: [position]locality
 msgid "Locality"
-msgstr "소재지"
+msgstr "위치"
 
 #: [position]country
 msgid "Country"
-msgstr "나라"
+msgstr "국가"
 
 #: [mood]title
 msgid "Mood"
@@ -1336,7 +1338,7 @@ msgstr "기본적으로 콘텐츠는 연락처에 있는 사람만 볼 수 있�
 
 #: [faq]permission_community_title
 msgid "How does it applies on Communities posts?"
-msgstr "커뮤니티 게시물에는 어떻게 적용되나요?"
+msgstr "커뮤니티 게시물에는 권한 설정이 어떻게 적용되나요?"
 
 #: [faq]permission_community_text
 msgid "Similary to your blog publications except that, by default, the posts are only available to the members or subscribers of the Community (except if you explicitly open all the Community content)"
@@ -1383,24 +1385,20 @@ msgid "Add the chatroom"
 msgstr "채팅방 추가"
 
 #: [location]title
-#, fuzzy
 msgid "My location"
-msgstr "내 게시물"
+msgstr ""
 
 #: [location]enabled_title
-#, fuzzy
 msgid "Currently shared with my contacts"
-msgstr "대화 상대와 공유한 게시물"
+msgstr ""
 
 #: [location]disabled_title
-#, fuzzy
 msgid "Currently disabled"
-msgstr "댓글 비활성화됨"
+msgstr ""
 
 #: [location]last_published
-#, fuzzy
 msgid "My last published location"
-msgstr "내 게시물"
+msgstr ""
 
 #: [location]less_than_one_km
 msgid "Less than a km away"
@@ -1518,6 +1516,14 @@ msgstr "%s이 당신을 채팅방에 초대했습니다."
 msgid "Administrated by"
 msgstr "관리 대상"
 
+#: [about_movim]info
+msgid "Movim is a federated blogging and chat platform."
+msgstr ""
+
+#: [about_movim]website
+msgid "Visit the project official website %s."
+msgstr ""
+
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
 msgstr "잘못된 닉네임(4~40자)"
@@ -1547,9 +1553,8 @@ msgid "Write a new post…"
 msgstr "새 게시물 작성…"
 
 #: [notification]request_title
-#, fuzzy
 msgid "Notifications request"
-msgstr "알림"
+msgstr ""
 
 #: [notification]request_info
 msgid "Movim requires your approval to display notifications"
@@ -1564,14 +1569,12 @@ msgid "Request"
 msgstr ""
 
 #: [notification]request_granted
-#, fuzzy
 msgid "Authorization granted"
-msgstr "인증 코드"
+msgstr ""
 
 #: [notification]request_refused
-#, fuzzy
 msgid "Authorization refused"
-msgstr "인증 코드"
+msgstr ""
 
 #: [notificationconfig]title [notifs]title [onboarding]notifications_title
 #: [room]notify_title
@@ -1587,33 +1590,28 @@ msgid "Incoming message"
 msgstr "수신 메시지"
 
 #: [notificationconfig]push_subscriptions
-#, fuzzy
 msgid "Push notifications"
-msgstr "오디오 알림"
+msgstr ""
 
 #: [notificationconfig]push_subscriptions_text
-#, fuzzy
 msgid "Movim will send push notifications to the following registered devices"
-msgstr "Movim은 Firebase를 사용하여 Movim 안드로이드 앱에 푸시 알림을 보낼 수 있습니다."
+msgstr ""
 
 #: [notificationconfig]push_enabled
 msgid "Push notifications enabled for this device"
 msgstr ""
 
 #: [notificationconfig]push_disabled
-#, fuzzy
 msgid "Push notifications disabled for this device"
-msgstr "이 커뮤니티에 대한 구독이 비활성화되었습니다."
+msgstr ""
 
 #: [notificationconfig]unknown_browser
-#, fuzzy
 msgid "Unknown browser"
-msgstr "알수없는 오류"
+msgstr ""
 
 #: [notificationconfig]unknown_platform
-#, fuzzy
 msgid "Unknown platform"
-msgstr "알수없는 오류"
+msgstr ""
 
 #: [invitations]title
 msgid "Pending Invitations"
@@ -1895,6 +1893,10 @@ msgstr "서식 지정 에디터"
 msgid "Add #hashtags in your title or content to allow your article to be discovered"
 msgstr ""
 
+#: [publish]publish_error_forbidden
+msgid "You are not authorized to publish there"
+msgstr ""
+
 #: [publishhelp]title [page]help
 msgid "Help"
 msgstr "도움말"
@@ -1929,11 +1931,11 @@ msgstr "아직 채팅방이 없습니다."
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
-msgstr "추가 버튼을 클릭하여 하나를 추가하세요."
+msgstr "추가 버튼을 클릭하여 채팅을 시작하세요."
 
 #: [rooms]empty_synchronize_title
 msgid "You had some rooms previously listed?"
-msgstr "몇 개의 채팅방이 이전에 있었습니까?"
+msgstr "이전에 채팅방이 있었나요?"
 
 #: [rooms]empty_synchronize_text
 msgid "Try to synchronize them to the new room bookmarking system"
@@ -1969,7 +1971,7 @@ msgstr "채팅방 삭제하기"
 
 #: [rooms]destroy_text
 msgid "Are you sure you want to permanently destroy the following room?"
-msgstr "다음 채팅방을 영구적으로 삭제하시겠습니까?"
+msgstr "다음 채팅방을 영구적으로 삭제할까요?"
 
 #: [rooms]owner
 msgctxt "[rooms]owner"
@@ -2136,9 +2138,8 @@ msgid "Archived"
 msgstr ""
 
 #: [room]archived_text
-#, fuzzy
 msgid "The chatroom messages are archived"
-msgstr "%s개의 메시지 검색됨"
+msgstr ""
 
 #: [room]group_chat
 msgid "Group Chat"
@@ -2270,7 +2271,7 @@ msgstr "Ctrl + M을 사용하여 열기"
 
 #: [search]placeholder
 msgid "#cats, username@server.com, John…"
-msgstr "#고양이, username@server.com, 철수…"
+msgstr "#cats, username@server.com, John…"
 
 #: [search]no_contacts_title
 msgid "No contacts yet?"
@@ -2291,6 +2292,10 @@ msgstr "모든 연락처 표시"
 #: [sendto]attach
 msgid "Attach to a blog publication"
 msgstr "블로그 게시물에 첨부"
+
+#: [sendto]share
+msgid "Share in a new publication"
+msgstr ""
 
 #: [sendto]contact
 msgid "Send it to a contact"
@@ -2454,7 +2459,7 @@ msgstr "제출"
 
 #: [save]reset [button]reset
 msgid "Reset"
-msgstr "리셋"
+msgstr "초기화"
 
 #: [degraded]title
 msgid "Movim is currently working in degraded mode"
@@ -2525,18 +2530,16 @@ msgid "Camera"
 msgstr ""
 
 #: [visioconfig]camera_label
-#, fuzzy
 msgid "Default camera"
-msgstr "기본 언어"
+msgstr ""
 
 #: [visioconfig]default_microphone_changed
 msgid "Default microphone changed"
 msgstr ""
 
 #: [visioconfig]default_camera_changed
-#, fuzzy
 msgid "Default camera changed"
-msgstr "기본 언어"
+msgstr ""
 
 #: [visioconfig]no_mic_sound
 msgid "No sound detected from your microphone"
@@ -2834,7 +2837,7 @@ msgstr "선택 사항"
 
 #: [input]muc_pubsub_node
 msgid "Associated Community"
-msgstr ""
+msgstr "관련 커뮤니티"
 
 #: [day]title
 msgid "Day"
@@ -3443,69 +3446,3 @@ msgstr "API에 연결할 수 없습니다. 나중에 다시 시도하십시오."
 #: [field]type_here
 msgid "Type here"
 msgstr "여기에 입력하세요"
-
-#~ msgid "General Overview"
-#~ msgstr "일반 개요"
-
-#~ msgid "Read and write rights for the webserver in Movim’s %s directory"
-#~ msgstr "Movim의 %s 디렉토리에 있는 웹 서버에 대한 읽기 및 쓰기 권한"
-
-#~ msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
-#~ msgstr "WebSocket 연결 오류. Movim 데몬이 실행 중이고 연결할 수 있는지 확인해주세요."
-
-#~ msgid "Browser"
-#~ msgstr "브라우저"
-
-#~ msgid "Movim Core"
-#~ msgstr "Movim 코어"
-
-#~ msgid "Movim Daemon"
-#~ msgstr "Movim 데몬"
-
-#~ msgid "Database"
-#~ msgstr "데이터베이스"
-
-#~ msgid "XMPP"
-#~ msgstr "XMPP"
-
-#~ msgid "Here you can register your pod on the official %sMovim API%s"
-#~ msgstr "여기에서 공식 %s Movim API %s에 포드를 등록할 수 있습니다."
-
-#~ msgid "Your pod is not registered on the API"
-#~ msgstr "포드가 API에 등록되어 있지 않습니다."
-
-#~ msgid "Your pod is registered on the API"
-#~ msgstr "포드가 API에 등록되어 있습니다."
-
-#~ msgid "Your pod is not yet validated"
-#~ msgstr "포드가 아직 검증되지 않았습니다."
-
-#~ msgid "Your pod is validated"
-#~ msgstr "포드가 검증되었습니다."
-
-#~ msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
-#~ msgstr "API에서 제거하도록 요청했습니다. 이 요청은 몇 시간 후에 처리됩니다."
-
-#~ msgid "Call started"
-#~ msgstr "통화 시작됨"
-
-#~ msgid "Archiving preferences"
-#~ msgstr "아카이빙 설정"
-
-#~ msgid "Visit the blog to see all the public posts"
-#~ msgstr "모든 공개 게시물을 보려면 블로그를 방문하세요."
-
-#~ msgid "Statistics"
-#~ msgstr "통계"
-
-#~ msgid "Firebase Integration"
-#~ msgstr "Firebase 통합"
-
-#~ msgid "Your Firebase Authorization Key"
-#~ msgstr "Firebase 인증 키"
-
-#~ msgid "Go to the Firebase panel to configure and generate your Authorization key"
-#~ msgstr "Firebase 패널로 이동하여 인증 키를 구성하고 생성합니다."
-
-#~ msgid "Status updated"
-#~ msgstr "상태 업데이트됨"
