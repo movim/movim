@@ -34,14 +34,14 @@ class Session
     private $offset;
 
     private $extensions = [
+        'pdo',
+        'mysqlnd',             // load first
         'xml',
         'imagick',
         'curl',
         'dom',
         'mbstring',
         'mysqli',
-        'mysqlnd',
-        'pdo',
         'pdo_mysql',
         'pdo_pgsql',
         'simplexml'
