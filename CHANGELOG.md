@@ -43,6 +43,7 @@ v0.21 (trunk)
  * Add affiliation change messages in the chatrooms
  * Detecting and compiling Movim files for Opcache if enabled
  * Add basic support of XEP-0472: Pubsub Social Feed with Gallery view and toggle in the Communities
+ * Drop the outdated FromModlToEloquent migration script
 
 v0.20
 ---------------------------
