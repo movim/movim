@@ -237,7 +237,7 @@ form > div .checkbox > input[type="checkbox"] + label i {
     line-height: 1.5em;
 }
 
-form > div .checkbox > input[type="checkbox"] + label:hover {
+form > div .checkbox:hover > input[type="checkbox"] + label {
     cursor: pointer;
     box-shadow: 0 0 0 1.75rem rgba(var(--movim-font), 0.05);
 }
