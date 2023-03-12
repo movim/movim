@@ -163,8 +163,14 @@ class Notifications extends Base
         $session = Session::start();
         $notifs = $session->get('activenotifs', []);
 
+        $contacts = \App\Contact::whereIn('id', array_keys($notifs))->get()->keyBy('id');
+
         foreach ($notifs as $key => $value) {
-            array_push($invitations, \App\Contact::firstOrNew(['id' =>$key]));
+            $contact = $contacts->has($key)
+                ? $contacts->get($key)
+                : new \App\Contact(['id' => $key]);
+
+            array_push($invitations, $contact);
         }
 
         $notifs = \App\Post::whereIn('parent_id', function ($query) {
