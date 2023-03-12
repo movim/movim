@@ -207,7 +207,7 @@ var Visio = {
                     Visio_ajaxAccept(Visio.from, Visio.id);
                 } else {
                     // TODO launch when button pressed
-                    Visio.id = Math.random().toString(36).substr(2, 9);
+                    Visio.id = Math.random().toString(36).substring(2, 11);
                     Visio.calling = true;
                     VisioUtils.toggleMainButton();
                     Visio_ajaxPropose(Visio.from, Visio.id, Visio.withVideo);
@@ -231,7 +231,7 @@ var Visio = {
         });
 
         Visio.pc.addIceCandidate(new RTCIceCandidate({
-            'candidate': filtered.join('').substr(2),
+            'candidate': filtered.join('').substring(2),
             'sdpMid': mid,
             'sdpMLineIndex' : mlineindex
         }), () => {}, logError);

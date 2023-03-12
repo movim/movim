@@ -263,12 +263,12 @@ var MovimUtils = {
     },
     urlParts: function () {
         var str = window.location.search.split('/');
-        var page = str[0].substr(1);
+        var page = str[0].substring(1);
         str.shift();
 
         var str = str.map(param => decodeURIComponent(param));
 
-        return { 'page': page, 'params': str, 'hash': window.location.hash.substr(1) };
+        return { 'page': page, 'params': str, 'hash': window.location.hash.substring(1) };
     },
     humanFileSize: function (bytes, si) {
         var thresh = si ? 1000 : 1024;

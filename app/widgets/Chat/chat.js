@@ -486,7 +486,7 @@ var Chat = {
             var first = true;
 
             Object.keys(emojis).filter(key => key.indexOf(
-                value.substr(value.lastIndexOf(':') + 1)
+                value.substring(value.lastIndexOf(':') + 1)
             ) > -1)
                 .filter(key => key.indexOf('type') == -1)
                 .slice(0, 40)
@@ -518,7 +518,7 @@ var Chat = {
         var emojisList = document.querySelector('.chat_box .emojis');
         var textarea = Chat.getTextarea();
 
-        textarea.value = textarea.value.substr(0, textarea.value.lastIndexOf(':'));
+        textarea.value = textarea.value.substring(0, textarea.value.lastIndexOf(':'));
         emojisList.innerHTML = '';
         Chat.insertAtCursor(emoji.dataset.emoji + ' ');
     },
@@ -894,7 +894,7 @@ var Chat = {
             if (textarea && lastMessage) {
                 Chat_ajaxDisplayed(
                     textarea.dataset.jid,
-                    lastMessage.id.substr(2) // 'id' is appended to the id
+                    lastMessage.id.substring(2) // 'id' is appended to the id
                 );
             }
         } else if (discussion !== null) {
@@ -1023,12 +1023,12 @@ var Chat = {
 
         if (data.body.match(/^\/me\s/)) {
             p.classList.add('quote');
-            data.body = data.body.substr(4);
+            data.body = data.body.substring(4);
         }
 
         if (data.body.match(/^\/code\s/)) {
             p.classList.add('code');
-            data.body = data.body.substr(6).trim();
+            data.body = data.body.substring(6).trim();
         }
 
         if (data.id != null) {
@@ -1051,7 +1051,7 @@ var Chat = {
 
         // OMEMO handling
         if (data.omemoheader) {
-            p.innerHTML = data.omemoheader.payload.substr(0, data.omemoheader.payload.length / 2);
+            p.innerHTML = data.omemoheader.payload.substring(0, data.omemoheader.payload.length / 2);
             ChatOmemo.decrypt(data).then(plaintext => {
                 let refreshP = document.querySelector('#id' + data.id + ' p.encrypted');
                 if (refreshP) {
@@ -1491,7 +1491,7 @@ var Chat = {
         div.appendChild(p);
 
         if (parent.omemoheader) {
-            p.innerHTML = parent.omemoheader.payload.substr(0, parent.omemoheader.payload.length / 2);
+            p.innerHTML = parent.omemoheader.payload.substring(0, parent.omemoheader.payload.length / 2);
             ChatOmemo.decrypt(parent).then(plaintext => {
                 let refreshP = document.querySelector('#parent' + parent.id + ' p');
                 if (refreshP) {
