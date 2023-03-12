@@ -16,9 +16,8 @@
         <header>
             <ul class="list middle">
                 <li>
-                    <span id="menu" class="primary icon active gray">
-                        <i class="material-icons on_desktop">help</i>
-                        <i class="material-icons on_mobile" onclick="MovimTpl.toggleMenu()">menu</i>
+                    <span id="menu" class="primary icon gray">
+                        <i class="material-icons">help</i>
                     </span>
                     <div>
                         <p><?php echo __('page.help'); ?></p>

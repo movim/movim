@@ -399,8 +399,8 @@ input[type=button].flat:focus {
 
 .button.action {
     position: fixed;
-    bottom: 2rem;
-    right: 2rem;
+    bottom: 1rem;
+    right: 1rem;
     min-height: 0rem;
     min-width: 0rem;
     line-height: 7rem;
@@ -458,12 +458,12 @@ li.action div.action .button {
 
 @media screen and (min-width: 1025px) {
     main > div:first-child:nth-last-child(2) + div .button.action {
-        right: calc(70% - 3rem);
+        right: calc(70% - 4rem);
     }
 
     *[dir="rtl"] main > div:first-child:nth-last-child(2) + div .button.action {
         right: auto;
-        left: calc(70% + 4rem);
+        left: calc(70% + 2rem);
     }
 
     /* Fix to prevent bad button position when the Websocket is not connected */
@@ -472,12 +472,12 @@ li.action div.action .button {
     }
 
     aside ~ * .button.action {
-        right: calc(50% - 20rem);
+        right: calc(50% - 21rem);
     }
 
     *[dir="rtl"] aside ~ * .button.action {
         right: auto;
-        left: calc(50% - 13rem);
+        left: calc(50% - 14rem);
     }
 }
 
