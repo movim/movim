@@ -521,7 +521,7 @@ ul li div.bubble:not(.sticker):not(.file):before {
     position: absolute;
     top: 0;
     left: -1.5rem;
-    border: 0.75rem solid transparent;
+    border: 0.8rem solid transparent;
     border-top-color: inherit;
     border-right-color: rgb(var(--movim-background-main));
 }

@@ -19,6 +19,11 @@ main:not(.enabled) #chat_widget {
     width: 100%;
 }
 
+#chat_widget > header {
+    box-shadow: var(--elevation-1);
+    z-index: 1;
+}
+
 #chat_widget p.compose:not(.first):not(:empty),
 #chat_widget p.compose:not(.first):empty + p {
     animation: fadein 0.3s;
@@ -152,6 +157,10 @@ main:not(.enabled) #chat_widget {
     font-size: 3.5rem;
     color: rgba(var(--movim-font), 0.68);
     animation: fadein 0.3s;
+}
+
+#chat_widget .chat_box span.primary#record {
+    color: rgba(255, 255, 255, 0.9);
 }
 
 #chat_widget .chat_box span.control:not(.button) i {
