@@ -3,11 +3,22 @@
     width: 100%;
     justify-content: center;
     display: flex;
-    background-color: #111;
-    transition: opacity .3s cubic-bezier(.4,0,.2,1);
     opacity: 0;
     pointer-events: none;
     z-index: 3;
+}
+
+#preview:before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    background-color: #111;
+    transition: opacity .3s cubic-bezier(.4,0,.2,1) .1s;
 }
 
 #preview:not(:empty) {
@@ -15,12 +26,16 @@
     pointer-events: initial;
 }
 
+#preview:not(:empty):before {
+    opacity: 1;
+}
+
 #preview img {
-    max-height: calc(100% - 15rem);
+    max-height: calc(100% - 11rem);
     max-width: calc(100% - 2rem);
     align-self: center;
     border-radius: 0.75rem;
-    margin-top: -1rem;
+    margin-top: -6rem;
     position: relative;
     animation: zoom 0.3s;
 }

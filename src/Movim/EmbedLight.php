@@ -23,6 +23,9 @@ class EmbedLight
     public ?string $providerName;
     public ?string $providerUrl;
 
+    public ?string $license;
+    public ?string $publishedTime;
+
     public function __construct($embed)
     {
         $this->title            = $embed->title ? (string)$embed->title : (string)$embed->url;

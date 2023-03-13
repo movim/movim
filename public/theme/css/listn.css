@@ -435,8 +435,7 @@ ul li div.bubble p.previewable {
 
 ul li div.bubble p.code {
     display: inline-block;
-    margin: 0.5rem 0;
-    margin-bottom: 1rem;
+    margin: 0;
 }
 
 ul li div.bubble span.resource {
