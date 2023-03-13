@@ -169,7 +169,7 @@ var Chat = {
                     correct.then(e => {
                         Chat.sentMessage();
                     }).catch(e => {
-                        Chat.failedMessage();
+                        Chat.failedMessage(text);
                     });
                 }
 
@@ -227,7 +227,7 @@ var Chat = {
                     request.then(e => {
                         Chat.sentMessage();
                     }).catch(e => {
-                        Chat.failedMessage();
+                        Chat.failedMessage(text);
                     });
                 }
             }
@@ -322,9 +322,15 @@ var Chat = {
         Chat.clearReplace();
         Chat.toggleAction();
     },
-    failedMessage: function () {
+    failedMessage: function (text) {
         Toast.send(Chat.delivery_error);
         Chat.disableSending();
+
+        // We try to put back the text in place
+        var textarea = Chat.getTextarea();
+        if (textarea.value == '') {
+            textarea.value = text;
+        }
     },
     clearReplace: function () {
         Chat.edit = false;
