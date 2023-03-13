@@ -1056,7 +1056,8 @@ var Chat = {
         }
 
         // OMEMO handling
-        if (data.omemoheader) {
+        if (data.omemoheader && data.encrypted) {
+            console.log(data);
             p.innerHTML = data.omemoheader.payload.substring(0, data.omemoheader.payload.length / 2);
             ChatOmemo.decrypt(data).then(plaintext => {
                 let refreshP = document.querySelector('#id' + data.id + ' p.encrypted');
