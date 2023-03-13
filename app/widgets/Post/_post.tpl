@@ -229,7 +229,7 @@
                 <div>
                     <p class="normal">
                         {loop="$post->tags()->get()"}
-                            <a class="chip outline" href="{$c->route('tag', $value->name)}">
+                            <a class="chip outline" href="#" onclick="MovimUtils.reload('{$c->route('tag', $value->name)}')">
                                 <i class="material-icons icon gray">tag</i>{$value->name}
                             </a>
                         {/loop}
