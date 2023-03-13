@@ -334,7 +334,10 @@ var Visio = {
 
     goodbye: (reason) => {
         Visio.onTerminate(reason);
-        Visio_ajaxTerminate(Visio.from, Visio.id, reason);
+
+        if (Visio.id) {
+            Visio_ajaxTerminate(Visio.from, Visio.id, reason);
+        }
     },
 }
 
