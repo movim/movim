@@ -49,7 +49,7 @@
                 </span>
                 <ul class="list middle actions">
                     <li onclick="Chat.toggleAttach(); Snap.init()">
-                        <span class="control icon bubble color blue">
+                        <span class="control active icon bubble color blue">
                             <i class="material-icons">camera_alt</i>
                         </span>
                         <div>
@@ -57,7 +57,7 @@
                         </div>
                     </li>
                     <li onclick="Chat.toggleAttach(); Draw.init()">
-                        <span class="control icon middle bubble color green">
+                        <span class="control active icon middle bubble color green">
                             <i class="material-icons">gesture</i>
                         </span>
                         <div>
@@ -65,7 +65,7 @@
                         </div>
                     </li>
                     <li onclick="Chat.toggleAttach(); Upload_ajaxRequest()">
-                        <span class="control icon bubble color purple">
+                        <span class="control active icon bubble color purple">
                             <i class="material-icons">attach_file</i>
                         </span>
                         <div>
