@@ -44,7 +44,8 @@ class Session
         'mysqli',
         'pdo_mysql',
         'pdo_pgsql',
-        'simplexml'
+        'simplexml',
+        'json'
     ];
 
     public function __construct(
