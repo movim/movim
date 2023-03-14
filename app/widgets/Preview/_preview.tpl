@@ -1,4 +1,4 @@
-<ul class="list controls">
+<ul class="list controls middle">
     <li>
         <span class="primary icon color transparent active" onclick="Preview_ajaxHttpHide()" title="{$c->__('button.close')}">
             <i class="material-icons">arrow_back</i>

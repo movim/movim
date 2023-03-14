@@ -6,7 +6,7 @@
 <div class="draw-actions">
     <ul class="list middle">
         <li id="draw-clear">
-            <span class="primary active icon bubble color bgray">
+            <span class="primary active icon bubble color gray">
                 <i class="material-icons">delete</i>
             </span>
         </li>
@@ -65,7 +65,7 @@
 </div>
 <ul class="list controls middle draw-top-nav">
     <li>
-        <span id="drawback" class="primary active icon color active bubble">
+        <span id="drawback" class="primary icon gray active">
             <i class="material-icons">arrow_back</i>
         </span>
         <span class="control active icon bubble color blue" id="draw-save">

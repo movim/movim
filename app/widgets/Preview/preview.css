@@ -8,6 +8,10 @@
     z-index: 3;
 }
 
+#preview ul.list.controls {
+    z-index: 2;
+}
+
 #preview:before {
     content: '';
     display: block;

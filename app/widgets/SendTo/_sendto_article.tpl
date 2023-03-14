@@ -49,7 +49,7 @@
                     </span>
                 {/if}
                 <span class="control icon active gray divided"
-                    onclick="MovimUtils.reload('{$c->route('publish', [$c->getUser()->id, 'urn:xmpp:microblog:0', '', $post->server, $post->node, $post->nodeid])}')">
+                    onclick="MovimUtils.reload('{$c->route('publish', [$c->getUser()->id, 'urn:xmpp:microblog:0', '', $post->server, $post->node, $post->nodeid])}'); Drawer.clear()">
                     <i class="material-icons">post_add</i>
                 </span>
                 <div>

@@ -52,16 +52,21 @@
     pointer-events: auto;
 }
 
+#draw .draw-top-nav span.control {
+    margin-right: 1.5rem;
+    box-shadow: var(--elevation-1);
+}
+
 #draw .draw-actions,
 #draw .draw-control {
     position: absolute;
-    bottom: 0.5rem;
-    right: -0.5rem;
+    bottom: 1rem;
+    right: 1rem;
     transition: transform 0.2s;
 }
 
 #draw .draw-actions {
-    left: -1.5rem;
+    left: -1rem;
     right: initial;
 }
 
@@ -79,20 +84,29 @@
 
 #draw .draw-control span.icon.bubble i,
 #draw .draw-actions span.icon.bubble i {
-    line-height: 4rem;
+    line-height: 5rem;
     height: 5rem;
 }
 
 #draw .draw-actions li span.primary,
 #draw .draw-control li span.primary {
-    border: 0.5rem solid transparent;
-    height: 4rem;
-    flex: 0 0 4rem;
+    height: 5rem;
+    flex: 0 0 5rem;
+    margin: 0.5rem 1rem;
+    transition: box-shadow .3s cubic-bezier(.4,0,.2,1), transform .3s cubic-bezier(.4,0,.2,1);
+    box-shadow: var(--elevation-1);
+}
+
+#draw .draw-actions li span.primary:hover,
+#draw .draw-control li span.primary:hover {
+    box-shadow: var(--elevation-2);
 }
 
 #draw .draw-actions li.selected span.primary,
 #draw .draw-control li.selected span.primary {
-    border-color: #AAA;
+    box-shadow: var(--elevation-4);
+    transform: scale(1.3);
+    z-index: 1;
 }
 
 #draw [data-width=small] i {
