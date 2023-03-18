@@ -50,6 +50,7 @@ class Utils
             'urn:xmpp:jingle:apps:rtp:1',
             'urn:xmpp:jingle:apps:rtp:audio',
             'urn:xmpp:jingle:apps:rtp:video',
+            'urn:xmpp:jingle:apps:rtp:rtp-hdrext:0',
             'urn:ietf:rfc:3264',
             'urn:ietf:rfc:5888',
             'urn:xmpp:jingle:apps:dtls:0',
