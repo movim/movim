@@ -207,12 +207,14 @@ class Info extends Model
 
     public function getDeviceIcon()
     {
-        if ($this->identities->contains('type', 'handheld')
-        || $this->identities->contains('type', 'phone')) {
-            return 'smartphone';
-        }
-        if ($this->identities->contains('type', 'bot')) {
+        if ($this->identities->contains('type', 'bot')
+        ||  $this->identities->contains('category', 'gateway')) {
             return 'memory';
+        }
+        if ($this->identities->contains('type', 'handheld')
+        || $this->identities->contains('type', 'phone')
+        || $this->identities->contains('type', 'sms')) {
+            return 'smartphone';
         }
         if ($this->identities->contains('type', 'console')) {
             return 'video_label';
