@@ -729,11 +729,15 @@ class Chat extends \Movim\Widget\Base
 
             // This reaction was not published yet
             if ($emojis->where('emoji', $emoji)->count() == 0) {
+                $now = \Carbon\Carbon::now();
+
                 $reaction = new Reaction;
                 $reaction->message_mid = $parentMessage->mid;
                 $reaction->jidfrom = ($parentMessage->isMuc())
                     ? $this->user->session->username
                     : $this->user->id;
+                $reaction->created_at = $now;
+                $reaction->updated_at = $now;
                 $reaction->emoji = $emoji;
 
                 if (!$parentMessage->isMuc()) {
