@@ -12,7 +12,7 @@ class Conference extends Model
     protected $with = ['contact'];
 
     public static $xmlnsNotifications = 'xmpp:movim.eu/notifications:0';
-    public static $xmlnsPinned = 'xmpp:movim.eu/pinned:0';
+    public static $xmlnsPinned = 'urn:xmpp:bookmarks-pinning:0';
     public static $notifications = [
         0 => 'never',
         1 => 'quoted',
@@ -153,7 +153,7 @@ class Conference extends Model
             }
 
             if ($item->conference->extensions && $item->conference->extensions->pinned
-            && $item->conference->extensions->pinned->attributes()->xmlns == self::$xmlnsPinned) {
+            && in_array($item->conference->extensions->pinned->attributes()->xmlns, [self::$xmlnsPinned, 'xmpp:movim.eu/pinned:0'])) {
                 $this->pinned = true;
                 unset($item->conference->extensions->pinned);
             }
