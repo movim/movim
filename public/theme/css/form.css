@@ -399,8 +399,8 @@ input[type=button].flat:focus {
 
 .button.action {
     position: fixed;
-    bottom: 1rem;
-    right: 1rem;
+    bottom: 2rem;
+    right: 2rem;
     min-height: 0rem;
     min-width: 0rem;
     line-height: 7rem;
@@ -411,6 +411,7 @@ input[type=button].flat:focus {
     animation: zoom 0.3s;
     padding: 0;
     border-radius: 2rem;
+    margin: 0;
 }
 
 .button.action.small {
@@ -458,7 +459,7 @@ li.action div.action .button {
 
 @media screen and (min-width: 1025px) {
     main > div:first-child:nth-last-child(2) + div .button.action {
-        right: calc(70% - 4rem);
+        right: calc(70% - 3rem);
     }
 
     *[dir="rtl"] main > div:first-child:nth-last-child(2) + div .button.action {
