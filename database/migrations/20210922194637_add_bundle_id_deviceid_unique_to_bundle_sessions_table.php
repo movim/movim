@@ -19,9 +19,13 @@ class AddBundleIdDeviceIdUniqueToBundleSessionsTable extends Migration
 
     public function down()
     {
+        $this->disableForeignKeyCheck();
+
         $this->schema->table('bundle_sessions', function (Blueprint $table) {
             $table->dropUnique('bundle_sessions_bundle_id_deviceid_unique');
             $table->renameColumn('deviceid', 'device_id');
         });
+
+        $this->enableForeignKeyCheck();
     }
 }

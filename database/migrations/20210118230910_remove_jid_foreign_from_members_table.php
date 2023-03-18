@@ -15,10 +15,13 @@ class RemoveJidForeignFromMembersTable extends Migration
 
     public function down()
     {
+        $this->disableForeignKeyCheck();
+
         $this->schema->table('members', function (Blueprint $table) {
             $table->foreign('jid')
                   ->references('id')->on('contacts');
         });
 
+        $this->enableForeignKeyCheck();
     }
 }

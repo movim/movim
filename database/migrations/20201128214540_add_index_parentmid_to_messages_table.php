@@ -14,8 +14,12 @@ class AddIndexParentmidToMessagesTable extends Migration
 
     public function down()
     {
+        $this->disableForeignKeyCheck();
+
         $this->schema->table('messages', function (Blueprint $table) {
             $table->dropIndex('messages_parentmid_index');
         });
+
+        $this->enableForeignKeyCheck();
     }
 }
