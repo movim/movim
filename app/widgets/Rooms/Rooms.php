@@ -22,8 +22,6 @@ class Rooms extends Base
         $this->registerEvent('bookmark2', 'onBookmarkSet');
         $this->registerEvent('bookmark2_set_handle', 'onBookmarkSet');
         $this->registerEvent('bookmark2_delete_handle', 'onBookmarkSet');
-        $this->registerEvent('bookmark_synchronize_handle', 'onBookmarkSynchronized');
-        $this->registerEvent('bookmark_synchronize_error', 'onBookmarkSynchronizationError');
 
         $this->registerEvent('muc_destroy_handle', 'onDestroyed', 'chat');
 
@@ -104,16 +102,6 @@ class Rooms extends Base
         }
 
         $this->ajaxHttpGet();
-    }
-
-    public function onBookmarkSynchronized($packet)
-    {
-        Toast::send($this->__('chatrooms.synchronized', $packet->content));
-    }
-
-    public function onBookmarkSynchronizationError($packet)
-    {
-        Toast::send($this->__('chatrooms.not_synchronized'));
     }
 
     public function onBookmarkSet($packet)

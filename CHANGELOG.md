@@ -44,6 +44,7 @@ v0.21 (trunk)
  * Detecting and compiling Movim files for Opcache if enabled
  * Add basic support of XEP-0472: Pubsub Social Feed with Gallery view and toggle in the Communities
  * Drop the outdated FromModlToEloquent migration script
+ * Remove the Bookmark synchronization feature, the server is taking care of it
 
 v0.20
 ---------------------------

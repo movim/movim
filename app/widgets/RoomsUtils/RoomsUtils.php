@@ -9,7 +9,6 @@ use Moxl\Xec\Action\Muc\CreateGroupChat;
 use Moxl\Xec\Action\Disco\Items;
 use Moxl\Xec\Action\Bookmark2\Set;
 use Moxl\Xec\Action\Bookmark2\Delete;
-use Moxl\Xec\Action\Bookmark\Synchronize;
 use Moxl\Xec\Payload\Packet;
 
 use Movim\Widget\Base;
@@ -660,15 +659,6 @@ class RoomsUtils extends Base
                                                ->where('conference', $room)
                                                ->first()->presences
                                                ->pluck('resource'));
-    }
-
-    /**
-     * Synchronize Bookmark 1 to Bookmark 2
-     */
-    public function ajaxSyncBookmark()
-    {
-        $s = new Synchronize;
-        $s->request();
     }
 
     /**
