@@ -270,6 +270,10 @@ main > div:first-child:nth-last-child(2) + div {
         transform: translateX(-2rem);
     }
 
+    main {
+        flex-wrap: wrap-reverse;
+    }
+
     main > aside + div {
         padding-right: 0;
     }
@@ -279,7 +283,8 @@ main > div:first-child:nth-last-child(2) + div {
     }
 
     main > aside {
-        display: none;
+        max-width: 100%;
+        padding-bottom: 7rem;
     }
 }
 
