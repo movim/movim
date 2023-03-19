@@ -1363,7 +1363,7 @@ class Chat extends \Movim\Widget\Base
                     ? $roster->truename
                     : $contactFromName;
             }
-        } else {
+        } elseif ($message->body) {
             // Let's try to support "quoted" messages
             $quote = '&gt; ';
             $parent = '';
