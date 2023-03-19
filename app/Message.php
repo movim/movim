@@ -277,6 +277,17 @@ class Message extends Model
             }
         }
 
+        if ($this->isMuc()) {
+            $presence = $this->user->session->presences()
+                             ->where('jid', $this->jidfrom)
+                             ->where('resource', $this->resource)
+                             ->where('muc', true)
+                             ->first();
+            // If we know the true JID of the sender, save it
+            if ($presence->mucjid != $this->jidfrom.'/'.$this->resource) {
+                $this->counterpartjid = $presence->mucjid;
+            }
+        }
 
         # XEP-0444: Message Reactions
         if (isset($stanza->reactions)
