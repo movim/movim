@@ -39,7 +39,7 @@ class Location
         $geoloc->appendChild($timestamp);
 
         // Publish option
-        $publishOption = $dom->createElement('publish-option');
+        $publishOption = $dom->createElement('publish-options');
         $x = $dom->createElement('x');
         $x->setAttribute('xmlns', 'jabber:x:data');
         $x->setAttribute('type', 'submit');

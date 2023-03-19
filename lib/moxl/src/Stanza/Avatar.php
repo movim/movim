@@ -35,7 +35,7 @@ class Avatar
         $data->setAttribute('xmlns', 'urn:xmpp:avatar:data');
         $item->appendChild($data);
 
-        $publishOption = $dom->createElement('publish-option');
+        $publishOption = $dom->createElement('publish-options');
         $x = $dom->createElement('x');
         $x->setAttribute('xmlns', 'jabber:x:data');
         $x->setAttribute('type', 'submit');
