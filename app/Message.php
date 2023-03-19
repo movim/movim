@@ -289,6 +289,27 @@ class Message extends Model
             }
         }
 
+        if (isset($stanza->addresses) && $stanza->addresses->attributes()->xmlns == 'http://jabber.org/protocol/address') {
+            foreach ($stanza->addresses->address as $address) {
+                if ($address->attributes()->type == 'ofrom' && $address->attributes()->jid) {
+                    $jid = explodeJid($address->attributes()->jid);
+                    if ($jidFrom['server'] == $jid['server']) {
+                        $info = Info::firstOrNew(['server' => $jid['server']]);
+                        if ($info && $info->hasFeature('http://jabber.org/protocol/address')) {
+                            $this->counterpartjid = $address->attributes()->jid;
+                            if ($stanza->body && $stanza->fallback && $stanza->fallback->attributes()->xmlns == 'urn:xmpp:fallback:0'
+                             && $stanza->fallback->attributes()->for == 'http://jabber.org/protocol/address') {
+                                $stanza->body = mb_substr(
+                                    htmlspecialchars_decode($stanza->body, ENT_XML1),
+                                    (int)$stanza->fallback->body->attributes()->end
+                                );
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         # XEP-0444: Message Reactions
         if (isset($stanza->reactions)
             && $stanza->reactions->attributes()->xmlns == 'urn:xmpp:reactions:0') {
