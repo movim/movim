@@ -296,9 +296,10 @@ class Message extends Model
             $parentMessage = $this->resolveParentMessage($this->jidfrom, (string)$stanza->reactions->attributes()->id);
 
             if ($parentMessage) {
-                $resource = $this->isMuc()
+                $resource = $this->counterpartjid
+                    ? $this->counterpartjid : ($this->isMuc()
                     ? $this->resource
-                    : $this->jidfrom;
+                    : $this->jidfrom);
 
                 $parentMessage
                     ->reactions()
@@ -585,7 +586,7 @@ class Message extends Model
     public function resolveColor()
     {
         $this->color = stringToColor(
-            $this->resource . $this->type
+            ($this->isMuc() ? $this->resource : ($this->counterpartjid ? $this->counterpartjid : $this->fromjid)) . $this->type
         );
 
         return $this->color;

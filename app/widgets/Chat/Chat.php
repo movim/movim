@@ -1414,9 +1414,17 @@ class Chat extends \Movim\Widget\Base
         $messageDBSeen = $message->seen;
         $n = new Notif;
 
-        if ($message->isMuc()) {
-            $message->resolveColor();
+        if ($message->counterpartjid) {
+            $message->contact = $this->user->session->contacts()->where('jid', $message->counterpartjid)->first();
+            if ($message->contact) {
+                $message->contact->truename = $message->contact->getTruenameAttribute();
+                $message->icon_url = $message->contact->getPhoto();
+            }
+        }
 
+        $message->resolveColor();
+
+        if ($message->isMuc()) {
             // Cache the resolved presences for a while
             $key = $message->jidfrom . $message->resource;
             if (!isset($this->_mucPresences[$key])) {
@@ -1428,13 +1436,13 @@ class Chat extends \Movim\Widget\Base
             }
 
             if ($this->_mucPresences[$key] && $this->_mucPresences[$key] !== true) {
-                if ($url = $this->_mucPresences[$key]->conferencePicture) {
+                if (!$message->icon_url && $url = $this->_mucPresences[$key]->conferencePicture) {
                     $message->icon_url = $url;
                 }
 
                 $message->moderator = ($this->_mucPresences[$key]->mucrole == 'moderator');
-                $message->mucjid = $this->_mucPresences[$key]->mucjid;
-                $message->mine = $message->seen = ($this->_mucPresences[$key]->mucjid == $this->user->id);
+                $message->mucjid = $message->counterpartjid ? $message->counterpartjid : $this->_mucPresences[$key]->mucjid;
+                $message->mine = $message->seen = ($message->mucjid == $this->user->id);
             } else {
                 $this->_mucPresences[$key] = true;
             }
@@ -1532,6 +1540,7 @@ class Chat extends \Movim\Widget\Base
     {
         $view = $this->tpl();
         $merged = [];
+        $attribution = $message->isMuc();
 
         $reactions = $message
             ->reactions()
@@ -1544,10 +1553,14 @@ class Chat extends \Movim\Widget\Base
             }
 
             $merged[$reaction->emoji][] = $reaction->jidfrom;
+            if (!$attribution && $reaction->jidfrom != $message->jidto && $reaction->jidfrom != $message->jidfrom) {
+                $attribution = true;
+            }
         }
 
         $view->assign('message', $message);
         $view->assign('reactions', $merged);
+        $view->assign('attribution', $attribution);
         $view->assign('me', $this->user->id);
 
         return $view->draw('_chat_reactions');

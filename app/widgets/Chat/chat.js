@@ -1110,7 +1110,16 @@ var Chat = {
             reactions.innerHTML = data.reactionsHtml;
         }
 
-        if (isMuc && data.resource) {
+        if (data.contact) {
+            var nick = data.contact.name || (isMuc && data.resource) || data.contact.truename;
+            var resourceSpan = document.createElement('span');
+            resourceSpan.classList.add('resource');
+            resourceSpan.classList.add(data.color);
+            resourceSpan.innerText = nick + (isMuc && data.resource && data.resource != nick ? ' (' + data.resource + ')' : '');
+            resourceSpan.title = data.contact.jid;
+
+            msg.appendChild(resourceSpan);
+        } else if (isMuc && data.resource) {
             var resourceSpan = document.createElement('span');
             resourceSpan.classList.add('resource');
             resourceSpan.classList.add(data.color);
@@ -1188,6 +1197,17 @@ var Chat = {
                 bubble.querySelector('div.bubble').insertBefore(msg, bubble.querySelector('div.bubble').firstChild);
             } else {
                 bubble.querySelector('div.bubble').appendChild(msg);
+            }
+        }
+
+        if (data.icon_url) {
+            icon = bubble.querySelector('span.primary.icon');
+            if (icon.querySelector('img') == undefined) {
+                var img = document.createElement('img');
+                img.setAttribute('src', data.icon_url);
+                icon.appendChild(img);
+            } else {
+                icon.querySelector('img').src = data.icon_url;
             }
         }
 
