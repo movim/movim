@@ -20,7 +20,7 @@
     <li>
         <div>
             <p class="normal center	">
-                {$contact->truename}
+                {$contact->truename}{if="$roster->name && $roster->name != $contact->truename"} ({$roster->name}){/if}
                 {if="isset($roster) && isset($roster->presence)"}
                     <span class="second">{$roster->presence->presencetext}</span>
                 {/if}
