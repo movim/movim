@@ -57,6 +57,12 @@ class Location
         $x->appendChild($field);
 
         $field = $dom->createElement('field');
+        $field->setAttribute('var', 'pubsub#access_model');
+        $field->appendChild($dom->createElement('value', 'roster'));
+        $x->appendChild($field);
+
+        /*
+        $field = $dom->createElement('field');
         $field->setAttribute('var', 'pubsub#send_last_published_item');
         $field->appendChild($dom->createElement('value', 'on_sub_and_presence'));
         $x->appendChild($field);
@@ -72,14 +78,10 @@ class Location
         $x->appendChild($field);
 
         $field = $dom->createElement('field');
-        $field->setAttribute('var', 'pubsub#access_model');
-        $field->appendChild($dom->createElement('value', 'roster'));
-        $x->appendChild($field);
-
-        $field = $dom->createElement('field');
         $field->setAttribute('var', 'pubsub#pubsub#notify_retract');
         $field->appendChild($dom->createElement('value', 'true'));
         $x->appendChild($field);
+        */
 
         $pubsub->appendChild($publishOption);
 

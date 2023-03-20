@@ -86,13 +86,14 @@ class Bookmark2
         $x->appendChild($field);
 
         $field = $dom->createElement('field');
-        $field->setAttribute('var', 'pubsub#send_last_published_item');
-        $field->appendChild($dom->createElement('value', 'never'));
-        $x->appendChild($field);
-
-        $field = $dom->createElement('field');
         $field->setAttribute('var', 'pubsub#access_model');
         $field->appendChild($dom->createElement('value', 'whitelist'));
+        $x->appendChild($field);
+
+        /*
+        $field = $dom->createElement('field');
+        $field->setAttribute('var', 'pubsub#send_last_published_item');
+        $field->appendChild($dom->createElement('value', 'never'));
         $x->appendChild($field);
 
         $field = $dom->createElement('field');
@@ -104,6 +105,7 @@ class Bookmark2
         $field->setAttribute('var', 'pubsub#pubsub#notify_retract');
         $field->appendChild($dom->createElement('value', 'true'));
         $x->appendChild($field);
+        */
 
         $pubsub->appendChild($publishOption);
 

@@ -325,6 +325,7 @@ class Pubsub
         $field->appendChild($dom->createElement('value', 'true'));
         $x->appendChild($field);
 
+        /*
         $field = $dom->createElement('field');
         $field->setAttribute('var', 'pubsub#max_items');
         $field->appendChild($dom->createElement('value', 'max'));
@@ -334,6 +335,7 @@ class Pubsub
         $field->setAttribute('var', 'pubsub#itemreply');
         $field->appendChild($dom->createElement('value', 'publisher'));
         $x->appendChild($field);
+        */
 
         if ($node == 'urn:xmpp:microblog:0') {
             $field = $dom->createElement('field');
@@ -341,10 +343,12 @@ class Pubsub
             $field->appendChild($dom->createElement('value', 'presence'));
             $x->appendChild($field);
 
+            /*
             $field = $dom->createElement('field');
             $field->setAttribute('var', 'pubsub#pubsub#notify_retract');
             $field->appendChild($dom->createElement('value', 'true'));
             $x->appendChild($field);
+            */
         }
 
         $pubsub->appendChild($publishOption);
@@ -388,13 +392,14 @@ class Pubsub
         $x->appendChild($field);
 
         $field = $dom->createElement('field');
-        $field->setAttribute('var', 'pubsub#send_last_published_item');
-        $field->appendChild($dom->createElement('value', 'never'));
-        $x->appendChild($field);
-
-        $field = $dom->createElement('field');
         $field->setAttribute('var', 'pubsub#access_model');
         $field->appendChild($dom->createElement('value', 'presence'));
+        $x->appendChild($field);
+
+        /*
+        $field = $dom->createElement('field');
+        $field->setAttribute('var', 'pubsub#send_last_published_item');
+        $field->appendChild($dom->createElement('value', 'never'));
         $x->appendChild($field);
 
         $field = $dom->createElement('field');
@@ -406,6 +411,7 @@ class Pubsub
         $field->setAttribute('var', 'pubsub#pubsub#notify_retract');
         $field->appendChild($dom->createElement('value', 'true'));
         $x->appendChild($field);
+        */
 
         $pubsub->appendChild($publishOption);
 

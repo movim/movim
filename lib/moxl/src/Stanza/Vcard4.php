@@ -109,6 +109,12 @@ class Vcard4
         $x->appendChild($field);
 
         $field = $dom->createElement('field');
+        $field->setAttribute('var', 'pubsub#access_model');
+        $field->appendChild($dom->createElement('value', 'presence'));
+        $x->appendChild($field);
+
+        /*
+        $field = $dom->createElement('field');
         $field->setAttribute('var', 'pubsub#send_last_published_item');
         $field->appendChild($dom->createElement('value', 'on_sub_and_presence'));
         $x->appendChild($field);
@@ -122,11 +128,7 @@ class Vcard4
         $field->setAttribute('var', 'pubsub#max_items');
         $field->appendChild($dom->createElement('value', 1));
         $x->appendChild($field);
-
-        $field = $dom->createElement('field');
-        $field->setAttribute('var', 'pubsub#access_model');
-        $field->appendChild($dom->createElement('value', 'presence'));
-        $x->appendChild($field);
+        */
 
         $pubsub->appendChild($publishOption);
 
