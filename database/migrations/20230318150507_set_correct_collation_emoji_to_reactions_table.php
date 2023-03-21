@@ -11,7 +11,7 @@ class SetCorrectCollationEmojiToReactionsTable extends Migration
          * See https://github.com/movim/movim/issues/1042
          */
         if ($this->schema->getConnection()->getDriverName() == 'mysql') {
-            $this->schema->getConnection()->unprepared('alter table reactions modify emoji varchar(32) charset utf8mb4  collate utf8mb4_bin;');
+            $this->schema->getConnection()->unprepared('alter table reactions modify emoji varchar(32) charset utf8mb4 collate utf8mb4_bin;');
         }
     }
 

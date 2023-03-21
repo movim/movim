@@ -46,6 +46,7 @@ v0.21 (trunk)
  * Drop the outdated FromModlToEloquent migration script
  * Remove the Bookmark synchronization feature, the server is taking care of it
  * Implement XEP-0469: Bookmark Pinning
+ * Make utf8mb4_bin the default collation for MySQL and migrate all the existing tables
 
 v0.20
 ---------------------------

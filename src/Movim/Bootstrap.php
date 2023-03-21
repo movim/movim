@@ -146,7 +146,7 @@ class Bootstrap
             'username'  => config('database.username'),
             'password'  => config('database.password'),
             'charset'   => (config('database.driver') == 'mysql') ? 'utf8mb4' : 'utf8',
-            'collation' => (config('database.driver') == 'mysql') ? 'utf8mb4_unicode_ci' : 'utf8_unicode_ci',
+            'collation' => (config('database.driver') == 'mysql') ? 'utf8mb4_bin' : 'utf8_unicode_ci',
         ]);
 
         /**
