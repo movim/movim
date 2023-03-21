@@ -64,7 +64,10 @@
 
                 {if="$contact->url != null"}
                     <i class="material-icons icon-text">link</i>
-                    {if="filter_var($contact->url, FILTER_VALIDATE_URL)"}
+                    {if="parse_url($contact->url, PHP_URL_SCHEME) == 'xmpp'"}
+
+                        <a href="{$contact->url}" onclick="MovimUtils.reload('{$c->route('contact', substr($contact->url, 5))}'); return false" rel="me">{$contact->url}</a>
+                    {elseif="filter_var($contact->url, FILTER_VALIDATE_URL)"}
                         <a href="{$contact->url}" target="_blank" rel="me">{$contact->url}</a>
                     {else}
                         {$contact->url}
