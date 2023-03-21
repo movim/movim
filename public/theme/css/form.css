@@ -457,6 +457,10 @@ li.action div.action .button {
     margin: 0 0.25rem;
 }
 
+.snackbar#status_websocket:not(.hide) ~ main > aside ~ * .button.action {
+    display: none;
+}
+
 @media screen and (min-width: 1025px) {
     main > div:first-child:nth-last-child(2) + div .button.action {
         right: calc(70% - 3rem);
@@ -465,11 +469,6 @@ li.action div.action .button {
     *[dir="rtl"] main > div:first-child:nth-last-child(2) + div .button.action {
         right: auto;
         left: calc(70% + 2rem);
-    }
-
-    /* Fix to prevent bad button position when the Websocket is not connected */
-    .snackbar#status_websocket:not(.hide) ~ main > div:first-child:nth-last-child(2) + div .button.action {
-        right: calc(70% + 2rem);
     }
 
     aside ~ * .button.action {
@@ -488,7 +487,7 @@ li.action div.action .button {
     }
 
     aside ~ * .button.action {
-        right: calc(42.5% - 16rem);
+        right: calc(42.5% - 17rem);
     }
 }
 
