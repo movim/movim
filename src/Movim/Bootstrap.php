@@ -66,7 +66,7 @@ class Bootstrap
 
     private function setConstants()
     {
-        (Dotenv::createImmutable(DOCUMENT_ROOT))->load();
+        (Dotenv::createUnsafeImmutable(DOCUMENT_ROOT))->safeLoad();
 
         define('APP_TITLE', 'Movim');
         define('APP_NAME', 'movim');
