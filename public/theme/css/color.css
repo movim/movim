@@ -9,7 +9,6 @@ body {
     --movim-font: 0, 0, 0;
     --movim-element-action: 153, 153, 153;
     scrollbar-color: rgba(var(--movim-font), 0.2) transparent;
-    scrollbar-width: thin;
 
     --movim-red: #F44336;
 }
