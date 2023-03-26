@@ -291,7 +291,9 @@ class Bootstrap
         if (\is_array($trace)) $trace = '';
 
         $error = $errstr . " in " . $errfile . ' (line ' . $errline . ")\n";
-        $fullError = $error . 'Trace' . "\n" . $trace;
+        $fullError = $trace != ''
+            ? $error . 'Trace' . "\n" . $trace
+            : $error;
 
         if (php_sapi_name() != 'cli' && ob_get_contents() == '') {
             echo 'An error occured during the Movim boot check the ' . config('paths.log') . 'error.log file' . "\n";

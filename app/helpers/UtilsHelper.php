@@ -17,7 +17,7 @@ class Utils
         $log->pushHandler(new SyslogHandler('movim'));
 
         $stream = new StreamHandler(config('paths.log') . '/errors.log');
-        $stream->setFormatter(new LineFormatter(null, null, true));
+        $stream->setFormatter(new LineFormatter(null, null, true, true));
         $log->pushHandler($stream);
 
         $log->error($logs);
