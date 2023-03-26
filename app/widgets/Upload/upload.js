@@ -317,6 +317,8 @@ var Upload = {
  * Handle the paste event
  */
 window.addEventListener('paste', evt => {
+    if (Upload.file != null) return;
+
     const clipboardItems = evt.clipboardData.items;
     const items = [].slice
         .call(clipboardItems)
