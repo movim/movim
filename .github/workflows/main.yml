@@ -1,0 +1,54 @@
+# CI configuration for movim
+# Author: Sai Karthik < kskarthik@disroot.org >
+ 
+name: Movim CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+permissions:
+  contents: read
+
+jobs:
+  # builds movim from source
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    #- name: Validate composer.json and composer.lock
+    #  run: composer validate --strict
+
+    - name: Cache Composer packages
+      id: composer-cache
+      uses: actions/cache@v3
+      with:
+        path: vendor
+        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-php-
+
+    - name: Install movim dependencies
+      run: composer install --prefer-dist --no-progress
+    - name: Rename .env file
+      run: cp .env.example .env
+       
+    - name: Setup Postgres database
+      uses: Daniel-Marynicz/postgresql-action@master
+      with:
+       postgres_image_tag: 12-alpine
+       app_user: movim
+       app_user_password: movim
+       app_db: movim
+       #postgres_extensions: uuid-ossp ltree
+
+    - name: Perform database migration using composer
+      run: composer movim:migrate
+      
+    - name: Start movim daemon
+      run: php daemon.php start &
