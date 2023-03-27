@@ -230,6 +230,10 @@ class Contact extends Model
             ? (string)$vcard->url->uri
             : null;
 
+        if ($this->url == null && $vcard->impp->uri) {
+            $this->url = $vcard->impp->uri;
+        }
+
         $this->adrlocality = !empty($vcard->adr->locality)
             ? (string)$vcard->adr->locality
             : null;
