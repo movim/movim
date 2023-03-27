@@ -3,7 +3,7 @@
         {loop="$stickers"}
             {if="strlen($value) == 44"}
             <li class="block" onclick="Stickers.zoom(this, '{$jid}', '{$pack}', '{$value}');">
-                <img class="sticker" src="/stickers/{$pack}/{$value}"/>
+                <img class="sticker" src="{$c->baseUri}stickers/{$pack}/{$value}"/>
             </li>
             {/if}
         {/loop}
@@ -35,7 +35,7 @@
         {/if}
         {loop="$packs"}
             <li onclick="Stickers_ajaxShow('{$jid}', '{$value}')" {if="$value == $pack"}class="active"{/if}>
-                <a href="#"><img alt=":sticker:" class="emoji medium" src="/stickers/{$value}/icon.png"></a>
+                <a href="#"><img alt=":sticker:" class="emoji medium" src="{$c->baseUri}stickers/{$value}/icon.png"></a>
             </li>
         {/loop}
     </ul>

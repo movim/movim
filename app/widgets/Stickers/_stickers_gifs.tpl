@@ -29,7 +29,7 @@
         </li>
         {loop="$packs"}
             <li onclick="Stickers_ajaxShow('{$jid}', '{$value}')">
-                <a href="#"><img alt=":sticker:" class="emoji medium" src="/stickers/{$value}/icon.png"></a>
+                <a href="#"><img alt=":sticker:" class="emoji medium" src="{$c->baseUri}stickers/{$value}/icon.png"></a>
             </li>
         {/loop}
     </ul>

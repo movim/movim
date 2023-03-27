@@ -88,9 +88,9 @@
     <audio id="audio" autoplay muted></audio>
 
     {if="$withvideo"}
-        <video id="remote_video" autoplay poster="/theme/img/empty.png"></video>
-        <video id="screen_sharing_video" autoplay muted poster="/theme/img/empty.png"></video>
-        <video id="video" autoplay muted poster="/theme/img/empty.png"></video>
+        <video id="remote_video" autoplay poster="{$c->baseUri}theme/img/empty.png"></video>
+        <video id="screen_sharing_video" autoplay muted poster="{$c->baseUri}theme/img/empty.png"></video>
+        <video id="video" autoplay muted poster="{$c->baseUri}theme/img/empty.png"></video>
     {/if}
 
     <span id="remote_state">

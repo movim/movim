@@ -21,6 +21,7 @@ class Base
 
     protected $_view;
 
+    public $baseUri;
     public $events;
     public $filters;
 
@@ -38,6 +39,7 @@ class Base
         $this->user = \App\User::me();
         $this->load();
         $this->name = get_class($this);
+        $this->baseUri = BASE_URI;
 
         // If light loading enabled, we stop here
         if ($light) {
