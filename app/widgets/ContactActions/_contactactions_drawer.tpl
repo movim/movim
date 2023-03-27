@@ -56,7 +56,12 @@
                             <span class="tag color {$roster->group|stringToColor}">{$roster->group}</span>
                         {/if}
                     </p>
-                    <p class="line">{$contact->id}</p>
+                    <p class="line">
+                        {if="$roster && $roster->name && $roster->name != $contact->truename"}
+                            {$roster->name} ·
+                        {/if}
+                        {$contact->id}
+                    </p>
                 </div>
             </li>
         </ul>

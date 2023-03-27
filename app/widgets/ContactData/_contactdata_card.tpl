@@ -19,9 +19,13 @@
 <ul class="list thick">
     <li>
         <div>
-            <p class="normal center	">
+            <p class="normal center">
                 {$contact->truename}
-                {if="isset($roster) && isset($roster->presence)"}
+                {if="$roster && $roster->name && $roster->name != $contact->truename"}
+                    <span class="second">{$roster->name}</span>
+                    <br />
+                {/if}
+                {if="$roster && $roster->presence"}
                     <span class="second">{$roster->presence->presencetext}</span>
                 {/if}
             </p>
