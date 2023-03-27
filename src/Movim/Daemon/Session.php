@@ -44,8 +44,7 @@ class Session
         'mysqli',
         'pdo_mysql',
         'pdo_pgsql',
-        'simplexml',
-        'json'
+        'simplexml'
     ];
 
     public function __construct(
@@ -125,6 +124,11 @@ class Session
     {
         // Only load the required extensions
         $configuration = '-n ';
+
+        // ext-json is included in PHP since 8.0
+        if (version_compare(PHP_VERSION, '8.0.0') < 0) {
+            array_push($this->extensions, 'json');
+        }
 
         foreach ($this->extensions as $extension) {
             $configuration .= '-dextension=' . $extension . '.so ';
