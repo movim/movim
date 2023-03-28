@@ -105,9 +105,9 @@
                     <i class="material-icons">visibility</i>
                 </label>
                 <div>
-                    {if="$post->youtube"}
+                    {if="$post->embed"}
                         <div class="video_embed">
-                            <iframe src="{$post->youtube->href}" frameborder="0" allowfullscreen></iframe>
+                            <iframe src="{$post->embed->href}" frameborder="0" allowfullscreen></iframe>
                         </div>
                     {elseif="$post->isShort()"}
                         {loop="$post->pictures"}
@@ -133,9 +133,9 @@
                         <i class="material-icons">visibility</i>
                     </label>
                     <div>
-                        {if="$post->youtube"}
+                        {if="$post->embed"}
                             <div class="video_embed">
-                                <iframe src="{$post->youtube->href}" frameborder="0" allowfullscreen></iframe>
+                                <iframe src="{$post->embed->href}" frameborder="0" allowfullscreen></iframe>
                             </div>
                         {elseif="$post->isShort()"}
                             {loop="$post->pictures"}

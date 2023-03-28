@@ -13,7 +13,7 @@ class Post extends Model
 
     protected $guarded = [];
     public $with = ['attachments', 'likes', 'comments',
-                    'contact',  'openlink', 'youtube',
+                    'contact',  'openlink', 'embed',
                     'links', 'files', 'pictures', 'picture',
                     'attachment'];
 
@@ -68,10 +68,10 @@ class Post extends Model
                     ->where('category', 'open');
     }
 
-    public function youtube()
+    public function embed()
     {
         return $this->hasOne('App\Attachment')
-                    ->where('category', 'youtube');
+                    ->where('category', 'embed');
     }
 
     public function links()
@@ -563,15 +563,21 @@ class Post extends Model
                 case 'related':
                     $att->category = 'link';
                     $att->logo = (isset($enc['logo'])) ? $enc['logo'] : null;
-
-                    if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $enc['href'], $match)) {
-                        $atty = new Attachment;
-                        $atty->rel = $enc['rel'];
-                        $atty->href = 'https://www.youtube.com/embed/' . $match[1];
-                        $atty->category = 'youtube';
-                        $this->attachments[] = $atty;
-                    }
                     break;
+            }
+
+            if (in_array($att->rel, ['enclosure', 'related'])) {
+                $atte = new Attachment;
+                $atte->rel = $enc['rel'];
+                $atte->category = 'embed';
+
+                if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $enc['href'], $match)) {
+                    $atte->href = 'https://www.youtube.com/embed/' . $match[1];
+                    $this->attachments[] = $atte;
+                } elseif (preg_match('/(?:https:\/\/)?(?:www.)?redgifs.com\/watch\/([a-zA-Z]+)$/', $enc['href'], $match)) {
+                    $atte->href = 'https://www.redgifs.com/ifr/' . $match[1];
+                    $this->attachments[] = $atte;
+                }
             }
 
             $this->attachments[] = $att;

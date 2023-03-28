@@ -46,11 +46,7 @@
             {else}
                 {$contact = $post->contact}
             {/if}
-            {if="$post->nsfw"}
-                <span class="primary icon bubble color red tiny">
-                    +18
-                </span>
-            {elseif="$post->isMicroblog()"}
+            {if="$post->isMicroblog()"}
                 {if="$post->contact"}
                     {$url = $contact->getPhoto('m')}
 
@@ -80,11 +76,15 @@
                     {$url = $info->getPhoto('l')}
                 {/if}
                 {if="$url"}
-                    <span class="primary icon bubble">
+                    <span class="primary icon bubble active"
+                        onclick="MovimUtils.reload('{$c->route('community', [$post->server, $post->node])}')"
+                    >
                         <img src="{$url}"/>
                     </span>
                 {else}
-                    <span class="primary icon bubble color {$post->node|stringToColor}">
+                    <span class="primary icon bubble color {$post->node|stringToColor} active"
+                        onclick="MovimUtils.reload('{$c->route('community', [$post->server, $post->node])}')"
+                    >
                         <a href="{$c->route('community', [$post->server, $post->node])}">
                             {$post->node|firstLetterCapitalize}
                         </a>
@@ -192,9 +192,9 @@
 
 <section dir="{if="$post->isRTL()"}rtl{else}ltr{/if}">
     <div>
-        {if="$post->youtube"}
+        {if="$post->embed"}
             <div class="video_embed">
-                <iframe src="{$post->youtube->href}" frameborder="0" allowfullscreen></iframe>
+                <iframe src="{$post->embed->href}" frameborder="0" allowfullscreen></iframe>
             </div>
         {elseif="$post->isShort()"}
             {loop="$post->pictures"}
@@ -205,7 +205,7 @@
                          title="{$value->title}"
                          alt="{$value->title}"
                      {/if}
-                />
+                /><br />
             {/loop}
         {/if}
         {autoescape="off"}
