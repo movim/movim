@@ -6,13 +6,25 @@
     top: 0;
     left: 0;
     z-index: 2;
-    background-color: #111;
     display: none;
-    animation: fadein 0.3s;
+
+    backdrop-filter: blur(1rem);
+}
+
+#draw:before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0.75;
+    background-color: #111;
 }
 
 #draw.open {
-    display: block;
+    display: flex;
 }
 
 #draw .canvas {
@@ -20,6 +32,7 @@
     height: 100%;
     width: 100%;
     margin: auto;
+    z-index: 0;
 }
 
 #draw ul.list.controls li {

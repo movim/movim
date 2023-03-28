@@ -6,6 +6,8 @@
     opacity: 0;
     pointer-events: none;
     z-index: 3;
+
+    backdrop-filter: blur(1rem);
 }
 
 #preview ul.list.controls {
@@ -22,7 +24,6 @@
     left: 0;
     opacity: 0;
     background-color: #111;
-    transition: opacity .3s cubic-bezier(.4,0,.2,1) .1s;
 }
 
 #preview:not(:empty) {
@@ -31,7 +32,7 @@
 }
 
 #preview:not(:empty):before {
-    opacity: 1;
+    opacity: 0.75;
 }
 
 #preview img {

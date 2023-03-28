@@ -65,7 +65,7 @@
 </div>
 <ul class="list controls middle draw-top-nav">
     <li>
-        <span id="drawback" class="primary icon gray active">
+        <span id="drawback" class="primary icon color transparent active">
             <i class="material-icons">arrow_back</i>
         </span>
         <span class="control active icon bubble color blue" id="draw-save">

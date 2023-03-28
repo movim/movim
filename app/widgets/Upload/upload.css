@@ -52,7 +52,6 @@
     display: none;
 }
 
-body.dropped:before,
 body.dropped:after {
     content: '';
     width: 100%;
@@ -60,14 +59,8 @@ body.dropped:after {
     display: block;
     position: absolute;
     z-index: 3;
-}
 
-body.dropped:before {
-    content: '';
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-body.dropped:after {
+    box-sizing: border-box;
     font-family: 'Material Icons';
     content: "\e2c6";
     font-size: 10rem;
@@ -77,4 +70,5 @@ body.dropped:after {
     justify-content: center;
     align-items: center;
     backdrop-filter: blur(1rem);
+    background-color: rgba(17, 17, 17, 0.75);
 }
