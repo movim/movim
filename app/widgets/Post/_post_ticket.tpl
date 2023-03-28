@@ -1,13 +1,13 @@
 <li id="{$post->nodeid|cleanupId}"
-    class="block"
+    class="block {if="$post->embed"}embed{/if}"
     onclick="MovimUtils.reload('{$c->route('post', [$post->server, $post->node, $post->nodeid])}'); Drawer.clear()">
     {if="$post->picture != null"}
         <img class="main"
-             src="{$post->picture->href|protectPicture}"
-             {if="!empty($post->picture->title)"}
+            src="{$post->picture->href|protectPicture}"
+            {if="!empty($post->picture->title)"}
                 alt="{$post->picture->title}"
                 title="{$post->picture->title}"
-             {/if}>
+            {/if}>
         <span class="control icon thumb color
             {if="$post->contact"}
                 {$post->contact->jid|stringToColor}

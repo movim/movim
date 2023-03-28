@@ -139,3 +139,13 @@ ul.flex.gallery li.block img.main {
 ul.flex.gallery li.block img.main:after {
     content: attr(alt);
 }
+
+ul.flex.gallery li.block.embed:before {
+    font-family: 'Material Icons';
+    content: "\e02c";
+    display: flex;
+    align-items: center;
+    font-size: 4rem;
+    height: 100%;
+    opacity: 0.5;
+}
