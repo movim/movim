@@ -611,6 +611,18 @@ class Post extends Model
                 unset($this->attachments[$key]);
             }
         }
+
+        // Remove duplicates...
+        foreach ($this->attachments as $key => $attachment) {
+            foreach($this->attachments as $keyCheck => $attachmentCheck) {
+                if ($key != $keyCheck
+                && $attachment->href == $attachmentCheck->href
+                && $attachment->category == $attachmentCheck->category
+                && $attachment->rel == $attachmentCheck->rel) {
+                    unset($this->attachments[$key]);
+                }
+            }
+        }
     }
 
     public function getUUID()

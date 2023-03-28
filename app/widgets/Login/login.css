@@ -37,6 +37,7 @@ body main {
 
 #login_widget .dialog.more > section {
     overflow: hidden;
+    margin-bottom: 0.5rem;
 }
 
 @media screen and (max-width: 600px) {
