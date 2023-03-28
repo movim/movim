@@ -6,7 +6,7 @@
         </div>
     </li>
     {loop="$users"}
-        <li class="block active" title="{$value->jid}" onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}')">
+        <li class="block active" title="{$value->jid}" onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}'); Drawer.clear();">
             {$url = $value->getPhoto('m')}
             {if="$url"}
                 <span class="primary icon bubble
