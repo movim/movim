@@ -40,7 +40,7 @@
     max-width: calc(100% - 2rem);
     align-self: center;
     border-radius: 0.75rem;
-    margin-top: -6rem;
+    margin-top: -2rem;
     position: relative;
     animation: zoom 0.3s;
 }
