@@ -1,7 +1,7 @@
 #
 # Translators:
 # Besnik Bleta <besnik@programeshqip.org>, 2018
-# Besnik Bleta <besnik@programeshqip.org>, 2018,2020-2022
+# Besnik Bleta <besnik@programeshqip.org>, 2018,2020-2023
 # Besnik Bleta <besnik@programeshqip.org>, 2018-2020
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
@@ -60,6 +60,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactDataPublic/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Dictaphone/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Draw/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
@@ -68,11 +70,9 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Login/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/LoginAnonymous/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Menu/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Notification/locales.ini
+#. extracted from ../app/widgets/Notif/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/NotificationConfig/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -117,16 +117,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-25 14:45+0200\n"
+"POT-Creation-Date: 2023-03-29 23:07+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
-"Last-Translator: Besnik Bleta <besnik@programeshqip.org>, 2018,2020-2022\n"
+"Last-Translator: Besnik Bleta <besnik@programeshqip.org>, 2018,2020-2023\n"
 "Language-Team: Albanian (http://www.transifex.com/movim/movim/language/sq/)\n"
 "Language: sq\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.7.4\n"
+"X-Generator: Translate Toolkit 3.8.4\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -183,10 +183,6 @@ msgstr "Ripohim fjalëkalimi"
 #: [account]password_changed
 msgid "The password has been updated"
 msgstr "Fjalëkalimi u përditësua"
-
-#: [account]password_not_valid
-msgid "Please provide a valid password (6 characters minimum)"
-msgstr "Ju lutemi, jepni një fjalëkalim të vlefshëm (minimumi 6 shenja)"
 
 #: [account]password_not_same
 msgid "The provided passwords are not the same"
@@ -492,15 +488,15 @@ msgstr ""
 
 #: [banner]updated
 msgid "Banner Updated"
-msgstr ""
+msgstr "Banderola u Përditësua"
 
 #: [banner]not_updated
 msgid "Banner Not Updated"
-msgstr ""
+msgstr "Banderola S’u Përditësua"
 
 #: [banner]missing
 msgid "No banner defined yet"
-msgstr ""
+msgstr "Ende pa banderolë të përcaktuar"
 
 #: [blocked]title
 msgid "Blocked"
@@ -669,14 +665,30 @@ msgstr "Thirrja përfundoi"
 
 #: [chat]jingle_hours
 msgid "%s hours %s minutes"
-msgstr ""
+msgstr "%s orë %s minuta"
 
 #: [chat]jingle_minutes
 msgid "%s minutes and %s seconds"
-msgstr ""
+msgstr "%s minuta dhe %s sekonda"
 
 #: [chat]jingle_seconds
 msgid "%s seconds"
+msgstr "%s sekonda"
+
+#: [chat]muc_admin
+msgid "%s is now admin"
+msgstr ""
+
+#: [chat]muc_owner
+msgid "%s is now owner"
+msgstr ""
+
+#: [chat]muc_outcast
+msgid "%s is now banned"
+msgstr ""
+
+#: [chat]muc_member
+msgid "%s is now member"
 msgstr ""
 
 #: [chat]publish_error
@@ -808,6 +820,10 @@ msgstr "Foto"
 msgid "Video"
 msgstr "Video"
 
+#: [chats]audio
+msgid "Audio"
+msgstr ""
+
 #: [button]chat
 msgid "Chat"
 msgstr "Fjalosje"
@@ -875,6 +891,10 @@ msgstr "Ju lutemi, jepni një emër bashkësie të vlefshëm (minimumi 4 shenja)
 #: [communitiesserver]no_creation
 msgid "You cannot create a new community on this server"
 msgstr "S’mund të krijoni një bashkësi të re në këtë shërbyes"
+
+#: [communitiesserver]disco_error
+msgid "Issue when trying to discover the items"
+msgstr ""
 
 #: [communitiesservers]empty_title
 msgid "No Communities Servers yet…"
@@ -956,6 +976,26 @@ msgstr "Pajtimtarë"
 #: [communityconfig]publish_model_subscribers_text
 msgid "The subscribers can publish"
 msgstr "Pajtimtarët mund të botojnë"
+
+#: [communityconfig]type
+msgid "Community type"
+msgstr ""
+
+#: [communityconfig]type_articles_title
+msgid "Articles"
+msgstr ""
+
+#: [communityconfig]type_articles_text
+msgid "Publish and read articles"
+msgstr ""
+
+#: [communityconfig]type_gallery_title [page]gallery
+msgid "Gallery"
+msgstr "Galeri"
+
+#: [communityconfig]type_gallery_text
+msgid "Publish and browse pictures"
+msgstr ""
 
 #: [communitydata]sub
 msgid "%s subscribers"
@@ -1321,6 +1361,18 @@ msgstr "Ky kontakt gjendet në listën tuaj të kontakteve, por nuk ka pajtim me
 msgid "No public data found"
 msgstr "S’u gjetën të dhëna publike"
 
+#: [dictaphone]name
+msgid "Dictaphone"
+msgstr ""
+
+#: [dictaphone]push_to_record
+msgid "Push to record"
+msgstr ""
+
+#: [dictaphone]recording
+msgid "Recording"
+msgstr ""
+
 #: [draw]title
 msgid "Draw"
 msgstr "Vizatim"
@@ -1429,10 +1481,6 @@ msgstr "Gabim përkatësie XMPP, llogaria juaj s’është ID Jabber e saktë"
 msgid "Some data are missing!"
 msgstr "Mungojnë disa të dhëna!"
 
-#: [error]wrong_password
-msgid "Wrong password"
-msgstr "Fjalëkalim i gabuar"
-
 #: [error]internal
 msgid "Internal server error"
 msgstr "Gabim i brendshëm shërbyesi"
@@ -1519,15 +1567,11 @@ msgstr "Administruar nga"
 
 #: [about_movim]info
 msgid "Movim is a federated blogging and chat platform."
-msgstr ""
+msgstr "Movim është një platformë blogimi dhe fjalosjeje me federim."
 
 #: [about_movim]website
 msgid "Visit the project official website %s."
-msgstr ""
-
-#: [login_anonymous]bad_username
-msgid "Bad nickname (between 4 and 40 characters)"
-msgstr "Nofkë e gabuar (mes 4 dhe 40 shenjash)"
+msgstr "Vizitoni sajtin zyrtar të projektit %s."
 
 #: [menu]empty_title
 msgid "No news yet…"
@@ -1702,6 +1746,10 @@ msgstr "Shihni profilin e %s"
 msgid "Public posts from users"
 msgstr "Postime publike nga përdorues"
 
+#: [post]unknown_contact
+msgid "Unknown contact"
+msgstr ""
+
 #: [post]read_time_singular
 msgid "%s minute"
 msgstr "%s minutë"
@@ -1850,6 +1898,10 @@ msgstr "Bëni një foto"
 msgid "Please provide a title"
 msgstr "Ju lutemi, jepni një titull"
 
+#: [publish]no_picture
+msgid "At least one picture is required"
+msgstr ""
+
 #: [publish]preview
 msgid "Preview"
 msgstr "Paraparje"
@@ -1896,7 +1948,7 @@ msgstr "Shtoni #hashtagë te titulli ose lënda juaj, që ta bëni artikullin tu
 
 #: [publish]publish_error_forbidden
 msgid "You are not authorized to publish there"
-msgstr ""
+msgstr "S’jeni i autorizuar të publikoni atje"
 
 #: [publishhelp]title [page]help
 msgid "Help"
@@ -1933,18 +1985,6 @@ msgstr "Ende s’keni ndonjë dhomë bisedash."
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
 msgstr "Shtoni një duke klikuar mbi butonin e shtimeve."
-
-#: [rooms]empty_synchronize_title
-msgid "You had some rooms previously listed?"
-msgstr "Keni ndonjë dhomë prej më parë?"
-
-#: [rooms]empty_synchronize_text
-msgid "Try to synchronize them to the new room bookmarking system"
-msgstr "Provoni t’i njëkohësoni me sistemin e faqerojtjes së dhomës së re"
-
-#: [rooms]empty_synchronize_button
-msgid "Synchronize"
-msgstr "Njëkohësoje"
 
 #: [rooms]type_room
 msgid "Type of room"
@@ -2011,14 +2051,6 @@ msgstr "ID e gabuar Dhome Bisedash"
 #: [chatrooms]empty_name
 msgid "Empty name"
 msgstr "Emër i zbrazët"
-
-#: [chatrooms]synchronized
-msgid "%s rooms synchronized"
-msgstr "U njëkohësuan %s dhoma"
-
-#: [chatrooms]not_synchronized
-msgid "No rooms to synchronize found"
-msgstr "S’u gjet dhomë për njëkohësim"
 
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
@@ -2321,6 +2353,10 @@ msgstr "Postimi u nda brenda dhomës së bisedave"
 #: [sendto]more_contacts
 msgid "More contacts"
 msgstr "Më tepër kontakte"
+
+#: [sendto]os_share
+msgid "Share outside Movim"
+msgstr ""
 
 #: [sticker]title
 msgid "Stickers"
@@ -2629,10 +2665,6 @@ msgstr "Prurje"
 #: [page]posts
 msgid "Posts"
 msgstr "Postime"
-
-#: [page]gallery
-msgid "Gallery"
-msgstr "Galeri"
 
 #: [page]visio
 msgid "Visio-conference"

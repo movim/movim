@@ -5,6 +5,7 @@
 # Danilo Silva, 2019
 # Evandro Alves Rodrigues <evandro.rodrigues@conab.gov.br>, 2017,2019
 # Felipe, 2020
+# Felipe Nogueira <contato.fnog@gmail.com>, 2023
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012
 # ismael bonato <ismaelbonato@gmail.com>, 2016
 # Jose Marcos Araujo <jmaraujo@avancetec.com.br>, 2016
@@ -69,6 +70,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactDataPublic/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Dictaphone/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Draw/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
@@ -77,11 +80,9 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Login/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/LoginAnonymous/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Menu/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Notification/locales.ini
+#. extracted from ../app/widgets/Notif/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/NotificationConfig/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -126,16 +127,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-25 14:45+0200\n"
+"POT-Creation-Date: 2023-03-29 23:07+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
-"Last-Translator: The Cat, 2021\n"
+"Last-Translator: Felipe Nogueira <contato.fnog@gmail.com>, 2023\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/movim/movim/language/pt_BR/)\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
-"X-Generator: Translate Toolkit 3.7.4\n"
+"X-Generator: Translate Toolkit 3.8.4\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -192,10 +193,6 @@ msgstr "Confirmação de senha"
 #: [account]password_changed
 msgid "The password has been updated"
 msgstr "A senha foi atualizada"
-
-#: [account]password_not_valid
-msgid "Please provide a valid password (6 characters minimum)"
-msgstr "Por favor informe uma senha válida (mínimo 6 caracteres)"
 
 #: [account]password_not_same
 msgid "The provided passwords are not the same"
@@ -513,23 +510,23 @@ msgstr ""
 
 #: [blocked]title
 msgid "Blocked"
-msgstr ""
+msgstr "Bloqueado"
 
 #: [blocked]block_account
 msgid "Block the account"
-msgstr ""
+msgstr "Bloquear a conta"
 
 #: [blocked]unblock_account
 msgid "Unblock the account"
-msgstr ""
+msgstr "Desbloquear a conta"
 
 #: [blocked]account_blocked
 msgid "Account blocked"
-msgstr ""
+msgstr "Conta bloqueada"
 
 #: [blocked]account_unblocked
 msgid "Account unblocked"
-msgstr ""
+msgstr "Conta desbloqueada"
 
 #: [blocked]placeholder
 msgid "You will find here the users you have blocked"
@@ -688,6 +685,22 @@ msgstr ""
 msgid "%s seconds"
 msgstr ""
 
+#: [chat]muc_admin
+msgid "%s is now admin"
+msgstr ""
+
+#: [chat]muc_owner
+msgid "%s is now owner"
+msgstr ""
+
+#: [chat]muc_outcast
+msgid "%s is now banned"
+msgstr ""
+
+#: [chat]muc_member
+msgid "%s is now member"
+msgstr ""
+
 #: [chat]publish_error
 msgid "An error occured when sending the message"
 msgstr "Ocorreu um erro ao enviar a mensagem"
@@ -771,7 +784,7 @@ msgstr ""
 
 #: [omemo]encrypted_disabled
 msgid "Encryption disabled"
-msgstr ""
+msgstr "Criptografia desabilitada"
 
 #: [omemo]encrypted_loading
 msgid "Send a message to build the encrypted session"
@@ -787,7 +800,7 @@ msgstr ""
 
 #: [omemo]last_activity
 msgid "Last activity"
-msgstr ""
+msgstr "Última atividade"
 
 #: [omemo]sessions_built
 msgid "%s sessions built"
@@ -816,6 +829,10 @@ msgstr "Imagem"
 #: [chats]video
 msgid "Video"
 msgstr "Vídeo"
+
+#: [chats]audio
+msgid "Audio"
+msgstr ""
 
 #: [button]chat
 msgid "Chat"
@@ -884,6 +901,10 @@ msgstr "Por favor indique um nome válido para a comunidade (no mínimo 4 caract
 #: [communitiesserver]no_creation
 msgid "You cannot create a new community on this server"
 msgstr "Você não pode criar uma nova comunidade neste servidor"
+
+#: [communitiesserver]disco_error
+msgid "Issue when trying to discover the items"
+msgstr ""
 
 #: [communitiesservers]empty_title
 msgid "No Communities Servers yet…"
@@ -965,6 +986,26 @@ msgstr "Inscritos"
 #: [communityconfig]publish_model_subscribers_text
 msgid "The subscribers can publish"
 msgstr "Os inscritos podem publicar"
+
+#: [communityconfig]type
+msgid "Community type"
+msgstr ""
+
+#: [communityconfig]type_articles_title
+msgid "Articles"
+msgstr ""
+
+#: [communityconfig]type_articles_text
+msgid "Publish and read articles"
+msgstr ""
+
+#: [communityconfig]type_gallery_title [page]gallery
+msgid "Gallery"
+msgstr "Galeria"
+
+#: [communityconfig]type_gallery_text
+msgid "Publish and browse pictures"
+msgstr ""
 
 #: [communitydata]sub
 msgid "%s subscribers"
@@ -1330,6 +1371,18 @@ msgstr "Este contato está em sua lista de contatos mas não há conexão entre 
 msgid "No public data found"
 msgstr "Nenhum dado público encontrado"
 
+#: [dictaphone]name
+msgid "Dictaphone"
+msgstr ""
+
+#: [dictaphone]push_to_record
+msgid "Push to record"
+msgstr ""
+
+#: [dictaphone]recording
+msgid "Recording"
+msgstr ""
+
 #: [draw]title
 msgid "Draw"
 msgstr "Desenhar"
@@ -1438,10 +1491,6 @@ msgstr "Erro de domínio do XMPP, sua conta não tem um ID jabber valido"
 msgid "Some data are missing!"
 msgstr "Alguns dados estão perdidos!"
 
-#: [error]wrong_password
-msgid "Wrong password"
-msgstr "Senha incorreta"
-
 #: [error]internal
 msgid "Internal server error"
 msgstr "Erro interno do servidor"
@@ -1534,10 +1583,6 @@ msgstr ""
 msgid "Visit the project official website %s."
 msgstr ""
 
-#: [login_anonymous]bad_username
-msgid "Bad nickname (between 4 and 40 characters)"
-msgstr "Apelido ruim (entre 4 e 40 caracteres)"
-
 #: [menu]empty_title
 msgid "No news yet…"
 msgstr "Sem notícias ainda..."
@@ -1580,11 +1625,11 @@ msgstr ""
 
 #: [notification]request_granted
 msgid "Authorization granted"
-msgstr ""
+msgstr "Autorização concedida"
 
 #: [notification]request_refused
 msgid "Authorization refused"
-msgstr ""
+msgstr "Autorização recusada"
 
 #: [notificationconfig]title [notifs]title [onboarding]notifications_title
 #: [room]notify_title
@@ -1617,11 +1662,11 @@ msgstr ""
 
 #: [notificationconfig]unknown_browser
 msgid "Unknown browser"
-msgstr ""
+msgstr "Navegador desconhecido"
 
 #: [notificationconfig]unknown_platform
 msgid "Unknown platform"
-msgstr ""
+msgstr "Plataforma desconhecida"
 
 #: [invitations]title
 msgid "Pending Invitations"
@@ -1710,6 +1755,10 @@ msgstr "Ver o perfil de %s"
 #: [post]blog_last
 msgid "Public posts from users"
 msgstr "Artigos públicos de usuários "
+
+#: [post]unknown_contact
+msgid "Unknown contact"
+msgstr ""
 
 #: [post]read_time_singular
 msgid "%s minute"
@@ -1861,6 +1910,10 @@ msgstr "Tirar uma fotografia"
 msgid "Please provide a title"
 msgstr "Por favor forneça um título"
 
+#: [publish]no_picture
+msgid "At least one picture is required"
+msgstr ""
+
 #: [publish]preview
 msgid "Preview"
 msgstr "Visualizar"
@@ -1945,18 +1998,6 @@ msgstr ""
 msgid "Add one by clicking on the add button."
 msgstr "Adicione pressionando o botão adicionar"
 
-#: [rooms]empty_synchronize_title
-msgid "You had some rooms previously listed?"
-msgstr "Você tinha algumas salas listadas anteriormente?"
-
-#: [rooms]empty_synchronize_text
-msgid "Try to synchronize them to the new room bookmarking system"
-msgstr "Tente sincronizá-las com o novo sistema de salas preferidas"
-
-#: [rooms]empty_synchronize_button
-msgid "Synchronize"
-msgstr "Sincronizar"
-
 #: [rooms]type_room
 msgid "Type of room"
 msgstr "Tipo de sala"
@@ -1971,7 +2012,7 @@ msgstr "Sala de gateway"
 
 #: [rooms]show_all
 msgid "Show all rooms"
-msgstr ""
+msgstr "Mostrar todas as salas"
 
 #: [rooms]hide_disconnected
 msgid "Hide disconnected rooms"
@@ -1988,12 +2029,12 @@ msgstr ""
 #: [rooms]owner
 msgctxt "[rooms]owner"
 msgid "Owner"
-msgstr ""
+msgstr "Dono"
 
 #: [rooms]admin
 msgctxt "[rooms]admin"
 msgid "Admin"
-msgstr ""
+msgstr "Administrador"
 
 #: [rooms]visitor
 msgid "Visitor"
@@ -2023,14 +2064,6 @@ msgstr "ID de Sala de Bate-papo inválido"
 msgid "Empty name"
 msgstr "Nome vazio"
 
-#: [chatrooms]synchronized
-msgid "%s rooms synchronized"
-msgstr "%s salas sincronizadas"
-
-#: [chatrooms]not_synchronized
-msgid "No rooms to synchronize found"
-msgstr ""
-
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
 msgid "Users"
@@ -2043,7 +2076,7 @@ msgstr "Membros"
 
 #: [chatrooms]banned
 msgid "Banned"
-msgstr ""
+msgstr "Banido"
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a correct nickname (2 to 40 characters)"
@@ -2059,7 +2092,7 @@ msgstr "Juntar-se à sala de Chat"
 
 #: [chatrooms]pinned
 msgid "Pin this chatroom"
-msgstr ""
+msgstr "Fixar esta sala de bate-papo"
 
 #: [chatrooms]destroyed
 msgid "Room destroyed"
@@ -2083,7 +2116,7 @@ msgstr ""
 
 #: [chatrooms]jidmalformed
 msgid "Your nickname is not valid"
-msgstr ""
+msgstr "Seu apelido não é válido"
 
 #: [chatrooms]notacceptable
 msgid "Not acceptable"
@@ -2099,7 +2132,7 @@ msgstr ""
 
 #: [chatrooms]created
 msgid "Chatroom created"
-msgstr ""
+msgstr "Sala de bate-papo criada"
 
 #: [bookmarks]updated
 msgid "Bookmarks updated"
@@ -2147,11 +2180,11 @@ msgstr "Os participantes dessa sala de bate-papo podem visualizar o perfil de ca
 
 #: [room]archived
 msgid "Archived"
-msgstr ""
+msgstr "Arquivado"
 
 #: [room]archived_text
 msgid "The chatroom messages are archived"
-msgstr ""
+msgstr "As mensagens da sala de bate-papo estão arquivadas"
 
 #: [room]group_chat
 msgid "Group Chat"
@@ -2176,7 +2209,7 @@ msgstr ""
 
 #: [room]banned_remove
 msgid "Unban"
-msgstr ""
+msgstr "Desbanir"
 
 #: [room]change_affiliation
 msgid "Change the user affiliation"
@@ -2188,11 +2221,11 @@ msgstr ""
 
 #: [room]affiliation
 msgid "Affiliation"
-msgstr ""
+msgstr "Afiliação"
 
 #: [room]reason
 msgid "Reason"
-msgstr ""
+msgstr "Motivo"
 
 #: [room]channel
 msgid "Channel"
@@ -2221,17 +2254,17 @@ msgstr "Notifique sempre"
 
 #: [room]pinned
 msgid "Pinned"
-msgstr ""
+msgstr "Fixado"
 
 #: [room]affiliation_owner
 msgctxt "[room]affiliation_owner"
 msgid "Owner"
-msgstr ""
+msgstr "Dono"
 
 #: [room]affiliation_admin
 msgctxt "[room]affiliation_admin"
 msgid "Admin"
-msgstr ""
+msgstr "Administrador"
 
 #: [room]affiliation_member [affiliation]member
 msgid "Member"
@@ -2255,7 +2288,7 @@ msgstr ""
 
 #: [room]affiliation_outcast_changed
 msgid "User banned"
-msgstr ""
+msgstr "Usuário banido"
 
 #: [room]affiliation_none_changed
 msgid "Affiliation removed for the user"
@@ -2332,6 +2365,10 @@ msgstr "Artigo compartilhado em uma sala de bate-papo"
 #: [sendto]more_contacts
 msgid "More contacts"
 msgstr "Mais contatos"
+
+#: [sendto]os_share
+msgid "Share outside Movim"
+msgstr ""
 
 #: [sticker]title
 msgid "Stickers"
@@ -2523,7 +2560,7 @@ msgstr "Chamada encerrada"
 
 #: [visioconfig]title
 msgid "Video & Voice"
-msgstr ""
+msgstr "Voz e Vídeo"
 
 #: [visioconfig]help
 msgid "Configure the default devices used by Movim"
@@ -2531,19 +2568,19 @@ msgstr ""
 
 #: [visioconfig]microphone
 msgid "Microphone"
-msgstr ""
+msgstr "Microfone"
 
 #: [visioconfig]microphone_label
 msgid "Default microphone"
-msgstr ""
+msgstr "Microfone padrão"
 
 #: [visioconfig]camera
 msgid "Camera"
-msgstr ""
+msgstr "Camera"
 
 #: [visioconfig]camera_label
 msgid "Default camera"
-msgstr ""
+msgstr "Câmera padrão"
 
 #: [visioconfig]default_microphone_changed
 msgid "Default microphone changed"
@@ -2640,10 +2677,6 @@ msgstr "Fonte de notícias"
 #: [page]posts
 msgid "Posts"
 msgstr "Artigos"
-
-#: [page]gallery
-msgid "Gallery"
-msgstr "Galeria"
 
 #: [page]visio
 msgid "Visio-conference"
@@ -2845,7 +2878,7 @@ msgstr "Aberto"
 
 #: [input]optional
 msgid "Optional"
-msgstr ""
+msgstr "Opcional"
 
 #: [input]muc_pubsub_node
 msgid "Associated Community"

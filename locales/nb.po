@@ -62,6 +62,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactDataPublic/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Dictaphone/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Draw/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
@@ -70,11 +72,9 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Login/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/LoginAnonymous/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Menu/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Notification/locales.ini
+#. extracted from ../app/widgets/Notif/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/NotificationConfig/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -119,7 +119,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-25 14:45+0200\n"
+"POT-Creation-Date: 2023-03-29 23:07+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Dominik George <nik@naturalnet.de>, 2017-2018\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://www.transifex.com/movim/movim/language/nb_NO/)\n"
@@ -128,7 +128,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.7.4\n"
+"X-Generator: Translate Toolkit 3.8.4\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -185,10 +185,6 @@ msgstr "Passordbekreftelse"
 #: [account]password_changed
 msgid "The password has been updated"
 msgstr "Passordet er oppdatert"
-
-#: [account]password_not_valid
-msgid "Please provide a valid password (6 characters minimum)"
-msgstr "Oppgi et gyldig passord (må inneholde minst 6 tegn)"
 
 #: [account]password_not_same
 msgid "The provided passwords are not the same"
@@ -681,6 +677,22 @@ msgstr ""
 msgid "%s seconds"
 msgstr ""
 
+#: [chat]muc_admin
+msgid "%s is now admin"
+msgstr ""
+
+#: [chat]muc_owner
+msgid "%s is now owner"
+msgstr ""
+
+#: [chat]muc_outcast
+msgid "%s is now banned"
+msgstr ""
+
+#: [chat]muc_member
+msgid "%s is now member"
+msgstr ""
+
 #: [chat]publish_error
 msgid "An error occured when sending the message"
 msgstr ""
@@ -810,6 +822,10 @@ msgstr ""
 msgid "Video"
 msgstr ""
 
+#: [chats]audio
+msgid "Audio"
+msgstr ""
+
 #: [button]chat
 msgid "Chat"
 msgstr "Samtale"
@@ -877,6 +893,10 @@ msgstr "Skriv inn et gyldig fellesskapsnavn (minst fire tegn)"
 #: [communitiesserver]no_creation
 msgid "You cannot create a new community on this server"
 msgstr "Du kan ikke opprette et nytt fellesskap på denne tjeneren"
+
+#: [communitiesserver]disco_error
+msgid "Issue when trying to discover the items"
+msgstr ""
 
 #: [communitiesservers]empty_title
 msgid "No Communities Servers yet…"
@@ -958,6 +978,26 @@ msgstr "Abonnenter"
 #: [communityconfig]publish_model_subscribers_text
 msgid "The subscribers can publish"
 msgstr "Abonnentene kan publisere"
+
+#: [communityconfig]type
+msgid "Community type"
+msgstr ""
+
+#: [communityconfig]type_articles_title
+msgid "Articles"
+msgstr ""
+
+#: [communityconfig]type_articles_text
+msgid "Publish and read articles"
+msgstr ""
+
+#: [communityconfig]type_gallery_title [page]gallery
+msgid "Gallery"
+msgstr "Galleri"
+
+#: [communityconfig]type_gallery_text
+msgid "Publish and browse pictures"
+msgstr ""
 
 #: [communitydata]sub
 msgid "%s subscribers"
@@ -1323,6 +1363,18 @@ msgstr ""
 msgid "No public data found"
 msgstr ""
 
+#: [dictaphone]name
+msgid "Dictaphone"
+msgstr ""
+
+#: [dictaphone]push_to_record
+msgid "Push to record"
+msgstr ""
+
+#: [dictaphone]recording
+msgid "Recording"
+msgstr ""
+
 #: [draw]title
 msgid "Draw"
 msgstr ""
@@ -1431,10 +1483,6 @@ msgstr "XMPP-domenefeil: Jabber-IDen du oppgav er ikke korrekt formatert"
 msgid "Some data are missing!"
 msgstr ""
 
-#: [error]wrong_password
-msgid "Wrong password"
-msgstr "Feil passord"
-
 #: [error]internal
 msgid "Internal server error"
 msgstr "Intern tjenerfeil"
@@ -1526,10 +1574,6 @@ msgstr ""
 #: [about_movim]website
 msgid "Visit the project official website %s."
 msgstr ""
-
-#: [login_anonymous]bad_username
-msgid "Bad nickname (between 4 and 40 characters)"
-msgstr "Ugyldig kallenavn (må være mellom 4 og 40 tegn)"
 
 #: [menu]empty_title
 msgid "No news yet…"
@@ -1704,6 +1748,10 @@ msgstr "Se profilen til %s"
 msgid "Public posts from users"
 msgstr "Offentlige poster fra brukere"
 
+#: [post]unknown_contact
+msgid "Unknown contact"
+msgstr ""
+
 #: [post]read_time_singular
 msgid "%s minute"
 msgstr ""
@@ -1852,6 +1900,10 @@ msgstr ""
 msgid "Please provide a title"
 msgstr "Lag en overskrift"
 
+#: [publish]no_picture
+msgid "At least one picture is required"
+msgstr ""
+
 #: [publish]preview
 msgid "Preview"
 msgstr "Forhåndsvisning"
@@ -1936,18 +1988,6 @@ msgstr ""
 msgid "Add one by clicking on the add button."
 msgstr "Legg til en ved å trykke på \"Legg til\"-knappen"
 
-#: [rooms]empty_synchronize_title
-msgid "You had some rooms previously listed?"
-msgstr ""
-
-#: [rooms]empty_synchronize_text
-msgid "Try to synchronize them to the new room bookmarking system"
-msgstr ""
-
-#: [rooms]empty_synchronize_button
-msgid "Synchronize"
-msgstr ""
-
 #: [rooms]type_room
 msgid "Type of room"
 msgstr ""
@@ -2013,14 +2053,6 @@ msgstr "Feil samtalerom-ID"
 #: [chatrooms]empty_name
 msgid "Empty name"
 msgstr "Tomt navn"
-
-#: [chatrooms]synchronized
-msgid "%s rooms synchronized"
-msgstr ""
-
-#: [chatrooms]not_synchronized
-msgid "No rooms to synchronize found"
-msgstr ""
 
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
@@ -2322,6 +2354,10 @@ msgstr ""
 
 #: [sendto]more_contacts
 msgid "More contacts"
+msgstr ""
+
+#: [sendto]os_share
+msgid "Share outside Movim"
 msgstr ""
 
 #: [sticker]title
@@ -2631,10 +2667,6 @@ msgstr "Strøm"
 #: [page]posts
 msgid "Posts"
 msgstr "Innlegg"
-
-#: [page]gallery
-msgid "Gallery"
-msgstr "Galleri"
 
 #: [page]visio
 msgid "Visio-conference"

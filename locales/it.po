@@ -65,6 +65,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactDataPublic/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Dictaphone/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Draw/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
@@ -73,11 +75,9 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Login/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/LoginAnonymous/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Menu/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Notification/locales.ini
+#. extracted from ../app/widgets/Notif/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/NotificationConfig/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -122,7 +122,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-25 14:45+0200\n"
+"POT-Creation-Date: 2023-03-29 23:07+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Giacomo Lacava <g.lacava@gmail.com>, 2018\n"
 "Language-Team: Italian (http://www.transifex.com/movim/movim/language/it/)\n"
@@ -131,7 +131,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
-"X-Generator: Translate Toolkit 3.7.4\n"
+"X-Generator: Translate Toolkit 3.8.4\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -188,10 +188,6 @@ msgstr "Conferma password"
 #: [account]password_changed
 msgid "The password has been updated"
 msgstr "La password è stata aggiornata"
-
-#: [account]password_not_valid
-msgid "Please provide a valid password (6 characters minimum)"
-msgstr "Inserire una password valida (minimo 6 caratteri)"
 
 #: [account]password_not_same
 msgid "The provided passwords are not the same"
@@ -684,6 +680,22 @@ msgstr ""
 msgid "%s seconds"
 msgstr ""
 
+#: [chat]muc_admin
+msgid "%s is now admin"
+msgstr ""
+
+#: [chat]muc_owner
+msgid "%s is now owner"
+msgstr ""
+
+#: [chat]muc_outcast
+msgid "%s is now banned"
+msgstr ""
+
+#: [chat]muc_member
+msgid "%s is now member"
+msgstr ""
+
 #: [chat]publish_error
 msgid "An error occured when sending the message"
 msgstr ""
@@ -813,6 +825,10 @@ msgstr ""
 msgid "Video"
 msgstr ""
 
+#: [chats]audio
+msgid "Audio"
+msgstr ""
+
 #: [button]chat
 msgid "Chat"
 msgstr "Chat"
@@ -880,6 +896,10 @@ msgstr "Inserisci un nome valido per la comunità (minimo 4 caratteri)"
 #: [communitiesserver]no_creation
 msgid "You cannot create a new community on this server"
 msgstr "Non puoi creare una comunità su questo server"
+
+#: [communitiesserver]disco_error
+msgid "Issue when trying to discover the items"
+msgstr ""
 
 #: [communitiesservers]empty_title
 msgid "No Communities Servers yet…"
@@ -961,6 +981,26 @@ msgstr "Lettori"
 #: [communityconfig]publish_model_subscribers_text
 msgid "The subscribers can publish"
 msgstr "I lettori possono pubblicare"
+
+#: [communityconfig]type
+msgid "Community type"
+msgstr ""
+
+#: [communityconfig]type_articles_title
+msgid "Articles"
+msgstr ""
+
+#: [communityconfig]type_articles_text
+msgid "Publish and read articles"
+msgstr ""
+
+#: [communityconfig]type_gallery_title [page]gallery
+msgid "Gallery"
+msgstr "Galleria"
+
+#: [communityconfig]type_gallery_text
+msgid "Publish and browse pictures"
+msgstr ""
 
 #: [communitydata]sub
 msgid "%s subscribers"
@@ -1326,6 +1366,18 @@ msgstr "Questo utente è nella tua lista di contatti ma non c'è sottoscrizione 
 msgid "No public data found"
 msgstr ""
 
+#: [dictaphone]name
+msgid "Dictaphone"
+msgstr ""
+
+#: [dictaphone]push_to_record
+msgid "Push to record"
+msgstr ""
+
+#: [dictaphone]recording
+msgid "Recording"
+msgstr ""
+
 #: [draw]title
 msgid "Draw"
 msgstr ""
@@ -1434,10 +1486,6 @@ msgstr "Errore di dominio XMPP, il tuo account non è un ID Jabber corretto"
 msgid "Some data are missing!"
 msgstr ""
 
-#: [error]wrong_password
-msgid "Wrong password"
-msgstr "Password sbagliata"
-
 #: [error]internal
 msgid "Internal server error"
 msgstr "Errore interno del server"
@@ -1529,10 +1577,6 @@ msgstr ""
 #: [about_movim]website
 msgid "Visit the project official website %s."
 msgstr ""
-
-#: [login_anonymous]bad_username
-msgid "Bad nickname (between 4 and 40 characters)"
-msgstr "Nickname non valido (tra 4 e 40 caratteri)"
 
 #: [menu]empty_title
 msgid "No news yet…"
@@ -1707,6 +1751,10 @@ msgstr "Guarda il profilo %s"
 msgid "Public posts from users"
 msgstr "Post pubblici dagli utenti"
 
+#: [post]unknown_contact
+msgid "Unknown contact"
+msgstr ""
+
 #: [post]read_time_singular
 msgid "%s minute"
 msgstr ""
@@ -1855,6 +1903,10 @@ msgstr ""
 msgid "Please provide a title"
 msgstr "Per favore inserisci un titolo"
 
+#: [publish]no_picture
+msgid "At least one picture is required"
+msgstr ""
+
 #: [publish]preview
 msgid "Preview"
 msgstr "Anteprima"
@@ -1939,18 +1991,6 @@ msgstr ""
 msgid "Add one by clicking on the add button."
 msgstr "Aggiungine una cliccando sul bottone \"aggiungi\" (+)"
 
-#: [rooms]empty_synchronize_title
-msgid "You had some rooms previously listed?"
-msgstr ""
-
-#: [rooms]empty_synchronize_text
-msgid "Try to synchronize them to the new room bookmarking system"
-msgstr ""
-
-#: [rooms]empty_synchronize_button
-msgid "Synchronize"
-msgstr ""
-
 #: [rooms]type_room
 msgid "Type of room"
 msgstr ""
@@ -2016,14 +2056,6 @@ msgstr "Chatroom ID non valido"
 #: [chatrooms]empty_name
 msgid "Empty name"
 msgstr "Nome non inserito"
-
-#: [chatrooms]synchronized
-msgid "%s rooms synchronized"
-msgstr ""
-
-#: [chatrooms]not_synchronized
-msgid "No rooms to synchronize found"
-msgstr ""
 
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
@@ -2325,6 +2357,10 @@ msgstr ""
 
 #: [sendto]more_contacts
 msgid "More contacts"
+msgstr ""
+
+#: [sendto]os_share
+msgid "Share outside Movim"
 msgstr ""
 
 #: [sticker]title
@@ -2634,10 +2670,6 @@ msgstr "Feed"
 #: [page]posts
 msgid "Posts"
 msgstr "Post"
-
-#: [page]gallery
-msgid "Gallery"
-msgstr "Galleria"
 
 #: [page]visio
 msgid "Visio-conference"

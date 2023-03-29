@@ -4,7 +4,7 @@
 # e1ab480322b0d2e3f0ebe6f294df65db_ecba13c, 2015
 # Éfrit, 2015
 # François D. <francois.drouhard@gmail.com>, 2019
-# Jaussoin Timothée <edhelas@movim.eu>, 2015-2022
+# Jaussoin Timothée <edhelas@movim.eu>, 2015-2023
 # Maxime Buquet <tidusx62@gmail.com>, 2015
 # Raphael J <contact@raphael-jolivet.name>, 2018
 # The Cat, 2021
@@ -67,6 +67,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactDataPublic/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Dictaphone/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Draw/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
@@ -75,11 +77,9 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Login/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/LoginAnonymous/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Menu/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Notification/locales.ini
+#. extracted from ../app/widgets/Notif/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/NotificationConfig/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -124,16 +124,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-25 14:45+0200\n"
+"POT-Creation-Date: 2023-03-29 23:07+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>, 2015-2022\n"
+"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>, 2015-2023\n"
 "Language-Team: French (France) (http://www.transifex.com/movim/movim/language/fr_FR/)\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
-"X-Generator: Translate Toolkit 3.7.4\n"
+"X-Generator: Translate Toolkit 3.8.4\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -190,10 +190,6 @@ msgstr "Confirmation du mot de passe"
 #: [account]password_changed
 msgid "The password has been updated"
 msgstr "Le mot de passe a été mis à jour"
-
-#: [account]password_not_valid
-msgid "Please provide a valid password (6 characters minimum)"
-msgstr "Veuillez entrer un mot de passe valide (6 caractères minimum)"
 
 #: [account]password_not_same
 msgid "The provided passwords are not the same"
@@ -686,6 +682,22 @@ msgstr "%s minutes et %s secondes"
 msgid "%s seconds"
 msgstr "%s secondes"
 
+#: [chat]muc_admin
+msgid "%s is now admin"
+msgstr "%s est maintenant administrateur"
+
+#: [chat]muc_owner
+msgid "%s is now owner"
+msgstr "%s est maintenant propriétaire"
+
+#: [chat]muc_outcast
+msgid "%s is now banned"
+msgstr "%s est banni"
+
+#: [chat]muc_member
+msgid "%s is now member"
+msgstr "%s est membre du salon"
+
 #: [chat]publish_error
 msgid "An error occured when sending the message"
 msgstr "Une erreur s'est produite lors de l'envoi du message"
@@ -815,6 +827,10 @@ msgstr "Image"
 msgid "Video"
 msgstr "Vidéo"
 
+#: [chats]audio
+msgid "Audio"
+msgstr "Audio"
+
 #: [button]chat
 msgid "Chat"
 msgstr "Clavardage"
@@ -882,6 +898,10 @@ msgstr "Veuillez renseigner un nom valide pour votre communauté (4 caractères 
 #: [communitiesserver]no_creation
 msgid "You cannot create a new community on this server"
 msgstr "Vous ne pouvez pas créer de communauté sur ce serveur"
+
+#: [communitiesserver]disco_error
+msgid "Issue when trying to discover the items"
+msgstr "Un problème à été rencontré lors de la récupération des éléments"
 
 #: [communitiesservers]empty_title
 msgid "No Communities Servers yet…"
@@ -963,6 +983,26 @@ msgstr "Abonnés"
 #: [communityconfig]publish_model_subscribers_text
 msgid "The subscribers can publish"
 msgstr "Les abonnés peuvent publier"
+
+#: [communityconfig]type
+msgid "Community type"
+msgstr "Type de Communauté"
+
+#: [communityconfig]type_articles_title
+msgid "Articles"
+msgstr "Articles"
+
+#: [communityconfig]type_articles_text
+msgid "Publish and read articles"
+msgstr "Publier et lire des articles"
+
+#: [communityconfig]type_gallery_title [page]gallery
+msgid "Gallery"
+msgstr "Galerie"
+
+#: [communityconfig]type_gallery_text
+msgid "Publish and browse pictures"
+msgstr "Publier et voir des images"
 
 #: [communitydata]sub
 msgid "%s subscribers"
@@ -1328,6 +1368,18 @@ msgstr "Ce contact est présent dans votre liste mais il n'y a aucune souscripti
 msgid "No public data found"
 msgstr "Aucunes données publiques trouvées"
 
+#: [dictaphone]name
+msgid "Dictaphone"
+msgstr "Dictaphone"
+
+#: [dictaphone]push_to_record
+msgid "Push to record"
+msgstr "Appuyer pour enregistrer"
+
+#: [dictaphone]recording
+msgid "Recording"
+msgstr "Enregistrement"
+
 #: [draw]title
 msgid "Draw"
 msgstr "Dessiner"
@@ -1436,10 +1488,6 @@ msgstr "Erreur de domaine XMPP, votre compte n’est pas un identifiant Jabber c
 msgid "Some data are missing!"
 msgstr "Il manque des informations !"
 
-#: [error]wrong_password
-msgid "Wrong password"
-msgstr "Mot de passe incorrect"
-
 #: [error]internal
 msgid "Internal server error"
 msgstr "Erreur interne du serveur"
@@ -1531,10 +1579,6 @@ msgstr "Movim est une plateforme de chat et de blogage fédérée."
 #: [about_movim]website
 msgid "Visit the project official website %s."
 msgstr "Visitez le site officiel du projet %s."
-
-#: [login_anonymous]bad_username
-msgid "Bad nickname (between 4 and 40 characters)"
-msgstr "Mauvais surnom (entre 4 et 40 caractères)"
 
 #: [menu]empty_title
 msgid "No news yet…"
@@ -1709,6 +1753,10 @@ msgstr "Voir le profil de %s"
 msgid "Public posts from users"
 msgstr "Billets publics d'utilisateurs"
 
+#: [post]unknown_contact
+msgid "Unknown contact"
+msgstr "Contact inconnu"
+
 #: [post]read_time_singular
 msgid "%s minute"
 msgstr "%s minute"
@@ -1857,6 +1905,10 @@ msgstr "Prendre une photo"
 msgid "Please provide a title"
 msgstr "Veuillez mettre un titre à votre publication"
 
+#: [publish]no_picture
+msgid "At least one picture is required"
+msgstr "Au moins une image est nécessaire"
+
 #: [publish]preview
 msgid "Preview"
 msgstr "Aperçu"
@@ -1941,18 +1993,6 @@ msgstr "Vous n'avez pas de salon de discussions pour le moment."
 msgid "Add one by clicking on the add button."
 msgstr "Ajoutez en un en cliquant sur le bouton ajouter."
 
-#: [rooms]empty_synchronize_title
-msgid "You had some rooms previously listed?"
-msgstr "Vous aviez des salons listés ici ?"
-
-#: [rooms]empty_synchronize_text
-msgid "Try to synchronize them to the new room bookmarking system"
-msgstr "Synchroniser vos salons sur le nouveau système"
-
-#: [rooms]empty_synchronize_button
-msgid "Synchronize"
-msgstr "Synchroniser"
-
 #: [rooms]type_room
 msgid "Type of room"
 msgstr "Type de salon"
@@ -2018,14 +2058,6 @@ msgstr "Mauvais identifiant de salon de discussion"
 #: [chatrooms]empty_name
 msgid "Empty name"
 msgstr "Nom vide"
-
-#: [chatrooms]synchronized
-msgid "%s rooms synchronized"
-msgstr "%s salons synchronisés"
-
-#: [chatrooms]not_synchronized
-msgid "No rooms to synchronize found"
-msgstr "Aucun salon à synchroniser"
 
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
@@ -2328,6 +2360,10 @@ msgstr "Billet partagé dans le salon de discussion"
 #: [sendto]more_contacts
 msgid "More contacts"
 msgstr "Plus de contacts"
+
+#: [sendto]os_share
+msgid "Share outside Movim"
+msgstr "Partager hors de Movim"
 
 #: [sticker]title
 msgid "Stickers"
@@ -2636,10 +2672,6 @@ msgstr "Flux"
 #: [page]posts
 msgid "Posts"
 msgstr "Billets"
-
-#: [page]gallery
-msgid "Gallery"
-msgstr "Galerie"
 
 #: [page]visio
 msgid "Visio-conference"

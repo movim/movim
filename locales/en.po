@@ -57,6 +57,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactDataPublic/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Dictaphone/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Draw/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
@@ -65,11 +67,9 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Login/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/LoginAnonymous/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Menu/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Notification/locales.ini
+#. extracted from ../app/widgets/Notif/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/NotificationConfig/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -114,7 +114,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-25 14:45+0200\n"
+"POT-Creation-Date: 2023-03-29 23:07+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: English (http://www.transifex.com/movim/movim/language/en/)\n"
@@ -123,7 +123,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.7.4\n"
+"X-Generator: Translate Toolkit 3.8.4\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -180,10 +180,6 @@ msgstr "Password confirmation"
 #: [account]password_changed
 msgid "The password has been updated"
 msgstr "The password has been updated"
-
-#: [account]password_not_valid
-msgid "Please provide a valid password (6 characters minimum)"
-msgstr "Please provide a valid password (6 characters minimum)"
 
 #: [account]password_not_same
 msgid "The provided passwords are not the same"
@@ -676,6 +672,22 @@ msgstr "%s minutes and %s seconds"
 msgid "%s seconds"
 msgstr "%s seconds"
 
+#: [chat]muc_admin
+msgid "%s is now admin"
+msgstr "%s is now admin"
+
+#: [chat]muc_owner
+msgid "%s is now owner"
+msgstr "%s is now owner"
+
+#: [chat]muc_outcast
+msgid "%s is now banned"
+msgstr "%s is now banned"
+
+#: [chat]muc_member
+msgid "%s is now member"
+msgstr "%s is now member"
+
 #: [chat]publish_error
 msgid "An error occured when sending the message"
 msgstr "An error occured when sending the message"
@@ -805,6 +817,10 @@ msgstr "Picture"
 msgid "Video"
 msgstr "Video"
 
+#: [chats]audio
+msgid "Audio"
+msgstr "Audio"
+
 #: [button]chat
 msgid "Chat"
 msgstr "Chat"
@@ -872,6 +888,10 @@ msgstr "Please provide a valid community name (4 characters minimum)"
 #: [communitiesserver]no_creation
 msgid "You cannot create a new community on this server"
 msgstr "You cannot create a new community on this server"
+
+#: [communitiesserver]disco_error
+msgid "Issue when trying to discover the items"
+msgstr "Issue when trying to discover the items"
 
 #: [communitiesservers]empty_title
 msgid "No Communities Servers yet…"
@@ -953,6 +973,26 @@ msgstr "Subscribers"
 #: [communityconfig]publish_model_subscribers_text
 msgid "The subscribers can publish"
 msgstr "The subscribers can publish"
+
+#: [communityconfig]type
+msgid "Community type"
+msgstr "Community type"
+
+#: [communityconfig]type_articles_title
+msgid "Articles"
+msgstr "Articles"
+
+#: [communityconfig]type_articles_text
+msgid "Publish and read articles"
+msgstr "Publish and read articles"
+
+#: [communityconfig]type_gallery_title [page]gallery
+msgid "Gallery"
+msgstr "Gallery"
+
+#: [communityconfig]type_gallery_text
+msgid "Publish and browse pictures"
+msgstr "Publish and browse pictures"
 
 #: [communitydata]sub
 msgid "%s subscribers"
@@ -1318,6 +1358,18 @@ msgstr "This contact is in your contact list but there is no subscription betwee
 msgid "No public data found"
 msgstr "No public data found"
 
+#: [dictaphone]name
+msgid "Dictaphone"
+msgstr "Dictaphone"
+
+#: [dictaphone]push_to_record
+msgid "Push to record"
+msgstr "Push to record"
+
+#: [dictaphone]recording
+msgid "Recording"
+msgstr "Recording"
+
 #: [draw]title
 msgid "Draw"
 msgstr "Draw"
@@ -1426,10 +1478,6 @@ msgstr "XMPP Domain error, your account is not a correct Jabber ID"
 msgid "Some data are missing!"
 msgstr "Some data are missing!"
 
-#: [error]wrong_password
-msgid "Wrong password"
-msgstr "Wrong password"
-
 #: [error]internal
 msgid "Internal server error"
 msgstr "Internal server error"
@@ -1521,10 +1569,6 @@ msgstr "Movim is a federated blogging and chat platform."
 #: [about_movim]website
 msgid "Visit the project official website %s."
 msgstr "Visit the project official website %s."
-
-#: [login_anonymous]bad_username
-msgid "Bad nickname (between 4 and 40 characters)"
-msgstr "Bad nickname (between 4 and 40 characters)"
 
 #: [menu]empty_title
 msgid "No news yet…"
@@ -1699,6 +1743,10 @@ msgstr "See %s profile"
 msgid "Public posts from users"
 msgstr "Public posts from users"
 
+#: [post]unknown_contact
+msgid "Unknown contact"
+msgstr "Unknown contact"
+
 #: [post]read_time_singular
 msgid "%s minute"
 msgstr "%s minute"
@@ -1847,6 +1895,10 @@ msgstr "Take a picture"
 msgid "Please provide a title"
 msgstr "Please provide a title"
 
+#: [publish]no_picture
+msgid "At least one picture is required"
+msgstr "At least one picture is required"
+
 #: [publish]preview
 msgid "Preview"
 msgstr "Preview"
@@ -1931,18 +1983,6 @@ msgstr "You don’t have any chatrooms yet."
 msgid "Add one by clicking on the add button."
 msgstr "Add one by clicking on the add button."
 
-#: [rooms]empty_synchronize_title
-msgid "You had some rooms previously listed?"
-msgstr "You had some rooms previously listed?"
-
-#: [rooms]empty_synchronize_text
-msgid "Try to synchronize them to the new room bookmarking system"
-msgstr "Try to synchronize them to the new room bookmarking system"
-
-#: [rooms]empty_synchronize_button
-msgid "Synchronize"
-msgstr "Synchronize"
-
 #: [rooms]type_room
 msgid "Type of room"
 msgstr "Type of room"
@@ -2008,14 +2048,6 @@ msgstr "Bad Chatroom ID"
 #: [chatrooms]empty_name
 msgid "Empty name"
 msgstr "Empty name"
-
-#: [chatrooms]synchronized
-msgid "%s rooms synchronized"
-msgstr "%s rooms synchronized"
-
-#: [chatrooms]not_synchronized
-msgid "No rooms to synchronize found"
-msgstr "No rooms to synchronize found"
 
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
@@ -2318,6 +2350,10 @@ msgstr "Post shared within the chatroom"
 #: [sendto]more_contacts
 msgid "More contacts"
 msgstr "More contacts"
+
+#: [sendto]os_share
+msgid "Share outside Movim"
+msgstr "Share outside Movim"
 
 #: [sticker]title
 msgid "Stickers"
@@ -2626,10 +2662,6 @@ msgstr "Feed"
 #: [page]posts
 msgid "Posts"
 msgstr "Posts"
-
-#: [page]gallery
-msgid "Gallery"
-msgstr "Gallery"
 
 #: [page]visio
 msgid "Visio-conference"
