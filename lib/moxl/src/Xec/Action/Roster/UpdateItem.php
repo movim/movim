@@ -20,12 +20,15 @@ class UpdateItem extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $roster = \App\Roster::firstOrNew(['jid' => $this->_to]);
-        $roster->name = $this->_name;
-        $roster->group = $this->_group;
-        $roster->save();
+        $roster = \App\User::me()->session->contacts()->where('jid', $this->_to)->first();
 
-        $this->pack($this->_to);
-        $this->deliver();
+        if ($roster) {
+            $roster->name = $this->_name;
+            $roster->group = $this->_group;
+            $roster->save();
+
+            $this->pack($this->_to);
+            $this->deliver();
+        }
     }
 }

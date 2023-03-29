@@ -20,7 +20,8 @@ class AddItem extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $roster = DBRoster::firstOrNew(['jid' => $this->_to]);
+        $roster = new DBRoster;
+        $roster->jid = $this->_to;
         $roster->group = $this->_group;
         $roster->name = $this->_name;
         $roster->save();

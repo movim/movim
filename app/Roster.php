@@ -50,6 +50,8 @@ class Roster extends Model
 
     public function set($stanza)
     {
+        $this->session_id = SESSION_ID;
+
         $this->jid = (string)$stanza->attributes()->jid;
 
         $this->name = (isset($stanza->attributes()->name)
