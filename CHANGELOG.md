@@ -1,7 +1,10 @@
 Movim Changelog
 ================
 
-v0.21 (trunk)
+v0.22 (trunk)
+---------------------------
+
+v0.21
 ---------------------------
  * Implement XEP-0461: Message Replies
  * Add PWA Push Notification support through the service worker
