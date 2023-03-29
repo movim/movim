@@ -1,6 +1,6 @@
 <section id="sendto">
     {if="$card"}
-        <ul class="list card shadow middle">
+        <ul class="list card middle active">
             <li class="subheader">
                 <div>
                     <p>{$c->__('button.share')}</p>

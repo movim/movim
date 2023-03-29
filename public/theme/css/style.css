@@ -392,6 +392,10 @@ span.avatar {
     line-height: 100%;
 }
 
+img.avatar {
+    box-shadow: var(--elevation-1);
+}
+
 span.avatar.icon {
     height: 25rem;
     width: 25rem;
