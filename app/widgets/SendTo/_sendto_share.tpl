@@ -34,7 +34,7 @@
                         </span>
                     {/if}
 
-                    <span class="control icon active gray" onclick="SendTo_ajaxSend('{$value->conference|echapJS}', {'uri': '{$uri}'}, true, '{$openlink}')">
+                    <span class="control icon active gray" onclick="SendTo_ajaxSend('{$value->conference|echapJS}', {'uri': '{$uri}'}, true, '{$openlink}');">
                         <i class="material-icons">send</i>
                     </span>
 

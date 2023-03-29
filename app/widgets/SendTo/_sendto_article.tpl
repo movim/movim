@@ -85,7 +85,7 @@
                         {$value->node|firstLetterCapitalize}
                     </span>
                 {/if}
-                <span class="control icon active gray divided" onclick="MovimUtils.reload('{$c->route('publish', [$value->server, $value->node, '', $post->server, $post->node, $post->nodeid])}')">
+                <span class="control icon active gray divided" onclick="MovimUtils.reload('{$c->route('publish', [$value->server, $value->node, '', $post->server, $post->node, $post->nodeid])}'); Drawer.clear()">
                     <i class="material-icons">post_add</i>
                 </span>
                 <div>
