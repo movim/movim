@@ -123,8 +123,11 @@ function compileOpcache()
 {
     error_reporting(0);
     foreach (listOpcacheCompilableFiles() as $file) {
-        opcache_invalidate($file, true);
-        yield @opcache_compile_file($file);
+        if (opcache_is_script_cached($file)) {
+            yield @opcache_invalidate($file, true);
+        } else {
+            yield @opcache_compile_file($file);
+        }
     }
     error_reporting(1);
 }
