@@ -4,6 +4,7 @@ Movim Changelog
 v0.22 (trunk)
 ---------------------------
  * Fix #1183 compileOpcache fails with php8.1
+ * Only load required database so when launching sessions
 
 v0.21
 ---------------------------

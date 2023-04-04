@@ -35,15 +35,11 @@ class Session
 
     private $extensions = [
         'pdo',
-        'mysqlnd',             // load first
         'xml',
         'imagick',
         'curl',
         'dom',
         'mbstring',
-        'mysqli',
-        'pdo_mysql',
-        'pdo_pgsql',
         'simplexml'
     ];
 
@@ -128,6 +124,14 @@ class Session
         // ext-json is included in PHP since 8.0
         if (version_compare(PHP_VERSION, '8.0.0') < 0) {
             array_push($this->extensions, 'json');
+        }
+
+        if (config('database.driver') == 'mysql') {
+            array_push($this->extensions, 'mysqlnd');
+            array_push($this->extensions, 'mysqli');
+            array_push($this->extensions, 'pdo_mysql');
+        } else {
+            array_push($this->extensions, 'pdo_pgsql');
         }
 
         foreach ($this->extensions as $extension) {
