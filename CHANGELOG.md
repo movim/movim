@@ -3,6 +3,7 @@ Movim Changelog
 
 v0.22 (trunk)
 ---------------------------
+ * Fix #1183 compileOpcache fails with php8.1
 
 v0.21
 ---------------------------
