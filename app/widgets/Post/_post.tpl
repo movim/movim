@@ -85,9 +85,7 @@
                     <span class="primary icon bubble color {$post->node|stringToColor} active"
                         onclick="MovimUtils.reload('{$c->route('community', [$post->server, $post->node])}')"
                     >
-                        <a href="{$c->route('community', [$post->server, $post->node])}">
-                            {$post->node|firstLetterCapitalize}
-                        </a>
+                        {$post->node|firstLetterCapitalize}
                     </span>
                 {/if}
             {/if}
