@@ -22,7 +22,7 @@
         "fabiang/sasl": "^1.1.1",
         "rain/raintpl": "^3.1.1",
         "embed/embed": "^v4.4",
-        "league/commonmark": "2.3.*",
+        "league/commonmark": "2.4.*",
 
         "respect/validation": "^2.2",
         "ezyang/htmlpurifier": "^4.16",
@@ -34,8 +34,8 @@
         "robmorgan/phinx": "^0.13",
         "illuminate/database": "^8.83",
         "illuminate/events": "^8.83",
-        "doctrine/dbal": "^3.5",
-        "monolog/monolog": "^2.8",
+        "doctrine/dbal": "^3.6.1",
+        "monolog/monolog": "^2.9",
 
         "cboden/ratchet": "^0.4.4",
         "react/child-process": "^0.6.5",
