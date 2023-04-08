@@ -15,11 +15,11 @@
             <li data-jid="{$value->jid}">
                 {$url = $value->getPhoto()}
                 {if="$url"}
-                    <span class="primary icon bubble">
+                    <span class="primary icon bubble active" onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}'); Drawer.clear();">
                         <img src="{$url}">
                     </span>
                 {else}
-                    <span class="primary icon bubble color {$value->jid|stringToColor}">
+                    <span class="primary icon bubble active color {$value->jid|stringToColor}" onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}')">
                         <i class="material-icons">person</i>
                     </span>
                 {/if}
@@ -28,9 +28,6 @@
                 </span>
                 <span class="control icon red active" title="{$c->__('button.refuse')}" onclick="Notifications_ajaxRefuse('{$value->jid|echapJS}');">
                     <i class="material-icons">close</i>
-                </span>
-                <span class="control icon gray active" onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}')">
-                    <i class="material-icons">person</i>
                 </span>
                 <div>
                     <p class="line normal">
