@@ -109,9 +109,7 @@
                     </div>
                 </form>
             </li>
-        </ul>
-        <ul class="list thin">
-            <li>
+            <li class="contenthelper">
                 <div>
                     <p></p>
                     <p><i class="material-icons">lightbulb</i> {$c->__('publish.help_hashtag')}</p>
@@ -120,7 +118,7 @@
         </ul>
         <ul class="list">
             <li>
-                <ul class="list flex card" id="publishembeds">
+                <ul class="list flex card middle" id="publishembeds">
                     {loop="$draft->embeds"}
                         {autoescape="off"}
                             {$c->prepareEmbed($value)}

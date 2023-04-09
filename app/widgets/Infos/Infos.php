@@ -50,6 +50,7 @@ class Infos extends Base
             'url'           => BASE_URI,
             'language'      => $configuration->locale,
             'whitelist'     => $configuration->xmppwhitelist,
+            'admins'        => (array)User::select('id')->where('admin', true)->get()->pluck('id')->toArray(),
             'description'   => $configuration->description,
             'unregister'    => $configuration->unregister,
             'php_version'   => phpversion(),
