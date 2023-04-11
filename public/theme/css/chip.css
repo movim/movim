@@ -21,11 +21,11 @@
     margin-right: -1rem;
 }
 
-.chip:hover {
+.chip.active:hover {
     background-color: rgba(var(--movim-element-action), 0.2);
 }
 
-.chip:focus {
+.chip.active:focus {
     background-color: rgba(var(--movim-element-action), 0.4);
 }
 

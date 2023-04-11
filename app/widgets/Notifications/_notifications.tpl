@@ -12,15 +12,15 @@
     </ul>
     <ul class="list middle divided spaced">
         {loop="$invitations"}
-            <li data-jid="{$value->jid}">
+            <li id="invitation-{$value->jid|cleanupId}" data-jid="{$value->jid}">
                 {$url = $value->getPhoto()}
                 {if="$url"}
                     <span class="primary icon bubble active" onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}'); Drawer.clear();">
                         <img src="{$url}">
                     </span>
                 {else}
-                    <span class="primary icon bubble active color {$value->jid|stringToColor}" onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}')">
-                        <i class="material-icons">person</i>
+                    <span class="primary icon bubble active color {$value->jid|stringToColor}" onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}'); Drawer.clear();">
+                        {$value->jid|firstLetterCapitalize}
                     </span>
                 {/if}
                 <span class="control icon green active" title="{$c->__('button.accept')}" onclick="Notifications_ajaxAccept('{$value->jid|echapJS}');">
@@ -70,14 +70,14 @@
                         {else}
                             <span class="primary icon bubble color {$value->contact->jid|stringToColor}">
                                 <a href="{$c->route('contact', $value->contact->jid)}">
-                                    <i class="material-icons">person</i>
+                                    {$value->contact->truename|firstLetterCapitalize}
                                 </a>
                             </span>
                         {/if}
                     {else}
                         <span class="primary icon bubble color {$value->aid|stringToColor}">
                             <a href="{$c->route('contact', $value->aid)}">
-                                <i class="material-icons">person</i>
+                                {$value->aid|firstLetterCapitalize}
                             </a>
                         </span>
                     {/if}
@@ -92,13 +92,13 @@
                     {/if}
 
                     <div>
-                        <p class="line" onclick="MovimUtils.reload('{$c->route('post', [$parent->server, $parent->node, $parent->nodeid])}')">
+                        <p class="line" onclick="MovimUtils.reload('{$c->route('post', [$parent->server, $parent->node, $parent->nodeid])}'); Drawer.clear();">
                             {$value->truename}
                             <span class="second">
                                 {$parent->title}
                             </span>
                         </p>
-                        <p class="line" onclick="MovimUtils.reload('{$c->route('post', [$parent->server, $parent->node, $parent->nodeid])}')">
+                        <p class="line" onclick="MovimUtils.reload('{$c->route('post', [$parent->server, $parent->node, $parent->nodeid])}'); Drawer.clear();">
                             <span class="info">{$value->published|strtotime|prepareDate:true,true}</span>
                             {if="!$value->isLike()"}
                                 {$c->__('post.commented')}<span class="second">{$value->title}</span>

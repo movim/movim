@@ -48,7 +48,7 @@ class Notifications extends Base
             $contact = App\Contact::firstOrNew(['id' => $from]);
 
             Notif::append(
-                'invite|'.$from,
+                'invite|' . $from,
                 $contact->truename,
                 $this->__('invitations.wants_to_talk', $contact->truename),
                 $contact->getPhoto(),
@@ -76,10 +76,10 @@ class Notifications extends Base
 
         $count = \App\Post::whereIn('parent_id', function ($query) {
             $query->select('id')
-                  ->from('posts')
-                  ->where('aid', $this->user->id);
+                ->from('posts')
+                ->where('aid', $this->user->id);
         })->where('published', '>', $since)
-        ->where('aid', '!=', $this->user->id)->count();
+            ->where('aid', '!=', $this->user->id)->count();
 
         $session = Session::start();
         $notifs = $session->get('activenotifs', []);
@@ -98,16 +98,16 @@ class Notifications extends Base
         if ($this->user->session->contacts()->where('jid', $jid)->count() == 0) {
             $r = new AddItem;
             $r->setTo($jid)
-              ->request();
+                ->request();
         }
 
         $p = new Subscribe;
         $p->setTo($jid)
-          ->request();
+            ->request();
 
         $p = new Subscribed;
         $p->setTo($jid)
-          ->request();
+            ->request();
 
         // TODO : move in Moxl
         $session = Session::start();
@@ -117,9 +117,9 @@ class Notifications extends Base
 
         $session->set('activenotifs', $notifs);
         $n = new Notif;
-        $n->ajaxClear('invite|'.$jid);
+        $n->ajaxClear('invite|' . $jid);
 
-        Drawer::fill($this->prepareNotifications());
+        $this->rpc('MovimTpl.remove', '#invitation-' . cleanupId($jid));
         $this->ajaxSetCounter();
     }
 
@@ -129,7 +129,7 @@ class Notifications extends Base
 
         $p = new Unsubscribed;
         $p->setTo($jid)
-          ->request();
+            ->request();
 
         $this->removeInvitation($jid);
     }
@@ -145,10 +145,9 @@ class Notifications extends Base
         $session->set('activenotifs', $notifs);
 
         $n = new Notif;
-        $n->ajaxClear('invite|'.$jid);
+        $n->ajaxClear('invite|' . $jid);
 
-        Drawer::fill($this->prepareNotifications());
-
+        $this->rpc('MovimTpl.remove', '#invitation-' . cleanupId($jid));
         $this->ajaxSetCounter();
     }
 
@@ -175,15 +174,15 @@ class Notifications extends Base
 
         $notifs = \App\Post::whereIn('parent_id', function ($query) {
             $query->select('id')
-                  ->from('posts')
-                  ->where('aid', $this->user->id)
-                  ->orderBy('published', 'desc');
+                ->from('posts')
+                ->where('aid', $this->user->id)
+                ->orderBy('published', 'desc');
         })
-        ->where('aid', '!=', $this->user->id)
-        ->orderBy('published', 'desc')
-        ->limit(30)
-        ->with('parent')
-        ->get();
+            ->where('aid', '!=', $this->user->id)
+            ->orderBy('published', 'desc')
+            ->limit(30)
+            ->with('parent')
+            ->get();
 
         $since = \App\Cache::c('notifs_since');
         if (!$since) {
