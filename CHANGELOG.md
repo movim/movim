@@ -3,8 +3,12 @@ Movim Changelog
 
 v0.22 (trunk)
 ---------------------------
+
+v0.21.1
+---------------------------
  * Fix #1183 compileOpcache fails with php8.1
  * Only load required database so when launching sessions
+ * Complete the ?infos page to support join.movim.eu
 
 v0.21
 ---------------------------
