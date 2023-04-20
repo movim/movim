@@ -1,0 +1,3 @@
+#notifications_invitations:not(:empty) + .placeholder {
+    display: none;
+}

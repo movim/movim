@@ -3,42 +3,40 @@
     <ul class="list">
         <li class="subheader">
             <div>
-                <p>
-                    <span class="info">{$invitations|count}</span>
-                    {$c->__('invitations.title')}
-                </p>
+                <p>{$c->__('invitations.title')}</p>
             </div>
         </li>
     </ul>
-    <ul class="list middle divided spaced">
-        {loop="$invitations"}
-            <li id="invitation-{$value->jid|cleanupId}" data-jid="{$value->jid}">
-                {$url = $value->getPhoto()}
-                {if="$url"}
-                    <span class="primary icon bubble active" onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}'); Drawer.clear();">
-                        <img src="{$url}">
-                    </span>
-                {else}
-                    <span class="primary icon bubble active color {$value->jid|stringToColor}" onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}'); Drawer.clear();">
-                        {$value->jid|firstLetterCapitalize}
-                    </span>
-                {/if}
-                <span class="control icon green active" title="{$c->__('button.accept')}" onclick="Notifications_ajaxAccept('{$value->jid|echapJS}');">
-                    <i class="material-icons">check</i>
-                </span>
-                <span class="control icon red active" title="{$c->__('button.refuse')}" onclick="Notifications_ajaxRefuse('{$value->jid|echapJS}');">
-                    <i class="material-icons">close</i>
-                </span>
-                <div>
-                    <p class="line normal">
-                        {$c->__('invitations.wants_to_talk', $value->truename)}
-                    </p>
-                    <p class="line">{$value->jid}</p>
-                </div>
-            </li>
-        {/loop}
-    </ul>
+    <ul id="notifications_invitations" class="list middle divided spaced">{loop="$invitations"}<li id="invitation-{$value->jid|cleanupId}" data-jid="{$value->jid}">
+        {$url = $value->getPhoto()}
+        {if="$url"}
+            <span class="primary icon bubble active" onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}'); Drawer.clear();">
+                <img src="{$url}">
+            </span>
+        {else}
+            <span class="primary icon bubble active color {$value->jid|stringToColor}" onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}'); Drawer.clear();">
+                {$value->jid|firstLetterCapitalize}
+            </span>
+        {/if}
+        <span class="control icon green active" title="{$c->__('button.accept')}" onclick="Notifications_ajaxAccept('{$value->jid|echapJS}');">
+            <i class="material-icons">check</i>
+        </span>
+        <span class="control icon red active" title="{$c->__('button.refuse')}" onclick="Notifications_ajaxRefuse('{$value->jid|echapJS}');">
+            <i class="material-icons">close</i>
+        </span>
+        <div>
+            <p class="line normal">
+                {$c->__('invitations.wants_to_talk', $value->truename)}
+            </p>
+            <p class="line">{$value->jid}</p>
+        </div>
+    </li>{/loop}</ul>
     {/if}
+
+    <div class="placeholder">
+        <i class="material-icons">person_add</i>
+        <h4>{$c->__('invitations.no_new')}</h4>
+    </div>
 
     {if="$notifs->isNotEmpty()"}
     <ul class="list active">

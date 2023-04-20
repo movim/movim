@@ -13,6 +13,7 @@ class Notifications extends Base
     public function load()
     {
         $this->addjs('notifications.js');
+        $this->addcss('notifications.css');
 
         $this->registerEvent('post', 'onPost');
         $this->registerEvent('pubsub_getitem_handle', 'onPost');
