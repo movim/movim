@@ -10,8 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: clone movim_docker repo
+        run: git clone --depth 1 https://github.com/movim/movim_docker/ && cd movim_docker/
       - name: Build the docker image
-        run: docker build . --file Dockerfile --tag movim/movim:master
+        run: docker build -t movim:master --build-arg MOVIM_VERSION=master .
       - name: Authenticate to docker hub
         run: docker login -u movim -p ${{ secrets.DOCKER_HUB_TOKEN }}
       - name: push docker image to docker hub
