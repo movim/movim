@@ -392,16 +392,8 @@ class Contact extends Model
 
     public function isOld(): bool
     {
-        return $this->updated !== null
-        && (strtotime($this->updated) < mktime( // We update the 1 day old vcards
-                                    gmdate("H"),
-            gmdate("i")-10,
-            gmdate("s"),
-            gmdate("m"),
-            gmdate("d"),
-            gmdate("Y")
-                                )
-        );
+        return $this->updated_at !== null
+            && \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $this->updated_at)->addDay()->isBefore(\Carbon\Carbon::now());
     }
 
     public function isMe(): bool
