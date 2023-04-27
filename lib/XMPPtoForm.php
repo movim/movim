@@ -73,64 +73,55 @@ class XMPPtoForm
                     }
 
                     $type = isset($element->attributes()->type) ? $element->attributes()->type : 'text-single';
-                    if ($this->formType == 'result') {
-                        switch ($type) {
-                            case 'boolean':
-                                $this->outCheckbox($element);
-                                break;
-                            case 'jid-single':
+
+                    switch ($type) {
+                        case 'boolean':
+                            $this->outCheckbox($element);
+                            break;
+                        case 'text-single':
+                            if ($element['var'] == 'pubsub#max_items') {
+                                $this->outInput($element, false, 'max');
+                            } elseif ($element['var'] == 'muc#roomconfig_pubsub') {
+                                $this->outSelectPubsubNode($element);
+                            } else {
+                                $this->outInput($element, '');
+                            }
+                            break;
+                        case 'text-multi':
+                            $this->outTextarea($element);
+                            break;
+                        case 'text-private':
+                            $this->outInput($element, 'password');
+                            break;
+                        case 'hidden':
+                            $this->outHiddeninput($element);
+                            break;
+                        case 'list-multi':
+                            //$this->outList($element, true);
+                            break;
+                        case 'list-single':
+                            $this->outList($element);
+                            break;
+                        case 'jid-multi':
+                            $this->outInput($element, 'text');
+                            break;
+                        case 'jid-single':
+                            if ($this->formType == 'result') {
                                 $this->outLabel($this->html, $element);
                                 $link = $this->html->createElement('a', (string)$element->value);
                                 $link->setAttribute('href', Route::urlize('contact', $element->value));
                                 $this->html->appendChild($link);
-                                break;
-                            default:
-                                $this->outLabel($this->html, $element);
-                                $this->outP((string)$element->value);
-                        }
-                    } else {
-                        switch ($type) {
-                            case 'boolean':
-                                $this->outCheckbox($element);
-                                break;
-                            case 'text-single':
-                                if ($element['var'] == 'pubsub#max_items') {
-                                    $this->outInput($element, false, 'max');
-                                } elseif ($element['var'] == 'muc#roomconfig_pubsub') {
-                                    $this->outSelectPubsubNode($element);
-                                } else {
-                                    $this->outInput($element, '');
-                                }
-                                break;
-                            case 'text-multi':
-                                $this->outTextarea($element);
-                                break;
-                            case 'text-private':
-                                $this->outInput($element, 'password');
-                                break;
-                            case 'hidden':
-                                $this->outHiddeninput($element);
-                                break;
-                            case 'list-multi':
-                                //$this->outList($element, true);
-                                break;
-                            case 'list-single':
-                                $this->outList($element);
-                                break;
-                            case 'jid-multi':
-                                $this->outInput($element, 'email');
-                                break;
-                            case 'jid-single':
-                                $this->outInput($element, 'email');
-                                break;
-                            case 'fixed':
-                                $this->outLabel($this->html, $element);
-                                $this->outP((string)$element->value);
-                                break;
-                            default:
+                            } else {
                                 $this->outInput($element, 'text');
-                                break;
-                        }
+                            }
+                            break;
+                        case 'fixed':
+                            $this->outLabel($this->html, $element);
+                            $this->outP((string)$element->value);
+                            break;
+                        default:
+                            $this->outInput($element, 'text');
+                            break;
                     }
 
                     break;
