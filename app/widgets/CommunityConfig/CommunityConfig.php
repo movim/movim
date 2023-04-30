@@ -11,9 +11,9 @@ class CommunityConfig extends Base
 {
     public function load()
     {
-        $this->registerEvent('pubsub_getconfig_handle', 'onConfig');
-        $this->registerEvent('pubsub_setconfig_handle', 'onConfigSaved');
-        $this->registerEvent('pubsub_setconfig_error', 'onConfigError');
+        $this->registerEvent('pubsub_getconfig_handle', 'onConfig', 'community');
+        $this->registerEvent('pubsub_setconfig_handle', 'onConfigSaved', 'community');
+        $this->registerEvent('pubsub_setconfig_error', 'onConfigError', 'community');
         $this->registerEvent('avatar_set_pubsub', 'onAvatarSet');
     }
 

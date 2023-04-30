@@ -13,11 +13,11 @@ class Config extends Base
 {
     public function load()
     {
-        $this->registerEvent('storage_set_handle', 'onConfig');
-        $this->registerEvent('mam_getconfig_handle', 'onMAMConfig');
-        $this->registerEvent('mam_setconfig_handle', 'onMAMConfigSaved');
-        $this->registerEvent('pubsub_getconfig_handle', 'onBlogConfig');
-        $this->registerEvent('pubsub_setconfig_handle', 'onBlogConfigSaved');
+        $this->registerEvent('storage_set_handle', 'onConfig', 'conf');
+        $this->registerEvent('mam_getconfig_handle', 'onMAMConfig', 'conf');
+        $this->registerEvent('mam_setconfig_handle', 'onMAMConfigSaved', 'conf');
+        $this->registerEvent('pubsub_getconfig_handle', 'onBlogConfig', 'conf');
+        $this->registerEvent('pubsub_setconfig_handle', 'onBlogConfigSaved', 'conf');
 
         $this->addjs('config.js');
     }

@@ -6,6 +6,8 @@ var Config = {
 }
 
 MovimWebsocket.attach(function() {
+    Notif.current('conf');
+
     Config_ajaxMAMGetConfig();
     Config_ajaxBlogGetConfig();
 });
