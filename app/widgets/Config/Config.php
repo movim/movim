@@ -5,7 +5,8 @@ use Movim\Widget\Base;
 use Moxl\Xec\Action\Storage\Set;
 use Moxl\Xec\Action\MAM\GetConfig;
 use Moxl\Xec\Action\MAM\SetConfig;
-
+use Moxl\Xec\Action\Pubsub\GetConfig as PubsubGetConfig;
+use Moxl\Xec\Action\Pubsub\SetConfig as PubsubSetConfig;
 use Respect\Validation\Validator;
 
 class Config extends Base
@@ -15,6 +16,8 @@ class Config extends Base
         $this->registerEvent('storage_set_handle', 'onConfig');
         $this->registerEvent('mam_getconfig_handle', 'onMAMConfig');
         $this->registerEvent('mam_setconfig_handle', 'onMAMConfigSaved');
+        $this->registerEvent('pubsub_getconfig_handle', 'onBlogConfig');
+        $this->registerEvent('pubsub_setconfig_handle', 'onBlogConfigSaved');
 
         $this->addjs('config.js');
     }
@@ -53,6 +56,23 @@ class Config extends Base
         Toast::send($this->__('config.mam_saved'));
     }
 
+    public function onBlogConfigSaved()
+    {
+        Toast::send($this->__('config.blog_saved'));
+    }
+
+    public function onBlogConfig($package)
+    {
+        $view = $this->tpl();
+
+        $value = $package->content['config']->xpath('//field[@var=\'pubsub#access_model\']/value/text()');
+
+        if (is_array($value)) {
+            $view->assign('default', (string)$value[0]);
+            $this->rpc('MovimTpl.fill', '#config_widget_blog', $view->draw('_config_blog'));
+        }
+    }
+
     public function ajaxMAMGetConfig()
     {
         if ($this->user->hasMAM()) {
@@ -65,6 +85,23 @@ class Config extends Base
         $s = new SetConfig;
         $s->setDefault($value)
           ->request();
+    }
+
+    public function ajaxBlogGetConfig()
+    {
+        if ($this->user->hasPubsub()) {
+            (new PubsubGetConfig)->setNode('urn:xmpp:microblog:0')->request();
+        }
+    }
+
+    public function ajaxBlogSetConfig($data)
+    {
+        if ($this->user->hasPubsub()) {
+            $r = new PubsubSetConfig;
+            $r->setNode('urn:xmpp:microblog:0')
+              ->setData($data)
+              ->request();
+        }
     }
 
     public function ajaxSubmit($data)

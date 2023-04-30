@@ -338,10 +338,10 @@ class Pubsub
         */
 
         if ($node == 'urn:xmpp:microblog:0') {
-            $field = $dom->createElement('field');
+            /*$field = $dom->createElement('field');
             $field->setAttribute('var', 'pubsub#access_model');
             $field->appendChild($dom->createElement('value', 'presence'));
-            $x->appendChild($field);
+            $x->appendChild($field);*/
 
             /*
             $field = $dom->createElement('field');

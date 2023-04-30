@@ -43,14 +43,16 @@ class Handler
 
                 \Utils::info('Handler : '.get_class($action).' '.$id.' - '.$errorid);
 
+                $propagate = true;
+
                 // If the action has defined a special handler for this error
                 if (method_exists($action, $errorid)) {
                     $action->method($errorid);
-                    $action->$errorid($errorid, $message);
+                    $propagate = $action->$errorid($errorid, $message);
                 }
 
                 // We also call a global error handler
-                if (method_exists($action, 'error')) {
+                if (method_exists($action, 'error') && $propagate == true) {
                     \Utils::info('Handler : Global error - '.$id.' - '.$errorid);
                     $action->method('error');
                     $action->error($errorid, $message);

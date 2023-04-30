@@ -18,6 +18,7 @@ class CommunityPosts extends Base
         $this->registerEvent('pubsub_getitems_handle', 'onItemsId');
         $this->registerEvent('pubsub_getitems_error', 'onItemsError');
         $this->registerEvent('pubsub_getitemsid_error', 'onItemsError');
+        $this->registerEvent('pubsub_getitems_errorpresencesubscriptionrequired', 'onItemsErrorPresenceSubscriptionRequired');
 
         $this->addjs('communityposts.js');
     }
@@ -28,6 +29,20 @@ class CommunityPosts extends Base
             = array_values($packet->content);
 
         $this->displayItems($origin, $node, $ids, $first, $last, $count, $paginated, $before, $after, $query);
+    }
+
+    public function onItemsErrorPresenceSubscriptionRequired($packet)
+    {
+        list($origin, $node) = array_values($packet->content);
+
+        $view = $this->tpl();
+
+        $slugify = new Slugify;
+        $this->rpc(
+            'MovimTpl.fill',
+            '#communityposts.'.$slugify->slugify('c'.$origin.'_'.$node),
+            $view->draw('_communityposts_presencerequired')
+        );
     }
 
     public function onItemsError($packet)

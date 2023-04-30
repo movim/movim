@@ -3,6 +3,10 @@ Movim Changelog
 
 v0.22 (trunk)
 ---------------------------
+ * Enable blog privacy feature, can be switched between private (presence only) and open
+ * Fix vcard-temp refresh
+ * Fix #1177 Refresh Ad-Hoc commande list when command finished
+ * Fix #1163 Ad-hoc command returns only one item (Prosŏdy)
 
 v0.21.1
 ---------------------------
