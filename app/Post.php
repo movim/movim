@@ -18,6 +18,7 @@ class Post extends Model
                     'attachment'];
 
     private $titleLimit = 200;
+    private $changed = false; // Detect if the set post was different from the cache
 
     public $attachments = [];
     public $tags = [];
@@ -121,6 +122,8 @@ class Post extends Model
     public function save(array $options = [])
     {
         try {
+            if (!$this->changed) return;
+
             parent::save($options);
 
             if (!$this->isComment()) {
@@ -342,6 +345,15 @@ class Post extends Model
     {
         $this->nodeid = (string)$entry->attributes()->id;
 
+        $hash = hash('sha256', $entry->entry->asXML());
+
+        // Detect if things changed from the cached version
+        if ($hash == $this->contenthash) {
+            return;
+        } else {
+            $this->contenthash = $hash;
+            $this->changed = true;
+        }
 
         // Ensure that the author is the publisher
         if ($entry->entry->author && $entry->entry->author->uri
@@ -457,13 +469,9 @@ class Post extends Model
             $this->commentserver = $this->server;
         }
 
+        // Save the base and cleaned content
         $this->content = trim($content);
-        $hash = hash('sha256', $this->content);
-
-        if ($this->contenthash !== $hash) {
-            $this->contentcleaned = requestAPI('purifyhtml', 2, ['content' => $this->content]);
-            $this->contenthash = $hash;
-        }
+        $this->contentcleaned = requestAPI('purifyhtml', 2, ['content' => $this->content]);
 
         // We fill empty aid
         if ($this->isMicroblog() && empty($this->aid)) {
