@@ -14,7 +14,7 @@ var isTouch = false;
  * @param function func
  */
 function movimAddOnload(func) {
-    if (typeof(func) === "function") {
+    if (typeof (func) === "function") {
         onloaders.push(func);
     }
 }
@@ -24,7 +24,7 @@ function movimAddOnload(func) {
  * @param function func
  */
 function movimAddFocus(func) {
-    if (typeof(func) === "function") {
+    if (typeof (func) === "function") {
         onfocused.push(func);
     }
 }
@@ -48,7 +48,7 @@ function movimLaunchOnload() {
 /**
  * The focus event doesn't seems to be triggered all the time ¯\_(ツ)_/¯
  */
-var onFocusedFunction = function() {
+var onFocusedFunction = function () {
     if (isFocused) return;
 
     isFocused = true;
@@ -59,8 +59,8 @@ var onFocusedFunction = function() {
 
 window.addEventListener('mouseover', onFocusedFunction);
 window.addEventListener('focus', onFocusedFunction);
-window.addEventListener('blur', function() { isFocused = false; });
-window.addEventListener('touchstart', function() { isTouch = true; }, { once: true });
+window.addEventListener('blur', function () { isFocused = false; });
+window.addEventListener('touchstart', function () { isTouch = true; }, { once: true });
 
 /**
  * Register a service worker for the Progressive Web App
@@ -68,33 +68,35 @@ window.addEventListener('touchstart', function() { isTouch = true; }, { once: tr
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker
         .register('sw.js')
-        .then(() => {
+        .then(e => navigator.serviceWorker.ready)
+        .then((r) => {
+            r.active.postMessage({ base_uri: BASE_URI });
             console.log('Service Worker Registered');
         });
 }
 
 
-movimAddOnload(function() {
+movimAddOnload(function () {
     /**
      * Handle the PWA install button
      */
-     const pwaButton = document.querySelector('#pwa');
+    const pwaButton = document.querySelector('#pwa');
 
-     window.addEventListener('beforeinstallprompt', (e) => {
-         e.preventDefault();
-         deferredPrompt = e;
-         pwaButton.style.display = 'initial';
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        pwaButton.style.display = 'initial';
 
-         pwaButton.addEventListener('click', () => {
-             deferredPrompt.prompt();
+        pwaButton.addEventListener('click', () => {
+            deferredPrompt.prompt();
 
-             deferredPrompt.userChoice.then((choiceResult) => {
-                 if (choiceResult.outcome === 'accepted') {
-                     console.log('Movim App installed');
-                 }
+            deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    console.log('Movim App installed');
+                }
 
-                 deferredPrompt = null;
-             });
-         });
-     });
+                deferredPrompt = null;
+            });
+        });
+    });
 });
