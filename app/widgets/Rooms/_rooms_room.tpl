@@ -61,7 +61,9 @@
                 {elseif="$conference->notify == 2"}
                     <i class="material-icons" title="{$c->__('room.notify_always')}">notifications_active</i>
                 {/if}
-                {if="isset($info) && $info->description"}
+                {if="isset($info) && $info->name && $conference->title != $info->name"}
+                    {$info->name}
+                {elseif="isset($info) && $info->description"}
                     {$info->description}
                 {else}
                     {$conference->conference}

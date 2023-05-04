@@ -89,14 +89,20 @@
 
                     <span class="second">
                         {if="$conference && $conference->isGroupChat()"}
-                            <i class="material-icons">people_alt</i> {$c->__('room.group_chat')}
+                            <i class="material-icons">people_alt</i>
                         {else}
-                            <i class="material-icons">wifi_tethering</i> {$c->__('room.channel')}
+                            <i class="material-icons">wifi_tethering</i>
                         {/if}
                     </span>
 
+                    {if="$conference && !$conference->isGroupChat() && $conference->info && $conference->info->name"}
+                        <span class="second" title="{$conference->info->name}">
+                            {$conference->info->name}
+                        </span>
+                    {/if}
+
                     {if="$conference && $conference->isGroupChat() && $subject = $conference->subject"}
-                        ·<span class="second" title="{$subject}">
+                        <span class="second" title="{$subject}">
                             {$subject}
                         </span>
                     {/if}

@@ -82,7 +82,13 @@
                     <i class="material-icons">short_text</i>
                 </span>
                 <div>
-                    <p class="line">{$c->__('page.about')}</p>
+                    <p class="line">
+                        {if="$conference->info && $conference->info->name"}
+                            {$conference->info->name}
+                        {else}
+                            {$c->__('page.about')}
+                        {/if}
+                    </p>
                     <p class="all">
                         {autoescape="off"}
                             {$conference->subject|addUrls}
