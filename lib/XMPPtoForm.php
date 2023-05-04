@@ -73,55 +73,67 @@ class XMPPtoForm
                     }
 
                     $type = isset($element->attributes()->type) ? $element->attributes()->type : 'text-single';
-
-                    switch ($type) {
-                        case 'boolean':
-                            $this->outCheckbox($element);
-                            break;
-                        case 'text-single':
-                            if ($element['var'] == 'pubsub#max_items') {
-                                $this->outInput($element, false, 'max');
-                            } elseif ($element['var'] == 'muc#roomconfig_pubsub') {
-                                $this->outSelectPubsubNode($element);
-                            } else {
-                                $this->outInput($element, '');
-                            }
-                            break;
-                        case 'text-multi':
-                            $this->outTextarea($element);
-                            break;
-                        case 'text-private':
-                            $this->outInput($element, 'password');
-                            break;
-                        case 'hidden':
-                            $this->outHiddeninput($element);
-                            break;
-                        case 'list-multi':
-                            //$this->outList($element, true);
-                            break;
-                        case 'list-single':
-                            $this->outList($element);
-                            break;
-                        case 'jid-multi':
-                            $this->outInput($element, 'text');
-                            break;
-                        case 'jid-single':
-                            if ($this->formType == 'result') {
+                    if ($this->formType == 'result') {
+                        $this->outLabel($this->html, $element);
+                        switch ($type) {
+                            case 'hidden':
+                                break;
+                            case 'boolean':
+                                $this->outCheckbox($element);
+                                break;
+                            case 'jid-single':
+                            case 'jid-multi':
+                                $this->outJidLinks($element);
+                                break;
+                            case 'text-multi':
+                                $this->outMultilineText($element);
+                                break;
+                            default:
+                                $this->outMultiP($element->value);
+                        }
+                    } else {
+                        switch ($type) {
+                            case 'boolean':
+                                $this->outCheckbox($element);
+                                break;
+                            case 'text-single':
+                                if ($element['var'] == 'pubsub#max_items') {
+                                    $this->outInput($element, false, 'max');
+                                } elseif ($element['var'] == 'muc#roomconfig_pubsub') {
+                                    $this->outSelectPubsubNode($element);
+                                } else {
+                                    $this->outInput($element, '');
+                                }
+                                break;
+                            case 'text-multi':
+                                $this->outTextarea($element);
+                                break;
+                            case 'text-private':
+                                $this->outInput($element, 'password');
+                                break;
+                            case 'hidden':
+                                $this->outHiddeninput($element);
+                                break;
+                            case 'list-multi':
+                                //$this->outList($element, true);
+                                break;
+                            case 'list-single':
+                                $this->outList($element);
+                                break;
+                            case 'jid-multi':
+                                $this->outInput($element, 'email');
+                                break;
+                            case 'jid-single':
+                                $this->outInput($element, 'email');
+                                break;
+                            case 'fixed':
                                 $this->outLabel($this->html, $element);
-                                $link = $this->html->createElement('a', (string)$element->value);
-                                $link->setAttribute('href', Route::urlize('contact', $element->value));
-                                $this->html->appendChild($link);
-                            } else {
+                                $this->outMultiP($element->value);
+                                break;
+                            default:
                                 $this->outInput($element, 'text');
-                            }
-                            break;
-                        case 'fixed':
-                            $this->outLabel($this->html, $element);
-                            $this->outP((string)$element->value);
-                            break;
-                        default:
-                            $this->outInput($element, 'text');
-                            break;
+                                break;
+                        }
                     }
 
                     break;
@@ -226,6 +238,32 @@ class XMPPtoForm
     private function outP($s)
     {
         $this->html->appendChild($this->html->createElement('p', $s));
+    }
+
+    private function outMultiP($arr)
+    {
+        foreach ((array)$arr as $value) {
+            $this->outP((string)$value);
+        }
+    }
+
+    private function outMultilineText($element) {
+        $p = $this->html->createElement('p');
+        foreach ((array)$element->value as $value) {
+            $p->appendChild($this->html->createTextNode(htmlspecialchars_decode((string)$value)));
+            $p->appendChild($this->html->createElement('br'));
+        }
+        $this->html->appendChild($p);
+    }
+
+    private function outJidLinks($element) {
+        foreach ((array)$element->value as $value) {
+            $p = $this->html->createElement('p');
+            $link = $this->html->createElement('a', $value);
+            $link->setAttribute('href', Route::urlize('contact', $value));
+            $p->appendChild($link);
+            $this->html->appendChild($p);
+        }
     }
 
     private function outCheckbox($s)
