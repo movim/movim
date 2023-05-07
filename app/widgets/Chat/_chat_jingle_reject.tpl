@@ -1,0 +1,1 @@
+<i class="material-icons icon orange">phone_missed</i> {$c->__('chat.jingle_reject')}

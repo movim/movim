@@ -9,6 +9,7 @@ v0.22 (trunk)
  * Fix #1163 Ad-hoc command returns only one item (Prosŏdy)
  * Add a same-origin check for non-internal connected Websockets
  * Fix #1160 Disable OMEMO completely for an account
+ * Fix #1189 Add missed and refused calls events
 
 v0.21.1
 ---------------------------

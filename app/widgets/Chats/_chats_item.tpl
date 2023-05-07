@@ -90,6 +90,10 @@
                 <p><i class="material-icons icon gray">outgoing_mail</i> {$c->__('message.invitation')}</p>
             {elseif="$message->type == 'jingle_incoming'"}
                 <p><i class="material-icons icon green">call</i> {$c->__('chat.jingle_incoming')}</p>
+            {elseif="$message->type == 'jingle_retract'"}
+                <p><i class="material-icons icon gray">phone_missed</i> {$c->__('chat.jingle_retract')}</p>
+            {elseif="$message->type == 'jingle_reject'"}
+                <p><i class="material-icons icon orange">phone_missed</i> {$c->__('chat.jingle_reject')}</p>
             {elseif="$message->type == 'jingle_outgoing'"}
                 <p><i class="material-icons icon blue">call</i> {$c->__('chat.jingle_outgoing')}</p>
             {elseif="$message->type == 'jingle_end'"}

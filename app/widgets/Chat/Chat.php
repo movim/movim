@@ -28,7 +28,10 @@ class Chat extends \Movim\Widget\Base
 {
     private $_pagination = 50;
     private $_wrapper = [];
-    private $_messageTypes = ['chat', 'headline', 'invitation', 'jingle_incoming', 'jingle_outgoing', 'jingle_end'];
+    private $_messageTypes = [
+        'chat', 'headline', 'invitation', 'jingle_incoming',
+        'jingle_outgoing', 'jingle_end', 'jingle_retract', 'jingle_reject'
+    ];
     private $_messageTypesMuc = ['groupchat', 'muc_owner', 'muc_admin', 'muc_outcast', 'muc_member'];
     private $_mucPresences = [];
 
@@ -140,8 +143,8 @@ class Chat extends \Movim\Widget\Base
 
         if (
             $message->isEmpty() && !in_array($message->type, [
-                'jingle_incoming', 'jingle_outgoing', 'jingle_end', 'muc_owner',
-                'muc_admin', 'muc_outcast', 'muc_member'
+                'jingle_incoming', 'jingle_outgoing', 'jingle_end', 'muc_owner', 'jingle_retract',
+                'jingle_reject', 'muc_admin', 'muc_outcast', 'muc_member'
             ])
         ) {
             return;
@@ -1496,8 +1499,8 @@ class Chat extends \Movim\Widget\Base
         }
 
         if (in_array($message->type, [
-            'muc_owner', 'muc_admin', 'muc_outcast',
-            'muc_member', 'jingle_incoming', 'jingle_outgoing'
+            'muc_owner', 'muc_admin', 'muc_outcast', 'jingle_reject',
+            'muc_member', 'jingle_incoming', 'jingle_outgoing', 'jingle_retract'
         ])) {
             $view = $this->tpl();
             $view->assign('message', $message);
