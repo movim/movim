@@ -24,7 +24,7 @@ class Configuration extends Model
         'twittertoken',
         'xmppdomain',
         'xmppdescription',
-        'xmppwhitelist'
+        'xmppwhitelist',
     ];
 
     protected $attributes = [

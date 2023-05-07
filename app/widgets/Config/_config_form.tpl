@@ -81,6 +81,27 @@
 
             <li>
                 <span class="primary icon gray">
+                    <i class="material-icons">lock</i>
+                </span>
+                <span class="control">
+                    <div class="checkbox">
+                        <input
+                            {if="$conf->omemoenabled"}checked{/if}
+                            type="checkbox"
+                            onchange="setTimeout(() => MovimUtils.reloadThis(), 1000)"
+                            id="omemoenabled"
+                            name="omemoenabled"/>
+                        <label for="omemoenabled"></label>
+                    </div>
+                </span>
+                <div>
+                    <p>{$c->__('config.omemoenabled')}</p>
+                    <p class="all">{$c->__('config.omemoenabled_text')}</p>
+                </div>
+            </li>
+
+            <li>
+                <span class="primary icon gray">
                     <i class="material-icons">explicit</i>
                 </span>
                 <span class="control">

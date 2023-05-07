@@ -9,7 +9,10 @@ use App\Configuration;
 
 class User extends Model
 {
-    protected $fillable = ['id', 'language', 'nightmode', 'chatmain', 'nsfw', 'nickname', 'notificationchat', 'notificationcall'];
+    protected $fillable = [
+        'id', 'language', 'nightmode', 'chatmain', 'nsfw', 'nickname',
+        'notificationchat', 'notificationcall', 'omemoenabled'
+    ];
     public $with = ['session', 'capability'];
     protected $keyType = 'string';
     public $incrementing = false;
@@ -79,28 +82,28 @@ class User extends Model
         if ($this->unreads !== null && $cached) return $this->unreads;
 
         $unreads = $this->messages()
-                        ->where('seen', false)
-                        ->where('jidfrom', '!=', $this->id)
-                        ->where(function ($query) use ($quoted) {
-                            $query->whereIn('type', ['chat', 'headline', 'invitation'])
-                                ->orWhere(function ($query) use ($quoted) {
-                                    $query->where('type', 'groupchat')
-                                          ->whereNull('subject')
-                                          ->whereIn('jidfrom', function ($query) {
-                                            $query->select('conference')
-                                                  ->from('conferences')
-                                                  ->where('session_id', function ($query) {
-                                                      $query->select('id')
-                                                            ->from('sessions')
-                                                            ->where('user_id', $this->id);
-                                                  });
-                                          });
+            ->where('seen', false)
+            ->where('jidfrom', '!=', $this->id)
+            ->where(function ($query) use ($quoted) {
+                $query->whereIn('type', ['chat', 'headline', 'invitation'])
+                    ->orWhere(function ($query) use ($quoted) {
+                        $query->where('type', 'groupchat')
+                            ->whereNull('subject')
+                            ->whereIn('jidfrom', function ($query) {
+                                $query->select('conference')
+                                    ->from('conferences')
+                                    ->where('session_id', function ($query) {
+                                        $query->select('id')
+                                            ->from('sessions')
+                                            ->where('user_id', $this->id);
+                                    });
+                            });
 
-                                    if ($quoted) {
-                                        $query->where('quoted', true);
-                                    }
-                                });
-                        });
+                        if ($quoted) {
+                            $query->where('quoted', true);
+                        }
+                    });
+            });
 
         if ($jid) {
             $unreads = $unreads->where('jidfrom', $jid);
@@ -127,13 +130,15 @@ class User extends Model
         return $this->hasMany('App\Subscription', 'jid', 'id');
     }
 
-    public static function me($reload = false)
+    public static function me($reload = false): User
     {
         $session = Session::start();
 
-        if (self::$me != null
-        && self::$me->id == $session->get('jid')
-        && $reload == false) {
+        if (
+            self::$me != null
+            && self::$me->id == $session->get('jid')
+            && $reload == false
+        ) {
             return self::$me;
         }
 
@@ -159,6 +164,10 @@ class User extends Model
             $this->nsfw = $config['nsfw'];
         }
 
+        if (isset($config['omemoenabled'])) {
+            $this->omemoenabled = $config['omemoenabled'];
+        }
+
         if (isset($config['chatmain'])) {
             $this->chatmain = $config['chatmain'];
         }
@@ -176,14 +185,19 @@ class User extends Model
         }
     }
 
-    public function hasMAM()
+    public function hasMAM(): bool
     {
         return ($this->capability && $this->capability->hasFeature('urn:xmpp:mam:2'));
     }
 
-    public function hasBookmarksConvertion()
+    public function hasBookmarksConvertion(): bool
     {
         return ($this->capability && $this->capability->hasFeature('urn:xmpp:bookmarks:1#compat'));
+    }
+
+    public function hasOMEMO(): bool
+    {
+        return (bool)$this->omemoenabled;
     }
 
     public function hasPubsub()
@@ -193,15 +207,14 @@ class User extends Model
             && $this->capability
             && $this->capability->hasFeature('http://jabber.org/protocol/pubsub#persistent-items')
             && ($this->capability->hasFeature('http://jabber.org/protocol/pubsub#multi-items')
-                || (
-                    $this->session->serverCapability
+                || ($this->session->serverCapability
                     && $this->session->serverCapability->hasFeature('http://jabber.org/protocol/pubsub#multi-items')
                 )
             )
         );
     }
 
-    public function hasUpload()
+    public function hasUpload(): bool
     {
         return ($this->session && $this->session->getUploadService());
     }
@@ -237,5 +250,4 @@ class User extends Model
 
         return in_array($jid, $this->userBlocked) || in_array($jid, $this->globalBlocked);
     }
-
 }

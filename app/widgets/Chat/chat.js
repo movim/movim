@@ -1494,7 +1494,7 @@ var Chat = {
         var p = document.createElement('p');
         div.appendChild(p);
 
-        if (parent.omemoheader) {
+        if (parent.omemoheader && OMEMO_ENABLED) {
             p.innerHTML = parent.omemoheader.payload.substring(0, parent.omemoheader.payload.length / 2);
             ChatOmemo.decrypt(parent).then(plaintext => {
                 let refreshP = document.querySelector('#parent' + parent.id + ' p');

@@ -3,7 +3,7 @@
 <?php $this->widget('Stickers');?>
 <?php $this->widget('Notifications');?>
 <?php $this->widget('ContactActions');?>
-<?php $this->widget('ChatOmemo');?>
+<?php if(\App\User::me()->hasOMEMO()) $this->widget('ChatOmemo');?>
 <?php $this->widget('Location');?>
 
 <nav class="color dark">

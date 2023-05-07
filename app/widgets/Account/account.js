@@ -34,6 +34,6 @@ var Account = {
 }
 
 MovimWebsocket.attach(function() {
-    Account.refreshFingerprints();
+    if (OMEMO_ENABLED) Account.refreshFingerprints();
     Account_ajaxHttpGetPresences();
 });

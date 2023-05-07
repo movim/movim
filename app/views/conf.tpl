@@ -2,7 +2,7 @@
 <?php $this->widget('VisioLink');?>
 <?php $this->widget('Onboarding');?>
 <?php $this->widget('Notifications');?>
-<?php $this->widget('ChatOmemo');?>
+<?php if(\App\User::me()->hasOMEMO()) $this->widget('ChatOmemo');?>
 <?php $this->widget('Location');?>
 
 <nav class="color dark">

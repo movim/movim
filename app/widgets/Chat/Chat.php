@@ -401,17 +401,18 @@ class Chat extends \Movim\Widget\Base
             $this->rpc('Notif.current', 'chat|' . $jid);
             $this->rpc('Chat.scrollToSeparator');
 
-            // OMEMO
-            $this->rpc(
-                'Chat.setBundlesIds',
-                $jid,
-                $this->user->bundles()
-                    ->where('jid', $jid)
-                    ->select(['bundleid', 'jid'])
-                    ->get()
-                    ->mapToGroups(fn ($tuple) => [$tuple['jid'] => $tuple['bundleid']])
-                    ->toArray()
-            );
+            if ($this->user->hasOMEMO()) {
+                $this->rpc(
+                    'Chat.setBundlesIds',
+                    $jid,
+                    $this->user->bundles()
+                        ->where('jid', $jid)
+                        ->select(['bundleid', 'jid'])
+                        ->get()
+                        ->mapToGroups(fn ($tuple) => [$tuple['jid'] => $tuple['bundleid']])
+                        ->toArray()
+                );
+            }
         }
     }
 
@@ -450,8 +451,7 @@ class Chat extends \Movim\Widget\Base
             $this->rpc('Notif.current', 'chat|' . $room);
             $this->rpc('Chat.scrollToSeparator');
 
-            // OMEMO
-            if ($conference->isGroupChat()) {
+            if ($this->user->hasOMEMO() && $conference->isGroupChat()) {
                 $this->rpc('Chat.setGroupChatMembers', $conference->members->pluck('jid')->toArray());
                 $this->rpc(
                     'Chat.setBundlesIds',
@@ -1495,11 +1495,13 @@ class Chat extends \Movim\Widget\Base
                 : $view->draw('_chat_invitation');
         }
 
-        if (in_array($message->type, ['muc_owner', 'muc_admin', 'muc_outcast',
-            'muc_member', 'jingle_incoming', 'jingle_outgoing'])) {
-                $view = $this->tpl();
-                $view->assign('message', $message);
-                $message->body = $view->draw('_chat_' . $message->type);
+        if (in_array($message->type, [
+            'muc_owner', 'muc_admin', 'muc_outcast',
+            'muc_member', 'jingle_incoming', 'jingle_outgoing'
+        ])) {
+            $view = $this->tpl();
+            $view->assign('message', $message);
+            $message->body = $view->draw('_chat_' . $message->type);
         }
 
         if ($message->type == 'jingle_end') {
