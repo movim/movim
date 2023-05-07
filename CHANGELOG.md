@@ -8,6 +8,7 @@ v0.22 (trunk)
  * Fix #1177 Refresh Ad-Hoc commande list when command finished
  * Fix #1163 Ad-hoc command returns only one item (Prosŏdy)
  * Add a same-origin check for non-internal connected Websockets
+ * Fix #1160 Disable OMEMO completely for an account
 
 v0.21.1
 ---------------------------
