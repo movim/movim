@@ -69,9 +69,9 @@
                     </span>
                     <span class="control">
                         <div class="radio">
-                            <input name="pubsub#type" value="urn:xmpp:pubsub-social-feed:0"
+                            <input name="pubsub#type" value="urn:xmpp:pubsub-social-feed:1"
                                 id="pubsub_type_feed" type="radio"
-                                {if="$config['pubsub#type'] == 'urn:xmpp:pubsub-social-feed:0'"}checked{/if}>
+                                {if="in_array($config['pubsub#type'], ['urn:xmpp:pubsub-social-feed:0', 'urn:xmpp:pubsub-social-feed:1'])"}checked{/if}>
                             <label for="pubsub_type_feed"></label>
                         </div>
                     </span>
@@ -86,9 +86,9 @@
                     </span>
                     <span class="control">
                         <div class="radio">
-                            <input name="pubsub#type" value="urn:xmpp:pubsub-social-gallery:0"
+                            <input name="pubsub#type" value="urn:xmpp:pubsub-social-feed:gallery:1"
                                 id="pubsub_type_gallery" type="radio"
-                                {if="$config['pubsub#type'] == 'urn:xmpp:pubsub-social-gallery:0'"}checked{/if}>
+                                {if="in_array($config['pubsub#type'], ['urn:xmpp:pubsub-social-gallery:0', 'urn:xmpp:pubsub-social-feed:gallery:1'])"}checked{/if}>
                             <label for="pubsub_type_gallery"></label>
                         </div>
                     </span>

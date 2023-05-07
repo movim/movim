@@ -235,7 +235,7 @@ class Info extends Model
 
     public function isGallery(): bool
     {
-        return $this->type == 'urn:xmpp:pubsub-social-gallery:0';
+        return in_array($this->type, ['urn:xmpp:pubsub-social-gallery:0', 'urn:xmpp:pubsub-social-feed:gallery:1']);
     }
 
     public function isJingleAudio(): bool

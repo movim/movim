@@ -19,6 +19,7 @@ class CommunityHeader extends Base
         $this->registerEvent('pubsubsubscription_remove_handle', 'onUnsubscribed');
         $this->registerEvent('pubsub_testpostpublish_handle', 'onTestPublish');
         $this->registerEvent('pubsub_testpostpublish_error', 'onTestPublishError');
+        $this->registerEvent('pubsub_setconfig_handle', 'onConfigSaved', 'community');
 
         $this->addjs('communityheader.js');
         $this->addcss('communityheader.css');
@@ -31,6 +32,11 @@ class CommunityHeader extends Base
         if ((substr($node, 0, 30) != 'urn:xmpp:microblog:0:comments/')) {
             $this->rpc('MovimTpl.fill', '#community_header', $this->prepareHeader($origin, $node));
         }
+    }
+
+    public function onConfigSaved($packet)
+    {
+        $this->rpc('CommunityHeader.getMetadata');
     }
 
     public function onTestPublish($packet)
