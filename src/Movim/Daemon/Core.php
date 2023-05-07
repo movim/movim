@@ -54,7 +54,7 @@ class Core implements MessageComponentInterface
 
         // Generate Push Notification
         if (!file_exists(CACHE_PATH . 'vapid_keys.json')) {
-            echo colorize("Generate and store the Push Notification VAPID keys", 'green')."\n";
+            echo colorize("Generate and store the Push Notification VAPID keys", 'green') . "\n";
             $keyset = VAPID::createVapidKeys();
             file_put_contents(CACHE_PATH . 'vapid_keys.json', json_encode($keyset));
         }
@@ -63,17 +63,17 @@ class Core implements MessageComponentInterface
     public function setWebsocket($port)
     {
         echo
-            "\n".
-            "--- ".colorize("Server Configuration - Apache", 'purple')." ---".
+        "\n" .
+            "--- " . colorize("Server Configuration - Apache", 'purple') . " ---" .
             "\n";
-        echo colorize("Enable the Secure WebSocket to WebSocket tunneling", 'yellow')."\n# a2enmod proxy_wstunnel \n";
-        echo colorize("Add this in your configuration file (default-ssl.conf)", 'yellow')."\nProxyPass /ws/ ws://127.0.0.1:{$port}/\n";
+        echo colorize("Enable the Secure WebSocket to WebSocket tunneling", 'yellow') . "\n# a2enmod proxy_wstunnel \n";
+        echo colorize("Add this in your configuration file (default-ssl.conf)", 'yellow') . "\nProxyPass /ws/ ws://127.0.0.1:{$port}/\n";
 
         echo
-            "\n".
-            "--- ".colorize("Server Configuration - nginx", 'purple')." ---".
+        "\n" .
+            "--- " . colorize("Server Configuration - nginx", 'purple') . " ---" .
             "\n";
-        echo colorize("Add this in your configuration file", 'yellow')."\n";
+        echo colorize("Add this in your configuration file", 'yellow') . "\n";
         echo "location /ws/ {
     proxy_pass http://127.0.0.1:{$port}/;
     proxy_http_version 1.1;
@@ -88,10 +88,10 @@ class Core implements MessageComponentInterface
 ";
 
         echo
-            "\n".
-            "--- ".colorize("Server Configuration - Caddy", 'purple')." ---".
+        "\n" .
+            "--- " . colorize("Server Configuration - Caddy", 'purple') . " ---" .
             "\n";
-            echo colorize("Add this in your configuration file", 'yellow')."\nhandle /ws/* {
+        echo colorize("Add this in your configuration file", 'yellow') . "\nhandle /ws/* {
     reverse_proxy localhost:8080
 }
 
@@ -100,14 +100,19 @@ class Core implements MessageComponentInterface
 
     public function onOpen(ConnectionInterface $conn)
     {
+        if (!$this->isTrustedConnection($conn)) $conn->close();
+
         // WebSockets from the Browser
         $sid = $this->getSid($conn);
+
         if ($sid != null) {
             $path = $this->getPath($conn);
 
             if (in_array($path, $this->single)) {
-                if (array_key_exists($sid, $this->singlelocks)
-                && array_key_exists($path, $this->singlelocks[$sid])) {
+                if (
+                    array_key_exists($sid, $this->singlelocks)
+                    && array_key_exists($path, $this->singlelocks[$sid])
+                ) {
                     $this->singlelocks[$sid][$path]++;
                     $conn->close(1008);
                 } else {
@@ -167,8 +172,10 @@ class Core implements MessageComponentInterface
             $path = $this->getPath($conn);
 
             if (in_array($path, $this->single)) {
-                if (array_key_exists($sid, $this->singlelocks)
-                && array_key_exists($path, $this->singlelocks[$sid])) {
+                if (
+                    array_key_exists($sid, $this->singlelocks)
+                    && array_key_exists($path, $this->singlelocks[$sid])
+                ) {
                     $this->singlelocks[$sid][$path]--;
                     if ($this->singlelocks[$sid][$path] == 0) {
                         unset($this->singlelocks[$sid][$path]);
@@ -197,8 +204,10 @@ class Core implements MessageComponentInterface
     {
         $this->loop->addPeriodicTimer(5, function () {
             foreach ($this->sessions as $sid => $session) {
-                if ($session->countClients() == 0
-                && $session->registered == null) {
+                if (
+                    $session->countClients() == 0
+                    && $session->registered == null
+                ) {
                     $session->killLinker();
                 }
 
@@ -216,7 +225,7 @@ class Core implements MessageComponentInterface
     private function cleanupDBSessions()
     {
         DBSession::where('active', false)
-            ->where('created_at', '<', date(MOVIM_SQL_DATE, time()-60))
+            ->where('created_at', '<', date(MOVIM_SQL_DATE, time() - 60))
             ->delete();
     }
 
@@ -225,7 +234,7 @@ class Core implements MessageComponentInterface
      */
     private function cleanupPushSubscriptions()
     {
-        PushSubscription::where('activity_at', '<', date(MOVIM_SQL_DATE, time()-(60*60*24*30)))
+        PushSubscription::where('activity_at', '<', date(MOVIM_SQL_DATE, time() - (60 * 60 * 24 * 30)))
             ->delete();
     }
 
@@ -234,7 +243,7 @@ class Core implements MessageComponentInterface
      */
     private function cleanupEncryptedPasswords()
     {
-        EncryptedPassword::where('updated_at', '<', date(MOVIM_SQL_DATE, time()-(60*60*24*7)))
+        EncryptedPassword::where('updated_at', '<', date(MOVIM_SQL_DATE, time() - (60 * 60 * 24 * 7)))
             ->delete();
     }
 
@@ -267,7 +276,7 @@ class Core implements MessageComponentInterface
     private function getOffset(ConnectionInterface $conn)
     {
         parse_str($conn->httpRequest->getUri()->getQuery(), $arr);
-        return (isset($arr['offset'])) ? invertSign(((int)$arr['offset'])*60) : 0;
+        return (isset($arr['offset'])) ? invertSign(((int)$arr['offset']) * 60) : 0;
     }
 
     private function getPath(ConnectionInterface $conn)
@@ -287,9 +296,17 @@ class Core implements MessageComponentInterface
 
     private function getHeaderSid(ConnectionInterface $conn)
     {
-        return ($conn->httpRequest->hasHeader('MOVIM_SESSION_ID')
-            && $conn->httpRequest->getHeader('MOVIM_DAEMON_KEY')[0] === $this->key)
+        return ($conn->httpRequest->hasHeader('MOVIM_SESSION_ID'))
             ? $conn->httpRequest->getHeader('MOVIM_SESSION_ID')[0]
             : null;
+    }
+
+    private function isTrustedConnection(ConnectionInterface $conn): bool
+    {
+        $daemonKeyHeader = $conn->httpRequest->getHeader('MOVIM_DAEMON_KEY');
+        $secFetchSiteHeader = $conn->httpRequest->getHeader('Sec-Fetch-Site');
+
+        return (is_array($daemonKeyHeader) && !empty($daemonKeyHeader) && $daemonKeyHeader[0] === $this->key)
+            || (is_array($secFetchSiteHeader) && !empty($secFetchSiteHeader) && $secFetchSiteHeader[0] == 'same-origin');
     }
 }

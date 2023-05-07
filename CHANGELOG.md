@@ -7,6 +7,7 @@ v0.22 (trunk)
  * Fix vcard-temp refresh
  * Fix #1177 Refresh Ad-Hoc commande list when command finished
  * Fix #1163 Ad-hoc command returns only one item (Prosŏdy)
+ * Add a same-origin check for non-internal connected Websockets
 
 v0.21.1
 ---------------------------
