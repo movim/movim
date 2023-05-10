@@ -119,6 +119,8 @@ article section > div div.video_embed {
     position: relative;
     padding-bottom: 56.25%; /* 16:9 */
     margin-bottom: 2rem;
+    border-radius: 0.25rem;
+    overflow: hidden;
     height: 0;
 }
 

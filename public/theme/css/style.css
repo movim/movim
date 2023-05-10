@@ -35,7 +35,7 @@ body {
     height: 2rem;
 }
 
-body > * {
+body>* {
     display: block;
     height: 100%;
     box-sizing: border-box;
@@ -44,17 +44,19 @@ body > * {
     font-family: 'Roboto', sans-serif;
 }
 
-body > script {
+body>script {
     display: none;
 }
 
-a, a:link, a:visited {
+a,
+a:link,
+a:visited {
     text-decoration: none;
 }
 
 /* Navigation bar */
 
-body > nav {
+body>nav {
     width: 7rem;
     max-width: 95%;
     z-index: 2;
@@ -64,60 +66,62 @@ body > nav {
     user-select: none;
 }
 
-body > nav.active {
+body>nav.active {
     width: 45rem;
 }
 
-body > div.drawer:not(.empty) ~ main,
-body > div.drawer:not(.empty) ~ nav,
-body > div.dialog:not(:empty) ~ main,
-body > div.dialog:not(:empty) ~ nav,
-body > nav.active ~ main {
+body>div.drawer:not(.empty)~main,
+body>div.drawer:not(.empty)~nav,
+body>div.dialog:not(:empty)~main,
+body>div.dialog:not(:empty)~nav,
+body>nav.active~main {
     opacity: 0.3;
     pointer-events: none;
 }
 
-body > nav.active ~ main {
+body>nav.active~main {
     transform: translateX(6rem);
 }
 
-body > nav li { /* Little hack for the navbar */
+body>nav li {
+    /* Little hack for the navbar */
     overflow: hidden;
 }
 
 @media screen and (max-width: 1024px) {
-    body > nav.active {
+    body>nav.active {
         box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
     }
 
-    body > nav:not(.active) {
+    body>nav:not(.active) {
         width: 45rem;
         transform: translateX(-100%);
     }
 
-    body > nav.moving {
+    body>nav.moving {
         transition: transform .25s var(--decelerate-easing);
     }
 
-    body > nav.active.moving {
+    body>nav.active.moving {
         transition: transform .25s var(--accelerate-easing);
         transform: translateX(0%);
     }
 }
 
 @media screen and (min-width: 1680px) {
-    body > nav,
-    body > nav:hover {
+
+    body>nav,
+    body>nav:hover {
         width: 15%;
     }
 
-    body > nav ~ main,
-    body > nav:hover ~ main {
+    body>nav~main,
+    body>nav:hover~main {
         width: 85%;
     }
 }
 
-body > nav.active:before {
+body>nav.active:before {
     display: none;
 }
 
@@ -142,7 +146,7 @@ body.loading:before {
 }
 
 body.finished:before {
-    transition: width 1s cubic-bezier(.68,0,0,1), opacity 1s ease-in-out;
+    transition: width 1s cubic-bezier(.68, 0, 0, 1), opacity 1s ease-in-out;
     width: 100%;
     opacity: 0;
 }
@@ -157,7 +161,8 @@ main {
     transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
     overflow-y: auto;
     overflow-x: hidden;
-    -webkit-overflow-scrolling: touch; /* Hack to have a non-blocking scrolling in iOS… */
+    -webkit-overflow-scrolling: touch;
+    /* Hack to have a non-blocking scrolling in iOS… */
 
     display: flex;
     justify-content: center;
@@ -171,69 +176,69 @@ main {
     }
 }
 
-nav ~ main {
+nav~main {
     width: calc(100% - 7rem);
     border-radius: 1rem 0 0 1rem;
 }
 
-main > div {
+main>div {
     width: 92rem;
     max-width: 100%;
 }
 
-main > div > * {
+main>div>* {
     max-width: 92rem;
     margin: 0 auto;
 }
 
-main > div.large {
+main>div.large {
     max-width: 130rem;
     width: 100%;
 }
 
-main > div.large > * {
+main>div.large>* {
     max-width: 100%;
 }
 
-main > aside {
+main>aside {
     width: 45rem;
 }
 
-main > aside + div {
+main>aside+div {
     width: 85rem;
     padding-right: 1rem;
     box-sizing: border-box;
 }
 
-body[dir="rtl"] main > aside + div {
+body[dir="rtl"] main>aside+div {
     padding-left: 1rem;
     padding-right: 0;
 }
 
 /* Two blocks */
-main > div:first-child:nth-last-child(2) {
+main>div:first-child:nth-last-child(2) {
     width: 70%;
 }
 
-main > div:first-child:nth-last-child(2) + div {
+main>div:first-child:nth-last-child(2)+div {
     width: 30%;
     overflow-y: auto;
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
 }
 
 @media screen and (max-width: 1024px) {
-    nav ~ main {
+    nav~main {
         overflow-x: hidden;
         width: 100%;
         border-radius: 0;
     }
 
-    nav ~ main.slide {
+    nav~main.slide {
         display: block;
     }
 
-    main.slide > div:first-child:nth-last-child(2),
-    main.slide > div:first-child:nth-last-child(2) + div {
+    main.slide>div:first-child:nth-last-child(2),
+    main.slide>div:first-child:nth-last-child(2)+div {
         width: 100%;
         height: 100%;
         position: absolute;
@@ -241,44 +246,44 @@ main > div:first-child:nth-last-child(2) + div {
         left: 0;
     }
 
-    main.slide > div:first-child:nth-last-child(2) + div {
+    main.slide>div:first-child:nth-last-child(2)+div {
         transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
     }
 
-    main.slide > div:first-child:nth-last-child(2) {
+    main.slide>div:first-child:nth-last-child(2) {
         z-index: 1;
         box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.2);
         transform: translateX(100%);
     }
 
-    main.slide > div:first-child:nth-last-child(2).moving {
+    main.slide>div:first-child:nth-last-child(2).moving {
         transition: transform .25s var(--decelerate-easing);
         will-change: transform;
     }
 
-    main.slide.enabled > div:first-child:nth-last-child(2) {
+    main.slide.enabled>div:first-child:nth-last-child(2) {
         transform: translateX(0);
     }
 
-    main.slide.enabled > div:first-child:nth-last-child(2).moving {
+    main.slide.enabled>div:first-child:nth-last-child(2).moving {
         transition: transform .25s var(--accelerate-easing);
         will-change: transform;
     }
 
-    main.slide.enabled > div:first-child:nth-last-child(2) + div {
+    main.slide.enabled>div:first-child:nth-last-child(2)+div {
         opacity: 0.3;
         transform: translateX(-2rem);
     }
 
-    main > aside + div {
+    main>aside+div {
         padding-right: 0;
     }
 
-    body[dir="rtl"] main > aside + div {
+    body[dir="rtl"] main>aside+div {
         padding-left: 0;
     }
 
-    main > aside {
+    main>aside {
         display: none;
     }
 }
@@ -289,7 +294,7 @@ main > div:first-child:nth-last-child(2) + div {
     padding-bottom: 7rem;
 }
 
-.actions > div:last-child {
+.actions>div:last-child {
     width: 100%;
     box-sizing: border-box;
     text-align: right;
@@ -299,11 +304,11 @@ main > div:first-child:nth-last-child(2) + div {
     border-top: 1px solid rgba(var(--movim-font), 0.12);
 }
 
-.actions > div.no_bar:last-child {
+.actions>div.no_bar:last-child {
     border-top: none;
 }
 
-.actions.fixed > div:last-child {
+.actions.fixed>div:last-child {
     position: fixed;
     min-height: 7rem;
     max-width: calc(100% - 5rem);
@@ -311,24 +316,24 @@ main > div:first-child:nth-last-child(2) + div {
     padding: 0;
 }
 
-.actions > div:last-child form > div {
+.actions>div:last-child form>div {
     min-height: 0;
     top: -0.5rem;
 }
 
-.actions > div:last-child form > div input {
+.actions>div:last-child form>div input {
     margin: 0;
     padding-top: 1.5rem;
 }
 
-.drawer.actions > div:last-child ul.tabs {
+.drawer.actions>div:last-child ul.tabs {
     margin-top: -0.5rem;
     padding-bottom: 0.5rem;
     border-bottom: 0;
     overflow-x: auto;
 }
 
-.drawer.actions > div:last-child ul.tabs li {
+.drawer.actions>div:last-child ul.tabs li {
     height: 6.5rem;
     border-top-width: 2px;
     border-top-style: solid;
@@ -337,19 +342,20 @@ main > div:first-child:nth-last-child(2) + div {
     border-radius: 0 0 1.25rem 1.25rem;
 }
 
-.drawer.actions > div:last-child ul.tabs li.active {
+.drawer.actions>div:last-child ul.tabs li.active {
     border-top-color: inherit;
 }
 
-.actions.scroll > section {
+.actions.scroll>section {
     margin-bottom: 1rem;
 }
 
-.actions.scroll > section > article > section {
+.actions.scroll>section>article>section {
     padding: 0;
 }
 
-.actions.fixed > div:last-child > * { /* Little hack to fake the 100% width that overflow the parent */
+.actions.fixed>div:last-child>* {
+    /* Little hack to fake the 100% width that overflow the parent */
     max-width: 92rem;
     margin: 0 auto;
 }
@@ -379,6 +385,28 @@ hr.thick {
     min-height: 80%;
 }
 
+/* Background loading */
+.shimmer {
+    background: linear-gradient(to right, rgba(var(--movim-font), 0), rgba(var(--movim-font), 0.05), rgba(var(--movim-font), 0));
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeHolderShimmer;
+    animation-timing-function: linear;
+}
+
+@keyframes placeHolderShimmer {
+    0% {
+        background-position: -800px 0
+    }
+
+    100% {
+        background-position: 800px 0
+    }
+}
+
 /* Avatar */
 
 img.avatar,
@@ -402,7 +430,7 @@ span.avatar.icon {
     line-height: 25rem;
 }
 
-img.avatar:not([src=""]) + .placeholder {
+img.avatar:not([src=""])+.placeholder {
     display: none;
 }
 
@@ -417,7 +445,7 @@ img.avatar:not([src=""]) + .placeholder {
     box-sizing: border-box;
 }
 
-.placeholder > i:first-child {
+.placeholder>i:first-child {
     font-size: 14rem;
     opacity: 0.3;
 }
@@ -481,7 +509,7 @@ img.avatar:not([src=""]) + .placeholder {
 
 /* Disabled */
 
-.faded > * {
+.faded>* {
     -webkit-filter: grayscale(100%);
     filter: grayscale(100%);
     opacity: 0.5;
@@ -567,32 +595,66 @@ div.bubble .audio_player p {
 /* Animations */
 
 @keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes fadetext {
-    0%,100% { color: transparent; }
-    25%,75% { color: white; } /* Enforce white for now as inherit is not applied correctly */
+
+    0%,
+    100% {
+        color: transparent;
+    }
+
+    25%,
+    75% {
+        color: white;
+    }
+
+    /* Enforce white for now as inherit is not applied correctly */
 }
 
 @keyframes spin {
-    100% { transform:rotate(360deg); }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 @keyframes zoom {
-    from { transform: scale(0.9); opacity: 0; }
-    to   { transform: scale(1); opacity: 1; }
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 @keyframes bottom-right {
-    from { transform: translate(10%, 20%); }
-    to   { transform: translate(0, 0); }
+    from {
+        transform: translate(10%, 20%);
+    }
+
+    to {
+        transform: translate(0, 0);
+    }
 }
 
 @keyframes loadingopacity {
-    from { opacity: 0.2; }
-    to { opacity: 1; }
+    from {
+        opacity: 0.2;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes ripple {

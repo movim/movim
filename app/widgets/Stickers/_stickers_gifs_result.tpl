@@ -1,6 +1,6 @@
 <video
     data-id="{$gif.id}"
-    class="brick"
+    class="brick shimmer"
     poster="{$gif.preview}"
     loop
     preload="none"

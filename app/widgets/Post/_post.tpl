@@ -191,8 +191,8 @@
 <section dir="{if="$post->isRTL()"}rtl{else}ltr{/if}">
     <div>
         {if="$post->embed"}
-            <div class="video_embed">
-                <iframe src="{$post->embed->href}" frameborder="0" allowfullscreen></iframe>
+            <div class="video_embed shimmer">
+                <iframe class="spin" src="{$post->embed->href}" frameborder="0" allowfullscreen></iframe>
             </div>
         {elseif="$post->isShort()"}
             {loop="$post->pictures"}
