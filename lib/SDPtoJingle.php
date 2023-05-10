@@ -18,9 +18,9 @@ class SDPtoJingle
     private $sid;
 
     // Move the global fingerprint into each medias
-    private $global_fingerprint = [];
-    private $fmtp_cache = [];
-    private $rtcp_fb_cache = [];
+    private $globalFingerprint = [];
+    private $fmtpCache = [];
+    private $rtcpFbCache = [];
 
     private $regex = [
       'candidate'       => "/^a=candidate:(\w{1,32}) (\d{1,5}) (udp|tcp) (\d{1,10}) ([a-zA-Z0-9:\.]{1,45}) (\d{1,5}) (typ) (host|srflx|prflx|relay|ufrag)\s?(.+)?/i",
@@ -163,10 +163,10 @@ class SDPtoJingle
                                 $description->addAttribute('media', $matches[1]);
                             }
 
-                            if (!empty($this->global_fingerprint)) {
-                                $fingerprint = $this->transport->addChild('fingerprint', $this->global_fingerprint['fingerprint']);
+                            if (!empty($this->globalFingerprint)) {
+                                $fingerprint = $this->transport->addChild('fingerprint', $this->globalFingerprint['fingerprint']);
                                 $fingerprint->addAttribute('xmlns', "urn:xmpp:jingle:apps:dtls:0");
-                                $fingerprint->addAttribute('hash', $this->global_fingerprint['hash']);
+                                $fingerprint->addAttribute('hash', $this->globalFingerprint['hash']);
                             }
 
                             break;
@@ -193,14 +193,14 @@ class SDPtoJingle
                                 $payloadtype->addAttribute('channels', $matches[7]);
                             }
 
-                            if (isset($this->fmtp_cache[$matches[1]])) {
-                                $this->addFmtpParameters($payloadtype, $this->fmtp_cache[$matches[1]]);
-                                unset($this->fmtp_cache[$matches[1]]);
+                            if (isset($this->fmtpCache[$matches[1]])) {
+                                $this->addFmtpParameters($payloadtype, $this->fmtpCache[$matches[1]]);
+                                unset($this->fmtpCache[$matches[1]]);
                             }
 
-                            if (isset($this->rtcp_fb_cache[$matches[1]])) {
-                                $this->addRtcpFbParameters($payloadtype, $this->rtcp_fb_cache[$matches[1]]);
-                                unset($this->rtcp_fb_cache[$matches[1]]);
+                            if (isset($this->rtcpFbCache[$matches[1]])) {
+                                $this->addRtcpFbParameters($payloadtype, $this->rtcpFbCache[$matches[1]]);
+                                unset($this->rtcpFbCache[$matches[1]]);
                             }
 
                             break;
@@ -216,7 +216,7 @@ class SDPtoJingle
                                 $this->addFmtpParameters($payloadtype, $params);
                             // If not we cache it
                             } else {
-                                $this->fmtp_cache[$matches[1]] = $params;
+                                $this->fmtpCache[$matches[1]] = $params;
                             }
                             break;
 
@@ -229,11 +229,11 @@ class SDPtoJingle
                                 && $matches[1] == $payloadtype->attributes()->id) {
                                     $this->addRtcpFbParameters($payloadtype, [$matches]);
                                 } else {
-                                    if (!isset($this->rtcp_fb_cache[$matches[1]])) {
-                                        $this->rtcp_fb_cache[$matches[1]] = [];
+                                    if (!isset($this->rtcpFbCache[$matches[1]])) {
+                                        $this->rtcpFbCache[$matches[1]] = [];
                                     }
 
-                                    array_push($this->rtcp_fb_cache[$matches[1]], $matches);
+                                    array_push($this->rtcpFbCache[$matches[1]], $matches);
                                 }
                             }
 
@@ -319,8 +319,8 @@ class SDPtoJingle
                         // http://xmpp.org/extensions/xep-0320.html
                         case 'fingerprint':
                             if ($this->content == null) {
-                                $this->global_fingerprint['fingerprint'] = $matches[2];
-                                $this->global_fingerprint['hash']        = $matches[1];
+                                $this->globalFingerprint['fingerprint'] = $matches[2];
+                                $this->globalFingerprint['hash']        = $matches[1];
                             } else {
                                 $fingerprint = $this->transport->addChild('fingerprint', $matches[2]);
                                 $fingerprint->addAttribute('xmlns', "urn:xmpp:jingle:apps:dtls:0");

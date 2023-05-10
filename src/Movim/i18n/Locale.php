@@ -8,7 +8,7 @@ namespace Movim\i18n;
 
 class Locale
 {
-    private static $_instance;
+    private static $instance;
     public $translations;
     public $language;
     public $hash = [];
@@ -87,11 +87,11 @@ class Locale
 
     public static function start()
     {
-        if (!isset(self::$_instance)) {
-            self::$_instance = new self();
+        if (!isset(self::$instance)) {
+            self::$instance = new self();
         }
 
-        return self::$_instance;
+        return self::$instance;
     }
 
     /**

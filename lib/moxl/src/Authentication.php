@@ -10,15 +10,15 @@ class Authentication
     private $_mechanism;
     private $_type;
 
-    protected static $_instance;
+    protected static $instance;
 
     public static function getInstance()
     {
-        if (!self::$_instance) {
-            self::$_instance = new Authentication;
+        if (!self::$instance) {
+            self::$instance = new Authentication;
         }
 
-        return self::$_instance;
+        return self::$instance;
     }
 
     public function choose($mechanisms)

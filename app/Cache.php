@@ -10,15 +10,15 @@ class Cache extends Model
 
     public $incrementing = false;
     protected $fillable = ['user_id', 'name'];
-    private static $_instance;
+    private static $instance;
 
     public static function instanciate()
     {
-        if (!is_object(self::$_instance)) {
-            self::$_instance = new Cache;
+        if (!is_object(self::$instance)) {
+            self::$instance = new Cache;
         }
 
-        return self::$_instance;
+        return self::$instance;
     }
 
     /**
