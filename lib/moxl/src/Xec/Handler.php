@@ -14,8 +14,10 @@ class Handler
 
         $session = Session::start();
 
-        if ($id !== ''
-        && $session->get($id) !== null) {
+        if (
+            $id !== ''
+            && $session->get($id) !== null
+        ) {
             \Utils::info("Handler : Memory instance found for {$id}");
 
             $action = $session->get($id);
@@ -41,7 +43,7 @@ class Handler
                     $message = (string)$error->text;
                 }
 
-                \Utils::info('Handler : '.get_class($action).' '.$id.' - '.$errorid);
+                \Utils::info('Handler : ' . get_class($action) . ' ' . $id . ' - ' . $errorid);
 
                 $propagate = true;
 
@@ -53,7 +55,7 @@ class Handler
 
                 // We also call a global error handler
                 if (method_exists($action, 'error') && $propagate == true) {
-                    \Utils::info('Handler : Global error - '.$id.' - '.$errorid);
+                    \Utils::info('Handler : Global error - ' . $id . ' - ' . $errorid);
                     $action->method('error');
                     $action->error($errorid, $message);
                 }
@@ -83,7 +85,8 @@ class Handler
 
         foreach ($s->attributes() as $key => $value) {
             if (($key == 'xmlns' && $ns == '')
-            || 'xmlns:' === substr($key, 0, 6)) {
+                || 'xmlns:' === substr($key, 0, 6)
+            ) {
                 $ns = $value;
             }
         }
@@ -92,13 +95,13 @@ class Handler
 
         if ($s->items && $s->items->attributes()->node) {
             $node = (string)$s->items->attributes()->node;
-            $hash = md5($name.$ns.$node);
-            \Utils::info('Handler : Searching a payload for "'.$name . ':' . $ns . ' [' . $node . ']", "'.$hash.'"');
+            $hash = md5($name . $ns . $node);
+            \Utils::info('Handler : Searching a payload for "' . $name . ':' . $ns . ' [' . $node . ']", "' . $hash . '"');
             $handledFirst = Handler::searchPayload($hash, $s, $sparent);
         }
 
-        $hash = md5($name.$ns);
-        \Utils::info('Handler : Searching a payload for "'.$name . ':' . $ns . '", "'.$hash.'"');
+        $hash = md5($name . $ns);
+        \Utils::info('Handler : Searching a payload for "' . $name . ':' . $ns . '", "' . $hash . '"');
         $handledSecond = Handler::searchPayload($hash, $s, $sparent);
 
         if ($name == 'iq' && !$handledFirst && !$handledSecond) {
@@ -182,11 +185,11 @@ class Handler
         ];
 
         if (isset($hashToClass[$hash])) {
-            $classname = '\\Moxl\\Xec\\Payload\\'.$hashToClass[$hash];
+            $classname = '\\Moxl\\Xec\\Payload\\' . $hashToClass[$hash];
 
-            $payload_class = new $classname;
-            $payload_class->prepare($s, $sparent);
-            $payload_class->handle($s, $sparent);
+            $payloadClass = new $classname;
+            $payloadClass->prepare($s, $sparent);
+            $payloadClass->handle($s, $sparent);
 
             return true;
         }
@@ -199,7 +202,7 @@ class Handler
      * A simple function to format a error-string-text to a
      * camelTypeText
      */
-    public static function formatError($string)
+    public static function formatError(string $string): string
     {
         $words = explode('-', $string);
         $f = 'error';

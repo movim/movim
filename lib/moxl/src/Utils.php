@@ -88,7 +88,7 @@ class Utils
 
         asort($support);
         foreach ($support as $sup) {
-            $s = $s.$sup.'<';
+            $s = $s . $sup . '<';
         }
 
         return base64_encode(sha1(mb_convert_encoding($s, 'UTF-8', 'ISO-8859-1'), true));
@@ -104,13 +104,13 @@ class Utils
 
         for ($i = 0; $i < strlen($s); $i++) {
             if ($s[$i] === '\\') {
-                if (in_array($s[$i+1].$s[$i+2], $escapes)) {
+                if (in_array($s[$i + 1] . $s[$i + 2], $escapes)) {
                     $result .= '\\5c';
                 } else {
                     $result .= $s[$i];
                 }
             } elseif (in_array($s[$i], $chars)) {
-                $result .= '\\'.dechex(ord($s[$i]));
+                $result .= '\\' . dechex(ord($s[$i]));
             } else {
                 $result .= $s[$i];
             }

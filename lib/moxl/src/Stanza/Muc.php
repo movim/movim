@@ -38,22 +38,22 @@ class Muc
 
     public static function active($to)
     {
-        Message::maker($to, false, false, 'groupchat', 'active');
+        Message::maker($to, type: 'groupchat', chatstates: 'active');
     }
 
     public static function inactive($to)
     {
-        Message::maker($to, false, false, 'groupchat', 'inactive');
+        Message::maker($to, type: 'groupchat', chatstates: 'inactive');
     }
 
     public static function composing($to)
     {
-        Message::maker($to, false, false, 'groupchat', 'composing');
+        Message::maker($to, type: 'groupchat', chatstates: 'composing');
     }
 
     public static function paused($to)
     {
-        Message::maker($to, false, false, 'groupchat', 'paused');
+        Message::maker($to, type: 'groupchat', chatstates: 'paused');
     }
 
     public static function setSubject($to, $subject)

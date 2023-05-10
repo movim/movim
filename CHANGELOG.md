@@ -10,6 +10,7 @@ v0.22 (trunk)
  * Add a same-origin check for non-internal connected Websockets
  * Fix #1160 Disable OMEMO completely for an account
  * Fix #1189 Add missed and refused calls events
+ * Upgrade to PHP 8.1+
 
 v0.21.1
 ---------------------------

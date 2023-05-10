@@ -5,7 +5,7 @@ namespace Moxl;
 class Parser
 {
     private $parser;
-    private $depth = 0;
+    private int $depth = 0;
     private $node = null;
     private $handler = null;
     private $raw = false;
@@ -38,10 +38,12 @@ class Parser
         $this->node = $this->handler = null;
     }
 
-    public function parse($data, $end = false)
+    public function parse(string $data, bool $end = false): int
     {
-        if ('<?xml' === substr($data, 0, 5)
-        || '<stream:stream' === substr($data, 0, 14)) {
+        if (
+            '<?xml' === substr($data, 0, 5)
+            || '<stream:stream' === substr($data, 0, 14)
+        ) {
             $this->reset();
         }
 
@@ -49,7 +51,7 @@ class Parser
         return xml_parse($this->parser, $data, $end);
     }
 
-    private function start($parser, $name, $attrs)
+    private function start(\XMLParser $parser, string $name, array $attrs)
     {
         $name = str_replace(':', '', $name);
 
@@ -57,10 +59,10 @@ class Parser
             $this->node = $this->handler = simplexml_load_string("<$name></$name>", 'SimpleXMLElement', LIBXML_COMPACT | LIBXML_PARSEHUGE);
         } elseif ($this->depth > 1) {
             if ($this->raw != false) {
-                $this->handler[0] .= '<'.$name.' ';
+                $this->handler[0] .= '<' . $name . ' ';
                 if ($this->raw <= $this->depth) {
                     foreach ($attrs as $name => $value) {
-                        $this->handler[0] .= $name."='".$value."' ";
+                        $this->handler[0] .= $name . "='" . $value . "' ";
                     }
                 }
                 $this->handler[0] .= '>';
@@ -72,7 +74,7 @@ class Parser
         if (isset($this->handler) && $this->raw == false) {
             foreach ($attrs as $name => $value) {
                 if ('xmlns:' === substr($name, 0, 6)) {
-                    $name = 'xmlns:'.$name;
+                    $name = 'xmlns:' . $name;
                 }
                 if ($value === 'http://www.w3.org/1999/xhtml') {
                     $this->raw = $this->depth;
@@ -84,19 +86,23 @@ class Parser
         $this->depth++;
     }
 
-    private function end($parser, $name)
+    private function end(\XMLParser $parser, string $name)
     {
         $name = str_replace(':', '', $name);
 
         $this->depth--;
 
-        if ($this->raw != false
-        && $this->depth > $this->raw) {
-            $this->handler[0] .= '</'.$name.'>';
+        if (
+            $this->raw != false
+            && $this->depth > $this->raw
+        ) {
+            $this->handler[0] .= '</' . $name . '>';
         }
 
-        if ($this->raw != false
-        && $this->depth == $this->raw) {
+        if (
+            $this->raw != false
+            && $this->depth == $this->raw
+        ) {
             $this->raw = false;
         }
 
@@ -107,7 +113,7 @@ class Parser
         }
     }
 
-    private function contents($parser, $data)
+    private function contents(\XMLParser $parser, string $data)
     {
         if (isset($this->handler)) {
             $this->handler[0] .= (string)htmlentities($data, ENT_XML1, 'UTF-8', false);

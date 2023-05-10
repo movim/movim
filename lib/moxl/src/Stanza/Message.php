@@ -113,7 +113,7 @@ class Message
             $body = $dom->createElementNS('http://www.w3.org/1999/xhtml', 'body');
 
             $dom2 = new \DOMDocument('1.0', 'UTF-8');
-            $dom2->loadXml('<root>'.$html.'</root>');
+            $dom2->loadXml('<root>' . $html . '</root>');
             $bar = $dom2->documentElement->firstChild; // we want to import the bar tree
             $body->appendChild($dom->importNode($bar, true));
 
@@ -146,8 +146,10 @@ class Message
             }
         }
 
-        if (!in_array($receipts, ['received', 'displayed'])
-        && $chatstates == 'active') {
+        if (
+            !in_array($receipts, ['received', 'displayed'])
+            && $chatstates == 'active'
+        ) {
             $markable = $dom->createElementNS('urn:xmpp:chat-markers:0', 'markable');
             $root->appendChild($markable);
         }
@@ -263,59 +265,115 @@ class Message
         \Moxl\API::request($dom->saveXML($dom->documentElement));
     }
 
-    public static function message($to, $content = false, $html = false, $id = false,
-        $replace = false, $file = false, $parentId = false, array $reactions = [],
-        $originId = false, $threadId = false, $replyId = false, $replyTo = false,
-        $replyQuotedBodyLength = 0, ?MessageOmemoHeader $messageOMEMO = null)
-    {
-        self::maker($to, $content, $html, 'chat', 'active', 'request', $id, $replace,
-            $file, false, $parentId, $reactions, $originId, $threadId, $replyId,
-            $replyTo, $replyQuotedBodyLength, $messageOMEMO);
+    public static function message(
+        $to,
+        $content = false,
+        $html = false,
+        $id = false,
+        $replace = false,
+        $file = false,
+        $parentId = false,
+        array $reactions = [],
+        $originId = false,
+        $threadId = false,
+        $replyId = false,
+        $replyTo = false,
+        $replyQuotedBodyLength = 0,
+        ?MessageOmemoHeader $messageOMEMO = null
+    ) {
+        self::maker(
+            $to,
+            $content,
+            $html,
+            'chat',
+            'active',
+            'request',
+            $id,
+            $replace,
+            $file,
+            false,
+            $parentId,
+            $reactions,
+            $originId,
+            $threadId,
+            $replyId,
+            $replyTo,
+            $replyQuotedBodyLength,
+            $messageOMEMO
+        );
     }
 
-    public static function simpleMessage($to, $content = false, $html = false, $id = false,
-    $replace = false, $file = false, $parentId = false, array $reactions = [],
-    $originId = false, $threadId = false, $replyId = false, $replyTo = false,
-    $replyQuotedBodyLength = 0, ?MessageOmemoHeader $messageOMEMO = null)
-    {
-        self::maker($to, $content, $html, 'chat', false, false, $id, $replace,
-            $file, false, $parentId, $reactions, $originId, $threadId, $replyId,
-            $replyTo, $replyQuotedBodyLength, $messageOMEMO);
+    public static function simpleMessage(
+        $to,
+        $content = false,
+        $html = false,
+        $id = false,
+        $replace = false,
+        $file = false,
+        $parentId = false,
+        array $reactions = [],
+        $originId = false,
+        $threadId = false,
+        $replyId = false,
+        $replyTo = false,
+        $replyQuotedBodyLength = 0,
+        ?MessageOmemoHeader $messageOMEMO = null
+    ) {
+        self::maker(
+            $to,
+            $content,
+            $html,
+            'chat',
+            false,
+            false,
+            $id,
+            $replace,
+            $file,
+            false,
+            $parentId,
+            $reactions,
+            $originId,
+            $threadId,
+            $replyId,
+            $replyTo,
+            $replyQuotedBodyLength,
+            $messageOMEMO
+        );
     }
 
     public static function received($to, $id, $type = 'chat')
     {
-        self::maker($to, false, false, $type, false, 'received', $id);
+        self::maker($to, type: $type, receipts: 'received', id: $id);
     }
 
     public static function displayed($to, $id, $type = 'chat')
     {
-        self::maker($to, false, false, $type, false, 'displayed', $id);
+        self::maker($to, type: $type, receipts: 'displayed', id: $id);
     }
 
     public static function invite($to, $id, $invite)
     {
-        self::maker($to, false, false, false, false, false, $id, false, false, $invite);
+        self::maker($to, id: $id, invite: $invite);
     }
 
     public static function active($to)
     {
-        self::maker($to, false, false, 'chat', 'active');
+        self::maker($to, type: 'chat', chatstates: 'active');
     }
 
     public static function inactive($to)
     {
-        self::maker($to, false, false, 'chat', 'inactive');
+        self::maker($to, type: 'chat', chatstates: 'inactive');
     }
 
     public static function composing($to)
     {
-        self::maker($to, false, false, 'chat', 'composing');
+        self::maker($to, type: 'chat', chatstates: 'composing');
     }
 
     public static function paused($to)
     {
-        self::maker($to, false, false, 'chat', 'paused');
+        self::maker($to, type: 'chat', chatstates: 'paused');
     }
 
     public static function retract(string $to, string $originId)
