@@ -772,11 +772,11 @@ var Chat = {
                 audio.currentTime = (audio.duration || 0) * pct;
             }
 
-            progressBar.onmousedown = function() {
+            progressBar.onmousedown = function () {
                 mouseDownOnSlider = true;
             }
 
-            progressBar.onmouseup = function() {
+            progressBar.onmouseup = function () {
                 mouseDownOnSlider = false;
             }
 
@@ -850,7 +850,7 @@ var Chat = {
             });
 
             // Try to preload the OMEMO messages from the cache
-            if (ids.length > 2) {
+            if (ids.length > 2 && OMEMO_ENABLED) {
                 await ChatOmemoDB.loadMessagesByIds(ids);
             }
 
@@ -1056,7 +1056,7 @@ var Chat = {
         }
 
         // OMEMO handling
-        if (data.omemoheader && data.encrypted) {
+        if (data.omemoheader && data.encrypted && OMEMO_ENABLED) {
             p.innerHTML = data.omemoheader.payload.substring(0, data.omemoheader.payload.length / 2);
             ChatOmemo.decrypt(data).then(plaintext => {
                 let refreshP = document.querySelector('#id' + data.id + ' p.encrypted');
@@ -1385,7 +1385,7 @@ var Chat = {
 
 
         var playPauseButton = document.createElement('span');
-        playPauseButton.classList.add('button', 'flat','gray');
+        playPauseButton.classList.add('button', 'flat', 'gray');
         playPauseButton.classList.add('play_pause');
         var i = document.createElement('i');
         i.className = 'material-icons';

@@ -419,7 +419,7 @@
         <div class="tabelem spin" title="{$c->__('general.links')}" id="room_links"></div>
     {/if}
 
-    {if="$hasfingerprints"}
+    {if="$hasfingerprints && $c->getUser()->hasOMEMO()"}
         <div class="tabelem spin" title="{$c->__('omemo.fingerprints_title')}" id="room_omemo_fingerprints"></div>
     {/if}
 </section>

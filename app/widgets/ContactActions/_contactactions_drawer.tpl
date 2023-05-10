@@ -197,7 +197,7 @@
         </div>
     {/if}
 
-    {if="$hasfingerprints"}
+    {if="$hasfingerprints && $c->getUser()->hasOMEMO()"}
         <div class="tabelem spin" title="{$c->__('omemo.fingerprints_title')}" id="omemo_fingerprints"></div>
     {/if}
 
