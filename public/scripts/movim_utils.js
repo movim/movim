@@ -199,6 +199,16 @@ var MovimUtils = {
         let el = document.querySelector(element);
         if (el) el.classList.remove(classname);
     },
+    setDataItem: function (element, key, value) {
+        let el = document.querySelector(element);
+        if (el) {
+            if (value) {
+                el.dataset[key] = value;
+            } else {
+                delete el.dataset[key];
+            }
+        }
+    },
     textareaAutoheight: function (textbox) {
         if (textbox != null) {
             var val = MovimUtils.htmlEscape(textbox.value).replace(/\n/g, '<br>');

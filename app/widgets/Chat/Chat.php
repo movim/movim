@@ -100,14 +100,7 @@ class Chat extends \Movim\Widget\Base
 
     public function onCounter($count)
     {
-        $this->rpc('MovimTpl.fill', '#chatheadercounter', $this->prepareChatCounter($count));
-    }
-
-    private function prepareChatCounter(int $count = 0)
-    {
-        $view = $this->tpl();
-        $view->assign('count', $count);
-        return $view->draw('_chat_counter');
+        $this->rpc('MovimUtils.setDataItem', '#chatheadercounter', 'counter', $count);
     }
 
     public function onNotificationCounterClear($params)
@@ -1575,12 +1568,7 @@ class Chat extends \Movim\Widget\Base
                 ->first()
         );
         $view->assign('anon', false);
-        $view->assign(
-            'counter',
-            $this->prepareChatCounter(
-                $this->user->unreads(null, false, true)
-            )
-        );
+        $view->assign('counter', $this->user->unreads(null, false, true));
 
         if ($muc) {
             $view->assign('conference', $this->user->session->conferences()

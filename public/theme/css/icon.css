@@ -76,8 +76,8 @@ span.icon.bubble img:not(.emoji) {
     border-radius: 5rem;
 }
 
-span.icon.bubble > i,
-span.icon.bubble > a > i {
+span.icon.bubble>i,
+span.icon.bubble>a>i {
     font-size: 3rem;
     line-height: 5rem;
 }
@@ -85,7 +85,8 @@ span.icon.bubble > a > i {
 ul.list li span.icon.small {
     height: 4rem;
     line-height: 3.5rem;
-    font-size: 0; /* Only display the first letter */
+    font-size: 0;
+    /* Only display the first letter */
     flex: 0 0 4rem;
     margin-left: 1rem;
     margin-right: 1rem;
@@ -96,27 +97,36 @@ ul.list li span.icon.small img.emoji {
     height: 4rem;
 }
 
-ul.list li span.icon.small:not(.bubble) > i {
+ul.list li span.icon.small:not(.bubble)>i {
     font-size: 3rem;
     line-height: 3rem;
 }
 
 span.icon.small.bubble:first-letter,
-span.icon.small.bubble > i,
-span.icon.small.bubble > a > i {
+span.icon.small.bubble>i,
+span.icon.small.bubble>a>i {
     font-size: 2.25rem;
     line-height: 4rem;
 }
 
+span.icon.bubble.status:not(.composing):not([data-counter]) {
+    mask-image: url(../img/avatar_mask.svg);
+    mask-size: 100%;
+    border-radius: 0;
+}
+
 span.icon span.counter,
+span.icon[data-counter]:after,
 span.icon.composing:after,
 span.icon.status:after {
     content: '';
     display: block;
-    width: 2rem;
+    min-width: 2rem;
     height: 2rem;
+    font-size: 1.5rem;
+    line-height: 2rem;
     right: calc(50% - 2.75rem);
-    top: 3rem;
+    top: calc(50% + 0.5rem);
     position: absolute;
     transition: border-radius 0.15s ease-in-out;
     border-radius: 2em;
@@ -124,10 +134,37 @@ span.icon.status:after {
     box-shadow: var(--elevation-0);
 }
 
+span.icon span.counter,
+span.icon[data-counter]:after,
+span.icon.composing:after {
+    padding: 0 0.25rem;
+    min-width: 1.5rem;
+    box-shadow: var(--elevation-1);
+}
+
+/* Counter */
+
+span.icon[data-counter]:after {
+    border-radius: 0.25rem;
+    content: attr(data-counter);
+}
+
+/* Composing */
+
+span.icon.composing:after {
+    content: '…';
+    line-height: 1rem;
+    z-index: 1;
+    font-size: 2rem;
+    font-weight: bold;
+    border-radius: 0.25rem;
+    animation: fadetext 1.5s infinite;
+}
+
 span.icon.status.location:after {
     content: 'place';
     font-family: 'Material Icons';
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     line-height: 2rem;
     text-align: center;
 }
@@ -138,34 +175,32 @@ span.icon.small.status:after {
 }
 
 span.icon.small span.counter,
-span.icon.small.composing:after,
-span.icon.small.status:after {
+span.icon.small.composing:after {
     top: 2.25rem;
 }
 
-main ul li .control > i {
+span.icon.small.status:after {
+    top: 2.4rem;
+    min-width: 1.5rem;
+    height: 1.5rem;
+    right: calc(50% - 2.1rem);
+}
+
+main ul li .control>i {
     margin-left: 0;
 }
 
 /* Counter */
 
+span.icon span.counter {
+    border-radius: 0.25rem;
+}
+
 span.icon span.counter:empty {
     display: none;
 }
 
-span.icon.composing:after,
-span.icon span.counter {
-    z-index: 1;
-    font-size: 1.5rem;
-    line-height: 2rem;
-    border-radius: 0.5rem;
-    width: auto;
-    min-width: 1.5rem;
-    padding: 0 0.25rem;
-    height: auto;
-}
-
-span.icon span.counter > i {
+span.icon span.counter>i {
     margin-left: 0.1rem;
     margin-right: 0.1rem;
 }
@@ -191,16 +226,4 @@ p span.icon.tiny {
 
 p span.icon.tiny:not(:first-child) {
     margin-left: 0.75rem;
-}
-
-/* Composing */
-
-span.icon.composing:after {
-    content: '…';
-    line-height: 1rem;
-    z-index: 1;
-    font-size: 2rem;
-    height: 2rem;
-    font-weight: bold;
-    animation: fadetext 1.5s infinite;
 }

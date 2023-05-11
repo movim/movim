@@ -16,24 +16,21 @@
         <span class="primary icon bubble
             {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}
             {if="$contact->locationDistance"} location{/if}
-        ">
+        "
+        {if="$count > 0"}data-counter="{$count}"{/if}
+        >
             <img src="{$url}">
-            {if="$count > 0"}
-                <span class="counter">{$count}</span>
-            {/if}
         </span>
     {else}
         <span class="primary icon bubble color {$contact->jid|stringToColor}
             {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}
             {if="$contact->locationDistance"} location{/if}
-        ">
+        "
+        {if="$count > 0"}data-counter="{$count}"{/if}>
             {if="$roster"}
                 {$roster->truename|firstLetterCapitalize}
             {else}
                 {$contact->truename|firstLetterCapitalize}
-            {/if}
-            {if="$count > 0"}
-                <span class="counter">{$count}</span>
             {/if}
         </span>
     {/if}

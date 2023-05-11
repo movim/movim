@@ -12,7 +12,7 @@ class Navigation extends Base
 
     public function onCounter($count)
     {
-        $this->rpc('MovimTpl.fill', '#chatcounter', $this->prepareChatButton($count));
+        $this->rpc('MovimUtils.setDataItem', '#chatcounter', 'counter', $count);
     }
 
     public function ajaxHttpRefresh()
@@ -23,18 +23,6 @@ class Navigation extends Base
     public function display()
     {
         $this->view->assign('page', $this->_view);
-        $this->view->assign(
-            'chatCounter',
-            $this->prepareChatButton(
-                $this->user->unreads(null, false, true)
-            )
-        );
-    }
-
-    private function prepareChatButton(int $count = 0)
-    {
-        $view = $this->tpl();
-        $view->assign('count', $count);
-        return $view->draw('_navigation_chat_counter');
+        $this->view->assign('chatCounter', $this->user->unreads(null, false, true));
     }
 }

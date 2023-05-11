@@ -11,6 +11,7 @@ v0.22 (trunk)
  * Fix #1160 Disable OMEMO completely for an account
  * Fix #1189 Add missed and refused calls events
  * Upgrade to PHP 8.1+
+ * Cleanup and refactor the icon counters and status CSS
 
 v0.21.1
 ---------------------------

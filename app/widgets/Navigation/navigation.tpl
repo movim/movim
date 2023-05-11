@@ -40,10 +40,8 @@
         class="on_desktop {if="$page == 'chat'"}active{/if}"
         title="{$c->__('page.chats')}"
     >
-        <span class="primary icon" id="chatcounter">
-            {autoescape="off"}
-                {$chatCounter}
-            {/autoescape}
+        <span class="primary icon" id="chatcounter" {if="$chatCounter > 0"}data-counter="{$chatCounter}"{/if}>
+            <i class="material-icons">forum</i>
         </span>
         <div>
             <p class="normal">{$c->__('page.chats')}</p>

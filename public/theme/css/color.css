@@ -102,6 +102,7 @@ main > header a,
 .button.color,
 .color,
 span.icon span.counter,
+span.icon[data-counter]:after,
 span.icon.composing:after,
 form > div .radio > input[type="radio"]:checked + label {
     border-color: rgb(var(--movim-main));
@@ -150,8 +151,8 @@ span.icon:not(.composing).status.xa:after,
 .color.indigo   { color: white; background-color: #3F51B5; border-color: #3F51B5 }
 .color.facebook,
 .color.blue     { color: white; background-color: #2196F3; border-color: #2196F3 }
-span.icon:not(.composing).status.chat:after,
-span.icon:not(.composing).status.online:after,
+span.icon:not(.composing):not([data-counter]).status.chat:after,
+span.icon:not(.composing):not([data-counter]).status.online:after,
 .color.xmpp,
 .color.green    { color: white; background-color: #689F38; border-color: #689F38 }
 .color.orange   { color: white; background-color: #FF9800; border-color: #FF9800 }

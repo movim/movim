@@ -6,10 +6,9 @@
 
     <ul class="list middle">
         <li>
-            <span class="primary icon active" id="chatheadercounter" onclick="Chat.get()">
-                {autoescape="off"}
-                    {$counter}
-                {/autoescape}
+            <span class="primary icon active" id="chatheadercounter" onclick="Chat.get()"
+                {if="$counter > 0"}data-counter="{$counter}"{/if}>
+                <i class="material-icons">arrow_back</i>
             </span>
 
             {if="$curl"}
@@ -203,10 +202,9 @@
 {else}
     <ul class="list middle fill">
         <li id="chat_header">
-            <span class="primary icon active" id="chatheadercounter" onclick="Chat.get()">
-                {autoescape="off"}
-                    {$counter}
-                {/autoescape}
+            <span class="primary icon active" id="chatheadercounter" onclick="Chat.get()"
+                {if="$counter > 0"}data-counter="{$counter}"{/if}>
+                <i class="material-icons">arrow_back</i>
             </span>
 
             {$url = $contact->getPhoto()}
