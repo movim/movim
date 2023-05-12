@@ -140,9 +140,9 @@ ul li.action > form > div.action,
 .button.bgray,  .icon.bgray  , span.resource.bgray   { color: #607d8b }
 
 .color          { color: white; background-color: #607D8B; border-color: #607D8B }
-span.icon:not(.composing).status.dnd:after,
+span.icon:not(.composing):not([data-counter]).status.dnd:after,
 .color.red      { color: white; background-color: var(--movim-red); border-color: var(--movim-red) }
-span.icon:not(.composing).status.xa:after,
+span.icon:not(.composing):not([data-counter]).status.xa:after,
 .color.slack,
 .color.discord,
 .color.purple   { color: white; background-color: #9C27B0; border-color: #9C27B0 }
@@ -156,9 +156,9 @@ span.icon:not(.composing):not([data-counter]).status.online:after,
 .color.xmpp,
 .color.green    { color: white; background-color: #689F38; border-color: #689F38 }
 .color.orange   { color: white; background-color: #FF9800; border-color: #FF9800 }
-span.icon:not(.composing).status.away:after,
+span.icon:not(.composing):not([data-counter]).status.away:after,
 .color.yellow   { color: white; background-color: #FDD835; border-color: #FDD835 }
-span.icon:not(.composing).status.server_error:after,
+span.icon:not(.composing):not([data-counter]).status.server_error:after,
 .color.brown    { color: white; background-color: #795548; border-color: #795548 }
 .color.gray     { color: white; background-color: #9E9E9E; border-color: #9E9E9E }
 .color.black    { color: white; background-color: #000000; border-color: #000000 }
