@@ -1329,7 +1329,7 @@ var Chat = {
         div.setAttribute('class', 'file');
 
         if (file.name) {
-            if (file.type == 'audio/ogg' || file.type == 'audio/opus') {
+            if (file.type == 'audio/ogg' || file.type == 'audio/opus' || file.type == 'audio/mpeg') {
                 div.appendChild(Chat.getAudioPlayer(file));
             } else if (file.type == 'video/webm' || file.type == 'video/mp4') {
                 div.appendChild(Chat.getVideoPlayer(file));
@@ -1337,7 +1337,7 @@ var Chat = {
 
             // Tenor implementation
             if (file.host && file.host == 'media.tenor.com'
-                || file.type == 'audio/ogg' || file.type == 'audio/opus') {
+                || file.type == 'audio/ogg' || file.type == 'audio/opus' || file.type == 'audio/mpeg') {
                 return div;
             }
 
