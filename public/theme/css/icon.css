@@ -210,7 +210,7 @@ main ul li .control>i {
 /* Counter */
 
 span.icon span.counter {
-    border-radius: 0.25rem;
+    border-radius: 0.5rem;
 }
 
 span.icon span.counter:empty {
