@@ -109,10 +109,31 @@ span.icon.small.bubble>a>i {
     line-height: 4rem;
 }
 
-span.icon.bubble.status:not(.composing):not([data-counter]) {
-    mask-image: url(../img/avatar_mask.svg);
+span.icon.bubble.status {
     mask-size: 100%;
     border-radius: 0;
+}
+
+span.icon.bubble.status:not(.composing):not([data-counter]):not(.location) {
+    mask-image: url(../img/avatar_mask.svg);
+}
+
+span.icon.bubble.status.dnd:not(.composing):not([data-counter]):not(.location) {
+    mask-image: url(../img/avatar_mask_dnd.svg);
+}
+
+span.icon.bubble.status.away:not(.composing):not([data-counter]):not(.location) {
+    mask-image: url(../img/avatar_mask_away.svg);
+}
+
+span.icon.bubble.status.xa:not(.composing):not([data-counter]):not(.location) {
+    mask-image: url(../img/avatar_mask_xa.svg);
+}
+
+/* Location */
+
+span.icon.bubble.status.location {
+    mask-image: url(../img/avatar_mask_location.svg);
 }
 
 span.icon span.counter,
@@ -159,14 +180,6 @@ span.icon.composing:after {
     font-weight: bold;
     border-radius: 0.25rem;
     animation: fadetext 1.5s infinite;
-}
-
-span.icon.status.location:after {
-    content: 'place';
-    font-family: 'Material Icons';
-    font-size: 1.2rem;
-    line-height: 2rem;
-    text-align: center;
 }
 
 /* Weird bug */
