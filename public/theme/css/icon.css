@@ -153,7 +153,7 @@ span.icon.status:after {
     right: calc(50% - 2.75rem);
     top: calc(50% + 0.5rem);
     position: absolute;
-    transition: border-radius 0.15s ease-in-out;
+    transition: border-radius 0.25s var(--standard-easing);
     border-radius: 2em;
     background-color: #DDD;
     box-shadow: var(--elevation-0);
@@ -170,7 +170,7 @@ span.icon.composing:after {
 /* Counter */
 
 span.icon[data-counter]:after {
-    border-radius: 0.25rem;
+    border-radius: 0.5rem;
     content: attr(data-counter);
 }
 
@@ -182,7 +182,7 @@ span.icon.composing:after {
     z-index: 1;
     font-size: 2rem;
     font-weight: bold;
-    border-radius: 0.25rem;
+    border-radius: 0.5rem;
     animation: fadetext 1.5s infinite;
 }
 
