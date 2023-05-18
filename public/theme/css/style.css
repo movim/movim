@@ -485,10 +485,16 @@ img.avatar:not([src=""])+.placeholder {
     display: none !important;
 }
 
+.on_mobile_after:after {
+    display: none !important;
+}
+
 @media screen and (max-width: 1024px) {
-    .on_mobile {
+    .on_mobile,
+    .on_mobile_after:after {
         display: inherit !important;
     }
+
 
     .on_mobile.material-icons {
         display: inline !important;
