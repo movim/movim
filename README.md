@@ -3,7 +3,8 @@
 <p align="center"><img src="https://movim.eu/img/128.png"/></p>
 <h3 align="center">Federated blogging and chat platform</h3>
 
-![ci badge](https://github.com/movim/movim/actions/workflows/main.yml/badge.svg?event=push)
+![build ci badge](https://github.com/movim/movim/actions/workflows/main.yml/badge.svg?event=push)
+![docker ci badge](https://github.com/movim/movim/actions/workflows/docker.yml/badge.svg?event=push)
 
 About
 -----
