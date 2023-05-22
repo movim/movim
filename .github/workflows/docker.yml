@@ -15,6 +15,6 @@ jobs:
       - name: Build the docker image
         run: cd movim_docker/ && docker build -t movim:master --build-arg MOVIM_VERSION=master .
       - name: Authenticate to docker hub
-        run: docker login -u movim -p ${{ secrets.DOCKER_HUB_TOKEN }}
+        run: docker login -u edhelas -p ${{ secrets.DOCKER_HUB_TOKEN }}
       - name: push docker image to docker hub
         run: docker push movim/movim:master
