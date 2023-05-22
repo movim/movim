@@ -44,7 +44,7 @@ You can simply follow the GIT tags or download a stable snapshot of this reposit
 
 ### Docker
 
-You can also deploy Movim using our official [Docker Compose repository](https://github.com/movim/movim_docker).
+You can also deploy Movim using our official [Docker Hub repository](https://hub.docker.com/r/movim/movim).
 
 ## Development version (repository)
 
