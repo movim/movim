@@ -277,6 +277,38 @@ class Message extends Model
             }
         }
 
+        if ($this->isMuc()) {
+            $presence = $this->user->session->presences()
+                             ->where('jid', $this->jidfrom)
+                             ->where('resource', $this->resource)
+                             ->where('muc', true)
+                             ->first();
+            // If we know the true JID of the sender, save it
+            if ($presence->mucjid != $this->jidfrom.'/'.$this->resource) {
+                $this->counterpartjid = $presence->mucjid;
+            }
+        }
+
+        if (isset($stanza->addresses) && $stanza->addresses->attributes()->xmlns == 'http://jabber.org/protocol/address') {
+            foreach ($stanza->addresses->address as $address) {
+                if ($address->attributes()->type == 'ofrom' && $address->attributes()->jid) {
+                    $jid = explodeJid($address->attributes()->jid);
+                    if ($jidFrom['server'] == $jid['server']) {
+                        $info = Info::firstOrNew(['server' => $jid['server']]);
+                        if ($info && $info->hasFeature('http://jabber.org/protocol/address')) {
+                            $this->counterpartjid = $address->attributes()->jid;
+                            if ($stanza->body && $stanza->fallback && $stanza->fallback->attributes()->xmlns == 'urn:xmpp:fallback:0'
+                             && $stanza->fallback->attributes()->for == 'http://jabber.org/protocol/address') {
+                                $stanza->body = mb_substr(
+                                    htmlspecialchars_decode($stanza->body, ENT_XML1),
+                                    (int)$stanza->fallback->body->attributes()->end
+                                );
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
         # XEP-0444: Message Reactions
         if (isset($stanza->reactions)
@@ -285,9 +317,10 @@ class Message extends Model
             $parentMessage = $this->resolveParentMessage($this->jidfrom, (string)$stanza->reactions->attributes()->id);
 
             if ($parentMessage) {
-                $resource = $this->isMuc()
+                $resource = $this->counterpartjid
+                    ? $this->counterpartjid : ($this->isMuc()
                     ? $this->resource
-                    : $this->jidfrom;
+                    : $this->jidfrom);
 
                 $parentMessage
                     ->reactions()
@@ -574,7 +607,7 @@ class Message extends Model
     public function resolveColor()
     {
         $this->color = stringToColor(
-            $this->resource . $this->type
+            ($this->isMuc() ? $this->resource : ($this->counterpartjid ? $this->counterpartjid : $this->fromjid)) . $this->type
         );
 
         return $this->color;
