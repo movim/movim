@@ -63,16 +63,16 @@
         },
         {
             "name": "cakephp/core",
-            "version": "4.4.13",
+            "version": "4.4.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/core.git",
-                "reference": "d6490294420e2602e4e65fb8a17f76547c10139e"
+                "reference": "ded708dbeb10a27ffcb4e3a87d1ceec33614ad63"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/core/zipball/d6490294420e2602e4e65fb8a17f76547c10139e",
-                "reference": "d6490294420e2602e4e65fb8a17f76547c10139e",
+                "url": "https://api.github.com/repos/cakephp/core/zipball/ded708dbeb10a27ffcb4e3a87d1ceec33614ad63",
+                "reference": "ded708dbeb10a27ffcb4e3a87d1ceec33614ad63",
                 "shasum": ""
             },
             "require": {
@@ -119,20 +119,20 @@
                 "issues": "https://github.com/cakephp/cakephp/issues",
                 "source": "https://github.com/cakephp/core"
             },
-            "time": "2023-03-08T05:26:37+00:00"
+            "time": "2023-05-16T13:58:50+00:00"
         },
         {
             "name": "cakephp/database",
-            "version": "4.4.13",
+            "version": "4.4.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/database.git",
-                "reference": "38c68bf055c4abdc4783343e47be7bc7a45e7bd7"
+                "reference": "752e3dfa61be055bf9d360880f00ab4ccfea6d1e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/database/zipball/38c68bf055c4abdc4783343e47be7bc7a45e7bd7",
-                "reference": "38c68bf055c4abdc4783343e47be7bc7a45e7bd7",
+                "url": "https://api.github.com/repos/cakephp/database/zipball/752e3dfa61be055bf9d360880f00ab4ccfea6d1e",
+                "reference": "752e3dfa61be055bf9d360880f00ab4ccfea6d1e",
                 "shasum": ""
             },
             "require": {
@@ -175,20 +175,20 @@
                 "issues": "https://github.com/cakephp/cakephp/issues",
                 "source": "https://github.com/cakephp/database"
             },
-            "time": "2023-04-12T06:17:15+00:00"
+            "time": "2023-04-28T21:24:39+00:00"
         },
         {
             "name": "cakephp/datasource",
-            "version": "4.4.13",
+            "version": "4.4.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/datasource.git",
-                "reference": "cb58adb0e6f52f26fa61d03776b07c157e328c1e"
+                "reference": "faec70c6e0f78bb5a1db287f9b46a8b2a6fdbb13"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/datasource/zipball/cb58adb0e6f52f26fa61d03776b07c157e328c1e",
-                "reference": "cb58adb0e6f52f26fa61d03776b07c157e328c1e",
+                "url": "https://api.github.com/repos/cakephp/datasource/zipball/faec70c6e0f78bb5a1db287f9b46a8b2a6fdbb13",
+                "reference": "faec70c6e0f78bb5a1db287f9b46a8b2a6fdbb13",
                 "shasum": ""
             },
             "require": {
@@ -233,11 +233,11 @@
                 "issues": "https://github.com/cakephp/cakephp/issues",
                 "source": "https://github.com/cakephp/datasource"
             },
-            "time": "2022-11-26T11:46:41+00:00"
+            "time": "2023-04-22T08:15:33+00:00"
         },
         {
             "name": "cakephp/utility",
-            "version": "4.4.13",
+            "version": "4.4.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/utility.git",
@@ -1851,16 +1851,16 @@
         },
         {
             "name": "illuminate/bus",
-            "version": "v10.11.0",
+            "version": "v10.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/bus.git",
-                "reference": "0837f5732e2451bbc2f1c5a497d864d5ed2e5a5b"
+                "reference": "ec2250684df1ff5cddc4ae639ec913996a4bd0be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/bus/zipball/0837f5732e2451bbc2f1c5a497d864d5ed2e5a5b",
-                "reference": "0837f5732e2451bbc2f1c5a497d864d5ed2e5a5b",
+                "url": "https://api.github.com/repos/illuminate/bus/zipball/ec2250684df1ff5cddc4ae639ec913996a4bd0be",
+                "reference": "ec2250684df1ff5cddc4ae639ec913996a4bd0be",
                 "shasum": ""
             },
             "require": {
@@ -1900,11 +1900,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2023-04-18T13:44:34+00:00"
+            "time": "2023-05-22T13:32:28+00:00"
         },
         {
             "name": "illuminate/collections",
-            "version": "v10.11.0",
+            "version": "v10.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
@@ -1959,7 +1959,7 @@
         },
         {
             "name": "illuminate/conditionable",
-            "version": "v10.11.0",
+            "version": "v10.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/conditionable.git",
@@ -2005,7 +2005,7 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v10.11.0",
+            "version": "v10.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
@@ -2056,7 +2056,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v10.11.0",
+            "version": "v10.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -2104,16 +2104,16 @@
         },
         {
             "name": "illuminate/database",
-            "version": "v10.11.0",
+            "version": "v10.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "b995b3229bcc4e46cb104960b0b703856ac5a00b"
+                "reference": "cd8e990181f3f2df752c6419f90588f65f010004"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/b995b3229bcc4e46cb104960b0b703856ac5a00b",
-                "reference": "b995b3229bcc4e46cb104960b0b703856ac5a00b",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/cd8e990181f3f2df752c6419f90588f65f010004",
+                "reference": "cd8e990181f3f2df752c6419f90588f65f010004",
                 "shasum": ""
             },
             "require": {
@@ -2169,11 +2169,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2023-05-15T14:54:52+00:00"
+            "time": "2023-05-23T17:43:24+00:00"
         },
         {
             "name": "illuminate/events",
-            "version": "v10.11.0",
+            "version": "v10.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/events.git",
@@ -2228,7 +2228,7 @@
         },
         {
             "name": "illuminate/macroable",
-            "version": "v10.11.0",
+            "version": "v10.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/macroable.git",
@@ -2274,7 +2274,7 @@
         },
         {
             "name": "illuminate/pipeline",
-            "version": "v10.11.0",
+            "version": "v10.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/pipeline.git",
@@ -2322,16 +2322,16 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v10.11.0",
+            "version": "v10.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "bd298d342508bb5161f751b41187f924d606955f"
+                "reference": "2ec8978cc9eda6848389fa623018603ef920067b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/bd298d342508bb5161f751b41187f924d606955f",
-                "reference": "bd298d342508bb5161f751b41187f924d606955f",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/2ec8978cc9eda6848389fa623018603ef920067b",
+                "reference": "2ec8978cc9eda6848389fa623018603ef920067b",
                 "shasum": ""
             },
             "require": {
@@ -2389,7 +2389,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2023-05-16T13:55:32+00:00"
+            "time": "2023-05-23T17:29:20+00:00"
         },
         {
             "name": "league/commonmark",
@@ -5200,16 +5200,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v6.2.10",
+            "version": "v6.2.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "12288d9f4500f84a4d02254d4aa968b15488476f"
+                "reference": "5aa03db8ef0a5457c316ec580e69562d97734c77"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/12288d9f4500f84a4d02254d4aa968b15488476f",
-                "reference": "12288d9f4500f84a4d02254d4aa968b15488476f",
+                "url": "https://api.github.com/repos/symfony/console/zipball/5aa03db8ef0a5457c316ec580e69562d97734c77",
+                "reference": "5aa03db8ef0a5457c316ec580e69562d97734c77",
                 "shasum": ""
             },
             "require": {
@@ -5276,7 +5276,7 @@
                 "terminal"
             ],
             "support": {
-                "source": "https://github.com/symfony/console/tree/v6.2.10"
+                "source": "https://github.com/symfony/console/tree/v6.2.11"
             },
             "funding": [
                 {
@@ -5292,7 +5292,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-04-28T13:37:43+00:00"
+            "time": "2023-05-26T08:16:21+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -5426,16 +5426,16 @@
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v6.2.10",
+            "version": "v6.2.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "49adbb92bcb4e3c2943719d2756271e8b9602acc"
+                "reference": "df27f4191a4292d01fd062296e09cbc8b657cb57"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/49adbb92bcb4e3c2943719d2756271e8b9602acc",
-                "reference": "49adbb92bcb4e3c2943719d2756271e8b9602acc",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/df27f4191a4292d01fd062296e09cbc8b657cb57",
+                "reference": "df27f4191a4292d01fd062296e09cbc8b657cb57",
                 "shasum": ""
             },
             "require": {
@@ -5484,7 +5484,7 @@
             "description": "Defines an object-oriented layer for the HTTP specification",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/http-foundation/tree/v6.2.10"
+                "source": "https://github.com/symfony/http-foundation/tree/v6.2.11"
             },
             "funding": [
                 {
@@ -5500,7 +5500,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-04-18T13:46:08+00:00"
+            "time": "2023-05-19T12:39:53+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -6176,16 +6176,16 @@
         },
         {
             "name": "symfony/translation",
-            "version": "v6.2.8",
+            "version": "v6.2.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "817535dbb1721df8b3a8f2489dc7e50bcd6209b5"
+                "reference": "64113df3e8b009f92fad63014f4ec647e65bc927"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/817535dbb1721df8b3a8f2489dc7e50bcd6209b5",
-                "reference": "817535dbb1721df8b3a8f2489dc7e50bcd6209b5",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/64113df3e8b009f92fad63014f4ec647e65bc927",
+                "reference": "64113df3e8b009f92fad63014f4ec647e65bc927",
                 "shasum": ""
             },
             "require": {
@@ -6254,7 +6254,7 @@
             "description": "Provides tools to internationalize your application",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/translation/tree/v6.2.8"
+                "source": "https://github.com/symfony/translation/tree/v6.2.11"
             },
             "funding": [
                 {
@@ -6270,7 +6270,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-03-31T09:14:44+00:00"
+            "time": "2023-05-19T12:37:14+00:00"
         },
         {
             "name": "symfony/translation-contracts",
