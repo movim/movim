@@ -1266,7 +1266,7 @@ class Chat extends \Movim\Widget\Base
                 && $message->file['size'] <= SMALL_PICTURE_LIMIT * 4
             ) {
                 $message->sticker = [
-                    'thumb' => $this->route('picture', urlencode($message->file['uri'])),
+                    'thumb' => protectPicture($message->file['uri']),
                     'url' => $message->file['uri'],
                     'picture' => true
                 ];
