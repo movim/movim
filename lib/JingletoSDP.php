@@ -121,7 +121,13 @@ class JingletoSDP
                                 $payload->attributes()->id;
 
                             if (isset($payload->attributes()->senders)) {
-                                $sdpMedia .= ' ' . $payload->attributes()->senders;
+                                $sendersToDirection = [
+                                    'initiator' => 'sendonly',
+                                    'responder' => 'recvonly',
+                                    'both' => 'sendrecv',
+                                ];
+
+                                $sdpMedia .= '/' . $sendersToDirection[$payload->attributes()->senders];
                             }
 
                             $sdpMedia .= ' ' . $payload->attributes()->uri;

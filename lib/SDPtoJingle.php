@@ -277,7 +277,13 @@ class SDPtoJingle
                             $rtphdrext->addAttribute('id', $matches[1]);
                             $rtphdrext->addAttribute('uri', $matches[4]);
                             if (isset($matches[3]) && $matches[3] != '') {
-                                $rtphdrext->addAttribute('senders', $matches[3]);
+                                $directionToSenders = [
+                                    'sendonly' => 'initiator',
+                                    'recvonly' => 'responder',
+                                    'sendrecv' => 'both',
+                                ];
+
+                                $rtphdrext->addAttribute('senders', $directionToSenders[$matches[3]]);
                             }
                             break;
 
