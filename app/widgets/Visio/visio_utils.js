@@ -4,14 +4,14 @@ var VisioUtils = {
     audioContext: null,
     remoteAudioContext: null,
 
-    handleAudio: function() {
+    handleAudio: function () {
         VisioUtils.audioContext = new AudioContext();
 
         try {
             var microphone = VisioUtils.audioContext.createMediaStreamSource(
                 Visio.withVideo
-                ? Visio.localVideo.srcObject
-                : Visio.localAudio.srcObject
+                    ? Visio.localVideo.srcObject
+                    : Visio.localAudio.srcObject
             );
         } catch (error) {
             logError(error);
@@ -27,20 +27,20 @@ var VisioUtils = {
 
         microphone.connect(javascriptNode);
         javascriptNode.connect(VisioUtils.audioContext.destination);
-        javascriptNode.onaudioprocess = function(event) {
+        javascriptNode.onaudioprocess = function (event) {
             var inpt = event.inputBuffer.getChannelData(0);
             var instant = 0.0;
             var sum = 0.0;
 
-            for(var i = 0; i < inpt.length; ++i) {
+            for (var i = 0; i < inpt.length; ++i) {
                 sum += inpt[i] * inpt[i];
             }
 
             instant = Math.sqrt(sum / inpt.length);
             VisioUtils.maxLevel = Math.max(VisioUtils.maxLevel, instant);
 
-            var base = (instant/VisioUtils.maxLevel);
-            var level = (base > 0.01) ? base**.3 : 0;
+            var base = (instant / VisioUtils.maxLevel);
+            var level = (base > 0.01) ? base ** .3 : 0;
 
             if (level == 0) {
                 isMuteStep++;
@@ -63,14 +63,14 @@ var VisioUtils = {
         }
     },
 
-    handleRemoteAudio: function() {
+    handleRemoteAudio: function () {
         VisioUtils.remoteAudioContext = new AudioContext();
 
         try {
             var remoteMicrophone = VisioUtils.remoteAudioContext.createMediaStreamSource(
                 Visio.withVideo
-                ? Visio.remoteVideo.srcObject
-                : Visio.remoteAudio.srcObject
+                    ? Visio.remoteVideo.srcObject
+                    : Visio.remoteAudio.srcObject
             );
         } catch (error) {
             logError(error);
@@ -82,26 +82,26 @@ var VisioUtils = {
 
         remoteMicrophone.connect(remoteJavascriptNode);
         remoteJavascriptNode.connect(VisioUtils.remoteAudioContext.destination);
-        remoteJavascriptNode.onaudioprocess = function(event) {
+        remoteJavascriptNode.onaudioprocess = function (event) {
             var inpt = event.inputBuffer.getChannelData(0);
             var instant = 0.0;
             var sum = 0.0;
 
-            for(var i = 0; i < inpt.length; ++i) {
+            for (var i = 0; i < inpt.length; ++i) {
                 sum += inpt[i] * inpt[i];
             }
 
             instant = Math.sqrt(sum / inpt.length);
             VisioUtils.remoteMaxLevel = Math.max(VisioUtils.remoteMaxLevel, instant);
 
-            var base = (instant/VisioUtils.remoteMaxLevel);
-            var level = (base > 0.01) ? base**.3 : 0;
+            var base = (instant / VisioUtils.remoteMaxLevel);
+            var level = (base > 0.01) ? base ** .3 : 0;
 
             remoteMeter.style.borderColor = 'rgba(255, 255, 255, ' + level + ')';
         }
     },
 
-    toggleFullScreen: function() {
+    toggleFullScreen: function () {
         var button = document.querySelector('#toggle_fullscreen i');
 
         if (!document.fullscreenElement) {
@@ -119,7 +119,7 @@ var VisioUtils = {
         }
     },
 
-    toggleAudio: function() {
+    toggleAudio: function () {
         var button = document.querySelector('#toggle_audio i');
         var rtc = Visio.pc.getSenders().find(rtc => rtc.track && rtc.track.kind == 'audio');
         var mid = Visio.pc.getTransceivers().filter(t => t.sender.track.id == rtc.track.id)[0].mid;
@@ -135,11 +135,11 @@ var VisioUtils = {
         }
     },
 
-    toggleDtmf: function() {
+    toggleDtmf: function () {
         document.querySelector('#visio #dtmf').classList.toggle('hide');
     },
 
-    insertDtmf: function(s) {
+    insertDtmf: function (s) {
         var rtc = Visio.pc.getSenders().find(rtc => rtc.track && rtc.track.kind == 'audio');
         if (!rtc) return;
         rtc.dtmf.insertDTMF(s);
@@ -149,7 +149,7 @@ var VisioUtils = {
         document.querySelector('#dtmf p.dtmf').innerHTML += s;
     },
 
-    toggleVideo: function() {
+    toggleVideo: function () {
         var button = document.querySelector('#toggle_video i');
         var rtc = Visio.pc.getSenders().find(rtc => rtc.track && rtc.track.kind == 'video');
         var mid = Visio.pc.getTransceivers().filter(t => t.sender.track.id == rtc.track.id)[0].mid;
@@ -169,17 +169,17 @@ var VisioUtils = {
         }
     },
 
-    setRemoteAudioState: function(icon) {
+    setRemoteAudioState: function (icon) {
         var voice = document.querySelector('#remote_state i.voice');
         voice.innerHTML = icon;
     },
 
-    setRemoteVideoState: function(icon) {
+    setRemoteVideoState: function (icon) {
         var webcam = document.querySelector('#remote_state i.webcam');
         webcam.innerHTML = icon;
     },
 
-    toggleMainButton: function() {
+    toggleMainButton: function () {
         button = document.getElementById('main');
         state = document.querySelector('p.state');
 
@@ -192,11 +192,11 @@ var VisioUtils = {
             let length = Visio.pc.getSenders().length;
 
             if (Visio.pc.iceConnectionState != 'closed'
-            && length > 0) {
+                && length > 0) {
                 button.classList.remove('disabled');
             }
 
-            button.onclick = function() {};
+            button.onclick = function () { };
 
             if (length == 0) {
                 button.classList.add('gray');
@@ -210,7 +210,7 @@ var VisioUtils = {
                     i.innerText = 'call';
                     state.innerText = Visio.states.ringing;
 
-                    button.onclick = function() { Visio.goodbye('cancel'); };
+                    button.onclick = function () { Visio.goodbye('cancel'); };
                 } else {
                     button.classList.add('green');
                     button.classList.add('disabled');
@@ -226,10 +226,10 @@ var VisioUtils = {
                 button.classList.remove('disabled');
                 i.innerText = 'call_end';
 
-                button.onclick = function() { Visio.goodbye(); };
+                button.onclick = function () { Visio.goodbye(); };
             } else if (Visio.pc.iceConnectionState == 'connected'
-                   || Visio.pc.iceConnectionState == 'complete'
-                   || Visio.pc.iceConnectionState == 'failed') {
+                || Visio.pc.iceConnectionState == 'complete'
+                || Visio.pc.iceConnectionState == 'failed') {
                 button.classList.add('red');
                 i.className = 'material-icons';
                 i.innerText = 'call_end';
@@ -245,11 +245,11 @@ var VisioUtils = {
         }
     },
 
-    enableScreenSharingButton: function() {
+    enableScreenSharingButton: function () {
         document.querySelector('#screen_sharing').classList.add('enabled');
     },
 
-    toggleScreenSharing: async function() {
+    toggleScreenSharing: async function () {
         var button = document.querySelector('#screen_sharing i');
         if (Visio.screenSharing.srcObject == null) {
             try {
@@ -265,7 +265,7 @@ var VisioUtils = {
                 button.innerText = 'stop_screen_share';
 
                 Visio.gotScreen();
-            } catch(err) {
+            } catch (err) {
                 console.error("Error: " + err);
             }
         } else {
@@ -280,7 +280,7 @@ var VisioUtils = {
         }
     },
 
-    switchCameraSetup: function() {
+    switchCameraSetup: function () {
         Visio.videoSelect = document.querySelector('#visio select#visio_source');
         navigator.mediaDevices.enumerateDevices().then(devices => VisioUtils.gotDevices(devices));
 
@@ -298,7 +298,7 @@ var VisioUtils = {
         };
     },
 
-    pcReplaceTrack: function(stream) {
+    pcReplaceTrack: function (stream) {
         let videoTrack = stream.getVideoTracks()[0];
         var sender = Visio.pc.getSenders().find(s => s.track && s.track.kind == videoTrack.kind);
 
@@ -307,14 +307,14 @@ var VisioUtils = {
         }
     },
 
-    gotDevices: function(deviceInfos) {
+    gotDevices: function (deviceInfos) {
         Visio.videoSelect.innerText = '';
 
         for (const deviceInfo of deviceInfos) {
             if (deviceInfo.kind === 'videoinput') {
                 const option = document.createElement('option');
                 option.value = deviceInfo.deviceId;
-                option.text = deviceInfo.label || `Camera ${videoSelect.length + 1}`;
+                option.text = deviceInfo.label || 'Camera ' + Visio.videoSelect.length + 1;
 
                 Visio.videoSelect.appendChild(option);
             }
