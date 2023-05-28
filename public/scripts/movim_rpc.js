@@ -37,7 +37,7 @@ var MovimRPC = {
         var date = new Date();
 
         var url = BASE_URI;
-        let request = MovimRPC.fetchWithTimeout(url += daemon ? '?ajaxd' : '?ajax', {
+        let request = MovimRPC.fetchWithTimeout(url += daemon ? 'ajaxd' : 'ajax', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

@@ -753,7 +753,7 @@ function protectPicture($url)
         return $url;
     }
 
-    return \Movim\Route::urlize('picture', urlencode($url));
+    return \Movim\Route::urlize('picture', false, ['url' => urlencode($url)]);
 }
 
 /*

@@ -12,6 +12,11 @@ v0.22 (trunk)
  * Fix #1189 Add missed and refused calls events
  * Upgrade to PHP 8.1+
  * Cleanup and refactor the icon counters and status CSS
+ * Fix #1212 Movim is sending incorrect value in 'senders' attribute of XEP-0294 #1212
+ * Fix #1213 During Jingle A/V RTP calls, Movim is not building extmap attribute correctly
+ * Fix #1214 Movim is incorrectly generating XEP-0339 <source> element
+ * Refactor the internal URL system to move the pages in the path part and not in the parameter part anymore
+ * Redirect the old URLs to the new URL system
 
 v0.21.1
 ---------------------------

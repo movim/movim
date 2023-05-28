@@ -182,10 +182,10 @@ movimAddOnload(function() {
     if (MovimUtils.isMobile()) MovimTpl.touchEvents();
     document.body.addEventListener('click', MovimTpl.toggleContextMenu, false);
 
-    MovimTpl.currentPage = window.location.search;
+    MovimTpl.currentPage = window.location.pathname;
 
     window.addEventListener('popstate', e => {
-        if (e.target.location.search == MovimTpl.currentPage) return;
+        if (e.target.location.pathname == MovimTpl.currentPage) return;
 
         if (e.state && e.state.soft) {
             MovimUtils.reload(e.target.location.href, true);
@@ -193,6 +193,6 @@ movimAddOnload(function() {
             history.back();
         }
 
-        MovimTpl.currentPage = e.target.location.search;
+        MovimTpl.currentPage = e.target.location.pathname;
     });
 });

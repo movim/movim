@@ -84,6 +84,7 @@ class Bootstrap
         }
 
         define('BASE_URI', $this->getBaseUri());
+
         define('SESSION_ID', $_COOKIE['MOVIM_SESSION_ID'] ?? getenv('sid'));
 
         define('APP_PATH', DOCUMENT_ROOT . '/app/');

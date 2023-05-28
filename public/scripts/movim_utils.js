@@ -108,8 +108,7 @@ var MovimUtils = {
         window.open(url, '_blank');
     },
     reload: function (uri, noHistory) {
-        // Rewrite the URL for a soft reload
-        requestUri = uri.slice(0, uri.indexOf('?')) + '?soft/' + uri.slice(uri.indexOf('?') + 1);
+        requestUri = uri;
 
         document.body.classList.add('loading');
         document.body.classList.remove('finished');
@@ -272,11 +271,13 @@ var MovimUtils = {
             });
     },
     urlParts: function () {
-        var str = window.location.search.split('/');
-        var page = str[0].substring(1);
+        var str = window.location.pathname.split('/');
+        var page = str[1];
+
+        str.shift();
         str.shift();
 
-        var str = str.map(param => decodeURIComponent(param));
+        str = str.map(param => decodeURIComponent(param));
 
         return { 'page': page, 'params': str, 'hash': window.location.hash.substring(1) };
     },
