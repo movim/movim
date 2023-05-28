@@ -498,7 +498,7 @@ var Chat = {
                 .slice(0, 40)
                 .forEach(found => {
                     var img = document.createElement('img');
-                    img.setAttribute('src', 'theme/img/emojis/svg/' + emojis[found].c + '.svg');
+                    img.setAttribute('src', BASE_URI + '/theme/img/emojis/svg/' + emojis[found].c + '.svg');
                     img.classList.add('emoji');
                     if (reaction) img.classList.add('large');
 
