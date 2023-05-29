@@ -86,6 +86,10 @@ class Route extends Base
 
             $page = array_shift($request);
 
+            foreach ($request as $key => $value) {
+                $request[$key] = rawurldecode($value);
+            }
+
             if ($page > 0 && isset($this->_routes[$page])) {
                 header('Location: '. Route::urlize($page, $request));
                 exit;
