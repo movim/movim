@@ -384,7 +384,6 @@ function palette(): array
         'yellow'    => '#FDD835',
         'brown'     => '#795548',
         'gray'      => '#9E9E9E',
-        'black'     => '#000000',
         'lime'      => '#CDDC39',
         'cyan'      => '#00bcd4',
         'teal'      => '#009688',
