@@ -7,29 +7,18 @@
                 </span>
             {elseif="$post->isMicroblog()"}
                 {if="$post->contact"}
-                    {$url = $post->contact->getPhoto('m')}
-                    {if="$url"}
-                        <span class="primary icon bubble">
-                            <img src="{$url}"/>
-                        </span>
-                    {else}
-                        <span class="primary icon bubble color {$post->contact->jid|stringToColor}">
-                            <i class="material-icons">person</i>
-                        </span>
-                    {/if}
+                    <span class="primary icon bubble">
+                        <img src="{$post->contact->getPhoto('m')}"/>
+                    </span>
                 {else}
                     <span class="primary icon bubble color {$post->aid|stringToColor}">
                         <i class="material-icons">person</i>
                     </span>
                 {/if}
             {else}
-                {$url = null}
                 {if="$post->info != null"}
-                    {$url = $post->info->getPhoto('l')}
-                {/if}
-                {if="$url"}
                     <span class="primary icon bubble">
-                        <img src="{$url}"/>
+                        <img src="{$post->info->getPhoto('l')}"/>
                     </span>
                 {else}
                     <span class="primary icon bubble color {$post->node|stringToColor}">

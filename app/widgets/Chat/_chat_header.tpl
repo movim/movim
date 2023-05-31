@@ -115,13 +115,8 @@
                         {elseif="$conference->connected && $conference->isGroupChat()"}
                             {$connected = $conference->otherPresences()->take(25)->get()}
                             {loop="$connected"}
-                                {$url = $value->conferencePicture}
                                 <span onclick="Chat.quoteMUC('{$value->resource}', true);" class="icon bubble tiny {if="!$url"}color {$value->resource|stringToColor}{/if}">
-                                    {if="$url"}
-                                        <img src="{$url}">
-                                    {else}
-                                        {$value->resource|firstLetterCapitalize}
-                                    {/if}
+                                    <img src="{$value->conferencePicture}">
                                 </span><span onclick="Chat.quoteMUC('{$value->resource}', true);">{$value->resource}</span>
                                 {if="$key < $connected->count() -1"}
                                 {/if}
@@ -207,25 +202,11 @@
                 <i class="material-icons">arrow_back</i>
             </span>
 
-            {$url = $contact->getPhoto()}
-            {if="$url"}
-                <span class="primary icon bubble active
-                    {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}"
-                    onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')">
-                    <img src="{$url}">
-                </span>
-            {else}
-                <span class="primary icon bubble active color
-                    {$contact->jid|stringToColor}
-                    {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}"
-                    onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')">
-                    {if="$roster"}
-                        {$roster->truename|firstLetterCapitalize}
-                    {else}
-                        {$contact->truename|firstLetterCapitalize}
-                    {/if}
-                </span>
-            {/if}
+            <span class="primary icon bubble active
+                {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}"
+                onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')">
+                <img src="{if="$roster"}{$roster->getPhoto()}{else}{$contact->getPhoto()}{/if}">
+            </span>
 
             {$call = false}
 

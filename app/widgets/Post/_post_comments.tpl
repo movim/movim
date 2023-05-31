@@ -49,28 +49,15 @@
                 </span>
             {/if}
             {if="$value->contact"}
-                {$url = $value->contact->getPhoto('s')}
-                {if="$url"}
-                    <span class="primary icon bubble small">
-                        {if="$public"}
-                            <img src="{$url}">
-                        {else}
-                            <a href="{$c->route('contact', $value->contact->jid)}">
-                                <img src="{$url}">
-                            </a>
-                        {/if}
-                    </span>
-                {else}
-                    <span class="primary icon bubble color {$value->contact->jid|stringToColor} small">
-                        {if="$public"}
-                            <i class="material-icons">person</i>
-                        {else}
-                            <a href="{$c->route('contact', $value->contact->jid)}">
-                                <i class="material-icons">person</i>
-                            </a>
-                        {/if}
-                    </span>
-                {/if}
+                <span class="primary icon bubble small">
+                    {if="$public"}
+                        <img src="{$value->contact->getPhoto('s')}">
+                    {else}
+                        <a href="{$c->route('contact', $value->contact->jid)}">
+                            <img src="{$value->contact->getPhoto('s')}">
+                        </a>
+                    {/if}
+                </span>
             {else}
                 <span class="primary icon bubble {if="$value->aid"}color {$value->aid|stringToColor}{/if} small">
                     {if="$public"}

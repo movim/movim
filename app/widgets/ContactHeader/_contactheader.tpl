@@ -49,12 +49,9 @@
         <span class="primary icon active white" onclick="history.back()">
             <i class="material-icons">arrow_back</i>
         </span>
-        {$url = $contact->getPhoto('m')}
-        {if="$url"}
-            <span class="primary icon bubble active" onclick="ContactActions_ajaxGetDrawer('{$contact->id|echapJS}')">
-                <img src="{$url}">
-            </span>
-        {/if}
+        <span class="primary icon bubble active" onclick="ContactActions_ajaxGetDrawer('{$contact->id|echapJS}')">
+            <img src="{$contact->getPhoto('m')}">
+        </span>
         <div>
             <p class="line active" onclick="ContactActions_ajaxGetDrawer('{$contact->id|echapJS}')">
                 {$contact->truename}

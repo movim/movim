@@ -7,24 +7,13 @@
         {if="$conference->isGroupChat()"}groupchat{/if}
         {if="$conference->unreads_count > 0 || $conference->quoted_count > 0"}unread{/if}
     ">
-    {$url = $conference->getPhoto()}
-    {if="$url"}
-        <span class="primary icon bubble small"
-            id="{$conference->conference|cleanupId}-rooms-primary"
-            style="background-image: url({$url});">
-            {autoescape="off"}
-                {$c->prepareRoomCounter($conference, true)}
-            {/autoescape}
-        </span>
-    {else}
-        <span class="primary icon bubble color small
-            {$conference->name|stringToColor}"
-            id="{$conference->conference|cleanupId}-rooms-primary">
-            {autoescape="off"}
-                {$c->prepareRoomCounter($conference, false)}
-            {/autoescape}
-        </span>
-    {/if}
+    <span class="primary icon bubble small"
+        id="{$conference->conference|cleanupId}-rooms-primary"
+        style="background-image: url({$conference->getPhoto()});">
+        {autoescape="off"}
+            {$c->prepareRoomCounter($conference, true)}
+        {/autoescape}
+    </span>
 
     {$info = $conference->info}
 

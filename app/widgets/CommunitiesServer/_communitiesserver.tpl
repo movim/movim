@@ -47,16 +47,9 @@
                 </span>
             {/if}
 
-            {$url = $value->getPhoto('m')}
-            {if="$url"}
-                <span class="primary icon bubble">
-                    <img src="{$url}"/>
-                </span>
-            {else}
-                <span class="primary icon bubble color {$value->node|stringToColor}">
-                    {$value->node|firstLetterCapitalize}
-                </span>
-            {/if}
+            <span class="primary icon bubble">
+                <img src="{$value->getPhoto('m')}"/>
+            </span>
             <div>
                 <p class="line">
                     {if="$value->name"}

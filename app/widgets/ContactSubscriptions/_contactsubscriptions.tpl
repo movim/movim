@@ -11,14 +11,9 @@
         {loop="$subscriptions"}
             <a href="{$c->route('community', [$value->server, $value->node])}">
                 <li title="{$value->server} - {$value->node}">
-                    {$url = null}
                     {if="$value->info"}
-                        {$url = $value->info->getPhoto('m')}
-                    {/if}
-
-                    {if="$url"}
                         <span class="primary icon bubble">
-                            <img src="{$url}"/>
+                            <img src="{$value->info->getPhoto('m')}"/>
                         </span>
                     {else}
                         <span class="primary icon bubble color {$value->node|stringToColor}">

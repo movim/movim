@@ -16,16 +16,9 @@
                 <span class="control gray icon">
                     <i class="material-icons">chevron_right</i>
                 </span>
-                {$url = $user->getPhoto()}
-                {if="$url"}
-                    <span class="primary icon bubble">
-                        <img src="{$url}">
-                    </span>
-                {else}
-                    <span class="primary icon bubble color {$user->id|stringToColor}">
-                        <i class="material-icons">person</i>
-                    </span>
-                {/if}
+                <span class="primary icon bubble">
+                    <img src="{$user->getPhoto()}">
+                </span>
                 <div>
                     <p class="line" title="{$user->id}">
                         {$user->truename} <span class="second">{$user->id}</span>

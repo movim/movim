@@ -7,24 +7,9 @@
     </li>
     {loop="$users"}
         <li class="block active" title="{$value->jid}" onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}'); Drawer.clear();">
-            {$url = $value->getPhoto('m')}
-            {if="$url"}
-                <span class="primary icon bubble
-                {if="$value->value"}
-                    status {$presencestxt[$value->value]}
-                {/if}
-                " style="background-image: url({$url});">
-                </span>
-            {else}
-                <span class="primary icon bubble color {$value->jid|stringToColor}
-                {if="$value->value"}
-                    status {$presencestxt[$value->value]}
-                {/if}
-                ">
-                    <i class="material-icons">person</i>
-                </span>
-            {/if}
-
+            <span class="primary icon bubble {if="$value->value"}status {$presencestxt[$value->value]}{/if}">
+                <img src="{$value->getPhoto()}">
+            </span>
             <div>
                 <p class="normal line">
                     {$value->truename}

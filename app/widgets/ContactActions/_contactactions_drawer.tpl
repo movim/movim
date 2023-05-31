@@ -1,25 +1,17 @@
 <section>
-    {$url = $contact->getPhoto()}
-    <header class="big"
-        {if="$url"}
+    <header class="big color {$contact->jid|stringToColor}"
+        {if="$contact->getPhoto()"}
             style="background-image: linear-gradient(to bottom, rgba(23,23,23,0.8) 0%, rgba(23,23,23,0.5) 100%), url('{$contact->getBanner('xxl')}');"
         {/if}
         >
         <ul class="list thick">
             <li>
-                {if="$url"}
+                {if="!$contact->isFromMuc()"}
                     <span onclick="MovimUtils.reload('{$c->route('contact', $jid)}'); Drawer.clear();"
                     class="primary icon bubble active
                         {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}
                     ">
-                        <img src="{$url}">
-                    </span>
-                {elseif="!$contact->isFromMuc()"}
-                    <span  onclick="MovimUtils.reload('{$c->route('contact', $jid)}'); Drawer.clear();"
-                    class="primary icon bubble color {$contact->id|stringToColor} active
-                        {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}
-                    ">
-                        <i class="material-icons">person</i>
+                        <img src="{if="$roster"}{$roster->getPhoto()}{else}{$contact->getPhoto()}{/if}">
                     </span>
                 {/if}
                 {if="!$contact->isFromMuc()"}

@@ -363,27 +363,37 @@ function isLongitude(float $longitude): bool
  */
 function stringToColor($string): string
 {
-    $colors = [
-        0 => 'red',
-        1 => 'purple',
-        2 => 'indigo',
-        3 => 'blue',
-        4 => 'green',
-        5 => 'orange',
-        6 => 'yellow',
-        7 => 'brown',
-        8 => 'lime',
-        9 => 'cyan',
-        10 => 'teal',
-        11 => 'pink',
-        12 => 'dorange',
-        13 => 'lblue',
-        14 => 'amber',
-        15 => 'bgray',
-    ];
+    $colors = array_keys(palette());
 
     $s = abs(crc32($string));
-    return $colors[$s%16];
+    return $colors[$s%count($colors)];
+}
+
+/**
+ * @desc Return the base color palette
+ */
+function palette(): array
+{
+    return [
+        'red'       => '#F44336',
+        'purple'    => '#9C27B0',
+        'indigo'    => '#3F51B5',
+        'blue'      => '#2196F3',
+        'green'     => '#689F38',
+        'orange'    => '#FF9800',
+        'yellow'    => '#FDD835',
+        'brown'     => '#795548',
+        'gray'      => '#9E9E9E',
+        'black'     => '#000000',
+        'lime'      => '#CDDC39',
+        'cyan'      => '#00bcd4',
+        'teal'      => '#009688',
+        'pink'      => '#e91e63',
+        'dorange'   => '#ff5722',
+        'lblue'     => '#03a9f4',
+        'amber'     => '#ffc107',
+        'bgray'     => '#607d8b',
+    ];
 }
 
 /**

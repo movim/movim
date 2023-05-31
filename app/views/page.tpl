@@ -10,6 +10,11 @@
         <link rel="manifest" href="<?php echo \Movim\Route::urlize('manifest'); ?>" />
         <link rel="apple-touch-icon" href="<?php $this->linkFile('img/app/192_square.png');?>"/>
         <link rel="icon" type="image/png" href="<?php $this->linkFile('img/app/128.png');?>" sizes="128x128">
+        <link rel="stylesheet" href="<?php echo
+            \Movim\Route::urlize('colors') .
+            '?t=' .
+            filemtime(CACHE_PATH . 'socketapi.sock');
+            ?>" type="text/css" />
         <script src="<?php echo
             \Movim\Route::urlize('system') .
             '?t=' .

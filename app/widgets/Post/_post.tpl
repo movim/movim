@@ -48,21 +48,11 @@
             {/if}
             {if="$post->isMicroblog()"}
                 {if="$post->contact"}
-                    {$url = $contact->getPhoto('m')}
-
-                    {if="$url"}
-                        <span class="icon primary bubble">
-                            <a href="#" onclick="Post_ajaxGetContact('{$contact->jid}')">
-                                <img src="{$url}">
-                            </a>
-                        </span>
-                    {else}
-                        <span class="icon primary bubble color {$contact->jid|stringToColor}">
-                            <a href="#" onclick="Post_ajaxGetContact('{$contact->jid}')">
-                                <i class="material-icons">person</i>
-                            </a>
-                        </span>
-                    {/if}
+                    <span class="icon primary bubble">
+                        <a href="#" onclick="Post_ajaxGetContact('{$contact->jid}')">
+                            <img src="{$contact->getPhoto('m')}">
+                        </a>
+                    </span>
                 {else}
                     <span class="icon primary bubble color {$post->aid|stringToColor}">
                         <a href="#" onclick="Post_ajaxGetContact('{$post->aid}')">
@@ -71,15 +61,11 @@
                     </span>
                 {/if}
             {else}
-                {$url = null}
                 {if="$info != null"}
-                    {$url = $info->getPhoto('l')}
-                {/if}
-                {if="$url"}
                     <span class="primary icon bubble active"
                         onclick="MovimUtils.reload('{$c->route('community', [$post->server, $post->node])}')"
                     >
-                        <img src="{$url}"/>
+                        <img src="{$info->getPhoto('l')}"/>
                     </span>
                 {else}
                     <span class="primary icon bubble color {$post->node|stringToColor} active"
@@ -164,17 +150,9 @@
     <a href="{$c->route('contact', $post->contact->jid)}">
         <ul class="list active middle">
             <li>
-                {$url = $post->contact->getPhoto('m')}
-                {if="$url"}
-                    <span class="primary icon bubble" style="background-image: url('{$url}');">
-                        <i class="material-icons">loop</i>
-                    </span>
-                {else}
-                    <span class="primary icon bubble color {$post->contact->jid|stringToColor}">
-                        <i class="material-icons">loop</i>
-                    </span>
-                {/if}
-
+                <span class="primary icon bubble" style="background-image: url('{$post->contact->getPhoto('m')}');">
+                    <i class="material-icons">loop</i>
+                </span>
                 <span class="control icon">
                     <i class="material-icons">chevron_right</i>
                 </span>

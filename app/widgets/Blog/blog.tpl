@@ -58,13 +58,9 @@
     {elseif="$node && $server"}
         <ul class="list thick">
             <li>
-                {$url = null}
-                {if="$item != null"}
-                    {$url = $item->getPhoto('m')}
-                {/if}
-                {if="$url"}
+                {if="$item"}
                     <span class="primary icon bubble">
-                        <img src="{$url}"/>
+                        <img src="{$item->getPhoto('m')}"/>
                     </span>
                 {else}
                     <span class="primary icon gray">

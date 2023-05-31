@@ -7,14 +7,8 @@
     {loop="$results"}
         <li title="{$value.jid}">
             {if="$vcards->has($value['jid'])"}
-                {$url = $vcards->get($value['jid'])->getPhoto()}
-            {else}
-                {$url = null}
-            {/if}
-
-            {if="$url"}
                 <span class="primary icon bubble"
-                    style="background-image: url({$url});">
+                    style="background-image: url({$vcards->get($value['jid'])->getPhoto()});">
                 </span>
             {else}
                 <span class="primary icon bubble color {$value.name|stringToColor}">

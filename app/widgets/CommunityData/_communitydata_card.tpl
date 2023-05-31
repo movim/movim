@@ -1,16 +1,8 @@
-{$url = null}
-{$url = $info->getPhoto('l')}
 <ul class="list thin">
     <li class="block large">
         <div>
             <p class="center all">
-                {if="$url"}
-                    <img class="avatar" src="{$url}"/>
-                {else}
-                    <span class="avatar icon color {$info->node|stringToColor}">
-                        {$info->node|firstLetterCapitalize}
-                    </span>
-                {/if}
+                <img class="avatar" src="{$info->getPhoto('l')}"/>
             </p>
         </div>
     </li>

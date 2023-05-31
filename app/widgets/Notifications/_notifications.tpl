@@ -8,16 +8,9 @@
         </li>
     </ul>
     <ul id="notifications_invitations" class="list middle divided spaced">{loop="$invitations"}<li id="invitation-{$value->jid|cleanupId}" data-jid="{$value->jid}">
-        {$url = $value->getPhoto()}
-        {if="$url"}
-            <span class="primary icon bubble active" onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}'); Drawer.clear();">
-                <img src="{$url}">
-            </span>
-        {else}
-            <span class="primary icon bubble active color {$value->jid|stringToColor}" onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}'); Drawer.clear();">
-                {$value->jid|firstLetterCapitalize}
-            </span>
-        {/if}
+        <span class="primary icon bubble active" onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}'); Drawer.clear();">
+            <img src="{$value->getPhoto()}">
+        </span>
         <span class="control icon green active" title="{$c->__('button.accept')}" onclick="Notifications_ajaxAccept('{$value->jid|echapJS}');">
             <i class="material-icons">check</i>
         </span>
@@ -58,20 +51,11 @@
                 {/if}
                 <li>
                     {if="$value->contact"}
-                        {$url = $value->contact->getPhoto('s')}
-                        {if="$url"}
-                            <span class="primary icon bubble">
-                                <a href="{$c->route('contact', $value->contact->jid)}">
-                                    <img src="{$url}">
-                                </a>
-                            </span>
-                        {else}
-                            <span class="primary icon bubble color {$value->contact->jid|stringToColor}">
-                                <a href="{$c->route('contact', $value->contact->jid)}">
-                                    {$value->contact->truename|firstLetterCapitalize}
-                                </a>
-                            </span>
-                        {/if}
+                        <span class="primary icon bubble">
+                            <a href="{$c->route('contact', $value->contact->jid)}">
+                                <img src="{$value->contact->getPhoto()}">
+                            </a>
+                        </span>
                     {else}
                         <span class="primary icon bubble color {$value->aid|stringToColor}">
                             <a href="{$c->route('contact', $value->aid)}">

@@ -64,19 +64,12 @@
     {/if}
 
     <ul class="list infos" class="list middle">
-        {$url = $contact->getPhoto('l')}
         <li>
             <div>
                 <div id="remote_level">
-                    {if="$url"}
-                        <div class="avatar">
-                            <img src="{$url}">
-                        </div>
-                    {else}
-                        <div class="avatar color {$contact->jid|stringToColor}">
-                            {$contact->truename|firstLetterCapitalize}
-                        </div>
-                    {/if}
+                    <div class="avatar">
+                        <img src="{$contact->getPhoto('l')}">
+                    </div>
                 </div>
                 <p class="normal center">{$contact->truename}</p>
                 <p class="normal state center"></p>

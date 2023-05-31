@@ -54,16 +54,9 @@
             {$contact = $c->getContact($value['jid'])}
             <li title="{$contact->jid}"
                 onclick="MovimUtils.reload('{$c->route('contact', $contact->jid)}')">
-                {$url = $contact->getPhoto('m')}
-                {if="$url"}
-                    <span class="primary icon bubble"
-                        style="background-image: url({$url});">
-                    </span>
-                {else}
-                    <span class="primary icon bubble color {$contact->jid|stringToColor}">
-                        {$contact->truename|firstLetterCapitalize}
-                    </span>
-                {/if}
+                <span class="primary icon bubble">
+                    <img src="{$contact->getPhoto('m')}">
+                </span>
                 <div>
                     <p>{$contact->truename}</p>
                     <p>{$contact->jid}</p>
@@ -84,16 +77,9 @@
         {$contact = $c->getContact($value['jid'])}
         <li title="{$contact->jid}"
             onclick="MovimUtils.reload('{$c->route('contact', $contact->jid)}')">
-            {$url = $contact->getPhoto('m')}
-            {if="$url"}
-                <span class="primary icon bubble"
-                    style="background-image: url({$url});">
-                </span>
-            {else}
-                <span class="primary icon bubble color {$contact->jid|stringToColor}">
-                    {$contact->truename|firstLetterCapitalize}
-                </span>
-            {/if}
+            <span class="primary icon bubble">
+                <img src="{$contact->getPhoto('m')}">
+            </span>
             <div>
                 <p>{$contact->truename}</p>
                 <p>{$contact->jid}</p>

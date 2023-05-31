@@ -6,16 +6,9 @@
         {loop="$affiliations[$role]"}
             {$contact = $c->getContact($value['jid'])}
             <li title="{$contact->jid}">
-                {$url = $contact->getPhoto('m')}
-                {if="$url"}
-                    <span class="primary icon bubble"
-                        style="background-image: url({$url});">
-                    </span>
-                {else}
-                    <span class="primary icon bubble color {$contact->jid|stringToColor}">
-                        {$contact->truename|firstLetterCapitalize}
-                    </span>
-                {/if}
+                <span class="primary icon bubble">
+                    <img src="{$contact->getPhoto('m')}">
+                </span>
                 <form name="{$contact->jid}">
                     <input type="hidden" name="jid" value="{$contact->jid}"/>
                     <div>

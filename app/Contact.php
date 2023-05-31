@@ -7,6 +7,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 
 use Respect\Validation\Validator;
 use Movim\Image;
+use Movim\Route;
 
 class Contact extends Model
 {
@@ -126,9 +127,11 @@ class Contact extends Model
         unset($this->photobin);
     }
 
-    public function getPhoto($size = 'm')
+    public function getPhoto($size = 'm'): string
     {
-        return !empty($this->id) ? getPhoto($this->id, $size) : null;
+        return (!empty($this->id) && $url = getPhoto($this->id, $size))
+            ? $url
+            : Route::urlize('avatar', $this->id);
     }
 
     public function getBanner($size = 'xxl')

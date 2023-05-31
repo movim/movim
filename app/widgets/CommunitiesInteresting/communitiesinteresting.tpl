@@ -11,17 +11,9 @@
             onclick="MovimUtils.reload('{$c->route('community', [$value->server, $value->node])}')"
             title="{$value->server} - {$value->node}"
         >
-            {$url = $value->getPhoto('m')}
-
-            {if="$url"}
-                <span class="primary icon bubble">
-                    <img src="{$url}"/>
-                </span>
-            {else}
-                <span class="primary icon bubble color {$value->node|stringToColor}">
-                    {$value->node|firstLetterCapitalize}
-                </span>
-            {/if}
+            <span class="primary icon bubble">
+                <img src="{$value->getPhoto('m')}"/>
+            </span>
             <span class="control icon gray">
                 <i class="material-icons">chevron_right</i>
             </span>

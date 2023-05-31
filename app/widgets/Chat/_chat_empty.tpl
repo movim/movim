@@ -13,24 +13,13 @@
         {loop="$top"}
             <li class="block {if="$value->last > 60"} inactive{/if}"
                 onclick="Chats_ajaxOpen('{$value->jid|echapJS}'); Chat.get('{$value->jid|echapJS}');">
-                {$url = $value->getPhoto('m')}
-                {if="$url"}
-                    <img class="main" src="{$value->getBanner('l')}">
-                    <span class="primary icon bubble
-                        {if="$value->presence"}
-                            status {$value->presence->presencekey}
-                        {/if}">
-                        <img src="{$url}">
-                    </span>
-                {else}
-                    <div class="main color {$value->jid|stringToColor}"></div>
-                    <span class="primary icon bubble color {$value->jid|stringToColor}
-                        {if="$value->presence"}
-                            status {$value->presence->presencekey}
-                        {/if}">
-                        <i class="material-icons">person</i>
-                    </span>
-                {/if}
+                <img class="main" src="{$value->getBanner('l')}">
+                <span class="primary icon bubble
+                    {if="$value->presence"}
+                        status {$value->presence->presencekey}
+                    {/if}">
+                    <img src="{$value->getPhoto()}">
+                </span>
                 <div>
                     <p class="line" title="{$value->truename}">
                         {$value->truename}

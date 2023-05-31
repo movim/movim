@@ -26,24 +26,9 @@
                 <span class="control icon gray">
                     <i class="material-icons">comment</i>
                 </span>
-                {$url = $value->getPhoto('m')}
-                {if="$url"}
-                    <span class="primary icon bubble
-                    {if="$value->value"}
-                        status {$presencestxt[$value->value]}
-                    {/if}
-                    " style="background-image: url({$url});">
-                    </span>
-                {else}
-                    <span class="primary icon bubble color {$value->jid|stringToColor}
-                    {if="$value->value"}
-                        status {$presencestxt[$value->value]}
-                    {/if}
-                    ">
-                        <i class="material-icons">person</i>
-                    </span>
-                {/if}
-
+                <span class="primary icon bubble {if="$value->value"}status {$presencestxt[$value->value]}{/if}">
+                    <img src="{$value->getPhoto('m')}">
+                </span>
                 <div>
                     <p class="normal line">
                         {$value->truename}

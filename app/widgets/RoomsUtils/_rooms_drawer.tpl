@@ -1,26 +1,12 @@
-{if="$conference"}
-    {$curl = $conference->getPhoto()}
-{/if}
-
 <section class="scroll">
     <header class="big"
-        {if="$curl"}
-            style="background-image: linear-gradient(to bottom, rgba(23,23,23,0.8) 0%, rgba(23,23,23,0.5) 100%), url('{$conference->getPhoto('xxl')}');"
-        {/if}
+        style="background-image: linear-gradient(to bottom, rgba(23,23,23,0.8) 0%, rgba(23,23,23,0.5) 100%), url('{$conference->getPhoto('xxl')}');"
     >
         <ul class="list thick">
             <li>
-                {if="$curl"}
-                    <span class="primary icon bubble active"
-                        style="background-image: url({$curl});">
-                    </span>
-                {else}
-                    <span class="primary icon bubble color active {$conference->name|stringToColor}">
-                        {autoescape="off"}
-                            {$conference->name|firstLetterCapitalize|addEmojis}
-                        {/autoescape}
-                    </span>
-                {/if}
+                <span class="primary icon bubble active"
+                    style="background-image: url({$conference->getPhoto()});">
+                </span>
                 <span title="{$c->__('chatroom.config')}"
                       class="control icon active"
                       onclick="RoomsUtils_ajaxAdd('{$room|echapJS}'); Drawer.clear()">
@@ -208,9 +194,9 @@
                     {$presence = $presences->where('mucjid', $value->jid)->first()}
 
                     <li title="{$value->truename}">
-                        {if="$value->contact && $url = $value->contact->getPhoto('s')"}
+                        {if="$value->contact"}
                             <span class="primary icon bubble small status {if="$presence"}{$presence->presencekey}{/if}">
-                                <img src="{$url}">
+                                <img src="{$value->contact->getPhoto('s')}">
                             </span>
                         {else}
                             <span class="primary icon bubble small color {$value->jid|stringToColor} status {if="$presence"}{$presence->presencekey}{/if}">
@@ -279,15 +265,9 @@
                     <li class="{if="$value->last > 60"} inactive{/if}"
                         title="{$value->resource}">
 
-                        {if="$url = $value->conferencePicture"}
-                            <span class="primary icon bubble small status {$value->presencekey}">
-                                <img src="{$url}">
-                            </span>
-                        {else}
-                            <span class="primary icon bubble small color {$value->resource|stringToColor} status {$value->presencekey}">
-                                <i class="material-icons">people</i>
-                            </span>
-                        {/if}
+                        <span class="primary icon bubble small status {$value->presencekey}">
+                            <img src="{$value->conferencePicture}">
+                        </span>
                         {if="$value->mucaffiliation == 'owner'"}
                             <span class="control icon yellow" title="{$c->__('rooms.owner')}">
                                 <i class="material-icons">star</i>
@@ -370,9 +350,9 @@
                 <ul class="list thin">
                     {loop="$banned"}
                         <li title="{$value->truename}">
-                            {if="$value->contact && $url = $value->contact->getPhoto('s')"}
+                            {if="$value->contact"}
                                 <span class="primary icon bubble small">
-                                    <img src="{$url}">
+                                    <img src="{$value->contact->getPhoto('s')}">
                                 </span>
                             {else}
                                 <span class="primary icon bubble small color {$value->jid|stringToColor}">

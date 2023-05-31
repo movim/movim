@@ -36,18 +36,9 @@
                 </div>
             </li>
             <li>
-                {$url = $me->getPhoto()}
-                {if="$url"}
-                    <span
-                        class="primary icon bubble"
-                        style="background-image: url({$url})">
-                    </span>
-                {else}
-                    <span
-                        class="primary icon bubble color {$me->jid|stringToColor}">
-                        <i class="material-icons">person</i>
-                    </span>
-                {/if}
+                <span class="primary icon bubble">
+                    <img src="{$me->getPhoto()}" class="color {$me->jid|stringToColor}">
+                </span>
                 <span class="control icon active gray divided"
                     onclick="MovimUtils.reload('{$c->route('publish', [$c->getUser()->id, 'urn:xmpp:microblog:0', '', $post->server, $post->node, $post->nodeid])}'); Drawer.clear()">
                     <i class="material-icons">post_add</i>
@@ -70,15 +61,9 @@
                 class="block"
                 title="{$value->server} - {$value->node}"
             >
-                {$url = false}
-
                 {if="$value->info"}
-                    {$url = $value->info->getPhoto('m')}
-                {/if}
-
-                {if="$url"}
                     <span class="primary icon bubble">
-                        <img src="{$url}"/>
+                        <img src="{$value->info->getPhoto('m')}"/>
                     </span>
                 {else}
                     <span class="primary icon bubble color {$value->node|stringToColor}">

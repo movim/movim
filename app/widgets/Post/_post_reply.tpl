@@ -11,16 +11,9 @@
                     <i class="material-icons flip-hor">reply</i>
                 </span>
             {elseif="$reply->isMicroblog() && $reply->contact"}
-                {$url = $reply->contact->getPhoto('l')}
-                {if="$url"}
-                    <span class="primary icon bubble gray" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$url});">
-                        <i class="material-icons">reply</i>
-                    </span>
-                {else}
-                    <span class="primary icon bubble {$reply->contact->jid|stringToColor}">
-                        <i class="material-icons">reply</i>
-                    </span>
-                {/if}
+                <span class="primary icon bubble gray" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$reply->contact->getPhoto('l')});">
+                    <i class="material-icons">reply</i>
+                </span>
             {/if}
             <span class="control icon gray">
                 <i class="material-icons">chevron_right</i>

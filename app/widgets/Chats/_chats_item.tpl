@@ -11,29 +11,14 @@
         {/if}
         "
     title="{$contact->jid}{if="isset($message)"} · {$message->published|strtotime|prepareDate}{/if}">
-    {$url = $contact->getPhoto()}
-    {if="$url"}
-        <span class="primary icon bubble
-            {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}
-            {if="$contact->locationDistance"} location{/if}
-        "
-        {if="$count > 0"}data-counter="{$count}"{/if}
-        >
-            <img src="{$url}">
-        </span>
-    {else}
-        <span class="primary icon bubble color {$contact->jid|stringToColor}
-            {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}
-            {if="$contact->locationDistance"} location{/if}
-        "
-        {if="$count > 0"}data-counter="{$count}"{/if}>
-            {if="$roster"}
-                {$roster->truename|firstLetterCapitalize}
-            {else}
-                {$contact->truename|firstLetterCapitalize}
-            {/if}
-        </span>
-    {/if}
+    <span class="primary icon bubble
+        {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}
+        {if="$contact->locationDistance"} location{/if}
+    "
+    {if="$count > 0"}data-counter="{$count}"{/if}
+    >
+        <img src="{$contact->getPhoto()}">
+    </span>
 
     <div>
         <p class="normal line">

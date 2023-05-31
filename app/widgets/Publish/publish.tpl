@@ -34,16 +34,9 @@
                 </span>
 
                 {if="$icon != null"}
-                    {$url = $icon->getPhoto('l')}
-                    {if="$url"}
-                        <span class="primary icon bubble">
-                            <img src="{$url}"/>
-                        </span>
-                    {else}
-                        <span class="primary icon bubble color {$draft->node|stringToColor}">
-                            {$draft->node|firstLetterCapitalize}
-                        </span>
-                    {/if}
+                    <span class="primary icon bubble">
+                        <img src="{$icon->getPhoto('l')}"/>
+                    </span>
                 {else}
                     <span class="primary icon bubble color {$draft->node|stringToColor}">
                         {$draft->node|firstLetterCapitalize}

@@ -1428,10 +1428,7 @@ class Chat extends \Movim\Widget\Base
             }
 
             if ($this->_mucPresences[$key] && $this->_mucPresences[$key] !== true) {
-                if ($url = $this->_mucPresences[$key]->conferencePicture) {
-                    $message->icon_url = $url;
-                }
-
+                $message->icon_url = $this->_mucPresences[$key]->conferencePicture;
                 $message->moderator = ($this->_mucPresences[$key]->mucrole == 'moderator');
                 $message->mucjid = $this->_mucPresences[$key]->mucjid;
                 $message->mine = $message->seen = ($this->_mucPresences[$key]->mucjid == $this->user->id);

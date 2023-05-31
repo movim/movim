@@ -1,17 +1,10 @@
 <section>
     <h3>{$c->__('roster.add_title')}</h3>
     <ul class="list thick">
-        {$url = $contact->getPhoto()}
         <li>
-            {if="$url"}
-                <span class="primary icon bubble">
-                    <img src="{$url}">
-                </span>
-            {else}
-                <span class="primary icon bubble color {$contact->id|stringToColor}">
-                    {$contact->truename|firstLetterCapitalize}
-                </span>
-            {/if}
+            <span class="primary icon bubble">
+                <img src="{$contact->getPhoto()}">
+            </span>
             <div>
                 <p class="line">
                     {$contact->truename}

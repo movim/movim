@@ -5,27 +5,15 @@
 </li>
 {loop="$contacts"}
     <li class="{if="$value->presence && $value->presence->value > 4"}faded{/if}">
-        {$url = $value->getPhoto('m')}
-        {if="$url"}
-            <span class="primary icon bubble small
-                {if="!$value->presence || $value->presence->value > 4"}
-                    disabled
-                {else}
-                    status {$value->presence->presencekey}
-                {/if}"
-                style="background-image: url({$url});">
-            </span>
-        {else}
-            <span class="primary icon bubble small color {$value->jid|stringToColor}
-                {if="!$value->presence || $value->presence->value > 4"}
-                    disabled
-                {else}
-                    status {$value->presence->presencekey}
-                {/if}"
-            >
-                <i class="material-icons">person</i>
-            </span>
-        {/if}
+        <span class="primary icon bubble small
+            {if="!$value->presence || $value->presence->value > 4"}
+                disabled
+            {else}
+                status {$value->presence->presencekey}
+            {/if}"
+            style="background-image: url({$url});">
+            <img src="{$value->getPhoto('m')}" class="color {$value->jid|stringToColor}">
+        </span>
         <span class="control icon active gray" onclick="SendTo_ajaxSend('{$value->jid|echapJS}', {'uri': '{$uri}'}, false, '{$openlink}')">
             <i class="material-icons">send</i>
         </span>

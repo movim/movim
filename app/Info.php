@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Movim\Route;
 
 class Info extends Model
 {
@@ -198,11 +199,11 @@ class Info extends Model
         return $identityType ? $identityType->type : null;
     }
 
-    public function getPhoto($size = 'm')
+    public function getPhoto($size = 'm'): string
     {
-        return isset($this->attributes['avatarhash'])
-            ? getPhoto($this->attributes['avatarhash'], $size)
-            : null;
+        return (isset($this->attributes['avatarhash']) && $url = getPhoto($this->attributes['avatarhash'], $size))
+            ? $url
+            : Route::urlize('avatar', $this->node);
     }
 
     public function getDeviceIcon()

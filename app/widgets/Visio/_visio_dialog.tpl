@@ -1,13 +1,10 @@
 <section id="visio_dialog">
-    {$url = $contact->getPhoto('l')}
     <ul class="list thick">
         <li>
             <div>
-                {if="$url"}
-                    <p class="center">
-                        <img src="{$url}">
-                    </p>
-                {/if}
+                <p class="center">
+                    <img src="{$contact->getPhoto('l')}">
+                </p>
                 <p class="normal center">
                     {if="$withvideo"}
                         {$c->__('visio.video_call')}

@@ -3,6 +3,7 @@
 namespace App;
 
 use Movim\Model;
+use Movim\Route;
 
 class Conference extends Model
 {
@@ -213,13 +214,11 @@ class Conference extends Model
         return $subject ? $subject->subject : null;
     }
 
-    public function getPhoto($size = 'm')
+    public function getPhoto($size = 'm'): string
     {
-        if ($this->contact) {
-            return $this->contact->getPhoto($size);
-        }
-
-        return false;
+        return $this->contact
+            ? $this->contact->getPhoto($size)
+            : Route::urlize('avatar', $this->name);
     }
 
     // https://docs.modernxmpp.org/client/groupchat/#types-of-chat

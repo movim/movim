@@ -21,18 +21,9 @@
             </li>
             {loop="$conferences"}
                 <li>
-                    {$url = $value->getPhoto()}
-                    {if="$url"}
-                        <span class="primary icon bubble small"
-                            style="background-image: url({$url});">
-                        </span>
-                    {else}
-                        <span class="primary icon bubble color small {$value->name|stringToColor}">
-                            {autoescape="off"}
-                                {$value->name|firstLetterCapitalize|addEmojis}
-                            {/autoescape}
-                        </span>
-                    {/if}
+                    <span class="primary icon bubble small"
+                        style="background-image: url({$value->getPhoto()});">
+                    </span>
 
                     <span class="control icon active gray" onclick="SendTo_ajaxSend('{$value->conference|echapJS}', {'uri': '{$uri}'}, true, '{$openlink}');">
                         <i class="material-icons">send</i>

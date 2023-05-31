@@ -4,6 +4,7 @@ namespace App;
 
 use Movim\Model;
 use Movim\Image;
+use Movim\Route;
 use Movim\Session;
 use Moxl\Xec\Action\Presence\Muc;
 
@@ -67,9 +68,9 @@ class Presence extends Model
         return getPresencesTxt()[$this->value];
     }
 
-    public function getConferencePictureAttribute()
+    public function getConferencePictureAttribute(): string
     {
-        return Image::getOrCreate($this->mucjid, 120);
+        return Image::getOrCreate($this->mucjid, 120) ?? Route::urlize('avatar', $this->mucjid);
     }
 
     public function getConferenceColorAttribute()

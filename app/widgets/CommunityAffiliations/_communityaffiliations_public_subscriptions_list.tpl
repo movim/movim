@@ -11,16 +11,9 @@
                     <i class="material-icons">chevron_right</i>
                 </span>
                 {if="$value->contact"}
-                    {$url = $value->contact->getPhoto('m')}
-                    {if="$url"}
-                        <span class="primary icon bubble small"
-                            style="background-image: url({$url});">
-                        </span>
-                    {else}
-                        <span class="primary icon bubble small color {$value->jid|stringToColor}">
-                            {$value->contact->truename|firstLetterCapitalize:true}
-                        </span>
-                    {/if}
+                    <span class="primary icon bubble small">
+                        <img src="{$value->contact->getPhoto('m')}">
+                    </span>
                     <div>
                         <p class="normal">{$value->contact->truename}</p>
                     </div>

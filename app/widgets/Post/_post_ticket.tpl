@@ -46,14 +46,8 @@
         <p dir="auto">{autoescape="off"}{$post->getSummary()|prepareString}{/autoescape}</p>
         <p>
             {if="$post->contact"}
-                {$url = $post->contact->getPhoto('s')}
-                <span class="icon bubble tiny {if="$url == null"}color {$post->contact->jid|stringToColor}{/if}"
-                    {if="$url"}
-                        style="background-image: url('{$url}');">
-                    {else}
-                        >
-                        {$post->contact->truename|firstLetterCapitalize}
-                    {/if}
+                <span class="icon bubble tiny">
+                    <img src="{$post->contact->getPhoto()}" class="color {$post->contact->jid|stringToColor}">
                 </span>
                 <a href="{$c->route('contact', $post->contact->jid)}">
                     {$post->contact->truename}

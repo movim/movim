@@ -1,16 +1,8 @@
-{$url = null}
-{$url = $contact->getPhoto('l')}
 <ul class="list">
     <li class="block large">
         <div>
             <p class="center all">
-                {if="$url"}
-                    <img class="avatar" src="{$url}"/>
-                {else}
-                    <span class="avatar icon color {$contact->jid|stringToColor}">
-                        {$contact->jid|firstLetterCapitalize}
-                    </span>
-                {/if}
+                <img src="{$contact->getPhoto('l')}" class="avatar">
             </p>
         </div>
     </li>

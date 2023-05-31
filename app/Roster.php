@@ -3,6 +3,7 @@
 namespace App;
 
 use Movim\Model;
+use Movim\Route;
 
 class Roster extends Model
 {
@@ -91,9 +92,11 @@ class Roster extends Model
             cleanupId($this->group);
     }
 
-    public function getPhoto($size = 'm')
+    public function getPhoto($size = 'm'): string
     {
-        return getPhoto($this->jid, $size);
+        return (!empty($this->jid) && $url = getPhoto($this->jid, $size))
+            ? $url
+            : Route::urlize('avatar', $this->truename);
     }
 
     public function getBanner($size = 'xxl')

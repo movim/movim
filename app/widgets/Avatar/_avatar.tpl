@@ -1,17 +1,10 @@
 <ul class="list thick flex">
     <li class="block active" onclick="Avatar_ajaxGetForm()">
-        {$url = $me->getPhoto()}
-        {if="$url"}
-            <span
-                class="primary icon bubble"
-                style="background-image: url({$url})">
-            </span>
-        {else}
-            <span
-                class="primary icon bubble color {$me->jid|stringToColor}">
-                <i class="material-icons">person</i>
-            </span>
-        {/if}
+        <span
+            class="primary icon bubble color {$me->jid|stringToColor}"
+            style="background-image: url({$me->getPhoto()})">
+        </span>
+
         <span class="control icon gray">
             <i class="material-icons">chevron_right</i>
         </span>

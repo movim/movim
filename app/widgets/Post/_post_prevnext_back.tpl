@@ -10,16 +10,9 @@
     </span>
     {if="$post->isMicroblog()"}
         {if="$post->contact"}
-            {$url = $post->contact->getPhoto('m')}
-            {if="$url"}
-                <span class="primary icon bubble"
-                    style="background-image: url({$url});">
-                </span>
-            {else}
-                <span class="primary icon bubble color {$post->contact->jid|stringToColor}">
-                    <i class="material-icons">person</i>
-                </span>
-            {/if}
+            <span class="primary icon bubble">
+                <img src="{$post->contact->getPhoto('m')}">
+            </span>
             <div>
                 <p class="normal line">
                     {$post->contact->truename}
@@ -39,17 +32,9 @@
         </div>
     {else}
         {if="$info"}
-            {$url = $info->getPhoto('m')}
-
-            {if="$url"}
-                <span class="primary icon bubble">
-                    <img src="{$url}"/>
-                </span>
-            {else}
-                <span class="primary icon bubble color {$info->node|stringToColor}">
-                    {$info->node|firstLetterCapitalize}
-                </span>
-            {/if}
+            <span class="primary icon bubble">
+                <img src="{$info->getPhoto('m')}"/>
+            </span>
             <div>
                 <p class="line normal">
                     {if="$info->name"}

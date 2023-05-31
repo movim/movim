@@ -11,31 +11,16 @@
             name="{$value->jid|cleanupId}-{if="$value->truename"}{$value->truename|cleanupId}{/if}-{if="$value->group"}{$value->group|cleanupId}{/if}{if="$value->presence"}-{$value->presence->presencetext|cleanupId}{/if}"
             class="{if="$value->presence && $value->presence->value > 4"}faded{/if}"
         >
-            {$url = $value->getPhoto('m')}
-            {if="$url"}
-                <span class="primary icon bubble active
-                    {if="$value->locationDistance"} location{/if}
-                    {if="!$value->presence || $value->presence->value > 4"}
-                        faded
-                    {else}
-                        status {$value->presence->presencekey}
-                    {/if}"
-                    style="background-image: url({$url});"
-                    onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}'); Drawer.clear();">
-                </span>
-            {else}
-                <span class="primary icon bubble color active {$value->jid|stringToColor}
-                    {if="$value->locationDistance"} location{/if}
-                    {if="!$value->presence || $value->presence->value > 4"}
-                        faded
-                    {else}
-                        status {$value->presence->presencekey}
-                    {/if}"
-                    onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}'); Drawer.clear();"
-                >
-                    <i class="material-icons">person</i>
-                </span>
-            {/if}
+            <span class="primary icon bubble active
+                {if="$value->locationDistance"} location{/if}
+                {if="!$value->presence || $value->presence->value > 4"}
+                    faded
+                {else}
+                    status {$value->presence->presencekey}
+                {/if}"
+                onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}'); Drawer.clear();">
+                <img src="{$value->getPhoto('m')}" class="color {$value->jid|stringToColor}">
+            </span>
 
             {if="$value->presences->count() > 0"}
                 {loop="$value->presences"}

@@ -28,15 +28,10 @@
             {if="$invitation != null"}
                 <ul class="list middle invite">
                     <li>
-                        {$url = $contact->getPhoto('m')}
-                        {if="$url"}
-                            <span class="primary icon bubble" style="background-image: url({$url});">
-                            </span>
-                        {else}
-                            <span class="primary icon bubble color {$contact->jid|stringToColor}">
-                                {$contact->truename|firstLetterCapitalize}
-                            </span>
-                        {/if}
+                        <span class="primary icon bubble" style="background-image: url({$url});">
+                            <img src="{$contact->getPhoto('m')}">
+                        </span>
+
                         {if="$invitation->room && $invitation->room->getPhoto('m')"}
                             <span class="primary icon bubble" style="background-image: url({$invitation->room->getPhoto('m')});">
                             </span>
@@ -128,13 +123,9 @@
                             <span class="control gray icon">
                                 <i class="material-icons">chevron_right</i>
                             </span>
-                            {$url = null}
                             {if="$contact"}
-                                {$url = $contact->getPhoto()}
-                            {/if}
-                            {if="$url"}
                                 <span class="primary icon bubble small">
-                                    <img src="{$url}">
+                                    <img src="{$contact->getPhoto()}">
                                 </span>
                             {else}
                                 <span class="primary icon bubble small color {$value->id|stringToColor}">

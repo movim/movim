@@ -15,18 +15,10 @@
             <i class="material-icons">arrow_back</i>
         </span>
         {if="$info != null"}
-            {$url = $info->getPhoto('l')}
-            {if="$url"}
-                <span class="primary icon bubble active"
-                      onclick="MovimUtils.reload('{$c->route('community', [$server, $info->node])}')">
-                    <img src="{$url}"/>
-                </span>
-            {else}
-                <span class="primary icon bubble color {$info->node|stringToColor} active"
-                      onclick="MovimUtils.reload('{$c->route('community', [$server, $info->node])}')">
-                    {$info->node|firstLetterCapitalize}
-                </span>
-            {/if}
+            <span class="primary icon bubble active"
+                    onclick="MovimUtils.reload('{$c->route('community', [$server, $info->node])}')">
+                <img src="{$info->getPhoto('l')}"/>
+            </span>
         {/if}
         <div>
             {if="$c->getUser()->hasPubsub()"}

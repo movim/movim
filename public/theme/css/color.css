@@ -9,8 +9,6 @@ body {
     --movim-font: 0, 0, 0;
     --movim-element-action: 153, 153, 153;
     scrollbar-color: rgba(var(--movim-font), 0.2) transparent;
-
-    --movim-red: #F44336;
 }
 
 body.nightmode {
@@ -58,7 +56,7 @@ table tr th {
 }
 
 .color {
-    background-color: #607D8B;
+    background-color: var(--p-bgray);
     color: white;
 }
 
@@ -116,78 +114,80 @@ span.icon span.counter.alt {
 
 /* Elements */
 
-.button.red,    .icon.red   , span.resource.red, p.encrypted.error { color: var(--movim-red); }
-.button.purple, .icon.purple, span.resource.purple   { color: #9C27B0; }
-.button.indigo, .icon.indigo, span.resource.indigo   { color: #3F51B5; }
-.button.blue,   .icon.blue  , span.resource.blue     { color: #2196F3; }
-.button.green,  .icon.green , span.resource.green    { color: #689F38; }
+.button.red,    .icon.red   , span.resource.red, p.encrypted.error { color: var(--p-red); }
+.button.purple, .icon.purple, span.resource.purple   { color: var(--p-purple); }
+.button.indigo, .icon.indigo, span.resource.indigo   { color: var(--p-indigo); }
+.button.blue,   .icon.blue  , span.resource.blue     { color: var(--p-blue); }
+.button.green,  .icon.green , span.resource.green    { color: var(--p-green); }
 ul li div.bubble.moderator:after,
 ul li div > p > span.moderator,
-.button.orange, .icon.orange, span.resource.orange   { color: #FF9800; }
+.button.orange, .icon.orange, span.resource.orange   { color: var(--p-orange); }
 .button.yellow, .icon.yellow, span.resource.yellow   { color: #FBC02D; }
-.button.brown,  .icon.brown , span.resource.brown    { color: #795548; }
+.button.brown,  .icon.brown , span.resource.brown    { color: var(--p-brown); }
 ul li.action > div.action,
 ul li.action > form > div.action,
-.button.gray,   .icon.gray  , span.resource.gray     { color: #9E9E9E; }
-.button.black,  .icon.black , span.resource.black    { color: #000000; }
-.button.lime,   .icon.lime  , span.resource.lime     { color: #CDDC39 }
-.button.cyan,   .icon.cyan  , span.resource.cyan     { color: #00bcd4 }
-.button.teal,   .icon.teal  , span.resource.teal     { color: #009688 }
-.button.pink,   .icon.pink  , span.resource.pink     { color: #e91e63 }
-.button.dorange,.icon.dorange  , span.resource.dorange  { color: #ff5722 }
-.button.lblue,  .icon.lblue  , span.resource.lblue   { color: #03a9f4 }
-.button.amber,  .icon.anber  , span.resource.amber   { color: #ffc107 }
-.button.bgray,  .icon.bgray  , span.resource.bgray   { color: #607d8b }
+.button.gray,   .icon.gray  , span.resource.gray     { color: var(--p-gray); }
+.button.black,  .icon.black , span.resource.black    { color: var(--p-black); }
+.button.lime,   .icon.lime  , span.resource.lime     { color: var(--p-lime) }
+.button.cyan,   .icon.cyan  , span.resource.cyan     { color: var(--p-cyan) }
+.button.teal,   .icon.teal  , span.resource.teal     { color: var(--p-teal) }
+.button.pink,   .icon.pink  , span.resource.pink     { color: var(--p-pink) }
+.button.dorange,.icon.dorange  , span.resource.dorange  { color: var(--p-dorange) }
+.button.lblue,  .icon.lblue  , span.resource.lblue   { color: var(--p-lblue) }
+.button.amber,  .icon.anber  , span.resource.amber   { color: var(--p-amber) }
+.button.bgray,  .icon.bgray  , span.resource.bgray   { color: var(--p-bgray) }
 
-.color          { color: white; background-color: #607D8B; border-color: #607D8B }
+.color          { color: white; background-color: var(--p-bgray); border-color: var(--p-bgray) }
 span.icon:not(.composing):not([data-counter]).status.dnd:after,
-.color.red      { color: white; background-color: var(--movim-red); border-color: var(--movim-red) }
+.color.red      { color: white; background-color: var(--p-red); border-color: var(--p-red) }
 span.icon:not(.composing):not([data-counter]).status.xa:after,
 .color.slack,
 .color.discord,
-.color.purple   { color: white; background-color: #9C27B0; border-color: #9C27B0 }
+.color.purple   { color: white; background-color: var(--p-purple); border-color: var(--p-purple) }
 .color.signal,
 .color.mattermost,
-.color.indigo   { color: white; background-color: #3F51B5; border-color: #3F51B5 }
+.color.indigo   { color: white; background-color: var(--p-indigo); border-color: var(--p-indigo) }
 .color.facebook,
-.color.blue     { color: white; background-color: #2196F3; border-color: #2196F3 }
+.color.blue     { color: white; background-color: #var(--p-blue); border-color: #var(--p-blue) }
 span.icon:not(.composing):not([data-counter]).status.chat:after,
 span.icon:not(.composing):not([data-counter]).status.online:after,
 .color.xmpp,
-.color.green    { color: white; background-color: #689F38; border-color: #689F38 }
-.color.orange   { color: white; background-color: #FF9800; border-color: #FF9800 }
+.color.green    { color: white; background-color: var(--p-green); border-color: var(--p-green) }
+.color.orange   { color: white; background-color: var(--p-orange); border-color: var(--p-orange) }
 span.icon:not(.composing):not([data-counter]).status.away:after,
-.color.yellow   { color: white; background-color: #FDD835; border-color: #FDD835 }
+.color.yellow   { color: white; background-color: var(--p-yellow); border-color: var(--p-yellow) }
 span.icon:not(.composing):not([data-counter]).status.server_error:after,
-.color.brown    { color: white; background-color: #795548; border-color: #795548 }
-.color.gray     { color: white; background-color: #9E9E9E; border-color: #9E9E9E }
-.color.black    { color: white; background-color: #000000; border-color: #000000 }
-.color.lime     { color: white; background-color: #CDDC39; border-color: #CDDC39 }
+.color.brown    { color: white; background-color: var(--p-brown); border-color: var(--p-brown) }
+.color.gray     { color: white; background-color: var(--p-gray); border-color: var(--p-gray) }
+.color.black    { color: white; background-color: var(--p-black); border-color: var(--p-black) }
+.color.lime     { color: white; background-color: var(--p-lime); border-color: var(--p-lime) }
 .color.telegram,
-.color.cyan     { color: white; background-color: #00bcd4; border-color: #00bcd4 }
+.color.cyan     { color: white; background-color: var(--p-cyan); border-color: var(--p-cyan) }
 .color.whatsapp,
-.color.teal     { color: white; background-color: #009688; border-color: #009688 }
-.color.pink     { color: white; background-color: #e91e63; border-color: #e91e63 }
+.color.teal     { color: white; background-color: var(--p-teal); border-color: var(--p-teal) }
+.color.pink     { color: white; background-color: var(--p-pink); border-color: var(--p-pink) }
 .color.hackernews,
-.color.dorange  { color: white; background-color: #ff5722; border-color: #ff5722 }
+.color.dorange  { color: white; background-color: var(--p-dorange); border-color: var(--p-dorange) }
 .color.skype,
-.color.lblue    { color: white; background-color: #03a9f4; border-color: #03a9f4 }
-.color.amber    { color: white; background-color: #ffc107; border-color: #ffc107 }
+.color.lblue    { color: white; background-color: var(--p-lblue); border-color: var(--p-lblue) }
+.color.amber    { color: white; background-color: var(--p-amber); border-color: var(--p-amber) }
 .color.steam,
-.color.bgray    { color: white; background-color: #607d8b; border-color: #607d8b }
+.color.bgray    { color: white; background-color: var(--p-bgray); border-color: var(--p-bgray) }
 
 .color.transparent { color: white; background-color: rgba(0, 0, 0, 0); }
 .color.semi { color: rgba(var(--movim-font), 0.87); background-color: rgba(var(--movim-background-main), 0.75); }
-
+rect#red {
+    fill: #6e40aa;
+  }
 form > div > input:focus:invalid,
 form > div > input:focus:required {
-    box-shadow: 0px 2px 0px var(--movim-red);
+    box-shadow: 0px 2px 0px var(--p-red);
 }
 
 form > div > input:invalid,
 form input:focus:invalid + label,
 form textarea:focus:invalid + label {
-    color: var(--movim-red);
+    color: var(--p-red);
 }
 
 /* Chat edit */

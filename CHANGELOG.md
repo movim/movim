@@ -17,6 +17,9 @@ v0.22 (trunk)
  * Fix #1214 Movim is incorrectly generating XEP-0339 <source> element
  * Refactor the internal URL system to move the pages in the path part and not in the parameter part anymore
  * Redirect the old URLs to the new URL system
+ * Refactor the avatar handling system to always fallback to an SVG picture
+ * Simplify and cleanup the views
+ * New Colors and AvatarPlaceholder widgets
 
 v0.21.1
 ---------------------------
