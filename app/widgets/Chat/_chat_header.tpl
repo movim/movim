@@ -1,9 +1,4 @@
 {if="$muc"}
-    {$curl = false}
-    {if="$conference"}
-        {$curl = $conference->getPhoto()}
-    {/if}
-
     <ul class="list middle">
         <li>
             <span class="primary icon active on_mobile_after" id="chatheadercounter" onclick="Chat.get()"
@@ -11,18 +6,11 @@
                 <i class="material-icons">arrow_back</i>
             </span>
 
-            {if="$curl"}
+            {if="$conference"}
                 <span class="primary icon bubble active
                     {if="!$conference->connected"}disabled{/if}"
-                    style="background-image: url({$curl});"
+                    style="background-image: url({$conference->getPhoto()});"
                     onclick="RoomsUtils_ajaxShowSubject('{$jid|echapJS}')">
-            {elseif="$conference"}
-                <span class="primary icon bubble color active {$conference->name|stringToColor}
-                    {if="!$conference->connected"}disabled{/if}"
-                    onclick="RoomsUtils_ajaxShowSubject('{$jid|echapJS}')">
-                    {autoescape="off"}
-                        {$conference->name|firstLetterCapitalize|addEmojis}
-                    {/autoescape}
             {else}
                 <span class="primary icon bubble color active {$jid|stringToColor}"
                     onclick="RoomsUtils_ajaxShowSubject('{$jid|echapJS}')">
@@ -45,24 +33,12 @@
 
             {if="$conference && $conference->info && $conference->info->related"}
                 {$related = $conference->info->related}
-
-                {$url = $related->getPhoto('m')}
-
-                {if="$url"}
-                    <span
-                        title="{$c->__('page.communities')} · {$related->name}"
-                        onclick="MovimUtils.reload('{$c->route('community', [$related->server, $related->node])}')"
-                        class="control icon bubble active small">
-                        <img src="{$url}"/>
-                    </span>
-                {else}
-                    <span
-                        title="{$c->__('page.communities')} · {if="$related->name"}{$related->name}{else}{$related->node}{/if}"
-                        onclick="MovimUtils.reload('{$c->route('community', [$related->server, $related->node])}')"
-                        class="control icon bubble active small color {$related->node|stringToColor}">
-                        {$related->node|firstLetterCapitalize}
-                    </span>
-                {/if}
+                <span
+                    title="{$c->__('page.communities')} · {$related->name}"
+                    onclick="MovimUtils.reload('{$c->route('community', [$related->server, $related->node])}')"
+                    class="control icon bubble active small">
+                    <img src="{$related->getPhoto('m')}"/>
+                </span>
             {/if}
 
             <span class="control icon show_context_menu active {if="$conference && !$conference->connected"}disabled{/if}">

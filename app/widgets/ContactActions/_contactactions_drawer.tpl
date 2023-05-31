@@ -1,8 +1,6 @@
 <section>
     <header class="big color {$contact->jid|stringToColor}"
-        {if="$contact->getPhoto()"}
-            style="background-image: linear-gradient(to bottom, rgba(23,23,23,0.8) 0%, rgba(23,23,23,0.5) 100%), url('{$contact->getBanner('xxl')}');"
-        {/if}
+        style="background-image: linear-gradient(to bottom, rgba(23,23,23,0.8) 0%, rgba(23,23,23,0.5) 100%), url('{if="$roster"}{$roster->getBanner('xxl')}{else}{$contact->getBanner('xxl')}{/if}');"
         >
         <ul class="list thick">
             <li>

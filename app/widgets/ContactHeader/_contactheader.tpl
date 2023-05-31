@@ -4,17 +4,11 @@
     </a>
 {/if}
 
-{$banner = $contact->getBanner()}
-
 <header class="big top color {$contact->jid|stringToColor}"
         style="
                 background-image:
-                linear-gradient(to top, rgba(23,23,23,0.9) 0, rgba(23,23,23,0.6) 5rem, rgba(23,23,23,0) 12rem)
-                {if="$banner"}
-                    , url('{$banner}')
-                {/if}
-                ;
-              ">
+                linear-gradient(to top, rgba(23,23,23,0.9) 0, rgba(23,23,23,0.6) 5rem, rgba(23,23,23,0) 12rem), url('{if="$roster"}{$roster->getBanner('xxl')}{else}{$contact->getBanner('xxl')}{/if}');
+        ">
 
 <ul class="list thick">
     <li class="block large">
@@ -50,7 +44,7 @@
             <i class="material-icons">arrow_back</i>
         </span>
         <span class="primary icon bubble active" onclick="ContactActions_ajaxGetDrawer('{$contact->id|echapJS}')">
-            <img src="{$contact->getPhoto('m')}">
+            <img src="{if="$roster"}{$roster->getPhoto('m')}{else}{$contact->getPhoto('m')}{/if}">
         </span>
         <div>
             <p class="line active" onclick="ContactActions_ajaxGetDrawer('{$contact->id|echapJS}')">

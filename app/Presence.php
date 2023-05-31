@@ -70,7 +70,7 @@ class Presence extends Model
 
     public function getConferencePictureAttribute(): string
     {
-        return Image::getOrCreate($this->mucjid, 120) ?? Route::urlize('avatar', $this->mucjid);
+        return Image::getOrCreate($this->mucjid, 120) ?? Route::urlize('avatar', $this->resource . 'groupchat');
     }
 
     public function getConferenceColorAttribute()
