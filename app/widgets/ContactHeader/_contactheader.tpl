@@ -31,7 +31,7 @@
             {if="$contact->isMe()"}
                 <span class="control icon active white divided" onclick="MovimUtils.reload('{$c->route('conf')}')"
                     title="{$c->__('button.edit')}">
-                    <i class="material-icons">edit</i>
+                    <i class="material-icons">tune</i>
                 </span>
             {else}
                 <span class="control icon active white divided" onclick="ContactActions_ajaxAddAsk('{$contact->id|echapJS}')"

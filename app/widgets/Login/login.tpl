@@ -28,12 +28,13 @@
             {if="$invitation != null"}
                 <ul class="list middle invite">
                     <li>
-                        <span class="primary icon bubble" style="background-image: url({$url});">
+                        <span class="primary icon bubble">
                             <img src="{$contact->getPhoto('m')}">
                         </span>
 
                         {if="$invitation->room && $invitation->room->getPhoto('m')"}
-                            <span class="primary icon bubble" style="background-image: url({$invitation->room->getPhoto('m')});">
+                            <span class="primary icon bubble">
+                                <img src="{$invitation->room->getPhoto('m')}">
                             </span>
                         {/if}
                         <div>

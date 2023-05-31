@@ -10,9 +10,8 @@
                 disabled
             {else}
                 status {$value->presence->presencekey}
-            {/if}"
-            style="background-image: url({$url});">
-            <img src="{$value->getPhoto('m')}" class="color {$value->jid|stringToColor}">
+            {/if}">
+            <img src="{$value->getPhoto('m')}">
         </span>
         <span class="control icon active gray" onclick="SendTo_ajaxSend('{$value->jid|echapJS}', {'uri': '{$uri}'}, false, '{$openlink}')">
             <i class="material-icons">send</i>

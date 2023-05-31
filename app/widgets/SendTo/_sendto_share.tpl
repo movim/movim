@@ -21,8 +21,8 @@
             </li>
             {loop="$conferences"}
                 <li>
-                    <span class="primary icon bubble small"
-                        style="background-image: url({$value->getPhoto()});">
+                    <span class="primary icon bubble small">
+                        <img src="{$value->getPhoto()}">
                     </span>
 
                     <span class="control icon active gray" onclick="SendTo_ajaxSend('{$value->conference|echapJS}', {'uri': '{$uri}'}, true, '{$openlink}');">

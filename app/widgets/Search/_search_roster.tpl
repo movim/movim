@@ -19,7 +19,7 @@
                     status {$value->presence->presencekey}
                 {/if}"
                 onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}'); Drawer.clear();">
-                <img src="{$value->getPhoto('m')}" class="color {$value->jid|stringToColor}">
+                <img src="{$value->getPhoto('m')}">
             </span>
 
             {if="$value->presences->count() > 0"}
