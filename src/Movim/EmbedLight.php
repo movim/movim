@@ -24,7 +24,7 @@ class EmbedLight
     public ?string $providerUrl;
 
     public ?string $license;
-    public ?string $publishedTime;
+    public $publishedTime;
 
     public function __construct($embed)
     {
