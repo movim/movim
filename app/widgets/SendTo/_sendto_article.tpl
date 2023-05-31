@@ -37,7 +37,7 @@
             </li>
             <li>
                 <span class="primary icon bubble">
-                    <img src="{$me->getPhoto()}" class="color {$me->jid|stringToColor}">
+                    <img src="{$me->getPhoto()}">
                 </span>
                 <span class="control icon active gray divided"
                     onclick="MovimUtils.reload('{$c->route('publish', [$c->getUser()->id, 'urn:xmpp:microblog:0', '', $post->server, $post->node, $post->nodeid])}'); Drawer.clear()">

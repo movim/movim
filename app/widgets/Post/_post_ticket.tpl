@@ -47,7 +47,7 @@
         <p>
             {if="$post->contact"}
                 <span class="icon bubble tiny">
-                    <img src="{$post->contact->getPhoto()}" class="color {$post->contact->jid|stringToColor}">
+                    <img src="{$post->contact->getPhoto()}">
                 </span>
                 <a href="{$c->route('contact', $post->contact->jid)}">
                     {$post->contact->truename}
