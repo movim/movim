@@ -108,7 +108,7 @@ var MovimUtils = {
         window.open(url, '_blank');
     },
     reload: function (uri, noHistory) {
-        requestUri = uri;
+        requestUri = uri + '?soft=true';
 
         document.body.classList.add('loading');
         document.body.classList.remove('finished');

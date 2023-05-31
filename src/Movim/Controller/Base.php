@@ -118,6 +118,7 @@ class Base
         if ($headers
          && array_key_exists('Accept', $headers)
          && array_key_exists('Content-Type', $headers)
+         && $this->fetchGet('soft')
          && $headers['Accept'] == 'application/json'
          && $headers['Content-Type'] == 'application/json') {
             $built = $content->build($this->name);
