@@ -13,7 +13,7 @@ var Onboarding = {
 
     setPopups: function() {
         localStorage.setItem('onboardingPopups', true);
-        window.open('?popuptest', '', 'width=100,height=100,status=0,titlebar=0,toolbar=0,menubar=0');
+        window.open('/popuptest', '', 'width=100,height=100,status=0,titlebar=0,toolbar=0,menubar=0');
     }
 }
 
