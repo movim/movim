@@ -1203,12 +1203,7 @@ var Chat = {
                 if (data.icon_url) {
                     var img = document.createElement('img');
                     img.setAttribute('src', data.icon_url);
-
                     icon.appendChild(img);
-                } else {
-                    icon.classList.add('color');
-                    icon.classList.add(data.color);
-                    icon.innerHTML = data.icon;
                 }
 
                 if (data.resource) {

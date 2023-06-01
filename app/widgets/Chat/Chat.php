@@ -1428,7 +1428,6 @@ class Chat extends \Movim\Widget\Base
             }
 
             if ($this->_mucPresences[$key] && $this->_mucPresences[$key] !== true) {
-                $message->icon_url = $this->_mucPresences[$key]->conferencePicture;
                 $message->moderator = ($this->_mucPresences[$key]->mucrole == 'moderator');
                 $message->mucjid = $this->_mucPresences[$key]->mucjid;
                 $message->mine = $message->seen = ($this->_mucPresences[$key]->mucjid == $this->user->id);
@@ -1436,7 +1435,7 @@ class Chat extends \Movim\Widget\Base
                 $this->_mucPresences[$key] = true;
             }
 
-            $message->icon = firstLetterCapitalize($message->resource);
+            $message->icon_url = $this->_mucPresences[$key]->conferencePicture;
         }
 
         // Only used for message replacement
