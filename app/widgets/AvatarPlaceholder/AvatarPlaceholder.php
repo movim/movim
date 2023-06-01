@@ -1,5 +1,7 @@
 <?php
 
+use Cocur\Slugify\Slugify;
+
 class AvatarPlaceholder extends \Movim\Widget\Base
 {
     public function load()
@@ -8,7 +10,7 @@ class AvatarPlaceholder extends \Movim\Widget\Base
 
     public function display()
     {
-        $letters = firstLetterCapitalize($this->get('jid'));
+        $letters = firstLetterCapitalize((new Slugify())->slugify($this->get('jid')));
         header_remove('Content-Type');
         header('Content-Type: image/svg+xml');
 
@@ -23,9 +25,9 @@ class AvatarPlaceholder extends \Movim\Widget\Base
         $defs = $dom->createElement('defs');
         $svg->appendChild($defs);
 
-        $style = $dom->createElement('style', '@import url(\'//theme/css/fonts.css\');
+        $style = $dom->createElement('style', '@import url(\'//theme/fonts/Roboto/font.css\');
         #avatar {
-          font-family: "Roboto";
+          font-family: "Roboto", sans-serif;
           fill: white;
         }');
         $style->setAttribute('type', 'text/css');
@@ -43,7 +45,8 @@ class AvatarPlaceholder extends \Movim\Widget\Base
         $rect->setAttribute('y', '0');
         $g->appendChild($rect);
 
-        $text = $dom->createElement('text', $letters);
+        $text = $dom->createElement('text');
+        $text->appendChild($dom->createTextNode($letters));
         $text->setAttribute('width', '100');
         $text->setAttribute('height', '100');
         $text->setAttribute('x', '50');
