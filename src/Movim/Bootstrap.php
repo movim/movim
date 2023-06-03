@@ -279,7 +279,7 @@ class Bootstrap
         'Confirm','ContactActions','Chat','ChatOmemo','Chats','Config','ContactData','ContactHeader',
         'ContactSubscriptions','Dialog','Drawer','Location','Login',
         'Menu','Navigation','Notif', 'Notifications','NewsNav','Post','PostActions',
-        'Presence','Publish','Rooms','RoomsExplore', 'RoomsUtils', 'Stickers','Toast',
+        'Presence','Publish','Rooms','RoomsExplore','RoomsUtils','Search','Stickers','Toast',
         'Upload','Vcard4','Visio','VisioLink'];
     }
 

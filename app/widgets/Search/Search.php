@@ -5,6 +5,8 @@ use Movim\Widget\Base;
 use Respect\Validation\Validator;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Capsule\Manager as DB;
+use Moxl\Xec\Action\IqGateway;
+use Moxl\Utils;
 
 use App\Post;
 use App\Tag;
@@ -19,6 +21,22 @@ class Search extends Base
     {
         $this->addjs('search.js');
         $this->addcss('search.css');
+        $this->registerEvent('iqgateway_set_handle', 'onIqGatewaySet');
+    }
+
+    public function foundJid($prompt, $jid) {
+        $session = \Movim\Session::start();
+        $jids = $session->get('iqgateway_result_'.$prompt, []);
+        $jids[''.$jid] = 1;
+        $session->set('iqgateway_result_'.$prompt, $jids, 360);
+    }
+
+    public function onIqGatewaySet($packet)
+    {
+        $jid = $packet->content['query']->jid;
+        $prompt = $packet->content['prompt'];
+        $this->foundJid($prompt, $jid);
+        $this->rpc('Search.searchCurrent');
     }
 
     public function ajaxRequest($chatroomActions = false)
@@ -98,9 +116,17 @@ class Search extends Base
                 ->limit(10)
                 ->get();
 
-            if (validateJid($key)) {
+            if (validateJid($key) && strstr($key, '.')) {
                 $contact = new Contact;
                 $contact->id = $key;
+                $contacts->push($contact);
+            }
+
+            $session = \Movim\Session::start();
+            $jids = $session->get('iqgateway_result_'.$key, []);
+            foreach (array_keys($jids) as $jid) {
+                $contact = new Contact;
+                $contact->id = $jid;
                 $contacts->push($contact);
             }
 
@@ -140,6 +166,26 @@ class Search extends Base
 
     public function ajaxSearch($key)
     {
+
+        $session = \Movim\Session::start();
+        if ($key && !$session->has('iqgateway_result_'.$key)) {
+            foreach ($this->user->session->contacts()->with('presence.capability')->get() as $contact) {
+                if (!$contact || !$contact->presence || !$contact->presence->capability) continue;
+                if ($contact->presence->capability->hasFeature("jabber:iq:gateway")) {
+                    $r = (new IqGateway\Set)
+                        ->setTo($contact->presence->jid . ($contact->presence->resource ? '/' . $contact->presence->resource : ''))
+                        ->setPrompt($key)
+                        ->request();
+                } else if ($contact->presence->capability->getGatewayTypeAttribute()) {
+                    if ($contact->presence->capability->hasFeature("jid\\20escaping")) {
+                        $this->foundJid($key, Utils::escapeJidLocalpart($key).'@'.$contact->presence->jid);
+                    } else {
+                        $this->foundJid($key, str_replace('@', '%', $key).'@'.$contact->presence->jid);
+                    }
+                }
+            }
+        }
+
         $this->rpc('MovimTpl.fill', '#results', $this->prepareSearch($key));
         $this->rpc('Search.searchClear');
     }

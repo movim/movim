@@ -22,6 +22,7 @@ class Set extends Action
         $this->prepare($stanza, $parent);
         $this->pack([
             'query' => $stanza->query,
+            'prompt' => $this->_prompt,
             'extra' => $this->_extra
         ]);
         $this->deliver();
