@@ -34,7 +34,6 @@ class Muclumbus
             $x->appendChild($q);
         }
 
-        $xml = \Moxl\API::iqWrapper($search, 'rodrigo.de.mucobedo@dreckshal.de', 'get');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($search, 'rodrigo.de.mucobedo@dreckshal.de', 'get'));
     }
 }

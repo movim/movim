@@ -15,8 +15,7 @@ class Bookmark2
         $items->setAttribute('node', 'urn:xmpp:bookmarks:'.$version);
         $pubsub->appendChild($items);
 
-        $xml = \Moxl\API::iqWrapper($pubsub, false, 'get');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, false, 'get'));
     }
 
     public static function set(Conference $conf, $version = '1')
@@ -74,42 +73,17 @@ class Bookmark2
         $x->setAttribute('type', 'submit');
         $publishOption->appendChild($x);
 
-        $field = $dom->createElement('field');
-        $field->setAttribute('var', 'FORM_TYPE');
-        $field->setAttribute('type', 'hidden');
-        $field->appendChild($dom->createElement('value', 'http://jabber.org/protocol/pubsub#publish-options'));
-        $x->appendChild($field);
-
-        $field = $dom->createElement('field');
-        $field->setAttribute('var', 'pubsub#persist_items');
-        $field->appendChild($dom->createElement('value', 'true'));
-        $x->appendChild($field);
-
-        $field = $dom->createElement('field');
-        $field->setAttribute('var', 'pubsub#access_model');
-        $field->appendChild($dom->createElement('value', 'whitelist'));
-        $x->appendChild($field);
-
-        /*
-        $field = $dom->createElement('field');
-        $field->setAttribute('var', 'pubsub#send_last_published_item');
-        $field->appendChild($dom->createElement('value', 'never'));
-        $x->appendChild($field);
-
-        $field = $dom->createElement('field');
-        $field->setAttribute('var', 'pubsub#max_items');
-        $field->appendChild($dom->createElement('value', 'max'));
-        $x->appendChild($field);
-
-        $field = $dom->createElement('field');
-        $field->setAttribute('var', 'pubsub#pubsub#notify_retract');
-        $field->appendChild($dom->createElement('value', 'true'));
-        $x->appendChild($field);
-        */
+        \Moxl\Utils::injectConfigInX($x, [
+            'FORM_TYPE' => 'http://jabber.org/protocol/pubsub#publish-options',
+            'pubsub#persist_items' => 'true',
+            'pubsub#access_model' => 'whitelist',
+            //'pubsub#send_last_published_item' => 'never',
+            //'pubsub#max_items' => 'max',
+            //'pubsub#notify_retract' => 'true',
+        ]);
 
         $pubsub->appendChild($publishOption);
 
-        $xml = \Moxl\API::iqWrapper($pubsub, false, 'set');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, false, 'set'));
     }
 }

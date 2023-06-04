@@ -75,8 +75,39 @@ class Utils
             'http://jabber.org/protocol/geoloc+notify',
             'http://jabber.org/protocol/pubsub',
             //'http://jabber.org/protocol/tune',
-            //'http://jabber.org/protocol/tune+notify'
+            //'http://jabber.org/protocol/tune+notify';
         ];
+    }
+
+    public static function injectConfigInX(\DOMNode $x, array $inputs)
+    {
+        foreach ($inputs as $key => $value) {
+            $field = $x->ownerDocument->createElement('field');
+            $x->appendChild($field);
+
+            if ($key == 'FORM_TYPE') {
+                $field->setAttribute('type', 'hidden');
+            }
+
+            $val = $x->ownerDocument->createElement('value');
+            $field->appendChild($val);
+
+            if (is_bool($value)) {
+                $val->nodeValue = ($value) ? '1' : '0';
+            } else {
+                if ($value === 'true') {
+                    $val->nodeValue = '1';
+                }
+
+                if ($value === 'false') {
+                    $val->nodeValue = '0';
+                } elseif (empty($val->nodeValue)) {
+                    $val->nodeValue = trim($value);
+                }
+            }
+
+            $field->setAttribute('var', trim($key));
+        }
     }
 
     public static function generateCaps()

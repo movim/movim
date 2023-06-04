@@ -94,12 +94,12 @@ class Config extends Base
         }
     }
 
-    public function ajaxBlogSetConfig($data)
+    public function ajaxBlogSetConfig(stdClass $data)
     {
         if ($this->user->hasPubsub()) {
             $r = new PubsubSetConfig;
             $r->setNode('urn:xmpp:microblog:0')
-              ->setData($data)
+              ->setData(formToArray($data))
               ->request();
         }
     }

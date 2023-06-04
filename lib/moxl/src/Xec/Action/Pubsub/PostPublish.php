@@ -4,14 +4,13 @@ namespace Moxl\Xec\Action\Pubsub;
 
 use Moxl\Stanza\Pubsub;
 use Moxl\Stanza\PubsubAtom;
-use Moxl\Xec\Action\Pubsub\GetItem;
 use Moxl\Xec\Action;
 
 class PostPublish extends Action
 {
     private $_node;
     private $_to = '';
-    private $_atom;
+    private PubsubAtom $_atom;
     private $_repost;
 
     public function __construct()

@@ -31,15 +31,13 @@ class Stream
         $bind = $dom->createElementNS('urn:ietf:params:xml:ns:xmpp-bind', 'bind');
         $bind->appendChild($dom->createElement('resource', $resource));
 
-        $xml = \Moxl\API::iqWrapper($bind, false, 'set');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($bind, false, 'set'));
     }
 
     public static function sessionStart($to)
     {
         $dom = new \DOMDocument('1.0', 'utf-8');
         $session = $dom->createElementNS('urn:ietf:params:xml:ns:xmpp-session', 'session');
-        $xml = \Moxl\API::iqWrapper($session, $to, 'set');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($session, $to, 'set'));
     }
 }

@@ -12,7 +12,6 @@ class Upload
         $request->setAttribute('size', $size);
         $request->setAttribute('content-type', $type);
 
-        $xml = \Moxl\API::iqWrapper($request, $to, 'get');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($request, $to, 'get'));
     }
 }

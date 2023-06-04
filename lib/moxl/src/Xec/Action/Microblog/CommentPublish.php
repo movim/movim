@@ -14,7 +14,7 @@ class CommentPublish extends Action
     protected $_parentid;
     protected $_commentnodeid;
 
-    protected $_atom;
+    protected PubsubAtom $_atom;
 
     public function __construct()
     {

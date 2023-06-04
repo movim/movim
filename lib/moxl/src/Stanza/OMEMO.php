@@ -14,8 +14,7 @@ class OMEMO
         $publish->setAttribute('node', 'eu.siacs.conversations.axolotl.devicelist');
         $pubsub->appendChild($publish);
 
-        $xml = \Moxl\API::iqWrapper($pubsub, $to, 'get');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'get'));
     }
 
     public static function setDeviceList($ids)
@@ -42,8 +41,7 @@ class OMEMO
             $list->appendChild($device);
         }
 
-        $xml = \Moxl\API::iqWrapper($pubsub, false, 'set');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, false, 'set'));
     }
 
     public static function getBundle($to, $id)
@@ -56,8 +54,7 @@ class OMEMO
         $items->setAttribute('node', 'eu.siacs.conversations.axolotl.bundles:'.$id);
         $pubsub->appendChild($items);
 
-        $xml = \Moxl\API::iqWrapper($pubsub, $to, 'get');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'get'));
     }
 
     public static function announceBundle(
@@ -105,7 +102,6 @@ class OMEMO
             $i++;
         }
 
-        $xml = \Moxl\API::iqWrapper($pubsub, false, 'set');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, false, 'set'));
     }
 }

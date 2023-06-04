@@ -2,11 +2,12 @@
 
 namespace Moxl;
 
+use DOMNode;
 use Movim\Session;
 
 class API
 {
-    public static function iqWrapper($xml = false, $to = false, $type = false, $id = false)
+    public static function iqWrapper(?DOMNode $xml = null, $to = false, $type = false, $id = false): string|false
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $iq = $dom->createElementNS('jabber:client', 'iq');
@@ -42,14 +43,8 @@ class API
         }
 
         if ($xml != false) {
-            if (is_string($xml)) {
-                $f = $dom->createDocumentFragment();
-                $f->appendXML($xml);
-                $iq->appendChild($f);
-            } else {
-                $xml = $dom->importNode($xml, true);
-                $iq->appendChild($xml);
-            }
+            $xml = $dom->importNode($xml, true);
+            $iq->appendChild($xml);
         }
 
         return $dom->saveXML($dom->documentElement);

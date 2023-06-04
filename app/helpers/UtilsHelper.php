@@ -190,6 +190,18 @@ function resolveInfos($postCollection)
     }
 }
 
+/** Form to array */
+function formToArray(stdClass $form): array
+{
+    $values = [];
+
+    foreach ($form as $key => $value) {
+        $values[$key] = $value->value;
+    }
+
+    return $values;
+}
+
 /**
  * Return a picture with a specific size
  */

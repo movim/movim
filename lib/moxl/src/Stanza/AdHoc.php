@@ -10,22 +10,20 @@ class AdHoc
         $query = $dom->createElementNS('http://jabber.org/protocol/disco#items', 'query');
         $query->setAttribute('node', 'http://jabber.org/protocol/commands');
 
-        $xml = \Moxl\API::iqWrapper($query, $to, 'get');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($query, $to, 'get'));
     }
 
-    public static function command($to, $node)
+    public static function command($to, string $node)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('http://jabber.org/protocol/commands', 'command');
         $query->setAttribute('node', $node);
         $query->setAttribute('action', 'execute');
 
-        $xml = \Moxl\API::iqWrapper($query, $to, 'set');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($query, $to, 'set'));
     }
 
-    public static function submit($to, $node, $data, $sessionid)
+    public static function submit($to, string $node, array $data, string $sessionid)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $command = $dom->createElementNS('http://jabber.org/protocol/commands', 'command');
@@ -37,11 +35,8 @@ class AdHoc
         $x->setAttribute('type', 'submit');
         $command->appendChild($x);
 
-        $xmpp = new \FormtoXMPP($data);
-        $xmpp->create();
-        $xmpp->appendToX($dom);
+        \Moxl\Utils::injectConfigInX($x, $data);
 
-        $xml = \Moxl\API::iqWrapper($command, $to, 'set');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($command, $to, 'set'));
     }
 }

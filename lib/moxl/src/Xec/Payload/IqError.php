@@ -11,6 +11,7 @@ class IqError extends Payload
         if ($stanza->attributes()->type != 'error') {
             $to = (string)$stanza->attributes()->from;
             $id = (string)$stanza->attributes()->id;
+
             Iq::error($to, $id);
         }
     }

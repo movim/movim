@@ -13,7 +13,7 @@ class Delete extends Action
     public function request()
     {
         $this->store();
-        Pubsub::postDelete(false, 'urn:xmpp:bookmarks:'.$this->_version, $this->_id);
+        Pubsub::itemDelete(false, 'urn:xmpp:bookmarks:'.$this->_version, $this->_id);
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)

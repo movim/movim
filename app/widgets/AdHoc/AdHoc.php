@@ -112,7 +112,7 @@ class AdHoc extends \Movim\Widget\Base
         $s = new Submit;
         $s->setTo($jid)
           ->setNode($node)
-          ->setData($data)
+          ->setData(formToArray($data))
           ->setSessionid($sessionid)
           ->request();
     }

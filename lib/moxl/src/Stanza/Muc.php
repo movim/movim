@@ -81,8 +81,7 @@ class Muc
         $destroy->setAttribute('jid', $to);
         $query->appendChild($destroy);
 
-        $xml = \Moxl\API::iqWrapper($query, $to, 'set');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($query, $to, 'set'));
     }
 
     public static function setRole($to, $nick, $role)
@@ -95,8 +94,7 @@ class Muc
         $item->setAttribute('role', $role);
         $query->appendChild($item);
 
-        $xml = \Moxl\API::iqWrapper($query, $to, 'set');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($query, $to, 'set'));
     }
 
     public static function getConfig($to)
@@ -104,11 +102,10 @@ class Muc
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('http://jabber.org/protocol/muc#owner', 'query');
 
-        $xml = \Moxl\API::iqWrapper($query, $to, 'get');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($query, $to, 'get'));
     }
 
-    public static function setConfig($to, $data)
+    public static function setConfig($to, array $data)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('http://jabber.org/protocol/muc#owner', 'query');
@@ -118,12 +115,9 @@ class Muc
         $x->setAttribute('type', 'submit');
         $query->appendChild($x);
 
-        $xmpp = new \FormtoXMPP($data);
-        $xmpp->create();
-        $xmpp->appendToX($dom);
+        \Moxl\Utils::injectConfigInX($x, $data);
 
-        $xml = \Moxl\API::iqWrapper($query, $to, 'set');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($query, $to, 'set'));
     }
 
     public static function changeAffiliation(string $to, string $jid, string $affiliation, ?string $reason)
@@ -142,8 +136,7 @@ class Muc
             $item->appendChild($reason);
         }
 
-        $xml = \Moxl\API::iqWrapper($query, $to, 'set');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($query, $to, 'set'));
     }
 
     public static function createGroupChat($to, $name)
@@ -204,8 +197,7 @@ class Muc
         $value = $dom->createElement('value', 'none');
         $field->appendChild($value);*/
 
-        $xml = \Moxl\API::iqWrapper($query, $to, 'set');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($query, $to, 'set'));
     }
 
     public static function createChannel($to, $name)
@@ -266,8 +258,7 @@ class Muc
         $value = $dom->createElement('value', 'anyone');
         $field->appendChild($value);*/
 
-        $xml = \Moxl\API::iqWrapper($query, $to, 'set');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($query, $to, 'set'));
     }
 
     public static function getMembers($to, $affiliation)
@@ -279,7 +270,6 @@ class Muc
         $item->setAttribute('affiliation', $affiliation);
         $query->appendChild($item);
 
-        $xml = \Moxl\API::iqWrapper($query, $to, 'get');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($query, $to, 'get'));
     }
 }

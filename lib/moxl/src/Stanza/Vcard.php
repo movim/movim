@@ -8,8 +8,7 @@ class Vcard
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $vcard = $dom->createElementNS('vcard-temp', 'vCard');
-        $xml = \Moxl\API::iqWrapper($vcard, $to, 'get');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($vcard, $to, 'get'));
     }
 
     public static function set($to, $data)
@@ -65,7 +64,6 @@ class Vcard
             $vcard->appendChild($photo);
         }
 
-        $xml = \Moxl\API::iqWrapper($vcard, $to, 'set');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($vcard, $to, 'set'));
     }
 }

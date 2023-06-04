@@ -20,7 +20,6 @@ class Nickname
         $nick->setAttribute('xmlns', 'http://jabber.org/protocol/nick');
         $item->appendChild($nick);
 
-        $xml = \Moxl\API::iqWrapper($pubsub, false, 'set');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, false, 'set'));
     }
 }

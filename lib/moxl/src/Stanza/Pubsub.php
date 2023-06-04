@@ -2,9 +2,11 @@
 
 namespace Moxl\Stanza;
 
+use stdClass;
+
 class Pubsub
 {
-    public static function create($to, $node, $name)
+    public static function create($to, string $node, string $name)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
@@ -20,61 +22,20 @@ class Pubsub
         $x->setAttribute('type', 'submit');
         $configure->appendChild($x);
 
-        $field = $dom->createElement('field');
-        $field->setAttribute('var', 'FORM_TYPE');
-        $field->setAttribute('type', 'hidden');
-        $x->appendChild($field);
+        \Moxl\Utils::injectConfigInX($x, [
+            'FORM_TYPE' => 'http://jabber.org/protocol/pubsub#node_config',
+            'pubsub#persist_items' => 'true',
+            'pubsub#deliver_payloads' => 'false',
+            'pubsub#send_last_published_item' => 'on_sub',
+            'pubsub#access_model' => 'open',
+            'pubsub#max_items' => 'max',
+            'pubsub#title' => $name
+        ]);
 
-        $value = $dom->createElement('value', 'http://jabber.org/protocol/pubsub#node_config');
-        $field->appendChild($value);
-
-        $field = $dom->createElement('field');
-        $field->setAttribute('var', 'pubsub#persist_items');
-        $x->appendChild($field);
-
-        $value = $dom->createElement('value', 'true');
-        $field->appendChild($value);
-
-        $field = $dom->createElement('field');
-        $field->setAttribute('var', 'pubsub#deliver_payloads');
-        $x->appendChild($field);
-
-        $value = $dom->createElement('value', 'false');
-        $field->appendChild($value);
-
-        $field = $dom->createElement('field');
-        $field->setAttribute('var', 'pubsub#send_last_published_item');
-        $x->appendChild($field);
-
-        $value = $dom->createElement('value', 'on_sub');
-        $field->appendChild($value);
-
-        $field = $dom->createElement('field');
-        $field->setAttribute('var', 'pubsub#access_model');
-        $x->appendChild($field);
-
-        $value = $dom->createElement('value', 'open');
-        $field->appendChild($value);
-
-        $field = $dom->createElement('field');
-        $field->setAttribute('var', 'pubsub#max_items');
-        $x->appendChild($field);
-
-        $value = $dom->createElement('value', 'max');
-        $field->appendChild($value);
-
-        $field = $dom->createElement('field');
-        $field->setAttribute('var', 'pubsub#title');
-        $x->appendChild($field);
-
-        $value = $dom->createElement('value', $name);
-        $field->appendChild($value);
-
-        $xml = \Moxl\API::iqWrapper($pubsub, $to, 'set');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'set'));
     }
 
-    public static function delete($to, $node)
+    public static function delete($to, string $node)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub#owner', 'pubsub');
@@ -82,11 +43,10 @@ class Pubsub
         $delete->setAttribute('node', $node);
         $pubsub->appendChild($delete);
 
-        $xml = \Moxl\API::iqWrapper($pubsub, $to, 'set');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'set'));
     }
 
-    public static function createCommentNode($to, $node)
+    public static function createCommentNode($to, string $node)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElement('pubsub');
@@ -104,75 +64,22 @@ class Pubsub
         $x->setAttribute('type', 'submit');
         $configure->appendChild($x);
 
-        $field = $dom->createElement('field');
-        $field->setAttribute('var', 'FORM_TYPE');
-        $field->setAttribute('type', 'hidden');
-        $x->appendChild($field);
+        \Moxl\Utils::injectConfigInX($x, [
+            'FORM_TYPE' => 'http://jabber.org/protocol/pubsub#node_config',
+            'pubsub#persist_items' => 'true',
+            'pubsub#max_items' => 'max',
+            'pubsub#send_last_published_item' => 'on_sub',
+            'pubsub#deliver_payloads' => 'false',
+            'pubsub#access_model' => 'open',
+            'pubsub#publish_model' => 'open',
+            'pubsub#itemreply' => 'publisher',
+            'pubsub#notify_retract' => 'true',
+        ]);
 
-        $value = $dom->createElement('value', 'http://jabber.org/protocol/pubsub#node_config');
-        $field->appendChild($value);
-
-        $field = $dom->createElement('field');
-        $field->setAttribute('var', 'pubsub#deliver_payloads');
-        $x->appendChild($field);
-
-        $value = $dom->createElement('value', 'false');
-        $field->appendChild($value);
-
-        $field = $dom->createElement('field');
-        $field->setAttribute('var', 'pubsub#persist_items');
-        $x->appendChild($field);
-
-        $value = $dom->createElement('value', 'true');
-        $field->appendChild($value);
-
-        $field = $dom->createElement('field');
-        $field->setAttribute('var', 'pubsub#access_model');
-        $x->appendChild($field);
-
-        $value = $dom->createElement('value', 'open');
-        $field->appendChild($value);
-
-        $field = $dom->createElement('field');
-        $field->setAttribute('var', 'pubsub#notify_retract');
-        $x->appendChild($field);
-
-        $value = $dom->createElement('value', 'true');
-        $field->appendChild($value);
-
-        $field = $dom->createElement('field');
-        $field->setAttribute('var', 'pubsub#max_items');
-        $x->appendChild($field);
-
-        $value = $dom->createElement('value', 'max');
-        $field->appendChild($value);
-
-        $field = $dom->createElement('field');
-        $field->setAttribute('var', 'pubsub#itemreply');
-        $x->appendChild($field);
-
-        $value = $dom->createElement('value', 'publisher');
-        $field->appendChild($value);
-
-        $field = $dom->createElement('field');
-        $field->setAttribute('var', 'pubsub#send_last_published_item');
-        $x->appendChild($field);
-
-        $value = $dom->createElement('value', 'on_sub');
-        $field->appendChild($value);
-
-        $field = $dom->createElement('field');
-        $field->setAttribute('var', 'pubsub#publish_model');
-        $x->appendChild($field);
-
-        $value = $dom->createElement('value', 'open');
-        $field->appendChild($value);
-
-        $xml = \Moxl\API::iqWrapper($pubsub, $to, 'set');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'set'));
     }
 
-    public static function subscribe($to, $from, $node)
+    public static function subscribe($to, $from, string $node)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
@@ -181,11 +88,10 @@ class Pubsub
         $subscribe->setAttribute('jid', $from);
         $pubsub->appendChild($subscribe);
 
-        $xml = \Moxl\API::iqWrapper($pubsub, $to, 'set');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'set'));
     }
 
-    public static function unsubscribe($to, $from, $node, $subid)
+    public static function unsubscribe($to, $from, string $node, $subid)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
@@ -199,11 +105,10 @@ class Pubsub
 
         $pubsub->appendChild($unsubscribe);
 
-        $xml = \Moxl\API::iqWrapper($pubsub, $to, 'set');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'set'));
     }
 
-    public static function getSubscriptions($to, $node)
+    public static function getSubscriptions($to, string $node)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub#owner', 'pubsub');
@@ -211,11 +116,10 @@ class Pubsub
         $subscriptions->setAttribute('node', $node);
         $pubsub->appendChild($subscriptions);
 
-        $xml = \Moxl\API::iqWrapper($pubsub, $to, 'get');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'get'));
     }
 
-    public static function getItems($to, $node, $paging = 10, $after = false, $before = null, $skip = 0, $query = null)
+    public static function getItems($to, string $node, $paging = 10, $after = false, $before = null, $skip = 0, $query = null)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
@@ -271,11 +175,10 @@ class Pubsub
 
         $pubsub->appendChild($items);
 
-        $xml = \Moxl\API::iqWrapper($pubsub, $to, 'get');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'get'));
     }
 
-    public static function getItem($to, $node, $id)
+    public static function getItem($to, string $node, string $id)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
@@ -287,11 +190,10 @@ class Pubsub
         $item->setAttribute('id', $id);
         $items->appendChild($item);
 
-        $xml = \Moxl\API::iqWrapper($pubsub, $to, 'get');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'get'));
     }
 
-    public static function postPublish($to, $node, $atom)
+    public static function postPublish($to, string $node, $atom)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
 
@@ -314,51 +216,27 @@ class Pubsub
         $x->setAttribute('type', 'submit');
         $publishOption->appendChild($x);
 
-        $field = $dom->createElement('field');
-        $field->setAttribute('var', 'FORM_TYPE');
-        $field->setAttribute('type', 'hidden');
-        $field->appendChild($dom->createElement('value', 'http://jabber.org/protocol/pubsub#publish-options'));
-        $x->appendChild($field);
-
-        $field = $dom->createElement('field');
-        $field->setAttribute('var', 'pubsub#persist_items');
-        $field->appendChild($dom->createElement('value', 'true'));
-        $x->appendChild($field);
-
-        /*
-        $field = $dom->createElement('field');
-        $field->setAttribute('var', 'pubsub#max_items');
-        $field->appendChild($dom->createElement('value', 'max'));
-        $x->appendChild($field);
-
-        $field = $dom->createElement('field');
-        $field->setAttribute('var', 'pubsub#itemreply');
-        $field->appendChild($dom->createElement('value', 'publisher'));
-        $x->appendChild($field);
-        */
+        \Moxl\Utils::injectConfigInX($x, [
+            'FORM_TYPE' => 'http://jabber.org/protocol/pubsub#publish-options',
+            'pubsub#persist_items' => 'true',
+            //'pubsub#max_items' => 'max',
+            //'pubsub#itemreply' => 'publisher',
+        ]);
 
         if ($node == 'urn:xmpp:microblog:0') {
-            /*$field = $dom->createElement('field');
-            $field->setAttribute('var', 'pubsub#access_model');
-            $field->appendChild($dom->createElement('value', 'presence'));
-            $x->appendChild($field);*/
-
-            /*
-            $field = $dom->createElement('field');
-            $field->setAttribute('var', 'pubsub#pubsub#notify_retract');
-            $field->appendChild($dom->createElement('value', 'true'));
-            $x->appendChild($field);
-            */
+            \Moxl\Utils::injectConfigInX($x, [
+                //'pubsub#access_model' => 'presence',
+                //'pubsub#notif_retract' => 'true',
+            ]);
         }
 
         $pubsub->appendChild($publishOption);
 
-        $xml = \Moxl\API::iqWrapper($pubsub, $to, 'set');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'set'));
     }
 
 
-    public static function testPostPublish($to, $node, $id)
+    public static function testPostPublish($to, string $node, string $id)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
@@ -380,41 +258,25 @@ class Pubsub
         $x->setAttribute('type', 'submit');
         $publishOption->appendChild($x);
 
-        $field = $dom->createElement('field');
-        $field->setAttribute('var', 'FORM_TYPE');
-        $field->setAttribute('type', 'hidden');
-        $field->appendChild($dom->createElement('value', 'http://jabber.org/protocol/pubsub#publish-options'));
-        $x->appendChild($field);
+        \Moxl\Utils::injectConfigInX($x, [
+            'FORM_TYPE' => 'http://jabber.org/protocol/pubsub#publish-options',
+            'pubsub#persist_items' => 'true',
+            //'pubsub#max_items' => 'max',
+            //'pubsub#send_last_published_item' => 'never',
+            //'pubsub#notify_retract' => 'true',
+        ]);
 
         $field = $dom->createElement('field');
         $field->setAttribute('var', 'pubsub#persist_items');
         $field->appendChild($dom->createElement('value', 'true'));
         $x->appendChild($field);
 
-        /*
-        $field = $dom->createElement('field');
-        $field->setAttribute('var', 'pubsub#send_last_published_item');
-        $field->appendChild($dom->createElement('value', 'never'));
-        $x->appendChild($field);
-
-        $field = $dom->createElement('field');
-        $field->setAttribute('var', 'pubsub#max_items');
-        $field->appendChild($dom->createElement('value', 'max'));
-        $x->appendChild($field);
-
-        $field = $dom->createElement('field');
-        $field->setAttribute('var', 'pubsub#pubsub#notify_retract');
-        $field->appendChild($dom->createElement('value', 'true'));
-        $x->appendChild($field);
-        */
-
         $pubsub->appendChild($publishOption);
 
-        $xml = \Moxl\API::iqWrapper($pubsub, $to, 'set');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'set'));
     }
 
-    public static function postDelete($to, $node, $id)
+    public static function itemDelete($to, string $node, string $id)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
@@ -427,11 +289,10 @@ class Pubsub
         $item->setAttribute('id', $id);
         $retract->appendChild($item);
 
-        $xml = \Moxl\API::iqWrapper($pubsub, $to, 'set');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'set'));
     }
 
-    public static function getConfig($to, $node)
+    public static function getConfig($to, string $node)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub#owner', 'pubsub');
@@ -439,11 +300,10 @@ class Pubsub
         $configure->setAttribute('node', $node);
         $pubsub->appendChild($configure);
 
-        $xml = \Moxl\API::iqWrapper($pubsub, $to, 'get');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'get'));
     }
 
-    public static function setConfig($to, $node, $data)
+    public static function setConfig($to, string $node, array $data)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub#owner', 'pubsub');
@@ -458,15 +318,12 @@ class Pubsub
         $x->setAttribute('type', 'submit');
         $configure->appendChild($x);
 
-        $xmpp = new \FormtoXMPP($data);
-        $xmpp->create();
-        $xmpp->appendToX($dom);
+        \Moxl\Utils::injectConfigInX($x, $data);
 
-        $xml = \Moxl\API::iqWrapper($pubsub, $to, 'set');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'set'));
     }
 
-    public static function getAffiliations($to, $node)
+    public static function getAffiliations($to, string $node)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub#owner', 'pubsub');
@@ -474,11 +331,10 @@ class Pubsub
         $affiliations->setAttribute('node', $node);
         $pubsub->appendChild($affiliations);
 
-        $xml = \Moxl\API::iqWrapper($pubsub, $to, 'get');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'get'));
     }
 
-    public static function setAffiliations($to, $node, $data)
+    public static function setAffiliations($to, string $node, array $data)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub#owner', 'pubsub');
@@ -493,7 +349,6 @@ class Pubsub
             $affiliations->appendChild($affiliation);
         }
 
-        $xml = \Moxl\API::iqWrapper($pubsub, $to, 'set');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'set'));
     }
 }

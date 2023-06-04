@@ -8,8 +8,8 @@ use Moxl\Xec\Action;
 class SetConfig extends Action
 {
     protected $_to;
-    protected $_node;
-    protected $_data;
+    protected string $_node;
+    protected array $_data;
 
     public function request()
     {

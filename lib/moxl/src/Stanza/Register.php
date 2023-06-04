@@ -25,14 +25,14 @@ class Register
             $query->appendChild($dom->createElement('password', $data->generic_password->value));
 
             $xml = \Moxl\API::iqWrapper($query, $to, 'set');
-        } else {
+        } /*else {
             $xml = '
                 <query xmlns="jabber:iq:register">
                     '.$form.'
                 </query>
                 ';
             $xml = \Moxl\API::iqWrapper($xml, $to, 'set');
-        }
+        }*/
 
         \Moxl\API::request($xml);
     }
@@ -54,7 +54,6 @@ class Register
         $query->appendChild($dom->createElement('username', $username));
         $query->appendChild($dom->createElement('password', $password));
 
-        $xml = \Moxl\API::iqWrapper($query, $to, 'set');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($query, $to, 'set'));
     }
 }

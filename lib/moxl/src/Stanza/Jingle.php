@@ -73,8 +73,7 @@ class Jingle
 
     public static function sessionInitiate($to, $offer)
     {
-        $xml = \Moxl\API::iqWrapper($offer, $to, 'set');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($offer, $to, 'set'));
     }
 
     public static function sessionTerminate($to, $sid, $value)
@@ -90,8 +89,7 @@ class Jingle
         $item = $dom->createElement($value);
         $reason->appendChild($item);
 
-        $xml = \Moxl\API::iqWrapper($jingle, $to, 'set');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($jingle, $to, 'set'));
     }
 
     public static function sessionMute($to, $sid, $name = false)
@@ -110,8 +108,7 @@ class Jingle
 
         $jingle->appendChild($mute);
 
-        $xml = \Moxl\API::iqWrapper($jingle, $to, 'set');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($jingle, $to, 'set'));
     }
 
     public static function sessionUnmute($to, $sid, $name = false)
@@ -130,8 +127,7 @@ class Jingle
 
         $jingle->appendChild($mute);
 
-        $xml = \Moxl\API::iqWrapper($jingle, $to, 'set');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($jingle, $to, 'set'));
     }
 
     public static function unknownSession($to, $id)
@@ -143,7 +139,6 @@ class Jingle
         $fni = $dom->createElementNS('urn:xmpp:jingle:errors:1', 'unknown-session');
         $error->appendChild($fni);
 
-        $xml = \Moxl\API::iqWrapper($error, $to, 'error', $id);
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($error, $to, 'error', $id));
     }
 }

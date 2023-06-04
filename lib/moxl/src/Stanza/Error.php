@@ -13,7 +13,6 @@ class Error
         $fni = $dom->createElementNS('urn:ietf:params:xml:ns:xmpp-stanzas', 'feature-not-implemented');
         $error->appendChild($fni);
 
-        $xml = \Moxl\API::iqWrapper($error, $to, 'error', $id);
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($error, $to, 'error', $id));
     }
 }

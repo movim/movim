@@ -90,8 +90,7 @@ class Presence
      */
     public static function simple()
     {
-        $xml = self::maker();
-        \Moxl\API::request($xml);
+        \Moxl\API::request(self::maker());
     }
 
     /*
@@ -99,8 +98,7 @@ class Presence
      */
     public static function unavailable($to = false, $status = false, $type = false)
     {
-        $xml = self::maker($to, $status, type: 'unavailable');
-        \Moxl\API::request($xml, $type);
+        \Moxl\API::request(self::maker($to, $status, type: 'unavailable'));
     }
 
     /*
@@ -108,8 +106,7 @@ class Presence
      */
     public static function subscribe($to, $status)
     {
-        $xml = self::maker($to, $status, type: 'subscribe');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(self::maker($to, $status, type: 'subscribe'));
     }
 
     /*
@@ -117,8 +114,7 @@ class Presence
      */
     public static function unsubscribe($to, $status)
     {
-        $xml = self::maker($to, $status, type: 'unsubscribe');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(self::maker($to, $status, type: 'unsubscribe'));
     }
 
     /*
@@ -126,8 +122,7 @@ class Presence
      */
     public static function subscribed($to)
     {
-        $xml = self::maker($to, type: 'subscribed');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(self::maker($to, type: 'subscribed'));
     }
 
     /*
@@ -135,8 +130,7 @@ class Presence
      */
     public static function unsubscribed($to)
     {
-        $xml = self::maker($to, type: 'unsubscribed');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(self::maker($to, type: 'unsubscribed'));
     }
 
     /*
@@ -144,8 +138,7 @@ class Presence
      */
     public static function muc($to, $nickname = false, $mam = false)
     {
-        $xml = self::maker($to . '/' . $nickname, muc: true, mam: $mam);
-        \Moxl\API::request($xml);
+        \Moxl\API::request(self::maker($to . '/' . $nickname, muc: true, mam: $mam));
     }
 
     /*
@@ -153,8 +146,7 @@ class Presence
      */
     public static function away($status = false, $last = 0)
     {
-        $xml = self::maker(false, status: $status, show: 'away', last: $last);
-        \Moxl\API::request($xml);
+        \Moxl\API::request(self::maker(false, status: $status, show: 'away', last: $last));
     }
 
     /*
@@ -162,8 +154,7 @@ class Presence
      */
     public static function chat($status = false)
     {
-        $xml = self::maker(false, status: $status, show: 'chat');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(self::maker(false, status: $status, show: 'chat'));
     }
 
     /*
@@ -171,8 +162,7 @@ class Presence
      */
     public static function DND($status = false)
     {
-        $xml = self::maker(false, status: $status, show: 'dnd');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(self::maker(false, status: $status, show: 'dnd'));
     }
 
     /*
@@ -180,7 +170,6 @@ class Presence
      */
     public static function XA($status = false)
     {
-        $xml = self::maker(false, status: $status, show: 'xa');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(self::maker(false, status: $status, show: 'xa'));
     }
 }

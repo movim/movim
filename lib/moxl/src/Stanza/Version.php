@@ -13,7 +13,6 @@ class Version
         $query->appendChild($dom->createElement('version', $version));
         $query->appendChild($dom->createElement('os', $os));
 
-        $xml = \Moxl\API::iqWrapper($query, $to, 'result', $id);
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($query, $to, 'result', $id));
     }
 }

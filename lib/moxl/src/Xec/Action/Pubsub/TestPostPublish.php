@@ -19,7 +19,7 @@ class TestPostPublish extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        Pubsub::postDelete($this->_to, $this->_node, $this->_id);
+        Pubsub::itemDelete($this->_to, $this->_node, $this->_id);
 
         $this->pack(['to' => $this->_to, 'node' => $this->_node]);
         $this->deliver();

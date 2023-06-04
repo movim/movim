@@ -6,6 +6,6 @@ class Ack
 {
     public static function send($to, $id)
     {
-        \Moxl\API::request(\Moxl\API::iqWrapper(false, $to, 'result', $id));
+        \Moxl\API::request(\Moxl\API::iqWrapper(null, $to, 'result', $id));
     }
 }

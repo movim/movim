@@ -110,7 +110,7 @@ class CommunityConfig extends Base
         $r->request();
     }
 
-    public function ajaxSetConfig($data, $origin, $node)
+    public function ajaxSetConfig(stdClass $data, $origin, $node)
     {
         if (!validateServerNode($origin, $node)) {
             return;
@@ -119,7 +119,7 @@ class CommunityConfig extends Base
         $r = new SetConfig;
         $r->setTo($origin)
           ->setNode($node)
-          ->setData($data)
+          ->setData(formToArray($data))
           ->request();
     }
 }

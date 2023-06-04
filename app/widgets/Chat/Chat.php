@@ -975,7 +975,7 @@ class Chat extends \Movim\Widget\Base
      *
      * @param string $room
      */
-    public function ajaxSetRoomConfig($data, $room)
+    public function ajaxSetRoomConfig(stdClass $data, $room)
     {
         if (!validateJid($room)) {
             return;
@@ -983,7 +983,7 @@ class Chat extends \Movim\Widget\Base
 
         $sc = new SetConfig;
         $sc->setTo($room)
-            ->setData($data)
+            ->setData(formToArray($data))
             ->request();
     }
 

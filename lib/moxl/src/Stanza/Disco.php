@@ -25,8 +25,7 @@ class Disco
             $query->appendChild($feature);
         }
 
-        $xml = \Moxl\API::iqWrapper($query, $to, 'result', $id);
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($query, $to, 'result', $id));
     }
 
     public static function request($to, $node = false)
@@ -38,8 +37,7 @@ class Disco
             $query->setAttribute('node', $node);
         }
 
-        $xml = \Moxl\API::iqWrapper($query, $to, 'get');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($query, $to, 'get'));
     }
 
     public static function items($to, $node = false)
@@ -51,7 +49,6 @@ class Disco
             $query->setAttribute('node', $node);
         }
 
-        $xml = \Moxl\API::iqWrapper($query, $to, 'get');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($query, $to, 'get'));
     }
 }

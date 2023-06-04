@@ -20,6 +20,7 @@ v0.22 (trunk)
  * Refactor the avatar handling system to always fallback to an SVG picture
  * Simplify and cleanup the views
  * New Colors and AvatarPlaceholder widgets
+ * Refactor and cleanup the Moxl Stanza classes
 
 v0.21.1
 ---------------------------
