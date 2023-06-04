@@ -1,5 +1,7 @@
 <?php
 
+namespace Movim\Librairies;
+
 use Movim\Route;
 
 class XMPPtoForm

@@ -3,11 +3,11 @@
     "description": "Decentralized social platform based on XMPP",
     "autoload": {
         "psr-0": {
-            "Movim\\": "src/"
+            "Movim\\": "src/",
+            "Moxl\\": "src/"
         },
         "psr-4": {
-            "App\\": "app/",
-            "Moxl\\": "lib/moxl/src/"
+            "App\\": "app/"
         }
     },
     "require": {

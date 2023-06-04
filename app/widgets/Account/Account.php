@@ -1,5 +1,6 @@
 <?php
 
+use Movim\Librairies\XMPPtoForm;
 use Moxl\Xec\Action\OMEMO\DeleteBundle;
 use Moxl\Xec\Action\Register\ChangePassword;
 use Moxl\Xec\Action\Register\Remove;
@@ -55,7 +56,7 @@ class Account extends \Movim\Widget\Base
         $view = $this->tpl();
 
         if (isset($content->x)) {
-            $xml = new \XMPPtoForm;
+            $xml = new XMPPtoForm;
             $form = $xml->getHTML($content->x);
 
             $view->assign('form', $form);

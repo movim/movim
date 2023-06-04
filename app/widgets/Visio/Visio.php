@@ -1,5 +1,7 @@
 <?php
 
+use Movim\Librairies\JingletoSDP;
+use Movim\Librairies\SDPtoJingle;
 use Moxl\Xec\Action\Jingle\SessionPropose;
 use Moxl\Xec\Action\Jingle\SessionAccept;
 use Moxl\Xec\Action\Jingle\SessionInitiate;

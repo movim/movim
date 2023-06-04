@@ -1,6 +1,7 @@
 <?php
 
 use Movim\Image;
+use Movim\Librairies\XMPPtoForm;
 use Movim\Widget\Base;
 
 use Moxl\Xec\Action\Pubsub\GetConfig;
@@ -23,7 +24,7 @@ class CommunityConfig extends Base
 
         $view = $this->tpl();
 
-        $xml = new \XMPPtoForm;
+        $xml = new XMPPtoForm;
         $form = $xml->getHTML($config->x);
 
         $view->assign('form', $form);

@@ -21,6 +21,8 @@ v0.22 (trunk)
  * Simplify and cleanup the views
  * New Colors and AvatarPlaceholder widgets
  * Refactor and cleanup the Moxl Stanza classes
+ * Move the lib directory content under the Movim namespace
+ * Move Moxl under src
 
 v0.21.1
 ---------------------------

@@ -23,6 +23,7 @@ use Movim\ChatStates;
 use Movim\ChatOwnState;
 use Movim\EmbedLight;
 use Movim\Image;
+use Movim\Librairies\XMPPtoForm;
 
 class Chat extends \Movim\Widget\Base
 {
@@ -299,7 +300,7 @@ class Chat extends \Movim\Widget\Base
 
         $view = $this->tpl();
 
-        $xml = new \XMPPtoForm;
+        $xml = new XMPPtoForm;
         $form = $xml->getHTML($config->x);
 
         $view->assign('form', $form);

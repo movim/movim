@@ -41,7 +41,6 @@ class Bootstrap
         //Check if vital system need is OK
         $this->checkSystem();
 
-        $this->loadCommonLibraries();
         $this->loadDispatcher();
 
         $this->setTimezone();
@@ -178,13 +177,6 @@ class Bootstrap
 
         $capsule->bootEloquent();
         $capsule->setAsGlobal();
-    }
-
-    private function loadCommonLibraries()
-    {
-        require_once DOCUMENT_ROOT . '/lib/XMPPtoForm.php';
-        require_once DOCUMENT_ROOT . '/lib/SDPtoJingle.php';
-        require_once DOCUMENT_ROOT . '/lib/JingletoSDP.php';
     }
 
     private function loadHelpers()
