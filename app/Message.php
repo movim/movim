@@ -551,6 +551,11 @@ class Message extends Model
         return !empty($this->subject);
     }
 
+    public function isMine(): bool
+    {
+        return ($this->user_id == $this->jidfrom);
+    }
+
     public function retract()
     {
         $this->retracted = true;

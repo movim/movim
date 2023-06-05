@@ -20,14 +20,9 @@
             <span class="reaction" title="{$c->__('message.react')}">
                 <i class="material-icons">add_reaction</i>
             </span>
-            <span class="reply" title="{$c->__('button.reply')}">
-                <i class="material-icons">reply</i>
+            <span class="actions">
+                <i class="material-icons">more_vert</i>
             </span>
-            {if="!$muc"}
-                <span class="actions">
-                    <i class="material-icons">more_vert</i>
-                </span>
-            {/if}
         </div>
     </div>
 </li>

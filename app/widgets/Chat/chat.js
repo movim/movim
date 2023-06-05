@@ -790,22 +790,8 @@ var Chat = {
             };
         });
     },
-    setReplyButtonBehaviour: function () {
-        let replies = document.querySelectorAll('#chat_widget span.reply');
-        let i = 0;
-
-        while (i < replies.length) {
-            replies[i].onclick = function () {
-                if (this.dataset.mid) {
-                    Chat_ajaxHttpDaemonReply(this.dataset.mid);
-                }
-            }
-
-            i++;
-        }
-    },
     setActionsButtonBehaviour: function () {
-        let actions = document.querySelectorAll('#chat_widget .contained:not(.muc) span.actions');
+        let actions = document.querySelectorAll('#chat_widget .contained span.actions');
         let i = 0;
 
         while (i < actions.length) {
@@ -912,7 +898,6 @@ var Chat = {
 
         Chat.setScrollBehaviour();
         Chat.setReactionButtonBehaviour();
-        Chat.setReplyButtonBehaviour();
         Chat.setActionsButtonBehaviour();
         Chat.setParentScrollBehaviour();
         Chat.setVideoObserverBehaviour();
@@ -988,7 +973,6 @@ var Chat = {
         var span = msg.querySelector('span:not(.reaction)');
         var p = msg.getElementsByTagName('p')[0];
         var reaction = msg.querySelector('span.reaction');
-        var reply = msg.querySelector('span.reply');
         var actions = msg.querySelector('span.actions');
         var reactions = msg.querySelector('ul.reactions');
 
@@ -1003,10 +987,6 @@ var Chat = {
 
             if (reaction) {
                 reaction = reaction.cloneNode(true);
-            }
-
-            if (reply) {
-                reply = reply.cloneNode(true);
             }
 
             if (actions) {
@@ -1143,9 +1123,6 @@ var Chat = {
             || (!isMuc && data.messageid)) {
             reaction.dataset.mid = data.mid;
             msg.appendChild(reaction);
-
-            reply.dataset.mid = data.mid;
-            msg.appendChild(reply);
         }
 
         if (actions) {
