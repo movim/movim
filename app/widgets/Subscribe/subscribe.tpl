@@ -11,13 +11,13 @@
     <ul class="list card active flex thick">
         {if="!empty($config->xmppdomain)"}
             <li
-                class="block large"
+                class="block"
                 onclick="MovimUtils.redirect('{$c->route('accountnext', [$config->xmppdomain, false])}')">
                 <span class="primary icon bubble color {$config->xmppdomain|stringToColor}">
                     {$config->xmppdomain|firstLetterCapitalize}
                 </span>
                 <div>
-                    <p>
+                    <p class="normal">
                         {$config->xmppdomain}
                     </p>
                     {if="!empty($config->xmppdescription)"}

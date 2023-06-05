@@ -2,8 +2,6 @@
 
 namespace Moxl\Stanza;
 
-use Moxl\Stanza\Form;
-
 class Register
 {
     public static function get($to = false)
@@ -16,25 +14,17 @@ class Register
 
     public static function set($to = false, $data)
     {
-        $form = new Form($data);
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $query = $dom->createElementNS('jabber:iq:register', 'query');
 
-        if (isset($data->generic_username)) {
-            $dom = new \DOMDocument('1.0', 'UTF-8');
-            $query = $dom->createElementNS('jabber:iq:register', 'query');
-            $query->appendChild($dom->createElement('username', $data->generic_username->value));
-            $query->appendChild($dom->createElement('password', $data->generic_password->value));
+        $x = $dom->createElement('x');
+        $x->setAttribute('xmlns', 'jabber:x:data');
+        $x->setAttribute('type', 'submit');
+        $query->appendChild($x);
 
-            $xml = \Moxl\API::iqWrapper($query, $to, 'set');
-        } /*else {
-            $xml = '
-                <query xmlns="jabber:iq:register">
-                    '.$form.'
-                </query>
-                ';
-            $xml = \Moxl\API::iqWrapper($xml, $to, 'set');
-        }*/
+        \Moxl\Utils::injectConfigInX($x, $data);
 
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($query, $to, 'set'));
     }
 
     public static function remove()
@@ -43,8 +33,7 @@ class Register
         $query = $dom->createElementNS('jabber:iq:register', 'query');
         $query->appendChild($dom->createElement('remove'));
 
-        $xml = \Moxl\API::iqWrapper($query, false, 'set');
-        \Moxl\API::request($xml);
+        \Moxl\API::request(\Moxl\API::iqWrapper($query, false, 'set'));
     }
 
     public static function changePassword($to, $username, $password)

@@ -223,7 +223,7 @@ class Account extends \Movim\Widget\Base
         }
         $s = new Set;
         $s->setTo($server)
-          ->setData($form)
+          ->setData(formToArray($form))
           ->request();
     }
 

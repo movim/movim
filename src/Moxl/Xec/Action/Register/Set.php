@@ -7,8 +7,8 @@ use Moxl\Stanza\Register;
 
 class Set extends Action
 {
-    private $_to;
-    private $_data;
+    protected $_to;
+    protected $_data;
 
     public function request()
     {
@@ -19,12 +19,6 @@ class Set extends Action
     public function setTo($to)
     {
         $this->_to = $to;
-        return $this;
-    }
-
-    public function setData($data)
-    {
-        $this->_data = $data;
         return $this;
     }
 

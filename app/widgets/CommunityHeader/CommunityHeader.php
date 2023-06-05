@@ -111,7 +111,7 @@ class CommunityHeader extends Base
         $g->setTo($origin)
           ->setNode($node)
           ->setFrom($this->user->id)
-          ->setData($form)
+          ->setData(formToArray($form))
           ->request();
 
         if ($form->share->value) {

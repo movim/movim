@@ -48,15 +48,8 @@ class AccountNext extends \Movim\Widget\Base
 
     public function onRegistered($packet)
     {
-        $data = $packet->content;
-
-        if (isset($data->username)) {
-            $view = $this->tpl();
-            $html = $view->draw('_accountnext_registered');
-
-            $this->rpc('MovimTpl.fill', '#subscribe', $html);
-            $this->rpc('setUsername', $data->username->value);
-        }
+        $view = $this->tpl();
+        $this->rpc('MovimTpl.fill', '#subscribe', $view->draw('_accountnext_registered'));
     }
 
     public function onError()
@@ -116,7 +109,8 @@ class AccountNext extends \Movim\Widget\Base
         }
 
         $s = new Set;
-        $s->setData($form)->request();
+        $s->setData(formToArray($form))
+          ->request();
     }
 
     public function display()
