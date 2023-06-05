@@ -1054,7 +1054,7 @@ var Chat = {
             p.innerHTML = data.body;
         }
 
-        if (data.sticker != null) {
+        if (data.sticker != null && data.retracted == false) {
             bubble.querySelector('div.bubble').classList.add('sticker');
             p.appendChild(Chat.getStickerHtml(data.sticker));
 
@@ -1063,7 +1063,7 @@ var Chat = {
             }
         }
 
-        if (data.file != null && data.card === undefined && data.file.type !== 'xmpp') {
+        if (data.file != null && data.card === undefined && data.file.type !== 'xmpp' && data.retracted == false) {
             bubble.querySelector('div.bubble').classList.add('file');
 
             // Ugly fix to clear the paragraph if the file contains a similar link
@@ -1149,13 +1149,13 @@ var Chat = {
             mergeMsg = true;
 
             // If the previous message was not a file or card and is replaced by it
-            if (data.file != null || data.card != null) {
+            if ((data.file != null || data.card != null) && data.retracted == false) {
                 msg.parentElement.classList.add('file');
             } else {
                 msg.parentElement.classList.remove('file');
             }
 
-            if (data.sticker != null) {
+            if (data.sticker != null && data.retracted == false) {
                 msg.parentElement.classList.add('sticker');
             } else {
                 msg.parentElement.classList.remove('sticker');
