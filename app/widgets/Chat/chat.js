@@ -1119,15 +1119,17 @@ var Chat = {
         msg.appendChild(span);
         msg.appendChild(reactions);
 
-        if ((isMuc && data.stanzaid)
-            || (!isMuc && data.messageid)) {
-            reaction.dataset.mid = data.mid;
-            msg.appendChild(reaction);
-        }
+        if (data.mid) {
+            if ((isMuc && data.stanzaid)
+                || (!isMuc && data.messageid)) {
+                reaction.dataset.mid = data.mid;
+                msg.appendChild(reaction);
+            }
 
-        if (actions) {
-            actions.dataset.mid = data.mid;
-            msg.appendChild(actions);
+            if (actions) {
+                actions.dataset.mid = data.mid;
+                msg.appendChild(actions);
+            }
         }
 
         var elem;
