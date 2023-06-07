@@ -330,6 +330,7 @@ main:not(.enabled) #chat_widget {
     max-height: 170px;
     object-fit: cover;
     transition: opacity 0.2s ease-in-out;
+    background-color: rgba(var(--movim-gray), 0.1);
 }
 
 #chat_widget li.oppose div.bubble.sticker.file img:not(.emoji):not(.hfr) {

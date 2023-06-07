@@ -1163,7 +1163,10 @@ class Chat extends \Movim\Widget\Base
         }
         $this->event('chat_counter', $this->user->unreads());
 
-        $this->rpc('Chat.insertSeparator', $unreadsCount);
+        if ($unreadsCount > 0) {
+            $this->rpc('Chat.insertSeparator', $unreadsCount);
+        }
+
     }
 
     public function prepareMessage(&$message, $jid = null)

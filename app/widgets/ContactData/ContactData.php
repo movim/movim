@@ -68,7 +68,6 @@ class ContactData extends Base
             $r = new Moxl\Xec\Action\Vcard4\Get;
             $r->setTo(echapJid($jid))->request();
         } else if ($contact) {
-            $this->rpc('MovimTpl.fill', '#'.cleanupId($jid) . '_contact_data', $this->prepareData($jid));
             $this->rpc('Notif_ajaxGet');
         }
     }

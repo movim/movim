@@ -1,3 +1,4 @@
+<div id="blog">
 <header>
     {if="$mode == 'blog'"}
         {$banner = null}
@@ -117,7 +118,7 @@
     {/if}
 </header>
 
-<ul class="list card shadow {if="$gallery"}middle flex third gallery large active{/if}" id="blog" >
+<ul class="list card shadow {if="$gallery"}middle flex third gallery large active{/if}">
     {if="$posts == null || $posts->isEmpty()"}
         <article class="block">
             <ul class="list simple thick">
@@ -160,3 +161,5 @@
         </a>
     </ul>
 {/if}
+
+</div>

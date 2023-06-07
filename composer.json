@@ -42,7 +42,8 @@
         "react/dns": "^1.10.0",
         "ratchet/pawl": "^0.4.1",
         "minishlink/web-push": "^8.0",
-        "vlucas/phpdotenv": "^5.5"
+        "vlucas/phpdotenv": "^5.5",
+        "react/promise-timer": "^1.9"
     },
     "config": {
         "platform": {

@@ -523,6 +523,10 @@ ul li div.bubble:not(.sticker):not(.file):before {
     border: 0.8rem solid transparent;
     border-top-color: inherit;
     border-right-color: rgb(var(--movim-background-main));
+    -webkit-mask-image: url(../img/bubble_mask.svg);
+    mask-image: url(../img/bubble_mask.svg);
+    -webkit-mask-size: 100%;
+    mask-size: 100%;
 }
 
 ul li.oppose div.bubble:not(.sticker):not(.file):before {
@@ -530,6 +534,8 @@ ul li.oppose div.bubble:not(.sticker):not(.file):before {
     right: -1.5rem;
     border-right-color: transparent;
     border-left-color: inherit;
+    -webkit-mask-image: url(../img/bubble_mask_oppose.svg);
+    mask-image: url(../img/bubble_mask_oppose.svg);
 }
 
 /* Date separator */

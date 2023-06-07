@@ -36,36 +36,43 @@
 }
 
 #preview img {
-    max-height: calc(100% - 11rem);
+    max-height: calc(100% - 7rem);
     max-width: calc(100% - 2rem);
     align-self: center;
     border-radius: 0.75rem;
-    margin-top: -2rem;
     position: relative;
-    animation: zoom 0.3s;
+}
+
+#preview .pinfo,
+#preview .buttons {
+    background-color: rgba(var(--movim-gray), 0.4);
+    transition: opacity .3s cubic-bezier(.4,0,.2,1);
+    backdrop-filter: blur(0.5rem);
+    box-shadow: var(--elevation-1);
+    position: absolute;
 }
 
 #preview .pinfo {
-    position: absolute;
     color: white;
-    bottom: 12rem;
-    background-color: rgba(0, 0, 0, 0.75);
+    bottom: 10rem;
     font-size: 1.75rem;
     line-height: 3.5rem;
     padding: 0 2rem;
     border-radius: 2rem;
-    transition: opacity .3s cubic-bezier(.4,0,.2,1);
-}
-
-#preview img:hover ~ .pinfo{
-    opacity: 0.25;
+    user-select: none;
 }
 
 #preview .buttons {
-    position: absolute;
-    bottom: 1rem;
+    bottom: 2rem;
     text-align: center;
-    animation: fadein 0.3s;
+    border-radius: 1rem;
+    padding: 0 0.5rem;
+}
+
+
+#preview img:hover ~ .pinfo,
+#preview img:hover ~ .buttons {
+    opacity: 0.25;
 }
 
 #preview .prevnext {
