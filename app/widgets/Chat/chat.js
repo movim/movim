@@ -1337,11 +1337,13 @@ var Chat = {
                 a.appendChild(host);
             }
 
-            var span = document.createElement('span');
-            span.innerHTML = file.cleansize;
-            span.setAttribute('class', 'size');
+            if (file.size > 0) {
+                var span = document.createElement('span');
+                span.innerHTML = file.cleansize;
+                span.setAttribute('class', 'size');
 
-            a.appendChild(span);
+                a.appendChild(span);
+            }
         }
 
         return div;

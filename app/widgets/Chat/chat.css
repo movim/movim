@@ -331,6 +331,9 @@ main:not(.enabled) #chat_widget {
     object-fit: cover;
     transition: opacity 0.2s ease-in-out;
     background-color: rgba(var(--movim-gray), 0.1);
+    background-image: url(/theme/img/broken_image.svg);
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 #chat_widget li.oppose div.bubble.sticker.file img:not(.emoji):not(.hfr) {
@@ -524,6 +527,7 @@ main:not(.enabled) #chat_widget {
     display: inline-flex;
     z-index: 1;
     border: solid 1px transparent;
+    box-shadow: var(--elevation-0);
 }
 
 #chat_widget .bubble div span.reaction:hover,
@@ -531,6 +535,7 @@ main:not(.enabled) #chat_widget {
 #chat_widget .bubble ul.reactions li:hover {
     cursor: pointer;
     background-color: rgba(var(--movim-font), 0.2);
+    box-shadow: var(--elevation-1);
 }
 
 #chat_widget .bubble ul.reactions li:not(:last-child) {
@@ -559,6 +564,11 @@ main:not(.enabled) #chat_widget {
     position: absolute;
     left: 100%;
     transform: translate(-0.75rem, -0.25rem);
+}
+
+#chat_widget li .bubble.file div:hover ul.reactions:empty ~ span.reaction,
+#chat_widget li .bubble.file div:not(.encrypted):hover span.actions {
+    transform: translate(-0.75rem, -7.25rem);
 }
 
 #chat_widget li .bubble div:hover ul.reactions:not(:empty) ~ span.actions {

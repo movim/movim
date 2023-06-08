@@ -139,7 +139,7 @@
     color: white;
     font-family: 'Material Icons';
     content: "\e8ff";
-    text-shadow: 0 0 1rem rgba(0, 0, 0, 0.75);
+    text-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
     position: absolute;
     display: block;
     font-size: 3rem;

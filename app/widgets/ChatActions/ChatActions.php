@@ -9,6 +9,11 @@ include_once WIDGETS_PATH.'ContactActions/ContactActions.php';
 
 class ChatActions extends \Movim\Widget\Base
 {
+    public function load()
+    {
+        $this->addjs('chatactions.js');
+    }
+
     /**
      * @brief Get a Drawer view of a contact
      */
@@ -57,8 +62,14 @@ class ChatActions extends \Movim\Widget\Base
             $view = $this->tpl();
             $view->assign('message', $message);
 
+            $this->rpc('ChatActions.setMessage', $message);
             Dialog::fill($view->draw('_chatactions_message'));
         }
+    }
+
+    public function ajaxCopiedMessageText()
+    {
+        Toast::send($this->__('chatactions.copied_text'));
     }
 
     /**

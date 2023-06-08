@@ -208,6 +208,11 @@ var MovimUtils = {
             }
         }
     },
+    decodeHTMLEntities(text) {
+        var textarea = document.createElement('textarea');
+        textarea.innerHTML = text;
+        return textarea.value;
+    },
     textareaAutoheight: function (textbox) {
         if (textbox != null) {
             var val = MovimUtils.htmlEscape(textbox.value).replace(/\n/g, '<br>');
