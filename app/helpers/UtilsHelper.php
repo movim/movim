@@ -103,7 +103,7 @@ function listOpcacheCompilableFiles(): array
 {
     $files = [];
 
-    foreach (['vendor', 'app', 'src', 'lib'] as $dir) {
+    foreach (['vendor', 'app', 'src'] as $dir) {
         $directory = new \RecursiveDirectoryIterator(DOCUMENT_ROOT.'/'. $dir);
         $iterator = new \RecursiveIteratorIterator($directory);
         $regex = new \RegexIterator($iterator, '/^.+\.php$/i', \RecursiveRegexIterator::GET_MATCH);
