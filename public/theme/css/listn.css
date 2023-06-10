@@ -451,12 +451,26 @@ ul li.oppose div.bubble.file {
     word-break: break-all;
 }
 
+ul li div.bubble:not(.sticker):not(.file),
+ul li div.bubble.file div.audio_player {
+    background-color: rgb(var(--movim-background-main));
+}
+
 ul li.oppose div.bubble:not(.sticker):not(.file),
 ul li.oppose div.bubble.file div.audio_player {
     background-color: rgba(var(--movim-background-main), 0.5);
     border-color: rgba(var(--movim-background-main), 0.5);
     border-radius: 1rem 0 1rem 1rem;
     padding: 1rem 1rem 1rem 1.5rem;
+}
+
+ul li div.bubble:not(.sticker):not(.file):hover {
+    cursor: pointer;
+    box-shadow: var(--elevation-2);
+}
+
+ul li div.bubble:not(.sticker):not(.file):active {
+    box-shadow: var(--elevation-1);
 }
 
 ul li div.bubble.file div.audio_player,
@@ -469,9 +483,7 @@ ul li div.bubble p i.icon {
     margin-right: 0.25rem;
 }
 
-ul li div.bubble span.info {
-    float: right;
-    clear: right;
+ul li div.bubble span.info:not(:empty) {
     padding-left: 1rem;
 }
 
@@ -490,10 +502,6 @@ ul li div.bubble:not(.file) > div:last-child span.info {
 
 ul li.oppose div.bubble.file > div:last-child span.info {
     height: 2.5rem;
-}
-
-ul li div.bubble span.info:empty {
-    padding-left: 0;
 }
 
 ul li div.bubble:after {

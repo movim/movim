@@ -791,16 +791,20 @@ var Chat = {
         });
     },
     setActionsButtonBehaviour: function () {
-        let actions = document.querySelectorAll('#chat_widget .contained span.actions');
-        let i = 0;
-
-        while (i < actions.length) {
-            actions[i].onclick = function () {
-                ChatActions_ajaxShowMessageDialog(this.dataset.mid);
+        document.querySelectorAll('#chat_widget .contained span.reply').forEach(reply =>
+            reply.onclick = function () {
+                Chat_ajaxHttpDaemonReply(this.dataset.mid);
             }
-
-            i++;
-        }
+        );
+    },
+    setMessagePressBehaviour: function() {
+        document.querySelectorAll('#chat_widget ul li div.bubble:not(.sticker):not(.file) > div.message').forEach(message => {
+            message.onmousedown = function (e) {
+                if ((e.target.classList.contains('message') || e.target.tagName == 'P') && !(window.getSelection().toString() != '')) {
+                    ChatActions_ajaxShowMessageDialog(this.dataset.mid);
+                }
+            }
+        });
     },
     checkDiscussion: function (page) {
         for (var firstKey in page) break;
@@ -902,6 +906,7 @@ var Chat = {
         Chat.setParentScrollBehaviour();
         Chat.setVideoObserverBehaviour();
         Chat.setAudioPlayersBehaviour();
+        Chat.setMessagePressBehaviour();
     },
     appendMessage: function (idjidtime, data, prepend) {
         if (data.body === null) return;
@@ -936,8 +941,7 @@ var Chat = {
             bubble = msgStack.parentNode;
             mergeMsg = true;
         } else {
-            if (data.user_id == data.jidfrom
-                || data.mine) {
+            if (data.user_id == data.jidfrom || data.mine) {
                 bubble = Chat.right.cloneNode(true);
                 if (data.mine) {
                     id = data.jidfrom;
@@ -969,33 +973,19 @@ var Chat = {
             }
         }
 
-        var msg = bubble.querySelector('div.bubble > div');
+        // If there is already a msg in this bubble, create another div (next msg or replacement)
+        var msg = (bubble.querySelector('div.bubble p')
+            && bubble.querySelector('div.bubble p').innerHTML != '')
+            ? Chat.right.querySelector('div.bubble > div.message').cloneNode(true)
+            : bubble.querySelector('div.bubble > div.message');
+
         var span = msg.querySelector('span:not(.reaction)');
         var p = msg.getElementsByTagName('p')[0];
         var reaction = msg.querySelector('span.reaction');
-        var actions = msg.querySelector('span.actions');
+        var reply = msg.querySelector('span.reply');
         var reactions = msg.querySelector('ul.reactions');
 
-        // If there is already a msg in this bubble, create another div (next msg or replacement)
-        if (bubble.querySelector('div.bubble p')
-            && bubble.querySelector('div.bubble p').innerHTML != '') {
-            msg = document.createElement('div');
-            span = document.createElement('span');
-            span.className = 'info';
-
-            p = document.createElement('p');
-
-            if (reaction) {
-                reaction = reaction.cloneNode(true);
-            }
-
-            if (actions) {
-                actions = actions.cloneNode(true);
-            }
-
-            reactions = document.createElement('ul');
-            reactions.className = 'reactions';
-        }
+        // And we complete the message structure from the data we got...
 
         if (data.retracted) {
             p.classList.add('retracted');
@@ -1126,10 +1116,12 @@ var Chat = {
                 msg.appendChild(reaction);
             }
 
-            if (actions) {
-                actions.dataset.mid = data.mid;
-                msg.appendChild(actions);
+            if (reply) {
+                reply.dataset.mid = data.mid;
+                msg.appendChild(reply);
             }
+
+            msg.dataset.mid = data.mid;
         }
 
         var elem;
@@ -1170,7 +1162,7 @@ var Chat = {
             }
         }
 
-        /* MUC specific */
+        // MUC specific
         if (isMuc) {
             if (data.moderator) {
                 bubble.querySelector('div.bubble').classList.add('moderator');

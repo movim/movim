@@ -83,8 +83,6 @@ body > nav > ul.list.active li:not(.active):hover:before {
 
 ul li.date > div > p.normal,
 .dialog, .drawer, ul.context_menu,
-ul li div.bubble:not(.sticker):not(.file),
-ul li div.bubble.file div.audio_player,
 .card > .block:not(.subheader):not(.simple),
 ul.list.actions p,
 main {
@@ -148,7 +146,7 @@ span.icon:not(.composing):not([data-counter]).status.xa:after,
 .color.mattermost,
 .color.indigo   { color: white; background-color: var(--p-indigo); border-color: var(--p-indigo) }
 .color.facebook,
-.color.blue     { color: white; background-color: #var(--p-blue); border-color: #var(--p-blue) }
+.color.blue     { color: white; background-color: var(--p-blue); border-color: var(--p-blue) }
 span.icon:not(.composing):not([data-counter]).status.chat:after,
 span.icon:not(.composing):not([data-counter]).status.online:after,
 .color.xmpp,

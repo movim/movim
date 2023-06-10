@@ -13,15 +13,15 @@
     {/if}
 
     <div class="bubble">
-        <div>
+        <div class="message">
             <p></p>
             <ul class="reactions"></ul>
             <span class="info"></span>
             <span class="reaction" title="{$c->__('message.react')}">
                 <i class="material-icons">add_reaction</i>
             </span>
-            <span class="actions">
-                <i class="material-icons">more_vert</i>
+            <span class="reply">
+                <i class="material-icons">reply</i>
             </span>
         </div>
     </div>

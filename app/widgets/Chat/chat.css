@@ -515,7 +515,7 @@ main:not(.enabled) #chat_widget {
 }
 
 #chat_widget .bubble div span.reaction,
-#chat_widget .bubble div span.actions,
+#chat_widget .bubble div span.reply,
 #chat_widget .bubble ul.reactions li {
     list-style-type: none;
     background-color: rgba(var(--movim-font), 0.05);
@@ -531,7 +531,7 @@ main:not(.enabled) #chat_widget {
 }
 
 #chat_widget .bubble div span.reaction:hover,
-#chat_widget .bubble div span.actions:hover,
+#chat_widget .bubble div span.reply:hover,
 #chat_widget .bubble ul.reactions li:hover {
     cursor: pointer;
     background-color: rgba(var(--movim-font), 0.2);
@@ -553,13 +553,13 @@ main:not(.enabled) #chat_widget {
 }
 
 #chat_widget .bubble div span.reaction,
-#chat_widget .bubble div span.actions,
+#chat_widget .bubble div span.reply,
 #chat_widget .bubble ul.reactions:empty {
     display: none;
 }
 
 #chat_widget li .bubble div:hover ul.reactions:empty ~ span.reaction,
-#chat_widget li .bubble div:not(.encrypted):hover span.actions {
+#chat_widget li .bubble div:not(.encrypted):hover span.reply {
     display: inline-flex;
     position: absolute;
     left: 100%;
@@ -567,15 +567,15 @@ main:not(.enabled) #chat_widget {
 }
 
 #chat_widget li .bubble.file div:hover ul.reactions:empty ~ span.reaction,
-#chat_widget li .bubble.file div:not(.encrypted):hover span.actions {
+#chat_widget li .bubble.file div:not(.encrypted):hover span.reply {
     transform: translate(-0.75rem, -7.25rem);
 }
 
-#chat_widget li .bubble div:hover ul.reactions:not(:empty) ~ span.actions {
+#chat_widget li .bubble div:hover ul.reactions:not(:empty) ~ span.reply {
     margin-top: -3rem;
 }
 
-#chat_widget li .bubble div:hover ul.reactions:empty ~ span.reaction ~ span.actions {
+#chat_widget li .bubble div:hover ul.reactions:empty ~ span.reaction ~ span.reply {
     left: calc(100% + 3.5rem);
 }
 

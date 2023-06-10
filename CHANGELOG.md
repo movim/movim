@@ -170,6 +170,7 @@ v0.19
  * Firebase Push notification integration for the official client
  * Allow image pasting in Movim to trigger the Upload
  * Allow global drag & drop in Movim to upload a file
+ * Allow messages bubble to be clicked to trigger the message drawer
 
 v0.18
 ---------------------------
