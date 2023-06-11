@@ -706,15 +706,22 @@ var Chat = {
         let i = 0;
 
         while (i < toParents.length) {
-            toParents[i].onclick = function () {
+            toParents[i].onclick = function (e) {
                 var parentMsg = document.getElementById('id' + this.dataset.parentId);
                 if (!parentMsg) {
                     parentMsg = document.getElementById('id' + this.dataset.parentReplaceId)
                 }
                 if (parentMsg) {
                     scrollToLi = parentMsg.parentNode.parentNode;
+
+                    parentMsg.parentNode.classList.add('scroll_blink');
+
+                    setTimeout(function() {
+                        parentMsg.parentNode.classList.remove('scroll_blink');
+                    }, 1000);
+
                     document.querySelector('#chat_widget .contained').scrollTo({
-                        top: scrollToLi.offsetTop - 60,
+                        top: scrollToLi.offsetTop - 160,
                         left: 0,
                         behavior: 'smooth'
                     });
@@ -800,9 +807,11 @@ var Chat = {
     setMessagePressBehaviour: function() {
         document.querySelectorAll('#chat_widget ul li div.bubble:not(.sticker):not(.file) > div.message').forEach(message => {
             message.onmousedown = function (e) {
-                if ((e.target.classList.contains('message') || e.target.tagName == 'P') && !(window.getSelection().toString() != '')) {
-                    ChatActions_ajaxShowMessageDialog(this.dataset.mid);
-                }
+                setTimeout(() => {
+                    if (e.button == 0 && (e.target.classList.contains('message') || e.target.parentElement.classList.contains('message')) && !(window.getSelection().toString() != '')) {
+                        ChatActions_ajaxShowMessageDialog(this.dataset.mid);
+                    }
+                }, 300);
             }
         });
     },

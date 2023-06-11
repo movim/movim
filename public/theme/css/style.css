@@ -611,7 +611,6 @@ div.bubble .audio_player p {
 }
 
 @keyframes fadetext {
-
     0%,
     100% {
         color: transparent;
