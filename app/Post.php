@@ -345,7 +345,7 @@ class Post extends Model
     {
         $this->nodeid = (string)$entry->attributes()->id;
 
-        $hash = hash('sha256', $entry->entry->asXML());
+        $hash = hash('sha256', $entry->asXML());
 
         // Detect if things changed from the cached version
         if ($hash == $this->contenthash) {
@@ -359,7 +359,6 @@ class Post extends Model
         if ($entry->entry->author && $entry->entry->author->uri
         && 'xmpp:'.baseJid((string)$entry->attributes()->publisher) == (string)$entry->entry->author->uri) {
             $this->aid = substr((string)$entry->entry->author->uri, 5);
-
             $this->aname = ($entry->entry->author->name)
                 ? (string)$entry->entry->author->name
                 : null;
