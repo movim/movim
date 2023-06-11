@@ -716,14 +716,13 @@ var Chat = {
 
                     parentMsg.parentNode.classList.add('scroll_blink');
 
-                    setTimeout(function() {
+                    setTimeout(() => {
                         parentMsg.parentNode.classList.remove('scroll_blink');
                     }, 1000);
 
                     document.querySelector('#chat_widget .contained').scrollTo({
                         top: scrollToLi.offsetTop - 160,
-                        left: 0,
-                        behavior: 'smooth'
+                        left: 0
                     });
                 }
             }
