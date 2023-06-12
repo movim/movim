@@ -106,6 +106,8 @@ class Post extends Base
             ->request();
 
         if ($p) {
+            $p->userViews()->syncWithoutDetaching($this->user->id);
+
             $html = $this->preparePost($p, false, false, false);
 
             $this->rpc('MovimTpl.fill', '#post_widget.'.cleanupId($p->nodeid), $html);

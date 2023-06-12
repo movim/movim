@@ -16,6 +16,7 @@ class Post extends Model
                     'contact',  'openlink', 'embed',
                     'links', 'files', 'pictures', 'picture',
                     'attachment'];
+    public $withCount = ['userViews'];
 
     private $titleLimit = 200;
     private $changed = false; // Detect if the set post was different from the cache
@@ -49,6 +50,11 @@ class Post extends Model
     {
         return $this->hasOne('App\Info', 'server', 'server')
                     ->where('node', $this->node);
+    }
+
+    public function userViews()
+    {
+        return $this->belongsToMany(User::class, 'post_user_views', 'post_id', 'user_id')->withTimestamps();
     }
 
     public function likes()

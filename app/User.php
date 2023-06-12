@@ -72,6 +72,11 @@ class User extends Model
         return $this->belongsToMany('App\Reported')->withTimestamps();
     }
 
+    public function postViews()
+    {
+        return $this->belongsToMany(User::class, 'post_user_views', 'user_id', 'post_id')->withTimestamps();
+    }
+
     public function getResolvedNicknameAttribute()
     {
         return $this->nickname ?? $this->id;

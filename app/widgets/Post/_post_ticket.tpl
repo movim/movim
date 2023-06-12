@@ -73,6 +73,11 @@
                     <i class="material-icons">movie</i> ·
                 {/if}
 
+                {$count = $post->user_views_count}
+                {if="$count > 2"}
+                    {$count} <i class="material-icons">visibility</i> ·
+                {/if}
+
                 {$count = $post->likes->count()}
                 {if="$count > 0"}
                     {$count} <i class="material-icons">favorite_border</i> ·

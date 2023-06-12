@@ -65,6 +65,7 @@
                             edit
                         </i>
                     {/if}
+
                     {if="!$post->openlink"}
                         <i class="material-icons on_mobile" title="{$c->__('post.public_no')}">
                             lock
@@ -72,6 +73,10 @@
                     {/if}
                     {if="$post->contentcleaned && readTime($post->contentcleaned)"}
                         · {$post->contentcleaned|readTime}
+                    {/if}
+                    {$count = $post->user_views_count}
+                    {if="$count > 2"}
+                         · {$count} <i class="material-icons">visibility</i>
                     {/if}
                 </p>
                 {if="$post->isBrief()"}

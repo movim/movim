@@ -22,6 +22,7 @@ v0.22 (trunk)
  * New Colors and AvatarPlaceholder widgets
  * Refactor and cleanup the Moxl Stanza classes
  * Fixing XEP-0077: In-Band Registration support and cleaning old code
+ * Introduce a view counter for Posts, show the counter above 3 views
 
 v0.21.1
 ---------------------------
