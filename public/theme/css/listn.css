@@ -466,11 +466,11 @@ ul li.oppose div.bubble.file div.audio_player {
 
 ul li div.bubble:not(.sticker):not(.file):hover {
     cursor: pointer;
-    box-shadow: var(--elevation-2);
+    box-shadow: var(--elevation-1);
 }
 
 ul li div.bubble:not(.sticker):not(.file):active {
-    box-shadow: var(--elevation-1);
+    box-shadow: var(--elevation-0);
 }
 
 ul li div.bubble.file div.audio_player,

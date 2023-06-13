@@ -535,7 +535,7 @@ main:not(.enabled) #chat_widget {
 #chat_widget .bubble div span.reply:hover,
 #chat_widget .bubble ul.reactions li:hover {
     cursor: pointer;
-    filter: brightness(1.5);
+    filter: brightness(1.1);
     box-shadow: var(--elevation-1);
 }
 
