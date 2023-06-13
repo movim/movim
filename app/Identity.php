@@ -13,4 +13,15 @@ class Identity extends Model
     {
         return $this->belongsTo('App\Info');
     }
+
+    public function save(array $options = [])
+    {
+        try {
+            parent::save($options);
+        } catch (\Exception $e) {
+            /**
+             * Existing info are saved in the DB
+             */
+        }
+    }
 }

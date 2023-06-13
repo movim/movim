@@ -62,7 +62,7 @@ class SDPtoJingle
             $this->ufrag = $ufrag;
         }
 
-        $this->jingle = new SimpleXMLElement('<jingle></jingle>');
+        $this->jingle = new \SimpleXMLElement('<jingle></jingle>');
         $this->jingle->addAttribute('xmlns', 'urn:xmpp:jingle:1');
         $this->jingle->addAttribute('initiator', $initiator);
 
