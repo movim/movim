@@ -518,7 +518,8 @@ main:not(.enabled) #chat_widget {
 #chat_widget .bubble div span.reply,
 #chat_widget .bubble ul.reactions li {
     list-style-type: none;
-    background-color: rgba(var(--movim-font), 0.05);
+    background-color: rgba(var(--movim-background-main), 1);
+    color: rgba(var(--movim-font), 0.75);
     padding: 0 0.5rem;
     border-radius: 0.5rem;
     line-height: 3rem;
@@ -534,7 +535,7 @@ main:not(.enabled) #chat_widget {
 #chat_widget .bubble div span.reply:hover,
 #chat_widget .bubble ul.reactions li:hover {
     cursor: pointer;
-    background-color: rgba(var(--movim-font), 0.2);
+    filter: brightness(1.5);
     box-shadow: var(--elevation-1);
 }
 
