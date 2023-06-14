@@ -13,6 +13,7 @@
 # The Cat, 2021
 # Victor Vinicius <victorvboa@gmail.com>, 2015
 # Victor Vinicius <victorvboa@gmail.com>, 2015
+# Vincenzo Tozzi, 2023
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -30,11 +31,15 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Avatar/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Badges/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blocked/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/ChatActions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ChatOmemo/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -127,10 +132,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-29 23:07+0200\n"
+"POT-Creation-Date: 2023-06-14 23:10+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
-"Last-Translator: Felipe Nogueira <contato.fnog@gmail.com>, 2023\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/movim/movim/language/pt_BR/)\n"
+"Last-Translator: Vincenzo Tozzi, 2023\n"
+"Language-Team: Portuguese (Brazil) (http://app.transifex.com/movim/movim/language/pt_BR/)\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -176,7 +181,7 @@ msgstr "Conta"
 
 #: [account]account_management
 msgid "Account management"
-msgstr ""
+msgstr "Gestão conta"
 
 #: [account]password_change_title
 msgid "Change my password"
@@ -232,11 +237,11 @@ msgstr "Esta ação não irá apagar sua conta mas te desconectará desta instâ
 
 #: [account]delete_bundle_title
 msgid "OMEMO Key deletion"
-msgstr ""
+msgstr "Deletar chave OMEMO "
 
 #: [account]delete_bundle_text
 msgid "Your are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
-msgstr ""
+msgstr "Você esta removendo a seguinte chave OMEMO. Seus contatos não vão mais conseguir criptografar mensagens com essa chave. Esta operação não pode ser desfeita. Tem certeza?"
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
@@ -365,11 +370,11 @@ msgstr "Descrição geral da instância"
 
 #: [information]banner
 msgid "Main banner"
-msgstr ""
+msgstr "Cabeçalho principal"
 
 #: [information]banner_info
 msgid "Ensure that the picture is not too large and can be reached from any webpages"
-msgstr ""
+msgstr "Certifique-se que a imagem não seja grande demais e que é acessível em todas as paginas. "
 
 #: [information]info1
 msgid "This message will be displayed on the login page. It can be used to link the Terms and Conditions of your Movim instance for example."
@@ -422,19 +427,19 @@ msgstr "Acesse o Tenor e obtenha sua chave API"
 
 #: [twitter]title
 msgid "Twitter integration"
-msgstr ""
+msgstr "Integração com Twitter"
 
 #: [twitter]label
 msgid "Your Twitter Token"
-msgstr ""
+msgstr "Token do Twitter"
 
 #: [twitter]info1
 msgid "The Twitter integration allow Movim to embed and extract the Tweets shared on the instance"
-msgstr ""
+msgstr "A integração com Twitter permite a Movim de incluir e extrair os Tweets compartilhados na instância. "
 
 #: [twitter]info2
 msgid "Generate your Token on the Developer Twitter website"
-msgstr ""
+msgstr "Cria um Token no site Desenvolvedor Twitter"
 
 #: [log]empty
 msgid "Empty"
@@ -450,15 +455,15 @@ msgstr "Syslog e arquivos"
 
 #: [adminreported]reported_by
 msgid "Reported by %s users"
-msgstr ""
+msgstr "Relatado por %s de usuaries"
 
 #: [adminreported]info
 msgid "Those accounts were reported by some Movim users"
-msgstr ""
+msgstr "Essas contas foram reportadas por alguns usuaries do Movim"
 
 #: [adminreported]info2
 msgid "You can choose to block them for all the other users"
-msgstr ""
+msgstr "Você pode bloquear para todes usuaries"
 
 #: [adminsessions]title
 msgid "Sessions"
@@ -480,10 +485,6 @@ msgstr "Avatar Atualizado"
 msgid "Avatar Not Updated"
 msgstr "Avatar Não Atualizado"
 
-#: [avatar]missing
-msgid "No avatar defined yet"
-msgstr "Avatar não definido ainda"
-
 #: [avatar]change
 msgid "Change my avatar"
 msgstr "Mudar meu avatar"
@@ -494,18 +495,18 @@ msgstr "Subir uma nova foto"
 
 #: [banner]change
 msgid "Change my banner"
-msgstr ""
+msgstr "Mudar meu cabeçalho"
 
 #: [banner]updated
 msgid "Banner Updated"
-msgstr ""
+msgstr "Cabeçalho atualizado"
 
 #: [banner]not_updated
 msgid "Banner Not Updated"
-msgstr ""
+msgstr "Cabeçalho não atualizado"
 
-#: [banner]missing
-msgid "No banner defined yet"
+#: [badges]title
+msgid "Badges"
 msgstr ""
 
 #: [blocked]title
@@ -530,15 +531,15 @@ msgstr "Conta desbloqueada"
 
 #: [blocked]placeholder
 msgid "You will find here the users you have blocked"
-msgstr ""
+msgstr "Vai encontrar aqui as contas que você bloqueou "
 
 #: [blocked]info
 msgid "The following users are blocked by Movim and cannot contact you anymore"
-msgstr ""
+msgstr "As seguintes contas foram bloqueadas no Movim e não podem mais te contactar"
 
 #: [blocked]info2
 msgid "The administrator is also aware of this list and can therefore block those users system wide"
-msgstr ""
+msgstr "Quem administra esta ciente dessa lista e pode então bloquear essas contas no sistema inteiro"
 
 #: [blog]title [feed]title
 msgid "%s’s feed"
@@ -562,7 +563,7 @@ msgstr "Retrair"
 
 #: [message]retract_body
 msgid "Your contact attempted to retract a previous message, but it's unsupported by your client"
-msgstr ""
+msgstr "Seu contato tentou acessar um mensagem precedente, mas seu cliente não tem suporte para isso"
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
@@ -582,7 +583,7 @@ msgstr "Criando..."
 
 #: [message]invitation
 msgid "Invitation"
-msgstr ""
+msgstr "Convite"
 
 #: [message]paused
 msgid "Paused…"
@@ -606,7 +607,7 @@ msgstr ":shortcut: para inserir um emoji"
 
 #: [message]visitor_help
 msgid "You are not allowed to send messages in this conference"
-msgstr ""
+msgstr "Não tem permissão de enviar mensagens nessa conferencia "
 
 #: [chat]attention
 msgid "%s needs your attention"
@@ -638,7 +639,7 @@ msgstr "Você recebeu um convite para entrar em uma sala de chat"
 
 #: [chat]invitation_self
 msgid "You sent an invitation to join a chatroom"
-msgstr ""
+msgstr "Você enviou um convite para entrar nesse bate-papo"
 
 #: [chat]invitation_join
 msgid "Join %s"
@@ -667,6 +668,14 @@ msgstr "Chamada recebida"
 
 #: [chat]jingle_outgoing
 msgid "Outgoing call"
+msgstr "Chamada de saída"
+
+#: [chat]jingle_retract
+msgid "Missed call"
+msgstr ""
+
+#: [chat]jingle_reject
+msgid "Refused call"
 msgstr ""
 
 #: [chat]jingle_end
@@ -675,19 +684,19 @@ msgstr "Chamada encerrada"
 
 #: [chat]jingle_hours
 msgid "%s hours %s minutes"
-msgstr ""
+msgstr "%s horas %s minutos "
 
 #: [chat]jingle_minutes
 msgid "%s minutes and %s seconds"
-msgstr ""
+msgstr "%s minutos e %s segundos "
 
 #: [chat]jingle_seconds
 msgid "%s seconds"
-msgstr ""
+msgstr "%s segundos"
 
 #: [chat]muc_admin
 msgid "%s is now admin"
-msgstr ""
+msgstr "%s esta administrando agora"
 
 #: [chat]muc_owner
 msgid "%s is now owner"
@@ -695,7 +704,7 @@ msgstr ""
 
 #: [chat]muc_outcast
 msgid "%s is now banned"
-msgstr ""
+msgstr "%s esta banido agora"
 
 #: [chat]muc_member
 msgid "%s is now member"
@@ -720,7 +729,7 @@ msgstr "Você vai excluir as mensagens %s, tem certeza?"
 
 #: [chat]action_impossible_encrypted
 msgid "Action impossible in encrypted chats"
-msgstr ""
+msgstr "Ação impossível em bate-papo criptografados "
 
 #: [chatroom]members
 msgid "Members"
@@ -754,6 +763,14 @@ msgstr "Assunto alterado"
 msgid "Administration"
 msgstr "Administração"
 
+#: [chatactions]copy_text
+msgid "Copy the text"
+msgstr ""
+
+#: [chatactions]copied_text
+msgid "Text copied"
+msgstr ""
+
 #: [omemo]fingerprints_title
 msgid "Fingerprints"
 msgstr ""
@@ -764,23 +781,23 @@ msgstr ""
 
 #: [omemo]generating_bundle
 msgid "Generating the encryption keys, please wait…"
-msgstr ""
+msgstr "Gerando chaves de criptografia, por favor aguarde..."
 
 #: [omemo]generated_bundle
 msgid "Encryption keys generated"
-msgstr ""
+msgstr "Chaves criptográficas geradas "
 
 #: [omemo]resolving_devices
 msgid "Resolving OMEMO devices"
-msgstr ""
+msgstr "Resolvendo dispositivos OMEMO"
 
 #: [omemo]building_sessions
 msgid "Building encryption sessions"
-msgstr ""
+msgstr "Criando sessões criptografadas"
 
 #: [omemo]building_own_sessions
 msgid "Building own encryption sessions"
-msgstr ""
+msgstr "Criando sessões criptografadas próprias "
 
 #: [omemo]encrypted_disabled
 msgid "Encryption disabled"
@@ -788,15 +805,15 @@ msgstr "Criptografia desabilitada"
 
 #: [omemo]encrypted_loading
 msgid "Send a message to build the encrypted session"
-msgstr ""
+msgstr "Enviar uma mensagem para criar sessão criptografada "
 
 #: [omemo]enable_contact
 msgid "Enabling encryption for the contact"
-msgstr ""
+msgstr "Habilitando criptografia para o contato "
 
 #: [omemo]disable_contact
 msgid "Disabling encryption for the contact"
-msgstr ""
+msgstr "Desabilitando criptografia para o contato "
 
 #: [omemo]last_activity
 msgid "Last activity"
@@ -804,7 +821,7 @@ msgstr "Última atividade"
 
 #: [omemo]sessions_built
 msgid "%s sessions built"
-msgstr ""
+msgstr "%s sessões criadas"
 
 #: [chats]empty_title
 msgid "No chats yet…"
@@ -904,7 +921,7 @@ msgstr "Você não pode criar uma nova comunidade neste servidor"
 
 #: [communitiesserver]disco_error
 msgid "Issue when trying to discover the items"
-msgstr ""
+msgstr "Algo aconteceu tentando encontrar os itens "
 
 #: [communitiesservers]empty_title
 msgid "No Communities Servers yet…"
@@ -920,7 +937,7 @@ msgstr "Inscrições"
 
 #: [communityaffiliation]public_subscriptions
 msgid "Public subscriptions"
-msgstr ""
+msgstr "Subscrições publicas "
 
 #: [communityaffiliation]subscriptions_text
 msgid "My Communities subscriptions"
@@ -989,15 +1006,15 @@ msgstr "Os inscritos podem publicar"
 
 #: [communityconfig]type
 msgid "Community type"
-msgstr ""
+msgstr "Tipo de comunidade"
 
 #: [communityconfig]type_articles_title
 msgid "Articles"
-msgstr ""
+msgstr "Artigos "
 
 #: [communityconfig]type_articles_text
 msgid "Publish and read articles"
-msgstr ""
+msgstr "Publica e lé artigos "
 
 #: [communityconfig]type_gallery_title [page]gallery
 msgid "Gallery"
@@ -1005,7 +1022,7 @@ msgstr "Galeria"
 
 #: [communityconfig]type_gallery_text
 msgid "Publish and browse pictures"
-msgstr ""
+msgstr "Publica e navega nas imagens "
 
 #: [communitydata]sub
 msgid "%s subscribers"
@@ -1073,10 +1090,18 @@ msgstr "Você tem certeza?"
 
 #: [communityposts]empty_me_text
 msgid "No publication yet? Write your first post to make people discover your profile"
-msgstr ""
+msgstr "Nenhuma publicação ainda? Escreve seu primeiro artigo assim as pessoas podem encontrar seu perfil"
 
 #: [communityposts]empty_me_button
 msgid "Publish my first post"
+msgstr ""
+
+#: [communityposts]presencerequired
+msgid "Private account"
+msgstr ""
+
+#: [communityposts]presencerequired_text
+msgid "Follow it to see the content"
 msgstr ""
 
 #: [communitysubscriptions]subscriptions
@@ -1139,6 +1164,14 @@ msgstr "Exibir conteúdo adulto"
 msgid "Will allow you to read the posts tagged with the #nsfw tag"
 msgstr "Irá lhe permitir ler postagens marcadas com a etiqueta #nsfw"
 
+#: [config]omemoenabled
+msgid "Use OMEMO"
+msgstr ""
+
+#: [config]omemoenabled_text
+msgid "Enable end to end encryption on Movim for your account"
+msgstr ""
+
 #: [config]night_mode
 msgid "Night Mode"
 msgstr "Modo noturno"
@@ -1170,6 +1203,30 @@ msgstr "Nunca"
 #: [config]mam_saved
 msgid "Archiving preferences saved"
 msgstr "Arquivando preferências salvas"
+
+#: [config]blog_text
+msgid "Personnal blog confidentiality"
+msgstr ""
+
+#: [config]blog_open_title
+msgid "Public blog"
+msgstr ""
+
+#: [config]blog_open_text
+msgid "Accessible to everyone"
+msgstr ""
+
+#: [config]blog_presence_title
+msgid "Private blog"
+msgstr ""
+
+#: [config]blog_presence_text
+msgid "Restricted to subscribers only"
+msgstr ""
+
+#: [config]blog_saved
+msgid "Personnal blog confidentiality saved"
+msgstr ""
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -1675,6 +1732,10 @@ msgstr "Convites pendentes"
 #: [invitations]wants_to_talk
 msgid "%s wants to talk with you"
 msgstr "%s quer falar com você"
+
+#: [invitations]no_new
+msgid "No new invitations"
+msgstr ""
 
 #: [notifs]empty
 msgid "No new notifications"

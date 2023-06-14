@@ -27,11 +27,15 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Avatar/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Badges/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blocked/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/ChatActions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ChatOmemo/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -124,10 +128,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-29 23:07+0200\n"
+"POT-Creation-Date: 2023-06-14 23:10+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>, 2015-2023\n"
-"Language-Team: French (France) (http://www.transifex.com/movim/movim/language/fr_FR/)\n"
+"Language-Team: French (France) (http://app.transifex.com/movim/movim/language/fr_FR/)\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -477,10 +481,6 @@ msgstr "Avatar mis à jour"
 msgid "Avatar Not Updated"
 msgstr "Avatar non mis à jour"
 
-#: [avatar]missing
-msgid "No avatar defined yet"
-msgstr "Aucun avatar défini pour le moment"
-
 #: [avatar]change
 msgid "Change my avatar"
 msgstr "Modifier mon avatar"
@@ -501,9 +501,9 @@ msgstr "Bannière mise à jour"
 msgid "Banner Not Updated"
 msgstr "Bannière non mise à jour"
 
-#: [banner]missing
-msgid "No banner defined yet"
-msgstr "Pas de bannière définie pour le moment"
+#: [badges]title
+msgid "Badges"
+msgstr "Badges"
 
 #: [blocked]title
 msgid "Blocked"
@@ -666,6 +666,14 @@ msgstr "Appel entrant"
 msgid "Outgoing call"
 msgstr "Appels sortants"
 
+#: [chat]jingle_retract
+msgid "Missed call"
+msgstr "Appel manqué"
+
+#: [chat]jingle_reject
+msgid "Refused call"
+msgstr "Appel refusé"
+
 #: [chat]jingle_end
 msgid "Call ended"
 msgstr "Fin de l'appel"
@@ -750,6 +758,14 @@ msgstr "Sujet mis à jour"
 #: [chatroom]administration [page]administration
 msgid "Administration"
 msgstr "Administration"
+
+#: [chatactions]copy_text
+msgid "Copy the text"
+msgstr "Copier le texte"
+
+#: [chatactions]copied_text
+msgid "Text copied"
+msgstr "Texte copié"
 
 #: [omemo]fingerprints_title
 msgid "Fingerprints"
@@ -1076,6 +1092,14 @@ msgstr "Pas encore de publications ? Écrivez votre premier article pour rendre 
 msgid "Publish my first post"
 msgstr "Publier mon premier article"
 
+#: [communityposts]presencerequired
+msgid "Private account"
+msgstr "Compte privé"
+
+#: [communityposts]presencerequired_text
+msgid "Follow it to see the content"
+msgstr "Suivez le compte pour découvrir le contenu"
+
 #: [communitysubscriptions]subscriptions
 msgid "Subscribed Communities"
 msgstr "Communautés souscrites"
@@ -1136,6 +1160,14 @@ msgstr "Afficher le contenu réservé aux adultes"
 msgid "Will allow you to read the posts tagged with the #nsfw tag"
 msgstr "Autoriser l'affichage des billets possédant la catégorie #nsfw"
 
+#: [config]omemoenabled
+msgid "Use OMEMO"
+msgstr "Utiliser OMEMO"
+
+#: [config]omemoenabled_text
+msgid "Enable end to end encryption on Movim for your account"
+msgstr "Activez le chiffrement de bout en bout sur Movim pour votre compte"
+
 #: [config]night_mode
 msgid "Night Mode"
 msgstr "Mode Nuit"
@@ -1167,6 +1199,30 @@ msgstr "Jamais"
 #: [config]mam_saved
 msgid "Archiving preferences saved"
 msgstr "Paramètres d'archivage sauvegardés"
+
+#: [config]blog_text
+msgid "Personnal blog confidentiality"
+msgstr "Niveau de confidentialité du blog personnel"
+
+#: [config]blog_open_title
+msgid "Public blog"
+msgstr "Blog public"
+
+#: [config]blog_open_text
+msgid "Accessible to everyone"
+msgstr "Accessible à toutes et tous"
+
+#: [config]blog_presence_title
+msgid "Private blog"
+msgstr "Blog privé"
+
+#: [config]blog_presence_text
+msgid "Restricted to subscribers only"
+msgstr "Restrein aux souscrits uniquement"
+
+#: [config]blog_saved
+msgid "Personnal blog confidentiality saved"
+msgstr "Niveau de confidentialité du blog sauvegardé"
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -1672,6 +1728,10 @@ msgstr "Invitations en attente"
 #: [invitations]wants_to_talk
 msgid "%s wants to talk with you"
 msgstr "%s veut parler avec vous"
+
+#: [invitations]no_new
+msgid "No new invitations"
+msgstr "Pas de nouvelles invitations"
 
 #: [notifs]empty
 msgid "No new notifications"

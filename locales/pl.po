@@ -20,11 +20,15 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Avatar/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Badges/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blocked/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/ChatActions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ChatOmemo/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -117,10 +121,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-29 23:07+0200\n"
+"POT-Creation-Date: 2023-06-14 23:10+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Rafał Kołucki <BluRafPL@gmail.com>, 2020\n"
-"Language-Team: Polish (http://www.transifex.com/movim/movim/language/pl/)\n"
+"Language-Team: Polish (http://app.transifex.com/movim/movim/language/pl/)\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -470,10 +474,6 @@ msgstr "Avatar Zaktualizowany"
 msgid "Avatar Not Updated"
 msgstr "Avatar Nie Zaktualizowany"
 
-#: [avatar]missing
-msgid "No avatar defined yet"
-msgstr "Jeszcze nie ustawiono awatara"
-
 #: [avatar]change
 msgid "Change my avatar"
 msgstr ""
@@ -494,8 +494,8 @@ msgstr ""
 msgid "Banner Not Updated"
 msgstr ""
 
-#: [banner]missing
-msgid "No banner defined yet"
+#: [badges]title
+msgid "Badges"
 msgstr ""
 
 #: [blocked]title
@@ -659,6 +659,14 @@ msgstr ""
 msgid "Outgoing call"
 msgstr ""
 
+#: [chat]jingle_retract
+msgid "Missed call"
+msgstr ""
+
+#: [chat]jingle_reject
+msgid "Refused call"
+msgstr ""
+
 #: [chat]jingle_end
 msgid "Call ended"
 msgstr ""
@@ -743,6 +751,14 @@ msgstr "Temat zmieniony"
 #: [chatroom]administration [page]administration
 msgid "Administration"
 msgstr "Administracja"
+
+#: [chatactions]copy_text
+msgid "Copy the text"
+msgstr ""
+
+#: [chatactions]copied_text
+msgid "Text copied"
+msgstr ""
 
 #: [omemo]fingerprints_title
 msgid "Fingerprints"
@@ -1069,6 +1085,14 @@ msgstr ""
 msgid "Publish my first post"
 msgstr ""
 
+#: [communityposts]presencerequired
+msgid "Private account"
+msgstr ""
+
+#: [communityposts]presencerequired_text
+msgid "Follow it to see the content"
+msgstr ""
+
 #: [communitysubscriptions]subscriptions
 msgid "Subscribed Communities"
 msgstr ""
@@ -1129,6 +1153,14 @@ msgstr "Pokazuj treść dla pełnoletnich"
 msgid "Will allow you to read the posts tagged with the #nsfw tag"
 msgstr "Pozwoli ci czytać posty otagowane jako #nsfw"
 
+#: [config]omemoenabled
+msgid "Use OMEMO"
+msgstr ""
+
+#: [config]omemoenabled_text
+msgid "Enable end to end encryption on Movim for your account"
+msgstr ""
+
 #: [config]night_mode
 msgid "Night Mode"
 msgstr ""
@@ -1159,6 +1191,30 @@ msgstr ""
 
 #: [config]mam_saved
 msgid "Archiving preferences saved"
+msgstr ""
+
+#: [config]blog_text
+msgid "Personnal blog confidentiality"
+msgstr ""
+
+#: [config]blog_open_title
+msgid "Public blog"
+msgstr ""
+
+#: [config]blog_open_text
+msgid "Accessible to everyone"
+msgstr ""
+
+#: [config]blog_presence_title
+msgid "Private blog"
+msgstr ""
+
+#: [config]blog_presence_text
+msgid "Restricted to subscribers only"
+msgstr ""
+
+#: [config]blog_saved
+msgid "Personnal blog confidentiality saved"
 msgstr ""
 
 #: [confirm]title
@@ -1665,6 +1721,10 @@ msgstr "Oczekiwanie na Zaproszenie"
 #: [invitations]wants_to_talk
 msgid "%s wants to talk with you"
 msgstr "%s chce z tobą rozmawiać"
+
+#: [invitations]no_new
+msgid "No new invitations"
+msgstr ""
 
 #: [notifs]empty
 msgid "No new notifications"

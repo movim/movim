@@ -18,11 +18,15 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Avatar/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Badges/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blocked/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/ChatActions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ChatOmemo/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -115,10 +119,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-29 23:07+0200\n"
+"POT-Creation-Date: 2023-06-14 23:10+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: josé m. <correoxm@disroot.org>, 2023\n"
-"Language-Team: Galician (http://www.transifex.com/movim/movim/language/gl/)\n"
+"Language-Team: Galician (http://app.transifex.com/movim/movim/language/gl/)\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -128,47 +132,47 @@ msgstr ""
 
 #: [about]thanks
 msgid "Thanks"
-msgstr ""
+msgstr "Grazas"
 
 #: [about]developers
 msgid "Developers"
-msgstr ""
+msgstr "Desenvolvedoras"
 
 #: [about]translators
 msgid "Translators"
-msgstr ""
+msgstr "Tradutoras"
 
 #: [about]translators_text
 msgid "Thanks to all the translators"
-msgstr ""
+msgstr "Grazas ás persoas tradutoras"
 
 #: [about]software
 msgid "Software"
-msgstr ""
+msgstr "Software"
 
 #: [about]resources
 msgid "Resources"
-msgstr ""
+msgstr "Recursos"
 
 #: [about]api
 msgid "API"
-msgstr ""
+msgstr "API"
 
 #: [about]info
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
-msgstr ""
+msgstr "Movim é unha plataforma de comunicación baseada en XMPP. Todo o proxecto, excepto o seguinte software e recursos está baixo"
 
 #: [account]title [page]account
 msgid "Account"
-msgstr ""
+msgstr "Conta"
 
 #: [account]account_management
 msgid "Account management"
-msgstr ""
+msgstr "Xestión da conta"
 
 #: [account]password_change_title
 msgid "Change my password"
-msgstr ""
+msgstr "Cambiar o contrasinal"
 
 #: [account]password [credentials]password [form]password [input]password
 msgid "Password"
@@ -176,39 +180,39 @@ msgstr "Contrasinal"
 
 #: [account]password_confirmation
 msgid "Password confirmation"
-msgstr ""
+msgstr "Confirmación do contrasinal"
 
 #: [account]password_changed
 msgid "The password has been updated"
-msgstr ""
+msgstr "Actualizouse o contrasinal"
 
 #: [account]password_not_same
 msgid "The provided passwords are not the same"
-msgstr ""
+msgstr "Os contrasinais escritos non concordan"
 
 #: [account]delete
 msgid "Delete your account"
-msgstr ""
+msgstr "Elimina a túa conta"
 
 #: [account]delete_text
 msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts and publications)."
-msgstr ""
+msgstr "Vas eliminar a túa conta XMPP e toda a súa información relativa que contén (perfil, contactos e publicacións)."
 
 #: [account]delete_text_confirm
 msgid "Type your full username"
-msgstr ""
+msgstr "Escribe o teu identificador completo"
 
 #: [account]delete_text_error
 msgid "Please provide a valid username."
-msgstr ""
+msgstr "Por favor escribe un identificador válido."
 
 #: [account]gateway_title
 msgid "Gateways"
-msgstr ""
+msgstr "Pasarelas"
 
 #: [account]clear
 msgid "Leave this instance"
-msgstr ""
+msgstr "Saír desta instancia"
 
 #: [account]clear_text
 msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
@@ -468,10 +472,6 @@ msgstr ""
 msgid "Avatar Not Updated"
 msgstr ""
 
-#: [avatar]missing
-msgid "No avatar defined yet"
-msgstr ""
-
 #: [avatar]change
 msgid "Change my avatar"
 msgstr ""
@@ -492,8 +492,8 @@ msgstr ""
 msgid "Banner Not Updated"
 msgstr ""
 
-#: [banner]missing
-msgid "No banner defined yet"
+#: [badges]title
+msgid "Badges"
 msgstr ""
 
 #: [blocked]title
@@ -657,6 +657,14 @@ msgstr ""
 msgid "Outgoing call"
 msgstr ""
 
+#: [chat]jingle_retract
+msgid "Missed call"
+msgstr ""
+
+#: [chat]jingle_reject
+msgid "Refused call"
+msgstr ""
+
 #: [chat]jingle_end
 msgid "Call ended"
 msgstr ""
@@ -740,6 +748,14 @@ msgstr ""
 
 #: [chatroom]administration [page]administration
 msgid "Administration"
+msgstr ""
+
+#: [chatactions]copy_text
+msgid "Copy the text"
+msgstr ""
+
+#: [chatactions]copied_text
+msgid "Text copied"
 msgstr ""
 
 #: [omemo]fingerprints_title
@@ -1067,6 +1083,14 @@ msgstr ""
 msgid "Publish my first post"
 msgstr ""
 
+#: [communityposts]presencerequired
+msgid "Private account"
+msgstr ""
+
+#: [communityposts]presencerequired_text
+msgid "Follow it to see the content"
+msgstr ""
+
 #: [communitysubscriptions]subscriptions
 msgid "Subscribed Communities"
 msgstr ""
@@ -1127,6 +1151,14 @@ msgstr ""
 msgid "Will allow you to read the posts tagged with the #nsfw tag"
 msgstr ""
 
+#: [config]omemoenabled
+msgid "Use OMEMO"
+msgstr ""
+
+#: [config]omemoenabled_text
+msgid "Enable end to end encryption on Movim for your account"
+msgstr ""
+
 #: [config]night_mode
 msgid "Night Mode"
 msgstr ""
@@ -1157,6 +1189,30 @@ msgstr ""
 
 #: [config]mam_saved
 msgid "Archiving preferences saved"
+msgstr ""
+
+#: [config]blog_text
+msgid "Personnal blog confidentiality"
+msgstr ""
+
+#: [config]blog_open_title
+msgid "Public blog"
+msgstr ""
+
+#: [config]blog_open_text
+msgid "Accessible to everyone"
+msgstr ""
+
+#: [config]blog_presence_title
+msgid "Private blog"
+msgstr ""
+
+#: [config]blog_presence_text
+msgid "Restricted to subscribers only"
+msgstr ""
+
+#: [config]blog_saved
+msgid "Personnal blog confidentiality saved"
 msgstr ""
 
 #: [confirm]title
@@ -1662,6 +1718,10 @@ msgstr ""
 
 #: [invitations]wants_to_talk
 msgid "%s wants to talk with you"
+msgstr ""
+
+#: [invitations]no_new
+msgid "No new invitations"
 msgstr ""
 
 #: [notifs]empty

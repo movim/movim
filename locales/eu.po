@@ -20,11 +20,15 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Avatar/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Badges/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blocked/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/ChatActions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ChatOmemo/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -117,10 +121,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-29 23:07+0200\n"
+"POT-Creation-Date: 2023-06-14 23:10+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Xabi, 2023\n"
-"Language-Team: Basque (http://www.transifex.com/movim/movim/language/eu/)\n"
+"Language-Team: Basque (http://app.transifex.com/movim/movim/language/eu/)\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -470,10 +474,6 @@ msgstr "Abatarra eguneratu da"
 msgid "Avatar Not Updated"
 msgstr "Abatarra ez da eguneratu"
 
-#: [avatar]missing
-msgid "No avatar defined yet"
-msgstr "Ez da abatarrik ezarri oraindik"
-
 #: [avatar]change
 msgid "Change my avatar"
 msgstr "Aldatu abatarra"
@@ -494,9 +494,9 @@ msgstr "Goiburuko irudia eguneratu da"
 msgid "Banner Not Updated"
 msgstr "Goiburuko irudia ez da eguneratu"
 
-#: [banner]missing
-msgid "No banner defined yet"
-msgstr "Oraindik ez da goiburuko irudirik ezarri"
+#: [badges]title
+msgid "Badges"
+msgstr ""
 
 #: [blocked]title
 msgid "Blocked"
@@ -659,6 +659,14 @@ msgstr "Dei berria"
 msgid "Outgoing call"
 msgstr "Deitzen ari zara"
 
+#: [chat]jingle_retract
+msgid "Missed call"
+msgstr ""
+
+#: [chat]jingle_reject
+msgid "Refused call"
+msgstr ""
+
 #: [chat]jingle_end
 msgid "Call ended"
 msgstr "Deiaren amaiera"
@@ -677,19 +685,19 @@ msgstr "%s segundu"
 
 #: [chat]muc_admin
 msgid "%s is now admin"
-msgstr ""
+msgstr "%s administratzaile da orain"
 
 #: [chat]muc_owner
 msgid "%s is now owner"
-msgstr ""
+msgstr "%s jabe da orain"
 
 #: [chat]muc_outcast
 msgid "%s is now banned"
-msgstr ""
+msgstr "%s(r)i debekua jarri zaio"
 
 #: [chat]muc_member
 msgid "%s is now member"
-msgstr ""
+msgstr "%s kide da orain"
 
 #: [chat]publish_error
 msgid "An error occured when sending the message"
@@ -743,6 +751,14 @@ msgstr "Gaia aldatu da"
 #: [chatroom]administration [page]administration
 msgid "Administration"
 msgstr "Administrazioa"
+
+#: [chatactions]copy_text
+msgid "Copy the text"
+msgstr ""
+
+#: [chatactions]copied_text
+msgid "Text copied"
+msgstr ""
 
 #: [omemo]fingerprints_title
 msgid "Fingerprints"
@@ -822,7 +838,7 @@ msgstr "Bideoa"
 
 #: [chats]audio
 msgid "Audio"
-msgstr ""
+msgstr "Audioa"
 
 #: [button]chat
 msgid "Chat"
@@ -894,7 +910,7 @@ msgstr "Ezin duzu zerbitzari honetan komunitate berri bat sortu"
 
 #: [communitiesserver]disco_error
 msgid "Issue when trying to discover the items"
-msgstr ""
+msgstr "Arazoa elementu berriak deskubritzen saiatzean"
 
 #: [communitiesservers]empty_title
 msgid "No Communities Servers yet…"
@@ -979,15 +995,15 @@ msgstr "Harpidedunek argitara dezakete"
 
 #: [communityconfig]type
 msgid "Community type"
-msgstr ""
+msgstr "Komunitate mota"
 
 #: [communityconfig]type_articles_title
 msgid "Articles"
-msgstr ""
+msgstr "Artikuluak"
 
 #: [communityconfig]type_articles_text
 msgid "Publish and read articles"
-msgstr ""
+msgstr "Argitaratu eta irakurri artikuluak"
 
 #: [communityconfig]type_gallery_title [page]gallery
 msgid "Gallery"
@@ -995,7 +1011,7 @@ msgstr "Galeria"
 
 #: [communityconfig]type_gallery_text
 msgid "Publish and browse pictures"
-msgstr ""
+msgstr "Argitaratu eta arakatu irudiak"
 
 #: [communitydata]sub
 msgid "%s subscribers"
@@ -1069,6 +1085,14 @@ msgstr "Oraindik argitalpenik gabe? Idatzi lehen mezua jendeak zure profila desk
 msgid "Publish my first post"
 msgstr "Argitaratu lehen mezua"
 
+#: [communityposts]presencerequired
+msgid "Private account"
+msgstr ""
+
+#: [communityposts]presencerequired_text
+msgid "Follow it to see the content"
+msgstr ""
+
 #: [communitysubscriptions]subscriptions
 msgid "Subscribed Communities"
 msgstr "Harpidetutako komunitateak"
@@ -1129,6 +1153,14 @@ msgstr "Erakutsi helduentzako edukia"
 msgid "Will allow you to read the posts tagged with the #nsfw tag"
 msgstr "#nsfw etiketa duten argitalpenak ikusi ahal izango duzu"
 
+#: [config]omemoenabled
+msgid "Use OMEMO"
+msgstr ""
+
+#: [config]omemoenabled_text
+msgid "Enable end to end encryption on Movim for your account"
+msgstr ""
+
 #: [config]night_mode
 msgid "Night Mode"
 msgstr "Gaueko itxura"
@@ -1160,6 +1192,30 @@ msgstr "Inoiz ez"
 #: [config]mam_saved
 msgid "Archiving preferences saved"
 msgstr "Artxibatze-ezarpenak gorde dira"
+
+#: [config]blog_text
+msgid "Personnal blog confidentiality"
+msgstr ""
+
+#: [config]blog_open_title
+msgid "Public blog"
+msgstr ""
+
+#: [config]blog_open_text
+msgid "Accessible to everyone"
+msgstr ""
+
+#: [config]blog_presence_title
+msgid "Private blog"
+msgstr ""
+
+#: [config]blog_presence_text
+msgid "Restricted to subscribers only"
+msgstr ""
+
+#: [config]blog_saved
+msgid "Personnal blog confidentiality saved"
+msgstr ""
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -1363,15 +1419,15 @@ msgstr "Ez da datu publikorik aurkitu"
 
 #: [dictaphone]name
 msgid "Dictaphone"
-msgstr ""
+msgstr "Diktafonoa"
 
 #: [dictaphone]push_to_record
 msgid "Push to record"
-msgstr ""
+msgstr "Sakatu grabatzeko"
 
 #: [dictaphone]recording
 msgid "Recording"
-msgstr ""
+msgstr "Grabatzen"
 
 #: [draw]title
 msgid "Draw"
@@ -1666,6 +1722,10 @@ msgstr "Zain dituzun gonbidapenak"
 msgid "%s wants to talk with you"
 msgstr "%s(e)k zurekin hitz egin nahi du"
 
+#: [invitations]no_new
+msgid "No new invitations"
+msgstr ""
+
 #: [notifs]empty
 msgid "No new notifications"
 msgstr "Ez dago jakinarazpen berririk"
@@ -1748,7 +1808,7 @@ msgstr "Erabiltzaileen argitalpen publikoak"
 
 #: [post]unknown_contact
 msgid "Unknown contact"
-msgstr ""
+msgstr "Kontaktu ezezaguna"
 
 #: [post]read_time_singular
 msgid "%s minute"
@@ -1900,7 +1960,7 @@ msgstr "Idatzi titulu bat"
 
 #: [publish]no_picture
 msgid "At least one picture is required"
-msgstr ""
+msgstr "Gutxienez irudi bat behar da"
 
 #: [publish]preview
 msgid "Preview"
@@ -2356,7 +2416,7 @@ msgstr "Kontaktu gehiago"
 
 #: [sendto]os_share
 msgid "Share outside Movim"
-msgstr ""
+msgstr "Partekatu Movimetik kanpo"
 
 #: [sticker]title
 msgid "Stickers"

@@ -35,11 +35,15 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Avatar/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Badges/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blocked/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/ChatActions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ChatOmemo/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -132,10 +136,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-29 23:07+0200\n"
+"POT-Creation-Date: 2023-06-14 23:10+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>, 2017,2023\n"
-"Language-Team: German (http://www.transifex.com/movim/movim/language/de/)\n"
+"Language-Team: German (http://app.transifex.com/movim/movim/language/de/)\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -485,10 +489,6 @@ msgstr "Avatar aktualisiert"
 msgid "Avatar Not Updated"
 msgstr "Avatar nicht aktualisiert"
 
-#: [avatar]missing
-msgid "No avatar defined yet"
-msgstr "Noch wurde kein Avatar festgelegt"
-
 #: [avatar]change
 msgid "Change my avatar"
 msgstr "Avatar ändern"
@@ -509,8 +509,8 @@ msgstr ""
 msgid "Banner Not Updated"
 msgstr ""
 
-#: [banner]missing
-msgid "No banner defined yet"
+#: [badges]title
+msgid "Badges"
 msgstr ""
 
 #: [blocked]title
@@ -674,6 +674,14 @@ msgstr "Eingehender Anruf"
 msgid "Outgoing call"
 msgstr ""
 
+#: [chat]jingle_retract
+msgid "Missed call"
+msgstr ""
+
+#: [chat]jingle_reject
+msgid "Refused call"
+msgstr ""
+
 #: [chat]jingle_end
 msgid "Call ended"
 msgstr "Anruf beendet"
@@ -758,6 +766,14 @@ msgstr "Betreff geändert"
 #: [chatroom]administration [page]administration
 msgid "Administration"
 msgstr "Administration"
+
+#: [chatactions]copy_text
+msgid "Copy the text"
+msgstr ""
+
+#: [chatactions]copied_text
+msgid "Text copied"
+msgstr ""
 
 #: [omemo]fingerprints_title
 msgid "Fingerprints"
@@ -1084,6 +1100,14 @@ msgstr ""
 msgid "Publish my first post"
 msgstr ""
 
+#: [communityposts]presencerequired
+msgid "Private account"
+msgstr ""
+
+#: [communityposts]presencerequired_text
+msgid "Follow it to see the content"
+msgstr ""
+
 #: [communitysubscriptions]subscriptions
 msgid "Subscribed Communities"
 msgstr ""
@@ -1144,6 +1168,14 @@ msgstr "Erwachseneninhalt anzeigen"
 msgid "Will allow you to read the posts tagged with the #nsfw tag"
 msgstr "Erlaubt Ihnen, Posts mit dem Tag #nsfw zu sehen"
 
+#: [config]omemoenabled
+msgid "Use OMEMO"
+msgstr ""
+
+#: [config]omemoenabled_text
+msgid "Enable end to end encryption on Movim for your account"
+msgstr ""
+
 #: [config]night_mode
 msgid "Night Mode"
 msgstr "Nachtmodus"
@@ -1175,6 +1207,30 @@ msgstr "Nie"
 #: [config]mam_saved
 msgid "Archiving preferences saved"
 msgstr "Archivierungseinstellungen gespeichert"
+
+#: [config]blog_text
+msgid "Personnal blog confidentiality"
+msgstr ""
+
+#: [config]blog_open_title
+msgid "Public blog"
+msgstr ""
+
+#: [config]blog_open_text
+msgid "Accessible to everyone"
+msgstr ""
+
+#: [config]blog_presence_title
+msgid "Private blog"
+msgstr ""
+
+#: [config]blog_presence_text
+msgid "Restricted to subscribers only"
+msgstr ""
+
+#: [config]blog_saved
+msgid "Personnal blog confidentiality saved"
+msgstr ""
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -1680,6 +1736,10 @@ msgstr "Neue Einladungen"
 #: [invitations]wants_to_talk
 msgid "%s wants to talk with you"
 msgstr "%s möchte mit Ihnen sprechen"
+
+#: [invitations]no_new
+msgid "No new invitations"
+msgstr ""
 
 #: [notifs]empty
 msgid "No new notifications"

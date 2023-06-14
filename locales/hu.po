@@ -22,11 +22,15 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Avatar/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Badges/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blocked/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/ChatActions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ChatOmemo/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -119,10 +123,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-29 23:07+0200\n"
+"POT-Creation-Date: 2023-06-14 23:10+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: 386902c248cb697d9d6d058103e08443_c36ce9b <3e1ab06cc760e2987b063fda7f345e3f_237544>, 2018\n"
-"Language-Team: Hungarian (http://www.transifex.com/movim/movim/language/hu/)\n"
+"Language-Team: Hungarian (http://app.transifex.com/movim/movim/language/hu/)\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -472,10 +476,6 @@ msgstr "Avatár frissítve"
 msgid "Avatar Not Updated"
 msgstr "Az avatár nem lett frissítve."
 
-#: [avatar]missing
-msgid "No avatar defined yet"
-msgstr "Még nincs megadva avatar"
-
 #: [avatar]change
 msgid "Change my avatar"
 msgstr ""
@@ -496,8 +496,8 @@ msgstr ""
 msgid "Banner Not Updated"
 msgstr ""
 
-#: [banner]missing
-msgid "No banner defined yet"
+#: [badges]title
+msgid "Badges"
 msgstr ""
 
 #: [blocked]title
@@ -661,6 +661,14 @@ msgstr ""
 msgid "Outgoing call"
 msgstr ""
 
+#: [chat]jingle_retract
+msgid "Missed call"
+msgstr ""
+
+#: [chat]jingle_reject
+msgid "Refused call"
+msgstr ""
+
 #: [chat]jingle_end
 msgid "Call ended"
 msgstr ""
@@ -745,6 +753,14 @@ msgstr "A tárgy megváltozott"
 #: [chatroom]administration [page]administration
 msgid "Administration"
 msgstr "Adminisztráció"
+
+#: [chatactions]copy_text
+msgid "Copy the text"
+msgstr ""
+
+#: [chatactions]copied_text
+msgid "Text copied"
+msgstr ""
 
 #: [omemo]fingerprints_title
 msgid "Fingerprints"
@@ -1071,6 +1087,14 @@ msgstr ""
 msgid "Publish my first post"
 msgstr ""
 
+#: [communityposts]presencerequired
+msgid "Private account"
+msgstr ""
+
+#: [communityposts]presencerequired_text
+msgid "Follow it to see the content"
+msgstr ""
+
 #: [communitysubscriptions]subscriptions
 msgid "Subscribed Communities"
 msgstr ""
@@ -1131,6 +1155,14 @@ msgstr "Felnőtt tartalom megjelenítése"
 msgid "Will allow you to read the posts tagged with the #nsfw tag"
 msgstr "Engedélyezni fogja a #nsfw címkével ellátott bejegyzéseket."
 
+#: [config]omemoenabled
+msgid "Use OMEMO"
+msgstr ""
+
+#: [config]omemoenabled_text
+msgid "Enable end to end encryption on Movim for your account"
+msgstr ""
+
 #: [config]night_mode
 msgid "Night Mode"
 msgstr "Éjjeli mód"
@@ -1162,6 +1194,30 @@ msgstr "Soha"
 #: [config]mam_saved
 msgid "Archiving preferences saved"
 msgstr "Archiválási beállítások elmentve"
+
+#: [config]blog_text
+msgid "Personnal blog confidentiality"
+msgstr ""
+
+#: [config]blog_open_title
+msgid "Public blog"
+msgstr ""
+
+#: [config]blog_open_text
+msgid "Accessible to everyone"
+msgstr ""
+
+#: [config]blog_presence_title
+msgid "Private blog"
+msgstr ""
+
+#: [config]blog_presence_text
+msgid "Restricted to subscribers only"
+msgstr ""
+
+#: [config]blog_saved
+msgid "Personnal blog confidentiality saved"
+msgstr ""
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -1667,6 +1723,10 @@ msgstr "Várakozó meghívások"
 #: [invitations]wants_to_talk
 msgid "%s wants to talk with you"
 msgstr "%s beszélni szeretne veled"
+
+#: [invitations]no_new
+msgid "No new invitations"
+msgstr ""
 
 #: [notifs]empty
 msgid "No new notifications"
