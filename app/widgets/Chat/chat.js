@@ -810,7 +810,7 @@ var Chat = {
                     if (e.button == 0 && (e.target.classList.contains('message') || e.target.parentElement.classList.contains('message')) && !(window.getSelection().toString() != '')) {
                         ChatActions_ajaxShowMessageDialog(this.dataset.mid);
                     }
-                }, 300);
+                }, 200);
             }
         });
 
