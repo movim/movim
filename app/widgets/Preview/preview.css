@@ -147,3 +147,10 @@
     top: 1.25rem;
     pointer-events: none;
 }
+
+/** Chat bubble **/
+
+li:not(.oppose) .bubble .previewable:after {
+    right: 0;
+    left: 0.75rem;
+}

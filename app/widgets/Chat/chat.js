@@ -813,6 +813,14 @@ var Chat = {
                 }, 300);
             }
         });
+
+        document.querySelectorAll('#chat_widget ul li div.bubble.file > div.message').forEach(message => {
+            if (card = message.querySelector('ul.list.card > li > div')) {
+                card.onclick = function (e) {
+                    ChatActions_ajaxShowMessageDialog(message.dataset.mid);
+                };
+            }
+        });
     },
     checkDiscussion: function (page) {
         for (var firstKey in page) break;
@@ -1289,7 +1297,7 @@ var Chat = {
     },
     getCardHtml: function (card) {
         var ul = document.createElement('ul');
-        ul.setAttribute('class', 'card list middle noanim shadow');
+        ul.setAttribute('class', 'card list middle noanim shadow active');
         ul.innerHTML = card;
 
         if (ul.querySelector('li').getAttribute('onclick')) {

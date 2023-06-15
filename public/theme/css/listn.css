@@ -383,6 +383,7 @@ ul li div.bubble {
     flex: 0 0 auto;
     margin: 0 1.5rem;
     min-height: 5rem;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 ul li div.bubble div[dir="rtl"] {
@@ -466,11 +467,7 @@ ul li.oppose div.bubble.file div.audio_player {
 
 ul li div.bubble:not(.sticker):not(.file):hover {
     cursor: pointer;
-    box-shadow: var(--elevation-1);
-}
-
-ul li div.bubble:not(.sticker):not(.file):active {
-    box-shadow: var(--elevation-0);
+    background-color: rgba(var(--movim-element-action), 0.1);
 }
 
 ul li div.bubble.file div.audio_player,
@@ -535,13 +532,17 @@ ul li div.bubble:not(.sticker):not(.file):before {
     mask-image: url(../img/bubble_mask.svg);
     -webkit-mask-size: 100%;
     mask-size: 100%;
+    transition: border-color 0.3s ease;
+}
+
+ul li div.bubble:not(.sticker):not(.file):hover:before {
+    border-color: rgba(var(--movim-element-action), 0.1);
 }
 
 ul li.oppose div.bubble:not(.sticker):not(.file):before {
     left: initial;
     right: -1.5rem;
     border-right-color: transparent;
-    border-left-color: inherit;
     -webkit-mask-image: url(../img/bubble_mask_oppose.svg);
     mask-image: url(../img/bubble_mask_oppose.svg);
 }
