@@ -529,14 +529,22 @@ main:not(.enabled) #chat_widget {
     z-index: 1;
     border: solid 1px transparent;
     box-shadow: var(--elevation-0);
+    transition: background-color 0.3s ease;
 }
 
 #chat_widget .bubble div span.reaction:hover,
 #chat_widget .bubble div span.reply:hover,
 #chat_widget .bubble ul.reactions li:hover {
     cursor: pointer;
-    filter: brightness(1.1);
+    background-color: rgba(var(--movim-element-action), 0.1);
     box-shadow: var(--elevation-1);
+}
+
+#chat_widget .bubble div span.reaction:active,
+#chat_widget .bubble div span.reply:active,
+#chat_widget .bubble ul.reactions li:active {
+    background-color: rgba(var(--movim-element-action), 0.2);
+    box-shadow: var(--elevation-0);
 }
 
 #chat_widget .bubble ul.reactions li:not(:last-child) {

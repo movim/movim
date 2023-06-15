@@ -71,7 +71,9 @@ ul.list li > span.bubble.active:hover {
     filter: grayscale(25%);
 }
 
-ul.list li > span:not(.bubble).active:hover {
+ul.list li > span:not(.bubble).active:hover,
+ul.list li div.bubble:not(.sticker):not(.file):hover {
+    cursor: pointer;
     background-color: rgba(var(--movim-element-action), 0.1);
 }
 
@@ -88,7 +90,9 @@ ul.list li > span.bubble.active:active {
     filter: grayscale(50%);
 }
 
-ul.list li > span:not(.bubble).active:active {
+ul.list li > span:not(.bubble).active:active,
+ul.list li div.bubble:not(.sticker):not(.file):active {
+    cursor: pointer;
     background-color: rgba(var(--movim-element-action), 0.2);
 }
 
@@ -465,11 +469,6 @@ ul li.oppose div.bubble.file div.audio_player {
     padding: 1rem 1rem 1rem 1.5rem;
 }
 
-ul li div.bubble:not(.sticker):not(.file):hover {
-    cursor: pointer;
-    background-color: rgba(var(--movim-element-action), 0.1);
-}
-
 ul li div.bubble.file div.audio_player,
 ul li.oppose div.bubble.file div.audio_player {
     padding: 0.5rem;
@@ -537,6 +536,10 @@ ul li div.bubble:not(.sticker):not(.file):before {
 
 ul li div.bubble:not(.sticker):not(.file):hover:before {
     border-color: rgba(var(--movim-element-action), 0.1);
+}
+
+ul li div.bubble:not(.sticker):not(.file):active:before {
+    border-color: rgba(var(--movim-element-action), 0.2);
 }
 
 ul li.oppose div.bubble:not(.sticker):not(.file):before {

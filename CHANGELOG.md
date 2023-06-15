@@ -23,6 +23,7 @@ v0.22 (trunk)
  * Refactor and cleanup the Moxl Stanza classes
  * Fixing XEP-0077: In-Band Registration support and cleaning old code
  * Introduce a view counter for Posts, show the counter above 3 views
+ * Slightly update the chat bubbles design and introduce a new way to interact with them and perform actions (reactions, reply...)
 
 v0.21.1
 ---------------------------
