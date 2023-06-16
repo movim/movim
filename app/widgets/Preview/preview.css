@@ -135,6 +135,10 @@
     opacity: 0.6;
 }
 
+.previewable:active img {
+    opacity: 0.8;
+}
+
 .previewable:after {
     color: white;
     font-family: 'Material Icons';

@@ -435,7 +435,8 @@ ul li div.bubble p.encrypted {
 }
 
 ul li div.bubble p.previewable {
-    display: block;
+    display: inline-block;
+    min-width: 0;
 }
 
 ul li div.bubble p.code {
@@ -523,29 +524,31 @@ ul li div.bubble:not(.sticker):not(.file):before {
     content: "";
     position: absolute;
     top: 0;
-    left: -1.5rem;
-    border: 0.8rem solid transparent;
-    border-top-color: inherit;
-    border-right-color: rgb(var(--movim-background-main));
+    left: -1.6rem;
+    width: 1.6rem;
+    height: 1.6rem;
+    background-color: rgb(var(--movim-background-main));
     -webkit-mask-image: url(../img/bubble_mask.svg);
     mask-image: url(../img/bubble_mask.svg);
     -webkit-mask-size: 100%;
     mask-size: 100%;
-    transition: border-color 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 
-ul li div.bubble:not(.sticker):not(.file):hover:before {
-    border-color: rgba(var(--movim-element-action), 0.1);
+ul li div.bubble:not(.sticker):not(.file):hover:before,
+ul li.oppose div.bubble:not(.sticker):not(.file):hover:before {
+    background-color: rgba(var(--movim-element-action), 0.1);
 }
 
-ul li div.bubble:not(.sticker):not(.file):active:before {
-    border-color: rgba(var(--movim-element-action), 0.2);
+ul li div.bubble:not(.sticker):not(.file):active:before,
+ul li.oppose div.bubble:not(.sticker):not(.file):active:before {
+    background-color: rgba(var(--movim-element-action), 0.2);
 }
 
 ul li.oppose div.bubble:not(.sticker):not(.file):before {
     left: initial;
-    right: -1.5rem;
-    border-right-color: transparent;
+    right: -1.6rem;
+    background-color: rgba(var(--movim-background-main), 0.5);
     -webkit-mask-image: url(../img/bubble_mask_oppose.svg);
     mask-image: url(../img/bubble_mask_oppose.svg);
 }

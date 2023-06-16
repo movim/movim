@@ -1,4 +1,14 @@
-<section>
+<section id="chat_actions">
+    <ul class="list" id="message_preview">
+        <li {if="$message->isMine()"}class="oppose"{/if}>
+            <div class="bubble" data-publishedprepared="{$message->published|strtotime|prepareTime}">
+                <div class="message">
+                    <p>{autoescape="off"}{$message->body|trim|stripTags|addEmojis}{/autoescape}</p>
+                    <span class="info"></span>
+                </div>
+            </div>
+        </li>
+    </ul>
     <ul class="list divided active middle">
         <li onclick="Stickers_ajaxReaction({$message->mid})">
             <span class="primary icon gray">
@@ -16,7 +26,8 @@
                 <p class="normal">{$c->__('button.reply')}</p>
             </div>
         </li>
-        <li onclick="MovimUtils.copyToClipboard(MovimUtils.decodeHTMLEntities(ChatActions.message.body)); ChatActions_ajaxCopiedMessageText(); Dialog_ajaxClear()">
+        <li
+            onclick="MovimUtils.copyToClipboard(MovimUtils.decodeHTMLEntities(ChatActions.message.body)); ChatActions_ajaxCopiedMessageText(); Dialog_ajaxClear()">
             <span class="primary icon gray">
                 <i class="material-icons">content_copy</i>
             </span>
@@ -34,14 +45,14 @@
         </li>-->
 
         {if="$message->isMine()"}
-            <li onclick="ChatActions_ajaxHttpDaemonRetract({$message->mid})">
-                <span class="primary icon gray">
-                    <i class="material-icons">delete</i>
-                </span>
-                <div>
-                    <p class="normal">{$c->__('message.retract')}</p>
-                </div>
-            </li>
+        <li onclick="ChatActions_ajaxHttpDaemonRetract({$message->mid})">
+            <span class="primary icon gray">
+                <i class="material-icons">delete</i>
+            </span>
+            <div>
+                <p class="normal">{$c->__('message.retract')}</p>
+            </div>
+        </li>
         {/if}
     </ul>
 </section>

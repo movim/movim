@@ -12,6 +12,7 @@ class ChatActions extends \Movim\Widget\Base
     public function load()
     {
         $this->addjs('chatactions.js');
+        $this->addcss('chatactions.css');
     }
 
     /**
