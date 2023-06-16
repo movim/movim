@@ -435,7 +435,7 @@ ul li div.bubble p.encrypted {
 }
 
 ul li div.bubble p.previewable {
-    display: inline-block;
+    display: block;
     min-width: 0;
 }
 
