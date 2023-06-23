@@ -73,12 +73,14 @@ code {
 li p.code,
 pre,
 xmp {
+    border-radius: 0.5rem;
     color: white;
     padding: 1rem;
+    padding-left: 1.5rem;
     font-size: 1.6rem;
     margin: 1rem 0;
     border-left: 0.5rem solid gray;
-    background-color: #333;
+    background-color: rgb(var(--movim-gray));
     white-space:pre;
     word-wrap:break-word;
     direction: ltr;
@@ -96,7 +98,7 @@ xmp::before {
     content: attr(class);
     display: block;
     float: right;
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(var(--movim-gray), 0.5);
     padding: 0 1rem;
 }
 
@@ -118,7 +120,7 @@ q:after {
 cite,
 blockquote {
     padding-left: 1.5rem;
-    border-left: 1rem solid rgba(0, 0, 0, 0.2);
+    border-left: 0.5rem solid rgba(var(--movim-font), 0.2);
     font-style: italic;
     margin: 1rem 0;
 }

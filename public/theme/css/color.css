@@ -13,7 +13,7 @@ body {
 
 body.nightmode {
     --movim-accent: 16, 21, 26;
-    --movim-background-main: 20,26,33;
+    --movim-background-main: 20, 26, 33;
     --movim-background: 25, 32, 40;
     --movim-gray: var(--movim-accent);
     --movim-font: 255, 255, 255;
