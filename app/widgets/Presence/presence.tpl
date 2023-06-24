@@ -54,5 +54,4 @@
             <p class="normal line">{$c->__('status.disconnect')}</p>
         </div>
     </li>
-    <hr />
 </ul>
