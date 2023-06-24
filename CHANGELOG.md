@@ -24,6 +24,8 @@ v0.22 (trunk)
  * Fixing XEP-0077: In-Band Registration support and cleaning old code
  * Introduce a view counter for Posts, show the counter above 3 views
  * Slightly update the chat bubbles design and introduce a new way to interact with them and perform actions (reactions, reply...)
+ * Ensure that publish-options errors are handled and that the node is re-configured properly
+ * Add a workaround for https://github.com/processone/ejabberd/issues/3044#issuecomment-1605349858, disable the publish-options element when republishing to prevent ejabberd error
 
 v0.21.1
 ---------------------------
