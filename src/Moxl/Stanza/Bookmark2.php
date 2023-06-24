@@ -6,25 +6,35 @@ use App\Conference;
 
 class Bookmark2
 {
+    public static $node = 'urn:xmpp:bookmarks:';
+    public static $nodeConfig = [
+        'FORM_TYPE' => 'http://jabber.org/protocol/pubsub#publish-options',
+        'pubsub#persist_items' => 'true',
+        'pubsub#access_model' => 'whitelist',
+        'pubsub#send_last_published_item' => 'never',
+        'pubsub#max_items' => 'max',
+        'pubsub#notify_retract' => 'true',
+    ];
+
     public static function get($version = '1')
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
 
         $items = $dom->createElement('items');
-        $items->setAttribute('node', 'urn:xmpp:bookmarks:'.$version);
+        $items->setAttribute('node', self::$node . $version);
         $pubsub->appendChild($items);
 
         \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, false, 'get'));
     }
 
-    public static function set(Conference $conf, $version = '1')
+    public static function set(Conference $conf, $version = '1', bool $withPublishOption = true)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
 
         $publish = $dom->createElement('publish');
-        $publish->setAttribute('node', 'urn:xmpp:bookmarks:'.$version);
+        $publish->setAttribute('node', self::$node . $version);
         $pubsub->appendChild($publish);
 
         $item = $dom->createElement('item');
@@ -32,7 +42,7 @@ class Bookmark2
         $publish->appendChild($item);
 
         $conference = $dom->createElement('conference');
-        $conference->setAttribute('xmlns', 'urn:xmpp:bookmarks:'.$version);
+        $conference->setAttribute('xmlns', self::$node . $version);
         $conference->setAttribute('name', $conf->name);
         if ($conf->autojoin) {
             $conference->setAttribute('autojoin', 'true');
@@ -66,23 +76,17 @@ class Bookmark2
             $extensions->appendChild($pinned);
         }
 
-        // Publish option
-        $publishOption = $dom->createElement('publish-options');
-        $x = $dom->createElement('x');
-        $x->setAttribute('xmlns', 'jabber:x:data');
-        $x->setAttribute('type', 'submit');
-        $publishOption->appendChild($x);
+        if ($withPublishOption) {
+            $publishOption = $dom->createElement('publish-options');
+            $x = $dom->createElement('x');
+            $x->setAttribute('xmlns', 'jabber:x:data');
+            $x->setAttribute('type', 'submit');
+            $publishOption->appendChild($x);
 
-        \Moxl\Utils::injectConfigInX($x, [
-            'FORM_TYPE' => 'http://jabber.org/protocol/pubsub#publish-options',
-            'pubsub#persist_items' => 'true',
-            'pubsub#access_model' => 'whitelist',
-            //'pubsub#send_last_published_item' => 'never',
-            //'pubsub#max_items' => 'max',
-            //'pubsub#notify_retract' => 'true',
-        ]);
+            \Moxl\Utils::injectConfigInX($x, self::$nodeConfig);
 
-        $pubsub->appendChild($publishOption);
+            $pubsub->appendChild($publishOption);
+        }
 
         \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, false, 'set'));
     }

@@ -12,6 +12,8 @@ class PostPublish extends Action
     private $_to = '';
     private PubsubAtom $_atom;
     private $_repost;
+    // See https://github.com/processone/ejabberd/issues/3044#issuecomment-1605349858
+    protected $_withPublishOption = true;
 
     public function __construct()
     {
@@ -26,7 +28,7 @@ class PostPublish extends Action
         }
 
         $this->store();
-        Pubsub::postPublish($this->_to, $this->_node, $this->_atom);
+        Pubsub::postPublish($this->_to, $this->_node, $this->_atom, $this->_withPublishOption);
     }
 
     public function setTo($to)
@@ -160,5 +162,26 @@ class PostPublish extends Action
             'repost'    => $this->_repost,
             'comments'  => $this->_atom->comments]);
         $this->deliver();
+    }
+
+    public function errorPreconditionNotMet(string $errorId, ?string $message = null)
+    {
+        $this->errorConflict($errorId, $message);
+    }
+
+    public function errorResourceConstraint(string $errorId, ?string $message = null)
+    {
+        $this->errorConflict($errorId, $message);
+    }
+
+    public function errorConflict(string $errorId, ?string $message = null)
+    {
+        $config = new SetConfig;
+        $config->setNode($this->_node)
+               ->setData(Pubsub::generateConfig($this->_node))
+               ->request();
+
+        $this->_withPublishOption = false;
+        $this->request();
     }
 }

@@ -14,7 +14,19 @@ class PubsubSubscription
         return sha1($id);
     }
 
-    public static function listAdd($server, $jid, $node, $title = null, $pepnode = 'urn:xmpp:pubsub:subscription')
+    public static function generateConfig(string $pepnode): array
+    {
+        return [
+            'FORM_TYPE' => 'http://jabber.org/protocol/pubsub#publish-options',
+            'pubsub#persist_items' => 'true',
+            'pubsub#access_model' => $pepnode == 'urn:xmpp:pubsub:subscription' ? 'presence' : 'whitelist',
+            'pubsub#send_last_published_item' => 'never',
+            'pubsub#max_items' => 'max',
+            'pubsub#notify_retract' => 'true',
+        ];
+    }
+
+    public static function listAdd(string $server, string $jid, string $node, $title = null, $pepnode = 'urn:xmpp:pubsub:subscription', $withPublishOption = true)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
 
@@ -39,28 +51,22 @@ class PubsubSubscription
             $subscription->appendChild($title);
         }
 
-        // Publish option
-        $publishOption = $dom->createElement('publish-options');
-        $x = $dom->createElement('x');
-        $x->setAttribute('xmlns', 'jabber:x:data');
-        $x->setAttribute('type', 'submit');
-        $publishOption->appendChild($x);
+        if ($withPublishOption) {
+            $publishOption = $dom->createElement('publish-options');
+            $x = $dom->createElement('x');
+            $x->setAttribute('xmlns', 'jabber:x:data');
+            $x->setAttribute('type', 'submit');
+            $publishOption->appendChild($x);
 
-        \Moxl\Utils::injectConfigInX($x, [
-            'FORM_TYPE' => 'http://jabber.org/protocol/pubsub#publish-options',
-            'pubsub#persist_items' => 'true',
-            'pubsub#access_model' => $pepnode == 'urn:xmpp:pubsub:subscription' ? 'presence' : 'whitelist',
-            //'pubsub#send_last_published_item' => 'never',
-            //'pubsub#max_items' => 'max',
-            //'pubsub#notify_retract' => 'true',
-        ]);
+            \Moxl\Utils::injectConfigInX($x, self::generateConfig($pepnode));
 
-        $pubsub->appendChild($publishOption);
+            $pubsub->appendChild($publishOption);
+        }
 
         \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, false, 'set'));
     }
 
-    public static function listRemove($server, $jid, $node, $pepnode = 'urn:xmpp:pubsub:subscription')
+    public static function listRemove(string $server, string $jid, string $node, $pepnode = 'urn:xmpp:pubsub:subscription')
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
 

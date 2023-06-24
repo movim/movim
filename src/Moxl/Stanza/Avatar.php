@@ -4,52 +4,57 @@ namespace Moxl\Stanza;
 
 class Avatar
 {
+    public static $nodeData = 'urn:xmpp:avatar:data';
+    public static $nodeConfig = [
+        'FORM_TYPE' => 'http://jabber.org/protocol/pubsub#publish-options',
+        'pubsub#persist_items' => 'true',
+        'pubsub#access_model' => 'presence',
+        'pubsub#send_last_published_item' => 'on_sub_and_presence',
+        'pubsub#deliver_payloads' => 'true',
+        'pubsub#max_items' => '1',
+    ];
+
     public static function get($to, $node = false)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
 
         $items = $dom->createElement('items');
-        $items->setAttribute('node', $node ? $node : 'urn:xmpp:avatar:data');
+        $items->setAttribute('node', $node ? $node : self::$nodeData);
         $pubsub->appendChild($items);
 
         \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'get'));
     }
 
-    public static function set($data, $to = false, $node = false)
+    public static function set($data, $to = false, $node = false, bool $withPublishOption = true)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElement('pubsub');
         $pubsub->setAttribute('xmlns', 'http://jabber.org/protocol/pubsub');
 
         $publish = $dom->createElement('publish');
-        $publish->setAttribute('node', $node ? $node : 'urn:xmpp:avatar:data');
+        $publish->setAttribute('node', $node ? $node : self::$nodeData);
         $pubsub->appendChild($publish);
 
         $item = $dom->createElement('item');
-        $item->setAttribute('id', $node ? 'urn:xmpp:avatar:data' : sha1(base64_decode($data)));
+        $item->setAttribute('id', $node ? self::$nodeData : sha1(base64_decode($data)));
         $publish->appendChild($item);
 
         $data = $dom->createElement('data', $data);
-        $data->setAttribute('xmlns', 'urn:xmpp:avatar:data');
+        $data->setAttribute('xmlns', self::$nodeData);
         $item->appendChild($data);
 
-        $publishOption = $dom->createElement('publish-options');
-        $x = $dom->createElement('x');
-        $x->setAttribute('xmlns', 'jabber:x:data');
-        $x->setAttribute('type', 'submit');
-        $publishOption->appendChild($x);
+        if ($withPublishOption) {
+            $publishOption = $dom->createElement('publish-options');
+            $x = $dom->createElement('x');
+            $x->setAttribute('xmlns', 'jabber:x:data');
+            $x->setAttribute('type', 'submit');
+            $publishOption->appendChild($x);
 
-        \Moxl\Utils::injectConfigInX($x, [
-            'FORM_TYPE' => 'http://jabber.org/protocol/pubsub#publish-options',
-            'pubsub#persist_items' => 'true',
-            'pubsub#access_model' => 'presence',
-            //'pubsub#send_last_published_item' => 'on_sub_and_presence',
-            //'pubsub#deliver_payloads' => 'true',
-            //'pubsub#max_items' => '1',
-        ]);
+            \Moxl\Utils::injectConfigInX($x, self::$nodeConfig);
 
-        $pubsub->appendChild($publishOption);
+            $pubsub->appendChild($publishOption);
+        }
 
         \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'set'));
     }

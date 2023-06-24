@@ -53,7 +53,7 @@ class Pubsub
         $pubsub->setAttribute('xmlns', 'http://jabber.org/protocol/pubsub');
 
         $create = $dom->createElement('create');
-        $create->setAttribute('node', 'urn:xmpp:microblog:0:comments/'.$node);
+        $create->setAttribute('node', 'urn:xmpp:microblog:0:comments/' . $node);
         $pubsub->appendChild($create);
 
         $configure = $dom->createElement('configure');
@@ -193,7 +193,24 @@ class Pubsub
         \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'get'));
     }
 
-    public static function postPublish($to, string $node, $atom)
+    public static function generateConfig(string $node): array
+    {
+        $config = [
+            'FORM_TYPE' => 'http://jabber.org/protocol/pubsub#publish-options',
+            'pubsub#persist_items' => 'true',
+            'pubsub#max_items' => 'max',
+            'pubsub#itemreply' => 'publisher',
+        ];
+
+        if ($node == 'urn:xmpp:microblog:0') {
+            $config['pubsub#access_model'] = 'presence';
+            $config['pubsub#notify_retract'] = 'true';
+        }
+
+        return $config;
+    }
+
+    public static function postPublish($to, string $node, PubsubAtom $atom, bool $withPublishOption = true)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
 
@@ -209,28 +226,17 @@ class Pubsub
         $item->setAttribute('id', $atom->id);
         $publish->appendChild($item);
 
-        // Publish option
-        $publishOption = $dom->createElement('publish-options');
-        $x = $dom->createElement('x');
-        $x->setAttribute('xmlns', 'jabber:x:data');
-        $x->setAttribute('type', 'submit');
-        $publishOption->appendChild($x);
+        if ($withPublishOption) {
+            $publishOption = $dom->createElement('publish-options');
+            $x = $dom->createElement('x');
+            $x->setAttribute('xmlns', 'jabber:x:data');
+            $x->setAttribute('type', 'submit');
+            $publishOption->appendChild($x);
 
-        \Moxl\Utils::injectConfigInX($x, [
-            'FORM_TYPE' => 'http://jabber.org/protocol/pubsub#publish-options',
-            'pubsub#persist_items' => 'true',
-            //'pubsub#max_items' => 'max',
-            //'pubsub#itemreply' => 'publisher',
-        ]);
+            \Moxl\Utils::injectConfigInX($x, self::generateConfig($node));
 
-        if ($node == 'urn:xmpp:microblog:0') {
-            \Moxl\Utils::injectConfigInX($x, [
-                //'pubsub#access_model' => 'presence',
-                //'pubsub#notif_retract' => 'true',
-            ]);
+            $pubsub->appendChild($publishOption);
         }
-
-        $pubsub->appendChild($publishOption);
 
         \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'set'));
     }
@@ -305,6 +311,8 @@ class Pubsub
 
     public static function setConfig($to, string $node, array $data)
     {
+        $data['FORM_TYPE'] = 'http://jabber.org/protocol/pubsub#node_config';
+
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub#owner', 'pubsub');
         $dom->appendChild($pubsub);

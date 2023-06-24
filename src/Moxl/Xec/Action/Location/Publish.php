@@ -6,15 +6,17 @@ use Moxl\Xec\Action;
 use Moxl\Stanza\Location;
 
 use App\Contact;
+use Moxl\Xec\Action\Pubsub\SetConfig;
 
 class Publish extends Action
 {
     protected $_geo;
+    protected bool $_withPublishOption = true;
 
     public function request()
     {
         $this->store();
-        Location::publish($this->_geo);
+        Location::publish($this->_geo, $this->_withPublishOption);
     }
 
     public function setGeo(array $geo)
@@ -40,5 +42,21 @@ class Publish extends Action
         $contact->save();
 
         $this->deliver();
+    }
+
+    public function errorResourceConstraint(string $errorId, ?string $message = null)
+    {
+        $this->errorConflict($errorId, $message);
+    }
+
+    public function errorConflict(string $errorId, ?string $message = null)
+    {
+        $config = new SetConfig;
+        $config->setNode(Location::$node)
+               ->setData(Location::$nodeConfig)
+               ->request();
+
+        $this->_withPublishOption = false;
+        $this->request();
     }
 }
