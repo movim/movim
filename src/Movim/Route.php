@@ -23,7 +23,6 @@ class Route extends Base
             'accountnext'   => ['s', 'err'],
             'ajax'          => false,
             'ajaxd'         => false,
-            'avatar'        => ['jid'],
             'admin'         => false,
             'blog'          => ['f', 'i'],
             'chat'          => ['f', 'r'],
@@ -128,7 +127,7 @@ class Route extends Base
 
             // Specific case for picture that is in a subdirectory for caching purposes
             if ($page == 'picture') {
-                $uri = BASE_URI . 'picture/';
+                $uri = BASE_URI . $page . '/';
             } elseif ($params != false) {
                 if (is_array($params)) {
                     foreach ($params as $value) {

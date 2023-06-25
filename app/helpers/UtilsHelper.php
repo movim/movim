@@ -752,6 +752,14 @@ function getSmileyPath($id)
     return BASE_URI . 'theme/img/emojis/svg/' . $id . '.svg';
 }
 
+/**
+ * @desc Return the url of an avatar placeholder
+ */
+function avatarPlaceholder($id)
+{
+    return \Movim\Route::urlize('picture', false, ['type' => 'avatar', 'id' => urlencode($id)]);
+}
+
 /*
  * @desc Protect a picture URL by using the internal Proxy
  */
@@ -765,7 +773,7 @@ function protectPicture($url)
         return $url;
     }
 
-    return \Movim\Route::urlize('picture', false, ['url' => urlencode($url)]);
+    return \Movim\Route::urlize('picture', false, ['type' => 'picture', 'url' => urlencode($url)]);
 }
 
 /*

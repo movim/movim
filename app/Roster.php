@@ -96,7 +96,7 @@ class Roster extends Model
     {
         return (!empty($this->jid) && $url = getPhoto($this->jid, $size))
             ? $url
-            : Route::urlize('avatar', $this->truename);
+            : avatarPlaceholder($this->truename);
     }
 
     public function getBanner($size = 'xxl')

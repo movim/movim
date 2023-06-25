@@ -162,6 +162,13 @@ class CommunitiesServer extends \Movim\Widget\Base
         return $view->draw('_communitiesserver');
     }
 
+    public function prepareTicket(\App\Info $community)
+    {
+        $view = $this->tpl();
+        $view->assign('community', $community);
+        return $view->draw('_communitiesserver_ticket');
+    }
+
     public function display()
     {
         $this->view->assign('server', $this->get('s'));

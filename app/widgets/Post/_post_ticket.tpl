@@ -19,17 +19,11 @@
         >
         </span>
     {elseif="!$post->contact"}
-        <span class="control icon bubble color {$post->node|stringToColor}"
-            {$url = false}
+        <span class="control icon bubble">
             {if="$post->info"}
-                {$url = $post->info->getPhoto('m')}
-            {/if}
-            {if="$url"}
-                style="background-image: url({$url});"
-            {/if}
-        >
-            {if="$url == false"}
-                {$post->node|firstLetterCapitalize}
+                <img src="{$post->info->getPhoto('m')}">
+            {else}
+                <img src="{$post->node|avatarPlaceholder}">
             {/if}
         </span>
     {/if}

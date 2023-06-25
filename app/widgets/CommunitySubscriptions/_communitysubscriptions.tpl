@@ -7,11 +7,14 @@
         </li>
     </ul>
 {else}
-    <ul class="list middle flex third active all fill">
+    <ul class="list flex third fill card shadow active">
         {loop="$subscriptions"}
             {if="$c->checkNewServer($value)"}
-                <li class="subheader block large"
+                <li class="subheader block large active"
                     onclick="MovimUtils.reload('{$c->route('community', $value->server)}')">
+                    <span class="primary icon">
+                        <i class="material-icons">view_agenda</i>
+                    </span>
                     <span class="control icon gray">
                         <i class="material-icons">chevron_right</i>
                     </span>
@@ -20,46 +23,25 @@
                     </div>
                 </li>
             {/if}
-            <li
-                class="block"
-                onclick="MovimUtils.reload('{$c->route('community', [$value->server, $value->node])}')"
-                title="{$value->server} - {$value->node}"
-            >
-                {if="$value->info"}
-                    <span class="primary icon bubble">
-                        <img src="{$value->info->getPhoto('m')}"/>
+            {if="$value->info"}
+                {autoescape="off"}
+                    {$c->prepareTicket($value->info)}
+                {/autoescape}
+            {else}
+                <li
+                    class="block"
+                    onclick="MovimUtils.reload('{$c->route('community', [$value->server, $value->node])}')"
+                    title="{$value->server} - {$value->node}"
+                >
+                    <span class="primary icon thumb">
+                        <img src="{$value->node|avatarPlaceholder}">
                     </span>
-                {else}
-                    <span class="primary icon bubble color {$value->node|stringToColor}">
-                        {$value->node|firstLetterCapitalize}
-                    </span>
-                {/if}
-                <div>
-                    <p class="line normal">
-                        {if="$value->info && $value->info->name"}
-                            {$value->info->name}
-                        {else}
-                            {$value->node}
-                        {/if}
-
-                    </p>
-                    <p class="line">
-                        {if="$value->public"}
-                            <span class="tag color gray">{$c->__('room.public_muc')}</span>
-                        {/if}
-                        {if="$value->info && $value->info->isGallery()"}
-                            <i class="material-icons">grid_view</i>
-                            {$c->__('communityconfig.type_gallery_title')}
-                            ·
-                        {/if}
-                        {if="$value->info && $value->info->description"}
-                            {$value->info->description|strip_tags}
-                        {else}
-                            {$value->node}
-                        {/if}
-                    </p>
-                </div>
-            </li>
+                    <div>
+                        <p class="line normal">{$value->node}</p>
+                        <p class="line">{$value->node}</p>
+                    </div>
+                </li>
+            {/if}
         {/loop}
     </ul>
 {/if}

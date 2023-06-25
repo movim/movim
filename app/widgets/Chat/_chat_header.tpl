@@ -9,12 +9,12 @@
             {if="$conference"}
                 <span class="primary icon bubble active
                     {if="!$conference->connected"}disabled{/if}"
-                    style="background-image: url({$conference->getPhoto()});"
                     onclick="RoomsUtils_ajaxShowSubject('{$jid|echapJS}')">
+                    <img src="{$conference->getPhoto()}">
             {else}
-                <span class="primary icon bubble color active {$jid|stringToColor}"
+                <span class="primary icon bubble active"
                     onclick="RoomsUtils_ajaxShowSubject('{$jid|echapJS}')">
-                    {$jid|firstLetterCapitalize}
+                    <img src="{$jid|avatarPlaceholder}">
             {/if}
             {if="$conference"}
                 {if="$conference->isGroupChat()"}

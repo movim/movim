@@ -26,6 +26,8 @@ v0.22 (trunk)
  * Slightly update the chat bubbles design and introduce a new way to interact with them and perform actions (reactions, reply...)
  * Ensure that publish-options errors are handled and that the node is re-configured properly
  * Add a workaround for https://github.com/processone/ejabberd/issues/3044#issuecomment-1605349858, disable the publish-options element when republishing to prevent ejabberd error
+ * Move the SVG placeholder avatars under pictures/ to allow proper web server caching
+ * Factorize the Community tickets in a unique template, move to a card layout
 
 v0.21.1
 ---------------------------

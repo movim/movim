@@ -131,7 +131,7 @@ class Contact extends Model
     {
         return (!empty($this->id) && $url = getPhoto($this->id, $size))
             ? $url
-            : Route::urlize('avatar', $this->id);
+            : avatarPlaceholder($this->id);
     }
 
     public function getBanner($size = 'xxl')

@@ -2,7 +2,7 @@
 
 use Movim\Widget\Base;
 
-include_once WIDGETS_PATH . 'Post/Post.php';
+include_once WIDGETS_PATH . 'CommunitiesServer/CommunitiesServer.php';
 
 class CommunitiesInteresting extends Base
 {
@@ -13,5 +13,10 @@ class CommunitiesInteresting extends Base
             ->inRandomOrder()
             ->get()
         );
+    }
+
+    public function prepareTicket(\App\Info $community)
+    {
+        return (new CommunitiesServer)->prepareTicket($community);
     }
 }

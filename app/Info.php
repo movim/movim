@@ -203,7 +203,7 @@ class Info extends Model
     {
         return (isset($this->attributes['avatarhash']) && $url = getPhoto($this->attributes['avatarhash'], $size))
             ? $url
-            : Route::urlize('avatar', $this->node);
+            : avatarPlaceholder($this->node);
     }
 
     public function getDeviceIcon()

@@ -4,15 +4,14 @@ use Cocur\Slugify\Slugify;
 
 class AvatarPlaceholder extends \Movim\Widget\Base
 {
-    public function load()
-    {
-    }
-
     public function display()
     {
-        $letters = firstLetterCapitalize((new Slugify())->slugify($this->get('jid')));
+        $id = urldecode($this->get('id'));
+
+        $letters = firstLetterCapitalize((new Slugify())->slugify($id));
         header_remove('Content-Type');
         header('Content-Type: image/svg+xml');
+        header('Cache-Control: max-age=' . 3600 * 24);
 
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->formatOutput = true;
@@ -40,7 +39,7 @@ class AvatarPlaceholder extends \Movim\Widget\Base
         $rect = $dom->createElement('rect');
         $rect->setAttribute('width', '100');
         $rect->setAttribute('height', '100');
-        $rect->setAttribute('fill', palette()[stringToColor($this->get('jid'))]);
+        $rect->setAttribute('fill', palette()[stringToColor($id)]);
         $rect->setAttribute('x', '0');
         $rect->setAttribute('y', '0');
         $g->appendChild($rect);

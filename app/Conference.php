@@ -218,7 +218,7 @@ class Conference extends Model
     {
         return $this->contact
             ? $this->contact->getPhoto($size)
-            : Route::urlize('avatar', $this->name);
+            : avatarPlaceholder($this->name);
     }
 
     // https://docs.modernxmpp.org/client/groupchat/#types-of-chat

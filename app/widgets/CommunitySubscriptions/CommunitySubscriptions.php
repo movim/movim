@@ -2,6 +2,8 @@
 
 use Movim\Widget\Base;
 
+include_once WIDGETS_PATH . 'CommunitiesServer/CommunitiesServer.php';
+
 class CommunitySubscriptions extends Base
 {
     private $_list_server;
@@ -27,5 +29,10 @@ class CommunitySubscriptions extends Base
             ->get());
 
         $this->rpc('MovimTpl.fill', '#subscriptions', $view->draw('_communitysubscriptions'));
+    }
+
+    public function prepareTicket(\App\Info $community)
+    {
+        return (new CommunitiesServer)->prepareTicket($community);
     }
 }

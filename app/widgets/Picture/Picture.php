@@ -79,7 +79,7 @@ class Picture extends Base
             }
 
             if (!empty($parsedUrl['path'])) {
-                header('Content-Disposition: attachment; filename="' . basename($parsedUrl['path']) . '"');
+                //header('Content-Disposition: attachment; filename="' . basename($parsedUrl['path']) . '"');
             }
             header('Cache-Control: max-age=' . 3600 * 24);
 
