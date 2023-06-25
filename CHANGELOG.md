@@ -1,7 +1,10 @@
 Movim Changelog
 ================
 
-v0.22 (trunk)
+v0.23 (trunk)
+---------------------------
+
+v0.22
 ---------------------------
  * Enable blog privacy feature, can be switched between private (presence only) and open
  * Fix vcard-temp refresh
