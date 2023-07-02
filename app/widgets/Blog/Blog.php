@@ -157,7 +157,7 @@ class Blog extends Base
                          ->where('open', true)
                          ->skip($this->_page * $this->_paging)->get();
                 }
-            } else {
+            } elseif ($this->_mode != 'blog' || ($this->_contact && $this->_contact->isPublic())) {
                 $this->_posts = \App\Post::where('server', $this->_from)
                         ->where('node', $this->_node)
                         ->where('open', true)

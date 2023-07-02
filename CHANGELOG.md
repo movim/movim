@@ -3,6 +3,8 @@ Movim Changelog
 
 v0.23 (trunk)
 ---------------------------
+* Group-up the confidentiality setting in the config and clarify the wording
+* Completely hide the blog and the link to it if the profile is not public
 
 v0.22
 ---------------------------

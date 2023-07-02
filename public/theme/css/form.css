@@ -195,6 +195,7 @@ form > div .checkbox {
     height: 4rem;
     margin-top: calc(50% - 2rem);
     direction: ltr;
+    left: -1rem;
 }
 
 form > div .checkbox > input[type="checkbox"]:before {

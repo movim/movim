@@ -148,6 +148,17 @@ class Config extends Base
         }
     }
 
+    public function ajaxChangePrivacy($value)
+    {
+        if ($value == true) {
+            $this->user->setPublic();
+            Toast::send($this->__('profile.public'));
+        } else {
+            $this->user->setPrivate();
+            Toast::send($this->__('profile.restricted'));
+        }
+    }
+
     private function refreshConfig()
     {
         $this->rpc('MovimTpl.fill', '#config_widget_form', $this->prepareConfigForm());
@@ -155,6 +166,7 @@ class Config extends Base
 
     public function display()
     {
+        $this->view->assign('me', $this->user);
         $this->view->assign('form', $this->prepareConfigForm());
     }
 }

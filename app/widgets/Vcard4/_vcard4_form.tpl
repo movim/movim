@@ -1,33 +1,3 @@
-<ul class="list fill middle">
-    <li>
-        <span class="primary icon gray">
-            <i class="material-icons">public</i>
-        </span>
-        <span class="control">
-            <form>
-                <div class="control action">
-                    <div class="checkbox">
-                        <input
-                            type="checkbox"
-                            id="public"
-                            name="public"
-                            {if="$me->public"}
-                                checked
-                            {/if}
-                            onchange="Vcard4_ajaxChangePrivacy(this.checked)">
-                        <label for="public"></label>
-                    </div>
-                </div>
-            </form>
-        </span>
-        <div>
-            <p>{$c->__('profile.privacy_question')}</p>
-            <p class="all">{$c->__('profile.privacy_info')}</p>
-        </div>
-    </li>
-    <br />
-</ul>
-
 {if="$me->hasPubsub()"}
 <form name="vcard4" id="vcard4form">
     <div>

@@ -125,19 +125,21 @@
                 {/if}
             </li>
         {/if}
-        <a href="{$contact->getBlogUrl()}" target="_blank" class="block large simple">
-            <li>
-                <span class="primary icon">
-                    <i class="material-icons">open_in_new</i>
-                </span>
-                <span class="control icon">
-                    <i class="material-icons">chevron_right</i>
-                </span>
-                <div>
-                    <p></p>
-                    <p class="normal">{$c->__('blog.visit')}</p>
-                </div>
-            </li>
-        </a>
+        {if="$contact->isPublic()"}
+            <a href="{$contact->getBlogUrl()}" target="_blank" class="block large simple">
+                <li>
+                    <span class="primary icon">
+                        <i class="material-icons">open_in_new</i>
+                    </span>
+                    <span class="control icon">
+                        <i class="material-icons">chevron_right</i>
+                    </span>
+                    <div>
+                        <p></p>
+                        <p class="normal">{$c->__('blog.visit')}</p>
+                    </div>
+                </li>
+            </a>
+        {/if}
     </ul>
 </div>

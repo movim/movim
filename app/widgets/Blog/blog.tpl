@@ -1,25 +1,24 @@
 <div id="blog">
-<header>
     {if="$mode == 'blog'"}
-        {$banner = null}
-        {if="$contact"}
+        {if="$contact && $contact->isPublic()"}
             {$banner = $contact->getBanner()}
-        {/if}
-        <header class="big top color {if="$contact"}{$contact->jid|stringToColor}{/if}"
-            style="
-                    background-image:
-                    linear-gradient(to top, rgba(23,23,23,0.9) 0, rgba(23,23,23,0.6) 5rem, rgba(23,23,23,0) 12rem)
-                    {if="$banner"}
-                        , url('{$banner}')
-                    {/if}
-                    ;
-                ">
-            <ul class="list thick">
-                <li>
-                    <span class="primary icon">
-                        <i class="material-icons">edit</i>
-                    </span>
-                    {if="$contact"}
+            <header class="big top color {if="$contact"}{$contact->jid|stringToColor}{/if}"
+                style="
+                        background-image:
+                        linear-gradient(to top, rgba(23,23,23,0.9) 0, rgba(23,23,23,0.6) 5rem, rgba(23,23,23,0) 12rem)
+                        {if="$banner"}
+                            , url('{$banner}')
+                        {/if}
+                        ;
+                    ">
+                <ul class="list thick">
+                    <li>
+                        <span class="primary icon on_desktop">
+                            <i class="material-icons">person</i>
+                        </span>
+                        <span class="primary icon bubble on_mobile">
+                            <img src="{$contact->getPhoto('m')}">
+                        </span>
                         <span class="control icon active" onclick="MovimUtils.openInNew('{$c->route('feed', $contact->jid)}')">
                             <i class="material-icons">rss_feed</i>
                         </span>
@@ -31,95 +30,102 @@
                                 {$c->__('page.blog')}
                             </p>
                         </div>
+                    </li>
+                </ul>
+            </header>
+        {/if}
+    {elseif="$mode == 'tag'"}
+        <header>
+            <ul class="list middle">
+                <li>
+                    {if="isLogged()"}
+                    <span class="primary icon active gray" onclick="history.back()">
+                        <i class="material-icons">arrow_back</i>
+                    </span>
+                    {else}
+                    <span class="primary icon gray">
+                        <i class="material-icons">label</i>
+                    </span>
                     {/if}
+                    <div>
+                        <p>
+                            <a href="{$c->route('tag', array($tag))}">
+                                <i class="material-icons">tag</i>{$tag}
+                            </a>
+                        </p>
+                    </div>
                 </li>
             </ul>
         </header>
-    {elseif="$mode == 'tag'"}
-    <ul class="list middle">
-        <li>
-            {if="isLogged()"}
-            <span class="primary icon active gray" onclick="history.back()">
-                <i class="material-icons">arrow_back</i>
-            </span>
-            {else}
-            <span class="primary icon gray">
-                <i class="material-icons">label</i>
-            </span>
-            {/if}
-            <div>
-                <p>
-                    <a href="{$c->route('tag', array($tag))}">
-                        <i class="material-icons">tag</i>{$tag}
-                    </a>
-                </p>
-            </div>
-        </li>
-    </ul>
     {elseif="$node && $server"}
-        <ul class="list thick">
-            <li>
-                {if="$item"}
-                    <span class="primary icon bubble">
-                        <img src="{$item->getPhoto('m')}"/>
-                    </span>
-                {else}
-                    <span class="primary icon gray">
-                        <i class="material-icons">group_work</i>
-                    </span>
-                {/if}
-                <span class="control icon active">
-                    <a
-                        href="{$c->route('feed', [$server, $node])}"
-                        target="_blank"
-                        title="Atom"
-                    >
-                        <i class="material-icons">rss_feed</i>
-                    </a>
-                </span>
-                <div>
-                    <a class="button oppose color gray" title="{$c->__('communityheader.subscribe')}"
-                        href="xmpp:{$server}?pubsub;action=subscribe;node={$node}">
-                        <i class="material-icons">add</i> <span class="on_desktop">{$c->__('communityheader.subscribe')}</span>
-                    </a>
-                    <p>
-                        <a href="{$c->route('node', [$server, $node])}">
-                            {if="$item != null && $item->name"}
-                                {$item->name}
-                            {else}
-                                {$node}
-                            {/if}
-                        </a>
-                    </p>
-                    {if="$item != null"}
-                        {if="$item->description"}
-                            <p title="{$item->description|stripTags}" class="line">
-                                <i class="material-icons">people</i> {$c->__('communitydata.sub', $item->occupants)} ·
-                                {$item->description|stripTags}
-                            </p>
-                        {else}
-                            <p>
-                                <i class="material-icons">people</i> {$c->__('communitydata.sub', $item->occupants)} ·
-                                {$item->server}
-                            </p>
-                        {/if}
+        <header>
+            <ul class="list thick">
+                <li>
+                    {if="$item"}
+                        <span class="primary icon bubble">
+                            <img src="{$item->getPhoto('m')}"/>
+                        </span>
+                    {else}
+                        <span class="primary icon gray">
+                            <i class="material-icons">group_work</i>
+                        </span>
                     {/if}
-                </div>
-            </li>
-        </ul>
+                    <span class="control icon active">
+                        <a
+                            href="{$c->route('feed', [$server, $node])}"
+                            target="_blank"
+                            title="Atom"
+                        >
+                            <i class="material-icons">rss_feed</i>
+                        </a>
+                    </span>
+                    <div>
+                        <a class="button oppose color gray" title="{$c->__('communityheader.subscribe')}"
+                            href="xmpp:{$server}?pubsub;action=subscribe;node={$node}">
+                            <i class="material-icons">add</i> <span class="on_desktop">{$c->__('communityheader.subscribe')}</span>
+                        </a>
+                        <p>
+                            <a href="{$c->route('node', [$server, $node])}">
+                                {if="$item != null && $item->name"}
+                                    {$item->name}
+                                {else}
+                                    {$node}
+                                {/if}
+                            </a>
+                        </p>
+                        {if="$item != null"}
+                            {if="$item->description"}
+                                <p title="{$item->description|stripTags}" class="line">
+                                    <i class="material-icons">people</i> {$c->__('communitydata.sub', $item->occupants)} ·
+                                    {$item->description|stripTags}
+                                </p>
+                            {else}
+                                <p>
+                                    <i class="material-icons">people</i> {$c->__('communitydata.sub', $item->occupants)} ·
+                                    {$item->server}
+                                </p>
+                            {/if}
+                        {/if}
+                    </div>
+                </li>
+            </ul>
+        </header>
     {else}
-        <ul class="list thick">
-            <li>
-                <div>
-                    <p>{$c->__('post.empty')}</p>
-                </div>
-            </li>
-        </ul>
+        <header>
+            <ul class="list thick">
+                <li>
+                    <div>
+                        <p>{$c->__('post.empty')}</p>
+                    </div>
+                </li>
+            </ul>
+        </header>
     {/if}
 </header>
 
 <ul class="list card shadow {if="$gallery"}middle flex third gallery large active{/if}">
     {if="$posts == null || $posts->isEmpty()"}
+        <br />
         <article class="block">
             <ul class="list simple thick">
                 <li>

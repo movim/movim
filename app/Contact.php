@@ -7,7 +7,6 @@ use Illuminate\Database\Capsule\Manager as DB;
 
 use Respect\Validation\Validator;
 use Movim\Image;
-use Movim\Route;
 
 class Contact extends Model
 {
@@ -402,6 +401,12 @@ class Contact extends Model
     public function isMe(): bool
     {
         return ($this->id == \App\User::me()->id);
+    }
+
+    public function isPublic(): bool
+    {
+        $user = \App\User::where('id', $this->id)->first();
+        return ($user && $user->public);
     }
 
     public function hasLocation()

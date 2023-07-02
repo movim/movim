@@ -83,11 +83,4 @@
             </p>
         </div>
     </li>
-    <!--<li>
-        <span class="primary icon gray">
-            <i class="material-icons">accounts</i>
-        </span>
-        <p class="normal">{$c->__('communitydata.sub', 0)}</p>
-    </li>-->
 </ul>
-<br />

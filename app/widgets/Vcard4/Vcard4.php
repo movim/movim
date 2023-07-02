@@ -102,17 +102,6 @@ class Vcard4 extends Base
         $r->setData($c)->request();
     }
 
-    public function ajaxChangePrivacy($value)
-    {
-        if ($value == true) {
-            $this->user->setPublic();
-            Toast::send($this->__('vcard.public'));
-        } else {
-            $this->user->setPrivate();
-            Toast::send($this->__('vcard.restricted'));
-        }
-    }
-
     public function display()
     {
         $this->view->assign('form', $this->prepareForm($this->user->contact));
