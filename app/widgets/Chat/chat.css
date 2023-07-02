@@ -72,13 +72,14 @@ main:not(.enabled) #chat_widget {
 
 #chat_widget ul.list.actions > li > span.control,
 #chat_widget ul.list.actions > li > div > p {
-    transition: box-shadow 0.3s ease;
+    transition: box-shadow 0.3s ease, background 0.3s ease;
     box-shadow: var(--elevation-1);
 }
 
 #chat_widget ul.list.actions > li > span.control:hover,
 #chat_widget ul.list.actions > li > div > p:hover {
     box-shadow: var(--elevation-2);
+    background-color: rgba(var(--movim-element-action), 0.1);
 }
 
 /* Scroll button */

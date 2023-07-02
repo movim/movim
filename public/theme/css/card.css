@@ -48,3 +48,7 @@
 .card.shadow > .block:not(.subheader):not(.simple):hover {
     box-shadow: var(--elevation-2);
 }
+
+.card.shadow > .block:not(.subheader):not(.simple):active {
+    box-shadow: var(--elevation-0);
+}
