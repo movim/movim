@@ -36,7 +36,7 @@
         "doctrine/dbal": "^3.6.1",
         "monolog/monolog": "^3.3",
 
-        "cboden/ratchet": "^0.4.4",
+        "plesk/ratchetphp": "^1.0.0",
         "react/child-process": "^0.6.5",
         "react/http": "^1.8.0",
         "react/dns": "^1.10.0",

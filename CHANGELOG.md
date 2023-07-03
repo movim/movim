@@ -5,6 +5,9 @@ v0.23 (trunk)
 ---------------------------
 * Group-up the confidentiality setting in the config and clarify the wording
 * Completely hide the blog and the link to it if the profile is not public
+* UI fixes
+* Move from cboden/ratchet to plesk/ratchetphp
+* Fix the Bookmark2 set action
 
 v0.22
 ---------------------------
