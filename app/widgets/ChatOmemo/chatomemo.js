@@ -134,7 +134,7 @@ var ChatOmemo = {
 
                 // Refreshing the unencrypted messages
                 if (Boolean(textarea.dataset.muc)) {
-                    Chat_ajaxHttpGetRoom(jid);
+                    Chat_ajaxGetRoom(jid);
                 } else {
                     Chat_ajaxGet(jid);
                 }
@@ -359,7 +359,7 @@ var ChatOmemo = {
         store.setContactState(jid, true);
 
         if (muc) {
-            Chat_ajaxHttpGetRoom(jid);
+            Chat_ajaxGetRoom(jid);
         } else {
             Chat_ajaxGet(jid);
         }

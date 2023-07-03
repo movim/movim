@@ -8,6 +8,7 @@ v0.23 (trunk)
 * UI fixes
 * Move from cboden/ratchet to plesk/ratchetphp
 * Fix the Bookmark2 set action
+* Big performance improvement in Conference::subject and User::unreads DB queries
 
 v0.22
 ---------------------------

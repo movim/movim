@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Movim\Session;
 use App\Contact;
 use App\Configuration;
+use Illuminate\Database\Capsule\Manager as DB;
 
 class User extends Model
 {
@@ -86,29 +87,35 @@ class User extends Model
     {
         if ($this->unreads !== null && $cached) return $this->unreads;
 
+        $union = DB::table('messages')
+            ->where('user_id', $this->id)
+            ->where('seen', false)
+            ->whereIn('type', ['chat', 'headline', 'invitation']);
+
+        $union = ($jid)
+            ? $union->where('jidfrom', $jid)
+            : $union->where('jidfrom', '!=', $this->id);
+
         $unreads = $this->messages()
             ->where('seen', false)
             ->where('jidfrom', '!=', $this->id)
             ->where(function ($query) use ($quoted) {
-                $query->whereIn('type', ['chat', 'headline', 'invitation'])
-                    ->orWhere(function ($query) use ($quoted) {
-                        $query->where('type', 'groupchat')
-                            ->whereNull('subject')
-                            ->whereIn('jidfrom', function ($query) {
-                                $query->select('conference')
-                                    ->from('conferences')
-                                    ->where('session_id', function ($query) {
-                                        $query->select('id')
-                                            ->from('sessions')
-                                            ->where('user_id', $this->id);
-                                    });
+                $query->where('type', 'groupchat')
+                    ->whereNull('subject')
+                    ->whereIn('jidfrom', function ($query) {
+                        $query->select('conference')
+                            ->from('conferences')
+                            ->where('session_id', function ($query) {
+                                $query->select('id')
+                                    ->from('sessions')
+                                    ->where('user_id', $this->id);
                             });
-
-                        if ($quoted) {
-                            $query->where('quoted', true);
-                        }
                     });
-            });
+
+                if ($quoted) {
+                    $query->where('quoted', true);
+                }
+            })->unionAll($union);
 
         if ($jid) {
             $unreads = $unreads->where('jidfrom', $jid);

@@ -205,7 +205,7 @@ class Conference extends Model
     {
         $subject = \App\User::me()
                             ->messages()
-                            ->where('jidfrom', $this->conference)
+                            ->jid($this->conference)
                             ->whereNotNull('subject')
                             ->where('type', 'groupchat')
                             ->orderBy('published', 'desc')
