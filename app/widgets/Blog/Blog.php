@@ -6,7 +6,9 @@ include_once WIDGETS_PATH.'Post/Post.php';
 
 class Blog extends Base
 {
-    public $_paging = 9;
+    public $paging = 9;
+    public $links = [];
+    public $url;
 
     private $_from;
     private $_node;
@@ -27,8 +29,6 @@ class Blog extends Base
 
     public function load()
     {
-        $this->links = [];
-
         if ($this->_view == 'node') {
             $this->_from = $this->get('s');
             $this->_node = $this->get('n');
@@ -153,17 +153,17 @@ class Blog extends Base
                 if ($tag) {
                     $this->_posts = $tag->posts()
                          ->orderBy('published', 'desc')
-                         ->take($this->_paging + 1)
+                         ->take($this->paging + 1)
                          ->where('open', true)
-                         ->skip($this->_page * $this->_paging)->get();
+                         ->skip($this->_page * $this->paging)->get();
                 }
             } elseif ($this->_mode != 'blog' || ($this->_contact && $this->_contact->isPublic())) {
                 $this->_posts = \App\Post::where('server', $this->_from)
                         ->where('node', $this->_node)
                         ->where('open', true)
                         ->orderBy('published', 'desc')
-                        ->skip($this->_page * $this->_paging)
-                        ->take($this->_paging + 1)
+                        ->skip($this->_page * $this->paging)
+                        ->take($this->paging + 1)
                         ->get();
             }
 
@@ -173,7 +173,7 @@ class Blog extends Base
         }
 
         if ($this->_posts !== null
-        && $this->_posts->count() == $this->_paging + 1) {
+        && $this->_posts->count() == $this->paging + 1) {
             $this->_posts->pop();
             if ($this->_mode == 'blog') {
                 $this->_next = $this->route('blog', $this->_from, ['page' => $this->_page + 1]);
