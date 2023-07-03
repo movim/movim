@@ -133,7 +133,7 @@ var Chat = {
         var chat = document.querySelector('#chat_widget');
         chat.innerHTML = '';
 
-        Chat_ajaxGetRoom(jid);
+        Chat_ajaxHttpGetRoom(jid);
     },
     sendMessage: function () {
         var textarea = Chat.getTextarea();

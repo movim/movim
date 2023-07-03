@@ -128,7 +128,7 @@
                 </li>
             {/if}
             {if="$conference->presence->mucaffiliation == 'owner'"}
-                <li onclick="Chat_ajaxGetRoomConfig('{$jid|echapJS}')">
+                <li onclick="Chat_ajaxHttpGetRoomConfig('{$jid|echapJS}')">
                     <div>
                         <p class="normal">{$c->__('chatroom.administration')}</p>
                     </div>

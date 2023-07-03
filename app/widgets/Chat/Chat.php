@@ -262,7 +262,7 @@ class Chat extends \Movim\Widget\Base
 
     public function onConferenceSubject($packet)
     {
-        $this->ajaxGetRoom($packet->content->jidfrom, false, true);
+        $this->ajaxHttpGetRoom($packet->content->jidfrom, false, true);
     }
 
     public function onMAMRetrieved()
@@ -272,7 +272,7 @@ class Chat extends \Movim\Widget\Base
 
     public function onMAMMucRetrieved($packet)
     {
-        $this->ajaxGetRoom($packet->content, true, true);
+        $this->ajaxHttpGetRoom($packet->content, true, true);
     }
 
     public function onMAMContactRetrieved($packet)
@@ -285,7 +285,7 @@ class Chat extends \Movim\Widget\Base
         list($content, $notify) = $packet->content;
 
         if ($notify) {
-            $this->ajaxGetRoom($content->jid, false, true);
+            $this->ajaxHttpGetRoom($content->jid, false, true);
         }
     }
 
@@ -417,7 +417,7 @@ class Chat extends \Movim\Widget\Base
      * @brief Get a chatroom
      * @param string $jid
      */
-    public function ajaxGetRoom(string $room, $light = false, $noConnect = false)
+    public function ajaxHttpGetRoom(string $room, $light = false, $noConnect = false)
     {
         if (!validateJid($room)) {
             return;
@@ -960,7 +960,7 @@ class Chat extends \Movim\Widget\Base
      *
      * @param string $room
      */
-    public function ajaxGetRoomConfig($room)
+    public function ajaxHttpGetRoomConfig($room)
     {
         if (!validateJid($room)) {
             return;
