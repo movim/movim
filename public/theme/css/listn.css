@@ -241,6 +241,9 @@ ul li div.bubble:after {
     font-size: 1.5rem;
     color: gray;
     margin-left: 0.5rem;
+    max-width: 70%;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 *[dir="rtl"] ul.list li > div > p > span.info {
