@@ -17,6 +17,7 @@ class SDPtoJingle
 
     private $ufrag = null;
     private $mid = null;
+    private $msid = null;
     private $sid;
 
     // Move the global fingerprint into each medias
@@ -45,6 +46,7 @@ class SDPtoJingle
         'extmap'          => "/^a=extmap:([^\s\/]+)(\/([^\s\/]+))? (\S+)/i",
         'sctpmap'         => "/^a=sctpmap:(\d+) (\S+) (\d+)/i",
         'mid'             => "/^a=mid:(\S+)/i",
+        'msid'            => "/^a=msid:(.+)/i",
         'bandwidth'       => "/^b=(\w+):(\d+)/i",
         'media'           => "/^m=(audio|video|application|data)/i"
     ];
@@ -104,6 +106,7 @@ class SDPtoJingle
             $this->transport    = $this->content->addChild('transport');
             $this->transport->addAttribute('xmlns', "urn:xmpp:jingle:transports:ice-udp:1");
             $this->content->addAttribute('creator', 'initiator'); // FIXME
+            $this->msid = null;
         }
     }
 
@@ -177,6 +180,10 @@ class SDPtoJingle
 
                         case 'mid':
                             $this->addName($matches[1]);
+                            break;
+
+                        case 'msid':
+                            $this->msid = $matches[1];
                             break;
 
                         case 'bandwidth':
@@ -304,6 +311,12 @@ class SDPtoJingle
                                 $ssrc = $description->addChild('source');
                                 $ssrc->addAttribute('xmlns', "urn:xmpp:jingle:apps:rtp:ssma:0");
                                 $ssrc->addAttribute('ssrc', $matches[1]);
+                            }
+
+                            if ($this->msid != null && $matches[2] != 'msid') {
+                                $param = $ssrc->addChild('parameter');
+                                $param->addAttribute('name', 'msid');
+                                $param->addAttribute('value', $this->msid);
                             }
 
                             $param = $ssrc->addChild('parameter');
