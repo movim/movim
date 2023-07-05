@@ -67,18 +67,24 @@ class Handler
         } else {
             \Utils::info("Handler : No memory instance found for {$id}");
 
-            Handler::handleNode($child);
+            $handledFirst = $handledSecond = $handledThird = false;
+
+            $handledFirst = Handler::handleNode($child);
 
             foreach ($child->children() as $s1) {
-                Handler::handleNode($s1, $child);
+                $handledSecond = Handler::handleNode($s1, $child);
                 foreach ($s1->children() as $s2) {
-                    Handler::handleNode($s2, $child);
+                    $handledThird = Handler::handleNode($s2, $child);
                 }
+            }
+
+            if ($child->getName() == 'iq' && !$handledFirst && !$handledSecond && !$handledThird) {
+                Handler::searchPayload('iq_error', $child);
             }
         }
     }
 
-    public static function handleNode($s, ?\SimpleXMLElement $sparent = null)
+    public static function handleNode($s, ?\SimpleXMLElement $sparent = null): bool
     {
         $name = $s->getName();
         $ns = '';
@@ -91,22 +97,24 @@ class Handler
             }
         }
 
-        $handledFirst = $handledSecond = false;
+        $matchPayloadWithNode = $matchPayload = false;
 
         if ($s->items && $s->items->attributes()->node) {
             $node = (string)$s->items->attributes()->node;
             $hash = md5($name . $ns . $node);
             \Utils::info('Handler : Searching a payload for "' . $name . ':' . $ns . ' [' . $node . ']", "' . $hash . '"');
-            $handledFirst = Handler::searchPayload($hash, $s, $sparent);
+            $matchPayloadWithNode = Handler::searchPayload($hash, $s, $sparent);
         }
 
         $hash = md5($name . $ns);
         \Utils::info('Handler : Searching a payload for "' . $name . ':' . $ns . '", "' . $hash . '"');
-        $handledSecond = Handler::searchPayload($hash, $s, $sparent);
+        $matchPayload = Handler::searchPayload($hash, $s, $sparent);
 
-        if ($name == 'iq' && !$handledFirst && !$handledSecond) {
-            Handler::searchPayload('iq_error', $s, $sparent);
+        if (!$matchPayloadWithNode && !$matchPayload) {
+            return false;
         }
+
+        return true;
     }
 
     public static function searchPayload($hash, $s, ?\SimpleXMLElement $sparent = null): bool

@@ -9,6 +9,7 @@ v0.23 (trunk)
 * Move from cboden/ratchet to plesk/ratchetphp
 * Fix the Bookmark2 set action
 * Big performance improvement in Conference::subject and User::unreads DB queries
+* Fix the Moxl Handler to only return an IQ error when the incoming IQ request was not handled at all
 
 v0.22
 ---------------------------
