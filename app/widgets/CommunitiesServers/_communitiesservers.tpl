@@ -19,7 +19,7 @@
                     {if="$value->occupants == 0"}faded{/if}"
                     onclick="MovimUtils.reload('{$c->route('community', $value->server)}')">
                     <span class="primary icon bubble">
-                        <img src="{$value->server|avatarPlaceholder}">
+                        <img loading="lazy" src="{$value->server|avatarPlaceholder}">
                     </span>
                     <div>
                         <p class="line" title="{$value->server} - {$value->name}">

@@ -1190,6 +1190,7 @@ var Chat = {
                 if (data.icon_url) {
                     var img = document.createElement('img');
                     img.setAttribute('src', data.icon_url);
+                    img.setAttribute('loading', 'lazy');
                     icon.appendChild(img);
                 }
 

@@ -13,7 +13,7 @@
     {/if}
 
     <span class="primary icon thumb">
-        <img src="{$community->getPhoto('m')}"/>
+        <img loading="lazy" src="{$community->getPhoto('m')}"/>
     </span>
     <div>
         <p class="line">

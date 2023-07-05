@@ -196,7 +196,7 @@
                     <li title="{$value->truename}">
                         {if="$value->contact"}
                             <span class="primary icon bubble small status {if="$presence"}{$presence->presencekey}{/if}">
-                                <img src="{$value->contact->getPhoto('s')}">
+                                <img loading="lazy" src="{$value->contact->getPhoto('s')}">
                             </span>
                         {else}
                             <span class="primary icon bubble small color {$value->jid|stringToColor} status {if="$presence"}{$presence->presencekey}{/if}">
@@ -266,7 +266,7 @@
                         title="{$value->resource}">
 
                         <span class="primary icon bubble small status {$value->presencekey}">
-                            <img src="{$value->conferencePicture}">
+                            <img loading="lazy" src="{$value->conferencePicture}">
                         </span>
                         {if="$value->mucaffiliation == 'owner'"}
                             <span class="control icon yellow" title="{$c->__('rooms.owner')}">
@@ -352,7 +352,7 @@
                         <li title="{$value->truename}">
                             {if="$value->contact"}
                                 <span class="primary icon bubble small">
-                                    <img src="{$value->contact->getPhoto('s')}">
+                                    <img loading="lazy" src="{$value->contact->getPhoto('s')}">
                                 </span>
                             {else}
                                 <span class="primary icon bubble small color {$value->jid|stringToColor}">

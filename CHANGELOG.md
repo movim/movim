@@ -11,6 +11,7 @@ v0.23 (trunk)
 * Big performance improvement in Conference::subject and User::unreads DB queries
 * Fix the Moxl Handler to only return an IQ error when the incoming IQ request was not handled at all
 * Handle the a=msid SDP lines and inject the values into the related XEP-0339 source parameters, fix Conversations video-calls
+* Add lazy loading for some avatars and pictures
 
 v0.22
 ---------------------------
