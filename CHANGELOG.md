@@ -12,6 +12,7 @@ v0.23 (trunk)
 * Fix the Moxl Handler to only return an IQ error when the incoming IQ request was not handled at all
 * Handle the a=msid SDP lines and inject the values into the related XEP-0339 source parameters, fix Conversations video-calls
 * Add lazy loading for some avatars and pictures
+* Add a specific index in messages table for unreads messages counting
 
 v0.22
 ---------------------------
