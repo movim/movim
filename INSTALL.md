@@ -175,7 +175,31 @@ It is however **strongly recommended** to also setup a server side cache to prev
 
 #### On Apache
 
-_To be completed_
+You will need Apache mods `cache_disk`, `expires`, and `headers`. You can enable them with the a2enmod command. Example: `a2enmod cache_disk`
+
+Then add this section to your Movim VirtualHost
+
+```
+CacheQuickHandler on
+CacheLock on
+CacheLockPath /tmp/mod_cache-lock
+CacheLockMaxAge 5
+CacheIgnoreHeaders Set-Cookie
+<Location />
+	CacheEnable disk
+	CacheHeader on
+	CacheDefaultExpire 6000
+	CacheMaxExpire 3600
+	CacheIgnoreNoLastMod On
+	ExpiresActive on
+	ExpiresDefault A3600
+	Header set Cache-Control public
+	Header merge Cache-Control max-age=604800
+	FileETag All
+</Location>
+```
+
+Afterwards, reload Apache.
 
 #### On nginx
 
