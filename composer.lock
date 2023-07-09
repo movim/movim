@@ -3291,16 +3291,16 @@
         },
         {
             "name": "plesk/ratchetphp",
-            "version": "v1.0.1",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/plesk/ratchetphp.git",
-                "reference": "8c9cdce380ca222f11ec820371339efca7e0c0a7"
+                "reference": "ed8590ae95e6cac96d704ccf45efe350b73633d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/plesk/ratchetphp/zipball/8c9cdce380ca222f11ec820371339efca7e0c0a7",
-                "reference": "8c9cdce380ca222f11ec820371339efca7e0c0a7",
+                "url": "https://api.github.com/repos/plesk/ratchetphp/zipball/ed8590ae95e6cac96d704ccf45efe350b73633d5",
+                "reference": "ed8590ae95e6cac96d704ccf45efe350b73633d5",
                 "shasum": ""
             },
             "require": {
@@ -3351,9 +3351,9 @@
                 "websocket"
             ],
             "support": {
-                "source": "https://github.com/plesk/ratchetphp/tree/v1.0.1"
+                "source": "https://github.com/plesk/ratchetphp/tree/v1.0.2"
             },
-            "time": "2023-06-30T04:36:31+00:00"
+            "time": "2023-07-05T11:42:58+00:00"
         },
         {
             "name": "psr/cache",

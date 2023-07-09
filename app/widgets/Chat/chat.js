@@ -803,7 +803,7 @@ var Chat = {
             }
         );
     },
-    setMessagePressBehaviour: function() {
+    setMessagePressBehaviour: function () {
         document.querySelectorAll('#chat_widget ul li div.bubble:not(.sticker):not(.file) > div.message').forEach(message => {
             message.onmousedown = function (e) {
                 setTimeout(() => {
