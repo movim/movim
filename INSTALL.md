@@ -185,7 +185,7 @@ CacheLock on
 CacheLockPath /tmp/mod_cache-lock
 CacheLockMaxAge 5
 CacheIgnoreHeaders Set-Cookie
-<Location />
+<Location /picture>
 	CacheEnable disk
 	CacheHeader on
 	CacheDefaultExpire 6000
