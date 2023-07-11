@@ -26,11 +26,13 @@ class Info extends Model
             unset($this->identities);
             parent::save($options);
 
-            if ($this->freshIdentities) {
-                $this->identities()->delete();
-                $this->identities()->saveMany($this->freshIdentities);
-            }
+            if ($this->freshIdentities && $this->freshIdentities->isNotEmpty()) {
+                $this->freshIdentities->each(function ($row) {
+                    $row->info_id = $this->id;
+                });
 
+                Identity::saveMany($this->freshIdentities);
+            }
         } catch (\Exception $e) {
             /**
              * Existing info are saved in the DB
