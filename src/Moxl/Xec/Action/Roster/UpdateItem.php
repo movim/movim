@@ -25,7 +25,7 @@ class UpdateItem extends Action
         if ($roster) {
             $roster->name = $this->_name;
             $roster->group = $this->_group;
-            $roster->save();
+            $roster->upsert();
 
             $this->pack($this->_to);
             $this->deliver();

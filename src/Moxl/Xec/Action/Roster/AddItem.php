@@ -24,7 +24,7 @@ class AddItem extends Action
         $roster->jid = $this->_to;
         $roster->group = $this->_group;
         $roster->name = $this->_name;
-        $roster->save();
+        $roster->upsert();
 
         $this->pack($this->_to);
         $this->deliver();
