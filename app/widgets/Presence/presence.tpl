@@ -1,4 +1,4 @@
-<ul class="list thick active" id="presence_widget" dir="ltr">
+<ul class="list navigation thick active" id="presence_widget" dir="ltr">
     <li>
         <span class="primary icon bubble color status">
             <img src="{$me->getPhoto()}">

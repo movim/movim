@@ -415,6 +415,14 @@ input[type=button].flat:focus {
     margin: 0;
 }
 
+.button.action:hover {
+    transform: scale(1.1);
+}
+
+.button.action:active {
+    transform: scale(1);
+}
+
 .button.action.small {
     height: 5rem;
     width: 5rem;

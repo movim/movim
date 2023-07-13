@@ -1,15 +1,15 @@
 /* Menu */
 
-body > nav > ul:not(:first-child) li p:first-of-type {
+body>nav>ul:not(:first-child) li p:first-of-type {
     height: 6rem;
     line-height: 6rem;
 }
 
-body > nav > ul.list li {
+body>nav>ul.list li {
     padding-left: 0.5rem;
 }
 
-body > nav.color.dark > ul a {
+body>nav.color.dark>ul a {
     color: white;
 }
 
@@ -26,18 +26,57 @@ ul.oppose {
 }
 
 /* Specific case to handle rtl */
-body[dir="rtl"] > nav ul.list li .primary ~ *:not(.primary):not(.control):not(.bubble) {
+body[dir="rtl"]>nav ul.list li .primary~*:not(.primary):not(.control):not(.bubble) {
     margin-left: 1rem;
 }
 
 /* Navigation */
 
-ul.navigation li > span.primary > i {
+ul.navigation li>span.primary>i {
     transition: opacity 0.15s ease;
     opacity: 0.5;
 }
 
-ul.navigation li.active > span.primary > i,
-ul.navigation li:not(.active):hover > span.primary > i {
+ul.navigation li.active>span.primary>i,
+ul.navigation li:not(.active):hover>span.primary>i {
     opacity: 1;
+}
+
+ul.list.active.navigation li:hover:not(.subheader),
+ul.list.active.navigation li.active:not(.subheader) {
+    background-color: transparent;
+}
+
+ul.list.active.navigation li:hover:not(.subheader):before,
+ul.list.active.navigation li.active:not(.subheader):before {
+    display: block;
+    content: '';
+    width: calc(100% - 1rem);
+    height: calc(100% - 1rem);
+    background-color: rgba(var(--movim-element-action), 0.1);
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    border-radius: 0.75rem;
+    z-index: -1;
+    transition: background-color 0.15s ease;
+}
+
+ul.list.active.navigation li:active:not(.subheader):before,
+ul.list.active.navigation li.active:active:not(.subheader):before {
+    background-color: rgba(var(--movim-element-action), 0.2);
+}
+
+ul.navigation li {
+    transform: translateY(0);
+}
+
+ul#bottomnavigation li:active {
+    transform: translateY(1px);
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1680px) {
+    ul.navigation li:active {
+        transform: translateY(1px);
+    }
 }

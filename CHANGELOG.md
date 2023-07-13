@@ -3,6 +3,7 @@ Movim Changelog
 
 v0.23 (trunk)
 ---------------------------
+* Slightly redesign the menu CSS
 
 v0.22.1
 ---------------------------
