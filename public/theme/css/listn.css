@@ -1,5 +1,5 @@
-ul.list > * > li,
-ul.list > li {
+ul.list>*>li,
+ul.list>li {
     clear: both;
     display: flex;
     align-items: center;
@@ -9,24 +9,24 @@ ul.list > li {
     transition: background-color 0.15s ease;
 }
 
-ul.list.compact > li {
+ul.list.compact>li {
     flex-direction: column;
     align-items: flex-start;
 }
 
-header:not(.big) > ul.list > li,
-nav > ul.list > li,
-ul.list.fill > li,
+header:not(.big)>ul.list>li,
+nav>ul.list>li,
+ul.list.fill>li,
 ul.list.fill:not(.padded_top_bottom).flex,
-ul.list.controls > li {
+ul.list.controls>li {
     padding: 0;
 }
 
-article header > ul.list li {
+article header>ul.list li {
     padding: 0 1rem;
 }
 
-ul.list li > * {
+ul.list li>* {
     order: 2;
     flex: 1;
     min-width: 0;
@@ -34,19 +34,19 @@ ul.list li > * {
     transition: background-color 0.15s ease, filter 0.15s ease;
 }
 
-ul.list li:not(.subheader) > *:not(.primary):not(.control):not(.bubble):not(.main) {
+ul.list li:not(.subheader)>*:not(.primary):not(.control):not(.bubble):not(.main) {
     padding: 0.25rem 0;
 }
 
-ul.list.thin li:not(.subheader) > *:not(.primary):not(.control):not(.bubble):not(.main) {
+ul.list.thin li:not(.subheader)>*:not(.primary):not(.control):not(.bubble):not(.main) {
     padding: 0;
 }
 
-ul.list.middle li:not(.subheader) > *:not(.primary):not(.control):not(.bubble):not(.main) {
+ul.list.middle li:not(.subheader)>*:not(.primary):not(.control):not(.bubble):not(.main) {
     padding: 0.75rem 0;
 }
 
-ul.list.thick li:not(.subheader) > *:not(.primary):not(.control):not(.bubble):not(.main) {
+ul.list.thick li:not(.subheader)>*:not(.primary):not(.control):not(.bubble):not(.main) {
     padding: 1.5rem 0;
 }
 
@@ -56,22 +56,22 @@ ul.list.active li:hover:not(.subheader),
 ul.list.active.all li:hover,
 ul.list li.active:hover,
 ul.list.active li.active:not(.subheader),
-ul.tabs > li:hover {
+ul.tabs>li:hover {
     background-color: rgba(var(--movim-element-action), 0.1);
     cursor: pointer;
     user-select: none;
 }
 
-ul.list li > span.active:hover {
+ul.list li>span.active:hover {
     cursor: pointer;
     user-select: none;
 }
 
-ul.list li > span.bubble.active:hover {
+ul.list li>span.bubble.active:hover {
     filter: grayscale(25%);
 }
 
-ul.list li > span:not(.bubble).active:hover,
+ul.list li>span:not(.bubble).active:hover,
 ul.list li div.bubble:not(.sticker):not(.file):hover {
     cursor: pointer;
     background-color: rgba(var(--movim-element-action), 0.1);
@@ -81,16 +81,16 @@ ul.list li div.bubble:not(.sticker):not(.file):hover {
 
 ul.list.active li:active:not(.subheader),
 ul.list.active.all li:active,
-ul.tabs > li:active {
+ul.tabs>li:active {
     background-color: rgba(var(--movim-element-action), 0.2);
 }
 
 
-ul.list li > span.bubble.active:active {
+ul.list li>span.bubble.active:active {
     filter: grayscale(50%);
 }
 
-ul.list li > span:not(.bubble).active:active,
+ul.list li>span:not(.bubble).active:active,
 ul.list li div.bubble:not(.sticker):not(.file):active {
     cursor: pointer;
     background-color: rgba(var(--movim-element-action), 0.2);
@@ -106,35 +106,35 @@ ul.list li .primary {
 }
 
 
-ul.list.compact > li .primary {
+ul.list.compact>li .primary {
     width: 5rem;
 }
 
-ul.list li > span.primary {
+ul.list li>span.primary {
     order: 1;
 }
 
-ul.list li > span.control {
+ul.list li>span.control {
     order: 3;
 }
 
-ul.list li > span.control:last-of-type {
+ul.list li>span.control:last-of-type {
     margin-right: -1.5rem;
 }
 
-*[dir="rtl"] ul.list li > span.control:last-of-type {
+*[dir="rtl"] ul.list li>span.control:last-of-type {
     margin-right: 0;
     margin-left: -1.5rem;
 }
 
-header > ul.list li > span.control:last-of-type,
-nav > ul.list li > span.control:last-of-type,
-ul.list.fill li > span.control:last-of-type,
-ul.list.controls li > span.control:last-of-type {
+header>ul.list li>span.control:last-of-type,
+nav>ul.list li>span.control:last-of-type,
+ul.list.fill li>span.control:last-of-type,
+ul.list.controls li>span.control:last-of-type {
     margin-right: 0;
 }
 
-ul.list li > span.thumb {
+ul.list li>span.thumb {
     flex: 0 0 7rem;
 }
 
@@ -178,64 +178,64 @@ ul.list.thick li:not(.subheader) .primary.bubble:not(.small) {
     margin: 1.75rem 0.5rem;
 }
 
-ul.list li .primary ~ *:not(.primary):not(.control):not(.bubble) {
+ul.list li .primary~*:not(.primary):not(.control):not(.bubble) {
     margin-left: 1rem;
 }
 
-*[dir="rtl"] ul.list li .primary ~ *:not(.primary):not(.control):not(.bubble) {
+*[dir="rtl"] ul.list li .primary~*:not(.primary):not(.control):not(.bubble) {
     margin-left: 0;
     margin-right: 1rem;
 }
 
-ul.list.compact li .primary ~ *:not(.primary):not(.control):not(.bubble) {
+ul.list.compact li .primary~*:not(.primary):not(.control):not(.bubble) {
     margin-left: 0.5rem;
 }
 
-*[dir="rtl"] ul.list.compact li .primary ~ *:not(.primary):not(.control):not(.bubble) {
+*[dir="rtl"] ul.list.compact li .primary~*:not(.primary):not(.control):not(.bubble) {
     margin-left: 0;
     margin-right: 0.5rem;
 }
 
-ul.list:not(.gallery) li .control ~ *:not(.primary):not(.control):not(.bubble) {
+ul.list:not(.gallery) li .control~*:not(.primary):not(.control):not(.bubble) {
     margin-right: 1rem;
 }
 
-*[dir="rtl"] ul.list:not(.gallery) li .control ~ *:not(.primary):not(.control):not(.bubble)  {
+*[dir="rtl"] ul.list:not(.gallery) li .control~*:not(.primary):not(.control):not(.bubble) {
     margin-right: 0;
     margin-left: 1rem;
 }
 
-ul.list li .primary > a,
-ul.list li .control > a {
+ul.list li .primary>a,
+ul.list li .control>a {
     display: block;
 }
 
 /* Truncated content */
 
-ul.list li.subheader > div > p,
-ul.list li > div > p.line {
+ul.list li.subheader>div>p,
+ul.list li>div>p.line {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-ul.list li > div > p.line.two {
+ul.list li>div>p.line.two {
     white-space: initial;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
 }
 
-ul.list li > div > p > span.second {
+ul.list li>div>p>span.second {
     color: gray;
     margin-left: 0.5rem;
 }
 
-ul.list li > div > p > span.second.sticked {
+ul.list li>div>p>span.second.sticked {
     margin-left: 0;
 }
 
-ul.list li > div > p > span.info,
+ul.list li>div>p>span.info,
 ul li div.bubble:after {
     float: right;
     font-size: 1.5rem;
@@ -246,62 +246,62 @@ ul li div.bubble:after {
     text-overflow: ellipsis;
 }
 
-*[dir="rtl"] ul.list li > div > p > span.info {
+*[dir="rtl"] ul.list li>div>p>span.info {
     float: left;
 }
 
 /* Size automagicaly the content */
 
-ul.list li > div > p {
+ul.list li>div>p {
     box-sizing: border-box;
     width: auto;
 }
 
-ul.list li > div > p.active:hover {
+ul.list li>div>p.active:hover {
     cursor: pointer;
 }
 
-ul.list > * > li > div > p:first-of-type,
-ul.list > li > div > p:first-of-type {
+ul.list>*>li>div>p:first-of-type,
+ul.list>li>div>p:first-of-type {
     line-height: 5.5rem;
     font-size: 3rem;
 }
 
-ul.list > * > li > div > p.all:first-of-type,
-ul.list > li > div > p.all:first-of-type {
+ul.list>*>li>div>p.all:first-of-type,
+ul.list>li>div>p.all:first-of-type {
     line-height: 3rem;
     padding: 1.25rem 0;
 }
 
-ul.list li > div > p.normal {
+ul.list li>div>p.normal {
     font-size: 2rem;
 }
 
-ul.list li > div > p.bold {
+ul.list li>div>p.bold {
     font-weight: bold;
 }
 
-ul.list li > div > p.center {
+ul.list li>div>p.center {
     text-align: center;
 }
 
-ul.list li > div > p:nth-last-of-type(3),
-ul.list li > div > p:nth-last-of-type(2) {
+ul.list li>div>p:nth-last-of-type(3),
+ul.list li>div>p:nth-last-of-type(2) {
     line-height: 3rem;
     font-size: 2rem;
     padding: 0;
 }
 
-ul.list li > div > p:nth-last-of-type(3) + p:not(.normal),
-ul.list li > div > p:nth-last-of-type(2) + p:not(.normal) {
+ul.list li>div>p:nth-last-of-type(3)+p:not(.normal),
+ul.list li>div>p:nth-last-of-type(2)+p:not(.normal) {
     line-height: 2.5rem;
     font-size: 1.75rem;
     max-height: 7.5rem;
     overflow: hidden;
 }
 
-ul.list li > div > p:nth-last-of-type(3) + p.all,
-ul.list li > div > p:nth-last-of-type(2) + p.all {
+ul.list li>div>p:nth-last-of-type(3)+p.all,
+ul.list li>div>p:nth-last-of-type(2)+p.all {
     max-height: 100%;
 }
 
@@ -312,7 +312,7 @@ ul.list li.subheader {
     user-select: none;
 }
 
-ul.list li.subheader > div > p {
+ul.list li.subheader>div>p {
     font-size: 1.75rem;
     line-height: 5rem;
     font-weight: 600;
@@ -335,7 +335,7 @@ ul.tabs:empty {
     display: none;
 }
 
-ul.tabs.wide > li {
+ul.tabs.wide>li {
     width: 33.33%;
     float: left;
 }
@@ -344,7 +344,7 @@ ul.tabs:hover {
     overflow-x: auto;
 }
 
-ul.tabs > li {
+ul.tabs>li {
     display: inline-block;
     white-space: nowrap;
     font-size: 1.75rem;
@@ -355,25 +355,25 @@ ul.tabs > li {
     border-radius: 1rem 1rem 0 0;
 }
 
-ul.tabs > li > * {
+ul.tabs>li>* {
     padding: 0 3rem;
     box-sizing: border-box;
     display: block;
 }
 
-ul.tabs > li > * > i {
+ul.tabs>li>*>i {
     font-size: 2.5rem;
 }
 
-ul.tabs.narrow > li {
+ul.tabs.narrow>li {
     min-width: 8rem;
 }
 
-ul.tabs.narrow > li > * {
+ul.tabs.narrow>li>* {
     padding: 0 1rem;
 }
 
-ul.tabs > li.active {
+ul.tabs>li.active {
     opacity: 1;
     border-bottom-width: 2px;
     border-bottom-style: solid;
@@ -491,16 +491,16 @@ ul li div.bubble span.info:empty {
     min-height: 2.5rem;
 }
 
-ul li div.bubble > div:last-child span.info {
+ul li div.bubble>div:last-child span.info {
     padding-right: 5rem;
 }
 
 
-ul li div.bubble:not(.file) > div:last-child span.info {
+ul li div.bubble:not(.file)>div:last-child span.info {
     height: 2.25rem;
 }
 
-ul li.oppose div.bubble.file > div:last-child span.info {
+ul li.oppose div.bubble.file>div:last-child span.info {
     height: 2.5rem;
 }
 
@@ -563,7 +563,7 @@ ul li.date {
     text-align: center;
 }
 
-ul li.date > div > p.normal {
+ul li.date>div>p.normal {
     line-height: 2.5rem;
     font-size: 1.5rem;
     display: inline-block;
@@ -572,7 +572,7 @@ ul li.date > div > p.normal {
     padding: 0 2rem;
 }
 
-ul li.date:first-of-type > div > p.normal {
+ul li.date:first-of-type>div>p.normal {
     margin-top: 1rem;
 }
 
@@ -592,7 +592,7 @@ ul.list.controls {
     justify-content: space-between;
 }
 
-ul.list.controls > li {
+ul.list.controls>li {
     width: 100%;
     margin: 0;
     box-sizing: border-box;
@@ -640,14 +640,14 @@ header ul.context_menu.shown {
 
 ul.list li.divided:not(.spaced),
 ul.list li.divided.spaced:after,
-*.divided:not(.spaced):not(li) > *:not(:last-child):not(.subheader),
-*.divided.spaced > *:not(:last-child):not(.subheader):after {
+*.divided:not(.spaced):not(li)>*:not(:last-child):not(.subheader),
+*.divided.spaced>*:not(:last-child):not(.subheader):after {
     border-bottom-width: 1px;
     border-bottom-style: solid;
 }
 
 ul.list li.divided.spaced:after,
-*.divided.spaced > *:not(:last-child):after {
+*.divided.spaced>*:not(:last-child):after {
     position: absolute;
     right: 0;
     bottom: 0;

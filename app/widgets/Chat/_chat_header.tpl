@@ -289,7 +289,7 @@
                 </div>
             </li>
         {else}
-            <li onclick="ChatActions_ajaxBlockContact('{$contact->jid|echapJS}')">
+            <li onclick="ChatActions_ajaxBlockContact('{$contact->jid|echapJS}'); Notifications_ajaxRefuse('{$contact->jid|echapJS}');">
                 <div>
                     <p class="normal">{$c->__('blocked.block_account')}</p>
                 </div>

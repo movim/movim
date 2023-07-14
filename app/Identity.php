@@ -6,7 +6,7 @@ use Movim\Model;
 
 class Identity extends Model
 {
-    protected $primaryKey = ['info_id', 'category', 'type'];
+    public $primaryKey = ['info_id', 'category', 'type'];
     public $incrementing = false;
 
     public function info()
@@ -14,14 +14,16 @@ class Identity extends Model
         return $this->belongsTo('App\Info');
     }
 
-    public function save(array $options = [])
+    public static function saveMany($identities)
     {
-        try {
-            parent::save($options);
-        } catch (\Exception $e) {
-            /**
-             * Existing info are saved in the DB
-             */
+        if ($identities->isNotEmpty()) {
+            Identity::upsert($identities->map(function (Identity $identity) {
+                return [
+                    'info_id' => $identity->info_id,
+                    'category' => $identity->category,
+                    'type' => $identity->type,
+                ];
+            })->all(), $identities->first()->primaryKey);
         }
     }
 }

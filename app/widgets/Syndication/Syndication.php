@@ -60,7 +60,9 @@ class Syndication extends Base
             $author->appendChild($dom->createElement('uri', $this->route('blog', $from)));
 
             if ($contact->getPhoto('l')) {
-                $feed->appendChild($dom->createElement('logo', $contact->getPhoto('l')));
+                $logo = $dom->createElement('logo');
+                $logo->appendChild($dom->createTextNode($contact->getPhoto('l')));
+                $feed->appendChild($logo);
             }
 
             $self->setAttribute('href', $this->route('feed', $from));

@@ -16,13 +16,25 @@ class Roster extends Model
         'session_id'    => SESSION_ID
     ];
 
-    public function save(array $options = [])
+    public function upsert(): Roster
     {
-        try {
-            parent::save($options);
-        } catch (\Exception $e) {
-            \Utils::error($e->getMessage());
-        }
+        return parent::updateOrCreate([
+            'session_id' => $this->session_id,
+            'jid' => $this->jid
+        ], $this->only(['name', 'ask', 'subscription', 'group']));
+    }
+
+    public static function saveMany(array $rosters)
+    {
+        $now = \Carbon\Carbon::now();
+        $rosters = collect($rosters)->map(function (array $data) use ($now) {
+            return array_merge([
+                'created_at' => $now,
+                'updated_at' => $now,
+            ], $data);
+        })->all();
+
+        return Roster::insert($rosters);
     }
 
     public function session()
@@ -71,19 +83,6 @@ class Roster extends Model
         $this->group = $stanza->group
             ? (string)$stanza->group
             : null;
-    }
-
-    public static function saveMany(array $rosters)
-    {
-        $now = \Carbon\Carbon::now();
-        $rosters = collect($rosters)->map(function (array $data) use ($now) {
-            return array_merge([
-                'created_at' => $now,
-                'updated_at' => $now,
-            ], $data);
-        })->all();
-
-        return Roster::insert($rosters);
     }
 
     public function getSearchTerms()

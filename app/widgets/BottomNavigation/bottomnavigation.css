@@ -21,12 +21,7 @@ ul#bottomnavigation li {
 }
 
 ul#bottomnavigation li:hover {
-    background-color: rgba(var(--movim-element-action), 0.1);
     cursor: pointer;
-}
-
-ul#bottomnavigation li:active {
-    background-color: rgba(var(--movim-element-action), 0.2);
 }
 
 ul#bottomnavigation li:first-child {

@@ -400,6 +400,8 @@ function palette(): array
  */
 function stripTags($string): string
 {
+    if ($string == null) return '';
+
     return strip_tags(
         preg_replace('/\s+/', ' ',
             preg_replace('/(<\/[^>]+?>)(<[^>\/][^>]*?>)/', '$1 $2', $string)
