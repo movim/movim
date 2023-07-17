@@ -22,11 +22,7 @@
 
     <div>
         <p class="normal line">
-            {if="$roster && $roster->presence && $roster->presence->seen"}
-                <span class="info">
-                    {$c->__('last.title')} {$roster->presence->seen|strtotime|prepareDate:true,true}
-                </span>
-            {elseif="isset($message)"}
+            {if="isset($message)"}
                 <span class="info">
                     {$message->published|strtotime|prepareDate:true,true}
                 </span>
