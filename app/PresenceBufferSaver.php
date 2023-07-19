@@ -102,16 +102,6 @@ class PresenceBufferSaver
                     $avatarHashes = $avatarHashes->reject(
                         fn ($jid, $avatarhash) =>
                         $contactsHashes->has($jid) && $contactsHashes->get($jid) == $avatarhash
-
-                        // If the contact stored is actually the one we received the presence from
-
-                        // It's another contact that has the same avatar and we are in a MUC
-                        /*elseif (strpos($avatarHashes->get($contact->avatarhash), '/') != false) {
-                            $p = new Picture;
-                            $p->fromKey($contact->id);
-                            $p->set($avatarHashes->get($contact->avatarhash));
-                        }*/
-
                     );
 
                     $avatarHashes->each(function ($jid, $avatarhash) {
