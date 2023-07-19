@@ -7,7 +7,7 @@
 namespace Movim;
 
 /**
- * This class handle all the outgoing chatstates
+ * Spread the functions in time
  */
 class Scheduler
 {
@@ -28,12 +28,8 @@ class Scheduler
         global $loop;
 
         $loop->addPeriodicTimer(0.5, function () {
-            if (count($this->_stack)) {
-                \Utils::debug('Scheduler size '.count($this->_stack));
-            }
             if (!empty($this->_stack)) {
                 $key = key($this->_stack);
-                \Utils::debug('EXEC '.$key);
                 call_user_func($this->_stack[$key]);
                 unset($this->_stack[$key]);
             }
