@@ -9,6 +9,7 @@ use Moxl\Xec\Action\Vcard\Get;
 use App\Presence;
 use App\Info;
 use App\Contact;
+use Movim\Scheduler;
 
 class PresenceBufferSaver
 {
@@ -63,7 +64,7 @@ class PresenceBufferSaver
                     // Vcards
                     if (isset($presence['avatarhash'])) {
                         $fullJid = !empty($presence['resource'])
-                            ? $presence['jid'].'/'.$presence['resource']
+                            ? $presence['jid'] . '/' . $presence['resource']
                             : $presence['jid'];
 
                         $jid = ($presence['muc'])
@@ -89,17 +90,17 @@ class PresenceBufferSaver
                 $nodes->each(function ($to, $node) {
                     $d = new Request;
                     $d->setTo($to)
-                      ->setNode($node)
-                      ->request();
+                        ->setNode($node)
+                        ->request();
                 });
 
                 // Memory leak there
                 if ($avatarHashes->count() > 0) {
                     $contactsHashes = Contact::whereIn('avatarhash', $avatarHashes->keys())
-                                        ->get(['id', 'avatarhash'])->pluck('avatarhash', 'id');
-
+                        ->get(['id', 'avatarhash'])->pluck('avatarhash', 'id');
                     // Remove the existing Contacts
-                    $avatarHashes = $avatarHashes->reject(fn ($avatarhash, $jid) =>
+                    $avatarHashes = $avatarHashes->reject(
+                        fn ($jid, $avatarhash) =>
                         $contactsHashes->has($jid) && $contactsHashes->get($jid) == $avatarhash
 
                         // If the contact stored is actually the one we received the presence from
@@ -113,15 +114,15 @@ class PresenceBufferSaver
 
                     );
 
-                    // Request the others, take 100 max for the moment to prevent spamming issues
-                    $avatarHashes->take(100)->each(function ($jid, $avatarhash) {
-                        $r = new Get;
-                        $r->setAvatarhash($avatarhash)
-                          ->setTo($jid)
-                          ->request();
+                    $avatarHashes->each(function ($jid, $avatarhash) {
+                        Scheduler::getInstance()->append('avatar_' . $jid . '_' . $avatarhash, function () use ($jid, $avatarhash) {
+                            $r = new Get;
+                            $r->setAvatarhash($avatarhash)
+                                ->setTo($jid)
+                                ->request();
+                        });
                     });
                 }
-
             } catch (\Exception $e) {
                 DB::rollback();
                 \Utils::error($e->getMessage());
@@ -133,7 +134,6 @@ class PresenceBufferSaver
             $this->_calls->each(fn ($call) => $call());
             $this->_calls = collect();
         }
-
     }
 
     public function append(Presence $presence, $call)
@@ -144,6 +144,6 @@ class PresenceBufferSaver
 
     private function getPresenceKey(Presence $presence)
     {
-        return $presence->muc ? $presence->jid.$presence->mucjid : $presence->jid.$presence->resource;
+        return $presence->muc ? $presence->jid . $presence->mucjid : $presence->jid . $presence->resource;
     }
 }

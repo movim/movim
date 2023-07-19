@@ -4,6 +4,8 @@ Movim Changelog
 v0.23 (trunk)
 ---------------------------
 * Slightly redesign the menu CSS
+* Fix avatar refresh filter resolution in PresenceBufferSaver
+* Add a small Scheduler to spread the avatar query in time
 
 v0.22.1
 ---------------------------

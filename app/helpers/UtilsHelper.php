@@ -150,6 +150,7 @@ function getClientTypes()
         'console'       => __('client.console'),
         'pc'            => __('client.desktop'),
         'phone'         => __('client.phone'),
+        'gateway'       => __('client.gateway'),
         'handheld'      => __('client.phone'),
         'web'           => __('client.web'),
         'registered'    => __('client.registered')
