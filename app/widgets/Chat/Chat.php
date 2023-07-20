@@ -960,7 +960,7 @@ class Chat extends \Movim\Widget\Base
      *
      * @param string $room
      */
-    public function ajaxHttpGetRoomConfig($room)
+    public function ajaxGetRoomConfig($room)
     {
         if (!validateJid($room)) {
             return;
