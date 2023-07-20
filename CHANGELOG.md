@@ -3,9 +3,14 @@ Movim Changelog
 
 v0.23 (trunk)
 ---------------------------
+
+v0.22.2
+---------------------------
 * Slightly redesign the menu CSS
 * Fix avatar refresh filter resolution in PresenceBufferSaver
 * Add a small Scheduler to spread the avatar query in time
+* Fix empty avatars in chatrooms
+* Fix chatroom Administration panel access
 
 v0.22.1
 ---------------------------
