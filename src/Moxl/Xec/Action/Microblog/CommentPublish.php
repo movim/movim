@@ -25,7 +25,7 @@ class CommentPublish extends Action
     public function request()
     {
         $this->store();
-        Pubsub::postPublish($this->_to, $this->_node, $this->_atom);
+        Pubsub::postPublish($this->_to, $this->_node, $this->_atom, false);
     }
 
     public function setTo($to)
