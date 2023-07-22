@@ -22,7 +22,7 @@
     <div>
         <textarea type="text" name="description" id="description" placeholder="{$c->__('information.description_placeholder')}"
                   onclick="MovimUtils.textareaAutoheight(this);"
-                  oninput="MovimUtils.textareaAutoheight(this);"/>{$conf->description}</textarea>
+                  oninput="MovimUtils.textareaAutoheight(this);"/>{if="$conf->description"}{$conf->description}{/if}</textarea>
         <label for="description">{$c->__('information.description')}</label>
     </div>
     <div class="clear"></div>

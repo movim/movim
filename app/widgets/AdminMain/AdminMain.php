@@ -30,11 +30,11 @@ class AdminMain extends \Movim\Widget\Base
     {
         $l = Movim\i18n\Locale::start();
 
-        $this->view->assign('conf', Configuration::get());
+        $this->view->assign('conf', Configuration::firstOrNew());
         $this->view->assign('logs', [
-                0 => $this->__('log.empty'),
-                1 => $this->__('log.syslog'),
-                2 => $this->__('log.syslog_files')
+            0 => $this->__('log.empty'),
+            1 => $this->__('log.syslog'),
+            2 => $this->__('log.syslog_files')
         ]);
 
         $this->view->assign('langs', $l->getList());
