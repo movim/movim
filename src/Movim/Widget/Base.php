@@ -238,7 +238,7 @@ class Base
      */
     private function cacheFile(string $filename)
     {
-        $local = WIDGETS_PATH . get_class($this) . '/' . $filename;
+        $local = '../../app/widgets/' . get_class($this) . '/' . $filename;
         $cache = PUBLIC_CACHE_PATH . get_class($this) . '_' . $filename;
         $path = 'cache/' . get_class($this) . '_' . $filename;
 
