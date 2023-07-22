@@ -4,6 +4,10 @@ Movim Changelog
 v0.23 (trunk)
 ---------------------------
 
+v0.22.3
+---------------------------
+* Fix #1220 Use relative path for public/cache/ for JS and CSS files
+
 v0.22.2
 ---------------------------
 * Slightly redesign the menu CSS
