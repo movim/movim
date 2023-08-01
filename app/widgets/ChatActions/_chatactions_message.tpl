@@ -64,7 +64,7 @@
         {if="$conference && $conference->presence && $conference->presence->mucrole == 'moderator' && $conference->info && $conference->info->hasModeration() && !$message->retracted"}
             <li class="subheader">
                 <div>
-                    <p>Moderation</p>
+                    <p>{$c->__('chatroom.administration')}</p>
                 </div>
             </li>
             <li onclick="ChatActions_ajaxHttpDaemonModerate({$message->mid})">
