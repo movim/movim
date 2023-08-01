@@ -410,4 +410,28 @@ class Message
 
         \Moxl\API::request($dom->saveXML($dom->documentElement));
     }
+
+    public static function moderate(string $to, string $stanzaId)
+    {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+
+        $apply = $dom->createElement('apply-to');
+        $apply->setAttribute('xmlns', 'urn:xmpp:fasten:0');
+        $apply->setAttribute('id', $stanzaId);
+
+        $moderate = $dom->createElement('moderate');
+        $moderate->setAttribute('xmlns', 'urn:xmpp:message-moderate:0');
+        $apply->appendChild($moderate);
+
+        $reason = $dom->createElement('reason');
+        $reasonContent = $dom->createTextNode(__('message.retract_body'));
+        $reason->appendChild($reasonContent);
+        $moderate->appendChild($reason);
+
+        $retract = $dom->createElement('retract');
+        $retract->setAttribute('xmlns', 'urn:xmpp:message-retract:0');
+        $moderate->appendChild($retract);
+
+        \Moxl\API::request(\Moxl\API::iqWrapper($apply, $to, 'set'));
+    }
 }

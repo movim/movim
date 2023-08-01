@@ -3,7 +3,11 @@
         <li {if="$message->isMine()"}class="oppose"{/if}>
             <div class="bubble" data-publishedprepared="{$message->published|strtotime|prepareTime}">
                 <div class="message">
-                    <p>{autoescape="off"}{$message->body|trim|stripTags|addEmojis}{/autoescape}</p>
+                    {if="$message->retracted"}
+                        <p class="retracted"><i class="material-icons">delete</i>{$c->__('message.retracted')}</p>
+                    {else}
+                        <p>{autoescape="off"}{$message->body|trim|stripTags|addEmojis}{/autoescape}</p>
+                    {/if}
                     <span class="info"></span>
                 </div>
             </div>
@@ -26,15 +30,17 @@
                 <p class="normal">{$c->__('button.reply')}</p>
             </div>
         </li>
-        <li
-            onclick="MovimUtils.copyToClipboard(MovimUtils.decodeHTMLEntities(ChatActions.message.body)); ChatActions_ajaxCopiedMessageText(); Dialog_ajaxClear()">
-            <span class="primary icon gray">
-                <i class="material-icons">content_copy</i>
-            </span>
-            <div>
-                <p class="normal">{$c->__('chatactions.copy_text')}</p>
-            </div>
-        </li>
+        {if="!$message->retracted"}
+            <li
+                onclick="MovimUtils.copyToClipboard(MovimUtils.decodeHTMLEntities(ChatActions.message.body)); ChatActions_ajaxCopiedMessageText(); Dialog_ajaxClear()">
+                <span class="primary icon gray">
+                    <i class="material-icons">content_copy</i>
+                </span>
+                <div>
+                    <p class="normal">{$c->__('chatactions.copy_text')}</p>
+                </div>
+            </li>
+        {/if}
         <!--<li onclick="ChatActions_ajaxEditMessage({$message->mid})">
             <span class="control icon gray">
                 <i class="material-icons">edit</i>
@@ -45,14 +51,30 @@
         </li>-->
 
         {if="$message->isMine()"}
-        <li onclick="ChatActions_ajaxHttpDaemonRetract({$message->mid})">
-            <span class="primary icon gray">
-                <i class="material-icons">delete</i>
-            </span>
-            <div>
-                <p class="normal">{$c->__('message.retract')}</p>
-            </div>
-        </li>
+            <li onclick="ChatActions_ajaxHttpDaemonRetract({$message->mid})">
+                <span class="primary icon gray">
+                    <i class="material-icons">delete</i>
+                </span>
+                <div>
+                    <p class="normal">{$c->__('message.retract')}</p>
+                </div>
+            </li>
+        {/if}
+
+        {if="$conference && $conference->presence && $conference->presence->mucrole == 'moderator' && $conference->info && $conference->info->hasModeration() && !$message->retracted"}
+            <li class="subheader">
+                <div>
+                    <p>Moderation</p>
+                </div>
+            </li>
+            <li onclick="ChatActions_ajaxHttpDaemonModerate({$message->mid})">
+                <span class="primary icon gray">
+                    <i class="material-icons">delete</i>
+                </span>
+                <div>
+                    <p class="normal">{$c->__('message.retract')}</p>
+                </div>
+            </li>
         {/if}
     </ul>
 </section>

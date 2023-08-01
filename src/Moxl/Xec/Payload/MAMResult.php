@@ -15,6 +15,14 @@ class MAMResult extends Payload
         if ($stanza->forwarded->delay
         && isset($stanza->attributes()->queryid)
         && $session->get('mamid'.(string)$stanza->attributes()->queryid) == true) {
+            if ($stanza->forwarded->message->{'apply-to'}
+            && $stanza->forwarded->message->{'apply-to'}->attributes()->xmlns == 'urn:xmpp:fasten:0'
+            && $stanza->forwarded->message->{'apply-to'}->moderated
+            && $stanza->forwarded->message->{'apply-to'}->moderated->attributes()->xmlns == 'urn:xmpp:message-moderate:0') {
+                (new Moderated)->handle($stanza->forwarded->message->{'apply-to'}->moderated, $stanza->forwarded->message);
+                return;
+            }
+
             /**
              * Optimisation: Force the message to be only instanciated, without requesting
              * the database because the MessageBuffer bellow will take care of that

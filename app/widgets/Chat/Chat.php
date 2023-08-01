@@ -45,6 +45,7 @@ class Chat extends \Movim\Widget\Base
         $this->registerEvent('message', 'onMessage');
         $this->registerEvent('presence', 'onPresence', 'chat');
         $this->registerEvent('retracted', 'onRetracted');
+        $this->registerEvent('moderated', 'onRetracted');
         $this->registerEvent('receiptack', 'onMessageReceipt');
         $this->registerEvent('displayed', 'onMessage', 'chat');
         $this->registerEvent('mam_get_handle', 'onMAMRetrieved');

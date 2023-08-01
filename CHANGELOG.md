@@ -7,6 +7,7 @@ v0.23 (trunk)
 v0.22.3
 ---------------------------
 * Fix #1220 Use relative path for public/cache/ for JS and CSS files
+* Implement XEP-0425: Message Moderation
 
 v0.22.2
 ---------------------------

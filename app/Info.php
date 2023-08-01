@@ -263,6 +263,11 @@ class Info extends Model
         return $this->hasFeature('urn:xmpp:mam:2');
     }
 
+    public function hasModeration(): bool
+    {
+        return $this->hasFeature('urn:xmpp:message-moderate:0');
+    }
+
     public function hasMAM(): bool
     {
         return $this->isMAM() || $this->isMAM2();

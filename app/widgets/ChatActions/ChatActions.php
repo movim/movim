@@ -2,7 +2,7 @@
 
 use App\Reported;
 use App\Url;
-
+use Moxl\Xec\Action\Message\Moderate;
 use Moxl\Xec\Action\Message\Retract;
 
 include_once WIDGETS_PATH.'ContactActions/ContactActions.php';
@@ -63,6 +63,15 @@ class ChatActions extends \Movim\Widget\Base
             $view = $this->tpl();
             $view->assign('message', $message);
 
+            if ($message->isMuc()) {
+                $view->assign('conference', $this->user->session->conferences()
+                    ->where('conference', $message->jidfrom)
+                    ->with('info')
+                    ->first());
+            } else {
+                $view->assign('conference', null);
+            }
+
             $this->rpc('ChatActions.setMessage', $message);
             Dialog::fill($view->draw('_chatactions_message'));
         }
@@ -111,6 +120,29 @@ class ChatActions extends \Movim\Widget\Base
 
             $c = new Chat;
             $c->onMessage($packet, false, true);
+        }
+    }
+
+    /**
+     * @brief Retract a message
+     *
+     * @param string $to
+     * @param string $mid
+     * @return void
+     */
+    public function ajaxHttpDaemonModerate($mid)
+    {
+        $retract = $this->user->messages()
+                              ->where('mid', $mid)
+                              ->first();
+
+        if ($retract && $retract->stanzaid) {
+            $this->rpc('Dialog.clear');
+
+            $r = new Moderate;
+            $r->setTo($retract->jidfrom)
+              ->setStanzaid($retract->stanzaid)
+              ->request();
         }
     }
 

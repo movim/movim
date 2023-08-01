@@ -22,6 +22,15 @@ class Message extends Payload
             return;
         }
 
+        // ...same with moderated messages
+        if ($stanza->{'apply-to'}
+        && $stanza->{'apply-to'}->attributes()->xmlns == 'urn:xmpp:fasten:0'
+        && $stanza->{'apply-to'}->moderated
+        && $stanza->{'apply-to'}->moderated->attributes()->xmlns == 'urn:xmpp:message-moderate:0') {
+            return;
+        }
+
+
         if ($stanza->attributes()->type == 'error') {
             return;
         }

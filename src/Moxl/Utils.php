@@ -38,6 +38,7 @@ class Utils
             'urn:xmpp:ping',
             'urn:xmpp:message-correct:0',
             'urn:xmpp:message-retract:0',
+            'urn:xmpp:message-moderate:0',
             'urn:xmpp:bob',
             'urn:xmpp:chat-markers:0',
             'urn:xmpp:reference:0',
