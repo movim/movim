@@ -94,7 +94,6 @@ class ChatActions extends \Movim\Widget\Base
     /**
      * @brief Retract a message
      *
-     * @param string $to
      * @param string $mid
      * @return void
      */
@@ -124,9 +123,8 @@ class ChatActions extends \Movim\Widget\Base
     }
 
     /**
-     * @brief Retract a message
+     * @brief Moderate a message
      *
-     * @param string $to
      * @param string $mid
      * @return void
      */
