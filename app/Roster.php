@@ -98,13 +98,6 @@ class Roster extends Model
             : avatarPlaceholder($this->truename);
     }
 
-    public function getBanner($size = 'xxl')
-    {
-        $banner = !empty($this->id) ? getPhoto($this->id . '_banner', $size) : null;
-
-        return $banner == null ? $this->getPhoto($size) : $banner;
-    }
-
     public function getTruenameAttribute()
     {
         if ($this->name && !filter_var($this->name, FILTER_VALIDATE_EMAIL)) {
