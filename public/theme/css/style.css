@@ -422,6 +422,7 @@ span.avatar {
 
 img.avatar {
     box-shadow: var(--elevation-1);
+    max-width: 210px;
 }
 
 span.avatar.icon {

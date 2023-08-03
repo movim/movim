@@ -2,7 +2,7 @@
     <li class="block large">
         <div>
             <p class="center all">
-                <img src="{if="$roster"}{$roster->getPhoto('l')}{else}{$contact->getPhoto('l')}{/if}" class="avatar">
+                <img src="{if="$roster"}{$roster->getPhoto('xl')}{else}{$contact->getPhoto('xl')}{/if}" class="avatar">
             </p>
         </div>
     </li>
