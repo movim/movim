@@ -59,7 +59,7 @@ class Avatar
         \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'set'));
     }
 
-    public static function setMetadata($data, $url = false, $to = false, $node = false, $width = 350, $height = 350)
+    public static function setMetadata($data, $url = false, $to = false, $node = false, $width = 512, $height = 512)
     {
         $decoded = base64_decode($data);
 

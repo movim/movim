@@ -87,7 +87,7 @@ class Avatar extends \Movim\Widget\Base
         $p = new Image;
         $p->fromBase($avatar->photobin->value);
         $p->setKey($this->user->id.'avatar');
-        $p->save(false, false, 'jpeg', 60);
+        $p->save(false, false, 'jpeg', 90);
 
         // Reload
         $p->load('jpeg');

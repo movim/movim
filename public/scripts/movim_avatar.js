@@ -1,5 +1,5 @@
 var MovimAvatar = {
-    file : function(files, formname, width = 350, height = 350) {
+    file : function(files, formname, width = 512, height = 512) {
         var f = files[0];
         if (!f.type.match(/image.*/)) {
           console.log("Not a picture !");
