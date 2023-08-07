@@ -74,6 +74,10 @@ class DaemonCommand extends Command
             $output->writeln('<info>php daemon.php setAdmin {jid}</info>' . "\n");
         }
 
+        $clearTemplatesCache = new \React\ChildProcess\Process('exec php daemon.php clearTemplatesCache');
+        $clearTemplatesCache->start($loop);
+        $clearTemplatesCache->on('exit', fn ($out) => $output->writeln('<info>Templates cache cleared</info>'));
+
         $compileLanguages = new \React\ChildProcess\Process('exec php daemon.php compileLanguages');
         $compileLanguages->start($loop);
         $compileLanguages->on('exit', fn ($out) => $output->writeln('<info>Compiled po files</info>'));

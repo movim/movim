@@ -214,10 +214,10 @@ class Conference extends Model
         return $subject ? $subject->subject : null;
     }
 
-    public function getPhoto($size = 'm'): string
+    public function getPicture($size = 'm'): string
     {
         return $this->contact
-            ? $this->contact->getPhoto($size)
+            ? $this->contact->getPicture($size)
             : avatarPlaceholder($this->name);
     }
 

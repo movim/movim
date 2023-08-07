@@ -18,7 +18,7 @@
                     {if="$value->presence"}
                         status {$value->presence->presencekey}
                     {/if}">
-                    <img src="{$value->getPhoto()}">
+                    <img src="{$value->getPicture()}">
                 </span>
                 <div>
                     <p class="line" title="{$value->truename}">

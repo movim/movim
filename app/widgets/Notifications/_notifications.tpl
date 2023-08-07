@@ -9,7 +9,7 @@
     </ul>
     <ul id="notifications_invitations" class="list middle divided spaced">{loop="$invitations"}<li id="invitation-{$value->jid|cleanupId}" data-jid="{$value->jid}">
         <span class="primary icon bubble active" onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}'); Drawer.clear();">
-            <img src="{$value->getPhoto()}">
+            <img src="{$value->getPicture()}">
         </span>
         <span class="control icon green active" title="{$c->__('button.accept')}" onclick="Notifications_ajaxAccept('{$value->jid|echapJS}');">
             <i class="material-icons">check</i>
@@ -53,7 +53,7 @@
                     {if="$value->contact"}
                         <span class="primary icon bubble">
                             <a href="{$c->route('contact', $value->contact->jid)}">
-                                <img src="{$value->contact->getPhoto()}">
+                                <img src="{$value->contact->getPicture()}">
                             </a>
                         </span>
                     {else}

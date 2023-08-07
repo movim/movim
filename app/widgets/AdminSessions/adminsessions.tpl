@@ -17,7 +17,7 @@
                     <i class="material-icons">chevron_right</i>
                 </span>
                 <span class="primary icon bubble">
-                    <img src="{$user->getPhoto()}">
+                    <img src="{$user->getPicture()}">
                 </span>
                 <div>
                     <p class="line" title="{$user->id}">

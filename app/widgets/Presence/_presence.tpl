@@ -5,7 +5,7 @@
         {if="$presence->value != null"}{$presencetxt[$presence->value]}{/if}
         {if="$me->hasLocation()"} location{/if}
     ">
-        <img src="{$me->getPhoto('m')}">
+        <img src="{$me->getPicture('m')}">
     </span>
     <span class="control icon active"
         onclick="Presence_ajaxAskLogout()"

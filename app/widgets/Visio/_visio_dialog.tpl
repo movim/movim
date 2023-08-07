@@ -3,7 +3,7 @@
         <li>
             <div>
                 <p class="center">
-                    <img src="{$contact->getPhoto('l')}">
+                    <img src="{$contact->getPicture('l')}">
                 </p>
                 <p class="normal center">
                     {if="$withvideo"}

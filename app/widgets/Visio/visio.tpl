@@ -68,7 +68,7 @@
             <div>
                 <div id="remote_level">
                     <div class="avatar">
-                        <img src="{$contact->getPhoto('l')}">
+                        <img src="{$contact->getPicture('l')}">
                     </div>
                 </div>
                 <p class="normal center">{$contact->truename}</p>

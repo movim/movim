@@ -126,18 +126,16 @@ class Contact extends Model
         unset($this->photobin);
     }
 
-    public function getPhoto($size = 'm'): string
+    public function getPicture($size = 'm'): string
     {
-        return (!empty($this->id) && $url = getPhoto($this->id, $size))
-            ? $url
-            : avatarPlaceholder($this->id);
+        return getPicture($this->id, $this->id, $size);
     }
 
     public function getBanner($size = 'xxl')
     {
-        $banner = !empty($this->id) ? getPhoto($this->id . '_banner', $size) : null;
+        $banner = !empty($this->id) ? getPicture($this->id . '_banner', $size) : null;
 
-        return $banner == null ? $this->getPhoto($size) : $banner;
+        return $banner == null ? $this->getPicture($size) : $banner;
     }
 
     public function setLocation($item)

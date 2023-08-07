@@ -12,7 +12,7 @@
                 </span>
                 {if="$value->contact"}
                     <span class="primary icon bubble small">
-                        <img src="{$value->contact->getPhoto('m')}">
+                        <img src="{$value->contact->getPicture('m')}">
                     </span>
                     <div>
                         <p class="normal">{$value->contact->truename}</p>

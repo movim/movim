@@ -9,7 +9,7 @@
                     class="primary icon bubble active
                         {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}
                     ">
-                        <img src="{if="$roster"}{$roster->getPhoto()}{else}{$contact->getPhoto()}{/if}">
+                        <img src="{if="$roster"}{$roster->getPicture()}{else}{$contact->getPicture()}{/if}">
                     </span>
                 {/if}
                 {if="!$contact->isFromMuc()"}

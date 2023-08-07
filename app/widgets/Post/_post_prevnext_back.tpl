@@ -11,7 +11,7 @@
     {if="$post->isMicroblog()"}
         {if="$post->contact"}
             <span class="primary icon bubble">
-                <img src="{$post->contact->getPhoto('m')}">
+                <img src="{$post->contact->getPicture('m')}">
             </span>
             <div>
                 <p class="normal line">
@@ -33,7 +33,7 @@
     {else}
         {if="$info"}
             <span class="primary icon bubble">
-                <img src="{$info->getPhoto('m')}"/>
+                <img src="{$info->getPicture('m')}"/>
             </span>
             <div>
                 <p class="line normal">

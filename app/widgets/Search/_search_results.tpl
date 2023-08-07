@@ -44,7 +44,7 @@
         title="{$value->server} - {$value->node}"
     >
             <span class="primary icon bubble">
-                <img src="{$value->getPhoto('m')}"/>
+                <img src="{$value->getPicture('m')}"/>
             </span>
             <span class="control icon gray">
                 <i class="material-icons">chevron_right</i>

@@ -21,7 +21,7 @@
     {elseif="!$post->contact"}
         <span class="control icon bubble">
             {if="$post->info"}
-                <img src="{$post->info->getPhoto('m')}">
+                <img src="{$post->info->getPicture('m')}">
             {else}
                 <img src="{$post->node|avatarPlaceholder}">
             {/if}
@@ -41,7 +41,7 @@
         <p>
             {if="$post->contact"}
                 <span class="icon bubble tiny">
-                    <img src="{$post->contact->getPhoto()}">
+                    <img src="{$post->contact->getPicture()}">
                 </span>
                 <a href="{$c->route('contact', $post->contact->jid)}">
                     {$post->contact->truename}

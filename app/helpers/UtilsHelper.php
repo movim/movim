@@ -104,7 +104,7 @@ function listOpcacheCompilableFiles(): array
     $files = [];
 
     foreach (['vendor', 'app', 'src'] as $dir) {
-        $directory = new \RecursiveDirectoryIterator(DOCUMENT_ROOT.'/'. $dir);
+        $directory = new \RecursiveDirectoryIterator(DOCUMENT_ROOT . '/' . $dir);
         $iterator = new \RecursiveIteratorIterator($directory);
         $regex = new \RegexIterator($iterator, '/^.+\.php$/i', \RecursiveRegexIterator::GET_MATCH);
 
@@ -162,9 +162,9 @@ function getClientTypes()
  */
 function resolveInfos($postCollection)
 {
-    $serverNodes = $postCollection->map(function($item) {
+    $serverNodes = $postCollection->map(function ($item) {
         return ['server' => $item->server, 'node' => $item->node];
-    })->unique(fn ($item) => $item['server'].$item['node']);
+    })->unique(fn ($item) => $item['server'] . $item['node']);
 
     if ($serverNodes->isNotEmpty()) {
         $first = $serverNodes->first();
@@ -180,10 +180,10 @@ function resolveInfos($postCollection)
             ]);
         });
 
-        $infos = $infos->get()->keyBy(fn ($item) => $item['server'].$item['node']);
+        $infos = $infos->get()->keyBy(fn ($item) => $item['server'] . $item['node']);
 
-        $postCollection->map(function($item) use ($infos) {
-            $item->info = $infos->get($item->server.$item->node);
+        $postCollection->map(function ($item) use ($infos) {
+            $item->info = $infos->get($item->server . $item->node);
             return $item;
         });
 
@@ -191,7 +191,9 @@ function resolveInfos($postCollection)
     }
 }
 
-/** Form to array */
+/**
+ *  Form to array
+ */
 function formToArray(stdClass $form): array
 {
     $values = [];
@@ -204,9 +206,9 @@ function formToArray(stdClass $form): array
 }
 
 /**
- * Return a picture with a specific size
+ * Return the picture or fallback to the placeholder
  */
-function getPhoto(string $key, string $size = 'm'): ?string
+function getPicture(?string $key, string $placeholder, string $size = 'm')
 {
     $sizes = [
         'xxl'   => [1280, 300],
@@ -217,7 +219,9 @@ function getPhoto(string $key, string $size = 'm'): ?string
         'o'     => [false, false]
     ];
 
-    return Image::getOrCreate($key, $sizes[$size][0], $sizes[$size][1]);
+    return (!empty($key) && $url = Image::getOrCreate($key, $sizes[$size][0], $sizes[$size][1]))
+        ? $url
+        : avatarPlaceholder($placeholder);
 }
 
 /**
@@ -634,7 +638,6 @@ function generateKey($size)
     return $hash;
 }
 
-//define('DEFAULT_HTTP_USER_AGENT', 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://google.com/bot.html)');
 define('DEFAULT_HTTP_USER_AGENT', 'Mozilla/5.0 (Android 4.4; Mobile; rv:41.0) Gecko/41.0 Firefox/41.0');
 
 /**
@@ -778,25 +781,6 @@ function protectPicture($url)
 }
 
 /*
- * @desc Copy the stickers in the public cache
- */
-function compileStickers(): int
-{
-    $count = 0;
-
-    foreach (glob(PUBLIC_PATH . '/stickers/*/*.png', GLOB_NOSORT) as $path) {
-        $key = basename($path, '.png');
-
-        if ($key != 'icon') {
-            $count++;
-            copy($path, PUBLIC_CACHE_PATH.hash(Image::$hash, $key).'_o.png');
-        }
-    }
-
-    return $count;
-}
-
-/*
  * @desc Translate something
  */
 function __()
@@ -816,10 +800,10 @@ function getBrowser(string $userAgent): ?string
     $t = strtolower($userAgent);
     $t = ' ' . $t;
 
-    if     (strpos($t, 'opera'  )) return 'Opera';
-    elseif (strpos($t, 'edge'   )) return 'Edge';
-    elseif (strpos($t, 'chrome' )) return 'Chrome';
-    elseif (strpos($t, 'safari' )) return 'Safari';
+    if (strpos($t, 'opera')) return 'Opera';
+    elseif (strpos($t, 'edge')) return 'Edge';
+    elseif (strpos($t, 'chrome')) return 'Chrome';
+    elseif (strpos($t, 'safari')) return 'Safari';
     elseif (strpos($t, 'firefox')) return 'Firefox';
 }
 
@@ -828,27 +812,27 @@ function getBrowser(string $userAgent): ?string
  */
 function getPlatform(string $userAgent): ?string
 {
-	$oses =  [
-		'/windows nt 10/i'      =>  'Windows 10',
-		'/windows nt 6.3/i'     =>  'Windows 8.1',
-		'/windows nt 6.2/i'     =>  'Windows 8',
-		'/windows nt 6.1/i'     =>  'Windows 7',
-		'/windows nt 6.0/i'     =>  'Windows Vista',
-		'/macintosh|mac os x/i' =>  'Mac OS X',
-		'/mac_powerpc/i'        =>  'Mac OS 9',
-		'/linux/i'              =>  'Linux',
-		'/ubuntu/i'             =>  'Ubuntu',
-		'/iphone/i'             =>  'iPhone',
-		'/ipod/i'               =>  'iPod',
-		'/ipad/i'               =>  'iPad',
-		'/android/i'            =>  'Android',
-		'/blackberry/i'         =>  'BlackBerry',
-		'/webos/i'              =>  'Mobile'
+    $oses =  [
+        '/windows nt 10/i'      =>  'Windows 10',
+        '/windows nt 6.3/i'     =>  'Windows 8.1',
+        '/windows nt 6.2/i'     =>  'Windows 8',
+        '/windows nt 6.1/i'     =>  'Windows 7',
+        '/windows nt 6.0/i'     =>  'Windows Vista',
+        '/macintosh|mac os x/i' =>  'Mac OS X',
+        '/mac_powerpc/i'        =>  'Mac OS 9',
+        '/linux/i'              =>  'Linux',
+        '/ubuntu/i'             =>  'Ubuntu',
+        '/iphone/i'             =>  'iPhone',
+        '/ipod/i'               =>  'iPod',
+        '/ipad/i'               =>  'iPad',
+        '/android/i'            =>  'Android',
+        '/blackberry/i'         =>  'BlackBerry',
+        '/webos/i'              =>  'Mobile'
     ];
 
-	foreach ($oses as $regex => $value) {
-		if (preg_match($regex, $userAgent)) {
+    foreach ($oses as $regex => $value) {
+        if (preg_match($regex, $userAgent)) {
             return $value;
-		}
-	}
+        }
+    }
 }

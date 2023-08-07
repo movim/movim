@@ -50,7 +50,7 @@
                 {if="$post->contact"}
                     <span class="icon primary bubble">
                         <a href="#" onclick="Post_ajaxGetContact('{$contact->jid}')">
-                            <img src="{$contact->getPhoto('m')}">
+                            <img src="{$contact->getPicture('m')}">
                         </a>
                     </span>
                 {else}
@@ -65,7 +65,7 @@
                     <span class="primary icon bubble active"
                         onclick="MovimUtils.reload('{$c->route('community', [$post->server, $post->node])}')"
                     >
-                        <img src="{$info->getPhoto('l')}"/>
+                        <img src="{$info->getPicture('l')}"/>
                     </span>
                 {else}
                     <span class="primary icon bubble color {$post->node|stringToColor} active"
@@ -154,7 +154,7 @@
     <a href="{$c->route('contact', $post->contact->jid)}">
         <ul class="list active middle">
             <li>
-                <span class="primary icon bubble" style="background-image: url('{$post->contact->getPhoto('m')}');">
+                <span class="primary icon bubble" style="background-image: url('{$post->contact->getPicture('m')}');">
                     <i class="material-icons">loop</i>
                 </span>
                 <span class="control icon">

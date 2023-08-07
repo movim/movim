@@ -25,16 +25,8 @@ your.domain.tld {
 		}
 	}
 
-	handle /picture/* {
-		reverse_proxy unix//run/php/php-fpm.sock {
-			transport fastcgi {
-				env SCRIPT_FILENAME /path-to/movim/public/picture/index.php
-			}
-		}
-	}
-
 	handle /ws/* {
-		reverse_proxy localhost:8080
+		# This part of the configuration is generated when launching the daemon in the console output
 	}
 
 	#Security options you can ignore or delete

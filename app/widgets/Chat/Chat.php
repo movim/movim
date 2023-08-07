@@ -197,7 +197,7 @@ class Chat extends \Movim\Widget\Base
                     $message->encrypted && is_array($message->omemoheader)
                         ? "🔒 " . substr($message->omemoheader['payload'], 0, strlen($message->omemoheader['payload']) / 2)
                         : $rawbody,
-                    $contact->getPhoto(),
+                    $contact->getPicture(),
                     4,
                     $this->route('chat', $contact->jid),
                     null,
@@ -220,7 +220,7 @@ class Chat extends \Movim\Widget\Base
                         ? $conference->name
                         : $from,
                     $message->resource . ': ' . $rawbody,
-                    $conference->getPhoto(),
+                    $conference->getPicture(),
                     4,
                     $this->route('chat', [$contact->jid, 'room'])
                 );

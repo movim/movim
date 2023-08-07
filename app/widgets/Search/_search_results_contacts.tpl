@@ -8,7 +8,7 @@
     {loop="$users"}
         <li class="block active" title="{$value->jid}" onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}'); Drawer.clear();">
             <span class="primary icon bubble {if="$value->value"}status {$presencestxt[$value->value]}{/if}">
-                <img src="{$value->getPhoto()}">
+                <img src="{$value->getPicture()}">
             </span>
             <div>
                 <p class="normal line">

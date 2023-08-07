@@ -1,11 +1,11 @@
 <section class="scroll">
     <header class="big"
-        style="background-image: linear-gradient(to bottom, rgba(23,23,23,0.8) 0%, rgba(23,23,23,0.5) 100%), url('{$conference->getPhoto('xxl')}');"
+        style="background-image: linear-gradient(to bottom, rgba(23,23,23,0.8) 0%, rgba(23,23,23,0.5) 100%), url('{$conference->getPicture('xxl')}');"
     >
         <ul class="list thick">
             <li>
                 <span class="primary icon bubble active"
-                    style="background-image: url({$conference->getPhoto()});">
+                    style="background-image: url({$conference->getPicture()});">
                 </span>
                 <span title="{$c->__('chatroom.config')}"
                       class="control icon active"
@@ -196,7 +196,7 @@
                     <li title="{$value->truename}">
                         {if="$value->contact"}
                             <span class="primary icon bubble small status {if="$presence"}{$presence->presencekey}{/if}">
-                                <img loading="lazy" src="{$value->contact->getPhoto('s')}">
+                                <img loading="lazy" src="{$value->contact->getPicture('s')}">
                             </span>
                         {else}
                             <span class="primary icon bubble small color {$value->jid|stringToColor} status {if="$presence"}{$presence->presencekey}{/if}">
@@ -352,7 +352,7 @@
                         <li title="{$value->truename}">
                             {if="$value->contact"}
                                 <span class="primary icon bubble small">
-                                    <img loading="lazy" src="{$value->contact->getPhoto('s')}">
+                                    <img loading="lazy" src="{$value->contact->getPicture('s')}">
                                 </span>
                             {else}
                                 <span class="primary icon bubble small color {$value->jid|stringToColor}">

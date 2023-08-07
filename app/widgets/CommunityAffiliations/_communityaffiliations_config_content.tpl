@@ -7,7 +7,7 @@
             {$contact = $c->getContact($value['jid'])}
             <li title="{$contact->jid}">
                 <span class="primary icon bubble">
-                    <img src="{$contact->getPhoto('m')}">
+                    <img src="{$contact->getPicture('m')}">
                 </span>
                 <form name="{$contact->jid}">
                     <input type="hidden" name="jid" value="{$contact->jid}"/>

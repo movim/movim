@@ -1,6 +1,6 @@
 <section class="scroll">
     <form name="avatarroom">
-        <img class="avatar" src="{$room->getPhoto('o') ?? ''}">
+        <img class="avatar" src="{$room->getPicture('o') ?? ''}">
         <div class="placeholder">
             <i class="material-icons">image</i>
             <h1>{$c->__('avatar.missing')}</h1>

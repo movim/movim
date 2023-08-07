@@ -3,7 +3,7 @@
     <ul class="list thick">
         <li>
             <span class="primary icon bubble">
-                <img src="{$contact->getPhoto()}">
+                <img src="{$contact->getPicture()}">
             </span>
             <div>
                 <p class="line">

@@ -91,18 +91,16 @@ class Roster extends Model
             cleanupId($this->group);
     }
 
-    public function getPhoto($size = 'm'): string
+    public function getPicture($size = 'm'): string
     {
-        return (!empty($this->jid) && $url = getPhoto($this->jid, $size))
-            ? $url
-            : avatarPlaceholder($this->truename);
+        return getPicture($this->jid, $this->truename, $size);
     }
 
     public function getBanner($size = 'xxl')
     {
-        $banner = !empty($this->id) ? getPhoto($this->id . '_banner', $size) : null;
+        $banner = !empty($this->id) ? getPicture($this->id . '_banner', $size) : null;
 
-        return $banner == null ? $this->getPhoto($size) : $banner;
+        return $banner == null ? $this->getPicture($size) : $banner;
     }
 
     public function getTruenameAttribute()

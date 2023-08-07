@@ -125,10 +125,7 @@ class Route extends Base
         if (isset($routes[$page])) {
             $uri = BASE_URI . $page;
 
-            // Specific case for picture that is in a subdirectory for caching purposes
-            if ($page == 'picture') {
-                $uri = BASE_URI . $page . '/';
-            } elseif ($params != false) {
+            if ($params != false) {
                 if (is_array($params)) {
                     foreach ($params as $value) {
                         $uri .= '/' . rawurlencode($value ?? '');

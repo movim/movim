@@ -104,7 +104,7 @@ class Visio extends Base
             'call',
             $contact->truename,
             $this->__('visio.calling'),
-            $contact->getPhoto(),
+            $contact->getPicture(),
             5,
             null,
             null,

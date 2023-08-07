@@ -10,7 +10,7 @@
                 <span class="primary icon bubble active
                     {if="!$conference->connected"}disabled{/if}"
                     onclick="RoomsUtils_ajaxShowSubject('{$jid|echapJS}')">
-                    <img src="{$conference->getPhoto()}">
+                    <img src="{$conference->getPicture()}">
             {else}
                 <span class="primary icon bubble active"
                     onclick="RoomsUtils_ajaxShowSubject('{$jid|echapJS}')">
@@ -37,7 +37,7 @@
                     title="{$c->__('page.communities')} · {$related->name}"
                     onclick="MovimUtils.reload('{$c->route('community', [$related->server, $related->node])}')"
                     class="control icon bubble active small">
-                    <img src="{$related->getPhoto('m')}"/>
+                    <img src="{$related->getPicture('m')}"/>
                 </span>
             {/if}
 
@@ -181,7 +181,7 @@
             <span class="primary icon bubble active
                 {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}"
                 onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')">
-                <img src="{if="$roster"}{$roster->getPhoto()}{else}{$contact->getPhoto()}{/if}">
+                <img src="{if="$roster"}{$roster->getPicture()}{else}{$contact->getPicture()}{/if}">
             </span>
 
             {$call = false}

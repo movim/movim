@@ -93,7 +93,7 @@ class Menu extends Base
                     'comments',
                     ($post->isLike()) ? '❤️ ' .$contact->truename : $post->title,
                     '📝 ' . $parent->title,
-                    $contact->getPhoto(),
+                    $contact->getPicture(),
                     4
                 );
             }
@@ -111,7 +111,7 @@ class Menu extends Base
                         'news',
                         '📝 ' . $contact->truename,
                         $title,
-                        $contact->getPhoto(),
+                        $contact->getPicture(),
                         4,
                         $this->route('post', [$post->server, $post->node, $post->nodeid]),
                         $this->route('contact', $post->server)
@@ -128,7 +128,7 @@ class Menu extends Base
                     if ($info->name) {
                         $title = $info->name;
                     }
-                    $logo = $info->getPhoto('l');
+                    $logo = $info->getPicture('l');
                 }
 
                 Notif::append(

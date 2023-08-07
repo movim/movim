@@ -44,7 +44,7 @@
             <i class="material-icons">arrow_back</i>
         </span>
         <span class="primary icon bubble active" onclick="ContactActions_ajaxGetDrawer('{$contact->id|echapJS}')">
-            <img src="{if="$roster"}{$roster->getPhoto('m')}{else}{$contact->getPhoto('m')}{/if}">
+            <img src="{if="$roster"}{$roster->getPicture('m')}{else}{$contact->getPicture('m')}{/if}">
         </span>
         <div>
             <p class="line active" onclick="ContactActions_ajaxGetDrawer('{$contact->id|echapJS}')">

@@ -8,7 +8,7 @@
             {elseif="$post->isMicroblog()"}
                 {if="$post->contact"}
                     <span class="primary icon bubble">
-                        <img src="{$post->contact->getPhoto('m')}"/>
+                        <img src="{$post->contact->getPicture('m')}"/>
                     </span>
                 {else}
                     <span class="primary icon bubble color {$post->aid|stringToColor}">
@@ -18,7 +18,7 @@
             {else}
                 {if="$post->info != null"}
                     <span class="primary icon bubble">
-                        <img src="{$post->info->getPhoto('l')}"/>
+                        <img src="{$post->info->getPicture('l')}"/>
                     </span>
                 {else}
                     <span class="primary icon bubble color {$post->node|stringToColor}">

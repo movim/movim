@@ -9,7 +9,7 @@
     ">
     <span class="primary icon bubble small"
         id="{$conference->conference|cleanupId}-rooms-primary"
-        style="background-image: url({$conference->getPhoto()});">
+        style="background-image: url({$conference->getPicture()});">
         {autoescape="off"}
             {$c->prepareRoomCounter($conference, true)}
         {/autoescape}

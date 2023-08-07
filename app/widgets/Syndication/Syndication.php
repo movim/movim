@@ -59,9 +59,9 @@ class Syndication extends Base
             $name->appendChild($dom->createTextNode($contact->truename));
             $author->appendChild($dom->createElement('uri', $this->route('blog', $from)));
 
-            if ($contact->getPhoto('l')) {
+            if ($contact->getPicture('l')) {
                 $logo = $dom->createElement('logo');
-                $logo->appendChild($dom->createTextNode($contact->getPhoto('l')));
+                $logo->appendChild($dom->createTextNode($contact->getPicture('l')));
                 $feed->appendChild($logo);
             }
 

@@ -87,7 +87,7 @@ class Blog extends Base
                 $this->title = __('blog.title', $this->_contact->truename);
                 $this->description = $this->_contact->description;
 
-                $avatar = $this->_contact->getPhoto('l');
+                $avatar = $this->_contact->getPicture('l');
                 if ($avatar) {
                     $this->image = $avatar;
                 }

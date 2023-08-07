@@ -8,7 +8,7 @@
         <li title="{$value->server}">
             {if="$vcards->has($value->server)"}
                 <span class="primary icon bubble"
-                    style="background-image: url({$vcards->get($value->server)->getPhoto()});">
+                    style="background-image: url({$vcards->get($value->server)->getPicture()});">
                 </span>
             {else}
                 <span class="primary icon bubble color {$value->name|stringToColor}">

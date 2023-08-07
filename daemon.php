@@ -11,6 +11,7 @@ $bootstrap->boot(true);
 
 $application = new Application;
 $application->add(new Movim\Console\ConfigCommand);
+$application->add(new Movim\Console\ClearTemplatesCache);
 $application->add(new Movim\Console\DaemonCommand);
 $application->add(new Movim\Console\EmojisToJsonCommand);
 $application->add(new Movim\Console\CompileLanguages);

@@ -144,7 +144,7 @@ class Rooms extends Base
             $this->rpc(
                 'MovimTpl.fill',
                 '#' . cleanupId($room.'_rooms_primary'),
-                $this->prepareRoomCounter($conference, $conference->getPhoto())
+                $this->prepareRoomCounter($conference, $conference->getPicture())
             );
 
             $unread = ($conference->unreads_count > 0 || $conference->quoted_count > 0);

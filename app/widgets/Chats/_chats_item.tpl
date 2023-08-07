@@ -17,7 +17,7 @@
     "
     {if="$count > 0"}data-counter="{$count}"{/if}
     >
-        <img src="{if="$roster"}{$roster->getPhoto('m')}{else}{$contact->getPhoto('m')}{/if}">
+        <img src="{if="$roster"}{$roster->getPicture('o')}{else}{$contact->getPicture('o')}{/if}">
     </span>
 
     <div>

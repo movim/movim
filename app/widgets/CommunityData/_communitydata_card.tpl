@@ -2,7 +2,7 @@
     <li class="block large">
         <div>
             <p class="center all">
-                <img class="avatar" src="{$info->getPhoto('l')}"/>
+                <img class="avatar" src="{$info->getPicture('l')}"/>
             </p>
         </div>
     </li>

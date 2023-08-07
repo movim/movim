@@ -201,11 +201,9 @@ class Info extends Model
         return $identityType ? $identityType->type : null;
     }
 
-    public function getPhoto($size = 'm'): string
+    public function getPicture($size = 'm'): string
     {
-        return (isset($this->attributes['avatarhash']) && $url = getPhoto($this->attributes['avatarhash'], $size))
-            ? $url
-            : avatarPlaceholder($this->node);
+        return getPicture($this->attributes['avatarhash'], $this->node, $size);
     }
 
     public function getDeviceIcon()

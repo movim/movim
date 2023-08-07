@@ -2,7 +2,7 @@
     <li class="block active" onclick="Avatar_ajaxGetForm()">
         <span
             class="primary icon bubble color {$me->jid|stringToColor}"
-            style="background-image: url({$me->getPhoto()})">
+            style="background-image: url({$me->getPicture()})">
         </span>
         <span class="control icon gray">
             <i class="material-icons">chevron_right</i>

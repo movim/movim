@@ -35,7 +35,7 @@
 
                 {if="$icon != null"}
                     <span class="primary icon bubble">
-                        <img src="{$icon->getPhoto('l')}"/>
+                        <img src="{$icon->getPicture('l')}"/>
                     </span>
                 {else}
                     <span class="primary icon bubble color {$draft->node|stringToColor}">

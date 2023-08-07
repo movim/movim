@@ -13,7 +13,7 @@
                 <li title="{$value->server} - {$value->node}">
                     {if="$value->info"}
                         <span class="primary icon bubble">
-                            <img src="{$value->info->getPhoto('m')}"/>
+                            <img src="{$value->info->getPicture('m')}"/>
                         </span>
                     {else}
                         <span class="primary icon bubble color {$value->node|stringToColor}">

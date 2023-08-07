@@ -213,17 +213,7 @@ Add this to your `nginx.conf` in the `http` section:
         fastcgi_cache_key "$scheme$request_method$host$request_uri";
     }
 
-Add the following configuration to your Movim virtual-host to enable the cache:
-
-    location /picture {
-        include fastcgi_params;
-
-        add_header X-Cache $upstream_cache_status;
-        fastcgi_ignore_headers "Cache-Control" "Expires" "Set-Cookie";
-        fastcgi_cache nginx_cache;
-        fastcgi_cache_key $request_method$host$request_uri;
-        fastcgi_cache_valid any 7d;
-    }
+And check the related documentation in our nginx example file [movim.conf](https://github.com/movim/movim/blob/master/etc/nginx/conf.d/movim.conf).
 
 #### On Caddy
 

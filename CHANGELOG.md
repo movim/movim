@@ -4,6 +4,12 @@ Movim Changelog
 v0.23 (trunk)
 ---------------------------
 
+v0.22.4
+---------------------------
+* Remove the public/picture/ directory to use only the main index.php entrypoint
+* Cleanup and simplify the avatar and picture handling code
+* Add a CleatTemplatesCache command and call it when starting the daemon
+
 v0.22.3
 ---------------------------
 * Fix #1220 Use relative path for public/cache/ for JS and CSS files

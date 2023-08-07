@@ -29,12 +29,12 @@
                 <ul class="list middle invite">
                     <li>
                         <span class="primary icon bubble">
-                            <img src="{$contact->getPhoto('m')}">
+                            <img src="{$contact->getPicture('m')}">
                         </span>
 
-                        {if="$invitation->room && $invitation->room->getPhoto('m')"}
+                        {if="$invitation->room && $invitation->room->getPicture('m')"}
                             <span class="primary icon bubble">
-                                <img src="{$invitation->room->getPhoto('m')}">
+                                <img src="{$invitation->room->getPicture('m')}">
                             </span>
                         {/if}
                         <div>
@@ -126,7 +126,7 @@
                             </span>
                             {if="$contact"}
                                 <span class="primary icon bubble small">
-                                    <img src="{$contact->getPhoto()}">
+                                    <img src="{$contact->getPicture()}">
                                 </span>
                             {else}
                                 <span class="primary icon bubble small color {$value->id|stringToColor}">
