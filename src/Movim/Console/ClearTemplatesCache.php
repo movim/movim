@@ -23,7 +23,7 @@ class ClearTemplatesCache extends Command
     {
         foreach (glob(
             CACHE_PATH .
-                '*.rtpl.php',
+                '*.rtpl.*',
             GLOB_NOSORT
         ) as $cacheFile) {
             @unlink($cacheFile);
