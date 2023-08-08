@@ -106,10 +106,15 @@ class PresenceBufferSaver
 
                     $avatarHashes->each(function ($jid, $avatarhash) {
                         Scheduler::getInstance()->append('avatar_' . $jid . '_' . $avatarhash, function () use ($jid, $avatarhash) {
-                            $r = new Get;
-                            $r->setAvatarhash($avatarhash)
-                                ->setTo($jid)
-                                ->request();
+                            // Last check before firing the request, the avatar might have been received in the meantime
+                            if (Contact::where('avatarhash', $avatarhash)->where('id', $jid)->count() == 0) {
+
+                                \Utils::debug('REFRESH '.$jid);
+                                $r = new Get;
+                                $r->setAvatarhash($avatarhash)
+                                    ->setTo($jid)
+                                    ->request();
+                            }
                         });
                     });
                 }

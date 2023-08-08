@@ -27,7 +27,7 @@ class Scheduler
     {
         global $loop;
 
-        $loop->addPeriodicTimer(0.25, function () {
+        $loop->addPeriodicTimer(0.5, function () {
             if (!empty($this->_stack)) {
                 $key = key($this->_stack);
                 call_user_func($this->_stack[$key]);

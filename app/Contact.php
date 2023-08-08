@@ -133,7 +133,7 @@ class Contact extends Model
 
     public function getBanner($size = 'xxl')
     {
-        $banner = !empty($this->id) ? getPicture($this->id . '_banner', $size) : null;
+        $banner = !empty($this->id) ? getPicture($this->id . '_banner', $this->id, $size) : null;
 
         return $banner == null ? $this->getPicture($size) : $banner;
     }
