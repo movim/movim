@@ -1109,16 +1109,16 @@ var Chat = {
             span.title = data.published;
         }
 
-        if (data.card) {
-            bubble.querySelector('div.bubble').classList.add('file');
-            msg.appendChild(Chat.getCardHtml(data.card));
-        }
-
         // Parent
         if (data.parent) {
             msg.appendChild(Chat.getParentHtml(data.parent));
         } else if (data.parentQuote) {
             msg.appendChild(Chat.getSimpleParentHtml(data.parentQuote));
+        }
+
+        if (data.card) {
+            bubble.querySelector('div.bubble').classList.add('file');
+            msg.appendChild(Chat.getCardHtml(data.card));
         }
 
         msg.appendChild(p);
