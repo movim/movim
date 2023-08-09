@@ -615,11 +615,6 @@ main:not(.enabled) #chat_widget {
     max-width: 45rem;
 }
 
-#chat_widget .bubble ul.card.list + p {
-    display: inline-block;
-    max-width: 50rem;
-}
-
 #chat_widget .bubble ul.card.list li span.primary:not(.thumb) {
     margin: 1rem 0;
 }
