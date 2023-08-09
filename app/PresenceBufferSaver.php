@@ -108,8 +108,6 @@ class PresenceBufferSaver
                         Scheduler::getInstance()->append('avatar_' . $jid . '_' . $avatarhash, function () use ($jid, $avatarhash) {
                             // Last check before firing the request, the avatar might have been received in the meantime
                             if (Contact::where('avatarhash', $avatarhash)->where('id', $jid)->count() == 0) {
-
-                                \Utils::debug('REFRESH '.$jid);
                                 $r = new Get;
                                 $r->setAvatarhash($avatarhash)
                                     ->setTo($jid)
