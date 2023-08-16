@@ -1408,7 +1408,7 @@ var Chat = {
     },
     getVideoPlayer: function (file) {
         var video = document.createElement('video');
-        video.setAttribute('src', file.uri + '#t=0.5');
+        video.setAttribute('src', file.uri + '#t=0.01');
         video.setAttribute('loop', 'loop');
 
         if (file.thumbnail && Object.keys(file.thumbnail).length !== 0) {
