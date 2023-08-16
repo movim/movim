@@ -36,7 +36,7 @@ form > div label {
 }
 
 form > div textarea[required] + label:after,
-form > div input[required] + label:after {
+form > div input[required]:not([type=checkbox]) + label:after {
     content: '✱';
     margin-left: 0.5rem;
 }
@@ -413,14 +413,6 @@ input[type=button].flat:focus {
     padding: 0;
     border-radius: 2rem;
     margin: 0;
-}
-
-.button.action:hover {
-    transform: scale(1.1);
-}
-
-.button.action:active {
-    transform: scale(1);
 }
 
 .button.action.small {

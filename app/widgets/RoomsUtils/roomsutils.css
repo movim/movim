@@ -1,0 +1,3 @@
+#gateway_rooms:not(:empty) ~ #bookmarkmucadd_jid {
+    display: none;
+}

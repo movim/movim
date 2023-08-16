@@ -107,4 +107,9 @@ class Items extends Action
         $this->pack($this->_to);
         $this->deliver();
     }
+
+    public function errorRegistrationRequired(string $errorId, ?string $message = null)
+    {
+        $this->deliver();
+    }
 }

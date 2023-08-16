@@ -106,7 +106,7 @@
         {if="isset($id) && !$create"}
             <input type="hidden" value="{$id}" name="jid"/>
         {else}
-            <div>
+            <div id="bookmarkmucadd_jid">
                 <input
                     name="jid"
                     {if="isset($mucservice)"}

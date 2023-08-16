@@ -26,7 +26,7 @@ use Moxl\Xec\Action\Muc\ChangeAffiliation;
 use Moxl\Xec\Action\Presence\Muc;
 use Moxl\Xec\Action\Presence\Unavailable;
 
-include_once WIDGETS_PATH.'Chat/Chat.php';
+include_once WIDGETS_PATH . 'Chat/Chat.php';
 
 class RoomsUtils extends Base
 {
@@ -38,6 +38,7 @@ class RoomsUtils extends Base
         $this->registerEvent('vcard_set_handle', 'onAvatarSet', 'chat');
         $this->registerEvent('disco_items_nosave_handle', 'onDiscoGateway');
         $this->registerEvent('disco_items_nosave_error', 'onDiscoGatewayError');
+        $this->registerEvent('disco_items_errorregistrationrequired', 'onDiscoRegistrationRequired');
         $this->registerEvent('muc_creategroupchat_handle', 'onChatroomCreated');
         $this->registerEvent('muc_createchannel_handle', 'onChatroomCreated');
         $this->registerEvent('muc_changeaffiliation_handle', 'onAffiliationChanged');
@@ -49,6 +50,7 @@ class RoomsUtils extends Base
         $this->registerEvent('presence_muc_errorgone', 'onPresenceMucNotAllowed');
 
         $this->addjs('roomsutils.js');
+        $this->addcss('roomsutils.css');
     }
 
     /**
@@ -77,19 +79,19 @@ class RoomsUtils extends Base
         $view->assign('linksCount', $linksCount);
 
         $view->assign('presences', $conference->presences()
-             ->with('capability')
-             ->get());
+            ->with('capability')
+            ->get());
 
         if ($conference->isGroupChat()) {
             $view->assign('members', $conference->activeMembers()
-                 ->with('contact')
-                 ->get());
+                ->with('contact')
+                ->get());
         }
 
         $view->assign('banned', $conference->members()
-             ->with('contact')
-             ->where('affiliation', '=', 'outcast')
-             ->get());
+            ->with('contact')
+            ->where('affiliation', '=', 'outcast')
+            ->get());
 
         $view->assign('me', $this->user->id);
 
@@ -120,14 +122,14 @@ class RoomsUtils extends Base
     public function ajaxGetDrawerFingerprints($room, $deviceId)
     {
         $fingerprints = $this->user->bundles()
-                                   ->whereIn('jid', function ($query) use ($room) {
-                                        $query->select('jid')
-                                            ->from('members')
-                                            ->where('conference', $room);
-                                   })
-                                   ->with('capability.identities')
-                                   ->get()
-                                   ->mapToGroups(fn ($tuple) => [$tuple['jid'] => $tuple]);
+            ->whereIn('jid', function ($query) use ($room) {
+                $query->select('jid')
+                    ->from('members')
+                    ->where('conference', $room);
+            })
+            ->with('capability.identities')
+            ->get()
+            ->mapToGroups(fn ($tuple) => [$tuple['jid'] => $tuple]);
 
         $tpl = $this->tpl();
         $tpl->assign('fingerprints', $fingerprints);
@@ -153,8 +155,8 @@ class RoomsUtils extends Base
 
         $view = $this->tpl();
         $view->assign('room', $this->user->session->conferences()
-                                 ->where('conference', $room)
-                                 ->first());
+            ->where('conference', $room)
+            ->first());
 
         Dialog::fill($view->draw('_rooms_avatar'));
     }
@@ -202,6 +204,11 @@ class RoomsUtils extends Base
     public function onPresenceMucNotAllowed($packet)
     {
         Toast::send($this->__('chatrooms.notallowed'));
+    }
+
+    public function onDiscoRegistrationRequired($packet)
+    {
+        Toast::send($this->__('rooms.disco_registration_required'));
     }
 
     /**
@@ -274,12 +281,12 @@ class RoomsUtils extends Base
         // Disconnect properly
         $nick = $values['nick'] ?? $this->user->session->username;
         $session = Session::start();
-        $session->delete($values['jid'] . '/' .$nick);
+        $session->delete($values['jid'] . '/' . $nick);
 
         $pu = new Unavailable;
         $pu->setTo($values['jid'])
-           ->setResource($nick)
-           ->request();
+            ->setResource($nick)
+            ->request();
 
         $this->user->session->presences()->where('jid', $values['jid'])->delete();
         //$this->rpc('RoomsUtils.configureDisconnect', $values['jid']);
@@ -298,8 +305,8 @@ class RoomsUtils extends Base
 
         $view = $this->tpl();
         $view->assign('room', $this->user->session->conferences()
-                                 ->where('conference', $room)
-                                 ->first());
+            ->where('conference', $room)
+            ->first());
 
         Dialog::fill($view->draw('_rooms_subject'));
         $this->rpc('MovimUtils.applyAutoheight');
@@ -310,15 +317,17 @@ class RoomsUtils extends Base
      */
     public function ajaxSetSubject($room, $form)
     {
-        if (!validateRoom($room)
-        || !Validator::stringType()->length(0, 200)->validate($form->subject->value)) {
+        if (
+            !validateRoom($room)
+            || !Validator::stringType()->length(0, 200)->validate($form->subject->value)
+        ) {
             return;
         }
 
         $p = new SetSubject;
         $p->setTo($room)
-          ->setSubject($form->subject->value)
-          ->request();
+            ->setSubject($form->subject->value)
+            ->request();
     }
 
     /**
@@ -343,32 +352,35 @@ class RoomsUtils extends Base
         $view = $this->tpl();
 
         $view->assign('info', \App\Info::where('server', $room)
-                                       ->where('node', '')
-                                       ->whereCategory('conference')
-                                       ->first());
+            ->where('node', '')
+            ->whereCategory('conference')
+            ->first());
         $view->assign('mucservice', \App\Info::where('parent', $this->user->session->host)
-                                             ->whereCategory('conference')
-                                             ->whereType('text')
-                                             ->first());
+            ->whereCategory('conference')
+            ->whereType('text')
+            ->first());
         $view->assign('id', $room);
         $view->assign('create', $create);
         $view->assign(
             'conference',
             $this->user->session->conferences()
-            ->where('conference', $room)->first()
+                ->where('conference', $room)->first()
         );
         $view->assign('name', $name);
         $view->assign('username', $this->user->session->username);
-        $view->assign(
-            'gateways',
-            \App\Info::select('name', 'server', 'parent')
-                ->whereCategory('gateway')
-                ->whereNotNull('parent')
-                ->groupBy('name', 'server', 'parent')
-                ->orderBy('parent')
-                ->orderBy('server')
-                ->get()
-        );
+
+        $gateways = \App\Info::select('name', 'server', 'parent')
+            ->whereCategory('gateway')
+            ->whereNotNull('parent')
+            ->groupBy('name', 'server', 'parent')
+            ->orderBy('parent')
+            ->orderBy('server')
+            ->get();
+
+        $gateways = $gateways->filter(fn ($gateway) => $gateway->parent === $this->user->session->host)
+            ->concat($gateways->reject(fn ($gateway) => $gateway->parent === $this->user->session->host));
+
+        $view->assign('gateways', $gateways);
 
         $this->rpc('Rooms.setDefaultServices', $this->user->session->getChatroomsServices());
 
@@ -381,14 +393,14 @@ class RoomsUtils extends Base
     public function ajaxResolveSlug($name)
     {
         $service = Info::where('parent', $this->user->session->host)
-                   ->whereCategory('conference')
-                   ->whereType('text')
-                   ->first();
+            ->whereCategory('conference')
+            ->whereType('text')
+            ->first();
 
         $slugified = (new Slugify)->slugify($name);
 
         if ($service && !empty($slugified)) {
-            $this->rpc('Rooms.setJid', $slugified.'@'. $service->server);
+            $this->rpc('Rooms.setJid', $slugified . '@' . $service->server);
         }
     }
 
@@ -404,9 +416,9 @@ class RoomsUtils extends Base
         } else {
             $m = new Muc;
             $m->enableCreate()
-              ->setTo(strtolower($form->jid->value))
-              ->setNickname($form->nick->value ?? $this->user->session->username)
-              ->request();
+                ->setTo(strtolower($form->jid->value))
+                ->setNickname($form->nick->value ?? $this->user->session->username)
+                ->request();
         }
     }
 
@@ -493,8 +505,8 @@ class RoomsUtils extends Base
 
         $d = new Delete;
         $d->setId($room)
-          ->setVersion($conference->bookmarkversion)
-          ->request();
+            ->setVersion($conference->bookmarkversion)
+            ->request();
     }
 
     /**
@@ -510,9 +522,9 @@ class RoomsUtils extends Base
             $id = generateUUID();
             $i = new Invite;
             $i->setTo($form->to->value)
-              ->setId($id)
-              ->setInvite($form->invite->value)
-              ->request();
+                ->setId($id)
+                ->setInvite($form->invite->value)
+                ->request();
 
             // Create and save a message in the database to display the invitation
             $m = new Message;
@@ -575,7 +587,7 @@ class RoomsUtils extends Base
 
         $d = new Destroy;
         $d->setTo($room)
-          ->request();
+            ->request();
     }
 
     /**
@@ -656,9 +668,9 @@ class RoomsUtils extends Base
     public function ajaxMucUsersAutocomplete($room)
     {
         $this->rpc("Chat.onAutocomplete", $this->user->session->conferences()
-                                               ->where('conference', $room)
-                                               ->first()->presences
-                                               ->pluck('resource'));
+            ->where('conference', $room)
+            ->first()->presences
+            ->pluck('resource'));
     }
 
     /**
@@ -666,14 +678,14 @@ class RoomsUtils extends Base
      */
     public function ajaxDiscoGateway(string $server)
     {
-        if (empty($server)) {
-            $this->ajaxResetGatewayRooms();
-            $this->rpc('Rooms.selectGatewayRoom', '', '');
-        } else {
+        $this->ajaxResetGatewayRooms();
+        $this->rpc('Rooms.selectGatewayRoom', '', '');
+
+        if (!empty($server)) {
             $r = new Items;
             $r->setTo($server)
-              ->disableSave()
-              ->request();
+                ->disableSave()
+                ->request();
         }
     }
 
@@ -688,8 +700,8 @@ class RoomsUtils extends Base
 
         $view = $this->tpl();
         $view->assign('room', $this->user->session->conferences()
-                                 ->where('conference', $room)
-                                 ->first());
+            ->where('conference', $room)
+            ->first());
 
         Dialog::fill($view->draw('_rooms_ban'));
     }
@@ -705,8 +717,8 @@ class RoomsUtils extends Base
 
         $p = new ChangeAffiliation;
         $p = $p->setTo($room)
-               ->setJid($form->jid->value)
-               ->setAffiliation('outcast');
+            ->setJid($form->jid->value)
+            ->setAffiliation('outcast');
 
         if (!empty($form->reason->value)) {
             $p = $p->setReason($form->reason->value);
@@ -726,8 +738,8 @@ class RoomsUtils extends Base
 
         $view = $this->tpl();
         $view->assign('room', $this->user->session->conferences()
-                                 ->where('conference', $room)
-                                 ->first());
+            ->where('conference', $room)
+            ->first());
         $view->assign('jid', $jid);
 
         Dialog::fill($view->draw('_rooms_unban'));
@@ -744,9 +756,9 @@ class RoomsUtils extends Base
 
         $p = new ChangeAffiliation;
         $p->setTo($room)
-          ->setJid($jid)
-          ->setAffiliation('none')
-          ->request();
+            ->setJid($jid)
+            ->setAffiliation('none')
+            ->request();
     }
 
     /**
@@ -759,8 +771,8 @@ class RoomsUtils extends Base
         }
 
         $conference = $this->user->session->conferences()
-                           ->where('conference', $room)
-                           ->first();
+            ->where('conference', $room)
+            ->first();
 
         $view = $this->tpl();
         $view->assign('room', $conference);
@@ -781,15 +793,32 @@ class RoomsUtils extends Base
 
         $p = new ChangeAffiliation;
         $p->setTo($room)
-          ->setJid($form->jid->value)
-          ->setAffiliation($form->affiliation->value)
-          ->request();
+            ->setJid($form->jid->value)
+            ->setAffiliation($form->affiliation->value)
+            ->request();
     }
 
     public function onDiscoGateway($packet)
     {
         $view = $this->tpl();
-        $view->assign('rooms', $packet->content);
+
+        $rooms = collect($packet->content);
+        $rooms = $rooms->map(function ($name, $key) {
+            $item = new stdClass;
+            $explodedName = explode('/', $name);
+
+            if (count($explodedName) > 1) {
+                $item->parent = $explodedName[0];
+                array_shift($explodedName);
+                $item->name = implode(' / ', $explodedName);
+            } else {
+                $item->name = $name;
+            }
+
+            return $item;
+        });
+
+        $view->assign('rooms', $rooms);
         $this->rpc('MovimTpl.fill', '#gateway_rooms', $view->draw('_rooms_gateway_rooms'));
     }
 
