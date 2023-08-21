@@ -122,7 +122,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-14 23:10+0200\n"
+"POT-Creation-Date: 2023-08-21 22:43+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Slavko <linux@slavino.sk>, 2020-2021\n"
 "Language-Team: Slovak (Slovakia) (http://app.transifex.com/movim/movim/language/sk_SK/)\n"
@@ -554,6 +554,11 @@ msgstr "Odvolať"
 #: [message]retract_body
 msgid "Your contact attempted to retract a previous message, but it's unsupported by your client"
 msgstr ""
+
+#: [message]moderate_body
+#, fuzzy
+msgid "This message was moderated"
+msgstr "Prijaté správy: %s"
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
@@ -1179,7 +1184,8 @@ msgid "Make the chat page as the default one"
 msgstr "Nastaviť stránku chatu ako predvolenú"
 
 #: [config]mam_text
-msgid "Server-side archiving preferences"
+#, fuzzy
+msgid "Server-side chat messages archiving preferences"
 msgstr "Archivovanie na strane servera"
 
 #: [config]mam_always
@@ -1198,12 +1204,36 @@ msgstr "Nastavenia archivovania uložené"
 msgid "Personnal blog confidentiality"
 msgstr ""
 
+#
+# Translators:
+# Jaussoin Timothée <edhelas@movim.eu>, 2020
+# palica <pavol.cupka@gmail.com>, 2016
+# palica <pavol.cupka@gmail.com>, 2016
+# Slavko <linux@slavino.sk>, 2020-2021
+#: [config]account_privacy
+#, fuzzy
+msgctxt "[config]account_privacy"
+msgid ""
+msgstr ""
+"Project-Id-Version: movim\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-06-14 23:10+0200\n"
+"PO-Revision-Date: 2015-06-24 09:45+0000\n"
+"Last-Translator: Slavko <linux@slavino.sk>, 2020-2021\n"
+"Language-Team: Slovak (Slovakia) (http://app.transifex.com/movim/movim/language/sk_SK/)\n"
+"Language: sk_SK\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);\n"
+"X-Generator: Translate Toolkit 3.8.4\n"
+
 #: [config]blog_open_title
 msgid "Public blog"
 msgstr ""
 
 #: [config]blog_open_text
-msgid "Accessible to everyone"
+msgid "Accessible to everyone on the network"
 msgstr ""
 
 #: [config]blog_presence_title
@@ -1211,12 +1241,17 @@ msgid "Private blog"
 msgstr ""
 
 #: [config]blog_presence_text
-msgid "Restricted to subscribers only"
+msgid "Restricted to your subscribers only"
 msgstr ""
 
 #: [config]blog_saved
 msgid "Personnal blog confidentiality saved"
 msgstr ""
+
+#: [config]confidentiality
+#, fuzzy
+msgid "Confidentiality"
+msgstr "sebaistý"
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -2093,6 +2128,10 @@ msgstr "Návštevník"
 msgid "Name or description"
 msgstr "Názov alebo popis"
 
+#: [rooms]disco_registration_required
+msgid "A registration is required before using the service"
+msgstr ""
+
 #: [chatrooms]title
 msgid "Chatrooms"
 msgstr "Chatové miestnosti"
@@ -2507,11 +2546,11 @@ msgstr "Profil upravený"
 msgid "Profile Not Updated"
 msgstr "Profil nebol upravený"
 
-#: [vcard]public
+#: [profile]public
 msgid "Your profile is now public"
 msgstr "Váš profil je teraz verejný"
 
-#: [vcard]restricted
+#: [profile]restricted
 msgid "Your profile is now restricted"
 msgstr "Váš profil je teraz obmedzený"
 
@@ -2520,12 +2559,12 @@ msgid "Configure your instance nickname"
 msgstr "Nastavte si prezývku v tejto inštancii"
 
 #: [profile]privacy_question
-msgid "Is this profile public?"
-msgstr "Je tento profil verejný?"
+msgid "Is this account public on this Movim instance?"
+msgstr ""
 
 #: [profile]privacy_info
-msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
-msgstr "Prosím, dávajte pozor! Keď nastavíte svoj profil na verejný, všetky nasledujúce informácie budú prístupné všetkým používateľom Movim a celému Internetu."
+msgid "Movim will create a public page to host your blog and your account will be searchable by the other Movim users."
+msgstr ""
 
 #: [profile]nickname_info
 msgid "Set a local nickname to allow the other users of the instance to find you easily."
@@ -2988,6 +3027,11 @@ msgstr "Web"
 #: [client]registered
 msgid "Registered"
 msgstr "Registrovaný"
+
+#: [client]gateway
+#, fuzzy
+msgid "Gateway"
+msgstr "Brány"
 
 #: [presence]online
 msgid "Online"
@@ -3540,3 +3584,9 @@ msgstr "API nie je dostupné, skúste neskôr"
 #: [field]type_here
 msgid "Type here"
 msgstr "Píšte tu"
+
+#~ msgid "Is this profile public?"
+#~ msgstr "Je tento profil verejný?"
+
+#~ msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
+#~ msgstr "Prosím, dávajte pozor! Keď nastavíte svoj profil na verejný, všetky nasledujúce informácie budú prístupné všetkým používateľom Movim a celému Internetu."

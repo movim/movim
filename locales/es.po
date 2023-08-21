@@ -129,7 +129,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-14 23:10+0200\n"
+"POT-Creation-Date: 2023-08-21 22:43+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: cristian paraque, 2022\n"
 "Language-Team: Spanish (http://app.transifex.com/movim/movim/language/es/)\n"
@@ -561,6 +561,11 @@ msgstr "Eliminar"
 #: [message]retract_body
 msgid "Your contact attempted to retract a previous message, but it's unsupported by your client"
 msgstr ""
+
+#: [message]moderate_body
+#, fuzzy
+msgid "This message was moderated"
+msgstr "%s mensajes obtenidos"
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
@@ -1186,7 +1191,8 @@ msgid "Make the chat page as the default one"
 msgstr "Establecer la página de conversación como la página por defecto"
 
 #: [config]mam_text
-msgid "Server-side archiving preferences"
+#, fuzzy
+msgid "Server-side chat messages archiving preferences"
 msgstr "Preferencias de archivado del lado del servidor"
 
 #: [config]mam_always
@@ -1205,12 +1211,43 @@ msgstr "Preferencias de archivo guardadas "
 msgid "Personnal blog confidentiality"
 msgstr ""
 
+#
+# Translators:
+# Alberto Luaces, 2020
+# Benjamin Perez Carrillo <benperezc@gmail.com>, 2020
+# Bikalkas <vicalcas@gmail.com.com>, 2015
+# cristian paraque, 2022
+# Daniel D <Daniel.Dona@alu.uclm.es>, 2017
+# duven duven <duven@autistici.org>, 2018
+# Juanro49 <juanrobertogarciasanchez@gmail.com>, 2021
+# kosciuk <nhk.web@gmail.com>, 2016
+# Raúl <gomezromanr@gmail.com>, 2015
+# sergio, 2017
+# Xals Xaloc <33xaloc@gmail.com>, 2016
+#: [config]account_privacy
+#, fuzzy
+msgctxt "[config]account_privacy"
+msgid ""
+msgstr ""
+"Project-Id-Version: movim\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-06-14 23:10+0200\n"
+"PO-Revision-Date: 2015-06-24 09:45+0000\n"
+"Last-Translator: cristian paraque, 2022\n"
+"Language-Team: Spanish (http://app.transifex.com/movim/movim/language/es/)\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+"X-Generator: Translate Toolkit 3.8.4\n"
+
 #: [config]blog_open_title
 msgid "Public blog"
 msgstr ""
 
 #: [config]blog_open_text
-msgid "Accessible to everyone"
+msgid "Accessible to everyone on the network"
 msgstr ""
 
 #: [config]blog_presence_title
@@ -1218,12 +1255,17 @@ msgid "Private blog"
 msgstr ""
 
 #: [config]blog_presence_text
-msgid "Restricted to subscribers only"
+msgid "Restricted to your subscribers only"
 msgstr ""
 
 #: [config]blog_saved
 msgid "Personnal blog confidentiality saved"
 msgstr ""
+
+#: [config]confidentiality
+#, fuzzy
+msgid "Confidentiality"
+msgstr "seguro"
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -2100,6 +2142,10 @@ msgstr "Visitante"
 msgid "Name or description"
 msgstr "Nombre o descripción"
 
+#: [rooms]disco_registration_required
+msgid "A registration is required before using the service"
+msgstr ""
+
 #: [chatrooms]title
 msgid "Chatrooms"
 msgstr "Conversaciones en grupo"
@@ -2514,11 +2560,11 @@ msgstr "Perfil actualizado"
 msgid "Profile Not Updated"
 msgstr "Perfil no actualizado"
 
-#: [vcard]public
+#: [profile]public
 msgid "Your profile is now public"
 msgstr "Tu perfil es ahora público"
 
-#: [vcard]restricted
+#: [profile]restricted
 msgid "Your profile is now restricted"
 msgstr "Tu perfil está ahora restringido"
 
@@ -2527,12 +2573,12 @@ msgid "Configure your instance nickname"
 msgstr "Configure el alias de su instancia"
 
 #: [profile]privacy_question
-msgid "Is this profile public?"
-msgstr "¿Es este perfil público?"
+msgid "Is this account public on this Movim instance?"
+msgstr ""
 
 #: [profile]privacy_info
-msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
-msgstr "¡Atención, por favor! Haciendo su perfil público, toda la información listada abajo estará disponible para todos los usuarios de Movim y en toda Internet."
+msgid "Movim will create a public page to host your blog and your account will be searchable by the other Movim users."
+msgstr ""
 
 #: [profile]nickname_info
 msgid "Set a local nickname to allow the other users of the instance to find you easily."
@@ -2995,6 +3041,11 @@ msgstr "Web"
 #: [client]registered
 msgid "Registered"
 msgstr "Registrado"
+
+#: [client]gateway
+#, fuzzy
+msgid "Gateway"
+msgstr "Accesos"
 
 #: [presence]online
 msgid "Online"
@@ -3547,3 +3598,9 @@ msgstr "La API no se puede alcanzar, inténtalo de nuevo más tarde"
 #: [field]type_here
 msgid "Type here"
 msgstr "Escribe aquí"
+
+#~ msgid "Is this profile public?"
+#~ msgstr "¿Es este perfil público?"
+
+#~ msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
+#~ msgstr "¡Atención, por favor! Haciendo su perfil público, toda la información listada abajo estará disponible para todos los usuarios de Movim y en toda Internet."

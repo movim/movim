@@ -136,7 +136,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-14 23:10+0200\n"
+"POT-Creation-Date: 2023-08-21 22:43+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>, 2017,2023\n"
 "Language-Team: German (http://app.transifex.com/movim/movim/language/de/)\n"
@@ -568,6 +568,11 @@ msgstr "Nachricht löschen"
 #: [message]retract_body
 msgid "Your contact attempted to retract a previous message, but it's unsupported by your client"
 msgstr ""
+
+#: [message]moderate_body
+#, fuzzy
+msgid "This message was moderated"
+msgstr "%s Nachrichten geholt"
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
@@ -1193,7 +1198,8 @@ msgid "Make the chat page as the default one"
 msgstr "Die Nachrichten-Seite zur Hauptseite machen"
 
 #: [config]mam_text
-msgid "Server-side archiving preferences"
+#, fuzzy
+msgid "Server-side chat messages archiving preferences"
 msgstr "Einstellungen für die serverseitige Archivierung"
 
 #: [config]mam_always
@@ -1212,12 +1218,50 @@ msgstr "Archivierungseinstellungen gespeichert"
 msgid "Personnal blog confidentiality"
 msgstr ""
 
+#
+# Translators:
+# a9da1daea11d7960a1b6b8bfb4ef2632_b05ed48 <16327868bab12392b248b0f6f68a1655_152836>, 2015
+# Christian <christian-pauly@posteo.de>, 2017
+# Dominik George <nik@naturalnet.de>, 2017-2019
+# Fabian Thiele <fabian.thiele@posteo.de>, 2016
+# Jaussoin Timothée <edhelas@movim.eu>, 2017,2023
+# j k <yky.yode@gmail.com>, 2016
+# Johann Philipp Strathausen <strathausen@gmail.com>, 2015
+# Lyn, 2022
+# Maurice Breznik <valentingehrke@gmx.de>, 2015
+# No <quetschwalze@punkbeer.me>, 2015
+# Peter Grman <peter.grman@gmail.com>, 2016
+# Henri <h.chilla97@gmail.com>, 2016
+# dbd0fc79e069aa359d552fe33b3bbf67_0532028, 2016
+# Roland <rasos@alton.at>, 2016
+# Rüdiger Holzmann <bernhard@cyng.tk>, 2015
+# bbccd56199dff1756d18cc89f7ff4628, 2018
+# Tobias Bannert <tobannert@gmail.com>, 2015
+# Tom Teichler <tom@dummerdelfin.de>, 2018-2020
+#: [config]account_privacy
+#, fuzzy
+msgctxt "[config]account_privacy"
+msgid ""
+msgstr ""
+"Project-Id-Version: movim\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-06-14 23:10+0200\n"
+"PO-Revision-Date: 2015-06-24 09:45+0000\n"
+"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>, 2017,2023\n"
+"Language-Team: German (http://app.transifex.com/movim/movim/language/de/)\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Translate Toolkit 3.8.4\n"
+
 #: [config]blog_open_title
 msgid "Public blog"
 msgstr ""
 
 #: [config]blog_open_text
-msgid "Accessible to everyone"
+msgid "Accessible to everyone on the network"
 msgstr ""
 
 #: [config]blog_presence_title
@@ -1225,12 +1269,17 @@ msgid "Private blog"
 msgstr ""
 
 #: [config]blog_presence_text
-msgid "Restricted to subscribers only"
+msgid "Restricted to your subscribers only"
 msgstr ""
 
 #: [config]blog_saved
 msgid "Personnal blog confidentiality saved"
 msgstr ""
+
+#: [config]confidentiality
+#, fuzzy
+msgid "Confidentiality"
+msgstr "zuversichtlich"
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -2107,6 +2156,10 @@ msgstr "Besucher"
 msgid "Name or description"
 msgstr "Name oder Beschreibung"
 
+#: [rooms]disco_registration_required
+msgid "A registration is required before using the service"
+msgstr ""
+
 #: [chatrooms]title
 msgid "Chatrooms"
 msgstr "Chaträume"
@@ -2521,11 +2574,11 @@ msgstr "Profil aktualisiert"
 msgid "Profile Not Updated"
 msgstr "Profil nicht aktualisiert"
 
-#: [vcard]public
+#: [profile]public
 msgid "Your profile is now public"
 msgstr "Ihr Profil ist jetzt öffentlich"
 
-#: [vcard]restricted
+#: [profile]restricted
 msgid "Your profile is now restricted"
 msgstr "Ihr Profil ist jetzt eingeschränkt"
 
@@ -2534,12 +2587,12 @@ msgid "Configure your instance nickname"
 msgstr "Konfiguriere deinen Instanz-Spitznamen"
 
 #: [profile]privacy_question
-msgid "Is this profile public?"
-msgstr "Ist das Profil öffentlich?"
+msgid "Is this account public on this Movim instance?"
+msgstr ""
 
 #: [profile]privacy_info
-msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
-msgstr "Achtung! Durch das Öffentlichmachen des Profils werden alle untenstehenden Information für alle Movim-Nutzer und das gesamte Internet verfügbar."
+msgid "Movim will create a public page to host your blog and your account will be searchable by the other Movim users."
+msgstr ""
 
 #: [profile]nickname_info
 msgid "Set a local nickname to allow the other users of the instance to find you easily."
@@ -3002,6 +3055,11 @@ msgstr "Internet"
 #: [client]registered
 msgid "Registered"
 msgstr "Registriert"
+
+#: [client]gateway
+#, fuzzy
+msgid "Gateway"
+msgstr "Gateways"
 
 #: [presence]online
 msgid "Online"
@@ -3554,3 +3612,9 @@ msgstr "Die API ist nicht erreichbar, bitte später erneut versuchen"
 #: [field]type_here
 msgid "Type here"
 msgstr "Hier schreiben"
+
+#~ msgid "Is this profile public?"
+#~ msgstr "Ist das Profil öffentlich?"
+
+#~ msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
+#~ msgstr "Achtung! Durch das Öffentlichmachen des Profils werden alle untenstehenden Information für alle Movim-Nutzer und das gesamte Internet verfügbar."

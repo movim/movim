@@ -424,7 +424,7 @@ class Message
         $apply->appendChild($moderate);
 
         $reason = $dom->createElement('reason');
-        $reasonContent = $dom->createTextNode(__('message.retract_body'));
+        $reasonContent = $dom->createTextNode(__('message.moderate_body'));
         $reason->appendChild($reasonContent);
         $moderate->appendChild($reason);
 

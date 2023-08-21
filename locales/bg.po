@@ -121,7 +121,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-14 23:10+0200\n"
+"POT-Creation-Date: 2023-08-21 22:43+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Rossen Karpuzov <rkarpuzov@yahoo.com>, 2020-2023\n"
 "Language-Team: Bulgarian (http://app.transifex.com/movim/movim/language/bg/)\n"
@@ -553,6 +553,11 @@ msgstr "Оттегляне"
 #: [message]retract_body
 msgid "Your contact attempted to retract a previous message, but it's unsupported by your client"
 msgstr ""
+
+#: [message]moderate_body
+#, fuzzy
+msgid "This message was moderated"
+msgstr "%s извлечени съобщения"
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
@@ -1178,7 +1183,8 @@ msgid "Make the chat page as the default one"
 msgstr "Направете страницата за чат като подразбираща се"
 
 #: [config]mam_text
-msgid "Server-side archiving preferences"
+#, fuzzy
+msgid "Server-side chat messages archiving preferences"
 msgstr "Предпочитания за архивиране от страна на сървъра"
 
 #: [config]mam_always
@@ -1197,12 +1203,35 @@ msgstr "Предпочитанията за архивиране са запаз
 msgid "Personnal blog confidentiality"
 msgstr ""
 
+#
+# Translators:
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012
+# Rossen Karpuzov <rkarpuzov@yahoo.com>, 2021
+# Rossen Karpuzov <rkarpuzov@yahoo.com>, 2020-2023
+#: [config]account_privacy
+#, fuzzy
+msgctxt "[config]account_privacy"
+msgid ""
+msgstr ""
+"Project-Id-Version: movim\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-06-14 23:10+0200\n"
+"PO-Revision-Date: 2015-06-24 09:45+0000\n"
+"Last-Translator: Rossen Karpuzov <rkarpuzov@yahoo.com>, 2020-2023\n"
+"Language-Team: Bulgarian (http://app.transifex.com/movim/movim/language/bg/)\n"
+"Language: bg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Translate Toolkit 3.8.4\n"
+
 #: [config]blog_open_title
 msgid "Public blog"
 msgstr ""
 
 #: [config]blog_open_text
-msgid "Accessible to everyone"
+msgid "Accessible to everyone on the network"
 msgstr ""
 
 #: [config]blog_presence_title
@@ -1210,12 +1239,17 @@ msgid "Private blog"
 msgstr ""
 
 #: [config]blog_presence_text
-msgid "Restricted to subscribers only"
+msgid "Restricted to your subscribers only"
 msgstr ""
 
 #: [config]blog_saved
 msgid "Personnal blog confidentiality saved"
 msgstr ""
+
+#: [config]confidentiality
+#, fuzzy
+msgid "Confidentiality"
+msgstr "уверен/а"
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -2092,6 +2126,10 @@ msgstr "Посетител"
 msgid "Name or description"
 msgstr "Име или описание"
 
+#: [rooms]disco_registration_required
+msgid "A registration is required before using the service"
+msgstr ""
+
 #: [chatrooms]title
 msgid "Chatrooms"
 msgstr "Стаи за разговори"
@@ -2506,11 +2544,11 @@ msgstr "Профила е актуализиран"
 msgid "Profile Not Updated"
 msgstr "Профилът не е актуализиран"
 
-#: [vcard]public
+#: [profile]public
 msgid "Your profile is now public"
 msgstr "Профилът ви вече е обществен"
 
-#: [vcard]restricted
+#: [profile]restricted
 msgid "Your profile is now restricted"
 msgstr "Потребителският ви профил вече е ограничен"
 
@@ -2519,12 +2557,12 @@ msgid "Configure your instance nickname"
 msgstr "Изберете Ваш настоящ псевдоним"
 
 #: [profile]privacy_question
-msgid "Is this profile public?"
-msgstr "Профила публичен ли е?"
+msgid "Is this account public on this Movim instance?"
+msgstr ""
 
 #: [profile]privacy_info
-msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
-msgstr "Моля, обърнете внимание! Като направите своя профил публичен, цялата информация, изброена по-долу, ще бъде достъпна за всички потребители на Movim и в целия Интернет."
+msgid "Movim will create a public page to host your blog and your account will be searchable by the other Movim users."
+msgstr ""
 
 #: [profile]nickname_info
 msgid "Set a local nickname to allow the other users of the instance to find you easily."
@@ -2987,6 +3025,11 @@ msgstr "Web"
 #: [client]registered
 msgid "Registered"
 msgstr "Регистриран"
+
+#: [client]gateway
+#, fuzzy
+msgid "Gateway"
+msgstr "Шлюзове"
 
 #: [presence]online
 msgid "Online"
@@ -3539,3 +3582,9 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr "Пиши тук"
+
+#~ msgid "Is this profile public?"
+#~ msgstr "Профила публичен ли е?"
+
+#~ msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
+#~ msgstr "Моля, обърнете внимание! Като направите своя профил публичен, цялата информация, изброена по-долу, ще бъде достъпна за всички потребители на Movim и в целия Интернет."

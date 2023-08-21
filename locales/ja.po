@@ -124,7 +124,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-14 23:10+0200\n"
+"POT-Creation-Date: 2023-08-21 22:43+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Rintan, 2020-2021\n"
 "Language-Team: Japanese (http://app.transifex.com/movim/movim/language/ja/)\n"
@@ -556,6 +556,11 @@ msgstr "削除"
 #: [message]retract_body
 msgid "Your contact attempted to retract a previous message, but it's unsupported by your client"
 msgstr ""
+
+#: [message]moderate_body
+#, fuzzy
+msgid "This message was moderated"
+msgstr "%s件のメッセージを受信しました"
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
@@ -1181,7 +1186,8 @@ msgid "Make the chat page as the default one"
 msgstr "チャットページをデフォルトに設定します"
 
 #: [config]mam_text
-msgid "Server-side archiving preferences"
+#, fuzzy
+msgid "Server-side chat messages archiving preferences"
 msgstr "サーバーサイドで設定をアーカイブします"
 
 #: [config]mam_always
@@ -1200,12 +1206,38 @@ msgstr "アーカイブ設定が保存されました"
 msgid "Personnal blog confidentiality"
 msgstr ""
 
+#
+# Translators:
+# Aheahead <rmatumoto@gmail.com>, 2016
+# kubo suguru <sugurmarket@gmail.com>, 2017
+# Maxime Buquet <tidusx62@gmail.com>, 2015,2017
+# RACER, 2017
+# Rintan, 2020
+# Rintan, 2020-2021
+#: [config]account_privacy
+#, fuzzy
+msgctxt "[config]account_privacy"
+msgid ""
+msgstr ""
+"Project-Id-Version: movim\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-06-14 23:10+0200\n"
+"PO-Revision-Date: 2015-06-24 09:45+0000\n"
+"Last-Translator: Rintan, 2020-2021\n"
+"Language-Team: Japanese (http://app.transifex.com/movim/movim/language/ja/)\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Translate Toolkit 3.8.4\n"
+
 #: [config]blog_open_title
 msgid "Public blog"
 msgstr ""
 
 #: [config]blog_open_text
-msgid "Accessible to everyone"
+msgid "Accessible to everyone on the network"
 msgstr ""
 
 #: [config]blog_presence_title
@@ -1213,11 +1245,15 @@ msgid "Private blog"
 msgstr ""
 
 #: [config]blog_presence_text
-msgid "Restricted to subscribers only"
+msgid "Restricted to your subscribers only"
 msgstr ""
 
 #: [config]blog_saved
 msgid "Personnal blog confidentiality saved"
+msgstr ""
+
+#: [config]confidentiality
+msgid "Confidentiality"
 msgstr ""
 
 #: [confirm]title
@@ -2095,6 +2131,10 @@ msgstr "登録者"
 msgid "Name or description"
 msgstr "名前または説明"
 
+#: [rooms]disco_registration_required
+msgid "A registration is required before using the service"
+msgstr ""
+
 #: [chatrooms]title
 msgid "Chatrooms"
 msgstr "チャットルーム"
@@ -2509,11 +2549,11 @@ msgstr "プロフィールを更新しました"
 msgid "Profile Not Updated"
 msgstr "プロファイルは更新されませんでした"
 
-#: [vcard]public
+#: [profile]public
 msgid "Your profile is now public"
 msgstr "あなたのプロファイルは公開されました"
 
-#: [vcard]restricted
+#: [profile]restricted
 msgid "Your profile is now restricted"
 msgstr "あなたのプロファイルは非公開されました"
 
@@ -2522,12 +2562,12 @@ msgid "Configure your instance nickname"
 msgstr "インスタンスのニックネームを設定"
 
 #: [profile]privacy_question
-msgid "Is this profile public?"
-msgstr "このプロフィールは公開用ですか？"
+msgid "Is this account public on this Movim instance?"
+msgstr ""
 
 #: [profile]privacy_info
-msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
-msgstr "注意！プロフィールを公開すると、下に並んでいるすべての情報がすべてのMovimユーザーとインターネット上の人が閲覧できるようになります。"
+msgid "Movim will create a public page to host your blog and your account will be searchable by the other Movim users."
+msgstr ""
 
 #: [profile]nickname_info
 msgid "Set a local nickname to allow the other users of the instance to find you easily."
@@ -2990,6 +3030,11 @@ msgstr "ウェブ"
 #: [client]registered
 msgid "Registered"
 msgstr "登録済み"
+
+#: [client]gateway
+#, fuzzy
+msgid "Gateway"
+msgstr "ゲートウェイ"
 
 #: [presence]online
 msgid "Online"
@@ -3542,3 +3587,9 @@ msgstr "APIにアクセスできません、後ほど再試行してください
 #: [field]type_here
 msgid "Type here"
 msgstr "ここに入力してください"
+
+#~ msgid "Is this profile public?"
+#~ msgstr "このプロフィールは公開用ですか？"
+
+#~ msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
+#~ msgstr "注意！プロフィールを公開すると、下に並んでいるすべての情報がすべてのMovimユーザーとインターネット上の人が閲覧できるようになります。"

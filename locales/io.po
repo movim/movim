@@ -120,7 +120,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-14 23:10+0200\n"
+"POT-Creation-Date: 2023-08-21 22:43+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: William <fxinkeo@mail.com>, 2015\n"
 "Language-Team: Ido (http://app.transifex.com/movim/movim/language/io/)\n"
@@ -551,6 +551,10 @@ msgstr ""
 
 #: [message]retract_body
 msgid "Your contact attempted to retract a previous message, but it's unsupported by your client"
+msgstr ""
+
+#: [message]moderate_body
+msgid "This message was moderated"
 msgstr ""
 
 #: [message]error
@@ -1177,7 +1181,7 @@ msgid "Make the chat page as the default one"
 msgstr ""
 
 #: [config]mam_text
-msgid "Server-side archiving preferences"
+msgid "Server-side chat messages archiving preferences"
 msgstr ""
 
 #: [config]mam_always
@@ -1196,12 +1200,34 @@ msgstr ""
 msgid "Personnal blog confidentiality"
 msgstr ""
 
+#
+# Translators:
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2013
+# William <fxinkeo@mail.com>, 2015
+#: [config]account_privacy
+#, fuzzy
+msgctxt "[config]account_privacy"
+msgid ""
+msgstr ""
+"Project-Id-Version: movim\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-06-14 23:10+0200\n"
+"PO-Revision-Date: 2015-06-24 09:45+0000\n"
+"Last-Translator: William <fxinkeo@mail.com>, 2015\n"
+"Language-Team: Ido (http://app.transifex.com/movim/movim/language/io/)\n"
+"Language: io\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Translate Toolkit 3.8.4\n"
+
 #: [config]blog_open_title
 msgid "Public blog"
 msgstr ""
 
 #: [config]blog_open_text
-msgid "Accessible to everyone"
+msgid "Accessible to everyone on the network"
 msgstr ""
 
 #: [config]blog_presence_title
@@ -1209,11 +1235,15 @@ msgid "Private blog"
 msgstr ""
 
 #: [config]blog_presence_text
-msgid "Restricted to subscribers only"
+msgid "Restricted to your subscribers only"
 msgstr ""
 
 #: [config]blog_saved
 msgid "Personnal blog confidentiality saved"
+msgstr ""
+
+#: [config]confidentiality
+msgid "Confidentiality"
 msgstr ""
 
 #: [confirm]title
@@ -2091,6 +2121,10 @@ msgstr ""
 msgid "Name or description"
 msgstr ""
 
+#: [rooms]disco_registration_required
+msgid "A registration is required before using the service"
+msgstr ""
+
 #: [chatrooms]title
 msgid "Chatrooms"
 msgstr ""
@@ -2505,11 +2539,11 @@ msgstr ""
 msgid "Profile Not Updated"
 msgstr ""
 
-#: [vcard]public
+#: [profile]public
 msgid "Your profile is now public"
 msgstr ""
 
-#: [vcard]restricted
+#: [profile]restricted
 msgid "Your profile is now restricted"
 msgstr ""
 
@@ -2518,11 +2552,11 @@ msgid "Configure your instance nickname"
 msgstr ""
 
 #: [profile]privacy_question
-msgid "Is this profile public?"
+msgid "Is this account public on this Movim instance?"
 msgstr ""
 
 #: [profile]privacy_info
-msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
+msgid "Movim will create a public page to host your blog and your account will be searchable by the other Movim users."
 msgstr ""
 
 #: [profile]nickname_info
@@ -2985,6 +3019,10 @@ msgstr ""
 
 #: [client]registered
 msgid "Registered"
+msgstr ""
+
+#: [client]gateway
+msgid "Gateway"
 msgstr ""
 
 #: [presence]online
