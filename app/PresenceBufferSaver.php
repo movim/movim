@@ -58,8 +58,10 @@ class PresenceBufferSaver
 
                 $this->_models->each(function ($presence) use (&$nodes, &$avatarHashes) {
                     // Capabilities
-                    $resource = !empty($presence['resource']) ? '/' . $presence['resource'] : '';
-                    $nodes->put($presence['node'], $presence['jid'] . $resource);
+                    if ($presence['node']) {
+                        $resource = !empty($presence['resource']) ? '/' . $presence['resource'] : '';
+                        $nodes->put($presence['node'], $presence['jid'] . $resource);
+                    }
 
                     // Vcards
                     if (isset($presence['avatarhash'])) {
@@ -97,7 +99,9 @@ class PresenceBufferSaver
                 // Memory leak there
                 if ($avatarHashes->count() > 0) {
                     $contactsHashes = Contact::whereIn('avatarhash', $avatarHashes->keys())
+                        ->whereNotNull('avatartype')
                         ->get(['id', 'avatarhash'])->pluck('avatarhash', 'id');
+
                     // Remove the existing Contacts
                     $avatarHashes = $avatarHashes->reject(
                         fn ($jid, $avatarhash) =>
@@ -107,7 +111,8 @@ class PresenceBufferSaver
                     $avatarHashes->each(function ($jid, $avatarhash) {
                         Scheduler::getInstance()->append('avatar_' . $jid . '_' . $avatarhash, function () use ($jid, $avatarhash) {
                             // Last check before firing the request, the avatar might have been received in the meantime
-                            if (Contact::where('avatarhash', $avatarhash)->where('id', $jid)->count() == 0) {
+                            $contact = Contact::where('avatarhash', $avatarhash)->where('id', $jid)->first();
+                            if (!$contact || $contact->avatartype == null) {
                                 $r = new Get;
                                 $r->setAvatarhash($avatarhash)
                                     ->setTo($jid)
