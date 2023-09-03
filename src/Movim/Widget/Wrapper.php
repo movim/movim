@@ -149,7 +149,12 @@ class Wrapper
     {
         $widget = $this->loadWidget($widgetName);
 
-        return $widget->$method(...$params);
+        try {
+            return $widget->$method(...$params);
+        } catch (\Error $th) {
+            \Utils::error($th->getMessage());
+            return null;
+        }
     }
 
     /**

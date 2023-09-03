@@ -1,5 +1,5 @@
 var Tabs = {
-    create : function() {
+    create: function () {
         // We search all the div with "tab" class
         var tabs = document.querySelectorAll('.tabelem');
 
@@ -10,19 +10,19 @@ var Tabs = {
         document.querySelector('#navtabs').innerHTML = '';
 
         // We create the list
-        for (var i=0; i<tabs.length; i++) {
+        for (var i = 0; i < tabs.length; i++) {
             if (window.location.hash == '#' + tabs[i].id + '_tab') {
                 current = tabs[i].id;
             }
 
             var li = document.createElement('li');
             li.setAttribute('class', tabs[i].id);
-            li.onclick = function() { Tabs.change(this) };
+            li.onclick = function () { Tabs.change(this) };
             li.setAttribute('title', tabs[i].title);
 
             var a = document.createElement('a');
             a.href = '#';
-            a.onclick = function(e) {
+            a.onclick = function (e) {
                 e.preventDefault();
                 return false;
             };
@@ -61,12 +61,12 @@ var Tabs = {
         //if no tab is active, activate the first one
         else {
             tab = document.querySelector('.tabelem').id;
-            menuTab = document.querySelector('li.'+ tab);
+            menuTab = document.querySelector('li.' + tab);
         }
 
         Tabs.change(menuTab);
 
-        window.onhashchange = function() {
+        window.onhashchange = function () {
             var hash = window.location.hash.slice(1, -4);
             if (hash) {
                 Tabs.change(document.querySelector('li.' + hash));
@@ -74,7 +74,7 @@ var Tabs = {
         }
     },
 
-    change : function(current) {
+    change: function (current) {
         // We grab the tabs list
         var navtabs = document.querySelectorAll('#navtabs li');
         // We clean the class of the li

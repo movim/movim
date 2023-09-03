@@ -90,7 +90,7 @@ class Post extends Base
         $c->ajaxGetDrawer($jid);
     }
 
-    public function ajaxGetPost($server, $node, $nodeid)
+    public function ajaxGetPost(string $server, string $node, string $nodeid)
     {
         $p = \App\Post::where('server', $server)
                       ->where('node', $node)
@@ -128,7 +128,7 @@ class Post extends Base
         }
     }
 
-    public function ajaxGetPostComments($server, $node, $id)
+    public function ajaxGetPostComments(string $server, string $node, string $id)
     {
         $post = \App\Post::where('server', $server)
                          ->where('node', $node)
@@ -140,7 +140,7 @@ class Post extends Base
         }
     }
 
-    public function ajaxShare($server, $node, $id)
+    public function ajaxShare(string $server, string $node, string $id)
     {
         $this->rpc('MovimUtils.redirect', $this->route('publish', [$server, $node, $id, 'share']));
     }

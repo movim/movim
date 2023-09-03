@@ -331,7 +331,11 @@ class Post extends Model
             switch ($t->attributes()->type) {
                 case 'html':
                 case 'xhtml':
-                    $title = strip_tags((string)$t->children()->asXML());
+                    $title = strip_tags(
+                        ($t->children()->getName() == 'div' && (string)$t->children()->attributes()->xmlns == 'http://www.w3.org/1999/xhtml')
+                        ? html_entity_decode((string)$t->children()->asXML())
+                        : (string)$t->children()->asXML()
+                    );
                     break;
                 case 'text':
                     if (trim($t) != '') {

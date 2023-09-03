@@ -59,10 +59,10 @@ class Parser
             $this->node = $this->handler = simplexml_load_string("<$name></$name>", 'SimpleXMLElement', LIBXML_COMPACT | LIBXML_PARSEHUGE);
         } elseif ($this->depth > 1) {
             if ($this->raw != false) {
-                $this->handler[0] .= '<' . $name . ' ';
+                $this->handler[0] .= '<' . $name;
                 if ($this->raw <= $this->depth) {
                     foreach ($attrs as $name => $value) {
-                        $this->handler[0] .= $name . "='" . $value . "' ";
+                        $this->handler[0] .= ' ' . $name . "='" . $value . "'";
                     }
                 }
                 $this->handler[0] .= '>';
