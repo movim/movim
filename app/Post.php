@@ -393,19 +393,18 @@ class Post extends Model
             $this->aname = null;
         }
 
-        $this->title = $this->extractTitle($entry->entry->title);
-
         // Content
         $summary = ($entry->entry->summary && (string)$entry->entry->summary != '')
             ? '<p class="summary">'.(string)$entry->entry->summary.'</p>'
             : null;
 
-        if ($entry->entry && $entry->entry->content) {
+        $content = '';
+
+        if ($entry->entry->content) {
             $content = $this->extractContent($entry->entry->content);
-        } elseif ($summary == '') {
-            $content = __('');
+            $this->title = $this->extractTitle($entry->entry->title);
         } else {
-            $content = '';
+            $content = $this->extractContent($entry->entry->title);
         }
 
         $content = $summary.$content;
@@ -710,7 +709,7 @@ class Post extends Model
 
     public function isRTL()
     {
-        return (isRTL($this->contentraw ?? '') || isRTL($this->title));
+        return (isRTL($this->contentraw ?? '') || isRTL($this->title ?? ''));
     }
 
     public function isComment()
@@ -735,15 +734,15 @@ class Post extends Model
 
     public function getTitle()
     {
-        return (isset($this->title)
-            && strlen($this->title) >= $this->titleLimit)
+        return ($this->title == null
+            || strlen($this->title) >= $this->titleLimit)
             ? __('post.default_title')
             : $this->title;
     }
 
     public function getContent()
     {
-        return (strlen($this->title) >= $this->titleLimit)
+        return ($this->title && strlen($this->title) >= $this->titleLimit)
             ? nl2br(addUrls(addHashtagsLinks($this->title)))
             : $this->contentcleaned;
     }
