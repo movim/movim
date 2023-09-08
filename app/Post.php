@@ -735,7 +735,7 @@ class Post extends Model
     public function getTitle()
     {
         return ($this->title == null
-            || strlen($this->title) >= $this->titleLimit)
+            || strlen($this->title) >= $this->titleLimit) || $this->isBrief()
             ? __('post.default_title')
             : $this->title;
     }

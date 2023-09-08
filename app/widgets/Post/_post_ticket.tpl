@@ -28,14 +28,10 @@
         </span>
     {/if}
     <div>
-        <p class="line two" {if="isset($post->title)"}title="{$post->title}"{/if}>
-            {if="isset($post->title)"}
-                {autoescape="off"}
-                    {$post->title|prepareString}
-                {/autoescape}
-            {else}
-                {$post->node}
-            {/if}
+        <p class="line two" title="{$post->getTitle()}">
+            {autoescape="off"}
+                {$post->getTitle()}
+            {/autoescape}
         </p>
         <p dir="auto">{autoescape="off"}{$post->getSummary()|prepareString}{/autoescape}</p>
         <p>

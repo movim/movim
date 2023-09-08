@@ -23,14 +23,10 @@
                 {/if}
 
                 <div>
-                    <p class="line">
-                        {if="$post->title != null && !$post->isBrief()"}
-                            {autoescape="off"}
-                                {$post->getTitle()}
-                            {/autoescape}
-                        {else}
-                            {$c->__('post.default_title')}
-                        {/if}
+                    <p class="line" title="{$post->getTitle()}">
+                        {autoescape="off"}
+                            {$post->getTitle()}
+                        {/autoescape}
                     </p>
                 </div>
             </li>

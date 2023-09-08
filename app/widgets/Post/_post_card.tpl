@@ -28,15 +28,11 @@
             {/if}
 
             <div>
-                {if="!$post->isBrief()"}
-                    <p class="normal">
-                        {autoescape="off"}
-                            {$post->getTitle()|addHashtagsLinks|addEmojis}
-                        {/autoescape}
-                    </p>
-                {else}
-                    <p></p>
-                {/if}
+                <p class="normal" title="{$post->getTitle()}">
+                    {autoescape="off"}
+                        {$post->getTitle()}
+                    {/autoescape}
+                </p>
                 <p>
                     {if="$post->isMicroblog()"}
                         <a  {if="$public"}
@@ -79,13 +75,6 @@
                          · {$count} <i class="material-icons">visibility</i>
                     {/if}
                 </p>
-                {if="$post->isBrief()"}
-                    <p class="normal">
-                        {autoescape="off"}
-                            {$post->getTitle()|addHashtagsLinks|addUrls|nl2br|prepareString}
-                        {/autoescape}
-                    </p>
-                {/if}
             </div>
         </li>
     </ul>
