@@ -68,9 +68,10 @@ class Message extends Model
         $jidFromToMessages = DB::table('messages')
             ->where('user_id', \App\User::me()->id)
             ->where('jidfrom', $jid)
-            ->unionAll(DB::table('messages')
-                ->where('user_id', \App\User::me()->id)
-                ->where('jidto', $jid)
+            ->unionAll(
+                DB::table('messages')
+                    ->where('user_id', \App\User::me()->id)
+                    ->where('jidto', $jid)
             );
 
         return $query->select('*')->from(
@@ -123,9 +124,10 @@ class Message extends Model
         /**
          * If not we just create or load a message
          */
-        if ($stanza->{'stanza-id'} && $stanza->{'stanza-id'}->attributes()->id
-         && ($stanza->{'stanza-id'}->attributes()->by == $jidfrom
-              || $stanza->{'stanza-id'}->attributes()->by == \App\User::me()->id
+        if (
+            $stanza->{'stanza-id'} && $stanza->{'stanza-id'}->attributes()->id
+            && ($stanza->{'stanza-id'}->attributes()->by == $jidfrom
+                || $stanza->{'stanza-id'}->attributes()->by == \App\User::me()->id
             )
         ) {
             $id = (string)$stanza->{'stanza-id'}->attributes()->id;
@@ -152,6 +154,44 @@ class Message extends Model
         }
     }
 
+    public static function getLast(string $to, bool $muc = false): ?Message
+    {
+        $m = null;
+
+        if ($muc) {
+            // Resolve the current presence
+            $presence = \App\User::me()->session->presences()
+                ->where('jid', $to)
+                ->where('muc', true)
+                ->where('mucjid', \App\User::me()->id)
+                ->first();
+
+            if ($presence) {
+                $m = \App\User::me()->messages()
+                    ->where('type', 'groupchat')
+                    ->where('jidfrom', $to)
+                    ->where('jidto', \App\User::me()->id)
+                    ->where('resource', $presence->resource)
+                    ->orderBy('published', 'desc')
+                    ->first();
+            }
+        } else {
+            $m = \App\User::me()->messages()
+                ->where('jidto', $to)
+                ->orderBy('published', 'desc')
+                ->first();
+        }
+
+        return $m;
+    }
+
+    public function isLast(): bool
+    {
+        $last = Message::getLast($this->isMuc() ? $this->jidfrom : $this->jidto, $this->isMuc());
+
+        return ($last && $this->mid == $last->mid);
+    }
+
     public static function eventMessageFactory(string $type, string $from, string $thread): Message
     {
         $userid = \App\User::me()->id;
@@ -171,9 +211,9 @@ class Message extends Model
     {
         if ($this->jidfrom == $this->user_id) {
             $this->user->messages()
-                       ->where('jidfrom', $this->jidto)
-                       ->where('seen', false)
-                       ->update(['seen' => true]);
+                ->where('jidfrom', $this->jidto)
+                ->where('seen', false)
+                ->update(['seen' => true]);
         }
     }
 
@@ -224,18 +264,21 @@ class Message extends Model
         }
 
         // https://xmpp.org/extensions/xep-0359.html#stanza-id
-        if ($stanza->{'origin-id'}
-        && (string)$stanza->{'origin-id'}->attributes()->xmlns == 'urn:xmpp:sid:0') {
+        if (
+            $stanza->{'origin-id'}
+            && (string)$stanza->{'origin-id'}->attributes()->xmlns == 'urn:xmpp:sid:0'
+        ) {
             $this->originid = (string)$stanza->{'origin-id'}->attributes()->id;
         }
 
         // https://xmpp.org/extensions/xep-0359.html#origin-id for groupchat only
-        if ($this->isMuc()
-        && $stanza->{'stanza-id'}
-        && $stanza->{'stanza-id'}->attributes()->id
-        && (string)$stanza->{'stanza-id'}->attributes()->xmlns == 'urn:xmpp:sid:0'
-        && ($stanza->{'stanza-id'}->attributes()->by == $this->jidfrom
-            || $stanza->{'stanza-id'}->attributes()->by == \App\User::me()->id
+        if (
+            $this->isMuc()
+            && $stanza->{'stanza-id'}
+            && $stanza->{'stanza-id'}->attributes()->id
+            && (string)$stanza->{'stanza-id'}->attributes()->xmlns == 'urn:xmpp:sid:0'
+            && ($stanza->{'stanza-id'}->attributes()->by == $this->jidfrom
+                || $stanza->{'stanza-id'}->attributes()->by == \App\User::me()->id
             )
         ) {
             if ($this->isMuc()) {
@@ -266,21 +309,25 @@ class Message extends Model
             $this->delivered = gmdate('Y-m-d H:i:s');
         }
 
-        if ($this->type !== 'groupchat'
-        && $stanza->x
-        && (string)$stanza->x->attributes()->xmlns == 'http://jabber.org/protocol/muc#user') {
+        if (
+            $this->type !== 'groupchat'
+            && $stanza->x
+            && (string)$stanza->x->attributes()->xmlns == 'http://jabber.org/protocol/muc#user'
+        ) {
             $this->mucpm = true;
             if ($parent && (string)$parent->attributes()->xmlns == 'urn:xmpp:forward:0') {
                 $this->jidto = (string)$stanza->attributes()->to;
             } elseif (isset($jidFrom['resource'])) {
-                $this->jidfrom = $jidFrom['jid'].'/'.$jidFrom['resource'];
+                $this->jidfrom = $jidFrom['jid'] . '/' . $jidFrom['resource'];
             }
         }
 
 
         # XEP-0444: Message Reactions
-        if (isset($stanza->reactions)
-            && $stanza->reactions->attributes()->xmlns == 'urn:xmpp:reactions:0') {
+        if (
+            isset($stanza->reactions)
+            && $stanza->reactions->attributes()->xmlns == 'urn:xmpp:reactions:0'
+        ) {
 
             $parentMessage = $this->resolveParentMessage($this->jidfrom, (string)$stanza->reactions->attributes()->id);
 
@@ -343,13 +390,17 @@ class Message extends Model
             if ($stanza->reply && $stanza->reply->attributes()->xmlns == 'urn:xmpp:reply:0') {
                 $parentMessage = $this->resolveParentMessage($this->jidfrom, (string)$stanza->reply->attributes()->id);
 
-                if ($parentMessage && $parentMessage->mid != $this->mid
-                 && $parentMessage->originid != $this->originid) {
+                if (
+                    $parentMessage && $parentMessage->mid != $this->mid
+                    && $parentMessage->originid != $this->originid
+                ) {
                     $this->parentmid = $parentMessage->mid;
                 }
 
-                if ($stanza->fallback && $stanza->fallback->attributes()->xmlns == 'urn:xmpp:fallback:0'
-                 && $stanza->fallback->attributes()->for == 'urn:xmpp:reply:0') {
+                if (
+                    $stanza->fallback && $stanza->fallback->attributes()->xmlns == 'urn:xmpp:fallback:0'
+                    && $stanza->fallback->attributes()->for == 'urn:xmpp:reply:0'
+                ) {
                     $this->body = mb_substr(
                         htmlspecialchars_decode($this->body, ENT_XML1),
                         (int)$stanza->fallback->body->attributes()->end
@@ -362,22 +413,26 @@ class Message extends Model
                     ->orderBy('published', 'asc')
                     ->first();
 
-                if ($parent && $parent->mid != $this->mid
-                 && $parent->originid != $this->originid) {
+                if (
+                    $parent && $parent->mid != $this->mid
+                    && $parent->originid != $this->originid
+                ) {
                     $this->parentmid = $parent->mid;
                 }
             }
 
             if ($this->isMuc()) {
                 $presence = $this->user->session->presences()
-                                 ->where('jid', $this->jidfrom)
-                                 ->where('mucjid', $this->user->id)
-                                 ->first();
+                    ->where('jid', $this->jidfrom)
+                    ->where('mucjid', $this->user->id)
+                    ->first();
 
-                if ($presence
-                && $this->body != null
-                && strpos($this->body, $presence->resource) !== false
-                && $this->resource != $presence->resource) {
+                if (
+                    $presence
+                    && $this->body != null
+                    && strpos($this->body, $presence->resource) !== false
+                    && $this->resource != $presence->resource
+                ) {
                     $this->quoted = true;
                 }
             }
@@ -414,12 +469,16 @@ class Message extends Model
                 }
             }
 
-            if ($stanza->reference
-            && (string)$stanza->reference->attributes()->xmlns == 'urn:xmpp:reference:0') {
+            if (
+                $stanza->reference
+                && (string)$stanza->reference->attributes()->xmlns == 'urn:xmpp:reference:0'
+            ) {
                 $filetmp = [];
 
-                if ($stanza->reference->{'media-sharing'}
-                && (string)$stanza->reference->{'media-sharing'}->attributes()->xmlns == 'urn:xmpp:sims:1') {
+                if (
+                    $stanza->reference->{'media-sharing'}
+                    && (string)$stanza->reference->{'media-sharing'}->attributes()->xmlns == 'urn:xmpp:sims:1'
+                ) {
                     $file = $stanza->reference->{'media-sharing'}->file;
                     if (isset($file)) {
                         if (preg_match('/\w+\/[-+.\w]+/', $file->{'media-type'}) == 1) {
@@ -437,8 +496,10 @@ class Message extends Model
                         }
                     }
 
-                    if ($stanza->reference->{'media-sharing'}->file->thumbnail
-                    && (string)$stanza->reference->{'media-sharing'}->file->thumbnail->attributes()->xmlns == 'urn:xmpp:thumbs:1') {
+                    if (
+                        $stanza->reference->{'media-sharing'}->file->thumbnail
+                        && (string)$stanza->reference->{'media-sharing'}->file->thumbnail->attributes()->xmlns == 'urn:xmpp:thumbs:1'
+                    ) {
                         $thumbnailAttributes = $stanza->reference->{'media-sharing'}->file->thumbnail->attributes();
 
                         if (!filter_var((string)$thumbnailAttributes->uri, FILTER_VALIDATE_URL) === false) {
@@ -453,20 +514,24 @@ class Message extends Model
                         }
                     }
 
-                    if (array_key_exists('uri', $filetmp)
-                    && array_key_exists('type', $filetmp)
-                    && array_key_exists('size', $filetmp)
-                    && array_key_exists('name', $filetmp)) {
+                    if (
+                        array_key_exists('uri', $filetmp)
+                        && array_key_exists('type', $filetmp)
+                        && array_key_exists('size', $filetmp)
+                        && array_key_exists('name', $filetmp)
+                    ) {
                         if (empty($filetmp['name'])) {
                             $filetmp['name'] =
                                 pathinfo(parse_url($filetmp['uri'], PHP_URL_PATH), PATHINFO_BASENAME)
-                                . ' ('.parse_url($filetmp['uri'], PHP_URL_HOST).')';
+                                . ' (' . parse_url($filetmp['uri'], PHP_URL_HOST) . ')';
                         }
 
                         $this->file = $filetmp;
                     }
-                } elseif (\in_array($stanza->reference->attributes()->type, ['mention', 'data'])
-                    && $stanza->reference->attributes()->uri) {
+                } elseif (
+                    \in_array($stanza->reference->attributes()->type, ['mention', 'data'])
+                    && $stanza->reference->attributes()->uri
+                ) {
 
                     $uri = parse_url($stanza->reference->attributes()->uri);
 
@@ -498,13 +563,17 @@ class Message extends Model
                 }
             }
 
-            if ($stanza->encryption
-            && (string)$stanza->encryption->attributes()->xmlns == 'urn:xmpp:eme:0') {
+            if (
+                $stanza->encryption
+                && (string)$stanza->encryption->attributes()->xmlns == 'urn:xmpp:eme:0'
+            ) {
                 $this->encrypted = true;
             }
 
-            if ($stanza->replace
-            && (string)$stanza->replace->attributes()->xmlns == 'urn:xmpp:message-correct:0') {
+            if (
+                $stanza->replace
+                && (string)$stanza->replace->attributes()->xmlns == 'urn:xmpp:message-correct:0'
+            ) {
                 // Here the replaceid could be a bad one, we will handle it later
                 $this->replaceid = (string)$stanza->replace->attributes()->id;
             }
@@ -514,16 +583,20 @@ class Message extends Model
                 $this->subject = $this->jidfrom;
                 $this->jidfrom = baseJid((string)$stanza->x->invite->attributes()->from);
             }
-        } elseif (isset($stanza->x)
-            && $stanza->x->attributes()->xmlns == 'jabber:x:conference') {
+        } elseif (
+            isset($stanza->x)
+            && $stanza->x->attributes()->xmlns == 'jabber:x:conference'
+        ) {
             $this->type = 'invitation';
             $this->body = (string)$stanza->x->attributes()->reason;
             $this->subject = (string)$stanza->x->attributes()->jid;
         }
 
         # XEP-0384 OMEMO Encryption
-        if (isset($stanza->encrypted)
-         && $stanza->encrypted->attributes()->xmlns == 'eu.siacs.conversations.axolotl') {
+        if (
+            isset($stanza->encrypted)
+            && $stanza->encrypted->attributes()->xmlns == 'eu.siacs.conversations.axolotl'
+        ) {
             $omemoHeader = new MessageOmemoHeader;
             $omemoHeader->set($stanza);
             $this->attributes['omemoheader'] = (string)$omemoHeader;
@@ -633,8 +706,10 @@ class Message extends Model
         ];
 
         // Generate a proper mid
-        if (empty($this->attributes['mid'])
-        || ($this->attributes['mid'] && $this->attributes['mid'] == 1)) {
+        if (
+            empty($this->attributes['mid'])
+            || ($this->attributes['mid'] && $this->attributes['mid'] == 1)
+        ) {
             $array['mid'] = $this->getNextStatementId();
         } else {
             $array['mid'] = $this->attributes['mid'];

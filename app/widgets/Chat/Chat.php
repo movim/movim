@@ -798,31 +798,9 @@ class Chat extends \Movim\Widget\Base
      * @param string $to
      * @return void
      */
-    public function ajaxLast($to, $muc = false)
+    public function ajaxLast(string $to, $muc = false)
     {
-        if ($muc) {
-            // Resolve the current presence
-            $presence = $this->user->session->presences()
-                ->where('jid', $to)
-                ->where('muc', true)
-                ->where('mucjid', $this->user->id)
-                ->first();
-
-            if ($presence) {
-                $m = $this->user->messages()
-                    ->where('type', 'groupchat')
-                    ->where('jidfrom', $to)
-                    ->where('jidto', $this->user->id)
-                    ->where('resource', $presence->resource)
-                    ->orderBy('published', 'desc')
-                    ->first();
-            }
-        } else {
-            $m = $this->user->messages()
-                ->where('jidto', $to)
-                ->orderBy('published', 'desc')
-                ->first();
-        }
+        $m = Message::getLast($to, $muc);
 
         if (!$m) return;
 

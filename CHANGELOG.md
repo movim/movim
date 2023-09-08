@@ -9,6 +9,8 @@ v0.22.4
 * Remove the public/picture/ directory to use only the main index.php entrypoint
 * Cleanup and simplify the avatar and picture handling code
 * Add a CleatTemplatesCache command and call it when starting the daemon
+* Fix Atom parsing and ensure compatibility with ActivityPub bridges
+* Move the edit message action from the header menu to the message actions box
 
 v0.22.3
 ---------------------------

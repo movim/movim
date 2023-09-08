@@ -158,12 +158,6 @@
             </li>
         {/if}
 
-        <li class="on_mobile" onclick="Chat.editPrevious()">
-            <div>
-                <p class="normal">{$c->__('chat.edit_previous')}</p>
-            </div>
-        </li>
-
         <li onclick="Rooms_ajaxExit('{$jid|echapJS}'); {if="$anon"}Presence_ajaxLogout(){/if}">
             <div>
                 <p class="normal">{$c->__('status.disconnect')}</p>
@@ -255,11 +249,6 @@
                 </div>
             </li>
         {/if}
-        <li class="on_mobile" onclick="Chat.editPrevious()">
-            <div>
-                <p class="normal">{$c->__('chat.edit_previous')}</p>
-            </div>
-        </li>
         <li onclick="Chat_ajaxClearHistory('{$contact->jid|echapJS}')">
             <div>
                 <p class="normal">{$c->__('chat.clear')}</p>

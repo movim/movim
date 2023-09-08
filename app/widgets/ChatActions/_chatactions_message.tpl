@@ -41,14 +41,17 @@
                 </div>
             </li>
         {/if}
-        <!--<li onclick="ChatActions_ajaxEditMessage({$message->mid})">
-            <span class="control icon gray">
-                <i class="material-icons">edit</i>
-            </span>
-            <div>
-                <p class="normal">{$c->__('button.edit')}</p>
-            </div>
-        </li>-->
+
+        {if="$message->isLast()"}
+            <li onclick="Chat.editPrevious(); Dialog_ajaxClear();">
+                <span class="primary icon gray">
+                    <i class="material-icons">edit</i>
+                </span>
+                <div>
+                    <p class="normal">{$c->__('button.edit')}</p>
+                </div>
+            </li>
+        {/if}
 
         {if="$message->isMine()"}
             <li onclick="ChatActions_ajaxHttpDaemonRetract({$message->mid})">
