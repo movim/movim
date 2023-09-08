@@ -55,25 +55,28 @@ var MovimUtils = {
             json_att = {};
 
             for (var j = 0; j < form.elements[i].attributes.length; j++) {
-                json_att[form.elements[i].attributes[j].name] = form.elements[i].attributes[j].value;
+                if (form.elements[i].attributes[j].name != 'value') {
+                    json_att[form.elements[i].attributes[j].name] = form.elements[i].attributes[j].value;
+                }
             }
 
             if (form.elements[i].name.length != 0) {
-                if (form.elements[i].type == 'checkbox')
+                if (form.elements[i].type == 'checkbox') {
                     json[form.elements[i].name] = {
                         'value': form.elements[i].checked,
                         'attributes': json_att
                     };
-                else if (form.elements[i].type == 'radio' && form.elements[i].checked)
+                } else if (form.elements[i].type == 'radio' && form.elements[i].checked) {
                     json[form.elements[i].name] = {
                         'value': form.elements[i].value,
                         'attributes': json_att
                     };
-                else if (form.elements[i].type != 'radio')
+                } else if (form.elements[i].type != 'radio') {
                     json[form.elements[i].name] = {
                         'value': form.elements[i].value,
                         'attributes': json_att
                     };
+                }
             }
         }
 
