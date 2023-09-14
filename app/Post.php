@@ -327,6 +327,7 @@ class Post extends Model
     private function extractTitle($titles)
     {
         $title = '';
+
         foreach ($titles as $t) {
             switch ($t->attributes()->type) {
                 case 'html':

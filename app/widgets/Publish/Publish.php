@@ -116,7 +116,7 @@ class Publish extends Base
 
             Drawer::fill($view->draw('_publish_preview'), true);
         } else {
-            Toast::send($this->__('publish.no_content_preview'));
+            Toast::send($this->__('publish.no_title'));
         }
     }
 
