@@ -39,7 +39,7 @@
     {/if}
 
     {loop="$post->comments"}
-        {if="$value->title || $value->contentraw"}
+        {if="$value->content || $value->contentraw"}
         <li id="{$value->nodeid|cleanupId}"
             {if="!$public && $value->isMine(true) && $value->isLike()"}class="mine"{/if}>
             {if="!$public && ($value->isMine() || $post->isMine())"}
@@ -93,7 +93,7 @@
                         {autoescape/}
                     {else}
                         {autoescape="off"}
-                            {$value->title|addUrls|addHashtagsLinks|nl2br|prepareString}
+                            {$value->content|addUrls|addHashtagsLinks|nl2br|prepareString}
                         {/autoescape}
                     {/if}
                 </p>

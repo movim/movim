@@ -704,7 +704,7 @@ class Post extends Model
 
     public function isLike()
     {
-        return ($this->contentraw == '♥' || $this->title == '♥');
+        return ($this->contentraw == '♥' || $this->content == '♥');
     }
 
     public function isRTL()
