@@ -91,7 +91,7 @@ cd /var/www/movim/
 git pull # To update the Movim source-code
 composer install # To update the libraries
 ```
-If the update comes with some database changes you can run the new migrations (see bellow).
+If the update comes with some database changes you can run the new migrations (see below).
 
 # Deployment
 
@@ -158,7 +158,7 @@ This daemon will be killed once your console is closed. Consider using `systemd`
 
 ### 5.1. Virtualhost
 
-Create a virtualhost on your prefered webserver and point the root to the `public/index.php` file. You can have a look at the [default configuration files that we provide](https://github.com/movim/movim/tree/master/etc) if you need some help about that part.
+Create a virtualhost on your preferred webserver and point the root to the `public/index.php` file. You can have a look at the [default configuration files that we provide](https://github.com/movim/movim/tree/master/etc) if you need some help about that part.
 
 ### 5.2. Daemon Websocket proxy
 
@@ -171,7 +171,7 @@ These configurations are dynamically generated to fit your current setup. Whethe
 Movim is automatically proxyfying the external pictures to protect its user IPs and prevent large pictures to be loaded without user consent.
 This internal proxy is already asking the browser to cache the pictures for a few hours.
 
-It is however **strongly recommended** to also setup a server side cache to prevent multiple users to request the same resource trough Movim.
+It is however **strongly recommended** to also setup a server side cache to prevent multiple users to request the same resource through Movim.
 
 #### On Apache
 
