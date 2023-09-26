@@ -23,11 +23,7 @@ class Picture extends Base
 
         $headers = requestHeaders($url);
 
-        if (
-            $headers["download_content_length"] <= $this->compressLimit
-            && isset($headers['content_type'])
-            && typeIsPicture($headers['content_type'])
-        ) {
+        if ($headers["download_content_length"] <= $this->compressLimit) {
             $compress = ($headers["download_content_length"] > SMALL_PICTURE_LIMIT * 0.25
                 && $headers["download_content_length"] < $this->compressLimit
             );
@@ -37,7 +33,7 @@ class Picture extends Base
                 : SMALL_PICTURE_LIMIT;
 
             $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_URL, $this->get('url'));
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_HEADER, true);
             curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
