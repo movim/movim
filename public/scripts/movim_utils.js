@@ -132,6 +132,7 @@ var MovimUtils = {
 
                 if (noHistory != true) {
                     history.pushState({ soft: true }, '', uri);
+                    MovimTpl.currentPage = uri;
                 }
 
                 if (typeof MovimWebsocket != 'undefined') {
