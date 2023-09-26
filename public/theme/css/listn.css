@@ -430,6 +430,7 @@ ul li div.bubble p {
     white-space: pre-wrap;
     word-break: normal;
     position: relative;
+    margin-right: 1rem;
 }
 
 ul li div.bubble p.retracted,
@@ -483,10 +484,6 @@ ul li div.bubble p i.icon {
     margin-right: 0.25rem;
 }
 
-ul li div.bubble span.info:not(:empty) {
-    padding-left: 1rem;
-}
-
 ul li div.bubble span.info:empty {
     min-height: 2.5rem;
 }
@@ -502,6 +499,8 @@ ul li div.bubble:not(.file)>div:last-child span.info {
 
 ul li.oppose div.bubble.file>div:last-child span.info {
     height: 2.5rem;
+    float: right;
+    line-height: 2.4rem;
 }
 
 ul li div.bubble:after {
