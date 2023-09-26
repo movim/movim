@@ -226,8 +226,8 @@ msgid "OMEMO Key deletion"
 msgstr "OMEMO Key deletion"
 
 #: [account]delete_bundle_text
-msgid "Your are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
-msgstr "Your are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
+msgid "You are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
+msgstr "You are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
@@ -242,8 +242,8 @@ msgid "on"
 msgstr "on"
 
 #: [create]successfull
-msgid "Your acccount has been successfully registered"
-msgstr "Your acccount has been successfully registered"
+msgid "Your account has been successfully registered"
+msgstr "Your account has been successfully registered"
 
 #: [create]loading
 msgid "Loading"
@@ -420,8 +420,8 @@ msgid "Your Twitter Token"
 msgstr "Your Twitter Token"
 
 #: [twitter]info1
-msgid "The Twitter integration allow Movim to embed and extract the Tweets shared on the instance"
-msgstr "The Twitter integration allow Movim to embed and extract the Tweets shared on the instance"
+msgid "The Twitter integration allows Movim to embed and extract the Tweets shared on the instance"
+msgstr "The Twitter integration allows Movim to embed and extract the Tweets shared on the instance"
 
 #: [twitter]info2
 msgid "Generate your Token on the Developer Twitter website"
@@ -702,8 +702,8 @@ msgid "%s is now member"
 msgstr "%s is now member"
 
 #: [chat]publish_error
-msgid "An error occured when sending the message"
-msgstr "An error occured when sending the message"
+msgid "An error occurred when sending the message"
+msgstr "An error occurred when sending the message"
 
 #: [chat]mam_retrieval
 msgid "Synchronizing the history, please wait…"
@@ -875,8 +875,8 @@ msgid "Communities server discovered"
 msgstr "Communities server discovered"
 
 #: [communities]disco_error
-msgid "This server doesn’t exists"
-msgstr "This server doesn’t exists"
+msgid "This server doesn’t exist"
+msgstr "This server doesn’t exist"
 
 #: [communitiesinteresting]about
 msgid "Communities you might like"
@@ -947,8 +947,8 @@ msgid "You are going to delete the following community. Please confirm your acti
 msgstr "You are going to delete the following community. Please confirm your action."
 
 #: [communityaffiliation]delete_clean_text
-msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
-msgstr "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
+msgid "It seems that this community doesn’t exist anymore. Do you want to remove it from your subscriptions?"
+msgstr "It seems that this community doesn’t exist anymore. Do you want to remove it from your subscriptions?"
 
 #: [communityaffiliation]config_error
 msgid "Error during the application of the node configuration"
@@ -1197,8 +1197,8 @@ msgid "Archiving preferences saved"
 msgstr "Archiving preferences saved"
 
 #: [config]blog_text
-msgid "Personnal blog confidentiality"
-msgstr "Personnal blog confidentiality"
+msgid "Personal blog confidentiality"
+msgstr "Personal blog confidentiality"
 
 #
 # Translators:
@@ -1239,8 +1239,8 @@ msgid "Restricted to your subscribers only"
 msgstr "Restricted to subscribers only"
 
 #: [config]blog_saved
-msgid "Personnal blog confidentiality saved"
-msgstr "Personnal blog confidentiality saved"
+msgid "Personal blog confidentiality saved"
+msgstr "Personal blog confidentiality saved"
 
 #: [config]confidentiality
 #, fuzzy
@@ -1785,8 +1785,8 @@ msgid "Popups"
 msgstr "Popups"
 
 #: [onboarding]popups_text
-msgid "Movim is using popups for the video-conference feature, they are sometime blocked by the browsers"
-msgstr "Movim is using popups for the video-conference feature, they are sometime blocked by the browsers"
+msgid "Movim is using popups for the video-conference feature, they are sometimes blocked by the browsers"
+msgstr "Movim is using popups for the video-conference feature, they are sometimes blocked by the browsers"
 
 #: [onboarding]popups_text_second
 msgid "Please be sure that they are enabled to use this feature properly"
@@ -2573,8 +2573,8 @@ msgid "John_Bob96"
 msgstr "John_Bob96"
 
 #: [profile]nickname_error
-msgid "Your nickname should only contains letters, numbers, - and _"
-msgstr "Your nickname should only contains letters, numbers, - and _"
+msgid "Your nickname should only contain letters, numbers, - and _"
+msgstr "Your nickname should only contain letters, numbers, - and _"
 
 #: [profile]nickname_conflict
 msgid "The nickname is already registered"
@@ -2685,8 +2685,8 @@ msgid "Movim requires Javascript to be enabled to work properly."
 msgstr "Movim requires Javascript to be enabled to work properly."
 
 #: [global]description
-msgid "Movim is a kickass distributed social networking platform that protect your privacy and comes with a set of awesome features."
-msgstr "Movim is a kickass distributed social networking platform that protect your privacy and comes with a set of awesome features."
+msgid "Movim is a kickass distributed social networking platform that protects your privacy and comes with a set of awesome features."
+msgstr "Movim is a kickass distributed social networking platform that protects your privacy and comes with a set of awesome features."
 
 #: [global]loading
 msgid "Loading…"
