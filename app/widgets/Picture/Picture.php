@@ -5,14 +5,13 @@ use Movim\Image;
 
 class Picture extends Base
 {
-    private $compressLimit = SMALL_PICTURE_LIMIT * 10;
+    private $compressLimit = SMALL_PICTURE_LIMIT * 6;
     private $sizeLimit = 1920;
 
     public function display()
     {
         $url = urldecode($this->get('url'));
         $parsedUrl = parse_url($url);
-
         if (
             is_array($parsedUrl)
             && array_key_exists('host', $parsedUrl)
@@ -22,41 +21,51 @@ class Picture extends Base
         }
 
         $headers = requestHeaders($url);
+        $imported = false;
+        $chunks = '';
 
-        if ($headers["download_content_length"] <= $this->compressLimit) {
-            $compress = ($headers["download_content_length"] > SMALL_PICTURE_LIMIT * 0.25
-                && $headers["download_content_length"] < $this->compressLimit
-            );
+        $max = $headers["download_content_length"] > $this->compressLimit ? $this->compressLimit : $headers["download_content_length"];
 
-            $limit = $compress
-                ? $this->compressLimit
-                : SMALL_PICTURE_LIMIT;
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $this->get('url'));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HEADER, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+        curl_setopt($ch, CURLOPT_RANGE, '0-' . $max);
+        curl_setopt($ch, CURLOPT_BUFFERSIZE, 12800);
+        curl_setopt($ch, CURLOPT_NOPROGRESS, false);
+        curl_setopt($ch, CURLOPT_USERAGENT, DEFAULT_HTTP_USER_AGENT);
+        curl_setopt($ch, CURLOPT_WRITEFUNCTION, function ($ch, $chunk) use (&$chunks) {
+            $chunks .= $chunk;
+            return (strlen($chunks) >= $this->compressLimit + 1) ? 0 : strlen($chunk);
+        });
 
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $this->get('url'));
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_HEADER, true);
-            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
-            curl_setopt($ch, CURLOPT_BUFFERSIZE, 12800);
-            curl_setopt($ch, CURLOPT_NOPROGRESS, false);
-            curl_setopt($ch, CURLOPT_USERAGENT, DEFAULT_HTTP_USER_AGENT);
-            curl_setopt($ch, CURLOPT_PROGRESSFUNCTION, function ($downloadSize, $downloaded, $uploadSize, $uploaded) use ($limit) {
-                return ($downloaded > $limit) ? 1 : 0;
-            });
+        curl_exec($ch);
 
-            $response = curl_exec($ch);
-            $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
-            curl_close($ch);
+        $headerSize = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
+        curl_close($ch);
 
-            $headers = preg_split('/[\r\n]+/', substr($response, 0, $header_size));
-            $body = substr($response, $header_size);
+        $headers = preg_split('/[\r\n]+/', substr($chunks, 0, $headerSize));
+        $body = substr($chunks, $headerSize);
+        $p = null;
 
-            $p = null;
+        if ($body) {
+            $p = new Image;
 
-            if ($compress && $body) {
-                $p = new Image;
-                $p->fromBin($body);
+            /**
+             * In case of an animated GIF we get only the first frame
+             */
+            if (substr_count($chunks, "\x00\x21\xF9\x04") > 1) {
+                $firstPos = strpos($body, "\x00\x21\xF9\x04");
+                $secondPos = strpos($body, "\x00\x21\xF9\x04", $firstPos + 1);
+
+                $body = substr($body, 0, $secondPos);
+            }
+
+            $imported = $p->fromBin($body);
+
+            if ($imported) {
                 $p->inMemory();
                 $p->save(false, false, DEFAULT_PICTURE_FORMAT, 85);
 
@@ -66,25 +75,17 @@ class Picture extends Base
 
                 header_remove('Content-Type');
                 header('Content-Type: image/' . DEFAULT_PICTURE_FORMAT);
-            } else {
-                foreach ($headers as $header) {
-                    if (strtolower(substr($header, 0, strlen('Content-Type:'))) === 'content-type:') {
-                        header($header);
-                    }
-                }
             }
+        }
 
-            if (!empty($parsedUrl['path'])) {
-                //header('Content-Disposition: attachment; filename="' . basename($parsedUrl['path']) . '"');
-            }
+        if ($imported) {
             header('Cache-Control: max-age=' . 3600 * 24);
-
             print $p ? $p->getImage() : $body;
 
             return;
         }
 
         header("HTTP/1.1 301 Moved Permanently");
-        header('Location: /theme/img/empty.png');
+        header('Location: /theme/img/broken_image_filled.svg');
     }
 }
