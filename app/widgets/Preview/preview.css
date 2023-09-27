@@ -140,7 +140,7 @@
 }
 
 .previewable:after,
-.previewable:before {
+.previewable[data-type="image/gif"]:before {
     color: white;
     font-family: 'Material Icons';
     content: "\e8ff";
@@ -172,7 +172,7 @@ li:not(.oppose) .bubble .previewable:after {
     left: 0.75rem;
 }
 
-li:not(.oppose) .bubble .previewable:before {
+li:not(.oppose) .bubble .previewable[data-type="image/gif"]:before {
     left: 0.5rem;
     right: auto;
 }
