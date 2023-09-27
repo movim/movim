@@ -130,7 +130,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-21 22:43+0200\n"
+"POT-Creation-Date: 2023-09-27 21:55+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: z h, 2021\n"
 "Language-Team: Chinese (China) (http://app.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -238,7 +238,7 @@ msgid "OMEMO Key deletion"
 msgstr ""
 
 #: [account]delete_bundle_text
-msgid "Your are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
+msgid "You are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
 msgstr ""
 
 #: [create]title [subscribe]title
@@ -254,7 +254,8 @@ msgid "on"
 msgstr "在线"
 
 #: [create]successfull
-msgid "Your acccount has been successfully registered"
+#, fuzzy
+msgid "Your account has been successfully registered"
 msgstr "您的账户已经成功注册"
 
 #: [create]loading
@@ -432,7 +433,7 @@ msgid "Your Twitter Token"
 msgstr ""
 
 #: [twitter]info1
-msgid "The Twitter integration allow Movim to embed and extract the Tweets shared on the instance"
+msgid "The Twitter integration allows Movim to embed and extract the Tweets shared on the instance"
 msgstr ""
 
 #: [twitter]info2
@@ -714,7 +715,8 @@ msgid "%s is now member"
 msgstr ""
 
 #: [chat]publish_error
-msgid "An error occured when sending the message"
+#, fuzzy
+msgid "An error occurred when sending the message"
 msgstr "发送消息时出现错误"
 
 #: [chat]mam_retrieval
@@ -1144,7 +1146,8 @@ msgid "Hide the offline contacts"
 msgstr "隐藏离线的联系人"
 
 #: [config]appearence
-msgid "Appearence"
+#, fuzzy
+msgid "Appearance"
 msgstr "外观"
 
 #: [config]updated
@@ -1209,8 +1212,9 @@ msgid "Archiving preferences saved"
 msgstr "已保存归档选项"
 
 #: [config]blog_text
-msgid "Personnal blog confidentiality"
-msgstr ""
+#, fuzzy
+msgid "Personal blog confidentiality"
+msgstr "自信"
 
 #
 # Translators:
@@ -1261,7 +1265,7 @@ msgid "Restricted to your subscribers only"
 msgstr ""
 
 #: [config]blog_saved
-msgid "Personnal blog confidentiality saved"
+msgid "Personal blog confidentiality saved"
 msgstr ""
 
 #: [config]confidentiality
@@ -1807,7 +1811,8 @@ msgid "Popups"
 msgstr "弹出窗口"
 
 #: [onboarding]popups_text
-msgid "Movim is using popups for the video-conference feature, they are sometime blocked by the browsers"
+#, fuzzy
+msgid "Movim is using popups for the video-conference feature, they are sometimes blocked by the browsers"
 msgstr "Movim 的视频会议特性将会弹出窗口，这有时会被浏览器屏蔽"
 
 #: [onboarding]popups_text_second
@@ -2026,10 +2031,6 @@ msgstr "附加文件或图片"
 msgid "You cannot publish a post here"
 msgstr "你不能在这里发帖"
 
-#: [publish]no_content_preview
-msgid "No content to preview"
-msgstr "无内容可预览"
-
 #: [publish]title
 msgid "Post title"
 msgstr "帖子标题"
@@ -2207,7 +2208,8 @@ msgid "Chatroom cannot be joined, registration required"
 msgstr "无法加入聊天室，需要注册"
 
 #: [chatrooms]itemnotfound
-msgid "The chatroom doesn’t exists"
+#, fuzzy
+msgid "The chatroom doesn’t exist"
 msgstr "聊天室不存在"
 
 #: [chatrooms]notauthorized
@@ -2251,7 +2253,8 @@ msgid "You are currently logged as an anonymous user."
 msgstr "现以匿名用户登录"
 
 #: [room]anonymous_text2
-msgid "You can join using your own account or create one on the login page by loging out using the cross in the top-right corner."
+#, fuzzy
+msgid "You can join using your own account or create one on the login page by logging out using the cross in the top-right corner."
 msgstr "你可以使用你自己的账号或新建一个来登录，只需要登出并使用右上角的十字。"
 
 #: [room]anonymous_login
@@ -2595,7 +2598,8 @@ msgid "John_Bob96"
 msgstr "John_Bob96"
 
 #: [profile]nickname_error
-msgid "Your nickname should only contains letters, numbers, - and _"
+#, fuzzy
+msgid "Your nickname should only contain letters, numbers, - and _"
 msgstr "昵称只能包含字母、数字、-（半角连字符）以及 _（半角下划线）"
 
 #: [profile]nickname_conflict
@@ -2707,7 +2711,8 @@ msgid "Movim requires Javascript to be enabled to work properly."
 msgstr "Movim需要启用JavaScript方能正常工作。"
 
 #: [global]description
-msgid "Movim is a kickass distributed social networking platform that protect your privacy and comes with a set of awesome features."
+#, fuzzy
+msgid "Movim is a kickass distributed social networking platform that protects your privacy and comes with a set of awesome features."
 msgstr "Movim是一个kickass分布式社交网络平台，可保护隐私并具有一系列令人惊叹的特性。"
 
 #: [global]loading
@@ -3600,6 +3605,9 @@ msgstr "API 无法连接，请稍后重试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
+
+#~ msgid "No content to preview"
+#~ msgstr "无内容可预览"
 
 #~ msgid "Is this profile public?"
 #~ msgstr "这个档案是公开的吗？"

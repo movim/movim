@@ -126,7 +126,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-21 22:43+0200\n"
+"POT-Creation-Date: 2023-09-27 21:55+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Giacomo Lacava <g.lacava@gmail.com>, 2018\n"
 "Language-Team: Italian (http://app.transifex.com/movim/movim/language/it/)\n"
@@ -234,7 +234,7 @@ msgid "OMEMO Key deletion"
 msgstr ""
 
 #: [account]delete_bundle_text
-msgid "Your are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
+msgid "You are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
 msgstr ""
 
 #: [create]title [subscribe]title
@@ -250,7 +250,8 @@ msgid "on"
 msgstr "su"
 
 #: [create]successfull
-msgid "Your acccount has been successfully registered"
+#, fuzzy
+msgid "Your account has been successfully registered"
 msgstr "Il tuo account è stato registrato con successo"
 
 #: [create]loading
@@ -428,7 +429,7 @@ msgid "Your Twitter Token"
 msgstr ""
 
 #: [twitter]info1
-msgid "The Twitter integration allow Movim to embed and extract the Tweets shared on the instance"
+msgid "The Twitter integration allows Movim to embed and extract the Tweets shared on the instance"
 msgstr ""
 
 #: [twitter]info2
@@ -710,7 +711,7 @@ msgid "%s is now member"
 msgstr ""
 
 #: [chat]publish_error
-msgid "An error occured when sending the message"
+msgid "An error occurred when sending the message"
 msgstr ""
 
 #: [chat]mam_retrieval
@@ -1140,7 +1141,8 @@ msgid "Hide the offline contacts"
 msgstr "Nascondi i messaggi non in linea"
 
 #: [config]appearence
-msgid "Appearence"
+#, fuzzy
+msgid "Appearance"
 msgstr "Aspetto"
 
 #: [config]updated
@@ -1204,8 +1206,9 @@ msgid "Archiving preferences saved"
 msgstr ""
 
 #: [config]blog_text
-msgid "Personnal blog confidentiality"
-msgstr ""
+#, fuzzy
+msgid "Personal blog confidentiality"
+msgstr "fiducioso"
 
 #
 # Translators:
@@ -1252,7 +1255,7 @@ msgid "Restricted to your subscribers only"
 msgstr ""
 
 #: [config]blog_saved
-msgid "Personnal blog confidentiality saved"
+msgid "Personal blog confidentiality saved"
 msgstr ""
 
 #: [config]confidentiality
@@ -1798,7 +1801,8 @@ msgid "Popups"
 msgstr "Popup"
 
 #: [onboarding]popups_text
-msgid "Movim is using popups for the video-conference feature, they are sometime blocked by the browsers"
+#, fuzzy
+msgid "Movim is using popups for the video-conference feature, they are sometimes blocked by the browsers"
 msgstr "Movim per le video conferenze usa i Popup, che a volte sono bloccati dai Browser"
 
 #: [onboarding]popups_text_second
@@ -2017,10 +2021,6 @@ msgstr "Aggiungi un file o immagine"
 msgid "You cannot publish a post here"
 msgstr "Non puoi pubblicare un post qui"
 
-#: [publish]no_content_preview
-msgid "No content to preview"
-msgstr "Nessun contenuto per l'anteprima"
-
 #: [publish]title
 msgid "Post title"
 msgstr ""
@@ -2198,7 +2198,7 @@ msgid "Chatroom cannot be joined, registration required"
 msgstr "Non puoi entrare in questa chatroom, è richiesta la registrazione"
 
 #: [chatrooms]itemnotfound
-msgid "The chatroom doesn’t exists"
+msgid "The chatroom doesn’t exist"
 msgstr ""
 
 #: [chatrooms]notauthorized
@@ -2242,7 +2242,8 @@ msgid "You are currently logged as an anonymous user."
 msgstr ""
 
 #: [room]anonymous_text2
-msgid "You can join using your own account or create one on the login page by loging out using the cross in the top-right corner."
+#, fuzzy
+msgid "You can join using your own account or create one on the login page by logging out using the cross in the top-right corner."
 msgstr "Puoi aggiungerti usando il tuo account o crearne uno nella pagina del login, usando la croce nell'angolo in alto a destra."
 
 #: [room]anonymous_login
@@ -2586,7 +2587,7 @@ msgid "John_Bob96"
 msgstr ""
 
 #: [profile]nickname_error
-msgid "Your nickname should only contains letters, numbers, - and _"
+msgid "Your nickname should only contain letters, numbers, - and _"
 msgstr ""
 
 #: [profile]nickname_conflict
@@ -2698,7 +2699,7 @@ msgid "Movim requires Javascript to be enabled to work properly."
 msgstr ""
 
 #: [global]description
-msgid "Movim is a kickass distributed social networking platform that protect your privacy and comes with a set of awesome features."
+msgid "Movim is a kickass distributed social networking platform that protects your privacy and comes with a set of awesome features."
 msgstr ""
 
 #: [global]loading
@@ -3590,3 +3591,6 @@ msgstr "L'API non è raggiungibile, riprovare più tardi"
 #: [field]type_here
 msgid "Type here"
 msgstr "Digita qui"
+
+#~ msgid "No content to preview"
+#~ msgstr "Nessun contenuto per l'anteprima"

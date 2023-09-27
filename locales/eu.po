@@ -121,7 +121,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-21 22:43+0200\n"
+"POT-Creation-Date: 2023-09-27 21:55+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Xabi, 2023\n"
 "Language-Team: Basque (http://app.transifex.com/movim/movim/language/eu/)\n"
@@ -229,7 +229,8 @@ msgid "OMEMO Key deletion"
 msgstr "Ezabatu OMEMO gakoak"
 
 #: [account]delete_bundle_text
-msgid "Your are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
+#, fuzzy
+msgid "You are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
 msgstr "Ondorengo OMEMO gakoa ezabatzear zaude. Zure kontaktuek ezingo dituzte mezuak enkriptatu gako horrekin hemendik aurrera. Ekintza hau ezin da desegin. Ziur zaude?"
 
 #: [create]title [subscribe]title
@@ -245,7 +246,8 @@ msgid "on"
 msgstr "zerbitzarian sortu"
 
 #: [create]successfull
-msgid "Your acccount has been successfully registered"
+#, fuzzy
+msgid "Your account has been successfully registered"
 msgstr "Zure kontua arazorik gabe erregistratu da"
 
 #: [create]loading
@@ -423,7 +425,8 @@ msgid "Your Twitter Token"
 msgstr "Zure Twitterren tokena"
 
 #: [twitter]info1
-msgid "The Twitter integration allow Movim to embed and extract the Tweets shared on the instance"
+#, fuzzy
+msgid "The Twitter integration allows Movim to embed and extract the Tweets shared on the instance"
 msgstr "Twitterren integrazioari esker Movimek txioak erakusteko aukera ematen du"
 
 #: [twitter]info2
@@ -705,7 +708,8 @@ msgid "%s is now member"
 msgstr "%s kide da orain"
 
 #: [chat]publish_error
-msgid "An error occured when sending the message"
+#, fuzzy
+msgid "An error occurred when sending the message"
 msgstr "Errore bat gertatu da mezua bidaltzerakoan"
 
 #: [chat]mam_retrieval
@@ -1135,7 +1139,8 @@ msgid "Hide the offline contacts"
 msgstr "Ezkutatu lineaz kanpo dauden kontaktuak"
 
 #: [config]appearence
-msgid "Appearence"
+#, fuzzy
+msgid "Appearance"
 msgstr "Itxura"
 
 #: [config]updated
@@ -1200,8 +1205,9 @@ msgid "Archiving preferences saved"
 msgstr "Artxibatze-ezarpenak gorde dira"
 
 #: [config]blog_text
-msgid "Personnal blog confidentiality"
-msgstr ""
+#, fuzzy
+msgid "Personal blog confidentiality"
+msgstr "ziur"
 
 #
 # Translators:
@@ -1243,7 +1249,7 @@ msgid "Restricted to your subscribers only"
 msgstr ""
 
 #: [config]blog_saved
-msgid "Personnal blog confidentiality saved"
+msgid "Personal blog confidentiality saved"
 msgstr ""
 
 #: [config]confidentiality
@@ -1789,7 +1795,8 @@ msgid "Popups"
 msgstr "laster-leihoak"
 
 #: [onboarding]popups_text
-msgid "Movim is using popups for the video-conference feature, they are sometime blocked by the browsers"
+#, fuzzy
+msgid "Movim is using popups for the video-conference feature, they are sometimes blocked by the browsers"
 msgstr "Movimek laster-leihoak darabiltza bideo-deietarako, batzuetan web-nabigatzaileek blokeatzen dituzte"
 
 #: [onboarding]popups_text_second
@@ -2008,10 +2015,6 @@ msgstr "Gehitu fitxategi edo irudi bat"
 msgid "You cannot publish a post here"
 msgstr "Ezin duzu hemen argitaratu"
 
-#: [publish]no_content_preview
-msgid "No content to preview"
-msgstr "Ez dago aurreikusteko edukirik"
-
 #: [publish]title
 msgid "Post title"
 msgstr "Argitalpenaren titulua"
@@ -2189,7 +2192,8 @@ msgid "Chatroom cannot be joined, registration required"
 msgstr "Ezin izan da txat-gelan sartu, erregistroa ezinbestekoa da"
 
 #: [chatrooms]itemnotfound
-msgid "The chatroom doesn’t exists"
+#, fuzzy
+msgid "The chatroom doesn’t exist"
 msgstr "Txat-gela ez da existitzen"
 
 #: [chatrooms]notauthorized
@@ -2233,7 +2237,8 @@ msgid "You are currently logged as an anonymous user."
 msgstr "Une honetan erabiltzaile anonimo bezala hasia duzu saioa"
 
 #: [room]anonymous_text2
-msgid "You can join using your own account or create one on the login page by loging out using the cross in the top-right corner."
+#, fuzzy
+msgid "You can join using your own account or create one on the login page by logging out using the cross in the top-right corner."
 msgstr "Zure kontu propioa erabiliz parte hartu dezakezu edo bestela sortu berri bat saioa hasteko orrialdean, goiko eta eskumako aldean ageri den gurutzea erabiliz saioa ixteko."
 
 #: [room]anonymous_login
@@ -2577,7 +2582,8 @@ msgid "John_Bob96"
 msgstr "Jon_Zaharra96"
 
 #: [profile]nickname_error
-msgid "Your nickname should only contains letters, numbers, - and _"
+#, fuzzy
+msgid "Your nickname should only contain letters, numbers, - and _"
 msgstr "Goitizenak hizkiak, zenbakiak eta '-' eta '_' bakarrik izan ditzake"
 
 #: [profile]nickname_conflict
@@ -2689,7 +2695,8 @@ msgid "Movim requires Javascript to be enabled to work properly."
 msgstr "Movimek Javascript behar du."
 
 #: [global]description
-msgid "Movim is a kickass distributed social networking platform that protect your privacy and comes with a set of awesome features."
+#, fuzzy
+msgid "Movim is a kickass distributed social networking platform that protects your privacy and comes with a set of awesome features."
 msgstr "Movim izugarrizko gizarte-sarerako plataforma deszentralizatua da zure pribatutasuna babesten duena eta funtzio zirraragarriak dakartza."
 
 #: [global]loading
@@ -3582,6 +3589,9 @@ msgstr "Ezin da APIa eskuratu, saiatu berriro beranduago"
 #: [field]type_here
 msgid "Type here"
 msgstr "Idatzi hemen"
+
+#~ msgid "No content to preview"
+#~ msgstr "Ez dago aurreikusteko edukirik"
 
 #~ msgid "Is this profile public?"
 #~ msgstr "Profil hau publikoa al da?"

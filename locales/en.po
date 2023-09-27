@@ -118,7 +118,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-08-21 22:43+0200\n"
+"POT-Creation-Date: 2023-09-27 21:55+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: English (http://app.transifex.com/movim/movim/language/en/)\n"
@@ -875,7 +875,8 @@ msgid "Communities server discovered"
 msgstr "Communities server discovered"
 
 #: [communities]disco_error
-msgid "This server doesn’t exist"
+#, fuzzy
+msgid "This server doesn’t exists"
 msgstr "This server doesn’t exist"
 
 #: [communitiesinteresting]about
@@ -947,7 +948,8 @@ msgid "You are going to delete the following community. Please confirm your acti
 msgstr "You are going to delete the following community. Please confirm your action."
 
 #: [communityaffiliation]delete_clean_text
-msgid "It seems that this community doesn’t exist anymore. Do you want to remove it from your subscriptions?"
+#, fuzzy
+msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
 msgstr "It seems that this community doesn’t exist anymore. Do you want to remove it from your subscriptions?"
 
 #: [communityaffiliation]config_error
@@ -1132,7 +1134,8 @@ msgid "Hide the offline contacts"
 msgstr "Hide the offline contacts"
 
 #: [config]appearence
-msgid "Appearence"
+#, fuzzy
+msgid "Appearance"
 msgstr "Appearence"
 
 #: [config]updated
@@ -2004,10 +2007,6 @@ msgstr "Add a file or a picture"
 msgid "You cannot publish a post here"
 msgstr "You cannot publish a post here"
 
-#: [publish]no_content_preview
-msgid "No content to preview"
-msgstr "No content to preview"
-
 #: [publish]title
 msgid "Post title"
 msgstr "Post title"
@@ -2185,7 +2184,8 @@ msgid "Chatroom cannot be joined, registration required"
 msgstr "Chatroom cannot be joined, registration required"
 
 #: [chatrooms]itemnotfound
-msgid "The chatroom doesn’t exists"
+#, fuzzy
+msgid "The chatroom doesn’t exist"
 msgstr "The chatroom doesn’t exists"
 
 #: [chatrooms]notauthorized
@@ -2229,7 +2229,8 @@ msgid "You are currently logged as an anonymous user."
 msgstr "You are currently logged as an anonymous user."
 
 #: [room]anonymous_text2
-msgid "You can join using your own account or create one on the login page by loging out using the cross in the top-right corner."
+#, fuzzy
+msgid "You can join using your own account or create one on the login page by logging out using the cross in the top-right corner."
 msgstr "You can join using your own account or create one on the login page by loging out using the cross in the top-right corner."
 
 #: [room]anonymous_login
@@ -3578,6 +3579,9 @@ msgstr "The API is not reachable, try again later"
 #: [field]type_here
 msgid "Type here"
 msgstr "Type here"
+
+#~ msgid "No content to preview"
+#~ msgstr "No content to preview"
 
 #~ msgid "Is this profile public?"
 #~ msgstr "Is this profile public?"
