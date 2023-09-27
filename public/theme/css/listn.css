@@ -430,6 +430,9 @@ ul li div.bubble p {
     white-space: pre-wrap;
     word-break: normal;
     position: relative;
+}
+
+ul li div.bubble:not(.file) p {
     margin-right: 1rem;
 }
 

@@ -139,22 +139,40 @@
     opacity: 0.8;
 }
 
-.previewable:after {
+.previewable:after,
+.previewable:before {
     color: white;
     font-family: 'Material Icons';
     content: "\e8ff";
     text-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
     position: absolute;
     display: block;
+    pointer-events: none;
+}
+
+.previewable:after {
+    content: "\e8ff";
     font-size: 3rem;
     right: 0.75rem;
     top: 1.25rem;
-    pointer-events: none;
+}
+
+.previewable[data-type="image/gif"]:before {
+    content: "\e908";
+    font-size: 5rem;
+    right: 0.5rem;
+    bottom: 0rem;
+    z-index: 1;
 }
 
 /** Chat bubble **/
 
 li:not(.oppose) .bubble .previewable:after {
-    right: 0;
+    right: auto;
     left: 0.75rem;
+}
+
+li:not(.oppose) .bubble .previewable:before {
+    left: 0.5rem;
+    right: auto;
 }

@@ -1065,6 +1065,7 @@ var Chat = {
             p.appendChild(Chat.getStickerHtml(data.sticker));
 
             if (data.file != null) {
+                p.dataset.type = data.file.type;
                 p.classList.add('previewable');
             }
         }
