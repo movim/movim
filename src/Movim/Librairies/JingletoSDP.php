@@ -75,6 +75,8 @@ class JingletoSDP
         $sdpTiming =
             't=0 0';
 
+        $sdpGroup = null;
+
         $sdpMedias = '';
 
         foreach ($this->jingle->children() as $content) {
@@ -86,11 +88,12 @@ class JingletoSDP
 
             // http://xmpp.org/extensions/xep-0338.html
             if ((string)$content->getName() == 'group') {
-                $sdpMedias .=
-                    "\r\na=group:" .
+                $sdpGroup .=
+                    "a=group:" .
                     (string)$content->attributes()->semantics;
+
                 foreach ($content->children() as $content) {
-                    $sdpMedias .= " " . (string)$content->attributes()->name;
+                    $sdpGroup .= " " . (string)$content->attributes()->name;
                 }
 
                 continue;
@@ -425,6 +428,8 @@ class JingletoSDP
             $this->sdp .= "\r\n" . $sdpOrigin;
             $this->sdp .= "\r\n" . $sdpSessionName;
             $this->sdp .= "\r\n" . $sdpTiming;
+
+            if ($sdpGroup) $this->sdp .= "\r\n" . $sdpGroup;
         }
 
         $this->sdp .= $sdpMedias;

@@ -5,6 +5,7 @@ v0.22.5 (trunk)
 ---------------------------
 * Improving some image thumbnail support
 * Add support of animated GIF in the picture thumbnailer
+* Fix #1233 Movim doesn't correctly set the group SDP attribute
 
 v0.22.4
 ---------------------------
