@@ -98,6 +98,7 @@
                         {else}
                             placeholder="{$c->__('chat.placeholder')}"
                         {/if}
+                        {if="isset($conference) && $conference->presence && $conference->presence->mucrole == 'visitor'"}disabled{/if}
                     ></textarea>
                     <span class="control icon encrypted" title="{$c->__('omemo.encrypted')}"
                         onclick="ChatOmemo.disableContactState('{$jid}')">
