@@ -160,6 +160,8 @@ This daemon will be killed once your console is closed. Consider using `systemd`
 
 Create a virtualhost on your preferred webserver and point the root to the `public/index.php` file. You can have a look at the [default configuration files that we provide](https://github.com/movim/movim/tree/master/etc) if you need some help about that part.
 
+Movim is developped to work at the root of a domain or subdomain. __Don't try to deploy it as a subdirectory__ or you might face some unexpected issues.
+
 ### 5.2. Daemon Websocket proxy
 
 When you launch the daemon, **it will generate the configuration** to apply to the Virtualhost file to "proxify" the WebSockets and display it in the console.

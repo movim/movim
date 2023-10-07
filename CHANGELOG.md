@@ -7,6 +7,7 @@ v0.22.5 (trunk)
 * Add support of animated GIF in the picture thumbnailer
 * Fix #1233 Movim doesn't correctly set the group SDP attribute
 * Fix #1234 Disable the chat textarea when the user is a visitor
+* Fix #1222 Adding a sentence in the INSTALL.md to ask to deploy Movim as a domain or subdomain
 
 v0.22.4
 ---------------------------
