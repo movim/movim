@@ -46,8 +46,10 @@ var MovimUtils = {
     },
     formToJson: function (formname) {
         var form = document.forms[formname];
-        if (!form)
+
+        if (!form) {
             return false;
+        }
 
         var json = {};
 

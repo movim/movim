@@ -25,7 +25,7 @@ class CommunityAffiliations extends Base
 
     public function onAffiliations($packet)
     {
-        list($affiliations, $origin, $node) = array_values($packet->content);
+        list($affiliations, $server, $node) = array_values($packet->content);
 
         $role = null;
 
@@ -39,13 +39,13 @@ class CommunityAffiliations extends Base
 
         $view = $this->tpl();
         $view->assign('role', $role);
-        $view->assign('info', \App\Info::where('server', $origin)
+        $view->assign('info', \App\Info::where('server', $server)
                                        ->where('node', $node)
                                        ->first());
-        $view->assign('server', $origin);
+        $view->assign('server', $server);
         $view->assign('node', $node);
         $view->assign('affiliations', $affiliations);
-        $view->assign('rostersubscriptions', \App\Subscription::where('server', $origin)
+        $view->assign('rostersubscriptions', \App\Subscription::where('server', $server)
                 ->where('node', $node)
                 ->where('public', true)
                 ->whereIn('jid', function ($query) {
@@ -54,7 +54,7 @@ class CommunityAffiliations extends Base
                           ->where('session_id', SESSION_ID);
                 })
                 ->get());
-        $view->assign('allsubscriptionscount', \App\Subscription::where('server', $origin)
+        $view->assign('allsubscriptionscount', \App\Subscription::where('server', $server)
                 ->where('node', $node)
                 ->where('public', true)
                 ->count());
@@ -68,12 +68,12 @@ class CommunityAffiliations extends Base
         // If the configuration is open, we fill it
         $view = $this->tpl();
 
-        $caps = \App\Info::where('server', $origin)->where('node', '')->first();
+        $caps = \App\Info::where('server', $server)->where('node', '')->first();
 
-        $view->assign('subscriptions', \App\Subscription::where('server', $origin)
+        $view->assign('subscriptions', \App\Subscription::where('server', $server)
                 ->where('node', $node)
                 ->get());
-        $view->assign('server', $origin);
+        $view->assign('server', $server);
         $view->assign('node', $node);
         $view->assign('affiliations', $affiliations);
         $view->assign('me', $this->user->id);
@@ -93,14 +93,14 @@ class CommunityAffiliations extends Base
 
     public function onSubscriptions($packet)
     {
-        list($subscriptions, $origin, $node) = array_values($packet->content);
+        list($subscriptions, $server, $node) = array_values($packet->content);
 
         $view = $this->tpl();
 
-        $view->assign('subscriptions', \App\Subscription::where('server', $origin)
+        $view->assign('subscriptions', \App\Subscription::where('server', $server)
                 ->where('node', $node)
                 ->get());
-        $view->assign('server', $origin);
+        $view->assign('server', $server);
         $view->assign('node', $node);
 
         Dialog::fill($view->draw('_communityaffiliations_subscriptions'), true);
@@ -142,10 +142,10 @@ class CommunityAffiliations extends Base
         return \App\Contact::firstOrNew(['id' => $jid]);
     }
 
-    public function ajaxShowFullPublicSubscriptionsList($origin, $node)
+    public function ajaxShowFullPublicSubscriptionsList(string $server, string $node)
     {
         $view = $this->tpl();
-        $view->assign('subscriptions', \App\Subscription::where('server', $origin)
+        $view->assign('subscriptions', \App\Subscription::where('server', $server)
                 ->where('node', $node)
                 ->where('public', true)
                 ->get());
@@ -153,80 +153,80 @@ class CommunityAffiliations extends Base
         Dialog::fill($view->draw('_communityaffiliations_public_subscriptions_dialog'), true);
     }
 
-    public function ajaxGetAffiliations($origin, $node)
+    public function ajaxGetAffiliations(string $server, string $node)
     {
-        if (!validateServerNode($origin, $node)) {
+        if (!validateServerNode($server, $node)) {
             return;
         }
 
         $r = new GetAffiliations;
-        $r->setTo($origin)->setNode($node)
+        $r->setTo($server)->setNode($node)
           ->request();
     }
 
-    public function ajaxGetSubscriptions($origin, $node, $notify = true)
+    public function ajaxGetSubscriptions(string $server, string $node, $notify = true)
     {
-        if (!validateServerNode($origin, $node)) {
+        if (!validateServerNode($server, $node)) {
             return;
         }
 
         $r = new GetSubscriptions;
-        $r->setTo($origin)
+        $r->setTo($server)
           ->setNode($node)
           ->setNotify($notify)
           ->request();
     }
 
-    public function ajaxDelete($origin, $node, $clean = false)
+    public function ajaxDelete(string $server, string $node, $clean = false)
     {
-        if (!validateServerNode($origin, $node)) {
+        if (!validateServerNode($server, $node)) {
             return;
         }
 
         $view = $this->tpl();
-        $view->assign('server', $origin);
+        $view->assign('server', $server);
         $view->assign('node', $node);
         $view->assign('clean', $clean);
 
         Dialog::fill($view->draw('_communityaffiliations_delete'));
     }
 
-    public function ajaxDeleteConfirm($origin, $node)
+    public function ajaxDeleteConfirm(string $server, string $node)
     {
-        if (!validateServerNode($origin, $node)) {
+        if (!validateServerNode($server, $node)) {
             return;
         }
 
-        (new CommunityHeader)->ajaxUnsubscribe($origin, $node);
+        (new CommunityHeader)->ajaxUnsubscribe($server, $node);
 
         $d = new Delete;
-        $d->setTo($origin)->setNode($node)
+        $d->setTo($server)->setNode($node)
           ->request();
     }
 
-    public function ajaxAffiliations($origin, $node)
+    public function ajaxAffiliations(string $server, string $node)
     {
         $view = $this->tpl();
-        $view->assign('server', $origin);
+        $view->assign('server', $server);
         $view->assign('node', $node);
 
         Dialog::fill($view->draw('_communityaffiliations_config'));
 
-        $this->ajaxGetAffiliations($origin, $node);
+        $this->ajaxGetAffiliations($server, $node);
     }
 
-    public function ajaxChangeAffiliation($origin, $node, $form)
+    public function ajaxChangeAffiliation(string $server, string $node, $form)
     {
-        if (!validateServerNode($origin, $node)) {
+        if (!validateServerNode($server, $node)) {
             return;
         }
 
-        $caps = \App\Info::where('server', $origin)->first();
+        $caps = \App\Info::where('server', $server)->where('node', '')->first();
 
         if (Validator::in($caps ? array_keys($caps->getPubsubRoles()) : [])->validate($form->role->value)
         && Validator::stringType()->length(2, 100)->validate($form->jid->value)) {
             $sa = new SetAffiliations;
-            $sa->setTo($origin)
+            $sa->setTo($server)
                ->setNode($node)
                ->setData([$form->jid->value => $form->role->value])
                ->request();

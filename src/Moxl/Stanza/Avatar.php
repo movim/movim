@@ -59,7 +59,7 @@ class Avatar
         \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'set'));
     }
 
-    public static function setMetadata($data, $url = false, $to = false, $node = false, $width = 512, $height = 512)
+    public static function setMetadata($data, $url = false, $to = false, $node = false, $width = 512, $height = 512, bool $withPublishOption = true)
     {
         $decoded = base64_decode($data);
 
@@ -91,6 +91,18 @@ class Avatar
         $info->setAttribute('id', sha1($decoded));
         $info->setAttribute('bytes', strlen($decoded));
         $metadata->appendChild($info);
+
+        if ($withPublishOption) {
+            $publishOption = $dom->createElement('publish-options');
+            $x = $dom->createElement('x');
+            $x->setAttribute('xmlns', 'jabber:x:data');
+            $x->setAttribute('type', 'submit');
+            $publishOption->appendChild($x);
+
+            \Moxl\Utils::injectConfigInX($x, self::$nodeConfig);
+
+            $pubsub->appendChild($publishOption);
+        }
 
         \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'set'));
     }

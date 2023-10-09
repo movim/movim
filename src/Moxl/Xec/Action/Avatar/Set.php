@@ -25,7 +25,7 @@ class Set extends Action
         }
 
         Avatar::setMetadata($this->_data, $this->_url, $this->_to, $this->_node,
-            $this->_widthMetadata, $this->_heightMetadata);
+            $this->_widthMetadata, $this->_heightMetadata, $this->_withPublishOption);
     }
 
     public function setWidthMetadata($width)
