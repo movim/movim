@@ -7,7 +7,7 @@
                     <i class="material-icons">arrow_back</i>
                 </span>
 
-                {if="$post->isMine()"}
+                {if="$post->isMine() || ($post->userAffiliation && $post->userAffiliation->affiliation == 'owner')"}
                     {if="$post->isEditable()"}
                         <span class="control icon active gray"
                               onclick="MovimUtils.reload('{$c->route('publish', [$post->server, $post->node, $post->nodeid])}')"
@@ -57,11 +57,11 @@
                     </span>
                 {/if}
             {else}
-                {if="$info != null"}
+                {if="$post->info != null"}
                     <span class="primary icon bubble active"
                         onclick="MovimUtils.reload('{$c->route('community', [$post->server, $post->node])}')"
                     >
-                        <img src="{$info->getPicture('l')}"/>
+                        <img src="{$post->info->getPicture('l')}"/>
                     </span>
                 {else}
                     <span class="primary icon bubble color {$post->node|stringToColor} active"
@@ -101,9 +101,12 @@
                 <p>
                     {if="$contact"}
                         {if="!$public"}
-                        <a href="#" onclick="if (typeof Post_ajaxGetContact == 'function') { Post_ajaxGetContact('{$contact->jid}'); } else { Group_ajaxGetContact('{$contact->jid}'); } ">
+                            <span class="icon bubble tiny">
+                                <img src="{$contact->getPicture()}">
+                            </span>
+                            <a href="#" onclick="if (typeof Post_ajaxGetContact == 'function') { Post_ajaxGetContact('{$contact->jid}'); } else { Group_ajaxGetContact('{$contact->jid}'); } ">
                         {/if}
-                        {$contact->truename}
+                            {$contact->truename}
                         {if="!$public"}</a>{/if} ·
                     {elseif="$post->aname"}
                         {$post->aname} ·

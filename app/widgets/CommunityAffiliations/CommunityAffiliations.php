@@ -1,5 +1,6 @@
 <?php
 
+use App\Affiliation;
 use Movim\Widget\Base;
 
 use Moxl\Xec\Action\Pubsub\Delete;
@@ -14,7 +15,6 @@ class CommunityAffiliations extends Base
     public function load()
     {
         $this->registerEvent('pubsub_getaffiliations_handle', 'onAffiliations');
-        $this->registerEvent('disco_request_affiliations', 'onAffiliations');
         $this->registerEvent('pubsub_setaffiliations_handle', 'onAffiliationsSet');
         $this->registerEvent('pubsub_delete_handle', 'onDelete');
         $this->registerEvent('pubsub_delete_error', 'onDeleteError');
@@ -25,39 +25,33 @@ class CommunityAffiliations extends Base
 
     public function onAffiliations($packet)
     {
-        list($affiliations, $server, $node) = array_values($packet->content);
+        list($server, $node) = array_values($packet->content);
 
-        $role = null;
-
-        if (array_key_exists('owner', $affiliations)) {
-            foreach ($affiliations['owner'] as $r) {
-                if ($r['jid'] == $this->user->id) {
-                    $role = 'owner';
-                }
-            }
-        }
+        $affiliations = Affiliation::where('server', $server)
+            ->where('node', $node)
+            ->get();
 
         $view = $this->tpl();
-        $view->assign('role', $role);
+        $view->assign('myaffiliation', $affiliations->where('jid', $this->user->id)->first());
         $view->assign('info', \App\Info::where('server', $server)
-                                       ->where('node', $node)
-                                       ->first());
+            ->where('node', $node)
+            ->first());
         $view->assign('server', $server);
         $view->assign('node', $node);
         $view->assign('affiliations', $affiliations);
         $view->assign('rostersubscriptions', \App\Subscription::where('server', $server)
-                ->where('node', $node)
-                ->where('public', true)
-                ->whereIn('jid', function ($query) {
-                    $query->from('rosters')
-                          ->select('jid')
-                          ->where('session_id', SESSION_ID);
-                })
-                ->get());
+            ->where('node', $node)
+            ->where('public', true)
+            ->whereIn('jid', function ($query) {
+                $query->from('rosters')
+                    ->select('jid')
+                    ->where('session_id', SESSION_ID);
+            })
+            ->get());
         $view->assign('allsubscriptionscount', \App\Subscription::where('server', $server)
-                ->where('node', $node)
-                ->where('public', true)
-                ->count());
+            ->where('node', $node)
+            ->where('public', true)
+            ->count());
 
         $this->rpc(
             'MovimTpl.fill',
@@ -71,8 +65,8 @@ class CommunityAffiliations extends Base
         $caps = \App\Info::where('server', $server)->where('node', '')->first();
 
         $view->assign('subscriptions', \App\Subscription::where('server', $server)
-                ->where('node', $node)
-                ->get());
+            ->where('node', $node)
+            ->get());
         $view->assign('server', $server);
         $view->assign('node', $node);
         $view->assign('affiliations', $affiliations);
@@ -98,8 +92,8 @@ class CommunityAffiliations extends Base
         $view = $this->tpl();
 
         $view->assign('subscriptions', \App\Subscription::where('server', $server)
-                ->where('node', $node)
-                ->get());
+            ->where('node', $node)
+            ->get());
         $view->assign('server', $server);
         $view->assign('node', $node);
 
@@ -108,8 +102,10 @@ class CommunityAffiliations extends Base
 
     private function deleted($packet)
     {
-        if ($packet->content['server'] != $this->user->id
-        && substr($packet->content['node'], 0, 29) != 'urn:xmpp:microblog:0:comments') {
+        if (
+            $packet->content['server'] != $this->user->id
+            && substr($packet->content['node'], 0, 29) != 'urn:xmpp:microblog:0:comments'
+        ) {
             Toast::send($this->__('communityaffiliation.deleted'));
 
             $this->rpc(
@@ -146,9 +142,9 @@ class CommunityAffiliations extends Base
     {
         $view = $this->tpl();
         $view->assign('subscriptions', \App\Subscription::where('server', $server)
-                ->where('node', $node)
-                ->where('public', true)
-                ->get());
+            ->where('node', $node)
+            ->where('public', true)
+            ->get());
 
         Dialog::fill($view->draw('_communityaffiliations_public_subscriptions_dialog'), true);
     }
@@ -161,7 +157,7 @@ class CommunityAffiliations extends Base
 
         $r = new GetAffiliations;
         $r->setTo($server)->setNode($node)
-          ->request();
+            ->request();
     }
 
     public function ajaxGetSubscriptions(string $server, string $node, $notify = true)
@@ -172,9 +168,9 @@ class CommunityAffiliations extends Base
 
         $r = new GetSubscriptions;
         $r->setTo($server)
-          ->setNode($node)
-          ->setNotify($notify)
-          ->request();
+            ->setNode($node)
+            ->setNotify($notify)
+            ->request();
     }
 
     public function ajaxDelete(string $server, string $node, $clean = false)
@@ -201,7 +197,7 @@ class CommunityAffiliations extends Base
 
         $d = new Delete;
         $d->setTo($server)->setNode($node)
-          ->request();
+            ->request();
     }
 
     public function ajaxAffiliations(string $server, string $node)
@@ -223,13 +219,15 @@ class CommunityAffiliations extends Base
 
         $caps = \App\Info::where('server', $server)->where('node', '')->first();
 
-        if (Validator::in($caps ? array_keys($caps->getPubsubRoles()) : [])->validate($form->role->value)
-        && Validator::stringType()->length(2, 100)->validate($form->jid->value)) {
+        if (
+            Validator::in($caps ? array_keys($caps->getPubsubRoles()) : [])->validate($form->role->value)
+            && Validator::stringType()->length(2, 100)->validate($form->jid->value)
+        ) {
             $sa = new SetAffiliations;
             $sa->setTo($server)
-               ->setNode($node)
-               ->setData([$form->jid->value => $form->role->value])
-               ->request();
+                ->setNode($node)
+                ->setData([$form->jid->value => $form->role->value])
+                ->request();
         }
     }
 

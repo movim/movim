@@ -1,4 +1,4 @@
-{if="$role == 'owner' && $info"}
+{if="$myaffiliation && $myaffiliation->affiliation == 'owner' && $info"}
     <ul class="list active">
         <li onclick="CommunityConfig_ajaxGetAvatar('{$info->server|echapJS}', '{$info->node|echapJS}')">
             <span class="primary icon gray">
@@ -43,15 +43,15 @@
     </ul>
 {/if}
 
-{if="array_key_exists('owner', $affiliations)"}
+{if="$affiliations->where('affiliation', 'owner')->isNotEmpty()"}
     <ul class="list card active">
         <li class="subheader">
             <div>
                 <p>{$c->__('communityaffiliation.owners')}</p>
             </div>
         </li>
-        {loop="$affiliations['owner']"}
-            {$contact = $c->getContact($value['jid'])}
+        {loop="$affiliations->where('affiliation', 'owner')"}
+            {$contact = $c->getContact($value->jid)}
             <li title="{$contact->jid}"
                 onclick="MovimUtils.reload('{$c->route('contact', $contact->jid)}')">
                 <span class="primary icon bubble">
@@ -66,15 +66,15 @@
     </ul>
 {/if}
 
-{if="array_key_exists('publisher', $affiliations)"}
+{if="$affiliations->where('affiliation', 'publisher')->isNotEmpty()"}
 <ul class="list card active">
     <li class="subheader">
         <div>
             <p>{$c->__('communityaffiliation.publishers')}</p>
         </div>
     </li>
-    {loop="$affiliations['publisher']"}
-        {$contact = $c->getContact($value['jid'])}
+    {loop="$affiliations->where('affiliation', 'publisher')"}
+        {$contact = $c->getContact($value->jid)}
         <li title="{$contact->jid}"
             onclick="MovimUtils.reload('{$c->route('contact', $contact->jid)}')">
             <span class="primary icon bubble">

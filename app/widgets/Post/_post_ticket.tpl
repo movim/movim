@@ -39,10 +39,10 @@
                 <span class="icon bubble tiny">
                     <img src="{$post->contact->getPicture()}">
                 </span>
-                <a href="{$c->route('contact', $post->contact->jid)}">
-                    {$post->contact->truename}
-                </a>
             {/if}
+            <a href="{$c->route('contact', $post->aid)}">
+                {$post->truename}
+            </a>
 
             {if="!$post->isMicroblog()"}
                 <a class="node"

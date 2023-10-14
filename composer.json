@@ -43,7 +43,8 @@
         "ratchet/pawl": "^0.4",
         "minishlink/web-push": "^8.0",
         "vlucas/phpdotenv": "^5.5",
-        "react/promise-timer": "^1.10"
+        "react/promise-timer": "^1.10",
+        "awobaz/compoships": "^2.2"
     },
     "config": {
         "platform": {

@@ -210,21 +210,21 @@ class Post extends Base
         return $view->draw('_post_not_found');
     }
 
-    public function preparePost(\App\Post $p, $public = false, $card = false, $requestComments = true)
+    public function preparePost(\App\Post $post, $public = false, $card = false, $requestComments = true)
     {
-        if (isset($p)) {
+        if (isset($post)) {
             $view = $this->tpl();
 
             $commentsDisabled = false;
 
-            if ($p->hasCommentsNode()
+            if ($post->hasCommentsNode()
             && !$public && !$card) {
                 if ($requestComments) {
-                    $this->requestComments($p); // Broken in case of repost
+                    $this->requestComments($post); // Broken in case of repost
                 }
             } elseif (!$card) {
                 $viewd = $this->tpl();
-                $viewd->assign('post', $p);
+                $viewd->assign('post', $post);
 
                 if ($requestComments) {
                     $commentsDisabled = $viewd->draw('_post_comments_error');
@@ -233,14 +233,11 @@ class Post extends Base
 
             $view->assign('commentsdisabled', $commentsDisabled);
             $view->assign('public', $public);
-            $view->assign('reply', $p->isReply() ? $p->getReply() : false);
-            $view->assign('repost', $p->isRecycled() ? \App\Contact::find($p->server) : false);
+            $view->assign('reply', $post->isReply() ? $post->getReply() : false);
+            $view->assign('repost', $post->isRecycled() ? \App\Contact::find($post->server) : false);
 
             $view->assign('nsfw', $this->user->nsfw);
-            $view->assign('post', $p);
-            $view->assign('info', \App\Info::where('server', $p->server)
-                                           ->where('node', $p->node)
-                                           ->first());
+            $view->assign('post', $post);
 
             return ($card)
                 ? $view->draw('_post_card')

@@ -1,10 +1,8 @@
 <h3>{$c->__('communityaffiliation.roles')}</h3>
 <br />
 <ul class="list thin">
-    {loop="$affiliations"}
-        {$role = $key}
-        {loop="$affiliations[$role]"}
-            {$contact = $c->getContact($value['jid'])}
+        {loop="$affiliations"}
+            {$contact = $c->getContact($value->jid)}
             <li title="{$contact->jid}">
                 <span class="primary icon bubble">
                     <img src="{$contact->getPicture('m')}">
@@ -12,23 +10,19 @@
                 <form name="{$contact->jid}">
                     <input type="hidden" name="jid" value="{$contact->jid}"/>
                     <div>
-                        {if="$role == 'owner' && $contact->jid == $me"}
+                        {if="$value->affiliation == 'owner' && $contact->jid == $me"}
                             <input type="text" disabled value="{$c->__('affiliation.owner')}"/>
                         {else}
                         <div class="select">
                             <select name="role" id="role" onchange="CommunityAffiliations.update('{$contact->jid}')">
+                                {$affiliation = $value->affiliation}
                                 {loop="$roles"}
-                                    {if="$key == $role"}
-                                        <option
-                                            value="{$key}"
-                                            selected="selected">
-                                            {$value}
-                                        </option>
-                                    {else}
-                                        <option value="{$key}">
-                                            {$value}
-                                        </option>
-                                    {/if}
+                                    <option
+                                        value="{$key}"
+                                        {if="$key == $affiliation"}selected="selected"{/if}
+                                    >
+                                        {$value}
+                                    </option>
                                 {/loop}
                             </select>
                         </div>
@@ -38,7 +32,6 @@
                 </form>
             </li>
         {/loop}
-    {/loop}
 
     <br />
     <hr />
@@ -64,17 +57,14 @@
                 <div class="select">
                     <select name="role" id="role" onchange="">
                         {loop="$roles"}
-                            {if="$key == 'none'"}
-                                <option
-                                    value="{$key}"
-                                    selected="selected">
-                                    {$value}
-                                </option>
-                            {else}
-                                <option value="{$key}">
-                                    {$value}
-                                </option>
-                            {/if}
+                            <option
+                                value="{$key}"
+                                {if="$key == 'none'"}
+                                    selected="selected"
+                                {/if}
+                            >
+                                {$value}
+                            </option>
                         {/loop}
                     </select>
                 </div>

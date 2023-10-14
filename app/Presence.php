@@ -4,7 +4,6 @@ namespace App;
 
 use Movim\Model;
 use Movim\Image;
-use Movim\Route;
 use Movim\Session;
 use Moxl\Xec\Action\Presence\Muc;
 

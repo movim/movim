@@ -206,8 +206,6 @@ class CommunityPosts extends Base
                                            ->first());
         $view->assign('paging', $this->_paging);
 
-        $view->assign('gallery', $info && $info->isGallery());
-
         $view->assign('publicposts', ($ids == false)
             ? \App\Post::where('server', $origin)
                        ->where('node', $node)

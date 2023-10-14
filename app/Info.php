@@ -2,8 +2,7 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-use Movim\Route;
+use Movim\Model;
 
 class Info extends Model
 {

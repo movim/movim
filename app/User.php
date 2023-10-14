@@ -142,6 +142,11 @@ class User extends Model
         return $this->hasMany('App\Subscription', 'jid', 'id');
     }
 
+    public function affiliations()
+    {
+        return $this->hasMany('App\Affiliation', 'jid', 'id');
+    }
+
     public static function me($reload = false): User
     {
         $session = Session::start();

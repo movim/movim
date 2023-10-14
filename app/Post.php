@@ -4,18 +4,20 @@ namespace App;
 
 use Respect\Validation\Validator;
 
-use Illuminate\Database\Eloquent\Model;
+use Awobaz\Compoships\Database\Eloquent\Model;
 use Illuminate\Database\Capsule\Manager as DB;
 
 class Post extends Model
 {
+    use \Awobaz\Compoships\Compoships;
+
     protected $primaryKey = 'id';
 
     protected $guarded = [];
     public $with = ['attachments', 'likes', 'comments',
                     'contact',  'openlink', 'embed',
                     'links', 'files', 'pictures', 'picture',
-                    'attachment'];
+                    'attachment', 'userAffiliation'];
     public $withCount = ['userViews'];
 
     private $titleLimit = 200;
@@ -48,8 +50,13 @@ class Post extends Model
 
     public function info()
     {
-        return $this->hasOne('App\Info', 'server', 'server')
-                    ->where('node', $this->node);
+        return $this->hasOne('App\Info', ['server', 'node'], ['server', 'node']);
+    }
+
+    public function userAffiliation()
+    {
+        return $this->hasOne('App\Affiliation', ['server', 'node'], ['server', 'node'])
+                    ->where('jid', \App\User::me()->id);
     }
 
     public function userViews()

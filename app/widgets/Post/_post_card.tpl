@@ -34,16 +34,23 @@
                     {/autoescape}
                 </p>
                 <p>
-                    {if="$post->isMicroblog()"}
-                        <a  {if="$public"}
-                                href="{$c->route('blog', $post->aid)}"
-                            {else}
-                                href="{$c->route('contact', $post->aid)}"
+                    {if="!$post->isMicroblog()"}
+                        {if="$post->aid"}
+                            {if="$post->contact"}
+                                <span class="icon bubble tiny">
+                                    <img src="{$post->contact->getPicture()}">
+                                </span>
                             {/if}
-                        >
-                            {$post->truename}
-                        </a> ·
-                    {else}
+                            <a  {if="$public"}
+                                    href="{$c->route('blog', $post->aid)}"
+                                {else}
+                                    href="{$c->route('contact', $post->aid)}"
+                                {/if}
+                            >
+                                {$post->truename}
+                            </a> ·
+                        {/if}
+
                         {if="$public"}
                             {$post->server}
                         {else}
@@ -214,7 +221,7 @@
                         {/if}
                     {/if}
 
-                    {if="$post->isMine()"}
+                    {if="$post->isMine() || ($post->userAffiliation && $post->userAffiliation->affiliation == 'owner')"}
                         {if="$post->isEditable()"}
                             <a class="button narrow icon flat oppose gray on_desktop"
                             href="{$c->route('publish', [$post->server, $post->node, $post->nodeid])}"

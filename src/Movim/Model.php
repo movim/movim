@@ -12,6 +12,8 @@ use Illuminate\Database\Eloquent\Model as EloquentModel;
 
 class Model extends EloquentModel
 {
+    use \Awobaz\Compoships\Compoships;
+
     /**
      * The "type" of the primary key ID.
      *

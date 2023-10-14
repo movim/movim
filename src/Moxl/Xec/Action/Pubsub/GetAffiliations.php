@@ -2,6 +2,7 @@
 
 namespace Moxl\Xec\Action\Pubsub;
 
+use App\Affiliation;
 use Moxl\Stanza\Pubsub;
 use Moxl\Xec\Action;
 
@@ -18,18 +19,18 @@ class GetAffiliations extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $tab = [];
+        Affiliation::where('server', $this->_to)->where('node', $this->_node)->delete();
+
         foreach ($stanza->pubsub->affiliations->children() as $i) {
-            $affiliation = (string)$i['affiliation'];
-
-            if (!array_key_exists($affiliation, $tab)) {
-                $tab[$affiliation] = [];
-            }
-
-            array_push($tab[$affiliation], ['jid' => (string)$i['jid'], 'subid' => (string)$i['subid']]);
+            $affiliation = new Affiliation;
+            $affiliation->server = $this->_to;
+            $affiliation->node = $this->_node;
+            $affiliation->jid = (string)$i['jid'];
+            $affiliation->affiliation = (string)$i['affiliation'];
+            $affiliation->save();
         }
 
-        $this->pack(['affiliations' => $tab, 'server' => $this->_to, 'node' => $this->_node]);
+        $this->pack(['server' => $this->_to, 'node' => $this->_node]);
         $this->deliver();
     }
 }

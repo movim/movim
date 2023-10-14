@@ -1,8 +1,8 @@
 {if="!empty($ids)"}
-    <ul class="list card shadow {if="$gallery"}middle flex third gallery large active{/if}">
+    <ul class="list card shadow {if="$info && $info->isGallery()"}middle flex third gallery large active{/if}">
     {loop="$ids"}
         {if="isset($posts[$value])"}
-            {if="$gallery"}
+            {if="$info && $info->isGallery()"}
                 {autoescape="off"}
                     {$c->prepareTicket($posts[$value])}
                 {/autoescape}
@@ -17,9 +17,9 @@
     {/loop}
     </ul>
 {elseif="$publicposts->isNotEmpty()"}
-    <ul class="list card shadow {if="$gallery"}flex third gallery large active{/if}">
+    <ul class="list card shadow {if="$info && $info->isGallery()"}flex third gallery large active{/if}">
     {loop="$publicposts"}
-        {if="$gallery"}
+        {if="$info && $info->isGallery()"}
             {autoescape="off"}
                 {$c->prepareTicket($value)}
             {/autoescape}
