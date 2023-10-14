@@ -101,9 +101,11 @@
                 <p>
                     {if="$contact"}
                         {if="!$public"}
-                            <span class="icon bubble tiny">
-                                <img src="{$contact->getPicture()}">
-                            </span>
+                            {if="!$post->isMicroblog()"}
+                                <span class="icon bubble tiny">
+                                    <img src="{$contact->getPicture()}">
+                                </span>
+                            {/if}
                             <a href="#" onclick="if (typeof Post_ajaxGetContact == 'function') { Post_ajaxGetContact('{$contact->jid}'); } else { Group_ajaxGetContact('{$contact->jid}'); } ">
                         {/if}
                             {$contact->truename}
