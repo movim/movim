@@ -58,7 +58,6 @@
     </header>
 
     <div class="block">
-        <br />
         <ul class="list">
             {if="isset($replyblock)"}
                 <li>
@@ -102,6 +101,7 @@
                     </div>
                 </form>
             </li>
+            <br />
             <li class="contenthelper">
                 <div>
                     <p></p>
