@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Info extends Model
 {
+    use \Awobaz\Compoships\Compoships;
+
     protected $fillable = ['server', 'node', 'avatarhash'];
     protected $with = ['identities'];
 
