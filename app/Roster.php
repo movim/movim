@@ -3,7 +3,6 @@
 namespace App;
 
 use Movim\Model;
-use Movim\Route;
 
 class Roster extends Model
 {
