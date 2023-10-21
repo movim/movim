@@ -82,21 +82,23 @@ movimAddOnload(function () {
      */
     const pwaButton = document.querySelector('#pwa');
 
-    window.addEventListener('beforeinstallprompt', (e) => {
-        e.preventDefault();
-        deferredPrompt = e;
-        pwaButton.style.display = 'initial';
+    if (pwaButton) {
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            pwaButton.style.display = 'initial';
 
-        pwaButton.addEventListener('click', () => {
-            deferredPrompt.prompt();
+            pwaButton.addEventListener('click', () => {
+                deferredPrompt.prompt();
 
-            deferredPrompt.userChoice.then((choiceResult) => {
-                if (choiceResult.outcome === 'accepted') {
-                    console.log('Movim App installed');
-                }
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('Movim App installed');
+                    }
 
-                deferredPrompt = null;
+                    deferredPrompt = null;
+                });
             });
         });
-    });
+    }
 });
