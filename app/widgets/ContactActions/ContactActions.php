@@ -104,7 +104,7 @@ class ContactActions extends Base
             $this->rpc('ContactActions_ajaxHttpGetLinks', $jid);
         }
 
-        if ($hasFingerprints) {
+        if ($this->user->hasOMEMO() && $hasFingerprints) {
             $this->rpc('ContactActions.getDrawerFingerprints', $jid);
         }
     }

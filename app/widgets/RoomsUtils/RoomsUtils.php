@@ -114,7 +114,7 @@ class RoomsUtils extends Base
             $this->rpc('RoomsUtils_ajaxHttpGetLinks', $room);
         }
 
-        if ($hasFingerprints) {
+        if ($this->user->hasOMEMO() && $hasFingerprints) {
             $this->rpc('RoomsUtils.getDrawerFingerprints', $room);
         }
     }
