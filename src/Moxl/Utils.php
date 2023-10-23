@@ -94,14 +94,14 @@ class Utils
             $field->appendChild($val);
 
             if (is_bool($value)) {
-                $val->nodeValue = ($value) ? '1' : '0';
+                $val->nodeValue = ($value) ? 'true' : 'false';
             } else {
                 if ($value === 'true') {
-                    $val->nodeValue = '1';
+                    $val->nodeValue = 'true';
                 }
 
                 if ($value === 'false') {
-                    $val->nodeValue = '0';
+                    $val->nodeValue = 'false';
                 } elseif (empty($val->nodeValue)) {
                     $val->nodeValue = trim($value);
                 }
