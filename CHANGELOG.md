@@ -9,6 +9,7 @@ v0.22.5 (trunk)
 * Fix #1234 Disable the chat textarea when the user is a visitor
 * Fix #1222 Adding a sentence in the INSTALL.md to ask to deploy Movim as a domain or subdomain
 * Save the Pubsub affiliations in the database, allow Communities owners to edit the articles
+* Fix #1236 Use the proper JID for the Global MUC search
 
 v0.22.4
 ---------------------------
