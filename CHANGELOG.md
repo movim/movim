@@ -1,7 +1,10 @@
 Movim Changelog
 ================
 
-v0.22.5 (trunk)
+v0.22.6 (trunk)
+---------------------------
+
+v0.22.5
 ---------------------------
 * Improving some image thumbnail support
 * Add support of animated GIF in the picture thumbnailer
