@@ -22,18 +22,9 @@
     margin-right: 1.75rem;
 }
 
-#publish span.privacy form > div .checkbox {
-    margin-top: calc(50% - 3.25rem);
-}
-
 #publish textarea[name=content] {
     min-height: 25rem;
     margin-bottom: 0;
-}
-
-#publish .contenthelper {
-    margin-top: -1rem;
-    margin-bottom: 1rem;
 }
 
 #publish span.privacy form > div .checkbox > input[type="checkbox"] + label {

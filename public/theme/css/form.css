@@ -157,6 +157,15 @@ form > div.compact > textarea {
     padding-top: 2.5rem;
 }
 
+/* Supporting text */
+form > div > span.supporting {
+    line-height: 2.25rem;
+    font-size: 1.5rem;
+    color: rgba(var(--movim-font), 0.60);
+    display: inline-block;
+    margin: 1rem 0;
+}
+
 /* Webkit hack */
 form > div input:not([type=submit]):-webkit-autofill {
     -webkit-box-shadow: 0 0 0 50px white inset;

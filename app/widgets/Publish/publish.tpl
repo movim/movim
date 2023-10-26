@@ -5,7 +5,7 @@
                 <span class="control privacy"
                 title="{$c->__('post.public')}">
                     <form>
-                        <div class="control action">
+                        <div>
                             <div class="checkbox">
                                 <input
                                     id="public"
@@ -98,15 +98,9 @@
                             data-autoheight="true"
                             >{$draft->content ?? ''}</textarea>
                         <label for="desc">{$c->__('publish.content')} <span class="save"><i class="material-icons">check</i></span></label>
+                        <span class="supporting"><i class="material-icons">lightbulb</i> {$c->__('publish.help_hashtag')}</span>
                     </div>
                 </form>
-            </li>
-            <br />
-            <li class="contenthelper">
-                <div>
-                    <p></p>
-                    <p><i class="material-icons">lightbulb</i> {$c->__('publish.help_hashtag')}</p>
-                </div>
             </li>
         </ul>
         <ul class="list">
