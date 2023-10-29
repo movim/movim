@@ -28,7 +28,7 @@ movimAddOnload(function() {
     document.addEventListener('keydown', function(e) {
         if (Dialog.filled()
         && !Dialog.locked()
-        && e.keyCode == 27) {
+        && e.key == 'Escape') {
             Dialog.clear();
         }
     }, false);

@@ -42,7 +42,7 @@
             <form>
                 <div>
                     <input placeholder="pubsub.server.com" onkeypress="
-                        if (event.keyCode == 13) { CommunitiesServers_ajaxDisco(this.value); return false; }" >
+                        if (event.key == 'Enter') { CommunitiesServers_ajaxDisco(this.value); return false; }" >
                     <label>{$c->__('communities.search_server')}</label>
                 </div>
             </form>

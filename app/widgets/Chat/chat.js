@@ -373,14 +373,15 @@ var Chat = {
 
         var textarea = Chat.getTextarea();
         textarea.onkeydown = function (event) {
-            if ((event.keyCode == 37 && Chat.tryPreviousEmoji())
-                || (event.keyCode == 39 && Chat.tryNextEmoji())) {
+            console.log(event);
+            if ((event.key == 'ArrowLeft' && Chat.tryPreviousEmoji())
+                || (event.key == 'ArrowRight' && Chat.tryNextEmoji())) {
                 event.preventDefault();
                 return;
             }
 
             if (this.dataset.muc
-                && event.keyCode == 9) {
+                && event.key == 'Tab') {
                 event.preventDefault();
                 if (Chat.autocompleteList == null) {
                     Chat.autocomplete(event, this.dataset.jid);
@@ -390,9 +391,9 @@ var Chat = {
                 return;
             }
 
-            if (event.keyCode == 38 && !Chat.isEncrypted()) {
+            if (event.key == 'ArrowUp' && !Chat.isEncrypted()) {
                 Chat.editPrevious();
-            } else if (event.keyCode == 27
+            } else if (event.key == 'Escape'
                 && (this.value == '' || Chat.edit == true)) {
                 localStorage.removeItem(textarea.dataset.jid + '_message');
                 textarea.classList.remove('edit');
@@ -401,7 +402,7 @@ var Chat = {
         };
 
         textarea.onkeypress = function (event) {
-            if (event.keyCode == 13) {
+            if (event.key == 'Enter') {
                 // An emoji was selected
                 var emoji = document.querySelector('.chat_box .emojis img.selected');
                 if (emoji) {

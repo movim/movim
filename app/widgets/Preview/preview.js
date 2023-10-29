@@ -7,7 +7,7 @@ var Preview = {
 
 movimAddOnload(function() {
     document.addEventListener('keydown', function(e) {
-        if (document.querySelector('#preview').innerHTML != '' && e.keyCode == 27) {
+        if (document.querySelector('#preview').innerHTML != '' && e.key == 'Escape') {
             Preview_ajaxHttpHide();
         }
     }, false);

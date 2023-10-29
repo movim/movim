@@ -17,8 +17,10 @@ movimAddOnload(function() {
     document.body.addEventListener('click', Drawer.toggle, false);
     document.addEventListener('keydown', function(e) {
         if (Drawer.filled()
-        && e.keyCode == 27) {
+        && e.key == 'Escape') {
             Drawer.clear();
         }
     }, false);
 });
+
+MovimWebsocket.initiate(() => document.querySelector('#drawer').innerHTML = '');

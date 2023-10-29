@@ -94,7 +94,7 @@ var Search = {
 }
 
 document.addEventListener('keydown', function(e) {
-    if (e.keyCode == 77 && e.ctrlKey) {
+    if (e.key == 'm' && e.ctrlKey) {
         e.preventDefault();
         Search_ajaxRequest();
     }
