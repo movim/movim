@@ -71,6 +71,7 @@ class Stickers extends \Movim\Widget\Base
         $m->jidfrom = $this->user->id;
         $m->sticker = $key;
         $m->seen    = true;
+        $m->retracted = false;
         $m->body    = $this->__('sticker.sent');
 
         $m->published = gmdate('Y-m-d H:i:s');
