@@ -434,7 +434,8 @@ li div.bubble.sticker.file img:not(.emoji):not(.hfr) {
 
 /* File preview */
 
-#chat_widget div.file:not(.bubble) {
+div.file:not(.bubble) {
+    min-height: 2rem;
     word-break: break-all;
     margin-right: 5rem;
 }

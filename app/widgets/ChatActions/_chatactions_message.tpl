@@ -9,6 +9,7 @@
                         <p class="previewable" data-type="{$message->file['type']}">
                             <img src="{$message->file['uri']|protectPicture}">
                         </p>
+                        <div class="file"> </div>
                     {else}
                         <p>{autoescape="off"}{$message->body|trim|stripTags|addEmojis}{/autoescape}</p>
                     {/if}
