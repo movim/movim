@@ -578,7 +578,7 @@ li .bubble.file div.file {
     margin-bottom: 3rem;
 }
 
-li .bubble.file span.resource + div.file {
+li:not(.oppose) .bubble.file span.resource + div.file {
     margin-top: 1rem;
 }
 
