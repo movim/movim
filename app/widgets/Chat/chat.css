@@ -355,7 +355,7 @@ li div.bubble.sticker.file img:not(.emoji):not(.hfr) {
 }
 
 #chat_widget .contained ul li.sequel > span.icon,
-#chat_widget .contained ul li.sequel .primary.bubble::before,
+#chat_widget .contained ul li.sequel .bubble::before,
 #chat_widget .contained ul li.oppose + li.oppose > span.icon,
 #chat_widget .contained ul li.oppose + li.oppose .bubble::before,
 #chat_widget .contained:not(.muc) ul li:not(.oppose):not(.separator):not(.date) + li:not(.oppose) > span.icon,
