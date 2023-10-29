@@ -22,4 +22,9 @@
     <a class="button flat color transparent" href="#" onclick="Preview.copyToClipboard('{$url}')" title="{$c->__('button.copy_link')}">
         <i class="material-icons">content_copy</i> {$c->__('button.copy_link')}
     </a>
+    {if="$messageid"}
+        <a class="button flat color transparent" href="#" onclick="Preview_ajaxHttpHide(); ChatActions_ajaxShowMessageDialog({$messageid});" title="{$c->__('button.more')}">
+            <i class="material-icons">more_vert</i>
+        </a>
+    {/if}
 </div>

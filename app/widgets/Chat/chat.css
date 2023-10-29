@@ -311,8 +311,6 @@ main:not(.enabled) #chat_widget {
 #chat_widget li div.bubble.sticker img:not(.emoji):not(.hfr),
 #chat_widget ul li div.bubble.file video {
     border-radius: 0.75rem;
-    margin-bottom: 0.5rem;
-    margin-top: 0.5rem;
     width: auto;
     max-height: 150px;
 }
@@ -328,7 +326,7 @@ main:not(.enabled) #chat_widget {
     max-width: 100%;
 }
 
-#chat_widget li div.bubble.sticker.file img:not(.emoji):not(.hfr) {
+li div.bubble.sticker.file img:not(.emoji):not(.hfr) {
     max-height: 170px;
     object-fit: cover;
     transition: opacity 0.2s ease-in-out;
@@ -357,7 +355,7 @@ main:not(.enabled) #chat_widget {
 }
 
 #chat_widget .contained ul li.sequel > span.icon,
-#chat_widget .contained ul li.sequel .bubble::before,
+#chat_widget .contained ul li.sequel .primary.bubble::before,
 #chat_widget .contained ul li.oppose + li.oppose > span.icon,
 #chat_widget .contained ul li.oppose + li.oppose .bubble::before,
 #chat_widget .contained:not(.muc) ul li:not(.oppose):not(.separator):not(.date) + li:not(.oppose) > span.icon,
@@ -438,6 +436,7 @@ main:not(.enabled) #chat_widget {
 
 #chat_widget div.file:not(.bubble) {
     word-break: break-all;
+    margin-right: 5rem;
 }
 
 #chat_widget div.file:not(.bubble) a:not(.button) {
@@ -563,6 +562,10 @@ main:not(.enabled) #chat_widget {
     margin-right: -7rem;
 }
 
+#chat_widget .bubble:not(.sticker):not(.file) > div:last-child {
+    padding-right: 12rem;
+}
+
 #chat_widget .bubble div span.reaction,
 #chat_widget .bubble div span.reply,
 #chat_widget .bubble ul.reactions:empty {
@@ -606,8 +609,56 @@ main:not(.enabled) #chat_widget {
     order: 0;
 }
 
-#chat_widget .bubble ul.reactions:not(:empty) + span.info {
-    margin-top: -6rem;
+/* Message Info */
+
+#chat_widget .bubble .message span.info:after {
+    display: inline-block;
+    font-family: 'Material Icons';
+}
+
+#chat_widget .bubble.sticker .message p:before {
+    display: inline-block;
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    font-family: 'Material Icons';
+    text-shadow: 0 0 1rem rgba(0, 0, 0, 0.85);
+}
+
+#chat_widget .bubble.sticker .message.delivered p:before,
+#chat_widget .bubble .message.delivered span.info:after {
+    content: '\e5ca';
+}
+
+#chat_widget .bubble.sticker .message.displayed p:before,
+#chat_widget .bubble .message.displayed span.info:after {
+    content: '\e877';
+}
+
+#chat_widget .bubble .message.encrypted span.info:after {
+    content: '\e897';
+}
+
+#chat_widget .bubble.sticker .message.edited.delivered p:before,
+#chat_widget .bubble .message.edited.delivered span.info:after {
+    content: '\e3c9  \e5ca';
+}
+
+#chat_widget .bubble .message.encrypted.delivered span.info:after {
+    content: '\e897  \e5ca';
+}
+
+#chat_widget .bubble.sticker .message.edited.displayed p:before,
+#chat_widget .bubble .message.edited.displayed span.info:after {
+    content: '\e3c9  \e877';
+}
+
+#chat_widget .bubble .message.encrypted.displayed span.info:after {
+    content: '\e897  \e877';
+}
+
+#chat_widget .bubble.sticker .message span.info:after {
+    display: none;
 }
 
 /* Card */

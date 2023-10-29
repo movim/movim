@@ -3,6 +3,9 @@ Movim Changelog
 
 v0.22.6 (trunk)
 ---------------------------
+* Add the message menu in the Picture preview
+* Move the info logic from the JS to the CSS
+* Refactor and cleanup the info for stickers messages
 
 v0.22.5
 ---------------------------

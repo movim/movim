@@ -239,7 +239,6 @@ ul.list li>div>p>span.info,
 ul li div.bubble:after {
     float: right;
     font-size: 1.5rem;
-    color: gray;
     margin-left: 0.5rem;
     max-width: 70%;
     overflow: hidden;
@@ -432,6 +431,10 @@ ul li div.bubble p {
     position: relative;
 }
 
+ul li div.bubble p:empty {
+    display: none;
+}
+
 ul li div.bubble:not(.file) p {
     margin-right: 1rem;
 }
@@ -444,6 +447,7 @@ ul li div.bubble p.encrypted {
 ul li div.bubble p.previewable {
     display: block;
     min-width: 0;
+    margin-bottom: 0.5rem;
 }
 
 ul li div.bubble p.code {
@@ -487,25 +491,6 @@ ul li div.bubble p i.icon {
     margin-right: 0.25rem;
 }
 
-ul li div.bubble span.info:empty {
-    min-height: 2.5rem;
-}
-
-ul li div.bubble>div:last-child span.info {
-    padding-right: 5rem;
-}
-
-
-ul li div.bubble:not(.file)>div:last-child span.info {
-    height: 2.25rem;
-}
-
-ul li.oppose div.bubble.file>div:last-child span.info {
-    height: 2.5rem;
-    float: right;
-    line-height: 2.4rem;
-}
-
 ul li div.bubble:after {
     content: attr(data-publishedprepared);
     line-height: 1.5rem;
@@ -518,7 +503,7 @@ ul li div.bubble:after {
 ul li div.bubble.sticker:after,
 ul li div.bubble.file:after {
     right: 0;
-    bottom: 0.5rem;
+    bottom: 0;
 }
 
 ul li .quote {

@@ -154,7 +154,7 @@
     content: "\e8ff";
     font-size: 3rem;
     right: 0.75rem;
-    top: 1.25rem;
+    top: 0.75rem;
 }
 
 .previewable[data-type="image/gif"]:before {

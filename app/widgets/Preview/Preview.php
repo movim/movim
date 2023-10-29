@@ -12,7 +12,7 @@ class Preview extends Base
         $this->addjs('preview.js');
     }
 
-    public function ajaxHttpShow($url)
+    public function ajaxHttpShow(string $url, ?string $messageId = null)
     {
         if (!Validator::url($url)->validate($url)) {
             return;
@@ -25,12 +25,14 @@ class Preview extends Base
         } catch (Exception $e) {
             error_log($e->getMessage());
         }
+
         $view->assign('url', $url);
+        $view->assign('messageid', $messageId);
 
         $this->rpc('MovimTpl.fill', '#preview', $view->draw('_preview'));
     }
 
-    public function ajaxHttpGallery($url, $number = 0)
+    public function ajaxHttpGallery(string $url, $number = 0)
     {
         if (!Validator::url($url)->validate($url)) {
             return;

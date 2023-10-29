@@ -59,7 +59,7 @@ class ChatActions extends \Movim\Widget\Base
                               ->where('mid', $mid)
                               ->first();
 
-        if ($message) {
+        if ($message && in_array($message->type, ['chat', 'groupchat'])) {
             $view = $this->tpl();
             $view->assign('message', $message);
 

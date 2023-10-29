@@ -373,7 +373,6 @@ var Chat = {
 
         var textarea = Chat.getTextarea();
         textarea.onkeydown = function (event) {
-            console.log(event);
             if ((event.key == 'ArrowLeft' && Chat.tryPreviousEmoji())
                 || (event.key == 'ArrowRight' && Chat.tryNextEmoji())) {
                 event.preventDefault();
@@ -808,7 +807,11 @@ var Chat = {
         document.querySelectorAll('#chat_widget ul li div.bubble:not(.sticker):not(.file) > div.message').forEach(message => {
             message.onmousedown = function (e) {
                 setTimeout(() => {
-                    if (e.button == 0 && (e.target.classList.contains('message') || e.target.parentElement.classList.contains('message')) && !(window.getSelection().toString() != '')) {
+                    if (e.button == 0
+                        && (e.target.classList.contains('message')
+                            || e.target.parentElement.classList.contains('message')) && !(window.getSelection().toString() != ''
+                            )
+                        && this.dataset.mid) {
                         ChatActions_ajaxShowMessageDialog(this.dataset.mid);
                     }
                 }, 200);
@@ -996,7 +999,7 @@ var Chat = {
             ? Chat.right.querySelector('div.bubble > div.message').cloneNode(true)
             : bubble.querySelector('div.bubble > div.message');
 
-        var span = msg.querySelector('span:not(.reaction)');
+        var info = msg.querySelector('span.info');
         var p = msg.getElementsByTagName('p')[0];
         var reaction = msg.querySelector('span.reaction');
         var reply = msg.querySelector('span.reply');
@@ -1011,7 +1014,6 @@ var Chat = {
         if (data.encrypted) {
             msg.classList.add('encrypted');
             p.classList.add('encrypted');
-            span.appendChild(Chat.getEncryptedIcoHtml());
         }
 
         if (data.body.match(/^\/me\s/)) {
@@ -1063,7 +1065,7 @@ var Chat = {
 
         if (data.sticker != null && data.retracted == false) {
             bubble.querySelector('div.bubble').classList.add('sticker');
-            p.appendChild(Chat.getStickerHtml(data.sticker));
+            p.appendChild(Chat.getStickerHtml(data));
 
             if (data.file != null) {
                 p.dataset.type = data.file.type;
@@ -1083,14 +1085,14 @@ var Chat = {
         }
 
         if (data.replaceid) {
-            span.appendChild(Chat.getEditedIcoHtml());
+            msg.classList.add('edited');
         }
 
         if (data.user_id == data.jidfrom || (isMuc && data.mine)) {
             if (data.displayed) {
-                span.appendChild(Chat.getDisplayedIcoHtml(data.displayed));
+                msg.classList.add('displayed');
             } else if (data.delivered) {
-                span.appendChild(Chat.getDeliveredIcoHtml(data.delivered));
+                msg.classList.add('delivered');
             }
         }
 
@@ -1108,7 +1110,7 @@ var Chat = {
         }
 
         if (data.published) {
-            span.title = data.published;
+            info.title = data.published;
         }
 
         // Parent
@@ -1124,7 +1126,7 @@ var Chat = {
         }
 
         msg.appendChild(p);
-        msg.appendChild(span);
+        msg.appendChild(info);
         msg.appendChild(reactions);
 
         if (data.mid) {
@@ -1270,30 +1272,30 @@ var Chat = {
             list.insertBefore(separatorNode, p.parentNode.parentNode.parentNode);
         }
     },
-    getStickerHtml: function (sticker) {
+    getStickerHtml: function (data) {
         var img = document.createElement('img');
-        if (sticker.url) {
-            if (sticker.thumb) {
-                img.setAttribute('src', sticker.thumb);
+        if (data.sticker.url) {
+            if (data.sticker.thumb) {
+                img.setAttribute('src', data.sticker.thumb);
             } else {
-                img.setAttribute('src', sticker.url);
+                img.setAttribute('src', data.sticker.url);
             }
 
-            if (sticker.width) img.setAttribute('width', sticker.width);
-            if (sticker.height) {
-                img.setAttribute('height', sticker.height);
+            if (data.sticker.width) img.setAttribute('width', data.sticker.width);
+            if (data.sticker.height) {
+                img.setAttribute('height', data.sticker.height);
             } else {
                 img.setAttribute('height', '170');
             }
         }
 
-        if (sticker.title) {
-            img.title = sticker.title;
+        if (data.sticker.title) {
+            img.title = data.sticker.title;
         }
 
-        if (sticker.picture) {
+        if (data.sticker.picture) {
             img.classList.add('active');
-            img.setAttribute('onclick', 'Preview_ajaxHttpShow("' + sticker.url + '")');
+            img.setAttribute('onclick', 'Preview_ajaxHttpShow("' + data.sticker.url + '", ' + data.mid + ')');
         }
 
         return img;
@@ -1348,7 +1350,7 @@ var Chat = {
                 a.appendChild(host);
             }
 
-            if (file.size > 0) {
+            if (file.size > 0 && sticker == null) {
                 var span = document.createElement('span');
                 span.innerHTML = file.cleansize;
                 span.setAttribute('class', 'size');
@@ -1431,25 +1433,6 @@ var Chat = {
 
         return video;
     },
-    getEncryptedIcoHtml: function () {
-        var i = document.createElement('i');
-        i.className = 'material-icons';
-        i.innerText = 'lock';
-        return i;
-    },
-    getEditedIcoHtml: function () {
-        var i = document.createElement('i');
-        i.className = 'material-icons';
-        i.innerText = 'edit';
-        return i;
-    },
-    getDeliveredIcoHtml: function (delivered) {
-        var i = document.createElement('i');
-        i.className = 'material-icons';
-        i.innerText = 'check';
-        i.setAttribute('title', delivered);
-        return i;
-    },
     getSimpleParentHtml: function (parentQuote) {
         var div = document.createElement('div');
         div.classList.add('parent');
@@ -1498,13 +1481,6 @@ var Chat = {
         }
 
         return div;
-    },
-    getDisplayedIcoHtml: function (displayed) {
-        var i = document.createElement('i');
-        i.className = 'material-icons';
-        i.innerText = 'done_all';
-        i.setAttribute('title', displayed);
-        return i;
     },
     toggleAction: function () {
         var chatBox = document.querySelector('#chat_widget .chat_box');
