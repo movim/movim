@@ -719,6 +719,11 @@ li .bubble.file div.file[data-type="image/gif"]:after {
     text-align: right;
 }
 
+#chat_widget li .bubble ul.card.list + p {
+    margin-right: 4.5rem;
+    margin-bottom: 0.25rem;
+}
+
 /* Reply */
 
 #reply:not(:empty) {
