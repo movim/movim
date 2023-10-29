@@ -1,15 +1,14 @@
 <section id="chat_actions">
     <ul class="list" id="message_preview">
         <li {if="$message->isMine()"}class="oppose"{/if}>
-            <div class="bubble {if="$message->picture"}sticker file{/if}" data-publishedprepared="{$message->published|strtotime|prepareTime}">
+            <div class="bubble {if="$message->picture"}file{/if}" data-publishedprepared="{$message->published|strtotime|prepareTime}">
                 <div class="message">
                     {if="$message->retracted"}
                         <p class="retracted"><i class="material-icons">delete</i>{$c->__('message.retracted')}</p>
                     {elseif="$message->picture"}
-                        <p class="previewable" data-type="{$message->file['type']}">
+                        <div class="file" data-type="{$message->file['type']}">
                             <img src="{$message->file['uri']|protectPicture}">
-                        </p>
-                        <div class="file"> </div>
+                        </div>
                     {else}
                         <p>{autoescape="off"}{$message->body|trim|stripTags|addEmojis}{/autoescape}</p>
                     {/if}
