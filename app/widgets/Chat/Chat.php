@@ -856,16 +856,18 @@ class Chat extends \Movim\Widget\Base
      */
     public function ajaxHttpDaemonReply($mid)
     {
-        $m = $this->user->messages()
+        $message = $this->user->messages()
             ->where('mid', $mid)
             ->first();
 
-        if (($m->isMuc() && $m->stanzaid)
-            || (!$m->isMuc() && $m->messageid)
-            || isset($m->thread)
+        if (
+            $message->isClassic()
+            && (($message->isMuc() && $message->stanzaid)
+                || (!$message->isMuc() && $message->messageid)
+                || isset($message->thread))
         ) {
             $view = $this->tpl();
-            $view->assign('message', $m);
+            $view->assign('message', $message);
             $this->rpc('MovimTpl.fill', '#reply', $view->draw('_chat_reply'));
             $this->rpc('Chat.focus');
         }
@@ -1145,7 +1147,6 @@ class Chat extends \Movim\Widget\Base
         if ($unreadsCount > 0) {
             $this->rpc('Chat.insertSeparator', $unreadsCount);
         }
-
     }
 
     public function prepareMessage(&$message, $jid = null)
@@ -1229,7 +1230,7 @@ class Chat extends \Movim\Widget\Base
         if (
             $emoji->isSingleEmoji()
             && !isset($message->html)
-            && in_array($message->type,  ['chat', 'groupchat'])
+            && $message->isClassic()
         ) {
             $message->sticker = [
                 'url' => $emoji->getLastSingleEmojiURL(),
@@ -1242,47 +1243,6 @@ class Chat extends \Movim\Widget\Base
 
         // Attached file
         if (isset($message->file)) {
-            // We proxify pictures links even if they are advertized as small ones
-            if (
-                \array_key_exists('type', $message->file)
-                && typeIsPicture($message->file['type'])
-                && $message->file['size'] <= SMALL_PICTURE_LIMIT * 4
-            ) {
-                $message->sticker = [
-                    'thumb' => protectPicture($message->file['uri']),
-                    'url' => $message->file['uri'],
-                    'picture' => true
-                ];
-            }
-
-            // Set an id for all the files
-            $file = $message->file;
-            $file['id'] = hashId($file['uri']);
-            $message->file = $file;
-
-            $url = parse_url($message->file['uri']);
-
-            // Other image websites
-            if (\array_key_exists('host', $url)) {
-                $file = $message->file;
-                $file['host'] = $url['host'];
-                $message->file = $file;
-
-                switch ($url['host']) {
-                    case 'i.imgur.com':
-                        $thumb = getImgurThumbnail($message->file['uri']);
-
-                        if ($thumb) {
-                            $message->sticker = [
-                                'url' => $message->file['uri'],
-                                'thumb' => $thumb,
-                                'picture' => true
-                            ];
-                        }
-                        break;
-                }
-            }
-
             // Build cards for the URIs
             $uri = explodeXMPPURI($message->file['uri']);
 

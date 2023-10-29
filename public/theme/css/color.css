@@ -46,7 +46,7 @@ ul.list li span.control.divided:before {
 }
 
 label, span.info,
-ul li div.bubble:after,
+li div.bubble:after,
 table tr th {
     color: rgba(var(--movim-font), 0.54);
 }
@@ -106,7 +106,7 @@ span.icon span.counter.alt {
 .button.indigo, .icon.indigo, span.resource.indigo   { color: var(--p-indigo); }
 .button.blue,   .icon.blue  , span.resource.blue     { color: var(--p-blue); }
 .button.green,  .icon.green , span.resource.green    { color: var(--p-green); }
-ul li div.bubble.moderator:after,
+li div.bubble.moderator:after,
 ul li div > p > span.moderator,
 .button.orange, .icon.orange, span.resource.orange   { color: var(--p-orange); }
 .button.yellow, .icon.yellow, span.resource.yellow   { color: #FBC02D; }

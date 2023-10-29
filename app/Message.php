@@ -101,6 +101,38 @@ class Message extends Model
                 $file['cleansize'] = humanSize((float)$file['size']);
             }
 
+            if (
+                \array_key_exists('type', $file)
+                && typeIsPicture($file['type'])
+            ) {
+                $file['preview'] = [
+                    'thumb' => protectPicture($file['uri']),
+                    'url' => $file['uri'],
+                    'picture' => true
+                ];
+            }
+
+            $url = parse_url($file['uri']);
+            if (\array_key_exists('host', $url)) {
+                $file['host'] = $url['host'];
+
+                switch ($url['host']) {
+                    case 'i.imgur.com':
+                        $thumb = getImgurThumbnail($file['uri']);
+
+                        if ($thumb) {
+                            $file['preview'] = [
+                                'url' => $file['uri'],
+                                'thumb' => $thumb,
+                                'picture' => true
+                            ];
+                        }
+                        break;
+                }
+            }
+
+            $file['id'] = hashId($file['uri']);
+
             return $file;
         }
 
@@ -627,6 +659,11 @@ class Message extends Model
     public function isMine(): bool
     {
         return ($this->user_id == $this->jidfrom);
+    }
+
+    public function isClassic(): bool
+    {
+        return in_array($this->type,  ['chat', 'groupchat']);
     }
 
     public function retract()

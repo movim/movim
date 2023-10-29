@@ -298,50 +298,30 @@ main:not(.enabled) #chat_widget {
     margin: 0;
 }
 
-#chat_widget li img:not(.emoji):not(.hfr) {
+#chat_widget li img:not(.emoji) {
     max-height: 30rem;
     max-width: 100%;
     display: block;
-}
-
-#chat_widget li div.bubble.sticker.file img.active:hover {
-    cursor: pointer;
-}
-
-#chat_widget li div.bubble.sticker img:not(.emoji):not(.hfr),
-#chat_widget ul li div.bubble.file video {
-    border-radius: 0.75rem;
     width: auto;
+}
+
+#chat_widget li img.active {
+    transition: opacity 0.1s ease-in-out;
+}
+
+#chat_widget li img.active:hover {
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+#chat_widget li img.active:active {
+    opacity: 0.8;
+}
+
+#chat_widget li img.sticker {
     max-height: 150px;
-}
-
-#chat_widget ul li div.bubble.file video {
-    display: block;
-    max-height: 200px;
-    background-color: rgba(var(--movim-font), 0.15);
-}
-
-#chat_widget ul li div.bubble.file video:not(.gif) {
-    height: 200px;
-    max-width: 100%;
-}
-
-li div.bubble.sticker.file img:not(.emoji):not(.hfr) {
-    max-height: 170px;
-    object-fit: cover;
-    transition: opacity 0.2s ease-in-out;
-    background-color: rgba(var(--movim-gray), 0.1);
-    background-image: url(/theme/img/broken_image.svg);
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-#chat_widget li.oppose div.bubble.sticker.file img:not(.emoji):not(.hfr) {
-    float: right;
-}
-
-#chat_widget li.oppose div.bubble.sticker.file img:not(.emoji):not(.hfr) + div.file {
-    clear: right;
+    border-radius: 0.75rem;
+    margin-bottom: 3rem;
 }
 
 #chat_widget ul.list:after {
@@ -432,43 +412,6 @@ li div.bubble.sticker.file img:not(.emoji):not(.hfr) {
     border-radius: 0 3px 3px;
 }
 
-/* File preview */
-
-div.file:not(.bubble) {
-    min-height: 2rem;
-    word-break: break-all;
-    margin-right: 5rem;
-}
-
-#chat_widget div.file:not(.bubble) a:not(.button) {
-    padding: 1rem 0;
-}
-
-#chat_widget div.file:not(.bubble) div:not(.audio_player) p {
-    max-width: 31rem;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    display: inline-block;
-    margin-bottom: -0.5rem;
-}
-
-#chat_widget div.file:not(.bubble) p ~ span.host:before {
-    content: '';
-    height: 0;
-    display: block;
-}
-
-#chat_widget div.file:not(.bubble) span.size:before {
-    content: '–';
-    margin: 0 0.75rem;
-}
-
-#chat_widget audio {
-    border-radius: 0.5rem;
-    width: 100%;
-    min-width: 23rem;
-}
-
 /* Parent */
 
 #chat_widget div.parent {
@@ -504,16 +447,31 @@ div.file:not(.bubble) {
     white-space: pre-wrap;
 }
 
+/* Date element */
+
+li div.bubble:after {
+    content: attr(data-publishedprepared);
+    line-height: 1.5rem;
+    right: 1rem;
+    bottom: 1rem;
+    position: absolute;
+    pointer-events: none;
+}
+
+li div.bubble.file:not(.audio):after {
+    right: 0;
+    bottom: 0.5rem;
+}
+
 /* Emojis */
 
 #chat_widget .bubble ul.reactions {
-    margin-bottom: -0.25rem;
-    margin-right: 5rem;
     display: flex;
 }
 
-#chat_widget .bubble:not(.file) ul.reactions {
-    margin-top: 0.25rem;
+#chat_widget .bubble.file .reactions {
+    margin-right: 4.5rem;
+    margin-top: -2rem;
 }
 
 #chat_widget .bubble div span.reaction,
@@ -563,7 +521,7 @@ div.file:not(.bubble) {
     margin-right: -7rem;
 }
 
-#chat_widget .bubble:not(.sticker):not(.file) > div:last-child {
+#chat_widget .bubble:not(.file) > div:last-child {
     padding-right: 12rem;
 }
 
@@ -579,12 +537,12 @@ div.file:not(.bubble) {
         display: inline-flex;
         position: absolute;
         left: 100%;
-        transform: translate(-0.75rem, -0.25rem);
+        transform: translate(-0.5rem, -0.5rem);
     }
 
     #chat_widget li .bubble.file div:hover ul.reactions:empty ~ span.reaction,
     #chat_widget li .bubble.file div:not(.encrypted):hover span.reply {
-        transform: translate(-0.75rem, -7.25rem);
+        transform: translate(-0.5rem, -5.5rem);
     }
 
     #chat_widget li .bubble div:hover ul.reactions:not(:empty) ~ span.reply {
@@ -610,28 +568,91 @@ div.file:not(.bubble) {
     order: 0;
 }
 
+/* File element */
+
+li .bubble.file {
+    margin-bottom: 1.5rem;
+}
+
+li .bubble.file div.file {
+    margin-bottom: 3rem;
+}
+
+li .bubble.file span.resource + div.file {
+    margin-top: 1rem;
+}
+
+li .bubble.file div.file img,
+li .bubble.file div.file video {
+    display: block;
+    border-radius: 0.75rem;
+    width: auto;
+    max-height: 200px;
+    margin-bottom: 1rem;
+}
+
+li div.bubble.file div.file img {
+    max-height: 170px;
+    min-width: 12rem;
+    object-fit: cover;
+    transition: opacity 0.2s ease-in-out;
+    background-color: rgba(var(--movim-gray), 0.1);
+    background-image: url(/theme/img/broken_image.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+li div.bubble.file video {
+    max-height: 200px;
+    background-color: rgba(var(--movim-font), 0.15);
+    max-width: 100%;
+}
+
+li.oppose .bubble.file div.file img,
+li.oppose .bubble.file div.file video {
+    display: block;
+    margin-right: 0;
+    margin-left: auto;
+}
+
+li .bubble.file div.file[data-type="image/gif"]:after {
+    color: white;
+    font-family: 'Material Icons';
+    text-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+    position: absolute;
+    font-size: 5rem;
+    line-height: 5rem;
+    content: "\e908";
+    top: 0;
+    left: 0.5rem;
+    display: block;
+    pointer-events: none;
+}
+
 /* Message Info */
 
 #chat_widget .bubble .message span.info:after {
     display: inline-block;
     font-family: 'Material Icons';
+    vertical-align: middle;
 }
 
-#chat_widget .bubble.sticker .message p:before {
+#chat_widget .bubble.file .message div.file:before {
     display: inline-block;
     position: absolute;
-    bottom: 1rem;
+    top: 1rem;
     right: 1rem;
     font-family: 'Material Icons';
+    color: white;
     text-shadow: 0 0 1rem rgba(0, 0, 0, 0.85);
 }
 
-#chat_widget .bubble.sticker .message.delivered p:before,
+#chat_widget .bubble.file .message.delivered div.file:before,
 #chat_widget .bubble .message.delivered span.info:after {
     content: '\e5ca';
 }
 
-#chat_widget .bubble.sticker .message.displayed p:before,
+#chat_widget .bubble.file .message.displayed div.file:before,
 #chat_widget .bubble .message.displayed span.info:after {
     content: '\e877';
 }
@@ -640,7 +661,7 @@ div.file:not(.bubble) {
     content: '\e897';
 }
 
-#chat_widget .bubble.sticker .message.edited.delivered p:before,
+#chat_widget .bubble.file .message.edited.delivered div.file:before,
 #chat_widget .bubble .message.edited.delivered span.info:after {
     content: '\e3c9  \e5ca';
 }
@@ -649,7 +670,7 @@ div.file:not(.bubble) {
     content: '\e897  \e5ca';
 }
 
-#chat_widget .bubble.sticker .message.edited.displayed p:before,
+#chat_widget .bubble.file .message.edited.displayed div.file:before,
 #chat_widget .bubble .message.edited.displayed span.info:after {
     content: '\e3c9  \e877';
 }
@@ -658,7 +679,7 @@ div.file:not(.bubble) {
     content: '\e897  \e877';
 }
 
-#chat_widget .bubble.sticker .message span.info:after {
+#chat_widget .bubble.file .message span.info:after {
     display: none;
 }
 

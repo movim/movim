@@ -606,7 +606,7 @@ var Chat = {
 
         discussion.onscroll = function () {
             if (this.scrollTop < 1
-                && discussion.querySelectorAll('ul li div.bubble p').length >= Chat.pagination && Chat.currentDateTime) {
+                && discussion.querySelectorAll('li div.bubble p').length >= Chat.pagination && Chat.currentDateTime) {
                 Chat_ajaxGetHistory(
                     Chat.getTextarea().dataset.jid,
                     Chat.currentDateTime,
@@ -804,7 +804,7 @@ var Chat = {
         );
     },
     setMessagePressBehaviour: function () {
-        document.querySelectorAll('#chat_widget ul li div.bubble:not(.sticker):not(.file) > div.message').forEach(message => {
+        document.querySelectorAll('#chat_widget li div.bubble:not(.file) > div.message').forEach(message => {
             message.onmousedown = function (e) {
                 setTimeout(() => {
                     if (e.button == 0
@@ -818,7 +818,7 @@ var Chat = {
             }
         });
 
-        document.querySelectorAll('#chat_widget ul li div.bubble.file > div.message').forEach(message => {
+        document.querySelectorAll('#chat_widget li div.bubble.file > div.message').forEach(message => {
             if (card = message.querySelector('ul.list.card > li > div')) {
                 card.onclick = function (e) {
                     ChatActions_ajaxShowMessageDialog(message.dataset.mid);
@@ -1063,27 +1063,6 @@ var Chat = {
             p.innerHTML = data.body;
         }
 
-        if (data.sticker != null && data.retracted == false) {
-            bubble.querySelector('div.bubble').classList.add('sticker');
-            p.appendChild(Chat.getStickerHtml(data));
-
-            if (data.file != null) {
-                p.dataset.type = data.file.type;
-                p.classList.add('previewable');
-            }
-        }
-
-        if (data.file != null && data.card === undefined && data.file.type !== 'xmpp' && data.retracted == false) {
-            bubble.querySelector('div.bubble').classList.add('file');
-
-            // Ugly fix to clear the paragraph if the file contains a similar link
-            if (p.querySelector('a') && p.querySelector('a').href == data.file.uri) {
-                p.querySelector('a').remove();
-            }
-
-            p.appendChild(Chat.getFileHtml(data.file, data.sticker));
-        }
-
         if (data.replaceid) {
             msg.classList.add('edited');
         }
@@ -1107,6 +1086,21 @@ var Chat = {
             resourceSpan.innerText = data.resource;
 
             msg.appendChild(resourceSpan);
+        }
+
+        if (data.sticker != null && data.retracted == false) {
+            bubble.querySelector('div.bubble').classList.add('file');
+            p.appendChild(Chat.getStickerHtml(data));
+
+        } else if (data.file != null && data.card === undefined && data.file.type !== 'xmpp' && data.retracted == false) {
+            bubble.querySelector('div.bubble').classList.add('file');
+
+            // Ugly fix to clear the paragraph if the file contains a similar link
+            if (p.querySelector('a') && p.querySelector('a').href == data.file.uri) {
+                p.querySelector('a').remove();
+            }
+
+            msg.appendChild(Chat.getFileHtml(data.file, data));
         }
 
         if (data.published) {
@@ -1170,7 +1164,7 @@ var Chat = {
             }
 
             if (data.sticker != null && data.retracted == false) {
-                msg.parentElement.classList.add('sticker');
+                msg.parentElement.classList.add('sticker', 'file');
             } else {
                 msg.parentElement.classList.remove('sticker');
             }
@@ -1274,6 +1268,8 @@ var Chat = {
     },
     getStickerHtml: function (data) {
         var img = document.createElement('img');
+        img.classList.add('sticker');
+
         if (data.sticker.url) {
             if (data.sticker.thumb) {
                 img.setAttribute('src', data.sticker.thumb);
@@ -1289,15 +1285,6 @@ var Chat = {
             }
         }
 
-        if (data.sticker.title) {
-            img.title = data.sticker.title;
-        }
-
-        if (data.sticker.picture) {
-            img.classList.add('active');
-            img.setAttribute('onclick', 'Preview_ajaxHttpShow("' + data.sticker.url + '", ' + data.mid + ')');
-        }
-
         return img;
     },
     getCardHtml: function (card) {
@@ -1311,11 +1298,42 @@ var Chat = {
 
         return ul;
     },
-    getFileHtml: function (file, sticker) {
+    getFileHtml: function (file, data) {
         var div = document.createElement('div');
         div.setAttribute('class', 'file');
 
         if (file.name) {
+            div.dataset.type = file.type;
+
+            if (file.preview) {
+                var img = document.createElement('img');
+                if (file.preview.url) {
+                    if (file.preview.thumb) {
+                        img.setAttribute('src', file.preview.thumb);
+                    } else {
+                        img.setAttribute('src', file.preview.url);
+                    }
+
+                    if (file.preview.width) img.setAttribute('width', file.preview.width);
+                    if (file.preview.height) {
+                        img.setAttribute('height', file.preview.height);
+                    } else {
+                        img.setAttribute('height', '170');
+                    }
+                }
+
+                if (file.preview.title) {
+                    img.title = file.preview.title;
+                }
+
+                if (file.preview.picture) {
+                    img.classList.add('active');
+                    img.setAttribute('onclick', 'Preview_ajaxHttpShow("' + file.preview.url + '", ' + data.mid + ')');
+                }
+
+                div.appendChild(img);
+            }
+
             if (file.type == 'audio/ogg' || file.type == 'audio/opus' || file.type == 'audio/mpeg') {
                 div.appendChild(Chat.getAudioPlayer(file));
             } else if (file.type == 'video/webm' || file.type == 'video/mp4') {
@@ -1328,7 +1346,7 @@ var Chat = {
                 return div;
             }
 
-            var a = document.createElement('a');
+            /*var a = document.createElement('a');
 
             if (sticker == null) {
                 var link = document.createElement('p');
@@ -1336,13 +1354,14 @@ var Chat = {
                 link.setAttribute('title', file.name);
                 a.appendChild(link);
             }
+
             a.setAttribute('href', file.uri);
             a.setAttribute('target', '_blank');
             a.setAttribute('rel', 'noopener');
 
-            div.appendChild(a);
+            div.appendChild(a);*/
 
-            if (file.host) {
+            /*if (file.host) {
                 var host = document.createElement('span');
                 host.innerHTML = file.host;
                 host.setAttribute('class', 'host');
@@ -1356,7 +1375,7 @@ var Chat = {
                 span.setAttribute('class', 'size');
 
                 a.appendChild(span);
-            }
+            }*/
         }
 
         return div;

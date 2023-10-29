@@ -6,6 +6,8 @@ v0.22.6 (trunk)
 * Add the message menu in the Picture preview
 * Move the info logic from the JS to the CSS
 * Refactor and cleanup the info for stickers messages
+* Move the file message related logic to the Message model
+* Refactor the Stickers and File display and cleanup the related CSS
 
 v0.22.5
 ---------------------------
