@@ -69,7 +69,8 @@ var Tabs = {
         window.onhashchange = function () {
             var hash = window.location.hash.slice(1, -4);
             if (hash) {
-                Tabs.change(document.querySelector('li.' + hash));
+                let current = document.querySelector('li.' + hash);
+                if (current) Tabs.change(current);
             }
         }
     },
