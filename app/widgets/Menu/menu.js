@@ -6,10 +6,10 @@ var Menu = {
         if (parts.hash != '') {
             switch (parts.hash) {
                 case 'communities':
-                    Menu_ajaxHttpGetNews(page);
+                    Menu_ajaxHttpGetCommunities(page);
                     break;
                 case 'contacts':
-                    Menu_ajaxHttpGetFeed(page);
+                    Menu_ajaxHttpGetContacts(page);
                     break;
             }
         } else {

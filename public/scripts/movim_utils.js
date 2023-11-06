@@ -99,6 +99,9 @@ var MovimUtils = {
     pushState: function (url) {
         window.history.pushState(null, '', url);
     },
+    pushSoftState: function (url) {
+        window.history.pushState({ soft: true }, '', url);
+    },
     redirect: function (url) {
         window.location.href = url;
     },
@@ -133,7 +136,7 @@ var MovimUtils = {
                 let page = JSON.parse(value);
 
                 if (noHistory != true) {
-                    history.pushState({ soft: true }, '', uri);
+                    MovimUtils.pushSoftState(uri);
                     MovimTpl.currentPage = uri;
                 }
 

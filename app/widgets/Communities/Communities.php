@@ -19,16 +19,18 @@ class Communities extends Base
         $this->rpc('MovimTpl.fill', '#communities_posts', $this->preparePosts());
     }
 
-    public function ajaxHttpGetNews()
+    public function ajaxHttpGetCommunities()
     {
         $this->rpc('MovimTpl.fill', '#communities', $this->prepareCommunities('news'));
         $this->rpc('MovimTpl.fill', '#communities_posts', $this->preparePosts(0, 'news'));
+        $this->rpc('MovimUtils.pushSoftState', $this->route('explore', false, [], 'communities'));
     }
 
-    public function ajaxHttpGetFeed()
+    public function ajaxHttpGetContacts()
     {
         $this->rpc('MovimTpl.fill', '#communities', $this->prepareCommunities('feed'));
         $this->rpc('MovimTpl.fill', '#communities_posts', $this->preparePosts(0, 'feed'));
+        $this->rpc('MovimUtils.pushSoftState', $this->route('explore', false, [], 'contacts'));
     }
 
     public function ajaxHttpGetPosts($page = 0, $type = 'all')

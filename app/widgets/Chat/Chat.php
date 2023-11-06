@@ -376,13 +376,13 @@ class Chat extends \Movim\Widget\Base
         if ($jid == null) {
             $this->rpc('MovimTpl.hidePanel');
             $this->rpc('Notif.current', 'chat');
-            $this->rpc('MovimUtils.pushState', $this->route('chat'));
+            $this->rpc('MovimUtils.pushSoftState', $this->route('chat'));
             if ($light == false) {
                 $this->rpc('MovimTpl.fill', '#chat_widget', $this->prepareEmpty());
             }
         } else {
             if ($light == false) {
-                $this->rpc('MovimUtils.pushState', $this->route('chat', $jid));
+                $this->rpc('MovimUtils.pushSoftState', $this->route('chat', $jid));
                 $this->rpc('MovimTpl.fill', '#chat_widget', $this->prepareChat($jid));
 
                 $chatStates = ChatStates::getInstance();
@@ -432,7 +432,7 @@ class Chat extends \Movim\Widget\Base
             }
 
             if ($light == false) {
-                $this->rpc('MovimUtils.pushState', $this->route('chat', [$room, 'room']));
+                $this->rpc('MovimUtils.pushSoftState', $this->route('chat', [$room, 'room']));
                 $this->rpc('MovimTpl.fill', '#chat_widget', $this->prepareChat($room, true));
 
                 $chatStates = ChatStates::getInstance();
