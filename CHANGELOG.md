@@ -9,6 +9,7 @@ v0.22.6 (trunk)
 * Move the file message related logic to the Message model
 * Refactor the Stickers and File display and cleanup the related CSS
 * Complete the Manifest content to have a better PWA integration
+* Start the implementation of https://xmpp.org/extensions/xep-0444.html#disco-restricted for MUC
 
 v0.22.5
 ---------------------------

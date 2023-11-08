@@ -300,6 +300,7 @@ main>div:first-child:nth-last-child(2)+div {
     text-align: right;
     bottom: 0;
     padding: 0.5rem;
+    padding-top: 0;
     position: absolute;
     border-top: 1px solid rgba(var(--movim-font), 0.12);
 }

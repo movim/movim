@@ -43,14 +43,14 @@ class Info extends Model
 
     public function scopeWhereCategory($query, $category)
     {
-        return $query->whereHas('identities', function($query) use ($category) {
+        return $query->whereHas('identities', function ($query) use ($category) {
             $query->where('category', $category);
         });
     }
 
     public function scopeWhereType($query, $type)
     {
-        return $query->whereHas('identities', function($query) use ($type) {
+        return $query->whereHas('identities', function ($query) use ($type) {
             $query->where('type', $type);
         });
     }
@@ -63,10 +63,22 @@ class Info extends Model
             $query->whereIn('server', function ($query) {
                 $host = \App\User::me()->session->host;
                 $query->select('server')
-                      ->from('infos')
-                      ->where('server', 'like', '%.' . $host);
+                    ->from('infos')
+                    ->where('server', 'like', '%.' . $host);
             });
         }
+    }
+
+    public function setReactionsrestrictionsAttribute(array $arr)
+    {
+        $this->attributes['reactionsrestrictions'] = serialize($arr);
+    }
+
+    public function getReactionsrestrictionsAttribute(): array
+    {
+        return (isset($this->attributes['reactionsrestrictions']))
+            ? unserialize($this->attributes['reactionsrestrictions'])
+            : [];
     }
 
     public function setAdminaddressesAttribute(array $arr)
@@ -167,8 +179,10 @@ class Info extends Model
                 ->first();
         }*/
 
-        if (isset($this->attributes['related'])
-        && $this->identities->contains('category', 'conference') && $this->identities->contains('type', 'text')) {
+        if (
+            isset($this->attributes['related'])
+            && $this->identities->contains('category', 'conference') && $this->identities->contains('type', 'text')
+        ) {
             $uri = parse_url($this->attributes['related']);
 
             if (isset($uri['query']) && isset($uri['path'])) {
@@ -189,13 +203,14 @@ class Info extends Model
     public function getPresenceAttribute()
     {
         return \App\User::me()->session->presences()
-                    ->where('jid', $this->attributes['server'])
-                    ->first();
+            ->where('jid', $this->attributes['server'])
+            ->first();
     }
 
     public function getGatewayTypeAttribute(): ?string
     {
-        $identityType = $this->identities->filter(fn ($value, $key) =>
+        $identityType = $this->identities->filter(
+            fn ($value, $key) =>
             $value->category == 'gateway'
         )->first();
 
@@ -209,8 +224,10 @@ class Info extends Model
 
     public function getDeviceIcon()
     {
-        if ($this->identities->contains('type', 'handheld')
-        || $this->identities->contains('type', 'phone')) {
+        if (
+            $this->identities->contains('type', 'handheld')
+            || $this->identities->contains('type', 'phone')
+        ) {
             return 'smartphone';
         }
         if ($this->identities->contains('type', 'bot')) {
@@ -360,9 +377,22 @@ class Info extends Model
             }
             $this->attributes['features'] = serialize($features);
 
-            if (isset($query->query->x)) {
-                foreach ($query->query->x->field as $field) {
+            foreach ($query->query->x as $x) {
+                $results = $x->xpath('.//field[@var="FORM_TYPE"]/value/text()');
+                $formType = $results ? (string)$results[0] : null;
+
+                foreach ($x->field as $field) {
                     switch ((string)$field->attributes()->var) {
+                        // https://xmpp.org/extensions/xep-0444.html#disco-restricted
+                        case 'allowlist':
+                            if ($formType == 'urn:xmpp:reactions:0:restrictions') {
+                                $arr = [];
+                                foreach ($field->children() as $value) {
+                                    $arr[] = (string)$value;
+                                }
+                                $this->reactionsrestrictions = $arr;
+                            }
+                            break;
                         case 'pubsub#title':
                             $this->name = (string)$field->value;
                             break;
@@ -480,7 +510,7 @@ class Info extends Model
     public function isPubsubService()
     {
         return ($this->identities->contains('category', 'pubsub')
-             && $this->identities->contains('type', 'service'));
+            && $this->identities->contains('type', 'service'));
     }
 
     public function isMicroblogCommentsNode()

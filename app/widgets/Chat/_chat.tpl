@@ -40,7 +40,7 @@
             {/if}
             <span class="emojis control icon gray primary_action on_desktop"
                     title="{$c->__('sticker.title')}"
-                    onclick="Stickers_ajaxReaction()">
+                    onclick="Stickers_ajaxReaction(null, '{$jid}')">
                 <i class="material-icons">emoji_emotions</i>
             </span>
             {if="$c->getUser()->hasUpload()"}

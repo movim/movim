@@ -66,6 +66,12 @@ function addUrls($string, bool $preview = false)
     );
 }
 
+function emojiToCodePoint(string $emoji): string {
+    $emoji = mb_convert_encoding($emoji, 'UTF-32', 'UTF-8');
+    $unicode = strtolower(preg_replace("/^[0]+/","",bin2hex($emoji)));
+    return $unicode;
+ }
+
 function addHashtagsLinks($string)
 {
     return preg_replace_callback("/([\n\r\s>]|^)#(\w+)/u", function ($match) {

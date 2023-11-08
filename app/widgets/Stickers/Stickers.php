@@ -6,6 +6,7 @@ use Moxl\Xec\Action\BOB\Answer;
 use Psr\Http\Message\ResponseInterface;
 
 use App\Configuration;
+use App\Info;
 use App\MessageFile;
 use Movim\Image;
 
@@ -31,18 +32,18 @@ class Stickers extends \Movim\Widget\Base
         list($c, $ext) = explode('@', $cid);
         list($sh, $key) = explode('+', $c);
         if ($sh !== "sha1") {
-            $key = $sh.'+'.$key;
+            $key = $sh . '+' . $key;
         }
 
-        $base64 = base64_encode(file_get_contents(PUBLIC_CACHE_PATH.hash(Image::$hash, $key).'.png'));
+        $base64 = base64_encode(file_get_contents(PUBLIC_CACHE_PATH . hash(Image::$hash, $key) . '.png'));
 
         $a = new Answer;
         $a->setTo($to)
-          ->setId($id)
-          ->setCid($cid)
-          ->setType('image/png')
-          ->setBase64($base64)
-          ->request();
+            ->setId($id)
+            ->setCid($cid)
+            ->setType('image/png')
+            ->setBase64($base64)
+            ->request();
     }
 
     public function ajaxSend(string $to, string $pack, $file, bool $muc = false)
@@ -53,15 +54,15 @@ class Stickers extends \Movim\Widget\Base
 
         list($key, $ext) = explode('.', $file);
 
-        $filepath = PUBLIC_PATH.'/stickers/'.$pack.'/'.$key.'.png';
+        $filepath = PUBLIC_PATH . '/stickers/' . $pack . '/' . $key . '.png';
 
         if (!file_exists($filepath)) {
             return;
         }
 
         // Caching the picture
-        if (!file_exists(PUBLIC_CACHE_PATH.hash(Image::$hash, $key).'.png')) {
-            copy($filepath, PUBLIC_CACHE_PATH.hash(Image::$hash, $key).'.png');
+        if (!file_exists(PUBLIC_CACHE_PATH . hash(Image::$hash, $key) . '.png')) {
+            copy($filepath, PUBLIC_CACHE_PATH . hash(Image::$hash, $key) . '.png');
         }
 
         // Creating a message
@@ -81,13 +82,13 @@ class Stickers extends \Movim\Widget\Base
         $m->resource = $this->user->session->resource;
 
         // Sending the sticker
-        $html = "<p><img alt='Sticker' src='cid:sha1+".$key."@bob.xmpp.org'/></p>";
+        $html = "<p><img alt='Sticker' src='cid:sha1+" . $key . "@bob.xmpp.org'/></p>";
 
         $p = new Publish;
         $p->setTo($m->jidto)
-          ->setContent($m->body)
-          ->setHTML($html)
-          ->setId($m->id);
+            ->setContent($m->body)
+            ->setHTML($html)
+            ->setId($m->id);
 
         if ($muc) {
             $p->setMuc();
@@ -126,7 +127,7 @@ class Stickers extends \Movim\Widget\Base
         }
 
         if (isset($pack)) {
-            $files = scandir(PUBLIC_PATH.'/stickers/'.$pack);
+            $files = scandir(PUBLIC_PATH . '/stickers/' . $pack);
 
             array_shift($files);
             array_shift($files);
@@ -137,7 +138,7 @@ class Stickers extends \Movim\Widget\Base
             $view->assign('packs', $packs);
             $view->assign('pack', $pack);
             $view->assign('gifEnabled', $isGifEnabled);
-            $view->assign('info', parse_ini_file(PUBLIC_PATH.'/stickers/'.$pack.'/info.ini'));
+            $view->assign('info', parse_ini_file(PUBLIC_PATH . '/stickers/' . $pack . '/info.ini'));
             $view->assign('path', $this->respath('stickers', false, false, true));
 
             Drawer::fill($view->draw('_stickers'), true);
@@ -154,12 +155,21 @@ class Stickers extends \Movim\Widget\Base
     /**
      * @brief Show the smiley Poppin
      */
-    public function ajaxReaction(string $mid = null)
+    public function ajaxReaction(string $mid = null, string $jid = null)
     {
+        $info = $mid
+            ? Info::where('server', function ($query) use ($mid) {
+                $query->select('jidfrom')
+                    ->from('messages')
+                    ->where('mid', $mid);
+            })->first()
+            : null;
+
         $view = $this->tpl();
 
         $emojis = $this->tpl();
         $emojis->assign('mid', $mid);
+        $emojis->assign('reactionsrestrictions', $info ? $info->reactionsrestrictions : null);
 
         $view->assign('emojis', $emojis->draw('_stickers_emojis'));
 
@@ -177,14 +187,14 @@ class Stickers extends \Movim\Widget\Base
 
         if (empty($apiKey)) return;
 
-        $keyword = filter_var($keyword, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+        $keyword = filter_var($keyword, FILTER_FLAG_STRIP_HIGH);
         $keyword = str_replace(' ', '+', $keyword);
 
         requestAsyncURL(
-            'https://api.tenor.com/v1/search?q='.$keyword.
-            '&key='.$apiKey.
-            '&limit='.$this->paginate.
-            '&pos='.($page*$this->paginate)
+            'https://api.tenor.com/v1/search?q=' . $keyword .
+                '&key=' . $apiKey .
+                '&limit=' . $this->paginate .
+                '&pos=' . ($page * $this->paginate)
         )->then(function (ResponseInterface $response) {
             $view = $this->tpl();
 
@@ -206,8 +216,8 @@ class Stickers extends \Movim\Widget\Base
                         ? '.first'
                         : '.second';
 
-                    $this->rpc('MovimTpl.append', '#gifs .masonry'.$column, $view->draw('_stickers_gifs_result'));
-                    $i ++;
+                    $this->rpc('MovimTpl.append', '#gifs .masonry' . $column, $view->draw('_stickers_gifs_result'));
+                    $i++;
                 }
             }
 
@@ -226,8 +236,8 @@ class Stickers extends \Movim\Widget\Base
         if (empty($apiKey)) return;
 
         requestAsyncURL(
-            'https://api.tenor.com/v1/gifs?ids='.$gifId.
-            '&key='.$apiKey
+            'https://api.tenor.com/v1/gifs?ids=' . $gifId .
+                '&key=' . $apiKey
         )->then(function (ResponseInterface $response) use ($to, $muc) {
             $results = \json_decode($response->getBody());
 
@@ -248,8 +258,12 @@ class Stickers extends \Movim\Widget\Base
 
                 $chat = new \Chat;
                 $chat->sendMessage(
-                    $to, false, $muc,
-                    null, $messageFile);
+                    $to,
+                    false,
+                    $muc,
+                    null,
+                    $messageFile
+                );
             }
         });
     }
@@ -267,7 +281,7 @@ class Stickers extends \Movim\Widget\Base
      */
     public function getPacks()
     {
-        $dirs = scandir(PUBLIC_PATH.'/stickers/');
+        $dirs = scandir(PUBLIC_PATH . '/stickers/');
 
         $packs = [];
 
@@ -276,7 +290,7 @@ class Stickers extends \Movim\Widget\Base
 
         // Get the packs
         foreach ($dirs as $dir) {
-            if (is_dir(PUBLIC_PATH.'/stickers/'.$dir)) {
+            if (is_dir(PUBLIC_PATH . '/stickers/' . $dir)) {
                 array_push($packs, $dir);
             }
         }
