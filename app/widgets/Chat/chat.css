@@ -629,6 +629,13 @@ li .bubble.file div.file[data-type="image/gif"]:after {
     pointer-events: none;
 }
 
+li .bubble.file div.file a span.host:before,
+li .bubble.file div.file a span.size:before {
+    content: '-';
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
 /* Message Info */
 
 #chat_widget .bubble .message span.info:after {

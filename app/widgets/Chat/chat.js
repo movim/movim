@@ -930,7 +930,7 @@ var Chat = {
     },
     appendMessage: function (idjidtime, data, prepend) {
         if (data.body === null) return;
-
+        console.log(data);
         var bubble = null,
             mergeMsg = false,
             msgStack,
@@ -1094,12 +1094,6 @@ var Chat = {
 
         } else if (data.file != null && data.card === undefined && data.file.type !== 'xmpp' && data.retracted == false) {
             bubble.querySelector('div.bubble').classList.add('file');
-
-            // Ugly fix to clear the paragraph if the file contains a similar link
-            if (p.querySelector('a') && p.querySelector('a').href == data.file.uri) {
-                p.querySelector('a').remove();
-            }
-
             msg.appendChild(Chat.getFileHtml(data.file, data));
         }
 
@@ -1346,36 +1340,31 @@ var Chat = {
                 return div;
             }
 
-            /*var a = document.createElement('a');
+            if (!file.preview) {
+                var a = document.createElement('a');
 
-            if (sticker == null) {
-                var link = document.createElement('p');
-                link.textContent = file.name;
-                link.setAttribute('title', file.name);
-                a.appendChild(link);
+                a.textContent = file.name;
+                a.href = file.uri;
+                a.target = '_blank';
+                a.rel = 'noopener';
+
+                div.appendChild(a);
+
+                if (file.host) {
+                    var host = document.createElement('span');
+                    host.innerHTML = file.host;
+                    host.className = 'host';
+                    a.appendChild(host);
+                }
+
+                if (file.size > 0) {
+                    var span = document.createElement('span');
+                    span.innerHTML = file.cleansize;
+                    span.className = 'size';
+
+                    a.appendChild(span);
+                }
             }
-
-            a.setAttribute('href', file.uri);
-            a.setAttribute('target', '_blank');
-            a.setAttribute('rel', 'noopener');
-
-            div.appendChild(a);*/
-
-            /*if (file.host) {
-                var host = document.createElement('span');
-                host.innerHTML = file.host;
-                host.setAttribute('class', 'host');
-
-                a.appendChild(host);
-            }
-
-            if (file.size > 0 && sticker == null) {
-                var span = document.createElement('span');
-                span.innerHTML = file.cleansize;
-                span.setAttribute('class', 'size');
-
-                a.appendChild(span);
-            }*/
         }
 
         return div;

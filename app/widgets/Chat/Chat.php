@@ -1176,7 +1176,7 @@ class Chat extends \Movim\Widget\Base
             $message->body = __('message.encrypted');
         } elseif (isset($message->html) && !isset($message->file)) {
             $message->body = $message->html;
-        } else {
+        } elseif (!isset($message->file)) {
             $message->addUrls();
 
             if (is_string($message->body)) {
@@ -1259,6 +1259,8 @@ class Chat extends \Movim\Widget\Base
                     }
                     break;
             }
+
+            $message->body = '';
         }
 
         if (
