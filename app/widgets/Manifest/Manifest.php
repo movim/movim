@@ -81,11 +81,27 @@ class Manifest extends Base
                     ]
                 ]
             ],
+            'display_override' => ['window-controls-overlay'],
             'display'       => 'standalone',
             'orientation'   => 'portrait-primary',
             'background_color' => '#10151A',
             'theme_color'   => '#10151A',
-            'start_url'     => '/?login',
+            'id'            => '/login',
+            'start_url'     => '/login',
+            'launch_handler'=> [
+                'client_mode' => 'navigate-new',
+            ],
+            'categories'    => ['news', 'photo', 'social', 'entertainment'],
+            'dir'           => 'auto',
+            'lang'          => 'en',
+            'prefer_related_applications' => false,
+            'protocol_handlers' => [[
+                'protocol' => 'xmpp',
+                'name'     => 'Movim',
+                'url' => '/share/%s'
+            ]],
+            'handle_links' => 'preferred',
+            'edge_side_panel' => ['preferred_width' => 375],
         ];
 
         $this->view->assign('json', json_encode($infos));

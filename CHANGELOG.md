@@ -8,6 +8,7 @@ v0.22.6 (trunk)
 * Refactor and cleanup the info for stickers messages
 * Move the file message related logic to the Message model
 * Refactor the Stickers and File display and cleanup the related CSS
+* Complete the Manifest content to have a better PWA integration
 
 v0.22.5
 ---------------------------
