@@ -78,10 +78,6 @@ class RoomsUtils extends Base
         $view->assign('picturesCount', $picturesCount);
         $view->assign('linksCount', $linksCount);
 
-        $view->assign('presences', $conference->presences()
-            ->with('capability')
-            ->get());
-
         if ($conference->isGroupChat()) {
             $view->assign('members', $conference->activeMembers()
                 ->with('contact')
@@ -106,6 +102,10 @@ class RoomsUtils extends Base
         Drawer::fill($view->draw('_rooms_drawer'));
         $this->rpc('Tabs.create');
 
+        if (!$conference->isGroupChat()) {
+            $this->rpc('RoomsUtils_ajaxAppendPresences', $room, 0);
+        }
+
         if ($picturesCount > 0) {
             $this->rpc('RoomsUtils_ajaxHttpGetPictures', $room);
         }
@@ -117,6 +117,41 @@ class RoomsUtils extends Base
         if ($this->user->hasOMEMO() && $hasFingerprints) {
             $this->rpc('RoomsUtils.getDrawerFingerprints', $room);
         }
+    }
+
+    public function ajaxAppendPresences($room, int $page = 0)
+    {
+        $pagination = 20;
+
+        $conference = $this->user->session->conferences()
+            ->where('conference', $room)
+            ->with('info')
+            ->first();
+
+        if (!$conference) return;
+
+        $presences = $conference->presences()
+            ->with('capability')
+            ->skip($page * $pagination)
+            ->take($pagination + 1)
+            ->get();
+
+        $more = false;
+
+        if ($presences->count() == $pagination + 1) {
+            $more = true;
+            $presences->pop();
+        }
+
+        $tpl = $this->tpl();
+        $tpl->assign('more', $more);
+        $tpl->assign('conference', $conference);
+        $tpl->assign('presences', $presences);
+        $tpl->assign('page', $page + 1);
+        $tpl->assign('me', $this->user->id);
+
+        $this->rpc('MovimTpl.remove', '#room_presences_more');
+        $this->rpc('MovimTpl.append', '#room_presences_list', $tpl->draw('_rooms_presences_list'));
     }
 
     public function ajaxGetDrawerFingerprints($room, $deviceId)

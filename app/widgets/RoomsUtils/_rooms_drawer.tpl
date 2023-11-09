@@ -189,6 +189,7 @@
                     </div>
                 </li>
             </ul>
+
             <ul class="list thin">
                 {loop="$members"}
                     {$presence = $presences->where('mucjid', $value->jid)->first()}
@@ -260,71 +261,8 @@
                     </div>
                 </li>
             </ul>
-            <ul class="list thin">
-                {loop="$presences"}
-                    <li class="{if="$value->last > 60"} inactive{/if}"
-                        title="{$value->resource}">
 
-                        <span class="primary icon bubble small status {$value->presencekey}">
-                            <img loading="lazy" src="{$value->conferencePicture}">
-                        </span>
-                        {if="$value->mucaffiliation == 'owner'"}
-                            <span class="control icon yellow" title="{$c->__('rooms.owner')}">
-                                <i class="material-icons">star</i>
-                            </span>
-                        {elseif="$value->mucaffiliation == 'admin'"}
-                            <span class="control icon gray" title="{$c->__('rooms.admin')}">
-                                <i class="material-icons">star</i>
-                            </span>
-                        {/if}
-                        {if="$value->mucrole == 'visitor'"}
-                            <span class="control icon gray" title="{$c->__('rooms.visitor')}">
-                                <i class="material-icons">speaker_notes_off</i>
-                            </span>
-                        {/if}
-                        {if="$value->mucjid != $me"}
-                            <span class="control icon active gray divided" onclick="
-                                Chats_ajaxOpen('{$value->mucjid|echapJS}');
-                                Chat.get('{$value->mucjid|echapJS}');
-                                Drawer_ajaxClear();">
-                                <i class="material-icons">comment</i>
-                            </span>
-                        {/if}
-                        {if="$conference->presence && ($conference->presence->mucrole == 'moderator' || $conference->presence->mucaffiliation == 'owner')"}
-                            <span class="control icon active gray divided" onclick="
-                                RoomsUtils_ajaxChangeAffiliation('{$conference->conference|echapJS}', '{$value->mucjid|echapJS}');
-                                Drawer_ajaxClear();">
-                                <i class="material-icons">manage_accounts</i>
-                            </span>
-                        {/if}
-                        <div>
-                            <p class="line normal">
-                                {if="$value->mucjid && strpos($value->mucjid, '/') == false"}
-                                    {if="$value->mucjid == $me"}
-                                        {$value->resource}
-                                    {else}
-                                        <a href="{$c->route('contact', $value->mucjid)}">{$value->resource}</a>
-                                    {/if}
-                                {else}
-                                    {$value->resource}
-                                {/if}
-                                {if="$value->capability"}
-                                    <span class="second" title="{$value->capability->name}">
-                                        <i class="material-icons">{$value->capability->getDeviceIcon()}</i>
-                                    </span>
-                                {/if}
-                            </p>
-                            {if="$value->seen"}
-                                <p class="line">
-                                    {$c->__('last.title')} {$value->seen|strtotime|prepareDate:true,true}
-                                </p>
-                            {elseif="$value->status"}
-                                <p class="line" title="{$value->status}">{$value->status}</p>
-                            {/if}
-                        </div>
-                    </li>
-                {/loop}
-            </ul>
+            <ul class="list thin spin" id="room_presences_list"></ul>
         </div>
     {/if}
 
