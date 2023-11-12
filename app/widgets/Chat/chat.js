@@ -1223,7 +1223,7 @@ var Chat = {
         if (document.getElementById(MovimUtils.cleanupId(date)) && !prepend) return;
 
         dateNode = Chat.date.cloneNode(true);
-        dateNode.dataset.value = date.trim();
+        dateNode.dataset.value = date;
         dateNode.querySelector('p').innerHTML = date;
         dateNode.id = MovimUtils.cleanupId(date);
 
