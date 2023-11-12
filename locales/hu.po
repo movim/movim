@@ -123,7 +123,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-27 21:55+0200\n"
+"POT-Creation-Date: 2023-11-12 23:26+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: 386902c248cb697d9d6d058103e08443_c36ce9b <3e1ab06cc760e2987b063fda7f345e3f_237544>, 2018\n"
 "Language-Team: Hungarian (http://app.transifex.com/movim/movim/language/hu/)\n"
@@ -247,9 +247,8 @@ msgid "on"
 msgstr "itt:"
 
 #: [create]successfull
-#, fuzzy
 msgid "Your account has been successfully registered"
-msgstr "Felhasználói fiókodat sikeresen létrehoztuk."
+msgstr ""
 
 #: [create]loading
 msgid "Loading"
@@ -558,9 +557,8 @@ msgid "Your contact attempted to retract a previous message, but it's unsupporte
 msgstr ""
 
 #: [message]moderate_body
-#, fuzzy
 msgid "This message was moderated"
-msgstr "%s üzenet betöltve"
+msgstr ""
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
@@ -1138,9 +1136,8 @@ msgid "Hide the offline contacts"
 msgstr "Rejtsd el az offline kapcsolatokat"
 
 #: [config]appearence
-#, fuzzy
 msgid "Appearance"
-msgstr "Megjelenés"
+msgstr ""
 
 #: [config]updated
 msgid "Configuration updated"
@@ -1187,9 +1184,8 @@ msgid "Make the chat page as the default one"
 msgstr ""
 
 #: [config]mam_text
-#, fuzzy
 msgid "Server-side chat messages archiving preferences"
-msgstr "Szerveroldali archiválási beállítások"
+msgstr ""
 
 #: [config]mam_always
 msgid "Always"
@@ -1204,34 +1200,13 @@ msgid "Archiving preferences saved"
 msgstr "Archiválási beállítások elmentve"
 
 #: [config]blog_text
-#, fuzzy
 msgid "Personal blog confidentiality"
-msgstr "konfidens"
+msgstr ""
 
-#
-# Translators:
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2012
-# Free Bill <fordit.libfrid@antichef.com>, 2016
-# Simon Ede <vargamarci64@gmail.com>, 2015
-# Simon Ede <vargamarci64@gmail.com>, 2015
-# 386902c248cb697d9d6d058103e08443_c36ce9b <3e1ab06cc760e2987b063fda7f345e3f_237544>, 2018
 #: [config]account_privacy
-#, fuzzy
 msgctxt "[config]account_privacy"
 msgid ""
 msgstr ""
-"Project-Id-Version: movim\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-14 23:10+0200\n"
-"PO-Revision-Date: 2015-06-24 09:45+0000\n"
-"Last-Translator: 386902c248cb697d9d6d058103e08443_c36ce9b <3e1ab06cc760e2987b063fda7f345e3f_237544>, 2018\n"
-"Language-Team: Hungarian (http://app.transifex.com/movim/movim/language/hu/)\n"
-"Language: hu\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.8.4\n"
 
 #: [config]blog_open_title
 msgid "Public blog"
@@ -1254,9 +1229,8 @@ msgid "Personal blog confidentiality saved"
 msgstr ""
 
 #: [config]confidentiality
-#, fuzzy
 msgid "Confidentiality"
-msgstr "konfidens"
+msgstr ""
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -1796,9 +1770,8 @@ msgid "Popups"
 msgstr "Felugró üzenetek"
 
 #: [onboarding]popups_text
-#, fuzzy
 msgid "Movim is using popups for the video-conference feature, they are sometimes blocked by the browsers"
-msgstr "A Movim felugró üzeneteket használ a videókonferencia funkcióhoz, amelyeket blokkolnak egyes böngészők"
+msgstr ""
 
 #: [onboarding]popups_text_second
 msgid "Please be sure that they are enabled to use this feature properly"
@@ -2193,9 +2166,8 @@ msgid "Chatroom cannot be joined, registration required"
 msgstr ""
 
 #: [chatrooms]itemnotfound
-#, fuzzy
 msgid "The chatroom doesn’t exist"
-msgstr "Ez a szerver nem létezik"
+msgstr ""
 
 #: [chatrooms]notauthorized
 msgid "A password is required"
@@ -3586,6 +3558,3 @@ msgstr "Az API nem elérhető, próbáld újra később"
 #: [field]type_here
 msgid "Type here"
 msgstr "Ide írj"
-
-#~ msgid "No content to preview"
-#~ msgstr "Nincs megjeleníthető tartalom előnézethez"

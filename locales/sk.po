@@ -122,7 +122,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-27 21:55+0200\n"
+"POT-Creation-Date: 2023-11-12 23:26+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Slavko <linux@slavino.sk>, 2020-2021\n"
 "Language-Team: Slovak (Slovakia) (http://app.transifex.com/movim/movim/language/sk_SK/)\n"
@@ -246,9 +246,8 @@ msgid "on"
 msgstr "na"
 
 #: [create]successfull
-#, fuzzy
 msgid "Your account has been successfully registered"
-msgstr "Váš účet bol úspešne registrovaný"
+msgstr ""
 
 #: [create]loading
 msgid "Loading"
@@ -557,9 +556,8 @@ msgid "Your contact attempted to retract a previous message, but it's unsupporte
 msgstr ""
 
 #: [message]moderate_body
-#, fuzzy
 msgid "This message was moderated"
-msgstr "Prijaté správy: %s"
+msgstr ""
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
@@ -707,9 +705,8 @@ msgid "%s is now member"
 msgstr ""
 
 #: [chat]publish_error
-#, fuzzy
 msgid "An error occurred when sending the message"
-msgstr "Nastala chyba pri odosielaní správy"
+msgstr ""
 
 #: [chat]mam_retrieval
 msgid "Synchronizing the history, please wait…"
@@ -1138,9 +1135,8 @@ msgid "Hide the offline contacts"
 msgstr "Skryť odpojené kontakty"
 
 #: [config]appearence
-#, fuzzy
 msgid "Appearance"
-msgstr "Vzhľad"
+msgstr ""
 
 #: [config]updated
 msgid "Configuration updated"
@@ -1187,9 +1183,8 @@ msgid "Make the chat page as the default one"
 msgstr "Nastaviť stránku chatu ako predvolenú"
 
 #: [config]mam_text
-#, fuzzy
 msgid "Server-side chat messages archiving preferences"
-msgstr "Archivovanie na strane servera"
+msgstr ""
 
 #: [config]mam_always
 msgid "Always"
@@ -1204,33 +1199,13 @@ msgid "Archiving preferences saved"
 msgstr "Nastavenia archivovania uložené"
 
 #: [config]blog_text
-#, fuzzy
 msgid "Personal blog confidentiality"
-msgstr "sebaistý"
+msgstr ""
 
-#
-# Translators:
-# Jaussoin Timothée <edhelas@movim.eu>, 2020
-# palica <pavol.cupka@gmail.com>, 2016
-# palica <pavol.cupka@gmail.com>, 2016
-# Slavko <linux@slavino.sk>, 2020-2021
 #: [config]account_privacy
-#, fuzzy
 msgctxt "[config]account_privacy"
 msgid ""
 msgstr ""
-"Project-Id-Version: movim\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-14 23:10+0200\n"
-"PO-Revision-Date: 2015-06-24 09:45+0000\n"
-"Last-Translator: Slavko <linux@slavino.sk>, 2020-2021\n"
-"Language-Team: Slovak (Slovakia) (http://app.transifex.com/movim/movim/language/sk_SK/)\n"
-"Language: sk_SK\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);\n"
-"X-Generator: Translate Toolkit 3.8.4\n"
 
 #: [config]blog_open_title
 msgid "Public blog"
@@ -1253,9 +1228,8 @@ msgid "Personal blog confidentiality saved"
 msgstr ""
 
 #: [config]confidentiality
-#, fuzzy
 msgid "Confidentiality"
-msgstr "sebaistý"
+msgstr ""
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -1795,9 +1769,8 @@ msgid "Popups"
 msgstr "Vyskakovacie okná"
 
 #: [onboarding]popups_text
-#, fuzzy
 msgid "Movim is using popups for the video-conference feature, they are sometimes blocked by the browsers"
-msgstr "Movim používa na video-konferenciu vyskakovacie okná, ktoré sú niekedy prehliadačmi blokované"
+msgstr ""
 
 #: [onboarding]popups_text_second
 msgid "Please be sure that they are enabled to use this feature properly"
@@ -2192,9 +2165,8 @@ msgid "Chatroom cannot be joined, registration required"
 msgstr "Do miestnosti nemožno vstúpiť, je vyžadovaná registrácia"
 
 #: [chatrooms]itemnotfound
-#, fuzzy
 msgid "The chatroom doesn’t exist"
-msgstr "Chatová miestnosť neexistuje"
+msgstr ""
 
 #: [chatrooms]notauthorized
 msgid "A password is required"
@@ -2237,9 +2209,8 @@ msgid "You are currently logged as an anonymous user."
 msgstr "Ste prihlásený ako anonymný požuívateľ."
 
 #: [room]anonymous_text2
-#, fuzzy
 msgid "You can join using your own account or create one on the login page by logging out using the cross in the top-right corner."
-msgstr "Môžete vstúpiť pomocou svojho vlastného účtu alebo si môžete vytvoriť nový na prihlasovacej stránke, po odhlásení pomocou krížika v pravom hornom rohu."
+msgstr ""
 
 #: [room]anonymous_login
 msgid "Login on %s"
@@ -2582,9 +2553,8 @@ msgid "John_Bob96"
 msgstr "Jožko_Mrkvička96"
 
 #: [profile]nickname_error
-#, fuzzy
 msgid "Your nickname should only contain letters, numbers, - and _"
-msgstr "Vaša prezývka môže obsahovať len písmená, číslice, - a _"
+msgstr ""
 
 #: [profile]nickname_conflict
 msgid "The nickname is already registered"
@@ -2695,9 +2665,8 @@ msgid "Movim requires Javascript to be enabled to work properly."
 msgstr "Aby Movim fungoval správne, vyžaduje zapnutý a funkčný Javascript."
 
 #: [global]description
-#, fuzzy
 msgid "Movim is a kickass distributed social networking platform that protects your privacy and comes with a set of awesome features."
-msgstr "Movim je platforma distribuovanej sociálnej siete, ktorá chráni vaše súkromie a ponúka úžasné funkcie."
+msgstr ""
 
 #: [global]loading
 msgid "Loading…"
@@ -3034,9 +3003,8 @@ msgid "Registered"
 msgstr "Registrovaný"
 
 #: [client]gateway
-#, fuzzy
 msgid "Gateway"
-msgstr "Brány"
+msgstr ""
 
 #: [presence]online
 msgid "Online"
@@ -3589,12 +3557,3 @@ msgstr "API nie je dostupné, skúste neskôr"
 #: [field]type_here
 msgid "Type here"
 msgstr "Píšte tu"
-
-#~ msgid "No content to preview"
-#~ msgstr "Žiadny obsah na ukážku"
-
-#~ msgid "Is this profile public?"
-#~ msgstr "Je tento profil verejný?"
-
-#~ msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
-#~ msgstr "Prosím, dávajte pozor! Keď nastavíte svoj profil na verejný, všetky nasledujúce informácie budú prístupné všetkým používateľom Movim a celému Internetu."

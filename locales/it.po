@@ -126,7 +126,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-27 21:55+0200\n"
+"POT-Creation-Date: 2023-11-12 23:26+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Giacomo Lacava <g.lacava@gmail.com>, 2018\n"
 "Language-Team: Italian (http://app.transifex.com/movim/movim/language/it/)\n"
@@ -250,9 +250,8 @@ msgid "on"
 msgstr "su"
 
 #: [create]successfull
-#, fuzzy
 msgid "Your account has been successfully registered"
-msgstr "Il tuo account è stato registrato con successo"
+msgstr ""
 
 #: [create]loading
 msgid "Loading"
@@ -561,9 +560,8 @@ msgid "Your contact attempted to retract a previous message, but it's unsupporte
 msgstr ""
 
 #: [message]moderate_body
-#, fuzzy
 msgid "This message was moderated"
-msgstr "%s messaggi recuperati"
+msgstr ""
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
@@ -1141,9 +1139,8 @@ msgid "Hide the offline contacts"
 msgstr "Nascondi i messaggi non in linea"
 
 #: [config]appearence
-#, fuzzy
 msgid "Appearance"
-msgstr "Aspetto"
+msgstr ""
 
 #: [config]updated
 msgid "Configuration updated"
@@ -1206,37 +1203,13 @@ msgid "Archiving preferences saved"
 msgstr ""
 
 #: [config]blog_text
-#, fuzzy
 msgid "Personal blog confidentiality"
-msgstr "fiducioso"
+msgstr ""
 
-#
-# Translators:
-# Andrea Novella <andrea.novella.wd@gmail.com>, 2016
-# Astrofillite, 2015
-# Collederas <scandola.fabrizio@gmail.com>, 2017
-# fmarella <francesco.marella@gmail.com>, 2015
-# Giacomo Lacava <g.lacava@gmail.com>, 2018
-# Collederas <scandola.fabrizio@gmail.com>, 2017
-# Simon Defli <simon.defli@xt3.it>, 2017
-# The Gamer <xthegamerx@hotmail.com>, 2018
 #: [config]account_privacy
-#, fuzzy
 msgctxt "[config]account_privacy"
 msgid ""
 msgstr ""
-"Project-Id-Version: movim\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-14 23:10+0200\n"
-"PO-Revision-Date: 2015-06-24 09:45+0000\n"
-"Last-Translator: Giacomo Lacava <g.lacava@gmail.com>, 2018\n"
-"Language-Team: Italian (http://app.transifex.com/movim/movim/language/it/)\n"
-"Language: it\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
-"X-Generator: Translate Toolkit 3.8.4\n"
 
 #: [config]blog_open_title
 msgid "Public blog"
@@ -1259,9 +1232,8 @@ msgid "Personal blog confidentiality saved"
 msgstr ""
 
 #: [config]confidentiality
-#, fuzzy
 msgid "Confidentiality"
-msgstr "fiducioso"
+msgstr ""
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -1801,9 +1773,8 @@ msgid "Popups"
 msgstr "Popup"
 
 #: [onboarding]popups_text
-#, fuzzy
 msgid "Movim is using popups for the video-conference feature, they are sometimes blocked by the browsers"
-msgstr "Movim per le video conferenze usa i Popup, che a volte sono bloccati dai Browser"
+msgstr ""
 
 #: [onboarding]popups_text_second
 msgid "Please be sure that they are enabled to use this feature properly"
@@ -2242,9 +2213,8 @@ msgid "You are currently logged as an anonymous user."
 msgstr ""
 
 #: [room]anonymous_text2
-#, fuzzy
 msgid "You can join using your own account or create one on the login page by logging out using the cross in the top-right corner."
-msgstr "Puoi aggiungerti usando il tuo account o crearne uno nella pagina del login, usando la croce nell'angolo in alto a destra."
+msgstr ""
 
 #: [room]anonymous_login
 msgid "Login on %s"
@@ -3591,6 +3561,3 @@ msgstr "L'API non è raggiungibile, riprovare più tardi"
 #: [field]type_here
 msgid "Type here"
 msgstr "Digita qui"
-
-#~ msgid "No content to preview"
-#~ msgstr "Nessun contenuto per l'anteprima"

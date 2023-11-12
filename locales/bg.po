@@ -121,7 +121,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-27 21:55+0200\n"
+"POT-Creation-Date: 2023-11-12 23:26+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Rossen Karpuzov <rkarpuzov@yahoo.com>, 2020-2023\n"
 "Language-Team: Bulgarian (http://app.transifex.com/movim/movim/language/bg/)\n"
@@ -245,9 +245,8 @@ msgid "on"
 msgstr "на"
 
 #: [create]successfull
-#, fuzzy
 msgid "Your account has been successfully registered"
-msgstr "Вашата сметка бе успешно регистрирана"
+msgstr ""
 
 #: [create]loading
 msgid "Loading"
@@ -556,9 +555,8 @@ msgid "Your contact attempted to retract a previous message, but it's unsupporte
 msgstr ""
 
 #: [message]moderate_body
-#, fuzzy
 msgid "This message was moderated"
-msgstr "%s извлечени съобщения"
+msgstr ""
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
@@ -706,9 +704,8 @@ msgid "%s is now member"
 msgstr ""
 
 #: [chat]publish_error
-#, fuzzy
 msgid "An error occurred when sending the message"
-msgstr "Възникна грешка при изпращане на съобщението"
+msgstr ""
 
 #: [chat]mam_retrieval
 msgid "Synchronizing the history, please wait…"
@@ -1137,9 +1134,8 @@ msgid "Hide the offline contacts"
 msgstr "Скриване на контактите извън линия"
 
 #: [config]appearence
-#, fuzzy
 msgid "Appearance"
-msgstr "Външен вид"
+msgstr ""
 
 #: [config]updated
 msgid "Configuration updated"
@@ -1186,9 +1182,8 @@ msgid "Make the chat page as the default one"
 msgstr "Направете страницата за чат като подразбираща се"
 
 #: [config]mam_text
-#, fuzzy
 msgid "Server-side chat messages archiving preferences"
-msgstr "Предпочитания за архивиране от страна на сървъра"
+msgstr ""
 
 #: [config]mam_always
 msgid "Always"
@@ -1203,32 +1198,13 @@ msgid "Archiving preferences saved"
 msgstr "Предпочитанията за архивиране са запазени"
 
 #: [config]blog_text
-#, fuzzy
 msgid "Personal blog confidentiality"
-msgstr "уверен/а"
+msgstr ""
 
-#
-# Translators:
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2012
-# Rossen Karpuzov <rkarpuzov@yahoo.com>, 2021
-# Rossen Karpuzov <rkarpuzov@yahoo.com>, 2020-2023
 #: [config]account_privacy
-#, fuzzy
 msgctxt "[config]account_privacy"
 msgid ""
 msgstr ""
-"Project-Id-Version: movim\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-14 23:10+0200\n"
-"PO-Revision-Date: 2015-06-24 09:45+0000\n"
-"Last-Translator: Rossen Karpuzov <rkarpuzov@yahoo.com>, 2020-2023\n"
-"Language-Team: Bulgarian (http://app.transifex.com/movim/movim/language/bg/)\n"
-"Language: bg\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.8.4\n"
 
 #: [config]blog_open_title
 msgid "Public blog"
@@ -1251,9 +1227,8 @@ msgid "Personal blog confidentiality saved"
 msgstr ""
 
 #: [config]confidentiality
-#, fuzzy
 msgid "Confidentiality"
-msgstr "уверен/а"
+msgstr ""
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -1793,9 +1768,8 @@ msgid "Popups"
 msgstr "Изскачащи прозорци"
 
 #: [onboarding]popups_text
-#, fuzzy
 msgid "Movim is using popups for the video-conference feature, they are sometimes blocked by the browsers"
-msgstr "Movim използва изскачащи прозорци за функцията за видеоконференция, те понякога са блокирани от браузърите"
+msgstr ""
 
 #: [onboarding]popups_text_second
 msgid "Please be sure that they are enabled to use this feature properly"
@@ -2190,9 +2164,8 @@ msgid "Chatroom cannot be joined, registration required"
 msgstr ""
 
 #: [chatrooms]itemnotfound
-#, fuzzy
 msgid "The chatroom doesn’t exist"
-msgstr "Стаята за разговори не съществува"
+msgstr ""
 
 #: [chatrooms]notauthorized
 msgid "A password is required"
@@ -2235,9 +2208,8 @@ msgid "You are currently logged as an anonymous user."
 msgstr "В момента сте влезли като анонимен потребител."
 
 #: [room]anonymous_text2
-#, fuzzy
 msgid "You can join using your own account or create one on the login page by logging out using the cross in the top-right corner."
-msgstr "Можете да се присъедините, като използвате свой собствен акаунт или да създадете такъв на страницата за вход, като излезете с помощта на кръста в горния десен ъгъл."
+msgstr ""
 
 #: [room]anonymous_login
 msgid "Login on %s"
@@ -3030,9 +3002,8 @@ msgid "Registered"
 msgstr "Регистриран"
 
 #: [client]gateway
-#, fuzzy
 msgid "Gateway"
-msgstr "Шлюзове"
+msgstr ""
 
 #: [presence]online
 msgid "Online"
@@ -3585,12 +3556,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr "Пиши тук"
-
-#~ msgid "No content to preview"
-#~ msgstr "Няма съдържание за визуализация"
-
-#~ msgid "Is this profile public?"
-#~ msgstr "Профила публичен ли е?"
-
-#~ msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
-#~ msgstr "Моля, обърнете внимание! Като направите своя профил публичен, цялата информация, изброена по-долу, ще бъде достъпна за всички потребители на Movim и в целия Интернет."

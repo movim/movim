@@ -128,7 +128,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-27 21:55+0200\n"
+"POT-Creation-Date: 2023-11-12 23:26+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>, 2015-2023\n"
 "Language-Team: French (France) (http://app.transifex.com/movim/movim/language/fr_FR/)\n"
@@ -3438,7 +3438,7 @@ msgstr "Hier"
 
 #: [date]ago
 msgid "%d days ago"
-msgstr " Il y a %d jours"
+msgstr "Il y a %d jours"
 
 #: [date]day
 msgid "day"

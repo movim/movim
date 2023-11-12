@@ -119,7 +119,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-27 21:55+0200\n"
+"POT-Creation-Date: 2023-11-12 23:26+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Marvin42 Marvin <h2g2.marvin.42@gmail.com>, 2017\n"
 "Language-Team: Romanian (http://app.transifex.com/movim/movim/language/ro/)\n"
@@ -243,9 +243,8 @@ msgid "on"
 msgstr ""
 
 #: [create]successfull
-#, fuzzy
 msgid "Your account has been successfully registered"
-msgstr "Contul a fost înregistrat cu succes"
+msgstr ""
 
 #: [create]loading
 msgid "Loading"
@@ -1133,9 +1132,8 @@ msgid "Hide the offline contacts"
 msgstr "Ascunde contactele deconectate"
 
 #: [config]appearence
-#, fuzzy
 msgid "Appearance"
-msgstr "Aspect"
+msgstr ""
 
 #: [config]updated
 msgid "Configuration updated"
@@ -1201,26 +1199,10 @@ msgstr ""
 msgid "Personal blog confidentiality"
 msgstr ""
 
-#
-# Translators:
-# Marvin42 Marvin <h2g2.marvin.42@gmail.com>, 2017
 #: [config]account_privacy
-#, fuzzy
 msgctxt "[config]account_privacy"
 msgid ""
 msgstr ""
-"Project-Id-Version: movim\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-14 23:10+0200\n"
-"PO-Revision-Date: 2015-06-24 09:45+0000\n"
-"Last-Translator: Marvin42 Marvin <h2g2.marvin.42@gmail.com>, 2017\n"
-"Language-Team: Romanian (http://app.transifex.com/movim/movim/language/ro/)\n"
-"Language: ro\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
-"X-Generator: Translate Toolkit 3.8.4\n"
 
 #: [config]blog_open_title
 msgid "Public blog"
@@ -2224,9 +2206,8 @@ msgid "You are currently logged as an anonymous user."
 msgstr ""
 
 #: [room]anonymous_text2
-#, fuzzy
 msgid "You can join using your own account or create one on the login page by logging out using the cross in the top-right corner."
-msgstr "Vă puteți alătura cu ajutorul contului dvs. propriu sau creați unul pe pagina de conectare deconectându-vă folosind crucea din colțul dreapta sus."
+msgstr ""
 
 #: [room]anonymous_login
 msgid "Login on %s"

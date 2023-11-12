@@ -128,7 +128,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-27 21:55+0200\n"
+"POT-Creation-Date: 2023-11-12 23:26+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Robbie Deighton <deightonrobbie@gmail.com>, 2019\n"
 "Language-Team: Dutch (http://app.transifex.com/movim/movim/language/nl/)\n"
@@ -252,9 +252,8 @@ msgid "on"
 msgstr "op"
 
 #: [create]successfull
-#, fuzzy
 msgid "Your account has been successfully registered"
-msgstr "Je account is gecreëerd"
+msgstr ""
 
 #: [create]loading
 msgid "Loading"
@@ -563,9 +562,8 @@ msgid "Your contact attempted to retract a previous message, but it's unsupporte
 msgstr ""
 
 #: [message]moderate_body
-#, fuzzy
 msgid "This message was moderated"
-msgstr "%s berichten ontvangen"
+msgstr ""
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
@@ -1143,9 +1141,8 @@ msgid "Hide the offline contacts"
 msgstr "Verberg offline contactpersonen"
 
 #: [config]appearence
-#, fuzzy
 msgid "Appearance"
-msgstr "Uiterlijk"
+msgstr ""
 
 #: [config]updated
 msgid "Configuration updated"
@@ -1208,39 +1205,13 @@ msgid "Archiving preferences saved"
 msgstr ""
 
 #: [config]blog_text
-#, fuzzy
 msgid "Personal blog confidentiality"
-msgstr "zelfverzekerd"
+msgstr ""
 
-#
-# Translators:
-# LinuxArie <abj61@posteo.net>, 2018
-# before <never@unseen.is>, 2015
-# Joep Seuren <joepseuren1@gmail.com>, 2015
-# Casper <casper@vrije-mens.org>, 2018
-# Flevo Polder <flevopolder2@gmail.com>, 2017
-# Heimen Stoffels <vistausss@fastmail.com>, 2018
-# Jeshua Edgar <jeshua.edgar@hotmail.com>, 2016
-# Robbie Deighton <deightonrobbie@gmail.com>, 2019
-# Rolf Deenen <rolf.deenen@gmail.com>, 2017
-# Steven Roose <stevenroose@gmail.com>, 2015
 #: [config]account_privacy
-#, fuzzy
 msgctxt "[config]account_privacy"
 msgid ""
 msgstr ""
-"Project-Id-Version: movim\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-14 23:10+0200\n"
-"PO-Revision-Date: 2015-06-24 09:45+0000\n"
-"Last-Translator: Robbie Deighton <deightonrobbie@gmail.com>, 2019\n"
-"Language-Team: Dutch (http://app.transifex.com/movim/movim/language/nl/)\n"
-"Language: nl\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.8.4\n"
 
 #: [config]blog_open_title
 msgid "Public blog"
@@ -1263,9 +1234,8 @@ msgid "Personal blog confidentiality saved"
 msgstr ""
 
 #: [config]confidentiality
-#, fuzzy
 msgid "Confidentiality"
-msgstr "zelfverzekerd"
+msgstr ""
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -1805,9 +1775,8 @@ msgid "Popups"
 msgstr "Pop-ups"
 
 #: [onboarding]popups_text
-#, fuzzy
 msgid "Movim is using popups for the video-conference feature, they are sometimes blocked by the browsers"
-msgstr "Movim gebruikt pop-ups voor video-conferenties. Sommige browsers blokkeren dit"
+msgstr ""
 
 #: [onboarding]popups_text_second
 msgid "Please be sure that they are enabled to use this feature properly"
@@ -3594,6 +3563,3 @@ msgstr "De API is niet bereikbaar, probeer later nog eens"
 #: [field]type_here
 msgid "Type here"
 msgstr "Typ hier"
-
-#~ msgid "No content to preview"
-#~ msgstr "Geen voorbeeld beschikbaar"

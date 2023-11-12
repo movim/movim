@@ -129,7 +129,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-27 21:55+0200\n"
+"POT-Creation-Date: 2023-11-12 23:26+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: cristian paraque, 2022\n"
 "Language-Team: Spanish (http://app.transifex.com/movim/movim/language/es/)\n"
@@ -237,9 +237,8 @@ msgid "OMEMO Key deletion"
 msgstr ""
 
 #: [account]delete_bundle_text
-#, fuzzy
 msgid "You are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
-msgstr "Vas a destruir la siguiente clave OMEMO. Tus contactos ya no podrán encriptar mensajes utilizando esa clave. Esta acción no se puede revertir. ¿Está seguro?"
+msgstr ""
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
@@ -254,9 +253,8 @@ msgid "on"
 msgstr "en"
 
 #: [create]successfull
-#, fuzzy
 msgid "Your account has been successfully registered"
-msgstr "Tu cuenta ha sido registrada exitosamente"
+msgstr ""
 
 #: [create]loading
 msgid "Loading"
@@ -565,9 +563,8 @@ msgid "Your contact attempted to retract a previous message, but it's unsupporte
 msgstr ""
 
 #: [message]moderate_body
-#, fuzzy
 msgid "This message was moderated"
-msgstr "%s mensajes obtenidos"
+msgstr ""
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
@@ -715,9 +712,8 @@ msgid "%s is now member"
 msgstr ""
 
 #: [chat]publish_error
-#, fuzzy
 msgid "An error occurred when sending the message"
-msgstr "Sucedió un error mientras se mandaba el mensaje"
+msgstr ""
 
 #: [chat]mam_retrieval
 msgid "Synchronizing the history, please wait…"
@@ -1146,9 +1142,8 @@ msgid "Hide the offline contacts"
 msgstr "Esconder los contactos desconectados"
 
 #: [config]appearence
-#, fuzzy
 msgid "Appearance"
-msgstr "Aspecto"
+msgstr ""
 
 #: [config]updated
 msgid "Configuration updated"
@@ -1195,9 +1190,8 @@ msgid "Make the chat page as the default one"
 msgstr "Establecer la página de conversación como la página por defecto"
 
 #: [config]mam_text
-#, fuzzy
 msgid "Server-side chat messages archiving preferences"
-msgstr "Preferencias de archivado del lado del servidor"
+msgstr ""
 
 #: [config]mam_always
 msgid "Always"
@@ -1212,40 +1206,13 @@ msgid "Archiving preferences saved"
 msgstr "Preferencias de archivo guardadas "
 
 #: [config]blog_text
-#, fuzzy
 msgid "Personal blog confidentiality"
-msgstr "seguro"
+msgstr ""
 
-#
-# Translators:
-# Alberto Luaces, 2020
-# Benjamin Perez Carrillo <benperezc@gmail.com>, 2020
-# Bikalkas <vicalcas@gmail.com.com>, 2015
-# cristian paraque, 2022
-# Daniel D <Daniel.Dona@alu.uclm.es>, 2017
-# duven duven <duven@autistici.org>, 2018
-# Juanro49 <juanrobertogarciasanchez@gmail.com>, 2021
-# kosciuk <nhk.web@gmail.com>, 2016
-# Raúl <gomezromanr@gmail.com>, 2015
-# sergio, 2017
-# Xals Xaloc <33xaloc@gmail.com>, 2016
 #: [config]account_privacy
-#, fuzzy
 msgctxt "[config]account_privacy"
 msgid ""
 msgstr ""
-"Project-Id-Version: movim\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-14 23:10+0200\n"
-"PO-Revision-Date: 2015-06-24 09:45+0000\n"
-"Last-Translator: cristian paraque, 2022\n"
-"Language-Team: Spanish (http://app.transifex.com/movim/movim/language/es/)\n"
-"Language: es\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
-"X-Generator: Translate Toolkit 3.8.4\n"
 
 #: [config]blog_open_title
 msgid "Public blog"
@@ -1268,9 +1235,8 @@ msgid "Personal blog confidentiality saved"
 msgstr ""
 
 #: [config]confidentiality
-#, fuzzy
 msgid "Confidentiality"
-msgstr "seguro"
+msgstr ""
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -1810,9 +1776,8 @@ msgid "Popups"
 msgstr "Notificaciones flotantes"
 
 #: [onboarding]popups_text
-#, fuzzy
 msgid "Movim is using popups for the video-conference feature, they are sometimes blocked by the browsers"
-msgstr "Movim usa notificaciones flotantes para la característica de vídeo-conferencia; algunas veces los navegadores las bloquean"
+msgstr ""
 
 #: [onboarding]popups_text_second
 msgid "Please be sure that they are enabled to use this feature properly"
@@ -2207,9 +2172,8 @@ msgid "Chatroom cannot be joined, registration required"
 msgstr "No se puede unir a esta conversación, requiere registro"
 
 #: [chatrooms]itemnotfound
-#, fuzzy
 msgid "The chatroom doesn’t exist"
-msgstr "La sala no existe"
+msgstr ""
 
 #: [chatrooms]notauthorized
 msgid "A password is required"
@@ -2252,9 +2216,8 @@ msgid "You are currently logged as an anonymous user."
 msgstr "Su identificación es la de un usuario anónimo."
 
 #: [room]anonymous_text2
-#, fuzzy
 msgid "You can join using your own account or create one on the login page by logging out using the cross in the top-right corner."
-msgstr "Puedes unirte usando tu propia cuenta o creando una en la página de inicio de sesión saliendo de tu sesión actual usando la cruz en la esquina superior derecha."
+msgstr ""
 
 #: [room]anonymous_login
 msgid "Login on %s"
@@ -2597,9 +2560,8 @@ msgid "John_Bob96"
 msgstr "John_Bob96"
 
 #: [profile]nickname_error
-#, fuzzy
 msgid "Your nickname should only contain letters, numbers, - and _"
-msgstr "Su alias sólo debería contener únicamente letras, números, «-» y «_»"
+msgstr ""
 
 #: [profile]nickname_conflict
 msgid "The nickname is already registered"
@@ -2710,9 +2672,8 @@ msgid "Movim requires Javascript to be enabled to work properly."
 msgstr "Movim requiere que Javascript esté activado para funcionar correctamente."
 
 #: [global]description
-#, fuzzy
 msgid "Movim is a kickass distributed social networking platform that protects your privacy and comes with a set of awesome features."
-msgstr "Movim es una súper plataforma de redes sociales distribuidas que protege su privacidad y tiene un montón de asombrosas características."
+msgstr ""
 
 #: [global]loading
 msgid "Loading…"
@@ -3049,9 +3010,8 @@ msgid "Registered"
 msgstr "Registrado"
 
 #: [client]gateway
-#, fuzzy
 msgid "Gateway"
-msgstr "Accesos"
+msgstr ""
 
 #: [presence]online
 msgid "Online"
@@ -3604,12 +3564,3 @@ msgstr "La API no se puede alcanzar, inténtalo de nuevo más tarde"
 #: [field]type_here
 msgid "Type here"
 msgstr "Escribe aquí"
-
-#~ msgid "No content to preview"
-#~ msgstr "Sin contenido para ver"
-
-#~ msgid "Is this profile public?"
-#~ msgstr "¿Es este perfil público?"
-
-#~ msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
-#~ msgstr "¡Atención, por favor! Haciendo su perfil público, toda la información listada abajo estará disponible para todos los usuarios de Movim y en toda Internet."

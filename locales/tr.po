@@ -121,7 +121,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-27 21:55+0200\n"
+"POT-Creation-Date: 2023-11-12 23:26+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Ali Can <gamalpha112@gmail.com>, 2018\n"
 "Language-Team: Turkish (http://app.transifex.com/movim/movim/language/tr/)\n"
@@ -245,9 +245,8 @@ msgid "on"
 msgstr "Açık"
 
 #: [create]successfull
-#, fuzzy
 msgid "Your account has been successfully registered"
-msgstr "Hesabın başarıyla oluşturuldu"
+msgstr ""
 
 #: [create]loading
 msgid "Loading"
@@ -1202,28 +1201,10 @@ msgstr ""
 msgid "Personal blog confidentiality"
 msgstr ""
 
-#
-# Translators:
-# Ali Can <gamalpha112@gmail.com>, 2018
-# alisan alacam <alisanalacam@gmail.com>, 2016
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2011
 #: [config]account_privacy
-#, fuzzy
 msgctxt "[config]account_privacy"
 msgid ""
 msgstr ""
-"Project-Id-Version: movim\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-14 23:10+0200\n"
-"PO-Revision-Date: 2015-06-24 09:45+0000\n"
-"Last-Translator: Ali Can <gamalpha112@gmail.com>, 2018\n"
-"Language-Team: Turkish (http://app.transifex.com/movim/movim/language/tr/)\n"
-"Language: tr\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Translate Toolkit 3.8.4\n"
 
 #: [config]blog_open_title
 msgid "Public blog"

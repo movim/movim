@@ -123,7 +123,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-27 21:55+0200\n"
+"POT-Creation-Date: 2023-11-12 23:26+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Dominik George <nik@naturalnet.de>, 2017-2018\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://app.transifex.com/movim/movim/language/nb_NO/)\n"
@@ -247,9 +247,8 @@ msgid "on"
 msgstr "på"
 
 #: [create]successfull
-#, fuzzy
 msgid "Your account has been successfully registered"
-msgstr "Din konto har blitt registrert"
+msgstr ""
 
 #: [create]loading
 msgid "Loading"
@@ -558,9 +557,8 @@ msgid "Your contact attempted to retract a previous message, but it's unsupporte
 msgstr ""
 
 #: [message]moderate_body
-#, fuzzy
 msgid "This message was moderated"
-msgstr "%s meldinger hentet"
+msgstr ""
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
@@ -1138,9 +1136,8 @@ msgid "Hide the offline contacts"
 msgstr "Ikke vis avloggede kontakter"
 
 #: [config]appearence
-#, fuzzy
 msgid "Appearance"
-msgstr "Utseende"
+msgstr ""
 
 #: [config]updated
 msgid "Configuration updated"
@@ -1187,9 +1184,8 @@ msgid "Make the chat page as the default one"
 msgstr ""
 
 #: [config]mam_text
-#, fuzzy
 msgid "Server-side chat messages archiving preferences"
-msgstr "Tjenerens arkivinstillinger"
+msgstr ""
 
 #: [config]mam_always
 msgid "Always"
@@ -1204,34 +1200,13 @@ msgid "Archiving preferences saved"
 msgstr "Arkivinstillinger lagret"
 
 #: [config]blog_text
-#, fuzzy
 msgid "Personal blog confidentiality"
-msgstr "selvsikker"
+msgstr ""
 
-#
-# Translators:
-# Allan Nordhøy <epost@anotheragency.no>, 2017
-# Dominik George <nik@naturalnet.de>, 2017-2018
-# pere <pere-transifex@hungry.com>, 2017
-# Ruben Solvang <rsolvang@gmail.com>, 2016-2017
-# 1b09ca809bd1d57b09c4d19f89cfcafa_19f763a <9a173cebe69c399e2bc3c9d455cdd880_367693>, 2016
 #: [config]account_privacy
-#, fuzzy
 msgctxt "[config]account_privacy"
 msgid ""
 msgstr ""
-"Project-Id-Version: movim\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-14 23:10+0200\n"
-"PO-Revision-Date: 2015-06-24 09:45+0000\n"
-"Last-Translator: Dominik George <nik@naturalnet.de>, 2017-2018\n"
-"Language-Team: Norwegian Bokmål (Norway) (http://app.transifex.com/movim/movim/language/nb_NO/)\n"
-"Language: nb_NO\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.8.4\n"
 
 #: [config]blog_open_title
 msgid "Public blog"
@@ -1254,9 +1229,8 @@ msgid "Personal blog confidentiality saved"
 msgstr ""
 
 #: [config]confidentiality
-#, fuzzy
 msgid "Confidentiality"
-msgstr "selvsikker"
+msgstr ""
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -1796,9 +1770,8 @@ msgid "Popups"
 msgstr "Oppsprettsvindu"
 
 #: [onboarding]popups_text
-#, fuzzy
 msgid "Movim is using popups for the video-conference feature, they are sometimes blocked by the browsers"
-msgstr "Movim bruker sprettoppvinduer for videokonferanser, men en del nettlesere blokkerer disse vinduene"
+msgstr ""
 
 #: [onboarding]popups_text_second
 msgid "Please be sure that they are enabled to use this feature properly"
@@ -2193,9 +2166,8 @@ msgid "Chatroom cannot be joined, registration required"
 msgstr "Kunne ikke bli med i samtalerommet, registrering er påkrevd."
 
 #: [chatrooms]itemnotfound
-#, fuzzy
 msgid "The chatroom doesn’t exist"
-msgstr "Denne tjeneren eksisterer ikke"
+msgstr ""
 
 #: [chatrooms]notauthorized
 msgid "A password is required"
@@ -2238,9 +2210,8 @@ msgid "You are currently logged as an anonymous user."
 msgstr ""
 
 #: [room]anonymous_text2
-#, fuzzy
 msgid "You can join using your own account or create one on the login page by logging out using the cross in the top-right corner."
-msgstr "Du kan bli med ved å bruke din egen konto eller opprette en ny på pålogginssiden, ved å logge ut og trykke på krysset øverst i høyre hjørne."
+msgstr ""
 
 #: [room]anonymous_login
 msgid "Login on %s"
@@ -3587,9 +3558,3 @@ msgstr "API-et kan ikke nås, prøv igjen senere"
 #: [field]type_here
 msgid "Type here"
 msgstr "Skriv her"
-
-#~ msgid "No content to preview"
-#~ msgstr "Ingen innhold å forhåndsvise"
-
-#~ msgid "Is this profile public?"
-#~ msgstr "Er denne profilen offentlig?"

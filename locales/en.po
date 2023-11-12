@@ -118,7 +118,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-27 21:55+0200\n"
+"POT-Creation-Date: 2023-11-12 23:26+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: English (http://app.transifex.com/movim/movim/language/en/)\n"
@@ -552,9 +552,8 @@ msgid "Your contact attempted to retract a previous message, but it's unsupporte
 msgstr "Your contact attempted to retract a previous message, but it's unsupported by your client"
 
 #: [message]moderate_body
-#, fuzzy
 msgid "This message was moderated"
-msgstr "%s messages retrieved"
+msgstr "This message was moderated"
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
@@ -875,9 +874,8 @@ msgid "Communities server discovered"
 msgstr "Communities server discovered"
 
 #: [communities]disco_error
-#, fuzzy
 msgid "This server doesn’t exists"
-msgstr "This server doesn’t exist"
+msgstr "This server doesn’t exists"
 
 #: [communitiesinteresting]about
 msgid "Communities you might like"
@@ -948,9 +946,8 @@ msgid "You are going to delete the following community. Please confirm your acti
 msgstr "You are going to delete the following community. Please confirm your action."
 
 #: [communityaffiliation]delete_clean_text
-#, fuzzy
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
-msgstr "It seems that this community doesn’t exist anymore. Do you want to remove it from your subscriptions?"
+msgstr "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
 
 #: [communityaffiliation]config_error
 msgid "Error during the application of the node configuration"
@@ -1134,9 +1131,8 @@ msgid "Hide the offline contacts"
 msgstr "Hide the offline contacts"
 
 #: [config]appearence
-#, fuzzy
 msgid "Appearance"
-msgstr "Appearence"
+msgstr "Appearance"
 
 #: [config]updated
 msgid "Configuration updated"
@@ -1183,9 +1179,8 @@ msgid "Make the chat page as the default one"
 msgstr "Make the chat page as the default one"
 
 #: [config]mam_text
-#, fuzzy
 msgid "Server-side chat messages archiving preferences"
-msgstr "Server-side archiving preferences"
+msgstr "Server-side chat messages archiving preferences"
 
 #: [config]mam_always
 msgid "Always"
@@ -1203,52 +1198,34 @@ msgstr "Archiving preferences saved"
 msgid "Personal blog confidentiality"
 msgstr "Personal blog confidentiality"
 
-#
-# Translators:
 #: [config]account_privacy
-#, fuzzy
 msgctxt "[config]account_privacy"
 msgid ""
 msgstr ""
-"Project-Id-Version: movim\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-14 23:10+0200\n"
-"PO-Revision-Date: 2015-06-24 09:45+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: English (http://app.transifex.com/movim/movim/language/en/)\n"
-"Language: en\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.8.4\n"
 
 #: [config]blog_open_title
 msgid "Public blog"
 msgstr "Public blog"
 
 #: [config]blog_open_text
-#, fuzzy
 msgid "Accessible to everyone on the network"
-msgstr "Accessible to everyone"
+msgstr "Accessible to everyone on the network"
 
 #: [config]blog_presence_title
 msgid "Private blog"
 msgstr "Private blog"
 
 #: [config]blog_presence_text
-#, fuzzy
 msgid "Restricted to your subscribers only"
-msgstr "Restricted to subscribers only"
+msgstr "Restricted to your subscribers only"
 
 #: [config]blog_saved
 msgid "Personal blog confidentiality saved"
 msgstr "Personal blog confidentiality saved"
 
 #: [config]confidentiality
-#, fuzzy
 msgid "Confidentiality"
-msgstr "confident"
+msgstr "Confidentiality"
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -2123,7 +2100,7 @@ msgstr "Name or description"
 
 #: [rooms]disco_registration_required
 msgid "A registration is required before using the service"
-msgstr ""
+msgstr "A registration is required before using the service"
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -2184,9 +2161,8 @@ msgid "Chatroom cannot be joined, registration required"
 msgstr "Chatroom cannot be joined, registration required"
 
 #: [chatrooms]itemnotfound
-#, fuzzy
 msgid "The chatroom doesn’t exist"
-msgstr "The chatroom doesn’t exists"
+msgstr "The chatroom doesn’t exist"
 
 #: [chatrooms]notauthorized
 msgid "A password is required"
@@ -2229,9 +2205,8 @@ msgid "You are currently logged as an anonymous user."
 msgstr "You are currently logged as an anonymous user."
 
 #: [room]anonymous_text2
-#, fuzzy
 msgid "You can join using your own account or create one on the login page by logging out using the cross in the top-right corner."
-msgstr "You can join using your own account or create one on the login page by loging out using the cross in the top-right corner."
+msgstr "You can join using your own account or create one on the login page by logging out using the cross in the top-right corner."
 
 #: [room]anonymous_login
 msgid "Login on %s"
@@ -2555,11 +2530,11 @@ msgstr "Configure your instance nickname"
 
 #: [profile]privacy_question
 msgid "Is this account public on this Movim instance?"
-msgstr ""
+msgstr "Is this account public on this Movim instance?"
 
 #: [profile]privacy_info
 msgid "Movim will create a public page to host your blog and your account will be searchable by the other Movim users."
-msgstr ""
+msgstr "Movim will create a public page to host your blog and your account will be searchable by the other Movim users."
 
 #: [profile]nickname_info
 msgid "Set a local nickname to allow the other users of the instance to find you easily."
@@ -3024,9 +2999,8 @@ msgid "Registered"
 msgstr "Registered"
 
 #: [client]gateway
-#, fuzzy
 msgid "Gateway"
-msgstr "Gateways"
+msgstr "Gateway"
 
 #: [presence]online
 msgid "Online"
@@ -3579,12 +3553,3 @@ msgstr "The API is not reachable, try again later"
 #: [field]type_here
 msgid "Type here"
 msgstr "Type here"
-
-#~ msgid "No content to preview"
-#~ msgstr "No content to preview"
-
-#~ msgid "Is this profile public?"
-#~ msgstr "Is this profile public?"
-
-#~ msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
-#~ msgstr "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."

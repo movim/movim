@@ -120,7 +120,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-27 21:55+0200\n"
+"POT-Creation-Date: 2023-11-12 23:26+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: sergey solovey, 2022\n"
 "Language-Team: Ukrainian (http://app.transifex.com/movim/movim/language/uk/)\n"
@@ -244,9 +244,8 @@ msgid "on"
 msgstr "Увімкн."
 
 #: [create]successfull
-#, fuzzy
 msgid "Your account has been successfully registered"
-msgstr "Ваш користувач був успішно зареєстрований"
+msgstr ""
 
 #: [create]loading
 msgid "Loading"
@@ -555,9 +554,8 @@ msgid "Your contact attempted to retract a previous message, but it's unsupporte
 msgstr ""
 
 #: [message]moderate_body
-#, fuzzy
 msgid "This message was moderated"
-msgstr "%sотриманих повідомлень"
+msgstr ""
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
@@ -705,9 +703,8 @@ msgid "%s is now member"
 msgstr ""
 
 #: [chat]publish_error
-#, fuzzy
 msgid "An error occurred when sending the message"
-msgstr "Під час надсилання повідомлення сталася помилка"
+msgstr ""
 
 #: [chat]mam_retrieval
 msgid "Synchronizing the history, please wait…"
@@ -1203,27 +1200,10 @@ msgstr ""
 msgid "Personal blog confidentiality"
 msgstr ""
 
-#
-# Translators:
-# Den Girnyk <great.antique@gmail.com>, 2016
-# sergey solovey, 2022
 #: [config]account_privacy
-#, fuzzy
 msgctxt "[config]account_privacy"
 msgid ""
 msgstr ""
-"Project-Id-Version: movim\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-14 23:10+0200\n"
-"PO-Revision-Date: 2015-06-24 09:45+0000\n"
-"Last-Translator: sergey solovey, 2022\n"
-"Language-Team: Ukrainian (http://app.transifex.com/movim/movim/language/uk/)\n"
-"Language: uk\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != 11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || (n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
-"X-Generator: Translate Toolkit 3.8.4\n"
 
 #: [config]blog_open_title
 msgid "Public blog"
@@ -3021,9 +3001,8 @@ msgid "Registered"
 msgstr ""
 
 #: [client]gateway
-#, fuzzy
 msgid "Gateway"
-msgstr "Шлюзи"
+msgstr ""
 
 #: [presence]online
 msgid "Online"

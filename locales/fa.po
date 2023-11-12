@@ -122,7 +122,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-27 21:55+0200\n"
+"POT-Creation-Date: 2023-11-12 23:26+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: revolt68 <ashrafnezhad@gmail.com>, 2021\n"
 "Language-Team: Persian (http://app.transifex.com/movim/movim/language/fa/)\n"
@@ -246,9 +246,8 @@ msgid "on"
 msgstr "روی"
 
 #: [create]successfull
-#, fuzzy
 msgid "Your account has been successfully registered"
-msgstr "حساب کاربری شما با موفقیت ثبت شد"
+msgstr ""
 
 #: [create]loading
 msgid "Loading"
@@ -1136,9 +1135,8 @@ msgid "Hide the offline contacts"
 msgstr ""
 
 #: [config]appearence
-#, fuzzy
 msgid "Appearance"
-msgstr "ظاهر"
+msgstr ""
 
 #: [config]updated
 msgid "Configuration updated"
@@ -1204,29 +1202,10 @@ msgstr ""
 msgid "Personal blog confidentiality"
 msgstr ""
 
-#
-# Translators:
-# Alireza Mirsepassy <alirezamirsepassy@gmail.com>, 2017
-# revolt68 <ashrafnezhad@gmail.com>, 2021
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2013
-# mabna it <mabnaforti@gmail.com>, 2020
 #: [config]account_privacy
-#, fuzzy
 msgctxt "[config]account_privacy"
 msgid ""
 msgstr ""
-"Project-Id-Version: movim\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-14 23:10+0200\n"
-"PO-Revision-Date: 2015-06-24 09:45+0000\n"
-"Last-Translator: revolt68 <ashrafnezhad@gmail.com>, 2021\n"
-"Language-Team: Persian (http://app.transifex.com/movim/movim/language/fa/)\n"
-"Language: fa\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Translate Toolkit 3.8.4\n"
 
 #: [config]blog_open_title
 msgid "Public blog"
@@ -3024,9 +3003,8 @@ msgid "Registered"
 msgstr "ثبت شده"
 
 #: [client]gateway
-#, fuzzy
 msgid "Gateway"
-msgstr "درگاه ها"
+msgstr ""
 
 #: [presence]online
 msgid "Online"

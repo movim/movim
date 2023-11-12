@@ -132,7 +132,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-27 21:55+0200\n"
+"POT-Creation-Date: 2023-11-12 23:26+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Vincenzo Tozzi, 2023\n"
 "Language-Team: Portuguese (Brazil) (http://app.transifex.com/movim/movim/language/pt_BR/)\n"
@@ -240,9 +240,8 @@ msgid "OMEMO Key deletion"
 msgstr "Deletar chave OMEMO "
 
 #: [account]delete_bundle_text
-#, fuzzy
 msgid "You are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
-msgstr "Você esta removendo a seguinte chave OMEMO. Seus contatos não vão mais conseguir criptografar mensagens com essa chave. Esta operação não pode ser desfeita. Tem certeza?"
+msgstr ""
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
@@ -257,9 +256,8 @@ msgid "on"
 msgstr "em"
 
 #: [create]successfull
-#, fuzzy
 msgid "Your account has been successfully registered"
-msgstr "Sua conta foi registrada com sucesso"
+msgstr ""
 
 #: [create]loading
 msgid "Loading"
@@ -436,9 +434,8 @@ msgid "Your Twitter Token"
 msgstr "Token do Twitter"
 
 #: [twitter]info1
-#, fuzzy
 msgid "The Twitter integration allows Movim to embed and extract the Tweets shared on the instance"
-msgstr "A integração com Twitter permite a Movim de incluir e extrair os Tweets compartilhados na instância. "
+msgstr ""
 
 #: [twitter]info2
 msgid "Generate your Token on the Developer Twitter website"
@@ -569,9 +566,8 @@ msgid "Your contact attempted to retract a previous message, but it's unsupporte
 msgstr "Seu contato tentou acessar um mensagem precedente, mas seu cliente não tem suporte para isso"
 
 #: [message]moderate_body
-#, fuzzy
 msgid "This message was moderated"
-msgstr "%s mensagens recebidas"
+msgstr ""
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
@@ -719,9 +715,8 @@ msgid "%s is now member"
 msgstr ""
 
 #: [chat]publish_error
-#, fuzzy
 msgid "An error occurred when sending the message"
-msgstr "Ocorreu um erro ao enviar a mensagem"
+msgstr ""
 
 #: [chat]mam_retrieval
 msgid "Synchronizing the history, please wait…"
@@ -1150,9 +1145,8 @@ msgid "Hide the offline contacts"
 msgstr "Esconder os contatos offline"
 
 #: [config]appearence
-#, fuzzy
 msgid "Appearance"
-msgstr "Aparência"
+msgstr ""
 
 #: [config]updated
 msgid "Configuration updated"
@@ -1199,9 +1193,8 @@ msgid "Make the chat page as the default one"
 msgstr "Definir a página do bate-papo como padrão"
 
 #: [config]mam_text
-#, fuzzy
 msgid "Server-side chat messages archiving preferences"
-msgstr "Arquivando preferências no servidor"
+msgstr ""
 
 #: [config]mam_always
 msgid "Always"
@@ -1216,43 +1209,13 @@ msgid "Archiving preferences saved"
 msgstr "Arquivando preferências salvas"
 
 #: [config]blog_text
-#, fuzzy
 msgid "Personal blog confidentiality"
-msgstr "confiante"
+msgstr ""
 
-#
-# Translators:
-# 4a07df7d16253bcdb03104f7ee66c2be_5b7215b, 2020
-# Christopher Ribeiro <christo_campiglia@hotmail.com>, 2018
-# Danilo Silva, 2019
-# Evandro Alves Rodrigues <evandro.rodrigues@conab.gov.br>, 2017,2019
-# Felipe, 2020
-# Felipe Nogueira <contato.fnog@gmail.com>, 2023
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2012
-# ismael bonato <ismaelbonato@gmail.com>, 2016
-# Jose Marcos Araujo <jmaraujo@avancetec.com.br>, 2016
-# Renato P <renato.camarao@gmail.com>, 2017
-# The Cat, 2021
-# Victor Vinicius <victorvboa@gmail.com>, 2015
-# Victor Vinicius <victorvboa@gmail.com>, 2015
-# Vincenzo Tozzi, 2023
 #: [config]account_privacy
-#, fuzzy
 msgctxt "[config]account_privacy"
 msgid ""
 msgstr ""
-"Project-Id-Version: movim\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-14 23:10+0200\n"
-"PO-Revision-Date: 2015-06-24 09:45+0000\n"
-"Last-Translator: Vincenzo Tozzi, 2023\n"
-"Language-Team: Portuguese (Brazil) (http://app.transifex.com/movim/movim/language/pt_BR/)\n"
-"Language: pt_BR\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
-"X-Generator: Translate Toolkit 3.8.4\n"
 
 #: [config]blog_open_title
 msgid "Public blog"
@@ -1275,9 +1238,8 @@ msgid "Personal blog confidentiality saved"
 msgstr ""
 
 #: [config]confidentiality
-#, fuzzy
 msgid "Confidentiality"
-msgstr "confiante"
+msgstr ""
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -1817,9 +1779,8 @@ msgid "Popups"
 msgstr "Popups"
 
 #: [onboarding]popups_text
-#, fuzzy
 msgid "Movim is using popups for the video-conference feature, they are sometimes blocked by the browsers"
-msgstr "Movim está usando popus para  recurso de videoconferência, que as vezes são bloqueados pelos navegadores"
+msgstr ""
 
 #: [onboarding]popups_text_second
 msgid "Please be sure that they are enabled to use this feature properly"
@@ -2216,9 +2177,8 @@ msgid "Chatroom cannot be joined, registration required"
 msgstr "Você não pode entrar nesta sala de chat, é necessário registro prévio"
 
 #: [chatrooms]itemnotfound
-#, fuzzy
 msgid "The chatroom doesn’t exist"
-msgstr "A sala de bate-papo não existe"
+msgstr ""
 
 #: [chatrooms]notauthorized
 msgid "A password is required"
@@ -2261,9 +2221,8 @@ msgid "You are currently logged as an anonymous user."
 msgstr "Você está atualmente conectado como um usuário anônimo."
 
 #: [room]anonymous_text2
-#, fuzzy
 msgid "You can join using your own account or create one on the login page by logging out using the cross in the top-right corner."
-msgstr "Você pode entrar utilizando sua conta ou criando uma nova na pagina de identificação, utilizando para isso a cruz no canto direito."
+msgstr ""
 
 #: [room]anonymous_login
 msgid "Login on %s"
@@ -2606,9 +2565,8 @@ msgid "John_Bob96"
 msgstr "José_Maria96"
 
 #: [profile]nickname_error
-#, fuzzy
 msgid "Your nickname should only contain letters, numbers, - and _"
-msgstr "Seu apelido deve conter apenas letras, números, - e _"
+msgstr ""
 
 #: [profile]nickname_conflict
 msgid "The nickname is already registered"
@@ -2719,9 +2677,8 @@ msgid "Movim requires Javascript to be enabled to work properly."
 msgstr "Movim requer que o Javascript esteja ativado para funcionar corretamente."
 
 #: [global]description
-#, fuzzy
 msgid "Movim is a kickass distributed social networking platform that protects your privacy and comes with a set of awesome features."
-msgstr "Movim é uma plataforma de rede social distribuída incrível que protege sua privacidade e vem com funcionalidades incríveis."
+msgstr ""
 
 #: [global]loading
 msgid "Loading…"
@@ -3058,9 +3015,8 @@ msgid "Registered"
 msgstr "Registrado"
 
 #: [client]gateway
-#, fuzzy
 msgid "Gateway"
-msgstr "Gateways"
+msgstr ""
 
 #: [presence]online
 msgid "Online"
@@ -3613,12 +3569,3 @@ msgstr "A API está inalcançável, tente mais tarde"
 #: [field]type_here
 msgid "Type here"
 msgstr "Digite aqui"
-
-#~ msgid "No content to preview"
-#~ msgstr "Sem conteúdo para visualizar"
-
-#~ msgid "Is this profile public?"
-#~ msgstr "Este perfil é público?"
-
-#~ msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
-#~ msgstr "Por favor preste atenção! Ao tornar seu perfil público, todas as infomações listadas abaixo estarão disponíveis para todos os usuários do Movim e em toda a internet."

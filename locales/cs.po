@@ -122,7 +122,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-27 21:55+0200\n"
+"POT-Creation-Date: 2023-11-12 23:26+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Egon Borovan <egon.boro@gmail.com>, 2019\n"
 "Language-Team: Czech (Czech Republic) (http://app.transifex.com/movim/movim/language/cs_CZ/)\n"
@@ -246,9 +246,8 @@ msgid "on"
 msgstr "na"
 
 #: [create]successfull
-#, fuzzy
 msgid "Your account has been successfully registered"
-msgstr "Váš účet byl úspěšně zaregistrován"
+msgstr ""
 
 #: [create]loading
 msgid "Loading"
@@ -557,9 +556,8 @@ msgid "Your contact attempted to retract a previous message, but it's unsupporte
 msgstr ""
 
 #: [message]moderate_body
-#, fuzzy
 msgid "This message was moderated"
-msgstr "Získáno %s zpráv"
+msgstr ""
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
@@ -1137,9 +1135,8 @@ msgid "Hide the offline contacts"
 msgstr "Skrýt offline kontakty"
 
 #: [config]appearence
-#, fuzzy
 msgid "Appearance"
-msgstr "Vzhled"
+msgstr ""
 
 #: [config]updated
 msgid "Configuration updated"
@@ -1202,33 +1199,13 @@ msgid "Archiving preferences saved"
 msgstr ""
 
 #: [config]blog_text
-#, fuzzy
 msgid "Personal blog confidentiality"
-msgstr "sebejistý"
+msgstr ""
 
-#
-# Translators:
-# Egon Borovan <egon.boro@gmail.com>, 2019
-# Jakub Hlusička <limethgaming@gmail.com>, 2016
-# Tom Dienstbier <dienstbiercomputer.tomas@gmail.com>, 2017
-# Tom Dienstbier <dienstbiercomputer.tomas@gmail.com>, 2017
 #: [config]account_privacy
-#, fuzzy
 msgctxt "[config]account_privacy"
 msgid ""
 msgstr ""
-"Project-Id-Version: movim\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-14 23:10+0200\n"
-"PO-Revision-Date: 2015-06-24 09:45+0000\n"
-"Last-Translator: Egon Borovan <egon.boro@gmail.com>, 2019\n"
-"Language-Team: Czech (Czech Republic) (http://app.transifex.com/movim/movim/language/cs_CZ/)\n"
-"Language: cs_CZ\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
-"X-Generator: Translate Toolkit 3.8.4\n"
 
 #: [config]blog_open_title
 msgid "Public blog"
@@ -1251,9 +1228,8 @@ msgid "Personal blog confidentiality saved"
 msgstr ""
 
 #: [config]confidentiality
-#, fuzzy
 msgid "Confidentiality"
-msgstr "sebejistý"
+msgstr ""
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -2233,9 +2209,8 @@ msgid "You are currently logged as an anonymous user."
 msgstr ""
 
 #: [room]anonymous_text2
-#, fuzzy
 msgid "You can join using your own account or create one on the login page by logging out using the cross in the top-right corner."
-msgstr "Můžete se přihlásit pomocí svého účtu, nebo si jej vytvořit na stránce přihlášení kliknutím na tlačítko s křížkem vpravo nahoře."
+msgstr ""
 
 #: [room]anonymous_login
 msgid "Login on %s"
@@ -3028,9 +3003,8 @@ msgid "Registered"
 msgstr "Registrován"
 
 #: [client]gateway
-#, fuzzy
 msgid "Gateway"
-msgstr "Brány"
+msgstr ""
 
 #: [presence]online
 msgid "Online"
@@ -3583,6 +3557,3 @@ msgstr "API je nedostupná, zkuste to znovu později"
 #: [field]type_here
 msgid "Type here"
 msgstr "Pište sem"
-
-#~ msgid "No content to preview"
-#~ msgstr "Žádný obsah k nahlédnutí"
