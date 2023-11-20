@@ -1113,6 +1113,8 @@ var Chat = {
             msg.appendChild(Chat.getCardHtml(data.card));
         }
 
+        msg.setAttribute('title', data.published);
+
         msg.appendChild(p);
         msg.appendChild(info);
         msg.appendChild(reactions);
