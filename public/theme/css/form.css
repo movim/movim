@@ -158,12 +158,12 @@ form > div.compact > textarea {
 }
 
 /* Supporting text */
-form > div > span.supporting {
+form div > span.supporting {
     line-height: 2.25rem;
     font-size: 1.5rem;
     color: rgba(var(--movim-font), 0.60);
     display: inline-block;
-    margin: 1rem 0;
+    margin-bottom: 1rem;
 }
 
 /* Webkit hack */

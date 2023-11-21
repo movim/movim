@@ -579,7 +579,7 @@ class Chat extends \Movim\Widget\Base
 
         if ($muc) {
             $m->type        = 'groupchat';
-            $m->resource    = $this->user->session->username;
+            $m->resource    = $this->user->username;
             $m->jidfrom     = $to;
         }
 
@@ -732,7 +732,7 @@ class Chat extends \Movim\Widget\Base
                 $reaction = new Reaction;
                 $reaction->message_mid = $parentMessage->mid;
                 $reaction->jidfrom = ($parentMessage->isMuc())
-                    ? $this->user->session->username
+                    ? $this->user->username
                     : $this->user->id;
                 $reaction->created_at = $now;
                 $reaction->updated_at = $now;

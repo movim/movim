@@ -314,7 +314,7 @@ class RoomsUtils extends Base
             ->request();
 
         // Disconnect properly
-        $nick = $values['nick'] ?? $this->user->session->username;
+        $nick = $values['nick'] ?? $this->user->username;
         $session = Session::start();
         $session->delete($values['jid'] . '/' . $nick);
 
@@ -402,7 +402,7 @@ class RoomsUtils extends Base
                 ->where('conference', $room)->first()
         );
         $view->assign('name', $name);
-        $view->assign('username', $this->user->session->username);
+        $view->assign('username', $this->user->username);
 
         $gateways = \App\Info::select('name', 'server', 'parent')
             ->whereCategory('gateway')
@@ -452,7 +452,7 @@ class RoomsUtils extends Base
             $m = new Muc;
             $m->enableCreate()
                 ->setTo(strtolower($form->jid->value))
-                ->setNickname($form->nick->value ?? $this->user->session->username)
+                ->setNickname($form->nick->value ?? $this->user->username)
                 ->request();
         }
     }
@@ -468,7 +468,7 @@ class RoomsUtils extends Base
                     ->setName($form->name->value)
                     ->setAutoJoin($form->autojoin->value)
                     ->setPinned($form->pinned->value)
-                    ->setNick($form->nick->value ?? $this->user->session->username)
+                    ->setNick($form->nick->value ?? $this->user->username)
                     ->setNotify((int)array_flip(Conference::$notifications)[$form->notify->value])
                     ->request();
             } elseif ($form->type->value == 'channel') {

@@ -205,7 +205,7 @@ class Rooms extends Base
         $p->setTo($room);
 
         if ($nickname == false) {
-            $nickname = $this->user->session->username;
+            $nickname = $this->user->username;
         }
 
         $jid = explodeJid($room);

@@ -16,6 +16,7 @@
                 <div>
                     <input dir="auto" type="text" name="name" value="{$contact->name ?? ''}" placeholder="{$c->__('general.nickname')}">
                     <label for="name">{$c->__('general.nickname')}</label>
+                    <span class="supporting"><i class="material-icons">lightbulb</i> {$c->__('vcard.nickname_info')}</span>
                 </div>
             </li>
             <li>
