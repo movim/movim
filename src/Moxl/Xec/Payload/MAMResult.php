@@ -27,7 +27,7 @@ class MAMResult extends Payload
              * Optimisation: Force the message to be only instanciated, without requesting
              * the database because the MessageBuffer bellow will take care of that
              */
-            $message = \App\Message::findByStanza($stanza->forwarded->message/*, true*/);
+            $message = \App\Message::findByStanza($stanza/*, true*/);
             $message = $message->set($stanza->forwarded->message, $stanza->forwarded);
 
             // parent message doesn't exists

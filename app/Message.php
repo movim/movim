@@ -149,14 +149,20 @@ class Message extends Model
         return \unechap($this->attributes['jidfrom']);
     }
 
-    public static function findByStanza($stanza, $instanciateOnly = false)
+    public static function findByStanza($stanza, $instanciateOnly = false): Message
     {
         $jidfrom = baseJid((string)$stanza->attributes()->from);
 
-        /**
-         * If not we just create or load a message
-         */
         if (
+            $stanza->attributes()->xmlns
+            && $stanza->attributes()->xmlns == 'urn:xmpp:mam:2'
+        ) {
+            return self::firstOrNew([
+                'user_id' => \App\User::me()->id,
+                'stanzaid' => (string)$stanza->attributes()->id,
+                'jidfrom' => $jidfrom
+            ]);
+        } elseif (
             $stanza->{'stanza-id'} && $stanza->{'stanza-id'}->attributes()->id
             && ($stanza->{'stanza-id'}->attributes()->by == $jidfrom
                 || $stanza->{'stanza-id'}->attributes()->by == \App\User::me()->id
@@ -167,13 +173,13 @@ class Message extends Model
             if ($instanciateOnly) {
                 $message = new Message;
                 $message->user_id = \App\User::me()->id;
-                $message->id = $id;
+                $message->stanzaid = $id;
                 $message->jidfrom = $jidfrom;
                 return $message;
             } else {
                 return self::firstOrNew([
                     'user_id' => \App\User::me()->id,
-                    'id' => $id,
+                    'stanzaid' => $id,
                     'jidfrom' => $jidfrom
                 ]);
             }
