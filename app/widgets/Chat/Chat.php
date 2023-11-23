@@ -1260,7 +1260,10 @@ class Chat extends \Movim\Widget\Base
                     break;
             }
 
-            $message->body = '';
+            if ($message->file['type'] != 'xmpp') {
+                $message->body = '';
+            }
+
         }
 
         if (
