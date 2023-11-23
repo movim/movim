@@ -149,7 +149,7 @@ class Message extends Model
         return \unechap($this->attributes['jidfrom']);
     }
 
-    public static function findByStanza($stanza, $instanciateOnly = false): Message
+    public static function findByStanza(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null): Message
     {
         $jidfrom = baseJid((string)$stanza->attributes()->from);
 
@@ -160,7 +160,7 @@ class Message extends Model
             return self::firstOrNew([
                 'user_id' => \App\User::me()->id,
                 'stanzaid' => (string)$stanza->attributes()->id,
-                'jidfrom' => $jidfrom
+                'jidfrom' => baseJid((string)$parent->attributes()->from)
             ]);
         } elseif (
             $stanza->{'stanza-id'} && $stanza->{'stanza-id'}->attributes()->id
@@ -168,21 +168,11 @@ class Message extends Model
                 || $stanza->{'stanza-id'}->attributes()->by == \App\User::me()->id
             )
         ) {
-            $id = (string)$stanza->{'stanza-id'}->attributes()->id;
-
-            if ($instanciateOnly) {
-                $message = new Message;
-                $message->user_id = \App\User::me()->id;
-                $message->stanzaid = $id;
-                $message->jidfrom = $jidfrom;
-                return $message;
-            } else {
-                return self::firstOrNew([
-                    'user_id' => \App\User::me()->id,
-                    'stanzaid' => $id,
-                    'jidfrom' => $jidfrom
-                ]);
-            }
+            return self::firstOrNew([
+                'user_id' => \App\User::me()->id,
+                'stanzaid' => (string)$stanza->{'stanza-id'}->attributes()->id,
+                'jidfrom' => $jidfrom
+            ]);
         } else {
             $message = new Message;
             $message->user_id = \App\User::me()->id;
