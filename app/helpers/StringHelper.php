@@ -381,6 +381,7 @@ function stringToColor($string): string
 function palette(): array
 {
     return [
+        'black'     => '#000000',
         'red'       => '#F44336',
         'purple'    => '#9C27B0',
         'indigo'    => '#3F51B5',
