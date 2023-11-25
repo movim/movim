@@ -24,6 +24,7 @@ use Movim\ChatOwnState;
 use Movim\EmbedLight;
 use Movim\Image;
 use Movim\Librairies\XMPPtoForm;
+use Moxl\Xec\Action\MAM\Get;
 
 class Chat extends \Movim\Widget\Base
 {
@@ -365,6 +366,22 @@ class Chat extends \Movim\Widget\Base
     public function ajaxHttpGetEmpty()
     {
         $this->ajaxGet();
+    }
+
+    /**
+     * Get the MAM history
+     */
+    public function ajaxGetMamHistory(string $to, string $beforeMid)
+    {
+        $message = Message::where('mid', $beforeMid)->first();
+
+        if ($message) {
+            $g = new Get;
+            $g->setTo($to)
+              ->setLimit(50)
+              ->setEnd(strtotime($message->published))
+              ->request();
+        }
     }
 
     /**

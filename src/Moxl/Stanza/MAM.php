@@ -60,7 +60,7 @@ class MAM
             $field_start->appendChild(
                 $dom->createElement(
                     'value',
-                    date('Y-m-d\TH:i:s\Z', $start+1)
+                    date('Y-m-d\TH:i:s\Z', $start/*+1*/)
                 )
             );
             $x->appendChild($field_start);
@@ -72,7 +72,7 @@ class MAM
             $field_end->appendChild(
                 $dom->createElement(
                     'value',
-                    date('Y-m-d\TH:i:s\Z', $end+1)
+                    date('Y-m-d\TH:i:s\Z', $end/*+1*/)
                 )
             );
             $x->appendChild($field_end);
