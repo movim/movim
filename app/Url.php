@@ -83,12 +83,6 @@ class Url extends Model
             $embed = new Embed(new Crawler($client));
             $configuration = Configuration::get();
 
-            if (!empty($configuration->twittertoken)) {
-                $embed->setSettings([
-                    'twitter:token' => $configuration->twittertoken
-                ]);
-            }
-
             $embed->getExtractorFactory()->addDetector('images', EmbedImagesExtractor::class);
             $info = $embed->get($url);
 

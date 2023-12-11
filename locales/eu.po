@@ -20,8 +20,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Avatar/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Badges/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blocked/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
@@ -61,8 +59,6 @@
 #. extracted from ../app/widgets/ContactActions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/ContactDataPublic/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Dictaphone/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -121,7 +117,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-12 23:26+0200\n"
+"POT-Creation-Date: 2023-12-11 18:29+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Xabi, 2023\n"
 "Language-Team: Basque (http://app.transifex.com/movim/movim/language/eu/)\n"
@@ -414,22 +410,6 @@ msgstr "Movimek Tenorren APIa darabil txatetan GIFak bilatu eta txertatzeko"
 msgid "Access Tenor and get your API key"
 msgstr "Sartu Tenorrera eta eskuratu API gakoa"
 
-#: [twitter]title
-msgid "Twitter integration"
-msgstr "Twitterrekin integrazioa"
-
-#: [twitter]label
-msgid "Your Twitter Token"
-msgstr "Zure Twitterren tokena"
-
-#: [twitter]info1
-msgid "The Twitter integration allows Movim to embed and extract the Tweets shared on the instance"
-msgstr ""
-
-#: [twitter]info2
-msgid "Generate your Token on the Developer Twitter website"
-msgstr "Sortu zure tokena Twitterren Garatzaileen webgunean"
-
 #: [log]empty
 msgid "Empty"
 msgstr "Hutsik"
@@ -493,10 +473,6 @@ msgstr "Goiburuko irudia eguneratu da"
 #: [banner]not_updated
 msgid "Banner Not Updated"
 msgstr "Goiburuko irudia ez da eguneratu"
-
-#: [badges]title
-msgid "Badges"
-msgstr "Entseinak"
 
 #: [blocked]title
 msgid "Blocked"
@@ -1425,10 +1401,6 @@ msgstr "Gonbidatu"
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
 msgstr "Kontaktu hau zure kontaktuetan dago baina ez dago harpidetzarik bi kontuen artean"
-
-#: [contactdatapublic]no_data
-msgid "No public data found"
-msgstr "Ez da datu publikorik aurkitu"
 
 #: [dictaphone]name
 msgid "Dictaphone"
@@ -2519,6 +2491,10 @@ msgstr "Profila eguneratu da"
 msgid "Profile Not Updated"
 msgstr "Profila ez da eguneratu"
 
+#: [vcard]nickname_info
+msgid "This will also be used as your default nickname when joining a chatroom"
+msgstr ""
+
 #: [profile]public
 msgid "Your profile is now public"
 msgstr "Zure profila publikoa da orain"
@@ -3556,3 +3532,18 @@ msgstr "Ezin da APIa eskuratu, saiatu berriro beranduago"
 #: [field]type_here
 msgid "Type here"
 msgstr "Idatzi hemen"
+
+#~ msgid "Twitter integration"
+#~ msgstr "Twitterrekin integrazioa"
+
+#~ msgid "Your Twitter Token"
+#~ msgstr "Zure Twitterren tokena"
+
+#~ msgid "Generate your Token on the Developer Twitter website"
+#~ msgstr "Sortu zure tokena Twitterren Garatzaileen webgunean"
+
+#~ msgid "Badges"
+#~ msgstr "Entseinak"
+
+#~ msgid "No public data found"
+#~ msgstr "Ez da datu publikorik aurkitu"

@@ -30,8 +30,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Avatar/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Badges/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blocked/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
@@ -71,8 +69,6 @@
 #. extracted from ../app/widgets/ContactActions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/ContactDataPublic/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Dictaphone/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -131,7 +127,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-12 23:26+0200\n"
+"POT-Creation-Date: 2023-12-11 18:29+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Phonebook3599, 2023\n"
 "Language-Team: Chinese (China) (http://app.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -424,22 +420,6 @@ msgstr "Movim 集成了 Tenor API，允许在聊天中搜索 GIF 和发布内容
 msgid "Access Tenor and get your API key"
 msgstr "访问 Tenor 并获取 API 密钥"
 
-#: [twitter]title
-msgid "Twitter integration"
-msgstr "Twitter 集成"
-
-#: [twitter]label
-msgid "Your Twitter Token"
-msgstr "您的 Twitter 令牌"
-
-#: [twitter]info1
-msgid "The Twitter integration allows Movim to embed and extract the Tweets shared on the instance"
-msgstr "Twitter 集成允许 Movim 嵌入和提取实例上共享的推文"
-
-#: [twitter]info2
-msgid "Generate your Token on the Developer Twitter website"
-msgstr "在 Developer Twitter 网站上生成您的令牌"
-
 #: [log]empty
 msgid "Empty"
 msgstr "空的"
@@ -503,10 +483,6 @@ msgstr "横幅已更新"
 #: [banner]not_updated
 msgid "Banner Not Updated"
 msgstr "横幅未更新"
-
-#: [badges]title
-msgid "Badges"
-msgstr "徽章"
 
 #: [blocked]title
 msgid "Blocked"
@@ -1435,10 +1411,6 @@ msgstr "邀请"
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
 msgstr "此联系人在您的联系人列表中，但两账号之间没有订阅"
-
-#: [contactdatapublic]no_data
-msgid "No public data found"
-msgstr "未找到公开数据"
 
 #: [dictaphone]name
 msgid "Dictaphone"
@@ -2529,6 +2501,10 @@ msgstr "个人资料已更新"
 msgid "Profile Not Updated"
 msgstr "个人资料未更新"
 
+#: [vcard]nickname_info
+msgid "This will also be used as your default nickname when joining a chatroom"
+msgstr ""
+
 #: [profile]public
 msgid "Your profile is now public"
 msgstr "您的个人资料现在是公开的"
@@ -3566,3 +3542,21 @@ msgstr "无法访问 API，请稍后再试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
+
+#~ msgid "Twitter integration"
+#~ msgstr "Twitter 集成"
+
+#~ msgid "Your Twitter Token"
+#~ msgstr "您的 Twitter 令牌"
+
+#~ msgid "The Twitter integration allows Movim to embed and extract the Tweets shared on the instance"
+#~ msgstr "Twitter 集成允许 Movim 嵌入和提取实例上共享的推文"
+
+#~ msgid "Generate your Token on the Developer Twitter website"
+#~ msgstr "在 Developer Twitter 网站上生成您的令牌"
+
+#~ msgid "Badges"
+#~ msgstr "徽章"
+
+#~ msgid "No public data found"
+#~ msgstr "未找到公开数据"

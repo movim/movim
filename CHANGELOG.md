@@ -11,6 +11,7 @@ v0.22.6 (trunk)
 * Complete the Manifest content to have a better PWA integration
 * Start the implementation of https://xmpp.org/extensions/xep-0444.html#disco-restricted for MUC
 * Add pagination on room presences list to prevent performances issues in large chatrooms
+* Drop Twitter integration (byebye Elon)
 
 v0.22.5
 ---------------------------

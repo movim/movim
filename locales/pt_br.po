@@ -31,8 +31,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Avatar/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Badges/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blocked/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
@@ -72,8 +70,6 @@
 #. extracted from ../app/widgets/ContactActions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/ContactDataPublic/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Dictaphone/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -132,7 +128,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-12 23:26+0200\n"
+"POT-Creation-Date: 2023-12-11 18:29+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Vincenzo Tozzi, 2023\n"
 "Language-Team: Portuguese (Brazil) (http://app.transifex.com/movim/movim/language/pt_BR/)\n"
@@ -425,22 +421,6 @@ msgstr "Movim integra a API Tenor para permitir pesquisa e publicação de GIFs 
 msgid "Access Tenor and get your API key"
 msgstr "Acesse o Tenor e obtenha sua chave API"
 
-#: [twitter]title
-msgid "Twitter integration"
-msgstr "Integração com Twitter"
-
-#: [twitter]label
-msgid "Your Twitter Token"
-msgstr "Token do Twitter"
-
-#: [twitter]info1
-msgid "The Twitter integration allows Movim to embed and extract the Tweets shared on the instance"
-msgstr ""
-
-#: [twitter]info2
-msgid "Generate your Token on the Developer Twitter website"
-msgstr "Cria um Token no site Desenvolvedor Twitter"
-
 #: [log]empty
 msgid "Empty"
 msgstr "Vazio"
@@ -504,10 +484,6 @@ msgstr "Cabeçalho atualizado"
 #: [banner]not_updated
 msgid "Banner Not Updated"
 msgstr "Cabeçalho não atualizado"
-
-#: [badges]title
-msgid "Badges"
-msgstr ""
 
 #: [blocked]title
 msgid "Blocked"
@@ -1436,10 +1412,6 @@ msgstr "Convidar"
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
 msgstr "Este contato está em sua lista de contatos mas não há conexão entre as duas contas"
-
-#: [contactdatapublic]no_data
-msgid "No public data found"
-msgstr "Nenhum dado público encontrado"
 
 #: [dictaphone]name
 msgid "Dictaphone"
@@ -2532,6 +2504,10 @@ msgstr "Perfil atualizado"
 msgid "Profile Not Updated"
 msgstr "Perfil Não Atualizado"
 
+#: [vcard]nickname_info
+msgid "This will also be used as your default nickname when joining a chatroom"
+msgstr ""
+
 #: [profile]public
 msgid "Your profile is now public"
 msgstr "Seu perfil agora é público"
@@ -3569,3 +3545,15 @@ msgstr "A API está inalcançável, tente mais tarde"
 #: [field]type_here
 msgid "Type here"
 msgstr "Digite aqui"
+
+#~ msgid "Twitter integration"
+#~ msgstr "Integração com Twitter"
+
+#~ msgid "Your Twitter Token"
+#~ msgstr "Token do Twitter"
+
+#~ msgid "Generate your Token on the Developer Twitter website"
+#~ msgstr "Cria um Token no site Desenvolvedor Twitter"
+
+#~ msgid "No public data found"
+#~ msgstr "Nenhum dado público encontrado"

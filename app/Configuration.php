@@ -21,7 +21,6 @@ class Configuration extends Model
         'loglevel',
         'username',
         'password',
-        'twittertoken',
         'xmppdomain',
         'xmppdescription',
         'xmppwhitelist',

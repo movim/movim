@@ -19,8 +19,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Avatar/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Badges/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blocked/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
@@ -60,8 +58,6 @@
 #. extracted from ../app/widgets/ContactActions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/ContactDataPublic/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Dictaphone/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -120,7 +116,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-12 23:26+0200\n"
+"POT-Creation-Date: 2023-12-11 18:29+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: 조수연, 2022\n"
 "Language-Team: Korean (http://app.transifex.com/movim/movim/language/ko/)\n"
@@ -413,22 +409,6 @@ msgstr "Movim은 Tenor API를 통합하여 채팅에서 GIF 검색 및 게시를
 msgid "Access Tenor and get your API key"
 msgstr "Tener에 액세스하여 API 키 받기"
 
-#: [twitter]title
-msgid "Twitter integration"
-msgstr ""
-
-#: [twitter]label
-msgid "Your Twitter Token"
-msgstr ""
-
-#: [twitter]info1
-msgid "The Twitter integration allows Movim to embed and extract the Tweets shared on the instance"
-msgstr ""
-
-#: [twitter]info2
-msgid "Generate your Token on the Developer Twitter website"
-msgstr ""
-
 #: [log]empty
 msgid "Empty"
 msgstr "비우기"
@@ -491,10 +471,6 @@ msgstr ""
 
 #: [banner]not_updated
 msgid "Banner Not Updated"
-msgstr ""
-
-#: [badges]title
-msgid "Badges"
 msgstr ""
 
 #: [blocked]title
@@ -1424,10 +1400,6 @@ msgstr "초대"
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
 msgstr "이 계정은 연락처 목록에 있지만 두 계정 간에 구독이 없습니다."
-
-#: [contactdatapublic]no_data
-msgid "No public data found"
-msgstr "공개 데이터를 찾을 수 없습니다"
 
 #: [dictaphone]name
 msgid "Dictaphone"
@@ -2518,6 +2490,10 @@ msgstr "프로필 업데이트됨"
 msgid "Profile Not Updated"
 msgstr "프로필이 업데이트되지 않음"
 
+#: [vcard]nickname_info
+msgid "This will also be used as your default nickname when joining a chatroom"
+msgstr ""
+
 #: [profile]public
 msgid "Your profile is now public"
 msgstr "프로필이 공개되었습니다."
@@ -3555,3 +3531,6 @@ msgstr "API에 연결할 수 없습니다. 나중에 다시 시도하십시오."
 #: [field]type_here
 msgid "Type here"
 msgstr "여기에 입력하세요"
+
+#~ msgid "No public data found"
+#~ msgstr "공개 데이터를 찾을 수 없습니다"

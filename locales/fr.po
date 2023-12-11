@@ -27,8 +27,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Avatar/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Badges/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blocked/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
@@ -68,8 +66,6 @@
 #. extracted from ../app/widgets/ContactActions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/ContactDataPublic/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Dictaphone/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -128,7 +124,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-12 23:26+0200\n"
+"POT-Creation-Date: 2023-12-11 18:29+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>, 2015-2023\n"
 "Language-Team: French (France) (http://app.transifex.com/movim/movim/language/fr_FR/)\n"
@@ -421,22 +417,6 @@ msgstr "Movim intègre l'API Tenor et permet la recherche et la publication de G
 msgid "Access Tenor and get your API key"
 msgstr "Récupérer votre clef sur Tenor"
 
-#: [twitter]title
-msgid "Twitter integration"
-msgstr "Intégration Twitter"
-
-#: [twitter]label
-msgid "Your Twitter Token"
-msgstr "Votre token Twitter"
-
-#: [twitter]info1
-msgid "The Twitter integration allows Movim to embed and extract the Tweets shared on the instance"
-msgstr "L'intégration Twitter permet à Movim d'extraire et intégrer les Tweets partagés sur l'instance"
-
-#: [twitter]info2
-msgid "Generate your Token on the Developer Twitter website"
-msgstr "Générez votre token sur la section développeurs du site Twitter"
-
 #: [log]empty
 msgid "Empty"
 msgstr "Vide"
@@ -500,10 +480,6 @@ msgstr "Bannière mise à jour"
 #: [banner]not_updated
 msgid "Banner Not Updated"
 msgstr "Bannière non mise à jour"
-
-#: [badges]title
-msgid "Badges"
-msgstr "Badges"
 
 #: [blocked]title
 msgid "Blocked"
@@ -1432,10 +1408,6 @@ msgstr "Inviter"
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
 msgstr "Ce contact est présent dans votre liste mais il n'y a aucune souscriptions entre vos deux comptes"
-
-#: [contactdatapublic]no_data
-msgid "No public data found"
-msgstr "Aucunes données publiques trouvées"
 
 #: [dictaphone]name
 msgid "Dictaphone"
@@ -2526,6 +2498,10 @@ msgstr "Profil mis à jour"
 msgid "Profile Not Updated"
 msgstr "Profil non mis à jour"
 
+#: [vcard]nickname_info
+msgid "This will also be used as your default nickname when joining a chatroom"
+msgstr ""
+
 #: [profile]public
 msgid "Your profile is now public"
 msgstr "Votre profil est maintenant public"
@@ -3563,3 +3539,21 @@ msgstr "L’API est indisponible pour le moment, réessayez plus tard."
 #: [field]type_here
 msgid "Type here"
 msgstr "Rédigez votre message ici"
+
+#~ msgid "Twitter integration"
+#~ msgstr "Intégration Twitter"
+
+#~ msgid "Your Twitter Token"
+#~ msgstr "Votre token Twitter"
+
+#~ msgid "The Twitter integration allows Movim to embed and extract the Tweets shared on the instance"
+#~ msgstr "L'intégration Twitter permet à Movim d'extraire et intégrer les Tweets partagés sur l'instance"
+
+#~ msgid "Generate your Token on the Developer Twitter website"
+#~ msgstr "Générez votre token sur la section développeurs du site Twitter"
+
+#~ msgid "Badges"
+#~ msgstr "Badges"
+
+#~ msgid "No public data found"
+#~ msgstr "Aucunes données publiques trouvées"

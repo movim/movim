@@ -23,8 +23,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Avatar/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Badges/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blocked/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
@@ -64,8 +62,6 @@
 #. extracted from ../app/widgets/ContactActions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/ContactDataPublic/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Dictaphone/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -124,7 +120,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-12 23:26+0200\n"
+"POT-Creation-Date: 2023-12-11 18:29+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Rintan, 2020-2021\n"
 "Language-Team: Japanese (http://app.transifex.com/movim/movim/language/ja/)\n"
@@ -417,22 +413,6 @@ msgstr "MovimをTenor APIと連携して、GIF画像の検索とチャットへ�
 msgid "Access Tenor and get your API key"
 msgstr "Tenorにアクセスして、APIキーを入手"
 
-#: [twitter]title
-msgid "Twitter integration"
-msgstr ""
-
-#: [twitter]label
-msgid "Your Twitter Token"
-msgstr ""
-
-#: [twitter]info1
-msgid "The Twitter integration allows Movim to embed and extract the Tweets shared on the instance"
-msgstr ""
-
-#: [twitter]info2
-msgid "Generate your Token on the Developer Twitter website"
-msgstr ""
-
 #: [log]empty
 msgid "Empty"
 msgstr "空"
@@ -495,10 +475,6 @@ msgstr ""
 
 #: [banner]not_updated
 msgid "Banner Not Updated"
-msgstr ""
-
-#: [badges]title
-msgid "Badges"
 msgstr ""
 
 #: [blocked]title
@@ -1428,10 +1404,6 @@ msgstr "招待"
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
 msgstr "この連絡先はあなたの連絡先リストに登録されていますが、これらのアカウントの間で購読はしていません"
-
-#: [contactdatapublic]no_data
-msgid "No public data found"
-msgstr ""
 
 #: [dictaphone]name
 msgid "Dictaphone"
@@ -2521,6 +2493,10 @@ msgstr "プロフィールを更新しました"
 #: [vcard]not_updated
 msgid "Profile Not Updated"
 msgstr "プロファイルは更新されませんでした"
+
+#: [vcard]nickname_info
+msgid "This will also be used as your default nickname when joining a chatroom"
+msgstr ""
 
 #: [profile]public
 msgid "Your profile is now public"

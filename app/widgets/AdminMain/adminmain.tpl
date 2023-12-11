@@ -198,25 +198,6 @@
         </li>
     </ul>
 
-    <h3>{$c->__('twitter.title')}</h3>
-
-    <div>
-        <input type="text" name="twittertoken" id="twittertoken" placeholder="123ABC" value="{$conf->twittertoken ?? ''}" />
-        <label for="info">{$c->__('twitter.label')}</label>
-    </div>
-
-    <ul class="list thick">
-        <li>
-            <span class="primary icon bubble gray">
-                <i class="material-icons">text_snippet</i>
-            </span>
-            <div>
-                <p>{$c->__('twitter.info1')}</p>
-                <p><a href="https://developer.twitter.com/" target="_blank">{$c->__('twitter.info2')}</a></p>
-            </div>
-        </li>
-    </ul>
-
     <input
     type="submit"
     class="button color oppose"

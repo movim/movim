@@ -20,8 +20,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Avatar/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Badges/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blocked/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
@@ -61,8 +59,6 @@
 #. extracted from ../app/widgets/ContactActions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/ContactDataPublic/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Dictaphone/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -121,7 +117,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-12 23:26+0200\n"
+"POT-Creation-Date: 2023-12-11 18:29+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Rossen Karpuzov <rkarpuzov@yahoo.com>, 2020-2023\n"
 "Language-Team: Bulgarian (http://app.transifex.com/movim/movim/language/bg/)\n"
@@ -414,22 +410,6 @@ msgstr "Movim интегрира Tenor API за да позволи търсен
 msgid "Access Tenor and get your API key"
 msgstr "Достъпете Tenor и вземете API ключ"
 
-#: [twitter]title
-msgid "Twitter integration"
-msgstr "Twitter интеграция"
-
-#: [twitter]label
-msgid "Your Twitter Token"
-msgstr "Вашия Twitter токен"
-
-#: [twitter]info1
-msgid "The Twitter integration allows Movim to embed and extract the Tweets shared on the instance"
-msgstr ""
-
-#: [twitter]info2
-msgid "Generate your Token on the Developer Twitter website"
-msgstr ""
-
 #: [log]empty
 msgid "Empty"
 msgstr "Празно"
@@ -492,10 +472,6 @@ msgstr ""
 
 #: [banner]not_updated
 msgid "Banner Not Updated"
-msgstr ""
-
-#: [badges]title
-msgid "Badges"
 msgstr ""
 
 #: [blocked]title
@@ -1425,10 +1401,6 @@ msgstr "Поканете"
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
 msgstr "Този контакт е във вашия списък с контакти, но няма абонамент между двата акаунта"
-
-#: [contactdatapublic]no_data
-msgid "No public data found"
-msgstr "Не са открити обществени данни"
 
 #: [dictaphone]name
 msgid "Dictaphone"
@@ -2519,6 +2491,10 @@ msgstr "Профила е актуализиран"
 msgid "Profile Not Updated"
 msgstr "Профилът не е актуализиран"
 
+#: [vcard]nickname_info
+msgid "This will also be used as your default nickname when joining a chatroom"
+msgstr ""
+
 #: [profile]public
 msgid "Your profile is now public"
 msgstr "Профилът ви вече е обществен"
@@ -3556,3 +3532,12 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr "Пиши тук"
+
+#~ msgid "Twitter integration"
+#~ msgstr "Twitter интеграция"
+
+#~ msgid "Your Twitter Token"
+#~ msgstr "Вашия Twitter токен"
+
+#~ msgid "No public data found"
+#~ msgstr "Не са открити обществени данни"
