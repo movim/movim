@@ -33,22 +33,17 @@ You can help Movim by:
 
 You can also support us on:
 * Flattr: https://flattr.com/thing/568092/Movim
-* Bountysource: https://www.bountysource.com/teams/movim
 
 Links
 -----
 * Movim official website: https://movim.eu/
+* You can join one of the Movim instances on https://join.movim.eu/
 * Twitter: https://twitter.com/MovimNetwork
 * XMPP Chatroom: movim@conference.movim.eu
 
-### Pods
-You can also use Movim on our official Pods:
-
-* https://mov.im/ server hosted in Germany
-
 Translations
 ------------
-Help us translate Movim on https://www.transifex.com/projects/p/movim/.
+Help us translate Movim on https://www.transifex.com/projects/p/movim/
 
 License
 -------
