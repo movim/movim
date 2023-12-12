@@ -19,6 +19,5 @@
 
         <?php $this->widget('About');?>
         <?php $this->widget('Help');?>
-        <?php $this->widget('Caps');?>
     </div>
 </main>
