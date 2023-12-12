@@ -12,6 +12,7 @@ v0.22.6 (trunk)
 * Start the implementation of https://xmpp.org/extensions/xep-0444.html#disco-restricted for MUC
 * Add pagination on room presences list to prevent performances issues in large chatrooms
 * Drop Twitter integration (byebye Elon)
+* Fix #1254 Implement XEP-0191: Blocking Command to replace the internal system
 
 v0.22.5
 ---------------------------

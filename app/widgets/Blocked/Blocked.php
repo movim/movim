@@ -1,24 +1,41 @@
 <?php
 
+use Moxl\Xec\Action\Blocking\Unblock;
+
 class Blocked extends \Movim\Widget\Base
 {
     public function load()
     {
         $this->addcss('blocked.css');
+        $this->addjs('blocked.js');
+        $this->registerEvent('blocking_request_handle', 'onList');
+        $this->registerEvent('blocking_unblock_handle', 'onUnblock');
+        $this->registerEvent('blocked', 'onList');
+        $this->registerEvent('unblocked', 'onList');
     }
 
-    public function ajaxUnblockContact(string $jid)
+    public function onList()
     {
-        $this->user->reported()->detach($jid);
-        $this->user->refreshBlocked();
+        $list = $this->tpl();
+        $list->assign('list', $this->user->reported()->orderBy('reported_user.created_at', 'desc')->get());
+        $this->rpc('MovimTpl.fill', '#blocked_widget_list', $list->draw('_blocked_list'));
+    }
 
+    public function onUnblock($packet)
+    {
         Toast::send($this->__('blocked.account_unblocked'));
-
-        $this->rpc('MovimTpl.remove', '#blocked-'.cleanupId($jid));
+        $this->rpc('MovimTpl.remove', '#blocked-' . cleanupId($packet->content));
     }
 
-    public function display()
+    public function ajaxGet()
     {
-        $this->view->assign('blocked', $this->user->reported()->orderBy('reported_user.created_at', 'desc')->get());
+        $this->onList();
+    }
+
+    public function ajaxUnblock(string $jid)
+    {
+        $unblock = new Unblock;
+        $unblock->setJid($jid);
+        $unblock->request();
     }
 }

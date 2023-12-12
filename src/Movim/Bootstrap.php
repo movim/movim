@@ -265,12 +265,12 @@ class Bootstrap
     public function getWidgets()
     {
         // Return a list of interesting widgets to load (to save memory)
-        return ['Account','AccountNext','AdHoc','Avatar','BottomNavigation',
+        return ['Account','AccountNext','AdHoc','Avatar','Blocked','BottomNavigation',
         'Communities','CommunityAffiliations','CommunityConfig','CommunityData',
         'CommunityHeader','CommunityPosts','CommunitiesServer','CommunitiesServers',
-        'Confirm','ContactActions','Chat','ChatOmemo','Chats','Config','ContactData','ContactHeader',
-        'ContactSubscriptions','Dialog','Drawer','Location','Login',
-        'Menu','Navigation','Notif', 'Notifications','NewsNav','Post','PostActions',
+        'Confirm','ContactActions','Chat','ChatActions','ChatOmemo','Chats','Config',
+        'ContactData','ContactHeader','ContactSubscriptions','Dialog','Drawer','Location',
+        'Login','Menu','Navigation','Notif', 'Notifications','NewsNav','Post','PostActions',
         'Presence','Publish','Rooms','RoomsExplore', 'RoomsUtils', 'Stickers','Toast',
         'Upload','Vcard4','Visio','VisioLink'];
     }

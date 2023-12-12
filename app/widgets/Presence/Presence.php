@@ -14,6 +14,7 @@ use Moxl\Stanza\Stream;
 use Movim\Daemon\Session;
 
 use App\BundleCapabilityResolver;
+use Moxl\Xec\Action\Blocking\Request;
 
 class Presence extends Base
 {
@@ -58,6 +59,10 @@ class Presence extends Base
         // We refresh the roster
         $r = new GetList;
         $r->request();
+
+        // We refresh the blocklist
+        $blocked = new Request;
+        $blocked->request();
 
         // We refresh the messages
         $c = new Chats;
