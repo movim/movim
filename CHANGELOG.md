@@ -13,6 +13,7 @@ v0.22.6 (trunk)
 * Add pagination on room presences list to prevent performances issues in large chatrooms
 * Drop Twitter integration (byebye Elon)
 * Fix #1254 Implement XEP-0191: Blocking Command to replace the internal system
+* Drop the Caps widget, replaced by the DOAP system by the XSF
 
 v0.22.5
 ---------------------------
