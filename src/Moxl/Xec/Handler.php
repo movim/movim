@@ -135,6 +135,9 @@ class Handler
             'fd60f5fdd5d2a06d1c4dd723032fb41a' => 'MAMResult', // mam:1
             '0e49eb65ba266051d2a2287660e22ab1' => 'MAMResult', // mam:2
 
+            '396a134b8d9f83b17bf1986966a609b5' => 'Blocked',
+            '6b5eb74c2d7133303b2350dc2c91f28f' => 'Unblocked',
+
             '887777451221e69bc638f4659ecfeffb' => 'Bookmark2', // bookmarks:0
             'c539a0a12da7913eef6b8b5292e31e68' => 'Bookmark2', // bookmarks:1
 

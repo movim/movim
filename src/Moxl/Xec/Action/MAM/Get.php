@@ -25,7 +25,7 @@ class Get extends Action
 
         // Generating the queryid key.
         $this->_queryid = \generateKey(12);
-        $session->set('mamid'.$this->_queryid, true);
+        $session->set('mamid' . $this->_queryid, true);
         $this->store();
 
         MAM::get(
@@ -50,7 +50,7 @@ class Get extends Action
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $session = Session::start();
-        $session->delete('mamid'.$this->_queryid);
+        $session->delete('mamid' . $this->_queryid);
 
         //MessageBuffer::getInstance()->save();
 
@@ -66,11 +66,12 @@ class Get extends Action
 
         $this->deliver();
 
-        if (isset($stanza->fin)
-        && (!isset($stanza->fin->attributes()->complete) || $stanza->fin->attributes()->complete != 'true')
-        && isset($stanza->fin->set) && $stanza->fin->set->attributes()->xmlns == 'http://jabber.org/protocol/rsm'
-        && isset($stanza->fin->set->last)
-        && $this->_after != (string)$stanza->fin->set->last // prevent loop
+        if (
+            isset($stanza->fin)
+            && (!isset($stanza->fin->attributes()->complete) || $stanza->fin->attributes()->complete != 'true')
+            && isset($stanza->fin->set) && $stanza->fin->set->attributes()->xmlns == 'http://jabber.org/protocol/rsm'
+            && isset($stanza->fin->set->last)
+            && $this->_after != (string)$stanza->fin->set->last // prevent loop
         ) {
             $g = new Get;
             $g->setJid($this->_jid);

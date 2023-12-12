@@ -272,13 +272,13 @@
         {/if}
         <hr />
         {if="$contact->isBlocked()"}
-            <li onclick="ChatActions_ajaxUnblockContact('{$contact->jid|echapJS}')">
+            <li onclick="ChatActions_ajaxUnblock('{$contact->jid|echapJS}')">
                 <div>
                     <p class="normal">{$c->__('blocked.unblock_account')}</p>
                 </div>
             </li>
         {else}
-            <li onclick="ChatActions_ajaxBlockContact('{$contact->jid|echapJS}'); Notifications_ajaxRefuse('{$contact->jid|echapJS}');">
+            <li onclick="ChatActions_ajaxBlock('{$contact->jid|echapJS}'); Notifications_ajaxRefuse('{$contact->jid|echapJS}');">
                 <div>
                     <p class="normal">{$c->__('blocked.block_account')}</p>
                 </div>

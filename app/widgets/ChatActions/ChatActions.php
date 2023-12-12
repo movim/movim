@@ -2,6 +2,8 @@
 
 use App\Reported;
 use App\Url;
+use Moxl\Xec\Action\Blocking\Block;
+use Moxl\Xec\Action\Blocking\Unblock;
 use Moxl\Xec\Action\Message\Moderate;
 use Moxl\Xec\Action\Message\Retract;
 
@@ -13,6 +15,21 @@ class ChatActions extends \Movim\Widget\Base
     {
         $this->addjs('chatactions.js');
         $this->addcss('chatactions.css');
+
+        $this->registerEvent('blocking_block_handle', 'onBlock');
+        $this->registerEvent('blocking_unblock_handle', 'onUnblock');
+    }
+
+    public function onBlock($packet)
+    {
+        Toast::send($this->__('blocked.account_blocked'));
+        $this->rpc('Chats_ajaxClose', $packet->content, true);
+    }
+
+    public function onUnblock($packet)
+    {
+        Toast::send($this->__('blocked.account_unblocked'));
+        $this->rpc('Chats_ajaxClose', $packet->content, true);
     }
 
     /**
@@ -27,27 +44,21 @@ class ChatActions extends \Movim\Widget\Base
     /**
      * @brief Block the contact
      */
-    public function ajaxBlockContact(string $jid)
+    public function ajaxBlock(string $jid)
     {
-        $r = Reported::firstOrCreate(['id' => $jid]);
-
-        $this->user->reported()->syncWithoutDetaching([$r->id]);
-        $this->user->refreshBlocked();
-
-        Toast::send($this->__('blocked.account_blocked'));
-
-        $this->rpc('Chats_ajaxClose', $jid, true);
+        $block = new Block;
+        $block->setJid($jid);
+        $block->request();
     }
 
     /**
      * @brief Unblock the contact
      */
-    public function ajaxUnblockContact(string $jid)
+    public function ajaxUnblock(string $jid)
     {
-        $this->user->reported()->detach($jid);
-        $this->user->refreshBlocked();
-
-        Toast::send($this->__('blocked.account_unblocked'));
+        $unblock = new Unblock;
+        $unblock->setJid($jid);
+        $unblock->request();
     }
 
     /**
