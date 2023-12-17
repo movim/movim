@@ -17,7 +17,7 @@ class Get extends Action
     protected $_limit;
     protected $_after;
     protected $_before;
-    protected $_version = '2';
+    protected string $_version = '2';
 
     public function request()
     {
@@ -39,12 +39,6 @@ class Get extends Action
             $this->_before,
             $this->_version
         );
-    }
-
-    public function setBefore($before = true)
-    {
-        $this->_before = $before;
-        return $this;
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
