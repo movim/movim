@@ -23,18 +23,18 @@ class MAM
     }
 
     public static function get(
-        $to = null,
-        $id = null,
-        $jid = false,
-        $start = false,
-        $end = false,
-        $limit = false,
-        $after = false,
-        $before = false,
-        $version = '1'
+        ?string $to = null,
+        ?string $id = null,
+        ?string $jid = null,
+        ?int $start = null,
+        ?int $end = null,
+        ?int $limit = null,
+        ?string $after = null,
+        ?string $before = null,
+        string $version = '1'
     ) {
         $dom = new \DOMDocument('1.0', 'UTF-8');
-        $query = $dom->createElementNS('urn:xmpp:mam:'.$version, 'query');
+        $query = $dom->createElementNS('urn:xmpp:mam:' . $version, 'query');
         $query->setAttribute('queryid', $id);
 
         $x = $dom->createElement('x');
@@ -42,63 +42,63 @@ class MAM
         $x->setAttribute('type', 'submit');
         $query->appendChild($x);
 
-        $field_type = $dom->createElement('field');
-        $field_type->setAttribute('var', 'FORM_TYPE');
-        $field_type->appendChild($dom->createElement('value', 'urn:xmpp:mam:'.$version));
-        $x->appendChild($field_type);
+        $fieldType = $dom->createElement('field');
+        $fieldType->setAttribute('var', 'FORM_TYPE');
+        $fieldType->appendChild($dom->createElement('value', 'urn:xmpp:mam:' . $version));
+        $x->appendChild($fieldType);
 
-        if ($jid) {
-            $field_with = $dom->createElement('field');
-            $field_with->setAttribute('var', 'with');
-            $field_with->appendChild($dom->createElement('value', $jid));
-            $x->appendChild($field_with);
+        if ($jid !== null) {
+            $fieldWith = $dom->createElement('field');
+            $fieldWith->setAttribute('var', 'with');
+            $fieldWith->appendChild($dom->createElement('value', $jid));
+            $x->appendChild($fieldWith);
         }
 
         if ($start) {
-            $field_start = $dom->createElement('field');
-            $field_start->setAttribute('var', 'start');
-            $field_start->appendChild(
+            $fieldStart = $dom->createElement('field');
+            $fieldStart->setAttribute('var', 'start');
+            $fieldStart->appendChild(
                 $dom->createElement(
                     'value',
-                    date('Y-m-d\TH:i:s\Z', $start+1)
+                    date('Y-m-d\TH:i:s\Z', $start/*+1*/)
                 )
             );
-            $x->appendChild($field_start);
+            $x->appendChild($fieldStart);
         }
 
         if ($end) {
-            $field_end = $dom->createElement('field');
-            $field_end->setAttribute('var', 'end');
-            $field_end->appendChild(
+            $fieldEnd = $dom->createElement('field');
+            $fieldEnd->setAttribute('var', 'end');
+            $fieldEnd->appendChild(
                 $dom->createElement(
                     'value',
-                    date('Y-m-d\TH:i:s\Z', $end+1)
+                    date('Y-m-d\TH:i:s\Z', $end/*+1*/)
                 )
             );
-            $x->appendChild($field_end);
+            $x->appendChild($fieldEnd);
         }
 
-        if ($limit || $after) {
-            $set_limit = $dom->createElement('set');
-            $set_limit->setAttribute('xmlns', 'http://jabber.org/protocol/rsm');
+        if ($limit !== null || $after !== null || $before !== null) {
+            $setLimit = $dom->createElement('set');
+            $setLimit->setAttribute('xmlns', 'http://jabber.org/protocol/rsm');
 
-            if ($limit) {
-                $set_limit->appendChild($dom->createElement('max', $limit));
+            if ($limit !== null) {
+                $setLimit->appendChild($dom->createElement('max', $limit));
             }
 
-            if ($after) {
-                $set_limit->appendChild($dom->createElement('after', $after));
+            if ($after !== null) {
+                $setLimit->appendChild($dom->createElement('after', $after));
             }
 
-            if ($before) {
-                $set_limit->appendChild(
-                    ($before == true)
+            if ($before !== null) {
+                $setLimit->appendChild(
+                    ($before === '')
                         ? $dom->createElement('before')
                         : $dom->createElement('before', $before)
                 );
             }
 
-            $query->appendChild($set_limit);
+            $query->appendChild($setLimit);
         }
 
         \Moxl\API::request(\Moxl\API::iqWrapper($query, $to, 'set'));

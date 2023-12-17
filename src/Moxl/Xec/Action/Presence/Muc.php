@@ -7,6 +7,8 @@ use Moxl\Stanza\Presence;
 use Movim\Session;
 use App\PresenceBuffer;
 
+use Illuminate\Database\Capsule\Manager as DB;
+
 class Muc extends Action
 {
     public static $mucId = 'MUC_ID';
@@ -79,9 +81,12 @@ class Muc extends Action
         if ($this->_mam) {
             $message = \App\User::me()->messages()
                 ->where('jidfrom', $this->_to)
-                ->whereNull('subject')
-                ->orderBy('published', 'desc')
-                ->first();
+                ->whereNull('subject');
+
+            $message = (DB::getDriverName() == 'pgsql')
+                ? $message->orderByRaw('published desc nulls last')
+                : $message->orderBy('published', 'desc');
+            $message = $message->first();
 
             $g = new \Moxl\Xec\Action\MAM\Get;
             $g->setTo($this->_to)

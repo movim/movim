@@ -1207,7 +1207,9 @@ var Chat = {
         }
 
         if (prepend) {
-            Chat.currentDateTime = data.published;
+            if (new Date(Chat.currentDateTime) > new Date(data.published)) {
+                Chat.currentDateTime = data.published;
+            }
 
             // We prepend
             if (!mergeMsg) {
@@ -1222,26 +1224,20 @@ var Chat = {
     appendDate: function (date, prepend) {
         var list = document.querySelector('#chat_widget > div ul');
 
-        if (document.getElementById(MovimUtils.cleanupId(date)) && !prepend) return;
-
         dateNode = Chat.date.cloneNode(true);
-        dateNode.dataset.value = date;
         dateNode.querySelector('p').innerHTML = date;
         dateNode.id = MovimUtils.cleanupId(date);
 
-        var dates = list.querySelectorAll('li.date');
-
         if (prepend) {
-            // If the date was already displayed we remove it
-            if (dates.length > 0
-                && dates[0].dataset.value == date) {
-                dates[0].remove();
+            if (list.firstChild.className == 'date') return;
+
+            if (existingDate = document.getElementById(MovimUtils.cleanupId(date))) {
+                existingDate.remove();
             }
 
             list.insertBefore(dateNode, list.firstChild);
         } else {
-            if (dates.length > 0
-                && dates[dates.length - 1].dataset.value == date) {
+            if (document.getElementById(MovimUtils.cleanupId(date))) {
                 return;
             }
 

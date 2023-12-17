@@ -76,7 +76,7 @@ class Chats extends Base
             if (is_array($chats) &&  array_key_exists($packet->content->jid, $chats)) {
                 $this->rpc(
                     'MovimTpl.replace',
-                    '#' . cleanupId($packet->content->jid.'_chat_item'),
+                    '#' . cleanupId($packet->content->jid . '_chat_item'),
                     $this->prepareChat(
                         $packet->content->jid,
                         $this->resolveContactFromJid($packet->content->jid),
@@ -102,7 +102,7 @@ class Chats extends Base
                 $composing
                     ? 'MovimUtils.addClass'
                     : 'MovimUtils.removeClass',
-                '#' . cleanupId($jid.'_chat_item') . ' span.primary',
+                '#' . cleanupId($jid . '_chat_item') . ' span.primary',
                 'composing'
             );
         }
@@ -117,14 +117,14 @@ class Chats extends Base
     /**
      * @brief Get history
      */
-    public function ajaxGetHistory($jid = false)
+    public function ajaxGetHistory(?string $jid = null)
     {
         $g = new \Moxl\Xec\Action\MAM\Get;
 
         // The following requests seems to be heavy for PostgreSQL
         // see https://stackoverflow.com/questions/40365098/why-is-postgres-not-using-my-index-on-a-simple-order-by-limit-1
         // a little hack is needed to use corectly the indexes
-        if ($jid == false) {
+        if ($jid == null) {
             $message = $this->user->messages();
 
             $message = (DB::getDriverName() == 'pgsql')
@@ -139,23 +139,21 @@ class Chats extends Base
                 $g->setStart(\Carbon\Carbon::now()->subMonth()->timestamp);
             }
 
-            $g->setLimit(250);
             $g->request();
         } elseif (validateJid($jid)) {
             $message = \App\Message::jid($jid);
 
             $message = (DB::getDriverName() == 'pgsql')
-                ? $message->orderByRaw('published desc nulls last')
-                : $message->orderBy('published', 'desc');
+                ? $message->orderByRaw('published asc nulls last')
+                : $message->orderBy('published', 'asc');
             $message = $message->first();
 
             if ($message && $message->published) {
-                $g->setStart(strtotime($message->published));
-            } else {
-                $g->setLimit(150);
-                $g->setBefore(true);
+                $g->setEnd(strtotime($message->published));
             }
 
+            $g->setLimit(150);
+            $g->setBefore('');
             $g->setJid(echapJid($jid));
             $g->request();
         }
@@ -259,9 +257,10 @@ class Chats extends Base
             $jidFromToMessages = DB::table('messages')
                 ->where('user_id', $this->user->id)
                 ->whereIn('jidfrom', array_keys($chats))
-                ->unionAll(DB::table('messages')
-                    ->where('user_id', $this->user->id)
-                    ->whereIn('jidto', array_keys($chats))
+                ->unionAll(
+                    DB::table('messages')
+                        ->where('user_id', $this->user->id)
+                        ->whereIn('jidto', array_keys($chats))
                 );
 
             $selectedMessages = $this->user->messages()
@@ -275,8 +274,8 @@ class Chats extends Base
                     'recents',
                     function ($join) {
                         $join->on('recents.published', 'messages.published')
-                             ->on('recents.jidfrom', 'messages.jidfrom')
-                             ->on('recents.jidto', 'messages.jidto');
+                            ->on('recents.jidfrom', 'messages.jidfrom')
+                            ->on('recents.jidto', 'messages.jidto');
                     }
                 )->get();
 
@@ -292,7 +291,7 @@ class Chats extends Base
             }
 
             $rosters = $this->user->session->contacts()->whereIn('jid', array_keys($chats))
-                            ->with('presence.capability')->get()->keyBy('jid');
+                ->with('presence.capability')->get()->keyBy('jid');
 
             foreach (array_reverse($chats) as $key => $value) {
                 $html .= $this->prepareChat($key, $contacts->get($key), $rosters->get($key), $messages->get($key));
@@ -302,9 +301,13 @@ class Chats extends Base
         return $html;
     }
 
-    public function prepareChat(string $jid, Contact $contact, Roster $roster = null,
-        Message $message = null, string $status = null)
-    {
+    public function prepareChat(
+        string $jid,
+        Contact $contact,
+        Roster $roster = null,
+        Message $message = null,
+        string $status = null
+    ) {
         if (!validateJid($jid)) {
             return;
         }
@@ -332,7 +335,7 @@ class Chats extends Base
     public function resolveRosterFromJid(string $jid): ?Roster
     {
         return $this->user->session->contacts()->where('jid', $jid)
-                    ->with('presence.capability')->first();
+            ->with('presence.capability')->first();
     }
 
     public function resolveMessageFromJid(string $jid): ?Message
