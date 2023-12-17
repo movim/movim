@@ -378,10 +378,9 @@ function stringToColor($string): string
 /**
  * @desc Return the base color palette
  */
-function palette(): array
+function palette(bool $withBlack = false): array
 {
-    return [
-        'black'     => '#000000',
+    $palette = [
         'red'       => '#F44336',
         'purple'    => '#9C27B0',
         'indigo'    => '#3F51B5',
@@ -400,6 +399,10 @@ function palette(): array
         'amber'     => '#ffc107',
         'bgray'     => '#607d8b',
     ];
+
+    if ($withBlack) return $palette + ['black'     => '#000000'];
+
+    return $palette;
 }
 
 /**
