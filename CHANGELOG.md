@@ -16,6 +16,7 @@ v0.22.6 (trunk)
 * Drop the Caps widget, replaced by the DOAP system by the XSF
 * Upgrade the icon pack from MaterialIcons to MaterialSymbols
 * Add support of online/offline browser events to quick disconnect/reconnect on network change
+* Implement MAM history retrieval for MUCs and contacts
 
 v0.22.5
 ---------------------------

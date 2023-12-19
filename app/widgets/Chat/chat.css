@@ -13,29 +13,63 @@ main:not(.enabled) #chat_widget {
     width: 100%;
 }
 
-#chat_widget > div:not(#chat_explore),
-#chat_widget > header {
+#chat_widget>div:not(#chat_explore),
+#chat_widget>header {
     max-width: 100%;
     width: 100%;
 }
 
-#chat_widget > header {
+#chat_widget>header {
     box-shadow: var(--elevation-1);
     z-index: 1;
 }
 
 #chat_widget p.compose:not(.first):not(:empty),
-#chat_widget p.compose:not(.first):empty + p {
+#chat_widget p.compose:not(.first):empty+p {
     animation: fadein 0.3s;
 }
 
-#chat_widget p.compose:not(:empty) + p {
+#chat_widget p.compose:not(:empty)+p {
     display: none;
 }
 
 #chat_widget .contained {
     overflow-y: scroll;
+    overflow-x: hidden;
     height: 100%;
+    position: relative;
+}
+
+#chat_widget .contained:before {
+    position: absolute;
+    display: block;
+    background-color: rgb(var(--movim-main));
+    width: 100%;
+    height: 0.25rem;
+    content: '';
+    top: 0;
+    left: 0;
+    transform-origin: 0% 50%;
+    opacity: 0;
+}
+
+#chat_widget .contained.loading:before {
+    animation: loadingBar 3s infinite linear;
+    opacity: 1;
+}
+
+@keyframes loadingBar {
+    0% {
+        transform: translateX(0) scaleX(0);
+    }
+
+    33% {
+        transform: translateX(0) scaleX(0.33);
+    }
+
+    100% {
+        transform: translateX(100%) scaleX(0.33);
+    }
 }
 
 #chat_widget .contained section {
@@ -55,14 +89,14 @@ main:not(.enabled) #chat_widget {
     pointer-events: none;
 }
 
-#chat_widget span.control.enabled + ul.list.actions {
+#chat_widget span.control.enabled+ul.list.actions {
     opacity: 1;
     z-index: 2;
     transform: translateY(0) scaleY(1);
     pointer-events: initial;
 }
 
-#chat_widget ul.list.actions > li > div > p {
+#chat_widget ul.list.actions>li>div>p {
     border-radius: 0.65rem;
     line-height: 4rem;
     padding: 0 1.25rem;
@@ -70,14 +104,14 @@ main:not(.enabled) #chat_widget {
     float: right;
 }
 
-#chat_widget ul.list.actions > li > span.control,
-#chat_widget ul.list.actions > li > div > p {
+#chat_widget ul.list.actions>li>span.control,
+#chat_widget ul.list.actions>li>div>p {
     transition: box-shadow 0.3s ease, background 0.3s ease;
     box-shadow: var(--elevation-1);
 }
 
-#chat_widget ul.list.actions > li > span.control:hover,
-#chat_widget ul.list.actions > li > div > p:hover {
+#chat_widget ul.list.actions>li>span.control:hover,
+#chat_widget ul.list.actions>li>div>p:hover {
     box-shadow: var(--elevation-2);
     background-color: rgba(var(--movim-element-action), 0.1);
 }
@@ -112,7 +146,7 @@ main:not(.enabled) #chat_widget {
     max-width: 100%;
 }
 
-#chat_widget .chat_box form > div {
+#chat_widget .chat_box form>div {
     min-height: 0;
     top: -2rem;
 }
@@ -127,13 +161,13 @@ main:not(.enabled) #chat_widget {
     width: calc(100% - 1.5rem);
 }
 
-#chat_widget .chat_box form textarea ~ span.encrypted,
-#chat_widget .chat_box form textarea ~ span.encrypted_disabled,
-#chat_widget .chat_box form textarea ~ span.encrypted_loading {
+#chat_widget .chat_box form textarea~span.encrypted,
+#chat_widget .chat_box form textarea~span.encrypted_disabled,
+#chat_widget .chat_box form textarea~span.encrypted_loading {
     display: none;
 }
 
-#chat_widget .chat_box form textarea ~ span.encrypted_loading {
+#chat_widget .chat_box form textarea~span.encrypted_loading {
     opacity: 0.5;
 }
 
@@ -143,9 +177,9 @@ main:not(.enabled) #chat_widget {
     width: calc(100% - 5.5rem);
 }
 
-#chat_widget .chat_box form textarea[data-encryptedstate="yes"] ~ span.control.icon.encrypted,
-#chat_widget .chat_box form textarea[data-encryptedstate="disabled"] ~ span.control.icon.encrypted_disabled,
-#chat_widget .chat_box form textarea[data-encryptedstate="build"] ~ span.control.icon.encrypted_loading {
+#chat_widget .chat_box form textarea[data-encryptedstate="yes"]~span.control.icon.encrypted,
+#chat_widget .chat_box form textarea[data-encryptedstate="disabled"]~span.control.icon.encrypted_disabled,
+#chat_widget .chat_box form textarea[data-encryptedstate="build"]~span.control.icon.encrypted_loading {
     display: inline-block;
     font-size: 2.75rem;
     position: absolute;
@@ -190,7 +224,7 @@ main:not(.enabled) #chat_widget {
 }
 
 #chat_widget .chat_box.finished:after {
-    transition: width 1s cubic-bezier(.68,0,0,1), opacity 1s ease-in-out;
+    transition: width 1s cubic-bezier(.68, 0, 0, 1), opacity 1s ease-in-out;
     width: 100%;
     opacity: 0;
 }
@@ -200,19 +234,19 @@ main:not(.enabled) #chat_widget {
     pointer-events: none;
 }
 
-#chat_widget .chat_box > ul.list > li:not(:empty) {
+#chat_widget .chat_box>ul.list>li:not(:empty) {
     min-height: 0;
     padding: 0.5rem;
 }
 
-#chat_widget .chat_box > ul.list > li form {
+#chat_widget .chat_box>ul.list>li form {
     position: relative;
     margin: 0 0.5rem;
     padding: 0;
     padding-right: 0.5rem;
 }
 
-#chat_widget .chat_box > ul.list > li form:before {
+#chat_widget .chat_box>ul.list>li form:before {
     content: "";
     display: block;
     width: 100%;
@@ -224,23 +258,23 @@ main:not(.enabled) #chat_widget {
     border-radius: 1rem;
 }
 
-#chat_widget .chat_box > ul.list > li > .control {
+#chat_widget .chat_box>ul.list>li>.control {
     transition: transform 0.2s;
 }
 
-#chat_widget .chat_box > ul.list > li > .control.attach.enabled {
+#chat_widget .chat_box>ul.list>li>.control.attach.enabled {
     transform: rotate(45deg);
     font-variation-settings: 'FILL' 1;
 }
 
-#chat_widget .chat_box.compose > ul.list > li > ul.list.actions,
-#chat_widget .chat_box:not(.compose) > ul.list > li > .control.attach ~ .control.send:not(.emojis),
-#chat_widget .chat_box.compose > ul.list > li > .control.attach ~ .control:not(.send):not(.emojis),
-#chat_widget .chat_box.compose > ul.list > li > .control:not(.send):not(.emojis) {
+#chat_widget .chat_box.compose>ul.list>li>ul.list.actions,
+#chat_widget .chat_box:not(.compose)>ul.list>li>.control.attach~.control.send:not(.emojis),
+#chat_widget .chat_box.compose>ul.list>li>.control.attach~.control:not(.send):not(.emojis),
+#chat_widget .chat_box.compose>ul.list>li>.control:not(.send):not(.emojis) {
     display: none;
 }
 
-#chat_widget section > ul.list > li.oppose {
+#chat_widget section>ul.list>li.oppose {
     flex-direction: row-reverse;
 }
 
@@ -250,7 +284,7 @@ main:not(.enabled) #chat_widget {
         width: 100%;
     }
 
-    #chat_widget section > ul.list > li.oppose > span.primary {
+    #chat_widget section>ul.list>li.oppose>span.primary {
         display: none;
     }
 }
@@ -294,7 +328,7 @@ main:not(.enabled) #chat_widget {
     padding-left: 2rem;
 }
 
-#chat_widget div:not(.chat_box):not(#chat_explore) ul.conversation > li > span.icon {
+#chat_widget div:not(.chat_box):not(#chat_explore) ul.conversation>li>span.icon {
     align-self: flex-start;
     margin: 0;
 }
@@ -335,26 +369,26 @@ main:not(.enabled) #chat_widget {
     cursor: pointer;
 }
 
-#chat_widget .contained ul li.sequel > span.icon,
+#chat_widget .contained ul li.sequel>span.icon,
 #chat_widget .contained ul li.sequel .bubble::before,
-#chat_widget .contained ul li.oppose + li.oppose > span.icon,
-#chat_widget .contained ul li.oppose + li.oppose .bubble::before,
-#chat_widget .contained:not(.muc) ul li:not(.oppose):not(.separator):not(.date) + li:not(.oppose) > span.icon,
-#chat_widget .contained:not(.muc) ul li:not(.oppose):not(.separator):not(.date) + li:not(.oppose) .bubble::before {
+#chat_widget .contained ul li.oppose+li.oppose>span.icon,
+#chat_widget .contained ul li.oppose+li.oppose .bubble::before,
+#chat_widget .contained:not(.muc) ul li:not(.oppose):not(.separator):not(.date)+li:not(.oppose)>span.icon,
+#chat_widget .contained:not(.muc) ul li:not(.oppose):not(.separator):not(.date)+li:not(.oppose) .bubble::before {
     opacity: 0;
     pointer-events: none;
 }
 
-#chat_widget .contained section > ul > li {
+#chat_widget .contained section>ul>li {
     animation: fadein 0.2s;
     padding: 0 1rem;
 }
 
-#chat_widget ul ~ .placeholder {
+#chat_widget ul~.placeholder {
     display: none;
 }
 
-#chat_widget ul:empty ~ .placeholder.show {
+#chat_widget ul:empty~.placeholder.show {
     display: block;
     animation: fadein 1s;
 }
@@ -371,38 +405,38 @@ main:not(.enabled) #chat_widget {
     padding-top: 2rem;
 }
 
-#emojisearchbar ~ .emojis {
+#emojisearchbar~.emojis {
     padding: 0 1rem;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
 }
 
-#emojisearchbar ~ .emojis.results,
-#emojisearchbar ~ .emojis:last-child {
+#emojisearchbar~.emojis.results,
+#emojisearchbar~.emojis:last-child {
     margin-bottom: 1rem;
 }
 
-#emojisearchbar ~ .emojis img {
+#emojisearchbar~.emojis img {
     text-align: center;
     padding: 1rem 1.5rem;
     font-size: 0;
     position: relative;
 }
 
-#emojisearchbar ~ .emojis.main {
+#emojisearchbar~.emojis.main {
     border-bottom: 1px solid rgba(var(--movim-font), 0.12);
     padding-bottom: 0.5rem;
     margin-bottom: 0.5rem;
 }
 
-#emojisearchbar ~ .emojis.results:empty,
-#emojisearchbar ~ .emojis.results:not(:empty) ~ .emojis {
+#emojisearchbar~.emojis.results:empty,
+#emojisearchbar~.emojis.results:not(:empty)~.emojis {
     display: none;
 }
 
-#chat_widget textarea#chat_textarea ~ span.control:hover,
+#chat_widget textarea#chat_textarea~span.control:hover,
 #chat_widget .primary_action:hover,
-#emojisearchbar ~ .emojis img:hover {
+#emojisearchbar~.emojis img:hover {
     cursor: pointer;
     background-color: rgba(var(--movim-font), 0.05);
     border-radius: 0.5rem;
@@ -424,7 +458,7 @@ main:not(.enabled) #chat_widget {
     margin: 0.25rem 0;
 }
 
-#chat_widget .bubble div + div div.parent {
+#chat_widget .bubble div+div div.parent {
     margin-top: 1rem;
 }
 
@@ -517,12 +551,12 @@ li div.bubble.file:not(.audio):after {
     padding: 0;
 }
 
-#chat_widget .bubble > div {
+#chat_widget .bubble>div {
     padding-right: 7rem;
     margin-right: -7rem;
 }
 
-#chat_widget .bubble:not(.file) > div:last-child {
+#chat_widget .bubble:not(.file)>div:last-child {
     padding-right: 12rem;
 }
 
@@ -533,7 +567,8 @@ li div.bubble.file:not(.audio):after {
 }
 
 @media screen and (min-width: 1025px) {
-    #chat_widget li .bubble div:hover ul.reactions:empty ~ span.reaction,
+
+    #chat_widget li .bubble div:hover ul.reactions:empty~span.reaction,
     #chat_widget li .bubble div:not(.encrypted):hover span.reply {
         display: inline-flex;
         position: absolute;
@@ -541,16 +576,16 @@ li div.bubble.file:not(.audio):after {
         transform: translate(-0.5rem, -0.5rem);
     }
 
-    #chat_widget li .bubble.file div:hover ul.reactions:empty ~ span.reaction,
+    #chat_widget li .bubble.file div:hover ul.reactions:empty~span.reaction,
     #chat_widget li .bubble.file div:not(.encrypted):hover span.reply {
         transform: translate(-0.5rem, -5.5rem);
     }
 
-    #chat_widget li .bubble div:hover ul.reactions:not(:empty) ~ span.reply {
+    #chat_widget li .bubble div:hover ul.reactions:not(:empty)~span.reply {
         margin-top: -3rem;
     }
 
-    #chat_widget li .bubble div:hover ul.reactions:empty ~ span.reaction ~ span.reply {
+    #chat_widget li .bubble div:hover ul.reactions:empty~span.reaction~span.reply {
         left: calc(100% + 3.5rem);
     }
 }
@@ -579,7 +614,7 @@ li .bubble.file div.file {
     margin-bottom: 3rem;
 }
 
-li:not(.oppose) .bubble.file span.resource + div.file {
+li:not(.oppose) .bubble.file span.resource+div.file {
     margin-top: 1rem;
 }
 
@@ -722,7 +757,7 @@ li .bubble.file div.file a span.size:before {
     display: inline-block;
 }
 
-#chat_widget .bubble span.resource + ul.card.list li {
+#chat_widget .bubble span.resource+ul.card.list li {
     margin-top: 0.5rem;
 }
 
@@ -738,13 +773,13 @@ li .bubble.file div.file a span.size:before {
     float: right;
 }
 
-#chat_widget li.oppose .bubble ul.card.list + * {
+#chat_widget li.oppose .bubble ul.card.list+* {
     clear: both;
     display: block;
     text-align: right;
 }
 
-#chat_widget li .bubble ul.card.list + p {
+#chat_widget li .bubble ul.card.list+p {
     margin-right: 4.5rem;
     margin-bottom: 0.25rem;
 }
@@ -776,6 +811,7 @@ li .bubble.file div.file a span.size:before {
 /* Parent scroll */
 
 @keyframes backgroundblink {
+
     0%,
     50%,
     100% {

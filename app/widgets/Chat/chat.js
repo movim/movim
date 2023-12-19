@@ -135,6 +135,18 @@ var Chat = {
 
         Chat_ajaxGetRoom(jid);
     },
+    getHistory: function(tryMam) {
+        var textarea = Chat.getTextarea();
+
+        if (textarea) {
+            Chat_ajaxGetHistory(
+                textarea.dataset.jid,
+                Chat.currentDateTime,
+                Boolean(textarea.dataset.muc),
+                true,
+                tryMam);
+        }
+    },
     sendMessage: function () {
         var textarea = Chat.getTextarea();
         var text = textarea.value;
@@ -580,10 +592,11 @@ var Chat = {
         Chat.delivery_error = delivery_error;
         Chat.action_impossible_encrypted_error = action_impossible_encrypted_error;
     },
+    resetCurrentDateTime: function() {
+        Chat.currentDateTime = null;
+    },
     setGeneralElements(date, separator) {
         var div = document.createElement('div');
-
-        Chat.currentDateTime = null;
 
         div.innerHTML = date;
         Chat.date = div.firstChild.cloneNode(true);
@@ -592,8 +605,6 @@ var Chat = {
     },
     setSpecificElements: function (left, right) {
         var div = document.createElement('div');
-
-        Chat.currentDateTime = null;
 
         div.innerHTML = left;
         Chat.left = div.firstChild.cloneNode(true);
@@ -606,12 +617,8 @@ var Chat = {
 
         discussion.onscroll = function () {
             if (this.scrollTop < 1
-                && discussion.querySelectorAll('li div.bubble p').length >= Chat.pagination && Chat.currentDateTime) {
-                Chat_ajaxGetHistory(
-                    Chat.getTextarea().dataset.jid,
-                    Chat.currentDateTime,
-                    Chat.getTextarea().dataset.muc,
-                    true);
+                && Chat.currentDateTime) {
+                Chat.getHistory(true);
             }
 
             Chat.setScroll();
@@ -881,7 +888,7 @@ var Chat = {
                 }
 
                 for (speakertime in page[date]) {
-                    if (!Chat.currentDateTime) {
+                    if (Chat.currentDateTime == null) {
                         Chat.currentDateTime = page[date][speakertime].published;
                     }
 

@@ -26,6 +26,8 @@ use Moxl\Xec\Action\Muc\ChangeAffiliation;
 use Moxl\Xec\Action\Presence\Muc;
 use Moxl\Xec\Action\Presence\Unavailable;
 
+use Illuminate\Database\Capsule\Manager as DB;
+
 include_once WIDGETS_PATH . 'Chat/Chat.php';
 
 class RoomsUtils extends Base
@@ -834,6 +836,33 @@ class RoomsUtils extends Base
             ->setJid($form->jid->value)
             ->setAffiliation($form->affiliation->value)
             ->request();
+    }
+
+    /**
+     * @brief Get MAM history
+     */
+    public function ajaxGetMAMHistory(string $jid)
+    {
+        $g = new \Moxl\Xec\Action\MAM\Get;
+
+        $message = \App\User::me()->messages()
+            ->where('jidfrom', $jid)
+            ->whereNull('subject');
+
+        $message = (DB::getDriverName() == 'pgsql')
+            ? $message->orderByRaw('published asc nulls last')
+            : $message->orderBy('published', 'asc');
+        $message = $message->first();
+
+        $g->setTo($jid);
+
+        if ($message && $message->published) {
+            $g->setEnd(strtotime($message->published));
+        }
+
+        $g->setLimit(150);
+        $g->setBefore('');
+        $g->request();
     }
 
     public function onDiscoGateway($packet)

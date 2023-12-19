@@ -12,13 +12,21 @@ class MAMResult extends Payload
         $to = baseJid((string)$parent->attributes()->to);
         $session = Session::start();
 
-        if ($stanza->forwarded->delay
-        && isset($stanza->attributes()->queryid)
-        && $session->get('mamid'.(string)$stanza->attributes()->queryid) == true) {
-            if ($stanza->forwarded->message->{'apply-to'}
-            && $stanza->forwarded->message->{'apply-to'}->attributes()->xmlns == 'urn:xmpp:fasten:0'
-            && $stanza->forwarded->message->{'apply-to'}->moderated
-            && $stanza->forwarded->message->{'apply-to'}->moderated->attributes()->xmlns == 'urn:xmpp:message-moderate:0') {
+        $messagesCounter = $session->get('mamid' . (string)$stanza->attributes()->queryid);
+
+        if (
+            $stanza->forwarded->delay
+            && isset($stanza->attributes()->queryid)
+            && $messagesCounter >= 0
+        ) {
+            $session->set('mamid' . (string)$stanza->attributes()->queryid, $messagesCounter + 1);
+
+            if (
+                $stanza->forwarded->message->{'apply-to'}
+                && $stanza->forwarded->message->{'apply-to'}->attributes()->xmlns == 'urn:xmpp:fasten:0'
+                && $stanza->forwarded->message->{'apply-to'}->moderated
+                && $stanza->forwarded->message->{'apply-to'}->moderated->attributes()->xmlns == 'urn:xmpp:message-moderate:0'
+            ) {
                 (new Moderated)->handle($stanza->forwarded->message->{'apply-to'}->moderated, $stanza->forwarded->message);
                 return;
             }
@@ -39,20 +47,22 @@ class MAMResult extends Payload
                 $message->jidto = $to;
             }
 
-            if (!$message->encrypted
-            && $message->valid()
-            && (!$message->isEmpty() || $message->isSubject())) {
+            if (
+                !$message->encrypted
+                && $message->valid()
+                && (!$message->isEmpty() || $message->isSubject())
+            ) {
                 // Set the "old" message as seen
                 if (\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $message->published)->addWeek()->isBefore(\Carbon\Carbon::now())) {
                     $message->seen = true;
                 }
 
                 //MessageBuffer::getInstance()->append($message, function() use ($message) {
-                    $message->save();
-                    $message->clearUnreads();
+                $message->save();
+                $message->clearUnreads();
 
-                    $this->pack($message);
-                    $this->deliver();
+                $this->pack($message);
+                $this->deliver();
                 //});
             }
         }

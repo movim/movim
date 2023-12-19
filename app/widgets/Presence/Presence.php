@@ -65,8 +65,7 @@ class Presence extends Base
         $blocked->request();
 
         // We refresh the messages
-        $c = new Chats;
-        $c->ajaxGetHistory();
+        (new Chats)->ajaxGetMAMHistory();
         $this->ajaxServerCapsGet();
         $this->ajaxBookmarksGet();
         $this->ajaxPubsubSubscriptionsGet();
