@@ -3,10 +3,10 @@
         <ul class="list active">
             <li onclick="RoomsExplore_ajaxSearch();">
                 <span class="primary icon gray">
-                    <i class="material-icons">explore</i>
+                    <i class="material-symbols">explore</i>
                 </span>
                 <span class="control icon gray">
-                    <i class="material-icons">chevron_right</i>
+                    <i class="material-symbols">chevron_right</i>
                 </span>
                 <div>
                     <p class="line normal">
@@ -16,10 +16,10 @@
             </li>
             <li onclick="RoomsUtils_ajaxAdd(false, null, true); Drawer.clear()">
                 <span class="primary icon gray">
-                    <i class="material-icons">group_add</i>
+                    <i class="material-symbols">group_add</i>
                 </span>
                 <span class="control icon gray">
-                    <i class="material-icons">chevron_right</i>
+                    <i class="material-symbols">chevron_right</i>
                 </span>
                 <div>
                     <p class="line normal">
@@ -42,7 +42,7 @@
     <ul class="list fill">
         <li>
             <span class="primary icon gray">
-                <i class="material-icons">search</i>
+                <i class="material-symbols">search</i>
             </span>
             <form name="search" onsubmit="return false;">
                 <div>

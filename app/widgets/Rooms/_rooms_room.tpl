@@ -27,7 +27,7 @@
                             moderator
                         {/if}
                     ">
-                    {$count} <i class="material-icons">people</i>
+                    {$count} <i class="material-symbols">people</i>
                 </span>
             {elseif="!$conference->isGroupChat() && isset($info) && $info->occupants > 0"}
                 <span title="{$c->__('communitydata.sub', $info->occupants)}"
@@ -36,19 +36,19 @@
                             moderator
                         {/if}
                     ">
-                    {$info->occupants} <i class="material-icons">people</i>
+                    {$info->occupants} <i class="material-symbols">people</i>
                 </span>
             {/if}
 
             <span title="{$conference->conference}">{$conference->title}</span>
             <span class="second">
                 {if="$conference->pinned"}
-                    <i class="material-icons" title="{$c->__('room.pinned')}">push_pin</i>
+                    <i class="material-symbols" title="{$c->__('room.pinned')}">push_pin</i>
                 {/if}
                 {if="$conference->notify == 0"}
-                    <i class="material-icons" title="{$c->__('room.notify_never')}">notifications_off</i>
+                    <i class="material-symbols" title="{$c->__('room.notify_never')}">notifications_off</i>
                 {elseif="$conference->notify == 2"}
-                    <i class="material-icons" title="{$c->__('room.notify_always')}">notifications_active</i>
+                    <i class="material-symbols" title="{$c->__('room.notify_always')}">notifications_active</i>
                 {/if}
                 {if="isset($info) && $info->name && $conference->title != $info->name"}
                     {$info->name}
@@ -61,9 +61,9 @@
         </p>
     </div>
     <span class="control icon active gray" onclick="event.stopPropagation(); RoomsUtils_ajaxRemove('{$conference->conference|echapJS}');">
-        <i class="material-icons">delete</i>
+        <i class="material-symbols">delete</i>
     </span>
     <span class="control icon active gray" onclick="event.stopPropagation(); RoomsUtils_ajaxAdd('{$conference->conference|echapJS}');">
-        <i class="material-icons">edit</i>
+        <i class="material-symbols">edit</i>
     </span>
 </li>

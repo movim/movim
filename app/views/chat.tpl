@@ -19,7 +19,7 @@
     <?php $this->widget('ChatActions');?>
     <div id="scroll_block">
         <a class="button action color" onclick="Search_ajaxRequest(true)">
-            <i class="material-icons">add</i>
+            <i class="material-symbols">add</i>
         </a>
         <?php $this->widget('Chats');?>
         <?php $this->widget('Rooms');?>

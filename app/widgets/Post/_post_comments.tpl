@@ -4,7 +4,7 @@
     <ul class="list divided spaced middle">
         <li>
             <span class="primary icon red">
-                <i class="material-icons">favorite</i>
+                <i class="material-symbols">favorite</i>
             </span>
             <div>
                 <p>{$post->likes->count()}</span> {$c->__('button.like')}</p>
@@ -45,7 +45,7 @@
             {if="!$public && ($value->isMine() || $post->isMine())"}
                 <span class="control icon gray active"
                       onclick="PostActions_ajaxDelete('{$value->server}', '{$value->node}', '{$value->nodeid}')">
-                    <i class="material-icons">delete</i>
+                    <i class="material-symbols">delete</i>
                 </span>
             {/if}
             {if="$value->contact"}
@@ -61,10 +61,10 @@
             {else}
                 <span class="primary icon bubble {if="$value->aid"}color {$value->aid|stringToColor}{/if} small">
                     {if="$public"}
-                        <i class="material-icons">person</i>
+                        <i class="material-symbols">person</i>
                     {else}
                         <a href="{$c->route('contact', $value->aid)}">
-                            <i class="material-icons">person</i>
+                            <i class="material-symbols">person</i>
                         </a>
                     {/if}
                 </span>
@@ -105,10 +105,10 @@
     {if="!$public"}
     <li class="hide" id="comment_add">
         <span class="primary icon gray">
-            <i class="material-icons">comment</i>
+            <i class="material-symbols">comment</i>
         </span>
         <span class="control icon gray active" onclick="Post_ajaxPublishComment(MovimUtils.formToJson('comment'),'{$post->server}', '{$post->node}', '{$post->nodeid}')">
-            <i class="material-icons">send</i>
+            <i class="material-symbols">send</i>
         </span>
         <form name="comment">
             <div>
@@ -130,17 +130,17 @@
                     <button class="button red flat"
                         id="like"
                         onclick="this.classList.add('disabled'); PostActions_ajaxDeleteConfirm('{$liked[0]}', '{$liked[1]}', '{$liked[2]}')">
-                        <i class="material-icons">favorite_border</i>
+                        <i class="material-symbols">favorite_border</i>
                     </button>
                 {else}
                     <button class="button red flat"
                         id="like"
                         onclick="this.classList.add('disabled'); PostActions_ajaxLike('{$post->server}', '{$post->node}', '{$post->nodeid}')">
-                        <i class="material-icons">favorite</i> {$c->__('button.like')}
+                        <i class="material-symbols">favorite</i> {$c->__('button.like')}
                     </button>
                 {/if}
                 <button class="button flat gray" onclick="Post.comment()">
-                    <i class="material-icons">add_comment</i> {$c->__('post.comment_add')}
+                    <i class="material-symbols">add_comment</i> {$c->__('post.comment_add')}
                 </button>
                 <a
                     title="{$c->__('button.share')}"
@@ -148,7 +148,7 @@
                     onclick="SendTo.shareArticle('{$post->getRef()}')"
                     href="#"
                 >
-                    <i class="material-icons">share</i> {$c->__('button.share')}
+                    <i class="material-symbols">share</i> {$c->__('button.share')}
                 </a>
                 <a
                     title="{$c->__('button.send_to')}"
@@ -156,7 +156,7 @@
                     onclick="SendTo_ajaxSendContact('{$post->getRef()}')"
                     href="#"
                 >
-                    <i class="material-icons">send</i> {$c->__('button.send_to')}
+                    <i class="material-symbols">send</i> {$c->__('button.send_to')}
                 </a>
             </p>
         </div>

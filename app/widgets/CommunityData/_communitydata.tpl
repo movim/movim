@@ -11,11 +11,11 @@
             <li onclick="MovimUtils.reload('{$c->route('chat', [$related->server,'room'])}')"
                 class="block large active">
                 <span class="primary icon bubble gray">
-                    <i class="material-icons">forum</i>
+                    <i class="material-symbols">forum</i>
                 </span>
 
                 <span class="control icon gray">
-                    <i class="material-icons">chevron_right</i>
+                    <i class="material-symbols">chevron_right</i>
                 </span>
 
                 <div>
@@ -25,7 +25,7 @@
 
                         {if="$related->occupants > 0"}
                             <span title="{$c->__('communitydata.sub', $related->occupants)}">
-                                {$related->occupants} <i class="material-icons">people</i>  ·
+                                {$related->occupants} <i class="material-symbols">people</i>  ·
                             </span>
                         {/if}
                         {if="$related->description"}
@@ -41,10 +41,10 @@
         <a href="{$c->route('node', [$info->server, $info->node])}" target="_blank" class="block large">
             <li class="active">
                 <span class="primary icon">
-                    <i class="material-icons">open_in_new</i>
+                    <i class="material-symbols">open_in_new</i>
                 </span>
                 <span class="control icon">
-                    <i class="material-icons">chevron_right</i>
+                    <i class="material-symbols">chevron_right</i>
                 </span>
                 <div>
                     <p class="normal">{$c->__('communitydata.public')}</p>

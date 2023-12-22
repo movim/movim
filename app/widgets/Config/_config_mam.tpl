@@ -3,7 +3,7 @@
         <ul class="list fill">
             <li>
                 <span class="primary icon gray">
-                    <i class="material-icons">inventory</i>
+                    <i class="material-symbols">inventory</i>
                 </span>
                 <div>
                     <div class="select">

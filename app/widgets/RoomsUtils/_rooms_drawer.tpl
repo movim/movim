@@ -10,12 +10,12 @@
                 <span title="{$c->__('chatroom.config')}"
                       class="control icon active"
                       onclick="RoomsUtils_ajaxAdd('{$room|echapJS}'); Drawer.clear()">
-                    <i class="material-icons">edit</i>
+                    <i class="material-symbols">edit</i>
                 </span>
                 <span title="{$c->__('button.delete')}"
                       class="control icon active"
                       onclick="RoomsUtils_ajaxRemove('{$room|echapJS}'); Drawer.clear()">
-                    <i class="material-icons">delete</i>
+                    <i class="material-symbols">delete</i>
                 </span>
 
                 <div>
@@ -38,7 +38,7 @@
         {if="$conference->isGroupChat()"}
             <li>
                 <span class="primary icon gray">
-                    <i class="material-icons">people_alt</i>
+                    <i class="material-symbols">people_alt</i>
                 </span>
                 <div>
                     <a class="button flat oppose" >
@@ -52,7 +52,7 @@
         {else}
             <li>
                 <span class="primary icon gray">
-                    <i class="material-icons">wifi_tethering</i>
+                    <i class="material-symbols">wifi_tethering</i>
                 </span>
                 <div>
                     <p class="line">{$c->__('room.channel')}</p>
@@ -65,7 +65,7 @@
         {if="$conference->subject"}
             <li>
                 <span class="primary icon gray">
-                    <i class="material-icons">short_text</i>
+                    <i class="material-symbols">short_text</i>
                 </span>
                 <div>
                     <p class="line">
@@ -87,7 +87,7 @@
         {if="$conference->info && $conference->info->mucpublic"}
             <li>
                 <span class="primary icon gray">
-                    <i class="material-icons">explore</i>
+                    <i class="material-symbols">explore</i>
                 </span>
                 <div>
                     <p class="line">{$c->__('room.public_muc')}</p>
@@ -98,7 +98,7 @@
         {if="$conference->info && $conference->info->hasMAM()"}
             <li>
                 <span class="primary icon gray">
-                    <i class="material-icons">archive</i>
+                    <i class="material-symbols">archive</i>
                 </span>
                 <div>
                     <p class="line">{$c->__('room.archived')}</p>
@@ -109,7 +109,7 @@
         {if="!$conference->isGroupChat() && $conference->info && !$conference->info->mucsemianonymous"}
             <li>
                 <span class="primary icon gray">
-                    <i class="material-icons">face</i>
+                    <i class="material-symbols">face</i>
                 </span>
                 <div>
                     <p class="line">{$c->__('room.nonanonymous_muc')}</p>
@@ -127,11 +127,11 @@
         {if="$conference->notify == 0"}
             <li>
                 <span class="primary icon gray">
-                    <i class="material-icons">notifications_off</i>
+                    <i class="material-symbols">notifications_off</i>
                 </span>
                 <span class="control icon gray active"
                       onclick="RoomsUtils_ajaxAdd('{$room|echapJS}'); Drawer.clear()">
-                    <i class="material-icons">settings</i>
+                    <i class="material-symbols">settings</i>
                 </span>
                 <div>
                     <p class="line">{$c->__('room.notify_title')}</p>
@@ -141,11 +141,11 @@
         {elseif="$conference->notify == 2"}
             <li>
                 <span class="primary icon gray">
-                    <i class="material-icons">notifications_active</i>
+                    <i class="material-symbols">notifications_active</i>
                 </span>
                 <span class="control icon gray active"
                       onclick="RoomsUtils_ajaxAdd('{$room|echapJS}'); Drawer.clear()">
-                    <i class="material-icons">settings</i>
+                    <i class="material-symbols">settings</i>
                 </span>
                 <div>
                     <p class="line">{$c->__('room.notify_title')}</p>
@@ -155,11 +155,11 @@
         {else}
             <li>
                 <span class="primary icon gray">
-                    <i class="material-icons">notifications</i>
+                    <i class="material-symbols">notifications</i>
                 </span>
                 <span class="control icon gray active"
                       onclick="RoomsUtils_ajaxAdd('{$room|echapJS}'); Drawer.clear()">
-                    <i class="material-icons">settings</i>
+                    <i class="material-symbols">settings</i>
                 </span>
                 <div>
                     <p class="line">{$c->__('room.notify_title')}</p>
@@ -177,10 +177,10 @@
             <ul class="list">
                 <li class="active" onclick="RoomsUtils_ajaxAskInvite('{$conference->conference|echapJS}'); Drawer.clear();">
                     <span class="primary icon gray">
-                        <i class="material-icons">person_add</i>
+                        <i class="material-symbols">person_add</i>
                     </span>
                     <span class="control icon gray">
-                        <i class="material-icons">chevron_right</i>
+                        <i class="material-symbols">chevron_right</i>
                     </span>
                     <div>
                         <p class="line normal">
@@ -201,16 +201,16 @@
                             </span>
                         {else}
                             <span class="primary icon bubble small color {$value->jid|stringToColor} status {if="$presence"}{$presence->presencekey}{/if}">
-                                <i class="material-icons">people</i>
+                                <i class="material-symbols">people</i>
                             </span>
                         {/if}
                         {if="$value->affiliation == 'owner'"}
                             <span class="control icon yellow" title="{$c->__('rooms.owner')}">
-                                <i class="material-icons">star</i>
+                                <i class="material-symbols">star</i>
                             </span>
                         {elseif="$value->affiliation == 'admin'"}
                             <span class="control icon gray" title="{$c->__('rooms.admin')}">
-                                <i class="material-icons">star</i>
+                                <i class="material-symbols">star</i>
                             </span>
                         {/if}
                         {if="$value->jid != $me"}
@@ -218,14 +218,14 @@
                                 Chats_ajaxOpen('{$value->jid|echapJS}');
                                 Chat.get('{$value->jid|echapJS}');
                                 Drawer_ajaxClear();">
-                                <i class="material-icons">comment</i>
+                                <i class="material-symbols">comment</i>
                             </span>
                         {/if}
                         {if="$conference->presence && ($conference->presence->mucrole == 'moderator' || $conference->presence->mucaffiliation == 'owner')"}
                             <span class="control icon active gray divided" onclick="
                                 RoomsUtils_ajaxChangeAffiliation('{$conference->conference|echapJS}', '{$value->jid|echapJS}');
                                 Drawer_ajaxClear();">
-                                <i class="material-icons">manage_accounts</i>
+                                <i class="material-symbols">manage_accounts</i>
                             </span>
                         {/if}
                         <div>
@@ -249,10 +249,10 @@
             <ul class="list">
                 <li class="active" onclick="RoomsUtils_ajaxAskInvite('{$conference->conference|echapJS}'); Drawer.clear();">
                     <span class="primary icon gray">
-                        <i class="material-icons">person_add</i>
+                        <i class="material-symbols">person_add</i>
                     </span>
                     <span class="control icon gray">
-                        <i class="material-icons">chevron_right</i>
+                        <i class="material-symbols">chevron_right</i>
                     </span>
                     <div>
                         <p class="line normal">
@@ -271,10 +271,10 @@
             <ul class="list">
                 <li class="active" onclick="RoomsUtils_ajaxAddBanned('{$conference->conference|echapJS}'); Drawer.clear();">
                     <span class="primary icon gray">
-                        <i class="material-icons">person_add</i>
+                        <i class="material-symbols">person_add</i>
                     </span>
                     <span class="control icon gray">
-                        <i class="material-icons">chevron_right</i>
+                        <i class="material-symbols">chevron_right</i>
                     </span>
                     <div>
                         <p class="line normal">
@@ -294,19 +294,19 @@
                                 </span>
                             {else}
                                 <span class="primary icon bubble small color {$value->jid|stringToColor}">
-                                    <i class="material-icons">people</i>
+                                    <i class="material-symbols">people</i>
                                 </span>
                             {/if}
                             <span class="control icon gray active"
                                     onclick="RoomsUtils_ajaxRemoveBanned('{$conference->conference|echapJS}', '{$value->jid|echapJS}'); Drawer.clear();"
                                     title="{$c->__('room.banned_remove')}">
-                                <i class="material-icons">close</i>
+                                <i class="material-symbols">close</i>
                             </span>
                             <span class="control icon active gray divided" onclick="
                                 Chats_ajaxOpen('{$value->jid|echapJS}');
                                 Chat.get('{$value->jid|echapJS}');
                                 Drawer_ajaxClear();">
-                                <i class="material-icons">comment</i>
+                                <i class="material-symbols">comment</i>
                             </span>
                             <div>
                                 <p class="line normal">
@@ -323,7 +323,7 @@
                 </ul>
             {else}
                 <div class="placeholder">
-                    <i class="material-icons">remove_circle_outline</i>
+                    <i class="material-symbols">remove_circle_outline</i>
                 </div>
             {/if}
         </div>

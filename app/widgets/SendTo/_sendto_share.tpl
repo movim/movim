@@ -26,7 +26,7 @@
                     </span>
 
                     <span class="control icon active gray" onclick="SendTo_ajaxSend('{$value->conference|echapJS}', {'uri': '{$uri}'}, true, '{$openlink}');">
-                        <i class="material-icons">send</i>
+                        <i class="material-symbols">send</i>
                     </span>
 
                     {$info = $value->info}
@@ -55,7 +55,7 @@
         <br />
         <li onclick="SendTo_ajaxGetMoreContacts('{$uri}')" class="active">
             <span class="control icon gray">
-                <i class="material-icons">expand_more</i>
+                <i class="material-symbols">expand_more</i>
             </span>
             <div>
                 <p class="normal line center">{$c->__('sendto.more_contacts')}</p>

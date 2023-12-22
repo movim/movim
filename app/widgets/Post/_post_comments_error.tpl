@@ -3,7 +3,7 @@
     {if="isset($post)"}
         <li  class="block" onclick="SendTo.shareArticle('{$post->getRef()}')">
             <span class="primary icon gray">
-                <i class="material-icons">share</i>
+                <i class="material-symbols">share</i>
             </span>
             <div>
                 <p class="normal">
@@ -13,7 +13,7 @@
         </li>
         <li  class="block" onclick="SendTo_ajaxSendContact('{$post->getRef()}')">
             <span class="primary icon gray">
-                <i class="material-icons">send</i>
+                <i class="material-symbols">send</i>
             </span>
             <div>
                 <p class="normal">
@@ -24,7 +24,7 @@
     {else}
         <li class="block" onclick="Post.share()">
             <span class="primary icon gray">
-                <i class="material-icons">share</i>
+                <i class="material-symbols">share</i>
             </span>
             <div>
                 <p class="normal">

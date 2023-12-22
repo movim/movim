@@ -8,7 +8,7 @@
     <section id="{$jid|cleanupId}-messages">
         <ul class="list spin conversation" id="{$jid|cleanupId}-conversation"></ul>
         <div class="placeholder">
-            <i class="material-icons">chat</i>
+            <i class="material-symbols">chat</i>
             <h1>{$c->__('chat.new_title')}</h1>
             <h4>{$c->__('chat.new_text')}</h4>
             <h4>{$c->__('message.edit_help')}</h4>
@@ -18,7 +18,7 @@
 </div>
 <div class="chat_box {if="isset($conference) && $conference->presence && $conference->presence->mucrole == 'visitor'"}disabled{/if}">
     <a id="scroll_down" class="button action color small semi" onclick="Chat.scrollTotally()">
-        <i class="material-icons">expand_more</i>
+        <i class="material-symbols">expand_more</i>
     </a>
     <ul class="list fill">
         <div id="reply"></div>
@@ -29,28 +29,28 @@
             <span class="primary icon gray primary_action"
                   title="{$c->__('sticker.title')}"
                   onclick="Stickers_ajaxShow('{$jid}')">
-                <i class="material-icons flip-vert">note</i>
+                <i class="material-symbols flip-vert">note_stack</i>
             </span>
             {if="$c->getUser()->hasUpload()"}
                 <span class="emojis control icon gray primary_action"
                         title="{$c->__('chat.dictaphone')}"
                         onclick="Dictaphone.toggle()">
-                    <i class="material-icons">mic</i>
+                    <i class="material-symbols">mic</i>
                 </span>
             {/if}
             <span class="emojis control icon gray primary_action on_desktop"
                     title="{$c->__('sticker.title')}"
                     onclick="Stickers_ajaxReaction(null, '{$jid}')">
-                <i class="material-icons">emoji_emotions</i>
+                <i class="material-symbols">emoji_emotions</i>
             </span>
             {if="$c->getUser()->hasUpload()"}
                 <span class="attach control icon" onclick="Chat.toggleAttach()">
-                    <i class="material-icons">add_circle</i>
+                    <i class="material-symbols">add_circle</i>
                 </span>
                 <ul class="list middle actions">
                     <li onclick="Chat.toggleAttach(); Snap.init()">
                         <span class="control active icon bubble color blue">
-                            <i class="material-icons">camera_alt</i>
+                            <i class="material-symbols">camera_alt</i>
                         </span>
                         <div>
                             <p class="normal line">Snap</p>
@@ -58,7 +58,7 @@
                     </li>
                     <li onclick="Chat.toggleAttach(); Draw.init()">
                         <span class="control active icon middle bubble color green">
-                            <i class="material-icons">gesture</i>
+                            <i class="material-symbols">gesture</i>
                         </span>
                         <div>
                             <p class="normal line">{$c->__('draw.title')}</p>
@@ -66,7 +66,7 @@
                     </li>
                     <li onclick="Chat.toggleAttach(); Upload_ajaxRequest()">
                         <span class="control active icon bubble color purple">
-                            <i class="material-icons">attach_file</i>
+                            <i class="material-symbols">attach_file</i>
                         </span>
                         <div>
                             <p class="normal line">{$c->__('upload.title')}</p>
@@ -77,7 +77,7 @@
             <span title="{$c->__('button.submit')}"
                 class="send control icon gray"
                   onclick="Chat.sendMessage()">
-                <i class="material-icons">send</i>
+                <i class="material-symbols">send</i>
             </span>
             <form>
                 <div>
@@ -102,15 +102,15 @@
                     ></textarea>
                     <span class="control icon encrypted" title="{$c->__('omemo.encrypted')}"
                         onclick="ChatOmemo.disableContactState('{$jid}')">
-                        <i class="material-icons">lock</i>
+                        <i class="material-symbols">lock</i>
                     </span>
                     <span class="control icon encrypted_disabled" title="{$c->__('omemo.encrypted_disabled')}"
                         onclick="ChatOmemo.enableContactState('{$jid}', {if="$muc"}true{else}false{/if})">
-                        <i class="material-icons">no_encryption</i>
+                        <i class="material-symbols">no_encryption</i>
                     </span>
                     <span class="control icon encrypted_loading" title="{$c->__('omemo.encrypted_loading')}"
                         onclick="ChatOmemo.disableContactState('{$jid}');">
-                        <i class="material-icons">lock_clock</i>
+                        <i class="material-symbols">lock_clock</i>
                     </span>
                 </div>
             </form>

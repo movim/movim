@@ -2,7 +2,7 @@
     <ul class="list fill thick">
         <li>
             <span class="primary icon gray">
-                <i class="material-icons">info</i>
+                <i class="material-symbols">info</i>
             </span>
             <div>
                 <p class="line normal">{$c->__('blocked.info')}</p>
@@ -12,7 +12,7 @@
     </ul>
     <ul class="list fill thin" id="blocked_widget_list"></ul>
     <div class="placeholder">
-        <i class="material-icons">block</i>
+        <i class="material-symbols">block</i>
         <h4>{$c->__('blocked.placeholder')}</h4>
     </div>
 </div>

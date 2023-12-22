@@ -4,7 +4,7 @@
     <ul class="list thick">
         <li>
             <span class="primary icon gray">
-                <i class="material-icons">notifications_active</i>
+                <i class="material-symbols">notifications_active</i>
             </span>
             <div>
                 <p>{$c->__('notification.request_info')}</p>

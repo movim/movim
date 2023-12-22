@@ -4,7 +4,7 @@
         <ul class="list middle">
             <li>
                 <span class="primary icon gray active" onclick="history.back();">
-                    <i class="material-icons">arrow_back</i>
+                    <i class="material-symbols">arrow_back</i>
                 </span>
 
                 {if="$post->isMine() || ($post->userAffiliation && $post->userAffiliation->affiliation == 'owner')"}
@@ -12,13 +12,13 @@
                         <span class="control icon active gray"
                               onclick="MovimUtils.reload('{$c->route('publish', [$post->server, $post->node, $post->nodeid])}')"
                               title="{$c->__('button.edit')}">
-                            <i class="material-icons">edit</i>
+                            <i class="material-symbols">edit</i>
                         </span>
                     {/if}
                     <span class="control icon active gray"
                           onclick="PostActions_ajaxDelete('{$post->server}', '{$post->node}', '{$post->nodeid}')"
                           title="{$c->__('button.delete')}">
-                        <i class="material-icons">delete</i>
+                        <i class="material-symbols">delete</i>
                     </span>
                 {/if}
 
@@ -52,7 +52,7 @@
                 {else}
                     <span class="icon primary bubble color {$post->aid|stringToColor}">
                         <a href="#" onclick="Post_ajaxGetContact('{$post->aid}')">
-                            <i class="material-icons">person</i>
+                            <i class="material-symbols">person</i>
                         </a>
                     </span>
                 {/if}
@@ -84,7 +84,7 @@
                         onclick="MovimUtils.reload('{$c->route('post', [$post->server, $post->node, $post->nodeid])}')"
                     {/if}
                     >
-                        <i class="material-icons">chevron_right</i>
+                        <i class="material-symbols">chevron_right</i>
                     </a>
                 </span>
             {/if}
@@ -127,7 +127,7 @@
                     {/if}
                     {$post->published|strtotime|prepareDate}
                     {if="$post->published != $post->updated"}
-                        <i class="material-icons" title="{$post->updated|strtotime|prepareDate}">
+                        <i class="material-symbols" title="{$post->updated|strtotime|prepareDate}">
                             edit
                         </i>
                     {/if}
@@ -136,7 +136,7 @@
                     {/if}
                     {$count = $post->user_views_count}
                     {if="$count > 2"}
-                         · {$count} <i class="material-icons">visibility</i>
+                         · {$count} <i class="material-symbols">visibility</i>
                     {/if}
                 </p>
                 {if="$post->isBrief()"}
@@ -156,10 +156,10 @@
         <ul class="list active middle">
             <li>
                 <span class="primary icon bubble" style="background-image: url('{$post->contact->getPicture('m')}');">
-                    <i class="material-icons">loop</i>
+                    <i class="material-symbols">loop</i>
                 </span>
                 <span class="control icon">
-                    <i class="material-icons">chevron_right</i>
+                    <i class="material-symbols">chevron_right</i>
                 </span>
 
                 <div>
@@ -211,7 +211,7 @@
                     <p class="normal">
                         {loop="$post->tags()->get()"}
                             <a class="chip outline active" href="#" onclick="MovimUtils.reload('{$c->route('tag', $value->name)}')">
-                                <i class="material-icons icon gray">tag</i>{$value->name}
+                                <i class="material-symbols icon gray">tag</i>{$value->name}
                             </a>
                         {/loop}
                     </p>
@@ -224,10 +224,10 @@
         <ul class="list middle flex active">
             <li class="block large" onclick="MovimUtils.openInNew('{$post->openlink->href}')">
                 <span class="primary icon gray">
-                    <i class="material-icons">wifi_tethering</i>
+                    <i class="material-symbols">wifi_tethering</i>
                 </span>
                 <span class="control icon gray">
-                    <i class="material-icons">open_in_new</i>
+                    <i class="material-symbols">open_in_new</i>
                 </span>
                 <div>
                     <p class="line normal">
@@ -252,7 +252,7 @@
                         {$c->__('general.pictures')}
                         <span class="second">
                             {$post->pictures()->count()}
-                            <i class="material-icons">image</i>
+                            <i class="material-symbols">image</i>
                         </span>
                     </p>
                 </div>
@@ -271,7 +271,7 @@
                     {/if}
                     onclick="Preview_ajaxHttpShow('{$value->href}')"
                 >
-                    <i class="material-icons">visibility</i>
+                    <i class="material-symbols">visibility</i>
                 </li>
             {/loop}
         </ul>

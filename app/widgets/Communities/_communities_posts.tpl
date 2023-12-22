@@ -2,7 +2,7 @@
     {if="$type == 'all' && ($page == 1 || $posts->count() < $limit)"}
         <li class="block" onclick="MovimUtils.reload('{$c->route('explore', 'servers')}')">
             <span class="primary icon bubble color">
-                <i class="material-icons">view_agenda</i>
+                <i class="material-symbols">view_agenda</i>
             </span>
             <div>
                 <p>{$c->__('communities.servers')}</p>
@@ -13,7 +13,7 @@
 
     {if="$posts->count() == 0"}
         <div class="placeholder">
-            <i class="material-icons">article</i>
+            <i class="material-symbols">article</i>
             <h4>{$c->__('chat.new_title')}</h4>
         </div>
     {else}
@@ -29,7 +29,7 @@
     <ul class="list thick" onclick="Communities.morePosts(this, {$page}, '{$type}')">
         <li class="active">
             <span class="primary icon gray">
-                <i class="material-icons">expand_more</i>
+                <i class="material-symbols">expand_more</i>
             </span>
             <div>
                 <p class="line normal center">

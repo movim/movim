@@ -1,7 +1,7 @@
 <div class="tabelem" title="{$c->__('page.about')}" id="about">
     <ul class="list thick divided">
         <li>
-            <span class="primary icon bubble color green"><i class="material-icons">info</i></span>
+            <span class="primary icon bubble color green"><i class="material-symbols">info</i></span>
             <div>
                 <p>Movim {$version} - {$c->__('page.about')}</p>
                 <p class="all">{$c->__('about.info')} <a href="http://www.gnu.org/licenses/agpl-3.0.html">GNU Affero General Public License v3</a>.</p>
@@ -13,7 +13,7 @@
             </div>
         </li>
         <li>
-            <span class="primary icon bubble color red"><i class="material-icons">code</i></span>
+            <span class="primary icon bubble color red"><i class="material-symbols">code</i></span>
             <div>
                 <p>{$c->__('about.developers')}</p>
                 <p class="all">
@@ -26,7 +26,7 @@
             </div>
         </li>
         <li>
-            <span class="primary icon bubble color purple"><i class="material-icons">flag</i></span>
+            <span class="primary icon bubble color purple"><i class="material-symbols">flag</i></span>
             <div>
                 <p>{$c->__('about.translators')}</p>
                 <p>
@@ -40,7 +40,7 @@
             </div>
         </li>
         <li>
-            <span class="primary icon bubble color orange"><i class="material-icons">archive</i></span>
+            <span class="primary icon bubble color orange"><i class="material-symbols">archive</i></span>
             <div>
                 <p>{$c->__('about.software')}</p>
                 <p class="all">
@@ -53,12 +53,12 @@
             </div>
         </li>
         <li>
-            <span class="primary icon bubble color brown"><i class="material-icons">mood</i></span>
+            <span class="primary icon bubble color brown"><i class="material-symbols">mood</i></span>
             <div>
                 <p>{$c->__('about.resources')}</p>
                 <p class="all">
                     Search Jabber Network <a href="https://search.jabber.network/about">by Jonas Schäfer</a> under AGPLv3<br/>
-                    Material Icons <a href="https://material.io/tools/icons/">by Google</a> under Apache License 2.0<br/>
+                    Material Symbols <a href="https://material.io/tools/icons/">by Google</a> under Apache License 2.0<br/>
                     Twemoji <a href="http://twitter.github.io/twemoji/">by Twitter</a> under MIT and CC-BY<br/>
                     GIF provided <a href="https://tenor.com/">by Tenor</a><br/>
                 </p>

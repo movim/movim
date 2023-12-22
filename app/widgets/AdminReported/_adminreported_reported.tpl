@@ -3,7 +3,7 @@
         <ul class="list fill thick">
             <li>
                 <span class="primary icon gray">
-                    <i class="material-icons">info</i>
+                    <i class="material-symbols">info</i>
                 </span>
                 <div>
                     <p class="line normal">{$c->__('adminreported.info')}</p>
@@ -15,7 +15,7 @@
             {loop="$reported"}
                 <li id="reported-{$value->id|cleanupId}">
                     <span class="primary icon gray">
-                        <i class="material-icons">person</i>
+                        <i class="material-symbols">person</i>
                     </span>
                     <span class="control">
                         <div class="checkbox">

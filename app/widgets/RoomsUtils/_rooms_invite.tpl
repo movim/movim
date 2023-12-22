@@ -23,7 +23,7 @@
             <ul class="list fill">
                 <li>
                     <span class="control icon gray active" onclick="Preview.copyToClipboard('{$c->route('login', $invite->code)}')">
-                        <i class="material-icons">content_copy</i>
+                        <i class="material-symbols">content_copy</i>
                     </span>
                     <div>
                         <input readonly value="{$c->route('login', $invite->code)}">

@@ -8,7 +8,7 @@
 >
     {if="$community->subscription == 'subscribed'"}
         <span class="control icon gray">
-            <i class="material-icons">bookmark</i>
+            <i class="material-symbols">bookmark</i>
         </span>
     {/if}
 
@@ -29,17 +29,17 @@
         <p class="line">
             <a href="#">{$community->node}</a>
             {if="$community->isGallery()"}
-                <i class="material-icons">grid_view</i>
+                <i class="material-symbols">grid_view</i>
                 ·
             {/if}
             {if="$community->occupants > 0"}
                 <span title="{$c->__('communitydata.sub', $community->occupants)}">
-                    {$community->occupants} <i class="material-icons">people</i>
+                    {$community->occupants} <i class="material-symbols">people</i>
                 </span>
             {/if}
             {if="$community->published"}
                 <span class="info">
-                    <i class="material-icons">update</i>
+                    <i class="material-symbols">update</i>
                     {$community->published|strtotime|prepareDate:true}
                 </span>
             {/if}

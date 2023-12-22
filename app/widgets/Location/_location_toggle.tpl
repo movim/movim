@@ -1,12 +1,12 @@
 <section id="location_toggle">
     {if="$contact && $contact->hasLocation()"}
         <div class="placeholder">
-            <i class="material-icons">where_to_vote</i>
+            <i class="material-symbols">where_to_vote</i>
         </div>
         <ul class="list">
             <li>
                 <span class="control icon active divided" onclick="Location_ajaxClear()">
-                    <i class="material-icons">location_off</i>
+                    <i class="material-symbols">location_off</i>
                 </span>
                 <div>
                     <p class="line">{$c->__('location.enabled_title')}</p>
@@ -26,12 +26,12 @@
         </ul>
     {else}
         <div class="placeholder">
-            <i class="material-icons">location_off</i>
+            <i class="material-symbols">location_off</i>
         </div>
         <ul class="list">
             <li>
                 <span class="control icon active divided" onclick="Location.init(); this.classList.add('disabled');">
-                    <i class="material-icons">location_on</i>
+                    <i class="material-symbols">location_on</i>
                 </span>
                 <div>
                     <p class="normal all">{$c->__('location.disabled_title')}</p>

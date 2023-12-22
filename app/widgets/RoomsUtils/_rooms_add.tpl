@@ -53,7 +53,7 @@
                 <ul class="list middle fill">
                     <li>
                         <span class="primary icon gray">
-                            <i class="material-icons">people_alt</i>
+                            <i class="material-symbols">people_alt</i>
                         </span>
                         <span class="control">
                             <div class="radio">
@@ -70,7 +70,7 @@
                     </li>
                     <li>
                         <span class="primary icon gray">
-                            <i class="material-icons">wifi_tethering</i>
+                            <i class="material-symbols">wifi_tethering</i>
                         </span>
                         <span class="control">
                             <div class="radio">
@@ -171,7 +171,7 @@
             <ul class="list middle fill">
                 <li class="wide">
                     <span class="primary icon gray">
-                        <i class="material-icons">login</i>
+                        <i class="material-symbols">login</i>
                     </span>
                     <span class="control">
                         <div class="checkbox">
@@ -196,7 +196,7 @@
             <ul class="list middle fill">
                 <li class="wide">
                     <span class="primary icon gray">
-                        <i class="material-icons">push_pin</i>
+                        <i class="material-symbols">push_pin</i>
                     </span>
                     <span class="control">
                         <div class="checkbox">

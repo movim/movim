@@ -1,1 +1,1 @@
-<i class="material-icons">edit</i> {$list}
+<i class="material-symbols">edit</i> {$list}

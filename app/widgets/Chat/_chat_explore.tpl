@@ -6,12 +6,12 @@
             </div>
             {if="$page > 0"}
                 <span class="control icon active gray" onclick="Chat_ajaxHttpGetExplore({$page - 1})">
-                    <i class="material-icons">chevron_left</i>
+                    <i class="material-symbols">chevron_left</i>
                 </span>
             {/if}
             {if="$users->count() > $pagination"}
                 <span class="control icon active gray" onclick="Chat_ajaxHttpGetExplore({$page + 1})">
-                    <i class="material-icons">chevron_right</i>
+                    <i class="material-symbols">chevron_right</i>
                 </span>
             {/if}
         </li>
@@ -24,7 +24,7 @@
             <li class="block" title="{$value->jid}"
                 onclick="Chats_ajaxOpen('{$value->jid|echapJS}'); Chat.get('{$value->jid|echapJS}');">
                 <span class="control icon gray">
-                    <i class="material-icons">comment</i>
+                    <i class="material-symbols">comment</i>
                 </span>
                 <span class="primary icon bubble {if="$value->value"}status {$presencestxt[$value->value]}{/if}">
                     <img src="{$value->getPicture('m')}">

@@ -13,7 +13,7 @@
                     <p class="{if="!$community"}line two center{/if} normal">
                         {loop="$tags"}
                             <a class="chip outline active" href="#" onclick="MovimUtils.reload('{$c->route('tag', $value->name)}')">
-                                <i class="material-icons icon gray">tag</i>{$value->name}
+                                <i class="material-symbols icon gray">tag</i>{$value->name}
                             </a>
                         {/loop}
                     </p>

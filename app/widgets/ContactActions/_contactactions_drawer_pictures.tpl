@@ -2,7 +2,7 @@
     {loop="$pictures"}
         <li style="background-image: url('{$value->file['uri']|protectPicture}')"
             onclick="Preview_ajaxHttpShow('{$value->file['uri']}')">
-            <i class="material-icons">visibility</i>
+            <i class="material-symbols">visibility</i>
         </li>
     {/loop}
 </ul>
@@ -12,7 +12,7 @@
         <hr />
         <li class="active">
             <span class="primary icon gray">
-                <i class="material-icons">expand_more</i>
+                <i class="material-symbols">expand_more</i>
             </span>
             <div>
                 <p class="line normal center">

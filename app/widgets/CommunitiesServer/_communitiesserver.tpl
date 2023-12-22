@@ -2,7 +2,7 @@
     <ul class="list middle padded_top_bottom">
         <li>
             <span class="primary icon icon gray active" onclick="history.back()">
-                <i class="material-icons">arrow_back</i>
+                <i class="material-symbols">arrow_back</i>
             </span>
             {if="is_array($nodes) && count($nodes) > 0"}
                 <span class="control icon gray">
@@ -25,7 +25,7 @@
 {if="$nodes->isEmpty()"}
     <ul class="thick">
         <div class="placeholder">
-            <i class="material-icons">group_work</i>
+            <i class="material-symbols">group_work</i>
             <h1>{$c->__('error.oops')}</h1>
             <h4>{$c->__('communitiesserver.empty_server')}</h4>
         </li>
@@ -41,5 +41,5 @@
 {/if}
 <button onclick="CommunitiesServer_ajaxTestAdd('{$server}')" class="button action color"
     title="{$c->__('communitiesserver.add', $server)}">
-    <i class="material-icons">add</i>
+    <i class="material-symbols">add</i>
 </button>

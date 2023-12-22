@@ -122,7 +122,7 @@
                         {$contact = $value->contact}
                         <li class="block" onclick="MovimUtils.redirect('{$c->route('blog', $value->resolvedNickname)}')">
                             <span class="control gray icon">
-                                <i class="material-icons">chevron_right</i>
+                                <i class="material-symbols">chevron_right</i>
                             </span>
                             {if="$contact"}
                                 <span class="primary icon bubble small">
@@ -130,7 +130,7 @@
                                 </span>
                             {else}
                                 <span class="primary icon bubble small color {$value->id|stringToColor}">
-                                    <i class="material-icons">person</i>
+                                    <i class="material-symbols">person</i>
                                 </span>
                             {/if}
                             <div>
@@ -180,8 +180,8 @@
             <ul class="list middle hide" id="pwa">
                 <li class="block active">
                     <span class="primary icon bubble gray">
-                        <i class="material-icons on_desktop">install_desktop</i>
-                        <i class="material-icons on_mobile">install_mobile</i>
+                        <i class="material-symbols on_desktop">install_desktop</i>
+                        <i class="material-symbols on_mobile">install_mobile</i>
                     </span>
                     <div>
                         <p class="line">{$c->__('apps.install')}<p>

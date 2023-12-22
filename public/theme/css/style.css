@@ -498,7 +498,7 @@ img.avatar:not([src=""])+.placeholder {
     }
 
 
-    .on_mobile.material-icons {
+    .on_mobile.material-symbols {
         display: inline !important;
     }
 

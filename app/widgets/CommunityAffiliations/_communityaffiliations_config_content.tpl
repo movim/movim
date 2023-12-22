@@ -74,7 +74,7 @@
                 <p>
                     <a href="#" onclick="CommunityAffiliations.update('addaffiliation')"
                        class="button green color oppose">
-                        <i class="material-icons">add</i>
+                        <i class="material-symbols">add</i>
                         {$c->__('button.add')}
                     </a>
                 </p>

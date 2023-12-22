@@ -374,6 +374,7 @@ ul.tabs.narrow>li>* {
 
 ul.tabs>li.active {
     opacity: 1;
+    font-variation-settings: 'FILL' 1;
     border-bottom-width: 2px;
     border-bottom-style: solid;
 }

@@ -1194,7 +1194,7 @@ var Chat = {
                     icon.innerHTML = '';
 
                     var i = document.createElement('i');
-                    i.className = 'material-icons';
+                    i.className = 'material-symbols';
                     i.innerText = 'notes';
 
                     icon.appendChild(i);
@@ -1383,7 +1383,7 @@ var Chat = {
         playPauseButton.classList.add('button', 'flat', 'gray');
         playPauseButton.classList.add('play_pause');
         var i = document.createElement('i');
-        i.className = 'material-icons';
+        i.className = 'material-symbols';
         i.innerText = 'play_arrow';
         playPauseButton.appendChild(i);
 
@@ -1408,7 +1408,7 @@ var Chat = {
         downloadButton.href = file.uri;
         downloadButton.target = '_blank';
         var i = document.createElement('i');
-        i.className = 'material-icons';
+        i.className = 'material-symbols';
         i.innerText = 'file_download';
         downloadButton.appendChild(i);
 

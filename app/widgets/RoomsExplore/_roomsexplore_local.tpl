@@ -17,12 +17,12 @@
             {/if}
             {if="$bookmarks->has($value->server)"}
                 <span class="control icon gray">
-                    <i class="material-icons">bookmark</i>
+                    <i class="material-symbols">bookmark</i>
                 </span>
             {else}
                 <span class="control icon gray active divided"
                     onclick="Drawer.clear(); RoomsUtils_ajaxAdd('{$value->server}', '{$value->name}')">
-                    <i class="material-icons">add</i>
+                    <i class="material-symbols">add</i>
                 </span>
             {/if}
             <div>
@@ -35,7 +35,7 @@
                 <p class="line" title="{$value->description ?? ''}">
                     {if="$value->occupants > 0"}
                         <span title="{$c->__('communitydata.sub', $value->occupants)}">
-                            {$value->occupants} <i class="material-icons">people</i>
+                            {$value->occupants} <i class="material-symbols">people</i>
                         </span>
                     {/if}
                     {if="$value->occupants > 0 && !empty($value->description)"} · {/if}
@@ -46,7 +46,7 @@
     {/loop}
 {else}
     <div class="placeholder">
-        <i class="material-icons">explore</i>
+        <i class="material-symbols">explore</i>
         <h1>{$c->__('roomsexplore.no_local')}</h1>
     </div>
 {/if}

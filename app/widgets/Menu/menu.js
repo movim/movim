@@ -18,7 +18,7 @@ var Menu = {
     },
 
     setLoad: function(tab) {
-        tab.innerHTML = '<i class="material-icons spin">autorenew</i>';
+        tab.innerHTML = '<i class="material-symbols spin">autorenew</i>';
     }
 };
 

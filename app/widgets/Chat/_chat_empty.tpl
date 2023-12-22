@@ -1,5 +1,5 @@
 <div class="placeholder">
-    <i class="material-icons">forum</i>
+    <i class="material-symbols">forum</i>
 </div>
 
 <ul class="list flex fifth card shadow compact middle active">
@@ -26,7 +26,7 @@
 
                         {if="$value->presence && $value->presence->capability"}
                             <span class="second" title="{$value->presence->capability->name}">
-                                <i class="material-icons">{$value->presence->capability->getDeviceIcon()}</i>
+                                <i class="material-symbols">{$value->presence->capability->getDeviceIcon()}</i>
                             </span>
                         {/if}
                     </p>

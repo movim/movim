@@ -61,7 +61,7 @@ body.dropped:after {
     z-index: 3;
 
     box-sizing: border-box;
-    font-family: 'Material Icons';
+    font-family: 'Material Symbols';
     content: "\e2c6";
     font-size: 10rem;
     text-align: center;

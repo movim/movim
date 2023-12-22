@@ -142,7 +142,7 @@
 .previewable:after,
 .previewable[data-type="image/gif"]:before {
     color: white;
-    font-family: 'Material Icons';
+    font-family: 'Material Symbols';
     content: "\e8ff";
     text-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
     position: absolute;

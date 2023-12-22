@@ -16,10 +16,10 @@
         <ul class="list middle">
             <li>
                 <span class="primary icon bubble gray">
-                    <i class="material-icons">share</i>
+                    <i class="material-symbols">share</i>
                 </span>
                 <span class="control icon active gray divided" onclick="SendTo_ajaxOsShare({$post->id})">
-                    <i class="material-icons">ios_share</i>
+                    <i class="material-symbols">ios_share</i>
                 </span>
                 <div>
                     <p class="line normal">{$c->__('sendto.os_share')}</p>
@@ -41,7 +41,7 @@
                 </span>
                 <span class="control icon active gray divided"
                     onclick="MovimUtils.reload('{$c->route('publish', [$c->getUser()->id, 'urn:xmpp:microblog:0', '', $post->server, $post->node, $post->nodeid])}'); Drawer.clear()">
-                    <i class="material-icons">post_add</i>
+                    <i class="material-symbols">post_add</i>
                 </span>
                 <div>
                     <p class="normal line">{$me->truename}</p>
@@ -71,7 +71,7 @@
                     </span>
                 {/if}
                 <span class="control icon active gray divided" onclick="MovimUtils.reload('{$c->route('publish', [$value->server, $value->node, '', $post->server, $post->node, $post->nodeid])}'); Drawer.clear()">
-                    <i class="material-icons">post_add</i>
+                    <i class="material-symbols">post_add</i>
                 </span>
                 <div>
                     <p class="line normal">

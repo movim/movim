@@ -9,7 +9,7 @@
             {loop="$fingerprints"}
                 <li>
                     <span class="primary icon gray" id="sessionicon_{$value->jid}_{$value->bundleid}">
-                        <i class="material-icons">fingerprint</i>
+                        <i class="material-symbols">fingerprint</i>
                     </span>
                     <span class="control">
                         <div class="checkbox">
@@ -31,7 +31,7 @@
                         <p class="line">
                            {if="$value->capability"}
                                 {$value->capability->name}&nbsp;
-                                <i class="material-icons">{$value->capability->getDeviceIcon()}</i>
+                                <i class="material-symbols">{$value->capability->getDeviceIcon()}</i>
                             {/if}
                             {if="$value->capability && isset($value->latest)"}
                             &nbsp;-&nbsp;

@@ -7,7 +7,7 @@
     <ul class="list middle">
         <li id="draw-clear">
             <span class="primary active icon bubble color gray">
-                <i class="material-icons">delete</i>
+                <i class="material-symbols">delete</i>
             </span>
         </li>
     </ul>
@@ -15,17 +15,17 @@
     <ul class="list draw-widths">
         <li data-width="small">
             <span class="primary active icon bubble color bgray">
-                <i class="material-icons">brush</i>
+                <i class="material-symbols">brush</i>
             </span>
         </li>
         <li data-width="medium">
             <span class="primary active icon bubble color bgray">
-                <i class="material-icons">brush</i>
+                <i class="material-symbols">brush</i>
             </span>
         </li>
         <li data-width="big">
             <span class="primary active icon bubble color bgray">
-                <i class="material-icons">brush</i>
+                <i class="material-symbols">brush</i>
             </span>
         </li>
     </ul>
@@ -58,7 +58,7 @@
     <ul class="list">
         <li class="draw-eraser">
             <span class="primary active icon bubble color bgray">
-                <i class="material-icons">crop_landscape</i>
+                <i class="material-symbols">crop_landscape</i>
             </span>
         </li>
     </ul>
@@ -66,10 +66,10 @@
 <ul class="list controls middle draw-top-nav">
     <li>
         <span id="drawback" class="primary bubble icon color active">
-            <i class="material-icons">arrow_back</i>
+            <i class="material-symbols">arrow_back</i>
         </span>
         <span class="control active icon bubble color blue" id="draw-save">
-            <i class="material-icons">publish</i>
+            <i class="material-symbols">publish</i>
         </span>
     </li>
 </ul>

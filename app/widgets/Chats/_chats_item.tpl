@@ -31,9 +31,9 @@
                 <span class="info" title="{$message->published|strtotime|prepareDate}">
                     {if="$message->jidfrom == $message->user_id"}
                         {if="$message->displayed"}
-                            <span class="material-icons">done_all</span>
+                            <span class="material-symbols">done_all</span>
                         {elseif="$message->delivered"}
-                            <span class="material-icons">check</span>
+                            <span class="material-symbols">check</span>
                         {/if}
                         &nbsp;
                     {/if}
@@ -53,7 +53,7 @@
 
             {if="$roster && $roster->presence && $roster->presence->capability"}
                 <span class="second" title="{$roster->presence->capability->name}">
-                    <i class="material-icons">{$roster->presence->capability->getDeviceIcon()}</i>
+                    <i class="material-symbols">{$roster->presence->capability->getDeviceIcon()}</i>
                 </span>
             {/if}
         </p>
@@ -61,34 +61,34 @@
             <p class="line">{$status}</p>
         {elseif="isset($message)"}
             {if="$message->retracted"}
-                <p><i class="material-icons">delete</i> {$c->__('message.retracted')}</p>
+                <p><i class="material-symbols">delete</i> {$c->__('message.retracted')}</p>
             {elseif="$message->encrypted"}
-                <p><i class="material-icons">lock</i> {$c->__('message.encrypted')}</p>
+                <p><i class="material-symbols">lock</i> {$c->__('message.encrypted')}</p>
             {elseif="$message->type == 'invitation'"}
-                <p><i class="material-icons icon gray">outgoing_mail</i> {$c->__('message.invitation')}</p>
+                <p><i class="material-symbols icon gray">outgoing_mail</i> {$c->__('message.invitation')}</p>
             {elseif="$message->type == 'jingle_incoming'"}
-                <p><i class="material-icons icon green">call</i> {$c->__('chat.jingle_incoming')}</p>
+                <p><i class="material-symbols icon green">call</i> {$c->__('chat.jingle_incoming')}</p>
             {elseif="$message->type == 'jingle_retract'"}
-                <p><i class="material-icons icon gray">phone_missed</i> {$c->__('chat.jingle_retract')}</p>
+                <p><i class="material-symbols icon gray">phone_missed</i> {$c->__('chat.jingle_retract')}</p>
             {elseif="$message->type == 'jingle_reject'"}
-                <p><i class="material-icons icon orange">phone_missed</i> {$c->__('chat.jingle_reject')}</p>
+                <p><i class="material-symbols icon orange">phone_missed</i> {$c->__('chat.jingle_reject')}</p>
             {elseif="$message->type == 'jingle_outgoing'"}
-                <p><i class="material-icons icon blue">call</i> {$c->__('chat.jingle_outgoing')}</p>
+                <p><i class="material-symbols icon blue">call</i> {$c->__('chat.jingle_outgoing')}</p>
             {elseif="$message->type == 'jingle_end'"}
-                <p><i class="material-icons icon red">call_end</i> {$c->__('chat.jingle_end')}</p>
+                <p><i class="material-symbols icon red">call_end</i> {$c->__('chat.jingle_end')}</p>
             {elseif="$message->file"}
                 <p>
                     {if="$message->jidfrom == $message->user_id"}
                         <span class="moderator">{$c->__('chats.me')}:</span>
                     {/if}
                     {if="typeIsPicture($message->file['type'])"}
-                        <i class="material-icons">image</i> {$c->__('chats.picture')}
+                        <i class="material-symbols">image</i> {$c->__('chats.picture')}
                     {elseif="typeIsAudio($message->file['type'])"}
-                        <i class="material-icons">equalizer</i> {$c->__('chats.audio')}
+                        <i class="material-symbols">equalizer</i> {$c->__('chats.audio')}
                     {elseif="typeIsVideo($message->file['type'])"}
-                        <i class="material-icons">local_movies</i> {$c->__('chats.video')}
+                        <i class="material-symbols">local_movies</i> {$c->__('chats.video')}
                     {else}
-                        <i class="material-icons">insert_drive_file</i> {$c->__('avatar.file')}
+                        <i class="material-symbols">insert_drive_file</i> {$c->__('avatar.file')}
                     {/if}
                 </p>
             {elseif="stripTags($message->body) != ''"}

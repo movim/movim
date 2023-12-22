@@ -1,7 +1,7 @@
 {if="$subscriptions->isEmpty()"}
     <ul class="thick fill">
         <div class="placeholder">
-            <i class="material-icons">bookmark</i>
+            <i class="material-symbols">bookmark</i>
             <h1>{$c->__('communitysubscriptions.empty_title')}</h1>
             <h4>{$c->__('communitysubscriptions.empty_text1')} {$c->__('communitysubscriptions.empty_text2')}</h4>
         </li>
@@ -13,10 +13,10 @@
                 <li class="subheader block large active"
                     onclick="MovimUtils.reload('{$c->route('community', $value->server)}')">
                     <span class="primary icon">
-                        <i class="material-icons">view_agenda</i>
+                        <i class="material-symbols">view_agenda</i>
                     </span>
                     <span class="control icon gray">
-                        <i class="material-icons">chevron_right</i>
+                        <i class="material-symbols">chevron_right</i>
                     </span>
                     <div>
                         <p>{$value->server}</p>

@@ -6,7 +6,7 @@
                 <li class="subheader large block"><div><p>{$c->__('notificationconfig.audio_title')}</p></div></li>
                 <li>
                     <span class="primary icon gray">
-                        <i class="material-icons">call</i>
+                        <i class="material-symbols">call</i>
                     </span>
                     <span class="control">
                         <div class="checkbox">
@@ -24,7 +24,7 @@
                 </li>
                 <li>
                     <span class="primary icon gray">
-                        <i class="material-icons">forum</i>
+                        <i class="material-symbols">forum</i>
                     </span>
                     <span class="control">
                         <div class="checkbox">

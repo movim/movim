@@ -30,13 +30,13 @@
                 {/if}
 
                 {if="$roster && $roster->presence && $roster->presence->seen"}
-                    <i class="material-icons icon-text">schedule</i>
+                    <i class="material-symbols icon-text">schedule</i>
                     {$c->__('last.title')} {$roster->presence->seen|strtotime|prepareDate:true,true}
                     <br />
                 {/if}
 
                 {if="$contact->adrlocality != null || $contact->adrcountry != null"}
-                    <i class="material-icons icon-text">place</i>
+                    <i class="material-symbols icon-text">place</i>
                     {if="$contact->adrlocality != null"}
                         {$contact->adrlocality}
                     {/if}
@@ -47,19 +47,19 @@
                 {/if}
 
                 {if="$contact->email"}
-                    <i class="material-icons icon-text">email</i>
+                    <i class="material-symbols icon-text">email</i>
                     <a href="mailto:{$contact->email}" rel="me">{$contact->email}</a>
                     <br />
                 {/if}
 
                 {if="$contact->phone"}
-                    <i class="material-icons icon-text">phone</i>
+                    <i class="material-symbols icon-text">phone</i>
                     <a href="tel:{$contact->phone}" rel="me">{$contact->phone}</a>
                     <br />
                 {/if}
 
                 {if="$contact->url != null"}
-                    <i class="material-icons icon-text">link</i>
+                    <i class="material-symbols icon-text">link</i>
                     {if="parse_url($contact->url, PHP_URL_SCHEME) == 'xmpp'"}
 
                         <a href="{$contact->url}" onclick="MovimUtils.reload('{$c->route('contact', substr($contact->url, 5))}'); return false" rel="me">{$contact->url}</a>
@@ -72,11 +72,11 @@
                 {/if}
 
                 {if="$contact->locationDistance != null && $contact->locationUrl != null"}
-                    <i class="material-icons icon-text">place</i>
+                    <i class="material-symbols icon-text">place</i>
                     <a href="{$contact->locationUrl}" target="_blank">{$contact->locationDistance|humanDistance}</a> - {$contact->loctimestamp|strtotime|prepareDate:true,true}
                     <br />
                 {elseif="$contact->hasLocation() && $contact->locationUrl != null"}
-                    <i class="material-icons icon-text">place</i>
+                    <i class="material-symbols icon-text">place</i>
                     <a href="{$contact->locationUrl}" target="_blank">{$c->__('location.last_published')}</a> - {$contact->loctimestamp|strtotime|prepareDate:true,true}
                     <br />
                 {/if}

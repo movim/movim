@@ -12,10 +12,10 @@
             <img src="{$value->getPicture()}">
         </span>
         <span class="control icon green active" title="{$c->__('button.accept')}" onclick="Notifications_ajaxAccept('{$value->jid|echapJS}');">
-            <i class="material-icons">check</i>
+            <i class="material-symbols">check</i>
         </span>
         <span class="control icon red active" title="{$c->__('button.refuse')}" onclick="Notifications_ajaxRefuse('{$value->jid|echapJS}');">
-            <i class="material-icons">close</i>
+            <i class="material-symbols">close</i>
         </span>
         <div>
             <p class="line normal">
@@ -27,7 +27,7 @@
     {/if}
 
     <div class="placeholder">
-        <i class="material-icons">person_add</i>
+        <i class="material-symbols">person_add</i>
         <h4>{$c->__('invitations.no_new')}</h4>
     </div>
 
@@ -65,11 +65,11 @@
                     {/if}
                     {if="$value->isLike()"}
                         <span class="control icon red">
-                            <i class="material-icons">favorite</i>
+                            <i class="material-symbols">favorite</i>
                         </span>
                     {else}
                         <span class="control icon gray">
-                            <i class="material-icons">comment</i>
+                            <i class="material-symbols">comment</i>
                         </span>
                     {/if}
 
@@ -97,7 +97,7 @@
 
     {if="$notifs->isEmpty() && empty($invitations)"}
         <div class="placeholder">
-            <i class="material-icons">notifications_none</i>
+            <i class="material-symbols">notifications_none</i>
             <h4>{$c->__('notifs.empty')}</h4>
         </div>
     {/if}

@@ -10,7 +10,7 @@
     <span class="control icon active"
         onclick="Presence_ajaxAskLogout()"
         title="{$c->__('status.disconnect')}">
-        <i class="material-icons">exit_to_app</i>
+        <i class="material-symbols">exit_to_app</i>
     </span>
     <div>
         <p class="line bold normal" onclick="MovimUtils.reload('{$c->route('contact', $me->jid)}')">

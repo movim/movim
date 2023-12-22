@@ -9,9 +9,9 @@
             style="background-image: url({$embed->images[0]['url']|protectPicture})"
             >
             {if="count($embed->images) > 1"}
-                <i class="material-icons">photo_library</i>
+                <i class="material-symbols">photo_library</i>
             {else}
-                <i class="material-icons">image</i>
+                <i class="material-symbols">image</i>
             {/if}
         </span>
     {else}
@@ -19,17 +19,17 @@
             {if="$embed->providerIcon"}
                 <img src="{$embed->providerIcon|protectPicture}"/>
             {else}
-                <i class="material-icons">link</i>
+                <i class="material-symbols">link</i>
             {/if}
         </span>
     {/if}
 
     {if="$withlink"}
         <span class="control icon gray active" onclick="Preview.copyToClipboard('{$embed->url}')">
-            <i class="material-icons">content_copy</i>
+            <i class="material-symbols">content_copy</i>
         </span>
         <span class="control icon gray active" onclick="MovimUtils.openInNew('{$embed->url}')">
-            <i class="material-icons">open_in_new</i>
+            <i class="material-symbols">open_in_new</i>
         </span>
     {/if}
 

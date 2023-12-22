@@ -2,7 +2,7 @@
     <ul class="list active">
         <li onclick="CommunityConfig_ajaxGetAvatar('{$info->server|echapJS}', '{$info->node|echapJS}')">
             <span class="primary icon gray">
-                <i class="material-icons">image</i>
+                <i class="material-symbols">image</i>
             </span>
             <div>
                 <p class="normal">{$c->__('page.avatar')}</p>
@@ -10,7 +10,7 @@
         </li>
         <li onclick="CommunityConfig_ajaxGetConfig('{$info->server|echapJS}', '{$info->node|echapJS}')">
             <span class="primary icon gray">
-                <i class="material-icons">settings</i>
+                <i class="material-symbols">settings</i>
             </span>
             <div>
                 <p class="normal">{$c->__('communityaffiliation.configuration')}</p>
@@ -18,7 +18,7 @@
         </li>
         <li onclick="CommunityAffiliations_ajaxGetSubscriptions('{$info->server|echapJS}', '{$info->node|echapJS}', true)">
             <span class="primary icon gray">
-                <i class="material-icons">contacts</i>
+                <i class="material-symbols">contacts</i>
             </span>
             <div>
                 <p class="normal">{$c->__('communityaffiliation.subscriptions')}</p>
@@ -26,7 +26,7 @@
         </li>
         <li onclick="CommunityAffiliations_ajaxAffiliations('{$info->server|echapJS}', '{$info->node|echapJS}')">
             <span class="primary icon gray">
-                <i class="material-icons">supervisor_account</i>
+                <i class="material-symbols">supervisor_account</i>
             </span>
             <div>
                 <p class="normal">{$c->__('communityaffiliation.roles')}</p>
@@ -34,7 +34,7 @@
         </li>
         <li onclick="CommunityAffiliations_ajaxDelete('{$info->server|echapJS}', '{$info->node|echapJS}')">
             <span class="primary icon gray">
-                <i class="material-icons">delete</i>
+                <i class="material-symbols">delete</i>
             </span>
             <div>
                 <p class="normal">{$c->__('button.delete')}</p>
@@ -107,7 +107,7 @@
     <ul class="list active">
         <li onclick="CommunityAffiliations_ajaxShowFullPublicSubscriptionsList('{$server}', '{$node}')">
             <span class="primary icon gray">
-                <i class="material-icons">unfold_more</i>
+                <i class="material-symbols">unfold_more</i>
             </span>
             <div>
                 <p>{$c->__('button.more')}</p>

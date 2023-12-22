@@ -18,10 +18,10 @@
             <ul class="reactions"></ul>
             <span class="info"></span>
             <span class="reaction" title="{$c->__('message.react')}">
-                <i class="material-icons">add_reaction</i>
+                <i class="material-symbols">add_reaction</i>
             </span>
             <span class="reply">
-                <i class="material-icons">reply</i>
+                <i class="material-symbols">reply</i>
             </span>
         </div>
     </div>

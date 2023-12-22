@@ -319,7 +319,7 @@ var Visio = {
         button = document.querySelector('#main');
 
         button.className = 'button action color red';
-        button.querySelector('i').className = 'material-icons';
+        button.querySelector('i').className = 'material-symbols';
         button.querySelector('i').innerText = 'close';
 
         button.onclick = () => {

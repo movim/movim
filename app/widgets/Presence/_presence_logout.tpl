@@ -1,6 +1,6 @@
 <section>
     <div class="placeholder">
-        <i class="material-icons">exit_to_app</i>
+        <i class="material-symbols">exit_to_app</i>
         <h4>{$c->__('status.logout_confirm')}</h4>
     </div>
 </section>

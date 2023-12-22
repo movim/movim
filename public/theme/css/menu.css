@@ -42,6 +42,10 @@ ul.navigation li:not(.active):hover>span.primary>i {
     opacity: 1;
 }
 
+ul.navigation li.active>span.primary>i {
+    font-variation-settings: 'FILL' 1;
+}
+
 ul.list.active.navigation li:hover:not(.subheader),
 ul.list.active.navigation li.active:not(.subheader) {
     background-color: transparent;

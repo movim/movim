@@ -1,7 +1,7 @@
 {if="$servers->isEmpty()"}
     <ul class="thick">
         <div class="placeholder">
-            <i class="material-icons">storage</i>
+            <i class="material-symbols">storage</i>
             <h1>{$c->__('communitiesservers.empty_title')}</h1>
             <h4>{$c->__('communitiesservers.empty_text')}</h4>
         </li>
@@ -37,7 +37,7 @@
     <ul class="list middle fill padded_top_bottom">
         <li class="block large">
             <span class="primary icon">
-                <i class="material-icons">search</i>
+                <i class="material-symbols">search</i>
             </span>
             <form>
                 <div>

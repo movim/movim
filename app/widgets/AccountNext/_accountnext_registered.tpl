@@ -1,5 +1,5 @@
 <div class="placeholder">
-    <i class="material-icons">account_box</i>
+    <i class="material-symbols">account_box</i>
     <h4>{$c->__('create.successfull')}</h4>
 
     <a class="button color"

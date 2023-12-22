@@ -14,25 +14,25 @@
                 {/if}
                 {if="!$contact->isFromMuc()"}
                     <span class="control icon active" onclick="MovimUtils.reload('{$c->route('contact', $contact->id)}'); Drawer.clear();">
-                        <i class="material-icons">person</i>
+                        <i class="material-symbols">person</i>
                     </span>
                 {/if}
                 {if="!$contact->isMe()"}
                     <span class="control icon active divided" onclick="Search.chat('{$contact->id|echapJS}'); Drawer.clear();">
-                        <i class="material-icons">comment</i>
+                        <i class="material-symbols">comment</i>
                     </span>
                     {if="$roster && $roster->presences->count() > 0"}
                         {loop="$roster->presences"}
                             {if="$value->capability && $value->capability->isJingleAudio()"}
                                 <span title="{$c->__('button.audio_call')}" class="control icon active"
                                     onclick="VisioLink.openVisio('{$value->jid|echapJS}');">
-                                    <i class="material-icons">phone</i>
+                                    <i class="material-symbols">phone</i>
                                 </span>
                             {/if}
                             {if="$value->capability && $value->capability->isJingleVideo()"}
                                 <span title="{$c->__('button.video_call')}" class="control icon active"
                                     onclick="VisioLink.openVisio('{$value->jid|echapJS}', '', true);">
-                                    <i class="material-icons">videocam</i>
+                                    <i class="material-symbols">videocam</i>
                                 </span>
                                 {break}
                             {/if}
@@ -79,13 +79,13 @@
                     {/if}
 
                     {if="$roster && $roster->presence && $roster->presence->seen"}
-                        <i class="material-icons icon-text">schedule</i>
+                        <i class="material-symbols icon-text">schedule</i>
                         {$c->__('last.title')} {$roster->presence->seen|strtotime|prepareDate:true,true}
                         <br />
                     {/if}
 
                     {if="$contact->adrlocality != null || $contact->adrcountry != null"}
-                        <i class="material-icons icon-text">place</i>
+                        <i class="material-symbols icon-text">place</i>
                         {if="$contact->adrlocality != null"}
                             {$contact->adrlocality}
                         {/if}
@@ -96,25 +96,25 @@
                     {/if}
 
                     {if="$contact->date && strtotime($contact->date) != 0"}
-                        <i class="material-icons icon-text">cake</i>
+                        <i class="material-symbols icon-text">cake</i>
                         {$contact->date|strtotime|prepareDate:false}
                         <br />
                     {/if}
 
                     {if="$contact->email"}
-                        <i class="material-icons icon-text">email</i>
+                        <i class="material-symbols icon-text">email</i>
                         <a href="mailto:{$contact->email}">{$contact->email}</a>
                         <br />
                     {/if}
 
                     {if="$contact->phone"}
-                        <i class="material-icons icon-text">phone</i>
+                        <i class="material-symbols icon-text">phone</i>
                         <a href="tel:{$contact->phone}">{$contact->phone}</a>
                         <br />
                     {/if}
 
                     {if="$contact->url != null"}
-                        <i class="material-icons icon-text">link</i>
+                        <i class="material-symbols icon-text">link</i>
                         {if="filter_var($contact->url, FILTER_VALIDATE_URL)"}
                             <a href="{$contact->url}" target="_blank">{$contact->url}</a>
                         {else}
@@ -124,7 +124,7 @@
                     {/if}
 
                     {if="$contact->locationDistance != null"}
-                        <i class="material-icons icon-text">place</i>
+                        <i class="material-symbols icon-text">place</i>
                         <a href="{$contact->locationUrl}" target="_blank">{$contact->locationDistance|humanDistance}</a> - {$contact->loctimestamp|strtotime|prepareDate:true,true}
                         <br />
                     {/if}
@@ -165,7 +165,7 @@
                     {if="$value->capability"}
                         <li class="block">
                             <span class="primary icon gray status {$value->presencekey}">
-                                <i class="material-icons">
+                                <i class="material-symbols">
                                     {$value->capability->getDeviceIcon()}
                                 </i>
                             </span>

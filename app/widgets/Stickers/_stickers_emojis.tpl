@@ -13,7 +13,7 @@
     <ul id="emojisearchbar" class="list fill thin">
         <li>
             <span class="primary icon gray">
-                <i class="material-icons">search</i>
+                <i class="material-symbols">search</i>
             </span>
             <form name="search" onsubmit="return false;">
                 <div>

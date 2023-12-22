@@ -27,20 +27,20 @@
                     {if="$value->capability && $value->capability->isJingleAudio()"}
                         <span title="{$c->__('button.audio_call')}" class="control icon active gray"
                             onclick="VisioLink.openVisio('{$value->jid|echapJS}');">
-                            <i class="material-icons">phone</i>
+                            <i class="material-symbols">phone</i>
                         </span>
                     {/if}
                     {if="$value->capability && $value->capability->isJingleVideo()"}
                         <span title="{$c->__('button.video_call')}" class="control icon active gray"
                             onclick="VisioLink.openVisio('{$value->jid|echapJS}', '', true);">
-                            <i class="material-icons">videocam</i>
+                            <i class="material-symbols">videocam</i>
                         </span>
                         {break}
                     {/if}
                 {/loop}
             {/if}
             <span class="control icon active gray divided" onclick="Search.chat('{$value->jid|echapJS}')">
-                <i class="material-icons">comment</i>
+                <i class="material-symbols">comment</i>
             </span>
             <div>
                 <p class="normal line">
@@ -52,18 +52,18 @@
                     {/if}
                     {if="$value->presence && $value->presence->capability"}
                         <span class="second" title="{$value->presence->capability->name}">
-                            <i class="material-icons">{$value->presence->capability->getDeviceIcon()}</i>
+                            <i class="material-symbols">{$value->presence->capability->getDeviceIcon()}</i>
                         </span>
                     {/if}
 
                     {if="!in_array($value->subscription, ['', 'both'])"}
                         <span class="second">
                             {if="$value->subscription == 'to'"}
-                                <i class="material-icons">arrow_upward</i>
+                                <i class="material-symbols">arrow_upward</i>
                             {elseif="$value->subscription == 'from'"}
-                                <i class="material-icons">arrow_downward</i>
+                                <i class="material-symbols">arrow_downward</i>
                             {else}
-                                <i class="material-icons">block</i>
+                                <i class="material-symbols">block</i>
                             {/if}
                         </span>
                     {/if}
@@ -83,12 +83,12 @@
     {if="$contacts->count() > 7"}
         <li class="showall active" onclick="Search.showCompleteRoster(this)">
             <span class="primary icon gray">
-                <i class="material-icons">expand_more</i>
+                <i class="material-symbols">expand_more</i>
             </span>
             <div>
                 <p class="normal line">
                     {$c->__('search.show_complete_roster')}
-                    <span class="second">{$contacts->count()} <i class="material-icons">people</i></span>
+                    <span class="second">{$contacts->count()} <i class="material-symbols">people</i></span>
                 </p>
             </div>
         </li>
@@ -97,7 +97,7 @@
     <ul class="list thick">
         <li>
             <span class="primary icon blue">
-                <i class="material-icons">help</i>
+                <i class="material-symbols">help</i>
             </span>
             <div>
                 <p>{$c->__('search.no_contacts_title')}</p>

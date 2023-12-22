@@ -17,7 +17,7 @@
             <ul class="list middle">
                 <li>
                     <span id="menu" class="primary icon gray">
-                        <i class="material-icons">help</i>
+                        <i class="material-symbols">help</i>
                     </span>
                     <div>
                         <p><?php echo __('page.help'); ?></p>

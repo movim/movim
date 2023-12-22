@@ -1,1 +1,1 @@
-<i class="material-icons icon gray">phone_missed</i> {$c->__('chat.jingle_retract')}
+<i class="material-symbols icon gray">phone_missed</i> {$c->__('chat.jingle_retract')}

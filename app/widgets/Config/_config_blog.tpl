@@ -3,7 +3,7 @@
         <ul class="list middle labeled fill">
             <li>
                 <span class="primary icon gray">
-                    <i class="material-icons">public</i>
+                    <i class="material-symbols">public</i>
                 </span>
                 <span class="control">
                     <div class="radio">
@@ -20,7 +20,7 @@
             </li>
             <li>
                 <span class="primary icon gray">
-                    <i class="material-icons">admin_panel_settings</i>
+                    <i class="material-symbols">admin_panel_settings</i>
                 </span>
                 <span class="control">
                     <div class="radio">

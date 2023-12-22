@@ -3,10 +3,10 @@
     <ul class="list thick">
         <li>
             <span class="control icon active divided" onclick="Upload.openImage()">
-                <i class="material-icons">image</i>
+                <i class="material-symbols">image</i>
             </span>
             <span class="control icon active" onclick="Upload.openFile()">
-                <i class="material-icons">insert_drive_file</i>
+                <i class="material-symbols">insert_drive_file</i>
             </span>
             <div>
                 <p>{$c->__('upload.choose')}</p>
@@ -25,8 +25,8 @@
             <img class="preview_picture transparent" />
             <li>
                 <span class="primary icon gray">
-                    <i class="material-icons on_desktop">system_update_alt</i>
-                    <i class="material-icons on_mobile">photo_size_select_large</i>
+                    <i class="material-symbols on_desktop">system_update_alt</i>
+                    <i class="material-symbols on_mobile">photo_size_select_large</i>
                 </span>
                 <div>
                     <p class="on_desktop">
@@ -43,7 +43,7 @@
                     <p class="desc line center"></p>
                 </div>
                 <span class="primary active bubble color icon green">
-                    <i class="material-icons">gesture</i>
+                    <i class="material-symbols">gesture</i>
                 </span>
             </li>
         </div>

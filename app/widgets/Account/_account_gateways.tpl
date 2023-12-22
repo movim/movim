@@ -10,10 +10,10 @@
         <span class="primary icon bubble color
             {if="$value->gatewayType"}{$value->gatewayType}{else}gray{/if} status
             {if="$value->presence"} {$value->presence->presencekey} {else}offline disabled{/if}">
-            <i class="material-icons">swap_horiz</i>
+            <i class="material-symbols">swap_horiz</i>
         </span>
         <span class="control icon gray">
-            <i class="material-icons">chevron_right</i>
+            <i class="material-symbols">chevron_right</i>
         </span>
         <div>
             <p>{$value->name}</p>

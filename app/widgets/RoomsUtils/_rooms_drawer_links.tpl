@@ -14,7 +14,7 @@
         <hr />
         <li class="active">
             <span class="primary icon gray">
-                <i class="material-icons">expand_more</i>
+                <i class="material-symbols">expand_more</i>
             </span>
             <div>
                 <p class="line normal center">

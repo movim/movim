@@ -56,26 +56,26 @@
             <span class="info" title="{$post->published|strtotime|prepareDate}">
                 {$count = $post->pictures->count()}
                 {if="$count > 1"}
-                    {$count} <i class="material-icons">collections</i> ·
+                    {$count} <i class="material-symbols">collections</i> ·
                 {/if}
 
                 {if="$post->embed"}
-                    <i class="material-icons">movie</i> ·
+                    <i class="material-symbols">movie</i> ·
                 {/if}
 
                 {$count = $post->user_views_count}
                 {if="$count > 2"}
-                    {$count} <i class="material-icons">visibility</i> ·
+                    {$count} <i class="material-symbols">visibility</i> ·
                 {/if}
 
                 {$count = $post->likes->count()}
                 {if="$count > 0"}
-                    {$count} <i class="material-icons">favorite_border</i> ·
+                    {$count} <i class="material-symbols">favorite_border</i> ·
                 {/if}
 
                 {$count = $post->comments->count()}
                 {if="$count > 0"}
-                    {$count} <i class="material-icons">chat_bubble_outline</i> ·
+                    {$count} <i class="material-symbols">chat_bubble_outline</i> ·
                 {/if}
 
                 {$post->published|strtotime|prepareDate:true,true}

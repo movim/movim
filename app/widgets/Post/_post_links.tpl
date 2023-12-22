@@ -6,7 +6,7 @@
                 {if="$value->logo"}
                     <img src="{$value->logo|protectPicture}"/>
                 {else}
-                    <i class="material-icons">link</i>
+                    <i class="material-symbols">link</i>
                 {/if}
             </span>
             <div>
@@ -32,7 +32,7 @@
 {loop="$post->files"}
     <li>
         <span class="primary icon gray">
-            <span class="material-icons">attach_file</span>
+            <span class="material-symbols">attach_file</span>
         </span>
         <div>
             <p class="normal line">

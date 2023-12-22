@@ -5,7 +5,7 @@
             {if="$page == 'publish'"}class="active"{/if}
         >
             <span class="primary icon">
-                <i class="material-icons">post_add</i>
+                <i class="material-symbols">post_add</i>
             </span>
             <div>
                 <p class="normal">{$c->__('page.publish')}</p>
@@ -17,7 +17,7 @@
             title="{$c->__('page.news')}"
         >
             <span class="primary icon">
-                <i class="material-icons">home</i>
+                <i class="material-symbols">home</i>
                 <span data-key="news" class="counter"></span>
             </span>
             <div>
@@ -29,7 +29,7 @@
             class="on_desktop {if="$page == 'explore' || $page == 'community'"}active{/if}"
             title="{$c->__('page.explore')}"
         >
-            <span class="primary icon"><i class="material-icons">explore</i></span>
+            <span class="primary icon"><i class="material-symbols">explore</i></span>
             <div>
                 <p class="normal">{$c->__('page.explore')}</p>
             </div>
@@ -41,7 +41,7 @@
         title="{$c->__('page.chats')}"
     >
         <span class="primary icon" id="chatcounter" {if="$chatCounter > 0"}data-counter="{$chatCounter}"{/if}>
-            <i class="material-icons">forum</i>
+            <i class="material-symbols">forum</i>
         </span>
         <div>
             <p class="normal">{$c->__('page.chats')}</p>
@@ -55,7 +55,7 @@
         class="on_desktop"
     >
         <span class="primary icon">
-            <i class="material-icons">notifications</i>
+            <i class="material-symbols">notifications</i>
             <span class="counter notifications"></span>
         </span>
         <div>
@@ -70,7 +70,7 @@
         class="on_desktop"
     >
         <span class="primary icon">
-            <i class="material-icons">search</i>
+            <i class="material-symbols">search</i>
         </span>
         <div>
             <p class="normal">{$c->__('button.search')}</p>
@@ -81,7 +81,7 @@
         title="{$c->__('location.title')}"
         id="location_widget">
         <span class="primary icon disabled">
-            <i class="material-icons">place</i>
+            <i class="material-symbols">place</i>
         </span>
         <div>
             <p class="normal line">{$c->__('location.title')}</p>
@@ -93,7 +93,7 @@
             title="{$c->__('communityaffiliation.subscriptions')}"
             {if="$page == 'subscriptions'"}class="active"{/if}
         >
-            <span class="primary icon"><i class="material-icons">bookmarks</i></span>
+            <span class="primary icon"><i class="material-symbols">bookmarks</i></span>
             <div>
                 <p class="normal">{$c->__('communityaffiliation.subscriptions')}</p>
             </div>
@@ -102,7 +102,7 @@
 
     <a href="#" class="on_mobile">
         <li onclick="MovimTpl.toggleMenu()">
-            <span class="primary icon bubble"><i class="material-icons">arrow_back</i></span>
+            <span class="primary icon bubble"><i class="material-symbols">arrow_back</i></span>
             <div>
                 <p class="normal">{$c->__('button.close')}</p>
             </div>

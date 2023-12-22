@@ -3,7 +3,7 @@
         <li>
             <span class="primary icon active on_mobile_after" id="chatheadercounter" onclick="Chat.get()"
                 {if="$counter > 0"}data-counter="{$counter}"{/if}>
-                <i class="material-icons">arrow_back</i>
+                <i class="material-symbols">arrow_back</i>
             </span>
 
             {if="$conference"}
@@ -42,7 +42,7 @@
             {/if}
 
             <span class="control icon show_context_menu active {if="$conference && !$conference->connected"}disabled{/if}">
-                <i class="material-icons">more_vert</i>
+                <i class="material-symbols">more_vert</i>
             </span>
 
             <div>
@@ -51,11 +51,11 @@
                         {$conference->title}
                         {if="$conference->notify == 0"}
                             <span class="second" title="{$c->__('room.notify_never')}">
-                                <i class="material-icons">notifications_off</i>
+                                <i class="material-symbols">notifications_off</i>
                             </span>
                         {elseif="$conference->notify == 2"}
                             <span class="second" title="{$c->__('room.notify_always')}">
-                                <i class="material-icons">notifications_active</i>
+                                <i class="material-symbols">notifications_active</i>
                             </span>
                         {/if}
                     {else}
@@ -64,9 +64,9 @@
 
                     <span class="second">
                         {if="$conference && $conference->isGroupChat()"}
-                            <i class="material-icons">people_alt</i>
+                            <i class="material-symbols">people_alt</i>
                         {else}
-                            <i class="material-icons">wifi_tethering</i>
+                            <i class="material-symbols">wifi_tethering</i>
                         {/if}
                     </span>
 
@@ -169,7 +169,7 @@
         <li id="chat_header">
             <span class="primary icon active on_mobile_after" id="chatheadercounter" onclick="Chat.get()"
                 {if="$counter > 0"}data-counter="{$counter}"{/if}>
-                <i class="material-icons">arrow_back</i>
+                <i class="material-symbols">arrow_back</i>
             </span>
 
             <span class="primary icon bubble active
@@ -186,14 +186,14 @@
                         {$call = true}
                         <span title="{$c->__('button.audio_call')}" class="control icon active on_desktop"
                             onclick="VisioLink.openVisio('{$value->jid|echapJS}');">
-                            <i class="material-icons">phone</i>
+                            <i class="material-symbols">phone</i>
                         </span>
                     {/if}
                     {if="$value->capability && $value->capability->isJingleVideo() && $value->jid"}
                         {$call = true}
                         <span title="{$c->__('button.video_call')}" class="control icon active on_desktop"
                             onclick="VisioLink.openVisio('{$value->jid|echapJS}', '', true);">
-                            <i class="material-icons">videocam</i>
+                            <i class="material-symbols">videocam</i>
                         </span>
                         {break}
                     {/if}
@@ -204,11 +204,11 @@
                 title="{$c->__('button.close')}"
                 class="control icon active {if="$call"}divided{/if}"
                 onclick="Chats_ajaxClose('{$jid|echapJS}', true);">
-                <i class="material-icons">close</i>
+                <i class="material-symbols">close</i>
             </span>
 
             <span class="control icon show_context_menu active">
-                <i class="material-icons">more_vert</i>
+                <i class="material-symbols">more_vert</i>
             </span>
 
             <div>
@@ -225,7 +225,7 @@
                 <p class="compose first line active" id="{$jid|cleanupId}-state" onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')"></p>
                 <p class="line active" onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')">
                     {if="$contact->locationDistance != null"}
-                        <i class="material-icons">place</i>
+                        <i class="material-symbols">place</i>
                         {$contact->locationDistance|humanDistance} •
                     {/if}
                     {if="$roster && $roster->presence && $roster->presence->seen"}

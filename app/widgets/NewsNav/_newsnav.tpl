@@ -19,7 +19,7 @@
         {if="$page == 'news'"}
         <span class="control active icon gray">
             <a href="{$c->route('explore')}">
-                <i class="material-icons">chevron_right</i>
+                <i class="material-symbols">chevron_right</i>
             </a>
         </span>
         {/if}
@@ -43,7 +43,7 @@
                 <p class="line">{$c->__('hello.share_title')}</p>
                 <p class="all">{$c->__('hello.share_text')}</p>
                 <p class="center">
-                <a class="button" onclick="return false;" href="javascript:(function(){location.href='{$c->route('share', '\'+encodeURIComponent(location.href);')}})();"><i class="material-icons">share</i> {$c->__('button.share')}</a></p>
+                <a class="button" onclick="return false;" href="javascript:(function(){location.href='{$c->route('share', '\'+encodeURIComponent(location.href);')}})();"><i class="material-symbols">share</i> {$c->__('button.share')}</a></p>
             </div>
         </li>
     </ul>

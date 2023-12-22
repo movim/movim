@@ -8,7 +8,7 @@
         {if="$value->capability"}
             <li class="block">
                 <span class="primary icon gray status {$value->presencekey}">
-                    <i class="material-icons">
+                    <i class="material-symbols">
                         {$value->capability->getDeviceIcon()}
                     </i>
                 </span>

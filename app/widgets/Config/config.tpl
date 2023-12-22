@@ -9,7 +9,7 @@
         </li>
         <li>
             <span class="primary icon gray">
-                <i class="material-icons">public</i>
+                <i class="material-symbols">public</i>
             </span>
             <span class="control">
                 <form>
@@ -38,10 +38,10 @@
     <ul class="list fill middle active">
         <li onclick="Config_ajaxEditNickname()">
             <span class="control icon gray">
-                <i class="material-icons">chevron_right</i>
+                <i class="material-symbols">chevron_right</i>
             </span>
             <span class="primary icon gray">
-                <i class="material-icons">account_circle</i>
+                <i class="material-symbols">account_circle</i>
             </span>
             <div>
                 <p>{$c->__('profile.info')}</p>

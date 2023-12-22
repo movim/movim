@@ -14,7 +14,7 @@
 </ul>
 
 <div class="placeholder">
-    <i class="material-icons">chat</i>
+    <i class="material-symbols">chat</i>
     <h1>{$c->__('chats.empty_title')}</h1>
-    <h4>{$c->___('chats.empty', '<i class="material-icons">add</i>')}</h4>
+    <h4>{$c->___('chats.empty', '<i class="material-symbols">add</i>')}</h4>
 </div>

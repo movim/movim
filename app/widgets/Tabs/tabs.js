@@ -33,7 +33,7 @@ var Tabs = {
                 aMobile.classList.add('on_mobile');
 
                 var icon = document.createElement('i');
-                icon.classList.add('material-icons');
+                icon.classList.add('material-symbols');
                 icon.innerText = tabs[i].dataset.mobileicon;
                 aMobile.appendChild(icon);
 

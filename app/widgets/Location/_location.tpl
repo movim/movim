@@ -1,8 +1,8 @@
 <span class="primary icon">
     {if="$contact && $contact->hasLocation()"}
-        <i class="material-icons">where_to_vote</i>
+        <i class="material-symbols">where_to_vote</i>
     {else}
-        <i class="material-icons">location_off</i>
+        <i class="material-symbols">location_off</i>
     {/if}
 </span>
 <div>

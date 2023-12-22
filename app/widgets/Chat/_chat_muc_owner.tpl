@@ -1,1 +1,1 @@
-<i class="material-icons icon gray">star</i> {$c->__('chat.muc_owner', $message->thread)}
+<i class="material-symbols icon gray">star</i> {$c->__('chat.muc_owner', $message->thread)}

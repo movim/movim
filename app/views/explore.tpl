@@ -22,7 +22,7 @@
                 <ul class="list middle">
                     <li>
                         <span class="primary icon active" onclick="history.back()">
-                            <i class="material-icons">arrow_back</i>
+                            <i class="material-symbols">arrow_back</i>
                         </span>
                         <div>
                             <p class="center"><?php echo __('communities.servers'); ?></p>

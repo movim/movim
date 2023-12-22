@@ -5,7 +5,7 @@
             style="background-image: url({$me->getPicture()})">
         </span>
         <span class="control icon gray">
-            <i class="material-icons">chevron_right</i>
+            <i class="material-symbols">chevron_right</i>
         </span>
         <div>
             <p>{$c->__('avatar.change')}</p>
@@ -18,7 +18,7 @@
             style="background-image: url({$me->getBanner()})">
         </span>
         <span class="control icon gray">
-            <i class="material-icons">chevron_right</i>
+            <i class="material-symbols">chevron_right</i>
         </span>
         <div>
             <p>{$c->__('banner.change')}</p>

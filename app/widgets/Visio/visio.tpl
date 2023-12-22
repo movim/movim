@@ -3,31 +3,31 @@
         <ul class="list">
             <li>
                 <span id="toggle_fullscreen" class="control icon color transparent active" onclick="VisioUtils.toggleFullScreen()">
-                    <i class="material-icons">fullscreen</i>
+                    <i class="material-symbols">fullscreen</i>
                 </span>
                 {if="!$withvideo"}
                     <span id="toggle_dtmf" class="control icon color transparent active" onclick="VisioUtils.toggleDtmf()">
-                        <i class="material-icons">dialpad</i>
+                        <i class="material-symbols">dialpad</i>
                     </span>
                 {/if}
                 <span id="toggle_audio" class="divided control icon color transparent active" onclick="VisioUtils.toggleAudio()">
-                    <i class="material-icons">mic_off</i>
+                    <i class="material-symbols">mic_off</i>
                 </span>
                 {if="$withvideo"}
                     <span id="toggle_video" class="control icon color transparent active" onclick="VisioUtils.toggleVideo()">
-                        <i class="material-icons">videocam_off</i>
+                        <i class="material-symbols">videocam_off</i>
                     </span>
                     <span id="switch_camera" class="control icon color transparent active">
-                        <i class="material-icons">switch_camera</i>
+                        <i class="material-symbols">switch_camera</i>
                     </span>
                     <span id="screen_sharing" class="control icon color transparent active" onclick="VisioUtils.toggleScreenSharing()">
-                        <i class="material-icons">screen_share</i>
+                        <i class="material-symbols">screen_share</i>
                     </span>
                 {/if}
                 <div>
                     <p></p>
                     <p id="no_mic_sound" class="disabled all">
-                        <i class="material-icons">mic_none</i>
+                        <i class="material-symbols">mic_none</i>
                         {$c->__('visioconfig.no_mic_sound')}
                     </p>
                 </div>
@@ -87,15 +87,15 @@
     {/if}
 
     <span id="remote_state">
-        <i class="voice material-icons"></i>
+        <i class="voice material-symbols"></i>
         {if="$withvideo"}
-            <i class="webcam material-icons"></i>
+            <i class="webcam material-symbols"></i>
         {/if}
     </span>
 
     <div class="controls">
         <a id="main" class="button action color gray">
-            <i class="material-icons">phone</i>
+            <i class="material-symbols">phone</i>
         </a>
     </div>
 </div>

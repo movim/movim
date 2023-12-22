@@ -2,10 +2,10 @@
     <ul class="list active">
         <li onclick="RoomsUtils_ajaxAdd(); Drawer.clear();">
             <span class="primary icon gray">
-                <i class="material-icons">input</i>
+                <i class="material-symbols">input</i>
             </span>
             <span class="control icon gray">
-                <i class="material-icons">chevron_right</i>
+                <i class="material-symbols">chevron_right</i>
             </span>
             <div>
                 <p class="normal line">{$c->__('rooms.join_custom')}</p>
@@ -20,7 +20,7 @@
     <ul class="list">
         <li>
             <span class="primary icon gray spin">
-                <i class="material-icons">autorenew</i>
+                <i class="material-symbols">autorenew</i>
             </span>
             <form name="search" onsubmit="return false;">
                 <div>

@@ -572,7 +572,7 @@ function getPresencesTxt()
 }
 
 /**
- * Map the XMPP form vars to Material icons
+ * Map the XMPP form vars to Material Symbols
  */
 function varToIcons(string $var)
 {

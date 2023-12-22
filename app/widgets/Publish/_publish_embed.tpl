@@ -4,7 +4,7 @@
 
 <li class="block" id="{$embed->HTMLId}">
     <span class="control active icon gray" onclick="Publish_ajaxHttpRemoveEmbed({$embed->draft_id}, {$embed->id})">
-        <i class="material-icons">close</i>
+        <i class="material-symbols">close</i>
     </span>
     {if="count($resolved->images) > 1"}
         {if="$embed->imagenumber > 0"}
@@ -18,21 +18,21 @@
                 title="{$resolved->images[$imagenumber]['size']|humanSize}"
             {/if}
             >
-            <i class="material-icons">collections</i>
+            <i class="material-symbols">collections</i>
         </span>
     {else}
         {if="!empty($resolved->images) && (count($resolved->images) > 1 || $resolved->images[0]['url'] == $embed->url)"}
             <span class="primary icon thumb active color"
                 onclick="Preview_ajaxHttpShow('{$resolved->images[0]['url']}')"
                 style="background-image: url({$resolved->images[0]['url']|protectPicture})">
-                <i class="material-icons">image</i>
+                <i class="material-symbols">image</i>
             </span>
         {else}
             <span class="primary icon bubble gray">
                 {if="$resolved->providerIcon"}
                     <img src="{$resolved->providerIcon}"/>
                 {else}
-                    <i class="material-icons">link</i>
+                    <i class="material-symbols">link</i>
                 {/if}
             </span>
         {/if}

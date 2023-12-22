@@ -58,7 +58,7 @@
 }
 
 #dictaphone_widget li div p.rec:before {
-    font-family: 'Material Icons';
+    font-family: 'Material Symbols';
     content: "\e061";
     vertical-align: bottom;
     margin-right: 0.5rem;

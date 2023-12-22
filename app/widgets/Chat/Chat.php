@@ -1171,7 +1171,7 @@ class Chat extends \Movim\Widget\Base
         }
 
         if ($message->retracted) {
-            $message->body = '<i class="material-icons">delete</i> ' . __('message.retracted');
+            $message->body = '<i class="material-symbols">delete</i> ' . __('message.retracted');
         } elseif ($message->encrypted) {
             $message->body = __('message.encrypted');
         } elseif (isset($message->html) && !isset($message->file)) {
@@ -1279,14 +1279,14 @@ class Chat extends \Movim\Widget\Base
         // Parent
         if ($message->parent) {
             if ($message->parent->file) {
-                $message->parent->body = '<i class="material-icons">insert_drive_file</i> ' . __('avatar.file');
+                $message->parent->body = '<i class="material-symbols">insert_drive_file</i> ' . __('avatar.file');
 
                 if (typeIsPicture($message->parent->file['type'])) {
-                    $message->parent->body = '<i class="material-icons">image</i> ' . __('chats.picture');
+                    $message->parent->body = '<i class="material-symbols">image</i> ' . __('chats.picture');
                 } elseif (typeIsAudio($message->parent->file['type'])) {
-                    $message->parent->body = '<i class="material-icons">equalizer</i> ' . __('chats.audio');
+                    $message->parent->body = '<i class="material-symbols">equalizer</i> ' . __('chats.audio');
                 } elseif (typeIsVideo($message->parent->file['type'])) {
-                    $message->parent->body = '<i class="material-icons">local_movies</i> ' . __('chats.video');
+                    $message->parent->body = '<i class="material-symbols">local_movies</i> ' . __('chats.video');
                 }
             }
 

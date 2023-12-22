@@ -7,7 +7,7 @@
         <ul class="list fill">
             <li>
                 <span class="primary icon gray">
-                    <i class="material-icons">language</i>
+                    <i class="material-symbols">language</i>
                 </span>
                 <div>
                     <div class="select">
@@ -41,7 +41,7 @@
         <ul class="list middle fill">
             <li>
                 <span class="primary icon gray">
-                    <i class="material-icons">forum</i>
+                    <i class="material-symbols">forum</i>
                 </span>
                 <span class="control">
                     <div class="checkbox">
@@ -61,7 +61,7 @@
 
             <li>
                 <span class="primary icon gray">
-                    <i class="material-icons">lock</i>
+                    <i class="material-symbols">lock</i>
                 </span>
                 <span class="control">
                     <div class="checkbox">
@@ -82,7 +82,7 @@
 
             <li>
                 <span class="primary icon gray">
-                    <i class="material-icons">explicit</i>
+                    <i class="material-symbols">explicit</i>
                 </span>
                 <span class="control">
                     <div class="checkbox">
@@ -102,7 +102,7 @@
 
             <li>
                 <span class="primary icon gray">
-                    <i class="material-icons">brightness_2</i>
+                    <i class="material-symbols">brightness_2</i>
                 </span>
                 <span class="control">
                     <div class="checkbox">

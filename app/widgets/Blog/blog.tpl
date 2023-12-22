@@ -14,13 +14,13 @@
                 <ul class="list thick">
                     <li>
                         <span class="primary icon on_desktop">
-                            <i class="material-icons">person</i>
+                            <i class="material-symbols">person</i>
                         </span>
                         <span class="primary icon bubble on_mobile">
                             <img src="{$contact->getPicture('m')}">
                         </span>
                         <span class="control icon active" onclick="MovimUtils.openInNew('{$c->route('feed', $contact->jid)}')">
-                            <i class="material-icons">rss_feed</i>
+                            <i class="material-symbols">rss_feed</i>
                         </span>
                         <div>
                             <p>
@@ -40,17 +40,17 @@
                 <li>
                     {if="isLogged()"}
                     <span class="primary icon active gray" onclick="history.back()">
-                        <i class="material-icons">arrow_back</i>
+                        <i class="material-symbols">arrow_back</i>
                     </span>
                     {else}
                     <span class="primary icon gray">
-                        <i class="material-icons">label</i>
+                        <i class="material-symbols">label</i>
                     </span>
                     {/if}
                     <div>
                         <p>
                             <a href="{$c->route('tag', array($tag))}">
-                                <i class="material-icons">tag</i>{$tag}
+                                <i class="material-symbols">tag</i>{$tag}
                             </a>
                         </p>
                     </div>
@@ -67,7 +67,7 @@
                         </span>
                     {else}
                         <span class="primary icon gray">
-                            <i class="material-icons">group_work</i>
+                            <i class="material-symbols">group_work</i>
                         </span>
                     {/if}
                     <span class="control icon active">
@@ -76,13 +76,13 @@
                             target="_blank"
                             title="Atom"
                         >
-                            <i class="material-icons">rss_feed</i>
+                            <i class="material-symbols">rss_feed</i>
                         </a>
                     </span>
                     <div>
                         <a class="button oppose color gray" title="{$c->__('communityheader.subscribe')}"
                             href="xmpp:{$server}?pubsub;action=subscribe;node={$node}">
-                            <i class="material-icons">add</i> <span class="on_desktop">{$c->__('communityheader.subscribe')}</span>
+                            <i class="material-symbols">add</i> <span class="on_desktop">{$c->__('communityheader.subscribe')}</span>
                         </a>
                         <p>
                             <a href="{$c->route('node', [$server, $node])}">
@@ -96,12 +96,12 @@
                         {if="$item != null"}
                             {if="$item->description"}
                                 <p title="{$item->description|stripTags}" class="line">
-                                    <i class="material-icons">people</i> {$c->__('communitydata.sub', $item->occupants)} ·
+                                    <i class="material-symbols">people</i> {$c->__('communitydata.sub', $item->occupants)} ·
                                     {$item->description|stripTags}
                                 </p>
                             {else}
                                 <p>
-                                    <i class="material-icons">people</i> {$c->__('communitydata.sub', $item->occupants)} ·
+                                    <i class="material-symbols">people</i> {$c->__('communitydata.sub', $item->occupants)} ·
                                     {$item->server}
                                 </p>
                             {/if}
@@ -130,7 +130,7 @@
             <ul class="list simple thick">
                 <li>
                     <span class="primary icon gray">
-                        <i class="material-icons">comment</i>
+                        <i class="material-symbols">comment</i>
                     </span>
                     <div>
                         <p class="normal">{$c->__('post.empty')}</p>
@@ -159,7 +159,7 @@
     <ul class="list active thick">
         <a href="{$next}">
             <li id="history" class="block large">
-                <span class="primary icon gray"><i class="material-icons">history</i></span>
+                <span class="primary icon gray"><i class="material-symbols">history</i></span>
                 <div>
                     <p class="normal line center">{$c->__('post.older')}</p>
                 </div>

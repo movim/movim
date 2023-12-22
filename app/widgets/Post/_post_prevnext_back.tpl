@@ -6,7 +6,7 @@
     {/if}
     >
     <span class="control icon gray">
-        <i class="material-icons">expand_less</i>
+        <i class="material-symbols">expand_less</i>
     </span>
     {if="$post->isMicroblog()"}
         {if="$post->contact"}
@@ -19,7 +19,7 @@
                 </p>
         {else}
             <span class="primary icon bubble color {$post->server|stringToColor}">
-                <i class="material-icons">person</i>
+                <i class="material-symbols">person</i>
             </span>
             <div>
                 <p class="normal line">

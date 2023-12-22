@@ -7,7 +7,7 @@
         </li>
         <li class="block">
             <span class="primary icon gray">
-                <i class="material-icons">wifi_tethering</i>
+                <i class="material-symbols">wifi_tethering</i>
             </span>
             <div>
                 <p>{$c->__('faq.permission_title')}</p>
@@ -16,7 +16,7 @@
         </li>
         <li class="block">
             <span class="primary icon gray">
-                <i class="material-icons">group_work</i>
+                <i class="material-symbols">group_work</i>
             </span>
             <div>
                 <p>{$c->__('faq.permission_community_title')}</p>
@@ -25,7 +25,7 @@
         </li>
         <li class="block">
             <span class="primary icon gray">
-                <i class="material-icons">forum</i>
+                <i class="material-symbols">forum</i>
             </span>
             <div>
                 <p>{$c->__('faq.chatrooms_title')}</p>
@@ -36,7 +36,7 @@
         </li>
         <li class="block">
             <span class="primary icon gray">
-                <i class="material-icons">search</i>
+                <i class="material-symbols">search</i>
             </span>
             <div>
                 <p>{$c->__('faq.find_contacts_title')}</p>
@@ -54,7 +54,7 @@
         </li>
         <li class="block">
             <span class="primary icon gray">
-                <i class="material-icons">comment</i>
+                <i class="material-symbols">comment</i>
             </span>
             <div>
                 <p>{$c->__('chatroom.question')}</p>
@@ -76,11 +76,11 @@
         </li>
         <li class="block active">
             <span class="primary icon gray">
-                <i class="material-icons on_desktop">install_desktop</i>
-                <i class="material-icons on_mobile">install_mobile</i>
+                <i class="material-symbols on_desktop">install_desktop</i>
+                <i class="material-symbols on_mobile">install_mobile</i>
             </span>
             <span class="control icon gray">
-                <i class="material-icons">chevron_right</i>
+                <i class="material-symbols">chevron_right</i>
             </span>
             <div>
                 <p class="line">{$c->__('apps.install')}<p>
@@ -98,29 +98,29 @@
         </li>
         <li class="block">
             <span class="primary icon green">
-                <i class="material-icons">android</i>
+                <i class="material-symbols">android</i>
             </span>
             <div>
                 <p class="normal line">
                     Conversations
                     <a class="button flat" href="https://play.google.com/store/apps/details?id=eu.siacs.conversations" target="_blank">
-                        <i class="material-icons">android</i> Play Store
+                        <i class="material-symbols">android</i> Play Store
                     </a>
                     <a class="button flat" href="https://f-droid.org/packages/eu.siacs.conversations/" target="_blank">
-                        <i class="material-icons">adb</i> F-Droid
+                        <i class="material-symbols">adb</i> F-Droid
                     </a>
                 </p>
             </div>
         </li>
         <li class="block">
             <span class="primary icon purple">
-                <i class="material-icons">computer</i>
+                <i class="material-symbols">computer</i>
             </span>
             <div>
                 <p class="normal line">
                     Dino
                     <a class="button flat" href="https://dino.im/" target="_blank">
-                        <i class="material-icons">open_in_new</i> Website
+                        <i class="material-symbols">open_in_new</i> Website
                     </a>
                 </p>
             </div>
@@ -141,7 +141,7 @@
                     {if="$parsed['scheme'] == 'xmpp'"}
                         {if="isset($parsed['query']) && $parsed['query'] == 'join'"}
                         <span class="primary icon gray">
-                            <i class="material-icons">mode_comment</i>
+                            <i class="material-symbols">mode_comment</i>
                         </span>
                         <div>
                             <p class="normal">
@@ -152,7 +152,7 @@
                         </div>
                         {else}
                         <span class="primary icon gray">
-                            <i class="material-icons">comment</i>
+                            <i class="material-symbols">comment</i>
                         </span>
                         <div>
                             <p class="normal">
@@ -164,7 +164,7 @@
                         {/if}
                     {else}
                         <span class="primary icon gray">
-                            <i class="material-icons">email</i>
+                            <i class="material-symbols">email</i>
                         </span>
                         <div>
                             <p class="normal">

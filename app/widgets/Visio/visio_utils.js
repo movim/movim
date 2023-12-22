@@ -206,7 +206,7 @@ var VisioUtils = {
                 //|| Visio.pc.iceGatheringState == 'complete') {
                 if (Visio.calling) {
                     button.classList.add('orange');
-                    i.className = 'material-icons ring';
+                    i.className = 'material-symbols ring';
                     i.innerText = 'call';
                     state.innerText = Visio.states.ringing;
 
@@ -218,7 +218,7 @@ var VisioUtils = {
                 }
             } else if (Visio.pc.iceConnectionState == 'checking') {
                 button.classList.add('blue');
-                i.className = 'material-icons disabled';
+                i.className = 'material-symbols disabled';
                 i.innerText = 'more_horiz';
                 state.innerText = Visio.states.connecting;
             } else if (Visio.pc.iceConnectionState == 'closed') {
@@ -231,7 +231,7 @@ var VisioUtils = {
                 || Visio.pc.iceConnectionState == 'complete'
                 || Visio.pc.iceConnectionState == 'failed') {
                 button.classList.add('red');
-                i.className = 'material-icons';
+                i.className = 'material-symbols';
                 i.innerText = 'call_end';
 
                 if (Visio.pc.iceConnectionState == 'failed') {

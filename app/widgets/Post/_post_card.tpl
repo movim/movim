@@ -12,7 +12,7 @@
                     </span>
                 {else}
                     <span class="primary icon bubble color {$post->aid|stringToColor}">
-                        <i class="material-icons">person</i>
+                        <i class="material-symbols">person</i>
                     </span>
                 {/if}
             {else}
@@ -64,13 +64,13 @@
                     {/if}
                     {$post->published|strtotime|prepareDate}
                     {if="$post->published != $post->updated"}
-                        <i class="material-icons" title="{$post->updated|strtotime|prepareDate}">
+                        <i class="material-symbols" title="{$post->updated|strtotime|prepareDate}">
                             edit
                         </i>
                     {/if}
 
                     {if="!$post->openlink"}
-                        <i class="material-icons on_mobile" title="{$c->__('post.public_no')}">
+                        <i class="material-symbols on_mobile" title="{$c->__('post.public_no')}">
                             lock
                         </i>
                     {/if}
@@ -79,7 +79,7 @@
                     {/if}
                     {$count = $post->user_views_count}
                     {if="$count > 2"}
-                         · {$count} <i class="material-icons">visibility</i>
+                         · {$count} <i class="material-symbols">visibility</i>
                     {/if}
                 </p>
             </div>
@@ -92,7 +92,7 @@
             {/if}
             <section dir="{if="$post->isRTL()"}rtl{else}ltr{/if}">
                 <label class="spoiler" for="spoiler_{$post->nodeid|cleanupId}">
-                    <i class="material-icons">visibility</i>
+                    <i class="material-symbols">visibility</i>
                 </label>
                 <div>
                     {if="$post->embed"}
@@ -120,7 +120,7 @@
                 {/if}
                 <section {if="!$post->isShort()"}class="limited"{/if} dir="{if="$post->isRTL()"}rtl{else}ltr{/if}">
                     <label class="spoiler" for="spoiler_{$post->nodeid|cleanupId}">
-                        <i class="material-icons">visibility</i>
+                        <i class="material-symbols">visibility</i>
                     </label>
                     <div>
                         {if="$post->embed"}
@@ -165,7 +165,7 @@
                     {else}
                         onclick="MovimUtils.reload('{$c->route('post', [$post->server, $post->node, $post->nodeid])}')"
                     {/if}>
-                        <i class="material-icons on_desktop">add</i> {$c->__('post.more')}
+                        <i class="material-symbols on_desktop">add</i> {$c->__('post.more')}
                     </a>
                     {if="$post->hasCommentsNode()"}
                         {$liked = $post->isLiked()}
@@ -173,22 +173,22 @@
                         {if="$liked"}
                             <a class="button narrow icon flat red" href="{$c->route('post', [$post->server, $post->node, $post->nodeid])}">
                                 {if="$post->likes->count() > 0"}{$post->likes->count()}{/if}
-                                <i class="material-icons">favorite</i>
+                                <i class="material-symbols">favorite</i>
                             </a>
                         {else}
                             <a class="button narrow icon flat gray" href="#"
                             onclick="this.classList.add('disabled'); PostActions_ajaxLike('{$post->server}', '{$post->node}', '{$post->nodeid}')">
                             {if="$post->likes->count() > 0"}{$post->likes->count()}{/if}
                                 {if="$liked"}
-                                    <i class="material-icons">favorite</i>
+                                    <i class="material-symbols">favorite</i>
                                 {else}
-                                    <i class="material-icons">favorite_border</i>
+                                    <i class="material-symbols">favorite_border</i>
                                 {/if}
                             </a>
                         {/if}
                         <a class="button narrow icon flat gray" href="{$c->route('post', [$post->server, $post->node, $post->nodeid])}">
                             {if="$post->comments->count() > 0"}{$post->comments->count()}{/if}
-                            <i class="material-icons">chat_bubble_outline</i>
+                            <i class="material-symbols">chat_bubble_outline</i>
                         </a>
                     {/if}
                     {if="!$public"}
@@ -197,26 +197,26 @@
                             class="button narrow icon flat gray"
                             onclick="SendTo.shareArticle('{$post->getRef()}')"
                             href="#">
-                            <i class="material-icons">share</i>
+                            <i class="material-symbols">share</i>
                         </a>
                         <a
                             title="{$c->__('button.send_to')}"
                             class="button narrow icon flat gray"
                             onclick="SendTo_ajaxSendContact('{$post->getRef()}')"
                             href="#">
-                            <i class="material-icons">send</i>
+                            <i class="material-symbols">send</i>
                         </a>
                         {if="$post->openlink"}
                             <a  title="{$c->__('post.public_url')}"
                                 class="button narrow icon flat gray oppose"
                                 target="_blank"
                                 href="{$post->openlink->href}">
-                                <i class="material-icons">open_in_new</i>
+                                <i class="material-symbols">open_in_new</i>
                             </a>
                         {else}
                             <a  class="button narrow icon flat gray on_desktop oppose"
                                 title="{$c->__('post.public_no')}">
-                                <i class="material-icons">lock</i>
+                                <i class="material-symbols">lock</i>
                             </a>
                         {/if}
                     {/if}
@@ -226,14 +226,14 @@
                             <a class="button narrow icon flat oppose gray on_desktop"
                             href="{$c->route('publish', [$post->server, $post->node, $post->nodeid])}"
                             title="{$c->__('button.edit')}">
-                                <i class="material-icons">edit</i>
+                                <i class="material-symbols">edit</i>
                             </a>
                         {/if}
                         <a class="button narrow icon flat oppose gray on_desktop"
                         href="#"
                         onclick="PostActions_ajaxDelete('{$post->server}', '{$post->node}', '{$post->nodeid}')"
                         title="{$c->__('button.delete')}">
-                            <i class="material-icons">delete</i>
+                            <i class="material-symbols">delete</i>
                         </a>
                     {/if}
                 </p>

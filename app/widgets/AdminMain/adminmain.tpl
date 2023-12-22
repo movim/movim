@@ -35,7 +35,7 @@
     <ul class="list thin">
         <li>
             <span class="primary icon bubble gray">
-                <i class="material-icons">help</i>
+                <i class="material-symbols">help</i>
             </span>
             <div>
                 <p class="normal all">{$c->__('information.banner_info')}</p>
@@ -146,7 +146,7 @@
     <ul class="list thin">
         <li>
             <span class="primary icon bubble gray">
-                <i class="material-icons">help</i>
+                <i class="material-symbols">help</i>
             </span>
             <div>
                 <p>{$c->__('whitelist.info1')}</p>
@@ -169,7 +169,7 @@
     <ul class="list thick">
         <li>
             <span class="primary icon bubble gray">
-                <i class="material-icons">help</i>
+                <i class="material-symbols">help</i>
             </span>
             <div>
                 <p>{$c->__('information.info1')}</p>
@@ -189,7 +189,7 @@
     <ul class="list thick">
         <li>
             <span class="primary icon bubble gray">
-                <i class="material-icons">gif_box</i>
+                <i class="material-symbols">gif_box</i>
             </span>
             <div>
                 <p>{$c->__('tenor.info1')}</p>

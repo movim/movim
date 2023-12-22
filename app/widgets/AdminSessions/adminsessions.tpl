@@ -10,11 +10,11 @@
             <li class="block" onclick="MovimUtils.redirect('{$c->route('contact', $user->id)}')">
                 {if="$value->user->admin"}
                     <span class="control yellow icon">
-                        <i class="material-icons">star</i>
+                        <i class="material-symbols">star</i>
                     </span>
                 {/if}
                 <span class="control gray icon">
-                    <i class="material-icons">chevron_right</i>
+                    <i class="material-symbols">chevron_right</i>
                 </span>
                 <span class="primary icon bubble">
                     <img src="{$user->getPicture()}">

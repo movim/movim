@@ -2,7 +2,7 @@
     <div class="flex">
         <div class="block on_desktop">
             <div class="placeholder">
-                <i class="material-icons">person_add</i>
+                <i class="material-symbols">person_add</i>
                 <h4>{$c->__('create.title')}</h4>
                 <h4>{$c->__('create.placeholder')}</h4>
             </div>

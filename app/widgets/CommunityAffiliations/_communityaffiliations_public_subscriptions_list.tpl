@@ -8,7 +8,7 @@
         <a href="{$c->route('contact', $value->jid)}">
             <li title="{$value->jid}">
                 <span class="control icon gray">
-                    <i class="material-icons">chevron_right</i>
+                    <i class="material-symbols">chevron_right</i>
                 </span>
                 {if="$value->contact"}
                     <span class="primary icon bubble small">

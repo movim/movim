@@ -65,7 +65,7 @@
             <ul class="list middle labeled fill">
                 <li>
                     <span class="primary icon gray">
-                        <i class="material-icons">view_agenda</i>
+                        <i class="material-symbols">view_agenda</i>
                     </span>
                     <span class="control">
                         <div class="radio">
@@ -82,7 +82,7 @@
                 </li>
                 <li>
                     <span class="primary icon gray">
-                        <i class="material-icons">grid_view</i>
+                        <i class="material-symbols">grid_view</i>
                     </span>
                     <span class="control">
                         <div class="radio">
@@ -110,7 +110,7 @@
 <div>
     {if="$config"}
         <button class="button flat" onclick="CommunityConfig_ajaxGetConfig('{$server|echapJS}', '{$node|echapJS}', true)">
-            <i class="material-icons">more_vert</i>
+            <i class="material-symbols">more_vert</i>
         </button>
     {/if}
     <button onclick="Dialog_ajaxClear()" class="button flat">

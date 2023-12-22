@@ -417,7 +417,7 @@ var ChatOmemo = {
            return plaintext;
         }
         let [match, , filename, extension, hash] = matches;
-        return '<i class="material-icons">file_download</i> <a href="#" class="encrypted_file" onclick="ChatOmemo.getEncryptedFile(\''
+        return '<i class="material-symbols">file_download</i> <a href="#" class="encrypted_file" onclick="ChatOmemo.getEncryptedFile(\''
             + lines[0]
             + '\')">'
                 + filename

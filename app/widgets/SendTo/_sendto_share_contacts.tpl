@@ -14,7 +14,7 @@
             <img src="{$value->getPicture('m')}">
         </span>
         <span class="control icon active gray" onclick="SendTo_ajaxSend('{$value->jid|echapJS}', {'uri': '{$uri}'}, false, '{$openlink}')">
-            <i class="material-icons">send</i>
+            <i class="material-symbols">send</i>
         </span>
         <div>
             <p class="normal line">

@@ -19,7 +19,7 @@
                 {loop="$value"}
                     <li>
                         <span class="primary icon {if="$value->jid == $c->getUser()->id"}blue{else}gray{/if}" id="sessionicon_{$value->jid}_{$value->bundleid}">
-                            <i class="material-icons">fingerprint</i>
+                            <i class="material-symbols">fingerprint</i>
                         </span>
                         <span class="control">
                             <div class="checkbox">
@@ -41,7 +41,7 @@
                             <p class="line">
                                 {if="$value->capability"}
                                     {$value->capability->name}&nbsp;
-                                    <i class="material-icons">{$value->capability->getDeviceIcon()}</i>
+                                    <i class="material-symbols">{$value->capability->getDeviceIcon()}</i>
                                 {/if}
                             </p>
                         </div>

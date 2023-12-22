@@ -17,7 +17,7 @@
             {loop="$pushSubscriptions"}
                 <li>
                     <span class="primary icon {if="$value->self"}green{else}gray{/if}">
-                        <i class="material-icons">notifications</i>
+                        <i class="material-symbols">notifications</i>
                     </span>
                     <span class="control">
                         <div class="checkbox">

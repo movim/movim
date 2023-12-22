@@ -2,7 +2,7 @@
     <div class="masonry first"></div>
     <div class="masonry second"></div>
     <div class="placeholder">
-        <i class="material-icons">search</i>
+        <i class="material-symbols">search</i>
         <h1>{$c->__('sticker.gif_title')}</h1>
         <h4>{$c->__('sticker.gif_text')}</h4>
     </div>
@@ -11,7 +11,7 @@
     <ul id="gifssearchbar" class="list fill thin">
         <li>
             <span class="primary icon gray">
-                <i class="material-icons">search</i>
+                <i class="material-symbols">search</i>
             </span>
             <form name="search" onsubmit="return false;">
                 <div>
@@ -25,7 +25,7 @@
     </ul>
     <ul class="tabs narrow">
         <li onclick="Stickers_ajaxShow('{$jid}')" class="active">
-            <a href="#"><i class="material-icons" style="font-size: 5rem;">gif</i></a>
+            <a href="#"><i class="material-symbols" style="font-size: 5rem;">gif</i></a>
         </li>
         {loop="$packs"}
             <li onclick="Stickers_ajaxShow('{$jid}', '{$value}')">

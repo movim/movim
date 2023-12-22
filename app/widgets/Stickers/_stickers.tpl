@@ -11,7 +11,7 @@
     <ul class="list">
         <li class="block large">
             <span class="primary icon gray">
-                <i class="material-icons">person</i>
+                <i class="material-symbols">person</i>
             </span>
             <div>
                 <p class="line">
@@ -30,7 +30,7 @@
     <ul class="tabs narrow">
         {if="$gifEnabled"}
             <li onclick="Stickers_ajaxShow('{$jid}')">
-                <a href="#"><i class="material-icons" style="font-size: 5rem;">gif</i></a>
+                <a href="#"><i class="material-symbols" style="font-size: 5rem;">gif</i></a>
             </li>
         {/if}
         {loop="$packs"}

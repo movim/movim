@@ -4,7 +4,7 @@
     {/autoescape}
 {else}
     <div class="placeholder">
-        <i class="material-icons">search</i>
+        <i class="material-symbols">search</i>
         <h4>{$c->__('search.subtitle')}</h4>
     </div>
 {/if}

@@ -2,7 +2,7 @@
     <form name="bannerform">
         <img class="avatar" src="{$me->getBanner('o') ?? ''}">
         <div class="placeholder">
-            <i class="material-icons">image</i>
+            <i class="material-symbols">image</i>
             <h1>{$c->__('banner.missing')}</h1>
         </div>
         <input type="hidden" name="photobin"/>
@@ -10,7 +10,7 @@
     <ul class="list thick divided">
         <li>
             <span class="primary icon bubble color green">
-                <i class="material-icons">attach_file</i>
+                <i class="material-symbols">attach_file</i>
             </span>
             <div>
                 <p>{$c->__('avatar.file')}</p>

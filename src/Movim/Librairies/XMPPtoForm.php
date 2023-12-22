@@ -286,7 +286,7 @@ class XMPPtoForm
         $li->appendChild($primary);
 
         $i = $this->html->createElement('i', \varToIcons($s['var']));
-        $i->setAttribute('class', 'material-icons');
+        $i->setAttribute('class', 'material-symbols');
         $primary->appendChild($i);
 
         $span = $this->html->createElement('span');

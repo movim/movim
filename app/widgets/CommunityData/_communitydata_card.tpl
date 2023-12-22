@@ -28,30 +28,30 @@
 
                 {if="$info->created"}
                     <br />
-                    <i class="material-icons icon-text">calendar</i>
+                    <i class="material-symbols icon-text">calendar</i>
                     {$info->created|strtotime|prepareDate:true,true}
                 {/if}
 
                 <br />
-                <i class="material-icons icon-text">article</i>
+                <i class="material-symbols icon-text">article</i>
                 {$c->__('communitydata.num', $num)}
                 ·
-                <i class="material-icons icon-text">people</i>
+                <i class="material-symbols icon-text">people</i>
                 {$c->__('communitydata.sub', $info->occupants)}
 
                 {if="$info->pubsubpublishmodel == 'publishers'"}
                     <br />
-                    <i class="material-icons icon-text">assignment_ind</i>
+                    <i class="material-symbols icon-text">assignment_ind</i>
                     {$c->__('communitydata.publishmodel_publishers')}
                 {/if}
                 {if="$info->pubsubpublishmodel == 'subscribers'"}
                     <br />
-                    <i class="material-icons icon-text">assignment_turned_in</i>
+                    <i class="material-symbols icon-text">assignment_turned_in</i>
                     {$c->__('communitydata.publishmodel_subscribers')}
                 {/if}
                 {if="$info->isGallery()"}
                     <br />
-                    <i class="material-icons icon-text">grid_view</i>
+                    <i class="material-symbols icon-text">grid_view</i>
                     {$c->__('communityconfig.type_gallery_title')}
                 {/if}
 

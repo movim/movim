@@ -4,7 +4,7 @@
         <ul class="list fill">
             <li>
                 <span class="primary icon gray">
-                    <i class="material-icons">face</i>
+                    <i class="material-symbols">face</i>
                 </span>
                 <div>
                     <input dir="auto" type="text" name="fn" value="{$contact->fn ?? ''}" placeholder="{$c->__('general.name')}">
@@ -16,12 +16,12 @@
                 <div>
                     <input dir="auto" type="text" name="name" value="{$contact->name ?? ''}" placeholder="{$c->__('general.nickname')}">
                     <label for="name">{$c->__('general.nickname')}</label>
-                    <span class="supporting"><i class="material-icons">lightbulb</i> {$c->__('vcard.nickname_info')}</span>
+                    <span class="supporting"><i class="material-symbols">lightbulb</i> {$c->__('vcard.nickname_info')}</span>
                 </div>
             </li>
             <li>
                 <span class="primary icon gray">
-                    <i class="material-icons">email</i>
+                    <i class="material-symbols">email</i>
                 </span>
                 <div>
                     <input type="email" name="email" value="{$contact->email ?? ''}" placeholder="{$c->__('general.email')}">
@@ -30,7 +30,7 @@
             </li>
             <li>
                 <span class="primary icon gray">
-                    <i class="material-icons">cake</i>
+                    <i class="material-symbols">cake</i>
                 </span>
                 <div>
                     <input type="date" name="date" value="{$contact->getDate() ?? ''}" placeholder="YYYY-M-MDD-MM">
@@ -39,7 +39,7 @@
             </li>
             <li>
                 <span class="primary icon gray">
-                    <i class="material-icons">link</i>
+                    <i class="material-symbols">link</i>
                 </span>
                 <div>
                     <input type="url" name ="url" value="{$contact->url ?? ''}" placeholder="https://mywebsite.com/">
@@ -48,7 +48,7 @@
             </li>
             <li>
                 <span class="primary icon gray">
-                    <i class="material-icons">short_text</i>
+                    <i class="material-symbols">short_text</i>
                 </span>
                 <div>
                     <textarea dir="auto" name="desc" id="desctext" placeholder="{$c->__('general.about')}" style="min-height: 3rem;" data-autoheight="true">{$desc ?? ''}</textarea>
@@ -57,7 +57,7 @@
             </li>
             <li>
                 <span class="primary icon gray">
-                    <i class="material-icons">place</i>
+                    <i class="material-symbols">place</i>
                 </span>
                 <div>
                     <input dir="auto" type="text" name ="locality" class="content" value="{$contact->adrlocality ?? ''}" placeholder="{$c->__('position.locality')}">
@@ -109,7 +109,7 @@
 <ul class="list fill thick">
     <li>
         <span class="primary icon orange bubble color">
-            <i class="material-icons">warning</i>
+            <i class="material-symbols">warning</i>
         </span>
         <div>
             <p>{$c->__('degraded.title')}</p>

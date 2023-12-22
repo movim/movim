@@ -14,10 +14,10 @@
         </li>
         <li onclick="Account_ajaxChangePassword()">
             <span class="primary icon">
-                <i class="material-icons">vpn_key</i>
+                <i class="material-symbols">vpn_key</i>
             </span>
             <span class="control icon gray">
-                <i class="material-icons">chevron_right</i>
+                <i class="material-symbols">chevron_right</i>
             </span>
             <div>
                 <p class="normal line">{$c->__('account.password_change_title')}</p>
@@ -25,10 +25,10 @@
         </li>
         <li onclick="Account_ajaxClearAccount()">
             <span class="primary icon orange">
-                <i class="material-icons">eject</i>
+                <i class="material-symbols">eject</i>
             </span>
             <span class="control icon gray">
-                <i class="material-icons">chevron_right</i>
+                <i class="material-symbols">chevron_right</i>
             </span>
             <div>
                 <p class="normal line">{$c->__('account.clear')}</p>
@@ -36,10 +36,10 @@
         </li>
         <li onclick="Account_ajaxRemoveAccount()">
             <span class="primary icon red">
-                <i class="material-icons">delete</i>
+                <i class="material-symbols">delete</i>
             </span>
             <span class="control icon gray">
-                <i class="material-icons">chevron_right</i>
+                <i class="material-symbols">chevron_right</i>
             </span>
             <div>
                 <p class="normal line">{$c->__('account.delete')}</p>

@@ -21,7 +21,7 @@
                         </span>
                     {/if}
                     <span class="control icon gray">
-                        <i class="material-icons">chevron_right</i>
+                        <i class="material-symbols">chevron_right</i>
                     </span>
                     <div>
                         <p class="line normal">

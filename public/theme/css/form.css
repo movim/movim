@@ -48,7 +48,7 @@ form > div textarea,
 }
 
 form > div .select:not(.multi):after {
-    font-family: 'Material Icons';
+    font-family: 'Material Symbols';
     content: "\e5c5";
     display: block;
     font-size: 4rem;

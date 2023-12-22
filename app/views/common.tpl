@@ -16,10 +16,10 @@
     <ul class="list thick">
         <li>
             <span class="primary icon gray">
-                <i class="material-icons">signal_cellular_null</i>
+                <i class="material-symbols">signal_cellular_null</i>
             </span>
             <span class="primary icon gray">
-                <i class="material-icons">signal_cellular_off</i>
+                <i class="material-symbols">signal_cellular_off</i>
             </span>
             <div>
                 <p class="normal line two">

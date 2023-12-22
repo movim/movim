@@ -2,10 +2,10 @@
     <ul class="list">
         <li>
             <span class="primary icon">
-                <i class="material-icons">reply</i>
+                <i class="material-symbols">reply</i>
             </span>
             <span class="control icon active" onclick="Chat_ajaxClearReply()">
-                <i class="material-icons">close</i>
+                <i class="material-symbols">close</i>
             </span>
             <div class="parent">
                 {if="$message->type == 'groupchat'"}
@@ -21,17 +21,17 @@
                 {if="$message->file"}
                     <p class="line">
                         {if="typeIsPicture($message->file['type'])"}
-                            <i class="material-icons">image</i> {$c->__('chats.picture')}
+                            <i class="material-symbols">image</i> {$c->__('chats.picture')}
                         {elseif="typeIsAudio($message->file['type'])"}
-                            <i class="material-icons">equalizer</i> {$c->__('chats.audio')}
+                            <i class="material-symbols">equalizer</i> {$c->__('chats.audio')}
                         {elseif="typeIsVideo($message->file['type'])"}
-                            <i class="material-icons">local_movies</i> {$c->__('chats.video')}
+                            <i class="material-symbols">local_movies</i> {$c->__('chats.video')}
                         {else}
-                            <i class="material-icons">insert_drive_file</i> {$c->__('avatar.file')}
+                            <i class="material-symbols">insert_drive_file</i> {$c->__('avatar.file')}
                         {/if}
                     </p>
                 {elseif="$message->encrypted"}
-                    <p class="line"><i class="material-icons">lock</i> {$c->__('message.encrypted')}</p>
+                    <p class="line"><i class="material-symbols">lock</i> {$c->__('message.encrypted')}</p>
                 {else}
                     <p class="line">{$message->body}</p>
                 {/if}

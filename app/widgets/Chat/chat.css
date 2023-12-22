@@ -617,7 +617,7 @@ li.oppose .bubble.file div.file video {
 
 li .bubble.file div.file[data-type="image/gif"]:after {
     color: white;
-    font-family: 'Material Icons';
+    font-family: 'Material Symbols';
     text-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
     position: absolute;
     font-size: 5rem;
@@ -640,7 +640,7 @@ li .bubble.file div.file a span.size:before {
 
 #chat_widget .bubble .message span.info:after {
     display: inline-block;
-    font-family: 'Material Icons';
+    font-family: 'Material Symbols';
     vertical-align: middle;
 }
 
@@ -649,7 +649,7 @@ li .bubble.file div.file a span.size:before {
     position: absolute;
     top: 1rem;
     right: 1rem;
-    font-family: 'Material Icons';
+    font-family: 'Material Symbols';
     color: white;
     text-shadow: 0 0 1rem rgba(0, 0, 0, 0.85);
 }

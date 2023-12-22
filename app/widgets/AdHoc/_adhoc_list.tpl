@@ -10,10 +10,10 @@
         {if="isset($value->attributes()->name)"}
             <li data-node="{$value->attributes()->node}" data-jid="{$value->attributes()->jid}">
                 <span class="primary icon gray">
-                    <i class="material-icons">{$c->getIcon((string)$value->attributes()->node)}</i>
+                    <i class="material-symbols">{$c->getIcon((string)$value->attributes()->node)}</i>
                 </span>
                 <span class="control icon gray">
-                    <i class="material-icons">chevron_right</i>
+                    <i class="material-symbols">chevron_right</i>
                 </span>
                 <div>
                     <p class="normal line" title="{$value->attributes()->name}">

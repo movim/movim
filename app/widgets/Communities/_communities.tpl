@@ -7,7 +7,7 @@
             {$c->__('page.contacts')}
         </a>
         <a href="#" class="on_mobile" onclick="Communities_ajaxHttpGetContacts();" title="{$c->__('page.feed')}">
-            <i class="material-icons">people</i>
+            <i class="material-symbols">people</i>
         </a>
     </li>
     <li {if="$type == 'news'"}class="active"{/if} >
@@ -15,7 +15,7 @@
             {$c->__('page.communities')}
         </a>
         <a href="#" class="on_mobile" onclick="Communities_ajaxHttpGetCommunities();" title="{$c->__('page.news')}">
-            <i class="material-icons">group_work</i>
+            <i class="material-symbols">group_work</i>
         </a>
     </li>
 </ul>

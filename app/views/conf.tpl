@@ -18,7 +18,7 @@
             <ul class="list middle">
                 <li>
                     <span id="menu" class="primary icon gray" >
-                        <i class="material-icons">tune</i>
+                        <i class="material-symbols">tune</i>
                     </span>
                     <div>
                         <p><?php echo __('page.configuration'); ?></p>

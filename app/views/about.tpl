@@ -5,7 +5,7 @@
                 <li>
                     <span class="primary active icon gray">
                         <a href="<?php echo \Movim\Route::urlize('main'); ?>">
-                            <i class="material-icons">arrow_back</i>
+                            <i class="material-symbols">arrow_back</i>
                         </a>
                     </span>
                     <div>

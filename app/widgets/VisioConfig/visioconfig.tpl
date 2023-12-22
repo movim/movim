@@ -2,7 +2,7 @@
     <ul class="list fill thick">
         <li>
             <span class="primary icon gray">
-                <i class="material-icons">info</i>
+                <i class="material-symbols">info</i>
             </span>
             <div>
                 <p class="line normal">{$c->__('visioconfig.title')}</p>
@@ -20,7 +20,7 @@
                 </li>
                 <li>
                     <span class="primary icon gray">
-                        <i class="material-icons">settings_voice</i>
+                        <i class="material-symbols">settings_voice</i>
                     </span>
                     <div>
                         <div class="select">
@@ -48,14 +48,14 @@
                         </div>
                         <p class="center">
                             <span class="button flat gray" onclick="VisioConfig.testMicrophone()">
-                                <i class="material-icons">mic</i> {$c->__('publish.preview')}
+                                <i class="material-symbols">mic</i> {$c->__('publish.preview')}
                             </span>
                         </p>
                     </div>
                 </li>
                 <li id="no_mic_sound" class="disabled">
                     <span class="primary icon small red">
-                        <i class="material-icons">mic_none</i>
+                        <i class="material-symbols">mic_none</i>
                     </span>
                     <div>
                         <p>{$c->__('visioconfig.no_mic_sound')}</p>
@@ -71,7 +71,7 @@
                 </li>
                 <li>
                     <span class="primary icon gray">
-                        <i class="material-icons">video_camera_back</i>
+                        <i class="material-symbols">video_camera_back</i>
                     </span>
                     <div>
                         <div class="select">
@@ -89,7 +89,7 @@
                                 <div>
                                     <p class="line center normal">
                                         <span class="button flat gray" onclick="VisioConfig.testCamera();">
-                                            <i class="material-icons">videocam</i> {$c->__('publish.preview')}
+                                            <i class="material-symbols">videocam</i> {$c->__('publish.preview')}
                                         </span>
                                     </p>
                                 </div>

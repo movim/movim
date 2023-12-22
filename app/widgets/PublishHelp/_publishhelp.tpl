@@ -6,7 +6,7 @@
     </li>
     <li>
         <span class="primary icon">
-            <i class="material-icons">format_size</i>
+            <i class="material-symbols">format_size</i>
         </span>
         <div>
             <p># Title H1</p>
@@ -15,7 +15,7 @@
     </li>
     <li>
         <span class="primary icon">
-            <i class="material-icons">format_bold</i>
+            <i class="material-symbols">format_bold</i>
         </span>
         <div>
             <p>**bolded**</p>
@@ -24,7 +24,7 @@
     </li>
     <li>
         <span class="primary icon">
-            <i class="material-icons">format_italic</i>
+            <i class="material-symbols">format_italic</i>
         </span>
         <div>
             <p>*emphasis*</p>
@@ -33,7 +33,7 @@
     </li>
     <li>
         <span class="primary icon">
-            <i class="material-icons">format_quote</i>
+            <i class="material-symbols">format_quote</i>
         </span>
         <div>
             <p>> Quoted line</p>
@@ -42,7 +42,7 @@
     </li>
     <li>
         <span class="primary icon">
-            <i class="material-icons">format_list_bulleted</i>
+            <i class="material-symbols">format_list_bulleted</i>
         </span>
         <div>
             <p>* Item 1</p>
@@ -51,7 +51,7 @@
     </li>
     <li>
         <span class="primary icon">
-            <i class="material-icons">format_list_numbered</i>
+            <i class="material-symbols">format_list_numbered</i>
         </span>
         <div>
             <p>1. Item 1</p>
@@ -60,7 +60,7 @@
     </li>
     <li>
         <span class="primary icon">
-            <i class="material-icons">functions</i>
+            <i class="material-symbols">functions</i>
         </span>
         <div>
             <p class="normal">`Sourcecode`</p>
@@ -68,7 +68,7 @@
     </li>
     <li>
         <span class="primary icon">
-            <i class="material-icons">link</i>
+            <i class="material-symbols">link</i>
         </span>
         <div>
             <p class="normal line">[my text](http://my_url/)</p>
@@ -76,7 +76,7 @@
     </li>
     <li>
         <span class="primary icon">
-            <i class="material-icons">image</i>
+            <i class="material-symbols">image</i>
         </span>
         <div>
             <p class="normal line">![Alt text](http://my_image_url/)</p>
@@ -91,10 +91,10 @@
     </li>
     <li>
         <span class="primary icon color bubble blue">
-            <i class="material-icons">help</i>
+            <i class="material-symbols">help</i>
         </span>
         <span class="control icon gray">
-            <i class="material-icons">chevron_right</i>
+            <i class="material-symbols">chevron_right</i>
         </span>
         <div>
             <p class="line">

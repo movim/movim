@@ -34,7 +34,7 @@
     </ul>
 {else}
     <div class="placeholder">
-        <i class="material-icons">article</i>
+        <i class="material-symbols">article</i>
         <h4>{$c->__('post.empty')}</h4>
     </div>
 {/if}
@@ -45,14 +45,14 @@
             <p class="center">
                 {if="(isset($previouspage) && (($before != null && $before != 'empty') || $after != null)) || $page > 0"}
                 <a class="button flat" href="#" onclick="MovimUtils.reload('{$previouspage}')">
-                    <i class="material-icons">keyboard_arrow_left</i>
+                    <i class="material-symbols">keyboard_arrow_left</i>
                     {$c->__('button.previous')}
                 </a>
                 {/if}
                 {if="$last"}
                 <a class="button flat" href="#" onclick="MovimUtils.reload('{$nextpage}')" title="{$c->__('post.older')}">
                     {$c->__('button.next')}
-                    <i class="material-icons">keyboard_arrow_right</i>
+                    <i class="material-symbols">keyboard_arrow_right</i>
                 </a>
                 {/if}
             </p>

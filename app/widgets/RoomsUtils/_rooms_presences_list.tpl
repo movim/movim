@@ -7,16 +7,16 @@
         </span>
         {if="$value->mucaffiliation == 'owner'"}
             <span class="control icon yellow" title="{$c->__('rooms.owner')}">
-                <i class="material-icons">star</i>
+                <i class="material-symbols">star</i>
             </span>
         {elseif="$value->mucaffiliation == 'admin'"}
             <span class="control icon gray" title="{$c->__('rooms.admin')}">
-                <i class="material-icons">star</i>
+                <i class="material-symbols">star</i>
             </span>
         {/if}
         {if="$value->mucrole == 'visitor'"}
             <span class="control icon gray" title="{$c->__('rooms.visitor')}">
-                <i class="material-icons">speaker_notes_off</i>
+                <i class="material-symbols">speaker_notes_off</i>
             </span>
         {/if}
         {if="$value->mucjid != $me"}
@@ -24,14 +24,14 @@
                 Chats_ajaxOpen('{$value->mucjid|echapJS}');
                 Chat.get('{$value->mucjid|echapJS}');
                 Drawer_ajaxClear();">
-                <i class="material-icons">comment</i>
+                <i class="material-symbols">comment</i>
             </span>
         {/if}
         {if="$conference->presence && ($conference->presence->mucrole == 'moderator' || $conference->presence->mucaffiliation == 'owner')"}
             <span class="control icon active gray divided" onclick="
                 RoomsUtils_ajaxChangeAffiliation('{$conference->conference|echapJS}', '{$value->mucjid|echapJS}');
                 Drawer_ajaxClear();">
-                <i class="material-icons">manage_accounts</i>
+                <i class="material-symbols">manage_accounts</i>
             </span>
         {/if}
         <div>
@@ -47,7 +47,7 @@
                 {/if}
                 {if="$value->capability"}
                     <span class="second" title="{$value->capability->name}">
-                        <i class="material-icons">{$value->capability->getDeviceIcon()}</i>
+                        <i class="material-symbols">{$value->capability->getDeviceIcon()}</i>
                     </span>
                 {/if}
             </p>
@@ -65,7 +65,7 @@
 {if="$more"}
     <li id="room_presences_more" class="active" onclick="RoomsUtils_ajaxAppendPresences('{$conference->conference|echapJS}', {$page})">
         <span class="primary icon gray">
-            <i class="material-icons">expand_more</i>
+            <i class="material-symbols">expand_more</i>
         </span>
         <div>
             <p class="line normal center">
