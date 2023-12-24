@@ -94,6 +94,7 @@ ul.list li>span:not(.bubble).active:active,
 ul.list li div.bubble:not(.file):active {
     cursor: pointer;
     background-color: rgba(var(--movim-element-action), 0.2);
+    font-variation-settings: 'FILL' 1;
 }
 
 /* Main elements */

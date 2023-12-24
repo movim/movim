@@ -399,6 +399,7 @@ input[type=button]:focus {
 .button.flat:focus,
 input[type=button].flat:focus {
     background-color: rgba(var(--movim-element-action), 0.4);
+    font-variation-settings: 'FILL' 1;
 }
 
 .button.action {

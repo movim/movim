@@ -1993,7 +1993,7 @@
         },
         {
             "name": "illuminate/bus",
-            "version": "v10.38.1",
+            "version": "v10.38.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/bus.git",
@@ -2046,16 +2046,16 @@
         },
         {
             "name": "illuminate/collections",
-            "version": "v10.38.1",
+            "version": "v10.38.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
-                "reference": "2677b3962a88640f92dba8a1f4ed38dcaaf13dad"
+                "reference": "63fc240a047788fbc2ebe153de85cb72fce88440"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/collections/zipball/2677b3962a88640f92dba8a1f4ed38dcaaf13dad",
-                "reference": "2677b3962a88640f92dba8a1f4ed38dcaaf13dad",
+                "url": "https://api.github.com/repos/illuminate/collections/zipball/63fc240a047788fbc2ebe153de85cb72fce88440",
+                "reference": "63fc240a047788fbc2ebe153de85cb72fce88440",
                 "shasum": ""
             },
             "require": {
@@ -2097,11 +2097,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2023-12-15T18:25:00+00:00"
+            "time": "2023-12-21T14:17:35+00:00"
         },
         {
             "name": "illuminate/conditionable",
-            "version": "v10.38.1",
+            "version": "v10.38.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/conditionable.git",
@@ -2147,7 +2147,7 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v10.38.1",
+            "version": "v10.38.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
@@ -2198,7 +2198,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v10.38.1",
+            "version": "v10.38.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -2246,16 +2246,16 @@
         },
         {
             "name": "illuminate/database",
-            "version": "v10.38.1",
+            "version": "v10.38.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "55b4633aff7c9fbf1e14bd579835344604fe4d31"
+                "reference": "f014850671278a8d1a0e9fd2f421aad5b487ab9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/55b4633aff7c9fbf1e14bd579835344604fe4d31",
-                "reference": "55b4633aff7c9fbf1e14bd579835344604fe4d31",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/f014850671278a8d1a0e9fd2f421aad5b487ab9e",
+                "reference": "f014850671278a8d1a0e9fd2f421aad5b487ab9e",
                 "shasum": ""
             },
             "require": {
@@ -2267,6 +2267,10 @@
                 "illuminate/macroable": "^10.0",
                 "illuminate/support": "^10.0",
                 "php": "^8.1"
+            },
+            "conflict": {
+                "carbonphp/carbon-doctrine-types": ">=3.0",
+                "doctrine/dbal": ">=4.0"
             },
             "suggest": {
                 "doctrine/dbal": "Required to rename columns and drop SQLite columns (^3.5.1).",
@@ -2311,11 +2315,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2023-12-20T14:23:33+00:00"
+            "time": "2023-12-21T01:49:42+00:00"
         },
         {
             "name": "illuminate/events",
-            "version": "v10.38.1",
+            "version": "v10.38.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/events.git",
@@ -2370,7 +2374,7 @@
         },
         {
             "name": "illuminate/macroable",
-            "version": "v10.38.1",
+            "version": "v10.38.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/macroable.git",
@@ -2416,7 +2420,7 @@
         },
         {
             "name": "illuminate/pipeline",
-            "version": "v10.38.1",
+            "version": "v10.38.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/pipeline.git",
@@ -2464,7 +2468,7 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v10.38.1",
+            "version": "v10.38.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
