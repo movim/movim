@@ -77,6 +77,9 @@ class RoomsUtils extends Base
         $view->assign('room', $room);
         $view->assign('picturesCount', $picturesCount);
         $view->assign('linksCount', $linksCount);
+        $view->assign('presences', $conference->presences()
+            ->with('capability')
+            ->get());
 
         if ($conference->isGroupChat()) {
             $view->assign('members', $conference->activeMembers()

@@ -192,7 +192,7 @@
 
             <ul class="list thin">
                 {loop="$members"}
-                    {$presence = $members->where('mucjid', $value->jid)->first()}
+                    {$presence = $presences->where('mucjid', $value->jid)->first()}
 
                     <li title="{$value->truename}">
                         {if="$value->contact"}
