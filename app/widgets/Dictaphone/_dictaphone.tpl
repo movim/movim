@@ -2,7 +2,7 @@
     <ul class="list">
         <li>
             <span id="record" class="primary icon color red bubble active">
-                <i class="material-symbols">fiber_manual_record</i>
+                <i class="material-symbols fill">fiber_manual_record</i>
             </span>
             <span id="play_pause" class="primary icon active">
                 <i class="material-symbols">play_arrow</i>

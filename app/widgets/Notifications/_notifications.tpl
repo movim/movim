@@ -65,7 +65,7 @@
                     {/if}
                     {if="$value->isLike()"}
                         <span class="control icon red">
-                            <i class="material-symbols">favorite</i>
+                            <i class="material-symbols fill">favorite</i>
                         </span>
                     {else}
                         <span class="control icon gray">

@@ -10,7 +10,7 @@
             <li class="block" onclick="MovimUtils.redirect('{$c->route('contact', $user->id)}')">
                 {if="$value->user->admin"}
                     <span class="control yellow icon">
-                        <i class="material-symbols">star</i>
+                        <i class="material-symbols fill">star</i>
                     </span>
                 {/if}
                 <span class="control gray icon">

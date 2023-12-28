@@ -173,13 +173,15 @@ article input[type=checkbox].spoiler + section label.spoiler {
     line-height: 10rem;
     font-size: 4rem;
     border-radius: 100%;
-    opacity: 0.9;
-    background-color: gray;
-    color: white;
+    background-color: rgb(var(--movim-main));
+    color: rgba(var(--movim-font), 0.87);
+    box-shadow: var(--elevation-1);
 }
 
 article section label.spoiler:hover {
     cursor: pointer;
+    font-variation-settings: 'FILL' 1;
+    box-shadow: var(--elevation-2);
 }
 
 /* Table */

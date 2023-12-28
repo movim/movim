@@ -4,7 +4,7 @@
     <ul class="list divided spaced middle">
         <li>
             <span class="primary icon red">
-                <i class="material-symbols">favorite</i>
+                <i class="material-symbols fill">favorite</i>
             </span>
             <div>
                 <p>{$post->likes->count()}</span> {$c->__('button.like')}</p>
@@ -130,7 +130,7 @@
                     <button class="button red flat"
                         id="like"
                         onclick="this.classList.add('disabled'); PostActions_ajaxDeleteConfirm('{$liked[0]}', '{$liked[1]}', '{$liked[2]}')">
-                        <i class="material-symbols">favorite_border</i>
+                        <i class="material-symbols fill">favorite</i>
                     </button>
                 {else}
                     <button class="button red flat"

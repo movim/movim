@@ -1242,7 +1242,7 @@ class Chat extends \Movim\Widget\Base
         }
 
         // Attached file
-        if (isset($message->file)) {
+        if (isset($message->file) && !$message->retracted) {
             // Build cards for the URIs
             $uri = explodeXMPPURI($message->file['uri']);
 

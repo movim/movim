@@ -70,7 +70,7 @@
 
                 {$count = $post->likes->count()}
                 {if="$count > 0"}
-                    {$count} <i class="material-symbols">favorite_border</i> ·
+                    {$count} <i class="material-symbols fill">favorite</i> ·
                 {/if}
 
                 {$count = $post->comments->count()}

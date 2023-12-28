@@ -206,11 +206,11 @@
                         {/if}
                         {if="$value->affiliation == 'owner'"}
                             <span class="control icon yellow" title="{$c->__('rooms.owner')}">
-                                <i class="material-symbols">star</i>
+                                <i class="material-symbols fill">star</i>
                             </span>
                         {elseif="$value->affiliation == 'admin'"}
                             <span class="control icon gray" title="{$c->__('rooms.admin')}">
-                                <i class="material-symbols">star</i>
+                                <i class="material-symbols fill">star</i>
                             </span>
                         {/if}
                         {if="$value->jid != $me"}

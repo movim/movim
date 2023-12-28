@@ -35,6 +35,10 @@
   font-feature-settings: 'liga';
 }
 
+.material-symbols.fill {
+  font-variation-settings: 'FILL' 1;
+}
+
 .material-symbols.flip-hor {
   transform: scale(-1, 1);
 }

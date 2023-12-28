@@ -173,16 +173,16 @@
                         {if="$liked"}
                             <a class="button narrow icon flat red" href="{$c->route('post', [$post->server, $post->node, $post->nodeid])}">
                                 {if="$post->likes->count() > 0"}{$post->likes->count()}{/if}
-                                <i class="material-symbols">favorite</i>
+                                <i class="material-symbols fill">favorite</i>
                             </a>
                         {else}
                             <a class="button narrow icon flat gray" href="#"
                             onclick="this.classList.add('disabled'); PostActions_ajaxLike('{$post->server}', '{$post->node}', '{$post->nodeid}')">
                             {if="$post->likes->count() > 0"}{$post->likes->count()}{/if}
                                 {if="$liked"}
-                                    <i class="material-symbols">favorite</i>
+                                    <i class="material-symbols fill">favorite</i>
                                 {else}
-                                    <i class="material-symbols">favorite_border</i>
+                                    <i class="material-symbols">favorite</i>
                                 {/if}
                             </a>
                         {/if}
