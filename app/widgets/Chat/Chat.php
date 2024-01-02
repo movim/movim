@@ -1276,6 +1276,10 @@ class Chat extends \Movim\Widget\Base
             }
         }
 
+        if ($message->retracted) {
+            $message->card = null;
+        }
+
         // Parent
         if ($message->parent) {
             if ($message->parent->file) {

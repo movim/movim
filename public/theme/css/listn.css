@@ -432,6 +432,11 @@ li div.bubble p {
     position: relative;
 }
 
+li div.bubble p i {
+    vertical-align: middle;
+    margin-top: -0.25rem;
+}
+
 li div.bubble p:empty {
     display: none;
 }
