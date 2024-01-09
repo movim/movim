@@ -15,6 +15,7 @@ v0.22.6 (trunk)
 * Fix #1254 Implement XEP-0191: Blocking Command to replace the internal system
 * Drop the Caps widget, replaced by the DOAP system by the XSF
 * Upgrade the icon pack from MaterialIcons to MaterialSymbols
+* Add support of online/offline browser events to quick disconnect/reconnect on network change
 
 v0.22.5
 ---------------------------
