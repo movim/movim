@@ -48,9 +48,7 @@ class Chat extends \Movim\Widget\Base
         $this->registerEvent('moderated', 'onRetracted');
         $this->registerEvent('receiptack', 'onMessageReceipt');
         $this->registerEvent('displayed', 'onMessage', 'chat');
-        $this->registerEvent('mam_get_handle', 'onMAMRetrieved');
-        $this->registerEvent('mam_get_handle_muc', 'onMAMMucRetrieved', 'chat');
-        $this->registerEvent('mam_get_handle_contact', 'onMAMContactRetrieved', 'chat');
+        $this->registerEvent('mam_get_handle', 'onMAMRetrieved', 'chat');
         $this->registerEvent('chatstate', 'onChatState', 'chat');
         //$this->registerEvent('subject', 'onConferenceSubject', 'chat'); Spam the UI during authentication
         $this->registerEvent('muc_setsubject_handle', 'onConferenceSubject', 'chat');
@@ -266,19 +264,15 @@ class Chat extends \Movim\Widget\Base
         $this->ajaxGetRoom($packet->content->jidfrom, false, true);
     }
 
-    public function onMAMRetrieved()
+    public function onMAMRetrieved($packet)
     {
-        Toast::send($this->__('chat.mam_retrieval'));
-    }
+        $counter = $packet->content;
 
-    public function onMAMMucRetrieved($packet)
-    {
-        $this->ajaxGetRoom($packet->content, true, true);
-    }
+        $this->rpc('MovimUtils.removeClass', '#chat_widget .contained', 'loading');
 
-    public function onMAMContactRetrieved($packet)
-    {
-        $this->ajaxGet($packet->content, true);
+        if ($counter > 0) {
+            $this->rpc('Chat.getHistory', false);
+        }
     }
 
     public function onMucConnected($packet)
@@ -333,6 +327,7 @@ class Chat extends \Movim\Widget\Base
         $date = $view->draw('_chat_date');
         $separator = $view->draw('_chat_separator');
 
+        $this->rpc('Chat.resetCurrentDateTime');
         $this->rpc('Chat.setGeneralElements', $date, $separator);
         $this->rpc(
             'Chat.setConfig',
@@ -395,6 +390,7 @@ class Chat extends \Movim\Widget\Base
             }
 
             $this->rpc('Chat.setObservers');
+            $this->rpc('Chat.resetCurrentDateTime');
             $this->prepareMessages($jid);
             $this->rpc('Notif.current', 'chat|' . $jid);
             $this->rpc('Chat.scrollToSeparator');
@@ -445,6 +441,7 @@ class Chat extends \Movim\Widget\Base
             }
 
             $this->rpc('Chat.setObservers');
+            $this->rpc('Chat.resetCurrentDateTime'); // TODO, not call there all the time ?!
             $this->prepareMessages($room, true);
             $this->rpc('Notif.current', 'chat|' . $room);
             $this->rpc('Chat.scrollToSeparator');
@@ -902,14 +899,17 @@ class Chat extends \Movim\Widget\Base
      * @param string jid
      * @param string time
      */
-    public function ajaxGetHistory($jid, $date, $muc = false, $prepend = true)
+    public function ajaxGetHistory(string $jid, ?string $date = null, bool $muc = false, bool $prepend = true, bool $tryMam = true)
     {
-        if (!validateJid($jid) || !isset($date)) {
+        if (!validateJid($jid)) {
             return;
         }
 
-        $messages = \App\Message::jid($jid)
-            ->where('published', $prepend ? '<' : '>', date(MOVIM_SQL_DATE, strtotime($date)));
+        $messages = \App\Message::jid($jid);
+
+        if ($date !== null) {
+            $messages = $messages->where('published', $prepend ? '<' : '>', date(MOVIM_SQL_DATE, strtotime($date)));
+        }
 
         $messages = $muc
             ? $messages->whereIn('type', $this->_messageTypesMuc)->whereNull('subject')
@@ -921,9 +921,7 @@ class Chat extends \Movim\Widget\Base
             ->get();
 
         if ($messages->count() > 0) {
-            if ($prepend) {
-                Toast::send($this->__('message.history', $messages->count()));
-            } else {
+            if (!$prepend) {
                 $messages = $messages->reverse();
             }
 
@@ -933,6 +931,17 @@ class Chat extends \Movim\Widget\Base
 
             $this->rpc('Chat.appendMessagesWrapper', $this->_wrapper, $prepend);
             $this->_wrapper = [];
+        }
+
+        // Not enough messages from the DB, lets try to get more from MAM
+        if ($tryMam && ($messages->count() == 0 || $messages->count() < $this->_pagination)) {
+            $this->rpc('MovimUtils.addClass', '#chat_widget .contained', 'loading');
+
+            if ($muc) {
+                $this->rpc('RoomsUtils_ajaxGetMAMHistory', $jid);
+            } else {
+                $this->rpc('Chats_ajaxGetMAMHistory', $jid);
+            }
         }
     }
 
@@ -1134,14 +1143,10 @@ class Chat extends \Movim\Widget\Base
             $this->rpc('Chat.appendMessagesWrapper', $this->_wrapper, false);
         }
 
-        if ($messages->count() == 0 && !$muc) {
-            //$chats = new Chats;
-            //$chats->ajaxGetHistory($jid);
-        }
-
         if ($event) {
             $this->event($muc ? 'chat_open_room' : 'chat_open', $jid);
         }
+
         $this->event('chat_counter', $this->user->unreads());
 
         if ($unreadsCount > 0) {
@@ -1263,7 +1268,6 @@ class Chat extends \Movim\Widget\Base
             if ($message->file['type'] != 'xmpp') {
                 $message->body = '';
             }
-
         }
 
         if (

@@ -97,7 +97,7 @@ class Rooms extends Base
                       ->where('bookmarkversion', (int)$packet->content)
                       ->get() as $room) {
             if ($room->autojoin && !$room->connected) {
-                $this->ajaxJoin($room->conference, $room->nick, true);
+                $this->ajaxJoin($room->conference, $room->nick);
             }
         }
 
@@ -191,7 +191,7 @@ class Rooms extends Base
     /**
      * @brief Join a chatroom
      */
-    public function ajaxJoin($room, $nickname = false, $noNotify = false)
+    public function ajaxJoin($room, $nickname = false)
     {
         if (!validateRoom($room)) {
             return;
@@ -228,10 +228,6 @@ class Rooms extends Base
         $m = new GetMembers;
         $m->setTo($room)
           ->request();
-
-        if ($noNotify) {
-            $p->noNotify();
-        }
 
         $p->setNickname($nickname);
         $p->request();

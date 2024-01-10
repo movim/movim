@@ -115,9 +115,9 @@ class Chats extends Base
     }
 
     /**
-     * @brief Get history
+     * @brief Get MAM history
      */
-    public function ajaxGetHistory(?string $jid = null)
+    public function ajaxGetMAMHistory(?string $jid = null)
     {
         $g = new \Moxl\Xec\Action\MAM\Get;
 
@@ -177,7 +177,7 @@ class Chats extends Base
             $chats[$jid] = 1;
 
             if ($history) {
-                $this->ajaxGetHistory($jid);
+                $this->ajaxGetMAMHistory($jid);
             }
 
             \App\Cache::c('chats', $chats);

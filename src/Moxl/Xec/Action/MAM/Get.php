@@ -25,7 +25,7 @@ class Get extends Action
 
         // Generating the queryid key.
         $this->_queryid = \generateKey(12);
-        $session->set('mamid' . $this->_queryid, true);
+        $session->set('mamid' . $this->_queryid, 0);
         $this->store();
 
         MAM::get(
@@ -43,21 +43,14 @@ class Get extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $session = Session::start();
-        $session->delete('mamid' . $this->_queryid);
-
         //MessageBuffer::getInstance()->save();
 
-        if ($this->_to) {
-            $this->method('handle_muc');
-            $this->pack($this->_to);
-        }
+        $session = Session::start();
 
-        if ($this->_jid) {
-            $this->method('handle_contact');
-            $this->pack($this->_jid);
-        }
+        $messagesCounter = $session->get('mamid' . $this->_queryid);
+        $this->pack($messagesCounter);
 
+        $session->delete('mamid' . $this->_queryid);
         $this->deliver();
 
         if (
