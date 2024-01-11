@@ -208,7 +208,7 @@ function formToArray(stdClass $form): array
 /**
  * Return the picture or fallback to the placeholder
  */
-function getPicture(?string $key, string $placeholder, string $size = 'm')
+function getPicture(?string $key, ?string $placeholder, string $size = 'm'): ?string
 {
     $sizes = [
         'xxl'   => [1280, 300],
@@ -759,8 +759,10 @@ function getSmileyPath($id)
 /**
  * @desc Return the url of an avatar placeholder
  */
-function avatarPlaceholder($id)
+function avatarPlaceholder(?string $id): ?string
 {
+    if ($id == null) return null;
+
     return \Movim\Route::urlize('picture', false, ['type' => 'avatar', 'id' => urlencode($id)]);
 }
 
