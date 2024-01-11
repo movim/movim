@@ -701,7 +701,8 @@ var Chat = {
         let i = 0;
 
         while (i < reactions.length) {
-            reactions[i].onclick = function () {
+            reactions[i].onclick = function (e) {
+                e.stopPropagation();
                 Stickers_ajaxReaction(this.dataset.mid);
             }
 
@@ -805,7 +806,8 @@ var Chat = {
     },
     setActionsButtonBehaviour: function () {
         document.querySelectorAll('#chat_widget .contained span.reply').forEach(reply =>
-            reply.onclick = function () {
+            reply.onclick = function (e) {
+                e.stopPropagation();
                 Chat_ajaxHttpDaemonReply(this.dataset.mid);
             }
         );
@@ -990,7 +992,7 @@ var Chat = {
             bubble.dataset.resource = data.resource;
         }
 
-        if (refBubble.dataset.resource == bubble.dataset.resource
+        if (refBubble && refBubble.dataset.resource == bubble.dataset.resource
             && mergeMsg == false
             && isMuc) {
             if (prepend) {

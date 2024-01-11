@@ -191,7 +191,7 @@ class Rooms extends Base
     /**
      * @brief Join a chatroom
      */
-    public function ajaxJoin($room, $nickname = false)
+    public function ajaxJoin(string $room, ?string $nickname = null)
     {
         if (!validateRoom($room)) {
             return;
@@ -204,7 +204,7 @@ class Rooms extends Base
         $p = new Muc;
         $p->setTo($room);
 
-        if ($nickname == false) {
+        if ($nickname == null) {
             $nickname = $this->user->username;
         }
 
@@ -214,6 +214,8 @@ class Rooms extends Base
                                ->first();
 
         if ($capability && ($capability->isMAM() || $capability->isMAM2())) {
+            $this->rpc('MovimUtils.addClass', '#chat_widget .contained', 'loading');
+
             $p->enableMAM();
 
             if ($capability->isMAM2()) {
