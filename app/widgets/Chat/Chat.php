@@ -860,8 +860,7 @@ class Chat extends \Movim\Widget\Base
         if (
             $message->isClassic()
             && (($message->isMuc() && $message->stanzaid)
-                || (!$message->isMuc() && $message->messageid)
-                || isset($message->thread))
+                || (!$message->isMuc() && $message->messageid))
         ) {
             $view = $this->tpl();
             $view->assign('message', $message);

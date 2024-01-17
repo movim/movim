@@ -434,19 +434,6 @@ class Message extends Model
                         (int)$stanza->fallback->body->attributes()->end
                     );
                 }
-            } else if ($this->thread) {
-                $parent = $this->user->messages()
-                    ->jid($this->jidfrom)
-                    ->where('thread', $this->thread)
-                    ->orderBy('published', 'asc')
-                    ->first();
-
-                if (
-                    $parent && $parent->mid != $this->mid
-                    && $parent->originid != $this->originid
-                ) {
-                    $this->parentmid = $parent->mid;
-                }
             }
 
             if ($this->isMuc()) {
