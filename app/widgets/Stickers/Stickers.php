@@ -186,29 +186,28 @@ class Stickers extends \Movim\Widget\Base
         $apiKey = $configuration->gifapikey;
 
         if (empty($apiKey)) return;
-
-        $keyword = filter_var($keyword, FILTER_FLAG_STRIP_HIGH);
+        $keyword = filter_var($keyword, FILTER_SANITIZE_URL);
         $keyword = str_replace(' ', '+', $keyword);
 
         requestAsyncURL(
-            'https://api.tenor.com/v1/search?q=' . $keyword .
-                '&key=' . $apiKey .
-                '&limit=' . $this->paginate .
-                '&pos=' . ($page * $this->paginate)
+            'https://tenor.googleapis.com/v2/search?q=' . $keyword .
+            '&media_filter=preview,tinywebm' .
+            '&key=' . $apiKey .
+            '&limit=' . $this->paginate .
+            '&pos=' . ($page * $this->paginate)
         )->then(function (ResponseInterface $response) {
             $view = $this->tpl();
-
             $results = \json_decode($response->getBody());
 
             if ($results) {
                 $i = 0;
                 foreach ($results->results as $result) {
                     $gif = [
-                        'id' => $result->id,
-                        'url' => $result->media[0]->tinywebm->url,
-                        'preview' => $result->media[0]->tinywebm->preview,
-                        'width' => $result->media[0]->tinywebm->dims[0],
-                        'height' => $result->media[0]->tinywebm->dims[1],
+                        'id' => (string)$result->id,
+                        'url' => (string)$result->media_formats->tinywebm->url,
+                        'preview' => (string)$result->media_formats->preview->url,
+                        'width' => (int)$result->media_formats->tinywebm->dims[0],
+                        'height' => (int)$result->media_formats->tinywebm->dims[1],
                     ];
                     $view->assign('gif', $gif);
 
@@ -222,13 +221,15 @@ class Stickers extends \Movim\Widget\Base
             }
 
             $this->rpc('Stickers.setGifsEvents');
+        }, function (\Exception $e) {
+            error_log($e->getMessage());
         });
     }
 
     /**
      * Resolve a GIF and share it as a message
      */
-    public function ajaxSendGif(string $to, int $gifId, bool $muc = false)
+    public function ajaxSendGif(string $to, string $gifId, bool $muc = false)
     {
         $configuration = Configuration::get();
         $apiKey = $configuration->gifapikey;
@@ -236,8 +237,9 @@ class Stickers extends \Movim\Widget\Base
         if (empty($apiKey)) return;
 
         requestAsyncURL(
-            'https://api.tenor.com/v1/gifs?ids=' . $gifId .
-                '&key=' . $apiKey
+            'https://tenor.googleapis.com/v2/posts?ids=' . $gifId .
+            '&media_filter=preview,tinywebm' .
+            '&key=' . $apiKey
         )->then(function (ResponseInterface $response) use ($to, $muc) {
             $results = \json_decode($response->getBody());
 
@@ -246,15 +248,15 @@ class Stickers extends \Movim\Widget\Base
 
                 $messageFile = new MessageFile;
 
-                $messageFile->name = $result->url;
-                $messageFile->uri = $result->media[0]->tinywebm->url;
+                $messageFile->name = (string)$result->url;
+                $messageFile->uri = (string)$result->media_formats->tinywebm->url;
                 $messageFile->type = 'video/webm';
-                $messageFile->size = $result->media[0]->tinywebm->size;
+                $messageFile->size = (int)$result->media_formats->tinywebm->size;
 
                 $messageFile->thumbnail->type = 'image/png';
-                $messageFile->thumbnail->uri = $result->media[0]->tinywebm->preview;
-                $messageFile->thumbnail->width = $result->media[0]->tinywebm->dims[0];
-                $messageFile->thumbnail->height = $result->media[0]->tinywebm->dims[1];
+                $messageFile->thumbnail->uri = (string)$result->media_formats->preview->url;
+                $messageFile->thumbnail->width = (int)$result->media_formats->preview->dims[0];
+                $messageFile->thumbnail->height = (int)$result->media_formats->preview->dims[1];
 
                 $chat = new \Chat;
                 $chat->sendMessage(
@@ -265,6 +267,8 @@ class Stickers extends \Movim\Widget\Base
                     $messageFile
                 );
             }
+        }, function (\Exception $e) {
+            error_log($e->getMessage());
         });
     }
 

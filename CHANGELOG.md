@@ -17,6 +17,7 @@ v0.22.6 (trunk)
 * Upgrade the icon pack from MaterialIcons to MaterialSymbols
 * Add support of online/offline browser events to quick disconnect/reconnect on network change
 * Implement MAM history retrieval for MUCs and contacts
+* Migrate the Tenor implementation to the v2 of the API
 
 v0.22.5
 ---------------------------
