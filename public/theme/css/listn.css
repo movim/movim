@@ -409,6 +409,7 @@ li div.bubble.file div.audio_player {
 
 li div.bubble.file div.audio_player {
     margin-bottom: 3rem;
+    padding: 0 0.5rem;
 }
 
 li div.bubble ul.card p:not(.line):not(:last-child) {
