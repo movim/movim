@@ -183,7 +183,7 @@ class SDPtoJingle
                             break;
 
                         case 'msid':
-                            $this->msid = $matches[1];
+                            $this->msid = trim($matches[1]);
                             break;
 
                         case 'bandwidth':
