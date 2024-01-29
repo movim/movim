@@ -18,6 +18,7 @@ v0.22.6 (trunk)
 * Add support of online/offline browser events to quick disconnect/reconnect on network change
 * Implement MAM history retrieval for MUCs and contacts
 * Migrate the Tenor implementation to the v2 of the API
+* Fix #1231 Trailing whitespace in msid?
 
 v0.22.5
 ---------------------------
