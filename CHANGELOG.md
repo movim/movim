@@ -1,7 +1,7 @@
 Movim Changelog
 ================
 
-v0.22.6 (trunk)
+v0.23
 ---------------------------
 * Add the message menu in the Picture preview
 * Move the info logic from the JS to the CSS
