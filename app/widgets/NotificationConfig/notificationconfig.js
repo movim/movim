@@ -3,7 +3,7 @@ MovimWebsocket.attach(function() {
         NotificationConfig_ajaxHttpRequest();
     }
 
-    navigator.serviceWorker.getRegistration('sw.js').then((registration) => {
+    navigator.serviceWorker.getRegistration(BASE_URI + 'sw.js').then((registration) => {
         if (!registration) {
             NotificationConfig_ajaxHttpPushGetConfig();
             return;

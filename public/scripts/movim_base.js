@@ -67,7 +67,7 @@ window.addEventListener('touchstart', function () { isTouch = true; }, { once: t
  */
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker
-        .register('sw.js')
+        .register(BASE_URI + 'sw.js')
         .then(e => navigator.serviceWorker.ready)
         .then((r) => {
             r.active.postMessage({ base_uri: BASE_URI });

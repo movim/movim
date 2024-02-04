@@ -187,7 +187,7 @@ var Notif = {
     },
     checkPushSubscription() {
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.getRegistration('sw.js').then((registration) => {
+            navigator.serviceWorker.getRegistration(BASE_URI + 'sw.js').then((registration) => {
                 if (!registration) return;
 
                 registration.pushManager.getSubscription().then((pushSubscription) => {
