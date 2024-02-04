@@ -187,10 +187,12 @@ class Publish extends Base
                 }
             }
 
-            if ($comments) {
-                $p->enableComments($comments->server);
-            } else {
-                $p->enableComments();
+            if (!$draft->comments_disabled) {
+                if ($comments) {
+                    $p->enableComments($comments->server);
+                } else {
+                    $p->enableComments();
+                }
             }
 
             if ($draft->open) {
@@ -345,6 +347,20 @@ class Publish extends Base
         }
     }
 
+    public function ajaxToggleCommentsDisabled($id, bool $commentsDisabled)
+    {
+        $draft = $this->user->drafts()->find($id);
+
+        if ($draft) {
+            $draft->comments_disabled = $commentsDisabled;
+            $draft->save();
+
+            Toast::send(($commentsDisabled)
+                ? $this->__('post.comments_disabled_yes')
+                : $this->__('post.comments_disabled_no'));
+        }
+    }
+
     public function ajaxClearReply($id)
     {
         $draft = $this->user->drafts()->find($id);
@@ -356,6 +372,13 @@ class Publish extends Base
             $this->rpc('MovimUtils.redirect', $this->route('publish', [$draft->server, $draft->node, $draft->nodeid]));
         }
 
+    }
+
+    public function prepareToggles(Draft $draft)
+    {
+        $view = $this->tpl();
+        $view->assign('draft', $draft);
+        return $view->draw('_publish_toggles');
     }
 
     public function prepareEmbed(DraftEmbed $embed)

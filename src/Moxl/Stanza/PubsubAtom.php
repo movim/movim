@@ -59,7 +59,7 @@ class PubsubAtom
         if ($this->name) {
             $author->appendChild($dom->createElement('name', $this->name));
         }
-        $author->appendChild($dom->createElement('uri', 'xmpp:'.$this->jid));
+        $author->appendChild($dom->createElement('uri', 'xmpp:' . $this->jid));
         $entry->appendChild($author);
 
         /*$link = $dom->createElement('link');
@@ -70,7 +70,7 @@ class PubsubAtom
 
         $link = $dom->createElement('link');
         $link->setAttribute('rel', 'alternate');
-        $link->setAttribute('href', 'xmpp:'.$this->to.'?;node='.$this->node.';item='.$this->id);
+        $link->setAttribute('href', 'xmpp:' . $this->to . '?;node=' . $this->node . ';item=' . $this->id);
         $entry->appendChild($link);
 
         if ($this->comments) {
@@ -79,11 +79,11 @@ class PubsubAtom
             $link->setAttribute('title', 'comments');
 
             if ($this->repost) {
-                $link->setAttribute('href', 'xmpp:'.$this->repost[0].'?;node=urn:xmpp:microblog:0:comments/'.$this->repost[2]);
+                $link->setAttribute('href', 'xmpp:' . $this->repost[0] . '?;node=urn:xmpp:microblog:0:comments/' . $this->repost[2]);
             } elseif ($this->comments === true) {
-                $link->setAttribute('href', 'xmpp:'.$this->to.'?;node=urn:xmpp:microblog:0:comments/'.$this->id);
+                $link->setAttribute('href', 'xmpp:' . $this->to . '?;node=urn:xmpp:microblog:0:comments/' . $this->id);
             } else {
-                $link->setAttribute('href', 'xmpp:'.$this->comments.'?;node=urn:xmpp:microblog:0:comments/'.$this->id);
+                $link->setAttribute('href', 'xmpp:' . $this->comments . '?;node=urn:xmpp:microblog:0:comments/' . $this->id);
             }
 
             $entry->appendChild($link);
@@ -129,7 +129,7 @@ class PubsubAtom
         if ($this->repost) {
             $link = $dom->createElement('link');
             $link->setAttribute('rel', 'via');
-            $link->setAttribute('href', 'xmpp:'.$this->repost[0].'?;node='.$this->repost[1].';item='.$this->repost[2]);
+            $link->setAttribute('href', 'xmpp:' . $this->repost[0] . '?;node=' . $this->repost[1] . ';item=' . $this->repost[2]);
             $entry->appendChild($link);
         }
 

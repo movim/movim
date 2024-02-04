@@ -1,6 +1,10 @@
 Movim Changelog
 ================
 
+v0.23.1
+---------------------------
+* Allow comments to be disabled during the publication flow
+
 v0.23
 ---------------------------
 * Add the message menu in the Picture preview

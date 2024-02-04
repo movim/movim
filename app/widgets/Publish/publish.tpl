@@ -2,26 +2,6 @@
     <header>
         <ul class="list thick">
             <li>
-                <span class="control privacy"
-                title="{$c->__('post.public')}">
-                    <form>
-                        <div>
-                            <div class="checkbox">
-                                <input
-                                    id="public"
-                                    name="public"
-                                    onchange="Publish_ajaxTogglePrivacy({$draft->id}, this.checked)"
-                                    {if="$draft && $draft->open"}
-                                        checked
-                                    {/if}
-                                    type="checkbox">
-                                <label for="public">
-                                    <i class="material-symbols"></i>
-                                </label>
-                            </div>
-                        </div>
-                    </form>
-                </span>
                 <span
                     class="primary icon active"
                     {if="$draft->node == 'urn:xmpp:microblog:0'"}
@@ -113,7 +93,15 @@
                     {/loop}
                 </ul>
             </li>
+        </ul>
 
+        <ul class="list">
+            {autoescape="off"}
+                {$c->prepareToggles($draft)}
+            {/autoescape}
+        </ul>
+
+        <ul class="list">
             <li>
                 <div>
                     <a
