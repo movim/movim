@@ -128,12 +128,12 @@ class Contact extends Model
 
     public function getPicture($size = 'm'): string
     {
-        return getPicture($this->id, $this->id, $size);
+        return getPicture($this->id, $this->truename, $size);
     }
 
     public function getBanner($size = 'xxl')
     {
-        $banner = !empty($this->id) ? getPicture($this->id . '_banner', $this->id, $size) : null;
+        $banner = !empty($this->id) ? getPicture($this->id . '_banner', $this->truename, $size) : null;
 
         return $banner == null ? $this->getPicture($size) : $banner;
     }

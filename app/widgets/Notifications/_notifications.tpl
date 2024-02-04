@@ -76,14 +76,19 @@
                     <div>
                         <p class="line" onclick="MovimUtils.reload('{$c->route('post', [$parent->server, $parent->node, $parent->nodeid])}'); Drawer.clear();">
                             {$value->truename}
-                            <span class="second">
-                                {$parent->title}
-                            </span>
+                            {if="$parent->title"}
+                                <span class="second">
+                                    {$parent->title}
+                                </span>
+                            {/if}
                         </p>
                         <p class="line" onclick="MovimUtils.reload('{$c->route('post', [$parent->server, $parent->node, $parent->nodeid])}'); Drawer.clear();">
                             <span class="info">{$value->published|strtotime|prepareDate:true,true}</span>
                             {if="!$value->isLike()"}
-                                {$c->__('post.commented')}<span class="second">{$value->title}</span>
+                                {$c->__('post.commented')}
+                                {if="$parent->title"}
+                                    <span class="second">{$value->title}</span>
+                                {/if}
                             {else}
                                 {$c->__('post.liked')}
                             {/if}
