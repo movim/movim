@@ -316,16 +316,6 @@ main>div:first-child:nth-last-child(2)+div {
     padding: 0;
 }
 
-.actions>div:last-child form>div {
-    min-height: 0;
-    top: -0.5rem;
-}
-
-.actions>div:last-child form>div input {
-    margin: 0;
-    padding-top: 1.5rem;
-}
-
 .drawer.actions>div:last-child ul.tabs {
     padding-bottom: 0.5rem;
     border-bottom: 0;

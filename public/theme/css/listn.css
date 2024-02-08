@@ -318,6 +318,62 @@ ul.list li.subheader>div>p {
     font-weight: 600;
 }
 
+/* Search forms */
+
+ul.list>li.main form:after,
+ul.list>li.search form:after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    box-shadow: var(--elevation-1);
+    background-color: rgba(var(--movim-element-action), 0.05);
+    transition: background-color 0.2s ease-in-out;
+    position: absolute;
+    top: 0;
+    border-radius: 3rem;
+    pointer-events: none;
+}
+
+ul.list>li.search form div {
+    min-height: 0;
+}
+
+ul.list>li.search form:before {
+    font-family: 'Material Symbols';
+    content: "\e8b6";
+    display: block;
+    font-size: 3rem;
+    color: rgba(var(--movim-font), 0.5);
+    position: absolute;
+    left: 1.5rem;
+    line-height: 5rem;
+    pointer-events: none;
+}
+
+ul.list>li.search.searching form:before {
+    content: "\e863";
+    animation: spin 2s linear infinite;
+}
+
+ul.list>li.search form input {
+    margin: 0 2rem;
+    margin-left: 5.5rem;
+    box-shadow: none;
+    padding: 1.25rem 0;
+    line-height: 2rem;
+    max-width: calc(100% - 7rem);
+}
+
+ul.list>li.search form input:focus {
+    box-shadow: none;
+}
+
+ul.list>li.main form:focus-within:after,
+ul.list>li.search form:focus-within:after {
+    background-color: rgba(var(--movim-element-action), 0.1);
+}
+
 /* Tabs */
 
 ul.tabs {

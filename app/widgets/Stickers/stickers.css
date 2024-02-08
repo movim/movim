@@ -24,11 +24,11 @@
 }
 
 #gifssearchbar {
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.75rem;
 }
 
 #gifs {
-    height: calc(100% - 6.25rem);
+    height: calc(100% - 6.5rem);
     overflow-x: hidden;
 }
 

@@ -76,8 +76,7 @@ var Search = {
         clearTimeout(Search.timer);
 
         if (value !== '') {
-            document.querySelector('#searchbar span.primary i').innerText = 'autorenew';
-            document.querySelector('#searchbar span.primary').classList.add('spin');
+            document.querySelector('#searchbar li.search').classList.add('searching');
         }
 
         Search.timer = setTimeout(() => {
@@ -89,8 +88,8 @@ var Search = {
 
     searchClear : function() {
         if (document.querySelector('#searchbar')) {
-            document.querySelector('#searchbar span.primary i').innerText = 'search';
-            document.querySelector('#searchbar span.primary').classList.remove('spin');
+            document.querySelector('#searchbar li.search').classList.remove('searching');
+
         }
     }
 }

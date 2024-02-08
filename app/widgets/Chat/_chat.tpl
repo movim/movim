@@ -25,7 +25,7 @@
         <div id="attach"></div>
         <div id="dictaphone"></div>
         <li class="emojis"></li>
-        <li>
+        <li class="main">
             <span class="primary icon gray primary_action"
                   title="{$c->__('sticker.title')}"
                   onclick="Stickers_ajaxShow('{$jid}')">

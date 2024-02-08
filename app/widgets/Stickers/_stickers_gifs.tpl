@@ -8,11 +8,8 @@
     </div>
 </section>
 <div>
-    <ul id="gifssearchbar" class="list fill thin">
-        <li>
-            <span class="primary icon gray">
-                <i class="material-symbols">search</i>
-            </span>
+    <ul id="gifssearchbar" class="list fill">
+        <li class="search">
             <form name="search" onsubmit="return false;">
                 <div>
                     <input name="keyword" autocomplete="off"

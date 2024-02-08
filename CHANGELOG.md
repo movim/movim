@@ -5,6 +5,7 @@ v0.23.1
 ---------------------------
 * Allow comments to be disabled during the publication flow
 * Fix the Drawer anchor navigation
+* Implement the new Search input from Material 3
 
 v0.23
 ---------------------------
