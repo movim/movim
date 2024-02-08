@@ -114,7 +114,7 @@ class Publish extends Base
             $view->assign('title', $draft->title);
             $view->assign('content', substr($doc->saveXML($doc->getElementsByTagName('div')->item(0)), 5, -6));
 
-            Drawer::fill($view->draw('_publish_preview'), true);
+            Drawer::fill('publish_preview', $view->draw('_publish_preview'), true);
         } else {
             Toast::send($this->__('publish.no_title'));
         }
@@ -398,7 +398,7 @@ class Publish extends Base
             if ($embed) {
                 $view = $this->tpl();
                 $view->assign('embed', $embed);
-                Drawer::fill($view->draw('_publish_images'), true);
+                Drawer::fill('publish_images', $view->draw('_publish_images'), true);
             }
         }
     }

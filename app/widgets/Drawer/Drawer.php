@@ -11,7 +11,7 @@ class Drawer extends Base
         $this->addcss('drawer.css');
     }
 
-    public static function fill($html = '', $actions = false)
+    public static function fill(string $key, $html = '', bool $actions = false)
     {
         RPC::call('MovimTpl.fill', '#drawer', $html);
         RPC::call('MovimTpl.hideMenu');
@@ -19,6 +19,8 @@ class Drawer extends Base
         if ($actions) {
             RPC::call('MovimUtils.addClass', '#drawer', 'actions');
         }
+
+        RPC::call('Drawer.open', $key);
     }
 
     public function ajaxClear()

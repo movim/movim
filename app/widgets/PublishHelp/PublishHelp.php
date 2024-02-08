@@ -12,7 +12,7 @@ class PublishHelp extends Base
     public function ajaxDrawer()
     {
         $view = $this->tpl();
-        Drawer::fill($view->draw('_publishhelp'), true);
+        Drawer::fill('publish_help', $view->draw('_publishhelp'), true);
     }
 
     public function prepareToggles(Draft $draft)

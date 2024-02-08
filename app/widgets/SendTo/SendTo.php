@@ -47,7 +47,7 @@ class SendTo extends Base
         $contact = $this->user->contact;
         $view->assign('me', ($contact == null) ? new App\Contact : $contact);
 
-        Drawer::fill($view->draw('_sendto_article'));
+        Drawer::fill('send_to_article', $view->draw('_sendto_article'));
     }
 
     public function ajaxSendContact($link)
@@ -76,7 +76,7 @@ class SendTo extends Base
                                             : 25 )
                                        ->get());
 
-        Drawer::fill($view->draw('_sendto_share'));
+        Drawer::fill('send_to_share', $view->draw('_sendto_share'));
     }
 
     public function ajaxSend(string $to, $file, $muc = false, $message = false)

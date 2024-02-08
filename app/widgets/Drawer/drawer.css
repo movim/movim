@@ -9,21 +9,6 @@
     transition: transform .25s ease-in-out, opacity .25s ease-in-out;
 }
 
-.drawer + .drawer_close.button.color {
-    position: absolute;
-    height: 5.5rem;
-    right: 0;
-    z-index: 1;
-    background-color: transparent;
-    transition: transform .25s var(--decelerate-easing);
-    box-shadow: none;
-}
-
-.drawer + .drawer_close.button.color i {
-    font-size: 3.5rem;
-    line-height: 5.5rem;
-}
-
 .drawer > section {
     height: 100%;
     overflow-y: auto;
@@ -43,11 +28,6 @@
     pointer-events: none;
 }
 
-.drawer.empty + .drawer_close.button.color {
-    transition-timing-function: var(--accelerate-easing);
-    transform: translateY(-150%);
-}
-
 .drawer form.padded {
     padding: 2rem;
 }
@@ -57,9 +37,5 @@
         border-radius: 0.75rem 0.75rem 0 0;
         width: 70rem;
         left: calc(50% - 35rem);
-    }
-
-    .drawer + .drawer_close.button.color {
-        right: calc(50% - 36rem);
     }
 }

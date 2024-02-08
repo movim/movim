@@ -291,7 +291,7 @@ main>div:first-child:nth-last-child(2)+div {
 /* Actions bar */
 
 .actions {
-    padding-bottom: 7rem;
+    padding-bottom: 6.5rem;
 }
 
 .actions>div:last-child {
@@ -302,7 +302,6 @@ main>div:first-child:nth-last-child(2)+div {
     padding: 0.5rem;
     padding-top: 0;
     position: absolute;
-    border-top: 1px solid rgba(var(--movim-font), 0.12);
 }
 
 .actions>div.no_bar:last-child {
@@ -328,7 +327,6 @@ main>div:first-child:nth-last-child(2)+div {
 }
 
 .drawer.actions>div:last-child ul.tabs {
-    margin-top: -0.5rem;
     padding-bottom: 0.5rem;
     border-bottom: 0;
     overflow-x: auto;
@@ -341,6 +339,11 @@ main>div:first-child:nth-last-child(2)+div {
     border-bottom-width: 0;
     border-top-color: transparent;
     border-radius: 0 0 1.25rem 1.25rem;
+    vertical-align: middle;
+}
+
+.drawer.actions>div:last-child ul.tabs li > * {
+    display: inline-block;
 }
 
 .drawer.actions>div:last-child ul.tabs li.active {

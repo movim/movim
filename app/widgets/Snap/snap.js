@@ -6,7 +6,12 @@ var Snap = {
     wait: undefined,
     imageCapture: null,
 
-    init: function() {
+    init: function () {
+        MovimTpl.pushAnchorState('snap', function () {
+            Snap.snap.classList = '';
+            Snap.close();
+        });
+
         Snap.snap = document.querySelector('#snap');
         Snap.canvas = document.querySelector('#snap canvas');
         Snap.wait = document.querySelector("#snap #snapwait");
@@ -50,8 +55,7 @@ var Snap = {
         };
 
         document.querySelector("#snap #snapback").onclick = () => {
-            Snap.snap.classList = '';
-            Snap.close();
+            history.back();
         };
 
         document.querySelector("#snap #snapclose").onclick = () => {
@@ -61,13 +65,13 @@ var Snap = {
         };
     },
 
-    close: function() {
+    close: function () {
         if (!Snap.video) return;
 
         let stream = Snap.video.srcObject;
 
         if (stream) {
-            stream.getTracks().forEach(function(track) {
+            stream.getTracks().forEach(function (track) {
                 track.stop();
             });
         }
@@ -75,7 +79,7 @@ var Snap = {
         Snap.video.srcObject = null;
     },
 
-    getStream: function() {
+    getStream: function () {
         Snap.snap.classList = 'wait';
 
         if (Snap.video.srcObject) {
@@ -85,7 +89,7 @@ var Snap = {
         const videoSource = Snap.videoSelect.value;
         const constraints = {
             video: {
-                deviceId: videoSource ? {exact: videoSource} : undefined,
+                deviceId: videoSource ? { exact: videoSource } : undefined,
                 width: { ideal: 4096 },
                 height: { ideal: 4096 }
             }
@@ -95,7 +99,7 @@ var Snap = {
             .then(Snap.gotStream);
     },
 
-    gotStream: function(stream) {
+    gotStream: function (stream) {
         Snap.snap.classList = 'shoot';
 
         Snap.videoSelect.selectedIndex = [...Snap.videoSelect.options].
@@ -103,7 +107,7 @@ var Snap = {
         Snap.video.srcObject = stream;
 
         // We try to use ImageCapture
-        if (typeof(ImageCapture) != 'undefined') {
+        if (typeof (ImageCapture) != 'undefined') {
             const track = stream.getVideoTracks()[0];
             Snap.imageCapture = new ImageCapture(track);
         }
@@ -114,11 +118,11 @@ var Snap = {
         };
     },
 
-    getDevices: function() {
+    getDevices: function () {
         return navigator.mediaDevices.enumerateDevices();
     },
 
-    gotDevices: function(deviceInfos) {
+    gotDevices: function (deviceInfos) {
         Snap.videoSelect.innerHTML = '';
 
         for (const deviceInfo of deviceInfos) {
@@ -135,7 +139,7 @@ var Snap = {
             document.querySelector("#snap #snapswitch").classList.add('enabled');
         }
     },
-    shoot: function() {
+    shoot: function () {
         if (Snap.imageCapture) {
             Snap.imageCapture.takePhoto()
                 .then(blob => createImageBitmap(blob))
@@ -159,7 +163,7 @@ var Snap = {
             Snap.compress();
         }
     },
-    compress: function() {
+    compress: function () {
         Snap.canvas.toBlob(
             function (blob) {
                 Upload.prepare(blob);
@@ -171,12 +175,12 @@ var Snap = {
         Upload.name = 'snapshot.jpg';
         Snap.snap.classList = 'upload';
     },
-    clear: function() {
+    clear: function () {
         Snap.video.play();
         var context = Snap.canvas.getContext('2d');
         context.clearRect(0, 0, Snap.canvas.width, Snap.canvas.height);
     },
-    end: function() {
+    end: function () {
         Snap.snap.classList = '';
         Snap.wait.style.backgroundImage = '';
         Snap.close();

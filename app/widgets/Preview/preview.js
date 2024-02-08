@@ -1,4 +1,8 @@
 var Preview = {
+    fill: function (html) {
+        MovimTpl.fill('#preview', html);
+        MovimTpl.pushAnchorState('preview', function () { Preview_ajaxHttpHide() });
+    },
     copyToClipboard: function(text) {
         MovimUtils.copyToClipboard(text);
         Preview_ajaxCopyNotify();

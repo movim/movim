@@ -134,7 +134,7 @@
     </ul>
 
     {if="$posts->count() > 0"}
-        <ul class="list card flex active middle">
+        <ul class="list card shadow flex active middle">
             {loop="$posts"}
                 {autoescape="off"}
                     {$c->prepareTicket($value)}

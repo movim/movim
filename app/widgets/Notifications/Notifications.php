@@ -62,7 +62,7 @@ class Notifications extends Base
 
     public function ajaxRequest()
     {
-        Drawer::fill($this->prepareNotifications());
+        Drawer::fill('notifications', $this->prepareNotifications());
         \App\Cache::c('notifs_since', date(MOVIM_SQL_DATE));
         $this->ajaxSetCounter();
         (new Notif)->ajaxClear('comments');

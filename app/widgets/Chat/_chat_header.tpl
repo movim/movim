@@ -9,11 +9,11 @@
             {if="$conference"}
                 <span class="primary icon bubble active
                     {if="!$conference->connected"}disabled{/if}"
-                    onclick="RoomsUtils_ajaxShowSubject('{$jid|echapJS}')">
+                    onclick="RoomsUtils_ajaxGetDrawer('{$jid|echapJS}')">
                     <img src="{$conference->getPicture()}">
             {else}
                 <span class="primary icon bubble active"
-                    onclick="RoomsUtils_ajaxShowSubject('{$jid|echapJS}')">
+                    onclick="RoomsUtils_ajaxGetDrawer('{$jid|echapJS}')">
                     <img src="{$jid|avatarPlaceholder}">
             {/if}
             {if="$conference"}
@@ -46,7 +46,7 @@
             </span>
 
             <div>
-                <p class="line active" title="{$jid|echapJS}" onclick="RoomsUtils_ajaxShowSubject('{$jid|echapJS}')">
+                <p class="line active" title="{$jid|echapJS}" onclick="RoomsUtils_ajaxGetDrawer('{$jid|echapJS}')">
                     {if="$conference && $conference->title"}
                         {$conference->title}
                         {if="$conference->notify == 0"}
@@ -98,7 +98,7 @@
                                 {/if}
                             {/loop}
                         {elseif="!empty($conference->subject)"}
-                            <span onclick="RoomsUtils_ajaxShowSubject('{$jid|echapJS}')">{$conference->subject}</span>
+                            <span onclick="RoomsUtils_ajaxGetDrawer('{$jid|echapJS}')">{$conference->subject}</span>
                         {/if}
                     {/if}
                 </p>

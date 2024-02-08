@@ -10,20 +10,23 @@ var MovimTpl = {
     translateX: 0,
     menuDragged: false,
     currentPage: '',
+    currentAnchor: '',
+    popAnchorKey: null,
+    popAnchorAction: null,
 
-    append : function(selector, html) {
+    append: function (selector, html) {
         target = document.querySelector(selector);
         if (target) {
             target.insertAdjacentHTML('beforeend', html);
         }
     },
-    appendAfter : function(selector, html) {
+    appendAfter: function (selector, html) {
         target = document.querySelector(selector);
         if (target) {
             target.insertAdjacentHTML('afterend', html);
         }
     },
-    back : function() {
+    back: function () {
         // If the context menu is shown
         var cm = document.querySelector('ul.context_menu');
         if (cm != null && cm.className.includes('shown')) {
@@ -38,7 +41,7 @@ var MovimTpl = {
                 Snap.end();
             }
         } else if (document.querySelector('#preview')
-         && document.querySelector('#preview').innerHTML != '') {
+            && document.querySelector('#preview').innerHTML != '') {
             Preview_ajaxHttpHide();
         } else if (Drawer.filled()) {
             Drawer.clear();
@@ -60,36 +63,57 @@ var MovimTpl = {
             history.back();
         }
     },
-    fill : function(selector, html) {
+    pushAnchorState: function (key, action) {
+        console.log('pushAnchorState');
+        console.log(key);
+        console.log(MovimTpl.popAnchorKey);
+        if (MovimTpl.popAnchorAction && key != MovimTpl.popAnchorKey) {
+            MovimTpl.popAnchorAction();
+        }
+
+        window.history.pushState(null, null, '#' + key);
+        MovimTpl.popAnchorKey = key;
+        MovimTpl.popAnchorAction = action;
+    },
+    clearAnchorState: function () {
+        if (MovimTpl.popAnchorAction) {
+            MovimTpl.popAnchorAction();
+        }
+
+        MovimTpl.popAnchorKey = null;
+        MovimTpl.popAnchorAction = null;
+        window.history.replaceState(null, null, ' ');
+    },
+    fill: function (selector, html) {
         target = document.querySelector(selector);
         if (target) {
             target.innerHTML = html;
         }
     },
-    hideMenu: function() {
+    hideMenu: function () {
         MovimUtils.removeClass('body > nav', 'active');
     },
-    showPanel: function() {
+    showPanel: function () {
         MovimUtils.addClass('main', 'enabled');
         MovimUtils.addClass('ul#bottomnavigation', 'hidden');
     },
-    hidePanel: function() {
+    hidePanel: function () {
         MovimUtils.removeClass('main', 'enabled');
         MovimUtils.removeClass('ul#bottomnavigation', 'hidden');
     },
-    prepend: function(selector, html) {
+    prepend: function (selector, html) {
         target = document.querySelector(selector);
         if (target) {
             target.insertAdjacentHTML('afterbegin', html);
         }
     },
-    prependBefore: function(selector, html) {
+    prependBefore: function (selector, html) {
         target = document.querySelector(selector);
         if (target) {
             target.insertAdjacentHTML('beforebegin', html);
         }
     },
-    remove: function(selector) {
+    remove: function (selector) {
         target = document.querySelector(selector);
         if (target) {
             target.remove();
@@ -104,7 +128,7 @@ var MovimTpl = {
             replacedNode = target.parentNode.replaceChild(element, target);
         }
     },
-    toggleContextMenu : function(e) {
+    toggleContextMenu: function (e) {
         var contextMenu = document.querySelector('ul.context_menu');
         if (contextMenu == null) return;
 
@@ -114,10 +138,10 @@ var MovimTpl = {
             contextMenu.classList.remove('shown');
         }
     },
-    toggleMenu : function() {
+    toggleMenu: function () {
         document.querySelector('body > nav').classList.toggle('active');
     },
-    touchEvents: function() {
+    touchEvents: function () {
         nav = document.querySelector('body > nav');
         mainDiv = document.querySelector('body > main > div:not(#chat_widget)');
         clientWidth = Math.abs(document.body.clientWidth);
@@ -125,21 +149,21 @@ var MovimTpl = {
 
         if (nav == null) return;
 
-        document.body.addEventListener('touchstart', function(event) {
+        document.body.addEventListener('touchstart', function (event) {
             MovimTpl.startX = event.targetTouches[0].pageX;
             MovimTpl.startY = event.targetTouches[0].pageY;
             nav.classList.remove('moving');
         }, true);
 
-        mainDiv.addEventListener('touchmove', function(event) {
+        mainDiv.addEventListener('touchmove', function (event) {
             moveX = event.targetTouches[0].pageX;
             MovimTpl.translateX = parseInt(moveX - MovimTpl.startX);
 
             if (!nav.classList.contains('active')
-                    && MovimTpl.startX < clientWidth/15
-                    && MovimTpl.startY > 56
-                    && MovimTpl.translateX < nav.offsetWidth + delay
-                    && MovimTpl.translateX > delay) {
+                && MovimTpl.startX < clientWidth / 15
+                && MovimTpl.startY > 56
+                && MovimTpl.translateX < nav.offsetWidth + delay
+                && MovimTpl.translateX > delay) {
                 MovimTpl.menuDragged = true;
                 event.stopPropagation();
 
@@ -147,7 +171,7 @@ var MovimTpl = {
             }
         }, true);
 
-        nav.addEventListener('touchmove', function(event) {
+        nav.addEventListener('touchmove', function (event) {
             moveX = event.targetTouches[0].pageX;
             MovimTpl.translateX = parseInt(moveX - MovimTpl.startX);
 
@@ -158,7 +182,7 @@ var MovimTpl = {
             }
         }, true);
 
-        document.body.addEventListener('touchend', function(event) {
+        document.body.addEventListener('touchend', function (event) {
             nav.classList.add('moving');
             nav.style.transform = '';
 
@@ -178,13 +202,18 @@ var MovimTpl = {
     }
 };
 
-movimAddOnload(function() {
+movimAddOnload(function () {
     if (MovimUtils.isMobile()) MovimTpl.touchEvents();
     document.body.addEventListener('click', MovimTpl.toggleContextMenu, false);
 
     MovimTpl.currentPage = window.location.pathname;
 
     window.addEventListener('popstate', e => {
+        if (MovimTpl.popAnchorKey || e.target.location.hash != '') {
+            MovimTpl.clearAnchorState();
+            return;
+        }
+
         if (e.target.location.pathname == MovimTpl.currentPage) return;
 
         if (e.state && e.state.soft) {
@@ -194,5 +223,6 @@ movimAddOnload(function() {
         }
 
         MovimTpl.currentPage = e.target.location.pathname;
+        MovimTpl.currentAnchor = window.location.hash.substring(1);
     });
 });

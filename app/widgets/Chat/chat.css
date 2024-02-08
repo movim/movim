@@ -255,7 +255,7 @@ main:not(.enabled) #chat_widget {
     background-color: rgba(var(--movim-background-main));
     position: absolute;
     top: 0;
-    border-radius: 1rem;
+    border-radius: 1.5rem;
 }
 
 #chat_widget .chat_box>ul.list>li>.control {

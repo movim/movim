@@ -28,6 +28,8 @@ var Draw = {
     ratio: 1,  // upscale ratio
 
     init: function (backgroundCanvas) {
+        MovimTpl.pushAnchorState('draw', function () { Draw.draw.classList.remove('open') });
+
         Draw.drawingData = [];
         Draw.backgroundCanvas = backgroundCanvas;
         Draw.topNav = document.querySelector('.draw-top-nav');
@@ -268,7 +270,7 @@ var Draw = {
 
         const drawback = document.querySelector('#draw #drawback');
         drawback.addEventListener('click', () => {
-            Draw.draw.classList.remove('open');
+            history.back();
         });
 
         // Add a flag to not re-bind event listeners

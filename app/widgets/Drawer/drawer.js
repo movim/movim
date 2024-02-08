@@ -1,14 +1,30 @@
 var Drawer = {
+    open: function (key) {
+        document.querySelector('#drawer').dataset.type = key;
+        MovimTpl.pushAnchorState(key, function () { Drawer.clear(key) });
+    },
     filled : function() {
         return (document.querySelector('#drawer').innerHTML != '');
     },
-    clear : function() {
-        Drawer_ajaxClear();
+    hasTabs : function () {
+        return Drawer.filled()
+            && document.querySelector('#drawer').contains(document.querySelector('#navtabs'));
+    },
+    clear : function(key) {
+        if (key && document.querySelector('#drawer').dataset.type == key) {
+            Drawer_ajaxClear();
+            return;
+        }
+
+        if (key == undefined) {
+            MovimTpl.clearAnchorState();
+            Drawer_ajaxClear();
+        }
     },
     toggle : function(e) {
         if (Drawer.filled()
         && document.querySelector('body') == e.target) {
-            Drawer_ajaxClear();
+            history.back();
         }
     }
 }
@@ -18,7 +34,7 @@ movimAddOnload(function() {
     document.addEventListener('keydown', function(e) {
         if (Drawer.filled()
         && e.key == 'Escape') {
-            Drawer.clear();
+            history.back();
         }
     }, false);
 });

@@ -27,7 +27,7 @@ class Search extends Base
 
         $view->assign('empty', $this->prepareSearch(''));
         $view->assign('chatroomactions', $chatroomActions);
-        Drawer::fill($view->draw('_search'), true);
+        Drawer::fill('search', $view->draw('_search'), true);
 
         $this->rpc('Search.init');
     }

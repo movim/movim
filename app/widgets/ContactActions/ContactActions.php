@@ -93,7 +93,7 @@ class ContactActions extends Base
             ->get()
         );
 
-        Drawer::fill($tpl->draw('_contactactions_drawer'));
+        Drawer::fill('contact_drawer', $tpl->draw('_contactactions_drawer'));
         $this->rpc('Tabs.create');
 
         if ($picturesCount > 0) {

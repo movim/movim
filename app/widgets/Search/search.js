@@ -60,7 +60,7 @@ var Search = {
 
     chat : function(jid) {
         if (MovimUtils.urlParts().page === 'chat') {
-            Drawer_ajaxClear();
+            Drawer.clear();
             Chats_ajaxOpen(jid);
             Chat.get(jid);
         } else {
@@ -88,8 +88,10 @@ var Search = {
     },
 
     searchClear : function() {
-        document.querySelector('#searchbar span.primary i').innerText = 'search';
-        document.querySelector('#searchbar span.primary').classList.remove('spin');
+        if (document.querySelector('#searchbar')) {
+            document.querySelector('#searchbar span.primary i').innerText = 'search';
+            document.querySelector('#searchbar span.primary').classList.remove('spin');
+        }
     }
 }
 

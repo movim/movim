@@ -23,14 +23,14 @@
             <span class="control icon active gray divided" onclick="
                 Chats_ajaxOpen('{$value->mucjid|echapJS}');
                 Chat.get('{$value->mucjid|echapJS}');
-                Drawer_ajaxClear();">
+                Drawer.clear();">
                 <i class="material-symbols">comment</i>
             </span>
         {/if}
         {if="$conference->presence && ($conference->presence->mucrole == 'moderator' || $conference->presence->mucaffiliation == 'owner')"}
             <span class="control icon active gray divided" onclick="
                 RoomsUtils_ajaxChangeAffiliation('{$conference->conference|echapJS}', '{$value->mucjid|echapJS}');
-                Drawer_ajaxClear();">
+                Drawer.clear();">
                 <i class="material-symbols">manage_accounts</i>
             </span>
         {/if}

@@ -29,7 +29,7 @@ class Preview extends Base
         $view->assign('url', $url);
         $view->assign('messageid', $messageId);
 
-        $this->rpc('MovimTpl.fill', '#preview', $view->draw('_preview'));
+        $this->rpc('Preview.fill', $view->draw('_preview'));
     }
 
     public function ajaxHttpGallery(string $url, $number = 0)

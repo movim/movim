@@ -55,10 +55,7 @@ class RoomsUtils extends Base
         $this->addcss('roomsutils.css');
     }
 
-    /**
-     * Display the room subject
-     */
-    public function ajaxShowSubject($room = false)
+    public function ajaxGetDrawer($room = false)
     {
         if (!validateRoom($room)) {
             return;
@@ -104,7 +101,7 @@ class RoomsUtils extends Base
 
         $view->assign('hasfingerprints', $hasFingerprints);
 
-        Drawer::fill($view->draw('_rooms_drawer'));
+        Drawer::fill('room_drawer', $view->draw('_rooms_drawer'));
         $this->rpc('Tabs.create');
 
         if (!$conference->isGroupChat()) {

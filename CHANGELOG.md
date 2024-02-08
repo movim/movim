@@ -4,6 +4,7 @@ Movim Changelog
 v0.23.1
 ---------------------------
 * Allow comments to be disabled during the publication flow
+* Fix the Drawer anchor navigation
 
 v0.23
 ---------------------------

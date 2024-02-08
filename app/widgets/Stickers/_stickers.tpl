@@ -30,12 +30,12 @@
     <ul class="tabs narrow">
         {if="$gifEnabled"}
             <li onclick="Stickers_ajaxShow('{$jid}')">
-                <a href="#"><i class="material-symbols" style="font-size: 5rem;">gif</i></a>
+                <i class="material-symbols" style="font-size: 5rem;">gif</i>
             </li>
         {/if}
         {loop="$packs"}
             <li onclick="Stickers_ajaxShow('{$jid}', '{$value}')" {if="$value == $pack"}class="active"{/if}>
-                <a href="#"><img alt=":sticker:" class="emoji medium" src="{$c->baseUri}stickers/{$value}/icon.png"></a>
+                <img alt=":sticker:" class="emoji medium" src="{$c->baseUri}stickers/{$value}/icon.png">
             </li>
         {/loop}
     </ul>

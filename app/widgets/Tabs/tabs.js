@@ -66,13 +66,13 @@ var Tabs = {
 
         Tabs.change(menuTab);
 
-        window.onhashchange = function () {
+        /*window.onhashchange = function () {
             var hash = window.location.hash.slice(1, -4);
             if (hash) {
                 let current = document.querySelector('li.' + hash);
                 if (current) Tabs.change(current);
             }
-        }
+        }*/
     },
 
     change: function (current) {
@@ -97,7 +97,10 @@ var Tabs = {
         var tabOn = document.getElementById(selected);
         tabOn.classList.remove('hide');
 
-        window.history.pushState(null, null, '#' + selected + '_tab');
+        // Only push state for tabs not in drawers
+        /*if (!Drawer.hasTabs()) {
+            window.history.pushState(null, null, '#' + selected + '_tab');
+        }*/
 
         // We try to call ajaxDisplay
         if (typeof window[tabOn.title + '_ajaxDisplay'] == 'function') {

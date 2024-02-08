@@ -217,14 +217,14 @@
                             <span class="control icon active gray divided" onclick="
                                 Chats_ajaxOpen('{$value->jid|echapJS}');
                                 Chat.get('{$value->jid|echapJS}');
-                                Drawer_ajaxClear();">
+                                Drawer.clear();">
                                 <i class="material-symbols">comment</i>
                             </span>
                         {/if}
                         {if="$conference->presence && ($conference->presence->mucrole == 'moderator' || $conference->presence->mucaffiliation == 'owner')"}
                             <span class="control icon active gray divided" onclick="
                                 RoomsUtils_ajaxChangeAffiliation('{$conference->conference|echapJS}', '{$value->jid|echapJS}');
-                                Drawer_ajaxClear();">
+                                Drawer.clear();">
                                 <i class="material-symbols">manage_accounts</i>
                             </span>
                         {/if}
@@ -305,7 +305,7 @@
                             <span class="control icon active gray divided" onclick="
                                 Chats_ajaxOpen('{$value->jid|echapJS}');
                                 Chat.get('{$value->jid|echapJS}');
-                                Drawer_ajaxClear();">
+                                Drawer.clear();">
                                 <i class="material-symbols">comment</i>
                             </span>
                             <div>
