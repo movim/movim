@@ -24,6 +24,7 @@ var Drawer = {
     toggle : function(e) {
         if (Drawer.filled()
         && document.querySelector('body') == e.target) {
+            e.stopPropagation();
             history.back();
         }
     }
