@@ -64,9 +64,6 @@ var MovimTpl = {
         }
     },
     pushAnchorState: function (key, action) {
-        console.log('pushAnchorState');
-        console.log(key);
-        console.log(MovimTpl.popAnchorKey);
         if (MovimTpl.popAnchorAction && key != MovimTpl.popAnchorKey) {
             MovimTpl.popAnchorAction();
         }
@@ -215,7 +212,6 @@ movimAddOnload(function () {
         }
 
         if (e.target.location.pathname == MovimTpl.currentPage) return;
-
         if (e.state && e.state.soft) {
             MovimUtils.reload(e.target.location.href, true);
         } else {

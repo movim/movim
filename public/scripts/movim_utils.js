@@ -101,6 +101,7 @@ var MovimUtils = {
     },
     pushSoftState: function (url) {
         window.history.pushState({ soft: true }, '', url);
+        MovimTpl.currentPage = window.location.pathname;
     },
     redirect: function (url) {
         window.location.href = url;
@@ -137,7 +138,6 @@ var MovimUtils = {
 
                 if (noHistory != true) {
                     MovimUtils.pushSoftState(uri);
-                    MovimTpl.currentPage = uri;
                 }
 
                 if (typeof MovimWebsocket != 'undefined') {
