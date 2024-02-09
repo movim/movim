@@ -148,18 +148,16 @@ main:not(.enabled) #chat_widget {
 
 #chat_widget .chat_box form>div {
     min-height: 0;
-    top: -2rem;
+    padding: 1.5rem 0;
 }
 
 #chat_widget .chat_box form textarea {
-    padding-top: 0;
-    margin-top: 3.25rem;
-    margin-bottom: -1.75rem;
-    margin-left: 2rem;
+    padding: 0;
+    margin: 0 2rem;
     max-height: 50vh;
     overflow-y: auto;
-    width: calc(100% - 3rem);
     box-shadow: none;
+    width: calc(100% - 4rem);
 }
 
 #chat_widget .chat_box form textarea~span.encrypted,

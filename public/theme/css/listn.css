@@ -320,8 +320,8 @@ ul.list li.subheader>div>p {
 
 /* Search forms */
 
-ul.list>li.main form:after,
-ul.list>li.search form:after {
+ul.list>li.main form div:after,
+ul.list>li.search form div:after {
     content: "";
     display: block;
     width: 100%;
@@ -337,9 +337,10 @@ ul.list>li.search form:after {
 
 ul.list>li.search form div {
     min-height: 0;
+    margin: 0 1rem;
 }
 
-ul.list>li.search form:before {
+ul.list>li.search form div:before {
     font-family: 'Material Symbols';
     content: "\e8b6";
     display: block;
@@ -351,7 +352,7 @@ ul.list>li.search form:before {
     pointer-events: none;
 }
 
-ul.list>li.search.searching form:before {
+ul.list>li.search.searching form div:before {
     content: "\e863";
     animation: spin 2s linear infinite;
 }
@@ -369,8 +370,8 @@ ul.list>li.search form input:focus {
     box-shadow: none;
 }
 
-ul.list>li.main form:focus-within:after,
-ul.list>li.search form:focus-within:after {
+ul.list>li.main form div:focus-within:after,
+ul.list>li.search form div:focus-within:after {
     background-color: rgba(var(--movim-element-action), 0.1);
 }
 
