@@ -88,11 +88,9 @@
                         data-jid="{$jid}"
                         data-muc="{if="$muc"}true{/if}"
                         data-muc-group="{if="isset($conference) && $conference->isGroupChat()"}true{/if}"
-                        {$rand = rand(0, 2)}
+                        {$rand = rand(0, 1)}
                         {if="isset($conference) && $conference->presence && $conference->presence->mucrole == 'visitor'"}
                             placeholder="{$c->__('message.visitor_help')}"
-                        {elseif="$rand == 2 && (!$muc || $conference && $conference->isGroupChat())"}
-                            placeholder="{$c->__('message.edit_help')}"
                         {elseif="$rand == 1"}
                             placeholder="{$c->__('message.emoji_help')}"
                         {else}
