@@ -164,7 +164,7 @@ var Chat = {
         Chat.scrollTotally();
 
         // In case it was in edit mode
-        textarea.classList.remove('edit');
+        textarea.parentNode.parentNode.parentNode.classList.remove('edit');
 
         textarea.focus();
 
@@ -407,7 +407,7 @@ var Chat = {
             } else if (event.key == 'Escape'
                 && (this.value == '' || Chat.edit == true)) {
                 localStorage.removeItem(textarea.dataset.jid + '_message');
-                textarea.classList.remove('edit');
+                textarea.parentNode.parentNode.parentNode.classList.remove('edit');
                 Chat.clearReplace();
             }
         };
@@ -578,7 +578,7 @@ var Chat = {
         Chat.edit = true;
         var textarea = Chat.getTextarea();
         textarea.value = value;
-        textarea.classList.add('edit');
+        textarea.parentNode.parentNode.parentNode.classList.add('edit');
 
         if (mid) {
             textarea.dataset.mid = mid;

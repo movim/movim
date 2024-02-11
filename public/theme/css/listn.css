@@ -340,6 +340,7 @@ ul.list>li.search form div {
     margin: 0 1rem;
 }
 
+ul.list>li.main.edit form div:before,
 ul.list>li.search form div:before {
     font-family: 'Material Symbols';
     content: "\e8b6";
@@ -358,7 +359,7 @@ ul.list>li.search.searching form div:before {
 }
 
 ul.list>li.search form input {
-    margin: 0 2rem;
+    margin-right: 2rem;
     margin-left: 5.5rem;
     box-shadow: none;
     padding: 1.25rem 0;

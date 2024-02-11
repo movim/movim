@@ -177,11 +177,6 @@ form textarea:focus:invalid + label {
     color: var(--p-red);
 }
 
-/* Chat edit */
-#chat_widget .chat_box form textarea.edit:focus {
-    box-shadow: 0px 2px 0px #FBC02D;
-}
-
 body:not(.nightmode) header.fixed ul.list li > div > p span.second {
     color: rgba(var(--movim-background-main), 0.60);
 }

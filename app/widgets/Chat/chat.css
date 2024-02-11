@@ -158,6 +158,17 @@ main:not(.enabled) #chat_widget {
     overflow-y: auto;
     box-shadow: none;
     width: calc(100% - 4rem);
+    transition: margin-left 0.1s ease-in-out;
+}
+
+#chat_widget .chat_box ul.list>li.main.edit form div:before {
+    content: "\e3c9";
+    top: 0;
+    line-height: 6rem;
+}
+
+#chat_widget .chat_box ul.list>li.main.edit form textarea {
+    margin-left: 5.5rem;
 }
 
 #chat_widget .chat_box form textarea~span.encrypted,
