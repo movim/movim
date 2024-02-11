@@ -135,7 +135,7 @@ var Chat = {
 
         Chat_ajaxGetRoom(jid);
     },
-    getHistory: function(tryMam) {
+    getHistory: function (tryMam) {
         var textarea = Chat.getTextarea();
 
         if (textarea) {
@@ -592,7 +592,7 @@ var Chat = {
         Chat.delivery_error = delivery_error;
         Chat.action_impossible_encrypted_error = action_impossible_encrypted_error;
     },
-    resetCurrentDateTime: function() {
+    resetCurrentDateTime: function () {
         Chat.currentDateTime = null;
     },
     setGeneralElements(date, separator) {
@@ -925,8 +925,15 @@ var Chat = {
         } else if (discussion !== null) {
             if (discussion.querySelector('ul').innerHTML === '') {
                 discussion.querySelector('ul').classList.remove('spin');
-                discussion.querySelector('.placeholder').classList.add('show');
+                discussion.querySelector('.placeholder.empty').classList.add('show');
             }
+        }
+
+        if (discussion.querySelectorAll('ul li:not(.oppose)').length > 0 && discussion.querySelectorAll('ul li.oppose').length == 0
+            && discussion.querySelectorAll('ul li').length < 5) {
+            discussion.querySelector('.placeholder.first_messages').classList.add('show');
+        } else {
+            discussion.querySelector('.placeholder.first_messages').classList.remove('show');
         }
 
         Chat.setScrollBehaviour();

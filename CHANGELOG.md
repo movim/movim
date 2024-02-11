@@ -6,6 +6,7 @@ v0.23.1
 * Allow comments to be disabled during the publication flow
 * Fix the Drawer anchor navigation
 * Implement the new Search input from Material 3
+* Add a "beginning of conversation" placeholder
 
 v0.23
 ---------------------------

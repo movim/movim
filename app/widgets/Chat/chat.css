@@ -387,11 +387,11 @@ main:not(.enabled) #chat_widget {
     padding: 0 1rem;
 }
 
-#chat_widget ul~.placeholder {
+#chat_widget .contained .placeholder {
     display: none;
 }
 
-#chat_widget ul:empty~.placeholder.show {
+#chat_widget .placeholder.show {
     display: block;
     animation: fadein 1s;
 }
