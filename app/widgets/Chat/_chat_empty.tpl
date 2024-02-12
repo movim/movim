@@ -1,5 +1,5 @@
 <div class="placeholder">
-    <i class="material-symbols">forum</i>
+    <i class="material-symbols fill">forum</i>
 </div>
 
 <ul class="list flex fifth card shadow compact middle active">

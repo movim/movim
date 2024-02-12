@@ -7,21 +7,23 @@
 <div id="{$jid|cleanupId}-discussion" class="contained {if="$muc"}muc{/if}">
     <section id="{$jid|cleanupId}-messages">
         <div class="placeholder first_messages">
-            <i class="material-symbols">waving_hand</i>
+            <i class="material-symbols fill">waving_hand</i>
             <h1>{$c->__('chat.first_messages_title')}</h1>
-            <h4 style="margin-bottom: 1rem;">{$c->__('chat.first_messages_text')}</h4>
-            <h4>
-                <button class="button color" onclick="ContactActions_ajaxAddAsk('{$jid|echapJS}')">
-                    <i class="material-symbols">add</i> {$c->__('chat.first_messages_add')}
-                </button>
-                <button class="button flat" onclick="ChatActions_ajaxBlock('{$jid|echapJS}'); Notifications_ajaxRefuse('{$jid|echapJS}');">
-                    {$c->__('chat.first_messages_block')}
-                </button>
-            </h4>
+            {if="!$muc"}
+                <h4 style="margin-bottom: 1rem;">{$c->__('chat.first_messages_text')}</h4>
+                <h4>
+                    <button class="button color" onclick="ContactActions_ajaxAddAsk('{$jid|echapJS}')">
+                        <i class="material-symbols">add</i> {$c->__('chat.first_messages_add')}
+                    </button>
+                    <button class="button flat" onclick="ChatActions_ajaxBlock('{$jid|echapJS}'); Notifications_ajaxRefuse('{$jid|echapJS}');">
+                        {$c->__('chat.first_messages_block')}
+                    </button>
+                </h4>
+            {/if}
         </div>
         <ul class="list spin conversation" id="{$jid|cleanupId}-conversation"></ul>
         <div class="placeholder empty">
-            <i class="material-symbols">chat</i>
+            <i class="material-symbols fill">chat</i>
             <h1>{$c->__('chat.new_title')}</h1>
             <h4>{$c->__('chat.new_text')}</h4>
             <h4>{$c->__('message.edit_help')}</h4>
