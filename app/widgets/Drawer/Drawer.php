@@ -15,7 +15,6 @@ class Drawer extends Base
     {
         RPC::call('MovimTpl.fill', '#drawer', $html);
         RPC::call('MovimTpl.hideMenu');
-        RPC::call('MovimUtils.removeClass', '#drawer', 'empty');
         if ($actions) {
             RPC::call('MovimUtils.addClass', '#drawer', 'actions');
         }
@@ -25,7 +24,7 @@ class Drawer extends Base
 
     public function ajaxClear()
     {
-        RPC::call('MovimUtils.addClass', '#drawer', 'empty');
+        RPC::call('MovimTpl.fill', '#drawer', '');
         RPC::call('MovimUtils.removeClass', '#drawer', 'actions');
     }
 }

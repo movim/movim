@@ -61,13 +61,13 @@ body.nightmode .toast {
     max-height: initial;
 }
 
-.snackbar#status_websocket:not(.hide) ~ main,
-.snackbar#status_websocket:not(.hide) ~ div.dialog {
+.snackbar#status_websocket:not(.hide) ~ main {
     opacity: 0.5;
     pointer-events: none;
     filter: grayscale(1);
 }
 
+.snackbar#status_websocket:not(.hide) ~ div.dialog,
 .snackbar#status_websocket:not(.hide) ~ div.drawer {
     opacity: 0;
 }

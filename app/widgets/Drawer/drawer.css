@@ -21,7 +21,7 @@
     margin: 0 auto;
 }
 
-.drawer.empty {
+.drawer:empty {
     transition-timing-function: ease-in-out;
     transform: translateY(10%);
     opacity: 0;

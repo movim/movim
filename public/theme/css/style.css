@@ -70,8 +70,8 @@ body>nav.active {
     width: 45rem;
 }
 
-body>div.drawer:not(.empty)~main,
-body>div.drawer:not(.empty)~nav,
+body>div.drawer:not(:empty)~main,
+body>div.drawer:not(:empty)~nav,
 body>div.dialog:not(:empty)~main,
 body>div.dialog:not(:empty)~nav,
 body>nav.active~main {
@@ -292,6 +292,10 @@ main>div:first-child:nth-last-child(2)+div {
 
 .actions {
     padding-bottom: 6.5rem;
+}
+
+.actions[data-type="search"] {
+    padding-bottom: 7.5rem;
 }
 
 .actions>div:last-child {
