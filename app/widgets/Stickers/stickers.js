@@ -58,18 +58,15 @@ var Stickers = {
                 Stickers.stickersPage = 0;
 
                 if (search.value !== '') {
-                    document.querySelector('#gifssearchbar span.primary i').innerText = 'autorenew';
-                    document.querySelector('#gifssearchbar span.primary').classList.add('spin');
+                    document.querySelector('#gifssearchbar li.search').classList.add('searching');
                     Stickers_ajaxSearchGifs(search.value, Stickers.stickersPage);
                 }
-
             }, 400);
         });
     },
     setGifsEvents() {
         if (search.value !== '') {
-            document.querySelector('#gifssearchbar span.primary i').innerText = 'search';
-            document.querySelector('#gifssearchbar span.primary').classList.remove('spin');
+            document.querySelector('#gifssearchbar li.search').classList.remove('searching');
         }
 
         const gifs = document.querySelectorAll('#gifs video');
