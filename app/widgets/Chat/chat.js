@@ -858,6 +858,8 @@ var Chat = {
         if (page && Chat.checkDiscussion(page)) {
             if (discussion == null) return;
 
+            discussion.querySelector('.placeholder.empty').classList.remove('show');
+
             Chat.setScroll();
 
             // Get all the messages keys

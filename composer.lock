@@ -879,16 +879,16 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "3.8.1",
+            "version": "3.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "c9ea252cdce4da324ede3d6c5913dd89f769afd2"
+                "reference": "a19a1d05ca211f41089dffcc387733a6875196cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/c9ea252cdce4da324ede3d6c5913dd89f769afd2",
-                "reference": "c9ea252cdce4da324ede3d6c5913dd89f769afd2",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/a19a1d05ca211f41089dffcc387733a6875196cb",
+                "reference": "a19a1d05ca211f41089dffcc387733a6875196cb",
                 "shasum": ""
             },
             "require": {
@@ -972,7 +972,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/dbal/issues",
-                "source": "https://github.com/doctrine/dbal/tree/3.8.1"
+                "source": "https://github.com/doctrine/dbal/tree/3.8.2"
             },
             "funding": [
                 {
@@ -988,7 +988,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-02-03T17:33:49+00:00"
+            "time": "2024-02-12T18:36:36+00:00"
         },
         {
             "name": "doctrine/deprecations",
@@ -1130,16 +1130,16 @@
         },
         {
             "name": "doctrine/inflector",
-            "version": "2.0.9",
+            "version": "2.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/inflector.git",
-                "reference": "2930cd5ef353871c821d5c43ed030d39ac8cfe65"
+                "reference": "5817d0659c5b50c9b950feb9af7b9668e2c436bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/inflector/zipball/2930cd5ef353871c821d5c43ed030d39ac8cfe65",
-                "reference": "2930cd5ef353871c821d5c43ed030d39ac8cfe65",
+                "url": "https://api.github.com/repos/doctrine/inflector/zipball/5817d0659c5b50c9b950feb9af7b9668e2c436bc",
+                "reference": "5817d0659c5b50c9b950feb9af7b9668e2c436bc",
                 "shasum": ""
             },
             "require": {
@@ -1201,7 +1201,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/inflector/issues",
-                "source": "https://github.com/doctrine/inflector/tree/2.0.9"
+                "source": "https://github.com/doctrine/inflector/tree/2.0.10"
             },
             "funding": [
                 {
@@ -1217,7 +1217,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-01-15T18:05:13+00:00"
+            "time": "2024-02-18T20:23:39+00:00"
         },
         {
             "name": "embed/embed",
@@ -1993,16 +1993,16 @@
         },
         {
             "name": "illuminate/bus",
-            "version": "v10.43.0",
+            "version": "v10.45.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/bus.git",
-                "reference": "a183e52039cc4f54d712ea8639d99544fcd0d593"
+                "reference": "1996308375daa8ed4139fc3db0473e991a713dcc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/bus/zipball/a183e52039cc4f54d712ea8639d99544fcd0d593",
-                "reference": "a183e52039cc4f54d712ea8639d99544fcd0d593",
+                "url": "https://api.github.com/repos/illuminate/bus/zipball/1996308375daa8ed4139fc3db0473e991a713dcc",
+                "reference": "1996308375daa8ed4139fc3db0473e991a713dcc",
                 "shasum": ""
             },
             "require": {
@@ -2042,20 +2042,20 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2024-01-11T20:33:23+00:00"
+            "time": "2024-02-13T22:52:00+00:00"
         },
         {
             "name": "illuminate/collections",
-            "version": "v10.43.0",
+            "version": "v10.45.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
-                "reference": "221c1ee944cb20ed807a8a5e8668552d6ca736ff"
+                "reference": "04c24117515ab9b701e4b28506d3f3c15d14bd5f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/collections/zipball/221c1ee944cb20ed807a8a5e8668552d6ca736ff",
-                "reference": "221c1ee944cb20ed807a8a5e8668552d6ca736ff",
+                "url": "https://api.github.com/repos/illuminate/collections/zipball/04c24117515ab9b701e4b28506d3f3c15d14bd5f",
+                "reference": "04c24117515ab9b701e4b28506d3f3c15d14bd5f",
                 "shasum": ""
             },
             "require": {
@@ -2097,11 +2097,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2024-01-22T13:55:20+00:00"
+            "time": "2024-02-13T21:55:58+00:00"
         },
         {
             "name": "illuminate/conditionable",
-            "version": "v10.43.0",
+            "version": "v10.45.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/conditionable.git",
@@ -2147,7 +2147,7 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v10.43.0",
+            "version": "v10.45.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
@@ -2198,7 +2198,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v10.43.0",
+            "version": "v10.45.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -2246,16 +2246,16 @@
         },
         {
             "name": "illuminate/database",
-            "version": "v10.43.0",
+            "version": "v10.45.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "a98f7b989bc11994e468bb65e3ace45671e5ebce"
+                "reference": "64394348243be403ac9edf21c400077304e005b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/a98f7b989bc11994e468bb65e3ace45671e5ebce",
-                "reference": "a98f7b989bc11994e468bb65e3ace45671e5ebce",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/64394348243be403ac9edf21c400077304e005b2",
+                "reference": "64394348243be403ac9edf21c400077304e005b2",
                 "shasum": ""
             },
             "require": {
@@ -2315,11 +2315,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2024-01-30T15:46:52+00:00"
+            "time": "2024-02-20T15:20:15+00:00"
         },
         {
             "name": "illuminate/events",
-            "version": "v10.43.0",
+            "version": "v10.45.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/events.git",
@@ -2374,7 +2374,7 @@
         },
         {
             "name": "illuminate/macroable",
-            "version": "v10.43.0",
+            "version": "v10.45.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/macroable.git",
@@ -2420,7 +2420,7 @@
         },
         {
             "name": "illuminate/pipeline",
-            "version": "v10.43.0",
+            "version": "v10.45.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/pipeline.git",
@@ -2468,16 +2468,16 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v10.43.0",
+            "version": "v10.45.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "6edb9350a0d13be5cea52718280e0025d3957895"
+                "reference": "ef80b6c0d0faec648d0625f1bd2b604b61cba5e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/6edb9350a0d13be5cea52718280e0025d3957895",
-                "reference": "6edb9350a0d13be5cea52718280e0025d3957895",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/ef80b6c0d0faec648d0625f1bd2b604b61cba5e5",
+                "reference": "ef80b6c0d0faec648d0625f1bd2b604b61cba5e5",
                 "shasum": ""
             },
             "require": {
@@ -2535,7 +2535,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2024-01-29T14:56:21+00:00"
+            "time": "2024-02-16T10:04:27+00:00"
         },
         {
             "name": "league/commonmark",
@@ -3421,6 +3421,92 @@
                 "source": "https://github.com/paragonie/random_compat"
             },
             "time": "2020-10-15T08:29:30+00:00"
+        },
+        {
+            "name": "paragonie/sodium_compat",
+            "version": "v1.20.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/paragonie/sodium_compat.git",
+                "reference": "e592a3e06d1fa0d43988c7c7d9948ca836f644b6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/paragonie/sodium_compat/zipball/e592a3e06d1fa0d43988c7c7d9948ca836f644b6",
+                "reference": "e592a3e06d1fa0d43988c7c7d9948ca836f644b6",
+                "shasum": ""
+            },
+            "require": {
+                "paragonie/random_compat": ">=1",
+                "php": "^5.2.4|^5.3|^5.4|^5.5|^5.6|^7|^8"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^3|^4|^5|^6|^7|^8|^9"
+            },
+            "suggest": {
+                "ext-libsodium": "PHP < 7.0: Better performance, password hashing (Argon2i), secure memory management (memzero), and better security.",
+                "ext-sodium": "PHP >= 7.0: Better performance, password hashing (Argon2i), secure memory management (memzero), and better security."
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "autoload.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "ISC"
+            ],
+            "authors": [
+                {
+                    "name": "Paragon Initiative Enterprises",
+                    "email": "security@paragonie.com"
+                },
+                {
+                    "name": "Frank Denis",
+                    "email": "jedisct1@pureftpd.org"
+                }
+            ],
+            "description": "Pure PHP implementation of libsodium; uses the PHP extension if it exists",
+            "keywords": [
+                "Authentication",
+                "BLAKE2b",
+                "ChaCha20",
+                "ChaCha20-Poly1305",
+                "Chapoly",
+                "Curve25519",
+                "Ed25519",
+                "EdDSA",
+                "Edwards-curve Digital Signature Algorithm",
+                "Elliptic Curve Diffie-Hellman",
+                "Poly1305",
+                "Pure-PHP cryptography",
+                "RFC 7748",
+                "RFC 8032",
+                "Salpoly",
+                "Salsa20",
+                "X25519",
+                "XChaCha20-Poly1305",
+                "XSalsa20-Poly1305",
+                "Xchacha20",
+                "Xsalsa20",
+                "aead",
+                "cryptography",
+                "ecdh",
+                "elliptic curve",
+                "elliptic curve cryptography",
+                "encryption",
+                "libsodium",
+                "php",
+                "public-key cryptography",
+                "secret-key cryptography",
+                "side-channel resistant"
+            ],
+            "support": {
+                "issues": "https://github.com/paragonie/sodium_compat/issues",
+                "source": "https://github.com/paragonie/sodium_compat/tree/v1.20.0"
+            },
+            "time": "2023-04-30T00:54:53+00:00"
         },
         {
             "name": "phpoption/phpoption",
@@ -5672,6 +5758,177 @@
             "time": "2024-01-23T14:51:35+00:00"
         },
         {
+            "name": "symfony/http-client",
+            "version": "v6.4.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/http-client.git",
+                "reference": "a9034bc119fab8238f76cf49c770f3135f3ead86"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/http-client/zipball/a9034bc119fab8238f76cf49c770f3135f3ead86",
+                "reference": "a9034bc119fab8238f76cf49c770f3135f3ead86",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "psr/log": "^1|^2|^3",
+                "symfony/deprecation-contracts": "^2.5|^3",
+                "symfony/http-client-contracts": "^3",
+                "symfony/service-contracts": "^2.5|^3"
+            },
+            "conflict": {
+                "php-http/discovery": "<1.15",
+                "symfony/http-foundation": "<6.3"
+            },
+            "provide": {
+                "php-http/async-client-implementation": "*",
+                "php-http/client-implementation": "*",
+                "psr/http-client-implementation": "1.0",
+                "symfony/http-client-implementation": "3.0"
+            },
+            "require-dev": {
+                "amphp/amp": "^2.5",
+                "amphp/http-client": "^4.2.1",
+                "amphp/http-tunnel": "^1.0",
+                "amphp/socket": "^1.1",
+                "guzzlehttp/promises": "^1.4",
+                "nyholm/psr7": "^1.0",
+                "php-http/httplug": "^1.0|^2.0",
+                "psr/http-client": "^1.0",
+                "symfony/dependency-injection": "^5.4|^6.0|^7.0",
+                "symfony/http-kernel": "^5.4|^6.0|^7.0",
+                "symfony/messenger": "^5.4|^6.0|^7.0",
+                "symfony/process": "^5.4|^6.0|^7.0",
+                "symfony/stopwatch": "^5.4|^6.0|^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\HttpClient\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Provides powerful methods to fetch HTTP resources synchronously or asynchronously",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "http"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/http-client/tree/v6.4.3"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2024-01-29T15:01:07+00:00"
+        },
+        {
+            "name": "symfony/http-client-contracts",
+            "version": "v3.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/http-client-contracts.git",
+                "reference": "1ee70e699b41909c209a0c930f11034b93578654"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/http-client-contracts/zipball/1ee70e699b41909c209a0c930f11034b93578654",
+                "reference": "1ee70e699b41909c209a0c930f11034b93578654",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "3.4-dev"
+                },
+                "thanks": {
+                    "name": "symfony/contracts",
+                    "url": "https://github.com/symfony/contracts"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Contracts\\HttpClient\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Test/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Generic abstractions related to HTTP clients",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "abstractions",
+                "contracts",
+                "decoupling",
+                "interfaces",
+                "interoperability",
+                "standards"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/http-client-contracts/tree/v3.4.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2023-07-30T20:28:31+00:00"
+        },
+        {
             "name": "symfony/http-foundation",
             "version": "v6.4.3",
             "source": {
@@ -6806,93 +7063,17 @@
             "time": "2022-03-08T17:03:00+00:00"
         },
         {
-            "name": "web-token/jwt-core",
-            "version": "3.2.9",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/web-token/jwt-core.git",
-                "reference": "2b7277a4837230cf2982a1484643a978d505eae3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/web-token/jwt-core/zipball/2b7277a4837230cf2982a1484643a978d505eae3",
-                "reference": "2b7277a4837230cf2982a1484643a978d505eae3",
-                "shasum": ""
-            },
-            "require": {
-                "brick/math": "^0.9|^0.10|^0.11|^0.12",
-                "ext-json": "*",
-                "ext-mbstring": "*",
-                "paragonie/constant_time_encoding": "^2.6",
-                "php": ">=8.1",
-                "spomky-labs/pki-framework": "^1.0"
-            },
-            "conflict": {
-                "spomky-labs/jose": "*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Jose\\Component\\Core\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Florent Morselli",
-                    "homepage": "https://github.com/Spomky"
-                },
-                {
-                    "name": "All contributors",
-                    "homepage": "https://github.com/web-token/jwt-framework/contributors"
-                }
-            ],
-            "description": "Core component of the JWT Framework.",
-            "homepage": "https://github.com/web-token",
-            "keywords": [
-                "JOSE",
-                "JWE",
-                "JWK",
-                "JWKSet",
-                "JWS",
-                "Jot",
-                "RFC7515",
-                "RFC7516",
-                "RFC7517",
-                "RFC7518",
-                "RFC7519",
-                "RFC7520",
-                "bundle",
-                "jwa",
-                "jwt",
-                "symfony"
-            ],
-            "support": {
-                "source": "https://github.com/web-token/jwt-core/tree/3.2.9"
-            },
-            "funding": [
-                {
-                    "url": "https://www.patreon.com/FlorentMorselli",
-                    "type": "patreon"
-                }
-            ],
-            "time": "2024-01-04T15:42:08+00:00"
-        },
-        {
             "name": "web-token/jwt-key-mgmt",
-            "version": "3.2.9",
+            "version": "3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-token/jwt-key-mgmt.git",
-                "reference": "2a034fdbf5142e39152b62cde066d2e707cfacb9"
+                "reference": "4d2a5a1a86477dd50b89aff76962816ddbd64590"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-token/jwt-key-mgmt/zipball/2a034fdbf5142e39152b62cde066d2e707cfacb9",
-                "reference": "2a034fdbf5142e39152b62cde066d2e707cfacb9",
+                "url": "https://api.github.com/repos/web-token/jwt-key-mgmt/zipball/4d2a5a1a86477dd50b89aff76962816ddbd64590",
+                "reference": "4d2a5a1a86477dd50b89aff76962816ddbd64590",
                 "shasum": ""
             },
             "require": {
@@ -6900,20 +7081,9 @@
                 "php": ">=8.1",
                 "psr/http-client": "^1.0",
                 "psr/http-factory": "^1.0",
-                "web-token/jwt-core": "^3.2"
-            },
-            "suggest": {
-                "ext-sodium": "Sodium is required for OKP key creation, EdDSA signature algorithm and ECDH-ES key encryption with OKP keys",
-                "php-http/httplug": "To enable JKU/X5U support.",
-                "php-http/message-factory": "To enable JKU/X5U support.",
-                "web-token/jwt-util-ecc": "To use EC key analyzers."
+                "web-token/jwt-library": "^3.3"
             },
             "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Jose\\Component\\KeyManagement\\": ""
-                }
-            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
@@ -6925,10 +7095,10 @@
                 },
                 {
                     "name": "All contributors",
-                    "homepage": "https://github.com/web-token/jwt-key-mgmt/contributors"
+                    "homepage": "https://github.com/web-token/jwt-framework/contributors"
                 }
             ],
-            "description": "Key Management component of the JWT Framework.",
+            "description": "[DEPRECATED] Please use web-token/jwt-library instead.",
             "homepage": "https://github.com/web-token",
             "keywords": [
                 "JOSE",
@@ -6949,7 +7119,7 @@
                 "symfony"
             ],
             "support": {
-                "source": "https://github.com/web-token/jwt-key-mgmt/tree/3.2.9"
+                "source": "https://github.com/web-token/jwt-key-mgmt/tree/3.3.0"
             },
             "funding": [
                 {
@@ -6957,40 +7127,125 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2024-01-04T15:42:08+00:00"
+            "abandoned": "web-token/jwt-library",
+            "time": "2024-02-22T07:19:34+00:00"
         },
         {
-            "name": "web-token/jwt-signature",
-            "version": "3.2.9",
+            "name": "web-token/jwt-library",
+            "version": "3.3.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/web-token/jwt-signature.git",
-                "reference": "14fec03d581550396edd0bf20fe6308dac167165"
+                "url": "https://github.com/web-token/jwt-library.git",
+                "reference": "5edf0f193425bb9c695a433180ddf9d263f55063"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-token/jwt-signature/zipball/14fec03d581550396edd0bf20fe6308dac167165",
-                "reference": "14fec03d581550396edd0bf20fe6308dac167165",
+                "url": "https://api.github.com/repos/web-token/jwt-library/zipball/5edf0f193425bb9c695a433180ddf9d263f55063",
+                "reference": "5edf0f193425bb9c695a433180ddf9d263f55063",
+                "shasum": ""
+            },
+            "require": {
+                "brick/math": "^0.9|^0.10|^0.11|^0.12",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "paragonie/constant_time_encoding": "^2.6",
+                "paragonie/sodium_compat": "^1.20",
+                "php": ">=8.1",
+                "psr/clock": "^1.0",
+                "psr/http-client": "^1.0",
+                "psr/http-factory": "^1.0",
+                "spomky-labs/pki-framework": "^1.0",
+                "symfony/console": "^5.4|^6.0|^7.0",
+                "symfony/http-client": "^5.4|^6.0|^7.0",
+                "symfony/polyfill-mbstring": "^1.12"
+            },
+            "conflict": {
+                "spomky-labs/jose": "*"
+            },
+            "suggest": {
+                "ext-bcmath": "GMP or BCMath is highly recommended to improve the library performance",
+                "ext-gmp": "GMP or BCMath is highly recommended to improve the library performance",
+                "ext-openssl": "For key management (creation, optimization, etc.) and some algorithms (AES, RSA, ECDSA, etc.)",
+                "ext-sodium": "Sodium is required for OKP key creation, EdDSA signature algorithm and ECDH-ES key encryption with OKP keys",
+                "paragonie/sodium_compat": "Sodium is required for OKP key creation, EdDSA signature algorithm and ECDH-ES key encryption with OKP keys",
+                "spomky-labs/aes-key-wrap": "For all Key Wrapping algorithms (A128KW, A192KW, A256KW, A128GCMKW, A192GCMKW, A256GCMKW, PBES2-HS256+A128KW, PBES2-HS384+A192KW, PBES2-HS512+A256KW...)",
+                "symfony/http-client": "To enable JKU/X5U support."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Jose\\Component\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Florent Morselli",
+                    "homepage": "https://github.com/Spomky"
+                },
+                {
+                    "name": "All contributors",
+                    "homepage": "https://github.com/web-token/jwt-framework/contributors"
+                }
+            ],
+            "description": "JWT library",
+            "homepage": "https://github.com/web-token",
+            "keywords": [
+                "JOSE",
+                "JWE",
+                "JWK",
+                "JWKSet",
+                "JWS",
+                "Jot",
+                "RFC7515",
+                "RFC7516",
+                "RFC7517",
+                "RFC7518",
+                "RFC7519",
+                "RFC7520",
+                "bundle",
+                "jwa",
+                "jwt",
+                "symfony"
+            ],
+            "support": {
+                "issues": "https://github.com/web-token/jwt-library/issues",
+                "source": "https://github.com/web-token/jwt-library/tree/3.3.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/Spomky",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/FlorentMorselli",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2024-02-22T08:15:45+00:00"
+        },
+        {
+            "name": "web-token/jwt-signature",
+            "version": "3.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/web-token/jwt-signature.git",
+                "reference": "eccfd59e658d4118414cf6d14229aa52eec387e7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/web-token/jwt-signature/zipball/eccfd59e658d4118414cf6d14229aa52eec387e7",
+                "reference": "eccfd59e658d4118414cf6d14229aa52eec387e7",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.1",
-                "web-token/jwt-core": "^3.2"
-            },
-            "suggest": {
-                "web-token/jwt-signature-algorithm-ecdsa": "ECDSA Based Signature Algorithms",
-                "web-token/jwt-signature-algorithm-eddsa": "EdDSA Based Signature Algorithms",
-                "web-token/jwt-signature-algorithm-experimental": "Experimental Signature Algorithms",
-                "web-token/jwt-signature-algorithm-hmac": "HMAC Based Signature Algorithms",
-                "web-token/jwt-signature-algorithm-none": "None Signature Algorithm",
-                "web-token/jwt-signature-algorithm-rsa": "RSA Based Signature Algorithms"
+                "web-token/jwt-library": "^3.3"
             },
             "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Jose\\Component\\Signature\\": ""
-                }
-            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
@@ -7002,10 +7257,10 @@
                 },
                 {
                     "name": "All contributors",
-                    "homepage": "https://github.com/web-token/jwt-signature/contributors"
+                    "homepage": "https://github.com/web-token/jwt-framework/contributors"
                 }
             ],
-            "description": "Signature component of the JWT Framework.",
+            "description": "[DEPRECATED] Please use web-token/jwt-library instead.",
             "homepage": "https://github.com/web-token",
             "keywords": [
                 "JOSE",
@@ -7026,7 +7281,7 @@
                 "symfony"
             ],
             "support": {
-                "source": "https://github.com/web-token/jwt-signature/tree/3.2.9"
+                "source": "https://github.com/web-token/jwt-signature/tree/3.3.0"
             },
             "funding": [
                 {
@@ -7034,33 +7289,29 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2024-01-04T15:42:08+00:00"
+            "abandoned": "web-token/jwt-library",
+            "time": "2024-02-22T07:19:34+00:00"
         },
         {
             "name": "web-token/jwt-signature-algorithm-ecdsa",
-            "version": "3.2.9",
+            "version": "3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-token/jwt-signature-algorithm-ecdsa.git",
-                "reference": "3d9c9fdca24376845bfb9a1ae46d63c1f7b395b7"
+                "reference": "28516e170f6ee6d13766d9e2b912c2853e1ac5e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-token/jwt-signature-algorithm-ecdsa/zipball/3d9c9fdca24376845bfb9a1ae46d63c1f7b395b7",
-                "reference": "3d9c9fdca24376845bfb9a1ae46d63c1f7b395b7",
+                "url": "https://api.github.com/repos/web-token/jwt-signature-algorithm-ecdsa/zipball/28516e170f6ee6d13766d9e2b912c2853e1ac5e4",
+                "reference": "28516e170f6ee6d13766d9e2b912c2853e1ac5e4",
                 "shasum": ""
             },
             "require": {
                 "ext-openssl": "*",
                 "php": ">=8.1",
-                "web-token/jwt-signature": "^3.2"
+                "web-token/jwt-library": "^3.3"
             },
             "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Jose\\Component\\Signature\\Algorithm\\": ""
-                }
-            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
@@ -7075,7 +7326,7 @@
                     "homepage": "https://github.com/web-token/jwt-framework/contributors"
                 }
             ],
-            "description": "ECDSA Based Signature Algorithms the JWT Framework.",
+            "description": "[DEPRECATED] Please use web-token/jwt-library instead.",
             "homepage": "https://github.com/web-token",
             "keywords": [
                 "JOSE",
@@ -7096,7 +7347,7 @@
                 "symfony"
             ],
             "support": {
-                "source": "https://github.com/web-token/jwt-signature-algorithm-ecdsa/tree/3.2.9"
+                "source": "https://github.com/web-token/jwt-signature-algorithm-ecdsa/tree/3.3.0"
             },
             "funding": [
                 {
@@ -7104,36 +7355,29 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2024-01-02T17:55:33+00:00"
+            "abandoned": "web-token/jwt-library",
+            "time": "2024-02-22T07:19:34+00:00"
         },
         {
             "name": "web-token/jwt-util-ecc",
-            "version": "3.2.9",
+            "version": "3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-token/jwt-util-ecc.git",
-                "reference": "9edf9b76bccf2e1db58fcc49db1d916d929335c0"
+                "reference": "667934c5c6e37238f4e67d51aa3ba55abc703e1a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-token/jwt-util-ecc/zipball/9edf9b76bccf2e1db58fcc49db1d916d929335c0",
-                "reference": "9edf9b76bccf2e1db58fcc49db1d916d929335c0",
+                "url": "https://api.github.com/repos/web-token/jwt-util-ecc/zipball/667934c5c6e37238f4e67d51aa3ba55abc703e1a",
+                "reference": "667934c5c6e37238f4e67d51aa3ba55abc703e1a",
                 "shasum": ""
             },
             "require": {
                 "brick/math": "^0.9|^0.10|^0.11|^0.12",
-                "php": ">=8.1"
-            },
-            "suggest": {
-                "ext-bcmath": "GMP or BCMath is highly recommended to improve the library performance",
-                "ext-gmp": "GMP or BCMath is highly recommended to improve the library performance"
+                "php": ">=8.1",
+                "web-token/jwt-library": "^3.3"
             },
             "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Jose\\Component\\Core\\Util\\Ecc\\": ""
-                }
-            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
@@ -7148,7 +7392,7 @@
                     "homepage": "https://github.com/web-token/jwt-framework/contributors"
                 }
             ],
-            "description": "ECC Tools for the JWT Framework.",
+            "description": "[DEPRECATED] Please use web-token/jwt-library instead.",
             "homepage": "https://github.com/web-token",
             "keywords": [
                 "JOSE",
@@ -7169,7 +7413,7 @@
                 "symfony"
             ],
             "support": {
-                "source": "https://github.com/web-token/jwt-util-ecc/tree/3.2.9"
+                "source": "https://github.com/web-token/jwt-util-ecc/tree/3.3.0"
             },
             "funding": [
                 {
@@ -7177,7 +7421,8 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2024-01-02T17:55:33+00:00"
+            "abandoned": "web-token/jwt-library",
+            "time": "2024-02-22T07:19:34+00:00"
         }
     ],
     "packages-dev": [],
