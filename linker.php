@@ -202,13 +202,6 @@ $wsSocketBehaviour = function ($msg) use (&$xmppSocket, &$connector, &$xmppBehav
                 (new RPC)->handleJSON($msg->b);
                 break;
 
-            case 'ping':
-                // And we say that we are ready !
-                $obj = new \StdClass;
-                $obj->func = 'pong';
-                $wsSocket->send(json_encode($obj));
-                break;
-
             case 'up':
             case 'down':
                 if (

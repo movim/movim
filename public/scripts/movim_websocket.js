@@ -30,6 +30,7 @@ var MovimWebsocket = {
     attached: [], // Launched when the socket is connected to the daemon
     started: [], // Launched when the linker is started
     registered: [], // Launched when the linker is connected to XMPP
+    reconnectTimeout: null,
     attempts: 1,
     pong: false,
     closed: false,
@@ -69,8 +70,6 @@ var MovimWebsocket = {
             var uri = 'ws:' + BASE_URI + 'ws/';
         }
 
-        MovimWebsocket.launchInitiated();
-
         if (this.connection !== null) {
             this.connection.onclose = null;
             this.connection.close();
@@ -84,11 +83,11 @@ var MovimWebsocket = {
 
         this.connection.onopen = function (e) {
             console.log("Connection established!");
+
             MovimWebsocket.attempts = 1;
+            clearTimeout(MovimWebsocket.reconnectTimeout);
+
             MovimWebsocket.launchAttached();
-            setTimeout(function () {
-                MovimWebsocket.ping();
-            }, 10000);
         };
 
         this.connection.onmessage = function (e) {
@@ -161,26 +160,6 @@ var MovimWebsocket = {
         }
     },
 
-    // A ping/pong system to handle socket errors for buggy browser (Chrome on Linux…)
-    ping: function () {
-        if (this.connection.readyState == 1 && !this.closed) {
-            this.connection.send(
-                JSON.stringify(
-                    { 'func': 'ping' }
-                )
-            );
-
-            setTimeout(function () {
-                if (MovimWebsocket.pong == false) {
-                    MovimWebsocket.connection.onerror();
-                } else {
-                    MovimWebsocket.pong = false;
-                    MovimWebsocket.ping();
-                }
-            }, 10000);
-        }
-    },
-
     attach: function (func) {
         if (typeof (func) === "function") {
             this.attached.push(func);
@@ -226,7 +205,7 @@ var MovimWebsocket = {
         var interval = MovimWebsocket.generateInterval();
         console.log("Try to reconnect");
 
-        setTimeout(function () {
+        MovimWebsocket.reconnectTimeout = setTimeout(function () {
             // We've tried to reconnect so increment the attempts by 1
             MovimWebsocket.attempts++;
 
@@ -234,7 +213,7 @@ var MovimWebsocket = {
             MovimWebsocket.statusBar.classList.remove('hide');
             MovimWebsocket.statusBar.classList.add('connect');
 
-            // Connection has closed so try to reconnect every 10 seconds.
+            // Connection has closed so try to reconnect every x seconds.
             MovimWebsocket.init();
         }, interval);
     },
@@ -252,11 +231,18 @@ var MovimWebsocket = {
 }
 
 window.addEventListener("offline", (e) => {
+    console.log('offline');
     MovimWebsocket.connection.onerror();
 });
 
 window.addEventListener("online", (e) => {
-    MovimWebsocket.reconnect();
+    console.log('online');
+
+    MovimWebsocket.statusBar.classList.remove('hide');
+    MovimWebsocket.statusBar.classList.add('connect');
+
+    MovimWebsocket.launchInitiated();
+    MovimWebsocket.init();
 });
 
 window.onbeforeunload = function () {
@@ -270,6 +256,7 @@ window.onbeforeunload = function () {
 window.addEventListener('focus', function () {
     if (MovimWebsocket.connection !== null
         && MovimWebsocket.connection.readyState > 1) {
+
         // Show the reconnect state
         MovimWebsocket.statusBar.classList.remove('hide');
         MovimWebsocket.statusBar.classList.add('connect');
@@ -280,13 +267,6 @@ window.addEventListener('focus', function () {
 
 document.addEventListener("DOMContentLoaded", function (event) {
     MovimWebsocket.statusBar = document.getElementById('status_websocket');
-
-    movimAddFocus(function () {
-        if (!MovimWebsocket.statusBar.classList.contains('hide')) {
-            MovimWebsocket.reconnect();
-        }
-    });
-
-    // And we start it
+    MovimWebsocket.launchInitiated();
     MovimWebsocket.init();
 });

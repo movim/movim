@@ -7,6 +7,8 @@ v0.23.1
 * Fix the Drawer anchor navigation
 * Implement the new Search input from Material 3
 * Add a "beginning of conversation" placeholder
+* Fix and cleanup the Websocket connectivity behavior
+* Remove the Websocket ping system
 
 v0.23
 ---------------------------
