@@ -931,11 +931,13 @@ var Chat = {
             }
         }
 
-        if (discussion.querySelectorAll('ul li:not(.oppose)').length > 0 && discussion.querySelectorAll('ul li.oppose').length == 0
-            && discussion.querySelectorAll('ul li').length < 5) {
-            discussion.querySelector('.placeholder.first_messages').classList.add('show');
-        } else {
-            discussion.querySelector('.placeholder.first_messages').classList.remove('show');
+        if (discussion !== null) {
+            if (discussion.querySelectorAll('ul li:not(.oppose)').length > 0 && discussion.querySelectorAll('ul li.oppose').length == 0
+                && discussion.querySelectorAll('ul li').length < 5) {
+                discussion.querySelector('.placeholder.first_messages').classList.add('show');
+            } else {
+                discussion.querySelector('.placeholder.first_messages').classList.remove('show');
+            }
         }
 
         Chat.setScrollBehaviour();
