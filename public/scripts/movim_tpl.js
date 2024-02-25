@@ -212,11 +212,8 @@ movimAddOnload(function () {
         }
 
         if (e.target.location.pathname == MovimTpl.currentPage) return;
-        if (e.state && e.state.soft) {
-            MovimUtils.reload(e.target.location.href, true);
-        } else {
-            history.back();
-        }
+
+        MovimUtils.reload(e.target.location.href, true);
 
         MovimTpl.currentPage = e.target.location.pathname;
         MovimTpl.currentAnchor = window.location.hash.substring(1);

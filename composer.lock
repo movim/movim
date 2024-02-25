@@ -506,16 +506,16 @@
         },
         {
             "name": "composer/ca-bundle",
-            "version": "1.4.0",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/ca-bundle.git",
-                "reference": "b66d11b7479109ab547f9405b97205640b17d385"
+                "reference": "3ce240142f6d59b808dd65c1f52f7a1c252e6cfd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/b66d11b7479109ab547f9405b97205640b17d385",
-                "reference": "b66d11b7479109ab547f9405b97205640b17d385",
+                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/3ce240142f6d59b808dd65c1f52f7a1c252e6cfd",
+                "reference": "3ce240142f6d59b808dd65c1f52f7a1c252e6cfd",
                 "shasum": ""
             },
             "require": {
@@ -562,7 +562,7 @@
             "support": {
                 "irc": "irc://irc.freenode.org/composer",
                 "issues": "https://github.com/composer/ca-bundle/issues",
-                "source": "https://github.com/composer/ca-bundle/tree/1.4.0"
+                "source": "https://github.com/composer/ca-bundle/tree/1.4.1"
             },
             "funding": [
                 {
@@ -578,7 +578,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-12-18T12:05:55+00:00"
+            "time": "2024-02-23T10:16:52+00:00"
         },
         {
             "name": "defuse/php-encryption",

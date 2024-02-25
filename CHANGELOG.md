@@ -9,6 +9,7 @@ v0.23.1
 * Add a "beginning of conversation" placeholder
 * Fix and cleanup the Websocket connectivity behavior
 * Remove the Websocket ping system
+* Fix some soft navigation issues
 
 v0.23
 ---------------------------

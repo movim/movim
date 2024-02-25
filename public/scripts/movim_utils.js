@@ -100,8 +100,10 @@ var MovimUtils = {
         window.history.pushState(null, '', url);
     },
     pushSoftState: function (url) {
-        window.history.pushState({ soft: true }, '', url);
-        MovimTpl.currentPage = window.location.pathname;
+        if (window.location != url) {
+            window.history.pushState({ soft: true }, '', url);
+            MovimTpl.currentPage = window.location.pathname;
+        }
     },
     redirect: function (url) {
         window.location.href = url;
