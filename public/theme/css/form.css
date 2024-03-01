@@ -211,6 +211,7 @@ form > div .checkbox > input[type="checkbox"]:before {
     background-color: rgba(var(--movim-font), 0.12);
     box-sizing: border-box;
     transition: background-color 0.3s ease;
+    top: 0;
 }
 
 form > div .checkbox > input[type="checkbox"]:before {
@@ -227,11 +228,10 @@ form > div .checkbox > input[type="checkbox"] + label {
     border-radius: 2rem;
     top: 1rem;
     left: 1rem;
-    position: relative;
+    position: absolute;
     font-size: 2rem;
     text-align: center;
     line-height: normal;
-
     transition: left 0.3s ease, top 0.2s ease, width 0.2s ease, height 0.2s ease, box-shadow 0.1s ease;
 }
 
