@@ -515,6 +515,10 @@ li div.bubble.file:not(.audio):after {
     margin-top: -2rem;
 }
 
+#chat_widget .bubble.file .card ~ .reactions {
+    margin-top: 0;
+}
+
 #chat_widget .bubble div span.reaction,
 #chat_widget .bubble div span.reply,
 #chat_widget .bubble ul.reactions li {
