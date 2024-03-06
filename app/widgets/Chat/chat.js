@@ -1606,7 +1606,7 @@ MovimWebsocket.attach(function () {
     var room = (MovimUtils.urlParts().params[1] === 'room');
     if (jid) {
         if (Boolean(document.getElementById(MovimUtils.cleanupId(jid) + '-conversation')) && Chat.currentDateTime) {
-            Chat_ajaxGetHistory(jid, Chat.currentDateTime, room, false);
+            Chat_ajaxGetHistory(jid, Chat.currentDateTime, room, false, true);
         } else {
             if (room) {
                 Chat.getRoom(jid);

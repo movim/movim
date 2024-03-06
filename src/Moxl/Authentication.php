@@ -8,7 +8,7 @@ use Movim\Session;
 class Authentication
 {
     private $_mechanism;
-    private $_type;
+    private ?string $_type;
 
     protected static $instance;
 
@@ -27,7 +27,7 @@ class Authentication
             'SCRAM-SHA-1',
             'PLAIN',
             //'ANONYMOUS'
-         ];
+        ];
 
         foreach ($choices as $choice) {
             if (in_array($choice, $mechanisms)) {
@@ -46,9 +46,19 @@ class Authentication
         }
     }
 
+    public function getType(): string
+    {
+        return $this->_type;
+    }
+
+    public function getResponse(): string
+    {
+        return $this->_mechanism->createResponse();
+    }
+
     public function response()
     {
-        $response = base64_encode($this->_mechanism->createResponse());
+        $response = base64_encode($this->getResponse());
 
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $auth = $dom->createElementNS('urn:ietf:params:xml:ns:xmpp-sasl', 'auth', $response);

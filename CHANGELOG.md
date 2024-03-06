@@ -3,6 +3,8 @@ Movim Changelog
 
 v0.23.1
 ---------------------------
+* Implement XEP-0386: Bind 2
+* Implement XEP-0388: Extensible SASL Profile
 * Allow comments to be disabled during the publication flow
 * Fix the Drawer anchor navigation
 * Implement the new Search input from Material 3

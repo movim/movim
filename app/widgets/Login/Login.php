@@ -21,9 +21,12 @@ class Login extends Base
     {
         $this->addcss('login.css');
         $this->addjs('login.js');
-        $this->registerEvent('session_start_handle', 'onStart');
+
+        $this->registerEvent('session_start_handle', 'onStart'); // Bind 1
+        $this->registerEvent('sasl2success', 'onStart'); // Bind 2 - SASL2
         $this->registerEvent('saslsuccess', 'onSASLSuccess');
         $this->registerEvent('saslfailure', 'onSASLFailure');
+        $this->registerEvent('sasl2failure', 'onSASLFailure');
         $this->registerEvent('socket_connected', 'onConnected');
         $this->registerEvent('storage_get_handle', 'onConfig');
         $this->registerEvent('storage_get_error', 'onConfig');
@@ -77,8 +80,10 @@ class Login extends Base
         $this->view->assign('banner', $configuration->banner);
         $this->view->assign('whitelist', $configuration->xmppwhitelist);
 
-        if (isset($configuration->xmppdomain)
-        && !empty($configuration->xmppdomain)) {
+        if (
+            isset($configuration->xmppdomain)
+            && !empty($configuration->xmppdomain)
+        ) {
             $this->view->assign('domain', $configuration->xmppdomain);
         } else {
             $this->view->assign('domain', 'movim.eu');
@@ -86,8 +91,10 @@ class Login extends Base
 
         $this->view->assign('invitation', null);
 
-        if ($this->get('i')
-        && Validator::length(8)->validate($this->get('i'))) {
+        if (
+            $this->get('i')
+            && Validator::length(8)->validate($this->get('i'))
+        ) {
             $invitation = \App\Invite::find($this->get('i'));
 
             if ($invitation) {
@@ -101,9 +108,11 @@ class Login extends Base
         $this->view->assign('connected', (int)requestAPI('started', 2));
         $this->view->assign('error', $this->prepareError());
 
-        if (isset($_SERVER['PHP_AUTH_USER'])
-        && isset($_SERVER['PHP_AUTH_PW'])
-        && Validator::email()->length(6, 40)->validate($_SERVER['HTTP_EMAIL'])) {
+        if (
+            isset($_SERVER['PHP_AUTH_USER'])
+            && isset($_SERVER['PHP_AUTH_PW'])
+            && Validator::email()->length(6, 40)->validate($_SERVER['HTTP_EMAIL'])
+        ) {
             list($username, $host) = explode('@', $_SERVER['HTTP_EMAIL']);
             $this->view->assign('httpAuthHost', $host);
             $this->view->assign('httpAuthUser', $_SERVER['HTTP_EMAIL']);
@@ -124,7 +133,7 @@ class Login extends Base
     {
         $view = $this->tpl();
 
-        $key = 'error.'.$error;
+        $key = 'error.' . $error;
         $error_text = $this->__($key);
 
         if ($error_text == $key) {
@@ -186,9 +195,9 @@ class Login extends Base
 
     public function ajaxQuickLogin($deviceId, $login, $key, $check = false)
     {
-        $validate_login = Validator::stringType()->length(1, 254);
+        $validateLogin = Validator::stringType()->length(1, 254);
 
-        if (!$validate_login->validate($login)) {
+        if (!$validateLogin->validate($login)) {
             $this->showErrorBlock('login_format');
             return;
         }
@@ -225,15 +234,15 @@ class Login extends Base
         $configuration = Configuration::get();
 
         // First we check the form
-        $validate_login   = Validator::stringType()->length(1, 254);
-        $validate_password = Validator::stringType()->length(1, 128);
+        $validateLogin   = Validator::stringType()->length(1, 254);
+        $validatePassword = Validator::stringType()->length(1, 128);
 
-        if (!$validate_login->validate($login)) {
+        if (!$validateLogin->validate($login)) {
             $this->showErrorBlock('login_format');
             return;
         }
 
-        if (!$validate_password->validate($password)) {
+        if (!$validatePassword->validate($password)) {
             $this->showErrorBlock('password_format');
             return;
         }
@@ -241,8 +250,10 @@ class Login extends Base
         list($username, $host) = explode('@', $login);
 
         // Check whitelisted server
-        if (!empty($configuration->xmppwhitelist)
-        && !in_array($host, $configuration->xmppwhitelist)) {
+        if (
+            !empty($configuration->xmppwhitelist)
+            && !in_array($host, $configuration->xmppwhitelist)
+        ) {
             $this->showErrorBlock('unauthorized');
             return;
         }
@@ -288,6 +299,6 @@ class Login extends Base
         // We launch the XMPP socket
         $this->rpc('register', $host);
 
-        \Moxl\Stanza\Stream::init($host);
+        \Moxl\Stanza\Stream::init($host, $login);
     }
 }

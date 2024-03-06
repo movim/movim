@@ -296,7 +296,7 @@ $xmppBehaviour = function (React\Socket\Connection $stream) use (&$xmppSocket, $
                 enableEncryption($xmppSocket)->then(
                     function () {
                         $session = Session::start();
-                        \Moxl\Stanza\Stream::init($session->get('host'));
+                        \Moxl\Stanza\Stream::init($session->get('host'), $session->get('jid'));
                     },
                     function () {
                         return;

@@ -53,8 +53,10 @@ class Presence extends Base
         // Load the BundleCapabilityResolved
         BundleCapabilityResolver::getInstance()->load();
 
-        // http://xmpp.org/extensions/xep-0280.html
-        \Moxl\Stanza\Carbons::enable();
+        if ($this->user->session->type == 'bind1') {
+            // http://xmpp.org/extensions/xep-0280.html
+            \Moxl\Stanza\Carbons::enable();
+        }
 
         // We refresh the roster
         $r = new GetList;

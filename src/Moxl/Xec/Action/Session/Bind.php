@@ -19,15 +19,14 @@ class Bind extends Action
     {
         $session = \App\User::me()->session;
 
-        list($jid, $resource) = explode('/', (string)$stanza->bind->jid);
+        $jid = explodeJid((string)$stanza->bind->jid);
 
-        list($username, $host) = explode('@', $jid);
+        $session->username = $jid['username'];
+        $session->host = $jid['server'];
+        $session->type = 'bind1';
 
-        $session->username = $username;
-        $session->host = $host;
-
-        if ($resource) {
-            $session->resource = $resource;
+        if ($jid['resource']) {
+            $session->resource = $jid['resource'];
         }
 
         $session->save();

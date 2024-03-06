@@ -180,16 +180,20 @@ class Handler
 
             'da6b60476aeab672ac0afe3ff27dc6a4' => 'OMEMODevices',
 
+            'd9017180bc56364e7ba2bb1e493994b8' => 'StreamFeatures',
             '9a0cd265cabedadea095d8572d26167e' => 'StreamError',
 
             'b95746de5ddc3fa5fbf28906c017d9d8' => 'STARTTLS',
 
-            'f728271d924a04b0355379b28c3183a1' => 'SASL',
+            //'f728271d924a04b0355379b28c3183a1' => 'SASL',
             '5e291b72f7160dabd1aa28f90cbde769' => 'SASLChallenge',
             'abae1d63bb4295636badcce1bee02290' => 'SASLChallenge', // TLS
+            '2dae39d4435419c8d33cfee1822f914e' => 'SASL2Challenge',
             'a5af6a9efd75060b5aca9b473f1ef756' => 'SASLSuccess',
             '53936dd4e1d64e1eeec6dfc95c431964' => 'SASLSuccess', // TLS
+            'ef58bff52ec9ffc2c1fb360ed77a2be5' => 'SASL2Success',
             'de175adc9063997df5b79817576ff659' => 'SASLFailure',
+            '270c38e008e3d10e2ed5ed4fd615e5dd' => 'SASL2Failure',
             '0bc0f510b2b6ac432e8605267ebdc812' => 'SessionBind',
             '128477f50347d98ee1213d71f27e8886' => 'SessionBind',
 
