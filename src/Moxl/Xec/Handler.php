@@ -185,7 +185,6 @@ class Handler
 
             'b95746de5ddc3fa5fbf28906c017d9d8' => 'STARTTLS',
 
-            //'f728271d924a04b0355379b28c3183a1' => 'SASL',
             '5e291b72f7160dabd1aa28f90cbde769' => 'SASLChallenge',
             'abae1d63bb4295636badcce1bee02290' => 'SASLChallenge', // TLS
             '2dae39d4435419c8d33cfee1822f914e' => 'SASL2Challenge',
