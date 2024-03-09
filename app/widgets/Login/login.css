@@ -111,6 +111,7 @@ body main {
     line-height: 4rem;
     display: block;
     margin: 0;
+    margin-bottom: -1rem;
 }
 
 #login_widget form:first-child {
