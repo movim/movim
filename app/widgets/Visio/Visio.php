@@ -312,6 +312,6 @@ class Visio extends Base
     public function display()
     {
         $this->view->assign('withvideo', $this->getView() == 'visio');
-        $this->view->assign('contact', \App\Contact::firstOrNew(['id' => $this->get('f')]));
+        $this->view->assign('contact', \App\Contact::firstOrNew(['id' => base64_decode($this->get('f'))]));
     }
 }

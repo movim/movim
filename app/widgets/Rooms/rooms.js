@@ -64,12 +64,11 @@ var Rooms = {
         {
             if (items[i].dataset.jid != null) {
                 items[i].onclick = function(e) {
+                    Chat.getRoom(this.dataset.jid);
                     Chats.refresh(true);
 
                     items.forEach(item => item.classList.remove('active'));
                     this.classList.add('active');
-
-                    Chat.getRoom(this.dataset.jid);
                 }
             }
 

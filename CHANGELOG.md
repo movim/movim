@@ -12,6 +12,7 @@ v0.23.1
 * Fix and cleanup the Websocket connectivity behavior
 * Remove the Websocket ping system
 * Fix some soft navigation issues
+* Fix #1274 by handling properly Visio URL parameters and base64 the from to prevent some escaping issues
 
 v0.23
 ---------------------------

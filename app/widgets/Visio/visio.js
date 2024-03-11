@@ -26,10 +26,14 @@ var Visio = {
     tracksTypes: [],
 
     init: function() {
-        Visio.from = MovimUtils.urlParts().params[0];
+        Visio.from = atob(MovimUtils.urlParts().params[0]);
 
         if (MovimUtils.urlParts().params[1] !== undefined) {
-            Visio.from += '/' + MovimUtils.urlParts().params[1];
+            Visio.id = MovimUtils.urlParts().params[1];
+        }
+
+        if (MovimUtils.urlParts().page == 'visio') {
+            Visio.withVideo = true;
         }
 
         if (Visio.withVideo) {
@@ -342,14 +346,6 @@ var Visio = {
 }
 
 MovimWebsocket.attach(() => {
-    if (MovimUtils.urlParts().params[2] !== undefined) {
-        Visio.id = MovimUtils.urlParts().params[2];
-    }
-
-    if (MovimUtils.urlParts().page == 'visio') {
-        Visio.withVideo = true;
-    }
-
     Visio_ajaxResolveServices();
 });
 
