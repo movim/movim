@@ -127,6 +127,8 @@ ul.flex.gallery li.block img.main {
     opacity: 1;
     height: initial;
     max-height: 35rem;
+    left: 0;
+    top: 0;
     max-width: calc(100% + 3rem);
     width: calc(100% + 3rem);
     filter: none;
