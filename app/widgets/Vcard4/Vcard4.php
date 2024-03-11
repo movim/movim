@@ -54,45 +54,40 @@ class Vcard4 extends Base
     {
         $r = new Get;
         $r->setTo($this->user->id)
-          ->request();
+            ->request();
     }
 
     public function ajaxVcardSubmit($vcard)
     {
         $c = $this->user->contact;
 
+        $c->name = null;
+
         if (Validator::stringType()->notEmpty()->validate($vcard->name->value)) {
-            $c->name    = $vcard->name->value;
+            $c->name = $vcard->name->value;
             $n = new Nickname;
             $n->setNickname($c->name)
-              ->request();
+                ->request();
         }
 
-        if (Validator::date('Y-m-d')->validate($vcard->date->value)) {
-            $c->date    = $vcard->date->value;
-        }
+        $c->date = Validator::date('Y-m-d')->validate($vcard->date->value)
+            ? $vcard->date->value
+            : null;
 
-        if (Validator::stringType()->notEmpty()->validate($vcard->fn->value)) {
-            $c->fn      = $vcard->fn->value;
-        }
+        $c->fn = $vcard->fn->value;
 
-        if (Validator::url()->notEmpty()->validate($vcard->url->value)) {
-            $c->url     = $vcard->url->value;
-        }
+        $c->url = Validator::url()->notEmpty()->validate($vcard->url->value)
+            ? $vcard->url->value
+            : null;
 
-        if (Validator::stringType()->notEmpty()->validate($vcard->locality->value)
-         && Validator::stringType()->notEmpty()->validate($vcard->country->value)) {
-            $c->adrlocality     = $vcard->locality->value;
-            $c->adrcountry      = $vcard->country->value;
-        }
+        $c->adrlocality     = $vcard->locality->value;
+        $c->adrcountry      = $vcard->country->value;
 
-        if (Validator::email()->notEmpty()->validate($vcard->email->value)) {
-            $c->email   = $vcard->email->value;
-        }
+        $c->email   = Validator::email()->notEmpty()->validate($vcard->email->value)
+            ? $vcard->email->value
+            : null;
 
-        if (Validator::stringType()->validate($vcard->desc->value)) {
-            $c->description     = trim($vcard->desc->value);
-        }
+        $c->description     = trim($vcard->desc->value);
 
         $c->save();
 

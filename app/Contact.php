@@ -23,11 +23,11 @@ class Contact extends Model
     {
         return $query->whereIn('id', function ($query) use ($like) {
             $query->select('id')
-                  ->from('users')
-                  ->where('public', true)
-                  ->when($like !== false, function ($query) use ($like) {
-                      $query->where('id', 'like', '%'. $like . '%');
-                  });
+                ->from('users')
+                ->where('public', true)
+                ->when($like !== false, function ($query) use ($like) {
+                    $query->where('id', 'like', '%' . $like . '%');
+                });
         });
     }
 
@@ -35,8 +35,8 @@ class Contact extends Model
     {
         return $query->whereNotIn('id', function ($query) use ($sessionId) {
             $query->select('jid')
-                  ->from('rosters')
-                  ->where('session_id', $sessionId);
+                ->from('rosters')
+                ->where('session_id', $sessionId);
         });
     }
 
@@ -47,7 +47,7 @@ class Contact extends Model
             from presences
             group by jid) as presences
             '), 'presences.jid', '=', 'contacts.id')
-        ->orderBy('presences.value');
+            ->orderBy('presences.value');
     }
 
     public function save(array $options = [])
@@ -66,50 +66,59 @@ class Contact extends Model
     {
         $this->id = $jid;
 
-        $validate_date = Validator::date('Y-m-d');
-        if (isset($vcard->vCard->BDAY)
-        && $validate_date->validate($vcard->vCard->BDAY)) {
-            $this->date = (string)$vcard->vCard->BDAY;
-        }
+        $this->date = isset($vcard->vCard->BDAY)
+            && Validator::date('Y-m-d')->validate($vcard->vCard->BDAY)
+            ? (string)$vcard->vCard->BDAY
+            : null;
 
-        if ($vcard->vCard->NICKNAME) {
-            $this->name = (string)$vcard->vCard->NICKNAME;
-        }
+        $this->name = !empty($vcard->vCard->NICKNAME)
+            ? (string)$vcard->vCard->NICKNAME
+            : null;
 
-        if ($vcard->vCard->FN) {
-            $this->fn = (string)$vcard->vCard->FN;
-        }
+        $this->fn = !empty($vcard->vCard->FN)
+            ? (string)$vcard->vCard->FN
+            : null;
 
-        if ($vcard->vCard->URL) {
-            $this->url = (string)$vcard->vCard->URL;
-        }
+        $this->url = !empty($vcard->vCard->URL)
+            ? (string)$vcard->vCard->URL
+            : null;
 
-        if ($vcard->vCard->EMAIL) {
-            $this->email = (string)$vcard->vCard->EMAIL->USERID;
-        }
+        $this->email = !empty($vcard->vCard->EMAIL)
+            ? (string)$vcard->vCard->EMAIL->USERID
+            : null;
 
-        if ($vcard->vCard->ADR) {
-            $this->adrlocality = (string)$vcard->vCard->ADR->LOCALITY;
-            $this->adrpostalcode = (string)$vcard->vCard->ADR->PCODE;
-            $this->adrcountry = (string)$vcard->vCard->ADR->CTRY;
-        }
+        $this->adrlocality = $vcard->vCard->ADR && !empty($vcard->vCard->ADR->LOCALITY)
+            ? (string)$vcard->vCard->ADR->LOCALITY
+            : null;
 
-        if (filter_var((string)$vcard->vCard->PHOTO, FILTER_VALIDATE_URL)
-         && in_array($this->avatartype, ['vcard-temp', null])) {
+        $this->adrpostalcode = $vcard->vCard->ADR && !empty($vcard->vCard->ADR->PCODE)
+            ? (string)$vcard->vCard->ADR->PCODE
+            : null;
+
+        $this->adrcountry = $vcard->vCard->ADR && !empty($vcard->vCard->ADR->CTRY)
+            ? (string)$vcard->vCard->ADR->CTRY
+            : null;
+
+        if (
+            filter_var((string)$vcard->vCard->PHOTO, FILTER_VALIDATE_URL)
+            && in_array($this->avatartype, ['vcard-temp', null])
+        ) {
             $this->photobin = base64_encode(
                 requestURL((string)$vcard->vCard->PHOTO, 1)
             );
             $this->avatartype = 'vcard-temp';
-        } elseif ($vcard->vCard->PHOTO
-         && in_array($this->avatartype, ['vcard-temp', null])) {
+        } elseif (
+            $vcard->vCard->PHOTO
+            && in_array($this->avatartype, ['vcard-temp', null])
+        ) {
             $this->photobin = (string)$vcard->vCard->PHOTO->BINVAL;
             $this->avatarhash = sha1(base64_decode($this->photobin));
             $this->avatartype = 'vcard-temp';
         }
 
-        if ($vcard->vCard->DESC) {
-            $this->description = (string)$vcard->vCard->DESC;
-        }
+        $this->description = !empty($vcard->vCard->DESC)
+            ? (string)$vcard->vCard->DESC
+            : null;
     }
 
     public function saveBinAvatar()
@@ -142,9 +151,9 @@ class Contact extends Model
     {
         // Clear
         $this->loclatitude = $this->loclongitude = $this->localtitude = $this->loccountry
-        = $this->loccountrycode = $this->locregion = $this->locpostalcode = $this->loclocality
-        = $this->locstreet = $this->locbuilding = $this->loctext = $this->locuri
-        = $this->loctimestamp = null;
+            = $this->loccountrycode = $this->locregion = $this->locpostalcode = $this->loclocality
+            = $this->locstreet = $this->locbuilding = $this->loctext = $this->locuri
+            = $this->loctimestamp = null;
 
         // Fill
         if ($item->geoloc->lat && isLatitude((float)$item->geoloc->lat)) {
@@ -215,10 +224,10 @@ class Contact extends Model
 
     public function setVcard4($vcard)
     {
-        if (isset($vcard->bday->date)
-        && Validator::date('Y-m-d')->validate($vcard->bday->date)) {
-            $this->date = (string)$vcard->bday->date;
-        }
+        $this->date = (isset($vcard->bday->date)
+            && Validator::date('Y-m-d')->validate($vcard->bday->date))
+            ? (string)$vcard->bday->date
+            : null;
 
         $this->nickname = !empty($vcard->nickname->text)
             ? (string)$vcard->nickname->text
@@ -230,9 +239,9 @@ class Contact extends Model
             ? (string)$vcard->url->uri
             : null;
 
-        if ($this->url == null && $vcard->impp->uri) {
-            $this->url = $vcard->impp->uri;
-        }
+        $this->url = !empty($vcard->impp->uri)
+            ? $vcard->impp->uri
+            : null;
 
         $this->adrlocality = !empty($vcard->adr->locality)
             ? (string)$vcard->adr->locality
@@ -247,6 +256,8 @@ class Contact extends Model
         $this->email = !empty($vcard->email->text)
             ? (string)$vcard->email->text
             : null;
+
+        $this->phone = null;
 
         if ($vcard->tel) {
             $this->phone = !empty($vcard->tel->uri)
@@ -268,15 +279,19 @@ class Contact extends Model
 
     public function getLocationDistanceAttribute(): ?float
     {
-        if (in_array('loctimestamp', $this->attributes) && $this->attributes['loctimestamp'] != null
-         && \Carbon\Carbon::now()->subDay()->timestamp < strtotime($this->attributes['loctimestamp'])
-         && $this->attributes['loclatitude'] != null && $this->attributes['loclongitude'] != null) {
+        if (
+            in_array('loctimestamp', $this->attributes) && $this->attributes['loctimestamp'] != null
+            && \Carbon\Carbon::now()->subDay()->timestamp < strtotime($this->attributes['loctimestamp'])
+            && $this->attributes['loclatitude'] != null && $this->attributes['loclongitude'] != null
+        ) {
             $me = User::me()->contact;
 
             if ($me->attributes['loclatitude'] != null && $me->attributes['loclongitude'] != null) {
                 return getDistance(
-                    $this->attributes['loclatitude'], $this->attributes['loclongitude'],
-                    $me->attributes['loclatitude'], $me->attributes['loclongitude'],
+                    $this->attributes['loclatitude'],
+                    $this->attributes['loclongitude'],
+                    $me->attributes['loclatitude'],
+                    $me->attributes['loclongitude'],
                 );
             }
         }
@@ -286,12 +301,14 @@ class Contact extends Model
 
     public function getLocationUrlAttribute(): ?string
     {
-        if (array_key_exists('loctimestamp', $this->attributes) && $this->attributes['loctimestamp'] != null
-         && \Carbon\Carbon::now()->subDay()->timestamp < strtotime($this->attributes['loctimestamp'])
-         && $this->attributes['loclatitude'] != null && $this->attributes['loclongitude'] != null) {
-            return 'https://www.openstreetmap.org/'.
-                '?mlat='.round($this->attributes['loclatitude'], 4).
-                '&mlon='.round($this->attributes['loclongitude'], 4).
+        if (
+            array_key_exists('loctimestamp', $this->attributes) && $this->attributes['loctimestamp'] != null
+            && \Carbon\Carbon::now()->subDay()->timestamp < strtotime($this->attributes['loctimestamp'])
+            && $this->attributes['loclatitude'] != null && $this->attributes['loclongitude'] != null
+        ) {
+            return 'https://www.openstreetmap.org/' .
+                '?mlat=' . round($this->attributes['loclatitude'], 4) .
+                '&mlon=' . round($this->attributes['loclongitude'], 4) .
                 '/#map=13/';
         }
 
@@ -340,8 +357,8 @@ class Contact extends Model
 
     public function getSearchTerms()
     {
-        return cleanupId($this->id).'-'.
-            cleanupId($this->truename).'-'.
+        return cleanupId($this->id) . '-' .
+            cleanupId($this->truename) . '-' .
             cleanupId($this->groupname);
     }
 
@@ -374,14 +391,18 @@ class Contact extends Model
 
     public function isValidDate(): bool
     {
-        if (isset($this->date)
+        if (
+            isset($this->date)
             && $this->date != '0000-00-00T00:00:00+0000'
             && $this->date != '1970-01-01 00:00:00'
             && $this->date != '1970-01-01 01:00:00'
-            && $this->date != '1970-01-01T00:00:00+0000') {
+            && $this->date != '1970-01-01T00:00:00+0000'
+        ) {
             return true;
         }
+
         $this->date = null;
+
         return false;
     }
 
