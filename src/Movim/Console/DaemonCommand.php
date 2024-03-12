@@ -57,8 +57,21 @@ class DaemonCommand extends Command
 
         $loop = Loop::get();
 
-        if (config('daemon.url') && Validator::url()->notEmpty()->validate(config('daemon.url'))) {
-            $baseuri = rtrim(config('daemon.url'), '/') . '/';
+        if (config('daemon.url')) {
+            # Underlying `Validator`, URL validation is done via
+            # FILTER_VALIDATE_URL, where the FILTER_FLAG_SCHEME_REQUIRED was
+            # deprecated & then removed in later PHP versions now *reqiring* a
+            # scheme. Base URIs are allowed to be scheme-less which helps users
+            # looking to support both HTTP & HTTPS (either for testing purposes
+            # or otherwise). As such, we can append a missing scheme in order
+            # satisfy this validator requirement, but still use the scheme-less
+            # URI in practice.
+            $schemeEnforcedURL = parse_url(config('daemon.url'), PHP_URL_SCHEME)
+                ? config('daemon.url')
+                : 'http://' . ltrim(config('daemon.url'), '/');
+            if (Validator::url()->notEmpty()->validate($schemeEnforcedURL)) {
+                $baseuri = rtrim(config('daemon.url'), '/') . '/';
+            }
         } elseif (file_exists(CACHE_PATH . 'baseuri')) {
             $baseuri = file_get_contents(CACHE_PATH . 'baseuri');
         } else {
