@@ -27,18 +27,6 @@ class ConfigCommand extends Command
                 'Content of the info box on the login page'
             )
             ->addOption(
-                'username',
-                null,
-                InputOption::VALUE_REQUIRED,
-                'Username for the admin area'
-            )
-            ->addOption(
-                'password',
-                null,
-                InputOption::VALUE_REQUIRED,
-                'Password for the admin area'
-            )
-            ->addOption(
                 'timezone',
                 null,
                 InputOption::VALUE_REQUIRED,
