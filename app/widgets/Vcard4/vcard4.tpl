@@ -2,9 +2,12 @@
     <div id="avatar" class="spin"></div>
     {if="!isset($me->jid)"}
         <script type="text/javascript">
-            MovimWebsocket.attach(function() {
-                Vcard4_ajaxGetVcard()
-            });
+            document.addEventListener('DOMContentLoaded', function dcl() {
+                document.removeEventListener('DOMContentLoaded', dcl, false);
+                MovimWebsocket.attach(function() {
+                    Vcard4_ajaxGetVcard()
+                });
+            }, false);
         </script>
     {/if}
     <div id="vcard_form">
