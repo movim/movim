@@ -15,14 +15,14 @@ var Notif = {
     incomingMessage: function () {
         if (NOTIFICATION_CHAT) {
             // From https://free-mobi.org/ringtones/sms/sms-sound-2
-            var tone = new Audio('theme/audio/message.ogg');
+            var tone = new Audio(BASE_URI + 'theme/audio/message.ogg');
             tone.play();
         }
     },
     incomingCall: function () {
         if (NOTIFICATION_CALL) {
             // From https://www.zedge.net/ringtone/466d15be-8fa0-32a1-b3dc-62c12a86b6da
-            Notif.audioCall = new Audio('theme/audio/call.ogg');
+            Notif.audioCall = new Audio(BASE_URI + 'theme/audio/call.ogg');
             Notif.audioCall.addEventListener('ended', function () {
                 this.currentTime = 0;
                 this.play();
