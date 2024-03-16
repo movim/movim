@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html translate="no">
+<html translate="no" lang="<%language%>">
     <head>
         <meta charset="utf-8" />
         <title><%title%></title>
