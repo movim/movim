@@ -18,6 +18,7 @@ class Builder
     private $commonContent = '';
     private $css = [];
     private $scripts = [];
+    private $language = 'en';
     private $dir = 'ltr';
     private $public;
     private $user;
@@ -73,8 +74,8 @@ class Builder
         $scripts .= $this->printScripts();
 
         $outp = str_replace(
-            ['<%scripts%>', '<%meta%>', '<%content%>', '<%common%>', '<%title%>', '<%dir%>'],
-            [$scripts, $this->meta(), $this->content, $this->commonContent, $this->title(), $this->dir()],
+            ['<%scripts%>', '<%meta%>', '<%content%>', '<%common%>', '<%title%>', '<%language%>', '<%dir%>'],
+            [$scripts, $this->meta(), $this->content, $this->commonContent, $this->title(), $this->language(), $this->dir()],
             $outp
         );
 
@@ -130,6 +131,39 @@ class Builder
         return isset($widgets->title)
             ? $this->title . ' • ' . $widgets->title
             : $this->title;
+    }
+
+    /**
+     * Displays the current language
+     */
+    public function language()
+    {
+        $lang = $this->user->language ?? Configuration::get()->locale;
+        if (empty($lang)) {
+            return null;
+        }
+        // String casing for the web
+        $split = array_slice(preg_split('/[_-]/', $lang), 0, 3);
+        $lc = array_shift($split);
+        $langCode = strtolower($lc);
+        if (empty($split)) {
+           return $langCode;
+        }
+        $tags = array_map(function ($tag) {
+            switch (strlen($tag)) {
+                // Region
+                case 2:
+                case 3:
+                   return strtoupper($tag);
+                // Script
+                case 4:
+                   return ucfirst(strtolower($tag));
+                default:
+                   return $tag;
+            }
+        }, $split);
+        array_unshift($tags, $langCode);
+        return implode('-', $tags);
     }
 
     /**
