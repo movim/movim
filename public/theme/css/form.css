@@ -300,13 +300,18 @@ form > div .radio > input[type="radio"]:checked + label:hover {
 /* Disabled */
 
 form > div input:disabled,
-form > div input:disabled + label {
+form > div input:disabled + label,
+form > div select:disabled,
+form > div select:disabled + label,
+form > div textarea:disabled,
+form > div textarea:disabled + label {
     opacity: 0.5;
 }
 
 /* Readonly */
 
-form > div input[readonly] {
+form > div input[readonly],
+form > div textarea[readonly] {
     opacity: 0.75;
 }
 
