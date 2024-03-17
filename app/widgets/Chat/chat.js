@@ -503,10 +503,8 @@ var Chat = {
         if (noColon || value.lastIndexOf(':') > -1 && value.length > value.lastIndexOf(':') + 2) {
             var first = true;
 
-            Object.keys(emojis).filter(key => key.indexOf(
-                value.substring(value.lastIndexOf(':') + 1)
-            ) > -1)
-                .filter(key => key.indexOf('type') == -1)
+            Object.keys(window.emojis)
+                .filter(key => key.includes(value.substring(value.lastIndexOf(':') + 1)) && !key.includes('type'))
                 .slice(0, 40)
                 .forEach(found => {
                     var img = document.createElement('img');
