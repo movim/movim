@@ -11,6 +11,7 @@ class Configuration extends Model
     private static $instance = null;
 
     public $fillable = [
+        'chatonly',
         'description',
         'disableregistration',
         'info',
@@ -30,10 +31,12 @@ class Configuration extends Model
         'id'                    => 1,
         'unregister'            => false,
         'disableregistration'   => false,
+        'chatonly'              => false,
         'restrictsuggestions'   => false,
         'loglevel'              => 0,
         'locale'                => 'en',
-        'xmppwhitelist'         => null
+        'xmppwhitelist'         => null,
+        'gifapikey'             => null,
     ];
 
     public static function get()
