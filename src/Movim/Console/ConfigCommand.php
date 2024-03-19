@@ -27,10 +27,34 @@ class ConfigCommand extends Command
                 'Content of the info box on the login page'
             )
             ->addOption(
+                'description',
+                null,
+                InputOption::VALUE_REQUIRED,
+                'General description of the instance'
+            )
+            ->addOption(
                 'timezone',
                 null,
                 InputOption::VALUE_REQUIRED,
                 'The server timezone'
+            )
+            ->addOption(
+                'restrictsuggestions',
+                null,
+                InputOption::VALUE_REQUIRED,
+                'Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services'
+            )
+            ->addOption(
+                'chatonly',
+                null,
+                InputOption::VALUE_REQUIRED,
+                'Disable all the social feature (Communities, Blog…) and keep only the chat ones'
+            )
+            ->addOption(
+                'disableregistration',
+                null,
+                InputOption::VALUE_REQUIRED,
+                'Remove the XMPP registration flow and buttons from the interface'
             )
             ->addOption(
                 'loglevel',
@@ -61,6 +85,12 @@ class ConfigCommand extends Command
                 null,
                 InputOption::VALUE_REQUIRED,
                 'The whitelisted XMPP servers'
+            )
+            ->addOption(
+                'gifapikey',
+                null,
+                InputOption::VALUE_REQUIRED,
+                'Tenor API key'
             );
     }
 
