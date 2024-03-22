@@ -1,4 +1,4 @@
-<?php if ($this->js_check) { ?>
+<?php if ($this->jsCheck) { ?>
 <noscript>
     <style type="text/css">main {display: none;}</style>
     <ul class="list" style="color: white;">

@@ -17,7 +17,7 @@ class Base
     protected $set_cookie = true;   // Set a fresh cookie
     protected $raw = false;         // Display only the content ?
     protected $public = false;      // It's a public page
-    protected $js_check = true;     // Check is Javascript is enabled
+    protected $jsCheck = true;     // Check is Javascript is enabled
     protected $page;
 
     public function __construct()
