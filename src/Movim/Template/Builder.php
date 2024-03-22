@@ -6,22 +6,23 @@
 namespace Movim\Template;
 
 use App\Configuration;
+use App\User;
 use Movim\Controller\Ajax;
 use Movim\Widget\Wrapper;
 use stdClass;
 
 class Builder
 {
-    private $_view = '';
-    private $title = APP_TITLE;
-    private $content = '';
-    private $commonContent = '';
-    private $css = [];
-    private $scripts = [];
-    private $dir = 'ltr';
-    private $public;
-    private $user;
-    private $js_check = true;
+    private string $_view = '';
+    private string $title = APP_TITLE;
+    private string $content = '';
+    private string $commonContent = '';
+    private array $css = [];
+    private array $scripts = [];
+    private string $dir = 'ltr';
+    private bool $public;
+    private ?User $user = null;
+    private $jsCheck = true;
 
     /**
      * Constructor. Determines whether to show the login page to the user or the
@@ -30,7 +31,7 @@ class Builder
     public function __construct()
     {
         if (isLogged()) {
-            $this->user = \App\User::me();
+            $this->user = User::me();
         }
     }
 
@@ -58,7 +59,7 @@ class Builder
     /**
      * Actually generates the page from templates.
      */
-    public function build(string $view, $public = false)
+    public function build(string $view, bool $public = false)
     {
         $this->_view = $view;
         $this->public = $public;
@@ -73,8 +74,8 @@ class Builder
         $scripts .= $this->printScripts();
 
         $outp = str_replace(
-            ['<%scripts%>', '<%meta%>', '<%content%>', '<%common%>', '<%title%>', '<%dir%>'],
-            [$scripts, $this->meta(), $this->content, $this->commonContent, $this->title(), $this->dir()],
+            ['<%scripts%>', '<%meta%>', '<%content%>', '<%common%>', '<%title%>', '<%language%>', '<%dir%>'],
+            [$scripts, $this->meta(), $this->content, $this->commonContent, $this->title(), $this->language(), $this->dir()],
             $outp
         );
 
@@ -84,7 +85,7 @@ class Builder
     /**
      * Generate the page
      */
-    public function softBuild(string $view, $public = false): stdClass
+    public function softBuild(string $view, bool $public = false): stdClass
     {
         $this->_view = $view;
         $this->public = $public;
@@ -117,7 +118,7 @@ class Builder
      */
     public function disableJavascriptCheck()
     {
-        $this->js_check = false;
+        $this->jsCheck = false;
     }
 
     /**
@@ -130,6 +131,47 @@ class Builder
         return isset($widgets->title)
             ? $this->title . ' • ' . $widgets->title
             : $this->title;
+    }
+
+    /**
+     * Displays the current language
+     */
+    public function language(): string
+    {
+        $lang = $this->user && $this->user->language
+            ? $this->user->language
+            : Configuration::get()->locale;
+
+        if (empty($lang)) {
+            return 'en';
+        }
+
+        // String casing for the web
+        $split = array_slice(preg_split('/[_-]/', $lang), 0, 3);
+        $lc = array_shift($split);
+        $langCode = strtolower($lc);
+
+        if (empty($split)) {
+           return $langCode;
+        }
+
+        $tags = array_map(function ($tag) {
+            switch (strlen($tag)) {
+                // Region
+                case 2:
+                case 3:
+                   return strtoupper($tag);
+                // Script
+                case 4:
+                   return ucfirst(strtolower($tag));
+                default:
+                   return $tag;
+            }
+        }, $split);
+
+        array_unshift($tags, $langCode);
+
+        return implode('-', $tags);
     }
 
     /**
