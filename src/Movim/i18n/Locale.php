@@ -260,7 +260,7 @@ class Locale
      */
     public function load(string $language)
     {
-        $this->language = $language;
+        $this->language = $this->printPo($language);
         $this->loadPo();
     }
 
