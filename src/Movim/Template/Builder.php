@@ -9,6 +9,7 @@ use App\Configuration;
 use App\User;
 use Movim\Controller\Ajax;
 use Movim\Widget\Wrapper;
+use Movim\i18n\Locale;
 use stdClass;
 
 class Builder
@@ -142,37 +143,7 @@ class Builder
         $lang = $this->user && $this->user->language
             ? $this->user->language
             : Configuration::get()->locale;
-
-        if (empty($lang)) {
-            return 'en';
-        }
-
-        // String casing for the web
-        $split = array_slice(preg_split('/[_-]/', $lang), 0, 3);
-        $lc = array_shift($split);
-        $langCode = strtolower($lc);
-
-        if (empty($split)) {
-           return $langCode;
-        }
-
-        $tags = array_map(function ($tag) {
-            switch (strlen($tag)) {
-                // Region
-                case 2:
-                case 3:
-                   return strtoupper($tag);
-                // Script
-                case 4:
-                   return ucfirst(strtolower($tag));
-                default:
-                   return $tag;
-            }
-        }, $split);
-
-        array_unshift($tags, $langCode);
-
-        return implode('-', $tags);
+        return Locale::printISO639($lang);
     }
 
     /**
