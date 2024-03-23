@@ -330,4 +330,30 @@ class Locale
             return $matches[1];
         }
     }
+
+    /**
+     * @desc Converts a string to Locale, then prints as an ISO-639-compatbile string
+     */
+    public static function printISO639(string $str): string
+    {
+        $parsed = self::parseStr($str);
+        return is_array($parsed) ? implode('-', array_values($parsed)) : $str;
+    }
+
+    /**
+     * @desc Converts a string to Locale, then prints as an POSIX-compatbile string
+     */
+    public static function printPOSIX(string $str): string
+    {
+        $parsed = self::parseStr($str);
+        return is_array($parsed) ? implode('_', array_values($parsed)) : $str;
+    }
+
+    /**
+     * @desc Converts a string to Locale, then prints as an PO-filename-compatbile string
+     */
+    public static function printPo(string $str): string
+    {
+        return strtolower(self::printPOSIX($str));
+    }
 }
