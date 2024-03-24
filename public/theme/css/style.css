@@ -57,6 +57,8 @@ a:visited {
 /* Navigation bar */
 
 body>nav {
+    display: flex;
+    flex-flow: column nowrap;
     width: 7rem;
     max-width: 95%;
     z-index: 2;
