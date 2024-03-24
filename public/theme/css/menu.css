@@ -14,15 +14,7 @@ body>nav.color.dark>ul a {
 }
 
 ul.oppose {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-}
-
-@media screen and (max-height: 28rem) {
-    ul.oppose {
-        bottom: initial;
-    }
+    margin-top: auto;
 }
 
 /* Specific case to handle rtl */
