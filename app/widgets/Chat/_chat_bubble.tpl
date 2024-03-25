@@ -7,7 +7,7 @@
             {if="$me == null"}
                 <a href="#" onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')">
             {/if}
-                <img src="{$contact->getPicture()}" data-name="{$contact->fn}">
+                <img src="{$contact->getPicture()}" data-name="{$contact->truename}">
             {if="$me == null"}</a>{/if}
         </span>
     {/if}

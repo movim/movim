@@ -1082,8 +1082,6 @@ class Chat extends \Movim\Widget\Base
             return;
         }
 
-        $jid = echapJid($jid);
-
         $messagesQuery = \App\Message::jid($jid);
 
         $messagesQuery = $muc

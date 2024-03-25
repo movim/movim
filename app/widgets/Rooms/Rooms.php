@@ -29,7 +29,7 @@ class Rooms extends Base
         $this->registerEvent('message', 'onMessage');
         $this->registerEvent('presence_unavailable_handle', 'onDisconnected', 'chat');
 
-        $this->registerEvent('presence_muc_handle', 'onConnected', 'chat');
+        $this->registerEvent('presence_muc_handle', 'onConnected'/*, 'chat'*/);
         $this->registerEvent('presence_muc_errorconflict', 'onConflict');
         $this->registerEvent('presence_muc_errorregistrationrequired', 'onRegistrationRequired');
         $this->registerEvent('presence_muc_errorremoteservernotfound', 'onRemoteServerNotFound');

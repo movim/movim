@@ -191,7 +191,7 @@ class Presence extends Base
         // We reload the user instance in memory
         \App\User::me(true);
 
-        $presence = $this->user->session->presence;
+        $presence = $this->user->session?->presence;
         $contact = $this->user->contact;
 
         $presencetpl = $this->tpl();

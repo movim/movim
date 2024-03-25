@@ -24,7 +24,7 @@ function validateTag($tag)
 
 function validateJid($jid)
 {
-    return (Validator::stringType()->noWhitespace()->length(6, 256)->validate($jid));
+    return (Validator::stringType()->length(6, 256)->validate($jid));
 }
 
 function validateRoom($room)
