@@ -1,5 +1,6 @@
 <?php
 
+use Movim\ImageSize;
 use Movim\Widget\Base;
 
 class Syndication extends Base
@@ -59,9 +60,9 @@ class Syndication extends Base
             $name->appendChild($dom->createTextNode($contact->truename));
             $author->appendChild($dom->createElement('uri', $this->route('blog', $from)));
 
-            if ($contact->getPicture('l')) {
+            if ($contact->getPicture(ImageSize::L)) {
                 $logo = $dom->createElement('logo');
-                $logo->appendChild($dom->createTextNode($contact->getPicture('l')));
+                $logo->appendChild($dom->createTextNode($contact->getPicture(ImageSize::L)));
                 $feed->appendChild($logo);
             }
 

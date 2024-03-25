@@ -1,6 +1,6 @@
 <section class="scroll">
     <form name="avatarform">
-        <img class="avatar" src="{$me->getPicture('o') ?? ''}">
+        <img class="avatar" src="{$me->getPicture(\Movim\ImageSize::O) ?? ''}">
         <div class="placeholder">
             <i class="material-symbols">image</i>
             <h1>{$c->__('avatar.missing')}</h1>

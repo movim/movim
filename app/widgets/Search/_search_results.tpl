@@ -44,7 +44,7 @@
         title="{$value->server} - {$value->node}"
     >
             <span class="primary icon bubble">
-                <img src="{$value->getPicture('m')}"/>
+                <img src="{$value->getPicture(\Movim\ImageSize::M)}"/>
             </span>
             <span class="control icon gray">
                 <i class="material-symbols">chevron_right</i>

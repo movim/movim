@@ -68,7 +68,7 @@
             <div>
                 <div id="remote_level">
                     <div class="avatar">
-                        <img src="{$contact->getPicture('l')}">
+                        <img src="{$contact->getPicture(\Movim\ImageSize::L)}">
                     </div>
                 </div>
                 <p class="normal center">{$contact->truename}</p>

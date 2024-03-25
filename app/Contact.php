@@ -7,6 +7,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 
 use Respect\Validation\Validator;
 use Movim\Image;
+use Movim\ImageSize;
 
 class Contact extends Model
 {
@@ -135,12 +136,12 @@ class Contact extends Model
         unset($this->photobin);
     }
 
-    public function getPicture($size = 'm'): string
+    public function getPicture(ImageSize $size = ImageSize::M): string
     {
         return getPicture($this->id, $this->truename, $size);
     }
 
-    public function getBanner($size = 'xxl')
+    public function getBanner(ImageSize $size = ImageSize::XXL)
     {
         $banner = !empty($this->id) ? getPicture($this->id . '_banner', $this->truename, $size) : null;
 

@@ -217,7 +217,7 @@ class Info extends Model
         return $identityType ? $identityType->type : null;
     }
 
-    public function getPicture($size = 'm'): string
+    public function getPicture(\Movim\ImageSize $size = \Movim\ImageSize::M): string
     {
         return getPicture($this->attributes['avatarhash'], $this->node, $size);
     }

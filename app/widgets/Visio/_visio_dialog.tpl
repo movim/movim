@@ -3,7 +3,7 @@
         <li>
             <div>
                 <p class="center">
-                    <img src="{$contact->getPicture('l')}">
+                    <img src="{$contact->getPicture(\Movim\ImageSize::L)}">
                 </p>
                 <p class="normal center">
                     {if="$withvideo"}

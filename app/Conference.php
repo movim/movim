@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Movim\ImageSize;
 use Movim\Model;
 
 class Conference extends Model
@@ -214,7 +215,7 @@ class Conference extends Model
         return $subject ? $subject->subject : null;
     }
 
-    public function getPicture($size = 'm'): string
+    public function getPicture(ImageSize $size = ImageSize::M): string
     {
         return $this->contact
             ? $this->contact->getPicture($size)

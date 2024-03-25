@@ -11,7 +11,7 @@
             {else}
                 status {$value->presence->presencekey}
             {/if}">
-            <img src="{$value->getPicture('m')}">
+            <img src="{$value->getPicture(\Movim\ImageSize::M)}">
         </span>
         <span class="control icon active gray" onclick="SendTo_ajaxSend('{$value->jid|echapJS}', {'uri': '{$uri}'}, false, '{$openlink}')">
             <i class="material-symbols">send</i>

@@ -15,7 +15,7 @@
 
                 {if="$icon != null"}
                     <span class="primary icon bubble">
-                        <img src="{$icon->getPicture('l')}"/>
+                        <img src="{$icon->getPicture(\Movim\ImageSize::L)}"/>
                     </span>
                 {else}
                     <span class="primary icon bubble color {$draft->node|stringToColor}">

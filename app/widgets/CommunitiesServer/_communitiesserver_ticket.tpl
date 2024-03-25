@@ -13,7 +13,7 @@
     {/if}
 
     <span class="primary icon thumb">
-        <img loading="lazy" src="{$community->getPicture('m')}"/>
+        <img loading="lazy" src="{$community->getPicture(\Movim\ImageSize::M)}"/>
     </span>
     <div>
         <p class="line">

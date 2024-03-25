@@ -21,7 +21,7 @@
     {elseif="!$post->contact"}
         <span class="control icon bubble">
             {if="$post->info"}
-                <img src="{$post->info->getPicture('m')}">
+                <img src="{$post->info->getPicture(\Movim\ImageSize::M)}">
             {else}
                 <img src="{$post->node|avatarPlaceholder}">
             {/if}

@@ -5,6 +5,7 @@ use Monolog\Logger;
 use Monolog\Handler\SyslogHandler;
 use Monolog\Handler\StreamHandler;
 use Movim\Image;
+use Movim\ImageSize;
 
 class Utils
 {
@@ -208,18 +209,18 @@ function formToArray(stdClass $form): array
 /**
  * Return the picture or fallback to the placeholder
  */
-function getPicture(?string $key, string $placeholder, string $size = 'm'): string
+function getPicture(?string $key, string $placeholder, ImageSize $size = ImageSize::M): string
 {
-    $sizes = [
-        'xxl'   => [1280, 300],
-        'xl'    => [512, false],
-        'l'     => [210, false],
-        'm'     => [120, false],
-        's'     => [50, false],
-        'o'     => [false, false]
-    ];
+    [$width, $height] =  match ($size) {
+        ImageSize::XXL => [1280, 300],
+        ImageSize::XL => [512, false],
+        ImageSize::L => [210, false],
+        ImageSize::M => [120, false],
+        ImageSize::S => [50, false],
+        ImageSize::O => [false, false],
+    };
 
-    return (!empty($key) && $url = Image::getOrCreate($key, $sizes[$size][0], $sizes[$size][1]))
+    return (!empty($key) && $url = Image::getOrCreate($key, $width, $height))
         ? $url
         : avatarPlaceholder($placeholder);
 }

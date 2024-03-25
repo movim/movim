@@ -128,7 +128,7 @@ class Menu extends Base
                     if ($info->name) {
                         $title = $info->name;
                     }
-                    $logo = $info->getPicture('l');
+                    $logo = $info->getPicture(\Movim\ImageSize::L);
                 }
 
                 Notif::append(

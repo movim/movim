@@ -2,7 +2,7 @@
     <li class="block large">
         <div>
             <p class="center all">
-                <img src="{if="$roster"}{$roster->getPicture('xl')}{else}{$contact->getPicture('xl')}{/if}" class="avatar">
+                <img src="{if="$roster"}{$roster->getPicture(\Movim\ImageSize::XL)}{else}{$contact->getPicture(\Movim\ImageSize::XL)}{/if}" class="avatar">
             </p>
         </div>
     </li>
