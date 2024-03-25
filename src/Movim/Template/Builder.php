@@ -140,10 +140,14 @@ class Builder
      */
     public function language(): string
     {
-        $lang = $this->user && $this->user->language
-            ? $this->user->language
-            : Configuration::get()->locale;
-        return Locale::printISO639($lang);
+        if ($this?->user?->language != null) {
+            return Locale::printISO639($this->user->language);
+        }
+
+        $locale = Locale::start();
+        $locale->detect(getenv('language'));
+
+        return Locale::printISO639($locale->language ?? Configuration::get()->locale);
     }
 
     /**
