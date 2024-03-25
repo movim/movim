@@ -5006,16 +5006,16 @@
         },
         {
             "name": "respect/validation",
-            "version": "2.3.5",
+            "version": "2.3.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Respect/Validation.git",
-                "reference": "ccec34cf21ca4c0a3acb0968aea295290bcb8fc6"
+                "reference": "263ae118fb9b0d3bc6692eb2154cd851deff7932"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Respect/Validation/zipball/ccec34cf21ca4c0a3acb0968aea295290bcb8fc6",
-                "reference": "ccec34cf21ca4c0a3acb0968aea295290bcb8fc6",
+                "url": "https://api.github.com/repos/Respect/Validation/zipball/263ae118fb9b0d3bc6692eb2154cd851deff7932",
+                "reference": "263ae118fb9b0d3bc6692eb2154cd851deff7932",
                 "shasum": ""
             },
             "require": {
@@ -5068,9 +5068,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Respect/Validation/issues",
-                "source": "https://github.com/Respect/Validation/tree/2.3.5"
+                "source": "https://github.com/Respect/Validation/tree/2.3.6"
             },
-            "time": "2024-03-15T10:45:30+00:00"
+            "time": "2024-03-24T18:49:24+00:00"
         },
         {
             "name": "ringcentral/psr7",
@@ -7001,7 +7001,7 @@
         },
         {
             "name": "web-token/jwt-key-mgmt",
-            "version": "3.3.0",
+            "version": "3.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-token/jwt-key-mgmt.git",
@@ -7056,7 +7056,7 @@
                 "symfony"
             ],
             "support": {
-                "source": "https://github.com/web-token/jwt-key-mgmt/tree/3.3.0"
+                "source": "https://github.com/web-token/jwt-key-mgmt/tree/3.3.4"
             },
             "funding": [
                 {
@@ -7069,16 +7069,16 @@
         },
         {
             "name": "web-token/jwt-library",
-            "version": "3.3.1",
+            "version": "3.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-token/jwt-library.git",
-                "reference": "37a0665d89865d09579e484e5d7d70950d079198"
+                "reference": "a9fde8057aa978a4b97436d8875f5bb45a30fb2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-token/jwt-library/zipball/37a0665d89865d09579e484e5d7d70950d079198",
-                "reference": "37a0665d89865d09579e484e5d7d70950d079198",
+                "url": "https://api.github.com/repos/web-token/jwt-library/zipball/a9fde8057aa978a4b97436d8875f5bb45a30fb2e",
+                "reference": "a9fde8057aa978a4b97436d8875f5bb45a30fb2e",
                 "shasum": ""
             },
             "require": {
@@ -7150,7 +7150,7 @@
             ],
             "support": {
                 "issues": "https://github.com/web-token/jwt-library/issues",
-                "source": "https://github.com/web-token/jwt-library/tree/3.3.1"
+                "source": "https://github.com/web-token/jwt-library/tree/3.3.4"
             },
             "funding": [
                 {
@@ -7162,11 +7162,11 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2024-02-28T09:04:35+00:00"
+            "time": "2024-03-24T09:57:06+00:00"
         },
         {
             "name": "web-token/jwt-signature",
-            "version": "3.3.0",
+            "version": "3.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-token/jwt-signature.git",
@@ -7218,7 +7218,7 @@
                 "symfony"
             ],
             "support": {
-                "source": "https://github.com/web-token/jwt-signature/tree/3.3.0"
+                "source": "https://github.com/web-token/jwt-signature/tree/3.3.4"
             },
             "funding": [
                 {
@@ -7231,7 +7231,7 @@
         },
         {
             "name": "web-token/jwt-signature-algorithm-ecdsa",
-            "version": "3.3.0",
+            "version": "3.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-token/jwt-signature-algorithm-ecdsa.git",
@@ -7284,7 +7284,7 @@
                 "symfony"
             ],
             "support": {
-                "source": "https://github.com/web-token/jwt-signature-algorithm-ecdsa/tree/3.3.0"
+                "source": "https://github.com/web-token/jwt-signature-algorithm-ecdsa/tree/3.3.4"
             },
             "funding": [
                 {
@@ -7297,7 +7297,7 @@
         },
         {
             "name": "web-token/jwt-util-ecc",
-            "version": "3.3.0",
+            "version": "3.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-token/jwt-util-ecc.git",
@@ -7350,7 +7350,7 @@
                 "symfony"
             ],
             "support": {
-                "source": "https://github.com/web-token/jwt-util-ecc/tree/3.3.0"
+                "source": "https://github.com/web-token/jwt-util-ecc/tree/3.3.4"
             },
             "funding": [
                 {

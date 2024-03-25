@@ -23,7 +23,7 @@ class StreamFeatures extends Payload
                 $auth = Authentication::getInstance();
                 $auth->choose($mechanisms);
 
-                Stream::bind2Set($auth->getType(), $auth->getResponse(), APP_TITLE);
+                Stream::bind2Set($auth->getType(), $auth->getResponse(), APP_TITLE . ' ' . BASE_URI);
             }
 
         } elseif ($stanza->mechanisms && $stanza->mechanisms->attributes()->xmlns = 'urn:ietf:params:xml:ns:xmpp-sasl') {
