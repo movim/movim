@@ -98,7 +98,7 @@ class Roster extends Model
 
     public function getBanner(ImageSize $size = ImageSize::XXL)
     {
-        $banner = !empty($this->id) ? getPicture($this->id . '_banner', $size) : null;
+        $banner = !empty($this->id) ? getPicture($this->id . '_banner', $this->truename, $size) : null;
 
         return $banner == null ? $this->getPicture($size) : $banner;
     }
