@@ -165,7 +165,7 @@ span.icon:not(.composing):not([data-counter]).status.server_error:after,
 .color.semi { color: rgba(var(--movim-font), 0.87); background-color: rgba(var(--movim-background-main), 0.75); }
 rect#red {
     fill: #6e40aa;
-  }
+}
 form > div > input:focus:invalid,
 form > div > input:focus:required {
     box-shadow: 0px 2px 0px var(--p-red);

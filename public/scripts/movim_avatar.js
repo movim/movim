@@ -2,8 +2,8 @@ var MovimAvatar = {
     file : function(files, formname, width = 512, height = 512) {
         var f = files[0];
         if (!f.type.match(/image.*/)) {
-          console.log("Not a picture !");
-          MovimAvatar.clear(formname);
+            console.log("Not a picture !");
+            MovimAvatar.clear(formname);
         } else {
             var reader = new FileReader();
             reader.readAsDataURL(f);
