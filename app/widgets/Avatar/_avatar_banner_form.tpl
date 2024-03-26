@@ -1,6 +1,6 @@
 <section class="scroll">
     <form name="bannerform">
-        <img class="avatar" src="{$me->getBanner('o') ?? ''}">
+        <img class="avatar" src="{$me->getBanner(\Movim\ImageSize::O) ?? ''}">
         <div class="placeholder">
             <i class="material-symbols">image</i>
             <h1>{$c->__('banner.missing')}</h1>

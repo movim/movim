@@ -1,6 +1,6 @@
 <section>
     <header class="big color {$contact->jid|stringToColor}"
-        style="background-image: linear-gradient(to bottom, rgba(23,23,23,0.8) 0%, rgba(23,23,23,0.5) 100%), url('{$contact->getBanner('xxl')}');"
+        style="background-image: linear-gradient(to bottom, rgba(23,23,23,0.8) 0%, rgba(23,23,23,0.5) 100%), url('{$contact->getBanner(\Movim\ImageSize::XXL)}');"
         >
         <ul class="list thick">
             <li>

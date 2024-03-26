@@ -13,7 +13,7 @@
         {loop="$top"}
             <li class="block {if="$value->last > 60"} inactive{/if}"
                 onclick="Chats_ajaxOpen('{$value->jid|echapJS}'); Chat.get('{$value->jid|echapJS}');">
-                <img class="main" src="{$value->getBanner('l')}">
+                <img class="main" src="{$value->getBanner(\Movim\ImageSize::L)}">
                 <span class="primary icon bubble
                     {if="$value->presence"}
                         status {$value->presence->presencekey}
