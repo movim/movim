@@ -5,6 +5,10 @@ body>nav>ul:not(:first-child) li p:first-of-type {
     line-height: 6rem;
 }
 
+body>nav>ul.list {
+    flex-shrink: 0;
+}
+
 body>nav>ul.list li {
     padding-left: 0.5rem;
 }
