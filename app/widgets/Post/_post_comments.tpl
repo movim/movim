@@ -51,10 +51,10 @@
             {if="$value->contact"}
                 <span class="primary icon bubble small">
                     {if="$public"}
-                        <img src="{$value->contact->getPicture('s')}">
+                        <img src="{$value->contact->getPicture(\Movim\ImageSize::S)}">
                     {else}
                         <a href="{$c->route('contact', $value->contact->jid)}">
-                            <img src="{$value->contact->getPicture('s')}">
+                            <img src="{$value->contact->getPicture(\Movim\ImageSize::S)}">
                         </a>
                     {/if}
                 </span>

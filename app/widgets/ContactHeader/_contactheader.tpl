@@ -7,7 +7,7 @@
 <header class="big top color {$contact->jid|stringToColor}"
         style="
                 background-image:
-                linear-gradient(to top, rgba(23,23,23,0.9) 0, rgba(23,23,23,0.6) 5rem, rgba(23,23,23,0) 12rem), url('{$contact->getBanner('xxl')}');
+                linear-gradient(to top, rgba(23,23,23,0.9) 0, rgba(23,23,23,0.6) 5rem, rgba(23,23,23,0) 12rem), url('{$contact->getBanner(\Movim\ImageSize::XXL)}');
         ">
 
 <ul class="list thick">
@@ -44,7 +44,7 @@
             <i class="material-symbols">arrow_back</i>
         </span>
         <span class="primary icon bubble active" onclick="ContactActions_ajaxGetDrawer('{$contact->id|echapJS}')">
-            <img src="{if="$roster"}{$roster->getPicture('m')}{else}{$contact->getPicture('m')}{/if}">
+            <img src="{if="$roster"}{$roster->getPicture(\Movim\ImageSize::M)}{else}{$contact->getPicture(\Movim\ImageSize::M)}{/if}">
         </span>
         <div>
             <p class="line active" onclick="ContactActions_ajaxGetDrawer('{$contact->id|echapJS}')">

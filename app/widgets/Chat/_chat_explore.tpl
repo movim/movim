@@ -27,7 +27,7 @@
                     <i class="material-symbols">comment</i>
                 </span>
                 <span class="primary icon bubble {if="$value->value"}status {$presencestxt[$value->value]}{/if}">
-                    <img src="{$value->getPicture('m')}">
+                    <img src="{$value->getPicture(\Movim\ImageSize::M)}">
                 </span>
                 <div>
                     <p class="normal line">

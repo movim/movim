@@ -12,7 +12,7 @@
             {$contact = $c->getContact($value->jid)}
             <li>
                 <span class="primary icon bubble">
-                    <img src="{$contact->getPicture('m')}">
+                    <img src="{$contact->getPicture(\Movim\ImageSize::M)}">
                 </span>
                 <div>
                     <p class="normal line">

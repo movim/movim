@@ -29,12 +29,12 @@
                 <ul class="list middle invite">
                     <li>
                         <span class="primary icon bubble">
-                            <img src="{$contact->getPicture('m')}">
+                            <img src="{$contact->getPicture(\Movim\ImageSize::M)}">
                         </span>
 
-                        {if="$invitation->room && $invitation->room->getPicture('m')"}
+                        {if="$invitation->room && $invitation->room->getPicture(\Movim\ImageSize::M)"}
                             <span class="primary icon bubble">
-                                <img src="{$invitation->room->getPicture('m')}">
+                                <img src="{$invitation->room->getPicture(\Movim\ImageSize::M)}">
                             </span>
                         {/if}
                         <div>

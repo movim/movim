@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Movim\ImageSize;
 use Movim\Model;
 
 class Roster extends Model
@@ -90,12 +91,12 @@ class Roster extends Model
             cleanupId($this->group);
     }
 
-    public function getPicture($size = 'm'): string
+    public function getPicture(ImageSize $size = ImageSize::M): string
     {
         return getPicture($this->jid, $this->truename, $size);
     }
 
-    public function getBanner($size = 'xxl')
+    public function getBanner(ImageSize $size = ImageSize::XXL)
     {
         $banner = !empty($this->id) ? getPicture($this->id . '_banner', $size) : null;
 

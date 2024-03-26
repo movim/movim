@@ -11,7 +11,7 @@
                     <i class="material-symbols flip-hor">reply</i>
                 </span>
             {elseif="$reply->isMicroblog() && $reply->contact"}
-                <span class="primary icon bubble gray" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$reply->contact->getPicture('l')});">
+                <span class="primary icon bubble gray" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$reply->contact->getPicture(\Movim\ImageSize::L)});">
                     <i class="material-symbols">reply</i>
                 </span>
             {/if}

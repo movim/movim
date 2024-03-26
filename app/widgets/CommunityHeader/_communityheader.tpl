@@ -17,7 +17,7 @@
         {if="$info != null"}
             <span class="primary icon bubble active"
                     onclick="MovimUtils.reload('{$c->route('community', [$server, $info->node])}')">
-                <img src="{$info->getPicture('l')}"/>
+                <img src="{$info->getPicture(\Movim\ImageSize::L)}"/>
             </span>
         {/if}
         <div>

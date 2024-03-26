@@ -63,7 +63,7 @@
             >
                 {if="$value->info"}
                     <span class="primary icon bubble">
-                        <img src="{$value->info->getPicture('m')}"/>
+                        <img src="{$value->info->getPicture(\Movim\ImageSize::M)}"/>
                     </span>
                 {else}
                     <span class="primary icon bubble color {$value->node|stringToColor}">

@@ -17,7 +17,7 @@
                             <i class="material-symbols">person</i>
                         </span>
                         <span class="primary icon bubble on_mobile">
-                            <img src="{$contact->getPicture('m')}">
+                            <img src="{$contact->getPicture(\Movim\ImageSize::M)}">
                         </span>
                         <span class="control icon active" onclick="MovimUtils.openInNew('{$c->route('feed', $contact->jid)}')">
                             <i class="material-symbols">rss_feed</i>
@@ -63,7 +63,7 @@
                 <li>
                     {if="$item"}
                         <span class="primary icon bubble">
-                            <img src="{$item->getPicture('m')}"/>
+                            <img src="{$item->getPicture(\Movim\ImageSize::M)}"/>
                         </span>
                     {else}
                         <span class="primary icon gray">
