@@ -10,8 +10,9 @@ var Rooms = {
     },
 
     checkNoConnected: function() {
-        if (!document.querySelector('#rooms_widget ul.list.rooms li.connected')
-         && localStorage.getItem('rooms_all') == 'true'
+        if (
+            !document.querySelector('#rooms_widget ul.list.rooms li.connected')
+            && localStorage.getItem('rooms_all') == 'true'
         ) {
             document.querySelector('#rooms_widget ul.list.rooms').classList.add('all');
         }
@@ -44,9 +45,9 @@ var Rooms = {
                 suggestions.textContent = '';
 
                 Rooms.default_services.forEach(function(item) {
-                   var option = document.createElement('option');
-                   option.value = input.value + '@' + item.server;
-                   suggestions.appendChild(option);
+                    var option = document.createElement('option');
+                    option.value = input.value + '@' + item.server;
+                    suggestions.appendChild(option);
                 });
             }
         }
@@ -73,9 +74,11 @@ var Rooms = {
             }
 
 
-            if (i >= 1
-             && !differentStates
-             && items[i-1].classList.contains('connected') != items[i].classList.contains('connected')) {
+            if (
+                i >= 1
+                && !differentStates
+                && items[i-1].classList.contains('connected') != items[i].classList.contains('connected')
+            ) {
                 differentStates = true;
             }
 

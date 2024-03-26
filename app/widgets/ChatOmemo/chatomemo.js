@@ -142,7 +142,7 @@ var ChatOmemo = {
                 if (Chat.getTextarea().value.length > 0) {
                     Chat.sendMessage();
                 }
-             }
+            }
         });
     },
     handlePreKey: async function (jid, deviceId, preKey) {
@@ -414,7 +414,7 @@ var ChatOmemo = {
         let matches = lines[0].match(AESGCM_REGEX);
 
         if (!matches) {
-           return plaintext;
+            return plaintext;
         }
         let [match, , filename, extension, hash] = matches;
         return '<i class="material-symbols">file_download</i> <a href="#" class="encrypted_file" onclick="ChatOmemo.getEncryptedFile(\''

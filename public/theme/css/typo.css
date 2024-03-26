@@ -108,7 +108,7 @@ xmp:not([class])::before {
 }
 
 q {
-  quotes: "“" "”" "‘" "’";
+    quotes: "“" "”" "‘" "’";
 }
 q:before {
     content: open-quote;
