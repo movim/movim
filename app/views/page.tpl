@@ -19,7 +19,7 @@
             \Movim\Route::urlize('system') .
             '?t=' .
             filemtime(CACHE_PATH . 'socketapi.sock');
-            ?>"></script>
+            ?>" defer></script>
         <meta name="viewport" content="width=device-width, user-scalable=no">
         <%scripts%>
     </head>

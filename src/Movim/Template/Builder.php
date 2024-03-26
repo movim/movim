@@ -19,6 +19,7 @@ class Builder
     private string $commonContent = '';
     private array $css = [];
     private array $scripts = [];
+    private string $eagerScripts = "/\/(movim_rpc|movim_utils)/";
     private string $dir = 'ltr';
     private bool $public;
     private ?User $user = null;
@@ -335,6 +336,10 @@ class Builder
         $s = $dom->createElement('script');
         $s->setAttribute('type', 'text/javascript');
         $s->setAttribute('src', $script);
+
+        if (!preg_match($this->eagerScripts, $script)) {
+            $s->setAttribute('defer', '');
+        }
 
         if (!empty($class)) {
             $s->setAttribute('class', $class);

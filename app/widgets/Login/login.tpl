@@ -1,21 +1,24 @@
 <div id="login_widget">
     <script type="text/javascript">
-        if (typeof navigator.registerProtocolHandler == 'function') {
-            navigator.registerProtocolHandler('xmpp',
-                                          '{$c->route("share")}/%s',
-                                          'Movim');
-        }
+        document.addEventListener('DOMContentLoaded', function dcl() {
+            document.removeEventListener('DOMContentLoaded', dcl, false);
+            if (typeof navigator.registerProtocolHandler == 'function') {
+                navigator.registerProtocolHandler('xmpp',
+                                              '{$c->route("share")}/%s',
+                                              'Movim');
+            }
 
-        Login.domain = '{$domain}';
-        {if="isset($httpAuthUser)"}
-            localStorage.username = '{$httpAuthUser}';
-            MovimWebsocket.attach(function() {
-                MovimWebsocket.connection.register('{$httpAuthHost}');
-            });
-            MovimWebsocket.register(function() {
-                Login_ajaxHTTPLogin('{$httpAuthUser}', '{$httpAuthPassword}');
-            });
-        {/if}
+            Login.domain = '{$domain}';
+            {if="isset($httpAuthUser)"}
+                localStorage.username = '{$httpAuthUser}';
+                MovimWebsocket.attach(function() {
+                    MovimWebsocket.connection.register('{$httpAuthHost}');
+                });
+                MovimWebsocket.register(function() {
+                    Login_ajaxHTTPLogin('{$httpAuthUser}', '{$httpAuthPassword}');
+                });
+             {/if}
+        }, false);
     </script>
 
     <div class="logo"></div>

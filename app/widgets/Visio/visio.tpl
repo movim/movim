@@ -100,13 +100,16 @@
     </div>
 </div>
 <script type="text/javascript">
-Visio.states = {
-    calling: '{$c->__('visio.calling')}',
-    ringing: '{$c->__('visio.ringing')}',
-    in_call: '{$c->__('visio.in_call')}',
-    failed: '{$c->__('visio.failed')}',
-    connecting: '{$c->__('visio.connecting')}',
-    ended: '{$c->__('visio.ended')}',
-    declined: '{$c->__('visio.declined')}'
-};
+    document.addEventListener('DOMContentLoaded', function dcl() {
+        document.removeEventListener('DOMContentLoaded', dcl, false);
+        Visio.states = {
+            calling: '{$c->__('visio.calling')}',
+            ringing: '{$c->__('visio.ringing')}',
+            in_call: '{$c->__('visio.in_call')}',
+            failed: '{$c->__('visio.failed')}',
+            connecting: '{$c->__('visio.connecting')}',
+            ended: '{$c->__('visio.ended')}',
+            declined: '{$c->__('visio.declined')}'
+        };
+    }, false);
 </script>
