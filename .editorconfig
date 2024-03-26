@@ -12,6 +12,19 @@ root = true
 
 # LF end-of-line, insert an empty new line and UTF-8
 [*]
+charset = utf-8
 end_of_line = lf
 insert_final_newline = true
-charset = utf-8
+trim_trailing_whitespace = true
+
+[VERSION]
+insert_final_newline = false
+
+[*.{css,js,json,sh}]
+indent_size = 4
+indent_style = space
+
+# Several files are using spaces to align so it’s difficult to actually
+# enforce the 4 spaces of other files
+[*.{php,tpl}]
+indent_style = space
