@@ -9,6 +9,7 @@ namespace Movim\i18n;
 class Locale
 {
     private static $instance;
+    public const LOCALE_REGEXP = '(?<language>[a-z]{2,8})(?:[-_](?<script>[A-Za-z][a-z]{3}))?(?:[-_](?<region>[A-Za-z]{2,3}|[0-9]{3}))?';
     public $translations;
     public $language;
     public $hash = [];
@@ -173,6 +174,37 @@ class Locale
         } else {
             \Utils::info('Locale: Translation key "' . $key . '" not found');
             return $arr[1];
+        }
+    }
+
+    /**
+     * @desc Poor man’s locale_parse, but looking to save dependencies & resources
+     */
+    public static function parseStr(string $str): ?array {
+        if (preg_match('/' . self::LOCALE_REGEXP . '/', $str, $loc)) {
+            self::reformatLocalePartsToISO639($loc);
+            return $loc;
+        }
+
+        return null;
+    }
+
+    private static function reformatLocalePartsToISO639(array &$locale) {
+        foreach ($locale as $key => &$value) {
+            if (is_numeric($key) || empty($value)) {
+                unset($locale[$key]);
+            } else {
+                $locale[$key] = match ($key) {
+                    'language' => strtolower($value),
+                    'script' => ucfirst(strtolower($value)),
+                    'region' => strtoupper($value),
+                    default => $value,
+                };
+            }
+        };
+
+        if (empty($locale)) {
+            $locale = null;
         }
     }
 
