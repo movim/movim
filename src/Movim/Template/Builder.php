@@ -21,6 +21,7 @@ class Builder
     private array $css = [];
     private array $scripts = [];
     private string $eagerScripts = "/\/(movim_rpc|movim_utils)/";
+    private string $lang = Locale::DEFAULT_LANGUAGE;
     private string $dir = 'ltr';
     private bool $public;
     private ?User $user = null;
@@ -141,13 +142,16 @@ class Builder
     public function language(): string
     {
         if ($this?->user?->language != null) {
-            return Locale::printISO639($this->user->language);
+            $this->lang = $this->user->language;
+            return Locale::printISO639($this->lang);
         }
 
         $locale = Locale::start();
         $locale->detect(getenv('language'));
 
-        return Locale::printISO639($locale->language ?? Configuration::get()->locale);
+        $this->lang = Locale::printISO639($locale->language ?? Configuration::get()->locale);
+
+        return $this->lang;
     }
 
     /**
