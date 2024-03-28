@@ -191,7 +191,7 @@ var MovimUtils = {
                         MovimWebsocket.launchInitiated();
                     }
 
-                    movimLaunchOnload();
+                    MovimEvents.triggerWindow('loaded', null);
                 });
             });
         }).catch(error => {
