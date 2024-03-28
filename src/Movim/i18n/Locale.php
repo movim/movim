@@ -6,11 +6,20 @@
 
 namespace Movim\i18n;
 
+enum Dir: string
+{
+    case LTR = 'ltr';
+    case RTL = 'rtl';
+};
+
 class Locale
 {
     private static $instance;
     public const DEFAULT_LANGUAGE = 'en';
+    public const DEFAULT_DIRECTION = Dir::LTR;
     public const LOCALE_REGEXP = '(?<language>[a-z]{2,8})(?:[-_](?<script>[A-Za-z][a-z]{3}))?(?:[-_](?<region>[A-Za-z]{2,3}|[0-9]{3}))?';
+    public const RTL_LANGUAGES = ['ar', 'he', 'fa', 'ur', 'ps', 'syr', 'dv'];
+    public const RTL_SCRIPTS = ['Adlm', 'Arab', 'Aran', 'Armi', 'Avst', 'Cprt', 'Hebr', 'Khar', 'Lydi', 'Mand', 'Mani', 'Mend', 'Narb', 'Nbat', 'Nkoo', 'Orkh', 'Palm', 'Phli', 'Phlp', 'Phnx', 'Prti', 'Samr', 'Sarb', 'Syrc', 'Thaa'];
     public $translations;
     public $language;
     public $hash = [];
@@ -347,6 +356,24 @@ class Locale
         if (isset($matches[1])) {
             return $matches[1];
         }
+    }
+
+    /**
+     * @desc Determine the direction of a locale string
+     */
+    public static function getDirection(string $str): Dir
+    {
+        $loc = locale_parse($str);
+
+        if (empty($loc)) {
+            return self::DEFAULT_DIRECTION;
+        }
+
+        if (isset($loc['script'])) {
+            return in_array($loc['script'], self::RTL_SCRIPTS) ? Dir::RTL : Dir::LTR;
+        }
+
+        return in_array($loc['language'], self::RTL_LANGUAGES) ? Dir::RTL : Dir::LTR;
     }
 
     /**
