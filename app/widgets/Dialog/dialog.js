@@ -12,24 +12,20 @@ var Dialog = {
         return (document.querySelector('#dialog').innerHTML != '');
     },
     clear : function() {
-        Dialog_ajaxClear();
-    },
-    toggle : function(e) {
         if (Dialog.filled()
-        && !Dialog.locked()
-        && document.querySelector('body') == e.target) {
+        && !Dialog.locked()) {
             Dialog_ajaxClear();
         }
     },
 }
 
-movimAddOnload(function() {
-    document.body.addEventListener('click', Dialog.toggle, false);
+MovimEvents.register('click', 'dialog', () => Dialog.toggle);
+
+/*movimAddOnload(function() {
+    //document.body.addEventListener('click', Dialog.toggle, false);
     document.addEventListener('keydown', function(e) {
-        if (Dialog.filled()
-        && !Dialog.locked()
-        && e.key == 'Escape') {
+        if (e.key == 'Escape') {
             Dialog.clear();
         }
     }, false);
-});
+});*/

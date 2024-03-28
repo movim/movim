@@ -27,8 +27,9 @@ var MovimTpl = {
         }
     },
     back: function () {
+        console.log('TPL BACK');
         // If the context menu is shown
-        var cm = document.querySelector('ul.context_menu');
+        /*var cm = document.querySelector('ul.context_menu');
         if (cm != null && cm.className.includes('shown')) {
             MovimTpl.toggleContextMenu(document);
         } else if (typeof Draw == 'object' && Draw.draw != undefined && Draw.draw.classList.contains('open')) {
@@ -61,7 +62,7 @@ var MovimTpl = {
             }
         } else {
             history.back();
-        }
+        }*/
     },
     pushAnchorState: function (key, action) {
         if (MovimTpl.popAnchorAction && key != MovimTpl.popAnchorKey) {
@@ -86,9 +87,6 @@ var MovimTpl = {
         if (target) {
             target.innerHTML = html;
         }
-    },
-    hideMenu: function () {
-        MovimUtils.removeClass('body > nav', 'active');
     },
     showPanel: function () {
         MovimUtils.addClass('main', 'enabled');
@@ -123,6 +121,12 @@ var MovimTpl = {
             div.innerHTML = html;
             var element = div.firstChild;
             replacedNode = target.parentNode.replaceChild(element, target);
+        }
+    },
+    bodyClick: function (e) {
+        if (document.querySelector('body') == e.target) {
+            Dialog.clear();
+            Drawer.close();
         }
     },
     toggleContextMenu: function (e) {
@@ -201,7 +205,6 @@ var MovimTpl = {
 
 movimAddOnload(function () {
     if (MovimUtils.isMobile()) MovimTpl.touchEvents();
-    document.body.addEventListener('click', MovimTpl.toggleContextMenu, false);
 
     MovimTpl.currentPage = window.location.pathname;
 

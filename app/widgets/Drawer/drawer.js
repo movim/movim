@@ -21,17 +21,14 @@ var Drawer = {
             Drawer_ajaxClear();
         }
     },
-    toggle : function(e) {
-        if (Drawer.filled()
-        && document.querySelector('body') == e.target) {
-            e.stopPropagation();
+    close : function() {
+        if (Drawer.filled()) {
             history.back();
         }
     }
 }
 
 movimAddOnload(function() {
-    document.body.addEventListener('click', Drawer.toggle, false);
     document.addEventListener('keydown', function(e) {
         if (Drawer.filled()
         && e.key == 'Escape') {
