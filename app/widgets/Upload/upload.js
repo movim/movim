@@ -340,7 +340,7 @@ MovimEvents.registerWindow('paste', 'upload', (e) => {
  * Handle the global drop event
  */
 
-movimAddOnload(() => {
+MovimEvents.registerWindow('loaded', 'upload', () => {
     var mainDropArea = document.body;
 
     mainDropArea.addEventListener('dragover', ev => {

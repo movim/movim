@@ -61,12 +61,15 @@ var MovimEvents = {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', (e) => {
+    MovimEvents.triggerWindow('loaded', e)
+
     // Window
     window.addEventListener('keydown', (e) => MovimEvents.triggerWindow('keydown', e), false);
     window.addEventListener('paste', (e) => MovimEvents.triggerWindow('paste', e), false);
     window.addEventListener('resize', (e) => MovimEvents.triggerWindow('resize', e), false);
     window.addEventListener('touchstart', (e) => MovimEvents.triggerWindow('touchstart', e), false);
+    window.addEventListener('touchstart', function () { MovimEvents.isTouch = true; }, { once: true });
 
     /**
      * The focus event doesn't seems to be triggered all the time ¯\_(ツ)_/¯
@@ -83,4 +86,4 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.addEventListener('keydown', (e) => MovimEvents.triggerBody('keydown', e), false);
     document.body.addEventListener('touchstart', (e) => MovimEvents.triggerBody('touchstart', e), false);
     document.body.addEventListener('touchend', (e) => MovimEvents.triggerBody('touchend', e), false);
-});
+}, false);

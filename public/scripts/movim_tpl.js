@@ -163,7 +163,7 @@ var MovimTpl = {
 
 MovimEvents.registerBody('click', 'movimtpl', (e) => MovimTpl.hideContextMenu(e));
 
-movimAddOnload(function () {
+MovimEvents.registerWindow('loaded', 'movimtpl', () => {
     if (MovimUtils.isMobile()) MovimTpl.touchEvents();
 
     MovimTpl.currentPage = window.location.pathname;

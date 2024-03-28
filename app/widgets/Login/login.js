@@ -91,7 +91,7 @@ MovimWebsocket.register(function()
     }
 });
 
-movimAddOnload(function() {
+MovimEvents.registerWindow('loaded', 'login', () => {
     // We had the autocomplete system
     var login = document.querySelector('input#username');
 

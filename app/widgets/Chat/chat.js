@@ -422,8 +422,8 @@ var Chat = {
                     return;
                 }
 
-                if ((isTouch && !event.shiftKey)
-                    || (!isTouch && event.shiftKey)) {
+                if ((MovimEvents.isTouch && !event.shiftKey)
+                    || (!MovimEvents.isTouch && event.shiftKey)) {
                     return;
                 }
 
@@ -1646,7 +1646,7 @@ MovimEvents.registerWindow('focus', 'chat', () => {
 
 MovimEvents.registerWindow('resize', 'chat', () => Chat.scrollRestore());
 
-movimAddOnload(() => {
+MovimEvents.registerWindow('loaded', 'chat', () => {
     if (MovimUtils.isMobile()) Chat.touchEvents();
 
     // Really early panel showing in case we have a JID

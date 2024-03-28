@@ -71,6 +71,6 @@ var MovimFavicon = {
     }
 }
 
-movimAddOnload(function () {
+MovimEvents.registerWindow('loaded', 'favicon', () => {
     MovimFavicon.init();
 });

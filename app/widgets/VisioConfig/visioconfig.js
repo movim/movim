@@ -203,7 +203,8 @@ MovimWebsocket.attach(() => {
     VisioConfig.init();
 });
 
-movimAddOnload(function () {
+
+MovimEvents.registerWindow('loaded', 'visioconfig', () => {
     if (VisioConfig.audioStream) {
         VisioConfig.stopMicrophone();
         VisioConfig.stopCamera();

@@ -19,7 +19,12 @@ var Dialog = {
     },
 }
 
-MovimEvents.registerBody('click', 'dialog', () => Dialog.clear());
+MovimEvents.registerBody('click', 'dialog', (e) => {
+    if (Dialog.filled() && document.querySelector('body') == e.target) {
+        Dialog.clear();
+    }
+});
+
 MovimEvents.registerBody('keydown', 'dialog', (e) =>  {
     if (e.key == 'Escape') {
         Dialog.clear();

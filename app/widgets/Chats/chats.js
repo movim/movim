@@ -122,5 +122,6 @@ var Chats = {
     }
 };
 
-movimAddOnload(() => Chats.refresh());
+MovimEvents.registerWindow('loaded', 'chats', () => Chats.refresh());
+
 MovimWebsocket.initiate(() => Chats_ajaxHttpGet());

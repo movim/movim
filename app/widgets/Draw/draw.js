@@ -463,4 +463,4 @@ Upload.progress((percent) => {
     }
 });
 
-movimAddOnload(() => Draw_ajaxHttpGet());
+MovimEvents.registerWindow('loaded', 'draw', () => Draw_ajaxHttpGet());
