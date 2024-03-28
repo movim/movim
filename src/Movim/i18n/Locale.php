@@ -9,6 +9,7 @@ namespace Movim\i18n;
 class Locale
 {
     private static $instance;
+    public const DEFAULT_LANGUAGE = 'en';
     public const LOCALE_REGEXP = '(?<language>[a-z]{2,8})(?:[-_](?<script>[A-Za-z][a-z]{3}))?(?:[-_](?<region>[A-Za-z]{2,3}|[0-9]{3}))?';
     public $translations;
     public $language;
@@ -211,44 +212,61 @@ class Locale
     /**
      * @desc Auto-detects the language from the user browser
      */
-    public function detect($accepted = false)
+    public function detect(?string $languages = null): ?string
     {
-        $langs = [];
-
-        $languages = ($accepted != false) ? $accepted : $_SERVER['HTTP_ACCEPT_LANGUAGE'];
-
-        preg_match_all(
-            '/([a-z]{1,8}(-[a-z]{1,8})?)\s*(;\s*q\s*=\s*(1|0\.[0-9]+))?/i',
-            $languages,
-            $lang_parse
-        );
-
-        if (count($lang_parse[1])) {
-            $langs = array_combine($lang_parse[1], $lang_parse[4]);
-
-            foreach ($langs as $lang => $val) {
-                if ($val === '') {
-                    $langs[$lang] = 1;
-                }
-            }
-            arsort($langs, SORT_NUMERIC);
+        if (!isset($this->language)) {
+            $this->language = self::DEFAULT_LANGUAGE;
         }
 
-        foreach ($langs as $key => $value) {
-            if (file_exists(LOCALES_PATH . $key . '.po')) {
-                $this->language = $key;
-                break;
+        $rexp = '/' . self::LOCALE_REGEXP . '\s*(?:;\s*(Q|q)\s*=\s*(?<quality>1|0\.[0-9]+))?/';
+
+        if (preg_match_all($rexp, $languages ?? $_SERVER['HTTP_ACCEPT_LANGUAGE'] ?? '', $locs, PREG_SET_ORDER)) {
+            foreach($locs as &$loc) {
+                if (isset($loc['quality']) && !empty($loc['quality'])) {
+                    $loc['quality'] = floatval($loc['quality']);
+                } else {
+                    $loc['quality'] = 1.0;
+                }
+                self::reformatLocalePartsToISO639($loc);
             }
 
-            $exploded = explode('-', $key);
-            $key = reset($exploded);
+            usort($locs, function($a, $b) {
+                return $a['quality'] - $b['quality'];
+            });
 
-            if (file_exists(LOCALES_PATH . $key . '.po')) {
-                $this->language = $key;
-                break;
+            $poFileExists = function (array $l): ?array {
+                $lang = strtolower(implode('_', array_values($l)));
+                return [$lang, file_exists(LOCALES_PATH . $lang . '.po')];
+            };
+
+            foreach ($locs as &$loc) {
+                // ``quality`` is no longer needed after sorting
+                unset($loc['quality']);
+
+                [$lang, $exists] = $poFileExists($loc);
+                if ($exists) {
+                    $this->language = $lang;
+                    break;
+                }
+
+                if (isset($loc['script'])) {
+                    unset($loc['script']);
+                    [$lang, $exists] = $poFileExists($loc);
+                    if ($exists) {
+                        $this->language = $lang;
+                        break;
+                    }
+                }
+
+                if (isset($loc['region'])) {
+                    unset($loc['region']);
+                    [$lang, $exists] = $poFileExists($loc);
+                    if ($exists) {
+                        $this->language = $lang;
+                        break;
+                    }
+                }
             }
-
-            $this->language = 'en';
         }
 
         return $this->language;
