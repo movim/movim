@@ -3,26 +3,25 @@ var Preview = {
         MovimTpl.fill('#preview', html);
         MovimTpl.pushAnchorState('preview', function () { Preview_ajaxHttpHide() });
     },
-    copyToClipboard: function(text) {
+    copyToClipboard: function (text) {
         MovimUtils.copyToClipboard(text);
         Preview_ajaxCopyNotify();
     }
 }
 
-movimAddOnload(function() {
-    document.addEventListener('keydown', function(e) {
-        if (document.querySelector('#preview').innerHTML != '' && e.key == 'Escape') {
-            Preview_ajaxHttpHide();
-        }
-    }, false);
-    document.addEventListener('click', function(e) {
-        if (document.querySelector('#preview').innerHTML == '') return;
+MovimEvents.registerBody('click', 'preview', (e) => {
+    if (document.querySelector('#preview').innerHTML == '') return;
 
-        if (!document.querySelector('#preview img').contains(e.target)
+    if (!document.querySelector('#preview img').contains(e.target)
         && !document.querySelector('#preview .prevnext.prev').contains(e.target)
         && !document.querySelector('#preview .prevnext.next').contains(e.target)
         && !document.querySelector('#preview .buttons').contains(e.target)) {
-            Preview_ajaxHttpHide();
-        }
-    }, false);
+        Preview_ajaxHttpHide();
+    }
+});
+
+MovimEvents.registerBody('keydown', 'preview', (e) => {
+    if (document.querySelector('#preview').innerHTML != '' && e.key == 'Escape') {
+        Preview_ajaxHttpHide();
+    }
 });

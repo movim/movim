@@ -26,43 +26,6 @@ var MovimTpl = {
             target.insertAdjacentHTML('afterend', html);
         }
     },
-    back: function () {
-        // If the context menu is shown
-        var cm = document.querySelector('ul.context_menu');
-        if (cm != null && cm.className.includes('shown')) {
-            MovimTpl.toggleContextMenu(document);
-        } else if (typeof Draw == 'object' && Draw.draw != undefined && Draw.draw.classList.contains('open')) {
-            Draw.draw.classList.remove('open');
-        } else if (typeof Snap == 'object' && Snap.snap != undefined && Snap.snap.className !== '') {
-            if (Snap.snap.classList.contains('upload')) {
-                Snap.snap.className = 'shoot';
-                Snap.video.play();
-            } else {
-                Snap.end();
-            }
-        } else if (document.querySelector('#preview')
-            && document.querySelector('#preview').innerHTML != '') {
-            Preview_ajaxHttpHide();
-        } else if (Drawer.filled()) {
-            Drawer.clear();
-            // If a dialog box is shown
-        } else if (Dialog.filled()) {
-            Dialog.clear();
-            // If the menu is shown
-        } else if (document.querySelector('body > nav').classList.contains('active')) {
-            document.querySelector('body > nav').classList.remove('active');
-            // If the panel is shown
-        } else if (document.querySelector('main').classList.contains('enabled')) {
-            if (MovimUtils.urlParts().page == 'chat') {
-                Chat.get();
-            } else {
-                MovimTpl.hidePanel();
-                window.history.back();
-            }
-        } else {
-            history.back();
-        }
-    },
     pushAnchorState: function (key, action) {
         if (MovimTpl.popAnchorAction && key != MovimTpl.popAnchorKey) {
             MovimTpl.popAnchorAction();
@@ -86,9 +49,6 @@ var MovimTpl = {
         if (target) {
             target.innerHTML = html;
         }
-    },
-    hideMenu: function () {
-        MovimUtils.removeClass('body > nav', 'active');
     },
     showPanel: function () {
         MovimUtils.addClass('main', 'enabled');
@@ -125,13 +85,15 @@ var MovimTpl = {
             replacedNode = target.parentNode.replaceChild(element, target);
         }
     },
-    toggleContextMenu: function (e) {
+    showContextMenu: function() {
+        var contextMenu = document.querySelector('ul.context_menu');
+        contextMenu.classList.add('shown');
+    },
+    hideContextMenu: function (e) {
         var contextMenu = document.querySelector('ul.context_menu');
         if (contextMenu == null) return;
 
-        if (document.querySelector('.show_context_menu').contains(e.target)) {
-            contextMenu.classList.add('shown');
-        } else {
+        if (!document.querySelector('.show_context_menu').contains(e.target)) {
             contextMenu.classList.remove('shown');
         }
     },
@@ -199,9 +161,10 @@ var MovimTpl = {
     }
 };
 
+MovimEvents.registerBody('click', 'movimtpl', (e) => MovimTpl.hideContextMenu(e));
+
 movimAddOnload(function () {
     if (MovimUtils.isMobile()) MovimTpl.touchEvents();
-    document.body.addEventListener('click', MovimTpl.toggleContextMenu, false);
 
     MovimTpl.currentPage = window.location.pathname;
 

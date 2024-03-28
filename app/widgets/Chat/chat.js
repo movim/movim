@@ -1632,25 +1632,21 @@ if (typeof Upload != 'undefined') {
     });
 }
 
-movimAddFocus(function () {
+MovimEvents.registerWindow('focus', 'chat', () => {
     if (MovimWebsocket.connection) {
         var jid = MovimUtils.urlParts().params[0];
         if (jid) {
             Chat_ajaxGetHeader(jid, (MovimUtils.urlParts().params[1] === 'room'));
         }
     }
-});
 
-document.addEventListener('focus', function () {
     var textarea = Chat.getTextarea();
     if (textarea) textarea.focus();
 });
 
-window.addEventListener('resize', function () {
-    Chat.scrollRestore();
-});
+MovimEvents.registerWindow('resize', 'chat', () => Chat.scrollRestore());
 
-movimAddOnload(function () {
+movimAddOnload(() => {
     if (MovimUtils.isMobile()) Chat.touchEvents();
 
     // Really early panel showing in case we have a JID

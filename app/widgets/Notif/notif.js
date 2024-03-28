@@ -227,13 +227,11 @@ if (typeof MovimWebsocket != 'undefined') {
         Notif_ajaxGet();
         Notif.current(Notif.notifs_key);
 
-        window.addEventListener('blur', function () {
+        MovimEvents.registerWindow('blur', 'notifs', () => {
             Notif.focused = false;
             Notif_ajaxCurrent('blurred');
         });
 
-        movimAddFocus(function () {
-            Notif.focus();
-        });
+        MovimEvents.registerWindow('focus', 'notifs', () => Notif.focus());
     });
 }

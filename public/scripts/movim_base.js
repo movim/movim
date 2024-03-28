@@ -5,8 +5,6 @@
  */
 
 var onloaders = [];
-var onfocused = [];
-var isFocused = false;
 var isTouch = false;
 
 /**
@@ -16,16 +14,6 @@ var isTouch = false;
 function movimAddOnload(func) {
     if (typeof (func) === "function") {
         onloaders.push(func);
-    }
-}
-
-/**
- * @brief Adds a function to focus event
- * @param function func
- */
-function movimAddFocus(func) {
-    if (typeof (func) === "function") {
-        onfocused.push(func);
     }
 }
 
@@ -45,21 +33,6 @@ function movimLaunchOnload() {
     }
 }
 
-/**
- * The focus event doesn't seems to be triggered all the time ¯\_(ツ)_/¯
- */
-var onFocusedFunction = function () {
-    if (isFocused) return;
-
-    isFocused = true;
-    for (var i = 0; i < onfocused.length; i++) {
-        onfocused[i]();
-    }
-};
-
-window.addEventListener('mouseover', onFocusedFunction);
-window.addEventListener('focus', onFocusedFunction);
-window.addEventListener('blur', function () { isFocused = false; });
 window.addEventListener('touchstart', function () { isTouch = true; }, { once: true });
 
 /**
@@ -77,9 +50,6 @@ if ('serviceWorker' in navigator) {
 
 
 movimAddOnload(function () {
-    /**
-     * Handle the PWA install button
-     */
     const pwaButton = document.querySelector('#pwa');
 
     if (pwaButton) {

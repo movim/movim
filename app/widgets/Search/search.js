@@ -94,7 +94,7 @@ var Search = {
     }
 }
 
-document.addEventListener('keydown', function(e) {
+MovimEvents.registerWindow('keydown', 'search', (e) => {
     if (e.key == 'm' && e.ctrlKey) {
         e.preventDefault();
         Search_ajaxRequest();

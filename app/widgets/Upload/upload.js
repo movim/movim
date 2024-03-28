@@ -316,10 +316,11 @@ var Upload = {
 /**
  * Handle the paste event
  */
-window.addEventListener('paste', evt => {
+
+MovimEvents.registerWindow('paste', 'upload', (e) => {
     if (Upload.file != null) return;
 
-    const clipboardItems = evt.clipboardData.items;
+    const clipboardItems = e.clipboardData.items;
     const items = [].slice
         .call(clipboardItems)
         .filter(function(item) {
@@ -338,7 +339,8 @@ window.addEventListener('paste', evt => {
 /**
  * Handle the global drop event
  */
-document.addEventListener("DOMContentLoaded", e => {
+
+movimAddOnload(() => {
     var mainDropArea = document.body;
 
     mainDropArea.addEventListener('dragover', ev => {

@@ -41,7 +41,9 @@
                 </span>
             {/if}
 
-            <span class="control icon show_context_menu active {if="$conference && !$conference->connected"}disabled{/if}">
+            <span
+                class="control icon show_context_menu active {if="$conference && !$conference->connected"}disabled{/if}"
+                onclick="MovimTpl.showContextMenu()">
                 <i class="material-symbols">more_vert</i>
             </span>
 
@@ -207,7 +209,8 @@
                 <i class="material-symbols">close</i>
             </span>
 
-            <span class="control icon show_context_menu active">
+            <span class="control icon show_context_menu active"
+                onclick="MovimTpl.showContextMenu()">
                 <i class="material-symbols">more_vert</i>
             </span>
 

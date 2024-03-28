@@ -3,14 +3,14 @@ var Drawer = {
         document.querySelector('#drawer').dataset.type = key;
         MovimTpl.pushAnchorState(key, function () { Drawer.clear(key) });
     },
-    filled : function() {
+    filled: function () {
         return (document.querySelector('#drawer').innerHTML != '');
     },
-    hasTabs : function () {
+    hasTabs: function () {
         return Drawer.filled()
             && document.querySelector('#drawer').contains(document.querySelector('#navtabs'));
     },
-    clear : function(key) {
+    clear: function (key) {
         if (key && document.querySelector('#drawer').dataset.type == key) {
             Drawer_ajaxClear();
             return;
@@ -20,24 +20,22 @@ var Drawer = {
             MovimTpl.clearAnchorState();
             Drawer_ajaxClear();
         }
-    },
-    toggle : function(e) {
-        if (Drawer.filled()
-        && document.querySelector('body') == e.target) {
-            e.stopPropagation();
-            history.back();
-        }
     }
 }
 
-movimAddOnload(function() {
-    document.body.addEventListener('click', Drawer.toggle, false);
-    document.addEventListener('keydown', function(e) {
-        if (Drawer.filled()
-        && e.key == 'Escape') {
-            history.back();
-        }
-    }, false);
+MovimWebsocket.initiate(() => document.querySelector('#drawer').innerHTML = '');
+
+MovimEvents.registerBody('click', 'drawer', (e) => {
+    if (Drawer.filled()
+    && document.querySelector('body') == e.target) {
+        e.stopPropagation();
+        history.back();
+    }
 });
 
-MovimWebsocket.initiate(() => document.querySelector('#drawer').innerHTML = '');
+MovimEvents.registerBody('keydown', 'drawer', (e) => {
+    if (Drawer.filled()
+        && e.key == 'Escape') {
+        history.back();
+    }
+});
