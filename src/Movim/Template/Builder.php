@@ -160,14 +160,7 @@ class Builder
      */
     public function dir(): Dir
     {
-        if (isLogged()) {
-            $lang = \App\User::me()->language;
-
-            if (in_array($lang, ['ar', 'he', 'fa'])) {
-                $this->dir = \Movim\i18n\Locale\Dir::RTL;
-            }
-        }
-
+        $this->dir = \Movim\i18n\Locale::getDirection($this->lang);
         return $this->dir;
     }
 

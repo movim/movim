@@ -362,7 +362,7 @@ class Locale
      */
     public static function getDirection(string $str): Dir
     {
-        $loc = locale_parse($str);
+        $loc = self::parseStr($str);
 
         if (empty($loc)) {
             return Dir::LTR;
