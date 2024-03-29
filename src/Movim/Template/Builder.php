@@ -9,6 +9,7 @@ use App\Configuration;
 use App\User;
 use Movim\Controller\Ajax;
 use Movim\Widget\Wrapper;
+use Movim\i18n\Dir;
 use Movim\i18n\Locale;
 use stdClass;
 
@@ -22,7 +23,7 @@ class Builder
     private array $scripts = [];
     private string $eagerScripts = "/\/(movim_rpc|movim_utils)/";
     private string $lang = Locale::DEFAULT_LANGUAGE;
-    private string $dir = 'ltr';
+    private Dir $dir = Locale::DEFAULT_DIRECTION;
     private bool $public;
     private ?User $user = null;
     private $jsCheck = true;
@@ -78,7 +79,7 @@ class Builder
 
         $outp = str_replace(
             ['<%scripts%>', '<%meta%>', '<%content%>', '<%common%>', '<%title%>', '<%language%>', '<%dir%>'],
-            [$scripts, $this->meta(), $this->content, $this->commonContent, $this->title(), $this->language(), $this->dir()],
+            [$scripts, $this->meta(), $this->content, $this->commonContent, $this->title(), $this->language(), $this->dir()->value],
             $outp
         );
 
@@ -157,13 +158,13 @@ class Builder
     /**
      * Displays the current font direction
      */
-    public function dir()
+    public function dir(): Dir
     {
         if (isLogged()) {
             $lang = \App\User::me()->language;
 
             if (in_array($lang, ['ar', 'he', 'fa'])) {
-                $this->dir = 'rtl';
+                $this->dir = \Movim\i18n\Locale\Dir::RTL;
             }
         }
 
