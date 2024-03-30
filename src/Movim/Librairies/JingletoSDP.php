@@ -3,13 +3,14 @@
 namespace Movim\Librairies;
 
 use Movim\Session;
+use SimpleXMLElement;
 
 class JingletoSDP
 {
-    private $sdp = '';
-    private $jingle;
+    private string $sdp = '';
+    private SimpleXMLElement $jingle;
 
-    private $action;
+    private string $action;
 
     // Only used for ICE Candidate (Jingle transport-info)
     public $media;
@@ -27,7 +28,7 @@ class JingletoSDP
         'unicast_address'   => '0.0.0.0'
     ];
 
-    public function __construct($jingle)
+    public function __construct(SimpleXMLElement $jingle)
     {
         $this->jingle = $jingle;
 

@@ -2,7 +2,6 @@
  * Movim Events
  */
 
-
 var MovimEvents = {
     eventsBody: {},
     eventsWindow: {},
@@ -68,6 +67,10 @@ document.addEventListener('DOMContentLoaded', (e) => {
     window.addEventListener('keydown', (e) => MovimEvents.triggerWindow('keydown', e), false);
     window.addEventListener('paste', (e) => MovimEvents.triggerWindow('paste', e), false);
     window.addEventListener('resize', (e) => MovimEvents.triggerWindow('resize', e), false);
+    window.addEventListener('focus', (e) => MovimEvents.triggerWindow('focus', e), false);
+    window.addEventListener('online', (e) => MovimEvents.triggerWindow('online', e), false);
+    window.addEventListener('offline', (e) => MovimEvents.triggerWindow('offline', e), false);
+    window.addEventListener('popstate', (e) => MovimEvents.triggerWindow('popstate', e), false);
     window.addEventListener('touchstart', (e) => MovimEvents.triggerWindow('touchstart', e), false);
     window.addEventListener('touchstart', function () { MovimEvents.isTouch = true; }, { once: true });
 
@@ -86,4 +89,8 @@ document.addEventListener('DOMContentLoaded', (e) => {
     document.body.addEventListener('keydown', (e) => MovimEvents.triggerBody('keydown', e), false);
     document.body.addEventListener('touchstart', (e) => MovimEvents.triggerBody('touchstart', e), false);
     document.body.addEventListener('touchend', (e) => MovimEvents.triggerBody('touchend', e), false);
+    document.body.addEventListener('touchmove', (e) => MovimEvents.triggerBody('touchmove', e), false);
+    document.body.addEventListener('dragover', (e) => MovimEvents.triggerBody('dragover', e), false);
+    document.body.addEventListener('drop', (e) => MovimEvents.triggerBody('drop', e), false);
+    document.body.addEventListener('dragleave', (e) => MovimEvents.triggerBody('dragleave', e), false);
 }, false);

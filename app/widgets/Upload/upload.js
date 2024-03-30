@@ -1,15 +1,15 @@
 var Upload = {
-    xhr : null,
-    attached : [],
-    failed : [],
-    progressed : [],
-    get : null,
-    name : null,
-    file : null,
-    canvas : null,
-    uploadButton : null,
+    xhr: null,
+    attached: [],
+    failed: [],
+    progressed: [],
+    get: null,
+    name: null,
+    file: null,
+    canvas: null,
+    uploadButton: null,
 
-    init : function() {
+    init: function () {
         if (Upload.file) {
             Upload_ajaxSend({
                 name: Upload.name,
@@ -19,58 +19,58 @@ var Upload = {
         }
     },
 
-    openFile : function() {
+    openFile: function () {
         Upload.clear();
         document.querySelector('input#file').click();
     },
 
-    openImage : function() {
+    openImage: function () {
         Upload.clear();
         document.querySelector('input#image').click();
     },
 
-    attach : function(func) {
-        if (typeof(func) === "function") {
+    attach: function (func) {
+        if (typeof (func) === "function") {
             this.attached.push(func);
         }
     },
 
-    fail : function(func) {
-        if (typeof(func) === "function") {
+    fail: function (func) {
+        if (typeof (func) === "function") {
             this.failed.push(func);
         }
     },
 
-    progress : function(func) {
-        if (typeof(func) === "function") {
+    progress: function (func) {
+        if (typeof (func) === "function") {
             this.progressed.push(func);
         }
     },
 
-    launchAttached : function() {
-        for(var i = 0; i < Upload.attached.length; i++) {
+    launchAttached: function () {
+        for (var i = 0; i < Upload.attached.length; i++) {
             Upload.attached[i]({
                 name: Upload.name,
                 size: Upload.file.size,
                 type: Upload.file.type,
-                uri:  Upload.get
+                uri: Upload.get
             });
         }
     },
 
-    launchFailed : function() {
-        for(var i = 0; i < Upload.failed.length; i++) {
+    launchFailed: function () {
+        for (var i = 0; i < Upload.failed.length; i++) {
             Upload.failed[i]();
         }
     },
 
-    launchProgressed : function(percent) {
-        for(var i = 0; i < Upload.progressed.length; i++) {
+    launchProgressed: function (percent) {
+        for (var i = 0; i < Upload.progressed.length; i++) {
             Upload.progressed[i](percent);
         }
     },
 
-    preview : function(file) {
+    preview: function (file) {
         Upload.canvas = null;
         Upload.uploadButton = document.querySelector('#upload_button');
 
@@ -80,7 +80,7 @@ var Upload = {
         Upload.check(resolvedFile);
     },
 
-    check : function(file) {
+    check: function (file) {
         if (!file.type.match(/image.*/)) {
             console.log("Not a picture !");
             Upload.prepare(file);
@@ -89,16 +89,16 @@ var Upload = {
             reader.readAsDataURL(file);
 
             reader.addEventListener('load', function (ev) {
-                MovimUtils.getOrientation(file, function(orientation) {
+                MovimUtils.getOrientation(file, function (orientation) {
                     Upload.compress(ev.target.result, file, orientation);
                 });
             });
         };
     },
 
-    compress : function(src, file, orientation) {
+    compress: function (src, file, orientation) {
         var image = new Image();
-        image.addEventListener('load', function() {
+        image.addEventListener('load', function () {
             if (file.size > SMALL_PICTURE_LIMIT) {
                 var limit = 1920;
                 var width = image.naturalWidth;
@@ -107,8 +107,8 @@ var Upload = {
                 var ratio = Math.min(limit / width, limit / height);
 
                 if (ratio < 1) {
-                    width = Math.round(width*ratio);
-                    height = Math.round(height*ratio);
+                    width = Math.round(width * ratio);
+                    height = Math.round(height * ratio);
                 }
 
                 Upload.canvas = document.createElement('canvas');
@@ -125,11 +125,11 @@ var Upload = {
 
                 switch (orientation) {
                     case 2: ctx.transform(-1, 0, 0, 1, width, 0); break;
-                    case 3: ctx.transform(-1, 0, 0, -1, width, height ); break;
-                    case 4: ctx.transform(1, 0, 0, -1, 0, height ); break;
+                    case 3: ctx.transform(-1, 0, 0, -1, width, height); break;
+                    case 4: ctx.transform(1, 0, 0, -1, 0, height); break;
                     case 5: ctx.transform(0, 1, 1, 0, 0, 0); break;
-                    case 6: ctx.transform(0, 1, -1, 0, height , 0); break;
-                    case 7: ctx.transform(0, -1, -1, 0, height , width); break;
+                    case 6: ctx.transform(0, 1, -1, 0, height, 0); break;
+                    case 7: ctx.transform(0, -1, -1, 0, height, width); break;
                     case 8: ctx.transform(0, -1, 1, 0, 0, width); break;
                 }
 
@@ -164,7 +164,7 @@ var Upload = {
         image.src = src;
     },
 
-    prepare : function(file) {
+    prepare: function (file) {
         Upload.file = file;
 
         var preview = document.querySelector('#upload img.preview_picture');
@@ -176,7 +176,7 @@ var Upload = {
             fileInfo.classList.remove('preview');
             fileInfo.querySelector('p.name').innerText = Upload.name;
             var type = file.type ? file.type + ' · ' : '';
-            fileInfo.querySelector('p.desc').innerText =  type + MovimUtils.humanFileSize(file.size);
+            fileInfo.querySelector('p.desc').innerText = type + MovimUtils.humanFileSize(file.size);
 
             if (Upload.file.type.match(/image.*/)) {
                 preview.src = URL.createObjectURL(Upload.file);
@@ -204,7 +204,7 @@ var Upload = {
         }
     },
 
-    request : function(get, put, headers) {
+    request: function (get, put, headers) {
         Upload.get = get;
         Upload.xhr = new XMLHttpRequest();
 
@@ -212,8 +212,8 @@ var Upload = {
             Upload.uploadButton.classList.add('disabled');
         }
 
-        Upload.xhr.upload.addEventListener('progress', function(evt) {
-            var percent = Math.floor(evt.loaded/evt.total*100);
+        Upload.xhr.upload.addEventListener('progress', function (evt) {
+            var percent = Math.floor(evt.loaded / evt.total * 100);
 
             Upload.launchProgressed(percent);
 
@@ -221,9 +221,9 @@ var Upload = {
             if (progress) progress.innerHTML = percent + '%';
         }, false);
 
-        Upload.xhr.onreadystatechange = function() {
+        Upload.xhr.onreadystatechange = function () {
             if (Upload.xhr.readyState == 4
-            && (Upload.xhr.status >= 200 && Upload.xhr.status < 400)) {
+                && (Upload.xhr.status >= 200 && Upload.xhr.status < 400)) {
                 Dialog.clear();
                 Upload.launchAttached();
                 Upload.clear();
@@ -232,8 +232,8 @@ var Upload = {
                     Upload.uploadButton.classList.remove('disabled');
                 }
             } else if (Upload.xhr.readyState == 4
-            && (Upload.xhr.status >= 400 || Upload.xhr.status == 0)
-            && Upload.file != null) {
+                && (Upload.xhr.status >= 400 || Upload.xhr.status == 0)
+                && Upload.file != null) {
                 Upload.launchFailed();
                 Upload_ajaxFailed();
 
@@ -256,12 +256,12 @@ var Upload = {
         }
     },
 
-    abort : function() {
+    abort: function () {
         if (Upload.xhr) Upload.xhr.abort();
         Upload.clear();
     },
 
-    clear : function() {
+    clear: function () {
         if (document.getElementById('file')) {
             document.getElementById('file').value = null;
         }
@@ -273,7 +273,7 @@ var Upload = {
         Upload.file = null;
     },
 
-    attachEvents : function () {
+    attachEvents: function () {
         if (Upload.file) {
             Upload.preview(Upload.file);
         }
@@ -323,7 +323,7 @@ MovimEvents.registerWindow('paste', 'upload', (e) => {
     const clipboardItems = e.clipboardData.items;
     const items = [].slice
         .call(clipboardItems)
-        .filter(function(item) {
+        .filter(function (item) {
             return item.type.indexOf('image') !== -1;
         });
 
@@ -340,32 +340,28 @@ MovimEvents.registerWindow('paste', 'upload', (e) => {
  * Handle the global drop event
  */
 
-MovimEvents.registerWindow('loaded', 'upload', () => {
-    var mainDropArea = document.body;
+MovimEvents.registerBody('dragover', 'upload', (ev) => {
+    if (document.getElementById('upload')) return;
+    ev.preventDefault();
+    document.body.classList.add('dropped');
+});
 
-    mainDropArea.addEventListener('dragover', ev => {
-        if (document.getElementById('upload')) return;
-        ev.preventDefault();
-        mainDropArea.classList.add('dropped');
-    }, false);
+MovimEvents.registerBody('drop', 'upload', (ev) => {
+    if (document.getElementById('upload')) return;
+    ev.preventDefault();
 
-    mainDropArea.addEventListener('drop', ev => {
-        if (document.getElementById('upload')) return;
-        ev.preventDefault();
-
-        if (ev.dataTransfer.items.length > 0
+    if (ev.dataTransfer.items.length > 0
         && ev.dataTransfer.items[0].kind === 'file') {
-            var file = ev.dataTransfer.items[0].getAsFile();
-            Upload.file = file;
-            Upload_ajaxRequest();
-        }
+        var file = ev.dataTransfer.items[0].getAsFile();
+        Upload.file = file;
+        Upload_ajaxRequest();
+    }
 
-        mainDropArea.classList.remove('dropped');
-    }, false);
+    document.body.classList.remove('dropped');
+});
 
-    mainDropArea.addEventListener('dragleave', ev => {
-        if (document.getElementById('upload')) return;
-        ev.preventDefault();
-        mainDropArea.classList.remove('dropped');
-    }, false);
+MovimEvents.registerBody('dragleave', 'upload', (ev) => {
+    if (document.getElementById('upload')) return;
+    ev.preventDefault();
+    document.body.classList.remove('dropped');
 });

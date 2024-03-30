@@ -305,7 +305,7 @@ class SDPtoJingle
                             // http://xmpp.org/extensions/xep-0339.html
                         case 'ssrc':
                             $sources = $description->xpath('source[@ssrc="' . $matches[1] . '"]');
-                            $ssrc = is_array($sources) ? $sources[0] : null;
+                            $ssrc = is_array($sources) && count($sources) > 0 ? $sources[0] : null;
 
                             if ($ssrc == null) {
                                 $ssrc = $description->addChild('source');

@@ -108,12 +108,6 @@ var MovimTpl = {
 
         if (nav == null) return;
 
-        document.body.addEventListener('touchstart', function (event) {
-            MovimTpl.startX = event.targetTouches[0].pageX;
-            MovimTpl.startY = event.targetTouches[0].pageY;
-            nav.classList.remove('moving');
-        }, true);
-
         mainDiv.addEventListener('touchmove', function (event) {
             moveX = event.targetTouches[0].pageX;
             MovimTpl.translateX = parseInt(moveX - MovimTpl.startX);
@@ -140,26 +134,32 @@ var MovimTpl = {
                 nav.style.transform = 'translateX(' + (MovimTpl.translateX - delay) + 'px)';
             }
         }, true);
-
-        document.body.addEventListener('touchend', function (event) {
-            nav.classList.add('moving');
-            nav.style.transform = '';
-
-            percent = MovimTpl.translateX / clientWidth;
-
-            if (MovimTpl.menuDragged) {
-                if (nav.classList.contains('active') && percent < -0.2) {
-                    nav.classList.remove('active');
-                } else if (percent > 0.1) {
-                    nav.classList.add('active');
-                }
-            }
-
-            MovimTpl.startX = MovimTpl.startY = MovimTpl.translateX = 0;
-            MovimTpl.menuDragged = false;
-        }, true);
     }
 };
+
+MovimEvents.registerBody('touchstart', 'movimtpl', (event) => {
+    MovimTpl.startX = event.targetTouches[0].pageX;
+    MovimTpl.startY = event.targetTouches[0].pageY;
+    document.querySelector('body > nav').classList.remove('moving');
+});
+
+MovimEvents.registerBody('touchend', 'movimtpl', (event) => {
+    nav.classList.add('moving');
+    nav.style.transform = '';
+
+    percent = MovimTpl.translateX / clientWidth;
+
+    if (MovimTpl.menuDragged) {
+        if (nav.classList.contains('active') && percent < -0.2) {
+            nav.classList.remove('active');
+        } else if (percent > 0.1) {
+            nav.classList.add('active');
+        }
+    }
+
+    MovimTpl.startX = MovimTpl.startY = MovimTpl.translateX = 0;
+    MovimTpl.menuDragged = false;
+});
 
 MovimEvents.registerBody('click', 'movimtpl', (e) => MovimTpl.hideContextMenu(e));
 
@@ -167,18 +167,18 @@ MovimEvents.registerWindow('loaded', 'movimtpl', () => {
     if (MovimUtils.isMobile()) MovimTpl.touchEvents();
 
     MovimTpl.currentPage = window.location.pathname;
+});
 
-    window.addEventListener('popstate', e => {
-        if (MovimTpl.popAnchorKey || e.target.location.hash != '') {
-            MovimTpl.clearAnchorState();
-            return;
-        }
+MovimEvents.registerWindow('popstate', 'movimtpl', (e) => {
+    if (MovimTpl.popAnchorKey || e.target.location.hash != '') {
+        MovimTpl.clearAnchorState();
+        return;
+    }
 
-        if (e.target.location.pathname == MovimTpl.currentPage) return;
+    if (e.target.location.pathname == MovimTpl.currentPage) return;
 
-        MovimUtils.reload(e.target.location.href, true);
+    MovimUtils.reload(e.target.location.href, true);
 
-        MovimTpl.currentPage = e.target.location.pathname;
-        MovimTpl.currentAnchor = window.location.hash.substring(1);
-    });
+    MovimTpl.currentPage = e.target.location.pathname;
+    MovimTpl.currentAnchor = window.location.hash.substring(1);
 });

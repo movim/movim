@@ -159,10 +159,6 @@ var Draw = {
             Draw.screen.dispatchEvent(mouseEvent);
         }, false);
 
-        document.body.addEventListener('touchstart', Draw.disableForCanvas, false);
-        document.body.addEventListener('touchend', Draw.disableForCanvas, false);
-        document.body.addEventListener('touchmove', Draw.disableForCanvas, false);
-
         // Clear canvas
         const clear = document.getElementById('draw-clear');
         clear.addEventListener('click', (e) => {
@@ -464,3 +460,6 @@ Upload.progress((percent) => {
 });
 
 MovimEvents.registerWindow('loaded', 'draw', () => Draw_ajaxHttpGet());
+MovimEvents.registerBody('touchstart', 'draw', () => Draw.disableForCanvas());
+MovimEvents.registerBody('touchend', 'draw', () => Draw.disableForCanvas());
+MovimEvents.registerBody('touchmove', 'draw', () => Draw.disableForCanvas());

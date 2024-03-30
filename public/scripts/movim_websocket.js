@@ -230,14 +230,12 @@ var MovimWebsocket = {
     }
 }
 
-window.addEventListener("offline", (e) => {
+MovimEvents.registerWindow('offline', 'movimwebsocket', () => {
     console.log('offline');
     MovimWebsocket.connection.onerror();
 });
 
-window.addEventListener("online", (e) => {
-    console.log('online');
-
+MovimEvents.registerWindow('online', 'movimwebsocket', () => {
     MovimWebsocket.statusBar.classList.remove('hide');
     MovimWebsocket.statusBar.classList.add('connect');
 
@@ -252,8 +250,8 @@ window.onbeforeunload = function () {
     }
 };
 
-// If the Websocket was closed after some innactivity, we try to reconnect
-window.addEventListener('focus', function () {
+// If the Websocket was closed after some inactivity, we try to reconnect
+MovimEvents.registerWindow('focus', 'movimwebsocket', () => {
     if (MovimWebsocket.connection !== null
         && MovimWebsocket.connection.readyState > 1) {
 
@@ -265,7 +263,7 @@ window.addEventListener('focus', function () {
     }
 });
 
-document.addEventListener("DOMContentLoaded", function (event) {
+MovimEvents.registerWindow('loaded', 'movimwebsocket', () => {
     MovimWebsocket.statusBar = document.getElementById('status_websocket');
     MovimWebsocket.launchInitiated();
     MovimWebsocket.init();
