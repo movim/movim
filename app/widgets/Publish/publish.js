@@ -79,14 +79,15 @@ var Publish = {
     }
 }
 
-MovimWebsocket.attach(function () {
+MovimWebsocket.attach(() => {
     Publish.init();
     MovimUtils.applyAutoheight();
 });
 
-if (typeof Upload != 'undefined') {
-    Upload.attach(function (file) {
-        let id = document.querySelector('#publish input[name=id]').value;
-        Publish_ajaxAddEmbed(id, file.uri);
+MovimEvents.registerWindow('loaded', 'publish', () => {
+    Upload.attach((file) => {
+        if (document.querySelector('#publish')) {
+            Publish_ajaxAddEmbed(document.querySelector('#publish input[name=id]').value, file.uri);
+        }
     });
-}
+});

@@ -104,35 +104,31 @@
         <ul class="list">
             <li>
                 <div>
-                    <a
+                    <button
                         class="button narrow flat icon gray"
                         title="{$c->__('publish.add_link')}"
-                        href="#"
                         onclick="Publish_ajaxLink()">
                         <i class="material-symbols">link</i>
-                    </a>
+                    </button>
                     {if="$c->getUser()->hasUpload()"}
-                        <a
+                        <button
                             class="button narrow flat icon gray"
                             title="{$c->__('publish.add_snap')}"
-                            href="#"
                             onclick="Snap.init()">
                             <i class="material-symbols">camera_alt</i>
-                        </a>
-                        <a
+                        </button>
+                        <button
                             class="button narrow flat icon gray"
                             title="{$c->__('draw.title')}"
-                            href="#"
                             onclick="Draw.init()">
                             <i class="material-symbols">gesture</i>
-                        </a>
-                        <a
+                        </button>
+                        <button
                             class="button narrow flat icon gray"
-                            href="#"
                             title="{$c->__('publish.attach')}"
                             onclick="Upload_ajaxRequest()">
                             <i class="material-symbols">image</i>
-                        </a>
+                    </button>
                     {/if}
 
                     <button class="button send oppose color" onclick="Publish.publish()">

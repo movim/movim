@@ -1621,17 +1621,6 @@ MovimWebsocket.attach(function () {
     }
 });
 
-if (typeof Upload != 'undefined') {
-    Upload.attach(function (file) {
-        Chat_ajaxHttpDaemonSendMessage(
-            Chat.getTextarea().dataset.jid,
-            false,
-            Boolean(Chat.getTextarea().dataset.muc),
-            file
-        );
-    });
-}
-
 MovimEvents.registerWindow('focus', 'chat', () => {
     if (MovimWebsocket.connection) {
         var jid = MovimUtils.urlParts().params[0];
@@ -1648,6 +1637,17 @@ MovimEvents.registerWindow('resize', 'chat', () => Chat.scrollRestore());
 
 MovimEvents.registerWindow('loaded', 'chat', () => {
     if (MovimUtils.isMobile()) Chat.touchEvents();
+
+    Upload.attach(function (file) {
+        if (Chat.getTextarea()) {
+            Chat_ajaxHttpDaemonSendMessage(
+                Chat.getTextarea().dataset.jid,
+                false,
+                Boolean(Chat.getTextarea().dataset.muc),
+                file
+            );
+        }
+    });
 
     // Really early panel showing in case we have a JID
     var parts = MovimUtils.urlParts();
