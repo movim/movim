@@ -343,7 +343,10 @@ MovimEvents.registerWindow('paste', 'upload', (e) => {
 MovimEvents.registerBody('dragover', 'upload', (ev) => {
     if (document.getElementById('upload')) return;
     ev.preventDefault();
-    document.body.classList.add('dropped');
+
+    if (ev.dataTransfer.items[0].kind == 'file') {
+        document.body.classList.add('dropped');
+    }
 });
 
 MovimEvents.registerBody('drop', 'upload', (ev) => {
