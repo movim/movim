@@ -9,6 +9,8 @@ use App\Configuration;
 use App\User;
 use Movim\Controller\Ajax;
 use Movim\Widget\Wrapper;
+use Movim\i18n\Dir;
+use Movim\i18n\Locale;
 use stdClass;
 
 class Builder
@@ -20,7 +22,8 @@ class Builder
     private array $css = [];
     private array $scripts = [];
     private string $eagerScripts = "/\/(movim_rpc|movim_utils)/";
-    private string $dir = 'ltr';
+    private string $lang = Locale::DEFAULT_LANGUAGE;
+    private Dir $dir = Locale::DEFAULT_DIRECTION;
     private bool $public;
     private ?User $user = null;
     private $jsCheck = true;
@@ -76,7 +79,7 @@ class Builder
 
         $outp = str_replace(
             ['<%scripts%>', '<%meta%>', '<%content%>', '<%common%>', '<%title%>', '<%language%>', '<%dir%>'],
-            [$scripts, $this->meta(), $this->content, $this->commonContent, $this->title(), $this->language(), $this->dir()],
+            [$scripts, $this->meta(), $this->content, $this->commonContent, $this->title(), $this->language(), $this->dir()->value],
             $outp
         );
 
@@ -139,55 +142,25 @@ class Builder
      */
     public function language(): string
     {
-        $lang = $this->user && $this->user->language
-            ? $this->user->language
-            : Configuration::get()->locale;
-
-        if (empty($lang)) {
-            return 'en';
+        if ($this?->user?->language != null) {
+            $this->lang = $this->user->language;
+            return Locale::printISO639($this->lang);
         }
 
-        // String casing for the web
-        $split = array_slice(preg_split('/[_-]/', $lang), 0, 3);
-        $lc = array_shift($split);
-        $langCode = strtolower($lc);
+        $locale = Locale::start();
+        $locale->detect(getenv('language'));
 
-        if (empty($split)) {
-           return $langCode;
-        }
+        $this->lang = Locale::printISO639($locale->language ?? Configuration::get()->locale);
 
-        $tags = array_map(function ($tag) {
-            switch (strlen($tag)) {
-                // Region
-                case 2:
-                case 3:
-                   return strtoupper($tag);
-                // Script
-                case 4:
-                   return ucfirst(strtolower($tag));
-                default:
-                   return $tag;
-            }
-        }, $split);
-
-        array_unshift($tags, $langCode);
-
-        return implode('-', $tags);
+        return $this->lang;
     }
 
     /**
      * Displays the current font direction
      */
-    public function dir()
+    public function dir(): Dir
     {
-        if (isLogged()) {
-            $lang = \App\User::me()->language;
-
-            if (in_array($lang, ['ar', 'he', 'fa'])) {
-                $this->dir = 'rtl';
-            }
-        }
-
+        $this->dir = \Movim\i18n\Locale::getDirection($this->lang);
         return $this->dir;
     }
 
