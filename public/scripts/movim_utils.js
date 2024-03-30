@@ -186,11 +186,6 @@ var MovimUtils = {
 
                 // Events
                 Promise.all(promises).then(() => {
-                    if (typeof MovimWebsocket != 'undefined') {
-                        MovimWebsocket.launchAttached();
-                        MovimWebsocket.launchInitiated();
-                    }
-
                     MovimEvents.triggerWindow('loaded', null);
                 });
             });
