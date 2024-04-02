@@ -21,7 +21,7 @@ class Authentication
         return self::$instance;
     }
 
-    public function choose(array $mechanisms, array $channelBindings)
+    public function choose(array $mechanisms, array $channelBindings = [])
     {
         $choices = [
             'SCRAM-SHA-1',
