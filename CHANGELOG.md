@@ -14,6 +14,7 @@ v0.23.1
 * Fix some soft navigation issues
 * Fix #1274 by handling properly Visio URL parameters and base64 the from to prevent some escaping issues
 * Introduce MovimEvent to centralize the frontend window and body related event, refactorize and cleanup the related code
+* Implement XEP-0474: SASL SCRAM Downgrade Protection
 
 v0.23
 ---------------------------

@@ -21,7 +21,7 @@ class Authentication
         return self::$instance;
     }
 
-    public function choose($mechanisms)
+    public function choose(array $mechanisms, array $channelBindings)
     {
         $choices = [
             'SCRAM-SHA-1',
@@ -38,7 +38,11 @@ class Authentication
 
                 $this->_mechanism = $factory->factory($this->_type, [
                     'authcid'  => $session->get('username'),
-                    'secret'   => $session->get('password')
+                    'secret'   => $session->get('password'),
+                    'downgrade_protection' => [
+                        'allowed_mechanisms'       => $mechanisms,
+                        'allowed_channel_bindings' => $channelBindings
+                    ],
                 ]);
 
                 break;

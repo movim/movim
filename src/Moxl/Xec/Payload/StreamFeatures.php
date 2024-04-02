@@ -13,6 +13,14 @@ class StreamFeatures extends Payload
         if ($stanza->authentication && $stanza->authentication->attributes()->xmlns == 'urn:xmpp:sasl:2') {
             $mechanisms = (array)$stanza->authentication->mechanism;
 
+            $channelBindings = [];
+
+            if ($stanza->{'sasl-channel-binding'} && $stanza->{'sasl-channel-binding'}->attributes()->xmlns == 'urn:xmpp:sasl-cb:0') {
+                foreach ($stanza->{'sasl-channel-binding'}->{'channel-binding'} as $channelBinding) {
+                    array_push($channelBindings, (string)$channelBinding->attributes()->type);
+                }
+            }
+
             $session = Session::start();
 
             if ($session->get('password')) {
@@ -21,7 +29,7 @@ class StreamFeatures extends Payload
                 }
 
                 $auth = Authentication::getInstance();
-                $auth->choose($mechanisms);
+                $auth->choose($mechanisms, $channelBindings);
 
                 Stream::bind2Set($auth->getType(), $auth->getResponse(), APP_TITLE . '.' . \generateKey(6));
             }
