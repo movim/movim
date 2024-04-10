@@ -1362,7 +1362,7 @@ var Chat = {
                 a.textContent = file.name;
                 a.href = file.uri;
                 a.target = '_blank';
-                a.rel = 'noopener';
+                a.rel = 'noopener noreferrer';
 
                 div.appendChild(a);
 

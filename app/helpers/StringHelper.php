@@ -54,7 +54,7 @@ function addUrls($string, bool $preview = false)
                 }
 
                 if (in_array(parse_url($content, PHP_URL_SCHEME), ['http', 'https'])) {
-                    return stripslashes('<a href=\"'.$content.'\" target=\"_blank\" rel=\"noopener\">'.$content.'</a>').
+                    return stripslashes('<a href=\"'.$content.'\" target=\"_blank\" rel=\"noopener noreferrer\">'.$content.'</a>').
                             ($lastTag !== false ? $lastTag : '');
                 }
 
