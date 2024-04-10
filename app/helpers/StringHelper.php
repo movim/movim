@@ -449,7 +449,6 @@ function purifyHTML($string, $base = null): string
         $config->set('URI.MakeAbsolute', true);
     }
 
-    $config->set('CSS.AllowedProperties', ['float']);
     if ($def = $config->maybeGetRawHTMLDefinition()) {
         $def->addElement('video', 'Block', 'Optional: (source, Flow) | (Flow, source) | Flow', 'Common', [
           'src' => 'URI',
