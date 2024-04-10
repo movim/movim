@@ -192,7 +192,7 @@ var Chat = {
 
                 if (reply) {
                     replyMid = reply.dataset.mid;
-                    reply.remove();
+                    Chat_ajaxClearReply();
                 };
 
                 if (textarea.dataset.encryptedstate == 'build') {
