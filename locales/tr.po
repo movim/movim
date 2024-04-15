@@ -20,6 +20,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Avatar/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Badges/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blocked/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
@@ -59,6 +61,8 @@
 #. extracted from ../app/widgets/ContactActions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/ContactDataPublic/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Dictaphone/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -117,7 +121,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-11 18:29+0200\n"
+"POT-Creation-Date: 2024-04-15 10:05+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Ali Can <gamalpha112@gmail.com>, 2018\n"
 "Language-Team: Turkish (http://app.transifex.com/movim/movim/language/tr/)\n"
@@ -126,7 +130,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Translate Toolkit 3.8.4\n"
+"X-Generator: Translate Toolkit 3.12.2\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -474,6 +478,10 @@ msgstr ""
 msgid "Banner Not Updated"
 msgstr ""
 
+#: [badges]title
+msgid "Badges"
+msgstr ""
+
 #: [blocked]title
 msgid "Blocked"
 msgstr ""
@@ -560,10 +568,6 @@ msgstr ""
 
 #: [message]gone
 msgid "Contact gone"
-msgstr ""
-
-#: [message]history
-msgid "%s messages retrieved"
 msgstr ""
 
 #: [message]edit_help
@@ -683,10 +687,6 @@ msgstr ""
 msgid "An error occurred when sending the message"
 msgstr ""
 
-#: [chat]mam_retrieval
-msgid "Synchronizing the history, please wait…"
-msgstr ""
-
 #: [chat]clear_history
 msgctxt "[chat]clear_history"
 msgid "Clear the history"
@@ -698,6 +698,22 @@ msgstr ""
 
 #: [chat]action_impossible_encrypted
 msgid "Action impossible in encrypted chats"
+msgstr ""
+
+#: [chat]first_messages_title
+msgid "This is the beginning of this conversation"
+msgstr ""
+
+#: [chat]first_messages_text
+msgid "You can choose to add it as a new contact or block it to prevent some other unsolicited messages"
+msgstr ""
+
+#: [chat]first_messages_add
+msgid "Add to my contacts"
+msgstr ""
+
+#: [chat]first_messages_block
+msgid "Block"
 msgstr ""
 
 #: [chatroom]members
@@ -1402,6 +1418,10 @@ msgstr ""
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
 msgstr ""
 
+#: [contactdatapublic]no_data
+msgid "No public data found"
+msgstr ""
+
 #: [dictaphone]name
 msgid "Dictaphone"
 msgstr ""
@@ -1803,8 +1823,12 @@ msgstr ""
 msgid "%s minutes"
 msgstr ""
 
-#: [post]public
-msgid "Publish this post publicly?"
+#: [post]public_title
+msgid "Publish this article publicly"
+msgstr ""
+
+#: [post]public_text
+msgid "This will allow anyone outside Movim to have access to your publication"
 msgstr ""
 
 #: [post]public_yes
@@ -1817,6 +1841,22 @@ msgstr ""
 
 #: [post]public_url
 msgid "Public URL of this post"
+msgstr ""
+
+#: [post]comments_disabled_title
+msgid "Disable the comments"
+msgstr ""
+
+#: [post]comments_disabled_text
+msgid "Nobody will be able to like or comment"
+msgstr ""
+
+#: [post]comments_disabled_yes
+msgid "Comments disabled for this article"
+msgstr ""
+
+#: [post]comments_disabled_no
+msgid "Comments enabled for this article"
 msgstr ""
 
 #: [post]delete_title [post]delete
@@ -2097,6 +2137,14 @@ msgstr ""
 msgid "Empty name"
 msgstr ""
 
+#: [chatrooms]remove_title
+msgid "Remove a chatroom"
+msgstr ""
+
+#: [chatrooms]remove_text
+msgid "You are going to remove the following chatroom. Please confirm your action."
+msgstr ""
+
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
 msgid "Users"
@@ -2133,6 +2181,14 @@ msgstr ""
 
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
+msgstr ""
+
+#: [chatrooms]remoteservernotfound
+msgid "The remote server for this chatroom doesn’t exist"
+msgstr ""
+
+#: [chatrooms]remoteservertimeout
+msgid "Connection to remote server timed out"
 msgstr ""
 
 #: [chatrooms]itemnotfound
@@ -2796,6 +2852,10 @@ msgstr ""
 msgid "Destroy"
 msgstr ""
 
+#: [button]remove
+msgid "Remove"
+msgstr ""
+
 #: [button]cancel
 msgid "Cancel"
 msgstr "İptal"
@@ -3259,6 +3319,10 @@ msgstr ""
 
 #: [mood]relieved
 msgid "relieved"
+msgstr ""
+
+#: [mood]remorseful
+msgid "remorseful"
 msgstr ""
 
 #: [mood]restless

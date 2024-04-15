@@ -30,6 +30,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Avatar/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Badges/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blocked/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
@@ -69,6 +71,8 @@
 #. extracted from ../app/widgets/ContactActions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/ContactDataPublic/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Dictaphone/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -127,7 +131,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-11 18:29+0200\n"
+"POT-Creation-Date: 2024-04-15 10:05+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Phonebook3599, 2023\n"
 "Language-Team: Chinese (China) (http://app.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -136,7 +140,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Translate Toolkit 3.8.4\n"
+"X-Generator: Translate Toolkit 3.12.2\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -340,7 +344,7 @@ msgstr "列入白名单的 XMPP 服务器"
 
 #: [whitelist]info1
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
-msgstr "如果您想在 Movim Pod 中指定授权的 XMPP 服务器列表，并禁止所有其他服务器的连接，请在这里输入域名，并使用逗号隔开（例如：movim.eu,jabber.fr）"
+msgstr "如果您想在 Movim Pod 中指定授权的 XMPP 服务器列表，并禁止所有其他服务器的连接，请在这里输入域名，并使用逗号隔开（例如：movim.eu、jabber.fr）"
 
 #: [whitelist]info2
 msgid "Leave this field blank if you allow the access to all the XMPP accounts."
@@ -484,6 +488,10 @@ msgstr "横幅已更新"
 msgid "Banner Not Updated"
 msgstr "横幅未更新"
 
+#: [badges]title
+msgid "Badges"
+msgstr ""
+
 #: [blocked]title
 msgid "Blocked"
 msgstr "已屏蔽"
@@ -571,10 +579,6 @@ msgstr "已暂停…"
 #: [message]gone
 msgid "Contact gone"
 msgstr "联系人已消失"
-
-#: [message]history
-msgid "%s messages retrieved"
-msgstr "获取了 %s 条消息"
 
 #: [message]edit_help
 msgid "↑ to edit your previous message"
@@ -693,10 +697,6 @@ msgstr "%s 现在是成员"
 msgid "An error occurred when sending the message"
 msgstr "发送消息时出错"
 
-#: [chat]mam_retrieval
-msgid "Synchronizing the history, please wait…"
-msgstr "正在同步历史记录，请稍候…"
-
 #: [chat]clear_history
 msgctxt "[chat]clear_history"
 msgid "Clear the history"
@@ -709,6 +709,22 @@ msgstr "是否确定删除 %s 条消息？"
 #: [chat]action_impossible_encrypted
 msgid "Action impossible in encrypted chats"
 msgstr "加密聊天中无法执行操作"
+
+#: [chat]first_messages_title
+msgid "This is the beginning of this conversation"
+msgstr ""
+
+#: [chat]first_messages_text
+msgid "You can choose to add it as a new contact or block it to prevent some other unsolicited messages"
+msgstr ""
+
+#: [chat]first_messages_add
+msgid "Add to my contacts"
+msgstr ""
+
+#: [chat]first_messages_block
+msgid "Block"
+msgstr ""
 
 #: [chatroom]members
 msgid "Members"
@@ -1412,6 +1428,10 @@ msgstr "邀请"
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
 msgstr "此联系人在您的联系人列表中，但两账号之间没有订阅"
 
+#: [contactdatapublic]no_data
+msgid "No public data found"
+msgstr ""
+
 #: [dictaphone]name
 msgid "Dictaphone"
 msgstr "录音机"
@@ -1813,9 +1833,13 @@ msgstr "%s 分钟"
 msgid "%s minutes"
 msgstr "%s 分钟"
 
-#: [post]public
-msgid "Publish this post publicly?"
-msgstr "公开发布此帖子？"
+#: [post]public_title
+msgid "Publish this article publicly"
+msgstr ""
+
+#: [post]public_text
+msgid "This will allow anyone outside Movim to have access to your publication"
+msgstr ""
 
 #: [post]public_yes
 msgid "This post is public"
@@ -1828,6 +1852,22 @@ msgstr "此帖子是私人的"
 #: [post]public_url
 msgid "Public URL of this post"
 msgstr "此帖子的公开 URL"
+
+#: [post]comments_disabled_title
+msgid "Disable the comments"
+msgstr ""
+
+#: [post]comments_disabled_text
+msgid "Nobody will be able to like or comment"
+msgstr ""
+
+#: [post]comments_disabled_yes
+msgid "Comments disabled for this article"
+msgstr ""
+
+#: [post]comments_disabled_no
+msgid "Comments enabled for this article"
+msgstr ""
 
 #: [post]delete_title [post]delete
 msgid "Delete this post"
@@ -2107,6 +2147,14 @@ msgstr "无效的聊天室 ID"
 msgid "Empty name"
 msgstr "用户名为空"
 
+#: [chatrooms]remove_title
+msgid "Remove a chatroom"
+msgstr ""
+
+#: [chatrooms]remove_text
+msgid "You are going to remove the following chatroom. Please confirm your action."
+msgstr ""
+
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
 msgid "Users"
@@ -2144,6 +2192,14 @@ msgstr "房间已解散"
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
 msgstr "无法加入聊天室，需要注册"
+
+#: [chatrooms]remoteservernotfound
+msgid "The remote server for this chatroom doesn’t exist"
+msgstr ""
+
+#: [chatrooms]remoteservertimeout
+msgid "Connection to remote server timed out"
+msgstr ""
 
 #: [chatrooms]itemnotfound
 msgid "The chatroom doesn’t exist"
@@ -2503,7 +2559,7 @@ msgstr "个人资料未更新"
 
 #: [vcard]nickname_info
 msgid "This will also be used as your default nickname when joining a chatroom"
-msgstr ""
+msgstr "这也将作为您加入聊天室时的默认昵称"
 
 #: [profile]public
 msgid "Your profile is now public"
@@ -2805,6 +2861,10 @@ msgstr "删除"
 #: [button]destroy
 msgid "Destroy"
 msgstr "解散"
+
+#: [button]remove
+msgid "Remove"
+msgstr ""
 
 #: [button]cancel
 msgid "Cancel"
@@ -3271,6 +3331,10 @@ msgstr "宽慰"
 msgid "relieved"
 msgstr "放松"
 
+#: [mood]remorseful
+msgid "remorseful"
+msgstr ""
+
 #: [mood]restless
 msgid "restless"
 msgstr "不安"
@@ -3542,21 +3606,3 @@ msgstr "无法访问 API，请稍后再试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
-
-#~ msgid "Twitter integration"
-#~ msgstr "Twitter 集成"
-
-#~ msgid "Your Twitter Token"
-#~ msgstr "您的 Twitter 令牌"
-
-#~ msgid "The Twitter integration allows Movim to embed and extract the Tweets shared on the instance"
-#~ msgstr "Twitter 集成允许 Movim 嵌入和提取实例上共享的推文"
-
-#~ msgid "Generate your Token on the Developer Twitter website"
-#~ msgstr "在 Developer Twitter 网站上生成您的令牌"
-
-#~ msgid "Badges"
-#~ msgstr "徽章"
-
-#~ msgid "No public data found"
-#~ msgstr "未找到公开数据"

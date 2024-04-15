@@ -1,6 +1,6 @@
 #
 # Translators:
-# Xabi, 2023
+# Xabi, 2023-2024
 # —X—, 2021
 # —X—, 2022-2023
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -19,6 +19,8 @@
 #. extracted from ../app/widgets/AdminSessions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Avatar/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Badges/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blocked/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -59,6 +61,8 @@
 #. extracted from ../app/widgets/ContactActions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/ContactDataPublic/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Dictaphone/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -117,16 +121,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-11 18:29+0200\n"
+"POT-Creation-Date: 2024-04-15 10:05+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
-"Last-Translator: Xabi, 2023\n"
+"Last-Translator: Xabi, 2023-2024\n"
 "Language-Team: Basque (http://app.transifex.com/movim/movim/language/eu/)\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.8.4\n"
+"X-Generator: Translate Toolkit 3.12.2\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -226,7 +230,7 @@ msgstr "Ezabatu OMEMO gakoak"
 
 #: [account]delete_bundle_text
 msgid "You are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
-msgstr ""
+msgstr "Ondorengo OMEMO gakoa suntsitzear zaude. Aurrerantzean kontaktuek ezingo dute gako hori mezuak zifratzeko erabili. Eragiketa ezin da desegin. Ziur zaude?"
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
@@ -242,7 +246,7 @@ msgstr "zerbitzarian sortu"
 
 #: [create]successfull
 msgid "Your account has been successfully registered"
-msgstr ""
+msgstr "Zure kontua behar bezala erregistratu da"
 
 #: [create]loading
 msgid "Loading"
@@ -474,6 +478,10 @@ msgstr "Goiburuko irudia eguneratu da"
 msgid "Banner Not Updated"
 msgstr "Goiburuko irudia ez da eguneratu"
 
+#: [badges]title
+msgid "Badges"
+msgstr ""
+
 #: [blocked]title
 msgid "Blocked"
 msgstr "Blokeatutakoak"
@@ -561,10 +569,6 @@ msgstr "Galditu da…"
 #: [message]gone
 msgid "Contact gone"
 msgstr "Alde egin du"
-
-#: [message]history
-msgid "%s messages retrieved"
-msgstr "%s mezu atziki dira"
 
 #: [message]edit_help
 msgid "↑ to edit your previous message"
@@ -683,10 +687,6 @@ msgstr "%s kide da orain"
 msgid "An error occurred when sending the message"
 msgstr "Errorea mezua bidaltzerakoan"
 
-#: [chat]mam_retrieval
-msgid "Synchronizing the history, please wait…"
-msgstr "Historia sinkronizatzen, itxaron…"
-
 #: [chat]clear_history
 msgctxt "[chat]clear_history"
 msgid "Clear the history"
@@ -699,6 +699,22 @@ msgstr "Ziur %s mezu ezabatu nahi dituzula?"
 #: [chat]action_impossible_encrypted
 msgid "Action impossible in encrypted chats"
 msgstr "Ezin da gauzatu enkriptatutako txatetan"
+
+#: [chat]first_messages_title
+msgid "This is the beginning of this conversation"
+msgstr ""
+
+#: [chat]first_messages_text
+msgid "You can choose to add it as a new contact or block it to prevent some other unsolicited messages"
+msgstr ""
+
+#: [chat]first_messages_add
+msgid "Add to my contacts"
+msgstr ""
+
+#: [chat]first_messages_block
+msgid "Block"
+msgstr ""
 
 #: [chatroom]members
 msgid "Members"
@@ -1175,7 +1191,7 @@ msgstr "Artxibatze-hobespenak gorde dira"
 
 #: [config]blog_text
 msgid "Personal blog confidentiality"
-msgstr ""
+msgstr "Blog pertsonalaren konfidentzialtasuna"
 
 #: [config]account_privacy
 msgctxt "[config]account_privacy"
@@ -1200,7 +1216,7 @@ msgstr "Zure harpidedunentzat soilik"
 
 #: [config]blog_saved
 msgid "Personal blog confidentiality saved"
-msgstr ""
+msgstr "Blog pertsonalaren konfidentzialtasuna gorde da"
 
 #: [config]confidentiality
 msgid "Confidentiality"
@@ -1401,6 +1417,10 @@ msgstr "Gonbidatu"
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
 msgstr "Kontaktu hau zure kontaktuetan dago baina ez dago harpidetzarik bi kontuen artean"
+
+#: [contactdatapublic]no_data
+msgid "No public data found"
+msgstr ""
 
 #: [dictaphone]name
 msgid "Dictaphone"
@@ -1741,7 +1761,7 @@ msgstr "laster-leihoak"
 
 #: [onboarding]popups_text
 msgid "Movim is using popups for the video-conference feature, they are sometimes blocked by the browsers"
-msgstr ""
+msgstr "Movimek popup leihoak darabiltza bideo-deietarako, nabigatzaileek blokeatzen dituzte batzuetan"
 
 #: [onboarding]popups_text_second
 msgid "Please be sure that they are enabled to use this feature properly"
@@ -1803,9 +1823,13 @@ msgstr "minutu %s"
 msgid "%s minutes"
 msgstr "%s minutu"
 
-#: [post]public
-msgid "Publish this post publicly?"
-msgstr "Publiko izan dadila nahi duzu?"
+#: [post]public_title
+msgid "Publish this article publicly"
+msgstr ""
+
+#: [post]public_text
+msgid "This will allow anyone outside Movim to have access to your publication"
+msgstr ""
 
 #: [post]public_yes
 msgid "This post is public"
@@ -1818,6 +1842,22 @@ msgstr "Argitalpen hau pribatua da"
 #: [post]public_url
 msgid "Public URL of this post"
 msgstr "Argitalpen honen esteka publikoa"
+
+#: [post]comments_disabled_title
+msgid "Disable the comments"
+msgstr ""
+
+#: [post]comments_disabled_text
+msgid "Nobody will be able to like or comment"
+msgstr ""
+
+#: [post]comments_disabled_yes
+msgid "Comments disabled for this article"
+msgstr ""
+
+#: [post]comments_disabled_no
+msgid "Comments enabled for this article"
+msgstr ""
 
 #: [post]delete_title [post]delete
 msgid "Delete this post"
@@ -2097,6 +2137,14 @@ msgstr "Txat-gela okerraren IDa"
 msgid "Empty name"
 msgstr "Izenik ez"
 
+#: [chatrooms]remove_title
+msgid "Remove a chatroom"
+msgstr ""
+
+#: [chatrooms]remove_text
+msgid "You are going to remove the following chatroom. Please confirm your action."
+msgstr ""
+
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
 msgid "Users"
@@ -2135,9 +2183,17 @@ msgstr "Gela suntsitu da"
 msgid "Chatroom cannot be joined, registration required"
 msgstr "Ezin izan da txat-gelan sartu, erregistroa ezinbestekoa da"
 
+#: [chatrooms]remoteservernotfound
+msgid "The remote server for this chatroom doesn’t exist"
+msgstr ""
+
+#: [chatrooms]remoteservertimeout
+msgid "Connection to remote server timed out"
+msgstr ""
+
 #: [chatrooms]itemnotfound
 msgid "The chatroom doesn’t exist"
-msgstr ""
+msgstr "Txat gela hori ez da existitzen"
 
 #: [chatrooms]notauthorized
 msgid "A password is required"
@@ -2181,7 +2237,7 @@ msgstr "Une honetan erabiltzaile anonimo bezala hasia duzu saioa"
 
 #: [room]anonymous_text2
 msgid "You can join using your own account or create one on the login page by logging out using the cross in the top-right corner."
-msgstr ""
+msgstr "Lehendik duzun kontua erabil dezakezu bat egiteko edo berri bat sortu saioa hasteko orrialdean. Oraingo saioa amaitzeko erabili goiko eskumako gurutzea."
 
 #: [room]anonymous_login
 msgid "Login on %s"
@@ -2493,7 +2549,7 @@ msgstr "Profila ez da eguneratu"
 
 #: [vcard]nickname_info
 msgid "This will also be used as your default nickname when joining a chatroom"
-msgstr ""
+msgstr "Txat gela batera sartzen zarenean ere erabiliko da pantaila-izen hau defektuz"
 
 #: [profile]public
 msgid "Your profile is now public"
@@ -2529,7 +2585,7 @@ msgstr "Jon_Zaharra96"
 
 #: [profile]nickname_error
 msgid "Your nickname should only contain letters, numbers, - and _"
-msgstr ""
+msgstr "Ezizenak hizkiak, letrak, - eta _ soilik izan ditzazke"
 
 #: [profile]nickname_conflict
 msgid "The nickname is already registered"
@@ -2641,7 +2697,7 @@ msgstr "Movimek Javascript behar du."
 
 #: [global]description
 msgid "Movim is a kickass distributed social networking platform that protects your privacy and comes with a set of awesome features."
-msgstr ""
+msgstr "Movim sekulako federatutako gizarte plataforma da, zure pribatutasuna babesten duena eta ezaugarri txundigarriak dituena."
 
 #: [global]loading
 msgid "Loading…"
@@ -2665,7 +2721,7 @@ msgstr "Ataria"
 
 #: [page]explore
 msgid "Explore"
-msgstr "Esploratu"
+msgstr "Arakatu"
 
 #: [page]account_creation
 msgid "Account Creation"
@@ -2795,6 +2851,10 @@ msgstr "Ezabatu"
 #: [button]destroy
 msgid "Destroy"
 msgstr "Suntsitu"
+
+#: [button]remove
+msgid "Remove"
+msgstr ""
 
 #: [button]cancel
 msgid "Cancel"
@@ -3261,6 +3321,10 @@ msgstr "erlaxatuta"
 msgid "relieved"
 msgstr "lasai"
 
+#: [mood]remorseful
+msgid "remorseful"
+msgstr ""
+
 #: [mood]restless
 msgid "restless"
 msgstr "aztoratua"
@@ -3532,18 +3596,3 @@ msgstr "Ezin da APIa eskuratu, saiatu berriro beranduago"
 #: [field]type_here
 msgid "Type here"
 msgstr "Idatzi hemen"
-
-#~ msgid "Twitter integration"
-#~ msgstr "Twitterrekin integrazioa"
-
-#~ msgid "Your Twitter Token"
-#~ msgstr "Zure Twitterren tokena"
-
-#~ msgid "Generate your Token on the Developer Twitter website"
-#~ msgstr "Sortu zure tokena Twitterren Garatzaileen webgunean"
-
-#~ msgid "Badges"
-#~ msgstr "Entseinak"
-
-#~ msgid "No public data found"
-#~ msgstr "Ez da datu publikorik aurkitu"

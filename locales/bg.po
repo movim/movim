@@ -20,6 +20,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Avatar/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Badges/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blocked/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
@@ -59,6 +61,8 @@
 #. extracted from ../app/widgets/ContactActions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/ContactDataPublic/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Dictaphone/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -117,7 +121,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-11 18:29+0200\n"
+"POT-Creation-Date: 2024-04-15 10:05+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Rossen Karpuzov <rkarpuzov@yahoo.com>, 2020-2023\n"
 "Language-Team: Bulgarian (http://app.transifex.com/movim/movim/language/bg/)\n"
@@ -126,7 +130,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.8.4\n"
+"X-Generator: Translate Toolkit 3.12.2\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -226,7 +230,7 @@ msgstr "Изтриване на ключове за OMEMO"
 
 #: [account]delete_bundle_text
 msgid "You are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
-msgstr ""
+msgstr "На път сте да унищожите следния OMEMO ключ. Вашите контакти повече няма да могат да шифроват съобщения ползвайки този ключ. Това действие е безвъзвратно. Сигурен ли сте?"
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
@@ -242,7 +246,7 @@ msgstr "на"
 
 #: [create]successfull
 msgid "Your account has been successfully registered"
-msgstr ""
+msgstr "Вашата сметка е успешно регистрирана."
 
 #: [create]loading
 msgid "Loading"
@@ -464,14 +468,18 @@ msgstr "Качи нова картинка"
 
 #: [banner]change
 msgid "Change my banner"
-msgstr ""
+msgstr "Смени моя банер"
 
 #: [banner]updated
 msgid "Banner Updated"
-msgstr ""
+msgstr "Банерът е обновен"
 
 #: [banner]not_updated
 msgid "Banner Not Updated"
+msgstr "Банерът не е обновен"
+
+#: [badges]title
+msgid "Badges"
 msgstr ""
 
 #: [blocked]title
@@ -562,10 +570,6 @@ msgstr "Задържано..."
 msgid "Contact gone"
 msgstr "Контактът изчезна"
 
-#: [message]history
-msgid "%s messages retrieved"
-msgstr "%s извлечени съобщения"
-
 #: [message]edit_help
 msgid "↑ to edit your previous message"
 msgstr "↑ за да редактирате предишното си съобщение"
@@ -641,11 +645,11 @@ msgstr "Изходящо прозвъняване"
 
 #: [chat]jingle_retract
 msgid "Missed call"
-msgstr ""
+msgstr "Пропуснато обаждане"
 
 #: [chat]jingle_reject
 msgid "Refused call"
-msgstr ""
+msgstr "Отказано обаждане"
 
 #: [chat]jingle_end
 msgid "Call ended"
@@ -653,39 +657,35 @@ msgstr "Разговора приключи"
 
 #: [chat]jingle_hours
 msgid "%s hours %s minutes"
-msgstr ""
+msgstr "%s часа %s минути"
 
 #: [chat]jingle_minutes
 msgid "%s minutes and %s seconds"
-msgstr ""
+msgstr "%s минути и %s секунди"
 
 #: [chat]jingle_seconds
 msgid "%s seconds"
-msgstr ""
+msgstr "%s секунди"
 
 #: [chat]muc_admin
 msgid "%s is now admin"
-msgstr ""
+msgstr "%s е сега админ"
 
 #: [chat]muc_owner
 msgid "%s is now owner"
-msgstr ""
+msgstr "%s е сега собственик"
 
 #: [chat]muc_outcast
 msgid "%s is now banned"
-msgstr ""
+msgstr "%s е сега блокиран"
 
 #: [chat]muc_member
 msgid "%s is now member"
-msgstr ""
+msgstr "%s е вече член"
 
 #: [chat]publish_error
 msgid "An error occurred when sending the message"
 msgstr ""
-
-#: [chat]mam_retrieval
-msgid "Synchronizing the history, please wait…"
-msgstr "Напасва историята, моля изчакайте..."
 
 #: [chat]clear_history
 msgctxt "[chat]clear_history"
@@ -699,6 +699,22 @@ msgstr " Ще изтриете%s съобщения, сигурни ли сте?
 #: [chat]action_impossible_encrypted
 msgid "Action impossible in encrypted chats"
 msgstr "Невъзможно действие в шифровани чатове"
+
+#: [chat]first_messages_title
+msgid "This is the beginning of this conversation"
+msgstr ""
+
+#: [chat]first_messages_text
+msgid "You can choose to add it as a new contact or block it to prevent some other unsolicited messages"
+msgstr ""
+
+#: [chat]first_messages_add
+msgid "Add to my contacts"
+msgstr ""
+
+#: [chat]first_messages_block
+msgid "Block"
+msgstr ""
 
 #: [chatroom]members
 msgid "Members"
@@ -734,11 +750,11 @@ msgstr "Администрация"
 
 #: [chatactions]copy_text
 msgid "Copy the text"
-msgstr ""
+msgstr "Копирай текста"
 
 #: [chatactions]copied_text
 msgid "Text copied"
-msgstr ""
+msgstr "Текста е копиран"
 
 #: [omemo]fingerprints_title
 msgid "Fingerprints"
@@ -818,7 +834,7 @@ msgstr "Видео"
 
 #: [chats]audio
 msgid "Audio"
-msgstr ""
+msgstr "Звук"
 
 #: [button]chat
 msgid "Chat"
@@ -1067,7 +1083,7 @@ msgstr "Пусни моята първа публикация"
 
 #: [communityposts]presencerequired
 msgid "Private account"
-msgstr ""
+msgstr "Частна сметка"
 
 #: [communityposts]presencerequired_text
 msgid "Follow it to see the content"
@@ -1401,6 +1417,10 @@ msgstr "Поканете"
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
 msgstr "Този контакт е във вашия списък с контакти, но няма абонамент между двата акаунта"
+
+#: [contactdatapublic]no_data
+msgid "No public data found"
+msgstr ""
 
 #: [dictaphone]name
 msgid "Dictaphone"
@@ -1803,9 +1823,13 @@ msgstr "%s минута"
 msgid "%s minutes"
 msgstr "%s минути"
 
-#: [post]public
-msgid "Publish this post publicly?"
-msgstr "Публикуване на тази публикация публично?"
+#: [post]public_title
+msgid "Publish this article publicly"
+msgstr ""
+
+#: [post]public_text
+msgid "This will allow anyone outside Movim to have access to your publication"
+msgstr ""
 
 #: [post]public_yes
 msgid "This post is public"
@@ -1818,6 +1842,22 @@ msgstr "Този пост е частен"
 #: [post]public_url
 msgid "Public URL of this post"
 msgstr "Публичен URL адрес на този пост"
+
+#: [post]comments_disabled_title
+msgid "Disable the comments"
+msgstr ""
+
+#: [post]comments_disabled_text
+msgid "Nobody will be able to like or comment"
+msgstr ""
+
+#: [post]comments_disabled_yes
+msgid "Comments disabled for this article"
+msgstr ""
+
+#: [post]comments_disabled_no
+msgid "Comments enabled for this article"
+msgstr ""
 
 #: [post]delete_title [post]delete
 msgid "Delete this post"
@@ -2097,6 +2137,14 @@ msgstr "Лош идентификатор на чат стая"
 msgid "Empty name"
 msgstr "Празно име"
 
+#: [chatrooms]remove_title
+msgid "Remove a chatroom"
+msgstr ""
+
+#: [chatrooms]remove_text
+msgid "You are going to remove the following chatroom. Please confirm your action."
+msgstr ""
+
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
 msgid "Users"
@@ -2133,6 +2181,14 @@ msgstr "Стаята е унищожена"
 
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
+msgstr ""
+
+#: [chatrooms]remoteservernotfound
+msgid "The remote server for this chatroom doesn’t exist"
+msgstr ""
+
+#: [chatrooms]remoteservertimeout
+msgid "Connection to remote server timed out"
 msgstr ""
 
 #: [chatrooms]itemnotfound
@@ -2796,6 +2852,10 @@ msgstr "Изтрийте"
 msgid "Destroy"
 msgstr "Унищожете"
 
+#: [button]remove
+msgid "Remove"
+msgstr ""
+
 #: [button]cancel
 msgid "Cancel"
 msgstr "Отказ"
@@ -3261,6 +3321,10 @@ msgstr "отпуснат/а"
 msgid "relieved"
 msgstr "облекчен/а"
 
+#: [mood]remorseful
+msgid "remorseful"
+msgstr ""
+
 #: [mood]restless
 msgid "restless"
 msgstr "неспокоен/а"
@@ -3532,12 +3596,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr "Пиши тук"
-
-#~ msgid "Twitter integration"
-#~ msgstr "Twitter интеграция"
-
-#~ msgid "Your Twitter Token"
-#~ msgstr "Вашия Twitter токен"
-
-#~ msgid "No public data found"
-#~ msgstr "Не са открити обществени данни"

@@ -20,6 +20,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Avatar/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Badges/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blocked/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
@@ -59,6 +61,8 @@
 #. extracted from ../app/widgets/ContactActions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/ContactDataPublic/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Dictaphone/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -117,7 +121,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-11 18:29+0200\n"
+"POT-Creation-Date: 2024-04-15 10:05+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>, 2018,2020-2023\n"
 "Language-Team: Albanian (http://app.transifex.com/movim/movim/language/sq/)\n"
@@ -126,7 +130,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.8.4\n"
+"X-Generator: Translate Toolkit 3.12.2\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -474,6 +478,10 @@ msgstr "Banderola u Përditësua"
 msgid "Banner Not Updated"
 msgstr "Banderola S’u Përditësua"
 
+#: [badges]title
+msgid "Badges"
+msgstr ""
+
 #: [blocked]title
 msgid "Blocked"
 msgstr "Bllokuar"
@@ -561,10 +569,6 @@ msgstr "Pushuar…"
 #: [message]gone
 msgid "Contact gone"
 msgstr "Kontakti ka avulluar"
-
-#: [message]history
-msgid "%s messages retrieved"
-msgstr "U morën %s mesazhe"
 
 #: [message]edit_help
 msgid "↑ to edit your previous message"
@@ -683,10 +687,6 @@ msgstr "%s tani është anëtar"
 msgid "An error occurred when sending the message"
 msgstr "Ndodhi një gabim teksa dërgohej mesazhi"
 
-#: [chat]mam_retrieval
-msgid "Synchronizing the history, please wait…"
-msgstr "Po njëkohësohet historiku, ju lutemi, prisni…"
-
 #: [chat]clear_history
 msgctxt "[chat]clear_history"
 msgid "Clear the history"
@@ -699,6 +699,22 @@ msgstr "Do të fshini %s mesazhe, jeni i sigurt?"
 #: [chat]action_impossible_encrypted
 msgid "Action impossible in encrypted chats"
 msgstr "Veprim i pamundur në fjalosje të fshehtëzuara"
+
+#: [chat]first_messages_title
+msgid "This is the beginning of this conversation"
+msgstr ""
+
+#: [chat]first_messages_text
+msgid "You can choose to add it as a new contact or block it to prevent some other unsolicited messages"
+msgstr ""
+
+#: [chat]first_messages_add
+msgid "Add to my contacts"
+msgstr ""
+
+#: [chat]first_messages_block
+msgid "Block"
+msgstr ""
 
 #: [chatroom]members
 msgid "Members"
@@ -1402,6 +1418,10 @@ msgstr "Ftoje"
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
 msgstr "Ky kontakt gjendet në listën tuaj të kontakteve, por nuk ka pajtim mes dy llogarive"
 
+#: [contactdatapublic]no_data
+msgid "No public data found"
+msgstr ""
+
 #: [dictaphone]name
 msgid "Dictaphone"
 msgstr "Diktafon"
@@ -1803,9 +1823,13 @@ msgstr "%s minutë"
 msgid "%s minutes"
 msgstr "%s minuta"
 
-#: [post]public
-msgid "Publish this post publicly?"
-msgstr "Të botohet ky postim publikisht?"
+#: [post]public_title
+msgid "Publish this article publicly"
+msgstr ""
+
+#: [post]public_text
+msgid "This will allow anyone outside Movim to have access to your publication"
+msgstr ""
 
 #: [post]public_yes
 msgid "This post is public"
@@ -1818,6 +1842,22 @@ msgstr "Ky postim është privat"
 #: [post]public_url
 msgid "Public URL of this post"
 msgstr "URL publike e këtij postimi"
+
+#: [post]comments_disabled_title
+msgid "Disable the comments"
+msgstr ""
+
+#: [post]comments_disabled_text
+msgid "Nobody will be able to like or comment"
+msgstr ""
+
+#: [post]comments_disabled_yes
+msgid "Comments disabled for this article"
+msgstr ""
+
+#: [post]comments_disabled_no
+msgid "Comments enabled for this article"
+msgstr ""
 
 #: [post]delete_title [post]delete
 msgid "Delete this post"
@@ -2097,6 +2137,14 @@ msgstr "ID e gabuar Dhome Bisedash"
 msgid "Empty name"
 msgstr "Emër i zbrazët"
 
+#: [chatrooms]remove_title
+msgid "Remove a chatroom"
+msgstr ""
+
+#: [chatrooms]remove_text
+msgid "You are going to remove the following chatroom. Please confirm your action."
+msgstr ""
+
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
 msgid "Users"
@@ -2134,6 +2182,14 @@ msgstr "Dhoma u asgjësua"
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
 msgstr "S’hyhet dot te dhomë bisedash, lypset regjistrim"
+
+#: [chatrooms]remoteservernotfound
+msgid "The remote server for this chatroom doesn’t exist"
+msgstr ""
+
+#: [chatrooms]remoteservertimeout
+msgid "Connection to remote server timed out"
+msgstr ""
 
 #: [chatrooms]itemnotfound
 msgid "The chatroom doesn’t exist"
@@ -2493,7 +2549,7 @@ msgstr "Profili S’u Përditësua"
 
 #: [vcard]nickname_info
 msgid "This will also be used as your default nickname when joining a chatroom"
-msgstr ""
+msgstr "Ky do të përdoret gjithashtu si nofka juaj parazgjedhje, kur hyni në një dhomë fjalosjeje"
 
 #: [profile]public
 msgid "Your profile is now public"
@@ -2795,6 +2851,10 @@ msgstr "Fshije"
 #: [button]destroy
 msgid "Destroy"
 msgstr "Asgjësoje"
+
+#: [button]remove
+msgid "Remove"
+msgstr ""
 
 #: [button]cancel
 msgid "Cancel"
@@ -3261,6 +3321,10 @@ msgstr "i çlodhur"
 msgid "relieved"
 msgstr "i lehtësuar"
 
+#: [mood]remorseful
+msgid "remorseful"
+msgstr ""
+
 #: [mood]restless
 msgid "restless"
 msgstr "i palodhur"
@@ -3532,21 +3596,3 @@ msgstr "API nuk kapet dot, riprovoni më vonë"
 #: [field]type_here
 msgid "Type here"
 msgstr "Shtypni këtu"
-
-#~ msgid "Twitter integration"
-#~ msgstr "Integrim me Twitter"
-
-#~ msgid "Your Twitter Token"
-#~ msgstr "Token-i juaj në Twitter"
-
-#~ msgid "The Twitter integration allows Movim to embed and extract the Tweets shared on the instance"
-#~ msgstr "Integrimi për Twitter i lejon Movim-it të trupëzojë dhe përftojë Tweets të ndarë te instanca"
-
-#~ msgid "Generate your Token on the Developer Twitter website"
-#~ msgstr "Prodhoni Token-in tuaj te sajti Developer Twitter"
-
-#~ msgid "Badges"
-#~ msgstr "Stema"
-
-#~ msgid "No public data found"
-#~ msgstr "S’u gjetën të dhëna publike"

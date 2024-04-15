@@ -1,6 +1,6 @@
 #
 # Translators:
-# josé m. <correoxm@disroot.org>, 2023
+# ghose <correoxm@disroot.org>, 2023
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -17,6 +17,8 @@
 #. extracted from ../app/widgets/AdminSessions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Avatar/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Badges/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blocked/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -57,6 +59,8 @@
 #. extracted from ../app/widgets/ContactActions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/ContactDataPublic/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Dictaphone/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -115,16 +119,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-11 18:29+0200\n"
+"POT-Creation-Date: 2024-04-15 10:05+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
-"Last-Translator: josé m. <correoxm@disroot.org>, 2023\n"
+"Last-Translator: ghose <correoxm@disroot.org>, 2023\n"
 "Language-Team: Galician (http://app.transifex.com/movim/movim/language/gl/)\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.8.4\n"
+"X-Generator: Translate Toolkit 3.12.2\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -140,7 +144,7 @@ msgstr "Tradutoras"
 
 #: [about]translators_text
 msgid "Thanks to all the translators"
-msgstr "Grazas ás persoas tradutoras"
+msgstr "Grazas ás persoas que traducen"
 
 #: [about]software
 msgid "Software"
@@ -220,75 +224,75 @@ msgstr ""
 
 #: [account]delete_bundle_title
 msgid "OMEMO Key deletion"
-msgstr ""
+msgstr "Desbotar Chave OMEMO"
 
 #: [account]delete_bundle_text
 msgid "You are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
-msgstr ""
+msgstr "Vas desbotar a seguinte chave OMEMO. Os teus contactos non poderán enviarche mensaxes cifradas usándoa. Esta acción non ten volta atrás, tes certeza?"
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
-msgstr ""
+msgstr "Crear unha contra nova"
 
 #: [create]notfound
 msgid "No account creation form found on the server"
-msgstr ""
+msgstr "Non atopamos o formulario no servidor para crear contas"
 
 #: [create]server_on
 msgid "on"
-msgstr ""
+msgstr "on"
 
 #: [create]successfull
 msgid "Your account has been successfully registered"
-msgstr ""
+msgstr "Rexistrouse correctamente a túa conta"
 
 #: [create]loading
 msgid "Loading"
-msgstr ""
+msgstr "A cargar"
 
 #: [create]placeholder
 msgid "…and start playing"
-msgstr ""
+msgstr "...e comezamos"
 
 #: [error]not_acceptable
 msgid "Not Acceptable"
-msgstr ""
+msgstr "Non é Aceptable"
 
 #: [error]service_unavailable
 msgid "The registration system of this server is currently unavailable"
-msgstr ""
+msgstr "Actualmente non está dispoñible o sistema para rexistrarse"
 
 #: [error]forbidden
 msgid "Registration forbidden"
-msgstr ""
+msgstr "Non se permite crear contas"
 
 #: [adhoc]title
 msgid "Actions"
-msgstr ""
+msgstr "Accións"
 
 #: [adhoc]completed
 msgid "Action completed"
-msgstr ""
+msgstr "Acción completadas"
 
 #: [admin]general
 msgid "General Settings"
-msgstr ""
+msgstr "Axustes Xerais"
 
 #: [general]theme
 msgid "Theme"
-msgstr ""
+msgstr "Decorado"
 
 #: [general]language
 msgid "Default language"
-msgstr ""
+msgstr "Idioma por defecto"
 
 #: [general]log_verbosity
 msgid "Log verbosity"
-msgstr ""
+msgstr "Nivel do rexistro"
 
 #: [restrictsuggestions]title
 msgid "Restrict suggestions"
-msgstr ""
+msgstr "Restrinxir suxestións"
 
 #: [restrictsuggestions]text
 msgid "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
@@ -296,117 +300,117 @@ msgstr ""
 
 #: [chatonly]title
 msgid "Chat only"
-msgstr ""
+msgstr "Só conversas"
 
 #: [chatonly]text
 msgid "Disable all the social feature (Communities, Blog…) and keep only the chat ones"
-msgstr ""
+msgstr "Desactivar todas as ferramentas sociais (Comunidades, Blog...) e manter só as de conversa"
 
 #: [credentials]title
 msgid "Administration Credential"
-msgstr ""
+msgstr "Credenciais de Administración"
 
 #: [credentials]username [input]username
 msgid "Username"
-msgstr ""
+msgstr "Identificador"
 
 #: [credentials]re_password
 msgid "Retype password"
-msgstr ""
+msgstr "Volver escribir contrasinal"
 
 #: [disableregistration]title
 msgid "Disable the XMPP registration feature"
-msgstr ""
+msgstr "Desactivar a creación de contas XMPP"
 
 #: [disableregistration]text
 msgid "Remove the XMPP registration flow and buttons from the interface"
-msgstr ""
+msgstr "Quitar da interface o proceso e botóns para creación de contas"
 
 #: [whitelist]title
 msgid "Whitelisted XMPP Servers"
-msgstr ""
+msgstr "Servidores XMPP permitidos"
 
 #: [whitelist]info1
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
-msgstr ""
+msgstr "Se queres indicar unha lista de servidores XMPP aos que a túa instancia Movim se vai conectar e prohibir a conexión a todos os demais, escribe aquí o seu nome de dominio, separados por vírgulas (ex: movim.eu,jabber.fr)"
 
 #: [whitelist]info2
 msgid "Leave this field blank if you allow the access to all the XMPP accounts."
-msgstr ""
+msgstr "Deixa en branco se permites o acceso a todas as contas XMPP."
 
 #: [whitelist]label
 msgid "List of whitelisted XMPP servers"
-msgstr ""
+msgstr "Lista de servidores XMPP permitidos"
 
 #: [information]title
 msgctxt "[information]title"
 msgid "Information Message"
-msgstr ""
+msgstr "Mensaxe Informativa"
 
 #: [information]description [communityconfig]description
 msgid "Description"
-msgstr ""
+msgstr "Descrición"
 
 #: [information]description_placeholder
 msgid "General description of the instance"
-msgstr ""
+msgstr "Descrición xeral da instancia"
 
 #: [information]banner
 msgid "Main banner"
-msgstr ""
+msgstr "Cabeceira principal"
 
 #: [information]banner_info
 msgid "Ensure that the picture is not too large and can be reached from any webpages"
-msgstr ""
+msgstr "Pon coidado en que a imaxe non sexa demasiado grando e sexa accesible para todas as páxinas web"
 
 #: [information]info1
 msgid "This message will be displayed on the login page. It can be used to link the Terms and Conditions of your Movim instance for example."
-msgstr ""
+msgstr "Esta é a mensaxe que aparece na páxina de acceso. Pode usarse para ligar cos Termos e Condicións da túa instancia Movim, por exemplo."
 
 #: [information]info2
 msgid "Leave this field blank if you don’t want to show any message."
-msgstr ""
+msgstr "Deixa en branco se non queres mostrar ningunha mensaxe."
 
 #: [information]label
 msgctxt "[information]label"
 msgid "Information Message"
-msgstr ""
+msgstr "Mensaxe informativa"
 
 #: [xmpp]title
 msgid "Default XMPP server"
-msgstr ""
+msgstr "Servidor XMPP por defecto"
 
 #: [xmpp]domain
 msgid "Main XMPP server domain"
-msgstr ""
+msgstr "Dominio do servidor XMPP principal"
 
 #: [xmpp]description
 msgid "Main XMPP server description"
-msgstr ""
+msgstr "Descrición do servidor XMPP principal"
 
 #: [xmpp]country
 msgid "Main XMPP server country"
-msgstr ""
+msgstr "País do servidor XMPP principal"
 
 #: [xmpp]country_pick
 msgid "Pick a country in the list"
-msgstr ""
+msgstr "Elixe un país na lista"
 
 #: [tenor]title
 msgid "Tenor integration"
-msgstr ""
+msgstr "Integración con Tenor"
 
 #: [tenor]label
 msgid "Your Tenor API Key"
-msgstr ""
+msgstr "Chave API de Tenor"
 
 #: [tenor]info1
 msgid "Movim integrates the Tenor API to allow GIF search and publication in Chat"
-msgstr ""
+msgstr "Movim accede á API de Tenor para buscar GIFs e publicalos nas Conversas"
 
 #: [tenor]info2
 msgid "Access Tenor and get your API key"
-msgstr ""
+msgstr "Accede a Tenor e obtén unha chave API"
 
 #: [log]empty
 msgid "Empty"
@@ -438,163 +442,163 @@ msgstr ""
 
 #: [adminsessions]text
 msgid "Currently connected users on the pod"
-msgstr ""
+msgstr "Usuarias conectadas neste intre á instancia"
 
 #: [avatar]file
 msgid "File"
-msgstr ""
+msgstr "Ficheiro"
 
 #: [avatar]updated
 msgid "Avatar Updated"
-msgstr ""
+msgstr "Avatar actualizado"
 
 #: [avatar]not_updated
 msgid "Avatar Not Updated"
-msgstr ""
+msgstr "Avatar non actualizado"
 
 #: [avatar]change
 msgid "Change my avatar"
-msgstr ""
+msgstr "Cambiar avatar"
 
 #: [avatar]upload_new
 msgid "Upload a new picture"
-msgstr ""
+msgstr "Subir unha nova imaxe"
 
 #: [banner]change
 msgid "Change my banner"
-msgstr ""
+msgstr "Cambiar cabeceira"
 
 #: [banner]updated
 msgid "Banner Updated"
-msgstr ""
+msgstr "Cabeceira actualizada"
 
 #: [banner]not_updated
 msgid "Banner Not Updated"
+msgstr "Cabeceira non actualizada"
+
+#: [badges]title
+msgid "Badges"
 msgstr ""
 
 #: [blocked]title
 msgid "Blocked"
-msgstr ""
+msgstr "Bloqueada"
 
 #: [blocked]block_account
 msgid "Block the account"
-msgstr ""
+msgstr "Bloquear conta"
 
 #: [blocked]unblock_account
 msgid "Unblock the account"
-msgstr ""
+msgstr "Desbloquear a conta"
 
 #: [blocked]account_blocked
 msgid "Account blocked"
-msgstr ""
+msgstr "Conta bloqueada"
 
 #: [blocked]account_unblocked
 msgid "Account unblocked"
-msgstr ""
+msgstr "Conta desbloqueada"
 
 #: [blocked]placeholder
 msgid "You will find here the users you have blocked"
-msgstr ""
+msgstr "Aquí aparecerán as usuarias que tes bloqueadas"
 
 #: [blocked]info
 msgid "The following users are blocked by Movim and cannot contact you anymore"
-msgstr ""
+msgstr "Movim bloqueou as seguintes usuarias e xa non poden contactar contigo"
 
 #: [blocked]info2
 msgid "The administrator is also aware of this list and can therefore block those users system wide"
-msgstr ""
+msgstr "A administración tamén pode ver esta lista e por tanto bloquealas para todo o sistema"
 
 #: [blog]title [feed]title
 msgid "%s’s feed"
-msgstr ""
+msgstr "Fonte de %s"
 
 #: [blog]private
 msgid "This content is private, please login to see it"
-msgstr ""
+msgstr "O contido é privado, accede para velo"
 
 #: [message]published
 msgid "Message Published"
-msgstr ""
+msgstr "Mensaxe Publicada"
 
 #: [message]react
 msgid "Add a reaction"
-msgstr ""
+msgstr "Engadir unha reacción"
 
 #: [message]retract
 msgid "Retract"
-msgstr ""
+msgstr "Retirar"
 
 #: [message]retract_body
 msgid "Your contact attempted to retract a previous message, but it's unsupported by your client"
-msgstr ""
+msgstr "O teu contacto intentou retirar unha mensaxe anterior, pero o teu cliente non soporta esa función"
 
 #: [message]moderate_body
 msgid "This message was moderated"
-msgstr ""
+msgstr "A mensaxe foi moderada"
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
-msgstr ""
+msgstr "Non se enviou a mensaxe, inténtao máis tarde"
 
 #: [message]encrypted [omemo]encrypted
 msgid "Encrypted message"
-msgstr ""
+msgstr "Mensaxe cifrada"
 
 #: [message]retracted
 msgid "Retracted message"
-msgstr ""
+msgstr "Mensaxe retirada"
 
 #: [message]composing
 msgid "Composing…"
-msgstr ""
+msgstr "Escribindo..."
 
 #: [message]invitation
 msgid "Invitation"
-msgstr ""
+msgstr "Convite"
 
 #: [message]paused
 msgid "Paused…"
-msgstr ""
+msgstr "Detívose..."
 
 #: [message]gone
 msgid "Contact gone"
-msgstr ""
-
-#: [message]history
-msgid "%s messages retrieved"
-msgstr ""
+msgstr "O contacto marchou"
 
 #: [message]edit_help
 msgid "↑ to edit your previous message"
-msgstr ""
+msgstr "↑ para editar a túa mensaxe anterior"
 
 #: [message]emoji_help
 msgid ":shortcut: to insert an emoji"
-msgstr ""
+msgstr ":atallo: para inserir un emoji"
 
 #: [message]visitor_help
 msgid "You are not allowed to send messages in this conference"
-msgstr ""
+msgstr "Non tes permiso para enviar mensaxes a esta reunión"
 
 #: [chat]attention
 msgid "%s needs your attention"
-msgstr ""
+msgstr "%s precisa a túa atención"
 
 #: [chat]placeholder
 msgid "Your message here…"
-msgstr ""
+msgstr "Escribe aquí..."
 
 #: [chat]smileys
 msgid "Smileys"
-msgstr ""
+msgstr "Sorrisos"
 
 #: [chat]frequent
 msgid "Frequent contacts"
-msgstr ""
+msgstr "Contactos frecuentes"
 
 #: [chat]new_title
 msgid "Nothing here yet…"
-msgstr ""
+msgstr "Aínda non hai nada por aquí..."
 
 #: [chat]new_text
 msgid "Don’t be shy, send a first message to start the discussion"
@@ -681,10 +685,6 @@ msgstr ""
 msgid "An error occurred when sending the message"
 msgstr ""
 
-#: [chat]mam_retrieval
-msgid "Synchronizing the history, please wait…"
-msgstr ""
-
 #: [chat]clear_history
 msgctxt "[chat]clear_history"
 msgid "Clear the history"
@@ -696,6 +696,22 @@ msgstr ""
 
 #: [chat]action_impossible_encrypted
 msgid "Action impossible in encrypted chats"
+msgstr "A acción non é posible en chats cifrados"
+
+#: [chat]first_messages_title
+msgid "This is the beginning of this conversation"
+msgstr ""
+
+#: [chat]first_messages_text
+msgid "You can choose to add it as a new contact or block it to prevent some other unsolicited messages"
+msgstr ""
+
+#: [chat]first_messages_add
+msgid "Add to my contacts"
+msgstr ""
+
+#: [chat]first_messages_block
+msgid "Block"
 msgstr ""
 
 #: [chatroom]members
@@ -704,11 +720,11 @@ msgstr ""
 
 #: [chatroom]connected [chatrooms]connected
 msgid "Connected to the chatroom"
-msgstr ""
+msgstr "Conectada á sala"
 
 #: [chatroom]disconnected [chatrooms]disconnected
 msgid "Disconnected from the chatroom"
-msgstr ""
+msgstr "Desconectada da sala"
 
 #: [chatroom]config [communityaffiliation]configuration [page]configuration
 msgid "Configuration"
@@ -744,7 +760,7 @@ msgstr ""
 
 #: [omemo]fingerprints
 msgid "OMEMO Fingerprints"
-msgstr ""
+msgstr "Impresións dixitais OMEMO"
 
 #: [omemo]generating_bundle
 msgid "Generating the encryption keys, please wait…"
@@ -756,7 +772,7 @@ msgstr ""
 
 #: [omemo]resolving_devices
 msgid "Resolving OMEMO devices"
-msgstr ""
+msgstr "Identificando dispositivos OMEMO"
 
 #: [omemo]building_sessions
 msgid "Building encryption sessions"
@@ -792,7 +808,7 @@ msgstr ""
 
 #: [chats]empty_title
 msgid "No chats yet…"
-msgstr ""
+msgstr "Aínda non tes chats..."
 
 #: [chats]empty
 msgid "Start a new conversation by clicking on the %s button."
@@ -1133,7 +1149,7 @@ msgstr ""
 
 #: [config]omemoenabled
 msgid "Use OMEMO"
-msgstr ""
+msgstr "Usar OMEMO"
 
 #: [config]omemoenabled_text
 msgid "Enable end to end encryption on Movim for your account"
@@ -1274,7 +1290,7 @@ msgstr ""
 
 #: [general]about
 msgid "About Me"
-msgstr ""
+msgstr "Sobre Min"
 
 #: [general]accounts
 msgid "Other Accounts"
@@ -1398,6 +1414,10 @@ msgstr ""
 
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
+msgstr ""
+
+#: [contactdatapublic]no_data
+msgid "No public data found"
 msgstr ""
 
 #: [dictaphone]name
@@ -1570,11 +1590,11 @@ msgstr ""
 
 #: [connection]socket_connected
 msgid "Connected to the server"
-msgstr ""
+msgstr "Con sesión iniciada"
 
 #: [connection]authenticated
 msgid "Authenticated to the server"
-msgstr ""
+msgstr "Iniciaches sesión no servidor"
 
 #: [form]username
 msgid "My address"
@@ -1582,19 +1602,19 @@ msgstr "O meu Enderezo"
 
 #: [form]whitelist_info
 msgid "Login with accounts from these servers"
-msgstr ""
+msgstr "Accede cunha conta destes servidores"
 
 #: [form]connect_info
 msgid "Login using any XMPP account or create a new one"
-msgstr ""
+msgstr "Accede con calquera conta XMPP ou crea unha nova"
 
 #: [form]connected
 msgid "Connected"
-msgstr ""
+msgstr "Conectadas"
 
 #: [form]population
 msgid "Population"
-msgstr ""
+msgstr "Comunidade"
 
 #: [form]invite_chatroom
 msgid "%s invited you to join a chatroom"
@@ -1602,27 +1622,27 @@ msgstr ""
 
 #: [form]pod_admins
 msgid "Administrated by"
-msgstr ""
+msgstr "Administrada por"
 
 #: [about_movim]info
 msgid "Movim is a federated blogging and chat platform."
-msgstr ""
+msgstr "Movim é unha plataforma federada para conversas e blogs."
 
 #: [about_movim]website
 msgid "Visit the project official website %s."
-msgstr ""
+msgstr "Visita a páxina oficial do proxecto %s."
 
 #: [menu]empty_title
 msgid "No news yet…"
-msgstr ""
+msgstr "Aínda non tes novas..."
 
 #: [menu]empty
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
-msgstr ""
+msgstr "Benvida á cronoloxía das novas, aquí verás as publicacións dos teus contactos e das comunidades ás que te subscribas."
 
 #: [menu]all
 msgid "All"
-msgstr ""
+msgstr "Todo"
 
 #: [menu]mine
 msgid "My publications"
@@ -1630,7 +1650,7 @@ msgstr ""
 
 #: [menu]contacts [page]contacts
 msgid "Contacts"
-msgstr ""
+msgstr "Contactos"
 
 #: [menu]add_post
 msgid "Write a new post…"
@@ -1638,11 +1658,11 @@ msgstr ""
 
 #: [notification]request_title
 msgid "Notifications request"
-msgstr ""
+msgstr "Permiso para notificacións"
 
 #: [notification]request_info
 msgid "Movim requires your approval to display notifications"
-msgstr ""
+msgstr "Movim require o teu permiso para mostrar notificacións"
 
 #: [notification]request_info2
 msgid "This authorization can be revoked at any time"
@@ -1663,11 +1683,11 @@ msgstr ""
 #: [notificationconfig]title [notifs]title [onboarding]notifications_title
 #: [room]notify_title
 msgid "Notifications"
-msgstr ""
+msgstr "Notificacións"
 
 #: [notificationconfig]audio_title
 msgid "Audio notifications"
-msgstr ""
+msgstr "Notificacións con son"
 
 #: [notificationconfig]audio_chat
 msgid "Incoming message"
@@ -1675,19 +1695,19 @@ msgstr ""
 
 #: [notificationconfig]push_subscriptions
 msgid "Push notifications"
-msgstr ""
+msgstr "Notificacións push"
 
 #: [notificationconfig]push_subscriptions_text
 msgid "Movim will send push notifications to the following registered devices"
-msgstr ""
+msgstr "Movim vai enviar notificacións push aos seguintes dispositivos rexistrados"
 
 #: [notificationconfig]push_enabled
 msgid "Push notifications enabled for this device"
-msgstr ""
+msgstr "Activadas as notificacións push para este dispositivo"
 
 #: [notificationconfig]push_disabled
 msgid "Push notifications disabled for this device"
-msgstr ""
+msgstr "Desactivadas as notificacións push para este dispositivo"
 
 #: [notificationconfig]unknown_browser
 msgid "Unknown browser"
@@ -1711,7 +1731,7 @@ msgstr ""
 
 #: [notifs]empty
 msgid "No new notifications"
-msgstr ""
+msgstr "Sen notificacións novas"
 
 #: [onboarding]notifications_text
 msgid "Movim can notify you when a new post is published or if you receive messages"
@@ -1747,7 +1767,7 @@ msgstr ""
 
 #: [post]news_feed
 msgid "News Feed"
-msgstr ""
+msgstr "Orixe de Novas"
 
 #: [post]placeholder
 msgid "Discover and register to the groups you are interested in"
@@ -1801,8 +1821,12 @@ msgstr ""
 msgid "%s minutes"
 msgstr ""
 
-#: [post]public
-msgid "Publish this post publicly?"
+#: [post]public_title
+msgid "Publish this article publicly"
+msgstr ""
+
+#: [post]public_text
+msgid "This will allow anyone outside Movim to have access to your publication"
 msgstr ""
 
 #: [post]public_yes
@@ -1815,6 +1839,22 @@ msgstr ""
 
 #: [post]public_url
 msgid "Public URL of this post"
+msgstr ""
+
+#: [post]comments_disabled_title
+msgid "Disable the comments"
+msgstr ""
+
+#: [post]comments_disabled_text
+msgid "Nobody will be able to like or comment"
+msgstr ""
+
+#: [post]comments_disabled_yes
+msgid "Comments disabled for this article"
+msgstr ""
+
+#: [post]comments_disabled_no
+msgid "Comments enabled for this article"
 msgstr ""
 
 #: [post]delete_title [post]delete
@@ -2043,7 +2083,7 @@ msgstr ""
 
 #: [rooms]hide_disconnected
 msgid "Hide disconnected rooms"
-msgstr ""
+msgstr "Agochar salas desconectadas"
 
 #: [rooms]destroy_title
 msgid "Destroy the room"
@@ -2095,6 +2135,14 @@ msgstr ""
 msgid "Empty name"
 msgstr ""
 
+#: [chatrooms]remove_title
+msgid "Remove a chatroom"
+msgstr ""
+
+#: [chatrooms]remove_text
+msgid "You are going to remove the following chatroom. Please confirm your action."
+msgstr ""
+
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
 msgid "Users"
@@ -2131,6 +2179,14 @@ msgstr ""
 
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
+msgstr ""
+
+#: [chatrooms]remoteservernotfound
+msgid "The remote server for this chatroom doesn’t exist"
+msgstr ""
+
+#: [chatrooms]remoteservertimeout
+msgid "Connection to remote server timed out"
 msgstr ""
 
 #: [chatrooms]itemnotfound
@@ -2179,7 +2235,7 @@ msgstr ""
 
 #: [room]anonymous_text2
 msgid "You can join using your own account or create one on the login page by logging out using the cross in the top-right corner."
-msgstr ""
+msgstr "Podes unirte usando a túa propia conta ou creando unha na páxina de acceso despois de pechar a sesión no X de arriba á dereita."
 
 #: [room]anonymous_login
 msgid "Login on %s"
@@ -2551,7 +2607,7 @@ msgstr ""
 
 #: [degraded]text_1
 msgid "Your server doesn’t support XMPP Pubsub persistence or the social features (communities, news feed and profile) are disabled by the administrator."
-msgstr ""
+msgstr "O teu servidor non ten soporte para XMPP Pubsub ou ben as ferramentas sociais (comunidades, orixes de novas e perfil) están desactivadas pola administración."
 
 #: [degraded]text_2
 msgid "Please contact your server administrator to see if this feature can be enabled."
@@ -2655,7 +2711,7 @@ msgstr ""
 
 #: [page]communities
 msgid "Communities"
-msgstr ""
+msgstr "Comunidades"
 
 #: [page]home
 msgid "Home"
@@ -2663,7 +2719,7 @@ msgstr "Inicio"
 
 #: [page]explore
 msgid "Explore"
-msgstr ""
+msgstr "Descubrir"
 
 #: [page]account_creation
 msgid "Account Creation"
@@ -2671,7 +2727,7 @@ msgstr "Creación dunha Conta"
 
 #: [page]news
 msgid "News"
-msgstr ""
+msgstr "Novas"
 
 #: [page]avatar
 msgid "Avatar"
@@ -2679,11 +2735,11 @@ msgstr ""
 
 #: [page]chats
 msgid "Chats"
-msgstr ""
+msgstr "Chats"
 
 #: [page]publish
 msgid "Publish"
-msgstr ""
+msgstr "Publicar"
 
 #: [page]post
 msgid "Post"
@@ -2695,7 +2751,7 @@ msgstr ""
 
 #: [page]about
 msgid "About"
-msgstr ""
+msgstr "Acerca de"
 
 #: [page]login
 msgid "Login"
@@ -2794,6 +2850,10 @@ msgstr ""
 msgid "Destroy"
 msgstr ""
 
+#: [button]remove
+msgid "Remove"
+msgstr ""
+
 #: [button]cancel
 msgid "Cancel"
 msgstr ""
@@ -2877,7 +2937,7 @@ msgstr ""
 
 #: [button]discover
 msgid "Discover"
-msgstr ""
+msgstr "Descubrir"
 
 #: [button]like
 msgid "Like"
@@ -3259,6 +3319,10 @@ msgstr ""
 msgid "relieved"
 msgstr ""
 
+#: [mood]remorseful
+msgid "remorseful"
+msgstr ""
+
 #: [mood]restless
 msgid "restless"
 msgstr ""
@@ -3513,11 +3577,11 @@ msgstr ""
 
 #: [affiliation]publisher
 msgid "Publisher"
-msgstr ""
+msgstr "Autoría"
 
 #: [affiliation]publish-only
 msgid "Publish only"
-msgstr ""
+msgstr "Publicar só en"
 
 #: [affiliation]outcast
 msgid "Outcast"

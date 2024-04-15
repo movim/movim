@@ -21,6 +21,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Avatar/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Badges/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blocked/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
@@ -60,6 +62,8 @@
 #. extracted from ../app/widgets/ContactActions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/ContactDataPublic/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Dictaphone/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -118,7 +122,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-11 18:29+0200\n"
+"POT-Creation-Date: 2024-04-15 10:05+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Slavko <linux@slavino.sk>, 2020-2021\n"
 "Language-Team: Slovak (Slovakia) (http://app.transifex.com/movim/movim/language/sk_SK/)\n"
@@ -127,7 +131,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);\n"
-"X-Generator: Translate Toolkit 3.8.4\n"
+"X-Generator: Translate Toolkit 3.12.2\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -475,6 +479,10 @@ msgstr ""
 msgid "Banner Not Updated"
 msgstr ""
 
+#: [badges]title
+msgid "Badges"
+msgstr ""
+
 #: [blocked]title
 msgid "Blocked"
 msgstr ""
@@ -562,10 +570,6 @@ msgstr "Prerušil…"
 #: [message]gone
 msgid "Contact gone"
 msgstr "Kontakt stratený"
-
-#: [message]history
-msgid "%s messages retrieved"
-msgstr "Prijaté správy: %s"
 
 #: [message]edit_help
 msgid "↑ to edit your previous message"
@@ -684,10 +688,6 @@ msgstr ""
 msgid "An error occurred when sending the message"
 msgstr ""
 
-#: [chat]mam_retrieval
-msgid "Synchronizing the history, please wait…"
-msgstr "Synchronizácia histórie, prosím počkajte…"
-
 #: [chat]clear_history
 msgctxt "[chat]clear_history"
 msgid "Clear the history"
@@ -699,6 +699,22 @@ msgstr "Chystáte sa zmazať %s správ, ste si istí?"
 
 #: [chat]action_impossible_encrypted
 msgid "Action impossible in encrypted chats"
+msgstr ""
+
+#: [chat]first_messages_title
+msgid "This is the beginning of this conversation"
+msgstr ""
+
+#: [chat]first_messages_text
+msgid "You can choose to add it as a new contact or block it to prevent some other unsolicited messages"
+msgstr ""
+
+#: [chat]first_messages_add
+msgid "Add to my contacts"
+msgstr ""
+
+#: [chat]first_messages_block
+msgid "Block"
 msgstr ""
 
 #: [chatroom]members
@@ -1403,6 +1419,10 @@ msgstr "Pozvať"
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
 msgstr "Tento kontakt je v zozname Vašich kontaktov, ale neexistuje odber medzi týmito dvomi účtami"
 
+#: [contactdatapublic]no_data
+msgid "No public data found"
+msgstr ""
+
 #: [dictaphone]name
 msgid "Dictaphone"
 msgstr ""
@@ -1804,9 +1824,13 @@ msgstr "%s minúta"
 msgid "%s minutes"
 msgstr "%s minúty"
 
-#: [post]public
-msgid "Publish this post publicly?"
-msgstr "Uverejniť tento príspevok verejne?"
+#: [post]public_title
+msgid "Publish this article publicly"
+msgstr ""
+
+#: [post]public_text
+msgid "This will allow anyone outside Movim to have access to your publication"
+msgstr ""
 
 #: [post]public_yes
 msgid "This post is public"
@@ -1819,6 +1843,22 @@ msgstr "Tento príspevok je súkromný"
 #: [post]public_url
 msgid "Public URL of this post"
 msgstr "Verejná URL tohoto príspevku"
+
+#: [post]comments_disabled_title
+msgid "Disable the comments"
+msgstr ""
+
+#: [post]comments_disabled_text
+msgid "Nobody will be able to like or comment"
+msgstr ""
+
+#: [post]comments_disabled_yes
+msgid "Comments disabled for this article"
+msgstr ""
+
+#: [post]comments_disabled_no
+msgid "Comments enabled for this article"
+msgstr ""
 
 #: [post]delete_title [post]delete
 msgid "Delete this post"
@@ -2098,6 +2138,14 @@ msgstr "Zlé ID chatovej miestnosti"
 msgid "Empty name"
 msgstr "Prázdne meno"
 
+#: [chatrooms]remove_title
+msgid "Remove a chatroom"
+msgstr ""
+
+#: [chatrooms]remove_text
+msgid "You are going to remove the following chatroom. Please confirm your action."
+msgstr ""
+
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
 msgid "Users"
@@ -2135,6 +2183,14 @@ msgstr "Miestnosť odstránená"
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
 msgstr "Do miestnosti nemožno vstúpiť, je vyžadovaná registrácia"
+
+#: [chatrooms]remoteservernotfound
+msgid "The remote server for this chatroom doesn’t exist"
+msgstr ""
+
+#: [chatrooms]remoteservertimeout
+msgid "Connection to remote server timed out"
+msgstr ""
 
 #: [chatrooms]itemnotfound
 msgid "The chatroom doesn’t exist"
@@ -2797,6 +2853,10 @@ msgstr "Odstrániť"
 msgid "Destroy"
 msgstr "Zničiť"
 
+#: [button]remove
+msgid "Remove"
+msgstr ""
+
 #: [button]cancel
 msgid "Cancel"
 msgstr "Zrušiť"
@@ -3261,6 +3321,10 @@ msgstr "oddychujúci"
 #: [mood]relieved
 msgid "relieved"
 msgstr "uvoľnený"
+
+#: [mood]remorseful
+msgid "remorseful"
+msgstr ""
 
 #: [mood]restless
 msgid "restless"
