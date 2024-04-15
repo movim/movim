@@ -84,6 +84,8 @@ class Core implements MessageComponentInterface
     proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
     proxy_set_header X-Forwarded-Proto https;
     proxy_redirect off;
+    proxy_read_timeout 1800s;
+    proxy_send_timeout 1800s;
 }
 ";
 
