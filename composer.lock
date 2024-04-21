@@ -1930,7 +1930,7 @@
         },
         {
             "name": "illuminate/bus",
-            "version": "v10.48.7",
+            "version": "v10.48.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/bus.git",
@@ -1983,7 +1983,7 @@
         },
         {
             "name": "illuminate/collections",
-            "version": "v10.48.7",
+            "version": "v10.48.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
@@ -2038,7 +2038,7 @@
         },
         {
             "name": "illuminate/conditionable",
-            "version": "v10.48.7",
+            "version": "v10.48.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/conditionable.git",
@@ -2084,7 +2084,7 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v10.48.7",
+            "version": "v10.48.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
@@ -2135,7 +2135,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v10.48.7",
+            "version": "v10.48.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -2183,16 +2183,16 @@
         },
         {
             "name": "illuminate/database",
-            "version": "v10.48.7",
+            "version": "v10.48.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "635b0319641f7c746300f615838232ae30b0760c"
+                "reference": "cf468c45729ec39f0ab03b3c97e65b0cc937b22b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/635b0319641f7c746300f615838232ae30b0760c",
-                "reference": "635b0319641f7c746300f615838232ae30b0760c",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/cf468c45729ec39f0ab03b3c97e65b0cc937b22b",
+                "reference": "cf468c45729ec39f0ab03b3c97e65b0cc937b22b",
                 "shasum": ""
             },
             "require": {
@@ -2252,11 +2252,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2024-04-10T14:11:27+00:00"
+            "time": "2024-04-15T18:56:27+00:00"
         },
         {
             "name": "illuminate/events",
-            "version": "v10.48.7",
+            "version": "v10.48.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/events.git",
@@ -2311,7 +2311,7 @@
         },
         {
             "name": "illuminate/macroable",
-            "version": "v10.48.7",
+            "version": "v10.48.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/macroable.git",
@@ -2357,7 +2357,7 @@
         },
         {
             "name": "illuminate/pipeline",
-            "version": "v10.48.7",
+            "version": "v10.48.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/pipeline.git",
@@ -2405,7 +2405,7 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v10.48.7",
+            "version": "v10.48.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
@@ -3361,16 +3361,16 @@
         },
         {
             "name": "paragonie/sodium_compat",
-            "version": "v1.20.1",
+            "version": "v1.21.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/sodium_compat.git",
-                "reference": "1840b98d228bdad83869b191d7e51f9bb6624d8d"
+                "reference": "102bcf2312dc21c16c7c93fd44a6d2a2e1343e26"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/sodium_compat/zipball/1840b98d228bdad83869b191d7e51f9bb6624d8d",
-                "reference": "1840b98d228bdad83869b191d7e51f9bb6624d8d",
+                "url": "https://api.github.com/repos/paragonie/sodium_compat/zipball/102bcf2312dc21c16c7c93fd44a6d2a2e1343e26",
+                "reference": "102bcf2312dc21c16c7c93fd44a6d2a2e1343e26",
                 "shasum": ""
             },
             "require": {
@@ -3441,9 +3441,9 @@
             ],
             "support": {
                 "issues": "https://github.com/paragonie/sodium_compat/issues",
-                "source": "https://github.com/paragonie/sodium_compat/tree/v1.20.1"
+                "source": "https://github.com/paragonie/sodium_compat/tree/v1.21.0"
             },
-            "time": "2024-04-05T21:00:10+00:00"
+            "time": "2024-04-19T09:18:28+00:00"
         },
         {
             "name": "phpoption/phpoption",
@@ -6939,7 +6939,7 @@
         },
         {
             "name": "web-token/jwt-key-mgmt",
-            "version": "3.4.0",
+            "version": "3.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-token/jwt-key-mgmt.git",
@@ -6994,7 +6994,7 @@
                 "symfony"
             ],
             "support": {
-                "source": "https://github.com/web-token/jwt-key-mgmt/tree/3.4.0"
+                "source": "https://github.com/web-token/jwt-key-mgmt/tree/3.4.1"
             },
             "funding": [
                 {
@@ -7007,16 +7007,16 @@
         },
         {
             "name": "web-token/jwt-library",
-            "version": "3.4.1",
+            "version": "3.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-token/jwt-library.git",
-                "reference": "638ec0eeeb3650391e173c735f94df7911696304"
+                "reference": "4b09510eec25c328525048cbdf6042a39a7c28d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-token/jwt-library/zipball/638ec0eeeb3650391e173c735f94df7911696304",
-                "reference": "638ec0eeeb3650391e173c735f94df7911696304",
+                "url": "https://api.github.com/repos/web-token/jwt-library/zipball/4b09510eec25c328525048cbdf6042a39a7c28d8",
+                "reference": "4b09510eec25c328525048cbdf6042a39a7c28d8",
                 "shasum": ""
             },
             "require": {
@@ -7089,7 +7089,7 @@
             ],
             "support": {
                 "issues": "https://github.com/web-token/jwt-library/issues",
-                "source": "https://github.com/web-token/jwt-library/tree/3.4.1"
+                "source": "https://github.com/web-token/jwt-library/tree/3.4.3"
             },
             "funding": [
                 {
@@ -7101,11 +7101,11 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2024-04-10T15:46:26+00:00"
+            "time": "2024-04-17T17:41:33+00:00"
         },
         {
             "name": "web-token/jwt-signature",
-            "version": "3.4.0",
+            "version": "3.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-token/jwt-signature.git",
@@ -7157,7 +7157,7 @@
                 "symfony"
             ],
             "support": {
-                "source": "https://github.com/web-token/jwt-signature/tree/3.4.0"
+                "source": "https://github.com/web-token/jwt-signature/tree/3.4.1"
             },
             "funding": [
                 {
@@ -7170,7 +7170,7 @@
         },
         {
             "name": "web-token/jwt-signature-algorithm-ecdsa",
-            "version": "3.4.0",
+            "version": "3.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-token/jwt-signature-algorithm-ecdsa.git",
@@ -7223,7 +7223,7 @@
                 "symfony"
             ],
             "support": {
-                "source": "https://github.com/web-token/jwt-signature-algorithm-ecdsa/tree/3.4.0"
+                "source": "https://github.com/web-token/jwt-signature-algorithm-ecdsa/tree/3.4.1"
             },
             "funding": [
                 {
@@ -7236,7 +7236,7 @@
         },
         {
             "name": "web-token/jwt-util-ecc",
-            "version": "3.4.0",
+            "version": "3.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-token/jwt-util-ecc.git",
@@ -7289,7 +7289,7 @@
                 "symfony"
             ],
             "support": {
-                "source": "https://github.com/web-token/jwt-util-ecc/tree/3.4.0"
+                "source": "https://github.com/web-token/jwt-util-ecc/tree/3.4.1"
             },
             "funding": [
                 {
