@@ -4,7 +4,7 @@
     </div>
 </li>
 {loop="$contacts"}
-    <li class="{if="$value->presence && $value->presence->value > 4"}faded{/if}">
+    <li class="{if="$value->presence && $value->presence->value > 4"}faded{/if}" data-jid="{$value->jid}">
         <span class="primary icon bubble small
             {if="!$value->presence || $value->presence->value > 4"}
                 disabled

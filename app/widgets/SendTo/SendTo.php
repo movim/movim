@@ -77,6 +77,7 @@ class SendTo extends Base
                                        ->get());
 
         Drawer::fill('send_to_share', $view->draw('_sendto_share'));
+        $this->rpc('SendTo.init');
     }
 
     public function ajaxSend(string $to, $file, $muc = false, $message = false)
@@ -107,6 +108,7 @@ class SendTo extends Base
     {
         $contacts = $this->user->session->topContacts()->with('presence')->get();
         $this->rpc('MovimTpl.fill', '#sendto_share_contacts', $this->prepareContacts($contacts, $uri, ''));
+        $this->rpc('SendTo.init');
     }
 
     public function prepareContacts($contacts, string $uri, $openlink)
