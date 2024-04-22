@@ -347,16 +347,19 @@ main:not(.enabled) #chat_widget {
 }
 
 #chat_widget li img.active {
-    transition: opacity 0.1s ease-in-out;
+    transition: opacity 0.3s ease-in-out, box-shadow 0.3s ease;
+    box-shadow: var(--elevation-1);
 }
 
 #chat_widget li img.active:hover {
     cursor: pointer;
-    opacity: 0.6;
+    box-shadow: var(--elevation-2);
+    opacity: 0.7;
 }
 
 #chat_widget li img.active:active {
-    opacity: 0.8;
+    box-shadow: var(--elevation-1);
+    opacity: 0.9;
 }
 
 #chat_widget li img.sticker {
@@ -618,6 +621,10 @@ li div.bubble.file:not(.audio):after {
 
 li .bubble.file {
     margin-bottom: 1.5rem;
+}
+
+li .bubble.file ul.card {
+    margin-bottom: 2.5rem;
 }
 
 li .bubble.file div.file {
