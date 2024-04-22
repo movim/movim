@@ -57,7 +57,7 @@
             <p class="line">{$resolved->images[$embed->imagenumber]['size']|humanSize}</p>
         {else}
             <p class="line">{$resolved->title}</p>
-            <p class="line">{$resolved->description}</p>
+            <p class="line">{if="$resolved->description"}{$resolved->description}{/if}</p>
         {/if}
     </div>
 </li>
