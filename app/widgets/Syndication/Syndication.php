@@ -24,19 +24,19 @@ class Syndication extends Base
         } else {
             $node = $this->get('n');
             $item = \App\Info::where('server', $from)
-                             ->where('node', $node)
-                             ->first();
+                ->where('node', $node)
+                ->first();
         }
 
         $posts = \App\Post::where('server', $from)
-                        ->where('node', $node)
-                        ->where('open', true)
-                        ->orderBy('published', 'desc')
-                        ->take(20)
-                        ->get();
+            ->where('node', $node)
+            ->where('open', true)
+            ->orderBy('published', 'desc')
+            ->take(20)
+            ->get();
 
         header("Content-Type: application/atom+xml; charset=UTF-8");
-        header('Content-Disposition: attachment; filename="'.\cleanupId($from.'-'.$node).'.atom"');
+        header('Content-Disposition: inline; filename="' . \cleanupId($from . '-' . $node) . '.atom"');
 
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->formatOutput = true;
@@ -89,7 +89,7 @@ class Syndication extends Base
             $alternate->setAttribute('href', $this->route('node', [$from, $node]));
         }
 
-        $feed->appendChild($dom->createElement('id', 'xmpp:'.$from.'?;node='.rawurlencode($node)));
+        $feed->appendChild($dom->createElement('id', 'xmpp:' . $from . '?;node=' . rawurlencode($node)));
 
         $feed->appendChild($generator = $dom->createElement('generator', 'Movim'));
         $generator->setAttribute('uri', 'https://movim.eu');
