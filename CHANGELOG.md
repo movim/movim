@@ -1,8 +1,9 @@
 Movim Changelog
 ================
 
-v0.23.1
+v0.24
 ---------------------------
+* Fix #1261 Issues with decrypting own's OMEMO messages within MUC
 * Implement XEP-0386: Bind 2
 * Implement XEP-0388: Extensible SASL Profile
 * Allow comments to be disabled during the publication flow

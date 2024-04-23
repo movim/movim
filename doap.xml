@@ -574,6 +574,34 @@
 
     <release>
         <Version>
+            <revision>0.24</revision>
+            <created>2024-04-23</created>
+            <file-release rdf:resource="https://github.com/movim/movim/releases/tag/v0.24"/>
+        </Version>
+    </release>
+    <release>
+        <Version>
+            <revision>0.23</revision>
+            <created>2024-02-01</created>
+            <file-release rdf:resource="https://github.com/movim/movim/releases/tag/v0.23"/>
+        </Version>
+    </release>
+    <release>
+        <Version>
+            <revision>0.22.5</revision>
+            <created>2023-10-24</created>
+            <file-release rdf:resource="https://github.com/movim/movim/releases/tag/v0.22.5"/>
+        </Version>
+    </release>
+    <release>
+        <Version>
+            <revision>0.22.3</revision>
+            <created>2023-08-03</created>
+            <file-release rdf:resource="https://github.com/movim/movim/releases/tag/v0.22.3"/>
+        </Version>
+    </release>
+    <release>
+        <Version>
             <revision>0.22.2</revision>
             <created>2023-07-20</created>
             <file-release rdf:resource="https://github.com/movim/movim/releases/tag/v0.22.2"/>
