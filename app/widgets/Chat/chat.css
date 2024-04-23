@@ -194,10 +194,13 @@ main:not(.enabled) #chat_widget {
 #chat_widget .chat_box form textarea[data-encryptedstate="disabled"]~span.control.icon.encrypted_disabled,
 #chat_widget .chat_box form textarea[data-encryptedstate="build"]~span.control.icon.encrypted_loading {
     display: inline-block;
-    font-size: 2.75rem;
+    font-size: 3rem;
+    line-height: 6rem;
+    height: 6rem;
     position: absolute;
-    right: 1rem;
-    bottom: 0.25rem;
+    right: 0;
+    top: 0;
+    padding: 0 1rem;
 }
 
 #chat_widget .chat_box span.primary,
@@ -449,6 +452,10 @@ main:not(.enabled) #chat_widget {
     cursor: pointer;
     background-color: rgba(var(--movim-font), 0.05);
     border-radius: 0.5rem;
+}
+
+#chat_widget textarea#chat_textarea~span.control:hover {
+    border-radius: 0.5rem 3rem 3rem 0.5rem;
 }
 
 #chat_widget div.quoted {

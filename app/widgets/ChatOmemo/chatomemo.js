@@ -256,7 +256,7 @@ var ChatOmemo = {
         if (message.omemoheader == undefined) return;
 
         let resolvedId = message.mine
-            ? message.originid
+            ? message.messageid
             : message.id;
 
         let maybeDecrypted = await ChatOmemoDB.getMessage(resolvedId);
