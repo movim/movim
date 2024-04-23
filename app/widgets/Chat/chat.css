@@ -631,7 +631,11 @@ li .bubble.file {
 }
 
 li .bubble.file ul.card {
-    margin-bottom: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+li .bubble.file ul.card + p:empty:before {
+    content: ' ';
 }
 
 li .bubble.file div.file {
