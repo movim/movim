@@ -86,8 +86,8 @@
                             <span class="info">{$value->published|strtotime|prepareDate:true,true}</span>
                             {if="!$value->isLike()"}
                                 {$c->__('post.commented')}
-                                {if="$parent->title"}
-                                    <span class="second">{$value->title}</span>
+                                {if="$value->content"}
+                                    <span class="second">{$value->content}</span>
                                 {/if}
                             {else}
                                 {$c->__('post.liked')}

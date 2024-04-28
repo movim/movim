@@ -107,7 +107,7 @@
         <span class="primary icon gray">
             <i class="material-symbols">comment</i>
         </span>
-        <span class="control icon gray active" onclick="Post_ajaxPublishComment(MovimUtils.formToJson('comment'),'{$post->server}', '{$post->node}', '{$post->nodeid}')">
+        <span class="control icon gray active" onclick="Post_ajaxPublishComment(MovimUtils.formToJson('comment'),'{$post->server}', '{$post->node}', '{$post->nodeid}'); this.classList.add('disabled');">
             <i class="material-symbols">send</i>
         </span>
         <form name="comment">

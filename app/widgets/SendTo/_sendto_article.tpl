@@ -56,44 +56,52 @@
                 <p>{$c->__('communitysubscriptions.subscriptions')}</p>
             </div>
         </li>
-        {loop="$subscriptions"}
-            <li
-                class="block"
-                title="{$value->server} - {$value->node}"
-            >
-                {if="$value->info"}
-                    <span class="primary icon bubble">
-                        <img src="{$value->info->getPicture(\Movim\ImageSize::M)}"/>
+        {if="$subscriptions->isEmpty()"}
+            <ul class="thick">
+                <div class="placeholder">
+                    <i class="material-symbols">bookmarks</i>
+                </li>
+            </ul>
+        {else}
+            {loop="$subscriptions"}
+                <li
+                    class="block"
+                    title="{$value->server} - {$value->node}"
+                >
+                    {if="$value->info"}
+                        <span class="primary icon bubble">
+                            <img src="{$value->info->getPicture(\Movim\ImageSize::M)}"/>
+                        </span>
+                    {else}
+                        <span class="primary icon bubble color {$value->node|stringToColor}">
+                            {$value->node|firstLetterCapitalize}
+                        </span>
+                    {/if}
+                    <span class="control icon active gray divided" onclick="MovimUtils.reload('{$c->route('publish', [$value->server, $value->node, '', $post->server, $post->node, $post->nodeid])}'); Drawer.clear()">
+                        <i class="material-symbols">post_add</i>
                     </span>
-                {else}
-                    <span class="primary icon bubble color {$value->node|stringToColor}">
-                        {$value->node|firstLetterCapitalize}
-                    </span>
-                {/if}
-                <span class="control icon active gray divided" onclick="MovimUtils.reload('{$c->route('publish', [$value->server, $value->node, '', $post->server, $post->node, $post->nodeid])}'); Drawer.clear()">
-                    <i class="material-symbols">post_add</i>
-                </span>
-                <div>
-                    <p class="line normal">
-                        {if="$value->info && $value->info->name"}
-                            {$value->info->name}
-                        {else}
-                            {$value->node}
-                        {/if}
+                    <div>
+                        <p class="line normal">
+                            {if="$value->info && $value->info->name"}
+                                {$value->info->name}
+                            {else}
+                                {$value->node}
+                            {/if}
 
-                    </p>
-                    <p class="line">
-                        {if="$value->public"}
-                            <span class="tag color gray">{$c->__('room.public_muc')}</span>
-                        {/if}
-                        {if="$value->info && $value->info->description"}
-                            {$value->info->description|strip_tags}
-                        {else}
-                            {$value->node}
-                        {/if}
-                    </p>
-                </div>
-            </li>
-        {/loop}
+                        </p>
+                        <p class="line">
+                            {if="$value->public"}
+                                <span class="tag color gray">{$c->__('room.public_muc')}</span>
+                            {/if}
+                            {if="$value->info && $value->info->description"}
+                                {$value->info->description|strip_tags}
+                            {else}
+                                {$value->node}
+                            {/if}
+                        </p>
+                    </div>
+                </li>
+            {/loop}
+        {/if}
     </ul>
 </section>
