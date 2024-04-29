@@ -1,6 +1,14 @@
 Movim Changelog
 ================
 
+v0.24.1
+---------------------------
+* Fix #1311 Use another control character as the null character is forbidden in bcrypt passwords
+* Fix an error in the Notifications widget view
+* Disable the send button when sending a comment
+* Add a placeholder when there is no subscribed communities in SendTo
+* Fix properly the Chat cards CSS margin with the next elemen
+
 v0.24
 ---------------------------
 * Fix #1261 Issues with decrypting own's OMEMO messages within MUC

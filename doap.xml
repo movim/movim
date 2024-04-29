@@ -574,6 +574,13 @@
 
     <release>
         <Version>
+            <revision>0.24.1</revision>
+            <created>2024-04-29</created>
+            <file-release rdf:resource="https://github.com/movim/movim/releases/tag/v0.24.1"/>
+        </Version>
+    </release>
+    <release>
+        <Version>
             <revision>0.24</revision>
             <created>2024-04-23</created>
             <file-release rdf:resource="https://github.com/movim/movim/releases/tag/v0.24"/>
