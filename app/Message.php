@@ -160,7 +160,7 @@ class Message extends Model
             return self::firstOrNew([
                 'user_id' => \App\User::me()->id,
                 'stanzaid' => (string)$stanza->attributes()->id,
-                'jidfrom' => baseJid((string)$parent->attributes()->from)
+                'jidfrom' => baseJid((string)$stanza->forwarded->message->attributes()->from)
             ]);
         } elseif (
             $stanza->{'stanza-id'} && $stanza->{'stanza-id'}->attributes()->id
