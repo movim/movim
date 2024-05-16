@@ -1,6 +1,10 @@
 Movim Changelog
 ================
 
+v0.24.2 (master)
+---------------------------
+* Fix #1317 Handle properly the from attribute from MAM messages
+
 v0.24.1
 ---------------------------
 * Fix #1311 Use another control character as the null character is forbidden in bcrypt passwords
