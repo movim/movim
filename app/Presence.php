@@ -58,6 +58,8 @@ class Presence extends Model
         } elseif ($this->delay) {
             return $this->delay;
         }
+
+        return null;
     }
 
     public function getPresencetextAttribute()
