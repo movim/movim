@@ -6,9 +6,10 @@
  * @param timestamp $string
  * @return string
  */
-function prepareDate($time = false, $hours = true, $compact = false, $dateOnly = false)
+function prepareDate(string $datetime = '', bool $hours = true, bool $compact = false, bool $dateOnly = false): string
 {
-    $time = $time ? $time : time();
+    $time = strtotime($datetime);
+    $time = $time !== false ? $time : time();
     $t = $time + TIMEZONE_OFFSET;
 
     $date = '';
@@ -65,15 +66,16 @@ function prepareDate($time = false, $hours = true, $compact = false, $dateOnly =
  * @param timestamp $string
  * @return string
  */
-function prepareTime($time = false)
+function prepareTime(string $datetime = ''): string
 {
-    $time = $time ? $time : time();
+    $time = strtotime($datetime);
+    $time = $time != false ? $time : time();
     $t = $time + TIMEZONE_OFFSET;
 
     return gmdate('H:i', $t);
 }
 
-function toSQLDate($date)
+function toSQLDate($date): string
 {
     return date(MOVIM_SQL_DATE, strtotime((string)$date));
 }

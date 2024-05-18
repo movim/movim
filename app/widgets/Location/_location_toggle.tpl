@@ -18,7 +18,7 @@
                         {/if}
                         {if="$contact->loctimestamp"}
                             -
-                            {$contact->loctimestamp|strtotime|prepareDate:true,true}
+                            {$contact->loctimestamp|prepareDate:true,true}
                         {/if}
                     </p>
                 </div>

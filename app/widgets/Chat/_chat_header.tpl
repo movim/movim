@@ -232,7 +232,7 @@
                         {$contact->locationDistance|humanDistance} •
                     {/if}
                     {if="$roster && $roster->presence && $roster->presence->seen"}
-                        {$c->__('last.title')} {$roster->presence->seen|strtotime|prepareDate:true,true}
+                        {$c->__('last.title')} {$roster->presence->seen|prepareDate:true,true}
                     {elseif="$roster && $roster->presence && !empty($roster->presence->status)"}
                         {$roster->presence->status}
                     {elseif="$roster && $roster->presence"}

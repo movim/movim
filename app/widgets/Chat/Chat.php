@@ -1343,17 +1343,17 @@ class Chat extends \Movim\Widget\Base
             $message->rtl = isRTL($message->body);
         }
 
-        $message->publishedPrepared = prepareTime(strtotime($message->published));
+        $message->publishedPrepared = prepareTime($message->published);
 
         if ($message->delivered) {
-            $message->delivered = prepareDate(strtotime($message->delivered), true);
+            $message->delivered = prepareDate($message->delivered, true);
         }
 
         if ($message->displayed) {
-            $message->displayed = prepareDate(strtotime($message->displayed), true);
+            $message->displayed = prepareDate($message->displayed, true);
         }
 
-        $date = prepareDate(strtotime($message->published), false, false, true);
+        $date = prepareDate($message->published, false, false, true);
 
         if (empty($date)) {
             $date = $this->__('date.today');

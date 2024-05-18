@@ -62,9 +62,9 @@
                             {$post->node}
                         </a> ·
                     {/if}
-                    {$post->published|strtotime|prepareDate}
+                    {$post->published|prepareDate}
                     {if="$post->published != $post->updated"}
-                        <i class="material-symbols" title="{$post->updated|strtotime|prepareDate}">
+                        <i class="material-symbols" title="{$post->updated|prepareDate}">
                             edit
                         </i>
                     {/if}

@@ -32,8 +32,8 @@
                     </p>
 
                     {if="$value->presence && $value->presence->seen"}
-                        <p class="line" title="{$c->__('last.title')} {$value->presence->seen|strtotime|prepareDate:true,true}">
-                            {$c->__('last.title')} {$value->presence->seen|strtotime|prepareDate:true,true}
+                        <p class="line" title="{$c->__('last.title')} {$value->presence->seen|prepareDate:true,true}">
+                            {$c->__('last.title')} {$value->presence->seen|prepareDate:true,true}
                         </p>
                     {elseif="$value->presence"}
                         <p class="line">{$value->presence->presencetext}</p>

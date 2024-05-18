@@ -30,7 +30,7 @@
                     </span>
                     <div>
                         <p class="line normal">
-                            <span class="info">{$value->created_at|strtotime|prepareDate}</span>
+                            <span class="info">{$value->created_at|prepareDate}</span>
                             {$value->id}
                         </p>
                         <p class="line" title="{$value->users()->pluck('id')->implode(', ')}">{$c->__('adminreported.reported_by', $value->users()->count())}</p>

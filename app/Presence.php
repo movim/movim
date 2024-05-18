@@ -41,19 +41,22 @@ class Presence extends Model
         return $this->hasOne('App\Contact', 'id', 'jid');
     }
 
-    public function getSeenAttribute()
+    public function getSeenAttribute(): ?string
     {
-        if ($this->value == 1) return;
+        if ($this->value == 1) return null;
 
-        if ($this->resource == '' && $this->delay) {
+        // XEP-0319
+        if ($this->idle) {
+            return $this->idle;
+        }
+        // ...supersedes XEP-0256
+        elseif ($this->resource == '' && $this->delay) {
             $delay = strtotime($this->delay);
             if ($this->last) $delay += $this->last;
 
             return gmdate('Y-m-d H:i:s', $delay);
         } elseif ($this->delay) {
             return $this->delay;
-        } elseif ($this->idle) {
-            return $this->idle;
         }
     }
 

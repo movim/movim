@@ -83,7 +83,7 @@
                             {/if}
                         </p>
                         <p class="line" onclick="MovimUtils.reload('{$c->route('post', [$parent->server, $parent->node, $parent->nodeid])}'); Drawer.clear();">
-                            <span class="info">{$value->published|strtotime|prepareDate:true,true}</span>
+                            <span class="info">{$value->published|prepareDate:true,true}</span>
                             {if="!$value->isLike()"}
                                 {$c->__('post.commented')}
                                 {if="$value->content"}

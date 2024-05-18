@@ -37,7 +37,7 @@
                             &nbsp;-&nbsp;
                             {/if}
                             {if="isset($value->latest)"}
-                                {$c->__('omemo.last_activity')}: {$value->latest|strtotime|prepareDate:true}
+                                {$c->__('omemo.last_activity')}: {$value->latest|prepareDate:true}
                             {/if}
                         </p>
                     </div>

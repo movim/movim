@@ -40,7 +40,7 @@
             {if="$community->published"}
                 <span class="info">
                     <i class="material-symbols">update</i>
-                    {$community->published|strtotime|prepareDate:true}
+                    {$community->published|prepareDate:true}
                 </span>
             {/if}
         </p>

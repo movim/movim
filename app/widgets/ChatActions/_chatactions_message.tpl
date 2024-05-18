@@ -1,7 +1,7 @@
 <section id="chat_actions">
     <ul class="list" id="message_preview">
         <li {if="$message->isMine()"}class="oppose"{/if}>
-            <div class="bubble {if="$message->picture"}file{/if}" data-publishedprepared="{$message->published|strtotime|prepareTime}">
+            <div class="bubble {if="$message->picture"}file{/if}" data-publishedprepared="{$message->published|prepareTime}">
                 <div class="message">
                     {if="$message->retracted"}
                         <p class="retracted"><i class="material-symbols">delete</i>{$c->__('message.retracted')}</p>

@@ -24,7 +24,7 @@
                         {$user->truename} <span class="second">{$user->id}</span>
                     </p>
                     <p>
-                        {$value->created_at|strtotime|prepareDate}
+                        {$value->created_at|prepareDate}
                     </p>
                 </div>
             </li>

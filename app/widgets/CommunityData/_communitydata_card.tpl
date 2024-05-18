@@ -29,7 +29,7 @@
                 {if="$info->created"}
                     <br />
                     <i class="material-symbols icon-text">calendar</i>
-                    {$info->created|strtotime|prepareDate:true,true}
+                    {$info->created|prepareDate:true,true}
                 {/if}
 
                 <br />

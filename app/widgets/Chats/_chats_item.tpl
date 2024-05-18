@@ -10,7 +10,7 @@
             {/if}
         {/if}
         "
-    title="{$contact->jid}{if="isset($message)"} · {$message->published|strtotime|prepareDate}{/if}">
+    title="{$contact->jid}{if="isset($message)"} · {$message->published|prepareDate}{/if}">
     <span class="primary icon bubble
         {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}
         {if="$contact->locationDistance"} location{/if}
@@ -24,11 +24,11 @@
         <p class="normal line">
             {if="isset($message)"}
                 <span class="info">
-                    {$message->published|strtotime|prepareDate:true,true}
+                    {$message->published|prepareDate:true,true}
                 </span>
             {/if}
             {if="isset($message)"}
-                <span class="info" title="{$message->published|strtotime|prepareDate}">
+                <span class="info" title="{$message->published|prepareDate}">
                     {if="$message->jidfrom == $message->user_id"}
                         {if="$message->displayed"}
                             <span class="material-symbols">done_all</span>
