@@ -10,6 +10,6 @@ class Server extends Action
     public function request()
     {
         $this->store();
-        Ping::server();
+        Ping::entity();
     }
 }

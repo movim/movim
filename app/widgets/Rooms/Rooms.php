@@ -10,6 +10,7 @@ use Movim\ChatStates;
 use Movim\Widget\Base;
 
 use App\Conference;
+use Movim\ChatroomPings;
 
 class Rooms extends Base
 {
@@ -250,20 +251,13 @@ class Rooms extends Base
         $this->rpc('Chat_ajaxGet');
 
         // We properly exit
-        $resource = $this->user->session->conferences()
+        $conference = $this->user->session->conferences()
             ->where('conference', $room)
             ->first();
 
-        if (!$resource) return;
+        if (!$conference) return;
 
-        $resource = $resource
-            ->presences()
-            ->where('mucjid', $this->user->id)
-            ->first();
-
-        $resource = $resource
-            ? $resource->resource
-            : null;
+        $resource = $conference->presence?->resource;
 
         $jid = explodeJid($room);
         $capability = \App\Info::where('server', $jid['server'])
@@ -273,6 +267,9 @@ class Rooms extends Base
         if (!$capability || !$capability->isMAM()) {
             $this->user->messages()->where('jidfrom', $room)->delete();
         }
+
+        // We clear the ping timer
+        ChatroomPings::getInstance()->clear($room);
 
         // We clear the presences from the buffer cache and then the DB
         $this->user->session->conferences()

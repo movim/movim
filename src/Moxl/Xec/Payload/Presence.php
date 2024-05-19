@@ -5,6 +5,7 @@ namespace Moxl\Xec\Payload;
 use Movim\Session;
 use App\Presence as DBPresence;
 use App\PresenceBuffer;
+use Movim\ChatroomPings;
 
 class Presence extends Payload
 {
@@ -33,6 +34,8 @@ class Presence extends Payload
 
             PresenceBuffer::getInstance()->append($presence, function () use ($presence, $stanza) {
                 if ($presence->muc) {
+                    ChatroomPings::getInstance()->touch($presence->jid);
+
                     if ($presence->mucjid == \App\User::me()->id) {
                         // Spectrum2 specific bug, we can receive two self-presences, one with several caps items
                         $cCount = 0;
