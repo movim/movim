@@ -120,7 +120,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-15 10:05+0200\n"
+"POT-Creation-Date: 2024-05-19 17:11+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: 조수연, 2022\n"
 "Language-Team: Korean (http://app.transifex.com/movim/movim/language/ko/)\n"
@@ -513,8 +513,9 @@ msgstr ""
 msgid "The administrator is also aware of this list and can therefore block those users system wide"
 msgstr ""
 
-#: [blog]title [feed]title
-msgid "%s’s feed"
+#: [blog]title
+#, fuzzy
+msgid "%s’s blog"
 msgstr "%s의 피드"
 
 #: [blog]private
@@ -2489,6 +2490,10 @@ msgstr "당신의 서버가 여기인가요?"
 #: [subscribe]server_contact
 msgid "Contact us to add yours to the officially supported servers list"
 msgstr "공식적으로 지원되는 서버 목록에 추가하려면 저희에게 문의해주세요."
+
+#: [feed]title
+msgid "%s’s feed"
+msgstr "%s의 피드"
 
 #: [feed]nope
 msgid "No public feed for this contact"

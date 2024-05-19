@@ -16,7 +16,8 @@ class Blog extends Base
     private $_id;
     private $_contact;
     private $_posts = null;
-    private $_page = 0;
+    private int $_postsCount = 0;
+    private int $_page = 0;
     private $_mode;
     private $_next;
     private $_tag;
@@ -111,6 +112,11 @@ class Blog extends Base
                 ];
             }
         }
+
+        $this->_postsCount = \App\Post::where('server', $this->_from)
+                    ->where('node', $this->_node)
+                    ->where('open', true)
+                    ->count();
 
         if ($this->_id = $this->get('i')) {
             $this->_posts = \App\Post::where('server', $this->_from)
@@ -214,6 +220,7 @@ class Blog extends Base
             $this->_posts = resolveInfos($this->_posts);
         }
         $this->view->assign('posts', $this->_posts);
+        $this->view->assign('postsCount', $this->_postsCount);
         $this->view->assign('gallery', $this->_gallery);
 
         $this->view->assign('tag', $this->_tag);

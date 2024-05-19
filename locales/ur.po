@@ -118,7 +118,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-15 10:05+0200\n"
+"POT-Creation-Date: 2024-05-19 17:11+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Urdu (http://app.transifex.com/movim/movim/language/ur/)\n"
@@ -511,8 +511,8 @@ msgstr ""
 msgid "The administrator is also aware of this list and can therefore block those users system wide"
 msgstr ""
 
-#: [blog]title [feed]title
-msgid "%s’s feed"
+#: [blog]title
+msgid "%s’s blog"
 msgstr ""
 
 #: [blog]private
@@ -2486,6 +2486,10 @@ msgstr ""
 
 #: [subscribe]server_contact
 msgid "Contact us to add yours to the officially supported servers list"
+msgstr ""
+
+#: [feed]title
+msgid "%s’s feed"
 msgstr ""
 
 #: [feed]nope

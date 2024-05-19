@@ -132,7 +132,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-15 10:05+0200\n"
+"POT-Creation-Date: 2024-05-19 17:11+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Vincenzo Tozzi, 2023\n"
 "Language-Team: Portuguese (Brazil) (http://app.transifex.com/movim/movim/language/pt_BR/)\n"
@@ -525,8 +525,9 @@ msgstr "As seguintes contas foram bloqueadas no Movim e não podem mais te conta
 msgid "The administrator is also aware of this list and can therefore block those users system wide"
 msgstr "Quem administra esta ciente dessa lista e pode então bloquear essas contas no sistema inteiro"
 
-#: [blog]title [feed]title
-msgid "%s’s feed"
+#: [blog]title
+#, fuzzy
+msgid "%s’s blog"
 msgstr "Notícias de %s"
 
 #: [blog]private
@@ -2503,6 +2504,10 @@ msgstr "Seu servidor aqui?"
 #: [subscribe]server_contact
 msgid "Contact us to add yours to the officially supported servers list"
 msgstr "Nos contate para adicionar seus servidores junto à lista de servidores oficiais"
+
+#: [feed]title
+msgid "%s’s feed"
+msgstr "Notícias de %s"
 
 #: [feed]nope
 msgid "No public feed for this contact"

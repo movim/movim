@@ -13,7 +13,7 @@
                     ">
                 <ul class="list thick">
                     <li>
-                        <span class="primary icon on_desktop">
+                        <span class="primary icon on_desktop active" onclick="MovimUtils.redirect('{$c->route('blog', $contact->jid)}')">
                             <i class="material-symbols">person</i>
                         </span>
                         <span class="primary icon bubble on_mobile">
@@ -27,7 +27,9 @@
                                 {$c->__('blog.title', $contact->truename)}
                             </p>
                             <p>
-                                {$c->__('page.blog')}
+                                <a href="{$c->route('blog', $contact->jid)}">
+                                    {$c->__('communitydata.num', $postsCount)}
+                                </a>
                             </p>
                         </div>
                     </li>

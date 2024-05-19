@@ -128,7 +128,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-15 10:05+0200\n"
+"POT-Creation-Date: 2024-05-19 17:11+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>, 2015-2024\n"
 "Language-Team: French (France) (http://app.transifex.com/movim/movim/language/fr_FR/)\n"
@@ -521,8 +521,9 @@ msgstr "Les comptes suivant sont bloqués par Movim et ne peuvent plus vous cont
 msgid "The administrator is also aware of this list and can therefore block those users system wide"
 msgstr "Les administrateurs sont également au courant de cette liste et peuvent choisir de bloquer ces comptes au niveau de l'instance"
 
-#: [blog]title [feed]title
-msgid "%s’s feed"
+#: [blog]title
+#, fuzzy
+msgid "%s’s blog"
 msgstr "Flux de %s"
 
 #: [blog]private
@@ -2497,6 +2498,10 @@ msgstr "Votre serveur ici ?"
 #: [subscribe]server_contact
 msgid "Contact us to add yours to the officially supported servers list"
 msgstr "Contactez-nous pour ajouter le vôtre à la liste des serveurs officiellement pris en charge"
+
+#: [feed]title
+msgid "%s’s feed"
+msgstr "Flux de %s"
 
 #: [feed]nope
 msgid "No public feed for this contact"

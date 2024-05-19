@@ -123,7 +123,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-15 10:05+0200\n"
+"POT-Creation-Date: 2024-05-19 17:11+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Dominik George <nik@naturalnet.de>, 2017-2018\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://app.transifex.com/movim/movim/language/nb_NO/)\n"
@@ -516,8 +516,9 @@ msgstr ""
 msgid "The administrator is also aware of this list and can therefore block those users system wide"
 msgstr ""
 
-#: [blog]title [feed]title
-msgid "%s’s feed"
+#: [blog]title
+#, fuzzy
+msgid "%s’s blog"
 msgstr "%ss strøm"
 
 #: [blog]private
@@ -2492,6 +2493,10 @@ msgstr "Tjeneren din her?"
 #: [subscribe]server_contact
 msgid "Contact us to add yours to the officially supported servers list"
 msgstr "Kontakt oss for å legge tjeneren din til listen over offisielt støttede tjenere"
+
+#: [feed]title
+msgid "%s’s feed"
+msgstr "%ss strøm"
 
 #: [feed]nope
 msgid "No public feed for this contact"

@@ -120,7 +120,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-15 10:05+0200\n"
+"POT-Creation-Date: 2024-05-19 17:11+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Keram, 2023\n"
 "Language-Team: Uyghur (http://app.transifex.com/movim/movim/language/ug/)\n"
@@ -513,8 +513,9 @@ msgstr "تۆۋەندىكى ئىشلەتكۈچىلەر مۇۋىم تەرىپىد�
 msgid "The administrator is also aware of this list and can therefore block those users system wide"
 msgstr "باشقۇرغۇچى بۇ تىزىملىكتىن خەۋەردار شۇڭلاشقا ئۇلارنى پۈتۈن سېستىمىدىن چەكلىيەلەيدۇ"
 
-#: [blog]title [feed]title
-msgid "%s’s feed"
+#: [blog]title
+#, fuzzy
+msgid "%s’s blog"
 msgstr "%sنىڭ يەملىرى"
 
 #: [blog]private
@@ -2489,6 +2490,10 @@ msgstr "سىزنىڭ مۇلازىمېتىرىڭىز بۇيەردىمۇ؟"
 #: [subscribe]server_contact
 msgid "Contact us to add yours to the officially supported servers list"
 msgstr "مۇلازىمېتىرىڭىزنى رەسمىي قوللىغان مۇلازىمېتىرلار تىزىملىكىگە كىرگۈزۈش ئۈچۈن بىز بىلەن ئالاقىلىشىڭ"
+
+#: [feed]title
+msgid "%s’s feed"
+msgstr "%sنىڭ يەملىرى"
 
 #: [feed]nope
 msgid "No public feed for this contact"

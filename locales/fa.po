@@ -122,7 +122,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-15 10:05+0200\n"
+"POT-Creation-Date: 2024-05-19 17:11+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: revolt68 <ashrafnezhad@gmail.com>, 2021\n"
 "Language-Team: Persian (http://app.transifex.com/movim/movim/language/fa/)\n"
@@ -515,8 +515,9 @@ msgstr ""
 msgid "The administrator is also aware of this list and can therefore block those users system wide"
 msgstr ""
 
-#: [blog]title [feed]title
-msgid "%s’s feed"
+#: [blog]title
+#, fuzzy
+msgid "%s’s blog"
 msgstr "فید %s"
 
 #: [blog]private
@@ -2491,6 +2492,10 @@ msgstr ""
 #: [subscribe]server_contact
 msgid "Contact us to add yours to the officially supported servers list"
 msgstr ""
+
+#: [feed]title
+msgid "%s’s feed"
+msgstr "فید %s"
 
 #: [feed]nope
 msgid "No public feed for this contact"

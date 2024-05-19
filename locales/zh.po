@@ -131,7 +131,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-15 10:05+0200\n"
+"POT-Creation-Date: 2024-05-19 17:11+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Phonebook3599, 2023\n"
 "Language-Team: Chinese (China) (http://app.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -524,8 +524,9 @@ msgstr "以下用户被 Movim 屏蔽，无法再与您联系"
 msgid "The administrator is also aware of this list and can therefore block those users system wide"
 msgstr "管理员也知道此列表，因此可以在系统范围内阻止这些用户"
 
-#: [blog]title [feed]title
-msgid "%s’s feed"
+#: [blog]title
+#, fuzzy
+msgid "%s’s blog"
 msgstr "%s 的动态"
 
 #: [blog]private
@@ -2500,6 +2501,10 @@ msgstr "您的服务器在这里？"
 #: [subscribe]server_contact
 msgid "Contact us to add yours to the officially supported servers list"
 msgstr "请联系我们，将您的服务器添加到官方支持的服务器列表中"
+
+#: [feed]title
+msgid "%s’s feed"
+msgstr "%s 的动态"
 
 #: [feed]nope
 msgid "No public feed for this contact"
