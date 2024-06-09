@@ -318,6 +318,7 @@ class Info extends Model
             if (empty($this->node) && $node != false) {
                 $this->node = $node;
             }
+
             $this->freshIdentities = collect();
 
             foreach ($query->query->identity as $i) {

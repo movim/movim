@@ -2,6 +2,7 @@
 
 namespace Moxl\Stanza;
 
+use App\MessageFile;
 use Moxl\Stanza\Message;
 
 use Movim\Session;
@@ -10,7 +11,7 @@ use App\MessageOmemoHeader;
 class Muc
 {
     public static function message($to, $content = false, $html = false, $id = false,
-        $replace = false, $file = false, $parentId = false, array $reactions = [],
+        $replace = false, ?MessageFile $file = null, $parentId = false, array $reactions = [],
         $originId = false, $threadId = false, $mucReceipts = false, $replyId = false,
         $replyTo = false, $replyQuotedBodyLength = 0,
         ?MessageOmemoHeader $messageOMEMO = null)

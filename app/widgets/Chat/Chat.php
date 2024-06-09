@@ -146,11 +146,11 @@ class Chat extends \Movim\Widget\Base
         if ($message->file) {
             $rawbody = '📄 ' . $this->__('avatar.file');
 
-            if (typeIsPicture($message->file['type'])) {
+            if ($message->file->isPicture) {
                 $rawbody = '🖼️ ' . $this->__('chats.picture');
-            } elseif (typeIsAudio($message->file['type'])) {
+            } elseif ($message->file->isAudio) {
                 $rawbody = '🎵 ' . $this->__('chats.audio');
-            } elseif (typeIsVideo($message->file['type'])) {
+            } elseif ($message->file->isVideo) {
                 $rawbody = '🎞️ ' . $this->__('chats.video');
             }
         }
@@ -485,9 +485,10 @@ class Chat extends \Movim\Widget\Base
 
         if ($file) {
             $messageFile = new MessageFile;
-            $messageFile->import($file);
+            $valid = $messageFile->import($file);
 
-            if (!$messageFile->valid) $messageFile = null;
+            if (!$valid) $messageFile = null;
+
         } else {
             try {
                 $url = new Url;
@@ -533,7 +534,7 @@ class Chat extends \Movim\Widget\Base
         }
 
         $body = ($file != null && $file->type != 'xmpp/uri')
-            ? $file->uri
+            ? $file->url
             : $message;
 
         if ($body == '' || $body == '/me') {
@@ -596,8 +597,9 @@ class Chat extends \Movim\Widget\Base
         }
 
         if ($file) {
-            $m->file = (array)$file;
             $p->setFile($file);
+            $m->resolved = true;
+            $m->picture = $file->isPicture;
         }
 
         if ($reply) {
@@ -656,6 +658,13 @@ class Chat extends \Movim\Widget\Base
             $m->save();
 
             $m = $m->fresh();
+
+            if ($file) {
+                $file->message_mid = $m->mid;
+                $file->save();
+
+                $m = $m->fresh();
+            }
 
             $packet = new \Moxl\Xec\Payload\Packet;
             $packet->content = $m;
@@ -756,7 +765,7 @@ class Chat extends \Movim\Widget\Base
                 : $parentMessage->jidto)
                 ->setId(\generateUUID())
                 // https://xmpp.org/extensions/xep-0444.html#business-id
-                ->setParentId(!$parentMessage->isMuc() && $parentMessage->messageid
+                ->setParentid(!$parentMessage->isMuc() && $parentMessage->messageid
                     ? $parentMessage->messageid
                     : $parentMessage->stanzaid)
                 ->setReactions($newEmojis->pluck('emoji')->toArray());
@@ -1246,7 +1255,7 @@ class Chat extends \Movim\Widget\Base
         // Attached file
         if (isset($message->file) && !$message->retracted) {
             // Build cards for the URIs
-            $uri = explodeXMPPURI($message->file['uri']);
+            $uri = explodeXMPPURI($message->file->url);
 
             switch ($uri['type']) {
                 case 'post':
@@ -1262,7 +1271,7 @@ class Chat extends \Movim\Widget\Base
                     break;
             }
 
-            if ($message->file['type'] != 'xmpp') {
+            if ($message->file->type != 'xmpp') {
                 $message->body = '';
             }
         }
@@ -1286,11 +1295,11 @@ class Chat extends \Movim\Widget\Base
             if ($message->parent->file) {
                 $message->parent->body = '<i class="material-symbols">insert_drive_file</i> ' . __('avatar.file');
 
-                if (typeIsPicture($message->parent->file['type'])) {
+                if (typeIsPicture($message->parent->file->type)) {
                     $message->parent->body = '<i class="material-symbols">image</i> ' . __('chats.picture');
-                } elseif (typeIsAudio($message->parent->file['type'])) {
+                } elseif (typeIsAudio($message->parent->file->type)) {
                     $message->parent->body = '<i class="material-symbols">equalizer</i> ' . __('chats.audio');
-                } elseif (typeIsVideo($message->parent->file['type'])) {
+                } elseif (typeIsVideo($message->parent->file->type)) {
                     $message->parent->body = '<i class="material-symbols">local_movies</i> ' . __('chats.video');
                 }
             }

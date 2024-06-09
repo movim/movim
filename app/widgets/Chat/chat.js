@@ -1318,17 +1318,14 @@ var Chat = {
             if (file.preview) {
                 var img = document.createElement('img');
                 if (file.preview.url) {
-                    if (file.preview.thumb) {
-                        img.setAttribute('src', file.preview.thumb);
-                    } else {
-                        img.setAttribute('src', file.preview.url);
-                    }
+                    img.setAttribute('src', file.preview.thumb ?? file.preview.url);
 
-                    if (file.preview.width) img.setAttribute('width', file.preview.width);
-                    if (file.preview.height) {
+                    if (file.preview.width && file.preview.height) {
+                        img.setAttribute('width', file.preview.width);
                         img.setAttribute('height', file.preview.height);
-                    } else {
-                        img.setAttribute('height', '170');
+                    } else if (file.thumbnail_width && file.thumbnail_height) {
+                        img.setAttribute('width', file.thumbnail_width);
+                        img.setAttribute('height', file.thumbnail_height);
                     }
                 }
 
@@ -1339,6 +1336,10 @@ var Chat = {
                 if (file.preview.picture) {
                     img.classList.add('active');
                     img.setAttribute('onclick', 'Preview_ajaxHttpShow("' + file.preview.url + '", ' + data.mid + ')');
+                }
+
+                if (file.preview.thumbnail_type = 'image/thumbhash' && file.preview.thumbnail_url) {
+                    div.style.background = `center / cover url(${thumbHashToDataURL(MovimUtils.base64ToBinary(file.preview.thumbnail_url))})`;
                 }
 
                 div.appendChild(img);

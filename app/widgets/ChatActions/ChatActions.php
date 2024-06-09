@@ -171,11 +171,15 @@ class ChatActions extends \Movim\Widget\Base
                 $message->urlid = $url->id;
 
                 if ($url->file) {
-                    $message->file = (array)$url->file;
+                    $messageFile = $url->file;
+                    $messageFile->message_mid = $message->mid;
+                    $messageFile->save();
                 }
 
                 $this->rpc('Chat.refreshMessage', $message->mid);
-            } catch (\Exception $e) {}
+            } catch (\Exception $e) {
+                \Utils::error($e->getMessage());
+            }
 
             $message->resolved = true;
             $message->save();

@@ -409,6 +409,9 @@ var MovimUtils = {
         // fill image in dest. rectangle
         ctx.drawImage(img, cx, cy, cw, ch, x, y, w, h);
     },
+    base64ToBinary: function (base64) {
+        return new Uint8Array(atob(base64).split('').map(x => x.charCodeAt(0)));
+    },
     arrayBufferToBase64: function (ab) {
         return btoa((new Uint8Array(ab)).reduce((data, byte) => data + String.fromCharCode(byte), ''));
     },

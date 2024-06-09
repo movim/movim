@@ -113,7 +113,7 @@ main:not(.enabled) #chat_widget {
 #chat_widget ul.list.actions>li>span.control:hover,
 #chat_widget ul.list.actions>li>div>p:hover {
     box-shadow: var(--elevation-2);
-    background-color: rgba(var(--movim-element-action), 0.1);
+    background-color: rgba(var(--movim-element-action), 0.8);
 }
 
 /* Scroll button */
@@ -343,26 +343,25 @@ main:not(.enabled) #chat_widget {
 }
 
 #chat_widget li img:not(.emoji):not(.main) {
-    max-height: 30rem;
     max-width: 100%;
     display: block;
     width: auto;
 }
 
 #chat_widget li img.active {
-    transition: opacity 0.3s ease-in-out, box-shadow 0.3s ease;
+    transition: filter 0.3s ease-in-out, box-shadow 0.3s ease;
     box-shadow: var(--elevation-1);
 }
 
 #chat_widget li img.active:hover {
     cursor: pointer;
     box-shadow: var(--elevation-2);
-    opacity: 0.7;
+    filter: grayscale(.7);
 }
 
 #chat_widget li img.active:active {
     box-shadow: var(--elevation-1);
-    opacity: 0.9;
+    filter: grayscale(.9);
 }
 
 #chat_widget li img.sticker {
@@ -640,6 +639,7 @@ li .bubble.file ul.card + p:empty:before {
 
 li .bubble.file div.file {
     margin-bottom: 3rem;
+    border-radius: 0.75rem;
 }
 
 li:not(.oppose) .bubble.file span.resource+div.file {
@@ -649,7 +649,6 @@ li:not(.oppose) .bubble.file span.resource+div.file {
 li .bubble.file div.file img,
 li .bubble.file div.file video {
     display: block;
-    border-radius: 0.75rem;
     width: auto;
     max-height: 200px;
     margin-bottom: 1rem;
@@ -659,7 +658,7 @@ li div.bubble.file div.file img {
     max-height: 170px;
     min-width: 12rem;
     object-fit: cover;
-    transition: opacity 0.2s ease-in-out;
+    border-radius: 0.75rem;
     background-color: rgba(var(--movim-gray), 0.1);
     background-image: url(/theme/img/broken_image.svg);
     background-position: center;
@@ -721,6 +720,10 @@ li .bubble.file div.file a span.size:before {
     text-shadow: 0 0 1rem rgba(0, 0, 0, 0.85);
     font-variation-settings: 'FILL' 1;
     letter-spacing: -0.5rem;
+}
+
+#chat_widget .bubble.file[data-thumbash] {
+    background-image: url(attr(data-thumbhash));
 }
 
 #chat_widget .bubble .message ul.card.list .block:before {

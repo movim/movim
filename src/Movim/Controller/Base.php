@@ -103,6 +103,7 @@ class Base
         $this->page->addScript('movim_rpc.js');
         $this->page->addScript('movim_tpl.js');
         $this->page->addScript('libsignal_protocol.js');
+        $this->page->addScript('thumbhash.js');
 
         if (!$this->public) {
             $this->page->addScript('movim_websocket.js');
