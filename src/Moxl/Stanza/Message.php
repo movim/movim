@@ -2,6 +2,7 @@
 
 namespace Moxl\Stanza;
 
+use App\MessageFile;
 use App\MessageOmemoHeader;
 use Movim\Session;
 
@@ -16,7 +17,7 @@ class Message
         $receipts = false,
         $id = false,
         $replace = false,
-        $file = false,
+        ?MessageFile $file = null,
         $invite = false,
         $parentId = false,
         array $reactions = [],
@@ -154,7 +155,7 @@ class Message
             $root->appendChild($markable);
         }
 
-        if ($file != false) {
+        if ($file != null) {
             $reference = $dom->createElement('reference');
             $reference->setAttribute('xmlns', 'urn:xmpp:reference:0');
             $reference->setAttribute('type', 'data');
@@ -188,15 +189,21 @@ class Message
                 $sreference = $dom->createElement('reference');
                 $sreference->setAttribute('xmlns', 'urn:xmpp:reference:0');
                 $sreference->setAttribute('type', 'data');
-                $sreference->setAttribute('uri', $file->uri);
+                $sreference->setAttribute('uri', $file->url);
 
-                if (isset($file->thumbnail->uri)) {
+                if (isset($file->thumbnail_url)) {
                     $thumbnail = $dom->createElement('thumbnail');
                     $thumbnail->setAttribute('xmlns', 'urn:xmpp:thumbs:1');
-                    $thumbnail->setAttribute('media-type', $file->thumbnail->type);
-                    $thumbnail->setAttribute('uri', $file->thumbnail->uri);
-                    $thumbnail->setAttribute('width', $file->thumbnail->width);
-                    $thumbnail->setAttribute('height', $file->thumbnail->height);
+                    $thumbnail->setAttribute('media-type', $file->thumbnail_type);
+
+                    if ($file->thumbnail_type == 'image/thumbhash') {
+                        $thumbnail->setAttribute('uri', 'data:image/thumbhash,' . $file->thumbnail_url);
+                    } else {
+                        $thumbnail->setAttribute('uri', $file->thumbnail_url);
+                    }
+
+                    $thumbnail->setAttribute('width', $file->thumbnail_width);
+                    $thumbnail->setAttribute('height', $file->thumbnail_height);
 
                     $filen->appendChild($thumbnail);
                 }
@@ -271,7 +278,7 @@ class Message
         $html = false,
         $id = false,
         $replace = false,
-        $file = false,
+        ?MessageFile $file = null,
         $parentId = false,
         array $reactions = [],
         $originId = false,
@@ -309,7 +316,7 @@ class Message
         $html = false,
         $id = false,
         $replace = false,
-        $file = false,
+        ?MessageFile $file = null,
         $parentId = false,
         array $reactions = [],
         $originId = false,

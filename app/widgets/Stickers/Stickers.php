@@ -249,14 +249,14 @@ class Stickers extends \Movim\Widget\Base
                 $messageFile = new MessageFile;
 
                 $messageFile->name = (string)$result->url;
-                $messageFile->uri = (string)$result->media_formats->tinywebm->url;
+                $messageFile->url = (string)$result->media_formats->tinywebm->url;
                 $messageFile->type = 'video/webm';
                 $messageFile->size = (int)$result->media_formats->tinywebm->size;
 
-                $messageFile->thumbnail->type = 'image/png';
-                $messageFile->thumbnail->uri = (string)$result->media_formats->preview->url;
-                $messageFile->thumbnail->width = (int)$result->media_formats->preview->dims[0];
-                $messageFile->thumbnail->height = (int)$result->media_formats->preview->dims[1];
+                $messageFile->thumbnail_type = 'image/png';
+                $messageFile->thumbnail_url = (string)$result->media_formats->preview->url;
+                $messageFile->thumbnail_width = (int)$result->media_formats->preview->dims[0];
+                $messageFile->thumbnail_height = (int)$result->media_formats->preview->dims[1];
 
                 $chat = new \Chat;
                 $chat->sendMessage(

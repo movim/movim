@@ -133,7 +133,7 @@ class Chats extends Base
             $message = $message->first();
 
             if ($message && $message->published) {
-                $g->setStart(strtotime($message->published));
+                $g->setStart(strtotime($message->published) + 1);
             } else {
                 // We only sync up the last month the first time
                 $g->setStart(\Carbon\Carbon::now()->subMonth()->timestamp);

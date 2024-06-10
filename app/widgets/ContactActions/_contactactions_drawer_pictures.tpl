@@ -1,7 +1,7 @@
 <ul class="grid active">
     {loop="$pictures"}
-        <li style="background-image: url('{$value->file['uri']|protectPicture}')"
-            onclick="Preview_ajaxHttpShow('{$value->file['uri']}')">
+        <li style="background-image: url('{$value->file->url|protectPicture}')"
+            onclick="Preview_ajaxHttpShow('{$value->file->url}')">
             <i class="material-symbols">visibility</i>
         </li>
     {/loop}

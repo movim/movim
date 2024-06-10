@@ -2,6 +2,7 @@
 
 namespace Moxl\Xec\Action\Message;
 
+use App\MessageFile;
 use Moxl\Xec\Action;
 use Moxl\Stanza\Message;
 use Moxl\Stanza\Muc;
@@ -16,7 +17,7 @@ class Publish extends Action
     protected $_mucreceipts = false;
     protected $_id = false;
     protected $_replace = false;
-    protected $_file = false;
+    protected ?MessageFile $_file = null;
     protected $_attachid = false;
     protected $_originid = false;
     protected $_threadid = false;
@@ -32,6 +33,7 @@ class Publish extends Action
     public function request()
     {
         $this->store($this->_id);
+
         if ($this->_muc) {
             Muc::message($this->_to, $this->_content, $this->_html, $this->_id,
                          $this->_replace, $this->_file, $this->_attachid, [],

@@ -13,6 +13,8 @@ use Movim\EmbedImagesExtractor;
 
 class Url extends Model
 {
+    public ?MessageFile $file = null;
+
     public function resolve($url)
     {
         if (Validator::url()->validate($url)) {
@@ -49,15 +51,13 @@ class Url extends Model
                 $name = basename($path);
             }
 
-            $file = new MessageFile;
-            $file->name = !empty($name) ? $name : $cache->url;
-            $file->type = $cache->contentType;
-            $file->size = (!empty($cache->images[0]) && array_key_exists('size', $cache->images[0]))
+            $this->file = new MessageFile;
+            $this->file->name = !empty($name) ? $name : $cache->url;
+            $this->file->type = $cache->contentType;
+            $this->file->size = (!empty($cache->images[0]) && array_key_exists('size', $cache->images[0]))
                 ? $cache->images[0]['size']
                 : 20000;
-            $file->uri  = $cache->url;
-
-            $this->file = $file;
+            $this->file->url  = $cache->url;
         }
     }
 
@@ -81,8 +81,6 @@ class Url extends Model
 
         try {
             $embed = new Embed(new Crawler($client));
-            $configuration = Configuration::get();
-
             $embed->getExtractorFactory()->addDetector('images', EmbedImagesExtractor::class);
             $info = $embed->get($url);
 

@@ -7,6 +7,7 @@ var Upload = {
     name: null,
     file: null,
     canvas: null,
+    thumbhash: null,
     uploadButton: null,
 
     init: function () {
@@ -53,7 +54,10 @@ var Upload = {
                 name: Upload.name,
                 size: Upload.file.size,
                 type: Upload.file.type,
-                uri: Upload.get
+                uri: Upload.get,
+                thumbhash: Upload.thumbhash,
+                thumbhashWidth: Upload.canvas.width,
+                thumbhashHeight: Upload.canvas.height
             });
         }
     },
@@ -76,6 +80,7 @@ var Upload = {
 
         var resolvedFile = file ? file : document.getElementById('file').files[0];
         var resolvedFile = resolvedFile ? resolvedFile : document.getElementById('image').files[0];
+
         Upload.name = resolvedFile.name;
         Upload.check(resolvedFile);
     },
@@ -180,12 +185,29 @@ var Upload = {
 
             if (Upload.file.type.match(/image.*/)) {
                 preview.src = URL.createObjectURL(Upload.file);
+
+                // Thumbhash
+                preview.addEventListener('load', e => {
+                    const canvas = document.createElement('canvas');
+                    const context = canvas.getContext('2d');
+                    const scale = 100 / Math.max(Upload.canvas.width, Upload.canvas.height);
+
+                    canvas.width = Math.round(Upload.canvas.width * scale);
+                    canvas.height = Math.round(Upload.canvas.height * scale);
+
+                    context.drawImage(preview, 0, 0, canvas.width, canvas.height);
+                    const pixels = context.getImageData(0, 0, canvas.width, canvas.height);
+
+                    Upload.thumbhash = MovimUtils.arrayBufferToBase64(rgbaToThumbHash(pixels.width, pixels.height, pixels.data));
+                });
+
                 toDraw.addEventListener('click', e => {
                     if (Upload.canvas) {
                         Draw.init(Upload.canvas);
                     } else {
                         Draw.init(preview);
                     }
+
                     Dialog_ajaxClear();
                     Upload.abort();
                 });

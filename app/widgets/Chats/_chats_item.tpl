@@ -81,11 +81,11 @@
                     {if="$message->jidfrom == $message->user_id"}
                         <span class="moderator">{$c->__('chats.me')}:</span>
                     {/if}
-                    {if="typeIsPicture($message->file['type'])"}
+                    {if="$message->file->isPicture"}
                         <i class="material-symbols">image</i> {$c->__('chats.picture')}
-                    {elseif="typeIsAudio($message->file['type'])"}
+                    {elseif="$message->file->isAudio"}
                         <i class="material-symbols">equalizer</i> {$c->__('chats.audio')}
-                    {elseif="typeIsVideo($message->file['type'])"}
+                    {elseif="$message->file->isVideo"}
                         <i class="material-symbols">local_movies</i> {$c->__('chats.video')}
                     {else}
                         <i class="material-symbols">insert_drive_file</i> {$c->__('avatar.file')}

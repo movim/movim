@@ -1,13 +1,13 @@
 <section id="chat_actions">
     <ul class="list" id="message_preview">
         <li {if="$message->isMine()"}class="oppose"{/if}>
-            <div class="bubble {if="$message->picture"}file{/if}" data-publishedprepared="{$message->published|prepareTime}">
+            <div class="bubble {if="$message->file && $message->file->isPicture"}file{/if}" data-publishedprepared="{$message->published|prepareTime}">
                 <div class="message">
                     {if="$message->retracted"}
                         <p class="retracted"><i class="material-symbols">delete</i>{$c->__('message.retracted')}</p>
-                    {elseif="$message->picture"}
-                        <div class="file" data-type="{$message->file['type']}">
-                            <img src="{$message->file['uri']|protectPicture}">
+                    {elseif="$message->file && $message->file->isPicture"}
+                        <div class="file" data-type="{$message->file->type}">
+                            <img src="{$message->file->url|protectPicture}">
                         </div>
                     {else}
                         <p>{autoescape="off"}{$message->body|trim|stripTags|addEmojis}{/autoescape}</p>

@@ -4,11 +4,11 @@ namespace App;
 
 use Movim\Model;
 use Movim\Image;
-use Movim\Route;
 use Movim\Session;
 
 use Illuminate\Database\QueryException;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Support\Collection;
 
 class Message extends Model
 {
@@ -18,7 +18,7 @@ class Message extends Model
 
     protected $guarded = [];
 
-    protected $with = ['reactions', 'parent.from', 'resolvedUrl', 'replace'];
+    protected $with = ['reactions', 'parent.from', 'resolvedUrl', 'replace', 'file'];
 
     protected $attributes = [
         'type'    => 'chat'
@@ -29,10 +29,21 @@ class Message extends Model
         'markable' => 'boolean'
     ];
 
+    private ?Collection $messageFiles = null;
+
     public function save(array $options = [])
     {
         try {
             parent::save($options);
+
+            if ($this->messageFiles != null && $this->messageFiles->isNotEmpty()) {
+                MessageFile::where('message_mid')->delete();
+
+                // Todo optimize
+                $this->messageFiles->each(function ($file) {
+                    $file->save();
+                });
+            }
         } catch (\Exception $e) {
             \Utils::error($e->getMessage());
         }
@@ -85,58 +96,14 @@ class Message extends Model
         return $this->hasMany('App\Reaction', 'message_mid', 'mid');
     }
 
-    public function setFileAttribute(array $file)
+    public function file()
     {
-        $this->resolved = true;
-        $this->picture = typeIsPicture($file['type']);
-        $this->attributes['file'] = serialize($file);
+        return $this->hasOne('App\MessageFile', 'message_mid', 'mid');
     }
 
-    public function getFileAttribute()
+    public function files()
     {
-        if (isset($this->attributes['file'])) {
-            $file = unserialize($this->attributes['file']);
-
-            if (\array_key_exists('size', $file)) {
-                $file['cleansize'] = humanSize((float)$file['size']);
-            }
-
-            if (
-                \array_key_exists('type', $file)
-                && typeIsPicture($file['type'])
-            ) {
-                $file['preview'] = [
-                    'thumb' => protectPicture($file['uri']),
-                    'url' => $file['uri'],
-                    'picture' => true
-                ];
-            }
-
-            $url = parse_url($file['uri']);
-            if (\array_key_exists('host', $url)) {
-                $file['host'] = $url['host'];
-
-                switch ($url['host']) {
-                    case 'i.imgur.com':
-                        $thumb = getImgurThumbnail($file['uri']);
-
-                        if ($thumb) {
-                            $file['preview'] = [
-                                'url' => $file['uri'],
-                                'thumb' => $thumb,
-                                'picture' => true
-                            ];
-                        }
-                        break;
-                }
-            }
-
-            $file['id'] = hashId($file['uri']);
-
-            return $file;
-        }
-
-        return null;
+        return $this->hasMany('App\MessageFile', 'message_mid', 'mid');
     }
 
     public function getOmemoheaderAttribute()
@@ -247,6 +214,8 @@ class Message extends Model
 
     public function set($stanza, $parent = false)
     {
+        $this->messageFiles = collect();
+
         // We reset the URL resolution to refresh it once the message is displayed
         $this->resolved = false;
 
@@ -484,30 +453,32 @@ class Message extends Model
                 }
             }
 
+            // XEP-0385: Stateless Inline Media Sharing (SIMS)
             if (
                 $stanza->reference
                 && (string)$stanza->reference->attributes()->xmlns == 'urn:xmpp:reference:0'
             ) {
-                $filetmp = [];
+                $messageFile = new MessageFile;
 
                 if (
                     $stanza->reference->{'media-sharing'}
                     && (string)$stanza->reference->{'media-sharing'}->attributes()->xmlns == 'urn:xmpp:sims:1'
                 ) {
                     $file = $stanza->reference->{'media-sharing'}->file;
+
                     if (isset($file)) {
                         if (preg_match('/\w+\/[-+.\w]+/', $file->{'media-type'}) == 1) {
-                            $filetmp['type'] = (string)$file->{'media-type'};
+                            $messageFile->type = (string)$file->{'media-type'};
                         }
-                        $filetmp['size'] = (int)$file->size;
-                        $filetmp['name'] = (string)$file->name;
+                        $messageFile->size = (int)$file->size;
+                        $messageFile->name = (string)$file->name;
                     }
 
                     if ($stanza->reference->{'media-sharing'}->sources) {
                         $source = $stanza->reference->{'media-sharing'}->sources->reference;
 
                         if (!filter_var((string)$source->attributes()->uri, FILTER_VALIDATE_URL) === false) {
-                            $filetmp['uri'] = (string)$source->attributes()->uri;
+                            $messageFile->url = (string)$source->attributes()->uri;
                         }
                     }
 
@@ -518,32 +489,36 @@ class Message extends Model
                         $thumbnailAttributes = $stanza->reference->{'media-sharing'}->file->thumbnail->attributes();
 
                         if (!filter_var((string)$thumbnailAttributes->uri, FILTER_VALIDATE_URL) === false) {
-                            $thumbnail = [
-                                'width' => (int)$thumbnailAttributes->width,
-                                'height' => (int)$thumbnailAttributes->height,
-                                'type' => (string)$thumbnailAttributes->{'media-type'},
-                                'uri' => (string)$thumbnailAttributes->uri
-                            ];
+                            $messageFile->thumbnail_width = (int)$thumbnailAttributes->width;
+                            $messageFile->thumbnail_height = (int)$thumbnailAttributes->height;
+                            $messageFile->thumbnail_type = (string)$thumbnailAttributes->{'media-type'};
+                            $messageFile->thumbnail_url = (string)$thumbnailAttributes->uri;
+                        }
 
-                            $filetmp['thumbnail'] = $thumbnail;
+                        if (substr((string)$thumbnailAttributes->uri, 0, 21) == 'data:image/thumbhash,') {
+                            $messageFile->thumbnail_width = (int)$thumbnailAttributes->width;
+                            $messageFile->thumbnail_height = (int)$thumbnailAttributes->height;
+                            $messageFile->thumbnail_type = (string)$thumbnailAttributes->{'media-type'};
+                            $messageFile->thumbnail_url = substr((string)$thumbnailAttributes->uri, 0, 21);
                         }
                     }
 
                     if (
-                        array_key_exists('uri', $filetmp)
-                        && array_key_exists('type', $filetmp)
-                        && array_key_exists('size', $filetmp)
-                        && array_key_exists('name', $filetmp)
+                        $messageFile->url
+                        && $messageFile->type
+                        && $messageFile->size
+                        && $messageFile->name
                     ) {
-                        if (empty($filetmp['name'])) {
-                            $filetmp['name'] =
-                                pathinfo(parse_url($filetmp['uri'], PHP_URL_PATH), PATHINFO_BASENAME)
-                                . ' (' . parse_url($filetmp['uri'], PHP_URL_HOST) . ')';
+                        if (empty($messageFile->name)) {
+                            $messageFile->name =
+                                pathinfo(parse_url($messageFile->uri, PHP_URL_PATH), PATHINFO_BASENAME)
+                                . ' (' . parse_url($messageFile->uri, PHP_URL_HOST) . ')';
                         }
 
-                        $this->file = $filetmp;
+                        $this->picture = $messageFile->isPicture;
+                        $this->messageFiles->push($messageFile);
                     }
-                } elseif (
+                } /*elseif (
                     \in_array($stanza->reference->attributes()->type, ['mention', 'data'])
                     && $stanza->reference->attributes()->uri
                 ) {
@@ -575,7 +550,7 @@ class Message extends Model
                             'uri' => (string)$stanza->reference->attributes()->uri,
                         ];
                     }
-                }
+                }*/
             }
 
             if (
@@ -624,8 +599,8 @@ class Message extends Model
     public function isEmpty(): bool
     {
         return (empty($this->body)
-            && empty($this->file)
             && empty($this->sticker)
+            && !$this->file
         );
     }
 
@@ -712,7 +687,6 @@ class Message extends Model
             'quoted' => $this->attributes['quoted'] ?? false,
             'markable' => $this->attributes['markable'] ?? false,
             'sticker' => $this->attributes['sticker'] ?? null,
-            'file' => isset($this->attributes['file']) ? $this->attributes['file'] : null,
             'created_at' => $this->attributes['created_at'] ?? null,
             'updated_at' => $this->attributes['updated_at'] ?? null,
             'replaceid' => $this->attributes['replaceid'] ?? null,
