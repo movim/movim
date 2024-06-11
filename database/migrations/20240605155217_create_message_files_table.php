@@ -37,31 +37,7 @@ class CreateMessageFilesTable extends Migration
             $table->unique(['message_mid', 'url', 'size']);
         });
 
-        $progress = new ProgressBar(new ConsoleOutput, Message::whereNotNull('file')->count());
-        $progress->start();
-
-        foreach (Message::whereNotNull('file')->get() as $message) {
-
-            try {
-                $file = unserialize($message->file);
-
-                if ($file && array_key_exists('name', $file)) {
-                    $messageFile = new MessageFile;
-                    $messageFile->message_mid = $message->mid;
-                    $messageFile->type = $file['type'];
-                    $messageFile->name = $file['name'];
-                    $messageFile->url = $file['uri'];
-                    $messageFile->size = $file['size'];
-                    $messageFile->save();
-                }
-            } catch (\Throwable $th) {
-                //throw $th;
-            }
-
-            $progress->advance();
-        }
-
-        $progress->finish();
+        Message::whereNotNull('file')->update(['resolved' => false]);
 
         $this->schema->table('messages', function (Blueprint $table) {
             $table->dropColumn('file');
