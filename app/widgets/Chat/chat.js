@@ -1339,7 +1339,11 @@ var Chat = {
                 }
 
                 if (file.preview.thumbnail_type = 'image/thumbhash' && file.preview.thumbnail_url) {
-                    div.style.background = `center / cover url(${thumbHashToDataURL(MovimUtils.base64ToBinary(file.preview.thumbnail_url))})`;
+                    try {
+                        div.style.background = `center / cover url(${thumbHashToDataURL(MovimUtils.base64ToBinary(file.preview.thumbnail_url))})`;
+                    } catch (error) {
+                        console.log('Cannot handle thumbhash hash');
+                    }
                 }
 
                 div.appendChild(img);

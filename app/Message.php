@@ -34,13 +34,18 @@ class Message extends Model
     public function save(array $options = [])
     {
         try {
-            parent::save($options);
+            $saved = parent::save($options);
 
-            if ($this->messageFiles != null && $this->messageFiles->isNotEmpty()) {
-                MessageFile::where('message_mid')->delete();
+            if ($saved && $this->messageFiles != null && $this->messageFiles->isNotEmpty()) {
+                $mid = $this->mid;
 
-                // Todo optimize
-                $this->messageFiles->each(function ($file) {
+                if ($mid == null) {
+                    $mid = DB::getPdo()->lastInsertId();
+                    MessageFile::where('message_mid', $mid)->delete();
+                }
+
+                $this->messageFiles->each(function ($file) use ($mid) {
+                    $file->message_mid = $mid;
                     $file->save();
                 });
             }
@@ -499,7 +504,7 @@ class Message extends Model
                             $messageFile->thumbnail_width = (int)$thumbnailAttributes->width;
                             $messageFile->thumbnail_height = (int)$thumbnailAttributes->height;
                             $messageFile->thumbnail_type = (string)$thumbnailAttributes->{'media-type'};
-                            $messageFile->thumbnail_url = substr((string)$thumbnailAttributes->uri, 0, 21);
+                            $messageFile->thumbnail_url = substr((string)$thumbnailAttributes->uri, 21);
                         }
                     }
 
