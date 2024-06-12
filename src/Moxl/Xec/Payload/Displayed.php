@@ -23,8 +23,14 @@ class Displayed extends Payload
 
         if ($message && $message->displayed == null) {
             $message->displayed = gmdate('Y-m-d H:i:s');
-            $message->seen = true;
             $message->save();
+
+            if ($message->jidto == $message->user_id) {
+                \App\User::me()->messages()
+                    ->where('jidfrom', $message->jidfrom)
+                    ->where('seen', false)
+                    ->update(['seen' => true]);
+            }
 
             $this->pack($message);
             $this->deliver();

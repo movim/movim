@@ -28,6 +28,7 @@ class Rooms extends Base
 
         $this->registerEvent('chatstate', 'onChatState', 'chat');
         $this->registerEvent('message', 'onMessage');
+        $this->registerEvent('displayed', 'onDisplayed', 'chat');
         $this->registerEvent('presence_unavailable_handle', 'onDisconnected', 'chat');
 
         $this->registerEvent('presence_muc_handle', 'onConnected'/*, 'chat'*/);
@@ -67,6 +68,15 @@ class Rooms extends Base
 
             $this->onChatState($chatStates->getState($message->jidfrom));
             $this->setCounter($message->jidfrom);
+        }
+    }
+
+    public function onDisplayed($packet)
+    {
+        $message = $packet->content;
+
+        if ($message->isMuc() && $message->jidto == $this->user->id) {
+            $this->onPresence($message->jidfrom);
         }
     }
 
