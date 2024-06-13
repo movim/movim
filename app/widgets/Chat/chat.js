@@ -1355,8 +1355,10 @@ var Chat = {
                 div.appendChild(Chat.getVideoPlayer(file));
             }
 
+            var url = new URL(file.url);
+
             // Tenor implementation
-            if (file.host && file.host == 'media.tenor.com'
+            if (url.host && url.host == 'media.tenor.com'
                 || file.type == 'audio/ogg' || file.type == 'audio/opus' || file.type == 'audio/mpeg') {
                 return div;
             }
@@ -1441,19 +1443,21 @@ var Chat = {
     },
     getVideoPlayer: function (file) {
         var video = document.createElement('video');
-        video.setAttribute('src', file.uri + '#t=0.01');
+        video.setAttribute('src', file.url + '#t=0.01');
         video.setAttribute('loop', 'loop');
 
-        if (file.thumbnail && Object.keys(file.thumbnail).length !== 0) {
-            video.setAttribute('poster', file.thumbnail.uri);
-            video.setAttribute('width', file.thumbnail.width);
-            video.setAttribute('height', file.thumbnail.height);
+        if (file.thumbnail_url != null) {
+            video.setAttribute('poster', file.thumbnail_url);
+            video.setAttribute('width', file.thumbnail_width);
+            video.setAttribute('height', file.thumbnail_height);
         } else {
             video.setAttribute('poster', BASE_URI + 'theme/img/poster.svg');
         }
 
+        var url = new URL(file.url);
+
         // Tenor implementation
-        if (file.host && file.host == 'media.tenor.com') {
+        if (url.host && url.host == 'media.tenor.com') {
             video.classList.add('gif');
         } else {
             video.setAttribute('controls', 'controls');
