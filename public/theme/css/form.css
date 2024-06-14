@@ -168,7 +168,7 @@ form div > span.supporting {
 
 /* Webkit hack */
 form > div input:not([type=submit]):-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 50px white inset;
+    -webkit-box-shadow: 0 0 0 50px transparent inset;
 }
 form > div input:not([type=submit]):-webkit-autofill:focus {
     box-shadow: 0;
