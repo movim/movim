@@ -9,6 +9,7 @@ v0.24.2 (master)
 * Fix #1317 Handle properly the from attribute from MAM messages
 * Set a priority of XEP-0319: Last User Interaction in Presence over XEP-0203: Delayed Delivery
 * Refactor the prepareDate and prepareTime functions
+* Fix #1292 Apply nightmode if the browser is asking for it
 
 v0.24.1
 ---------------------------

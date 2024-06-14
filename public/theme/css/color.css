@@ -11,6 +11,9 @@ body {
     scrollbar-color: rgba(var(--movim-font), 0.2) transparent;
 }
 
+/* Night mode, using an enforced class and with the browser media-query, the two following
+sections are therefore copy pasted */
+
 body.nightmode {
     --movim-accent: 16, 21, 26;
     --movim-background-main: 20, 26, 33;
@@ -18,6 +21,17 @@ body.nightmode {
     --movim-gray: var(--movim-accent);
     --movim-font: 255, 255, 255;
     scrollbar-color: rgba(var(--movim-font), 0.1) transparent;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        --movim-accent: 16, 21, 26;
+        --movim-background-main: 20, 26, 33;
+        --movim-background: 25, 32, 40;
+        --movim-gray: var(--movim-accent);
+        --movim-font: 255, 255, 255;
+        scrollbar-color: rgba(var(--movim-font), 0.1) transparent;
+    }
 }
 
 body {

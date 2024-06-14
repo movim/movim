@@ -27,8 +27,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Avatar/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Badges/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blocked/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
@@ -68,8 +66,6 @@
 #. extracted from ../app/widgets/ContactActions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/ContactDataPublic/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Dictaphone/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -128,7 +124,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-19 17:11+0200\n"
+"POT-Creation-Date: 2024-06-14 23:41+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>, 2015-2024\n"
 "Language-Team: French (France) (http://app.transifex.com/movim/movim/language/fr_FR/)\n"
@@ -484,10 +480,6 @@ msgstr "Bannière mise à jour"
 #: [banner]not_updated
 msgid "Banner Not Updated"
 msgstr "Bannière non mise à jour"
-
-#: [badges]title
-msgid "Badges"
-msgstr "Badges"
 
 #: [blocked]title
 msgid "Blocked"
@@ -1173,6 +1165,10 @@ msgstr "Mode Nuit"
 msgid "Use dark colors to rest your eyes"
 msgstr "Des couleurs sombres pour reposer vos yeux"
 
+#: [config]night_mode_detected
+msgid "Your browser is already telling Movim to use the Night Mode by default"
+msgstr ""
+
 #: [config]chatmain
 msgid "Main chat page"
 msgstr "Page chat principale"
@@ -1425,10 +1421,6 @@ msgstr "Inviter"
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
 msgstr "Ce contact est présent dans votre liste mais il n'y a aucune souscriptions entre vos deux comptes"
-
-#: [contactdatapublic]no_data
-msgid "No public data found"
-msgstr "Aucune donnée publique trouvée"
 
 #: [dictaphone]name
 msgid "Dictaphone"
@@ -3608,3 +3600,9 @@ msgstr "L’API est indisponible pour le moment, réessayez plus tard."
 #: [field]type_here
 msgid "Type here"
 msgstr "Rédigez votre message ici"
+
+#~ msgid "Badges"
+#~ msgstr "Badges"
+
+#~ msgid "No public data found"
+#~ msgstr "Aucune donnée publique trouvée"

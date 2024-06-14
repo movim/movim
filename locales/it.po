@@ -25,8 +25,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Avatar/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Badges/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blocked/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
@@ -66,8 +64,6 @@
 #. extracted from ../app/widgets/ContactActions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/ContactDataPublic/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Dictaphone/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -126,7 +122,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-19 17:11+0200\n"
+"POT-Creation-Date: 2024-06-14 23:41+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Giacomo Lacava <g.lacava@gmail.com>, 2018\n"
 "Language-Team: Italian (http://app.transifex.com/movim/movim/language/it/)\n"
@@ -481,10 +477,6 @@ msgstr ""
 
 #: [banner]not_updated
 msgid "Banner Not Updated"
-msgstr ""
-
-#: [badges]title
-msgid "Badges"
 msgstr ""
 
 #: [blocked]title
@@ -1170,6 +1162,10 @@ msgstr "Modalità Notturna"
 msgid "Use dark colors to rest your eyes"
 msgstr "Usa colori scuri per far riposare gli occhi"
 
+#: [config]night_mode_detected
+msgid "Your browser is already telling Movim to use the Night Mode by default"
+msgstr ""
+
 #: [config]chatmain
 msgid "Main chat page"
 msgstr ""
@@ -1422,10 +1418,6 @@ msgstr "Invita"
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
 msgstr "Questo utente è nella tua lista di contatti ma non c'è sottoscrizione tra i due account"
-
-#: [contactdatapublic]no_data
-msgid "No public data found"
-msgstr ""
 
 #: [dictaphone]name
 msgid "Dictaphone"

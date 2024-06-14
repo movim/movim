@@ -669,6 +669,7 @@ li div.bubble.file video {
     max-height: 200px;
     background-color: rgba(var(--movim-font), 0.15);
     max-width: 100%;
+    border-radius: 0.75rem;
 }
 
 li.oppose .bubble.file div.file img,

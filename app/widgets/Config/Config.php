@@ -20,6 +20,7 @@ class Config extends Base
         $this->registerEvent('pubsub_setconfig_handle', 'onBlogConfigSaved', 'conf');
 
         $this->addjs('config.js');
+        $this->addcss('config.css');
     }
 
     public function prepareConfigForm()

@@ -20,8 +20,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Avatar/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Badges/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blocked/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
@@ -61,8 +59,6 @@
 #. extracted from ../app/widgets/ContactActions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/ContactDataPublic/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Dictaphone/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -121,7 +117,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-19 17:11+0200\n"
+"POT-Creation-Date: 2024-06-14 23:41+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>, 2018,2020-2023\n"
 "Language-Team: Albanian (http://app.transifex.com/movim/movim/language/sq/)\n"
@@ -477,10 +473,6 @@ msgstr "Banderola u Përditësua"
 #: [banner]not_updated
 msgid "Banner Not Updated"
 msgstr "Banderola S’u Përditësua"
-
-#: [badges]title
-msgid "Badges"
-msgstr ""
 
 #: [blocked]title
 msgid "Blocked"
@@ -1166,6 +1158,10 @@ msgstr "Mënyra Mbrëmje"
 msgid "Use dark colors to rest your eyes"
 msgstr "Përdorni ngjyra të errëta për të çlodhur sytë"
 
+#: [config]night_mode_detected
+msgid "Your browser is already telling Movim to use the Night Mode by default"
+msgstr ""
+
 #: [config]chatmain
 msgid "Main chat page"
 msgstr "Faqja e fjalosjes kryesore"
@@ -1418,10 +1414,6 @@ msgstr "Ftoje"
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
 msgstr "Ky kontakt gjendet në listën tuaj të kontakteve, por nuk ka pajtim mes dy llogarive"
-
-#: [contactdatapublic]no_data
-msgid "No public data found"
-msgstr ""
 
 #: [dictaphone]name
 msgid "Dictaphone"

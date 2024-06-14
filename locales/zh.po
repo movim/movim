@@ -30,8 +30,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Avatar/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Badges/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blocked/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
@@ -71,8 +69,6 @@
 #. extracted from ../app/widgets/ContactActions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/ContactDataPublic/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Dictaphone/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -131,7 +127,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-05-19 17:11+0200\n"
+"POT-Creation-Date: 2024-06-14 23:41+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Phonebook3599, 2023\n"
 "Language-Team: Chinese (China) (http://app.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -487,10 +483,6 @@ msgstr "横幅已更新"
 #: [banner]not_updated
 msgid "Banner Not Updated"
 msgstr "横幅未更新"
-
-#: [badges]title
-msgid "Badges"
-msgstr ""
 
 #: [blocked]title
 msgid "Blocked"
@@ -1176,6 +1168,10 @@ msgstr "夜间模式"
 msgid "Use dark colors to rest your eyes"
 msgstr "用深色让眼睛放松"
 
+#: [config]night_mode_detected
+msgid "Your browser is already telling Movim to use the Night Mode by default"
+msgstr ""
+
 #: [config]chatmain
 msgid "Main chat page"
 msgstr "主聊天页面"
@@ -1428,10 +1424,6 @@ msgstr "邀请"
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
 msgstr "此联系人在您的联系人列表中，但两账号之间没有订阅"
-
-#: [contactdatapublic]no_data
-msgid "No public data found"
-msgstr ""
 
 #: [dictaphone]name
 msgid "Dictaphone"

@@ -1,0 +1,9 @@
+form div > span.supporting.night_mode_detected {
+    display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+    form div > span.supporting.night_mode_detected {
+        display: initial;
+    }
+}

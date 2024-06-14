@@ -118,6 +118,10 @@
                 <div>
                     <p>{$c->__('config.night_mode')}</p>
                     <p class="all">{$c->__('config.night_mode_text')}</p>
+                    <span class="night_mode_detected supporting">
+                        <i class="material-symbols">night_sight_auto</i>
+                        {$c->__('config.night_mode_detected')}
+                    </span>
                 </div>
             </li>
         </ul>
