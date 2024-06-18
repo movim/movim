@@ -14,6 +14,7 @@ use Cocur\Slugify\Slugify;
 use App\Draft;
 use App\Post;
 use App\DraftEmbed;
+use App\Upload;
 
 include_once WIDGETS_PATH.'Post/Post.php';
 
@@ -284,17 +285,18 @@ class Publish extends Base
         Dialog::fill($view->draw('_publish_link'));
     }
 
-    public function ajaxAddEmbed($id, $url)
+    public function ajaxAddEmbed($id, $uploadId)
     {
         $draft = $this->user->drafts()->find($id);
+        $upload = Upload::find($uploadId);
 
-        if ($draft && Validator::url()->validate($url)) {
-            $embed = $draft->embeds()->where('url', $url)->first();
+        if ($draft && $upload && $upload->uploaded) {
+            $embed = $draft->embeds()->where('url', $upload->geturl)->first();
 
             if (!$embed) {
                 $embed = new DraftEmbed;
                 $embed->draft_id = $id;
-                $embed->url = $url;
+                $embed->url = $upload->geturl;
                 $embed->save();
             }
 

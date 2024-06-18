@@ -12,7 +12,7 @@ var Upload = {
 
     init: function () {
         if (Upload.file) {
-            Upload_ajaxSend({
+            Upload_ajaxPrepare({
                 name: Upload.name,
                 size: Upload.file.size,
                 type: Upload.file.type
@@ -51,13 +51,10 @@ var Upload = {
     launchAttached: function () {
         for (var i = 0; i < Upload.attached.length; i++) {
             Upload.attached[i]({
-                name: Upload.name,
-                size: Upload.file.size,
-                type: Upload.file.type,
-                uri: Upload.get,
-                thumbhash: Upload.thumbhash,
-                thumbhashWidth: Upload.canvas.width,
-                thumbhashHeight: Upload.canvas.height
+                id: Upload.id,
+                thumbhash: Upload.thumbhash ?? null,
+                thumbhashWidth: Upload.canvas ? Upload.canvas.width : null,
+                thumbhashHeight: Upload.canvas ? Upload.canvas.height : null
             });
         }
     },
@@ -226,9 +223,9 @@ var Upload = {
         }
     },
 
-    request: function (get, put, headers) {
-        Upload.get = get;
+    request: function (route, id) {
         Upload.xhr = new XMLHttpRequest();
+        Upload.id = id;
 
         if (Upload.uploadButton) {
             Upload.uploadButton.classList.add('disabled');
@@ -239,8 +236,16 @@ var Upload = {
 
             Upload.launchProgressed(percent);
 
-            var progress = document.querySelector('#dialog ul li p');
-            if (progress) progress.innerHTML = percent + '%';
+            var progress = document.querySelector('#upload_progress');
+            if (progress) {
+                progress.querySelector('ul li span.primary i').innerHTML = 'upload';
+                progress.querySelector('ul li p').innerHTML = percent + '%';
+
+                if (percent == 100) {
+                    progress.querySelector('ul li span.primary i').innerHTML = 'cloud_upload';
+                    progress.querySelector('ul li p').innerHTML = '';
+                }
+            }
         }, false);
 
         Upload.xhr.onreadystatechange = function () {
@@ -265,16 +270,12 @@ var Upload = {
             }
         }
 
-        Upload.xhr.open("PUT", put, true);
-
-        if (typeof headers == 'object') {
-            for (const key in headers) {
-                Upload.xhr.setRequestHeader(key, headers[key]);
-            }
-        }
+        Upload.xhr.open("POST", route, true);
 
         if (Upload.file != null) {
-            Upload.xhr.send(Upload.file);
+            const formData = new FormData();
+            formData.append('file', Upload.file, Upload.name);
+            Upload.xhr.send(formData);
         }
     },
 

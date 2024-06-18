@@ -13,10 +13,8 @@
                 {if="isset($service->description)"}
                     <p class="limit" data-limit="{$service->description}">{$c->__('upload.max_size', humanSize($service->description))}</p>
                 {/if}
-                <p>
-                    <input type="file" id="file" onchange="Upload.preview()"/>
-                    <input type="file" id="image" accept="image/*" onchange="Upload.preview()"/>
-                </p>
+                <input type="file" id="file" onchange="Upload.preview()"/>
+                <input type="file" id="image" accept="image/*" onchange="Upload.preview()"/>
             </div>
         </li>
     </ul>
@@ -50,6 +48,16 @@
     </ul>
 </section>
 <div class="no_bar">
+    <ul id="upload_progress" class="list fill">
+        <li>
+            <span class="primary icon">
+                <i class="material-symbols"></i>
+            </span>
+            <div>
+                <p class="line"></p>
+            </div>
+        </li>
+    </ul>
     <button onclick="Dialog_ajaxClear(); Upload.abort();" class="button flat">
         {$c->__('button.close')}
     </button>

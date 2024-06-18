@@ -188,7 +188,6 @@ var Snap = {
 }
 
 Upload.attach((file) => {
-    const page = MovimUtils.urlParts().page;
     if (Snap.snap) Snap.end();
 });
 

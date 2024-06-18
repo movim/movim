@@ -5,9 +5,6 @@ use App\MessageFile;
 use Movim\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-use Symfony\Component\Console\Helper\ProgressBar;
-use Symfony\Component\Console\Output\ConsoleOutput;
-
 class CreateMessageFilesTable extends Migration
 {
     public function up()
