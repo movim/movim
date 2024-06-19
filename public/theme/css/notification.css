@@ -16,11 +16,6 @@
     transform: translateY(0);
 }
 
-body.nightmode .snackbar,
-body.nightmode .toast {
-    background-color: rgb(var(--movim-background));
-}
-
 .snackbar ul.active {
     pointer-events: auto;
 }

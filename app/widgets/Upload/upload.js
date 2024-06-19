@@ -235,17 +235,7 @@ var Upload = {
             var percent = Math.floor(evt.loaded / evt.total * 100);
 
             Upload.launchProgressed(percent);
-
-            var progress = document.querySelector('#upload_progress');
-            if (progress) {
-                progress.querySelector('ul li span.primary i').innerHTML = 'upload';
-                progress.querySelector('ul li p').innerHTML = percent + '%';
-
-                if (percent == 100) {
-                    progress.querySelector('ul li span.primary i').innerHTML = 'cloud_upload';
-                    progress.querySelector('ul li p').innerHTML = '';
-                }
-            }
+            Upload.setProgress('cloud_upload', percent == 100 ? '' : percent + '%');
         }, false);
 
         Upload.xhr.onreadystatechange = function () {
@@ -264,6 +254,8 @@ var Upload = {
                 Upload.launchFailed();
                 Upload_ajaxFailed();
 
+                Upload.setProgress('error', '');
+
                 if (Upload.uploadButton) {
                     Upload.uploadButton.classList.remove('disabled');
                 }
@@ -276,6 +268,15 @@ var Upload = {
             const formData = new FormData();
             formData.append('file', Upload.file, Upload.name);
             Upload.xhr.send(formData);
+
+            document.querySelector('#upload_progress span.primary i').innerHTML = 'upload';
+        }
+    },
+
+    setProgress: function (icon, text) {
+        if (document.querySelector('#upload_progress')) {
+            document.querySelector('#upload_progress span.primary i').innerHTML = icon;
+            document.querySelector('#upload_progress li p').innerHTML = text;
         }
     },
 

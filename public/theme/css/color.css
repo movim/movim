@@ -7,6 +7,7 @@ body {
     --movim-background: 238, 238, 238;
     --movim-gray: 35, 35, 35;
     --movim-font: 0, 0, 0;
+    --movim-header-font: 200, 200, 200;
     --movim-element-action: 153, 153, 153;
     scrollbar-color: rgba(var(--movim-font), 0.2) transparent;
 }
@@ -191,36 +192,23 @@ form textarea:focus:invalid + label {
     color: var(--p-red);
 }
 
-body:not(.nightmode) header.fixed ul.list li > div > p span.second {
-    color: rgba(var(--movim-background-main), 0.60);
+ul.list li > div > p:not(:first-of-type):not(.normal):not(.main) {
+    color: rgba(var(--movim-font), 0.6);
 }
 
-ul.list li > div > p:nth-last-of-type(3) + p:not(.normal):not(.main),
-ul.list li > div > p:nth-last-of-type(2) + p:not(.normal):not(.main) {
-    color: rgba(var(--movim-font), 0.60);
-}
-
-body:not(.nightmode) header.fixed ul.list li > div > p:nth-last-of-type(3) + p:not(.normal):not(.main),
-body:not(.nightmode) header.fixed ul.list li > div > p:nth-last-of-type(2) + p:not(.normal):not(.main),
-body:not(.nightmode) header.big ul.list li > div > p:nth-last-of-type(3) + p:not(.normal):not(.main),
-body:not(.nightmode) header.big ul.list li > div > p:nth-last-of-type(2) + p:not(.normal):not(.main),
-body:not(.nightmode) div.snackbar ul.list li > div > p:nth-last-of-type(2) + p:not(.normal):not(.main) {
-    color: rgba(var(--movim-background-main), 0.80);
+header.big ul.list li > div > p:not(:first-of-type):not(.normal):not(.main),
+div.snackbar ul.list li > div > p:not(:first-of-type):not(.normal):not(.main) {
+    color: rgb(var(--movim-header-font));
 }
 
 /* Default color : indigo */
 
 input[type=button].color,
-main > div > header.fixed,
 header.big,
 main > header {
     background-color: rgb(var(--movim-accent));
     color: white;
     border-color: rgb(var(--movim-accent));
-}
-
-main > header ul.list li > div > p:nth-last-of-type(2) + p {
-    color: white;
 }
 
 /* Gray accent : orange */
@@ -234,7 +222,6 @@ a {
 }
 
 form > div .checkbox:before { background-color: rgba(var(--movim-main), 0.5); }
-/*form > div .checkbox > input[type="checkbox"]:checked + label { background-color: rgb(var(--movim-main)); }*/
 
 form input:focus:not(:invalid) + label,
 form textarea:focus:not(:invalid) + label {

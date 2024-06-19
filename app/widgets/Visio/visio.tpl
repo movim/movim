@@ -1,5 +1,5 @@
 <div id="visio">
-    <header class="fixed">
+    <header class="big">
         <ul class="list">
             <li>
                 <span id="toggle_fullscreen" class="control icon color transparent active" onclick="VisioUtils.toggleFullScreen()">

@@ -1,4 +1,4 @@
-<header class="fixed" id="{$jid|cleanupId}-header">
+<header class="big" id="{$jid|cleanupId}-header">
     {autoescape="off"}
         {$c->prepareHeader($jid, $muc)}
     {/autoescape}

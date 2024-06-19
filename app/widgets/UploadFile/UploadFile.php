@@ -26,7 +26,13 @@ class UploadFile extends Base
             curl_setopt($ch, CURLOPT_INFILESIZE, filesize($_FILES['file']['tmp_name']));
 
             if (is_array($upload->headers)) {
-                curl_setopt($ch, CURLOPT_HTTPHEADER, $upload->headers);
+                $formatedHeaders = [];
+
+                foreach ($upload->headers as $key => $value) {
+                    array_push ($formatedHeaders, $key . ': ' . $value);
+                }
+
+                curl_setopt($ch, CURLOPT_HTTPHEADER, $formatedHeaders);
             }
 
             //curl_setopt($ch, CURLOPT_NOPROGRESS, false);

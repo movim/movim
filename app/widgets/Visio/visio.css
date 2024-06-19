@@ -102,10 +102,11 @@ body {
     }
 }
 
-#visio header {
+#visio header.big {
     position: absolute;
     width: 100%;
     z-index: 1;
+    background-color: transparent;
 }
 
 #visio header ul.list li {
