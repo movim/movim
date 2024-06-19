@@ -52,6 +52,26 @@
     display: none;
 }
 
+#upload_progress {
+    position: absolute;
+    top: 0.5rem;
+    text-align: left;
+    width: 18rem;
+}
+
+#upload_progress div {
+    margin-left: 0;
+}
+
+#upload_progress span.primary {
+    opacity: 0.5;
+}
+
+#upload_progress p {
+    font-size: 1.75rem;
+    opacity: 0.75;
+}
+
 body.dropped:after {
     content: '';
     width: 100%;

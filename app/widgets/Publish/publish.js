@@ -87,7 +87,7 @@ MovimWebsocket.attach(() => {
 MovimEvents.registerWindow('loaded', 'publish', () => {
     Upload.attach((file) => {
         if (document.querySelector('#publish')) {
-            Publish_ajaxAddEmbed(document.querySelector('#publish input[name=id]').value, file.uri);
+            Publish_ajaxAddEmbed(document.querySelector('#publish input[name=id]').value, file.id);
         }
     });
 });

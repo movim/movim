@@ -1647,7 +1647,7 @@ MovimEvents.registerWindow('resize', 'chat', () => Chat.scrollRestore());
 MovimEvents.registerWindow('loaded', 'chat', () => {
     if (MovimUtils.isMobile()) Chat.touchEvents();
 
-    Upload.attach(function (file) {
+    Upload.attach((file) => {
         if (Chat.getTextarea()) {
             Chat_ajaxHttpDaemonSendMessage(
                 Chat.getTextarea().dataset.jid,

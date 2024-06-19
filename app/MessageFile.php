@@ -76,19 +76,17 @@ class MessageFile extends Model
 
     public function import($file): bool
     {
-        // XMPP URI validation
-        $uri = explodeXMPPURI($file->uri);
+        $upload = Upload::find($file->id);
 
-        if (($uri['type'] != null || Validator::url()->validate($file->uri))
-        && isMimeType($file->type)) {
-            $this->name = (string)$file->name;
+        if ($upload && $upload->uploaded && isMimeType($upload->type)) {
+            $this->name = (string)$upload->name;
 
-            if (isset($file->size)) {
-                $this->size = (int)$file->size;
+            if (isset($upload->size)) {
+                $this->size = (int)$upload->size;
             }
 
-            $this->type = (string)$file->type;
-            $this->url = $file->uri;
+            $this->type = (string)$upload->type;
+            $this->url = $upload->geturl;
 
             if (isset($file->thumbnail)
             && Validator::url()->validate($file->thumbnail->uri)) {
@@ -100,7 +98,7 @@ class MessageFile extends Model
 
             if (isset($file->thumbhash)) {
                 $this->thumbnail_type = 'image/thumbhash';
-                $this->thumbnail_url = $file->thumbhash;
+                $this->thumbnail_url = (string)$file->thumbhash;
                 $this->thumbnail_width = (int)$file->thumbhashWidth;
                 $this->thumbnail_height = (int)$file->thumbhashHeight;
             }

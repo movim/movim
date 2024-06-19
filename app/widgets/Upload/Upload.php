@@ -26,8 +26,15 @@ class Upload extends Base
 
     public function onRequested($package)
     {
-        list($get, $put, $headers) = array_values($package->content);
-        $this->rpc('Upload.request', $get, $put, $headers);
+        $content = $package->content;
+
+        $upload = App\Upload::find($content['id']);
+        $upload->puturl = $content['put'];
+        $upload->geturl = $content['get'];
+        $upload->headers = $content['headers'];
+        $upload->save();
+
+        $this->rpc('Upload.request', $this->route('upload', $upload->id), $upload->id);
     }
 
     public function onError()
@@ -56,6 +63,30 @@ class Upload extends Base
         $view->assign('service', $this->user->session->getUploadService());
         Dialog::fill($view->draw('_upload'));
         $this->rpc('Upload.attachEvents');
+    }
+
+    public function ajaxPrepare($file)
+    {
+        $uploadService = $this->user->session->getUploadService();
+
+        if($uploadService) {
+            $upload = App\Upload::firstOrCreate([
+                'id' => generateUUID(),
+                'user_id' => $this->user->id,
+                'jidto' => $uploadService->server,
+                'name' => $file->name,
+                'size' => $file->size,
+                'type' => $file->type
+            ]);
+
+            $r = new Request;
+            $r->setTo($uploadService->server)
+              ->setName($file->name)
+              ->setSize($file->size)
+              ->setType($file->type)
+              ->setId($upload->id)
+              ->request();
+        }
     }
 
     public function ajaxSend($file)

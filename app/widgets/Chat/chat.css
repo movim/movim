@@ -210,6 +210,11 @@ main:not(.enabled) #chat_widget {
     animation: fadein 0.3s;
 }
 
+#chat_widget .chat_box span.primary:active,
+#chat_widget .chat_box span.control:not(.button):not(.color):active {
+    font-variation-settings: 'FILL' 1;
+}
+
 #chat_widget .chat_box.compose span.control[title="dictaphone"] {
     display: none;
 }

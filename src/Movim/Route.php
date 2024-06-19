@@ -50,6 +50,7 @@ class Route extends Base
             'subscriptions' => false,
             'system'        => false,
             'tag'           => ['t', 'i'],
+            'upload'        => ['f'],
             'visio'         => ['f', 's'],
             'visioaudio'    => ['f', 's'],
         ];

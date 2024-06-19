@@ -7,6 +7,7 @@ use Moxl\Stanza\Upload;
 
 class Request extends Action
 {
+    protected $_id;
     protected $_to;
     protected $_name;
     protected $_size;
@@ -22,6 +23,8 @@ class Request extends Action
     {
         if ($stanza->slot) {
             $params = [
+                'id' => $this->_id,
+
                 'get' => (string)$stanza->slot->get->attributes()->url,
                 'put' => (string)$stanza->slot->put->attributes()->url,
                 'headers' => null
