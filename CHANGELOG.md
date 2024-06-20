@@ -3,6 +3,7 @@ Movim Changelog
 
 v0.24.2 (master)
 ---------------------------
+* Fix #974 Wrong certificate expected when using SRV records
 * Move the Message files to the SQL database
 * Add thumbhash support when uploading images in the chat
 * Fix #1164 Implement XEP-0410: MUC Self-Ping (Schrödinger's Chat) basic behavior

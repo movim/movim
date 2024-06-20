@@ -28,17 +28,7 @@ $dns = $factory->create($server);
 Scheduler::getInstance()->start();
 
 // TCP Connector
-$connector = new React\Socket\HappyEyeBallsConnector(
-    $loop,
-    new React\Socket\Connector([
-        'timeout' => 5.0,
-        'tls' => [
-            'SNI_enabled' => true,
-            'allow_self_signed' => false
-        ]
-    ]),
-    $dns
-);
+$connector = null;
 
 // We load and register all the widgets
 $wrapper = \Movim\Widget\Wrapper::getInstance();
@@ -128,6 +118,8 @@ function enableEncryption($connection)
 
 function handleClientDNS(array $results, $dns, $connector, $xmppBehaviour)
 {
+    global $loop;
+
     if (count($results) > 1) {
         $port = 5222;
         $directTLSSocket = false;
@@ -166,6 +158,19 @@ function handleClientDNS(array $results, $dns, $connector, $xmppBehaviour)
         $socket .= $host . ':' . $port;
 
         logOut(colorize('Connect to ' . $socket, 'blue'));
+
+        $connector = new React\Socket\HappyEyeBallsConnector(
+            $loop,
+            new React\Socket\Connector([
+                'timeout' => 5.0,
+                'tls' => [
+                    'SNI_enabled' => true,
+                    'allow_self_signed' => false,
+                    'peer_name' => $host
+                ]
+            ]),
+            $dns
+        );
 
         $connector->connect($socket)->then(
             $xmppBehaviour,
