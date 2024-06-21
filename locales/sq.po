@@ -1,7 +1,7 @@
 #
 # Translators:
 # Besnik Bleta <besnik@programeshqip.org>, 2018
-# Besnik Bleta <besnik@programeshqip.org>, 2018,2020-2023
+# Besnik Bleta <besnik@programeshqip.org>, 2018,2020-2024
 # Besnik Bleta <besnik@programeshqip.org>, 2018-2020
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
@@ -117,9 +117,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-14 23:41+0200\n"
+"POT-Creation-Date: 2024-06-21 11:42+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
-"Last-Translator: Besnik Bleta <besnik@programeshqip.org>, 2018,2020-2023\n"
+"Last-Translator: Besnik Bleta <besnik@programeshqip.org>, 2018,2020-2024\n"
 "Language-Team: Albanian (http://app.transifex.com/movim/movim/language/sq/)\n"
 "Language: sq\n"
 "MIME-Version: 1.0\n"
@@ -507,9 +507,8 @@ msgid "The administrator is also aware of this list and can therefore block thos
 msgstr "Përgjegjësi është gjithashtu në dijeni të kësaj liste dhe mundet pra t’i bllokojë këta përdorues në krejt sistemin"
 
 #: [blog]title
-#, fuzzy
 msgid "%s’s blog"
-msgstr "Prurje për %s"
+msgstr "Blog nga %s"
 
 #: [blog]private
 msgid "This content is private, please login to see it"
@@ -695,19 +694,19 @@ msgstr "Veprim i pamundur në fjalosje të fshehtëzuara"
 
 #: [chat]first_messages_title
 msgid "This is the beginning of this conversation"
-msgstr ""
+msgstr "Ky është fillimi i kësaj bisede"
 
 #: [chat]first_messages_text
 msgid "You can choose to add it as a new contact or block it to prevent some other unsolicited messages"
-msgstr ""
+msgstr "Mund të zgjidhni ta shtoni si lëndë të re, ose ta bllokoni, për të penguar disa mesazhe të pakërkuar"
 
 #: [chat]first_messages_add
 msgid "Add to my contacts"
-msgstr ""
+msgstr "Shtoje te kontaktet e mi"
 
 #: [chat]first_messages_block
 msgid "Block"
-msgstr ""
+msgstr "Bllokoje"
 
 #: [chatroom]members
 msgid "Members"
@@ -1160,7 +1159,7 @@ msgstr "Përdorni ngjyra të errëta për të çlodhur sytë"
 
 #: [config]night_mode_detected
 msgid "Your browser is already telling Movim to use the Night Mode by default"
-msgstr ""
+msgstr "Shfletuesi juaj po i tregon tashmë Movim-it të përdorë, si parazgjedhje, Mënyrën Natë"
 
 #: [config]chatmain
 msgid "Main chat page"
@@ -1818,11 +1817,11 @@ msgstr "%s minuta"
 
 #: [post]public_title
 msgid "Publish this article publicly"
-msgstr ""
+msgstr "Botoje këtë artikull publikisht"
 
 #: [post]public_text
 msgid "This will allow anyone outside Movim to have access to your publication"
-msgstr ""
+msgstr "Kjo i lejon kujtdo jashtë Movim-it të mund të përdorë botimin tuaj"
 
 #: [post]public_yes
 msgid "This post is public"
@@ -1838,19 +1837,19 @@ msgstr "URL publike e këtij postimi"
 
 #: [post]comments_disabled_title
 msgid "Disable the comments"
-msgstr ""
+msgstr "Çaktivizoji komentet"
 
 #: [post]comments_disabled_text
 msgid "Nobody will be able to like or comment"
-msgstr ""
+msgstr "Askush s’do të ketë në gjendje të pëlqejë, ose komentojë"
 
 #: [post]comments_disabled_yes
 msgid "Comments disabled for this article"
-msgstr ""
+msgstr "Komentet të çaktivizuar për këtë artikull"
 
 #: [post]comments_disabled_no
 msgid "Comments enabled for this article"
-msgstr ""
+msgstr "Komentet të aktivizuar për këtë artikull"
 
 #: [post]delete_title [post]delete
 msgid "Delete this post"
@@ -2132,11 +2131,11 @@ msgstr "Emër i zbrazët"
 
 #: [chatrooms]remove_title
 msgid "Remove a chatroom"
-msgstr ""
+msgstr "Hiqni një dhomë fjalosjeje"
 
 #: [chatrooms]remove_text
 msgid "You are going to remove the following chatroom. Please confirm your action."
-msgstr ""
+msgstr "Ju ndan një hap nga heqja e dhomës vijuese të fjalosjes. Ju lutemi, ripohoni veprimin tuaj."
 
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
@@ -2178,11 +2177,11 @@ msgstr "S’hyhet dot te dhomë bisedash, lypset regjistrim"
 
 #: [chatrooms]remoteservernotfound
 msgid "The remote server for this chatroom doesn’t exist"
-msgstr ""
+msgstr "Shërbyesi i largët për këtë dhomë fjalosjeje s’ekziston"
 
 #: [chatrooms]remoteservertimeout
 msgid "Connection to remote server timed out"
-msgstr ""
+msgstr "Lidhjes me shërbyes të largët i mbaroi koha"
 
 #: [chatrooms]itemnotfound
 msgid "The chatroom doesn’t exist"
@@ -2851,7 +2850,7 @@ msgstr "Asgjësoje"
 
 #: [button]remove
 msgid "Remove"
-msgstr ""
+msgstr "Hiqe"
 
 #: [button]cancel
 msgid "Cancel"
@@ -3320,7 +3319,7 @@ msgstr "i lehtësuar"
 
 #: [mood]remorseful
 msgid "remorseful"
-msgstr ""
+msgstr "i penduar"
 
 #: [mood]restless
 msgid "restless"

@@ -5,6 +5,7 @@
 # kashing <shing3232@gmail.com>, 2015-2016
 # Lei feng, 2015
 # Nobita Nobi <896876269@qq.com>, 2020
+# Phonebook3599, 2024
 # Phonebook3599, 2023
 # Finn Dean <vicdorke@gmail.com>, 2020
 # toolsman <jwr030521@gmail.com>, 2016
@@ -127,9 +128,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-14 23:41+0200\n"
+"POT-Creation-Date: 2024-06-21 11:42+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
-"Last-Translator: Phonebook3599, 2023\n"
+"Last-Translator: Phonebook3599, 2024\n"
 "Language-Team: Chinese (China) (http://app.transifex.com/movim/movim/language/zh_CN/)\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
@@ -168,7 +169,7 @@ msgstr "API"
 
 #: [about]info
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
-msgstr "Movim 是基于 XMPP 的通信平台。除以下软件和资源外，所有项目都位于"
+msgstr "Movim 是基于 XMPP 的交流平台。除以下软件和资源外，所有项目都位于"
 
 #: [account]title [page]account
 msgid "Account"
@@ -220,7 +221,7 @@ msgstr "网关"
 
 #: [account]clear
 msgid "Leave this instance"
-msgstr "离开这个实例"
+msgstr "离开此实例"
 
 #: [account]clear_text
 msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
@@ -256,7 +257,7 @@ msgstr "您的账号已成功注册"
 
 #: [create]loading
 msgid "Loading"
-msgstr "载入中"
+msgstr "正在加载"
 
 #: [create]placeholder
 msgid "…and start playing"
@@ -304,7 +305,7 @@ msgstr "限制建议"
 
 #: [restrictsuggestions]text
 msgid "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
-msgstr "只建议用户 XMPP 服务器和相关服务上可用的聊天室、社区和其他内容"
+msgstr "只建议用户 XMPP 服务器和相关服务上可用的群聊、社区和其他内容"
 
 #: [chatonly]title
 msgid "Chat only"
@@ -450,7 +451,7 @@ msgstr "会话"
 
 #: [adminsessions]text
 msgid "Currently connected users on the pod"
-msgstr "pod 当前已连接的用户"
+msgstr "Pod 当前已连接的用户"
 
 #: [avatar]file
 msgid "File"
@@ -517,9 +518,8 @@ msgid "The administrator is also aware of this list and can therefore block thos
 msgstr "管理员也知道此列表，因此可以在系统范围内阻止这些用户"
 
 #: [blog]title
-#, fuzzy
 msgid "%s’s blog"
-msgstr "%s 的动态"
+msgstr "%s 的博客"
 
 #: [blog]private
 msgid "This content is private, please login to see it"
@@ -531,7 +531,7 @@ msgstr "消息已发布"
 
 #: [message]react
 msgid "Add a reaction"
-msgstr "添加反应"
+msgstr "添加回应"
 
 #: [message]retract
 msgid "Retract"
@@ -583,7 +583,7 @@ msgstr ":shortcut: 插入表情符号"
 
 #: [message]visitor_help
 msgid "You are not allowed to send messages in this conference"
-msgstr "不允许您在此聊天室发送消息"
+msgstr "不允许您在此群聊中发送消息"
 
 #: [chat]attention
 msgid "%s needs your attention"
@@ -591,7 +591,7 @@ msgstr "%s 需要您的注意"
 
 #: [chat]placeholder
 msgid "Your message here…"
-msgstr "你的消息在这里…"
+msgstr "您的消息在这里…"
 
 #: [chat]smileys
 msgid "Smileys"
@@ -607,15 +607,15 @@ msgstr "此处还没有内容…"
 
 #: [chat]new_text
 msgid "Don’t be shy, send a first message to start the discussion"
-msgstr "不要害羞，先发一条信息开始讨论"
+msgstr "别害羞，发送第一条消息开始讨论吧"
 
 #: [chat]invitation
 msgid "You received an invitation to join a chatroom"
-msgstr "您收到了加入聊天室的邀请"
+msgstr "您收到了加入群聊的邀请"
 
 #: [chat]invitation_self
 msgid "You sent an invitation to join a chatroom"
-msgstr "你发送了加入聊天室的邀请"
+msgstr "您发送了加入群聊的邀请"
 
 #: [chat]invitation_join
 msgid "Join %s"
@@ -628,7 +628,7 @@ msgstr "查看个人资料"
 #: [chat]clear
 msgctxt "[chat]clear"
 msgid "Clear the history"
-msgstr "清除历史"
+msgstr "清空聊天记录"
 
 #: [chat]edit_previous
 msgid "Edit last message"
@@ -693,7 +693,7 @@ msgstr "发送消息时出错"
 #: [chat]clear_history
 msgctxt "[chat]clear_history"
 msgid "Clear the history"
-msgstr "清空历史记录"
+msgstr "清空聊天记录"
 
 #: [chat]clear_history_text
 msgid "You are going to delete %s messages, are you sure?"
@@ -705,19 +705,19 @@ msgstr "加密聊天中无法执行操作"
 
 #: [chat]first_messages_title
 msgid "This is the beginning of this conversation"
-msgstr ""
+msgstr "这是本次对话的开始"
 
 #: [chat]first_messages_text
 msgid "You can choose to add it as a new contact or block it to prevent some other unsolicited messages"
-msgstr ""
+msgstr "您可以选择将其添加为新联系人，或将其屏蔽以防止其他未经请求的消息"
 
 #: [chat]first_messages_add
 msgid "Add to my contacts"
-msgstr ""
+msgstr "添加到我的联系人"
 
 #: [chat]first_messages_block
 msgid "Block"
-msgstr ""
+msgstr "屏蔽"
 
 #: [chatroom]members
 msgid "Members"
@@ -725,11 +725,11 @@ msgstr "成员"
 
 #: [chatroom]connected [chatrooms]connected
 msgid "Connected to the chatroom"
-msgstr "已连接到聊天室"
+msgstr "已连接到群聊"
 
 #: [chatroom]disconnected [chatrooms]disconnected
 msgid "Disconnected from the chatroom"
-msgstr "已断开与聊天室的连接"
+msgstr "已断开与群聊的连接"
 
 #: [chatroom]config [communityaffiliation]configuration [page]configuration
 msgid "Configuration"
@@ -741,11 +741,11 @@ msgstr "配置已保存"
 
 #: [chatroom]subject
 msgid "Subject"
-msgstr "主题"
+msgstr "话题"
 
 #: [chatroom]subject_changed
 msgid "Subject changed"
-msgstr "主题已改变"
+msgstr "话题已更改"
 
 #: [chatroom]administration [page]administration
 msgid "Administration"
@@ -974,7 +974,7 @@ msgstr "发布"
 
 #: [communityconfig]publish_model_open_title [room]public_muc
 msgid "Public"
-msgstr "公开的"
+msgstr "公开"
 
 #: [communityconfig]publish_model_open_text
 msgid "Everyone can publish"
@@ -1014,11 +1014,11 @@ msgstr "发布和浏览图片"
 
 #: [communitydata]sub
 msgid "%s subscribers"
-msgstr "%s 订阅者"
+msgstr "%s 位订阅者"
 
 #: [communitydata]num
 msgid "%s posts"
-msgstr "%s 帖子"
+msgstr "%s 个帖子"
 
 #: [communitydata]public
 msgid "Public page"
@@ -1090,7 +1090,7 @@ msgstr "私人账号"
 
 #: [communityposts]presencerequired_text
 msgid "Follow it to see the content"
-msgstr "关注它来查看内容"
+msgstr "关注即可查看内容"
 
 #: [communitysubscriptions]subscriptions
 msgid "Subscribed Communities"
@@ -1118,7 +1118,7 @@ msgstr "语言"
 
 #: [config]roster
 msgid "Roster display"
-msgstr "花名册显示"
+msgstr "联系人列表显示"
 
 #: [config]roster_show
 msgid "Show the offline contacts"
@@ -1170,7 +1170,7 @@ msgstr "用深色让眼睛放松"
 
 #: [config]night_mode_detected
 msgid "Your browser is already telling Movim to use the Night Mode by default"
-msgstr ""
+msgstr "您的浏览器已经告诉 Movim 默认使用夜间模式"
 
 #: [config]chatmain
 msgid "Main chat page"
@@ -1343,7 +1343,7 @@ msgstr "听"
 
 #: [last]title
 msgid "Last seen"
-msgstr "最后上线"
+msgstr "最后访问"
 
 #: [clients]title
 msgid "Clients"
@@ -1463,7 +1463,7 @@ msgstr "与您的博客发布类似，只是默认情况下，这些帖子仅对
 
 #: [faq]chatrooms_title
 msgid "Where can I find a list of chatrooms?"
-msgstr "在哪里可以找到聊天室列表？"
+msgstr "在哪里可以找到群聊列表？"
 
 #: [faq]find_contacts_title
 msgid "Where can I find my contacts?"
@@ -1491,7 +1491,7 @@ msgstr "我们也推荐使用"
 
 #: [contact]title
 msgid "Administrators & Contact"
-msgstr "管理员 & 联系人"
+msgstr "管理员和联系人"
 
 #: [chatroom]question
 msgid "Chat with the Movim team?"
@@ -1499,7 +1499,7 @@ msgstr "与 Movim 团队聊天？"
 
 #: [chatroom]button
 msgid "Add the chatroom"
-msgstr "添加聊天室"
+msgstr "添加群聊"
 
 #: [location]title
 msgid "My location"
@@ -1579,11 +1579,11 @@ msgstr "密码格式无效"
 
 #: [error]unauthorized
 msgid "Your XMPP server is unauthorized"
-msgstr "你的 XMPP 服务器未授权"
+msgstr "您的 XMPP 服务器未经授权"
 
 #: [error]wrong_account
 msgid "Movim failed to authenticate. You entered wrong data"
-msgstr "Movim 无法验证。您输入的数据有误"
+msgstr "Movim 无法验证。您输入了错误的数据"
 
 #: [error]mechanism
 msgid "Authentication mechanism not supported by Movim"
@@ -1619,15 +1619,15 @@ msgstr "已连接"
 
 #: [form]population
 msgid "Population"
-msgstr "人口"
+msgstr "总数"
 
 #: [form]invite_chatroom
 msgid "%s invited you to join a chatroom"
-msgstr "%s 邀请您加入聊天室"
+msgstr "%s 邀请您加入群聊"
 
 #: [form]pod_admins
 msgid "Administrated by"
-msgstr "管理由"
+msgstr "此实例的管理员"
 
 #: [about_movim]info
 msgid "Movim is a federated blogging and chat platform."
@@ -1760,11 +1760,11 @@ msgstr "之后您可以随时在配置中禁用此功能"
 
 #: [onboarding]popups_title
 msgid "Popups"
-msgstr "弹出窗口"
+msgstr "弹窗"
 
 #: [onboarding]popups_text
 msgid "Movim is using popups for the video-conference feature, they are sometimes blocked by the browsers"
-msgstr "Movim 正在使用 video-conference 功能的弹出窗口，它们有时会被浏览器阻止"
+msgstr "Movim 正在使用 video-conference 的弹窗功能，它们有时会被浏览器阻止"
 
 #: [onboarding]popups_text_second
 msgid "Please be sure that they are enabled to use this feature properly"
@@ -1828,11 +1828,11 @@ msgstr "%s 分钟"
 
 #: [post]public_title
 msgid "Publish this article publicly"
-msgstr ""
+msgstr "公开发布这篇文章"
 
 #: [post]public_text
 msgid "This will allow anyone outside Movim to have access to your publication"
-msgstr ""
+msgstr "这将允许 Movim 之外的任何人访问您的发布"
 
 #: [post]public_yes
 msgid "This post is public"
@@ -1848,19 +1848,19 @@ msgstr "此帖子的公开 URL"
 
 #: [post]comments_disabled_title
 msgid "Disable the comments"
-msgstr ""
+msgstr "禁用评论"
 
 #: [post]comments_disabled_text
 msgid "Nobody will be able to like or comment"
-msgstr ""
+msgstr "没有人能够点赞或评论"
 
 #: [post]comments_disabled_yes
 msgid "Comments disabled for this article"
-msgstr ""
+msgstr "这篇文章已禁用评论"
 
 #: [post]comments_disabled_no
 msgid "Comments enabled for this article"
-msgstr ""
+msgstr "这篇文章已启用评论"
 
 #: [post]delete_title [post]delete
 msgid "Delete this post"
@@ -2048,23 +2048,23 @@ msgstr "Markdown 语法手册"
 
 #: [rooms]create
 msgid "Create a chatroom"
-msgstr "创建聊天室"
+msgstr "创建群聊"
 
 #: [rooms]edit
 msgid "Edit a chatroom"
-msgstr "编辑聊天室"
+msgstr "编辑群聊"
 
 #: [rooms]join
 msgid "Join a chatroom"
-msgstr "加入聊天室"
+msgstr "加入群聊"
 
 #: [rooms]join_custom
 msgid "Join a custom chatroom"
-msgstr "加入自定义聊天室"
+msgstr "加入自定义群聊"
 
 #: [rooms]empty_text1
 msgid "You don’t have any chatrooms yet."
-msgstr "您还没有任何聊天室。"
+msgstr "您还没有任何群聊。"
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
@@ -2072,31 +2072,31 @@ msgstr "单击添加按钮添加一个。"
 
 #: [rooms]type_room
 msgid "Type of room"
-msgstr "房间类型"
+msgstr "群聊类型"
 
 #: [rooms]default_room
 msgid "Standard room"
-msgstr "标准房间"
+msgstr "标准群聊"
 
 #: [rooms]gateway_room
 msgid "Gateway room"
-msgstr "局域网房间"
+msgstr "网关群聊"
 
 #: [rooms]show_all
 msgid "Show all rooms"
-msgstr "显示所有房间"
+msgstr "显示所有群聊"
 
 #: [rooms]hide_disconnected
 msgid "Hide disconnected rooms"
-msgstr "隐藏断开连接的房间"
+msgstr "隐藏断开连接的群聊"
 
 #: [rooms]destroy_title
 msgid "Destroy the room"
-msgstr "解散房间"
+msgstr "解散群聊"
 
 #: [rooms]destroy_text
 msgid "Are you sure you want to permanently destroy the following room?"
-msgstr "是否确定要永久解散以下房间？"
+msgstr "是否确定要永久解散群聊？"
 
 #: [rooms]owner
 msgctxt "[rooms]owner"
@@ -2122,19 +2122,19 @@ msgstr "使用服务前需要注册"
 
 #: [chatrooms]title
 msgid "Chatrooms"
-msgstr "聊天室"
+msgstr "群聊"
 
 #: [chatrooms]id
 msgid "Chatroom ID"
-msgstr "聊天室 ID"
+msgstr "群聊 ID"
 
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
-msgstr "收藏的聊天室"
+msgstr "收藏的群聊"
 
 #: [chatrooms]bad_id
 msgid "Bad Chatroom ID"
-msgstr "无效的聊天室 ID"
+msgstr "无效的群聊 ID"
 
 #: [chatrooms]empty_name
 msgid "Empty name"
@@ -2142,11 +2142,11 @@ msgstr "用户名为空"
 
 #: [chatrooms]remove_title
 msgid "Remove a chatroom"
-msgstr ""
+msgstr "移除群聊"
 
 #: [chatrooms]remove_text
 msgid "You are going to remove the following chatroom. Please confirm your action."
-msgstr ""
+msgstr "您将移除以下群聊。请确认您的操作。"
 
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
@@ -2172,31 +2172,31 @@ msgstr "用户名已被使用"
 
 #: [chatrooms]autojoin
 msgid "Join this chatroom on connect"
-msgstr "连接时加入此聊天室"
+msgstr "连接时加入此群聊"
 
 #: [chatrooms]pinned
 msgid "Pin this chatroom"
-msgstr "置顶此聊天室"
+msgstr "置顶此群聊"
 
 #: [chatrooms]destroyed
 msgid "Room destroyed"
-msgstr "房间已解散"
+msgstr "群聊已解散"
 
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
-msgstr "无法加入聊天室，需要注册"
+msgstr "无法加入群聊，需要注册"
 
 #: [chatrooms]remoteservernotfound
 msgid "The remote server for this chatroom doesn’t exist"
-msgstr ""
+msgstr "此群聊的远程服务器不存在"
 
 #: [chatrooms]remoteservertimeout
 msgid "Connection to remote server timed out"
-msgstr ""
+msgstr "与远程服务器的连接超时"
 
 #: [chatrooms]itemnotfound
 msgid "The chatroom doesn’t exist"
-msgstr "聊天室不存在"
+msgstr "群聊不存在"
 
 #: [chatrooms]notauthorized
 msgid "A password is required"
@@ -2204,11 +2204,11 @@ msgstr "需要密码"
 
 #: [chatrooms]forbidden
 msgid "You are not allowed to join this chatroom"
-msgstr "不允许您加入此聊天室"
+msgstr "不允许您加入此群聊"
 
 #: [chatrooms]jidmalformed
 msgid "Your nickname is not valid"
-msgstr "你的昵称无效"
+msgstr "您的昵称无效"
 
 #: [chatrooms]notacceptable
 msgid "Not acceptable"
@@ -2216,15 +2216,15 @@ msgstr "不可接受"
 
 #: [chatrooms]serviceunavailable
 msgid "The chatroom occupant limit has been reached"
-msgstr "已达到聊天室占用人数限制"
+msgstr "已达到群聊占用人数限制"
 
 #: [chatrooms]notallowed
 msgid "You are not allowed to create a chatroom there"
-msgstr "不允许您在那里创建聊天室"
+msgstr "不允许您在那里创建群聊"
 
 #: [chatrooms]created
 msgid "Chatroom created"
-msgstr "聊天室已创建"
+msgstr "群聊已创建"
 
 #: [bookmarks]updated
 msgid "Bookmarks updated"
@@ -2232,7 +2232,7 @@ msgstr "书签已更新"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
-msgstr "公共聊天室"
+msgstr "公开群聊"
 
 #: [room]anonymous_text1
 msgid "You are currently logged as an anonymous user."
@@ -2260,7 +2260,7 @@ msgstr "将此链接发送到您的联系人"
 
 #: [room]public_muc_text
 msgid "This chatroom is publicly discoverable"
-msgstr "此聊天室是可公开发现的"
+msgstr "此群聊是可公开发现的"
 
 #: [room]nonanonymous_muc
 msgid "Public profiles"
@@ -2268,7 +2268,7 @@ msgstr "公开个人资料"
 
 #: [room]nonanonymous_muc_text
 msgid "The participants of this chatroom can see each other's profile"
-msgstr "此聊天室的参与者可以查看彼此的个人资料"
+msgstr "此群聊的参与者可以查看彼此的个人资料"
 
 #: [room]archived
 msgid "Archived"
@@ -2276,7 +2276,7 @@ msgstr "已存档"
 
 #: [room]archived_text
 msgid "The chatroom messages are archived"
-msgstr "聊天室消息已存档"
+msgstr "群聊消息已存档"
 
 #: [room]group_chat
 msgid "Group Chat"
@@ -2388,7 +2388,7 @@ msgstr "用户的从属关系已移除"
 
 #: [roomsexplore]no_local
 msgid "No chatrooms found locally"
-msgstr "本地找不到聊天室"
+msgstr "本地找不到群聊"
 
 #: [roomsexplore]global_title
 msgid "Global search"
@@ -2396,7 +2396,7 @@ msgstr "全局搜索"
 
 #: [roomsexplore]no_global
 msgid "No chatrooms found globally"
-msgstr "全局找不到聊天室"
+msgstr "全局找不到群聊"
 
 #: [search]keyword
 msgid "What are you looking for?"
@@ -2440,7 +2440,7 @@ msgstr "将其发送给联系人"
 
 #: [sendto]chatroom
 msgid "Share it in a chatroom"
-msgstr "在聊天室中分享"
+msgstr "在群聊中分享"
 
 #: [sendto]shared_with
 msgid "Post shared"
@@ -2452,7 +2452,7 @@ msgstr "与您的联系人分享的帖子"
 
 #: [sendto]shared_chatroom
 msgid "Post shared within the chatroom"
-msgstr "在聊天室中分享的帖子"
+msgstr "在群聊中分享的帖子"
 
 #: [sendto]more_contacts
 msgid "More contacts"
@@ -2556,7 +2556,7 @@ msgstr "个人资料未更新"
 
 #: [vcard]nickname_info
 msgid "This will also be used as your default nickname when joining a chatroom"
-msgstr "这也将作为您加入聊天室时的默认昵称"
+msgstr "这也将作为您加入群聊时的默认昵称"
 
 #: [profile]public
 msgid "Your profile is now public"
@@ -2572,11 +2572,11 @@ msgstr "配置实例昵称"
 
 #: [profile]privacy_question
 msgid "Is this account public on this Movim instance?"
-msgstr "这个账号在此 Movim 实例上是公开的吗？"
+msgstr "此账号在此 Movim 实例上是公开的吗？"
 
 #: [profile]privacy_info
 msgid "Movim will create a public page to host your blog and your account will be searchable by the other Movim users."
-msgstr "Movim 将创建一个公共页面来托管您的博客，其他Movim 用户可以搜索您的账号。"
+msgstr "Movim 将创建一个公共页面来托管您的博客，其他 Movim 用户可以搜索您的账号。"
 
 #: [profile]nickname_info
 msgid "Set a local nickname to allow the other users of the instance to find you easily."
@@ -2660,7 +2660,7 @@ msgstr "通话结束"
 
 #: [visioconfig]title
 msgid "Video & Voice"
-msgstr "视频 & 语音"
+msgstr "视频和语音"
 
 #: [visioconfig]help
 msgid "Configure the default devices used by Movim"
@@ -2716,7 +2716,7 @@ msgstr "或者"
 
 #: [global]change_pod
 msgid "Switch to another pod"
-msgstr "切换到另一个 pod"
+msgstr "切换到另一个 Pod"
 
 #: [page]communities
 msgid "Communities"
@@ -2736,7 +2736,7 @@ msgstr "创建账号"
 
 #: [page]news
 msgid "News"
-msgstr "新闻"
+msgstr "消息"
 
 #: [page]avatar
 msgid "Avatar"
@@ -2789,7 +2789,7 @@ msgstr "分享"
 
 #: [page]room
 msgid "Room"
-msgstr "房间"
+msgstr "群聊"
 
 #: [page]tag
 msgid "Tag"
@@ -2861,7 +2861,7 @@ msgstr "解散"
 
 #: [button]remove
 msgid "Remove"
-msgstr ""
+msgstr "移除"
 
 #: [button]cancel
 msgid "Cancel"
@@ -2901,7 +2901,7 @@ msgstr "保存"
 
 #: [button]clear
 msgid "Clear"
-msgstr "清除"
+msgstr "清空"
 
 #: [button]connecting
 msgid "Connecting"
@@ -2958,7 +2958,7 @@ msgstr "不是现在"
 
 #: [button]enable
 msgid "Enable"
-msgstr "开启"
+msgstr "启用"
 
 #: [button]sign_up
 msgid "Sign Up"
@@ -2982,7 +2982,7 @@ msgstr "开放"
 
 #: [input]optional
 msgid "Optional"
-msgstr "可选的"
+msgstr "可选"
 
 #: [input]muc_pubsub_node
 msgid "Associated Community"
@@ -3022,11 +3022,11 @@ msgstr "星期日"
 
 #: [client]bot
 msgid "Bot"
-msgstr "Bot"
+msgstr "机器人"
 
 #: [client]console
 msgid "Console"
-msgstr "操作台"
+msgstr "控制台"
 
 #: [client]desktop
 msgid "Desktop"
@@ -3034,7 +3034,7 @@ msgstr "桌面"
 
 #: [client]phone
 msgid "Phone"
-msgstr "电话"
+msgstr "手机"
 
 #: [client]web
 msgid "Web"
@@ -3330,7 +3330,7 @@ msgstr "放松"
 
 #: [mood]remorseful
 msgid "remorseful"
-msgstr ""
+msgstr "歉疚"
 
 #: [mood]restless
 msgid "restless"

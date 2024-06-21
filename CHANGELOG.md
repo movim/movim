@@ -1,7 +1,7 @@
 Movim Changelog
 ================
 
-v0.24.2 (master)
+v0.25 (master)
 ---------------------------
 * Fix #974 Wrong certificate expected when using SRV records
 * Move the Message files to the SQL database
@@ -12,6 +12,7 @@ v0.24.2 (master)
 * Refactor the prepareDate and prepareTime functions
 * Fix #1292 Apply nightmode if the browser is asking for it
 * Proxify the uploaded files through an internal proxy to prevent CORS requirement
+* Update the translations
 
 v0.24.1
 ---------------------------

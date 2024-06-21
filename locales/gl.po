@@ -115,7 +115,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-14 23:41+0200\n"
+"POT-Creation-Date: 2024-06-21 11:42+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: ghose <correoxm@disroot.org>, 2023\n"
 "Language-Team: Galician (http://app.transifex.com/movim/movim/language/gl/)\n"
@@ -505,9 +505,8 @@ msgid "The administrator is also aware of this list and can therefore block thos
 msgstr "A administración tamén pode ver esta lista e por tanto bloquealas para todo o sistema"
 
 #: [blog]title
-#, fuzzy
 msgid "%s’s blog"
-msgstr "Fonte de %s"
+msgstr ""
 
 #: [blog]private
 msgid "This content is private, please login to see it"

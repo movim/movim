@@ -124,7 +124,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-14 23:41+0200\n"
+"POT-Creation-Date: 2024-06-21 11:42+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>, 2015-2024\n"
 "Language-Team: French (France) (http://app.transifex.com/movim/movim/language/fr_FR/)\n"
@@ -514,9 +514,8 @@ msgid "The administrator is also aware of this list and can therefore block thos
 msgstr "Les administrateurs sont également au courant de cette liste et peuvent choisir de bloquer ces comptes au niveau de l'instance"
 
 #: [blog]title
-#, fuzzy
 msgid "%s’s blog"
-msgstr "Flux de %s"
+msgstr "Blog the %s"
 
 #: [blog]private
 msgid "This content is private, please login to see it"
@@ -1167,7 +1166,7 @@ msgstr "Des couleurs sombres pour reposer vos yeux"
 
 #: [config]night_mode_detected
 msgid "Your browser is already telling Movim to use the Night Mode by default"
-msgstr ""
+msgstr "Votre navigateur demande déjà à Movim d'utiliser le Mode Nuit"
 
 #: [config]chatmain
 msgid "Main chat page"
@@ -3600,9 +3599,3 @@ msgstr "L’API est indisponible pour le moment, réessayez plus tard."
 #: [field]type_here
 msgid "Type here"
 msgstr "Rédigez votre message ici"
-
-#~ msgid "Badges"
-#~ msgstr "Badges"
-
-#~ msgid "No public data found"
-#~ msgstr "Aucune donnée publique trouvée"

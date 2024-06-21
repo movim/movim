@@ -117,7 +117,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-14 23:41+0200\n"
+"POT-Creation-Date: 2024-06-21 11:42+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Xabi, 2023-2024\n"
 "Language-Team: Basque (http://app.transifex.com/movim/movim/language/eu/)\n"
@@ -507,9 +507,8 @@ msgid "The administrator is also aware of this list and can therefore block thos
 msgstr "Administraria zerrenda honen jakinaren gainean dago eta erabiltzaile horiek bere ardurapean duen sistema osoan blokeatu ditzazke"
 
 #: [blog]title
-#, fuzzy
 msgid "%s’s blog"
-msgstr "%s(r)en jarioa"
+msgstr "%s(r)en bloga"
 
 #: [blog]private
 msgid "This content is private, please login to see it"
@@ -695,19 +694,19 @@ msgstr "Ezin da gauzatu enkriptatutako txatetan"
 
 #: [chat]first_messages_title
 msgid "This is the beginning of this conversation"
-msgstr ""
+msgstr "Hau da elkarrizketaren. hasiera"
 
 #: [chat]first_messages_text
 msgid "You can choose to add it as a new contact or block it to prevent some other unsolicited messages"
-msgstr ""
+msgstr "Kontaktu gisa gehitu edo nahi ez dituzun mezuak ekiditeko blokeatu dezakezu"
 
 #: [chat]first_messages_add
 msgid "Add to my contacts"
-msgstr ""
+msgstr "Gehitu nire kontaktuetan"
 
 #: [chat]first_messages_block
 msgid "Block"
-msgstr ""
+msgstr "Blokeatu"
 
 #: [chatroom]members
 msgid "Members"
@@ -1818,11 +1817,11 @@ msgstr "%s minutu"
 
 #: [post]public_title
 msgid "Publish this article publicly"
-msgstr ""
+msgstr "Argitaratu artikulu hau publikoki"
 
 #: [post]public_text
 msgid "This will allow anyone outside Movim to have access to your publication"
-msgstr ""
+msgstr "Movim-etik kanpoko edonori zure argitalpena atzitzea ahalbidetuko du honek"
 
 #: [post]public_yes
 msgid "This post is public"
@@ -1838,19 +1837,19 @@ msgstr "Argitalpen honen esteka publikoa"
 
 #: [post]comments_disabled_title
 msgid "Disable the comments"
-msgstr ""
+msgstr "Ezgaitu iruzkinak"
 
 #: [post]comments_disabled_text
 msgid "Nobody will be able to like or comment"
-msgstr ""
+msgstr "Ezingo du inork iruzkindu edo gogoko egin"
 
 #: [post]comments_disabled_yes
 msgid "Comments disabled for this article"
-msgstr ""
+msgstr "Iruzkinak ezgaitu dira artikulu honetarako"
 
 #: [post]comments_disabled_no
 msgid "Comments enabled for this article"
-msgstr ""
+msgstr "Iruzkinak gaitu dira artikulu honetarako"
 
 #: [post]delete_title [post]delete
 msgid "Delete this post"
@@ -2132,11 +2131,11 @@ msgstr "Izenik ez"
 
 #: [chatrooms]remove_title
 msgid "Remove a chatroom"
-msgstr ""
+msgstr "Kendu txat-gela bat"
 
 #: [chatrooms]remove_text
 msgid "You are going to remove the following chatroom. Please confirm your action."
-msgstr ""
+msgstr "Ondorengo txat-gela kentzear zaude, Baieztatu ekintza."
 
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
@@ -2178,11 +2177,11 @@ msgstr "Ezin izan da txat-gelan sartu, erregistroa ezinbestekoa da"
 
 #: [chatrooms]remoteservernotfound
 msgid "The remote server for this chatroom doesn’t exist"
-msgstr ""
+msgstr "Ez da existitzen txat-gela honen urruneko zerbitzaria"
 
 #: [chatrooms]remoteservertimeout
 msgid "Connection to remote server timed out"
-msgstr ""
+msgstr "Agortu egin da urruneko zerbitzariko konexioa"
 
 #: [chatrooms]itemnotfound
 msgid "The chatroom doesn’t exist"
@@ -2851,7 +2850,7 @@ msgstr "Suntsitu"
 
 #: [button]remove
 msgid "Remove"
-msgstr ""
+msgstr "Kendu"
 
 #: [button]cancel
 msgid "Cancel"
@@ -3320,7 +3319,7 @@ msgstr "lasai"
 
 #: [mood]remorseful
 msgid "remorseful"
-msgstr ""
+msgstr "harrak janda"
 
 #: [mood]restless
 msgid "restless"
