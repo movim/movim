@@ -84,6 +84,8 @@
                     {if="$message->file->isPicture"}
                         {if="$message->file->preview && $message->file->preview['thumbnail_type'] == 'image/thumbhash' && $message->file->preview['thumbnail_url']"}
                             <img class="tinythumb" data-thumbhash="{$message->file->preview['thumbnail_url']}">
+                        {else}
+                            <i class="material-symbols">image</i>
                         {/if}
                         {$c->__('chats.picture')}
                     {elseif="$message->file->isAudio"}
