@@ -133,7 +133,7 @@ class JingletoSDP
                                     'both' => 'sendrecv',
                                 ];
 
-                                $sdpMedia .= '/' . $sendersToDirection[$payload->attributes()->senders];
+                                $sdpMedia .= '/' . $sendersToDirection[(string)$payload->attributes()->senders];
                             }
 
                             $sdpMedia .= ' ' . $payload->attributes()->uri;
