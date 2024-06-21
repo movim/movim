@@ -82,7 +82,10 @@
                         <span class="moderator">{$c->__('chats.me')}:</span>
                     {/if}
                     {if="$message->file->isPicture"}
-                        <i class="material-symbols">image</i> {$c->__('chats.picture')}
+                        {if="$message->file->preview && $message->file->preview['thumbnail_type'] == 'image/thumbhash' && $message->file->preview['thumbnail_url']"}
+                            <img class="tinythumb" data-thumbhash="{$message->file->preview['thumbnail_url']}">
+                        {/if}
+                        {$c->__('chats.picture')}
                     {elseif="$message->file->isAudio"}
                         <i class="material-symbols">equalizer</i> {$c->__('chats.audio')}
                     {elseif="$message->file->isVideo"}
@@ -96,9 +99,16 @@
                     {if="$message->jidfrom == $message->user_id"}
                         <span class="moderator">{$c->__('chats.me')}:</span>
                     {/if}
+                    {if="$message->resolvedUrl && $message->resolvedUrl->cache"}
+                        <i class="material-symbols">link</i> {$message->resolvedUrl->cache->title}
+                        {if="!empty($message->resolvedUrl->cache->description)"}
+                            | {$message->resolvedUrl->cache->description}
+                        {/if}
+                    {else}
                     {autoescape="off"}
                         {$message->body|stripTags|addEmojis}
                     {/autoescape}
+                    {/if}
                 </p>
             {/if}
         {elseif="$roster && $roster->presence && $roster && $roster->presence->status"}

@@ -13,6 +13,13 @@ ul#chats_widget_list li {
     max-height: 8rem;
 }
 
+ul#chats_widget_list li img.tinythumb {
+    object-fit: cover;
+    width: 1.4rem;
+    height: 1.4rem;
+    margin-right: 0.25rem;
+}
+
 ul#chats_widget_list li.moving {
     will-change: transform;
     transition: transform 0.1s, max-height 0.2s ease-in-out 0.2s;

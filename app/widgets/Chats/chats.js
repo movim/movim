@@ -23,6 +23,16 @@ var Chats = {
 
         while(i < items.length)
         {
+            if (items[i].querySelector('img.tinythumb')) {
+                var img = items[i].querySelector('img.tinythumb');
+
+                try {
+                    img.src = thumbHashToDataURL(MovimUtils.base64ToBinary(img.dataset.thumbhash));
+                } catch (error) {
+                    console.log('Cannot handle thumbhash hash');
+                }
+            }
+
             if (items[i].dataset.jid != null) {
                 items[i].onclick = function(e) {
                     Rooms.refresh();

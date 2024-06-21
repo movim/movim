@@ -523,39 +523,7 @@ class Message extends Model
                         $this->picture = $messageFile->isPicture;
                         $this->messageFiles->push($messageFile);
                     }
-                } /*elseif (
-                    \in_array($stanza->reference->attributes()->type, ['mention', 'data'])
-                    && $stanza->reference->attributes()->uri
-                ) {
-
-                    $uri = parse_url($stanza->reference->attributes()->uri);
-
-                    if ($uri['scheme'] === 'xmpp') {
-                        $begin = '<a href="' . Route::urlize('share', $stanza->reference->attributes()->uri) . '">';
-
-                        if ($stanza->reference->attributes()->begin && $stanza->reference->attributes()->end) {
-                            $this->html = substr_replace(
-                                $this->body,
-                                $begin,
-                                (int)$stanza->reference->attributes()->begin,
-                                0
-                            );
-                            $this->html = substr_replace(
-                                $this->html,
-                                '</a>',
-                                (int)$stanza->reference->attributes()->end + strlen($begin),
-                                0
-                            );
-                        } else {
-                            $this->html = $begin . $this->body . '</a>';
-                        }
-
-                        $this->file = [
-                            'type' => 'xmpp',
-                            'uri' => (string)$stanza->reference->attributes()->uri,
-                        ];
-                    }
-                }*/
+                }
             }
 
             if (

@@ -80,14 +80,8 @@ class SendTo extends Base
         $this->rpc('SendTo.init');
     }
 
-    public function ajaxSend(string $to, $file, $muc = false, $message = false)
+    public function ajaxSend(string $to, bool $muc = false, string $message)
     {
-        $file->type = 'xmpp/uri'; // Internal placeholder
-        $file->name = $this->__('sendto.shared_with');
-
-        $messageFile = new MessageFile;
-        $messageFile->import($file);
-
         Toast::send($muc
             ? $this->__('sendto.shared_chatroom')
             : $this->__('sendto.shared_contact')
@@ -97,10 +91,9 @@ class SendTo extends Base
         $c = new Chat;
         $c->sendMessage(
             $to,
-            !empty($message) ? $message : $this->__('sendto.shared_with'),
+            $message,
             $muc,
-            null,
-            $messageFile
+            null
         );
     }
 

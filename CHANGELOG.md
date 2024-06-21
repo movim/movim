@@ -5,6 +5,8 @@ Movim Changelog
 ---------------------------
 * Fix #1327 Use string casting for senders attribute
 * Fix URL handling when path is containing empty values //
+* Fix SendTo contact/chatroom Post sharing
+* Improve Link and Image previews using thumbhash in the Chats widget
 
 v0.25
 ---------------------------

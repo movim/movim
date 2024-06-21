@@ -1338,7 +1338,7 @@ var Chat = {
                     img.setAttribute('onclick', 'Preview_ajaxHttpShow("' + file.preview.url + '", ' + data.mid + ')');
                 }
 
-                if (file.preview.thumbnail_type = 'image/thumbhash' && file.preview.thumbnail_url) {
+                if (file.preview.thumbnail_type == 'image/thumbhash' && file.preview.thumbnail_url) {
                     try {
                         div.style.background = `center / cover url(${thumbHashToDataURL(MovimUtils.base64ToBinary(file.preview.thumbnail_url))})`;
                     } catch (error) {
