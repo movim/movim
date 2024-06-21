@@ -40,20 +40,20 @@
     <div class="block">
         <ul class="list">
             {if="isset($replyblock)"}
+                <br />
                 <li>
                     <span class="control icon gray active"
                           onclick="Publish.clearReply()">
                         <i class="material-symbols">close</i>
                     </span>
                     <div>
-                        <ul class="list card shadow middle" id="publishreply">
+                        <ul class="list card middle" id="publishreply">
                             {autoescape="off"}
                                 {$replyblock}
                             {/autoescape}
                         </ul>
                     </div>
                 </li>
-                <br />
             {/if}
             <li>
                 <form onsubmit="return false;" name="brief">

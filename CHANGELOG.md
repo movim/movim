@@ -1,7 +1,12 @@
 Movim Changelog
 ================
 
-v0.25 (master)
+.0.25.1 (master)
+---------------------------
+* Fix #1327 Use string casting for senders attribute
+* Fix URL handling when path is containing empty values //
+
+v0.25
 ---------------------------
 * Fix #974 Wrong certificate expected when using SRV records
 * Move the Message files to the SQL database

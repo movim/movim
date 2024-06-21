@@ -58,7 +58,7 @@ class Route extends Base
 
     public function find($page = null)
     {
-        $path = array_filter(explode('/', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)));
+        $path = explode('/', parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 
         if ($page != null) {
             $this->_page = $page;
@@ -66,6 +66,7 @@ class Route extends Base
             $this->_page = $path[1];
 
             if (is_array($this->_routes[$this->_page])) {
+                array_shift($path);
                 array_shift($path);
 
                 $i = 0;
