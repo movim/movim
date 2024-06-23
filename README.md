@@ -31,15 +31,13 @@ You can help Movim by:
 * Helping us covering our monthly costs on our official Patreon page: [![Donate](https://img.shields.io/badge/Patreon-Become%20a%20Patron-orange.svg)](https://www.patreon.com/movim)
 * …or on Liberapay [![Donate](https://img.shields.io/liberapay/receives/movim.svg)](https://liberapay.com/movim/donate)
 
-You can also support us on:
-* Flattr: https://flattr.com/thing/568092/Movim
-
 Links
 -----
 * Movim official website: https://movim.eu/
 * You can join one of the Movim instances on https://join.movim.eu/
-* Twitter: https://twitter.com/MovimNetwork
+* Mastodon: @movim@piaille.fr
 * XMPP Chatroom: movim@conference.movim.eu
+* Twitter: https://twitter.com/MovimNetwork
 
 Translations
 ------------
