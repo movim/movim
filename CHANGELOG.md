@@ -1,7 +1,10 @@
 Movim Changelog
 ================
 
-.0.25.1 (master)
+v0.25.2 (master)
+---------------------------
+
+v0.25.1
 ---------------------------
 * Fix #1327 Use string casting for senders attribute
 * Fix URL handling when path is containing empty values //
