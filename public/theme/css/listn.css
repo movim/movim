@@ -320,6 +320,10 @@ ul.list li.subheader>div>p {
     font-weight: 600;
 }
 
+ul.list li.subheader span.chip {
+    flex: 0 0 auto;
+}
+
 /* Search forms */
 
 ul.list>li.main form div:after,

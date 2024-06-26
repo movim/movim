@@ -1,10 +1,13 @@
-<ul class="list">
+<ul id="chats_widget_header" class="list" data-filter="{$filter}">
     <li class="subheader">
         <div>
             <p class="normal">
                 {$c->__('page.chats')}
             </p>
         </div>
+        {loop="$filters"}
+            <span class="chip active" data-filter="{$value}" onclick="Chats.setFilter(this.dataset.filter)">{$c->__('chats_filter.' . $value)}</span>
+        {/loop}
     </li>
 </ul>
 <ul id="chats_widget_list" class="list middle active divided spaced">

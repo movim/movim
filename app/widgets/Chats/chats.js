@@ -9,7 +9,23 @@ var Chats = {
         MovimUtils.addClass('#' + MovimUtils.cleanupId(jid + '_chat_item'), 'active');
     },
 
+    setFilter: function(filter) {
+        document.querySelector('#chats_widget_header').dataset.filter = filter;
+        Chats_ajaxSetFilter(filter);
+    },
+
+    refreshFilters: function() {
+        var filter = document.querySelector('#chats_widget_header').dataset.filter;
+
+        document.querySelectorAll('#chats_widget_header span.chip').forEach(chip => {
+            chip.classList.remove('enabled');
+
+            if (chip.dataset.filter == filter) chip.classList.add('enabled');
+        });
+    },
+
     refresh: function(clearAllActives) {
+        Chats.refreshFilters();
         var list = document.querySelector('#chats_widget_list');
 
         if (!list) return;

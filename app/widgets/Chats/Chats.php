@@ -9,6 +9,8 @@ use App\Roster;
 
 class Chats extends Base
 {
+    private $_filters = ['all', 'roster'];
+
     public function load()
     {
         $this->addcss('chats.css');
@@ -157,6 +159,15 @@ class Chats extends Base
             $g->setJid(echapJid($jid));
             $g->request();
         }
+    }
+
+    public function ajaxSetFilter(string $filter)
+    {
+        if (in_array($filter, $this->_filters)) {
+            \App\Cache::c('chats_filter', $filter);
+        }
+
+        $this->rpc('Chats.refreshFilters');
     }
 
     public function ajaxOpen($jid, $history = true)
@@ -376,5 +387,11 @@ class Chats extends Base
             $unreads,
             is_array($chats) ? $chats : [],
         );
+    }
+
+    function display()
+    {
+        $this->view->assign('filters', $this->_filters);
+        $this->view->assign('filter', \App\Cache::c('chats_filter'));
     }
 }

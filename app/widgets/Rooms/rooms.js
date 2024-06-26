@@ -1,15 +1,15 @@
 var Rooms = {
     default_services: [],
 
-    setDefaultServices: function(services) {
+    setDefaultServices: function (services) {
         Rooms.default_services = services;
     },
 
-    toggleEdit: function(){
+    toggleEdit: function () {
         document.querySelector('#rooms_widget ul.list.rooms').classList.toggle('edition');
     },
 
-    checkNoConnected: function() {
+    checkNoConnected: function () {
         if (
             !document.querySelector('#rooms_widget ul.list.rooms li.connected')
             && localStorage.getItem('rooms_all') == 'true'
@@ -18,17 +18,31 @@ var Rooms = {
         }
     },
 
-    toggleShowAll: function(){
+    toggleShowAll: function () {
         document.querySelector('#rooms_widget ul.list.rooms').classList.toggle('all');
         localStorage.setItem('rooms_all', document.querySelector('#rooms_widget ul.list.rooms').classList.contains('all'));
+
+        Rooms.displayToggleButton();
     },
 
-    selectGatewayRoom : function(room, name) {
+    displayToggleButton: function () {
+        document.querySelectorAll('#rooms_widget span.chip').forEach(chip => {
+            chip.classList.remove('enabled');
+        });
+
+        if (localStorage.getItem('rooms_all') == 'true') {
+            document.querySelector('#rooms_widget span.chip[data-filter=all]').classList.add('enabled');
+        } else {
+            document.querySelector('#rooms_widget span.chip[data-filter=connected]').classList.add('enabled');
+        }
+    },
+
+    selectGatewayRoom: function (room, name) {
         document.querySelector('form[name="bookmarkmucadd"] input[name=jid]').value = room;
         document.querySelector('form[name="bookmarkmucadd"] input[name=name]').value = name;
     },
 
-    setJid: function(slugifiedJid) {
+    setJid: function (slugifiedJid) {
         let input = document.querySelector('form[name=bookmarkmucadd] input[name=jid]');
 
         if (input && input.value === '') {
@@ -36,7 +50,7 @@ var Rooms = {
         }
     },
 
-    suggest: function() {
+    suggest: function () {
         let input = document.querySelector('form[name=bookmarkmucadd] input[name=jid]');
 
         if (input && input.value != '' && !input.value.includes('@')) {
@@ -44,7 +58,7 @@ var Rooms = {
             if (suggestions) {
                 suggestions.textContent = '';
 
-                Rooms.default_services.forEach(function(item) {
+                Rooms.default_services.forEach(function (item) {
                     var option = document.createElement('option');
                     option.value = input.value + '@' + item.server;
                     suggestions.appendChild(option);
@@ -53,7 +67,9 @@ var Rooms = {
         }
     },
 
-    refresh: function() {
+    refresh: function () {
+        Rooms.displayToggleButton();
+
         var list = document.querySelector('#rooms_widget ul.list.rooms');
         var items = document.querySelectorAll('#rooms_widget ul.list.rooms li:not(.subheader)');
         var i = 0;
@@ -61,10 +77,9 @@ var Rooms = {
         var differentStates = false;
         list.classList.remove('different_states');
 
-        while(i < items.length)
-        {
+        while (i < items.length) {
             if (items[i].dataset.jid != null) {
-                items[i].onclick = function(e) {
+                items[i].onclick = function (e) {
                     Chat.getRoom(this.dataset.jid);
                     Chats.refresh(true);
 
@@ -77,7 +92,7 @@ var Rooms = {
             if (
                 i >= 1
                 && !differentStates
-                && items[i-1].classList.contains('connected') != items[i].classList.contains('connected')
+                && items[i - 1].classList.contains('connected') != items[i].classList.contains('connected')
             ) {
                 differentStates = true;
             }
@@ -94,11 +109,11 @@ var Rooms = {
         }
     },
 
-    clearRooms: function() {
+    clearRooms: function () {
         document.querySelector('#rooms_widget ul.list.rooms').innerHTML = '';
     },
 
-    setRoom: function(id, html) {
+    setRoom: function (id, html) {
         var listSelector = '#rooms_widget ul.list.rooms ';
         var list = document.querySelector(listSelector);
         var element = list.querySelector('#' + id);
@@ -108,8 +123,7 @@ var Rooms = {
         var rooms = document.querySelectorAll(listSelector + '> li');
         var i = 0;
 
-        while(i < rooms.length)
-        {
+        while (i < rooms.length) {
             if (rooms[i].id > id) {
                 MovimTpl.prependBefore(listSelector + '#' + rooms[i].id, html);
                 break;
@@ -125,7 +139,7 @@ var Rooms = {
         Rooms.refresh();
     },
 
-    setUnread: function(id, unread) {
+    setUnread: function (id, unread) {
         var element = document.querySelector('#rooms_widget ul.list.rooms #' + id);
 
         if (element) {

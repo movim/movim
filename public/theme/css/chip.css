@@ -6,8 +6,16 @@
     margin: 0 0.5rem;
     border-radius: 1rem;
     color: rgb(var(--movim-font));
-    background-color: rgb(var(--movim-background-main));
+    background-color: rgba(var(--movim-element-action), 0.05);
     transition: background 0.3s ease;
+}
+
+.chip:first-child {
+    margin-left: 0;
+}
+
+.chip:last-child {
+    margin-right: 0;
 }
 
 .chip i {
@@ -23,13 +31,21 @@
 
 .chip.active:hover {
     background-color: rgba(var(--movim-element-action), 0.2);
+    box-shadow: var(--elevation-1);
 }
 
 .chip.active:focus {
     background-color: rgba(var(--movim-element-action), 0.4);
+    box-shadow: var(--elevation-0);
 }
 
 .chip.outline {
     outline: 1px solid rgba(var(--movim-font), 0.12);
     outline-offset: -1px;
+}
+
+.chip.enabled {
+    background-color: rgba(var(--movim-element-action), 0.4);
+    box-shadow: var(--elevation-2);
+    pointer-events: none;
 }

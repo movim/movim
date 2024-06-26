@@ -46,15 +46,18 @@ class Notifications extends Base
     public function onInvitations($from = false)
     {
         if (is_string($from)) {
-            $contact = App\Contact::firstOrNew(['id' => $from]);
+            $contact = App\Contact::first();
 
-            Notif::append(
-                'invite|' . $from,
-                $contact->truename,
-                $this->__('invitations.wants_to_talk', $contact->truename),
-                $contact->getPicture(),
-                4
-            );
+            // Don't notify if the contact is not in stored already, for spam reasons
+            if ($contact) {
+                Notif::append(
+                    'invite|' . $from,
+                    $contact->truename,
+                    $this->__('invitations.wants_to_talk', $contact->truename),
+                    $contact->getPicture(),
+                    4
+                );
+            }
         }
 
         $this->ajaxSetCounter();

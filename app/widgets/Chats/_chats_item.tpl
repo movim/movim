@@ -2,11 +2,14 @@
     id="{$contact->jid|cleanupId}-chat-item"
     data-jid="{$contact->jid}"
     class="
-        {if="$roster && $roster->presence"}
-            {if="$roster->presence->value > 4"}faded{/if}
-            {if="$roster->presence->last > 60"} inactive{/if}
-            {if="$roster->presence->capability && $roster->presence->capability->identities()->first() && in_array($roster->presence->capability->identities()->first()->type, ['handheld', 'phone', 'web'])"}
-                action
+        {if="$roster"}
+            roster
+            {if="$roster->presence"}
+                {if="$roster->presence->value > 4"}faded{/if}
+                {if="$roster->presence->last > 60"} inactive{/if}
+                {if="$roster->presence->capability && $roster->presence->capability->identities()->first() && in_array($roster->presence->capability->identities()->first()->type, ['handheld', 'phone', 'web'])"}
+                    action
+                {/if}
             {/if}
         {/if}
         "

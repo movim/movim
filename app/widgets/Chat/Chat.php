@@ -189,18 +189,22 @@ class Chat extends \Movim\Widget\Base
                 }
 
                 Notif::rpcCall('Notif.incomingMessage');
-                Notif::append(
-                    'chat|' . $from,
-                    $name,
-                    $message->encrypted && is_array($message->omemoheader)
-                        ? "🔒 " . substr($message->omemoheader['payload'], 0, strlen($message->omemoheader['payload']) / 2)
-                        : $rawbody,
-                    $contact->getPicture(),
-                    4,
-                    $this->route('chat', $contact->jid),
-                    null,
-                    'Search.chat(\'' . echapJS($contact->jid) . '\')'
-                );
+
+                // Prevent some spammy notifications
+                if ($roster || $contact->exists) {
+                    Notif::append(
+                        'chat|' . $from,
+                        $name,
+                        $message->encrypted && is_array($message->omemoheader)
+                            ? "🔒 " . substr($message->omemoheader['payload'], 0, strlen($message->omemoheader['payload']) / 2)
+                            : $rawbody,
+                        $contact->getPicture(),
+                        4,
+                        $this->route('chat', $contact->jid),
+                        null,
+                        'Search.chat(\'' . echapJS($contact->jid) . '\')'
+                    );
+                }
             }
             // If it's a groupchat message
             elseif (

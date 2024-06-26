@@ -46,3 +46,7 @@ ul#chats_widget_list li.close {
 ul#chats_widget_list:empty ~ .placeholder {
     display: block;
 }
+
+ul#chats_widget_header[data-filter=roster] + ul#chats_widget_list li:not(.roster) {
+    display: none;
+}
