@@ -46,7 +46,7 @@ class Notifications extends Base
     public function onInvitations($from = false)
     {
         if (is_string($from)) {
-            $contact = App\Contact::first();
+            $contact = App\Contact::find($from);
 
             // Don't notify if the contact is not in stored already, for spam reasons
             if ($contact) {
