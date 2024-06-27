@@ -7,7 +7,7 @@ use Respect\Validation\Validator;
 
 class MessageFile extends Model
 {
-    protected $appends = ['preview'];
+    protected $appends = ['preview', 'cleansize'];
 
     public function message()
     {

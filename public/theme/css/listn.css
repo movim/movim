@@ -545,7 +545,7 @@ ul li.oppose div.bubble.file div.audio_player {
     background-color: rgba(var(--movim-background-main), 0.5);
     border-color: rgba(var(--movim-background-main), 0.5);
     border-radius: 1rem 0 1rem 1rem;
-    padding: 1rem 1rem 1rem 1.5rem;
+    padding-right: 1.5rem;
 }
 
 li div.bubble p i.icon {

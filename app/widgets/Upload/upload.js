@@ -269,7 +269,7 @@ var Upload = {
             formData.append('file', Upload.file, Upload.name);
             Upload.xhr.send(formData);
 
-            document.querySelector('#upload_progress span.primary i').innerHTML = 'upload';
+            Upload.setProgress('upload', '');
         }
     },
 

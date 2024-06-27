@@ -1367,7 +1367,7 @@ var Chat = {
                 var a = document.createElement('a');
 
                 a.textContent = file.name;
-                a.href = file.uri;
+                a.href = file.url;
                 a.target = '_blank';
                 a.rel = 'noopener noreferrer';
 
@@ -1396,10 +1396,10 @@ var Chat = {
         var div = document.createElement('div');
         div.setAttribute('title', file.name);
         div.classList.add('audio_player');
-        div.id = file.id;
+        div.id = 'a_' + file.message_mid;
 
         var audio = document.createElement('audio');
-        audio.setAttribute('src', file.uri);
+        audio.setAttribute('src', file.url + '#t=0.01');
         //audio.setAttribute('controls', '');
         div.appendChild(audio);
 
@@ -1430,7 +1430,7 @@ var Chat = {
 
         var downloadButton = document.createElement('a');
         downloadButton.classList.add('button', 'flat', 'gray');
-        downloadButton.href = file.uri;
+        downloadButton.href = file.url;
         downloadButton.target = '_blank';
         var i = document.createElement('i');
         i.className = 'material-symbols';
