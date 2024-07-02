@@ -41,8 +41,6 @@ class Bootstrap
         //Check if vital system need is OK
         $this->checkSystem();
 
-        $this->loadDispatcher();
-
         $this->setTimezone();
         $this->startingSession();
         $this->loadLanguage();
@@ -91,8 +89,8 @@ class Bootstrap
         define('PUBLIC_PATH', DOCUMENT_ROOT . '/public/');
         define('PUBLIC_CACHE_PATH', DOCUMENT_ROOT . '/public/cache/');
         define('CONFIG_PATH', DOCUMENT_ROOT . '/config/');
-        define('VIEWS_PATH', DOCUMENT_ROOT . '/app/views/');
-        define('WIDGETS_PATH', DOCUMENT_ROOT . '/app/widgets/');
+        define('VIEWS_PATH', DOCUMENT_ROOT . '/app/Views/');
+        define('WIDGETS_PATH', DOCUMENT_ROOT . '/app/Widgets/');
 
         define('CACHE_PATH', config('paths.cache'));
 
@@ -181,14 +179,9 @@ class Bootstrap
 
     private function loadHelpers()
     {
-        foreach (glob(DOCUMENT_ROOT.'/app/helpers/*Helper.php') as $file) {
+        foreach (glob(DOCUMENT_ROOT.'/app/Helpers/*Helper.php') as $file) {
             require_once $file;
         }
-    }
-
-    private function loadDispatcher()
-    {
-        require_once APP_PATH . 'widgets/Notif/Notif.php';
     }
 
     /**
@@ -295,7 +288,7 @@ class Bootstrap
         if (php_sapi_name() == 'cli' && !class_exists('Utils')) {
             echo $error;
         } else {
-            \Utils::error($fullError);
+            logError($fullError);
         }
 
         return false;

@@ -6,6 +6,7 @@ v0.25.2 (master)
 * New filters design for the Chats and Rooms
 * Don't send notifications for incoming invitations and messages of unknown contacts
 * Fix audio and video file handling in the chat
+* Comply with the PSR-4 autoloading standard
 
 v0.25.1
 ---------------------------

@@ -50,7 +50,7 @@ class Message extends Model
                 });
             }
         } catch (\Exception $e) {
-            \Utils::error($e->getMessage());
+            logError($e->getMessage());
         }
     }
 
@@ -365,7 +365,7 @@ class Message extends Model
                     Reaction::insert($emojis);
                 } catch (QueryException $e) {
                     // Duplicate ?
-                    \Utils::error($e->getMessage());
+                    logError($e->getMessage());
                 }
 
                 return $parentMessage;

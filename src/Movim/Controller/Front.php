@@ -3,6 +3,7 @@
  * SPDX-FileCopyrightText: 2010 Jaussoin Timothée
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
+
 namespace Movim\Controller;
 
 use Movim\Route;
@@ -76,7 +77,7 @@ class Front extends Base
 
             // Useful for the daemon
             if (php_sapi_name() != 'cli' && $request == 'login') {
-                file_put_contents(CACHE_PATH.'baseuri', BASE_URI);
+                file_put_contents(CACHE_PATH . 'baseuri', BASE_URI);
             }
 
             $c->name = $request;
@@ -99,22 +100,13 @@ class Front extends Base
             // We display the page!
             $c->display();
         } else {
-            \Utils::info('Could not call the load method on the current controller');
+            logInfo('Could not call the load method on the current controller');
         }
     }
 
     public function loadController(string $page)
     {
-        $className = ucfirst($page).'Controller';
-        if (file_exists(APP_PATH . 'controllers/'.$className.'.php')) {
-            $controllerPath = APP_PATH . 'controllers/'.$className.'.php';
-        } else {
-            \Utils::error("Requested controller $className doesn't exist");
-            exit;
-        }
-
-        require_once $controllerPath;
+        $className = 'App\\Controllers\\' . ucfirst($page) . 'Controller';
         return new $className();
     }
-
 }

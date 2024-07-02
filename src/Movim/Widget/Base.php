@@ -16,7 +16,7 @@ class Base
     protected $css = [];    // Contains CSS files
     protected $ajax;        // Contains ajax client code
     protected $user;
-    protected $name;
+    protected ?string $name = null;
     protected $view;
 
     protected $_view;
@@ -36,9 +36,9 @@ class Base
             $this->_view = $view;
         }
 
+        $this->setName();
         $this->user = \App\User::me();
         $this->load();
-        $this->name = get_class($this);
         $this->baseUri = BASE_URI;
 
         // If light loading enabled, we stop here
@@ -52,7 +52,7 @@ class Base
 
             if (!$this->ajax->isRegistered($this->name)) {
                 // Generating Ajax calls.
-                $refl = new \ReflectionClass($this->name);
+                $refl = new \ReflectionClass('App\\Widgets\\' . $this->name . '\\' . $this->name);
                 $meths = $refl->getMethods();
 
                 foreach ($meths as $method) {
@@ -169,7 +169,7 @@ class Base
         $this->display();
 
         return (file_exists($this->respath(strtolower($this->name).'.tpl', true)))
-            ? trim($this->view->draw(strtolower($this->name), true))
+            ? trim((string)$this->view->draw(strtolower($this->name), true))
             : '';
     }
 
@@ -190,10 +190,10 @@ class Base
         bool $notime = false
     ): string {
         $folder = ($parent == false)
-            ? get_class($this)
-            : get_parent_class($this);
+            ? (new \ReflectionClass($this))->getShortName()
+            : (new \ReflectionClass($this))->getParentClass()->getShortName();
 
-        $path = 'app/widgets/' . $folder . '/' . $file;
+        $path = 'app/Widgets/' . $folder . '/' . $file;
 
         if ($fspath) {
             $path = DOCUMENT_ROOT . '/'.$path;
@@ -238,15 +238,27 @@ class Base
      */
     private function cacheFile(string $filename)
     {
-        $local = DOCUMENT_ROOT . '/app/widgets/' . get_class($this) . '/' . $filename;
-        $cache = PUBLIC_CACHE_PATH . get_class($this) . '_' . $filename;
-        $path = 'cache/' . get_class($this) . '_' . $filename;
+        $this->setName();
+
+        $local = DOCUMENT_ROOT . '/app/Widgets/' . $this->name . '/' . $filename;
+        $cache = PUBLIC_CACHE_PATH . $this->name . '_' . $filename;
+        $path = 'cache/' . $this->name . '_' . $filename;
 
         if (!\file_exists($cache)) {
             \symlink($local, $cache);
         }
 
         return urilize($path);
+    }
+
+    /**
+     * @brief Set the current widget name
+     */
+    private function setName()
+    {
+        if ($this->name == null) {
+            $this->name = (new \ReflectionClass($this))->getShortName();
+        }
     }
 
     /**

@@ -156,7 +156,7 @@ class Image
             $im = new Image;
             $im->setKey($key);
             if (!$im->load($format)) {
-                \Utils::error('Cannot load ' . $key . ' original file');
+                logError('Cannot load ' . $key . ' original file');
             }
             $im->save($width, $height, $format);
 
@@ -265,7 +265,7 @@ class Image
                 $this->_im->clear();
             }
         } catch (\ImagickException $e) {
-            \Utils::error($e->getMessage());
+            logError($e->getMessage());
         }
     }
 

@@ -17,7 +17,7 @@ class Partial extends Tpl
     public function __construct(Base $widget)
     {
         $this->objectConfigure([
-            'tpl_dir'       => APP_PATH.'widgets/'.$widget->getName().'/',
+            'tpl_dir'       => WIDGETS_PATH . $widget->getName() . '/',
             'cache_dir'     => CACHE_PATH,
             'tpl_ext'       => 'tpl',
             'auto_escape'   => true
@@ -44,19 +44,18 @@ class Partial extends Tpl
         if ($key) {
             $path = $this->resolvedCacheKey($templateFilePath, $key);
 
-            if (file_exists ($path)) {
+            if (file_exists($path)) {
                 @unlink($path);
             }
         } else {
-            foreach (
-                glob(
-                    CACHE_PATH.
-                    sha1(User::me()->id) .
-                    '_' .
-                    $templateFilePath .
-                    '_' .
-                    '*'.
-                    $this->extension,
+            foreach (glob(
+                    CACHE_PATH .
+                        sha1(User::me()->id) .
+                        '_' .
+                        $templateFilePath .
+                        '_' .
+                        '*' .
+                        $this->extension,
                     GLOB_NOSORT
                 ) as $path) {
                 @unlink($path);
@@ -67,7 +66,7 @@ class Partial extends Tpl
     public function cached(string $templateFilePath, string $key)
     {
         $path = $this->resolvedCacheKey($templateFilePath, $key);
-        if (file_exists ($path)) {
+        if (file_exists($path)) {
             return gzuncompress(file_get_contents($path));
         }
 
@@ -76,6 +75,6 @@ class Partial extends Tpl
 
     private function resolvedCacheKey(string $templateFilePath, string $key): string
     {
-        return CACHE_PATH . sha1(User::me()->id) . '_' . $templateFilePath . '_' . hash('sha256', $key). $this->extension;
+        return CACHE_PATH . sha1(User::me()->id) . '_' . $templateFilePath . '_' . hash('sha256', $key) . $this->extension;
     }
 }

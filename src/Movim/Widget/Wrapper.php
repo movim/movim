@@ -29,12 +29,14 @@ class Wrapper
 
     public function registerAll(array $load = [])
     {
-        $widgets_dir = scandir(APP_PATH ."widgets/");
+        $widgets_dir = scandir(APP_PATH . "Widgets/");
 
         foreach ($widgets_dir as $widgetDir) {
-            if (is_dir(APP_PATH ."widgets/".$widgetDir) &&
+            if (
+                is_dir(APP_PATH . "Widgets/" . $widgetDir) &&
                 $widgetDir != '..' &&
-                $widgetDir != '.') {
+                $widgetDir != '.'
+            ) {
                 if (in_array($widgetDir, $load)) {
                     $this->loadWidget($widgetDir, true);
                 }
@@ -76,23 +78,17 @@ class Wrapper
      */
     public function loadWidget(string $name, bool $register = false)
     {
-        if (file_exists(APP_PATH . "widgets/$name/$name.php")) {
-            $path = APP_PATH . "widgets/$name/$name.php";
-        } else {
-            throw new \Exception(
-                __('error.widget_load_error', $name)
-            );
-        }
-
-        require_once($path);
+        $name = 'App\\Widgets\\' . $name . '\\' . $name;
 
         if ($register) {
             $widget = new $name(true);
             // We save the registered events of the widget for the filter
             if (isset($widget->events)) {
                 foreach ($widget->events as $key => $value) {
-                    if (is_array($this->_events)
-                    && array_key_exists($key, $this->_events)) {
+                    if (
+                        is_array($this->_events)
+                        && array_key_exists($key, $this->_events)
+                    ) {
                         $we = $this->_events[$key];
                         array_push($we, $name);
                         $we = array_unique($we);
@@ -152,7 +148,7 @@ class Wrapper
         try {
             return $widget->$method(...$params);
         } catch (\Error $th) {
-            \Utils::error($th->getMessage());
+            logError($th->getMessage());
             return null;
         }
     }
@@ -176,8 +172,10 @@ class Wrapper
                          * We check if the method need to be called if the
                          * session notifsKey is set to a specific value
                          */
-                        if (is_array($widget->filters)
-                        && array_key_exists($key . '_' . $method, $widget->filters)) {
+                        if (
+                            is_array($widget->filters)
+                            && array_key_exists($key . '_' . $method, $widget->filters)
+                        ) {
                             $session = Session::start();
                             $notifsKey = $session->get('notifs_key');
 
