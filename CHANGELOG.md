@@ -7,6 +7,8 @@ v0.25.2 (master)
 * Don't send notifications for incoming invitations and messages of unknown contacts
 * Fix audio and video file handling in the chat
 * Comply with the PSR-4 autoloading standard
+* Fix #1330 Use base64 encode/decode when sharing urls using the universal share button
+* Fix the URL embed feature in Publish
 
 v0.25.1
 ---------------------------

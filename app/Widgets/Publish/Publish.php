@@ -288,18 +288,31 @@ class Publish extends Base
         Dialog::fill($view->draw('_publish_link'));
     }
 
-    public function ajaxAddEmbed($id, $uploadId)
+    public function ajaxAddUpload(int $draftId, string $uploadId)
     {
-        $draft = $this->user->drafts()->find($id);
         $upload = Upload::find($uploadId);
 
-        if ($draft && $upload && $upload->uploaded) {
-            $embed = $draft->embeds()->where('url', $upload->geturl)->first();
+        if ($upload && $upload->uploaded) {
+            $this->addEmbed($draftId, $upload->geturl);
+        }
+    }
+
+    public function ajaxAddUrl(int $draftId, string $url)
+    {
+        $this->addEmbed($draftId, $url);
+    }
+
+    private function addEmbed(int $draftId, string $url)
+    {
+        $draft = $this->user->drafts()->find($draftId);
+
+        if (Validator::url()->validate($url)) {
+            $embed = $draft->embeds()->where('url', $url)->first();
 
             if (!$embed) {
                 $embed = new DraftEmbed;
-                $embed->draft_id = $id;
-                $embed->url = $upload->geturl;
+                $embed->draft_id = $draftId;
+                $embed->url = $url;
                 $embed->save();
             }
 
@@ -318,7 +331,7 @@ class Publish extends Base
         $shareUrl = $session->get('share_url');
 
         if ($shareUrl) {
-            $this->ajaxAddEmbed($id, $shareUrl);
+            $this->ajaxAddUrl($id, $shareUrl);
             $session->delete('share_url');
         }
     }

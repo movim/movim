@@ -75,7 +75,7 @@ var Publish = {
         let id = document.querySelector('#publish input[name=id]').value;
         var url = document.querySelector('#url').value;
 
-        Publish_ajaxAddEmbed(id, url);
+        Publish_ajaxAddUrl(id, url);
     }
 }
 
@@ -87,7 +87,7 @@ MovimWebsocket.attach(() => {
 MovimEvents.registerWindow('loaded', 'publish', () => {
     Upload.attach((file) => {
         if (document.querySelector('#publish')) {
-            Publish_ajaxAddEmbed(document.querySelector('#publish input[name=id]').value, file.id);
+            Publish_ajaxAddUpload(document.querySelector('#publish input[name=id]').value, file.id);
         }
     });
 });
