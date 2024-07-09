@@ -210,7 +210,7 @@ class Message
 
                 $sources->appendChild($sreference);
             } else {
-                $reference->setAttribute('uri', $file->uri);
+                $reference->setAttribute('uri', $file->url);
             }
 
             $root->appendChild($reference);
@@ -218,7 +218,7 @@ class Message
             // OOB
             $x = $dom->createElement('x');
             $x->setAttribute('xmlns', 'jabber:x:oob');
-            $x->appendChild($dom->createElement('url', $file->uri));
+            $x->appendChild($dom->createElement('url', $file->url));
 
             $root->appendChild($x);
         }
