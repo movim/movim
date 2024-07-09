@@ -506,16 +506,16 @@
         },
         {
             "name": "composer/ca-bundle",
-            "version": "1.5.0",
+            "version": "1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/ca-bundle.git",
-                "reference": "0c5ccfcfea312b5c5a190a21ac5cef93f74baf99"
+                "reference": "063d9aa8696582f5a41dffbbaf3c81024f0a604a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/0c5ccfcfea312b5c5a190a21ac5cef93f74baf99",
-                "reference": "0c5ccfcfea312b5c5a190a21ac5cef93f74baf99",
+                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/063d9aa8696582f5a41dffbbaf3c81024f0a604a",
+                "reference": "063d9aa8696582f5a41dffbbaf3c81024f0a604a",
                 "shasum": ""
             },
             "require": {
@@ -525,7 +525,7 @@
             },
             "require-dev": {
                 "phpstan/phpstan": "^1.10",
-                "psr/log": "^1.0",
+                "psr/log": "^1.0 || ^2.0 || ^3.0",
                 "symfony/phpunit-bridge": "^4.2 || ^5",
                 "symfony/process": "^4.0 || ^5.0 || ^6.0 || ^7.0"
             },
@@ -562,7 +562,7 @@
             "support": {
                 "irc": "irc://irc.freenode.org/composer",
                 "issues": "https://github.com/composer/ca-bundle/issues",
-                "source": "https://github.com/composer/ca-bundle/tree/1.5.0"
+                "source": "https://github.com/composer/ca-bundle/tree/1.5.1"
             },
             "funding": [
                 {
@@ -578,7 +578,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-03-15T14:00:32+00:00"
+            "time": "2024-07-08T15:28:20+00:00"
         },
         {
             "name": "defuse/php-encryption",
@@ -649,16 +649,16 @@
         },
         {
             "name": "dflydev/dot-access-data",
-            "version": "v3.0.2",
+            "version": "v3.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dflydev/dflydev-dot-access-data.git",
-                "reference": "f41715465d65213d644d3141a6a93081be5d3549"
+                "reference": "a23a2bf4f31d3518f3ecb38660c95715dfead60f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dflydev/dflydev-dot-access-data/zipball/f41715465d65213d644d3141a6a93081be5d3549",
-                "reference": "f41715465d65213d644d3141a6a93081be5d3549",
+                "url": "https://api.github.com/repos/dflydev/dflydev-dot-access-data/zipball/a23a2bf4f31d3518f3ecb38660c95715dfead60f",
+                "reference": "a23a2bf4f31d3518f3ecb38660c95715dfead60f",
                 "shasum": ""
             },
             "require": {
@@ -718,9 +718,9 @@
             ],
             "support": {
                 "issues": "https://github.com/dflydev/dflydev-dot-access-data/issues",
-                "source": "https://github.com/dflydev/dflydev-dot-access-data/tree/v3.0.2"
+                "source": "https://github.com/dflydev/dflydev-dot-access-data/tree/v3.0.3"
             },
-            "time": "2022-10-27T11:44:00+00:00"
+            "time": "2024-07-08T12:26:09+00:00"
         },
         {
             "name": "dflydev/fig-cookies",
@@ -1930,7 +1930,7 @@
         },
         {
             "name": "illuminate/bus",
-            "version": "v10.48.15",
+            "version": "v10.48.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/bus.git",
@@ -1983,7 +1983,7 @@
         },
         {
             "name": "illuminate/collections",
-            "version": "v10.48.15",
+            "version": "v10.48.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
@@ -2038,7 +2038,7 @@
         },
         {
             "name": "illuminate/conditionable",
-            "version": "v10.48.15",
+            "version": "v10.48.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/conditionable.git",
@@ -2084,7 +2084,7 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v10.48.15",
+            "version": "v10.48.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
@@ -2135,7 +2135,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v10.48.15",
+            "version": "v10.48.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -2183,16 +2183,16 @@
         },
         {
             "name": "illuminate/database",
-            "version": "v10.48.15",
+            "version": "v10.48.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "b8aca982ac6762d52e1bbc1979b9b5a8412713c2"
+                "reference": "ec00738a49e9fb0db4fc19b5d70310e214b32bff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/b8aca982ac6762d52e1bbc1979b9b5a8412713c2",
-                "reference": "b8aca982ac6762d52e1bbc1979b9b5a8412713c2",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/ec00738a49e9fb0db4fc19b5d70310e214b32bff",
+                "reference": "ec00738a49e9fb0db4fc19b5d70310e214b32bff",
                 "shasum": ""
             },
             "require": {
@@ -2252,11 +2252,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2024-06-19T16:05:23+00:00"
+            "time": "2024-07-03T21:35:00+00:00"
         },
         {
             "name": "illuminate/events",
-            "version": "v10.48.15",
+            "version": "v10.48.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/events.git",
@@ -2311,7 +2311,7 @@
         },
         {
             "name": "illuminate/macroable",
-            "version": "v10.48.15",
+            "version": "v10.48.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/macroable.git",
@@ -2357,7 +2357,7 @@
         },
         {
             "name": "illuminate/pipeline",
-            "version": "v10.48.15",
+            "version": "v10.48.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/pipeline.git",
@@ -2405,7 +2405,7 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v10.48.15",
+            "version": "v10.48.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
