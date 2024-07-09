@@ -3,6 +3,8 @@
 namespace App\Widgets\Blog;
 
 use Movim\Widget\Base;
+use App\Post;
+use App\Widgets\Post\Post as PostWidget;
 
 class Blog extends Base
 {
@@ -113,13 +115,13 @@ class Blog extends Base
             }
         }
 
-        $this->_postsCount = \App\Post::where('server', $this->_from)
+        $this->_postsCount = Post::where('server', $this->_from)
                     ->where('node', $this->_node)
                     ->where('open', true)
                     ->count();
 
         if ($this->_id = $this->get('i')) {
-            $this->_posts = \App\Post::where('server', $this->_from)
+            $this->_posts = Post::where('server', $this->_from)
                     ->where('node', $this->_node)
                     ->where('nodeid', $this->_id)
                     ->where('open', true)
@@ -164,7 +166,7 @@ class Blog extends Base
                          ->skip($this->_page * $this->paging)->get();
                 }
             } elseif ($this->_mode != 'blog' || ($this->_contact && $this->_contact->isPublic())) {
-                $this->_posts = \App\Post::where('server', $this->_from)
+                $this->_posts = Post::where('server', $this->_from)
                         ->where('node', $this->_node)
                         ->where('open', true)
                         ->orderBy('published', 'desc')
@@ -191,19 +193,19 @@ class Blog extends Base
         }
     }
 
-    public function preparePost(\App\Post $post)
+    public function preparePost(Post $post)
     {
         if ($this->_view == 'tag' && isLogged()) {
-            return (new Post)->preparePost($post, false, true);
+            return (new PostWidget)->preparePost($post, false, true);
         } else {
             $post->server = $this->_nickname ?? $post->server;
-            return (new Post)->preparePost($post, true);
+            return (new PostWidget)->preparePost($post, true);
         }
     }
 
-    public function prepareTicket(\App\Post $post)
+    public function prepareTicket(Post $post)
     {
-        return (new \Post)->prepareTicket($post);
+        return (new PostWidget)->prepareTicket($post);
     }
 
     public function display()
