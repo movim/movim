@@ -1039,11 +1039,6 @@ var Chat = {
             data.body = data.body.substring(4);
         }
 
-        if (data.body.match(/^\/code\s/)) {
-            p.classList.add('code');
-            data.body = data.body.substring(6).trim();
-        }
-
         if (data.id != null) {
             msg.setAttribute('id', 'id' + data.id);
         }

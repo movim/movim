@@ -11,6 +11,7 @@ v0.25.2 (master)
 * Fix the URL embed feature in Publish
 * Update XEP-0424: Message Retraction to 0.4.1
 * Update XEP-0425: Moderated Message Retraction to 0.3.0
+* Replace \code with ```codeblock``` support in the chat messages
 
 v0.25.1
 ---------------------------

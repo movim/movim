@@ -1211,8 +1211,8 @@ class Chat extends \Movim\Widget\Base
 
         // XEP-0393
         if (!empty($message->body)) {
-            // $message->body = (preg_replace ('/```((.|\n)*?)(```|\z)/', "<pre>$1</pre>", $message->body));
-            $message->body = (preg_replace('/(?<=^|[\s,\*,_,~])(`(?!\s).+?(?<!\s)`)/', "$1</code>", $message->body));
+            $message->body = (preg_replace('/^```([\s\S]*?)```([A-Za-z \t]*)*$/m', "<code class='block'>$1</code>", $message->body));
+            $message->body = (preg_replace('/(?<=^|[\s,\*,_,~])(`(?!\s).+?(?<!\s)`)/', "<code>$1</code>", $message->body));
             $message->body = (preg_replace('/(?<=^|[\s,_,`,~])(\*(?!\s).+?(?<!\s)\*)/', "<b>$1</b>", $message->body));
             $message->body = (preg_replace('/(?<=^|[\s,\*,`,~])(_(?!\s).+?(?<!\s)_)/', "<em>$1</em>", $message->body));
             $message->body = (preg_replace('/(?<=^|[\s,\*,_,`])(~(?!\s).+?(?<!\s)~)/', "<s>$1</s>", $message->body));

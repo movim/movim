@@ -521,9 +521,9 @@ li div.bubble p.previewable {
     margin-bottom: 0.5rem;
 }
 
-li div.bubble p.code {
+li div.bubble p pre {
     display: inline-block;
-    margin: 0;
+    margin-bottom: 0;
 }
 
 li div.bubble span.resource {

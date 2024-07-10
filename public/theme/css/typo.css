@@ -63,28 +63,23 @@ xmp {
     font-family: monospace;
 }
 
-code {
-    background-color: rgba(var(--movim-font), 0.1);
-    color: rgba(var(--movim-font), 0.6);
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.3rem;
-}
-
-li p.code,
+code,
 pre,
 xmp {
     border-radius: 0.5rem;
     color: white;
-    padding: 1rem;
-    padding-left: 1.5rem;
+    padding: 1rem 1.5rem;
     font-size: 1.6rem;
-    margin: 1rem 0;
-    border-left: 0.5rem solid gray;
     background-color: rgb(var(--movim-gray));
     white-space:pre;
     word-wrap:break-word;
     direction: ltr;
     overflow-x: auto;
+    max-width: 100%;
+}
+
+code.block {
+    display: inline-block;
 }
 
 pre code {
