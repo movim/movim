@@ -88,6 +88,8 @@ class Bootstrap
         define('LOCALES_PATH', DOCUMENT_ROOT . '/locales/');
         define('PUBLIC_PATH', DOCUMENT_ROOT . '/public/');
         define('PUBLIC_CACHE_PATH', DOCUMENT_ROOT . '/public/cache/');
+        define('PUBLIC_EMOJIS_PATH', DOCUMENT_ROOT . '/public/emojis/');
+        define('PUBLIC_STICKERS_PATH', DOCUMENT_ROOT . '/public/stickers/');
         define('CONFIG_PATH', DOCUMENT_ROOT . '/config/');
         define('VIEWS_PATH', DOCUMENT_ROOT . '/app/Views/');
         define('WIDGETS_PATH', DOCUMENT_ROOT . '/app/Widgets/');
@@ -262,10 +264,10 @@ class Bootstrap
         'Communities','CommunityAffiliations','CommunityConfig','CommunityData',
         'CommunityHeader','CommunityPosts','CommunitiesServer','CommunitiesServers',
         'Confirm','ContactActions','Chat','ChatActions','ChatOmemo','Chats','Config',
-        'ContactData','ContactHeader','ContactSubscriptions','Dialog','Drawer','Location',
-        'Login','Menu','Navigation','Notif', 'Notifications','NewsNav','Post','PostActions',
-        'Presence','Publish','Rooms','RoomsExplore', 'RoomsUtils', 'Stickers','Toast',
-        'Upload','Vcard4','Visio','VisioLink'];
+        'ContactData','ContactHeader','ContactSubscriptions','Dialog','Drawer','EmojisConfig',
+        'Location','Login','Menu','Navigation','Notif', 'Notifications','NewsNav','Post',
+        'PostActions','Presence','Publish','Rooms','RoomsExplore', 'RoomsUtils', 'Stickers',
+        'Toast','Upload','Vcard4','Visio','VisioLink'];
     }
 
     /**

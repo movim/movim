@@ -110,8 +110,10 @@ class Message
         }
 
         if ($html != false) {
-            $xhtml = $dom->createElementNS('http://jabber.org/protocol/xhtml-im', 'html');
-            $body = $dom->createElementNS('http://www.w3.org/1999/xhtml', 'body');
+            $xhtml = $dom->createElement('html');
+            $xhtml->setAttribute('xmlns', 'http://jabber.org/protocol/xhtml-im');
+            $body = $dom->createElement('body');
+            $body->setAttribute('xmlns', 'http://www.w3.org/1999/xhtml');
 
             $dom2 = new \DOMDocument('1.0', 'UTF-8');
             $dom2->loadXml('<root>' . $html . '</root>');

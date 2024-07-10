@@ -26,6 +26,14 @@ class Image
     /**
      * Set the picture $key
      */
+    public function getKey(): string
+    {
+        return $this->_key;
+    }
+
+    /**
+     * Set the picture $key
+     */
     public function setKey(string $key): void
     {
         $this->_key = $key;
@@ -114,7 +122,17 @@ class Image
     public function toBase(): string
     {
         if ($this->_im) {
-            return base64_encode($this->_im->getImageBlob());
+            return base64_encode($this->toBin());
+        }
+    }
+
+    /**
+     * @desc Convert to a base64
+     */
+    public function toBin(): string
+    {
+        if ($this->_im) {
+            return $this->_im->getImageBlob();
         }
     }
 
@@ -292,7 +310,7 @@ class Image
     /**
      * @desc Load a bin picture from a path
      */
-    private function fromPath(string $path): bool
+    public function fromPath(string $path): bool
     {
         if (file_exists($path)) {
             $size = filesize($path);

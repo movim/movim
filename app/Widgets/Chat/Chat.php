@@ -138,7 +138,7 @@ class Chat extends \Movim\Widget\Base
         $from = null;
         $chatStates = ChatStates::getInstance();
 
-        $rawbody = $message->body;
+        $rawbody = $message->getInlinedBodyAttribute(true) ?? $message->body;
 
         if (
             $message->isEmpty() && !in_array($message->type, [
@@ -498,7 +498,6 @@ class Chat extends \Movim\Widget\Base
             $valid = $messageFile->import($file);
 
             if (!$valid) $messageFile = null;
-
         } else {
             try {
                 $url = new Url;
@@ -645,6 +644,60 @@ class Chat extends \Movim\Widget\Base
         }
 
         $m->body = $body;
+
+        // Custom emojis
+
+        $matchedCustomEmojis = [];
+        preg_match_all('/:([a-z\-]+):/', $m->body, $matchedCustomEmojis);
+
+        if (!empty($matchedCustomEmojis[1])) {
+            $favoritesEmojis = $this->user->emojis->keyBy('pivot.alias');
+
+            $html = '<p>' . $m->body . '</p>';
+
+            $replaced = false;
+            $inlines = [];
+
+            // We send the original body without changes
+            $p->setContent($m->body);
+
+            foreach ($matchedCustomEmojis[1] as $matched) {
+                if ($favoritesEmojis->has($matched)) {
+                    $emoji = $favoritesEmojis->get($matched);
+                    $replaced = true;
+
+                    $key = generateKey(12);
+                    $inlines[$key] = [
+                        'hash' => $emoji->cache_hash,
+                        'algorythm' => $emoji->cache_hash_algorythm,
+                        'alt' => $emoji->pivot->alias,
+                    ];
+
+                    $m->body = str_replace(
+                        ':' . $matched . ':',
+                        Message::$inlinePlaceholder . $key,
+                        $m->body
+                    );
+
+                    $dom = new \DOMDocument('1.0', 'UTF-8');
+                    $img = $dom->createElement('img');
+                    $img->setAttribute('src', 'cid:' . $emoji->cache_hash_algorythm . '+' . $emoji->cache_hash . '@bob.xmpp.org');
+                    $img->setAttribute('alt', ':' . $emoji->pivot->alias . ':');
+                    $dom->append($img);
+
+                    $html = str_replace(
+                        ':' . $matched . ':',
+                        $dom->saveXML($dom->documentElement),
+                        $html
+                    );
+                }
+            }
+
+            if ($replaced) {
+                $m->inlines = serialize($inlines);
+                $p->setHTML($html);
+            }
+        }
 
         if ($messageOMEMOHeader) {
             $m->encrypted = true;
@@ -833,9 +886,11 @@ class Chat extends \Movim\Widget\Base
             }
         }
 
+        $m->body = $m->getInlinedBodyAttribute(true);
+
         if (
             $m
-            && !isset($m->sticker)
+            && !isset($m->sticker_cid)
             && !isset($m->file)
             && !empty($m->body)
         ) {
@@ -857,7 +912,7 @@ class Chat extends \Movim\Widget\Base
 
         if (
             $m
-            && !isset($m->sticker)
+            && !isset($m->sticker_cid)
             && !isset($m->file)
         ) {
             $this->rpc('Chat.setTextarea', htmlspecialchars_decode($m->body), $mid);
@@ -1218,27 +1273,29 @@ class Chat extends \Movim\Widget\Base
             $message->body = (preg_replace('/(?<=^|[\s,\*,_,`])(~(?!\s).+?(?<!\s)~)/', "<s>$1</s>", $message->body));
         }
 
+        // Inlines
+        $message->body = $message->getInlinedBodyAttribute(false, true) ?? $message->body;
+
         // Sticker message
-        if (isset($message->sticker)) {
-            $sticker = Image::getOrCreate($message->sticker, false, false, 'png');
+        if (isset($message->sticker_cid_hash) && isset($message->sticker_cid_algorythm)) {
+            $stickerImage = $message->stickerImage;
 
             if (
-                $sticker == false
+                !$stickerImage
                 && $message->jidfrom != $message->session
             ) {
                 $r = new Request;
                 $r->setTo($message->jidfrom)
                     ->setResource($message->resource)
-                    ->setCid($message->sticker)
+                    ->setHash($message->sticker_cid_hash)
+                    ->setAlgorythm($message->sticker_cid_algorythm)
+                    ->setMessagemid($message->mid)
                     ->request();
             } else {
-                $p = new Image;
-                $p->setKey($message->sticker);
-                $p->load('png');
-                $stickerSize = $p->getGeometry();
+                $stickerSize = $stickerImage->getGeometry();
 
                 $message->sticker = [
-                    'url' => $sticker,
+                    'url' => Image::getOrCreate($stickerImage->getKey()), // Todo, don't reload
                     'width' => $stickerSize['width'],
                     'height' => $stickerSize['height']
                 ];

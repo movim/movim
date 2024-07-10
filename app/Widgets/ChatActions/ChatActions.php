@@ -75,6 +75,9 @@ class ChatActions extends \Movim\Widget\Base
 
         if ($message && $message->isClassic()) {
             $view = $this->tpl();
+
+            $message->body = $message->inlinedBody;
+
             $view->assign('message', $message);
 
             if ($message->isMuc()) {

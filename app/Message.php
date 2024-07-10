@@ -2,6 +2,9 @@
 
 namespace App;
 
+use DOMDocument;
+use DOMElement;
+use DOMXPath;
 use Movim\Model;
 use Movim\Image;
 use Movim\Session;
@@ -9,6 +12,7 @@ use Movim\Session;
 use Illuminate\Database\QueryException;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
+use Moxl\Xec\Action\BOB\Request;
 
 class Message extends Model
 {
@@ -30,6 +34,8 @@ class Message extends Model
     ];
 
     private ?Collection $messageFiles = null;
+
+    public static $inlinePlaceholder = 'inline-img:';
 
     public function save(array $options = [])
     {
@@ -109,6 +115,23 @@ class Message extends Model
     public function files()
     {
         return $this->hasMany('App\MessageFile', 'message_mid', 'mid');
+    }
+
+    public function getStickerImageAttribute(): ?Image
+    {
+        $image = new Image;
+        $image->setKey($this->sticker_cid_hash);
+
+        if ($image->load()) {
+            return $image;
+        }
+
+        return null;
+    }
+
+    public function getInlinesAttribute(): ?array
+    {
+        return $this->attributes['inlines'] !== null ? unserialize($this->attributes['inlines']) : null;
     }
 
     public function getOmemoheaderAttribute()
@@ -324,13 +347,11 @@ class Message extends Model
             }
         }
 
-
         # XEP-0444: Message Reactions
         if (
             isset($stanza->reactions)
             && $stanza->reactions->attributes()->xmlns == 'urn:xmpp:reactions:0'
         ) {
-
             $parentMessage = $this->resolveParentMessage($this->jidfrom, (string)$stanza->reactions->attributes()->id);
 
             if ($parentMessage) {
@@ -426,34 +447,47 @@ class Message extends Model
                 }
             }
 
-            if ($stanza->html) {
-                $results = [];
+            if (
+                $stanza->html
+                && (string)$stanza->html->attributes()->xmlns = 'http://jabber.org/protocol/xhtml-im'
+            ) {
+                $head = '<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>';
+                $dom = new DOMDocument('1.0', 'UTF-8');
+                $dom->loadHTML($head .  (string)$stanza->html->body);
+                $xpath = new DOMXPath($dom);
+                $imgs = $xpath->query("//img[starts-with(@src,'cid:')]");
 
-                $xml = \simplexml_load_string((string)$stanza->html);
-                if (!$xml) {
-                    $xml = \simplexml_load_string((string)$stanza->html->body);
-                    if ($xml) {
-                        $results = $xml->xpath('//img/@src');
-                    }
-                } else {
-                    $xml->registerXPathNamespace('xhtml', 'http://www.w3.org/1999/xhtml');
-                    $results = $xml->xpath('//xhtml:img/@src');
-                }
+                if ($imgs) {
+                    $texts = $xpath->query('//p/text()');
 
-                if (!empty($results)) {
-                    if (substr((string)$results[0], 0, 10) == 'data:image') {
-                        $str = explode('base64,', $results[0]);
-                        if (isset($str[1])) {
-                            $p = new Image;
-                            $p->fromBase(urldecode($str[1]));
-                            $key = sha1(urldecode($str[1]));
-                            $p->setKey($key);
-                            $p->save(false, false, 'png');
+                    // Message with inline images
+                    if (($imgs->count() > 1) || ($texts && $texts->count() > 0)) {
+                        $inlines = [];
 
-                            $this->sticker = $key;
+                        foreach ($imgs as $img) {
+                            $key = generateKey(12);
+                            $cid = getCid($img->getAttribute('src'));
+
+                            $inlines[$key] = [
+                                'hash' => $cid['hash'],
+                                'algorythm' => $cid['algorythm'],
+                                'alt' => $img->getAttribute('alt'),
+                            ];
+                            $img->replaceWith(self::$inlinePlaceholder . $key);
                         }
-                    } else {
-                        $this->sticker = getCid((string)$results[0]);
+
+                        $this->attributes['inlines'] = serialize($inlines);
+                        $this->body = (string)$dom->textContent;
+                    }
+
+                    // One sticker only
+                    elseif ($imgs && $imgs->count() == 1) {
+                        $cid = getCid($imgs->item(0)->getAttribute('src'));
+
+                        if ($cid) {
+                            $this->sticker_cid_hash = $cid['hash'];
+                            $this->sticker_cid_algorythm = $cid['algorythm'];
+                        }
                     }
                 }
             }
@@ -569,6 +603,64 @@ class Message extends Model
         return $this;
     }
 
+    /**
+     * @desc Prepare and return the body with inline images, and request them if missing
+     */
+    public function getInlinedBodyAttribute(?bool $alt = false, bool $triggerRequest = false): ?string
+    {
+        $body = $this->attributes['body'];
+
+        if (is_array($this->getInlinesAttribute())) {
+            foreach ($this->getInlinesAttribute() as $key => $inline) {
+                $inlineAlt = ":" . $inline['alt'] . ":";
+
+                if ($alt == true) {
+                    $body = str_replace(
+                        Message::$inlinePlaceholder . $key,
+                        $inlineAlt,
+                        $body
+                    );
+
+                    continue;
+                }
+
+                $url = Image::getOrCreate($inline['hash']);
+
+                if ($url) {
+                    $dom = new \DOMDocument('1.0', 'UTF-8');
+                    $img = $dom->createElement('img');
+                    $img->setAttribute('class', 'inline');
+                    $img->setAttribute('src', $url);
+                    $img->setAttribute('alt', $inline['alt']);
+                    $dom->append($img);
+
+                    $body = str_replace(
+                        Message::$inlinePlaceholder . $key,
+                        $dom->saveHTML($dom->documentElement),
+                        $body
+                    );
+                } else {
+                    $body = str_replace(
+                        Message::$inlinePlaceholder . $key,
+                        $inlineAlt,
+                        $body
+                    );
+
+                    if ($triggerRequest) {
+                        $r = new Request;
+                        $r->setTo($this->attributes['jidfrom'])
+                            ->setResource($this->attributes['resource'])
+                            ->setHash($inline['hash'])
+                            ->setAlgorythm($inline['algorythm'])
+                            ->request();
+                    }
+                }
+            }
+        }
+
+        return $body;
+    }
+
     public function isEmpty(): bool
     {
         return (empty($this->body)
@@ -670,6 +762,7 @@ class Message extends Model
             'resolved' => $this->attributes['resolved'] ?? false,
             'picture' => $this->attributes['picture'] ?? false,
             'parentmid' => $this->attributes['parentmid'] ?? null,
+            'inline' => $this->attributes['inlines'] ?? null,
         ];
 
         // Generate a proper mid

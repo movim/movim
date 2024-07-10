@@ -9,25 +9,35 @@ use Movim\Image;
 class Request extends Action
 {
     protected $_to;
-    protected $_cid;
+    protected $_hash;
+    protected $_algorythm;
     protected $_resource;
+    protected $_messagemid;
 
     public function request()
     {
         $this->store();
-        BOB::request($this->_to.'/'.$this->_resource, $this->_cid);
+
+        // Only request if the resource is available
+        if (\App\User::me()->session?->presences()->where('jid', $this->_to)->where('resource', $this->_resource)->exists()) {
+            BOB::request($this->_to . '/' . $this->_resource, $this->_hash, $this->_algorythm);
+        }
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $data = (string)$stanza->data;
 
-        $p = new Image;
-        $p->fromBase($data);
-        $p->setKey($this->_cid);
-        $p->save(false, false, 'png');
+        if (hash($this->_algorythm, base64_decode($data)) == $this->_hash) {
+            $p = new Image;
+            $p->fromBase($data);
+            $p->setKey($this->_hash);
+            $p->save();
+        } else {
+            $this->method('bad_data');
+        }
 
-        $this->pack(['to' => $this->_to, 'cid' => $this->_cid]);
+        $this->pack(['to' => $this->_to, 'hash' => $this->_hash, 'algorythm' => $this->_algorythm]);
         $this->deliver();
     }
 }

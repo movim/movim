@@ -55,6 +55,6 @@ class API
      */
     public static function request($xml)
     {
-        writeXMPP($xml);
+        \writeXMPP($xml);
     }
 }

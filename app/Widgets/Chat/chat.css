@@ -347,7 +347,7 @@ main:not(.enabled) #chat_widget {
     margin: 0;
 }
 
-#chat_widget li img:not(.emoji):not(.main) {
+#chat_widget li img:not(.emoji):not(.main):not(.inline) {
     max-width: 100%;
     display: block;
     width: auto;

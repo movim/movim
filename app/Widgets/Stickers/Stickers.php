@@ -8,13 +8,15 @@ use Moxl\Xec\Action\BOB\Answer;
 use Psr\Http\Message\ResponseInterface;
 
 use App\Configuration;
+use App\Emoji;
 use App\Info;
 use App\MessageFile;
+use App\Sticker;
+use App\StickersPack;
 use App\Widgets\Chat\Chat;
 use App\Widgets\Chats\Chats;
 use App\Widgets\Dialog\Dialog;
 use App\Widgets\Drawer\Drawer;
-use Movim\Image;
 
 class Stickers extends \Movim\Widget\Base
 {
@@ -29,57 +31,60 @@ class Stickers extends \Movim\Widget\Base
 
     public function onRequest($packet)
     {
-        $content = $packet->content;
+        list($to, $id, $cid) = array_values($packet->content);
 
-        $to = $content[0];
-        $id = $content[1];
-        $cid = $content[2];
+        $eCid = getCid($cid);
+        $image = null;
 
-        list($c, $ext) = explode('@', $cid);
-        list($sh, $key) = explode('+', $c);
-        if ($sh !== "sha1") {
-            $key = $sh . '+' . $key;
+        $emoji = Emoji::where('cache_hash_algorythm', $eCid['algorythm'])
+            ->where('cache_hash', $eCid['hash'])
+            ->first();
+
+        if ($emoji) {
+            $image = $emoji->image;
+        } else {
+            $sticker = Sticker::where('cache_hash_algorythm', $eCid['algorythm'])
+                ->where('cache_hash', $eCid['hash'])
+                ->first();
+
+            if ($sticker) {
+                $image = $sticker->image;
+            }
         }
 
-        $base64 = base64_encode(file_get_contents(PUBLIC_CACHE_PATH . hash(Image::$hash, $key) . '.png'));
+        if ($image) {
+            $image->load();
 
-        $a = new Answer;
-        $a->setTo($to)
-            ->setId($id)
-            ->setCid($cid)
-            ->setType('image/png')
-            ->setBase64($base64)
-            ->request();
+            $a = new Answer;
+            $a->setTo($to)
+                ->setId($id)
+                ->setCid($cid)
+                ->setType('image/png')
+                ->setBase64($image->toBase())
+                ->request();
+        }
     }
 
-    public function ajaxSend(string $to, string $pack, $file, bool $muc = false)
+    public function ajaxSend(string $to, int $id, bool $muc = false)
     {
         if (!validateJid($to)) {
             return;
         }
 
-        list($key, $ext) = explode('.', $file);
+        $sticker = Sticker::where('id', $id)->first();
 
-        $filepath = PUBLIC_PATH . '/stickers/' . $pack . '/' . $key . '.png';
-
-        if (!file_exists($filepath)) {
-            return;
-        }
-
-        // Caching the picture
-        if (!file_exists(PUBLIC_CACHE_PATH . hash(Image::$hash, $key) . '.png')) {
-            copy($filepath, PUBLIC_CACHE_PATH . hash(Image::$hash, $key) . '.png');
-        }
+        if (!$sticker) return;
 
         // Creating a message
         $m = new \App\Message;
-        $m->user_id = $this->user->id;
-        $m->jidto   = echapJid($to);
-        $m->jidfrom = $this->user->id;
-        $m->sticker = $key;
-        $m->seen    = true;
-        $m->retracted = false;
-        $m->body    = $this->__('sticker.sent');
+        $m->user_id         = $this->user->id;
+        $m->jidto           = echapJid($to);
+        $m->jidfrom         = $this->user->id;
+        $m->sticker_cid_hash = $sticker->cache_hash;
+        $m->sticker_cid_algorythm = $sticker->cache_hash_algorythm;
+        $m->seen            = true;
+        $m->retracted       = false;
+        $m->body            = $this->__('sticker.sent');
 
         $m->published = gmdate('Y-m-d H:i:s');
 
@@ -87,13 +92,19 @@ class Stickers extends \Movim\Widget\Base
         $m->type    = 'chat';
         $m->resource = $this->user->session->resource;
 
-        // Sending the sticker
-        $html = "<p><img alt='Sticker' src='cid:sha1+" . $key . "@bob.xmpp.org'/></p>";
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $p = $dom->createElement('p');
+        $dom->append($p);
+
+        $img = $dom->createElement('img');
+        $img->setAttribute('src', 'cid:' . $sticker->cache_hash_algorythm . '+' . $sticker->cache_hash . '@bob.xmpp.org');
+        $img->setAttribute('alt', 'Sticker');
+        $p->append($img);
 
         $p = new Publish;
         $p->setTo($m->jidto)
             ->setContent($m->body)
-            ->setHTML($html)
+            ->setHTML($dom->saveXML($dom->documentElement))
             ->setId($m->id);
 
         if ($muc) {
@@ -117,7 +128,7 @@ class Stickers extends \Movim\Widget\Base
         }
     }
 
-    public function ajaxShow(string $to, $pack = null)
+    public function ajaxShow(string $to, ?string $packName = null)
     {
         if (!validateJid($to)) {
             return;
@@ -126,26 +137,18 @@ class Stickers extends \Movim\Widget\Base
         $configuration = Configuration::get();
         $isGifEnabled = !empty($configuration->gifapikey);
 
-        $packs = $this->getPacks();
+        $packs = StickersPack::all();
 
-        if (!$isGifEnabled && $pack == null) {
-            $pack = current($packs);
-        }
+        $pack = (!$isGifEnabled && $packName == null)
+            ? $packs->first()
+            : StickersPack::where('name', $packName)->first();
 
-        if (isset($pack)) {
-            $files = scandir(PUBLIC_PATH . '/stickers/' . $pack);
-
-            array_shift($files);
-            array_shift($files);
-
+        if ($pack) {
             $view = $this->tpl();
             $view->assign('jid', $to);
-            $view->assign('stickers', $files);
             $view->assign('packs', $packs);
             $view->assign('pack', $pack);
             $view->assign('gifEnabled', $isGifEnabled);
-            $view->assign('info', parse_ini_file(PUBLIC_PATH . '/stickers/' . $pack . '/info.ini'));
-            $view->assign('path', $this->respath('stickers', false, false, true));
 
             Drawer::fill('stickers', $view->draw('_stickers'), true);
         } else {
@@ -176,6 +179,8 @@ class Stickers extends \Movim\Widget\Base
         $emojis = $this->tpl();
         $emojis->assign('mid', $mid);
         $emojis->assign('reactionsrestrictions', $info ? $info->reactionsrestrictions : null);
+        $emojis->assign('favorites', $this->user->emojis);
+        $emojis->assign('gotemojis', Emoji::count() > 0);
 
         $view->assign('emojis', $emojis->draw('_stickers_emojis'));
 
@@ -284,28 +289,6 @@ class Stickers extends \Movim\Widget\Base
     public function ajaxSmileyGet($string)
     {
         return prepareString($string);
-    }
-
-    /**
-     * @brief Get a list of stickers packs
-     */
-    public function getPacks()
-    {
-        $dirs = scandir(PUBLIC_PATH . '/stickers/');
-
-        $packs = [];
-
-        array_shift($dirs);
-        array_shift($dirs);
-
-        // Get the packs
-        foreach ($dirs as $dir) {
-            if (is_dir(PUBLIC_PATH . '/stickers/' . $dir)) {
-                array_push($packs, $dir);
-            }
-        }
-
-        return $packs;
     }
 
     public function getSmileyPath($id)

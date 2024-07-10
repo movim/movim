@@ -78,6 +78,11 @@ class User extends Model
         return $this->belongsToMany(User::class, 'post_user_views', 'user_id', 'post_id')->withTimestamps();
     }
 
+    public function emojis()
+    {
+        return $this->belongsToMany('App\Emoji')->withPivot('alias')->withTimestamps();
+    }
+
     public function getUsernameAttribute()
     {
         return $this->contact && $this->contact->nickname

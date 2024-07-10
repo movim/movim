@@ -1,11 +1,9 @@
 <section id="stickers" class="scroll">
     <ul class="list flex fourth">
-        {loop="$stickers"}
-            {if="strlen($value) == 44"}
-            <li class="block" onclick="Stickers.zoom(this, '{$jid}', '{$pack}', '{$value}');">
-                <img class="sticker" src="{$c->baseUri}stickers/{$pack}/{$value}"/>
+        {loop="$pack->stickers"}
+            <li class="block" onclick="Stickers.zoom(this, '{$jid}', {$value->id});">
+                <img class="sticker" src="{$value->url}"/>
             </li>
-            {/if}
         {/loop}
     </ul>
     <ul class="list">
@@ -15,13 +13,13 @@
             </span>
             <div>
                 <p class="line">
-                    {if="!empty($info.url)"}
-                        <a href="{$info.url}" target="_blank">{$info.author}</a>
+                    {if="!empty($pack->url)"}
+                        <a href="{$pack->url}" target="_blank">{$pack->author}</a>
                     {else}
-                        {$info.author}
+                        {$pack->author}
                     {/if}
                 </p>
-                <p class="line">Under {$info.license}</p>
+                <p class="line">Under {$pack->license}</p>
             </div>
         </li>
     </ul>
@@ -34,8 +32,8 @@
             </li>
         {/if}
         {loop="$packs"}
-            <li onclick="Stickers_ajaxShow('{$jid}', '{$value}')" {if="$value == $pack"}class="active"{/if}>
-                <img alt=":sticker:" class="emoji medium" src="{$c->baseUri}stickers/{$value}/icon.png">
+            <li onclick="Stickers_ajaxShow('{$jid}', '{$value->name}')" {if="$value->name == $pack->name"}class="active"{/if}>
+                <img alt=":sticker:" class="emoji medium" src="{$value->stickers()->first()->url}">
             </li>
         {/loop}
     </ul>

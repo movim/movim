@@ -4,19 +4,13 @@ namespace Moxl\Stanza;
 
 class BOB
 {
-    public static function request($to, $cid)
+    public static function request($to, string $hash, string $algorythm)
     {
-        if (!strstr($cid, '+')) {
-            $cid = 'sha1+'.$cid;
-        }
-
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $data = $dom->createElementNS('urn:xmpp:bob', 'data');
-        $data->setAttribute('cid', $cid.'@bob.xmpp.org');
+        $data->setAttribute('cid', $algorythm . '+' . $hash . '@bob.xmpp.org');
 
-        if (!empty($cid)) {
-            \Moxl\API::request(\Moxl\API::iqWrapper($data, $to, 'get'));
-        }
+        \Moxl\API::request(\Moxl\API::iqWrapper($data, $to, 'get'));
     }
 
     public static function answer($to, $id, $cid, $type, $base64)

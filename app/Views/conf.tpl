@@ -35,6 +35,7 @@
             <?php $this->widget('Config');?>
         <?php } ?>
         <?php $this->widget('Account');?>
+        <?php $this->widget('EmojisConfig');?>
         <?php $this->widget('NotificationConfig');?>
         <?php $this->widget('VisioConfig');?>
         <?php $this->widget('AdHoc');?>
