@@ -3,6 +3,7 @@
 namespace App\Widgets\ChatActions;
 
 use App\Url;
+use App\Widgets\Chat\Chat;
 use App\Widgets\ContactActions\ContactActions;
 use App\Widgets\Dialog\Dialog;
 use App\Widgets\Toast\Toast;

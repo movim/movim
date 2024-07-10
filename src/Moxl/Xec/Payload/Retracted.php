@@ -6,19 +6,26 @@ class Retracted extends Payload
 {
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        if ($parent->{'apply-to'} && $parent->{'apply-to'}->attributes()->xmlns == 'urn:xmpp:fasten:0') {
-            $message = \App\User::me()->messages()
-                                      ->where('originid', (string)$parent->{'apply-to'}->attributes()->id)
-                                      ->where('jidfrom', baseJid((string)$parent->attributes()->from))
-                                      ->first();
+        $idKey = $stanza->moderated
+            && in_array(
+                $stanza->moderated->attributes()->xmlns, [
+                    'urn:xmpp:message-moderate:0', // buggy ejabberd implementation
+                    'urn:xmpp:message-moderate:1'
+                ]
+            ) ? 'stanzaid'
+              : 'originid';
 
-            if ($message && !$message->isMuc()) {
-                $message->retract();
-                $message->save();
+        $message = \App\User::me()->messages()
+                                    ->where($idKey, (string)$stanza->attributes()->id)
+                                    ->where('jidfrom', baseJid((string)$parent->attributes()->from))
+                                    ->first();
 
-                $this->pack($message);
-                $this->deliver();
-            }
+        if ($message) {
+            $message->retract();
+            $message->save();
+
+            $this->pack($message);
+            $this->deliver();
         }
     }
 }

@@ -9,6 +9,8 @@ v0.25.2 (master)
 * Comply with the PSR-4 autoloading standard
 * Fix #1330 Use base64 encode/decode when sharing urls using the universal share button
 * Fix the URL embed feature in Publish
+* Update XEP-0424: Message Retraction to 0.4.1
+* Update XEP-0425: Moderated Message Retraction to 0.3.0
 
 v0.25.1
 ---------------------------

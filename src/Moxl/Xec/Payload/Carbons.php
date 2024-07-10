@@ -10,13 +10,10 @@ class Carbons extends Payload
         $message = $stanza->forwarded->message;
 
         if ($parentfrom == \App\User::me()->id) {
-            if ($message->{'apply-to'}
-             && $message->{'apply-to'}->attributes()->xmlns == 'urn:xmpp:fasten:0'
-             && $message->{'apply-to'}->retract
-             && $message->{'apply-to'}->retract->attributes()->xmlns == 'urn:xmpp:message-retract:0') {
-                // Another client just retracted a message
+            if ($message->retract
+             && $message->retract->attributes()->xmlns == 'urn:xmpp:message-retract:1') {
                 $retracted = new Retracted;
-                $retracted->handle($message->{'apply-to'}->retract, $message);
+                $retracted->handle($message->retract, $message);
             } elseif ($message->body || $message->subject
             || ($message->reactions && $message->reactions->attributes()->xmlns == 'urn:xmpp:reactions:0')) {
                 $m = \App\Message::findByStanza($message);

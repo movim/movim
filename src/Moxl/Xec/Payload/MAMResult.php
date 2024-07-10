@@ -21,14 +21,10 @@ class MAMResult extends Payload
         ) {
             $session->set('mamid' . (string)$stanza->attributes()->queryid, $messagesCounter + 1);
 
-            if (
-                $stanza->forwarded->message->{'apply-to'}
-                && $stanza->forwarded->message->{'apply-to'}->attributes()->xmlns == 'urn:xmpp:fasten:0'
-                && $stanza->forwarded->message->{'apply-to'}->moderated
-                && $stanza->forwarded->message->{'apply-to'}->moderated->attributes()->xmlns == 'urn:xmpp:message-moderate:0'
-            ) {
-                (new Moderated)->handle($stanza->forwarded->message->{'apply-to'}->moderated, $stanza->forwarded->message);
-                return;
+            if ($stanza->forwarded->message->retract
+             && $stanza->forwarded->message->retract->attributes()->xmlns == 'urn:xmpp:message-retract:1') {
+                $retracted = new Retracted;
+                $retracted->handle($stanza->forwarded->message->retract, $stanza->forwarded->message);
             }
 
             $message = \App\Message::findByStanza($stanza, $parent);

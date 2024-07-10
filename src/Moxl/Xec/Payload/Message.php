@@ -19,24 +19,11 @@ class Message extends Payload
 
         // Retracted messages are handled by Retracted
         if (
-            $stanza->{'apply-to'}
-            && $stanza->{'apply-to'}->attributes()->xmlns == 'urn:xmpp:fasten:0'
-            && $stanza->{'apply-to'}->retract
-            && $stanza->{'apply-to'}->retract->attributes()->xmlns == 'urn:xmpp:message-retract:0'
+            $stanza->retract
+            && $stanza->retract->attributes()->xmlns == 'urn:xmpp:message-retract:1'
         ) {
             return;
         }
-
-        // ...same with moderated messages
-        if (
-            $stanza->{'apply-to'}
-            && $stanza->{'apply-to'}->attributes()->xmlns == 'urn:xmpp:fasten:0'
-            && $stanza->{'apply-to'}->moderated
-            && $stanza->{'apply-to'}->moderated->attributes()->xmlns == 'urn:xmpp:message-moderate:0'
-        ) {
-            return;
-        }
-
 
         if ($stanza->attributes()->type == 'error') {
             return;

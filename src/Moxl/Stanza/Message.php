@@ -392,14 +392,10 @@ class Message
         $root->setAttribute('type', 'chat');
         $root->setAttribute('id', generateUUID());
 
-        $apply = $dom->createElement('apply-to');
-        $apply->setAttribute('xmlns', 'urn:xmpp:fasten:0');
-        $apply->setAttribute('id', $originId);
-        $root->appendChild($apply);
-
         $retract = $dom->createElement('retract');
-        $retract->setAttribute('xmlns', 'urn:xmpp:message-retract:0');
-        $apply->appendChild($retract);
+        $retract->setAttribute('xmlns', 'urn:xmpp:message-retract:1');
+        $retract->setAttribute('id', $originId);
+        $root->appendChild($retract);
 
         // Hints
         $store = $dom->createElement('store');
@@ -408,6 +404,7 @@ class Message
 
         // Fallback
         $fallback = $dom->createElementNS('urn:xmpp:fallback:0', 'fallback');
+        $fallback->setAttribute('for', 'urn:xmpp:message-retract:1');
         $root->appendChild($fallback);
 
         $body = $dom->createElement('body');
@@ -422,13 +419,9 @@ class Message
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
 
-        $apply = $dom->createElement('apply-to');
-        $apply->setAttribute('xmlns', 'urn:xmpp:fasten:0');
-        $apply->setAttribute('id', $stanzaId);
-
         $moderate = $dom->createElement('moderate');
-        $moderate->setAttribute('xmlns', 'urn:xmpp:message-moderate:0');
-        $apply->appendChild($moderate);
+        $moderate->setAttribute('xmlns', 'urn:xmpp:message-moderate:1');
+        $moderate->setAttribute('id', $stanzaId);
 
         $reason = $dom->createElement('reason');
         $reasonContent = $dom->createTextNode(__('message.moderate_body'));
@@ -436,9 +429,9 @@ class Message
         $moderate->appendChild($reason);
 
         $retract = $dom->createElement('retract');
-        $retract->setAttribute('xmlns', 'urn:xmpp:message-retract:0');
+        $retract->setAttribute('xmlns', 'urn:xmpp:message-retract:1');
         $moderate->appendChild($retract);
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($apply, $to, 'set'));
+        \Moxl\API::request(\Moxl\API::iqWrapper($moderate, $to, 'set'));
     }
 }
