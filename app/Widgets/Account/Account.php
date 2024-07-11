@@ -2,6 +2,8 @@
 
 namespace App\Widgets\Account;
 
+use App\Widgets\Dialog\Dialog;
+use App\Widgets\Toast\Toast;
 use Movim\Librairies\XMPPtoForm;
 use Moxl\Xec\Action\OMEMO\DeleteBundle;
 use Moxl\Xec\Action\Register\ChangePassword;

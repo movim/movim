@@ -90,7 +90,7 @@ class AccountNext extends \Movim\Widget\Base
         global $dns;
         $domain = $host;
 
-        $dns->resolveAll('_xmpp-client._tcp.' . $host, React\Dns\Model\Message::TYPE_SRV)
+        $dns->resolveAll('_xmpp-client._tcp.' . $host, \React\Dns\Model\Message::TYPE_SRV)
         ->then(function ($resolved) use ($host, &$domain) {
             $domain = $resolved[0]['target'];
         })->always(function () use ($host, &$domain) {
