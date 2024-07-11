@@ -75,7 +75,7 @@ xmp {
     word-wrap:break-word;
     direction: ltr;
     overflow-x: auto;
-    max-width: calc(100% - 3.5rem)%;
+    max-width: calc(100% - 3.5rem);
 }
 
 code.block {
