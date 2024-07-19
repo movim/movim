@@ -612,12 +612,10 @@ class Message extends Model
 
         if (is_array($this->getInlinesAttribute())) {
             foreach ($this->getInlinesAttribute() as $key => $inline) {
-                $inlineAlt = ":" . $inline['alt'] . ":";
-
                 if ($alt == true) {
                     $body = str_replace(
                         Message::$inlinePlaceholder . $key,
-                        $inlineAlt,
+                        $inline['alt'],
                         $body
                     );
 
@@ -643,7 +641,7 @@ class Message extends Model
                 } else {
                     $body = str_replace(
                         Message::$inlinePlaceholder . $key,
-                        $inlineAlt,
+                        $inline['alt'],
                         $body
                     );
 
