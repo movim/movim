@@ -10,7 +10,7 @@
                             <img src="{$message->file->url|protectPicture}">
                         </div>
                     {else}
-                        <p>{autoescape="off"}{$message->body|trim|stripTags|addEmojis}{/autoescape}</p>
+                        <p>{autoescape="off"}{$message->body|trim|addEmojis}{/autoescape}</p>
                     {/if}
                     <span class="info"></span>
                 </div>

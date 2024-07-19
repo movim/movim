@@ -28,6 +28,31 @@
     </ul>
     <div class="emojis results"></div>
 
+    {if="$gotemojis"}
+        {if="$favorites->isEmpty()"}
+            <ul class="list thick active">
+                <li onclick="MovimUtils.softRedirect('{$c->route('conf')}')">
+                    <span class="primary icon yellow">
+                        <i class="material-symbols">family_star</i>
+                    </span>
+                    <span class="control icon gray">
+                        <i class="material-symbols">chevron_right</i>
+                    </span>
+                    <div>
+                        <p>{$c->__('emojisconfig.favorites_title')}</p>
+                        <p>{$c->__('emojisconfig.no_emojis_yet')}</p>
+                    </div>
+                </li>
+            </ul>
+        {else}
+            <div class="emojis main">
+                {loop="$favorites"}
+                    <img data-emoji=":{$value->pivot->alias}:" alt=":{$value->pivot->alias}:" class="emoji large" src="{$value->url}">
+                {/loop}
+            </div>
+        {/if}
+    {/if}
+
     <div class="emojis main">
         <img data-emoji="♥" alt=":hearts:" class="emoji large" src="{$c->getSmileyPath('2665')}">
         <img data-emoji="👍" class="emoji large" src="{$c->getSmileyPath('1f44d')}">

@@ -111,7 +111,7 @@
                         {/if}
                     {else}
                     {autoescape="off"}
-                        {$message->body|stripTags|addEmojis}
+                        {$message->inlinedBody|addEmojis}
                     {/autoescape}
                     {/if}
                 </p>

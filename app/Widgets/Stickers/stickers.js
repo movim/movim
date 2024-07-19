@@ -4,17 +4,17 @@ var Stickers = {
     file : null,
 
     addSmiley: function(element) {
-        Chat.insertAtCursor(element.dataset.emoji);
+        Chat.insertAtCursor(element.dataset.emoji + ' ');
         Drawer.clear();
     },
-    zoom: function(element, jid, pack, value) {
+    zoom: function(element, jid, id) {
         var zoomed = document.querySelectorAll('.zoomed');
 
         if (element.classList.contains('zoomed')) {
             Drawer.clear();
 
             var textarea = Chat.getTextarea();
-            Stickers_ajaxSend(jid, pack, value, Boolean(textarea.dataset.muc));
+            Stickers_ajaxSend(jid, id, Boolean(textarea.dataset.muc));
         }
 
         var i = 0;

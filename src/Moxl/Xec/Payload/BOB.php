@@ -6,11 +6,12 @@ class BOB extends Payload
 {
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $from = (string)$parent->attributes()->from;
-        $cid = (string)$stanza->attributes()->cid;
-        $id = (string)$parent->attributes()->id;
+        $this->pack([
+            'from' => (string)$parent->attributes()->from,
+            'id' => (string)$parent->attributes()->id,
+            'cid' => (string)$stanza->attributes()->cid
+        ]);
 
-        $this->pack([$from, $id, $cid]);
         $this->deliver();
     }
 }

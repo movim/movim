@@ -21,9 +21,9 @@ function addUrls($string, bool $preview = false)
                     try {
                         $embed = Embed\Embed::create($match[0]);
                         if ($embed->type == 'image') {
-                            $content = '<img src="'.$match[0].'"/>';
+                            $content = '<img src="' . $match[0] . '"/>';
                         } elseif ($embed->type == 'link') {
-                            $content .= ' - '. $embed->title . ' - ' . $embed->providerName;
+                            $content .= ' - ' . $embed->title . ' - ' . $embed->providerName;
                         }
                     } catch (Exception $e) {
                         error_log($e->getMessage());
@@ -35,27 +35,27 @@ function addUrls($string, bool $preview = false)
 
                     if (substr($link, -5, 5) == '?join') {
                         return stripslashes(
-                            '<a href=\"'.
-                            Route::urlize('chat', [str_replace('?join', '', $link), 'room']).
-                            '\">'.
-                            $content.
-                            '</a>'
-                        ).
-                        ($lastTag !== false ? $lastTag : '');
+                            '<a href=\"' .
+                                Route::urlize('chat', [str_replace('?join', '', $link), 'room']) .
+                                '\">' .
+                                $content .
+                                '</a>'
+                        ) .
+                            ($lastTag !== false ? $lastTag : '');
                     }
                     return stripslashes(
-                        '<a href=\"'.
-                        Route::urlize('contact', $link).
-                        '\">'.
-                        $content.
-                        '</a>'
-                    ).
-                    ($lastTag !== false ? $lastTag : '');
+                        '<a href=\"' .
+                            Route::urlize('contact', $link) .
+                            '\">' .
+                            $content .
+                            '</a>'
+                    ) .
+                        ($lastTag !== false ? $lastTag : '');
                 }
 
                 if (in_array(parse_url($content, PHP_URL_SCHEME), ['http', 'https'])) {
-                    return stripslashes('<a href=\"'.$content.'\" target=\"_blank\" rel=\"noopener noreferrer\">'.$content.'</a>').
-                            ($lastTag !== false ? $lastTag : '');
+                    return stripslashes('<a href=\"' . $content . '\" target=\"_blank\" rel=\"noopener noreferrer\">' . $content . '</a>') .
+                        ($lastTag !== false ? $lastTag : '');
                 }
 
                 return $content;
@@ -66,19 +66,20 @@ function addUrls($string, bool $preview = false)
     );
 }
 
-function emojiToCodePoint(string $emoji): string {
+function emojiToCodePoint(string $emoji): string
+{
     $emoji = mb_convert_encoding($emoji, 'UTF-32', 'UTF-8');
-    $unicode = strtolower(preg_replace("/^[0]+/","",bin2hex($emoji)));
+    $unicode = strtolower(preg_replace("/^[0]+/", "", bin2hex($emoji)));
     return $unicode;
- }
+}
 
 function addHashtagsLinks($string)
 {
     return preg_replace_callback("/([\n\r\s>]|^)#(\w+)/u", function ($match) {
         return
-            $match[1].
-            '<a class="innertag" href="#" onclick="MovimUtils.reload(\''.\Movim\Route::urlize('tag', $match[2]).'\')">'.
-            '#'.$match[2].
+            $match[1] .
+            '<a class="innertag" href="#" onclick="MovimUtils.reload(\'' . \Movim\Route::urlize('tag', $match[2]) . '\')">' .
+            '#' . $match[2] .
             '</a>';
     }, $string);
 }
@@ -162,16 +163,15 @@ function cleanJid($jid): string
 /**
  * @desc Extract the CID
  */
-function getCid($string)
+function getCid($string): ?array
 {
     preg_match("/(\w+)\+(\w+)\@/", $string, $matches);
+
     if (is_array($matches) && count($matches) > 1) {
-        if ($matches[1] === "sha1") {
-            return $matches[2];
-        } else {
-            return $matches[1].'+'.$matches[2];
-        }
+        return ['algorythm' => $matches[1], 'hash' => $matches[2]];
     }
+
+    return null;
 }
 
 /**
@@ -199,8 +199,8 @@ function explodeXMPPURI(string $uri): array
             } else if (isset($params['node']) && $params['node'] == $microblogNamespace) {
                 return ['type' => 'contact', 'params' => $uri['path']];
             }
-        } elseif(isset($uri['host']) && isset($uri['user'])) {
-            return ['type' => 'contact', 'params' => $uri['user'].'@'.$uri['host']];
+        } elseif (isset($uri['host']) && isset($uri['user'])) {
+            return ['type' => 'contact', 'params' => $uri['user'] . '@' . $uri['host']];
         } else {
             return ['type' => 'contact', 'params' => $uri['path']];
         }
@@ -372,7 +372,7 @@ function stringToColor($string): string
     $colors = array_keys(palette());
 
     $s = abs(crc32($string));
-    return $colors[$s%count($colors)];
+    return $colors[$s % count($colors)];
 }
 
 /**
@@ -413,7 +413,9 @@ function stripTags($string): string
     if ($string == null) return '';
 
     return strip_tags(
-        preg_replace('/\s+/', ' ',
+        preg_replace(
+            '/\s+/',
+            ' ',
             preg_replace('/(<\/[^>]+?>)(<[^>\/][^>]*?>)/', '$1 $2', $string)
         )
     );
@@ -451,23 +453,23 @@ function purifyHTML($string, $base = null): string
 
     if ($def = $config->maybeGetRawHTMLDefinition()) {
         $def->addElement('video', 'Block', 'Optional: (source, Flow) | (Flow, source) | Flow', 'Common', [
-          'src' => 'URI',
-          'type' => 'Text',
-          'width' => 'Length',
-          'height' => 'Length',
-          'poster' => 'URI',
-          'preload' => 'Enum#auto,metadata,none',
-          'controls' => 'Bool',
+            'src' => 'URI',
+            'type' => 'Text',
+            'width' => 'Length',
+            'height' => 'Length',
+            'poster' => 'URI',
+            'preload' => 'Enum#auto,metadata,none',
+            'controls' => 'Bool',
         ]);
         $def->addElement('audio', 'Block', 'Optional: (source, Flow) | (Flow, source) | Flow', 'Common', [
-          'src' => 'URI',
-          'preload' => 'Enum#auto,metadata,none',
-          'muted' => 'Bool',
-          'controls' => 'Bool',
+            'src' => 'URI',
+            'preload' => 'Enum#auto,metadata,none',
+            'muted' => 'Bool',
+            'controls' => 'Bool',
         ]);
         $def->addElement('source', 'Block', 'Flow', 'Common', [
-          'src' => 'URI',
-          'type' => 'Text',
+            'src' => 'URI',
+            'type' => 'Text',
         ]);
     }
 
@@ -489,7 +491,7 @@ function isRTL(string $string): bool
  */
 function invertSign($num)
 {
-    return ($num <= 0) ? abs($num) : -$num ;
+    return ($num <= 0) ? abs($num) : -$num;
 }
 
 /**

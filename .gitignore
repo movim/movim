@@ -3,6 +3,7 @@
 /users
 /cache
 /public/cache
+/public/emojis
 *~
 /composer.phar
 .env

@@ -1,0 +1,26 @@
+#emojisconfig_widget .pack {
+    padding-bottom: 1rem;
+}
+
+#emojisconfig_widget .pack:not(:last-child) {
+    border-bottom: 1px solid rgba(var(--movim-font), 0.12);
+}
+
+#emojisconfig_widget .pack .emojis {
+    text-align: center;
+}
+
+#emojisconfig_widget .pack .emojis img {
+    padding: 0.5rem;
+}
+
+#emojisconfig_widget .pack .emojis img:hover {
+    cursor: pointer;
+    background-color: rgba(var(--movim-font), 0.05);
+    border-radius: 0.5rem;
+}
+
+#emojisconfig_widget .pack .emojis img.favorite {
+    opacity: 0.05;
+    pointer-events: none;
+}

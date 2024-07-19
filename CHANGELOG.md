@@ -12,6 +12,9 @@ v0.25.2 (master)
 * Update XEP-0424: Message Retraction to 0.4.1
 * Update XEP-0425: Moderated Message Retraction to 0.3.0
 * Replace \code with ```codeblock``` support in the chat messages
+* Add support of custom inline emojis through XEP-0231: Bits of Binary
+* Refactor the stickers and custom emojis by moving them in the database
+* Add an importEmojisPack command to import Mastodon/Pleroma emojis pack
 
 v0.25.1
 ---------------------------

@@ -56,6 +56,14 @@ em {
     font-style: italic;
 }
 
+p img.inline {
+    display: inline-block;
+    height: 3rem;
+    max-width: 3.5rem;
+    margin-bottom: -0.7rem;
+    user-select: none;
+}
+
 li p.code,
 code,
 pre,

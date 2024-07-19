@@ -6,6 +6,8 @@
 
 namespace Movim\Console;
 
+use App\Sticker;
+use App\StickersPack;
 use Movim\Image;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -24,16 +26,46 @@ class CompileStickers extends Command
     {
         $count = 0;
 
-        foreach (glob(PUBLIC_PATH . '/stickers/*/*.png', GLOB_NOSORT) as $path) {
-            $key = basename($path, '.png');
+        StickersPack::truncate();
 
-            if ($key != 'icon') {
-                $count++;
-                copy($path, PUBLIC_CACHE_PATH . hash(Image::$hash, $key) . '_o.png');
+        foreach (glob(PUBLIC_STICKERS_PATH . '*', GLOB_NOSORT) as $pack) {
+            $parsed = parse_ini_file($pack . '/info.ini');
+            $packName = basename($pack);
+
+            $stickersPack = new StickersPack;
+            $stickersPack->name = $packName;
+            $stickersPack->homepage = $parsed['url'];
+            $stickersPack->license = $parsed['license'];
+            $stickersPack->author = $parsed['author'];
+            $stickersPack->save();
+
+            foreach (glob($pack . '/*.png', GLOB_NOSORT) as $path) {
+                $key = basename($path, '.png');
+
+                if ($key != 'icon') {
+                    $hashed = hash(Image::$hash, file_get_contents($path));
+
+                    $image = new Image;
+                    $image->fromPath($path);
+                    $image->setKey($hashed);
+                    $image->save();
+
+                    $sticker = new Sticker;
+                    $sticker->pack = $packName;
+                    $sticker->name = $key;
+                    $sticker->filename = $key . '.png';
+                    $sticker->cache_hash = $hashed;
+                    $sticker->cache_hash_algorythm = Image::$hash;
+                    $sticker->save();
+
+                    $count++;
+                }
             }
+
+            $output->writeln('<info>' . $packName . ' compiled</info>');
         }
 
-        $output->writeln('<info>'.$count.' stickers compiled</info>');
+        $output->writeln('<info>' . $count . ' stickers compiled</info>');
         return 0;
     }
 }
