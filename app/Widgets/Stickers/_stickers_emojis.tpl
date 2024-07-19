@@ -47,7 +47,7 @@
         {else}
             <div class="emojis main">
                 {loop="$favorites"}
-                    <img data-emoji=":{$value->pivot->alias}:" alt=":{$value->pivot->alias}:" class="emoji large" src="{$value->url}">
+                    <img title="{$value->pivot->alias}" data-emoji=":{$value->pivot->alias}:" alt=":{$value->pivot->alias}:" class="emoji large" src="{$value->url}">
                 {/loop}
             </div>
         {/if}

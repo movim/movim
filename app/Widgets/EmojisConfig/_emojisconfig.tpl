@@ -12,7 +12,7 @@
     </ul>
     <div class="emojis">
         {loop="$favorites"}
-            <img class="emoji large" data-id="{$value->id}" src="{$value->url}" onclick="EmojisConfig_ajaxAddEditFavoriteForm({$value->id})">
+            <img class="emoji large" title="{$value->pivot->alias}" data-id="{$value->id}" src="{$value->url}" onclick="EmojisConfig_ajaxAddEditFavoriteForm({$value->id})">
         {/loop}
     </div>
 </div>
@@ -40,7 +40,7 @@
         </ul>
         <div class="emojis">
             {loop="$value->emojis"}
-                <img class="emoji large {if="$favorites->keys()->contains($value->id)"}favorite{/if}" src="{$value->url}" onclick="EmojisConfig_ajaxAddEditFavoriteForm({$value->id})">
+                <img title="{$value->aliasPlaceholder}" class="emoji large {if="$favorites->keys()->contains($value->id)"}favorite{/if}" src="{$value->url}" onclick="EmojisConfig_ajaxAddEditFavoriteForm({$value->id})">
             {/loop}
         </div>
     </div>

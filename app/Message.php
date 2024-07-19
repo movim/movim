@@ -632,6 +632,7 @@ class Message extends Model
                     $img->setAttribute('class', 'inline');
                     $img->setAttribute('src', $url);
                     $img->setAttribute('alt', $inline['alt']);
+                    $img->setAttribute('title', $inline['alt']);
                     $dom->append($img);
 
                     $body = str_replace(
