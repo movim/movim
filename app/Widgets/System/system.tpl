@@ -7,3 +7,5 @@ var NOTIFICATION_CALL = {if="$user && $user->notificationcall === true"}true{els
 var OMEMO_ENABLED = {if="$user && $user->hasOMEMO()"}true{else}false{/if};
 var USER_JID = {if="$user && isset($user->id)"}'{$user->id}'{else}false{/if};
 var VAPID_PUBLIC_KEY = '{$vapid_public_key}';
+
+var favoriteEmojis = {autoescape="off"}{$favorite_emojis|json_encode}{/autoescape};

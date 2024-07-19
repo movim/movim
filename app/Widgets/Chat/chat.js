@@ -503,9 +503,35 @@ var Chat = {
         if (noColon || value.lastIndexOf(':') > -1 && value.length > value.lastIndexOf(':') + 2) {
             var first = true;
 
+            Object.keys(window.favoriteEmojis)
+                .filter(key => key.includes(value.substring(value.lastIndexOf(':') + 1)) && !key.includes('type'))
+                .slice(0, 20)
+                .forEach(found => {
+                    var img = document.createElement('img');
+                    img.setAttribute('src', favoriteEmojis[found]);
+                    img.classList.add('emoji');
+                    if (reaction) img.classList.add('large');
+
+                    if (first) {
+                        img.classList.add('selected');
+                        first = false;
+                    }
+
+                    img.title = ':' + found + ':';
+                    img.dataset.emoji = ':' + found + ':';
+
+                    if (!reaction) {
+                        img.addEventListener('click', e => {
+                            Chat.selectEmoji(e.target);
+                        });
+                    }
+
+                    emojisList.appendChild(img);
+                });
+
             Object.keys(window.emojis)
                 .filter(key => key.includes(value.substring(value.lastIndexOf(':') + 1)) && !key.includes('type'))
-                .slice(0, 40)
+                .slice(0, 30)
                 .forEach(found => {
                     var img = document.createElement('img');
                     img.setAttribute('src', BASE_URI + '/theme/img/emojis/svg/' + emojis[found].c + '.svg');
