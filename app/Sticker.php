@@ -12,12 +12,9 @@ class Sticker extends Model
         return $this->belongsTo('App\StickersPack', 'name', 'pack');
     }
 
-    public function getImageAttribute(): ?Image
+    public function getImagePathAttribute(): string
     {
-        $image = new Image;
-        $image->setKey($this->attributes['cache_hash']);
-
-        return $image;
+        return PUBLIC_STICKERS_PATH . '/' . $this->attributes['pack'] . '/' . $this->attributes['filename'];
     }
 
     public function getUrlAttribute(): string

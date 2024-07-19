@@ -13,6 +13,7 @@ class Request extends Action
     protected $_algorythm;
     protected $_resource;
     protected $_messagemid;
+    private $_phpalgorythm;
 
     public function request()
     {
@@ -27,6 +28,7 @@ class Request extends Action
 
     public function setAlgorythm(string $algorythm)
     {
+        $this->_phpalgorythm = $algorythm;
         $this->_algorythm = \phpToIANAHash()[$algorythm];
         return $this;
     }
@@ -35,7 +37,7 @@ class Request extends Action
     {
         $data = (string)$stanza->data;
 
-        if (hash($this->_algorythm, base64_decode($data)) == $this->_hash) {
+        if (hash($this->_phpalgorythm, base64_decode($data)) == $this->_hash) {
             $p = new Image;
             $p->fromBase($data);
             $p->setKey($this->_hash);

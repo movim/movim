@@ -34,33 +34,31 @@ class Stickers extends \Movim\Widget\Base
         list($to, $id, $cid) = array_values($packet->content);
 
         $eCid = getCid($cid);
-        $image = null;
+        $imagePath = null;
 
         $emoji = Emoji::where('cache_hash_algorythm', $eCid['algorythm'])
             ->where('cache_hash', $eCid['hash'])
             ->first();
 
         if ($emoji) {
-            $image = $emoji->image;
+            $imagePath = $emoji->imagePath;
         } else {
             $sticker = Sticker::where('cache_hash_algorythm', $eCid['algorythm'])
                 ->where('cache_hash', $eCid['hash'])
                 ->first();
 
             if ($sticker) {
-                $image = $sticker->image;
+                $imagePath = $sticker->imagePath;
             }
         }
 
-        if ($image) {
-            $image->load();
-
+        if ($imagePath && file_exists($imagePath)) {
             $a = new Answer;
             $a->setTo($to)
                 ->setId($id)
                 ->setCid($cid)
                 ->setType('image/png')
-                ->setBase64($image->toBase())
+                ->setBase64(base64_encode(file_get_contents($imagePath)))
                 ->request();
         }
     }

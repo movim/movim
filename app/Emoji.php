@@ -20,12 +20,9 @@ class Emoji extends Model
         return $this->belongsTo('App\EmojisPack', 'name', 'pack');
     }
 
-    public function getImageAttribute(): ?Image
+    public function getImagePathAttribute(): string
     {
-        $image = new Image;
-        $image->setKey($this->attributes['cache_hash']);
-
-        return $image;
+        return PUBLIC_EMOJIS_PATH . '/' . $this->attributes['pack'] . '/' . $this->attributes['filename'];
     }
 
     public function getUrlAttribute(): string

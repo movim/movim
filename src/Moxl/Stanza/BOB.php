@@ -8,7 +8,7 @@ class BOB
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $data = $dom->createElementNS('urn:xmpp:bob', 'data');
-        $data->setAttribute('cid', \phpToIANAHash()[$algorythm] . '+' . $hash . '@bob.xmpp.org');
+        $data->setAttribute('cid', $algorythm . '+' . $hash . '@bob.xmpp.org');
 
         \Moxl\API::request(\Moxl\API::iqWrapper($data, $to, 'get'));
     }
