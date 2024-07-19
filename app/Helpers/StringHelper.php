@@ -165,10 +165,12 @@ function cleanJid($jid): string
  */
 function getCid($string): ?array
 {
-    preg_match("/(\w+)\+(\w+)\@/", $string, $matches);
+    preg_match("/([\w\-]+)\+(\w+)\@/", $string, $matches);
 
     if (is_array($matches) && count($matches) > 1) {
-        return ['algorythm' => $matches[1], 'hash' => $matches[2]];
+        if (!array_key_exists($matches[1], \IANAHashToPhp())) return null;
+
+        return ['algorythm' => \IANAHashToPhp()[$matches[1]], 'hash' => $matches[2]];
     }
 
     return null;

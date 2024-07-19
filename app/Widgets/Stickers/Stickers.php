@@ -97,7 +97,7 @@ class Stickers extends \Movim\Widget\Base
         $dom->append($p);
 
         $img = $dom->createElement('img');
-        $img->setAttribute('src', 'cid:' . $sticker->cache_hash_algorythm . '+' . $sticker->cache_hash . '@bob.xmpp.org');
+        $img->setAttribute('src', 'cid:' . \phpToIANAHash()[$sticker->cache_hash_algorythm] . '+' . $sticker->cache_hash . '@bob.xmpp.org');
         $img->setAttribute('alt', 'Sticker');
         $p->append($img);
 

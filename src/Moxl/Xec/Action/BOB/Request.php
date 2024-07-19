@@ -24,6 +24,12 @@ class Request extends Action
         }
     }
 
+    public function setAlgorythm(string $algorythm)
+    {
+        $this->_algorythm = \phpToIANAHash()[$algorythm];
+        return $this;
+    }
+
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $data = (string)$stanza->data;

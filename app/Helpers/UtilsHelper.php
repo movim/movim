@@ -834,3 +834,35 @@ function getPlatform(string $userAgent): ?string
         }
     }
 }
+
+/**
+ * @desc Get PHP hash to IANA hashes conversion
+ * https://www.iana.org/assignments/hash-function-text-names/hash-function-text-names.xhtml
+ * https://www.php.net/manual/en/function.hash-algos.php
+ */
+function phpToIANAHash(): array
+{
+    return [
+        'md2' => 'md2',
+        'md5' => 'md5',
+        'sha1' => 'sha1',
+        'sha224' => 'sha-224',
+        'sha256' => 'sha-256',
+        'sha384' => 'sha-384',
+        'sha512' => 'sha-512',
+    ];
+}
+
+function IANAHashToPhp(): array
+{
+    return [
+        'md2' => 'md2',
+        'md5' => 'md5',
+        'sha1' => 'sha1', // https://xmpp.org/extensions/xep-0231.html#algo
+        'sha-224' => 'sha224',
+        'sha256' => 'sha256', // retro-compatibility
+        'sha-256' => 'sha256',
+        'sha-384' => 'sha384',
+        'sha-512' => 'sha512',
+    ];
+}

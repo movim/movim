@@ -681,7 +681,7 @@ class Chat extends \Movim\Widget\Base
 
                     $dom = new \DOMDocument('1.0', 'UTF-8');
                     $img = $dom->createElement('img');
-                    $img->setAttribute('src', 'cid:' . $emoji->cache_hash_algorythm . '+' . $emoji->cache_hash . '@bob.xmpp.org');
+                    $img->setAttribute('src', 'cid:' . \phpToIANAHash()[$emoji->cache_hash_algorythm] . '+' . $emoji->cache_hash . '@bob.xmpp.org');
                     $img->setAttribute('alt', ':' . $emoji->pivot->alias . ':');
                     $dom->append($img);
 
