@@ -394,6 +394,6 @@ class Chats extends Base
     function display()
     {
         $this->view->assign('filters', $this->_filters);
-        $this->view->assign('filter', \App\Cache::c('chats_filter'));
+        $this->view->assign('filter', \App\Cache::c('chats_filter') ?? 'all');
     }
 }
