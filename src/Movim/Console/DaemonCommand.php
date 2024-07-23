@@ -87,15 +87,15 @@ class DaemonCommand extends Command
             $output->writeln('<info>php daemon.php setAdmin {jid}</info>' . "\n");
         }
 
-        $clearTemplatesCache = new \React\ChildProcess\Process('exec php daemon.php clearTemplatesCache');
+        $clearTemplatesCache = new \React\ChildProcess\Process('exec ' . PHP_BINARY . ' daemon.php clearTemplatesCache');
         $clearTemplatesCache->start($loop);
         $clearTemplatesCache->on('exit', fn ($out) => $output->writeln('<info>Templates cache cleared</info>'));
 
-        $compileLanguages = new \React\ChildProcess\Process('exec php daemon.php compileLanguages');
+        $compileLanguages = new \React\ChildProcess\Process('exec ' . PHP_BINARY . ' daemon.php compileLanguages');
         $compileLanguages->start($loop);
         $compileLanguages->on('exit', fn ($out) => $output->writeln('<info>Compiled po files</info>'));
 
-        $compileStickers = new \React\ChildProcess\Process('exec php daemon.php compileStickers');
+        $compileStickers = new \React\ChildProcess\Process('exec ' . PHP_BINARY . ' daemon.php compileStickers');
         $compileStickers->start($loop);
         $compileStickers->on('exit', fn ($out) => $output->writeln('<info>Stickers compiled</info>'));
 
@@ -107,7 +107,7 @@ class DaemonCommand extends Command
         }
 
         if (isOpcacheEnabled()) {
-            $compileOpcache = new \React\ChildProcess\Process('exec php daemon.php compileOpcache');
+            $compileOpcache = new \React\ChildProcess\Process('exec ' . PHP_BINARY . ' daemon.php compileOpcache');
             $compileOpcache->start($loop);
             $compileOpcache->on('exit', fn ($out) => $output->writeln('<info>Files compiled in Opcache</info>'));
         } else {

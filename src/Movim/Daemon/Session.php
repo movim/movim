@@ -145,7 +145,7 @@ class Session
 
         // Launching the linker
         $this->process = new \React\ChildProcess\Process(
-            'exec php ' . $configuration . ' -d=memory_limit=512M linker.php ' . $this->sid,
+            'exec ' . PHP_BINARY . ' ' . $configuration . ' -d=memory_limit=512M linker.php ' . $this->sid,
             null,
             [
                 'sid'       => $this->sid,
