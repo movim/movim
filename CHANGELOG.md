@@ -15,6 +15,7 @@ v0.25.2 (master)
 * Add support of custom inline emojis through XEP-0231: Bits of Binary
 * Refactor the stickers and custom emojis by moving them in the database
 * Add an importEmojisPack command to import Mastodon/Pleroma emojis pack
+* Fix #1314  Picture: images with & in URL are broken
 
 v0.25.1
 ---------------------------

@@ -12,7 +12,7 @@ class Picture extends Base
 
     public function display()
     {
-        $url = urldecode($this->get('url'));
+        $url = html_entity_decode(urldecode($this->get('url')));
         $parsedUrl = parse_url($url);
         if (
             is_array($parsedUrl)
@@ -29,7 +29,7 @@ class Picture extends Base
         $max = $headers["download_content_length"] > $this->compressLimit ? $this->compressLimit : $headers["download_content_length"];
 
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $this->get('url'));
+        curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HEADER, true);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
