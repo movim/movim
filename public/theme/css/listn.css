@@ -28,7 +28,7 @@ article header>ul.list li {
     padding: 0 1rem;
 }
 
-ul.list li>* {
+ul.list>li>* {
     order: 2;
     flex: 1;
     min-width: 0;
