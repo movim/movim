@@ -205,7 +205,7 @@ class Blog extends Base
 
     public function prepareTicket(Post $post)
     {
-        return (new PostWidget)->prepareTicket($post);
+        return (new PostWidget)->prepareTicket($post, true);
     }
 
     public function display()

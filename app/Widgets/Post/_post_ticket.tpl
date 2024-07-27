@@ -1,6 +1,16 @@
 <li id="{$post->nodeid|cleanupId}"
     class="block {if="$post->embed"}embed{/if}"
-    onclick="MovimUtils.reload('{$c->route('post', [$post->server, $post->node, $post->nodeid])}'); Drawer.clear()">
+
+    {if="$public"}
+        {if="$post->isMicroblog()"}
+            onclick="MovimUtils.reload('{$c->route('blog', [$post->server, $post->nodeid])}')"
+        {else}
+            onclick="MovimUtils.reload('{$c->route('node', [$post->server, $post->node, $post->nodeid])}')"
+        {/if}
+    {else}
+        onclick="MovimUtils.reload('{$c->route('post', [$post->server, $post->node, $post->nodeid])}'); Drawer.clear()"
+    {/if}
+>
     {if="$post->picture != null"}
         <img class="main"
             src="{$post->picture->href|protectPicture}"
