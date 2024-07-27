@@ -577,12 +577,15 @@ function varToIcons(string $var)
     $icons = [
         // Pubsub
         'pubsub#deliver_payloads' => 'add_box',
+        'pubsub#deliver_notifications' => 'notifications',
         'pubsub#notify_config' => 'notifications',
         'pubsub#notify_delete' => 'delete',
         'pubsub#notify_retract' => 'delete_sweep',
         'pubsub#persist_items' => 'save',
+        'pubsub#presence_based_delivery' => 'notifications_active',
+        'pubsub#purge_offline' => 'delete_forever',
+        'pubsub#subscribe' => 'how_to_reg',
         'pubsub#type' => 'space_dashboard',
-        'pubsub#deliver_notifications' => 'notifications_active',
 
         // Muc
         'muc#roomconfig_persistentroom' => 'save',
@@ -592,17 +595,23 @@ function varToIcons(string $var)
         'muc#roomconfig_moderatedroom' => 'stars',
         'muc#roomconfig_changesubject' => 'title',
         'muc#roomconfig_allowinvites' => 'mail',
-        'allow_visitor_status' => 'description',
         'allow_private_messages' => 'message',
         'allow_query_users' => 'portrait',
+        'allow_visitor_nickchange' => '3p',
+        'allow_visitor_status' => 'description',
+        'allow_voice_requests' => 'voice_selection',
+        'allow_subscription' => 'how_to_reg',
+        'enable_hats' => 'badge',
         'mam' => 'archive',
+        'members_by_default' => 'remember_me',
+        'public_list' => 'public',
     ];
 
     if (array_key_exists($var, $icons)) {
         return $icons[$var];
     }
 
-    return 'noise_control_off';
+    return 'tune';
 }
 
 /**
