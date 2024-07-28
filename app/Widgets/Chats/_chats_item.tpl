@@ -66,7 +66,7 @@
             {if="$message->retracted"}
                 <p><i class="material-symbols">delete</i> {$c->__('message.retracted')}</p>
             {elseif="$message->encrypted"}
-                <p><i class="material-symbols">lock</i> {$c->__('message.encrypted')}</p>
+                <p><i class="material-symbols fill">lock</i> {$c->__('message.encrypted')}</p>
             {elseif="$message->type == 'invitation'"}
                 <p><i class="material-symbols icon gray">outgoing_mail</i> {$c->__('message.invitation')}</p>
             {elseif="$message->type == 'jingle_incoming'"}

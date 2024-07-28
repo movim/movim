@@ -592,8 +592,8 @@ li div.bubble.file:not(.audio):after {
 
 @media screen and (min-width: 1025px) {
 
-    #chat_widget li .bubble div:hover ul.reactions:empty~span.reaction,
-    #chat_widget li .bubble div:not(.encrypted):hover span.reply {
+    #chat_widget li .bubble div:not(.encrypted):hover p:not(.retracted)~ul.reactions:empty~span.reaction,
+    #chat_widget li .bubble div:not(.encrypted):hover p:not(.retracted)~span.reply {
         display: inline-flex;
         position: absolute;
         left: 100%;

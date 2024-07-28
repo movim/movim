@@ -3,8 +3,10 @@
         <li {if="$message->isMine()"}class="oppose"{/if}>
             <div class="bubble {if="$message->file && $message->file->isPicture"}file{/if}" data-publishedprepared="{$message->published|prepareTime}">
                 <div class="message">
-                    {if="$message->retracted"}
-                        <p class="retracted"><i class="material-symbols">delete</i>{$c->__('message.retracted')}</p>
+                    {if="$message->encrypted"}
+                        <p class="encrypted">{$c->__('message.encrypted')} <i class="material-symbols fill">lock</i></p>
+                    {elseif="$message->retracted"}
+                        <p class="retracted">{$c->__('message.retracted')} <i class="material-symbols">delete</i></p>
                     {elseif="$message->file && $message->file->isPicture"}
                         <div class="file" data-type="{$message->file->type}">
                             <img src="{$message->file->url|protectPicture}">
@@ -18,23 +20,15 @@
         </li>
     </ul>
     <ul class="list divided active middle">
-        <li onclick="Stickers_ajaxReaction({$message->mid})">
-            <span class="primary icon gray">
-                <i class="material-symbols">add_reaction</i>
-            </span>
-            <div>
-                <p class="normal">{$c->__('message.react')}</p>
-            </div>
-        </li>
-        <li onclick="Chat_ajaxHttpDaemonReply({$message->mid}); Dialog_ajaxClear()">
-            <span class="primary icon gray">
-                <i class="material-symbols">reply</i>
-            </span>
-            <div>
-                <p class="normal">{$c->__('button.reply')}</p>
-            </div>
-        </li>
-        {if="!$message->retracted"}
+        {if="!$message->encrypted"}
+            <li onclick="Stickers_ajaxReaction({$message->mid})">
+                <span class="primary icon gray">
+                    <i class="material-symbols">add_reaction</i>
+                </span>
+                <div>
+                    <p class="normal">{$c->__('message.react')}</p>
+                </div>
+            </li>
             <li
                 onclick="MovimUtils.copyToClipboard(MovimUtils.decodeHTMLEntities(ChatActions.message.body)); ChatActions_ajaxCopiedMessageText(); Dialog_ajaxClear()">
                 <span class="primary icon gray">
@@ -45,6 +39,14 @@
                 </div>
             </li>
         {/if}
+        <li onclick="Chat_ajaxHttpDaemonReply({$message->mid}); Dialog_ajaxClear()">
+            <span class="primary icon gray">
+                <i class="material-symbols">reply</i>
+            </span>
+            <div>
+                <p class="normal">{$c->__('button.reply')}</p>
+            </div>
+        </li>
 
         {if="$message->isLast()"}
             <li onclick="Chat.editPrevious(); Dialog_ajaxClear();">
@@ -68,7 +70,7 @@
             </li>
         {/if}
 
-        {if="$conference && $conference->presence && $conference->presence->mucrole == 'moderator' && $conference->info && $conference->info->hasModeration() && !$message->retracted"}
+        {if="$conference && $conference->presence && $conference->presence->mucrole == 'moderator' && $conference->info && $conference->info->hasModeration()"}
             <li class="subheader">
                 <div>
                     <p>{$c->__('chatroom.administration')}</p>

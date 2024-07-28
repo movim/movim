@@ -73,7 +73,7 @@ class ChatActions extends \Movim\Widget\Base
             ->where('mid', $mid)
             ->first();
 
-        if ($message && $message->isClassic()) {
+        if ($message && $message->isClassic() && !$message->retracted) {
             $view = $this->tpl();
 
             $message->body = $message->inlinedBody;
