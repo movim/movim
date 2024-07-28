@@ -162,7 +162,7 @@ class Stickers extends \Movim\Widget\Base
     /**
      * @brief Show the smiley Poppin
      */
-    public function ajaxReaction(string $mid = null, string $jid = null)
+    public function ajaxReaction(string $mid = null)
     {
         $info = $mid
             ? Info::where('server', function ($query) use ($mid) {
@@ -178,7 +178,7 @@ class Stickers extends \Movim\Widget\Base
         $emojis->assign('mid', $mid);
         $emojis->assign('reactionsrestrictions', $info ? $info->reactionsrestrictions : null);
         $emojis->assign('favorites', $this->user->emojis);
-        $emojis->assign('gotemojis', Emoji::count() > 0);
+        $emojis->assign('gotemojis', $mid == null && Emoji::count() > 0);
 
         $view->assign('emojis', $emojis->draw('_stickers_emojis'));
 
