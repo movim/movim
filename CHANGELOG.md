@@ -1,7 +1,10 @@
 Movim Changelog
 ================
 
-v0.26 (master)
+v0.26.1 (master)
+---------------------------
+
+v0.26
 ---------------------------
 * New filters design for the Chats and Rooms
 * Don't send notifications for incoming invitations and messages of unknown contacts
