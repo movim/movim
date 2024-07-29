@@ -1,7 +1,7 @@
 Movim Changelog
 ================
 
-v0.25.2 (master)
+v0.26 (master)
 ---------------------------
 * New filters design for the Chats and Rooms
 * Don't send notifications for incoming invitations and messages of unknown contacts
@@ -17,6 +17,7 @@ v0.25.2 (master)
 * Add an importEmojisPack command to import Mastodon/Pleroma emojis pack
 * Fix #1314 Picture: images with & in URL are broken
 * Fix #1334 Use PHP_BINARY in php exec to call the proper PHP version internaly
+* Fix #1340 Use the proper public link when displaying the ticket on public pages
 
 v0.25.1
 ---------------------------
