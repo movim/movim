@@ -600,9 +600,9 @@ li div.bubble.file:not(.audio):after {
         transform: translate(-0.5rem, -0.5rem);
     }
 
-    #chat_widget li .bubble.file div:hover ul.reactions:empty~span.reaction,
-    #chat_widget li .bubble.file div:not(.encrypted):hover span.reply {
-        transform: translate(-0.5rem, -5.5rem);
+    #chat_widget li .bubble.file div:not(.encrypted):hover p:not(.retracted)~ul.reactions:empty~span.reaction,
+    #chat_widget li .bubble.file div:not(.encrypted):hover p:not(.retracted)~span.reply {
+        transform: translate(-0.5rem, -5rem);
     }
 
     #chat_widget li .bubble div:hover ul.reactions:not(:empty)~span.reply {

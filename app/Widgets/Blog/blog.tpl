@@ -125,7 +125,7 @@
     {/if}
 </header>
 
-<ul class="list card shadow {if="$gallery"}middle flex third gallery large active{/if}">
+<ul class="card shadow {if="$gallery"}middle flex third gallery large active{/if}">
     {if="$posts == null || $posts->isEmpty()"}
         <br />
         <article class="block">

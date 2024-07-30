@@ -24,7 +24,7 @@
 
 {if="$items && $items->isNotEmpty()"}
     <div id="menu_refresh"></div>
-    <div class="list card shadow" id="menu_wrapper">
+    <div class="card shadow" id="menu_wrapper">
 
     {loop="$items"}
         <div id="{$value->nodeid|cleanupId}" class="block large">
