@@ -25,10 +25,10 @@ var Chats = {
     },
 
     refresh: function(clearAllActives) {
-        Chats.refreshFilters();
         var list = document.querySelector('#chats_widget_list');
-
         if (!list) return;
+
+        Chats.refreshFilters();
 
         var trim = list.innerHTML.trim();
 
