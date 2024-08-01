@@ -182,24 +182,26 @@
 
             {$call = false}
 
-            {if="$roster && $roster->presences->count() > 0"}
-                {loop="$roster->presences"}
-                    {if="$value->capability && $value->capability->isJingleAudio() && $value->jid"}
-                        {$call = true}
-                        <span title="{$c->__('button.audio_call')}" class="control icon active on_desktop"
-                            onclick="VisioLink.openVisio('{$value->jid|echapJS}');">
-                            <i class="material-symbols">phone</i>
-                        </span>
-                    {/if}
-                    {if="$value->capability && $value->capability->isJingleVideo() && $value->jid"}
-                        {$call = true}
-                        <span title="{$c->__('button.video_call')}" class="control icon active on_desktop"
-                            onclick="VisioLink.openVisio('{$value->jid|echapJS}', '', true);">
-                            <i class="material-symbols">videocam</i>
-                        </span>
-                        {break}
-                    {/if}
-                {/loop}
+            {if="!$incall"}
+                {if="$roster && $roster->presences->count() > 0"}
+                    {loop="$roster->presences"}
+                        {if="$value->capability && $value->capability->isJingleAudio() && $value->jid"}
+                            {$call = true}
+                            <span title="{$c->__('button.audio_call')}" class="control icon active on_desktop"
+                                onclick="Visio.prepare('{$value->jid|echapJS}');">
+                                <i class="material-symbols">phone</i>
+                            </span>
+                        {/if}
+                        {if="$value->capability && $value->capability->isJingleVideo() && $value->jid"}
+                            {$call = true}
+                            <span title="{$c->__('button.video_call')}" class="control icon active on_desktop"
+                                onclick="Visio.prepare('{$value->jid|echapJS}', '', true);">
+                                <i class="material-symbols">videocam</i>
+                            </span>
+                            {break}
+                        {/if}
+                    {/loop}
+                {/if}
             {/if}
 
             <span
@@ -227,6 +229,10 @@
                 </p>
                 <p class="compose first line active" id="{$jid|cleanupId}-state" onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')"></p>
                 <p class="line active" onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')">
+                    {if="$contactincall"}
+                        <i class="material-symbols icon green blink">phone_in_talk</i>
+                        {$c->__('visio.in_call')} •
+                    {/if}
                     {if="$contact->locationDistance != null"}
                         <i class="material-symbols">place</i>
                         {$contact->locationDistance|humanDistance} •

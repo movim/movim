@@ -16,9 +16,9 @@
     filter: blur(0.4rem);
 }
 
-.card img.main ~ div {
+/*.card img.main ~ div {
     z-index: 1;
-}
+}*/
 
 .card > .block:not(.subheader):not(.simple) {
     animation: fadein 0.3s;

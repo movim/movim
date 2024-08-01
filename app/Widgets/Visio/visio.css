@@ -1,10 +1,47 @@
+#visio {
+    display: block;
+    position: fixed;
+    bottom: 8rem;
+    right: 1rem;
+    width: 40rem;
+    height: 25rem;
+    background-color: #111;
+    border-radius: 1rem;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 2;
+}
+
+#chat_widget #visio {
+    position: relative;
+    bottom: 0;
+    right: 0;
+    border-radius: 0;
+    max-height: 40%;
+    height: 100%;
+    z-index: 0;
+}
+
+body > #visio:not(:fullscreen) #main,
+body > #visio:not(:fullscreen) #toggle_dtmf,
+
+#chat_widget #visio #switch_chat,
+#visio:not([data-from]),
+#visio:not([data-type]) #toggle_audio,
+#visio[data-type=video] #toggle_dtmf,
+#visio[data-type=video] #dtmf,
+#visio:not([data-type=video]) #toggle_video,
+#visio:not([data-type=video]) #switch_camera,
+#visio:not([data-type=video]) #screen_sharing,
+#visio:not([data-type=video]) #local_video,
+#visio:not([data-type=video]) #remote_video,
+#visio:not([data-type=video]) #screen_sharing_video,
+#visio:not([data-type=video]) #video {
+    display: none;
+}
+
 #visio video {
     width: 100%;
     height: 100%;
-}
-
-body {
-    background-color: #111;
 }
 
 #visio #visio_source {
@@ -38,19 +75,20 @@ body {
 #visio .infos {
     color: white;
     position: absolute;
-    top: calc(50% - 15rem);
+    top: calc(50% - 12rem);
     width: 100%;
     z-index: -1;
     text-align: center;
     transition: opacity 0.5s ease-in-out;
 }
 
-#visio #dtmf:not(.hide) ~ .infos {
+#visio #dtmf:not(.hide)~.infos {
     opacity: 0;
 }
 
 #visio #main {
     outline: 0.5rem solid transparent;
+    bottom: 2rem; /* Override global CSS */
 }
 
 #visio .infos #remote_level {
@@ -74,9 +112,9 @@ body {
     font-size: 1.8rem;
 }
 
-#visio video#video,
+#visio video#local_video,
 #visio video#screen_sharing_video.sharing {
-    position: fixed;
+    position: absolute;
     right: 1rem;
     bottom: 1rem;
     width: 25rem;
@@ -90,19 +128,37 @@ body {
     background-size: 25%;
 }
 
+
+body > #visio:not(:fullscreen) video#local_video,
+body > #visio:not(:fullscreen) video#screen_sharing_video.sharing {
+    width: 10rem;
+    right: 0;
+    bottom: 0;
+}
+
+body > #visio:not(:fullscreen) #visio_contact {
+    transform: scale(0.7);
+}
+
+@media screen and (max-width: 800px) {
+    #chat_widget #visio:not(:fullscreen) #visio_contact {
+        transform: scale(0.7);
+    }
+}
+
 #visio video#screen_sharing_video:not(.sharing),
-#visio video#screen_sharing_video.sharing + video#video {
+#visio video#screen_sharing_video.sharing+video#local_video {
     display: none;
 }
 
 @media screen and (max-width: 800px) {
-    #visio video#video,
+    #visio video#local_video,
     #visio video#screen_sharing_video.sharing {
         width: 15rem;
     }
 }
 
-#visio header.big {
+#visio header {
     position: absolute;
     width: 100%;
     z-index: 1;
@@ -126,10 +182,14 @@ body {
     font-size: 1.5rem;
     line-height: 2.5rem;
     margin: 0 1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 #visio .button.action {
     right: calc(50% - 3.5rem);
+    position: absolute;
 }
 
 #visio .ring {
@@ -150,40 +210,82 @@ body {
     color: white;
 }
 
-#visio #video,
+#visio #local_video,
 #visio #remote_video {
     transition: opacity 0.5s ease-in-out;
 }
 
-#visio #video.muted,
+#visio #local_video.muted,
 #visio #remote_video.muted {
     opacity: 0;
 }
 
 @-webkit-keyframes Rotate {
-    0% {-webkit-transform:rotate(0deg);}
-    4% {-webkit-transform:rotate(-22.5deg);}
-    8% {-webkit-transform:rotate(0deg);}
-    12% {-webkit-transform:rotate(22.5deg);}
-    16% {-webkit-transform:rotate(0deg);}
-    20% {-webkit-transform:rotate(-22.5deg);}
-    24% {-webkit-transform:rotate(0deg);}
-    100% {-webkit-transform:rotate(0deg);}
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    4% {
+        -webkit-transform: rotate(-22.5deg);
+    }
+
+    8% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    12% {
+        -webkit-transform: rotate(22.5deg);
+    }
+
+    16% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    20% {
+        -webkit-transform: rotate(-22.5deg);
+    }
+
+    24% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(0deg);
+    }
 }
 
 @keyframes Rotate {
-    0% {transform:rotate(0deg);}
-    4% {transform:rotate(-22.5deg);}
-    8% {transform:rotate(0deg);}
-    12% {transform:rotate(-22.5deg);}
-    16% {transform:rotate(0deg);}
-    20% {transform:rotate(-22.5deg);}
-    24% {transform:rotate(0deg);}
-    100% {transform:rotate(0deg);}
-}
+    0% {
+        transform: rotate(0deg);
+    }
 
-#drawer {
-    display: none;
+    4% {
+        transform: rotate(-22.5deg);
+    }
+
+    8% {
+        transform: rotate(0deg);
+    }
+
+    12% {
+        transform: rotate(-22.5deg);
+    }
+
+    16% {
+        transform: rotate(0deg);
+    }
+
+    20% {
+        transform: rotate(-22.5deg);
+    }
+
+    24% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
 }
 
 #visio #toggle_audio i {

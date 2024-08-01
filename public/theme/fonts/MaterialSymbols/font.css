@@ -39,6 +39,10 @@
   font-variation-settings: 'FILL' 1;
 }
 
+.material-symbols.blink {
+  animation: blink 3s infinite;
+}
+
 .material-symbols.flip-hor {
   transform: scale(-1, 1);
 }

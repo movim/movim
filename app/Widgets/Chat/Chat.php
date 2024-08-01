@@ -27,6 +27,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 
 use Movim\ChatStates;
 use Movim\ChatOwnState;
+use Movim\CurrentCall;
 use Movim\EmbedLight;
 use Movim\Image;
 use Movim\Librairies\XMPPtoForm;
@@ -71,6 +72,9 @@ class Chat extends \Movim\Widget\Base
 
         $this->registerEvent('bob_request_handle', 'onSticker');
         $this->registerEvent('notification_counter_clear', 'onNotificationCounterClear');
+
+        $this->registerEvent('currentcall_started', 'onCallEvent', 'chat');
+        $this->registerEvent('currentcall_stopped', 'onCallEvent', 'chat');
     }
 
     public function onPresence($packet)
@@ -82,6 +86,11 @@ class Chat extends \Movim\Widget\Base
                 $this->ajaxGetHeader($jid);
             }
         }
+    }
+
+    public function onCallEvent($packet)
+    {
+        $this->ajaxGetHeader($packet[0]);
     }
 
     public function onJingleMessage($packet)
@@ -397,6 +406,10 @@ class Chat extends \Movim\Widget\Base
                 $this->rpc('Chat.focus');
 
                 (new Dictaphone)->ajaxHttpGet();
+            }
+
+            if (CurrentCall::getInstance()->isStarted()) {
+                $this->rpc('MovimVisio.moveToChat', CurrentCall::getInstance()->getBareJid());
             }
 
             $this->rpc('Chat.setObservers');
@@ -1542,7 +1555,7 @@ class Chat extends \Movim\Widget\Base
                 $view->assign('diff', $diff);
             }
 
-            $message->body = $view->draw('_chat_jingle_end');
+            $message->body = trim((string)$view->draw('_chat_jingle_end'));
         }
 
         return $this->_wrapper;
@@ -1587,6 +1600,8 @@ class Chat extends \Movim\Widget\Base
 
         $view->assign('jid', $jid);
         $view->assign('muc', $muc);
+        $view->assign('contactincall', CurrentCall::getInstance()->isJidInCall($jid));
+        $view->assign('incall', CurrentCall::getInstance()->isStarted());
         $view->assign(
             'info',
             \App\Info::where('server', $this->user->session->host)

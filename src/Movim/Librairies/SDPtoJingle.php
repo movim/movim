@@ -2,6 +2,7 @@
 
 namespace Movim\Librairies;
 
+use Movim\CurrentCall;
 use Movim\Session;
 
 class SDPtoJingle
@@ -85,9 +86,7 @@ class SDPtoJingle
 
     private function getSessionId()
     {
-        $session = Session::start();
-
-        if ($sid = $session->get('jingleSid')) {
+        if ($sid = CurrentCall::getInstance()->id) {
             return $sid;
         } else {
             $o = $this->arr[1];

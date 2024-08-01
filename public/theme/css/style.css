@@ -74,8 +74,10 @@ body>nav.active {
 
 body>div.drawer:not(:empty)~main,
 body>div.drawer:not(:empty)~nav,
+body>div.drawer:not(:empty)~#visio,
 body>div.dialog:not(:empty)~main,
 body>div.dialog:not(:empty)~nav,
+body>div.dialog:not(:empty)~#visio,
 body>nav.active~main {
     opacity: 0.15;
     pointer-events: none;
@@ -611,6 +613,18 @@ div.bubble .audio_player p {
     }
 }
 
+@keyframes blink {
+    0%,
+    100% {
+        opacity: 0;
+    }
+
+    25%,
+    75% {
+        opacity: 1;
+    }
+}
+
 @keyframes fadetext {
     0%,
     100% {
@@ -619,7 +633,7 @@ div.bubble .audio_player p {
 
     25%,
     75% {
-        color: white;
+        color: inherit;
     }
 
     /* Enforce white for now as inherit is not applied correctly */

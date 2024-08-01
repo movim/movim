@@ -2,15 +2,15 @@
 
 namespace Moxl\Xec\Payload;
 
+use Movim\CurrentCall;
 use Moxl\Xec\Action\Jingle\SessionReject;
-use Movim\Session;
 
 class JinglePropose extends Payload
 {
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         // Another session is already started
-        if (Session::start()->get('jingleSid')) {
+        if (CurrentCall::getInstance()->isStarted()) {
             $reject = new SessionReject;
             $reject->setTo((string)$parent->attributes()->from)
                    ->setId((string)$stanza->attributes()->id)
