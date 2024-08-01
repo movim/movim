@@ -2,17 +2,19 @@
 
 namespace Moxl\Xec\Payload;
 
-use Movim\Session;
+use Movim\CurrentCall;
 
 class JingleProceed extends Payload
 {
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
+        $from = (string)$parent->attributes()->from;
         $id = (string)$stanza->attributes()->id;
-        Session::start()->set('jingleSid', $id);
+
+        CurrentCall::getInstance()->start($from, $id);
 
         $this->pack([
-            'from' => (string)$parent->attributes()->from,
+            'from' => $from,
             'id' => $id
         ]);
 

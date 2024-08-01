@@ -7,10 +7,10 @@
 <div class="block">
     <ul class="list middle active divided spaced">
         {if="!$contact->isMe()"}
-            {if="$roster && $roster->presences->count() > 0"}
+            {if="$roster && $roster->presences->count() > 0 && !$incall"}
                 {loop="$roster->presences"}
                     {if="$value->capability && $value->capability->isJingleAudio()"}
-                        <li onclick="VisioLink.openVisio('{$value->jid|echapJS}');">
+                        <li onclick="Visio.prepare('{$value->jid|echapJS}');">
                             <span class="primary icon green">
                                 <i class="material-symbols">phone</i>
                             </span>
@@ -20,7 +20,7 @@
                         </li>
                     {/if}
                     {if="$value->capability && $value->capability->isJingleVideo()"}
-                        <li onclick="VisioLink.openVisio('{$value->jid|echapJS}', '', true);">
+                        <li onclick="Visio.prepare('{$value->jid|echapJS}', '', true);">
                             <span class="primary icon green">
                                 <i class="material-symbols">videocam</i>
                             </span>

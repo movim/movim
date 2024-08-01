@@ -2,6 +2,7 @@
 
 namespace App\Widgets\ContactData;
 
+use Movim\CurrentCall;
 use Movim\Widget\Base;
 
 class ContactData extends Base
@@ -11,13 +12,20 @@ class ContactData extends Base
         $this->addjs('contactdata.js');
         $this->registerEvent('vcard_get_handle', 'onVcardReceived', 'contact');
         $this->registerEvent('vcard4_get_handle', 'onVcardReceived', 'contact');
+
+        $this->registerEvent('currentcall_started', 'onCallEvent', 'contact');
+        $this->registerEvent('currentcall_stopped', 'onCallEvent', 'contact');
     }
 
     public function onVcardReceived($packet)
     {
         $contact = $packet->content;
-        $this->rpc('MovimTpl.fill', '#'.cleanupId($contact->id) . '_contact_data', $this->prepareData($contact->id));
-        $this->rpc('Notif_ajaxGet');
+        $this->ajaxGet($contact->id);
+    }
+
+    public function onCallEvent($packet)
+    {
+        $this->ajaxGet($packet[0]);
     }
 
     public function prepareData($jid)
@@ -36,6 +44,7 @@ class ContactData extends Base
         );
         $view->assign('contact', \App\Contact::firstOrNew(['id' => $jid]));
         $view->assign('roster', $this->user->session->contacts()->where('jid', $jid)->first());
+        $view->assign('incall', CurrentCall::getInstance()->isStarted());
 
         return $view->draw('_contactdata');
     }
@@ -47,6 +56,16 @@ class ContactData extends Base
         $view->assign('roster', $roster);
 
         return $view->draw('_contactdata_card');
+    }
+
+    public function ajaxGet($jid)
+    {
+        if (!validateJid($jid)) {
+            return;
+        }
+
+        $this->rpc('MovimTpl.fill', '#'.cleanupId($jid) . '_contact_data', $this->prepareData($jid));
+        $this->rpc('Notif_ajaxGet');
     }
 
     public function ajaxRefresh($jid)
