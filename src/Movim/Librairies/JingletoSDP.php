@@ -2,7 +2,7 @@
 
 namespace Movim\Librairies;
 
-use Movim\Session;
+use Movim\CurrentCall;
 use SimpleXMLElement;
 
 class JingletoSDP
@@ -33,9 +33,7 @@ class JingletoSDP
         $this->jingle = $jingle;
 
         if (isset($this->jingle->attributes()->sid)) {
-            $sid = (string)$this->jingle->attributes()->sid;
-            $session = Session::start();
-            $session->set('jingleSid', $sid);
+            CurrentCall::getInstance()->id = (string)$this->jingle->attributes()->sid;
         }
 
         $this->action = (string)$this->jingle->attributes()->action;
@@ -43,8 +41,8 @@ class JingletoSDP
 
     public function getSessionId()
     {
-        $session = Session::start();
-        return substr(base_convert($session->get('jingleSid') ?? '', 30, 10), 0, 6);
+        //return hash('sha256', CurrentCall::getInstance()->id);
+        return substr(base_convert(hash('sha256', CurrentCall::getInstance()->id), 30, 10), 0, 6);
     }
 
     public function generate()
@@ -80,29 +78,23 @@ class JingletoSDP
 
         $sdpMedias = '';
 
-        foreach ($this->jingle->children() as $content) {
+        // http://xmpp.org/extensions/xep-0338.html
+        if ($this->jingle->group) {
+            $sdpGroup .=
+                "a=group:" .
+                (string)$this->jingle->group->attributes()->semantics;
+
+            foreach ($this->jingle->group->content as $content) {
+                $sdpGroup .= " " . (string)$content->attributes()->name;
+            }
+        }
+
+        foreach ($this->jingle->content as $content) {
             $mediaHeaderIds = [];
             $mediaHeaderFirstPort = null;
             $mediaHeaderLastIp = null;
 
             $sdpMedia = '';
-
-            // http://xmpp.org/extensions/xep-0338.html
-            if ((string)$content->getName() == 'group') {
-                $sdpGroup .=
-                    "a=group:" .
-                    (string)$content->attributes()->semantics;
-
-                foreach ($content->children() as $content) {
-                    $sdpGroup .= " " . (string)$content->attributes()->name;
-                }
-
-                continue;
-            }
-
-            if ($content->getName() != 'content') {
-                break;
-            }
 
             $this->name = (string)$content->attributes()->name;
 

@@ -8,6 +8,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 use App\Contact;
 use App\Message;
 use App\Roster;
+use Movim\CurrentCall;
 
 class Chats extends Base
 {
@@ -29,6 +30,9 @@ class Chats extends Base
         // Bug: In Chat::ajaxGet, Notif.current might come after this event
         // so we don't set the filter
         $this->registerEvent('chat_open', 'onChatOpen', /* 'chat'*/);
+
+        $this->registerEvent('currentcall_started', 'onCallEvent', 'chat');
+        $this->registerEvent('currentcall_stopped', 'onCallEvent', 'chat');
     }
 
     public function onStart($packet)
@@ -76,20 +80,31 @@ class Chats extends Base
     public function onPresence($packet)
     {
         if ($packet->content != null) {
-            $chats = \App\Cache::c('chats');
-            if (is_array($chats) &&  array_key_exists($packet->content->jid, $chats)) {
-                $this->rpc(
-                    'MovimTpl.replace',
-                    '#' . cleanupId($packet->content->jid . '_chat_item'),
-                    $this->prepareChat(
-                        $packet->content->jid,
-                        $this->resolveContactFromJid($packet->content->jid),
-                        $this->resolveRosterFromJid($packet->content->jid),
-                        $this->resolveMessageFromJid($packet->content->jid)
-                    )
-                );
-                $this->rpc('Chats.refresh');
-            }
+            $this->replaceChat($packet->content->jid);
+        }
+    }
+
+    public function onCallEvent($packet)
+    {
+        $this->replaceChat($packet[0]);
+    }
+
+    private function replaceChat(string $jid)
+    {
+        $chats = \App\Cache::c('chats');
+        if (is_array($chats) &&  array_key_exists($jid, $chats)) {
+            $this->rpc(
+                'MovimTpl.replace',
+                '#' . cleanupId($jid . '_chat_item'),
+                $this->prepareChat(
+                    $jid,
+                    $this->resolveContactFromJid($jid),
+                    $this->resolveRosterFromJid($jid),
+                    $this->resolveMessageFromJid($jid)
+                )
+            );
+
+            $this->rpc('Chats.refresh');
         }
     }
 
@@ -331,6 +346,7 @@ class Chats extends Base
         $view->assign('contact', $contact);
         $view->assign('roster', $roster);
         $view->assign('count', $this->user->unreads($jid));
+        $view->assign('contactincall', CurrentCall::getInstance()->isJidInCall($jid));
 
         if ($status == null) {
             $view->assign('message', $message);

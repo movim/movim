@@ -1,5 +1,4 @@
 <?php $this->widget('Search');?>
-<?php $this->widget('VisioLink');?>
 <?php $this->widget('Notifications');?>
 <?php $this->widget('SendTo');?>
 <?php $this->widget('Location');?>

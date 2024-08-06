@@ -19,10 +19,10 @@
     </ul>
 </section>
 <div class="no_bar">
-    <button onclick="VisioLink_ajaxReject('{$from|echapJS}', '{$id}'); Dialog_ajaxClear()" class="button flat">
+    <button onclick="Visio_ajaxReject('{$from|echapJS}', '{$id}'); Dialog_ajaxClear()" class="button flat">
         {$c->__('button.refuse')}
     </button>
-    <button onclick="VisioLink.openVisio('{$from|echapJS}', '{$id}', {if="$withvideo"}true{else}false{/if}); Dialog_ajaxClear();" class="button flat green">
+    <button onclick="Visio.prepare('{$from}', '{$id}', {if="$withvideo"}true{else}false{/if}); Dialog_ajaxClear();" class="button flat green">
         {$c->__('button.reply')}
     </button>
 </div>

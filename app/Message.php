@@ -3,7 +3,6 @@
 namespace App;
 
 use DOMDocument;
-use DOMElement;
 use DOMXPath;
 use Movim\Model;
 use Movim\Image;

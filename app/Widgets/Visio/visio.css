@@ -1,10 +1,40 @@
-#visio video {
-    width: 100%;
+#visio {
+    display: block;
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    width: 75rem;
+    height: 54rem;
+    z-index: 2;
+    background-color: #111;
+    border-radius: 1rem;
+}
+
+#chat_widget #visio {
+    position: relative;
+    bottom: 0;
+    right: 0;
+    border-radius: 0;
+    max-height: 40%;
     height: 100%;
 }
 
-body {
-    background-color: #111;
+#visio:not([data-from]),
+#visio:not([data-type]) #toggle_audio,
+#visio[data-type=video] #toggle_dtmf,
+#visio[data-type=video] #dtmf,
+#visio:not([data-type=video]) #toggle_video,
+#visio:not([data-type=video]) #switch_camera,
+#visio:not([data-type=video]) #screen_sharing,
+#visio:not([data-type=video]) #remote_video,
+#visio:not([data-type=video]) #screen_sharing_video,
+#visio:not([data-type=video]) #video {
+    display: none;
+}
+
+#visio video {
+    width: 100%;
+    height: 100%;
 }
 
 #visio #visio_source {
@@ -45,7 +75,7 @@ body {
     transition: opacity 0.5s ease-in-out;
 }
 
-#visio #dtmf:not(.hide) ~ .infos {
+#visio #dtmf:not(.hide)~.infos {
     opacity: 0;
 }
 
@@ -76,7 +106,7 @@ body {
 
 #visio video#video,
 #visio video#screen_sharing_video.sharing {
-    position: fixed;
+    position: absolute;
     right: 1rem;
     bottom: 1rem;
     width: 25rem;
@@ -91,11 +121,12 @@ body {
 }
 
 #visio video#screen_sharing_video:not(.sharing),
-#visio video#screen_sharing_video.sharing + video#video {
+#visio video#screen_sharing_video.sharing+video#video {
     display: none;
 }
 
 @media screen and (max-width: 800px) {
+
     #visio video#video,
     #visio video#screen_sharing_video.sharing {
         width: 15rem;
@@ -130,6 +161,7 @@ body {
 
 #visio .button.action {
     right: calc(50% - 3.5rem);
+    position: absolute;
 }
 
 #visio .ring {
@@ -161,29 +193,71 @@ body {
 }
 
 @-webkit-keyframes Rotate {
-    0% {-webkit-transform:rotate(0deg);}
-    4% {-webkit-transform:rotate(-22.5deg);}
-    8% {-webkit-transform:rotate(0deg);}
-    12% {-webkit-transform:rotate(22.5deg);}
-    16% {-webkit-transform:rotate(0deg);}
-    20% {-webkit-transform:rotate(-22.5deg);}
-    24% {-webkit-transform:rotate(0deg);}
-    100% {-webkit-transform:rotate(0deg);}
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    4% {
+        -webkit-transform: rotate(-22.5deg);
+    }
+
+    8% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    12% {
+        -webkit-transform: rotate(22.5deg);
+    }
+
+    16% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    20% {
+        -webkit-transform: rotate(-22.5deg);
+    }
+
+    24% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(0deg);
+    }
 }
 
 @keyframes Rotate {
-    0% {transform:rotate(0deg);}
-    4% {transform:rotate(-22.5deg);}
-    8% {transform:rotate(0deg);}
-    12% {transform:rotate(-22.5deg);}
-    16% {transform:rotate(0deg);}
-    20% {transform:rotate(-22.5deg);}
-    24% {transform:rotate(0deg);}
-    100% {transform:rotate(0deg);}
-}
+    0% {
+        transform: rotate(0deg);
+    }
 
-#drawer {
-    display: none;
+    4% {
+        transform: rotate(-22.5deg);
+    }
+
+    8% {
+        transform: rotate(0deg);
+    }
+
+    12% {
+        transform: rotate(-22.5deg);
+    }
+
+    16% {
+        transform: rotate(0deg);
+    }
+
+    20% {
+        transform: rotate(-22.5deg);
+    }
+
+    24% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
 }
 
 #visio #toggle_audio i {

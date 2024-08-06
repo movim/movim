@@ -96,6 +96,7 @@ class Base
         $this->page->addScript('movim_utils.js');
         $this->page->addScript('movim_events.js');
         $this->page->addScript('movim_e2ee.js');
+        $this->page->addScript('movim_visio.js');
         $this->page->addScript('movim_base.js');
         $this->page->addScript('movim_favicon.js');
         $this->page->addScript('movim_avatar.js');
