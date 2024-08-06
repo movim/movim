@@ -3,6 +3,11 @@ Movim Changelog
 
 v0.26.1 (master)
 ---------------------------
+* Fix the chatroom search bar
+* Fix some CSS
+* CSS fixes, remove the .list selector on cards
+* Fix the reply and reaction button position in chat bubbles
+* Fix emojis alias validation (lyn1337)
 
 v0.26
 ---------------------------

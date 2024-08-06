@@ -343,7 +343,6 @@ ul.list>li.search form div:after {
 
 ul.list>li.search form div {
     min-height: 0;
-    margin: 0 1rem;
 }
 
 ul.list>li.main.edit form div:before,

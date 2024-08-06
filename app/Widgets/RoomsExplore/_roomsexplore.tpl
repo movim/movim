@@ -18,10 +18,7 @@
 </section>
 <div id="roomsexplore_bar">
     <ul class="list">
-        <li>
-            <span class="primary icon gray spin">
-                <i class="material-symbols">autorenew</i>
-            </span>
+        <li class="search">
             <form name="search" onsubmit="return false;">
                 <div>
                     <input name="keyword" autocomplete="off"

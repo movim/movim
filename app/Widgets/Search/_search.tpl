@@ -39,7 +39,7 @@
     <br />
 </section>
 <div id="searchbar">
-    <ul class="list fill">
+    <ul class="list">
         <li class="search">
             <form name="search" onsubmit="return false;">
                 <div>

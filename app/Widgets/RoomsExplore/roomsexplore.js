@@ -11,8 +11,7 @@ var RoomsExplore = {
         clearTimeout(RoomsExplore.timer);
 
         if (value !== '') {
-            document.querySelector('#roomsexplore_bar span.primary i').innerText = 'autorenew';
-            document.querySelector('#roomsexplore_bar span.primary').classList.add('spin');
+            document.querySelector('#roomsexplore_bar li.search').classList.add('searching');
         }
 
         RoomsExplore.timer = setTimeout(() => {
@@ -21,7 +20,6 @@ var RoomsExplore = {
     },
 
     searchClear : function() {
-        document.querySelector('#roomsexplore_bar span.primary i').innerText = 'search';
-        document.querySelector('#roomsexplore_bar span.primary').classList.remove('spin');
+        document.querySelector('#roomsexplore_bar li.search').classList.remove('searching');
     }
 }
