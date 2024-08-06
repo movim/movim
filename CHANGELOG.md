@@ -8,6 +8,8 @@ v0.26.1 (master)
 * CSS fixes, remove the .list selector on cards
 * Fix the reply and reaction button position in chat bubbles
 * Fix emojis alias validation (lyn1337)
+* Refactor the invitation system to rely on the subscribe presences, add a new column to the presences table
+* Add a new section in the Notifications to take care of not managed roster contacts
 
 v0.26
 ---------------------------

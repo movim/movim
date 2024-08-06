@@ -2,6 +2,7 @@
 
 namespace App\Widgets\Notifications;
 
+use App\Widgets\Dialog\Dialog;
 use App\Widgets\Drawer\Drawer;
 use App\Widgets\Notif\Notif;
 use Moxl\Xec\Action\Presence\Subscribed;
@@ -11,6 +12,8 @@ use Moxl\Xec\Action\Presence\Subscribe;
 
 use Movim\Widget\Base;
 use Movim\Session;
+use Moxl\Xec\Action\Presence\Unsubscribe;
+use Moxl\Xec\Action\Roster\RemoveItem;
 
 class Notifications extends Base
 {
@@ -89,21 +92,69 @@ class Notifications extends Base
         })->where('published', '>', $since)
             ->where('aid', '!=', $this->user->id)->count();
 
-        $session = Session::start();
-        $notifs = $session->get('activenotifs', []);
-
-        if (is_array($notifs)) {
-            $count += count($notifs);
-        }
+        $count += $this->user->session->presences()
+                        ->where('type', 'subscribe')
+                        ->count();
 
         $this->rpc('Notifications.setCounters', ($count > 0) ? $count : '');
+    }
+
+    public function ajaxAddAsk($jid)
+    {
+        $view = $this->tpl();
+        $view->assign('contact', \App\Contact::firstOrNew(['id' => $jid]));
+        $view->assign('groups', $this->user->session->contacts()
+                                                    ->select('group')
+                                                    ->whereNotNull('group')
+                                                    ->distinct()
+                                                    ->pluck('group'));
+
+        Dialog::fill($view->draw('_notifications_add'));
+    }
+
+    public function ajaxAdd($form)
+    {
+        $r = new AddItem;
+        $r->setTo((string)$form->searchjid->value)
+          ->setName((string)$form->alias->value)
+          ->setGroup((string)$form->group->value)
+          ->request();
+
+        $p = new Subscribe;
+        $p->setTo((string)$form->searchjid->value)
+          ->request();
+
+        (new Dialog)->ajaxClear();
+    }
+
+    public function ajaxDeleteContact($jid)
+    {
+        if (!validateJid($jid)) {
+            return;
+        }
+
+        $view = $this->tpl();
+        $view->assign('jid', $jid);
+
+        Dialog::fill($view->draw('_notifications_delete'));
+    }
+
+    public function ajaxDelete($jid)
+    {
+        $r = new RemoveItem;
+        $r->setTo($jid)
+          ->request();
+
+        $p = new Unsubscribe;
+        $p->setTo($jid)
+          ->request();
     }
 
     public function ajaxAccept($jid)
     {
         $jid = echapJid($jid);
 
-        if ($this->user->session->contacts()->where('jid', $jid)->count() == 0) {
+        if (!$this->user->session->contacts()->where('jid', $jid)->exists()) {
             $r = new AddItem;
             $r->setTo($jid)
                 ->request();
@@ -117,41 +168,30 @@ class Notifications extends Base
         $p->setTo($jid)
             ->request();
 
-        // TODO : move in Moxl
-        $session = Session::start();
-        $notifs = $session->get('activenotifs', []);
-
-        unset($notifs[$jid]);
-
-        $session->set('activenotifs', $notifs);
-        $n = new Notif;
-        $n->ajaxClear('invite|' . $jid);
-
-        $this->rpc('MovimTpl.remove', '#invitation-' . cleanupId($jid));
-        $this->ajaxSetCounter();
+        $this->removeInvitation($jid);
     }
 
-    public function ajaxRefuse($jid)
+    public function ajaxRefuse(string $jid)
     {
         $jid = echapJid($jid);
+
+        if ($this->user->session->contacts()->where('jid', $jid)->exists()) {
+            $r = new RemoveItem;
+            $r->setTo($jid)
+                ->request();
+        }
 
         $p = new Unsubscribed;
         $p->setTo($jid)
             ->request();
 
+        $this->user->session->presences()->where('jid', $jid)->delete();
+
         $this->removeInvitation($jid);
     }
 
-    private function removeInvitation($jid)
+    private function removeInvitation(string $jid)
     {
-        // TODO : move in Moxl
-        $session = Session::start();
-        $notifs = $session->get('activenotifs', []);
-
-        unset($notifs[$jid]);
-
-        $session->set('activenotifs', $notifs);
-
         $n = new Notif;
         $n->ajaxClear('invite|' . $jid);
 
@@ -165,21 +205,6 @@ class Notifications extends Base
      */
     private function prepareNotifications()
     {
-        $invitations = [];
-
-        $session = Session::start();
-        $notifs = $session->get('activenotifs', []);
-
-        $contacts = \App\Contact::whereIn('id', array_keys($notifs))->get()->keyBy('id');
-
-        foreach ($notifs as $key => $value) {
-            $contact = $contacts->has($key)
-                ? $contacts->get($key)
-                : new \App\Contact(['id' => $key]);
-
-            array_push($invitations, $contact);
-        }
-
         $notifs = \App\Post::whereIn('parent_id', function ($query) {
             $query->select('id')
                 ->from('posts')
@@ -200,8 +225,15 @@ class Notifications extends Base
         $view = $this->tpl();
         $view->assign('hearth', addEmojis('♥'));
         $view->assign('notifs', $notifs);
+        $view->assign('subscriptionRoster', $this->user->session->contacts()
+                                     ->where('subscription' , 'none')
+                                     ->orderBy('subscription')
+                                     ->get());
+        $view->assign('subscribePresences', $this->user->session->presences()
+                                                 ->with('contact')
+                                                 ->where('type', 'subscribe')
+                                                 ->get());
         $view->assign('since', $since);
-        $view->assign('invitations', array_reverse($invitations));
 
         return $view->draw('_notifications');
     }

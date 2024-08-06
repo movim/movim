@@ -16,21 +16,16 @@ class Presence extends Payload
             return;
         }
 
-        // Subscribe request
-        if ((string)$stanza->attributes()->type == 'subscribe') {
-            $session = Session::start();
-            $notifs = $session->get('activenotifs', []);
-
-            $notifs[(string)$stanza->attributes()->from] = 'sub';
-            $session->set('activenotifs', $notifs);
-
-            $this->event('subscribe', (string)$stanza->attributes()->from);
-        } elseif((string)$stanza->attributes()->type === 'error'
+        if((string)$stanza->attributes()->type === 'error'
             && isset($stanza->attributes()->id)) {
             // Let's drop errors with an id, useless for us
         } else {
             $presence = DBPresence::findByStanza($stanza);
             $presence->set($stanza);
+
+            if ((string)$stanza->attributes()->type == 'subscribe') {
+                $this->event('subscribe', (string)$stanza->attributes()->from);
+            }
 
             PresenceBuffer::getInstance()->append($presence, function () use ($presence, $stanza) {
                 if ($presence->muc) {

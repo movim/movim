@@ -54,32 +54,6 @@ class ContactHeader extends Base
            ->request();
     }
 
-    public function ajaxDeleteContact($jid)
-    {
-        if (!validateJid($jid)) {
-            return;
-        }
-
-        $view = $this->tpl();
-        $view->assign('jid', $jid);
-
-        Dialog::fill($view->draw('_contactheader_delete'));
-    }
-
-    /**
-     * @brief Remove a contact to the roster and unsubscribe
-     */
-    public function ajaxDelete($jid)
-    {
-        $r = new RemoveItem;
-        $r->setTo($jid)
-          ->request();
-
-        $p = new Unsubscribe;
-        $p->setTo($jid)
-          ->request();
-    }
-
     public function ajaxChat($jid)
     {
         if (!validateJid($jid)) {

@@ -23,7 +23,7 @@
                 title="{$c->__('button.edit')}">
                 <i class="material-symbols">edit</i>
             </span>
-            <span class="control icon active white" onclick="ContactHeader_ajaxDeleteContact('{$contact->id|echapJS}')"
+            <span class="control icon active white" onclick="Notifications_ajaxDeleteContact('{$contact->id|echapJS}')"
                 title="{$c->__('button.delete')}">
                 <i class="material-symbols">delete</i>
             </span>
@@ -34,7 +34,7 @@
                     <i class="material-symbols">tune</i>
                 </span>
             {else}
-                <span class="control icon active white divided" onclick="ContactActions_ajaxAddAsk('{$contact->id|echapJS}')"
+                <span class="control icon active white divided" onclick="Notifications_ajaxAddAsk('{$contact->id|echapJS}')"
                     title="{$c->__('button.add')}">
                     <i class="material-symbols">person_add</i>
                 </span>

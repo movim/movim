@@ -4,6 +4,7 @@ namespace App;
 
 use Movim\Model;
 use Movim\Image;
+use Movim\ImageSize;
 use Movim\Session;
 use Moxl\Xec\Action\Presence\Muc;
 
@@ -62,6 +63,14 @@ class Presence extends Model
         return null;
     }
 
+    /**
+     * Fallback case if we don't have a contact
+     */
+    public function getPicture(ImageSize $size = ImageSize::M): string
+    {
+        return getPicture($this->jid, $this->jid, $size);
+    }
+
     public function getPresencetextAttribute()
     {
         return getPresences()[$this->value];
@@ -98,6 +107,7 @@ class Presence extends Model
         $jid = explodeJid($stanza->attributes()->from);
         $this->jid = $jid['jid'];
         $this->resource = $jid['resource'] ?? '';
+        $this->type = $stanza->attributes()->type ?? null;
 
         if ($stanza->status && !empty((string)$stanza->status)) {
             $this->status = (string)$stanza->status;
@@ -202,6 +212,7 @@ class Presence extends Model
             'jid' => $this->attributes['jid']  ?? null,
             'resource' => $this->attributes['resource'] ?? null,
             'value' => $this->attributes['value'] ?? null,
+            'type' => $this->attributes['type'] ?? null,
             'priority' => $this->attributes['priority'] ?? null,
             'status' => $this->attributes['status'] ?? null,
             'node' => $this->attributes['node'] ?? null,

@@ -54,7 +54,7 @@
     <button onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.close')}
     </button>
-    <button onclick="ContactActions_ajaxAdd(MovimUtils.formToJson('add'))" class="button flat">
+    <button onclick="Notifications_ajaxAdd(MovimUtils.formToJson('add'))" class="button flat">
         {$c->__('button.add')}
     </button>
 </div>

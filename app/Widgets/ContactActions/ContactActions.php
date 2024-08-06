@@ -42,19 +42,6 @@ class ContactActions extends Base
         Toast::send($this->__('roster.updated'));
     }
 
-    public function ajaxAddAsk($jid)
-    {
-        $view = $this->tpl();
-        $view->assign('contact', \App\Contact::firstOrNew(['id' => $jid]));
-        $view->assign('groups', $this->user->session->contacts()
-                                                    ->select('group')
-                                                    ->whereNotNull('group')
-                                                    ->distinct()
-                                                    ->pluck('group'));
-
-        Dialog::fill($view->draw('_contactactions_add'));
-    }
-
     public function ajaxGetDrawer($jid)
     {
         if (!validateJid($jid)) {
@@ -141,21 +128,6 @@ class ContactActions extends Base
 
         $this->rpc('MovimTpl.fill', '#omemo_fingerprints', $tpl->draw('_contactactions_drawer_fingerprints'));
         $this->rpc('ContactActions.resolveSessionsStates', $jid);
-    }
-
-    public function ajaxAdd($form)
-    {
-        $r = new AddItem;
-        $r->setTo((string)$form->searchjid->value)
-          ->setName((string)$form->alias->value)
-          ->setGroup((string)$form->group->value)
-          ->request();
-
-        $p = new Subscribe;
-        $p->setTo((string)$form->searchjid->value)
-          ->request();
-
-        (new Dialog)->ajaxClear();
     }
 
     public function ajaxChat($jid)
