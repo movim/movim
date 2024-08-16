@@ -1261,7 +1261,7 @@ var Chat = {
         }
     },
     appendDate: function (date, prepend) {
-        var list = document.querySelector('#chat_widget > div ul');
+        var list = document.querySelector('#chat_widget > div ul.conversation');
 
         dateNode = Chat.date.cloneNode(true);
         dateNode.querySelector('p').innerHTML = date;
@@ -1286,11 +1286,11 @@ var Chat = {
     insertSeparator: function (counter) {
         separatorNode = Chat.separator.cloneNode(true);
 
-        var list = document.querySelector('#chat_widget > div ul');
+        var list = document.querySelector('#chat_widget > div ul.conversation');
 
         if (!list || list.querySelector('li.separator')) return;
 
-        var messages = document.querySelectorAll('#chat_widget > div ul div.bubble p');
+        var messages = document.querySelectorAll('#chat_widget > div ul.conversation div.bubble p');
 
         if (messages.length > counter && counter > 0) {
             var p = messages[messages.length - counter];

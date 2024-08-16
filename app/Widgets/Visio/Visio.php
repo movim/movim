@@ -4,6 +4,7 @@ namespace App\Widgets\Visio;
 
 use App\Widgets\Dialog\Dialog;
 use App\Widgets\Notif\Notif;
+use Movim\CurrentCall;
 use Movim\Librairies\JingletoSDP;
 use Movim\Librairies\SDPtoJingle;
 use Moxl\Xec\Action\Jingle\SessionPropose;
@@ -14,7 +15,8 @@ use Moxl\Xec\Action\Jingle\SessionMute;
 use Moxl\Xec\Action\Jingle\SessionUnmute;
 
 use Movim\Widget\Base;
-use Movim\Session;
+use Moxl\Xec\Action\Jingle\SessionReject;
+use Moxl\Xec\Action\Jingle\SessionRetract;
 
 class Visio extends Base
 {
@@ -23,16 +25,14 @@ class Visio extends Base
         $this->addcss('visio.css');
         $this->addjs('visio.js');
         $this->addjs('visio_utils.js');
-
-        $this->title = $this->getView() == 'visio'
-        ? __('button.video_call')
-        : __('button.audio_call');
+        $this->addjs('visio_dtmf.js');
 
         $this->registerEvent('jinglepropose', 'onPropose');
         $this->registerEvent('jingleproceed', 'onProceed');
         $this->registerEvent('jingleaccept', 'onAccept');
         $this->registerEvent('jingleretract', 'onTerminateRetract');
         $this->registerEvent('jinglereject', 'onTerminateReject');
+
         $this->registerEvent('jingle_sessioninitiate', 'onInitiateSDP');
         $this->registerEvent('jingle_sessioninitiate_erroritemnotfound', 'onTerminateNotFound');
         $this->registerEvent('jingle_sessionaccept', 'onAcceptSDP');
@@ -40,6 +40,11 @@ class Visio extends Base
         $this->registerEvent('jingle_sessionterminate', 'onTerminate');
         $this->registerEvent('jingle_sessionmute', 'onMute');
         $this->registerEvent('jingle_sessionunmute', 'onUnmute');
+
+        $this->registerEvent('jingle_contentadd', 'onContentAdd');
+        $this->registerEvent('jingle_contentmodify', 'onContentModify');
+        $this->registerEvent('jingle_contentremove', 'onContentRemove');
+
         $this->registerEvent('externalservices_get_handle', 'onExternalServices');
         $this->registerEvent('externalservices_get_error', 'onExternalServicesError');
     }
@@ -74,14 +79,11 @@ class Visio extends Base
         } else {
             $this->setDefaultServices();
         }
-
-        $this->rpc('Visio.init');
     }
 
     public function onExternalServicesError($packet)
     {
         $this->setDefaultServices();
-        $this->rpc('Visio.init');
     }
 
     public function onPropose($packet)
@@ -123,6 +125,13 @@ class Visio extends Base
         $jts = new JingletoSDP($stanza);
 
         $this->rpc('Visio.onInitiateSDP', $jts->generate());
+    }
+
+    public function onContentAdd($stanza)
+    {
+        $jts = new JingletoSDP($stanza);
+
+        $this->rpc('Visio.onContentAdd', $jts->generate());
     }
 
     public function onProceed($packet)
@@ -172,7 +181,11 @@ class Visio extends Base
         $this->rpc('Notif.incomingAnswer');
         (new Dialog)->ajaxClear();
 
-        $this->rpc('Visio.onTerminate', $reason);
+        if (CurrentCall::getInstance()->isStarted()) {
+            CurrentCall::getInstance()->stop();
+        }
+
+        $this->rpc('Visio.goodbye', $reason);
     }
 
     public function onMute($name)
@@ -200,6 +213,15 @@ class Visio extends Base
         $p->setTo($to)
           ->setId($id)
           ->request();
+    }
+
+    public function ajaxReject($to, $id)
+    {
+        $this->rpc('Notification.incomingAnswer');
+        $reject = new SessionReject;
+        $reject->setTo($to)
+               ->setId($id)
+               ->request();
     }
 
     public function ajaxMute($to, $id, $name)
@@ -247,8 +269,20 @@ class Visio extends Base
               ->request();
         } else {
             $this->setDefaultServices();
-            $this->rpc('Visio.init');
         }
+    }
+
+    public function ajaxPrepare(string $jid)
+    {
+        $bareJid =\explodeJid($jid)['jid'];
+        $contact = \App\Contact::firstOrNew(['id' => $bareJid]);
+
+        $view = $this->tpl();
+        $view->assign('contact', $contact);
+
+        $this->rpc('MovimVisio.moveToChat', $bareJid);
+        $this->rpc('MovimTpl.fill', '#visio_contact', $view->draw('_visio_contact'));
+        $this->rpc('Visio.init', $bareJid);
     }
 
     public function setDefaultServices()
@@ -263,6 +297,19 @@ class Visio extends Base
 
         shuffle($servers);
         $this->rpc('Visio.setServices', [['urls' => array_slice($servers, 0, 2)]]);
+    }
+
+    public function ajaxGetStates()
+    {
+        $this->rpc('Visio.setStates', [
+            'calling' => $this->__('visio.calling'),
+            'ringing' => $this->__('visio.ringing'),
+            'in_call' => $this->__('visio.in_call'),
+            'failed' => $this->__('visio.failed'),
+            'connecting' => $this->__('visio.connecting'),
+            'ended' =>  $this->__('visio.ended'),
+            'declined' => $this->__('visio.declined')
+        ]);
     }
 
     public function ajaxSessionAccept($sdp, string $to, string $id)
@@ -302,20 +349,20 @@ class Visio extends Base
            ->request();
     }
 
-    public function ajaxTerminate(string $to, string $sid, $reason = 'success')
+    public function ajaxEnd(string $to, string $sid, $reason = 'success')
     {
-        Session::start()->delete('jingleSid');
-
-        $st = new SessionTerminate;
-        $st->setTo($to)
-           ->setJingleSid($sid)
-           ->setReason($reason)
-           ->request();
-    }
-
-    public function display()
-    {
-        $this->view->assign('withvideo', $this->getView() == 'visio');
-        $this->view->assign('contact', \App\Contact::firstOrNew(['id' => base64_decode($this->get('f'))]));
+        if (CurrentCall::getInstance()->isStarted()) {
+            CurrentCall::getInstance()->stop();
+            $st = new SessionTerminate;
+            $st->setTo($to)
+               ->setJingleSid($sid)
+               ->setReason($reason)
+               ->request();
+        } else {
+            $sr = new SessionRetract;
+            $sr->setTo($to)
+               ->setId($sid)
+               ->request();
+        }
     }
 }

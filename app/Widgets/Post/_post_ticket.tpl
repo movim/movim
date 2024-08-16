@@ -50,14 +50,15 @@
                     <img src="{$post->contact->getPicture()}">
                 </span>
             {/if}
-            <a href="{$c->route('contact', $post->aid)}">
+            <a href="#" onclick="MovimUtils.reload('{$c->route('contact', $post->aid)}')">
                 {$post->truename}
             </a>
 
             {if="!$post->isMicroblog()"}
                 <a class="node"
                    title="{$post->server} / {$post->node}"
-                   href="{$c->route('community', [$post->server, $post->node])}">
+                   href="#"
+                   onclick="MovimUtils.reload('{$c->route('community', [$post->server, $post->node])}')">
                    {if="$post->contact"}·{/if}
                    {$post->node}
                 </a>

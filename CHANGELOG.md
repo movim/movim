@@ -10,6 +10,15 @@ v0.26.1 (master)
 * Fix emojis alias validation (lyn1337)
 * Refactor the invitation system to rely on the subscribe presences, add a new column to the presences table
 * Add a new section in the Notifications to take care of not managed roster contacts
+* Remove the Popup, move it back to the main tab
+* Add DTMF tone support
+* Make the call persistant while navigating
+* Create a CurrentCall singleton to track the call state for the whole UI
+* Integrate Call State in Chat, Chats, ContactData and ContactActions
+* Implement Retract of XEP-0353: Jingle Message Initiation
+* Handle the switch between the floating view and discussion view
+* Add blinking "in call" icon when in call
+* Ensure to have a proper navigation between the different modes (float, chat and fullscreen) in the whole Movim UI
 
 v0.26
 ---------------------------

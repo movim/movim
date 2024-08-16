@@ -44,7 +44,7 @@
                             <a  {if="$public"}
                                     href="{$c->route('blog', $post->aid)}"
                                 {else}
-                                    href="{$c->route('contact', $post->aid)}"
+                                    href="#" onclick="MovimUtils.reload('{{$c->route('contact', $post->aid)}')"
                                 {/if}
                             >
                                 {$post->truename}
@@ -54,11 +54,11 @@
                         {if="$public"}
                             {$post->server}
                         {else}
-                            <a href="{$c->route('community', $post->server)}">
+                            <a href="#" onclick="MovimUtils.reload('{$c->route('community', $post->server)}')">
                                 {$post->server}
                             </a>
                         {/if} /
-                        <a href="{$c->route('community', [$post->server, $post->node])}">
+                        <a href="#" onclick="MovimUtils.reload('{$c->route('community', [$post->server, $post->node])}">
                             {$post->node}
                         </a> ·
                     {/if}

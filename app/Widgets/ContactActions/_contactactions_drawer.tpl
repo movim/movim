@@ -21,17 +21,17 @@
                     <span class="control icon active divided" onclick="Search.chat('{$contact->id|echapJS}'); Drawer.clear();">
                         <i class="material-symbols">comment</i>
                     </span>
-                    {if="$roster && $roster->presences->count() > 0"}
+                    {if="$roster && $roster->presences->count() > 0 && !$incall"}
                         {loop="$roster->presences"}
                             {if="$value->capability && $value->capability->isJingleAudio()"}
                                 <span title="{$c->__('button.audio_call')}" class="control icon active"
-                                    onclick="VisioLink.openVisio('{$value->jid|echapJS}');">
+                                    onclick="Visio.prepare('{$value->jid|echapJS}'); Drawer.clear();">
                                     <i class="material-symbols">phone</i>
                                 </span>
                             {/if}
                             {if="$value->capability && $value->capability->isJingleVideo()"}
                                 <span title="{$c->__('button.video_call')}" class="control icon active"
-                                    onclick="VisioLink.openVisio('{$value->jid|echapJS}', '', true);">
+                                    onclick="Visio.prepare('{$value->jid|echapJS}', '', true); Drawer.clear();">
                                     <i class="material-symbols">videocam</i>
                                 </span>
                                 {break}

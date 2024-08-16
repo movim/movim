@@ -151,7 +151,7 @@ var MovimUtils = {
                 document.head.querySelectorAll('script[type=\'text/javascript\'].inline').forEach(e => e.remove());
                 document.querySelectorAll('#endcommon ~ *').forEach(e => e.remove());
 
-                document.body.innerHTML += page.content;
+                document.body.insertAdjacentHTML('beforeend', page.content);
                 document.title = page.title;
 
                 // CSS

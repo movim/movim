@@ -55,6 +55,26 @@ class Jingle
         \Moxl\API::request($dom->saveXML($dom->documentElement));
     }
 
+    public static function sessionRetract($to, $id)
+    {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $message = $dom->createElementNS('jabber:client', 'message');
+        $message->setAttribute('to', $to);
+        $dom->appendChild($message);
+
+        $retract = $dom->createElementNS('urn:xmpp:jingle-message:0', 'retract');
+        $retract->setAttribute('id', $id);
+        $message->appendChild($retract);
+
+        $reason = $dom->createElementNS('urn:xmpp:jingle:1', 'reason');
+        $retract->appendChild($reason);
+
+        $reason->appendChild($dom->createElement('cancel'));
+        $reason->appendChild($dom->createElement('text', 'Retracted'));
+
+        \Moxl\API::request($dom->saveXML($dom->documentElement));
+    }
+
     public static function sessionReject($id, $to = false)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
