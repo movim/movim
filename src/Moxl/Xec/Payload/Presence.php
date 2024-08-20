@@ -2,10 +2,12 @@
 
 namespace Moxl\Xec\Payload;
 
-use Movim\Session;
 use App\Presence as DBPresence;
 use App\PresenceBuffer;
+use Movim\Session;
 use Movim\ChatroomPings;
+use Moxl\Xec\Action\Presence\Muc;
+use Moxl\Xec\Handler;
 
 class Presence extends Payload
 {
@@ -43,12 +45,23 @@ class Presence extends Payload
                         }
                         // So we drop it
 
+                        $session = Session::start();
+
                         if ($presence->value != 5 && $presence->value != 6) {
                             $this->method('muc_handle');
                             $this->pack([$presence, false]);
-                        } elseif ($presence->value == 5) {
-                            $this->method('unavailable_handle');
-                            $this->pack($presence->jid);
+                        }
+
+                        /**
+                         * Server bug case where we actually got an error from our resource but it didn't provide the
+                         * id back in the stanza
+                         */
+                        elseif($session->get(Muc::$mucId . (string)$stanza->attributes()->from)) {
+                            /**
+                             * Add back the id to the stanza and send it back to the stanza handler
+                             */
+                            $stanza->addAttribute('id', $session->get(Muc::$mucId . (string)$stanza->attributes()->from));
+                            Handler::handle($stanza);
                         }
 
                         $this->deliver();

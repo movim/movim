@@ -141,23 +141,21 @@ class Presence extends Model
         if ($stanza->x) {
             foreach ($stanza->children() as $name => $c) {
                 switch ($c->attributes()->xmlns) {
+                    case 'http://jabber.org/protocol/muc':
                     case 'http://jabber.org/protocol/muc#user':
+                        $this->muc = true;
+
+                        $session = Session::start();
+
+                        if ($session->get(Muc::$mucId . (string)$stanza->attributes()->from)) {
+                            $this->mucjid = \App\User::me()->id;
+                        }
+
                         if (!isset($c->item)) {
                             break;
                         }
 
-                        $session = Session::start();
-
-                        $this->muc = true;
-
-                        /**
-                         * If we were trying to connect to that particular MUC
-                         * See Moxl\Xec\Action\Presence\Muc
-                         */
-                        if (
-                            $session->get(Muc::$mucId . (string)$stanza->attributes()->from)
-                            || (isset($c->status) && (int)$c->status->attributes()->code == 110)
-                        ) {
+                        if (!empty($c->xpath("//status[@code='110']"))) {
                             $this->mucjid = \App\User::me()->id;
                         } elseif ($c->item->attributes()->jid) {
                             $this->mucjid = cleanJid((string)$c->item->attributes()->jid);

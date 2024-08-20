@@ -48,13 +48,13 @@
             </span>
             {if="$c->getUser()->hasUpload()"}
                 <span class="emojis control icon gray primary_action"
-                        title="{$c->__('chat.dictaphone')}"
+                        title="{$c->__('dictaphone.name')}"
                         onclick="Dictaphone.toggle()">
                     <i class="material-symbols">mic</i>
                 </span>
             {/if}
             <span class="emojis control icon gray primary_action on_desktop"
-                    title="{$c->__('sticker.title')}"
+                    title="{$c->__('emojisconfig.title')}"
                     onclick="Stickers_ajaxReaction(null)">
                 <i class="material-symbols">emoji_emotions</i>
             </span>

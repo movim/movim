@@ -19,6 +19,7 @@ v0.26.1 (master)
 * Handle the switch between the floating view and discussion view
 * Add blinking "in call" icon when in call
 * Ensure to have a proper navigation between the different modes (float, chat and fullscreen) in the whole Movim UI
+* Better handling of MUC self-presences, fix an issues where several codes are present
 
 v0.26
 ---------------------------

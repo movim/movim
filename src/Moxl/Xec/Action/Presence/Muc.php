@@ -195,6 +195,7 @@ class Muc extends Action
         } else {
             $this->setNickname($this->_nickname . '_');
             $this->request();
+            $this->deliver();
         }
     }
 }
