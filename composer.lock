@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3219f1999212c811bb1dbbebca853d77",
+    "content-hash": "9717290d0e9dad78213d1924bebe6864",
     "packages": [
         {
             "name": "awobaz/compoships",
@@ -70,25 +70,25 @@
         },
         {
             "name": "brick/math",
-            "version": "0.12.1",
+            "version": "0.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/brick/math.git",
-                "reference": "f510c0a40911935b77b86859eb5223d58d660df1"
+                "reference": "0ad82ce168c82ba30d1c01ec86116ab52f589478"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/brick/math/zipball/f510c0a40911935b77b86859eb5223d58d660df1",
-                "reference": "f510c0a40911935b77b86859eb5223d58d660df1",
+                "url": "https://api.github.com/repos/brick/math/zipball/0ad82ce168c82ba30d1c01ec86116ab52f589478",
+                "reference": "0ad82ce168c82ba30d1c01ec86116ab52f589478",
                 "shasum": ""
             },
             "require": {
-                "php": "^8.1"
+                "php": "^8.0"
             },
             "require-dev": {
                 "php-coveralls/php-coveralls": "^2.2",
-                "phpunit/phpunit": "^10.1",
-                "vimeo/psalm": "5.16.0"
+                "phpunit/phpunit": "^9.0",
+                "vimeo/psalm": "5.0.0"
             },
             "type": "library",
             "autoload": {
@@ -108,17 +108,12 @@
                 "arithmetic",
                 "bigdecimal",
                 "bignum",
-                "bignumber",
                 "brick",
-                "decimal",
-                "integer",
-                "math",
-                "mathematics",
-                "rational"
+                "math"
             ],
             "support": {
                 "issues": "https://github.com/brick/math/issues",
-                "source": "https://github.com/brick/math/tree/0.12.1"
+                "source": "https://github.com/brick/math/tree/0.11.0"
             },
             "funding": [
                 {
@@ -126,7 +121,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-11-29T23:19:16+00:00"
+            "time": "2023-01-15T23:15:59+00:00"
         },
         {
             "name": "cakephp/core",
@@ -363,26 +358,26 @@
         },
         {
             "name": "carbonphp/carbon-doctrine-types",
-            "version": "2.1.0",
+            "version": "3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CarbonPHP/carbon-doctrine-types.git",
-                "reference": "99f76ffa36cce3b70a4a6abce41dba15ca2e84cb"
+                "reference": "18ba5ddfec8976260ead6e866180bd5d2f71aa1d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CarbonPHP/carbon-doctrine-types/zipball/99f76ffa36cce3b70a4a6abce41dba15ca2e84cb",
-                "reference": "99f76ffa36cce3b70a4a6abce41dba15ca2e84cb",
+                "url": "https://api.github.com/repos/CarbonPHP/carbon-doctrine-types/zipball/18ba5ddfec8976260ead6e866180bd5d2f71aa1d",
+                "reference": "18ba5ddfec8976260ead6e866180bd5d2f71aa1d",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.4 || ^8.0"
+                "php": "^8.1"
             },
             "conflict": {
-                "doctrine/dbal": "<3.7.0 || >=4.0.0"
+                "doctrine/dbal": "<4.0.0 || >=5.0.0"
             },
             "require-dev": {
-                "doctrine/dbal": "^3.7.0",
+                "doctrine/dbal": "^4.0.0",
                 "nesbot/carbon": "^2.71.0 || ^3.0.0",
                 "phpunit/phpunit": "^10.3"
             },
@@ -412,7 +407,7 @@
             ],
             "support": {
                 "issues": "https://github.com/CarbonPHP/carbon-doctrine-types/issues",
-                "source": "https://github.com/CarbonPHP/carbon-doctrine-types/tree/2.1.0"
+                "source": "https://github.com/CarbonPHP/carbon-doctrine-types/tree/3.2.0"
             },
             "funding": [
                 {
@@ -428,7 +423,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-12-11T17:09:12+00:00"
+            "time": "2024-02-09T16:56:22+00:00"
         },
         {
             "name": "cocur/slugify",
@@ -785,141 +780,43 @@
             "time": "2023-07-18T20:41:43+00:00"
         },
         {
-            "name": "doctrine/cache",
-            "version": "2.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/doctrine/cache.git",
-                "reference": "1ca8f21980e770095a31456042471a57bc4c68fb"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/cache/zipball/1ca8f21980e770095a31456042471a57bc4c68fb",
-                "reference": "1ca8f21980e770095a31456042471a57bc4c68fb",
-                "shasum": ""
-            },
-            "require": {
-                "php": "~7.1 || ^8.0"
-            },
-            "conflict": {
-                "doctrine/common": ">2.2,<2.4"
-            },
-            "require-dev": {
-                "cache/integration-tests": "dev-master",
-                "doctrine/coding-standard": "^9",
-                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.5",
-                "psr/cache": "^1.0 || ^2.0 || ^3.0",
-                "symfony/cache": "^4.4 || ^5.4 || ^6",
-                "symfony/var-exporter": "^4.4 || ^5.4 || ^6"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Doctrine\\Common\\Cache\\": "lib/Doctrine/Common/Cache"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@gmail.com"
-                },
-                {
-                    "name": "Roman Borschel",
-                    "email": "roman@code-factory.org"
-                },
-                {
-                    "name": "Benjamin Eberlei",
-                    "email": "kontakt@beberlei.de"
-                },
-                {
-                    "name": "Jonathan Wage",
-                    "email": "jonwage@gmail.com"
-                },
-                {
-                    "name": "Johannes Schmitt",
-                    "email": "schmittjoh@gmail.com"
-                }
-            ],
-            "description": "PHP Doctrine Cache library is a popular cache implementation that supports many different drivers such as redis, memcache, apc, mongodb and others.",
-            "homepage": "https://www.doctrine-project.org/projects/cache.html",
-            "keywords": [
-                "abstraction",
-                "apcu",
-                "cache",
-                "caching",
-                "couchdb",
-                "memcached",
-                "php",
-                "redis",
-                "xcache"
-            ],
-            "support": {
-                "issues": "https://github.com/doctrine/cache/issues",
-                "source": "https://github.com/doctrine/cache/tree/2.2.0"
-            },
-            "funding": [
-                {
-                    "url": "https://www.doctrine-project.org/sponsorship.html",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://www.patreon.com/phpdoctrine",
-                    "type": "patreon"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/doctrine%2Fcache",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2022-05-20T20:07:39+00:00"
-        },
-        {
             "name": "doctrine/dbal",
-            "version": "3.9.0",
+            "version": "4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "d8f68ea6cc00912e5313237130b8c8decf4d28c6"
+                "reference": "2377cd41609aa51bee822c8d207317a3f363a558"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/d8f68ea6cc00912e5313237130b8c8decf4d28c6",
-                "reference": "d8f68ea6cc00912e5313237130b8c8decf4d28c6",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/2377cd41609aa51bee822c8d207317a3f363a558",
+                "reference": "2377cd41609aa51bee822c8d207317a3f363a558",
                 "shasum": ""
             },
             "require": {
-                "composer-runtime-api": "^2",
-                "doctrine/cache": "^1.11|^2.0",
                 "doctrine/deprecations": "^0.5.3|^1",
-                "doctrine/event-manager": "^1|^2",
-                "php": "^7.4 || ^8.0",
+                "php": "^8.1",
                 "psr/cache": "^1|^2|^3",
                 "psr/log": "^1|^2|^3"
             },
             "require-dev": {
                 "doctrine/coding-standard": "12.0.0",
                 "fig/log-test": "^1",
-                "jetbrains/phpstorm-stubs": "2023.1",
+                "jetbrains/phpstorm-stubs": "2023.2",
                 "phpstan/phpstan": "1.11.7",
+                "phpstan/phpstan-phpunit": "1.4.0",
                 "phpstan/phpstan-strict-rules": "^1.6",
-                "phpunit/phpunit": "9.6.20",
-                "psalm/plugin-phpunit": "0.18.4",
+                "phpunit/phpunit": "10.5.28",
+                "psalm/plugin-phpunit": "0.19.0",
                 "slevomat/coding-standard": "8.13.1",
                 "squizlabs/php_codesniffer": "3.10.2",
-                "symfony/cache": "^5.4|^6.0|^7.0",
-                "symfony/console": "^4.4|^5.4|^6.0|^7.0",
-                "vimeo/psalm": "4.30.0"
+                "symfony/cache": "^6.3.8|^7.0",
+                "symfony/console": "^5.4|^6.3|^7.0",
+                "vimeo/psalm": "5.24.0"
             },
             "suggest": {
                 "symfony/console": "For helpful console commands such as SQL execution and import of files."
             },
-            "bin": [
-                "bin/doctrine-dbal"
-            ],
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -972,7 +869,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/dbal/issues",
-                "source": "https://github.com/doctrine/dbal/tree/3.9.0"
+                "source": "https://github.com/doctrine/dbal/tree/4.1.0"
             },
             "funding": [
                 {
@@ -988,7 +885,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-08-15T07:34:42+00:00"
+            "time": "2024-08-15T07:37:07+00:00"
         },
         {
             "name": "doctrine/deprecations",
@@ -1036,97 +933,6 @@
                 "source": "https://github.com/doctrine/deprecations/tree/1.1.3"
             },
             "time": "2024-01-30T19:34:25+00:00"
-        },
-        {
-            "name": "doctrine/event-manager",
-            "version": "2.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/doctrine/event-manager.git",
-                "reference": "b680156fa328f1dfd874fd48c7026c41570b9c6e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/event-manager/zipball/b680156fa328f1dfd874fd48c7026c41570b9c6e",
-                "reference": "b680156fa328f1dfd874fd48c7026c41570b9c6e",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^8.1"
-            },
-            "conflict": {
-                "doctrine/common": "<2.9"
-            },
-            "require-dev": {
-                "doctrine/coding-standard": "^12",
-                "phpstan/phpstan": "^1.8.8",
-                "phpunit/phpunit": "^10.5",
-                "vimeo/psalm": "^5.24"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Doctrine\\Common\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@gmail.com"
-                },
-                {
-                    "name": "Roman Borschel",
-                    "email": "roman@code-factory.org"
-                },
-                {
-                    "name": "Benjamin Eberlei",
-                    "email": "kontakt@beberlei.de"
-                },
-                {
-                    "name": "Jonathan Wage",
-                    "email": "jonwage@gmail.com"
-                },
-                {
-                    "name": "Johannes Schmitt",
-                    "email": "schmittjoh@gmail.com"
-                },
-                {
-                    "name": "Marco Pivetta",
-                    "email": "ocramius@gmail.com"
-                }
-            ],
-            "description": "The Doctrine Event Manager is a simple PHP event system that was built to be used with the various Doctrine projects.",
-            "homepage": "https://www.doctrine-project.org/projects/event-manager.html",
-            "keywords": [
-                "event",
-                "event dispatcher",
-                "event manager",
-                "event system",
-                "events"
-            ],
-            "support": {
-                "issues": "https://github.com/doctrine/event-manager/issues",
-                "source": "https://github.com/doctrine/event-manager/tree/2.0.1"
-            },
-            "funding": [
-                {
-                    "url": "https://www.doctrine-project.org/sponsorship.html",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://www.patreon.com/phpdoctrine",
-                    "type": "patreon"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/doctrine%2Fevent-manager",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2024-05-22T20:47:39+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -2183,20 +1989,20 @@
         },
         {
             "name": "illuminate/database",
-            "version": "v10.48.20",
+            "version": "v10.38.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "f11ecaa2b29f3fb9c0a46ef20ad93508372ef833"
+                "reference": "55b4633aff7c9fbf1e14bd579835344604fe4d31"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/f11ecaa2b29f3fb9c0a46ef20ad93508372ef833",
-                "reference": "f11ecaa2b29f3fb9c0a46ef20ad93508372ef833",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/55b4633aff7c9fbf1e14bd579835344604fe4d31",
+                "reference": "55b4633aff7c9fbf1e14bd579835344604fe4d31",
                 "shasum": ""
             },
             "require": {
-                "brick/math": "^0.9.3|^0.10.2|^0.11|^0.12",
+                "brick/math": "^0.9.3|^0.10.2|^0.11",
                 "ext-pdo": "*",
                 "illuminate/collections": "^10.0",
                 "illuminate/container": "^10.0",
@@ -2204,10 +2010,6 @@
                 "illuminate/macroable": "^10.0",
                 "illuminate/support": "^10.0",
                 "php": "^8.1"
-            },
-            "conflict": {
-                "carbonphp/carbon-doctrine-types": ">=3.0",
-                "doctrine/dbal": ">=4.0"
             },
             "suggest": {
                 "doctrine/dbal": "Required to rename columns and drop SQLite columns (^3.5.1).",
@@ -2252,7 +2054,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2024-08-07T21:07:46+00:00"
+            "time": "2023-12-20T14:23:33+00:00"
         },
         {
             "name": "illuminate/events",
@@ -2476,16 +2278,16 @@
         },
         {
             "name": "league/commonmark",
-            "version": "2.4.0",
+            "version": "2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/commonmark.git",
-                "reference": "d44a24690f16b8c1808bf13b1bd54ae4c63ea048"
+                "reference": "0026475f5c9a104410ae824cb5a4d63fa3bdb1df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/d44a24690f16b8c1808bf13b1bd54ae4c63ea048",
-                "reference": "d44a24690f16b8c1808bf13b1bd54ae4c63ea048",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/0026475f5c9a104410ae824cb5a4d63fa3bdb1df",
+                "reference": "0026475f5c9a104410ae824cb5a4d63fa3bdb1df",
                 "shasum": ""
             },
             "require": {
@@ -2498,8 +2300,8 @@
             },
             "require-dev": {
                 "cebe/markdown": "^1.0",
-                "commonmark/cmark": "0.30.0",
-                "commonmark/commonmark.js": "0.30.0",
+                "commonmark/cmark": "0.31.0",
+                "commonmark/commonmark.js": "0.31.0",
                 "composer/package-versions-deprecated": "^1.8",
                 "embed/embed": "^4.4",
                 "erusev/parsedown": "^1.0",
@@ -2508,10 +2310,10 @@
                 "michelf/php-markdown": "^1.4 || ^2.0",
                 "nyholm/psr7": "^1.5",
                 "phpstan/phpstan": "^1.8.2",
-                "phpunit/phpunit": "^9.5.21",
+                "phpunit/phpunit": "^9.5.21 || ^10.5.9 || ^11.0.0",
                 "scrutinizer/ocular": "^1.8.1",
-                "symfony/finder": "^5.3 | ^6.0",
-                "symfony/yaml": "^2.3 | ^3.0 | ^4.0 | ^5.0 | ^6.0",
+                "symfony/finder": "^5.3 | ^6.0 || ^7.0",
+                "symfony/yaml": "^2.3 | ^3.0 | ^4.0 | ^5.0 | ^6.0 || ^7.0",
                 "unleashedtech/php-coding-standard": "^3.1.1",
                 "vimeo/psalm": "^4.24.0 || ^5.0.0"
             },
@@ -2521,7 +2323,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "2.5-dev"
+                    "dev-main": "2.6-dev"
                 }
             },
             "autoload": {
@@ -2578,7 +2380,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-03-24T15:16:10+00:00"
+            "time": "2024-07-22T18:18:14+00:00"
         },
         {
             "name": "league/config",
@@ -2664,16 +2466,16 @@
         },
         {
             "name": "minishlink/web-push",
-            "version": "v8.0.0",
+            "version": "v9.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-push-libs/web-push-php.git",
-                "reference": "ec034f1e287cd1e74235e349bd017d71a61e9d8d"
+                "reference": "761adf330860aa6cd05e5f6945c427c76a07c420"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-push-libs/web-push-php/zipball/ec034f1e287cd1e74235e349bd017d71a61e9d8d",
-                "reference": "ec034f1e287cd1e74235e349bd017d71a61e9d8d",
+                "url": "https://api.github.com/repos/web-push-libs/web-push-php/zipball/761adf330860aa6cd05e5f6945c427c76a07c420",
+                "reference": "761adf330860aa6cd05e5f6945c427c76a07c420",
                 "shasum": ""
             },
             "require": {
@@ -2681,20 +2483,18 @@
                 "ext-json": "*",
                 "ext-mbstring": "*",
                 "ext-openssl": "*",
-                "guzzlehttp/guzzle": "^7.0.1|^6.2",
-                "php": ">=8.0",
-                "spomky-labs/base64url": "^2.0",
-                "web-token/jwt-key-mgmt": "^2.0|^3.0.2",
-                "web-token/jwt-signature": "^2.0|^3.0.2",
-                "web-token/jwt-signature-algorithm-ecdsa": "^2.0|^3.0.2",
-                "web-token/jwt-util-ecc": "^2.0|^3.0.2"
+                "guzzlehttp/guzzle": "^7.4.5",
+                "php": ">=8.1",
+                "spomky-labs/base64url": "^2.0.4",
+                "web-token/jwt-library": "^3.3.0|^4.0.0"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^v3.13.2",
-                "phpstan/phpstan": "^1.9.8",
-                "phpunit/phpunit": "^9.5.27"
+                "friendsofphp/php-cs-fixer": "^v3.48.0",
+                "phpstan/phpstan": "^1.10.57",
+                "phpunit/phpunit": "^10.5.9"
             },
             "suggest": {
+                "ext-bcmath": "Optional for performance.",
                 "ext-gmp": "Optional for performance."
             },
             "type": "library",
@@ -2725,9 +2525,9 @@
             ],
             "support": {
                 "issues": "https://github.com/web-push-libs/web-push-php/issues",
-                "source": "https://github.com/web-push-libs/web-push-php/tree/v8.0.0"
+                "source": "https://github.com/web-push-libs/web-push-php/tree/v9.0.1"
             },
-            "time": "2023-01-10T17:14:44+00:00"
+            "time": "2024-07-30T12:24:56+00:00"
         },
         {
             "name": "ml/iri",
@@ -5073,21 +4873,21 @@
         },
         {
             "name": "robmorgan/phinx",
-            "version": "0.13.4",
+            "version": "0.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/phinx.git",
-                "reference": "18e06e4a2b18947663438afd2f467e17c62e867d"
+                "reference": "7bc24bae664b2124f3d5b8d1e98fdb8abaf70e87"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/phinx/zipball/18e06e4a2b18947663438afd2f467e17c62e867d",
-                "reference": "18e06e4a2b18947663438afd2f467e17c62e867d",
+                "url": "https://api.github.com/repos/cakephp/phinx/zipball/7bc24bae664b2124f3d5b8d1e98fdb8abaf70e87",
+                "reference": "7bc24bae664b2124f3d5b8d1e98fdb8abaf70e87",
                 "shasum": ""
             },
             "require": {
                 "cakephp/database": "^4.0",
-                "php": ">=7.2",
+                "php-64bit": ">=7.3",
                 "psr/container": "^1.0 || ^2.0",
                 "symfony/config": "^3.4|^4.0|^5.0|^6.0",
                 "symfony/console": "^3.4|^4.0|^5.0|^6.0"
@@ -5096,7 +4896,7 @@
                 "cakephp/cakephp-codesniffer": "^4.0",
                 "ext-json": "*",
                 "ext-pdo": "*",
-                "phpunit/phpunit": "^8.5|^9.3",
+                "phpunit/phpunit": "^9.5",
                 "sebastian/comparator": ">=1.2.3",
                 "symfony/yaml": "^3.4|^4.0|^5.0"
             },
@@ -5153,9 +4953,9 @@
             ],
             "support": {
                 "issues": "https://github.com/cakephp/phinx/issues",
-                "source": "https://github.com/cakephp/phinx/tree/0.13.4"
+                "source": "https://github.com/cakephp/phinx/tree/0.14.0"
             },
-            "time": "2023-01-07T00:42:55+00:00"
+            "time": "2023-09-07T14:26:14+00:00"
         },
         {
             "name": "spomky-labs/base64url",
@@ -6941,74 +6741,6 @@
             "time": "2022-03-08T17:03:00+00:00"
         },
         {
-            "name": "web-token/jwt-key-mgmt",
-            "version": "3.4.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/web-token/jwt-key-mgmt.git",
-                "reference": "4d2a5a1a86477dd50b89aff76962816ddbd64590"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/web-token/jwt-key-mgmt/zipball/4d2a5a1a86477dd50b89aff76962816ddbd64590",
-                "reference": "4d2a5a1a86477dd50b89aff76962816ddbd64590",
-                "shasum": ""
-            },
-            "require": {
-                "ext-openssl": "*",
-                "php": ">=8.1",
-                "psr/http-client": "^1.0",
-                "psr/http-factory": "^1.0",
-                "web-token/jwt-library": "^3.3"
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Florent Morselli",
-                    "homepage": "https://github.com/Spomky"
-                },
-                {
-                    "name": "All contributors",
-                    "homepage": "https://github.com/web-token/jwt-framework/contributors"
-                }
-            ],
-            "description": "[DEPRECATED] Please use web-token/jwt-library instead.",
-            "homepage": "https://github.com/web-token",
-            "keywords": [
-                "JOSE",
-                "JWE",
-                "JWK",
-                "JWKSet",
-                "JWS",
-                "Jot",
-                "RFC7515",
-                "RFC7516",
-                "RFC7517",
-                "RFC7518",
-                "RFC7519",
-                "RFC7520",
-                "bundle",
-                "jwa",
-                "jwt",
-                "symfony"
-            ],
-            "support": {
-                "source": "https://github.com/web-token/jwt-key-mgmt/tree/3.4.6"
-            },
-            "funding": [
-                {
-                    "url": "https://www.patreon.com/FlorentMorselli",
-                    "type": "patreon"
-                }
-            ],
-            "abandoned": "web-token/jwt-library",
-            "time": "2024-02-22T07:19:34+00:00"
-        },
-        {
             "name": "web-token/jwt-library",
             "version": "3.4.6",
             "source": {
@@ -7105,203 +6837,6 @@
                 }
             ],
             "time": "2024-07-02T16:35:11+00:00"
-        },
-        {
-            "name": "web-token/jwt-signature",
-            "version": "3.4.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/web-token/jwt-signature.git",
-                "reference": "eccfd59e658d4118414cf6d14229aa52eec387e7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/web-token/jwt-signature/zipball/eccfd59e658d4118414cf6d14229aa52eec387e7",
-                "reference": "eccfd59e658d4118414cf6d14229aa52eec387e7",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.1",
-                "web-token/jwt-library": "^3.3"
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Florent Morselli",
-                    "homepage": "https://github.com/Spomky"
-                },
-                {
-                    "name": "All contributors",
-                    "homepage": "https://github.com/web-token/jwt-framework/contributors"
-                }
-            ],
-            "description": "[DEPRECATED] Please use web-token/jwt-library instead.",
-            "homepage": "https://github.com/web-token",
-            "keywords": [
-                "JOSE",
-                "JWE",
-                "JWK",
-                "JWKSet",
-                "JWS",
-                "Jot",
-                "RFC7515",
-                "RFC7516",
-                "RFC7517",
-                "RFC7518",
-                "RFC7519",
-                "RFC7520",
-                "bundle",
-                "jwa",
-                "jwt",
-                "symfony"
-            ],
-            "support": {
-                "source": "https://github.com/web-token/jwt-signature/tree/3.4.6"
-            },
-            "funding": [
-                {
-                    "url": "https://www.patreon.com/FlorentMorselli",
-                    "type": "patreon"
-                }
-            ],
-            "abandoned": "web-token/jwt-library",
-            "time": "2024-02-22T07:19:34+00:00"
-        },
-        {
-            "name": "web-token/jwt-signature-algorithm-ecdsa",
-            "version": "3.4.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/web-token/jwt-signature-algorithm-ecdsa.git",
-                "reference": "28516e170f6ee6d13766d9e2b912c2853e1ac5e4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/web-token/jwt-signature-algorithm-ecdsa/zipball/28516e170f6ee6d13766d9e2b912c2853e1ac5e4",
-                "reference": "28516e170f6ee6d13766d9e2b912c2853e1ac5e4",
-                "shasum": ""
-            },
-            "require": {
-                "ext-openssl": "*",
-                "php": ">=8.1",
-                "web-token/jwt-library": "^3.3"
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Florent Morselli",
-                    "homepage": "https://github.com/Spomky"
-                },
-                {
-                    "name": "All contributors",
-                    "homepage": "https://github.com/web-token/jwt-framework/contributors"
-                }
-            ],
-            "description": "[DEPRECATED] Please use web-token/jwt-library instead.",
-            "homepage": "https://github.com/web-token",
-            "keywords": [
-                "JOSE",
-                "JWE",
-                "JWK",
-                "JWKSet",
-                "JWS",
-                "Jot",
-                "RFC7515",
-                "RFC7516",
-                "RFC7517",
-                "RFC7518",
-                "RFC7519",
-                "RFC7520",
-                "bundle",
-                "jwa",
-                "jwt",
-                "symfony"
-            ],
-            "support": {
-                "source": "https://github.com/web-token/jwt-signature-algorithm-ecdsa/tree/3.4.6"
-            },
-            "funding": [
-                {
-                    "url": "https://www.patreon.com/FlorentMorselli",
-                    "type": "patreon"
-                }
-            ],
-            "abandoned": "web-token/jwt-library",
-            "time": "2024-02-22T07:19:34+00:00"
-        },
-        {
-            "name": "web-token/jwt-util-ecc",
-            "version": "3.4.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/web-token/jwt-util-ecc.git",
-                "reference": "667934c5c6e37238f4e67d51aa3ba55abc703e1a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/web-token/jwt-util-ecc/zipball/667934c5c6e37238f4e67d51aa3ba55abc703e1a",
-                "reference": "667934c5c6e37238f4e67d51aa3ba55abc703e1a",
-                "shasum": ""
-            },
-            "require": {
-                "brick/math": "^0.9|^0.10|^0.11|^0.12",
-                "php": ">=8.1",
-                "web-token/jwt-library": "^3.3"
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Florent Morselli",
-                    "homepage": "https://github.com/Spomky"
-                },
-                {
-                    "name": "All contributors",
-                    "homepage": "https://github.com/web-token/jwt-framework/contributors"
-                }
-            ],
-            "description": "[DEPRECATED] Please use web-token/jwt-library instead.",
-            "homepage": "https://github.com/web-token",
-            "keywords": [
-                "JOSE",
-                "JWE",
-                "JWK",
-                "JWKSet",
-                "JWS",
-                "Jot",
-                "RFC7515",
-                "RFC7516",
-                "RFC7517",
-                "RFC7518",
-                "RFC7519",
-                "RFC7520",
-                "bundle",
-                "jwa",
-                "jwt",
-                "symfony"
-            ],
-            "support": {
-                "source": "https://github.com/web-token/jwt-util-ecc/tree/3.4.6"
-            },
-            "funding": [
-                {
-                    "url": "https://www.patreon.com/FlorentMorselli",
-                    "type": "patreon"
-                }
-            ],
-            "abandoned": "web-token/jwt-library",
-            "time": "2024-02-22T07:19:34+00:00"
         }
     ],
     "packages-dev": [],

@@ -22,29 +22,29 @@
         "fabiang/sasl": "^1.4",
         "rain/raintpl": "^3.1",
         "embed/embed": "^v4.4",
-        "league/commonmark": "2.4",
+        "league/commonmark": "2.5",
 
-        "respect/validation": "^2.2",
-        "ezyang/htmlpurifier": "^4.16",
-        "cocur/slugify": "^4.4",
+        "respect/validation": "^2.3",
+        "ezyang/htmlpurifier": "^4.17",
+        "cocur/slugify": "^4.5",
         "dflydev/fig-cookies": "^3.1",
         "defuse/php-encryption": "^2.4",
 
-        "robmorgan/phinx": "^0.13",
+        "robmorgan/phinx": "^0.14",
         "illuminate/database": "^10.21",
         "illuminate/events": "^10.21",
-        "doctrine/dbal": "^3.6",
-        "monolog/monolog": "^3.4",
+        "doctrine/dbal": "^4.1",
+        "monolog/monolog": "^3.7",
 
         "plesk/ratchetphp": "^1.0",
         "react/child-process": "^0.6",
-        "react/http": "^1.9",
-        "react/dns": "^1.11",
+        "react/http": "^1.10",
+        "react/dns": "^1.13",
         "ratchet/pawl": "^0.4",
-        "minishlink/web-push": "^8.0",
-        "vlucas/phpdotenv": "^5.5",
-        "react/promise-timer": "^1.10",
-        "awobaz/compoships": "^2.2"
+        "minishlink/web-push": "^9.0",
+        "vlucas/phpdotenv": "^5.6",
+        "react/promise-timer": "^1.11",
+        "awobaz/compoships": "^2.3"
     },
     "config": {
         "platform": {
