@@ -6,29 +6,35 @@ use Moxl\Xec\Action;
 
 use App\User;
 use Moxl\Stanza\Pubsub;
+use Moxl\Stanza\Storage;
 
 class Get extends Action
 {
-    private $_xmlns = 'movim:prefs';
-
     public function request()
     {
         $this->store();
-        Pubsub::getItem(false, $this->_xmlns, 'current');
+        Pubsub::getItem(false, Storage::$node, 'current');
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        if ($stanza->pubsub->items->item) {
-            $data = unserialize(trim((string)$stanza->pubsub->items->item->data));
+        if ($stanza->pubsub->items->item && $stanza->pubsub->items->item->x
+        && $stanza->pubsub->items->item->x->attributes()->xmlns == 'jabber:x:data') {
+            $config = [];
 
-            if (is_array($data)) {
+            foreach ($stanza->pubsub->items->item->x->field as $field) {
+                $config[(string)$field->attributes()->var] = (string)$field->value == 'false'
+                    ? false
+                    : (string)$field->value;
+            }
+
+            if (!empty($config)) {
                 $me = User::me();
-                $me->setConfig($data);
+                $me->setConfig($config);
                 $me->save();
             }
 
-            $this->pack($data);
+            $this->pack($config);
             $this->deliver();
         }
     }

@@ -7,14 +7,14 @@ namespace Moxl\Stanza;
 
 class Storage
 {
-    public static $node = 'movim:prefs';
+    public static $node = 'movim:configuration';
     public static $nodeConfig = [
         'FORM_TYPE' => 'http://jabber.org/protocol/pubsub#publish-options',
         'pubsub#persist_items' => 'true',
         'pubsub#access_model' => 'whitelist',
     ];
 
-    public static function publish($data, bool $withPublishOption = true)
+    public static function publish(array $data, bool $withPublishOption = true)
     {
         $dom = new \DOMDocument('1.0', 'utf-8');
 
@@ -25,7 +25,16 @@ class Storage
 
         $item = $dom->createElement('item');
         $item->setAttribute('id', 'current');
-        $item->appendChild($dom->createElement('data', $data));
+
+        $x = $dom->createElement('x');
+        $x->setAttribute('xmlns', 'jabber:x:data');
+        $x->setAttribute('type', 'submit');
+        $item->appendChild($x);
+
+        $data['FORM_TYPE'] = self::$node;
+
+        \Moxl\Utils::injectConfigInX($x, $data);
+
         $publish->appendChild($item);
 
         if ($withPublishOption) {

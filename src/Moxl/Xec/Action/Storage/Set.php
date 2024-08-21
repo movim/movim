@@ -8,7 +8,7 @@ use Moxl\Xec\Action\Pubsub\SetConfig;
 
 class Set extends Action
 {
-    protected $_data;
+    protected array $_data;
     protected bool $_withPublishOption = true;
 
     public function request()
@@ -19,7 +19,7 @@ class Set extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $this->pack(unserialize($this->_data));
+        $this->pack($this->_data);
         $this->deliver();
     }
 

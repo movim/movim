@@ -124,7 +124,7 @@ class Config extends Base
         }
 
         $s = new Set;
-        $s->setData(serialize($config))
+        $s->setData($config)
           ->request();
     }
 

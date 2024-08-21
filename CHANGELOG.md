@@ -21,6 +21,7 @@ v0.26.1 (master)
 * Ensure to have a proper navigation between the different modes (float, chat and fullscreen) in the whole Movim UI
 * Better handling of MUC self-presences, fix an issues where several codes are present
 * Upgrade the dependencies libraries
+* Move the Movim configuration to a new movim:configuration node, use XEP-0004: Data Form to handle the data
 
 v0.26
 ---------------------------

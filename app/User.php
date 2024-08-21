@@ -186,31 +186,31 @@ class User extends Model
     public function setConfig(array $config)
     {
         if (isset($config['language'])) {
-            $this->language = $config['language'];
+            $this->language = (string)$config['language'];
         }
 
         if (isset($config['nsfw'])) {
-            $this->nsfw = $config['nsfw'];
+            $this->nsfw = (bool)$config['nsfw'];
         }
 
         if (isset($config['omemoenabled'])) {
-            $this->omemoenabled = $config['omemoenabled'];
+            $this->omemoenabled = (bool)$config['omemoenabled'];
         }
 
         if (isset($config['chatmain'])) {
-            $this->chatmain = $config['chatmain'];
+            $this->chatmain = (bool)$config['chatmain'];
         }
 
         if (isset($config['nightmode'])) {
-            $this->nightmode = $config['nightmode'];
+            $this->nightmode = (bool)$config['nightmode'];
         }
 
         if (isset($config['notificationcall'])) {
-            $this->notificationcall = $config['notificationcall'];
+            $this->notificationcall = (bool)$config['notificationcall'];
         }
 
         if (isset($config['notificationchat'])) {
-            $this->notificationchat = $config['notificationchat'];
+            $this->notificationchat = (bool)$config['notificationchat'];
         }
     }
 
