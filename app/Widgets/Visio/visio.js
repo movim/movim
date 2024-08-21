@@ -209,7 +209,7 @@ var Visio = {
                 Visio_ajaxAccept(MovimVisio.from, MovimVisio.id);
             } else {
                 // TODO launch when button pressed
-                MovimVisio.id = Math.random().toString(36).substring(2, 11);
+                MovimVisio.id = crypto.randomUUID();
                 Visio.calling = true;
                 VisioUtils.toggleMainButton();
                 Visio_ajaxPropose(MovimVisio.from, MovimVisio.id, MovimVisio.withVideo);
@@ -357,7 +357,9 @@ var Visio = {
         delete visio.dataset.id;
         delete visio.dataset.type;
 
-        document.exitFullscreen();
+        if (document.fullscreenElement) {
+            document.exitFullscreen();
+        }
 
         if (MovimVisio.id) {
             Visio_ajaxEnd(MovimVisio.from, MovimVisio.id, reason);
