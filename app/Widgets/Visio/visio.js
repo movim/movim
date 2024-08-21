@@ -11,8 +11,6 @@ var Visio = {
 
     inboundStream: null,
 
-    services: [],
-
     tracksTypes: [],
 
     prepare: function (from, id, withVideo) {
@@ -44,7 +42,7 @@ var Visio = {
         MovimVisio.remoteAudio = document.getElementById('remote_audio');
 
         var configuration = {
-            'iceServers': Visio.services
+            'iceServers': MovimVisio.services
         };
 
         MovimVisio.pc = new RTCPeerConnection(configuration);
@@ -132,7 +130,7 @@ var Visio = {
     },
 
     setServices: function (services) {
-        Visio.services = services;
+        MovimVisio.services = services;
     },
 
     setStates: function (states) {
@@ -370,6 +368,9 @@ var Visio = {
 }
 
 MovimWebsocket.attach(() => {
-    Visio_ajaxResolveServices();
+    if (MovimVisio.services.length == 0) {
+        Visio_ajaxResolveServices();
+    }
+
     Visio_ajaxGetStates();
 });

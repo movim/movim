@@ -4,6 +4,7 @@ var MovimVisio = {
     withVideo: false,
 
     pc: null,
+    services: [],
 
     localVideo: null,
     remoteVideo: null,
