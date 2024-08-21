@@ -22,6 +22,7 @@ v0.26.1 (master)
 * Better handling of MUC self-presences, fix an issues where several codes are present
 * Upgrade the dependencies libraries
 * Move the Movim configuration to a new movim:configuration node, use XEP-0004: Data Form to handle the data
+* Add a missing cascade foreign key between the sessions and users table
 
 v0.26
 ---------------------------
