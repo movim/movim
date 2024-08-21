@@ -679,6 +679,15 @@ class Message extends Model
 
     public function isMine(): bool
     {
+        if ($this->isMuc()) {
+            return $this->user->session->presences()
+                    ->where('jid', $this->jidfrom)
+                    ->where('resource', $this->resource)
+                    ->where('mucjid', $this->user_id)
+                    ->where('muc', true)
+                    ->count() > 0;
+        }
+
         return ($this->user_id == $this->jidfrom);
     }
 
