@@ -76,18 +76,18 @@ pre,
 xmp {
     border-radius: 0.5rem;
     color: white;
-    padding: 1rem 1.5rem;
+    padding: 0.5rem 1rem;
     font-size: 1.6rem;
     background-color: rgb(var(--movim-gray));
     white-space:pre;
     word-wrap:break-word;
     direction: ltr;
     overflow-x: auto;
-    max-width: calc(100% - 3.5rem);
 }
 
 code.block {
-    display: inline-block;
+    display: block;
+    margin-bottom: -2.5rem;
 }
 
 pre code {
