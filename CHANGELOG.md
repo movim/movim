@@ -1,7 +1,10 @@
 Movim Changelog
 ================
 
-v0.26.1 (master)
+v0.27.1 (master)
+---------------------------
+
+v0.27
 ---------------------------
 * Fix the chatroom search bar
 * Fix some CSS
