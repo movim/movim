@@ -24,13 +24,6 @@ class Onboarding extends Base
         }
     }
 
-    public function ajaxAskPopups()
-    {
-        $tpl = $this->tpl();
-        Dialog::fill($tpl->draw('_onboarding_popups'));
-        $this->rpc('Onboarding.setPopups');
-    }
-
     public function ajaxEnablePublic()
     {
         $this->user->setPublic();

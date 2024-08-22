@@ -102,19 +102,12 @@ class Visio extends Base
 
         $this->rpc('Notif.incomingCall');
 
-        $withVideoParameter = $data['withVideo']
-            ? 'true'
-            : 'false';
-
         Notif::append(
             'call',
             $contact->truename,
             $this->__('visio.calling'),
             $contact->getPicture(),
-            5,
-            null,
-            null,
-            'VisioLink.openVisio(\''.echapJS($data['from']).'\', \''.$data['id'].'\', '.$withVideoParameter.'); Dialog_ajaxClear()'
+            5
         );
     }
 

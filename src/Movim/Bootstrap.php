@@ -267,7 +267,7 @@ class Bootstrap
         'ContactData','ContactHeader','ContactSubscriptions','Dialog','Drawer','EmojisConfig',
         'Location','Login','Menu','Navigation','Notif', 'Notifications','NewsNav','Post',
         'PostActions','Presence','Publish','Rooms','RoomsExplore', 'RoomsUtils', 'Stickers',
-        'Toast','Upload','Vcard4','Visio','VisioLink'];
+        'Toast','Upload','Vcard4','Visio'];
     }
 
     /**

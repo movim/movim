@@ -23,6 +23,7 @@ v0.26.1 (master)
 * Upgrade the dependencies libraries
 * Move the Movim configuration to a new movim:configuration node, use XEP-0004: Data Form to handle the data
 * Add a missing cascade foreign key between the sessions and users table
+* Remove the VisioLink and Onboarding popup and related code
 
 v0.26
 ---------------------------
