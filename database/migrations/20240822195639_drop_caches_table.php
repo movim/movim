@@ -27,18 +27,20 @@ class DropCachesTable extends Migration
         foreach(DB::table('caches')->where('name', 'chats')->get() as $cache) {
             $chats = $this->extractFromCache($cache);
 
-            $openChats = [];
+            if (is_array($chats)) {
+                $openChats = [];
 
-            foreach ($chats as $jid => $value) {
-                array_push($openChats, [
-                    'user_id' => $cache->user_id,
-                    'jid' => $jid,
-                    'created_at' => Carbon::now(),
-                    'updated_at' => Carbon::now()
-                ]);
+                foreach ($chats as $jid => $value) {
+                    array_push($openChats, [
+                        'user_id' => $cache->user_id,
+                        'jid' => $jid,
+                        'created_at' => Carbon::now(),
+                        'updated_at' => Carbon::now()
+                    ]);
+                }
+
+                OpenChat::insert($openChats);
             }
-
-            OpenChat::insert($openChats);
         }
 
         // Migrating the other data to the users table
