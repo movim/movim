@@ -702,7 +702,7 @@ class Post extends Model
 
     public function isBrief()
     {
-        return ($this->content == '' && strlen($this->title) < $this->titleLimit);
+        return ($this->content == '' && $this->title && strlen($this->title) < $this->titleLimit);
     }
 
     public function isReply()
