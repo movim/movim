@@ -14,7 +14,7 @@ class AddSyncedToReportedUserTable extends Migration
 
     public function down()
     {
-        $this->schema->table('configuration', function (Blueprint $table) {
+        $this->schema->table('reported_user', function (Blueprint $table) {
             $table->dropColumn('synced');
         });
     }
