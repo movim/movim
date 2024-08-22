@@ -6,120 +6,122 @@
 # Ruben Solvang <rsolvang@gmail.com>, 2016-2017
 # 1b09ca809bd1d57b09c4d19f89cfcafa_19f763a <9a173cebe69c399e2bc3c9d455cdd880_367693>, 2016
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/About/locales.ini
+#. extracted from ../app/Widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Account/locales.ini
+#. extracted from ../app/Widgets/Account/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/AccountNext/locales.ini
+#. extracted from ../app/Widgets/AccountNext/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/AdHoc/locales.ini
+#. extracted from ../app/Widgets/AdHoc/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/AdminMain/locales.ini
+#. extracted from ../app/Widgets/AdminMain/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/AdminReported/locales.ini
+#. extracted from ../app/Widgets/AdminReported/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/AdminSessions/locales.ini
+#. extracted from ../app/Widgets/AdminSessions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Avatar/locales.ini
+#. extracted from ../app/Widgets/Avatar/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Blocked/locales.ini
+#. extracted from ../app/Widgets/Blocked/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Blog/locales.ini
+#. extracted from ../app/Widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Chat/locales.ini
+#. extracted from ../app/Widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/ChatActions/locales.ini
+#. extracted from ../app/Widgets/ChatActions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/ChatOmemo/locales.ini
+#. extracted from ../app/Widgets/ChatOmemo/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Chats/locales.ini
+#. extracted from ../app/Widgets/Chats/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Communities/locales.ini
+#. extracted from ../app/Widgets/Communities/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/CommunitiesInteresting/locales.ini
+#. extracted from ../app/Widgets/CommunitiesInteresting/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/CommunitiesServer/locales.ini
+#. extracted from ../app/Widgets/CommunitiesServer/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/CommunitiesServers/locales.ini
+#. extracted from ../app/Widgets/CommunitiesServers/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/CommunityAffiliations/locales.ini
+#. extracted from ../app/Widgets/CommunityAffiliations/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/CommunityConfig/locales.ini
+#. extracted from ../app/Widgets/CommunityConfig/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/CommunityData/locales.ini
+#. extracted from ../app/Widgets/CommunityData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/CommunityHeader/locales.ini
+#. extracted from ../app/Widgets/CommunityHeader/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/CommunityPosts/locales.ini
+#. extracted from ../app/Widgets/CommunityPosts/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/CommunitySubscriptions/locales.ini
+#. extracted from ../app/Widgets/CommunitySubscriptions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Config/locales.ini
+#. extracted from ../app/Widgets/Config/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Confirm/locales.ini
+#. extracted from ../app/Widgets/Confirm/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/ContactActions/locales.ini
+#. extracted from ../app/Widgets/ContactActions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/ContactData/locales.ini
+#. extracted from ../app/Widgets/ContactData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Dictaphone/locales.ini
+#. extracted from ../app/Widgets/Dictaphone/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Draw/locales.ini
+#. extracted from ../app/Widgets/Draw/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Help/locales.ini
+#. extracted from ../app/Widgets/EmojisConfig/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Location/locales.ini
+#. extracted from ../app/Widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Login/locales.ini
+#. extracted from ../app/Widgets/Location/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Menu/locales.ini
+#. extracted from ../app/Widgets/Login/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Notif/locales.ini
+#. extracted from ../app/Widgets/Menu/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/NotificationConfig/locales.ini
+#. extracted from ../app/Widgets/Notif/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Notifications/locales.ini
+#. extracted from ../app/Widgets/NotificationConfig/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Onboarding/locales.ini
+#. extracted from ../app/Widgets/Notifications/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Post/locales.ini
+#. extracted from ../app/Widgets/Onboarding/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Presence/locales.ini
+#. extracted from ../app/Widgets/Post/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Preview/locales.ini
+#. extracted from ../app/Widgets/Presence/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Publish/locales.ini
+#. extracted from ../app/Widgets/Preview/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/PublishHelp/locales.ini
+#. extracted from ../app/Widgets/Publish/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Rooms/locales.ini
+#. extracted from ../app/Widgets/PublishHelp/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/RoomsExplore/locales.ini
+#. extracted from ../app/Widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Search/locales.ini
+#. extracted from ../app/Widgets/RoomsExplore/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/SendTo/locales.ini
+#. extracted from ../app/Widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Stickers/locales.ini
+#. extracted from ../app/Widgets/SendTo/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Subscribe/locales.ini
+#. extracted from ../app/Widgets/Stickers/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Syndication/locales.ini
+#. extracted from ../app/Widgets/Subscribe/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Upload/locales.ini
+#. extracted from ../app/Widgets/Syndication/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Vcard4/locales.ini
+#. extracted from ../app/Widgets/Upload/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Visio/locales.ini
+#. extracted from ../app/Widgets/Vcard4/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/VisioConfig/locales.ini
+#. extracted from ../app/Widgets/Visio/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/VisioConfig/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../locales/locales.ini
 msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-21 11:42+0200\n"
+"POT-Creation-Date: 2024-08-22 21:33+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Dominik George <nik@naturalnet.de>, 2017-2018\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://app.transifex.com/movim/movim/language/nb_NO/)\n"
@@ -128,7 +130,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.12.2\n"
+"X-Generator: Translate Toolkit 3.13.2\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -645,7 +647,7 @@ msgstr ""
 msgid "Refused call"
 msgstr ""
 
-#: [chat]jingle_end
+#: [chat]jingle_end [visio]ended
 msgid "Call ended"
 msgstr ""
 
@@ -837,6 +839,14 @@ msgstr "Samtale"
 #: [button]new
 msgid "New conversation"
 msgstr "Ny samtale"
+
+#: [chats_filter]all [menu]all [rooms_filter]all
+msgid "All"
+msgstr "Alle"
+
+#: [chats_filter]roster [menu]contacts [page]contacts
+msgid "Contacts"
+msgstr "Kontakter"
 
 #: [communities]empty_text
 msgid "Discover, follow and share"
@@ -1432,6 +1442,38 @@ msgstr ""
 msgid "Draw"
 msgstr ""
 
+#: [emojisconfig]title
+msgid "Emojis"
+msgstr ""
+
+#: [emojisconfig]favorites_title
+msgid "My favorite emojis"
+msgstr ""
+
+#: [emojisconfig]favorites_text
+msgid "Pick emojis from the packs bellow that you want to add to your favorites ones"
+msgstr ""
+
+#: [emojisconfig]dialog_title
+msgid "Manage a favorite emoji"
+msgstr ""
+
+#: [emojisconfig]alias_error
+msgid "The shortcut should only contains lowercase letters and dashes"
+msgstr ""
+
+#: [emojisconfig]new_added
+msgid "New favorite emoji added"
+msgstr ""
+
+#: [emojisconfig]alias_conflict
+msgid "The shortcut is already used on another emoji"
+msgstr ""
+
+#: [emojisconfig]no_emojis_yet
+msgid "No favorites yet, check the settings page to add some"
+msgstr ""
+
 #: [faq]title
 msgid "Frequently Asked Questions"
 msgstr "Ofte stilte spørsmål"
@@ -1604,7 +1646,7 @@ msgstr ""
 msgid "Login using any XMPP account or create a new one"
 msgstr ""
 
-#: [form]connected
+#: [form]connected [rooms_filter]connected
 msgid "Connected"
 msgstr "Tilkoblet"
 
@@ -1636,17 +1678,9 @@ msgstr "Ingen nyheter enda…"
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
 msgstr "Velkommen til nyhetsstrømmen din, her vil du se alle innlegg som publiserer av kontakter og samfunn du abonnerer på."
 
-#: [menu]all
-msgid "All"
-msgstr "Alle"
-
 #: [menu]mine
 msgid "My publications"
 msgstr "Mine innlegg"
-
-#: [menu]contacts [page]contacts
-msgid "Contacts"
-msgstr "Kontakter"
 
 #: [menu]add_post
 msgid "Write a new post…"
@@ -1713,16 +1747,20 @@ msgstr ""
 msgid "Unknown platform"
 msgstr ""
 
-#: [invitations]title
-msgid "Pending Invitations"
-msgstr "Ventende invitasjoner"
+#: [invitations]received
+msgid "Received Invitations"
+msgstr ""
 
-#: [invitations]wants_to_talk
-msgid "%s wants to talk with you"
-msgstr "%s ønsker å prate med deg"
+#: [invitations]adds_you
+msgid "%s wants to add you"
+msgstr ""
 
 #: [invitations]no_new
 msgid "No new invitations"
+msgstr ""
+
+#: [invitations]no_subscriptions
+msgid "No pending subscriptions"
 msgstr ""
 
 #: [notifs]empty
@@ -1748,18 +1786,6 @@ msgstr "Gjør profilen din offentlig, slik at andre brukere lettere kan finne de
 #: [onboarding]public_text_second
 msgid "You can always disable this in the configuration afterwards"
 msgstr "Du kan alltids skru dette av i oppsettet senere"
-
-#: [onboarding]popups_title
-msgid "Popups"
-msgstr "Oppsprettsvindu"
-
-#: [onboarding]popups_text
-msgid "Movim is using popups for the video-conference feature, they are sometimes blocked by the browsers"
-msgstr ""
-
-#: [onboarding]popups_text_second
-msgid "Please be sure that they are enabled to use this feature properly"
-msgstr "Sørg for at Movim har tillatelse til å vise sprettoppvinduer, slik at denne funksjonen fungerer som den skal."
 
 #: [post]news_feed
 msgid "News Feed"
@@ -2630,24 +2656,20 @@ msgid "…ringing"
 msgstr "…ringer"
 
 #: [visio]declined
-msgid "declined"
+msgid "Declined"
 msgstr ""
 
 #: [visio]in_call
-msgid "in call"
-msgstr "i en samtale"
+msgid "In call"
+msgstr ""
 
 #: [visio]failed
-msgid "failed"
-msgstr "mislyktes"
+msgid "Failed"
+msgstr ""
 
 #: [visio]connecting
 msgid "…connecting"
 msgstr "…kobler til"
-
-#: [visio]ended
-msgid "call ended"
-msgstr ""
 
 #: [visioconfig]title
 msgid "Video & Voice"
