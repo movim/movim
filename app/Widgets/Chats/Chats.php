@@ -193,7 +193,8 @@ class Chats extends Base
                 $this->ajaxGetMAMHistory($jid);
             }
 
-            $this->user->openChats()->firstOrCreate(['jid' => $jid]);
+            $openChat = $this->user->openChats()->firstOrCreate(['jid' => $jid]);
+            $openChat->touch();
 
             $this->rpc(
                 'Chats.prepend',
@@ -376,7 +377,7 @@ class Chats extends Base
             });
 
         // Append the open chats
-        $openChats = $this->user->openChats()->pluck('jid')->toArray();
+        $openChats = $this->user->openChats()->orderBy('updated_at')->pluck('jid')->toArray();
 
         // Clean the unreads from the open ones
         foreach ($openChats as $jid) {

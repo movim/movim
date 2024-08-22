@@ -3,6 +3,7 @@ Movim Changelog
 
 v0.27.1 (master)
 ---------------------------
+* Fix the one-to-one chats order (last updated on top)
 
 v0.27
 ---------------------------
