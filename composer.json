@@ -31,9 +31,9 @@
         "defuse/php-encryption": "^2.4",
 
         "robmorgan/phinx": "^0.14",
-        "illuminate/database": "^10.21",
-        "illuminate/events": "^10.21",
-        "doctrine/dbal": "^4.1",
+        "illuminate/database": "^10.30",
+        "illuminate/events": "^10.30",
+        "doctrine/dbal": "^3.9",
         "monolog/monolog": "^3.7",
 
         "plesk/ratchetphp": "^1.0",
