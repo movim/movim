@@ -1635,12 +1635,6 @@ class Chat extends \Movim\Widget\Base
     {
         $view = $this->tpl();
 
-        $chats = \App\Cache::c('chats');
-        if ($chats == null) {
-            $chats = [];
-        }
-        $chats[$this->user->id] = true;
-
         $top = $this->user->session->topContacts()
             ->join(DB::raw('(
                 select min(value) as value, jid as pjid
@@ -1648,7 +1642,12 @@ class Chat extends \Movim\Widget\Base
                 group by jid) as presences
             '), 'presences.pjid', '=', 'rosters.jid')
             ->where('value', '<', 5)
-            ->whereNotIn('rosters.jid', array_keys($chats))
+            ->whereNotIn('rosters.jid', function($query){
+                $query->select('jid')
+                    ->from('open_chats')
+                    ->where('user_id', $this->user->id);
+            })
+            ->where('rosters.jid', '!=', $this->user->id)
             ->with('presence.capability')
             ->take(15)
             ->get();

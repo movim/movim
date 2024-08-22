@@ -91,8 +91,7 @@ class Chats extends Base
 
     private function replaceChat(string $jid)
     {
-        $chats = \App\Cache::c('chats');
-        if (is_array($chats) &&  array_key_exists($jid, $chats)) {
+        if ($this->user->openChats()->where('jid', $jid)->count() > 0) {
             $this->rpc(
                 'MovimTpl.replace',
                 '#' . cleanupId($jid . '_chat_item'),
@@ -115,8 +114,7 @@ class Chats extends Base
 
     private function setState(string $jid, bool $composing)
     {
-        $chats = \App\Cache::c('chats');
-        if (is_array($chats) &&  array_key_exists($jid, $chats)) {
+        if ($this->user->openChats()->where('jid', $jid)->count() > 0) {
             $this->rpc(
                 $composing
                     ? 'MovimUtils.addClass'
@@ -181,7 +179,8 @@ class Chats extends Base
     public function ajaxSetFilter(string $filter)
     {
         if (in_array($filter, $this->_filters)) {
-            \App\Cache::c('chats_filter', $filter);
+            $this->user->chats_filter = $filter;
+            $this->user->save();
         }
 
         $this->rpc('Chats.refreshFilters');
@@ -189,26 +188,13 @@ class Chats extends Base
 
     public function ajaxOpen($jid, $history = true)
     {
-        if (!validateJid($jid)) {
-            return;
-        }
-
-        $chats = \App\Cache::c('chats');
-
-        if ($chats == null) {
-            $chats = [];
-        }
-
-        unset($chats[$jid]);
-
-        if ($jid != $this->user->id) {
-            $chats[$jid] = 1;
-
+        if (!validateJid($jid) || $jid != $this->user->id) {
             if ($history) {
                 $this->ajaxGetMAMHistory($jid);
             }
 
-            \App\Cache::c('chats', $chats);
+            $this->user->openChats()->firstOrCreate(['jid' => $jid]);
+
             $this->rpc(
                 'Chats.prepend',
                 $jid,
@@ -230,9 +216,7 @@ class Chats extends Base
             return;
         }
 
-        $chats = \App\Cache::c('chats');
-        unset($chats[$jid]);
-        \App\Cache::c('chats', $chats);
+        $this->user->openChats()->where('jid', $jid)->delete();
 
         $tpl = $this->tpl();
         $tpl->cacheClear('_chats_item', $jid);
@@ -258,7 +242,7 @@ class Chats extends Base
         $view = $this->tpl();
 
         // Check if we got already in the cache
-        foreach (array_reverse($chats) as $key => $value) {
+        foreach (array_reverse($chats) as $key) {
             $cached = $view->cached('_chats_item', $key);
 
             if ($cached) {
@@ -273,8 +257,9 @@ class Chats extends Base
         if ($html == '') {
             $view->cacheClear('_chats_item');
 
-            $contacts = \App\Contact::whereIn('id', array_keys($chats))->get()->keyBy('id');
-            foreach (array_keys($chats) as $jid) {
+            $contacts = \App\Contact::whereIn('id', $chats)->get()->keyBy('id');
+
+            foreach ($chats as $jid) {
                 if (!$contacts->has($jid)) {
                     $contacts->put($jid, new \App\Contact(['id' => $jid]));
                 }
@@ -284,11 +269,11 @@ class Chats extends Base
 
             $jidFromToMessages = DB::table('messages')
                 ->where('user_id', $this->user->id)
-                ->whereIn('jidfrom', array_keys($chats))
+                ->whereIn('jidfrom', $chats)
                 ->unionAll(
                     DB::table('messages')
                         ->where('user_id', $this->user->id)
-                        ->whereIn('jidto', array_keys($chats))
+                        ->whereIn('jidto', $chats)
                 );
 
             $selectedMessages = $this->user->messages()
@@ -318,10 +303,10 @@ class Chats extends Base
                 }
             }
 
-            $rosters = $this->user->session->contacts()->whereIn('jid', array_keys($chats))
+            $rosters = $this->user->session->contacts()->whereIn('jid', $chats)
                 ->with('presence.capability')->get()->keyBy('jid');
 
-            foreach (array_reverse($chats) as $key => $value) {
+            foreach (array_reverse($chats) as $key) {
                 $html .= $this->prepareChat($key, $contacts->get($key), $rosters->get($key), $messages->get($key));
             }
         }
@@ -391,11 +376,10 @@ class Chats extends Base
             });
 
         // Append the open chats
-        $chats = \App\Cache::c('chats');
-        $chats = is_array($chats) ? $chats : [];
+        $openChats = $this->user->openChats()->pluck('jid')->toArray();
 
         // Clean the unreads from the open ones
-        foreach (array_keys($chats) as $jid) {
+        foreach ($openChats as $jid) {
             if (array_key_exists($jid, $unreads)) {
                 unset($unreads[$jid]);
             }
@@ -403,13 +387,13 @@ class Chats extends Base
 
         return array_merge(
             $unreads,
-            is_array($chats) ? $chats : [],
+            $openChats,
         );
     }
 
     function display()
     {
         $this->view->assign('filters', $this->_filters);
-        $this->view->assign('filter', \App\Cache::c('chats_filter') ?? 'all');
+        $this->view->assign('filter', $this->user->chats_filter);
     }
 }

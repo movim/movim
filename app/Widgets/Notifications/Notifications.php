@@ -2,6 +2,7 @@
 
 namespace App\Widgets\Notifications;
 
+use App\User;
 use App\Widgets\Dialog\Dialog;
 use App\Widgets\Drawer\Drawer;
 use App\Widgets\Notif\Notif;
@@ -73,17 +74,17 @@ class Notifications extends Base
     public function ajaxRequest()
     {
         Drawer::fill('notifications', $this->prepareNotifications());
-        \App\Cache::c('notifs_since', date(MOVIM_SQL_DATE));
+
+        $this->user->notifications_since = date(MOVIM_SQL_DATE);
+        $this->user->save();
+
         $this->ajaxSetCounter();
         (new Notif)->ajaxClear('comments');
     }
 
     public function ajaxSetCounter()
     {
-        $since = \App\Cache::c('notifs_since');
-        if (!$since) {
-            $since = date(MOVIM_SQL_DATE, 0);
-        }
+        $since = User::me(true)->notifications_since ?? date(MOVIM_SQL_DATE, 0);
 
         $count = \App\Post::whereIn('parent_id', function ($query) {
             $query->select('id')
@@ -217,10 +218,7 @@ class Notifications extends Base
             ->with('parent')
             ->get();
 
-        $since = \App\Cache::c('notifs_since');
-        if (!$since) {
-            $since = date(MOVIM_SQL_DATE, 0);
-        }
+        $since = User::me(true)->notifications_since ?? date(MOVIM_SQL_DATE, 0);
 
         $view = $this->tpl();
         $view->assign('hearth', addEmojis('♥'));

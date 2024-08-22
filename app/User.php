@@ -24,6 +24,11 @@ class User extends Model
     private $userBlocked = [];
     private $globalBlocked = [];
 
+    protected $casts = [
+        'posts_since' => 'datetime:Y-m-d H:i:s',
+        'notifications_since' => 'datetime:Y-m-d H:i:s',
+    ];
+
     public function save(array $options = [])
     {
         parent::save($options);
@@ -51,6 +56,11 @@ class User extends Model
     public function messages()
     {
         return $this->hasMany('App\Message');
+    }
+
+    public function openChats()
+    {
+        return $this->hasMany('App\OpenChat');
     }
 
     public function drafts()

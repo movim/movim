@@ -2,6 +2,7 @@
 
 namespace App\Widgets\Menu;
 
+use App\User;
 use App\Widgets\Notif\Notif;
 use App\Widgets\Post\Post;
 use Movim\Widget\Base;
@@ -41,17 +42,9 @@ class Menu extends Base
         $this->ajaxHttpGetAll();
     }
 
-    public function onStream($count)
-    {
-        $view = $this->tpl();
-        $view->assign('count', $count);
-
-        $this->rpc('MovimTpl.fill', '#menu_refresh', $view->draw('_menu_refresh'));
-    }
-
     public function onPost($packet)
     {
-        $since = \App\Cache::c('since');
+        $since = User::me(true)->posts_since; // Force refresh the user
 
         if ($since) {
             $count = \App\Post::whereIn('id', function ($query) {
@@ -144,37 +137,38 @@ class Menu extends Base
                 );
             }
 
-            $this->onStream($count);
+            $view = $this->tpl();
+            $view->assign('count', $count);
+
+            $this->rpc('MovimTpl.fill', '#menu_refresh', $view->draw('_menu_refresh'));
         }
     }
 
     public function ajaxHttpGetAll($page = 0)
     {
-        $this->ajaxGet('all', null, null, $page);
+        $this->getList('all', $page);
         $this->rpc('MovimUtils.pushSoftState', $this->route('news'));
     }
 
     public function ajaxHttpGetCommunities($page = 0)
     {
-        $this->ajaxGet('news', null, null, $page);
+        $this->getList('news', $page);
         $this->rpc('MovimUtils.pushSoftState', $this->route('news', false, [], 'communities'));
     }
 
     public function ajaxHttpGetContacts($page = 0)
     {
-        $this->ajaxGet('feed', null, null, $page);
+        $this->getList('feed', $page);
         $this->rpc('MovimUtils.pushSoftState', $this->route('news', false, [], 'contacts'));
     }
 
-    public function ajaxGet($type = 'all', $server = null, $node = null, $page = 0)
+    private function getList($type = 'all', $page = 0)
     {
-        $html = $this->prepareList($type, $server, $node, $page);
-
-        $this->rpc('MovimTpl.fill', '#menu_widget', $html);
+        $this->rpc('MovimTpl.fill', '#menu_widget', $this->prepareList($type, $page));
         $this->rpc('MovimUtils.enhanceArticlesContent');
     }
 
-    public function prepareList($type = 'all', $server = null, $node = null, $page = 0)
+    public function prepareList($type = 'all', $page = 0)
     {
         $view = $this->tpl();
 
@@ -191,7 +185,7 @@ class Menu extends Base
             );
         });
 
-        $since = \App\Cache::c('since');
+        $since = $this->user->posts_since;
 
         $count = ($since)
             ? $posts->where('published', '>', $since)->count()
@@ -201,7 +195,8 @@ class Menu extends Base
         if ($page == 0) {
             $count = 0;
             $last = $posts->orderBy('published', 'desc')->first();
-            \App\Cache::c('since', ($last) ? $last->published : date(MOVIM_SQL_DATE));
+            $this->user->posts_since = ($last) ? $last->published : date(MOVIM_SQL_DATE);
+            $this->user->save();
         }
 
         $items = \App\Post::skip($page * $this->_paging + $count)->withoutComments();

@@ -41,7 +41,6 @@ class JingletoSDP
 
     public function getSessionId()
     {
-        //return hash('sha256', CurrentCall::getInstance()->id);
         return substr(base_convert(hash('sha256', CurrentCall::getInstance()->id), 30, 10), 0, 6);
     }
 
