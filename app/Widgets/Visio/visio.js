@@ -26,10 +26,6 @@ var Visio = {
 
         visio.dataset.from = bareFrom;
 
-        if (MovimVisio.id) {
-            visio.dataset.id = MovimVisio.id;
-        }
-
         delete visio.dataset.type;
         visio.dataset.type = (MovimVisio.withVideo) ? 'video' : 'audio';
 
@@ -41,11 +37,7 @@ var Visio = {
         MovimVisio.localAudio = document.getElementById('local_audio');
         MovimVisio.remoteAudio = document.getElementById('remote_audio');
 
-        var configuration = {
-            'iceServers': MovimVisio.services
-        };
-
-        MovimVisio.pc = new RTCPeerConnection(configuration);
+        MovimVisio.pc = new RTCPeerConnection({ 'iceServers': MovimVisio.services });
 
         MovimVisio.pc.ontrack = event => {
             var srcObject = null;
@@ -202,7 +194,6 @@ var Visio = {
             VisioUtils.toggleMainButton();
 
             // For the first time we attach all the tracks and we launch the call
-            //if (MovimVisio.pc.getSenders().length == 0) {
             if (MovimVisio.id) {
                 Visio_ajaxAccept(MovimVisio.from, MovimVisio.id);
             } else {
@@ -352,7 +343,6 @@ var Visio = {
 
         let visio = document.querySelector('#visio');
         delete visio.dataset.from;
-        delete visio.dataset.id;
         delete visio.dataset.type;
 
         if (document.fullscreenElement) {
