@@ -22,6 +22,10 @@
         </aside>
     <?php } ?>
     <div>
+        <?php if (!isLogged()) { ?>
+            <?php $this->widget('PublicNavigation');?>
+            <hr />
+        <?php } ?>
         <?php $this->widget('Blog');?>
     </div>
 </main>

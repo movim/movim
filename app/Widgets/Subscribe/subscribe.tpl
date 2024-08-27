@@ -46,7 +46,7 @@
                 <p></p>
                 <p>{$c->__('subscribe.server_question')}</p>
                 <p>
-                    {$c->__('subscribe.server_contact')} • <a href="https://movim.eu/">https://movim.eu/</a>
+                    {$c->__('subscribe.server_contact')} • <a href="https://join.movim.eu/">https://join.movim.eu/</a>
                 </p>
             </div>
         </li>

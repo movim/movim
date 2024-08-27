@@ -3,6 +3,8 @@
         <?php $this->widget('CommunityDataPublic'); ?>
     </aside>
     <div>
+        <?php $this->widget('PublicNavigation');?>
+        <hr />
         <?php $this->widget('Blog');?>
         <ul class="list">
             <li>
