@@ -51,7 +51,7 @@ jobs:
       run: composer movim:migrate
 
     - name: Perform database rollback
-      run: composer movim:rollback -t 20180314212906
+      run: php vendor/bin/phinx rollback -t 20180314212906
 
     - name: ...and migrate again
       run: composer movim:migrate
