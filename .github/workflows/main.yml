@@ -50,8 +50,10 @@ jobs:
     - name: Perform database migration using composer
       run: composer movim:migrate
 
-    - name: Perform database rollback and migrate again
+    - name: Perform database rollback
       run: composer movim:rollback -t 20180314212906
+
+    - name: ...and migrate again
       run: composer movim:migrate
 
     - name: Start movim daemon
