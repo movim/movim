@@ -7,6 +7,7 @@ v0.27.2 (master)
 v0.27.1
 ---------------------------
 * Fix the one-to-one chats order (last updated on top)
+* Fix #1315 Drop foreign keys and recreate them just after some MySQL migrations
 
 v0.27
 ---------------------------

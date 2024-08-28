@@ -44,7 +44,7 @@ class ChangeEncryptedPasswordsUserIdLength extends Migration
     {
         if ($this->schema->getConnection()->getDriverName() == 'mysql') {
            $this->schema->table('encrypted_passwords', function (Blueprint $table) {
-                $table->foreign('user_id')->references('id')->on('users');
+                $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             });
         }
     }

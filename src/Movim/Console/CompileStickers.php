@@ -26,7 +26,7 @@ class CompileStickers extends Command
     {
         $count = 0;
 
-        StickersPack::truncate();
+        StickersPack::query()->delete();
 
         foreach (glob(PUBLIC_STICKERS_PATH . '*', GLOB_NOSORT) as $pack) {
             $parsed = parse_ini_file($pack . '/info.ini');

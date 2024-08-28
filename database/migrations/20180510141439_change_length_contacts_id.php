@@ -121,7 +121,7 @@ class ChangeLengthContactsId extends Migration
         $this->enableForeignKeyCheck();
     }
 
-    // Fu** MySQL, need to drop the foreign key to alter the ids
+    // Need to drop the foreign key to alter the ids, and then recreate it
 
     private function dropMySQLForeignKeys()
     {
@@ -152,23 +152,23 @@ class ChangeLengthContactsId extends Migration
     {
         if ($this->schema->getConnection()->getDriverName() == 'mysql') {
             $this->schema->table('sessions', function (Blueprint $table) {
-                $table->foreign('user_id')->references('id')->on('users');
+                $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             });
 
             $this->schema->table('invites', function (Blueprint $table) {
-                $table->foreign('user_id')->references('id')->on('users');
+                $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             });
 
             $this->schema->table('caches', function (Blueprint $table) {
-                $table->foreign('user_id')->references('id')->on('users');
+                $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             });
 
             $this->schema->table('messages', function (Blueprint $table) {
-                $table->foreign('user_id')->references('id')->on('users');
+                $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             });
 
             $this->schema->table('encrypted_passwords', function (Blueprint $table) {
-                $table->foreign('user_id')->references('id')->on('users');
+                $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             });
         }
     }
