@@ -58,7 +58,7 @@
                                 {$post->server}
                             </a>
                         {/if} /
-                        <a href="#" onclick="MovimUtils.reload('{$c->route('community', [$post->server, $post->node])}">
+                        <a href="#" onclick="MovimUtils.reload('{$c->route('community', [$post->server, $post->node])}')">
                             {$post->node}
                         </a> ·
                     {/if}
