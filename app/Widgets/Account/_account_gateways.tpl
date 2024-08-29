@@ -10,8 +10,9 @@
 {loop="$gateways"}
 <ul class="list fill active thick">
     <li onclick="Account_ajaxGetRegistration('{$value->server}')">
-        <span class="primary icon bubble color
-            {if="$value->gatewayType"}{$value->gatewayType}{else}gray{/if} status
+        <span class="primary icon bubble
+            {if="!$value->contact"}color {if="$value->gatewayType"}{$value->gatewayType}{else}gray{/if}{/if}
+            status
             {if="$value->presence"} {$value->presence->presencekey} {else}offline disabled{/if}">
             {if="$value->contact"}
                 <img src="{$value->contact->getPicture(\Movim\ImageSize::M)}">
