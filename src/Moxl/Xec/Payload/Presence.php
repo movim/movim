@@ -18,8 +18,10 @@ class Presence extends Payload
             return;
         }
 
-        if((string)$stanza->attributes()->type === 'error'
-            && isset($stanza->attributes()->id)) {
+        if (
+            (string)$stanza->attributes()->type === 'error'
+            && isset($stanza->attributes()->id)
+        ) {
             // Let's drop errors with an id, useless for us
         } else {
             $presence = DBPresence::findByStanza($stanza);
@@ -56,7 +58,10 @@ class Presence extends Payload
                          * Server bug case where we actually got an error from our resource but it didn't provide the
                          * id back in the stanza
                          */
-                        elseif($session->get(Muc::$mucId . (string)$stanza->attributes()->from)) {
+                        elseif (
+                            $session->get(Muc::$mucId . (string)$stanza->attributes()->from)
+                            && !isset($stanza->attributes()->id)
+                        ) {
                             /**
                              * Add back the id to the stanza and send it back to the stanza handler
                              */
