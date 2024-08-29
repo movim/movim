@@ -188,14 +188,14 @@
                         {if="$value->capability && $value->capability->isJingleAudio() && $value->jid"}
                             {$call = true}
                             <span title="{$c->__('button.audio_call')}" class="control icon active on_desktop"
-                                onclick="Visio.prepare('{$value->jid|echapJS}');">
+                                onclick="Visio_ajaxGetLobby('{$value->jid|echapJS}', true);">
                                 <i class="material-symbols">phone</i>
                             </span>
                         {/if}
                         {if="$value->capability && $value->capability->isJingleVideo() && $value->jid"}
                             {$call = true}
                             <span title="{$c->__('button.video_call')}" class="control icon active on_desktop"
-                                onclick="Visio.prepare('{$value->jid|echapJS}', '', true);">
+                                onclick="Visio_ajaxGetLobby('{$value->jid|echapJS}', true, true);">
                                 <i class="material-symbols">videocam</i>
                             </span>
                             {break}

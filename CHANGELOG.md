@@ -7,6 +7,12 @@ v0.27.2 (master)
 * Fix several import, namespace issues and typos
 * Fix #1315 Drop foreign keys and recreate them just after some MySQL migrations
 * Fix #1194 Ensure that we loop once we found the last nickname available during the tab-search
+* Add a lobby view
+* Change the conferencing flow by integrating the devices configuration before launching the call
+* Remove the VisioConfig widget
+* Fix the screen sharing and webcam switch buttons
+* CSS and UI fixes
+* Handle the session_down event to disconnect the call properly when the browser is not reachable after a while
 
 v0.27.1
 ---------------------------

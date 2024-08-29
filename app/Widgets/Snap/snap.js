@@ -122,10 +122,10 @@ var Snap = {
         return navigator.mediaDevices.enumerateDevices();
     },
 
-    gotDevices: function (deviceInfos) {
+    gotDevices: function (devicesInfo) {
         Snap.videoSelect.innerHTML = '';
 
-        for (const deviceInfo of deviceInfos) {
+        for (const deviceInfo of devicesInfo) {
             if (deviceInfo.kind === 'videoinput') {
                 const option = document.createElement('option');
                 option.value = deviceInfo.deviceId;

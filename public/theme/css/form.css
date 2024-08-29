@@ -76,6 +76,7 @@ form > div .select select {
     background-color: rgb(var(--movim-background-main));
     background-image: none;
     padding-bottom: 1rem;
+    mask-image: linear-gradient(to right, black calc(100% - 10rem), transparent);
 }
 
 main > header form > div:not(.clear):not(.control) {

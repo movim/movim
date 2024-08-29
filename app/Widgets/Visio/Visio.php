@@ -23,6 +23,7 @@ class Visio extends Base
     public function load()
     {
         $this->addcss('visio.css');
+        $this->addcss('visio_lobby.css');
         $this->addjs('visio.js');
         $this->addjs('visio_utils.js');
         $this->addjs('visio_dtmf.js');
@@ -47,6 +48,23 @@ class Visio extends Base
 
         $this->registerEvent('externalservices_get_handle', 'onExternalServices');
         $this->registerEvent('externalservices_get_error', 'onExternalServicesError');
+
+        $this->registerEvent('session_down', 'onSessionDown');
+    }
+
+    public function onSessionDown()
+    {
+        $currentCall = CurrentCall::getInstance();
+
+        if ($currentCall->isStarted()) {
+            $st = new SessionTerminate;
+            $st->setTo($currentCall->to)
+               ->setJingleSid($currentCall->id)
+               ->setReason('failed-application')
+               ->request();
+
+            $currentCall->stop();
+        }
     }
 
     public function onExternalServices($packet)
@@ -90,25 +108,7 @@ class Visio extends Base
     {
         $data = $packet->content;
 
-        $contact = \App\Contact::firstOrNew(['id' => cleanJid($data['from'])]);
-
-        $view = $this->tpl();
-        $view->assign('contact', $contact);
-        $view->assign('from', $data['from']);
-        $view->assign('id', $data['id']);
-        $view->assign('withvideo', $data['withVideo']);
-
-        Dialog::fill($view->draw('_visio_dialog'), false, true);
-
-        $this->rpc('Notif.incomingCall');
-
-        Notif::append(
-            'call',
-            $contact->truename,
-            $this->__('visio.calling'),
-            $contact->getPicture(),
-            5
-        );
+        $this->ajaxGetLobby($data['from'], false, $data['withVideo'], $data['id']);
     }
 
     public function onInitiateSDP($data)
@@ -233,6 +233,33 @@ class Visio extends Base
           ->setId($id)
           ->setName($name)
           ->request();
+    }
+
+    public function ajaxGetLobby(string $jid, bool $calling = false, ?bool $withVideo = false, ?string $id = null)
+    {
+        $contact = \App\Contact::firstOrNew(['id' => \explodeJid($jid)['jid']]);
+
+        $view = $this->tpl();
+        $view->assign('contact', $contact);
+        $view->assign('jid', $jid);
+        $view->assign('calling', $calling);
+        $view->assign('withvideo', $withVideo);
+        $view->assign('id', $id);
+
+        Dialog::fill($view->draw('_visio_lobby'), false, true);
+        $this->rpc('Visio.lobbySetup', $withVideo);
+
+        if ($calling == false) {
+            $this->rpc('Notif.incomingCall');
+
+            Notif::append(
+                'call',
+                $contact->truename,
+                $this->__('visio.calling'),
+                $contact->getPicture(),
+                5
+            );
+        }
     }
 
     public function ajaxSessionInitiate($sdp, $to, $id)

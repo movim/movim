@@ -1,0 +1,70 @@
+#visio_lobby:not(.configure) form,
+#visio_lobby.configure .placeholder {
+    display: none;
+}
+
+#visio_lobby .placeholder {
+    margin: 4rem auto;
+}
+
+#visio_lobby {
+    margin-bottom: 2rem;
+}
+
+#visio_lobby form {
+    padding: 0;
+}
+
+#visio_lobby #mic_preview {
+    height: 2rem;
+    margin-left: 7rem;
+}
+
+#visio_lobby #mic_preview .level {
+    display: block;
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
+#visio_lobby #mic_preview .level span {
+    display: inline-block;
+    width: calc(10% - 0.75rem);
+    margin: 0.25rem;
+    height: 1rem;
+    border-radius: 0.25rem;
+    opacity: 1;
+}
+
+#visio_lobby #mic_preview .level span.disabled {
+    opacity: 0.1;
+    transition: opacity 0.5s ease-out;
+}
+
+#visio_lobby #default_microphone.muted span.primary i.enabled,
+#visio_lobby #default_microphone:not(.muted) span.primary i.disabled,
+#visio_lobby #default_microphone:not(.muted) .supporting {
+    display: none;
+}
+
+#visio_lobby #camera_preview {
+    border-radius: 0.5rem;
+    max-height: 30rem;
+    width: 100%;
+
+    background-image: url('../theme/img/movim_cloud.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgb(var(--movim-accent));
+    background-size: 15%;
+}
+
+#visio_lobby + div {
+    display: flex;
+    padding: 0 1rem;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+#visio_lobby + div > .button {
+    flex: 1 0 0;
+}

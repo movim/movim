@@ -26,13 +26,13 @@
                 {loop="$value->presences"}
                     {if="$value->capability && $value->capability->isJingleAudio()"}
                         <span title="{$c->__('button.audio_call')}" class="control icon active gray"
-                            onclick="Visio.prepare('{$value->jid|echapJS}'); Drawer.clear();">
+                            onclick="Visio_ajaxGetLobby('{$value->jid|echapJS}', true); Drawer.clear();">
                             <i class="material-symbols">phone</i>
                         </span>
                     {/if}
                     {if="$value->capability && $value->capability->isJingleVideo()"}
                         <span title="{$c->__('button.video_call')}" class="control icon active gray"
-                            onclick="Visio.prepare('{$value->jid|echapJS}', '', true); Drawer.clear();">
+                            onclick="Visio_ajaxGetLobby('{$value->jid|echapJS}', true, true); Drawer.clear();">
                             <i class="material-symbols">videocam</i>
                         </span>
                         {break}
