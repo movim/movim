@@ -17,7 +17,7 @@ class Get extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $this->pack($stanza->query->item);
+        $this->pack($stanza->query->item, $this->_to);
         $this->deliver();
     }
 }

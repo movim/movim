@@ -24,10 +24,12 @@ class AdHoc extends \Movim\Widget\Base
 
     public function onList($package)
     {
-        $list = $package->content;
-        $html = $this->prepareList($list);
-        $this->rpc('MovimTpl.fill', '#adhoc_widget', $html);
-        $this->rpc('AdHoc.refresh');
+        if ($package->from == Session::start()->get('host')) {
+            $list = $package->content;
+            $html = $this->prepareList($list);
+            $this->rpc('MovimTpl.fill', '#adhoc_widget', $html);
+            $this->rpc('AdHoc.refresh');
+        }
     }
 
     public function onCommand($package)
@@ -87,11 +89,10 @@ class AdHoc extends \Movim\Widget\Base
         Dialog::fill($view->draw('_adhoc_note'), true);
     }
 
-    public function ajaxGet($jid)
+    public function ajaxGet(?string $jid = null)
     {
-        if (!$jid) {
-            $session = Session::start();
-            $jid = $session->get('host');
+        if ($jid == null) {
+            $jid = Session::start()->get('host');
         }
 
         $g = new Get;
@@ -127,7 +128,7 @@ class AdHoc extends \Movim\Widget\Base
             'http://jabber.org/protocol/admin#delete-user' => 'delete',
             'http://jabber.org/protocol/admin#end-user-session' => 'stop',
             'http://jabber.org/protocol/admin#change-user-password' => 'lock',
-            'ping' => 'swap_horiz',
+            'ping' => 'network_ping',
             'http://jabber.org/protocol/admin#shutdown' => 'power_off',
             'http://jabber.org/protocol/admin#add-user' => 'person_add',
             'http://jabber.org/protocol/admin#user-stats' => 'people',
@@ -142,6 +143,6 @@ class AdHoc extends \Movim\Widget\Base
             return $icons[$command];
         }
 
-        return 'chevron_right';
+        return 'list_alt';
     }
 }

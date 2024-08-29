@@ -5,12 +5,19 @@
             <p>{$c->__('account.gateway_title')}</p>
         </div>
     </li>
-    {loop="$gateways"}
+</ul>
+
+{loop="$gateways"}
+<ul class="list fill active thick">
     <li onclick="Account_ajaxGetRegistration('{$value->server}')">
         <span class="primary icon bubble color
             {if="$value->gatewayType"}{$value->gatewayType}{else}gray{/if} status
             {if="$value->presence"} {$value->presence->presencekey} {else}offline disabled{/if}">
-            <i class="material-symbols">swap_horiz</i>
+            {if="$value->contact"}
+                <img src="{$value->contact->getPicture(\Movim\ImageSize::M)}">
+            {else}
+                <i class="material-symbols">swap_horiz</i>
+            {/if}
         </span>
         <span class="control icon gray">
             <i class="material-symbols">chevron_right</i>
@@ -20,6 +27,9 @@
             <p>{$value->server}</p>
         </div>
     </li>
-    {/loop}
 </ul>
+<div id="gateway_{$value->server|cleanupId}"></div>
+<hr />
+{/loop}
+
 {/if}

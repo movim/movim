@@ -18,6 +18,11 @@ class Info extends Model
         return $this->hasMany('App\Identity');
     }
 
+    public function contact()
+    {
+        return $this->hasOne('App\Contact', 'id', 'server');
+    }
+
     public function save(array $options = [])
     {
         // Empty features, we're not saving anything

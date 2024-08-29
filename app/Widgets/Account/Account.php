@@ -10,6 +10,7 @@ use Moxl\Xec\Action\Register\ChangePassword;
 use Moxl\Xec\Action\Register\Remove;
 use Moxl\Xec\Action\Register\Get;
 use Moxl\Xec\Action\Register\Set;
+use Moxl\Xec\Action\AdHoc\Get as AdHocGet;
 
 class Account extends \Movim\Widget\Base
 {
@@ -25,11 +26,25 @@ class Account extends \Movim\Widget\Base
         $this->registerEvent('register_set_handle', 'onRegistered', 'conf');
         $this->registerEvent('register_set_error', 'onRegisterError', 'conf');
         $this->registerEvent('omemo_setdevicelist_handle', 'onDeviceList', 'conf');
+        $this->registerEvent('adhoc_get_handle', 'onAdHocList');
     }
 
     public function onDeviceList()
     {
         $this->rpc('Account.refreshFingerprints');
+    }
+
+    public function onAdHocList($package)
+    {
+        $list = $package->content;
+
+        $view = $this->tpl();
+        $view->assign('list', $list);
+
+        $this->rpc('MovimTpl.fill',
+            '#gateway_' . cleanupId($package->from),
+            $view->draw('_account_gateway_adhoc_list')
+        );
     }
 
     public function onPasswordChanged()
@@ -192,6 +207,11 @@ class Account extends \Movim\Widget\Base
         Dialog::fill($view->draw('_account_delete_bundle'));
     }
 
+    public function ajaxGetGateways()
+    {
+        $this->rpc('MovimTpl.fill', '#account_gateways', $this->prepareGateways());
+    }
+
     public function ajaxDeleteBundle(int $id)
     {
         $db = new DeleteBundle;
@@ -233,19 +253,38 @@ class Account extends \Movim\Widget\Base
 
     public function prepareGateways()
     {
+        $gateways = \App\Info::where('parent', $this->user->session->host)
+            ->whereCategory('gateway')
+            ->with('contact')
+            ->get();
+
+        foreach ($gateways as $gateway) {
+            $g = new AdHocGet;
+            $g->setTo($gateway->server)->request();
+        }
+
         $view = $this->tpl();
-        $view->assign(
-            'gateways',
-            \App\Info::where('parent', $this->user->session->host)
-                     ->whereCategory('gateway')
-                     ->get()
-        );
+        $view->assign('gateways', $gateways);
 
         return $view->draw('_account_gateways');
     }
 
+    public function getIcon($command)
+    {
+        $icons = [
+            'jabber:iq:register' => 'join',
+            'preferences' => 'tune',
+            'unregister' => 'logout',
+        ];
+
+        if (array_key_exists($command, $icons)) {
+            return $icons[$command];
+        }
+
+        return 'list_alt';
+    }
+
     public function display()
     {
-        $this->view->assign('gateways', $this->prepareGateways());
     }
 }
