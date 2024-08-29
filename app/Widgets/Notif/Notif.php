@@ -11,6 +11,7 @@ use Minishlink\WebPush\Subscription;
 use Carbon\Carbon;
 
 use App\PushSubscription;
+use App\Widgets\Dialog\Dialog;
 use App\Widgets\Toast\Toast;
 
 class Notif extends Base
