@@ -2,10 +2,10 @@
 
 namespace Moxl\Xec\Action\Ping;
 
+use App\Widgets\Rooms\Rooms as RoomsRooms;
 use Movim\ChatroomPings;
 use Moxl\Xec\Action;
 use Moxl\Stanza\Ping;
-use Rooms;
 use SimpleXMLElement;
 
 /**
@@ -29,6 +29,6 @@ class Room extends Action
 
     public function error(string $errorId, ?string $message = null)
     {
-        (new Rooms())->ajaxExit($this->_room);
+        (new RoomsRooms())->ajaxExit($this->_room);
     }
 }
