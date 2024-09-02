@@ -6,6 +6,7 @@ use Respect\Validation\Validator;
 
 use Awobaz\Compoships\Database\Eloquent\Model;
 use Illuminate\Database\Capsule\Manager as DB;
+use SimpleXMLElement;
 
 class Post extends Model
 {
@@ -296,7 +297,7 @@ class Post extends Model
         return htmlspecialchars_decode($this->contentraw, ENT_XML1 | ENT_COMPAT);
     }
 
-    private function extractContent($contents)
+    private function extractContent(SimpleXMLElement $contents): string
     {
         $content = '';
 
@@ -306,6 +307,7 @@ class Post extends Model
                 case 'xhtml':
                     $import = null;
                     $dom = new \DOMDocument('1.0', 'utf-8');
+
                     if ($c->children() instanceof \DOMElement) {
                         $import = @dom_import_simplexml($c->children());
                     }
@@ -313,14 +315,17 @@ class Post extends Model
                     if ($import == null) {
                         $import = dom_import_simplexml($c);
                     }
+
                     $element = $dom->importNode($import, true);
                     $dom->appendChild($element);
+
                     return (string)$dom->saveHTML();
                     break;
                 case 'text':
                     if (trim($c) != '') {
                         $this->contentraw = trim($c);
                     }
+
                     break;
                 default:
                     $content = (string)$c;
