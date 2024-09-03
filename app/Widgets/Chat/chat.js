@@ -85,11 +85,22 @@ var Chat = {
                 ? usersList.indexOf(Chat.lastAutocomplete) + 1
                 : start = 0;
 
+            var end = false;
+
             for (var i = start; i < usersList.length; i++) {
                 if (Chat.searchAutocomplete == usersList[i].substring(0, Chat.searchAutocomplete.length).toLowerCase()) {
                     textarea.value = textarea.value.trim().slice(0, -last.length) + usersList[i] + ' ';
                     Chat.lastAutocomplete = usersList[i];
+                    end = true;
                     break;
+                }
+            }
+
+            if (end == false) {
+                var found = usersList.find((user) => Chat.searchAutocomplete == user.substring(0, Chat.searchAutocomplete.length).toLowerCase());
+                if (found) {
+                    textarea.value = textarea.value.trim().slice(0, -last.length) + found + ' ';
+                    Chat.lastAutocomplete = found;
                 }
             }
         }

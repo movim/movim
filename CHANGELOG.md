@@ -6,6 +6,7 @@ v0.27.2 (master)
 * Complete the gateway support and add AdHoc commands in the Configuration
 * Fix several import, namespace issues and typos
 * Fix #1315 Drop foreign keys and recreate them just after some MySQL migrations
+* Fix #1194 Ensure that we loop once we found the last nickname available during the tab-search
 
 v0.27.1
 ---------------------------
