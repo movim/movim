@@ -130,7 +130,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-22 21:33+0200\n"
+"POT-Creation-Date: 2024-08-29 13:36+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Vincenzo Tozzi, 2023\n"
 "Language-Team: Portuguese (Brazil) (http://app.transifex.com/movim/movim/language/pt_BR/)\n"
@@ -2682,6 +2682,48 @@ msgstr ""
 msgid "…connecting"
 msgstr "...conectando"
 
+#: [visiolobby]called
+#, fuzzy
+msgid "%s is calling you"
+msgstr "... está lhe ligando"
+
+#: [visiolobby]calling
+msgid "Calling %s"
+msgstr ""
+
+#: [visiolobby]setup
+msgid "Seting up your camera and microphone"
+msgstr ""
+
+#: [visiolobby]devices_disco
+msgid "Please allow your browser to share your devices to configure them"
+msgstr ""
+
+#: [visiolobby]microphone_label [visioconfig]microphone_label
+msgid "Default microphone"
+msgstr "Microfone padrão"
+
+#: [visiolobby]camera_label [visioconfig]camera_label
+msgid "Default camera"
+msgstr "Câmera padrão"
+
+#: [visiolobby]default_microphone_changed
+#: [visioconfig]default_microphone_changed
+msgid "Default microphone changed"
+msgstr ""
+
+#: [visiolobby]default_camera_changed [visioconfig]default_camera_changed
+msgid "Default camera changed"
+msgstr ""
+
+#: [visiolobby]no_mic_sound [visioconfig]no_mic_sound
+msgid "No sound detected from your microphone"
+msgstr ""
+
+#: [visiolobby]no_mic_sound2 [visioconfig]no_mic_sound2
+msgid "Try to select another source or check your system settings"
+msgstr ""
+
 #: [visioconfig]title
 msgid "Video & Voice"
 msgstr "Voz e Vídeo"
@@ -2694,33 +2736,9 @@ msgstr ""
 msgid "Microphone"
 msgstr "Microfone"
 
-#: [visioconfig]microphone_label
-msgid "Default microphone"
-msgstr "Microfone padrão"
-
 #: [visioconfig]camera
 msgid "Camera"
 msgstr "Camera"
-
-#: [visioconfig]camera_label
-msgid "Default camera"
-msgstr "Câmera padrão"
-
-#: [visioconfig]default_microphone_changed
-msgid "Default microphone changed"
-msgstr ""
-
-#: [visioconfig]default_camera_changed
-msgid "Default camera changed"
-msgstr ""
-
-#: [visioconfig]no_mic_sound
-msgid "No sound detected from your microphone"
-msgstr ""
-
-#: [visioconfig]no_mic_sound2
-msgid "Try to select another source or check your system settings"
-msgstr ""
 
 #: [global]no_js
 msgid "Movim requires Javascript to be enabled to work properly."

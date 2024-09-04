@@ -130,7 +130,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-22 21:33+0200\n"
+"POT-Creation-Date: 2024-08-29 13:36+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Phonebook3599, 2024\n"
 "Language-Team: Chinese (China) (http://app.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -2680,6 +2680,48 @@ msgstr ""
 msgid "…connecting"
 msgstr "…正在连接"
 
+#: [visiolobby]called
+#, fuzzy
+msgid "%s is calling you"
+msgstr "…正在呼叫您"
+
+#: [visiolobby]calling
+msgid "Calling %s"
+msgstr ""
+
+#: [visiolobby]setup
+msgid "Seting up your camera and microphone"
+msgstr ""
+
+#: [visiolobby]devices_disco
+msgid "Please allow your browser to share your devices to configure them"
+msgstr ""
+
+#: [visiolobby]microphone_label [visioconfig]microphone_label
+msgid "Default microphone"
+msgstr "默认麦克风"
+
+#: [visiolobby]camera_label [visioconfig]camera_label
+msgid "Default camera"
+msgstr "默认相机"
+
+#: [visiolobby]default_microphone_changed
+#: [visioconfig]default_microphone_changed
+msgid "Default microphone changed"
+msgstr "默认麦克风已更改"
+
+#: [visiolobby]default_camera_changed [visioconfig]default_camera_changed
+msgid "Default camera changed"
+msgstr "默认相机已更改"
+
+#: [visiolobby]no_mic_sound [visioconfig]no_mic_sound
+msgid "No sound detected from your microphone"
+msgstr "麦克风未检测到声音"
+
+#: [visiolobby]no_mic_sound2 [visioconfig]no_mic_sound2
+msgid "Try to select another source or check your system settings"
+msgstr "尝试选择其他源或检查系统设置"
+
 #: [visioconfig]title
 msgid "Video & Voice"
 msgstr "视频和语音"
@@ -2692,33 +2734,9 @@ msgstr "配置 Movim 使用的默认设备"
 msgid "Microphone"
 msgstr "麦克风"
 
-#: [visioconfig]microphone_label
-msgid "Default microphone"
-msgstr "默认麦克风"
-
 #: [visioconfig]camera
 msgid "Camera"
 msgstr "相机"
-
-#: [visioconfig]camera_label
-msgid "Default camera"
-msgstr "默认相机"
-
-#: [visioconfig]default_microphone_changed
-msgid "Default microphone changed"
-msgstr "默认麦克风已更改"
-
-#: [visioconfig]default_camera_changed
-msgid "Default camera changed"
-msgstr "默认相机已更改"
-
-#: [visioconfig]no_mic_sound
-msgid "No sound detected from your microphone"
-msgstr "麦克风未检测到声音"
-
-#: [visioconfig]no_mic_sound2
-msgid "Try to select another source or check your system settings"
-msgstr "尝试选择其他源或检查系统设置"
 
 #: [global]no_js
 msgid "Movim requires Javascript to be enabled to work properly."

@@ -5,6 +5,11 @@ var VisioUtils = {
     remoteAudioContext: null,
 
     handleAudio: function () {
+        if (VisioUtils.audioContext) {
+            VisioUtils.audioContext.close();
+            VisioUtils.audioContext = null;
+        }
+
         VisioUtils.audioContext = new AudioContext();
 
         try {
@@ -20,11 +25,17 @@ var VisioUtils = {
         var icon = document.querySelector('#toggle_audio i');
         var mainButton = document.getElementById('main');
         icon.innerText = 'mic';
-        let isMuteStep = 0;
+        let isMuteStep = 251;
         var noMicSound = document.querySelector('#no_mic_sound');
+        var defaultMicrophone = document.querySelector('#default_microphone');
+
+        if (defaultMicrophone) {
+            defaultMicrophone.classList.add('muted');
+        }
 
         microphone.connect(javascriptNode);
         javascriptNode.connect(VisioUtils.audioContext.destination);
+
         javascriptNode.onaudioprocess = function (event) {
             var inpt = event.inputBuffer.getChannelData(0);
             var instant = 0.0;
@@ -39,6 +50,7 @@ var VisioUtils = {
 
             var base = (instant / VisioUtils.maxLevel);
             var level = (base > 0.01) ? base ** .3 : 0;
+            let step = 0;
 
             if (level == 0) {
                 isMuteStep++;
@@ -47,9 +59,32 @@ var VisioUtils = {
             }
 
             if (isMuteStep > 250) {
-                noMicSound.classList.remove('disabled');
+                if (noMicSound) {
+                    noMicSound.classList.remove('disabled');
+                }
+
+                if (defaultMicrophone) {
+                    defaultMicrophone.classList.add('muted');
+                }
             } else {
-                noMicSound.classList.add('disabled');
+                if (noMicSound) {
+                    noMicSound.classList.add('disabled');
+                }
+
+                if (defaultMicrophone) {
+                    defaultMicrophone.classList.remove('muted');
+                }
+
+                // Lobby level
+                document.querySelectorAll('.level span').forEach(span => {
+                    if (step < Math.floor(level * 10)) {
+                        span.classList.remove('disabled');
+                    } else {
+                        span.classList.add('disabled');
+                    }
+
+                    step++;
+                });
             }
 
             mainButton.style.outlineColor = 'rgba(255, 255, 255, ' + level + ')';
@@ -57,6 +92,11 @@ var VisioUtils = {
     },
 
     handleRemoteAudio: function () {
+        if (VisioUtils.remoteAudioContext) {
+            VisioUtils.remoteAudioContext.close();
+            VisioUtils.remoteAudioContext = null;
+        }
+
         VisioUtils.remoteAudioContext = new AudioContext();
 
         try {
@@ -259,11 +299,33 @@ var VisioUtils = {
 
                 button.onclick = () => Visio.goodbye();
             }
+        } else {
+            button.classList.add('red');
+            i.className = 'material-symbols';
+            i.innerText = 'close';
+
+            button.onclick = () => Visio.goodbye();
         }
     },
 
     enableScreenSharingButton: function () {
         document.querySelector('#screen_sharing').classList.add('enabled');
+    },
+
+    enableSwitchCameraButton: function () {
+        Visio.switchCamera.classList.remove('disabled');
+    },
+
+    disableSwitchCameraButton: function () {
+        Visio.switchCamera.classList.add('disabled');
+    },
+
+    enableLobbyCallButton: function () {
+        document.querySelector('#lobby_start').classList.remove('disabled');
+    },
+
+    disableLobbyCallButton: function () {
+        document.querySelector('#lobby_start').classList.add('disabled');
     },
 
     toggleScreenSharing: async function () {
@@ -280,7 +342,7 @@ var VisioUtils = {
                 });
 
                 MovimVisio.screenSharing.classList.add('sharing');
-                Visio.switchCamera.classList.add('disabled');
+                VisioUtils.disableSwitchCameraButton();
                 button.innerText = 'stop_screen_share';
 
                 Visio.gotScreen();
@@ -291,7 +353,7 @@ var VisioUtils = {
             MovimVisio.screenSharing.srcObject.getTracks().forEach(track => track.stop());
             MovimVisio.screenSharing.srcObject = null;
             MovimVisio.screenSharing.classList.remove('sharing');
-            Visio.switchCamera.classList.remove('disabled');
+            VisioUtils.enableSwitchCameraButton();
 
             button.innerText = 'screen_share';
 
@@ -299,21 +361,71 @@ var VisioUtils = {
         }
     },
 
-    switchCameraSetup: function () {
+    switchCameraInCall: function () {
         Visio.videoSelect = document.querySelector('#visio select#visio_source');
-        navigator.mediaDevices.enumerateDevices().then(devices => VisioUtils.gotDevices(devices));
-
         Visio.switchCamera = document.querySelector("#visio #switch_camera");
+
+        navigator.mediaDevices.enumerateDevices().then(devicesInfo => {
+            Visio.videoSelect.innerText = '';
+
+            for (const deviceInfo of devicesInfo) {
+                if (deviceInfo.kind === 'videoinput') {
+                    const option = document.createElement('option');
+                    option.value = deviceInfo.deviceId;
+                    option.text = deviceInfo.label || 'Camera ' + Visio.videoSelect.length + 1;
+
+                    if (!Visio.videoSelect.querySelector('option[value="' + deviceInfo.deviceId + '"]')) {
+                        Visio.videoSelect.appendChild(option);
+                    }
+                }
+            }
+
+            if (Visio.videoSelect.options.length >= 2) {
+                Visio.switchCamera.classList.add('enabled');
+            }
+        });
+
         Visio.switchCamera.onclick = () => {
             Visio.videoSelect.selectedIndex++;
 
-            // No empty selection
             if (Visio.videoSelect.selectedIndex == -1) {
                 Visio.videoSelect.selectedIndex++;
             }
 
             Toast.send(Visio.videoSelect.options[Visio.videoSelect.selectedIndex].label);
-            Visio.getStream();
+
+            var constraints = {
+                video: true
+            };
+
+            constraints.video = {
+                deviceId: Visio.videoSelect.options[Visio.videoSelect.selectedIndex].value,
+                width: { ideal: 4096 },
+                height: { ideal: 4096 }
+            };
+
+            MovimVisio.localVideo.srcObject = null;
+
+            VisioUtils.disableSwitchCameraButton();
+
+            navigator.mediaDevices.getUserMedia(constraints).then(stream => {
+                stream.getTracks().forEach(track => {
+                    MovimVisio.pc.addTrack(track, stream);
+
+                    if (track.kind == 'video') {
+                        MovimVisio.localVideo.srcObject = stream;
+                        localStorage.setItem('defaultCamera', track.getSettings().deviceId);
+                    }
+                });
+
+                VisioUtils.enableSwitchCameraButton();
+                var cameraIcon = document.querySelector('#toggle_video i');
+                cameraIcon.innerText = 'videocam';
+
+                VisioUtils.pcReplaceTrack(stream);
+                VisioUtils.enableScreenSharingButton();
+                VisioUtils.toggleMainButton();
+            }, logError);
         };
     },
 
@@ -323,24 +435,6 @@ var VisioUtils = {
 
         if (sender) {
             sender.replaceTrack(videoTrack);
-        }
-    },
-
-    gotDevices: function (deviceInfos) {
-        Visio.videoSelect.innerText = '';
-
-        for (const deviceInfo of deviceInfos) {
-            if (deviceInfo.kind === 'videoinput') {
-                const option = document.createElement('option');
-                option.value = deviceInfo.deviceId;
-                option.text = deviceInfo.label || 'Camera ' + Visio.videoSelect.length + 1;
-
-                Visio.videoSelect.appendChild(option);
-            }
-        }
-
-        if (Visio.videoSelect.options.length >= 2) {
-            document.querySelector("#visio #switch_camera").classList.add('enabled');
         }
     }
 }

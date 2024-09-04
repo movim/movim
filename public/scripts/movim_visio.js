@@ -6,6 +6,8 @@ var MovimVisio = {
     pc: null,
     services: [],
 
+    localStream: null,
+
     localVideo: null,
     remoteVideo: null,
     localAudio: null,
@@ -16,12 +18,35 @@ var MovimVisio = {
 
     observer: null,
 
+    load: function() {
+        MovimVisio.localVideo = document.getElementById('local_video');
+        MovimVisio.localVideo.addEventListener('loadeddata', () => {
+            MovimVisio.localVideo.play()
+        });
+        MovimVisio.remoteVideo = document.getElementById('remote_video');
+        MovimVisio.remoteVideo.disablePictureInPicture = true;
+        MovimVisio.screenSharing = document.getElementById('screen_sharing_video');
+
+        MovimVisio.localAudio = document.getElementById('local_audio');
+        MovimVisio.remoteAudio = document.getElementById('remote_audio');
+    },
+
     clear: function () {
         MovimVisio.from = null;
         MovimVisio.id = null;
         MovimVisio.withVideo = false;
 
-        MovimVisio.pc.close();
+        if (MovimVisio.pc) {
+            MovimVisio.pc.close();
+            MovimVisio.pc = null;
+        }
+
+        if (MovimVisio.localStream) {
+            MovimVisio.localStream.getTracks().forEach(function (track) {
+                track.stop();
+            });
+            MovimVisio.localStream = null;
+        }
 
         MovimVisio.localAudio = null;
         MovimVisio.remoteAudio = null;

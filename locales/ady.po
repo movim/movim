@@ -116,7 +116,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-22 21:33+0200\n"
+"POT-Creation-Date: 2024-08-29 13:36+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Adyghe (http://app.transifex.com/movim/movim/language/ady/)\n"
@@ -2666,6 +2666,47 @@ msgstr ""
 msgid "…connecting"
 msgstr ""
 
+#: [visiolobby]called
+msgid "%s is calling you"
+msgstr ""
+
+#: [visiolobby]calling
+msgid "Calling %s"
+msgstr ""
+
+#: [visiolobby]setup
+msgid "Seting up your camera and microphone"
+msgstr ""
+
+#: [visiolobby]devices_disco
+msgid "Please allow your browser to share your devices to configure them"
+msgstr ""
+
+#: [visiolobby]microphone_label [visioconfig]microphone_label
+msgid "Default microphone"
+msgstr ""
+
+#: [visiolobby]camera_label [visioconfig]camera_label
+msgid "Default camera"
+msgstr ""
+
+#: [visiolobby]default_microphone_changed
+#: [visioconfig]default_microphone_changed
+msgid "Default microphone changed"
+msgstr ""
+
+#: [visiolobby]default_camera_changed [visioconfig]default_camera_changed
+msgid "Default camera changed"
+msgstr ""
+
+#: [visiolobby]no_mic_sound [visioconfig]no_mic_sound
+msgid "No sound detected from your microphone"
+msgstr ""
+
+#: [visiolobby]no_mic_sound2 [visioconfig]no_mic_sound2
+msgid "Try to select another source or check your system settings"
+msgstr ""
+
 #: [visioconfig]title
 msgid "Video & Voice"
 msgstr ""
@@ -2678,32 +2719,8 @@ msgstr ""
 msgid "Microphone"
 msgstr ""
 
-#: [visioconfig]microphone_label
-msgid "Default microphone"
-msgstr ""
-
 #: [visioconfig]camera
 msgid "Camera"
-msgstr ""
-
-#: [visioconfig]camera_label
-msgid "Default camera"
-msgstr ""
-
-#: [visioconfig]default_microphone_changed
-msgid "Default microphone changed"
-msgstr ""
-
-#: [visioconfig]default_camera_changed
-msgid "Default camera changed"
-msgstr ""
-
-#: [visioconfig]no_mic_sound
-msgid "No sound detected from your microphone"
-msgstr ""
-
-#: [visioconfig]no_mic_sound2
-msgid "Try to select another source or check your system settings"
 msgstr ""
 
 #: [global]no_js

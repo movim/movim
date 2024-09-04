@@ -29,7 +29,7 @@
                     <p></p>
                     <p id="no_mic_sound" class="disabled all">
                         <i class="material-symbols">mic_none</i>
-                        {$c->__('visioconfig.no_mic_sound')}
+                        {$c->__('visiolobby.no_mic_sound')}
                     </p>
                 </div>
             </li>
