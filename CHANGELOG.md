@@ -13,6 +13,7 @@ v0.27.2 (master)
 * Fix the screen sharing and webcam switch buttons
 * CSS and UI fixes
 * Handle the session_down event to disconnect the call properly when the browser is not reachable after a while
+* Fix carbons for received messages being ignored (#1182)
 
 v0.27.1
 ---------------------------
