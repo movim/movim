@@ -32,11 +32,11 @@
         </div>
     {else}
         {if="$info"}
-            <span class="primary icon bubble">
+            <span class="primary icon thumb">
                 <img src="{$info->getPicture(\Movim\ImageSize::M)}"/>
             </span>
             <div>
-                <p class="line normal">
+                <p class="line two">
                     {if="$info->name"}
                         {$info->name}
                     {else}
@@ -44,7 +44,7 @@
                     {/if}
                 </p>
                 {if="$info->description"}
-                    <p class="line">{$info->description|strip_tags}</p>
+                    <p dir="auto">{$info->description|strip_tags}</p>
                 {/if}
             </div>
         {else}
@@ -52,8 +52,8 @@
                 {$post->node|firstLetterCapitalize}
             </span>
             <div>
-                <p class="line normal">{$post->node}</p>
-                <p>{$post->server}</p>
+                <p class="line two">{$post->node}</p>
+                <p dir="auto">{$post->server}</p>
             </div>
         {/if}
     {/if}

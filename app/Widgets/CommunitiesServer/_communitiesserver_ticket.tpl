@@ -16,7 +16,7 @@
         <img loading="lazy" src="{$community->getPicture(\Movim\ImageSize::M)}"/>
     </span>
     <div>
-        <p class="line">
+        <p class="line two">
             {if="$community->name"}
                 {$community->name}
             {else}
@@ -24,7 +24,7 @@
             {/if}
         </p>
         {if="$community->description"}
-            <p class="line">{$community->description|strip_tags}</p>
+            <p class="line two">{$community->description|strip_tags}</p>
         {/if}
         <p class="line">
             <a href="#">{$community->node}</a>
