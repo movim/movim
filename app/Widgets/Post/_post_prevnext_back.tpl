@@ -36,7 +36,7 @@
                 <img src="{$info->getPicture(\Movim\ImageSize::M)}"/>
             </span>
             <div>
-                <p class="line two">
+                <p class="line two normal">
                     {if="$info->name"}
                         {$info->name}
                     {else}

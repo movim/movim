@@ -16,7 +16,7 @@
         <img loading="lazy" src="{$community->getPicture(\Movim\ImageSize::M)}"/>
     </span>
     <div>
-        <p class="line two">
+        <p class="line two normal">
             {if="$community->name"}
                 {$community->name}
             {else}
