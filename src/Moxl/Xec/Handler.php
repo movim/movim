@@ -174,8 +174,8 @@ class Handler
             '44d0c16e222fcdee6961c8939b647e15' => 'JingleReject',
             'd84d4b89d43e88a244197ccf499de8d8' => 'Jingle',
 
-            '09ef1b34cf40fdd954f10d6e5075ee5c' => 'Carbons',
-            //'201fa54dd93e3403611830213f5f9fbc' => 'Carbons', //?
+            '09ef1b34cf40fdd954f10d6e5075ee5c' => 'Carbons', // sent
+            '201fa54dd93e3403611830213f5f9fbc' => 'Carbons', // received
 
             'da6b60476aeab672ac0afe3ff27dc6a4' => 'OMEMODevices',
 
