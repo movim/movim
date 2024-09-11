@@ -13,7 +13,8 @@ v0.27.2 (master)
 * Fix the screen sharing and webcam switch buttons
 * CSS and UI fixes
 * Handle the session_down event to disconnect the call properly when the browser is not reachable after a while
-* Fix carbons for received messages being ignored (#1182)
+* Fix #1182 Carbons for received messages were ignored
+* Fix #1361 Change the url column to text in the message_files table and use a generated hash column for the unique constraint
 
 v0.27.1
 ---------------------------
