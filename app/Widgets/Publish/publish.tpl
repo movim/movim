@@ -120,7 +120,7 @@
                         <button
                             class="button narrow flat icon gray"
                             title="{$c->__('draw.title')}"
-                            onclick="Draw.init()">
+                            onclick="Draw_ajaxHttpGet()">
                             <i class="material-symbols">gesture</i>
                         </button>
                         <button

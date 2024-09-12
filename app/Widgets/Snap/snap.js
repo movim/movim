@@ -51,7 +51,8 @@ var Snap = {
         document.querySelector("#snap #snapdraw").onclick = () => {
             Snap.snap.classList = '';
             Snap.close();
-            Draw.init(Snap.canvas);
+            Draw.initCanvas = Snap.canvas;
+            Draw_ajaxHttpGet();
         };
 
         document.querySelector("#snap #snapback").onclick = () => {

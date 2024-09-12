@@ -16,6 +16,7 @@ v0.27.2 (master)
 * Fix #1182 Carbons for received messages were ignored
 * Fix #1361 Change the url column to text in the message_files table and use a generated hash column for the unique constraint
 * Refactor the Search results layout to be more coherent with the rest of the UI
+* Prevent the Draw widget to be loaded at each page change
 
 v0.27.1
 ---------------------------

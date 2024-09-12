@@ -199,11 +199,8 @@ var Upload = {
                 });
 
                 toDraw.addEventListener('click', e => {
-                    if (Upload.canvas) {
-                        Draw.init(Upload.canvas);
-                    } else {
-                        Draw.init(preview);
-                    }
+                    Draw.initCanvas = Upload.canvas ?? preview;
+                    Draw_ajaxHttpGet();
 
                     Dialog_ajaxClear();
                     Upload.abort();

@@ -71,7 +71,7 @@
                             <p class="normal line">Snap</p>
                         </div>
                     </li>
-                    <li onclick="Chat.toggleAttach(); Draw.init()">
+                    <li onclick="Chat.toggleAttach(); Draw_ajaxHttpGet()">
                         <span class="control active icon middle bubble color green">
                             <i class="material-symbols">gesture</i>
                         </span>

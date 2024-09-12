@@ -1,4 +1,6 @@
 var Draw = {
+    initCanvas: null,
+
     SMALL: 4,
     MEDIUM: 6,
     BIG: 8,
@@ -27,11 +29,20 @@ var Draw = {
     bgWidth: null,  // natural width of background
     ratio: 1,  // upscale ratio
 
-    init: function (backgroundCanvas) {
-        MovimTpl.pushAnchorState('draw', function () { Draw.draw.classList.remove('open') });
+    init: function () {
+        MovimTpl.pushAnchorState('draw', function () {
+            Draw.draw.classList.remove('bound', 'open');
+        });
 
         Draw.drawingData = [];
-        Draw.backgroundCanvas = backgroundCanvas;
+
+        if (Draw.initCanvas) {
+            Draw.backgroundCanvas = Draw.initCanvas;
+            Draw.initCanvas = null;
+        } else {
+            Draw.backgroundCanvas = null;
+        }
+
         Draw.topNav = document.querySelector('.draw-top-nav');
         Draw.control = document.querySelector('.draw-control');
         Draw.actions = document.querySelector('.draw-actions');
@@ -109,7 +120,6 @@ var Draw = {
         Draw.sctx.lineWidth = Draw.MEDIUM;
         widths.forEach(item => item.classList.remove('selected'));
         document.querySelector('[data-width=medium]').classList.add('selected');
-
 
         if (Draw.draw.classList.contains('bound')) return;
 
@@ -219,7 +229,7 @@ var Draw = {
         };
 
         // Use the eraser
-        eraser.addEventListener('click', function(e) {
+        eraser.addEventListener('click', function (e) {
             colors.forEach(item => item.classList.remove('selected'));
             this.classList.add('selected');
 
@@ -228,7 +238,7 @@ var Draw = {
 
         // Change pencil color
         for (let i = 0; i < colors.length; i++) {
-            colors[i].addEventListener('click', function(e) {
+            colors[i].addEventListener('click', function (e) {
                 colors.forEach(item => item.classList.remove('selected'));
                 eraser.classList.remove('selected');
                 this.classList.add('selected');
@@ -241,7 +251,7 @@ var Draw = {
 
         // Change pencil thickness
         for (let i = 0; i < widths.length; i++) {
-            widths[i].addEventListener('click', function(e) {
+            widths[i].addEventListener('click', function (e) {
                 widths.forEach(item => item.classList.remove('selected'));
                 this.classList.add('selected');
 
@@ -273,10 +283,10 @@ var Draw = {
         Draw.draw.classList.add('bound');
     },
 
-    stopDrawing: function(e) {
+    stopDrawing: function (e) {
         // print to actual canvas
         if (Draw.drawingData.length)
-            Draw.smoothenLine(Draw.drawingData[Draw.drawingData.length -1], Draw.ctx, 1)
+            Draw.smoothenLine(Draw.drawingData[Draw.drawingData.length - 1], Draw.ctx, 1)
         // cleanup screen
         const rect = Draw.screen.getBoundingClientRect();
         Draw.sctx.clearRect(0, 0, rect.width, rect.height);
@@ -294,7 +304,7 @@ var Draw = {
         Draw.sctx.beginPath();
     },
 
-    startDrawing: function(e) {
+    startDrawing: function (e) {
         if (e.buttons == 1) {
             Draw.drawing = true;
 
@@ -400,7 +410,7 @@ var Draw = {
     },
 
     // Get the position of the mouse/touch relative to the canvas
-    getPos: function(canvasDom, event) {
+    getPos: function (canvasDom, event) {
         var rect = canvasDom.getBoundingClientRect();
         let x, y;
         if (event.touches) {
@@ -420,7 +430,7 @@ var Draw = {
     },
 
     // Draw to the canvas
-    renderCanvas: function() {
+    renderCanvas: function () {
         if (Draw.drawing && Draw.lastPos && Draw.mousePos) {
             Draw.sctx.moveTo(Draw.lastPos.x, Draw.lastPos.y);
             Draw.sctx.lineTo(Draw.mousePos.x, Draw.mousePos.y);
@@ -429,7 +439,7 @@ var Draw = {
         }
     },
 
-    disableForCanvas: function(e) {
+    disableForCanvas: function (e) {
         if (e.target.tagName == 'canvas') {
             e.preventDefault();
         }
@@ -459,7 +469,6 @@ Upload.progress((percent) => {
     }
 });
 
-MovimEvents.registerWindow('loaded', 'draw', () => Draw_ajaxHttpGet());
 MovimEvents.registerBody('touchstart', 'draw', () => Draw.disableForCanvas());
 MovimEvents.registerBody('touchend', 'draw', () => Draw.disableForCanvas());
 MovimEvents.registerBody('touchmove', 'draw', () => Draw.disableForCanvas());
