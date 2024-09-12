@@ -28,7 +28,6 @@ class Search extends Base
     {
         $view = $this->tpl();
 
-        $view->assign('empty', $this->prepareSearch(''));
         $view->assign('chatroomactions', $chatroomActions);
         Drawer::fill('search', $view->draw('_search'), true);
 
@@ -139,7 +138,7 @@ class Search extends Base
             ->notInRoster($this->user->session->id)
             ->orderByPresence()
             ->where('id', '!=', $this->user->id)
-            ->limit(10)
+            ->limit(12)
             ->get();
 
         $view->assign('users', $users);

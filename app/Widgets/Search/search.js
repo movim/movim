@@ -89,7 +89,6 @@ var Search = {
     searchClear : function() {
         if (document.querySelector('#searchbar')) {
             document.querySelector('#searchbar li.search').classList.remove('searching');
-
         }
     }
 }

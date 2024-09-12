@@ -12,8 +12,7 @@ ul.list>li {
 ul.list.compact>li {
     flex-direction: column;
     align-items: flex-start;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding: 0.25rem 0.75rem;
 }
 
 header:not(.big)>ul.list>li,

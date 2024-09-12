@@ -1,3 +1,4 @@
+<br />
 <ul class="list flex third middle active card shadow">
     {if="$type == 'all' && ($page == 1 || $posts->count() < $limit)"}
         <li class="block" onclick="MovimUtils.reload('{$c->route('explore', 'servers')}')">
