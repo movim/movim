@@ -1,5 +1,5 @@
 <hr />
-<ul class="list flex">
+<ul class="list flex fourth card shadow compact middle active">
     <li class="subheader block large">
         <div>
             <p>{$c->__('explore.explore')}</p>
@@ -7,6 +7,7 @@
     </li>
     {loop="$users"}
         <li class="block active" title="{$value->jid}" onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}'); Drawer.clear();">
+            <img class="main" src="{$value->getBanner(\Movim\ImageSize::L)}">
             <span class="primary icon bubble {if="$value->value"}status {$presencestxt[$value->value]}{/if}">
                 <img src="{$value->getPicture()}">
             </span>
