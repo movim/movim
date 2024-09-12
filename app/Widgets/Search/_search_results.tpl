@@ -4,50 +4,28 @@
     {/autoescape}
 {/if}
 
-{if="isset($tags) && $tags->isNotEmpty()"}
-<ul class="list active flex large">
+{if="(isset($communities) && $communities->isNotEmpty()) || (isset($tags) && $tags->isNotEmpty()) || (isset($posts) && $posts->isNotEmpty())"}
+<ul class="list flex">
     <li class="subheader block large">
         <div>
-            <p>{$c->__('search.tags')}</p>
-        </div>
-    </li>
-    {loop="$tags"}
-        <li class="block" onclick="MovimUtils.reload('{$c->route('tag', $value)}'); Drawer.clear();">
-            <span class="primary icon gray">
-                #
-            </span>
-            <span class="control icon gray">
-                <i class="material-symbols">chevron_right</i>
-            </span>
-            <div>
-                <p class="line normal">{$value}</p>
-                <p>{$c->__('communitydata.num', $key)}</p>
-            </div>
-        </li>
-    {/loop}
-</ul>
-{/if}
-
-{if="isset($communities) && $communities->isNotEmpty()"}
-<ul class="list card active middle">
-    <li class="subheader">
-        <div>
             <p>
-                <span class="info">{$communities|count}</span>
                 {$c->__('page.communities')}
             </p>
         </div>
     </li>
+</ul>
+{/if}
+
+{if="isset($communities) && $communities->isNotEmpty()"}
+<ul class="list middle card shadow active flex">
     {loop="$communities"}
     <li
+        class="block"
         onclick="MovimUtils.reload('{$c->route('community', [$value->server, $value->node])}'); Drawer.clear();"
         title="{$value->server} - {$value->node}"
     >
-            <span class="primary icon bubble">
+            <span class="primary icon thumb">
                 <img src="{$value->getPicture(\Movim\ImageSize::M)}"/>
-            </span>
-            <span class="control icon gray">
-                <i class="material-symbols">chevron_right</i>
             </span>
             <div>
                 <p class="line normal">
@@ -56,13 +34,15 @@
                     {else}
                         {$value->node}
                     {/if}
-                    {if="$value->description"}
-                        <span class="second">
-                            {$value->description|strip_tags}
-                        </span>
-                    {/if}
                 </p>
+                {if="$value->description"}
+                    <p class="line two">{$value->description|strip_tags}</p>
+                {/if}
                 <p class="line">
+                    {if="$value->isGallery()"}
+                        <i class="material-symbols">grid_view</i>
+                        ·
+                    {/if}
                     {$value->server} / {$value->node}
                 </p>
             </div>
@@ -71,16 +51,21 @@
 </ul>
 {/if}
 
-{if="isset($posts) && $posts->isNotEmpty()"}
-<ul id="search_posts" class="list card active middle">
-    <li class="subheader">
+{if="isset($tags) && $tags->isNotEmpty()"}
+<ul class="list flex middle fill">
+    <li class="block large">
         <div>
-            <p>
-                <span class="info">{$posts|count}</span>
-                {$c->__('page.news')}
-            </p>
+            <p class="line two normal">{loop="$tags"}<a class="chip outline active" href="#" onclick="MovimUtils.reload('{$c->route('tag', $value)}')">
+                <i class="material-symbols icon gray">tag</i>{$value}
+            </a>{/loop}</p>
         </div>
     </li>
+</ul>
+<br />
+{/if}
+
+{if="isset($posts) && $posts->isNotEmpty()"}
+<ul id="search_posts" class="list middle card shadow active flex">
     {loop="$posts"}
         {autoescape="off"}
             {$c->prepareTicket($value)}

@@ -15,6 +15,7 @@ v0.27.2 (master)
 * Handle the session_down event to disconnect the call properly when the browser is not reachable after a while
 * Fix #1182 Carbons for received messages were ignored
 * Fix #1361 Change the url column to text in the message_files table and use a generated hash column for the unique constraint
+* Refactor the Search results layout to be more coherent with the rest of the UI
 
 v0.27.1
 ---------------------------

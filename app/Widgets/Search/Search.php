@@ -46,7 +46,7 @@ class Search extends Base
         $this->rpc('Search.searchCurrent');
     }
 
-    public function prepareSearch($key)
+    public function prepareSearch(string $key)
     {
         $view = $this->tpl();
 
@@ -56,24 +56,30 @@ class Search extends Base
             $view->assign('posts', new Collection);
 
             if ($this->user->hasPubsub()) {
-                $tagIds = Tag::where('name', 'like', '%' . strtolower($key) . '%')->pluck('id');
-
                 $tags = DB::table('post_tag')
                     ->select(DB::raw('count(*) as count, name'))
                     ->join('tags', 'tag_id', '=', 'tags.id')
-                    ->whereIn('tag_id', $tagIds)
+                    ->whereIn('tag_id', function ($query) use ($key) {
+                        $query->select('id')
+                              ->from('tags')
+                              ->where('name', 'like', '%' . strtolower($key) . '%');
+                    })
                     ->groupBy('name')
                     ->orderBy('count', 'desc')
-                    ->take(4)
+                    ->take(20)
                     ->get()
                     ->pluck('name', 'count');
 
                 $view->assign('tags', $tags);
 
-                $posts = Post::whereIn('id', function ($query) use ($tagIds) {
+                $posts = Post::whereIn('id', function ($query) use ($key) {
                     $query->select('post_id')
                           ->from('post_tag')
-                          ->whereIn('tag_id', $tagIds);
+                          ->whereIn('tag_id', function ($query) use ($key) {
+                            $query->select('id')
+                                  ->from('tags')
+                                  ->where('name', 'like', '%' . strtolower($key) . '%');
+                        });
                 })
                 ->whereIn('id', function ($query) {
                     $filters = DB::table('posts')->where('id', -1);

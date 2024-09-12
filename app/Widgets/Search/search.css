@@ -1,10 +1,5 @@
-#search ul#search_posts > li:not(.subheader) {
-    margin: 1rem;
-    margin-top: 0;
-}
-
-#search ul#search_posts > li:not(.subheader):last-child {
-    margin-bottom: 0;
+#search #results {
+    padding: 0 1.5rem;
 }
 
 #search form > div:not(.clear):not(.control) {

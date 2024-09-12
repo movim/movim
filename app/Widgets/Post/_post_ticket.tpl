@@ -29,7 +29,7 @@
         >
         </span>
     {elseif="!$post->contact"}
-        <span class="control icon bubble">
+        <span class="control icon thumb">
             {if="$post->info"}
                 <img src="{$post->info->getPicture(\Movim\ImageSize::M)}">
             {else}

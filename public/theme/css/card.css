@@ -16,6 +16,10 @@
     filter: blur(0.4rem);
 }
 
+.card li > div > p > span.info {
+    margin-right: 1rem;
+}
+
 /*.card img.main ~ div {
     z-index: 1;
 }*/

@@ -1,11 +1,6 @@
 .flex {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    padding: 1rem;
-}
-
-.flex.large {
-    padding: 0;
 }
 
 .flex.card {
@@ -15,6 +10,10 @@
 ul.flex li.block {
     border-radius: 0.65rem;
     transition: background 0.3s ease;
+}
+
+ul.flex li.subheader {
+    padding: 0;
 }
 
 .flex .block:not(.subheader) {
