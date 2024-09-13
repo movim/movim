@@ -24,6 +24,7 @@ class Url extends Model
             if ($cached) {
                 $this->id = $cached->id;
                 $this->maybeResolveMessageFile($cached->cache);
+
                 return $cached->cache;
             } else {
                 $cached = new \App\Url;
@@ -31,12 +32,34 @@ class Url extends Model
             }
 
             $cached->cache = $url;
-            $cached->save();
 
-            $this->id = $cached->id;
-            $this->maybeResolveMessageFile($cached->cache);
+            $client = new CurlClient;
+            $client->setSettings([
+                'max_redirs' => 3,               // see CURLOPT_MAXREDIRS
+                'connect_timeout' => 5,          // see CURLOPT_CONNECTTIMEOUT
+                'timeout' => 5,                  // see CURLOPT_TIMEOUT
+                'ssl_verify_host' => 2,          // see CURLOPT_SSL_VERIFYHOST
+                'ssl_verify_peer' => 1,          // see CURLOPT_SSL_VERIFYPEER
+                'follow_location' => true,       // see CURLOPT_FOLLOWLOCATION
+                'user_agent' => DEFAULT_HTTP_USER_AGENT,
+            ]);
 
-            return $cached->cache;
+            try {
+                $embed = new Embed(new Crawler($client));
+                $embed->getExtractorFactory()->addDetector('images', EmbedImagesExtractor::class);
+                $info = $embed->get($url);
+
+                $embed = new EmbedLight($info);
+                $cached->cache = base64_encode(serialize($embed));
+                $cached->save();
+
+                $this->id = $cached->id;
+                $this->maybeResolveMessageFile($embed);
+
+                return $embed;
+            } catch (\Exception $e) {
+                error_log($e->getMessage());
+            }
         }
     }
 
@@ -64,31 +87,5 @@ class Url extends Model
     public function getCacheAttribute()
     {
         return unserialize(base64_decode($this->attributes['cache']));
-    }
-
-    public function setCacheAttribute($url)
-    {
-        $client = new CurlClient;
-        $client->setSettings([
-            'max_redirs' => 3,               // see CURLOPT_MAXREDIRS
-            'connect_timeout' => 5,          // see CURLOPT_CONNECTTIMEOUT
-            'timeout' => 5,                  // see CURLOPT_TIMEOUT
-            'ssl_verify_host' => 2,          // see CURLOPT_SSL_VERIFYHOST
-            'ssl_verify_peer' => 1,          // see CURLOPT_SSL_VERIFYPEER
-            'follow_location' => true,       // see CURLOPT_FOLLOWLOCATION
-            'user_agent' => DEFAULT_HTTP_USER_AGENT,
-        ]);
-
-        try {
-            $embed = new Embed(new Crawler($client));
-            $embed->getExtractorFactory()->addDetector('images', EmbedImagesExtractor::class);
-            $info = $embed->get($url);
-
-            $embed = new EmbedLight($info);
-
-            $this->attributes['cache'] = base64_encode(serialize($embed));
-        } catch (\Exception $e) {
-            error_log($e->getMessage());
-        }
     }
 }
