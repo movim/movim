@@ -16,7 +16,7 @@
 
         <div class="checkbox">
             <ul class="list thick fill">
-                <li class="wide">
+                <li>
                     <span class="control">
                         <div class="checkbox">
                             <input id="share" name="share" type="checkbox">

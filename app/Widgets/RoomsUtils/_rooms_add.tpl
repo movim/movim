@@ -169,7 +169,7 @@
         </div>
         <div class="control">
             <ul class="list middle fill">
-                <li class="wide">
+                <li>
                     <span class="primary icon gray">
                         <i class="material-symbols">login</i>
                     </span>
@@ -194,7 +194,7 @@
         </div>
         <div class="control">
             <ul class="list middle fill">
-                <li class="wide">
+                <li>
                     <span class="primary icon gray">
                         <i class="material-symbols">push_pin</i>
                     </span>
