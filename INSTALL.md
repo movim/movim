@@ -9,8 +9,8 @@ Movim requires some dependencies to be setup properly.
   * A fully working webserver like Apache, nginx or Caddy
   * A PHP process manager like php-fpm will usually be required for Nginx
   * Root access by SSH with access to the webserver user (most of the time via the user www-data)
-  * A SQL server with a schema for Movim (more info in [Database Configuration](https://github.com/edhelas/movim/wiki/Install-Movim#2-database-configuration)).
-     * PotgreSQL (**_strongly recommended_**)
+  * A SQL server with a schema for Movim.
+     * PostgreSQL (**_strongly recommended_**)
      * MySQL 5.7 or higher with utf8mb4 encoding (necessary for emojis 😃 support) AND `utf8mb4_bin` collation.
      * MariaDB 10.2 or higher with utf8mb4 encoding (necessary for emojis 😃 support) AND `utf8mb4_bin` collation.
   * **PHP 8.1 minimum** with :
@@ -59,6 +59,8 @@ apt-get install git
 Git is required to properly get the source code from the official repository. We recommend to execute the following commands with the `www-data` user (which is the common user for most of the GNU/Linux web servers).
 ```bash
 cd /var/www/ # Server directory
+mkdir movim
+chown www-data:www-data movim
 sudo -s -u www-data # We use the web-server user
 # We copy the source code from the repository
 git clone https://github.com/movim/movim.git
@@ -108,7 +110,8 @@ Movim needs reading permissions on its root folder and recursively to be deploye
 You can create the folders in advance and it will skip this step, or you can let it by giving it writing permissions on its root folder:
 ```bash
 # Use the root user to do the command
-chown www-data movim && chown www-data movim/public && chmod u+rwx movim
+mkdir cache
+chown www-data movim && chown www-data movim/public && chown www-data movim/cache && chmod u+rwx movim
 ```
 
 You might have to replace the `www-data` user with the `apache` or `caddy` user in the last command regarding your OS or the web-server you have.
