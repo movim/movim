@@ -9,8 +9,8 @@ Environment=PUBLIC_URL=https://localhost/movim/
 Environment=WS_PORT=8080
 EnvironmentFile=-/etc/default/movim
 ExecStart=/usr/bin/php daemon.php start
-WorkingDirectory=/usr/share/movim/
-StandardOutput=syslog
+WorkingDirectory=/var/www/movim/
+StandardOutput=journal
 SyslogIdentifier=movim
 PIDFile=/run/movim.pid
 Restart=on-failure
