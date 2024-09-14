@@ -236,7 +236,14 @@ var Visio = {
         if (cameraSelect) {
             cameraSelect.addEventListener('change', e => {
                 localStorage.defaultCamera = e.target.value;
-                document.querySelector('video#camera_preview').srcObject = null;
+
+                let cameraPreview = document.querySelector('video#camera_preview');
+
+                if (cameraPreview.srcObject) {
+                    cameraPreview.srcObject.getTracks().forEach(track => track.stop());
+                }
+
+                cameraPreview.srcObject = null;
 
                 Visio.getUserMedia(withVideo);
             });
