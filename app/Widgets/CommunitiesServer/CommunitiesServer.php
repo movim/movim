@@ -18,6 +18,8 @@ class CommunitiesServer extends \Movim\Widget\Base
     {
         $this->registerEvent('disco_items_handle', 'onDisco');
         $this->registerEvent('disco_items_error', 'onDiscoError');
+        $this->registerEvent('disco_items_errorremoteservernotfound', 'onRemoteServerNotFound');
+        $this->registerEvent('disco_items_errorremoteservertimeout', 'onRemoteServerNotFound');
         $this->registerEvent('pubsub_create_handle', 'onCreate');
         $this->registerEvent('pubsub_testcreate_handle', 'onTestCreate');
         $this->registerEvent('pubsub_testcreate_error', 'onTestCreateError');
@@ -32,6 +34,14 @@ class CommunitiesServer extends \Movim\Widget\Base
         list($origin, $node) = array_values($packet->content);
         $this->ajaxDisco($origin);
         $this->rpc('MovimUtils.reload', $this->route('community', [$origin, $node]));
+    }
+
+    public function onRemoteServerNotFound($packet)
+    {
+        $view = $this->tpl();
+        $view->assign('server', $packet->content);
+
+        $this->rpc('MovimTpl.fill', '#communities_server', $view->draw('_communitiesserver_remoteservernotfound'));
     }
 
     public function onDisco($packet)

@@ -18,6 +18,7 @@ v0.27.2 (master)
 * Refactor the Search results layout to be more coherent with the rest of the UI
 * Prevent the Draw widget to be loaded at each page change
 * Redesign the admin page form
+* Handle unreachable servers errors properly in CommunitiesServer
 
 v0.27.1
 ---------------------------

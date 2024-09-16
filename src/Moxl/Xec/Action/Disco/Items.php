@@ -110,6 +110,19 @@ class Items extends Action
 
     public function errorRegistrationRequired(string $errorId, ?string $message = null)
     {
+        $this->pack($this->_to);
+        $this->deliver();
+    }
+
+    public function errorRemoteServerNotFound(string $errorId, ?string $message = null)
+    {
+        $this->pack($this->_to);
+        $this->deliver();
+    }
+
+    public function errorRemoteServerTimeout(string $errorId, ?string $message = null)
+    {
+        $this->pack($this->_to);
         $this->deliver();
     }
 }
