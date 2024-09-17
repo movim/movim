@@ -408,6 +408,9 @@ var VisioUtils = {
 
             VisioUtils.disableSwitchCameraButton();
 
+            var videoTrack = MovimVisio.pc.getSenders().find(rtc => rtc.track && rtc.track.kind == 'video');
+            if (videoTrack) videoTrack.track.stop();
+
             navigator.mediaDevices.getUserMedia(constraints).then(stream => {
                 stream.getTracks().forEach(track => {
                     MovimVisio.pc.addTrack(track, stream);

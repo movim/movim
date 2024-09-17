@@ -19,6 +19,7 @@ v0.27.2 (master)
 * Prevent the Draw widget to be loaded at each page change
 * Redesign the admin page form
 * Handle unreachable servers errors properly in CommunitiesServer
+* Fix the camera switch on Android devices during call
 
 v0.27.1
 ---------------------------
