@@ -1,19 +1,18 @@
 {if="$pushSubscriptions->count() > 0"}
 <form>
     <div>
-        <ul class="list fill card">
-            <li class="subheader">
+        <ul class="list fill thick">
+            <li>
+                <span class="primary icon gray">
+                    <i class="material-symbols">circle_notifications</i>
+                </span>
                 <div>
                     <p>{$c->__('notificationconfig.push_subscriptions')}</p>
-                </div>
-            </li>
-            <li>
-                <div>
-                    <p></p>
                     <p>{$c->__('notificationconfig.push_subscriptions_text')}</p>
                 </div>
             </li>
-            <br />
+        </ul>
+        <ul class="list fill middle divided">
             {loop="$pushSubscriptions"}
                 <li>
                     <span class="primary icon {if="$value->self"}green{else}gray{/if}">
@@ -41,7 +40,7 @@
                         <p>{$value->platform ?? $c->__('notificationconfig.unknown_platform')} - {$value->created_at|prepareDate}</p>
                     </div>
                 </li>
-                {if="$value->self"}<br /><hr /><br />{/if}
+                {if="$value->self"}{/if}
             {/loop}
         </ul>
     </div>

@@ -1,4 +1,4 @@
-<ul class="list thick">
+<ul class="list fill thick">
     <li>
         <span class="primary icon gray">
             <i class="material-symbols">notifications_active</i>
@@ -6,7 +6,7 @@
         <div>
             <button
                 name="submit"
-                class="button flat oppose"
+                class="button oppose green"
                 onclick="Notif.request(); Dialog_ajaxClear()">
                 {$c->__('notification.request_button')}
             </button>

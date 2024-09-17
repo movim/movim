@@ -20,6 +20,8 @@ v0.27.2 (master)
 * Redesign the admin page form
 * Handle unreachable servers errors properly in CommunitiesServer
 * Fix the camera switch on Android devices during call
+* Fix Audio notifications configuration and move it to the Configuration tab
+* Redesign the Push Notifications tab
 
 v0.27.1
 ---------------------------

@@ -1,4 +1,46 @@
 <form enctype="multipart/form-data" method="post" action="index.php" name="general" onchange="Config_ajaxSubmit(MovimUtils.formToJson('general'));">
+    <div class="block">
+        <ul class="list fill flex ">
+            <li class="subheader large block"><div><p>{$c->__('config.audio_title')}</p></div></li>
+            <li>
+                <span class="primary icon gray">
+                    <i class="material-symbols">call</i>
+                </span>
+                <span class="control">
+                    <div class="checkbox">
+                        <input
+                            {if="$conf->notificationcall"}checked{/if}
+                            type="checkbox"
+                            id="notificationcall"
+                            name="notificationcall"/>
+                        <label for="notificationcall"></label>
+                    </div>
+                </span>
+                <div>
+                    <p class="normal line">{$c->__('config.audio_call')}</p>
+                </div>
+            </li>
+            <li>
+                <span class="primary icon gray">
+                    <i class="material-symbols">forum</i>
+                </span>
+                <span class="control">
+                    <div class="checkbox">
+                        <input
+                            {if="$conf->notificationchat"}checked{/if}
+                            type="checkbox"
+                            id="notificationchat"
+                            name="notificationchat"/>
+                        <label for="notificationchat"></label>
+                    </div>
+                </span>
+                <div>
+                    <p class="normal line">{$c->__('config.audio_chat')}</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+
     <ul class="list fill">
         <li class="subheader"><div><p>{$c->__('config.general')}</p></div></li>
     </ul>

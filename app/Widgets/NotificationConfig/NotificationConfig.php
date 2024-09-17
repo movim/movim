@@ -5,8 +5,6 @@ namespace App\Widgets\NotificationConfig;
 use App\Widgets\Toast\Toast;
 use Movim\Widget\Base;
 
-use Moxl\Xec\Action\Storage\Set;
-
 class NotificationConfig extends Base
 {
     public function load()
@@ -45,23 +43,5 @@ class NotificationConfig extends Base
     {
         $view = $this->tpl();
         $this->rpc('MovimTpl.fill', '#notificationconfig_widget_request', $view->draw('_notificationconfig_request'));
-    }
-
-    public function ajaxAudioSubmit($data)
-    {
-        $config = [];
-        foreach ($data as $key => $value) {
-            $config[$key] = $value->value;
-        }
-
-        // The user is updated in the Config widget
-        $s = new Set;
-        $s->setData(serialize($config))
-          ->request();
-    }
-
-    public function display()
-    {
-        $this->view->assign('conf', $this->user);
     }
 }
