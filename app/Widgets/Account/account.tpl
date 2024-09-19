@@ -1,11 +1,7 @@
 <div class="tabelem padded_top_bottom" title="{$c->__('account.title')}" data-mobileicon="account_circle" id="account_widget">
     <div id="account_presences"></div>
     {if="$c->getUser()->hasOMEMO()"}<div id="account_fingerprints"></div>{/if}
-    <div id="account_gateways">
-        {autoescape="off"}
-            {$gateways}
-        {/autoescape}
-    </div>
+    <div id="account_gateways"></div>
     <ul class="list fill active">
         <li class="subheader">
             <div>
