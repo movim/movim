@@ -225,7 +225,7 @@ class Notifications extends Base
         $view->assign('notifs', $notifs);
         $view->assign('subscriptionRoster', $this->user->session->contacts()
                                      ->where('subscription' , 'none')
-                                     ->orderBy('subscription')
+                                     ->orderBy('ask', 'desc')
                                      ->get());
         $view->assign('subscribePresences', $this->user->session->presences()
                                                  ->with('contact')

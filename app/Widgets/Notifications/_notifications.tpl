@@ -40,9 +40,15 @@
             <span class="primary icon bubble active" onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}'); Drawer.clear();">
                 <img src="{$value->getPicture()}">
             </span>
-            <span class="control icon gray active" title="{$c->__('button.add')}" onclick="Notifications_ajaxAddAsk('{$value->jid|echapJS}'); Drawer.clear();">
-                <i class="material-symbols">add</i>
-            </span>
+            {if="$value->ask == 'subscribe'"}
+                <span class="control icon gray disabled" title="{$c->__('room.invited')}">
+                    <i class="material-symbols">chat_paste_go</i>
+                </span>
+            {else}
+                <span class="control icon gray active" title="{$c->__('button.add')}" onclick="Notifications_ajaxAddAsk('{$value->jid|echapJS}'); Drawer.clear();">
+                    <i class="material-symbols">add</i>
+                </span>
+            {/if}
             <span class="control icon gray active" title="{$c->__('button.delete')}" onclick="Notifications_ajaxDeleteContact('{$value->jid|echapJS}'); Drawer.clear();">
                 <i class="material-symbols">delete</i>
             </span>
