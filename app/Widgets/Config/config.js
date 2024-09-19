@@ -2,6 +2,10 @@ var Config = {
     switchNightMode: function()
     {
         document.body.classList.toggle('nightmode');
+    },
+
+    updateSystemVariable: function (variable, value) {
+        window[variable] = value;
     }
 }
 

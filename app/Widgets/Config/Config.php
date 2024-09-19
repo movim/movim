@@ -121,6 +121,10 @@ class Config extends Base
         $config = [];
         foreach ($data as $key => $value) {
             $config[$key] = $value->value;
+
+            if (in_array($key, ['notificationcall', 'notificationchat'])) {
+                $this->updateSystemVariable($key, $value->value);
+            }
         }
 
         $s = new Set;
@@ -168,6 +172,14 @@ class Config extends Base
     private function refreshConfig()
     {
         $this->rpc('MovimTpl.fill', '#config_widget_form', $this->prepareConfigForm());
+    }
+
+    public function updateSystemVariable(string $variable, $value)
+    {
+        match ($variable) {
+            'notificationcall' => $this->rpc('Config.updateSystemVariable', 'NOTIFICATION_CALL', (bool)$value),
+            'notificationchat' => $this->rpc('Config.updateSystemVariable', 'NOTIFICATION_CHAT', (bool)$value),
+        };
     }
 
     public function display()
