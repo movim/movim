@@ -11,6 +11,8 @@ var Visio = {
 
     inboundStream: null,
 
+    states: null,
+
     tracksTypes: [],
 
     prepare: function (from, id, withVideo) {
