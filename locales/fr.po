@@ -126,7 +126,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-29 13:36+0200\n"
+"POT-Creation-Date: 2024-09-23 22:02+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>, 2015-2024\n"
 "Language-Team: French (France) (http://app.transifex.com/movim/movim/language/fr_FR/)\n"
@@ -135,7 +135,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
-"X-Generator: Translate Toolkit 3.13.2\n"
+"X-Generator: Translate Toolkit 3.13.3\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -636,7 +636,7 @@ msgstr "Éditer le dernier message"
 msgid "Report abuse"
 msgstr "Rapporter un abus"
 
-#: [chat]jingle_incoming [notificationconfig]audio_call
+#: [chat]jingle_incoming [config]audio_call
 msgid "Incoming call"
 msgstr "Appel entrant"
 
@@ -916,6 +916,10 @@ msgstr "Vous ne pouvez pas créer de communauté sur ce serveur"
 #: [communitiesserver]disco_error
 msgid "Issue when trying to discover the items"
 msgstr "Un problème à été rencontré lors de la récupération des éléments"
+
+#: [communitiesserver]remoteservernotfound
+msgid "The server %s cannot be reached"
+msgstr "Le serveur %s n'est pas joignable"
 
 #: [communitiesservers]empty_title
 msgid "No Communities Servers yet…"
@@ -1234,6 +1238,14 @@ msgstr "Niveau de confidentialité du blog sauvegardé"
 #: [config]confidentiality
 msgid "Confidentiality"
 msgstr "Confidentialité"
+
+#: [config]audio_title
+msgid "Audio notifications"
+msgstr "Notifications audio"
+
+#: [config]audio_chat
+msgid "Incoming message"
+msgstr "Message entrant"
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -1720,14 +1732,6 @@ msgstr "Autorisation refusée"
 msgid "Notifications"
 msgstr "Notifications"
 
-#: [notificationconfig]audio_title
-msgid "Audio notifications"
-msgstr "Notifications audio"
-
-#: [notificationconfig]audio_chat
-msgid "Incoming message"
-msgstr "Message entrant"
-
 #: [notificationconfig]push_subscriptions
 msgid "Push notifications"
 msgstr "Notifications push"
@@ -1767,6 +1771,10 @@ msgstr "Pas de nouvelles invitations"
 #: [invitations]no_subscriptions
 msgid "No pending subscriptions"
 msgstr "Pas de demande de souscriptions"
+
+#: [invitations]wants_to_talk
+msgid "%s wants to talk with you"
+msgstr "%s veut parler avec vous"
 
 #: [notifs]empty
 msgid "No new notifications"
@@ -2677,21 +2685,20 @@ msgid "…connecting"
 msgstr "…mise en relation"
 
 #: [visiolobby]called
-#, fuzzy
 msgid "%s is calling you"
 msgstr "…vous appelle"
 
 #: [visiolobby]calling
 msgid "Calling %s"
-msgstr ""
+msgstr "En communication avec %s"
 
 #: [visiolobby]setup
-msgid "Seting up your camera and microphone"
-msgstr ""
+msgid "Setting up your camera and microphone"
+msgstr "Configurez votre webcam et microphone"
 
 #: [visiolobby]devices_disco
 msgid "Please allow your browser to share your devices to configure them"
-msgstr ""
+msgstr "Veuillez autoriser le partage de vos périphériques dans votre navigateur pour pouvoir les configurer"
 
 #: [visiolobby]microphone_label [visioconfig]microphone_label
 msgid "Default microphone"

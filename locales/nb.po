@@ -121,7 +121,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-29 13:36+0200\n"
+"POT-Creation-Date: 2024-09-23 22:02+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Dominik George <nik@naturalnet.de>, 2017-2018\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://app.transifex.com/movim/movim/language/nb_NO/)\n"
@@ -130,7 +130,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.13.2\n"
+"X-Generator: Translate Toolkit 3.13.3\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -631,7 +631,7 @@ msgstr "Endre siste melding"
 msgid "Report abuse"
 msgstr "Melde misbruk"
 
-#: [chat]jingle_incoming [notificationconfig]audio_call
+#: [chat]jingle_incoming [config]audio_call
 msgid "Incoming call"
 msgstr ""
 
@@ -910,6 +910,10 @@ msgstr "Du kan ikke opprette et nytt fellesskap på denne tjeneren"
 
 #: [communitiesserver]disco_error
 msgid "Issue when trying to discover the items"
+msgstr ""
+
+#: [communitiesserver]remoteservernotfound
+msgid "The server %s cannot be reached"
 msgstr ""
 
 #: [communitiesservers]empty_title
@@ -1228,6 +1232,14 @@ msgstr ""
 
 #: [config]confidentiality
 msgid "Confidentiality"
+msgstr ""
+
+#: [config]audio_title
+msgid "Audio notifications"
+msgstr ""
+
+#: [config]audio_chat
+msgid "Incoming message"
 msgstr ""
 
 #: [confirm]title
@@ -1715,14 +1727,6 @@ msgstr ""
 msgid "Notifications"
 msgstr "Varsel"
 
-#: [notificationconfig]audio_title
-msgid "Audio notifications"
-msgstr ""
-
-#: [notificationconfig]audio_chat
-msgid "Incoming message"
-msgstr ""
-
 #: [notificationconfig]push_subscriptions
 msgid "Push notifications"
 msgstr ""
@@ -1761,6 +1765,10 @@ msgstr ""
 
 #: [invitations]no_subscriptions
 msgid "No pending subscriptions"
+msgstr ""
+
+#: [invitations]wants_to_talk
+msgid "%s wants to talk with you"
 msgstr ""
 
 #: [notifs]empty
@@ -2672,16 +2680,15 @@ msgid "…connecting"
 msgstr "…kobler til"
 
 #: [visiolobby]called
-#, fuzzy
 msgid "%s is calling you"
-msgstr "…ringer deg"
+msgstr ""
 
 #: [visiolobby]calling
 msgid "Calling %s"
 msgstr ""
 
 #: [visiolobby]setup
-msgid "Seting up your camera and microphone"
+msgid "Setting up your camera and microphone"
 msgstr ""
 
 #: [visiolobby]devices_disco

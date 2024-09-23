@@ -116,7 +116,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-29 13:36+0200\n"
+"POT-Creation-Date: 2024-09-23 22:02+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: English (http://app.transifex.com/movim/movim/language/en/)\n"
@@ -125,7 +125,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.13.2\n"
+"X-Generator: Translate Toolkit 3.13.3\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -626,7 +626,7 @@ msgstr "Edit last message"
 msgid "Report abuse"
 msgstr "Report abuse"
 
-#: [chat]jingle_incoming [notificationconfig]audio_call
+#: [chat]jingle_incoming [config]audio_call
 msgid "Incoming call"
 msgstr "Incoming call"
 
@@ -906,6 +906,10 @@ msgstr "You cannot create a new community on this server"
 #: [communitiesserver]disco_error
 msgid "Issue when trying to discover the items"
 msgstr "Issue when trying to discover the items"
+
+#: [communitiesserver]remoteservernotfound
+msgid "The server %s cannot be reached"
+msgstr "The server %s cannot be reached"
 
 #: [communitiesservers]empty_title
 msgid "No Communities Servers yet…"
@@ -1224,6 +1228,14 @@ msgstr "Personal blog confidentiality saved"
 #: [config]confidentiality
 msgid "Confidentiality"
 msgstr "Confidentiality"
+
+#: [config]audio_title
+msgid "Audio notifications"
+msgstr "Audio notifications"
+
+#: [config]audio_chat
+msgid "Incoming message"
+msgstr "Incoming message"
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -1710,14 +1722,6 @@ msgstr "Authorization refused"
 msgid "Notifications"
 msgstr "Notifications"
 
-#: [notificationconfig]audio_title
-msgid "Audio notifications"
-msgstr "Audio notifications"
-
-#: [notificationconfig]audio_chat
-msgid "Incoming message"
-msgstr "Incoming message"
-
 #: [notificationconfig]push_subscriptions
 msgid "Push notifications"
 msgstr "Push notifications"
@@ -1757,6 +1761,10 @@ msgstr "No new invitations"
 #: [invitations]no_subscriptions
 msgid "No pending subscriptions"
 msgstr "No pending subscriptions"
+
+#: [invitations]wants_to_talk
+msgid "%s wants to talk with you"
+msgstr "%s wants to talk with you"
 
 #: [notifs]empty
 msgid "No new notifications"
@@ -2667,21 +2675,20 @@ msgid "…connecting"
 msgstr "…connecting"
 
 #: [visiolobby]called
-#, fuzzy
 msgid "%s is calling you"
-msgstr "…is calling you"
+msgstr "%s is calling you"
 
 #: [visiolobby]calling
 msgid "Calling %s"
-msgstr ""
+msgstr "Calling %s"
 
 #: [visiolobby]setup
-msgid "Seting up your camera and microphone"
-msgstr ""
+msgid "Setting up your camera and microphone"
+msgstr "Setting up your camera and microphone"
 
 #: [visiolobby]devices_disco
 msgid "Please allow your browser to share your devices to configure them"
-msgstr ""
+msgstr "Please allow your browser to share your devices to configure them"
 
 #: [visiolobby]microphone_label [visioconfig]microphone_label
 msgid "Default microphone"

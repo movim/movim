@@ -130,7 +130,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-29 13:36+0200\n"
+"POT-Creation-Date: 2024-09-23 22:02+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Phonebook3599, 2024\n"
 "Language-Team: Chinese (China) (http://app.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -139,7 +139,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Translate Toolkit 3.13.2\n"
+"X-Generator: Translate Toolkit 3.13.3\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -640,7 +640,7 @@ msgstr "编辑最后一条消息"
 msgid "Report abuse"
 msgstr "举报滥用行为"
 
-#: [chat]jingle_incoming [notificationconfig]audio_call
+#: [chat]jingle_incoming [config]audio_call
 msgid "Incoming call"
 msgstr "来电"
 
@@ -920,6 +920,10 @@ msgstr "无法在此服务器上创建新社区"
 #: [communitiesserver]disco_error
 msgid "Issue when trying to discover the items"
 msgstr "尝试查找项目时出现问题"
+
+#: [communitiesserver]remoteservernotfound
+msgid "The server %s cannot be reached"
+msgstr ""
 
 #: [communitiesservers]empty_title
 msgid "No Communities Servers yet…"
@@ -1239,6 +1243,14 @@ msgstr "个人博客保密性已保存"
 msgid "Confidentiality"
 msgstr "保密性"
 
+#: [config]audio_title
+msgid "Audio notifications"
+msgstr "音频通知"
+
+#: [config]audio_chat
+msgid "Incoming message"
+msgstr "收到的消息"
+
 #: [confirm]title
 msgid "Confirmation of authentication"
 msgstr "验证确认"
@@ -1453,35 +1465,35 @@ msgstr "照片"
 
 #: [emojisconfig]title
 msgid "Emojis"
-msgstr ""
+msgstr "表情符号"
 
 #: [emojisconfig]favorites_title
 msgid "My favorite emojis"
-msgstr ""
+msgstr "收藏的表情符号"
 
 #: [emojisconfig]favorites_text
 msgid "Pick emojis from the packs bellow that you want to add to your favorites ones"
-msgstr ""
+msgstr "从下面的表情包中选择要添加到收藏中的表情符号"
 
 #: [emojisconfig]dialog_title
 msgid "Manage a favorite emoji"
-msgstr ""
+msgstr "管理收藏的表情符号"
 
 #: [emojisconfig]alias_error
 msgid "The shortcut should only contains lowercase letters and dashes"
-msgstr ""
+msgstr "快捷方式应仅包含小写字母和破折号"
 
 #: [emojisconfig]new_added
 msgid "New favorite emoji added"
-msgstr ""
+msgstr "新收藏的表情符号已添加"
 
 #: [emojisconfig]alias_conflict
 msgid "The shortcut is already used on another emoji"
-msgstr ""
+msgstr "快捷方式已在另一个表情符号上使用"
 
 #: [emojisconfig]no_emojis_yet
 msgid "No favorites yet, check the settings page to add some"
-msgstr ""
+msgstr "还没有收藏，请检查设置页面以添加一些"
 
 #: [faq]title
 msgid "Frequently Asked Questions"
@@ -1724,14 +1736,6 @@ msgstr "授权已拒绝"
 msgid "Notifications"
 msgstr "通知"
 
-#: [notificationconfig]audio_title
-msgid "Audio notifications"
-msgstr "音频通知"
-
-#: [notificationconfig]audio_chat
-msgid "Incoming message"
-msgstr "收到的消息"
-
 #: [notificationconfig]push_subscriptions
 msgid "Push notifications"
 msgstr "推送通知"
@@ -1758,11 +1762,11 @@ msgstr "未知平台"
 
 #: [invitations]received
 msgid "Received Invitations"
-msgstr ""
+msgstr "收到了邀请"
 
 #: [invitations]adds_you
 msgid "%s wants to add you"
-msgstr ""
+msgstr "%s 想要添加您"
 
 #: [invitations]no_new
 msgid "No new invitations"
@@ -1770,6 +1774,10 @@ msgstr "没有新的邀请"
 
 #: [invitations]no_subscriptions
 msgid "No pending subscriptions"
+msgstr "没有待处理的订阅"
+
+#: [invitations]wants_to_talk
+msgid "%s wants to talk with you"
 msgstr ""
 
 #: [notifs]empty
@@ -2666,36 +2674,35 @@ msgstr "…响铃中"
 
 #: [visio]declined
 msgid "Declined"
-msgstr ""
+msgstr "已拒绝"
 
 #: [visio]in_call
 msgid "In call"
-msgstr ""
+msgstr "通话中"
 
 #: [visio]failed
 msgid "Failed"
-msgstr ""
+msgstr "失败"
 
 #: [visio]connecting
 msgid "…connecting"
 msgstr "…正在连接"
 
 #: [visiolobby]called
-#, fuzzy
 msgid "%s is calling you"
-msgstr "…正在呼叫您"
+msgstr "%s 正在呼叫您"
 
 #: [visiolobby]calling
 msgid "Calling %s"
-msgstr ""
+msgstr "正在呼叫 %s"
 
 #: [visiolobby]setup
-msgid "Seting up your camera and microphone"
+msgid "Setting up your camera and microphone"
 msgstr ""
 
 #: [visiolobby]devices_disco
 msgid "Please allow your browser to share your devices to configure them"
-msgstr ""
+msgstr "请允许您的浏览器分享您的设备以进行配置"
 
 #: [visiolobby]microphone_label [visioconfig]microphone_label
 msgid "Default microphone"

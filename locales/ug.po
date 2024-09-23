@@ -118,7 +118,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-29 13:36+0200\n"
+"POT-Creation-Date: 2024-09-23 22:02+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Keram, 2023\n"
 "Language-Team: Uyghur (http://app.transifex.com/movim/movim/language/ug/)\n"
@@ -127,7 +127,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.13.2\n"
+"X-Generator: Translate Toolkit 3.13.3\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -628,7 +628,7 @@ msgstr "ئاخىرقى ئۇچۇرنى تەھرىرلەش"
 msgid "Report abuse"
 msgstr "قالايمىقان ئىشلىتىشنى دوكىلات قىلىش"
 
-#: [chat]jingle_incoming [notificationconfig]audio_call
+#: [chat]jingle_incoming [config]audio_call
 msgid "Incoming call"
 msgstr "كەلگەن تېلىفۇن"
 
@@ -908,6 +908,10 @@ msgstr "سىز بۇ مۇلازىمېتىردا بىر يېڭى جامائەت ق
 #: [communitiesserver]disco_error
 msgid "Issue when trying to discover the items"
 msgstr "بۇ بۇيۇملارنى بايقاۋاتقاندىكى خاتالىق"
+
+#: [communitiesserver]remoteservernotfound
+msgid "The server %s cannot be reached"
+msgstr ""
 
 #: [communitiesservers]empty_title
 msgid "No Communities Servers yet…"
@@ -1226,6 +1230,14 @@ msgstr "شەخسىي بىلوگ مەخپىيەتلىكى ساقلاندى"
 #: [config]confidentiality
 msgid "Confidentiality"
 msgstr "مەخپىيەتلىك"
+
+#: [config]audio_title
+msgid "Audio notifications"
+msgstr "ئاۋازلىق ئۇقتۇرۇشلار"
+
+#: [config]audio_chat
+msgid "Incoming message"
+msgstr "كەلگەن ئۇچۇرلار"
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -1712,14 +1724,6 @@ msgstr "ھوقوق تارتىۋېلىندى"
 msgid "Notifications"
 msgstr "ئۇقتۇرۇشلار"
 
-#: [notificationconfig]audio_title
-msgid "Audio notifications"
-msgstr "ئاۋازلىق ئۇقتۇرۇشلار"
-
-#: [notificationconfig]audio_chat
-msgid "Incoming message"
-msgstr "كەلگەن ئۇچۇرلار"
-
 #: [notificationconfig]push_subscriptions
 msgid "Push notifications"
 msgstr "ئىتتىرمە ئۇقتۇرۇش"
@@ -1758,6 +1762,10 @@ msgstr "يېڭى تەكلىپ يوق"
 
 #: [invitations]no_subscriptions
 msgid "No pending subscriptions"
+msgstr ""
+
+#: [invitations]wants_to_talk
+msgid "%s wants to talk with you"
 msgstr ""
 
 #: [notifs]empty
@@ -2669,16 +2677,15 @@ msgid "…connecting"
 msgstr "ئۇلىنىۋاتىدۇ..."
 
 #: [visiolobby]called
-#, fuzzy
 msgid "%s is calling you"
-msgstr "...بولسا سىزنى چاقىرىۋاتىدۇ"
+msgstr ""
 
 #: [visiolobby]calling
 msgid "Calling %s"
 msgstr ""
 
 #: [visiolobby]setup
-msgid "Seting up your camera and microphone"
+msgid "Setting up your camera and microphone"
 msgstr ""
 
 #: [visiolobby]devices_disco

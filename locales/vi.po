@@ -117,7 +117,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-29 13:36+0200\n"
+"POT-Creation-Date: 2024-09-23 22:02+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Khám Phá Phần Mềm <meshareyou@gmail.com>, 2019\n"
 "Language-Team: Vietnamese (http://app.transifex.com/movim/movim/language/vi/)\n"
@@ -126,7 +126,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Translate Toolkit 3.13.2\n"
+"X-Generator: Translate Toolkit 3.13.3\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -627,7 +627,7 @@ msgstr ""
 msgid "Report abuse"
 msgstr ""
 
-#: [chat]jingle_incoming [notificationconfig]audio_call
+#: [chat]jingle_incoming [config]audio_call
 msgid "Incoming call"
 msgstr ""
 
@@ -906,6 +906,10 @@ msgstr ""
 
 #: [communitiesserver]disco_error
 msgid "Issue when trying to discover the items"
+msgstr ""
+
+#: [communitiesserver]remoteservernotfound
+msgid "The server %s cannot be reached"
 msgstr ""
 
 #: [communitiesservers]empty_title
@@ -1224,6 +1228,14 @@ msgstr ""
 
 #: [config]confidentiality
 msgid "Confidentiality"
+msgstr ""
+
+#: [config]audio_title
+msgid "Audio notifications"
+msgstr ""
+
+#: [config]audio_chat
+msgid "Incoming message"
 msgstr ""
 
 #: [confirm]title
@@ -1711,14 +1723,6 @@ msgstr ""
 msgid "Notifications"
 msgstr ""
 
-#: [notificationconfig]audio_title
-msgid "Audio notifications"
-msgstr ""
-
-#: [notificationconfig]audio_chat
-msgid "Incoming message"
-msgstr ""
-
 #: [notificationconfig]push_subscriptions
 msgid "Push notifications"
 msgstr ""
@@ -1757,6 +1761,10 @@ msgstr ""
 
 #: [invitations]no_subscriptions
 msgid "No pending subscriptions"
+msgstr ""
+
+#: [invitations]wants_to_talk
+msgid "%s wants to talk with you"
 msgstr ""
 
 #: [notifs]empty
@@ -2676,7 +2684,7 @@ msgid "Calling %s"
 msgstr ""
 
 #: [visiolobby]setup
-msgid "Seting up your camera and microphone"
+msgid "Setting up your camera and microphone"
 msgstr ""
 
 #: [visiolobby]devices_disco
