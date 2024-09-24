@@ -1,7 +1,10 @@
 Movim Changelog
 ================
 
-v0.27.2 (master)
+v0.28.1 (master)
+---------------------------
+
+v0.28
 ---------------------------
 * Complete the gateway support and add AdHoc commands in the Configuration
 * Fix several import, namespace issues and typos
