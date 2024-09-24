@@ -45,7 +45,7 @@ jobs:
        app_user: movim
        app_user_password: movim
        app_db: movim
-       #postgres_extensions: uuid-ossp ltree
+       postgres_extensions: pgcrypto
 
     - name: Perform database migration using composer
       run: composer movim:migrate
