@@ -1,6 +1,7 @@
 {
     "name": "movim/movim",
     "description": "Decentralized social platform based on XMPP",
+    "license": "AGPL-3.0-or-later",
     "autoload": {
         "psr-0": {
             "Movim\\": "src/",
