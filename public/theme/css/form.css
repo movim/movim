@@ -458,6 +458,10 @@ ul.list.actions > li:hover p,
     transform: rotate(45deg);
 }
 
+ul.list li div > .button {
+    margin: 0.25rem;
+}
+
 li.action div.action .button {
     margin: 0.5rem;
     display: block;
