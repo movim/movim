@@ -1,13 +1,10 @@
 [Unit]
 Description=Movim daemon
-After=apache2.service network.target local-fs.target
+After=nginx.service network.target local-fs.target
 
 [Service]
 User=www-data
 Type=simple
-Environment=PUBLIC_URL=https://localhost/movim/
-Environment=WS_PORT=8080
-EnvironmentFile=-/etc/default/movim
 ExecStart=/usr/bin/php daemon.php start
 WorkingDirectory=/var/www/movim/
 StandardOutput=journal
