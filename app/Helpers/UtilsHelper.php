@@ -631,15 +631,13 @@ function generateUUID($string = false)
  * @desc Generate a simple random key
  * @params The size of the key
  */
-function generateKey($size)
+function generateKey(?int $size = 16): string
 {
-    // Generating the session cookie's hash.
-    $hash_chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    $hash = "";
+    $hashChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    $hash = '';
 
     for ($i = 0; $i < $size; $i++) {
-        $r = mt_rand(0, strlen($hash_chars) - 1);
-        $hash .= $hash_chars[$r];
+        $hash .= $hashChars[random_int(0, strlen($hashChars) - 1)];
     }
 
     return $hash;
