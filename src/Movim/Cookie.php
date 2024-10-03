@@ -31,7 +31,7 @@ class Cookie
 
     public static function getTime()
     {
-        return time()+604800;
+        return time() + 604800;
     }
 
     public static function clearCookieHeader()

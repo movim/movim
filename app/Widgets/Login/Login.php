@@ -271,7 +271,7 @@ class Login extends Base
         $rkey = Key::createNewRandomKey();
 
         if (!$deviceId) {
-            $deviceId = generateKey(16);
+            $deviceId = generateKey();
 
             $key = new \App\EncryptedPassword;
             $key->user_id = $login;

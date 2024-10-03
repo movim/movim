@@ -8,6 +8,7 @@ namespace Movim\Daemon;
 
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
+use React\EventLoop\LoopInterface;
 
 use Dflydev\FigCookies\Cookies;
 
@@ -23,13 +24,13 @@ class Core implements MessageComponentInterface
     public $sessions = [];
     private $key; // Random key generate by the daemon to authenticate the internal Websockets
 
-    public $loop;
+    public LoopInterface $loop;
     public $baseuri;
 
     public $single = ['visio'];
     public $singlelocks = [];
 
-    public function __construct($loop, $baseuri)
+    public function __construct(LoopInterface $loop, $baseuri)
     {
         $this->key = \generateKey(32);
 
@@ -208,7 +209,7 @@ class Core implements MessageComponentInterface
             foreach ($this->sessions as $sid => $session) {
                 if (
                     $session->countClients() == 0
-                    && $session->registered == null
+                    && $session->registered == false
                 ) {
                     $session->killLinker();
                 }

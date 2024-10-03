@@ -14,8 +14,8 @@ class Presence extends Model
     public $incrementing = false;
 
     protected $attributes = [
-        'session_id'    => SESSION_ID,
-        'muc'    => false
+        'session_id' => SESSION_ID,
+        'muc' => false
     ];
 
     protected $fillable = [

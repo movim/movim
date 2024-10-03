@@ -7,23 +7,26 @@
 namespace Movim\Daemon;
 
 use Ratchet\ConnectionInterface;
+use React\ChildProcess\Process;
+use React\EventLoop\LoopInterface;
+
 use App\Session as DBSession;
 
 class Session
 {
     const DOWN_TIMER = 20;
-    protected $clients;       // Browser Websockets
-    public $timestamp;
-    protected $sid;           // Session id
-    protected $baseuri;
-    public $process;       // Linker
-    public $internalSocket; // Linker to Session Websocket
+    protected \SplObjectStorage $clients; // Browser Websockets
+    public int $timestamp;
+    protected string $sid;
+    protected string $baseuri;
+    public ?Process $process;
+    public ?ConnectionInterface $internalSocket = null;
 
-    private $port;         // Daemon Websocket port
-    private $key;          // Daemon secure key
+    private int $port; // Daemon Websocket port
+    private string $key; // Daemon secure key
 
-    public $registered;
-    public $started;
+    public bool $registered = false;
+    public bool $started = false;
 
     private $state;
 
@@ -44,17 +47,17 @@ class Session
     ];
 
     public function __construct(
-        $loop,
-        $sid,
-        $baseuri,
-        $port,
-        $key,
+        LoopInterface $loop,
+        string $sid,
+        string $baseuri,
+        int $port,
+        string $key,
         $language = false,
         $offset = 0,
         $verbose = false,
         $debug = false
     ) {
-        $this->sid     = $sid;
+        $this->sid = $sid;
         $this->baseuri = $baseuri;
         $this->language = $language;
         $this->offset = $offset;
@@ -116,7 +119,7 @@ class Session
         return $this->clients->count();
     }
 
-    private function register($loop)
+    private function register(LoopInterface $loop)
     {
         // Only load the required extensions
         $configuration = '-n ';
@@ -144,7 +147,7 @@ class Session
         }
 
         // Launching the linker
-        $this->process = new \React\ChildProcess\Process(
+        $this->process = new Process(
             'exec ' . PHP_BINARY . ' ' . $configuration . ' -d=memory_limit=512M linker.php ' . $this->sid,
             null,
             [

@@ -107,7 +107,7 @@ class Session extends Model
         $this->host        = $host;
         $this->username    = $username;
         $this->user_id     = $username . '@' . $host;
-        $this->resource    = 'movim' . \generateKey(6);
+        $this->resource    = 'movim' . \generateKey();
         $this->hash        = password_hash(Session::hashSession($this->username, $password, $this->host),  PASSWORD_DEFAULT);
         $this->active      = false;
 
