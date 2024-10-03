@@ -7,6 +7,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 
 use App\Contact;
 use App\Message;
+use App\OpenChat;
 use App\Roster;
 use Movim\CurrentCall;
 
@@ -362,34 +363,27 @@ class Chats extends Base
 
     private function resolveChats(): array
     {
-        $unreads = [];
-
-        // Get the chats with unread messages
         $this->user->messages()
-            ->select('jidfrom')
+            ->select('published', 'jidfrom')
             ->where('seen', false)
             ->whereIn('type', ['chat', 'headline', 'invitation'])
             ->where('jidfrom', '!=', $this->user->id)
-            ->groupBy('jidfrom')
-            ->pluck('jidfrom')
-            ->each(function ($item) use (&$unreads) {
-                $unreads[$item] = 1;
+            ->whereNotIn('jidfrom', function ($query) {
+                $query->select('jid')
+                    ->from('open_chats')
+                    ->where('user_id', \App\User::me()->id);
+            })
+            ->groupBy('published', 'jidfrom')
+            ->pluck('published', 'jidfrom')
+            ->each(function ($published, $jid) {
+                $openChat = new OpenChat;
+                $openChat->user_id = \App\User::me()->id;
+                $openChat->jid = $jid;
+                $openChat->created_at = $openChat->updated_at = $published;
+                $openChat->save(['timestamps' => false]);
             });
 
-        // Append the open chats
-        $openChats = $this->user->openChats()->orderBy('updated_at')->pluck('jid')->toArray();
-
-        // Clean the unreads from the open ones
-        foreach ($openChats as $jid) {
-            if (array_key_exists($jid, $unreads)) {
-                unset($unreads[$jid]);
-            }
-        }
-
-        return array_merge(
-            array_keys($unreads),
-            $openChats,
-        );
+        return $this->user->openChats()->orderBy('updated_at')->pluck('jid')->toArray();
     }
 
     function display()
