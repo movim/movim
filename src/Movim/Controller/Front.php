@@ -90,14 +90,12 @@ class Front extends Base
             }
 
             $c->checkSession();
-            $c->dispatch();
 
-            // If the controller ask to display a different page
             if ($request != $c->name) {
                 $this->redirect('login');
             }
 
-            // We display the page!
+            $c->dispatch();
             $c->display();
         } else {
             logInfo('Could not call the load method on the current controller');
