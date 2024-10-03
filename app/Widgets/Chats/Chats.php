@@ -381,6 +381,9 @@ class Chats extends Base
                 $openChat->jid = $jid;
                 $openChat->created_at = $openChat->updated_at = $published;
                 $openChat->save(['timestamps' => false]);
+
+                $view = $this->tpl();
+                $view->cacheClear('_chats_item', $jid);
             });
 
         return $this->user->openChats()->orderBy('updated_at')->pluck('jid')->toArray();
