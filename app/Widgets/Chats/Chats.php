@@ -387,7 +387,7 @@ class Chats extends Base
         }
 
         return array_merge(
-            $unreads,
+            array_keys($unreads),
             $openChats,
         );
     }
