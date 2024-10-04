@@ -179,7 +179,6 @@ function handleClientDNS(array $results, $dns, $connector, $xmppBehaviour)
 
                 $evt = new Movim\Widget\Base;
                 $evt->event('timeout_error');
-                $this->cancel();
             }
         );
     }
