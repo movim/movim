@@ -376,7 +376,7 @@ class SDPtoJingle
                             break;
 
                         case 'pwd':
-                            $session = Session::start();
+                            $session = Session::instance();
                             $session->set('icePwd', $matches[1]);
                             $this->transport->addAttribute('pwd', $matches[1]);
                             break;
@@ -446,7 +446,7 @@ class SDPtoJingle
                             }
 
                             // ufrag to the transport
-                            $session = Session::start();
+                            $session = Session::instance();
                             if ($this->ufrag && $session->get('icePwd')) {
                                 $this->transport->addAttribute('ufrag', $this->ufrag);
                                 $this->transport->addAttribute('pwd', $session->get('icePwd'));

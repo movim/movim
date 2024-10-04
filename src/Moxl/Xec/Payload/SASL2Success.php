@@ -8,7 +8,7 @@ class SASL2Success extends Payload
 {
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $memorySession = Session::start();
+        $memorySession = Session::instance();
         $memorySession->delete('password');
 
         $session = \App\User::me()->session;

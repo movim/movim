@@ -31,8 +31,8 @@ class Session extends Model
     public function presence()
     {
         return $this->hasOne('App\Presence', 'jid', 'user_id')
-                    ->where('resource', $this->resource)
-                    ->where('session_id', $this->id);
+            ->where('resource', $this->resource)
+            ->where('session_id', $this->id);
     }
 
     public function serverCapability()
@@ -50,9 +50,9 @@ class Session extends Model
         return $this->contacts()->join(DB::raw('(
             select jidfrom as id, count(*) as number
             from messages
-            where published >= \''.date('Y-m-d', strtotime('-4 week')).'\'
+            where published >= \'' . date('Y-m-d', strtotime('-4 week')) . '\'
             and type = \'chat\'
-            and user_id = \''.$this->user_id.'\'
+            and user_id = \'' . $this->user_id . '\'
             group by jidfrom) as top
             '), 'top.id', '=', 'rosters.jid', 'left outer')
             ->orderByRaw(
@@ -77,18 +77,18 @@ class Session extends Model
                     group by server, node) as recents on recents.server = subscriptions.server and recents.node = subscriptions.node
                 where public = true
                 and jid in (
-                    select jid from rosters where session_id = \''. $this->id .'\'
+                    select jid from rosters where session_id = \'' . $this->id . '\'
                 )
-                and (subscriptions.server, subscriptions.node) not in (select server, node from subscriptions where jid = \''.$this->user_id.'\')
+                and (subscriptions.server, subscriptions.node) not in (select server, node from subscriptions where jid = \'' . $this->user_id . '\')
                 group by subscriptions.server, subscriptions.node, published
                 order by published desc, count desc
-                limit '.$limit.'
+                limit ' . $limit . '
             ) as sub';
 
         $configuration = Configuration::get();
         if ($configuration->restrictsuggestions) {
             $host = \App\User::me()->session->host;
-            $where .= ' where server like \'%.'.$host.'\'';
+            $where .= ' where server like \'%.' . $host . '\'';
         }
 
         $where .= ')';
@@ -112,41 +112,41 @@ class Session extends Model
         $this->active      = false;
 
         // TODO Cleanup
-        $session = MemorySession::start();
+        $session = MemorySession::instance();
         $session->set('password', $password);
     }
 
     public function getUploadService()
     {
-        return Info::where(function($query) {
-                        $query->where('parent', $this->host)
-                            ->orWhere('server', $this->host);
-                    })
-                   ->whereCategory('store')
-                   ->whereType('file')
-                   ->where('features', 'like', '%urn:xmpp:http:upload:0%')
-                   ->first();
+        return Info::where(function ($query) {
+            $query->where('parent', $this->host)
+                ->orWhere('server', $this->host);
+        })
+            ->whereCategory('store')
+            ->whereType('file')
+            ->where('features', 'like', '%urn:xmpp:http:upload:0%')
+            ->first();
     }
 
     public function getChatroomsServices()
     {
         return Info::where('parent', $this->host)
-                   ->whereCategory('conference')
-                   ->get();
+            ->whereCategory('conference')
+            ->get();
     }
 
     public function getCommentsService()
     {
         return Info::where('server', 'comments.' . $this->host)
-                   ->where('parent', $this->host)
-                   ->whereCategory('pubsub')
-                   ->whereType('service')
-                   ->first();
+            ->where('parent', $this->host)
+            ->whereCategory('pubsub')
+            ->whereType('service')
+            ->first();
     }
 
     public function loadMemory()
     {
-        $session = MemorySession::start();
+        $session = MemorySession::instance();
         $session->set('jid', $this->user_id);
         $session->set('host', $this->host);
         $session->set('username', $this->username);

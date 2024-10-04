@@ -18,7 +18,7 @@ class Start extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $session = Session::start();
+        $session = Session::instance();
         $session->delete('password');
 
         $session = \App\User::me()->session;

@@ -41,7 +41,7 @@ class Login extends Base
 
     public function onStart($packet)
     {
-        //$session = Session::start();
+        //$session = Session::instance();
 
         //if ($session->get('mechanism') != 'ANONYMOUS') {
         // We get the configuration
@@ -233,26 +233,20 @@ class Login extends Base
 
     private function doLogin($login, $password, $deviceId = false)
     {
-        // We get the Server Configuration
         $configuration = Configuration::get();
 
-        // First we check the form
-        $validateLogin   = Validator::stringType()->length(1, 254);
-        $validatePassword = Validator::stringType()->length(1, 128);
-
-        if (!$validateLogin->validate($login)) {
+        if (!Validator::stringType()->length(1, 254)->validate($login)) {
             $this->showErrorBlock('login_format');
             return;
         }
 
-        if (!$validatePassword->validate($password)) {
+        if (!Validator::stringType()->length(1, 128)->validate($password)) {
             $this->showErrorBlock('password_format');
             return;
         }
 
         list($username, $host) = explode('@', $login);
 
-        // Check whitelisted server
         if (
             !empty($configuration->xmppwhitelist)
             && !in_array($host, $configuration->xmppwhitelist)
@@ -268,9 +262,8 @@ class Login extends Base
         $user->init();
         $user->save();
 
-        $rkey = Key::createNewRandomKey();
-
         if (!$deviceId) {
+            $rkey = Key::createNewRandomKey();
             $deviceId = generateKey();
 
             $key = new \App\EncryptedPassword;

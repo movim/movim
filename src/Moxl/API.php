@@ -33,7 +33,7 @@ class API
         global $language;
 
         if ($id == false) {
-            $session = Session::start();
+            $session = Session::instance();
             $id = $session->get('id');
         }
         $iq->setAttribute('id', $id);

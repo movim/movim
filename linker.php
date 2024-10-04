@@ -98,7 +98,7 @@ function enableEncryption($connection)
     $encryption = new \React\Socket\StreamEncryption($loop, false);
     logOut(colorize('Enable TLS on the socket', 'blue'));
 
-    $session = Session::start();
+    $session = Session::instance();
     stream_context_set_option($connection->stream, 'ssl', 'SNI_enabled', true);
     stream_context_set_option($connection->stream, 'ssl', 'peer_name', $session->get('host'));
     stream_context_set_option($connection->stream, 'ssl', 'allow_self_signed', false);
@@ -149,7 +149,7 @@ function handleClientDNS(array $results, $dns, $connector, $xmppBehaviour)
             logOut(colorize('Picked STARTTLS', 'blue'));
         } else {
             // No SRV, we fallback to the default host
-            $session = Session::start();
+            $session = Session::instance();
             $host = $session->get('host');
         }
 
@@ -228,7 +228,7 @@ $wsSocketBehaviour = function ($msg) use (&$xmppSocket, &$connector, &$xmppBehav
 
             case 'register':
                 // Set the host, useful for the CN certificate check
-                $session = Session::start();
+                $session = Session::instance();
 
                 // If the host is already set, we already launched the registration process
                 if ($session->get('host')) {
@@ -300,7 +300,7 @@ $xmppBehaviour = function (React\Socket\Connection $stream) use (&$xmppSocket, $
             ) {
                 enableEncryption($xmppSocket)->then(
                     function () {
-                        $session = Session::start();
+                        $session = Session::instance();
                         \Moxl\Stanza\Stream::init($session->get('host'), $session->get('jid'));
                     },
                     function () {

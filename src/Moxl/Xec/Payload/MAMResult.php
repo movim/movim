@@ -10,7 +10,7 @@ class MAMResult extends Payload
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $to = baseJid((string)$parent->attributes()->to);
-        $session = Session::start();
+        $session = Session::instance();
 
         $messagesCounter = $session->get('mamid' . (string)$stanza->attributes()->queryid);
 

@@ -18,7 +18,7 @@ class Session implements CacheInterface
     /**
      * Gets a session handle.
      */
-    public static function start()
+    public static function instance()
     {
         if (!isset(self::$instance)) {
             self::$instance = new self();

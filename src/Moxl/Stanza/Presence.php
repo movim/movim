@@ -19,7 +19,7 @@ class Presence
         bool $mam = false,
         $last = 0
     ) {
-        $session = Session::start();
+        $session = Session::instance();
 
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $root = $dom->createElementNS('jabber:client', 'presence');

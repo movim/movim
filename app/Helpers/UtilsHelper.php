@@ -135,7 +135,7 @@ function compileOpcache()
  */
 function isLogged()
 {
-    return (bool)(\Movim\Session::start())->get('jid');
+    return (bool)(\Movim\Session::instance())->get('jid');
 }
 
 /**

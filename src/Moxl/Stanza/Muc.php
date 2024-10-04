@@ -59,7 +59,7 @@ class Muc
 
     public static function setSubject($to, $subject)
     {
-        $session = Session::start();
+        $session = Session::instance();
 
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $message = $dom->createElementNS('jabber:client', 'message');

@@ -327,7 +327,7 @@ class Publish extends Base
 
     public function ajaxTryResolveShareUrl($id)
     {
-        $session = Session::start();
+        $session = Session::instance();
         $shareUrl = $session->get('share_url');
 
         if ($shareUrl) {

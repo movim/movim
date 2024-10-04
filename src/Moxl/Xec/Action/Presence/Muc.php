@@ -24,7 +24,7 @@ class Muc extends Action
 
     public function request()
     {
-        $session = Session::start();
+        $session = Session::instance();
 
         if (empty($this->_nickname)) {
             $this->_nickname = $session->get('username');

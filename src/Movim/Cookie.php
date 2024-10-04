@@ -17,13 +17,6 @@ class Cookie
         }
     }
 
-    public static function refresh()
-    {
-        if (isset($_COOKIE['MOVIM_SESSION_ID'])) {
-            self::setCookie($_COOKIE['MOVIM_SESSION_ID']);
-        }
-    }
-
     public static function renew()
     {
         self::setCookie(generateKey(32));
@@ -47,7 +40,7 @@ class Cookie
                 'expires' => self::getTime(),
                 'path' => '/',
                 'secure' => true,
-                'samesite' => 'lax',
+                'samesite' => 'strict',
             ]);
         }
     }

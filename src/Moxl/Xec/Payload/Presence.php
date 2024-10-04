@@ -47,7 +47,7 @@ class Presence extends Payload
                         }
                         // So we drop it
 
-                        $session = Session::start();
+                        $session = Session::instance();
 
                         if ($presence->value != 5 && $presence->value != 6) {
                             $this->method('muc_handle');

@@ -171,7 +171,7 @@ class User extends Model
 
     public static function me($reload = false): User
     {
-        $session = Session::start();
+        $session = Session::instance();
 
         if (
             self::$me != null

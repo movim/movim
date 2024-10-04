@@ -11,7 +11,7 @@ abstract class Action extends Payload
 
     final public function store(string $customId = null)
     {
-        $session = Session::start();
+        $session = Session::instance();
 
         // Generating the iq key.
         $this->stanzaId = $customId ?? \generateKey(6);

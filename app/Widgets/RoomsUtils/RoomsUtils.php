@@ -322,7 +322,7 @@ class RoomsUtils extends Base
 
         // Disconnect properly
         $nick = $values['nick'] ?? $this->user->username;
-        $session = Session::start();
+        $session = Session::instance();
         $session->delete($values['jid'] . '/' . $nick);
 
         $pu = new Unavailable;

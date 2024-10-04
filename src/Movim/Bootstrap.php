@@ -40,9 +40,8 @@ class Bootstrap
 
         //Check if vital system need is OK
         $this->checkSystem();
-
         $this->setTimezone();
-        $this->startingSession();
+        $this->checkSession();
         $this->loadLanguage();
     }
 
@@ -106,7 +105,7 @@ class Bootstrap
 
     private function getVersion()
     {
-        if ($f = fopen(DOCUMENT_ROOT.'/VERSION', 'r')) {
+        if ($f = fopen(DOCUMENT_ROOT . '/VERSION', 'r')) {
             return trim(fgets($f));
         }
     }
@@ -123,7 +122,7 @@ class Bootstrap
             $dirname = substr($dirname, 0, strrpos($dirname, 'index.php'));
         }
 
-        $path = (($dirname == DIRECTORY_SEPARATOR) ? '' : $dirname).'/';
+        $path = (($dirname == DIRECTORY_SEPARATOR) ? '' : $dirname) . '/';
 
         $uri = '//';
         $uri .= (array_key_exists('HTTP_HOST', $_SERVER))
@@ -161,8 +160,10 @@ class Bootstrap
             global $sqlQueryExecuted;
 
             $loop->addPeriodicTimer(1, function () use ($capsule, &$sqlQueryExecuted) {
-                if ($sqlQueryExecuted < time() - 3 /* 3sec */
-                && $capsule->getConnection()->getRawPdo() != null) {
+                if (
+                    $sqlQueryExecuted < time() - 3 /* 3sec */
+                    && $capsule->getConnection()->getRawPdo() != null
+                ) {
                     $capsule->getConnection()->disconnect();
                 }
             });
@@ -181,7 +182,7 @@ class Bootstrap
 
     private function loadHelpers()
     {
-        foreach (glob(DOCUMENT_ROOT.'/app/Helpers/*Helper.php') as $file) {
+        foreach (glob(DOCUMENT_ROOT . '/app/Helpers/*Helper.php') as $file) {
             require_once $file;
         }
     }
@@ -221,7 +222,7 @@ class Bootstrap
     {
         $offset = 0;
 
-        if (array_key_exists('HTTP_MOVIM_OFFSET', $_SERVER)) $offset = invertSign(((int)$_SERVER['HTTP_MOVIM_OFFSET'])*60);
+        if (array_key_exists('HTTP_MOVIM_OFFSET', $_SERVER)) $offset = invertSign(((int)$_SERVER['HTTP_MOVIM_OFFSET']) * 60);
         elseif (getenv('offset') != 0) $offset = (int)getenv('offset');
 
         define('TIMEZONE_OFFSET', $offset);
@@ -234,9 +235,9 @@ class Bootstrap
         date_default_timezone_set("UTC");
     }
 
-    private function startingSession()
+    private function checkSession()
     {
-        if (SESSION_ID !== null) {
+        if (is_string(SESSION_ID)) {
             $process = (bool)requestAPI('exists', 2, ['sid' => SESSION_ID]);
             $session = DBSession::find(SESSION_ID);
 
@@ -253,21 +254,59 @@ class Bootstrap
                 requestAPI('disconnect', 2, ['sid' => SESSION_ID]);
             }
         }
-
-        Cookie::set();
     }
 
     public function getWidgets()
     {
         // Return a list of interesting widgets to load (to save memory)
-        return ['Account','AccountNext','AdHoc','Avatar','Blocked','BottomNavigation',
-        'Communities','CommunityAffiliations','CommunityConfig','CommunityData',
-        'CommunityHeader','CommunityPosts','CommunitiesServer','CommunitiesServers',
-        'Confirm','ContactActions','Chat','ChatActions','ChatOmemo','Chats','Config',
-        'ContactData','ContactHeader','ContactSubscriptions','Dialog','Drawer','EmojisConfig',
-        'Location','Login','Menu','Navigation','Notif', 'Notifications','NewsNav','Post',
-        'PostActions','Presence','Publish','Rooms','RoomsExplore', 'RoomsUtils', 'Stickers',
-        'Toast','Upload','Vcard4','Visio'];
+        return [
+            'Account',
+            'AccountNext',
+            'AdHoc',
+            'Avatar',
+            'Blocked',
+            'BottomNavigation',
+            'Communities',
+            'CommunityAffiliations',
+            'CommunityConfig',
+            'CommunityData',
+            'CommunityHeader',
+            'CommunityPosts',
+            'CommunitiesServer',
+            'CommunitiesServers',
+            'Confirm',
+            'ContactActions',
+            'Chat',
+            'ChatActions',
+            'ChatOmemo',
+            'Chats',
+            'Config',
+            'ContactData',
+            'ContactHeader',
+            'ContactSubscriptions',
+            'Dialog',
+            'Drawer',
+            'EmojisConfig',
+            'Location',
+            'Login',
+            'Menu',
+            'Navigation',
+            'Notif',
+            'Notifications',
+            'NewsNav',
+            'Post',
+            'PostActions',
+            'Presence',
+            'Publish',
+            'Rooms',
+            'RoomsExplore',
+            'RoomsUtils',
+            'Stickers',
+            'Toast',
+            'Upload',
+            'Vcard4',
+            'Visio'
+        ];
     }
 
     /**
@@ -296,7 +335,7 @@ class Bootstrap
     {
         $this->systemErrorHandler(
             E_ERROR,
-            get_class($exception) . ': '. $exception->getMessage(),
+            get_class($exception) . ': ' . $exception->getMessage(),
             $exception->getFile(),
             $exception->getLine(),
             $exception->getTraceAsString()

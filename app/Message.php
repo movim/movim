@@ -306,7 +306,7 @@ class Message extends Model
             )
         ) {
             if ($this->isMuc()) {
-                $session = Session::start();
+                $session = Session::instance();
 
                 // Cache the state in Session for performances purpose
                 $sessionKey = $this->jidfrom . '_stanza_id';
@@ -710,7 +710,7 @@ class Message extends Model
             $this->body = addUrls($this->body);
 
             // TODO fix addUrls, see https://github.com/movim/movim/issues/877
-            if (strlen($this->body) < strlen($old)) {
+            if (is_string($this->body) && strlen($this->body) < strlen($old)) {
                 $this->body = $old;
             }
         }

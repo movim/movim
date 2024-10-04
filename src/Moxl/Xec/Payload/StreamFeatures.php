@@ -21,7 +21,7 @@ class StreamFeatures extends Payload
                 }
             }
 
-            $session = Session::start();
+            $session = Session::instance();
 
             if ($session->get('password')) {
                 if (!is_array($mechanisms)) {

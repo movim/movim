@@ -115,7 +115,6 @@ class DaemonCommand extends Command
             $output->writeln('Set opcache.enable=1 and opcache.enable_cli=1 in the PHP CLI ini file');
         }
 
-
         $core = new Core($loop, $baseuri);
         $app  = new HttpServer(new WsServer($core));
 

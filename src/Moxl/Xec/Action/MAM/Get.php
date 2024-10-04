@@ -21,7 +21,7 @@ class Get extends Action
 
     public function request()
     {
-        $session = Session::start();
+        $session = Session::instance();
 
         // Generating the queryid key.
         $this->_queryid = \generateKey(12);
@@ -45,7 +45,7 @@ class Get extends Action
     {
         //MessageBuffer::getInstance()->save();
 
-        $session = Session::start();
+        $session = Session::instance();
 
         $messagesCounter = $session->get('mamid' . $this->_queryid);
         $this->pack($messagesCounter);

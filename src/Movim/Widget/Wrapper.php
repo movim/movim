@@ -176,7 +176,7 @@ class Wrapper
                             is_array($widget->filters)
                             && array_key_exists($key . '_' . $method, $widget->filters)
                         ) {
-                            $session = Session::start();
+                            $session = Session::instance();
                             $notifsKey = $session->get('notifs_key');
 
                             if ($notifsKey == 'blurred') {

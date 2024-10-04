@@ -28,7 +28,7 @@ class Message
         $replyQuotedBodyLength = 0,
         ?MessageOmemoHeader $messageOMEMO = null
     ) {
-        $session = Session::start();
+        $session = Session::instance();
 
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $root = $dom->createElementNS('jabber:client', 'message');

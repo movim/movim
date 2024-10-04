@@ -292,7 +292,7 @@ class Rooms extends Base
         $this->ajaxHttpGet();
 
         if ($resource) {
-            $session = Session::start();
+            $session = Session::instance();
             $session->delete($room . '/' .$resource);
 
             $pu = new Unavailable;

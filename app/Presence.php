@@ -145,7 +145,7 @@ class Presence extends Model
                     case 'http://jabber.org/protocol/muc#user':
                         $this->muc = true;
 
-                        $session = Session::start();
+                        $session = Session::instance();
 
                         if ($session->get(Muc::$mucId . (string)$stanza->attributes()->from)) {
                             $this->mucjid = \App\User::me()->id;

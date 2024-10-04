@@ -27,12 +27,12 @@ class Notif extends Base
 
     public function onSessionUp()
     {
-        Session::start()->delete('session_down');
+        Session::instance()->delete('session_down');
     }
 
     public function onSessionDown()
     {
-        Session::start()->set('session_down', true);
+        Session::instance()->set('session_down', true);
     }
 
     public function onChatCounter(int $count = 0)
@@ -76,13 +76,13 @@ class Notif extends Base
             $picture = BASE_URI . '/theme/img/app/128.png';
         }
 
-        $session = Session::start();
+        $session = Session::instance();
         $notifs = $session->get('notifs');
 
         if ($title != null) {
             $webPush = null;
 
-            if (Session::start()->get('session_down')) {
+            if (Session::instance()->get('session_down')) {
                 $keys = json_decode(file_get_contents(CACHE_PATH . 'vapid_keys.json'));
 
                 $webPush = new WebPush([
@@ -183,7 +183,7 @@ class Notif extends Base
      */
     public function getCurrent()
     {
-        $session = Session::start();
+        $session = Session::instance();
         return $session->get('notifs_key');
     }
 
@@ -195,7 +195,7 @@ class Notif extends Base
      */
     public function ajaxClear($key)
     {
-        $session = Session::start();
+        $session = Session::instance();
         $notifs = $session->get('notifs');
 
         if ($notifs != null && array_key_exists($key, $notifs)) {
@@ -228,7 +228,7 @@ class Notif extends Base
      */
     public function ajaxGet()
     {
-        $session = Session::start();
+        $session = Session::instance();
         $notifs = $session->get('notifs');
 
         if ($notifs == null) $notifs = [];
@@ -248,7 +248,7 @@ class Notif extends Base
         // Clear the specific keys
         if (strpos($key, '|') !== false) (new Notif)->ajaxClear($key);
 
-        $session = Session::start();
+        $session = Session::instance();
 
         // If the page was blurred
         if ($session->get('notifs_key') === 'blurred') {

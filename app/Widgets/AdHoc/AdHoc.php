@@ -24,7 +24,7 @@ class AdHoc extends \Movim\Widget\Base
 
     public function onList($package)
     {
-        if ($package->from == Session::start()->get('host')) {
+        if ($package->from == Session::instance()->get('host')) {
             $list = $package->content;
             $html = $this->prepareList($list);
             $this->rpc('MovimTpl.fill', '#adhoc_widget', $html);
@@ -92,7 +92,7 @@ class AdHoc extends \Movim\Widget\Base
     public function ajaxGet(?string $jid = null)
     {
         if ($jid == null) {
-            $jid = Session::start()->get('host');
+            $jid = Session::instance()->get('host');
         }
 
         $g = new Get;
@@ -110,7 +110,7 @@ class AdHoc extends \Movim\Widget\Base
     public function ajaxSubmit($jid, $data, $node, $sessionid)
     {
         if (!$jid) {
-            $session = Session::start();
+            $session = Session::instance();
             $jid = $session->get('host');
         }
 

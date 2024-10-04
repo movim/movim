@@ -12,7 +12,7 @@ class Handler
             ? (string)$child->attributes()->id
             : '';
 
-        $session = Session::start();
+        $session = Session::instance();
 
         if (
             $id !== ''

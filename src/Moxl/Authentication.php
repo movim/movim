@@ -34,7 +34,7 @@ class Authentication
                 $this->_type = $choice;
 
                 $factory = new Sasl;
-                $session = Session::start();
+                $session = Session::instance();
 
                 $this->_mechanism = $factory->factory($this->_type, [
                     'authcid'  => $session->get('username'),
