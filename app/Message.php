@@ -36,27 +36,24 @@ class Message extends Model
 
     public static $inlinePlaceholder = 'inline-img:';
 
-    public function save(array $options = [])
+    public static function boot()
     {
-        try {
-            $saved = parent::save($options);
+        parent::boot();
 
-            if ($saved && $this->messageFiles != null && $this->messageFiles->isNotEmpty()) {
-                $mid = $this->mid;
+        static::saved(function (Message $message) {
+            if ($message->messageFiles != null && $message->messageFiles->isNotEmpty()) {
+                $mid = Message::where('id', $message->id)
+                    ->where('user_id', \App\User::me()->id)
+                    ->where('jidfrom', $message->jidfrom)
+                    ->first()
+                    ->mid;
 
-                if ($mid == null) {
-                    $mid = DB::getPdo()->lastInsertId();
-                    MessageFile::where('message_mid', $mid)->delete();
-                }
-
-                $this->messageFiles->each(function ($file) use ($mid) {
+                $message->messageFiles->each(function ($file) use ($mid) {
                     $file->message_mid = $mid;
                     $file->save();
                 });
             }
-        } catch (\Exception $e) {
-            logError($e->getMessage());
-        }
+        });
     }
 
     public function parent()
@@ -251,7 +248,9 @@ class Message extends Model
 
         $this->user_id    = \App\User::me()->id;
 
-        $this->id = 'm_' . generateUUID();
+        if (!$this->id) {
+            $this->id = 'm_' . generateUUID();
+        }
 
         if ($stanza->attributes()->id) {
             $this->messageid  = (string)$stanza->attributes()->id;
@@ -681,11 +680,11 @@ class Message extends Model
     {
         if ($this->isMuc()) {
             return $this->user->session->presences()
-                    ->where('jid', $this->jidfrom)
-                    ->where('resource', $this->resource)
-                    ->where('mucjid', $this->user_id)
-                    ->where('muc', true)
-                    ->count() > 0;
+                ->where('jid', $this->jidfrom)
+                ->where('resource', $this->resource)
+                ->where('mucjid', $this->user_id)
+                ->where('muc', true)
+                ->count() > 0;
         }
 
         return ($this->user_id == $this->jidfrom);
