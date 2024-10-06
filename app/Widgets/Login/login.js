@@ -25,7 +25,7 @@ var Login = {
     },
 
     setCookie : function(key, value, expires) {
-        document.cookie = key + '=' + value + '; expires=' + expires + '; path=/ ; secure; SameSite=strict';
+        document.cookie = key + '=' + value + '; expires=' + expires + '; path=/ ; secure; SameSite=lax';
     },
 
     setQuick : function(deviceId, login, host, key) {

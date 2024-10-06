@@ -40,7 +40,7 @@ class Cookie
                 'expires' => self::getTime(),
                 'path' => '/',
                 'secure' => true,
-                'samesite' => 'strict',
+                'samesite' => 'lax',
             ]);
         }
     }
