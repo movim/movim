@@ -212,6 +212,15 @@ ul.list li .control>a {
     display: block;
 }
 
+/* Safari fix */
+ul.list li .primary.bubble>a {
+    height: 5rem;
+}
+
+ul.list li .primary.small.bubble>a {
+    height: 3.5rem;
+}
+
 /* Truncated content */
 
 ul.list li.subheader>div>p,
