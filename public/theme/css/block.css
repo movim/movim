@@ -5,6 +5,7 @@
 
 .flex.card {
     gap: 0 1rem;
+    padding: 0 1rem;
 }
 
 ul.flex li.block {
