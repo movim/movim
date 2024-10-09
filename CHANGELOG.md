@@ -3,6 +3,12 @@ Movim Changelog
 
 v0.28.1 (master)
 ---------------------------
+* Don't notify twice when a Post is edited
+* Fix the buggy Post comment notification
+* Fix #1325 Safari not applying classic CSS...
+* Fix related message files saving code when saving a message
+* Replace mt_rand with random_int in generateKey()
+* Directly redirect to the login page if the user is not authenticated
 
 v0.28
 ---------------------------
