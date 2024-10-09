@@ -675,12 +675,12 @@ class Post extends Model
     }
 
     // Works only for the microblog posts
-    public function getParent()
+    public function getParent(): ?Post
     {
         return \App\Post::find($this->parent_id);
     }
 
-    public function isMine($force = false)
+    public function isMine($force = false): bool
     {
         if ($force) {
             return ($this->aid == \App\User::me()->id);
@@ -690,47 +690,52 @@ class Post extends Model
             || $this->server == \App\User::me()->id);
     }
 
-    public function isMicroblog()
+    public function isMicroblog(): bool
     {
         return ($this->node == "urn:xmpp:microblog:0");
     }
 
-    public function isEditable()
+    public function isEdited(): bool
+    {
+        return $this->published != $this->updated;
+    }
+
+    public function isEditable(): bool
     {
         return ($this->contentraw != null || $this->links != null);
     }
 
-    public function isShort()
+    public function isShort(): bool
     {
         return (strlen($this->contentcleaned) < 700);
     }
 
-    public function isBrief()
+    public function isBrief(): bool
     {
         return ($this->content == '' && $this->title && strlen($this->title) < $this->titleLimit);
     }
 
-    public function isReply()
+    public function isReply(): bool
     {
         return isset($this->replynodeid);
     }
 
-    public function isLike()
+    public function isLike(): bool
     {
         return ($this->contentraw == '♥' || $this->content == '♥');
     }
 
-    public function isRTL()
+    public function isRTL(): bool
     {
         return (isRTL($this->contentraw ?? '') || isRTL($this->title ?? ''));
     }
 
-    public function isComment()
+    public function isComment(): bool
     {
         return (substr($this->node, 0, 30) == 'urn:xmpp:microblog:0:comments/');
     }
 
-    public function hasCommentsNode()
+    public function hasCommentsNode(): bool
     {
         return (isset($this->commentserver)
              && isset($this->commentnodeid));

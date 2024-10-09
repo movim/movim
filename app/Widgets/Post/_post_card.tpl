@@ -63,7 +63,7 @@
                         </a> ·
                     {/if}
                     {$post->published|prepareDate}
-                    {if="$post->published != $post->updated"}
+                    {if="$post->isEdited()"}
                         <i class="material-symbols" title="{$post->updated|prepareDate}">
                             edit
                         </i>

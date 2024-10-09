@@ -74,12 +74,11 @@ class Menu extends Base
                          ->where('nodeid', $post->nodeid)
                          ->first();
 
-        if ($post === null) {
+        if ($post === null || $post->isEdited()) {
             return;
         }
 
-        if ($post->isComment()
-        && !$post->isMine()) {
+        if ($post->isComment()) {
             $contact = \App\Contact::where('id', $post->aid)->first();
             $parent = $post->parent;
 
