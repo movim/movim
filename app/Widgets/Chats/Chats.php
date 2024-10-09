@@ -9,6 +9,7 @@ use App\Contact;
 use App\Message;
 use App\OpenChat;
 use App\Roster;
+use Carbon\Carbon;
 use Movim\CurrentCall;
 
 class Chats extends Base
@@ -363,19 +364,39 @@ class Chats extends Base
 
     private function resolveChats(): array
     {
+        $toOpen = [];
+
         $this->user->messages()
-            ->select('published', 'jidfrom')
+            ->select((DB::raw('max(published) as published, jidfrom, jidto')))
             ->where('seen', false)
             ->whereIn('type', ['chat', 'headline', 'invitation'])
-            ->where('jidfrom', '!=', $this->user->id)
             ->whereNotIn('jidfrom', function ($query) {
                 $query->select('jid')
                     ->from('open_chats')
                     ->where('user_id', \App\User::me()->id);
             })
-            ->groupBy('published', 'jidfrom')
-            ->pluck('published', 'jidfrom')
-            ->each(function ($published, $jid) {
+            ->whereNotIn('jidto', function ($query) {
+                $query->select('jid')
+                    ->from('open_chats')
+                    ->where('user_id', \App\User::me()->id);
+            })
+            ->groupBy('jidfrom', 'jidto')
+            ->get()
+            ->each(function ($message) use (&$toOpen) {
+                $jid = $message->jidfrom == \App\User::me()->id
+                    ? $message->jidto
+                    : $message->jidfrom;
+
+                if (array_key_exists($jid, $toOpen)) {
+                    if ((new Carbon($toOpen[$jid]->published))->isBefore(new Carbon($message->published))) {
+                        $toOpen[$jid] = $message->published;
+                    }
+                } else {
+                    $toOpen[$jid] = $message->published;
+                }
+            });
+
+            foreach ($toOpen as $jid => $published) {
                 $openChat = new OpenChat;
                 $openChat->user_id = \App\User::me()->id;
                 $openChat->jid = $jid;
@@ -384,7 +405,7 @@ class Chats extends Base
 
                 $view = $this->tpl();
                 $view->cacheClear('_chats_item', $jid);
-            });
+            }
 
         return $this->user->openChats()->orderBy('updated_at')->pluck('jid')->toArray();
     }

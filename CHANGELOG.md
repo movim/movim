@@ -9,6 +9,7 @@ v0.28.1 (master)
 * Fix related message files saving code when saving a message
 * Replace mt_rand with random_int in generateKey()
 * Directly redirect to the login page if the user is not authenticated
+* Rewrite the resolveChats function resolve and order properly the missing chats in the open_chats table
 
 v0.28
 ---------------------------
