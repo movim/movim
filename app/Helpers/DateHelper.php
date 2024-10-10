@@ -1,6 +1,14 @@
 <?php
 
 /**
+ * Return the offset in minutes between the user timezone and UTC
+ */
+function getTimezoneOffset(): int
+{
+    return (new DateTimeZone(TIMEZONE))->getOffset(new DateTime('now', new DateTimeZone('UTC')));
+}
+
+/**
  * Return a human-readable date
  *
  * @param timestamp $string
@@ -8,9 +16,10 @@
  */
 function prepareDate(string $datetime = '', bool $hours = true, bool $compact = false, bool $dateOnly = false): string
 {
+
     $time = strtotime($datetime);
     $time = $time !== false ? $time : time();
-    $t = $time + TIMEZONE_OFFSET;
+    $t = $time + getTimezoneOffset();
 
     $date = '';
 
@@ -70,7 +79,7 @@ function prepareTime(string $datetime = ''): string
 {
     $time = strtotime($datetime);
     $time = $time != false ? $time : time();
-    $t = $time + TIMEZONE_OFFSET;
+    $t = $time + getTimezoneOffset();
 
     return gmdate('H:i', $t);
 }

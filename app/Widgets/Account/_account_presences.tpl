@@ -14,6 +14,9 @@
                 </span>
                 <div>
                     <p class="normal line">
+                        {if="$value->resource == $session->resource"}
+                        <span class="info">{$session->created_at|prepareDate} - {$session->timezone}</span>
+                        {/if}
                         {$value->capability->name}
                         <span class="second">{$value->resource}</span>
                     </p>

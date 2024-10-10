@@ -183,20 +183,20 @@ class Login extends Base
         $this->showErrorBlock($error);
     }
 
-    public function ajaxLogin($form)
+    public function ajaxLogin($form, string $timezone)
     {
         $username = strtolower($form->username->value);
         $password = $form->password->value;
 
-        $this->doLogin($username, $password);
+        $this->doLogin($username, $password, $timezone);
     }
 
-    public function ajaxHTTPLogin($login, $password)
+    public function ajaxHTTPLogin($login, $password, string $timezone)
     {
-        $this->doLogin($login, $password);
+        $this->doLogin($login, $password, $timezone);
     }
 
-    public function ajaxQuickLogin($deviceId, $login, $key, $check = false)
+    public function ajaxQuickLogin($deviceId, $login, $key, string $timezone, ?bool $check = false)
     {
         $validateLogin = Validator::stringType()->length(1, 254);
 
@@ -221,7 +221,7 @@ class Login extends Base
 
                     $ciphertext->touch();
                     $password = Crypto::decrypt($ciphertext->data, $key);
-                    $this->doLogin($login, $password, $deviceId);
+                    $this->doLogin($login, $password, $timezone, $deviceId);
                 } else {
                     $this->rpc('Login.clearQuick');
                 }
@@ -231,7 +231,7 @@ class Login extends Base
         }
     }
 
-    private function doLogin($login, $password, $deviceId = false)
+    private function doLogin($login, $password, string $timezone, bool $deviceId = false)
     {
         $configuration = Configuration::get();
 
@@ -285,8 +285,9 @@ class Login extends Base
         }
 
         $s = new \App\Session;
-        $s->init($username, $password, $host);
+        $s->init($username, $password, $host, $timezone);
         $s->loadMemory();
+        $s->loadTimezone();
         $s->save();
 
         // Force reload the User to link the new session

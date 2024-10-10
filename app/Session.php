@@ -101,9 +101,10 @@ class Session extends Model
         return $this->hasMany('App\Conference')->orderBy('conference');
     }
 
-    public function init($username, $password, $host)
+    public function init(string $username, string $password, string $host, string $timezone)
     {
         $this->id          = SESSION_ID;
+        $this->timezone    = $timezone;
         $this->host        = $host;
         $this->username    = $username;
         $this->user_id     = $username . '@' . $host;
@@ -114,6 +115,12 @@ class Session extends Model
         // TODO Cleanup
         $session = MemorySession::instance();
         $session->set('password', $password);
+    }
+
+    public function loadTimezone()
+    {
+        define('TIMEZONE', $this->timezone);
+        date_default_timezone_set("UTC");
     }
 
     public function getUploadService()

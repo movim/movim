@@ -49,7 +49,8 @@ var Login = {
                 localStorage.getItem('quickDeviceId'),
                 localStorage.getItem('quickLogin'),
                 localStorage.getItem('quickKey'),
-                true // check is we can actually quick login before registering
+                Intl.DateTimeFormat().resolvedOptions().timeZone,
+                true, // check is we can actually quick login before registering
             );
         }
     },
@@ -81,12 +82,13 @@ MovimWebsocket.register(function()
         Login_ajaxQuickLogin(
             localStorage.getItem('quickDeviceId'),
             localStorage.getItem('quickLogin'),
-            localStorage.getItem('quickKey')
+            localStorage.getItem('quickKey'),
+            Intl.DateTimeFormat().resolvedOptions().timeZone
         );
     } else {
         form = document.querySelector('form[name="login"]');
         if (Login.submitted) {
-            Login_ajaxLogin(MovimUtils.formToJson('login'));
+            Login_ajaxLogin(MovimUtils.formToJson('login'), Intl.DateTimeFormat().resolvedOptions().timeZone);
         }
     }
 });

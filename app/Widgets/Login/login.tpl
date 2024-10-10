@@ -15,7 +15,7 @@
                     MovimWebsocket.connection.register('{$httpAuthHost}');
                 });
                 MovimWebsocket.register(function() {
-                    Login_ajaxHTTPLogin('{$httpAuthUser}', '{$httpAuthPassword}');
+                    Login_ajaxHTTPLogin('{$httpAuthUser}', '{$httpAuthPassword}', Intl.DateTimeFormat().resolvedOptions().timeZone);
                 });
              {/if}
         }, false);

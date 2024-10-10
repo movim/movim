@@ -12,6 +12,7 @@ v0.28.1 (master)
 * Rewrite the resolveChats function resolve and order properly the missing chats in the open_chats table
 * Add a boot() method to the Base widget class to allow tasks registration
 * Clear Chats widget cache during the night
+* Completely replace the offset parameter with a Session Timezone set on Login
 
 v0.28
 ---------------------------

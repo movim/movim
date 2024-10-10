@@ -153,6 +153,7 @@ class Account extends \Movim\Widget\Base
         $presences = $this->user->session->ownPresences;
 
         if ($presences->count() > 0) {
+            $view->assign('session', $this->user->session);
             $view->assign('presences', $presences);
             $view->assign('clienttype', getClientTypes());
 

@@ -40,7 +40,6 @@ class Bootstrap
 
         //Check if vital system need is OK
         $this->checkSystem();
-        $this->setTimezone();
         $this->checkSession();
         $this->loadLanguage();
     }
@@ -218,20 +217,6 @@ class Bootstrap
         register_shutdown_function([$this, 'fatalErrorShutdownHandler']);
     }
 
-    private function setTimezone()
-    {
-        $offset = 0;
-
-        if (array_key_exists('HTTP_MOVIM_OFFSET', $_SERVER)) {
-            $offset = invertSign(((int)$_SERVER['HTTP_MOVIM_OFFSET']) * 60);
-        } elseif (getenv('offset') != 0) {
-            $offset = (int)getenv('offset');
-        }
-
-        define('TIMEZONE_OFFSET', $offset);
-        date_default_timezone_set("UTC");
-    }
-
     private function checkSession()
     {
         if (is_string(SESSION_ID)) {
@@ -239,6 +224,8 @@ class Bootstrap
             $session = DBSession::find(SESSION_ID);
 
             if ($session) {
+                $session->loadTimezone();
+
                 // There a session in the DB but no process
                 if (!$process) {
                     $session->delete();

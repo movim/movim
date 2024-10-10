@@ -34,7 +34,6 @@ class Session
     private $debug;
 
     private $language;
-    private $offset;
 
     private $extensions = [
         'pdo',
@@ -53,14 +52,12 @@ class Session
         int $port,
         string $key,
         $language = false,
-        $offset = 0,
         $verbose = false,
         $debug = false
     ) {
         $this->sid = $sid;
         $this->baseuri = $baseuri;
         $this->language = $language;
-        $this->offset = $offset;
 
         $this->port = $port;
         $this->key = $key;
@@ -154,7 +151,6 @@ class Session
                 'sid'       => $this->sid,
                 'baseuri'   => $this->baseuri,
                 'language'  => $this->language,
-                'offset'    => $this->offset,
                 'verbose'   => $this->verbose,
                 'debug'     => $this->debug,
                 'key'       => $this->key,

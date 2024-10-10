@@ -75,11 +75,7 @@ var MovimWebsocket = {
             this.connection.close();
         }
 
-        var date = new Date();
-
-        this.connection = new WebSocket(uri +
-            '?path=' + MovimUtils.urlParts().page +
-            '&offset=' + date.getTimezoneOffset());
+        this.connection = new WebSocket(uri + '?path=' + MovimUtils.urlParts().page);
 
         this.connection.onopen = function (e) {
             console.log("Connection established!");

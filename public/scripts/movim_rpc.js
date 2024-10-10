@@ -34,16 +34,12 @@ var MovimRPC = {
 
         if (params) body.p = params;
 
-        var date = new Date();
-
         var url = BASE_URI;
         let request = MovimRPC.fetchWithTimeout(url += daemon ? 'ajaxd' : 'ajax', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'X-CONTENT': 'HOPLA',
-                'Movim-Offset': date.getTimezoneOffset()
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(
                 { 'func': 'message', 'b': body }
