@@ -33,7 +33,7 @@ class Partial extends Tpl
 
     public function cache(string $templateFilePath, string $key)
     {
-        $compiled = parent::draw($templateFilePath, true);
+        $compiled = (string)parent::draw($templateFilePath, true);
         file_put_contents($this->resolvedCacheKey($templateFilePath, $key), gzcompress($compiled));
 
         return $compiled;

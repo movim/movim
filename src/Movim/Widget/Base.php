@@ -9,11 +9,13 @@ namespace Movim\Widget;
 use Rain\Tpl;
 use Movim\Controller\Ajax;
 use Movim\Template\Partial;
+use WyriHaximus\React\Cron;
+use WyriHaximus\React\Cron\Action;
 
 class Base
 {
-    protected $js = [];     // Contains javascripts
-    protected $css = [];    // Contains CSS files
+    protected array $js = [];     // Contains javascripts
+    protected array $css = [];    // Contains CSS files
     protected $ajax;        // Contains ajax client code
     protected $user;
     protected ?string $name = null;
@@ -22,7 +24,8 @@ class Base
     protected $_view;
 
     public $baseUri;
-    public $events;
+    public array $events = [];
+    public array $tasks = [];
     public $filters;
 
     // Meta tags
@@ -115,6 +118,10 @@ class Base
     public function rpc(...$args)
     {
         \Movim\RPC::call(...$args);
+    }
+
+    public function boot()
+    {
     }
 
     public function load()
@@ -289,8 +296,7 @@ class Base
      */
     protected function registerEvent(string $key, string $method, ?string $filter = null)
     {
-        if (!is_array($this->events)
-        || !array_key_exists($key, $this->events)) {
+        if (!array_key_exists($key, $this->events)) {
             $this->events[$key] = [$method];
         } else {
             $this->events[$key][] = $method;
@@ -300,7 +306,31 @@ class Base
             if (!is_array($this->filters)) {
                 $this->filters = [];
             }
+
             $this->filters[$key . '_' . $method] = $filter;
+        }
+    }
+
+    /**
+     * @brief Register a CRON task
+     * @param @expression The cron expression to schedule the actoon
+     * @param $function The function to call
+     */
+    protected function registerTask(string $expression, string $key, $function)
+    {
+        $key = $this->name . '_' . $key;
+
+        if (php_sapi_name() == 'cli' && !array_key_exists($key, $this->tasks)) {
+            Cron::create(
+                new Action(
+                    $key,
+                    0.1,
+                    $expression,
+                    $function
+                )
+            );
+
+            $this->tasks[$key] = true;
         }
     }
 }

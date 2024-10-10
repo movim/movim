@@ -9,12 +9,31 @@ use App\Contact;
 use App\Message;
 use App\OpenChat;
 use App\Roster;
+use App\User;
 use Carbon\Carbon;
 use Movim\CurrentCall;
+
+use React\Promise\PromiseInterface;
+use function React\Promise\resolve;
 
 class Chats extends Base
 {
     private $_filters = ['all', 'roster'];
+
+    public function boot()
+    {
+        // Each day at 00:01
+        $this->registerTask('1 0 * * *', 'cleanCache', function (): PromiseInterface {
+            if (User::me()->id) {
+                User::me()->openChats->each(function ($openChat) {
+                    $view = $this->tpl();
+                    $view->cacheClear('_chats_item', $openChat->jid);
+                });
+            }
+
+            return resolve(true);
+        });
+    }
 
     public function load()
     {

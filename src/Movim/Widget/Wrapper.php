@@ -82,6 +82,8 @@ class Wrapper
 
         if ($register) {
             $widget = new $name(true);
+            $widget->boot();
+
             // We save the registered events of the widget for the filter
             if (isset($widget->events)) {
                 foreach ($widget->events as $key => $value) {

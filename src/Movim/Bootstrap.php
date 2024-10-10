@@ -222,16 +222,13 @@ class Bootstrap
     {
         $offset = 0;
 
-        if (array_key_exists('HTTP_MOVIM_OFFSET', $_SERVER)) $offset = invertSign(((int)$_SERVER['HTTP_MOVIM_OFFSET']) * 60);
-        elseif (getenv('offset') != 0) $offset = (int)getenv('offset');
+        if (array_key_exists('HTTP_MOVIM_OFFSET', $_SERVER)) {
+            $offset = invertSign(((int)$_SERVER['HTTP_MOVIM_OFFSET']) * 60);
+        } elseif (getenv('offset') != 0) {
+            $offset = (int)getenv('offset');
+        }
 
         define('TIMEZONE_OFFSET', $offset);
-        /*else {
-            // We set the default timezone to the server timezone
-            // And we set a global offset
-            define('TIMEZONE_OFFSET', getTimezoneOffset($config->timezone));
-        }*/
-
         date_default_timezone_set("UTC");
     }
 

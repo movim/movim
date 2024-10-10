@@ -42,6 +42,7 @@ var MovimRPC = {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
+                'X-CONTENT': 'HOPLA',
                 'Movim-Offset': date.getTimezoneOffset()
             },
             body: JSON.stringify(
