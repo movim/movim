@@ -28,7 +28,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 
 use Movim\ChatStates;
 use Movim\ChatOwnState;
-use Movim\CurrentCall;
+use Movim\CurrentCalls;
 use Movim\EmbedLight;
 use Movim\Image;
 use Movim\XMPPUri;
@@ -77,6 +77,11 @@ class Chat extends \Movim\Widget\Base
 
         $this->registerEvent('currentcall_started', 'onCallEvent', 'chat');
         $this->registerEvent('currentcall_stopped', 'onCallEvent', 'chat');
+
+        $this->registerEvent('callinvitepropose', 'onCallInvite');
+        $this->registerEvent('callinviteaccept', 'onCallInvite');
+        $this->registerEvent('callinviteleft', 'onCallInvite');
+        $this->registerEvent('presence_muji_event', 'onCallInvite');
     }
 
     public function onPresence($packet)
@@ -87,6 +92,15 @@ class Chat extends \Movim\Widget\Base
             if (isset($arr[1]) && $jid == $arr[1] && !$packet->content->muc) {
                 $this->ajaxGetHeader($jid);
             }
+        }
+    }
+
+    public function onCallInvite($packet)
+    {
+        $muji = $packet->content;
+
+        if ($muji->jidfrom && $muji->conference) {
+            $this->ajaxGetHeader($muji->jidfrom, $muji->isfromconference);
         }
     }
 
@@ -410,8 +424,8 @@ class Chat extends \Movim\Widget\Base
                 (new Dictaphone)->ajaxHttpGet();
             }
 
-            if (CurrentCall::getInstance()->isStarted()) {
-                $this->rpc('MovimVisio.moveToChat', CurrentCall::getInstance()->getBareJid());
+            if (CurrentCalls::getInstance()->isStarted()) {
+                $this->rpc('MovimVisio.moveToChat', CurrentCalls::getInstance()->getBareJid());
             }
 
             $this->rpc('Chat.setObservers');
@@ -463,6 +477,10 @@ class Chat extends \Movim\Widget\Base
                 $this->rpc('Chat.focus');
 
                 (new Dictaphone)->ajaxHttpGet();
+            }
+
+            if (CurrentCalls::getInstance()->isStarted()) {
+                $this->rpc('MovimVisio.moveToChat', CurrentCalls::getInstance()->getBareJid());
             }
 
             $this->rpc('Chat.setObservers');
@@ -1620,8 +1638,8 @@ class Chat extends \Movim\Widget\Base
 
         $view->assign('jid', $jid);
         $view->assign('muc', $muc);
-        $view->assign('contactincall', CurrentCall::getInstance()->isJidInCall($jid));
-        $view->assign('incall', CurrentCall::getInstance()->isStarted());
+        $view->assign('contactincall', CurrentCalls::getInstance()->isJidInCall($jid));
+        $view->assign('incall', CurrentCalls::getInstance()->isStarted());
         $view->assign(
             'info',
             \App\Info::where('server', $this->user->session->host)

@@ -162,15 +162,6 @@ function unechap($string): string
 }
 
 /**
- * @desc Clean the resource of a jid
- */
-function cleanJid($jid): string
-{
-    $explode = explode('/', $jid);
-    return reset($explode);
-}
-
-/**
  * @desc Extract the CID
  */
 function getCid($string): ?array

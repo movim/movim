@@ -14,6 +14,7 @@ use Movim\Widget\Base;
 use App\Conference;
 use App\Widgets\Toast\Toast;
 use Movim\ChatroomPings;
+use Moxl\Xec\Payload\Packet;
 
 class Rooms extends Base
 {
@@ -46,6 +47,11 @@ class Rooms extends Base
         $this->registerEvent('presence_muc_errornotacceptable', 'onNotAcceptable');
         $this->registerEvent('presence_muc_errorserviceunavailable', 'onServiceUnavailable');
 
+        $this->registerEvent('callinvitepropose', 'onCallInvite');
+        $this->registerEvent('callinviteaccept', 'onCallInvite');
+        $this->registerEvent('callinviteleft', 'onCallInvite');
+        $this->registerEvent('presence_muji_event', 'onCallInvite');
+
         // Bug: In Chat::ajaxGet, Notif.current might come after this event
         // so we don't set the filter
         $this->registerEvent('chat_open_room', 'onChatOpen'/*, 'chat'*/);
@@ -59,6 +65,15 @@ class Rooms extends Base
     public function onChatState(array $array)
     {
         $this->setState($array[0], isset($array[1]));
+    }
+
+    public function onCallInvite(Packet $packet)
+    {
+        $muji = $packet->content;
+
+        if ($muji->jidfrom && $muji->conference) {
+            $this->onPresence($muji->jidfrom);
+        }
     }
 
     public function onMessage($packet)

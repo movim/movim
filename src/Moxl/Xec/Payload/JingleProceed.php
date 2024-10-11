@@ -2,7 +2,7 @@
 
 namespace Moxl\Xec\Payload;
 
-use Movim\CurrentCall;
+use Movim\CurrentCalls;
 
 class JingleProceed extends Payload
 {
@@ -11,13 +11,9 @@ class JingleProceed extends Payload
         $from = (string)$parent->attributes()->from;
         $id = (string)$stanza->attributes()->id;
 
-        CurrentCall::getInstance()->start($from, $id);
+        CurrentCalls::getInstance()->start($from, $id);
 
-        $this->pack([
-            'from' => $from,
-            'id' => $id
-        ]);
-
+        $this->pack($id, $from);
         $this->deliver();
     }
 }
