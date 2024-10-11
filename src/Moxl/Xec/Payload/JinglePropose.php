@@ -24,10 +24,9 @@ class JinglePropose extends Payload
         }
 
         $this->pack([
-            'from' => (string)$parent->attributes()->from,
             'id' => (string)$stanza->attributes()->id,
             'withVideo' => $withVideo
-        ]);
+        ], (string)$parent->attributes()->from);
 
         $this->deliver();
     }

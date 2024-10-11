@@ -12,10 +12,7 @@ class JingleReject extends Payload
         $jingleSid = CurrentCall::getInstance()->id;
         if ($jingleSid && (string)$stanza->attributes()->id != $jingleSid) return;
 
-        $this->pack([
-            'from' => (string)$parent->attributes()->from,
-            'id' => (string)$stanza->attributes()->id
-        ]);
+        $this->pack((string)$stanza->attributes()->id, (string)$parent->attributes()->from);
         $this->deliver();
     }
 }
