@@ -208,6 +208,7 @@ class Presence extends Model
     public function toArray()
     {
         $now = \Carbon\Carbon::now();
+
         return [
             'session_id' => $this->attributes['session_id'] ?? null,
             'jid' => $this->attributes['jid']  ?? null,

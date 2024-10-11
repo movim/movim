@@ -2,6 +2,7 @@
 
 namespace Movim\Librairies;
 
+use DOMElement;
 use Movim\CurrentCall;
 use Movim\Session;
 
@@ -52,8 +53,15 @@ class SDPtoJingle
         'media'           => "/^m=(audio|video|application|data)/i"
     ];
 
-    public function __construct($sdp, $initiator, $responder = false, $action = false, $mid = null, $ufrag = null)
-    {
+    public function __construct(
+        string $sdp,
+        string $initiator,
+        bool $muji = false,
+        $responder = false,
+        $action = false,
+        $mid = null,
+        $ufrag = null
+    ) {
         $this->sdp = $sdp;
         $this->arr = explode("\n", $this->sdp);
 
@@ -65,9 +73,15 @@ class SDPtoJingle
             $this->ufrag = $ufrag;
         }
 
-        $this->jingle = new \SimpleXMLElement('<jingle></jingle>');
-        $this->jingle->addAttribute('xmlns', 'urn:xmpp:jingle:1');
-        $this->jingle->addAttribute('initiator', $initiator);
+        if ($muji) {
+            $this->jingle = new \SimpleXMLElement('<muji></muji>');
+            $this->jingle->addAttribute('xmlns', 'urn:xmpp:jingle:muji:0');
+        } else {
+            $this->jingle = new \SimpleXMLElement('<jingle></jingle>');
+            $this->jingle->addAttribute('xmlns', 'urn:xmpp:jingle:1');
+            $this->jingle->addAttribute('initiator', $initiator);
+        }
+
 
         if ($action) {
             $this->jingle->addAttribute('action', $action);
@@ -150,7 +164,7 @@ class SDPtoJingle
         }
     }
 
-    public function generate()
+    public function generate(): DOMElement
     {
         foreach ($this->arr as $l) {
             foreach ($this->regex as $key => $r) {

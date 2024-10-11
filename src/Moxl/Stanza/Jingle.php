@@ -25,7 +25,7 @@ class Jingle
         $description->setAttribute('media', 'audio');
         $propose->appendChild($description);
 
-        \Moxl\API::request($dom->saveXML($dom->documentElement));
+        \Moxl\API::sendDom($dom);
     }
 
     public static function sessionAccept($id)
@@ -38,7 +38,7 @@ class Jingle
         $accept->setAttribute('id', $id);
         $message->appendChild($accept);
 
-        \Moxl\API::request($dom->saveXML($dom->documentElement));
+        \Moxl\API::sendDom($dom);
     }
 
     public static function sessionProceed($to, $id)
@@ -52,7 +52,7 @@ class Jingle
         $proceed->setAttribute('id', $id);
         $message->appendChild($proceed);
 
-        \Moxl\API::request($dom->saveXML($dom->documentElement));
+        \Moxl\API::sendDom($dom);
     }
 
     public static function sessionRetract($to, $id)
@@ -72,7 +72,7 @@ class Jingle
         $reason->appendChild($dom->createElement('cancel'));
         $reason->appendChild($dom->createElement('text', 'Retracted'));
 
-        \Moxl\API::request($dom->saveXML($dom->documentElement));
+        \Moxl\API::sendDom($dom);
     }
 
     public static function sessionReject($id, $to = false)
@@ -88,7 +88,7 @@ class Jingle
         $proceed->setAttribute('id', $id);
         $message->appendChild($proceed);
 
-        \Moxl\API::request($dom->saveXML($dom->documentElement));
+        \Moxl\API::sendDom($dom);
     }
 
     public static function sessionInitiate($to, $offer)

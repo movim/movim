@@ -5,6 +5,7 @@ namespace App;
 use Movim\ImageSize;
 
 use Awobaz\Compoships\Database\Eloquent\Model;
+use Movim\CurrentCall;
 
 class Conference extends Model
 {
@@ -13,7 +14,7 @@ class Conference extends Model
     public $incrementing = false;
     protected $primaryKey = ['session_id', 'conference'];
     protected $fillable = ['conference', 'name', 'nick', 'autojoin', 'pinned'];
-    protected $with = ['contact'];
+    protected $with = ['contact', 'mujiCalls'];
 
     public static $xmlnsNotifications = 'xmpp:movim.eu/notifications:0';
     public static $xmlnsPinned = 'urn:xmpp:bookmarks-pinning:0';
@@ -46,6 +47,12 @@ class Conference extends Model
                     ->orderBy('mucaffiliation', 'desc')
                     ->orderBy('value')
                     ->orderBy('resource');
+    }
+
+    public function mujiCalls()
+    {
+        return $this->hasMany('App\MujiCall', ['jidfrom', 'session_id'], ['conference', 'session_id'])
+            ->where('isfromconference', true);
     }
 
     public function otherPresences()
@@ -224,13 +231,18 @@ class Conference extends Model
     }
 
     // https://docs.modernxmpp.org/client/groupchat/#types-of-chat
-    public function isGroupChat()
+    public function isGroupChat(): bool
     {
         if ($this->info) {
             return $this->info->mucmembersonly && !$this->info->mucsemianonymous;
         }
 
         return false;
+    }
+
+    public function isInCall(): bool
+    {
+        return CurrentCall::getInstance()->isJidInCall($this->conference);
     }
 
     public function toArray()

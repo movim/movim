@@ -1,14 +1,14 @@
 #visio {
     display: block;
     position: fixed;
-    bottom: 8rem;
+    bottom: 4rem;
     right: 3rem;
     width: 40rem;
     height: 25rem;
     background-color: #111;
     border-radius: 1rem;
     transition: opacity 0.3s ease-in-out;
-    z-index: 2;
+    z-index: 3;
 }
 
 #chat_widget #visio {

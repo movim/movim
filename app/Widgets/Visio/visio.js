@@ -15,7 +15,7 @@ var Visio = {
 
     tracksTypes: [],
 
-    prepare: function (from, id, withVideo) {
+    prepare: function (from, id, withVideo, muji) {
         if (!MovimVisio.localStream) return;
 
         Visio_ajaxPrepare(from);
@@ -23,6 +23,7 @@ var Visio = {
         MovimVisio.from = from;
         MovimVisio.id = id;
         MovimVisio.withVideo = withVideo ?? false;
+        MovimVisio.muji = muji ?? false;
     },
 
     init: function (bareFrom) {
@@ -66,12 +67,14 @@ var Visio = {
             Visio.tracksTypes['mid' + event.transceiver.mid] = event.track.kind;
         };
 
-        MovimVisio.pc.onicecandidate = event => {
-            let candidate = event.candidate;
-            if (candidate && candidate.candidate && candidate.candidate.length > 0) {
-                Visio_ajaxCandidate(event.candidate, MovimVisio.from, MovimVisio.id);
-            }
-        };
+        if (MovimVisio.muji == false) {
+            MovimVisio.pc.onicecandidate = event => {
+                let candidate = event.candidate;
+                if (candidate && candidate.candidate && candidate.candidate.length > 0) {
+                    Visio_ajaxCandidate(event.candidate, MovimVisio.from, MovimVisio.id);
+                }
+            };
+        }
 
         MovimVisio.pc.oniceconnectionstatechange = () => VisioUtils.toggleMainButton();
 
@@ -98,13 +101,17 @@ var Visio = {
             VisioUtils.switchCameraInCall();
         }
 
-        if (MovimVisio.id) {
-            Visio_ajaxAccept(MovimVisio.from, MovimVisio.id);
+        if (MovimVisio.muji == true) {
+            Visio.mujiInit();
         } else {
-            MovimVisio.id = crypto.randomUUID();
-            Visio.calling = true;
-            VisioUtils.toggleMainButton();
-            Visio_ajaxPropose(MovimVisio.from, MovimVisio.id, MovimVisio.withVideo);
+            if (MovimVisio.id) {
+                Visio_ajaxAccept(MovimVisio.from, MovimVisio.id);
+            } else {
+                MovimVisio.id = crypto.randomUUID();
+                Visio.calling = true;
+                VisioUtils.toggleMainButton();
+                Visio_ajaxPropose(MovimVisio.from, MovimVisio.id, MovimVisio.withVideo);
+            }
         }
     },
 
@@ -146,7 +153,7 @@ var Visio = {
         Visio.getUserMedia(withVideo);
     },
 
-    getUserMedia: function(withVideo) {
+    getUserMedia: function (withVideo) {
         var constraints = {
             audio: true,
             video: false,
@@ -220,7 +227,7 @@ var Visio = {
         });
     },
 
-    gotDevices: function(withVideo, devicesInfo) {
+    gotDevices: function (withVideo, devicesInfo) {
         microphoneFound = false;
         cameraFound = false;
 
@@ -298,6 +305,13 @@ var Visio = {
 
     gotScreen: function () {
         VisioUtils.pcReplaceTrack(MovimVisio.screenSharing.srcObject);
+    },
+
+    mujiInit: function () {
+        MovimVisio.pc.createOffer().then(function (offer) {
+            VisioUtils.toggleMainButton();
+            Visio_ajaxMujiInit(offer, MovimVisio.id);
+        });
     },
 
     onCandidate: function (candidate, mid, mlineindex) {

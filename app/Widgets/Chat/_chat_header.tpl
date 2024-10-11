@@ -41,6 +41,26 @@
                 </span>
             {/if}
 
+            {if="$conference->mujiCalls->isNotEmpty()"}
+                {$muji = $conference->mujiCalls->first()}
+                {if="!$incall"}
+                    <span class="control icon blue active" onclick="Visio_ajaxJoinMuji('{$muji->id}', {if="$muji->video"}true{else}false{/if});">
+                        <i class="material-symbols">{$muji->icon}</i>
+                    </span>
+                {else}
+                <span class="control icon red active" onclick="Visio_ajaxLeaveMuji('{$muji->id}')">
+                    <i class="material-symbols">{$muji->icon}</i>
+                </span>
+                {/if}
+            {else}
+                <span class="control icon active" onclick="Visio_ajaxGetMujiLobby('{$conference->conference}', true, true);">
+                    <i class="material-symbols">videocam</i>
+                </span>
+                <span class="control icon active" onclick="Visio_ajaxGetMujiLobby('{$conference->conference}', true, false);">
+                    <i class="material-symbols">call</i>
+                </span>
+            {/if}
+
             <span
                 class="control icon show_context_menu active {if="$conference && !$conference->connected"}disabled{/if}"
                 onclick="MovimTpl.showContextMenu()">
@@ -87,6 +107,17 @@
 
                 <p class="compose first line" id="{$jid|cleanupId}-state"></p>
                 <p class="line active">
+                    {if="$conference->mujiCalls->isNotEmpty()"}
+                        {if="$conference->isInCall()"}
+                            <i class="material-symbols icon green blink">phone_in_talk</i>
+                        {else}
+                            <i class="material-symbols icon blue">{$conference->mujiCalls->first()->icon}</i>
+                        {/if}
+                        {loop="$conference->mujiCalls"}
+                            {$value->presences->count()} <i class="material-symbols">people</i>
+                        {/loop} •
+                        {$c->__('visio.in_call')} •
+                    {/if}
                     {if="$conference"}
                         {if="!$conference->connected"}
                             {$c->__('button.connecting')}…
