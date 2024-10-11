@@ -18,6 +18,7 @@ class Muc extends Action
     protected $_mam = false;
     protected $_mam2 = false;
     protected $_create = false;
+    protected $_mujiPreparing = false;
 
     // Disable the event
     protected $_notify = true;
@@ -42,7 +43,7 @@ class Muc extends Action
          */
         $session->set(self::$mucId . $this->_to . '/' . $this->_nickname, $this->stanzaId);
 
-        Presence::muc($this->_to, $this->_nickname, $this->_mam);
+        Presence::muc($this->_to, $this->_nickname, $this->_mam, $this->_mujiPreparing);
     }
 
     public function enableCreate()
@@ -60,6 +61,12 @@ class Muc extends Action
     public function enableMAM2()
     {
         $this->_mam2 = true;
+        return $this;
+    }
+
+    public function enableMujiPreparing()
+    {
+        $this->_mujiPreparing = true;
         return $this;
     }
 

@@ -17,6 +17,7 @@ class Presence
         $type = false,
         bool $muc = false,
         bool $mam = false,
+        bool $mujiPreparing = false,
         $last = 0
     ) {
         $session = Session::instance();
@@ -62,6 +63,12 @@ class Presence
             $idle = $dom->createElementNS('urn:xmpp:idle:1', 'idle');
             $idle->setAttribute('since', gmdate('c', $timestamp));
             $root->appendChild($idle);
+        }
+
+        if ($mujiPreparing) {
+            $muji = $dom->createElementNS('urn:xmpp:jingle:muji:0', 'muji');
+            $muji->appendChild($dom->createElement('preparing'));
+            $root->appendChild($muji);
         }
 
         if ($muc) {
@@ -136,9 +143,9 @@ class Presence
     /*
      * Enter a chat room
      */
-    public static function muc($to, $nickname = false, $mam = false)
+    public static function muc($to, $nickname = false, $mam = false, $mujiPreparing = false)
     {
-        \Moxl\API::request(self::maker($to . '/' . $nickname, muc: true, mam: $mam));
+        \Moxl\API::request(self::maker($to . '/' . $nickname, muc: true, mam: $mam, mujiPreparing: $mujiPreparing));
     }
 
     /*

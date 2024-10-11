@@ -10,7 +10,7 @@ class Conference extends Model
     public $incrementing = false;
     protected $primaryKey = ['session_id', 'conference'];
     protected $fillable = ['conference', 'name', 'nick', 'autojoin', 'pinned'];
-    protected $with = ['contact'];
+    protected $with = ['contact', 'mujiCalls'];
 
     public static $xmlnsNotifications = 'xmpp:movim.eu/notifications:0';
     public static $xmlnsPinned = 'urn:xmpp:bookmarks-pinning:0';
@@ -44,6 +44,11 @@ class Conference extends Model
                     ->orderBy('mucaffiliation', 'desc')
                     ->orderBy('value')
                     ->orderBy('resource');
+    }
+
+    public function mujiCalls()
+    {
+        return $this->hasMany('App\MujiCall', 'conference_id', 'conference');
     }
 
     public function otherPresences()
