@@ -144,10 +144,10 @@ class Search extends Base
         $this->rpc('Search.searchClear');
     }
 
-    public function ajaxChat($jid)
+    public function ajaxChat(string $jid, bool $muc = false)
     {
         $contact = new ContactActions();
-        $contact->ajaxChat($jid);
+        $contact->ajaxChat($jid, $muc);
     }
 
     public function prepareTicket(Post $post)

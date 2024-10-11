@@ -22,65 +22,80 @@ class Jingle extends Payload
             (string)$stanza->attributes()->sid
         );
 
-        $sid = CurrentCall::getInstance()->id;
-
-        if ($sid == $message->thread) {
+        //if (CurrentCall::getInstance()->hasId($message->thread)) {
             Ack::send($from, $id);
 
             switch ($action) {
                 case 'session-initiate':
-                    $message->type = 'jingle_incoming';
-                    $message->save();
+                    if (!$stanza->muji && CurrentCall::getInstance()->hasId($stanza->attributes()->sid)) {
+                        $message->type = 'jingle_incoming';
+                        $message->save();
 
-                    $stanza = CurrentCall::getInstance()->setContent($stanza);
+                        $this->pack($message);
+                        $this->event('jingle_message');
+                    }
 
-                    $this->event('jingle_sessioninitiate', [$stanza, $from]);
+                    //$stanza = CurrentCall::getInstance()->setContent($stanza);
 
-                    $this->pack($message);
-                    $this->event('jingle_message');
+                    $this->pack($stanza, $from);
+                    $this->event('jingle_sessioninitiate');
                     break;
                 case 'session-info':
                     if ($stanza->mute) {
-                        $this->event('jingle_sessionmute', 'mid' . (string)$stanza->mute->attributes()->name);
+                        $this->pack('mid' . (string)$stanza->mute->attributes()->name, $from);
+                        $this->event('jingle_sessionmute');
                     }
                     if ($stanza->unmute) {
-                        $this->event('jingle_sessionunmute', 'mid' . (string)$stanza->unmute->attributes()->name);
+                        $this->pack('mid' . (string)$stanza->unmute->attributes()->name, $from);
+                        $this->event('jingle_sessionunmute');
                     }
                     break;
                 case 'transport-info':
-                    $this->event('jingle_transportinfo', $stanza);
+                    $this->pack($stanza, $from);
+                    $this->event('jingle_transportinfo');
                     break;
                 case 'session-terminate':
-                    $message->type = 'jingle_end';
-                    $message->save();
-                    $this->event('jingle_sessionterminate', (string)$stanza->reason->children()[0]->getName());
+                    if (!$stanza->muji && CurrentCall::getInstance()->hasId($stanza->attributes()->sid)) {
+                        $message->type = 'jingle_end';
+                        $message->save();
 
-                    $this->pack($message);
-                    $this->event('jingle_message');
+                        $this->pack($message);
+                        $this->event('jingle_message');
+                    }
+
+                    $this->pack((string)$stanza->attributes()->sid, $from);
+                    $this->event('jingle_sessionterminate'/*, (string)$stanza->reason->children()[0]->getName()*/);
                     break;
                 case 'session-accept':
-                    $message->type = 'jingle_outgoing';
-                    $message->save();
-                    $this->event('jingle_sessionaccept', $stanza);
+                    if (!$stanza->muji && CurrentCall::getInstance()->hasId($stanza->attributes()->sid)) {
+                        $message->type = 'jingle_outgoing';
+                        $message->save();
 
-                    $this->pack($message);
-                    $this->event('jingle_message');
+                        $this->pack($message);
+                        $this->event('jingle_message');
+                    }
+
+                    $this->pack($stanza, $from);
+                    $this->event('jingle_sessionaccept');
                     break;
                 case 'content-add':
-                    $stanza = CurrentCall::getInstance()->setContent($stanza);
-                    $this->event('jingle_contentadd', $stanza);
+                    //$stanza = CurrentCall::getInstance()->setContent($stanza);
+                    $this->pack($stanza, $from);
+                    $this->event('jingle_contentadd');
                     break;
                 case 'content-modify':
-                    $stanza = CurrentCall::getInstance()->setContent($stanza);
-                    $this->event('jingle_contentmodify', $stanza);
+                    //$stanza = CurrentCall::getInstance()->setContent($stanza);
+                    $this->pack($stanza, $from);
+                    $this->event('jingle_contentmodify');
                     break;
                 case 'content-remove':
-                    $stanza = CurrentCall::getInstance()->setContent($stanza);
-                    $this->event('jingle_contentremove', $stanza);
+                    //$stanza = CurrentCall::getInstance()->setContent($stanza);
+                    $this->pack($stanza, $from);
+                    $this->event('jingle_contentremove');
                     break;
             }
-        } else {
+        /*} else {
             JingleStanza::unknownSession($from, $id);
-        }
+        }*/
     }
 }

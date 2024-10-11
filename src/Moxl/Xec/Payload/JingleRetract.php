@@ -10,21 +10,20 @@ class JingleRetract extends Payload
     {
         $from = (string)$parent->attributes()->from;
 
-        $message = Message::eventMessageFactory(
-            'jingle',
-            baseJid($from),
-            (string)$stanza->attributes()->id
-        );
-        $message->type = 'jingle_retract';
-        $message->save();
+        if (!$stanza->muji) {
+            $message = Message::eventMessageFactory(
+                'jingle',
+                baseJid($from),
+                (string)$stanza->attributes()->id
+            );
+            $message->type = 'jingle_retract';
+            $message->save();
 
-        $this->pack($message);
-        $this->event('jingle_message');
+            $this->pack($message);
+            $this->event('jingle_message');
+    }
 
-        $this->pack([
-            'from' => $from,
-            'id' => (string)$stanza->attributes()->id
-        ]);
+        $this->pack((string)$stanza->attributes()->id, $from);
         $this->deliver();
     }
 }
