@@ -67,7 +67,7 @@ var Rooms = {
         }
     },
 
-    refresh: function () {
+    refresh: function (callSecond) {
         Rooms.displayToggleButton();
 
         var list = document.querySelector('#rooms_widget ul.list.rooms');
@@ -84,6 +84,10 @@ var Rooms = {
                 }
             }
 
+            // If we have a room with a call we do a second daemon refresh to get the live status
+            if (items[i].classList.contains('muc_call') && callSecond == true) {
+                Rooms_ajaxSecondGet(items[i].dataset.jid);
+            }
 
             if (
                 i >= 1
@@ -109,7 +113,7 @@ var Rooms = {
         document.querySelector('#rooms_widget ul.list.rooms').innerHTML = '';
     },
 
-    setRoom: function (id, html) {
+    setRoom: function (id, html, noSecondRefresh) {
         var listSelector = '#rooms_widget ul.list.rooms ';
         var list = document.querySelector(listSelector);
         var element = list.querySelector('#' + id);
@@ -132,7 +136,7 @@ var Rooms = {
             MovimTpl.append(listSelector, html);
         }
 
-        Rooms.refresh();
+        Rooms.refresh(noSecondRefresh);
     },
 
     clearAllActives: function() {

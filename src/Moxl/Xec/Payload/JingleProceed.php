@@ -11,13 +11,7 @@ class JingleProceed extends Payload
         $from = (string)$parent->attributes()->from;
         $id = (string)$stanza->attributes()->id;
 
-        CurrentCall::getInstance()->start($from, $id);
-
-        $this->pack([
-            'from' => $from,
-            'id' => $id
-        ]);
-
+        $this->pack($id, $from);
         $this->deliver();
     }
 }
