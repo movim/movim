@@ -30,8 +30,6 @@ class SessionTerminate extends Action
         $message->type = 'jingle_end';
         $message->save();
 
-        $this->event('jingle_sessionterminate', $this->_reason);
-
         $this->pack($message);
         $this->event('jingle_message');
     }

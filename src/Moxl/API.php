@@ -50,6 +50,14 @@ class API
         return $dom->saveXML($dom->documentElement);
     }
 
+    /**
+     * Request a DomDocument
+     */
+    public static function sendDom(\DOMDocument $dom)
+    {
+        API::request($dom->saveXML($dom->documentElement));
+    }
+
     /*
      *  Call the request class with the correct XML
      */

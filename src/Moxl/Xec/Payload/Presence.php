@@ -6,6 +6,7 @@ use App\Presence as DBPresence;
 use App\PresenceBuffer;
 use Movim\Session;
 use Movim\ChatroomPings;
+use Movim\CurrentCall;
 use Moxl\Xec\Action\Presence\Muc;
 use Moxl\Xec\Handler;
 
@@ -14,6 +15,7 @@ class Presence extends Payload
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $jid = explodeJid($stanza->attributes()->from);
+
         if (\App\User::me()->hasBlocked($jid['jid'])) {
             return;
         }
@@ -27,7 +29,23 @@ class Presence extends Payload
             $presence = DBPresence::findByStanza($stanza);
             $presence->set($stanza);
 
-            PresenceBuffer::getInstance()->append($presence, function () use ($presence, $stanza) {
+            if (CurrentCall::getInstance()->isStarted() && CurrentCall::getInstance()->mujiRoom == $jid['jid']) {
+                $muji = \App\User::me()->session->mujiCalls()
+                    ->where('muc', $jid['jid'])
+                    ->first();
+
+                if ($muji) {
+                    $this->pack($muji);
+                    $this->method('muji_event');
+                    $this->deliver();
+
+                    $this->pack([$stanza, $presence], $presence->mucjid . '/' . $presence->mucjidresource);
+                    $this->method('muji');
+                    $this->deliver();
+                }
+            }
+
+            PresenceBuffer::getInstance()->append($presence, function () use ($presence, $stanza, $jid) {
                 if ((string)$stanza->attributes()->type == 'subscribe') {
                     $this->event('subscribe', (string)$stanza->attributes()->from);
                 }

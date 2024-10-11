@@ -14,6 +14,10 @@ class Carbons extends Payload
              && $message->retract->attributes()->xmlns == 'urn:xmpp:message-retract:1') {
                 $retracted = new Retracted;
                 $retracted->handle($message->retract, $message);
+            } elseif ($message->invite
+             && $message->invite->attributes()->xmlns == 'urn:xmpp:call-invites:0') {
+                $callInvite = new CallInvitePropose;
+                $callInvite->handle($message->invite, $message, carbon: true);
             } elseif ($message->body || $message->subject
             || ($message->reactions && $message->reactions->attributes()->xmlns == 'urn:xmpp:reactions:0')) {
                 $m = \App\Message::findByStanza($message);
@@ -37,6 +41,7 @@ class Carbons extends Payload
                 $displayed->handle($message->displayed, $message);
             } elseif (count($jingle_messages = $stanza->xpath('//*[@xmlns="urn:xmpp:jingle-message:0"]')) >= 1) {
                 $callto = baseJid((string)$message->attributes()->to);
+
                 if ($callto == \App\User::me()->id || $callto == "") {
                     // We get carbons for calls other clients make as well as calls other clients receive
                     // So make sure we only ring when we see a call _to_ us

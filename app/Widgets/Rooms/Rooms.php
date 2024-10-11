@@ -12,8 +12,11 @@ use Movim\ChatStates;
 use Movim\Widget\Base;
 
 use App\Conference;
+use App\Widgets\Notif\Notif;
 use App\Widgets\Toast\Toast;
 use Movim\ChatroomPings;
+use Movim\CurrentCall;
+use Moxl\Xec\Payload\Packet;
 
 class Rooms extends Base
 {
@@ -46,6 +49,12 @@ class Rooms extends Base
         $this->registerEvent('presence_muc_errornotacceptable', 'onNotAcceptable');
         $this->registerEvent('presence_muc_errorserviceunavailable', 'onServiceUnavailable');
 
+        $this->registerEvent('callinvitepropose', 'onCallInvitePropose');
+        $this->registerEvent('callinviteaccept', 'onCallInvite');
+        $this->registerEvent('callinviteleft', 'onCallInvite');
+        $this->registerEvent('callinviteretract', 'onCallInvite');
+        $this->registerEvent('presence_muji_event', 'onCallInvite');
+
         // Bug: In Chat::ajaxGet, Notif.current might come after this event
         // so we don't set the filter
         $this->registerEvent('chat_open_room', 'onChatOpen'/*, 'chat'*/);
@@ -59,6 +68,37 @@ class Rooms extends Base
     public function onChatState(array $array)
     {
         $this->setState($array[0], isset($array[1]));
+    }
+
+    public function onCallInvitePropose(Packet $packet)
+    {
+        $muji = $packet->content;
+
+        if ($muji->jidfrom && $muji->conference) {
+            Notif::append(
+                'chat|' . $muji->jidfrom,
+                ($muji->conference != null && $muji->conference->name)
+                    ? $muji->conference->name
+                    : $muji->jidfrom,
+                ($muji->video)
+                    ? "📹 " . __('muji.call_video_invite')
+                    : "📞 " . __('muji.call_audio_invite'),
+                $muji->conference->getPicture(),
+                5,
+                $this->route('chat', [$muji->jidfrom, 'room'])
+            );
+
+            $this->onCallInvite($packet);
+        }
+    }
+
+    public function onCallInvite(Packet $packet)
+    {
+        $muji = $packet->content;
+
+        if ($muji->jidfrom && $muji->conference) {
+            $this->onPresence($muji->jidfrom);
+        }
     }
 
     public function onMessage($packet)
@@ -166,7 +206,7 @@ class Rooms extends Base
         }
     }
 
-    private function onPresence(string $room)
+    public function onPresence(string $room, bool $callSecond = true)
     {
         $conference = $this->user->session->conferences()
                                           ->where('conference', $room)
@@ -175,8 +215,13 @@ class Rooms extends Base
                                           ->first();
 
         if ($conference) {
-            $this->rpc('Rooms.setRoom', \cleanupId($conference->conference), $this->prepareConference($conference));
+            $this->rpc('Rooms.setRoom', \cleanupId($conference->conference), $this->prepareConference($conference), $callSecond);
         }
+    }
+
+    public function ajaxSecondGet(string $room)
+    {
+        $this->onPresence($room, callSecond: false);
     }
 
     public function ajaxHttpGet()
@@ -189,7 +234,7 @@ class Rooms extends Base
         $this->rpc('Rooms.clearRooms');
 
         foreach ($conferences as $conference) {
-            $this->rpc('Rooms.setRoom', \cleanupId($conference->conference), $this->prepareConference($conference));
+            $this->rpc('Rooms.setRoom', \cleanupId($conference->conference), $this->prepareConference($conference), true);
         }
 
         $this->rpc('Rooms.refresh');

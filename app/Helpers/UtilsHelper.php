@@ -631,9 +631,11 @@ function generateUUID($string = false)
  * @desc Generate a simple random key
  * @params The size of the key
  */
-function generateKey(?int $size = 16): string
+function generateKey(?int $size = 16, bool $withCapitals = true): string
 {
-    $hashChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    $hashChars = 'abcdefghijklmnopqrstuvwxyz';
+    if ($withCapitals) $hashChars .= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+
     $hash = '';
 
     for ($i = 0; $i < $size; $i++) {

@@ -31,13 +31,24 @@
             {/if}
                 </span>
 
-            {if="$conference && $conference->info && $conference->info->related"}
-                {$related = $conference->info->related}
-                <span
-                    title="{$c->__('page.communities')} • {$related->name}"
-                    onclick="MovimUtils.reload('{$c->route('community', [$related->server, $related->node])}')"
-                    class="control icon bubble active small">
-                    <img src="{$related->getPicture(\Movim\ImageSize::M)}"/>
+            {if="$conference->isGroupChat()"}
+                {if="$conference && $conference->info && $conference->info->related"}
+                    {$related = $conference->info->related}
+                    <span
+                        title="{$c->__('page.communities')} • {$related->name}"
+                        onclick="MovimUtils.reload('{$c->route('community', [$related->server, $related->node])}')"
+                        class="control icon bubble active small">
+                        <img src="{$related->getPicture(\Movim\ImageSize::M)}"/>
+                    </span>
+                {/if}
+            {/if}
+
+            {if="$conference->mujiCalls->isEmpty()"}
+                <span class="control icon active {if="$incall"}disabled{/if}" onclick="Visio_ajaxGetMujiLobby('{$conference->conference}', true, true);">
+                    <i class="material-symbols">videocam</i>
+                </span>
+                <span class="control icon active {if="$incall"}disabled{/if}" onclick="Visio_ajaxGetMujiLobby('{$conference->conference}', true, false);">
+                    <i class="material-symbols">call</i>
                 </span>
             {/if}
 
@@ -48,6 +59,18 @@
             </span>
 
             <div>
+                {if="$conference->mujiCalls->isNotEmpty()"}
+                    {$muji = $conference->mujiCalls->first()}
+                    {if="!$contactincall"}
+                        <button class="button oppose color blue {if="$incall"}disabled{/if}" onclick="Visio_ajaxJoinMuji('{$muji->id}', {if="$muji->video"}true{else}false{/if});">
+                            <i class="material-symbols {if="!$incall"}blink{/if}">{$muji->icon}</i>
+                        </button>
+                    {else}
+                        <button class="button oppose color red" onclick="Visio_ajaxLeaveMuji('{$muji->id}')">
+                            <i class="material-symbols">{$muji->icon}</i>
+                        </button>
+                    {/if}
+                {/if}
                 <p class="line active" title="{$jid|echapJS}" onclick="RoomsUtils_ajaxGetDrawer('{$jid|echapJS}')">
                     {if="$conference && $conference->title"}
                         {$conference->title}
@@ -87,6 +110,20 @@
 
                 <p class="compose first line" id="{$jid|cleanupId}-state"></p>
                 <p class="line active">
+                    {if="$conference->mujiCalls->isNotEmpty()"}
+                        <i class="material-symbols icon {if="$conference->isInCall()"}green{else}blue{/if} blink">
+                            {$conference->mujiCalls->first()->icon}
+                        </i>
+                        {if="$conference->isInCall()"}
+                            {$conference->mujiCalls->first()->presences->count()}
+                        {else}
+                            {$conference->mujiCalls->first()->participants->count()}
+                        {/if}
+                        <i class="material-symbols">people</i>
+                        —
+                        {$c->__('visio.in_call')}
+                        •
+                    {/if}
                     {if="$conference"}
                         {if="!$conference->connected"}
                             {$c->__('button.connecting')}…

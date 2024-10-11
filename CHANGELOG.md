@@ -4,6 +4,8 @@ Movim Changelog
 v0.30 (master)
 ---------------------------
 * Limit the jid, name and group name to 256 character max in the Roster to allow it to be saved in the DB
+* Implement XEP-0272: Multiparty Jingle (Muji)
+* Implement XEP-0482: Call Invites
 
 v0.29.2
 ---------------------------

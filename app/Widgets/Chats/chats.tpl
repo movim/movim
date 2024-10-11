@@ -1,3 +1,8 @@
+<ul id="chats_calls_list" class="list middle active divided spaced">
+    {autoescape="off"}
+        {$c->prepareCalls()}
+    {/autoescape}
+</ul>
 <ul id="chats_widget_header" class="list" data-filter="{$filter}">
     <li class="subheader">
         <div>

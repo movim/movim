@@ -35,7 +35,7 @@ class PublishStories extends Base
                    ->request();
             }
 
-            $this->rpc('MovimUtils.softRedirect', $this->route('chat'));
+            $this->rpc('MovimUtils.reload', $this->route('chat'));
         }
 
         $this->rpc('PublishStories.close');

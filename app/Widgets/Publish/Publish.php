@@ -44,9 +44,9 @@ class Publish extends Base
         }
 
         if ($node == AppPost::MICROBLOG_NODE) {
-            $this->rpc('MovimUtils.softRedirect', $this->route('news'));
+            $this->rpc('MovimUtils.reload', $this->route('news'));
         } elseif ($node != AppPost::STORIES_NODE) {
-            $this->rpc('MovimUtils.softRedirect', $this->route('community', [$to, $node]));
+            $this->rpc('MovimUtils.reload', $this->route('community', [$to, $node]));
         }
     }
 

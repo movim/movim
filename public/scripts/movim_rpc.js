@@ -82,6 +82,8 @@ var MovimRPC = {
             if (typeof window[called] == 'object'
                 && typeof window[funcs[0]][funcs[1]] != 'undefined') {
                 window[funcs[0]][funcs[1]].apply(null, funcall.p);
+            } else {
+                throw Error('Function not found: ' + funcall.func);
             }
         }
     }

@@ -1,6 +1,7 @@
 var Notif = {
     inhibed: false,
     focused: false,
+    call_status: null,
     tab_counter1: 0,
     tab_counter2: 0,
     tab_counter1_key: 'chat',
@@ -92,10 +93,18 @@ var Notif = {
         Notif.document_title = title;
         Notif.displayTab();
     },
+    setCallStatus: function (status) {
+        Notif.call_status = status;
+        Notif.displayTab();
+    },
     displayTab: function () {
+        document.title = (Notif.call_status != null)
+            ? Notif.call_status + ' | '
+            : '';
+
         if (Notif.tab_counter1 == 0 && Notif.tab_counter2 == 0) {
             MovimFavicon.counter(0, 0);
-            document.title = Notif.document_title;
+            document.title += Notif.document_title;
 
             if (typeof window.electron !== 'undefined')
                 window.electron.notification(false);
@@ -103,7 +112,7 @@ var Notif = {
             if (typeof window.rambox !== 'undefined')
                 window.rambox.setUnreadCount(0);
         } else {
-            document.title =
+            document.title +=
                 Notif.tab_counter1
                 + '∣'
                 + Notif.tab_counter2

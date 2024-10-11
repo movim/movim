@@ -18,7 +18,7 @@
                     </span>
                 {/if}
                 {if="!$contact->isMe()"}
-                    <span class="control icon active divided" onclick="Search.chat('{$contact->id|echapJS}'); Drawer.clear();">
+                    <span class="control icon active divided" onclick="Search.chat('{$contact->id|echapJS}', false); Drawer.clear();">
                         <i class="material-symbols">comment</i>
                     </span>
                     {if="$roster && $roster->presences->count() > 0 && !$incall"}
