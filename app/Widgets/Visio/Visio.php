@@ -2,9 +2,10 @@
 
 namespace App\Widgets\Visio;
 
+use App\MujiCall;
 use App\Widgets\Dialog\Dialog;
 use App\Widgets\Notif\Notif;
-use Movim\CurrentCall;
+use Movim\CurrentCalls;
 use Movim\Librairies\JingletoSDP;
 use Movim\Librairies\SDPtoJingle;
 use Moxl\Xec\Action\Jingle\SessionPropose;
@@ -17,6 +18,11 @@ use Moxl\Xec\Action\Jingle\SessionUnmute;
 use Movim\Widget\Base;
 use Moxl\Xec\Action\Jingle\SessionReject;
 use Moxl\Xec\Action\Jingle\SessionRetract;
+use Moxl\Xec\Action\JingleCallInvite\Accept;
+use Moxl\Xec\Action\JingleCallInvite\Invite;
+use Moxl\Xec\Action\Presence\Muc;
+use Moxl\Xec\Action\Presence\Unavailable;
+use Moxl\Xec\Payload\Packet;
 
 class Visio extends Base
 {
@@ -50,18 +56,19 @@ class Visio extends Base
         $this->registerEvent('externalservices_get_error', 'onExternalServicesError');
 
         $this->registerEvent('session_down', 'onSessionDown');
+        $this->registerEvent('presence_muji', 'onMujiPresence');
     }
 
     public function onSessionDown()
     {
-        $currentCall = CurrentCall::getInstance();
+        $currentCall = CurrentCalls::getInstance();
 
         if ($currentCall->isStarted()) {
             $st = new SessionTerminate;
-            $st->setTo($currentCall->to)
-               ->setJingleSid($currentCall->id)
-               ->setReason('failed-application')
-               ->request();
+            $st->setTo($currentCall->jid)
+                ->setJingleSid($currentCall->id)
+                ->setReason('failed-application')
+                ->request();
 
             $currentCall->stop();
         }
@@ -79,8 +86,8 @@ class Visio extends Base
                 if ($service['type'] == 'turn' && $turn) continue;
                 if ($service['type'] == 'turn') $turn = true;
 
-                $url = $service['type'].':'.$service['host'];
-                $url .= !empty($service['port']) ? ':'.$service['port'] : '';
+                $url = $service['type'] . ':' . $service['host'];
+                $url .= !empty($service['port']) ? ':' . $service['port'] : '';
                 $item = ['urls' => $url];
 
                 if (isset($service['username']) && isset($service['password'])) {
@@ -99,9 +106,23 @@ class Visio extends Base
         }
     }
 
+    public function onMujiPresence($packet)
+    {
+        list($stanza, $presence) = $packet->content;
+        if ($stanza && $stanza->muji && $stanza->muji->attributes()->xmlns == 'urn:xmpp:jingle:muji:0'
+        && $stanza->muji->content && $stanza->muji->content->attributes()->xmlns == 'urn:xmpp:jingle:1') {
+            // Received twice per user ?!
+            \logDebug($packet->from);
+
+            $this->rpc('Visio.initMujiParticipant', $packet->from, \baseJid($packet->from), $presence->jid);
+        }
+    }
+
     public function onExternalServicesError($packet)
     {
         $this->setDefaultServices();
+
+        $this->rpc('MovimJingles.onInitiateSDP', \baseJid($packet->from), $jts->generate());
     }
 
     public function onPropose($packet)
@@ -111,26 +132,23 @@ class Visio extends Base
         $this->ajaxGetLobby($data['from'], false, $data['withVideo'], $data['id']);
     }
 
-    public function onInitiateSDP($data)
+    public function onInitiateSDP(Packet $packet)
     {
-        list($stanza, $from) = $data;
+        $jts = new JingletoSDP($packet->content);
 
-        $jts = new JingletoSDP($stanza);
-
-        $this->rpc('Visio.onInitiateSDP', $jts->generate());
+        $this->rpc('MovimJingles.onInitiateSDP', \baseJid($packet->from), $jts->generate());
     }
 
-    public function onContentAdd($stanza)
+    public function onContentAdd(Packet $packet)
     {
-        $jts = new JingletoSDP($stanza);
+        $jts = new JingletoSDP($packet->content);
 
-        $this->rpc('Visio.onContentAdd', $jts->generate());
+        $this->rpc('MovimJingles.onContentAdd', \baseJid($packet->from), $jts->generate());
     }
 
-    public function onProceed($packet)
+    public function onProceed(Packet $packet)
     {
-        $data = $packet->content;
-        $this->rpc('Visio.onProceed', $data['from'], $data['id']);
+        $this->rpc('MovimJingles.onProceed', \baseJid($packet->from), $packet->from, $packet->content /* id */);
     }
 
     public function onAccept($packet)
@@ -139,18 +157,18 @@ class Visio extends Base
         (new Dialog)->ajaxClear();
     }
 
-    public function onAcceptSDP($stanza)
+    public function onAcceptSDP(Packet $packet)
     {
-        $jts = new JingletoSDP($stanza);
-        $this->rpc('Visio.onAcceptSDP', $jts->generate());
+        $jts = new JingletoSDP($packet->content);
+        $this->rpc('MovimJingles.onAcceptSDP', \baseJid($packet->from), $jts->generate());
     }
 
-    public function onCandidate($stanza)
+    public function onCandidate(Packet $packet)
     {
-        $jts = new JingletoSDP($stanza);
+        $jts = new JingletoSDP($packet->content);
         $sdp = $jts->generate();
 
-        $this->rpc('Visio.onCandidate', $sdp, (string)$jts->name, $jts->name);
+        $this->rpc('MovimJingles.onCandidate', $packet->from, $sdp, (string)$jts->name, $jts->name);
     }
 
     public function onTerminateRetract()
@@ -174,80 +192,138 @@ class Visio extends Base
         $this->rpc('Notif.incomingAnswer');
         (new Dialog)->ajaxClear();
 
-        if (CurrentCall::getInstance()->isStarted()) {
-            CurrentCall::getInstance()->stop();
+        if (CurrentCalls::getInstance()->isStarted()) {
+            CurrentCalls::getInstance()->stop();
         }
 
         $this->rpc('Visio.goodbye', $reason);
     }
 
-    public function onMute($name)
+    public function onMute(Packet $packet)
     {
-        $this->rpc('Visio.onMute', $name);
+        $this->rpc('MovimJingles.onMute', $packet->from, $packet->content);
     }
 
-    public function onUnmute($name)
+    public function onUnmute(Packet $packet)
     {
-        $this->rpc('Visio.onUnmute', $name);
+        $this->rpc('MovimJingles.onUnmute', $packet->from, $packet->content);
     }
 
-    public function ajaxPropose($to, $id, $withVideo = false)
+    public function ajaxPropose(string $to, string $id, $withVideo = false)
     {
         $p = new SessionPropose;
         $p->setTo($to)
-          ->setId($id)
-          ->setWithVideo($withVideo)
-          ->request();
+            ->setId($id)
+            ->setWithVideo($withVideo)
+            ->request();
     }
 
-    public function ajaxAccept($to, $id)
+    public function ajaxAccept(string $to, string $id)
     {
         $p = new SessionAccept;
         $p->setTo($to)
-          ->setId($id)
-          ->request();
+            ->setId($id)
+            ->request();
     }
 
     public function ajaxReject($to, $id)
     {
-        $this->rpc('Notification.incomingAnswer');
+        $this->rpc('Notifs.incomingAnswer');
         $reject = new SessionReject;
         $reject->setTo($to)
-               ->setId($id)
-               ->request();
+            ->setId($id)
+            ->request();
     }
 
     public function ajaxMute($to, $id, $name)
     {
         $p = new SessionMute;
         $p->setTo($to)
-          ->setId($id)
-          ->setName($name)
-          ->request();
+            ->setId($id)
+            ->setName($name)
+            ->request();
     }
 
     public function ajaxUnmute($to, $id, $name)
     {
         $p = new SessionUnmute;
         $p->setTo($to)
-          ->setId($id)
-          ->setName($name)
-          ->request();
+            ->setId($id)
+            ->setName($name)
+            ->request();
     }
 
-    public function ajaxGetLobby(string $jid, bool $calling = false, ?bool $withVideo = false, ?string $id = null)
+    public function ajaxJoinMuji(string $mujiId, ?bool $withVideo = false)
     {
-        $contact = \App\Contact::firstOrNew(['id' => \explodeJid($jid)['jid']]);
+        $muji = $this->user->session->mujiCalls()
+            ->where('id', $mujiId)
+            ->with('conference')
+            ->first();
 
+        if ($muji) {
+            $muc = new Muc;
+            $muc->setTo($muji->muc)
+                ->setNickname($muji->conference ? $muji->conference->nickname : $this->user->nickname)
+                //->enableMujiPreparing()
+                ->noNotify()
+                ->request();
+
+            $this->ajaxGetMujiLobby($muji->jidfrom, false, $withVideo, $muji->id);
+        }
+    }
+
+    public function ajaxLeaveMuji(string $mujiId)
+    {
+        $muji = $this->user->session->mujiCalls()
+            ->where('id', $mujiId)
+            ->with('conference')
+            ->first();
+
+        if ($muji && CurrentCalls::getInstance()->isJidInCall($muji->jidfrom)) {
+            $resource = $muji->presence?->resource;
+
+            if ($resource) {
+                $pu = new Unavailable;
+                $pu->setTo($muji->muc)
+                   ->setResource($resource)
+                   ->request();
+
+                CurrentCalls::getInstance()->stop();
+
+                $this->user->session->mujiCalls()->where('id', $mujiId)->delete();
+            }
+
+            $this->rpc('MovimVisio.clear');
+        }
+    }
+
+    public function ajaxGetMujiLobby(string $jid, bool $calling = false, ?bool $withVideo = false, ?string $id = null)
+    {
         $view = $this->tpl();
-        $view->assign('contact', $contact);
-        $view->assign('jid', $jid);
+        $view->assign('conference', $this->user->session
+            ->conferences()->where('conference', $jid)
+            ->first());
         $view->assign('calling', $calling);
         $view->assign('withvideo', $withVideo);
         $view->assign('id', $id);
 
         Dialog::fill($view->draw('_visio_lobby'), false, true);
-        $this->rpc('Visio.lobbySetup', $withVideo);
+        $this->rpc('MovimVisio.getUserMedia', $withVideo);
+    }
+
+    public function ajaxGetLobby(string $jid, bool $calling = false, ?bool $withVideo = false, ?string $id = null)
+    {
+        $contact = \App\Contact::firstOrNew(['id' => \baseJid($jid)]);
+
+        $view = $this->tpl();
+        $view->assign('contact', $contact);
+        $view->assign('calling', $calling);
+        $view->assign('withvideo', $withVideo);
+        $view->assign('id', $id);
+        $view->assign('fullJid', $jid);
+
+        Dialog::fill($view->draw('_visio_lobby'), false, true);
+        $this->rpc('MovimVisio.getUserMedia', $withVideo);
 
         if ($calling == false) {
             $this->rpc('Notif.incomingCall');
@@ -262,20 +338,113 @@ class Visio extends Base
         }
     }
 
-    public function ajaxSessionInitiate($sdp, $to, $id)
+    public function ajaxMujiAccept(string $mujiId)
+    {
+        $muji = $this->user->session->mujiCalls()
+            ->where('id', $mujiId)
+            ->with('conference')
+            ->first();
+
+        if ($muji) {
+            CurrentCalls::getInstance()->start($muji->jidfrom, $muji->id, mujiRoom: $muji->muc);
+
+            $accept = new Accept;
+            $accept->setTo($muji->jidfrom)
+                   ->setId($muji->id)
+                   ->request();
+
+                   \logDebug('ACCEPT MUJI');
+            $muc = new Muc;
+            $muc->setTo($muji->jidfrom)
+                ->setNickname($muji->conference->nickname)
+                ->enableMujiPreparing()
+                ->noNotify()
+                ->request();
+
+            $this->rpc('Chat_ajaxGetHeader', $muji->jidfrom, true);
+        }
+    }
+
+    public function ajaxMujiTrigger()
+    {
+        $muji = $this->user->session->mujiCalls()->first();
+
+        $this->rpc('Visio.init', $muji->jidfrom, $muji->jidfrom, $muji->id, $muji->video, true);
+    }
+
+    public function ajaxMujiInit(string $mujiId, $sdp)
+    {
+        $muji = $this->user->session->mujiCalls()
+            ->where('id', $mujiId)
+            ->with('conference')
+            ->first();
+
+        if ($muji) {
+            $stj = new SDPtoJingle($sdp->sdp, $this->user->id, '', true);
+
+            $muc = new Muc;
+            $muc->setTo($muji->muc)
+                ->setNickname($muji->conference ? $muji->conference->nickname : $this->user->nickname)
+                ->setMuji($stj->generate())
+                ->noNotify()
+                ->request();
+        }
+    }
+
+    public function ajaxMujiCreate(string $to, bool $withVideo = false)
+    {
+        $conference = $this->user->session
+            ->conferences()->where('conference', $to)
+            ->first();
+
+        if ($conference) {
+            $mujiId = generateUUID();
+            $mujiConference = generateKey(withCapitals: false);
+            $mujiConferenceJid = $mujiConference . '@conference.movim.eu';
+
+            $muc = new Muc;
+            $muc->setTo($mujiConferenceJid)
+                ->setNickname($conference->nickname)
+                ->enableMujiPreparing()
+                ->noNotify()
+                ->request();
+
+            $invite = new Invite;
+            $invite->setTo($to)
+                   ->setId($mujiId)
+                   ->setRoom($mujiConferenceJid);
+
+            if ($withVideo) {
+                $invite->enableVideo();
+            }
+
+            $invite->request();
+
+            CurrentCalls::getInstance()->start($to, $mujiId, mujiRoom: $mujiConferenceJid);
+        }
+
+    }
+
+    public function ajaxSessionInitiate(string $jid, $sdp, string $id, ?string $mujiRoom = null)
     {
         $stj = new SDPtoJingle(
             $sdp->sdp,
             $this->user->id,
-            $to,
+            $id,
+            false,
+            $jid,
             'session-initiate'
         );
-        $stj->setSessionId($id);
+
+        if ($mujiRoom) {
+            $stj->setMujiRoom($mujiRoom);
+            CurrentCalls::getInstance()->startMuji($mujiRoom, $jid, $id);
+        }
 
         $si = new SessionInitiate;
-        $si->setTo($to)
-           ->setOffer($stj->generate())
-           ->request();
+        $si->setTo($jid)
+            ->setOffer($stj->generate())
+            ->request();
     }
 
     public function ajaxResolveServices()
@@ -283,12 +452,12 @@ class Visio extends Base
         if (!$this->user->session) return;
 
         $info = \App\Info::where('server', $this->user->session->host)
-                    ->where('node', '')
-                    ->first();
+            ->where('node', '')
+            ->first();
         if ($info && $info->hasExternalServices()) {
             $c = new \Moxl\Xec\Action\ExternalServices\Get;
             $c->setTo($this->user->session->host)
-              ->request();
+                ->request();
         } else {
             $this->setDefaultServices();
         }
@@ -296,7 +465,7 @@ class Visio extends Base
 
     public function ajaxPrepare(string $jid)
     {
-        $bareJid =\explodeJid($jid)['jid'];
+        $bareJid = \baseJid($jid);
         $contact = \App\Contact::firstOrNew(['id' => $bareJid]);
 
         $view = $this->tpl();
@@ -304,7 +473,7 @@ class Visio extends Base
 
         $this->rpc('MovimVisio.moveToChat', $bareJid);
         $this->rpc('MovimTpl.fill', '#visio_contact', $view->draw('_visio_contact'));
-        $this->rpc('Visio.init', $bareJid);
+        //$this->rpc('Visio.init', $bareJid);
     }
 
     public function setDefaultServices()
@@ -334,57 +503,59 @@ class Visio extends Base
         ]);
     }
 
-    public function ajaxSessionAccept($sdp, string $to, string $id)
+    public function ajaxSessionAccept(string $to, string $id, $sdp)
     {
         $stj = new SDPtoJingle(
             $sdp->sdp,
             $this->user->id,
+            $id,
+            false,
             $to,
             'session-accept'
         );
-        $stj->setSessionId($id);
 
         $si = new SessionInitiate;
         $si->setTo($to)
-           ->setOffer($stj->generate())
-           ->request();
+            ->setOffer($stj->generate())
+            ->request();
     }
 
-    public function ajaxCandidate($sdp, string $to, string $id)
+    public function ajaxCandidate(string $to, string $id, $sdp)
     {
         // Firefox is passing the ufrag as an argument, Chrome as a parameter in the candidate
         $ufrag = $sdp->usernameFragment ?? null;
 
         $stj = new SDPtoJingle(
-            'a='.$sdp->candidate,
+            'a=' . $sdp->candidate,
             $this->user->id,
+            $id,
+            false,
             $to,
             'transport-info',
             $sdp->sdpMid,
             $ufrag
         );
-        $stj->setSessionId($id);
 
         $si = new SessionInitiate;
         $si->setTo($to)
-           ->setOffer($stj->generate())
-           ->request();
+            ->setOffer($stj->generate())
+            ->request();
     }
 
     public function ajaxEnd(string $to, string $sid, $reason = 'success')
     {
-        if (CurrentCall::getInstance()->isStarted()) {
-            CurrentCall::getInstance()->stop();
+        if (CurrentCalls::getInstance()->isStarted()) {
+            CurrentCalls::getInstance()->stop();
             $st = new SessionTerminate;
             $st->setTo($to)
-               ->setJingleSid($sid)
-               ->setReason($reason)
-               ->request();
+                ->setJingleSid($sid)
+                ->setReason($reason)
+                ->request();
         } else {
             $sr = new SessionRetract;
             $sr->setTo($to)
-               ->setId($sid)
-               ->request();
+                ->setId($sid)
+                ->request();
         }
     }
 }

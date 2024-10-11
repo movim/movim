@@ -8,7 +8,7 @@ use App\Widgets\Dialog\Dialog;
 use App\Widgets\Drawer\Drawer;
 use App\Widgets\Post\Post;
 use App\Widgets\Toast\Toast;
-use Movim\CurrentCall;
+use Movim\CurrentCalls;
 use Movim\EmbedLight;
 use Movim\Widget\Base;
 
@@ -76,7 +76,7 @@ class ContactActions extends Base
         $hasFingerprints = ($this->user->bundles()->where('jid', $jid)->count() > 0);
 
         $tpl->assign('jid', $jid);
-        $tpl->assign('incall', CurrentCall::getInstance()->isStarted());
+        $tpl->assign('incall', CurrentCalls::getInstance()->isStarted());
         $tpl->assign('clienttype', getClientTypes());
         $tpl->assign('hasfingerprints', $hasFingerprints);
         $tpl->assign('posts', \App\Post::where('server', $jid)

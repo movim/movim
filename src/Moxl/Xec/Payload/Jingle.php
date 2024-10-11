@@ -3,7 +3,7 @@
 namespace Moxl\Xec\Payload;
 
 use App\Message as Message;
-use Movim\CurrentCall;
+use Movim\CurrentCalls;
 use Moxl\Stanza\Ack;
 use Moxl\Stanza\Jingle as JingleStanza;
 
@@ -22,9 +22,7 @@ class Jingle extends Payload
             (string)$stanza->attributes()->sid
         );
 
-        $sid = CurrentCall::getInstance()->id;
-
-        if ($sid == $message->thread) {
+        if (CurrentCalls::getInstance()->hasId($message->thread)) {
             Ack::send($from, $id);
 
             switch ($action) {
@@ -32,23 +30,27 @@ class Jingle extends Payload
                     $message->type = 'jingle_incoming';
                     $message->save();
 
-                    $stanza = CurrentCall::getInstance()->setContent($stanza);
+                    $stanza = CurrentCalls::getInstance()->setContent($stanza);
 
-                    $this->event('jingle_sessioninitiate', [$stanza, $from]);
+                    $this->pack($stanza, $from);
+                    $this->event('jingle_sessioninitiate');
 
                     $this->pack($message);
                     $this->event('jingle_message');
                     break;
                 case 'session-info':
                     if ($stanza->mute) {
-                        $this->event('jingle_sessionmute', 'mid' . (string)$stanza->mute->attributes()->name);
+                        $this->pack('mid' . (string)$stanza->mute->attributes()->name, $from);
+                        $this->event('jingle_sessionmute');
                     }
                     if ($stanza->unmute) {
-                        $this->event('jingle_sessionunmute', 'mid' . (string)$stanza->unmute->attributes()->name);
+                        $this->pack('mid' .  (string)$stanza->unmute->attributes()->name, $from);
+                        $this->event('jingle_sessionunmute');
                     }
                     break;
                 case 'transport-info':
-                    $this->event('jingle_transportinfo', $stanza);
+                    $this->pack($stanza, $from);
+                    $this->event('jingle_transportinfo');
                     break;
                 case 'session-terminate':
                     $message->type = 'jingle_end';
@@ -61,22 +63,27 @@ class Jingle extends Payload
                 case 'session-accept':
                     $message->type = 'jingle_outgoing';
                     $message->save();
-                    $this->event('jingle_sessionaccept', $stanza);
+
+                    $this->pack($stanza, $from);
+                    $this->event('jingle_sessionaccept');
 
                     $this->pack($message);
                     $this->event('jingle_message');
                     break;
                 case 'content-add':
-                    $stanza = CurrentCall::getInstance()->setContent($stanza);
-                    $this->event('jingle_contentadd', $stanza);
+                    $stanza = CurrentCalls::getInstance()->setContent($stanza);
+                    $this->pack($stanza, $from);
+                    $this->event('jingle_contentadd');
                     break;
                 case 'content-modify':
-                    $stanza = CurrentCall::getInstance()->setContent($stanza);
-                    $this->event('jingle_contentmodify', $stanza);
+                    $stanza = CurrentCalls::getInstance()->setContent($stanza);
+                    $this->pack($stanza, $from);
+                    $this->event('jingle_contentmodify');
                     break;
                 case 'content-remove':
-                    $stanza = CurrentCall::getInstance()->setContent($stanza);
-                    $this->event('jingle_contentremove', $stanza);
+                    $stanza = CurrentCalls::getInstance()->setContent($stanza);
+                    $this->pack($stanza, $from);
+                    $this->event('jingle_contentremove');
                     break;
             }
         } else {

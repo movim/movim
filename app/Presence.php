@@ -161,7 +161,9 @@ class Presence extends Model
                         if (!empty($c->xpath("//status[@code='110']"))) {
                             $this->mucjid = \App\User::me()->id;
                         } elseif ($c->item->attributes()->jid) {
-                            $this->mucjid = cleanJid((string)$c->item->attributes()->jid);
+                            $jid = explodeJid((string)$c->item->attributes()->jid);
+                            $this->mucjid = $jid['jid'];
+                            $this->mucjidresource = $jid['resource'];
                         } else {
                             $this->mucjid = (string)$stanza->attributes()->from;
                         }
@@ -208,6 +210,7 @@ class Presence extends Model
     public function toArray()
     {
         $now = \Carbon\Carbon::now();
+
         return [
             'session_id' => $this->attributes['session_id'] ?? null,
             'jid' => $this->attributes['jid']  ?? null,
@@ -222,6 +225,7 @@ class Presence extends Model
             'idle' => $this->attributes['idle'] ?? null,
             'muc' => $this->attributes['muc'] ?? null,
             'mucjid' => $this->attributes['mucjid'] ?? null,
+            'mucjidresource' => $this->attributes['mucjidresource'] ?? null,
             'mucaffiliation' => $this->attributes['mucaffiliation']  ?? null,
             'mucrole' => $this->attributes['mucrole'] ?? null,
             'created_at' => $this->attributes['created_at'] ?? $now,

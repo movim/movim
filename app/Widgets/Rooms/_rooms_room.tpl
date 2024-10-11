@@ -6,6 +6,7 @@
         {if="$conference->pinned"}pinned{/if}
         {if="$conference->isGroupChat()"}groupchat{/if}
         {if="$conference->unreads_count > 0 || $conference->quoted_count > 0"}unread{/if}
+        {if="$conference->mujiCalls->isNotEmpty()"}muc_call{/if}
     ">
     <span class="primary icon bubble small"
         id="{$conference->conference|cleanupId}-rooms-primary"
@@ -59,6 +60,26 @@
                 {/if}
             </span>
         </p>
+
+        {if="$conference->mujiCalls->isNotEmpty()"}
+            <p>
+                {loop="$conference->mujiCalls"}
+                    {if="$conference->isInCall()"}
+                        <i class="material-symbols icon green blink">phone_in_talk</i> {$c->__('visio.in_call')}
+                    {else}
+                        <i class="material-symbols icon blue">{$value->icon}</i>
+                    {/if}
+                    {$presences = $value->presences->take(10)}
+                    {loop="$presences"}
+                        {if="$value->type != 'unavailable'"}
+                            <span class="icon bubble tiny">
+                                <img src="{$value->conferencePicture}">
+                            </span>
+                        {/if}
+                    {/loop}
+                {/loop}
+            </p>
+        {/if}
     </div>
     <span class="control icon active gray" onclick="event.stopPropagation(); RoomsUtils_ajaxRemove('{$conference->conference|echapJS}');">
         <i class="material-symbols">delete</i>
