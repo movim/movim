@@ -174,6 +174,11 @@ class Handler
             '44d0c16e222fcdee6961c8939b647e15' => 'JingleReject',
             'd84d4b89d43e88a244197ccf499de8d8' => 'Jingle',
 
+            // TODO: Update the handlers to XEP-0482 when Dino is updated
+            '02e431c80dd03a9b06b2c47599fd2bb8' => 'CallInvitePropose', // propose:urn:xmpp:call-message:1
+            '381c484a7914c1b7311f9d7ee4413c21' => 'CallInviteAccept', // accept:urn:xmpp:call-message:1
+            '6f67c1d363e944248388e43a05af7a1b' => 'CallInviteLeft', // finish:urn:xmpp:call-message:1
+
             '09ef1b34cf40fdd954f10d6e5075ee5c' => 'Carbons', // sent
             '201fa54dd93e3403611830213f5f9fbc' => 'Carbons', // received
 

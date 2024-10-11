@@ -17,6 +17,7 @@ use Moxl\Xec\Action\Jingle\SessionUnmute;
 use Movim\Widget\Base;
 use Moxl\Xec\Action\Jingle\SessionReject;
 use Moxl\Xec\Action\Jingle\SessionRetract;
+use Moxl\Xec\Action\Presence\Muc;
 
 class Visio extends Base
 {
@@ -233,6 +234,22 @@ class Visio extends Base
           ->setId($id)
           ->setName($name)
           ->request();
+    }
+
+    public function ajaxJoinMuji(string $mujiId, bool $calling = false, ?bool $withVideo = false)
+    {
+        $muji = $this->user->session->mujiCalls()->where('id', $mujiId)->with('conference')->first();
+\logDebug('MUJI');
+        if ($muji && $muji->conference) {
+            \logDebug('CONFERENCE');
+            $muc = new Muc;
+            $muc->setTo($muji->muc)
+                ->setNickname($muji->conference->nickname)
+                ->enableMujiPreparing()
+                ->request();
+
+            $this->ajaxGetLobby($muji->muc, $calling, $withVideo, $muji->id);
+        }
     }
 
     public function ajaxGetLobby(string $jid, bool $calling = false, ?bool $withVideo = false, ?string $id = null)
