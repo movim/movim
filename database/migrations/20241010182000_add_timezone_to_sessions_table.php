@@ -8,7 +8,7 @@ class AddTimezoneToSessionsTable extends Migration
 {
     public function up()
     {
-        DB::table('sessions')->truncate();
+        DB::table('sessions')->delete();
 
         $this->schema->table('sessions', function (Blueprint $table) {
             $table->string('timezone')->index();
