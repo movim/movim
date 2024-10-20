@@ -522,6 +522,7 @@ li div.bubble.file:not(.audio):after {
 
 #chat_widget .bubble ul.reactions {
     display: flex;
+    flex-wrap: wrap;
 }
 
 #chat_widget .bubble.file .reactions {
