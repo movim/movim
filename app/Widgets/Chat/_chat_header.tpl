@@ -41,6 +41,13 @@
                 </span>
             {/if}
 
+            {if="$conference->mujiCalls->isNotEmpty()"}
+                {$muji = $conference->mujiCalls->first()}
+                <span class="control icon blue active" onclick="Visio_ajaxJoinMuji('{$muji->id}', false, {if="$muji->video"}true{else}false{/if});">
+                    <i class="material-symbols">{$muji->icon}</i>
+                </span>
+            {/if}
+
             <span
                 class="control icon show_context_menu active {if="$conference && !$conference->connected"}disabled{/if}"
                 onclick="MovimTpl.showContextMenu()">
@@ -87,6 +94,12 @@
 
                 <p class="compose first line" id="{$jid|cleanupId}-state"></p>
                 <p class="line active">
+                    {if="$conference->mujiCalls->isNotEmpty()"}
+                        <i class="material-symbols icon blue">{$conference->mujiCalls->first()->icon}</i> {$c->__('visio.in_call')} ·
+                        {loop="$conference->mujiCalls"}
+                            {$value->participants->where('left_at', null)->count()} <i class="material-symbols">people</i>
+                        {/loop} ·
+                    {/if}
                     {if="$conference"}
                         {if="!$conference->connected"}
                             {$c->__('button.connecting')}…

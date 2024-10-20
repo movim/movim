@@ -6,6 +6,7 @@
         {if="$conference->pinned"}pinned{/if}
         {if="$conference->isGroupChat()"}groupchat{/if}
         {if="$conference->unreads_count > 0 || $conference->quoted_count > 0"}unread{/if}
+        {if="$conference->mujiCalls->isNotEmpty()"}muc_call{/if}
     ">
     <span class="primary icon bubble small"
         id="{$conference->conference|cleanupId}-rooms-primary"
@@ -59,6 +60,22 @@
                 {/if}
             </span>
         </p>
+
+        {if="$conference->mujiCalls->isNotEmpty()"}
+            <p>
+                {loop="$conference->mujiCalls"}
+                    <i class="material-symbols icon blue">{$value->icon}</i>
+                    {$participants = $value->participants->take(10)}
+                    {loop="$participants"}
+                        {if="$value->left_at == null"}
+                            <span class="icon bubble tiny">
+                                <img src="{$value->conferencePicture}">
+                            </span>
+                        {/if}
+                    {/loop}
+                {/loop}
+            </p>
+        {/if}
     </div>
     <span class="control icon active gray" onclick="event.stopPropagation(); RoomsUtils_ajaxRemove('{$conference->conference|echapJS}');">
         <i class="material-symbols">delete</i>
