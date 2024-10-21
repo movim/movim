@@ -3,10 +3,13 @@
 namespace App;
 
 use Movim\ImageSize;
-use Movim\Model;
+
+use Awobaz\Compoships\Database\Eloquent\Model;
 
 class Conference extends Model
 {
+    use \Awobaz\Compoships\Compoships;
+
     public $incrementing = false;
     protected $primaryKey = ['session_id', 'conference'];
     protected $fillable = ['conference', 'name', 'nick', 'autojoin', 'pinned'];
@@ -36,8 +39,7 @@ class Conference extends Model
 
     public function presences()
     {
-        return $this->hasMany('App\Presence', 'jid', 'conference')
-                    ->where('session_id', $this->session_id)
+        return $this->hasMany('App\Presence', ['jid', 'session_id'], ['conference', 'session_id'])
                     ->where('resource', '!=', '')
                     ->where('value', '<', 5)
                     ->orderBy('mucrole')
@@ -72,8 +74,7 @@ class Conference extends Model
 
     public function presence()
     {
-        return $this->hasOne('App\Presence', 'jid', 'conference')
-                    ->where('session_id', $this->session_id)
+        return $this->hasOne('App\Presence', ['jid', 'session_id'], ['conference', 'session_id'])
                     ->where('value', '<', 5)
                     ->where('mucjid', \App\User::me()->id);
     }

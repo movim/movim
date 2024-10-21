@@ -30,8 +30,7 @@ class Presence extends Model
 
     public function roster()
     {
-        return $this->hasOne('App\Roster', 'jid', 'jid')
-            ->where('session_id', $this->session_id);
+        return $this->hasOne('App\Roster', ['jid', 'session_id'], ['jid', 'session_id']);
     }
 
     public function capability()

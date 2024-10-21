@@ -2,10 +2,12 @@
 
 namespace App;
 
-use Movim\Model;
+use Awobaz\Compoships\Database\Eloquent\Model;
 
 class Subscription extends Model
 {
+    use \Awobaz\Compoships\Compoships;
+
     public $incrementing = false;
     protected $primaryKey = ['jid', 'server', 'node'];
     protected $guarded = [];
@@ -17,8 +19,7 @@ class Subscription extends Model
 
     public function info()
     {
-        return $this->hasOne('App\Info', 'server', 'server')
-                    ->where('node', $this->node);
+        return $this->hasOne('App\Info', ['server', 'node'], ['server', 'node']);
     }
 
     public function contact()

@@ -3,10 +3,13 @@
 namespace App;
 
 use Movim\ImageSize;
-use Movim\Model;
+
+use Awobaz\Compoships\Database\Eloquent\Model;
 
 class Roster extends Model
 {
+    use \Awobaz\Compoships\Compoships;
+
     public $incrementing = false;
     protected $primaryKey = ['session_id', 'jid'];
     protected $fillable = ['jid', 'name', 'ask', 'subscription', 'group'];
@@ -49,15 +52,13 @@ class Roster extends Model
 
     public function presences()
     {
-        return $this->hasMany('App\Presence', 'jid', 'jid')
-                    ->where('resource', '!=', '')
-                    ->where('session_id', $this->session_id);
+        return $this->hasMany('App\Presence', ['jid', 'session_id'], ['jid', 'session_id'])
+                    ->where('resource', '!=', '');
     }
 
     public function presence()
     {
-        return $this->hasOne('App\Presence', 'jid', 'jid')
-                    ->where('session_id', $this->session_id)
+        return $this->hasOne('App\Presence', ['jid', 'session_id'], ['jid', 'session_id'])
                     ->orderBy('value');
     }
 
