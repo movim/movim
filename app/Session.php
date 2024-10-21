@@ -2,12 +2,15 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use Movim\Session as MemorySession;
+
+use Awobaz\Compoships\Database\Eloquent\Model;
 use Illuminate\Database\Capsule\Manager as DB;
 
 class Session extends Model
 {
+    use \Awobaz\Compoships\Compoships;
+
     protected $fillable = ['id'];
     protected $keyType = 'string';
     protected $with = ['serverCapability'];
@@ -25,14 +28,12 @@ class Session extends Model
 
     public function ownPresences()
     {
-        return $this->hasMany('App\Presence')->where('jid', $this->user_id);
+        return $this->hasMany('App\Presence', ['jid', 'session_id'], ['user_id', 'id']);
     }
 
     public function presence()
     {
-        return $this->hasOne('App\Presence', 'jid', 'user_id')
-            ->where('resource', $this->resource)
-            ->where('session_id', $this->id);
+        return $this->hasOne('App\Presence', ['jid', 'resource', 'session_id'], ['user_id', 'resource', 'id']);
     }
 
     public function serverCapability()

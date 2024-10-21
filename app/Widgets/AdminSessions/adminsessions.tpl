@@ -16,7 +16,7 @@
                 <span class="control gray icon">
                     <i class="material-symbols">chevron_right</i>
                 </span>
-                <span class="primary icon bubble">
+                <span class="primary icon bubble status {if="$value->presence"}{$value->presence->presencekey}{/if}">
                     <img src="{$user->getPicture()}">
                 </span>
                 <div>

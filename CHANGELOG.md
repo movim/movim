@@ -13,6 +13,8 @@ v0.28.1 (master)
 * Add a boot() method to the Base widget class to allow tasks registration
 * Clear Chats widget cache during the night
 * Completely replace the offset parameter with a Session Timezone set on Login
+* Use composite foreign keys for Session presences relationships
+* Add presences in the AdminSessions widget
 
 v0.28
 ---------------------------
