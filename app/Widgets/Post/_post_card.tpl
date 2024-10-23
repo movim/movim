@@ -28,90 +28,70 @@
             {/if}
 
             <div>
-                {if="$post->isBrief()"}
-                    <p></p>
-                    <p>
-                        {if="$post->aid"}
-                            <a  {if="$public"}
-                                    href="{$c->route('blog', $post->aid)}"
-                                {else}
-                                    href="#" onclick="MovimUtils.reload('{$c->route('contact', $post->aid)}')"
-                                {/if}
-                            >
-                                {$post->truename}
-                            </a> ·
-                        {/if}
-                        {$post->published|prepareDate}
-                        {if="$post->isEdited()"}
-                            <i class="material-symbols" title="{$post->updated|prepareDate}">
-                                edit
-                            </i>
-                        {/if}
-                        {if="!$post->openlink"}
-                            <i class="material-symbols on_mobile" title="{$c->__('post.public_no')}">
-                                lock
-                            </i>
-                        {/if}
-                    </p>
-                    <p class="normal brief">
-                        {autoescape="off"}
-                            {$post->title|addUrls|addHashtagsLinks|nl2br|prepareString|addEmojis}
-                        {/autoescape}
-                    </p>
-                {else}
-                    <p class="normal" title="{$post->title}">
+                {if="!$post->isBrief()"}
+                    <p class="line two" title="{$post->title}">
                         {autoescape="off"}
                             {$post->title}
                         {/autoescape}
                     </p>
-                    <p>
-                        {if="!$post->isMicroblog()"}
-                            {if="$post->aid"}
-                                {if="$post->contact"}
-                                    <span class="icon bubble tiny">
-                                        <img src="{$post->contact->getPicture()}">
-                                    </span>
-                                {/if}
-                                <a  {if="$public"}
-                                        href="{$c->route('blog', $post->aid)}"
-                                    {else}
-                                        href="#" onclick="MovimUtils.reload('{$c->route('contact', $post->aid)}')"
-                                    {/if}
-                                >
-                                    {$post->truename}
-                                </a> ·
-                            {/if}
+                {else}
+                    <p></p>
+                {/if}
 
-                            {if="$public"}
-                                {$post->server}
+                <p>
+                    {if="$post->aid"}
+                        {if="!$post->isMicroblog() && $post->contact"}
+                            <span class="icon bubble tiny">
+                                <img src="{$post->contact->getPicture()}">
+                            </span>
+                        {/if}
+                        <a  {if="$public"}
+                                href="{$c->route('blog', $post->aid)}"
                             {else}
-                                <a href="#" onclick="MovimUtils.reload('{$c->route('community', $post->server)}')">
-                                    {$post->server}
-                                </a>
-                            {/if} /
-                            <a href="#" onclick="MovimUtils.reload('{$c->route('community', [$post->server, $post->node])}')">
-                                {$post->node}
-                            </a> ·
-                        {/if}
-                        {$post->published|prepareDate}
-                        {if="$post->isEdited()"}
-                            <i class="material-symbols" title="{$post->updated|prepareDate}">
-                                edit
-                            </i>
-                        {/if}
+                                href="#" onclick="MovimUtils.reload('{$c->route('contact', $post->aid)}')"
+                            {/if}
+                        >
+                            {$post->truename}
+                        </a> ·
+                    {/if}
 
-                        {if="!$post->openlink"}
-                            <i class="material-symbols on_mobile" title="{$c->__('post.public_no')}">
-                                lock
-                            </i>
-                        {/if}
-                        {if="$post->contentcleaned && readTime($post->contentcleaned)"}
-                            · {$post->contentcleaned|readTime}
-                        {/if}
-                        {$count = $post->user_views_count}
-                        {if="$count > 2"}
-                            · {$count} <i class="material-symbols">visibility</i>
-                        {/if}
+                    {if="!$post->isMicroblog()"}
+                        {if="$public"}
+                            {$post->server}
+                        {else}
+                            <a href="#" onclick="MovimUtils.reload('{$c->route('community', $post->server)}')">
+                                {$post->server}
+                            </a>
+                        {/if} /
+                        <a href="#" onclick="MovimUtils.reload('{$c->route('community', [$post->server, $post->node])}')">
+                            {$post->node}
+                        </a> ·
+                    {/if}
+                    {$post->published|prepareDate}
+                    {if="$post->isEdited()"}
+                        <i class="material-symbols" title="{$post->updated|prepareDate}">
+                            edit
+                        </i>
+                    {/if}
+
+                    {if="!$post->openlink"}
+                        <i class="material-symbols on_mobile" title="{$c->__('post.public_no')}">
+                            lock
+                        </i>
+                    {/if}
+                    {if="$post->contentcleaned && readTime($post->contentcleaned)"}
+                        · {$post->contentcleaned|readTime}
+                    {/if}
+                    {$count = $post->user_views_count}
+                    {if="$count > 2"}
+                        · {$count} <i class="material-symbols">visibility</i>
+                    {/if}
+                </p>
+                {if="$post->isBrief()"}
+                    <p class="normal brief" title="{$post->title}">
+                        {autoescape="off"}
+                            {$post->title|addUrls|addHashtagsLinks|nl2br|prepareString|addEmojis}
+                        {/autoescape}
                     </p>
                 {/if}
             </div>

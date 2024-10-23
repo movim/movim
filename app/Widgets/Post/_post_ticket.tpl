@@ -38,12 +38,16 @@
         </span>
     {/if}
     <div>
-        <p class="line two" title="{$post->title}">
-            {autoescape="off"}
-                {$post->title}
-            {/autoescape}
-        </p>
-        <p dir="auto">{autoescape="off"}{$post->getSummary()|prepareString}{/autoescape}</p>
+        {if="!$post->isBrief()"}
+            <p class="line two" title="{$post->title}">
+                {autoescape="off"}
+                    {$post->title}
+                {/autoescape}
+            </p>
+            <p dir="auto">{autoescape="off"}{$post->getSummary()|prepareString}{/autoescape}</p>
+        {else}
+            <p></p>
+        {/if}
         <p>
             {if="$post->contact"}
                 <span class="icon bubble tiny">
@@ -92,5 +96,12 @@
                 {$post->published|prepareDate:true,true}
             </span>
         </p>
+        {if="$post->isBrief()"}
+            <p class="normal brief line two" title="{$post->title}">
+                {autoescape="off"}
+                    {$post->title}
+                {/autoescape}
+            </p>
+        {/if}
     </div>
 </li>
