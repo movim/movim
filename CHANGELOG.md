@@ -16,6 +16,7 @@ v0.28.1 (master)
 * Use composite foreign keys for several relationships
 * Add presences in the AdminSessions widget
 * Make title and updated mandatory in Post to respect the Atom RFC4287
+* Improve Brief posts handling
 
 v0.28
 ---------------------------

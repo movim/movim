@@ -96,15 +96,11 @@ class Menu extends Base
             if ($post->isMicroblog()) {
                 $contact = \App\Contact::firstOrNew(['id' => $post->server]);
 
-                $title = ($post->title == null)
-                    ? __('post.default_title')
-                    : $post->title;
-
                 if (!$post->isMine()) {
                     Notif::append(
                         'news',
                         '📝 ' . $contact->truename,
-                        $title,
+                        $post->title,
                         $contact->getPicture(),
                         4,
                         $this->route('post', [$post->server, $post->node, $post->nodeid]),

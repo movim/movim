@@ -23,9 +23,9 @@
                 {/if}
 
                 <div>
-                    <p class="line" title="{$post->getTitle()}">
+                    <p class="line" title="{$post->title}">
                         {autoescape="off"}
-                            {$post->getTitle()}
+                            {$post->title}
                         {/autoescape}
                     </p>
                 </div>
@@ -92,7 +92,7 @@
                 {if="!$post->isBrief()"}
                     <p {if="$post->title != null"}title="{$post->title|strip_tags}"{/if}>
                         {autoescape="off"}
-                            {$post->getTitle()|addHashtagsLinks|addEmojis}
+                            {$post->title|addHashtagsLinks|addEmojis}
                         {/autoescape}
                     </p>
                 {else}
@@ -140,9 +140,9 @@
                     {/if}
                 </p>
                 {if="$post->isBrief()"}
-                    <p class="normal">
+                    <p class="normal brief">
                         {autoescape="off"}
-                            {$post->getTitle()|addUrls|addHashtagsLinks|nl2br|prepareString|addEmojis}
+                            {$post->title|addUrls|addHashtagsLinks|nl2br|prepareString|addEmojis}
                         {/autoescape}
                     </p>
                 {/if}
@@ -177,7 +177,7 @@
             <div class="video_embed shimmer">
                 <iframe class="spin" src="{$post->embed->href}" frameborder="0" allowfullscreen></iframe>
             </div>
-        {elseif="$post->isShort()"}
+        {else}
             {loop="$post->pictures"}
                 <img class="big_picture"
                      type="{$value->type}"
@@ -186,11 +186,11 @@
                          title="{$value->title}"
                          alt="{$value->title}"
                      {/if}
-                /><br />
+                />
             {/loop}
         {/if}
         {autoescape="off"}
-            {$post->getContent()|addHashtagsLinks}
+            {$post->getContent(true)}
         {/autoescape}
     </div>
 </section>

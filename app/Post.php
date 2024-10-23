@@ -325,9 +325,9 @@ class Post extends Model
         return htmlspecialchars_decode($this->contentraw, ENT_XML1 | ENT_COMPAT);
     }
 
-    private function extractContent(SimpleXMLElement $contents): string
+    private function extractContent(SimpleXMLElement $contents): ?string
     {
-        $content = '';
+        $content = null;
 
         foreach ($contents as $c) {
             switch ($c->attributes()->type) {
@@ -364,9 +364,9 @@ class Post extends Model
         return $content;
     }
 
-    private function extractTitle($titles)
+    private function extractTitle($titles): ?string
     {
-        $title = '';
+        $title = null;
 
         foreach ($titles as $t) {
             switch ($t->attributes()->type) {
@@ -730,12 +730,12 @@ class Post extends Model
 
     public function isShort(): bool
     {
-        return (strlen($this->contentcleaned) < 700);
+        return $this->contentcleaned == null || (strlen($this->contentcleaned) < 700);
     }
 
     public function isBrief(): bool
     {
-        return ($this->content == '' && $this->title && strlen($this->title) < $this->titleLimit);
+        return ($this->content == null && strlen($this->title) < $this->titleLimit);
     }
 
     public function isReply(): bool
@@ -773,18 +773,12 @@ class Post extends Model
         return truncate(stripTags(html_entity_decode($this->contentcleaned)), 140);
     }
 
-    public function getTitle()
+    public function getContent(bool $addHashTagLinks): string
     {
-        return ($this->title == null
-            || strlen($this->title) >= $this->titleLimit) || $this->isBrief()
-            ? __('post.default_title')
-            : $this->title;
-    }
+        if ($this->contentcleaned == null) return '';
 
-    public function getContent()
-    {
-        return ($this->title && strlen($this->title) >= $this->titleLimit)
-            ? nl2br(addUrls(addHashtagsLinks($this->title)))
+        return ($addHashTagLinks)
+            ? addHashtagsLinks($this->contentcleaned)
             : $this->contentcleaned;
     }
 

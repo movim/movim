@@ -106,9 +106,12 @@ article section > div div.quote li img {
 
 article section > div img.big_picture {
     display: block;
-    margin: 0rem auto;
     margin-bottom: 1rem;
     border-radius: 0.25rem;
+}
+
+article section > div img.big_picture:last-child {
+    margin-bottom: 0;
 }
 
 article section > div img.active:hover {

@@ -100,12 +100,8 @@ class Syndication extends Base
         foreach ($posts as $post) {
             $feed->appendChild($entry = $dom->createElement('entry'));
 
-            if ($post->title) {
-                $entry->appendChild($title = $dom->createElement('title'));
-                $title->appendChild($dom->createTextNode($post->title));
-            } else {
-                $entry->appendChild($dom->createElement('title', __('post.default_title')));
-            }
+            $entry->appendChild($title = $dom->createElement('title'));
+            $title->appendChild($dom->createTextNode($post->title));
 
             $entry->appendChild($dom->createElement('id', $post->getUUID()));
             $entry->appendChild($dom->createElement('updated', date('c', strtotime($post->updated))));

@@ -38,9 +38,9 @@
         </span>
     {/if}
     <div>
-        <p class="line two" title="{$post->getTitle()}">
+        <p class="line two" title="{$post->title}">
             {autoescape="off"}
-                {$post->getTitle()}
+                {$post->title}
             {/autoescape}
         </p>
         <p dir="auto">{autoescape="off"}{$post->getSummary()|prepareString}{/autoescape}</p>
