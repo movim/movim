@@ -15,6 +15,10 @@
     display: none;
 }
 
+#publish > div.block {
+    padding-bottom: 1rem;
+}
+
 #publish label span.save.saved {
     display: initial;
 }
@@ -54,4 +58,20 @@
 
 #publishreply {
     margin-bottom: -1rem;
+}
+
+#publish form[data-type="brief"] div#title textarea {
+    min-height: 10rem;
+    padding-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+#publish form[data-type="brief"] div#title label {
+    top: initial;
+    bottom: -3rem;
+    right: 0;
+}
+
+#publish form[data-type="brief"] div#content {
+    display: none;
 }

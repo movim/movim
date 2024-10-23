@@ -2,6 +2,20 @@ var Publish = {
     titleTimeout: null,
     contentTimeout: null,
 
+    get: function(type) {
+        let parts = MovimUtils.urlParts();
+
+        Publish_ajaxHttpGet(
+            parts.params[0],
+            parts.params[1],
+            parts.params[2],
+            parts.params[3],
+            parts.params[4],
+            parts.params[5],
+            type ?? null
+        )
+    },
+
     init: function () {
         let id = document.querySelector('#publish input[name=id]').value;
 
@@ -80,7 +94,7 @@ var Publish = {
 }
 
 MovimWebsocket.attach(() => {
-    Publish.init();
+    Publish.get('brief');
     MovimUtils.applyAutoheight();
 });
 

@@ -17,6 +17,7 @@ v0.28.1 (master)
 * Add presences in the AdminSessions widget
 * Make title and updated mandatory in Post to respect the Atom RFC4287
 * Improve Brief posts handling
+* Add Brief/Article tabs in the Publish widget and load the form using Ajax
 
 v0.28
 ---------------------------

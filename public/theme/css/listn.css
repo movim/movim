@@ -415,6 +415,10 @@ ul.tabs.wide>li {
     float: left;
 }
 
+ul.tabs.wide.two>li {
+    width: 50%;
+}
+
 ul.tabs:hover {
     overflow-x: auto;
 }

@@ -439,24 +439,35 @@ class Publish extends Base
         $this->rpc('Drawer.clear');
     }
 
-    public function display()
+    public function ajaxHttpGet(
+        ?string $server = null,
+        ?string $node = null,
+        ?string $nodeId = null,
+        ?string $replyServer = null,
+        ?string $replyNode = null,
+        ?string $replyNodeId = null,
+        ?string $type = 'brief')
     {
-        $microblog = 'urn:xmpp:microblog:0';
+        $view = $this->tpl();
+        if ($server == null) {
+            $server = $this->user->id;
+        }
 
-        $server = $this->get('s') ?? $this->user->id;
-        $node = $this->get('n') ?? $microblog;
-        $nodeId = $this->get('i') ?? '';
-        $replyServer = $this->get('rs');
-        $replyNode = $this->get('rn');
-        $replyNodeId = $this->get('ri');
+        if ($node == null) {
+            $node = 'urn:xmpp:microblog:0';
+        }
 
-        if ($node == $microblog) {
-            $this->view->assign('icon', \App\Contact::firstOrNew(['id' => $server]));
+        if ($nodeId == null) {
+            $nodeId = '';
+        }
+
+        if ($node == 'urn:xmpp:microblog:0') {
+            $view->assign('icon', \App\Contact::firstOrNew(['id' => $server]));
         } else {
             $info = \App\Info::where('server', $server)
                              ->where('node', $node)
                              ->first();
-            $this->view->assign('icon', $info);
+            $view->assign('icon', $info);
         }
 
         $draft = $this->user->drafts()
@@ -476,16 +487,20 @@ class Publish extends Base
             $draft->tryFillPost();
         }
 
+        if ($draft->content != null) {
+            $type = "article";
+        }
+
         // Reply
         $reply = null;
 
         if ($replyServer && $replyNode && $replyNodeId) {
-            $reply = Post::where('server', $replyServer)
+            $reply = \App\Post::where('server', $replyServer)
                             ->where('node', $replyNode)
                             ->where('nodeid', $replyNodeId)
                             ->first();
         } elseif ($draft->reply_id) {
-            $reply = Post::find($draft->reply_id);
+            $reply = \App\Post::find($draft->reply_id);
         }
 
         if ($reply) {
@@ -498,9 +513,13 @@ class Publish extends Base
         $draft->refresh();
 
         if ($draft->reply) {
-            $this->view->assign('replyblock', (new Post())->prepareTicket($draft->reply));
+            $view->assign('replyblock', (new Post)->prepareTicket($draft->reply));
         }
 
-        $this->view->assign('draft', $draft);
+        $view->assign('type', $type);
+        $view->assign('draft', $draft);
+
+        $this->rpc('MovimTpl.fill', '#publish', $view->draw('_publish_form'));
+        $this->rpc('Publish.init');
     }
 }
