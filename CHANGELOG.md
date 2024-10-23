@@ -15,6 +15,7 @@ v0.28.1 (master)
 * Completely replace the offset parameter with a Session Timezone set on Login
 * Use composite foreign keys for several relationships
 * Add presences in the AdminSessions widget
+* Make title and updated mandatory in Post to respect the Atom RFC4287
 
 v0.28
 ---------------------------

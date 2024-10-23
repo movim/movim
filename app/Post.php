@@ -15,10 +15,20 @@ class Post extends Model
     protected $primaryKey = 'id';
 
     protected $guarded = [];
-    public $with = ['attachments', 'likes', 'comments',
-                    'contact',  'openlink', 'embed',
-                    'links', 'files', 'pictures', 'picture',
-                    'attachment', 'userAffiliation'];
+    public $with = [
+        'attachments',
+        'likes',
+        'comments',
+        'contact',
+        'openlink',
+        'embed',
+        'links',
+        'files',
+        'pictures',
+        'picture',
+        'attachment',
+        'userAffiliation'
+    ];
     public $withCount = ['userViews'];
 
     private $titleLimit = 200;
@@ -40,8 +50,8 @@ class Post extends Model
     public function comments()
     {
         return $this->hasMany('App\Post', 'parent_id', 'id')
-                    ->orderBy('published')
-                    ->where('like', false);
+            ->orderBy('published')
+            ->where('like', false);
     }
 
     public function parent()
@@ -57,7 +67,7 @@ class Post extends Model
     public function userAffiliation()
     {
         return $this->hasOne('App\Affiliation', ['server', 'node'], ['server', 'node'])
-                    ->where('jid', \App\User::me()->id);
+            ->where('jid', \App\User::me()->id);
     }
 
     public function userViews()
@@ -68,64 +78,64 @@ class Post extends Model
     public function likes()
     {
         return $this->hasMany('App\Post', 'parent_id', 'id')
-                    ->whereIn('id', function ($query) {
-                        $query->select(DB::raw('min(id) as id'))
-                              ->from('posts')
-                              ->where('like', true)
-                              ->whereNotNull('aid')
-                              ->groupByRaw('aid, parent_id');
-                    });
+            ->whereIn('id', function ($query) {
+                $query->select(DB::raw('min(id) as id'))
+                    ->from('posts')
+                    ->where('like', true)
+                    ->whereNotNull('aid')
+                    ->groupByRaw('aid, parent_id');
+            });
     }
 
     public function openlink()
     {
         return $this->hasOne('App\Attachment')
-                    ->where('category', 'open');
+            ->where('category', 'open');
     }
 
     public function embed()
     {
         return $this->hasOne('App\Attachment')
-                    ->where('category', 'embed');
+            ->where('category', 'embed');
     }
 
     public function links()
     {
         return $this->hasMany('App\Attachment')
-                    ->where('category', 'link')
-                    ->whereNotIn('href', function ($query) {
-                        $query->select('href')
-                              ->from('attachments')
-                              ->where('post_id', $this->id)
-                              ->where('category', 'picture')
-                              ->get();
-                    });
+            ->where('category', 'link')
+            ->whereNotIn('href', function ($query) {
+                $query->select('href')
+                    ->from('attachments')
+                    ->where('post_id', $this->id)
+                    ->where('category', 'picture')
+                    ->get();
+            });
     }
 
     public function files()
     {
         return $this->hasMany('App\Attachment')
-                    ->where('category', 'file');
+            ->where('category', 'file');
     }
 
     public function pictures()
     {
         return $this->hasMany('App\Attachment')
-                    ->where('category', 'picture')
-                    ->where('type', '!=', 'content');
+            ->where('category', 'picture')
+            ->where('type', '!=', 'content');
     }
 
     public function picture()
     {
         return $this->hasOne('App\Attachment')
-                    ->where('category', 'picture');
+            ->where('category', 'picture');
     }
 
     public function attachment()
     {
         return $this->hasOne('App\Attachment')
-                    ->whereIn('rel', ['enclosure', 'related'])
-                    ->orderBy('rel', 'desc'); // related first
+            ->whereIn('rel', ['enclosure', 'related'])
+            ->orderBy('rel', 'desc'); // related first
     }
 
     public function attachments()
@@ -136,6 +146,16 @@ class Post extends Model
     public function save(array $options = [])
     {
         try {
+            if (!$this->validAtom()) {
+                \logError('Invalid Atom: ' . $this->server . '/' . $this->node . '/' . $this->nodeid);
+
+                if ($this->created_at) {
+                    $this->delete();
+                }
+
+                return;
+            }
+
             if (!$this->changed) return;
 
             parent::save($options);
@@ -154,6 +174,11 @@ class Post extends Model
              * in the DB causing an error
              */
         }
+    }
+
+    private function validAtom(): bool
+    {
+        return ($this->title != null && $this->updated != null);
     }
 
     public function scopeRestrictToMicroblog($query)
@@ -179,9 +204,9 @@ class Post extends Model
             $query->whereIn('id', function ($query) {
                 $host = \App\User::me()->session->host;
                 $query->select('id')
-                      ->from('posts')
-                      ->where('server', 'like', '%.' . $host)
-                      ->orWhere('server', 'like', '@' . $host);
+                    ->from('posts')
+                    ->where('server', 'like', '%.' . $host)
+                    ->orWhere('server', 'like', '@' . $host);
             });
         }
     }
@@ -212,13 +237,14 @@ class Post extends Model
 
     protected function withContactsScope($query)
     {
-        return $query->unionAll(DB::table('posts')
-            ->whereIn('posts.server', function ($query) {
-                $query->from('rosters')
-                    ->select('jid')
-                    ->where('session_id', SESSION_ID)
-                    ->where('subscription', 'both');
-            })
+        return $query->unionAll(
+            DB::table('posts')
+                ->whereIn('posts.server', function ($query) {
+                    $query->from('rosters')
+                        ->select('jid')
+                        ->where('session_id', SESSION_ID)
+                        ->where('subscription', 'both');
+                })
         );
     }
 
@@ -229,9 +255,10 @@ class Post extends Model
 
     protected function withMineScope($query)
     {
-        return $query->unionAll(DB::table('posts')
-            ->where('node', 'urn:xmpp:microblog:0')
-            ->where('server', \App\User::me()->id)
+        return $query->unionAll(
+            DB::table('posts')
+                ->where('node', 'urn:xmpp:microblog:0')
+                ->where('server', \App\User::me()->id)
         );
     }
 
@@ -242,17 +269,18 @@ class Post extends Model
 
     protected function withSubscriptionsScope($query)
     {
-        return $query->unionAll(DB::table('posts')
-            ->whereIn('server', function ($query) {
-                $query->select('server')
-                    ->from('subscriptions')
-                    ->where('jid', \App\User::me()->id);
-            })
-            ->whereIn('node', function ($query) {
-                $query->select('node')
-                    ->from('subscriptions')
-                    ->where('jid', \App\User::me()->id);
-            })
+        return $query->unionAll(
+            DB::table('posts')
+                ->whereIn('server', function ($query) {
+                    $query->select('server')
+                        ->from('subscriptions')
+                        ->where('jid', \App\User::me()->id);
+                })
+                ->whereIn('node', function ($query) {
+                    $query->select('node')
+                        ->from('subscriptions')
+                        ->where('jid', \App\User::me()->id);
+                })
         );
     }
 
@@ -264,21 +292,21 @@ class Post extends Model
     public function getPreviousAttribute()
     {
         return \App\Post::where('server', $this->server)
-                       ->where('node', $this->node)
-                       ->where('published', '<', $this->published)
-                       ->where('open', true)
-                       ->orderBy('published', 'desc')
-                       ->first();
+            ->where('node', $this->node)
+            ->where('published', '<', $this->published)
+            ->where('open', true)
+            ->orderBy('published', 'desc')
+            ->first();
     }
 
     public function getNextAttribute()
     {
         return \App\Post::where('server', $this->server)
-                       ->where('node', $this->node)
-                       ->where('published', '>', $this->published)
-                       ->orderBy('published')
-                       ->where('open', true)
-                       ->first();
+            ->where('node', $this->node)
+            ->where('published', '>', $this->published)
+            ->orderBy('published')
+            ->where('open', true)
+            ->first();
     }
 
     public function getTruenameAttribute()
@@ -346,8 +374,8 @@ class Post extends Model
                 case 'xhtml':
                     $title = strip_tags(
                         ($t->children()->getName() == 'div' && (string)$t->children()->attributes()->xmlns == 'http://www.w3.org/1999/xhtml')
-                        ? html_entity_decode((string)$t->children()->asXML())
-                        : (string)$t->children()->asXML()
+                            ? html_entity_decode((string)$t->children()->asXML())
+                            : (string)$t->children()->asXML()
                     );
                     break;
                 case 'text':
@@ -379,8 +407,10 @@ class Post extends Model
         }
 
         // Ensure that the author is the publisher
-        if ($entry->entry->author && $entry->entry->author->uri
-        && 'xmpp:'.baseJid((string)$entry->attributes()->publisher) == (string)$entry->entry->author->uri) {
+        if (
+            $entry->entry->author && $entry->entry->author->uri
+            && 'xmpp:' . baseJid((string)$entry->attributes()->publisher) == (string)$entry->entry->author->uri
+        ) {
             $this->aid = substr((string)$entry->entry->author->uri, 5);
             $this->aname = ($entry->entry->author->name)
                 ? (string)$entry->entry->author->name
@@ -393,38 +423,33 @@ class Post extends Model
             $this->aid = null;
         }
 
-        // Non standard support
-        /*if ($entry->entry->source && $entry->entry->source->author->name) {
-            $this->aname = (string)$entry->entry->source->author->name;
-        }
-        if ($entry->entry->source && $entry->entry->source->author->uri
-         && substr((string)$entry->entry->source->author->uri, 5) == 'xmpp:') {
-            $this->aid = substr((string)$entry->entry->source->author->uri, 5);
-        }*/
-
         if (empty($this->aname)) {
             $this->aname = null;
         }
 
         // Content
-        $summary = ($entry->entry->summary && (string)$entry->entry->summary != '')
-            ? '<p class="summary">'.(string)$entry->entry->summary.'</p>'
+        $this->title = $entry->entry->title
+            ? $this->extractTitle($entry->entry->title)
             : null;
 
-        $content = '';
+        $summary = ($entry->entry->summary && (string)$entry->entry->summary != '')
+            ? '<p class="summary">' . (string)$entry->entry->summary . '</p>'
+            : null;
 
-        if ($entry->entry->content) {
-            $content = $this->extractContent($entry->entry->content);
-            $this->title = $this->extractTitle($entry->entry->title);
-        } else {
-            $content = $this->extractContent($entry->entry->title);
+        $content = $entry->entry->content
+            ? $this->extractContent($entry->entry->content)
+            : null;
+
+        $this->content = $this->contentcleaned = null;
+
+        if ($summary != null || $content != null) {
+            $this->content = trim((string)$summary . (string)$content);
+            $this->contentcleaned = requestAPI('purifyhtml', 2, ['content' => $this->content]);
         }
-
-        $content = $summary.$content;
 
         $this->updated = ($entry->entry->updated)
             ? toSQLDate($entry->entry->updated)
-            : gmdate(MOVIM_SQL_DATE);
+            : null;
 
         if ($entry->entry->published) {
             $this->published = toSQLDate($entry->entry->published);
@@ -440,9 +465,11 @@ class Post extends Model
 
         // Tags parsing
         if ($entry->entry->category) {
-            if ($entry->entry->category->count() == 1
-            && isset($entry->entry->category->attributes()->term)
-            && !empty(trim($entry->entry->category->attributes()->term))) {
+            if (
+                $entry->entry->category->count() == 1
+                && isset($entry->entry->category->attributes()->term)
+                && !empty(trim($entry->entry->category->attributes()->term))
+            ) {
                 $tag = \App\Tag::firstOrCreateSafe([
                     'name' => strtolower((string)$entry->entry->category->attributes()->term)
                 ]);
@@ -473,7 +500,7 @@ class Post extends Model
 
         // Extract more tags if possible
         $tagsContent = getHashtags(htmlspecialchars($this->title ?? ''))
-                     + getHashtags(htmlspecialchars($this->contentraw ?? ''));
+            + getHashtags(htmlspecialchars($this->contentraw ?? ''));
         foreach ($tagsContent as $tag) {
             $tag = \App\Tag::firstOrCreateSafe([
                 'name' => strtolower((string)$tag)
@@ -489,10 +516,6 @@ class Post extends Model
         if (!isset($this->commentserver)) {
             $this->commentserver = $this->server;
         }
-
-        // Save the base and cleaned content
-        $this->content = trim($content);
-        $this->contentcleaned = requestAPI('purifyhtml', 2, ['content' => $this->content]);
 
         // We fill empty aid
         if ($this->isMicroblog() && empty($this->aid)) {
@@ -510,7 +533,7 @@ class Post extends Model
 
         $extra = false;
         // We try to extract a picture
-        $xml = \simplexml_load_string('<div>'.$this->contentcleaned.'</div>');
+        $xml = \simplexml_load_string('<div>' . $this->contentcleaned . '</div>');
         if ($xml) {
             $results = $xml->xpath('//img/@src');
 
@@ -537,8 +560,8 @@ class Post extends Model
 
         if ($this->isComment()) {
             $p = \App\Post::where('commentserver', $this->server)
-                          ->where('commentnodeid', substr($this->node, 30))
-                          ->first();
+                ->where('commentnodeid', substr($this->node, 30))
+                ->first();
 
             if ($p) {
                 $this->parent_id = $p->id;
@@ -635,13 +658,11 @@ class Post extends Model
     {
         $enclosures = [];
 
-        foreach (array_filter($this->attachments, fn ($a) => $a->rel == 'enclosure') as $attachment)
-        {
+        foreach (array_filter($this->attachments, fn($a) => $a->rel == 'enclosure') as $attachment) {
             array_push($enclosures, $attachment->href);
         }
 
-        foreach (array_filter($this->attachments, fn ($a) => $a->rel != 'enclosure') as $key => $attachment)
-        {
+        foreach (array_filter($this->attachments, fn($a) => $a->rel != 'enclosure') as $key => $attachment) {
             if (in_array($attachment->href, $enclosures)) {
                 unset($this->attachments[$key]);
             }
@@ -649,11 +670,13 @@ class Post extends Model
 
         // Remove duplicates...
         foreach ($this->attachments as $key => $attachment) {
-            foreach($this->attachments as $keyCheck => $attachmentCheck) {
-                if ($key != $keyCheck
-                && $attachment->href == $attachmentCheck->href
-                && $attachment->category == $attachmentCheck->category
-                && $attachment->rel == $attachmentCheck->rel) {
+            foreach ($this->attachments as $keyCheck => $attachmentCheck) {
+                if (
+                    $key != $keyCheck
+                    && $attachment->href == $attachmentCheck->href
+                    && $attachment->category == $attachmentCheck->category
+                    && $attachment->rel == $attachmentCheck->rel
+                ) {
                     unset($this->attachments[$key]);
                 }
             }
@@ -666,12 +689,12 @@ class Post extends Model
             return $this->nodeid;
         }
 
-        return 'urn:uuid:'.generateUUID($this->nodeid);
+        return 'urn:uuid:' . generateUUID($this->nodeid);
     }
 
     public function getRef()
     {
-        return 'xmpp:'.$this->server.'?;node='.$this->node.';item='.$this->nodeid;
+        return 'xmpp:' . $this->server . '?;node=' . $this->node . ';item=' . $this->nodeid;
     }
 
     // Works only for the microblog posts
@@ -738,7 +761,7 @@ class Post extends Model
     public function hasCommentsNode(): bool
     {
         return (isset($this->commentserver)
-             && isset($this->commentnodeid));
+            && isset($this->commentnodeid));
     }
 
     public function getSummary()
@@ -772,9 +795,9 @@ class Post extends Model
         }
 
         return \App\Post::where('server', $this->replyserver)
-                        ->where('node', $this->replynode)
-                        ->where('nodeid', $this->replynodeid)
-                        ->first();
+            ->where('node', $this->replynode)
+            ->where('nodeid', $this->replynodeid)
+            ->first();
     }
 
     public function isLiked()
