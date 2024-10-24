@@ -745,7 +745,7 @@ class Post extends Model
 
     public function isLike(): bool
     {
-        return ($this->contentraw == '♥' || $this->content == '♥');
+        return ($this->title == '♥');
     }
 
     public function isRTL(): bool
@@ -773,7 +773,7 @@ class Post extends Model
         return truncate(stripTags(html_entity_decode($this->contentcleaned)), 140);
     }
 
-    public function getContent(bool $addHashTagLinks): string
+    public function getContent(bool $addHashTagLinks = false): string
     {
         if ($this->contentcleaned == null) return '';
 
