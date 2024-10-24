@@ -5,7 +5,10 @@
  */
 function getTimezoneOffset(): int
 {
-    return (new DateTimeZone(TIMEZONE))->getOffset(new DateTime('now', new DateTimeZone('UTC')));
+    return (new DateTimeZone(defined('TIMEZONE')
+            ? TIMEZONE
+            : date_default_timezone_get())
+        )->getOffset(new DateTime('now', new DateTimeZone('UTC')));
 }
 
 /**
