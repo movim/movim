@@ -17,7 +17,7 @@
 }
 
 .card li > div > p > span.info {
-    margin-right: 1rem;
+    margin-right: 0.5rem;
 }
 
 /*.card img.main ~ div {
@@ -41,6 +41,17 @@
     padding: 2rem;
     padding-top: 0;
     box-sizing: border-box;
+}
+
+.card:not(.gallery) > .block.ticket div {
+    display: flex;
+    justify-content:safe;
+    flex-direction: column;
+    height: calc(calc(100% - 2rem));
+}
+
+.card:not(.gallery) > .block.ticket div p:last-of-type {
+    margin-top: auto;
 }
 
 .card.shadow > .block:not(.subheader):not(.simple) {

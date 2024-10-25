@@ -1,5 +1,5 @@
 <li id="{$post->nodeid|cleanupId}"
-    class="block {if="$post->embed"}embed{/if}"
+    class="block ticket {if="$post->embed"}embed{/if}"
 
     {if="$public"}
         {if="$post->isMicroblog()"}
@@ -48,7 +48,16 @@
         {else}
             <p></p>
         {/if}
+
+        {if="$post->isBrief()"}
+            <p class="normal brief line two" title="{$post->title}">
+                {autoescape="off"}
+                    {$post->title}
+                {/autoescape}
+            </p>
+        {/if}
         <p>
+
             {if="$post->contact"}
                 <span class="icon bubble tiny">
                     <img src="{$post->contact->getPicture()}">
@@ -60,11 +69,11 @@
 
             {if="!$post->isMicroblog()"}
                 <a class="node"
-                   title="{$post->server} / {$post->node}"
-                   href="#"
-                   onclick="MovimUtils.reload('{$c->route('community', [$post->server, $post->node])}')">
-                   {if="$post->contact"}·{/if}
-                   {$post->node}
+                title="{$post->server} / {$post->node}"
+                href="#"
+                onclick="MovimUtils.reload('{$c->route('community', [$post->server, $post->node])}')">
+                {if="$post->contact"}·{/if}
+                {$post->node}
                 </a>
             {/if}
 
@@ -85,7 +94,7 @@
 
                 {$count = $post->likes->count()}
                 {if="$count > 0"}
-                    {$count} <i class="material-symbols fill">favorite</i> ·
+                    {$count} <i class="material-symbols fill">favorite</i>
                 {/if}
 
                 {$count = $post->comments->count()}
@@ -96,12 +105,5 @@
                 {$post->published|prepareDate:true,true}
             </span>
         </p>
-        {if="$post->isBrief()"}
-            <p class="normal brief line two" title="{$post->title}">
-                {autoescape="off"}
-                    {$post->title}
-                {/autoescape}
-            </p>
-        {/if}
     </div>
 </li>

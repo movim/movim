@@ -18,6 +18,7 @@ v0.28.1 (master)
 * Make title and updated mandatory in Post to respect the Atom RFC4287
 * Improve Brief posts handling
 * Add Brief/Article tabs in the Publish widget and load the form using Ajax
+* Improve Posts ticket layout
 
 v0.28
 ---------------------------
