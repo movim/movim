@@ -19,6 +19,7 @@ v0.28.1 (master)
 * Improve Brief posts handling
 * Add Brief/Article tabs in the Publish widget and load the form using Ajax
 * Improve Posts ticket layout
+* Fix Contacts invitation handling and notification counter
 
 v0.28
 ---------------------------

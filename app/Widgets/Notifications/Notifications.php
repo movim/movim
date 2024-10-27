@@ -94,7 +94,7 @@ class Notifications extends Base
             ->where('aid', '!=', $this->user->id)->count();
 
         $count += $this->user->session->presences()
-                        ->where('type', 'subscribe')
+                        ->whereIn('type', ['subscribe', 'subscribed'])
                         ->count();
 
         $this->rpc('Notifications.setCounters', ($count > 0) ? $count : '');
@@ -140,7 +140,7 @@ class Notifications extends Base
         Dialog::fill($view->draw('_notifications_delete'));
     }
 
-    public function ajaxDelete($jid)
+    public function ajaxDelete(string $jid)
     {
         $r = new RemoveItem;
         $r->setTo($jid)
@@ -151,23 +151,32 @@ class Notifications extends Base
           ->request();
     }
 
-    public function ajaxAccept($jid)
+    public function ajaxAccept(string $jid)
     {
         $jid = echapJid($jid);
 
-        if (!$this->user->session->contacts()->where('jid', $jid)->exists()) {
+        $roster = $this->user->session->contacts()->where('jid', $jid)->first();
+
+        $this->user->session->presences()
+             ->whereIn('type', ['subscribe', 'subscribed'])
+             ->where('jid', $jid)
+             ->delete();
+
+        if (!$roster) {
             $r = new AddItem;
             $r->setTo($jid)
-                ->request();
+              ->request();
         }
 
-        $p = new Subscribe;
-        $p->setTo($jid)
-            ->request();
+        if (!$roster || $roster->subscription == 'none' || $roster->subscription == 'from') {
+            $p = new Subscribe;
+            $p->setTo($jid)
+              ->request();
+        }
 
         $p = new Subscribed;
         $p->setTo($jid)
-            ->request();
+          ->request();
 
         $this->removeInvitation($jid);
     }
@@ -229,7 +238,7 @@ class Notifications extends Base
                                      ->get());
         $view->assign('subscribePresences', $this->user->session->presences()
                                                  ->with('contact')
-                                                 ->where('type', 'subscribe')
+                                                 ->whereIn('type', ['subscribe', 'subscribed'])
                                                  ->get());
         $view->assign('since', $since);
 

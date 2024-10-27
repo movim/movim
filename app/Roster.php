@@ -3,13 +3,10 @@
 namespace App;
 
 use Movim\ImageSize;
-
-use Awobaz\Compoships\Database\Eloquent\Model;
+use Movim\Model;
 
 class Roster extends Model
 {
-    use \Awobaz\Compoships\Compoships;
-
     public $incrementing = false;
     protected $primaryKey = ['session_id', 'jid'];
     protected $fillable = ['jid', 'name', 'ask', 'subscription', 'group'];
@@ -52,14 +49,16 @@ class Roster extends Model
 
     public function presences()
     {
-        return $this->hasMany('App\Presence', ['jid', 'session_id'], ['jid', 'session_id'])
-                    ->where('resource', '!=', '');
+        return $this->hasMany('App\Presence', 'jid', 'jid')
+            ->where('resource', '!=', '')
+            ->where('session_id', $this->session_id);
     }
 
     public function presence()
     {
-        return $this->hasOne('App\Presence', ['jid', 'session_id'], ['jid', 'session_id'])
-                    ->orderBy('value');
+        return $this->hasOne('App\Presence', 'jid', 'jid')
+            ->where('session_id', $this->session_id)
+            ->orderBy('value');
     }
 
     public function set($stanza)
@@ -88,7 +87,7 @@ class Roster extends Model
 
     public function getSearchTerms()
     {
-        return cleanupId($this->jid).'-'.
+        return cleanupId($this->jid) . '-' .
             cleanupId($this->group);
     }
 

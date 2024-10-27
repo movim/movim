@@ -27,11 +27,11 @@ class Presence extends Payload
             $presence = DBPresence::findByStanza($stanza);
             $presence->set($stanza);
 
-            if ((string)$stanza->attributes()->type == 'subscribe') {
-                $this->event('subscribe', (string)$stanza->attributes()->from);
-            }
-
             PresenceBuffer::getInstance()->append($presence, function () use ($presence, $stanza) {
+                if ((string)$stanza->attributes()->type == 'subscribe') {
+                    $this->event('subscribe', (string)$stanza->attributes()->from);
+                }
+
                 if ($presence->muc) {
                     ChatroomPings::getInstance()->touch($presence->jid);
 
