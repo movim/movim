@@ -177,7 +177,7 @@
             <div class="video_embed shimmer">
                 <iframe class="spin" src="{$post->embed->href}" frameborder="0" allowfullscreen></iframe>
             </div>
-        {else}
+        {elseif="$post->isShort()"}
             {loop="$post->pictures"}
                 <img class="big_picture"
                      type="{$value->type}"
