@@ -7,6 +7,7 @@
 namespace Movim;
 
 use Moxl\Xec\Action\Ping\Room;
+use App\Widgets\Rooms\Rooms as WidgetRooms;
 
 /**
  * Handling XEP-0410: MUC Self-Ping (Schrödinger's Chat) pings and timeouts
@@ -15,7 +16,9 @@ class ChatroomPings
 {
     protected static $instance;
     private $_chatrooms = [];
-    private $_timeout = 5 * 60;
+    private $_chatroomsTimeout = [];
+    private $_pingIn = 5 * 60;
+    private $_pongTimeout = 5 * 60 + 10;
 
     public static function getInstance()
     {
@@ -32,7 +35,7 @@ class ChatroomPings
 
         $this->clear($from);
 
-        $this->_chatrooms[$from] = $loop->addTimer($this->_timeout, function () use ($from) {
+        $this->_chatrooms[$from] = $loop->addTimer($this->_pingIn, function () use ($from) {
             $presence = \App\User::me()->session->conferences()
                 ->where('conference', $from)
                 ->first()?->presence;
@@ -44,6 +47,10 @@ class ChatroomPings
                          ->request();
             }
         });
+
+        $this->_chatroomsTimeout[$from] = $loop->addTimer($this->_pongTimeout, function () use ($from) {
+            (new WidgetRooms())->ajaxExit($from);
+        });
     }
 
     public function clear(string $from)
@@ -52,6 +59,7 @@ class ChatroomPings
 
         if (array_key_exists($from, $this->_chatrooms)) {
             $loop->cancelTimer($this->_chatrooms[$from]);
+            $loop->cancelTimer($this->_chatroomsTimeout[$from]);
         }
     }
 }

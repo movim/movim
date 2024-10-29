@@ -20,6 +20,7 @@ v0.28.1 (master)
 * Add Brief/Article tabs in the Publish widget and load the form using Ajax
 * Improve Posts ticket layout
 * Fix Contacts invitation handling and notification counter
+* XEP-0410: MUC Self-Ping, add timeout ping support (when the connection is lost and the pong is never sent)
 
 v0.28
 ---------------------------
