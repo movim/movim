@@ -18,7 +18,7 @@
 {/if}
 
 {if="isset($communities) && $communities->isNotEmpty()"}
-<ul class="list middle card shadow active flex">
+<ul class="list middle card shadow active flex large">
     {loop="$communities"}
     <li
         class="block"
@@ -66,7 +66,7 @@
 {/if}
 
 {if="isset($posts) && $posts->isNotEmpty()"}
-<ul id="search_posts" class="list middle card shadow active flex">
+<ul id="search_posts" class="list middle card shadow active flex large">
     {loop="$posts"}
         {autoescape="off"}
             {$c->prepareTicket($value)}

@@ -8,6 +8,10 @@
     padding: 0 1rem;
 }
 
+.flex.large.card {
+    padding: 0;
+}
+
 ul.flex li.block {
     border-radius: 0.65rem;
     transition: background 0.3s ease;
