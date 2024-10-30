@@ -111,6 +111,14 @@ main > header form > div:not(.clear):not(.control) > .select select {
     opacity: 0.5;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active  {
+    transition: background-color 0s 50000s;
+    -webkit-text-fill-color: rgba(var(--movim-font), 0.87) !important;
+}
+
 /* Webkit weird CSS, sic */
 
 form > div .select select,
