@@ -71,9 +71,9 @@ function writeOut($msg = null)
     }
 }
 
-function logOut($log)
+function logOut($log, string $type = 'system')
 {
-    fwrite(STDERR, colorize(getenv('sid'), 'yellow') . " : " . $log . "\n");
+    fwrite(STDERR, colorize(getenv('sid'), 'turquoise') . ' ' . colorize($type, 'purple'). "   \n" . $log . "\n");
 }
 
 function writeXMPP($xml)
@@ -86,7 +86,7 @@ function writeXMPP($xml)
         $xmppSocket->write(trim($xml));
 
         if (config('daemon.debug')) {
-            logOut(colorize(trim($xml) . ' ', 'yellow') . colorize('sent to XMPP', 'green'));
+            logOut(colorize(trim($xml) . ' ', 'yellow'), '>>> XMPP sent');
         }
     }
 }
@@ -287,7 +287,7 @@ $xmppBehaviour = function (React\Socket\Connection $stream) use (&$xmppSocket, $
         if (!empty($message)) {
 
             if (config('daemon.debug')) {
-                logOut(colorize($message . ' ', 'yellow') . colorize('received', 'green'));
+                logOut(colorize($message . ' ', 'yellow'), '<<< XMPP received');
             }
 
             if ($message == '</stream:stream>') {
