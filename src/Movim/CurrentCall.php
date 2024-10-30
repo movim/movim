@@ -79,7 +79,7 @@ class CurrentCall
         if ($jingleStanza->attributes()->sid == $this->id) {
             $contentIds = [];
 
-            if ($jingleStanza->group->attributes()->xmlns == 'urn:xmpp:jingle:apps:grouping:0') {
+            if ($jingleStanza->group && $jingleStanza->group->attributes()->xmlns == 'urn:xmpp:jingle:apps:grouping:0') {
                 foreach ($jingleStanza->xpath('//content/@name') as $contentId) {
                     array_push($contentIds, 'c' . (string)$contentId);
                 }
@@ -87,6 +87,9 @@ class CurrentCall
                 foreach (array_diff(array_keys($this->contents, $contentIds)) as $removedContentId) {
                     unset($this->contents['c' . $removedContentId]);
                 }
+            } else {
+                // We only have one content without grouping
+                array_push($contentIds, 'c' . (string)$jingleStanza->xpath('//content/@name')[0]);
             }
 
             foreach ($jingleStanza->content as $content) {
