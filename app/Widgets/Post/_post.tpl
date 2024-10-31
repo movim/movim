@@ -78,7 +78,7 @@
                         {if="$post->isMicroblog()"}
                             onclick="MovimUtils.reload('{$c->route('blog', [$post->server, $post->nodeid])}')"
                         {else}
-                            onclick="MovimUtils.reload('{$c->route('node', [$post->server, $post->node, $post->nodeid])}')"
+                            onclick="MovimUtils.reload('{$c->route('community', [$post->server, $post->node, $post->nodeid])}')"
                         {/if}
                     {else}
                         onclick="MovimUtils.reload('{$c->route('post', [$post->server, $post->node, $post->nodeid])}')"

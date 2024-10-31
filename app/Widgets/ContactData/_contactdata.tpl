@@ -126,20 +126,18 @@
             </li>
         {/if}
         {if="$contact->isPublic()"}
-            <a href="{$contact->getBlogUrl()}" target="_blank" class="block large simple">
-                <li>
-                    <span class="primary icon">
-                        <i class="material-symbols">open_in_new</i>
+                <li onclick="MovimUtils.reload('{$contact->getBlogUrl()}')">
+                    <span class="primary icon gray">
+                        <i class="material-symbols">globe</i>
                     </span>
                     <span class="control icon">
                         <i class="material-symbols">chevron_right</i>
                     </span>
                     <div>
-                        <p></p>
                         <p class="normal">{$c->__('blog.visit')}</p>
+                        <p class="line">{$contact->getBlogUrl()}</p>
                     </div>
                 </li>
-            </a>
         {/if}
     </ul>
 </div>

@@ -39,7 +39,6 @@ class Route extends Base
             'main'          => false,
             'manifest'      => false,
             'notfound'      => false,
-            'node'          => ['s', 'n', 'i'],
             'news'          => false,
             'post'          => ['s', 'n', 'i'],
             'picture'       => ['url'],

@@ -87,7 +87,7 @@
                             <i class="material-symbols">add</i> <span class="on_desktop">{$c->__('communityheader.subscribe')}</span>
                         </a>
                         <p>
-                            <a href="{$c->route('node', [$server, $node])}">
+                            <a href="{$c->route('community', [$server, $node])}">
                                 {if="$item != null && $item->name"}
                                     {$item->name}
                                 {else}

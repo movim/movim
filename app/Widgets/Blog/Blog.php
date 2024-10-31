@@ -32,7 +32,7 @@ class Blog extends Base
 
     public function load()
     {
-        if ($this->_view == 'node') {
+        if ($this->_view == 'community') {
             $this->_from = $this->get('s');
             $this->_node = $this->get('n');
 
@@ -50,7 +50,7 @@ class Blog extends Base
                 $this->description = $this->_item->description;
             }
 
-            $this->url = $this->route('node', [$this->_from, $this->_node]);
+            $this->url = $this->route('community', [$this->_from, $this->_node]);
 
             $this->links[] = [
                 'rel' => 'alternate',
@@ -138,8 +138,8 @@ class Blog extends Base
                 }
             }
 
-            if ($this->_view == 'node') {
-                $this->url = $this->route('node', [$this->_from, $this->_node, $this->_id]);
+            if ($this->_view == 'community') {
+                $this->url = $this->route('community', [$this->_from, $this->_node, $this->_id]);
             } else {
                 $this->url = $this->route('blog', [$this->_from, $this->_id]);
             }
@@ -188,7 +188,7 @@ class Blog extends Base
             } elseif ($this->_mode == 'tag') {
                 $this->_next = $this->route('tag', $this->_tag, ['page' => $this->_page + 1]);
             } else {
-                $this->_next = $this->route('node', [$this->_from, $this->_node], ['page' => $this->_page + 1]);
+                $this->_next = $this->route('community', [$this->_from, $this->_node], ['page' => $this->_page + 1]);
             }
         }
     }

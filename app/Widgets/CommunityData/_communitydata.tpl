@@ -38,18 +38,17 @@
             </li>
         {/if}
 
-        <a href="{$c->route('node', [$info->server, $info->node])}" target="_blank" class="block large">
-            <li class="active">
-                <span class="primary icon">
-                    <i class="material-symbols">open_in_new</i>
-                </span>
-                <span class="control icon">
-                    <i class="material-symbols">chevron_right</i>
-                </span>
-                <div>
-                    <p class="normal">{$c->__('communitydata.public')}</p>
-                </div>
-            </li>
-        </a>
+        <li class="block large">
+            <span class="primary icon gray">
+                <i class="material-symbols">globe</i>
+            </span>
+            <span class="control icon active" onclick="Preview.copyToClipboard('{$c->route('community', [$info->server, $info->node])}')">
+                <i class="material-symbols">content_copy</i>
+            </span>
+            <div>
+                <p class="normal">{$c->__('communitydata.public')}</p>
+                <p class="line">{$c->route('community', [$info->server, $info->node])}</p>
+            </div>
+        </li>
     </ul>
 {/if}
