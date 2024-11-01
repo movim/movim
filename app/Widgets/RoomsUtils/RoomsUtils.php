@@ -302,9 +302,7 @@ class RoomsUtils extends Base
 
         $conference = $this->user->session->conferences()
             ->where('conference', $values['jid'])
-            ->first();
-
-        if (!$conference) $conference = new Conference;
+            ->firstOrNew();
 
         $conference->conference = $values['jid'];
         $conference->name = $values['name'];
@@ -313,11 +311,8 @@ class RoomsUtils extends Base
         $conference->nick = $values['nick'];
         $conference->notify = $values['notify'];
 
-        $conferenceSave = clone $conference;
-        $conference->delete();
-
         $b = new Set;
-        $b->setConference($conferenceSave)
+        $b->setConference($conference)
             ->request();
 
         // Disconnect properly

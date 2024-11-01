@@ -27,8 +27,20 @@ class Set extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $this->_conference->save();
-        $this->pack($this->_conference);
+        \App\User::me()->session->conferences()
+            ->where('conference', $this->_conference->conference)
+            ->delete();
+
+        $conference = new Conference;
+        $conference->conference = $this->_conference->conference;
+        $conference->name = $this->_conference->name;
+        $conference->autojoin = $this->_conference->autojoin;
+        $conference->pinned = $this->_conference->pinned;
+        $conference->nick = $this->_conference->nick;
+        $conference->notify = $this->_conference->notify;
+        $conference->save();
+
+        $this->pack($conference);
         $this->deliver();
     }
 
