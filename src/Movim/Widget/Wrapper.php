@@ -150,7 +150,7 @@ class Wrapper
         try {
             return $widget->$method(...$params);
         } catch (\Error $th) {
-            logError($th->getMessage());
+            logError($th);
             return null;
         }
     }

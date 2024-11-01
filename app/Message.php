@@ -384,7 +384,7 @@ class Message extends Model
                     Reaction::insert($emojis);
                 } catch (QueryException $e) {
                     // Duplicate ?
-                    logError($e->getMessage());
+                    logError($e);
                 }
 
                 return $parentMessage;

@@ -283,7 +283,7 @@ class Image
                 $this->_im->clear();
             }
         } catch (\ImagickException $e) {
-            logError($e->getMessage());
+            logError($e);
         }
     }
 

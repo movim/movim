@@ -184,7 +184,7 @@ class ChatActions extends \Movim\Widget\Base
 
                 $this->rpc('Chat.refreshMessage', $message->mid);
             } catch (\Exception $e) {
-                logError($e->getMessage());
+                logError($e);
             }
 
             $message->resolved = true;

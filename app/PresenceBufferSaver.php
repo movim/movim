@@ -123,7 +123,7 @@ class PresenceBufferSaver
                 }
             } catch (\Exception $e) {
                 DB::rollback();
-                logError($e->getMessage());
+                logError($e);
             }
             $this->_models = collect();
         }
