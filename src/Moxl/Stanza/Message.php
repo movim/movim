@@ -9,14 +9,14 @@ use Movim\Session;
 class Message
 {
     public static function maker(
-        $to,
-        $content = false,
-        $html = false,
-        $type = false,
-        $chatstates = false,
-        $receipts = false,
-        $id = false,
-        $replace = false,
+        string $to,
+        ?string $content = null,
+        ?string $html = null,
+        ?string $type = null,
+        ?string $chatstates = null,
+        ?string $receipts = null,
+        ?string $id = null,
+        ?string $replace = null,
         ?MessageFile $file = null,
         $invite = false,
         $parentId = false,
@@ -35,13 +35,13 @@ class Message
         $dom->appendChild($root);
         $root->setAttribute('to', str_replace(' ', '\40', $to));
 
-        if ($type != false) {
+        if ($type != null) {
             $root->setAttribute('type', $type);
         }
 
-        if (in_array($receipts, ['received', 'displayed'])) {
+        if ($receipts != null && in_array($receipts, ['received', 'displayed'])) {
             $root->setAttribute('id', generateUUID());
-        } elseif ($id != false) {
+        } elseif ($id != null) {
             $root->setAttribute('id', $id);
         } else {
             $root->setAttribute('id', $session->get('id'));
@@ -84,12 +84,12 @@ class Message
         }
 
         // Chatstates
-        if ($chatstates != false && $content == false) {
+        if ($chatstates != null && $content == null) {
             $chatstate = $dom->createElementNS('http://jabber.org/protocol/chatstates', $chatstates);
             $root->appendChild($chatstate);
         }
 
-        if ($content != false) {
+        if ($content != null) {
             $chatstate = $dom->createElementNS('http://jabber.org/protocol/chatstates', 'active');
             $root->appendChild($chatstate);
 
@@ -103,13 +103,13 @@ class Message
             $root->appendChild($body);
         }
 
-        if ($replace != false) {
+        if ($replace != null) {
             $rep = $dom->createElementNS('urn:xmpp:message-correct:0', 'replace');
             $rep->setAttribute('id', $replace);
             $root->appendChild($rep);
         }
 
-        if ($html != false) {
+        if ($html != null) {
             $xhtml = $dom->createElement('html');
             $xhtml->setAttribute('xmlns', 'http://jabber.org/protocol/xhtml-im');
             $body = $dom->createElement('body');
@@ -124,7 +124,7 @@ class Message
             $root->appendChild($xhtml);
         }
 
-        if ($receipts != false) {
+        if ($receipts != null) {
             if ($receipts == 'request') {
                 $request = $dom->createElementNS('urn:xmpp:receipts', 'request');
             } elseif ($receipts == 'received') {
@@ -275,11 +275,11 @@ class Message
     }
 
     public static function message(
-        $to,
-        $content = false,
-        $html = false,
-        $id = false,
-        $replace = false,
+        string $to,
+        ?string $content = null,
+        ?string $html = null,
+        ?string $id = null,
+        ?string $replace = null,
         ?MessageFile $file = null,
         $parentId = false,
         array $reactions = [],
@@ -313,11 +313,11 @@ class Message
     }
 
     public static function simpleMessage(
-        $to,
-        $content = false,
-        $html = false,
-        $id = false,
-        $replace = false,
+        string $to,
+        ?string $content = null,
+        ?string $html = null,
+        string $id = null,
+        string $replace = null,
         ?MessageFile $file = null,
         $parentId = false,
         array $reactions = [],
