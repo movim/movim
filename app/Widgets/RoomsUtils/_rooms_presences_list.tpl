@@ -63,7 +63,7 @@
 {/loop}
 
 {if="$more"}
-    <li id="room_presences_more" class="active" onclick="RoomsUtils_ajaxAppendPresences('{$conference->conference|echapJS}', {$page})">
+    <li id="room_presences_more" class="active" onclick="RoomsUtils_ajaxAppendPresences('{$conference->conference|echapJS}', {$page}, true)">
         <span class="primary icon gray">
             <i class="material-symbols">expand_more</i>
         </span>

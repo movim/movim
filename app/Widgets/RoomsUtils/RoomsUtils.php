@@ -76,17 +76,18 @@ class RoomsUtils extends Base
         $picturesCount = $conference->pictures()->count();
         $linksCount = $conference->links()->count();
 
+        $presences = $conference->presences()->with('capability')->get();
+
         $view = $this->tpl();
         $view->assign('conference', $conference);
         $view->assign('room', $room);
         $view->assign('picturesCount', $picturesCount);
         $view->assign('linksCount', $linksCount);
-        $view->assign('presences', $conference->presences()
-            ->with('capability')
-            ->get());
+        $view->assign('presences', $presences);
 
         if ($conference->isGroupChat()) {
             $view->assign('members', $conference->activeMembers()
+                ->whereNotIn('jid', $presences->pluck('mucjid'))
                 ->with('contact')
                 ->get());
         }
@@ -109,9 +110,7 @@ class RoomsUtils extends Base
         Drawer::fill('room_drawer', $view->draw('_rooms_drawer'));
         $this->rpc('Tabs.create');
 
-        if (!$conference->isGroupChat()) {
-            $this->rpc('RoomsUtils_ajaxAppendPresences', $room, 0);
-        }
+        $this->rpc('RoomsUtils_ajaxAppendPresences', $room, 0, !$conference->isGroupChat());
 
         if ($picturesCount > 0) {
             $this->rpc('RoomsUtils_ajaxHttpGetPictures', $room);
@@ -126,7 +125,7 @@ class RoomsUtils extends Base
         }
     }
 
-    public function ajaxAppendPresences($room, int $page = 0)
+    public function ajaxAppendPresences($room, int $page = 0, bool $havePagination = true)
     {
         $pagination = 20;
 
@@ -139,19 +138,20 @@ class RoomsUtils extends Base
 
         $presences = $conference->presences()
             ->with('capability')
-            ->skip($page * $pagination)
-            ->take($pagination + 1)
-            ->get();
+            ->skip($page * $pagination);
 
-        $more = false;
+        if ($havePagination) {
+            $presences = $presences->take($pagination + 1);
+        }
 
-        if ($presences->count() == $pagination + 1) {
-            $more = true;
+        $presences = $presences->get();
+
+        if ($havePagination && $presences->count() == $pagination + 1) {
             $presences->pop();
         }
 
         $tpl = $this->tpl();
-        $tpl->assign('more', $more);
+        $tpl->assign('more', $havePagination);
         $tpl->assign('conference', $conference);
         $tpl->assign('presences', $presences);
         $tpl->assign('page', $page + 1);

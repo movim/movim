@@ -21,6 +21,7 @@ v0.28.1 (master)
 * Improve Posts ticket layout
 * Fix Contacts invitation handling and notification counter
 * XEP-0410: MUC Self-Ping, add timeout ping support (when the connection is lost and the pong is never sent)
+* Fix #1371 Make members and presences ordering in Group and Public Rooms similar
 
 v0.28
 ---------------------------

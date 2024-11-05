@@ -212,6 +212,8 @@
                 </li>
             </ul>
 
+            <ul class="list thin spin" id="room_presences_list"></ul>
+
             <ul class="list thin">
                 {loop="$members"}
                     {$presence = $presences->where('mucjid', $value->jid)->first()}
