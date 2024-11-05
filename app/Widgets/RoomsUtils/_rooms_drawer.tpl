@@ -216,15 +216,13 @@
 
             <ul class="list thin">
                 {loop="$members"}
-                    {$presence = $presences->where('mucjid', $value->jid)->first()}
-
                     <li title="{$value->truename}">
                         {if="$value->contact"}
-                            <span class="primary icon bubble small status {if="$presence"}{$presence->presencekey}{/if}">
+                            <span class="primary icon bubble small status">
                                 <img loading="lazy" src="{$value->contact->getPicture(\Movim\ImageSize::S)}">
                             </span>
                         {else}
-                            <span class="primary icon bubble small color {$value->jid|stringToColor} status {if="$presence"}{$presence->presencekey}{/if}">
+                            <span class="primary icon bubble small color {$value->jid|stringToColor} status">
                                 <i class="material-symbols">people</i>
                             </span>
                         {/if}
@@ -259,15 +257,7 @@
                                 {else}
                                     <a href="{$c->route('contact', $value->jid)}">{$value->truename}</a>
                                 {/if}
-                                {if="$presence && $presence->capability"}
-                                    <span class="second" title="{$presence->capability->name}">
-                                        <i class="material-symbols">{$presence->capability->getDeviceIcon()}</i>
-                                    </span>
-                                {/if}
                             </p>
-                            {if="$presence"}
-                                <p>{$presence->resource}</p>
-                            {/if}
                         </div>
                     </li>
                 {/loop}
