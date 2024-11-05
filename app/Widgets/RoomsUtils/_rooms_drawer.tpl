@@ -118,6 +118,28 @@
             </li>
         {/if}
 
+        {if="$conference->info && $conference->info->related"}
+            <li class="subheader">
+                <div>
+                    <p>{$c->__('page.communities')}</p>
+                </div>
+            </li>
+
+            {$related = $conference->info->related}
+            <li class="active" onclick="MovimUtils.reload('{$c->route('community', [$related->server, $related->node])}')">
+                <span class="primary icon bubble">
+                    <img src="{$related->getPicture(\Movim\ImageSize::M)}"/>
+                </span>
+                <span class="control icon gray">
+                    <i class="material-symbols">chevron_right</i>
+                </span>
+                <div>
+                    <p class="line">{$related->name}</p>
+                    <p class="all">{$related->description}</p>
+                </div>
+            </li>
+        {/if}
+
         <li class="subheader">
             <div>
                 <p>{$c->__('room.notify_title')}</p>
@@ -234,6 +256,11 @@
                                     {$value->truename}
                                 {else}
                                     <a href="{$c->route('contact', $value->jid)}">{$value->truename}</a>
+                                {/if}
+                                {if="$presence && $presence->capability"}
+                                    <span class="second" title="{$presence->capability->name}">
+                                        <i class="material-symbols">{$presence->capability->getDeviceIcon()}</i>
+                                    </span>
                                 {/if}
                             </p>
                             {if="$presence"}
