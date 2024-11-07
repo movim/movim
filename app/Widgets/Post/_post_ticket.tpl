@@ -45,8 +45,6 @@
                 {/autoescape}
             </p>
             <p dir="auto">{autoescape="off"}{$post->getSummary()|prepareString}{/autoescape}</p>
-        {else}
-            <p></p>
         {/if}
 
         {if="$post->isBrief()"}

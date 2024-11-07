@@ -1,1 +1,1 @@
-<ul id="community_data" class="list card"></ul>
+<ul id="community_data" class="list card shadow"></ul>

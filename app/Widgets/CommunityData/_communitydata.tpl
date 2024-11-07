@@ -5,7 +5,7 @@
         {$c->prepareCard($info)}
     {/autoescape}
 
-    <ul class="list card middle flex shadow">
+    <ul class="block list middle active divided spaced">
         {if="$info->related"}
             {$related = $info->related}
             <li onclick="MovimUtils.reload('{$c->route('chat', [$related->server,'room'])}')"
