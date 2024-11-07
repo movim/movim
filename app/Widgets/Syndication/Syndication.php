@@ -88,7 +88,7 @@ class Syndication extends Base
             }
 
             $self->setAttribute('href', $this->route('feed', [$from, $node]));
-            $alternate->setAttribute('href', $this->route('node', [$from, $node]));
+            $alternate->setAttribute('href', $this->route('community', [$from, $node]));
         }
 
         $feed->appendChild($dom->createElement('id', 'xmpp:' . $from . '?;node=' . rawurlencode($node)));
@@ -108,7 +108,7 @@ class Syndication extends Base
 
             $f = $dom->createDocumentFragment();
 
-            if ($f->appendXML($post->contentcleaned)) {
+            if ($post->contentcleaned && $f->appendXML($post->contentcleaned)) {
                 $entry->appendChild($content = $dom->createElement('content'));
                 $content->appendChild($div = $dom->createElementNS('http://www.w3.org/1999/xhtml', 'div'));
                 $content->setAttribute('type', 'xhtml');

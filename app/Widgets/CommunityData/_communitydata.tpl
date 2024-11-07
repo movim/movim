@@ -50,5 +50,16 @@
                 <p class="line">{$c->route('community', [$info->server, $info->node])}</p>
             </div>
         </li>
+        <li class="block large">
+            <span class="primary icon orange">
+                <i class="material-symbols">rss_feed</i>
+            </span>
+            <span class="control icon active" onclick="Preview.copyToClipboard('{$c->route('feed', [$info->server, $info->node])}')">
+                <i class="material-symbols">content_copy</i>
+            </span>
+            <div>
+                <p class="normal">Atom</p>
+            </div>
+        </li>
     </ul>
 {/if}

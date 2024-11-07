@@ -126,18 +126,29 @@
             </li>
         {/if}
         {if="$contact->isPublic()"}
-                <li onclick="MovimUtils.reload('{$contact->getBlogUrl()}')">
-                    <span class="primary icon gray">
-                        <i class="material-symbols">globe</i>
-                    </span>
-                    <span class="control icon">
-                        <i class="material-symbols">chevron_right</i>
-                    </span>
-                    <div>
-                        <p class="normal">{$c->__('blog.visit')}</p>
-                        <p class="line">{$contact->getBlogUrl()}</p>
-                    </div>
-                </li>
+            <li onclick="MovimUtils.reload('{$contact->getBlogUrl()}')">
+                <span class="primary icon gray">
+                    <i class="material-symbols">globe</i>
+                </span>
+                <span class="control icon">
+                    <i class="material-symbols">chevron_right</i>
+                </span>
+                <div>
+                    <p class="normal">{$c->__('blog.visit')}</p>
+                    <p class="line">{$contact->getBlogUrl()}</p>
+                </div>
+            </li>
+            <li class="block large">
+                <span class="primary icon orange">
+                    <i class="material-symbols">rss_feed</i>
+                </span>
+                <span class="control icon active" onclick="Preview.copyToClipboard('{$c->route('feed', $contact->jid)}')">
+                    <i class="material-symbols">content_copy</i>
+                </span>
+                <div>
+                    <p class="normal">Atom</p>
+                </div>
+            </li>
         {/if}
     </ul>
 </div>

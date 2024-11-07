@@ -140,7 +140,7 @@ class Route extends Base
 
             return $uri . $get . $tab;
         } else {
-            throw new \Exception(__('Route not set for the page %s', $page));
+            logError('Route not set for the page ' . $page);
         }
     }
 
