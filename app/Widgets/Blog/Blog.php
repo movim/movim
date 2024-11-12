@@ -155,7 +155,8 @@ class Blog extends Base
                     . rawurlencode($this->_id)
             ];
         } else {
-            $this->_page = ($this->get('page')) ? $this->get('page') : 0;
+            $this->_page = is_numeric($this->get('page')) ? (int)$this->get('page') : 0;
+
             if (isset($this->_tag)) {
                 $tag = \App\Tag::where('name', $this->_tag)->first();
                 if ($tag) {
