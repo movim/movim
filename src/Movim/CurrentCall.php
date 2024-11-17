@@ -8,7 +8,6 @@ namespace Movim;
 
 use Carbon\Carbon;
 use DOMDocument;
-use DOMXPath;
 use Movim\Widget\Wrapper;
 use SimpleXMLElement;
 
@@ -18,8 +17,9 @@ use SimpleXMLElement;
 class CurrentCall
 {
     protected static $instance;
-    public ?string $to = null;
+    public ?string $jid = null;
     public ?string $id = null;
+    public ?string $mujiMuc = null;
     public ?Carbon $startTime = null;
 
     private array $contents = [];
@@ -33,10 +33,11 @@ class CurrentCall
         return self::$instance;
     }
 
-    public function start(string $to, string $id)
+    public function start(string $to, string $id, ?string $mujiMuc = null)
     {
-        $this->to = $to;
+        $this->jid = $to;
         $this->id = $id;
+        $this->mujiMuc = $mujiMuc;
         $this->startTime = Carbon::now();
 
         $wrapper = Wrapper::getInstance();
@@ -48,7 +49,7 @@ class CurrentCall
         $jid = $this->getBareJid();
         $id = $this->id;
 
-        $this->to = $this->id = $this->startTime = null;
+        $this->jid = $this->id = $this->mujiMuc = $this->startTime = null;
 
         $wrapper = Wrapper::getInstance();
         $wrapper->iterate('currentcall_stopped', [$jid, $id]);
@@ -61,14 +62,14 @@ class CurrentCall
 
     public function isStarted(): bool
     {
-        return $this->to != null && $this->id != null;
+        return $this->jid != null && $this->id != null;
     }
 
     public function getBareJid(): ?string
     {
         if (!$this->isStarted()) return null;
 
-        return explodeJid($this->to)['jid'];
+        return explodeJid($this->jid)['jid'];
     }
 
     /**

@@ -6,6 +6,7 @@ use App\Presence as DBPresence;
 use App\PresenceBuffer;
 use Movim\Session;
 use Movim\ChatroomPings;
+use Movim\CurrentCall;
 use Moxl\Xec\Action\Presence\Muc;
 use Moxl\Xec\Handler;
 
@@ -27,9 +28,21 @@ class Presence extends Payload
             $presence = DBPresence::findByStanza($stanza);
             $presence->set($stanza);
 
-            PresenceBuffer::getInstance()->append($presence, function () use ($presence, $stanza) {
+            PresenceBuffer::getInstance()->append($presence, function () use ($presence, $stanza, $jid) {
                 if ((string)$stanza->attributes()->type == 'subscribe') {
                     $this->event('subscribe', (string)$stanza->attributes()->from);
+                }
+
+                if (CurrentCall::getInstance()->isStarted() && CurrentCall::getInstance()->mujiMuc == $jid['jid']) {
+                    $muji = \App\User::me()->session->mujiCalls()
+                        ->where('muc', $jid['jid'])
+                        ->first();
+
+                    if ($muji) {
+                        $this->method('muji');
+                        $this->pack($muji);
+                        $this->deliver();
+                    }
                 }
 
                 if ($presence->muc) {

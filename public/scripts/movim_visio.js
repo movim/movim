@@ -2,6 +2,7 @@ var MovimVisio = {
     from: null,
     id: null,
     withVideo: false,
+    muji: false,
 
     pc: null,
     services: [],
@@ -35,6 +36,7 @@ var MovimVisio = {
         MovimVisio.from = null;
         MovimVisio.id = null;
         MovimVisio.withVideo = false;
+        MovimVisio.muji = false;
 
         if (MovimVisio.pc) {
             MovimVisio.pc.close();

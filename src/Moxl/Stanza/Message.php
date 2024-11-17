@@ -8,6 +8,34 @@ use Movim\Session;
 
 class Message
 {
+    public static function factory(
+        string $to,
+        ?string $type = null,
+        ?string $id = null,
+        ?string $receipts = null
+    ): \DOMDocument {
+        $session = Session::instance();
+
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $root = $dom->createElementNS('jabber:client', 'message');
+        $dom->appendChild($root);
+        $root->setAttribute('to', str_replace(' ', '\40', $to));
+
+        if ($type != null) {
+            $root->setAttribute('type', $type);
+        }
+
+        if ($receipts != null && in_array($receipts, ['received', 'displayed'])) {
+            $root->setAttribute('id', generateUUID());
+        } elseif ($id != null) {
+            $root->setAttribute('id', $id);
+        } else {
+            $root->setAttribute('id', $session->get('id'));
+        }
+
+        return $dom;
+    }
+
     public static function maker(
         string $to,
         ?string $content = null,
@@ -28,24 +56,7 @@ class Message
         $replyQuotedBodyLength = 0,
         ?MessageOmemoHeader $messageOMEMO = null
     ) {
-        $session = Session::instance();
-
-        $dom = new \DOMDocument('1.0', 'UTF-8');
-        $root = $dom->createElementNS('jabber:client', 'message');
-        $dom->appendChild($root);
-        $root->setAttribute('to', str_replace(' ', '\40', $to));
-
-        if ($type != null) {
-            $root->setAttribute('type', $type);
-        }
-
-        if ($receipts != null && in_array($receipts, ['received', 'displayed'])) {
-            $root->setAttribute('id', generateUUID());
-        } elseif ($id != null) {
-            $root->setAttribute('id', $id);
-        } else {
-            $root->setAttribute('id', $session->get('id'));
-        }
+        $dom = Message::factory($to, $type, $id, $receipts);
 
         /**
          * https://xmpp.org/extensions/xep-0045.html#privatemessage
@@ -53,13 +64,13 @@ class Message
          */
         if (explodeJid($to)['resource'] !== null) {
             $xuser = $dom->createElementNS('http://jabber.org/protocol/muc#user', 'x');
-            $root->appendChild($xuser);
+            $dom->documentElement->appendChild($xuser);
         }
 
         // Thread
         if ($threadId) {
             $thread = $dom->createElement('thread', $threadId);
-            $root->appendChild($thread);
+            $dom->documentElement->appendChild($thread);
         }
 
         // Message replies
@@ -67,7 +78,7 @@ class Message
             $reply = $dom->createElementNS('urn:xmpp:reply:0', 'reply');
             $reply->setAttribute('id', $replyId);
             $reply->setAttribute('to', $replyTo);
-            $root->appendChild($reply);
+            $dom->documentElement->appendChild($reply);
 
             if ($replyQuotedBodyLength > 0) {
                 $fallback = $dom->createElementNS('urn:xmpp:fallback:0', 'fallback');
@@ -79,19 +90,19 @@ class Message
 
                 $fallback->appendChild($fallbackBody);
 
-                $root->appendChild($fallback);
+                $dom->documentElement->appendChild($fallback);
             }
         }
 
         // Chatstates
         if ($chatstates != null && $content == null) {
             $chatstate = $dom->createElementNS('http://jabber.org/protocol/chatstates', $chatstates);
-            $root->appendChild($chatstate);
+            $dom->documentElement->appendChild($chatstate);
         }
 
         if ($content != null) {
             $chatstate = $dom->createElementNS('http://jabber.org/protocol/chatstates', 'active');
-            $root->appendChild($chatstate);
+            $dom->documentElement->appendChild($chatstate);
 
             $body = $dom->createElement('body');
 
@@ -100,13 +111,13 @@ class Message
                 ? $dom->createCDATASection($content)
                 : $dom->createTextNode($content);
             $body->appendChild($bodyContent);
-            $root->appendChild($body);
+            $dom->documentElement->appendChild($body);
         }
 
         if ($replace != null) {
             $rep = $dom->createElementNS('urn:xmpp:message-correct:0', 'replace');
             $rep->setAttribute('id', $replace);
-            $root->appendChild($rep);
+            $dom->documentElement->appendChild($rep);
         }
 
         if ($html != null) {
@@ -121,7 +132,7 @@ class Message
             $body->appendChild($dom->importNode($bar, true));
 
             $xhtml->appendChild($body);
-            $root->appendChild($xhtml);
+            $dom->documentElement->appendChild($xhtml);
         }
 
         if ($receipts != null) {
@@ -131,21 +142,21 @@ class Message
                 $request = $dom->createElement('received');
                 $request->setAttribute('id', $id);
                 $request->setAttribute('xmlns', 'urn:xmpp:receipts');
-                $root->appendChild($request);
+                $dom->documentElement->appendChild($request);
             } elseif ($receipts == 'displayed') {
                 $request = $dom->createElement('displayed');
                 $request->setAttribute('id', $id);
                 $request->setAttribute('xmlns', 'urn:xmpp:chat-markers:0');
             }
 
-            $root->appendChild($request);
+            $dom->documentElement->appendChild($request);
 
             if ($receipts == 'received') {
                 $nostore = $dom->createElementNS('urn:xmpp:hints', 'no-store');
-                $root->appendChild($nostore);
+                $dom->documentElement->appendChild($nostore);
 
                 $nocopy = $dom->createElementNS('urn:xmpp:hints', 'no-copy');
-                $root->appendChild($nocopy);
+                $dom->documentElement->appendChild($nocopy);
             }
         }
 
@@ -154,7 +165,7 @@ class Message
             && $chatstates == 'active'
         ) {
             $markable = $dom->createElementNS('urn:xmpp:chat-markers:0', 'markable');
-            $root->appendChild($markable);
+            $dom->documentElement->appendChild($markable);
         }
 
         if ($file != null) {
@@ -215,20 +226,20 @@ class Message
                 $reference->setAttribute('uri', $file->url);
             }
 
-            $root->appendChild($reference);
+            $dom->documentElement->appendChild($reference);
 
             // OOB
             $x = $dom->createElement('x');
             $x->setAttribute('xmlns', 'jabber:x:oob');
             $x->appendChild($dom->createElement('url', $file->url));
 
-            $root->appendChild($x);
+            $dom->documentElement->appendChild($x);
         }
 
         if ($invite != false) {
             $x = $dom->createElement('x');
             $x->setAttribute('xmlns', 'http://jabber.org/protocol/muc#user');
-            $root->appendChild($x);
+            $dom->documentElement->appendChild($x);
 
             $xinvite = $dom->createElement('invite');
             $xinvite->setAttribute('to', $invite);
@@ -244,19 +255,19 @@ class Message
                 $reaction = $dom->createElement('reaction', $emoji);
                 $reactionsn->appendChild($reaction);
             }
-            $root->appendChild($reactionsn);
+            $dom->documentElement->appendChild($reactionsn);
 
             // Force the storage of the reactions in the archive
             $store = $dom->createElement('store');
             $store->setAttribute('xmlns', 'urn:xmpp:hints');
-            $root->appendChild($store);
+            $dom->documentElement->appendChild($store);
         }
 
         if ($originId != false) {
             $origin = $dom->createElement('origin-id');
             $origin->setAttribute('xmlns', 'urn:xmpp:sid:0');
             $origin->setAttribute('id', $originId);
-            $root->appendChild($origin);
+            $dom->documentElement->appendChild($origin);
         }
 
         // OMEMO
@@ -265,13 +276,13 @@ class Message
             $encryption->setAttribute('xmlns', 'urn:xmpp:eme:0');
             $encryption->setAttribute('name', 'OMEMOE');
             $encryption->setAttribute('namespace', 'eu.siacs.conversations.axolotl');
-            $root->appendChild($encryption);
+            $dom->documentElement->appendChild($encryption);
 
             $messageOMEMOXML = $dom->importNode($messageOMEMO->getDom(), true);
-            $root->appendChild($messageOMEMOXML);
+            $dom->documentElement->appendChild($messageOMEMOXML);
         }
 
-        \Moxl\API::request($dom->saveXML($dom->documentElement));
+        \Moxl\API::sendDom($dom);
     }
 
     public static function message(
@@ -414,7 +425,7 @@ class Message
         $body->appendChild($bodyContent);
         $root->appendChild($body);
 
-        \Moxl\API::request($dom->saveXML($dom->documentElement));
+        \Moxl\API::sendDom($dom);
     }
 
     public static function moderate(string $to, string $stanzaId)

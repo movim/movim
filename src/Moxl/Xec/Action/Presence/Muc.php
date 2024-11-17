@@ -6,7 +6,7 @@ use Moxl\Xec\Action;
 use Moxl\Stanza\Presence;
 use Movim\Session;
 use App\PresenceBuffer;
-
+use DOMElement;
 use Illuminate\Database\Capsule\Manager as DB;
 
 class Muc extends Action
@@ -18,6 +18,8 @@ class Muc extends Action
     protected $_mam = false;
     protected $_mam2 = false;
     protected $_create = false;
+    protected $_mujiPreparing = false;
+    protected ?DOMElement $_muji = null;
 
     // Disable the event
     protected $_notify = true;
@@ -42,7 +44,7 @@ class Muc extends Action
          */
         $session->set(self::$mucId . $this->_to . '/' . $this->_nickname, $this->stanzaId);
 
-        Presence::muc($this->_to, $this->_nickname, $this->_mam);
+        Presence::muc($this->_to, $this->_nickname, $this->_mam, $this->_mujiPreparing, $this->_muji);
     }
 
     public function enableCreate()
@@ -60,6 +62,18 @@ class Muc extends Action
     public function enableMAM2()
     {
         $this->_mam2 = true;
+        return $this;
+    }
+
+    public function enableMujiPreparing()
+    {
+        $this->_mujiPreparing = true;
+        return $this;
+    }
+
+    public function setMuji(DOMElement $muji)
+    {
+        $this->_muji = $muji;
         return $this;
     }
 
