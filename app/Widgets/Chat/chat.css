@@ -25,7 +25,7 @@ main:not(.enabled) #chat_widget {
 }
 
 #chat_widget>header>ul.list:first-child>li {
-    padding: 0;
+    padding-right: 0;
 }
 
 #chat_widget p.compose:not(.first):not(:empty),

@@ -104,6 +104,11 @@ ul.list li .primary {
     flex: 0 0 5rem;
 }
 
+ul.list li .primary:not(.bubble)[onclick] {
+    flex: 0 0 6.5rem;
+    margin-left: -1.5rem;
+}
+
 ul.list li.primary.
 
 ul.list.compact>li .primary {
