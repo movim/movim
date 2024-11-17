@@ -20,7 +20,7 @@
         </div>
         <h2 style="text-align: center;">{$c->__('global.or')}</h2>
         <div>
-            <ul class="list fill">
+            <ul class="list">
                 <li>
                     <span class="control icon gray active" onclick="Preview.copyToClipboard('{$c->route('login', $invite->code)}')">
                         <i class="material-symbols">content_copy</i>

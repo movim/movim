@@ -1,7 +1,7 @@
 {if="$pushSubscriptions->count() > 0"}
 <form>
     <div>
-        <ul class="list fill thick">
+        <ul class="list thick">
             <li>
                 <span class="primary icon gray">
                     <i class="material-symbols">circle_notifications</i>
@@ -12,7 +12,7 @@
                 </div>
             </li>
         </ul>
-        <ul class="list fill middle divided">
+        <ul class="list middle divided">
             {loop="$pushSubscriptions"}
                 <li>
                     <span class="primary icon {if="$value->self"}green{else}gray{/if}">

@@ -129,7 +129,7 @@
     {if="$info && (!empty($info->adminaddresses) || !empty($info->abuseaddresses) || !empty($info->supportaddresses)  || !empty($info->securityaddresses))"}
         <hr />
         <ul class="list flex">
-            <li class="subheader block large">
+            <li class="subheader">
                 <div>
                     <p class="normal">{$c->__('contact.title')}</p>
                 </div>

@@ -1,4 +1,3 @@
-/* Header */
 header.big {
     background-size: cover, cover;
     background-position: center center;
@@ -15,20 +14,6 @@ header.big.top {
     box-shadow: var(--elevation-1);
 }
 
-header.big ul li {
-    padding-right: 0;
-}
-
-header.big.top ul li {
+header:not(.big) > ul.list > li {
     padding-left: 0;
-}
-
-/* Specific forms in header */
-header form > div:not(.clear):not(.control) {
-    min-height: 0;
-    top: 0;
-}
-
-header form > div > input:not([type=submit]) {
-    padding-top: 2rem;
 }

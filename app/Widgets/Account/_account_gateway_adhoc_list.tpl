@@ -1,4 +1,4 @@
-<ul class="list fill active">
+<ul class="list active">
     {loop="$list"}
         {if="isset($value->attributes()->name)"}
             <li onclick="AdHoc_ajaxCommand('{$value->attributes()->jid}', '{$value->attributes()->node}')">

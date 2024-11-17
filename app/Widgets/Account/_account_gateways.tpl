@@ -1,5 +1,5 @@
 {if="$gateways->isNotEmpty()"}
-<ul class="list fill active middle divided">
+<ul class="list active middle divided">
     <li class="subheader">
         <div>
             <p>{$c->__('account.gateway_title')}</p>
@@ -8,7 +8,7 @@
 </ul>
 
 {loop="$gateways"}
-<ul class="list fill active thick">
+<ul class="list active thick">
     <li onclick="Account_ajaxGetRegistration('{$value->server}')">
         <span class="primary icon bubble
             {if="!$value->contact"}color {if="$value->gatewayType"}{$value->gatewayType}{else}gray{/if}{/if}

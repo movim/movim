@@ -1,11 +1,3 @@
-#avatar {
-    min-height: 14rem;
-}
-
-#avatar li {
-    padding-left: 0.5rem;
-}
-
 #avatar span.primary {
     min-width: 10rem;
     height: 10rem;

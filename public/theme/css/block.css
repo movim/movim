@@ -5,11 +5,7 @@
 
 .flex.card {
     gap: 0 1rem;
-    padding: 0 1rem;
-}
-
-.flex.large.card {
-    padding: 0;
+    padding: 0 1.5rem;
 }
 
 ul.flex li.block {
@@ -18,6 +14,10 @@ ul.flex li.block {
 }
 
 ul.flex li.subheader {
+    grid-column: 1/-1;
+}
+
+ul.flex.card li.subheader {
     padding: 0;
 }
 

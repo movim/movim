@@ -1,4 +1,4 @@
-<ul class="list fill thick">
+<ul class="list thick">
     <li>
         <span class="primary icon gray">
             <i class="material-symbols">notifications_active</i>

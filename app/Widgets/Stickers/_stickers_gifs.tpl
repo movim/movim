@@ -8,7 +8,7 @@
     </div>
 </section>
 <div>
-    <ul id="gifssearchbar" class="list fill">
+    <ul id="gifssearchbar" class="list">
         <li class="search">
             <form name="search" onsubmit="return false;">
                 <div>

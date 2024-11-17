@@ -1,4 +1,4 @@
-<ul class="list thick flex">
+<ul class="list middle flex">
     <li class="block active" onclick="Avatar_ajaxGetForm()">
         <span
             class="primary icon bubble color {$me->jid|stringToColor}"

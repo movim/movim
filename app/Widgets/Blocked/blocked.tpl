@@ -1,5 +1,5 @@
-<div class="tabelem padded_top_bottom" title="{$c->__('blocked.title')}" data-mobileicon="block" id="blocked_widget">
-    <ul class="list fill thick">
+<div class="tabelem" title="{$c->__('blocked.title')}" data-mobileicon="block" id="blocked_widget">
+    <ul class="list thick">
         <li>
             <span class="primary icon gray">
                 <i class="material-symbols">info</i>
@@ -10,7 +10,7 @@
             </div>
         </li>
     </ul>
-    <ul class="list fill thin" id="blocked_widget_list"></ul>
+    <ul class="list thin" id="blocked_widget_list"></ul>
     <div class="placeholder">
         <i class="material-symbols">block</i>
         <h4>{$c->__('blocked.placeholder')}</h4>

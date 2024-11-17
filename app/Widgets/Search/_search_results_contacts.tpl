@@ -1,6 +1,6 @@
 <hr />
 <ul class="list flex fourth card shadow compact middle active large">
-    <li class="subheader block large">
+    <li class="subheader">
         <div>
             <p>{$c->__('explore.explore')}</p>
         </div>

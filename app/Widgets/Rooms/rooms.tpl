@@ -2,7 +2,7 @@
     <ul class="list rooms divided spaced thin active spin"></ul>
 
     <ul class="list head thin">
-        <li class="subheader block large" title="{$c->__('page.configuration')}">
+        <li class="subheader" title="{$c->__('page.configuration')}">
             <div>
                 <p>
                     {$c->__('chatrooms.title')}

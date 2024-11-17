@@ -24,6 +24,10 @@ main:not(.enabled) #chat_widget {
     z-index: 1;
 }
 
+#chat_widget>header>ul.list:first-child>li {
+    padding: 0;
+}
+
 #chat_widget p.compose:not(.first):not(:empty),
 #chat_widget p.compose:not(.first):empty+p {
     animation: fadein 0.3s;

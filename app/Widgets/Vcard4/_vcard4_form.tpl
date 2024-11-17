@@ -1,7 +1,7 @@
 {if="$me->hasPubsub()"}
 <form name="vcard4" id="vcard4form">
     <div>
-        <ul class="list fill">
+        <ul class="list">
             <li>
                 <span class="primary icon gray">
                     <i class="material-symbols">face</i>
@@ -106,7 +106,7 @@
     </div>
 </form>
 {else}
-<ul class="list fill thick">
+<ul class="list thick">
     <li>
         <span class="primary icon orange bubble color">
             <i class="material-symbols">warning</i>

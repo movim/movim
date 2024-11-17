@@ -1,6 +1,6 @@
 <form>
     <div>
-        <ul class="list fill">
+        <ul class="list">
             <li>
                 <span class="primary icon gray">
                     <i class="material-symbols">inventory</i>

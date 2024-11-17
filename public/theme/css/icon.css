@@ -56,14 +56,6 @@ span.primary.overflow {
     margin-right: 0;
 }
 
-ul.fill li span.icon.primary.thumb {
-    margin-left: 0;
-}
-
-ul.fill li span.icon.control.thumb {
-    margin-right: 0;
-}
-
 span.icon.bubble {
     border-radius: 5rem;
     font-size: 2.25rem;

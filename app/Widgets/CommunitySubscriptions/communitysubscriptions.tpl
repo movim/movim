@@ -1,1 +1,1 @@
-<div id="subscriptions" class="tabelem spin padded_top_bottom"></div>
+<div id="subscriptions" class="tabelem spin"></div>

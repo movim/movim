@@ -1,6 +1,6 @@
 {if="$users->isNotEmpty()"}
     <ul class="list" style="width: 100%;">
-        <li class="subheader block large">
+        <li class="subheader">
             <div>
                 <p>{$c->__('explore.explore')}</p>
             </div>

@@ -1,6 +1,6 @@
 {if="!$communities->isEmpty()"}
-<ul class="list middle flex third fill card shadow active padded_top_bottom">
-    <li class="subheader block large">
+<ul class="list middle flex third card shadow active">
+    <li class="subheader">
         <div>
             <p>{$c->__('communitiesinteresting.about')}</p>
         </div>

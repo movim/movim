@@ -1,5 +1,5 @@
 {if="$muc"}
-    <ul class="list middle fill">
+    <ul class="list middle">
         <li>
             <span class="primary icon active on_mobile_after" id="chatheadercounter" onclick="Chat.get()"
                 {if="$counter > 0"}data-counter="{$counter}"{/if}>
@@ -167,7 +167,7 @@
         </li>
     </ul>
 {else}
-    <ul class="list middle fill">
+    <ul class="list middle">
         <li id="chat_header">
             <span class="primary icon active on_mobile_after" id="chatheadercounter" onclick="Chat.get()"
                 {if="$counter > 0"}data-counter="{$counter}"{/if}>

@@ -18,15 +18,14 @@ form > div.compact:not(.clear):not(.control) {
     min-height: 0;
 }
 
-form > div label {
+form > div > label {
     position: absolute;
     top: 1.5rem;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-    max-width: 100%;
+    max-width: calc(100% - 3rem);
     user-select: none;
-    /*left: 0;*/ /* We force the left align */
 }
 
 form > div textarea[required] + label:after,
@@ -127,7 +126,6 @@ form > div textarea {
     outline-width: 0;
 }
 
-form > div .labeled,
 form > div .select,
 form > div input:not([type=submit]),
 form > div textarea {

@@ -1,7 +1,7 @@
 <header>
-    <ul class="list middle padded_top_bottom">
+    <ul class="list middle thick">
         <li>
-            <span class="primary icon icon gray active" onclick="history.back()">
+            <span class="primary icon active" onclick="history.back()">
                 <i class="material-symbols">arrow_back</i>
             </span>
             {if="is_array($nodes) && count($nodes) > 0"}
@@ -31,7 +31,7 @@
         </li>
     </ul>
 {else}
-    <ul class="list middle card shadow active flex fill padded_top_bottom">
+    <ul class="list middle card shadow active flex">
     {loop="$nodes"}
         {autoescape="off"}
             {$c->prepareTicket($value)}

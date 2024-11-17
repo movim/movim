@@ -31,10 +31,6 @@ body {
     clear: both;
 }
 
-.clear.padded {
-    height: 2rem;
-}
-
 body>* {
     display: block;
     height: 100%;
@@ -466,20 +462,6 @@ img.avatar:not([src=""])+.placeholder {
 
 .placeholder p {
     text-align: center;
-}
-
-/* Padded */
-
-@media screen and (max-width: 800px) {
-    .padded {
-        padding: 1rem;
-        box-sizing: border-box;
-    }
-
-    .padded_top_bottom {
-        padding: 0 1rem;
-        box-sizing: border-box;
-    }
 }
 
 /* Display/hide */

@@ -1,6 +1,11 @@
 <form id="config_blog" onchange="Config_ajaxBlogSetConfig(MovimUtils.formToJson('config_blog'))">
     <div>
-        <ul class="list middle labeled fill">
+        <ul class="list middle">
+            <li class="subheader">
+                <div>
+                    <p>{$c->__('config.blog_text')}</p>
+                </div>
+            </li>
             <li>
                 <span class="primary icon gray">
                     <i class="material-symbols">public</i>
@@ -36,6 +41,5 @@
                 </div>
             </li>
         </ul>
-        <label>{$c->__('config.blog_text')}</label>
     </div>
 </form>

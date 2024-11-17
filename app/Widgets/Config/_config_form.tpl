@@ -1,6 +1,6 @@
 <form enctype="multipart/form-data" method="post" action="index.php" name="general" onchange="Config_ajaxSubmit(MovimUtils.formToJson('general'));">
     <div class="block">
-        <ul class="list fill flex ">
+        <ul class="list flex ">
             <li class="subheader large block"><div><p>{$c->__('config.audio_title')}</p></div></li>
             <li>
                 <span class="primary icon gray">
@@ -41,12 +41,12 @@
         </ul>
     </div>
 
-    <ul class="list fill">
+    <ul class="list">
         <li class="subheader"><div><p>{$c->__('config.general')}</p></div></li>
     </ul>
 
     <div class="block">
-        <ul class="list fill">
+        <ul class="list">
             <li>
                 <span class="primary icon gray">
                     <i class="material-symbols">language</i>
@@ -80,7 +80,7 @@
     </div>
 
     <div class="block">
-        <ul class="list middle fill">
+        <ul class="list middle">
             <li>
                 <span class="primary icon gray">
                     <i class="material-symbols">forum</i>

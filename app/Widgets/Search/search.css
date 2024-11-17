@@ -1,7 +1,3 @@
-#search #results {
-    padding: 0 1.5rem;
-}
-
 #search form > div:not(.clear):not(.control) {
     min-height: 8rem;
 }

@@ -10,7 +10,7 @@
         {/loop}
     </div>
 {else}
-    <ul id="emojisearchbar" class="list fill thin">
+    <ul id="emojisearchbar" class="list thin">
         <li>
             <span class="primary icon gray">
                 <i class="material-symbols">search</i>

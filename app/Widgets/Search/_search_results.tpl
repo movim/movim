@@ -7,7 +7,7 @@
 {if="(isset($communities) && $communities->isNotEmpty()) || (isset($tags) && $tags->isNotEmpty()) || (isset($posts) && $posts->isNotEmpty())"}
 <hr />
 <ul class="list flex">
-    <li class="subheader block large">
+    <li class="subheader">
         <div>
             <p>
                 {$c->__('page.communities')}
@@ -18,7 +18,7 @@
 {/if}
 
 {if="isset($communities) && $communities->isNotEmpty()"}
-<ul class="list middle card shadow active flex large">
+<ul class="list middle card shadow active flex">
     {loop="$communities"}
     <li
         class="block"
@@ -53,7 +53,7 @@
 {/if}
 
 {if="isset($tags) && $tags->isNotEmpty()"}
-<ul class="list flex middle fill">
+<ul class="list flex middle">
     <li class="block large">
         <div>
             <p class="line two normal">{loop="$tags"}<a class="chip outline active" href="#" onclick="MovimUtils.reload('{$c->route('tag', $value)}')">
@@ -66,7 +66,7 @@
 {/if}
 
 {if="isset($posts) && $posts->isNotEmpty()"}
-<ul id="search_posts" class="list middle card shadow active flex large">
+<ul id="search_posts" class="list middle card shadow active flex">
     {loop="$posts"}
         {autoescape="off"}
             {$c->prepareTicket($value)}

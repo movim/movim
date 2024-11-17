@@ -50,7 +50,7 @@
 
         {if="$create"}
             <div>
-                <ul class="list middle fill">
+                <ul class="list middle">
                     <li>
                         <span class="primary icon gray">
                             <i class="material-symbols">people_alt</i>
@@ -168,7 +168,7 @@
             <label>{$c->__('room.notify_title')}</label>
         </div>
         <div class="control">
-            <ul class="list middle fill">
+            <ul class="list middle">
                 <li>
                     <span class="primary icon gray">
                         <i class="material-symbols">login</i>
@@ -193,7 +193,7 @@
             </ul>
         </div>
         <div class="control">
-            <ul class="list middle fill">
+            <ul class="list middle">
                 <li>
                     <span class="primary icon gray">
                         <i class="material-symbols">push_pin</i>

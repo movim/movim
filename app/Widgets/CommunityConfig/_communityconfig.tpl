@@ -15,7 +15,12 @@
             <label for="pubsub#description">{$c->__('communityconfig.description')}</label>
         </div>
         <div>
-            <ul class="list middle labeled fill">
+            <ul class="list middle">
+                <li class="subheader">
+                    <div>
+                        <p>{$c->__('communityconfig.publication')}</p>
+                    </div>
+                </li>
                 <li>
                     <span class="control">
                         <div class="radio">
@@ -59,10 +64,14 @@
                     </div>
                 </li>
             </ul>
-            <label>{$c->__('communityconfig.publication')}</label>
         </div>
         <div>
-            <ul class="list middle labeled fill">
+            <ul class="list middle">
+                <li class="subheader">
+                    <div>
+                        <p>{$c->__('communityconfig.type')}</p>
+                    </div>
+                </li>
                 <li>
                     <span class="primary icon gray">
                         <i class="material-symbols">view_agenda</i>
@@ -98,7 +107,6 @@
                     </div>
                 </li>
             </ul>
-            <label>{$c->__('communityconfig.type')}</label>
         </div>
         {else}
             {autoescape="off"}

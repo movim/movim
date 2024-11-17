@@ -15,10 +15,7 @@ ul.list.compact>li {
     padding: 0.25rem 0.75rem;
 }
 
-header:not(.big)>ul.list>li,
 nav>ul.list>li,
-ul.list.fill>li,
-ul.list.fill:not(.padded_top_bottom).flex,
 ul.list.controls>li {
     padding: 0;
 }
@@ -107,6 +104,7 @@ ul.list li .primary {
     flex: 0 0 5rem;
 }
 
+ul.list li.primary.
 
 ul.list.compact>li .primary {
     width: 5rem;
@@ -131,7 +129,6 @@ ul.list li>span.control:last-of-type {
 
 header>ul.list li>span.control:last-of-type,
 nav>ul.list li>span.control:last-of-type,
-ul.list.fill li>span.control:last-of-type,
 ul.list.controls li>span.control:last-of-type {
     margin-right: 0;
 }

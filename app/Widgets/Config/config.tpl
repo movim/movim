@@ -1,7 +1,7 @@
-<div class="tabelem padded_top_bottom" title="{$c->__('page.configuration')}" data-mobileicon="settings" id="config_widget">
+<div class="tabelem" title="{$c->__('page.configuration')}" data-mobileicon="settings" id="config_widget">
     <div id="config_widget_form">{autoescape="off"}{$form}{/autoescape}</div>
     <div id="config_widget_mam"></div>
-    <ul class="list fill middle">
+    <ul class="list middle">
         <li class="subheader">
             <div>
                 <p>{$c->__('config.confidentiality')}</p>
@@ -35,7 +35,7 @@
         </li>
         <br />
     </ul>
-    <ul class="list fill middle active">
+    <ul class="list middle active">
         <li onclick="Config_ajaxEditNickname()">
             <span class="control icon gray">
                 <i class="material-symbols">chevron_right</i>

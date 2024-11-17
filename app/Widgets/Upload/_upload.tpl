@@ -48,7 +48,7 @@
     </ul>
 </section>
 <div class="no_bar">
-    <ul id="upload_progress" class="list fill">
+    <ul id="upload_progress" class="list">
         <li>
             <span class="primary icon">
                 <i class="material-symbols"></i>

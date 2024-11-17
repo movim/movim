@@ -1,5 +1,5 @@
 {if="$subscriptions->isEmpty()"}
-    <ul class="thick fill">
+    <ul class="thick">
         <div class="placeholder">
             <i class="material-symbols">bookmark</i>
             <h1>{$c->__('communitysubscriptions.empty_title')}</h1>
@@ -7,10 +7,10 @@
         </li>
     </ul>
 {else}
-    <ul class="list flex third fill card shadow active">
+    <ul class="list flex third card shadow active">
         {loop="$subscriptions"}
             {if="$c->checkNewServer($value)"}
-                <li class="subheader block large active"
+                <li class="subheader active"
                     onclick="MovimUtils.reload('{$c->route('community', $value->server)}')">
                     <span class="primary icon">
                         <i class="material-symbols">view_agenda</i>

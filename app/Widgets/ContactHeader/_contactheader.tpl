@@ -40,9 +40,6 @@
                 </span>
             {/if}
         {/if}
-        <span class="primary icon active white" onclick="history.back()">
-            <i class="material-symbols">arrow_back</i>
-        </span>
         <span class="primary icon bubble active" onclick="ContactActions_ajaxGetDrawer('{$contact->id|echapJS}')">
             <img src="{if="$roster"}{$roster->getPicture(\Movim\ImageSize::M)}{else}{$contact->getPicture(\Movim\ImageSize::M)}{/if}">
         </span>

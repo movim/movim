@@ -7,8 +7,8 @@
         </li>
     </ul>
 {else}
-    <ul class="list flex third middle active fill padded_top_bottom">
-        <li class="subheader block large">
+    <ul class="list flex third middle active">
+        <li class="subheader">
             <div>
                 <p>{$c->__('communities.servers')}</p>
             </div>
@@ -34,7 +34,7 @@
     </ul>
 {/if}
 {if="!$restrict"}
-    <ul class="list middle fill padded_top_bottom">
+    <ul class="list middle">
         <li class="block large">
             <span class="primary icon">
                 <i class="material-symbols">search</i>

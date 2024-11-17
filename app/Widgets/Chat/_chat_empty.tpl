@@ -4,7 +4,7 @@
 
 <ul class="list flex fifth card shadow compact middle active">
     {if="$top->isNotEmpty()"}
-        <li class="subheader block large">
+        <li class="subheader">
             <div>
                 <p>{$c->__('chat.frequent')}</p>
             </div>

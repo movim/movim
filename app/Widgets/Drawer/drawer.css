@@ -28,10 +28,6 @@
     pointer-events: none;
 }
 
-.drawer form.padded {
-    padding: 2rem;
-}
-
 @media screen and (min-width: 570px) {
     .drawer {
         border-radius: 0.75rem 0.75rem 0 0;
