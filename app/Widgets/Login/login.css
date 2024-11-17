@@ -24,6 +24,10 @@ body main {
     padding: 1rem 0;
 }
 
+#login_widget .dialog:not(.more) {
+    padding-bottom: 0.5rem;
+}
+
 #login_widget .dialog .banner {
     max-width: 100%;
     padding: 0;
