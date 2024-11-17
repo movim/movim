@@ -18,7 +18,7 @@ form > div.compact:not(.clear):not(.control) {
     min-height: 0;
 }
 
-form > div > label {
+form > div label {
     position: absolute;
     top: 1.5rem;
     text-overflow: ellipsis;
