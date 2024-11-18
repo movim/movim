@@ -52,7 +52,7 @@
             </p>
             <p class="line active" onclick="ContactActions_ajaxGetDrawer('{$contact->id|echapJS}')">
                 {if="$roster && $roster->name && $roster->name != $contact->truename"}
-                    {$roster->name} ·
+                    {$roster->name} •
                 {/if}
                 {$contact->id}
             </p>

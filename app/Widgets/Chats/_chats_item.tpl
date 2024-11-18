@@ -13,7 +13,7 @@
             {/if}
         {/if}
         "
-    title="{$contact->jid}{if="isset($message)"} · {$message->published|prepareDate}{/if}">
+    title="{$contact->jid}{if="isset($message)"} • {$message->published|prepareDate}{/if}">
     <span class="primary icon bubble
         {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}
         {if="$contact->locationDistance"} location{/if}

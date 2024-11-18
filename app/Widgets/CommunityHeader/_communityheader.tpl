@@ -50,9 +50,9 @@
                     <i class="material-symbols">article</i> {$num}
                 {/if}
                 {if="$info != null"}
-                    · <i class="material-symbols">people</i> {$info->occupants}
+                    • <i class="material-symbols">people</i> {$info->occupants}
                     {if="$info->description"}
-                        · {$info->description|strip_tags}
+                        • {$info->description|strip_tags}
                     {/if}
                 {else}
                     {$server}

@@ -42,7 +42,7 @@
                 <p class="line">
                     {if="$value->isGallery()"}
                         <i class="material-symbols">grid_view</i>
-                        ·
+                        •
                     {/if}
                     {$value->server} / {$value->node}
                 </p>

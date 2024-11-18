@@ -6,9 +6,9 @@
 function getTimezoneOffset(): int
 {
     return (new DateTimeZone(defined('TIMEZONE')
-            ? TIMEZONE
-            : date_default_timezone_get())
-        )->getOffset(new DateTime('now', new DateTimeZone('UTC')));
+        ? TIMEZONE
+        : date_default_timezone_get())
+    )->getOffset(new DateTime('now', new DateTimeZone('UTC')));
 }
 
 /**
@@ -19,14 +19,13 @@ function getTimezoneOffset(): int
  */
 function prepareDate(string $datetime = '', bool $hours = true, bool $compact = false, bool $dateOnly = false): string
 {
-
     $time = strtotime($datetime);
     $time = $time !== false ? $time : time();
     $t = $time + getTimezoneOffset();
 
     $date = '';
 
-    $reldays = -(time() - $t - (time() % 86400)) / 86400;
+    $reldays = - (time() - $t - (time() % 86400)) / 86400;
 
     // if $reldays is within a week
     if (-7 < $reldays && $reldays <= 2) {
@@ -41,10 +40,10 @@ function prepareDate(string $datetime = '', bool $hours = true, bool $compact = 
         }
     } else {
         if (!$compact) {
-            $date .= __('day.'.strtolower(date('l', $t))) . ', ';
+            $date .= __('day.' . strtolower(date('l', $t))) . ', ';
         }
 
-        $date .= date('j', $t).' '.__('month.'.strtolower(date('F', $t)));
+        $date .= date('j', $t) . ' ' . __('month.' . strtolower(date('F', $t)));
 
         // Over 6 months
         if (abs($reldays) > 182) {

@@ -38,7 +38,7 @@
                             {$value->occupants} <i class="material-symbols">people</i>
                         </span>
                     {/if}
-                    {if="$value->occupants > 0 && !empty($value->description)"} · {/if}
+                    {if="$value->occupants > 0 && !empty($value->description)"} • {/if}
                     {$value->description ?? ''}
                 </p>
             </div>

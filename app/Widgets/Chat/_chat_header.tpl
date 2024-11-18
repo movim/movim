@@ -34,7 +34,7 @@
             {if="$conference && $conference->info && $conference->info->related"}
                 {$related = $conference->info->related}
                 <span
-                    title="{$c->__('page.communities')} · {$related->name}"
+                    title="{$c->__('page.communities')} • {$related->name}"
                     onclick="MovimUtils.reload('{$c->route('community', [$related->server, $related->node])}')"
                     class="control icon bubble active small">
                     <img src="{$related->getPicture(\Movim\ImageSize::M)}"/>

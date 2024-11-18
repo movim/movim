@@ -35,7 +35,7 @@
                 <br />
                 <i class="material-symbols icon-text">article</i>
                 {$c->__('communitydata.num', $num)}
-                ·
+                •
                 <i class="material-symbols icon-text">people</i>
                 {$c->__('communitydata.sub', $info->occupants)}
 

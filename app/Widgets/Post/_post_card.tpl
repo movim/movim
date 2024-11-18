@@ -38,7 +38,7 @@
                     <p></p>
                 {/if}
 
-                <p>
+                <p title="{$post->published|prepareDate}">
                     {if="$post->aid"}
                         {if="!$post->isMicroblog() && $post->contact"}
                             <span class="icon bubble tiny">
@@ -52,7 +52,7 @@
                             {/if}
                         >
                             {$post->truename}
-                        </a> ·
+                        </a> •
                     {/if}
 
                     {if="!$post->isMicroblog()"}
@@ -65,9 +65,9 @@
                         {/if} /
                         <a href="#" onclick="MovimUtils.reload('{$c->route('community', [$post->server, $post->node])}')">
                             {$post->node}
-                        </a> ·
+                        </a> •
                     {/if}
-                    {$post->published|prepareDate}
+                    {$post->published|prepareDate:true,true}
                     {if="$post->isEdited()"}
                         <i class="material-symbols" title="{$post->updated|prepareDate}">
                             edit
@@ -80,11 +80,11 @@
                         </i>
                     {/if}
                     {if="$post->contentcleaned && readTime($post->contentcleaned)"}
-                        · {$post->contentcleaned|readTime}
+                        • {$post->contentcleaned|readTime}
                     {/if}
                     {$count = $post->user_views_count}
                     {if="$count > 2"}
-                        · {$count} <i class="material-symbols">visibility</i>
+                        • {$count} <i class="material-symbols">visibility</i>
                     {/if}
                 </p>
                 {if="$post->isBrief()"}

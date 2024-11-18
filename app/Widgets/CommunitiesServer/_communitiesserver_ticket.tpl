@@ -30,7 +30,7 @@
             <a href="#">{$community->node}</a>
             {if="$community->isGallery()"}
                 <i class="material-symbols">grid_view</i>
-                ·
+                •
             {/if}
             {if="$community->occupants > 0"}
                 <span title="{$c->__('communitydata.sub', $community->occupants)}">

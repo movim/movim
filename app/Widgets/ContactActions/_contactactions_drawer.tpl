@@ -48,7 +48,7 @@
                     </p>
                     <p class="line">
                         {if="$roster && $roster->name && $roster->name != $contact->truename"}
-                            {$roster->name} ·
+                            {$roster->name} •
                         {/if}
                         {$contact->id}
                     </p>

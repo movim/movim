@@ -98,7 +98,7 @@
                 {else}
                     <p></p>
                 {/if}
-                <p>
+                <p title="{$post->published|prepareDate}">
                     {if="$contact"}
                         {if="!$public"}
                             {if="!$post->isMicroblog()"}
@@ -109,9 +109,9 @@
                             <a href="#" onclick="if (typeof Post_ajaxGetContact == 'function') { Post_ajaxGetContact('{$contact->jid}'); } else { Group_ajaxGetContact('{$contact->jid}'); } ">
                         {/if}
                             {$contact->truename}
-                        {if="!$public"}</a>{/if} ·
+                        {if="!$public"}</a>{/if} •
                     {elseif="$post->aname"}
-                        {$post->aname} ·
+                        {$post->aname} •
                     {/if}
                     {if="!$post->isMicroblog()"}
                         {if="!$public"}
@@ -123,20 +123,20 @@
                         <a href="#" onclick="MovimUtils.reload('{$c->route('community', [$post->server, $post->node])}')">
                         {/if}
                             {$post->node}
-                        {if="!$public"}</a>{/if} ·
+                        {if="!$public"}</a>{/if} •
                     {/if}
-                    {$post->published|prepareDate}
+                    {$post->published|prepareDate:true,true}
                     {if="$post->isEdited()"}
                         <i class="material-symbols" title="{$post->updated|prepareDate}">
                             edit
                         </i>
                     {/if}
                     {if="$post->contentcleaned && readTime($post->contentcleaned)"}
-                        · {$post->contentcleaned|readTime}
+                        • {$post->contentcleaned|readTime}
                     {/if}
                     {$count = $post->user_views_count}
                     {if="$count > 2"}
-                         · {$count} <i class="material-symbols">visibility</i>
+                         • {$count} <i class="material-symbols">visibility</i>
                     {/if}
                 </p>
                 {if="$post->isBrief()"}

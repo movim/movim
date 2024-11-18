@@ -27,11 +27,11 @@
                             {$value->description}
                         {/if}
                         {if="$value->homepage"}
-                            ·
+                            •
                             <a href="{$value->homepage}" target="_blank">{$c->__('general.website')}</a>
                         {/if}
                         {if="$value->license"}
-                            ·
+                            •
                             {$value->license}
                         {/if}
                     </p>

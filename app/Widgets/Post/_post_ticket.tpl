@@ -70,7 +70,7 @@
                 title="{$post->server} / {$post->node}"
                 href="#"
                 onclick="MovimUtils.reload('{$c->route('community', [$post->server, $post->node])}')">
-                {if="$post->contact"}·{/if}
+                {if="$post->contact"}•{/if}
                 {$post->node}
                 </a>
             {/if}
@@ -78,16 +78,16 @@
             <span class="info" title="{$post->published|prepareDate}">
                 {$count = $post->pictures->count()}
                 {if="$count > 1"}
-                    {$count} <i class="material-symbols">collections</i> ·
+                    {$count} <i class="material-symbols">collections</i> •
                 {/if}
 
                 {if="$post->embed"}
-                    <i class="material-symbols">movie</i> ·
+                    <i class="material-symbols">movie</i> •
                 {/if}
 
                 {$count = $post->user_views_count}
                 {if="$count > 2"}
-                    {$count} <i class="material-symbols">visibility</i> ·
+                    {$count} <i class="material-symbols">visibility</i> •
                 {/if}
 
                 {$count = $post->likes->count()}
@@ -97,7 +97,7 @@
 
                 {$count = $post->comments->count()}
                 {if="$count > 0"}
-                    {$count} <i class="material-symbols">chat_bubble_outline</i> ·
+                    {$count} <i class="material-symbols">chat_bubble_outline</i> •
                 {/if}
 
                 {$post->published|prepareDate:true,true}
