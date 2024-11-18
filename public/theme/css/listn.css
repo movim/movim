@@ -289,6 +289,10 @@ ul.list li>div>p.normal {
     font-size: 2rem;
 }
 
+ul.list li:not(.subheader)>div:not(.primary):not(.control):not(.bubble):not(.main):has(>p.brief) {
+    padding-bottom: 0;
+}
+
 ul.list li>div>p.brief {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
