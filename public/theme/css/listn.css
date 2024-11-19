@@ -289,7 +289,7 @@ ul.list li>div>p.normal {
     font-size: 2rem;
 }
 
-ul.list li:not(.subheader)>div:not(.primary):not(.control):not(.bubble):not(.main):has(>p.brief) {
+ul.list li:not(.subheader)>div:not(.primary):not(.control):not(.bubble):not(.main):has(>p.brief:not(.line)) {
     padding-bottom: 0;
 }
 
