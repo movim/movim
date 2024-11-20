@@ -32,19 +32,19 @@ ul.list li>* {
     transition: background-color 0.15s ease, filter 0.15s ease;
 }
 
-ul.list li:not(.subheader)>*:not(.primary):not(.control):not(.bubble):not(.main) {
+ul.list li:not(.subheader)>div {
     padding: 0.25rem 0;
 }
 
-ul.list.thin li:not(.subheader)>*:not(.primary):not(.control):not(.bubble):not(.main) {
+ul.list.thin li:not(.subheader)>div {
     padding: 0;
 }
 
-ul.list.middle li:not(.subheader)>*:not(.primary):not(.control):not(.bubble):not(.main) {
+ul.list.middle li:not(.subheader)>div {
     padding: 0.75rem 0;
 }
 
-ul.list.thick li:not(.subheader)>*:not(.primary):not(.control):not(.bubble):not(.main) {
+ul.list.thick li:not(.subheader)>div {
     padding: 1.5rem 0;
 }
 
@@ -70,7 +70,7 @@ ul.list li>span.bubble.active:hover {
 }
 
 ul.list li>span:not(.bubble).active:hover,
-ul.list li div.bubble:not(.file):hover {
+ul.list li>div.bubble:not(.file):hover {
     cursor: pointer;
     background-color: rgba(var(--movim-element-action), 0.1);
 }
@@ -89,7 +89,7 @@ ul.list li>span.bubble.active:active {
 }
 
 ul.list li>span:not(.bubble).active:active,
-ul.list li div.bubble:not(.file):active {
+ul.list li>div.bubble:not(.file):active {
     cursor: pointer;
     background-color: rgba(var(--movim-element-action), 0.2);
     font-variation-settings: 'FILL' 1;
@@ -249,7 +249,7 @@ ul.list li>div>p>span.second.sticked {
 }
 
 ul.list li>div>p>span.info,
-li div.bubble:after {
+ul.list li>div.bubble:after {
     float: right;
     font-size: 1.5rem;
     margin-left: 0.5rem;
@@ -289,7 +289,7 @@ ul.list li>div>p.normal {
     font-size: 2rem;
 }
 
-ul.list li:not(.subheader)>div:not(.primary):not(.control):not(.bubble):not(.main):has(>p.brief:not(.line)) {
+ul.list li:not(.subheader)>div:has(>p.brief:not(.line)) {
     padding-bottom: 0;
 }
 
@@ -468,7 +468,7 @@ ul.tabs>li.active {
 
 /* Bubble */
 
-li div.bubble {
+ul.list li>div.bubble {
     position: relative;
     box-sizing: border-box;
     display: block;
@@ -480,12 +480,12 @@ li div.bubble {
     transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
-li div.bubble div[dir="rtl"] {
+ul.list li>div.bubble div[dir="rtl"] {
     text-align: right;
 }
 
-li div.bubble:not(.file),
-li div.bubble.file div.audio_player {
+ul.list li>div.bubble:not(.file),
+ul.list li>div.bubble.file div.audio_player {
     padding: 1rem 1rem 1rem 1.5rem;
     border-radius: 0 1rem 1rem;
     line-height: 2.75rem;
@@ -493,21 +493,21 @@ li div.bubble.file div.audio_player {
     margin-bottom: 1.5rem;
 }
 
-li div.bubble.file div.audio_player {
+ul.list li>div.bubble.file div.audio_player {
     margin-bottom: 3rem;
     padding: 0 0.5rem;
 }
 
-li div.bubble ul.card p:not(.line):not(:last-child) {
+ul.list li>div.bubble ul.card p:not(.line):not(:last-child) {
     display: block;
 }
 
-li div.bubble ul.card p:last-child {
+ul.list li>div.bubble ul.card p:last-child {
     white-space: inherit;
     display: block;
 }
 
-li div.bubble p {
+ul.list li>div.bubble p {
     overflow: hidden;
     display: inline;
     max-width: 100%;
@@ -519,36 +519,36 @@ li div.bubble p {
     position: relative;
 }
 
-li div.bubble p i {
+ul.list li>div.bubble p i {
     vertical-align: middle;
     margin-top: -0.25rem;
 }
 
-li div.bubble p:empty {
+ul.list li>div.bubble p:empty {
     display: none;
 }
 
-li div.bubble:not(.file) p {
+ul.list li>div.bubble:not(.file) p {
     margin-right: 1rem;
 }
 
-li div.bubble p.retracted,
-li div.bubble p.encrypted {
+ul.list li>div.bubble p.retracted,
+ul.list li>div.bubble p.encrypted {
     opacity: 0.5;
 }
 
-li div.bubble p.previewable {
+ul.list li>div.bubble p.previewable {
     display: block;
     min-width: 0;
     margin-bottom: 0.5rem;
 }
 
-li div.bubble p pre {
+ul.list li>div.bubble p pre {
     display: inline-block;
     margin-bottom: 0;
 }
 
-li div.bubble span.resource {
+ul.list li>div.bubble span.resource {
     display: none;
 }
 
@@ -557,8 +557,8 @@ ul li:not(.oppose):not(.sequel) div.bubble div:first-child span.resource {
     line-height: 2.5rem;
 }
 
-li div.bubble:not(.file),
-li div.bubble.file div.audio_player {
+ul.list li>div.bubble:not(.file),
+ul.list li>div.bubble.file div.audio_player {
     background-color: rgb(var(--movim-background-main));
 }
 
@@ -570,7 +570,7 @@ ul li.oppose div.bubble.file div.audio_player {
     padding-right: 1.5rem;
 }
 
-li div.bubble p i.icon {
+ul.list li>div.bubble p i.icon {
     margin-right: 0.25rem;
 }
 
@@ -578,7 +578,7 @@ ul li .quote {
     font-style: italic;
 }
 
-li div.bubble:not(.file):before {
+ul.list li>div.bubble:not(.file):before {
     content: "";
     position: absolute;
     top: 0;
@@ -593,12 +593,12 @@ li div.bubble:not(.file):before {
     transition: background-color 0.3s ease;
 }
 
-li div.bubble:not(.file):hover:before,
+ul.list li>div.bubble:not(.file):hover:before,
 ul li.oppose div.bubble:not(.file):hover:before {
     background-color: rgba(var(--movim-element-action), 0.1);
 }
 
-li div.bubble:not(.file):active:before,
+ul.list li>div.bubble:not(.file):active:before,
 ul li.oppose div.bubble:not(.file):active:before {
     background-color: rgba(var(--movim-element-action), 0.2);
 }

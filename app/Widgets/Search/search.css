@@ -1,7 +1,3 @@
-#search form > div:not(.clear):not(.control) {
-    min-height: 8rem;
-}
-
 #search form > div > input:not([type="submit"]) {
     padding-top: 3.7rem;
     margin-bottom: 0;

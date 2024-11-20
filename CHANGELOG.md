@@ -23,6 +23,7 @@ v0.28.1 (master)
 * XEP-0410: MUC Self-Ping, add timeout ping support (when the connection is lost and the pong is never sent)
 * Fix #1371 Make members and presences ordering in Group and Public Rooms similar
 * CSS and view cleanup, refactorize and remove some useless classes
+* Cleanup and simplify the CSS
 
 v0.28
 ---------------------------

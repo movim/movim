@@ -78,30 +78,6 @@ form > div .select select {
     mask-image: linear-gradient(to right, black calc(100% - 10rem), transparent);
 }
 
-main > header form > div:not(.clear):not(.control) {
-    min-height: 0;
-}
-
-main > header li > form > div:not(.clear):not(.control) {
-    top: 1rem;
-}
-
-main > header form > div:not(.clear):not(.control) > input,
-main > header form > div:not(.clear):not(.control) > .select {
-    padding-top: 0;
-}
-
-main > header form > div:not(.clear):not(.control) > .select option {
-    background-color: white;
-    color: initial;
-}
-
-main > header form > div:not(.clear):not(.control) > input,
-main > header form > div:not(.clear):not(.control) > .select:after,
-main > header form > div:not(.clear):not(.control) > .select select {
-    color: white;
-}
-
 /* Placeholders to mimic FF */
 
 ::-webkit-input-placeholder, /* WebKit browsers */
@@ -178,7 +154,7 @@ form > div input:not([type=submit]):-webkit-autofill {
     -webkit-box-shadow: 0 0 0 50px transparent inset;
 }
 form > div input:not([type=submit]):-webkit-autofill:focus {
-    box-shadow: 0;
+    box-shadow: none;
     -webkit-text-fill-color: #333;
 }
 
@@ -193,7 +169,6 @@ input[type=file] {
 
 form > div .checkbox > input[type="checkbox"],
 form > div .radio > input[type="radio"] {
-    display: none;
     display: inline;
     width: 0;
     height: 0;
