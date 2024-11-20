@@ -40,6 +40,7 @@
 }
 
 .dialog > section h3,
+.dialog > section h4,
 .dialog > section form > div:not(:has(ul.list)) {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
