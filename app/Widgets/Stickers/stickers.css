@@ -23,14 +23,14 @@
     z-index: 2;
 }
 
-#gifssearchbar + div ul.tabs,
+#gifs + div ul.tabs,
 #stickers + div ul.tabs {
     height: 6rem;
     border-bottom: none;
 }
 
 #gifssearchbar {
-    padding-bottom: 0.75rem;
+    padding-top: 1rem;
 }
 
 #gifs {
