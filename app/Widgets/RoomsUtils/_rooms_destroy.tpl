@@ -5,7 +5,7 @@
     <br />
     <h4 class="gray">{$room}</h4>
 </section>
-<div class="no_bar">
+<footer>
     <button onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.cancel')}
     </button>
@@ -15,4 +15,4 @@
         onclick="RoomsUtils_ajaxDestroy('{$room}'); Dialog_ajaxClear()">
         {$c->__('button.destroy')}
     </button>
-</div>
+</footer>

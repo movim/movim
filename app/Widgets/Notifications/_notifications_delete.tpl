@@ -5,7 +5,7 @@
     <br />
     <h4 class="gray">{$jid}</h4>
 </section>
-<div class="no_bar">
+<footer>
     <button onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.cancel')}
     </button>
@@ -15,4 +15,4 @@
         onclick="Notifications_ajaxDelete('{$jid|echapJS}'); Dialog_ajaxClear()">
         {$c->__('button.delete')}
     </button>
-</div>
+</footer>

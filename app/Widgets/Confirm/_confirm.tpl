@@ -20,7 +20,7 @@
         </li>
     </ul>
 </section>
-<div>
+<footer>
     <button
         onclick="Confirm_ajaxRefuse('{$from}', '{$id}', '{$url}', '{$method}'); Dialog_ajaxClear()"
         class="button flat">
@@ -31,4 +31,4 @@
         class="button flat">
         {$c->__('button.accept')}
     </button>
-</div>
+</footer>

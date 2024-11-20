@@ -7,10 +7,6 @@ header.big {
     position: relative;
 }
 
-header.big ul.list > li {
-    padding-right: 0;
-}
-
 header.big.top {
     border-radius: 0 0 1rem 1rem;
     padding-top: 15rem;

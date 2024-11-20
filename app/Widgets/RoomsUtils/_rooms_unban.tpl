@@ -3,7 +3,7 @@
     <br />
     <h4 class="gray">{$jid}</h4>
 </section>
-<div class="no_bar">
+<footer>
     <button onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.cancel')}
     </button>
@@ -13,4 +13,4 @@
         onclick="RoomsUtils_ajaxRemoveBannedConfirm('{$room->conference}', '{$jid|echapJS}'); Dialog_ajaxClear()">
         {$c->__('button.submit')}
     </button>
-</div>
+</footer>

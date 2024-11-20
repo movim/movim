@@ -78,7 +78,7 @@
         </div>
     </form>
 </section>
-<div>
+<footer>
     {if="$calling"}
         <button onclick="Visio.goodbye(); Dialog_ajaxClear()" class="button flat">
             {$c->__('button.cancel')}
@@ -105,4 +105,4 @@
             {$c->__('button.reply')}
         </button>
     {/if}
-</div>
+</footer>

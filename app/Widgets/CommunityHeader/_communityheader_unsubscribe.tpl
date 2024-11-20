@@ -7,7 +7,7 @@
         </h4>
     {/if}
 </section>
-<div class="no_bar">
+<footer>
     <button onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.cancel')}
     </button>
@@ -16,4 +16,4 @@
         class="button flat">
         {$c->__('communityheader.unsubscribe')}
     </button>
-</div>
+</footer>

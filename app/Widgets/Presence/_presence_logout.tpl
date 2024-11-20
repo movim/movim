@@ -4,7 +4,7 @@
         <h4>{$c->__('status.logout_confirm')}</h4>
     </div>
 </section>
-<div class="no_bar">
+<footer>
     <button onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.cancel')}
     </button>
@@ -14,4 +14,4 @@
         onclick="Presence_ajaxLogout()">
         {$c->__('status.disconnect')}
     </button>
-</div>
+</footer>

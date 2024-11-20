@@ -5,7 +5,7 @@
         {/autoescape}
     </form>
 </section>
-<div>
+<footer>
     <button onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.close')}
     </button>
@@ -27,4 +27,4 @@
             {/if}
         </button>
     {/if}
-</div>
+</footer>

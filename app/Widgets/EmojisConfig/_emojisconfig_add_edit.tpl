@@ -27,7 +27,7 @@
         <input type="hidden" name="emojiid" value="{$emoji->id}">
     </form>
 </section>
-<div class="no_bar">
+<footer>
     {if="$favorite"}
         <button onclick="EmojisConfig_ajaxRemoveFavorite({$emoji->id});" class="button flat red">
             {$c->__('button.remove')}
@@ -39,4 +39,4 @@
     <button onclick="EmojisConfig_ajaxAddEditFavorite(MovimUtils.formToJson('add_edit_favorite'))" class="button flat">
         {$c->__('button.save')}
     </button>
-</div>
+</footer>

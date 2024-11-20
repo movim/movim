@@ -41,19 +41,19 @@
         <div id="dictaphone"></div>
         <li class="emojis"></li>
         <li class="main">
-            <span class="primary icon gray primary_action"
+            <span class="primary icon gray active"
                   title="{$c->__('sticker.title')}"
                   onclick="Stickers_ajaxShow('{$jid}')">
                 <i class="material-symbols flip-vert">note_stack</i>
             </span>
             {if="$c->getUser()->hasUpload()"}
-                <span class="emojis control icon gray primary_action"
+                <span class="emojis control icon gray active"
                         title="{$c->__('dictaphone.name')}"
                         onclick="Dictaphone.toggle()">
                     <i class="material-symbols">mic</i>
                 </span>
             {/if}
-            <span class="emojis control icon gray primary_action on_desktop"
+            <span class="emojis control icon gray active on_desktop"
                     title="{$c->__('emojisconfig.title')}"
                     onclick="Stickers_ajaxReaction(null)">
                 <i class="material-symbols">emoji_emotions</i>
@@ -62,9 +62,9 @@
                 <span class="attach control icon" onclick="Chat.toggleAttach()">
                     <i class="material-symbols">add_circle</i>
                 </span>
-                <ul class="list middle actions">
+                <ul class="list active actions">
                     <li onclick="Chat.toggleAttach(); Snap.init()">
-                        <span class="control active icon bubble color blue">
+                        <span class="control icon gray">
                             <i class="material-symbols">camera_alt</i>
                         </span>
                         <div>
@@ -72,7 +72,7 @@
                         </div>
                     </li>
                     <li onclick="Chat.toggleAttach(); Draw_ajaxHttpGet()">
-                        <span class="control active icon middle bubble color green">
+                        <span class="control icon gray">
                             <i class="material-symbols">gesture</i>
                         </span>
                         <div>
@@ -80,7 +80,7 @@
                         </div>
                     </li>
                     <li onclick="Chat.toggleAttach(); Upload_ajaxRequest()">
-                        <span class="control active icon bubble color purple">
+                        <span class="control icon gray">
                             <i class="material-symbols">attach_file</i>
                         </span>
                         <div>

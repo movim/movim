@@ -12,10 +12,8 @@
             <label>{$c->__('account.password_confirmation')}</label>
         </div>
     </form>
-</ul>
-
 </section>
-<div class="no_bar">
+<footer>
     <button onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.cancel')}
     </button>
@@ -24,4 +22,4 @@
         this.className='button flat inactive';" class="button flat color oppose">
         {$c->__('button.save')}
     </a>
-</div>
+</footer>

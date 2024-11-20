@@ -216,24 +216,24 @@
                 </li>
             </ul>
         </div>
-    </section>
-    <div class="no_bar">
-        <button class="button flat" onclick="Dialog_ajaxClear()">
-            {$c->__('button.cancel')}
-        </button>
-        <button
-            class="button flat"
-            {if="$create"}
-                onclick="RoomsUtils_ajaxAddCreate(MovimUtils.formToJson('bookmarkmucadd'));"
-            {else}
-                onclick="RoomsUtils_ajaxAddConfirm(MovimUtils.formToJson('bookmarkmucadd'));"
-            {/if}
-            >
-            {if="isset($conference)"}
-                {$c->__('button.edit')}
-            {else}
-                {$c->__('button.add')}
-            {/if}
-        </button>
-    </div>
-</div>
+    </form>
+</section>
+<footer>
+    <button class="button flat" onclick="Dialog_ajaxClear()">
+        {$c->__('button.cancel')}
+    </button>
+    <button
+        class="button flat"
+        {if="$create"}
+            onclick="RoomsUtils_ajaxAddCreate(MovimUtils.formToJson('bookmarkmucadd'));"
+        {else}
+            onclick="RoomsUtils_ajaxAddConfirm(MovimUtils.formToJson('bookmarkmucadd'));"
+        {/if}
+        >
+        {if="isset($conference)"}
+            {$c->__('button.edit')}
+        {else}
+            {$c->__('button.add')}
+        {/if}
+    </button>
+</footer>

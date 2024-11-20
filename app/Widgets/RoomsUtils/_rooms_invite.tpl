@@ -33,7 +33,7 @@
             </ul>
         </div>
     </section>
-    <div class="no_bar">
+    <footer>
         <button class="button flat" onclick="Dialog_ajaxClear()">
             {$c->__('button.cancel')}
         </button>
@@ -42,5 +42,5 @@
             onclick="RoomsUtils_ajaxInvite(MovimUtils.formToJson('invite'));">
             {$c->__('button.invite')}
         </button>
-    </div>
+    </footer>
 </div>

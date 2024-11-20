@@ -3,8 +3,8 @@
         {$emojis}
     {/autoescape}
 </section>
-<div>
+<footer>
     <button class="button flat" onclick="Dialog_ajaxClear()">
         {$c->__('button.close')}
     </button>
-</div>
+</footer>

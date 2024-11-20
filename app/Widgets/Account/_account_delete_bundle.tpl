@@ -10,10 +10,8 @@
             {$bundle->fingerprint}
         </span>
     </p>
-</ul>
-
 </section>
-<div class="no_bar">
+<footer>
     <button onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.cancel')}
     </button>
@@ -23,4 +21,4 @@
         onclick="Account_ajaxDeleteBundle({$bundle->bundleid}); Dialog_ajaxClear()">
         {$c->__('button.destroy')}
     </button>
-</div>
+</footer>

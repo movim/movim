@@ -367,7 +367,6 @@ input[type=button].flat {
 }
 
 .button:hover,
-ul.list.actions > li:hover,
 input[type=button]:hover {
     cursor: pointer;
 }
@@ -419,13 +418,10 @@ body > div.drawer:not(:empty):not(.empty) ~ main .button.action {
     opacity: 0;
 }
 
-.button.action,
-ul.list.actions > li > p {
+.button.action {
     box-shadow: var(--elevation-3);
 }
 
-ul.list.actions > li:hover .button.action,
-ul.list.actions > li:hover p,
 .button.action:hover {
     box-shadow: var(--elevation-4);
 }

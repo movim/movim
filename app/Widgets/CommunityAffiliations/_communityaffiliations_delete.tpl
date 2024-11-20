@@ -8,7 +8,7 @@
         <h4 class="gray">{$c->__('communityaffiliation.delete_text')}</h4>
     {/if}
 </section>
-<div class="no_bar">
+<footer>
     <button onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.cancel')}
     </button>
@@ -18,4 +18,4 @@
         onclick="CommunityAffiliations_ajaxDeleteConfirm('{$server|echapJS}', '{$node|echapJS}'); Dialog_ajaxClear()">
         {$c->__('button.remove')}
     </button>
-</div>
+</footer>

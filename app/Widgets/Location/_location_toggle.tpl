@@ -40,8 +40,8 @@
         </ul>
     {/if}
 </section>
-<div class="no_bar">
+<footer>
     <button onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.close')}
     </button>
-</div>
+</footer>

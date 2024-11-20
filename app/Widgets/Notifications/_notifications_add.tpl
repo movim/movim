@@ -50,11 +50,11 @@
         </li>
     </ul>
 </section>
-<div class="no_bar">
+<footer>
     <button onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.close')}
     </button>
     <button onclick="Notifications_ajaxAdd(MovimUtils.formToJson('add'))" class="button flat">
         {$c->__('button.add')}
     </button>
-</div>
+</footer>

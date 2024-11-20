@@ -115,7 +115,7 @@
         {/if}
     </form>
 </section>
-<div>
+<footer>
     {if="$config"}
         <button class="button flat" onclick="CommunityConfig_ajaxGetConfig('{$server|echapJS}', '{$node|echapJS}', true)">
             <i class="material-symbols">more_vert</i>
@@ -128,4 +128,4 @@
        class="button flat">
         {$c->__('button.save')}
     </button>
-</div>
+</footer>

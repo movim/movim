@@ -17,7 +17,7 @@ article section p {
     line-height: inherit;
 }
 
-ul:not(.list):not(.navigation):not(.tabs):not(.grid):not(.actions) > li,
+ul:not(.list):not(.navigation):not(.tabs):not(.grid) > li,
 ol:not(.list):not(.navigation):not(.tabs):not(.grid) > li {
     font-size: 2rem;
     line-height: 3rem;

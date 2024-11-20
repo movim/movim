@@ -14,11 +14,11 @@
         </div>
     </form>
 </section>
-<div class="no_bar">
+<footer>
     <button onclick="Dialog_ajaxClear();" class="button flat">
         {$c->__('button.close')}
     </button>
     <button onclick="Config_ajaxSaveNickname(document.querySelector('form[name=nickname] input#nickname').value)" class="button flat">
         {$c->__('button.save')}
     </button>
-</div>
+</footer>

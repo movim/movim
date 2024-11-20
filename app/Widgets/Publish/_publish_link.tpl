@@ -10,11 +10,11 @@
         </div>
     </form>
 </section>
-<div class="no_bar">
+<footer>
     <button onclick="Dialog_ajaxClear();" class="button flat">
         {$c->__('button.close')}
     </button>
     <button onclick="Publish.addUrl(); this.classList.add('disabled');" class="button flat">
         {$c->__('button.add')}
     </button>
-</div>
+</footer>

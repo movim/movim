@@ -3,7 +3,7 @@
     <br />
     <h4 class="gray">{$c->__('chat.clear_history_text', $count)}</h4>
 </section>
-<div class="no_bar">
+<footer>
     <button onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.cancel')}
     </button>
@@ -13,4 +13,4 @@
         onclick="Chat_ajaxClearHistoryConfirm('{$jid|echapJS}'); Dialog_ajaxClear()">
         {$c->__('button.delete')}
     </button>
-</div>
+</footer>

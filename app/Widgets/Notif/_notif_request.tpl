@@ -13,11 +13,11 @@
         </li>
     </ul>
 </section>
-<div class="no_bar">
+<footer>
     <button
         name="submit"
         class="button flat"
         onclick="Notif.request(); Dialog_ajaxClear()">
         {$c->__('notification.request_button')}
     </button>
-</div>
+</footer>

@@ -47,7 +47,7 @@
         </div>
     </ul>
 </section>
-<div class="no_bar">
+<footer>
     <ul id="upload_progress" class="list">
         <li>
             <span class="primary icon">
@@ -64,4 +64,4 @@
     <button id="upload_button" onclick="Upload.init();" class="button flat disabled">
         {$c->__('button.upload')}
     </button>
-</div>
+</footer>

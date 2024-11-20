@@ -7,7 +7,7 @@
         <h4 class="gray">{$c->__('post.delete_text')}</h4>
     {/if}
 </section>
-<div class="no_bar">
+<footer>
     <button onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.cancel')}
     </button>
@@ -17,4 +17,4 @@
         onclick="PostActions_ajaxDeleteConfirm('{$to}', '{$node}', '{$id}'); Dialog_ajaxClear()">
         {$c->__('button.delete')}
     </button>
-</div>
+</footer>

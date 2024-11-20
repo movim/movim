@@ -32,7 +32,7 @@
         <input type="hidden" name="jid" value="{$contact->jid}"/>
     </form>
 </section>
-<div class="no_bar">
+<footer>
     <button onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.cancel')}
     </button>
@@ -42,4 +42,4 @@
         onclick="ContactHeader_ajaxEditSubmit(MovimUtils.formToJson('manage')); Dialog_ajaxClear()">
         {$c->__('button.save')}
     </button>
-</div>
+</footer>

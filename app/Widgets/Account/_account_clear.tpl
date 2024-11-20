@@ -5,7 +5,7 @@
     <br />
     <h4 class="gray">{$c->__('account.clear_text_confirm')}</h4>
 </section>
-<div class="no_bar">
+<footer>
     <button onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.cancel')}
     </button>
@@ -15,4 +15,4 @@
         onclick="Account_ajaxClearAccountConfirm(); Dialog_ajaxClear()">
         {$c->__('button.clear')}
     </button>
-</div>
+</footer>

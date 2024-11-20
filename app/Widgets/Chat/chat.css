@@ -24,10 +24,6 @@ main:not(.enabled) #chat_widget {
     z-index: 1;
 }
 
-#chat_widget>header>ul.list:first-child>li {
-    padding-right: 0;
-}
-
 #chat_widget p.compose:not(.first):not(:empty),
 #chat_widget p.compose:not(.first):empty+p {
     animation: fadein 0.3s;
@@ -84,40 +80,26 @@ main:not(.enabled) #chat_widget {
 /* Chat attach list */
 
 #chat_widget ul.list.actions {
-    right: -1rem;
     position: absolute;
     bottom: 7rem;
+    right: 0;
     opacity: 0;
-    transform: translateY(5%) scaleY(0.98);
+    transform: translateY(5%);
     transition: transform 0.2s, opacity 0.2s;
     pointer-events: none;
+    width: 20rem;
+    background-color: rgb(var(--movim-background-main));
+    box-shadow: var(--elevation-2);
+    border-radius: 1rem;
+    overflow: hidden;
+    margin: 0.5rem;
 }
 
 #chat_widget span.control.enabled+ul.list.actions {
     opacity: 1;
     z-index: 2;
-    transform: translateY(0) scaleY(1);
+    transform: translateY(0);
     pointer-events: initial;
-}
-
-#chat_widget ul.list.actions>li>div>p {
-    border-radius: 0.65rem;
-    line-height: 4rem;
-    padding: 0 1.25rem;
-    font-size: 1.75rem;
-    float: right;
-}
-
-#chat_widget ul.list.actions>li>span.control,
-#chat_widget ul.list.actions>li>div>p {
-    transition: box-shadow 0.3s ease, background 0.3s ease;
-    box-shadow: var(--elevation-1);
-}
-
-#chat_widget ul.list.actions>li>span.control:hover,
-#chat_widget ul.list.actions>li>div>p:hover {
-    box-shadow: var(--elevation-2);
-    background-color: rgba(var(--movim-element-action), 0.8);
 }
 
 /* Scroll button */
@@ -212,6 +194,7 @@ main:not(.enabled) #chat_widget {
     font-size: 3.5rem;
     color: rgba(var(--movim-font), 0.68);
     animation: fadein 0.3s;
+    flex: 0 0 5rem;
 }
 
 #chat_widget .chat_box span.primary:active,
@@ -265,7 +248,8 @@ main:not(.enabled) #chat_widget {
 
 #chat_widget .chat_box>ul.list>li:not(:empty) {
     min-height: 0;
-    padding: 0.5rem;
+    padding-left: 2rem;
+    padding-right: 0.5rem;
     padding-bottom: 1rem;
 }
 
@@ -454,8 +438,8 @@ main:not(.enabled) #chat_widget {
     display: none;
 }
 
-#chat_widget textarea#chat_textarea~span.control:hover,
-#chat_widget .primary_action:hover,
+#chat_widget li.main .control.active:hover,
+#chat_widget li.main .primary.active:hover,
 #emojisearchbar~.emojis img:hover {
     cursor: pointer;
     background-color: rgba(var(--movim-font), 0.05);

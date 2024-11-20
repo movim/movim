@@ -88,7 +88,6 @@ table tr th {
 ul li.date > div > p.normal,
 .dialog, .drawer, ul.context_menu,
 .card > .block:not(.subheader):not(.simple),
-ul.list.actions p,
 main {
     background-color: rgb(var(--movim-background-main));
 }
