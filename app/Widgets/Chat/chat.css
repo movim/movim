@@ -249,8 +249,9 @@ main:not(.enabled) #chat_widget {
 #chat_widget .chat_box>ul.list>li:not(:empty) {
     min-height: 0;
     padding-left: 2rem;
+    padding-top: 0.5rem;
     padding-right: 0.5rem;
-    padding-bottom: 1rem;
+    padding-bottom: 0.75rem;
 }
 
 #chat_widget .chat_box>ul.list>li form {
