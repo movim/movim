@@ -189,8 +189,8 @@ main:not(.enabled) #chat_widget {
     padding: 0 1rem;
 }
 
-#chat_widget .chat_box span.primary,
-#chat_widget .chat_box span.control:not(.button):not(.color) {
+#chat_widget .chat_box li.main > span.primary,
+#chat_widget .chat_box li.main > span.control:not(.button):not(.color) {
     font-size: 3.5rem;
     color: rgba(var(--movim-font), 0.68);
     animation: fadein 0.3s;
