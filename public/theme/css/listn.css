@@ -413,6 +413,11 @@ ul.tabs {
     user-select: none;
 }
 
+ul.tabs.reversed {
+    border-top: 1px solid rgba(var(--movim-font), 0.12);
+    border-bottom: 0;
+}
+
 ul.tabs:empty {
     display: none;
 }
@@ -441,6 +446,10 @@ ul.tabs>li {
     border-radius: 1rem 1rem 0 0;
 }
 
+ul.tabs.reversed>li {
+    border-radius: 0 0 1rem 1rem;
+}
+
 ul.tabs>li>* {
     padding: 0 3rem;
     box-sizing: border-box;
@@ -463,7 +472,12 @@ ul.tabs>li.active {
     opacity: 1;
     font-variation-settings: 'FILL' 1;
     border-bottom-width: 2px;
-    border-bottom-style: solid;
+    border-style: solid;
+}
+
+ul.tabs.reversed>li.active {
+    border-top-width: 2px;
+    border-bottom-width: 0;
 }
 
 /* Bubble */

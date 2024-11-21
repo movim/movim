@@ -25,7 +25,7 @@
     </ul>
 </section>
 <div>
-    <ul class="tabs narrow">
+    <ul class="tabs reversed narrow">
         {if="$gifEnabled"}
             <li onclick="Stickers_ajaxShow('{$jid}')">
                 <i class="material-symbols" style="font-size: 5rem;">gif</i>

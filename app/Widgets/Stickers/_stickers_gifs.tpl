@@ -20,7 +20,7 @@
             </form>
         </li>
     </ul>
-    <ul class="tabs narrow">
+    <ul class="tabs reversed narrow">
         <li onclick="Stickers_ajaxShow('{$jid}')" class="active">
             <i class="material-symbols" style="font-size: 5rem;">gif</i>
         </li>
