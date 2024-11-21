@@ -195,6 +195,7 @@ main:not(.enabled) #chat_widget {
     color: rgba(var(--movim-font), 0.68);
     animation: fadein 0.3s;
     flex: 0 0 5rem;
+    margin-right: 0;
 }
 
 #chat_widget .chat_box span.primary:active,
