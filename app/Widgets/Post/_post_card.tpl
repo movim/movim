@@ -97,73 +97,71 @@
             </div>
         </li>
     </ul>
-    <ul class="list">
-        {if="$post->isBrief()"}
-            {if="$nsfw == false && $post->nsfw"}
-                <input type="checkbox" class="spoiler" id="spoiler_{$post->nodeid|cleanupId}">
-            {/if}
-            <section dir="{if="$post->isRTL()"}rtl{else}ltr{/if}">
-                <label class="spoiler" for="spoiler_{$post->nodeid|cleanupId}">
-                    <i class="material-symbols">visibility</i>
-                </label>
-                <div>
-                    {if="$post->embed"}
-                        <div class="video_embed shimmer">
-                            <iframe class="spin" src="{$post->embed->href}" frameborder="0" allowfullscreen></iframe>
-                        </div>
-                    {else}
-                        {loop="$post->pictures"}
-                            <img class="big_picture"
-                                 type="{$value->type}"
-                                 src="{$value->href|protectPicture}"
-                                 {if="!empty($value->title)"}
-                                    title="{$value->title}"
-                                    alt="{$value->title}"
-                                 {/if}
-                            >
-                        {/loop}
-                    {/if}
-                </div>
-            </section>
-        {else}
-            <li>
-                {if="$nsfw == false && $post->nsfw"}
-                    <input type="checkbox" class="spoiler" id="spoiler_{$post->nodeid|cleanupId}">
-                {/if}
-                <section {if="!$post->isShort()"}class="limited"{/if} dir="{if="$post->isRTL()"}rtl{else}ltr{/if}">
-                    <label class="spoiler" for="spoiler_{$post->nodeid|cleanupId}">
-                        <i class="material-symbols">visibility</i>
-                    </label>
-                    <div>
-                        {if="$post->embed"}
-                            <div class="video_embed shimmer">
-                                <iframe class="spin" src="{$post->embed->href}" frameborder="0" allowfullscreen></iframe>
-                            </div>
-                        {elseif="$post->isShort()"}
-                            {loop="$post->pictures"}
-                                <img class="big_picture"
-                                     type="{$value->type}"
-                                     src="{$value->href|protectPicture}"
-                                     {if="!empty($value->title)"}
-                                        title="{$value->title}"
-                                        alt="{$value->title}"
-                                     {/if}
-                                >
-                            {/loop}
-                        {/if}
-                        {autoescape="off"}
-                            {$post->getContent(true)}
-                        {/autoescape}
-                    </div>
-                </section>
-            </li>
+    {if="$post->isBrief()"}
+        {if="$nsfw == false && $post->nsfw"}
+            <input type="checkbox" class="spoiler" id="spoiler_{$post->nodeid|cleanupId}">
         {/if}
+        <section dir="{if="$post->isRTL()"}rtl{else}ltr{/if}">
+            <label class="spoiler" for="spoiler_{$post->nodeid|cleanupId}">
+                <i class="material-symbols">visibility</i>
+            </label>
+            <div>
+                {if="$post->embed"}
+                    <div class="video_embed shimmer">
+                        <iframe class="spin" src="{$post->embed->href}" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                {else}
+                    {loop="$post->pictures"}
+                        <img class="big_picture"
+                                type="{$value->type}"
+                                src="{$value->href|protectPicture}"
+                                {if="!empty($value->title)"}
+                                title="{$value->title}"
+                                alt="{$value->title}"
+                                {/if}
+                        >
+                    {/loop}
+                {/if}
+            </div>
+        </section>
+    {else}
+        {if="$nsfw == false && $post->nsfw"}
+            <input type="checkbox" class="spoiler" id="spoiler_{$post->nodeid|cleanupId}">
+        {/if}
+        <section {if="!$post->isShort()"}class="limited"{/if} dir="{if="$post->isRTL()"}rtl{else}ltr{/if}">
+            <label class="spoiler" for="spoiler_{$post->nodeid|cleanupId}">
+                <i class="material-symbols">visibility</i>
+            </label>
+            <div>
+                {if="$post->embed"}
+                    <div class="video_embed shimmer">
+                        <iframe class="spin" src="{$post->embed->href}" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                {elseif="$post->isShort()"}
+                    {loop="$post->pictures"}
+                        <img class="big_picture"
+                                type="{$value->type}"
+                                src="{$value->href|protectPicture}"
+                                {if="!empty($value->title)"}
+                                title="{$value->title}"
+                                alt="{$value->title}"
+                                {/if}
+                        >
+                    {/loop}
+                {/if}
+                {autoescape="off"}
+                    {$post->getContent(true)}
+                {/autoescape}
+            </div>
+        </section>
+    {/if}
 
-        {autoescape="off"}
-            {$c->preparePostReply($post)}
-            {$c->preparePostLinks($post)}
-        {/autoescape}
+    {autoescape="off"}
+        {$c->preparePostReply($post)}
+        {$c->preparePostLinks($post)}
+    {/autoescape}
 
+    <ul class="list">
         <li>
             <div>
                 <p class="normal">
