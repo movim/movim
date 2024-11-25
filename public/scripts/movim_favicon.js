@@ -4,7 +4,7 @@ var MovimFavicon = {
     sizes: '128x128',
 
     counter: function (counterTab1, counterTab2) {
-        var counter = counterTab1 + counterTab2;
+        let counter = counterTab1 + counterTab2;
 
         link = document.querySelector('link[sizes="' + MovimFavicon.sizes + '"]');
 
@@ -71,6 +71,4 @@ var MovimFavicon = {
     }
 }
 
-MovimEvents.registerWindow('loaded', 'favicon', () => {
-    MovimFavicon.init();
-});
+MovimFavicon.init();
