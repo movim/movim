@@ -12,6 +12,9 @@
 
 <ul class="list thick">
     <li class="block large">
+        <span class="primary icon bubble active" onclick="ContactActions_ajaxGetDrawer('{$contact->id|echapJS}')">
+            <img src="{if="$roster"}{$roster->getPicture(\Movim\ImageSize::M)}{else}{$contact->getPicture(\Movim\ImageSize::M)}{/if}">
+        </span>
         {if="!$contact->isMe()"}
             <span class="control icon active white" onclick="ContactActions_ajaxChat('{$contact->id|echapJS}')"
                 title="{$c->__('button.chat')}">
@@ -40,9 +43,6 @@
                 </span>
             {/if}
         {/if}
-        <span class="primary icon bubble active" onclick="ContactActions_ajaxGetDrawer('{$contact->id|echapJS}')">
-            <img src="{if="$roster"}{$roster->getPicture(\Movim\ImageSize::M)}{else}{$contact->getPicture(\Movim\ImageSize::M)}{/if}">
-        </span>
         <div>
             <p class="line active" onclick="ContactActions_ajaxGetDrawer('{$contact->id|echapJS}')">
                 {$contact->truename}

@@ -345,6 +345,10 @@ ul.list li.subheader span.chip {
 
 /* Search forms */
 
+ul.list:has(>li.search) {
+    padding-top: 1rem;
+}
+
 ul.list>li.main form div:after,
 ul.list>li.search form div:after {
     content: "";

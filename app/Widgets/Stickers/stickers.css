@@ -29,10 +29,6 @@
     border-bottom: none;
 }
 
-#gifssearchbar {
-    padding-top: 1rem;
-}
-
 #gifs {
     height: calc(100% - 7.5rem);
     overflow-x: hidden;
