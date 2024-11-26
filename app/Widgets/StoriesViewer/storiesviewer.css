@@ -1,0 +1,151 @@
+#storiesviewer {
+    position: fixed;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 3;
+    backdrop-filter: blur(1rem);
+    color: white;
+}
+
+#storiesviewer ul.list.controls {
+    z-index: 2;
+}
+
+#storiesviewer ul.list li > div > p:not(:first-of-type):not(.normal):not(.main) {
+    color: white;
+}
+
+#storiesviewer ul.list.controls li span.primary {
+    margin-left: 0;
+}
+
+#storiesviewer:before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    background-color: #111;
+}
+
+#storiesviewer:not(:empty) {
+    opacity: 1;
+    pointer-events: initial;
+}
+
+#storiesviewer article.story {
+    height: calc(100% - 14rem);
+    margin: 1rem;
+    margin-top: 7rem;
+    margin-bottom: 0;
+    border-radius: 2rem;
+    box-shadow: var(--elevation-4);
+    background-color: rgb(var(--movim-gray));
+    position: relative;
+}
+
+#storiesviewer article.story:before,
+#storiesviewer article.story:after {
+    content: '';
+    display: block;
+    width: calc(100% - 3rem);
+    height: 0.4rem;
+    background-color: white;
+    position: absolute;
+    top: 2rem;
+    left: 1.5rem;
+    z-index: 1;
+    opacity: 0.25;
+    border-radius: 1rem;
+}
+
+#storiesviewer article.story:after {
+    opacity: 1;
+    animation: widthProgress linear 6s;
+}
+
+#storiesviewer article.story.paused:after {
+    animation-play-state: paused;
+}
+
+#storiesviewer article.story div.next {
+    position: absolute;
+    top: 10rem;
+    right: 0;
+    height: calc(100% - 20rem);
+    width: 7rem;
+    font-size: 5rem;
+    display: flex;
+    align-items: center;
+}
+
+#storiesviewer article.story div.next:hover {
+    cursor: pointer;
+}
+
+#storiesviewer article.story div.next i {
+    text-align: center;
+    width: 100%;
+}
+
+#storiesviewer article.story > img {
+    height: 100%;
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), black 12rem, black calc(100% - 20rem), rgba(0, 0, 0, 0.25));
+    user-select: none;
+}
+
+#storiesviewer article.story ul.list {
+    position: absolute;
+    bottom: 1.5rem;
+    width: 100%;
+}
+
+#storiesviewer article.story ul.list.head {
+    bottom: unset;
+    top:  3rem;
+    width: calc(100% - 1rem)
+}
+
+#storiesviewer article.story ul.list.head li span.icon.small {
+    margin-right: 0.5rem;
+}
+
+#storiesviewer article.story ul.list.head li {
+    padding: 0 0.5rem;
+}
+
+#storiesviewer article.story.paused ul.list.head li span.control:hover {
+    cursor: pointer;
+}
+
+#storiesviewer article.story:not(.paused) ul.list.head li span.control.pause,
+#storiesviewer article.story.paused ul.list.head li span.control.play {
+    display: none;
+}
+
+@keyframes widthProgress {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: calc(100% - 3rem);
+    }
+}
+
+#storiesviewer form[name=storycomment] input {
+    margin-bottom: 0;
+    color: white;
+    z-index: 1;
+    position: relative;
+}
+
+#storiesviewer form[name=storycomment] div:after {
+    backdrop-filter: blur(0.5rem);
+}

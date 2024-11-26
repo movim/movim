@@ -6,6 +6,7 @@ use Respect\Validation\Validator;
 
 use Movim\Widget\Base;
 use Movim\Session;
+use Movim\XMPPUri;
 
 class Share extends Base
 {
@@ -28,30 +29,11 @@ class Share extends Base
 
             $this->rpc('Share.redirect', $this->route('publish'));
         } else {
-            $uri = \explodeXMPPURI($link);
+            $uri = new XMPPUri($link);
+            $route = $uri->getRoute();
 
-            switch ($uri['type']) {
-                case 'room':
-                    $this->rpc(
-                        'MovimUtils.redirect',
-                        $this->route(
-                            'chat',
-                            [$uri['params'], 'room']
-                        )
-                    );
-                    break;
-
-                case 'post':
-                case 'community':
-                case 'contact':
-                    $this->rpc(
-                        'MovimUtils.redirect',
-                        $this->route(
-                            $uri['type'],
-                            $uri['params']
-                        )
-                    );
-                    break;
+            if ($route) {
+                $this->rpc('MovimUtils.redirect', $route);
             }
         }
     }

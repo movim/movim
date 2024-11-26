@@ -10,8 +10,17 @@ var Upload = {
     thumbhash: null,
     uploadButton: null,
 
-    init: function () {
+    init: function (appendDate) {
         if (Upload.file) {
+            if (appendDate) {
+                let now = new Date();
+                now = now.toISOString().replace(/[-:]/g, '_').replaceAll('_', '');
+                now = now.substring(0, now.length - 5);
+
+                let splited = Upload.name.split('.');
+                Upload.name = splited[0] + '_' + now + '.' + splited[1];
+            }
+
             Upload_ajaxPrepare({
                 name: Upload.name,
                 size: Upload.file.size,
@@ -125,15 +134,7 @@ var Upload = {
 
                 ctx = Upload.canvas.getContext("2d");
 
-                switch (orientation) {
-                    case 2: ctx.transform(-1, 0, 0, 1, width, 0); break;
-                    case 3: ctx.transform(-1, 0, 0, -1, width, height); break;
-                    case 4: ctx.transform(1, 0, 0, -1, 0, height); break;
-                    case 5: ctx.transform(0, 1, 1, 0, 0, 0); break;
-                    case 6: ctx.transform(0, 1, -1, 0, height, 0); break;
-                    case 7: ctx.transform(0, -1, -1, 0, height, width); break;
-                    case 8: ctx.transform(0, -1, 1, 0, 0, width); break;
-                }
+                MovimUtils.applyOrientation(ctx, orientation, width, height);
 
                 ctx.drawImage(image, 0, 0, width, height);
 

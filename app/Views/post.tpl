@@ -1,5 +1,5 @@
-<?php $this->widget('Upload');?>
 <?php $this->widget('Search');?>
+<?php $this->widget('Upload');?>
 <?php $this->widget('Notifications');?>
 <?php $this->widget('SendTo');?>
 <?php $this->widget('Tabs');?>
@@ -19,3 +19,5 @@
 <main>
     <?php $this->widget('Post');?>
 </main>
+
+<?php $this->widget('PublishStories');?>

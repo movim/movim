@@ -2,13 +2,16 @@
 
 namespace Moxl;
 
+use App\Post;
+
 class Utils
 {
     public static function getSupportedServices()
     {
         return [
             'urn:xmpp:microblog:0',
-            'urn:xmpp:microblog:0+notify',
+            Post::MICROBLOG_NODE . '+notify',
+            Post::STORIES_NODE . '+notify',
             'urn:xmpp:bookmarks:0+notify',
             'urn:xmpp:bookmarks:1+notify',
             'urn:xmpp:pubsub:subscription',

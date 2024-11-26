@@ -25,3 +25,8 @@
         <?php $this->widget('CommunityPosts'); ?>
     </div>
 </main>
+
+<?php if (\App\User::me()->hasPubsub()) { ?>
+    <?php $this->widget('PublishStories');?>
+    <?php $this->widget('StoriesViewer');?>
+<?php } ?>

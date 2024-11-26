@@ -12,6 +12,17 @@
             </div>
         </li>
 
+        <li onclick="PublishStories_ajaxOpen()"
+            title="{$c->__('page.publish')}"
+        >
+            <span class="primary icon">
+                <i class="material-symbols">web_stories</i>
+            </span>
+            <div>
+                <p class="normal">{$c->__('page.publish')}</p>
+            </div>
+        </li>
+
         <li onclick="MovimUtils.reload('{$c->route('news')}')"
             class="on_desktop {if="$page == 'news' || $page == 'post'"}active{/if}"
             title="{$c->__('page.news')}"

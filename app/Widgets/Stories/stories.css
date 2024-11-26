@@ -1,0 +1,31 @@
+#stories ul.list.flex {
+    overflow-x: auto;
+    grid-template-columns: 0.5fr repeat(5, 1fr);
+}
+
+#stories ul.list.flex li.block {
+    grid-row: 1;
+    grid-column: auto;
+    order: 0;
+    margin-bottom: 0.25rem;
+}
+
+#stories ul.list.flex li.block.add {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    background-color: rgba(var(--movim-font), 0.1);
+    width: 7rem;
+}
+
+#stories ul.list.flex li.block.add > div {
+    margin-top: 0;
+    display: block;
+    text-align: center;
+}
+
+#stories ul.list.flex li.block.seen {
+    opacity: 0.5;
+    order: 1;
+    filter: grayscale(0.7);
+}

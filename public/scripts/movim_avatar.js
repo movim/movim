@@ -20,26 +20,16 @@ var MovimAvatar = {
         document.querySelector('form[name=' + formname + '] input[name="photobin"]').value = '';
     },
     preview : function(src, orientation, formname, setWidth, setHeight) {
-        var canvas = document.createElement('canvas');
-        width = canvas.width = setWidth;
-        height = canvas.height = setHeight;
-
         var image = new Image();
         image.src = src;
+
         image.onload = function() {
+            var canvas = document.createElement('canvas');
+            width = canvas.width = setWidth;
+            height = canvas.height = setHeight;
             ctx = canvas.getContext("2d");
 
-            switch (orientation) {
-                case 2: ctx.transform(-1, 0, 0, 1, width, 0); break;
-                case 3: ctx.transform(-1, 0, 0, -1, width, height ); break;
-                case 4: ctx.transform(1, 0, 0, -1, 0, height ); break;
-                case 5: ctx.transform(0, 1, 1, 0, 0, 0); break;
-                case 6: ctx.transform(0, 1, -1, 0, height , 0); break;
-                case 7: ctx.transform(0, -1, -1, 0, height , width); break;
-                case 8: ctx.transform(0, -1, 1, 0, 0, width); break;
-                default: ctx.transform(1, 0, 0, 1, 0, 0);
-            }
-
+            MovimUtils.applyOrientation(ctx, orientation, width, height)
             MovimUtils.drawImageProp(ctx, image);
 
             var base64 = canvas.toDataURL('image/jpeg', 0.95);

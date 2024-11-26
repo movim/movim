@@ -12,6 +12,7 @@ use App\Contact;
 use App\Message;
 use App\MessageFile;
 use App\MessageOmemoHeader;
+use App\Post as AppPost;
 use App\Reaction;
 use App\Url;
 use App\Widgets\Chats\Chats;
@@ -30,6 +31,7 @@ use Movim\ChatOwnState;
 use Movim\CurrentCall;
 use Movim\EmbedLight;
 use Movim\Image;
+use Movim\XMPPUri;
 use Movim\Librairies\XMPPtoForm;
 
 class Chat extends \Movim\Widget\Base
@@ -622,6 +624,14 @@ class Chat extends \Movim\Widget\Base
             $p->setFile($file);
             $m->resolved = true;
             $m->picture = $file->isPicture;
+
+            if ($file->type == 'xmpp/uri') {
+                $xmppUri = new XMPPUri($file->url);
+
+                if ($post = $xmppUri->getPost()) {
+                    $m->postid = $post->id;
+                }
+            }
         }
 
         if ($reply) {
@@ -1333,25 +1343,27 @@ class Chat extends \Movim\Widget\Base
         }
 
         // Attached file
-        if (isset($message->file) && !$message->retracted) {
-            // Build cards for the URIs
-            $uri = explodeXMPPURI($message->file->url);
+        if (!$message->retracted) {
+            if ($message->postid != null) {
+                $post = $message->post()->first();
 
-            switch ($uri['type']) {
-                case 'post':
-                    $post = \App\Post::where('server', $uri['params'][0])
-                        ->where('node',  $uri['params'][1])
-                        ->where('nodeid',  $uri['params'][2])
-                        ->first();
+                if ($post->isStory()) {
+                    $story = AppPost::myStories($message->postid)->first();
 
-                    if ($post) {
+                    if ($story) {
                         $p = new Post();
-                        $message->card = $p->prepareTicket($post);
+                        $message->card = $p->prepareTicket($story);
+                        $message->story = true;
+                    } else {
+                        $view = $this->tpl();
+                        $view->assign('post', $post);
+                        $message->body = $view->draw('_chat_story_forbidden');
                     }
-                    break;
-            }
-
-            if ($message->file->type != 'xmpp') {
+                } else {
+                    $p = new Post();
+                    $message->card = $p->prepareTicket($post);
+                }
+            } elseif (isset($message->file) && $message->file->type != 'xmpp') {
                 $message->body = '';
             }
         }

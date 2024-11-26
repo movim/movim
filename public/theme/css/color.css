@@ -139,9 +139,9 @@ ul li.action > form > div.action,
 .button.bgray,  .icon.bgray  , span.resource.bgray   { color: var(--p-bgray) }
 
 .color          { color: white; background-color: var(--p-bgray); border-color: var(--p-bgray) }
-span.icon:not(.composing):not([data-counter]).status.dnd:after,
+span.icon:not(.composing):not([data-counter]):not(.story).status.dnd:after,
 .color.red      { color: white; background-color: var(--p-red); border-color: var(--p-red) }
-span.icon:not(.composing):not([data-counter]).status.xa:after,
+span.icon:not(.composing):not([data-counter]):not(.story).status.xa:after,
 .color.slack,
 .color.discord,
 .color.purple   { color: white; background-color: var(--p-purple); border-color: var(--p-purple) }
@@ -150,14 +150,14 @@ span.icon:not(.composing):not([data-counter]).status.xa:after,
 .color.indigo   { color: white; background-color: var(--p-indigo); border-color: var(--p-indigo) }
 .color.facebook,
 .color.blue     { color: white; background-color: var(--p-blue); border-color: var(--p-blue) }
-span.icon:not(.composing):not([data-counter]).status.chat:after,
-span.icon:not(.composing):not([data-counter]).status.online:after,
+span.icon:not(.composing):not([data-counter]):not(.story).status.chat:after,
+span.icon:not(.composing):not([data-counter]):not(.story).status.online:after,
 .color.xmpp,
 .color.green    { color: white; background-color: var(--p-green); border-color: var(--p-green) }
 .color.orange   { color: white; background-color: var(--p-orange); border-color: var(--p-orange) }
-span.icon:not(.composing):not([data-counter]).status.away:after,
+span.icon:not(.composing):not([data-counter]):not(.story).status.away:after,
 .color.yellow   { color: white; background-color: var(--p-yellow); border-color: var(--p-yellow) }
-span.icon:not(.composing):not([data-counter]).status.server_error:after,
+span.icon:not(.composing):not([data-counter]):not(.story).status.server_error:after,
 .color.brown    { color: white; background-color: var(--p-brown); border-color: var(--p-brown) }
 .color.gray     { color: white; background-color: var(--p-gray); border-color: var(--p-gray) }
 .color.black    { color: white; background-color: var(--p-black); border-color: var(--p-black) }

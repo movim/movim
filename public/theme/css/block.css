@@ -104,8 +104,15 @@ ul.flex.card li.subheader {
 
 /* Gallery */
 
-ul.flex.gallery li.block.block:not(.subheader) {
+ul.flex.gallery li.block:not(.subheader) {
     min-height: 25rem;
+}
+
+ul.flex.gallery li.block.story {
+    width: 10rem;
+    height: 18rem;
+    min-height: 0;
+    padding: 0 0.5rem 0.5rem;
 }
 
 ul.flex.gallery li.block {
@@ -141,6 +148,10 @@ ul.flex.gallery li.block img.main {
     -webkit-mask-image: linear-gradient(to bottom, black calc(100% - 20rem), transparent);
     mask-image: linear-gradient(to bottom, black calc(100% - 20rem), transparent);
     margin-bottom: -10rem;
+}
+
+ul.flex.gallery li.block.story img.main {
+    max-height: 18rem;
 }
 
 ul.flex.gallery li.block img.main:after {

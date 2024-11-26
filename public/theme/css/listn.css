@@ -109,9 +109,7 @@ ul.list li .primary:not(.bubble)[onclick] {
     margin-left: -1.5rem;
 }
 
-ul.list li.primary.
-
-ul.list.compact>li .primary {
+ul.list li.primary. ul.list.compact>li .primary {
     width: 5rem;
 }
 
@@ -200,11 +198,11 @@ ul.list.compact li .primary~*:not(.primary):not(.control):not(.bubble) {
     margin-right: 0.5rem;
 }
 
-ul.list:not(.gallery) li .control~*:not(.primary):not(.control):not(.bubble) {
+ul.list:not(.gallery) li:not(.story)>.control~*:not(.primary):not(.control):not(.bubble) {
     margin-right: 1rem;
 }
 
-*[dir="rtl"] ul.list:not(.gallery) li .control~*:not(.primary):not(.control):not(.bubble) {
+*[dir="rtl"] ul.list:not(.gallery) li:not(.story)>.control~*:not(.primary):not(.control):not(.bubble) {
     margin-right: 0;
     margin-left: 1rem;
 }
@@ -350,6 +348,7 @@ ul.list:has(>li.search) {
 }
 
 ul.list>li.main form div:after,
+ul.list>li.comment form div:after,
 ul.list>li.search form div:after {
     content: "";
     display: block;
@@ -364,11 +363,17 @@ ul.list>li.search form div:after {
     pointer-events: none;
 }
 
+ul.list>li.comment form div:after {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+ul.list>li.comment form div,
 ul.list>li.search form div {
     min-height: 0;
 }
 
 ul.list>li.main.edit form div:before,
+ul.list>li.comment form div:before,
 ul.list>li.search form div:before {
     font-family: 'Material Symbols';
     content: "\e8b6";
@@ -381,11 +386,19 @@ ul.list>li.search form div:before {
     pointer-events: none;
 }
 
+
+ul.list>li.comment form div::before {
+    content: "\e261";
+    color: white;
+    z-index: 1;
+}
+
 ul.list>li.search.searching form div:before {
     content: "\e863";
     animation: spin 2s linear infinite;
 }
 
+ul.list>li.comment form input,
 ul.list>li.search form input {
     margin-right: 2rem;
     margin-left: 5.5rem;
@@ -395,6 +408,7 @@ ul.list>li.search form input {
     max-width: calc(100% - 7rem);
 }
 
+ul.list>li.comment form input:focus,
 ul.list>li.search form input:focus {
     box-shadow: none;
 }
@@ -402,6 +416,10 @@ ul.list>li.search form input:focus {
 ul.list>li.main form div:focus-within:after,
 ul.list>li.search form div:focus-within:after {
     background-color: rgba(var(--movim-element-action), 0.1);
+}
+
+ul.list>li.comment form div:focus-within::after {
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Tabs */
@@ -521,12 +539,12 @@ ul.list li>div.bubble ul.card p:not(.line):not(:last-child) {
     display: block;
 }
 
-ul.list li>div.bubble ul.card p:last-child {
+ul.list li>div.bubble ul.card p:not(.line):last-child {
     white-space: inherit;
     display: block;
 }
 
-ul.list li>div.bubble p {
+ul.list li>div.bubble>div>p {
     overflow: hidden;
     display: inline;
     max-width: 100%;
@@ -538,12 +556,12 @@ ul.list li>div.bubble p {
     position: relative;
 }
 
-ul.list li>div.bubble p i {
+ul.list li>div.bubble>div>p i {
     vertical-align: middle;
     margin-top: -0.25rem;
 }
 
-ul.list li>div.bubble p:empty {
+ul.list li>div.bubble>div>p:empty {
     display: none;
 }
 

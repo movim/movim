@@ -2,7 +2,7 @@
 
 namespace Moxl\Stanza;
 
-use stdClass;
+use App\Post;
 
 class Pubsub
 {
@@ -202,7 +202,7 @@ class Pubsub
             'pubsub#itemreply' => 'publisher',
         ];
 
-        if ($node == 'urn:xmpp:microblog:0') {
+        if (in_array($node, [Post::MICROBLOG_NODE, Post::STORIES_NODE])) {
             $config['pubsub#access_model'] = 'presence';
             $config['pubsub#notify_retract'] = 'true';
         }

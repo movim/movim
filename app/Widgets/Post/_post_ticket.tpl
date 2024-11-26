@@ -1,5 +1,5 @@
 <li id="{$post->nodeid|cleanupId}"
-    class="block ticket {if="$post->embed"}embed{/if}"
+    class="block ticket {if="$post->embed"}embed{/if} {if="$post->isStory()"}story{/if}"
 
     {if="$public"}
         {if="$post->isMicroblog()"}
@@ -8,7 +8,11 @@
             onclick="MovimUtils.reload('{$c->route('community', [$post->server, $post->node, $post->nodeid])}')"
         {/if}
     {else}
-        onclick="MovimUtils.reload('{$c->route('post', [$post->server, $post->node, $post->nodeid])}'); Drawer.clear()"
+        {if="$post->isStory()"}
+            onclick="StoriesViewer_ajaxGet({$post->id})"
+        {else}
+            onclick="MovimUtils.reload('{$c->route('post', [$post->server, $post->node, $post->nodeid])}'); Drawer.clear()"
+        {/if}
     {/if}
 >
     {if="$post->picture != null"}
@@ -38,24 +42,21 @@
         </span>
     {/if}
     <div>
-        {if="!$post->isBrief()"}
-            <p class="line two" title="{$post->title}">
+        {if="$post->isBrief()"}
+            <p class="line {if="!$post->isStory()"}normal brief two{/if}" title="{$post->title}">
+                {autoescape="off"}
+                    {$post->title}
+                {/autoescape}
+            </p>
+        {else}
+            <p class="line {if="!$post->isStory()"}two{/if}" title="{$post->title}">
                 {autoescape="off"}
                     {$post->title}
                 {/autoescape}
             </p>
             <p dir="auto">{autoescape="off"}{$post->getSummary()|prepareString}{/autoescape}</p>
         {/if}
-
-        {if="$post->isBrief()"}
-            <p class="normal brief line two" title="{$post->title}">
-                {autoescape="off"}
-                    {$post->title}
-                {/autoescape}
-            </p>
-        {/if}
-        <p>
-
+        <p class="line">
             {if="$post->contact"}
                 <span class="icon bubble tiny">
                     <img src="{$post->contact->getPicture()}">

@@ -23,9 +23,7 @@ var Snap = {
 
         Snap.getStream().then(Snap.getDevices).then(Snap.gotDevices);
 
-        document.querySelector("#snap #snapshoot").onclick = () => {
-            Snap.shoot();
-        };
+        document.querySelector("#snap #snapshoot").onclick = () => Snap.shoot();
 
         document.querySelector("#snap #snapswitch").onclick = () => {
             Snap.snap.classList = 'init';
@@ -72,9 +70,7 @@ var Snap = {
         let stream = Snap.video.srcObject;
 
         if (stream) {
-            stream.getTracks().forEach(function (track) {
-                track.stop();
-            });
+            stream.getTracks().forEach(track => track.stop());
         }
 
         Snap.video.srcObject = null;
@@ -140,6 +136,7 @@ var Snap = {
             document.querySelector("#snap #snapswitch").classList.add('enabled');
         }
     },
+
     shoot: function () {
         if (Snap.imageCapture) {
             Snap.imageCapture.takePhoto()

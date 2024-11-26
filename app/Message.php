@@ -11,6 +11,7 @@ use Movim\Session;
 use Illuminate\Database\QueryException;
 use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
+use Movim\XMPPUri;
 use Moxl\Xec\Action\BOB\Request;
 
 class Message extends Model
@@ -79,6 +80,11 @@ class Message extends Model
     public function user()
     {
         return $this->belongsTo('App\User');
+    }
+
+    public function post()
+    {
+        return $this->belongsTo('App\Post', 'postid', 'id');
     }
 
     public function scopeJid($query, string $jid)
@@ -554,6 +560,12 @@ class Message extends Model
 
                         $this->picture = $messageFile->isPicture;
                         $this->messageFiles->push($messageFile);
+                    }
+                } else {
+                    $xmppUri = new XMPPUri((string)$stanza->reference->attributes()->uri);
+
+                    if ($post = $xmppUri->getPost()) {
+                        $this->postid = $post->id;
                     }
                 }
             }

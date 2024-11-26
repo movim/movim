@@ -1,0 +1,161 @@
+#publishstories {
+    top: 0;
+    left: 0;
+    background-color: rgb(var(--movim-gray));
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    position: absolute;
+    transform: translateX(-100%);
+    transition: transform 0.4s;
+}
+
+#publishstories:after {
+    content: "Movim Stories - Beta";
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    font-size: 2.5rem;
+    opacity: 0.5;
+    color: white;
+}
+
+#publishstories.show,
+#publishstories.shoot,
+#publishstories.edit {
+    transform: translateX(0);
+}
+
+#publishstories #publishstoriesbackedit {
+    margin-left: -0.5rem;
+}
+
+#publishstories #publishstoriesshoot,
+#publishstories #publishstoriesgallery,
+#publishstories #publishstoriesswitch,
+#publishstories #publishstoriesclose,
+#publishstories #publishstoriessource,
+#publishstories #publishstoriesnext,
+#publishstories #publishactions,
+#publishstories #publishstoriesbackedit,
+#publishstories.edit.publish #publishstoriesback,
+#publishstories.edit.publish #publishstoriesnext,
+#publishstories.edit.publish #publishstoriesclose,
+#publishstories form {
+    display: none;
+}
+
+#publishstories.shoot #publishstoriesshoot,
+#publishstories.shoot #publishstoriesgallery,
+#publishstories.shoot select:has(option:nth-child(2)) ~ ul #publishstoriesswitch,
+#publishstories.edit #publishstoriesclose,
+#publishstories.edit form,
+#publishstories.edit #publishstoriesnext,
+#publishstories.edit.publish #publishactions,
+#publishstories.edit.publish #publishstoriesbackedit {
+    display: initial;
+}
+
+#publishstories input[type=file] {
+    display: none;
+}
+
+#publishstories #publishactions,
+#publishstories form {
+    position: absolute;
+    width: 100%;
+    bottom: 3rem;
+    left: 50%;
+    translate: -50%;
+    max-width: calc(56.25vh - 8.25rem); /* 16:9 */
+}
+
+#publishstories form {
+    background-image: linear-gradient(to bottom, transparent, rgba(var(--movim-background-main),1) 100%);
+    padding: 1.5rem 2rem;
+    box-sizing: border-box;
+    bottom: 7.25rem;
+    border-radius: 2rem;
+    animation: fadein 0.5s;
+    transition: bottom 0.3s, max-width 0.3s;
+}
+
+#publishstories canvas,
+#publishstories video {
+    aspect-ratio: 9 / 16;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    animation: zoom 0.3s;
+    transition: top 0.3s, height 0.3s;
+}
+
+#publishstories .bottom_center {
+    width: 100%;
+    position: absolute;
+    bottom: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+#publishstories .bottom_center > button {
+    position: relative;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    right: 0;
+}
+
+#publishstories video {
+    background-image: url(../theme/img/movim_cloud.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    object-fit: cover;
+}
+
+#publishstories.shoot canvas,
+#publishstories.edit video {
+    display: none;
+}
+
+#publishstories.edit canvas {
+    animation: zoomOut 0.3s;
+    border-radius: 2rem;
+    height: calc(100% - 15rem);
+    box-shadow: var(--elevation-5);
+}
+
+#publishstories #publishactions {
+    animation: fadein 0.5s;
+    max-height: 7rem;
+    overflow: hidden;
+}
+
+#publishstories #publishactions ul {
+    transition: transform 0.3s;
+}
+
+#publishstories #publishactions.uploading ul {
+    transform: translateY(-7rem);
+}
+
+#publishstories #publishactions.publishing ul {
+    transform: translateY(-14rem);
+}
+
+#publishstories.edit.publish canvas {
+    top: calc(50% - 2rem);
+    height: calc(100% - 21rem);
+    pointer-events: none;
+}
+
+#publishstories.edit.publish form {
+    bottom: 12.5rem;
+    max-width: calc(56.25vh - 11.5rem);
+}
+
+#publishstories.edit.publish form textarea {
+    pointer-events: none;
+    box-shadow: none;
+}

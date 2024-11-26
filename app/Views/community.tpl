@@ -5,7 +5,7 @@
     <?php $this->widget('SendTo');?>
     <?php if(\App\User::me()->hasOMEMO()) $this->widget('ChatOmemo');?>
     <?php $this->widget('Location');?>
-
+    <?php $this->widget('PublishStories');?>
     <?php $this->widget('PostActions');?>
 
     <nav class="color dark">

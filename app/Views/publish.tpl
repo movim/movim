@@ -23,3 +23,4 @@
 
 <?php $this->widget('Snap');?>
 <?php $this->widget('Draw');?>
+<?php $this->widget('PublishStories');?>

@@ -2,6 +2,7 @@
 
 namespace App\Widgets\Config;
 
+use App\Post;
 use App\Widgets\Dialog\Dialog;
 use App\Widgets\Toast\Toast;
 use Movim\i18n\Locale;
@@ -96,7 +97,7 @@ class Config extends Base
     public function ajaxBlogGetConfig()
     {
         if ($this->user->hasPubsub()) {
-            (new PubsubGetConfig)->setNode('urn:xmpp:microblog:0')->request();
+            (new PubsubGetConfig)->setNode(Post::MICROBLOG_NODE)->request();
         }
     }
 
@@ -104,7 +105,7 @@ class Config extends Base
     {
         if ($this->user->hasPubsub()) {
             $r = new PubsubSetConfig;
-            $r->setNode('urn:xmpp:microblog:0')
+            $r->setNode(Post::MICROBLOG_NODE)
               ->setData(formToArray($data))
               ->request();
         }

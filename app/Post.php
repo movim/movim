@@ -5,6 +5,7 @@ namespace App;
 use Respect\Validation\Validator;
 
 use Awobaz\Compoships\Database\Eloquent\Model;
+use Carbon\Carbon;
 use Illuminate\Database\Capsule\Manager as DB;
 use SimpleXMLElement;
 
@@ -36,6 +37,9 @@ class Post extends Model
 
     public $attachments = [];
     public $tags = [];
+
+    public const MICROBLOG_NODE = 'urn:xmpp:microblog:0';
+    public const STORIES_NODE = 'urn:xmpp:pubsub-social-feed:stories:0';
 
     public function contact()
     {
@@ -183,12 +187,12 @@ class Post extends Model
 
     public function scopeRestrictToMicroblog($query)
     {
-        return $query->where('posts.node', 'urn:xmpp:microblog:0');
+        return $query->where('posts.node', Post::MICROBLOG_NODE);
     }
 
     public function scopeRestrictToCommunities($query)
     {
-        return $query->where('posts.node', '!=', 'urn:xmpp:microblog:0');
+        return $query->where('posts.node', '!=', Post::MICROBLOG_NODE);
     }
 
     public function scopeWithoutComments($query)
@@ -235,10 +239,11 @@ class Post extends Model
         );
     }
 
-    protected function withContactsScope($query)
+    protected function withContactsScope($query, string $node = Post::MICROBLOG_NODE)
     {
         return $query->unionAll(
             DB::table('posts')
+                ->where('node', $node)
                 ->whereIn('posts.server', function ($query) {
                     $query->from('rosters')
                         ->select('jid')
@@ -253,11 +258,11 @@ class Post extends Model
         return $this->withContactsScope($query);
     }
 
-    protected function withMineScope($query)
+    protected function withMineScope($query, string $node = Post::MICROBLOG_NODE)
     {
         return $query->unionAll(
             DB::table('posts')
-                ->where('node', 'urn:xmpp:microblog:0')
+                ->where('node', $node)
                 ->where('server', \App\User::me()->id)
         );
     }
@@ -289,7 +294,28 @@ class Post extends Model
         return $this->withSubscriptionsScope($query);
     }
 
-    public function getPreviousAttribute()
+    public function scopeMyStories($query, ?int $id = null)
+    {
+        $query = $query->whereIn('id', function ($query) {
+                $filters = DB::table('posts')->where('id', -1);
+
+                $filters = \App\Post::withMineScope($filters, Post::STORIES_NODE);
+                $filters = \App\Post::withContactsScope($filters, Post::STORIES_NODE);
+
+                $query->select('id')->from(
+                    $filters,
+                    'posts'
+                );
+            })
+            ->where('published', '>', Carbon::now()->subDay())
+            ->orderBy('published', 'desc');
+
+        if ($id != null) $query = $query->where('id', $id);
+
+        return $query;
+    }
+
+    public function getPreviousAttribute(): ?Post
     {
         return \App\Post::where('server', $this->server)
             ->where('node', $this->node)
@@ -299,7 +325,7 @@ class Post extends Model
             ->first();
     }
 
-    public function getNextAttribute()
+    public function getNextAttribute(): ?Post
     {
         return \App\Post::where('server', $this->server)
             ->where('node', $this->node)
@@ -307,6 +333,11 @@ class Post extends Model
             ->orderBy('published')
             ->where('open', true)
             ->first();
+    }
+
+    public function getSeenAttribute(): bool
+    {
+        return $this->userViews->contains('user_id', $this->user->id);
     }
 
     public function getTruenameAttribute()
@@ -751,6 +782,11 @@ class Post extends Model
     public function isRTL(): bool
     {
         return (isRTL($this->contentraw ?? '') || isRTL($this->title ?? ''));
+    }
+
+    public function isStory(): bool
+    {
+        return $this->node == Post::STORIES_NODE;
     }
 
     public function isComment(): bool

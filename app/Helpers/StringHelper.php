@@ -1,5 +1,6 @@
 <?php
 
+use App\Post;
 use Movim\Route;
 
 function addUrls($string, bool $preview = false)
@@ -174,41 +175,6 @@ function getCid($string): ?array
     }
 
     return null;
-}
-
-/**
- * @desc Explode a XMPP URI
- */
-function explodeXMPPURI(string $uri): array
-{
-    $uri = parse_url($uri);
-    $microblogNamespace = urlencode('urn:xmpp:microblog:0');
-
-    if ($uri && $uri['scheme'] == 'xmpp') {
-        if (isset($uri['query'])) {
-            if ($uri['query'] == 'join') {
-                return ['type' => 'room', 'params' => $uri['path']];
-            }
-
-            $params = explodeQueryParams($uri['query']);
-
-            if (isset($params['node']) && $params['node'] != $microblogNamespace) {
-                if (isset($params['item'])) {
-                    return ['type' => 'post', 'params' => [$uri['path'], $params['node'], $params['item']]];
-                }
-
-                return ['type' => 'community', 'params' => [$uri['path'], $params['node']]];
-            } else if (isset($params['node']) && $params['node'] == $microblogNamespace) {
-                return ['type' => 'contact', 'params' => $uri['path']];
-            }
-        } elseif (isset($uri['host']) && isset($uri['user'])) {
-            return ['type' => 'contact', 'params' => $uri['user'] . '@' . $uri['host']];
-        } else {
-            return ['type' => 'contact', 'params' => $uri['path']];
-        }
-    }
-
-    return ['type' => null];
 }
 
 /**
