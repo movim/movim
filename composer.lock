@@ -5149,16 +5149,16 @@
         },
         {
             "name": "respect/validation",
-            "version": "2.3.7",
+            "version": "2.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Respect/Validation.git",
-                "reference": "967f7b6cc71e3728bb0f766cc1aea0604b2955aa"
+                "reference": "25ce44c7ee9613d260c7c0e44e27daa2131f383a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Respect/Validation/zipball/967f7b6cc71e3728bb0f766cc1aea0604b2955aa",
-                "reference": "967f7b6cc71e3728bb0f766cc1aea0604b2955aa",
+                "url": "https://api.github.com/repos/Respect/Validation/zipball/25ce44c7ee9613d260c7c0e44e27daa2131f383a",
+                "reference": "25ce44c7ee9613d260c7c0e44e27daa2131f383a",
                 "shasum": ""
             },
             "require": {
@@ -5211,9 +5211,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Respect/Validation/issues",
-                "source": "https://github.com/Respect/Validation/tree/2.3.7"
+                "source": "https://github.com/Respect/Validation/tree/2.3.8"
             },
-            "time": "2024-04-13T09:45:55+00:00"
+            "time": "2024-11-26T09:14:36+00:00"
         },
         {
             "name": "robmorgan/phinx",
