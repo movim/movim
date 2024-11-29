@@ -458,6 +458,7 @@ ul.tabs>li>* {
     padding: 0 3rem;
     box-sizing: border-box;
     display: inline-block;
+    width: 100%;
 }
 
 ul.tabs>li>*>i {
