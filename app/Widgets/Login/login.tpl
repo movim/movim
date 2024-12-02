@@ -1,27 +1,27 @@
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function dcl() {
+        document.removeEventListener('DOMContentLoaded', dcl, false);
+        if (typeof navigator.registerProtocolHandler == 'function') {
+            navigator.registerProtocolHandler('xmpp',
+                                          '{$c->route("share")}/%s',
+                                          'Movim');
+        }
+
+        Login.domain = '{$domain}';
+        {if="isset($httpAuthUser)"}
+            localStorage.username = '{$httpAuthUser}';
+            MovimWebsocket.attach(function() {
+                MovimWebsocket.connection.register('{$httpAuthHost}');
+            });
+            MovimWebsocket.register(function() {
+                Login_ajaxHTTPLogin('{$httpAuthUser}', '{$httpAuthPassword}', Intl.DateTimeFormat().resolvedOptions().timeZone);
+            });
+         {/if}
+    }, false);
+</script>
+
 <div id="login_widget">
-    <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function dcl() {
-            document.removeEventListener('DOMContentLoaded', dcl, false);
-            if (typeof navigator.registerProtocolHandler == 'function') {
-                navigator.registerProtocolHandler('xmpp',
-                                              '{$c->route("share")}/%s',
-                                              'Movim');
-            }
-
-            Login.domain = '{$domain}';
-            {if="isset($httpAuthUser)"}
-                localStorage.username = '{$httpAuthUser}';
-                MovimWebsocket.attach(function() {
-                    MovimWebsocket.connection.register('{$httpAuthHost}');
-                });
-                MovimWebsocket.register(function() {
-                    Login_ajaxHTTPLogin('{$httpAuthUser}', '{$httpAuthPassword}', Intl.DateTimeFormat().resolvedOptions().timeZone);
-                });
-             {/if}
-        }, false);
-    </script>
-
-    <div class="logo"></div>
+    <!--<div class="logo"></div>-->
 
     <div id="form" class="dialog">
         <section>
@@ -29,7 +29,7 @@
                 <img class="banner" src="{$banner}">
             {/if}
             {if="$invitation != null"}
-                <ul class="list middle invite">
+                <ul class="list thick invite">
                     <li>
                         <span class="primary icon bubble">
                             <img src="{$contact->getPicture(\Movim\ImageSize::M)}">
@@ -85,7 +85,7 @@
                 </ul>
 
                 <div>
-                    <ul class="list thin">
+                    <ul class="list middle">
                         <li>
                             <div>
                                 <p class="center">
@@ -111,12 +111,12 @@
 
     <div id="form" class="dialog more">
         <section>
-            <span class="info">{$c->__('form.connected')}: {$connected} - {$c->__('form.population')}: {$pop}</span>
             {if="$admins->count() > 0"}
-                <ul class="list thin active">
+                <ul class="list middle active">
                     <li class="subheader">
                         <div>
                             <p>
+                                <span class="info">{$c->__('form.connected')}: {$connected} - {$c->__('form.population')}: {$pop}</span>
                                 {$c->__('form.pod_admins')}
                             </p>
                         </div>
@@ -151,27 +151,23 @@
             {/if}
 
             {if="isset($info)"}
-                <ul class="list thin card">
-                    <li class="info">
+                <ul class="list">
+                    <li>
                         <div>
-                            <p></p>
+                            <p>
                             {autoescape="off"}
                                 {$info}
                             {/autoescape}
+                            </p>
                         </div>
                     </li>
                 </ul>
             {/if}
 
-            <ul class="list thin">
-                <li class="subheader">
-                    <div>
-                        <p>About Movim</p>
-                    </div>
-                </li>
+            <ul class="list thick about">
                 <li>
                     <div>
-                        <p></p>
+                        <p>About Movim</p>
                         <p>
                             {$c->__('about_movim.info')} <br />
                             <a href="https://movim.eu" target="_blank">{$c->__('about_movim.website', 'movim.eu')}</a>
