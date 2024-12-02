@@ -18,9 +18,12 @@ class Get extends Action
     protected $_after;
     protected $_before;
     protected string $_version = '2';
+    protected $_counter = 0;
 
     public function request()
     {
+        if ($this->_counter > 3) return; // prevent loop
+
         $session = Session::instance();
 
         // Generating the queryid key.
@@ -58,7 +61,7 @@ class Get extends Action
             && (!isset($stanza->fin->attributes()->complete) || $stanza->fin->attributes()->complete != 'true')
             && isset($stanza->fin->set) && $stanza->fin->set->attributes()->xmlns == 'http://jabber.org/protocol/rsm'
             && isset($stanza->fin->set->last)
-            && $this->_after != (string)$stanza->fin->set->last // prevent loop
+            && $this->_after != (string)$stanza->fin->set->last
         ) {
             $g = new Get;
             $g->setJid($this->_jid);
@@ -69,6 +72,7 @@ class Get extends Action
             $g->setBefore($this->_before);
             $g->setVersion($this->_version);
             $g->setAfter((string)$stanza->fin->set->last);
+            $g->setCounter($this->_counter++);
             $g->request();
         }
     }
