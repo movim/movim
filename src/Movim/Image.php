@@ -224,15 +224,16 @@ class Image
             if ($format == 'jpeg') {
                 $this->_im->setImageCompression(\Imagick::COMPRESSION_JPEG);
                 $this->_im->setInterlaceScheme(\Imagick::INTERLACE_PLANE);
-
-                // Put 11 as a value for now, see http://php.net/manual/en/imagick.flattenimages.php#116956
-                $this->_im->setImageAlphaChannel(\Imagick::ALPHACHANNEL_REMOVE);
-                //$this->_im->setImageAlphaChannel(11);
+                $this->_im->setImageAlphaChannel(\Imagick::getVersion()['versionNumber'] >= 1808
+                    ? \Imagick::ALPHACHANNEL_OFF
+                    : \Imagick::ALPHACHANNEL_REMOVE);
                 $this->_im->setImageBackgroundColor('#ffffff');
             }
 
             if ($format == 'webp') {
-                $this->_im->setImageAlphaChannel(\Imagick::ALPHACHANNEL_ACTIVATE);
+                $this->_im->setImageAlphaChannel(\Imagick::getVersion()['versionNumber'] >= 1808
+                    ? \Imagick::ALPHACHANNEL_ON
+                    : \Imagick::ALPHACHANNEL_ACTIVATE);
                 $this->_im->setBackgroundColor(new \ImagickPixel('transparent'));
             }
 

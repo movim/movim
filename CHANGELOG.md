@@ -24,6 +24,7 @@ v0.28.1 (master)
 * Fix #1371 Make members and presences ordering in Group and Public Rooms similar
 * CSS and view cleanup, refactorize and remove some useless classes
 * Cleanup and simplify the CSS
+* Fix #1046 Corrupted WEBP images for Imagick 7, thanks to @TheBluestBird help (PR #1122)
 
 v0.28
 ---------------------------
