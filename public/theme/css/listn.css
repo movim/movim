@@ -123,7 +123,7 @@ ul.list li>span.control {
     order: 3;
 }
 
-ul.list li>span.control:last-of-type:not(:has(>.checkbox)) {
+ul.list li>span.control:last-of-type:not(:has(>.checkbox)):not(.toggleable) {
     margin-right: -1.5rem;
 }
 

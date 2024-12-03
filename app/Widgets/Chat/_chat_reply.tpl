@@ -4,7 +4,7 @@
             <span class="primary icon">
                 <i class="material-symbols">reply</i>
             </span>
-            <span class="control icon active" onclick="Chat_ajaxClearReply()">
+            <span class="control icon active toggleable" onclick="Chat_ajaxClearReply()">
                 <i class="material-symbols">close</i>
             </span>
             <div class="parent">
