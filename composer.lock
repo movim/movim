@@ -1286,16 +1286,16 @@
         },
         {
             "name": "embed/embed",
-            "version": "v4.4.13",
+            "version": "v4.4.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/Embed.git",
-                "reference": "a1da3d425520bf68cefebc29e39c6122a69d7b18"
+                "reference": "a66487b30b40c97fbec266789acf8684d93f0bee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/a1da3d425520bf68cefebc29e39c6122a69d7b18",
-                "reference": "a1da3d425520bf68cefebc29e39c6122a69d7b18",
+                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/a66487b30b40c97fbec266789acf8684d93f0bee",
+                "reference": "a66487b30b40c97fbec266789acf8684d93f0bee",
                 "shasum": ""
             },
             "require": {
@@ -1355,7 +1355,7 @@
             "support": {
                 "email": "oom@oscarotero.com",
                 "issues": "https://github.com/oscarotero/Embed/issues",
-                "source": "https://github.com/oscarotero/Embed/tree/v4.4.13"
+                "source": "https://github.com/oscarotero/Embed/tree/v4.4.14"
             },
             "funding": [
                 {
@@ -1371,7 +1371,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2024-11-21T20:13:38+00:00"
+            "time": "2024-12-04T20:11:03+00:00"
         },
         {
             "name": "evenement/evenement",

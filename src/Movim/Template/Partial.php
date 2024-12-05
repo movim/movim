@@ -50,7 +50,7 @@ class Partial extends Tpl
         } else {
             foreach (glob(
                     CACHE_PATH .
-                        sha1(User::me()->id) .
+                        hash('sha256', User::me()->id) .
                         '_' .
                         $templateFilePath .
                         '_' .
@@ -75,6 +75,6 @@ class Partial extends Tpl
 
     private function resolvedCacheKey(string $templateFilePath, string $key): string
     {
-        return CACHE_PATH . sha1(User::me()->id) . '_' . $templateFilePath . '_' . hash('sha256', $key) . $this->extension;
+        return CACHE_PATH . hash('sha256', User::me()->id) . '_' . $templateFilePath . '_' . hash('sha256', $key) . $this->extension;
     }
 }
