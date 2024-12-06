@@ -305,7 +305,7 @@ var PublishStories = {
         }
         else if (e.type == "touchmove" && e.touches.length == 2) {
             PublishStories.isDragging = false
-            handlePinch(e)
+            PublishStories.handlePinch(e)
         }
     },
 
@@ -322,7 +322,7 @@ var PublishStories = {
             PublishStories.initialPinchDistance = currentDistance
         }
         else {
-            adjustZoom(null, currentDistance / PublishStories.initialPinchDistance)
+            PublishStories.adjustZoom(null, currentDistance / PublishStories.initialPinchDistance)
         }
     },
 
@@ -332,14 +332,11 @@ var PublishStories = {
                 PublishStories.cameraZoom += zoomAmount
             }
             else if (zoomFactor) {
-                console.log(zoomFactor)
                 PublishStories.cameraZoom = zoomFactor * PublishStories.lastZoom
             }
 
             PublishStories.cameraZoom = Math.min(PublishStories.cameraZoom, MAX_ZOOM)
             PublishStories.cameraZoom = Math.max(PublishStories.cameraZoom, MIN_ZOOM)
-
-            console.log(zoomAmount)
         }
     }
 }

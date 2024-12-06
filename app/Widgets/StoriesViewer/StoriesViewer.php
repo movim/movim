@@ -33,7 +33,10 @@ class StoriesViewer extends Base
     {
         $post = Post::myStories()->where('published', '<', $before)->first();
 
-        if (!$post || $post->seen) $this->rpc('StoriesViewer.close');
+        if (!$post || $post->seen) {
+            $this->rpc('StoriesViewer.close');
+            return;
+        }
 
         $view = $this->tpl();
         $post->userViews()->syncWithoutDetaching($this->user->id);

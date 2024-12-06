@@ -469,6 +469,6 @@ Upload.progress((percent) => {
     }
 });
 
-MovimEvents.registerBody('touchstart', 'draw', () => Draw.disableForCanvas());
-MovimEvents.registerBody('touchend', 'draw', () => Draw.disableForCanvas());
-MovimEvents.registerBody('touchmove', 'draw', () => Draw.disableForCanvas());
+MovimEvents.registerBody('touchstart', 'draw', (e) => Draw.disableForCanvas(e));
+MovimEvents.registerBody('touchend', 'draw', (e) => Draw.disableForCanvas(e));
+MovimEvents.registerBody('touchmove', 'draw', (e) => Draw.disableForCanvas(e));
