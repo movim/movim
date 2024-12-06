@@ -42,6 +42,16 @@ var PublishStories = {
         PublishStories.canvas.addEventListener('touchmove', (e) => PublishStories.handleTouch(e, PublishStories.onPointerMove));
         PublishStories.canvas.addEventListener('wheel', (e) => PublishStories.adjustZoom(e.deltaY * SCROLL_SENSITIVITY));
 
+        PublishStories.main.querySelector('#publishstoriesswitch').onclick = () => {
+            PublishStories.videoSelect.selectedIndex++;
+            if (PublishStories.videoSelect.selectedIndex == -1) {
+                PublishStories.videoSelect.selectedIndex++;
+            }
+
+            Toast.send(PublishStories.videoSelect.options[PublishStories.videoSelect.selectedIndex].label);
+            PublishStories.getStream();
+        };
+
         PublishStories.main.classList = 'show';
         PublishStories.back.onclick = () => { history.back(); };
 
