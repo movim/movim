@@ -1362,6 +1362,10 @@ class Chat extends \Movim\Widget\Base
                 } else {
                     $p = new Post();
                     $message->card = $p->prepareTicket($post);
+
+                    if ($message->body == null) {
+                        $message->body = '';
+                    }
                 }
             } elseif (isset($message->file) && $message->file->type != 'xmpp') {
                 $message->body = '';
@@ -1375,6 +1379,10 @@ class Chat extends \Movim\Widget\Base
             $resolved = $message->resolvedUrl->cache;
             if ($resolved) {
                 $message->card =  $this->prepareEmbed($resolved);
+            }
+
+            if ($message->body == null) {
+                $message->body = '';
             }
         }
 
