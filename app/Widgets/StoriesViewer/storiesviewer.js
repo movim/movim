@@ -17,10 +17,10 @@ var StoriesViewer = {
         clearTimeout(StoriesViewer.timer);
 
         let image = StoriesViewer.story.querySelector('img');
-        image.addEventListener('mousedown', e => StoriesViewer.pause());
-        image.addEventListener('touchstart', e => StoriesViewer.pause());
-        image.addEventListener('mouseup', e => StoriesViewer.resume());
-        image.addEventListener('touchend', e => StoriesViewer.resume());
+        image.addEventListener('mousedown', e => { e.preventDefault(); StoriesViewer.pause()});
+        image.addEventListener('touchstart', e => { e.preventDefault(); StoriesViewer.pause()});
+        image.addEventListener('mouseup', e => { e.preventDefault(), StoriesViewer.resume()});
+        image.addEventListener('touchend', e => { e.preventDefault(), StoriesViewer.resume()});
 
 
         let next = StoriesViewer.story.querySelector('div.next');

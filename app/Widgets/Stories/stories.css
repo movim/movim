@@ -12,6 +12,7 @@
     grid-column: auto;
     order: 0;
     margin-bottom: 0.25rem;
+    animation: none;
 }
 
 #stories ul.list.flex li.block.add {
