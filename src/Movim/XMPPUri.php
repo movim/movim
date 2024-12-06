@@ -45,7 +45,7 @@ class XMPPUri
                 $this->params = [$this->uri['user'] . '@' . $this->uri['host']];
             } else {
                 $this->type = 'contact';
-                $this->params = $this->uri['path'];
+                $this->params = [$this->uri['path']];
             }
         }
     }
