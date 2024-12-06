@@ -1,5 +1,5 @@
-<?php $this->widget('Upload');?>
 <?php $this->widget('Search');?>
+<?php $this->widget('Upload');?>
 <?php $this->widget('Onboarding');?>
 <?php $this->widget('Notifications');?>
 <?php $this->widget('SendTo');?>
@@ -26,3 +26,4 @@
 
 <?php $this->widget('Snap');?>
 <?php $this->widget('Draw');?>
+<?php $this->widget('PublishStories');?>

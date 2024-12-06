@@ -771,11 +771,12 @@ ul.list li > div.bubble.file div.file a span.size:before {
 
 #chat_widget .bubble ul.card.list {
     max-width: 45rem;
+    padding: 0;
 }
 
-#chat_widget .bubble ul.card.list li p:first-child {
+/*#chat_widget .bubble ul.card.list li p:first-child {
     margin-right: 2rem;
-}
+}*/
 
 #chat_widget .bubble ul.card.list li span.primary:not(.thumb) {
     margin: 1rem 0;
@@ -799,6 +800,7 @@ ul.list li > div.bubble.file div.file a span.size:before {
 
 #chat_widget li.oppose .bubble ul.card.list {
     float: right;
+    grid-template-columns: none;
 }
 
 #chat_widget li.oppose .bubble ul.card.list+* {

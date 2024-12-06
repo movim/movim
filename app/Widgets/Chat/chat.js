@@ -1160,7 +1160,7 @@ var Chat = {
 
         if (data.card) {
             bubble.querySelector('div.bubble').classList.add('file');
-            msg.appendChild(Chat.getCardHtml(data.card));
+            msg.appendChild(Chat.getCardHtml(data.card, data.story));
         }
 
         msg.setAttribute('title', data.published);
@@ -1329,13 +1329,16 @@ var Chat = {
 
         return img;
     },
-    getCardHtml: function (card) {
+    getCardHtml: function (card, story) {
         var ul = document.createElement('ul');
-        ul.setAttribute('class', 'card list middle noanim shadow active');
-        ul.innerHTML = card;
 
-        if (ul.querySelector('li').getAttribute('onclick')) {
-            ul.classList.add('active');
+        ul.innerHTML = card;
+        ul.setAttribute('class', story
+            ? 'list card shadow flex fourth gallery active'
+            : 'list card middle noanim shadow active');
+
+        if (story) {
+            ul.querySelector('li').classList.add('story');
         }
 
         return ul;
@@ -1680,7 +1683,7 @@ MovimEvents.registerWindow('loaded', 'chat', () => {
     if (MovimUtils.isMobile()) Chat.touchEvents();
 
     Upload.attach((file) => {
-        if (Chat.getTextarea()) {
+        if (Chat.getTextarea() && PublishStories.main == undefined) {
             Chat_ajaxHttpDaemonSendMessage(
                 Chat.getTextarea().dataset.jid,
                 false,

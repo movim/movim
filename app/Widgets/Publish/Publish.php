@@ -15,6 +15,7 @@ use Cocur\Slugify\Slugify;
 
 use App\Draft;
 use App\DraftEmbed;
+use App\Post as AppPost;
 use App\Upload;
 use App\Widgets\Dialog\Dialog;
 use App\Widgets\Drawer\Drawer;
@@ -43,9 +44,9 @@ class Publish extends Base
             $this->ajaxCreateComments(($comments === true) ? $to : $comments, $id);
         }
 
-        if ($node == 'urn:xmpp:microblog:0') {
+        if ($node == AppPost::MICROBLOG_NODE) {
             $this->rpc('MovimUtils.softRedirect', $this->route('news'));
-        } else {
+        } elseif ($node != AppPost::STORIES_NODE) {
             $this->rpc('MovimUtils.softRedirect', $this->route('community', [$to, $node]));
         }
     }
@@ -454,14 +455,14 @@ class Publish extends Base
         }
 
         if ($node == null) {
-            $node = 'urn:xmpp:microblog:0';
+            $node = AppPost::MICROBLOG_NODE;
         }
 
         if ($nodeId == null) {
             $nodeId = '';
         }
 
-        if ($node == 'urn:xmpp:microblog:0') {
+        if ($node == AppPost::MICROBLOG_NODE) {
             $view->assign('icon', \App\Contact::firstOrNew(['id' => $server]));
         } else {
             $info = \App\Info::where('server', $server)

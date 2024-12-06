@@ -1,4 +1,5 @@
 <?php $this->widget('Search');?>
+<?php $this->widget('PublishStories');?>
 <?php $this->widget('Upload'); ?>
 <?php $this->widget('Notifications');?>
 <?php $this->widget('SendTo');?>

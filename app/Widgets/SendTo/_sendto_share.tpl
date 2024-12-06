@@ -1,11 +1,26 @@
 <section id="sendto">
     {if="$card"}
-        <ul class="list card middle active">
+        {if="$post->isStory()"}
+            <ul class="list card shadow flex fourth gallery">
+        {else}
+            <ul class="list card middle active">
+        {/if}
             <li class="subheader">
                 <div>
                     <p>{$c->__('button.send_to')}</p>
                 </div>
             </li>
+            {if="$post->isStory()"}
+                <li>
+                    <span class="primary icon blue">
+                        <i class="material-symbols">info</i>
+                    </span>
+                    <div>
+                        <p>{$c->__('stories.share_title')}</p>
+                        <p>{$c->__('stories.share_text')}</p>
+                    </div>
+                </li>
+            {/if}
             {autoescape="off"}
                 {$card}
             {/autoescape}
@@ -25,7 +40,7 @@
                         <img src="{$value->getPicture()}">
                     </span>
 
-                    <span class="control icon active gray" onclick="SendTo_ajaxSend('{$value->conference|echapJS}', true, '{$openlink}');">
+                    <span class="control icon active gray" onclick="SendTo_ajaxSend('{$value->conference|echapJS}', true, '{$uri}');">
                         <i class="material-symbols">send</i>
                     </span>
 
@@ -50,7 +65,7 @@
 
     <ul class="list thin" id="sendto_share_contacts">
         {autoescape="off"}
-            {$c->prepareContacts($contacts, $uri, $openlink)}
+            {$c->prepareContacts($contacts, $uri)}
         {/autoescape}
         <br />
         <li onclick="SendTo_ajaxGetMoreContacts('{$uri}')" class="active">

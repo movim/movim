@@ -117,7 +117,7 @@ class Message
 
             $dom2 = new \DOMDocument('1.0', 'UTF-8');
             $dom2->loadXml('<root>' . $html . '</root>');
-            $bar = $dom2->documentElement->firstChild; // we want to import the bar tree
+            $bar = $dom2->documentElement->firstChild; // we want to import the bare tree
             $body->appendChild($dom->importNode($bar, true));
 
             $xhtml->appendChild($body);

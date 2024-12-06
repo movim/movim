@@ -1,3 +1,11 @@
-#sendto ul.list:first-child li.block {
+#sendto ul.list:first-child li.block:not(.story) {
     margin: 0 1rem;
+}
+
+#sendto ul.list.flex.fourth.gallery:first-child {
+    grid-template-columns: 1fr auto;
+}
+
+#sendto ul.list.flex.fourth.gallery:first-child li:not(.subheader):not(.story) {
+    padding: 0;
 }

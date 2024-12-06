@@ -2,6 +2,7 @@
 
 namespace App\Widgets\CommunityPosts;
 
+use App\Post as AppPost;
 use App\Widgets\ContactActions\ContactActions;
 use App\Widgets\Post\Post;
 use Movim\Widget\Base;
@@ -55,7 +56,7 @@ class CommunityPosts extends Base
     {
         list($origin, $node) = array_values($packet->content);
 
-        if ($node != 'urn:xmpp:microblog:0') {
+        if ($node != AppPost::MICROBLOG_NODE) {
             if ($this->user->subscriptions()
                            ->where('server', $origin)
                            ->where('node', $node)
@@ -223,13 +224,13 @@ class CommunityPosts extends Base
 
         if ($first) {
             $view->assign('previouspage', $this->route(
-                $node == 'urn:xmpp:microblog:0' ? 'contact' : 'community',
+                $node == AppPost::MICROBLOG_NODE ? 'contact' : 'community',
                 [$origin, $node, $this->_beforeAfter.$first, $query]
             ));
         }
 
         $view->assign('nextpage', $this->route(
-            $node == 'urn:xmpp:microblog:0' ? 'contact' : 'community',
+            $node == AppPost::MICROBLOG_NODE ? 'contact' : 'community',
             [$origin, $node, $last, $query]
         ));
 
@@ -242,7 +243,7 @@ class CommunityPosts extends Base
     {
         $slugify = new Slugify;
 
-        $node = $this->get('n') != null ? $this->get('n') : 'urn:xmpp:microblog:0';
+        $node = $this->get('n') != null ? $this->get('n') : AppPost::MICROBLOG_NODE;
         $this->view->assign('class', $slugify->slugify('c'.$this->get('s').'_'.$node));
     }
 }

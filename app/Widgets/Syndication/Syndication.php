@@ -2,6 +2,7 @@
 
 namespace App\Widgets\Syndication;
 
+use App\Post;
 use Movim\ImageSize;
 use Movim\Widget\Base;
 
@@ -19,7 +20,7 @@ class Syndication extends Base
         $item = $contact = null;
 
         if (filter_var($from, FILTER_VALIDATE_EMAIL)) {
-            $node = 'urn:xmpp:microblog:0';
+            $node = Post::MICROBLOG_NODE;
             $contact = \App\Contact::firstOrNew(['id' => $from]);
         } elseif (!$this->get('n')) {
             return;

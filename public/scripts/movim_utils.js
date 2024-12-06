@@ -362,8 +362,19 @@ var MovimUtils = {
         }
         img.src = testImageURL
     },
+    applyOrientation: function (ctx, orientation, width, height) {
+        switch (orientation) {
+            case 2: ctx.transform(-1, 0, 0, 1, width, 0); break;
+            case 3: ctx.transform(-1, 0, 0, -1, width, height); break;
+            case 4: ctx.transform(1, 0, 0, -1, 0, height); break;
+            case 5: ctx.transform(0, 1, 1, 0, 0, 0); break;
+            case 6: ctx.transform(0, 1, -1, 0, height, 0); break;
+            case 7: ctx.transform(0, -1, -1, 0, height, width); break;
+            case 8: ctx.transform(0, -1, 1, 0, 0, width); break;
+            default: ctx.transform(1, 0, 0, 1, 0, 0);
+        }
+    },
     drawImageProp: function (ctx, img, x, y, w, h, offsetX, offsetY) {
-
         if (arguments.length === 2) {
             x = y = 0;
             w = ctx.canvas.width;
@@ -408,6 +419,20 @@ var MovimUtils = {
 
         // fill image in dest. rectangle
         ctx.drawImage(img, cx, cy, cw, ch, x, y, w, h);
+    },
+    imageToHex: function (img) {
+        const context = document.createElement("canvas").getContext("2d");
+        context.drawImage(img, 0, 0, 1, 1);
+        const i = context.getImageData(0, 0, 1, 1).data;
+        return "#" + ((1 << 24) + (i[0] << 16) + (i[1] << 8) + i[2]).toString(16).slice(1);
+    },
+    getEventLocation: function (e) {
+        if (e.touches && e.touches.length == 1) {
+            return { x: e.touches[0].clientX, y: e.touches[0].clientY }
+        }
+        else if (e.clientX && e.clientY) {
+            return { x: e.clientX, y: e.clientY }
+        }
     },
     base64ToBinary: function (base64) {
         return new Uint8Array(atob(base64).split('').map(x => x.charCodeAt(0)));

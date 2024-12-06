@@ -16,6 +16,7 @@ use Moxl\Stanza\Stream;
 use Movim\Daemon\Session;
 
 use App\BundleCapabilityResolver;
+use App\Post;
 use App\Widgets\Chats\Chats;
 use App\Widgets\Dialog\Dialog;
 use Moxl\Xec\Action\Blocking\Request;
@@ -180,7 +181,7 @@ class Presence extends Base
     {
         $r = new GetItemsId;
         $r->setTo($this->user->id)
-          ->setNode('urn:xmpp:microblog:0')
+          ->setNode(Post::MICROBLOG_NODE)
           ->request();
     }
 

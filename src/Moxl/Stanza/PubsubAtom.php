@@ -2,6 +2,8 @@
 
 namespace Moxl\Stanza;
 
+use App\Post;
+
 class PubsubAtom
 {
     public $id;
@@ -96,7 +98,7 @@ class PubsubAtom
             $link->setAttribute('title', $this->title);
 
             // Not very elegant
-            if ($this->node == 'urn:xmpp:microblog:0') {
+            if ($this->node == Post::MICROBLOG_NODE) {
                 $link->setAttribute('href', \Movim\Route::urlize('blog', [$this->to, $this->id]));
             } else {
                 $link->setAttribute('href', \Movim\Route::urlize('community', [$this->to, $this->node, $this->id]));

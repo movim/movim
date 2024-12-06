@@ -1,0 +1,1 @@
+<i class="material-symbols icon red">article</i> {$c->__('stories.forbidden')}: <span class="bubble icon tiny"><img src="{$post->contact->getPicture(\Movim\ImageSize::S)}"></span><a href="#" onclick="MovimUtils.reload('{$c->route('contact', $post->server)}')">{$post->contact->truename}</a>

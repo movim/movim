@@ -2,12 +2,14 @@
 
 namespace App\Widgets\SendTo;
 
+use App\MessageFile;
 use App\Widgets\Chat\Chat;
 use App\Widgets\Drawer\Drawer;
 use App\Widgets\Post\Post;
 use App\Widgets\Toast\Toast;
 use Movim\Template\Partial;
 use Movim\Widget\Base;
+use Movim\XMPPUri;
 
 class SendTo extends Base
 {
@@ -31,11 +33,9 @@ class SendTo extends Base
         }
     }
 
-    public function ajaxShareArticle($link, $osShare = false)
+    public function ajaxShareArticle(string $uri, $osShare = false)
     {
         $view = $this->tpl();
-
-        $uri = explodeXMPPURI($link);
 
         $view->assign('post', null);
         $view->assign('card', null);
@@ -55,19 +55,16 @@ class SendTo extends Base
         Drawer::fill('send_to_article', $view->draw('_sendto_article'));
     }
 
-    public function ajaxSendContact($link)
+    public function ajaxSendContact(string $uri)
     {
         $view = $this->tpl();
 
-        $uri = explodeXMPPURI($link);
-
+        $view->assign('uri', $uri);
         $view->assign('post', null);
         $view->assign('card', null);
-        $view->assign('openlink', false);
 
         $this->resolveUriInView($uri, $view);
 
-        $view->assign('uri', $link);
         $conferences = $this->user->session->conferences()
                             ->with('info', 'contact')
                             ->has('presence')
@@ -85,7 +82,7 @@ class SendTo extends Base
         $this->rpc('SendTo.init');
     }
 
-    public function ajaxSend(string $to, bool $muc = false, string $message)
+    public function ajaxSend(string $to, bool $muc, string $uri)
     {
         Toast::send($muc
             ? $this->__('sendto.shared_chatroom')
@@ -93,48 +90,58 @@ class SendTo extends Base
         );
         $this->rpc('Drawer.clear');
 
+        $message = '';
+        $xmppUri = new XMPPUri($uri);
+
+        if ($xmppUri->getType() == 'post') {
+            $post = $xmppUri->getPost();
+
+            $message = $post && $post->openlink
+                ? $post->openlink->href
+                : __('sendto.sharing_post');
+
+            if ($xmppUri->getCategory() == 'story') {
+                $message = __('sendto.sharing_story');
+            }
+        }
+
+        $file = new MessageFile;
+        $file->type = 'xmpp/uri';
+        $file->url = $uri;
+
         $c = new Chat();
         $c->sendMessage(
             $to,
             $message,
             $muc,
-            null
+            file: $file
         );
     }
 
     public function ajaxGetMoreContacts(string $uri)
     {
         $contacts = $this->user->session->topContacts()->with('presence')->get();
-        $this->rpc('MovimTpl.fill', '#sendto_share_contacts', $this->prepareContacts($contacts, $uri, ''));
+        $this->rpc('MovimTpl.fill', '#sendto_share_contacts', $this->prepareContacts($contacts, $uri));
         $this->rpc('SendTo.init');
     }
 
-    public function prepareContacts($contacts, string $uri, $openlink)
+    public function prepareContacts($contacts, string $uri)
     {
         $view = $this->tpl();
         $view->assign('uri', $uri);
         $view->assign('contacts', $contacts);
-        $view->assign('openlink', $openlink);
 
         return $view->draw('_sendto_share_contacts');
     }
 
-    private function resolveUriInView(array $uri, Partial &$view)
+    private function resolveUriInView(string $uri, Partial &$view)
     {
-        switch ($uri['type']) {
-            case 'post':
-                $post = \App\Post::where('server', $uri['params'][0])
-                    ->where('node',  $uri['params'][1])
-                    ->where('nodeid',  $uri['params'][2])
-                    ->first();
+        $post = (new XMPPUri($uri))->getPost();
 
-                if ($post) {
-                    $p = new Post();
-                    $view->assign('post', $post);
-                    $view->assign('openlink', $post->openlink ? $post->openlink->href : false);
-                    $view->assign('card', $p->prepareTicket($post));
-                }
-                break;
+        if ($post) {
+            $view->assign('post', $post);
+            $view->assign('openlink', $post->openlink ? $post->openlink->href : false);
+            $view->assign('card', (new Post)->prepareTicket($post));
         }
     }
 }

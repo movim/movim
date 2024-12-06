@@ -1,6 +1,7 @@
 <?php $this->widget('Search');?>
 <?php $this->widget('Stickers');?>
 <?php $this->widget('Notifications');?>
+<?php $this->widget('SendTo');?>
 <?php $this->widget('ContactActions');?>
 <?php if(\App\User::me()->hasOMEMO()) $this->widget('ChatOmemo');?>
 <?php $this->widget('Location');?>
@@ -20,6 +21,9 @@
         <a class="button action color" onclick="Search_ajaxRequest(true)">
             <i class="material-symbols">add</i>
         </a>
+        <?php if (\App\User::me()->hasPubsub()) { ?>
+            <?php $this->widget('Stories');?>
+        <?php } ?>
         <?php $this->widget('Chats');?>
         <?php $this->widget('Rooms');?>
         <?php $this->widget('RoomsUtils');?>
@@ -28,6 +32,10 @@
 
 <?php $this->widget('Dictaphone');?>
 <?php $this->widget('Snap');?>
+<?php if (\App\User::me()->hasPubsub()) { ?>
+    <?php $this->widget('PublishStories');?>
+    <?php $this->widget('StoriesViewer');?>
+<?php } ?>
 <?php $this->widget('Tabs');?>
 <?php $this->widget('Draw');?>
 <?php $this->widget('RoomsExplore');?>

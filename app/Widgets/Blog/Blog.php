@@ -81,7 +81,7 @@ class Blog extends Base
             $this->_contact = \App\Contact::find($this->_from);
 
             if (filter_var($this->_from, FILTER_VALIDATE_EMAIL)) {
-                $this->_node = 'urn:xmpp:microblog:0';
+                $this->_node = Post::MICROBLOG_NODE;
             } else {
                 return;
             }

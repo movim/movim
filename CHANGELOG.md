@@ -1,7 +1,7 @@
 Movim Changelog
 ================
 
-v0.28.1 (master)
+v0.29 (master)
 ---------------------------
 * Don't notify twice when a Post is edited
 * Fix the buggy Post comment notification
@@ -25,6 +25,8 @@ v0.28.1 (master)
 * CSS and view cleanup, refactorize and remove some useless classes
 * Cleanup and simplify the CSS
 * Fix #1046 Corrupted WEBP images for Imagick 7, thanks to @TheBluestBird help (PR #1122)
+* Pubsub Stories feature, StoriesPublish, StoriesViewer and Stories widget
+* Move the URI handling to a dedicated XMPPUri class
 
 v0.28
 ---------------------------
