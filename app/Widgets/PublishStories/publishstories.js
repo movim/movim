@@ -263,7 +263,7 @@ var PublishStories = {
         }
 
         if (PublishStories.videoSelect.options.length >= 2) {
-            document.querySelector("#PublishStories #PublishStoriesswitch").classList.add('enabled');
+            document.querySelector("#publishstories #publishstoriesswitch").classList.add('enabled');
         }
     },
 
