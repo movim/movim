@@ -1,3 +1,7 @@
+#stories {
+    min-height: 23rem;
+}
+
 #stories ul.list.flex {
     overflow-x: auto;
     grid-template-columns: 0.5fr repeat(5, 1fr);
@@ -25,7 +29,6 @@
 }
 
 #stories ul.list.flex li.block.seen {
-    opacity: 0.5;
     order: 1;
-    filter: grayscale(0.7);
+    filter: grayscale(0.5);
 }
