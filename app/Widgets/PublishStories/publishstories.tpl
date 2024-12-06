@@ -8,7 +8,7 @@
         <button id="publishstoriesshoot" class="button action color green" onclick="PublishStories.shoot()">
             <i class="material-symbols">camera</i>
         </button>
-        <button id="publishstoriesgallery" class="button action color" onclick="PublishStories.openImage()">
+        <button id="publishstoriesgallery" class="button action color gray" onclick="PublishStories.openImage()">
             <i class="material-symbols">photo_library</i>
         </button>
     </div>
