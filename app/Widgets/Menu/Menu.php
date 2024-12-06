@@ -93,13 +93,13 @@ class Menu extends Base
             }
         } elseif ($count > 0
         && (strtotime($post->published) > strtotime($since))) {
-            if ($post->isMicroblog()) {
+            if ($post->isMicroblog() || $post->isStory()) {
                 $contact = \App\Contact::firstOrNew(['id' => $post->server]);
 
                 if (!$post->isMine()) {
                     Notif::append(
                         'news',
-                        '📝 ' . $contact->truename,
+                        '📝 ' . ($post->isStory() ? __('stories.new_story', $contact->truename) : $contact->truename),
                         $post->title,
                         $contact->getPicture(),
                         4,

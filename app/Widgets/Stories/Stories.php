@@ -19,7 +19,7 @@ class Stories extends Base
     {
         $post = $packet->content;
 
-        if ($post->node == Post::STORIES_NODE) {
+        if ($post->isStory()) {
             $this->ajaxHttpGet();
         }
     }
