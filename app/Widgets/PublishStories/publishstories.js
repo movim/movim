@@ -224,8 +224,8 @@ var PublishStories = {
         const constraints = {
             video: {
                 deviceId: videoSource ? { exact: videoSource } : undefined,
-                width: { ideal: 4096 },
-                height: { ideal: 4096 }
+                width: { ideal: 1920 },
+                height: { ideal: 1920 }
             }
         };
 
