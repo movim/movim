@@ -65,9 +65,6 @@ class PostActions extends Base
             $view = $this->tpl();
 
             $view->assign('post', $post);
-            $view->assign('to', $to);
-            $view->assign('node', $node);
-            $view->assign('id', $id);
 
             Dialog::fill($view->draw('_postactions_delete'));
         }

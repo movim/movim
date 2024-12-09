@@ -15,6 +15,11 @@
                     <img src="{$story->contact->getPicture()}">
                 </span>
             {/if}
+            {if="$story->isMine()"}
+            <span class="control icon active" onclick="StoriesViewer.pause(); StoriesViewer_ajaxDelete('{$story->id}')">
+                <i class="material-symbols fill">delete</i>
+            </span>
+            {/if}
             <span class="control icon active" onclick="StoriesViewer.pause(); SendTo_ajaxSendContact('{$story->getRef()}')">
                 <i class="material-symbols">share</i>
             </span>
@@ -41,10 +46,10 @@
             </div>
         </li>
     </ul>
-    <ul class="list">
+    <ul class="list middle">
         <li>
             <div>
-                <p class="normal brief">{autoescape="off"}{$story->title|addHashtagsLinks}{/autoescape}</p>
+                <p class="normal title">{autoescape="off"}{$story->title|addHashtagsLinks}{/autoescape}</p>
             </div>
         </li>
         {if="!$story->isMine()"}

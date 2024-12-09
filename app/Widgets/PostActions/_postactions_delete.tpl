@@ -14,7 +14,7 @@
     <button
         name="submit"
         class="button flat"
-        onclick="PostActions_ajaxDeleteConfirm('{$to}', '{$node}', '{$id}'); Dialog_ajaxClear()">
+        onclick="PostActions_ajaxDeleteConfirm('{$post->server}', '{$post->node}', '{$post->nodeid}'); Dialog_ajaxClear()">
         {$c->__('button.delete')}
     </button>
 </footer>

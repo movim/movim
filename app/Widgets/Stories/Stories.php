@@ -3,6 +3,7 @@
 namespace App\Widgets\Stories;
 
 use App\Post;
+use App\Widgets\Toast\Toast;
 use Movim\Widget\Base;
 
 class Stories extends Base
@@ -10,6 +11,7 @@ class Stories extends Base
     public function load()
     {
         $this->registerEvent('post', 'onStory');
+        $this->registerEvent('pubsub_postdelete_handle', 'onDelete');
 
         $this->addjs('stories.js');
         $this->addcss('stories.css');
@@ -20,6 +22,15 @@ class Stories extends Base
         $post = $packet->content;
 
         if ($post->isStory()) {
+            $this->ajaxHttpGet();
+        }
+    }
+
+    public function onDelete($packet)
+    {
+        if ($packet->content['server'] == $this->user->id
+         && $packet->content['node'] == Post::STORIES_NODE) {
+            Toast::send($this->__('stories.deleted'));
             $this->ajaxHttpGet();
         }
     }

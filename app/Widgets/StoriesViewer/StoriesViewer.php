@@ -5,8 +5,11 @@ namespace App\Widgets\StoriesViewer;
 use App\MessageFile;
 use App\Post;
 use App\Widgets\Chat\Chat;
+use App\Widgets\Dialog\Dialog;
 use App\Widgets\Toast\Toast;
 use Movim\Widget\Base;
+use Moxl\Xec\Action\Pubsub\Delete;
+use Moxl\Xec\Action\Pubsub\PostDelete;
 
 class StoriesViewer extends Base
 {
@@ -49,6 +52,33 @@ class StoriesViewer extends Base
     public function ajaxClose()
     {
         $this->rpc('MovimTpl.fill', '#storiesviewer', '');
+    }
+
+    public function ajaxDelete(string $id)
+    {
+        $post = Post::myStories()->where('id', $id)->first();
+
+        if ($post) {
+            $view = $this->tpl();
+            $view->assign('post', $post);
+
+            Dialog::fill($view->draw('_storiesviewer_delete'));
+        }
+    }
+
+    public function ajaxDeleteConfirm(string $id)
+    {
+        $post = Post::myStories()->where('id', $id)->first();
+
+        if ($post) {
+            $p = new PostDelete;
+            $p->setTo($post->server)
+              ->setNode($post->node)
+              ->setId($post->nodeid)
+              ->request();
+        }
+
+        $this->rpc('StoriesViewer.close');
     }
 
     public function ajaxSendComment(string $id, ?string $comment = null)

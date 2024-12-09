@@ -10,6 +10,24 @@
     color: white;
 }
 
+#dialog:not(:empty) ~ #storiesviewer {
+    filter: blur(1rem);
+}
+
+#storiesviewer a:link,
+#storiesviewer a:visited {
+    color: #EEE;
+}
+
+#storiesviewer p {
+    text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1), 0 0 2rem rgba(0, 0, 0, 0.3);
+}
+
+#storiesviewer p.title {
+    font-size: 2.5rem;
+    line-height: 3.5rem;
+}
+
 #storiesviewer:empty {
     display: none;
 }
@@ -106,7 +124,7 @@
 
 #storiesviewer article.story ul.list {
     position: absolute;
-    bottom: 1.5rem;
+    bottom: 0.5rem;
     width: 100%;
 }
 
