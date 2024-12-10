@@ -19,7 +19,7 @@
                 <i class="material-symbols">web_stories</i>
             </span>
             <div>
-                <p class="normal">{$c->__('page.publish')}</p>
+                <p class="normal">{$c->__('stories.publish')}</p>
             </div>
         </li>
 
