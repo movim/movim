@@ -109,7 +109,7 @@ ul.list li .primary:not(.bubble)[onclick] {
     margin-left: -1.5rem;
 }
 
-ul.list li.primary. ul.list.compact>li .primary {
+ul.list li.primary ul.list.compact>li .primary {
     width: 5rem;
 }
 
