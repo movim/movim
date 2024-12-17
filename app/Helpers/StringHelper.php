@@ -1,6 +1,5 @@
 <?php
 
-use App\Post;
 use Cocur\Slugify\Slugify;
 use Movim\Route;
 

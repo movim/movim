@@ -11,7 +11,6 @@ use Movim\Session;
 
 use League\CommonMark\CommonMarkConverter;
 use Respect\Validation\Validator;
-use Cocur\Slugify\Slugify;
 
 use App\Draft;
 use App\DraftEmbed;
@@ -182,8 +181,7 @@ class Publish extends Base
                     $p->setPublished(strtotime($post->published));
                 }
             } else {
-                $slugify = new Slugify;
-                $slug = $slugify->slugify(
+                $slug = slugify(
                     strtok(wordwrap($draft->title, 80, "\n"), "\n")
                 );
 

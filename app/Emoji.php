@@ -2,7 +2,6 @@
 
 namespace App;
 
-use Cocur\Slugify\Slugify;
 use Illuminate\Database\Eloquent\Model;
 use Movim\Image;
 
@@ -32,7 +31,6 @@ class Emoji extends Model
 
     public function getAliasPlaceholderAttribute(): string
     {
-        $slugify = new Slugify();
-        return $slugify->slugify(str_replace($this->attributes['pack'], '', $this->attributes['name']));
+        return slugify(str_replace($this->attributes['pack'], '', $this->attributes['name']));
     }
 }

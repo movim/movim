@@ -26,7 +26,6 @@ use App\Widgets\Dialog\Dialog;
 use App\Widgets\Drawer\Drawer;
 use App\Widgets\Toast\Toast;
 use Respect\Validation\Validator;
-use Cocur\Slugify\Slugify;
 use Movim\EmbedLight;
 use Movim\Session;
 use Moxl\Xec\Action\Muc\ChangeAffiliation;
@@ -434,7 +433,7 @@ class RoomsUtils extends Base
             ->whereType('text')
             ->first();
 
-        $slugified = (new Slugify)->slugify($name);
+        $slugified = slugify($name);
 
         if ($service && !empty($slugified)) {
             $this->rpc('Rooms.setJid', $slugified . '@' . $service->server);

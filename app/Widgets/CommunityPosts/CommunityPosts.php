@@ -7,7 +7,6 @@ use App\Widgets\ContactActions\ContactActions;
 use App\Widgets\Post\Post;
 use Movim\Widget\Base;
 use Moxl\Xec\Action\Pubsub\GetItems;
-use Cocur\Slugify\Slugify;
 
 class CommunityPosts extends Base
 {
@@ -44,10 +43,9 @@ class CommunityPosts extends Base
 
         $view = $this->tpl();
 
-        $slugify = new Slugify;
         $this->rpc(
             'MovimTpl.fill',
-            '#communityposts.'.$slugify->slugify('c'.$origin.'_'.$node),
+            '#communityposts.' . slugify('c' . $origin . '_' . $node),
             $view->draw('_communityposts_presencerequired')
         );
     }
@@ -58,9 +56,10 @@ class CommunityPosts extends Base
 
         if ($node != AppPost::MICROBLOG_NODE) {
             if ($this->user->subscriptions()
-                           ->where('server', $origin)
-                           ->where('node', $node)
-                           ->first()) {
+                ->where('server', $origin)
+                ->where('node', $node)
+                ->first()
+            ) {
                 $this->rpc('CommunityAffiliations_ajaxDelete', $origin, $node, true);
                 $this->rpc('CommunityAffiliations_ajaxGetAffiliations', $origin, $node);
             } else {
@@ -90,10 +89,9 @@ class CommunityPosts extends Base
 
         $html = $this->prepareCommunity($origin, $node, 0, $ids, $first, $last, $count, $before, $after, $query);
 
-        $slugify = new Slugify;
         $this->rpc(
             'MovimTpl.fill',
-            '#communityposts.'.$slugify->slugify('c'.$origin.'_'.$node),
+            '#communityposts.' . slugify('c' . $origin . '_' . $node),
             $html
         );
         $this->rpc('MovimUtils.enhanceArticlesContent');
@@ -113,8 +111,8 @@ class CommunityPosts extends Base
 
         $r = new GetItems;
         $r->setTo($origin)
-          ->setNode($node)
-          ->setPaging($this->_paging);
+            ->setNode($node)
+            ->setPaging($this->_paging);
 
         if ($before !== null) {
             $r = (strpos($before, $this->_beforeAfter) === 0)
@@ -176,7 +174,7 @@ class CommunityPosts extends Base
         }
 
         $posts = \App\Post::where('server', $origin)->where('node', $node)
-                          ->whereIn('nodeid', $ids)->get();
+            ->whereIn('nodeid', $ids)->get();
         $postsWithKeys = [];
 
         if ($posts->isNotEmpty()) {
@@ -188,8 +186,8 @@ class CommunityPosts extends Base
         }
 
         $info = \App\Info::where('server', $origin)
-                        ->where('node', $node)
-                        ->first();
+            ->where('node', $node)
+            ->first();
 
         $view = $this->tpl();
 
@@ -202,19 +200,19 @@ class CommunityPosts extends Base
         $view->assign('after', $after);
         $view->assign('info', $info);
         $view->assign('subscription', $this->user->subscriptions()
-                                           ->where('server', $origin)
-                                           ->where('node', $node)
-                                           ->first());
+            ->where('server', $origin)
+            ->where('node', $node)
+            ->first());
         $view->assign('paging', $this->_paging);
 
         $view->assign('publicposts', ($ids == false)
             ? \App\Post::where('server', $origin)
-                       ->where('node', $node)
-                       ->where('open', true)
-                       ->orderBy('published', 'desc')
-                       ->skip($page * $this->_paging)
-                       ->take($this->_paging)
-                       ->get()
+            ->where('node', $node)
+            ->where('open', true)
+            ->orderBy('published', 'desc')
+            ->skip($page * $this->_paging)
+            ->take($this->_paging)
+            ->get()
             : false);
 
         $view->assign('first', $first);
@@ -225,7 +223,7 @@ class CommunityPosts extends Base
         if ($first) {
             $view->assign('previouspage', $this->route(
                 $node == AppPost::MICROBLOG_NODE ? 'contact' : 'community',
-                [$origin, $node, $this->_beforeAfter.$first, $query]
+                [$origin, $node, $this->_beforeAfter . $first, $query]
             ));
         }
 
@@ -241,9 +239,7 @@ class CommunityPosts extends Base
 
     public function display()
     {
-        $slugify = new Slugify;
-
         $node = $this->get('n') != null ? $this->get('n') : AppPost::MICROBLOG_NODE;
-        $this->view->assign('class', $slugify->slugify('c'.$this->get('s').'_'.$node));
+        $this->view->assign('class', slugify('c' . $this->get('s') . '_' . $node));
     }
 }

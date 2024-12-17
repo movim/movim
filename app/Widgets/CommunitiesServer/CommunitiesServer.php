@@ -10,8 +10,6 @@ use Moxl\Xec\Action\Pubsub\Create;
 use Moxl\Xec\Action\Pubsub\TestCreate;
 use Respect\Validation\Validator;
 
-use Cocur\Slugify\Slugify;
-
 class CommunitiesServer extends \Movim\Widget\Base
 {
     public function load()
@@ -117,8 +115,7 @@ class CommunitiesServer extends \Movim\Widget\Base
             return;
         }
 
-        $slugify = new Slugify;
-        $uri = $slugify->slugify($form->name->value);
+        $uri = slugify($form->name->value);
 
         if ($uri == '') {
             Toast::send($this->__('communitiesserver.name_error'));

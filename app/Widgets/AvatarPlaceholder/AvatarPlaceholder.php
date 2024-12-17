@@ -2,8 +2,6 @@
 
 namespace App\Widgets\AvatarPlaceholder;
 
-use Cocur\Slugify\Slugify;
-
 class AvatarPlaceholder extends \Movim\Widget\Base
 {
     public function display()
@@ -11,7 +9,7 @@ class AvatarPlaceholder extends \Movim\Widget\Base
         $id = urldecode($this->get('id'));
         $size = $this->get('size');
 
-        $letters = firstLetterCapitalize((new Slugify())->slugify($id));
+        $letters = firstLetterCapitalize(slugify($id));
         header_remove('Content-Type');
         header('Content-Type: image/svg+xml');
         header('Cache-Control: max-age=' . 3600 * 24);
