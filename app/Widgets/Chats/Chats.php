@@ -225,7 +225,7 @@ class Chats extends Base
                 $this->resolveMessageFromJid($jid)
             ));
             $this->rpc('Chats.refresh');
-            $this->rpc('Chat.get', $jid);
+            $this->rpc('Chats.setActive', $jid);
         }
     }
 
