@@ -7,7 +7,7 @@
     ">
         <img src="{$me->getPicture(\Movim\ImageSize::M)}">
     </span>
-    <span class="control icon active"
+    <span class="control icon active toggleable"
         onclick="Presence_ajaxAskLogout()"
         title="{$c->__('status.disconnect')}">
         <i class="material-symbols">exit_to_app</i>
