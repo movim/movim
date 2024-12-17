@@ -238,7 +238,6 @@
                         {if="$value->jid != $me"}
                             <span class="control icon active gray divided" onclick="
                                 Chats_ajaxOpen('{$value->jid|echapJS}');
-                                Chat.get('{$value->jid|echapJS}');
                                 Drawer.clear();">
                                 <i class="material-symbols">comment</i>
                             </span>
@@ -323,7 +322,6 @@
                             </span>
                             <span class="control icon active gray divided" onclick="
                                 Chats_ajaxOpen('{$value->jid|echapJS}');
-                                Chat.get('{$value->jid|echapJS}');
                                 Drawer.clear();">
                                 <i class="material-symbols">comment</i>
                             </span>

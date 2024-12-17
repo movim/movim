@@ -86,7 +86,7 @@ class Chats extends Base
 
         $this->rpc(
             'MovimTpl.replace',
-            '#' . cleanupId(slugify($jid) . '_chat_item'),
+            $this->getItemId($jid),
             $this->prepareChat(
                 $jid,
                 $this->resolveContactFromJid($jid),
@@ -94,7 +94,7 @@ class Chats extends Base
                 $this->resolveMessageFromJid($jid)
             )
         );
-        $this->rpc('Chats.setActive', $this->getItemId($jid));
+        $this->rpc('MovimUtils.addClass', $this->getItemId($jid), 'active');
         $this->rpc('Chats.refresh');
     }
 
@@ -217,18 +217,15 @@ class Chats extends Base
             $openChat = $this->user->openChats()->firstOrCreate(['jid' => $jid]);
             $openChat->touch();
 
-            $this->rpc(
-                'Chats.prepend',
-                $this->getItemId($jid),
-                $this->prepareChat(
-                    $jid,
-                    $this->resolveContactFromJid($jid),
-                    $this->resolveRosterFromJid($jid),
-                    $this->resolveMessageFromJid($jid)
-                )
-            );
-
+            $this->rpc('MovimTpl.remove', $this->getItemId($jid));
+            $this->rpc('MovimTpl.prepend', '#chats_widget_list', $this->prepareChat(
+                $jid,
+                $this->resolveContactFromJid($jid),
+                $this->resolveRosterFromJid($jid),
+                $this->resolveMessageFromJid($jid)
+            ));
             $this->rpc('Chats.refresh');
+            $this->rpc('Chat.get', $jid);
         }
     }
 

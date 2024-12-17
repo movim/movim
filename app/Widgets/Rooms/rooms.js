@@ -81,10 +81,6 @@ var Rooms = {
             if (items[i].dataset.jid != null) {
                 items[i].onclick = function (e) {
                     Chat.getRoom(this.dataset.jid);
-                    Chats.refresh(true);
-
-                    items.forEach(item => item.classList.remove('active'));
-                    this.classList.add('active');
                 }
             }
 
@@ -137,6 +133,17 @@ var Rooms = {
         }
 
         Rooms.refresh();
+    },
+
+    clearAllActives: function() {
+        document.querySelectorAll('#rooms_widget ul.list.rooms li:not(.subheader)')
+            .forEach(item => item.classList.remove('active'));
+    },
+
+    setActive: function (jid) {
+        Chats.clearAllActives();
+        Rooms.clearAllActives();
+        MovimUtils.addClass('#rooms_widget ul.list.rooms li[data-jid="' + jid + '"]', 'active');
     },
 
     setUnread: function (id, unread) {

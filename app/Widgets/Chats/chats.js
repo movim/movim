@@ -5,16 +5,12 @@ var Chats = {
     translateY: 0,
     slideAuthorized: false,
 
-    setActive: function(id) {
-        MovimUtils.addClass(id, 'active');
-    },
-
-    setFilter: function(filter) {
+    setFilter: function (filter) {
         document.querySelector('#chats_widget_header').dataset.filter = filter;
         Chats_ajaxSetFilter(filter);
     },
 
-    refreshFilters: function() {
+    refreshFilters: function () {
         var filter = document.querySelector('#chats_widget_header').dataset.filter;
 
         document.querySelectorAll('#chats_widget_header span.chip').forEach(chip => {
@@ -24,7 +20,7 @@ var Chats = {
         });
     },
 
-    refresh: function(clearAllActives) {
+    refresh: function () {
         var list = document.querySelector('#chats_widget_list');
         if (!list) return;
 
@@ -37,8 +33,7 @@ var Chats = {
         var items = document.querySelectorAll('ul#chats_widget_list li:not(.subheader)');
         var i = 0;
 
-        while(i < items.length)
-        {
+        while (i < items.length) {
             if (items[i].querySelector('img.tinythumb')) {
                 var img = items[i].querySelector('img.tinythumb');
 
@@ -50,17 +45,14 @@ var Chats = {
             }
 
             if (items[i].dataset.jid != null) {
-                items[i].onclick = function(e) {
+                items[i].onclick = function (e) {
                     Rooms.refresh();
                     MovimUtils.addClass('ul#bottomnavigation', 'hidden');
 
                     Chat.get(this.dataset.jid);
-
-                    items.forEach(item => item.classList.remove('active'));
-                    this.classList.add('active');
                 };
 
-                items[i].onmousedown = function(e) {
+                items[i].onmousedown = function (e) {
                     if (e.which == 2) {
                         Chats.closeItem(this, false);
                         e.preventDefault();
@@ -70,8 +62,8 @@ var Chats = {
                 clientWidth = Math.abs(document.body.clientWidth);
                 delay = 20;
 
-                if (MovimUtils.isMobile())  {
-                    items[i].addEventListener('touchstart', function(event) {
+                if (MovimUtils.isMobile()) {
+                    items[i].addEventListener('touchstart', function (event) {
                         if (MovimTpl.menuDragged) return;
 
                         Chats.startX = event.targetTouches[0].pageX;
@@ -80,14 +72,14 @@ var Chats = {
                         this.classList.remove('moving');
                     }, true);
 
-                    items[i].addEventListener('touchmove', function(event) {
+                    items[i].addEventListener('touchmove', function (event) {
                         if (MovimTpl.menuDragged) return;
 
                         Chats.translateX = parseInt(event.targetTouches[0].pageX - Chats.startX);
                         Chats.translateY = parseInt(event.targetTouches[0].pageY - Chats.startY);
 
                         if (Math.abs(Chats.translateX) > delay && Math.abs(Chats.translateX) <= clientWidth) {
-                            if (Math.abs(Chats.translateX) > this.offsetWidth/2) {
+                            if (Math.abs(Chats.translateX) > this.offsetWidth / 2) {
                                 this.classList.add('close');
                             } else {
                                 this.classList.remove('close');
@@ -109,12 +101,12 @@ var Chats = {
                         }
                     }, true);
 
-                    items[i].addEventListener('touchend', function(event) {
+                    items[i].addEventListener('touchend', function (event) {
                         if (MovimTpl.menuDragged) return;
 
                         this.classList.add('moving');
 
-                        if (Math.abs(Chats.translateX) > this.offsetWidth/2 && Chats.slideAuthorized) {
+                        if (Math.abs(Chats.translateX) > this.offsetWidth / 2 && Chats.slideAuthorized) {
                             Chats.closeItem(this, (Chats.translateX < 0));
                         } else {
                             this.classList.remove('close');
@@ -127,12 +119,21 @@ var Chats = {
                 }
             }
 
-            if (clearAllActives) {
-                items[i].classList.remove('active');
-            }
             i++;
         }
     },
+
+    clearAllActives: function () {
+        document.querySelectorAll('ul#chats_widget_list li:not(.subheader)')
+            .forEach(item => item.classList.remove('active'));
+    },
+
+    setActive: function (jid) {
+        Chats.clearAllActives();
+        Rooms.clearAllActives();
+        MovimUtils.addClass('ul#chats_widget_list li[data-jid="' + jid + '"]', 'active');
+    },
+
     closeItem(li, toLeft) {
         li.classList.add('closing');
         li.classList.add(toLeft ? 'to_left' : 'to_right');
@@ -140,11 +141,6 @@ var Chats = {
         window.setTimeout(() => {
             Chats_ajaxClose(li.dataset.jid, (MovimUtils.urlParts().params[0] === li.dataset.jid));
         }, 400);
-    },
-    prepend: function(id, html) {
-        MovimTpl.remove(id);
-        MovimTpl.prepend('#chats_widget_list', html);
-        Chats.refresh();
     }
 };
 

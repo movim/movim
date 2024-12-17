@@ -133,16 +133,19 @@ var Chat = {
     get: function (jid, light) {
         if (jid != undefined) {
             MovimTpl.showPanel();
-            var chat = document.querySelector('#chat_widget');
-            chat.innerHTML = '';
+            document.querySelector('#chat_widget').innerHTML = '';
+            Chats.setActive(jid);
+        } else {
+            Chats.clearAllActives();
+            Rooms.clearAllActives();
         }
 
         Chat_ajaxGet(jid, light);
     },
     getRoom: function (jid) {
         MovimTpl.showPanel();
-        var chat = document.querySelector('#chat_widget');
-        chat.innerHTML = '';
+        document.querySelector('#chat_widget').innerHTML = '';
+        Rooms.setActive(jid);
 
         Chat_ajaxGetRoom(jid);
     },
