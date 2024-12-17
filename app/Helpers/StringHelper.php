@@ -1,6 +1,7 @@
 <?php
 
 use App\Post;
+use Cocur\Slugify\Slugify;
 use Movim\Route;
 
 function addUrls($string, bool $preview = false)
@@ -89,6 +90,15 @@ function addEmojis($string, bool $noTitle = false)
 {
     $emoji = \Movim\Emoji::getInstance();
     return $emoji->replace($string, $noTitle);
+}
+
+/**
+ * Slugify a string
+ */
+function slugify(string $string): string
+{
+    $slugify = new Slugify;
+    return $slugify->slugify($string);
 }
 
 /**

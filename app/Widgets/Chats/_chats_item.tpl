@@ -1,5 +1,5 @@
 <li
-    id="{$contact->jid|cleanupId}-chat-item"
+    id="{$contact->jid|slugify|cleanupId}-chat-item"
     data-jid="{$contact->jid}"
     class="
         {if="$roster"}

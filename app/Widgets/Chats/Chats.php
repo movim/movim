@@ -86,7 +86,7 @@ class Chats extends Base
 
         $this->rpc(
             'MovimTpl.replace',
-            '#' . cleanupId($jid . '_chat_item'),
+            '#' . cleanupId(slugify($jid) . '_chat_item'),
             $this->prepareChat(
                 $jid,
                 $this->resolveContactFromJid($jid),
@@ -94,7 +94,7 @@ class Chats extends Base
                 $this->resolveMessageFromJid($jid)
             )
         );
-        $this->rpc('Chats.setActive', $jid);
+        $this->rpc('Chats.setActive', $this->getItemId($jid));
         $this->rpc('Chats.refresh');
     }
 
@@ -115,7 +115,7 @@ class Chats extends Base
         if ($this->user->openChats()->where('jid', $jid)->count() > 0) {
             $this->rpc(
                 'MovimTpl.replace',
-                '#' . cleanupId($jid . '_chat_item'),
+                $this->getItemId($jid),
                 $this->prepareChat(
                     $jid,
                     $this->resolveContactFromJid($jid),
@@ -140,7 +140,7 @@ class Chats extends Base
                 $composing
                     ? 'MovimUtils.addClass'
                     : 'MovimUtils.removeClass',
-                '#' . cleanupId($jid . '_chat_item') . ' span.primary',
+                $this->getItemId($jid) . ' span.primary',
                 'composing'
             );
         }
@@ -219,7 +219,7 @@ class Chats extends Base
 
             $this->rpc(
                 'Chats.prepend',
-                $jid,
+                $this->getItemId($jid),
                 $this->prepareChat(
                     $jid,
                     $this->resolveContactFromJid($jid),
@@ -243,7 +243,7 @@ class Chats extends Base
         $tpl = $this->tpl();
         $tpl->cacheClear('_chats_item', $jid);
 
-        $this->rpc('MovimTpl.remove', '#' . cleanupId($jid . '_chat_item'));
+        $this->rpc('MovimTpl.remove', $this->getItemId($jid));
         $this->rpc('Chat_ajaxClearCounter', $jid);
         $this->rpc('Chats.refresh');
 
@@ -415,16 +415,16 @@ class Chats extends Base
                 }
             });
 
-            foreach ($toOpen as $jid => $published) {
-                $openChat = new OpenChat;
-                $openChat->user_id = \App\User::me()->id;
-                $openChat->jid = $jid;
-                $openChat->created_at = $openChat->updated_at = $published;
-                $openChat->save(['timestamps' => false]);
+        foreach ($toOpen as $jid => $published) {
+            $openChat = new OpenChat;
+            $openChat->user_id = \App\User::me()->id;
+            $openChat->jid = $jid;
+            $openChat->created_at = $openChat->updated_at = $published;
+            $openChat->save(['timestamps' => false]);
 
-                $view = $this->tpl();
-                $view->cacheClear('_chats_item', $jid);
-            }
+            $view = $this->tpl();
+            $view->cacheClear('_chats_item', $jid);
+        }
 
         return $this->user->openChats()->orderBy('updated_at')->pluck('jid')->toArray();
     }
@@ -433,5 +433,10 @@ class Chats extends Base
     {
         $this->view->assign('filters', $this->_filters);
         $this->view->assign('filter', $this->user->chats_filter);
+    }
+
+    private function getItemId(string $jid): string
+    {
+        return '#' . cleanupId(slugify($jid) . '_chat_item');
     }
 }

@@ -5,8 +5,8 @@ var Chats = {
     translateY: 0,
     slideAuthorized: false,
 
-    setActive: function(jid) {
-        MovimUtils.addClass('#' + MovimUtils.cleanupId(jid + '_chat_item'), 'active');
+    setActive: function(id) {
+        MovimUtils.addClass(id, 'active');
     },
 
     setFilter: function(filter) {
@@ -141,8 +141,8 @@ var Chats = {
             Chats_ajaxClose(li.dataset.jid, (MovimUtils.urlParts().params[0] === li.dataset.jid));
         }, 400);
     },
-    prepend: function(from, html) {
-        MovimTpl.remove('#' + MovimUtils.cleanupId(from + '_chat_item'));
+    prepend: function(id, html) {
+        MovimTpl.remove(id);
         MovimTpl.prepend('#chats_widget_list', html);
         Chats.refresh();
     }
