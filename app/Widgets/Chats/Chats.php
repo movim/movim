@@ -74,7 +74,7 @@ class Chats extends Base
                 $from = $message->jidto;
             }
 
-            $this->ajaxOpen($from, false);
+            $this->ajaxOpen($from, history: false);
         }
     }
 
@@ -207,7 +207,7 @@ class Chats extends Base
         $this->rpc('Chats.refreshFilters');
     }
 
-    public function ajaxOpen($jid, $history = true)
+    public function ajaxOpen($jid, ?bool $andShow = false, ?bool $history = true)
     {
         if (!validateJid($jid) || $jid != $this->user->id) {
             if ($history) {
@@ -226,6 +226,10 @@ class Chats extends Base
             ));
             $this->rpc('Chats.refresh');
             $this->rpc('Chats.setActive', $jid);
+
+            if ($andShow) {
+                $this->rpc('Chat.get', $jid);
+            }
         }
     }
 

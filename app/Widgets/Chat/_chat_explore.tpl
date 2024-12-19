@@ -22,7 +22,7 @@
         {/if}
         {loop="$users"}
             <li class="block" title="{$value->jid}"
-                onclick="Chats_ajaxOpen('{$value->jid|echapJS}');">
+                onclick="Chats_ajaxOpen('{$value->jid|echapJS}', true);">
                 <span class="control icon gray">
                     <i class="material-symbols">comment</i>
                 </span>

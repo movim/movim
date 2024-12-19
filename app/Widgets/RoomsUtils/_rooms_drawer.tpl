@@ -237,7 +237,7 @@
                         {/if}
                         {if="$value->jid != $me"}
                             <span class="control icon active gray divided" onclick="
-                                Chats_ajaxOpen('{$value->jid|echapJS}');
+                                Chats_ajaxOpen('{$value->jid|echapJS}', true);
                                 Drawer.clear();">
                                 <i class="material-symbols">comment</i>
                             </span>
@@ -321,7 +321,7 @@
                                 <i class="material-symbols">close</i>
                             </span>
                             <span class="control icon active gray divided" onclick="
-                                Chats_ajaxOpen('{$value->jid|echapJS}');
+                                Chats_ajaxOpen('{$value->jid|echapJS}', true);
                                 Drawer.clear();">
                                 <i class="material-symbols">comment</i>
                             </span>

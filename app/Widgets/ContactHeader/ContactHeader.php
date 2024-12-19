@@ -61,7 +61,7 @@ class ContactHeader extends Base
         }
 
         $c = new Chats();
-        $c->ajaxOpen($jid);
+        $c->ajaxOpen($jid, andShow: true);
 
         $this->rpc('MovimUtils.redirect', $this->route('chat', $jid));
     }

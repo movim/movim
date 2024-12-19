@@ -12,7 +12,7 @@
 
         {loop="$top"}
             <li class="block {if="$value->last > 60"} inactive{/if}"
-                onclick="Chats_ajaxOpen('{$value->jid|echapJS}');">
+                onclick="Chats_ajaxOpen('{$value->jid|echapJS}', true);">
                 <img class="main" src="{$value->getBanner(\Movim\ImageSize::L)}">
                 <span class="primary icon bubble
                     {if="$value->presence"}

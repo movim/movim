@@ -21,7 +21,7 @@
         {/if}
         {if="$value->mucjid != $me"}
             <span class="control icon active gray divided" onclick="
-                Chats_ajaxOpen('{$value->mucjid|echapJS}');
+                Chats_ajaxOpen('{$value->mucjid|echapJS}', true);
                 Drawer.clear();">
                 <i class="material-symbols">comment</i>
             </span>
