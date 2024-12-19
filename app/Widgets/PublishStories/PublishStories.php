@@ -6,6 +6,7 @@ use App\Post;
 use App\Upload;
 use App\Widgets\Toast\Toast;
 use Movim\Widget\Base;
+use Moxl\Xec\Action\Pubsub\GetItem;
 use Moxl\Xec\Action\Pubsub\PostPublish;
 
 class PublishStories extends Base
@@ -25,6 +26,15 @@ class PublishStories extends Base
         list($to, $node, $id, $repost, $comments) = array_values($packet->content);
 
         if ($node == Post::STORIES_NODE) {
+            // If the  Story was not cached we force reload
+            if (!Post::where('server', $to)->where('node', $node)->where('nodeid', $id)->exists()) {
+                $gi = new GetItem;
+                $gi->setTo($to)
+                   ->setNode($node)
+                   ->setId($id)
+                   ->request();
+            }
+
             $this->rpc('MovimUtils.softRedirect', $this->route('chat'));
         }
 

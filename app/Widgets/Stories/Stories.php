@@ -11,6 +11,7 @@ class Stories extends Base
     public function load()
     {
         $this->registerEvent('post', 'onStory');
+        $this->registerEvent('pubsub_getitem_handle', 'onStory');
         $this->registerEvent('pubsub_postdelete_handle', 'onDelete');
 
         $this->addjs('stories.js');

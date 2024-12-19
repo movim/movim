@@ -45,7 +45,7 @@
                 <span class="primary icon bubble color green">
                     <i class="material-symbols">group</i>
                 </span>
-                <span class="control icon active">
+                <span class="control icon">
                     <i class="material-symbols">chevron_right</i>
                 </span>
                 <div>
