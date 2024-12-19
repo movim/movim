@@ -2,7 +2,7 @@
 
 namespace App\Widgets\ContactData;
 
-use Movim\CurrentCall;
+use Movim\CurrentCalls;
 use Movim\Widget\Base;
 
 class ContactData extends Base
@@ -44,7 +44,7 @@ class ContactData extends Base
         );
         $view->assign('contact', \App\Contact::firstOrNew(['id' => $jid]));
         $view->assign('roster', $this->user->session->contacts()->where('jid', $jid)->first());
-        $view->assign('incall', CurrentCall::getInstance()->isStarted());
+        $view->assign('incall', CurrentCalls::getInstance()->isStarted());
 
         return $view->draw('_contactdata');
     }

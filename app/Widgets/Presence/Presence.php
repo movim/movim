@@ -19,6 +19,8 @@ use App\BundleCapabilityResolver;
 use App\Post;
 use App\Widgets\Chats\Chats;
 use App\Widgets\Dialog\Dialog;
+use App\Widgets\Visio\Visio;
+use Movim\CurrentCalls;
 use Moxl\Xec\Action\Blocking\Request;
 
 class Presence extends Base
@@ -93,6 +95,10 @@ class Presence extends Base
         $this->rpc('Presence.clearQuick');
 
         $this->user->encryptedPasswords()->delete();
+
+        if (CurrentCalls::getInstance()->isStarted()) {
+            (new Visio)->ajaxEnd(CurrentCalls::getInstance()->jid, CurrentCalls::getInstance()->id);
+        }
 
         $p = new Unavailable;
         $p->setType('terminate')

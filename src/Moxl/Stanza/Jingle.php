@@ -25,7 +25,7 @@ class Jingle
         $description->setAttribute('media', 'audio');
         $propose->appendChild($description);
 
-        \Moxl\API::request($dom->saveXML($dom->documentElement));
+        \Moxl\API::sendDom($dom);
     }
 
     public static function sessionAccept($id)
@@ -38,7 +38,7 @@ class Jingle
         $accept->setAttribute('id', $id);
         $message->appendChild($accept);
 
-        \Moxl\API::request($dom->saveXML($dom->documentElement));
+        \Moxl\API::sendDom($dom);
     }
 
     public static function sessionProceed($to, $id)
@@ -52,7 +52,7 @@ class Jingle
         $proceed->setAttribute('id', $id);
         $message->appendChild($proceed);
 
-        \Moxl\API::request($dom->saveXML($dom->documentElement));
+        \Moxl\API::sendDom($dom);
     }
 
     public static function sessionRetract($to, $id)
@@ -72,7 +72,7 @@ class Jingle
         $reason->appendChild($dom->createElement('cancel'));
         $reason->appendChild($dom->createElement('text', 'Retracted'));
 
-        \Moxl\API::request($dom->saveXML($dom->documentElement));
+        \Moxl\API::sendDom($dom);
     }
 
     public static function sessionReject($id, $to = false)
@@ -88,11 +88,15 @@ class Jingle
         $proceed->setAttribute('id', $id);
         $message->appendChild($proceed);
 
-        \Moxl\API::request($dom->saveXML($dom->documentElement));
+        \Moxl\API::sendDom($dom);
     }
 
     public static function sessionInitiate($to, $offer)
     {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $jingle = $dom->createElementNS('urn:xmpp:jingle:1', 'jingle');
+        $jingle->setAttribute('action', 'session-terminate');
+
         \Moxl\API::request(\Moxl\API::iqWrapper($offer, $to, 'set'));
     }
 
@@ -156,8 +160,9 @@ class Jingle
         $error = $dom->createElement('error');
         $error->setAttribute('type', 'cancel');
 
-        $fni = $dom->createElementNS('urn:xmpp:jingle:errors:1', 'unknown-session');
-        $error->appendChild($fni);
+        $us = $dom->createElement('unknown-session');
+        $us->setAttribute('xmlns', 'urn:xmpp:jingle:errors:1');
+        $error->appendChild($us);
 
         \Moxl\API::request(\Moxl\API::iqWrapper($error, $to, 'error', $id));
     }

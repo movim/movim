@@ -6,23 +6,40 @@
 
 namespace Movim;
 
+use App\MujiCall;
 use Carbon\Carbon;
 use DOMDocument;
-use DOMXPath;
 use Movim\Widget\Wrapper;
 use SimpleXMLElement;
+
+class CurrentMujiCall
+{
+    public ?string $jid = null;
+    public ?string $id = null;
+    public ?string $mujiRoom = null;
+    public ?Carbon $startTime = null;
+
+    public function __construct(string $jid, string $id)
+    {
+        $this->jid = $jid;
+        $this->id = $id;
+        $this->startTime = Carbon::now();
+    }
+}
 
 /**
  * This class handle the current Jitsi call
  */
-class CurrentCall
+class CurrentCalls
 {
     protected static $instance;
-    public ?string $to = null;
+    public ?string $jid = null;
     public ?string $id = null;
+    public ?string $mujiRoom = null;
     public ?Carbon $startTime = null;
 
     private array $contents = [];
+    private array $mujiCalls = [];
 
     public static function getInstance()
     {
@@ -33,14 +50,22 @@ class CurrentCall
         return self::$instance;
     }
 
-    public function start(string $to, string $id)
+    public function start(string $jid, string $id, ?string $mujiRoom = null)
     {
-        $this->to = $to;
+        $this->jid = $jid;
         $this->id = $id;
+        $this->mujiRoom = $mujiRoom;
         $this->startTime = Carbon::now();
 
         $wrapper = Wrapper::getInstance();
         $wrapper->iterate('currentcall_started', [$this->getBareJid(), $id]);
+    }
+
+    public function startMuji(string $mujiRoom, string $jid, string $id)
+    {
+        if ($mujiRoom == $this->mujiRoom) {
+            $this->mujiCalls[$id] = new CurrentMujiCall($jid, $id);
+        }
     }
 
     public function stop()
@@ -48,10 +73,19 @@ class CurrentCall
         $jid = $this->getBareJid();
         $id = $this->id;
 
-        $this->to = $this->id = $this->startTime = null;
+        if ($this->mujiRoom) {
+            $this->mujiCalls = [];
+        }
+
+        $this->jid = $this->id = $this->mujiRoom = $this->startTime = null;
 
         $wrapper = Wrapper::getInstance();
         $wrapper->iterate('currentcall_stopped', [$jid, $id]);
+    }
+
+    public function hasId(string $id): bool
+    {
+        return $this->id == $id || array_key_exists($id, $this->mujiCalls);
     }
 
     public function isJidInCall(string $jid): bool
@@ -61,14 +95,14 @@ class CurrentCall
 
     public function isStarted(): bool
     {
-        return $this->to != null && $this->id != null;
+        return $this->jid != null && $this->id != null;
     }
 
     public function getBareJid(): ?string
     {
         if (!$this->isStarted()) return null;
 
-        return explodeJid($this->to)['jid'];
+        return \baseJid($this->jid);
     }
 
     /**
