@@ -68,12 +68,12 @@
         </li>
     </ul>
 
-    <audio id="remote_audio" autoplay></audio>
-    <audio id="local_audio" autoplay muted></audio>
+    <div id="remote_videos"></div>
+    <div id="remote_audios"></div>
 
-    <video id="remote_video" autoplay poster="{$c->baseUri}theme/img/empty.png"></video>
-    <video id="screen_sharing_video" autoplay muted poster="{$c->baseUri}theme/img/empty.png"></video>
+    <audio id="local_audio" autoplay muted></audio>
     <video id="local_video" autoplay muted poster="{$c->baseUri}theme/img/empty.png"></video>
+    <video id="screen_sharing_video" autoplay muted poster="{$c->baseUri}theme/img/empty.png"></video>
 
     <span id="remote_state">
         <i class="voice material-symbols"></i>

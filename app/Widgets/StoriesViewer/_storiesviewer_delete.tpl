@@ -4,7 +4,7 @@
     <h4 class="gray">{$c->__('stories.delete_text')}</h4>
 </section>
 <footer>
-    <button onclick="StoriesViewer.resume(); Dialog_ajaxClear()" class="button flat">
+    <button onclick="StoriesViewer.start(); Dialog_ajaxClear()" class="button flat">
         {$c->__('button.cancel')}
     </button>
     <button

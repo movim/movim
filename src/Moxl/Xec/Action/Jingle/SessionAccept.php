@@ -2,7 +2,7 @@
 
 namespace Moxl\Xec\Action\Jingle;
 
-use Movim\CurrentCall;
+use Movim\CurrentCalls;
 use Moxl\Xec\Action;
 use Moxl\Stanza\Jingle;
 
@@ -13,7 +13,7 @@ class SessionAccept extends Action
 
     public function request()
     {
-        CurrentCall::getInstance()->start($this->_to, $this->_id);
+        CurrentCalls::getInstance()->start($this->_to, $this->_id);
 
         $this->store();
         Jingle::sessionAccept($this->_id);

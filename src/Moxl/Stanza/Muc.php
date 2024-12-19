@@ -70,7 +70,7 @@ class Muc
 
         $message->appendChild($dom->createElement('subject', $subject));
 
-        \Moxl\API::request($dom->saveXML($dom->documentElement));
+        \Moxl\API::sendDom($dom);
     }
 
     public static function destroy($to)

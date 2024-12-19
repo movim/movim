@@ -23,7 +23,7 @@
             <span class="control icon active" onclick="StoriesViewer.pause(); SendTo_ajaxSendContact('{$story->getRef()}')">
                 <i class="material-symbols">share</i>
             </span>
-            <span class="control icon pause toggleable" onclick="StoriesViewer.resume()">
+            <span class="control icon pause toggleable" onclick="StoriesViewer.start()">
                 <i class="material-symbols fill">pause</i>
             </span>
             <span class="control icon play toggleable" onclick="StoriesViewer.pause()">
@@ -59,7 +59,7 @@
             </span>
             <form name="storycomment" onsubmit="return false;">
                 <div>
-                    <input name="comment" autocomplete="off" type="text" {if="$story->contact"}placeholder="{$c->__('stories.comment', $story->contact->truename)}"{/if} onfocus="StoriesViewer.pause()" onblur="StoriesViewer.resume()">
+                    <input name="comment" autocomplete="off" type="text" {if="$story->contact"}placeholder="{$c->__('stories.comment', $story->contact->truename)}"{/if} onfocus="StoriesViewer.pause()" onblur="StoriesViewer.start()">
                 </div>
             </form>
         </li>

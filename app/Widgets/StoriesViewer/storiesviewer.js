@@ -3,8 +3,9 @@ var StoriesViewer = {
     timer: undefined,
 
     timeout: 6000,
-    startTimeout: undefined,
-    timeLeft: 0,
+    startDate: undefined,
+    consumed: 0,
+
     before: undefined,
 
     launch: function(before) {
@@ -14,51 +15,45 @@ var StoriesViewer = {
 
         StoriesViewer.story = document.querySelector('article.story');
         StoriesViewer.before = before;
-        clearTimeout(StoriesViewer.timer);
 
         let image = StoriesViewer.story.querySelector('img');
         image.addEventListener('mousedown', e => { e.preventDefault(); StoriesViewer.pause()});
         image.addEventListener('touchstart', e => { e.preventDefault(); StoriesViewer.pause()});
-        image.addEventListener('mouseup', e => { e.preventDefault(), StoriesViewer.resume()});
-        image.addEventListener('touchend', e => { e.preventDefault(), StoriesViewer.resume()});
-
+        image.addEventListener('mouseup', e => { e.preventDefault(), StoriesViewer.start()});
+        image.addEventListener('touchend', e => { e.preventDefault(), StoriesViewer.start()});
 
         let next = StoriesViewer.story.querySelector('div.next');
         next.addEventListener('click', e => StoriesViewer_ajaxGetNext(StoriesViewer.before));
 
+        StoriesViewer.reset();
         StoriesViewer.start();
     },
 
-    close: function() {
+    reset: function() {
         clearTimeout(StoriesViewer.timer);
+        StoriesViewer.consumed = 0;
+    },
+
+    close: function() {
+        StoriesViewer.reset();
         StoriesViewer_ajaxClose();
         Stories_ajaxHttpGet();
     },
 
-    start: function (before) {
-        StoriesViewer.startTimeout = new Date();
-        StoriesViewer.timeLeft = 0;
+    start: function () {
+        StoriesViewer.story.classList.remove('paused');
+        StoriesViewer.startDate = new Date();
 
         StoriesViewer.timer = setTimeout(function () {
             StoriesViewer_ajaxGetNext(StoriesViewer.before);
-        }, StoriesViewer.timeout);
+        }, StoriesViewer.timeout - StoriesViewer.consumed);
     },
 
     pause: function() {
         StoriesViewer.story.classList.add('paused');
-        StoriesViewer.timeLeft = StoriesViewer.timeout;
-        StoriesViewer.timeLeft -= new Date() - StoriesViewer.startTimeout;
+        StoriesViewer.consumed += new Date() - StoriesViewer.startDate;
 
         clearTimeout(StoriesViewer.timer);
-    },
-
-    resume: function () {
-        StoriesViewer.story.classList.remove('paused');
-        if( !StoriesViewer.timeLeft ) { StoriesViewer.timeLeft = StoriesViewer.timeDelay; }
-
-        StoriesViewer.timer = setTimeout(function () {
-            StoriesViewer_ajaxGetNext(StoriesViewer.before);
-        }, StoriesViewer.timeLeft);
     },
 
     sendComment: function (storyId) {
