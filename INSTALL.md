@@ -42,10 +42,6 @@ So all these streams will be managed by the Movim daemon. This daemon needs to b
 
 You can simply follow the GIT tags or download a stable snapshot of this repository on our [Release page](https://github.com/movim/movim/releases). Then follow the steps from [Dependency installation](https://github.com/movim/movim/wiki/Install-Movim#dependency-installation).
 
-### Docker
-
-You can also deploy Movim using our official [Docker Hub repository](https://hub.docker.com/r/movim/movim).
-
 ## Development version (repository)
 
 The development version of Movim only comes with the core of the project. To install the dependencies you need to install Git to download the source codes from different repositories.
