@@ -1,9 +1,10 @@
 #
 # Translators:
-# nhlpl, 2024
+# Sylwester Cyba, 2024
 # Obscenely Sad <obscenelysad@gmail.com>, 2016
 # Rafał Kołucki <BluRafPL@gmail.com>, 2020
-# Robert Wolniak <robert.wolniak@gmail.com>, 2015-2017
+# Robert Wolniak <robert.wolniak@tuta.io>, 2015-2017
+# Sylwester Cyba, 2024
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -93,6 +94,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/PublishHelp/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/PublishStories/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/RoomsExplore/locales.ini
@@ -102,6 +105,8 @@
 #. extracted from ../app/Widgets/SendTo/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Stickers/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/Stories/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Subscribe/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -120,9 +125,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-23 22:02+0200\n"
+"POT-Creation-Date: 2024-12-24 11:08+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
-"Last-Translator: nhlpl, 2024\n"
+"Last-Translator: Sylwester Cyba, 2024\n"
 "Language-Team: Polish (http://app.transifex.com/movim/movim/language/pl/)\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -913,7 +918,7 @@ msgstr "Problem z ustaleniem elementów"
 
 #: [communitiesserver]remoteservernotfound
 msgid "The server %s cannot be reached"
-msgstr ""
+msgstr "Serwer %s jest niedostępny"
 
 #: [communitiesservers]empty_title
 msgid "No Communities Servers yet…"
@@ -1174,7 +1179,7 @@ msgstr "Oszczędzaj wzrok dzięki ciemnym kolorom"
 
 #: [config]night_mode_detected
 msgid "Your browser is already telling Movim to use the Night Mode by default"
-msgstr ""
+msgstr "Twoja przeglądarka już domyślnie informuje Movim o korzystaniu z trybu nocnego"
 
 #: [config]chatmain
 msgid "Main chat page"
@@ -1455,35 +1460,35 @@ msgstr "Rysunek"
 
 #: [emojisconfig]title
 msgid "Emojis"
-msgstr ""
+msgstr "Emoji"
 
 #: [emojisconfig]favorites_title
 msgid "My favorite emojis"
-msgstr ""
+msgstr "Moje ulubione emoji"
 
 #: [emojisconfig]favorites_text
 msgid "Pick emojis from the packs bellow that you want to add to your favorites ones"
-msgstr ""
+msgstr "Wybierz emotikony z poniższych pakietów, które chcesz dodać do ulubionych."
 
 #: [emojisconfig]dialog_title
 msgid "Manage a favorite emoji"
-msgstr ""
+msgstr "Zmień ulubione emoji"
 
 #: [emojisconfig]alias_error
 msgid "The shortcut should only contains lowercase letters and dashes"
-msgstr ""
+msgstr "Skrót powinien zawierać tylko małe litery i myślniki"
 
 #: [emojisconfig]new_added
 msgid "New favorite emoji added"
-msgstr ""
+msgstr "Nowe emoji dodane do ulubionych"
 
 #: [emojisconfig]alias_conflict
 msgid "The shortcut is already used on another emoji"
-msgstr ""
+msgstr "Skrót jest już wykorzystywany przez inne emoji"
 
 #: [emojisconfig]no_emojis_yet
 msgid "No favorites yet, check the settings page to add some"
-msgstr ""
+msgstr "Póki co brak ulubionych, sprawdź ustawienia aby je dodać"
 
 #: [faq]title
 msgid "Frequently Asked Questions"
@@ -1752,11 +1757,11 @@ msgstr "Nieznana platforma"
 
 #: [invitations]received
 msgid "Received Invitations"
-msgstr ""
+msgstr "Odebrane zaproszenia"
 
 #: [invitations]adds_you
 msgid "%s wants to add you"
-msgstr ""
+msgstr "%s chce cię dodać"
 
 #: [invitations]no_new
 msgid "No new invitations"
@@ -1764,11 +1769,11 @@ msgstr "Brak nowych zaproszeń"
 
 #: [invitations]no_subscriptions
 msgid "No pending subscriptions"
-msgstr ""
+msgstr "Brak oczekujących subskrypcji"
 
 #: [invitations]wants_to_talk
 msgid "%s wants to talk with you"
-msgstr ""
+msgstr "%s chce z tobą rozmawiać"
 
 #: [notifs]empty
 msgid "No new notifications"
@@ -1994,6 +1999,15 @@ msgstr "Odnośnik skopiowany do schowka"
 msgid "What’s new?"
 msgstr "Co nowego?"
 
+#: [publish]brief_title
+msgid "Brief"
+msgstr ""
+
+#: [publish]article_title
+#, fuzzy
+msgid "Article"
+msgstr "Artykuły"
+
 #: [publish]post
 msgid "Write a post"
 msgstr "Napisz posta"
@@ -2069,6 +2083,30 @@ msgstr "Więcej pomocy"
 #: [publishhelp]manual
 msgid "Markdown syntax manual"
 msgstr "Podręcznik Markdown syntax"
+
+#: [story]to_roster
+#, fuzzy
+msgid "Publish to my contacts"
+msgstr "Dodaj do kontaktów"
+
+#: [story]uploading
+#, fuzzy
+msgid "Uploading the story"
+msgstr "Wyczyść historię"
+
+#: [story]publishing
+#, fuzzy
+msgid "Publishing the story"
+msgstr "Tylko opublikuj"
+
+#: [story]publishing_text
+msgid "Almost there…"
+msgstr ""
+
+#: [story]published
+#, fuzzy
+msgid "Story published"
+msgstr "Wpis opublikowany"
 
 #: [rooms]create
 msgid "Create a chatroom"
@@ -2486,6 +2524,16 @@ msgstr "Więcej kontaktów"
 msgid "Share outside Movim"
 msgstr "Podziel się poza Movim"
 
+#: [sendto]sharing_post
+#, fuzzy
+msgid "Post shared using Movim"
+msgstr "Podziel się poza Movim"
+
+#: [sendto]sharing_story
+#, fuzzy
+msgid "Story shared using Movim"
+msgstr "Podziel się poza Movim"
+
 #: [sticker]title
 msgid "Stickers"
 msgstr "Znaczniki"
@@ -2505,6 +2553,51 @@ msgstr "Odnajdź GIF"
 #: [sticker]gif_text
 msgid "Powered by Tenor"
 msgstr "Napędza Tenor"
+
+#: [stories]publish
+msgid "New Story"
+msgstr ""
+
+#: [stories]title
+msgid "Stories"
+msgstr ""
+
+#: [stories]new_story
+msgid "New Story from %s"
+msgstr ""
+
+#: [stories]forbidden
+msgid "You don't have access to this story, send an invitation to the author to access it"
+msgstr ""
+
+#: [stories]share_title
+msgid "Some of your contacts might not have access to this story"
+msgstr ""
+
+#: [stories]share_text
+#, fuzzy
+msgid "They might have to subscribe to the publisher account"
+msgstr "Nie jesteś subskrybowany przez ten kontakt"
+
+#: [stories]comment
+#, fuzzy
+msgid "Send a comment to %s"
+msgstr "Dodaj komentarz"
+
+#: [stories]delete_title
+#, fuzzy
+msgid "Story deletion"
+msgstr "Kasowanie klucza OMEMO"
+
+#: [stories]delete_text
+#, fuzzy
+msgid "Are you sure that you want to delete this story?"
+msgstr "Czy chcesz skasować ten komentarz?"
+
+#: [stories]deleted
+#, fuzzy
+msgid "Story deleted"
+msgstr "Wpis usunięty"
 
 #: [subscribe]info
 msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
@@ -2664,15 +2757,15 @@ msgstr "…dzwoni"
 
 #: [visio]declined
 msgid "Declined"
-msgstr ""
+msgstr "Odrzucone"
 
 #: [visio]in_call
 msgid "In call"
-msgstr ""
+msgstr "W trakcie rozmowy"
 
 #: [visio]failed
 msgid "Failed"
-msgstr ""
+msgstr "Nie udało się"
 
 #: [visio]connecting
 msgid "…connecting"
@@ -2680,19 +2773,19 @@ msgstr "…łączę"
 
 #: [visiolobby]called
 msgid "%s is calling you"
-msgstr ""
+msgstr "%s dzwoni do ciebie"
 
 #: [visiolobby]calling
 msgid "Calling %s"
-msgstr ""
+msgstr "Dzwoni %s"
 
 #: [visiolobby]setup
 msgid "Setting up your camera and microphone"
-msgstr ""
+msgstr "Ustawienia kamery i mikrofonu"
 
 #: [visiolobby]devices_disco
 msgid "Please allow your browser to share your devices to configure them"
-msgstr ""
+msgstr "Proszę użyj przeglądarki do udostępniania między urządzeniami"
 
 #: [visiolobby]microphone_label [visioconfig]microphone_label
 msgid "Default microphone"

@@ -92,6 +92,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/PublishHelp/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/PublishStories/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/RoomsExplore/locales.ini
@@ -101,6 +103,8 @@
 #. extracted from ../app/Widgets/SendTo/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Stickers/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/Stories/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Subscribe/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -119,7 +123,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-23 22:02+0200\n"
+"POT-Creation-Date: 2024-12-24 11:08+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Besnik Bleta <besnik@programeshqip.org>, 2018,2020-2024\n"
 "Language-Team: Albanian (http://app.transifex.com/movim/movim/language/sq/)\n"
@@ -912,7 +916,7 @@ msgstr "Problem kur provohej të pikaseshin objekte"
 
 #: [communitiesserver]remoteservernotfound
 msgid "The server %s cannot be reached"
-msgstr ""
+msgstr "Shërbyesi %s s’kapet dot"
 
 #: [communitiesservers]empty_title
 msgid "No Communities Servers yet…"
@@ -1767,7 +1771,7 @@ msgstr "Pa pajtime pezull"
 
 #: [invitations]wants_to_talk
 msgid "%s wants to talk with you"
-msgstr ""
+msgstr "%s dëshiron të bisedojë me ju"
 
 #: [notifs]empty
 msgid "No new notifications"
@@ -1993,6 +1997,15 @@ msgstr "Lidhja u kopjua në të papastër"
 msgid "What’s new?"
 msgstr "Ç’ka të re?"
 
+#: [publish]brief_title
+msgid "Brief"
+msgstr ""
+
+#: [publish]article_title
+#, fuzzy
+msgid "Article"
+msgstr "Artikuj"
+
 #: [publish]post
 msgid "Write a post"
 msgstr "Shkruani një postim"
@@ -2068,6 +2081,30 @@ msgstr "Më tepër ndihmë"
 #: [publishhelp]manual
 msgid "Markdown syntax manual"
 msgstr "Doracak sintakse Markdown"
+
+#: [story]to_roster
+#, fuzzy
+msgid "Publish to my contacts"
+msgstr "Shtoje te kontaktet e mi"
+
+#: [story]uploading
+#, fuzzy
+msgid "Uploading the story"
+msgstr "Spastroje historikun"
+
+#: [story]publishing
+#, fuzzy
+msgid "Publishing the story"
+msgstr "Thjesht publikoje"
+
+#: [story]publishing_text
+msgid "Almost there…"
+msgstr ""
+
+#: [story]published
+#, fuzzy
+msgid "Story published"
+msgstr "Postimi u botua"
 
 #: [rooms]create
 msgid "Create a chatroom"
@@ -2485,6 +2522,16 @@ msgstr "Më tepër kontakte"
 msgid "Share outside Movim"
 msgstr "Ndaje me të tjerët jashtë Movim-i"
 
+#: [sendto]sharing_post
+#, fuzzy
+msgid "Post shared using Movim"
+msgstr "Ndaje me të tjerët jashtë Movim-i"
+
+#: [sendto]sharing_story
+#, fuzzy
+msgid "Story shared using Movim"
+msgstr "Ndaje me të tjerët jashtë Movim-i"
+
 #: [sticker]title
 msgid "Stickers"
 msgstr "Ngjitës"
@@ -2504,6 +2551,51 @@ msgstr "Gjeni një GIF"
 #: [sticker]gif_text
 msgid "Powered by Tenor"
 msgstr "Bazuar Tenor"
+
+#: [stories]publish
+msgid "New Story"
+msgstr ""
+
+#: [stories]title
+msgid "Stories"
+msgstr ""
+
+#: [stories]new_story
+msgid "New Story from %s"
+msgstr ""
+
+#: [stories]forbidden
+msgid "You don't have access to this story, send an invitation to the author to access it"
+msgstr ""
+
+#: [stories]share_title
+msgid "Some of your contacts might not have access to this story"
+msgstr ""
+
+#: [stories]share_text
+#, fuzzy
+msgid "They might have to subscribe to the publisher account"
+msgstr "S’jeni i pajtuar te ky kontakt"
+
+#: [stories]comment
+#, fuzzy
+msgid "Send a comment to %s"
+msgstr "Shtoni një koment"
+
+#: [stories]delete_title
+#, fuzzy
+msgid "Story deletion"
+msgstr "Fshirje kyçi OMEMO"
+
+#: [stories]delete_text
+#, fuzzy
+msgid "Are you sure that you want to delete this story?"
+msgstr "Jeni i sigurt se doni të fshihet ky koment?"
+
+#: [stories]deleted
+#, fuzzy
+msgid "Story deleted"
+msgstr "Postimi u fshi"
 
 #: [subscribe]info
 msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
@@ -2687,7 +2779,7 @@ msgstr "Po thirret %s"
 
 #: [visiolobby]setup
 msgid "Setting up your camera and microphone"
-msgstr ""
+msgstr "Po ujdisen kamera dhe mikrofoni juaj"
 
 #: [visiolobby]devices_disco
 msgid "Please allow your browser to share your devices to configure them"

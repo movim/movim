@@ -91,6 +91,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/PublishHelp/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/PublishStories/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/RoomsExplore/locales.ini
@@ -100,6 +102,8 @@
 #. extracted from ../app/Widgets/SendTo/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Stickers/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/Stories/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Subscribe/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -118,7 +122,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-23 22:02+0200\n"
+"POT-Creation-Date: 2024-12-24 11:08+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: 조수연, 2022\n"
 "Language-Team: Korean (http://app.transifex.com/movim/movim/language/ko/)\n"
@@ -1992,6 +1996,14 @@ msgstr "링크가 클립보드에 복사됨"
 msgid "What’s new?"
 msgstr "새로운 소식"
 
+#: [publish]brief_title
+msgid "Brief"
+msgstr ""
+
+#: [publish]article_title
+msgid "Article"
+msgstr ""
+
 #: [publish]post
 msgid "Write a post"
 msgstr "게시물 작성"
@@ -2067,6 +2079,30 @@ msgstr "추가 도움말"
 #: [publishhelp]manual
 msgid "Markdown syntax manual"
 msgstr "마크다운 문법 매뉴얼"
+
+#: [story]to_roster
+#, fuzzy
+msgid "Publish to my contacts"
+msgstr "연락처로 보내기"
+
+#: [story]uploading
+#, fuzzy
+msgid "Uploading the story"
+msgstr "기록 지우기"
+
+#: [story]publishing
+#, fuzzy
+msgid "Publishing the story"
+msgstr "게시 전용"
+
+#: [story]publishing_text
+msgid "Almost there…"
+msgstr ""
+
+#: [story]published
+#, fuzzy
+msgid "Story published"
+msgstr "게시물 게시됨"
 
 #: [rooms]create
 msgid "Create a chatroom"
@@ -2484,6 +2520,16 @@ msgstr "연락처 더보기"
 msgid "Share outside Movim"
 msgstr ""
 
+#: [sendto]sharing_post
+#, fuzzy
+msgid "Post shared using Movim"
+msgstr "Movim에서 공유"
+
+#: [sendto]sharing_story
+#, fuzzy
+msgid "Story shared using Movim"
+msgstr "Movim에서 공유"
+
 #: [sticker]title
 msgid "Stickers"
 msgstr "스티커"
@@ -2503,6 +2549,51 @@ msgstr "GIF 찾기"
 #: [sticker]gif_text
 msgid "Powered by Tenor"
 msgstr "Tenor 제공"
+
+#: [stories]publish
+msgid "New Story"
+msgstr ""
+
+#: [stories]title
+msgid "Stories"
+msgstr ""
+
+#: [stories]new_story
+msgid "New Story from %s"
+msgstr ""
+
+#: [stories]forbidden
+msgid "You don't have access to this story, send an invitation to the author to access it"
+msgstr ""
+
+#: [stories]share_title
+msgid "Some of your contacts might not have access to this story"
+msgstr ""
+
+#: [stories]share_text
+#, fuzzy
+msgid "They might have to subscribe to the publisher account"
+msgstr "이 계정을 구독하고 있지 않습니다"
+
+#: [stories]comment
+#, fuzzy
+msgid "Send a comment to %s"
+msgstr "댓글 추가"
+
+#: [stories]delete_title
+#, fuzzy
+msgid "Story deletion"
+msgstr "OMEMO 키 삭제"
+
+#: [stories]delete_text
+#, fuzzy
+msgid "Are you sure that you want to delete this story?"
+msgstr "이 댓글을 삭제하시겠습니까?"
+
+#: [stories]deleted
+#, fuzzy
+msgid "Story deleted"
+msgstr "게시물 삭제됨"
 
 #: [subscribe]info
 msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."

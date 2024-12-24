@@ -99,6 +99,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/PublishHelp/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/PublishStories/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/RoomsExplore/locales.ini
@@ -108,6 +110,8 @@
 #. extracted from ../app/Widgets/SendTo/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Stickers/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/Stories/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Subscribe/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -126,7 +130,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-23 22:02+0200\n"
+"POT-Creation-Date: 2024-12-24 11:08+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>, 2015-2024\n"
 "Language-Team: French (France) (http://app.transifex.com/movim/movim/language/fr_FR/)\n"
@@ -2000,6 +2004,15 @@ msgstr "Lien copié dans le presse-papier"
 msgid "What’s new?"
 msgstr "Quoi de neuf ?"
 
+#: [publish]brief_title
+msgid "Brief"
+msgstr ""
+
+#: [publish]article_title
+#, fuzzy
+msgid "Article"
+msgstr "Articles"
+
 #: [publish]post
 msgid "Write a post"
 msgstr "Écrire un billet"
@@ -2075,6 +2088,30 @@ msgstr "Aide supplémentaire"
 #: [publishhelp]manual
 msgid "Markdown syntax manual"
 msgstr "Manuel d'utilisation de la syntaxe Markdown"
+
+#: [story]to_roster
+#, fuzzy
+msgid "Publish to my contacts"
+msgstr "Ajouter à mes contacts"
+
+#: [story]uploading
+#, fuzzy
+msgid "Uploading the story"
+msgstr "Supprimer l'historique"
+
+#: [story]publishing
+#, fuzzy
+msgid "Publishing the story"
+msgstr "Rédacteur seulement"
+
+#: [story]publishing_text
+msgid "Almost there…"
+msgstr ""
+
+#: [story]published
+#, fuzzy
+msgid "Story published"
+msgstr "Billet publié"
 
 #: [rooms]create
 msgid "Create a chatroom"
@@ -2492,6 +2529,16 @@ msgstr "Plus de contacts"
 msgid "Share outside Movim"
 msgstr "Partager hors de Movim"
 
+#: [sendto]sharing_post
+#, fuzzy
+msgid "Post shared using Movim"
+msgstr "Partager hors de Movim"
+
+#: [sendto]sharing_story
+#, fuzzy
+msgid "Story shared using Movim"
+msgstr "Partager hors de Movim"
+
 #: [sticker]title
 msgid "Stickers"
 msgstr "Autocollants"
@@ -2511,6 +2558,51 @@ msgstr "Trouver un GIF"
 #: [sticker]gif_text
 msgid "Powered by Tenor"
 msgstr "Propulsé par Tenor"
+
+#: [stories]publish
+msgid "New Story"
+msgstr ""
+
+#: [stories]title
+msgid "Stories"
+msgstr ""
+
+#: [stories]new_story
+msgid "New Story from %s"
+msgstr ""
+
+#: [stories]forbidden
+msgid "You don't have access to this story, send an invitation to the author to access it"
+msgstr ""
+
+#: [stories]share_title
+msgid "Some of your contacts might not have access to this story"
+msgstr ""
+
+#: [stories]share_text
+#, fuzzy
+msgid "They might have to subscribe to the publisher account"
+msgstr "Vous n’êtes pas abonné à ce contact"
+
+#: [stories]comment
+#, fuzzy
+msgid "Send a comment to %s"
+msgstr "Commenter"
+
+#: [stories]delete_title
+#, fuzzy
+msgid "Story deletion"
+msgstr "Suppression de clef OMEMO"
+
+#: [stories]delete_text
+#, fuzzy
+msgid "Are you sure that you want to delete this story?"
+msgstr "Êtes-vous sûr de vouloir supprimer ce commentaire ?"
+
+#: [stories]deleted
+#, fuzzy
+msgid "Story deleted"
+msgstr "Billet effacé"
 
 #: [subscribe]info
 msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."

@@ -91,6 +91,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/PublishHelp/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/PublishStories/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/RoomsExplore/locales.ini
@@ -100,6 +102,8 @@
 #. extracted from ../app/Widgets/SendTo/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Stickers/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/Stories/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Subscribe/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -118,7 +122,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-23 22:02+0200\n"
+"POT-Creation-Date: 2024-12-24 11:08+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Keram, 2023\n"
 "Language-Team: Uyghur (http://app.transifex.com/movim/movim/language/ug/)\n"
@@ -1992,6 +1996,15 @@ msgstr "ئۇلانما چاپلاش تاختىسىغا كۆچۈرۈلدى"
 msgid "What’s new?"
 msgstr "يېڭى نېمىلەر بار؟"
 
+#: [publish]brief_title
+msgid "Brief"
+msgstr ""
+
+#: [publish]article_title
+#, fuzzy
+msgid "Article"
+msgstr "ماقالىلەر"
+
 #: [publish]post
 msgid "Write a post"
 msgstr "بىر يازما يېزىڭ"
@@ -2067,6 +2080,30 @@ msgstr "تېخىمۇ كۆپ ياردەم"
 #: [publishhelp]manual
 msgid "Markdown syntax manual"
 msgstr "كود تىنىش-بەلگىلىرى قوللانمىسى"
+
+#: [story]to_roster
+#, fuzzy
+msgid "Publish to my contacts"
+msgstr "نۆۋەتتە تۇنۇشلىرىم بىلەن ئورتاقلاشقانلىرىم"
+
+#: [story]uploading
+#, fuzzy
+msgid "Uploading the story"
+msgstr "تارىخنى ئۆچۈرۈش"
+
+#: [story]publishing
+#, fuzzy
+msgid "Publishing the story"
+msgstr "پەقەتلا ئېلان قىلىش"
+
+#: [story]publishing_text
+msgid "Almost there…"
+msgstr ""
+
+#: [story]published
+#, fuzzy
+msgid "Story published"
+msgstr "يازما ئېلان قىلىندى"
 
 #: [rooms]create
 msgid "Create a chatroom"
@@ -2484,6 +2521,16 @@ msgstr "تېخىمۇ كۆپ ئالاقىداشلار"
 msgid "Share outside Movim"
 msgstr "مۇۋىمنىڭ سىرتىدا ھەمبەھىرلەش"
 
+#: [sendto]sharing_post
+#, fuzzy
+msgid "Post shared using Movim"
+msgstr "مۇۋىمنىڭ سىرتىدا ھەمبەھىرلەش"
+
+#: [sendto]sharing_story
+#, fuzzy
+msgid "Story shared using Movim"
+msgstr "مۇۋىمنىڭ سىرتىدا ھەمبەھىرلەش"
+
 #: [sticker]title
 msgid "Stickers"
 msgstr "قىستۇرما رەسىملەر"
@@ -2503,6 +2550,51 @@ msgstr "بىرەر GIF نى ئىزدەڭ"
 #: [sticker]gif_text
 msgid "Powered by Tenor"
 msgstr "تېنور ئالاھىدە قوللىدى"
+
+#: [stories]publish
+msgid "New Story"
+msgstr ""
+
+#: [stories]title
+msgid "Stories"
+msgstr ""
+
+#: [stories]new_story
+msgid "New Story from %s"
+msgstr ""
+
+#: [stories]forbidden
+msgid "You don't have access to this story, send an invitation to the author to access it"
+msgstr ""
+
+#: [stories]share_title
+msgid "Some of your contacts might not have access to this story"
+msgstr ""
+
+#: [stories]share_text
+#, fuzzy
+msgid "They might have to subscribe to the publisher account"
+msgstr "سىز بۇ تۇنۇشقا ئەگەشمىدىڭىز"
+
+#: [stories]comment
+#, fuzzy
+msgid "Send a comment to %s"
+msgstr "بىر باھا يېزىش"
+
+#: [stories]delete_title
+#, fuzzy
+msgid "Story deletion"
+msgstr "OMEMO ئاچقۇچىنى ئۆچۈرۈش"
+
+#: [stories]delete_text
+#, fuzzy
+msgid "Are you sure that you want to delete this story?"
+msgstr "سىز بۇ باھانى ئۆچۈرۈشنى جەزىملەشتۈرەمسىز؟"
+
+#: [stories]deleted
+#, fuzzy
+msgid "Story deleted"
+msgstr "يازما ئۆچۈرۋېتىلدى"
 
 #: [subscribe]info
 msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."

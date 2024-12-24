@@ -1,7 +1,7 @@
 #
 # Translators:
 # Den Girnyk <great.antique@gmail.com>, 2016
-# sergey solovey, 2022
+# sergey solovey, 2022,2024
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -91,6 +91,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/PublishHelp/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/PublishStories/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/RoomsExplore/locales.ini
@@ -100,6 +102,8 @@
 #. extracted from ../app/Widgets/SendTo/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Stickers/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/Widgets/Stories/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Subscribe/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -118,9 +122,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-23 22:02+0200\n"
+"POT-Creation-Date: 2024-12-24 11:08+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
-"Last-Translator: sergey solovey, 2022\n"
+"Last-Translator: sergey solovey, 2022,2024\n"
 "Language-Team: Ukrainian (http://app.transifex.com/movim/movim/language/uk/)\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
@@ -159,7 +163,7 @@ msgstr "API"
 
 #: [about]info
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
-msgstr "Movim - це платформа для спілкування, основана на протоколі XMPP. Всі проекти, окрім наступного програмного забезпечення та ресурсів, ліцензовані"
+msgstr "Movim - це комунікаційна платформа на основі XMPP. Весь проект, за винятком наступного програмного забезпечення та ресурсів, знаходиться під ліцензією"
 
 #: [account]title [page]account
 msgid "Account"
@@ -167,7 +171,7 @@ msgstr "Користувач"
 
 #: [account]account_management
 msgid "Account management"
-msgstr ""
+msgstr "Управління обліковими записами"
 
 #: [account]password_change_title
 msgid "Change my password"
@@ -227,7 +231,7 @@ msgstr ""
 
 #: [account]delete_bundle_text
 msgid "You are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
-msgstr ""
+msgstr "Ви збираєтеся знищити поточний ключ OMEMO. Ваші контакти більше не зможуть шифрувати повідомлення за допомогою цього ключа. Ця дія не може бути скасована. Ви впевнені?"
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
@@ -243,7 +247,7 @@ msgstr "Увімкн."
 
 #: [create]successfull
 msgid "Your account has been successfully registered"
-msgstr ""
+msgstr "Ваш обліковий запис успішно зареєстровано"
 
 #: [create]loading
 msgid "Loading"
@@ -287,15 +291,15 @@ msgstr "Мова за замовчуванням"
 
 #: [general]log_verbosity
 msgid "Log verbosity"
-msgstr ""
+msgstr "Деталізація логування"
 
 #: [restrictsuggestions]title
 msgid "Restrict suggestions"
-msgstr ""
+msgstr "Заборонити підказки"
 
 #: [restrictsuggestions]text
 msgid "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
-msgstr ""
+msgstr "Пропонувати тільки ті чати, спільноти та контент, які доступні на користувацькому XMPP-сервері та пов'язаних з ним сервісах."
 
 #: [chatonly]title
 msgid "Chat only"
@@ -307,7 +311,7 @@ msgstr "Вимкніть усі соціальні функції (Спільн�
 
 #: [credentials]title
 msgid "Administration Credential"
-msgstr ""
+msgstr "Адміністративні повноваження"
 
 #: [credentials]username [input]username
 msgid "Username"
@@ -315,7 +319,7 @@ msgstr "Ім'я користувача"
 
 #: [credentials]re_password
 msgid "Retype password"
-msgstr "Повторно введіть пароль"
+msgstr "Повторно вкажіть пароль"
 
 #: [disableregistration]title
 msgid "Disable the XMPP registration feature"
@@ -425,15 +429,15 @@ msgstr "Системні логи та файли"
 
 #: [adminreported]reported_by
 msgid "Reported by %s users"
-msgstr ""
+msgstr "За відгуками %s користувачів"
 
 #: [adminreported]info
 msgid "Those accounts were reported by some Movim users"
-msgstr ""
+msgstr "Про ці акаунти повідомили деякі користувачі Movim"
 
 #: [adminreported]info2
 msgid "You can choose to block them for all the other users"
-msgstr ""
+msgstr "Ви можете заблокувати їх для всіх інших користувачів"
 
 #: [adminsessions]title
 msgid "Sessions"
@@ -465,47 +469,47 @@ msgstr "Завантажити нове зображення"
 
 #: [banner]change
 msgid "Change my banner"
-msgstr ""
+msgstr "Змінити мій банер"
 
 #: [banner]updated
 msgid "Banner Updated"
-msgstr ""
+msgstr "Банер оновлено"
 
 #: [banner]not_updated
 msgid "Banner Not Updated"
-msgstr ""
+msgstr "Банер не оновлено"
 
 #: [blocked]title
 msgid "Blocked"
-msgstr ""
+msgstr "Заблоковано"
 
 #: [blocked]block_account
 msgid "Block the account"
-msgstr ""
+msgstr "Заблокувати обліковий запис"
 
 #: [blocked]unblock_account
 msgid "Unblock the account"
-msgstr ""
+msgstr "Розблокувати обліковий запис"
 
 #: [blocked]account_blocked
 msgid "Account blocked"
-msgstr ""
+msgstr "Обліковий запис заблоковано"
 
 #: [blocked]account_unblocked
 msgid "Account unblocked"
-msgstr ""
+msgstr "Обліковий запис розблоковано"
 
 #: [blocked]placeholder
 msgid "You will find here the users you have blocked"
-msgstr ""
+msgstr "Тут ви знайдете заблокованих вами користувачів"
 
 #: [blocked]info
 msgid "The following users are blocked by Movim and cannot contact you anymore"
-msgstr ""
+msgstr "Наступні користувачі заблоковані Movim і більше не можуть з вами зв'язатися"
 
 #: [blocked]info2
 msgid "The administrator is also aware of this list and can therefore block those users system wide"
-msgstr ""
+msgstr "Адміністратор також знає про цей список і може заблокувати цих користувачів у всій системі"
 
 #: [blog]title
 msgid "%s’s blog"
@@ -525,15 +529,15 @@ msgstr "Додати реакцію"
 
 #: [message]retract
 msgid "Retract"
-msgstr ""
+msgstr "Видалити"
 
 #: [message]retract_body
 msgid "Your contact attempted to retract a previous message, but it's unsupported by your client"
-msgstr ""
+msgstr "Ваш контакт спробував видалити попереднє повідомлення, але воно не підтримується вашим клієнтом"
 
 #: [message]moderate_body
 msgid "This message was moderated"
-msgstr ""
+msgstr "Це повідомлення пройшло модерацію"
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
@@ -553,7 +557,7 @@ msgstr "Пише...."
 
 #: [message]invitation
 msgid "Invitation"
-msgstr ""
+msgstr "Запрошення"
 
 #: [message]paused
 msgid "Paused…"
@@ -561,7 +565,7 @@ msgstr "Зупинився...."
 
 #: [message]gone
 msgid "Contact gone"
-msgstr ""
+msgstr "Зв'язок втрачено"
 
 #: [message]edit_help
 msgid "↑ to edit your previous message"
@@ -605,7 +609,7 @@ msgstr "Ви отримали запрошення приєднатися до �
 
 #: [chat]invitation_self
 msgid "You sent an invitation to join a chatroom"
-msgstr ""
+msgstr "Ви надіслали запрошення приєднатися до чату"
 
 #: [chat]invitation_join
 msgid "Join %s"
@@ -630,55 +634,55 @@ msgstr "Повідомити про порушення"
 
 #: [chat]jingle_incoming [config]audio_call
 msgid "Incoming call"
-msgstr ""
+msgstr "Вхідний виклик"
 
 #: [chat]jingle_outgoing
 msgid "Outgoing call"
-msgstr ""
+msgstr "Вихідний виклик"
 
 #: [chat]jingle_retract
 msgid "Missed call"
-msgstr ""
+msgstr "Пропущений виклик"
 
 #: [chat]jingle_reject
 msgid "Refused call"
-msgstr ""
+msgstr "Відхилений виклик"
 
 #: [chat]jingle_end [visio]ended
 msgid "Call ended"
-msgstr "Дзвінок закінчено"
+msgstr "Виклик завершено"
 
 #: [chat]jingle_hours
 msgid "%s hours %s minutes"
-msgstr ""
+msgstr "%s годин %s хвилин"
 
 #: [chat]jingle_minutes
 msgid "%s minutes and %s seconds"
-msgstr ""
+msgstr "%s хвилин та %s секунд"
 
 #: [chat]jingle_seconds
 msgid "%s seconds"
-msgstr ""
+msgstr "%s секунд"
 
 #: [chat]muc_admin
 msgid "%s is now admin"
-msgstr ""
+msgstr "%s зараз є адміністраторами"
 
 #: [chat]muc_owner
 msgid "%s is now owner"
-msgstr ""
+msgstr "%s тепер є власниками"
 
 #: [chat]muc_outcast
 msgid "%s is now banned"
-msgstr ""
+msgstr "%s зараз забанені"
 
 #: [chat]muc_member
 msgid "%s is now member"
-msgstr ""
+msgstr "%s зараз є учасниками"
 
 #: [chat]publish_error
 msgid "An error occurred when sending the message"
-msgstr ""
+msgstr "Під час надсилання повідомлення сталася помилка"
 
 #: [chat]clear_history
 msgctxt "[chat]clear_history"
@@ -695,19 +699,19 @@ msgstr "Дія неможлива в зашифрованих чатах"
 
 #: [chat]first_messages_title
 msgid "This is the beginning of this conversation"
-msgstr ""
+msgstr "Це початок цієї розмови"
 
 #: [chat]first_messages_text
 msgid "You can choose to add it as a new contact or block it to prevent some other unsolicited messages"
-msgstr ""
+msgstr "Ви можете додати його як новий контакт або заблокувати, щоб запобігти небажаним повідомленням."
 
 #: [chat]first_messages_add
 msgid "Add to my contacts"
-msgstr ""
+msgstr "Додати до моїх контактів"
 
 #: [chat]first_messages_block
 msgid "Block"
-msgstr ""
+msgstr "Заблокувати"
 
 #: [chatroom]members
 msgid "Members"
@@ -731,39 +735,39 @@ msgstr "Конфігурацію збережено"
 
 #: [chatroom]subject
 msgid "Subject"
-msgstr ""
+msgstr "Тема"
 
 #: [chatroom]subject_changed
 msgid "Subject changed"
-msgstr ""
+msgstr "Тема змінена"
 
 #: [chatroom]administration [page]administration
 msgid "Administration"
-msgstr ""
+msgstr "Адміністрування"
 
 #: [chatactions]copy_text
 msgid "Copy the text"
-msgstr ""
+msgstr "Копіювати текст"
 
 #: [chatactions]copied_text
 msgid "Text copied"
-msgstr ""
+msgstr "Текст скопійовано"
 
 #: [omemo]fingerprints_title
 msgid "Fingerprints"
-msgstr ""
+msgstr "Відбиток"
 
 #: [omemo]fingerprints
 msgid "OMEMO Fingerprints"
-msgstr ""
+msgstr "Відбиток ОМЕМО"
 
 #: [omemo]generating_bundle
 msgid "Generating the encryption keys, please wait…"
-msgstr ""
+msgstr "Генерація ключів шифрування, будь ласка, зачекайте..."
 
 #: [omemo]generated_bundle
 msgid "Encryption keys generated"
-msgstr ""
+msgstr "Ключі шифрування згенеровано"
 
 #: [omemo]resolving_devices
 msgid "Resolving OMEMO devices"
@@ -771,127 +775,127 @@ msgstr ""
 
 #: [omemo]building_sessions
 msgid "Building encryption sessions"
-msgstr ""
+msgstr "Створення сеансів шифрування"
 
 #: [omemo]building_own_sessions
 msgid "Building own encryption sessions"
-msgstr ""
+msgstr "Створення власних сеансів шифрування"
 
 #: [omemo]encrypted_disabled
 msgid "Encryption disabled"
-msgstr ""
+msgstr "Шифрування вимкнено"
 
 #: [omemo]encrypted_loading
 msgid "Send a message to build the encrypted session"
-msgstr ""
+msgstr "Надішліть повідомлення для створення зашифрованої сесії"
 
 #: [omemo]enable_contact
 msgid "Enabling encryption for the contact"
-msgstr ""
+msgstr "Увімкнути шифрування для контакту"
 
 #: [omemo]disable_contact
 msgid "Disabling encryption for the contact"
-msgstr ""
+msgstr "Вимкнути шифрування для контакту"
 
 #: [omemo]last_activity
 msgid "Last activity"
-msgstr ""
+msgstr "Остання активність"
 
 #: [omemo]sessions_built
 msgid "%s sessions built"
-msgstr ""
+msgstr "%s сесій створено"
 
 #: [chats]empty_title
 msgid "No chats yet…"
-msgstr ""
+msgstr "Ще немає чатів..."
 
 #: [chats]empty
 msgid "Start a new conversation by clicking on the %s button."
-msgstr ""
+msgstr "Почніть нову розмову, натиснувши кнопку %s"
 
 #: [chats]add
 msgid "Chat with a contact"
-msgstr ""
+msgstr "Чат з контактом"
 
 #: [chats]me
 msgid "Me"
-msgstr ""
+msgstr "Я"
 
 #: [chats]picture
 msgid "Picture"
-msgstr ""
+msgstr "Зображення"
 
 #: [chats]video
 msgid "Video"
-msgstr ""
+msgstr "Відео"
 
 #: [chats]audio
 msgid "Audio"
-msgstr ""
+msgstr "Аудіо"
 
 #: [button]chat
 msgid "Chat"
-msgstr ""
+msgstr "Чат"
 
 #: [button]new
 msgid "New conversation"
-msgstr ""
+msgstr "Новий чат"
 
 #: [chats_filter]all [menu]all [rooms_filter]all
 msgid "All"
-msgstr ""
+msgstr "Всі"
 
 #: [chats_filter]roster [menu]contacts [page]contacts
 msgid "Contacts"
-msgstr ""
+msgstr "Контакти"
 
 #: [communities]empty_text
 msgid "Discover, follow and share"
-msgstr ""
+msgstr "Знаходьте, стежте та діліться"
 
 #: [communities]counter
 msgid "%s communities"
-msgstr ""
+msgstr "%s спільноти"
 
 #: [communities]search_server
 msgid "Search for a new server"
-msgstr ""
+msgstr "Пошук нового сервера"
 
 #: [communities]servers
 msgid "Communities servers"
-msgstr ""
+msgstr "Спільнота сервера"
 
 #: [communities]servers_text
 msgid "Discover the Communities by servers"
-msgstr ""
+msgstr "Огляд спільнот серверів"
 
 #: [communities]disco
 msgid "Communities server discovered"
-msgstr ""
+msgstr "Знайдено спільнот серверу"
 
 #: [communities]disco_error
 msgid "This server doesn’t exists"
-msgstr ""
+msgstr "Такого сервера не існує"
 
 #: [communitiesinteresting]about
 msgid "Communities you might like"
-msgstr ""
+msgstr "Спільноти, які вам можуть сподобатися"
 
 #: [communitiesserver]created
 msgid "Community created successfully"
-msgstr ""
+msgstr "Спільнота успішно створена"
 
 #: [communitiesserver]empty_server
 msgid "There is no Communities yet on this server."
-msgstr ""
+msgstr "На цьому сервері ще немає спільнот."
 
 #: [communitiesserver]add
 msgid "Create a new community on %s"
-msgstr ""
+msgstr "Створіть нову спільноту на %s"
 
 #: [communitiesserver]name
 msgid "Community name"
-msgstr ""
+msgstr "Назва спільноти"
 
 #: [communitiesserver]name_example
 msgid "My Little Pony - Fan Club"
@@ -899,200 +903,200 @@ msgstr ""
 
 #: [communitiesserver]name_error
 msgid "Please provide a valid community name (4 characters minimum)"
-msgstr ""
+msgstr "Будь ласка, вкажіть коректну назву спільноти (мінімум 4 символи)"
 
 #: [communitiesserver]no_creation
 msgid "You cannot create a new community on this server"
-msgstr ""
+msgstr "Ви не можете створити нову спільноту на цьому сервері"
 
 #: [communitiesserver]disco_error
 msgid "Issue when trying to discover the items"
-msgstr ""
+msgstr "Проблема під час спроби відкрити елементи"
 
 #: [communitiesserver]remoteservernotfound
 msgid "The server %s cannot be reached"
-msgstr ""
+msgstr "Сервер %s не відповідає"
 
 #: [communitiesservers]empty_title
 msgid "No Communities Servers yet…"
-msgstr ""
+msgstr "Серверів спільнот наразі немає..."
 
 #: [communitiesservers]empty_text
 msgid "It seems that we can't find any communities for the moment"
-msgstr ""
+msgstr "Схоже, що наразі ми не можемо знайти жодної спільноти"
 
 #: [communityaffiliation]subscriptions
 msgid "Subscriptions"
-msgstr ""
+msgstr "Підписки"
 
 #: [communityaffiliation]public_subscriptions
 msgid "Public subscriptions"
-msgstr ""
+msgstr "Публічні підписки"
 
 #: [communityaffiliation]subscriptions_text
 msgid "My Communities subscriptions"
-msgstr ""
+msgstr "Підписки на мої спільноти"
 
 #: [communityaffiliation]deleted
 msgid "Community deleted successfully"
-msgstr ""
+msgstr "Спільноту успішно видалено"
 
 #: [communityaffiliation]delete_title
 msgid "Delete the community"
-msgstr ""
+msgstr "Видалити спільноту"
 
 #: [communityaffiliation]delete_text
 msgid "You are going to delete the following community. Please confirm your action."
-msgstr ""
+msgstr "Ви збираєтеся видалити цю спільноту. Будь ласка, підтвердіть вашу дію."
 
 #: [communityaffiliation]delete_clean_text
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
-msgstr ""
+msgstr "Здається, ця спільнота більше не існує. Ви хочете видалити її зі своїх підписок?"
 
 #: [communityaffiliation]config_error
 msgid "Error during the application of the node configuration"
-msgstr ""
+msgstr "Помилка при застосуванні конфігурації вузла"
 
 #: [communityaffiliation]owners
 msgid "Owners"
-msgstr ""
+msgstr "Власники"
 
 #: [communityaffiliation]publishers
 #: [communityconfig]publish_model_publishers_title
 msgid "Publishers"
-msgstr ""
+msgstr "Видавці"
 
 #: [communityaffiliation]roles
 msgid "Roles"
-msgstr ""
+msgstr "Ролі"
 
 #: [communityaffiliation]role_set
 msgid "Role correctly set"
-msgstr ""
+msgstr "Ролі налаштовано правильно"
 
 #: [communityconfig]publication
 msgid "Publication"
-msgstr ""
+msgstr "Публікація"
 
 #: [communityconfig]publish_model_open_title [room]public_muc
 msgid "Public"
-msgstr ""
+msgstr "Публічні"
 
 #: [communityconfig]publish_model_open_text
 msgid "Everyone can publish"
-msgstr ""
+msgstr "Публікувати може кожен"
 
 #: [communityconfig]publish_model_publishers_text
 msgid "The publishers can publish"
-msgstr ""
+msgstr "Видавці можуть публікувати"
 
 #: [communityconfig]publish_model_subscribers_title
 msgid "Subscribers"
-msgstr ""
+msgstr "Підписники"
 
 #: [communityconfig]publish_model_subscribers_text
 msgid "The subscribers can publish"
-msgstr ""
+msgstr "Підписники можуть публікувати"
 
 #: [communityconfig]type
 msgid "Community type"
-msgstr ""
+msgstr "Тип спільноти"
 
 #: [communityconfig]type_articles_title
 msgid "Articles"
-msgstr ""
+msgstr "Статті"
 
 #: [communityconfig]type_articles_text
 msgid "Publish and read articles"
-msgstr ""
+msgstr "Публікуйте та читайте статті"
 
 #: [communityconfig]type_gallery_title [page]gallery
 msgid "Gallery"
-msgstr ""
+msgstr "Галерея"
 
 #: [communityconfig]type_gallery_text
 msgid "Publish and browse pictures"
-msgstr ""
+msgstr "Публікуйте та переглядайте фотографії"
 
 #: [communitydata]sub
 msgid "%s subscribers"
-msgstr ""
+msgstr "%s підписників"
 
 #: [communitydata]num
 msgid "%s posts"
-msgstr ""
+msgstr "%s дописів"
 
 #: [communitydata]public
 msgid "Public page"
-msgstr ""
+msgstr "Публічна сторінка"
 
 #: [communitydata]publishmodel_publishers
 msgid "Only publishers can publish"
-msgstr ""
+msgstr "Публікувати можуть лише видавці"
 
 #: [communitydata]publishmodel_subscribers
 msgid "Only subscribers can publish"
-msgstr ""
+msgstr "Публікувати можуть лише підписники"
 
 #: [communityheader]subscribe
 msgid "Subscribe"
-msgstr ""
+msgstr "Підписатися"
 
 #: [communityheader]unsubscribe
 msgid "Unsubscribe"
-msgstr ""
+msgstr "Відписатися"
 
 #: [communityheader]subscribed
 msgid "Subscribed"
-msgstr ""
+msgstr "Підписано"
 
 #: [communityheader]unsubscribed
 msgid "Unsubscribed"
-msgstr ""
+msgstr "Скасовано підписку"
 
 #: [communityheader]subscription_unsupported
 msgid "The subscriptions are disabled for this community"
-msgstr ""
+msgstr "Для цієї спільноти підписки вимкнено"
 
 #: [communityheader]label_label
 msgid "Give a label for this community"
-msgstr ""
+msgstr "Дайте назву цій спільноті"
 
 #: [communityheader]label_placeholder
 msgid "My Community Name"
-msgstr ""
+msgstr "Назва моєї спільноти"
 
 #: [communityheader]share_subscription
 msgid "Share this subscription publicly"
-msgstr ""
+msgstr "Поділіться цією підпискою з усіма бажаючими"
 
 #: [communityheader]share_subscription_text
 msgid "It will appear on your profile"
-msgstr ""
+msgstr "Це відобразиться у вашому профілі"
 
 #: [communityheader]unsubscribe_text
 msgid "You are going to unsubscribe from this community"
-msgstr ""
+msgstr "Ви збираєтеся відписатися від цієї спільноти"
 
 #: [communityheader]sure [delete]title
 msgid "Are you sure?"
-msgstr ""
+msgstr "Ви впевнені?"
 
 #: [communityposts]empty_me_text
 msgid "No publication yet? Write your first post to make people discover your profile"
-msgstr ""
+msgstr "Ще немає публікації? Напишіть свій перший допис, щоб люди дізналися про ваш профіль"
 
 #: [communityposts]empty_me_button
 msgid "Publish my first post"
-msgstr ""
+msgstr "Опублікувати мій перший допис"
 
 #: [communityposts]presencerequired
 msgid "Private account"
-msgstr ""
+msgstr "Особистий обліковий запис"
 
 #: [communityposts]presencerequired_text
 msgid "Follow it to see the content"
-msgstr ""
+msgstr "Перейдіть за посиланням, щоб переглянути вміст"
 
 #: [communitysubscriptions]subscriptions
 msgid "Subscribed Communities"
@@ -1100,39 +1104,39 @@ msgstr ""
 
 #: [communitysubscriptions]empty_title
 msgid "Hello"
-msgstr ""
+msgstr "Вітання"
 
 #: [communitysubscriptions]empty_text1
 msgid "Here you will be able to manage all your subscriptions."
-msgstr ""
+msgstr "Тут ви зможете керувати всіма своїми підписками."
 
 #: [communitysubscriptions]empty_text2
 msgid "You don’t have any community subscriptions yet."
-msgstr ""
+msgstr "Ви ще не маєте підписок на спільноти."
 
 #: [config]general
 msgid "General"
-msgstr ""
+msgstr "Загальні"
 
 #: [config]language
 msgid "Language"
-msgstr ""
+msgstr "Мова"
 
 #: [config]roster
 msgid "Roster display"
-msgstr ""
+msgstr "Відображення списку"
 
 #: [config]roster_show
 msgid "Show the offline contacts"
-msgstr ""
+msgstr "Показати офлайн-контакти"
 
 #: [config]roster_hide
 msgid "Hide the offline contacts"
-msgstr ""
+msgstr "Приховати офлайн-контакти"
 
 #: [config]appearence
 msgid "Appearance"
-msgstr ""
+msgstr "Зовнішній вигляд"
 
 #: [config]updated
 msgid "Configuration updated"
@@ -1140,67 +1144,67 @@ msgstr "Конфігурацію оновлено"
 
 #: [config]not_valid
 msgid "Configuration invalid"
-msgstr ""
+msgstr "Неправильна конфігурація"
 
 #: [config]advanced
 msgid "Advanced Configuration"
-msgstr ""
+msgstr "Розширена конфігурація"
 
 #: [config]nsfw
 msgid "Display adult content"
-msgstr ""
+msgstr "Відображати вміст для дорослих"
 
 #: [config]nsfw_text
 msgid "Will allow you to read the posts tagged with the #nsfw tag"
-msgstr ""
+msgstr "Дозволить вам читати пости з тегом #nsfw"
 
 #: [config]omemoenabled
 msgid "Use OMEMO"
-msgstr ""
+msgstr "Використовувати OMEMO"
 
 #: [config]omemoenabled_text
 msgid "Enable end to end encryption on Movim for your account"
-msgstr ""
+msgstr "Увімкніть наскрізне шифрування в Movim для свого облікового запису"
 
 #: [config]night_mode
 msgid "Night Mode"
-msgstr ""
+msgstr "Нічний режим"
 
 #: [config]night_mode_text
 msgid "Use dark colors to rest your eyes"
-msgstr ""
+msgstr "Використовуйте темні кольори для відпочинку очей"
 
 #: [config]night_mode_detected
 msgid "Your browser is already telling Movim to use the Night Mode by default"
-msgstr ""
+msgstr "Ваш браузер вже вказує Movim використовувати нічний режим за замовчуванням"
 
 #: [config]chatmain
 msgid "Main chat page"
-msgstr ""
+msgstr "Основна сторінка балачок"
 
 #: [config]chatmain_text
 msgid "Make the chat page as the default one"
-msgstr ""
+msgstr "Зробіть сторінку чату сторінкою за замовчуванням"
 
 #: [config]mam_text
 msgid "Server-side chat messages archiving preferences"
-msgstr ""
+msgstr "Налаштування архівування повідомлень чату на стороні сервера"
 
 #: [config]mam_always
 msgid "Always"
-msgstr ""
+msgstr "Завжди"
 
 #: [config]mam_never
 msgid "Never"
-msgstr ""
+msgstr "Ніколи"
 
 #: [config]mam_saved
 msgid "Archiving preferences saved"
-msgstr ""
+msgstr "Збережено налаштування архівації"
 
 #: [config]blog_text
 msgid "Personal blog confidentiality"
-msgstr ""
+msgstr "Конфіденційність персонального блогу"
 
 #: [config]account_privacy
 msgctxt "[config]account_privacy"
@@ -1209,744 +1213,744 @@ msgstr ""
 
 #: [config]blog_open_title
 msgid "Public blog"
-msgstr ""
+msgstr "Публічний блог"
 
 #: [config]blog_open_text
 msgid "Accessible to everyone on the network"
-msgstr ""
+msgstr "Доступний для всіх в мережі"
 
 #: [config]blog_presence_title
 msgid "Private blog"
-msgstr ""
+msgstr "Приватний блог"
 
 #: [config]blog_presence_text
 msgid "Restricted to your subscribers only"
-msgstr ""
+msgstr "Доступний лише для ваших підписників"
 
 #: [config]blog_saved
 msgid "Personal blog confidentiality saved"
-msgstr ""
+msgstr "Конфіденційність особистого блогу збережено"
 
 #: [config]confidentiality
 msgid "Confidentiality"
-msgstr ""
+msgstr "Конфіденційно"
 
 #: [config]audio_title
 msgid "Audio notifications"
-msgstr ""
+msgstr "Звукові сповіщення"
 
 #: [config]audio_chat
 msgid "Incoming message"
-msgstr ""
+msgstr "Вхідне повідомлення"
 
 #: [confirm]title
 msgid "Confirmation of authentication"
-msgstr ""
+msgstr "Підтвердження аутентифікації"
 
 #: [confirm]description
 msgid "The following platform would like your confirmation to authentify this account"
-msgstr ""
+msgstr "Наступна платформа очікує від вас підтвердження для автентифікації цього облікового запису"
 
 #: [confirm]code
 msgid "Authentication code"
-msgstr ""
+msgstr "Код автентифікації"
 
 #: [roster]add_title
 msgid "Add a contact"
-msgstr ""
+msgstr "Додати контакт"
 
 #: [roster]add_contact_info1
 msgid "Enter the Jabber ID of your contact."
-msgstr ""
+msgstr "Введіть Jabber ID вашого контакту."
 
 #: [roster]add_contact_info2
 msgid "Press enter to validate."
-msgstr ""
+msgstr "Натисніть enter для підтвердження."
 
 #: [roster]added
 msgid "Contact added"
-msgstr ""
+msgstr "Контакт додано"
 
 #: [roster]updated
 msgid "Contact updated"
-msgstr ""
+msgstr "Контакт оновлено"
 
 #: [roster]deleted
 msgid "Contact deleted"
-msgstr ""
+msgstr "Контакт видалено"
 
 #: [general]legend
 msgid "General Information"
-msgstr ""
+msgstr "Загальна інформація"
 
 #: [general]name [chatrooms]name
 msgid "Name"
-msgstr ""
+msgstr "Ім'я"
 
 #: [general]nickname [chatrooms]nickname
 msgid "Nickname"
-msgstr ""
+msgstr "Нікнейм"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
-msgstr ""
+msgstr "Дата народження"
 
 #: [general]gender
 msgid "Gender"
-msgstr ""
+msgstr "Стать"
 
 #: [general]marital
 msgid "Marital Status"
-msgstr ""
+msgstr "Сімейний стан"
 
 #: [general]email
 msgid "Email"
-msgstr ""
+msgstr "Електронна пошта"
 
 #: [general]website
 msgid "Website"
-msgstr ""
+msgstr "Вебсайт"
 
 #: [general]about
 msgid "About Me"
-msgstr ""
+msgstr "Про мене"
 
 #: [general]accounts
 msgid "Other Accounts"
-msgstr ""
+msgstr "Інші облікові записи"
 
 #: [general]tune
 msgid "Is Listening"
-msgstr ""
+msgstr "Слухає"
 
 #: [general]pictures
 msgid "Pictures"
-msgstr ""
+msgstr "Зображення"
 
 #: [general]links
 msgid "Links"
-msgstr ""
+msgstr "Посилання"
 
 #: [position]legend
 msgid "Geographic Position"
-msgstr ""
+msgstr "Географічне положення"
 
 #: [position]locality
 msgid "Locality"
-msgstr ""
+msgstr "Місцезнаходження"
 
 #: [position]country
 msgid "Country"
-msgstr ""
+msgstr "Країна"
 
 #: [mood]title
 msgid "Mood"
-msgstr ""
+msgstr "Настрій"
 
 #: [mood]im
 msgid "I’m "
-msgstr ""
+msgstr "Я"
 
 #: [listen]title
 msgid "Listening"
-msgstr ""
+msgstr "Слухаю"
 
 #: [last]title
 msgid "Last seen"
-msgstr ""
+msgstr "Останні відвідини"
 
 #: [clients]title
 msgid "Clients"
-msgstr ""
+msgstr "Клієнти"
 
 #: [clients]title_full
 msgid "Clients information"
-msgstr ""
+msgstr "Інформація про клієнтів"
 
 #: [explore]last_registered
 msgid "Last registered"
-msgstr ""
+msgstr "Останній зареєстрований"
 
 #: [explore]explore
 msgid "Find some new contacts"
-msgstr ""
+msgstr "Знайдіть нові контакти"
 
 #: [edit]title [button]edit
 msgid "Edit"
-msgstr ""
+msgstr "Редагувати"
 
 #: [edit]alias
 msgid "Alias"
-msgstr ""
+msgstr "Псевдонім"
 
 #: [edit]group
 msgid "Group"
-msgstr ""
+msgstr "Група"
 
 #: [delete]text
 msgid "You are going to delete one of your contacts, please confirm your action"
-msgstr ""
+msgstr "Ви збираєтеся видалити один з ваших контактів, будь ласка, підтвердіть вашу дію"
 
 #: [age]years
 msgid "%s years"
-msgstr ""
+msgstr "%s років"
 
 #: [blog]last
 msgid "Last public post"
-msgstr ""
+msgstr "Останній публічний допис"
 
 #: [blog]visit
 msgid "Visit the public blog"
-msgstr ""
+msgstr "Відвідати публічний блог"
 
 #: [subscription]to
 msgid "You can see this contact status"
-msgstr ""
+msgstr "Ви можете бачити статус цього контакту"
 
 #: [subscription]to_button
 msgid "Share my status"
-msgstr ""
+msgstr "Поділитися статусом"
 
 #: [subscription]to_text
 msgid "But this contact cannot see yours"
-msgstr ""
+msgstr "Але цей контакт не може бачити ваш"
 
 #: [subscription]from
 msgid "You are not subscribed to this contact"
-msgstr ""
+msgstr "Ви не підписані на цього користувача"
 
 #: [subscription]from_button
 msgid "Ask to subscribe"
-msgstr ""
+msgstr "Попросіть підписатися"
 
 #: [subscription]from_text
 msgid "But this contact can still see if you are online"
-msgstr ""
+msgstr "Але цей контакт все одно може бачити, чи ви онлайн"
 
 #: [subscription]nil
 msgid "No subscriptions"
-msgstr ""
+msgstr "Немає підписок"
 
 #: [subscription]nil_button [button]invite
 msgid "Invite"
-msgstr ""
+msgstr "Запросити"
 
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
-msgstr ""
+msgstr "Цей контакт є у вашому списку контактів, але він не авторизований між двома обліковими записами"
 
 #: [dictaphone]name
 msgid "Dictaphone"
-msgstr ""
+msgstr "Диктофон"
 
 #: [dictaphone]push_to_record
 msgid "Push to record"
-msgstr ""
+msgstr "Натисніть для запису"
 
 #: [dictaphone]recording
 msgid "Recording"
-msgstr ""
+msgstr "Запис"
 
 #: [draw]title
 msgid "Draw"
-msgstr ""
+msgstr "Малювати"
 
 #: [emojisconfig]title
 msgid "Emojis"
-msgstr ""
+msgstr "Смайлики"
 
 #: [emojisconfig]favorites_title
 msgid "My favorite emojis"
-msgstr ""
+msgstr "Мої улюблені смайли"
 
 #: [emojisconfig]favorites_text
 msgid "Pick emojis from the packs bellow that you want to add to your favorites ones"
-msgstr ""
+msgstr "Виберіть смайлики з набору нижче, які ви хочете додати до своїх улюблених"
 
 #: [emojisconfig]dialog_title
 msgid "Manage a favorite emoji"
-msgstr ""
+msgstr "Керувати улюбленими смайликами"
 
 #: [emojisconfig]alias_error
 msgid "The shortcut should only contains lowercase letters and dashes"
-msgstr ""
+msgstr "Ярлик повинен містити лише малі літери та тире"
 
 #: [emojisconfig]new_added
 msgid "New favorite emoji added"
-msgstr ""
+msgstr "Додано нові улюблені смайлики"
 
 #: [emojisconfig]alias_conflict
 msgid "The shortcut is already used on another emoji"
-msgstr ""
+msgstr "Ярлик вже використовується на іншому смайлику"
 
 #: [emojisconfig]no_emojis_yet
 msgid "No favorites yet, check the settings page to add some"
-msgstr ""
+msgstr "Обраного ще немає, перевірте сторінку налаштувань, щоб їх додати"
 
 #: [faq]title
 msgid "Frequently Asked Questions"
-msgstr ""
+msgstr "Поширені запитання"
 
 #: [faq]permission_title
 msgid "What does the permission setting do?"
-msgstr ""
+msgstr "Що робить налаштування дозволів?"
 
 #: [faq]permission_text
 msgid "By default the content is only available to your contacts. You can make your profile and publications public by enabling the related setting."
-msgstr ""
+msgstr "За замовчуванням вміст доступний лише вашим контактам. Ви можете зробити свій профіль і публікації загальнодоступними, увімкнувши відповідне налаштування."
 
 #: [faq]permission_community_title
 msgid "How does it applies on Communities posts?"
-msgstr ""
+msgstr "Як це стосується дописів у спільнотах?"
 
 #: [faq]permission_community_text
 msgid "Similary to your blog publications except that, by default, the posts are only available to the members or subscribers of the Community (except if you explicitly open all the Community content)"
-msgstr ""
+msgstr "Подібно до публікацій у вашому блозі, за винятком того, що за замовчуванням публікації доступні лише учасникам або підписникам спільноти (за винятком випадків, коли ви явно відкриваєте весь вміст спільноти)."
 
 #: [faq]chatrooms_title
 msgid "Where can I find a list of chatrooms?"
-msgstr ""
+msgstr "Де я можу знайти список чатів?"
 
 #: [faq]find_contacts_title
 msgid "Where can I find my contacts?"
-msgstr ""
+msgstr "Де я можу знайти мої контакти?"
 
 #: [faq]find_contacts_text
 msgid "By opening the search panel."
-msgstr ""
+msgstr "Відкривши панель пошуку."
 
 #: [apps]title
 msgid "Applications"
-msgstr ""
+msgstr "Додатки"
 
 #: [apps]install
 msgid "Movim App"
-msgstr ""
+msgstr "Додаток Movim"
 
 #: [apps]install_text
 msgid "Install Movim on your device"
-msgstr ""
+msgstr "Встановіть Movim на свій пристрій"
 
 #: [apps]recommend
 msgid "We also recommend"
-msgstr ""
+msgstr "Ми також рекомендуємо"
 
 #: [contact]title
 msgid "Administrators & Contact"
-msgstr ""
+msgstr "Адміністратори та контакти"
 
 #: [chatroom]question
 msgid "Chat with the Movim team?"
-msgstr ""
+msgstr "Поспілкуватися з командою Movim?"
 
 #: [chatroom]button
 msgid "Add the chatroom"
-msgstr ""
+msgstr "Додати чат кімнату"
 
 #: [location]title
 msgid "My location"
-msgstr ""
+msgstr "Моє місцезнаходження"
 
 #: [location]enabled_title
 msgid "Currently shared with my contacts"
-msgstr ""
+msgstr "Наразі ділюся з моїми контактами"
 
 #: [location]disabled_title
 msgid "Currently disabled"
-msgstr ""
+msgstr "Наразі неактивний"
 
 #: [location]last_published
 msgid "My last published location"
-msgstr ""
+msgstr "Моє останнє опубліковане місцезнаходження"
 
 #: [location]less_than_one_km
 msgid "Less than a km away"
-msgstr ""
+msgstr "Менше ніж за кілометр"
 
 #: [location]n_km_away
 msgid "%s km away"
-msgstr ""
+msgstr "%s кілометрів"
 
 #: [error]username
 msgid "Wrong username"
-msgstr ""
+msgstr "Неправильне ім'я користувача"
 
 #: [error]jid
 msgid "Invalid JID"
-msgstr ""
+msgstr "Неправильний JID"
 
 #: [error]empty_challenge
 msgid "Empty Challenge from the server"
-msgstr ""
+msgstr "Порожній виклик із сервера"
 
 #: [error]dns
 msgid "XMPP Domain error, your account is not a correct Jabber ID"
-msgstr ""
+msgstr "Помилковий XMPP домен, неприпустимий JID у вашому обліковому записі"
 
 #: [error]data_missings
 msgid "Some data are missing!"
-msgstr ""
+msgstr "Деякі дані відсутні!"
 
 #: [error]internal
 msgid "Internal server error"
-msgstr ""
+msgstr "Внутрішня помилка сервера"
 
 #: [error]session
 msgid "Session error"
-msgstr ""
+msgstr "Помилка сеансу"
 
 #: [error]account_created
 msgid "Account successfully created"
-msgstr ""
+msgstr "Обліковий запис успішно створено"
 
 #: [error]timeout
 msgid "The server takes too much time to respond"
-msgstr ""
+msgstr "Серверу потрібно занадто багато часу, щоб відповісти"
 
 #: [error]impossible
 msgid "Impossible login"
-msgstr ""
+msgstr "Неможливо увійти в систему"
 
 #: [error]default
 msgid "Unknown error"
-msgstr ""
+msgstr "Невідома помилка"
 
 #: [error]login_format
 msgid "Invalid username format"
-msgstr ""
+msgstr "Неправильний формат імені користувача"
 
 #: [error]password_format
 msgid "Invalid password format"
-msgstr ""
+msgstr "Неправильний формат пароля"
 
 #: [error]unauthorized
 msgid "Your XMPP server is unauthorized"
-msgstr ""
+msgstr "Ваш XMPP-сервер неавторизований"
 
 #: [error]wrong_account
 msgid "Movim failed to authenticate. You entered wrong data"
-msgstr ""
+msgstr "Movim не вдалося пройти автентифікацію. Ви ввели неправильні дані"
 
 #: [error]mechanism
 msgid "Authentication mechanism not supported by Movim"
-msgstr ""
+msgstr "Механізм автентифікації не підтримується Movim"
 
 #: [error]fail_auth
 msgid "The XMPP authentification failed"
-msgstr ""
+msgstr "Не вдалося виконати автентифікацію XMPP"
 
 #: [connection]socket_connected
 msgid "Connected to the server"
-msgstr ""
+msgstr "Підключення до сервера"
 
 #: [connection]authenticated
 msgid "Authenticated to the server"
-msgstr ""
+msgstr "Автентифікація на сервері"
 
 #: [form]username
 msgid "My address"
-msgstr ""
+msgstr "Моя адреса"
 
 #: [form]whitelist_info
 msgid "Login with accounts from these servers"
-msgstr ""
+msgstr "Увійдіть за допомогою облікових записів з цих серверів"
 
 #: [form]connect_info
 msgid "Login using any XMPP account or create a new one"
-msgstr ""
+msgstr "Увійдіть за допомогою будь-якого облікового запису XMPP або створіть новий"
 
 #: [form]connected [rooms_filter]connected
 msgid "Connected"
-msgstr ""
+msgstr "Підключено"
 
 #: [form]population
 msgid "Population"
-msgstr ""
+msgstr "Населеність"
 
 #: [form]invite_chatroom
 msgid "%s invited you to join a chatroom"
-msgstr ""
+msgstr "%s запросили вас приєднатися до чату"
 
 #: [form]pod_admins
 msgid "Administrated by"
-msgstr ""
+msgstr "Адмініструє"
 
 #: [about_movim]info
 msgid "Movim is a federated blogging and chat platform."
-msgstr ""
+msgstr "Movim - це об'єднана платформа для ведення блогів і чату."
 
 #: [about_movim]website
 msgid "Visit the project official website %s."
-msgstr ""
+msgstr "Відвідайте офіційний сайт проекту %s"
 
 #: [menu]empty_title
 msgid "No news yet…"
-msgstr ""
+msgstr "Новин поки що немає..."
 
 #: [menu]empty
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
-msgstr ""
+msgstr "Ласкаво просимо до вашої стрічки новин, тут ви побачите всі пости, опубліковані вашими контактами та спільнотами, на які ви підписані."
 
 #: [menu]mine
 msgid "My publications"
-msgstr ""
+msgstr "Мої публікації"
 
 #: [menu]add_post
 msgid "Write a new post…"
-msgstr ""
+msgstr "Напишіть новий пост..."
 
 #: [notification]request_title
 msgid "Notifications request"
-msgstr ""
+msgstr "Запит на сповіщення"
 
 #: [notification]request_info
 msgid "Movim requires your approval to display notifications"
-msgstr ""
+msgstr "Movim потребує вашої згоди для відображення сповіщень"
 
 #: [notification]request_info2
 msgid "This authorization can be revoked at any time"
-msgstr ""
+msgstr "Цей дозвіл може бути відкликаний у будь-який час"
 
 #: [notification]request_button
 msgid "Request"
-msgstr ""
+msgstr "Запит"
 
 #: [notification]request_granted
 msgid "Authorization granted"
-msgstr ""
+msgstr "Дозвіл надано"
 
 #: [notification]request_refused
 msgid "Authorization refused"
-msgstr ""
+msgstr "Відмовлено в авторизації"
 
 #: [notificationconfig]title [notifs]title [onboarding]notifications_title
 #: [room]notify_title
 msgid "Notifications"
-msgstr ""
+msgstr "Сповіщення"
 
 #: [notificationconfig]push_subscriptions
 msgid "Push notifications"
-msgstr ""
+msgstr "Push-повідомлення"
 
 #: [notificationconfig]push_subscriptions_text
 msgid "Movim will send push notifications to the following registered devices"
-msgstr ""
+msgstr "Movim надсилатиме push-сповіщення на такі зареєстровані пристрої"
 
 #: [notificationconfig]push_enabled
 msgid "Push notifications enabled for this device"
-msgstr ""
+msgstr "Push-сповіщення увімкнено для цього пристрою"
 
 #: [notificationconfig]push_disabled
 msgid "Push notifications disabled for this device"
-msgstr ""
+msgstr "Push-сповіщення вимкнено для цього пристрою"
 
 #: [notificationconfig]unknown_browser
 msgid "Unknown browser"
-msgstr ""
+msgstr "Невідомий браузер"
 
 #: [notificationconfig]unknown_platform
 msgid "Unknown platform"
-msgstr ""
+msgstr "Невідома платформа"
 
 #: [invitations]received
 msgid "Received Invitations"
-msgstr ""
+msgstr "Отримані запрошення"
 
 #: [invitations]adds_you
 msgid "%s wants to add you"
-msgstr ""
+msgstr "%s хоче додати вас"
 
 #: [invitations]no_new
 msgid "No new invitations"
-msgstr ""
+msgstr "Немає нових запрошень"
 
 #: [invitations]no_subscriptions
 msgid "No pending subscriptions"
-msgstr ""
+msgstr "Немає підписок, що очікують на розгляд"
 
 #: [invitations]wants_to_talk
 msgid "%s wants to talk with you"
-msgstr ""
+msgstr "%s хоче поговорити з вами"
 
 #: [notifs]empty
 msgid "No new notifications"
-msgstr ""
+msgstr "Немає нових сповіщень"
 
 #: [onboarding]notifications_text
 msgid "Movim can notify you when a new post is published or if you receive messages"
-msgstr ""
+msgstr "Movim може сповіщати вас, коли публікується новий допис або коли ви отримуєте повідомлення"
 
 #: [onboarding]notifications_text_second
 msgid "You can always disable them afterwards"
-msgstr ""
+msgstr "Ви завжди можете відключити їх пізніше"
 
 #: [onboarding]public_title
 msgid "Public profile"
-msgstr ""
+msgstr "Публічний профіль"
 
 #: [onboarding]public_text
 msgid "Make your profile public and allow other users to find you and make new contacts more easily"
-msgstr ""
+msgstr "Зробіть свій профіль публічним і дозвольте іншим користувачам знаходити вас і легше заводити нові контакти"
 
 #: [onboarding]public_text_second
 msgid "You can always disable this in the configuration afterwards"
-msgstr ""
+msgstr "Ви завжди можете вимкнути цю функцію в конфігурації пізніше"
 
 #: [post]news_feed
 msgid "News Feed"
-msgstr ""
+msgstr "Стрічка новин"
 
 #: [post]placeholder
 msgid "Discover and register to the groups you are interested in"
-msgstr ""
+msgstr "Знаходьте та реєструйтеся в групах, які вас цікавлять"
 
 #: [post]content
 msgid "Content"
-msgstr ""
+msgstr "Вміст"
 
 #: [post]published
 msgid "Post published"
-msgstr ""
+msgstr "Допис опубліковано"
 
 #: [post]deleted
 msgid "Post deleted"
-msgstr ""
+msgstr "Допис видалено"
 
 #: [post]hot
 msgid "What’s Hot"
-msgstr ""
+msgstr "Актуальне"
 
 #: [post]hot_text
 msgid "Posts recently published in communities that you are not subscribed (yet)"
-msgstr ""
+msgstr "Нещодавно опубліковані повідомлення у спільнотах, на які ви не підписані (поки що)"
 
 #: [post]new [publish]new
 msgid "New post"
-msgstr ""
+msgstr "Нова публікація"
 
 #: [post]repost
 msgid "This is a re-post from %s"
-msgstr ""
+msgstr "Це перепост з %s"
 
 #: [post]repost_profile
 msgid "See %s profile"
-msgstr ""
+msgstr "Переглянути профіль %s"
 
 #: [post]blog_last
 msgid "Public posts from users"
-msgstr ""
+msgstr "Публічні дописи від користувачів"
 
 #: [post]unknown_contact
 msgid "Unknown contact"
-msgstr ""
+msgstr "Невідомий контакт"
 
 #: [post]read_time_singular
 msgid "%s minute"
-msgstr ""
+msgstr "%s хвилину"
 
 #: [post]read_time_plural
 msgid "%s minutes"
-msgstr ""
+msgstr "%s хвилин"
 
 #: [post]public_title
 msgid "Publish this article publicly"
-msgstr ""
+msgstr "Опублікуйте цю статтю у відкритому доступі"
 
 #: [post]public_text
 msgid "This will allow anyone outside Movim to have access to your publication"
-msgstr ""
+msgstr "Це дозволить будь-кому за межами Movim мати доступ до вашої публікації"
 
 #: [post]public_yes
 msgid "This post is public"
-msgstr ""
+msgstr "Ця публікація є публічною"
 
 #: [post]public_no
 msgid "This post is private"
-msgstr ""
+msgstr "Ця публікація є приватною"
 
 #: [post]public_url
 msgid "Public URL of this post"
-msgstr ""
+msgstr "Публічна URL-адреса цього допису"
 
 #: [post]comments_disabled_title
 msgid "Disable the comments"
-msgstr ""
+msgstr "Вимкнути коментарі"
 
 #: [post]comments_disabled_text
 msgid "Nobody will be able to like or comment"
-msgstr ""
+msgstr "Ніхто не зможе поставити лайк або прокоментувати"
 
 #: [post]comments_disabled_yes
 msgid "Comments disabled for this article"
-msgstr ""
+msgstr "Коментарі до цієї статті вимкнено"
 
 #: [post]comments_disabled_no
 msgid "Comments enabled for this article"
-msgstr ""
+msgstr "До цієї статті дозволено коментування"
 
 #: [post]delete_title [post]delete
 msgid "Delete this post"
-msgstr ""
+msgstr "Видаліть цю публікацію"
 
 #: [post]delete_text
 msgid "You are going to delete this post, please confirm your action"
-msgstr ""
+msgstr "Ви збираєтеся видалити цю публікацію, будь ласка, підтвердіть вашу дію"
 
 #: [post]delete_comment
 msgid "Are you sure that you want to delete this comment?"
-msgstr ""
+msgstr "Ви впевнені, що хочете видалити цей коментар?"
 
 #: [post]discover
 msgid "Discover more articles on the communities page"
-msgstr ""
+msgstr "Знайдіть більше статей на сторінці спільнот"
 
 #: [post]more
 msgid "Read more"
-msgstr ""
+msgstr "Читати далі"
 
 #: [post]comments_disabled
 msgid "Comments disabled"
-msgstr ""
+msgstr "Коментарі вимкнено"
 
 #: [post]comment_published
 msgid "Comment published"
-msgstr ""
+msgstr "Коментар опубліковано"
 
 #: [post]comment_like_published
 msgid "Liked"
-msgstr ""
+msgstr "Вподобано"
 
 #: [post]comment_publish_error
 msgid "The comment cannot be published"
-msgstr ""
+msgstr "Коментар не може бути опублікований"
 
 #: [post]comment_deleted
 msgid "Comment deleted"
-msgstr ""
+msgstr "Коментар видалено"
 
 #: [post]liked
 msgid "Liked your publication"
-msgstr ""
+msgstr "Сподобалась ваша публікація"
 
 #: [post]commented
 msgid "Commented"
-msgstr ""
+msgstr "Коментує"
 
 #: [hello]contact_post
 msgid "Contact post"
-msgstr ""
+msgstr "Контактна особа"
 
 #: [hello]share_title
 msgid "Universal share button"
-msgstr ""
+msgstr "Універсальна кнопка спільного доступу"
 
 #: [hello]share_text
 msgid "Bookmark or drag and drop the following button in your toolbar and use it on all the pages you want to share on Movim"
-msgstr ""
+msgstr "Додайте в закладки або перетягніть наступну кнопку на панелі інструментів і використовуйте її на всіх сторінках, якими ви хочете поділитися на Movim"
 
 #: [hello]share_button
 msgid "Share on Movim"
-msgstr ""
+msgstr "Поділіться на Movim"
 
 #: [hello]enter_title
 msgid "Oh! Hello!"
@@ -1954,417 +1958,450 @@ msgstr ""
 
 #: [hello]enter_paragraph
 msgid "It seems that you’re new there! Welcome on Movim!"
-msgstr ""
+msgstr "Здається, ви тут новачок! Ласкаво просимо в Movim!"
 
 #: [hello]menu_title
 msgid "Check the Menu"
-msgstr ""
+msgstr "Перевірте меню"
 
 #: [hello]menu_paragraph
 msgid "All the main Movim features are accessible there. Don’t hesitate to navigate through the pages to discover more!"
-msgstr ""
+msgstr "Тут доступні всі основні функції Movim. Не соромтеся переходити по сторінках, щоб дізнатися більше!"
 
 #: [hello]profile_title
 msgid "Looks like you didn’t complete your profile yet"
-msgstr ""
+msgstr "Схоже, ви ще не заповнили свій профіль"
 
 #: [hello]profile_paragraph
 msgid "You can go in the Configuration page to describe yourself and put a nice picture"
-msgstr ""
+msgstr "Ви можете зайти на сторінку конфігурації, щоб описати себе і розмістити гарну фотографію"
 
 #: [status]disconnect
 msgid "Disconnect"
-msgstr ""
+msgstr "Від'єднати"
 
 #: [status]presence
 msgid "Presence"
-msgstr ""
+msgstr "Присутність"
 
 #: [status]logout_confirm
 msgid "Do you really want to log out?"
-msgstr ""
+msgstr "Ви дійсно хочете вийти з системи?"
 
 #: [preview]link_copied
 msgid "Link copied to clipboard"
-msgstr ""
+msgstr "Посилання скопійовано в буфер обміну"
 
 #: [publish]placeholder
 msgid "What’s new?"
+msgstr "Що нового?"
+
+#: [publish]brief_title
+msgid "Brief"
 msgstr ""
+
+#: [publish]article_title
+#, fuzzy
+msgid "Article"
+msgstr "Статті"
 
 #: [publish]post
 msgid "Write a post"
-msgstr ""
+msgstr "Написати пост"
 
 #: [publish]add_link
 msgid "Add a link"
-msgstr ""
+msgstr "Додати посилання"
 
 #: [publish]add_snap
 msgid "Take a picture"
-msgstr ""
+msgstr "Сфотографувати"
 
 #: [publish]no_title
 msgid "Please provide a title"
-msgstr ""
+msgstr "Будь ласка, вкажіть назву"
 
 #: [publish]no_picture
 msgid "At least one picture is required"
-msgstr ""
+msgstr "Потрібно надіслати принаймні одну фотографію"
 
 #: [publish]preview
 msgid "Preview"
-msgstr ""
+msgstr "Попередній перегляд"
 
 #: [publish]attach
 msgid "Add a file or a picture"
-msgstr ""
+msgstr "Додайте файл або зображення"
 
 #: [publish]no_publication
 msgid "You cannot publish a post here"
-msgstr ""
+msgstr "Ви не можете опублікувати пост тут"
 
 #: [publish]title
 msgid "Post title"
-msgstr ""
+msgstr "Заголовок публікації"
 
 #: [publish]content
 msgid "Markdown content"
-msgstr ""
+msgstr "Markdown вміст"
 
 #: [publish]valid_url
 msgid "Please enter a valid URL"
-msgstr ""
+msgstr "Будь ласка, введіть коректну URL-адресу"
 
 #: [publish]content_text
 msgid "You can format your content using Markdown"
-msgstr ""
+msgstr "Ви можете форматувати вміст за допомогою Markdown"
 
 #: [publish]draft_saved
 msgid "Draft saved"
-msgstr ""
+msgstr "Чернетка збережена"
 
 #: [publish]rich_editor
 msgid "Rich text editor"
-msgstr ""
+msgstr "Редактор розширеного тексту"
 
 #: [publish]help_hashtag
 msgid "Add #hashtags in your title or content to allow your article to be discovered"
-msgstr ""
+msgstr "Додайте #хештеги до заголовка або контенту, щоб вашу статтю можна було знайти"
 
 #: [publish]publish_error_forbidden
 msgid "You are not authorized to publish there"
-msgstr ""
+msgstr "Ви не маєте права публікувати тут"
 
 #: [publishhelp]title [page]help
 msgid "Help"
-msgstr ""
+msgstr "Допомога"
 
 #: [publishhelp]more
 msgid "More help"
-msgstr ""
+msgstr "Більше допомоги"
 
 #: [publishhelp]manual
 msgid "Markdown syntax manual"
+msgstr "Посібник з синтаксису Markdown"
+
+#: [story]to_roster
+#, fuzzy
+msgid "Publish to my contacts"
+msgstr "Додати до моїх контактів"
+
+#: [story]uploading
+#, fuzzy
+msgid "Uploading the story"
+msgstr "Очистити історію"
+
+#: [story]publishing
+#, fuzzy
+msgid "Publishing the story"
+msgstr "Лише для публікації"
+
+#: [story]publishing_text
+msgid "Almost there…"
 msgstr ""
+
+#: [story]published
+#, fuzzy
+msgid "Story published"
+msgstr "Допис опубліковано"
 
 #: [rooms]create
 msgid "Create a chatroom"
-msgstr ""
+msgstr "Створити чат"
 
 #: [rooms]edit
 msgid "Edit a chatroom"
-msgstr ""
+msgstr "Редагувати чат"
 
 #: [rooms]join
 msgid "Join a chatroom"
-msgstr ""
+msgstr "Приєднатися до чату"
 
 #: [rooms]join_custom
 msgid "Join a custom chatroom"
-msgstr ""
+msgstr "Приєднатися до спеціального чату"
 
 #: [rooms]empty_text1
 msgid "You don’t have any chatrooms yet."
-msgstr ""
+msgstr "У вас ще немає жодного чату."
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
-msgstr ""
+msgstr "Додайте його, натиснувши на кнопку \"Додати\"."
 
 #: [rooms]type_room
 msgid "Type of room"
-msgstr ""
+msgstr "Тип кімнати"
 
 #: [rooms]default_room
 msgid "Standard room"
-msgstr ""
+msgstr "Стандартна кімната"
 
 #: [rooms]gateway_room
 msgid "Gateway room"
-msgstr ""
+msgstr "Шлюз кімната"
 
 #: [rooms]show_all
 msgid "Show all rooms"
-msgstr ""
+msgstr "Показати всі кімнати"
 
 #: [rooms]hide_disconnected
 msgid "Hide disconnected rooms"
-msgstr ""
+msgstr "Приховати відключені кімнати"
 
 #: [rooms]destroy_title
 msgid "Destroy the room"
-msgstr ""
+msgstr "Знищити кімнату"
 
 #: [rooms]destroy_text
 msgid "Are you sure you want to permanently destroy the following room?"
-msgstr ""
+msgstr "Ви впевнені, що хочете назавжди знищити поточну кімнату?"
 
 #: [rooms]owner
 msgctxt "[rooms]owner"
 msgid "Owner"
-msgstr ""
+msgstr "Власник"
 
 #: [rooms]admin
 msgctxt "[rooms]admin"
 msgid "Admin"
-msgstr ""
+msgstr "Адміністратор"
 
 #: [rooms]visitor
 msgid "Visitor"
-msgstr ""
+msgstr "Гість"
 
 #: [rooms]explore_placeholder
 msgid "Name or description"
-msgstr ""
+msgstr "Назва або опис"
 
 #: [rooms]disco_registration_required
 msgid "A registration is required before using the service"
-msgstr ""
+msgstr "Перед використанням сервісу необхідно пройти реєстрацію"
 
 #: [chatrooms]title
 msgid "Chatrooms"
-msgstr ""
+msgstr "Кімнати для спілкування"
 
 #: [chatrooms]id
 msgid "Chatroom ID"
-msgstr ""
+msgstr "Ідентифікатор кімнати чату"
 
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
-msgstr ""
+msgstr "Мої улюблені кімнати"
 
 #: [chatrooms]bad_id
 msgid "Bad Chatroom ID"
-msgstr ""
+msgstr "Неправильний ідентифікатор чату"
 
 #: [chatrooms]empty_name
 msgid "Empty name"
-msgstr ""
+msgstr "Порожнє ім'я"
 
 #: [chatrooms]remove_title
 msgid "Remove a chatroom"
-msgstr ""
+msgstr "Видалити чат"
 
 #: [chatrooms]remove_text
 msgid "You are going to remove the following chatroom. Please confirm your action."
-msgstr ""
+msgstr "Ви збираєтеся видалити поточний чат. Будь ласка, підтвердіть вашу дію."
 
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
 msgid "Users"
-msgstr ""
+msgstr "Користувачі"
 
 #: [chatrooms]members
 msgctxt "[chatrooms]members"
 msgid "Members"
-msgstr ""
+msgstr "Учасники"
 
 #: [chatrooms]banned
 msgid "Banned"
-msgstr ""
+msgstr "Заблоковані"
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a correct nickname (2 to 40 characters)"
-msgstr ""
+msgstr "Будь ласка, введіть коректний нікнейм (від 2 до 40 символів)"
 
 #: [chatrooms]conflict
 msgid "Username already taken"
-msgstr ""
+msgstr "Ім'я користувача вже зайнято"
 
 #: [chatrooms]autojoin
 msgid "Join this chatroom on connect"
-msgstr ""
+msgstr "Приєднатися до цього чату"
 
 #: [chatrooms]pinned
 msgid "Pin this chatroom"
-msgstr ""
+msgstr "Закріпити цей чат"
 
 #: [chatrooms]destroyed
 msgid "Room destroyed"
-msgstr ""
+msgstr "Кімната знищена"
 
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
-msgstr ""
+msgstr "До чату не можна приєднатися, потрібна реєстрація"
 
 #: [chatrooms]remoteservernotfound
 msgid "The remote server for this chatroom doesn’t exist"
-msgstr ""
+msgstr "Віддаленого сервера для цього чату не існує"
 
 #: [chatrooms]remoteservertimeout
 msgid "Connection to remote server timed out"
-msgstr ""
+msgstr "Вичерпано час з'єднання з віддаленим сервером"
 
 #: [chatrooms]itemnotfound
 msgid "The chatroom doesn’t exist"
-msgstr ""
+msgstr "Чату не існує"
 
 #: [chatrooms]notauthorized
 msgid "A password is required"
-msgstr ""
+msgstr "Потрібен пароль"
 
 #: [chatrooms]forbidden
 msgid "You are not allowed to join this chatroom"
-msgstr ""
+msgstr "Вам не дозволено приєднуватися до цього чату"
 
 #: [chatrooms]jidmalformed
 msgid "Your nickname is not valid"
-msgstr ""
+msgstr "Ваш нік не є дійсним"
 
 #: [chatrooms]notacceptable
 msgid "Not acceptable"
-msgstr ""
+msgstr "Неприйнятно"
 
 #: [chatrooms]serviceunavailable
 msgid "The chatroom occupant limit has been reached"
-msgstr ""
+msgstr "Досягнуто ліміт учасників чату"
 
 #: [chatrooms]notallowed
 msgid "You are not allowed to create a chatroom there"
-msgstr ""
+msgstr "Ви не маєте права тут створювати чат"
 
 #: [chatrooms]created
 msgid "Chatroom created"
-msgstr ""
+msgstr "Чат створено"
 
 #: [bookmarks]updated
 msgid "Bookmarks updated"
-msgstr ""
+msgstr "Закладки оновлено"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
-msgstr ""
+msgstr "Публічний чат"
 
 #: [room]anonymous_text1
 msgid "You are currently logged as an anonymous user."
-msgstr ""
+msgstr "Ви увійшли як анонімний користувач."
 
 #: [room]anonymous_text2
 msgid "You can join using your own account or create one on the login page by logging out using the cross in the top-right corner."
-msgstr ""
+msgstr "Ви можете приєднатися за допомогою власного облікового запису або створити його на сторінці входу, вийшовши з нього за допомогою хрестика у верхньому правому куті."
 
 #: [room]anonymous_login
 msgid "Login on %s"
-msgstr ""
+msgstr "Увійдіть в систему %s"
 
 #: [room]invite
 msgid "Invite a contact"
-msgstr ""
+msgstr "Запросити контакт"
 
 #: [room]invited
 msgid "Invitation sent"
-msgstr ""
+msgstr "Запрошення надіслано"
 
 #: [room]invite_code
 msgid "Send this link to your contacts"
-msgstr ""
+msgstr "Надішліть це посилання своїм контактам"
 
 #: [room]public_muc_text
 msgid "This chatroom is publicly discoverable"
-msgstr ""
+msgstr "Цей чат є загальнодоступним"
 
 #: [room]nonanonymous_muc
 msgid "Public profiles"
-msgstr ""
+msgstr "Публічні профілі"
 
 #: [room]nonanonymous_muc_text
 msgid "The participants of this chatroom can see each other's profile"
-msgstr ""
+msgstr "Учасники цього чату можуть бачити профіль один одного"
 
 #: [room]archived
 msgid "Archived"
-msgstr ""
+msgstr "Архівовано"
 
 #: [room]archived_text
 msgid "The chatroom messages are archived"
-msgstr ""
+msgstr "Повідомлення чату архівуються"
 
 #: [room]group_chat
 msgid "Group Chat"
-msgstr ""
+msgstr "Групповий чат"
 
 #: [room]group_chat_text
 msgid "Private group chat with invited members"
-msgstr ""
+msgstr "Приватний груповий чат із запрошеними учасниками"
 
 #: [room]group_chat_add
 msgid "Add a new member"
-msgstr ""
+msgstr "Додати нового учасника"
 
 #: [room]group_chat_members
 msgctxt "[room]group_chat_members"
 msgid "Members"
-msgstr ""
+msgstr "Учасники"
 
 #: [room]banned_add
 msgid "Ban someone"
-msgstr ""
+msgstr "Забанити когось"
 
 #: [room]banned_remove
 msgid "Unban"
-msgstr ""
+msgstr "Зняти бан"
 
 #: [room]change_affiliation
 msgid "Change the user affiliation"
-msgstr ""
+msgstr "Змінити приналежність користувача"
 
 #: [room]change_affiliation_unauthorized
 msgid "You are not authorized to change this affiliation"
-msgstr ""
+msgstr "Ви не маєте права змінювати цю приналежність"
 
 #: [room]affiliation
 msgid "Affiliation"
-msgstr ""
+msgstr "Приналежність"
 
 #: [room]reason
 msgid "Reason"
-msgstr ""
+msgstr "Причина"
 
 #: [room]channel
 msgid "Channel"
-msgstr ""
+msgstr "Канал"
 
 #: [room]channel_users
 msgctxt "[room]channel_users"
 msgid "Users"
-msgstr ""
+msgstr "Користувачі"
 
 #: [room]channel_text
 msgid "Public channel that can be publicly discoverable and joinable"
-msgstr ""
+msgstr "Публічний канал, який можна відкрити та приєднатися до нього"
 
 #: [room]notify_never
 msgid "Never notify"
-msgstr ""
+msgstr "Ніколи не повідомляти"
 
 #: [room]notify_quoted
 msgid "Notify when quoted"
-msgstr ""
+msgstr "Повідомляти, коли цитується"
 
 #: [room]notify_always
 msgid "Always notify"
-msgstr ""
+msgstr "Завжди повідомляти"
 
 #: [room]pinned
 msgid "Pinned"
@@ -2373,148 +2410,202 @@ msgstr ""
 #: [room]affiliation_owner
 msgctxt "[room]affiliation_owner"
 msgid "Owner"
-msgstr ""
+msgstr "Власник"
 
 #: [room]affiliation_admin
 msgctxt "[room]affiliation_admin"
 msgid "Admin"
-msgstr ""
+msgstr "Адміністратор"
 
 #: [room]affiliation_member [affiliation]member
 msgid "Member"
-msgstr ""
+msgstr "Учасник"
 
 #: [room]affiliation_none [affiliation]no-aff
 msgid "No affiliation"
-msgstr ""
+msgstr "Без приналежності"
 
 #: [room]affiliation_owner_changed
 msgid "User granted as owner"
-msgstr ""
+msgstr "Користувачеві надано право власності"
 
 #: [room]affiliation_admin_changed
 msgid "User granted as admin"
-msgstr ""
+msgstr "Користувачеві надано права адміністратора"
 
 #: [room]affiliation_member_changed
 msgid "User granted as member"
-msgstr ""
+msgstr "Користувачеві надано статус учасника"
 
 #: [room]affiliation_outcast_changed
 msgid "User banned"
-msgstr ""
+msgstr "Користувача заблоковано"
 
 #: [room]affiliation_none_changed
 msgid "Affiliation removed for the user"
-msgstr ""
+msgstr "Приналежність користувача видалено"
 
 #: [roomsexplore]no_local
 msgid "No chatrooms found locally"
-msgstr ""
+msgstr "Локальних чатів не знайдено"
 
 #: [roomsexplore]global_title
 msgid "Global search"
-msgstr ""
+msgstr "Глобальний пошук"
 
 #: [roomsexplore]no_global
 msgid "No chatrooms found globally"
-msgstr ""
+msgstr "Глобальних чатів не знайдено"
 
 #: [search]keyword
 msgid "What are you looking for?"
-msgstr ""
+msgstr "Що ви шукаєте?"
 
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
-msgstr ""
+msgstr "Відкрийте мене за допомогою Ctrl + M"
 
 #: [search]placeholder
 msgid "#cats, username@server.com, John…"
-msgstr ""
+msgstr "#cats, username@server.com, John…"
 
 #: [search]no_contacts_title
 msgid "No contacts yet?"
-msgstr ""
+msgstr "Ще немає контактів?"
 
 #: [search]no_contacts_text
 msgid "Find one by searching for their name or id"
-msgstr ""
+msgstr "Знайдіть його за іменем або ідентифікатором"
 
 #: [search]tags
 msgid "Tags"
-msgstr ""
+msgstr "Теги"
 
 #: [search]show_complete_roster
 msgid "Show all the contacts"
-msgstr ""
+msgstr "Показати всі контакти"
 
 #: [sendto]attach
 msgid "Attach to a blog publication"
-msgstr ""
+msgstr "Прикріпити до публікації блогу"
 
 #: [sendto]share
 msgid "Share in a new publication"
-msgstr ""
+msgstr "Поділіться в новій публікації"
 
 #: [sendto]contact
 msgid "Send it to a contact"
-msgstr ""
+msgstr "Надіслати контакту"
 
 #: [sendto]chatroom
 msgid "Share it in a chatroom"
-msgstr ""
+msgstr "Поділіться в чаті"
 
 #: [sendto]shared_with
 msgid "Post shared"
-msgstr ""
+msgstr "Публікація опублікована"
 
 #: [sendto]shared_contact
 msgid "Post shared with your contact"
-msgstr ""
+msgstr "Поділися публікацією з вашим контактом"
 
 #: [sendto]shared_chatroom
 msgid "Post shared within the chatroom"
-msgstr ""
+msgstr "Публікація в чаті"
 
 #: [sendto]more_contacts
 msgid "More contacts"
-msgstr ""
+msgstr "Більше контактів"
 
 #: [sendto]os_share
 msgid "Share outside Movim"
-msgstr ""
+msgstr "Поділитися за межами Movim"
+
+#: [sendto]sharing_post
+#, fuzzy
+msgid "Post shared using Movim"
+msgstr "Поділитися за межами Movim"
+
+#: [sendto]sharing_story
+#, fuzzy
+msgid "Story shared using Movim"
+msgstr "Поділитися за межами Movim"
 
 #: [sticker]title
 msgid "Stickers"
-msgstr ""
+msgstr "Наліпки"
 
 #: [sticker]sent
 msgid "A sticker has been sent using Movim"
-msgstr ""
+msgstr "Наліпку надіслано за допомогою Movim"
 
 #: [sticker]keyword
 msgid "Type a keyword"
-msgstr ""
+msgstr "Введіть ключове слово"
 
 #: [sticker]gif_title
 msgid "Find a GIF"
-msgstr ""
+msgstr "Знайти GIF"
 
 #: [sticker]gif_text
 msgid "Powered by Tenor"
 msgstr ""
 
+#: [stories]publish
+msgid "New Story"
+msgstr ""
+
+#: [stories]title
+msgid "Stories"
+msgstr ""
+
+#: [stories]new_story
+msgid "New Story from %s"
+msgstr ""
+
+#: [stories]forbidden
+msgid "You don't have access to this story, send an invitation to the author to access it"
+msgstr ""
+
+#: [stories]share_title
+msgid "Some of your contacts might not have access to this story"
+msgstr ""
+
+#: [stories]share_text
+#, fuzzy
+msgid "They might have to subscribe to the publisher account"
+msgstr "Ви не підписані на цього користувача"
+
+#: [stories]comment
+#, fuzzy
+msgid "Send a comment to %s"
+msgstr "Додати коментар"
+
+#: [stories]delete_title
+msgid "Story deletion"
+msgstr ""
+
+#: [stories]delete_text
+#, fuzzy
+msgid "Are you sure that you want to delete this story?"
+msgstr "Ви впевнені, що хочете видалити цей коментар?"
+
+#: [stories]deleted
+#, fuzzy
+msgid "Story deleted"
+msgstr "Допис видалено"
+
 #: [subscribe]info
 msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
-msgstr ""
+msgstr "Movim - це децентралізована соціальна мережа, перед створенням нового облікового запису вам потрібно вибрати сервер для реєстрації."
 
 #: [subscribe]server_question
 msgid "Your server here?"
-msgstr ""
+msgstr "Ваш сервер тут?"
 
 #: [subscribe]server_contact
 msgid "Contact us to add yours to the officially supported servers list"
-msgstr ""
+msgstr "Зв'яжіться з нами, щоб додати ваш сервер до списку офіційно підтримуваних"
 
 #: [feed]title
 msgid "%s’s feed"
@@ -2522,866 +2613,866 @@ msgstr "%s канал"
 
 #: [feed]nope
 msgid "No public feed for this contact"
-msgstr ""
+msgstr "Для цього контакту немає публічної стрічки"
 
 #: [feed]nope_contact
 msgid "No contact specified"
-msgstr ""
+msgstr "Контакт не вказано"
 
 #: [upload]title [button]upload
 msgid "Upload"
-msgstr ""
+msgstr "Завантажити"
 
 #: [upload]choose
 msgid "Choose a file to upload"
-msgstr ""
+msgstr "Виберіть файл для завантаження"
 
 #: [upload]info
 msgid "Large pictures will be resized and compressed"
-msgstr ""
+msgstr "Великі зображення будуть зменшені та стиснуті"
 
 #: [upload]error_filesize
 msgid "File too large"
-msgstr ""
+msgstr "Файл занадто великий"
 
 #: [upload]error_failed
 msgid "Upload failed"
-msgstr ""
+msgstr "Не вдалося завантажити"
 
 #: [upload]error_not_allowed
 msgid "You are not allowed to upload a file"
-msgstr ""
+msgstr "Ви не маєте права завантажувати файл"
 
 #: [upload]error_resource_constraint
 msgid "You exceeded the quota"
-msgstr ""
+msgstr "Ви перевищили квоту"
 
 #: [upload]drag_drop
 msgid "Drag and drop your file in this area"
-msgstr ""
+msgstr "Перетягніть файл у цю область"
 
 #: [upload]max_size
 msgid "Max file size %s"
-msgstr ""
+msgstr "Максимальний розмір файлу %s"
 
 #: [vcard]title [page]profile
 msgid "Profile"
-msgstr ""
+msgstr "Профіль"
 
 #: [vcard]updated
 msgid "Profile Updated"
-msgstr ""
+msgstr "Профіль оновлено"
 
 #: [vcard]not_updated
 msgid "Profile Not Updated"
-msgstr ""
+msgstr "Профіль не оновлено"
 
 #: [vcard]nickname_info
 msgid "This will also be used as your default nickname when joining a chatroom"
-msgstr ""
+msgstr "Він також буде використовуватися як ваш нікнейм за замовчуванням при приєднанні до чату"
 
 #: [profile]public
 msgid "Your profile is now public"
-msgstr ""
+msgstr "Ваш профіль тепер публічний"
 
 #: [profile]restricted
 msgid "Your profile is now restricted"
-msgstr ""
+msgstr "Доступ до вашого профілю обмежено"
 
 #: [profile]info
 msgid "Configure your instance nickname"
-msgstr ""
+msgstr "Налаштуйте псевдонім вашого екземпляра"
 
 #: [profile]privacy_question
 msgid "Is this account public on this Movim instance?"
-msgstr ""
+msgstr "Чи є цей обліковий запис публічним на цьому екземплярі Movim?"
 
 #: [profile]privacy_info
 msgid "Movim will create a public page to host your blog and your account will be searchable by the other Movim users."
-msgstr ""
+msgstr "Movim створить публічну сторінку для розміщення вашого блогу, і ваш акаунт буде доступний для пошуку іншими користувачами Movim."
 
 #: [profile]nickname_info
 msgid "Set a local nickname to allow the other users of the instance to find you easily."
-msgstr ""
+msgstr "Встановіть локальний нікнейм, щоб інші користувачі екземпляра могли легко вас знайти."
 
 #: [profile]nickname_set
 msgid "Your nickname is %s."
-msgstr ""
+msgstr "Ваш нікнейм %s"
 
 #: [profile]nickname_placeholder
 msgid "John_Bob96"
-msgstr ""
+msgstr "John_Bob96"
 
 #: [profile]nickname_error
 msgid "Your nickname should only contain letters, numbers, - and _"
-msgstr ""
+msgstr "Ваш нік повинен містити лише літери, цифри, - та _."
 
 #: [profile]nickname_conflict
 msgid "The nickname is already registered"
-msgstr ""
+msgstr "Нікнейм вже зареєстровано"
 
 #: [profile]nickname_saved
 msgid "Nickname saved"
-msgstr ""
+msgstr "Нікнейм збережено"
 
 #: [save]submit [button]submit
 msgid "Submit"
-msgstr ""
+msgstr "Надіслати"
 
 #: [save]reset [button]reset
 msgid "Reset"
-msgstr ""
+msgstr "Скинути"
 
 #: [degraded]title
 msgid "Movim is currently working in degraded mode"
-msgstr ""
+msgstr "Наразі Movim працює в погіршеному режимі"
 
 #: [degraded]text_1
 msgid "Your server doesn’t support XMPP Pubsub persistence or the social features (communities, news feed and profile) are disabled by the administrator."
-msgstr ""
+msgstr "Ваш сервер не підтримує персистентність XMPP Pubsub або соціальні функції (спільноти, стрічка новин і профіль) вимкнені адміністратором."
 
 #: [degraded]text_2
 msgid "Please contact your server administrator to see if this feature can be enabled."
-msgstr ""
+msgstr "Зверніться до адміністратора вашого сервера, щоб дізнатися, чи можна ввімкнути цю функцію."
 
 #: [visio]calling
 msgid "…is calling you"
-msgstr ""
+msgstr "... телефонує вам"
 
 #: [visio]video_call
 msgid "Incoming video call"
-msgstr ""
+msgstr "Вхідний відеодзвінок"
 
 #: [visio]audio_call
 msgid "Incoming audio call"
-msgstr ""
+msgstr "Вхідний аудіовиклик"
 
 #: [visio]ringing
 msgid "…ringing"
-msgstr ""
+msgstr "... телефонує"
 
 #: [visio]declined
 msgid "Declined"
-msgstr ""
+msgstr "Відхилено"
 
 #: [visio]in_call
 msgid "In call"
-msgstr ""
+msgstr "На зв'язку"
 
 #: [visio]failed
 msgid "Failed"
-msgstr ""
+msgstr "Не вдалося"
 
 #: [visio]connecting
 msgid "…connecting"
-msgstr ""
+msgstr "...з'єднання"
 
 #: [visiolobby]called
 msgid "%s is calling you"
-msgstr ""
+msgstr "%s телефонує вам"
 
 #: [visiolobby]calling
 msgid "Calling %s"
-msgstr ""
+msgstr "Зателефонувати %s"
 
 #: [visiolobby]setup
 msgid "Setting up your camera and microphone"
-msgstr ""
+msgstr "Налаштування камери та мікрофона"
 
 #: [visiolobby]devices_disco
 msgid "Please allow your browser to share your devices to configure them"
-msgstr ""
+msgstr "Будь ласка, дозвольте вашому браузеру надавати доступ до ваших пристроїв для їх налаштування"
 
 #: [visiolobby]microphone_label [visioconfig]microphone_label
 msgid "Default microphone"
-msgstr ""
+msgstr "Мікрофон за замовчуванням"
 
 #: [visiolobby]camera_label [visioconfig]camera_label
 msgid "Default camera"
-msgstr ""
+msgstr "Камера за замовчуванням"
 
 #: [visiolobby]default_microphone_changed
 #: [visioconfig]default_microphone_changed
 msgid "Default microphone changed"
-msgstr ""
+msgstr "Змінено мікрофон за замовчуванням"
 
 #: [visiolobby]default_camera_changed [visioconfig]default_camera_changed
 msgid "Default camera changed"
-msgstr ""
+msgstr "Змінено камеру за замовчуванням"
 
 #: [visiolobby]no_mic_sound [visioconfig]no_mic_sound
 msgid "No sound detected from your microphone"
-msgstr ""
+msgstr "Не виявлено звуку з вашого мікрофона"
 
 #: [visiolobby]no_mic_sound2 [visioconfig]no_mic_sound2
 msgid "Try to select another source or check your system settings"
-msgstr ""
+msgstr "Спробуйте вибрати інше джерело або перевірте налаштування системи"
 
 #: [visioconfig]title
 msgid "Video & Voice"
-msgstr ""
+msgstr "Відео та голос"
 
 #: [visioconfig]help
 msgid "Configure the default devices used by Movim"
-msgstr ""
+msgstr "Налаштуйте пристрої за замовчуванням, які використовує Movim"
 
 #: [visioconfig]microphone
 msgid "Microphone"
-msgstr ""
+msgstr "Мікрофон"
 
 #: [visioconfig]camera
 msgid "Camera"
-msgstr ""
+msgstr "Камера"
 
 #: [global]no_js
 msgid "Movim requires Javascript to be enabled to work properly."
-msgstr ""
+msgstr "Для коректної роботи Movim потрібен Javascript."
 
 #: [global]description
 msgid "Movim is a kickass distributed social networking platform that protects your privacy and comes with a set of awesome features."
-msgstr ""
+msgstr "Movim - це крута розподілена соціальна мережева платформа, яка захищає вашу конфіденційність і має безліч чудових функцій."
 
 #: [global]loading
 msgid "Loading…"
-msgstr ""
+msgstr "Завантаження..."
 
 #: [global]or
 msgid "Or"
-msgstr ""
+msgstr "Або"
 
 #: [global]change_pod
 msgid "Switch to another pod"
-msgstr ""
+msgstr "Переключіться на інший канал"
 
 #: [page]communities
 msgid "Communities"
-msgstr ""
+msgstr "Спільноти"
 
 #: [page]home
 msgid "Home"
-msgstr ""
+msgstr "Головна"
 
 #: [page]explore
 msgid "Explore"
-msgstr ""
+msgstr "Досліджуйте"
 
 #: [page]account_creation
 msgid "Account Creation"
-msgstr ""
+msgstr "Створення облікового запису"
 
 #: [page]news
 msgid "News"
-msgstr ""
+msgstr "Новини"
 
 #: [page]avatar
 msgid "Avatar"
-msgstr ""
+msgstr "Аватар"
 
 #: [page]chats
 msgid "Chats"
-msgstr ""
+msgstr "Чати"
 
 #: [page]publish
 msgid "Publish"
-msgstr ""
+msgstr "Опублікуйте"
 
 #: [page]post
 msgid "Post"
-msgstr ""
+msgstr "Допис"
 
 #: [page]blog
 msgid "Blog"
-msgstr ""
+msgstr "Блог"
 
 #: [page]about
 msgid "About"
-msgstr ""
+msgstr "Про"
 
 #: [page]login
 msgid "Login"
-msgstr ""
+msgstr "Вхід"
 
 #: [page]not_found
 msgid "Not Found"
-msgstr ""
+msgstr "Не знайдено"
 
 #: [page]feed
 msgid "Feed"
-msgstr ""
+msgstr "Стрічка"
 
 #: [page]posts
 msgid "Posts"
-msgstr ""
+msgstr "Дописи"
 
 #: [page]visio
 msgid "Visio-conference"
-msgstr ""
+msgstr "Візуальна конференція"
 
 #: [page]share
 msgctxt "[page]share"
 msgid "Share"
-msgstr ""
+msgstr "Поширити"
 
 #: [page]room
 msgid "Room"
-msgstr ""
+msgstr "Кімната"
 
 #: [page]tag
 msgid "Tag"
-msgstr ""
+msgstr "Тег"
 
 #: [error]error
 msgid "Error: %s"
-msgstr ""
+msgstr "Помилка: %s"
 
 #: [error]cannot_load_file
 msgid "Cannot load file '%s'"
-msgstr ""
+msgstr "Не вдається завантажити файл '%s'"
 
 #: [error]widget_load_error
 msgid "Requested widget '%s' doesn’t exist."
-msgstr ""
+msgstr "Запитуваний віджет '%s' не існує."
 
 #: [error]widget_call_error
 msgid "Requested event '%s' not registered."
-msgstr ""
+msgstr "Запитувана подія '%s' не зареєстрована."
 
 #: [error]whoops
 msgid "Whoops!"
-msgstr ""
+msgstr "Упс!"
 
 #: [error]websocket
 msgid "Movim cannot talk with the server, please try again later"
-msgstr ""
+msgstr "Movim не може зв'язатися з сервером, спробуйте пізніше"
 
 #: [error]websocket_connect
 msgid "Reconnection to the server…"
-msgstr ""
+msgstr "Повторне підключення до сервера..."
 
 #: [error]oops
 msgid "Oops!"
-msgstr ""
+msgstr "Опа!"
 
 #: [button]call
 msgid "Call"
-msgstr ""
+msgstr "Дзвінок"
 
 #: [button]audio_call
 msgid "Audio Call"
-msgstr ""
+msgstr "Аудіовиклик"
 
 #: [button]video_call
 msgid "Video Call"
-msgstr ""
+msgstr "Відеовиклик"
 
 #: [button]validate
 msgid "Validate"
-msgstr ""
+msgstr "Перевірити"
 
 #: [button]refresh
 msgid "Refresh"
-msgstr ""
+msgstr "Оновити"
 
 #: [button]add
 msgid "Add"
-msgstr ""
+msgstr "Додати"
 
 #: [button]delete
 msgid "Delete"
-msgstr ""
+msgstr "Видалити"
 
 #: [button]destroy
 msgid "Destroy"
-msgstr ""
+msgstr "Знищити"
 
 #: [button]remove
 msgid "Remove"
-msgstr ""
+msgstr "Видалити"
 
 #: [button]cancel
 msgid "Cancel"
-msgstr ""
+msgstr "Скасувати"
 
 #: [button]close
 msgid "Close"
-msgstr ""
+msgstr "Закрити"
 
 #: [button]update
 msgid "Update"
-msgstr ""
+msgstr "Оновити"
 
 #: [button]updating
 msgid "Updating"
-msgstr ""
+msgstr "Оновлення"
 
 #: [button]submitting
 msgid "Submitting"
-msgstr ""
+msgstr "Надсилаємо"
 
 #: [button]register
 msgid "Register"
-msgstr ""
+msgstr "Реєстрація"
 
 #: [button]reply
 msgid "Reply"
-msgstr ""
+msgstr "Відповісти"
 
 #: [button]unregister
 msgid "Unregister"
-msgstr ""
+msgstr "Скасувати реєстрацію"
 
 #: [button]save
 msgid "Save"
-msgstr ""
+msgstr "Зберегти"
 
 #: [button]clear
 msgid "Clear"
-msgstr ""
+msgstr "Очистити"
 
 #: [button]connecting
 msgid "Connecting"
-msgstr ""
+msgstr "З'єднання"
 
 #: [button]bool_yes
 msgid "Yes"
-msgstr ""
+msgstr "Так"
 
 #: [button]bool_no
 msgid "No"
-msgstr ""
+msgstr "Ні"
 
 #: [button]return
 msgid "Return"
-msgstr ""
+msgstr "Повернутись"
 
 #: [button]accept
 msgid "Accept"
-msgstr ""
+msgstr "Прийняти"
 
 #: [button]refuse
 msgid "Refuse"
-msgstr ""
+msgstr "Відмовитися"
 
 #: [button]next
 msgid "Next"
-msgstr ""
+msgstr "Наступний"
 
 #: [button]previous
 msgid "Previous"
-msgstr ""
+msgstr "Попередній"
 
 #: [button]search
 msgid "Search"
-msgstr ""
+msgstr "Пошук"
 
 #: [button]share
 msgctxt "[button]share"
 msgid "Share"
-msgstr ""
+msgstr "Поширити"
 
 #: [button]discover
 msgid "Discover"
-msgstr ""
+msgstr "Відкрийте"
 
 #: [button]like
 msgid "Like"
-msgstr ""
+msgstr "Вподобати"
 
 #: [button]not_now
 msgid "Not Now"
-msgstr ""
+msgstr "Не зараз"
 
 #: [button]enable
 msgid "Enable"
-msgstr ""
+msgstr "Увімкнути"
 
 #: [button]sign_up
 msgid "Sign Up"
-msgstr ""
+msgstr "Реєстрація"
 
 #: [button]send_to
 msgid "Send to"
-msgstr ""
+msgstr "Надіслати"
 
 #: [button]more
 msgid "More"
-msgstr ""
+msgstr "Більше"
 
 #: [button]copy_link
 msgid "Copy Link"
-msgstr ""
+msgstr "Копіювати посилання"
 
 #: [button]open
 msgid "Open"
-msgstr ""
+msgstr "Відкрити"
 
 #: [input]optional
 msgid "Optional"
-msgstr ""
+msgstr "Необов'язково"
 
 #: [input]muc_pubsub_node
 msgid "Associated Community"
-msgstr ""
+msgstr "Асоційована спільнота"
 
 #: [day]title
 msgid "Day"
-msgstr ""
+msgstr "День"
 
 #: [day]monday
 msgid "Monday"
-msgstr ""
+msgstr "Понеділок"
 
 #: [day]tuesday
 msgid "Tuesday"
-msgstr ""
+msgstr "Вівторок"
 
 #: [day]wednesday
 msgid "Wednesday"
-msgstr ""
+msgstr "Середа"
 
 #: [day]thursday
 msgid "Thursday"
-msgstr ""
+msgstr "Четвер"
 
 #: [day]friday
 msgid "Friday"
-msgstr ""
+msgstr "П'ятниця"
 
 #: [day]saturday
 msgid "Saturday"
-msgstr ""
+msgstr "Субота"
 
 #: [day]sunday
 msgid "Sunday"
-msgstr ""
+msgstr "Неділя"
 
 #: [client]bot
 msgid "Bot"
-msgstr ""
+msgstr "Бот"
 
 #: [client]console
 msgid "Console"
-msgstr ""
+msgstr "Консоль"
 
 #: [client]desktop
 msgid "Desktop"
-msgstr ""
+msgstr "Настільний ПК"
 
 #: [client]phone
 msgid "Phone"
-msgstr ""
+msgstr "Телефон"
 
 #: [client]web
 msgid "Web"
-msgstr ""
+msgstr "Веб"
 
 #: [client]registered
 msgid "Registered"
-msgstr ""
+msgstr "Зареєстровано"
 
 #: [client]gateway
 msgid "Gateway"
-msgstr ""
+msgstr "Шлюз"
 
 #: [presence]online
 msgid "Online"
-msgstr ""
+msgstr "В мережі"
 
 #: [presence]away
 msgid "Away"
-msgstr ""
+msgstr "Заклопотаний"
 
 #: [presence]dnd
 msgid "Do Not Disturb"
-msgstr ""
+msgstr "Не турбувати"
 
 #: [presence]xa
 msgid "Extended Away"
-msgstr ""
+msgstr "Давно не був в мережі"
 
 #: [presence]offline
 msgid "Offline"
-msgstr ""
+msgstr "Не в мережі"
 
 #: [presence]error
 msgid "Error"
-msgstr ""
+msgstr "Помилка"
 
 #: [mood]afraid
 msgid "afraid"
-msgstr ""
+msgstr "лякатися"
 
 #: [mood]amazed
 msgid "amazed"
-msgstr ""
+msgstr "здивований"
 
 #: [mood]amorous
 msgid "amorous"
-msgstr ""
+msgstr "закоханий"
 
 #: [mood]angry
 msgid "angry"
-msgstr ""
+msgstr "сердитий"
 
 #: [mood]annoyed
 msgid "annoyed"
-msgstr ""
+msgstr "роздратований"
 
 #: [mood]anxious
 msgid "anxious"
-msgstr ""
+msgstr "занепокоєний"
 
 #: [mood]aroused
 msgid "aroused"
-msgstr ""
+msgstr "збуджений"
 
 #: [mood]ashamed
 msgid "ashamed"
-msgstr ""
+msgstr "присоромлений"
 
 #: [mood]bored
 msgid "bored"
-msgstr ""
+msgstr "нудьгую"
 
 #: [mood]brave
 msgid "brave"
-msgstr ""
+msgstr "хоробрий"
 
 #: [mood]calm
 msgid "calm"
-msgstr ""
+msgstr "спокійний"
 
 #: [mood]cautious
 msgid "cautious"
-msgstr ""
+msgstr "обережний"
 
 #: [mood]cold
 msgid "cold"
-msgstr ""
+msgstr "холодний"
 
 #: [mood]confident
 msgid "confident"
-msgstr ""
+msgstr "впевнений"
 
 #: [mood]confused
 msgid "confused"
-msgstr ""
+msgstr "збентежений"
 
 #: [mood]contemplative
 msgid "contemplative"
-msgstr ""
+msgstr "споглядальний"
 
 #: [mood]contented
 msgid "contented"
-msgstr ""
+msgstr "задоволений"
 
 #: [mood]cranky
 msgid "cranky"
-msgstr ""
+msgstr "примхливий"
 
 #: [mood]crazy
 msgid "crazy"
-msgstr ""
+msgstr "божевільний"
 
 #: [mood]creative
 msgid "creative"
-msgstr ""
+msgstr "творчий"
 
 #: [mood]curious
 msgid "curious"
-msgstr ""
+msgstr "допитливий"
 
 #: [mood]dejected
 msgid "dejected"
-msgstr ""
+msgstr "пригнічений"
 
 #: [mood]depressed
 msgid "depressed"
-msgstr ""
+msgstr "пригнічений"
 
 #: [mood]disappointed
 msgid "disappointed"
-msgstr ""
+msgstr "розчарований"
 
 #: [mood]disgusted
 msgid "disgusted"
-msgstr ""
+msgstr "огидно"
 
 #: [mood]dismayed
 msgid "dismayed"
-msgstr ""
+msgstr "нажаханий"
 
 #: [mood]distracted
 msgid "distracted"
-msgstr ""
+msgstr "відволікся"
 
 #: [mood]embarrassed
 msgid "embarrassed"
-msgstr ""
+msgstr "збентежений"
 
 #: [mood]envious
 msgid "envious"
-msgstr ""
+msgstr "заздрісний"
 
 #: [mood]excited
 msgid "excited"
-msgstr ""
+msgstr "схвильований"
 
 #: [mood]flirtatious
 msgid "flirtatious"
-msgstr ""
+msgstr "кокетливий"
 
 #: [mood]frustrated
 msgid "frustrated"
-msgstr ""
+msgstr "розчарований"
 
 #: [mood]grateful
 msgid "grateful"
-msgstr ""
+msgstr "вдячний"
 
 #: [mood]grieving
 msgid "grieving"
-msgstr ""
+msgstr "скорботний"
 
 #: [mood]grumpy
 msgid "grumpy"
-msgstr ""
+msgstr "буркотливий"
 
 #: [mood]guilty
 msgid "guilty"
-msgstr ""
+msgstr "винний"
 
 #: [mood]happy
 msgid "happy"
-msgstr ""
+msgstr "щасливий"
 
 #: [mood]hopeful
 msgid "hopeful"
-msgstr ""
+msgstr "сподіваючись"
 
 #: [mood]hot
 msgid "hot"
-msgstr ""
+msgstr "гарячий"
 
 #: [mood]humbled
 msgid "humbled"
-msgstr ""
+msgstr "принижений"
 
 #: [mood]humiliated
 msgid "humiliated"
-msgstr ""
+msgstr "принижений"
 
 #: [mood]hungry
 msgid "hungry"
-msgstr ""
+msgstr "голодний"
 
 #: [mood]hurt
 msgid "hurt"
-msgstr ""
+msgstr "боляче"
 
 #: [mood]impressed
 msgid "impressed"
-msgstr ""
+msgstr "вражений"
 
 #: [mood]in_awe
 msgid "in awe"
-msgstr ""
+msgstr "в трепеті"
 
 #: [mood]in_love
 msgid "in love"
-msgstr ""
+msgstr "закоханий"
 
 #: [mood]indignant
 msgid "indignant"
-msgstr ""
+msgstr "обурений"
 
 #: [mood]interested
 msgid "interested"
-msgstr ""
+msgstr "зацікавлений"
 
 #: [mood]intoxicated
 msgid "intoxicated"
-msgstr ""
+msgstr "нетверезий"
 
 #: [mood]invincible
 msgid "invincible"
-msgstr ""
+msgstr "непереможний"
 
 #: [mood]jealous
 msgid "jealous"
-msgstr ""
+msgstr "ревнивий"
 
 #: [mood]lonely
 msgid "lonely"
-msgstr ""
+msgstr "самотній"
 
 #: [mood]lost
 msgid "lost"
-msgstr ""
+msgstr "загублений"
 
 #: [mood]lucky
 msgid "lucky"
-msgstr ""
+msgstr "щасливий"
 
 #: [mood]mean
 msgid "mean"
-msgstr ""
+msgstr "підлий"
 
 #: [mood]moody
 msgid "moody"
-msgstr ""
+msgstr "похмурий"
 
 #: [mood]nervous
 msgid "nervous"
-msgstr ""
+msgstr "знервований"
 
 #: [mood]neutral
 msgid "neutral"
-msgstr ""
+msgstr "нейтральний"
 
 #: [mood]offended
 msgid "offended"
-msgstr ""
+msgstr "ображений"
 
 #: [mood]outraged
 msgid "outraged"
-msgstr ""
+msgstr "обурений"
 
 #: [mood]playful
 msgid "playful"
-msgstr ""
+msgstr "грайливий"
 
 #: [mood]proud
 msgid "proud"
-msgstr ""
+msgstr "гордий"
 
 #: [mood]relaxed
 msgid "relaxed"
-msgstr ""
+msgstr "розслаблений"
 
 #: [mood]relieved
 msgid "relieved"
-msgstr ""
+msgstr "відрадний"
 
 #: [mood]remorseful
 msgid "remorseful"
-msgstr ""
+msgstr "розкаяний"
 
 #: [mood]restless
 msgid "restless"
-msgstr ""
+msgstr "неспокійний"
 
 #: [mood]sad
 msgid "sad"
-msgstr ""
+msgstr "сумний"
 
 #: [mood]sarcastic
 msgid "sarcastic"
-msgstr ""
+msgstr "саркастичний"
 
 #: [mood]satisfied
 msgid "satisfied"
-msgstr ""
+msgstr "задоволений"
 
 #: [mood]serious
 msgid "serious"
@@ -3409,7 +3500,7 @@ msgstr "спонтанний"
 
 #: [mood]stressed
 msgid "stressed"
-msgstr ""
+msgstr "підкреслений"
 
 #: [mood]strong
 msgid "strong"
@@ -3585,7 +3676,7 @@ msgstr "Вміст не знайдено"
 
 #: [post]default_title
 msgid "Contact publication"
-msgstr ""
+msgstr "Зв'язатися з редакцією"
 
 #: [post]comments
 msgid "Comments"
@@ -3621,11 +3712,11 @@ msgstr "Власник"
 
 #: [affiliation]publisher
 msgid "Publisher"
-msgstr ""
+msgstr "Видавник"
 
 #: [affiliation]publish-only
 msgid "Publish only"
-msgstr ""
+msgstr "Лише для публікації"
 
 #: [affiliation]outcast
 msgid "Outcast"
@@ -3633,8 +3724,8 @@ msgstr ""
 
 #: [api]error
 msgid "The API is not reachable, try again later"
-msgstr ""
+msgstr "API недоступний, спробуйте пізніше"
 
 #: [field]type_here
 msgid "Type here"
-msgstr ""
+msgstr "Напишіть тут"
