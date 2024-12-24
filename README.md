@@ -17,8 +17,6 @@ Installation
 Please refer to the installation instructions in the [INSTALL.md](INSTALL.md) file,
 or check out the [Movim Wiki](https://github.com/movim/movim/wiki) for more information.
 
-Movim is also available as a [Docker image](https://github.com/movim/movim_docker).
-
 Security report
 ---------------
 
