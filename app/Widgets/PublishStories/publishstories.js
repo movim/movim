@@ -8,7 +8,7 @@ var PublishStories = {
     video: undefined,
     videoSelect: undefined,
     canvas: undefined,
-    image: undefined,
+    imageCanvas: undefined,
 
     canvasMinWidth: 1080,
     canvasMinHeight: 1920,
@@ -62,14 +62,14 @@ var PublishStories = {
     },
 
     draw: function () {
-        if (PublishStories.image == undefined) return;
+        if (PublishStories.imageCanvas == undefined) return;
 
         PublishStories.canvas.width = PublishStories.canvasMinWidth;
         PublishStories.canvas.height = PublishStories.canvasMinHeight;
 
         let context = PublishStories.canvas.getContext('2d');
-        ctx.clearRect(0, 0, PublishStories.image.width, PublishStories.image.height)
-        context.fillStyle = MovimUtils.imageToHex(PublishStories.image);
+        ctx.clearRect(0, 0, PublishStories.canvas.width, PublishStories.canvas.height)
+        context.fillStyle = MovimUtils.imageToHex(PublishStories.imageCanvas);
         context.fillRect(0, 0, PublishStories.canvas.width, PublishStories.canvas.height);
 
         // Let's move!
@@ -80,17 +80,17 @@ var PublishStories = {
             -PublishStories.canvas.height / 2 + PublishStories.cameraOffset.y
         );
 
-        let adjustedHeight = PublishStories.canvas.height > PublishStories.image.height
-            ? PublishStories.image.height
+        let adjustedHeight = PublishStories.canvas.height > PublishStories.imageCanvas.height
+            ? PublishStories.imageCanvas.height
             : PublishStories.canvas.height;
 
-        let ratio = adjustedHeight / PublishStories.image.height;
+        let ratio = adjustedHeight / PublishStories.imageCanvas.height;
 
         context.drawImage(
-            PublishStories.image,
-            PublishStories.canvas.width / 2 - PublishStories.image.width * ratio / 2,
+            PublishStories.imageCanvas,
+            PublishStories.canvas.width / 2 - PublishStories.imageCanvas.width * ratio / 2,
             PublishStories.canvas.height / 2 - adjustedHeight / 2,
-            PublishStories.image.width * ratio,
+            PublishStories.imageCanvas.width * ratio,
             adjustedHeight
         );
 
@@ -136,7 +136,7 @@ var PublishStories = {
         }
 
         PublishStories.video.srcObject = null;
-        PublishStories.image = undefined;
+        PublishStories.imageCanvas = undefined;
         PublishStories.main.querySelector('form').reset();
         PublishStories.main.querySelector('#publishactions').classList = '';
 
@@ -162,7 +162,7 @@ var PublishStories = {
                 var image = new Image();
                 image.src = reader.result;
                 image.onload = function () {
-                    PublishStories.image = image;
+                    PublishStories.drawMediaToImageCanvas(image, image.width, image.height, 1);
                     PublishStories.draw();
                     PublishStories.main.classList = 'edit';
                 }
@@ -172,37 +172,51 @@ var PublishStories = {
 
     shoot: function () {
         if (PublishStories.imageCapture) {
-            PublishStories.imageCapture.takePhoto()
-                .then(blob => createImageBitmap(blob))
+            PublishStories.imageCapture.grabFrame()
                 .then(image => {
-                    PublishStories.image = image;
+                    let ratio = PublishStories.canvasMinHeight / image.height;
+                    if (ratio < 1) ratio = 1;
+
+                    PublishStories.drawMediaToImageCanvas(
+                        image,
+                        image.width,
+                        image.height,
+                        PublishStories.getRatioFromHeight(image.height)
+                    );
+
                     PublishStories.draw();
                 })
                 .catch(error => console.log(error));
 
         } else {
-            let ratio = PublishStories.canvasMinHeight / PublishStories.video.videoHeight;
-            if (ratio < 1) ratio = 1;
-
-            var canvas = document.createElement('canvas');
-            canvas.width = PublishStories.video.videoWidth * ratio;
-            canvas.height = PublishStories.video.videoHeight * ratio;
-
-            var context = canvas.getContext('2d');
-            context.drawImage(PublishStories.video, 0, 0, canvas.width, canvas.height);
-
-            var image = new Image();
-            image.src = canvas.toDataURL();
+            PublishStories.drawMediaToImageCanvas(
+                PublishStories.video,
+                PublishStories.video.videoWidth,
+                PublishStories.video.videoHeight,
+                PublishStories.getRatioFromHeight(PublishStories.video.videoHeight)
+            );
 
             PublishStories.video.pause();
-
-            image.onload = function () {
-                PublishStories.image = image;
-                PublishStories.draw();
-            };
+            PublishStories.draw();
         }
 
         PublishStories.main.classList = 'edit';
+    },
+
+    getRatioFromHeight: function (height) {
+        let ratio = PublishStories.canvasMinHeight / height;
+        if (ratio < 1) ratio = 1;
+
+        return ratio;
+    },
+
+    drawMediaToImageCanvas: function(media, width, height, ratio) {
+        PublishStories.imageCanvas = document.createElement('canvas');
+        PublishStories.imageCanvas.width = width * ratio;
+        PublishStories.imageCanvas.height = height * ratio;
+
+        var context = PublishStories.imageCanvas.getContext('2d');
+        context.drawImage(media, 0, 0, PublishStories.imageCanvas.width, PublishStories.imageCanvas.height);
     },
 
     reset: function () {
