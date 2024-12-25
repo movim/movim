@@ -174,9 +174,6 @@ var PublishStories = {
         if (PublishStories.imageCapture) {
             PublishStories.imageCapture.grabFrame()
                 .then(image => {
-                    let ratio = PublishStories.canvasMinHeight / image.height;
-                    if (ratio < 1) ratio = 1;
-
                     PublishStories.drawMediaToImageCanvas(
                         image,
                         image.width,
