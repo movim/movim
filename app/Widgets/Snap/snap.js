@@ -139,7 +139,8 @@ var Snap = {
 
     shoot: function () {
         if (Snap.imageCapture) {
-            Snap.imageCapture.grabFrame()
+            Snap.imageCapture.takePhoto()
+                .then(blob => createImageBitmap(blob))
                 .then(image => {
                     Snap.canvas.width = image.width;
                     Snap.canvas.height = image.height;
