@@ -139,13 +139,12 @@ var Snap = {
 
     shoot: function () {
         if (Snap.imageCapture) {
-            Snap.imageCapture.takePhoto()
-                .then(blob => createImageBitmap(blob))
-                .then(imageBitmap => {
-                    Snap.canvas.width = imageBitmap.width;
-                    Snap.canvas.height = imageBitmap.height;
+            Snap.imageCapture.grabFrame()
+                .then(image => {
+                    Snap.canvas.width = image.width;
+                    Snap.canvas.height = image.height;
                     var context = Snap.canvas.getContext('2d');
-                    context.drawImage(imageBitmap, 0, 0, imageBitmap.width, imageBitmap.height);
+                    context.drawImage(image, 0, 0, image.width, image.height);
 
                     Snap.compress();
                 })

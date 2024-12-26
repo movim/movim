@@ -5,10 +5,13 @@
     <input type="file" accept="image/*" onchange="PublishStories.applyImage()"/>
 
     <div class="bottom_center">
+        <button id="publishstoriesswitch" class="button action color transparent">
+            <i class="material-symbols">switch_camera</i>
+        </button>
         <button id="publishstoriesshoot" class="button action color green" onclick="PublishStories.shoot()">
             <i class="material-symbols">camera</i>
         </button>
-        <button id="publishstoriesgallery" class="button action color gray" onclick="PublishStories.openImage()">
+        <button id="publishstoriesgallery" class="button action color transparent" onclick="PublishStories.openImage()">
             <i class="material-symbols">photo_library</i>
         </button>
     </div>
@@ -21,9 +24,6 @@
                 <i class="material-symbols">arrow_back</i>
             </span>
             <div></div>
-            <span id="publishstoriesswitch" class="control icon color transparent active">
-                <i class="material-symbols">switch_camera</i>
-            </span>
             <span id="publishstoriesclose" class="control icon color transparent active" onclick="PublishStories.reset()">
                 <i class="material-symbols">close</i>
             </span>

@@ -19,12 +19,14 @@
     color: white;
 }
 
+#publishstories #publishstoriesswitch,
 #publishstories #publishstoriesgallery {
     width: 5.5rem;
     height: 5.5rem;
     line-height: 5.5rem;
     margin-top: 0.75rem;
     font-size: 2.5rem;
+    backdrop-filter: blur(1rem);
 }
 
 #publishstories.show,
