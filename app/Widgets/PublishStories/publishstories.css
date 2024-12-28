@@ -9,16 +9,6 @@
     transform: translateX(-100%);
 }
 
-#publishstories:after {
-    content: "Movim Stories - Beta";
-    position: absolute;
-    bottom: 1rem;
-    right: 1rem;
-    font-size: 2.5rem;
-    opacity: 0.5;
-    color: white;
-}
-
 #publishstories #publishstoriesswitch,
 #publishstories #publishstoriesgallery {
     width: 5.5rem;

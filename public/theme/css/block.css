@@ -110,7 +110,7 @@ ul.flex.gallery li.block:not(.subheader) {
 
 ul.flex.gallery li.block.story {
     width: 10rem;
-    height: 18rem;
+    height: 16rem;
     min-height: 0;
     padding: 0 0.5rem 0.5rem;
 }
@@ -152,7 +152,7 @@ ul.flex.gallery li.block img.main {
 }
 
 ul.flex.gallery li.block.story img.main {
-    max-height: 18rem;
+    max-height: 100%;
     max-width: calc(100% + 1rem);
 }
 

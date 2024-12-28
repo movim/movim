@@ -1,7 +1,7 @@
 <ul class="list">
     <li class="subheader">
         <div>
-            <p>{$c->__('stories.title')} <span class="second">Beta</span></p>
+            <p>{$c->__('stories.title')}</p>
         </div>
     </li>
 </ul>
