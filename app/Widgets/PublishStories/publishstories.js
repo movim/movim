@@ -375,7 +375,7 @@ Upload.fail(() => {
 });
 
 Upload.progress((percent) => {
-    if (PublishStories.main && PublishStories.main.classList.contains('publish')) {
+    if (PublishStories.main != undefined && PublishStories.main.classList.contains('publish')) {
         PublishStories.main.querySelector('#publishactionsprogress').innerHTML =
             percent + '%';
     }

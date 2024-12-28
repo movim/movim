@@ -53,10 +53,14 @@
 }
 
 #upload_progress {
-    position: absolute;
-    top: 0.5rem;
+    float: left;
     text-align: left;
     width: 18rem;
+    margin-top: 0.25rem;
+}
+
+#upload_progress li {
+    padding: 0;
 }
 
 #upload_progress div {
