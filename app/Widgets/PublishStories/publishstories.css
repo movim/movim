@@ -47,7 +47,7 @@
 
 #publishstories.shoot #publishstoriesshoot,
 #publishstories.shoot #publishstoriesgallery,
-#publishstories.shoot select:has(option:nth-child(2)) ~ ul #publishstoriesswitch,
+#publishstories.shoot #publishstoriesswitch.enabled,
 #publishstories.edit #publishstoriesclose,
 #publishstories.edit form,
 #publishstories.edit #publishstoriesnext,
