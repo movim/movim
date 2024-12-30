@@ -207,6 +207,10 @@ class Pubsub
             $config['pubsub#notify_retract'] = 'true';
         }
 
+        if ($node == Post::STORIES_NODE) {
+            $config['pubsub#item_expire'] = '86400';
+        }
+
         return $config;
     }
 
