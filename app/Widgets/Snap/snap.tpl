@@ -3,14 +3,14 @@
     <canvas id="snapcanvas"></canvas>
     <select id="snapsource"></select>
     <div class="bottom_center">
+        <button id="snapswitch" class="button action color transparent">
+            <i class="material-symbols">switch_camera</i>
+        </button>
         <button id="snapshoot" class="button action color green">
             <i class="material-symbols">camera</i>
         </button>
         <button id="snapclose" class="button action color transparent">
             <i class="material-symbols">close</i>
-        </button>
-        <button id="snapswitch" class="button action color transparent">
-            <i class="material-symbols">switch_camera</i>
         </button>
         <button id="snapupload" class="button action color blue">
             <i class="material-symbols">publish</i>

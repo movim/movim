@@ -18,6 +18,7 @@
     margin-top: 0.75rem;
     font-size: 2.5rem;
     backdrop-filter: blur(1rem);
+    background-color: rgba(0, 0, 0, 0.25);
 }
 
 #snap canvas,
@@ -74,44 +75,39 @@
     display: block;
 }
 
+#snap select#snapsource,
+
 #snap.shoot #snapupload,
 #snap.shoot #snapdraw,
 #snap.shoot #snapclose,
 #snap.shoot #snapwait,
+#snap.shoot #snapswitch:not(.enabled),
 #snap.shoot canvas,
 
 #snap.upload #snapshoot,
 #snap.upload #snapwait,
 #snap.upload #snapswitch,
-#snap.upload #snapswitch.enabled,
 #snap.upload video,
 
 #snap.wait #snapshoot,
 #snap.wait #snapupload,
 #snap.wait #snapdraw,
 #snap.wait #snapback,
-#snap.wait #snapswitch,
 #snap.wait #snapclose,
-#snap.wait #snapswitch.enabled,
+#snap.wait #snapswitch,
 #snap.wait video,
 
 #snap.draw #snapshoot,
-#snap.draw #snapswitch,
 #snap.draw #snapwait,
 #snap.draw #snapclose,
-#snap.draw #snapswitch.enabled,
+#snap.draw #snapswitch,
 #snap.draw video,
-
-#snap select#snapsource,
-
-#snap span#snapswitch:not(.enabled),
 
 #snap.init #snapshoot,
 #snap.init #snapupload,
 #snap.init #snapdraw,
-#snap.init #snapswitch,
-#snap.init #snapswitch.enabled,
 #snap.init #snapclose,
+#snap.init #snapswitch,
 #snap.init canvas,
 #snap.init video {
     display: none;

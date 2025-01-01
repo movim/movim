@@ -128,7 +128,9 @@ var Snap = {
                 option.value = deviceInfo.deviceId;
                 option.text = deviceInfo.label || `Camera ${videoSelect.length + 1}`;
 
-                Snap.videoSelect.appendChild(option);
+                if (!Snap.videoSelect.querySelector('option[value="' + deviceInfo.deviceId + '"]')) {
+                    Snap.videoSelect.appendChild(option);
+                }
             }
         }
 
