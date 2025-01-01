@@ -69,7 +69,7 @@ v0.27
 * Remove the Popup, move it back to the main tab
 * Add DTMF tone support
 * Make the call persistant while navigating
-* Create a CurrentCall singleton to track the call state for the whole UI
+* Create a CurrentCalls singleton to track the call state for the whole UI
 * Integrate Call State in Chat, Chats, ContactData and ContactActions
 * Implement Retract of XEP-0353: Jingle Message Initiation
 * Handle the switch between the floating view and discussion view

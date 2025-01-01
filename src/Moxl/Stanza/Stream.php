@@ -34,7 +34,7 @@ class Stream
         $starttls = $dom->createElementNS('urn:ietf:params:xml:ns:xmpp-tls', 'starttls');
         $dom->appendChild($starttls);
 
-        \Moxl\API::request($dom->saveXML($dom->documentElement));
+        \Moxl\API::sendDom($dom);
     }
 
     public static function bindSet($resource)
@@ -70,7 +70,7 @@ class Stream
 
         $dom->appendChild($authenticate);
 
-        \Moxl\API::request($dom->saveXML($dom->documentElement));
+        \Moxl\API::sendDom($dom);
     }
 
     public static function sessionStart($to)

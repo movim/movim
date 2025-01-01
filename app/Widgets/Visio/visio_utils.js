@@ -91,57 +91,6 @@ var VisioUtils = {
         }
     },
 
-    handleRemoteAudio: function () {
-        if (VisioUtils.remoteAudioContext) {
-            VisioUtils.remoteAudioContext.close();
-            VisioUtils.remoteAudioContext = null;
-        }
-
-        VisioUtils.remoteAudioContext = new AudioContext();
-
-        try {
-            var remoteMicrophone = VisioUtils.remoteAudioContext.createMediaStreamSource(
-                MovimVisio.remoteAudio.srcObject
-            );
-        } catch (error) {
-            logError(error);
-            return;
-        }
-
-        var remoteJavascriptNode = VisioUtils.remoteAudioContext.createScriptProcessor(2048, 1, 1);
-        var remoteMeter = document.querySelector('#visio #remote_level');
-        let isMuteStep = 0;
-
-        remoteMicrophone.connect(remoteJavascriptNode);
-        remoteJavascriptNode.connect(VisioUtils.remoteAudioContext.destination);
-        remoteJavascriptNode.onaudioprocess = function (event) {
-            var inpt = event.inputBuffer.getChannelData(0);
-            var instant = 0.0;
-            var sum = 0.0;
-
-            for (var i = 0; i < inpt.length; ++i) {
-                sum += inpt[i] * inpt[i];
-            }
-
-            instant = Math.sqrt(sum / inpt.length);
-            VisioUtils.remoteMaxLevel = Math.max(VisioUtils.remoteMaxLevel, instant);
-
-            var base = (instant / VisioUtils.remoteMaxLevel);
-            var level = (base > 0.01) ? base ** .3 : 0;
-
-            // Fallback in case we don't have the proper signalisation
-            if (level == 0) {
-                isMuteStep++;
-            } else {
-                isMuteStep = 0;
-            }
-
-            VisioUtils.setRemoteAudioState(isMuteStep > 250 ? 'mic_off' : 'mic');
-
-            remoteMeter.style.borderColor = 'rgba(255, 255, 255, ' + level + ')';
-        }
-    },
-
     toggleFullScreen: function () {
         var button = document.querySelector('#toggle_fullscreen i');
 
@@ -177,10 +126,10 @@ var VisioUtils = {
     },
 
     switchChat: function () {
-        var from = document.querySelector('#visio').dataset.from;
+        var jid = document.querySelector('#visio').dataset.jid;
 
-        if (from) {
-            Search.chat(from);
+        if (jid) {
+            Search.chat(jid);
         }
     },
 
@@ -226,10 +175,10 @@ var VisioUtils = {
         }
     },
 
-    setRemoteAudioState: function (icon) {
+    /*setRemoteAudioState: function (icon) {
         var voice = document.querySelector('#remote_state i.voice');
         voice.innerHTML = icon;
-    },
+    },*/
 
     setRemoteVideoState: function (icon) {
         var webcam = document.querySelector('#remote_state i.webcam');
@@ -345,7 +294,7 @@ var VisioUtils = {
                 VisioUtils.disableSwitchCameraButton();
                 button.innerText = 'stop_screen_share';
 
-                Visio.gotScreen();
+                MovimVisio.gotScreen();
             } catch (err) {
                 console.error("Error: " + err);
             }
@@ -357,11 +306,12 @@ var VisioUtils = {
 
             button.innerText = 'screen_share';
 
-            Visio.gotQuickStream();
+            MovimVisio.gotQuickStream();
         }
     },
 
-    switchCameraInCall: function () {
+    // TODO Use MovimVisio.getDevices
+    /*switchCameraInCall: function () {
         Visio.videoSelect = document.querySelector('#visio select#visio_source');
         Visio.switchCamera = document.querySelector("#visio #switch_camera");
 
@@ -430,14 +380,14 @@ var VisioUtils = {
                 VisioUtils.toggleMainButton();
             }, logError);
         };
-    },
+    },*/
 
-    pcReplaceTrack: function (stream) {
+    /*pcReplaceTrack: function (stream) {
         let videoTrack = stream.getVideoTracks()[0];
         var sender = MovimVisio.pc.getSenders().find(s => s.track && s.track.kind == videoTrack.kind);
 
         if (sender) {
             sender.replaceTrack(videoTrack);
         }
-    }
+    }*/
 }
