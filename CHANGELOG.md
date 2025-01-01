@@ -1,7 +1,10 @@
 Movim Changelog
 ================
 
-v0.29 (master)
+v0.30  (master)
+---------------------------
+
+v0.29
 ---------------------------
 * Don't notify twice when a Post is edited
 * Fix the buggy Post comment notification

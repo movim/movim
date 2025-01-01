@@ -38,6 +38,8 @@ var Publish = {
                 Publish.saveContent();
             }, 1000);
         });
+
+        MovimUtils.applyAutoheight();
     },
 
     saveTitle: function () {
