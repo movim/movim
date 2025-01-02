@@ -337,7 +337,7 @@ class Post extends Model
 
     public function getSeenAttribute(): bool
     {
-        return $this->userViews->contains('user_id', $this->user->id);
+        return $this->userViews->contains('user_id', \App\User::me()->id);
     }
 
     public function getTruenameAttribute()
