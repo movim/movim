@@ -9,7 +9,7 @@
         {/if}
     {else}
         {if="$post->isStory()"}
-            onclick="StoriesViewer_ajaxGet({$post->id})"
+            onclick="StoriesViewer_ajaxHttpGet({$post->id})"
         {else}
             onclick="MovimUtils.reload('{$c->route('post', [$post->server, $post->node, $post->nodeid])}'); Drawer.clear()"
         {/if}

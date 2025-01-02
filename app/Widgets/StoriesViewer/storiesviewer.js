@@ -23,7 +23,7 @@ var StoriesViewer = {
         image.addEventListener('touchend', e => { e.preventDefault(), StoriesViewer.start()});
 
         let next = StoriesViewer.story.querySelector('div.next');
-        next.addEventListener('click', e => StoriesViewer_ajaxGetNext(StoriesViewer.before));
+        next.addEventListener('click', e => StoriesViewer_ajaxHttpGetNext(StoriesViewer.before));
 
         StoriesViewer.reset();
         StoriesViewer.start();
@@ -41,15 +41,19 @@ var StoriesViewer = {
     },
 
     start: function () {
+        if (!StoriesViewer.story) return;
+
         StoriesViewer.story.classList.remove('paused');
         StoriesViewer.startDate = new Date();
 
         StoriesViewer.timer = setTimeout(function () {
-            StoriesViewer_ajaxGetNext(StoriesViewer.before);
+            StoriesViewer_ajaxHttpGetNext(StoriesViewer.before);
         }, StoriesViewer.timeout - StoriesViewer.consumed);
     },
 
     pause: function() {
+        if (!StoriesViewer.story) return;
+
         StoriesViewer.story.classList.add('paused');
         StoriesViewer.consumed += new Date() - StoriesViewer.startDate;
 

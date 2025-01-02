@@ -12,7 +12,7 @@
         </div>
     </li>
     {loop="$stories"}
-        <li class="block story {if="$value->seen"}seen{/if}" onclick="StoriesViewer_ajaxGet({$value->id})">
+        <li class="block story {if="$value->seen"}seen{/if}" onclick="StoriesViewer_ajaxHttpGet({$value->id})">
             <img class="main" src="{$value->picture->href|protectPicture}">
             <div>
                 <p class="line">{$value->title}</p>

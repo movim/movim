@@ -19,7 +19,7 @@ class StoriesViewer extends Base
         $this->addcss('storiesviewer.css');
     }
 
-    public function ajaxGet(int $id)
+    public function ajaxHttpGet(int $id)
     {
         $post = Post::myStories()->where('id', $id)->first();
         if (!$post) return;
@@ -32,7 +32,7 @@ class StoriesViewer extends Base
         $this->rpc('StoriesViewer.launch', $post->published);
     }
 
-    public function ajaxGetNext(string $before)
+    public function ajaxHttpGetNext(string $before)
     {
         $post = Post::myStories()->where('published', '<', $before)->first();
 
