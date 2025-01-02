@@ -154,11 +154,13 @@
                 <ul class="list">
                     <li>
                         <div>
-                            <p>
-                            {autoescape="off"}
-                                {$info}
-                            {/autoescape}
-                            </p>
+                            <article>
+                                <section>
+                                    {autoescape="off"}
+                                        {$info}
+                                    {/autoescape}
+                                </section>
+                            </article>
                         </div>
                     </li>
                 </ul>

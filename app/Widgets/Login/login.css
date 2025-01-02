@@ -22,7 +22,7 @@ body main {
         display: block;
         background: url(../theme/img/logo_cloud.svg);
         background-size: auto 2.6rem, 100% 100%;
-        background-position: center 3rem, center ;
+        background-position: center 3rem, center;
         background-repeat: no-repeat;
         height: 8rem;
     }
@@ -35,12 +35,16 @@ body main {
     width: 100%;
 }
 
-#login_widget .dialog > section {
+#login_widget .dialog>section {
     display: flex;
     flex-direction: column;
 }
 
-#login_widget .dialog > section .about {
+#login_widget article>section {
+    padding: 0;
+}
+
+#login_widget .dialog>section .about {
     margin-top: auto;
 }
 
@@ -55,8 +59,8 @@ body main {
     mask-image: linear-gradient(to bottom, black 60%, transparent);
 }
 
-#login_widget:not(.error) > #error,
-#login_widget.error > div:not(#error) {
+#login_widget:not(.error)>#error,
+#login_widget.error>div:not(#error) {
     display: none;
 }
 
