@@ -78,7 +78,7 @@ class Menu extends Base
             return;
         }
 
-        if ($post->isComment()) {
+        if ($post->isComment() && !$post->isMine()) {
             $contact = \App\Contact::where('id', $post->aid)->first();
             $parent = $post->parent;
 
@@ -103,8 +103,8 @@ class Menu extends Base
                         $post->title,
                         $contact->getPicture(),
                         4,
-                        $this->route('post', [$post->server, $post->node, $post->nodeid]),
-                        $this->route('contact', $post->server)
+                        $post->isStory() ? $this->route('chat') : $this->route('post', [$post->server, $post->node, $post->nodeid]),
+                        $post->isStory() ? null : $this->route('contact', $post->server)
                     );
                 }
             } else {
