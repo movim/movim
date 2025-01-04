@@ -6,7 +6,8 @@ var Dictaphone = {
     audioUpload: null,
     timer: null,
     timerInterval: null,
-    recordTimer: 0,
+    recordTimeMs: 0,
+    recordTimerStart: null,
     chunks: [],
     audioStream: null,
 
@@ -37,7 +38,7 @@ var Dictaphone = {
     clear: function () {
         Dictaphone.audio.src = '';
         Dictaphone.playPause.classList.remove('enabled');
-        Dictaphone.recordTimer = 0;
+        Dictaphone.recordTimeMs = 0;
         Dictaphone.progressBar.value = 0;
         Dictaphone.updateRecordTimer();
     },
@@ -65,10 +66,10 @@ var Dictaphone = {
             Dictaphone.mediaRecorder.onstart = function (e) {
                 Dictaphone.clear();
 
+                Dictaphone.recordTimerStart = new Date();
                 Dictaphone.timerInterval = setInterval(e => {
-                    Dictaphone.recordTimer++;
                     Dictaphone.updateRecordTimer();
-                }, 1000);
+                }, 500);
             }
 
             Dictaphone.mediaRecorder.onstop = function (e) {
@@ -79,6 +80,13 @@ var Dictaphone = {
 
                 Upload.prepare(new File([blob], "record.opus", { type: 'audio/ogg'}));
                 Upload.name = 'record.opus';
+
+                Dictaphone.recordTimeMs = new Date() - Dictaphone.recordTimerStart;
+                Dictaphone.recordTimerStart = null;
+
+                clearInterval(Dictaphone.timerInterval);
+
+                Dictaphone.updateRecordTimer();
             }
 
             Dictaphone.audioUpload.onclick = function () {
@@ -93,8 +101,8 @@ var Dictaphone = {
             }
 
             Dictaphone.audio.ontimeupdate = function () {
-                if (!mouseDownOnSlider && Dictaphone.audio.duration) {
-                    Dictaphone.progressBar.value = Dictaphone.audio.currentTime / Dictaphone.audio.duration * 100;
+                if (!mouseDownOnSlider) {
+                    Dictaphone.progressBar.value = Dictaphone.audio.currentTime / Dictaphone.recordTimeMs * 100 * 1000;
                 }
 
                 Dictaphone.updateRecordTimer();
@@ -109,8 +117,7 @@ var Dictaphone = {
             };
 
             Dictaphone.progressBar.onchange = function () {
-                const pct = progressBar.value / 100;
-                Dictaphone.audio.currentTime = (audio.duration || 0) * pct;
+                Dictaphone.audio.currentTime = Dictaphone.recordTimeMs / 100000 * Dictaphone.progressBar.value;
             }
 
             Dictaphone.playPause.onclick = function () {
@@ -134,14 +141,16 @@ var Dictaphone = {
     },
 
     updateRecordTimer: function () {
-        Dictaphone.timer.innerHTML = (Dictaphone.audio && Number.isFinite(Dictaphone.audio.duration))
-            ? MovimUtils.cleanTime(Dictaphone.audio.currentTime) + ' / ' + MovimUtils.cleanTime(Dictaphone.audio.duration)
-            : Dictaphone.timer.innerHTML = MovimUtils.cleanTime(0) + ' / ' + MovimUtils.cleanTime(Dictaphone.recordTimer);
+        Dictaphone.timer.innerHTML = MovimUtils.cleanTime(Dictaphone.audio.currentTime);
+        Dictaphone.timer.innerHTML += ' / ';
+        Dictaphone.timer.innerHTML +=
+            (Dictaphone.recordTimerStart != null)
+                ? MovimUtils.cleanTime(Math.round((new Date() - Dictaphone.recordTimerStart) / 1000))
+                : MovimUtils.cleanTime(Math.round(Dictaphone.recordTimeMs / 1000));
     },
 
     stop: function () {
         if (Dictaphone.mediaRecorder) {
-            clearInterval(Dictaphone.timerInterval);
             Dictaphone.mediaRecorder.stop();
         }
 
