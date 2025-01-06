@@ -23,7 +23,7 @@
             <span class="control icon active" onclick="StoriesViewer.pause(); SendTo_ajaxSendContact('{$story->getRef()}')">
                 <i class="material-symbols">share</i>
             </span>
-            <span class="control icon pause toggleable" onclick="StoriesViewer_ajaxStart()">
+            <span class="control icon pause toggleable" onclick="StoriesViewer.start()">
                 <i class="material-symbols fill">pause</i>
             </span>
             <span class="control icon play toggleable" onclick="StoriesViewer.pause()">
