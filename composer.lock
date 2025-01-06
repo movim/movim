@@ -130,7 +130,7 @@
         },
         {
             "name": "cakephp/core",
-            "version": "4.5.8",
+            "version": "4.5.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/core.git",
@@ -190,7 +190,7 @@
         },
         {
             "name": "cakephp/database",
-            "version": "4.5.8",
+            "version": "4.5.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/database.git",
@@ -246,7 +246,7 @@
         },
         {
             "name": "cakephp/datasource",
-            "version": "4.5.8",
+            "version": "4.5.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/datasource.git",
@@ -304,7 +304,7 @@
         },
         {
             "name": "cakephp/utility",
-            "version": "4.5.8",
+            "version": "4.5.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/utility.git",
