@@ -124,6 +124,9 @@ function handleClientDNS(array $results, $dns, $connector, $xmppBehaviour)
         $port = 5222;
         $directTLSSocket = false;
 
+        $session = Session::instance();
+        $sessionHost = $session->get('host');
+
         if (
             $results['directtls'] !== false && $results['directtls'][0]['target'] !== '.'
             && $results['starttls'] !== false && $results['starttls'][0]['target'] !== '.'
@@ -149,15 +152,14 @@ function handleClientDNS(array $results, $dns, $connector, $xmppBehaviour)
             logOut(colorize('Picked STARTTLS', 'blue'));
         } else {
             // No SRV, we fallback to the default host
-            $session = Session::instance();
-            $host = $session->get('host');
+            $host = $sessionHost;
         }
 
         $socket = 'tcp://';
         if ($directTLSSocket) $socket = 'tls://';
         $socket .= $host . ':' . $port;
 
-        logOut(colorize('Connect to ' . $socket, 'blue'));
+        logOut(colorize('Connect to ' . $socket . ', peer_name: ' . $sessionHost, 'blue'));
 
         $connector = new React\Socket\HappyEyeBallsConnector(
             $loop,
@@ -166,7 +168,7 @@ function handleClientDNS(array $results, $dns, $connector, $xmppBehaviour)
                 'tls' => [
                     'SNI_enabled' => true,
                     'allow_self_signed' => false,
-                    'peer_name' => $host
+                    'peer_name' => $sessionHost
                 ]
             ]),
             $dns
