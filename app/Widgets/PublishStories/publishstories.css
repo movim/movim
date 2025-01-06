@@ -42,13 +42,26 @@
 #publishstories.edit.publish #publishstoriesback,
 #publishstories.edit.publish #publishstoriesnext,
 #publishstories.edit.publish #publishstoriesclose,
+#publishstories.shoot.error video,
 #publishstories form {
     display: none;
 }
 
-#publishstories.shoot #publishstoriesshoot,
+#publishstories.shoot.error:before {
+    font-family: 'Material Symbols';
+    content: '\e04c';
+    color: var(--movim-font);
+    font-size: 7rem;
+    opacity: 0.5;
+    display: block;
+    position: absolute;
+    left: calc(50% - 3.5rem);
+    top: calc(50% - 3.5rem);
+}
+
+#publishstories.shoot:not(.error) #publishstoriesshoot,
 #publishstories.shoot #publishstoriesgallery,
-#publishstories.shoot #publishstoriesswitch.enabled,
+#publishstories.shoot:not(.error) #publishstoriesswitch.enabled,
 #publishstories.edit #publishstoriesclose,
 #publishstories.edit form,
 #publishstories.edit #publishstoriesnext,

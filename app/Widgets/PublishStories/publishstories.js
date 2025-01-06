@@ -56,7 +56,7 @@ var PublishStories = {
         PublishStories.back.onclick = () => { history.back(); };
 
         PublishStories.close();
-        PublishStories.getStream().then(PublishStories.getDevices).then(PublishStories.gotDevices);
+        PublishStories.getStream();
 
         MovimUtils.applyAutoheight();
     },
@@ -73,7 +73,7 @@ var PublishStories = {
         context.fillRect(0, 0, PublishStories.canvas.width, PublishStories.canvas.height);
 
         // Let's move!
-        context.translate( PublishStories.canvas.width / 2, PublishStories.canvas.height / 2 );
+        context.translate(PublishStories.canvas.width / 2, PublishStories.canvas.height / 2);
         context.scale(PublishStories.cameraZoom, PublishStories.cameraZoom);
         context.translate(
             -PublishStories.canvas.width / 2 + PublishStories.cameraOffset.x,
@@ -207,7 +207,7 @@ var PublishStories = {
         return ratio;
     },
 
-    drawMediaToImageCanvas: function(media, width, height, ratio) {
+    drawMediaToImageCanvas: function (media, width, height, ratio) {
         PublishStories.imageCanvas = document.createElement('canvas');
         PublishStories.imageCanvas.width = width * ratio;
         PublishStories.imageCanvas.height = height * ratio;
@@ -217,8 +217,12 @@ var PublishStories = {
     },
 
     reset: function () {
-        PublishStories.main.classList = 'shoot';
-        PublishStories.video.play();
+        if (PublishStories.videoSelect.options.length > 0) {
+            PublishStories.main.classList = 'shoot';
+            PublishStories.video.play();
+        } else {
+            PublishStories.main.classList = 'shoot error';
+        }
 
         PublishStories.cameraOffset = { x: 0, y: 0 };
         PublishStories.cameraZoom = PublishStories.lastZoom = 1;
@@ -240,8 +244,18 @@ var PublishStories = {
             }
         };
 
-        return navigator.mediaDevices.getUserMedia(constraints)
-            .then(PublishStories.gotStream);
+        navigator.mediaDevices.getUserMedia(constraints)
+            .then(stream => {
+                PublishStories.gotStream(stream);
+                PublishStories.getDevices().then(PublishStories.gotDevices);
+            })
+            .catch(e => {
+                PublishStories.noStream()
+            });
+    },
+
+    noStream: function (stream) {
+        PublishStories.main.classList = 'shoot error';
     },
 
     gotStream: function (stream) {
@@ -306,9 +320,9 @@ var PublishStories = {
         let borders = PublishStories.canvas.getBoundingClientRect();
 
         if (MovimUtils.getEventLocation(e).x < borders.left
-         || MovimUtils.getEventLocation(e).x > borders.right
-         || MovimUtils.getEventLocation(e).y < borders.top
-         || MovimUtils.getEventLocation(e).y > borders.bottom) {
+            || MovimUtils.getEventLocation(e).x > borders.right
+            || MovimUtils.getEventLocation(e).y < borders.top
+            || MovimUtils.getEventLocation(e).y > borders.bottom) {
             PublishStories.onPointerUp(e);
         }
     },

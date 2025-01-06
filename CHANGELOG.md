@@ -5,6 +5,7 @@ v0.29.1 (master)
 ---------------------------
 * Replace the timer with a Date in the Dictaphone
 * Only launch the StoriesViewer localy to prevent some timer sync issues
+* Allow Stories publication without a camera enabled (file selection only)
 
 v0.29
 ---------------------------
