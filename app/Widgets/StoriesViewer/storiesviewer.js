@@ -65,3 +65,17 @@ var StoriesViewer = {
         document.querySelector('form[name=storycomment]').reset();
     }
 }
+
+MovimEvents.registerBody('click', 'preview', (e) => {
+    if (document.querySelector('#storiesviewer').innerHTML == '') return;
+
+    if (!document.querySelector('#storiesviewer article').contains(e.target)) {
+        StoriesViewer.close();
+    }
+});
+
+MovimEvents.registerBody('keydown', 'preview', (e) => {
+    if (document.querySelector('#storiesviewer').innerHTML != '' && e.key == 'Escape') {
+        StoriesViewer.close();
+    }
+});
