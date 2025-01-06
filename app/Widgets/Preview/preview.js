@@ -16,12 +16,12 @@ MovimEvents.registerBody('click', 'preview', (e) => {
         && !document.querySelector('#preview .prevnext.prev').contains(e.target)
         && !document.querySelector('#preview .prevnext.next').contains(e.target)
         && !document.querySelector('#preview .buttons').contains(e.target)) {
-        Preview_ajaxHttpHide();
+        history.back()
     }
 });
 
 MovimEvents.registerBody('keydown', 'preview', (e) => {
     if (document.querySelector('#preview').innerHTML != '' && e.key == 'Escape') {
-        Preview_ajaxHttpHide();
+        history.back()
     }
 });
