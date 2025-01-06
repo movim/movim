@@ -6,8 +6,6 @@ use Awobaz\Compoships\Database\Eloquent\Model;
 
 class Subscription extends Model
 {
-    use \Awobaz\Compoships\Compoships;
-
     public $incrementing = false;
     protected $primaryKey = ['jid', 'server', 'node'];
     protected $guarded = [];

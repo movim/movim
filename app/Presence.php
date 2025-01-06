@@ -6,13 +6,10 @@ use Movim\Image;
 use Movim\ImageSize;
 use Movim\Session;
 use Moxl\Xec\Action\Presence\Muc;
-
 use Awobaz\Compoships\Database\Eloquent\Model;
 
 class Presence extends Model
 {
-    use \Awobaz\Compoships\Compoships;
-
     protected $primaryKey = ['session_id', 'jid', 'resource'];
     public $incrementing = false;
 

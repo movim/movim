@@ -2,12 +2,10 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Awobaz\Compoships\Database\Eloquent\Model;
 
 class Info extends Model
 {
-    use \Awobaz\Compoships\Compoships;
-
     protected $fillable = ['server', 'node', 'avatarhash'];
     protected $with = ['identities'];
 

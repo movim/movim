@@ -26,7 +26,7 @@ class Get extends Action
         $subscriptions = [];
 
         foreach ($stanza->pubsub->items->children() as $i) {
-            $subscription = \App\Subscription::firstOrNew([
+            $subscription = Subscription::firstOrNew([
                 'jid' => $this->_to,
                 'server' => (string)$i->subscription->attributes()->server,
                 'node' => (string)$i->subscription->attributes()->node,
@@ -38,7 +38,12 @@ class Get extends Action
             if ($this->_pepnode == 'urn:xmpp:pubsub:subscription') {
                 // Remove the private subscriptions to insert the public ones
                 if ($subscription->exists && $subscription->public == false) {
-                    $subscription->delete();
+                    Subscription::where([
+                        'jid' => $subscription->jid,
+                        'server' => $subscription->server,
+                        'node' => $subscription->node
+                    ])->delete();
+
                     $insertAsWell = true;
                 }
 

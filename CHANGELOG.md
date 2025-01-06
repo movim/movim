@@ -8,6 +8,7 @@ v0.29.1 (master)
 * Allow Stories publication without a camera enabled (file selection only)
 * Fix #1381 Use the correct peer_name when initiating the TLS connection
 * First changes for upcoming PHP 8.4 support
+* Fix #1386 Do a manual query to delete the subscription to prevent using the composite primary key in Eloquent
 
 v0.29
 ---------------------------

@@ -11,8 +11,6 @@ use SimpleXMLElement;
 
 class Post extends Model
 {
-    use \Awobaz\Compoships\Compoships;
-
     protected $primaryKey = 'id';
 
     protected $guarded = [];

@@ -8,8 +8,6 @@ use Awobaz\Compoships\Database\Eloquent\Model;
 
 class Conference extends Model
 {
-    use \Awobaz\Compoships\Compoships;
-
     public $incrementing = false;
     protected $primaryKey = ['session_id', 'conference'];
     protected $fillable = ['conference', 'name', 'nick', 'autojoin', 'pinned'];

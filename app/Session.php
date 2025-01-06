@@ -9,8 +9,6 @@ use Illuminate\Database\Capsule\Manager as DB;
 
 class Session extends Model
 {
-    use \Awobaz\Compoships\Compoships;
-
     protected $fillable = ['id'];
     protected $keyType = 'string';
     protected $with = ['serverCapability'];
