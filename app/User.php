@@ -105,7 +105,7 @@ class User extends Model
         return $this->nickname ?? $this->id;
     }
 
-    public function unreads(string $jid = null, bool $quoted = false, bool $cached = false): int
+    public function unreads(?string $jid = null, bool $quoted = false, bool $cached = false): int
     {
         if ($this->unreads !== null && $cached) return $this->unreads;
 
@@ -114,7 +114,7 @@ class User extends Model
             ->where('seen', false)
             ->whereIn('type', ['chat', 'headline', 'invitation']);
 
-        $union = ($jid)
+        $union = ($jid != null)
             ? $union->where('jidfrom', $jid)
             : $union->where('jidfrom', '!=', $this->id);
 
@@ -139,11 +139,9 @@ class User extends Model
                 }
             })->unionAll($union);
 
-        if ($jid) {
-            $unreads = $unreads->where('jidfrom', $jid);
-        } else {
-            $unreads = $unreads->distinct('jidfrom');
-        }
+        $unreads = ($jid != null)
+            ? $unreads->where('jidfrom', $jid)
+            : $unreads->distinct('jidfrom');
 
         $unreads = $unreads->count();
 

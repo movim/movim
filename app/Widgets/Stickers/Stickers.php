@@ -162,7 +162,7 @@ class Stickers extends \Movim\Widget\Base
     /**
      * @brief Show the smiley Poppin
      */
-    public function ajaxReaction(string $mid = null)
+    public function ajaxReaction(?string $mid = null)
     {
         $info = $mid
             ? Info::where('server', function ($query) use ($mid) {

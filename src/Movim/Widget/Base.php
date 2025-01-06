@@ -33,7 +33,7 @@ class Base
     public $image;
     public $description;
 
-    public function __construct(bool $light = false, string $view = null)
+    public function __construct(bool $light = false, ?string $view = null)
     {
         if ($view != null) {
             $this->_view = $view;

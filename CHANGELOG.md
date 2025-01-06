@@ -6,6 +6,8 @@ v0.29.1 (master)
 * Replace the timer with a Date in the Dictaphone
 * Only launch the StoriesViewer localy to prevent some timer sync issues
 * Allow Stories publication without a camera enabled (file selection only)
+* Fix #1381 Use the correct peer_name when initiating the TLS connection
+* First changes for upcoming PHP 8.4 support
 
 v0.29
 ---------------------------

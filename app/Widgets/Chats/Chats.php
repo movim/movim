@@ -340,9 +340,9 @@ class Chats extends Base
     public function prepareChat(
         string $jid,
         Contact $contact,
-        Roster $roster = null,
-        Message $message = null,
-        string $status = null
+        ?Roster $roster = null,
+        ?Message $message = null,
+        ?string $status = null
     ) {
         if (!validateJid($jid)) {
             return;

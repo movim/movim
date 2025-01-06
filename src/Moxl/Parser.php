@@ -24,10 +24,9 @@ class Parser
         }
 
         $this->parser = xml_parser_create();
-        xml_set_object($this->parser, $this);
 
-        xml_set_element_handler($this->parser, "start", "end");
-        xml_set_character_data_handler($this->parser, "contents");
+        xml_set_element_handler($this->parser, $this->start(...), $this->end(...));
+        xml_set_character_data_handler($this->parser, $this->contents(...));
         xml_parser_set_option($this->parser, XML_OPTION_CASE_FOLDING, 0);
         xml_parser_set_option($this->parser, XML_OPTION_SKIP_WHITE, 1);
         xml_parser_set_option($this->parser, XML_OPTION_TARGET_ENCODING, "UTF-8");

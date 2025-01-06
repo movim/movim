@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bfc73e7e988150e30599077b3916e378",
+    "content-hash": "e93989a164d6db02aeec829f2d96bb8f",
     "packages": [
         {
             "name": "awobaz/compoships",
@@ -5144,16 +5144,16 @@
         },
         {
             "name": "respect/validation",
-            "version": "2.3.11",
+            "version": "2.3.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Respect/Validation.git",
-                "reference": "294c36ffb7c2b0f3dc23f3847844a61fa0139001"
+                "reference": "37736c4946a9b4c33a7d4e0cb56d585f42d799b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Respect/Validation/zipball/294c36ffb7c2b0f3dc23f3847844a61fa0139001",
-                "reference": "294c36ffb7c2b0f3dc23f3847844a61fa0139001",
+                "url": "https://api.github.com/repos/Respect/Validation/zipball/37736c4946a9b4c33a7d4e0cb56d585f42d799b1",
+                "reference": "37736c4946a9b4c33a7d4e0cb56d585f42d799b1",
                 "shasum": ""
             },
             "require": {
@@ -5206,9 +5206,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Respect/Validation/issues",
-                "source": "https://github.com/Respect/Validation/tree/2.3.11"
+                "source": "https://github.com/Respect/Validation/tree/2.3.13"
             },
-            "time": "2024-12-13T00:07:10+00:00"
+            "time": "2025-01-06T14:05:20+00:00"
         },
         {
             "name": "robmorgan/phinx",

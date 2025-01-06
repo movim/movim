@@ -39,7 +39,7 @@ class Partial extends Tpl
         return $compiled;
     }
 
-    public function cacheClear(string $templateFilePath, string $key = null)
+    public function cacheClear(string $templateFilePath, ?string $key = null)
     {
         if ($key) {
             $path = $this->resolvedCacheKey($templateFilePath, $key);

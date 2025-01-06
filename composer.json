@@ -20,7 +20,7 @@
         "ext-imagick": "*",
         "ext-json": "*",
 
-        "fabiang/sasl": "^1.4",
+        "fabiang/sasl": "^1.5",
         "rain/raintpl": "^3.1",
         "embed/embed": "^v4.4",
         "league/commonmark": "2.6",
@@ -39,7 +39,7 @@
 
         "plesk/ratchetphp": "^1.0",
         "react/child-process": "^0.6",
-        "react/http": "^1.10",
+        "react/http": "^1.11",
         "react/dns": "^1.13",
         "ratchet/pawl": "^0.4",
         "minishlink/web-push": "^9.0",

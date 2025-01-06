@@ -9,7 +9,7 @@ abstract class Action extends Payload
 {
     protected $stanzaId;
 
-    final public function store(string $customId = null)
+    final public function store(?string $customId = null)
     {
         $session = Session::instance();
 

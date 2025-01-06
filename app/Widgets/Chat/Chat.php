@@ -387,7 +387,7 @@ class Chat extends \Movim\Widget\Base
      * @brief Get a discussion
      * @param string $jid
      */
-    public function ajaxGet(string $jid = null, ?bool $light = false)
+    public function ajaxGet(?string $jid = null, ?bool $light = false)
     {
         if ($jid == null) {
             $this->rpc('MovimTpl.hidePanel');
