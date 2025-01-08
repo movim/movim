@@ -66,27 +66,27 @@ class Vcard4 extends Base
 
         $c->name = null;
 
-        if (Validator::stringType()->notEmpty()->validate($vcard->name->value)) {
+        if (Validator::stringType()->notEmpty()->isValid($vcard->name->value)) {
             $c->name = $vcard->name->value;
             $n = new Nickname;
             $n->setNickname($c->name)
                 ->request();
         }
 
-        $c->date = Validator::date('Y-m-d')->validate($vcard->date->value)
+        $c->date = Validator::date('Y-m-d')->isValid($vcard->date->value)
             ? $vcard->date->value
             : null;
 
         $c->fn = $vcard->fn->value;
 
-        $c->url = Validator::url()->notEmpty()->validate($vcard->url->value)
+        $c->url = Validator::url()->notEmpty()->isValid($vcard->url->value)
             ? $vcard->url->value
             : null;
 
         $c->adrlocality     = $vcard->locality->value;
         $c->adrcountry      = $vcard->country->value;
 
-        $c->email   = Validator::email()->notEmpty()->validate($vcard->email->value)
+        $c->email   = Validator::email()->notEmpty()->isValid($vcard->email->value)
             ? $vcard->email->value
             : null;
 

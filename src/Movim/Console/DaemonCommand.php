@@ -69,7 +69,7 @@ class DaemonCommand extends Command
             $schemeEnforcedURL = parse_url(config('daemon.url'), PHP_URL_SCHEME)
                 ? config('daemon.url')
                 : 'http://' . ltrim(config('daemon.url'), '/');
-            if (Validator::url()->notEmpty()->validate($schemeEnforcedURL)) {
+            if (Validator::url()->notEmpty()->isValid($schemeEnforcedURL)) {
                 $baseuri = rtrim(config('daemon.url'), '/') . '/';
             }
         } elseif (file_exists(CACHE_PATH . 'baseuri')) {

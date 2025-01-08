@@ -96,7 +96,7 @@ class Login extends Base
 
         if (
             $this->get('i')
-            && Validator::length(8)->validate($this->get('i'))
+            && Validator::length(8)->isValid($this->get('i'))
         ) {
             $invitation = \App\Invite::find($this->get('i'));
 
@@ -114,7 +114,7 @@ class Login extends Base
         if (
             isset($_SERVER['PHP_AUTH_USER'])
             && isset($_SERVER['PHP_AUTH_PW'])
-            && Validator::email()->length(6, 40)->validate($_SERVER['HTTP_EMAIL'])
+            && Validator::email()->length(6, 40)->isValid($_SERVER['HTTP_EMAIL'])
         ) {
             list($username, $host) = explode('@', $_SERVER['HTTP_EMAIL']);
             $this->view->assign('httpAuthHost', $host);
@@ -200,7 +200,7 @@ class Login extends Base
     {
         $validateLogin = Validator::stringType()->length(1, 254);
 
-        if (!$validateLogin->validate($login)) {
+        if (!$validateLogin->isValid($login)) {
             $this->showErrorBlock('login_format');
             return;
         }
@@ -235,12 +235,12 @@ class Login extends Base
     {
         $configuration = Configuration::get();
 
-        if (!Validator::stringType()->length(1, 254)->validate($login)) {
+        if (!Validator::stringType()->length(1, 254)->isValid($login)) {
             $this->showErrorBlock('login_format');
             return;
         }
 
-        if (!Validator::stringType()->length(1, 128)->validate($password)) {
+        if (!Validator::stringType()->length(1, 128)->isValid($password)) {
             $this->showErrorBlock('password_format');
             return;
         }

@@ -29,8 +29,7 @@ class Get extends Action
             $subscription = Subscription::firstOrNew([
                 'jid' => $this->_to,
                 'server' => (string)$i->subscription->attributes()->server,
-                'node' => (string)$i->subscription->attributes()->node,
-                //'public' => ($this->_pepnode == 'urn:xmpp:pubsub:subscription')
+                'node' => (string)$i->subscription->attributes()->node
             ]);
 
             $insertAsWell = false;

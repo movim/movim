@@ -110,7 +110,7 @@ class CommunitiesServer extends \Movim\Widget\Base
         }
 
         $validate_name = Validator::stringType()->length(4, 80);
-        if (!$validate_name->validate($form->name->value)) {
+        if (!$validate_name->isValid($form->name->value)) {
             Toast::send($this->__('communitiesserver.name_error'));
             return;
         }

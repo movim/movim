@@ -636,7 +636,7 @@ class Post extends Model
                     }
                     break;
                 case 'alternate':
-                    if (Validator::url()->validate($enc['href'])) {
+                    if (Validator::url()->isValid($enc['href'])) {
                         $this->open = true;
                         $att->category = 'open';
                     }

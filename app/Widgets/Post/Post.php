@@ -169,8 +169,8 @@ class Post extends Base
     public function publishComment($comment, $to, $node, $id)
     {
         if (
-            !Validator::stringType()->notEmpty()->validate($comment)
-            || !Validator::stringType()->length(6, 128)->noWhitespace()->validate($id)
+            !Validator::stringType()->notEmpty()->isValid($comment)
+            || !Validator::stringType()->length(6, 128)->noWhitespace()->isValid($id)
         ) {
             return;
         }
@@ -301,7 +301,7 @@ class Post extends Base
     public function display()
     {
         $this->view->assign('nodeid', false);
-        if (Validator::stringType()->length(3, 256)->validate($this->get('i'))) {
+        if (Validator::stringType()->length(3, 256)->isValid($this->get('i'))) {
             $this->view->assign('nodeid', $this->get('i'));
         }
     }

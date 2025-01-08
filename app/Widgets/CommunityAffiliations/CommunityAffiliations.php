@@ -225,8 +225,8 @@ class CommunityAffiliations extends Base
         $caps = \App\Info::where('server', $server)->where('node', '')->first();
 
         if (
-            Validator::in($caps ? array_keys($caps->getPubsubRoles()) : [])->validate($form->role->value)
-            && Validator::stringType()->length(2, 100)->validate($form->jid->value)
+            Validator::in($caps ? array_keys($caps->getPubsubRoles()) : [])->isValid($form->role->value)
+            && Validator::stringType()->length(2, 100)->isValid($form->jid->value)
         ) {
             $sa = new SetAffiliations;
             $sa->setTo($server)

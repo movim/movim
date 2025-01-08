@@ -51,7 +51,6 @@ class Request extends Action
         $this->deliver();
     }
 
-    // the file size was too large
     public function errorFileTooLarge($error)
     {
         $this->pack($this->_to);
@@ -65,7 +64,6 @@ class Request extends Action
         $this->deliver();
     }
 
-    // the client is not allowed to upload files
     public function errorNotAllowed($error)
     {
         $this->pack($this->_to);

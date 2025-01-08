@@ -9,32 +9,32 @@ function validateServerNode($server, $node)
 
 function validateServer($server)
 {
-    return (Validator::stringType()->noWhitespace()->length(6, 64)->validate($server));
+    return (Validator::stringType()->noWhitespace()->length(6, 64)->isValid($server));
 }
 
 function validateNode($node)
 {
-    return (Validator::stringType()->length(2, 256)->validate($node));
+    return (Validator::stringType()->length(2, 256)->isValid($node));
 }
 
 function validateTag($tag)
 {
-    return Validator::stringType()->notEmpty()->validate($tag);
+    return Validator::stringType()->notEmpty()->isValid($tag);
 }
 
 function validateJid($jid)
 {
-    return (Validator::stringType()->length(6, 256)->validate($jid));
+    return (Validator::stringType()->length(6, 256)->isValid($jid));
 }
 
 function validateRoom($room)
 {
-    return (Validator::stringType()->noWhitespace()->contains('@')->length(6, 256)->validate($room));
+    return (Validator::stringType()->noWhitespace()->contains('@')->length(6, 256)->isValid($room));
 }
 
 function validateForm($data)
 {
     $l = Movim\i18n\Locale::start();
 
-    return Validator::in(array_keys($l->getList()))->validate($data->language->value);
+    return Validator::in(array_keys($l->getList()))->isValid($data->language->value);
 }

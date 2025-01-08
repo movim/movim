@@ -355,7 +355,7 @@ class RoomsUtils extends Base
     {
         if (
             !validateRoom($room)
-            || !Validator::stringType()->length(0, 200)->validate($form->subject->value)
+            || !Validator::stringType()->length(0, 200)->isValid($form->subject->value)
         ) {
             return;
         }

@@ -142,7 +142,7 @@ class Config extends Base
 
     public function ajaxSaveNickname(string $nickname)
     {
-        if (Validator::regex('/^[a-z_\-\d]{3,64}$/i')->validate($nickname)) {
+        if (Validator::regex('/^[a-z_\-\d]{3,64}$/i')->isValid($nickname)) {
             if (\App\User::where('nickname', $nickname)->where('id', '!=', $this->user->id)->first()) {
                 Toast::send($this->__('profile.nickname_conflict'));
                 return;

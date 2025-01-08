@@ -51,7 +51,7 @@ class Search extends Base
 
         $key = str_replace(['#', 'xmpp:'], '', $key);
 
-        if (Validator::stringType()->length(2, 64)->validate($key)) {
+        if (Validator::stringType()->length(2, 64)->isValid($key)) {
             $view->assign('posts', new Collection);
 
             if ($this->user->hasPubsub()) {

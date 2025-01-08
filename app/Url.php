@@ -17,7 +17,7 @@ class Url extends Model
 
     public function resolve($url)
     {
-        if (Validator::url()->validate($url)) {
+        if (Validator::url()->isValid($url)) {
             $hash = hash('sha256', $url);
             $cached = \App\Url::where('hash', $hash)->first();
 

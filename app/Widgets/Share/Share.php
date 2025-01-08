@@ -19,7 +19,7 @@ class Share extends Base
     {
         $validateUrl = Validator::url();
 
-        if ($validateUrl->validate($link)
+        if ($validateUrl->isValid($link)
         && substr($link, 0, 4) == 'http') {
             // Pre-resolve the link
             (new \App\Url)->resolve($link);

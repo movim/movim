@@ -89,7 +89,7 @@ class MessageFile extends Model
             $this->url = $upload->geturl;
 
             if (isset($file->thumbnail)
-            && Validator::url()->validate($file->thumbnail->uri)) {
+            && Validator::url()->isValid($file->thumbnail->uri)) {
                 $this->thumbnail_type = (string)$file->thumbnail->type;
                 $this->thumbnail_width = (int)$file->thumbnail->width;
                 $this->thumbnail_height = (int)$file->thumbnail->height;

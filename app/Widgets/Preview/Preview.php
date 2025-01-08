@@ -17,7 +17,7 @@ class Preview extends Base
 
     public function ajaxHttpShow(string $url, ?string $messageId = null)
     {
-        if (!Validator::url($url)->validate($url)) {
+        if (!Validator::url($url)->isValid($url)) {
             return;
         }
 
@@ -37,7 +37,7 @@ class Preview extends Base
 
     public function ajaxHttpGallery(string $url, $number = 0)
     {
-        if (!Validator::url($url)->validate($url)) {
+        if (!Validator::url($url)->isValid($url)) {
             return;
         }
 

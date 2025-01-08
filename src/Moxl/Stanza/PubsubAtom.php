@@ -64,12 +64,6 @@ class PubsubAtom
         $author->appendChild($dom->createElement('uri', 'xmpp:' . $this->jid));
         $entry->appendChild($author);
 
-        /*$link = $dom->createElement('link');
-        $link->setAttribute('rel', 'alternate');
-        $link->setAttribute('type', 'application/atom+xml');
-        $link->setAttribute('href', 'xmpp:'.$this->to.'?;node='.$this->node.';item='.$this->id);
-        $entry->appendChild($link);*/
-
         $link = $dom->createElement('link');
         $link->setAttribute('rel', 'alternate');
         $link->setAttribute('href', 'xmpp:' . $this->to . '?;node=' . $this->node . ';item=' . $this->id);
@@ -156,25 +150,6 @@ class PubsubAtom
             }
         }
 
-        /*if ($this->geo) {
-            $xml .= '
-                    <geoloc xmlns="http://jabber.org/protocol/geoloc">
-                        <lat>'.$this->geo['latitude'].'</lat>
-                        <lon>'.$this->geo['longitude'].'</lon>
-                        <altitude>'.$this->geo['altitude'].'</altitude>
-                        <country>'.$this->geo['country'].'</country>
-                        <countrycode>'.$this->geo['countrycode'].'</countrycode>
-                        <region>'.$this->geo['region'].'</region>
-                        <postalcode>'.$this->geo['postalcode'].'</postalcode>
-                        <locality>'.$this->geo['locality'].'</locality>
-                        <street>'.$this->geo['street'].'</street>
-                        <building>'.$this->geo['building'].'</building>
-                        <text>'.$this->geo['text'].'</text>
-                        <uri>'.$this->geo['uri'].'</uri>
-                        <timestamp>'.date('c').'</timestamp>
-                    </geoloc>';
-        }*/
-
         if ($this->content) {
             $content_raw = $dom->createElement('content', $this->content);
             $content_raw->setAttribute('type', 'text');
@@ -216,9 +191,4 @@ class PubsubAtom
 
         return $dom->documentElement;
     }
-
-    /*public function __toString()
-    {
-        return $dom->saveXML($this->getDom());
-    }*/
 }

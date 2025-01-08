@@ -146,7 +146,7 @@ class Publish extends Base
                 array_merge($tags, $tagsTitle);
             }
 
-            if (Validator::stringType()->notEmpty()->validate(trim($draft->content))) {
+            if (Validator::stringType()->notEmpty()->isValid(trim($draft->content))) {
 
                 $converter = new CommonMarkConverter([
                     'html_input' => 'escape',
@@ -169,7 +169,7 @@ class Publish extends Base
                 }
             }
 
-            if (Validator::stringType()->notEmpty()->validate(trim($draft->nodeid))) {
+            if (Validator::stringType()->notEmpty()->isValid(trim($draft->nodeid))) {
                 $p->setId($draft->nodeid);
 
                 $post = \App\Post::where('server', $draft->server)
@@ -305,7 +305,7 @@ class Publish extends Base
     {
         $draft = $this->user->drafts()->find($draftId);
 
-        if (Validator::url()->validate($url)) {
+        if (Validator::url()->isValid($url)) {
             $embed = $draft->embeds()->where('url', $url)->first();
 
             if (!$embed) {

@@ -68,7 +68,7 @@ class Contact extends Model
         $this->id = $jid;
 
         $this->date = isset($vcard->vCard->BDAY)
-            && Validator::date('Y-m-d')->validate($vcard->vCard->BDAY)
+            && Validator::date('Y-m-d')->isValid($vcard->vCard->BDAY)
             ? (string)$vcard->vCard->BDAY
             : null;
 
@@ -226,7 +226,7 @@ class Contact extends Model
     public function setVcard4($vcard)
     {
         $this->date = (isset($vcard->bday->date)
-            && Validator::date('Y-m-d')->validate($vcard->bday->date))
+            && Validator::date('Y-m-d')->isValid($vcard->bday->date))
             ? (string)$vcard->bday->date
             : null;
 

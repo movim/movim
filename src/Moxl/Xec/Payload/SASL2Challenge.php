@@ -10,7 +10,6 @@ class SASL2Challenge extends Payload
     {
         $auth = Authentication::getInstance();
         $challenge = base64_decode((string)$stanza);
-
         $response = base64_encode($auth->challenge($challenge));
 
         $dom = new \DOMDocument('1.0', 'UTF-8');
