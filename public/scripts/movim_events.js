@@ -38,7 +38,7 @@ var MovimEvents = {
 
     triggerBody: function (event, e) {
         if (MovimEvents.eventsBody[event] != undefined) {
-            for (const [key, value] of Object.entries(MovimEvents.eventsBody[event])) {
+            for (const value of Object.values(MovimEvents.eventsBody[event])) {
                 value(e);
             }
         }
@@ -46,7 +46,7 @@ var MovimEvents = {
 
     triggerWindow: function (event, e) {
         if (MovimEvents.eventsWindow[event] != undefined) {
-            for (const [key, value] of Object.entries(MovimEvents.eventsWindow[event])) {
+            for (const value of Object.values(MovimEvents.eventsWindow[event])) {
                 value(e);
             }
         }

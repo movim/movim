@@ -66,7 +66,7 @@ var StoriesViewer = {
     }
 }
 
-MovimEvents.registerBody('click', 'preview', (e) => {
+MovimEvents.registerBody('click', 'storiesviewer', (e) => {
     if (document.querySelector('#storiesviewer').innerHTML == '') return;
 
     if (!document.querySelector('#storiesviewer article').contains(e.target)) {
@@ -74,7 +74,7 @@ MovimEvents.registerBody('click', 'preview', (e) => {
     }
 });
 
-MovimEvents.registerBody('keydown', 'preview', (e) => {
+MovimEvents.registerBody('keydown', 'storiesviewer', (e) => {
     if (document.querySelector('#storiesviewer').innerHTML != '' && e.key == 'Escape') {
         history.back()
     }
