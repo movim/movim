@@ -25,7 +25,7 @@
             <i class="material-symbols" style="font-size: 5rem;">gif</i>
         </li>
         {loop="$packs"}
-            <li onclick="Stickers_ajaxShow('{$jid}', '{$value->name}')" {if="$value->name == $pack->name"}class="active"{/if}>
+            <li onclick="Stickers_ajaxShow('{$jid}', '{$value->name}')" {if="$pack != null && $value->name == $pack->name"}class="active"{/if}>
                 <img alt=":sticker:" class="emoji medium" src="{$value->stickers()->first()->url}">
             </li>
         {/loop}

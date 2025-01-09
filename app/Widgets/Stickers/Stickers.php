@@ -153,6 +153,7 @@ class Stickers extends \Movim\Widget\Base
             $view = $this->tpl();
             $view->assign('jid', $to);
             $view->assign('packs', $packs);
+            $view->assign('pack', null);
 
             Drawer::fill('stickers', $view->draw('_stickers_gifs'), true);
             $this->rpc('Stickers.setGifsSearchEvent', $to);
