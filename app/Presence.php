@@ -10,11 +10,12 @@ use Awobaz\Compoships\Database\Eloquent\Model;
 
 class Presence extends Model
 {
-    protected $primaryKey = ['session_id', 'jid', 'resource'];
+    protected $primaryKey = ['session_id', 'jid', 'mucjid', 'resource'];
     public $incrementing = false;
 
     protected $attributes = [
         'session_id' => SESSION_ID,
+        'mucjid' => '', // Required to use it in the primary key
         'muc' => false
     ];
 
@@ -208,7 +209,7 @@ class Presence extends Model
         return [
             'session_id' => $this->attributes['session_id'] ?? null,
             'jid' => $this->attributes['jid']  ?? null,
-            'resource' => $this->attributes['resource'] ?? null,
+            'resource' => $this->attributes['resource'] ?? '',
             'value' => $this->attributes['value'] ?? null,
             'type' => $this->attributes['type'] ?? null,
             'priority' => $this->attributes['priority'] ?? null,
@@ -218,7 +219,7 @@ class Presence extends Model
             'last' => $this->attributes['last'] ?? null,
             'idle' => $this->attributes['idle'] ?? null,
             'muc' => $this->attributes['muc'] ?? null,
-            'mucjid' => $this->attributes['mucjid'] ?? null,
+            'mucjid' => $this->attributes['mucjid'] ?? '',
             'mucaffiliation' => $this->attributes['mucaffiliation']  ?? null,
             'mucrole' => $this->attributes['mucrole'] ?? null,
             'created_at' => $this->attributes['created_at'] ?? $now,

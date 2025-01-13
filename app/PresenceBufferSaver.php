@@ -70,7 +70,7 @@ class PresenceBufferSaver
                             : $presence['jid'];
 
                         $jid = ($presence['muc'])
-                            ? (($presence['mucjid'])
+                            ? (($presence['mucjid'] != '')
                                 ? $presence['mucjid']
                                 : $fullJid)
                             : $presence['jid'];
@@ -142,6 +142,6 @@ class PresenceBufferSaver
 
     private function getPresenceKey(Presence $presence)
     {
-        return $presence->muc ? $presence->jid . $presence->mucjid : $presence->jid . $presence->resource;
+        return $presence->jid . $presence->mucjid . $presence->resource;
     }
 }

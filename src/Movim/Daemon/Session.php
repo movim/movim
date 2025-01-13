@@ -134,6 +134,11 @@ class Session
             array_push($this->extensions, 'pdo_pgsql');
         }
 
+        // Optional extension
+        if (extension_loaded('bcmath')) {
+            array_push($this->extensions, 'bcmath');
+        }
+
         foreach ($this->extensions as $extension) {
             $configuration .= '-dextension=' . $extension . '.so ';
         }
