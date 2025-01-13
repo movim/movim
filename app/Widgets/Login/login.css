@@ -15,6 +15,7 @@ body main {
 @media screen and (max-width: 600px) {
     #login_widget {
         flex-direction: column;
+        margin-top: 37rem; /* Hack to see the top part */
     }
 
     #login_widget:before {
