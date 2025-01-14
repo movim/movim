@@ -13,9 +13,12 @@ body main {
 }
 
 @media screen and (max-width: 600px) {
+    body main {
+        align-items: flex-start;
+    }
+
     #login_widget {
         flex-direction: column;
-        margin-top: 37rem; /* Hack to see the top part */
     }
 
     #login_widget:before {
@@ -54,6 +57,7 @@ body main {
     padding: 0;
     margin-top: -1rem;
     object-fit: cover;
+    min-height: 9rem;
     max-height: 18rem;
     width: 100%;
     -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent);
