@@ -7,8 +7,12 @@ use Moxl\Stanza\Muc;
 
 class CreateGroupChat extends Action
 {
-    protected $_to;
-    protected $_name;
+    protected string $_to;
+    protected string $_name;
+    protected string $_nick;
+    protected $_autojoin;
+    protected $_pinned;
+    protected $_notify;
 
     public function request()
     {

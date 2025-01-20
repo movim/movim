@@ -12,6 +12,7 @@ class CreateChannel extends Action
     protected $_nick;
     protected $_autojoin;
     protected $_notify;
+    protected $_pinned;
 
     public function request()
     {
