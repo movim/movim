@@ -10,6 +10,7 @@ v0.29.1 (master)
 * First changes for upcoming PHP 8.4 support
 * Fix #1386 Do a manual query to delete the subscription to prevent using the composite primary key in Eloquent
 * Close the StoriesViewer using the Esc button or by clicking outside the Story
+* Upgrade to PHP 8.2 minimum
 
 v0.29
 ---------------------------

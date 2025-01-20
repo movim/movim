@@ -13,7 +13,7 @@ Movim requires some dependencies to be setup properly.
      * PostgreSQL (**_strongly recommended_**)
      * MySQL 5.7 or higher with utf8mb4 encoding (necessary for emojis 😃 support) AND `utf8mb4_bin` collation.
      * MariaDB 10.2 or higher with utf8mb4 encoding (necessary for emojis 😃 support) AND `utf8mb4_bin` collation.
-  * **PHP 8.1 minimum** with :
+  * **PHP 8.2 minimum** with :
      * Curl (package ''**php-curl**'')
      * PHP mbstring (package ''**php-mbstring**'')
      * PHP ImageMagick and GD for the picture processing (package ''**php-imagick**'' and ''**php-gd**'')
