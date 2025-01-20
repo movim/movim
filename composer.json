@@ -12,7 +12,7 @@
         }
     },
     "require": {
-        "php": ">=8.2.0",
+        "php": ">=8.1.0",
         "ext-curl": "*",
         "ext-gd": "*",
         "ext-dom": "*",
@@ -32,8 +32,8 @@
         "defuse/php-encryption": "^2.4",
 
         "robmorgan/phinx": "^0.14",
-        "illuminate/database": "^11",
-        "illuminate/events": "^11",
+        "illuminate/database": "^10.30",
+        "illuminate/events": "^10.30",
         "doctrine/dbal": "^3.9",
         "monolog/monolog": "^3.7",
 
@@ -50,7 +50,7 @@
     },
     "config": {
         "platform": {
-            "php": "8.2"
+            "php": "8.1"
         },
         "optimize-autoloader": true
     },
