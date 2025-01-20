@@ -11,6 +11,8 @@ class AddHashToMessageFilesTable extends Migration
         $this->disableForeignKeyCheck();
 
         $this->schema->table('message_files', function (Blueprint $table) {
+            $table->text('url')->change();
+
             switch ($this->schema->getConnection()->getDriverName()) {
                 case 'mysql':
                     $table->string('hash')->charset('binary')->storedAs('sha2(`url`, 256)');
@@ -21,8 +23,6 @@ class AddHashToMessageFilesTable extends Migration
                     $table->string('hash')->storedAs("encode(digest(url, 'sha256'), 'hex')");
                     break;
             }
-
-            $table->text('url')->change();
 
             $table->dropUnique('message_files_message_mid_url_size_unique');
             $table->unique(['message_mid', 'hash']);
