@@ -35,6 +35,7 @@ class PresenceBufferSaver
                     ['session_id', $first['session_id']],
                     ['jid', $first['jid']],
                     ['resource', $first['resource']],
+                    ['mucjid', $first['mucjid']]
                 ]);
 
                 $this->_models->skip(1)->each(function ($presence) use ($table) {
@@ -42,6 +43,7 @@ class PresenceBufferSaver
                         ['session_id', $presence['session_id']],
                         ['jid', $presence['jid']],
                         ['resource', $presence['resource']],
+                        ['mucjid', $presence['mucjid']]
                     ]);
                 });
                 $table->delete();
