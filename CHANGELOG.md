@@ -11,6 +11,7 @@ v0.29.1 (master)
 * Fix #1386 Do a manual query to delete the subscription to prevent using the composite primary key in Eloquent
 * Close the StoriesViewer using the Esc button or by clicking outside the Story
 * Add mucjid in the Presence "primary key", an actual key for PostgreSQL and an unique hash column for MySQL (3072 key length limit)
+* Fix #1357 Rewrite the PresenceBufferSaver delete request that was not generating the correct SQL code (using OR and not AND in it)
 
 v0.29
 ---------------------------

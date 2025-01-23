@@ -31,20 +31,20 @@ class PresenceBufferSaver
                 // We delete all the presences that might already be there
                 $table = DB::table('presences');
                 $first = $this->_models->first();
-                $table = $table->where([
-                    ['session_id', $first['session_id']],
-                    ['jid', $first['jid']],
-                    ['resource', $first['resource']],
-                    ['mucjid', $first['mucjid']]
-                ]);
+                $table = $table->where(function ($query) use ($first) {
+                    $query->where('session_id', $first['session_id'])
+                          ->where('jid', $first['jid'])
+                          ->where('resource', $first['resource'])
+                          ->where('mucjid', $first['mucjid']);
+                });
 
                 $this->_models->skip(1)->each(function ($presence) use ($table) {
-                    $table->orWhere([
-                        ['session_id', $presence['session_id']],
-                        ['jid', $presence['jid']],
-                        ['resource', $presence['resource']],
-                        ['mucjid', $presence['mucjid']]
-                    ]);
+                    $table->orWhere(function ($query) use ($presence) {
+                        $query->where('session_id', $presence['session_id'])
+                              ->where('jid', $presence['jid'])
+                              ->where('resource', $presence['resource'])
+                              ->where('mucjid', $presence['mucjid']);
+                    });
                 });
                 $table->delete();
 
