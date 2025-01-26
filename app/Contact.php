@@ -20,25 +20,24 @@ class Contact extends Model
         return $this->belongsTo('App\User', 'id');
     }
 
-    public function scopePublic($query, $like = false)
+    public function scopeSuggest($query, ?string $like = null)
     {
-        return $query->whereIn('id', function ($query) use ($like) {
-            $query->select('id')
-                ->from('users')
-                ->where('public', true)
-                ->when($like !== false, function ($query) use ($like) {
-                    $query->where('id', 'like', '%' . $like . '%');
-                });
-        });
-    }
-
-    public function scopeNotInRoster($query, $sessionId)
-    {
-        return $query->whereNotIn('id', function ($query) use ($sessionId) {
-            $query->select('jid')
-                ->from('rosters')
-                ->where('session_id', $sessionId);
-        });
+        return $query
+            ->whereIn('id', function ($query) use ($like) {
+                $query->select('id')
+                    ->from('users')
+                    ->where('public', true)
+                    ->when($like !== null, function ($query) use ($like) {
+                        $query->where('id', 'like', '%' . $like . '%');
+                    });
+            })
+            ->whereNotIn('id', function ($query) {
+                $query->select('jid')
+                    ->from('rosters')
+                    ->where('session_id', User::me()->session->id);
+            })
+            ->orderByPresence()
+            ->where('id', '!=', User::me()->id);
     }
 
     public function scopeOrderByPresence($query)

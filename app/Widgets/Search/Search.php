@@ -99,12 +99,7 @@ class Search extends Base
                 $view->assign('posts', $posts);
             }
 
-            $contacts = Contact::public($key)
-                ->notInRoster($this->user->session->id)
-                ->orderByPresence()
-                ->where('id', '!=', $this->user->id)
-                ->limit(10)
-                ->get();
+            $contacts = Contact::suggest($key)->limit(10)->get();
 
             if (validateJid($key)) {
                 $contact = new Contact;
@@ -134,10 +129,7 @@ class Search extends Base
     {
         $view = $this->tpl();
 
-        $users = Contact::public()
-            ->notInRoster($this->user->session->id)
-            ->orderByPresence()
-            ->where('id', '!=', $this->user->id)
+        $users = Contact::suggest()
             ->limit(12)
             ->get();
 

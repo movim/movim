@@ -1687,10 +1687,7 @@ class Chat extends \Movim\Widget\Base
 
         $pagination = 8;
 
-        $users = Contact::public()
-            ->notInRoster($this->user->session->id)
-            ->orderByPresence()
-            ->where('id', '!=', $this->user->id)
+        $users = Contact::suggest()
             ->skip($page * $pagination)
             ->take($pagination + 1)
             ->get();
