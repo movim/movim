@@ -37,11 +37,11 @@ class Get extends Action
             if ($this->_pepnode == 'urn:xmpp:pubsub:subscription') {
                 // Remove the private subscriptions to insert the public ones
                 if ($subscription->exists && $subscription->public == false) {
-                    Subscription::where([
-                        'jid' => $subscription->jid,
-                        'server' => $subscription->server,
-                        'node' => $subscription->node
-                    ])->delete();
+                    Subscription::where(function ($query) use ($subscription) {
+                        $query->where('jid', $subscription->jid)
+                              ->where('server', $subscription->server)
+                              ->where('node', $subscription->node);
+                    })->delete();
 
                     $insertAsWell = true;
                 }
