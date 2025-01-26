@@ -123,7 +123,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-24 11:08+0200\n"
+"POT-Creation-Date: 2025-01-26 10:35+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Xabi, 2023-2024\n"
 "Language-Team: Basque (http://app.transifex.com/movim/movim/language/eu/)\n"
@@ -132,7 +132,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.13.3\n"
+"X-Generator: Translate Toolkit 3.14.4\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -2002,9 +2002,8 @@ msgid "Brief"
 msgstr ""
 
 #: [publish]article_title
-#, fuzzy
 msgid "Article"
-msgstr "Artikuluak"
+msgstr ""
 
 #: [publish]post
 msgid "Write a post"
@@ -2083,28 +2082,24 @@ msgid "Markdown syntax manual"
 msgstr "Markdown sintaxiaren gida"
 
 #: [story]to_roster
-#, fuzzy
 msgid "Publish to my contacts"
-msgstr "Gehitu nire kontaktuetan"
+msgstr ""
 
 #: [story]uploading
-#, fuzzy
 msgid "Uploading the story"
-msgstr "Garbitu historia"
+msgstr ""
 
 #: [story]publishing
-#, fuzzy
 msgid "Publishing the story"
-msgstr "Argitaratu bakarrik"
+msgstr ""
 
 #: [story]publishing_text
 msgid "Almost there…"
 msgstr ""
 
 #: [story]published
-#, fuzzy
 msgid "Story published"
-msgstr "Argitaratzea"
+msgstr ""
 
 #: [rooms]create
 msgid "Create a chatroom"
@@ -2523,14 +2518,12 @@ msgid "Share outside Movim"
 msgstr "Partekatu Movimetik kanpo"
 
 #: [sendto]sharing_post
-#, fuzzy
 msgid "Post shared using Movim"
-msgstr "Partekatu Movimetik kanpo"
+msgstr ""
 
 #: [sendto]sharing_story
-#, fuzzy
 msgid "Story shared using Movim"
-msgstr "Partekatu Movimetik kanpo"
+msgstr ""
 
 #: [sticker]title
 msgid "Stickers"
@@ -2573,29 +2566,24 @@ msgid "Some of your contacts might not have access to this story"
 msgstr ""
 
 #: [stories]share_text
-#, fuzzy
 msgid "They might have to subscribe to the publisher account"
-msgstr "Ez zaude kontaktu honen jariora harpidetuta"
+msgstr ""
 
 #: [stories]comment
-#, fuzzy
 msgid "Send a comment to %s"
-msgstr "Gehitu iruzkina"
+msgstr ""
 
 #: [stories]delete_title
-#, fuzzy
 msgid "Story deletion"
-msgstr "Ezabatu OMEMO gakoak"
+msgstr ""
 
 #: [stories]delete_text
-#, fuzzy
 msgid "Are you sure that you want to delete this story?"
-msgstr "Ziur iruzkin hau ezabatu nahi duzula?"
+msgstr ""
 
 #: [stories]deleted
-#, fuzzy
 msgid "Story deleted"
-msgstr "Argitalpena ezabatu da"
+msgstr ""
 
 #: [subscribe]info
 msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."

@@ -121,7 +121,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-24 11:08+0200\n"
+"POT-Creation-Date: 2025-01-26 10:35+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: ghose <correoxm@disroot.org>, 2023\n"
 "Language-Team: Galician (http://app.transifex.com/movim/movim/language/gl/)\n"
@@ -130,7 +130,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.13.3\n"
+"X-Generator: Translate Toolkit 3.14.4\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -2088,9 +2088,8 @@ msgid "Uploading the story"
 msgstr ""
 
 #: [story]publishing
-#, fuzzy
 msgid "Publishing the story"
-msgstr "Publicar só en"
+msgstr ""
 
 #: [story]publishing_text
 msgid "Almost there…"
@@ -2573,9 +2572,8 @@ msgid "Send a comment to %s"
 msgstr ""
 
 #: [stories]delete_title
-#, fuzzy
 msgid "Story deletion"
-msgstr "Desbotar Chave OMEMO"
+msgstr ""
 
 #: [stories]delete_text
 msgid "Are you sure that you want to delete this story?"

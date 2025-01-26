@@ -126,7 +126,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-24 11:08+0200\n"
+"POT-Creation-Date: 2025-01-26 10:35+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Rintan, 2020-2021\n"
 "Language-Team: Japanese (http://app.transifex.com/movim/movim/language/ja/)\n"
@@ -135,7 +135,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Translate Toolkit 3.13.3\n"
+"X-Generator: Translate Toolkit 3.14.4\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -2085,28 +2085,24 @@ msgid "Markdown syntax manual"
 msgstr "Markdown記法マニュアル"
 
 #: [story]to_roster
-#, fuzzy
 msgid "Publish to my contacts"
-msgstr "連絡先に送信する"
+msgstr ""
 
 #: [story]uploading
-#, fuzzy
 msgid "Uploading the story"
-msgstr "履歴を消去"
+msgstr ""
 
 #: [story]publishing
-#, fuzzy
 msgid "Publishing the story"
-msgstr "投稿のみ"
+msgstr ""
 
 #: [story]publishing_text
 msgid "Almost there…"
 msgstr ""
 
 #: [story]published
-#, fuzzy
 msgid "Story published"
-msgstr "投稿しました"
+msgstr ""
 
 #: [rooms]create
 msgid "Create a chatroom"
@@ -2525,14 +2521,12 @@ msgid "Share outside Movim"
 msgstr ""
 
 #: [sendto]sharing_post
-#, fuzzy
 msgid "Post shared using Movim"
-msgstr "Movimで共有する"
+msgstr ""
 
 #: [sendto]sharing_story
-#, fuzzy
 msgid "Story shared using Movim"
-msgstr "Movimで共有する"
+msgstr ""
 
 #: [sticker]title
 msgid "Stickers"
@@ -2575,28 +2569,24 @@ msgid "Some of your contacts might not have access to this story"
 msgstr ""
 
 #: [stories]share_text
-#, fuzzy
 msgid "They might have to subscribe to the publisher account"
-msgstr "この連絡先に購読されていません"
+msgstr ""
 
 #: [stories]comment
-#, fuzzy
 msgid "Send a comment to %s"
-msgstr "コメントを投稿する"
+msgstr ""
 
 #: [stories]delete_title
 msgid "Story deletion"
 msgstr ""
 
 #: [stories]delete_text
-#, fuzzy
 msgid "Are you sure that you want to delete this story?"
-msgstr "このコメントを削除しますか？"
+msgstr ""
 
 #: [stories]deleted
-#, fuzzy
 msgid "Story deleted"
-msgstr "投稿を削除しました"
+msgstr ""
 
 #: [subscribe]info
 msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."

@@ -121,7 +121,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-24 11:08+0200\n"
+"POT-Creation-Date: 2025-01-26 10:35+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Jóhannes Gunnar Þorsteinsson <johannesg@johannesg.com>, 2015\n"
 "Language-Team: Icelandic (http://app.transifex.com/movim/movim/language/is/)\n"
@@ -130,7 +130,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n % 10 != 1 || n % 100 == 11);\n"
-"X-Generator: Translate Toolkit 3.13.3\n"
+"X-Generator: Translate Toolkit 3.14.4\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -2096,9 +2096,8 @@ msgid "Almost there…"
 msgstr ""
 
 #: [story]published
-#, fuzzy
 msgid "Story published"
-msgstr "Færsla hefur verið gefin út"
+msgstr ""
 
 #: [rooms]create
 msgid "Create a chatroom"
@@ -2581,9 +2580,8 @@ msgid "Are you sure that you want to delete this story?"
 msgstr ""
 
 #: [stories]deleted
-#, fuzzy
 msgid "Story deleted"
-msgstr "Færsla hefur verið eydd"
+msgstr ""
 
 #: [subscribe]info
 msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."

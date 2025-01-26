@@ -1991,7 +1991,7 @@
         },
         {
             "name": "illuminate/bus",
-            "version": "v10.48.26",
+            "version": "v10.48.27",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/bus.git",

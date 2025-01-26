@@ -122,7 +122,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-24 11:08+0200\n"
+"POT-Creation-Date: 2025-01-26 10:35+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: T3rr0rz0n3 <zagur@voidnull.es>, 2019\n"
 "Language-Team: Catalan (http://app.transifex.com/movim/movim/language/ca/)\n"
@@ -131,7 +131,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.13.3\n"
+"X-Generator: Translate Toolkit 3.14.4\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -2517,14 +2517,12 @@ msgid "Share outside Movim"
 msgstr ""
 
 #: [sendto]sharing_post
-#, fuzzy
 msgid "Post shared using Movim"
-msgstr "Comparteix a Movim"
+msgstr ""
 
 #: [sendto]sharing_story
-#, fuzzy
 msgid "Story shared using Movim"
-msgstr "Comparteix a Movim"
+msgstr ""
 
 #: [sticker]title
 msgid "Stickers"
@@ -2567,9 +2565,8 @@ msgid "Some of your contacts might not have access to this story"
 msgstr ""
 
 #: [stories]share_text
-#, fuzzy
 msgid "They might have to subscribe to the publisher account"
-msgstr "No estàs subscrit a aquest contacte"
+msgstr ""
 
 #: [stories]comment
 msgid "Send a comment to %s"
