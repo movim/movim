@@ -1,7 +1,10 @@
 Movim Changelog
 ================
 
-v0.29.1 (master)
+v0.30 (master)
+---------------------------
+
+v0.29.1
 ---------------------------
 * Replace the timer with a Date in the Dictaphone
 * Only launch the StoriesViewer localy to prevent some timer sync issues
