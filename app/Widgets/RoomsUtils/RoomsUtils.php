@@ -865,8 +865,10 @@ class RoomsUtils extends Base
     {
         $view = $this->tpl();
 
+        $groups = [];
+
         $rooms = collect($packet->content);
-        $rooms = $rooms->map(function ($name, $key) {
+        $rooms = $rooms->map(function ($name, $key) use (&$groups) {
             $item = new \stdClass;
             $explodedName = explode('/', $name);
 
@@ -874,12 +876,22 @@ class RoomsUtils extends Base
                 $item->parent = $explodedName[0];
                 array_shift($explodedName);
                 $item->name = implode(' / ', $explodedName);
+
+                $groups[$item->parent]++;
             } else {
+                $item->parent = null;
                 $item->name = $name;
             }
 
             return $item;
-        });
+        })->map(function ($item, $key) use ($groups) {
+            if ($item->parent != null && array_key_exists($item->parent, $groups) && $groups[$item->parent] == 1) {
+                $item->name = $item->parent . '/' .$item->name;
+                $item->parent = null;
+            }
+
+            return $item;
+        })->sortBy('parent');
 
         $view->assign('rooms', $rooms);
         $this->rpc('MovimTpl.fill', '#gateway_rooms', $view->draw('_rooms_gateway_rooms'));

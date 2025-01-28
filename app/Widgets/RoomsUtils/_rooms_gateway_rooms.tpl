@@ -6,7 +6,7 @@
                 {if="$group != null"}
                     </optgroup>
                 {/if}
-                <optgroup label="{$value->parent}">
+                <optgroup {if="$value->parent != null"} label="{$value->parent}"{/if}>
             {/if}
             <option value="{$key}">
                 {$value->name}
