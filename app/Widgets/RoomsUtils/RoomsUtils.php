@@ -877,6 +877,10 @@ class RoomsUtils extends Base
                 array_shift($explodedName);
                 $item->name = implode(' / ', $explodedName);
 
+                if (!array_key_exists($item->parent, $groups)) {
+                    $groups[$item->parent] = 0;
+                }
+
                 $groups[$item->parent]++;
             } else {
                 $item->parent = null;
