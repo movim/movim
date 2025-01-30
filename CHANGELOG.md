@@ -3,6 +3,7 @@ Movim Changelog
 
 v0.30 (master)
 ---------------------------
+* Set minimum PHP version to PHP 8.2, update the dependencies
 
 v0.29.1
 ---------------------------
