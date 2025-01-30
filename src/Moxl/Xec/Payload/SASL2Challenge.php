@@ -16,6 +16,6 @@ class SASL2Challenge extends Payload
         $auth = $dom->createElementNS('urn:xmpp:sasl:2', 'response', $response);
         $dom->appendChild($auth);
 
-        \Moxl\API::request($dom->saveXML($dom->documentElement));
+        \Moxl\API::sendDom($dom);
     }
 }
