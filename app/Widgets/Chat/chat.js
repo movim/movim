@@ -1685,8 +1685,14 @@ MovimEvents.registerWindow('resize', 'chat', () => Chat.scrollRestore());
 MovimEvents.registerWindow('loaded', 'chat', () => {
     if (MovimUtils.isMobile()) Chat.touchEvents();
 
+    Upload.initiate((file) => {
+        if (MovimUtils.urlParts().page == 'chat' && PublishStories.main == undefined) {
+            Upload.prependName = 'chat';
+        }
+    });
+
     Upload.attach((file) => {
-        if (Chat.getTextarea() && PublishStories.main == undefined) {
+        if (MovimUtils.urlParts().page == 'chat' && PublishStories.main == undefined) {
             Chat_ajaxHttpDaemonSendMessage(
                 Chat.getTextarea().dataset.jid,
                 false,

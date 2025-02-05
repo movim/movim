@@ -137,7 +137,7 @@
                     <button
                         class="button narrow flat icon gray"
                         title="{$c->__('publish.attach')}"
-                        onclick="Upload_ajaxRequest()">
+                        onclick="Upload_ajaxGetPanel()">
                         <i class="material-symbols">image</i>
                 </button>
                 {/if}

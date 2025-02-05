@@ -61,7 +61,7 @@ class Upload extends Base
         Toast::send($this->__('upload.error_not_allowed'));
     }
 
-    public function ajaxRequest()
+    public function ajaxGetPanel()
     {
         $view = $this->tpl();
         $view->assign('service', $this->user->session->getUploadService());

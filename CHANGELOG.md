@@ -4,6 +4,8 @@ Movim Changelog
 v0.30 (master)
 ---------------------------
 * Set minimum PHP version to PHP 8.2, update the dependencies
+* Rename and append a hash when uploading files that have a very long file name
+* Prepend files name with post_, chat_ and story_ before upload to simplify server file cleaning expliration
 
 v0.29.1
 ---------------------------

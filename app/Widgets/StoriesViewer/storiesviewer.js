@@ -8,7 +8,7 @@ var StoriesViewer = {
 
     before: undefined,
 
-    launch: function(before) {
+    launch: function (before) {
         MovimTpl.pushAnchorState('stories', function () {
             StoriesViewer.close();
         });
@@ -17,10 +17,10 @@ var StoriesViewer = {
         StoriesViewer.before = before;
 
         let image = StoriesViewer.story.querySelector('img');
-        image.addEventListener('mousedown', e => { e.preventDefault(); StoriesViewer.pause()});
-        image.addEventListener('touchstart', e => { e.preventDefault(); StoriesViewer.pause()});
-        image.addEventListener('mouseup', e => { e.preventDefault(), StoriesViewer.start()});
-        image.addEventListener('touchend', e => { e.preventDefault(), StoriesViewer.start()});
+        image.addEventListener('mousedown', e => { e.preventDefault(); StoriesViewer.pause() });
+        image.addEventListener('touchstart', e => { e.preventDefault(); StoriesViewer.pause() });
+        image.addEventListener('mouseup', e => { e.preventDefault(), StoriesViewer.start() });
+        image.addEventListener('touchend', e => { e.preventDefault(), StoriesViewer.start() });
 
         let next = StoriesViewer.story.querySelector('div.next');
         next.addEventListener('click', e => StoriesViewer_ajaxHttpGetNext(StoriesViewer.before));
@@ -29,12 +29,12 @@ var StoriesViewer = {
         StoriesViewer.start();
     },
 
-    reset: function() {
+    reset: function () {
         clearTimeout(StoriesViewer.timer);
         StoriesViewer.consumed = 0;
     },
 
-    close: function() {
+    close: function () {
         StoriesViewer.reset();
         StoriesViewer_ajaxClose();
         Stories_ajaxHttpGet();
@@ -51,7 +51,7 @@ var StoriesViewer = {
         }, StoriesViewer.timeout - StoriesViewer.consumed);
     },
 
-    pause: function() {
+    pause: function () {
         if (!StoriesViewer.story) return;
 
         StoriesViewer.story.classList.add('paused');
@@ -67,7 +67,8 @@ var StoriesViewer = {
 }
 
 MovimEvents.registerBody('click', 'storiesviewer', (e) => {
-    if (document.querySelector('#storiesviewer').innerHTML == '') return;
+    if (document.querySelector('#storiesviewer') == null
+        || document.querySelector('#storiesviewer').innerHTML == '') return;
 
     if (!document.querySelector('#storiesviewer article').contains(e.target)) {
         history.back()
@@ -75,7 +76,9 @@ MovimEvents.registerBody('click', 'storiesviewer', (e) => {
 });
 
 MovimEvents.registerBody('keydown', 'storiesviewer', (e) => {
-    if (document.querySelector('#storiesviewer').innerHTML != '' && e.key == 'Escape') {
+    if (document.querySelector('#storiesviewer')
+        && document.querySelector('#storiesviewer').innerHTML != ''
+        && e.key == 'Escape') {
         history.back()
     }
 });

@@ -79,7 +79,7 @@
                             <p class="normal line">{$c->__('draw.title')}</p>
                         </div>
                     </li>
-                    <li onclick="Chat.toggleAttach(); Upload_ajaxRequest()">
+                    <li onclick="Chat.toggleAttach(); Upload_ajaxGetPanel()">
                         <span class="control icon gray">
                             <i class="material-symbols">attach_file</i>
                         </span>

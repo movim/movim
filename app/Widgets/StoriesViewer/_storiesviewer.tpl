@@ -24,10 +24,10 @@
                 <i class="material-symbols">share</i>
             </span>
             <span class="control icon pause toggleable" onclick="StoriesViewer.start()">
-                <i class="material-symbols fill">pause</i>
+                <i class="material-symbols fill">play_arrow</i>
             </span>
             <span class="control icon play toggleable" onclick="StoriesViewer.pause()">
-                <i class="material-symbols fill">play_arrow</i>
+                <i class="material-symbols fill">pause</i>
             </span>
             <div>
                 <p class="line normal">

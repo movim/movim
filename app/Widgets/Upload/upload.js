@@ -1,9 +1,11 @@
 var Upload = {
     xhr: null,
+    initiated: [],
     attached: [],
     failed: [],
     progressed: [],
     get: null,
+    prependName: null,
     name: null,
     file: null,
     canvas: null,
@@ -11,15 +13,30 @@ var Upload = {
     uploadButton: null,
 
     init: function (appendDate) {
+        Upload.launchInitiated();
+
         if (Upload.file) {
+            let splited = Upload.name.split('.');
+
+            let name = splited[0];
+
+            if (Upload.prependName) {
+                name = Upload.prependName + '_' + name;
+            }
+
+            if (name.length > 128) {
+                name = name.substring(0, 32) + '_' + MovimUtils.hash(name);
+            }
+
             if (appendDate) {
                 let now = new Date();
                 now = now.toISOString().replace(/[-:]/g, '_').replaceAll('_', '');
                 now = now.substring(0, now.length - 5);
 
-                let splited = Upload.name.split('.');
-                Upload.name = splited[0] + '_' + now + '.' + splited[1];
+                name += '_' + now;
             }
+
+            Upload.name = name + '.' + splited[1];
 
             Upload_ajaxPrepare({
                 name: Upload.name,
@@ -45,6 +62,12 @@ var Upload = {
         }
     },
 
+    initiate: function (func) {
+        if (typeof (func) === "function") {
+            this.initiated.push(func);
+        }
+    },
+
     fail: function (func) {
         if (typeof (func) === "function") {
             this.failed.push(func);
@@ -54,6 +77,12 @@ var Upload = {
     progress: function (func) {
         if (typeof (func) === "function") {
             this.progressed.push(func);
+        }
+    },
+
+    launchInitiated: function () {
+        for (var i = 0; i < Upload.initiated.length; i++) {
+            Upload.initiated[i]();
         }
     },
 
@@ -292,6 +321,8 @@ var Upload = {
             document.getElementById('image').value = null;
         }
 
+        Upload.name = null;
+        Upload.prependName = null;
         Upload.file = null;
     },
 
@@ -355,7 +386,7 @@ MovimEvents.registerWindow('paste', 'upload', (e) => {
 
     const item = items[0];
     Upload.file = item.getAsFile();
-    Upload_ajaxRequest();
+    Upload_ajaxGetPanel();
 });
 
 /**
@@ -378,8 +409,11 @@ MovimEvents.registerBody('drop', 'upload', (ev) => {
     if (ev.dataTransfer.items.length > 0
         && ev.dataTransfer.items[0].kind === 'file') {
         var file = ev.dataTransfer.items[0].getAsFile();
+
         Upload.file = file;
-        Upload_ajaxRequest();
+        Upload.name = file.name;
+
+        Upload_ajaxGetPanel();
     }
 
     document.body.classList.remove('dropped');
