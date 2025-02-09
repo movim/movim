@@ -804,7 +804,7 @@ class Post extends Model
             return truncate(html_entity_decode($this->title), 140);
         }
 
-        return truncate(stripTags(html_entity_decode($this->contentcleaned)), 140);
+        return truncate(stripTags(html_entity_decode($this->contentcleaned ?? '')), 140);
     }
 
     public function getContent(bool $addHashTagLinks = false): string
