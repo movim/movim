@@ -76,7 +76,7 @@ class Stickers extends \Movim\Widget\Base
         // Creating a message
         $m = new \App\Message;
         $m->user_id         = $this->user->id;
-        $m->jidto           = echapJid($to);
+        $m->jidto           = $to;
         $m->jidfrom         = $this->user->id;
         $m->sticker_cid_hash = $sticker->cache_hash;
         $m->sticker_cid_algorythm = $sticker->cache_hash_algorythm;

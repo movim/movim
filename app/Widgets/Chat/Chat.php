@@ -571,7 +571,7 @@ class Chat extends \Movim\Widget\Base
         $m->messageid   = $m->id;
         $m->replaceid   = $replace ? $replace->originid : null;
         $m->user_id     = $this->user->id;
-        $m->jidto       = echapJid($to);
+        $m->jidto       = $to;
         $m->jidfrom     = $this->user->id;
         $m->published   = gmdate('Y-m-d H:i:s');
 
@@ -605,7 +605,6 @@ class Chat extends \Movim\Widget\Base
             $m->jidfrom     = $to;
         }
 
-        // We decode URL codes to send the correct message to the XMPP server
         $p = new Publish;
         $p->setTo($to);
         $p->setReplace($m->replaceid);

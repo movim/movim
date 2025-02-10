@@ -38,7 +38,7 @@ class ContactSubscriptions extends Base
         }
 
         $ps = new GetPubsubSubscriptions;
-        $ps->setTo(echapJid($jid))->request();
+        $ps->setTo($jid)->request();
     }
 
     public function display()

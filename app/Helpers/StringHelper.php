@@ -138,14 +138,6 @@ function getHashtags($string): array
 }
 
 /**
- * @desc Echap the JID
- */
-function echapJid($jid): string
-{
-    return str_replace(' ', '\40', $jid);
-}
-
-/**
  * @desc Echap the anti-slashs for Javascript
  */
 function echapJS($string): string

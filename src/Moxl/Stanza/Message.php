@@ -33,7 +33,7 @@ class Message
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $root = $dom->createElementNS('jabber:client', 'message');
         $dom->appendChild($root);
-        $root->setAttribute('to', str_replace(' ', '\40', $to));
+        $root->setAttribute('to', $to);
 
         if ($type != null) {
             $root->setAttribute('type', $type);

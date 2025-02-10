@@ -78,16 +78,16 @@ class ContactData extends Base
 
         if (!$contact || $contact->isOld()) {
             $a = new \Moxl\Xec\Action\Avatar\Get;
-            $a->setTo(echapJid($jid))->request();
+            $a->setTo($jid)->request();
 
             $a = new \Moxl\Xec\Action\Banner\Get;
-            $a->setTo(echapJid($jid))->request();
+            $a->setTo($jid)->request();
 
             $v = new \Moxl\Xec\Action\Vcard\Get;
-            $v->setTo(echapJid($jid))->request();
+            $v->setTo($jid)->request();
 
             $r = new \Moxl\Xec\Action\Vcard4\Get;
-            $r->setTo(echapJid($jid))->request();
+            $r->setTo($jid)->request();
         } else if ($contact) {
             $this->rpc('Notif_ajaxGet');
         }

@@ -18,12 +18,6 @@ class Items extends Action
         Disco::items($this->_to);
     }
 
-    public function setTo($to)
-    {
-        $this->_to = echapJid($to);
-        return $this;
-    }
-
     public function enableManual()
     {
         $this->_manual = true;

@@ -7,6 +7,7 @@ v0.30 (master)
 * Rename and append a hash when uploading files that have a very long file name
 * Prepend files name with post_, chat_ and story_ before upload to simplify server file cleaning expliration
 * Fix ordering when the Pubsub service doesn't return them "last-published-first" like with Prosody
+* Remove the echapJid helper
 
 v0.29.1
 ---------------------------

@@ -7,8 +7,6 @@ use App\Widgets\Dialog\Dialog;
 use Movim\Widget\Base;
 
 use Moxl\Xec\Action\Roster\UpdateItem;
-use Moxl\Xec\Action\Roster\RemoveItem;
-use Moxl\Xec\Action\Presence\Unsubscribe;
 
 class ContactHeader extends Base
 {
@@ -48,7 +46,7 @@ class ContactHeader extends Base
     public function ajaxEditSubmit($form)
     {
         $rd = new UpdateItem;
-        $rd->setTo(echapJid($form->jid->value))
+        $rd->setTo($form->jid->value)
            ->setName($form->alias->value)
            ->setGroup($form->group->value)
            ->request();

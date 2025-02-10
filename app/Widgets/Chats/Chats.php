@@ -192,7 +192,7 @@ class Chats extends Base
 
             $g->setLimit(150);
             $g->setBefore('');
-            $g->setJid(echapJid($jid));
+            $g->setJid($jid);
             $g->request();
         }
     }

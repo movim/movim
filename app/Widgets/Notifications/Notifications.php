@@ -153,8 +153,6 @@ class Notifications extends Base
 
     public function ajaxAccept(string $jid)
     {
-        $jid = echapJid($jid);
-
         $roster = $this->user->session->contacts()->where('jid', $jid)->first();
 
         $this->user->session->presences()
@@ -183,8 +181,6 @@ class Notifications extends Base
 
     public function ajaxRefuse(string $jid)
     {
-        $jid = echapJid($jid);
-
         if ($this->user->session->contacts()->where('jid', $jid)->exists()) {
             $r = new RemoveItem;
             $r->setTo($jid)
