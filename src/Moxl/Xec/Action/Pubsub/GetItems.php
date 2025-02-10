@@ -2,6 +2,7 @@
 
 namespace Moxl\Xec\Action\Pubsub;
 
+use Carbon\Carbon;
 use Moxl\Stanza\Pubsub;
 use Moxl\Xec\Action;
 
@@ -56,12 +57,17 @@ class GetItems extends Action
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $ids = [];
+        $updateds = collect();
 
         foreach ($stanza->pubsub->items->item as $item) {
-            if (isset($item->entry)
-            && (string)$item->entry->attributes()->xmlns == 'http://www.w3.org/2005/Atom') {
-                if ($this->_since == null
-                || strtotime($this->_since) < strtotime($item->entry->published)) {
+            if (
+                isset($item->entry)
+                && (string)$item->entry->attributes()->xmlns == 'http://www.w3.org/2005/Atom'
+            ) {
+                if (
+                    $this->_since == null
+                    || strtotime($this->_since) < strtotime($item->entry->published)
+                ) {
                     $p = \App\Post::firstOrNew([
                         'server' => $this->_to,
                         'node' => $this->_node,
@@ -71,13 +77,16 @@ class GetItems extends Action
                     $p->save();
 
                     array_push($ids, $p->nodeid);
+                    $updateds->push(new Carbon($p->updated));
                 }
-            } elseif (isset($item->metadata)
-            && (string)$item->metadata->attributes()->xmlns == 'urn:xmpp:avatar:metadata'
-            && isset($item->metadata->info->attributes()->url)) {
+            } elseif (
+                isset($item->metadata)
+                && (string)$item->metadata->attributes()->xmlns == 'urn:xmpp:avatar:metadata'
+                && isset($item->metadata->info->attributes()->url)
+            ) {
                 $i = \App\Info::where('server', $this->_to)
-                ->where('node', $this->_node)
-                ->first();
+                    ->where('node', $this->_node)
+                    ->first();
 
                 if ($i && $i->avatarhash !== (string)$item->metadata->info->attributes()->id) {
                     $p = new Image;
@@ -93,21 +102,26 @@ class GetItems extends Action
             }
         }
 
-        if ($this->_after) {
+        if (
+            $this->_after
+            || ($updateds->isNotEmpty() && $updateds->first()->isBefore($updateds->last()))
+        ) {
             $ids = array_reverse($ids);
         }
 
         $first = $last = $count = null;
 
-        if ($stanza->pubsub->set
-        && $stanza->pubsub->set->attributes()->xmlns == 'http://jabber.org/protocol/rsm') {
+        if (
+            $stanza->pubsub->set
+            && $stanza->pubsub->set->attributes()->xmlns == 'http://jabber.org/protocol/rsm'
+        ) {
             $first = (string)$stanza->pubsub->set->first;
             $last = (string)$stanza->pubsub->set->last;
             $count = (string)$stanza->pubsub->set->count;
 
             $info = \App\Info::where('server', $this->_to)
-                             ->where('node', $this->_node)
-                             ->first();
+                ->where('node', $this->_node)
+                ->first();
 
             if ($info) {
                 $info->items = $count;
