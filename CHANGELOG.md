@@ -8,6 +8,7 @@ v0.30 (master)
 * Prepend files name with post_, chat_ and story_ before upload to simplify server file cleaning expliration
 * Fix ordering when the Pubsub service doesn't return them "last-published-first" like with Prosody
 * Remove the echapJid helper
+* Reconciliate the nullable state in some tables
 
 v0.29.1
 ---------------------------
