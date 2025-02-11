@@ -40,8 +40,8 @@ class ReconciliateNullableInTables extends Migration
         });
 
         $this->schema->table('contacts', function (Blueprint $table) {
-            $table->string('nickname', 256)->change();
-            $table->string('fn', 256)->change();
+            $table->string('nickname', 256)->nullable(false)->change();
+            $table->string('fn', 256)->nullable(false)->change();
         });
     }
 }
