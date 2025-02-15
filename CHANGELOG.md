@@ -9,6 +9,7 @@ v0.30 (master)
 * Fix ordering when the Pubsub service doesn't return them "last-published-first" like with Prosody
 * Remove the echapJid helper
 * Reconciliate the nullable state in some tables
+* Update fabiang/sasl to fix Update of the SASL SCRAM Downgrade protection XEP #17
 
 v0.29.1
 ---------------------------
