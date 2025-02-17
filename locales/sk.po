@@ -124,7 +124,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-26 10:35+0200\n"
+"POT-Creation-Date: 2025-02-17 08:11+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Slavko <linux@slavino.sk>, 2020-2021\n"
 "Language-Team: Slovak (Slovakia) (http://app.transifex.com/movim/movim/language/sk_SK/)\n"
@@ -133,7 +133,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);\n"
-"X-Generator: Translate Toolkit 3.14.4\n"
+"X-Generator: Translate Toolkit 3.14.7\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -1206,11 +1206,6 @@ msgstr "Nastavenia archivovania uložené"
 
 #: [config]blog_text
 msgid "Personal blog confidentiality"
-msgstr ""
-
-#: [config]account_privacy
-msgctxt "[config]account_privacy"
-msgid ""
 msgstr ""
 
 #: [config]blog_open_title

@@ -130,7 +130,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-26 10:35+0200\n"
+"POT-Creation-Date: 2025-02-17 08:11+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>, 2015-2025\n"
 "Language-Team: French (France) (http://app.transifex.com/movim/movim/language/fr_FR/)\n"
@@ -139,7 +139,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
-"X-Generator: Translate Toolkit 3.14.4\n"
+"X-Generator: Translate Toolkit 3.14.7\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -1213,11 +1213,6 @@ msgstr "Paramètres d'archivage sauvegardés"
 #: [config]blog_text
 msgid "Personal blog confidentiality"
 msgstr "Niveau de confidentialité du blog personnel"
-
-#: [config]account_privacy
-msgctxt "[config]account_privacy"
-msgid ""
-msgstr ""
 
 #: [config]blog_open_title
 msgid "Public blog"

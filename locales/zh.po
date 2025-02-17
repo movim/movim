@@ -134,7 +134,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-26 10:35+0200\n"
+"POT-Creation-Date: 2025-02-17 08:11+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Phonebook3599, 2024-2025\n"
 "Language-Team: Chinese (China) (http://app.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -143,7 +143,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Translate Toolkit 3.14.4\n"
+"X-Generator: Translate Toolkit 3.14.7\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -1217,11 +1217,6 @@ msgstr "归档首选项已保存"
 #: [config]blog_text
 msgid "Personal blog confidentiality"
 msgstr "个人博客保密"
-
-#: [config]account_privacy
-msgctxt "[config]account_privacy"
-msgid ""
-msgstr ""
 
 #: [config]blog_open_title
 msgid "Public blog"

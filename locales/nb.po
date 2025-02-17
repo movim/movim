@@ -125,7 +125,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-26 10:35+0200\n"
+"POT-Creation-Date: 2025-02-17 08:11+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Dominik George <nik@naturalnet.de>, 2017-2018\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://app.transifex.com/movim/movim/language/nb_NO/)\n"
@@ -134,7 +134,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.14.4\n"
+"X-Generator: Translate Toolkit 3.14.7\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -1207,11 +1207,6 @@ msgstr "Arkivinstillinger lagret"
 
 #: [config]blog_text
 msgid "Personal blog confidentiality"
-msgstr ""
-
-#: [config]account_privacy
-msgctxt "[config]account_privacy"
-msgid ""
 msgstr ""
 
 #: [config]blog_open_title
