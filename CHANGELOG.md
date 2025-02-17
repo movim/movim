@@ -3,12 +3,15 @@ Movim Changelog
 
 v0.30 (master)
 ---------------------------
+
+v0.29.2
+---------------------------
 * Set minimum PHP version to PHP 8.2, update the dependencies
 * Rename and append a hash when uploading files that have a very long file name
 * Prepend files name with post_, chat_ and story_ before upload to simplify server file cleaning expliration
 * Fix ordering when the Pubsub service doesn't return them "last-published-first" like with Prosody
 * Remove the echapJid helper
-* Reconciliate the nullable state in some tables
+* Reconcile the nullable state in some tables
 * Update fabiang/sasl to fix Update of the SASL SCRAM Downgrade protection XEP #17
 
 v0.29.1
