@@ -132,16 +132,20 @@ class ContactActions extends Base
         $this->rpc('ContactActions.resolveSessionsStates', $jid);
     }
 
-    public function ajaxChat($jid)
+    public function ajaxChat(string $jid, bool $muc = false)
     {
         if (!validateJid($jid)) {
             return;
         }
 
-        $c = new Chats();
-        $c->ajaxOpen($jid);
+        if ($muc) {
+            $this->rpc('MovimUtils.reload', $this->route('chat', [$jid, 'room']));
+        } else {
+            $c = new Chats();
+            $c->ajaxOpen($jid);
 
-        $this->rpc('MovimUtils.reload', $this->route('chat', $jid));
+            $this->rpc('MovimUtils.reload', $this->route('chat', $jid));
+        }
     }
 
     public function ajaxHttpGetPictures($jid, $page = 0)

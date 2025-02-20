@@ -83,9 +83,9 @@ abstract class Payload
      *
      * @return void
      */
-    final public function method(string $method)
+    final public function method(?string $method = null)
     {
-        $this->method = strtolower($method);
+        $this->method = $method ? strtolower($method) : null;
     }
 
     /**

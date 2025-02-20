@@ -77,6 +77,11 @@ class Chat extends \Movim\Widget\Base
 
         $this->registerEvent('currentcall_started', 'onCallEvent', 'chat');
         $this->registerEvent('currentcall_stopped', 'onCallEvent', 'chat');
+
+        $this->registerEvent('callinvitepropose', 'onCallInvite');
+        $this->registerEvent('callinviteaccept', 'onCallInvite');
+        $this->registerEvent('callinviteleft', 'onCallInvite');
+        $this->registerEvent('presence_muji_event', 'onCallInvite');
     }
 
     public function onPresence($packet)
@@ -87,6 +92,15 @@ class Chat extends \Movim\Widget\Base
             if (isset($arr[1]) && $jid == $arr[1] && !$packet->content->muc) {
                 $this->ajaxGetHeader($jid);
             }
+        }
+    }
+
+    public function onCallInvite($packet)
+    {
+        $muji = $packet->content;
+
+        if ($muji->jidfrom && $muji->conference) {
+            $this->ajaxGetHeader($muji->jidfrom, $muji->isfromconference);
         }
     }
 
@@ -463,6 +477,10 @@ class Chat extends \Movim\Widget\Base
                 $this->rpc('Chat.focus');
 
                 (new Dictaphone)->ajaxHttpGet();
+            }
+
+            if (CurrentCall::getInstance()->isStarted()) {
+                $this->rpc('MovimVisio.moveToChat', CurrentCall::getInstance()->getBareJid());
             }
 
             $this->rpc('Chat.setObservers');
