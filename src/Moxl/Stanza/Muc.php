@@ -70,7 +70,7 @@ class Muc
 
         $message->appendChild($dom->createElement('subject', $subject));
 
-        \Moxl\API::request($dom->saveXML($dom->documentElement));
+        \Moxl\API::sendDom($dom);
     }
 
     public static function destroy($to)
@@ -138,6 +138,27 @@ class Muc
         }
 
         \Moxl\API::request(\Moxl\API::iqWrapper($query, $to, 'set'));
+    }
+
+    public static function createMujiChat($to)
+    {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $query = $dom->createElementNS('http://jabber.org/protocol/muc#owner', 'query');
+        $dom->appendChild($query);
+
+        $x = $dom->createElementNS('jabber:x:data', 'x');
+        $x->setAttribute('type', 'submit');
+        $query->appendChild($x);
+
+        \Moxl\Utils::injectConfigInX($x, [
+            'FORM_TYPE' => 'http://jabber.org/protocol/muc#roomconfig',
+            'muc#roomconfig_persistentroom' => 'false',
+            'muc#roomconfig_membersonly' => 'false',
+            'muc#roomconfig_whois' => 'anyone',
+        ]);
+
+        \Moxl\API::request(\Moxl\API::iqWrapper($query, $to, 'set'));
+
     }
 
     public static function createGroupChat($to, $name)

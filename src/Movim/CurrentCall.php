@@ -8,9 +8,23 @@ namespace Movim;
 
 use Carbon\Carbon;
 use DOMDocument;
-use DOMXPath;
 use Movim\Widget\Wrapper;
 use SimpleXMLElement;
+
+class CurrentMujiCall
+{
+    public ?string $jid = null;
+    public ?string $id = null;
+    public ?string $mujiRoom = null;
+    public ?Carbon $startTime = null;
+
+    public function __construct(string $jid, string $id)
+    {
+        $this->jid = $jid;
+        $this->id = $id;
+        $this->startTime = Carbon::now();
+    }
+}
 
 /**
  * This class handle the current Jitsi call
@@ -18,8 +32,9 @@ use SimpleXMLElement;
 class CurrentCall
 {
     protected static $instance;
-    public ?string $to = null;
+    public ?string $jid = null;
     public ?string $id = null;
+    public ?string $mujiRoom = null;
     public ?Carbon $startTime = null;
 
     private array $contents = [];
@@ -33,25 +48,39 @@ class CurrentCall
         return self::$instance;
     }
 
-    public function start(string $to, string $id)
+    public function start(string $jid, string $id, ?string $mujiRoom = null): bool
     {
-        $this->to = $to;
+        if ($this->isStarted()) return false;
+
+        $this->jid = $jid;
         $this->id = $id;
+        $this->mujiRoom = $mujiRoom;
         $this->startTime = Carbon::now();
 
         $wrapper = Wrapper::getInstance();
         $wrapper->iterate('currentcall_started', [$this->getBareJid(), $id]);
+
+        return true;
     }
 
-    public function stop()
+    public function stop(string $jid, string $id): bool
     {
+        if ($this->jid != $jid || $this->id != $id) return false;
+
         $jid = $this->getBareJid();
         $id = $this->id;
 
-        $this->to = $this->id = $this->startTime = null;
+        $this->jid = $this->id = $this->mujiRoom = $this->startTime = null;
 
         $wrapper = Wrapper::getInstance();
         $wrapper->iterate('currentcall_stopped', [$jid, $id]);
+
+        return true;
+    }
+
+    public function hasId(string $id): bool
+    {
+        return $this->id == $id;
     }
 
     public function isJidInCall(string $jid): bool
@@ -61,20 +90,20 @@ class CurrentCall
 
     public function isStarted(): bool
     {
-        return $this->to != null && $this->id != null;
+        return $this->jid != null && $this->id != null;
     }
 
     public function getBareJid(): ?string
     {
         if (!$this->isStarted()) return null;
 
-        return explodeJid($this->to)['jid'];
+        return \baseJid($this->jid);
     }
 
     /**
      * Content management
      */
-    public function setContent(SimpleXMLElement $jingleStanza): SimpleXMLElement
+    /*public function setContent(SimpleXMLElement $jingleStanza): SimpleXMLElement
     {
         if ($jingleStanza->attributes()->sid == $this->id) {
             $contentIds = [];
@@ -132,5 +161,5 @@ class CurrentCall
         }
 
         return $jingleStanza;
-    }
+    }*/
 }

@@ -2,6 +2,7 @@
 
 namespace Movim\Librairies;
 
+use DOMElement;
 use Movim\CurrentCall;
 use Movim\Session;
 
@@ -19,7 +20,8 @@ class SDPtoJingle
     private $ufrag = null;
     private $mid = null;
     private $msid = null;
-    private $sid;
+    private $sid = null;
+    private $mujiRoom = null;
 
     // Move the global fingerprint into each medias
     private $globalFingerprint = [];
@@ -52,10 +54,19 @@ class SDPtoJingle
         'media'           => "/^m=(audio|video|application|data)/i"
     ];
 
-    public function __construct($sdp, $initiator, $responder = false, $action = false, $mid = null, $ufrag = null)
-    {
+    public function __construct(
+        string $sdp,
+        string $initiator,
+        string $sid,
+        bool $muji = false,
+        $responder = false,
+        $action = false,
+        $mid = null,
+        $ufrag = null
+    ) {
         $this->sdp = $sdp;
         $this->arr = explode("\n", $this->sdp);
+        $this->sid = $sid;
 
         if ($mid !== null) {
             $this->mid = $mid;
@@ -65,9 +76,15 @@ class SDPtoJingle
             $this->ufrag = $ufrag;
         }
 
-        $this->jingle = new \SimpleXMLElement('<jingle></jingle>');
-        $this->jingle->addAttribute('xmlns', 'urn:xmpp:jingle:1');
-        $this->jingle->addAttribute('initiator', $initiator);
+        if ($muji) {
+            $this->jingle = new \SimpleXMLElement('<muji></muji>');
+            $this->jingle->addAttribute('xmlns', 'urn:xmpp:jingle:muji:0');
+        } else {
+            $this->jingle = new \SimpleXMLElement('<jingle></jingle>');
+            $this->jingle->addAttribute('xmlns', 'urn:xmpp:jingle:1');
+            $this->jingle->addAttribute('initiator', $initiator);
+        }
+
 
         if ($action) {
             $this->jingle->addAttribute('action', $action);
@@ -79,20 +96,9 @@ class SDPtoJingle
         $this->action = $action;
     }
 
-    public function setSessionId(string $sid)
+    public function setMujiRoom(string $mujiRoom)
     {
-        $this->sid = $sid;
-    }
-
-    private function getSessionId()
-    {
-        if ($sid = CurrentCall::getInstance()->id) {
-            return $sid;
-        } else {
-            $o = $this->arr[1];
-            $sid = explode(" ", $o);
-            return substr(base_convert($sid[1], 30, 10), 0, 6);
-        }
+        $this->mujiRoom = $mujiRoom;
     }
 
     private function initContent($force = false)
@@ -106,6 +112,11 @@ class SDPtoJingle
             $this->transport->addAttribute('xmlns', "urn:xmpp:jingle:transports:ice-udp:1");
             $this->content->addAttribute('creator', 'initiator'); // FIXME
             $this->msid = null;
+
+            // A hack to ensure that Dino is returning complete Muji content proposal
+            if ($this->jingle->getName() == 'muji') {
+                $this->content->addAttribute('xmlns', 'urn:xmpp:jingle:1');
+            }
         }
     }
 
@@ -150,14 +161,20 @@ class SDPtoJingle
         }
     }
 
-    public function generate()
+    public function generate(): DOMElement
     {
+        if ($this->mujiRoom) {
+            $muji = $this->jingle->addChild('muji');
+            $muji->addAttribute('xmlns', 'urn:xmpp:jingle:muji:0');
+            $muji->addAttribute('room', $this->mujiRoom);
+        }
+
         foreach ($this->arr as $l) {
             foreach ($this->regex as $key => $r) {
                 if (preg_match($r, $l, $matches)) {
                     switch ($key) {
                         case 'sess_id':
-                            $this->jingle->addAttribute('sid', $this->sid ?? $this->getSessionId());
+                            $this->jingle->addAttribute('sid', $this->sid);
                             break;
                         case 'media':
                             $this->initContent(true);
@@ -389,7 +406,7 @@ class SDPtoJingle
                             $this->initContent();
                             $this->addName();
 
-                            $this->jingle->addAttribute('sid', $this->sid ?? $this->getSessionId());
+                            $this->jingle->addAttribute('sid', $this->sid);
                             $candidate = $this->transport->addChild('candidate');
 
                             $candidate->addAttribute('foundation', $matches[1]);

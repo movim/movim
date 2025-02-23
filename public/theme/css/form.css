@@ -102,6 +102,11 @@ form > div textarea {
     outline-width: 0;
 }
 
+form > div .select select:has(option:only-child) {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
 form > div .select,
 form > div input:not([type=submit]),
 form > div textarea {

@@ -2,13 +2,13 @@
 
 namespace Movim\Librairies;
 
-use Movim\CurrentCall;
 use SimpleXMLElement;
 
 class JingletoSDP
 {
     private string $sdp = '';
     private SimpleXMLElement $jingle;
+    public ?string $sid = null;
 
     private string $action;
 
@@ -33,15 +33,10 @@ class JingletoSDP
         $this->jingle = $jingle;
 
         if (isset($this->jingle->attributes()->sid)) {
-            CurrentCall::getInstance()->id = (string)$this->jingle->attributes()->sid;
+            $this->sid = (string)$this->jingle->attributes()->sid;
         }
 
         $this->action = (string)$this->jingle->attributes()->action;
-    }
-
-    public function getSessionId()
-    {
-        return substr(base_convert(hash('sha256', CurrentCall::getInstance()->id), 30, 10), 0, 6);
     }
 
     public function generate()
@@ -53,7 +48,7 @@ class JingletoSDP
             $username = '-';
         }
 
-        $this->values['session_sdp_id'] = $this->getSessionId();
+        $this->values['session_sdp_id'] = substr(base_convert(hash('sha256', $this->sid), 30, 10), 0, 6);
 
         $sdpVersion =
             'v=0';

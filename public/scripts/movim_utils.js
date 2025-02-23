@@ -481,5 +481,9 @@ var MovimUtils = {
         replacedText = replacedText.replace(replacePattern2, '<a href="mailto:$1">$1</a>');
 
         return replacedText;
+    },
+    logError: function(error) {
+        console.log(error.name + ': ' + error.message);
+        console.error(error);
     }
 };

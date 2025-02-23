@@ -39,10 +39,13 @@ class Chat extends \Movim\Widget\Base
     private $_pagination = 50;
     private $_wrapper = [];
     private $_messageTypes = [
-        'chat', 'headline', 'invitation', 'jingle_incoming',
-        'jingle_outgoing', 'jingle_end', 'jingle_retract', 'jingle_reject'
+        'chat', 'headline', 'invitation',
+        'jingle_incoming', 'jingle_outgoing', 'jingle_end', 'jingle_retract', 'jingle_reject'
     ];
-    private $_messageTypesMuc = ['groupchat', 'muc_owner', 'muc_admin', 'muc_outcast', 'muc_member'];
+    private $_messageTypesMuc = [
+        'groupchat', 'muji_propose', 'muji_retract',
+        'muc_owner', 'muc_admin', 'muc_outcast', 'muc_member'
+    ];
     private $_mucPresences = [];
 
     public function load()
@@ -70,6 +73,7 @@ class Chat extends \Movim\Widget\Base
         $this->registerEvent('chat_counter', 'onCounter', 'chat');
 
         $this->registerEvent('jingle_message', 'onJingleMessage');
+        $this->registerEvent('muji_message', 'onMujiMessage');
         $this->registerEvent('muc_event_message', 'onMucEventMessage');
 
         $this->registerEvent('bob_request_handle', 'onSticker');
@@ -77,6 +81,12 @@ class Chat extends \Movim\Widget\Base
 
         $this->registerEvent('currentcall_started', 'onCallEvent', 'chat');
         $this->registerEvent('currentcall_stopped', 'onCallEvent', 'chat');
+
+        $this->registerEvent('callinvitepropose', 'onCallInvite');
+        $this->registerEvent('callinviteaccept', 'onCallInvite');
+        $this->registerEvent('callinviteleft', 'onCallInvite');
+        $this->registerEvent('callinviteretract', 'onCallInvite');
+        $this->registerEvent('presence_muji_event', 'onCallInvite');
     }
 
     public function onPresence($packet)
@@ -90,12 +100,26 @@ class Chat extends \Movim\Widget\Base
         }
     }
 
+    public function onCallInvite($packet)
+    {
+        $muji = $packet->content;
+
+        if ($muji->jidfrom && $muji->conference) {
+            $this->ajaxGetHeader($muji->jidfrom, $muji->isfromconference);
+        }
+    }
+
     public function onCallEvent($packet)
     {
         $this->ajaxGetHeader($packet[0]);
     }
 
     public function onJingleMessage($packet)
+    {
+        $this->onMessage($packet, false, false);
+    }
+
+    public function onMujiMessage($packet)
     {
         $this->onMessage($packet, false, false);
     }
@@ -153,8 +177,9 @@ class Chat extends \Movim\Widget\Base
 
         if (
             $message->isEmpty() && !in_array($message->type, [
-                'jingle_incoming', 'jingle_outgoing', 'jingle_end', 'muc_owner', 'jingle_retract',
-                'jingle_reject', 'muc_admin', 'muc_outcast', 'muc_member'
+                'jingle_incoming', 'jingle_outgoing', 'jingle_end', 'muc_owner', 'jingle_retract', 'jingle_reject',
+                'muji_propose', 'muji_retract',
+                'muc_admin', 'muc_outcast', 'muc_member'
             ])
         ) {
             return;
@@ -463,6 +488,10 @@ class Chat extends \Movim\Widget\Base
                 $this->rpc('Chat.focus');
 
                 (new Dictaphone)->ajaxHttpGet();
+            }
+
+            if (CurrentCall::getInstance()->isStarted()) {
+                $this->rpc('MovimVisio.moveToChat', CurrentCall::getInstance()->getBareJid());
             }
 
             $this->rpc('Chat.setObservers');
@@ -1549,9 +1578,11 @@ class Chat extends \Movim\Widget\Base
                 : $view->draw('_chat_invitation');
         }
 
+        // Internal messages
         if (in_array($message->type, [
-            'muc_owner', 'muc_admin', 'muc_outcast', 'jingle_reject',
-            'muc_member', 'jingle_incoming', 'jingle_outgoing', 'jingle_retract'
+            'muc_owner', 'muc_admin', 'muc_outcast', 'muc_member',
+            'jingle_reject', 'jingle_incoming', 'jingle_outgoing', 'jingle_retract',
+            'muji_propose'
         ])) {
             $view = $this->tpl();
             $view->assign('message', $message);
@@ -1563,7 +1594,7 @@ class Chat extends \Movim\Widget\Base
             $view->assign('message', $message);
             $view->assign('diff', false);
 
-            $start = Message::where('thread', $message->thread)
+            $start = $this->user->messages()->where('thread', $message->thread)
                 ->whereIn('type', ['jingle_incoming', 'jingle_outgoing'])
                 ->first();
 
@@ -1575,6 +1606,25 @@ class Chat extends \Movim\Widget\Base
             }
 
             $message->body = trim((string)$view->draw('_chat_jingle_end'));
+        }
+
+        if ($message->type == 'muji_retract') {
+            $view = $this->tpl();
+            $view->assign('message', $message);
+            $view->assign('diff', false);
+
+            $start = $this->user->messages()->where('thread', $message->thread)
+                ->whereIn('type', ['muji_propose'])
+                ->first();
+
+            if ($start) {
+                $diff = (new \DateTime($start->created_at))
+                    ->diff(new \DateTime($message->created_at));
+
+                $view->assign('diff', $diff);
+            }
+
+            $message->body = trim((string)$view->draw('_chat_muji_retract'));
         }
 
         return $this->_wrapper;
