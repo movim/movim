@@ -20,8 +20,10 @@ class GetList extends Action
 
         foreach ($stanza->query->item as $item) {
             $roster = new DBRoster;
-            $roster->set($item);
-            array_push($rosters, $roster->toArray());
+
+            if ($roster->set($item)) {
+                array_push($rosters, $roster->toArray());
+            }
         }
 
         DBRoster::where('session_id', SESSION_ID)->delete();

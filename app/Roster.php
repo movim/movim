@@ -61,7 +61,7 @@ class Roster extends Model
             ->orderBy('value');
     }
 
-    public function set($stanza)
+    public function set($stanza): bool
     {
         $this->session_id = SESSION_ID;
 
@@ -83,6 +83,12 @@ class Roster extends Model
         $this->group = $stanza->group
             ? (string)$stanza->group
             : null;
+
+        return (
+            strlen($this->jid) < 256 &&
+            strlen($this->name) < 256 &&
+            strlen($this->group) < 256
+        );
     }
 
     public function getSearchTerms()
