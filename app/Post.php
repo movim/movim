@@ -718,7 +718,7 @@ class Post extends Model
             return $this->nodeid;
         }
 
-        return 'urn:uuid:' . generateUUID($this->nodeid);
+        return 'urn:uuid:' . generateUUID(hash('sha256', $this->server . $this->node . $this->nodeid, true));
     }
 
     public function getRef()
