@@ -86,8 +86,8 @@ class Roster extends Model
 
         return (
             strlen($this->jid) < 256 &&
-            strlen($this->name) < 256 &&
-            strlen($this->group) < 256
+            ($this->name == null || strlen($this->name) < 256) &&
+            ($this->group == null || strlen($this->group) < 256)
         );
     }
 
