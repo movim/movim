@@ -43,7 +43,7 @@
                 {/if}
             {/if}
 
-            {if="$conference->mujiCalls->isEmpty()"}
+            {if="$conference->mujiCalls->isEmpty() && $conference->isGroupChat()"}
                 <span class="control icon active {if="$incall"}disabled{/if}" onclick="Visio_ajaxGetMujiLobby('{$conference->conference}', true, true);">
                     <i class="material-symbols">videocam</i>
                 </span>
