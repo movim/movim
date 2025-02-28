@@ -58,12 +58,12 @@ var Search = {
         Search.searchCurrent();
     },
 
-    chat : function(jid) {
-        if (MovimUtils.urlParts().page === 'chat') {
+    chat : function(jid, muc) {
+        if (MovimUtils.urlParts().page === 'chat' && muc == false) {
             Chats_ajaxOpen(jid, true);
             Drawer.clear();
         } else {
-            Search_ajaxChat(jid);
+            Search_ajaxChat(jid, muc);
         }
     },
 

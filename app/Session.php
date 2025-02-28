@@ -44,6 +44,11 @@ class Session extends Model
         return $this->hasMany('App\Roster');
     }
 
+    public function mujiCalls()
+    {
+        return $this->hasMany('App\MujiCall', 'session_id', 'id');
+    }
+
     public function topContacts()
     {
         return $this->contacts()->join(DB::raw('(

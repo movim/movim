@@ -2,7 +2,7 @@
     {if="isset($onclick)"}
         onclick="{$onclick}; Notif.snackbarClear();"
     {elseif="isset($action)"}
-        onclick="MovimUtils.softRedirect('{$action}')"
+        onclick="MovimUtils.reload('{$action}')"
     {/if}
 >
     <li>

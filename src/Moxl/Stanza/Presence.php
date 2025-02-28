@@ -2,6 +2,7 @@
 
 namespace Moxl\Stanza;
 
+use DOMElement;
 use Movim\Session;
 
 class Presence
@@ -17,6 +18,8 @@ class Presence
         $type = false,
         bool $muc = false,
         bool $mam = false,
+        bool $mujiPreparing = false,
+        ?DOMElement $muji = null,
         $last = 0
     ) {
         $session = Session::instance();
@@ -56,12 +59,22 @@ class Presence
             $root->appendChild($priority);
         }
 
+        if ($muji != null) {
+            $root->append($dom->importNode($muji, true));
+        }
+
         // https://xmpp.org/extensions/xep-0319.html#last-interact
         if ($last > 0) {
             $timestamp = time() - $last;
             $idle = $dom->createElementNS('urn:xmpp:idle:1', 'idle');
             $idle->setAttribute('since', gmdate('c', $timestamp));
             $root->appendChild($idle);
+        }
+
+        if ($mujiPreparing) {
+            $muji = $dom->createElementNS('urn:xmpp:jingle:muji:0', 'muji');
+            $muji->appendChild($dom->createElement('preparing'));
+            $root->appendChild($muji);
         }
 
         if ($muc) {
@@ -136,9 +149,9 @@ class Presence
     /*
      * Enter a chat room
      */
-    public static function muc($to, $nickname = false, $mam = false)
+    public static function muc($to, $nickname = false, $mam = false, $mujiPreparing = false, ?DOMElement $muji = null)
     {
-        \Moxl\API::request(self::maker($to . '/' . $nickname, muc: true, mam: $mam));
+        \Moxl\API::request(self::maker($to . '/' . $nickname, muc: true, mam: $mam, mujiPreparing: $mujiPreparing, muji: $muji));
     }
 
     /*

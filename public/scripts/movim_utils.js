@@ -108,13 +108,6 @@ var MovimUtils = {
     redirect: function (url) {
         window.location.href = url;
     },
-    softRedirect: function (url) {
-        var location = window.location.href;
-
-        if (location.substring(0, location.indexOf('#')) !== url) {
-            window.location.href = url;
-        }
-    },
     openInNew: function (url) {
         window.open(url, '_blank');
     },
@@ -481,5 +474,9 @@ var MovimUtils = {
         replacedText = replacedText.replace(replacePattern2, '<a href="mailto:$1">$1</a>');
 
         return replacedText;
+    },
+    logError: function(error) {
+        console.log(error.name + ': ' + error.message);
+        console.error(error);
     }
 };

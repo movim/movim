@@ -39,7 +39,7 @@
                     {/if}
                 {/loop}
             {/if}
-            <span class="control icon active gray divided" onclick="Search.chat('{$value->jid|echapJS}')">
+            <span class="control icon active gray divided" onclick="Search.chat('{$value->jid|echapJS}', false)">
                 <i class="material-symbols">comment</i>
             </span>
             <div>

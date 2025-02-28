@@ -12,16 +12,16 @@
                     <i class="material-symbols">dialpad</i>
                 </span>
                 <span id="toggle_audio" class="divided control icon color transparent active" onclick="VisioUtils.toggleAudio()">
-                    <i class="material-symbols">mic_off</i>
+                    <i class="material-symbols">mic</i>
                 </span>
 
                 <span id="toggle_video" class="control icon color transparent active" onclick="VisioUtils.toggleVideo()">
-                    <i class="material-symbols">videocam_off</i>
+                    <i class="material-symbols">videocam</i>
                 </span>
                 <span id="switch_camera" class="control icon color transparent active">
                     <i class="material-symbols">switch_camera</i>
                 </span>
-                <span id="screen_sharing" class="control icon color transparent active" onclick="VisioUtils.toggleScreenSharing()">
+                <span id="screen_sharing" class="control icon color transparent active toggleable" onclick="VisioUtils.toggleScreenSharing()">
                     <i class="material-symbols">screen_share</i>
                 </span>
 
@@ -62,27 +62,21 @@
         <p class="dtmf"></p>
     </div>
 
+    <div id="participants"></div>
+
     <ul class="list infos" class="list middle">
         <li>
             <div id="visio_contact"></div>
         </li>
     </ul>
 
-    <audio id="remote_audio" autoplay></audio>
     <audio id="local_audio" autoplay muted></audio>
-
-    <video id="remote_video" autoplay poster="{$c->baseUri}theme/img/empty.png"></video>
     <video id="screen_sharing_video" autoplay muted poster="{$c->baseUri}theme/img/empty.png"></video>
     <video id="local_video" autoplay muted poster="{$c->baseUri}theme/img/empty.png"></video>
 
-    <span id="remote_state">
-        <i class="voice material-symbols"></i>
-        <i class="webcam material-symbols"></i>
-    </span>
-
     <div class="controls">
-        <a id="main" class="button action color gray">
-            <i class="material-symbols">phone</i>
+        <a id="main" class="button action color red" onclick="MovimVisio.goodbye()">
+            <i class="material-symbols">call_end</i>
         </a>
     </div>
 </div>

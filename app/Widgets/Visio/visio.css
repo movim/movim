@@ -1,14 +1,32 @@
 #visio {
     display: block;
     position: fixed;
-    bottom: 8rem;
-    right: 3rem;
+    bottom: 7rem;
+    right: 2rem;
     width: 40rem;
     height: 25rem;
     background-color: #111;
     border-radius: 1rem;
-    transition: opacity 0.3s ease-in-out;
-    z-index: 2;
+    transition: opacity 0.3s ease-in-out,
+        bottom 0.3s ease-in-out,
+        right 0.3s ease-in-out,
+        width 0.3s ease-in-out,
+        height 0.3s ease-in-out,
+        transform 0.3s ease-in-out;
+    z-index: 3;
+}
+
+@media screen and (max-width: 800px) {
+    #visio {
+        right: 1rem;
+        width: 34rem;
+        height: 22rem;
+    }
+}
+
+#dialog:not(:empty) ~ #visio,
+#drawer:not(:empty) ~ #visio {
+    transform: translateX(110%);
 }
 
 #chat_widget #visio {
@@ -24,8 +42,11 @@
 body > #visio:not(:fullscreen) #main,
 body > #visio:not(:fullscreen) #toggle_dtmf,
 
+body > #visio:not(:fullscreen) .participant:before,
+body > #visio:not(:fullscreen) .participant:after,
+
 #chat_widget #visio #switch_chat,
-#visio:not([data-from]),
+#visio:not([data-type]),
 #visio:not([data-type]) #toggle_audio,
 #visio[data-type=video] #toggle_dtmf,
 #visio[data-type=video] #dtmf,
@@ -33,15 +54,8 @@ body > #visio:not(:fullscreen) #toggle_dtmf,
 #visio:not([data-type=video]) #switch_camera,
 #visio:not([data-type=video]) #screen_sharing,
 #visio:not([data-type=video]) #local_video,
-#visio:not([data-type=video]) #remote_video,
-#visio:not([data-type=video]) #screen_sharing_video,
-#visio:not([data-type=video]) #video {
+#visio:not([data-type=video]) #screen_sharing_video {
     display: none;
-}
-
-#visio video {
-    width: 100%;
-    height: 100%;
 }
 
 #visio #visio_source {
@@ -91,6 +105,10 @@ body > #visio:not(:fullscreen) #toggle_dtmf,
     bottom: 2rem; /* Override global CSS */
 }
 
+#visio[data-muji='true'] #main {
+    display: none;
+}
+
 #visio .infos #remote_level {
     overflow: hidden;
     border-radius: 100%;
@@ -119,7 +137,8 @@ body > #visio:not(:fullscreen) #toggle_dtmf,
     bottom: 1rem;
     width: 25rem;
     height: auto;
-    border-radius: 0.25rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--elevation-4);
 
     background-image: url('../theme/img/movim_cloud.svg');
     background-position: center;
@@ -136,12 +155,14 @@ body > #visio:not(:fullscreen) video#screen_sharing_video.sharing {
     bottom: 0;
 }
 
-body > #visio:not(:fullscreen) #visio_contact {
+body > #visio:not(:fullscreen) #visio_contact,
+body > #visio:not(:fullscreen) .participant img.avatar {
     transform: scale(0.7);
 }
 
 @media screen and (max-width: 800px) {
-    #chat_widget #visio:not(:fullscreen) #visio_contact {
+    #chat_widget #visio:not(:fullscreen) #visio_contact,
+    body > #visio:not(:fullscreen) .participant img.avatar {
         transform: scale(0.7);
     }
 }
@@ -162,15 +183,20 @@ body > #visio:not(:fullscreen) #visio_contact {
     position: absolute;
     width: 100%;
     z-index: 1;
-    background-color: transparent;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
 }
 
 #visio header ul.list li {
     justify-content: space-between;
+    padding-right: 0;
+}
+
+#visio header ul.list li span#switch_chat {
+    flex: 0 0 5rem;
 }
 
 #visio header i {
-    text-shadow: 0 0 3rem black;
+    text-shadow: 0 0 3rem #333, 0 0 0.5rem #777;
 }
 
 #visio header #no_mic_sound.disabled {
@@ -181,7 +207,6 @@ body > #visio:not(:fullscreen) #visio_contact {
     animation: fadein 0.3s;
     font-size: 1.5rem;
     line-height: 2.5rem;
-    margin: 0 1rem;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -197,26 +222,116 @@ body > #visio:not(:fullscreen) #visio_contact {
     animation: Rotate 2000ms infinite;
 }
 
-#visio #remote_state {
-    position: absolute;
-    bottom: 1rem;
-    left: 1rem;
-}
-
-#visio #remote_state i {
-    font-size: 2rem;
-    margin-right: 1rem;
-    opacity: 0.5;
-    color: white;
+#visio #participants {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    justify-content: center;
 }
 
 #visio #local_video,
-#visio #remote_video {
+#visio .participant video {
     transition: opacity 0.5s ease-in-out;
 }
 
-#visio #local_video.muted,
-#visio #remote_video.muted {
+#visio .participant {
+    position: relative;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    max-height: 100%;
+    display: flex;
+    align-items: center;
+
+    flex: 1 auto;
+
+    outline: 0.5rem solid rgba(255, 255, 255, var(--level));
+    outline-offset: -0.75rem;
+}
+
+#visio .participant video {
+    max-width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    display: block;
+    border-radius: 0.5rem;
+}
+
+#visio #participants:has(.participant:nth-child(2)) .participant {
+    flex: 1 0 calc(50% - 0.5rem);
+    max-width: 50%;
+}
+
+#visio #participants:has(.participant:nth-child(2)) .participant video {
+    max-height: 800px;
+}
+
+#visio #participants:has(.participant:nth-child(3)) .participant {
+    height: 50%;
+}
+
+#visio #participants:has(.participant:nth-child(5)) .participant {
+    height: 33.33%;
+}
+
+#visio #participants:has(.participant:nth-child(7)) .participant {
+    height: 25%;
+}
+
+#visio .participant::after,
+#visio .participant::before {
+    position: absolute;
+    bottom: 5.5rem;
+    left: 2rem;
+    line-height: 1.5rem;
+    display: inline-block;
+    color: white;
+    text-shadow: 0 0 1rem rgba(0, 0, 0, 0.85);
+    font-size: 2rem;
+}
+
+#visio .participant::after {
+    font-family: 'Material Symbols';
+    font-variation-settings: 'FILL' 1;
+    content: '\e029';
+    letter-spacing: 1.5rem;
+    opacity: 0.5;
+}
+
+#visio .participant img.avatar {
+    position: absolute;
+    width: 15rem;
+    height: 15rem;
+    left: calc(50% - 7.5rem);
+    top: calc(50% - 7.5rem);
+    border-radius: 50%;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+}
+
+#visio .participant.video_off img.avatar {
+    opacity: 1;
+}
+
+#visio .participant[data-name]::before {
+    bottom: 2rem;
+    content: attr(data-name);
+}
+
+#visio .participant:not([data-name])::after {
+    bottom: 2rem;
+}
+
+#visio .participant.audio_off::after {
+    content: '\e02b';
+}
+
+#visio .participant.audio_off.video_off::after {
+    content: '\e02b \f83b';
+}
+
+#visio[data-muji='true'] #participants:not(:empty) ~ .infos,
+#visio #local_video.video_off,
+#visio .participant.video_off video {
     opacity: 0;
 }
 
