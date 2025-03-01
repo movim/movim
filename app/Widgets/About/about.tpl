@@ -18,8 +18,9 @@
                 <p>{$c->__('about.developers')}</p>
                 <p class="all">
                     <a href="http://edhelas.movim.eu/">Jaussoin Timothée aka edhelas</a><br/>
+                    <a href="https://github.com/fabiang">Grutschus Fabian aka fabiang</a><br/>
                     <a href="https://github.com/christine-ho-dev/">Ho Christine aka nodpounod</a><br/>
-                    <a href="https://singpolyma.net/">Stephen Paul Weber aka singpolyma</a><br/>
+                    <a href="https://singpolyma.net/">Weber Stephen Paul aka singpolyma</a><br/>
                     <a href="https://www.dominik-george.de/">Dominik George aka Natureshadow</a> from <a href="https://www.teckids.org/">Teckids e.V.</a><br/>
                     <a href="https://chat.teckids.org/?blog/tglaser%40mercurius.teckids.org">mirabilos</a><br />
                     <a href="https://toast.al">toastal</a><br>
@@ -45,11 +46,12 @@
             <div>
                 <p>{$c->__('about.software')}</p>
                 <p class="all">
-                   CommonMark - <a href="https://commonmark.thephpleague.com/">league/commonmark</a> under BSD-3-Clause License <br/>
-                   Template Engine - RainTPL - Federico Ulfo - <a href="http://www.raintpl.com/">www.raintpl.com</a> under MIT<br/>
-                   Embed - Oscar Otero <a href="https://github.com/oscarotero/Embed">GitHub Embed</a> under MIT<br/>
-                   Database engine - Eloquent - <a href="https://github.com/illuminate/database">Illuminate/Database</a> under MIT<br/>
-                   WebSocket and Daemon engine - ReactPHP -  <a href="http://socketo.me/">socketo.me</a> ©Chris Boden<br/>
+                    PHP SASL - <a href="https://github.com/fabiang/sasl">fabiang/sasl</a> under Modified BSD License<br/>
+                    CommonMark - <a href="https://commonmark.thephpleague.com/">league/commonmark</a> under BSD-3-Clause License<br/>
+                    Template Engine - RainTPL - Federico Ulfo - <a href="http://www.raintpl.com/">www.raintpl.com</a> under MIT<br/>
+                    Embed - Oscar Otero <a href="https://github.com/oscarotero/Embed">GitHub Embed</a> under MIT<br/>
+                    Database engine - Eloquent - <a href="https://github.com/illuminate/database">Illuminate/Database</a> under MIT<br/>
+                    WebSocket and Daemon engine - ReactPHP -  <a href="http://socketo.me/">socketo.me</a> ©Chris Boden<br/>
                 </p>
             </div>
         </li>

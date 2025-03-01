@@ -125,6 +125,19 @@
                 </p>
             </div>
         </li>
+        <li class="block">
+            <span class="primary icon blue">
+                <i class="material-symbols">computer</i>
+            </span>
+            <div>
+                <p class="normal line">
+                    Gajim
+                    <a class="button flat" href="https://gajim.org/" target="_blank">
+                        <i class="material-symbols">open_in_new</i> Website
+                    </a>
+                </p>
+            </div>
+        </li>
     </ul>
     {if="$info && (!empty($info->adminaddresses) || !empty($info->abuseaddresses) || !empty($info->supportaddresses)  || !empty($info->securityaddresses))"}
         <hr />
