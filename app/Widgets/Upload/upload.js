@@ -17,8 +17,8 @@ var Upload = {
 
         if (Upload.file) {
             let splited = Upload.name.split('.');
-
-            let name = splited[0];
+            let extension = splited.pop();
+            let name = splited.join('.');
 
             if (Upload.prependName) {
                 name = Upload.prependName + '_' + name;
@@ -36,7 +36,7 @@ var Upload = {
                 name += '_' + now;
             }
 
-            Upload.name = name + '.' + splited[1];
+            Upload.name = name + '.' + extension;
 
             Upload_ajaxPrepare({
                 name: Upload.name,
