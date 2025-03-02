@@ -14,7 +14,9 @@ var RoomsUtils = {
         RoomsUtils_ajaxHttpGetLinks(room, page);
     },
     configureCreatedRoom() {
-        RoomsUtils_ajaxConfigureCreated(MovimUtils.formToJson('bookmarkmucadd'));
+        if (MovimUtils.formToJson('bookmarkmucadd') != false) {
+            RoomsUtils_ajaxConfigureCreated(MovimUtils.formToJson('bookmarkmucadd'));
+        }
     },
     configureDisconnect(room) {
         setTimeout(e => {

@@ -133,12 +133,16 @@ class Message extends Model
 
     public function getInlinesAttribute(): ?array
     {
-        return $this->attributes['inlines'] !== null ? unserialize($this->attributes['inlines']) : null;
+        return array_key_exists('inlines', $this->attributes) && $this->attributes['inlines'] !== null
+            ? unserialize($this->attributes['inlines'])
+            : null;
     }
 
     public function getOmemoheaderAttribute()
     {
-        return $this->attributes['omemoheader'] !== null ? unserialize($this->attributes['omemoheader']) : null;
+        return array_key_exists('omemoheader', $this->attributes) && $this->attributes['omemoheader'] !== null
+            ? unserialize($this->attributes['omemoheader'])
+            : null;
     }
 
     public function getJidfromAttribute()
@@ -618,6 +622,8 @@ class Message extends Model
      */
     public function getInlinedBodyAttribute(?bool $alt = false, bool $triggerRequest = false): ?string
     {
+        if (!array_key_exists('body', $this->attributes)) return null;
+
         $body = $this->attributes['body'];
 
         if (is_array($this->getInlinesAttribute())) {
