@@ -49,6 +49,8 @@ class Message extends Model
                     ->first()
                     ->mid;
 
+                MessageFile::where('message_mid', $mid)->delete();
+
                 $message->messageFiles->each(function ($file) use ($mid) {
                     $file->message_mid = $mid;
                     $file->save();
