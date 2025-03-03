@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "263b01ca8f3b12918a957b3766815a5f",
+    "content-hash": "8b14059dd6b737c96ad199f88f4b0b61",
     "packages": [
         {
             "name": "awobaz/compoships",
@@ -70,16 +70,16 @@
         },
         {
             "name": "brick/math",
-            "version": "0.12.1",
+            "version": "0.12.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/brick/math.git",
-                "reference": "f510c0a40911935b77b86859eb5223d58d660df1"
+                "reference": "866551da34e9a618e64a819ee1e01c20d8a588ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/brick/math/zipball/f510c0a40911935b77b86859eb5223d58d660df1",
-                "reference": "f510c0a40911935b77b86859eb5223d58d660df1",
+                "url": "https://api.github.com/repos/brick/math/zipball/866551da34e9a618e64a819ee1e01c20d8a588ba",
+                "reference": "866551da34e9a618e64a819ee1e01c20d8a588ba",
                 "shasum": ""
             },
             "require": {
@@ -88,7 +88,7 @@
             "require-dev": {
                 "php-coveralls/php-coveralls": "^2.2",
                 "phpunit/phpunit": "^10.1",
-                "vimeo/psalm": "5.16.0"
+                "vimeo/psalm": "6.8.8"
             },
             "type": "library",
             "autoload": {
@@ -118,7 +118,7 @@
             ],
             "support": {
                 "issues": "https://github.com/brick/math/issues",
-                "source": "https://github.com/brick/math/tree/0.12.1"
+                "source": "https://github.com/brick/math/tree/0.12.3"
             },
             "funding": [
                 {
@@ -126,7 +126,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-11-29T23:19:16+00:00"
+            "time": "2025-02-28T13:11:00+00:00"
         },
         {
             "name": "cakephp/core",
@@ -1479,35 +1479,36 @@
         },
         {
             "name": "fabiang/sasl",
-            "version": "v1.6.0",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabiang/sasl.git",
-                "reference": "52dbc0e420b012b96dd3214832a2e4d403992806"
+                "reference": "d104cc364d380ea2e73f3595e11b9161fd1c1155"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabiang/sasl/zipball/52dbc0e420b012b96dd3214832a2e4d403992806",
-                "reference": "52dbc0e420b012b96dd3214832a2e4d403992806",
+                "url": "https://api.github.com/repos/fabiang/sasl/zipball/d104cc364d380ea2e73f3595e11b9161fd1c1155",
+                "reference": "d104cc364d380ea2e73f3595e11b9161fd1c1155",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.3.3 || ^7.0 || ~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0"
+                "php": "~8.2.0 || ~8.3.0 || ~8.4.0"
             },
             "require-dev": {
-                "behat/behat": "^3.6",
-                "phpunit/phpunit": ">=4.8",
+                "behat/behat": "^3.18",
+                "phpunit/phpunit": "^10.0 || ^11.5",
                 "slevomat/coding-standard": "*",
                 "squizlabs/php_codesniffer": "*",
-                "vimeo/psalm": "^5.23"
+                "vimeo/psalm": "^6.0"
             },
             "type": "library",
             "autoload": {
                 "files": [
-                    "src/throwable.php"
+                    "src/deprecated.php",
+                    "src/override.php"
                 ],
                 "psr-4": {
-                    "Fabiang\\Sasl\\": "src/"
+                    "Fabiang\\SASL\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1542,9 +1543,9 @@
             ],
             "support": {
                 "issues": "https://github.com/fabiang/sasl/issues",
-                "source": "https://github.com/fabiang/sasl/tree/v1.6.0"
+                "source": "https://github.com/fabiang/sasl/tree/v2.0.0"
             },
-            "time": "2025-02-14T20:56:54+00:00"
+            "time": "2025-03-03T11:56:34+00:00"
         },
         {
             "name": "fig/http-message-util",
@@ -6554,16 +6555,16 @@
         },
         {
             "name": "symfony/translation",
-            "version": "v7.2.2",
+            "version": "v7.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "e2674a30132b7cc4d74540d6c2573aa363f05923"
+                "reference": "283856e6981286cc0d800b53bd5703e8e363f05a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/e2674a30132b7cc4d74540d6c2573aa363f05923",
-                "reference": "e2674a30132b7cc4d74540d6c2573aa363f05923",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/283856e6981286cc0d800b53bd5703e8e363f05a",
+                "reference": "283856e6981286cc0d800b53bd5703e8e363f05a",
                 "shasum": ""
             },
             "require": {
@@ -6629,7 +6630,7 @@
             "description": "Provides tools to internationalize your application",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/translation/tree/v7.2.2"
+                "source": "https://github.com/symfony/translation/tree/v7.2.4"
             },
             "funding": [
                 {
@@ -6645,7 +6646,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-12-07T08:18:10+00:00"
+            "time": "2025-02-13T10:27:23+00:00"
         },
         {
             "name": "symfony/translation-contracts",

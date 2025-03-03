@@ -2,7 +2,7 @@
 
 namespace Moxl;
 
-use Fabiang\Sasl\Sasl;
+use Fabiang\SASL\SASL;
 use Movim\Session;
 
 class Authentication
@@ -33,10 +33,8 @@ class Authentication
             if (in_array($choice, $mechanisms)) {
                 $this->_type = $choice;
 
-                $factory = new Sasl;
                 $session = Session::instance();
-
-                $this->_mechanism = $factory->factory($this->_type, [
+                $this->_mechanism = SASL::fromString($this->_type)->mechanism([
                     'authcid'  => $session->get('username'),
                     'secret'   => $session->get('password'),
                     'downgrade_protection' => [
