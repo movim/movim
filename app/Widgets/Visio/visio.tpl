@@ -59,7 +59,7 @@
             <button class="flat button color gray" type="button" onclick="VisioUtils.insertDtmf('#')">#</button>
         </div>
 
-        <p class="dtmf"></p>
+        <p class="dtmf"><span></span></p>
     </div>
 
     <div id="participants"></div>

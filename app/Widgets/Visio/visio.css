@@ -50,6 +50,7 @@ body > #visio:not(:fullscreen) .participant:after,
 #visio:not([data-type]) #toggle_audio,
 #visio[data-type=video] #toggle_dtmf,
 #visio[data-type=video] #dtmf,
+#visio #dtmf:not(.hide) ~ #participants,
 #visio:not([data-type=video]) #toggle_video,
 #visio:not([data-type=video]) #switch_camera,
 #visio:not([data-type=video]) #screen_sharing,
@@ -75,15 +76,21 @@ body > #visio:not(:fullscreen) .participant:after,
 }
 
 #visio #dtmf p.dtmf {
-    max-width: 10rem;
-    display: block;
+    width: 16rem;
     margin: 0 auto;
     margin-top: 2rem;
-    direction: rtl;
     text-align: center;
-    overflow: hidden;
     position: relative;
     mask-image: linear-gradient(to left, black calc(100% - 2rem), transparent);
+    height: 2.5rem;
+}
+
+#visio #dtmf p.dtmf span {
+    position: absolute;
+    right: 0;
+    height: 2rem;
+    text-align: center;
+    min-width: 100%;
 }
 
 #visio .infos {

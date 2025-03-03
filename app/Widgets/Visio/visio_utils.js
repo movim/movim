@@ -152,17 +152,13 @@ var VisioUtils = {
         setTimeout(() => VisioDTMF.stop(), 100);
 
         var insert = (s == '*') ? '🞳' : s;
-        document.querySelector('#dtmf p.dtmf').innerHTML += insert;
+        document.querySelector('#dtmf p.dtmf span').innerText += insert;
 
-        if (!MovimVisio.pc) return;
-
-        var rtc = MovimVisio.pc.getSenders().find(rtc => rtc.track && rtc.track.kind == 'audio');
-        if (!rtc) return;
-        rtc.dtmf.insertDTMF(s);
+        MovimJingles.insertDtmf(s);
     },
 
     clearDtMf: function () {
-        document.querySelector('#dtmf p.dtmf').innerHTML = '';
+        document.querySelector('#dtmf p.dtmf span').innerText = '';
     },
 
     toggleMainButton: function () {

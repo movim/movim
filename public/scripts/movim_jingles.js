@@ -246,6 +246,14 @@ MovimJingleSession.prototype.onUnmute = function (name) {
     }
 }
 
+MovimJingleSession.prototype.insertDtmf = function (s) {
+    var rtc = this.pc.getSenders().find(rtc => rtc.track && rtc.track.kind == 'audio');
+
+    if (!rtc || !rtc.dtmf.canInsertDTMF) return;
+
+    rtc.dtmf.insertDTMF(s);
+}
+
 MovimJingleSession.prototype.replaceLocalStream = function (stream) {
     let videoTrack = stream.getVideoTracks()[0];
     var sender = this.pc.getSenders().find(s => s.track && videoTrack && s.track.kind == videoTrack.kind);
@@ -298,6 +306,12 @@ var MovimJingles = {
 
         for (jid of Object.keys(MovimJingles.sessions)) {
             MovimJingles.sessions[jid].enableTrack(enable, 'video');
+        }
+    },
+
+    insertDtmf: function (s) {
+        for (jid of Object.keys(MovimJingles.sessions)) {
+            MovimJingles.sessions[jid].insertDtmf(s);
         }
     },
 
