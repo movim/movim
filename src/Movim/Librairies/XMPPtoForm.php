@@ -320,7 +320,7 @@ class XMPPtoForm
         $label->setAttribute('for', $s['var']);
         $div->appendChild($label);
 
-        $p = $this->html->createElement('p', $s['label']);
+        $p = $this->html->createElement('p', $s['label'] ?? $s['var']);
         $p->setAttribute('class', 'normal all');
         $li->appendChild($p);
     }
@@ -332,7 +332,7 @@ class XMPPtoForm
 
         $textarea = $this->html->createElement('textarea');
         $textarea->setAttribute('type', $s['type']);
-        $textarea->setAttribute('label', $s['label']);
+        $textarea->setAttribute('label', $s['label'] ?? $s['var']);
         $textarea->setAttribute('id', $s['var']);
         $textarea->setAttribute('name', $s['var']);
 
@@ -364,7 +364,7 @@ class XMPPtoForm
             return;
         }
 
-        $txt = $s['label'] ? $s['label'] : $s['var'];
+        $txt = $s['label'] ?? $s['var'];
         $label = $this->html->createElement('label', $txt);
         $label->setAttribute('for', $s['var']);
         $label->setAttribute('title', $txt);
@@ -388,7 +388,7 @@ class XMPPtoForm
             $input->setAttribute('type', $s['type']);
         }
 
-        $input->setAttribute('label', $s['label']);
+        $input->setAttribute('label', $s['label'] ?? $s['var']);
 
         if ($s->required) {
             $input->setAttribute('required', 'required');
@@ -436,7 +436,7 @@ class XMPPtoForm
 
         $select = $this->html->createElement('select');
         $select->setAttribute('type', $s['type']);
-        $select->setAttribute('label', $s['label']);
+        $select->setAttribute('label', $s['label'] ?? $s['var']);
         $select->setAttribute('id', $s['var']);
         $select->setAttribute('name', $s['var']);
 
@@ -491,7 +491,7 @@ class XMPPtoForm
 
         $select = $this->html->createElement('select');
         $select->setAttribute('type', $s['type']);
-        $select->setAttribute('label', $s['label']);
+        $select->setAttribute('label', $s['label'] ?? $s['var']);
         $select->setAttribute('id', $s['var']);
         $select->setAttribute('name', $s['var']);
 
@@ -543,9 +543,9 @@ class XMPPtoForm
             }
         }
 
-        $label = $this->html->createElement('label', $s['label']);
+        $label = $this->html->createElement('label', $s['label'] ?? $s['var']);
         $label->setAttribute('for', $s['var']);
-        $label->setAttribute('title', $s['label']);
+        $label->setAttribute('title', $s['label'] ?? $s['var']);
         $container->appendChild($label);
     }
 }
