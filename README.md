@@ -35,7 +35,6 @@ Links
 * You can join one of the Movim instances on https://join.movim.eu/
 * Mastodon: [@movim@piaille.fr](https://piaille.fr/@movim)
 * XMPP Chatroom: [movim@conference.movim.eu](xmpp:movim@conference.movim.eu)
-* Twitter: https://twitter.com/MovimNetwork
 
 Translations
 ------------
