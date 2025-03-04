@@ -1,0 +1,30 @@
+# Minimal H2O configuration for Movim
+#
+# Read the H2O documentation <https://h2o.examp1e.net/configure.html> on how to
+# set up TLS, compression, security headers, & so on.
+
+hosts:
+  movim.domain.tld:80:
+    listen:
+      port: 80
+    file.custom-handler:
+      extension:
+      - .php
+      fastcgi.connect:
+        port: /run/phpfpm/movim.sock
+        type: unix
+      fastcgi.document_root: /var/www/movim
+    paths:
+      /:
+        file.dir: /var/www/movim/public
+        file.index:
+        - index.php
+        - index.html
+        redirect:
+          internal: 'YES'
+          status: 307
+          url: /index.php/
+      /ws/:
+        proxy.preserve-host: 'ON'
+        proxy.reverse.url: http://127.0.0.1:8080/
+        proxy.tunnel: 'ON'
