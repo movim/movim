@@ -22,6 +22,7 @@
     <div>
         <p>{$c->__('post.public_title')}</p>
         <p>{$c->__('post.public_text')}</p>
+        <span class="supporting line" id="publishopenlinkpreview"></span>
     </div>
 </li>
 

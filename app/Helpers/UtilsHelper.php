@@ -768,7 +768,7 @@ function getSmileyPath($id)
  */
 function avatarPlaceholder(string $id): string
 {
-    return \Movim\Route::urlize('picture', false, ['type' => 'avatar', 'id' => urlencode($id)]);
+    return \Movim\Route::urlize('picture', null, ['type' => 'avatar', 'id' => urlencode($id)]);
 }
 
 /*
@@ -776,7 +776,7 @@ function avatarPlaceholder(string $id): string
  */
 function protectPicture($url)
 {
-    $emptyPicture =  \Movim\Route::urlize('picture', '');
+    $emptyPicture =  \Movim\Route::urlize('picture');
     $emptyPicture = preg_replace("(^//)", 'https://', $emptyPicture);
 
     // The picture is already protected
@@ -784,7 +784,7 @@ function protectPicture($url)
         return $url;
     }
 
-    return \Movim\Route::urlize('picture', false, ['type' => 'picture', 'url' => urlencode($url)]);
+    return \Movim\Route::urlize('picture', null, ['type' => 'picture', 'url' => urlencode($url)]);
 }
 
 /*

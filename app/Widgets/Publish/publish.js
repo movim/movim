@@ -27,6 +27,7 @@ var Publish = {
 
             Publish.titleTimeout = setTimeout(function () {
                 Publish.saveTitle();
+                Publish_ajaxOpenlinkPreview(id);
             }, 1000);
         });
 
@@ -40,6 +41,7 @@ var Publish = {
         });
 
         MovimUtils.applyAutoheight();
+        Publish_ajaxOpenlinkPreview(id);
     },
 
     saveTitle: function () {

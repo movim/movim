@@ -8,6 +8,7 @@ v0.30 (master)
 * Implement XEP-0482: Call Invites
 * Upgrade to fabiang/sasl 2.0
 * Fix DTMF numpad during Jingle calls
+* Fix #1384 Add a preview of the open link URL in Publish
 
 v0.29.2
 ---------------------------

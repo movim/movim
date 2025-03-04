@@ -110,7 +110,7 @@ class Base
         echo call_user_func_array([&$this, '__'], $args);
     }
 
-    public function route(...$args): string
+    public function route(...$args): ?string
     {
         return \Movim\Route::urlize(...$args);
     }

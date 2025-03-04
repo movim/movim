@@ -141,6 +141,7 @@ form > div.compact > textarea {
 }
 
 /* Supporting text */
+ul.list li div span.supporting,
 form div > span.supporting {
     line-height: 2.25rem;
     font-size: 1.5rem;

@@ -63,9 +63,9 @@ class Publish extends Base
 
         $s = new Subscribe;
         $s->setTo($server)
-          ->setFrom($this->user->id)
-          ->setNode('urn:xmpp:microblog:0:comments/'.$parentid)
-          ->request();
+            ->setFrom($this->user->id)
+            ->setNode('urn:xmpp:microblog:0:comments/' . $parentid)
+            ->request();
     }
 
     public function ajaxCreateComments($server, $id)
@@ -76,8 +76,8 @@ class Publish extends Base
 
         $cn = new CommentCreateNode;
         $cn->setTo($server)
-           ->setParentId($id)
-           ->request();
+            ->setParentId($id)
+            ->request();
     }
 
     public function ajaxHttpSaveTitle($id, $title)
@@ -114,7 +114,7 @@ class Publish extends Base
                 'allow_unsafe_links' => true,
             ]);
 
-            $doc->loadXML('<div>'.$converter->convert($draft->content).'</div>');
+            $doc->loadXML('<div>' . $converter->convert($draft->content) . '</div>');
             $view->assign('title', $draft->title);
             $view->assign('content', substr($doc->saveXML($doc->getElementsByTagName('div')->item(0)), 5, -6));
 
@@ -147,7 +147,6 @@ class Publish extends Base
             }
 
             if (Validator::stringType()->notEmpty()->isValid(trim($draft->content))) {
-
                 $converter = new CommonMarkConverter([
                     'html_input' => 'escape',
                     'allow_unsafe_links' => true,
@@ -173,20 +172,17 @@ class Publish extends Base
                 $p->setId($draft->nodeid);
 
                 $post = \App\Post::where('server', $draft->server)
-                                    ->where('node', $draft->node)
-                                    ->where('nodeid', $draft->nodeid)
-                                    ->first();
+                    ->where('node', $draft->node)
+                    ->where('nodeid', $draft->nodeid)
+                    ->first();
 
                 if (isset($post)) {
                     $p->setPublished(strtotime($post->published));
                 }
             } else {
-                $slug = slugify(
-                    strtok(wordwrap($draft->title, 80, "\n"), "\n")
-                );
-
-                if (!empty($slug) && strlen($slug) > 32) {
-                    $p->setId($slug. '-'. \generateKey(6));
+                $slug = $this->getSlugFromTitle($draft->title);
+                if ($slug) {
+                    $p->setId($slug);
                 }
             }
 
@@ -208,9 +204,9 @@ class Publish extends Base
 
             if ($draft->reply) {
                 $post = \App\Post::where('server', $draft->reply->server)
-                                    ->where('node', $draft->reply->node)
-                                    ->where('nodeid', $draft->reply->nodeid)
-                                    ->first();
+                    ->where('node', $draft->reply->node)
+                    ->where('nodeid', $draft->reply->nodeid)
+                    ->first();
                 $p->setReply($post->getRef());
             }
 
@@ -220,8 +216,10 @@ class Publish extends Base
                 $resolved = $embed->resolve();
 
                 // The url is an image
-                if ($resolved->type == 'image'
-                && $resolved->images[0]['url'] == $embed->url) {
+                if (
+                    $resolved->type == 'image'
+                    && $resolved->images[0]['url'] == $embed->url
+                ) {
                     if (!$hasImage) $hasImage = true;
 
                     $p->addImage(
@@ -264,8 +262,8 @@ class Publish extends Base
             }
 
             $info = \App\Info::where('server', $draft->server)
-                            ->where('node', $draft->node)
-                            ->first();
+                ->where('node', $draft->node)
+                ->first();
 
             if ($info && $info->isGallery() && !$hasImage) {
                 $this->rpc('Publish.enableSend');
@@ -343,11 +341,30 @@ class Publish extends Base
             $embed = $draft->embeds()->find($embedId);
 
             if ($embed) {
-                $this->rpc('MovimTpl.remove', '#'.$embed->HTMLId);
+                $this->rpc('MovimTpl.remove', '#' . $embed->HTMLId);
                 $embed->delete();
             }
         }
+    }
 
+    public function ajaxOpenlinkPreview($id)
+    {
+        $draft = $this->user->drafts()->find($id);
+
+        if ($draft && !$draft->nodeid) {
+            $id = $this->getSlugFromTitle($draft->title);
+
+            if ($id) {
+                $openlink = ($draft->node == AppPost::MICROBLOG_NODE)
+                    ? $this->route('blog', [$draft->server, $id])
+                    : $this->route('community', [$draft->server, $draft->node, $id]);
+            }
+
+            $this->rpc('MovimTpl.fill', '#publishopenlinkpreview', $id ? __('post.public_preview', $openlink) : '');
+            return;
+        }
+
+        $this->rpc('MovimTpl.fill', '#publishopenlinkpreview', '');
     }
 
     public function ajaxTogglePrivacy($id, bool $open)
@@ -388,7 +405,6 @@ class Publish extends Base
 
             $this->rpc('MovimUtils.redirect', $this->route('publish', [$draft->server, $draft->node, $draft->nodeid]));
         }
-
     }
 
     public function prepareToggles(Draft $draft)
@@ -430,7 +446,7 @@ class Publish extends Base
             if ($embed) {
                 $embed->imagenumber = $imageNumber;
                 $embed->save();
-                $this->rpc('MovimTpl.remove', '#'.$embed->HTMLId);
+                $this->rpc('MovimTpl.remove', '#' . $embed->HTMLId);
                 $this->rpc('MovimTpl.append', '#publishembeds', $this->prepareEmbed($embed));
             }
         }
@@ -445,8 +461,8 @@ class Publish extends Base
         ?string $replyServer = null,
         ?string $replyNode = null,
         ?string $replyNodeId = null,
-        ?string $type = 'brief')
-    {
+        ?string $type = 'brief'
+    ) {
         $view = $this->tpl();
         if ($server == null) {
             $server = $this->user->id;
@@ -464,16 +480,16 @@ class Publish extends Base
             $view->assign('icon', \App\Contact::firstOrNew(['id' => $server]));
         } else {
             $info = \App\Info::where('server', $server)
-                             ->where('node', $node)
-                             ->first();
+                ->where('node', $node)
+                ->first();
             $view->assign('icon', $info);
         }
 
         $draft = $this->user->drafts()
-                            ->where('server', $server)
-                            ->where('node', $node)
-                            ->where('nodeid', $nodeId)
-                            ->first();
+            ->where('server', $server)
+            ->where('node', $node)
+            ->where('nodeid', $nodeId)
+            ->first();
 
         if (!$draft) {
             $draft = new Draft;
@@ -495,9 +511,9 @@ class Publish extends Base
 
         if ($replyServer && $replyNode && $replyNodeId) {
             $reply = \App\Post::where('server', $replyServer)
-                            ->where('node', $replyNode)
-                            ->where('nodeid', $replyNodeId)
-                            ->first();
+                ->where('node', $replyNode)
+                ->where('nodeid', $replyNodeId)
+                ->first();
         } elseif ($draft->reply_id) {
             $reply = \App\Post::find($draft->reply_id);
         }
@@ -520,5 +536,18 @@ class Publish extends Base
 
         $this->rpc('MovimTpl.fill', '#publish', $view->draw('_publish_form'));
         $this->rpc('Publish.init');
+    }
+
+    private function getSlugFromTitle(string $title): ?string
+    {
+        $slug = slugify(
+            strtok(wordwrap($title, 80, "\n"), "\n")
+        );
+
+        if (!empty($slug) && strlen($slug) > 24) {
+            return $slug . '-' . \generateKey(6);
+        }
+
+        return null;
     }
 }

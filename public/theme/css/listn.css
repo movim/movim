@@ -224,10 +224,12 @@ ul.list li .primary.small.bubble>a {
 /* Truncated content */
 
 ul.list li.subheader>div>p,
+ul.list li>div>span.supporting.line,
 ul.list li>div>p.line {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    max-width: 100%;
 }
 
 ul.list li>div>p.line.two {

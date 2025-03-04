@@ -119,14 +119,14 @@ class Route extends Base
         return $this->_redirect;
     }
 
-    public static function urlize(string $page, $params = false, array $get = [], $tab = false)
+    public static function urlize(string $page, $params = null, array $get = [], $tab = false): ?string
     {
         $routes = (new Route)->_routes;
 
         if (isset($routes[$page])) {
             $uri = BASE_URI . $page;
 
-            if ($params != false) {
+            if ($params != null) {
                 if (is_array($params)) {
                     foreach ($params as $value) {
                         $uri .= '/' . rawurlencode($value ?? '');
@@ -142,6 +142,8 @@ class Route extends Base
             return $uri . $get . $tab;
         } else {
             logError('Route not set for the page ' . $page);
+
+            return null;
         }
     }
 
