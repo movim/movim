@@ -36,13 +36,14 @@ class Session
     private $language;
 
     private $extensions = [
-        'pdo',
-        'xml',
-        'imagick',
         'curl',
         'dom',
+        'imagick',
         'mbstring',
-        'simplexml'
+        'openssl',
+        'pdo',
+        'simplexml',
+        'xml',
     ];
 
     public function __construct(
