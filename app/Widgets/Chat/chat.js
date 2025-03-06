@@ -1686,13 +1686,15 @@ MovimEvents.registerWindow('loaded', 'chat', () => {
     if (MovimUtils.isMobile()) Chat.touchEvents();
 
     Upload.initiate((file) => {
-        if (MovimUtils.urlParts().page == 'chat' && PublishStories.main == undefined) {
+        if (MovimUtils.urlParts().page == 'chat'
+        && (typeof(PublishStories) == 'indefined' || PublishStories.main == undefined)) {
             Upload.prependName = 'chat';
         }
     });
 
     Upload.attach((file) => {
-        if (MovimUtils.urlParts().page == 'chat' && PublishStories.main == undefined) {
+        if (MovimUtils.urlParts().page == 'chat'
+        && (typeof(PublishStories) == 'indefined' || PublishStories.main == undefined)) {
             Chat_ajaxHttpDaemonSendMessage(
                 Chat.getTextarea().dataset.jid,
                 false,

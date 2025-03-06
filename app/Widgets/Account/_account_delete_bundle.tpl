@@ -5,11 +5,20 @@
     <h4 class="gray">{$c->__('account.delete_bundle_text')}</h4>
     <br />
 
-    <p class="normal">
-        <span class="fingerprint">
-            {$bundle->fingerprint}
-        </span>
-    </p>
+    <ul class="list">
+        <li>
+            <span class="primary icon red">
+                <i class="material-symbols">fingerprint</i>
+            </span>
+            <div>
+                <p class="normal">
+                    <span class="fingerprint">
+                        {$bundle->fingerprint}
+                    </span>
+                </p>
+            </div>
+        </li>
+    </ul>
 </section>
 <footer>
     <button onclick="Dialog_ajaxClear()" class="button flat">

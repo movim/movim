@@ -39,7 +39,7 @@
                         {/if}
                     </div>
                 </li>
-                {if="$value->self"}<br /><hr /><br />{/if}
+                {if="$value->self && $fingerprints->count() > 1"}<br /><hr /><br />{/if}
             {/loop}
         </ul>
     </div>
