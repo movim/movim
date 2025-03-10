@@ -41,7 +41,7 @@ class EmojisConfig extends Base
     {
         $emoji = Emoji::where('id', $form->emojiid->value)->first();
 
-        if ($emoji && Validator::regex('/^[a-z\-]+$/')->isValid($form->alias->value)) {
+        if ($emoji && Validator::regex('/^[a-z0-9\-]+$/')->isValid($form->alias->value)) {
 
             if ($this->user->emojis()->wherePivot('alias', $form->alias->value)
                 ->where('id', '!=', $emoji->id)

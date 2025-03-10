@@ -9,6 +9,7 @@ v0.30 (master)
 * Upgrade to fabiang/sasl 2.0
 * Fix DTMF numpad during Jingle calls
 * Fix #1384 Add a preview of the open link URL in Publish
+* Fix #1410 Add support of shortcodes containing numbers for custom emojis
 
 v0.29.2
 ---------------------------

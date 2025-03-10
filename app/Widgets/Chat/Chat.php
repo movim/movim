@@ -699,7 +699,7 @@ class Chat extends \Movim\Widget\Base
         // Custom emojis
 
         $matchedCustomEmojis = [];
-        preg_match_all('/:([a-z\-]+):/', $m->body, $matchedCustomEmojis);
+        preg_match_all('/:([a-z0-9\-]+):/', $m->body, $matchedCustomEmojis);
 
         if (!empty($matchedCustomEmojis[1])) {
             $favoritesEmojis = $this->user->emojis->keyBy('pivot.alias');
