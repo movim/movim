@@ -22,3 +22,12 @@
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
 }
+
+#chat_actions ul#message_preview li.reactions {
+    padding: 0 0.5rem;
+    padding-bottom: 0.75rem;
+}
+
+#chat_actions ul#message_preview li.reactions > p {
+    line-height: 4.75rem;
+}

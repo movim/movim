@@ -858,7 +858,8 @@ var Chat = {
                         && (e.target.classList.contains('message')
                             || e.target.parentElement.classList.contains('message')) && !(window.getSelection().toString() != ''
                             )
-                        && this.dataset.mid) {
+                        && this.dataset.mid
+                        && e.target.tagName.toLowerCase() != 'span') {
                         ChatActions_ajaxShowMessageDialog(this.dataset.mid);
                     }
                 }, 200);
@@ -1128,7 +1129,7 @@ var Chat = {
             }
         }
 
-        if (data.reactionsHtml !== undefined) {
+        if (data.reactionsHtml !== undefined && data.retracted == false) {
             reactions.innerHTML = data.reactionsHtml;
         }
 

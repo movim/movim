@@ -49,3 +49,10 @@
     box-shadow: var(--elevation-2);
     pointer-events: none;
 }
+
+.chip img {
+    margin-bottom: -0.6rem;
+    margin-right: 0.75rem;
+    margin-left: -0.75rem;
+    height: 2.5rem;
+}

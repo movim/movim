@@ -18,6 +18,11 @@
                 </div>
             </div>
         </li>
+        <li class="reactions">
+            <div>
+                <p>{loop="$message->reactions->groupBy('emoji')"}<a class="chip" href="#">{autoescape="off"}{$key|addEmojis:true}{/autoescape}{$value->implode('jidfrom', ', ')}</a>{/loop}</p>
+            </div>
+        </li>
     </ul>
     <ul class="list divided active middle">
         {if="!$message->encrypted"}

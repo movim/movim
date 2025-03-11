@@ -11,6 +11,8 @@ v0.30 (master)
 * Fix #1384 Add a preview of the open link URL in Publish
 * Fix #1410 Add support of shortcodes containing numbers for custom emojis
 * Add support of content type HTML in Atom elements
+* Show reactions details when opening the message details box
+* Do not display the reactions if a message was retracted
 
 v0.29.2
 ---------------------------
