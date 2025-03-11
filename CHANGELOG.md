@@ -10,6 +10,7 @@ v0.30 (master)
 * Fix DTMF numpad during Jingle calls
 * Fix #1384 Add a preview of the open link URL in Publish
 * Fix #1410 Add support of shortcodes containing numbers for custom emojis
+* Add support of content type HTML in Atom elements
 
 v0.29.2
 ---------------------------

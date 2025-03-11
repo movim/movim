@@ -361,6 +361,13 @@ class Post extends Model
         foreach ($contents as $c) {
             switch ($c->attributes()->type) {
                 case 'html':
+                    $d = htmlspecialchars_decode((string)$c);
+
+                    $dom = new \DOMDocument('1.0', 'utf-8');
+                    $dom->loadHTML('<div>' .$d . '</div>', LIBXML_NOERROR);
+
+                    return (string)$dom->saveHTML($dom->documentElement->lastChild->lastChild);
+                    break;
                 case 'xhtml':
                     $import = null;
                     $dom = new \DOMDocument('1.0', 'utf-8');

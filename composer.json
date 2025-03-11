@@ -41,12 +41,13 @@
         "react/child-process": "^0.6",
         "react/http": "^1.11",
         "react/dns": "^1.13",
-        "ratchet/pawl": "0.4.1",
+        "ratchet/pawl": "0.4.2",
         "minishlink/web-push": "^9.0",
         "vlucas/phpdotenv": "^5.6",
         "react/promise-timer": "^1.11",
         "awobaz/compoships": "^2.3",
-        "wyrihaximus/react-cron": "^4.0"
+        "wyrihaximus/react-cron": "^4.0",
+        "nyholm/psr7": "^1.8"
     },
     "config": {
         "platform": {
