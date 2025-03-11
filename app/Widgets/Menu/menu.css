@@ -5,3 +5,13 @@
 #menu_refresh {
     margin: 0.5rem 0;
 }
+
+#menu_refresh li.refreshing {
+    background: linear-gradient(to right, rgb(var(--movim-background-main)) 8%, rgba(var(--movim-background), 0.5) 18%, rgb(var(--movim-background-main)) 33%);
+    animation: 1.5s shine linear infinite;
+    background-size: 200% 100%;
+}
+
+#menu_refresh li.refreshing span.primary i {
+    animation: spin 2s linear infinite;
+}

@@ -17,6 +17,11 @@ var Menu = {
         }
     },
 
+    refresh: function() {
+        document.querySelector('#menu_refresh li').classList.add('refreshing');
+        Menu_ajaxHttpGetAll();
+    },
+
     setLoad: function(tab) {
         tab.innerHTML = '<i class="material-symbols spin">autorenew</i>';
     }
