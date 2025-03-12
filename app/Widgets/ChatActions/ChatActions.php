@@ -71,6 +71,7 @@ class ChatActions extends \Movim\Widget\Base
     {
         $message = $this->user->messages()
             ->where('mid', $mid)
+            ->with('reactions.contact')
             ->first();
 
         if ($message && $message->isClassic() && !$message->retracted) {

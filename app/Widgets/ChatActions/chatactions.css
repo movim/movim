@@ -10,6 +10,7 @@
 
 #chat_actions ul#message_preview li div.bubble:not(.file) {
     padding-right: 5rem;
+    margin-bottom: 0;
 }
 
 #chat_actions ul#message_preview li.oppose {

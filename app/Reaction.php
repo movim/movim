@@ -22,4 +22,17 @@ class Reaction extends Model
     {
         return $this->hasOne('App\Contact', 'id', 'jidfrom');
     }
+
+    public function getTruenameAttribute()
+    {
+        if ($this->contact) {
+            return $this->contact->truename;
+        }
+
+        if (str_contains($this->jidfrom, '@')) {
+            return explodeJid($this->jidfrom)['username'];
+        } else {
+            return $this->jidfrom;
+        }
+    }
 }
