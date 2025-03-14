@@ -15,6 +15,8 @@ var MovimVisio = {
 
     observer: null,
 
+    activeSpeakerIntervalId: null,
+
     load: function () {
         MovimVisio.localVideo = document.getElementById('local_video');
         MovimVisio.localVideo.addEventListener('loadeddata', () => {
@@ -60,6 +62,8 @@ var MovimVisio = {
                     pc.close();
                 });
             });
+
+            MovimVisio.activeSpeakerIntervalId = setInterval(MovimJingles.checkActiveSpeaker, 1000);
         } else {
             MovimJingles.initSession(jid, fullJid, id);
 
@@ -67,7 +71,7 @@ var MovimVisio = {
             if (MovimVisio.id) {
                 Visio_ajaxAccept(fullJid, MovimVisio.id);
 
-            // Calling
+                // Calling
             } else {
                 MovimVisio.id = crypto.randomUUID();
                 MovimVisio.calling = true; // TODO, remove me ?
@@ -250,6 +254,8 @@ var MovimVisio = {
         MovimVisio.id = null;
 
         Notif.setCallStatus(null);
+
+        clearInterval(MovimVisio.activeSpeakerIntervalId);
 
         let visio = document.querySelector('#visio');
         delete visio.dataset.type;

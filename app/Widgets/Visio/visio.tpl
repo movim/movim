@@ -8,6 +8,10 @@
                 <span id="toggle_fullscreen" class="control icon color transparent active" onclick="VisioUtils.toggleFullScreen()">
                     <i class="material-symbols">fullscreen</i>
                 </span>
+                <span id="toggle_mode" class="control icon color transparent active" onclick="VisioUtils.toggleMode()">
+                    <i class="material-symbols">tile_small</i>
+                </span>
+
                 <span id="toggle_dtmf" class="control icon color transparent active" onclick="VisioUtils.toggleDtmf()">
                     <i class="material-symbols">dialpad</i>
                 </span>

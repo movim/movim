@@ -24,8 +24,8 @@
     }
 }
 
-#dialog:not(:empty) ~ #visio,
-#drawer:not(:empty) ~ #visio {
+#dialog:not(:empty)~#visio,
+#drawer:not(:empty)~#visio {
     transform: translateX(110%);
 }
 
@@ -39,19 +39,24 @@
     z-index: 0;
 }
 
-body > #visio:not(:fullscreen) #main,
-body > #visio:not(:fullscreen) #toggle_dtmf,
+body>#visio:not(:fullscreen) #main,
+body>#visio:not(:fullscreen) #toggle_dtmf,
 
-body > #visio:not(:fullscreen) .participant:before,
-body > #visio:not(:fullscreen) .participant:after,
+body>#visio:not(:fullscreen) .participant:before,
+body>#visio:not(:fullscreen) .participant:after,
 
 #chat_widget #visio #switch_chat,
 #visio:not([data-type]),
 #visio:not([data-type]) #toggle_audio,
 #visio[data-type=video] #toggle_dtmf,
 #visio[data-type=video] #dtmf,
-#visio #dtmf:not(.hide) ~ #participants,
+#visio #dtmf:not(.hide)~#participants,
 #visio:not([data-type=video]) #toggle_video,
+
+body>#visio:not(:fullscreen) #toggle_mode,
+#visio:not([data-muji=true]) #toggle_mode,
+#visio:not([data-type=video]) #toggle_mode,
+
 #visio:not([data-type=video]) #switch_camera,
 #visio:not([data-type=video]) #screen_sharing,
 #visio:not([data-type=video]) #local_video,
@@ -109,10 +114,11 @@ body > #visio:not(:fullscreen) .participant:after,
 
 #visio #main {
     outline: 0.5rem solid transparent;
-    bottom: 2rem; /* Override global CSS */
+    bottom: 2rem;
+    /* Override global CSS */
 }
 
-#visio[data-muji='true'] #main {
+#visio[data-muji=true] #main {
     display: none;
 }
 
@@ -155,21 +161,22 @@ body > #visio:not(:fullscreen) .participant:after,
 }
 
 
-body > #visio:not(:fullscreen) video#local_video,
-body > #visio:not(:fullscreen) video#screen_sharing_video.sharing {
+body>#visio:not(:fullscreen) video#local_video,
+body>#visio:not(:fullscreen) video#screen_sharing_video.sharing {
     width: 10rem;
     right: 0;
     bottom: 0;
 }
 
-body > #visio:not(:fullscreen) #visio_contact,
-body > #visio:not(:fullscreen) .participant img.avatar {
+body>#visio:not(:fullscreen) #visio_contact,
+body>#visio:not(:fullscreen) .participant img.avatar {
     transform: scale(0.7);
 }
 
 @media screen and (max-width: 800px) {
+
     #chat_widget #visio:not(:fullscreen) #visio_contact,
-    body > #visio:not(:fullscreen) .participant img.avatar {
+    body>#visio:not(:fullscreen) .participant img.avatar {
         transform: scale(0.7);
     }
 }
@@ -180,6 +187,7 @@ body > #visio:not(:fullscreen) .participant img.avatar {
 }
 
 @media screen and (max-width: 800px) {
+
     #visio video#local_video,
     #visio video#screen_sharing_video.sharing {
         width: 15rem;
@@ -250,9 +258,6 @@ body > #visio:not(:fullscreen) .participant img.avatar {
     align-items: center;
 
     flex: 1 auto;
-
-    outline: 0.5rem solid rgba(255, 255, 255, var(--level));
-    outline-offset: -0.75rem;
 }
 
 #visio .participant video {
@@ -261,27 +266,52 @@ body > #visio:not(:fullscreen) .participant img.avatar {
     margin: 0 auto;
     display: block;
     border-radius: 0.5rem;
+    object-fit: cover;
 }
 
-#visio #participants:has(.participant:nth-child(2)) .participant {
+/** Active speaker view **/
+
+#visio #participants.active .participant:not(.active),
+body>#visio:not(:fullscreen) #participants .participant:not(.active) {
+    display: none;
+}
+
+/** Grid view **/
+
+#visio #participants:not(.active) .participant.active {
+    background-color: rgba(var(--movim-font), 0.1);
+}
+
+#visio #participants:not(.active):has(.participant:nth-child(2)) .participant {
     flex: 1 0 calc(50% - 0.5rem);
     max-width: 50%;
 }
 
-#visio #participants:has(.participant:nth-child(2)) .participant video {
+body>#visio #participants:not(.active):has(.participant:nth-child(2)) .participant {
+    flex: 1 auto;
+    max-width: 100%;
+}
+
+#visio #participants:not(.active):has(.participant:nth-child(2)) .participant video {
     max-height: 800px;
 }
 
-#visio #participants:has(.participant:nth-child(3)) .participant {
+#visio #participants:not(.active):has(.participant:nth-child(3)) .participant {
     height: 50%;
 }
 
-#visio #participants:has(.participant:nth-child(5)) .participant {
+#visio #participants:not(.active):has(.participant:nth-child(5)) .participant {
     height: 33.33%;
 }
 
-#visio #participants:has(.participant:nth-child(7)) .participant {
+#visio #participants:not(.active):has(.participant:nth-child(7)) .participant {
     height: 25%;
+}
+
+body>#visio #participants:not(.active):has(.participant:nth-child(3)) .participant,
+body>#visio #participants:not(.active):has(.participant:nth-child(5)) .participant,
+body>#visio #participants:not(.active):has(.participant:nth-child(7)) .participant {
+    height: 100%;
 }
 
 #visio .participant::after,
@@ -313,10 +343,12 @@ body > #visio:not(:fullscreen) .participant img.avatar {
     border-radius: 50%;
     transition: opacity 0.5s ease-in-out;
     opacity: 0;
+    display: none;
 }
 
 #visio .participant.video_off img.avatar {
     opacity: 1;
+    display: initial;
 }
 
 #visio .participant[data-name]::before {
@@ -336,7 +368,7 @@ body > #visio:not(:fullscreen) .participant img.avatar {
     content: '\e02b \f83b';
 }
 
-#visio[data-muji='true'] #participants:not(:empty) ~ .infos,
+#visio[data-muji='true'] #participants:not(:empty)~.infos,
 #visio #local_video.video_off,
 #visio .participant.video_off video {
     opacity: 0;

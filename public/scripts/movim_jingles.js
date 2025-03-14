@@ -5,6 +5,8 @@ var MovimJingleSession = function (jid, fullJid, id, name, avatarUrl) {
     this.tracksTypes = {};
     this.name = name;
     this.avatarUrl = avatarUrl;
+    this.audioLevel = 0;
+    this.lastPostMessage = 0;
 
     this.pc = new RTCPeerConnection({ 'iceServers': MovimVisio.services });
 
@@ -77,53 +79,59 @@ var MovimJingleSession = function (jid, fullJid, id, name, avatarUrl) {
     });
 }
 
-MovimJingleSession.prototype.handleRemoteAudio = function () {
+MovimJingleSession.prototype.handleRemoteAudio = async function () {
     this.remoteAudioContext = new AudioContext();
 
     try {
         var remoteMicrophone = this.remoteAudioContext.createMediaStreamSource(
             this.remoteAudio.srcObject
         );
+
+        await this.remoteAudioContext.audioWorklet.addModule(BASE_URI + 'scripts/movim_jingle_session_audio_worklet.js');
+        const audioWorkletNode = new AudioWorkletNode(this.remoteAudioContext, 'jinglesession-audioworklet');
+        remoteMicrophone.connect(audioWorkletNode);
+
+        audioWorkletNode.port.onmessage = (e) => {
+            this.processRemoteAudioMessage(e.data);
+        };
+
     } catch (error) {
         MovimUtils.logError(error);
         return;
     }
+}
 
-    var remoteJavascriptNode = this.remoteAudioContext.createScriptProcessor(2048, 1, 1);
-    this.isMuteStep = 0;
-    this.remoteMaxLevel = 0;
+/**
+ * In some clients, such as Dino, the buffer is stopped when the microphone is muted
+ * we detect that there and send a clear message properly
+ */
+MovimJingleSession.prototype.clearRemoteAudioMessage = function () {
+    const second = 1000;
+    const secondAgo = Date.now() - second;
 
-    remoteMicrophone.connect(remoteJavascriptNode);
-    remoteJavascriptNode.connect(this.remoteAudioContext.destination);
-    remoteJavascriptNode.onaudioprocess = (event) => {
-        var inpt = event.inputBuffer.getChannelData(0);
-        var instant = 0.0;
-        var sum = 0.0;
+    if (this.lastPostMessage < secondAgo) {
+        this.processRemoteAudioMessage({
+            "isMuteStep": 5,
+            "level": 0,
+            "published": Date.now()
+        });
+    }
+}
 
-        for (var i = 0; i < inpt.length; ++i) {
-            sum += inpt[i] * inpt[i];
-        }
+MovimJingleSession.prototype.processRemoteAudioMessage = function (message) {
+    if (message.isMuteStep >= 5) {
+        this.remoteVideo.classList.add('audio_off');
+    } else {
+        this.remoteVideo.classList.remove('audio_off');
+    }
 
-        instant = Math.sqrt(sum / inpt.length);
-        this.remoteMaxLevel = Math.max(this.remoteMaxLevel, instant);
+    this.lastPostMessage = message.published;
+    this.audioLevel = message.level;
+    this.participant.style.setProperty('--level', message.level);
 
-        var base = (instant / this.remoteMaxLevel);
-        var level = (base > 0.05) ? base ** .3 : 0;
-
-        // Fallback in case we don't have the proper signalisation
-        if (level == 0) {
-            this.isMuteStep++;
-        } else {
-            this.isMuteStep = 0;
-        }
-
-        if (this.isMuteStep > 250) {
-            this.remoteVideo.classList.add('audio_off');
-        } else {
-            this.remoteVideo.classList.remove('audio_off');
-        }
-
-        this.participant.style.setProperty('--level', level.toFixed(2));
+    if (message.level > 0) {
+        clearTimeout(this.clearRemoteAudioMessageId);
+        this.clearRemoteAudioMessageId = setTimeout(this.clearRemoteAudioMessage.bind(this), 2000);
     }
 }
 
@@ -287,6 +295,26 @@ var MovimJingles = {
 
         MovimJingles.sessions[jid] = new MovimJingleSession(jid, fullJid, id, name, avatarUrl);
         return MovimJingles.sessions[jid].id;
+    },
+
+    checkActiveSpeaker: function () {
+        let maxLevel = 0;
+        let maxJid = null;
+
+        for (jid of Object.keys(MovimJingles.sessions)) {
+            if (maxLevel < MovimJingles.sessions[jid].audioLevel) {
+                maxLevel = MovimJingles.sessions[jid].audioLevel;
+                maxJid = jid;
+            }
+        }
+
+        if (maxJid != null) {
+            for (jid of Object.keys(MovimJingles.sessions)) {
+                MovimJingles.sessions[jid].participant.classList.remove('active');
+            }
+
+            MovimJingles.sessions[maxJid].participant.classList.add('active');
+        }
     },
 
     enableAudio: function (enable = true) {

@@ -109,6 +109,19 @@ var VisioUtils = {
         }
     },
 
+    toggleMode: function () {
+        var button = document.querySelector('#toggle_mode i');
+        let participants = document.querySelector('#participants');
+
+        if (button.innerText == 'tile_small') {
+            participants.classList.add('active');
+            button.innerHTML = 'tile_large';
+        } else {
+            participants.classList.remove('active');
+            button.innerHTML = 'tile_small';
+        }
+    },
+
     toggleAudio: function () {
         var button = document.querySelector('#toggle_audio i');
 

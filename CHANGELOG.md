@@ -13,6 +13,7 @@ v0.30 (master)
 * Add support of content type HTML in Atom elements
 * Show reactions details when opening the message details box
 * Do not display the reactions if a message was retracted
+* Add Active Speaker mode in Muji calls
 
 v0.29.2
 ---------------------------
