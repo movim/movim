@@ -33,6 +33,8 @@ class CallInvitePropose extends Payload
         && $parent->{'stanza-id'} && $parent->{'stanza-id'}->attributes()->xmlns == 'urn:xmpp:sid:0') {
             $muji = \App\MujiCall::firstOrCreate([
                 'id' => (string)$stanza->attributes()->id,
+                'session_id' => SESSION_ID
+            ], [
                 'muc' => (string)$stanza->muji->attributes()->room,
                 'jidfrom' => $carbon
                     ? (string)$parent->attributes()->to
@@ -42,8 +44,10 @@ class CallInvitePropose extends Payload
             ]);
 
             MujiCallParticipant::firstOrCreate([
+                'session_id' => SESSION_ID,
                 'muji_call_id' => (string)$stanza->attributes()->id,
-                'jid' => (string)$parent->attributes()->from,
+                'jid' => (string)$parent->attributes()->from
+            ], [
                 'inviter' => true
             ]);
 

@@ -14,8 +14,10 @@ class CallInviteLeft extends Payload
 
             if ($muji) {
                 MujiCallParticipant::firstOrCreate([
+                    'session_id' => SESSION_ID,
                     'muji_call_id' => (string)$stanza->attributes()->id,
-                    'jid' => (string)$parent->attributes()->from,
+                    'jid' => (string)$parent->attributes()->from
+                ], [
                     'left_at' => Carbon::now(),
                 ]);
 
