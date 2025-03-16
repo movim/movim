@@ -146,6 +146,17 @@ class Session extends Model
             ->get();
     }
 
+    public function getMujiService()
+    {
+        return Info::where('parent', $this->host)
+            ->whereCategory('conference')
+            ->whereType('text')
+            ->whereDoesntHave('identities', function ($query)  {
+                $query->where('category', 'gateway');
+            })
+            ->first();
+    }
+
     public function getCommentsService()
     {
         return Info::where('server', 'comments.' . $this->host)

@@ -126,7 +126,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-17 08:11+0200\n"
+"POT-Creation-Date: 2025-03-16 13:49+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Rintan, 2020-2021\n"
 "Language-Team: Japanese (http://app.transifex.com/movim/movim/language/ja/)\n"
@@ -666,6 +666,14 @@ msgstr ""
 
 #: [chat]jingle_seconds
 msgid "%s seconds"
+msgstr ""
+
+#: [chat]muji_propose
+msgid "A conference call has started"
+msgstr ""
+
+#: [chat]muji_retract
+msgid "The conference call has ended"
 msgstr ""
 
 #: [chat]muc_admin
@@ -1471,7 +1479,7 @@ msgid "Manage a favorite emoji"
 msgstr ""
 
 #: [emojisconfig]alias_error
-msgid "The shortcut should only contains lowercase letters and dashes"
+msgid "The shortcut should only contains lowercase letters, numbers and dashes"
 msgstr ""
 
 #: [emojisconfig]new_added
@@ -1858,6 +1866,11 @@ msgstr ""
 #: [post]public_text
 msgid "This will allow anyone outside Movim to have access to your publication"
 msgstr ""
+
+#: [post]public_preview
+#, fuzzy
+msgid "Preview URL: %s"
+msgstr "プレビュー"
 
 #: [post]public_yes
 msgid "This post is public"
@@ -2744,8 +2757,9 @@ msgid "Declined"
 msgstr ""
 
 #: [visio]in_call
-msgid "In call"
-msgstr ""
+#, fuzzy
+msgid "Ongoing call"
+msgstr "着信"
 
 #: [visio]failed
 msgid "Failed"
@@ -2755,12 +2769,24 @@ msgstr ""
 msgid "…connecting"
 msgstr "接続中…"
 
+#: [visio]no_participants_left
+msgid "All participants have left the call"
+msgstr ""
+
 #: [visiolobby]called
 msgid "%s is calling you"
 msgstr ""
 
 #: [visiolobby]calling
 msgid "Calling %s"
+msgstr ""
+
+#: [visiolobby]muji_create
+msgid "Creating a conference call in %s"
+msgstr ""
+
+#: [visiolobby]muji_join
+msgid "Joining the conference call"
 msgstr ""
 
 #: [visiolobby]setup
@@ -2795,6 +2821,19 @@ msgstr ""
 #: [visiolobby]no_mic_sound2 [visioconfig]no_mic_sound2
 msgid "Try to select another source or check your system settings"
 msgstr ""
+
+#: [muji]call_audio_invite
+msgid "You are invited in an audio conference call"
+msgstr ""
+
+#: [muji]call_video_invite
+msgid "You are invited in a video conference call"
+msgstr ""
+
+#: [muji]cannot_create
+#, fuzzy
+msgid "Cannot create a conference call on your server"
+msgstr "あなたはこのサーバーではコミュニティを作成できません"
 
 #: [visioconfig]title
 msgid "Video & Voice"
@@ -2985,6 +3024,10 @@ msgstr "取り消し"
 msgid "Close"
 msgstr "閉じる"
 
+#: [button]create
+msgid "Create"
+msgstr ""
+
 #: [button]update
 msgid "Update"
 msgstr "更新"
@@ -3012,6 +3055,11 @@ msgstr "登録解除"
 #: [button]save
 msgid "Save"
 msgstr "保存"
+
+#: [button]join
+#, fuzzy
+msgid "Join"
+msgstr "%sに参加する"
 
 #: [button]clear
 msgid "Clear"

@@ -6,6 +6,7 @@ use App\MujiCall;
 use App\Widgets\Dialog\Dialog;
 use App\Widgets\Notif\Notif;
 use App\Widgets\Rooms\Rooms;
+use App\Widgets\Toast\Toast;
 use Movim\CurrentCall;
 use Movim\ImageSize;
 use Movim\Librairies\JingletoSDP;
@@ -451,10 +452,17 @@ class Visio extends Base
             ->conferences()->where('conference', $to)
             ->first();
 
+        $mujiService = $this->user->session->getMujiService();
+
+        if (!$mujiService) {
+            Toast::send($this->__('muji.cannot_create'));
+            return;
+        }
+
         if ($conference) {
             $mujiId = generateUUID();
             $mujiConference = generateKey(withCapitals: false);
-            $mujiConferenceJid = $mujiConference . '@conference.movim.eu';
+            $mujiConferenceJid = $mujiConference . '@' . $mujiService->server;
 
             CurrentCall::getInstance()->start($to, $mujiId, mujiRoom: $mujiConferenceJid);
 

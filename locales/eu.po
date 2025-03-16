@@ -123,7 +123,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-17 08:11+0200\n"
+"POT-Creation-Date: 2025-03-16 13:49+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Xabi, 2023-2024\n"
 "Language-Team: Basque (http://app.transifex.com/movim/movim/language/eu/)\n"
@@ -664,6 +664,14 @@ msgstr "%s minutu eta %s segundu"
 #: [chat]jingle_seconds
 msgid "%s seconds"
 msgstr "%s segundu"
+
+#: [chat]muji_propose
+msgid "A conference call has started"
+msgstr ""
+
+#: [chat]muji_retract
+msgid "The conference call has ended"
+msgstr ""
 
 #: [chat]muc_admin
 msgid "%s is now admin"
@@ -1468,8 +1476,9 @@ msgid "Manage a favorite emoji"
 msgstr ""
 
 #: [emojisconfig]alias_error
-msgid "The shortcut should only contains lowercase letters and dashes"
-msgstr ""
+#, fuzzy
+msgid "The shortcut should only contains lowercase letters, numbers and dashes"
+msgstr "Ezizenak hizkiak, letrak, - eta _ soilik izan ditzazke"
 
 #: [emojisconfig]new_added
 msgid "New favorite emoji added"
@@ -1855,6 +1864,11 @@ msgstr "Argitaratu artikulu hau publikoki"
 #: [post]public_text
 msgid "This will allow anyone outside Movim to have access to your publication"
 msgstr "Movim-etik kanpoko edonori zure argitalpena atzitzea ahalbidetuko du honek"
+
+#: [post]public_preview
+#, fuzzy
+msgid "Preview URL: %s"
+msgstr "Aurreikusi"
 
 #: [post]public_yes
 msgid "This post is public"
@@ -2741,8 +2755,9 @@ msgid "Declined"
 msgstr ""
 
 #: [visio]in_call
-msgid "In call"
-msgstr ""
+#, fuzzy
+msgid "Ongoing call"
+msgstr "Deitzen ari zara"
 
 #: [visio]failed
 msgid "Failed"
@@ -2752,12 +2767,24 @@ msgstr ""
 msgid "…connecting"
 msgstr "… konektatzen"
 
+#: [visio]no_participants_left
+msgid "All participants have left the call"
+msgstr ""
+
 #: [visiolobby]called
 msgid "%s is calling you"
 msgstr ""
 
 #: [visiolobby]calling
 msgid "Calling %s"
+msgstr ""
+
+#: [visiolobby]muji_create
+msgid "Creating a conference call in %s"
+msgstr ""
+
+#: [visiolobby]muji_join
+msgid "Joining the conference call"
 msgstr ""
 
 #: [visiolobby]setup
@@ -2792,6 +2819,20 @@ msgstr "Ez da mikrofonotik datorren soinurik detektatu"
 #: [visiolobby]no_mic_sound2 [visioconfig]no_mic_sound2
 msgid "Try to select another source or check your system settings"
 msgstr "Saiatu beste iturri bat hautatzen edo egiaztatu zure gailuaren ezarpenak"
+
+#: [muji]call_audio_invite
+#, fuzzy
+msgid "You are invited in an audio conference call"
+msgstr "Ez duzu konferentzia honetan mezurik bildatzeko baimenik"
+
+#: [muji]call_video_invite
+msgid "You are invited in a video conference call"
+msgstr ""
+
+#: [muji]cannot_create
+#, fuzzy
+msgid "Cannot create a conference call on your server"
+msgstr "Ezin duzu zerbitzari honetan komunitate berri bat sortu"
 
 #: [visioconfig]title
 msgid "Video & Voice"
@@ -2982,6 +3023,11 @@ msgstr "Utzi"
 msgid "Close"
 msgstr "Itxi"
 
+#: [button]create
+#, fuzzy
+msgid "Create"
+msgstr "sortzaile"
+
 #: [button]update
 msgid "Update"
 msgstr "Eguneratu"
@@ -3009,6 +3055,11 @@ msgstr "Erregistrotik ezabatu"
 #: [button]save
 msgid "Save"
 msgstr "Gorde"
+
+#: [button]join
+#, fuzzy
+msgid "Join"
+msgstr "%s(e)ra sartu"
 
 #: [button]clear
 msgid "Clear"

@@ -123,7 +123,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-17 08:11+0200\n"
+"POT-Creation-Date: 2025-03-16 13:49+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Rossen Karpuzov <rkarpuzov@yahoo.com>, 2020-2023,2025\n"
 "Language-Team: Bulgarian (http://app.transifex.com/movim/movim/language/bg/)\n"
@@ -664,6 +664,14 @@ msgstr "%s минути и %s секунди"
 #: [chat]jingle_seconds
 msgid "%s seconds"
 msgstr "%s секунди"
+
+#: [chat]muji_propose
+msgid "A conference call has started"
+msgstr ""
+
+#: [chat]muji_retract
+msgid "The conference call has ended"
+msgstr ""
 
 #: [chat]muc_admin
 msgid "%s is now admin"
@@ -1468,7 +1476,7 @@ msgid "Manage a favorite emoji"
 msgstr ""
 
 #: [emojisconfig]alias_error
-msgid "The shortcut should only contains lowercase letters and dashes"
+msgid "The shortcut should only contains lowercase letters, numbers and dashes"
 msgstr ""
 
 #: [emojisconfig]new_added
@@ -1855,6 +1863,11 @@ msgstr "Публикувай тази статия публично"
 #: [post]public_text
 msgid "This will allow anyone outside Movim to have access to your publication"
 msgstr ""
+
+#: [post]public_preview
+#, fuzzy
+msgid "Preview URL: %s"
+msgstr "Преглед"
 
 #: [post]public_yes
 msgid "This post is public"
@@ -2741,8 +2754,9 @@ msgid "Declined"
 msgstr "Отказан"
 
 #: [visio]in_call
-msgid "In call"
-msgstr "В разговор"
+#, fuzzy
+msgid "Ongoing call"
+msgstr "Изходящо прозвъняване"
 
 #: [visio]failed
 msgid "Failed"
@@ -2752,12 +2766,24 @@ msgstr "Провален"
 msgid "…connecting"
 msgstr "...свързване"
 
+#: [visio]no_participants_left
+msgid "All participants have left the call"
+msgstr ""
+
 #: [visiolobby]called
 msgid "%s is calling you"
 msgstr ""
 
 #: [visiolobby]calling
 msgid "Calling %s"
+msgstr ""
+
+#: [visiolobby]muji_create
+msgid "Creating a conference call in %s"
+msgstr ""
+
+#: [visiolobby]muji_join
+msgid "Joining the conference call"
 msgstr ""
 
 #: [visiolobby]setup
@@ -2792,6 +2818,20 @@ msgstr ""
 #: [visiolobby]no_mic_sound2 [visioconfig]no_mic_sound2
 msgid "Try to select another source or check your system settings"
 msgstr ""
+
+#: [muji]call_audio_invite
+#, fuzzy
+msgid "You are invited in an audio conference call"
+msgstr "Не ви е позволено да изпращате съобщения в конфренцията"
+
+#: [muji]call_video_invite
+msgid "You are invited in a video conference call"
+msgstr ""
+
+#: [muji]cannot_create
+#, fuzzy
+msgid "Cannot create a conference call on your server"
+msgstr "Не можете да създадете нова общност на този сървър"
 
 #: [visioconfig]title
 msgid "Video & Voice"
@@ -2982,6 +3022,11 @@ msgstr "Отказ"
 msgid "Close"
 msgstr "Затворете"
 
+#: [button]create
+#, fuzzy
+msgid "Create"
+msgstr "творчески"
+
 #: [button]update
 msgid "Update"
 msgstr "Обнови"
@@ -3009,6 +3054,11 @@ msgstr "Де-регистриран"
 #: [button]save
 msgid "Save"
 msgstr "Запазване"
+
+#: [button]join
+#, fuzzy
+msgid "Join"
+msgstr "Присъединете %s"
 
 #: [button]clear
 msgid "Clear"
@@ -3714,3 +3764,6 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr "Пиши тук"
+
+#~ msgid "In call"
+#~ msgstr "В разговор"

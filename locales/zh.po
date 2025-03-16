@@ -134,7 +134,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-17 08:11+0200\n"
+"POT-Creation-Date: 2025-03-16 13:49+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Phonebook3599, 2024-2025\n"
 "Language-Team: Chinese (China) (http://app.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -675,6 +675,14 @@ msgstr "%s 分 %s 秒"
 #: [chat]jingle_seconds
 msgid "%s seconds"
 msgstr "%s 秒"
+
+#: [chat]muji_propose
+msgid "A conference call has started"
+msgstr ""
+
+#: [chat]muji_retract
+msgid "The conference call has ended"
+msgstr ""
 
 #: [chat]muc_admin
 msgid "%s is now admin"
@@ -1479,7 +1487,8 @@ msgid "Manage a favorite emoji"
 msgstr "管理收藏的表情符号"
 
 #: [emojisconfig]alias_error
-msgid "The shortcut should only contains lowercase letters and dashes"
+#, fuzzy
+msgid "The shortcut should only contains lowercase letters, numbers and dashes"
 msgstr "快捷方式应仅包含小写字母和破折号"
 
 #: [emojisconfig]new_added
@@ -1866,6 +1875,11 @@ msgstr "公开发布这篇文章"
 #: [post]public_text
 msgid "This will allow anyone outside Movim to have access to your publication"
 msgstr "这将允许 Movim 之外的任何人访问您的发布"
+
+#: [post]public_preview
+#, fuzzy
+msgid "Preview URL: %s"
+msgstr "预览"
 
 #: [post]public_yes
 msgid "This post is public"
@@ -2752,8 +2766,9 @@ msgid "Declined"
 msgstr "已拒绝"
 
 #: [visio]in_call
-msgid "In call"
-msgstr "通话中"
+#, fuzzy
+msgid "Ongoing call"
+msgstr "去电"
 
 #: [visio]failed
 msgid "Failed"
@@ -2763,6 +2778,10 @@ msgstr "失败"
 msgid "…connecting"
 msgstr "…正在连接"
 
+#: [visio]no_participants_left
+msgid "All participants have left the call"
+msgstr ""
+
 #: [visiolobby]called
 msgid "%s is calling you"
 msgstr "%s 正在呼叫您"
@@ -2770,6 +2789,14 @@ msgstr "%s 正在呼叫您"
 #: [visiolobby]calling
 msgid "Calling %s"
 msgstr "正在呼叫 %s"
+
+#: [visiolobby]muji_create
+msgid "Creating a conference call in %s"
+msgstr ""
+
+#: [visiolobby]muji_join
+msgid "Joining the conference call"
+msgstr ""
 
 #: [visiolobby]setup
 msgid "Setting up your camera and microphone"
@@ -2803,6 +2830,20 @@ msgstr "麦克风未检测到声音"
 #: [visiolobby]no_mic_sound2 [visioconfig]no_mic_sound2
 msgid "Try to select another source or check your system settings"
 msgstr "尝试选择其他源或检查系统设置"
+
+#: [muji]call_audio_invite
+#, fuzzy
+msgid "You are invited in an audio conference call"
+msgstr "不允许您在此群聊中发送消息"
+
+#: [muji]call_video_invite
+msgid "You are invited in a video conference call"
+msgstr ""
+
+#: [muji]cannot_create
+#, fuzzy
+msgid "Cannot create a conference call on your server"
+msgstr "无法在此服务器上创建新社区"
 
 #: [visioconfig]title
 msgid "Video & Voice"
@@ -2993,6 +3034,11 @@ msgstr "取消"
 msgid "Close"
 msgstr "关闭"
 
+#: [button]create
+#, fuzzy
+msgid "Create"
+msgstr "创意"
+
 #: [button]update
 msgid "Update"
 msgstr "更新"
@@ -3020,6 +3066,11 @@ msgstr "注销"
 #: [button]save
 msgid "Save"
 msgstr "保存"
+
+#: [button]join
+#, fuzzy
+msgid "Join"
+msgstr "加入 %s"
 
 #: [button]clear
 msgid "Clear"
@@ -3725,3 +3776,6 @@ msgstr "无法访问 API，请稍后再试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
+
+#~ msgid "In call"
+#~ msgstr "通话中"

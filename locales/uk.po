@@ -122,7 +122,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-17 08:11+0200\n"
+"POT-Creation-Date: 2025-03-16 13:49+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: sergey solovey, 2022,2024\n"
 "Language-Team: Ukrainian (http://app.transifex.com/movim/movim/language/uk/)\n"
@@ -663,6 +663,14 @@ msgstr "%s хвилин та %s секунд"
 #: [chat]jingle_seconds
 msgid "%s seconds"
 msgstr "%s секунд"
+
+#: [chat]muji_propose
+msgid "A conference call has started"
+msgstr ""
+
+#: [chat]muji_retract
+msgid "The conference call has ended"
+msgstr ""
 
 #: [chat]muc_admin
 msgid "%s is now admin"
@@ -1467,7 +1475,8 @@ msgid "Manage a favorite emoji"
 msgstr "Керувати улюбленими смайликами"
 
 #: [emojisconfig]alias_error
-msgid "The shortcut should only contains lowercase letters and dashes"
+#, fuzzy
+msgid "The shortcut should only contains lowercase letters, numbers and dashes"
 msgstr "Ярлик повинен містити лише малі літери та тире"
 
 #: [emojisconfig]new_added
@@ -1854,6 +1863,11 @@ msgstr "Опублікуйте цю статтю у відкритому дос�
 #: [post]public_text
 msgid "This will allow anyone outside Movim to have access to your publication"
 msgstr "Це дозволить будь-кому за межами Movim мати доступ до вашої публікації"
+
+#: [post]public_preview
+#, fuzzy
+msgid "Preview URL: %s"
+msgstr "Попередній перегляд"
 
 #: [post]public_yes
 msgid "This post is public"
@@ -2740,8 +2754,9 @@ msgid "Declined"
 msgstr "Відхилено"
 
 #: [visio]in_call
-msgid "In call"
-msgstr "На зв'язку"
+#, fuzzy
+msgid "Ongoing call"
+msgstr "Вихідний виклик"
 
 #: [visio]failed
 msgid "Failed"
@@ -2751,6 +2766,10 @@ msgstr "Не вдалося"
 msgid "…connecting"
 msgstr "...з'єднання"
 
+#: [visio]no_participants_left
+msgid "All participants have left the call"
+msgstr ""
+
 #: [visiolobby]called
 msgid "%s is calling you"
 msgstr "%s телефонує вам"
@@ -2758,6 +2777,14 @@ msgstr "%s телефонує вам"
 #: [visiolobby]calling
 msgid "Calling %s"
 msgstr "Зателефонувати %s"
+
+#: [visiolobby]muji_create
+msgid "Creating a conference call in %s"
+msgstr ""
+
+#: [visiolobby]muji_join
+msgid "Joining the conference call"
+msgstr ""
 
 #: [visiolobby]setup
 msgid "Setting up your camera and microphone"
@@ -2791,6 +2818,20 @@ msgstr "Не виявлено звуку з вашого мікрофона"
 #: [visiolobby]no_mic_sound2 [visioconfig]no_mic_sound2
 msgid "Try to select another source or check your system settings"
 msgstr "Спробуйте вибрати інше джерело або перевірте налаштування системи"
+
+#: [muji]call_audio_invite
+#, fuzzy
+msgid "You are invited in an audio conference call"
+msgstr "Вам заборонено надсилати повідомлення в цій конференції"
+
+#: [muji]call_video_invite
+msgid "You are invited in a video conference call"
+msgstr ""
+
+#: [muji]cannot_create
+#, fuzzy
+msgid "Cannot create a conference call on your server"
+msgstr "Ви не можете створити нову спільноту на цьому сервері"
 
 #: [visioconfig]title
 msgid "Video & Voice"
@@ -2981,6 +3022,11 @@ msgstr "Скасувати"
 msgid "Close"
 msgstr "Закрити"
 
+#: [button]create
+#, fuzzy
+msgid "Create"
+msgstr "творчий"
+
 #: [button]update
 msgid "Update"
 msgstr "Оновити"
@@ -3008,6 +3054,11 @@ msgstr "Скасувати реєстрацію"
 #: [button]save
 msgid "Save"
 msgstr "Зберегти"
+
+#: [button]join
+#, fuzzy
+msgid "Join"
+msgstr "Приєднуйтесь %s"
 
 #: [button]clear
 msgid "Clear"
@@ -3713,3 +3764,6 @@ msgstr "API недоступний, спробуйте пізніше"
 #: [field]type_here
 msgid "Type here"
 msgstr "Напишіть тут"
+
+#~ msgid "In call"
+#~ msgstr "На зв'язку"
