@@ -130,7 +130,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.14.7\n"
+"X-Generator: Translate Toolkit 3.15.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -2816,9 +2816,8 @@ msgid "Try to select another source or check your system settings"
 msgstr ""
 
 #: [muji]call_audio_invite
-#, fuzzy
 msgid "You are invited in an audio conference call"
-msgstr "Non tes permiso para enviar mensaxes a esta reunión"
+msgstr ""
 
 #: [muji]call_video_invite
 msgid "You are invited in a video conference call"

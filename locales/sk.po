@@ -133,7 +133,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);\n"
-"X-Generator: Translate Toolkit 3.14.7\n"
+"X-Generator: Translate Toolkit 3.15.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -1866,9 +1866,8 @@ msgid "This will allow anyone outside Movim to have access to your publication"
 msgstr ""
 
 #: [post]public_preview
-#, fuzzy
 msgid "Preview URL: %s"
-msgstr "Ukážka"
+msgstr ""
 
 #: [post]public_yes
 msgid "This post is public"
@@ -2755,9 +2754,8 @@ msgid "Declined"
 msgstr ""
 
 #: [visio]in_call
-#, fuzzy
 msgid "Ongoing call"
-msgstr "Prichádzajúci hovor"
+msgstr ""
 
 #: [visio]failed
 msgid "Failed"
@@ -2829,9 +2827,8 @@ msgid "You are invited in a video conference call"
 msgstr ""
 
 #: [muji]cannot_create
-#, fuzzy
 msgid "Cannot create a conference call on your server"
-msgstr "Nemôžete vytvárať nové komunity na tomto serveri"
+msgstr ""
 
 #: [visioconfig]title
 msgid "Video & Voice"
@@ -3023,9 +3020,8 @@ msgid "Close"
 msgstr "Zatvoriť"
 
 #: [button]create
-#, fuzzy
 msgid "Create"
-msgstr "tvorivý"
+msgstr ""
 
 #: [button]update
 msgid "Update"
@@ -3056,9 +3052,8 @@ msgid "Save"
 msgstr "Uložiť"
 
 #: [button]join
-#, fuzzy
 msgid "Join"
-msgstr "Vstúpiť do %s"
+msgstr ""
 
 #: [button]clear
 msgid "Clear"

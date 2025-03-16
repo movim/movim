@@ -145,7 +145,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
-"X-Generator: Translate Toolkit 3.14.7\n"
+"X-Generator: Translate Toolkit 3.15.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -1878,9 +1878,8 @@ msgid "This will allow anyone outside Movim to have access to your publication"
 msgstr ""
 
 #: [post]public_preview
-#, fuzzy
 msgid "Preview URL: %s"
-msgstr "Предпросмотр"
+msgstr ""
 
 #: [post]public_yes
 msgid "This post is public"
@@ -2767,9 +2766,8 @@ msgid "Declined"
 msgstr ""
 
 #: [visio]in_call
-#, fuzzy
 msgid "Ongoing call"
-msgstr "Входящий звонок"
+msgstr ""
 
 #: [visio]failed
 msgid "Failed"
@@ -2841,9 +2839,8 @@ msgid "You are invited in a video conference call"
 msgstr ""
 
 #: [muji]cannot_create
-#, fuzzy
 msgid "Cannot create a conference call on your server"
-msgstr "Вы не можете создать сообщества на этом сервере."
+msgstr ""
 
 #: [visioconfig]title
 msgid "Video & Voice"
@@ -3035,9 +3032,8 @@ msgid "Close"
 msgstr "Закрыть"
 
 #: [button]create
-#, fuzzy
 msgid "Create"
-msgstr "творческий"
+msgstr ""
 
 #: [button]update
 msgid "Update"
@@ -3068,9 +3064,8 @@ msgid "Save"
 msgstr "Сохранить"
 
 #: [button]join
-#, fuzzy
 msgid "Join"
-msgstr "Зайти в %s"
+msgstr ""
 
 #: [button]clear
 msgid "Clear"

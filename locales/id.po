@@ -132,7 +132,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Translate Toolkit 3.14.7\n"
+"X-Generator: Translate Toolkit 3.15.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -3019,9 +3019,8 @@ msgid "Close"
 msgstr "Tutup"
 
 #: [button]create
-#, fuzzy
 msgid "Create"
-msgstr "kreatif"
+msgstr ""
 
 #: [button]update
 msgid "Update"

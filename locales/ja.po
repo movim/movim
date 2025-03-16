@@ -135,7 +135,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Translate Toolkit 3.14.7\n"
+"X-Generator: Translate Toolkit 3.15.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -1868,9 +1868,8 @@ msgid "This will allow anyone outside Movim to have access to your publication"
 msgstr ""
 
 #: [post]public_preview
-#, fuzzy
 msgid "Preview URL: %s"
-msgstr "プレビュー"
+msgstr ""
 
 #: [post]public_yes
 msgid "This post is public"
@@ -2757,9 +2756,8 @@ msgid "Declined"
 msgstr ""
 
 #: [visio]in_call
-#, fuzzy
 msgid "Ongoing call"
-msgstr "着信"
+msgstr ""
 
 #: [visio]failed
 msgid "Failed"
@@ -2831,9 +2829,8 @@ msgid "You are invited in a video conference call"
 msgstr ""
 
 #: [muji]cannot_create
-#, fuzzy
 msgid "Cannot create a conference call on your server"
-msgstr "あなたはこのサーバーではコミュニティを作成できません"
+msgstr ""
 
 #: [visioconfig]title
 msgid "Video & Voice"
@@ -3057,9 +3054,8 @@ msgid "Save"
 msgstr "保存"
 
 #: [button]join
-#, fuzzy
 msgid "Join"
-msgstr "%sに参加する"
+msgstr ""
 
 #: [button]clear
 msgid "Clear"

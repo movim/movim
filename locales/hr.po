@@ -131,7 +131,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Translate Toolkit 3.14.7\n"
+"X-Generator: Translate Toolkit 3.15.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -2825,9 +2825,8 @@ msgid "You are invited in a video conference call"
 msgstr ""
 
 #: [muji]cannot_create
-#, fuzzy
 msgid "Cannot create a conference call on your server"
-msgstr "Ne možete pokrenuti novu zajednicu na ovom poslužitelju"
+msgstr ""
 
 #: [visioconfig]title
 msgid "Video & Voice"
@@ -3051,9 +3050,8 @@ msgid "Save"
 msgstr ""
 
 #: [button]join
-#, fuzzy
 msgid "Join"
-msgstr "Pridružite se u %s"
+msgstr ""
 
 #: [button]clear
 msgid "Clear"

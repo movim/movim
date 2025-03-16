@@ -139,7 +139,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
-"X-Generator: Translate Toolkit 3.14.7\n"
+"X-Generator: Translate Toolkit 3.15.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -674,11 +674,11 @@ msgstr "%s secondes"
 
 #: [chat]muji_propose
 msgid "A conference call has started"
-msgstr ""
+msgstr "Une téléconférence a démarré"
 
 #: [chat]muji_retract
 msgid "The conference call has ended"
-msgstr ""
+msgstr "La téléconférence est terminée"
 
 #: [chat]muc_admin
 msgid "%s is now admin"
@@ -1483,9 +1483,8 @@ msgid "Manage a favorite emoji"
 msgstr "Gérer mes emojis favoris"
 
 #: [emojisconfig]alias_error
-#, fuzzy
 msgid "The shortcut should only contains lowercase letters, numbers and dashes"
-msgstr "Le raccourci ne doit contenir que des minuscules et tirets"
+msgstr "Le raccourci ne doit contenir que des minuscules, chiffres et tirets"
 
 #: [emojisconfig]new_added
 msgid "New favorite emoji added"
@@ -1873,9 +1872,8 @@ msgid "This will allow anyone outside Movim to have access to your publication"
 msgstr "Vous allez autoriser l'accès à cet article à n'importe qui à l'extérieur de Movim"
 
 #: [post]public_preview
-#, fuzzy
 msgid "Preview URL: %s"
-msgstr "Aperçu"
+msgstr "Prévisualisation de l'URL: %s"
 
 #: [post]public_yes
 msgid "This post is public"
@@ -2762,9 +2760,8 @@ msgid "Declined"
 msgstr "Refusé"
 
 #: [visio]in_call
-#, fuzzy
 msgid "Ongoing call"
-msgstr "Appel sortant"
+msgstr "Appel en cours"
 
 #: [visio]failed
 msgid "Failed"
@@ -2776,7 +2773,7 @@ msgstr "…mise en relation"
 
 #: [visio]no_participants_left
 msgid "All participants have left the call"
-msgstr ""
+msgstr "Tous les participants ont quités l'appel"
 
 #: [visiolobby]called
 msgid "%s is calling you"
@@ -2788,11 +2785,11 @@ msgstr "En communication avec %s"
 
 #: [visiolobby]muji_create
 msgid "Creating a conference call in %s"
-msgstr ""
+msgstr "Création d'une téléconférence dans %s"
 
 #: [visiolobby]muji_join
 msgid "Joining the conference call"
-msgstr ""
+msgstr "Rejoindre la téléconférence"
 
 #: [visiolobby]setup
 msgid "Setting up your camera and microphone"
@@ -2828,18 +2825,16 @@ msgid "Try to select another source or check your system settings"
 msgstr "Veuillez sélectionner une autre source ou vérifiez vos paramètres système"
 
 #: [muji]call_audio_invite
-#, fuzzy
 msgid "You are invited in an audio conference call"
-msgstr "Vous n'êtes pas autorisé à envoyer des messages dans ce salon"
+msgstr "Vous êtes invité à rejoindre une conférence audio"
 
 #: [muji]call_video_invite
 msgid "You are invited in a video conference call"
-msgstr ""
+msgstr "Vous êtes invité à rejoindre une conférence vidéo"
 
 #: [muji]cannot_create
-#, fuzzy
 msgid "Cannot create a conference call on your server"
-msgstr "Vous ne pouvez pas créer de communauté sur ce serveur"
+msgstr "La téléconférence ne peut être créée sur votre serveur"
 
 #: [visioconfig]title
 msgid "Video & Voice"
@@ -3031,9 +3026,8 @@ msgid "Close"
 msgstr "Fermer"
 
 #: [button]create
-#, fuzzy
 msgid "Create"
-msgstr "créatif(ve)"
+msgstr "Créer"
 
 #: [button]update
 msgid "Update"
@@ -3064,9 +3058,8 @@ msgid "Save"
 msgstr "Sauvegarder"
 
 #: [button]join
-#, fuzzy
 msgid "Join"
-msgstr "Rejoindre %s"
+msgstr "Rejoindre"
 
 #: [button]clear
 msgid "Clear"
@@ -3772,6 +3765,3 @@ msgstr "L’API est indisponible pour le moment, réessayez plus tard."
 #: [field]type_here
 msgid "Type here"
 msgstr "Rédigez votre message ici"
-
-#~ msgid "In call"
-#~ msgstr "En communication"

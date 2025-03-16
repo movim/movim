@@ -143,7 +143,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n == 0 || n == 1) ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
-"X-Generator: Translate Toolkit 3.14.7\n"
+"X-Generator: Translate Toolkit 3.15.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -1876,9 +1876,8 @@ msgid "This will allow anyone outside Movim to have access to your publication"
 msgstr ""
 
 #: [post]public_preview
-#, fuzzy
 msgid "Preview URL: %s"
-msgstr "Visualizar"
+msgstr ""
 
 #: [post]public_yes
 msgid "This post is public"
@@ -2767,9 +2766,8 @@ msgid "Declined"
 msgstr ""
 
 #: [visio]in_call
-#, fuzzy
 msgid "Ongoing call"
-msgstr "Chamada de saída"
+msgstr ""
 
 #: [visio]failed
 msgid "Failed"
@@ -2833,18 +2831,16 @@ msgid "Try to select another source or check your system settings"
 msgstr ""
 
 #: [muji]call_audio_invite
-#, fuzzy
 msgid "You are invited in an audio conference call"
-msgstr "Não tem permissão de enviar mensagens nessa conferencia "
+msgstr ""
 
 #: [muji]call_video_invite
 msgid "You are invited in a video conference call"
 msgstr ""
 
 #: [muji]cannot_create
-#, fuzzy
 msgid "Cannot create a conference call on your server"
-msgstr "Você não pode criar uma nova comunidade neste servidor"
+msgstr ""
 
 #: [visioconfig]title
 msgid "Video & Voice"
@@ -3036,9 +3032,8 @@ msgid "Close"
 msgstr "Fechar"
 
 #: [button]create
-#, fuzzy
 msgid "Create"
-msgstr "criativo(a)"
+msgstr ""
 
 #: [button]update
 msgid "Update"
@@ -3069,9 +3064,8 @@ msgid "Save"
 msgstr "Salvar"
 
 #: [button]join
-#, fuzzy
 msgid "Join"
-msgstr "Entrar em %s"
+msgstr ""
 
 #: [button]clear
 msgid "Clear"

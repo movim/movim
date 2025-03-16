@@ -131,7 +131,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != 11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || (n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
-"X-Generator: Translate Toolkit 3.14.7\n"
+"X-Generator: Translate Toolkit 3.15.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -1475,9 +1475,8 @@ msgid "Manage a favorite emoji"
 msgstr "Керувати улюбленими смайликами"
 
 #: [emojisconfig]alias_error
-#, fuzzy
 msgid "The shortcut should only contains lowercase letters, numbers and dashes"
-msgstr "Ярлик повинен містити лише малі літери та тире"
+msgstr ""
 
 #: [emojisconfig]new_added
 msgid "New favorite emoji added"
@@ -1865,9 +1864,8 @@ msgid "This will allow anyone outside Movim to have access to your publication"
 msgstr "Це дозволить будь-кому за межами Movim мати доступ до вашої публікації"
 
 #: [post]public_preview
-#, fuzzy
 msgid "Preview URL: %s"
-msgstr "Попередній перегляд"
+msgstr ""
 
 #: [post]public_yes
 msgid "This post is public"
@@ -2754,9 +2752,8 @@ msgid "Declined"
 msgstr "Відхилено"
 
 #: [visio]in_call
-#, fuzzy
 msgid "Ongoing call"
-msgstr "Вихідний виклик"
+msgstr ""
 
 #: [visio]failed
 msgid "Failed"
@@ -2820,18 +2817,16 @@ msgid "Try to select another source or check your system settings"
 msgstr "Спробуйте вибрати інше джерело або перевірте налаштування системи"
 
 #: [muji]call_audio_invite
-#, fuzzy
 msgid "You are invited in an audio conference call"
-msgstr "Вам заборонено надсилати повідомлення в цій конференції"
+msgstr ""
 
 #: [muji]call_video_invite
 msgid "You are invited in a video conference call"
 msgstr ""
 
 #: [muji]cannot_create
-#, fuzzy
 msgid "Cannot create a conference call on your server"
-msgstr "Ви не можете створити нову спільноту на цьому сервері"
+msgstr ""
 
 #: [visioconfig]title
 msgid "Video & Voice"
@@ -3023,9 +3018,8 @@ msgid "Close"
 msgstr "Закрити"
 
 #: [button]create
-#, fuzzy
 msgid "Create"
-msgstr "творчий"
+msgstr ""
 
 #: [button]update
 msgid "Update"
@@ -3056,9 +3050,8 @@ msgid "Save"
 msgstr "Зберегти"
 
 #: [button]join
-#, fuzzy
 msgid "Join"
-msgstr "Приєднуйтесь %s"
+msgstr ""
 
 #: [button]clear
 msgid "Clear"
@@ -3764,6 +3757,3 @@ msgstr "API недоступний, спробуйте пізніше"
 #: [field]type_here
 msgid "Type here"
 msgstr "Напишіть тут"
-
-#~ msgid "In call"
-#~ msgstr "На зв'язку"

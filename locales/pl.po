@@ -134,7 +134,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
-"X-Generator: Translate Toolkit 3.14.7\n"
+"X-Generator: Translate Toolkit 3.15.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -1478,9 +1478,8 @@ msgid "Manage a favorite emoji"
 msgstr "Zmień ulubione emoji"
 
 #: [emojisconfig]alias_error
-#, fuzzy
 msgid "The shortcut should only contains lowercase letters, numbers and dashes"
-msgstr "Skrót powinien zawierać tylko małe litery i myślniki"
+msgstr ""
 
 #: [emojisconfig]new_added
 msgid "New favorite emoji added"
@@ -1868,9 +1867,8 @@ msgid "This will allow anyone outside Movim to have access to your publication"
 msgstr "Pozwoli to na dostęp do publikacji także poza Movim"
 
 #: [post]public_preview
-#, fuzzy
 msgid "Preview URL: %s"
-msgstr "Podgląd"
+msgstr ""
 
 #: [post]public_yes
 msgid "This post is public"
@@ -2757,9 +2755,8 @@ msgid "Declined"
 msgstr "Odrzucone"
 
 #: [visio]in_call
-#, fuzzy
 msgid "Ongoing call"
-msgstr "Połączenie wychodzące"
+msgstr ""
 
 #: [visio]failed
 msgid "Failed"
@@ -2823,18 +2820,16 @@ msgid "Try to select another source or check your system settings"
 msgstr "Spróbuj wybrać inne źródło lub sprawdź ustawienia systemowe"
 
 #: [muji]call_audio_invite
-#, fuzzy
 msgid "You are invited in an audio conference call"
-msgstr "Nie masz zgody na wysyłanie wiadomości w tej konferencji"
+msgstr ""
 
 #: [muji]call_video_invite
 msgid "You are invited in a video conference call"
 msgstr ""
 
 #: [muji]cannot_create
-#, fuzzy
 msgid "Cannot create a conference call on your server"
-msgstr "Nie masz zgody na utworzenie społeczności na tym serwerze"
+msgstr ""
 
 #: [visioconfig]title
 msgid "Video & Voice"
@@ -3026,9 +3021,8 @@ msgid "Close"
 msgstr "Zamknij"
 
 #: [button]create
-#, fuzzy
 msgid "Create"
-msgstr "kreatywny"
+msgstr ""
 
 #: [button]update
 msgid "Update"
@@ -3059,9 +3053,8 @@ msgid "Save"
 msgstr "Zapisz"
 
 #: [button]join
-#, fuzzy
 msgid "Join"
-msgstr "Dołącz do %s"
+msgstr ""
 
 #: [button]clear
 msgid "Clear"
@@ -3767,6 +3760,3 @@ msgstr "Interfejs nieosiągalny, spróbuj ponownie później"
 #: [field]type_here
 msgid "Type here"
 msgstr "Pisz tutaj"
-
-#~ msgid "In call"
-#~ msgstr "W trakcie rozmowy"

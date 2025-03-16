@@ -143,7 +143,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Translate Toolkit 3.14.7\n"
+"X-Generator: Translate Toolkit 3.15.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -175,7 +175,7 @@ msgstr "API"
 
 #: [about]info
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
-msgstr "Movim 是基于 XMPP 的交流平台。除以下软件和资源外，所有项目均遵循"
+msgstr "Movim 是基于 XMPP 的交流平台。除以下软件和资源外，所有项目均采用"
 
 #: [account]title [page]account
 msgid "Account"
@@ -347,7 +347,7 @@ msgstr "列入白名单的 XMPP 服务器"
 
 #: [whitelist]info1
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
-msgstr "如果您想在 Movim Pod 中指定授权的 XMPP 服务器列表，并禁止所有其他服务器的连接，请在这里输入域名，并使用半角逗号隔开（例如：movim.eu,jabber.fr）"
+msgstr "如果您想在 Movim 实例中指定授权的 XMPP 服务器列表，并禁止所有其他服务器的连接，请在此处输入域名，并使用英文逗号隔开（例如：movim.eu,jabber.fr）"
 
 #: [whitelist]info2
 msgid "Leave this field blank if you allow the access to all the XMPP accounts."
@@ -457,7 +457,7 @@ msgstr "会话"
 
 #: [adminsessions]text
 msgid "Currently connected users on the pod"
-msgstr "Pod 当前已连接的用户"
+msgstr "实例上当前已连接的用户"
 
 #: [avatar]file
 msgid "File"
@@ -597,7 +597,7 @@ msgstr "%s 需要您的注意"
 
 #: [chat]placeholder
 msgid "Your message here…"
-msgstr "您的消息在这里…"
+msgstr "您的消息在此处…"
 
 #: [chat]smileys
 msgid "Smileys"
@@ -1128,7 +1128,7 @@ msgstr "您好"
 
 #: [communitysubscriptions]empty_text1
 msgid "Here you will be able to manage all your subscriptions."
-msgstr "您将能够在这里管理您的所有订阅"
+msgstr "您将能够在此处管理您的所有订阅"
 
 #: [communitysubscriptions]empty_text2
 msgid "You don’t have any community subscriptions yet."
@@ -1487,9 +1487,8 @@ msgid "Manage a favorite emoji"
 msgstr "管理收藏的表情符号"
 
 #: [emojisconfig]alias_error
-#, fuzzy
 msgid "The shortcut should only contains lowercase letters, numbers and dashes"
-msgstr "快捷方式应仅包含小写字母和破折号"
+msgstr ""
 
 #: [emojisconfig]new_added
 msgid "New favorite emoji added"
@@ -1705,7 +1704,7 @@ msgstr "还没有消息…"
 
 #: [menu]empty
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
-msgstr "欢迎访问您的动态消息，在这里您将看到您的联系人和订阅的社区中发布的所有帖子。"
+msgstr "欢迎访问您的动态消息，在此处您将看到您的联系人和订阅的社区中发布的所有帖子。"
 
 #: [menu]mine
 msgid "My publications"
@@ -1713,7 +1712,7 @@ msgstr "我的发布"
 
 #: [menu]add_post
 msgid "Write a new post…"
-msgstr "写一篇新帖子…"
+msgstr "写新帖子…"
 
 #: [notification]request_title
 msgid "Notifications request"
@@ -1877,9 +1876,8 @@ msgid "This will allow anyone outside Movim to have access to your publication"
 msgstr "这将允许 Movim 之外的任何人访问您的发布"
 
 #: [post]public_preview
-#, fuzzy
 msgid "Preview URL: %s"
-msgstr "预览"
+msgstr ""
 
 #: [post]public_yes
 msgid "This post is public"
@@ -2015,7 +2013,7 @@ msgstr "链接已复制到剪贴板"
 
 #: [publish]placeholder
 msgid "What’s new?"
-msgstr "有什么新鲜事?"
+msgstr "有什么新消息?"
 
 #: [publish]brief_title
 msgid "Brief"
@@ -2027,7 +2025,7 @@ msgstr "文章"
 
 #: [publish]post
 msgid "Write a post"
-msgstr "写一篇帖子"
+msgstr "写帖子"
 
 #: [publish]add_link
 msgid "Add a link"
@@ -2143,7 +2141,7 @@ msgstr "您还没有任何群聊。"
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
-msgstr "单击添加按钮添加群聊。"
+msgstr "点击添加按钮添加群聊。"
 
 #: [rooms]type_room
 msgid "Type of room"
@@ -2607,11 +2605,11 @@ msgstr "故事已删除"
 
 #: [subscribe]info
 msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
-msgstr "Movim 是去中心化的社交网络，在创建新账号之前，您需要选择一个服务器进行注册。"
+msgstr "Movim 是去中心化的社交网络，在创建新账号之前，您需要选择服务器进行注册。"
 
 #: [subscribe]server_question
 msgid "Your server here?"
-msgstr "您的服务器不在这里？"
+msgstr "您的服务器不在此处？"
 
 #: [subscribe]server_contact
 msgid "Contact us to add yours to the officially supported servers list"
@@ -2699,7 +2697,7 @@ msgstr "此账号在此 Movim 实例上是公开的吗？"
 
 #: [profile]privacy_info
 msgid "Movim will create a public page to host your blog and your account will be searchable by the other Movim users."
-msgstr "Movim 将创建一个公共页面来托管您的博客，其他 Movim 用户可以搜索您的账号。"
+msgstr "Movim 将创建公共页面来托管您的博客，其他 Movim 用户可以搜索您的账号。"
 
 #: [profile]nickname_info
 msgid "Set a local nickname to allow the other users of the instance to find you easily."
@@ -2766,9 +2764,8 @@ msgid "Declined"
 msgstr "已拒绝"
 
 #: [visio]in_call
-#, fuzzy
 msgid "Ongoing call"
-msgstr "去电"
+msgstr ""
 
 #: [visio]failed
 msgid "Failed"
@@ -2832,18 +2829,16 @@ msgid "Try to select another source or check your system settings"
 msgstr "尝试选择其他源或检查系统设置"
 
 #: [muji]call_audio_invite
-#, fuzzy
 msgid "You are invited in an audio conference call"
-msgstr "不允许您在此群聊中发送消息"
+msgstr ""
 
 #: [muji]call_video_invite
 msgid "You are invited in a video conference call"
 msgstr ""
 
 #: [muji]cannot_create
-#, fuzzy
 msgid "Cannot create a conference call on your server"
-msgstr "无法在此服务器上创建新社区"
+msgstr ""
 
 #: [visioconfig]title
 msgid "Video & Voice"
@@ -2867,7 +2862,7 @@ msgstr "Movim 需要启用 Javascript 才能正常工作。"
 
 #: [global]description
 msgid "Movim is a kickass distributed social networking platform that protects your privacy and comes with a set of awesome features."
-msgstr "Movim 是一个强大的分布式社交网络平台，可以保护您的隐私，并具有一系列很棒的功能。"
+msgstr "Movim 是强大的分布式社交网络平台，可以保护您的隐私，并具有一系列很棒的功能。"
 
 #: [global]loading
 msgid "Loading…"
@@ -2879,7 +2874,7 @@ msgstr "或者"
 
 #: [global]change_pod
 msgid "Switch to another pod"
-msgstr "切换到另一个 Pod"
+msgstr "切换到其他实例"
 
 #: [page]communities
 msgid "Communities"
@@ -3035,9 +3030,8 @@ msgid "Close"
 msgstr "关闭"
 
 #: [button]create
-#, fuzzy
 msgid "Create"
-msgstr "创意"
+msgstr ""
 
 #: [button]update
 msgid "Update"
@@ -3068,9 +3062,8 @@ msgid "Save"
 msgstr "保存"
 
 #: [button]join
-#, fuzzy
 msgid "Join"
-msgstr "加入 %s"
+msgstr ""
 
 #: [button]clear
 msgid "Clear"
@@ -3776,6 +3769,3 @@ msgstr "无法访问 API，请稍后再试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
-
-#~ msgid "In call"
-#~ msgstr "通话中"

@@ -129,7 +129,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.14.7\n"
+"X-Generator: Translate Toolkit 3.15.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -664,11 +664,11 @@ msgstr "%s seconds"
 
 #: [chat]muji_propose
 msgid "A conference call has started"
-msgstr ""
+msgstr "A conference call has started"
 
 #: [chat]muji_retract
 msgid "The conference call has ended"
-msgstr ""
+msgstr "The conference call has ended"
 
 #: [chat]muc_admin
 msgid "%s is now admin"
@@ -1473,9 +1473,8 @@ msgid "Manage a favorite emoji"
 msgstr "Manage a favorite emoji"
 
 #: [emojisconfig]alias_error
-#, fuzzy
 msgid "The shortcut should only contains lowercase letters, numbers and dashes"
-msgstr "The shortcut should only contains lowercase letters and dashes"
+msgstr "The shortcut should only contains lowercase letters, numbers and dashes"
 
 #: [emojisconfig]new_added
 msgid "New favorite emoji added"
@@ -1863,9 +1862,8 @@ msgid "This will allow anyone outside Movim to have access to your publication"
 msgstr "This will allow anyone outside Movim to have access to your publication"
 
 #: [post]public_preview
-#, fuzzy
 msgid "Preview URL: %s"
-msgstr "Preview"
+msgstr "Preview URL: %s"
 
 #: [post]public_yes
 msgid "This post is public"
@@ -2752,9 +2750,8 @@ msgid "Declined"
 msgstr "Declined"
 
 #: [visio]in_call
-#, fuzzy
 msgid "Ongoing call"
-msgstr "Outgoing call"
+msgstr "Ongoing call"
 
 #: [visio]failed
 msgid "Failed"
@@ -2766,7 +2763,7 @@ msgstr "…connecting"
 
 #: [visio]no_participants_left
 msgid "All participants have left the call"
-msgstr ""
+msgstr "All participants have left the call"
 
 #: [visiolobby]called
 msgid "%s is calling you"
@@ -2778,11 +2775,11 @@ msgstr "Calling %s"
 
 #: [visiolobby]muji_create
 msgid "Creating a conference call in %s"
-msgstr ""
+msgstr "Creating a conference call in %s"
 
 #: [visiolobby]muji_join
 msgid "Joining the conference call"
-msgstr ""
+msgstr "Joining the conference call"
 
 #: [visiolobby]setup
 msgid "Setting up your camera and microphone"
@@ -2818,18 +2815,16 @@ msgid "Try to select another source or check your system settings"
 msgstr "Try to select another source or check your system settings"
 
 #: [muji]call_audio_invite
-#, fuzzy
 msgid "You are invited in an audio conference call"
-msgstr "You are not allowed to send messages in this conference"
+msgstr "You are invited in an audio conference call"
 
 #: [muji]call_video_invite
 msgid "You are invited in a video conference call"
-msgstr ""
+msgstr "You are invited in a video conference call"
 
 #: [muji]cannot_create
-#, fuzzy
 msgid "Cannot create a conference call on your server"
-msgstr "You cannot create a new community on this server"
+msgstr "Cannot create a conference call on your server"
 
 #: [visioconfig]title
 msgid "Video & Voice"
@@ -3021,9 +3016,8 @@ msgid "Close"
 msgstr "Close"
 
 #: [button]create
-#, fuzzy
 msgid "Create"
-msgstr "creative"
+msgstr "Create"
 
 #: [button]update
 msgid "Update"
@@ -3054,9 +3048,8 @@ msgid "Save"
 msgstr "Save"
 
 #: [button]join
-#, fuzzy
 msgid "Join"
-msgstr "Join %s"
+msgstr "Join"
 
 #: [button]clear
 msgid "Clear"
@@ -3762,6 +3755,3 @@ msgstr "The API is not reachable, try again later"
 #: [field]type_here
 msgid "Type here"
 msgstr "Type here"
-
-#~ msgid "In call"
-#~ msgstr "In call"

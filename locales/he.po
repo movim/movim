@@ -131,7 +131,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: 2;\n"
-"X-Generator: Translate Toolkit 3.14.7\n"
+"X-Generator: Translate Toolkit 3.15.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -1864,9 +1864,8 @@ msgid "This will allow anyone outside Movim to have access to your publication"
 msgstr ""
 
 #: [post]public_preview
-#, fuzzy
 msgid "Preview URL: %s"
-msgstr "תצוגה מקדימה"
+msgstr ""
 
 #: [post]public_yes
 msgid "This post is public"
@@ -3019,9 +3018,8 @@ msgid "Close"
 msgstr "סגור"
 
 #: [button]create
-#, fuzzy
 msgid "Create"
-msgstr "יצירתי"
+msgstr ""
 
 #: [button]update
 msgid "Update"

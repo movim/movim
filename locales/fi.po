@@ -130,7 +130,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.14.7\n"
+"X-Generator: Translate Toolkit 3.15.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -1863,9 +1863,8 @@ msgid "This will allow anyone outside Movim to have access to your publication"
 msgstr ""
 
 #: [post]public_preview
-#, fuzzy
 msgid "Preview URL: %s"
-msgstr "Esikatsele"
+msgstr ""
 
 #: [post]public_yes
 msgid "This post is public"
@@ -3018,9 +3017,8 @@ msgid "Close"
 msgstr "Sulje"
 
 #: [button]create
-#, fuzzy
 msgid "Create"
-msgstr "luova"
+msgstr ""
 
 #: [button]update
 msgid "Update"

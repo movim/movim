@@ -134,7 +134,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.14.7\n"
+"X-Generator: Translate Toolkit 3.15.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -1867,9 +1867,8 @@ msgid "This will allow anyone outside Movim to have access to your publication"
 msgstr ""
 
 #: [post]public_preview
-#, fuzzy
 msgid "Preview URL: %s"
-msgstr "Előnézet"
+msgstr ""
 
 #: [post]public_yes
 msgid "This post is public"
@@ -2829,9 +2828,8 @@ msgid "You are invited in a video conference call"
 msgstr ""
 
 #: [muji]cannot_create
-#, fuzzy
 msgid "Cannot create a conference call on your server"
-msgstr "Nem tudsz új közösséget létrehozni ezen a szerveren"
+msgstr ""
 
 #: [visioconfig]title
 msgid "Video & Voice"
@@ -3023,9 +3021,8 @@ msgid "Close"
 msgstr "Bezárás"
 
 #: [button]create
-#, fuzzy
 msgid "Create"
-msgstr "kreatív"
+msgstr ""
 
 #: [button]update
 msgid "Update"
@@ -3056,9 +3053,8 @@ msgid "Save"
 msgstr "Mentés"
 
 #: [button]join
-#, fuzzy
 msgid "Join"
-msgstr "Csatlakozás a következőhöz: %s"
+msgstr ""
 
 #: [button]clear
 msgid "Clear"

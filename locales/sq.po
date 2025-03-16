@@ -132,7 +132,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 3.14.7\n"
+"X-Generator: Translate Toolkit 3.15.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -1476,9 +1476,8 @@ msgid "Manage a favorite emoji"
 msgstr "Administroni një emoxhi të parapëlqyer"
 
 #: [emojisconfig]alias_error
-#, fuzzy
 msgid "The shortcut should only contains lowercase letters, numbers and dashes"
-msgstr "Shkurtorja duhet të përmbajë vetëm shkronja të vogla dhe vija ndarëse në mes"
+msgstr ""
 
 #: [emojisconfig]new_added
 msgid "New favorite emoji added"
@@ -1866,9 +1865,8 @@ msgid "This will allow anyone outside Movim to have access to your publication"
 msgstr "Kjo i lejon kujtdo jashtë Movim-it të mund të përdorë botimin tuaj"
 
 #: [post]public_preview
-#, fuzzy
 msgid "Preview URL: %s"
-msgstr "Paraparje"
+msgstr ""
 
 #: [post]public_yes
 msgid "This post is public"
@@ -2755,9 +2753,8 @@ msgid "Declined"
 msgstr "Hedhur tej"
 
 #: [visio]in_call
-#, fuzzy
 msgid "Ongoing call"
-msgstr "Thirrje për dikë"
+msgstr ""
 
 #: [visio]failed
 msgid "Failed"
@@ -2821,18 +2818,16 @@ msgid "Try to select another source or check your system settings"
 msgstr "Provoni të përzgjidhni burim tjetër, ose shihni rregullimet e sistemit tuaj"
 
 #: [muji]call_audio_invite
-#, fuzzy
 msgid "You are invited in an audio conference call"
-msgstr "S’keni leje të dërgoni mesazhe në këtë konferencë"
+msgstr ""
 
 #: [muji]call_video_invite
 msgid "You are invited in a video conference call"
 msgstr ""
 
 #: [muji]cannot_create
-#, fuzzy
 msgid "Cannot create a conference call on your server"
-msgstr "S’mund të krijoni një bashkësi të re në këtë shërbyes"
+msgstr ""
 
 #: [visioconfig]title
 msgid "Video & Voice"
@@ -3024,9 +3019,8 @@ msgid "Close"
 msgstr "Mbylle"
 
 #: [button]create
-#, fuzzy
 msgid "Create"
-msgstr "krijues"
+msgstr ""
 
 #: [button]update
 msgid "Update"
@@ -3057,9 +3051,8 @@ msgid "Save"
 msgstr "Ruaje"
 
 #: [button]join
-#, fuzzy
 msgid "Join"
-msgstr "Hyni te %s"
+msgstr ""
 
 #: [button]clear
 msgid "Clear"
@@ -3765,6 +3758,3 @@ msgstr "API nuk kapet dot, riprovoni më vonë"
 #: [field]type_here
 msgid "Type here"
 msgstr "Shtypni këtu"
-
-#~ msgid "In call"
-#~ msgstr "Në thirrje"

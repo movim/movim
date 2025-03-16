@@ -131,7 +131,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Translate Toolkit 3.14.7\n"
+"X-Generator: Translate Toolkit 3.15.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -1864,9 +1864,8 @@ msgid "This will allow anyone outside Movim to have access to your publication"
 msgstr ""
 
 #: [post]public_preview
-#, fuzzy
 msgid "Preview URL: %s"
-msgstr "미리보기"
+msgstr ""
 
 #: [post]public_yes
 msgid "This post is public"
@@ -2753,9 +2752,8 @@ msgid "Declined"
 msgstr ""
 
 #: [visio]in_call
-#, fuzzy
 msgid "Ongoing call"
-msgstr "수신 전화"
+msgstr ""
 
 #: [visio]failed
 msgid "Failed"
@@ -2819,18 +2817,16 @@ msgid "Try to select another source or check your system settings"
 msgstr ""
 
 #: [muji]call_audio_invite
-#, fuzzy
 msgid "You are invited in an audio conference call"
-msgstr "이 컨퍼런스에서 메시지를 보낼 수 없습니다."
+msgstr ""
 
 #: [muji]call_video_invite
 msgid "You are invited in a video conference call"
 msgstr ""
 
 #: [muji]cannot_create
-#, fuzzy
 msgid "Cannot create a conference call on your server"
-msgstr "이 서버에 새 커뮤니티를 만들 수 없습니다."
+msgstr ""
 
 #: [visioconfig]title
 msgid "Video & Voice"
@@ -3022,9 +3018,8 @@ msgid "Close"
 msgstr "닫기"
 
 #: [button]create
-#, fuzzy
 msgid "Create"
-msgstr "창의적인"
+msgstr ""
 
 #: [button]update
 msgid "Update"
@@ -3055,9 +3050,8 @@ msgid "Save"
 msgstr "저장하기"
 
 #: [button]join
-#, fuzzy
 msgid "Join"
-msgstr "가입 %s"
+msgstr ""
 
 #: [button]clear
 msgid "Clear"
