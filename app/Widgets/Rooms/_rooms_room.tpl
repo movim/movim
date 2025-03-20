@@ -20,6 +20,11 @@
 
     <div>
         <p class="normal line">
+            {if="$conference->pinned"}
+                <span class="info">
+                    <i class="material-symbols fill" title="{$c->__('room.pinned')}">push_pin</i>
+                </span>
+            {/if}
             {if="!$conference->isGroupChat() && $conference->connected"}
                 {$count = $conference->presences()->count()}
                 <span title="{$c->__('communitydata.sub', $count)}"
@@ -43,9 +48,6 @@
 
             <span title="{$conference->conference}">{$conference->title}</span>
             <span class="second">
-                {if="$conference->pinned"}
-                    <i class="material-symbols" title="{$c->__('room.pinned')}">push_pin</i>
-                {/if}
                 {if="$conference->notify == 0"}
                     <i class="material-symbols" title="{$c->__('room.notify_never')}">notifications_off</i>
                 {elseif="$conference->notify == 2"}

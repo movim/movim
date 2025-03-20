@@ -506,7 +506,7 @@ var Chat = {
         value = value.toLowerCase();
 
         listSelector = reaction
-            ? '#emojisearchbar ~ .emojis.results'
+            ? '.emojis_grid.results'
             : '.chat_box .emojis';
 
         var emojisList = document.querySelector(listSelector);

@@ -399,50 +399,44 @@ main:not(.enabled) #chat_widget {
     animation: fadein 1s;
 }
 
-#emojisearchbar {
-    margin-right: 1rem;
-}
-
-#emojisearchbar form div {
-    min-height: 7rem;
-}
-
-#emojisearchbar form div input {
-    padding-top: 2rem;
-}
-
-#emojisearchbar~.emojis {
+.emojis_grid {
     padding: 0 1rem;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
 }
 
-#emojisearchbar~.emojis.results,
-#emojisearchbar~.emojis:last-child {
+@media screen and (min-width: 1025px) {
+    .emojis_grid {
+        grid-template-columns: repeat(8, 1fr);
+    }
+}
+
+.emojis.results,
+.emojis:last-child {
     margin-bottom: 1rem;
 }
 
-#emojisearchbar~.emojis img {
+.emojis_grid img {
     text-align: center;
     padding: 1rem 1.5rem;
     font-size: 0;
     position: relative;
 }
 
-#emojisearchbar~.emojis.main {
+.emojis_grid.main {
     border-bottom: 1px solid rgba(var(--movim-font), 0.12);
     padding-bottom: 0.5rem;
     margin-bottom: 0.5rem;
 }
 
-#emojisearchbar~.emojis.results:empty,
-#emojisearchbar~.emojis.results:not(:empty)~.emojis {
+.emojis_grid.results:empty,
+.emojis_grid.results:not(:empty)~.emojis_grid {
     display: none;
 }
 
 #chat_widget li.main .control.active:hover,
 #chat_widget li.main .primary.active:hover,
-#emojisearchbar~.emojis img:hover {
+.emojis_grid img:hover {
     cursor: pointer;
     background-color: rgba(var(--movim-font), 0.05);
     border-radius: 0.5rem;
@@ -582,7 +576,6 @@ li div.bubble.file:not(.audio):after {
 }
 
 @media screen and (min-width: 1025px) {
-
     #chat_widget li .bubble div:not(.encrypted):hover p:not(.retracted)~ul.reactions:empty~span.reaction,
     #chat_widget li .bubble div:not(.encrypted):hover p:not(.retracted)~span.reply {
         display: inline-flex;

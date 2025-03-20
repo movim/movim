@@ -384,7 +384,7 @@ ul.list>li.search form div:before {
     color: rgba(var(--movim-font), 0.5);
     position: absolute;
     left: 1.5rem;
-    line-height: 5rem;
+    line-height: 6rem;
     pointer-events: none;
 }
 
@@ -405,7 +405,7 @@ ul.list>li.search form input {
     margin-right: 2rem;
     margin-left: 5.5rem;
     box-shadow: none;
-    padding: 1.25rem 0;
+    padding: 1.75rem 0;
     line-height: 2rem;
     max-width: calc(100% - 7rem);
 }

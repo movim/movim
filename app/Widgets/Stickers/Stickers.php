@@ -148,14 +148,14 @@ class Stickers extends \Movim\Widget\Base
             $view->assign('pack', $pack);
             $view->assign('gifEnabled', $isGifEnabled);
 
-            Drawer::fill('stickers', $view->draw('_stickers'), true);
+            Drawer::fill('stickers', $view->draw('_stickers'), actions: true, tiny: true);
         } else {
             $view = $this->tpl();
             $view->assign('jid', $to);
             $view->assign('packs', $packs);
             $view->assign('pack', null);
 
-            Drawer::fill('stickers', $view->draw('_stickers_gifs'), true);
+            Drawer::fill('stickers', $view->draw('_stickers_gifs'), actions: true, tiny: true);
             $this->rpc('Stickers.setGifsSearchEvent', $to);
         }
     }
@@ -173,17 +173,13 @@ class Stickers extends \Movim\Widget\Base
             })->first()
             : null;
 
-        $view = $this->tpl();
-
         $emojis = $this->tpl();
         $emojis->assign('mid', $mid);
         $emojis->assign('reactionsrestrictions', $info ? $info->reactionsrestrictions : null);
         $emojis->assign('favorites', $this->user->emojis);
         $emojis->assign('gotemojis', $mid == null && Emoji::count() > 0);
 
-        $view->assign('emojis', $emojis->draw('_stickers_emojis'));
-
-        Dialog::fill($view->draw('_stickers_reactions'));
+        Drawer::fill('emojis', $emojis->draw('_stickers_reactions'), actions: true, tiny: true);
         $this->rpc('Stickers.setEmojisEvent', $mid);
     }
 

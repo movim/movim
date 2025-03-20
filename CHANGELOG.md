@@ -14,6 +14,7 @@ v0.30 (master)
 * Show reactions details when opening the message details box
 * Do not display the reactions if a message was retracted
 * Add Active Speaker mode in Muji calls
+* Redesign and unify the emojis picker view
 
 v0.29.2
 ---------------------------

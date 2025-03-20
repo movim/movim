@@ -4,11 +4,15 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    height: calc(100% - 7rem);
+    max-height: calc(100% - 7rem);
     box-shadow: var(--elevation-3);
-    transition: transform .25s ease-in-out, opacity .25s ease-in-out;
+    transition: transform .3s ease-in-out;
     display: flex;
     flex-direction: column;
+}
+
+.drawer.tiny {
+    height: auto;
 }
 
 .drawer > section {
@@ -19,15 +23,14 @@
 }
 
 .drawer:empty {
-    transition-timing-function: ease-in-out;
-    transform: translateY(10%);
-    opacity: 0;
+    transform: translateY(100%);
     pointer-events: none;
+    height: auto;
 }
 
 @media screen and (min-width: 570px) {
     .drawer {
-        border-radius: 0.75rem 0.75rem 0 0;
+        border-radius: 2rem 2rem 0 0;
         width: 70rem;
         left: calc(50% - 35rem);
     }

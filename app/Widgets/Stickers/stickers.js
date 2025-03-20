@@ -26,7 +26,7 @@ var Stickers = {
         element.classList.add('zoomed');
     },
     setEmojisEvent(mid) {
-        const emojis = document.querySelectorAll('#emojisearchbar ~ .emojis img');
+        const emojis = document.querySelectorAll('.emojis_grid img');
         let i = 0;
 
         while (i < emojis.length) {
@@ -37,7 +37,7 @@ var Stickers = {
                     Stickers.addSmiley(this);
                 }
 
-                Dialog_ajaxClear();
+                Drawer_ajaxClear();
             }
 
             i++;
