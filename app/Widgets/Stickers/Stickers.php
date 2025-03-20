@@ -179,7 +179,7 @@ class Stickers extends \Movim\Widget\Base
         $emojis->assign('favorites', $this->user->emojis);
         $emojis->assign('gotemojis', $mid == null && Emoji::count() > 0);
 
-        Drawer::fill('emojis', $emojis->draw('_stickers_reactions'), actions: true, tiny: true);
+        Drawer::fill('emojis', $emojis->draw('_stickers_emojis'), actions: true, tiny: true);
         $this->rpc('Stickers.setEmojisEvent', $mid);
     }
 
