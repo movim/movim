@@ -15,6 +15,7 @@ v0.30 (master)
 * Do not display the reactions if a message was retracted
 * Add Active Speaker mode in Muji calls
 * Redesign and unify the emojis picker view
+* Add support for the Unicode 15.1 emojis release through Twemoji 15.1
 
 v0.29.2
 ---------------------------
