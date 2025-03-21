@@ -42,6 +42,8 @@ var Stickers = {
 
             i++;
         }
+
+        document.querySelector('form[name=search] input').focus();
     },
     setGifsSearchEvent() {
         const search = document.querySelector('#gifssearchbar input');
