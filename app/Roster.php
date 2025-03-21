@@ -73,7 +73,7 @@ class Roster extends Model
     {
         return $this->stories->filter(function ($story) {
             return $story->my_views_count == 0;
-        })->first();
+        })->first() ?? $this->stories->first();
     }
 
     public function getStoriesSeenAttribute(): bool
