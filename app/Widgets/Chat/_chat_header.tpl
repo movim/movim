@@ -212,8 +212,16 @@
             </span>
 
             <span class="primary icon bubble active
-                {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}"
-                onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')">
+                {if="$roster"}
+                    {if="$roster->presence"}status {$roster->presence->presencekey}{/if}
+                    {if="$roster->stories"}stories {if="$roster->storiesSeen"}seen{/if}{/if}
+                {/if}
+            "
+            {if="$roster && $roster->firstUnseenStory"}
+                onclick="StoriesViewer_ajaxHttpGet({$roster->firstUnseenStory->id})"
+            {else}
+                onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')"
+            {/if}>
                 <img src="{if="$roster"}{$roster->getPicture()}{else}{$contact->getPicture()}{/if}">
             </span>
 

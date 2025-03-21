@@ -34,9 +34,9 @@ class StoriesViewer extends Base
 
     public function ajaxHttpGetNext(string $before)
     {
-        $post = Post::myStories()->where('published', '<', $before)->first();
+        $post = Post::myStories()->withCount('myViews')->where('published', '<', $before)->first();
 
-        if (!$post || $post->seen) {
+        if (!$post || $post->my_views_count > 0) {
             $this->rpc('StoriesViewer.close');
             return;
         }

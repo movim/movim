@@ -77,6 +77,11 @@ class Post extends Model
         return $this->belongsToMany(User::class, 'post_user_views', 'post_id', 'user_id')->withTimestamps();
     }
 
+    public function myViews()
+    {
+        return $this->userViews()->where('user_id', \App\User::me()->id);
+    }
+
     public function likes()
     {
         return $this->hasMany('App\Post', 'parent_id', 'id')
@@ -331,11 +336,6 @@ class Post extends Model
             ->orderBy('published')
             ->where('open', true)
             ->first();
-    }
-
-    public function getSeenAttribute(): bool
-    {
-        return $this->userViews->contains('user_id', \App\User::me()->id);
     }
 
     public function getTruenameAttribute()

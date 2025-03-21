@@ -1,28 +1,5 @@
 <ul class="navigation list active" dir="ltr">
     {if="$c->getUser()->hasPubsub()"}
-        <li onclick="MovimUtils.reload('{$c->route('publish')}')"
-            title="{$c->__('page.publish')}"
-            {if="$page == 'publish'"}class="active"{/if}
-        >
-            <span class="primary icon">
-                <i class="material-symbols">post_add</i>
-            </span>
-            <div>
-                <p class="normal">{$c->__('page.publish')}</p>
-            </div>
-        </li>
-
-        <li onclick="PublishStories_ajaxOpen()"
-            title="{$c->__('page.publish')}"
-        >
-            <span class="primary icon">
-                <i class="material-symbols">web_stories</i>
-            </span>
-            <div>
-                <p class="normal">{$c->__('stories.publish')}</p>
-            </div>
-        </li>
-
         <li onclick="MovimUtils.reload('{$c->route('news')}')"
             class="on_desktop {if="$page == 'news' || $page == 'post'"}active{/if}"
             title="{$c->__('page.news')}"
@@ -58,6 +35,33 @@
             <p class="normal">{$c->__('page.chats')}</p>
         </div>
     </li>
+
+    <hr class="on_desktop"/>
+
+    {if="$c->getUser()->hasPubsub()"}
+        <li onclick="MovimUtils.reload('{$c->route('publish')}')"
+            title="{$c->__('page.publish')}"
+            {if="$page == 'publish'"}class="active"{/if}
+        >
+            <span class="primary icon">
+                <i class="material-symbols">post_add</i>
+            </span>
+            <div>
+                <p class="normal">{$c->__('page.publish')}</p>
+            </div>
+        </li>
+
+        <li onclick="PublishStories_ajaxOpen()"
+            title="{$c->__('page.publish')}"
+        >
+            <span class="primary icon">
+                <i class="material-symbols">web_stories</i>
+            </span>
+            <div>
+                <p class="normal">{$c->__('stories.publish')}</p>
+            </div>
+        </li>
+    {/if}
 </ul>
 
 <ul class="navigation list oppose active" dir="ltr">

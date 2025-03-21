@@ -10,7 +10,7 @@ class Roster extends Model
     public $incrementing = false;
     protected $primaryKey = ['session_id', 'jid'];
     protected $fillable = ['jid', 'name', 'ask', 'subscription', 'group'];
-    public $with = ['contact'];
+    public $with = ['contact', 'stories'];
 
     protected $attributes = [
         'session_id'    => SESSION_ID
@@ -59,6 +59,28 @@ class Roster extends Model
         return $this->hasOne('App\Presence', 'jid', 'jid')
             ->where('session_id', $this->session_id)
             ->orderBy('value');
+    }
+
+    public function stories()
+    {
+        return $this->hasMany('App\Post', 'server', 'jid')
+            ->myStories()
+            ->withOnly([])
+            ->withCount('myViews');
+    }
+
+    public function getFirstUnseenStoryAttribute(): ?Post
+    {
+        return $this->stories->filter(function ($story) {
+            return $story->my_views_count == 0;
+        })->first();
+    }
+
+    public function getStoriesSeenAttribute(): bool
+    {
+        return !($this->stories && $this->stories->contains(function ($story) {
+            return $story->my_views_count == 0;
+        }));
     }
 
     public function set($stanza): bool

@@ -39,7 +39,7 @@ class Stories extends Base
     public function ajaxHttpGet()
     {
         $view = $this->tpl();
-        $posts = Post::myStories()->get();
+        $posts = Post::myStories()->withCount('myViews')->get();
         $view->assign('stories', $posts);
 
         $this->rpc('MovimTpl.fill', '#stories', $view->draw('_stories'));

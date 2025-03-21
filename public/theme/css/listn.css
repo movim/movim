@@ -146,8 +146,13 @@ ul.list li:not(.subheader) .primary:not(.bubble):not(.thumb):not(.small) {
 }
 
 ul.list li:not(.subheader) .control.bubble,
-ul.list li:not(.subheader) .primary.bubble:not(.small) {
-    margin: 0.25rem 0.5rem;
+ul.list li:not(.subheader) .primary.bubble {
+    margin: 0 0.5rem;
+}
+
+ul.list li:not(.subheader) .primary.stories.bubble {
+    margin: 0;
+    padding: 0.5rem;
 }
 
 ul.list.thin li:not(.subheader) .control:not(.bubble):not(.thumb),
@@ -155,29 +160,14 @@ ul.list.thin li:not(.subheader) .primary:not(.bubble):not(.thumb):not(.small) {
     padding: 0 0.5rem;
 }
 
-ul.list.thin li:not(.subheader) .control.bubble,
-ul.list.thin li:not(.subheader) .primary.bubble:not(.small) {
-    margin: 0 0.5rem;
-}
-
 ul.list.middle li:not(.subheader) .control:not(.bubble):not(.thumb),
 ul.list.middle li:not(.subheader) .primary:not(.bubble):not(.thumb):not(.small) {
     padding: 1rem 0.5rem;
 }
 
-ul.list.middle li:not(.subheader) .control.bubble,
-ul.list.middle li:not(.subheader) .primary.bubble:not(.small) {
-    margin: 1rem 0.5rem;
-}
-
 ul.list.thick li:not(.subheader) .control:not(.bubble):not(.thumb),
 ul.list.thick li:not(.subheader) .primary:not(.bubble):not(.thumb):not(.small) {
     padding: 1.75rem 0.5rem;
-}
-
-ul.list.thick li:not(.subheader) .control.bubble,
-ul.list.thick li:not(.subheader) .primary.bubble:not(.small) {
-    margin: 1.75rem 0.5rem;
 }
 
 ul.list li .primary~*:not(.primary):not(.control):not(.bubble) {

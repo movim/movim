@@ -16,6 +16,7 @@ v0.30 (master)
 * Add Active Speaker mode in Muji calls
 * Redesign and unify the emojis picker view
 * Add support for the Unicode 15.1 emojis release through Twemoji 15.1
+* Add Stories status on the avatars
 
 v0.29.2
 ---------------------------

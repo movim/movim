@@ -15,9 +15,15 @@
         "
     title="{$contact->jid}{if="isset($message)"} • {$message->published|prepareDate}{/if}">
     <span class="primary icon bubble
-        {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}
+        {if="$roster"}
+            {if="$roster->presence"}status {$roster->presence->presencekey}{/if}
+            {if="$roster->stories"}stories {if="$roster->storiesSeen"}seen{/if}{/if}
+        {/if}
         {if="$contact->locationDistance"} location{/if}
     "
+    {if="$roster && $roster->firstUnseenStory"}
+        onclick="StoriesViewer_ajaxHttpGet({$roster->firstUnseenStory->id})"
+    {/if}
     {if="$count > 0"}data-counter="{$count}"{/if}
     >
         <img src="{if="$roster"}{$roster->getPicture(\Movim\ImageSize::O)}{else}{$contact->getPicture(\Movim\ImageSize::O)}{/if}">
