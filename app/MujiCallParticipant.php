@@ -27,6 +27,11 @@ class MujiCallParticipant extends Model
         ->where('session_id', $this->session_id);
     }
 
+    public function getNameAttribute()
+    {
+        return explodeJid($this->jid)['resource'];
+    }
+
     public function getConferencePictureAttribute(): string
     {
         return Image::getOrCreate($this->jid, 120) ?? avatarPlaceholder($this->jid . 'groupchat');

@@ -63,6 +63,14 @@
     display: none;
 }
 
+#rooms_widget > ul.list.rooms > li div p[data-mujiid] {
+    padding: 0.5rem 0;
+}
+
+#rooms_widget > ul.list.rooms > li div p[data-mujiid]:last-child {
+    padding-bottom: 1rem;
+}
+
 /* Rooms order */
 
 #rooms_widget > ul.list.rooms > li {

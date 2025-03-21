@@ -60,15 +60,27 @@
 
             <div>
                 {if="$conference->mujiCalls->isNotEmpty()"}
-                    {$muji = $conference->mujiCalls->first()}
-                    {if="!$contactincall"}
-                        <button class="button oppose color blue {if="$incall"}disabled{/if}" onclick="Visio_ajaxJoinMuji('{$muji->id}', {if="$muji->video"}true{else}false{/if});">
-                            <i class="material-symbols {if="!$incall"}blink{/if}">{$muji->icon}</i>
-                        </button>
-                    {else}
-                        <button class="button oppose color red" onclick="Visio_ajaxLeaveMuji('{$muji->id}')">
+                    {if="$muji = $conference->currentMuji()"}
+                        <button class="button oppose color red"
+                                onclick="Visio_ajaxLeaveMuji('{$muji->id}')">
                             <i class="material-symbols">{$muji->icon}</i>
                         </button>
+                    {else}
+                        {if="$conference->mujiCalls->count() > 1"}
+                            <button class="button oppose color blue {if="$incall"}disabled{/if}"
+                                    onclick="Visio_ajaxChooseMuji('{$conference->conference}')">
+                                {$conference->mujiCalls->count()}
+                                <i class="material-symbols blink">call</i>
+                            </button>
+                        {else}
+                            {$muji = $conference->mujiCalls->first()}
+                            <button class="button oppose color blue {if="$incall"}disabled{/if}"
+                                    onclick="Visio_ajaxJoinMuji('{$muji->id}', {if="$muji->video"}true{else}false{/if});">
+                                <i class="material-symbols {if="$muji->joined"}blink{/if}">
+                                    {$muji->icon}
+                                </i>
+                            </button>
+                        {/if}
                     {/if}
                 {/if}
                 <p class="line active" title="{$jid|echapJS}" onclick="RoomsUtils_ajaxGetDrawer('{$jid|echapJS}')">
@@ -110,21 +122,38 @@
 
                 <p class="compose first line" id="{$jid|cleanupId}-state"></p>
                 <p class="line active">
-                    {if="$conference->mujiCalls->isNotEmpty()"}
-                        <i class="material-symbols icon {if="$conference->isInCall()"}green{else}blue{/if} blink">
-                            {$conference->mujiCalls->first()->icon}
-                        </i>
-                        {if="$conference->isInCall()"}
-                            {$conference->mujiCalls->first()->presences->count()}
-                        {else}
-                            {$conference->mujiCalls->first()->participants->count()}
-                        {/if}
-                        <i class="material-symbols">people</i>
-                        —
-                        {$c->__('visio.in_call')}
-                        •
-                    {/if}
                     {if="$conference"}
+                        {if="$muji = $conference->currentMuji()"}
+                            <i class="material-symbols icon green blink">{$muji->icon}</i>
+                            {$c->__('visio.joined_call')}
+                            <span class="second">
+                                {$muji->created_at|prepareDate:true,true}
+                                •
+                                {$c->__('visio.by', $muji->inviter->name)}
+                                •
+                                {$muji->presences->count()}
+                                <i class="material-symbols">people</i>
+                            </span>
+                            •
+                        {elseif="$conference->mujiCalls->count() > 0"}
+                            {if="$conference->mujiCalls->count() == 1"}
+                                {$muji = $conference->mujiCalls->first()}
+                                <i class="material-symbols icon blue blink">{$muji->icon}</i>
+                                {$c->__('visio.in_call')}
+                                <span class="second">
+                                    {$muji->created_at|prepareDate:true,true}
+                                    •
+                                    {$c->__('visio.by', $muji->inviter->name)}
+                                    •
+                                    {$muji->participants->count()}
+                                    <i class="material-symbols">people</i>
+                                </span>
+                            {else}
+                                <i class="material-symbols icon blue blink">call</i>
+                                {$c->__('visio.in_call')}
+                            {/if}
+                            •
+                        {/if}
                         {if="!$conference->connected"}
                             {$c->__('button.connecting')}…
                         {elseif="$conference->connected && $conference->isGroupChat()"}

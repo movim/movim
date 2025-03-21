@@ -63,21 +63,27 @@
             </span>
         </p>
 
-        {if="$conference->mujiCalls->isNotEmpty()"}
-            <p data-mujiid="{$conference->mujiCalls->first()->id}">
-                <i class="material-symbols icon {if="$conference->isInCall()"}green{else}blue{/if} blink">
-                    {$conference->mujiCalls->first()->icon}
+        {loop="$conference->mujiCalls"}
+            <p data-mujiid="{$value->id}">
+                <i class="material-symbols icon {if="$value->joined"}green blink{else}blue{/if}">
+                    {$value->icon}
                 </i>
-                {if="$conference->isInCall()"}
-                    {$conference->mujiCalls->first()->presences->count()}
-                {else}
-                    {$conference->mujiCalls->first()->participants->count()}
-                {/if}
-                <i class="material-symbols">people</i>
-                —
-                {$c->__('visio.in_call')}
+                {if="$value->joined"}{$c->__('visio.joined_call')}{else}{$c->__('visio.in_call')}{/if}
+                <span class="second">
+                    {$value->created_at|prepareDate:true,true}
+                    •
+                    {$c->__('visio.by', $value->inviter->name)}
+                </span>
+                <span class="info">
+                    {if="$value->joined"}
+                        {$value->presences->count()}
+                    {else}
+                        {$value->participants->count()}
+                    {/if}
+                    <i class="material-symbols">people</i>
+                </span>
             </p>
-        {/if}
+        {/loop}
     </div>
     <span class="control icon active gray" onclick="event.stopPropagation(); RoomsUtils_ajaxRemove('{$conference->conference|echapJS}');">
         <i class="material-symbols">delete</i>

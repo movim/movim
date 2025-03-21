@@ -238,9 +238,11 @@ class Conference extends Model
         return false;
     }
 
-    public function isInCall(): bool
+    public function currentMuji(): ?MujiCall
     {
-        return CurrentCall::getInstance()->isJidInCall($this->conference);
+        return $this->mujiCalls->filter(
+            function ($muji) { return $muji->joined; }
+        )->first();
     }
 
     public function toArray()

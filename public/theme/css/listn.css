@@ -146,7 +146,7 @@ ul.list li:not(.subheader) .primary:not(.bubble):not(.thumb):not(.small) {
 }
 
 ul.list li:not(.subheader) .control.bubble,
-ul.list li:not(.subheader) .primary.bubble {
+ul.list li:not(.subheader) .primary.bubble:not(.small) {
     margin: 0 0.5rem;
 }
 

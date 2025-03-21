@@ -17,6 +17,7 @@ v0.30 (master)
 * Redesign and unify the emojis picker view
 * Add support for the Unicode 15.1 emojis release through Twemoji 15.1
 * Add Stories status on the avatars
+* Add support of several simultanous Muji invites in MUC chatrooms
 
 v0.29.2
 ---------------------------

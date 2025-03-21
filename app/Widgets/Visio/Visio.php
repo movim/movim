@@ -303,6 +303,16 @@ class Visio extends Base
 
     /** Muji */
 
+    public function ajaxChooseMuji(string $muc)
+    {
+        $view = $this->tpl();
+        $view->assign('conference', $this->user->session->conferences()
+                ->where('conference', $muc)
+                ->first());
+
+        Dialog::fill($view->draw('_visio_choose_muji'), false, true);
+    }
+
     public function ajaxJoinMuji(string $mujiId, ?bool $withVideo = false)
     {
         $muji = $this->user->session->mujiCalls()
