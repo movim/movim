@@ -17,7 +17,7 @@
     <span class="primary icon bubble
         {if="$roster"}
             {if="$roster->presence"}status {$roster->presence->presencekey}{/if}
-            {if="$roster->stories"}stories {if="$roster->storiesSeen"}seen{/if}{/if}
+            {if="$roster->stories->count() > 0"}stories {if="$roster->storiesSeen"}seen{/if}{/if}
         {/if}
         {if="$contact->locationDistance"} location{/if}
     "

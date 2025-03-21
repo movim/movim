@@ -214,7 +214,7 @@
             <span class="primary icon bubble active
                 {if="$roster"}
                     {if="$roster->presence"}status {$roster->presence->presencekey}{/if}
-                    {if="$roster->stories"}stories {if="$roster->storiesSeen"}seen{/if}{/if}
+                    {if="$roster->stories->count()"}stories {if="$roster->storiesSeen"}seen{/if}{/if}
                 {/if}
             "
             {if="$roster && $roster->firstUnseenStory"}
