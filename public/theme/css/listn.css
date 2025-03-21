@@ -13,6 +13,7 @@ ul.list.compact>li {
     flex-direction: column;
     align-items: flex-start;
     padding: 0.25rem 0.75rem;
+    padding-top: 1.25rem;
 }
 
 nav>ul.list>li,
