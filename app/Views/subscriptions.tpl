@@ -1,5 +1,4 @@
 <?php $this->widget('Search');?>
-<?php $this->widget('PublishStories');?>
 <?php $this->widget('Notifications');?>
 <?php $this->widget('SendTo');?>
 <?php $this->widget('Location');?>
@@ -28,3 +27,7 @@
         <?php } ?>
     </div>
 </main>
+
+<?php if (\App\User::me()->hasPubsub()) { ?>
+    <?php $this->widget('PublishStories');?>
+<?php } ?>

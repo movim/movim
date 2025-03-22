@@ -26,4 +26,7 @@
 
 <?php $this->widget('Snap');?>
 <?php $this->widget('Draw');?>
-<?php $this->widget('PublishStories');?>
+
+<?php if (\App\User::me()->hasPubsub()) { ?>
+    <?php $this->widget('PublishStories');?>
+<?php } ?>

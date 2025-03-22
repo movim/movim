@@ -5,7 +5,6 @@
     <?php $this->widget('SendTo');?>
     <?php if(\App\User::me()->hasOMEMO()) $this->widget('ChatOmemo');?>
     <?php $this->widget('Location');?>
-    <?php $this->widget('PublishStories');?>
     <?php $this->widget('PostActions');?>
 
     <nav class="color dark">
@@ -59,3 +58,7 @@
         <?php } ?>
     <?php } ?>
 </main>
+
+<?php if (isLogged() && \App\User::me()->hasPubsub()) { ?>
+    <?php $this->widget('PublishStories');?>
+<?php } ?>

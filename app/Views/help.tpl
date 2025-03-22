@@ -1,5 +1,4 @@
 <?php $this->widget('Search');?>
-<?php $this->widget('PublishStories');?>
 <?php $this->widget('Notifications');?>
 <?php if(\App\User::me()->hasOMEMO()) $this->widget('ChatOmemo');?>
 <?php $this->widget('Location');?>
@@ -31,3 +30,7 @@
         <?php $this->widget('About');?>
     </div>
 </main>
+
+<?php if (\App\User::me()->hasPubsub()) { ?>
+    <?php $this->widget('PublishStories');?>
+<?php } ?>
