@@ -26,7 +26,7 @@
     </ul>
     <ul class="list divided active middle">
         {if="!$message->encrypted"}
-            <li onclick="Stickers_ajaxReaction({$message->mid})">
+            <li onclick="Stickers_ajaxReaction({$message->mid}); Dialog_ajaxClear()">
                 <span class="primary icon gray">
                     <i class="material-symbols">add_reaction</i>
                 </span>
