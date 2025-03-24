@@ -3,6 +3,10 @@
 use Movim\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
+/**
+ * Required after the behavior change introduced in
+ * https://laravel.com/docs/11.x/upgrade#modifying-columns
+ */
 class ReconciliateNullableInTables extends Migration
 {
     public function up()
