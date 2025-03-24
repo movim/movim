@@ -41,7 +41,7 @@
         "react/child-process": "^0.6",
         "react/http": "^1.11",
         "react/dns": "^1.13",
-        "ratchet/pawl": "0.4.2",
+        "ratchet/pawl": "^0.4.3",
         "minishlink/web-push": "^9.0",
         "vlucas/phpdotenv": "^5.6",
         "react/promise-timer": "^1.11",
