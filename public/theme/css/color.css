@@ -17,7 +17,7 @@ sections are therefore copy pasted */
 body.nightmode {
     --movim-background-main: 20, 26, 33;
     --movim-background: 25, 32, 40;
-    --movim-gray: var(--movim-accent);
+    --movim-gray: var(--movim-background-main);
     --movim-font: 255, 255, 255;
     --movim-element-action: 74, 86, 99;
     scrollbar-color: rgba(var(--movim-font), 0.1) transparent;
@@ -27,7 +27,7 @@ body.nightmode {
     body {
         --movim-background-main: 20, 26, 33;
         --movim-background: 25, 32, 40;
-        --movim-gray: var(--movim-accent);
+        --movim-gray: var(--movim-background-main);
         --movim-font: 255, 255, 255;
         --movim-element-action: 74, 86, 99;
         scrollbar-color: rgba(var(--movim-font), 0.1) transparent;

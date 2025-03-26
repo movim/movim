@@ -4,7 +4,9 @@
         <meta charset="utf-8" />
         <title><%title%></title>
 
-        <meta name="theme-color" content="<?php if (!$this->public && isLogged() && \App\User::me()->nightmode) { ?>#10151A<?php } else { ?>#1C1D5B<?php } ?>" />
+        <meta name="theme-color" content="<?php if (!$this->public && isLogged() && \App\User::me()->nightmode) { ?>rgb(25, 32, 40)<?php } else { ?>rgb(238, 238, 238)<?php } ?>" />
+        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="rgb(25, 32, 40)" />
+
         <%meta%>
         <meta name="application-name" content="<?php echo APP_TITLE; ?>">
         <link rel="manifest" href="<?php echo \Movim\Route::urlize('manifest'); ?>" />
