@@ -20,7 +20,7 @@
     top: 0;
     left: 0;
     opacity: 0.75;
-    background-color: #111;
+    background-color: rgb(var(--movim-background));
 }
 
 #draw.open {
