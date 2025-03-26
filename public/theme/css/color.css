@@ -19,6 +19,7 @@ body.nightmode {
     --movim-background: 25, 32, 40;
     --movim-gray: var(--movim-accent);
     --movim-font: 255, 255, 255;
+    --movim-element-action: 74, 86, 99;
     scrollbar-color: rgba(var(--movim-font), 0.1) transparent;
 }
 
@@ -28,6 +29,7 @@ body.nightmode {
         --movim-background: 25, 32, 40;
         --movim-gray: var(--movim-accent);
         --movim-font: 255, 255, 255;
+        --movim-element-action: 74, 86, 99;
         scrollbar-color: rgba(var(--movim-font), 0.1) transparent;
     }
 }
