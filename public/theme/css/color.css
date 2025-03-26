@@ -66,11 +66,6 @@ table tr th {
     color: rgba(var(--movim-font), 0.54);
 }
 
-.highlighted {
-    background-color: rgba(var(--movim-font), 0.035);
-    border-radius: 0.5rem;
-}
-
 ul li.date > div > p.normal,
 .dialog, .drawer, ul.context_menu,
 .card > .block:not(.subheader):not(.simple) {

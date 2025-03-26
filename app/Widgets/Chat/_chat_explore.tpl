@@ -16,7 +16,7 @@
             {/if}
         </li>
     </ul>
-    <ul class="list flex middle active highlighted">
+    <ul class="list flex middle active">
         {if="$users->count() > $pagination"}
             {$user = $users->pop()}
         {/if}
