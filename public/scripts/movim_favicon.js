@@ -36,9 +36,10 @@ var MovimFavicon = {
             var b = y + h;
 
             ctx.beginPath();
-            ctx.fillStyle = counterTab2 > 0
-                ? getComputedStyle(document.body).getPropertyValue('--p-red')
-                : 'rgb(' + getComputedStyle(document.body).getPropertyValue('--movim-accent') + ')';
+            ctx.fillStyle = getComputedStyle(document.body).getPropertyValue(counterTab2 > 0
+                ? '--p-red'
+                : '--movim-accent'
+            );
             ctx.moveTo(x + radius, y);
             ctx.lineTo(r - radius, y);
             ctx.quadraticCurveTo(r, y, r, y + radius);
