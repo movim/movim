@@ -1,6 +1,6 @@
 <ul class="list controls middle">
     <li>
-        <span class="primary icon color transparent active" onclick="history.back()" title="{$c->__('button.close')}">
+        <span class="primary icon active" onclick="history.back()" title="{$c->__('button.close')}">
             <i class="material-symbols">arrow_back</i>
         </span>
     </li>
