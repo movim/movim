@@ -23,6 +23,10 @@ class JingleCallInvite
 
         $dom->documentElement->appendChild($invite);
 
+        $store = $dom->createElement('store');
+        $store->setAttribute('xmlns', 'urn:xmpp:hints');
+        $dom->documentElement->appendChild($store);
+
         \Moxl\API::sendDom($dom);
     }
 
@@ -34,6 +38,10 @@ class JingleCallInvite
         $retract->setAttribute('id', $id);
 
         $dom->documentElement->appendChild($retract);
+
+        $store = $dom->createElement('store');
+        $store->setAttribute('xmlns', 'urn:xmpp:hints');
+        $dom->documentElement->appendChild($store);
 
         \Moxl\API::sendDom($dom);
     }
@@ -47,6 +55,10 @@ class JingleCallInvite
 
         $dom->documentElement->appendChild($accept);
 
+        $store = $dom->createElement('store');
+        $store->setAttribute('xmlns', 'urn:xmpp:hints');
+        $dom->documentElement->appendChild($store);
+
         \Moxl\API::sendDom($dom);
     }
 
@@ -59,6 +71,10 @@ class JingleCallInvite
 
         $dom->documentElement->appendChild($reject);
 
+        $store = $dom->createElement('store');
+        $store->setAttribute('xmlns', 'urn:xmpp:hints');
+        $dom->documentElement->appendChild($store);
+
         \Moxl\API::sendDom($dom);
     }
 
@@ -70,6 +86,10 @@ class JingleCallInvite
         $left->setAttribute('id', $id);
 
         $dom->documentElement->appendChild($left);
+
+        $store = $dom->createElement('store');
+        $store->setAttribute('xmlns', 'urn:xmpp:hints');
+        $dom->documentElement->appendChild($store);
 
         \Moxl\API::sendDom($dom);
     }

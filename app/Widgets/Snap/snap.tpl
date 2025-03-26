@@ -24,7 +24,7 @@
     </div>
     <ul class="list controls middle">
         <li>
-            <span id="snapback" class="primary icon color transparent active">
+            <span id="snapback" class="primary icon active">
                 <i class="material-symbols">arrow_back</i>
             </span>
             <div></div>

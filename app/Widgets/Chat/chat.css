@@ -20,7 +20,7 @@ main:not(.enabled) #chat_widget {
 }
 
 #chat_widget>header {
-    box-shadow: var(--elevation-1);
+    box-shadow: var(--elevation-flat);
     z-index: 1;
 }
 
@@ -43,7 +43,7 @@ main:not(.enabled) #chat_widget {
 #chat_widget .contained:before {
     position: absolute;
     display: block;
-    background-color: rgb(var(--movim-main));
+    background-color: var(--movim-accent);
     width: 100%;
     height: 0.25rem;
     content: '';
@@ -222,7 +222,7 @@ main:not(.enabled) #chat_widget {
 #chat_widget .chat_box:after {
     position: absolute;
     display: block;
-    background-color: rgb(var(--movim-main));
+    background-color: var(--movim-accent);
     width: 0;
     height: 0.25rem;
     content: '';
@@ -429,6 +429,10 @@ main:not(.enabled) #chat_widget {
     margin-bottom: 0.5rem;
 }
 
+#drawer section:has(.emojis_grid) {
+    margin-top: 0.75rem;
+}
+
 .emojis_grid.results:empty,
 .emojis_grid.results:not(:empty)~.emojis_grid {
     display: none;
@@ -447,7 +451,7 @@ main:not(.enabled) #chat_widget {
 }
 
 #chat_widget div.quoted {
-    border-right: 3px solid rgb(var(--movim-main));
+    border-right: 3px solid var(--movim-accent);
     border-radius: 0 3px 3px;
 }
 

@@ -62,6 +62,7 @@ body>nav {
     overflow-y: auto;
     left: 0;
     user-select: none;
+    background-color: rgb(var(--movim-background));
 }
 
 body>nav.active {
@@ -128,7 +129,7 @@ body>nav.active:before {
 body:before {
     position: absolute;
     display: block;
-    background-color: rgb(var(--movim-main));
+    background-color: rgb(var(--movim-accent));
     width: 0;
     height: 0.25rem;
     content: '';
@@ -224,6 +225,7 @@ main>div:first-child:nth-last-child(2)+div {
     width: 30%;
     overflow-y: auto;
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+    background-color: rgb(var(--movim-background-main));
 }
 
 @media screen and (max-width: 1024px) {

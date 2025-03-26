@@ -7,7 +7,7 @@
 
     <?php $this->widget('PostActions');?>
 
-    <nav class="color dark">
+    <nav>
         <?php $this->widget('Presence');?>
         <?php $this->widget('Navigation');?>
     </nav>
@@ -15,7 +15,7 @@
     <?php $this->widget('BottomNavigation');?>
 <?php } ?>
 
-<main style="background-color: rgb(var(--movim-background));">
+<main>
     <?php if (isLogged()) { ?>
         <aside>
             <?php $this->widget('NewsNav');?>

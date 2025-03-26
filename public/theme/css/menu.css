@@ -13,10 +13,6 @@ body>nav>ul.list li {
     padding-left: 0.5rem;
 }
 
-body>nav.color.dark>ul a {
-    color: white;
-}
-
 ul.oppose {
     margin-top: auto;
 }

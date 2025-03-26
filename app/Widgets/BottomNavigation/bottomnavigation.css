@@ -10,6 +10,7 @@ ul#bottomnavigation {
     justify-content:center;
     transition: transform .3s cubic-bezier(.4,0,.2,1);
     user-select: none;
+    background-color: rgb(var(--movim-background));
 }
 
 ul#bottomnavigation li {

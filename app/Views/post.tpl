@@ -9,7 +9,7 @@
 <?php $this->widget('ContactActions');?>
 <?php $this->widget('PostActions');?>
 
-<nav class="color dark">
+<nav>
     <?php $this->widget('Presence');?>
     <?php $this->widget('Navigation');?>
 </nav>

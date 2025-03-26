@@ -1,7 +1,7 @@
 #publishstories {
     top: 0;
     left: 0;
-    background-color: rgb(var(--movim-gray));
+    background-color: rgb(var(--movim-background));
     width: 100%;
     height: 100%;
     z-index: 2;
@@ -16,8 +16,6 @@
     line-height: 5.5rem;
     margin-top: 0.75rem;
     font-size: 2.5rem;
-    backdrop-filter: blur(1rem);
-    background-color: rgba(0, 0, 0, 0.25);
 }
 
 #publishstories.show,

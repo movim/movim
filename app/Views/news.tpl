@@ -8,14 +8,14 @@
 
 <?php $this->widget('PostActions');?>
 
-<nav class="color dark">
+<nav>
     <?php $this->widget('Presence');?>
     <?php $this->widget('Navigation');?>
 </nav>
 
 <?php $this->widget('BottomNavigation');?>
 
-<main style="background-color: rgb(var(--movim-background));">
+<main>
     <aside>
         <?php $this->widget('NewsNav');?>
     </aside>

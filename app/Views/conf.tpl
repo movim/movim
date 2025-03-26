@@ -4,7 +4,7 @@
 <?php if(\App\User::me()->hasOMEMO()) $this->widget('ChatOmemo');?>
 <?php $this->widget('Location');?>
 
-<nav class="color dark">
+<nav>
     <?php $this->widget('Presence');?>
     <?php $this->widget('Navigation');?>
 </nav>

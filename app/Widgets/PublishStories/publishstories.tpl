@@ -17,17 +17,17 @@
     </div>
     <ul class="list controls middle">
         <li>
-            <span id="publishstoriesback" class="primary icon color transparent active">
+            <span id="publishstoriesback" class="primary icon active">
                 <i class="material-symbols">arrow_back</i>
             </span>
-            <span id="publishstoriesbackedit" class="primary icon color transparent active" onclick="PublishStories.goToEdit()">
+            <span id="publishstoriesbackedit" class="primary icon active" onclick="PublishStories.goToEdit()">
                 <i class="material-symbols">arrow_back</i>
             </span>
             <div></div>
-            <span id="publishstoriesclose" class="control icon color transparent active" onclick="PublishStories.reset()">
+            <span id="publishstoriesclose" class="control icon active" onclick="PublishStories.reset()">
                 <i class="material-symbols">close</i>
             </span>
-            <span id="publishstoriesnext" class="control icon color transparent active toggleable" onclick="PublishStories.goToPublish()">
+            <span id="publishstoriesnext" class="control icon active toggleable" onclick="PublishStories.goToPublish()">
                 <i class="material-symbols">arrow_forward</i>
             </span>
         </li>

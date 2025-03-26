@@ -1,4 +1,4 @@
-<ul id="bottomnavigation" class="navigation color dark">
+<ul id="bottomnavigation" class="navigation">
     <li onclick="MovimTpl.toggleMenu()">
         <span class="primary icon">
             <i class="material-symbols">more_vert</i>

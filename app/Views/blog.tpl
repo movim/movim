@@ -1,4 +1,4 @@
-<main style="background-color: rgb(var(--movim-background));">
+<main>
     <aside>
         <?php $this->widget('ContactDataPublic'); ?>
     </aside>

@@ -18,6 +18,7 @@ v0.30 (master)
 * Add support for the Unicode 15.1 emojis release through Twemoji 15.1
 * Add Stories status on the avatars
 * Add support of several simultanous Muji invites in MUC chatrooms
+* Important color management CSS cleanup
 
 v0.29.2
 ---------------------------

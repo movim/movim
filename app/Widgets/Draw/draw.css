@@ -59,6 +59,7 @@
 #draw .draw-top-nav {
     transition: transform 0.2s;
     pointer-events: none;
+    padding-top: 1rem;
 }
 
 #draw .draw-top-nav span {

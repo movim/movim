@@ -72,7 +72,7 @@ form > div .select select {
     -moz-appearance: none;
     appearance: none;
     width: 100%;
-    background-color: rgb(var(--movim-background-main));
+    background-color: transparent;
     background-image: none;
     padding-bottom: 1rem;
     mask-image: linear-gradient(to right, black calc(100% - 10rem), transparent);
@@ -115,6 +115,9 @@ form > div textarea {
     -webkit-appearance: none; /* iOS */
     border-radius: 0; /* iOS */
     overflow: hidden; /* Fixme */
+
+    position: relative;
+    z-index: 1;
 }
 
 form > div .select,
@@ -173,6 +176,7 @@ form > div .radio > input[type="radio"] {
     display: inline;
     width: 0;
     height: 0;
+    position: initial;
 }
 
 form > div .checkbox {
@@ -229,11 +233,6 @@ form > div .checkbox:hover > input[type="checkbox"] + label {
     box-shadow: 0 0 0 1.75rem rgba(var(--movim-font), 0.05);
 }
 
-form > div .checkbox > input[type="checkbox"]:checked:before {
-    background-color: rgb(var(--movim-main));
-    border-color: rgb(var(--movim-main));
-}
-
 form > div .checkbox > input[type="checkbox"]:checked + label {
     color: white;
     width: 3rem;
@@ -244,7 +243,7 @@ form > div .checkbox > input[type="checkbox"]:checked + label {
 }
 
 form > div .checkbox > input[type="checkbox"]:checked + label i {
-    color: rgb(var(--movim-main));
+    color: rgb(var(--movim-accent));
 }
 
 /* Radio */

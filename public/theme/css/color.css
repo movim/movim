@@ -1,8 +1,7 @@
 /* Color */
 
 body {
-    --movim-main: 255, 87, 34;
-    --movim-accent: 65, 63, 181;
+    --movim-accent: var(--p-dorange);
     --movim-background-main: 255, 255, 255;
     --movim-background: 238, 238, 238;
     --movim-gray: 35, 35, 35;
@@ -16,7 +15,6 @@ body {
 sections are therefore copy pasted */
 
 body.nightmode {
-    --movim-accent: 16, 21, 26;
     --movim-background-main: 20, 26, 33;
     --movim-background: 25, 32, 40;
     --movim-gray: var(--movim-accent);
@@ -26,7 +24,6 @@ body.nightmode {
 
 @media (prefers-color-scheme: dark) {
     body {
-        --movim-accent: 16, 21, 26;
         --movim-background-main: 20, 26, 33;
         --movim-background: 25, 32, 40;
         --movim-gray: var(--movim-accent);
@@ -36,7 +33,7 @@ body.nightmode {
 }
 
 body {
-    background-color: rgb(var(--movim-gray));
+    background-color: rgb(var(--movim-background));
 }
 
 body > *,
@@ -62,6 +59,7 @@ ul.list li span.control.divided:before {
 
 label, span.info,
 li div.bubble:after,
+ul.list li>div>p>span.second,
 table tr th {
     color: rgba(var(--movim-font), 0.54);
 }
@@ -71,24 +69,9 @@ table tr th {
     border-radius: 0.5rem;
 }
 
-.color {
-    background-color: var(--p-bgray);
-    color: white;
-}
-
-.color.dark {
-    background-color: rgb(var(--movim-gray));
-}
-
-.color.dark *.divided > *:not(:last-child),
-.color.dark hr {
-    border-color: rgba(255, 255, 255, 0.05);
-}
-
 ul li.date > div > p.normal,
 .dialog, .drawer, ul.context_menu,
-.card > .block:not(.subheader):not(.simple),
-main {
+.card > .block:not(.subheader):not(.simple) {
     background-color: rgb(var(--movim-background-main));
 }
 
@@ -103,14 +86,15 @@ main > header a,
 span.icon span.counter,
 span.icon[data-counter]:after,
 span.icon.composing:after,
+form > div .checkbox > input[type="checkbox"]:checked:before,
 form > div .radio > input[type="radio"]:checked + label {
-    border-color: rgb(var(--movim-main));
-    background-color: rgb(var(--movim-main));
+    border-color: var(--movim-accent);
+    background-color: var(--movim-accent);
     color: white;
 }
 
 span.icon span.counter.alt {
-    background-color: rgb(var(--movim-accent));
+    background-color: var(--movim-accent);
 }
 
 /* Elements */
@@ -120,8 +104,6 @@ span.icon span.counter.alt {
 .button.indigo, .icon.indigo, span.resource.indigo   { color: var(--p-indigo); }
 .button.blue,   .icon.blue  , span.resource.blue     { color: var(--p-blue); }
 .button.green,  .icon.green , span.resource.green    { color: var(--p-green); }
-li div.bubble.moderator:after,
-ul li div > p > span.moderator,
 .button.orange, .icon.orange, span.resource.orange   { color: var(--p-orange); }
 .button.yellow, .icon.yellow, span.resource.yellow   { color: #FBC02D; }
 .button.brown,  .icon.brown , span.resource.brown    { color: var(--p-brown); }
@@ -175,11 +157,9 @@ span.icon:not(.composing):not([data-counter]):not(.story).status.server_error:af
 .color.steam,
 .color.bgray    { color: white; background-color: var(--p-bgray); border-color: var(--p-bgray) }
 
-.color.transparent { color: white; background-color: rgba(0, 0, 0, 0); }
+.color.transparent { color: white; backdrop-filter: blur(1rem); background-color: rgba(0, 0, 0, 0.25); }
 .color.semi { color: rgba(var(--movim-font), 0.87); background-color: rgba(var(--movim-background-main), 0.75); }
-rect#red {
-    fill: #6e40aa;
-}
+
 form > div > input:focus:invalid,
 form > div > input:focus:required {
     box-shadow: 0px 2px 0px var(--p-red);
@@ -200,34 +180,39 @@ div.snackbar ul.list li > div > p:not(:first-of-type):not(.normal):not(.main) {
     color: rgb(var(--movim-header-font));
 }
 
+header.big ul.list li>div>p>span.second {
+    color: rgba(var(--movim-header-font), 0.9);
+}
+
 /* Default color : indigo */
 
 input[type=button].color,
 header.big,
 main > header {
-    background-color: rgb(var(--movim-accent));
-    color: white;
-    border-color: rgb(var(--movim-accent));
+    background-color: var(--movim-accent);
+    border-color: var(--movim-accent);
 }
 
-/* Gray accent : orange */
+/* Accent color */
 
 .tabs,
 .button,
+li div.bubble.moderator:after,
+ul li div > p > span.moderator,
 header:not(.big) .icon a,
 a {
-    color: rgb(var(--movim-main));
-    border-color: rgb(var(--movim-main));
+    color: var(--movim-accent);
+    border-color: var(--movim-accent);
 }
 
-form > div .checkbox:before { background-color: rgba(var(--movim-main), 0.5); }
+form > div .checkbox:before { background-color: var(--movim-accent); }
 
 form input:focus:not(:invalid) + label,
 form textarea:focus:not(:invalid) + label {
-    color: rgb(var(--movim-main));
+    color: var(--movim-accent);
 }
 
 form input:focus:not(:invalid):not(.button),
 form textarea:focus:not(:invalid):not(.button) {
-    box-shadow: 0px 2px 0px rgb(var(--movim-main));
+    box-shadow: 0px 2px 0px var(--movim-accent);
 }
