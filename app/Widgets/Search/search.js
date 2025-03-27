@@ -7,7 +7,7 @@ var Search = {
             document.querySelector('input[name=keyword]').focus();
         }
 
-        Search.rosterLimit = 7;
+        Search.rosterLimit = 10;
 
         Search_ajaxHttpInitRoster();
     },
