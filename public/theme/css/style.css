@@ -63,6 +63,7 @@ body>nav {
     left: 0;
     user-select: none;
     background-color: rgb(var(--movim-background));
+    box-shadow: var(--elevation-2);
 }
 
 body>nav.active {
@@ -91,7 +92,7 @@ body>nav li {
 
 @media screen and (max-width: 1024px) {
     body>nav.active {
-        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+        box-shadow: var(--elevation-3);
     }
 
     body>nav:not(.active) {
@@ -224,7 +225,7 @@ main>div:first-child:nth-last-child(2) {
 main>div:first-child:nth-last-child(2)+div {
     width: 30%;
     overflow-y: auto;
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+    box-shadow: var(--elevation-2);
     background-color: rgb(var(--movim-background-main));
 }
 
@@ -254,7 +255,7 @@ main>div:first-child:nth-last-child(2)+div {
 
     main.slide>div:first-child:nth-last-child(2) {
         z-index: 1;
-        box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.2);
+        box-shadow: var(--elevation-4);
         transform: translateX(100%);
     }
 
