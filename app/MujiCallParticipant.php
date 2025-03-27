@@ -27,6 +27,19 @@ class MujiCallParticipant extends Model
         ->where('session_id', $this->session_id);
     }
 
+    public function getMeAttribute(): bool
+    {
+        $jid = explodeJid($this->jid);
+
+        if ($jid['resource'] == null) {
+            return $this->jid == \App\User::me()->id;
+        }
+
+        $presence = Presence::where('jid', $jid['jid'])->where('resource', $jid['resource'])->first();
+
+        return $presence && $presence->mucjid == \App\User::me()->id;
+    }
+
     public function getNameAttribute()
     {
         return explodeJid($this->jid)['resource'];

@@ -19,6 +19,7 @@ v0.30 (master)
 * Add Stories status on the avatars
 * Add support of several simultanous Muji invites in MUC chatrooms
 * Important color management CSS cleanup
+* Add Accent Color in the Configuration
 
 v0.29.2
 ---------------------------

@@ -5,7 +5,7 @@
     left: 0;
     width: 100%;
     max-height: calc(100% - 7rem);
-    box-shadow: var(--elevation-3);
+    box-shadow: var(--elevation-5);
     transition: transform .3s ease-in-out;
     display: flex;
     flex-direction: column;
@@ -34,4 +34,13 @@
         width: 70rem;
         left: calc(50% - 35rem);
     }
+}
+
+
+#drawer ul.list>li.search form div:after {
+    background-color: rgb(var(--movim-background));
+}
+
+#drawer ul.list>li.search form div:focus-within:after {
+    background-color: rgba(var(--movim-background), 0.8);
 }

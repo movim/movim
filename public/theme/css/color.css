@@ -1,7 +1,6 @@
 /* Color */
 
 body {
-    --movim-accent: var(--p-dorange);
     --movim-background-main: 255, 255, 255;
     --movim-background: 238, 238, 238;
     --movim-gray: 35, 35, 35;
@@ -34,8 +33,9 @@ body.nightmode {
     }
 }
 
-body {
-    background-color: rgb(var(--movim-background));
+body,
+.drawer {
+    background-color: rgb(var(--movim-background-main));
 }
 
 body > *,
@@ -67,7 +67,7 @@ table tr th {
 }
 
 ul li.date > div > p.normal,
-.dialog, .drawer, ul.context_menu,
+.dialog, ul.context_menu,
 .card > .block:not(.subheader):not(.simple) {
     background-color: rgb(var(--movim-background-main));
 }
@@ -90,8 +90,13 @@ form > div .radio > input[type="radio"]:checked + label {
     color: white;
 }
 
+span.icon span.counter:not(.alt) {
+    color: white;
+}
+
 span.icon span.counter.alt {
-    background-color: var(--movim-accent);
+    color: var(--movim-font);
+    background-color: rgb(var(--movim-background-main));
 }
 
 /* Elements */
@@ -154,7 +159,7 @@ span.icon:not(.composing):not([data-counter]):not(.story).status.server_error:af
 .color.steam,
 .color.bgray    { color: white; background-color: var(--p-bgray); border-color: var(--p-bgray) }
 
-.color.transparent { color: white; backdrop-filter: blur(1rem); background-color: rgba(0, 0, 0, 0.25); }
+.color.none { color: white; background-color: transparent; }
 .color.semi { color: rgba(var(--movim-font), 0.87); background-color: rgba(var(--movim-background-main), 0.75); }
 
 form > div > input:focus:invalid,

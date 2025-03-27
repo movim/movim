@@ -1,7 +1,10 @@
 var Config = {
-    switchNightMode: function()
-    {
+    switchNightMode: function () {
         document.body.classList.toggle('nightmode');
+    },
+
+    setAccentColor: function (color) {
+        document.body.style.setProperty('--movim-accent', 'var(--p-' + color + ')');
     },
 
     updateSystemVariable: function (variable, value) {
@@ -9,7 +12,7 @@ var Config = {
     }
 }
 
-MovimWebsocket.attach(function() {
+MovimWebsocket.attach(function () {
     Notif.current('conf');
 
     Config_ajaxMAMGetConfig();

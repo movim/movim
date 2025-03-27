@@ -9,7 +9,7 @@
     </button>
     <button
         name="submit"
-        class="button flat"
+        class="button color red"
         onclick="Chat_ajaxClearHistoryConfirm('{$jid|echapJS}'); Dialog_ajaxClear()">
         {$c->__('button.delete')}
     </button>

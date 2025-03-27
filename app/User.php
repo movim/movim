@@ -12,7 +12,7 @@ class User extends Model
 {
     protected $fillable = [
         'id', 'language', 'nightmode', 'chatmain', 'nsfw', 'nickname',
-        'notificationchat', 'notificationcall', 'omemoenabled'
+        'notificationchat', 'notificationcall', 'omemoenabled', 'accentcolor'
     ];
     public $with = ['session', 'capability'];
     protected $keyType = 'string';
@@ -195,6 +195,10 @@ class User extends Model
     {
         if (isset($config['language'])) {
             $this->language = (string)$config['language'];
+        }
+
+        if (isset($config['accentcolor'])) {
+            $this->accentcolor = (string)$config['accentcolor'];
         }
 
         if (isset($config['nsfw'])) {

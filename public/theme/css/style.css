@@ -77,7 +77,7 @@ body>div.dialog:not(:empty)~main,
 body>div.dialog:not(:empty)~nav,
 body>div.dialog:not(:empty)~#visio,
 body>nav.active~main {
-    opacity: 0.15;
+    opacity: 0.05;
     pointer-events: none;
 }
 

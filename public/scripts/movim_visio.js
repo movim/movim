@@ -272,20 +272,20 @@ var MovimVisio = {
         }
 
         if (MovimVisio.localAudio) {
-            let localStream = MovimVisio.localAudio.srcObject;
+            let stream = MovimVisio.localAudio.srcObject;
 
-            if (localStream) {
-                localStream.getTracks().forEach(track => track.stop());
-                localStream = null;
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+                stream = null;
             }
         }
 
         if (MovimVisio.localVideo) {
-            let localStream = MovimVisio.localVideo.srcObject;
+            let stream = MovimVisio.localVideo.srcObject;
 
-            if (localStream) {
-                localStream.getTracks().forEach(track => track.stop());
-                localStream = null;
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+                stream = null;
             }
         }
 

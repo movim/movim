@@ -36,6 +36,7 @@ class Config extends Base
         $l = Locale::start();
 
         $view->assign('languages', $l->getList());
+        $view->assign('accent_colors', ['blue', 'teal', 'green', 'dorange', 'red', 'pink', 'purple']);
         $view->assign('conf', $this->user);
 
         return $view->draw('_config_form');
@@ -181,6 +182,15 @@ class Config extends Base
             'notificationcall' => $this->rpc('Config.updateSystemVariable', 'NOTIFICATION_CALL', (bool)$value),
             'notificationchat' => $this->rpc('Config.updateSystemVariable', 'NOTIFICATION_CHAT', (bool)$value),
         };
+    }
+
+    public function prepareAccentColorRadio(string $color)
+    {
+        $view = $this->tpl();
+        $view->assign('conf', $this->user);
+        $view->assign('color', $color);
+
+        return $view->draw('_config_accent_color');
     }
 
     public function display()

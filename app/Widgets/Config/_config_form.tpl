@@ -166,6 +166,20 @@
                     </span>
                 </div>
             </li>
+            <li id="accent_color">
+                <span class="primary icon gray">
+                    <i class="material-symbols">palette</i>
+                </span>
+                <div>
+                    <p>{$c->__('config.accent_color')}</p>
+                    <p></p>
+                    <div>
+                        {loop="$accent_colors"}
+                            {autoescape="off"}{$c->prepareAccentColorRadio($value)}{/autoescape}
+                        {/loop}
+                    </div>
+                </div>
+            </li>
         </ul>
     </div>
 </form>

@@ -7,3 +7,16 @@ form div > span.supporting.night_mode_detected {
         display: initial;
     }
 }
+
+form li#accent_color div.radio {
+    display: inline-block;
+    margin-right: 0.5rem;
+}
+
+form li#accent_color div.radio label {
+    transform: scale(1.5);
+}
+
+form li#accent_color > div {
+    height: 9rem;
+}

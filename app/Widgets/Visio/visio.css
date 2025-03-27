@@ -198,7 +198,7 @@ body>#visio:not(:fullscreen) .participant img.avatar {
     position: absolute;
     width: 100%;
     z-index: 1;
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), transparent);
 }
 
 #visio header ul.list li {
@@ -225,6 +225,8 @@ body>#visio:not(:fullscreen) .participant img.avatar {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    color: white;
+    opacity: 0.6;
 }
 
 #visio .button.action {
@@ -278,8 +280,11 @@ body>#visio:not(:fullscreen) #participants .participant:not(.active) {
 
 /** Grid view **/
 
-#visio #participants:not(.active) .participant.active {
-    background-color: rgba(var(--movim-font), 0.1);
+#visio #participants:not(.active) .participant.active:not(.audio_off)::after {
+    color: var(--p-green);
+    opacity: calc(1 - var(--level));
+    transform: scale(1.5) translateX(0.25rem) translateY(-0.25rem);
+    transition: opacity 0.5s ease-in-out, transform .3s cubic-bezier(.4,0,.2,1);
 }
 
 #visio #participants:not(.active):has(.participant:nth-child(2)) .participant {
@@ -324,6 +329,7 @@ body>#visio #participants:not(.active):has(.participant:nth-child(7)) .participa
     color: white;
     text-shadow: 0 0 1rem rgba(0, 0, 0, 0.85);
     font-size: 2rem;
+    transition: opacity 0.5s ease-in-out, transform .3s cubic-bezier(.4,0,.2,1);
 }
 
 #visio .participant::after {

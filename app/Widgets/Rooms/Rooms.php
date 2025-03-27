@@ -74,7 +74,7 @@ class Rooms extends Base
     {
         $muji = $packet->content;
 
-        if ($muji->jidfrom && $muji->conference) {
+        if ($muji->jidfrom && $muji->conference && !$muji->inviter->me) {
             Notif::append(
                 'chat|' . $muji->jidfrom,
                 ($muji->conference != null && $muji->conference->name)
@@ -85,7 +85,9 @@ class Rooms extends Base
                     : "📞 " . __('muji.call_audio_invite'),
                 $muji->conference->getPicture(),
                 5,
-                $this->route('chat', [$muji->jidfrom, 'room'])
+                $this->route('chat', [$muji->jidfrom, 'room']),
+                null,
+                'Search.chat(\'' . echapJS($muji->jidfrom) . '\', true)'
             );
 
             $this->onCallInvite($packet);
@@ -147,9 +149,11 @@ class Rooms extends Base
 
     public function onBookmarkGet($packet)
     {
-        foreach ($this->user->session->conferences()
-                      ->where('bookmarkversion', (int)$packet->content)
-                      ->get() as $room) {
+        foreach (
+            $this->user->session->conferences()
+                ->where('bookmarkversion', (int)$packet->content)
+                ->get() as $room
+        ) {
             if ($room->autojoin && !$room->connected) {
                 $this->ajaxJoin($room->conference, $room->nick);
             }
@@ -181,7 +185,7 @@ class Rooms extends Base
             $composing
                 ? 'MovimUtils.addClass'
                 : 'MovimUtils.removeClass',
-            '#' . cleanupId($room.'_rooms_primary'),
+            '#' . cleanupId($room . '_rooms_primary'),
             'composing'
         );
     }
@@ -189,15 +193,15 @@ class Rooms extends Base
     private function setCounter(string $room)
     {
         $conference = $this->user->session
-                           ->conferences()
-                           ->where('conference', $room)
-                           ->withCount('unreads', 'quoted')
-                           ->first();
+            ->conferences()
+            ->where('conference', $room)
+            ->withCount('unreads', 'quoted')
+            ->first();
 
         if ($conference) {
             $this->rpc(
                 'MovimTpl.fill',
-                '#' . cleanupId($room.'_rooms_primary'),
+                '#' . cleanupId($room . '_rooms_primary'),
                 $this->prepareRoomCounter($conference, $conference->getPicture())
             );
 
@@ -209,10 +213,10 @@ class Rooms extends Base
     public function onPresence(string $room, bool $callSecond = true)
     {
         $conference = $this->user->session->conferences()
-                                          ->where('conference', $room)
-                                          ->with('info', 'contact', 'presence')
-                                          ->withCount('unreads', 'quoted', 'presences')
-                                          ->first();
+            ->where('conference', $room)
+            ->with('info', 'contact', 'presence')
+            ->withCount('unreads', 'quoted', 'presences')
+            ->first();
 
         if ($conference) {
             $this->rpc('Rooms.setRoom', \cleanupId($conference->conference), $this->prepareConference($conference), $callSecond);
@@ -227,9 +231,9 @@ class Rooms extends Base
     public function ajaxHttpGet()
     {
         $conferences = $this->user->session->conferences()
-                                           ->with('info', 'contact', 'presence')
-                                           ->withCount('unreads', 'quoted', 'presences')
-                                           ->get();
+            ->with('info', 'contact', 'presence')
+            ->withCount('unreads', 'quoted', 'presences')
+            ->get();
 
         $this->rpc('Rooms.clearRooms');
 
@@ -258,7 +262,7 @@ class Rooms extends Base
 
         $r = new Request;
         $r->setTo($room)
-          ->request();
+            ->request();
 
         $p = new Muc;
         $p->setTo($room);
@@ -269,8 +273,8 @@ class Rooms extends Base
 
         $jid = explodeJid($room);
         $capability = \App\Info::where('server', $jid['server'])
-                               ->where('node', '')
-                               ->first();
+            ->where('node', '')
+            ->first();
 
         if ($capability && ($capability->isMAM() || $capability->isMAM2())) {
             $this->rpc('MovimUtils.addClass', '#chat_widget .contained', 'loading');
@@ -283,12 +287,12 @@ class Rooms extends Base
         } else {
             $r = new Request;
             $r->setTo($jid['server'])
-              ->request();
+                ->request();
         }
 
         $m = new GetMembers;
         $m->setTo($room)
-          ->request();
+            ->request();
 
         $p->setNickname($nickname);
         $p->request();
@@ -319,8 +323,8 @@ class Rooms extends Base
 
         $jid = explodeJid($room);
         $capability = \App\Info::where('server', $jid['server'])
-                               ->where('node', '')
-                               ->first();
+            ->where('node', '')
+            ->first();
 
         if (!$capability || !$capability->isMAM()) {
             $this->user->messages()->where('jidfrom', $room)->delete();
@@ -331,19 +335,19 @@ class Rooms extends Base
 
         // We clear the presences from the buffer cache and then the DB
         $this->user->session->conferences()
-             ->where('conference', $room)
-             ->first()->presences()->delete();
+            ->where('conference', $room)
+            ->first()->presences()->delete();
 
         $this->ajaxHttpGet();
 
         if ($resource) {
             $session = Session::instance();
-            $session->delete($room . '/' .$resource);
+            $session->delete($room . '/' . $resource);
 
             $pu = new Unavailable;
             $pu->setTo($room)
-               ->setResource($resource)
-               ->request();
+                ->setResource($resource)
+                ->request();
         }
     }
 

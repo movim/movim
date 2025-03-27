@@ -32,7 +32,7 @@
     </section>
 </div>
 <div class="chat_box {if="isset($conference) && $conference->presence && $conference->presence->mucrole == 'visitor'"}disabled{/if}">
-    <a id="scroll_down" class="button action color small semi" onclick="Chat.scrollTotally()">
+    <a id="scroll_down" class="button action color transparent small" onclick="Chat.scrollTotally()">
         <i class="material-symbols">expand_more</i>
     </a>
     <ul class="list fill">

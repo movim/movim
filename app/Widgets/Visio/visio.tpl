@@ -2,30 +2,30 @@
     <header>
         <ul class="list">
             <li>
-                <span id="switch_chat" class="primary icon color transparent active" onclick="VisioUtils.switchChat()">
+                <span id="switch_chat" class="primary icon color none active" onclick="VisioUtils.switchChat()">
                     <i class="material-symbols">back_to_tab</i>
                 </span>
-                <span id="toggle_fullscreen" class="control icon color transparent active" onclick="VisioUtils.toggleFullScreen()">
+                <span id="toggle_fullscreen" class="control icon color none active" onclick="VisioUtils.toggleFullScreen()">
                     <i class="material-symbols">fullscreen</i>
                 </span>
-                <span id="toggle_mode" class="control icon color transparent active" onclick="VisioUtils.toggleMode()">
+                <span id="toggle_mode" class="control icon color none active" onclick="VisioUtils.toggleMode()">
                     <i class="material-symbols">tile_small</i>
                 </span>
 
-                <span id="toggle_dtmf" class="control icon color transparent active" onclick="VisioUtils.toggleDtmf()">
+                <span id="toggle_dtmf" class="control icon color none active" onclick="VisioUtils.toggleDtmf()">
                     <i class="material-symbols">dialpad</i>
                 </span>
-                <span id="toggle_audio" class="divided control icon color transparent active" onclick="VisioUtils.toggleAudio()">
+                <span id="toggle_audio" class="divided control icon color none active" onclick="VisioUtils.toggleAudio()">
                     <i class="material-symbols">mic</i>
                 </span>
 
-                <span id="toggle_video" class="control icon color transparent active" onclick="VisioUtils.toggleVideo()">
+                <span id="toggle_video" class="control icon color none active" onclick="VisioUtils.toggleVideo()">
                     <i class="material-symbols">videocam</i>
                 </span>
-                <span id="switch_camera" class="control icon color transparent active">
+                <span id="switch_camera" class="control icon color none active">
                     <i class="material-symbols">switch_camera</i>
                 </span>
-                <span id="screen_sharing" class="control icon color transparent active toggleable" onclick="VisioUtils.toggleScreenSharing()">
+                <span id="screen_sharing" class="control icon color none active toggleable" onclick="VisioUtils.toggleScreenSharing()">
                     <i class="material-symbols">screen_share</i>
                 </span>
 

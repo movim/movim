@@ -10,5 +10,6 @@ class Colors extends Base
     {
         header('Content-Type: text/css');
         $this->view->assign('colors', palette(true));
+        $this->view->assign('accentcolor', $this->user ? $this->user->accentcolor : 'dorange');
     }
 }

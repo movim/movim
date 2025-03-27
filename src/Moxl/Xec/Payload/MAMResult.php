@@ -18,7 +18,7 @@ class MAMResult extends Payload
             $stanza->forwarded->delay
             && isset($stanza->attributes()->queryid)
             && $messagesCounter >= 0
-        ) {\logDebug($stanza->asXML());
+        ) {
             $session->set('mamid' . (string)$stanza->attributes()->queryid, $messagesCounter + 1);
 
             if ($stanza->forwarded->message->retract
