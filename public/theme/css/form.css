@@ -257,7 +257,8 @@ form > div .radio > input[type="radio"] + label {
     border-style: solid;
     border-color: gray;
     transition: box-shadow 0.1s ease;
-    margin: 0 1.25rem;
+    margin: 1.25rem;
+    margin-bottom: 0;
 }
 
 form > div .radio > input[type="radio"] + label:hover {
