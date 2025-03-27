@@ -33,7 +33,10 @@ body.nightmode {
     }
 }
 
-body,
+body {
+    background-color: rgb(var(--movim-background));
+}
+
 .drawer {
     background-color: rgb(var(--movim-background-main));
 }
