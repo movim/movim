@@ -15,6 +15,11 @@ form li#accent_color div.radio {
 
 form li#accent_color div.radio label {
     transform: scale(1.5);
+    position: relative;
+}
+
+form li#accent_color div.radio input[type=radio] {
+    display: none;
 }
 
 form li#accent_color > div {
