@@ -160,6 +160,7 @@ span.icon:not(.composing):not([data-counter]):not(.story).status.server_error:af
 .color.bgray    { color: white; background-color: var(--p-bgray); border-color: var(--p-bgray) }
 
 .color.none { color: white; background-color: transparent; }
+.color.transparent { color: white; backdrop-filter: blur(1rem); background-color: rgba(0, 0, 0, 0.25); }
 .color.semi { color: rgba(var(--movim-font), 0.87); background-color: rgba(var(--movim-background-main), 0.75); }
 
 form > div > input:focus:invalid,
