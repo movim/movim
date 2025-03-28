@@ -33,14 +33,6 @@ body.nightmode {
     }
 }
 
-body {
-    background-color: rgb(var(--movim-background));
-}
-
-.drawer {
-    background-color: rgb(var(--movim-background-main));
-}
-
 body > *,
 .context_menu,
 .icon-text,
@@ -69,6 +61,12 @@ table tr th {
     color: rgba(var(--movim-font), 0.54);
 }
 
+body,
+#drawer .card > .block:not(.subheader):not(.simple) {
+    background-color: rgb(var(--movim-background));
+}
+
+.drawer,
 ul li.date > div > p.normal,
 .dialog, ul.context_menu,
 .card > .block:not(.subheader):not(.simple) {

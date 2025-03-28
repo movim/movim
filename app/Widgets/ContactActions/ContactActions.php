@@ -4,16 +4,12 @@ namespace App\Widgets\ContactActions;
 
 use App\Widgets\Chat\Chat;
 use App\Widgets\Chats\Chats;
-use App\Widgets\Dialog\Dialog;
 use App\Widgets\Drawer\Drawer;
 use App\Widgets\Post\Post;
 use App\Widgets\Toast\Toast;
 use Movim\CurrentCall;
 use Movim\EmbedLight;
 use Movim\Widget\Base;
-
-use Moxl\Xec\Action\Roster\AddItem;
-use Moxl\Xec\Action\Presence\Subscribe;
 
 class ContactActions extends Base
 {
@@ -132,7 +128,7 @@ class ContactActions extends Base
         $this->rpc('ContactActions.resolveSessionsStates', $jid);
     }
 
-    public function ajaxChat(string $jid, bool $muc = false)
+    public function ajaxChat(string $jid, ?bool $muc = false)
     {
         if (!validateJid($jid)) {
             return;

@@ -3,6 +3,7 @@
 namespace App\Widgets\Config;
 
 use App\Post;
+use App\User;
 use App\Widgets\Dialog\Dialog;
 use App\Widgets\Toast\Toast;
 use Movim\i18n\Locale;
@@ -36,7 +37,7 @@ class Config extends Base
         $l = Locale::start();
 
         $view->assign('languages', $l->getList());
-        $view->assign('accent_colors', ['blue', 'teal', 'green', 'dorange', 'red', 'pink', 'purple']);
+        $view->assign('accent_colors', User::ACCENT_COLORS);
         $view->assign('conf', $this->user);
 
         return $view->draw('_config_form');

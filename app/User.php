@@ -29,6 +29,8 @@ class User extends Model
         'notifications_since' => 'datetime:Y-m-d H:i:s',
     ];
 
+    public const ACCENT_COLORS = ['blue', 'teal', 'green', 'dorange', 'red', 'pink', 'purple'];
+
     public function save(array $options = [])
     {
         parent::save($options);
@@ -197,7 +199,7 @@ class User extends Model
             $this->language = (string)$config['language'];
         }
 
-        if (isset($config['accentcolor'])) {
+        if (isset($config['accentcolor']) && in_array($config['accentcolor'], User::ACCENT_COLORS)) {
             $this->accentcolor = (string)$config['accentcolor'];
         }
 

@@ -12,8 +12,7 @@ ul.list>li {
 ul.list.compact>li {
     flex-direction: column;
     align-items: flex-start;
-    padding: 0.25rem 0.75rem;
-    padding-top: 1.25rem;
+    padding: 1.5rem 1rem;
 }
 
 nav>ul.list>li,
@@ -182,6 +181,7 @@ ul.list li .primary~*:not(.primary):not(.control):not(.bubble) {
 
 ul.list.compact li .primary~*:not(.primary):not(.control):not(.bubble) {
     margin-left: 0.5rem;
+    padding-bottom: 0;
 }
 
 *[dir="rtl"] ul.list.compact li .primary~*:not(.primary):not(.control):not(.bubble) {
