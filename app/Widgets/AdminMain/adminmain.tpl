@@ -2,6 +2,21 @@
 <form name="admin" id="adminform" action="#" method="post">
     <input type="hidden" name="adminform" id="adminform" value="true"/>
     <div>
+        <br />
+        <ul class="list middle card shadow">
+            <li class="block">
+                <span class="primary icon">
+                    <i class="material-symbols blue">linked_services</i>
+                </span>
+                <span class="control icon active" onclick="MovimUtils.redirect('https://join.movim.eu/')">
+                    <i class="material-symbols">open_in_new</i>
+                </span>
+                <div>
+                    <p>{$c->__('general.join_title')}</p>
+                    <p>{$c->__('general.join_text')}</p>
+                </div>
+            </li>
+        </ul>
         <ul class="list middle">
             <li class="subheader">
                 <div><p>{$c->__('config.general')}</p></div>
