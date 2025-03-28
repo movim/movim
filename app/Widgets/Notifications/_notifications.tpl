@@ -1,69 +1,71 @@
 <section id="notifications_widget">
-    <ul class="list">
-        <li class="subheader">
-            <div>
-                <p>{$c->__('invitations.received')}</p>
-            </div>
-        </li>
-    </ul>
-    <ul id="notifications_invitations" class="list middle spaced">{loop="$subscribePresences"}<li id="invitation-{$value->jid|cleanupId}" data-jid="{$value->jid}">
-            <span class="primary icon bubble active" onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}'); Drawer.clear();">
-                <img src="{$value->contact != null   ? $value->contact->getPicture() : $value->getPicture()}">
-            </span>
-            <span class="control icon green active" title="{$c->__('button.accept')}" onclick="Notifications_ajaxAccept('{$value->jid|echapJS}');">
-                <i class="material-symbols">check</i>
-            </span>
-            <span class="control icon red active" title="{$c->__('button.refuse')}" onclick="Notifications_ajaxRefuse('{$value->jid|echapJS}');">
-                <i class="material-symbols">close</i>
-            </span>
-            <div>
-                <p class="line normal">
-                    {$c->__('invitations.adds_you', $value->contact != null ? $value->contact->truename : $value->jid)}
-                </p>
-                <p class="line">{$value->jid}</p>
-            </div>
-        </li>{/loop}</ul>
-
-    <div class="placeholder">
-        <i class="material-symbols">person_add</i>
-        <h4>{$c->__('invitations.no_new')}</h4>
-    </div>
-
-    <ul class="list">
-        <li class="subheader">
-            <div>
-                <p>{$c->__('subscription.nil')}</p>
-            </div>
-        </li>
-    </ul>
-    <ul id="notifications_subscriptions" class="list middle spaced">{loop="$subscriptionRoster"}<li id="invitation-{$value->jid|cleanupId}" data-jid="{$value->jid}">
-            <span class="primary icon bubble active" onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}'); Drawer.clear();">
-                <img src="{$value->getPicture()}">
-            </span>
-            {if="$value->ask == 'subscribe'"}
-                <span class="control icon gray disabled" title="{$c->__('room.invited')}">
-                    <i class="material-symbols">chat_paste_go</i>
+    {if="$subscribePresences->isNotEmpty()"}
+        <ul class="list">
+            <li class="subheader">
+                <div>
+                    <p>{$c->__('invitations.received')}</p>
+                </div>
+            </li>
+        </ul>
+        <ul id="notifications_invitations" class="list middle spaced">{loop="$subscribePresences"}<li id="invitation-{$value->jid|cleanupId}" data-jid="{$value->jid}">
+                <span class="primary icon bubble active" onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}'); Drawer.clear();">
+                    <img src="{$value->contact != null   ? $value->contact->getPicture() : $value->getPicture()}">
                 </span>
-            {else}
-                <span class="control icon gray active" title="{$c->__('button.add')}" onclick="Notifications_ajaxAddAsk('{$value->jid|echapJS}'); Drawer.clear();">
-                    <i class="material-symbols">add</i>
+                <span class="control icon green active" title="{$c->__('button.accept')}" onclick="Notifications_ajaxAccept('{$value->jid|echapJS}');">
+                    <i class="material-symbols">check</i>
                 </span>
-            {/if}
-            <span class="control icon gray active" title="{$c->__('button.delete')}" onclick="Notifications_ajaxDeleteContact('{$value->jid|echapJS}'); Drawer.clear();">
-                <i class="material-symbols">delete</i>
-            </span>
-            <div>
-                <p class="line normal">
-                    {$value->truename}
-                </p>
-                <p class="line">{$value->jid}</p>
-            </div>
-        </li>{/loop}</ul>
+                <span class="control icon red active" title="{$c->__('button.refuse')}" onclick="Notifications_ajaxRefuse('{$value->jid|echapJS}');">
+                    <i class="material-symbols">close</i>
+                </span>
+                <div>
+                    <p class="line normal">
+                        {$c->__('invitations.adds_you', $value->contact != null ? $value->contact->truename : $value->jid)}
+                    </p>
+                    <p class="line">{$value->jid}</p>
+                </div>
+            </li>{/loop}</ul>
+        <div class="placeholder">
+            <i class="material-symbols">person_add</i>
+            <h4>{$c->__('invitations.no_new')}</h4>
+        </div>
+    {/if}
 
-    <div class="placeholder">
-        <i class="material-symbols">person_check</i>
-        <h4>{$c->__('invitations.no_subscriptions')}</h4>
-    </div>
+    {if="$subscriptionRoster->isNotEmpty()"}
+        <ul class="list">
+            <li class="subheader">
+                <div>
+                    <p>{$c->__('subscription.nil')}</p>
+                </div>
+            </li>
+        </ul>
+        <ul id="notifications_subscriptions" class="list middle spaced">{loop="$subscriptionRoster"}<li id="invitation-{$value->jid|cleanupId}" data-jid="{$value->jid}">
+                <span class="primary icon bubble active" onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}'); Drawer.clear();">
+                    <img src="{$value->getPicture()}">
+                </span>
+                {if="$value->ask == 'subscribe'"}
+                    <span class="control icon gray disabled" title="{$c->__('room.invited')}">
+                        <i class="material-symbols">chat_paste_go</i>
+                    </span>
+                {else}
+                    <span class="control icon gray active" title="{$c->__('button.add')}" onclick="Notifications_ajaxAddAsk('{$value->jid|echapJS}'); Drawer.clear();">
+                        <i class="material-symbols">add</i>
+                    </span>
+                {/if}
+                <span class="control icon gray active" title="{$c->__('button.delete')}" onclick="Notifications_ajaxDeleteContact('{$value->jid|echapJS}'); Drawer.clear();">
+                    <i class="material-symbols">delete</i>
+                </span>
+                <div>
+                    <p class="line normal">
+                        {$value->truename}
+                    </p>
+                    <p class="line">{$value->jid}</p>
+                </div>
+            </li>{/loop}</ul>
+        <div class="placeholder">
+            <i class="material-symbols">person_check</i>
+            <h4>{$c->__('invitations.no_subscriptions')}</h4>
+        </div>
+    {/if}
 
     {if="$notifs->isNotEmpty()"}
     <ul class="list active">
