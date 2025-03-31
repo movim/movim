@@ -235,7 +235,7 @@
                     </p>
                     <p class="line">
                         <a href="#">{$post->openlink->url.host}</a>
-                        {if="$post->openlink->url.path != '/'"}
+                        {if="array_key_exists('path', $post->openlink->url) && $post->openlink->url.path != '/'"}
                             <span class="second sticked">{$post->openlink->url.path}</span>
                         {/if}
                     </p>
