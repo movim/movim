@@ -49,7 +49,7 @@
         <ul class="list">
             <li>
                 <span class="primary icon gray">
-                    <i class="material-symbols">language</i>
+                    <i class="material-symbols">translate</i>
                 </span>
                 <div>
                     <div class="select">
@@ -144,7 +144,7 @@
 
             <li>
                 <span class="primary icon gray">
-                    <i class="material-symbols">brightness_2</i>
+                    <i class="material-symbols">dark_mode</i>
                 </span>
                 <span class="control">
                     <div class="checkbox">
