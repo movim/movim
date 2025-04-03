@@ -2,25 +2,21 @@
 
 namespace App\Widgets\Visio;
 
-use App\MujiCall;
+use App\Message;
 use App\Widgets\Dialog\Dialog;
 use App\Widgets\Notif\Notif;
 use App\Widgets\Rooms\Rooms;
 use App\Widgets\Toast\Toast;
-use Movim\CurrentCall;
-use Movim\ImageSize;
-use Movim\Librairies\JingletoSDP;
-use Movim\Librairies\SDPtoJingle;
-use Moxl\Xec\Action\Jingle\SessionPropose;
-use Moxl\Xec\Action\Jingle\SessionAccept;
+
+use Moxl\Xec\Action\Jingle\MessagePropose;
+use Moxl\Xec\Action\Jingle\MessageRetract;
+use Moxl\Xec\Action\Jingle\MessageProceed;
+use Moxl\Xec\Action\Jingle\MessageReject;
+use Moxl\Xec\Action\Jingle\MessageFinish;
 use Moxl\Xec\Action\Jingle\SessionInitiate;
 use Moxl\Xec\Action\Jingle\SessionTerminate;
 use Moxl\Xec\Action\Jingle\SessionMute;
 use Moxl\Xec\Action\Jingle\SessionUnmute;
-
-use Movim\Widget\Base;
-use Moxl\Xec\Action\Jingle\SessionReject;
-use Moxl\Xec\Action\Jingle\SessionRetract;
 use Moxl\Xec\Action\JingleCallInvite\Accept;
 use Moxl\Xec\Action\JingleCallInvite\Invite;
 use Moxl\Xec\Action\JingleCallInvite\Retract;
@@ -28,6 +24,12 @@ use Moxl\Xec\Action\Muc\CreateMujiRoom;
 use Moxl\Xec\Action\Presence\Muc;
 use Moxl\Xec\Action\Presence\Unavailable;
 use Moxl\Xec\Payload\Packet;
+
+use Movim\Widget\Base;
+use Movim\CurrentCall;
+use Movim\ImageSize;
+use Movim\Librairies\JingletoSDP;
+use Movim\Librairies\SDPtoJingle;
 
 class Visio extends Base
 {
@@ -88,7 +90,7 @@ class Visio extends Base
 
         $createMujiRoom = new CreateMujiRoom;
         $createMujiRoom->setTo($presence->jid)
-                       ->request();
+            ->request();
     }
 
     public function onMucMujiPreparing($packet)
@@ -136,11 +138,14 @@ class Visio extends Base
     public function onMujiPresence($packet)
     {
         list($stanza, $presence) = $packet->content;
-        if ($stanza && $stanza->muji && $stanza->muji->attributes()->xmlns == 'urn:xmpp:jingle:muji:0'
-        && $stanza->muji->content && $stanza->muji->content->attributes()->xmlns == 'urn:xmpp:jingle:1') {
+        if (
+            $stanza && $stanza->muji && $stanza->muji->attributes()->xmlns == 'urn:xmpp:jingle:muji:0'
+            && $stanza->muji->content && $stanza->muji->content->attributes()->xmlns == 'urn:xmpp:jingle:1'
+        ) {
             $contact = \App\Contact::firstOrNew(['id' => \baseJid($packet->from)]);
 
-            $this->rpc('MovimJingles.initSession',
+            $this->rpc(
+                'MovimJingles.initSession',
                 \baseJid($packet->from),
                 $packet->from,
                 null,
@@ -163,21 +168,30 @@ class Visio extends Base
 
     public function onPropose(Packet $packet)
     {
-        $data = $packet->content;
+        $message = Message::eventMessageFactory(
+            'jingle',
+            baseJid($packet->from),
+            $packet->content['id']
+        );
+        $message->type = 'jingle_incoming';
+        $message->save();
 
-        (CurrentCall::getInstance())->start(\baseJid($packet->from), $data['id']);
+        $this->packedEvent('jingle_message', $message);
 
-        $this->ajaxGetLobby($packet->from, false, $data['withVideo'], $data['id']);
+        $this->ajaxGetLobby($packet->from, false, $packet->content['withVideo'], $packet->content['id']);
     }
 
     public function onProceed(Packet $packet)
     {
+        CurrentCall::getInstance()->start(\baseJid($packet->from), $packet->content);
         $this->rpc('MovimJingles.onProceed', \baseJid($packet->from), $packet->from, $packet->content /* id */);
     }
 
+    // Deprecated
     public function onAccept($packet)
     {
-        $this->rpc('Notif.incomingAnswer');
+        $this->rpc('Notif.incomingCallAnswer');
+        CurrentCall::getInstance()->start(\baseJid($packet->from), $packet->content);
 
         (new Dialog)->ajaxClear();
     }
@@ -203,7 +217,7 @@ class Visio extends Base
         (CurrentCall::getInstance())->stop(\baseJid($packet->from), $packet->content);
 
         // Stop calling sound and clear the Dialog if there
-        $this->rpc('Notif.incomingAnswer');
+        $this->rpc('Notif.incomingCallAnswer');
         (new Dialog)->ajaxClear();
 
         $this->rpc('MovimJingles.onTerminate', \baseJid($packet->from));
@@ -251,39 +265,54 @@ class Visio extends Base
         $this->rpc('MovimJingles.onUnmute', \baseJid($packet->from), $packet->content);
     }
 
-    public function ajaxPropose(string $to, string $id, $withVideo = false)
+    public function ajaxPropose(string $to, string $id, ?bool $withVideo = false)
     {
-        (CurrentCall::getInstance())->start(\baseJid($to), $id);
+        $message = Message::eventMessageFactory(
+            'jingle',
+            baseJid($to),
+            $id
+        );
+        $message->type = 'jingle_outgoing';
+        $message->save();
 
-        $p = new SessionPropose;
+        $this->packedEvent('jingle_message', $message);
+
+        $p = new MessagePropose;
         $p->setTo($to)
             ->setId($id)
             ->setWithVideo($withVideo)
             ->request();
     }
 
-    public function ajaxAccept(string $to, string $id)
+    public function ajaxProceed(string $to, string $id)
     {
-        (CurrentCall::getInstance())->start(\baseJid($to), $id);
+        CurrentCall::getInstance()->start(\baseJid($to), $id);
 
-        $p = new SessionAccept;
+        $this->rpc('Notif.incomingCallAnswer');
+
+        /*$p = new MessageAccept;
+        $p->setId($id)
+          ->request();*/
+
+        $p = new MessageProceed;
         $p->setTo($to)
             ->setId($id)
             ->request();
     }
 
-    public function ajaxReject($to, $id)
+    public function ajaxReject(string $to, string $id)
     {
         (CurrentCall::getInstance())->stop($to, $id);
 
-        $this->rpc('Notifs.incomingAnswer');
-        $reject = new SessionReject;
+        $this->rpc('Notif.incomingCallAnswer');
+
+        $reject = new MessageReject;
         $reject->setTo($to)
             ->setId($id)
             ->request();
     }
 
-    public function ajaxMute($to, $id, $name)
+    public function ajaxMute(string $to, string $id, $name)
     {
         $p = new SessionMute;
         $p->setTo($to)
@@ -292,7 +321,7 @@ class Visio extends Base
             ->request();
     }
 
-    public function ajaxUnmute($to, $id, $name)
+    public function ajaxUnmute(string $to, string $id, $name)
     {
         $p = new SessionUnmute;
         $p->setTo($to)
@@ -307,8 +336,8 @@ class Visio extends Base
     {
         $view = $this->tpl();
         $view->assign('conference', $this->user->session->conferences()
-                ->where('conference', $muc)
-                ->first());
+            ->where('conference', $muc)
+            ->first());
 
         Dialog::fill($view->draw('_visio_choose_muji'), false, true);
     }
@@ -340,8 +369,8 @@ class Visio extends Base
             if ($resource) {
                 $pu = new Unavailable;
                 $pu->setTo($muji->muc)
-                   ->setResource($resource)
-                   ->request();
+                    ->setResource($resource)
+                    ->request();
 
                 $this->user->session->mujiCalls()->where('id', $mujiId)->delete();
 
@@ -352,8 +381,8 @@ class Visio extends Base
                 if ($participant && $participant->inviter) {
                     $retract = new Retract;
                     $retract->setTo($muji->jidfrom)
-                            ->setId($muji->id)
-                            ->request();
+                        ->setId($muji->id)
+                        ->request();
                 }
             }
 
@@ -412,17 +441,17 @@ class Visio extends Base
         if ($muji) {
             $accept = new Accept;
             $accept->setTo($muji->jidfrom)
-                   ->setId($muji->id)
-                   ->request();
+                ->setId($muji->id)
+                ->request();
 
             CurrentCall::getInstance()->start($muji->jidfrom, $muji->id, mujiRoom: $muji->muc);
 
             $muc = new Muc;
-                $muc->setTo($muji->muc)
-                    ->setNickname($muji->conference ? $muji->conference->nickname : $this->user->nickname)
-                    ->enableMujiPreparing()
-                    ->noNotify()
-                    ->request();
+            $muc->setTo($muji->muc)
+                ->setNickname($muji->conference ? $muji->conference->nickname : $this->user->nickname)
+                ->enableMujiPreparing()
+                ->noNotify()
+                ->request();
 
             $this->rpc('Chat_ajaxGetHeader', $muji->jidfrom, true);
         }
@@ -486,8 +515,8 @@ class Visio extends Base
 
             $invite = new Invite;
             $invite->setTo($to)
-                   ->setId($mujiId)
-                   ->setRoom($mujiConferenceJid);
+                ->setId($mujiId)
+                ->setRoom($mujiConferenceJid);
 
             if ($withVideo) {
                 $invite->enableVideo();
@@ -625,26 +654,33 @@ class Visio extends Base
     /**
      * Close a one-to-one call
      */
-    public function ajaxGoodbye(string $to, string $sid, ?string $reason = 'success') {
-        CurrentCall::getInstance()->stop($to, $sid);
-
-        $this->rpc('MovimJingles.terminateAll', $reason);
-    }
-
-    /*public function ajaxEnd(string $to, string $sid, $reason = 'success')
+    public function ajaxGoodbye(string $to, string $sid, ?string $reason = 'success')
     {
         if (CurrentCall::getInstance()->isStarted()) {
             CurrentCall::getInstance()->stop($to, $sid);
-            $st = new SessionTerminate;
+
+            $st = new MessageFinish;
             $st->setTo($to)
-                ->setJingleSid($sid)
+                ->setId($sid)
                 ->setReason($reason)
                 ->request();
         } else {
-            $sr = new SessionRetract;
+            $sr = new MessageRetract;
             $sr->setTo($to)
                 ->setId($sid)
                 ->request();
+
+            $message = Message::eventMessageFactory(
+                'jingle',
+                baseJid($to),
+                $sid
+            );
+            $message->type = 'jingle_retract';
+            $message->save();
+
+            $this->packedEvent('jingle_message', $message);
         }
-    }*/
+
+        $this->rpc('MovimJingles.terminateAll', $reason);
+    }
 }

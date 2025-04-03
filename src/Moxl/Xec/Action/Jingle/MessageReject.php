@@ -6,7 +6,7 @@ use App\Message;
 use Moxl\Xec\Action;
 use Moxl\Stanza\Jingle;
 
-class SessionReject extends Action
+class MessageReject extends Action
 {
     protected $_to;
     protected $_id;
@@ -14,8 +14,7 @@ class SessionReject extends Action
     public function request()
     {
         $this->store();
-        Jingle::sessionReject($this->_id);
-        Jingle::sessionReject($this->_id, $this->_to);
+        Jingle::messageReject($this->_id, $this->_to);
 
         $message = Message::eventMessageFactory(
             'jingle',

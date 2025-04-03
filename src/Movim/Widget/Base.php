@@ -9,6 +9,7 @@ namespace Movim\Widget;
 use Rain\Tpl;
 use Movim\Controller\Ajax;
 use Movim\Template\Partial;
+use Moxl\Xec\Payload\Packet;
 use WyriHaximus\React\Cron;
 use WyriHaximus\React\Cron\Action;
 
@@ -143,6 +144,21 @@ class Base
     {
         $widgets = Wrapper::getInstance();
         $widgets->iterate($key, $data);
+    }
+
+    /**
+     * Send a packed event
+     */
+    public function packedEvent(string $key, $content, ?string $from = null)
+    {
+        $packet = new Packet;
+        $packet->content = $content;
+
+        if ($from != null) {
+            $packet->from = $from;
+        }
+
+        $this->event($key, $packet);
     }
 
     /**

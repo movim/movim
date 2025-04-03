@@ -31,7 +31,7 @@ var Notif = {
             Notif.audioCall.play();
         }
     },
-    incomingAnswer: function () {
+    incomingCallAnswer: function () {
         if (Notif.audioCall) {
             Notif.audioCall.pause();
             Notif.audioCall.currentTime = 0;

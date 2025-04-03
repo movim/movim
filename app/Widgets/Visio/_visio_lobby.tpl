@@ -99,7 +99,7 @@
 <div>
     {if="isset($contact)"}
         {if="$calling"}
-            <button onclick="MovimVisio.clear(); Dialog_ajaxClear()" class="button flat">
+            <button onclick="MovimVisio.clear(); Dialog_ajaxClear()" class="button flat red">
                 {$c->__('button.cancel')}
             </button>
             <button id="lobby_start" onclick="MovimVisio.init('{$fullJid|echapJS}', '{$contact->id}', null, {if="$withvideo"}true{else}false{/if}); Dialog_ajaxClear();" class="button color green disabled">
@@ -126,7 +126,7 @@
         {/if}
     {else}
         {if="$calling"}
-            <button onclick="MovimVisio.clear(); Dialog_ajaxClear()" class="button flat">
+            <button onclick="MovimVisio.clear(); Dialog_ajaxClear()" class="button flat red">
                 {$c->__('button.cancel')}
             </button>
             <button id="lobby_start" onclick="Visio_ajaxMujiCreate('{$conference->conference}', {if="$withvideo"}true{else}false{/if}); Dialog_ajaxClear()" class="button color green disabled">
@@ -138,7 +138,7 @@
                 {$c->__('button.create')}
             </button>
         {else}
-            <button onclick="Dialog_ajaxClear()" class="button flat">
+            <button onclick="Dialog_ajaxClear()" class="button flat red">
                 {$c->__('button.cancel')}
             </button>
             <button id="lobby_start" onclick="Visio_ajaxMujiAccept('{$id|echapJS}'); Dialog_ajaxClear()" class="button color green disabled">

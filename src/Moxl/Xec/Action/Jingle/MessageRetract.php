@@ -5,7 +5,7 @@ namespace Moxl\Xec\Action\Jingle;
 use Moxl\Xec\Action;
 use Moxl\Stanza\Jingle;
 
-class SessionRetract extends Action
+class MessageRetract extends Action
 {
     protected $_to;
     protected $_id;
@@ -13,6 +13,6 @@ class SessionRetract extends Action
     public function request()
     {
         $this->store();
-        Jingle::sessionRetract($this->_to, $this->_id);
+        Jingle::messageRetract($this->_to, $this->_id);
     }
 }

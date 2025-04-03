@@ -4,7 +4,11 @@ namespace Moxl\Stanza;
 
 class Jingle
 {
-    public static function sessionPropose($to, $id, $withVideo = false)
+    /**
+     * XEP-0353: Jingle Message Initiation
+     */
+
+    public static function messagePropose(string $to, string $id, bool $withVideo = false)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $message = $dom->createElementNS('jabber:client', 'message');
@@ -28,20 +32,21 @@ class Jingle
         \Moxl\API::sendDom($dom);
     }
 
-    public static function sessionAccept($id)
+    // Deprecated
+    public static function messageAccept(string $id)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $message = $dom->createElementNS('jabber:client', 'message');
         $dom->appendChild($message);
 
-        $accept = $dom->createElementNS('urn:xmpp:jingle-message:0', 'accept');
+        $accept = $dom->createElementNS('urn:xmpp:jingle:jingle-message:0', 'accept');
         $accept->setAttribute('id', $id);
         $message->appendChild($accept);
 
         \Moxl\API::sendDom($dom);
     }
 
-    public static function sessionProceed($to, $id)
+    public static function messageProceed(string $to, string $id)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $message = $dom->createElementNS('jabber:client', 'message');
@@ -55,7 +60,7 @@ class Jingle
         \Moxl\API::sendDom($dom);
     }
 
-    public static function sessionRetract($to, $id)
+    public static function messageRetract(string $to, string $id)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $message = $dom->createElementNS('jabber:client', 'message');
@@ -75,7 +80,27 @@ class Jingle
         \Moxl\API::sendDom($dom);
     }
 
-    public static function sessionReject($id, $to = false)
+    public static function messageFinish(string $to, string $id)
+    {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $message = $dom->createElementNS('jabber:client', 'message');
+        $message->setAttribute('to', $to);
+        $dom->appendChild($message);
+
+        $retract = $dom->createElementNS('urn:xmpp:jingle-message:0', 'finish');
+        $retract->setAttribute('id', $id);
+        $message->appendChild($retract);
+
+        $reason = $dom->createElementNS('urn:xmpp:jingle:1', 'reason');
+        $retract->appendChild($reason);
+
+        $reason->appendChild($dom->createElement('success'));
+        $reason->appendChild($dom->createElement('text', 'Success'));
+
+        \Moxl\API::sendDom($dom);
+    }
+
+    public static function messageReject($id, $to = false)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $message = $dom->createElementNS('jabber:client', 'message');

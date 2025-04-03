@@ -2,11 +2,10 @@
 
 namespace Moxl\Xec\Action\Jingle;
 
-use Movim\CurrentCall;
 use Moxl\Xec\Action;
 use Moxl\Stanza\Jingle;
 
-class SessionAccept extends Action
+class MessageFinish extends Action
 {
     protected $_to;
     protected $_id;
@@ -14,7 +13,6 @@ class SessionAccept extends Action
     public function request()
     {
         $this->store();
-        Jingle::sessionAccept($this->_id);
-        Jingle::sessionProceed($this->_to, $this->_id);
+        Jingle::messageFinish($this->_to, $this->_id);
     }
 }

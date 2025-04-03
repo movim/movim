@@ -27,14 +27,6 @@ class Jingle extends Payload
 
             switch ($action) {
                 case 'session-initiate':
-                    if (!$stanza->muji && CurrentCall::getInstance()->hasId($stanza->attributes()->sid)) {
-                        $message->type = 'jingle_incoming';
-                        $message->save();
-
-                        $this->pack($message);
-                        $this->event('jingle_message');
-                    }
-
                     //$stanza = CurrentCall::getInstance()->setContent($stanza);
 
                     $this->pack($stanza, $from);
@@ -67,14 +59,6 @@ class Jingle extends Payload
                     $this->event('jingle_sessionterminate'/*, (string)$stanza->reason->children()[0]->getName()*/);
                     break;
                 case 'session-accept':
-                    if (!$stanza->muji && CurrentCall::getInstance()->hasId($stanza->attributes()->sid)) {
-                        $message->type = 'jingle_outgoing';
-                        $message->save();
-
-                        $this->pack($message);
-                        $this->event('jingle_message');
-                    }
-
                     $this->pack($stanza, $from);
                     $this->event('jingle_sessionaccept');
                     break;

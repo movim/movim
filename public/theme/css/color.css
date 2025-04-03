@@ -107,8 +107,10 @@ span.icon span.counter.alt {
 .button.indigo, .icon.indigo, span.resource.indigo   { color: var(--p-indigo); }
 .button.blue,   .icon.blue  , span.resource.blue     { color: var(--p-blue); }
 .button.green,  .icon.green , span.resource.green    { color: var(--p-green); }
+li div.bubble.moderator:after,
+ul li div > p > span.moderator,
 .button.orange, .icon.orange, span.resource.orange   { color: var(--p-orange); }
-.button.yellow, .icon.yellow, span.resource.yellow   { color: #FBC02D; }
+.button.yellow, .icon.yellow, span.resource.yellow   { color: var(--p-yellow); }
 .button.brown,  .icon.brown , span.resource.brown    { color: var(--p-brown); }
 ul li.action > div.action,
 ul li.action > form > div.action,
@@ -201,8 +203,6 @@ main > header {
 
 .tabs,
 .button,
-li div.bubble.moderator:after,
-ul li div > p > span.moderator,
 header:not(.big) .icon a,
 a {
     color: var(--movim-accent);

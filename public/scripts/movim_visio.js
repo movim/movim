@@ -67,12 +67,11 @@ var MovimVisio = {
         } else {
             MovimJingles.initSession(jid, fullJid, id);
 
-            // Called
             if (MovimVisio.id) {
-                Visio_ajaxAccept(fullJid, MovimVisio.id);
-
-                // Calling
+                // Called
+                Visio_ajaxProceed(fullJid, MovimVisio.id);
             } else {
+                // Calling
                 MovimVisio.id = crypto.randomUUID();
                 MovimVisio.calling = true; // TODO, remove me ?
                 //VisioUtils.toggleMainButton();
@@ -315,6 +314,7 @@ var MovimVisio = {
         const body = document.body;
 
         document.querySelector('#chat_widget header').after(visio);
+        Chat.scrollRestore();
 
         const callback = (mutationList, observer) => {
             if (!document.getElementById('visio')) {
