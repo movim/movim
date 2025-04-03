@@ -64,16 +64,10 @@
         </p>
 
         {loop="$conference->mujiCalls"}
-            <p data-mujiid="{$value->id}">
+            <p class="line" data-mujiid="{$value->id}">
                 <i class="material-symbols icon {if="$value->joined"}green blink{else}blue{/if}">
                     {$value->icon}
                 </i>
-                {if="$value->joined"}{$c->__('visio.joined_call')}{else}{$c->__('visio.in_call')}{/if}
-                <span class="second">
-                    {$value->created_at|prepareDate:true,true}
-                    •
-                    {$c->__('visio.by', $value->inviter->name)}
-                </span>
                 <span class="info">
                     {if="$value->joined"}
                         {$value->presences->count()}
@@ -81,6 +75,12 @@
                         {$value->participants->count()}
                     {/if}
                     <i class="material-symbols">people</i>
+                </span>
+                {if="$value->joined"}{$c->__('visio.joined_call')}{else}{$c->__('visio.in_call')}{/if}
+                <span class="second">
+                    {$value->created_at|prepareDate:true,true}
+                    •
+                    {$c->__('visio.by', $value->inviter->name)}
                 </span>
             </p>
         {/loop}
