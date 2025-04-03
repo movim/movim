@@ -11,7 +11,7 @@ use Movim\ImageSize;
 
 class Contact extends Model
 {
-    protected $fillable = ['id', 'nickname', 'mood'];
+    protected $fillable = ['id', 'nickname'];
     protected $keyType = 'string';
     public $incrementing = false;
 

@@ -69,8 +69,6 @@ class Utils
             'http://jabber.org/protocol/muc',
             'http://jabber.org/protocol/nick',
             'http://jabber.org/protocol/nick+notify',
-            //'http://jabber.org/protocol/mood',
-            //'http://jabber.org/protocol/mood+notify',
             'http://jabber.org/protocol/xhtml-im',
             'http://jabber.org/protocol/chatstates',
             'http://jabber.org/protocol/caps',

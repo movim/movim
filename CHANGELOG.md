@@ -20,6 +20,8 @@ v0.30 (master)
 * Add support of several simultanous Muji invites in MUC chatrooms
 * Important color management CSS cleanup
 * Add Accent Color in the Configuration
+* Remove XEP-0107: User Mood support
+* Update and complete the DOAP file
 
 v0.29.2
 ---------------------------
