@@ -146,9 +146,9 @@ body>#visio:not(:fullscreen) #toggle_mode,
 #visio video#local_video,
 #visio video#screen_sharing_video.sharing {
     position: absolute;
-    right: 1rem;
-    bottom: 1rem;
-    width: 25rem;
+    right: 0.5rem;
+    bottom: 0.5rem;
+    width: 20rem;
     height: auto;
     border-radius: 0.5rem;
     box-shadow: var(--elevation-4);
@@ -274,7 +274,7 @@ body>#visio:not(:fullscreen) .participant img.avatar {
 /** Active speaker view **/
 
 #visio #participants.active .participant:not(.active),
-body>#visio:not(:fullscreen) #participants .participant:not(.active) {
+body>#visio:not(:fullscreen) #participants.active .participant:not(.active) {
     display: none;
 }
 
@@ -292,13 +292,8 @@ body>#visio:not(:fullscreen) #participants .participant:not(.active) {
     max-width: 50%;
 }
 
-body>#visio #participants:not(.active):has(.participant:nth-child(2)) .participant {
-    flex: 1 auto;
-    max-width: 100%;
-}
-
 #visio #participants:not(.active):has(.participant:nth-child(2)) .participant video {
-    max-height: 800px;
+    max-height: 50vw;
 }
 
 #visio #participants:not(.active):has(.participant:nth-child(3)) .participant {
@@ -306,11 +301,11 @@ body>#visio #participants:not(.active):has(.participant:nth-child(2)) .participa
 }
 
 #visio #participants:not(.active):has(.participant:nth-child(5)) .participant {
-    height: 33.33%;
+    flex: 1 0 calc(33.33% - 0.5rem);
 }
 
 #visio #participants:not(.active):has(.participant:nth-child(7)) .participant {
-    height: 25%;
+    height: 33.33%;
 }
 
 body>#visio #participants:not(.active):has(.participant:nth-child(3)) .participant,
@@ -318,6 +313,13 @@ body>#visio #participants:not(.active):has(.participant:nth-child(5)) .participa
 body>#visio #participants:not(.active):has(.participant:nth-child(7)) .participant {
     height: 100%;
 }
+
+/** Active speaker mode */
+body>#visio #participants:not(.active):has(.participant:nth-child(2)) .participant {
+    flex: 1 auto;
+    max-width: 100%;
+}
+
 
 #visio .participant::after,
 #visio .participant::before {
