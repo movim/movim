@@ -124,7 +124,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-16 13:49+0200\n"
+"POT-Creation-Date: 2025-04-03 21:43+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Egon Borovan <egon.boro@gmail.com>, 2019\n"
 "Language-Team: Czech (Czech Republic) (http://app.transifex.com/movim/movim/language/cs_CZ/)\n"
@@ -293,6 +293,15 @@ msgstr "Standardní jazyk"
 
 #: [general]log_verbosity
 msgid "Log verbosity"
+msgstr ""
+
+#: [general]join_title
+#, fuzzy
+msgid "Your instance is public?"
+msgstr "Váš profil je nyní veřejný"
+
+#: [general]join_text
+msgid "Register your instance on join.movim.eu and join the Movim federation!"
 msgstr ""
 
 #: [restrictsuggestions]title
@@ -1248,6 +1257,10 @@ msgstr ""
 msgid "Incoming message"
 msgstr ""
 
+#: [config]accent_color
+msgid "Accent color"
+msgstr ""
+
 #: [confirm]title
 msgid "Confirmation of authentication"
 msgstr ""
@@ -1347,14 +1360,6 @@ msgstr "Lokalita"
 #: [position]country
 msgid "Country"
 msgstr "Země"
-
-#: [mood]title
-msgid "Mood"
-msgstr "Nálada"
-
-#: [mood]im
-msgid "I’m "
-msgstr "Já jsem"
 
 #: [listen]title
 msgid "Listening"
@@ -2757,6 +2762,10 @@ msgstr ""
 msgid "Ongoing call"
 msgstr ""
 
+#: [visio]joined_call
+msgid "Joined call"
+msgstr ""
+
 #: [visio]failed
 msgid "Failed"
 msgstr ""
@@ -2767,6 +2776,10 @@ msgstr ""
 
 #: [visio]no_participants_left
 msgid "All participants have left the call"
+msgstr ""
+
+#: [visio]by
+msgid "by %s"
 msgstr ""
 
 #: [visiolobby]called
@@ -3759,3 +3772,9 @@ msgstr "API je nedostupná, zkuste to znovu později"
 #: [field]type_here
 msgid "Type here"
 msgstr "Pište sem"
+
+#~ msgid "Mood"
+#~ msgstr "Nálada"
+
+#~ msgid "I’m "
+#~ msgstr "Já jsem"

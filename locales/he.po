@@ -122,7 +122,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-16 13:49+0200\n"
+"POT-Creation-Date: 2025-04-03 21:43+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: gk <genghiskhan@gmx.ca>, 2016\n"
 "Language-Team: Hebrew (http://app.transifex.com/movim/movim/language/he/)\n"
@@ -292,6 +292,15 @@ msgstr "שפה משתמטת"
 #: [general]log_verbosity
 msgid "Log verbosity"
 msgstr "גיבוב רשומת יומן"
+
+#: [general]join_title
+#, fuzzy
+msgid "Your instance is public?"
+msgstr "הדיוקן שלך הינו פומבי כעת"
+
+#: [general]join_text
+msgid "Register your instance on join.movim.eu and join the Movim federation!"
+msgstr ""
 
 #: [restrictsuggestions]title
 msgid "Restrict suggestions"
@@ -1246,6 +1255,10 @@ msgstr ""
 msgid "Incoming message"
 msgstr ""
 
+#: [config]accent_color
+msgid "Accent color"
+msgstr ""
+
 #: [confirm]title
 msgid "Confirmation of authentication"
 msgstr ""
@@ -1345,14 +1358,6 @@ msgstr "מקומיות"
 #: [position]country
 msgid "Country"
 msgstr "ארץ"
-
-#: [mood]title
-msgid "Mood"
-msgstr "מצב רוח"
-
-#: [mood]im
-msgid "I’m "
-msgstr ""
 
 #: [listen]title
 msgid "Listening"
@@ -2755,6 +2760,10 @@ msgstr ""
 msgid "Ongoing call"
 msgstr ""
 
+#: [visio]joined_call
+msgid "Joined call"
+msgstr ""
+
 #: [visio]failed
 msgid "Failed"
 msgstr ""
@@ -2765,6 +2774,10 @@ msgstr ""
 
 #: [visio]no_participants_left
 msgid "All participants have left the call"
+msgstr ""
+
+#: [visio]by
+msgid "by %s"
 msgstr ""
 
 #: [visiolobby]called
@@ -3757,3 +3770,6 @@ msgstr "API אינו נגיש, נסה שוב מאוחר יותר"
 #: [field]type_here
 msgid "Type here"
 msgstr "הקלד כאן"
+
+#~ msgid "Mood"
+#~ msgstr "מצב רוח"

@@ -128,7 +128,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-16 13:49+0200\n"
+"POT-Creation-Date: 2025-04-03 21:43+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Giacomo Lacava <g.lacava@gmail.com>, 2018\n"
 "Language-Team: Italian (http://app.transifex.com/movim/movim/language/it/)\n"
@@ -298,6 +298,15 @@ msgstr "Lingua predefinita"
 #: [general]log_verbosity
 msgid "Log verbosity"
 msgstr "Verbosità dei log"
+
+#: [general]join_title
+#, fuzzy
+msgid "Your instance is public?"
+msgstr "Il tuo profilo è ora pubblico"
+
+#: [general]join_text
+msgid "Register your instance on join.movim.eu and join the Movim federation!"
+msgstr ""
 
 #: [restrictsuggestions]title
 msgid "Restrict suggestions"
@@ -1252,6 +1261,10 @@ msgstr ""
 msgid "Incoming message"
 msgstr ""
 
+#: [config]accent_color
+msgid "Accent color"
+msgstr ""
+
 #: [confirm]title
 msgid "Confirmation of authentication"
 msgstr "Conferma di autenticazione"
@@ -1351,14 +1364,6 @@ msgstr "Località"
 #: [position]country
 msgid "Country"
 msgstr "Nazione"
-
-#: [mood]title
-msgid "Mood"
-msgstr "Umore"
-
-#: [mood]im
-msgid "I’m "
-msgstr ""
 
 #: [listen]title
 msgid "Listening"
@@ -2761,6 +2766,10 @@ msgstr ""
 msgid "Ongoing call"
 msgstr ""
 
+#: [visio]joined_call
+msgid "Joined call"
+msgstr ""
+
 #: [visio]failed
 msgid "Failed"
 msgstr ""
@@ -2771,6 +2780,10 @@ msgstr "... in collegamento ..."
 
 #: [visio]no_participants_left
 msgid "All participants have left the call"
+msgstr ""
+
+#: [visio]by
+msgid "by %s"
 msgstr ""
 
 #: [visiolobby]called
@@ -3763,3 +3776,6 @@ msgstr "L'API non è raggiungibile, riprovare più tardi"
 #: [field]type_here
 msgid "Type here"
 msgstr "Digita qui"
+
+#~ msgid "Mood"
+#~ msgstr "Umore"

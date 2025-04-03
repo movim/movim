@@ -134,7 +134,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-16 13:49+0200\n"
+"POT-Creation-Date: 2025-04-03 21:43+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Phonebook3599, 2024-2025\n"
 "Language-Team: Chinese (China) (http://app.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -304,6 +304,15 @@ msgstr "默认语言"
 #: [general]log_verbosity
 msgid "Log verbosity"
 msgstr "日志级别"
+
+#: [general]join_title
+#, fuzzy
+msgid "Your instance is public?"
+msgstr "您的个人资料现在是公开的"
+
+#: [general]join_text
+msgid "Register your instance on join.movim.eu and join the Movim federation!"
+msgstr ""
 
 #: [restrictsuggestions]title
 msgid "Restrict suggestions"
@@ -1258,6 +1267,10 @@ msgstr "音频通知"
 msgid "Incoming message"
 msgstr "收到的消息"
 
+#: [config]accent_color
+msgid "Accent color"
+msgstr ""
+
 #: [confirm]title
 msgid "Confirmation of authentication"
 msgstr "验证确认"
@@ -1357,14 +1370,6 @@ msgstr "地点"
 #: [position]country
 msgid "Country"
 msgstr "国家/地区"
-
-#: [mood]title
-msgid "Mood"
-msgstr "心情"
-
-#: [mood]im
-msgid "I’m "
-msgstr "我是"
 
 #: [listen]title
 msgid "Listening"
@@ -2767,6 +2772,11 @@ msgstr "已拒绝"
 msgid "Ongoing call"
 msgstr ""
 
+#: [visio]joined_call
+#, fuzzy
+msgid "Joined call"
+msgstr "未接来电"
+
 #: [visio]failed
 msgid "Failed"
 msgstr "失败"
@@ -2777,6 +2787,10 @@ msgstr "…正在连接"
 
 #: [visio]no_participants_left
 msgid "All participants have left the call"
+msgstr ""
+
+#: [visio]by
+msgid "by %s"
 msgstr ""
 
 #: [visiolobby]called
@@ -3769,3 +3783,9 @@ msgstr "无法访问 API，请稍后再试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
+
+#~ msgid "Mood"
+#~ msgstr "心情"
+
+#~ msgid "I’m "
+#~ msgstr "我是"

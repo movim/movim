@@ -122,7 +122,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-16 13:49+0200\n"
+"POT-Creation-Date: 2025-04-03 21:43+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: sergey solovey, 2022,2024\n"
 "Language-Team: Ukrainian (http://app.transifex.com/movim/movim/language/uk/)\n"
@@ -292,6 +292,15 @@ msgstr "Мова за замовчуванням"
 #: [general]log_verbosity
 msgid "Log verbosity"
 msgstr "Деталізація логування"
+
+#: [general]join_title
+#, fuzzy
+msgid "Your instance is public?"
+msgstr "Ваш профіль тепер публічний"
+
+#: [general]join_text
+msgid "Register your instance on join.movim.eu and join the Movim federation!"
+msgstr ""
 
 #: [restrictsuggestions]title
 msgid "Restrict suggestions"
@@ -1246,6 +1255,10 @@ msgstr "Звукові сповіщення"
 msgid "Incoming message"
 msgstr "Вхідне повідомлення"
 
+#: [config]accent_color
+msgid "Accent color"
+msgstr ""
+
 #: [confirm]title
 msgid "Confirmation of authentication"
 msgstr "Підтвердження аутентифікації"
@@ -1345,14 +1358,6 @@ msgstr "Місцезнаходження"
 #: [position]country
 msgid "Country"
 msgstr "Країна"
-
-#: [mood]title
-msgid "Mood"
-msgstr "Настрій"
-
-#: [mood]im
-msgid "I’m "
-msgstr "Я"
 
 #: [listen]title
 msgid "Listening"
@@ -2755,6 +2760,11 @@ msgstr "Відхилено"
 msgid "Ongoing call"
 msgstr ""
 
+#: [visio]joined_call
+#, fuzzy
+msgid "Joined call"
+msgstr "Пропущений виклик"
+
 #: [visio]failed
 msgid "Failed"
 msgstr "Не вдалося"
@@ -2765,6 +2775,10 @@ msgstr "...з'єднання"
 
 #: [visio]no_participants_left
 msgid "All participants have left the call"
+msgstr ""
+
+#: [visio]by
+msgid "by %s"
 msgstr ""
 
 #: [visiolobby]called
@@ -3757,3 +3771,9 @@ msgstr "API недоступний, спробуйте пізніше"
 #: [field]type_here
 msgid "Type here"
 msgstr "Напишіть тут"
+
+#~ msgid "Mood"
+#~ msgstr "Настрій"
+
+#~ msgid "I’m "
+#~ msgstr "Я"

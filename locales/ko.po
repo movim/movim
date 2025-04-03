@@ -122,7 +122,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-16 13:49+0200\n"
+"POT-Creation-Date: 2025-04-03 21:43+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: 조수연, 2022\n"
 "Language-Team: Korean (http://app.transifex.com/movim/movim/language/ko/)\n"
@@ -292,6 +292,15 @@ msgstr "기본 언어"
 #: [general]log_verbosity
 msgid "Log verbosity"
 msgstr "상세 로그"
+
+#: [general]join_title
+#, fuzzy
+msgid "Your instance is public?"
+msgstr "프로필이 공개되었습니다."
+
+#: [general]join_text
+msgid "Register your instance on join.movim.eu and join the Movim federation!"
+msgstr ""
 
 #: [restrictsuggestions]title
 msgid "Restrict suggestions"
@@ -1246,6 +1255,10 @@ msgstr "오디오 알림"
 msgid "Incoming message"
 msgstr "수신 메시지"
 
+#: [config]accent_color
+msgid "Accent color"
+msgstr ""
+
 #: [confirm]title
 msgid "Confirmation of authentication"
 msgstr "인증 확인"
@@ -1345,14 +1358,6 @@ msgstr "위치"
 #: [position]country
 msgid "Country"
 msgstr "국가"
-
-#: [mood]title
-msgid "Mood"
-msgstr "기분"
-
-#: [mood]im
-msgid "I’m "
-msgstr "나는"
 
 #: [listen]title
 msgid "Listening"
@@ -2755,6 +2760,11 @@ msgstr ""
 msgid "Ongoing call"
 msgstr ""
 
+#: [visio]joined_call
+#, fuzzy
+msgid "Joined call"
+msgstr "수신 전화"
+
 #: [visio]failed
 msgid "Failed"
 msgstr ""
@@ -2765,6 +2775,10 @@ msgstr "연결 중"
 
 #: [visio]no_participants_left
 msgid "All participants have left the call"
+msgstr ""
+
+#: [visio]by
+msgid "by %s"
 msgstr ""
 
 #: [visiolobby]called
@@ -3757,3 +3771,9 @@ msgstr "API에 연결할 수 없습니다. 나중에 다시 시도하십시오."
 #: [field]type_here
 msgid "Type here"
 msgstr "여기에 입력하세요"
+
+#~ msgid "Mood"
+#~ msgstr "기분"
+
+#~ msgid "I’m "
+#~ msgstr "나는"

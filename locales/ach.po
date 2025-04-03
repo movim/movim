@@ -120,7 +120,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-16 13:49+0200\n"
+"POT-Creation-Date: 2025-04-03 21:43+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Acoli (http://app.transifex.com/movim/movim/language/ach/)\n"
@@ -289,6 +289,14 @@ msgstr ""
 
 #: [general]log_verbosity
 msgid "Log verbosity"
+msgstr ""
+
+#: [general]join_title
+msgid "Your instance is public?"
+msgstr ""
+
+#: [general]join_text
+msgid "Register your instance on join.movim.eu and join the Movim federation!"
 msgstr ""
 
 #: [restrictsuggestions]title
@@ -1244,6 +1252,10 @@ msgstr ""
 msgid "Incoming message"
 msgstr ""
 
+#: [config]accent_color
+msgid "Accent color"
+msgstr ""
+
 #: [confirm]title
 msgid "Confirmation of authentication"
 msgstr ""
@@ -1342,14 +1354,6 @@ msgstr ""
 
 #: [position]country
 msgid "Country"
-msgstr ""
-
-#: [mood]title
-msgid "Mood"
-msgstr ""
-
-#: [mood]im
-msgid "I’m "
 msgstr ""
 
 #: [listen]title
@@ -2753,6 +2757,10 @@ msgstr ""
 msgid "Ongoing call"
 msgstr ""
 
+#: [visio]joined_call
+msgid "Joined call"
+msgstr ""
+
 #: [visio]failed
 msgid "Failed"
 msgstr ""
@@ -2763,6 +2771,10 @@ msgstr ""
 
 #: [visio]no_participants_left
 msgid "All participants have left the call"
+msgstr ""
+
+#: [visio]by
+msgid "by %s"
 msgstr ""
 
 #: [visiolobby]called

@@ -130,7 +130,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-16 13:49+0200\n"
+"POT-Creation-Date: 2025-04-03 21:43+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>, 2015-2025\n"
 "Language-Team: French (France) (http://app.transifex.com/movim/movim/language/fr_FR/)\n"
@@ -300,6 +300,14 @@ msgstr "Langue par défaut"
 #: [general]log_verbosity
 msgid "Log verbosity"
 msgstr "Niveau de détails des journaux"
+
+#: [general]join_title
+msgid "Your instance is public?"
+msgstr "Votre instance est publique ?"
+
+#: [general]join_text
+msgid "Register your instance on join.movim.eu and join the Movim federation!"
+msgstr "Inscrivez votre instance sur join.movim.eu et rejoignez la fédération Movim !"
 
 #: [restrictsuggestions]title
 msgid "Restrict suggestions"
@@ -1254,6 +1262,10 @@ msgstr "Notifications audio"
 msgid "Incoming message"
 msgstr "Message entrant"
 
+#: [config]accent_color
+msgid "Accent color"
+msgstr "Couleur d'accentuation"
+
 #: [confirm]title
 msgid "Confirmation of authentication"
 msgstr "Confirmation d'authentification"
@@ -1353,14 +1365,6 @@ msgstr "Ville"
 #: [position]country
 msgid "Country"
 msgstr "Pays"
-
-#: [mood]title
-msgid "Mood"
-msgstr "Humeur"
-
-#: [mood]im
-msgid "I’m "
-msgstr "Je suis"
 
 #: [listen]title
 msgid "Listening"
@@ -2763,6 +2767,10 @@ msgstr "Refusé"
 msgid "Ongoing call"
 msgstr "Appel en cours"
 
+#: [visio]joined_call
+msgid "Joined call"
+msgstr "Appels rejoins"
+
 #: [visio]failed
 msgid "Failed"
 msgstr "Échoué"
@@ -2774,6 +2782,10 @@ msgstr "…mise en relation"
 #: [visio]no_participants_left
 msgid "All participants have left the call"
 msgstr "Tous les participants ont quités l'appel"
+
+#: [visio]by
+msgid "by %s"
+msgstr "par %s"
 
 #: [visiolobby]called
 msgid "%s is calling you"

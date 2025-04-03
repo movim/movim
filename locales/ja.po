@@ -126,7 +126,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-16 13:49+0200\n"
+"POT-Creation-Date: 2025-04-03 21:43+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Rintan, 2020-2021\n"
 "Language-Team: Japanese (http://app.transifex.com/movim/movim/language/ja/)\n"
@@ -296,6 +296,15 @@ msgstr "標準の言語"
 #: [general]log_verbosity
 msgid "Log verbosity"
 msgstr "ログ"
+
+#: [general]join_title
+#, fuzzy
+msgid "Your instance is public?"
+msgstr "あなたのプロファイルは公開されました"
+
+#: [general]join_text
+msgid "Register your instance on join.movim.eu and join the Movim federation!"
+msgstr ""
 
 #: [restrictsuggestions]title
 msgid "Restrict suggestions"
@@ -1250,6 +1259,10 @@ msgstr ""
 msgid "Incoming message"
 msgstr "新規メッセージ"
 
+#: [config]accent_color
+msgid "Accent color"
+msgstr ""
+
 #: [confirm]title
 msgid "Confirmation of authentication"
 msgstr "認証の確認"
@@ -1349,14 +1362,6 @@ msgstr "現在地"
 #: [position]country
 msgid "Country"
 msgstr "国"
-
-#: [mood]title
-msgid "Mood"
-msgstr "機嫌"
-
-#: [mood]im
-msgid "I’m "
-msgstr ""
 
 #: [listen]title
 msgid "Listening"
@@ -2759,6 +2764,11 @@ msgstr ""
 msgid "Ongoing call"
 msgstr ""
 
+#: [visio]joined_call
+#, fuzzy
+msgid "Joined call"
+msgstr "着信"
+
 #: [visio]failed
 msgid "Failed"
 msgstr ""
@@ -2769,6 +2779,10 @@ msgstr "接続中…"
 
 #: [visio]no_participants_left
 msgid "All participants have left the call"
+msgstr ""
+
+#: [visio]by
+msgid "by %s"
 msgstr ""
 
 #: [visiolobby]called
@@ -3761,3 +3775,6 @@ msgstr "APIにアクセスできません、後ほど再試行してください
 #: [field]type_here
 msgid "Type here"
 msgstr "ここに入力してください"
+
+#~ msgid "Mood"
+#~ msgstr "機嫌"
