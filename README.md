@@ -10,7 +10,7 @@ About
 -----
 Movim is a federated blogging and chat platform that acts as a web frontend for the XMPP protocol.
 
-![movim screenshot](https://movim.eu/img/home.png)
+![movim screenshot](https://movim.eu/img/home.webp)
 
 Installation
 ------------
@@ -27,12 +27,11 @@ Support Us
 You can help Movim by:
 * Doing a one time donation using Paypal: [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=8QHPJDAQXT9UC)
 * Helping us covering our monthly costs on our official Patreon page: [![Donate](https://img.shields.io/badge/Patreon-Become%20a%20Patron-orange.svg)](https://www.patreon.com/movim)
-* …or on Liberapay [![Donate](https://img.shields.io/liberapay/receives/movim.svg)](https://liberapay.com/movim/donate)
 
 Links
 -----
-* Movim official website: https://movim.eu/
-* You can join one of the Movim instances on https://join.movim.eu/
+* Movim official website: [movim.eu](https://movim.eu/)
+* You can join one of the Movim instances on [join.movim.eu](https://join.movim.eu/)
 * Mastodon: [@movim@piaille.fr](https://piaille.fr/@movim)
 * XMPP Chatroom: [movim@conference.movim.eu](xmpp:movim@conference.movim.eu)
 
