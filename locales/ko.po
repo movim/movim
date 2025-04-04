@@ -1,123 +1,7 @@
-#
+# 
 # Translators:
 # Sinyeol An <soundlake@gmail.com>, 2018-2019
 # 조수연, 2022
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/About/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Account/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/AccountNext/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/AdHoc/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/AdminMain/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/AdminReported/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/AdminSessions/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Avatar/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Blocked/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Blog/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Chat/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/ChatActions/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/ChatOmemo/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Chats/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Communities/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/CommunitiesInteresting/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/CommunitiesServer/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/CommunitiesServers/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/CommunityAffiliations/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/CommunityConfig/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/CommunityData/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/CommunityHeader/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/CommunityPosts/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/CommunitySubscriptions/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Config/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Confirm/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/ContactActions/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/ContactData/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Dictaphone/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Draw/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/EmojisConfig/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Help/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Location/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Login/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Menu/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Notif/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/NotificationConfig/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Notifications/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Onboarding/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Post/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Presence/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Preview/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Publish/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/PublishHelp/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/PublishStories/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Rooms/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/RoomsExplore/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Search/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/SendTo/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Stickers/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Stories/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Subscribe/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Syndication/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Upload/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Vcard4/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Visio/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/VisioConfig/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../locales/locales.ini
 msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
@@ -126,10 +10,10 @@ msgstr ""
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: 조수연, 2022\n"
 "Language-Team: Korean (http://app.transifex.com/movim/movim/language/ko/)\n"
-"Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ko\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Translate Toolkit 3.15.1\n"
 
@@ -162,7 +46,9 @@ msgid "API"
 msgstr "API"
 
 #: [about]info
-msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
+msgid ""
+"Movim is an XMPP-based communication platform. All the project, except the "
+"following software and resources, is under"
 msgstr "Movim은 XMPP를 바탕으로 하는 커뮤니케이션 플랫폼입니다. 다음 소프트웨어와 리소스를 제외한 모든 프로젝트는 링크를 통해 보실 수 있어요."
 
 #: [account]title [page]account
@@ -198,7 +84,9 @@ msgid "Delete your account"
 msgstr "계정 삭제하기"
 
 #: [account]delete_text
-msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts and publications)."
+msgid ""
+"You will delete your XMPP account and all the relative information linked to"
+" it (profile, contacts and publications)."
 msgstr "당신은 당신의 XMPP 계정과 그와 관련된 모든 정보들을 삭제할 것입니다. (프로필, 연락처, 게시물 포함)"
 
 #: [account]delete_text_confirm
@@ -218,11 +106,15 @@ msgid "Leave this instance"
 msgstr "이 인스턴스에서 나가기"
 
 #: [account]clear_text
-msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
+msgid ""
+"You will delete all the relative information linked to your account on this "
+"Movim instance (profile, contacts and publications)."
 msgstr "당신은 당신의 계정과 관련된 모든 정보들을 삭제할 것입니다. (프로필, 연락처, 게시물 포함)"
 
 #: [account]clear_text_confirm
-msgid "This action will not delete your account but will disconnect you from this instance."
+msgid ""
+"This action will not delete your account but will disconnect you from this "
+"instance."
 msgstr "이 작업을 수행해도 계정이 삭제되지는 않지만 이 인스턴스에서 연결이 끊어집니다."
 
 #: [account]delete_bundle_title
@@ -230,7 +122,10 @@ msgid "OMEMO Key deletion"
 msgstr "OMEMO 키 삭제"
 
 #: [account]delete_bundle_text
-msgid "You are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
+msgid ""
+"You are going to destroy the following OMEMO key. Your contacts will not be "
+"able to encrypt messages using that key anymore. This action cannot be "
+"reverted. Are you sure?"
 msgstr ""
 
 #: [create]title [subscribe]title
@@ -294,9 +189,8 @@ msgid "Log verbosity"
 msgstr "상세 로그"
 
 #: [general]join_title
-#, fuzzy
 msgid "Your instance is public?"
-msgstr "프로필이 공개되었습니다."
+msgstr ""
 
 #: [general]join_text
 msgid "Register your instance on join.movim.eu and join the Movim federation!"
@@ -307,7 +201,9 @@ msgid "Restrict suggestions"
 msgstr "추천 중지"
 
 #: [restrictsuggestions]text
-msgid "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
+msgid ""
+"Only suggest chatrooms, Communities and other contents that are available on"
+" the user XMPP server and related services"
 msgstr "사용자 XMPP 서버 및 관련 서비스에서 사용할 수 있는 채팅방, 커뮤니티 및 기타 콘텐츠만 추천합니다"
 
 #: [chatonly]title
@@ -315,7 +211,9 @@ msgid "Chat only"
 msgstr "채팅 전용"
 
 #: [chatonly]text
-msgid "Disable all the social feature (Communities, Blog…) and keep only the chat ones"
+msgid ""
+"Disable all the social feature (Communities, Blog…) and keep only the chat "
+"ones"
 msgstr "모든 소셜 기능(커뮤니티, 블로그 등)을 비활성화하고 채팅 기능만 유지합니다"
 
 #: [credentials]title
@@ -343,11 +241,15 @@ msgid "Whitelisted XMPP Servers"
 msgstr "화이트리스트에 등록된 XMPP 서버"
 
 #: [whitelist]info1
-msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
+msgid ""
+"If you want to specify a list of authorized XMPP servers on your Movim pod "
+"and forbid the connection on all the others please put their domain name "
+"here, with comma (ex: movim.eu,jabber.fr)"
 msgstr "Movim 포드에 승인된 XMPP 서버 목록을 지정하고 다른 모든 서버에 대한 연결을 금지하려면 여기에 해당 도메인 이름을 쉼표와 함께 입력하세요(예: movim.eu,jabber.fr)."
 
 #: [whitelist]info2
-msgid "Leave this field blank if you allow the access to all the XMPP accounts."
+msgid ""
+"Leave this field blank if you allow the access to all the XMPP accounts."
 msgstr "모든 XMPP 계정에 대한 액세스를 허용하는 경우 이 필드를 비워 둡니다."
 
 #: [whitelist]label
@@ -372,11 +274,15 @@ msgid "Main banner"
 msgstr "메인 배너"
 
 #: [information]banner_info
-msgid "Ensure that the picture is not too large and can be reached from any webpages"
+msgid ""
+"Ensure that the picture is not too large and can be reached from any "
+"webpages"
 msgstr "사진이 너무 크지 않고 모든 웹페이지에서 접근할 수 있는지 확인해주세요"
 
 #: [information]info1
-msgid "This message will be displayed on the login page. It can be used to link the Terms and Conditions of your Movim instance for example."
+msgid ""
+"This message will be displayed on the login page. It can be used to link the"
+" Terms and Conditions of your Movim instance for example."
 msgstr "이 메시지는 로그인 페이지에 표시됩니다. 예를 들어 Movim 인스턴스의 이용 약관을 연결하는 데 사용할 수 있습니다."
 
 #: [information]info2
@@ -417,7 +323,8 @@ msgid "Your Tenor API Key"
 msgstr "Tenor API 키"
 
 #: [tenor]info1
-msgid "Movim integrates the Tenor API to allow GIF search and publication in Chat"
+msgid ""
+"Movim integrates the Tenor API to allow GIF search and publication in Chat"
 msgstr "Movim은 Tenor API를 통합하여 채팅에서 GIF 검색 및 게시를 허용합니다."
 
 #: [tenor]info2
@@ -513,11 +420,14 @@ msgid "You will find here the users you have blocked"
 msgstr ""
 
 #: [blocked]info
-msgid "The following users are blocked by Movim and cannot contact you anymore"
+msgid ""
+"The following users are blocked by Movim and cannot contact you anymore"
 msgstr ""
 
 #: [blocked]info2
-msgid "The administrator is also aware of this list and can therefore block those users system wide"
+msgid ""
+"The administrator is also aware of this list and can therefore block those "
+"users system wide"
 msgstr ""
 
 #: [blog]title
@@ -541,7 +451,9 @@ msgid "Retract"
 msgstr "취소하다"
 
 #: [message]retract_body
-msgid "Your contact attempted to retract a previous message, but it's unsupported by your client"
+msgid ""
+"Your contact attempted to retract a previous message, but it's unsupported "
+"by your client"
 msgstr ""
 
 #: [message]moderate_body
@@ -719,7 +631,9 @@ msgid "This is the beginning of this conversation"
 msgstr ""
 
 #: [chat]first_messages_text
-msgid "You can choose to add it as a new contact or block it to prevent some other unsolicited messages"
+msgid ""
+"You can choose to add it as a new contact or block it to prevent some other "
+"unsolicited messages"
 msgstr ""
 
 #: [chat]first_messages_add
@@ -963,11 +877,14 @@ msgid "Delete the community"
 msgstr "커뮤니티 삭제"
 
 #: [communityaffiliation]delete_text
-msgid "You are going to delete the following community. Please confirm your action."
+msgid ""
+"You are going to delete the following community. Please confirm your action."
 msgstr "다음 커뮤니티를 삭제하려고 합니다. 작업을 확인해주세요."
 
 #: [communityaffiliation]delete_clean_text
-msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
+msgid ""
+"It seems that this community doesn’t exists anymore. Do you want to remove "
+"it from your subscriptions?"
 msgstr "이 커뮤니티는 더 이상 존재하지 않는 것 같습니다. 구독에서 삭제하시겠습니까?"
 
 #: [communityaffiliation]config_error
@@ -1100,7 +1017,9 @@ msgid "Are you sure?"
 msgstr "확실합니까?"
 
 #: [communityposts]empty_me_text
-msgid "No publication yet? Write your first post to make people discover your profile"
+msgid ""
+"No publication yet? Write your first post to make people discover your "
+"profile"
 msgstr ""
 
 #: [communityposts]empty_me_button
@@ -1264,7 +1183,9 @@ msgid "Confirmation of authentication"
 msgstr "인증 확인"
 
 #: [confirm]description
-msgid "The following platform would like your confirmation to authentify this account"
+msgid ""
+"The following platform would like your confirmation to authentify this "
+"account"
 msgstr "다음 플랫폼은 이 계정을 인증하기 위해 확인을 요청합니다."
 
 #: [confirm]code
@@ -1396,7 +1317,8 @@ msgid "Group"
 msgstr "그룹"
 
 #: [delete]text
-msgid "You are going to delete one of your contacts, please confirm your action"
+msgid ""
+"You are going to delete one of your contacts, please confirm your action"
 msgstr "연락처 중 하나를 삭제하려고 합니다. 작업을 확인해주세요."
 
 #: [age]years
@@ -1444,7 +1366,9 @@ msgid "Invite"
 msgstr "초대"
 
 #: [subscription]nil_text
-msgid "This contact is in your contact list but there is no subscription between the two accounts"
+msgid ""
+"This contact is in your contact list but there is no subscription between "
+"the two accounts"
 msgstr "이 계정은 연락처 목록에 있지만 두 계정 간에 구독이 없습니다."
 
 #: [dictaphone]name
@@ -1472,7 +1396,9 @@ msgid "My favorite emojis"
 msgstr ""
 
 #: [emojisconfig]favorites_text
-msgid "Pick emojis from the packs bellow that you want to add to your favorites ones"
+msgid ""
+"Pick emojis from the packs bellow that you want to add to your favorites "
+"ones"
 msgstr ""
 
 #: [emojisconfig]dialog_title
@@ -1480,7 +1406,8 @@ msgid "Manage a favorite emoji"
 msgstr ""
 
 #: [emojisconfig]alias_error
-msgid "The shortcut should only contains lowercase letters, numbers and dashes"
+msgid ""
+"The shortcut should only contains lowercase letters, numbers and dashes"
 msgstr ""
 
 #: [emojisconfig]new_added
@@ -1504,7 +1431,9 @@ msgid "What does the permission setting do?"
 msgstr "권한 설정에서 무엇을 할 수 있습니까?"
 
 #: [faq]permission_text
-msgid "By default the content is only available to your contacts. You can make your profile and publications public by enabling the related setting."
+msgid ""
+"By default the content is only available to your contacts. You can make your"
+" profile and publications public by enabling the related setting."
 msgstr "기본적으로 콘텐츠는 연락처에 있는 사람만 볼 수 있습니다. 관련 설정을 활성화하면 프로필과 게시물을 공개할 수 있습니다."
 
 #: [faq]permission_community_title
@@ -1512,7 +1441,10 @@ msgid "How does it applies on Communities posts?"
 msgstr "커뮤니티 게시물에는 권한 설정이 어떻게 적용되나요?"
 
 #: [faq]permission_community_text
-msgid "Similary to your blog publications except that, by default, the posts are only available to the members or subscribers of the Community (except if you explicitly open all the Community content)"
+msgid ""
+"Similary to your blog publications except that, by default, the posts are "
+"only available to the members or subscribers of the Community (except if you"
+" explicitly open all the Community content)"
 msgstr "블로그 게시물과 유사하지만 기본적으로 게시물은 커뮤니티 멤버 또는 구독자만 사용할 수 있습니다(모든 커뮤니티 콘텐츠를 명시적으로 공개하는 경우는 제외)."
 
 #: [faq]chatrooms_title
@@ -1696,7 +1628,9 @@ msgid "No news yet…"
 msgstr "아직 소식이 없습니다..."
 
 #: [menu]empty
-msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
+msgid ""
+"Welcome on your news feed, here you will see all the posts published by your"
+" contacts and in the communities you have subscribed."
 msgstr "뉴스 피드에 오신 것을 환영합니다. 여기에 당신이 구독한 연락처와 커뮤니티에서 게시된 모든 게시물이 표시됩니다."
 
 #: [menu]mine
@@ -1785,7 +1719,8 @@ msgid "No new notifications"
 msgstr "새 알림 없음"
 
 #: [onboarding]notifications_text
-msgid "Movim can notify you when a new post is published or if you receive messages"
+msgid ""
+"Movim can notify you when a new post is published or if you receive messages"
 msgstr "새 게시물이 게시되거나 메시지를 받으면 Movim에서 알릴 수 있습니다."
 
 #: [onboarding]notifications_text_second
@@ -1797,7 +1732,9 @@ msgid "Public profile"
 msgstr "공개 프로필"
 
 #: [onboarding]public_text
-msgid "Make your profile public and allow other users to find you and make new contacts more easily"
+msgid ""
+"Make your profile public and allow other users to find you and make new "
+"contacts more easily"
 msgstr "프로필을 공개하여 다른 사용자가 쉽게 당신을 찾고 추가할 수 있도록 합니다."
 
 #: [onboarding]public_text_second
@@ -1829,7 +1766,8 @@ msgid "What’s Hot"
 msgstr "최신 소식"
 
 #: [post]hot_text
-msgid "Posts recently published in communities that you are not subscribed (yet)"
+msgid ""
+"Posts recently published in communities that you are not subscribed (yet)"
 msgstr "(아직) 구독하지 않은 커뮤니티에서 최근에 게시된 게시물"
 
 #: [post]new [publish]new
@@ -1865,7 +1803,8 @@ msgid "Publish this article publicly"
 msgstr ""
 
 #: [post]public_text
-msgid "This will allow anyone outside Movim to have access to your publication"
+msgid ""
+"This will allow anyone outside Movim to have access to your publication"
 msgstr ""
 
 #: [post]public_preview
@@ -1957,7 +1896,9 @@ msgid "Universal share button"
 msgstr "전체 공유 버튼"
 
 #: [hello]share_text
-msgid "Bookmark or drag and drop the following button in your toolbar and use it on all the pages you want to share on Movim"
+msgid ""
+"Bookmark or drag and drop the following button in your toolbar and use it on"
+" all the pages you want to share on Movim"
 msgstr "도구 모음에서 다음 버튼을 북마크에 추가하거나 끌어다 놓고 Movim에서 공유하려는 모든 페이지에서 사용하세요."
 
 #: [hello]share_button
@@ -1977,7 +1918,9 @@ msgid "Check the Menu"
 msgstr "메뉴를 확인해보세요"
 
 #: [hello]menu_paragraph
-msgid "All the main Movim features are accessible there. Don’t hesitate to navigate through the pages to discover more!"
+msgid ""
+"All the main Movim features are accessible there. Don’t hesitate to navigate"
+" through the pages to discover more!"
 msgstr "Movim의 모든 주요 기능에 액세스할 수 있습니다. 페이지를 탐색하여 더 많은 것을 알아보세요!"
 
 #: [hello]profile_title
@@ -1985,7 +1928,9 @@ msgid "Looks like you didn’t complete your profile yet"
 msgstr "아직 프로필을 작성하지 않은 것 같습니다."
 
 #: [hello]profile_paragraph
-msgid "You can go in the Configuration page to describe yourself and put a nice picture"
+msgid ""
+"You can go in the Configuration page to describe yourself and put a nice "
+"picture"
 msgstr "설정 페이지로 이동하여 스스로를 설명하고 멋진 사진을 추가할 수 있습니다."
 
 #: [status]disconnect
@@ -2073,7 +2018,9 @@ msgid "Rich text editor"
 msgstr "서식 지정 에디터"
 
 #: [publish]help_hashtag
-msgid "Add #hashtags in your title or content to allow your article to be discovered"
+msgid ""
+"Add #hashtags in your title or content to allow your article to be "
+"discovered"
 msgstr ""
 
 #: [publish]publish_error_forbidden
@@ -2211,7 +2158,8 @@ msgid "Remove a chatroom"
 msgstr ""
 
 #: [chatrooms]remove_text
-msgid "You are going to remove the following chatroom. Please confirm your action."
+msgid ""
+"You are going to remove the following chatroom. Please confirm your action."
 msgstr ""
 
 #: [chatrooms]users
@@ -2305,7 +2253,9 @@ msgid "You are currently logged as an anonymous user."
 msgstr "현재 익명 사용자로 로그인되어 있습니다."
 
 #: [room]anonymous_text2
-msgid "You can join using your own account or create one on the login page by logging out using the cross in the top-right corner."
+msgid ""
+"You can join using your own account or create one on the login page by "
+"logging out using the cross in the top-right corner."
 msgstr ""
 
 #: [room]anonymous_login
@@ -2569,7 +2519,9 @@ msgid "New Story from %s"
 msgstr ""
 
 #: [stories]forbidden
-msgid "You don't have access to this story, send an invitation to the author to access it"
+msgid ""
+"You don't have access to this story, send an invitation to the author to "
+"access it"
 msgstr ""
 
 #: [stories]share_title
@@ -2597,7 +2549,9 @@ msgid "Story deleted"
 msgstr ""
 
 #: [subscribe]info
-msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
+msgid ""
+"Movim is a decentralized social network, before creating a new account you "
+"need to choose a server to register."
 msgstr "Movim은 탈중앙화 소셜 네트워크로, 새 계정을 만들기 전에 등록할 서버를 선택해야 합니다."
 
 #: [subscribe]server_question
@@ -2669,7 +2623,8 @@ msgid "Profile Not Updated"
 msgstr "프로필이 업데이트되지 않음"
 
 #: [vcard]nickname_info
-msgid "This will also be used as your default nickname when joining a chatroom"
+msgid ""
+"This will also be used as your default nickname when joining a chatroom"
 msgstr ""
 
 #: [profile]public
@@ -2689,11 +2644,15 @@ msgid "Is this account public on this Movim instance?"
 msgstr ""
 
 #: [profile]privacy_info
-msgid "Movim will create a public page to host your blog and your account will be searchable by the other Movim users."
+msgid ""
+"Movim will create a public page to host your blog and your account will be "
+"searchable by the other Movim users."
 msgstr ""
 
 #: [profile]nickname_info
-msgid "Set a local nickname to allow the other users of the instance to find you easily."
+msgid ""
+"Set a local nickname to allow the other users of the instance to find you "
+"easily."
 msgstr "인스턴스의 다른 사용자가 쉽게 찾을 수 있도록 로컬 닉네임을 설정합니다."
 
 #: [profile]nickname_set
@@ -2729,11 +2688,15 @@ msgid "Movim is currently working in degraded mode"
 msgstr "Movim은 현재 성능 저하 모드에서 작동하고 있습니다."
 
 #: [degraded]text_1
-msgid "Your server doesn’t support XMPP Pubsub persistence or the social features (communities, news feed and profile) are disabled by the administrator."
+msgid ""
+"Your server doesn’t support XMPP Pubsub persistence or the social features "
+"(communities, news feed and profile) are disabled by the administrator."
 msgstr "서버가 XMPP Pubsub persistence을 지원하지 않거나 관리자가 소셜 기능(커뮤니티, 뉴스 피드 및 프로필)을 비활성화했습니다."
 
 #: [degraded]text_2
-msgid "Please contact your server administrator to see if this feature can be enabled."
+msgid ""
+"Please contact your server administrator to see if this feature can be "
+"enabled."
 msgstr "이 기능을 활성화할 수 있는지 확인하려면 서버 관리자에게 문의하세요."
 
 #: [visio]calling
@@ -2761,9 +2724,8 @@ msgid "Ongoing call"
 msgstr ""
 
 #: [visio]joined_call
-#, fuzzy
 msgid "Joined call"
-msgstr "수신 전화"
+msgstr ""
 
 #: [visio]failed
 msgid "Failed"
@@ -2863,7 +2825,9 @@ msgid "Movim requires Javascript to be enabled to work properly."
 msgstr "Movim이 제대로 작동하려면 Javascript가 활성화되어야 합니다."
 
 #: [global]description
-msgid "Movim is a kickass distributed social networking platform that protects your privacy and comes with a set of awesome features."
+msgid ""
+"Movim is a kickass distributed social networking platform that protects your"
+" privacy and comes with a set of awesome features."
 msgstr ""
 
 #: [global]loading
@@ -3771,9 +3735,3 @@ msgstr "API에 연결할 수 없습니다. 나중에 다시 시도하십시오."
 #: [field]type_here
 msgid "Type here"
 msgstr "여기에 입력하세요"
-
-#~ msgid "Mood"
-#~ msgstr "기분"
-
-#~ msgid "I’m "
-#~ msgstr "나는"

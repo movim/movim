@@ -1,122 +1,6 @@
-#
+# 
 # Translators:
 # Irriep Nala Novram <per.morvan.bzh29@gmail.com>, 2017
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/About/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Account/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/AccountNext/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/AdHoc/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/AdminMain/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/AdminReported/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/AdminSessions/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Avatar/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Blocked/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Blog/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Chat/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/ChatActions/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/ChatOmemo/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Chats/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Communities/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/CommunitiesInteresting/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/CommunitiesServer/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/CommunitiesServers/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/CommunityAffiliations/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/CommunityConfig/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/CommunityData/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/CommunityHeader/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/CommunityPosts/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/CommunitySubscriptions/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Config/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Confirm/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/ContactActions/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/ContactData/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Dictaphone/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Draw/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/EmojisConfig/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Help/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Location/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Login/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Menu/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Notif/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/NotificationConfig/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Notifications/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Onboarding/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Post/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Presence/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Preview/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Publish/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/PublishHelp/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/PublishStories/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Rooms/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/RoomsExplore/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Search/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/SendTo/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Stickers/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Stories/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Subscribe/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Syndication/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Upload/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Vcard4/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/Visio/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/VisioConfig/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../locales/locales.ini
 msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
@@ -125,10 +9,10 @@ msgstr ""
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Irriep Nala Novram <per.morvan.bzh29@gmail.com>, 2017\n"
 "Language-Team: Breton (http://app.transifex.com/movim/movim/language/br/)\n"
-"Language: br\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: br\n"
 "Plural-Forms: nplurals=5; plural=((n%10 == 1) && (n%100 != 11) && (n%100 !=71) && (n%100 !=91) ? 0 :(n%10 == 2) && (n%100 != 12) && (n%100 !=72) && (n%100 !=92) ? 1 :(n%10 ==3 || n%10==4 || n%10==9) && (n%100 < 10 || n% 100 > 19) && (n%100 < 70 || n%100 > 79) && (n%100 < 90 || n%100 > 99) ? 2 :(n != 0 && n % 1000000 == 0) ? 3 : 4);\n"
 "X-Generator: Translate Toolkit 3.15.1\n"
 
@@ -161,7 +45,9 @@ msgid "API"
 msgstr "API"
 
 #: [about]info
-msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
+msgid ""
+"Movim is an XMPP-based communication platform. All the project, except the "
+"following software and resources, is under"
 msgstr ""
 
 #: [account]title [page]account
@@ -197,7 +83,9 @@ msgid "Delete your account"
 msgstr "Dilemel ho kont"
 
 #: [account]delete_text
-msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts and publications)."
+msgid ""
+"You will delete your XMPP account and all the relative information linked to"
+" it (profile, contacts and publications)."
 msgstr "Emaoc'h o vont da zilemel ho kont XMPP hag an holl ditouroù liammet outañ (profil, darempredoù hag embannadennoù)."
 
 #: [account]delete_text_confirm
@@ -217,11 +105,15 @@ msgid "Leave this instance"
 msgstr "Kuitaat an instañs-mañ"
 
 #: [account]clear_text
-msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
+msgid ""
+"You will delete all the relative information linked to your account on this "
+"Movim instance (profile, contacts and publications)."
 msgstr "Emaoc'h o vont da zilemel an holl ditouroù liammet gant ho kont war an instañs-mañ eus Movin (profil, darempredoù hag embannadennoù)."
 
 #: [account]clear_text_confirm
-msgid "This action will not delete your account but will disconnect you from this instance."
+msgid ""
+"This action will not delete your account but will disconnect you from this "
+"instance."
 msgstr ""
 
 #: [account]delete_bundle_title
@@ -229,7 +121,10 @@ msgid "OMEMO Key deletion"
 msgstr ""
 
 #: [account]delete_bundle_text
-msgid "You are going to destroy the following OMEMO key. Your contacts will not be able to encrypt messages using that key anymore. This action cannot be reverted. Are you sure?"
+msgid ""
+"You are going to destroy the following OMEMO key. Your contacts will not be "
+"able to encrypt messages using that key anymore. This action cannot be "
+"reverted. Are you sure?"
 msgstr ""
 
 #: [create]title [subscribe]title
@@ -305,7 +200,9 @@ msgid "Restrict suggestions"
 msgstr ""
 
 #: [restrictsuggestions]text
-msgid "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
+msgid ""
+"Only suggest chatrooms, Communities and other contents that are available on"
+" the user XMPP server and related services"
 msgstr ""
 
 #: [chatonly]title
@@ -313,7 +210,9 @@ msgid "Chat only"
 msgstr ""
 
 #: [chatonly]text
-msgid "Disable all the social feature (Communities, Blog…) and keep only the chat ones"
+msgid ""
+"Disable all the social feature (Communities, Blog…) and keep only the chat "
+"ones"
 msgstr ""
 
 #: [credentials]title
@@ -341,11 +240,15 @@ msgid "Whitelisted XMPP Servers"
 msgstr ""
 
 #: [whitelist]info1
-msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
+msgid ""
+"If you want to specify a list of authorized XMPP servers on your Movim pod "
+"and forbid the connection on all the others please put their domain name "
+"here, with comma (ex: movim.eu,jabber.fr)"
 msgstr ""
 
 #: [whitelist]info2
-msgid "Leave this field blank if you allow the access to all the XMPP accounts."
+msgid ""
+"Leave this field blank if you allow the access to all the XMPP accounts."
 msgstr ""
 
 #: [whitelist]label
@@ -370,11 +273,15 @@ msgid "Main banner"
 msgstr ""
 
 #: [information]banner_info
-msgid "Ensure that the picture is not too large and can be reached from any webpages"
+msgid ""
+"Ensure that the picture is not too large and can be reached from any "
+"webpages"
 msgstr ""
 
 #: [information]info1
-msgid "This message will be displayed on the login page. It can be used to link the Terms and Conditions of your Movim instance for example."
+msgid ""
+"This message will be displayed on the login page. It can be used to link the"
+" Terms and Conditions of your Movim instance for example."
 msgstr ""
 
 #: [information]info2
@@ -415,7 +322,8 @@ msgid "Your Tenor API Key"
 msgstr ""
 
 #: [tenor]info1
-msgid "Movim integrates the Tenor API to allow GIF search and publication in Chat"
+msgid ""
+"Movim integrates the Tenor API to allow GIF search and publication in Chat"
 msgstr ""
 
 #: [tenor]info2
@@ -511,11 +419,14 @@ msgid "You will find here the users you have blocked"
 msgstr ""
 
 #: [blocked]info
-msgid "The following users are blocked by Movim and cannot contact you anymore"
+msgid ""
+"The following users are blocked by Movim and cannot contact you anymore"
 msgstr ""
 
 #: [blocked]info2
-msgid "The administrator is also aware of this list and can therefore block those users system wide"
+msgid ""
+"The administrator is also aware of this list and can therefore block those "
+"users system wide"
 msgstr ""
 
 #: [blog]title
@@ -539,7 +450,9 @@ msgid "Retract"
 msgstr ""
 
 #: [message]retract_body
-msgid "Your contact attempted to retract a previous message, but it's unsupported by your client"
+msgid ""
+"Your contact attempted to retract a previous message, but it's unsupported "
+"by your client"
 msgstr ""
 
 #: [message]moderate_body
@@ -717,7 +630,9 @@ msgid "This is the beginning of this conversation"
 msgstr ""
 
 #: [chat]first_messages_text
-msgid "You can choose to add it as a new contact or block it to prevent some other unsolicited messages"
+msgid ""
+"You can choose to add it as a new contact or block it to prevent some other "
+"unsolicited messages"
 msgstr ""
 
 #: [chat]first_messages_add
@@ -961,11 +876,14 @@ msgid "Delete the community"
 msgstr ""
 
 #: [communityaffiliation]delete_text
-msgid "You are going to delete the following community. Please confirm your action."
+msgid ""
+"You are going to delete the following community. Please confirm your action."
 msgstr ""
 
 #: [communityaffiliation]delete_clean_text
-msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
+msgid ""
+"It seems that this community doesn’t exists anymore. Do you want to remove "
+"it from your subscriptions?"
 msgstr ""
 
 #: [communityaffiliation]config_error
@@ -1098,7 +1016,9 @@ msgid "Are you sure?"
 msgstr ""
 
 #: [communityposts]empty_me_text
-msgid "No publication yet? Write your first post to make people discover your profile"
+msgid ""
+"No publication yet? Write your first post to make people discover your "
+"profile"
 msgstr ""
 
 #: [communityposts]empty_me_button
@@ -1262,7 +1182,9 @@ msgid "Confirmation of authentication"
 msgstr ""
 
 #: [confirm]description
-msgid "The following platform would like your confirmation to authentify this account"
+msgid ""
+"The following platform would like your confirmation to authentify this "
+"account"
 msgstr ""
 
 #: [confirm]code
@@ -1394,7 +1316,8 @@ msgid "Group"
 msgstr ""
 
 #: [delete]text
-msgid "You are going to delete one of your contacts, please confirm your action"
+msgid ""
+"You are going to delete one of your contacts, please confirm your action"
 msgstr ""
 
 #: [age]years
@@ -1442,7 +1365,9 @@ msgid "Invite"
 msgstr ""
 
 #: [subscription]nil_text
-msgid "This contact is in your contact list but there is no subscription between the two accounts"
+msgid ""
+"This contact is in your contact list but there is no subscription between "
+"the two accounts"
 msgstr ""
 
 #: [dictaphone]name
@@ -1470,7 +1395,9 @@ msgid "My favorite emojis"
 msgstr ""
 
 #: [emojisconfig]favorites_text
-msgid "Pick emojis from the packs bellow that you want to add to your favorites ones"
+msgid ""
+"Pick emojis from the packs bellow that you want to add to your favorites "
+"ones"
 msgstr ""
 
 #: [emojisconfig]dialog_title
@@ -1478,7 +1405,8 @@ msgid "Manage a favorite emoji"
 msgstr ""
 
 #: [emojisconfig]alias_error
-msgid "The shortcut should only contains lowercase letters, numbers and dashes"
+msgid ""
+"The shortcut should only contains lowercase letters, numbers and dashes"
 msgstr ""
 
 #: [emojisconfig]new_added
@@ -1502,7 +1430,9 @@ msgid "What does the permission setting do?"
 msgstr ""
 
 #: [faq]permission_text
-msgid "By default the content is only available to your contacts. You can make your profile and publications public by enabling the related setting."
+msgid ""
+"By default the content is only available to your contacts. You can make your"
+" profile and publications public by enabling the related setting."
 msgstr ""
 
 #: [faq]permission_community_title
@@ -1510,7 +1440,10 @@ msgid "How does it applies on Communities posts?"
 msgstr ""
 
 #: [faq]permission_community_text
-msgid "Similary to your blog publications except that, by default, the posts are only available to the members or subscribers of the Community (except if you explicitly open all the Community content)"
+msgid ""
+"Similary to your blog publications except that, by default, the posts are "
+"only available to the members or subscribers of the Community (except if you"
+" explicitly open all the Community content)"
 msgstr ""
 
 #: [faq]chatrooms_title
@@ -1694,7 +1627,9 @@ msgid "No news yet…"
 msgstr ""
 
 #: [menu]empty
-msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
+msgid ""
+"Welcome on your news feed, here you will see all the posts published by your"
+" contacts and in the communities you have subscribed."
 msgstr ""
 
 #: [menu]mine
@@ -1783,7 +1718,8 @@ msgid "No new notifications"
 msgstr ""
 
 #: [onboarding]notifications_text
-msgid "Movim can notify you when a new post is published or if you receive messages"
+msgid ""
+"Movim can notify you when a new post is published or if you receive messages"
 msgstr ""
 
 #: [onboarding]notifications_text_second
@@ -1795,7 +1731,9 @@ msgid "Public profile"
 msgstr ""
 
 #: [onboarding]public_text
-msgid "Make your profile public and allow other users to find you and make new contacts more easily"
+msgid ""
+"Make your profile public and allow other users to find you and make new "
+"contacts more easily"
 msgstr ""
 
 #: [onboarding]public_text_second
@@ -1827,7 +1765,8 @@ msgid "What’s Hot"
 msgstr ""
 
 #: [post]hot_text
-msgid "Posts recently published in communities that you are not subscribed (yet)"
+msgid ""
+"Posts recently published in communities that you are not subscribed (yet)"
 msgstr ""
 
 #: [post]new [publish]new
@@ -1863,7 +1802,8 @@ msgid "Publish this article publicly"
 msgstr ""
 
 #: [post]public_text
-msgid "This will allow anyone outside Movim to have access to your publication"
+msgid ""
+"This will allow anyone outside Movim to have access to your publication"
 msgstr ""
 
 #: [post]public_preview
@@ -1955,7 +1895,9 @@ msgid "Universal share button"
 msgstr ""
 
 #: [hello]share_text
-msgid "Bookmark or drag and drop the following button in your toolbar and use it on all the pages you want to share on Movim"
+msgid ""
+"Bookmark or drag and drop the following button in your toolbar and use it on"
+" all the pages you want to share on Movim"
 msgstr ""
 
 #: [hello]share_button
@@ -1975,7 +1917,9 @@ msgid "Check the Menu"
 msgstr ""
 
 #: [hello]menu_paragraph
-msgid "All the main Movim features are accessible there. Don’t hesitate to navigate through the pages to discover more!"
+msgid ""
+"All the main Movim features are accessible there. Don’t hesitate to navigate"
+" through the pages to discover more!"
 msgstr ""
 
 #: [hello]profile_title
@@ -1983,7 +1927,9 @@ msgid "Looks like you didn’t complete your profile yet"
 msgstr ""
 
 #: [hello]profile_paragraph
-msgid "You can go in the Configuration page to describe yourself and put a nice picture"
+msgid ""
+"You can go in the Configuration page to describe yourself and put a nice "
+"picture"
 msgstr ""
 
 #: [status]disconnect
@@ -2071,7 +2017,9 @@ msgid "Rich text editor"
 msgstr ""
 
 #: [publish]help_hashtag
-msgid "Add #hashtags in your title or content to allow your article to be discovered"
+msgid ""
+"Add #hashtags in your title or content to allow your article to be "
+"discovered"
 msgstr ""
 
 #: [publish]publish_error_forbidden
@@ -2209,7 +2157,8 @@ msgid "Remove a chatroom"
 msgstr ""
 
 #: [chatrooms]remove_text
-msgid "You are going to remove the following chatroom. Please confirm your action."
+msgid ""
+"You are going to remove the following chatroom. Please confirm your action."
 msgstr ""
 
 #: [chatrooms]users
@@ -2303,7 +2252,9 @@ msgid "You are currently logged as an anonymous user."
 msgstr ""
 
 #: [room]anonymous_text2
-msgid "You can join using your own account or create one on the login page by logging out using the cross in the top-right corner."
+msgid ""
+"You can join using your own account or create one on the login page by "
+"logging out using the cross in the top-right corner."
 msgstr ""
 
 #: [room]anonymous_login
@@ -2567,7 +2518,9 @@ msgid "New Story from %s"
 msgstr ""
 
 #: [stories]forbidden
-msgid "You don't have access to this story, send an invitation to the author to access it"
+msgid ""
+"You don't have access to this story, send an invitation to the author to "
+"access it"
 msgstr ""
 
 #: [stories]share_title
@@ -2595,7 +2548,9 @@ msgid "Story deleted"
 msgstr ""
 
 #: [subscribe]info
-msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
+msgid ""
+"Movim is a decentralized social network, before creating a new account you "
+"need to choose a server to register."
 msgstr ""
 
 #: [subscribe]server_question
@@ -2667,7 +2622,8 @@ msgid "Profile Not Updated"
 msgstr ""
 
 #: [vcard]nickname_info
-msgid "This will also be used as your default nickname when joining a chatroom"
+msgid ""
+"This will also be used as your default nickname when joining a chatroom"
 msgstr ""
 
 #: [profile]public
@@ -2687,11 +2643,15 @@ msgid "Is this account public on this Movim instance?"
 msgstr ""
 
 #: [profile]privacy_info
-msgid "Movim will create a public page to host your blog and your account will be searchable by the other Movim users."
+msgid ""
+"Movim will create a public page to host your blog and your account will be "
+"searchable by the other Movim users."
 msgstr ""
 
 #: [profile]nickname_info
-msgid "Set a local nickname to allow the other users of the instance to find you easily."
+msgid ""
+"Set a local nickname to allow the other users of the instance to find you "
+"easily."
 msgstr ""
 
 #: [profile]nickname_set
@@ -2727,11 +2687,15 @@ msgid "Movim is currently working in degraded mode"
 msgstr ""
 
 #: [degraded]text_1
-msgid "Your server doesn’t support XMPP Pubsub persistence or the social features (communities, news feed and profile) are disabled by the administrator."
+msgid ""
+"Your server doesn’t support XMPP Pubsub persistence or the social features "
+"(communities, news feed and profile) are disabled by the administrator."
 msgstr ""
 
 #: [degraded]text_2
-msgid "Please contact your server administrator to see if this feature can be enabled."
+msgid ""
+"Please contact your server administrator to see if this feature can be "
+"enabled."
 msgstr ""
 
 #: [visio]calling
@@ -2860,7 +2824,9 @@ msgid "Movim requires Javascript to be enabled to work properly."
 msgstr ""
 
 #: [global]description
-msgid "Movim is a kickass distributed social networking platform that protects your privacy and comes with a set of awesome features."
+msgid ""
+"Movim is a kickass distributed social networking platform that protects your"
+" privacy and comes with a set of awesome features."
 msgstr ""
 
 #: [global]loading
