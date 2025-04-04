@@ -6,7 +6,7 @@
                     <img src="{$contact->getPicture(\Movim\ImageSize::O)}">
                 </span>
                 <div>
-                    <p class="normal">
+                    <p class="normal line">
                         {if="$calling"}
                             <i class="material-symbols icon blue">call</i>
                             {$c->__('visiolobby.calling', $contact->truename)}
@@ -22,7 +22,7 @@
                     <img src="{$conference->getPicture(\Movim\ImageSize::O)}">
                 </span>
                 <div>
-                    <p class="normal">
+                    <p class="normal line">
                         {if="$calling"}
                             <i class="material-symbols icon blue">call</i>
                             {$c->__('visiolobby.muji_create', $conference->title)}
