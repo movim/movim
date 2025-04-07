@@ -102,6 +102,10 @@ form > div textarea {
     outline-width: 0;
 }
 
+form > div .select select option {
+    background-color: rgb(var(--movim-background-main));
+}
+
 form > div .select,
 form > div input:not([type=submit]),
 form > div textarea {
