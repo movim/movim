@@ -18,7 +18,7 @@ class ChatroomPings
     private $_chatrooms = [];
     private $_chatroomsTimeout = [];
     private $_pingIn = 5 * 60;
-    private $_pongTimeout = 5 * 60 + 10;
+    private $_pongTimeout = 5 * 60 + 120;
 
     public static function getInstance()
     {
