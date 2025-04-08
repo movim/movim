@@ -30,7 +30,7 @@ class Post extends Model
     ];
     public $withCount = ['userViews'];
 
-    private $titleLimit = 200;
+    private $titleLimit = 700;
     private $changed = false; // Detect if the set post was different from the cache
 
     public $attachments = [];
