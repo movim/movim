@@ -23,71 +23,72 @@ class Picture extends Base
         }
 
         $headers = requestHeaders($url);
-        $imported = false;
-        $chunks = '';
 
-        $max = $headers["download_content_length"] > $this->compressLimit ? $this->compressLimit : $headers["download_content_length"];
+        if (preg_match('/2\d{2}/', $headers['http_code'])) {
+            $imported = false;
+            $chunks = '';
 
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HEADER, true);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
-        curl_setopt($ch, CURLOPT_RANGE, '0-' . $max);
-        curl_setopt($ch, CURLOPT_BUFFERSIZE, 12800);
-        curl_setopt($ch, CURLOPT_NOPROGRESS, false);
-        curl_setopt($ch, CURLOPT_USERAGENT, DEFAULT_HTTP_USER_AGENT);
-        curl_setopt($ch, CURLOPT_WRITEFUNCTION, function ($ch, $chunk) use (&$chunks) {
-            $chunks .= $chunk;
-            return (strlen($chunks) >= $this->compressLimit + 1) ? 0 : strlen($chunk);
-        });
+            $max = $headers["download_content_length"] > $this->compressLimit ? $this->compressLimit : $headers["download_content_length"];
 
-        curl_exec($ch);
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_HEADER, true);
+            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+            curl_setopt($ch, CURLOPT_BUFFERSIZE, 12800);
+            curl_setopt($ch, CURLOPT_NOPROGRESS, false);
+            curl_setopt($ch, CURLOPT_USERAGENT, DEFAULT_HTTP_USER_AGENT);
+            curl_setopt($ch, CURLOPT_WRITEFUNCTION, function ($ch, $chunk) use (&$chunks, $max) {
+                $chunks .= $chunk;
+                return (strlen($chunks) >= $max + 1) ? 0 : strlen($chunk);
+            });
 
-        $headerSize = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
-        curl_close($ch);
+            curl_exec($ch);
+            curl_close($ch);
 
-        $headers = preg_split('/[\r\n]+/', substr($chunks, 0, $headerSize));
-        $body = substr($chunks, $headerSize);
-        $p = null;
+            $headerSize = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
+            $headers = preg_split('/[\r\n]+/', substr($chunks, 0, $headerSize));
+            $body = substr($chunks, $headerSize);
+            $p = null;
 
-        if ($body) {
-            $p = new Image;
+            if ($body) {
+                $p = new Image;
 
-            /**
-             * In case of an animated GIF we get only the first frame
-             */
-            if (substr_count($chunks, "\x00\x21\xF9\x04") > 1) {
-                $firstPos = strpos($body, "\x00\x21\xF9\x04");
-                $secondPos = strpos($body, "\x00\x21\xF9\x04", $firstPos + 1);
+                /**
+                 * In case of an animated GIF we get only the first frame
+                 */
+                if (substr_count($chunks, "\x00\x21\xF9\x04") > 1) {
+                    $firstPos = strpos($body, "\x00\x21\xF9\x04");
+                    $secondPos = strpos($body, "\x00\x21\xF9\x04", $firstPos + 1);
 
-                $body = substr($body, 0, $secondPos);
-            }
-
-            $imported = $p->fromBin($body);
-
-            if ($imported) {
-                $p->inMemory();
-                $p->save(false, false, DEFAULT_PICTURE_FORMAT, 85);
-
-                if ($p->getImage()->getImageWidth() > $this->sizeLimit || $p->getImage()->getImageHeight() > $this->sizeLimit) {
-                    $p->getImage()->adaptiveResizeImage($this->sizeLimit, $this->sizeLimit, true, false);
+                    $body = substr($body, 0, $secondPos);
                 }
 
-                header_remove('Content-Type');
-                header('Content-Type: image/' . DEFAULT_PICTURE_FORMAT);
+                $imported = $p->fromBin($body);
+
+                if ($imported) {
+                    $p->inMemory();
+                    $p->save(false, false, DEFAULT_PICTURE_FORMAT, 85);
+
+                    if ($p->getImage()->getImageWidth() > $this->sizeLimit || $p->getImage()->getImageHeight() > $this->sizeLimit) {
+                        $p->getImage()->adaptiveResizeImage($this->sizeLimit, $this->sizeLimit, true, false);
+                    }
+
+                    header_remove('Content-Type');
+                    header('Content-Type: image/' . DEFAULT_PICTURE_FORMAT);
+                }
             }
-        }
 
-        if ($imported) {
-            header('Cache-Control: max-age=' . 3600 * 24);
-            print $p ? $p->getImage() : $body;
+            if ($imported) {
+                header('Cache-Control: max-age=' . 3600 * 24);
+                print $p ? $p->getImage() : $body;
 
-            return;
+                return;
+            }
         }
 
         header("HTTP/1.1 301 Moved Permanently");
-        header('Location: /theme/img/broken_image_filled.svg');
+        header('Location: /theme/img/broken_image_background.svg');
     }
 }

@@ -1,7 +1,12 @@
 Movim Changelog
 ================
 
-v0.30 (master)
+v0.30.1 (master)
+---------------------------
+* Wait 2min for the pong in ChatroomPings before timing out, it seems that some services are realllyyyy slow to reply
+* Remove HTTP ranges in the Picture proxy and simply stop Curl when the download is above the declared file size, small refactor
+
+v0.30
 ---------------------------
 * Limit the jid, name and group name to 256 character max in the Roster to allow it to be saved in the DB
 * Implement XEP-0272: Multiparty Jingle (Muji)
