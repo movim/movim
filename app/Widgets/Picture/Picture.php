@@ -90,6 +90,6 @@ class Picture extends Base
         }
 
         header("HTTP/1.1 301 Moved Permanently");
-        header('Location: /theme/img/broken_image_background.svg');
+        header('Location: /theme/img/broken_image_filled.svg');
     }
 }
