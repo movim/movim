@@ -42,7 +42,7 @@ class Picture extends Base
             curl_setopt($ch, CURLOPT_WRITEFUNCTION, function ($ch, $chunk) use (&$chunks, $max) {
                 $chunks .= $chunk;
 
-                return (strlen($chunks) >= $max + strlen($chunk) /** It seems that the sum of the chunks sometimes is != total content length, so we add a bit more just in case */) ? 0 : strlen($chunk);
+                return strlen($chunk);
             });
 
             curl_exec($ch);
@@ -53,7 +53,7 @@ class Picture extends Base
             $body = substr($chunks, $headerSize);
             $p = null;
 
-            if ($body) {
+            if ($body && strlen($body) <= $max) {
                 $p = new Image;
 
                 /**
