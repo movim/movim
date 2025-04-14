@@ -1,6 +1,7 @@
 <?php
 
 use Movim\Migration;
+use App\Message;
 use Illuminate\Database\Schema\Blueprint;
 
 /**
@@ -18,6 +19,8 @@ class ReconciliateResourceNullableInMessagesTable extends Migration
 
     public function down()
     {
+        Message::whereNull('resource')->delete();
+
         $this->schema->table('messages', function (Blueprint $table) {
             $table->string('resource', 256)->nullable(false)->change();
         });

@@ -11,6 +11,7 @@ class AddHashToMessageFilesTable extends Migration
         $this->disableForeignKeyCheck();
 
         $this->schema->table('message_files', function (Blueprint $table) {
+            $table->dropUnique('message_files_message_mid_url_size_unique');
             $table->text('url')->change();
 
             switch ($this->schema->getConnection()->getDriverName()) {
@@ -24,7 +25,6 @@ class AddHashToMessageFilesTable extends Migration
                     break;
             }
 
-            $table->dropUnique('message_files_message_mid_url_size_unique');
             $table->unique(['message_mid', 'hash']);
         });
 
