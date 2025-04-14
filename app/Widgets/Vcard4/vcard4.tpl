@@ -1,5 +1,4 @@
 <div class="tabelem" title="{$c->__('vcard.title')}" data-mobileicon="face" id="vcard4" >
-    <br />
     <div id="avatar" class="spin"></div>
     {if="!isset($me->jid)"}
         <script type="text/javascript">

@@ -5,6 +5,7 @@ v0.30.1 (master)
 ---------------------------
 * Wait 2min for the pong in ChatroomPings before timing out, it seems that some services are realllyyyy slow to reply
 * Remove HTTP ranges in the Picture proxy and simply stop Curl when the download is above the declared file size, small refactor
+* Redesign the avatar and banner edition layout
 
 v0.30
 ---------------------------
