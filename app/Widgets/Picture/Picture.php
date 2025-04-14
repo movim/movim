@@ -60,17 +60,14 @@ class Picture extends Base
                  * In case of an animated GIF we get only the first frame
                  */
                 if (substr_count($chunks, "\x00\x21\xF9\x04") > 1) {
-                    $firstPos = strpos($body, "\x00\x21\xF9\x04");
-                    $secondPos = strpos($body, "\x00\x21\xF9\x04", $firstPos + 1);
-
-                    $body = substr($body, 0, $secondPos);
+                    $body = substr($body, 0, strrpos($body, "\x00\x21\xF9\x04"));
                 }
 
                 $imported = $p->fromBin($body);
 
                 if ($imported) {
                     $p->inMemory();
-                    $p->save(false, false, DEFAULT_PICTURE_FORMAT, 85);
+                    $p->save(quality: 85);
 
                     if ($p->getImage()->getImageWidth() > $this->sizeLimit || $p->getImage()->getImageHeight() > $this->sizeLimit) {
                         $p->getImage()->adaptiveResizeImage($this->sizeLimit, $this->sizeLimit, true, false);
@@ -83,7 +80,7 @@ class Picture extends Base
 
             if ($imported) {
                 header('Cache-Control: max-age=' . 3600 * 24);
-                print $p ? $p->getImage() : $body;
+                print $p ? $p->getImage()->getImagesBlob() : $body;
 
                 return;
             }

@@ -238,7 +238,10 @@ class Image
             }
 
             if ($format == 'jpeg' || $format == 'webp') {
-                $this->_im = $this->_im->mergeImageLayers(\Imagick::LAYERMETHOD_FLATTEN);
+                if ($this->_im->getNumberImages() == 1) {
+                    $this->_im = $this->_im->mergeImageLayers(\Imagick::LAYERMETHOD_FLATTEN);
+                }
+
                 $this->_im->setImageCompressionQuality($quality);
             }
 
