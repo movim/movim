@@ -25,12 +25,17 @@ class Member extends Model
         return $this->hasOne('App\Contact', 'id', 'jid');
     }
 
-    public function getTruenameAttribute()
+    public function getTruenameAttribute(): string
     {
         if ($this->contact && $this->contact->truename) {
             return $this->contact->truename;
         }
 
         return explodeJid($this->jid)['username'] ?? $this->jid;
+    }
+
+    public function getColorAttribute(): string
+    {
+        return stringToColor($this->jid);
     }
 }

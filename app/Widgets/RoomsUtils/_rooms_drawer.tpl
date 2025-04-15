@@ -222,7 +222,7 @@
                                 <img loading="lazy" src="{$value->contact->getPicture(\Movim\ImageSize::S)}">
                             </span>
                         {else}
-                            <span class="primary icon bubble small color {$value->jid|stringToColor} status">
+                            <span class="primary icon bubble small color {$value->color} status">
                                 <i class="material-symbols">people</i>
                             </span>
                         {/if}
@@ -311,7 +311,7 @@
                                     <img loading="lazy" src="{$value->contact->getPicture(\Movim\ImageSize::S)}">
                                 </span>
                             {else}
-                                <span class="primary icon bubble small color {$value->jid|stringToColor}">
+                                <span class="primary icon bubble small color {$value->color}">
                                     <i class="material-symbols">people</i>
                                 </span>
                             {/if}

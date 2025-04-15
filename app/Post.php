@@ -318,6 +318,19 @@ class Post extends Model
         return $query;
     }
 
+    public function getColorAttribute(): string
+    {
+        if ($this->contact) {
+            return $this->contact->color;
+        }
+
+        if ($this->aid) {
+            return stringToColor($this->aid);
+        }
+
+        return stringToColor($this->node);
+    }
+
     public function getPreviousAttribute(): ?Post
     {
         return \App\Post::where('server', $this->server)

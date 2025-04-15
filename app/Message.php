@@ -729,11 +729,9 @@ class Message extends Model
         }
     }
 
-    public function resolveColor()
+    public function resolveColor(): string
     {
-        $this->color = stringToColor(
-            $this->resource . $this->type
-        );
+        $this->color = stringToColor($this->resource);
 
         return $this->color;
     }

@@ -102,65 +102,52 @@ span.icon span.counter.alt {
 
 /* Elements */
 
-.button.red,    .icon.red   , span.resource.red, p.encrypted.error { color: var(--p-red); }
-.button.purple, .icon.purple, span.resource.purple   { color: var(--p-purple); }
-.button.indigo, .icon.indigo, span.resource.indigo   { color: var(--p-indigo); }
-.button.blue,   .icon.blue  , span.resource.blue     { color: var(--p-blue); }
-.button.green,  .icon.green , span.resource.green    { color: var(--p-green); }
+ul li.action > div.action,
+ul li.action > form > div.action,
+.button.dorange,.icon.dorange  , span.resource.dorange  { color: var(--p-dorange) }
 li div.bubble.moderator:after,
 ul li div > p > span.moderator,
 .button.orange, .icon.orange, span.resource.orange   { color: var(--p-orange); }
+.button.amber,  .icon.anber , span.resource.amber    { color: var(--p-amber) }
 .button.yellow, .icon.yellow, span.resource.yellow   { color: var(--p-yellow); }
-.button.brown,  .icon.brown , span.resource.brown    { color: var(--p-brown); }
-ul li.action > div.action,
-ul li.action > form > div.action,
-.button.gray,   .icon.gray  , span.resource.gray     { color: var(--p-gray); }
-.button.black,  .icon.black , span.resource.black    { color: var(--p-black); }
 .button.lime,   .icon.lime  , span.resource.lime     { color: var(--p-lime) }
-.button.cyan,   .icon.cyan  , span.resource.cyan     { color: var(--p-cyan) }
+.button.lgreen, .icon.lgreen, span.resource.lgreen   { color: var(--p-lgreen); }
+.button.green,  .icon.green , span.resource.green    { color: var(--p-green); }
 .button.teal,   .icon.teal  , span.resource.teal     { color: var(--p-teal) }
-.button.pink,   .icon.pink  , span.resource.pink     { color: var(--p-pink) }
-.button.dorange,.icon.dorange  , span.resource.dorange  { color: var(--p-dorange) }
+.button.cyan,   .icon.cyan  , span.resource.cyan     { color: var(--p-cyan) }
 .button.lblue,  .icon.lblue  , span.resource.lblue   { color: var(--p-lblue) }
-.button.amber,  .icon.anber  , span.resource.amber   { color: var(--p-amber) }
-.button.bgray,  .icon.bgray  , span.resource.bgray   { color: var(--p-bgray) }
+.button.blue,   .icon.blue  , span.resource.blue     { color: var(--p-blue); }
+.button.red,    .icon.red   , span.resource.red, p.encrypted.error { color: var(--p-red); }
+.button.indigo, .icon.indigo, span.resource.indigo   { color: var(--p-indigo); }
+.button.dpurple,.icon.dpurple,span.resource.dpurple  { color: var(--p-dpurple); }
+.button.purple, .icon.purple, span.resource.purple   { color: var(--p-purple); }
+.button.pink,   .icon.pink  , span.resource.pink     { color: var(--p-pink) }
+.button.black,  .icon.black , span.resource.black    { color: var(--p-black); }
 
-.color          { color: white; background-color: var(--p-bgray); border-color: var(--p-bgray) }
-span.icon:not(.composing):not([data-counter]):not(.story).status.dnd:after,
-.color.red      { color: white; background-color: var(--p-red); border-color: var(--p-red) }
-span.icon:not(.composing):not([data-counter]):not(.story).status.xa:after,
-.color.slack,
-.color.discord,
-.color.purple   { color: white; background-color: var(--p-purple); border-color: var(--p-purple) }
-.color.signal,
-.color.mattermost,
-.color.indigo   { color: white; background-color: var(--p-indigo); border-color: var(--p-indigo) }
-.color.facebook,
-.color.blue     { color: white; background-color: var(--p-blue); border-color: var(--p-blue) }
-span.icon:not(.composing):not([data-counter]):not(.story).status.chat:after,
-span.icon:not(.composing):not([data-counter]):not(.story).status.online:after,
-.color.xmpp,
-.color.green    { color: white; background-color: var(--p-green); border-color: var(--p-green) }
+.color,
+.color.dorange  { color: white; background-color: var(--p-dorange); border-color: var(--p-dorange) }
 .color.orange   { color: white; background-color: var(--p-orange); border-color: var(--p-orange) }
+.color.amber    { color: white; background-color: var(--p-amber); border-color: var(--p-amber) }
 span.icon:not(.composing):not([data-counter]):not(.story).status.away:after,
 .color.yellow   { color: white; background-color: var(--p-yellow); border-color: var(--p-yellow) }
-span.icon:not(.composing):not([data-counter]):not(.story).status.server_error:after,
-.color.brown    { color: white; background-color: var(--p-brown); border-color: var(--p-brown) }
-.color.gray     { color: white; background-color: var(--p-gray); border-color: var(--p-gray) }
-.color.black    { color: white; background-color: var(--p-black); border-color: var(--p-black) }
 .color.lime     { color: white; background-color: var(--p-lime); border-color: var(--p-lime) }
-.color.telegram,
-.color.cyan     { color: white; background-color: var(--p-cyan); border-color: var(--p-cyan) }
-.color.whatsapp,
+span.icon:not(.composing):not([data-counter]):not(.story).status.chat:after,
+span.icon:not(.composing):not([data-counter]):not(.story).status.online:after,
+.color.lgreen   { color: white; background-color: var(--p-lgreen); border-color: var(--p-lgreen) }
+.color.green    { color: white; background-color: var(--p-green); border-color: var(--p-green) }
 .color.teal     { color: white; background-color: var(--p-teal); border-color: var(--p-teal) }
-.color.pink     { color: white; background-color: var(--p-pink); border-color: var(--p-pink) }
-.color.hackernews,
-.color.dorange  { color: white; background-color: var(--p-dorange); border-color: var(--p-dorange) }
-.color.skype,
+.color.cyan     { color: white; background-color: var(--p-cyan); border-color: var(--p-cyan) }
 .color.lblue    { color: white; background-color: var(--p-lblue); border-color: var(--p-lblue) }
-.color.amber    { color: white; background-color: var(--p-amber); border-color: var(--p-amber) }
-.color.steam,
-.color.bgray    { color: white; background-color: var(--p-bgray); border-color: var(--p-bgray) }
+.color.blue     { color: white; background-color: var(--p-blue); border-color: var(--p-blue) }
+span.icon:not(.composing):not([data-counter]):not(.story).status.server_error:after,
+.color.indigo   { color: white; background-color: var(--p-indigo); border-color: var(--p-indigo) }
+.color.dpurple  { color: white; background-color: var(--p-dpurple); border-color: var(--p-dpurple) }
+span.icon:not(.composing):not([data-counter]):not(.story).status.xa:after,
+.color.purple   { color: white; background-color: var(--p-purple); border-color: var(--p-purple) }
+.color.pink     { color: white; background-color: var(--p-pink); border-color: var(--p-pink) }
+span.icon:not(.composing):not([data-counter]):not(.story).status.dnd:after,
+.color.red      { color: white; background-color: var(--p-red); border-color: var(--p-red) }
+.color.black    { color: white; background-color: var(--p-black); border-color: var(--p-black) }
 
 .color.none { color: white; background-color: transparent; }
 .color.transparent { color: white; backdrop-filter: blur(1rem); background-color: rgba(0, 0, 0, 0.25); }

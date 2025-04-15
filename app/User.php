@@ -29,7 +29,7 @@ class User extends Model
         'notifications_since' => 'datetime:Y-m-d H:i:s',
     ];
 
-    public const ACCENT_COLORS = ['blue', 'teal', 'green', 'dorange', 'red', 'pink', 'purple'];
+    public const ACCENT_COLORS = ['red', 'pink', 'purple', 'dpurple', 'indigo', 'blue', 'cyan', 'teal', 'green', 'lgreen', 'orange', 'dorange'];
 
     public function save(array $options = [])
     {

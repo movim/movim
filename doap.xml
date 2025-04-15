@@ -537,6 +537,14 @@
         </implements>
         <implements>
             <xmpp:SupportedXep>
+                <xmpp:xep rdf:resource="https://xmpp.org/extensions/xep-0392.html"/>
+                <xmpp:status>complete</xmpp:status>
+                <xmpp:version>1.0.0</xmpp:version>
+                <xmpp:since>0.30.1</xmpp:since>
+            </xmpp:SupportedXep>
+        </implements>
+        <implements>
+            <xmpp:SupportedXep>
                 <xmpp:xep rdf:resource="https://xmpp.org/extensions/xep-0393.html"/>
                 <xmpp:status>partial</xmpp:status>
                 <xmpp:version>1.1.1</xmpp:version>

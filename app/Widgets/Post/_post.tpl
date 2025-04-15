@@ -50,7 +50,7 @@
                         </a>
                     </span>
                 {else}
-                    <span class="icon primary bubble color {$post->aid|stringToColor}">
+                    <span class="icon primary bubble color {$post->color}">
                         <a href="#" onclick="Post_ajaxGetContact('{$post->aid}')">
                             <i class="material-symbols">person</i>
                         </a>
@@ -64,7 +64,7 @@
                         <img src="{$post->info->getPicture(\Movim\ImageSize::L)}"/>
                     </span>
                 {else}
-                    <span class="primary icon bubble color {$post->node|stringToColor} active"
+                    <span class="primary icon bubble color {$post->color} active"
                         onclick="MovimUtils.reload('{$c->route('community', [$post->server, $post->node])}')"
                     >
                         {$post->node|firstLetterCapitalize}

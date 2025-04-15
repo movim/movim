@@ -2,7 +2,7 @@
     {if="$mode == 'blog'"}
         {if="$contact && $contact->isPublic()"}
             {$banner = $contact->getBanner()}
-            <header class="big top color {if="$contact"}{$contact->jid|stringToColor}{/if}"
+            <header class="big top color {if="$contact"}{$contact->color}{/if}"
                 style="
                         background-image:
                         linear-gradient(to top, rgba(23,23,23,0.9) 0, rgba(23,23,23,0.6) 5rem, rgba(23,23,23,0) 12rem)

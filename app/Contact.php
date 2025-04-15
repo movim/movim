@@ -40,6 +40,11 @@ class Contact extends Model
             ->where('id', '!=', User::me()->id);
     }
 
+    public function getColorAttribute(): string
+    {
+        return stringToColor($this->jid);
+    }
+
     public function scopeOrderByPresence($query)
     {
         return $query->leftJoin(DB::raw('(

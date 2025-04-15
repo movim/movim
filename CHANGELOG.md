@@ -7,6 +7,8 @@ v0.30.1 (master)
 * Remove HTTP ranges in the Picture proxy and simply stop Curl when the download is above the declared file size, small refactor
 * Redesign the avatar and banner edition layout
 * Enable animated WebP pictures support in the images proxyfier
+* Implement XEP-0392: Consistent Color Generation
+* Refactor the color system and adapt the internal palette
 
 v0.30
 ---------------------------

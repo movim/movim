@@ -4,7 +4,7 @@
     </a>
 {/if}
 
-<header class="big top color {$contact->jid|stringToColor}"
+<header class="big top color {$contact->color}"
         style="
                 background-image:
                 linear-gradient(to top, rgba(23,23,23,0.9) 0, rgba(23,23,23,0.6) 5rem, rgba(23,23,23,0) 12rem), url('{$contact->getBanner(\Movim\ImageSize::XXL)}');

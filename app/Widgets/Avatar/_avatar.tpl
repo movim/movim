@@ -2,7 +2,7 @@
     <ul class="list thick">
         <li class="block">
             <span
-                class="primary icon bubble color {$me->jid|stringToColor}"
+                class="primary icon bubble color {$me->color}"
                 style="background-image: url({$me->getPicture()})">
             </span>
             <div>

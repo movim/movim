@@ -325,14 +325,22 @@ function isLongitude(float $longitude): bool
 }
 
 /**
- * @desc Return a color generated from the string
+ * @desc XEP-0392: Consistent Color Generation
  */
 function stringToColor($string): string
 {
+    // Get the Hue angle from the XEP definition
+    $arr = unpack('C*' ,hex2bin(hash('sha1', $string)));
+    $angle = (($arr[1] + $arr[2] * 256) / 65536.0) * 360;
+
     $colors = array_keys(palette());
 
-    $s = abs(crc32($string));
-    return $colors[$s % count($colors)];
+    // Pick the closest color from the palette
+    $color = round($angle / (360 / count($colors)));
+
+    if ($color == 16) $color = 15;
+
+    return $colors[$color];
 }
 
 /**
@@ -341,23 +349,22 @@ function stringToColor($string): string
 function palette(bool $withBlack = false): array
 {
     $palette = [
-        'red'       => '#F44336',
-        'purple'    => '#9C27B0',
-        'indigo'    => '#3F51B5',
-        'blue'      => '#2196F3',
-        'green'     => '#689F38',
+        'dorange'   => '#FF5722',
         'orange'    => '#FF9800',
-        'yellow'    => '#FDD835',
-        'brown'     => '#795548',
-        'gray'      => '#9E9E9E',
+        'amber'     => '#FFC107',
+        'yellow'    => '#FFEB3B',
         'lime'      => '#CDDC39',
-        'cyan'      => '#00bcd4',
+        'lgreen'    => '#8BC34A',
+        'green'     => '#4CAF50',
         'teal'      => '#009688',
-        'pink'      => '#e91e63',
-        'dorange'   => '#ff5722',
-        'lblue'     => '#03a9f4',
-        'amber'     => '#ffc107',
-        'bgray'     => '#607d8b',
+        'cyan'      => '#00BCD4',
+        'lblue'     => '#03A9F4',
+        'blue'      => '#2196F3',
+        'indigo'    => '#3F51B5',
+        'dpurple'   => '#673AB7',
+        'purple'    => '#9C27B0',
+        'pink'      => '#E91E63',
+        'red'       => '#F44336',
     ];
 
     if ($withBlack) return $palette + ['black'     => '#000000'];

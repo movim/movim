@@ -1524,7 +1524,7 @@ class Chat extends \Movim\Widget\Base
                 $message->icon_url = $this->_mucPresences[$key]->conferencePicture;
             } else {
                 // No presence, we set a placeholder avatar as a fallback
-                $message->icon_url = avatarPlaceholder($message->resource . 'groupchat');
+                $message->icon_url = avatarPlaceholder($message->resource);
                 $this->_mucPresences[$key] = true;
             }
         }

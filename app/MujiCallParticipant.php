@@ -47,6 +47,6 @@ class MujiCallParticipant extends Model
 
     public function getConferencePictureAttribute(): string
     {
-        return Image::getOrCreate($this->jid, 120) ?? avatarPlaceholder($this->jid . 'groupchat');
+        return Image::getOrCreate($this->jid, 120) ?? avatarPlaceholder($this->jid);
     }
 }
