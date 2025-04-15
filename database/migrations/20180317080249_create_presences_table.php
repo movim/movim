@@ -10,7 +10,7 @@ class CreatePresencesTable extends Migration
         $this->schema->create('presences', function (Blueprint $table) {
             $table->string('session_id', 32);
             $table->string('jid', 64);
-            $table->string('resource', 128)->nullable();
+            $table->string('resource', 128);
             $table->integer('value');
             $table->integer('priority');
             $table->string('status')->nullable();
