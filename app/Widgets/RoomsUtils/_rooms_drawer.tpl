@@ -134,8 +134,8 @@
                     <i class="material-symbols">chevron_right</i>
                 </span>
                 <div>
-                    <p class="line">{$related->name}</p>
-                    <p class="all">{$related->description}</p>
+                    <p class="line">{empty($related->name) ? $related->node : $related->name}</p>
+                    <p class="all">{$related->description ?? $related->server}</p>
                 </div>
             </li>
         {/if}

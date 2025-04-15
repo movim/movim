@@ -106,6 +106,7 @@ class Conference extends Model
                     ->where('user_id', \App\User::me()->id)
                     ->where('type', 'groupchat')
                     ->where('picture', true)
+                    ->where('retracted', false)
                     ->orderBy('published', 'desc');
     }
 
@@ -116,6 +117,7 @@ class Conference extends Model
                     ->where('type', 'groupchat')
                     ->whereNotNull('urlid')
                     ->where('picture', false)
+                    ->where('retracted', false)
                     ->orderBy('published', 'desc');
     }
 
