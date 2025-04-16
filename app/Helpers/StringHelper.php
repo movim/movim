@@ -367,7 +367,10 @@ function palette(bool $withBlack = false): array
         'red'       => '#F44336',
     ];
 
-    if ($withBlack) return $palette + ['black'     => '#000000'];
+    if ($withBlack) return $palette + [
+        'black'     => '#000000',
+        'gray'      => '#9E9E9E',
+    ];
 
     return $palette;
 }

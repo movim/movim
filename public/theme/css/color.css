@@ -123,8 +123,10 @@ ul li div > p > span.moderator,
 .button.purple, .icon.purple, span.resource.purple   { color: var(--p-purple); }
 .button.pink,   .icon.pink  , span.resource.pink     { color: var(--p-pink) }
 .button.black,  .icon.black , span.resource.black    { color: var(--p-black); }
+.button.gray,   .icon.gray  , span.resource.gray     { color: var(--p-gray); }
 
 .color,
+.color.gray     { color: white; background-color: var(--p-gray); border-color: var(--p-gray) }
 .color.dorange  { color: white; background-color: var(--p-dorange); border-color: var(--p-dorange) }
 .color.orange   { color: white; background-color: var(--p-orange); border-color: var(--p-orange) }
 .color.amber    { color: white; background-color: var(--p-amber); border-color: var(--p-amber) }
