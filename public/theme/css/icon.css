@@ -133,6 +133,7 @@ span.icon.bubble.status:not(.composing):not([data-counter]):not(.location) {
     mask-image: url(../img/avatar_mask.svg);
 }
 
+span.icon.bubble.stories.composing,
 span.icon.bubble.stories[data-counter]:not(.composing):not(.location) {
     -webkit-mask-image: url(../img/avatar_mask_notifs_stories.svg);
     mask-image: url(../img/avatar_mask_notifs_stories.svg);
