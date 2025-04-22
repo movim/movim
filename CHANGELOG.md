@@ -9,6 +9,7 @@ v0.30.1 (master)
 * Enable animated WebP pictures support in the images proxyfier
 * Implement XEP-0392: Consistent Color Generation
 * Refactor the color system and adapt the internal palette
+* Dropping support for MySQL, only MariaDB and PostgreSQL are supported by now
 
 v0.30
 ---------------------------

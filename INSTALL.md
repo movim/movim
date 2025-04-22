@@ -11,8 +11,8 @@ Movim requires some dependencies to be setup properly.
   * Root access by SSH with access to the webserver user (most of the time via the user www-data)
   * A SQL server with a schema for Movim.
      * PostgreSQL (**_strongly recommended_**)
-     * MySQL 5.7 or higher with utf8mb4 encoding (necessary for emojis 😃 support) AND `utf8mb4_bin` collation.
      * MariaDB 10.2 or higher with utf8mb4 encoding (necessary for emojis 😃 support) AND `utf8mb4_bin` collation.
+     * MySQL is __NOT__ supported and will throw errors during the migrations, please use PostgreSQL or MariaDB.
   * **PHP 8.2 minimum** with :
      * Curl (package ''**php-curl**'')
      * PHP mbstring (package ''**php-mbstring**'')
