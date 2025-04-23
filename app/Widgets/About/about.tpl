@@ -24,6 +24,7 @@
                     <a href="https://www.dominik-george.de/">Dominik George aka Natureshadow</a> from <a href="https://www.teckids.org/">Teckids e.V.</a><br/>
                     <a href="https://chat.teckids.org/?blog/tglaser%40mercurius.teckids.org">mirabilos</a><br />
                     <a href="https://toast.al">toastal</a><br>
+                    <a href="https://kskarthik.gitlab.io">Sai Karthik</a><br>
                 </p>
             </div>
         </li>
