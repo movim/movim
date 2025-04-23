@@ -1,11 +1,10 @@
 # CI configuration for movim
 # Author: Sai Karthik < kskarthik@disroot.org >
 
-name: Movim CI
+name: Setup Workflows
 
 on:
   push:
-    branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
 
@@ -13,8 +12,8 @@ permissions:
   contents: read
 
 jobs:
-  # builds movim from source
-  build:
+
+  setup-with-mariadb:
 
     runs-on: ubuntu-latest
 
@@ -35,13 +34,67 @@ jobs:
 
     - name: Install movim dependencies
       run: composer install --prefer-dist --no-progress
-    - name: Rename .env file
+
+    - name: Setup .env file
+      run: |
+        cp .env.example .env
+        sed -i \
+        -e 's/^DB_DRIVER=.*/DB_DRIVER=mysql/' \
+        -e 's/^DB_PORT=.*/DB_PORT=3306/' \
+        -e 's/^DB_HOST=.*/DB_HOST=127.0.0.1/' \
+        .env
+        cat .env
+
+    #https://github.com/getong/mariadb-action
+    - uses: getong/mariadb-action@v1.11
+      with:
+        mariadb version: 'latest'
+        mysql database: 'movim'
+        mysql user: 'movim'
+        mysql password: 'movim'
+
+    - name: Perform database migration using composer
+      run: composer movim:migrate
+
+    - name: Perform database rollback
+      run: php vendor/bin/phinx rollback -t 20180314212906
+
+    - name: ...and migrate again
+      run: composer movim:migrate
+
+    - name: Start movim daemon
+      run: php daemon.php start &
+
+  setup-with-postgres:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    #- name: Validate composer.json and composer.lock
+    #  run: composer validate --strict
+
+    - name: Cache Composer packages
+      id: composer-cache
+      uses: actions/cache@v3
+      with:
+        path: vendor
+        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-php-
+
+    - name: Install movim dependencies
+      run: composer install --prefer-dist --no-progress
+
+    - name: Setup .env file
       run: cp .env.example .env
 
+    # https://github.com/Daniel-Marynicz/postgresql-action
     - name: Setup Postgres database
       uses: Daniel-Marynicz/postgresql-action@master
       with:
-       postgres_image_tag: 12-alpine
+       postgres_image_tag: latest
        app_user: movim
        app_user_password: movim
        app_db: movim
