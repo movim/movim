@@ -94,16 +94,12 @@
             </form>
         </li>
     </ul>
-    <ul class="list">
-        <li>
-            <ul class="list flex card middle" id="publishembeds">
-                {loop="$draft->embeds"}
-                    {autoescape="off"}
-                        {$c->prepareEmbed($value)}
-                    {/autoescape}
-                {/loop}
-            </ul>
-        </li>
+    <ul class="list flex card middle" id="publishembeds">
+        {loop="$draft->embeds"}
+            {autoescape="off"}
+                {$c->prepareEmbed($value)}
+            {/autoescape}
+        {/loop}
     </ul>
 
     <ul class="list">
