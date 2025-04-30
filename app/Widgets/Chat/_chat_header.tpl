@@ -345,14 +345,20 @@
     <ul class="list context_menu active">
         {if="!$contact->isFromMuc()"}
             <li onclick="MovimUtils.reload('{$c->route('contact', $contact->jid)}')">
+                <span class="primary icon gray">
+                    <i class="material-symbols">person</i>
+                </span>
                 <div>
-                    <p class="normal">{$c->__('chat.profile')}</p>
+                    <p class="normal line">{$c->__('chat.profile')}</p>
                 </div>
             </li>
         {/if}
         <li onclick="Chat_ajaxClearHistory('{$contact->jid|echapJS}')">
+            <span class="primary icon gray">
+                <i class="material-symbols">clear_all</i>
+            </span>
             <div>
-                <p class="normal">{$c->__('chat.clear')}</p>
+                <p class="normal line">{$c->__('chat.clear')}</p>
             </div>
         </li>
         {if="!empty($info->abuseaddresses)"}
@@ -366,22 +372,31 @@
             {else}
                 <li onclick="MovimUtils.reload('{$info->abuseaddresses[0]}')">
             {/if}
+                <span class="primary icon gray">
+                    <i class="material-symbols">report</i>
+                </span>
                 <div>
-                    <p class="normal">{$c->__('chat.report_abuse')}</p>
+                    <p class="normal line">{$c->__('chat.report_abuse')}</p>
                 </div>
             </li>
         {/if}
         <hr />
         {if="$contact->isBlocked()"}
             <li onclick="ChatActions_ajaxUnblock('{$contact->jid|echapJS}')">
+                <span class="primary icon gray">
+                    <i class="material-symbols">check_circle</i>
+                </span>
                 <div>
-                    <p class="normal">{$c->__('blocked.unblock_account')}</p>
+                    <p class="normal line">{$c->__('blocked.unblock_account')}</p>
                 </div>
             </li>
         {else}
             <li onclick="ChatActions_ajaxBlock('{$contact->jid|echapJS}'); Notifications_ajaxRefuse('{$contact->jid|echapJS}');">
+                <span class="primary icon gray">
+                    <i class="material-symbols">block</i>
+                </span>
                 <div>
-                    <p class="normal">{$c->__('blocked.block_account')}</p>
+                    <p class="normal line">{$c->__('blocked.block_account')}</p>
                 </div>
             </li>
         {/if}
