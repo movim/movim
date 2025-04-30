@@ -15,6 +15,3 @@
         </section>
     </article>
 </section>
-<div>
-
-</div>

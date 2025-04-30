@@ -271,7 +271,10 @@ class XMPPtoForm
     private function outCheckbox($s)
     {
         $container = $this->html->createElement('div');
-        $container->setAttribute('class', 'control');
+        $container->setAttribute('class', $s['var'] == 'muc#roomconfig_passwordprotectedroom'
+            ? 'control disabled'
+            : 'control');
+
         $this->html->appendChild($container);
 
         $ul = $this->html->createElement('ul');
@@ -375,6 +378,10 @@ class XMPPtoForm
     {
         $container = $this->html->createElement('div');
         $this->html->appendChild($container);
+
+        if ($s['var'] == 'muc#roomconfig_roomsecret') {
+            $container->setAttribute('class', 'disabled');
+        }
 
         $input = $this->html->createElement('input');
         $input->setAttribute('id', $s['var']);

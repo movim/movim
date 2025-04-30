@@ -16,8 +16,8 @@
         </li>
     </ul>
 </section>
-<div>
+<footer>
     <button onclick="Drawer.clear();" class="button flat">
         {$c->__('button.close')}
     </button>
-</div>
+</footer>

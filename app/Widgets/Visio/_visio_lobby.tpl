@@ -96,7 +96,7 @@
         </div>
     </form>
 </section>
-<div>
+<footer>
     {if="isset($contact)"}
         {if="$calling"}
             <button onclick="MovimVisio.clear(); Dialog_ajaxClear()" class="button flat red">

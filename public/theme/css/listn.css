@@ -707,10 +707,14 @@ header ul.context_menu {
     transform: translateY(-5%);
     opacity: 0;
     pointer-events: none;
-    min-width: 22rem;
+    min-width: 25rem;
 }
 
 header ul.list.context_menu li {
+    padding: 0 0.5rem;
+}
+
+header ul.list.context_menu li.subheader {
     padding: 0 2rem;
 }
 

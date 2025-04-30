@@ -185,11 +185,17 @@
             {/if}
             {if="$conference->presence->mucrole == 'moderator'"}
                 <li onclick="RoomsUtils_ajaxGetAvatar('{$jid|echapJS}')">
+                    <span class="primary icon gray">
+                        <i class="material-symbols">image</i>
+                    </span>
                     <div>
                         <p class="normal">{$c->__('page.avatar')}</p>
                     </div>
                 </li>
                 <li onclick="RoomsUtils_ajaxGetSubject('{$jid|echapJS}')">
+                    <span class="primary icon gray">
+                        <i class="material-symbols">short_text</i>
+                    </span>
                     <div>
                         <p class="normal">{$c->__('chatroom.subject')}</p>
                     </div>
@@ -197,11 +203,17 @@
             {/if}
             {if="$conference->presence->mucaffiliation == 'owner'"}
                 <li onclick="Chat_ajaxGetRoomConfig('{$jid|echapJS}')">
+                    <span class="primary icon gray">
+                        <i class="material-symbols">settings</i>
+                    </span>
                     <div>
-                        <p class="normal">{$c->__('chatroom.administration')}</p>
+                        <p class="normal">{$c->__('chatroom.config')}</p>
                     </div>
                 </li>
                 <li class="divided" onclick="RoomsUtils_ajaxAskDestroy('{$jid|echapJS}')">
+                    <span class="primary icon gray">
+                        <i class="material-symbols">delete_forever</i>
+                    </span>
                     <div>
                         <p class="normal">{$c->__('button.destroy')}</p>
                     </div>
@@ -220,6 +232,9 @@
             {else}
                 <li onclick="MovimUtils.reload('{$info->abuseaddresses[0]}')">
             {/if}
+                <span class="primary icon gray">
+                    <i class="material-symbols">report</i>
+                </span>
                 <div>
                     <p class="normal">{$c->__('chat.report_abuse')}</p>
                 </div>
@@ -227,6 +242,9 @@
         {/if}
 
         <li onclick="Rooms_ajaxExit('{$jid|echapJS}'); {if="$anon"}Presence_ajaxLogout(){/if}">
+            <span class="primary icon gray">
+                <i class="material-symbols">logout</i>
+            </span>
             <div>
                 <p class="normal">{$c->__('status.disconnect')}</p>
             </div>

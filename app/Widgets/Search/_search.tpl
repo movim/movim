@@ -41,7 +41,7 @@
 
     <br />
 </section>
-<div id="searchbar">
+<footer id="searchbar">
     <ul class="list">
         <li class="search">
             <form name="search" onsubmit="return false;">
@@ -55,4 +55,4 @@
             </form>
         </li>
     </ul>
-</div>
+</footer>

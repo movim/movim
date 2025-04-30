@@ -24,7 +24,7 @@
         </div>
     </form>
 </section>
-<div>
+<footer>
     <button class="button flat" onclick="Dialog_ajaxClear()">
         {$c->__('button.close')}
     </button>
@@ -33,4 +33,4 @@
         onclick="RoomsUtils_ajaxChangeAffiliationConfirm('{$room->conference}', MovimUtils.formToJson('changeaffiliation')); Dialog_ajaxClear();">
         {$c->__('button.submit')}
     </button>
-</div>
+</footer>

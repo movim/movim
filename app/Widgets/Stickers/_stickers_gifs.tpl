@@ -7,7 +7,7 @@
         <h4>{$c->__('sticker.gif_text')}</h4>
     </div>
 </section>
-<div>
+<footer>
     <ul id="gifssearchbar" class="list">
         <li class="search">
             <form name="search" onsubmit="return false;">
@@ -30,4 +30,4 @@
             </li>
         {/loop}
     </ul>
-</div>
+</footer>

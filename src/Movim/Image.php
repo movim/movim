@@ -275,6 +275,7 @@ class Image
                 $geo = $this->_im->getImageGeometry();
 
                 $this->_im->cropThumbnailImage($width, $height);
+
                 if ($width > $geo['width']) {
                     $factor = floor($width / $geo['width']);
                     $this->_im->blurImage($factor, 10);

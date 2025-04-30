@@ -24,7 +24,7 @@
         </li>
     </ul>
 </section>
-<div>
+<footer>
     <ul class="tabs reversed narrow">
         {if="$gifEnabled"}
             <li onclick="Stickers_ajaxShow('{$jid}')">
@@ -37,4 +37,4 @@
             </li>
         {/loop}
     </ul>
-</div>
+</footer>

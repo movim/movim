@@ -16,7 +16,7 @@
     <ul class="list divided spaced middle" id="roomsexplore_local"></ul>
     <ul class="list divided spaced middle" id="roomsexplore_global"></ul>
 </section>
-<div id="roomsexplore_bar">
+<footer id="roomsexplore_bar">
     <ul class="list">
         <li class="search">
             <form name="search" onsubmit="return false;">
@@ -30,4 +30,4 @@
             </form>
         </li>
     </ul>
-</div>
+</footer>
