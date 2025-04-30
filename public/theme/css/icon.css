@@ -103,7 +103,6 @@ span.icon.small.bubble>a>i {
 
 span.icon.bubble.status {
     border-radius: 0;
-    -webkit-mask-size: 100%;
     mask-size: 100%;
     mask-origin: content-box;
     mask-repeat: no-repeat;
@@ -129,58 +128,49 @@ span.icon.bubble.stories.status:active {
 }
 
 span.icon.bubble.status:not(.composing):not([data-counter]):not(.location) {
-    -webkit-mask-image: url(../img/avatar_mask.svg);
     mask-image: url(../img/avatar_mask.svg);
+    -webkit-mask-origin: unset;
+    mask-origin: unset;
 }
 
 span.icon.bubble.stories.composing,
 span.icon.bubble.stories[data-counter]:not(.composing):not(.location) {
-    -webkit-mask-image: url(../img/avatar_mask_notifs_stories.svg);
     mask-image: url(../img/avatar_mask_notifs_stories.svg);
 }
 
 span.icon.bubble.status.stories:not(.composing):not([data-counter]):not(.location) {
-    -webkit-mask-image: url(../img/avatar_mask_stories.svg);
     mask-image: url(../img/avatar_mask_stories.svg);
 }
 
 span.icon.bubble.status.dnd:not(.composing):not([data-counter]):not(.location) {
-    -webkit-mask-image: url(../img/avatar_mask_dnd.svg);
     mask-image: url(../img/avatar_mask_dnd.svg);
 }
 
 span.icon.bubble.status.dnd.stories:not(.composing):not([data-counter]):not(.location) {
-    -webkit-mask-image: url(../img/avatar_mask_dnd_stories.svg);
     mask-image: url(../img/avatar_mask_dnd_stories.svg);
 }
 
 span.icon.bubble.status.away:not(.composing):not([data-counter]):not(.location) {
-    -webkit-mask-image: url(../img/avatar_mask_away.svg);
     mask-image: url(../img/avatar_mask_away.svg);
 }
 
 span.icon.bubble.status.away.stories:not(.composing):not([data-counter]):not(.location) {
-    -webkit-mask-image: url(../img/avatar_mask_away_stories.svg);
     mask-image: url(../img/avatar_mask_away_stories.svg);
 }
 
 span.icon.bubble.status.xa:not(.composing):not([data-counter]):not(.location) {
-    -webkit-mask-image: url(../img/avatar_mask_xa.svg);
     mask-image: url(../img/avatar_mask_xa.svg);
 }
 
 span.icon.bubble.status.xa.stories:not(.composing):not([data-counter]):not(.location) {
-    -webkit-mask-image: url(../img/avatar_mask_xa_stories.svg);
     mask-image: url(../img/avatar_mask_xa_stories.svg);
 }
 
 span.icon.bubble.status.location {
-    -webkit-mask-image: url(../img/avatar_mask_location.svg);
     mask-image: url(../img/avatar_mask_location.svg);
 }
 
 span.icon.bubble.status.location.stories {
-    -webkit-mask-image: url(../img/avatar_mask_location_stories.svg);
     mask-image: url(../img/avatar_mask_location_stories.svg);
 }
 

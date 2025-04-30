@@ -617,9 +617,7 @@ ul.list li>div.bubble:not(.file):before {
     width: 1.6rem;
     height: 1.6rem;
     background-color: rgb(var(--movim-background-main));
-    -webkit-mask-image: url(../img/bubble_mask.svg);
     mask-image: url(../img/bubble_mask.svg);
-    -webkit-mask-size: 100%;
     mask-size: 100%;
     transition: background-color 0.3s ease;
 }
@@ -638,7 +636,6 @@ ul li.oppose div.bubble:not(.file):before {
     left: initial;
     right: -1.6rem;
     background-color: rgba(var(--movim-background-main), 0.5);
-    -webkit-mask-image: url(../img/bubble_mask_oppose.svg);
     mask-image: url(../img/bubble_mask_oppose.svg);
 }
 
