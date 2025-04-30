@@ -118,14 +118,12 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/Widgets/Visio/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/Widgets/VisioConfig/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../locales/locales.ini
 msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-03 21:43+0200\n"
+"POT-Creation-Date: 2025-04-30 14:00+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Sylwester Cyba, 2024\n"
 "Language-Team: Polish (http://app.transifex.com/movim/movim/language/pl/)\n"
@@ -473,10 +471,6 @@ msgstr "Awatar nie został zmieniony"
 #: [avatar]change
 msgid "Change my avatar"
 msgstr "Zmień awatar"
-
-#: [avatar]upload_new
-msgid "Upload a new picture"
-msgstr "Wgraj obrazek"
 
 #: [banner]change
 msgid "Change my banner"
@@ -1863,7 +1857,8 @@ msgid "%s minutes"
 msgstr "%s minut"
 
 #: [post]public_title
-msgid "Publish this article publicly"
+#, fuzzy
+msgid "Publish this post publicly"
 msgstr "Opublikuj artykuł jako ogólnodostępny"
 
 #: [post]public_text
@@ -1895,11 +1890,13 @@ msgid "Nobody will be able to like or comment"
 msgstr "Nikt nie będzie w stanie polubić czy skomentować"
 
 #: [post]comments_disabled_yes
-msgid "Comments disabled for this article"
+#, fuzzy
+msgid "Comments disabled for this post"
 msgstr "Komentarze do artykułu zostały wyłączone"
 
 #: [post]comments_disabled_no
-msgid "Comments enabled for this article"
+#, fuzzy
+msgid "Comments enabled for this post"
 msgstr "Ten artykuł można komentować"
 
 #: [post]delete_title [post]delete
@@ -1915,7 +1912,8 @@ msgid "Are you sure that you want to delete this comment?"
 msgstr "Czy chcesz skasować ten komentarz?"
 
 #: [post]discover
-msgid "Discover more articles on the communities page"
+#, fuzzy
+msgid "Discover more posts on the communities page"
 msgstr "Odkryj więcej artykułów na stronie społeczności"
 
 #: [post]more
@@ -2014,9 +2012,9 @@ msgstr "Co nowego?"
 msgid "Brief"
 msgstr ""
 
-#: [publish]article_title
-msgid "Article"
-msgstr ""
+#: [publish]post_title [page]post
+msgid "Post"
+msgstr "Opublikuj"
 
 #: [publish]post
 msgid "Write a post"
@@ -2075,7 +2073,8 @@ msgid "Rich text editor"
 msgstr "Edytor RTE"
 
 #: [publish]help_hashtag
-msgid "Add #hashtags in your title or content to allow your article to be discovered"
+#, fuzzy
+msgid "Add #hashtags in your title or content to allow your post to be discovered"
 msgstr "Dodaj #hasztag w tytule lub treści aby ułatwić odnalezienie artykułu"
 
 #: [publish]publish_error_forbidden
@@ -2806,28 +2805,27 @@ msgstr "Ustawienia kamery i mikrofonu"
 msgid "Please allow your browser to share your devices to configure them"
 msgstr "Proszę użyj przeglądarki do udostępniania między urządzeniami"
 
-#: [visiolobby]microphone_label [visioconfig]microphone_label
+#: [visiolobby]microphone_label
 msgid "Default microphone"
 msgstr "Domyślny mikrofon"
 
-#: [visiolobby]camera_label [visioconfig]camera_label
+#: [visiolobby]camera_label
 msgid "Default camera"
 msgstr "Domyślna kamera"
 
 #: [visiolobby]default_microphone_changed
-#: [visioconfig]default_microphone_changed
 msgid "Default microphone changed"
 msgstr "Zmieniono domyślny mikrofon"
 
-#: [visiolobby]default_camera_changed [visioconfig]default_camera_changed
+#: [visiolobby]default_camera_changed
 msgid "Default camera changed"
 msgstr "Zmieniono domyślną kamerę"
 
-#: [visiolobby]no_mic_sound [visioconfig]no_mic_sound
+#: [visiolobby]no_mic_sound
 msgid "No sound detected from your microphone"
 msgstr "Nie wykryto dźwięku z mikrofonu"
 
-#: [visiolobby]no_mic_sound2 [visioconfig]no_mic_sound2
+#: [visiolobby]no_mic_sound2
 msgid "Try to select another source or check your system settings"
 msgstr "Spróbuj wybrać inne źródło lub sprawdź ustawienia systemowe"
 
@@ -2842,22 +2840,6 @@ msgstr ""
 #: [muji]cannot_create
 msgid "Cannot create a conference call on your server"
 msgstr ""
-
-#: [visioconfig]title
-msgid "Video & Voice"
-msgstr "Wideo i głos"
-
-#: [visioconfig]help
-msgid "Configure the default devices used by Movim"
-msgstr "Skonfiguruj urządzenia do pracy z Movim"
-
-#: [visioconfig]microphone
-msgid "Microphone"
-msgstr "Mikrofon"
-
-#: [visioconfig]camera
-msgid "Camera"
-msgstr "Kamera"
 
 #: [global]no_js
 msgid "Movim requires Javascript to be enabled to work properly."
@@ -2909,10 +2891,6 @@ msgstr "Czaty"
 
 #: [page]publish
 msgid "Publish"
-msgstr "Opublikuj"
-
-#: [page]post
-msgid "Post"
 msgstr "Opublikuj"
 
 #: [page]blog
@@ -3772,3 +3750,18 @@ msgstr "Interfejs nieosiągalny, spróbuj ponownie później"
 #: [field]type_here
 msgid "Type here"
 msgstr "Pisz tutaj"
+
+#~ msgid "Upload a new picture"
+#~ msgstr "Wgraj obrazek"
+
+#~ msgid "Video & Voice"
+#~ msgstr "Wideo i głos"
+
+#~ msgid "Configure the default devices used by Movim"
+#~ msgstr "Skonfiguruj urządzenia do pracy z Movim"
+
+#~ msgid "Microphone"
+#~ msgstr "Mikrofon"
+
+#~ msgid "Camera"
+#~ msgstr "Kamera"

@@ -72,6 +72,8 @@ var Search = {
     },
 
     searchSomething : function(value) {
+        value = value.trim();
+
         clearTimeout(Search.timer);
 
         if (value !== '') {

@@ -112,7 +112,7 @@ class Post extends Base
         if ($p) {
             $p->userViews()->syncWithoutDetaching($this->user->id);
 
-            $html = $this->preparePost($p, false, false, false);
+            $html = $this->preparePost($p, requestComments: false);
 
             $this->rpc('MovimTpl.fill', '#post_widget.' . cleanupId($p->nodeid), $html);
             $this->rpc('MovimUtils.enhanceArticlesContent');

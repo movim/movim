@@ -1,5 +1,18 @@
 {if="$c->getUser()->hasPubsub()"}
-<ul class="list active flex">
+<ul class="list middle">
+    <li>
+        <span class="primary icon gray">
+            <i class="material-symbols">comments_disabled</i>
+        </span>
+        <div>
+            <p class="normal">
+                {$c->__('post.comments_disabled_yes')}
+            </p>
+        </div>
+    </li>
+</ul>
+<hr />
+<ul class="list active middle flex">
     {if="isset($post)"}
         <li  class="block" onclick="SendTo.shareArticle('{$post->getRef()}')">
             <span class="primary icon gray">

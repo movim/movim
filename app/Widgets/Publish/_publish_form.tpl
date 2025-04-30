@@ -44,8 +44,8 @@
             </a>
         </li>
         <li {if="$type == 'article'"}class="active"{/if}>
-            <a href="#" onclick="Publish.get('article')" title="{$c->__('publish.article_title')}">
-                <i class="material-symbols">newspaper</i> &nbsp; {$c->__('publish.article_title')}
+            <a href="#" onclick="Publish.get('article')" title="{$c->__('publish.post_title')}">
+                <i class="material-symbols">newspaper</i> &nbsp; {$c->__('publish.post_title')}
             </a>
         </li>
     </ul>
