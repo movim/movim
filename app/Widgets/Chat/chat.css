@@ -567,6 +567,7 @@ li div.bubble.file:not(.audio):after {
 #chat_widget .bubble>div {
     padding-right: 7rem;
     margin-right: -7rem;
+    position: relative;
 }
 
 #chat_widget .bubble:not(.file)>div:last-child {
@@ -584,13 +585,13 @@ li div.bubble.file:not(.audio):after {
     #chat_widget li .bubble div:not(.encrypted):hover p:not(.retracted)~span.reply {
         display: inline-flex;
         position: absolute;
-        left: 100%;
-        transform: translate(-0.5rem, -0.5rem);
+        left: calc(100% - 7rem);
+        bottom: 0;
     }
 
     #chat_widget li .bubble.file div:not(.encrypted):hover p:not(.retracted)~ul.reactions:empty~span.reaction,
     #chat_widget li .bubble.file div:not(.encrypted):hover p:not(.retracted)~span.reply {
-        transform: translate(-0.5rem, -5rem);
+        transform: translateX(-0.75rem);
     }
 
     #chat_widget li .bubble div:hover ul.reactions:not(:empty)~span.reply {
@@ -598,7 +599,7 @@ li div.bubble.file:not(.audio):after {
     }
 
     #chat_widget li .bubble div:hover ul.reactions:empty~span.reaction~span.reply {
-        left: calc(100% + 3.5rem);
+        left: calc(100% - 7rem + 3.5rem);
     }
 }
 
