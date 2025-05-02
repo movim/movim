@@ -586,7 +586,7 @@ li div.bubble.file:not(.audio):after {
         display: inline-flex;
         position: absolute;
         left: calc(100% - 7rem);
-        bottom: 0;
+        bottom: -0.5rem;
     }
 
     #chat_widget li .bubble.file div:not(.encrypted):hover p:not(.retracted)~ul.reactions:empty~span.reaction,
@@ -709,7 +709,7 @@ ul.list li > div.bubble.file div.file a span.size:before {
     display: inline-block;
     position: absolute;
     top: 1rem;
-    right: 1.5rem;
+    right: 8.5rem;
     font-family: 'Material Symbols';
     color: white;
     text-shadow: 0 0 1rem rgba(0, 0, 0, 0.85);
