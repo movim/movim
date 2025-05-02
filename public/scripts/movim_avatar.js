@@ -32,7 +32,7 @@ var MovimAvatar = {
             MovimUtils.applyOrientation(ctx, orientation, width, height)
             MovimUtils.drawImageProp(ctx, image);
 
-            var base64 = canvas.toDataURL('image/jpeg', 0.95);
+            var base64 = canvas.toDataURL('image/jpeg', 0.90);
 
             var preview = document.querySelector('form[name=' + formname + '] img');
 
