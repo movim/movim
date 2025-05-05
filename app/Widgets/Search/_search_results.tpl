@@ -5,7 +5,6 @@
 {/if}
 
 {if="(isset($communities) && $communities->isNotEmpty()) || (isset($tags) && $tags->isNotEmpty()) || (isset($posts) && $posts->isNotEmpty())"}
-<hr />
 <ul class="list flex">
     <li class="subheader">
         <div>

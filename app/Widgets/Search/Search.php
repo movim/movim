@@ -9,12 +9,12 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Capsule\Manager as DB;
 
 use App\Post;
-use App\Tag;
 use App\Contact;
 use App\Info;
 use App\Widgets\ContactActions\ContactActions;
 use App\Widgets\Drawer\Drawer;
 use App\Widgets\Post\Post as WidgetPost;
+use Moxl\Xec\Action\ExtendedChannelSearch\Search as RoomSearch;
 
 class Search extends Base
 {
@@ -118,6 +118,14 @@ class Search extends Base
                 ->get();
 
             $view->assign('communities', $communities);
+
+            if (!\App\Configuration::get()->restrictsuggestions) {
+                $s = new RoomSearch;
+                $s->setKeyword($key)
+                  ->setMax(5)
+                  ->enableGlobalSearch()
+                  ->request();
+            }
 
             return $view->draw('_search_results');
         }

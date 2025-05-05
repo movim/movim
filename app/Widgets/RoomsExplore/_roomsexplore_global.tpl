@@ -43,6 +43,20 @@
             </div>
         </li>
     {/loop}
+    {if="$global"}
+        <li class="active" onclick="RoomsExplore_ajaxSearch('{$keyword}')">
+            <span class="primary icon gray">
+                <i class="material-symbols">zoom_in</i>
+            </span>
+            <span class="control icon gray">
+                <i class="material-symbols">chevron_right</i>
+            </span>
+            <div>
+                <p class="line">{$c->__('roomsexplore.find_more')}</p>
+                <p class="line">{$c->__('roomsexplore.find_more_text', $total)}</p>
+            </div>
+        </li>
+    {/if}
 {else}
     <div class="placeholder">
         <i class="material-symbols">language</i>

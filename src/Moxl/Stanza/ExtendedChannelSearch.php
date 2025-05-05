@@ -2,17 +2,17 @@
 
 namespace Moxl\Stanza;
 
-class Muclumbus
+class ExtendedChannelSearch
 {
-    public static function search($keyword)
+    public static function search(?string $keyword = null, int $max = 30)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $search = $dom->createElement('search');
-        $search->setAttribute('xmlns', 'https://xmlns.zombofant.net/muclumbus/search/1.0');
+        $search->setAttribute('xmlns', 'urn:xmpp:channel-search:0:search');
 
         $set = $dom->createElement('set');
         $set->setAttribute('xmlns', 'http://jabber.org/protocol/rsm');
-        $set->appendChild($dom->createElement('max', 30));
+        $set->appendChild($dom->createElement('max', $max));
         $search->appendChild($set);
 
         $x = $dom->createElement('x');
@@ -23,10 +23,10 @@ class Muclumbus
         $field = $dom->createElement('field');
         $field->setAttribute('var', 'FORM_TYPE');
         $field->setAttribute('type', 'hidden');
-        $field->appendChild($dom->createElement('value', 'https://xmlns.zombofant.net/muclumbus/search/1.0#params'));
+        $field->appendChild($dom->createElement('value', 'urn:xmpp:channel-search:0:search-params'));
         $x->appendChild($field);
 
-        if (!empty($keyword)) {
+        if ($keyword != null) {
             $q = $dom->createElement('field');
             $q->setAttribute('var', 'q');
             $q->setAttribute('type', 'text-single');

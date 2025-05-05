@@ -10,6 +10,8 @@ v0.30.1 (master)
 * Implement XEP-0392: Consistent Color Generation
 * Refactor the color system and adapt the internal palette
 * Dropping support for MySQL, only MariaDB and PostgreSQL are supported by now
+* Implement XEP-0433: Extended Channel Search to replace the historical implementation
+* Allow to search Channels in the global directory directly from the Search bar
 
 v0.30
 ---------------------------

@@ -31,6 +31,7 @@
         <hr />
     {/if}
     <ul id="roster" class="list spin"></ul>
+    <ul class="list divided spaced middle" id="roomsexplore_global"></ul>
 
     <div id="results">
         <div class="placeholder">

@@ -1,13 +1,17 @@
 var RoomsExplore = {
-    timer : null,
+    timer: null,
 
-    init : function() {
+    init: function () {
         if (window.matchMedia("(min-width: 1025px)").matches) {
             document.querySelector('#roomsexplore_bar input[name=keyword]').focus();
         }
     },
 
-    searchSomething : function(value) {
+    setKeyword: function (keyword) {
+        document.querySelector('#roomsexplore_bar input[name=keyword]').value = keyword;
+    },
+
+    searchSomething: function (value) {
         clearTimeout(RoomsExplore.timer);
 
         if (value !== '') {
@@ -19,7 +23,7 @@ var RoomsExplore = {
         }, 700);
     },
 
-    searchClear : function() {
+    searchClear: function () {
         document.querySelector('#roomsexplore_bar li.search').classList.remove('searching');
     }
 }
