@@ -709,12 +709,16 @@ ul.list li > div.bubble.file div.file a span.size:before {
     display: inline-block;
     position: absolute;
     top: 1rem;
-    right: 8.5rem;
+    right: 1.5rem;
     font-family: 'Material Symbols';
     color: white;
     text-shadow: 0 0 1rem rgba(0, 0, 0, 0.85);
     font-variation-settings: 'FILL' 1;
     letter-spacing: -0.5rem;
+}
+
+#chat_widget .bubble.file .message div.file:before {
+    right: 8.5rem;
 }
 
 #chat_widget .bubble.file[data-thumbash] {
