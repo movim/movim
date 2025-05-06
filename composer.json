@@ -23,7 +23,7 @@
         "fabiang/sasl": "^2.0",
         "rain/raintpl": "^3.1",
         "embed/embed": "^v4.4",
-        "league/commonmark": "2.6",
+        "league/commonmark": "^2.6",
 
         "respect/validation": "^2.3",
         "ezyang/htmlpurifier": "^4.17",
