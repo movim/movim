@@ -29,6 +29,10 @@
     margin-right: 0.5rem;
 }
 
+.card li.block.color {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5));
+}
+
 .card > .block:not(.subheader):not(.simple) {
     animation: fadein 0.3s;
     border-radius: 1rem;

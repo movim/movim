@@ -2,7 +2,7 @@
     {if="$chatroomactions"}
         <br />
         <ul class="list flex active card shadow thick">
-            <li class="block color accent" onclick="RoomsExplore_ajaxSearch();">
+            <li class="block color" onclick="RoomsExplore_ajaxSearch();">
                 <i class="main material-symbols">chat</i>
                 <span class="primary icon">
                     <i class="material-symbols">explore</i>

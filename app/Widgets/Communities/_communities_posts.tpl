@@ -1,7 +1,7 @@
 <br />
 <ul class="list flex third middle active card shadow">
     {if="$type == 'all' && ($page == 1 || $posts->count() < $limit)"}
-        <li class="block color accent" onclick="MovimUtils.reload('{$c->route('explore', 'servers')}')">
+        <li class="block color" onclick="MovimUtils.reload('{$c->route('explore', 'servers')}')">
             <i class="material-symbols main">view_cozy</i>
             <span class="primary icon bubble color transparent">
                 <i class="material-symbols">view_agenda</i>

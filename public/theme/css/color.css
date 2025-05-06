@@ -125,7 +125,7 @@ ul li div > p > span.moderator,
 .button.black,  .icon.black , span.resource.black    { color: var(--p-black); }
 .button.gray,   .icon.gray  , span.resource.gray     { color: var(--p-gray); }
 
-.color,
+.color          { color: white; background-color: var(--movim-accent); border-color: var(--movim-accent) }
 .color.gray     { color: white; background-color: var(--p-gray); border-color: var(--p-gray) }
 .color.dorange  { color: white; background-color: var(--p-dorange); border-color: var(--p-dorange) }
 .color.orange   { color: white; background-color: var(--p-orange); border-color: var(--p-orange) }
@@ -150,7 +150,6 @@ span.icon:not(.composing):not([data-counter]):not(.story).status.xa:after,
 span.icon:not(.composing):not([data-counter]):not(.story).status.dnd:after,
 .color.red      { color: white; background-color: var(--p-red); border-color: var(--p-red) }
 .color.black    { color: white; background-color: var(--p-black); border-color: var(--p-black) }
-.color.accent   { color: white; background-color: var(--movim-accent); border-color: var(--movim-accent) }
 
 .color.none { color: white; background-color: transparent; }
 .color.transparent { color: white; backdrop-filter: blur(1rem); background-color: rgba(0, 0, 0, 0.25); }
