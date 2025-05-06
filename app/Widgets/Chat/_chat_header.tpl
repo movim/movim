@@ -107,10 +107,14 @@
                         {/if}
                     </span>
 
-                    {if="$conference && !$conference->isGroupChat() && $conference->info && $conference->info->name"}
+                    {if="$conference && $conference->info && $conference->info->name"}
                         <span class="second" title="{$conference->info->name}">
                             {$conference->info->name}
                         </span>
+                    {/if}
+
+                    {if="$conference->info && $conference->isGroupChat() && $conference->subject && $conference->info->name"}
+                        <span class="second">•</span>
                     {/if}
 
                     {if="$conference && $conference->isGroupChat() && $subject = $conference->subject"}
