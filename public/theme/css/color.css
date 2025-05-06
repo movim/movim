@@ -62,14 +62,14 @@ table tr th {
 }
 
 body,
-#drawer .card > .block:not(.subheader):not(.simple) {
+#drawer .card > .block:not(.subheader):not(.simple):not(.color) {
     background-color: rgb(var(--movim-background));
 }
 
 .drawer,
 ul li.date > div > p.normal,
 .dialog, ul.context_menu,
-.card > .block:not(.subheader):not(.simple) {
+.card > .block:not(.subheader):not(.simple):not(.color) {
     background-color: rgb(var(--movim-background-main));
 }
 
@@ -150,6 +150,7 @@ span.icon:not(.composing):not([data-counter]):not(.story).status.xa:after,
 span.icon:not(.composing):not([data-counter]):not(.story).status.dnd:after,
 .color.red      { color: white; background-color: var(--p-red); border-color: var(--p-red) }
 .color.black    { color: white; background-color: var(--p-black); border-color: var(--p-black) }
+.color.accent   { color: white; background-color: var(--movim-accent); border-color: var(--movim-accent) }
 
 .color.none { color: white; background-color: transparent; }
 .color.transparent { color: white; backdrop-filter: blur(1rem); background-color: rgba(0, 0, 0, 0.25); }

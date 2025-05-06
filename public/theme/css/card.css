@@ -16,6 +16,15 @@
     filter: blur(0.4rem);
 }
 
+.card i.main {
+    position: absolute;
+    font-size: 18rem;
+    opacity: 0.2;
+    filter: blur(0.5rem);
+    right: -5rem;
+    bottom: -8rem;
+}
+
 .card li > div > p > span.info {
     margin-right: 0.5rem;
 }

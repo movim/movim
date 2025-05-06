@@ -1,30 +1,29 @@
 <section id="search">
     {if="$chatroomactions"}
-        <ul class="list active">
-            <li onclick="RoomsExplore_ajaxSearch();">
-                <span class="primary icon gray">
+        <br />
+        <ul class="list flex active card shadow thick">
+            <li class="block color accent" onclick="RoomsExplore_ajaxSearch();">
+                <i class="main material-symbols">chat</i>
+                <span class="primary icon">
                     <i class="material-symbols">explore</i>
                 </span>
-                <span class="control icon gray">
-                    <i class="material-symbols">chevron_right</i>
-                </span>
                 <div>
-                    <p class="line normal">
+                    <p class="line two">
                         {$c->__('rooms.join')}
                     </p>
+                    <p></p>
                 </div>
             </li>
-            <li onclick="RoomsUtils_ajaxAdd(false, null, true); Drawer.clear()">
-                <span class="primary icon gray">
+            <li class="block" onclick="RoomsUtils_ajaxAdd(false, null, true); Drawer.clear()">
+                <i class="main material-symbols">star</i>
+                <span class="primary icon transparent">
                     <i class="material-symbols">group_add</i>
                 </span>
-                <span class="control icon gray">
-                    <i class="material-symbols">chevron_right</i>
-                </span>
                 <div>
-                    <p class="line normal">
+                    <p class="line two">
                         {$c->__('rooms.create')}
                     </p>
+                    <p></p>
                 </div>
             </li>
         </ul>

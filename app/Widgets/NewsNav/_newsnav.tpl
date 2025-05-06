@@ -38,12 +38,14 @@
 
 {if="$page == 'news' && $c->getUser()->hasPubsub()"}
     <ul class="list thick on_desktop card">
-        <li class="block">
+        <li class="block color indigo">
+            <i class="main material-symbols">share</i>
             <div>
                 <p class="line">{$c->__('hello.share_title')}</p>
                 <p class="all">{$c->__('hello.share_text')}</p>
-                <p class="center">
-                <a class="button" onclick="return false;" href="javascript:(function(){location.href='{$c->route('share', '\'+btoa(location.href);')}})();"><i class="material-symbols">share</i> {$c->__('button.share')}</a></p>
+                <p>
+                    <a class="button oppose color transparent" onclick="return false;" href="javascript:(function(){location.href='{$c->route('share', '\'+btoa(location.href);')}})();"><i class="material-symbols">share</i> {$c->__('button.share')}</a>
+                </p>
             </div>
         </li>
     </ul>
