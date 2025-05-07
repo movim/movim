@@ -62,10 +62,6 @@ ul.flex.card li.subheader {
 }
 
 @media screen and (min-width: 451px) and (max-width: 900px) {
-    .flex {
-        grid-template-columns: repeat(1, 1fr);
-    }
-
     .flex.flex.third {
         grid-template-columns: repeat(2, 1fr);
     }
