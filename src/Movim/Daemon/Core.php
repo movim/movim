@@ -17,6 +17,7 @@ use Movim\Daemon\Session;
 use App\Session as DBSession;
 use App\EncryptedPassword;
 use App\PushSubscription;
+use App\Info;
 use Minishlink\WebPush\VAPID;
 
 class Core implements MessageComponentInterface
@@ -218,9 +219,26 @@ class Core implements MessageComponentInterface
             }
 
             $this->cleanupDBSessions();
+        });
+
+        $this->cleanupEncryptedPasswords();
+        $this->cleanupPushSubscriptions();
+        $this->cleanupInfos();
+
+        $this->loop->addPeriodicTimer(60 * 60 * 24, function () {
             $this->cleanupEncryptedPasswords();
             $this->cleanupPushSubscriptions();
+            $this->cleanupInfos();
         });
+    }
+
+    /**
+     * @desc Delete infos that were pulled after two months, they will be refreshed if required
+     */
+    private function cleanupInfos()
+    {
+        Info::where('updated_at', '<', date(MOVIM_SQL_DATE, time() - (60 * 60 * 24 * 30 * 2)))
+            ->delete();
     }
 
     private function cleanupDBSessions()
