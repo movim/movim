@@ -678,6 +678,23 @@ class Post extends Model
                 } elseif (preg_match('/(?:https:\/\/)?(?:www.)?redgifs.com\/watch\/([a-zA-Z]+)$/', $enc['href'], $match)) {
                     $atte->href = 'https://www.redgifs.com/ifr/' . $match[1];
                     $this->attachments[] = $atte;
+                } elseif (preg_match('/(?:https:\/\/)?(?:www.)?reddit.com\/gallery\/([a-zA-Z0-9]+)$/', $enc['href'], $match)) {
+                    $json = requestURL($enc['href'] . '.json', timeout: 1, json: true);
+
+                    if ($json) {
+                        if ($json = \json_decode($json)) {
+                            foreach ($json[0]->data?->children[0]?->data?->media_metadata as $key => $media) {
+                                if (substr((string)$media->m, 0, 6) == 'image/') {
+                                    $atte = new Attachment;
+                                    $atte->rel = 'enclosure';
+                                    $atte->href = 'https://i.redd.it/' . $key . '.' . substr((string)$media->m, 6);
+                                    $atte->type = (string)$media->m;
+                                    $atte->category = 'picture';
+                                    $this->attachments[] = $atte;
+                                }
+                            }
+                        }
+                    }
                 }
             }
 
