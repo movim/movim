@@ -4,20 +4,23 @@
             <span class="primary icon active" onclick="history.back()">
                 <i class="material-symbols">arrow_back</i>
             </span>
+            <span class="primary icon bubble color {$server|stringToColor}">
+                <i class="material-symbols">workspaces</i>
+            </span>
             {if="is_array($nodes) && count($nodes) > 0"}
                 <span class="control icon gray">
                     {$nodes|count}
                 </span>
             {/if}
             <div>
-                <p>
+                <p class="line">{$server}</p>
+                <p class="line">
                     {if="isset($item->name)"}
                         {$item->name}
                     {else}
                         {$c->__('page.communities')}
                     {/if}
                 </p>
-                <p class="line">{$server}</p>
             </div>
         </li>
     </ul>

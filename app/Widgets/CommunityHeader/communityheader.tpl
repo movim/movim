@@ -1,5 +1,5 @@
-<header id="community_header">
+<div id="community_header">
     {autoescape="off"}
         {$c->prepareHeader($server, $node)}
     {/autoescape}
-</header>
+</div>

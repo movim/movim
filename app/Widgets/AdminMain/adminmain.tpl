@@ -4,7 +4,8 @@
     <div>
         <br />
         <ul class="list middle card shadow">
-            <li class="block">
+            <li class="block color cyan">
+                <i class="material-symbols main">hub</i>
                 <span class="primary icon">
                     <i class="material-symbols blue">linked_services</i>
                 </span>

@@ -7,7 +7,7 @@
         </li>
     </ul>
 {else}
-    <ul class="list flex third middle active">
+    <ul class="list flex third card shadow middle active">
         <li class="subheader">
             <div>
                 <p>{$c->__('communities.servers')}</p>
@@ -15,18 +15,17 @@
         </li>
         {loop="$servers"}
             {if="!filter_var($value->server, FILTER_VALIDATE_EMAIL)"}
-                <li class="block
+                <li class="block color {$value->server|stringToColor}
                     {if="$value->occupants == 0"}faded{/if}"
                     onclick="MovimUtils.reload('{$c->route('community', $value->server)}')">
-                    <span class="primary icon bubble">
-                        <img loading="lazy" src="{$value->server|avatarPlaceholder}">
+                    <span class="primary icon bubble color transparent">
+                        <i class="material-symbols">workspaces</i>
                     </span>
                     <div>
                         <p class="line" title="{$value->server} - {$value->name}">
                             {$value->server}
-                            <span class="second">{$value->name}</span>
                         </p>
-                        <p>{$c->__('communities.counter', $value->occupants)}</p>
+                        <p class="line">{$c->__('communities.counter', $value->occupants)}<span class="second">• {$value->name}</span></p>
                     </div>
                 </li>
             {/if}

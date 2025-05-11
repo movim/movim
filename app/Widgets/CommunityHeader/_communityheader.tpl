@@ -1,3 +1,9 @@
+<header class="big top color {$contact->color}"
+    style="
+            background-image:
+            linear-gradient(to top, rgba(23,23,23,0.9) 0, rgba(23,23,23,0.6) 5rem, rgba(23,23,23,0) 12rem), url('{$info->getPicture(\Movim\ImageSize::XXL)}');
+    ">
+
 {if="$info != null && $info->pubsubpublishmodel != null && $info->pubsubpublishmodel != 'publishers'"}
     {if="$info->pubsubpublishmodel == 'open' || ($info->pubsubpublishmodel == 'subscribers' && $subscription != null)"}
         <a class="button action color" title="{$c->__('menu.add_post')}" href="{$c->route('publish', [$server, $node])}">
@@ -11,9 +17,6 @@
 {/if}
 <ul class="list thick">
     <li>
-        <span class="primary icon active gray" onclick="history.back()">
-            <i class="material-symbols">arrow_back</i>
-        </span>
         {if="$info != null"}
             <span class="primary icon bubble active"
                     onclick="MovimUtils.reload('{$c->route('community', [$server, $info->node])}')">
@@ -45,7 +48,16 @@
                     {$node}
                 {/if}
             </p>
-            <p class="line on_mobile" {if="$info != null && $info->description"}title="{$info->description|strip_tags}"{/if}>
+            <p class="line on_desktop" {if="$info != null && $info->description"}title="{$info->description|strip_tags}"{/if}>
+                <a href="#" onclick="MovimUtils.reload('{$c->route('community', $server)}')">
+                    {$server}
+                </a>
+            </p>
+            <p class="line on_mobile">
+                <a href="#" onclick="MovimUtils.reload('{$c->route('community', $server)}')">
+                    {$server}
+                </a>
+                •
                 {if="$num > 0"}
                     <i class="material-symbols">article</i> {$num}
                 {/if}
@@ -58,11 +70,8 @@
                     {$server}
                 {/if}
             </p>
-            <p class="line on_desktop">
-                <a href="{$c->route('community', [$server])}">
-                    {$server}
-                </a>
-            </p>
         </div>
     </li>
 </ul>
+
+</header>
