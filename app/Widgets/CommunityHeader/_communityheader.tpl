@@ -1,7 +1,7 @@
 <header class="big top color {$contact->color}"
     style="
             background-image:
-            linear-gradient(to top, rgba(23,23,23,0.9) 0, rgba(23,23,23,0.6) 5rem, rgba(23,23,23,0) 12rem), url('{$info->getPicture(\Movim\ImageSize::XXL)}');
+            linear-gradient(to top, rgba(23,23,23,0.9) 0, rgba(23,23,23,0.6) 5rem, rgba(23,23,23,0) 12rem){if="$info != null"}, url('{$info->getPicture(\Movim\ImageSize::XXL)}'){/if};
     ">
 
 {if="$info != null && $info->pubsubpublishmodel != null && $info->pubsubpublishmodel != 'publishers'"}
