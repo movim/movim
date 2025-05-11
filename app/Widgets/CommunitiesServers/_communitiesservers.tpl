@@ -15,8 +15,8 @@
         </li>
         {loop="$servers"}
             {if="!filter_var($value->server, FILTER_VALIDATE_EMAIL)"}
-                <li class="block color {$value->server|stringToColor}
-                    {if="$value->occupants == 0"}faded{/if}"
+                <li class="block
+                    {if="$value->occupants == 0"}faded{else}color {$value->server|stringToColor}{/if}"
                     onclick="MovimUtils.reload('{$c->route('community', $value->server)}')">
                     <span class="primary icon bubble color transparent">
                         <i class="material-symbols">workspaces</i>
