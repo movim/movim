@@ -1285,16 +1285,16 @@
         },
         {
             "name": "embed/embed",
-            "version": "v4.4.15",
+            "version": "v4.4.16",
             "source": {
                 "type": "git",
-                "url": "https://github.com/oscarotero/Embed.git",
-                "reference": "62bd05060757a874673b4cda2299d94dd18f9a85"
+                "url": "https://github.com/php-embed/Embed.git",
+                "reference": "71bed149a5a94c6d21e8283f0193564e9ae3a211"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/62bd05060757a874673b4cda2299d94dd18f9a85",
-                "reference": "62bd05060757a874673b4cda2299d94dd18f9a85",
+                "url": "https://api.github.com/repos/php-embed/Embed/zipball/71bed149a5a94c6d21e8283f0193564e9ae3a211",
+                "reference": "71bed149a5a94c6d21e8283f0193564e9ae3a211",
                 "shasum": ""
             },
             "require": {
@@ -1354,7 +1354,7 @@
             "support": {
                 "email": "oom@oscarotero.com",
                 "issues": "https://github.com/oscarotero/Embed/issues",
-                "source": "https://github.com/oscarotero/Embed/tree/v4.4.15"
+                "source": "https://github.com/php-embed/Embed/tree/v4.4.16"
             },
             "funding": [
                 {
@@ -1370,7 +1370,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2025-01-02T16:53:09+00:00"
+            "time": "2025-05-09T16:03:16+00:00"
         },
         {
             "name": "evenement/evenement",
