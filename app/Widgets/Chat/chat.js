@@ -466,6 +466,8 @@ var Chat = {
             Chat.checkEmojis(this.value);
             Chat.scrollRestore();
             Chat.toggleAction();
+
+            document.querySelector('#embed').innerHTML = '';
         }
 
         textarea.addEventListener('paste', function (e) {

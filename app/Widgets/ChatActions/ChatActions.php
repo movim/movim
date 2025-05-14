@@ -174,7 +174,7 @@ class ChatActions extends \Movim\Widget\Base
         if ($message && $message->resolved == false) {
             try {
                 $url = new Url;
-                $url->resolve(htmlspecialchars_decode(trim($message->body)));
+                $embed = $url->resolve(htmlspecialchars_decode(trim($message->body)));
                 $message->urlid = $url->id;
 
                 if ($url->file) {
@@ -199,7 +199,8 @@ class ChatActions extends \Movim\Widget\Base
     public function ajaxHttpResolveUrl(string $url)
     {
         try {
-            (new Url)->resolve(trim($url));
+            $embed = (new Url)->resolve(trim($url));
+            $this->rpc('MovimTpl.fill', '#embed', (new Chat)->prepareEmbed($embed));
         } catch (\Exception $e) {
         }
         $this->rpc('Chat.disableSending');

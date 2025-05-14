@@ -37,7 +37,7 @@
     </a>
     <ul class="list fill">
         <div id="reply"></div>
-        <div id="attach"></div>
+        <ul class="list" id="embed"></ul>
         <div id="dictaphone"></div>
         <li class="emojis"></li>
         <li class="main">
