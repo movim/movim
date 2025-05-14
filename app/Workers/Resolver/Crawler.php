@@ -19,7 +19,7 @@ class Crawler extends HttpCrawler
     private RequestFactoryInterface $requestFactory;
     private UriFactoryInterface $uriFactory;
     private array $defaultHeaders = [
-        'User-Agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:73.0) Gecko/20100101 Firefox/73.0',
+        'User-Agent' => DEFAULT_HTTP_USER_AGENT,
         'Cache-Control' => 'max-age=0',
     ];
 
