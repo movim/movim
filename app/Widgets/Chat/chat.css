@@ -818,6 +818,7 @@ ul.list li > div.bubble.file div.file a span.size:before {
 
 /* Reply */
 
+#embed:not(:empty),
 #reply:not(:empty) {
     margin: 0 0.5rem;
     border-top: 1px solid rgba(var(--movim-font), 0.12);
