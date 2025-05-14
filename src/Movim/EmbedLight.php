@@ -6,8 +6,6 @@
 
 namespace Movim;
 
-use DateTime;
-
 class EmbedLight
 {
     public string $title;

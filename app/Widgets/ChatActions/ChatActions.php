@@ -200,7 +200,10 @@ class ChatActions extends \Movim\Widget\Base
     {
         try {
             $embed = (new Url)->resolve(trim($url));
-            $this->rpc('MovimTpl.fill', '#embed', (new Chat)->prepareEmbed($embed));
+
+            if ($embed != null) {
+                $this->rpc('MovimTpl.fill', '#embed', (new Chat)->prepareEmbed($embed));
+            }
         } catch (\Exception $e) {
         }
         $this->rpc('Chat.disableSending');

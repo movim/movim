@@ -20,6 +20,9 @@ var Chat = {
     since: null,
     sent: false,
 
+    // Timer
+    typingTimer: null,
+
     // Autocomplete vars.
     autocompleteList: null,
     lastAutocomplete: null,
@@ -464,6 +467,12 @@ var Chat = {
                 }
             }, 3000);
 
+            if (Chat.typingTimer != null) clearTimeout(Chat.typingTimer);
+            if (this.value) {
+                if (Chat.lastResolvedUrl != this.value) Chat.lastResolvedUrl = null;
+                Chat.typingTimer = setTimeout(e => Chat.checkResolveUrl(this.value), 1000);
+            }
+
             MovimUtils.textareaAutoheight(this);
             Chat.checkEmojis(this.value);
             Chat.scrollRestore();
@@ -473,30 +482,12 @@ var Chat = {
         }
 
         textarea.addEventListener('paste', function (e) {
-            let url;
+            clearTimeout(Chat.typingTimer);
+
             let clipboardData = e.clipboardData || window.clipboardData;
             let pastedData = clipboardData.getData('Text');
 
-            try {
-                url = new URL(pastedData);
-            } catch (_) {
-                return false;
-            }
-
-            if ((url.protocol === "http:" || url.protocol === "https:")
-                && textarea.value == '' && !Chat.isEncrypted()) {
-                Chat.enableSending();
-
-                let resolve = ChatActions_ajaxHttpResolveUrl(pastedData);
-                resolve.then(e => {
-                    Chat.disableSending();
-                    Chat.finishedSending();
-                }).catch(e => {
-                    Chat.disableSending();
-                    Chat.finishedSending();
-                });
-            }
-
+            Chat.checkResolveUrl(pastedData);
             Chat.toggleAction();
         });
 
@@ -505,6 +496,33 @@ var Chat = {
         }
 
         Chat.autocompleteList = null;
+    },
+    checkResolveUrl(content) {
+        let url;
+
+        try {
+            url = new URL(content);
+        } catch (_) {
+            return false;
+        }
+
+        if ((url.protocol === "http:" || url.protocol === "https:")
+            && !Chat.isEncrypted()
+            && !content.includes(' ')
+            && Chat.lastResolvedUrl != content) {
+            Chat.enableSending();
+
+            let resolve = ChatActions_ajaxHttpResolveUrl(content);
+            resolve.then(e => {
+                Chat.disableSending();
+                Chat.finishedSending();
+            }).catch(e => {
+                Chat.disableSending();
+                Chat.finishedSending();
+            });
+
+            Chat.lastResolvedUrl = content;
+        }
     },
     checkEmojis: function (value, reaction, noColon) {
         value = value.toLowerCase();
@@ -1692,14 +1710,14 @@ MovimEvents.registerWindow('loaded', 'chat', () => {
 
     Upload.initiate((file) => {
         if (MovimUtils.urlParts().page == 'chat'
-        && (typeof(PublishStories) == 'undefined' || PublishStories.main == undefined)) {
+            && (typeof (PublishStories) == 'undefined' || PublishStories.main == undefined)) {
             Upload.prependName = 'chat';
         }
     });
 
     Upload.attach((file) => {
         if (MovimUtils.urlParts().page == 'chat'
-        && (typeof(PublishStories) == 'undefined' || PublishStories.main == undefined)) {
+            && (typeof (PublishStories) == 'undefined' || PublishStories.main == undefined)) {
             Chat_ajaxHttpDaemonSendMessage(
                 Chat.getTextarea().dataset.jid,
                 false,

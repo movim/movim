@@ -116,9 +116,15 @@
                     <span class="moderator">{$c->__('chats.me')}:</span>
                 {/if}
                 {if="$message->resolvedUrl && $message->resolvedUrl->cache"}
-                    <i class="material-symbols">link</i> {$message->resolvedUrl->cache->title}
+                    <i class="material-symbols">link</i>
+                    {if="$message->resolvedUrl->cache->providerName"}
+                        {$message->resolvedUrl->cache->providerName}
+                        •
+                    {/if}
+                    {$message->resolvedUrl->cache->title}
                     {if="!empty($message->resolvedUrl->cache->description)"}
-                        | {$message->resolvedUrl->cache->description}
+                        •
+                        {$message->resolvedUrl->cache->description}
                     {/if}
                 {else}
                 {autoescape="off"}
