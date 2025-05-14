@@ -177,6 +177,8 @@ var Chat = {
         Chat.removeSeparator();
         Chat.scrollTotally();
 
+        document.querySelector('#embed').innerHTML = '';
+
         // In case it was in edit mode
         textarea.parentNode.parentNode.parentNode.classList.remove('edit');
 
