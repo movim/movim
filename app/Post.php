@@ -728,9 +728,8 @@ class Post extends Model
                         $atte->category = 'picture';
                         $atte->post_id = $this->id;
                         $atte->save();
-
                     } catch (\Throwable $th) {
-                        \logDebug($th->getMessage());
+                        //
                     }
 
                     $wrapper = Wrapper::getInstance();
