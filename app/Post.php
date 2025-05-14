@@ -7,6 +7,10 @@ use Respect\Validation\Validator;
 use Awobaz\Compoships\Database\Eloquent\Model;
 use Carbon\Carbon;
 use Illuminate\Database\Capsule\Manager as DB;
+use Movim\Widget\Wrapper;
+use Moxl\Xec\Payload\Packet;
+use React\Promise\Promise;
+use React\Promise\PromiseInterface;
 use SimpleXMLElement;
 
 class Post extends Model
@@ -33,7 +37,8 @@ class Post extends Model
     private $titleLimit = 700;
     private $changed = false; // Detect if the set post was different from the cache
 
-    public $attachments = [];
+    public array $attachments = [];
+    public array $resolvableAttachments = [];
     public $tags = [];
 
     public const MICROBLOG_NODE = 'urn:xmpp:microblog:0';
@@ -169,11 +174,12 @@ class Post extends Model
 
             if (!$this->isComment()) {
                 $this->healAttachments();
-
                 $this->attachments()->delete();
                 $this->attachments()->saveMany($this->attachments);
+
                 $this->tags()->sync($this->tags);
             }
+
         } catch (\Exception $e) {
             /*
              * When an article is received by two accounts simultaenously
@@ -449,11 +455,11 @@ class Post extends Model
 
         // Detect if things changed from the cached version
         if ($hash == $this->contenthash) {
-            return;
-        } else {
-            $this->contenthash = $hash;
-            $this->changed = true;
+            return \React\Promise\resolve();
         }
+
+        $this->contenthash = $hash;
+        $this->changed = true;
 
         // Ensure that the author is the publisher
         if (
@@ -605,7 +611,6 @@ class Post extends Model
 
         $this->like = $this->isLike();
         $this->open = false;
-        $this->setAttachments($entry->entry->link, $extra);
 
         if ($this->isComment()) {
             $p = \App\Post::where('commentserver', $this->server)
@@ -616,6 +621,8 @@ class Post extends Model
                 $this->parent_id = $p->id;
             }
         }
+
+        $this->setAttachments($entry->entry->link, $extra);
     }
 
     private function setAttachments($links, $extra = false)
@@ -667,7 +674,7 @@ class Post extends Model
                     break;
             }
 
-            if (in_array($att->rel, ['enclosure', 'related'])) {
+            if (in_array($att->rel, ['enclosure', 'related', 'alternate'])) {
                 $atte = new Attachment;
                 $atte->rel = $enc['rel'];
                 $atte->category = 'embed';
@@ -678,23 +685,10 @@ class Post extends Model
                 } elseif (preg_match('/(?:https:\/\/)?(?:www.)?redgifs.com\/watch\/([a-zA-Z]+)$/', $enc['href'], $match)) {
                     $atte->href = 'https://www.redgifs.com/ifr/' . $match[1];
                     $this->attachments[] = $atte;
-                } elseif (preg_match('/(?:https:\/\/)?(?:www.)?reddit.com\/gallery\/([a-zA-Z0-9]+)$/', $enc['href'], $match)) {
-                    $json = requestURL($enc['href'] . '.json', timeout: 1, json: true);
-
-                    if ($json) {
-                        if ($json = \json_decode($json)) {
-                            foreach ($json[0]->data?->children[0]?->data?->media_metadata as $key => $media) {
-                                if (substr((string)$media->m, 0, 6) == 'image/') {
-                                    $atte = new Attachment;
-                                    $atte->rel = 'enclosure';
-                                    $atte->href = 'https://i.redd.it/' . $key . '.' . substr((string)$media->m, 6);
-                                    $atte->type = (string)$media->m;
-                                    $atte->category = 'picture';
-                                    $this->attachments[] = $atte;
-                                }
-                            }
-                        }
-                    }
+                    $this->resolveUrl($enc['href']);
+                } elseif (in_array(parse_url($enc['href'], PHP_URL_HOST), ['old.reddit.com', 'reddit.com', 'www.reddit.com'])
+                    && substr(parse_url($enc['href'], PHP_URL_PATH), 0, 8) == '/gallery') {
+                    $this->resolveUrl($enc['href']);
                 }
             }
 
@@ -718,6 +712,34 @@ class Post extends Model
             $attachment->category = 'picture';
             $this->attachments[] = $attachment;
         }
+    }
+
+    private function resolveUrl(string $url)
+    {
+        array_push(
+            $this->resolvableAttachments,
+            new Promise(function () use ($url) {
+                \requestResolverWorker($url)->then(function ($extractor) {
+                    try {
+                        $atte = new Attachment;
+                        $atte->rel = 'enclosure';
+                        $atte->href = $extractor->image;
+                        $atte->type = 'media/jpeg';
+                        $atte->category = 'picture';
+                        $atte->post_id = $this->id;
+                        $atte->save();
+
+                    } catch (\Throwable $th) {
+                        \logDebug($th->getMessage());
+                    }
+
+                    $wrapper = Wrapper::getInstance();
+                    $packet = new Packet;
+                    $packet->content = Post::find($this->id);
+                    $wrapper->iterate('post_resolved', $packet);
+                });
+            })
+        );
     }
 
     private function healAttachments()

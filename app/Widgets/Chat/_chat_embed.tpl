@@ -35,11 +35,24 @@
 
     <div>
         <p class="line two" title="{$embed->title}">{$embed->title}</p>
-        {if="!empty($embed->description)"}
-            <p class="line" title="{$embed->description}">{$embed->description}</p>
-        {else}
-            <p class="line"></p>
-        {/if}
+        <p class="line two" title="{if="!empty($embed->description)"}{$embed->description}{/if}">
+            {if="$embed->providerIcon"}
+                <span class="icon bubble tiny">
+                    <img src="{$embed->providerIcon|protectPicture}"/>
+                </span>
+            {/if}
+            {if="$embed->providerName"}
+                {$embed->providerName}
+            {/if}
+            {if="!empty($embed->authorName)"}
+                <span class="second">•</span>
+                <span class="second">{$embed->authorName}</span>
+            {/if}
+            {if="!empty($embed->description)"}
+                <span class="second">•</span>
+                <span class="second">{$embed->description}</span>
+            {/if}
+        </p>
         {if="$withlink"}
             <p class="line"><a href="#">{$embed->url}</a></p>
         {/if}

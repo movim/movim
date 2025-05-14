@@ -33,4 +33,10 @@ class GetAffiliations extends Action
         $this->pack(['server' => $this->_to, 'node' => $this->_node]);
         $this->deliver();
     }
+
+    public function error(string $errorId, ?string $message = null)
+    {
+        $this->pack(['server' => $this->_to, 'node' => $this->_node]);
+        $this->deliver();
+    }
 }

@@ -6,10 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Respect\Validation\Validator;
 use Movim\EmbedLight;
 
-use Embed\Embed;
-use Embed\Http\Crawler;
-use Embed\Http\CurlClient;
-use Movim\EmbedImagesExtractor;
+use function React\Async\await;
 
 class Url extends Model
 {
@@ -33,22 +30,8 @@ class Url extends Model
 
             $cached->cache = $url;
 
-            $client = new CurlClient;
-            $client->setSettings([
-                'max_redirs' => 3,               // see CURLOPT_MAXREDIRS
-                'connect_timeout' => 5,          // see CURLOPT_CONNECTTIMEOUT
-                'timeout' => 5,                  // see CURLOPT_TIMEOUT
-                'ssl_verify_host' => 2,          // see CURLOPT_SSL_VERIFYHOST
-                'ssl_verify_peer' => 1,          // see CURLOPT_SSL_VERIFYPEER
-                'follow_location' => true,       // see CURLOPT_FOLLOWLOCATION
-                'user_agent' => DEFAULT_HTTP_USER_AGENT,
-            ]);
-
             try {
-                $embed = new Embed(new Crawler($client));
-                $embed->getExtractorFactory()->addDetector('images', EmbedImagesExtractor::class);
-                $info = $embed->get($url);
-
+                $info = await(requestResolverWorker($url));
                 $embed = new EmbedLight($info);
                 $cached->cache = base64_encode(serialize($embed));
                 $cached->save();

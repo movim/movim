@@ -38,10 +38,10 @@ class Picture extends Base
             curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
             curl_setopt($ch, CURLOPT_BUFFERSIZE, 12800);
             curl_setopt($ch, CURLOPT_NOPROGRESS, false);
+            curl_setopt($ch, CURLOPT_MAXFILESIZE, $max);
             curl_setopt($ch, CURLOPT_USERAGENT, DEFAULT_HTTP_USER_AGENT);
             curl_setopt($ch, CURLOPT_WRITEFUNCTION, function ($ch, $chunk) use (&$chunks, $max) {
                 $chunks .= $chunk;
-
                 return strlen($chunk);
             });
 
@@ -53,32 +53,27 @@ class Picture extends Base
             $body = substr($chunks, $headerSize);
             $p = null;
 
-            if ($body && strlen($body) <= $max) {
-                $p = new Image;
+            $p = new Image;
 
-                /**
-                 * In case of an animated GIF we get only the first frame
-                 */
-                if (substr_count($chunks, "\x00\x21\xF9\x04") > 1) {
-                    $body = substr($body, 0, strrpos($body, "\x00\x21\xF9\x04"));
-                }
-
-                $imported = $p->fromBin($body);
-
-                if ($imported) {
-                    $p->inMemory();
-                    $p->save(quality: 85);
-
-                    if ($p->getImage()->getImageWidth() > $this->sizeLimit || $p->getImage()->getImageHeight() > $this->sizeLimit) {
-                        $p->getImage()->adaptiveResizeImage($this->sizeLimit, $this->sizeLimit, true, false);
-                    }
-
-                    header_remove('Content-Type');
-                    header('Content-Type: image/' . DEFAULT_PICTURE_FORMAT);
-                }
+            /**
+             * In case of an animated GIF we get only the first frame
+             */
+            if (substr_count($chunks, "\x00\x21\xF9\x04") > 1) {
+                $body = substr($body, 0, strrpos($body, "\x00\x21\xF9\x04"));
             }
 
+            $imported = $p->fromBin($body);
+
             if ($imported) {
+                $p->inMemory();
+                $p->save(quality: 85);
+
+                if ($p->getImage()->getImageWidth() > $this->sizeLimit || $p->getImage()->getImageHeight() > $this->sizeLimit) {
+                    $p->getImage()->adaptiveResizeImage($this->sizeLimit, $this->sizeLimit, true, false);
+                }
+
+                header_remove('Content-Type');
+                header('Content-Type: image/' . DEFAULT_PICTURE_FORMAT);
                 header('Cache-Control: max-age=' . 3600 * 24);
                 print $p ? $p->getImage()->getImagesBlob() : $body;
 

@@ -12,6 +12,7 @@ v0.30.1 (master)
 * Dropping support for MySQL, only MariaDB and PostgreSQL are supported by now
 * Implement XEP-0433: Extended Channel Search to replace the historical implementation
 * Allow to search Channels in the global directory directly from the Search bar
+* Introducing the URL Resolver Worker, that resolves the shared URLs in a non-blocking and concurrential way
 
 v0.30
 ---------------------------

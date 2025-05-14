@@ -164,6 +164,12 @@ class Wrapper
      */
     public function iterate(string $key, $data)
     {
+        if (!empty($data->from)) {
+            logInfo('Package : "' . $key . '" from "' . $data->from . '" fired');
+        } else {
+            logInfo('Package : "' . $key);
+        }
+
         if (array_key_exists($key, $this->_events)) {
             foreach ($this->_events[$key] as $widgetName) {
                 $widget = new $widgetName(true);

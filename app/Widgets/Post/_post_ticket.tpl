@@ -82,10 +82,6 @@
                     {$count} <i class="material-symbols">collections</i> •
                 {/if}
 
-                {if="$post->embed"}
-                    <i class="material-symbols">movie</i> •
-                {/if}
-
                 {$count = $post->user_views_count}
                 {if="$count > 2"}
                     {$count} <i class="material-symbols">visibility</i> •

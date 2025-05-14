@@ -23,6 +23,7 @@ use App\User;
 
 use Phinx\Migration\Manager;
 use Phinx\Config\Config;
+use React\ChildProcess\Process;
 use Symfony\Component\Console\Output\NullOutput;
 
 use React\EventLoop\Loop;
@@ -87,15 +88,16 @@ class DaemonCommand extends Command
             $output->writeln('<info>php daemon.php setAdmin {jid}</info>' . "\n");
         }
 
-        $clearTemplatesCache = new \React\ChildProcess\Process('exec ' . PHP_BINARY . ' daemon.php clearTemplatesCache');
+
+        $clearTemplatesCache = new Process('exec ' . PHP_BINARY . ' daemon.php clearTemplatesCache');
         $clearTemplatesCache->start($loop);
         $clearTemplatesCache->on('exit', fn ($out) => $output->writeln('<info>Templates cache cleared</info>'));
 
-        $compileLanguages = new \React\ChildProcess\Process('exec ' . PHP_BINARY . ' daemon.php compileLanguages');
+        $compileLanguages = new Process('exec ' . PHP_BINARY . ' daemon.php compileLanguages');
         $compileLanguages->start($loop);
         $compileLanguages->on('exit', fn ($out) => $output->writeln('<info>Compiled po files</info>'));
 
-        $compileStickers = new \React\ChildProcess\Process('exec ' . PHP_BINARY . ' daemon.php compileStickers');
+        $compileStickers = new Process('exec ' . PHP_BINARY . ' daemon.php compileStickers');
         $compileStickers->start($loop);
         $compileStickers->on('exit', fn ($out) => $output->writeln('<info>Stickers compiled</info>'));
 
@@ -107,7 +109,7 @@ class DaemonCommand extends Command
         }
 
         if (isOpcacheEnabled()) {
-            $compileOpcache = new \React\ChildProcess\Process('exec ' . PHP_BINARY . ' daemon.php compileOpcache');
+            $compileOpcache = new Process('exec ' . PHP_BINARY . ' daemon.php compileOpcache');
             $compileOpcache->start($loop);
             $compileOpcache->on('exit', fn ($out) => $output->writeln('<info>Files compiled in Opcache</info>'));
         } else {
@@ -124,6 +126,11 @@ class DaemonCommand extends Command
 
         $socketApi = new SocketServer('unix://' . API_SOCKET);
         new Api($socketApi, $core);
+
+        $resolverWorker = new Process('exec ' . PHP_BINARY . ' resolver.php');
+        $resolverWorker->start($loop);
+        $resolverWorker->on('exit', fn () => $output->writeln('<error>Resolver Worker crashed</error>'));
+        $output->writeln('<info>Resolver Worker launched</info>');
 
         (new IoServer($app, $socket, $loop))->run();
 

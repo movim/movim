@@ -7,6 +7,7 @@ use App\Widgets\ContactActions\ContactActions;
 use App\Widgets\Post\Post;
 use Movim\Widget\Base;
 use Moxl\Xec\Action\Pubsub\GetItems;
+use Moxl\Xec\Payload\Packet;
 
 class CommunityPosts extends Base
 {
@@ -20,6 +21,7 @@ class CommunityPosts extends Base
         $this->registerEvent('pubsub_getitemsid_error', 'onItemsError');
         $this->registerEvent('pubsub_setconfig_handle', 'onConfigSaved', 'community');
         $this->registerEvent('pubsub_getitems_errorpresencesubscriptionrequired', 'onItemsErrorPresenceSubscriptionRequired');
+        $this->registerEvent('post_resolved', 'onPostResolved');
 
         $this->addjs('communityposts.js');
     }
@@ -30,6 +32,23 @@ class CommunityPosts extends Base
             = array_values($packet->content);
 
         $this->displayItems($origin, $node, $ids, $first, $last, $count, $paginated, $before, $after, $query);
+    }
+
+    public function onPostResolved(Packet $packet)
+    {
+        $post = $packet->content;
+
+        $info = \App\Info::where('server', $post->server)
+            ->where('node', $post->node)
+            ->first();
+
+        $this->rpc(
+            'MovimTpl.replace',
+            '#' . cleanupId($post->nodeid),
+            $info->isGallery()
+                ? $this->prepareTicket($post)
+                : $this->preparePost($post)
+        );
     }
 
     public function onConfigSaved($packet)

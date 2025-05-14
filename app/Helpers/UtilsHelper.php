@@ -6,6 +6,11 @@ use Monolog\Handler\SyslogHandler;
 use Monolog\Handler\StreamHandler;
 use Movim\Image;
 use Movim\ImageSize;
+use React\Http\Message\Response;
+use React\Promise\Promise;
+use React\Promise\PromiseInterface;
+
+use function React\Async\await;
 
 /**
  * Log an error
@@ -162,7 +167,7 @@ function resolveInfos($postCollection)
 {
     $serverNodes = $postCollection->map(function ($item) {
         return ['server' => $item->server, 'node' => $item->node];
-    })->unique(fn ($item) => $item['server'] . $item['node']);
+    })->unique(fn($item) => $item['server'] . $item['node']);
 
     if ($serverNodes->isNotEmpty()) {
         $first = $serverNodes->first();
@@ -178,7 +183,7 @@ function resolveInfos($postCollection)
             ]);
         });
 
-        $infos = $infos->get()->keyBy(fn ($item) => $item['server'] . $item['node']);
+        $infos = $infos->get()->keyBy(fn($item) => $item['server'] . $item['node']);
 
         $postCollection->map(function ($item) use ($infos) {
             $item->info = $infos->get($item->server . $item->node);
@@ -650,11 +655,32 @@ define('DEFAULT_HTTP_USER_AGENT', 'Mozilla/5.0 (X11; Linux x86_64; rv:140.0) Gec
 /**
  * @desc Request a url async
  */
-function requestAsyncURL(string $url, int $timeout = 10, array $headers = [])
+function requestAsyncURL(string $url, int $timeout = 10, array $headers = []): Promise
 {
     $browser = new React\Http\Browser;
 
     return $browser->withTimeout($timeout)->get($url, $headers);
+}
+
+/**
+ * @desc Request the Resolver Worker
+ */
+function requestResolverWorker(string $url, int $timeout = 10): PromiseInterface
+{
+    $connector = new React\Socket\FixedUriConnector(
+        'unix://' . RESOLVER_SOCKET,
+        new React\Socket\UnixConnector()
+    );
+
+    $browser = new React\Http\Browser($connector);
+    $data['url'] = $url;
+
+    return $browser
+        ->withTimeout($timeout)
+        ->post($url, [], json_encode($data))
+        ->then(function (Response $response) {
+            return json_decode($response->getBody());
+        });
 }
 
 /*

@@ -160,7 +160,10 @@ ul.flex.gallery li.block.embed:before {
     content: "\e02c";
     display: flex;
     align-items: center;
-    font-size: 4rem;
-    height: 100%;
-    opacity: 0.5;
+    font-size: 3rem;
+    line-height: 5rem;
+    opacity: 0.75;
+    position: absolute;
+    left: 1.5rem;
+    z-index: 1;
 }

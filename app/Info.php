@@ -213,7 +213,7 @@ class Info extends Model
     public function getGatewayTypeAttribute(): ?string
     {
         $identityType = $this->identities->filter(
-            fn ($value, $key) =>
+            fn($value, $key) =>
             $value->category == 'gateway'
         )->first();
 

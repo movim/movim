@@ -44,8 +44,11 @@ abstract class Payload
         }
 
         $action_ns = 'Moxl\Xec\Action';
-        if (get_parent_class($this) == $action_ns
-        || get_parent_class(get_parent_class($this)) == $action_ns) {
+
+        if (
+            get_parent_class($this) == $action_ns
+            || get_parent_class(get_parent_class($this)) == $action_ns
+        ) {
             $class = str_replace([$action_ns, '\\'], ['', '_'], get_class($this));
             $key = strtolower(substr($class, 1));
         } else {
@@ -56,12 +59,6 @@ abstract class Payload
 
         if ($this->method) {
             $key = $key . '_' . $this->method;
-        }
-
-        if (!empty($this->packet->from)) {
-            logInfo('Package : "'.$key.'" from "'.$this->packet->from.'" fired');
-        } else {
-            logInfo('Package : "'.$key);
         }
 
         $this->event($key, $this->packet);
@@ -101,7 +98,5 @@ abstract class Payload
         }
     }
 
-    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
-    {
-    }
+    public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null) {}
 }

@@ -24,6 +24,7 @@ class Post extends Base
         $this->registerEvent('microblog_commentsget_error', 'onCommentsError');
         $this->registerEvent('pubsub_getitem_handle', 'onHandle', 'post');
         $this->registerEvent('pubsub_postdelete_handle', 'onDelete', 'post');
+        $this->registerEvent('post_resolved', 'onHandle', 'post');
     }
 
     public function onHandle($packet)

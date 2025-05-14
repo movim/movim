@@ -100,6 +100,7 @@ class Bootstrap
         define('DEFAULT_PICTURE_QUALITY', 95);
 
         define('API_SOCKET', CACHE_PATH . 'socketapi.sock');
+        define('RESOLVER_SOCKET', CACHE_PATH . 'resolver.sock');
     }
 
     private function getVersion()

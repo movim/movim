@@ -20,6 +20,7 @@ class CommunityAffiliations extends Base
     public function load()
     {
         $this->registerEvent('pubsub_getaffiliations_handle', 'onAffiliations');
+        $this->registerEvent('pubsub_getaffiliations_error', 'onAffiliations');
         $this->registerEvent('pubsub_setaffiliations_handle', 'onAffiliationsSet');
         $this->registerEvent('pubsub_delete_handle', 'onDelete');
         $this->registerEvent('pubsub_delete_error', 'onDeleteError');
@@ -35,6 +36,8 @@ class CommunityAffiliations extends Base
         $affiliations = Affiliation::where('server', $server)
             ->where('node', $node)
             ->get();
+
+        $infoServer = \App\Info::where('server', $server)->where('node', '')->first();
 
         $view = $this->tpl();
         $view->assign('myaffiliation', $affiliations->where('jid', $this->user->id)->first());
@@ -67,8 +70,6 @@ class CommunityAffiliations extends Base
         // If the configuration is open, we fill it
         $view = $this->tpl();
 
-        $caps = \App\Info::where('server', $server)->where('node', '')->first();
-
         $view->assign('subscriptions', \App\Subscription::where('server', $server)
             ->where('node', $node)
             ->get());
@@ -76,7 +77,7 @@ class CommunityAffiliations extends Base
         $view->assign('node', $node);
         $view->assign('affiliations', $affiliations);
         $view->assign('me', $this->user->id);
-        $view->assign('roles', ($caps) ? $caps->getPubsubRoles() : []);
+        $view->assign('roles', ($infoServer) ? $infoServer->getPubsubRoles() : []);
 
         $this->rpc(
             'MovimTpl.fill',
@@ -111,8 +112,6 @@ class CommunityAffiliations extends Base
             $packet->content['server'] != $this->user->id
             && substr($packet->content['node'], 0, 29) != 'urn:xmpp:microblog:0:comments'
         ) {
-            Toast::send($this->__('communityaffiliation.deleted'));
-
             $this->rpc(
                 'MovimUtils.redirect',
                 $this->route(
@@ -132,6 +131,8 @@ class CommunityAffiliations extends Base
 
     public function onDeleteError($packet)
     {
+        Toast::send($this->__('communityaffiliation.delete_error'));
+
         $c = new CommunityHeader;
         $c->ajaxUnsubscribe($packet->content['server'], $packet->content['node']);
 

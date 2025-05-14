@@ -47,6 +47,10 @@ class Core implements MessageComponentInterface
             unlink(CACHE_PATH . 'socketapi.sock');
         }
 
+        if (file_exists(CACHE_PATH . 'resolver.sock')) {
+            unlink(CACHE_PATH . 'resolver.sock');
+        }
+
         array_map('unlink', array_merge(
             glob(PUBLIC_CACHE_PATH . '*.css'),
             glob(PUBLIC_CACHE_PATH . '*.js')

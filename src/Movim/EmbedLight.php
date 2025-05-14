@@ -6,6 +6,8 @@
 
 namespace Movim;
 
+use DateTime;
+
 class EmbedLight
 {
     public string $title;
@@ -24,30 +26,22 @@ class EmbedLight
     public ?string $providerUrl;
 
     public ?string $license;
-    public $publishedTime;
+    public ?string $publishedTime;
 
     public function __construct($embed)
     {
         $this->title            = $embed->title ? (string)$embed->title : (string)$embed->url;
         $this->description      = $embed->description;
         $this->url              = (string)$embed->url;
-
-        if (!empty($embed->getResponse()->getHeader('content-type'))) {
-            $this->contentType      = $embed->getResponse()->getHeader('content-type')[0];
-
-            if (typeIsPicture($this->contentType)) {
-                $this->type = 'image';
-            } elseif (typeIsVideo($this->contentType)) {
-                $this->type = 'video';
-            }
-        }
-
+        $this->type             = $embed->type;
+        $this->contentType      = $embed->contentType;
         $this->tags             = (array)$embed->keywords;
         $this->authorName       = $embed->authorName ? (string)$embed->authorName : null;
         $this->authorUrl        = $embed->authorUrl ? (string)$embed->authorUrl : null;
         $this->providerIcon     = $embed->icon ? (string)$embed->icon : null;
         $this->providerName     = $embed->providerName;
         $this->providerUrl      = $embed->providerUrl ? (string)$embed->providerUrl : null;
+        $this->publishedTime    = $embed->publishedTime;
 
         // Images
         $this->images           = [];
@@ -56,7 +50,7 @@ class EmbedLight
             $this->images = [
                 [
                     'url' => (string)$embed->url,
-                    'size' => $embed->getResponse()->getHeader('content-length')[0]
+                    'size' => $embed->contentLength
                 ]
             ];
         }  elseif ($embed->image) {
@@ -66,14 +60,14 @@ class EmbedLight
                     'size' => 0
                 ]
             ];
-        } /*elseif($embed->images) {
+        } elseif($embed->images) {
             foreach ($embed->images as $key => $image) {
                 $this->images[$key] = [
                     'url' => (string)$key,
                     'size' => 0
                 ];
             }
-        }*/
+        }
 
         // Reset the keys
         $this->images = array_values($this->images);
