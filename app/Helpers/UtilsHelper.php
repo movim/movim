@@ -650,7 +650,7 @@ function generateKey(?int $size = 16, bool $withCapitals = true): string
     return $hash;
 }
 
-define('DEFAULT_HTTP_USER_AGENT', 'Mozilla/5.0 (X11; Linux x86_64; rv:140.0) Gecko/20100101 Firefox/140.0');
+define('DEFAULT_HTTP_USER_AGENT', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:73.0) Gecko/20100101 Firefox/73.0');
 
 /**
  * @desc Request a url async

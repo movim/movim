@@ -75,7 +75,7 @@ class Resolver
             'publishedTime' => $extractor->publishedTime ? $extractor->publishedTime->format('c') : null,
             'title'         => $extractor->title,
             'type'          => $extractor->type,
-            'url'           => $extractor->url,
+            'url'           => $extractor->url ? (string)$extractor->url : null,
         ];
     }
 }
