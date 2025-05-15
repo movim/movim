@@ -12,7 +12,7 @@ class Url extends Model
 {
     public ?MessageFile $file = null;
 
-    public function resolve($url)
+    public function resolve($url, bool $now = false)
     {
         if (Validator::url()->isValid($url)) {
             $hash = hash('sha256', $url);
@@ -29,6 +29,8 @@ class Url extends Model
             }
 
             $cached->cache = $url;
+
+            if ($now) return;
 
             try {
                 $info = await(requestResolverWorker($url));

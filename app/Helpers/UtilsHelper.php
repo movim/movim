@@ -665,7 +665,7 @@ function requestAsyncURL(string $url, int $timeout = 10, array $headers = []): P
 /**
  * @desc Request the Resolver Worker
  */
-function requestResolverWorker(string $url, int $timeout = 10): PromiseInterface
+function requestResolverWorker(string $url, int $timeout = 5): PromiseInterface
 {
     $connector = new React\Socket\FixedUriConnector(
         'unix://' . RESOLVER_SOCKET,
