@@ -1,4 +1,4 @@
-<header class="big top color {$contact->color}"
+<header class="big top color"
     style="
             background-image:
             linear-gradient(to top, rgba(23,23,23,0.9) 0, rgba(23,23,23,0.6) 5rem, rgba(23,23,23,0) 12rem){if="$info != null"}, url('{$info->getPicture(\Movim\ImageSize::XXL)}'){/if};
