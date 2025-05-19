@@ -442,7 +442,7 @@ class Message extends Model
             }
 
             if ($this->isMuc()) {
-                $presence = $this->user->session->presences()
+                $presence = $this->user->session?->presences()
                     ->where('jid', $this->jidfrom)
                     ->where('mucjid', $this->user->id)
                     ->first();

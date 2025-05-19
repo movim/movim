@@ -352,7 +352,7 @@ class Publish extends Base
         $draft = $this->user->drafts()->find($id);
 
         if ($draft && !$draft->nodeid) {
-            $id = $this->getSlugFromTitle($draft->title);
+            $id = $draft->title ? $this->getSlugFromTitle($draft->title) : null;
 
             if ($id) {
                 $openlink = ($draft->node == AppPost::MICROBLOG_NODE)

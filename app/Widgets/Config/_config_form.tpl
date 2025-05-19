@@ -53,7 +53,7 @@
                 </span>
                 <div>
                     <div class="select">
-                        <select name="language" id="language" value="{$conf->language}">
+                        <select name="language" id="language" {if="$conf->language"}value="{$conf->language}"{/if}>
                             <option value="en">English (default)</option>
                                 {loop="$languages"}
                                     {if="$key == $conf->language"}

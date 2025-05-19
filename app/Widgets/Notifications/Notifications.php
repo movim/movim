@@ -93,9 +93,9 @@ class Notifications extends Base
         })->where('published', '>', $since)
             ->where('aid', '!=', $this->user->id)->count();
 
-        $count += $this->user->session->presences()
+        $count += $this->user->session ? $this->user->session->presences()
                         ->whereIn('type', ['subscribe', 'subscribed'])
-                        ->count();
+                        ->count() : 0;
 
         $this->rpc('Notifications.setCounters', ($count > 0) ? $count : '');
     }
