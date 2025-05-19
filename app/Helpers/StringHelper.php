@@ -327,13 +327,15 @@ function isLongitude(float $longitude): bool
 /**
  * @desc XEP-0392: Consistent Color Generation
  */
-function stringToColor($string): string
+function stringToColor(?string $string = null): string
 {
+    $colors = array_keys(palette());
+
+    if ($string == null) return 'dorange';
+
     // Get the Hue angle from the XEP definition
     $arr = unpack('C*' ,hex2bin(hash('sha1', $string)));
     $angle = (($arr[1] + $arr[2] * 256) / 65536.0) * 360;
-
-    $colors = array_keys(palette());
 
     // Pick the closest color from the palette
     $color = round($angle / (360 / count($colors)));
