@@ -7,6 +7,7 @@
 <?php $this->widget('Location');?>
 
 <?php $this->widget('ContactActions');?>
+<?php $this->widget('AdHoc');?>
 <?php $this->widget('PostActions');?>
 
 <nav>

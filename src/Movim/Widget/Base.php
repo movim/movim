@@ -132,9 +132,9 @@ class Base
     /**
      * Generates the widget's HTML code.
      */
-    public function build(): string
+    public function build(...$params): string
     {
-        return $this->draw();
+        return $this->draw(...$params);
     }
 
     /**
@@ -177,19 +177,14 @@ class Base
         return $this->user;
     }
 
-    /*
-     * @desc Preload some sourcecode for the draw method
-     */
-    public function display()
-    {
-    }
-
     /**
      *  @desc Return the template's HTML code
      */
-    public function draw(): string
+    public function draw(...$params): string
     {
-        $this->display();
+        if (method_exists($this, 'display')) {
+            $this->display(...$params);
+        }
 
         return (file_exists($this->respath(strtolower($this->name).'.tpl', true)))
             ? trim((string)$this->view->draw(strtolower($this->name), true))

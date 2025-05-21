@@ -1,6 +1,7 @@
 <?php $this->widget('Search');?>
 <?php $this->widget('PostActions');?>
 <?php $this->widget('ContactActions');?>
+<?php $this->widget('AdHoc');?>
 <?php $this->widget('Notifications');?>
 <?php $this->widget('SendTo');?>
 <?php $this->widget('Tabs');?>
@@ -18,7 +19,6 @@
     <aside>
         <?php $this->widget('ContactData'); ?>
         <?php $this->widget('ContactSubscriptions'); ?>
-        <?php $this->widget('AdHoc'); ?>
     </aside>
     <div>
         <?php $this->widget('ContactHeader'); ?>

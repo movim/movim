@@ -36,7 +36,7 @@
         <?php $this->widget('Account');?>
         <?php $this->widget('EmojisConfig');?>
         <?php $this->widget('NotificationConfig');?>
-        <?php $this->widget('AdHoc');?>
+        <?php $this->widget('AdHoc', ['to' => \App\User::me()->session->host]);?>
         <?php $this->widget('Blocked');?>
     </div>
 </main>

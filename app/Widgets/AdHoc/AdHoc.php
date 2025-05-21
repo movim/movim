@@ -9,6 +9,7 @@ use Moxl\Xec\Action\AdHoc\Command;
 use Moxl\Xec\Action\AdHoc\Submit;
 
 use Movim\Session;
+use Moxl\Xec\Payload\Packet;
 
 class AdHoc extends \Movim\Widget\Base
 {
@@ -16,28 +17,37 @@ class AdHoc extends \Movim\Widget\Base
     {
         $this->addjs('adhoc.js');
         $this->registerEvent('adhoc_get_handle', 'onList');
+        $this->registerEvent('adhoc_get_error', 'onListError');
         $this->registerEvent('adhoc_command_handle', 'onCommand');
         $this->registerEvent('adhoc_submit_handle', 'onCommand');
         $this->registerEvent('adhoc_command_error', 'onCommandError');
         $this->registerEvent('adhoc_submit_error', 'onCommandError');
     }
 
-    public function onList($package)
+    public function onList(Packet $packet)
     {
-        if ($package->from == Session::instance()->get('host')) {
-            $list = $package->content;
-            $html = $this->prepareList($list);
-            $this->rpc('MovimTpl.fill', '#adhoc_widget', $html);
+        if (empty($packet->content)) {
+            $this->onListError($packet);
+        } else {
+            $view = $this->tpl();
+            $view->assign('list', $packet->content);
+            $this->rpc('MovimTpl.fill', '#adhoc_widget_' . cleanupId($packet->from), $view->draw('_adhoc_list'));
             $this->rpc('AdHoc.refresh');
         }
     }
 
-    public function onCommand($package)
+    public function onListError(Packet $packet)
     {
-        $command = $package->content;
+        $this->rpc('MovimTpl.remove', '#adhoc_widget_' . cleanupId($packet->from));
+        $this->rpc('Tabs.create');
+    }
+
+    public function onCommand(Packet $packet)
+    {
+        $command = $packet->content;
 
         $view = $this->tpl();
-        $view->assign('jid', $package->from);
+        $view->assign('jid', $packet->from);
 
         // Refresh the AdHoc list in any cases
         if ((string)$command->attributes()->status === 'completed') {
@@ -69,20 +79,13 @@ class AdHoc extends \Movim\Widget\Base
         }
     }
 
-    public function prepareList($list)
-    {
-        $view = $this->tpl();
-        $view->assign('list', $list);
-        return $view->draw('_adhoc_list');
-    }
-
-    public function onCommandError($package)
+    public function onCommandError(Packet $packet)
     {
         $view = $this->tpl();
 
-        $note = $package->content['errorid'];
-        if ($package->content['message']) {
-            $note = $package->content['message'];
+        $note = $packet->content['errorid'];
+        if ($packet->content['message']) {
+            $note = $packet->content['message'];
         }
 
         $view->assign('note', $note);
@@ -99,7 +102,7 @@ class AdHoc extends \Movim\Widget\Base
         $g->setTo($jid)->request();
     }
 
-    public function ajaxCommand($jid, $node)
+    public function ajaxCommand(string $jid, string $node)
     {
         $c = new Command;
         $c->setTo($jid)
@@ -107,13 +110,8 @@ class AdHoc extends \Movim\Widget\Base
           ->request();
     }
 
-    public function ajaxSubmit($jid, $data, $node, $sessionid)
+    public function ajaxSubmit(string $jid, string $node, $data, $sessionid)
     {
-        if (!$jid) {
-            $session = Session::instance();
-            $jid = $session->get('host');
-        }
-
         $s = new Submit;
         $s->setTo($jid)
           ->setNode($node)
@@ -144,5 +142,12 @@ class AdHoc extends \Movim\Widget\Base
         }
 
         return 'list_alt';
+    }
+
+    public function display(?string $to = null)
+    {
+        if ($to) {
+            $this->view->assign('to', $to);
+        }
     }
 }

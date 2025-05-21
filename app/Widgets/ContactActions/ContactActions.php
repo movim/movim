@@ -2,6 +2,7 @@
 
 namespace App\Widgets\ContactActions;
 
+use App\Widgets\AdHoc\AdHoc;
 use App\Widgets\Chat\Chat;
 use App\Widgets\Chats\Chats;
 use App\Widgets\Drawer\Drawer;
@@ -97,6 +98,8 @@ class ContactActions extends Base
         if ($this->user->hasOMEMO() && $hasFingerprints) {
             $this->rpc('ContactActions.getDrawerFingerprints', $jid);
         }
+
+        (new AdHoc)->ajaxGet($jid);
     }
 
     public function ajaxGetDrawerFingerprints($jid, $deviceId)

@@ -191,5 +191,15 @@
         <div class="tabelem spin" title="{$c->__('omemo.fingerprints_title')}" id="omemo_fingerprints"></div>
     {/if}
 
+    <div id="adhoc_widget_{$jid|cleanupId}"
+        class="adhoc_widget tabelem"
+        title="{$c->__('adhoc.title')}"
+        data-mobileicon="terminal" >
+        <div class="placeholder">
+            <i class="material-symbols">terminal</i>
+            <h1>{$c->__('adhoc.title')}</h1>
+        </div>
+    </div>
+
     <br />
 </section>

@@ -358,11 +358,11 @@ class Builder
     /**
      * Loads up a widget and prints it at the current place.
      */
-    public function widget(string $name)
+    public function widget(string $name, array $params = [])
     {
         $widgets = Wrapper::getInstance();
         $widgets->setView($this->_view);
 
-        echo $widgets->runWidget($name, 'build');
+        echo $widgets->runWidget($name, 'build', $params);
     }
 }

@@ -8,11 +8,12 @@ var AdHoc = {
         }
     },
     refresh: function () {
-        var items = document.querySelectorAll('#adhoc_widget li:not(.subheader)');
+        var items = document.querySelectorAll('.adhoc_widget li:not(.subheader)');
         var i = 0;
 
         while (i < items.length) {
             items[i].onclick = function () {
+                Drawer.clear();
                 AdHoc_ajaxCommand(this.dataset.jid, this.dataset.node);
             };
 
@@ -35,8 +36,7 @@ var AdHoc = {
     },
     submit: function (jid) {
         var form = document.querySelector('#dialog form[name=command]');
-        AdHoc_ajaxSubmit(jid, MovimUtils.formToJson('command'),
-            form.dataset.node, form.dataset.sessionid);
+        AdHoc_ajaxSubmit(jid, form.dataset.node, MovimUtils.formToJson('command'), form.dataset.sessionid);
     },
     checkFormValidity: function () {
         var form = document.querySelector('#dialog form[name=command]');

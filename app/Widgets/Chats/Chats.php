@@ -447,7 +447,7 @@ class Chats extends Base
         return $this->user->openChats()->orderBy('updated_at')->pluck('jid')->toArray();
     }
 
-    function display()
+    public function display()
     {
         $this->view->assign('filters', $this->_filters);
         $this->view->assign('filter', $this->user->chats_filter);

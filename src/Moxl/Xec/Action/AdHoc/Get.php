@@ -20,4 +20,10 @@ class Get extends Action
         $this->pack($stanza->query->item, $this->_to);
         $this->deliver();
     }
+
+    public function error(string $errorId, ?string $message = null)
+    {
+        $this->pack($stanza->query->item, $this->_to);
+        $this->deliver();
+    }
 }

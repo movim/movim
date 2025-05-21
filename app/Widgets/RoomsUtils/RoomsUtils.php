@@ -20,6 +20,7 @@ use App\Conference;
 use App\Contact;
 use App\Info;
 use App\Message;
+use App\Widgets\AdHoc\AdHoc;
 use App\Widgets\Chat\Chat;
 use App\Widgets\Chats\Chats;
 use App\Widgets\Dialog\Dialog;
@@ -122,6 +123,8 @@ class RoomsUtils extends Base
         if ($this->user->hasOMEMO() && $hasFingerprints) {
             $this->rpc('RoomsUtils.getDrawerFingerprints', $room);
         }
+
+        (new AdHoc)->ajaxGet($room);
     }
 
     public function ajaxAppendPresences($room, int $page = 0, bool $havePagination = true)

@@ -13,6 +13,7 @@ v0.30.1 (master)
 * Implement XEP-0433: Extended Channel Search to replace the historical implementation
 * Allow to search Channels in the global directory directly from the Search bar
 * Introducing the URL Resolver Worker, that resolves the shared URLs in a non-blocking and concurrential way
+* Refactor the Ad-Hoc widget and move it into the contacts and MUCs drawers
 
 v0.30
 ---------------------------

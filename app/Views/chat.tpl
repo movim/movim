@@ -3,6 +3,7 @@
 <?php $this->widget('Notifications');?>
 <?php $this->widget('SendTo');?>
 <?php $this->widget('ContactActions');?>
+<?php $this->widget('AdHoc');?>
 <?php if(\App\User::me()->hasOMEMO()) $this->widget('ChatOmemo');?>
 <?php $this->widget('Location');?>
 
