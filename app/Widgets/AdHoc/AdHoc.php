@@ -146,8 +146,6 @@ class AdHoc extends \Movim\Widget\Base
 
     public function display(?string $to = null)
     {
-        if ($to) {
-            $this->view->assign('to', $to);
-        }
+        $this->view->assign('to', $to);
     }
 }
