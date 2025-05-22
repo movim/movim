@@ -1,3 +1,7 @@
+#comments {
+    margin-top: 2rem;
+}
+
 #comments li.mine ~ li button#like {
     display: none;
 }
