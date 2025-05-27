@@ -12,7 +12,7 @@ class Picture extends Base
 
     public function display()
     {
-        $url = html_entity_decode(urldecode($this->get('url')));
+        $url = str_replace ( ' ', '%20', html_entity_decode(urldecode($this->get('url'))));
         $parsedUrl = parse_url($url);
         if (
             is_array($parsedUrl)
@@ -24,7 +24,7 @@ class Picture extends Base
 
         $headers = requestHeaders($url);
 
-        if (preg_match('/2\d{2}/', $headers['http_code'])) {
+        if (is_array($headers) && preg_match('/2\d{2}/', $headers['http_code'])) {
             $imported = false;
             $chunks = '';
 

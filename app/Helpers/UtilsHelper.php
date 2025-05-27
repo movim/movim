@@ -722,7 +722,7 @@ function requestURL(string $url, int $timeout = 10, $post = false, bool $json = 
 /*
  * Request the headers of a URL
  */
-function requestHeaders(string $url, $timeout = 2)
+function requestHeaders(string $url, $timeout = 2): ?array
 {
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -734,7 +734,13 @@ function requestHeaders(string $url, $timeout = 2)
     curl_setopt($ch, CURLOPT_NOBODY, 1);
     curl_setopt($ch, CURLOPT_USERAGENT, DEFAULT_HTTP_USER_AGENT);
 
-    curl_exec($ch);
+    $ret = curl_exec($ch);
+
+    if (empty($ret)) {
+        \logError('requestHeader on "' . $url . '": ' . curl_error($ch));
+        curl_close($ch);
+        return null;
+    }
 
     return curl_getinfo($ch);
 }
