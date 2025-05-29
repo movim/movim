@@ -203,11 +203,11 @@ class Pubsub
         ];
 
         if (in_array($node, [Post::MICROBLOG_NODE, Post::STORIES_NODE])) {
-            $config['pubsub#access_model'] = 'presence';
             $config['pubsub#notify_retract'] = 'true';
         }
 
         if ($node == Post::STORIES_NODE) {
+            $config['pubsub#access_model'] = 'presence';
             $config['pubsub#item_expire'] = '86400';
         }
 
