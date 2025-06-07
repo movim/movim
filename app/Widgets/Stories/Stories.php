@@ -38,9 +38,17 @@ class Stories extends Base
 
     public function ajaxHttpGet()
     {
+        $blocks = 10;
+        $stories = Post::myStories()->withCount('myViews')->get();
+
+        $takeTopContacts = 0;
+        if ($stories->count() < $blocks) {
+            $takeTopContacts = $blocks - $stories->count();
+        }
+
         $view = $this->tpl();
-        $posts = Post::myStories()->withCount('myViews')->get();
-        $view->assign('stories', $posts);
+        $view->assign('topcontacts', $this->user->session->topContactsToChat()->take($takeTopContacts)->get());
+        $view->assign('stories', $stories);
 
         $this->rpc('MovimTpl.fill', '#stories', $view->draw('_stories'));
     }

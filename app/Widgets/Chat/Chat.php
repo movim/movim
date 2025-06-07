@@ -1703,24 +1703,7 @@ class Chat extends \Movim\Widget\Base
     public function prepareEmpty()
     {
         $view = $this->tpl();
-
-        $top = $this->user->session->topContacts()
-            ->join(DB::raw('(
-                select min(value) as value, jid as pjid
-                from presences
-                group by jid) as presences
-            '), 'presences.pjid', '=', 'rosters.jid')
-            ->where('value', '<', 5)
-            ->whereNotIn('rosters.jid', function($query){
-                $query->select('jid')
-                    ->from('open_chats')
-                    ->where('user_id', $this->user->id);
-            })
-            ->where('rosters.jid', '!=', $this->user->id)
-            ->with('presence.capability')
-            ->take(15)
-            ->get();
-        $view->assign('top', $top);
+        $view->assign('top', $this->user->session->topContactsToChat()->take(15)->get());
 
         return $view->draw('_chat_empty');
     }
