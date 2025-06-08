@@ -260,6 +260,8 @@ class Chats extends Base
         if ($closeDiscussion) {
             $this->rpc('Chat_ajaxGet');
         }
+
+        $this->rpc('Stories_ajaxHttpGet');
     }
 
     public function prepareCalls()

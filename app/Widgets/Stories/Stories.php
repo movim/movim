@@ -3,6 +3,7 @@
 namespace App\Widgets\Stories;
 
 use App\Post;
+use App\Widgets\Chats\Chats;
 use App\Widgets\Toast\Toast;
 use Movim\Widget\Base;
 
@@ -34,6 +35,12 @@ class Stories extends Base
             Toast::send($this->__('stories.deleted'));
             $this->ajaxHttpGet();
         }
+    }
+
+    public function ajaxOpenChat(string $jid)
+    {
+        (new Chats)->ajaxOpen($jid, andShow: true);
+        $this->ajaxHttpGet();
     }
 
     public function ajaxHttpGet()
