@@ -1,5 +1,6 @@
 #stories {
-    min-height: 21.5rem;
+    min-height: 16.5rem;
+    padding-top: 1rem;
 }
 
 #stories div.lists {
@@ -47,7 +48,7 @@
     transform: scale(0.95);
 }
 
-#stories ul.list.flex li.block.add > div {
+#stories ul.list.flex li.block.add>div {
     margin-top: 0;
     display: block;
     text-align: center;

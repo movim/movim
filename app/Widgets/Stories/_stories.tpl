@@ -1,10 +1,3 @@
-<ul class="list">
-    <li class="subheader">
-        <div>
-            <p>{$c->__('stories.title')}</p>
-        </div>
-    </li>
-</ul>
 <div class="lists">
     <ul class="list card shadow flex gallery active" style="{if="$stories->count()"}grid-template-columns: 0.5fr repeat({$stories->count()}, 1fr);{/if}">
         <li class="block story add" onclick="PublishStories_ajaxOpen()">
