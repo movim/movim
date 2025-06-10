@@ -21,7 +21,7 @@ $compiled = [];
 
 foreach (glob('../../../public/theme/img/emojis/svg/*.svg') as $file) {
     $name = pathinfo($file, PATHINFO_FILENAME);
-    //var_dump($name);
+
     if (array_key_exists($name, $unicodeData)) {
         $compiled[(string)$name] = $unicodeData[$name];
     }
