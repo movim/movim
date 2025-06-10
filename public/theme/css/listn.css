@@ -438,6 +438,7 @@ ul.tabs {
 ul.tabs.reversed {
     border-top: 1px solid rgba(var(--movim-font), 0.12);
     border-bottom: 0;
+    margin-bottom: 0.75rem;
 }
 
 ul.tabs:empty {

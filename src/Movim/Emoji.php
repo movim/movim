@@ -102,7 +102,7 @@ class Emoji
             $img->setAttribute('class', 'emoji');
             $img->setAttribute('alt', $this->_emoji[$astext]);
             if (!$noTitle) {
-                $this->_lastEmojiTitle = emojiShortcut($this->_emoji[$astext]);
+                $this->_lastEmojiTitle = \emojiShortcut($this->_emoji[$astext]);
                 $img->setAttribute('title', ':' . $this->_lastEmojiTitle . ':');
             }
             $img->setAttribute('src', $this->_lastEmojiUrl);

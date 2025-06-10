@@ -193,6 +193,10 @@ form > div .checkbox {
     left: -1rem;
 }
 
+form > div ul.list .control .checkbox {
+    left: 0;
+}
+
 form > div .checkbox > input[type="checkbox"]:before {
     content: '';
     display: block;
