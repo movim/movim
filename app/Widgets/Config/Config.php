@@ -20,11 +20,11 @@ class Config extends Base
 {
     public function load()
     {
-        $this->registerEvent('storage_set_handle', 'onConfig', 'conf');
-        $this->registerEvent('mam_getconfig_handle', 'onMAMConfig', 'conf');
-        $this->registerEvent('mam_setconfig_handle', 'onMAMConfigSaved', 'conf');
-        $this->registerEvent('pubsub_getconfig_handle', 'onBlogConfig', 'conf');
-        $this->registerEvent('pubsub_setconfig_handle', 'onBlogConfigSaved', 'conf');
+        $this->registerEvent('storage_set_handle', 'onConfig', 'configuration');
+        $this->registerEvent('mam_getconfig_handle', 'onMAMConfig', 'configuration');
+        $this->registerEvent('mam_setconfig_handle', 'onMAMConfigSaved', 'configuration');
+        $this->registerEvent('pubsub_getconfig_handle', 'onBlogConfig', 'configuration');
+        $this->registerEvent('pubsub_setconfig_handle', 'onBlogConfigSaved', 'configuration');
 
         $this->addjs('config.js');
         $this->addcss('config.css');
@@ -38,7 +38,7 @@ class Config extends Base
 
         $view->assign('languages', $l->getList());
         $view->assign('accent_colors', User::ACCENT_COLORS);
-        $view->assign('conf', $this->user);
+        $view->assign('configuration', $this->user);
 
         return $view->draw('_config_form');
     }
@@ -188,7 +188,7 @@ class Config extends Base
     public function prepareAccentColorRadio(string $color)
     {
         $view = $this->tpl();
-        $view->assign('conf', $this->user);
+        $view->assign('configuration', $this->user);
         $view->assign('color', $color);
 
         return $view->draw('_config_accent_color');

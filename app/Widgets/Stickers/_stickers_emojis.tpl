@@ -15,7 +15,7 @@
         {if="$gotemojis"}
             {if="$favorites->isEmpty()"}
                 <ul class="list thick active">
-                    <li onclick="MovimUtils.reload('{$c->route('conf')}')">
+                    <li onclick="MovimUtils.reload('{$c->route('configuration')}')">
                         <span class="primary icon yellow">
                             <i class="material-symbols">family_star</i>
                         </span>

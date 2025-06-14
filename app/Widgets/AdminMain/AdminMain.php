@@ -33,7 +33,7 @@ class AdminMain extends \Movim\Widget\Base
     {
         $l = Locale::start();
 
-        $this->view->assign('conf', Configuration::firstOrNew());
+        $this->view->assign('configuration', Configuration::firstOrNew());
         $this->view->assign('logs', [
             0 => $this->__('log.empty'),
             1 => $this->__('log.syslog'),

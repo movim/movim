@@ -13,6 +13,20 @@
             <label for="nickname">{$c->__('general.nickname')}</label>
         </div>
     </form>
+
+    {if="isset($me->nickname)"}
+        <ul class="list">
+            <li>
+                <span class="primary icon red">
+                    <i class="main material-symbols">report</i>
+                </span>
+                <div>
+                    <p class="line">{$c->__('config.change_nickname_title')}</p>
+                    <p class="all">{$c->__('config.change_nickname_text')}</p>
+                </div>
+            </li>
+        </ul>
+    {/if}
 </section>
 <footer>
     <button onclick="Dialog_ajaxClear();" class="button flat">

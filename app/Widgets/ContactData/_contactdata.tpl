@@ -141,7 +141,7 @@
             <span class="primary icon orange">
                 <i class="material-symbols">rss_feed</i>
             </span>
-            <span class="control icon active" onclick="Preview.copyToClipboard('{$c->route('feed', $contact->jid)}')">
+            <span class="control icon active" onclick="Preview.copyToClipboard('{$contact->getSyndicationUrl()}')">
                 <i class="material-symbols">content_copy</i>
             </span>
             <div>
@@ -150,3 +150,20 @@
         </li>
     {/if}
 </ul>
+
+{if="!$contact->isPublic()"}
+    <ul class="list thick card">
+        <li class="block color dpurple">
+            <i class="main material-symbols">public</i>
+            <div>
+                <p class="line">{$c->__('general.private_account_title')}</p>
+                <p class="all">{$c->__('general.private_account_text')}</p>
+                <p>
+                    <a class="button oppose color transparent" onclick="MovimUtils.reload('{$c->route('configuration')}')" >
+                        <i class="material-symbols">tune</i> {$c->__('page.configuration')}
+                    </a>
+                </p>
+            </div>
+        </li>
+    </ul>
+{/if}

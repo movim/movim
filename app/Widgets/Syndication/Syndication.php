@@ -19,6 +19,11 @@ class Syndication extends Base
         $from = $this->get('s');
         $item = $contact = null;
 
+        $user = \App\User::where('nickname', $from)->first();
+        if ($user) {
+            $from = $user->id;
+        }
+
         if (filter_var($from, FILTER_VALIDATE_EMAIL)) {
             $node = Post::MICROBLOG_NODE;
             $contact = \App\Contact::firstOrNew(['id' => $from]);
@@ -61,7 +66,7 @@ class Syndication extends Base
             $feed->appendChild($author = $dom->createElement('author'));
             $author->appendChild($name = $dom->createElement('name'));
             $name->appendChild($dom->createTextNode($contact->truename));
-            $author->appendChild($dom->createElement('uri', $this->route('blog', $from)));
+            $author->appendChild($dom->createElement('uri', $contact->getBlogUrl()));
 
             if ($contact->getPicture(ImageSize::L)) {
                 $logo = $dom->createElement('logo');
@@ -69,8 +74,8 @@ class Syndication extends Base
                 $feed->appendChild($logo);
             }
 
-            $self->setAttribute('href', $this->route('feed', $from));
-            $alternate->setAttribute('href', $this->route('blog', $from));
+            $self->setAttribute('href', $contact->getSyndicationUrl());
+            $alternate->setAttribute('href', $contact->getBlogUrl());
         }
 
         if ($item != null) {

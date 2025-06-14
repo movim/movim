@@ -20,12 +20,12 @@ class Account extends \Movim\Widget\Base
         $this->registerEvent('register_changepassword_handle', 'onPasswordChanged');
         $this->registerEvent('register_remove_handle', 'onRemoved');
         $this->registerEvent('register_remove_error', 'onRegisterError');
-        $this->registerEvent('register_get_handle', 'onRegister', 'conf');
-        $this->registerEvent('register_get_error', 'onRegisterError', 'conf');
-        $this->registerEvent('register_get_errorfeaturenotimplemented', 'onRegisterError', 'conf');
-        $this->registerEvent('register_set_handle', 'onRegistered', 'conf');
-        $this->registerEvent('register_set_error', 'onRegisterError', 'conf');
-        $this->registerEvent('omemo_setdevicelist_handle', 'onDeviceList', 'conf');
+        $this->registerEvent('register_get_handle', 'onRegister', 'configuration');
+        $this->registerEvent('register_get_error', 'onRegisterError', 'configuration');
+        $this->registerEvent('register_get_errorfeaturenotimplemented', 'onRegisterError', 'configuration');
+        $this->registerEvent('register_set_handle', 'onRegistered', 'configuration');
+        $this->registerEvent('register_set_error', 'onRegisterError', 'configuration');
+        $this->registerEvent('omemo_setdevicelist_handle', 'onDeviceList', 'configuration');
         $this->registerEvent('adhoc_get_handle', 'onAdHocList');
     }
 

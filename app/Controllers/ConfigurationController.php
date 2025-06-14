@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use Movim\Controller\Base;
 
-class ConfController extends Base
+class ConfigurationController extends Base
 {
     public function load()
     {

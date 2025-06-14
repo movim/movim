@@ -13,13 +13,13 @@
                     ">
                 <ul class="list thick">
                     <li>
-                        <span class="primary icon on_desktop active" onclick="MovimUtils.redirect('{$c->route('blog', $contact->jid)}')">
+                        <span class="primary icon on_desktop active" onclick="MovimUtils.redirect('{$contact->getBlogUrl()}')">
                             <i class="material-symbols">person</i>
                         </span>
                         <span class="primary icon bubble on_mobile">
                             <img src="{$contact->getPicture(\Movim\ImageSize::M)}">
                         </span>
-                        <span class="control icon active" onclick="MovimUtils.openInNew('{$c->route('feed', $contact->jid)}')">
+                        <span class="control icon active" onclick="MovimUtils.openInNew('{$contact->getSyndicationUrl()}')">
                             <i class="material-symbols">rss_feed</i>
                         </span>
                         <div>

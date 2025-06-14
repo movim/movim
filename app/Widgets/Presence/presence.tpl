@@ -11,9 +11,9 @@
 </ul>
 
 <ul class="navigation list active" id="presence_widget_menu" dir="ltr">
-    <li {if="$page == 'conf'"}class="active"{/if}
+    <li {if="$page == 'configuration'"}class="active"{/if}
         title="{$c->__('page.configuration')}"
-        onclick="MovimUtils.reload('{$c->route('conf')}')"
+        onclick="MovimUtils.reload('{$c->route('configuration')}')"
     >
         <span class="primary icon">
             <i class="material-symbols">tune</i>

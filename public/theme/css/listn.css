@@ -286,7 +286,7 @@ ul.list li>div>p.normal {
 }
 
 ul.list li:not(.subheader)>div:has(>p.brief:not(.line)) {
-    padding-bottom: 0;
+    padding-bottom: 0.5rem;
 }
 
 ul.list li>div>p.brief {

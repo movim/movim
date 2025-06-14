@@ -28,7 +28,7 @@ class Route extends Base
             'chat'          => ['f', 'r'],
             'community'     => ['s', 'n', 'i', 'q'],
             'colors'        => false,
-            'conf'          => false,
+            'configuration' => false,
             'contact'       => ['s'],
             'disconnect'    => ['err'],
             'explore'       => ['s'],
