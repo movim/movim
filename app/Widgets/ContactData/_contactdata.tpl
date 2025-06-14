@@ -151,7 +151,7 @@
     {/if}
 </ul>
 
-{if="!$contact->isPublic()"}
+{if="$contact->isMe() && !$contact->isPublic()"}
     <ul class="list thick card">
         <li class="block color dpurple">
             <i class="main material-symbols">public</i>
