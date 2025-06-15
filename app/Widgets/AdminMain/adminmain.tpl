@@ -34,7 +34,7 @@
                             {loop="$langs"}
                                 <option value="{$key}"
                                         dir="auto"
-                                {if="$conf->locale == $key"}
+                                {if="$configuration->locale == $key"}
                                     selected="selected"
                                 {/if}>
                                     {$value}
@@ -51,7 +51,7 @@
                 <div>
                     <textarea type="text" name="description" id="description" placeholder="{$c->__('information.description_placeholder')}"
                               onclick="MovimUtils.textareaAutoheight(this);"
-                              oninput="MovimUtils.textareaAutoheight(this);"/>{if="$conf->description"}{$conf->description}{/if}</textarea>
+                              oninput="MovimUtils.textareaAutoheight(this);"/>{if="$configuration->description"}{$configuration->description}{/if}</textarea>
                     <label for="description">{$c->__('information.description')}</label>
                 </div>
             </li>
@@ -60,7 +60,7 @@
                     <i class="material-symbols">image</i>
                 </span>
                 <div>
-                    <input type="url" name="banner" id="banner" placeholder="http://server.tld/banner.jpg" value="{$conf->banner}" />
+                    <input type="url" name="banner" id="banner" placeholder="http://server.tld/banner.jpg" value="{$configuration->banner}" />
                     <label for="description">{$c->__('information.banner')}</label>
                     <span class="supporting"><i class="material-symbols">lightbulb</i> {$c->__('information.banner_info')}</span>
                 </div>
@@ -74,7 +74,7 @@
                         <select id="loglevel" name="loglevel">
                             {loop="$logs"}
                                 <option value="{$key}"
-                                {if="$conf->loglevel == $key"}
+                                {if="$configuration->loglevel == $key"}
                                     selected="selected"
                                 {/if}>
                                     {$value}
@@ -92,7 +92,7 @@
                 <span class="control">
                     <div class="checkbox">
                         <input
-                            {if="$conf->restrictsuggestions"}
+                            {if="$configuration->restrictsuggestions"}
                                 checked
                             {/if}
                             type="checkbox"
@@ -113,7 +113,7 @@
                 <span class="control">
                     <div class="checkbox">
                         <input
-                            {if="$conf->chatonly"}
+                            {if="$configuration->chatonly"}
                                 checked
                             {/if}
                             type="checkbox"
@@ -134,7 +134,7 @@
                 <span class="control">
                     <div class="checkbox">
                         <input
-                            {if="$conf->disableregistration"}
+                            {if="$configuration->disableregistration"}
                                 checked
                             {/if}
                             type="checkbox"
@@ -156,7 +156,7 @@
                     <i class="material-symbols">domain</i>
                 </span>
                 <div>
-                    <input type="text" name="xmppdomain" id="xmppdomain" placeholder="server.tld" value="{$conf->xmppdomain}" />
+                    <input type="text" name="xmppdomain" id="xmppdomain" placeholder="server.tld" value="{$configuration->xmppdomain}" />
                     <label for="xmppdomain">{$c->__('xmpp.domain')}</label>
                 </div>
             </li>
@@ -165,7 +165,7 @@
                     <i class="material-symbols">description</i>
                 </span>
                 <div>
-                    <textarea type="text" name="xmppdescription" id="xmppdescription" placeholder="{$c->__('xmpp.description')}" />{$conf->xmppdescription}</textarea>
+                    <textarea type="text" name="xmppdescription" id="xmppdescription" placeholder="{$c->__('xmpp.description')}" />{$configuration->xmppdescription}</textarea>
                     <label for="xmppdescription">{$c->__('xmpp.description')}</label>
                 </div>
             </li>
@@ -177,7 +177,7 @@
                     <i class="material-symbols">checklist_rtl</i>
                 </span>
                 <div>
-                    <input type="text" name="xmppwhitelist" id="xmppwhitelist" placeholder="{$c->__('whitelist.label')}" value="{$conf->xmppwhitelist_string ?? ''}" />
+                    <input type="text" name="xmppwhitelist" id="xmppwhitelist" placeholder="{$c->__('whitelist.label')}" value="{$configuration->xmppwhitelist_string ?? ''}" />
                     <label for="xmppwhitelist">{$c->__('whitelist.label')}</label>
                     <span class="supporting"><i class="material-symbols">lightbulb</i> {$c->__('whitelist.info1')}</span>
                     <span class="supporting"><i class="material-symbols">lightbulb</i> {$c->__('whitelist.info2')}</span>
@@ -194,7 +194,7 @@
                     <textarea type="text" name="info" id="info"
                               placeholder="{$c->__('information.label')}"
                               onclick="MovimUtils.textareaAutoheight(this);"
-                              oninput="MovimUtils.textareaAutoheight(this);"/>{$conf->info}</textarea>
+                              oninput="MovimUtils.textareaAutoheight(this);"/>{$configuration->info}</textarea>
                     <label for="info">{$c->__('information.label')}</label>
                     <span class="supporting"><i class="material-symbols">lightbulb</i> {$c->__('information.info1')}</span>
                     <span class="supporting"><i class="material-symbols">lightbulb</i> {$c->__('information.info2')} {$c->__('publish.content_text')}</span>
@@ -208,7 +208,7 @@
                     <i class="material-symbols">ar_stickers</i>
                 </span>
                 <div>
-                    <input type="text" name="gifapikey" id="gifapikey" placeholder="123ABC" value="{$conf->gifapikey ?? ''}" />
+                    <input type="text" name="gifapikey" id="gifapikey" placeholder="123ABC" value="{$configuration->gifapikey ?? ''}" />
                     <label for="info">{$c->__('tenor.label')}</label>
                 </div>
             </li>
