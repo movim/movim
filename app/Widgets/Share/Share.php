@@ -15,19 +15,16 @@ class Share extends Base
         $this->addjs('share.js');
     }
 
-    public function ajaxHttpGet($link)
+    public function ajaxGet($link)
     {
         $validateUrl = Validator::url();
 
         if ($validateUrl->isValid($link)
         && substr($link, 0, 4) == 'http') {
-            // Pre-resolve the link
-            (new \App\Url)->resolve($link);
-
             $session = Session::instance();
             $session->set('share_url', $link);
 
-            $this->rpc('Share.redirect', $this->route('publish'));
+            $this->rpc('MovimUtils.redirect', $this->route('publish'));
         } else {
             $uri = new XMPPUri($link);
             $route = $uri->getRoute();

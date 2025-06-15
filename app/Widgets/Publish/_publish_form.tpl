@@ -115,9 +115,15 @@
                     class="button narrow flat icon gray"
                     title="{$c->__('publish.add_link')}"
                     onclick="Publish_ajaxLink()">
-                    <i class="material-symbols">link</i>
+                    <i class="material-symbols">add_link</i>
                 </button>
                 {if="$c->getUser()->hasUpload()"}
+                    <button
+                        class="button narrow flat icon gray"
+                        title="{$c->__('publish.attach')}"
+                        onclick="Upload_ajaxGetPanel()">
+                        <i class="material-symbols">add_photo_alternate</i>
+                    </button>
                     <button
                         class="button narrow flat icon gray"
                         title="{$c->__('publish.add_snap')}"
@@ -130,12 +136,6 @@
                         onclick="Draw_ajaxHttpGet()">
                         <i class="material-symbols">gesture</i>
                     </button>
-                    <button
-                        class="button narrow flat icon gray"
-                        title="{$c->__('publish.attach')}"
-                        onclick="Upload_ajaxGetPanel()">
-                        <i class="material-symbols">image</i>
-                </button>
                 {/if}
 
                 <button class="button send oppose color" onclick="Publish.publish()">
