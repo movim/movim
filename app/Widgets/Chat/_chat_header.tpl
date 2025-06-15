@@ -31,7 +31,7 @@
             {/if}
                 </span>
 
-            {if="$conference->isGroupChat()"}
+            {if="$conference && $conference->isGroupChat()"}
                 {if="$conference && $conference->info && $conference->info->related"}
                     {$related = $conference->info->related}
                     <span
@@ -43,7 +43,7 @@
                 {/if}
             {/if}
 
-            {if="$conference->mujiCalls->isEmpty() && $conference->isGroupChat()"}
+            {if="$conference && $conference->mujiCalls->isEmpty() && $conference->isGroupChat()"}
                 <span class="control icon active {if="$incall"}disabled{/if}" onclick="Visio_ajaxGetMujiLobby('{$conference->conference}', true, true);">
                     <i class="material-symbols">videocam</i>
                 </span>
@@ -59,7 +59,7 @@
             </span>
 
             <div>
-                {if="$conference->mujiCalls->isNotEmpty()"}
+                {if="$conference && $conference->mujiCalls->isNotEmpty()"}
                     {if="$muji = $conference->currentMuji()"}
                         <button class="button oppose color red"
                                 onclick="Visio_ajaxLeaveMuji('{$muji->id}')">
@@ -113,7 +113,7 @@
                         </span>
                     {/if}
 
-                    {if="$conference->info && $conference->isGroupChat() && $conference->subject && $conference->info->name"}
+                    {if="$conference && $conference->info && $conference->isGroupChat() && $conference->subject && $conference->info->name"}
                         <span class="second">•</span>
                     {/if}
 

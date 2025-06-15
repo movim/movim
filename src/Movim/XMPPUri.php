@@ -23,7 +23,7 @@ class XMPPUri
             if (isset($this->uri['query'])) {
                 if ($this->uri['query'] == 'join') {
                     $this->type = 'room';
-                    $this->params = $this->uri['path'];
+                    $this->params = [$this->uri['path']];
                 }
 
                 $queryParams = explodeQueryParams($this->uri['query']);
@@ -66,24 +66,26 @@ class XMPPUri
             case 'room':
                 return Route::urlize(
                     'chat',
-                    [$this->params, 'room']
+                    [$this->params[0], 'room']
                 );
                 break;
 
             case 'post':
                 return Route::urlize(
                     'post',
-                    [$this->params]
+                    $this->params
                 );
                 break;
 
             case 'contact':
                 return Route::urlize(
                     'contact',
-                    [$this->params]
+                    $this->params
                 );
                 break;
         }
+
+        return null;
     }
 
     public function getPost(): ?Post

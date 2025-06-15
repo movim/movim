@@ -16,6 +16,7 @@ v0.30.1 (master)
 * Refactor the Ad-Hoc widget and move it into the contacts and MUCs drawers
 * Fix #1437 Generalize the instance nickname usage on the public blog and syndication feed, add a warning message if the instance nickname is changed
 * Rename the config page to configuration
+* Fix XMPP URI handling in Share
 
 v0.30
 ---------------------------

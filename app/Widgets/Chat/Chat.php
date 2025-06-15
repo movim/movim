@@ -519,6 +519,7 @@ class Chat extends \Movim\Widget\Base
             }
         } else {
             $this->rpc('RoomsUtils_ajaxAdd', $room);
+            $this->ajaxHttpGetEmpty();
         }
     }
 

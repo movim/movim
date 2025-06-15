@@ -15,7 +15,7 @@ class Share extends Base
         $this->addjs('share.js');
     }
 
-    public function ajaxGet($link)
+    public function ajaxHttpGet($link)
     {
         $validateUrl = Validator::url();
 
