@@ -9,7 +9,7 @@
                 <span class="control">
                     <div class="checkbox">
                         <input
-                            {if="$conf->notificationcall"}checked{/if}
+                            {if="$configuration->notificationcall"}checked{/if}
                             type="checkbox"
                             id="notificationcall"
                             name="notificationcall"/>
@@ -27,7 +27,7 @@
                 <span class="control">
                     <div class="checkbox">
                         <input
-                            {if="$conf->notificationchat"}checked{/if}
+                            {if="$configuration->notificationchat"}checked{/if}
                             type="checkbox"
                             id="notificationchat"
                             name="notificationchat"/>
@@ -53,10 +53,10 @@
                 </span>
                 <div>
                     <div class="select">
-                        <select name="language" id="language" {if="$conf->language"}value="{$conf->language}"{/if}>
+                        <select name="language" id="language" {if="$configuration->language"}value="{$configuration->language}"{/if}>
                             <option value="en">English (default)</option>
                                 {loop="$languages"}
-                                    {if="$key == $conf->language"}
+                                    {if="$key == $configuration->language"}
                                         <option
                                             value="{$key}"
                                             dir="auto"
@@ -88,7 +88,7 @@
                 <span class="control">
                     <div class="checkbox">
                         <input
-                            {if="$conf->chatmain"}checked{/if}
+                            {if="$configuration->chatmain"}checked{/if}
                             type="checkbox"
                             id="chatmain"
                             name="chatmain"/>
@@ -108,7 +108,7 @@
                 <span class="control">
                     <div class="checkbox">
                         <input
-                            {if="$conf->omemoenabled"}checked{/if}
+                            {if="$configuration->omemoenabled"}checked{/if}
                             type="checkbox"
                             onchange="setTimeout(() => MovimUtils.reloadThis(), 1000)"
                             id="omemoenabled"
@@ -129,7 +129,7 @@
                 <span class="control">
                     <div class="checkbox">
                         <input
-                            {if="$conf->nsfw"}checked{/if}
+                            {if="$configuration->nsfw"}checked{/if}
                             type="checkbox"
                             id="nsfw"
                             name="nsfw"/>
@@ -149,7 +149,7 @@
                 <span class="control">
                     <div class="checkbox">
                         <input
-                            {if="$conf->nightmode"}checked{/if}
+                            {if="$configuration->nightmode"}checked{/if}
                             type="checkbox"
                             id="nightmode"
                             onchange="Config.switchNightMode()"

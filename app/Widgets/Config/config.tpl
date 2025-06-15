@@ -46,8 +46,8 @@
             <div>
                 <p>{$c->__('profile.info')}</p>
                 <p class="all">{$c->__('profile.nickname_info')}</p>
-                {if="!empty($conf->nickname)"}
-                    <p>{$c->__('profile.nickname_set', $conf->nickname)}</p>
+                {if="!empty($configuration->nickname)"}
+                    <p>{$c->__('profile.nickname_set', $configuration->nickname)}</p>
                 {/if}
             </div>
         </li>

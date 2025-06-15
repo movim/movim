@@ -28,7 +28,7 @@ class Bookmark2
         \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, false, 'get'));
     }
 
-    public static function set(Conference $conf, $version = '1', bool $withPublishOption = true)
+    public static function set(Conference $configuration, $version = '1', bool $withPublishOption = true)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
@@ -38,39 +38,39 @@ class Bookmark2
         $pubsub->appendChild($publish);
 
         $item = $dom->createElement('item');
-        $item->setAttribute('id', $conf->conference);
+        $item->setAttribute('id', $configuration->conference);
         $publish->appendChild($item);
 
         $conference = $dom->createElement('conference');
         $conference->setAttribute('xmlns', self::$node . $version);
-        $conference->setAttribute('name', $conf->name);
-        if ($conf->autojoin) {
+        $conference->setAttribute('name', $configuration->name);
+        if ($configuration->autojoin) {
             $conference->setAttribute('autojoin', 'true');
         }
         $item->appendChild($conference);
 
-        $nick = $dom->createElement('nick', $conf->nick);
+        $nick = $dom->createElement('nick', $configuration->nick);
         $conference->appendChild($nick);
 
-        if ($conf->extensions) {
+        if ($configuration->extensions) {
             $domExtensions = new \DOMDocument('1.0', 'UTF-8');
-            $domExtensions->loadXML($conf->extensions);
+            $domExtensions->loadXML($configuration->extensions);
 
             $extensions = $dom->importNode($domExtensions->documentElement, true);
             $conference->appendChild($extensions);
-        } else if ($conf->notify !== null) {
+        } else if ($configuration->notify !== null) {
             $extensions = $dom->createElement('extensions');
             $conference->appendChild($extensions);
         }
 
-        if ($conf->notify !== null) {
+        if ($configuration->notify !== null) {
             $notifications = $dom->createElement('notifications');
             $notifications->setAttribute('xmlns', Conference::$xmlnsNotifications);
-            $notifications->setAttribute('notify', $conf->notificationKey);
+            $notifications->setAttribute('notify', $configuration->notificationKey);
             $extensions->appendChild($notifications);
         }
 
-        if ($conf->pinned == true) {
+        if ($configuration->pinned == true) {
             $pinned = $dom->createElement('pinned');
             $pinned->setAttribute('xmlns', Conference::$xmlnsPinned);
             $extensions->appendChild($pinned);
