@@ -6,13 +6,13 @@ var Publish = {
         let parts = MovimUtils.urlParts();
 
         Publish_ajaxHttpGet(
+            type ?? null,
             parts.params[0],
             parts.params[1],
             parts.params[2],
             parts.params[3],
             parts.params[4],
             parts.params[5],
-            type ?? null
         )
     },
 

@@ -174,7 +174,7 @@ class ChatActions extends \Movim\Widget\Base
         if ($message && $message->resolved == false) {
             try {
                 $url = new Url;
-                $embed = $url->resolve(htmlspecialchars_decode(trim($message->body)));
+                $url->resolve(htmlspecialchars_decode(trim($message->body)));
                 $message->urlid = $url->id;
 
                 if ($url->file) {

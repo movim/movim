@@ -455,15 +455,16 @@ class Publish extends Base
     }
 
     public function ajaxHttpGet(
+        string $type = 'brief',
         ?string $server = null,
         ?string $node = null,
         ?string $nodeId = null,
         ?string $replyServer = null,
         ?string $replyNode = null,
         ?string $replyNodeId = null,
-        ?string $type = 'brief'
     ) {
         $view = $this->tpl();
+
         if ($server == null) {
             $server = $this->user->id;
         }
