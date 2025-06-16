@@ -22,7 +22,7 @@ var PublishStories = {
 
     init: function () {
         MovimTpl.pushAnchorState('story', function () {
-            PublishStories.main.classList = '';
+            document.querySelector('#publishstories').classList = '';
             PublishStories.close();
         });
 
