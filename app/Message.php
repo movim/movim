@@ -467,7 +467,7 @@ class Message extends Model
                 $xpath = new DOMXPath($dom);
                 $imgs = $xpath->query("//img[starts-with(@src,'cid:')]");
 
-                if ($imgs) {
+                if ($imgs && $imgs->count() >= 1) {
                     $texts = $xpath->query('//p/text()');
 
                     // Message with inline images
@@ -491,7 +491,7 @@ class Message extends Model
                     }
 
                     // One sticker only
-                    elseif ($imgs && $imgs->count() == 1) {
+                    elseif ($imgs->count() == 1) {
                         $cid = getCid($imgs->item(0)->getAttribute('src'));
 
                         if ($cid) {
