@@ -35,12 +35,6 @@
                     <br />
                 {/if}
 
-                {if="$contact->pronouns"}
-                    <i class="material-symbols icon-text">id_card</i>
-                    {$contact->pronouns}
-                    <br />
-                {/if}
-
                 {if="$contact->adrlocality != null || $contact->adrcountry != null"}
                     <i class="material-symbols icon-text">place</i>
                     {if="$contact->adrlocality != null"}

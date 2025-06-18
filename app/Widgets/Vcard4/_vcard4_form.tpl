@@ -21,15 +21,6 @@
             </li>
             <li>
                 <span class="primary icon gray">
-                    <i class="material-symbols">id_card</i>
-                </span>
-                <div>
-                    <input type="pronouns" name="pronouns" value="{$contact->pronouns ?? ''}" placeholder="{$c->__('general.pronouns_example')}">
-                    <label for="pronouns">{$c->__('general.pronouns')}</label>
-                </div>
-            </li>
-            <li>
-                <span class="primary icon gray">
                     <i class="material-symbols">email</i>
                 </span>
                 <div>

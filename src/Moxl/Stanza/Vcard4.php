@@ -48,12 +48,6 @@ class Vcard4
             $vcard->appendChild($fn);
         }
 
-        if (isset($data->pronouns)) {
-            $pronouns = $dom->createElement('pronouns');
-            $pronouns->appendChild($dom->createElement('text', $data->pronouns));
-            $vcard->appendChild($pronouns);
-        }
-
         if (isset($data->name)) {
             $nickname = $dom->createElement('nickname');
             $nickname->appendChild($dom->createElement('text', $data->name));

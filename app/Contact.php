@@ -248,10 +248,6 @@ class Contact extends Model
             ? $vcard->impp->uri
             : null;
 
-        $this->pronouns = !empty($vcard->pronouns->text)
-            ? (string)$vcard->pronouns->text
-            : null;
-
         $this->adrlocality = !empty($vcard->adr->locality)
             ? (string)$vcard->adr->locality
             : null;

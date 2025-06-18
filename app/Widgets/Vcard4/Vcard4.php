@@ -78,7 +78,6 @@ class Vcard4 extends Base
             : null;
 
         $c->fn = $vcard->fn->value;
-        $c->pronouns = $vcard->pronouns->value;
 
         $c->url = Validator::url()->notEmpty()->isValid($vcard->url->value)
             ? $vcard->url->value
