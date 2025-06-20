@@ -17,6 +17,8 @@ var MovimVisio = {
 
     activeSpeakerIntervalId: null,
 
+    bundleRegex: 'a=group:(\\S+) (.+)',
+
     load: function () {
         MovimVisio.localVideo = document.getElementById('local_video');
         MovimVisio.localVideo.addEventListener('loadeddata', () => {
@@ -80,14 +82,6 @@ var MovimVisio = {
         }
 
         Notif.setCallStatus(MovimVisio.states.in_call);
-    },
-
-    gotQuickStream: function () {
-        MovimJingles.onReplaceTrack(MovimVisio.localVideo.srcObject);
-    },
-
-    gotScreen: function () {
-        MovimJingles.onReplaceTrack(MovimVisio.screenSharing.srcObject);
     },
 
     setStates: function (states) {
@@ -294,6 +288,11 @@ var MovimVisio = {
             });
             MovimVisio.localStream = null;
         }
+
+        if (MovimVisio.screenSharing && MovimVisio.screenSharing.srcObject != null) {
+            MovimVisio.screenSharing.srcObject.getTracks().forEach(track => track.stop());
+        }
+
 
         MovimVisio.localAudio = null;
         MovimVisio.localVideo = null;

@@ -37,6 +37,7 @@
     max-height: 40%;
     height: 100%;
     z-index: 0;
+    overflow: hidden;
 }
 
 body>#visio:not(:fullscreen) #main,

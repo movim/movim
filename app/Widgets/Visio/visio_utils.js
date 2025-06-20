@@ -283,19 +283,21 @@ var VisioUtils = {
                 VisioUtils.disableSwitchCameraButton();
                 button.innerText = 'stop_screen_share';
 
-                MovimVisio.gotScreen();
+                MovimJingles.enableScreenSharing();
             } catch (err) {
                 console.error("Error: " + err);
             }
+            return;
         } else {
+            MovimJingles.disableScreenSharing();
+
             MovimVisio.screenSharing.srcObject.getTracks().forEach(track => track.stop());
             MovimVisio.screenSharing.srcObject = null;
+
             MovimVisio.screenSharing.classList.remove('sharing');
             VisioUtils.enableSwitchCameraButton();
 
             button.innerText = 'screen_share';
-
-            MovimVisio.gotQuickStream();
         }
     },
 
