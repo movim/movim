@@ -17,6 +17,8 @@ var MovimVisio = {
 
     activeSpeakerIntervalId: null,
 
+    bundleRegex: 'a=group:(\\S+) (.+)',
+
     load: function () {
         MovimVisio.localVideo = document.getElementById('local_video');
         MovimVisio.localVideo.addEventListener('loadeddata', () => {
@@ -82,14 +84,6 @@ var MovimVisio = {
         Notif.setCallStatus(MovimVisio.states.in_call);
     },
 
-    gotQuickStream: function () {
-        MovimJingles.onReplaceTrack(MovimVisio.localVideo.srcObject);
-    },
-
-    gotScreen: function () {
-        MovimJingles.onReplaceTrack(MovimVisio.screenSharing.srcObject);
-    },
-
     setStates: function (states) {
         MovimVisio.states = states;
     },
@@ -132,7 +126,13 @@ var MovimVisio = {
             VisioUtils.disableLobbyCallButton();
         }
 
+        document.body.classList.add('loading');
+        document.body.classList.remove('finished');
+
         navigator.mediaDevices.getUserMedia(constraints).then(stream => {
+            document.body.classList.remove('loading');
+            document.body.classList.add('finished');
+
             MovimVisio.localStream = stream;
 
             if (lobby) {
@@ -169,6 +169,9 @@ var MovimVisio = {
             }
 
             navigator.mediaDevices.enumerateDevices().then(devices => MovimVisio.gotDevices(withVideo, devices));
+        }, (e) => {
+            document.body.classList.remove('loading');
+            document.body.classList.add('finished');
         });
     },
 
@@ -244,12 +247,15 @@ var MovimVisio = {
         }
     },
 
-    goodbye: function () {
+    goodbye: function (reason) {
         let visio = document.querySelector('#visio');
-        Visio_ajaxGoodbye(visio.dataset.jid, this.id);
+        Visio_ajaxGoodbye(visio.dataset.jid, this.id, reason);
     },
 
     clear: function () {
+        document.body.classList.remove('loading');
+        document.body.classList.add('finished');
+
         MovimVisio.id = null;
 
         Notif.setCallStatus(null);
@@ -294,6 +300,8 @@ var MovimVisio = {
             });
             MovimVisio.localStream = null;
         }
+
+        VisioUtils.disableScreenSharing();
 
         MovimVisio.localAudio = null;
         MovimVisio.localVideo = null;

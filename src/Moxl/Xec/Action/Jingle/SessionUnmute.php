@@ -14,6 +14,6 @@ class SessionUnmute extends Action
     public function request()
     {
         $this->store();
-        Jingle::sessionMute($this->_to, $this->_id, $this->_name);
+        Jingle::sessionUnmute($this->_to, $this->_id, $this->_name);
     }
 }

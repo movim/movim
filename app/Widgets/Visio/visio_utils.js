@@ -250,10 +250,6 @@ var VisioUtils = {
         document.querySelector('#screen_sharing').classList.add('enabled');
     },
 
-    enableSwitchCameraButton: function () {
-        MovimVisio.switchCamera.classList.remove('disabled');
-    },
-
     disableSwitchCameraButton: function () {
         MovimVisio.switchCamera.classList.add('disabled');
     },
@@ -283,91 +279,29 @@ var VisioUtils = {
                 VisioUtils.disableSwitchCameraButton();
                 button.innerText = 'stop_screen_share';
 
-                MovimVisio.gotScreen();
+                MovimJingles.enableScreenSharing();
             } catch (err) {
                 console.error("Error: " + err);
             }
+            return;
         } else {
-            MovimVisio.screenSharing.srcObject.getTracks().forEach(track => track.stop());
-            MovimVisio.screenSharing.srcObject = null;
-            MovimVisio.screenSharing.classList.remove('sharing');
-            VisioUtils.enableSwitchCameraButton();
-
-            button.innerText = 'screen_share';
-
-            MovimVisio.gotQuickStream();
+            VisioUtils.disableScreenSharing();
         }
     },
 
-    // TODO Use MovimVisio.getDevices
-    /*switchCameraInCall: function () {
-        MovimVisio.videoSelect = document.querySelector('#visio select#visio_source');
-        MovimVisio.switchCamera = document.querySelector("#visio #switch_camera");
+    disableScreenSharing: function () {
+        MovimJingles.disableScreenSharing();
 
-        navigator.mediaDevices.enumerateDevices().then(devicesInfo => {
-            MovimVisio.videoSelect.innerText = '';
+        if (MovimVisio.screenSharing.srcObject) {
+            MovimVisio.screenSharing.srcObject.getTracks().forEach(track => track.stop());
+            MovimVisio.screenSharing.srcObject = null;
 
-            for (const deviceInfo of devicesInfo) {
-                if (deviceInfo.kind === 'videoinput') {
-                    const option = document.createElement('option');
-                    option.value = deviceInfo.deviceId;
-                    option.text = deviceInfo.label || 'Camera ' + MovimVisio.videoSelect.length + 1;
+            MovimVisio.screenSharing.classList.remove('sharing');
+            MovimVisio.switchCamera.classList.remove('disabled');
+        }
 
-                    if (!Visio.videoSelect.querySelector('option[value="' + deviceInfo.deviceId + '"]')) {
-                        MovimVisio.videoSelect.appendChild(option);
-                    }
-                }
-            }
-
-            if (Visio.videoSelect.options.length >= 2) {
-                MovimVisio.switchCamera.classList.add('enabled');
-            }
-        });
-
-        MovimVisio.switchCamera.onclick = () => {
-            MovimVisio.videoSelect.selectedIndex++;
-
-            if (Visio.videoSelect.selectedIndex == -1) {
-                MovimVisio.videoSelect.selectedIndex++;
-            }
-
-            Toast.send(Visio.videoSelect.options[Visio.videoSelect.selectedIndex].label);
-
-            var constraints = {
-                video: true
-            };
-
-            constraints.video = {
-                deviceId: MovimVisio.videoSelect.options[Visio.videoSelect.selectedIndex].value,
-                width: { ideal: 4096 },
-                height: { ideal: 4096 }
-            };
-
-            MovimVisio.localVideo.srcObject = null;
-
-            VisioUtils.disableSwitchCameraButton();
-
-            var videoTrack = MovimVisio.pc.getSenders().find(rtc => rtc.track && rtc.track.kind == 'video');
-            if (videoTrack) videoTrack.track.stop();
-
-            navigator.mediaDevices.getUserMedia(constraints).then(stream => {
-                stream.getTracks().forEach(track => {
-                    MovimVisio.pc.addTrack(track, stream);
-
-                    if (track.kind == 'video') {
-                        MovimVisio.localVideo.srcObject = stream;
-                        localStorage.setItem('defaultCamera', track.getSettings().deviceId);
-                    }
-                });
-
-                VisioUtils.enableSwitchCameraButton();
-                var cameraIcon = document.querySelector('#toggle_video i');
-                cameraIcon.innerText = 'videocam';
-
-                VisioUtils.pcReplaceTrack(stream);
-                VisioUtils.enableScreenSharingButton();
-                VisioUtils.toggleMainButton();
-            }, logError);
-        };
-    },*/
+        if (button = document.querySelector('#screen_sharing i')) {
+            button.innerText = 'screen_share';
+        }
+    }
 }
