@@ -12,8 +12,10 @@ class CallInvitePropose extends Payload
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null, bool $carbon = false)
     {
         // Another session is already started
-        if (CurrentCall::getInstance()->isStarted()
-         && CurrentCall::getInstance()->isJidInCall(baseJid($parent->attributes()->from))) {
+        if (
+            CurrentCall::getInstance()->isStarted()
+            && CurrentCall::getInstance()->isJidInCall(baseJid($parent->attributes()->from))
+        ) {
             $conference = \App\User::me()->session->conferences()->where('conference', \baseJid((string)$parent->attributes()->from))->first();
 
             if ($conference) {
@@ -21,16 +23,18 @@ class CallInvitePropose extends Payload
                 if (!$conference->presence || $conference->presence->resource != \explodeJid((string)$parent->attributes()->from)['resource']) {
                     $reject = new Reject;
                     $reject->setTo(\baseJid((string)$parent->attributes()->from))
-                           ->setId((string)$stanza->attributes()->id)
-                           ->request();
+                        ->setId((string)$stanza->attributes()->id)
+                        ->request();
 
                     return;
                 }
             }
         }
 
-        if ($stanza->muji && $stanza->muji->attributes()->xmlns == 'urn:xmpp:jingle:muji:0'
-        && $parent->{'stanza-id'} && $parent->{'stanza-id'}->attributes()->xmlns == 'urn:xmpp:sid:0') {
+        if (
+            $stanza->muji && $stanza->muji->attributes()->xmlns == 'urn:xmpp:jingle:muji:0'
+            && $parent->{'stanza-id'} && $parent->{'stanza-id'}->attributes()->xmlns == 'urn:xmpp:sid:0'
+        ) {
             $muji = \App\MujiCall::firstOrCreate([
                 'id' => (string)$stanza->attributes()->id,
                 'session_id' => SESSION_ID

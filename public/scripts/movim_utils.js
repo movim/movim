@@ -115,8 +115,7 @@ var MovimUtils = {
         requestUri = new URL(uri.replace(/^\/\//, 'https://'));
         requestUri.searchParams.append('soft', 'true');
 
-        document.body.classList.add('loading');
-        document.body.classList.remove('finished');
+        MovimTpl.loadingPage();
 
         MovimRPC.fetchWithTimeout(requestUri.toString(), {
             headers: {
@@ -128,7 +127,7 @@ var MovimUtils = {
             onfocused = [];
 
             reponse.text().then(value => {
-                document.body.classList.remove('loading');
+                MovimTpl.finishedPage();
 
                 let page = JSON.parse(value);
 

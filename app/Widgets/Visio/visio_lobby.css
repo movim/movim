@@ -8,7 +8,7 @@
 }
 
 #visio_lobby {
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
 }
 
 #visio_lobby form {
@@ -57,13 +57,13 @@
     background-size: 15%;
 }
 
-#visio_lobby + div {
+#visio_lobby + footer {
     display: flex;
     padding: 0 1rem;
     gap: 1rem;
     margin-bottom: 1rem;
 }
 
-#visio_lobby + div > .button {
+#visio_lobby + footer > .button {
     flex: 1 0 0;
 }
