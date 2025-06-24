@@ -1,19 +1,19 @@
-ul#chats_widget_list {
+ul#chats {
     overflow: hidden;
 }
 
-ul#chats_widget_list ~ .placeholder {
+ul#chats ~ .placeholder {
     display: none;
 }
 
-ul#chats_widget_list li {
+ul#chats li {
     transition: opacity 0.2s ease-in-out;
     overflow: hidden;
     box-sizing: border-box;
     max-height: 8rem;
 }
 
-ul#chats_widget_list li img.tinythumb {
+ul#chats li img.tinythumb {
     object-fit: cover;
     width: 1.4rem;
     height: 1.4rem;
@@ -21,33 +21,33 @@ ul#chats_widget_list li img.tinythumb {
     border-radius: 0.25rem;
 }
 
-ul#chats_widget_list li.moving {
+ul#chats li.moving {
     will-change: transform;
     transition: transform 0.1s, max-height 0.2s ease-in-out 0.2s;
 }
 
-ul#chats_widget_list li.closing {
+ul#chats li.closing {
     will-change: transform;
     transition: transform 0.1s, max-height 0.2s ease-in-out 0.2s;
     max-height: 0;
 }
 
-ul#chats_widget_list li.closing.to_left {
+ul#chats li.closing.to_left {
     transform: translateX(-100%);
 }
 
-ul#chats_widget_list li.closing.to_right {
+ul#chats li.closing.to_right {
     transform: translateX(100%);
 }
 
-ul#chats_widget_list li.close {
+ul#chats li.close {
     opacity: 0.5;
 }
 
-ul#chats_widget_list:empty ~ .placeholder {
+ul#chats:empty ~ .placeholder {
     display: block;
 }
 
-ul#chats_widget_header[data-filter=roster] + ul#chats_widget_list li:not(.roster) {
+ul#chats_widget_header[data-filter=roster] + ul#chats li:not(.roster) {
     display: none;
 }

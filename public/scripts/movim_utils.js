@@ -112,12 +112,13 @@ var MovimUtils = {
         window.open(url, '_blank');
     },
     reload: function (uri, noHistory) {
-        requestUri = uri + '?soft=true';
+        requestUri = new URL(uri.replace('//', 'https://'));
+        requestUri.searchParams.append('soft', 'true');
 
         document.body.classList.add('loading');
         document.body.classList.remove('finished');
 
-        MovimRPC.fetchWithTimeout(requestUri, {
+        MovimRPC.fetchWithTimeout(requestUri.toString(), {
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'

@@ -15,7 +15,7 @@
         {/loop}
     </li>
 </ul>
-<ul id="chats_widget_list" class="list middle active divided spaced">
+<ul id="chats" class="list middle active divided spaced">
     {autoescape="off"}
         {$c->prepareChats()}
     {/autoescape}

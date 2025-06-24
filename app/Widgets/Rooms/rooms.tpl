@@ -1,4 +1,4 @@
-<div id="rooms_widget">
+<div id="rooms" {if="$scroll"}data-scroll="true"{/if}>
     <ul class="list rooms divided spaced thin active spin"></ul>
 
     <ul class="list head thin">
@@ -8,14 +8,7 @@
                     {$c->__('chatrooms.title')}
                 </p>
             </div>
-<!--            <span class="control toggle_show icon active gray" onclick="Rooms.toggleShowAll()">
-                <i class="material-symbols">
-                    expand_less
-                </i>
-                <i class="material-symbols">
-                    expand_more
-                </i>
-            </span>-->
+
             <span class="chip active" data-filter="all" onclick="Rooms.toggleShowAll()">{$c->__('rooms_filter.all')}</span>
             <span class="chip active" data-filter="connected" onclick="Rooms.toggleShowAll()">{$c->__('rooms_filter.connected')}</span>
             <span class="control icon active gray" onclick="Rooms.toggleEdit()">

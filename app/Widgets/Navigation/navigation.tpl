@@ -24,12 +24,12 @@
         </li>
     {/if}
 
-    <li onclick="MovimUtils.reload('{$c->route('chat')}')"
+    <li onclick="MovimUtils.reload('{$c->route('chat')}{if="!array_key_exists('rooms', $_GET)"}?rooms{/if}')"
         class="on_desktop {if="$page == 'chat'"}active{/if}"
         title="{$c->__('page.chats')}"
     >
         <span class="primary icon" id="chatcounter" {if="$chatCounter > 0"}data-counter="{$chatCounter}"{/if}>
-            <i class="material-symbols">forum</i>
+            <i class="material-symbols">{if="array_key_exists('rooms', $_GET)"}forum{else}chat_bubble{/if}</i>
         </span>
         <div>
             <p class="normal">{$c->__('page.chats')}</p>

@@ -21,7 +21,7 @@ var Chats = {
     },
 
     refresh: function () {
-        var list = document.querySelector('#chats_widget_list');
+        var list = document.querySelector('#chats');
         if (!list) return;
 
         Chats.refreshFilters();
@@ -30,7 +30,7 @@ var Chats = {
 
         if (trim === '') list.innerHTML = trim;
 
-        var items = document.querySelectorAll('ul#chats_widget_list li:not(.subheader)');
+        var items = document.querySelectorAll('ul#chats li:not(.subheader)');
         var i = 0;
 
         while (i < items.length) {
@@ -124,14 +124,14 @@ var Chats = {
     },
 
     clearAllActives: function () {
-        document.querySelectorAll('ul#chats_widget_list li:not(.subheader)')
+        document.querySelectorAll('ul#chats li:not(.subheader)')
             .forEach(item => item.classList.remove('active'));
     },
 
     setActive: function (jid) {
         Chats.clearAllActives();
         Rooms.clearAllActives();
-        MovimUtils.addClass('ul#chats_widget_list li[data-jid="' + jid + '"]', 'active');
+        MovimUtils.addClass('ul#chats li[data-jid="' + jid + '"]', 'active');
     },
 
     closeItem(li, toLeft) {

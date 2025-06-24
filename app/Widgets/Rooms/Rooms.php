@@ -15,7 +15,6 @@ use App\Conference;
 use App\Widgets\Notif\Notif;
 use App\Widgets\Toast\Toast;
 use Movim\ChatroomPings;
-use Movim\CurrentCall;
 use Moxl\Xec\Payload\Packet;
 
 class Rooms extends Base
@@ -244,11 +243,11 @@ class Rooms extends Base
         $this->rpc('Rooms.refresh');
         $this->rpc('Rooms.checkNoConnected');
 
-        $this->rpc('MovimUtils.removeClass', '#rooms_widget ul.list.rooms', 'spin');
+        $this->rpc('MovimUtils.removeClass', '#rooms ul.list.rooms', 'spin');
 
         $view = $this->tpl();
-        $this->rpc('MovimTpl.remove', '#rooms_widget ul.list.empty');
-        $this->rpc('MovimTpl.appendAfter', '#rooms_widget ul.list.rooms', $view->draw('_rooms_empty'));
+        $this->rpc('MovimTpl.remove', '#rooms ul.list.empty');
+        $this->rpc('MovimTpl.appendAfter', '#rooms ul.list.rooms', $view->draw('_rooms_empty'));
     }
 
     /**
@@ -429,5 +428,10 @@ class Rooms extends Base
     {
         Toast::send($this->__('chatrooms.serviceunavailable'));
         $this->ajaxExit($packet->content);
+    }
+
+    public function display()
+    {
+        $this->view->assign('scroll', array_key_exists('rooms', $_GET));
     }
 }

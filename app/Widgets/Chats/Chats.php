@@ -157,7 +157,7 @@ class Chats extends Base
 
     public function ajaxHttpGet()
     {
-        $this->rpc('MovimTpl.fill', '#chats_widget_list', $this->prepareChats());
+        $this->rpc('MovimTpl.fill', '#chats', $this->prepareChats());
         $this->rpc('Chats.refresh');
     }
 
@@ -227,7 +227,7 @@ class Chats extends Base
             $openChat->touch();
 
             $this->rpc('MovimTpl.remove', $this->getItemId($jid));
-            $this->rpc('MovimTpl.prepend', '#chats_widget_list', $this->prepareChat(
+            $this->rpc('MovimTpl.prepend', '#chats', $this->prepareChat(
                 $jid,
                 $this->resolveContactFromJid($jid),
                 $this->resolveRosterFromJid($jid),

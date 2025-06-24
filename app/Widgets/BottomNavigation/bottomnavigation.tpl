@@ -37,11 +37,11 @@
         </span>
     </li>
     <li {if="$page == 'chat'"}class="active"{/if}
-        onclick="MovimUtils.reload('{$c->route('chat')}')"
+        onclick="MovimUtils.reload('{$c->route('chat')}{if="!array_key_exists('rooms', $_GET)"}?rooms{/if}')"
         title="{$c->__('page.chats')}"
     >
         <span class="primary icon" id="bottomchatcounter" {if="$bottomChatCounter > 0"}data-counter="{$bottomChatCounter}"{/if}>
-            <i class="material-symbols">forum</i>
+            <i class="material-symbols">{if="array_key_exists('rooms', $_GET)"}forum{else}chat_bubble{/if}</i>
         </span>
     </li>
 </ul>
