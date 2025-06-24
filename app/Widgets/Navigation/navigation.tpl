@@ -24,7 +24,7 @@
         </li>
     {/if}
 
-    <li onclick="MovimUtils.reload('{$c->route('chat')}{if="!array_key_exists('rooms', $_GET)"}?rooms{/if}')"
+    <li onclick="MovimUtils.reload('{$c->route('chat')}{if="$page == 'chat' && !array_key_exists('rooms', $_GET)"}?rooms{/if}')"
         class="on_desktop {if="$page == 'chat'"}active{/if}"
         title="{$c->__('page.chats')}"
     >
