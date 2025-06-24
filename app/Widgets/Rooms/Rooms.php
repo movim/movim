@@ -429,9 +429,4 @@ class Rooms extends Base
         Toast::send($this->__('chatrooms.serviceunavailable'));
         $this->ajaxExit($packet->content);
     }
-
-    public function display()
-    {
-        $this->view->assign('scroll', array_key_exists('rooms', $_GET));
-    }
 }

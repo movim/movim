@@ -36,8 +36,8 @@
             <span class="counter notifications"></span>
         </span>
     </li>
-    <li {if="$page == 'chat'"}class="active"{/if}
-        onclick="MovimUtils.reload('{$c->route('chat')}{if="$page == 'chat' && !array_key_exists('rooms', $_GET)"}?rooms{/if}')"
+    <li onclick="{if="$page == 'chat'"}Rooms.toggleScroll(){else}MovimUtils.reload('{$c->route('chat')}'){/if}"
+        {if="$page == 'chat'"}class="active"{/if}
         title="{$c->__('page.chats')}"
     >
         <span class="primary icon" id="bottomchatcounter" {if="$bottomChatCounter > 0"}data-counter="{$bottomChatCounter}"{/if}>

@@ -1,4 +1,4 @@
-<div id="rooms" {if="$scroll"}data-scroll="true"{/if}>
+<div id="rooms">
     <ul class="list rooms divided spaced thin active spin"></ul>
 
     <ul class="list head thin">

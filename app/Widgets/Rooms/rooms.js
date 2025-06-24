@@ -9,6 +9,26 @@ var Rooms = {
         document.querySelector('#rooms ul.list.rooms').classList.toggle('edition');
     },
 
+    toggleScroll: function() {
+        var chats = document.querySelector('#chats_widget_header');
+        var rooms = document.querySelector('#rooms');
+
+        var chatcounter = document.querySelector('#chatcounter i');
+        var bottomchatcounter = document.querySelector('#bottomchatcounter i');
+
+        if (rooms.dataset.scroll) {
+            chats.scrollIntoView();
+            delete rooms.dataset.scroll;
+
+            chatcounter.innerHTML = bottomchatcounter.innerHTML = 'chat_bubble';
+        } else {
+            rooms.scrollIntoView();
+            rooms.dataset.scroll = true;
+
+            chatcounter.innerHTML = bottomchatcounter.innerHTML = 'forum';
+        }
+    },
+
     checkNoConnected: function () {
         if (
             !document.querySelector('#rooms ul.list.rooms li.connected')
@@ -69,11 +89,6 @@ var Rooms = {
 
     refresh: function (callSecond) {
         Rooms.displayToggleButton();
-
-        var rooms = document.querySelector('#rooms');
-        if (rooms.dataset.scroll) {
-            rooms.scrollIntoView();
-        }
 
         var list = document.querySelector('#rooms ul.list.rooms');
         var items = document.querySelectorAll('#rooms ul.list.rooms li:not(.subheader)');
