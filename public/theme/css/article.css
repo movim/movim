@@ -175,7 +175,7 @@ article input[type=checkbox].spoiler + section label.spoiler {
     line-height: 10rem;
     font-size: 4rem;
     border-radius: 100%;
-    background-color: rgb(var(--movim-accent));
+    background-color: var(--movim-accent);
     color: rgba(var(--movim-font), 0.87);
     box-shadow: var(--elevation-1);
 }

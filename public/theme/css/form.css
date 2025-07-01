@@ -252,7 +252,7 @@ form > div .checkbox > input[type="checkbox"]:checked + label {
 }
 
 form > div .checkbox > input[type="checkbox"]:checked + label i {
-    color: rgb(var(--movim-accent));
+    color: var(--movim-accent);
 }
 
 /* Radio */

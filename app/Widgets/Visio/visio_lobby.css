@@ -54,7 +54,6 @@
     background-image: url('../theme/img/movim_cloud.svg');
     background-position: center;
     background-repeat: no-repeat;
-    background-color: rgb(var(--movim-accent));
     background-size: 15%;
 }
 

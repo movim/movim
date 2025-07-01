@@ -112,7 +112,7 @@ var MovimUtils = {
         window.open(url, '_blank');
     },
     reload: function (uri, noHistory) {
-        requestUri = new URL(uri.replace('//', 'https://'));
+        requestUri = new URL(uri.replace(/^\/\//, 'https://'));
         requestUri.searchParams.append('soft', 'true');
 
         document.body.classList.add('loading');

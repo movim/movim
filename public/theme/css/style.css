@@ -130,7 +130,7 @@ body>nav.active:before {
 body:before {
     position: absolute;
     display: block;
-    background-color: rgb(var(--movim-accent));
+    background-color: var(--movim-accent);
     width: 0;
     height: 0.25rem;
     content: '';

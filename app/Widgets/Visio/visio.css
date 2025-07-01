@@ -156,7 +156,6 @@ body>#visio:not(:fullscreen) #toggle_mode,
     background-image: url('../theme/img/movim_cloud.svg');
     background-position: center;
     background-repeat: no-repeat;
-    background-color: rgb(var(--movim-accent));
     background-size: 25%;
 }
 

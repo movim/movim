@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Post;
 use Movim\Controller\Base;
 
 class CommunityController extends Base
@@ -11,11 +12,18 @@ class CommunityController extends Base
         $this->page->setTitle(__('page.explore'));
 
         if (isLogged() && $this->fetchGet('i')) {
-            $this->redirect('post', [
-                's' => $this->fetchGet('s'),
-                'n' => $this->fetchGet('n'),
-                'i' => $this->fetchGet('i'),
-            ]);
+            $post = Post::where('server', $this->fetchGet('s'))
+                ->where('node', $this->fetchGet('n'))
+                ->where('nodeid', $this->fetchGet('i'))
+                ->first();
+
+            if ($post) {
+                $this->redirect('post', [
+                    's' => $this->fetchGet('s'),
+                    'n' => $this->fetchGet('n'),
+                    'i' => $this->fetchGet('i'),
+                ]);
+            }
         }
     }
 }
