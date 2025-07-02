@@ -117,7 +117,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-02 23:39+0200\n"
+"POT-Creation-Date: 2025-07-02 23:43+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2996,7 +2996,7 @@ msgid "Profile Picture"
 msgstr ""
 
 #: [page]chats
-msgid "Direct Messages & Whispers"
+msgid "Direct Messages"
 msgstr ""
 
 #: [page]publish

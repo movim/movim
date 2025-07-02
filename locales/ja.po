@@ -124,7 +124,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-02 23:39+0200\n"
+"POT-Creation-Date: 2025-07-02 23:43+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Rintan, 2020-2021\n"
 "Language-Team: Japanese (http://app.transifex.com/movim/movim/language/ja/)\n"
@@ -2974,8 +2974,9 @@ msgid "Profile Picture"
 msgstr "プロフィールを更新しました"
 
 #: [page]chats
-msgid "Direct Messages & Whispers"
-msgstr ""
+#, fuzzy
+msgid "Direct Messages"
+msgstr "メッセージを取り消し"
 
 #: [page]publish
 msgid "Publish"

@@ -135,7 +135,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-02 23:39+0200\n"
+"POT-Creation-Date: 2025-07-02 23:43+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Phonebook3599, 2025\n"
 "Language-Team: Chinese (China) (http://app.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -2991,8 +2991,9 @@ msgid "Profile Picture"
 msgstr "个人资料已更新"
 
 #: [page]chats
-msgid "Direct Messages & Whispers"
-msgstr ""
+#, fuzzy
+msgid "Direct Messages"
+msgstr "撤回的消息"
 
 #: [page]publish
 msgid "Publish"

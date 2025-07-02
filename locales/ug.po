@@ -120,7 +120,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-02 23:39+0200\n"
+"POT-Creation-Date: 2025-07-02 23:43+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Keram, 2023\n"
 "Language-Team: Uyghur (http://app.transifex.com/movim/movim/language/ug/)\n"
@@ -2974,8 +2974,9 @@ msgid "Profile Picture"
 msgstr "تەرجىمال يېڭىلاندى"
 
 #: [page]chats
-msgid "Direct Messages & Whispers"
-msgstr ""
+#, fuzzy
+msgid "Direct Messages"
+msgstr "قايتۇرۋالغان ئۇچۇر"
 
 #: [page]publish
 msgid "Publish"

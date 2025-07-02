@@ -120,7 +120,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-02 23:39+0200\n"
+"POT-Creation-Date: 2025-07-02 23:43+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Med Touhami MAHDI <dragnucs@legtux.org>, 2017\n"
 "Language-Team: Arabic (http://app.transifex.com/movim/movim/language/ar/)\n"
@@ -2927,7 +2927,7 @@ msgid "Profile Picture"
 msgstr "الملف الشخصي"
 
 #: [page]chats
-msgid "Direct Messages & Whispers"
+msgid "Direct Messages"
 msgstr ""
 
 #: [page]publish
