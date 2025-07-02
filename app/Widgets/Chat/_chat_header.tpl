@@ -300,13 +300,6 @@
                 {/if}
             {/if}
 
-            <span
-                title="{$c->__('button.close')}"
-                class="control icon active {if="$call"}divided{/if}"
-                onclick="Chats_ajaxClose('{$jid|echapJS}', true);">
-                <i class="material-symbols">close</i>
-            </span>
-
             <span class="control icon show_context_menu active"
                 onclick="MovimTpl.showContextMenu()">
                 <i class="material-symbols">more_vert</i>
@@ -404,5 +397,14 @@
                 </div>
             </li>
         {/if}
+
+        <li onclick="Chats_ajaxClose('{$jid|echapJS}', true);">
+            <span class="primary icon gray">
+                <i class="material-symbols">close</i>
+            </span>
+            <div>
+                <p class="normal line">{$c->__('button.close')}</p>
+            </div>
+        </li>
     </ul>
 {/if}
