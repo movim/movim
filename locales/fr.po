@@ -204,7 +204,6 @@ msgid "Delete your account"
 msgstr "Supprimer votre compte"
 
 #: [account]delete_text
-#, fuzzy
 msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts, and publications)."
 msgstr "Vous allez supprimer votre compte XMPP ainsi que l’ensemble des informations qui y sont liées (profil, contacts et billets)."
 
@@ -225,14 +224,12 @@ msgid "Leave this instance"
 msgstr "Quitter cette instance"
 
 #: [account]clear_text
-#, fuzzy
 msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts, and publications)."
 msgstr "Vous allez supprimer toutes les informations relatives à votre compte sur cette instance Movim (profil, contacts et publications)."
 
 #: [account]clear_text_confirm
-#, fuzzy
 msgid "This action will not delete your account but will disconnect you from Movim."
-msgstr "Cette action ne va pas supprimer votre compte mais va vous déconnecter de cette instance."
+msgstr "Cette action ne va pas supprimer votre compte mais va vous déconnecter de Movim."
 
 #: [account]delete_bundle_title
 msgid "OMEMO Key deletion"
@@ -315,7 +312,6 @@ msgid "Restrict suggestions"
 msgstr "Restreindre les suggestions"
 
 #: [restrictsuggestions]text
-#, fuzzy
 msgid "Only suggest chatrooms, Communities, and other contents that are available on the user's XMPP server and related services"
 msgstr "Ne suggérer que les salons de discussions, Communautés et contenus disponibles sur le serveur XMPP de l'utilisateur et services liés"
 
@@ -348,12 +344,10 @@ msgid "Remove the XMPP registration flow and buttons from the interface"
 msgstr "Retire la fonctionnalité de création de compte via XMPP de l'interface"
 
 #: [whitelist]title
-#, fuzzy
 msgid "Allowed XMPP Servers"
-msgstr "Serveurs XMPP sur la liste blanche"
+msgstr "Serveurs XMPP autorisés"
 
 #: [whitelist]info1
-#, fuzzy
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name(s) here, with comma (ex: movim.eu,jabber.fr)"
 msgstr "Si vous souhaitez établir une liste de serveurs XMPP autorisés sur votre pod Movim et interdire la connexion à tous les autres, saisissez la liste de leurs noms de domaine, séparés par une virgule (ex : movim.eu, jabber.fr)."
 
@@ -362,9 +356,8 @@ msgid "Leave this field blank if you allow the access to all the XMPP accounts."
 msgstr "Laissez ce champ vide si vous souhaitez autoriser la connexion à tous les comptes XMPP."
 
 #: [whitelist]label
-#, fuzzy
 msgid "List of allowed XMPP servers"
-msgstr "Liste blanche des serveurs XMPP"
+msgstr "Liste des serveurs XMPP autorisés"
 
 #: [information]title
 msgctxt "[information]title"
@@ -473,19 +466,16 @@ msgid "File"
 msgstr "Fichier"
 
 #: [avatar]updated
-#, fuzzy
 msgid "Profile Picture Updated"
-msgstr "Profil non mis à jour"
+msgstr "Avatar mis à jour"
 
 #: [avatar]not_updated
-#, fuzzy
 msgid "Profile Picture Not Updated"
-msgstr "Profil non mis à jour"
+msgstr "Avatar non mis à jour"
 
 #: [avatar]change
-#, fuzzy
 msgid "Change my profile picture"
-msgstr "Changer de mot de passe"
+msgstr "Changer mon avatar"
 
 #: [banner]change
 msgid "Change my banner"
@@ -596,9 +586,8 @@ msgid ":shortcut: to insert an emoji"
 msgstr ":raccourci: pour insérer un emoji"
 
 #: [message]visitor_help
-#, fuzzy
 msgid "You are not allowed to send messages in this chatroom"
-msgstr "Vous n'êtes pas autorisé à envoyer des messages dans ce salon"
+msgstr "Vous n'êtes pas autorisé à envoyer des messages dans ce salon de discussions"
 
 #: [chat]attention
 msgid "%s needs your attention"
@@ -983,9 +972,8 @@ msgid "It seems that this community doesn’t exists anymore. Do you want to rem
 msgstr "Il semblerait que cette communauté n'existe plus. Souhaitez-vous la supprimer de vos souscriptions ?"
 
 #: [communityaffiliation]delete_error
-#, fuzzy
 msgid "Error during the node deletion"
-msgstr "Erreur lors de la mise en place de la configuration du nœud"
+msgstr "Erreur lors de la suppression du nœud"
 
 #: [communityaffiliation]config_error
 msgid "Error during the application of the node configuration"
@@ -1217,9 +1205,8 @@ msgid "Main chat page"
 msgstr "Page chat principale"
 
 #: [config]chatmain_text
-#, fuzzy
 msgid "Set the chat page to the default when opening Movim"
-msgstr "Ouvrir la partie chat par défaut lors du lancement"
+msgstr "Ouvrir la page discussions par défaut en ouvrant Movim"
 
 #: [config]mam_text
 msgid "Server-side chat messages archiving preferences"
@@ -1278,13 +1265,12 @@ msgid "Accent color"
 msgstr "Couleur d'accentuation"
 
 #: [config]change_nickname_title
-#, fuzzy
 msgid "Be careful"
-msgstr "Plein de remords"
+msgstr "Faites attention"
 
 #: [config]change_nickname_text
 msgid "Changing your nickname will change your public blog, feed, and articles URLs"
-msgstr ""
+msgstr "Modifier votre pseudo va changer les URLs de votre blog, flux et articles"
 
 #: [confirm]title
 msgid "Confirmation of authentication"
@@ -1303,9 +1289,8 @@ msgid "Add a contact"
 msgstr "Ajouter un contact"
 
 #: [roster]add_contact_info1
-#, fuzzy
 msgid "Enter the XMPP Address of your contact."
-msgstr "Entrez l’identifiant Jabber de votre contact."
+msgstr "Entrez l’identifiant XMPP de votre contact."
 
 #: [roster]add_contact_info2
 msgid "Press enter to validate."
@@ -1333,11 +1318,11 @@ msgstr "Nom"
 
 #: [general]pronouns
 msgid "Pronouns"
-msgstr ""
+msgstr "Pronons"
 
 #: [general]pronouns_example
 msgid "he/she/they/…"
-msgstr ""
+msgstr "il/elle/iel/…"
 
 #: [general]nickname [chatrooms]nickname
 msgid "Nickname"
@@ -1384,13 +1369,12 @@ msgid "Links"
 msgstr "Liens"
 
 #: [general]private_account_title
-#, fuzzy
 msgid "Your account is private"
-msgstr "Ce billet est privé"
+msgstr "Votre compte est privé"
 
 #: [general]private_account_text
 msgid "Go to the Settings page to create a public blog and allow the other users to find you"
-msgstr ""
+msgstr "Allez sur la Configuration pour créer un blog publique et permettre à tous de vous retrouver"
 
 #: [position]legend
 msgid "Geographic Position"
@@ -1441,7 +1425,6 @@ msgid "Group"
 msgstr "Groupe"
 
 #: [delete]text
-#, fuzzy
 msgid "You are going to remove one of your contacts, please confirm your action"
 msgstr "Vous allez supprimer l’un de vos contacts, confirmez s’il vous plaît."
 
@@ -1482,16 +1465,14 @@ msgid "But this contact can still see if you are online"
 msgstr "Mais ce contact peut tout de même voir votre présence en ligne"
 
 #: [subscription]nil
-#, fuzzy
 msgid "You are not subscribed to anyone"
-msgstr "Vous n’êtes pas abonné à ce contact"
+msgstr "Vous n'êtes abonné à personne"
 
 #: [subscription]nil_button [button]invite
 msgid "Invite"
 msgstr "Inviter"
 
 #: [subscription]nil_text
-#, fuzzy
 msgid "This contact is in your contact list but you are not subscribed to each other"
 msgstr "Ce contact est présent dans votre liste mais il n'y a aucune souscriptions entre vos deux comptes"
 
@@ -1556,16 +1537,14 @@ msgid "By default the content is only available to your contacts. You can make y
 msgstr "Le contenu que vous publiez est, par défaut, uniquement disponible pour vos contacts. Vous pouvez choisir de partager publiquement votre profil et vos publications en activant ce paramètre."
 
 #: [faq]permission_community_title
-#, fuzzy
 msgid "How does it apply to Communities posts?"
-msgstr "Comment ce paramètre s'applique t'il aux publications dans les Communautés ?"
+msgstr "Comment s'applique t'il aux publications dans les Communautés ?"
 
 #: [faq]permission_community_text
 msgid "Similary to your blog publications except that, by default, the posts are only available to the members or subscribers of the Community (except if you explicitly open all the Community content)"
 msgstr "Le comportement est similaire aux articles publiés sur votre blog à l'exception que les articles publiés sont accessibles aux membres ou souscripteurs de la Communauté en question (sauf si vous souhaitez ouvrir totalement le contenu de la Communauté)."
 
 #: [faq]chatrooms_title
-#, fuzzy
 msgid "Where can I find a list of group chats?"
 msgstr "Où puis-je trouver une liste de salons de discussion ?"
 
@@ -1635,16 +1614,15 @@ msgstr "Nom d’utilisateur incorrect"
 
 #: [error]jid
 msgid "Invalid XMPP Address"
-msgstr ""
+msgstr "Adresse XMPP invalide"
 
 #: [error]empty_challenge
 msgid "Empty Challenge from the server"
 msgstr "La paquet Challenge du serveur est vide"
 
 #: [error]dns
-#, fuzzy
 msgid "XMPP Domain error, your account is not a valid XMPP Address"
-msgstr "Erreur de domaine XMPP, votre compte n’est pas un identifiant Jabber correct"
+msgstr "Erreur de domaine XMPP, votre compte n’est pas un identifiant XMPP correct"
 
 #: [error]data_missings
 msgid "Some data are missing!"
@@ -1747,9 +1725,8 @@ msgid "No news yet…"
 msgstr "Aucune actualité… pour le moment"
 
 #: [menu]empty
-#, fuzzy
 msgid "Welcome to your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
-msgstr "Bienvenue sur votre flux d’actualité, ici vous verrez toutes les publications des communautés auxquelles vous vous êtes abonné ainsi que celles de vos contacts."
+msgstr "Bienvenue sur votre flux d’actualité, ici vous verrez toutes les publications de vos contacts et des communautés suivies."
 
 #: [menu]mine
 msgid "My publications"
@@ -1913,7 +1890,6 @@ msgid "%s minutes"
 msgstr "%s minutes"
 
 #: [post]public_title
-#, fuzzy
 msgid "Publish this post publicly"
 msgstr "Publier cet article publiquement"
 
@@ -1946,14 +1922,12 @@ msgid "Nobody will be able to like or comment"
 msgstr "Personne ne pourra publier de commentaires ou liker"
 
 #: [post]comments_disabled_yes
-#, fuzzy
 msgid "Comments disabled for this post"
-msgstr "Commentaires désactivés pour cet publication"
+msgstr "Commentaires désactivés pour cet article"
 
 #: [post]comments_disabled_no
-#, fuzzy
 msgid "Comments enabled for this post"
-msgstr "Commentaires activés pour cette publication"
+msgstr "Commentaires activés pour cet article"
 
 #: [post]delete_title [post]delete
 msgid "Delete this post"
@@ -1968,9 +1942,8 @@ msgid "Are you sure that you want to delete this comment?"
 msgstr "Êtes-vous sûr de vouloir supprimer ce commentaire ?"
 
 #: [post]discover
-#, fuzzy
 msgid "Discover more posts on the communities page"
-msgstr "Découvrez plus de publications sur la page communautés"
+msgstr "Découvrez plus d'articles sur la page communautés"
 
 #: [post]more
 msgid "Read more"
@@ -2025,7 +1998,6 @@ msgid "Oh! Hello!"
 msgstr "Bonjour !"
 
 #: [hello]enter_paragraph
-#, fuzzy
 msgid "It seems that you are new here! Welcome to Movim!"
 msgstr "Vous êtes nouveau ici ! Bienvenu sur Movim !"
 
@@ -2130,7 +2102,6 @@ msgid "Rich text editor"
 msgstr "Éditeur de texte enrichi"
 
 #: [publish]help_hashtag
-#, fuzzy
 msgid "Add #hashtags in your title or content to allow your post to be discovered"
 msgstr "Ajouter des #hastag dans le titre ou le contenu de votre article pour être plus facilement découvert"
 
@@ -2187,48 +2158,40 @@ msgid "Join a custom chatroom"
 msgstr "Joindre un salon de discussion personnalisé"
 
 #: [rooms]empty_text1
-#, fuzzy
 msgid "You don’t have any chatroom yet."
-msgstr "Vous n'avez pas de salon de discussions pour le moment."
+msgstr "Vous n'avez pas encore de salon de discussion."
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
 msgstr "Ajoutez en un en cliquant sur le bouton ajouter."
 
 #: [rooms]type_room
-#, fuzzy
 msgid "Type of chatroom"
-msgstr "Type de salon"
+msgstr "Type de salon de discussion"
 
 #: [rooms]default_room
-#, fuzzy
 msgid "Standard chatroom"
-msgstr "Salon standard"
+msgstr "Salon de discussion standard"
 
 #: [rooms]gateway_room
-#, fuzzy
 msgid "Gateway chatroom"
-msgstr "Salon de passerelle"
+msgstr "Salon de discussion passerelle"
 
 #: [rooms]show_all
-#, fuzzy
 msgid "Show all chatrooms"
-msgstr "Afficher tous les salons"
+msgstr "Afficher tous les salons de discussions"
 
 #: [rooms]hide_disconnected
-#, fuzzy
 msgid "Hide disconnected chatrooms"
-msgstr "Cacher les salons hors-lignes"
+msgstr "Cacher les salons de discussions hors-lignes"
 
 #: [rooms]destroy_title
-#, fuzzy
 msgid "Destroy the chatroom"
-msgstr "Détruire le salon"
+msgstr "Détruire le salon de discussion"
 
 #: [rooms]destroy_text
-#, fuzzy
 msgid "Are you sure you want to permanently destroy the following chatroom?"
-msgstr "Êtes-vous sûr de vouloir supprimer définitivement le salon suivant ?"
+msgstr "Êtes-vous sûr de vouloir supprimer définitivement le salon de discussion suivant ?"
 
 #: [rooms]owner
 msgctxt "[rooms]owner"
@@ -2257,16 +2220,14 @@ msgid "Chatrooms"
 msgstr "Salons de discussion"
 
 #: [chatrooms]id
-#, fuzzy
 msgid "Chatroom Address"
-msgstr "Salons de discussion"
+msgstr "Salon de discussion créé"
 
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "Mon salon préféré"
 
 #: [chatrooms]bad_id
-#, fuzzy
 msgid "Bad Chatroom Address"
 msgstr "Mauvais identifiant de salon de discussion"
 
@@ -2275,24 +2236,20 @@ msgid "Empty name"
 msgstr "Nom vide"
 
 #: [chatrooms]remove_title
-#, fuzzy
 msgid "Permanently leave a chatroom"
-msgstr "Supprimer un salon de discussion"
+msgstr "Quitter définitivement le salon de discussion"
 
 #: [chatrooms]remove_text
-#, fuzzy
 msgid "You are going to permanently leave the following chatroom. Please confirm your action."
-msgstr "Vous allez supprimer le salon de discussion suivant. Veuillez confirmer votre décision."
+msgstr "Vous allez quitter définitivement le salon de discussion suivant. Veuillez confirmer votre décision."
 
 #: [chatrooms]connected
-#, fuzzy
 msgid "Joined the chatroom"
-msgstr "Rejoindre un salon de discussion"
+msgstr "Salon de discussion rejoint"
 
 #: [chatrooms]disconnected
-#, fuzzy
 msgid "Left the chatroom"
-msgstr "Ajouter le salon de discussion"
+msgstr "Quitter le salon de discussion"
 
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
@@ -2309,17 +2266,14 @@ msgid "Banned"
 msgstr "Bannis"
 
 #: [chatrooms]bad_nickname
-#, fuzzy
 msgid "Please enter a valid nickname (2 to 40 characters)"
-msgstr "Merci d'entrer un surnom valide (entre 2 et 40 caractères)"
+msgstr "Merci d'entrer un pseudonyme valide (entre 2 et 40 caractères)"
 
 #: [chatrooms]conflict
-#, fuzzy
 msgid "Nickname already taken"
-msgstr "Nom d'utilisateur déjà utilisé"
+msgstr "Le pseudonyme est déjà utilisé"
 
 #: [chatrooms]autojoin
-#, fuzzy
 msgid "Join this chatroom on login"
 msgstr "Rejoindre ce salon de discussion lors de la connexion"
 
@@ -2328,9 +2282,8 @@ msgid "Pin this chatroom"
 msgstr "Épingler ce salon"
 
 #: [chatrooms]destroyed
-#, fuzzy
 msgid "Chatroom destroyed"
-msgstr "Salon détruit"
+msgstr "Salon de discussion détruit"
 
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
@@ -2365,7 +2318,6 @@ msgid "Not acceptable"
 msgstr "Non autorisé"
 
 #: [chatrooms]serviceunavailable
-#, fuzzy
 msgid "The chatroom participant limit has been reached"
 msgstr "La limite du nombre d'occupants maximum a été atteinte"
 
@@ -2382,9 +2334,8 @@ msgid "Bookmarks updated"
 msgstr "Signets mis à jour"
 
 #: [room]anonymous_title
-#, fuzzy
 msgid "Public Channel"
-msgstr "Page publique"
+msgstr "Salon public"
 
 #: [room]anonymous_text1
 msgid "You are currently logged as an anonymous user."
@@ -2419,9 +2370,8 @@ msgid "Public profiles"
 msgstr "Profils publiques"
 
 #: [room]nonanonymous_muc_text
-#, fuzzy
 msgid "The participants of this chatroom can see each other's XMPP Addresses"
-msgstr "Les participants de ce salon peuvent voir leurs profils réciproquement"
+msgstr "Les participants de ce salon peuvent voir leurs adresses XMPP réciproquement"
 
 #: [room]archived
 msgid "Archived"
@@ -2544,9 +2494,8 @@ msgid "No chatrooms found locally"
 msgstr "Aucun salon trouvé localement"
 
 #: [roomsexplore]global_title
-#, fuzzy
 msgid "Channels"
-msgstr "Salon"
+msgstr "Salons de discussions publics"
 
 #: [roomsexplore]no_global
 msgid "No chatrooms found globally"
@@ -2554,11 +2503,11 @@ msgstr "Aucun salon trouvé sur le réseau"
 
 #: [roomsexplore]find_more
 msgid "Find more channels"
-msgstr ""
+msgstr "Trouver plus de salons de discussions publics"
 
 #: [roomsexplore]find_more_text
 msgid "%s in total"
-msgstr ""
+msgstr "%s au total"
 
 #: [search]keyword
 msgid "What are you looking for?"
@@ -2577,9 +2526,8 @@ msgid "No contacts yet?"
 msgstr "Pas encore de contacts ?"
 
 #: [search]no_contacts_text
-#, fuzzy
 msgid "Find one by searching for their name or address"
-msgstr "Trouvez-en un en saisissant son nom ou son identifiant"
+msgstr "Trouvez-en un en saisissant son nom ou son adresse"
 
 #: [search]tags
 msgid "Tags"
@@ -2826,7 +2774,6 @@ msgid "Movim is currently working in degraded mode"
 msgstr "Movim fonctionne actuellement en mode dégradé"
 
 #: [degraded]text_1
-#, fuzzy
 msgid "Your server doesn’t support XMPP Pubsub persistence or the social features (communities, news feed, and profile) are disabled by the administrator."
 msgstr "Votre serveur ne supporte pas la persistance XMPP Pubsub ou les fonctionnalités sociales (communautés, flux d'actualité et profiles) ont été désactivées par l'administrateur."
 
@@ -2979,14 +2926,12 @@ msgid "News"
 msgstr "Actualité"
 
 #: [page]avatar
-#, fuzzy
 msgid "Profile Picture"
-msgstr "Profil mis à jour"
+msgstr "Avatar"
 
 #: [page]chats
-#, fuzzy
 msgid "Direct Messages"
-msgstr "Message rétracté"
+msgstr "Messages directs"
 
 #: [page]publish
 msgid "Publish"
@@ -3095,7 +3040,7 @@ msgstr "Détruire"
 
 #: [button]remove
 msgid "Leave"
-msgstr ""
+msgstr "Quitter"
 
 #: [button]cancel
 msgid "Cancel"
@@ -3845,57 +3790,3 @@ msgstr "L’API est indisponible pour le moment, réessayez plus tard."
 #: [field]type_here
 msgid "Type here"
 msgstr "Rédigez votre message ici"
-
-#~ msgid "Avatar Updated"
-#~ msgstr "Avatar mis à jour"
-
-#~ msgid "Avatar Not Updated"
-#~ msgstr "Avatar non mis à jour"
-
-#~ msgid "Change my avatar"
-#~ msgstr "Modifier mon avatar"
-
-#~ msgid "No subscriptions"
-#~ msgstr "Pas de Souscriptions"
-
-#~ msgid "Invalid JID"
-#~ msgstr "Identifiant Jabber incorrect"
-
-#~ msgid "Chatroom ID"
-#~ msgstr "Identifiant du salon"
-
-#~ msgid "Public chatroom"
-#~ msgstr "Salon public"
-
-#~ msgid "Global search"
-#~ msgstr "Recherche globale"
-
-#~ msgid "Avatar"
-#~ msgstr "Avatar"
-
-#~ msgid "Chats"
-#~ msgstr "Discussions"
-
-#~ msgid "Room"
-#~ msgstr "Salon"
-
-#~ msgid "Remove"
-#~ msgstr "Supprimer"
-
-#~ msgid "Upload a new picture"
-#~ msgstr "Téléverser une nouvelle image"
-
-#~ msgid "Article"
-#~ msgstr "Article"
-
-#~ msgid "Video & Voice"
-#~ msgstr "Voix & Vidéo"
-
-#~ msgid "Configure the default devices used by Movim"
-#~ msgstr "Configurer les périphériques par défaut utilisés par Movim"
-
-#~ msgid "Microphone"
-#~ msgstr "Microphone"
-
-#~ msgid "Camera"
-#~ msgstr "Caméra"
