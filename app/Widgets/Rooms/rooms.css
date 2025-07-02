@@ -4,6 +4,10 @@
     flex-direction: column;
 }
 
+#rooms[data-scroll] li.subheader:first-child {
+    animation: backgroundblink 1s;
+}
+
 #rooms > ul.list {
     order: 1;
 }

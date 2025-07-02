@@ -622,6 +622,19 @@ div.bubble .audio_player p {
     }
 }
 
+@keyframes backgroundblink {
+    0%,
+    50%,
+    100% {
+        opacity: 1;
+    }
+
+    25%,
+    75% {
+        opacity: 0.5;
+    }
+}
+
 body {
     --standard-easing: cubic-bezier(0.4, 0.0, 0.2, 1);
     --accelerate-easing: cubic-bezier(0.167, 0.167, 0, 1);

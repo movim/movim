@@ -9,24 +9,41 @@ var Rooms = {
         document.querySelector('#rooms ul.list.rooms').classList.toggle('edition');
     },
 
-    toggleScroll: function() {
+    toggleScroll: function () {
+        var chats = document.querySelector('#chats_widget_header');
+        var rooms = document.querySelector('#rooms');
+
+        if (rooms.dataset.scroll) {
+            chats.scrollIntoView();
+        } else {
+            rooms.scrollIntoView();
+        }
+    },
+
+    scrollToChats: function () {
         var chats = document.querySelector('#chats_widget_header');
         var rooms = document.querySelector('#rooms');
 
         var chatcounter = document.querySelector('#chatcounter i');
         var bottomchatcounter = document.querySelector('#bottomchatcounter i');
 
-        if (rooms.dataset.scroll) {
-            chats.scrollIntoView();
-            delete rooms.dataset.scroll;
+        chats.dataset.scroll = true;
+        delete rooms.dataset.scroll;
 
-            chatcounter.innerHTML = bottomchatcounter.innerHTML = 'chat_bubble';
-        } else {
-            rooms.scrollIntoView();
-            rooms.dataset.scroll = true;
+        chatcounter.innerHTML = bottomchatcounter.innerHTML = 'chat_bubble';
+    },
 
-            chatcounter.innerHTML = bottomchatcounter.innerHTML = 'forum';
-        }
+    scrollToRooms: function () {
+        var chats = document.querySelector('#chats_widget_header');
+        var rooms = document.querySelector('#rooms');
+
+        var chatcounter = document.querySelector('#chatcounter i');
+        var bottomchatcounter = document.querySelector('#bottomchatcounter i');
+
+        delete chats.dataset.scroll;
+        rooms.dataset.scroll = true;
+
+        chatcounter.innerHTML = bottomchatcounter.innerHTML = 'forum';
     },
 
     checkNoConnected: function () {
@@ -89,6 +106,16 @@ var Rooms = {
 
     refresh: function (callSecond) {
         Rooms.displayToggleButton();
+
+        var parent = document.querySelector('#rooms').parentElement;
+
+        parent.onscroll = e => {
+            if (e.target.scrollTop + 5 >= document.querySelector('#rooms').offsetTop) {
+                Rooms.scrollToRooms();
+            } else {
+                Rooms.scrollToChats();
+            }
+        };
 
         var list = document.querySelector('#rooms ul.list.rooms');
         var items = document.querySelectorAll('#rooms ul.list.rooms li:not(.subheader)');
@@ -159,7 +186,7 @@ var Rooms = {
         Rooms.refresh(noSecondRefresh);
     },
 
-    clearAllActives: function() {
+    clearAllActives: function () {
         document.querySelectorAll('#rooms ul.list.rooms li:not(.subheader)')
             .forEach(item => item.classList.remove('active'));
     },

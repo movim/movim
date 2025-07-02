@@ -843,20 +843,6 @@ ul.list li > div.bubble.file div.file a span.size:before {
 
 /* Parent scroll */
 
-@keyframes backgroundblink {
-
-    0%,
-    50%,
-    100% {
-        opacity: 1;
-    }
-
-    25%,
-    75% {
-        opacity: 0.5;
-    }
-}
-
 #chat_widget .bubble.scroll_blink {
     animation: backgroundblink 1s;
 }
