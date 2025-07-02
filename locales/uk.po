@@ -120,7 +120,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-30 14:00+0200\n"
+"POT-Creation-Date: 2025-07-02 23:39+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: sergey solovey, 2022,2024\n"
 "Language-Team: Ukrainian (http://app.transifex.com/movim/movim/language/uk/)\n"
@@ -196,7 +196,8 @@ msgid "Delete your account"
 msgstr "Видалити вашого користувача"
 
 #: [account]delete_text
-msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts and publications)."
+#, fuzzy
+msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts, and publications)."
 msgstr "Ви видалите вашого XMPP користувача та всю пов'язану з ним інформацію (профіль, контакти та публікації)"
 
 #: [account]delete_text_confirm
@@ -216,11 +217,13 @@ msgid "Leave this instance"
 msgstr "Покинути цей сервер"
 
 #: [account]clear_text
-msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
+#, fuzzy
+msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts, and publications)."
 msgstr "Ви видалите всю відповідну інформацію, пов’язану з вашим обліковим записом у цьому екземплярі Movim (профіль, контакти та публікації)."
 
 #: [account]clear_text_confirm
-msgid "This action will not delete your account but will disconnect you from this instance."
+#, fuzzy
+msgid "This action will not delete your account but will disconnect you from Movim."
 msgstr "Ця дія не видалить ваш обліковий запис, але від’єднає вас від цього сервера."
 
 #: [account]delete_bundle_title
@@ -304,7 +307,8 @@ msgid "Restrict suggestions"
 msgstr "Заборонити підказки"
 
 #: [restrictsuggestions]text
-msgid "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
+#, fuzzy
+msgid "Only suggest chatrooms, Communities, and other contents that are available on the user's XMPP server and related services"
 msgstr "Пропонувати тільки ті чати, спільноти та контент, які доступні на користувацькому XMPP-сервері та пов'язаних з ним сервісах."
 
 #: [chatonly]title
@@ -336,11 +340,13 @@ msgid "Remove the XMPP registration flow and buttons from the interface"
 msgstr "Видалити кнопку реєстрації XMPP зі сторінки входу"
 
 #: [whitelist]title
-msgid "Whitelisted XMPP Servers"
+#, fuzzy
+msgid "Allowed XMPP Servers"
 msgstr "Білий список XMPP серверів"
 
 #: [whitelist]info1
-msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
+#, fuzzy
+msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name(s) here, with comma (ex: movim.eu,jabber.fr)"
 msgstr "Якщо ви хочете вказати список доступних серверів XMPP на вашому сервері і заборонити підключення до всіх інших, будь ласка, введіть їх доменне ім'я тут через кому (наприклад: movim.eu,jabber.fr)"
 
 #: [whitelist]info2
@@ -348,7 +354,8 @@ msgid "Leave this field blank if you allow the access to all the XMPP accounts."
 msgstr "Щоб надати доступ до всіх облікових записів XMPP, залиште це поле порожнім."
 
 #: [whitelist]label
-msgid "List of whitelisted XMPP servers"
+#, fuzzy
+msgid "List of allowed XMPP servers"
 msgstr "Список серверів XMPP із білого списку"
 
 #: [information]title
@@ -458,16 +465,19 @@ msgid "File"
 msgstr "Файл"
 
 #: [avatar]updated
-msgid "Avatar Updated"
-msgstr "Аватар оновлено"
+#, fuzzy
+msgid "Profile Picture Updated"
+msgstr "Профіль не оновлено"
 
 #: [avatar]not_updated
-msgid "Avatar Not Updated"
-msgstr "Аватар не оновлено"
+#, fuzzy
+msgid "Profile Picture Not Updated"
+msgstr "Профіль не оновлено"
 
 #: [avatar]change
-msgid "Change my avatar"
-msgstr "Змінити аватар"
+#, fuzzy
+msgid "Change my profile picture"
+msgstr "Змінити мій пароль"
 
 #: [banner]change
 msgid "Change my banner"
@@ -578,7 +588,8 @@ msgid ":shortcut: to insert an emoji"
 msgstr ":shortcut: для вставки емодзі"
 
 #: [message]visitor_help
-msgid "You are not allowed to send messages in this conference"
+#, fuzzy
+msgid "You are not allowed to send messages in this chatroom"
 msgstr "Вам заборонено надсилати повідомлення в цій конференції"
 
 #: [chat]attention
@@ -727,11 +738,11 @@ msgstr "Заблокувати"
 msgid "Members"
 msgstr "Учасники"
 
-#: [chatroom]connected [chatrooms]connected
+#: [chatroom]connected
 msgid "Connected to the chatroom"
 msgstr "Підключено до чату"
 
-#: [chatroom]disconnected [chatrooms]disconnected
+#: [chatroom]disconnected
 msgid "Disconnected from the chatroom"
 msgstr "Відключено від чату"
 
@@ -963,6 +974,11 @@ msgstr "Ви збираєтеся видалити цю спільноту. Бу
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
 msgstr "Здається, ця спільнота більше не існує. Ви хочете видалити її зі своїх підписок?"
 
+#: [communityaffiliation]delete_error
+#, fuzzy
+msgid "Error during the node deletion"
+msgstr "Помилка при застосуванні конфігурації вузла"
+
 #: [communityaffiliation]config_error
 msgid "Error during the application of the node configuration"
 msgstr "Помилка при застосуванні конфігурації вузла"
@@ -1193,7 +1209,8 @@ msgid "Main chat page"
 msgstr "Основна сторінка балачок"
 
 #: [config]chatmain_text
-msgid "Make the chat page as the default one"
+#, fuzzy
+msgid "Set the chat page to the default when opening Movim"
 msgstr "Зробіть сторінку чату сторінкою за замовчуванням"
 
 #: [config]mam_text
@@ -1252,6 +1269,15 @@ msgstr "Вхідне повідомлення"
 msgid "Accent color"
 msgstr ""
 
+#: [config]change_nickname_title
+#, fuzzy
+msgid "Be careful"
+msgstr "розкаяний"
+
+#: [config]change_nickname_text
+msgid "Changing your nickname will change your public blog, feed, and articles URLs"
+msgstr ""
+
 #: [confirm]title
 msgid "Confirmation of authentication"
 msgstr "Підтвердження аутентифікації"
@@ -1269,7 +1295,8 @@ msgid "Add a contact"
 msgstr "Додати контакт"
 
 #: [roster]add_contact_info1
-msgid "Enter the Jabber ID of your contact."
+#, fuzzy
+msgid "Enter the XMPP Address of your contact."
 msgstr "Введіть Jabber ID вашого контакту."
 
 #: [roster]add_contact_info2
@@ -1295,6 +1322,14 @@ msgstr "Загальна інформація"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Ім'я"
+
+#: [general]pronouns
+msgid "Pronouns"
+msgstr ""
+
+#: [general]pronouns_example
+msgid "he/she/they/…"
+msgstr ""
 
 #: [general]nickname [chatrooms]nickname
 msgid "Nickname"
@@ -1339,6 +1374,15 @@ msgstr "Зображення"
 #: [general]links
 msgid "Links"
 msgstr "Посилання"
+
+#: [general]private_account_title
+#, fuzzy
+msgid "Your account is private"
+msgstr "Ця публікація є приватною"
+
+#: [general]private_account_text
+msgid "Go to the Settings page to create a public blog and allow the other users to find you"
+msgstr ""
 
 #: [position]legend
 msgid "Geographic Position"
@@ -1389,7 +1433,8 @@ msgid "Group"
 msgstr "Група"
 
 #: [delete]text
-msgid "You are going to delete one of your contacts, please confirm your action"
+#, fuzzy
+msgid "You are going to remove one of your contacts, please confirm your action"
 msgstr "Ви збираєтеся видалити один з ваших контактів, будь ласка, підтвердіть вашу дію"
 
 #: [age]years
@@ -1429,15 +1474,17 @@ msgid "But this contact can still see if you are online"
 msgstr "Але цей контакт все одно може бачити, чи ви онлайн"
 
 #: [subscription]nil
-msgid "No subscriptions"
-msgstr "Немає підписок"
+#, fuzzy
+msgid "You are not subscribed to anyone"
+msgstr "Ви не підписані на цього користувача"
 
 #: [subscription]nil_button [button]invite
 msgid "Invite"
 msgstr "Запросити"
 
 #: [subscription]nil_text
-msgid "This contact is in your contact list but there is no subscription between the two accounts"
+#, fuzzy
+msgid "This contact is in your contact list but you are not subscribed to each other"
 msgstr "Цей контакт є у вашому списку контактів, але він не авторизований між двома обліковими записами"
 
 #: [dictaphone]name
@@ -1501,7 +1548,8 @@ msgid "By default the content is only available to your contacts. You can make y
 msgstr "За замовчуванням вміст доступний лише вашим контактам. Ви можете зробити свій профіль і публікації загальнодоступними, увімкнувши відповідне налаштування."
 
 #: [faq]permission_community_title
-msgid "How does it applies on Communities posts?"
+#, fuzzy
+msgid "How does it apply to Communities posts?"
 msgstr "Як це стосується дописів у спільнотах?"
 
 #: [faq]permission_community_text
@@ -1509,7 +1557,8 @@ msgid "Similary to your blog publications except that, by default, the posts are
 msgstr "Подібно до публікацій у вашому блозі, за винятком того, що за замовчуванням публікації доступні лише учасникам або підписникам спільноти (за винятком випадків, коли ви явно відкриваєте весь вміст спільноти)."
 
 #: [faq]chatrooms_title
-msgid "Where can I find a list of chatrooms?"
+#, fuzzy
+msgid "Where can I find a list of group chats?"
 msgstr "Де я можу знайти список чатів?"
 
 #: [faq]find_contacts_title
@@ -1577,15 +1626,16 @@ msgid "Wrong username"
 msgstr "Неправильне ім'я користувача"
 
 #: [error]jid
-msgid "Invalid JID"
-msgstr "Неправильний JID"
+msgid "Invalid XMPP Address"
+msgstr ""
 
 #: [error]empty_challenge
 msgid "Empty Challenge from the server"
 msgstr "Порожній виклик із сервера"
 
 #: [error]dns
-msgid "XMPP Domain error, your account is not a correct Jabber ID"
+#, fuzzy
+msgid "XMPP Domain error, your account is not a valid XMPP Address"
 msgstr "Помилковий XMPP домен, неприпустимий JID у вашому обліковому записі"
 
 #: [error]data_missings
@@ -1689,7 +1739,8 @@ msgid "No news yet…"
 msgstr "Новин поки що немає..."
 
 #: [menu]empty
-msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
+#, fuzzy
+msgid "Welcome to your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
 msgstr "Ласкаво просимо до вашої стрічки новин, тут ви побачите всі пости, опубліковані вашими контактами та спільнотами, на які ви підписані."
 
 #: [menu]mine
@@ -1966,7 +2017,8 @@ msgid "Oh! Hello!"
 msgstr ""
 
 #: [hello]enter_paragraph
-msgid "It seems that you’re new there! Welcome on Movim!"
+#, fuzzy
+msgid "It seems that you are new here! Welcome to Movim!"
 msgstr "Здається, ви тут новачок! Ласкаво просимо в Movim!"
 
 #: [hello]menu_title
@@ -2127,7 +2179,8 @@ msgid "Join a custom chatroom"
 msgstr "Приєднатися до спеціального чату"
 
 #: [rooms]empty_text1
-msgid "You don’t have any chatrooms yet."
+#, fuzzy
+msgid "You don’t have any chatroom yet."
 msgstr "У вас ще немає жодного чату."
 
 #: [rooms]empty_text2
@@ -2135,31 +2188,38 @@ msgid "Add one by clicking on the add button."
 msgstr "Додайте його, натиснувши на кнопку \"Додати\"."
 
 #: [rooms]type_room
-msgid "Type of room"
+#, fuzzy
+msgid "Type of chatroom"
 msgstr "Тип кімнати"
 
 #: [rooms]default_room
-msgid "Standard room"
+#, fuzzy
+msgid "Standard chatroom"
 msgstr "Стандартна кімната"
 
 #: [rooms]gateway_room
-msgid "Gateway room"
+#, fuzzy
+msgid "Gateway chatroom"
 msgstr "Шлюз кімната"
 
 #: [rooms]show_all
-msgid "Show all rooms"
+#, fuzzy
+msgid "Show all chatrooms"
 msgstr "Показати всі кімнати"
 
 #: [rooms]hide_disconnected
-msgid "Hide disconnected rooms"
+#, fuzzy
+msgid "Hide disconnected chatrooms"
 msgstr "Приховати відключені кімнати"
 
 #: [rooms]destroy_title
-msgid "Destroy the room"
+#, fuzzy
+msgid "Destroy the chatroom"
 msgstr "Знищити кімнату"
 
 #: [rooms]destroy_text
-msgid "Are you sure you want to permanently destroy the following room?"
+#, fuzzy
+msgid "Are you sure you want to permanently destroy the following chatroom?"
 msgstr "Ви впевнені, що хочете назавжди знищити поточну кімнату?"
 
 #: [rooms]owner
@@ -2189,15 +2249,17 @@ msgid "Chatrooms"
 msgstr "Кімнати для спілкування"
 
 #: [chatrooms]id
-msgid "Chatroom ID"
-msgstr "Ідентифікатор кімнати чату"
+#, fuzzy
+msgid "Chatroom Address"
+msgstr "Кімнати для спілкування"
 
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "Мої улюблені кімнати"
 
 #: [chatrooms]bad_id
-msgid "Bad Chatroom ID"
+#, fuzzy
+msgid "Bad Chatroom Address"
 msgstr "Неправильний ідентифікатор чату"
 
 #: [chatrooms]empty_name
@@ -2205,12 +2267,24 @@ msgid "Empty name"
 msgstr "Порожнє ім'я"
 
 #: [chatrooms]remove_title
-msgid "Remove a chatroom"
+#, fuzzy
+msgid "Permanently leave a chatroom"
 msgstr "Видалити чат"
 
 #: [chatrooms]remove_text
-msgid "You are going to remove the following chatroom. Please confirm your action."
+#, fuzzy
+msgid "You are going to permanently leave the following chatroom. Please confirm your action."
 msgstr "Ви збираєтеся видалити поточний чат. Будь ласка, підтвердіть вашу дію."
+
+#: [chatrooms]connected
+#, fuzzy
+msgid "Joined the chatroom"
+msgstr "Приєднатися до чату"
+
+#: [chatrooms]disconnected
+#, fuzzy
+msgid "Left the chatroom"
+msgstr "Додати чат кімнату"
 
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
@@ -2227,15 +2301,18 @@ msgid "Banned"
 msgstr "Заблоковані"
 
 #: [chatrooms]bad_nickname
-msgid "Please enter a correct nickname (2 to 40 characters)"
+#, fuzzy
+msgid "Please enter a valid nickname (2 to 40 characters)"
 msgstr "Будь ласка, введіть коректний нікнейм (від 2 до 40 символів)"
 
 #: [chatrooms]conflict
-msgid "Username already taken"
+#, fuzzy
+msgid "Nickname already taken"
 msgstr "Ім'я користувача вже зайнято"
 
 #: [chatrooms]autojoin
-msgid "Join this chatroom on connect"
+#, fuzzy
+msgid "Join this chatroom on login"
 msgstr "Приєднатися до цього чату"
 
 #: [chatrooms]pinned
@@ -2243,7 +2320,8 @@ msgid "Pin this chatroom"
 msgstr "Закріпити цей чат"
 
 #: [chatrooms]destroyed
-msgid "Room destroyed"
+#, fuzzy
+msgid "Chatroom destroyed"
 msgstr "Кімната знищена"
 
 #: [chatrooms]registrationrequired
@@ -2279,7 +2357,8 @@ msgid "Not acceptable"
 msgstr "Неприйнятно"
 
 #: [chatrooms]serviceunavailable
-msgid "The chatroom occupant limit has been reached"
+#, fuzzy
+msgid "The chatroom participant limit has been reached"
 msgstr "Досягнуто ліміт учасників чату"
 
 #: [chatrooms]notallowed
@@ -2295,8 +2374,9 @@ msgid "Bookmarks updated"
 msgstr "Закладки оновлено"
 
 #: [room]anonymous_title
-msgid "Public chatroom"
-msgstr "Публічний чат"
+#, fuzzy
+msgid "Public Channel"
+msgstr "Публічна сторінка"
 
 #: [room]anonymous_text1
 msgid "You are currently logged as an anonymous user."
@@ -2331,7 +2411,8 @@ msgid "Public profiles"
 msgstr "Публічні профілі"
 
 #: [room]nonanonymous_muc_text
-msgid "The participants of this chatroom can see each other's profile"
+#, fuzzy
+msgid "The participants of this chatroom can see each other's XMPP Addresses"
 msgstr "Учасники цього чату можуть бачити профіль один одного"
 
 #: [room]archived
@@ -2342,7 +2423,7 @@ msgstr "Архівовано"
 msgid "The chatroom messages are archived"
 msgstr "Повідомлення чату архівуються"
 
-#: [room]group_chat
+#: [room]group_chat [page]room
 msgid "Group Chat"
 msgstr "Групповий чат"
 
@@ -2455,12 +2536,21 @@ msgid "No chatrooms found locally"
 msgstr "Локальних чатів не знайдено"
 
 #: [roomsexplore]global_title
-msgid "Global search"
-msgstr "Глобальний пошук"
+#, fuzzy
+msgid "Channels"
+msgstr "Канал"
 
 #: [roomsexplore]no_global
 msgid "No chatrooms found globally"
 msgstr "Глобальних чатів не знайдено"
+
+#: [roomsexplore]find_more
+msgid "Find more channels"
+msgstr ""
+
+#: [roomsexplore]find_more_text
+msgid "%s in total"
+msgstr ""
 
 #: [search]keyword
 msgid "What are you looking for?"
@@ -2479,7 +2569,8 @@ msgid "No contacts yet?"
 msgstr "Ще немає контактів?"
 
 #: [search]no_contacts_text
-msgid "Find one by searching for their name or id"
+#, fuzzy
+msgid "Find one by searching for their name or address"
 msgstr "Знайдіть його за іменем або ідентифікатором"
 
 #: [search]tags
@@ -2727,7 +2818,8 @@ msgid "Movim is currently working in degraded mode"
 msgstr "Наразі Movim працює в погіршеному режимі"
 
 #: [degraded]text_1
-msgid "Your server doesn’t support XMPP Pubsub persistence or the social features (communities, news feed and profile) are disabled by the administrator."
+#, fuzzy
+msgid "Your server doesn’t support XMPP Pubsub persistence or the social features (communities, news feed, and profile) are disabled by the administrator."
 msgstr "Ваш сервер не підтримує персистентність XMPP Pubsub або соціальні функції (спільноти, стрічка новин і профіль) вимкнені адміністратором."
 
 #: [degraded]text_2
@@ -2879,12 +2971,13 @@ msgid "News"
 msgstr "Новини"
 
 #: [page]avatar
-msgid "Avatar"
-msgstr "Аватар"
+#, fuzzy
+msgid "Profile Picture"
+msgstr "Профіль оновлено"
 
 #: [page]chats
-msgid "Chats"
-msgstr "Чати"
+msgid "Direct Messages & Whispers"
+msgstr ""
 
 #: [page]publish
 msgid "Publish"
@@ -2922,10 +3015,6 @@ msgstr "Візуальна конференція"
 msgctxt "[page]share"
 msgid "Share"
 msgstr "Поширити"
-
-#: [page]room
-msgid "Room"
-msgstr "Кімната"
 
 #: [page]tag
 msgid "Tag"
@@ -2996,8 +3085,8 @@ msgid "Destroy"
 msgstr "Знищити"
 
 #: [button]remove
-msgid "Remove"
-msgstr "Видалити"
+msgid "Leave"
+msgstr ""
 
 #: [button]cancel
 msgid "Cancel"
@@ -3747,6 +3836,42 @@ msgstr "API недоступний, спробуйте пізніше"
 #: [field]type_here
 msgid "Type here"
 msgstr "Напишіть тут"
+
+#~ msgid "Avatar Updated"
+#~ msgstr "Аватар оновлено"
+
+#~ msgid "Avatar Not Updated"
+#~ msgstr "Аватар не оновлено"
+
+#~ msgid "Change my avatar"
+#~ msgstr "Змінити аватар"
+
+#~ msgid "No subscriptions"
+#~ msgstr "Немає підписок"
+
+#~ msgid "Invalid JID"
+#~ msgstr "Неправильний JID"
+
+#~ msgid "Chatroom ID"
+#~ msgstr "Ідентифікатор кімнати чату"
+
+#~ msgid "Public chatroom"
+#~ msgstr "Публічний чат"
+
+#~ msgid "Global search"
+#~ msgstr "Глобальний пошук"
+
+#~ msgid "Avatar"
+#~ msgstr "Аватар"
+
+#~ msgid "Chats"
+#~ msgstr "Чати"
+
+#~ msgid "Room"
+#~ msgstr "Кімната"
+
+#~ msgid "Remove"
+#~ msgstr "Видалити"
 
 #~ msgid "Upload a new picture"
 #~ msgstr "Завантажити нове зображення"

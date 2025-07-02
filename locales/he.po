@@ -120,7 +120,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-30 14:00+0200\n"
+"POT-Creation-Date: 2025-07-02 23:39+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: gk <genghiskhan@gmx.ca>, 2016\n"
 "Language-Team: Hebrew (http://app.transifex.com/movim/movim/language/he/)\n"
@@ -196,7 +196,8 @@ msgid "Delete your account"
 msgstr "מחק את החשבון שלך"
 
 #: [account]delete_text
-msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts and publications)."
+#, fuzzy
+msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts, and publications)."
 msgstr "אתה תמחק את חשבון XMPP שלך ואת כל המידע היחסי אשר קשור אליו (דיוקן, אנשי קשר ופרסומים)."
 
 #: [account]delete_text_confirm
@@ -216,11 +217,12 @@ msgid "Leave this instance"
 msgstr ""
 
 #: [account]clear_text
-msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
-msgstr ""
+#, fuzzy
+msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts, and publications)."
+msgstr "אתה תמחק את חשבון XMPP שלך ואת כל המידע היחסי אשר קשור אליו (דיוקן, אנשי קשר ופרסומים)."
 
 #: [account]clear_text_confirm
-msgid "This action will not delete your account but will disconnect you from this instance."
+msgid "This action will not delete your account but will disconnect you from Movim."
 msgstr ""
 
 #: [account]delete_bundle_title
@@ -304,7 +306,7 @@ msgid "Restrict suggestions"
 msgstr ""
 
 #: [restrictsuggestions]text
-msgid "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
+msgid "Only suggest chatrooms, Communities, and other contents that are available on the user's XMPP server and related services"
 msgstr ""
 
 #: [chatonly]title
@@ -336,11 +338,13 @@ msgid "Remove the XMPP registration flow and buttons from the interface"
 msgstr ""
 
 #: [whitelist]title
-msgid "Whitelisted XMPP Servers"
-msgstr ""
+#, fuzzy
+msgid "Allowed XMPP Servers"
+msgstr "רשימה של שרתי XMPP שמצויים תחת רשימה לבנה"
 
 #: [whitelist]info1
-msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
+#, fuzzy
+msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name(s) here, with comma (ex: movim.eu,jabber.fr)"
 msgstr "אם ברצונך לציין רשימה של שרתי XMPP מורשים בשרת Movim שלך ולאסור את החיבור בכל האחרים אנא השם כאן את שם המתחם שלהם, עם פסיק (דוגמא: movim.eu,jabber.fr)"
 
 #: [whitelist]info2
@@ -348,7 +352,8 @@ msgid "Leave this field blank if you allow the access to all the XMPP accounts."
 msgstr "השאר את שדה זה ריק אם ברצונך להתיר גישה אל כל החשבונות של XMPP."
 
 #: [whitelist]label
-msgid "List of whitelisted XMPP servers"
+#, fuzzy
+msgid "List of allowed XMPP servers"
 msgstr "רשימה של שרתי XMPP שמצויים תחת רשימה לבנה"
 
 #: [information]title
@@ -458,16 +463,19 @@ msgid "File"
 msgstr "קובץ"
 
 #: [avatar]updated
-msgid "Avatar Updated"
-msgstr "אווטאר עודכן"
+#, fuzzy
+msgid "Profile Picture Updated"
+msgstr "דיוקן לא מעודכן"
 
 #: [avatar]not_updated
-msgid "Avatar Not Updated"
-msgstr "אווטאר לא מעודכן"
+#, fuzzy
+msgid "Profile Picture Not Updated"
+msgstr "דיוקן לא מעודכן"
 
 #: [avatar]change
-msgid "Change my avatar"
-msgstr ""
+#, fuzzy
+msgid "Change my profile picture"
+msgstr "החלף את הסימה שלי"
 
 #: [banner]change
 msgid "Change my banner"
@@ -578,7 +586,7 @@ msgid ":shortcut: to insert an emoji"
 msgstr ""
 
 #: [message]visitor_help
-msgid "You are not allowed to send messages in this conference"
+msgid "You are not allowed to send messages in this chatroom"
 msgstr ""
 
 #: [chat]attention
@@ -727,11 +735,11 @@ msgstr ""
 msgid "Members"
 msgstr "חברים"
 
-#: [chatroom]connected [chatrooms]connected
+#: [chatroom]connected
 msgid "Connected to the chatroom"
 msgstr "מחובר אל שיחת קבוצה"
 
-#: [chatroom]disconnected [chatrooms]disconnected
+#: [chatroom]disconnected
 msgid "Disconnected from the chatroom"
 msgstr "מנותק מתוך שיחת הקבוצה"
 
@@ -961,6 +969,10 @@ msgstr ""
 
 #: [communityaffiliation]delete_clean_text
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
+msgstr ""
+
+#: [communityaffiliation]delete_error
+msgid "Error during the node deletion"
 msgstr ""
 
 #: [communityaffiliation]config_error
@@ -1193,7 +1205,7 @@ msgid "Main chat page"
 msgstr ""
 
 #: [config]chatmain_text
-msgid "Make the chat page as the default one"
+msgid "Set the chat page to the default when opening Movim"
 msgstr ""
 
 #: [config]mam_text
@@ -1252,6 +1264,14 @@ msgstr ""
 msgid "Accent color"
 msgstr ""
 
+#: [config]change_nickname_title
+msgid "Be careful"
+msgstr ""
+
+#: [config]change_nickname_text
+msgid "Changing your nickname will change your public blog, feed, and articles URLs"
+msgstr ""
+
 #: [confirm]title
 msgid "Confirmation of authentication"
 msgstr ""
@@ -1269,7 +1289,8 @@ msgid "Add a contact"
 msgstr ""
 
 #: [roster]add_contact_info1
-msgid "Enter the Jabber ID of your contact."
+#, fuzzy
+msgid "Enter the XMPP Address of your contact."
 msgstr "הזן מזהה Jabber של איש קשר."
 
 #: [roster]add_contact_info2
@@ -1295,6 +1316,14 @@ msgstr ""
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "שם"
+
+#: [general]pronouns
+msgid "Pronouns"
+msgstr ""
+
+#: [general]pronouns_example
+msgid "he/she/they/…"
+msgstr ""
 
 #: [general]nickname [chatrooms]nickname
 msgid "Nickname"
@@ -1338,6 +1367,15 @@ msgstr ""
 
 #: [general]links
 msgid "Links"
+msgstr ""
+
+#: [general]private_account_title
+#, fuzzy
+msgid "Your account is private"
+msgstr "פרסום זה הינו פרטי"
+
+#: [general]private_account_text
+msgid "Go to the Settings page to create a public blog and allow the other users to find you"
 msgstr ""
 
 #: [position]legend
@@ -1389,7 +1427,7 @@ msgid "Group"
 msgstr "קבוצה"
 
 #: [delete]text
-msgid "You are going to delete one of your contacts, please confirm your action"
+msgid "You are going to remove one of your contacts, please confirm your action"
 msgstr ""
 
 #: [age]years
@@ -1429,15 +1467,15 @@ msgid "But this contact can still see if you are online"
 msgstr ""
 
 #: [subscription]nil
-msgid "No subscriptions"
-msgstr "אין הרשמות"
+msgid "You are not subscribed to anyone"
+msgstr ""
 
 #: [subscription]nil_button [button]invite
 msgid "Invite"
 msgstr "הזמן"
 
 #: [subscription]nil_text
-msgid "This contact is in your contact list but there is no subscription between the two accounts"
+msgid "This contact is in your contact list but you are not subscribed to each other"
 msgstr ""
 
 #: [dictaphone]name
@@ -1501,7 +1539,7 @@ msgid "By default the content is only available to your contacts. You can make y
 msgstr ""
 
 #: [faq]permission_community_title
-msgid "How does it applies on Communities posts?"
+msgid "How does it apply to Communities posts?"
 msgstr ""
 
 #: [faq]permission_community_text
@@ -1509,7 +1547,7 @@ msgid "Similary to your blog publications except that, by default, the posts are
 msgstr ""
 
 #: [faq]chatrooms_title
-msgid "Where can I find a list of chatrooms?"
+msgid "Where can I find a list of group chats?"
 msgstr ""
 
 #: [faq]find_contacts_title
@@ -1577,15 +1615,16 @@ msgid "Wrong username"
 msgstr "שם משתמש שגוי"
 
 #: [error]jid
-msgid "Invalid JID"
-msgstr "‫JID שגויה"
+msgid "Invalid XMPP Address"
+msgstr ""
 
 #: [error]empty_challenge
 msgid "Empty Challenge from the server"
 msgstr "רוקן הזמנה מן השרת"
 
 #: [error]dns
-msgid "XMPP Domain error, your account is not a correct Jabber ID"
+#, fuzzy
+msgid "XMPP Domain error, your account is not a valid XMPP Address"
 msgstr "שגיאת מתחם XMPP, חשבונך אינו כתובת JID תקינה"
 
 #: [error]data_missings
@@ -1689,7 +1728,7 @@ msgid "No news yet…"
 msgstr ""
 
 #: [menu]empty
-msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
+msgid "Welcome to your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
 msgstr ""
 
 #: [menu]mine
@@ -1964,7 +2003,7 @@ msgid "Oh! Hello!"
 msgstr "שלום!"
 
 #: [hello]enter_paragraph
-msgid "It seems that you’re new there! Welcome on Movim!"
+msgid "It seems that you are new here! Welcome to Movim!"
 msgstr ""
 
 #: [hello]menu_title
@@ -2124,7 +2163,7 @@ msgid "Join a custom chatroom"
 msgstr ""
 
 #: [rooms]empty_text1
-msgid "You don’t have any chatrooms yet."
+msgid "You don’t have any chatroom yet."
 msgstr ""
 
 #: [rooms]empty_text2
@@ -2132,31 +2171,37 @@ msgid "Add one by clicking on the add button."
 msgstr ""
 
 #: [rooms]type_room
-msgid "Type of room"
-msgstr ""
+#, fuzzy
+msgid "Type of chatroom"
+msgstr "הוסף חדר שיחה"
 
 #: [rooms]default_room
-msgid "Standard room"
-msgstr ""
+#, fuzzy
+msgid "Standard chatroom"
+msgstr "הוסף חדר שיחה"
 
 #: [rooms]gateway_room
-msgid "Gateway room"
-msgstr ""
+#, fuzzy
+msgid "Gateway chatroom"
+msgstr "הוסף חדר שיחה"
 
 #: [rooms]show_all
-msgid "Show all rooms"
-msgstr ""
+#, fuzzy
+msgid "Show all chatrooms"
+msgstr "חדר שיחה פומבי"
 
 #: [rooms]hide_disconnected
-msgid "Hide disconnected rooms"
-msgstr ""
+#, fuzzy
+msgid "Hide disconnected chatrooms"
+msgstr "מנותק מתוך שיחת הקבוצה"
 
 #: [rooms]destroy_title
-msgid "Destroy the room"
-msgstr ""
+#, fuzzy
+msgid "Destroy the chatroom"
+msgstr "הוסף חדר שיחה"
 
 #: [rooms]destroy_text
-msgid "Are you sure you want to permanently destroy the following room?"
+msgid "Are you sure you want to permanently destroy the following chatroom?"
 msgstr ""
 
 #: [rooms]owner
@@ -2186,15 +2231,17 @@ msgid "Chatrooms"
 msgstr "חדרי שיחה"
 
 #: [chatrooms]id
-msgid "Chatroom ID"
-msgstr ""
+#, fuzzy
+msgid "Chatroom Address"
+msgstr "חדרי שיחה"
 
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "החדר המועדף עליי"
 
 #: [chatrooms]bad_id
-msgid "Bad Chatroom ID"
+#, fuzzy
+msgid "Bad Chatroom Address"
 msgstr "מזהה חדר שיחה רע"
 
 #: [chatrooms]empty_name
@@ -2202,12 +2249,22 @@ msgid "Empty name"
 msgstr "שם ריק"
 
 #: [chatrooms]remove_title
-msgid "Remove a chatroom"
+msgid "Permanently leave a chatroom"
 msgstr ""
 
 #: [chatrooms]remove_text
-msgid "You are going to remove the following chatroom. Please confirm your action."
+msgid "You are going to permanently leave the following chatroom. Please confirm your action."
 msgstr ""
+
+#: [chatrooms]connected
+#, fuzzy
+msgid "Joined the chatroom"
+msgstr "הוסף חדר שיחה"
+
+#: [chatrooms]disconnected
+#, fuzzy
+msgid "Left the chatroom"
+msgstr "הוסף חדר שיחה"
 
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
@@ -2224,15 +2281,16 @@ msgid "Banned"
 msgstr ""
 
 #: [chatrooms]bad_nickname
-msgid "Please enter a correct nickname (2 to 40 characters)"
+msgid "Please enter a valid nickname (2 to 40 characters)"
 msgstr ""
 
 #: [chatrooms]conflict
-msgid "Username already taken"
+#, fuzzy
+msgid "Nickname already taken"
 msgstr "שם משתמש כבר תפוס"
 
 #: [chatrooms]autojoin
-msgid "Join this chatroom on connect"
+msgid "Join this chatroom on login"
 msgstr ""
 
 #: [chatrooms]pinned
@@ -2240,8 +2298,9 @@ msgid "Pin this chatroom"
 msgstr ""
 
 #: [chatrooms]destroyed
-msgid "Room destroyed"
-msgstr ""
+#, fuzzy
+msgid "Chatroom destroyed"
+msgstr "חדרי שיחה"
 
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
@@ -2276,7 +2335,7 @@ msgid "Not acceptable"
 msgstr ""
 
 #: [chatrooms]serviceunavailable
-msgid "The chatroom occupant limit has been reached"
+msgid "The chatroom participant limit has been reached"
 msgstr ""
 
 #: [chatrooms]notallowed
@@ -2292,7 +2351,8 @@ msgid "Bookmarks updated"
 msgstr "סימניות עודכנו"
 
 #: [room]anonymous_title
-msgid "Public chatroom"
+#, fuzzy
+msgid "Public Channel"
 msgstr "חדר שיחה פומבי"
 
 #: [room]anonymous_text1
@@ -2328,7 +2388,7 @@ msgid "Public profiles"
 msgstr ""
 
 #: [room]nonanonymous_muc_text
-msgid "The participants of this chatroom can see each other's profile"
+msgid "The participants of this chatroom can see each other's XMPP Addresses"
 msgstr ""
 
 #: [room]archived
@@ -2339,7 +2399,7 @@ msgstr ""
 msgid "The chatroom messages are archived"
 msgstr ""
 
-#: [room]group_chat
+#: [room]group_chat [page]room
 msgid "Group Chat"
 msgstr ""
 
@@ -2452,11 +2512,19 @@ msgid "No chatrooms found locally"
 msgstr ""
 
 #: [roomsexplore]global_title
-msgid "Global search"
+msgid "Channels"
 msgstr ""
 
 #: [roomsexplore]no_global
 msgid "No chatrooms found globally"
+msgstr ""
+
+#: [roomsexplore]find_more
+msgid "Find more channels"
+msgstr ""
+
+#: [roomsexplore]find_more_text
+msgid "%s in total"
 msgstr ""
 
 #: [search]keyword
@@ -2476,7 +2544,7 @@ msgid "No contacts yet?"
 msgstr ""
 
 #: [search]no_contacts_text
-msgid "Find one by searching for their name or id"
+msgid "Find one by searching for their name or address"
 msgstr ""
 
 #: [search]tags
@@ -2724,7 +2792,7 @@ msgid "Movim is currently working in degraded mode"
 msgstr ""
 
 #: [degraded]text_1
-msgid "Your server doesn’t support XMPP Pubsub persistence or the social features (communities, news feed and profile) are disabled by the administrator."
+msgid "Your server doesn’t support XMPP Pubsub persistence or the social features (communities, news feed, and profile) are disabled by the administrator."
 msgstr ""
 
 #: [degraded]text_2
@@ -2876,12 +2944,13 @@ msgid "News"
 msgstr "חדשות"
 
 #: [page]avatar
-msgid "Avatar"
-msgstr "אווטאר"
+#, fuzzy
+msgid "Profile Picture"
+msgstr "דיוקן עודכן"
 
 #: [page]chats
-msgid "Chats"
-msgstr "שיחות"
+msgid "Direct Messages & Whispers"
+msgstr ""
 
 #: [page]publish
 msgid "Publish"
@@ -2919,10 +2988,6 @@ msgstr "ועידת וידאו"
 msgctxt "[page]share"
 msgid "Share"
 msgstr ""
-
-#: [page]room
-msgid "Room"
-msgstr "חדר"
 
 #: [page]tag
 msgid "Tag"
@@ -2993,7 +3058,7 @@ msgid "Destroy"
 msgstr ""
 
 #: [button]remove
-msgid "Remove"
+msgid "Leave"
 msgstr ""
 
 #: [button]cancel
@@ -3744,3 +3809,24 @@ msgstr "API אינו נגיש, נסה שוב מאוחר יותר"
 #: [field]type_here
 msgid "Type here"
 msgstr "הקלד כאן"
+
+#~ msgid "Avatar Updated"
+#~ msgstr "אווטאר עודכן"
+
+#~ msgid "Avatar Not Updated"
+#~ msgstr "אווטאר לא מעודכן"
+
+#~ msgid "No subscriptions"
+#~ msgstr "אין הרשמות"
+
+#~ msgid "Invalid JID"
+#~ msgstr "‫JID שגויה"
+
+#~ msgid "Avatar"
+#~ msgstr "אווטאר"
+
+#~ msgid "Chats"
+#~ msgstr "שיחות"
+
+#~ msgid "Room"
+#~ msgstr "חדר"

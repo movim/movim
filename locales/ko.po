@@ -120,7 +120,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-30 14:00+0200\n"
+"POT-Creation-Date: 2025-07-02 23:39+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: 조수연, 2022\n"
 "Language-Team: Korean (http://app.transifex.com/movim/movim/language/ko/)\n"
@@ -196,7 +196,8 @@ msgid "Delete your account"
 msgstr "계정 삭제하기"
 
 #: [account]delete_text
-msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts and publications)."
+#, fuzzy
+msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts, and publications)."
 msgstr "당신은 당신의 XMPP 계정과 그와 관련된 모든 정보들을 삭제할 것입니다. (프로필, 연락처, 게시물 포함)"
 
 #: [account]delete_text_confirm
@@ -216,11 +217,13 @@ msgid "Leave this instance"
 msgstr "이 인스턴스에서 나가기"
 
 #: [account]clear_text
-msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
+#, fuzzy
+msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts, and publications)."
 msgstr "당신은 당신의 계정과 관련된 모든 정보들을 삭제할 것입니다. (프로필, 연락처, 게시물 포함)"
 
 #: [account]clear_text_confirm
-msgid "This action will not delete your account but will disconnect you from this instance."
+#, fuzzy
+msgid "This action will not delete your account but will disconnect you from Movim."
 msgstr "이 작업을 수행해도 계정이 삭제되지는 않지만 이 인스턴스에서 연결이 끊어집니다."
 
 #: [account]delete_bundle_title
@@ -304,7 +307,8 @@ msgid "Restrict suggestions"
 msgstr "추천 중지"
 
 #: [restrictsuggestions]text
-msgid "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
+#, fuzzy
+msgid "Only suggest chatrooms, Communities, and other contents that are available on the user's XMPP server and related services"
 msgstr "사용자 XMPP 서버 및 관련 서비스에서 사용할 수 있는 채팅방, 커뮤니티 및 기타 콘텐츠만 추천합니다"
 
 #: [chatonly]title
@@ -336,11 +340,13 @@ msgid "Remove the XMPP registration flow and buttons from the interface"
 msgstr "인터페이스에서 XMPP 등록 흐름 및 버튼을 제거합니다"
 
 #: [whitelist]title
-msgid "Whitelisted XMPP Servers"
+#, fuzzy
+msgid "Allowed XMPP Servers"
 msgstr "화이트리스트에 등록된 XMPP 서버"
 
 #: [whitelist]info1
-msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
+#, fuzzy
+msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name(s) here, with comma (ex: movim.eu,jabber.fr)"
 msgstr "Movim 포드에 승인된 XMPP 서버 목록을 지정하고 다른 모든 서버에 대한 연결을 금지하려면 여기에 해당 도메인 이름을 쉼표와 함께 입력하세요(예: movim.eu,jabber.fr)."
 
 #: [whitelist]info2
@@ -348,7 +354,8 @@ msgid "Leave this field blank if you allow the access to all the XMPP accounts."
 msgstr "모든 XMPP 계정에 대한 액세스를 허용하는 경우 이 필드를 비워 둡니다."
 
 #: [whitelist]label
-msgid "List of whitelisted XMPP servers"
+#, fuzzy
+msgid "List of allowed XMPP servers"
 msgstr "화이트리스트 XMPP 서버 목록"
 
 #: [information]title
@@ -458,16 +465,19 @@ msgid "File"
 msgstr "파일"
 
 #: [avatar]updated
-msgid "Avatar Updated"
-msgstr "프로필 업데이트됨"
+#, fuzzy
+msgid "Profile Picture Updated"
+msgstr "프로필이 업데이트되지 않음"
 
 #: [avatar]not_updated
-msgid "Avatar Not Updated"
+#, fuzzy
+msgid "Profile Picture Not Updated"
 msgstr "프로필이 업데이트되지 않음"
 
 #: [avatar]change
-msgid "Change my avatar"
-msgstr "내 프로필 변경"
+#, fuzzy
+msgid "Change my profile picture"
+msgstr "내 비밀번호 바꾸기"
 
 #: [banner]change
 msgid "Change my banner"
@@ -578,7 +588,8 @@ msgid ":shortcut: to insert an emoji"
 msgstr ":shortcut: 이모티콘을 삽입하려면"
 
 #: [message]visitor_help
-msgid "You are not allowed to send messages in this conference"
+#, fuzzy
+msgid "You are not allowed to send messages in this chatroom"
 msgstr "이 컨퍼런스에서 메시지를 보낼 수 없습니다."
 
 #: [chat]attention
@@ -727,11 +738,11 @@ msgstr ""
 msgid "Members"
 msgstr "멤버"
 
-#: [chatroom]connected [chatrooms]connected
+#: [chatroom]connected
 msgid "Connected to the chatroom"
 msgstr "채팅방에 연결됨"
 
-#: [chatroom]disconnected [chatrooms]disconnected
+#: [chatroom]disconnected
 msgid "Disconnected from the chatroom"
 msgstr "채팅방에서 연결이 끊어짐"
 
@@ -963,6 +974,11 @@ msgstr "다음 커뮤니티를 삭제하려고 합니다. 작업을 확인해주
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
 msgstr "이 커뮤니티는 더 이상 존재하지 않는 것 같습니다. 구독에서 삭제하시겠습니까?"
 
+#: [communityaffiliation]delete_error
+#, fuzzy
+msgid "Error during the node deletion"
+msgstr "노드 설정을 적용하는 동안 오류가 발생했습니다."
+
 #: [communityaffiliation]config_error
 msgid "Error during the application of the node configuration"
 msgstr "노드 설정을 적용하는 동안 오류가 발생했습니다."
@@ -1193,7 +1209,8 @@ msgid "Main chat page"
 msgstr "기본 채팅 페이지"
 
 #: [config]chatmain_text
-msgid "Make the chat page as the default one"
+#, fuzzy
+msgid "Set the chat page to the default when opening Movim"
 msgstr "채팅 페이지를 기본 페이지로 설정"
 
 #: [config]mam_text
@@ -1252,6 +1269,14 @@ msgstr "수신 메시지"
 msgid "Accent color"
 msgstr ""
 
+#: [config]change_nickname_title
+msgid "Be careful"
+msgstr ""
+
+#: [config]change_nickname_text
+msgid "Changing your nickname will change your public blog, feed, and articles URLs"
+msgstr ""
+
 #: [confirm]title
 msgid "Confirmation of authentication"
 msgstr "인증 확인"
@@ -1269,7 +1294,8 @@ msgid "Add a contact"
 msgstr "연락처 추가"
 
 #: [roster]add_contact_info1
-msgid "Enter the Jabber ID of your contact."
+#, fuzzy
+msgid "Enter the XMPP Address of your contact."
 msgstr "Jabber ID를 입력합니다."
 
 #: [roster]add_contact_info2
@@ -1295,6 +1321,14 @@ msgstr "일반 정보"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "이름"
+
+#: [general]pronouns
+msgid "Pronouns"
+msgstr ""
+
+#: [general]pronouns_example
+msgid "he/she/they/…"
+msgstr ""
 
 #: [general]nickname [chatrooms]nickname
 msgid "Nickname"
@@ -1339,6 +1373,15 @@ msgstr "사진"
 #: [general]links
 msgid "Links"
 msgstr "링크"
+
+#: [general]private_account_title
+#, fuzzy
+msgid "Your account is private"
+msgstr "비공개 게시물입니다."
+
+#: [general]private_account_text
+msgid "Go to the Settings page to create a public blog and allow the other users to find you"
+msgstr ""
 
 #: [position]legend
 msgid "Geographic Position"
@@ -1389,7 +1432,8 @@ msgid "Group"
 msgstr "그룹"
 
 #: [delete]text
-msgid "You are going to delete one of your contacts, please confirm your action"
+#, fuzzy
+msgid "You are going to remove one of your contacts, please confirm your action"
 msgstr "연락처 중 하나를 삭제하려고 합니다. 작업을 확인해주세요."
 
 #: [age]years
@@ -1429,15 +1473,17 @@ msgid "But this contact can still see if you are online"
 msgstr "하지만 이 계정은 여전히 귀하가 온라인 상태인지 확인할 수 있습니다."
 
 #: [subscription]nil
-msgid "No subscriptions"
-msgstr "구독 없음"
+#, fuzzy
+msgid "You are not subscribed to anyone"
+msgstr "이 계정을 구독하고 있지 않습니다"
 
 #: [subscription]nil_button [button]invite
 msgid "Invite"
 msgstr "초대"
 
 #: [subscription]nil_text
-msgid "This contact is in your contact list but there is no subscription between the two accounts"
+#, fuzzy
+msgid "This contact is in your contact list but you are not subscribed to each other"
 msgstr "이 계정은 연락처 목록에 있지만 두 계정 간에 구독이 없습니다."
 
 #: [dictaphone]name
@@ -1501,7 +1547,8 @@ msgid "By default the content is only available to your contacts. You can make y
 msgstr "기본적으로 콘텐츠는 연락처에 있는 사람만 볼 수 있습니다. 관련 설정을 활성화하면 프로필과 게시물을 공개할 수 있습니다."
 
 #: [faq]permission_community_title
-msgid "How does it applies on Communities posts?"
+#, fuzzy
+msgid "How does it apply to Communities posts?"
 msgstr "커뮤니티 게시물에는 권한 설정이 어떻게 적용되나요?"
 
 #: [faq]permission_community_text
@@ -1509,7 +1556,8 @@ msgid "Similary to your blog publications except that, by default, the posts are
 msgstr "블로그 게시물과 유사하지만 기본적으로 게시물은 커뮤니티 멤버 또는 구독자만 사용할 수 있습니다(모든 커뮤니티 콘텐츠를 명시적으로 공개하는 경우는 제외)."
 
 #: [faq]chatrooms_title
-msgid "Where can I find a list of chatrooms?"
+#, fuzzy
+msgid "Where can I find a list of group chats?"
 msgstr "채팅방 목록은 어디서 찾을 수 있나요?"
 
 #: [faq]find_contacts_title
@@ -1577,15 +1625,16 @@ msgid "Wrong username"
 msgstr "잘못된 사용자 이름"
 
 #: [error]jid
-msgid "Invalid JID"
-msgstr "잘못된 JID"
+msgid "Invalid XMPP Address"
+msgstr ""
 
 #: [error]empty_challenge
 msgid "Empty Challenge from the server"
 msgstr "서버에서 챌린지 비우기"
 
 #: [error]dns
-msgid "XMPP Domain error, your account is not a correct Jabber ID"
+#, fuzzy
+msgid "XMPP Domain error, your account is not a valid XMPP Address"
 msgstr "XMPP 도메인 오류, 계정이 올바른 Jabber ID가 아닙니다."
 
 #: [error]data_missings
@@ -1689,7 +1738,8 @@ msgid "No news yet…"
 msgstr "아직 소식이 없습니다..."
 
 #: [menu]empty
-msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
+#, fuzzy
+msgid "Welcome to your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
 msgstr "뉴스 피드에 오신 것을 환영합니다. 여기에 당신이 구독한 연락처와 커뮤니티에서 게시된 모든 게시물이 표시됩니다."
 
 #: [menu]mine
@@ -1965,7 +2015,8 @@ msgid "Oh! Hello!"
 msgstr "오! 안녕하세요!"
 
 #: [hello]enter_paragraph
-msgid "It seems that you’re new there! Welcome on Movim!"
+#, fuzzy
+msgid "It seems that you are new here! Welcome to Movim!"
 msgstr "새로 오신 것 같습니다! Movim에 오신 것을 환영합니다!"
 
 #: [hello]menu_title
@@ -2125,7 +2176,8 @@ msgid "Join a custom chatroom"
 msgstr "커스텀 채팅방에 참여하기"
 
 #: [rooms]empty_text1
-msgid "You don’t have any chatrooms yet."
+#, fuzzy
+msgid "You don’t have any chatroom yet."
 msgstr "아직 채팅방이 없습니다."
 
 #: [rooms]empty_text2
@@ -2133,31 +2185,38 @@ msgid "Add one by clicking on the add button."
 msgstr "추가 버튼을 클릭하여 채팅을 시작하세요."
 
 #: [rooms]type_room
-msgid "Type of room"
+#, fuzzy
+msgid "Type of chatroom"
 msgstr "채팅방 유형"
 
 #: [rooms]default_room
-msgid "Standard room"
+#, fuzzy
+msgid "Standard chatroom"
 msgstr "일반 채팅방"
 
 #: [rooms]gateway_room
-msgid "Gateway room"
+#, fuzzy
+msgid "Gateway chatroom"
 msgstr "게이트웨이 채팅방"
 
 #: [rooms]show_all
-msgid "Show all rooms"
+#, fuzzy
+msgid "Show all chatrooms"
 msgstr "모든 채팅방 보기"
 
 #: [rooms]hide_disconnected
-msgid "Hide disconnected rooms"
+#, fuzzy
+msgid "Hide disconnected chatrooms"
 msgstr "연결이 끊긴 채팅방 숨기기"
 
 #: [rooms]destroy_title
-msgid "Destroy the room"
+#, fuzzy
+msgid "Destroy the chatroom"
 msgstr "채팅방 삭제하기"
 
 #: [rooms]destroy_text
-msgid "Are you sure you want to permanently destroy the following room?"
+#, fuzzy
+msgid "Are you sure you want to permanently destroy the following chatroom?"
 msgstr "다음 채팅방을 영구적으로 삭제할까요?"
 
 #: [rooms]owner
@@ -2187,15 +2246,17 @@ msgid "Chatrooms"
 msgstr "채팅방"
 
 #: [chatrooms]id
-msgid "Chatroom ID"
-msgstr "채팅방 ID"
+#, fuzzy
+msgid "Chatroom Address"
+msgstr "채팅방"
 
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "내가 좋아하는 채팅방"
 
 #: [chatrooms]bad_id
-msgid "Bad Chatroom ID"
+#, fuzzy
+msgid "Bad Chatroom Address"
 msgstr "잘못된 채팅방 ID"
 
 #: [chatrooms]empty_name
@@ -2203,12 +2264,24 @@ msgid "Empty name"
 msgstr "비어있는 이름"
 
 #: [chatrooms]remove_title
-msgid "Remove a chatroom"
-msgstr ""
+#, fuzzy
+msgid "Permanently leave a chatroom"
+msgstr "채팅방 만들기"
 
 #: [chatrooms]remove_text
-msgid "You are going to remove the following chatroom. Please confirm your action."
-msgstr ""
+#, fuzzy
+msgid "You are going to permanently leave the following chatroom. Please confirm your action."
+msgstr "다음 커뮤니티를 삭제하려고 합니다. 작업을 확인해주세요."
+
+#: [chatrooms]connected
+#, fuzzy
+msgid "Joined the chatroom"
+msgstr "채팅방에 참여하기"
+
+#: [chatrooms]disconnected
+#, fuzzy
+msgid "Left the chatroom"
+msgstr "채팅방 추가"
 
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
@@ -2225,15 +2298,18 @@ msgid "Banned"
 msgstr "금지"
 
 #: [chatrooms]bad_nickname
-msgid "Please enter a correct nickname (2 to 40 characters)"
+#, fuzzy
+msgid "Please enter a valid nickname (2 to 40 characters)"
 msgstr "올바른 닉네임을 입력하세요. (2~40자)"
 
 #: [chatrooms]conflict
-msgid "Username already taken"
+#, fuzzy
+msgid "Nickname already taken"
 msgstr "이미 사용중인 이름입니다"
 
 #: [chatrooms]autojoin
-msgid "Join this chatroom on connect"
+#, fuzzy
+msgid "Join this chatroom on login"
 msgstr "연결 시 이 채팅방에 참여하기"
 
 #: [chatrooms]pinned
@@ -2241,7 +2317,8 @@ msgid "Pin this chatroom"
 msgstr "이 채팅방 고정하기"
 
 #: [chatrooms]destroyed
-msgid "Room destroyed"
+#, fuzzy
+msgid "Chatroom destroyed"
 msgstr "채팅방이 삭제됨"
 
 #: [chatrooms]registrationrequired
@@ -2277,7 +2354,8 @@ msgid "Not acceptable"
 msgstr "허용되지 않음"
 
 #: [chatrooms]serviceunavailable
-msgid "The chatroom occupant limit has been reached"
+#, fuzzy
+msgid "The chatroom participant limit has been reached"
 msgstr "채팅방 인원 제한에 도달했습니다."
 
 #: [chatrooms]notallowed
@@ -2293,8 +2371,9 @@ msgid "Bookmarks updated"
 msgstr "북마크 업데이트됨"
 
 #: [room]anonymous_title
-msgid "Public chatroom"
-msgstr "공개 채팅방"
+#, fuzzy
+msgid "Public Channel"
+msgstr "공개 페이지"
 
 #: [room]anonymous_text1
 msgid "You are currently logged as an anonymous user."
@@ -2329,7 +2408,8 @@ msgid "Public profiles"
 msgstr "공개 프로필"
 
 #: [room]nonanonymous_muc_text
-msgid "The participants of this chatroom can see each other's profile"
+#, fuzzy
+msgid "The participants of this chatroom can see each other's XMPP Addresses"
 msgstr "이 대화방의 참가자는 서로의 프로필을 볼 수 있습니다."
 
 #: [room]archived
@@ -2340,7 +2420,7 @@ msgstr ""
 msgid "The chatroom messages are archived"
 msgstr ""
 
-#: [room]group_chat
+#: [room]group_chat [page]room
 msgid "Group Chat"
 msgstr "그룹 채팅"
 
@@ -2453,12 +2533,21 @@ msgid "No chatrooms found locally"
 msgstr "로컬에서 대화방을 찾을 수 없습니다."
 
 #: [roomsexplore]global_title
-msgid "Global search"
-msgstr "글로벌 검색"
+#, fuzzy
+msgid "Channels"
+msgstr "채널"
 
 #: [roomsexplore]no_global
 msgid "No chatrooms found globally"
 msgstr "글로벌로 검색된 채팅방이 없습니다."
+
+#: [roomsexplore]find_more
+msgid "Find more channels"
+msgstr ""
+
+#: [roomsexplore]find_more_text
+msgid "%s in total"
+msgstr ""
 
 #: [search]keyword
 msgid "What are you looking for?"
@@ -2477,7 +2566,8 @@ msgid "No contacts yet?"
 msgstr "아직 연락처가 없습니까?"
 
 #: [search]no_contacts_text
-msgid "Find one by searching for their name or id"
+#, fuzzy
+msgid "Find one by searching for their name or address"
 msgstr "이름 또는 ID를 검색"
 
 #: [search]tags
@@ -2725,7 +2815,8 @@ msgid "Movim is currently working in degraded mode"
 msgstr "Movim은 현재 성능 저하 모드에서 작동하고 있습니다."
 
 #: [degraded]text_1
-msgid "Your server doesn’t support XMPP Pubsub persistence or the social features (communities, news feed and profile) are disabled by the administrator."
+#, fuzzy
+msgid "Your server doesn’t support XMPP Pubsub persistence or the social features (communities, news feed, and profile) are disabled by the administrator."
 msgstr "서버가 XMPP Pubsub persistence을 지원하지 않거나 관리자가 소셜 기능(커뮤니티, 뉴스 피드 및 프로필)을 비활성화했습니다."
 
 #: [degraded]text_2
@@ -2877,12 +2968,13 @@ msgid "News"
 msgstr "뉴스"
 
 #: [page]avatar
-msgid "Avatar"
-msgstr "아바타"
+#, fuzzy
+msgid "Profile Picture"
+msgstr "프로필 업데이트됨"
 
 #: [page]chats
-msgid "Chats"
-msgstr "채팅"
+msgid "Direct Messages & Whispers"
+msgstr ""
 
 #: [page]publish
 msgid "Publish"
@@ -2920,10 +3012,6 @@ msgstr "화상 회의"
 msgctxt "[page]share"
 msgid "Share"
 msgstr "공유하기"
-
-#: [page]room
-msgid "Room"
-msgstr "채팅방"
 
 #: [page]tag
 msgid "Tag"
@@ -2994,7 +3082,7 @@ msgid "Destroy"
 msgstr "닫기"
 
 #: [button]remove
-msgid "Remove"
+msgid "Leave"
 msgstr ""
 
 #: [button]cancel
@@ -3745,6 +3833,39 @@ msgstr "API에 연결할 수 없습니다. 나중에 다시 시도하십시오."
 #: [field]type_here
 msgid "Type here"
 msgstr "여기에 입력하세요"
+
+#~ msgid "Avatar Updated"
+#~ msgstr "프로필 업데이트됨"
+
+#~ msgid "Avatar Not Updated"
+#~ msgstr "프로필이 업데이트되지 않음"
+
+#~ msgid "Change my avatar"
+#~ msgstr "내 프로필 변경"
+
+#~ msgid "No subscriptions"
+#~ msgstr "구독 없음"
+
+#~ msgid "Invalid JID"
+#~ msgstr "잘못된 JID"
+
+#~ msgid "Chatroom ID"
+#~ msgstr "채팅방 ID"
+
+#~ msgid "Public chatroom"
+#~ msgstr "공개 채팅방"
+
+#~ msgid "Global search"
+#~ msgstr "글로벌 검색"
+
+#~ msgid "Avatar"
+#~ msgstr "아바타"
+
+#~ msgid "Chats"
+#~ msgstr "채팅"
+
+#~ msgid "Room"
+#~ msgstr "채팅방"
 
 #~ msgid "Upload a new picture"
 #~ msgstr "새 사진 업로드"

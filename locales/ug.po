@@ -120,7 +120,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-30 14:00+0200\n"
+"POT-Creation-Date: 2025-07-02 23:39+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Keram, 2023\n"
 "Language-Team: Uyghur (http://app.transifex.com/movim/movim/language/ug/)\n"
@@ -196,7 +196,8 @@ msgid "Delete your account"
 msgstr "ھېساباتىڭىزنى ئۈچۈرۈڭ"
 
 #: [account]delete_text
-msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts and publications)."
+#, fuzzy
+msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts, and publications)."
 msgstr "سىز XMPP ھېساباتىڭىزنى ھەمدە ئۇنىڭغا ئالاقىدار بارلىق ئۇچۇرلارنى ئۆچۈرۋېتىسىز(تەرجىمال، ئالاقىداشلار ھەمدە يازمىلار)."
 
 #: [account]delete_text_confirm
@@ -216,11 +217,13 @@ msgid "Leave this instance"
 msgstr "بۇ مىسالدىن ئايرىلىش"
 
 #: [account]clear_text
-msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
+#, fuzzy
+msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts, and publications)."
 msgstr "سىز بۇ مۇۋىم مىسالىدىكى ھېساباتىڭىزغا مۇناسىۋەتلىك بارلىق ئۇچۇرلارنى ئۆچۈرۋېتىسىز(تەرجىمال، ئالاقىداشلار، يازمىلار)."
 
 #: [account]clear_text_confirm
-msgid "This action will not delete your account but will disconnect you from this instance."
+#, fuzzy
+msgid "This action will not delete your account but will disconnect you from Movim."
 msgstr "بۇ ھەركەت ھېساباتىڭىزنى ئۆچۈرۋەتمەيدۇ بەلكى سىزنى بۇ مىسالدىن چىكىدۈرىدۇ."
 
 #: [account]delete_bundle_title
@@ -304,7 +307,8 @@ msgid "Restrict suggestions"
 msgstr "تەۋسىيەنى چەكلەش"
 
 #: [restrictsuggestions]text
-msgid "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
+#, fuzzy
+msgid "Only suggest chatrooms, Communities, and other contents that are available on the user's XMPP server and related services"
 msgstr "پەقەتلا بۇ ئىشلەتكۈچىنىڭ XMPP مۇلازىمېتىرىدا مەۋجۇت پاراڭخانا، جامائەت ۋە باشقا مەزمۇنلار ھەمدە مۇناسىۋەتلىك مۇلازىمەتلەر"
 
 #: [chatonly]title
@@ -336,11 +340,13 @@ msgid "Remove the XMPP registration flow and buttons from the interface"
 msgstr "XMPP تىزىملىتىش ئېقىمى ھەمدە كۇنۇپكىسىنى بەتتىن چىقىرىش"
 
 #: [whitelist]title
-msgid "Whitelisted XMPP Servers"
+#, fuzzy
+msgid "Allowed XMPP Servers"
 msgstr "ئاق تىزىملىكتىكى XMPP مۇلازىمېتىرلىرى"
 
 #: [whitelist]info1
-msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
+#, fuzzy
+msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name(s) here, with comma (ex: movim.eu,jabber.fr)"
 msgstr "ئەگەر سىز بۇ مۇۋىم نوقتىسىدا ئىجازەت بېرىدىغان XMPP مۇلازىمېتىرلىرىنىڭ تىزىملىكىنى بەلگىلەپ باشقىلىرىغا ئۇلىنىشنى مەنئىي قىلماقچى بولسىڭىز، ئۇلارنىڭ دائىرە ناملىرىنى پەش بىلەن ئايرىپ تۆۋەنگە يېزىڭ(مەسلەن، مۇۋىم.ياۋرۇپا.پاراڭ.فرانسىيە)"
 
 #: [whitelist]info2
@@ -348,7 +354,8 @@ msgid "Leave this field blank if you allow the access to all the XMPP accounts."
 msgstr "ئەگەر سىز بارلىق XMPP ھېساباتلارنىڭ كىرىشىگە يول قويسىڭىز، بۇ ئۇرۇننى بوش قۇيۇڭ."
 
 #: [whitelist]label
-msgid "List of whitelisted XMPP servers"
+#, fuzzy
+msgid "List of allowed XMPP servers"
 msgstr "ئاق تىزىملىكتىكى XMPP مۇلازىمېتىرلار تىزىملىكى"
 
 #: [information]title
@@ -458,16 +465,19 @@ msgid "File"
 msgstr "ھۆججەت"
 
 #: [avatar]updated
-msgid "Avatar Updated"
-msgstr "باش-سۈرەت يېڭىلاندى"
+#, fuzzy
+msgid "Profile Picture Updated"
+msgstr "تەرجىمال يېڭىلانمىدى"
 
 #: [avatar]not_updated
-msgid "Avatar Not Updated"
-msgstr "باش سۈرەت يېڭىلانمىدى"
+#, fuzzy
+msgid "Profile Picture Not Updated"
+msgstr "تەرجىمال يېڭىلانمىدى"
 
 #: [avatar]change
-msgid "Change my avatar"
-msgstr "باش سۈرەتنى ئۆزگەرتىش"
+#, fuzzy
+msgid "Change my profile picture"
+msgstr "مەخپىي نۇمۇرنى ئۆزگەرتىش"
 
 #: [banner]change
 msgid "Change my banner"
@@ -578,7 +588,8 @@ msgid ":shortcut: to insert an emoji"
 msgstr ": قىسقايول: چىراي ئىپادىسى كىرگۈزۈش ئۈچۈن"
 
 #: [message]visitor_help
-msgid "You are not allowed to send messages in this conference"
+#, fuzzy
+msgid "You are not allowed to send messages in this chatroom"
 msgstr "سىز بۇ يىغىندا ئۇچۇر ئەۋەتىشكە رۇخسەت قىلىنمىدىڭىز"
 
 #: [chat]attention
@@ -727,11 +738,11 @@ msgstr ""
 msgid "Members"
 msgstr "ئەزالار"
 
-#: [chatroom]connected [chatrooms]connected
+#: [chatroom]connected
 msgid "Connected to the chatroom"
 msgstr "پاراڭخانىغا ئۇلاندى"
 
-#: [chatroom]disconnected [chatrooms]disconnected
+#: [chatroom]disconnected
 msgid "Disconnected from the chatroom"
 msgstr "بۇ پاراڭخانىدىن ئۈزۈلدى"
 
@@ -963,6 +974,11 @@ msgstr "سىز تۆۋەندىكى جامائەتنى ئۆچۈرىۋاتىسىز�
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
 msgstr "بۇ جامائەت ئەمدى مەۋجۇت ئەمەستەك قىلىدۇ. سىز ئۇنى مۇشتەرىلىكتىن ئۆچۈرەمسىز؟"
 
+#: [communityaffiliation]delete_error
+#, fuzzy
+msgid "Error during the node deletion"
+msgstr "بۇ نوقتا تەڭشىكىنى يۈرگۈزىۋاتقاندا خاتالىق كۆرۈلدى"
+
 #: [communityaffiliation]config_error
 msgid "Error during the application of the node configuration"
 msgstr "بۇ نوقتا تەڭشىكىنى يۈرگۈزىۋاتقاندا خاتالىق كۆرۈلدى"
@@ -1193,7 +1209,8 @@ msgid "Main chat page"
 msgstr "ئاساسىي پاراڭ بېتى"
 
 #: [config]chatmain_text
-msgid "Make the chat page as the default one"
+#, fuzzy
+msgid "Set the chat page to the default when opening Movim"
 msgstr "بۇ پاراڭ بېتىنى سۈكۈتتىكى بەت قىلىڭ"
 
 #: [config]mam_text
@@ -1252,6 +1269,14 @@ msgstr "كەلگەن ئۇچۇرلار"
 msgid "Accent color"
 msgstr ""
 
+#: [config]change_nickname_title
+msgid "Be careful"
+msgstr ""
+
+#: [config]change_nickname_text
+msgid "Changing your nickname will change your public blog, feed, and articles URLs"
+msgstr ""
+
 #: [confirm]title
 msgid "Confirmation of authentication"
 msgstr "دەلىللەشنى جەزىملەشتۈرۈش"
@@ -1269,7 +1294,8 @@ msgid "Add a contact"
 msgstr "بىر تۇنۇش قېتىش"
 
 #: [roster]add_contact_info1
-msgid "Enter the Jabber ID of your contact."
+#, fuzzy
+msgid "Enter the XMPP Address of your contact."
 msgstr "تۇنۇشىڭىزنىڭ جەبىر نۇمۇرىنى كىرگۈزۈڭ"
 
 #: [roster]add_contact_info2
@@ -1295,6 +1321,14 @@ msgstr "ئۇمۇمىي ئۇچۇر"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "ئىسىم"
+
+#: [general]pronouns
+msgid "Pronouns"
+msgstr ""
+
+#: [general]pronouns_example
+msgid "he/she/they/…"
+msgstr ""
 
 #: [general]nickname [chatrooms]nickname
 msgid "Nickname"
@@ -1339,6 +1373,15 @@ msgstr "رەسىملەر"
 #: [general]links
 msgid "Links"
 msgstr "ئۇلىنىشلار"
+
+#: [general]private_account_title
+#, fuzzy
+msgid "Your account is private"
+msgstr "بۇ يازما بولسا شەخسىي"
+
+#: [general]private_account_text
+msgid "Go to the Settings page to create a public blog and allow the other users to find you"
+msgstr ""
 
 #: [position]legend
 msgid "Geographic Position"
@@ -1389,7 +1432,8 @@ msgid "Group"
 msgstr "توپ"
 
 #: [delete]text
-msgid "You are going to delete one of your contacts, please confirm your action"
+#, fuzzy
+msgid "You are going to remove one of your contacts, please confirm your action"
 msgstr "سىز بىر تۇنۇشنى ئۆچۈرىۋاتىسىز، ھەركىتىڭىزنى جەزىملەشتۈرۈڭ"
 
 #: [age]years
@@ -1429,15 +1473,17 @@ msgid "But this contact can still see if you are online"
 msgstr "لىكىن بۇ تۇنۇش سىزنىڭ توردا ئىكەنلىكىڭىزنى تېخىچە كۆرەلەيدۇ"
 
 #: [subscription]nil
-msgid "No subscriptions"
-msgstr "مۇشتەرى يوق"
+#, fuzzy
+msgid "You are not subscribed to anyone"
+msgstr "سىز بۇ تۇنۇشقا ئەگەشمىدىڭىز"
 
 #: [subscription]nil_button [button]invite
 msgid "Invite"
 msgstr "تەكلىپ قىلىڭ"
 
 #: [subscription]nil_text
-msgid "This contact is in your contact list but there is no subscription between the two accounts"
+#, fuzzy
+msgid "This contact is in your contact list but you are not subscribed to each other"
 msgstr "بۇ تۇنۇش سىزنىڭ ئالاقە تىزىملىكىڭىزدە بار لىكىن بۇ ئىككى ھېسابات ئارىسىدا ئۆز-ئارا ئەگىشىش يوق."
 
 #: [dictaphone]name
@@ -1501,7 +1547,8 @@ msgid "By default the content is only available to your contacts. You can make y
 msgstr "سۈكۈت ھالەتتە مەزمۇنلارنى پەقەت سىزنىڭ تۇنۇشلىرىڭىزلا كۆرەلەيدۇ. لىكىن سىز مۇناسىۋەتلىك تەڭشەكلەرنى ئۆزگەرتىش ئارقىلىق ئۇلارنى ھەممە ئادەم كۆرەلەيدىغان قىلالايسىز."
 
 #: [faq]permission_community_title
-msgid "How does it applies on Communities posts?"
+#, fuzzy
+msgid "How does it apply to Communities posts?"
 msgstr "ئۇ جامائەت يازمىلىرىغا قانداق تەدبىقلىنىدۇ؟"
 
 #: [faq]permission_community_text
@@ -1509,7 +1556,8 @@ msgid "Similary to your blog publications except that, by default, the posts are
 msgstr "سىزنىڭ بىلوگ ئېلانلىرىڭىزغا ئوخشايدۇ، سۈكۈت ھالەتتە، بۇ يازمىلار پەقەت بۇ جامائەتنىڭ ئەزالىرىغىلا ياكى مۇشتەرى بولغۇچىلىرىغىلا كۆرۈنىدىغانلىقىنى ھېسابقا ئالمىغاندا ( سىزنىڭ ئاشكارە ھالدا بۇ جامائەتنىڭ بارلىق مەزمۇنلىرىنى ئاچمىسىڭىزلا)"
 
 #: [faq]chatrooms_title
-msgid "Where can I find a list of chatrooms?"
+#, fuzzy
+msgid "Where can I find a list of group chats?"
 msgstr "مەن قەيەردىن پاراڭخانىلارنىڭ تىزىملىكىنى تاپالايمەن؟"
 
 #: [faq]find_contacts_title
@@ -1577,15 +1625,16 @@ msgid "Wrong username"
 msgstr "خاتا ئىشلەتكۈچى نامى"
 
 #: [error]jid
-msgid "Invalid JID"
-msgstr "ئىناۋەتسىز ج نۇمۇرى"
+msgid "Invalid XMPP Address"
+msgstr ""
 
 #: [error]empty_challenge
 msgid "Empty Challenge from the server"
 msgstr "بۇ مۇلازىمېتىردىن قۇرۇق چاقىرىق"
 
 #: [error]dns
-msgid "XMPP Domain error, your account is not a correct Jabber ID"
+#, fuzzy
+msgid "XMPP Domain error, your account is not a valid XMPP Address"
 msgstr "XMPP دائىرە خاتالىقى، سىزنىڭ ھېساباتىڭىز بىر ئىناۋەتلىك جەبىر نۇمۇرى ئەمەس"
 
 #: [error]data_missings
@@ -1689,7 +1738,8 @@ msgid "No news yet…"
 msgstr "يېڭى خەۋەر يوق..."
 
 #: [menu]empty
-msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
+#, fuzzy
+msgid "Welcome to your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
 msgstr "سىزنىڭ خەۋەر يىمىكىڭىزگە مەرھەمەت. سىز بۇ يەردە ئالاقىداشلىرىڭىز ھەمدە سىز تىزىملاتقان جامائەتلىرىڭىز ئېلان قىلغان بارلىق يوللانمىلارنى كۆرەلەيسىز."
 
 #: [menu]mine
@@ -1965,7 +2015,8 @@ msgid "Oh! Hello!"
 msgstr "ھەي! سىزگە سالام!"
 
 #: [hello]enter_paragraph
-msgid "It seems that you’re new there! Welcome on Movim!"
+#, fuzzy
+msgid "It seems that you are new here! Welcome to Movim!"
 msgstr "سىز بۇ يەرگە يېڭى كەلگەندەك قىلىسىز! قارشى ئالىمىز!"
 
 #: [hello]menu_title
@@ -2126,7 +2177,8 @@ msgid "Join a custom chatroom"
 msgstr "بىر ئۆزگىچە پاراڭخانىغا قۇشۇلۇش"
 
 #: [rooms]empty_text1
-msgid "You don’t have any chatrooms yet."
+#, fuzzy
+msgid "You don’t have any chatroom yet."
 msgstr "سىزنىڭ تېخى بىرەر پاراڭخانىڭىز يوق."
 
 #: [rooms]empty_text2
@@ -2134,31 +2186,38 @@ msgid "Add one by clicking on the add button."
 msgstr "قۇشۇش كۇنۇپكىسىنى بېسىپ بىرنى قۇرۇڭ"
 
 #: [rooms]type_room
-msgid "Type of room"
+#, fuzzy
+msgid "Type of chatroom"
 msgstr "پاراڭخانا تۈرى"
 
 #: [rooms]default_room
-msgid "Standard room"
+#, fuzzy
+msgid "Standard chatroom"
 msgstr "ئۆلچەملىك ئۆي"
 
 #: [rooms]gateway_room
-msgid "Gateway room"
+#, fuzzy
+msgid "Gateway chatroom"
 msgstr "كىرىش ئېغىزى ئۆيى"
 
 #: [rooms]show_all
-msgid "Show all rooms"
+#, fuzzy
+msgid "Show all chatrooms"
 msgstr "بارلىق ئۆيلەرنى كۆرسىتىش"
 
 #: [rooms]hide_disconnected
-msgid "Hide disconnected rooms"
+#, fuzzy
+msgid "Hide disconnected chatrooms"
 msgstr "ئۈزۈلگەن ئۆيلەرنى يۇشۇرۇش"
 
 #: [rooms]destroy_title
-msgid "Destroy the room"
+#, fuzzy
+msgid "Destroy the chatroom"
 msgstr "ئۆيلەرنى ئۆچۈرۈش"
 
 #: [rooms]destroy_text
-msgid "Are you sure you want to permanently destroy the following room?"
+#, fuzzy
+msgid "Are you sure you want to permanently destroy the following chatroom?"
 msgstr "سىز تۆۋەندىكى ئۆينى مەڭگۈلۈك ئۆچۈرۈشنى جەزىملەشتۈرەمسىز؟"
 
 #: [rooms]owner
@@ -2188,15 +2247,17 @@ msgid "Chatrooms"
 msgstr "پاراڭخانىلار"
 
 #: [chatrooms]id
-msgid "Chatroom ID"
-msgstr "پاراڭخانا نۇمۇرى"
+#, fuzzy
+msgid "Chatroom Address"
+msgstr "پاراڭخانىلار"
 
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "مېنىڭ ياقتۇرىدىغان ئۆيۈم"
 
 #: [chatrooms]bad_id
-msgid "Bad Chatroom ID"
+#, fuzzy
+msgid "Bad Chatroom Address"
 msgstr "خاتا پاراڭخانا نۇمۇرى"
 
 #: [chatrooms]empty_name
@@ -2204,12 +2265,24 @@ msgid "Empty name"
 msgstr "قۇرۇق ئىسىم"
 
 #: [chatrooms]remove_title
-msgid "Remove a chatroom"
-msgstr ""
+#, fuzzy
+msgid "Permanently leave a chatroom"
+msgstr "بىر پاراڭخانا قۇرۇش"
 
 #: [chatrooms]remove_text
-msgid "You are going to remove the following chatroom. Please confirm your action."
-msgstr ""
+#, fuzzy
+msgid "You are going to permanently leave the following chatroom. Please confirm your action."
+msgstr "سىز تۆۋەندىكى جامائەتنى ئۆچۈرىۋاتىسىز، ھەركىتىڭىزنى جەزىملەشتۈرۈڭ."
+
+#: [chatrooms]connected
+#, fuzzy
+msgid "Joined the chatroom"
+msgstr "بىر پاراڭخانىغا قۇشۇلۇش"
+
+#: [chatrooms]disconnected
+#, fuzzy
+msgid "Left the chatroom"
+msgstr "بۇ پاراڭخانىنى قېتىش"
 
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
@@ -2226,15 +2299,18 @@ msgid "Banned"
 msgstr "مەنئىي قىلىندى"
 
 #: [chatrooms]bad_nickname
-msgid "Please enter a correct nickname (2 to 40 characters)"
+#, fuzzy
+msgid "Please enter a valid nickname (2 to 40 characters)"
 msgstr "توغرا بىر تەخەللۇس كىرگۈزۈڭ (2دىن 40قىچە ھەرىپ)"
 
 #: [chatrooms]conflict
-msgid "Username already taken"
+#, fuzzy
+msgid "Nickname already taken"
 msgstr "ئىشلەتكۈچى نامى ئاللىبۇرۇن ئېلىندى"
 
 #: [chatrooms]autojoin
-msgid "Join this chatroom on connect"
+#, fuzzy
+msgid "Join this chatroom on login"
 msgstr "ئۇلانغاندا بۇ پاراڭخانىغا قۇشۇلۇش"
 
 #: [chatrooms]pinned
@@ -2242,7 +2318,8 @@ msgid "Pin this chatroom"
 msgstr "بۇ پاراڭخانىنى مىخلاش"
 
 #: [chatrooms]destroyed
-msgid "Room destroyed"
+#, fuzzy
+msgid "Chatroom destroyed"
 msgstr "ئۆي ئۆچۈرۈلدى"
 
 #: [chatrooms]registrationrequired
@@ -2278,7 +2355,8 @@ msgid "Not acceptable"
 msgstr "قۇبۇل قىلارلىق ئەمەس"
 
 #: [chatrooms]serviceunavailable
-msgid "The chatroom occupant limit has been reached"
+#, fuzzy
+msgid "The chatroom participant limit has been reached"
 msgstr "بۇ ئۆينىڭ كىرىش چىكى توشتى"
 
 #: [chatrooms]notallowed
@@ -2294,8 +2372,9 @@ msgid "Bookmarks updated"
 msgstr "خەتكۈچ يېڭىلاندى"
 
 #: [room]anonymous_title
-msgid "Public chatroom"
-msgstr "ئاممىۋىي پاراڭخانا"
+#, fuzzy
+msgid "Public Channel"
+msgstr "ئاممىۋىي بەت"
 
 #: [room]anonymous_text1
 msgid "You are currently logged as an anonymous user."
@@ -2330,7 +2409,8 @@ msgid "Public profiles"
 msgstr "ئاممىۋى تەرجىماللار"
 
 #: [room]nonanonymous_muc_text
-msgid "The participants of this chatroom can see each other's profile"
+#, fuzzy
+msgid "The participants of this chatroom can see each other's XMPP Addresses"
 msgstr "بۇ ئۆيدىكى كىشىلەر بىر-بىرىنىڭ تەرجىمالىنى كۆرەلەيدۇ"
 
 #: [room]archived
@@ -2341,7 +2421,7 @@ msgstr "ئارخىپلاندى"
 msgid "The chatroom messages are archived"
 msgstr "بۇ ئۆينىڭ ئۇچۇرلىرى ئارخىپلاندى"
 
-#: [room]group_chat
+#: [room]group_chat [page]room
 msgid "Group Chat"
 msgstr "توپپاراڭ"
 
@@ -2454,12 +2534,21 @@ msgid "No chatrooms found locally"
 msgstr "ھېچقاندا يەرلىك پاراڭخانا تېپىلمىدى"
 
 #: [roomsexplore]global_title
-msgid "Global search"
-msgstr "ئۇمۇمىي ئىزدەش"
+#, fuzzy
+msgid "Channels"
+msgstr "قانال"
 
 #: [roomsexplore]no_global
 msgid "No chatrooms found globally"
 msgstr "ھېچقاندا ئۇمۇمىي پاراڭخانا تېپىلمىدى"
+
+#: [roomsexplore]find_more
+msgid "Find more channels"
+msgstr ""
+
+#: [roomsexplore]find_more_text
+msgid "%s in total"
+msgstr ""
 
 #: [search]keyword
 msgid "What are you looking for?"
@@ -2478,7 +2567,8 @@ msgid "No contacts yet?"
 msgstr "ھېچقاندا ئالاقىداش يوقمۇ؟"
 
 #: [search]no_contacts_text
-msgid "Find one by searching for their name or id"
+#, fuzzy
+msgid "Find one by searching for their name or address"
 msgstr "بىرەرسىنى ئىسمى ياكى نۇمۇرى ئارقىلىق ئىزدەڭ"
 
 #: [search]tags
@@ -2726,7 +2816,8 @@ msgid "Movim is currently working in degraded mode"
 msgstr "مۇۋىم نۆۋەتتە ئىقتىدارى تۆۋەنلىگەن ھالەتتە ئىشلەۋاتىدۇ"
 
 #: [degraded]text_1
-msgid "Your server doesn’t support XMPP Pubsub persistence or the social features (communities, news feed and profile) are disabled by the administrator."
+#, fuzzy
+msgid "Your server doesn’t support XMPP Pubsub persistence or the social features (communities, news feed, and profile) are disabled by the administrator."
 msgstr "مۇلازىمېتىرىڭىز مۇشتەرى-يەتكۈزۈش مۇلازىمېتىنى قوللىمايدۇ ياكى ئىجتىمائىي ئىقتىدارلار (جامائەتلەر، خەۋەر يىمىكى ھەمدە تەرجىمال) بولسا باشقۇرغۇچى تەرىپىدىن ئىتىۋېتىلگەن."
 
 #: [degraded]text_2
@@ -2878,12 +2969,13 @@ msgid "News"
 msgstr "خەۋەرلەر"
 
 #: [page]avatar
-msgid "Avatar"
-msgstr "باش سۈرەت"
+#, fuzzy
+msgid "Profile Picture"
+msgstr "تەرجىمال يېڭىلاندى"
 
 #: [page]chats
-msgid "Chats"
-msgstr "پاراڭلار"
+msgid "Direct Messages & Whispers"
+msgstr ""
 
 #: [page]publish
 msgid "Publish"
@@ -2921,10 +3013,6 @@ msgstr "سىنلىق يىغىن"
 msgctxt "[page]share"
 msgid "Share"
 msgstr "ھەمبەھىرلەش"
-
-#: [page]room
-msgid "Room"
-msgstr "ئۆي"
 
 #: [page]tag
 msgid "Tag"
@@ -2995,7 +3083,7 @@ msgid "Destroy"
 msgstr "يوقىتىش"
 
 #: [button]remove
-msgid "Remove"
+msgid "Leave"
 msgstr ""
 
 #: [button]cancel
@@ -3746,6 +3834,39 @@ msgstr "بۇ API غا ئېرىشكىلى بولمىدى، كىيىن قايتا 
 #: [field]type_here
 msgid "Type here"
 msgstr "بۇ يەرگە يېزىڭ"
+
+#~ msgid "Avatar Updated"
+#~ msgstr "باش-سۈرەت يېڭىلاندى"
+
+#~ msgid "Avatar Not Updated"
+#~ msgstr "باش سۈرەت يېڭىلانمىدى"
+
+#~ msgid "Change my avatar"
+#~ msgstr "باش سۈرەتنى ئۆزگەرتىش"
+
+#~ msgid "No subscriptions"
+#~ msgstr "مۇشتەرى يوق"
+
+#~ msgid "Invalid JID"
+#~ msgstr "ئىناۋەتسىز ج نۇمۇرى"
+
+#~ msgid "Chatroom ID"
+#~ msgstr "پاراڭخانا نۇمۇرى"
+
+#~ msgid "Public chatroom"
+#~ msgstr "ئاممىۋىي پاراڭخانا"
+
+#~ msgid "Global search"
+#~ msgstr "ئۇمۇمىي ئىزدەش"
+
+#~ msgid "Avatar"
+#~ msgstr "باش سۈرەت"
+
+#~ msgid "Chats"
+#~ msgstr "پاراڭلار"
+
+#~ msgid "Room"
+#~ msgstr "ئۆي"
 
 #~ msgid "Upload a new picture"
 #~ msgstr "يېڭى رەسىم چىقىرىش"

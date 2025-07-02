@@ -118,7 +118,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-30 14:00+0200\n"
+"POT-Creation-Date: 2025-07-02 23:39+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: English (http://app.transifex.com/movim/movim/language/en/)\n"
@@ -194,7 +194,8 @@ msgid "Delete your account"
 msgstr "Delete your account"
 
 #: [account]delete_text
-msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts and publications)."
+#, fuzzy
+msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts, and publications)."
 msgstr "You will delete your XMPP account and all the relative information linked to it (profile, contacts and publications)."
 
 #: [account]delete_text_confirm
@@ -214,11 +215,13 @@ msgid "Leave this instance"
 msgstr "Leave this instance"
 
 #: [account]clear_text
-msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
+#, fuzzy
+msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts, and publications)."
 msgstr "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
 
 #: [account]clear_text_confirm
-msgid "This action will not delete your account but will disconnect you from this instance."
+#, fuzzy
+msgid "This action will not delete your account but will disconnect you from Movim."
 msgstr "This action will not delete your account but will disconnect you from this instance."
 
 #: [account]delete_bundle_title
@@ -302,7 +305,8 @@ msgid "Restrict suggestions"
 msgstr "Restrict suggestions"
 
 #: [restrictsuggestions]text
-msgid "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
+#, fuzzy
+msgid "Only suggest chatrooms, Communities, and other contents that are available on the user's XMPP server and related services"
 msgstr "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
 
 #: [chatonly]title
@@ -334,11 +338,13 @@ msgid "Remove the XMPP registration flow and buttons from the interface"
 msgstr "Remove the XMPP registration flow and buttons from the interface"
 
 #: [whitelist]title
-msgid "Whitelisted XMPP Servers"
+#, fuzzy
+msgid "Allowed XMPP Servers"
 msgstr "Whitelisted XMPP Servers"
 
 #: [whitelist]info1
-msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
+#, fuzzy
+msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name(s) here, with comma (ex: movim.eu,jabber.fr)"
 msgstr "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
 
 #: [whitelist]info2
@@ -346,7 +352,8 @@ msgid "Leave this field blank if you allow the access to all the XMPP accounts."
 msgstr "Leave this field blank if you allow the access to all the XMPP accounts."
 
 #: [whitelist]label
-msgid "List of whitelisted XMPP servers"
+#, fuzzy
+msgid "List of allowed XMPP servers"
 msgstr "List of whitelisted XMPP servers"
 
 #: [information]title
@@ -456,16 +463,19 @@ msgid "File"
 msgstr "File"
 
 #: [avatar]updated
-msgid "Avatar Updated"
-msgstr "Avatar Updated"
+#, fuzzy
+msgid "Profile Picture Updated"
+msgstr "Profile Not Updated"
 
 #: [avatar]not_updated
-msgid "Avatar Not Updated"
-msgstr "Avatar Not Updated"
+#, fuzzy
+msgid "Profile Picture Not Updated"
+msgstr "Profile Not Updated"
 
 #: [avatar]change
-msgid "Change my avatar"
-msgstr "Change my avatar"
+#, fuzzy
+msgid "Change my profile picture"
+msgstr "Change my password"
 
 #: [banner]change
 msgid "Change my banner"
@@ -576,7 +586,8 @@ msgid ":shortcut: to insert an emoji"
 msgstr ":shortcut: to insert an emoji"
 
 #: [message]visitor_help
-msgid "You are not allowed to send messages in this conference"
+#, fuzzy
+msgid "You are not allowed to send messages in this chatroom"
 msgstr "You are not allowed to send messages in this conference"
 
 #: [chat]attention
@@ -725,11 +736,11 @@ msgstr "Block"
 msgid "Members"
 msgstr "Members"
 
-#: [chatroom]connected [chatrooms]connected
+#: [chatroom]connected
 msgid "Connected to the chatroom"
 msgstr "Connected to the chatroom"
 
-#: [chatroom]disconnected [chatrooms]disconnected
+#: [chatroom]disconnected
 msgid "Disconnected from the chatroom"
 msgstr "Disconnected from the chatroom"
 
@@ -961,6 +972,11 @@ msgstr "You are going to delete the following community. Please confirm your act
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
 msgstr "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
 
+#: [communityaffiliation]delete_error
+#, fuzzy
+msgid "Error during the node deletion"
+msgstr "Error during the application of the node configuration"
+
 #: [communityaffiliation]config_error
 msgid "Error during the application of the node configuration"
 msgstr "Error during the application of the node configuration"
@@ -1191,7 +1207,8 @@ msgid "Main chat page"
 msgstr "Main chat page"
 
 #: [config]chatmain_text
-msgid "Make the chat page as the default one"
+#, fuzzy
+msgid "Set the chat page to the default when opening Movim"
 msgstr "Make the chat page as the default one"
 
 #: [config]mam_text
@@ -1250,6 +1267,15 @@ msgstr "Incoming message"
 msgid "Accent color"
 msgstr "Accent color"
 
+#: [config]change_nickname_title
+#, fuzzy
+msgid "Be careful"
+msgstr "remorseful"
+
+#: [config]change_nickname_text
+msgid "Changing your nickname will change your public blog, feed, and articles URLs"
+msgstr ""
+
 #: [confirm]title
 msgid "Confirmation of authentication"
 msgstr "Confirmation of authentication"
@@ -1267,7 +1293,8 @@ msgid "Add a contact"
 msgstr "Add a contact"
 
 #: [roster]add_contact_info1
-msgid "Enter the Jabber ID of your contact."
+#, fuzzy
+msgid "Enter the XMPP Address of your contact."
 msgstr "Enter the Jabber ID of your contact."
 
 #: [roster]add_contact_info2
@@ -1293,6 +1320,14 @@ msgstr "General Information"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Name"
+
+#: [general]pronouns
+msgid "Pronouns"
+msgstr ""
+
+#: [general]pronouns_example
+msgid "he/she/they/…"
+msgstr ""
 
 #: [general]nickname [chatrooms]nickname
 msgid "Nickname"
@@ -1337,6 +1372,15 @@ msgstr "Pictures"
 #: [general]links
 msgid "Links"
 msgstr "Links"
+
+#: [general]private_account_title
+#, fuzzy
+msgid "Your account is private"
+msgstr "This post is private"
+
+#: [general]private_account_text
+msgid "Go to the Settings page to create a public blog and allow the other users to find you"
+msgstr ""
 
 #: [position]legend
 msgid "Geographic Position"
@@ -1387,7 +1431,8 @@ msgid "Group"
 msgstr "Group"
 
 #: [delete]text
-msgid "You are going to delete one of your contacts, please confirm your action"
+#, fuzzy
+msgid "You are going to remove one of your contacts, please confirm your action"
 msgstr "You are going to delete one of your contacts, please confirm your action"
 
 #: [age]years
@@ -1427,15 +1472,17 @@ msgid "But this contact can still see if you are online"
 msgstr "But this contact can still see if you are online"
 
 #: [subscription]nil
-msgid "No subscriptions"
-msgstr "No subscriptions"
+#, fuzzy
+msgid "You are not subscribed to anyone"
+msgstr "You are not subscribed to this contact"
 
 #: [subscription]nil_button [button]invite
 msgid "Invite"
 msgstr "Invite"
 
 #: [subscription]nil_text
-msgid "This contact is in your contact list but there is no subscription between the two accounts"
+#, fuzzy
+msgid "This contact is in your contact list but you are not subscribed to each other"
 msgstr "This contact is in your contact list but there is no subscription between the two accounts"
 
 #: [dictaphone]name
@@ -1499,7 +1546,8 @@ msgid "By default the content is only available to your contacts. You can make y
 msgstr "By default the content is only available to your contacts. You can make your profile and publications public by enabling the related setting."
 
 #: [faq]permission_community_title
-msgid "How does it applies on Communities posts?"
+#, fuzzy
+msgid "How does it apply to Communities posts?"
 msgstr "How does it applies on Communities posts?"
 
 #: [faq]permission_community_text
@@ -1507,7 +1555,8 @@ msgid "Similary to your blog publications except that, by default, the posts are
 msgstr "Similary to your blog publications except that, by default, the posts are only available to the members or subscribers of the Community (except if you explicitly open all the Community content)"
 
 #: [faq]chatrooms_title
-msgid "Where can I find a list of chatrooms?"
+#, fuzzy
+msgid "Where can I find a list of group chats?"
 msgstr "Where can I find a list of chatrooms?"
 
 #: [faq]find_contacts_title
@@ -1575,15 +1624,16 @@ msgid "Wrong username"
 msgstr "Wrong username"
 
 #: [error]jid
-msgid "Invalid JID"
-msgstr "Invalid JID"
+msgid "Invalid XMPP Address"
+msgstr ""
 
 #: [error]empty_challenge
 msgid "Empty Challenge from the server"
 msgstr "Empty Challenge from the server"
 
 #: [error]dns
-msgid "XMPP Domain error, your account is not a correct Jabber ID"
+#, fuzzy
+msgid "XMPP Domain error, your account is not a valid XMPP Address"
 msgstr "XMPP Domain error, your account is not a correct Jabber ID"
 
 #: [error]data_missings
@@ -1687,7 +1737,8 @@ msgid "No news yet…"
 msgstr "No news yet…"
 
 #: [menu]empty
-msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
+#, fuzzy
+msgid "Welcome to your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
 msgstr "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
 
 #: [menu]mine
@@ -1964,7 +2015,8 @@ msgid "Oh! Hello!"
 msgstr "Oh! Hello!"
 
 #: [hello]enter_paragraph
-msgid "It seems that you’re new there! Welcome on Movim!"
+#, fuzzy
+msgid "It seems that you are new here! Welcome to Movim!"
 msgstr "It seems that you’re new there! Welcome on Movim!"
 
 #: [hello]menu_title
@@ -2125,7 +2177,8 @@ msgid "Join a custom chatroom"
 msgstr "Join a custom chatroom"
 
 #: [rooms]empty_text1
-msgid "You don’t have any chatrooms yet."
+#, fuzzy
+msgid "You don’t have any chatroom yet."
 msgstr "You don’t have any chatrooms yet."
 
 #: [rooms]empty_text2
@@ -2133,31 +2186,38 @@ msgid "Add one by clicking on the add button."
 msgstr "Add one by clicking on the add button."
 
 #: [rooms]type_room
-msgid "Type of room"
+#, fuzzy
+msgid "Type of chatroom"
 msgstr "Type of room"
 
 #: [rooms]default_room
-msgid "Standard room"
+#, fuzzy
+msgid "Standard chatroom"
 msgstr "Standard room"
 
 #: [rooms]gateway_room
-msgid "Gateway room"
+#, fuzzy
+msgid "Gateway chatroom"
 msgstr "Gateway room"
 
 #: [rooms]show_all
-msgid "Show all rooms"
+#, fuzzy
+msgid "Show all chatrooms"
 msgstr "Show all rooms"
 
 #: [rooms]hide_disconnected
-msgid "Hide disconnected rooms"
+#, fuzzy
+msgid "Hide disconnected chatrooms"
 msgstr "Hide disconnected rooms"
 
 #: [rooms]destroy_title
-msgid "Destroy the room"
+#, fuzzy
+msgid "Destroy the chatroom"
 msgstr "Destroy the room"
 
 #: [rooms]destroy_text
-msgid "Are you sure you want to permanently destroy the following room?"
+#, fuzzy
+msgid "Are you sure you want to permanently destroy the following chatroom?"
 msgstr "Are you sure you want to permanently destroy the following room?"
 
 #: [rooms]owner
@@ -2187,15 +2247,17 @@ msgid "Chatrooms"
 msgstr "Chatrooms"
 
 #: [chatrooms]id
-msgid "Chatroom ID"
-msgstr "Chatroom ID"
+#, fuzzy
+msgid "Chatroom Address"
+msgstr "Chatrooms"
 
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "My Favorite Room"
 
 #: [chatrooms]bad_id
-msgid "Bad Chatroom ID"
+#, fuzzy
+msgid "Bad Chatroom Address"
 msgstr "Bad Chatroom ID"
 
 #: [chatrooms]empty_name
@@ -2203,12 +2265,24 @@ msgid "Empty name"
 msgstr "Empty name"
 
 #: [chatrooms]remove_title
-msgid "Remove a chatroom"
+#, fuzzy
+msgid "Permanently leave a chatroom"
 msgstr "Remove a chatroom"
 
 #: [chatrooms]remove_text
-msgid "You are going to remove the following chatroom. Please confirm your action."
+#, fuzzy
+msgid "You are going to permanently leave the following chatroom. Please confirm your action."
 msgstr "You are going to remove the following chatroom. Please confirm your action."
+
+#: [chatrooms]connected
+#, fuzzy
+msgid "Joined the chatroom"
+msgstr "Join a chatroom"
+
+#: [chatrooms]disconnected
+#, fuzzy
+msgid "Left the chatroom"
+msgstr "Add the chatroom"
 
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
@@ -2225,15 +2299,18 @@ msgid "Banned"
 msgstr "Banned"
 
 #: [chatrooms]bad_nickname
-msgid "Please enter a correct nickname (2 to 40 characters)"
+#, fuzzy
+msgid "Please enter a valid nickname (2 to 40 characters)"
 msgstr "Please enter a correct nickname (2 to 40 characters)"
 
 #: [chatrooms]conflict
-msgid "Username already taken"
+#, fuzzy
+msgid "Nickname already taken"
 msgstr "Username already taken"
 
 #: [chatrooms]autojoin
-msgid "Join this chatroom on connect"
+#, fuzzy
+msgid "Join this chatroom on login"
 msgstr "Join this chatroom on connect"
 
 #: [chatrooms]pinned
@@ -2241,7 +2318,8 @@ msgid "Pin this chatroom"
 msgstr "Pin this chatroom"
 
 #: [chatrooms]destroyed
-msgid "Room destroyed"
+#, fuzzy
+msgid "Chatroom destroyed"
 msgstr "Room destroyed"
 
 #: [chatrooms]registrationrequired
@@ -2277,7 +2355,8 @@ msgid "Not acceptable"
 msgstr "Not acceptable"
 
 #: [chatrooms]serviceunavailable
-msgid "The chatroom occupant limit has been reached"
+#, fuzzy
+msgid "The chatroom participant limit has been reached"
 msgstr "The chatroom occupant limit has been reached"
 
 #: [chatrooms]notallowed
@@ -2293,8 +2372,9 @@ msgid "Bookmarks updated"
 msgstr "Bookmarks updated"
 
 #: [room]anonymous_title
-msgid "Public chatroom"
-msgstr "Public chatroom"
+#, fuzzy
+msgid "Public Channel"
+msgstr "Public page"
 
 #: [room]anonymous_text1
 msgid "You are currently logged as an anonymous user."
@@ -2329,7 +2409,8 @@ msgid "Public profiles"
 msgstr "Public profiles"
 
 #: [room]nonanonymous_muc_text
-msgid "The participants of this chatroom can see each other's profile"
+#, fuzzy
+msgid "The participants of this chatroom can see each other's XMPP Addresses"
 msgstr "The participants of this chatroom can see each other's profile"
 
 #: [room]archived
@@ -2340,7 +2421,7 @@ msgstr "Archived"
 msgid "The chatroom messages are archived"
 msgstr "The chatroom messages are archived"
 
-#: [room]group_chat
+#: [room]group_chat [page]room
 msgid "Group Chat"
 msgstr "Group Chat"
 
@@ -2453,12 +2534,21 @@ msgid "No chatrooms found locally"
 msgstr "No chatrooms found locally"
 
 #: [roomsexplore]global_title
-msgid "Global search"
-msgstr "Global search"
+#, fuzzy
+msgid "Channels"
+msgstr "Channel"
 
 #: [roomsexplore]no_global
 msgid "No chatrooms found globally"
 msgstr "No chatrooms found globally"
+
+#: [roomsexplore]find_more
+msgid "Find more channels"
+msgstr ""
+
+#: [roomsexplore]find_more_text
+msgid "%s in total"
+msgstr ""
 
 #: [search]keyword
 msgid "What are you looking for?"
@@ -2477,7 +2567,8 @@ msgid "No contacts yet?"
 msgstr "No contacts yet?"
 
 #: [search]no_contacts_text
-msgid "Find one by searching for their name or id"
+#, fuzzy
+msgid "Find one by searching for their name or address"
 msgstr "Find one by searching for their name or id"
 
 #: [search]tags
@@ -2725,7 +2816,8 @@ msgid "Movim is currently working in degraded mode"
 msgstr "Movim is currently working in degraded mode"
 
 #: [degraded]text_1
-msgid "Your server doesn’t support XMPP Pubsub persistence or the social features (communities, news feed and profile) are disabled by the administrator."
+#, fuzzy
+msgid "Your server doesn’t support XMPP Pubsub persistence or the social features (communities, news feed, and profile) are disabled by the administrator."
 msgstr "Your server doesn’t support XMPP Pubsub persistence or the social features (communities, news feed and profile) are disabled by the administrator."
 
 #: [degraded]text_2
@@ -2877,12 +2969,13 @@ msgid "News"
 msgstr "News"
 
 #: [page]avatar
-msgid "Avatar"
-msgstr "Avatar"
+#, fuzzy
+msgid "Profile Picture"
+msgstr "Profile Updated"
 
 #: [page]chats
-msgid "Chats"
-msgstr "Chats"
+msgid "Direct Messages & Whispers"
+msgstr ""
 
 #: [page]publish
 msgid "Publish"
@@ -2920,10 +3013,6 @@ msgstr "Visio-conference"
 msgctxt "[page]share"
 msgid "Share"
 msgstr "Share"
-
-#: [page]room
-msgid "Room"
-msgstr "Room"
 
 #: [page]tag
 msgid "Tag"
@@ -2994,8 +3083,8 @@ msgid "Destroy"
 msgstr "Destroy"
 
 #: [button]remove
-msgid "Remove"
-msgstr "Remove"
+msgid "Leave"
+msgstr ""
 
 #: [button]cancel
 msgid "Cancel"
@@ -3745,6 +3834,42 @@ msgstr "The API is not reachable, try again later"
 #: [field]type_here
 msgid "Type here"
 msgstr "Type here"
+
+#~ msgid "Avatar Updated"
+#~ msgstr "Avatar Updated"
+
+#~ msgid "Avatar Not Updated"
+#~ msgstr "Avatar Not Updated"
+
+#~ msgid "Change my avatar"
+#~ msgstr "Change my avatar"
+
+#~ msgid "No subscriptions"
+#~ msgstr "No subscriptions"
+
+#~ msgid "Invalid JID"
+#~ msgstr "Invalid JID"
+
+#~ msgid "Chatroom ID"
+#~ msgstr "Chatroom ID"
+
+#~ msgid "Public chatroom"
+#~ msgstr "Public chatroom"
+
+#~ msgid "Global search"
+#~ msgstr "Global search"
+
+#~ msgid "Avatar"
+#~ msgstr "Avatar"
+
+#~ msgid "Chats"
+#~ msgstr "Chats"
+
+#~ msgid "Room"
+#~ msgstr "Room"
+
+#~ msgid "Remove"
+#~ msgstr "Remove"
 
 #~ msgid "Upload a new picture"
 #~ msgstr "Upload a new picture"

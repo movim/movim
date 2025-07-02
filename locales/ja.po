@@ -124,7 +124,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-30 14:00+0200\n"
+"POT-Creation-Date: 2025-07-02 23:39+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Rintan, 2020-2021\n"
 "Language-Team: Japanese (http://app.transifex.com/movim/movim/language/ja/)\n"
@@ -200,7 +200,8 @@ msgid "Delete your account"
 msgstr "アカウントを削除する"
 
 #: [account]delete_text
-msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts and publications)."
+#, fuzzy
+msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts, and publications)."
 msgstr "XMPP アカウントと全ての関連付けられた情報(プロフィール、連絡先、投稿)が削除されます。"
 
 #: [account]delete_text_confirm
@@ -220,11 +221,13 @@ msgid "Leave this instance"
 msgstr "このインスタンスを離脱する"
 
 #: [account]clear_text
-msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
+#, fuzzy
+msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts, and publications)."
 msgstr "このMovimインスタンス上のあなたのアカウントに関連付けられたすべての情報(プロフィール、連絡先、投稿)が削除されます。"
 
 #: [account]clear_text_confirm
-msgid "This action will not delete your account but will disconnect you from this instance."
+#, fuzzy
+msgid "This action will not delete your account but will disconnect you from Movim."
 msgstr "この操作はあなたのアカウントを削除しませんが、このインスタンスからは切断されます。"
 
 #: [account]delete_bundle_title
@@ -308,7 +311,8 @@ msgid "Restrict suggestions"
 msgstr "サジェストを制限します"
 
 #: [restrictsuggestions]text
-msgid "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
+#, fuzzy
+msgid "Only suggest chatrooms, Communities, and other contents that are available on the user's XMPP server and related services"
 msgstr "ユーザーのXMPPサーバーまたは関連するサービス上のチャットルーム、コミュニティ、その他の連絡先のみがサジェストされます"
 
 #: [chatonly]title
@@ -340,11 +344,13 @@ msgid "Remove the XMPP registration flow and buttons from the interface"
 msgstr "XMPPでの登録フローとボタンをUIから削除"
 
 #: [whitelist]title
-msgid "Whitelisted XMPP Servers"
+#, fuzzy
+msgid "Allowed XMPP Servers"
 msgstr "ウィッシュリストに入っているXMPPサーバー"
 
 #: [whitelist]info1
-msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
+#, fuzzy
+msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name(s) here, with comma (ex: movim.eu,jabber.fr)"
 msgstr "限られた信頼するXMPPサーバーのリストをMovimのポッドに設定し、他のサーバーの接続をブロックしたい場合、ここにドメインネームをコンマで区切って（例：movim.eu,jabber.fr）入力してください。"
 
 #: [whitelist]info2
@@ -352,7 +358,8 @@ msgid "Leave this field blank if you allow the access to all the XMPP accounts."
 msgstr "空のままにするとアクセスできるXMPPアカウントが制限されません"
 
 #: [whitelist]label
-msgid "List of whitelisted XMPP servers"
+#, fuzzy
+msgid "List of allowed XMPP servers"
 msgstr "信頼するXMPPサーバー"
 
 #: [information]title
@@ -462,16 +469,19 @@ msgid "File"
 msgstr "ファイル"
 
 #: [avatar]updated
-msgid "Avatar Updated"
-msgstr "アバターがアップデートされました"
+#, fuzzy
+msgid "Profile Picture Updated"
+msgstr "プロファイルは更新されませんでした"
 
 #: [avatar]not_updated
-msgid "Avatar Not Updated"
-msgstr "アバターが更新されていません"
+#, fuzzy
+msgid "Profile Picture Not Updated"
+msgstr "プロファイルは更新されませんでした"
 
 #: [avatar]change
-msgid "Change my avatar"
-msgstr ""
+#, fuzzy
+msgid "Change my profile picture"
+msgstr "パスワードを変更する"
 
 #: [banner]change
 msgid "Change my banner"
@@ -582,8 +592,9 @@ msgid ":shortcut: to insert an emoji"
 msgstr ":shortcut: で絵文字を挿入します"
 
 #: [message]visitor_help
-msgid "You are not allowed to send messages in this conference"
-msgstr ""
+#, fuzzy
+msgid "You are not allowed to send messages in this chatroom"
+msgstr "ファイルのアップロードが許可されていません"
 
 #: [chat]attention
 msgid "%s needs your attention"
@@ -731,11 +742,11 @@ msgstr ""
 msgid "Members"
 msgstr "メンバー"
 
-#: [chatroom]connected [chatrooms]connected
+#: [chatroom]connected
 msgid "Connected to the chatroom"
 msgstr "チャットルームに参加しました"
 
-#: [chatroom]disconnected [chatrooms]disconnected
+#: [chatroom]disconnected
 msgid "Disconnected from the chatroom"
 msgstr "チャットルームから切断しました"
 
@@ -967,6 +978,11 @@ msgstr "次のコミュニティを削除しようとしています。この操
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
 msgstr "すでにこのコミュニティは存在しないようです。購読から外しますか？"
 
+#: [communityaffiliation]delete_error
+#, fuzzy
+msgid "Error during the node deletion"
+msgstr "ノードの設定を適用中にエラーが発生しました"
+
 #: [communityaffiliation]config_error
 msgid "Error during the application of the node configuration"
 msgstr "ノードの設定を適用中にエラーが発生しました"
@@ -1197,7 +1213,8 @@ msgid "Main chat page"
 msgstr "メインチャットページ"
 
 #: [config]chatmain_text
-msgid "Make the chat page as the default one"
+#, fuzzy
+msgid "Set the chat page to the default when opening Movim"
 msgstr "チャットページをデフォルトに設定します"
 
 #: [config]mam_text
@@ -1256,6 +1273,14 @@ msgstr "新規メッセージ"
 msgid "Accent color"
 msgstr ""
 
+#: [config]change_nickname_title
+msgid "Be careful"
+msgstr ""
+
+#: [config]change_nickname_text
+msgid "Changing your nickname will change your public blog, feed, and articles URLs"
+msgstr ""
+
 #: [confirm]title
 msgid "Confirmation of authentication"
 msgstr "認証の確認"
@@ -1273,7 +1298,8 @@ msgid "Add a contact"
 msgstr "連絡先を追加"
 
 #: [roster]add_contact_info1
-msgid "Enter the Jabber ID of your contact."
+#, fuzzy
+msgid "Enter the XMPP Address of your contact."
 msgstr "連絡先のJabber IDを入力"
 
 #: [roster]add_contact_info2
@@ -1299,6 +1325,14 @@ msgstr "概要"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "名前"
+
+#: [general]pronouns
+msgid "Pronouns"
+msgstr ""
+
+#: [general]pronouns_example
+msgid "he/she/they/…"
+msgstr ""
 
 #: [general]nickname [chatrooms]nickname
 msgid "Nickname"
@@ -1342,6 +1376,15 @@ msgstr "画像"
 
 #: [general]links
 msgid "Links"
+msgstr ""
+
+#: [general]private_account_title
+#, fuzzy
+msgid "Your account is private"
+msgstr "この投稿はプライベートです"
+
+#: [general]private_account_text
+msgid "Go to the Settings page to create a public blog and allow the other users to find you"
 msgstr ""
 
 #: [position]legend
@@ -1393,7 +1436,8 @@ msgid "Group"
 msgstr "グループ"
 
 #: [delete]text
-msgid "You are going to delete one of your contacts, please confirm your action"
+#, fuzzy
+msgid "You are going to remove one of your contacts, please confirm your action"
 msgstr "コンタクトを削除しますが、よろしいですか"
 
 #: [age]years
@@ -1433,15 +1477,17 @@ msgid "But this contact can still see if you are online"
 msgstr "しかし、まだこの連絡先からはあなたのオンライン状態が見えます"
 
 #: [subscription]nil
-msgid "No subscriptions"
-msgstr "購読はありません"
+#, fuzzy
+msgid "You are not subscribed to anyone"
+msgstr "この連絡先に購読されていません"
 
 #: [subscription]nil_button [button]invite
 msgid "Invite"
 msgstr "招待"
 
 #: [subscription]nil_text
-msgid "This contact is in your contact list but there is no subscription between the two accounts"
+#, fuzzy
+msgid "This contact is in your contact list but you are not subscribed to each other"
 msgstr "この連絡先はあなたの連絡先リストに登録されていますが、これらのアカウントの間で購読はしていません"
 
 #: [dictaphone]name
@@ -1505,7 +1551,8 @@ msgid "By default the content is only available to your contacts. You can make y
 msgstr "デフォルトではコンテンツはあなたの連絡先の人のみが表示できます。プロフィールと投稿の公開は関連する設定から有効にできます。"
 
 #: [faq]permission_community_title
-msgid "How does it applies on Communities posts?"
+#, fuzzy
+msgid "How does it apply to Communities posts?"
 msgstr "コミュニティの投稿にはどのように適用されますか？"
 
 #: [faq]permission_community_text
@@ -1513,7 +1560,8 @@ msgid "Similary to your blog publications except that, by default, the posts are
 msgstr "デフォルトでは投稿はメンバーとコミュニティの購読者のみが投稿できるという点を除いて、ブログの投稿と同じです(明示的にコミュニティのすべてのコンテンツをオープンにしている場合を除く)"
 
 #: [faq]chatrooms_title
-msgid "Where can I find a list of chatrooms?"
+#, fuzzy
+msgid "Where can I find a list of group chats?"
 msgstr "チャットルームのリストはどこにありますか？"
 
 #: [faq]find_contacts_title
@@ -1581,15 +1629,16 @@ msgid "Wrong username"
 msgstr "ユーザ名が正しくありません"
 
 #: [error]jid
-msgid "Invalid JID"
-msgstr "JID が正しくありません"
+msgid "Invalid XMPP Address"
+msgstr ""
 
 #: [error]empty_challenge
 msgid "Empty Challenge from the server"
 msgstr "サーバーからの空の試行"
 
 #: [error]dns
-msgid "XMPP Domain error, your account is not a correct Jabber ID"
+#, fuzzy
+msgid "XMPP Domain error, your account is not a valid XMPP Address"
 msgstr "XMPPドメインエラーが発生しました。使われているアカウントは不可なJabberIDです。"
 
 #: [error]data_missings
@@ -1693,7 +1742,8 @@ msgid "No news yet…"
 msgstr "まだニュースはありません…"
 
 #: [menu]empty
-msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
+#, fuzzy
+msgid "Welcome to your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
 msgstr "ニュースフィードへようこそ。ここではあなたの連絡先のユーザーの投稿と購読しているコミュニティの投稿が表示されています。"
 
 #: [menu]mine
@@ -1969,7 +2019,8 @@ msgid "Oh! Hello!"
 msgstr "こんにちは！"
 
 #: [hello]enter_paragraph
-msgid "It seems that you’re new there! Welcome on Movim!"
+#, fuzzy
+msgid "It seems that you are new here! Welcome to Movim!"
 msgstr "新規さんですね。Movimへようこそ！"
 
 #: [hello]menu_title
@@ -2129,7 +2180,7 @@ msgid "Join a custom chatroom"
 msgstr "カスタムチャットルームに参加"
 
 #: [rooms]empty_text1
-msgid "You don’t have any chatrooms yet."
+msgid "You don’t have any chatroom yet."
 msgstr ""
 
 #: [rooms]empty_text2
@@ -2137,32 +2188,39 @@ msgid "Add one by clicking on the add button."
 msgstr "追加ボタンを押してチャットルームを追加します。"
 
 #: [rooms]type_room
-msgid "Type of room"
+#, fuzzy
+msgid "Type of chatroom"
 msgstr "ルームの種類"
 
 #: [rooms]default_room
-msgid "Standard room"
+#, fuzzy
+msgid "Standard chatroom"
 msgstr "スタンダードルーム"
 
 #: [rooms]gateway_room
-msgid "Gateway room"
+#, fuzzy
+msgid "Gateway chatroom"
 msgstr "ゲートウェイルーム"
 
 #: [rooms]show_all
-msgid "Show all rooms"
-msgstr ""
+#, fuzzy
+msgid "Show all chatrooms"
+msgstr "チャットルームに参加"
 
 #: [rooms]hide_disconnected
-msgid "Hide disconnected rooms"
+#, fuzzy
+msgid "Hide disconnected chatrooms"
 msgstr "切断されたルームを非表示にする"
 
 #: [rooms]destroy_title
-msgid "Destroy the room"
+#, fuzzy
+msgid "Destroy the chatroom"
 msgstr "ルームを削除する"
 
 #: [rooms]destroy_text
-msgid "Are you sure you want to permanently destroy the following room?"
-msgstr ""
+#, fuzzy
+msgid "Are you sure you want to permanently destroy the following chatroom?"
+msgstr "このコメントを削除しますか？"
 
 #: [rooms]owner
 msgctxt "[rooms]owner"
@@ -2191,15 +2249,17 @@ msgid "Chatrooms"
 msgstr "チャットルーム"
 
 #: [chatrooms]id
-msgid "Chatroom ID"
-msgstr ""
+#, fuzzy
+msgid "Chatroom Address"
+msgstr "チャットルーム"
 
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "お気に入りのルーム"
 
 #: [chatrooms]bad_id
-msgid "Bad Chatroom ID"
+#, fuzzy
+msgid "Bad Chatroom Address"
 msgstr "不正チャットルームID"
 
 #: [chatrooms]empty_name
@@ -2207,12 +2267,24 @@ msgid "Empty name"
 msgstr "名前が空です"
 
 #: [chatrooms]remove_title
-msgid "Remove a chatroom"
-msgstr ""
+#, fuzzy
+msgid "Permanently leave a chatroom"
+msgstr "チャットルームを作成"
 
 #: [chatrooms]remove_text
-msgid "You are going to remove the following chatroom. Please confirm your action."
-msgstr ""
+#, fuzzy
+msgid "You are going to permanently leave the following chatroom. Please confirm your action."
+msgstr "次のコミュニティを削除しようとしています。この操作に間違いがないか確認してください。"
+
+#: [chatrooms]connected
+#, fuzzy
+msgid "Joined the chatroom"
+msgstr "チャットルームに参加"
+
+#: [chatrooms]disconnected
+#, fuzzy
+msgid "Left the chatroom"
+msgstr "チャットルームを追加する"
 
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
@@ -2229,15 +2301,18 @@ msgid "Banned"
 msgstr ""
 
 #: [chatrooms]bad_nickname
-msgid "Please enter a correct nickname (2 to 40 characters)"
+#, fuzzy
+msgid "Please enter a valid nickname (2 to 40 characters)"
 msgstr "有効なニックネームを入力してください(2文字以上40文字以下)"
 
 #: [chatrooms]conflict
-msgid "Username already taken"
+#, fuzzy
+msgid "Nickname already taken"
 msgstr "そのユーザー名は既に使われています"
 
 #: [chatrooms]autojoin
-msgid "Join this chatroom on connect"
+#, fuzzy
+msgid "Join this chatroom on login"
 msgstr "接続時にこのチャットルームに接続する"
 
 #: [chatrooms]pinned
@@ -2245,7 +2320,8 @@ msgid "Pin this chatroom"
 msgstr ""
 
 #: [chatrooms]destroyed
-msgid "Room destroyed"
+#, fuzzy
+msgid "Chatroom destroyed"
 msgstr "ルームが削除されました"
 
 #: [chatrooms]registrationrequired
@@ -2281,7 +2357,7 @@ msgid "Not acceptable"
 msgstr ""
 
 #: [chatrooms]serviceunavailable
-msgid "The chatroom occupant limit has been reached"
+msgid "The chatroom participant limit has been reached"
 msgstr ""
 
 #: [chatrooms]notallowed
@@ -2297,8 +2373,9 @@ msgid "Bookmarks updated"
 msgstr "ブックマークを更新しました"
 
 #: [room]anonymous_title
-msgid "Public chatroom"
-msgstr "公開チャットルーム"
+#, fuzzy
+msgid "Public Channel"
+msgstr "投稿ページ"
 
 #: [room]anonymous_text1
 msgid "You are currently logged as an anonymous user."
@@ -2333,7 +2410,8 @@ msgid "Public profiles"
 msgstr "公開プロフィール"
 
 #: [room]nonanonymous_muc_text
-msgid "The participants of this chatroom can see each other's profile"
+#, fuzzy
+msgid "The participants of this chatroom can see each other's XMPP Addresses"
 msgstr "このチャットルームの参加者はお互いのプロフィールを見ることができます"
 
 #: [room]archived
@@ -2344,7 +2422,7 @@ msgstr ""
 msgid "The chatroom messages are archived"
 msgstr ""
 
-#: [room]group_chat
+#: [room]group_chat [page]room
 msgid "Group Chat"
 msgstr "グループチャット"
 
@@ -2457,11 +2535,20 @@ msgid "No chatrooms found locally"
 msgstr ""
 
 #: [roomsexplore]global_title
-msgid "Global search"
-msgstr "グローバル検索"
+#, fuzzy
+msgid "Channels"
+msgstr "チャンネル"
 
 #: [roomsexplore]no_global
 msgid "No chatrooms found globally"
+msgstr ""
+
+#: [roomsexplore]find_more
+msgid "Find more channels"
+msgstr ""
+
+#: [roomsexplore]find_more_text
+msgid "%s in total"
 msgstr ""
 
 #: [search]keyword
@@ -2481,7 +2568,7 @@ msgid "No contacts yet?"
 msgstr "まだ連絡先がありませんか？"
 
 #: [search]no_contacts_text
-msgid "Find one by searching for their name or id"
+msgid "Find one by searching for their name or address"
 msgstr ""
 
 #: [search]tags
@@ -2729,7 +2816,8 @@ msgid "Movim is currently working in degraded mode"
 msgstr "Movimは現在、劣化版で実行中です"
 
 #: [degraded]text_1
-msgid "Your server doesn’t support XMPP Pubsub persistence or the social features (communities, news feed and profile) are disabled by the administrator."
+#, fuzzy
+msgid "Your server doesn’t support XMPP Pubsub persistence or the social features (communities, news feed, and profile) are disabled by the administrator."
 msgstr "あなたのサーバーはXMPP Pubsubの永続性をサポートしていないか、ソーシャル機能(コミュニティ、ニュースフィード、プロフィール)が管理者によって無効化されています"
 
 #: [degraded]text_2
@@ -2881,12 +2969,13 @@ msgid "News"
 msgstr "新着情報"
 
 #: [page]avatar
-msgid "Avatar"
-msgstr "アバター"
+#, fuzzy
+msgid "Profile Picture"
+msgstr "プロフィールを更新しました"
 
 #: [page]chats
-msgid "Chats"
-msgstr "チャット"
+msgid "Direct Messages & Whispers"
+msgstr ""
 
 #: [page]publish
 msgid "Publish"
@@ -2924,10 +3013,6 @@ msgstr "ビデオ会議"
 msgctxt "[page]share"
 msgid "Share"
 msgstr "共有"
-
-#: [page]room
-msgid "Room"
-msgstr "ルーム"
 
 #: [page]tag
 msgid "Tag"
@@ -2998,7 +3083,7 @@ msgid "Destroy"
 msgstr "削除"
 
 #: [button]remove
-msgid "Remove"
+msgid "Leave"
 msgstr ""
 
 #: [button]cancel
@@ -3749,3 +3834,30 @@ msgstr "APIにアクセスできません、後ほど再試行してください
 #: [field]type_here
 msgid "Type here"
 msgstr "ここに入力してください"
+
+#~ msgid "Avatar Updated"
+#~ msgstr "アバターがアップデートされました"
+
+#~ msgid "Avatar Not Updated"
+#~ msgstr "アバターが更新されていません"
+
+#~ msgid "No subscriptions"
+#~ msgstr "購読はありません"
+
+#~ msgid "Invalid JID"
+#~ msgstr "JID が正しくありません"
+
+#~ msgid "Public chatroom"
+#~ msgstr "公開チャットルーム"
+
+#~ msgid "Global search"
+#~ msgstr "グローバル検索"
+
+#~ msgid "Avatar"
+#~ msgstr "アバター"
+
+#~ msgid "Chats"
+#~ msgstr "チャット"
+
+#~ msgid "Room"
+#~ msgstr "ルーム"

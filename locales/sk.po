@@ -122,7 +122,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-04-30 14:00+0200\n"
+"POT-Creation-Date: 2025-07-02 23:39+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Slavko <linux@slavino.sk>, 2020-2021\n"
 "Language-Team: Slovak (Slovakia) (http://app.transifex.com/movim/movim/language/sk_SK/)\n"
@@ -198,7 +198,8 @@ msgid "Delete your account"
 msgstr "Zmazať svoj účet"
 
 #: [account]delete_text
-msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts and publications)."
+#, fuzzy
+msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts, and publications)."
 msgstr "Zmažete svoj XMPP účet a všetky informácie s ním spojené (profil, kontakty a publikácie)."
 
 #: [account]delete_text_confirm
@@ -218,11 +219,13 @@ msgid "Leave this instance"
 msgstr "Opustiť túto inštanciu"
 
 #: [account]clear_text
-msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
+#, fuzzy
+msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts, and publications)."
 msgstr "Odstránite všetky informácie súvisiace so svojim účtom z tejto inštancie Movim (profil, kontakty a publikácie)."
 
 #: [account]clear_text_confirm
-msgid "This action will not delete your account but will disconnect you from this instance."
+#, fuzzy
+msgid "This action will not delete your account but will disconnect you from Movim."
 msgstr "Táto akcia neodstráni váš účet, ale odpojí ho od tejto inštancie."
 
 #: [account]delete_bundle_title
@@ -306,7 +309,8 @@ msgid "Restrict suggestions"
 msgstr "Obmedziť odporúčania"
 
 #: [restrictsuggestions]text
-msgid "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
+#, fuzzy
+msgid "Only suggest chatrooms, Communities, and other contents that are available on the user's XMPP server and related services"
 msgstr "Odporúčať len miestnosti, komunity a ostatný obsah zo servera XMPP používateľa a jeho súvisiacich služieb"
 
 #: [chatonly]title
@@ -338,11 +342,13 @@ msgid "Remove the XMPP registration flow and buttons from the interface"
 msgstr "Odstráni registráciu XMPP a jej tlačidlá z rozhrania"
 
 #: [whitelist]title
-msgid "Whitelisted XMPP Servers"
+#, fuzzy
+msgid "Allowed XMPP Servers"
 msgstr "Povolené servery XMPP"
 
 #: [whitelist]info1
-msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
+#, fuzzy
+msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name(s) here, with comma (ex: movim.eu,jabber.fr)"
 msgstr "Ak chcete vo svojom Movim zadať zoznam povolených serverov XMPP a zakázať na zo všetkých ostatných, prosím zadajte tu ich doménové mená, oddelené čiarkou (napr.: movim.eu,jabber.fr)"
 
 #: [whitelist]info2
@@ -350,7 +356,8 @@ msgid "Leave this field blank if you allow the access to all the XMPP accounts."
 msgstr "Ponechajte toto pole prázdne na povolenie prístupu zo všetkých účtov XMPP."
 
 #: [whitelist]label
-msgid "List of whitelisted XMPP servers"
+#, fuzzy
+msgid "List of allowed XMPP servers"
 msgstr "Zoznam povolených serverov XMPP"
 
 #: [information]title
@@ -460,16 +467,19 @@ msgid "File"
 msgstr "Súbor"
 
 #: [avatar]updated
-msgid "Avatar Updated"
-msgstr "Avatar aktualizovaný"
+#, fuzzy
+msgid "Profile Picture Updated"
+msgstr "Profil nebol upravený"
 
 #: [avatar]not_updated
-msgid "Avatar Not Updated"
-msgstr "Avatar neaktualizovaný"
+#, fuzzy
+msgid "Profile Picture Not Updated"
+msgstr "Profil nebol upravený"
 
 #: [avatar]change
-msgid "Change my avatar"
-msgstr ""
+#, fuzzy
+msgid "Change my profile picture"
+msgstr "Zmeniť svoje heslo"
 
 #: [banner]change
 msgid "Change my banner"
@@ -580,8 +590,9 @@ msgid ":shortcut: to insert an emoji"
 msgstr ":skratka: na vloženie emoji"
 
 #: [message]visitor_help
-msgid "You are not allowed to send messages in this conference"
-msgstr ""
+#, fuzzy
+msgid "You are not allowed to send messages in this chatroom"
+msgstr "Nemáte dovolené nahrať súbor"
 
 #: [chat]attention
 msgid "%s needs your attention"
@@ -729,11 +740,11 @@ msgstr ""
 msgid "Members"
 msgstr "Členovia"
 
-#: [chatroom]connected [chatrooms]connected
+#: [chatroom]connected
 msgid "Connected to the chatroom"
 msgstr "Pripojený do miestnosti"
 
-#: [chatroom]disconnected [chatrooms]disconnected
+#: [chatroom]disconnected
 msgid "Disconnected from the chatroom"
 msgstr "Odpojený z miestnosti"
 
@@ -965,6 +976,11 @@ msgstr "Odstraňujete nasledujúcu komunitu. Prosím, potvrďte svoju akciu"
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
 msgstr "Zdá sa, že táto komunita už neexistuje. Chcete ju odstrániť zo svojich odberov?"
 
+#: [communityaffiliation]delete_error
+#, fuzzy
+msgid "Error during the node deletion"
+msgstr "Chyba pri aplikácií nastavenia uzla"
+
 #: [communityaffiliation]config_error
 msgid "Error during the application of the node configuration"
 msgstr "Chyba pri aplikácií nastavenia uzla"
@@ -1195,7 +1211,8 @@ msgid "Main chat page"
 msgstr "Hlavná stránka chatu"
 
 #: [config]chatmain_text
-msgid "Make the chat page as the default one"
+#, fuzzy
+msgid "Set the chat page to the default when opening Movim"
 msgstr "Nastaviť stránku chatu ako predvolenú"
 
 #: [config]mam_text
@@ -1254,6 +1271,14 @@ msgstr "Prichádzajúca správa"
 msgid "Accent color"
 msgstr ""
 
+#: [config]change_nickname_title
+msgid "Be careful"
+msgstr ""
+
+#: [config]change_nickname_text
+msgid "Changing your nickname will change your public blog, feed, and articles URLs"
+msgstr ""
+
 #: [confirm]title
 msgid "Confirmation of authentication"
 msgstr "Potvrdenie autentifikcáie"
@@ -1271,7 +1296,8 @@ msgid "Add a contact"
 msgstr "Pridať kontakt"
 
 #: [roster]add_contact_info1
-msgid "Enter the Jabber ID of your contact."
+#, fuzzy
+msgid "Enter the XMPP Address of your contact."
 msgstr "Zadajte Jabber ID kontaktu."
 
 #: [roster]add_contact_info2
@@ -1297,6 +1323,14 @@ msgstr "Všeobecné informácie"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Meno"
+
+#: [general]pronouns
+msgid "Pronouns"
+msgstr ""
+
+#: [general]pronouns_example
+msgid "he/she/they/…"
+msgstr ""
 
 #: [general]nickname [chatrooms]nickname
 msgid "Nickname"
@@ -1340,6 +1374,15 @@ msgstr "Obrázky"
 
 #: [general]links
 msgid "Links"
+msgstr ""
+
+#: [general]private_account_title
+#, fuzzy
+msgid "Your account is private"
+msgstr "Tento príspevok je súkromný"
+
+#: [general]private_account_text
+msgid "Go to the Settings page to create a public blog and allow the other users to find you"
 msgstr ""
 
 #: [position]legend
@@ -1391,7 +1434,8 @@ msgid "Group"
 msgstr "Skupina"
 
 #: [delete]text
-msgid "You are going to delete one of your contacts, please confirm your action"
+#, fuzzy
+msgid "You are going to remove one of your contacts, please confirm your action"
 msgstr "Odstraňujete jeden zo svojich kontaktov, prosím, potvrďte svoju akciu"
 
 #: [age]years
@@ -1431,15 +1475,17 @@ msgid "But this contact can still see if you are online"
 msgstr "Ale tento kontakt stále môže vidieť, či ste odhlásený"
 
 #: [subscription]nil
-msgid "No subscriptions"
-msgstr "Žiadne odbery"
+#, fuzzy
+msgid "You are not subscribed to anyone"
+msgstr "Neodoberáte tento kontakt"
 
 #: [subscription]nil_button [button]invite
 msgid "Invite"
 msgstr "Pozvať"
 
 #: [subscription]nil_text
-msgid "This contact is in your contact list but there is no subscription between the two accounts"
+#, fuzzy
+msgid "This contact is in your contact list but you are not subscribed to each other"
 msgstr "Tento kontakt je v zozname Vašich kontaktov, ale neexistuje odber medzi týmito dvomi účtami"
 
 #: [dictaphone]name
@@ -1503,7 +1549,8 @@ msgid "By default the content is only available to your contacts. You can make y
 msgstr "Predvolene je obsah dostupný len pre Vaše kontakty. Môžete urobiť svoj profil a uverejnenia verejné, zapnutím príslušného nastavenia."
 
 #: [faq]permission_community_title
-msgid "How does it applies on Communities posts?"
+#, fuzzy
+msgid "How does it apply to Communities posts?"
 msgstr "Ako je to použité na komunitné príspevky?"
 
 #: [faq]permission_community_text
@@ -1511,7 +1558,8 @@ msgid "Similary to your blog publications except that, by default, the posts are
 msgstr "Podobne ako pri uverejnení v blogu, okrem toho, že predvolene sú dostupné len šlenom alebo odberateľom komunity (ibaže explicitne otvoríte všetok obsah Komunity)"
 
 #: [faq]chatrooms_title
-msgid "Where can I find a list of chatrooms?"
+#, fuzzy
+msgid "Where can I find a list of group chats?"
 msgstr "Kde nájdem zoznam chatových miestností?"
 
 #: [faq]find_contacts_title
@@ -1579,15 +1627,16 @@ msgid "Wrong username"
 msgstr "Zlé používateľské meno"
 
 #: [error]jid
-msgid "Invalid JID"
-msgstr "Neplatné JID"
+msgid "Invalid XMPP Address"
+msgstr ""
 
 #: [error]empty_challenge
 msgid "Empty Challenge from the server"
 msgstr "Prázdna výzva zo servera"
 
 #: [error]dns
-msgid "XMPP Domain error, your account is not a correct Jabber ID"
+#, fuzzy
+msgid "XMPP Domain error, your account is not a valid XMPP Address"
 msgstr "Chyba domény XMPP, Váš účet nie je platné Jabber ID"
 
 #: [error]data_missings
@@ -1691,7 +1740,8 @@ msgid "No news yet…"
 msgstr "Zatiaľ žiadne novinky…"
 
 #: [menu]empty
-msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
+#, fuzzy
+msgid "Welcome to your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
 msgstr "Vitajte vo svojom kanáli noviniek, v ktorom uvidíte všetky príspevky uverejnené vašimi kontaktmi a v komunitách, ktoré odoberáte."
 
 #: [menu]mine
@@ -1967,7 +2017,8 @@ msgid "Oh! Hello!"
 msgstr "Oh! Vitajte!"
 
 #: [hello]enter_paragraph
-msgid "It seems that you’re new there! Welcome on Movim!"
+#, fuzzy
+msgid "It seems that you are new here! Welcome to Movim!"
 msgstr "Zdá sa, že ste tu nový! Vitajte v Movim!"
 
 #: [hello]menu_title
@@ -2127,7 +2178,7 @@ msgid "Join a custom chatroom"
 msgstr "Vstúpiť do zadanej miestnosti"
 
 #: [rooms]empty_text1
-msgid "You don’t have any chatrooms yet."
+msgid "You don’t have any chatroom yet."
 msgstr ""
 
 #: [rooms]empty_text2
@@ -2135,32 +2186,39 @@ msgid "Add one by clicking on the add button."
 msgstr "Pridajte si nejakú kliknutím na tlačidlo pridať."
 
 #: [rooms]type_room
-msgid "Type of room"
+#, fuzzy
+msgid "Type of chatroom"
 msgstr "Typ miestnosti"
 
 #: [rooms]default_room
-msgid "Standard room"
+#, fuzzy
+msgid "Standard chatroom"
 msgstr "Štandardná miestnosť"
 
 #: [rooms]gateway_room
-msgid "Gateway room"
+#, fuzzy
+msgid "Gateway chatroom"
 msgstr "Bránová miestnosť"
 
 #: [rooms]show_all
-msgid "Show all rooms"
-msgstr ""
+#, fuzzy
+msgid "Show all chatrooms"
+msgstr "Vstúpiť do miestnosti"
 
 #: [rooms]hide_disconnected
-msgid "Hide disconnected rooms"
+#, fuzzy
+msgid "Hide disconnected chatrooms"
 msgstr "Skryť odpojené miestnosti"
 
 #: [rooms]destroy_title
-msgid "Destroy the room"
+#, fuzzy
+msgid "Destroy the chatroom"
 msgstr "Odstrániť miestnosť"
 
 #: [rooms]destroy_text
-msgid "Are you sure you want to permanently destroy the following room?"
-msgstr ""
+#, fuzzy
+msgid "Are you sure you want to permanently destroy the following chatroom?"
+msgstr "Naozaj chcete odstrániť tento komentár?"
 
 #: [rooms]owner
 msgctxt "[rooms]owner"
@@ -2189,15 +2247,17 @@ msgid "Chatrooms"
 msgstr "Chatové miestnosti"
 
 #: [chatrooms]id
-msgid "Chatroom ID"
-msgstr ""
+#, fuzzy
+msgid "Chatroom Address"
+msgstr "Chatové miestnosti"
 
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "Moje obľôbené miestnosti"
 
 #: [chatrooms]bad_id
-msgid "Bad Chatroom ID"
+#, fuzzy
+msgid "Bad Chatroom Address"
 msgstr "Zlé ID chatovej miestnosti"
 
 #: [chatrooms]empty_name
@@ -2205,12 +2265,24 @@ msgid "Empty name"
 msgstr "Prázdne meno"
 
 #: [chatrooms]remove_title
-msgid "Remove a chatroom"
-msgstr ""
+#, fuzzy
+msgid "Permanently leave a chatroom"
+msgstr "Vytvoriť miestnosť"
 
 #: [chatrooms]remove_text
-msgid "You are going to remove the following chatroom. Please confirm your action."
-msgstr ""
+#, fuzzy
+msgid "You are going to permanently leave the following chatroom. Please confirm your action."
+msgstr "Odstraňujete nasledujúcu komunitu. Prosím, potvrďte svoju akciu"
+
+#: [chatrooms]connected
+#, fuzzy
+msgid "Joined the chatroom"
+msgstr "Vstúpiť do miestnosti"
+
+#: [chatrooms]disconnected
+#, fuzzy
+msgid "Left the chatroom"
+msgstr "Pridať miestnosť"
 
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
@@ -2227,15 +2299,18 @@ msgid "Banned"
 msgstr ""
 
 #: [chatrooms]bad_nickname
-msgid "Please enter a correct nickname (2 to 40 characters)"
+#, fuzzy
+msgid "Please enter a valid nickname (2 to 40 characters)"
 msgstr "Prosím, zadajte platnú prezývku (2 až 40 znakov)"
 
 #: [chatrooms]conflict
-msgid "Username already taken"
+#, fuzzy
+msgid "Nickname already taken"
 msgstr "Používateľské meno už existuje"
 
 #: [chatrooms]autojoin
-msgid "Join this chatroom on connect"
+#, fuzzy
+msgid "Join this chatroom on login"
 msgstr "Vstúpiť do miestnosti pri prihlásení"
 
 #: [chatrooms]pinned
@@ -2243,7 +2318,8 @@ msgid "Pin this chatroom"
 msgstr ""
 
 #: [chatrooms]destroyed
-msgid "Room destroyed"
+#, fuzzy
+msgid "Chatroom destroyed"
 msgstr "Miestnosť odstránená"
 
 #: [chatrooms]registrationrequired
@@ -2279,7 +2355,7 @@ msgid "Not acceptable"
 msgstr ""
 
 #: [chatrooms]serviceunavailable
-msgid "The chatroom occupant limit has been reached"
+msgid "The chatroom participant limit has been reached"
 msgstr ""
 
 #: [chatrooms]notallowed
@@ -2295,8 +2371,9 @@ msgid "Bookmarks updated"
 msgstr "Záložky aktualizované"
 
 #: [room]anonymous_title
-msgid "Public chatroom"
-msgstr "Verejná miestnosť"
+#, fuzzy
+msgid "Public Channel"
+msgstr "Verejná stránka"
 
 #: [room]anonymous_text1
 msgid "You are currently logged as an anonymous user."
@@ -2331,7 +2408,8 @@ msgid "Public profiles"
 msgstr "Verejné profily"
 
 #: [room]nonanonymous_muc_text
-msgid "The participants of this chatroom can see each other's profile"
+#, fuzzy
+msgid "The participants of this chatroom can see each other's XMPP Addresses"
 msgstr "Členovia tejto miestnosti môžu vidieť profil všetkých ostatných"
 
 #: [room]archived
@@ -2342,7 +2420,7 @@ msgstr ""
 msgid "The chatroom messages are archived"
 msgstr ""
 
-#: [room]group_chat
+#: [room]group_chat [page]room
 msgid "Group Chat"
 msgstr "Skupinový chat"
 
@@ -2455,11 +2533,20 @@ msgid "No chatrooms found locally"
 msgstr ""
 
 #: [roomsexplore]global_title
-msgid "Global search"
-msgstr "Globálne hľadanie"
+#, fuzzy
+msgid "Channels"
+msgstr "Kanál"
 
 #: [roomsexplore]no_global
 msgid "No chatrooms found globally"
+msgstr ""
+
+#: [roomsexplore]find_more
+msgid "Find more channels"
+msgstr ""
+
+#: [roomsexplore]find_more_text
+msgid "%s in total"
 msgstr ""
 
 #: [search]keyword
@@ -2479,7 +2566,8 @@ msgid "No contacts yet?"
 msgstr "Zatiaľ žiadne kontakty?"
 
 #: [search]no_contacts_text
-msgid "Find one by searching for their name or id"
+#, fuzzy
+msgid "Find one by searching for their name or address"
 msgstr "Nájdite niekoho zadaním jeho mena alebo ID"
 
 #: [search]tags
@@ -2727,7 +2815,8 @@ msgid "Movim is currently working in degraded mode"
 msgstr "Movim momentálne pracuje v degradovanom režime"
 
 #: [degraded]text_1
-msgid "Your server doesn’t support XMPP Pubsub persistence or the social features (communities, news feed and profile) are disabled by the administrator."
+#, fuzzy
+msgid "Your server doesn’t support XMPP Pubsub persistence or the social features (communities, news feed, and profile) are disabled by the administrator."
 msgstr "Váš server nepodporuje trvalé XMPP Pubsub alebo sú sociálne funkcie (komunity, kanály noviniek a profil) vypnuté jeho správcom."
 
 #: [degraded]text_2
@@ -2879,12 +2968,13 @@ msgid "News"
 msgstr "Novinky"
 
 #: [page]avatar
-msgid "Avatar"
-msgstr "Avatar"
+#, fuzzy
+msgid "Profile Picture"
+msgstr "Profil upravený"
 
 #: [page]chats
-msgid "Chats"
-msgstr "Chaty"
+msgid "Direct Messages & Whispers"
+msgstr ""
 
 #: [page]publish
 msgid "Publish"
@@ -2922,10 +3012,6 @@ msgstr "Video-konferencia"
 msgctxt "[page]share"
 msgid "Share"
 msgstr "Zdieľať"
-
-#: [page]room
-msgid "Room"
-msgstr "Miestnosť"
 
 #: [page]tag
 msgid "Tag"
@@ -2996,7 +3082,7 @@ msgid "Destroy"
 msgstr "Zničiť"
 
 #: [button]remove
-msgid "Remove"
+msgid "Leave"
 msgstr ""
 
 #: [button]cancel
@@ -3747,3 +3833,30 @@ msgstr "API nie je dostupné, skúste neskôr"
 #: [field]type_here
 msgid "Type here"
 msgstr "Píšte tu"
+
+#~ msgid "Avatar Updated"
+#~ msgstr "Avatar aktualizovaný"
+
+#~ msgid "Avatar Not Updated"
+#~ msgstr "Avatar neaktualizovaný"
+
+#~ msgid "No subscriptions"
+#~ msgstr "Žiadne odbery"
+
+#~ msgid "Invalid JID"
+#~ msgstr "Neplatné JID"
+
+#~ msgid "Public chatroom"
+#~ msgstr "Verejná miestnosť"
+
+#~ msgid "Global search"
+#~ msgstr "Globálne hľadanie"
+
+#~ msgid "Avatar"
+#~ msgstr "Avatar"
+
+#~ msgid "Chats"
+#~ msgstr "Chaty"
+
+#~ msgid "Room"
+#~ msgstr "Miestnosť"
