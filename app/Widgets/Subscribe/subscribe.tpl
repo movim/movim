@@ -1,20 +1,21 @@
 <div id="subscribe">
-    <ul class="list thick">
-        <li>
-            <div>
-                <p>{$c->__('subscribe.title')}</p>
-                <p>{$c->__('subscribe.info')}</p>
-            </div>
-        </li>
-    </ul>
+    <div class="placeholder">
+        <i class="material-symbols">how_to_reg</i>
+        <h1>{$c->__('subscribe.title')}</h1>
+        <h4>{$c->__('subscribe.info')}</h4>
+    </div>
 
     <ul class="list card active flex thick">
         {if="!empty($config->xmppdomain)"}
             <li
-                class="block"
+                class="block large color {$config->xmppdomain|stringToColor}"
                 onclick="MovimUtils.redirect('{$c->route('accountnext', [$config->xmppdomain, false])}')">
-                <span class="primary icon bubble color {$config->xmppdomain|stringToColor}">
+                <i class="material-symbols main">person</i>
+                <span class="primary icon bubble color transparent">
                     {$config->xmppdomain|firstLetterCapitalize}
+                </span>
+                <span class="control icon">
+                    <i class="material-symbols">chevron_right</i>
                 </span>
                 <div>
                     <p class="normal">
@@ -28,27 +29,22 @@
                 </div>
             </li>
         {/if}
-        <li
-            class="block"
-            onclick="MovimUtils.redirect('{$c->route('accountnext', ['movim.eu', false])}')">
-            <span class="primary icon bubble">
-                <img src="theme/img/app/vectorial_square.svg">
-            </span>
-            <div>
-                <p>movim.eu</p>
-                <p>Official Movim XMPP Server<br /></p>
-            </div>
-        </li>
-    </ul>
-    <ul class="list thick">
-        <li class="block">
-            <div>
-                <p></p>
-                <p>{$c->__('subscribe.server_question')}</p>
-                <p>
-                    {$c->__('subscribe.server_contact')} • <a href="https://join.movim.eu/">https://join.movim.eu/</a>
-                </p>
-            </div>
-        </li>
+        {if="empty($config->xmppwhitelist) || in_array('movim.eu', $config->xmppwhitelist)"}
+            <li
+                class="block color large indigo"
+                onclick="MovimUtils.redirect('{$c->route('accountnext', ['movim.eu', false])}')">
+                <i class="material-symbols main">cloud</i>
+                <span class="primary icon bubble">
+                    <img src="theme/img/app/vectorial_square.svg">
+                </span>
+                <span class="control icon">
+                    <i class="material-symbols">chevron_right</i>
+                </span>
+                <div>
+                    <p>movim.eu</p>
+                    <p>Official Movim XMPP Server<br /></p>
+                </div>
+            </li>
+        {/if}
     </ul>
 </div>

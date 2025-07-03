@@ -19,6 +19,7 @@ v0.30.1 (master)
 * Fix XMPP URI handling in Share
 * Add Pronouns support in vCard4
 * Add a toggle state to the Chat page buttons to switch quickly between one-to-one and rooms
+* Redesign the subscription page
 
 v0.30
 ---------------------------

@@ -3,13 +3,11 @@
         <header>
             <ul class="list middle">
                 <li>
-                    <span class="primary active icon gray">
-                        <a href="<?php echo \Movim\Route::urlize('main'); ?>">
-                            <i class="material-symbols">home</i>
-                        </a>
+                    <span class="primary active icon gray" onclick="MovimUtils.redirect('<?php echo \Movim\Route::urlize('login') ?>')">
+                        <i class="material-symbols">arrow_back</i>
                     </span>
                     <div>
-                        <p class="center"><?php echo __('page.account_creation'); ?></p>
+                        <p><?php echo __('page.account_creation'); ?></p>
                     </div>
                 </li>
             </ul>
