@@ -14,6 +14,18 @@ var MovimTpl = {
     popAnchorKey: null,
     popAnchorAction: null,
 
+    loadingPage: function () {
+        document.body.classList.add('loading');
+        document.body.classList.remove('finished');
+    },
+    finishedPage: function () {
+        document.body.classList.add('finished');
+
+        setTimeout(e => {
+            document.body.classList.remove('loading', 'finished');
+        }, 1000);
+    },
+
     append: function (selector, html) {
         target = document.querySelector(selector);
         if (target) {

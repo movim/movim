@@ -116,13 +116,19 @@ class Jingle
         \Moxl\API::sendDom($dom);
     }
 
-    public static function sessionInitiate($to, $offer)
+    public static function sessionInitiate(string $to, $jingle)
     {
-        $dom = new \DOMDocument('1.0', 'UTF-8');
-        $jingle = $dom->createElementNS('urn:xmpp:jingle:1', 'jingle');
-        $jingle->setAttribute('action', 'session-terminate');
+        \Moxl\API::request(\Moxl\API::iqWrapper($jingle, $to, 'set'));
+    }
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($offer, $to, 'set'));
+    public static function contentAdd(string $to, $jingle)
+    {
+        \Moxl\API::request(\Moxl\API::iqWrapper($jingle, $to, 'set'));
+    }
+
+    public static function contentRemove(string $to, $jingle)
+    {
+        \Moxl\API::request(\Moxl\API::iqWrapper($jingle, $to, 'set'));
     }
 
     public static function sessionTerminate($to, $sid, $value)

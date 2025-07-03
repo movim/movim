@@ -130,12 +130,11 @@ body>nav.active:before {
 body:before {
     position: absolute;
     display: block;
-    background-color: var(--movim-accent);
+    background: linear-gradient(90deg, var(--movim-accent) 0, transparent 50%, var(--movim-accent) 100%);
+    background-size: 200rem;
     width: 0;
     height: 0.25rem;
     content: '';
-    top: -0.25rem;
-    transition: width 4s ease-in-out, opacity 0.2s ease-in-out;
     opacity: 0;
     top: 0;
     left: 0;
@@ -143,6 +142,8 @@ body:before {
 }
 
 body.loading:before {
+    transition: width 4s ease-in-out, opacity 0.2s ease-in-out;
+    animation: loadingblink 3s linear infinite;
     width: 100%;
     opacity: 1;
 }
@@ -151,6 +152,16 @@ body.finished:before {
     transition: width 1s cubic-bezier(.68, 0, 0, 1), opacity 1s ease-in-out;
     width: 100%;
     opacity: 0;
+}
+
+@keyframes loadingblink {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 200rem 0;
+    }
 }
 
 /* Main */

@@ -3,7 +3,6 @@
 namespace Movim\Librairies;
 
 use DOMElement;
-use Movim\CurrentCall;
 use Movim\Session;
 
 class SDPtoJingle
@@ -15,7 +14,7 @@ class SDPtoJingle
     private $content    = null;
     private $transport  = null;
 
-    private $action;
+    private ?string $action = null;
 
     private $ufrag = null;
     private $mid = null;
@@ -56,13 +55,12 @@ class SDPtoJingle
 
     public function __construct(
         string $sdp,
-        string $initiator,
         string $sid,
         bool $muji = false,
-        $responder = false,
-        $action = false,
-        $mid = null,
-        $ufrag = null
+        ?string $responder = null,
+        ?string $action = null,
+        ?string $mid = null,
+        ?string $ufrag = null,
     ) {
         $this->sdp = $sdp;
         $this->arr = explode("\n", $this->sdp);
@@ -82,18 +80,17 @@ class SDPtoJingle
         } else {
             $this->jingle = new \SimpleXMLElement('<jingle></jingle>');
             $this->jingle->addAttribute('xmlns', 'urn:xmpp:jingle:1');
-            $this->jingle->addAttribute('initiator', $initiator);
+            $this->jingle->addAttribute('initiator', \App\User::me()->id);
         }
-
 
         if ($action) {
+            $this->action = $action;
             $this->jingle->addAttribute('action', $action);
         }
+
         if ($responder) {
             $this->jingle->addAttribute('responder', $responder);
         }
-
-        $this->action = $action;
     }
 
     public function setMujiRoom(string $mujiRoom)
@@ -107,10 +104,11 @@ class SDPtoJingle
             $this->content == null
             || $force
         ) {
-            $this->content      = $this->jingle->addChild('content');
+            $this->content = $this->jingle->addChild('content');
+            $this->content->addAttribute('creator', 'initiator');
+
             $this->transport    = $this->content->addChild('transport');
             $this->transport->addAttribute('xmlns', "urn:xmpp:jingle:transports:ice-udp:1");
-            $this->content->addAttribute('creator', 'initiator'); // FIXME
             $this->msid = null;
 
             // A hack to ensure that Dino is returning complete Muji content proposal
@@ -233,7 +231,7 @@ class SDPtoJingle
                             break;
 
 
-                            // http://xmpp.org/extensions/xep-0167.html#format
+                        // http://xmpp.org/extensions/xep-0167.html#format
                         case 'fmtp':
                             // If fmtp is added just after the correspondant rtpmap
                             $params = explode(';', $matches[2]);
@@ -249,7 +247,7 @@ class SDPtoJingle
                             }
                             break;
 
-                            // http://xmpp.org/extensions/xep-0293.html
+                        // http://xmpp.org/extensions/xep-0293.html
                         case 'rtcp_fb':
                             if ($matches[1] == '*') {
                                 $this->addRtcpFbParameters($description, [$matches]);
@@ -277,7 +275,7 @@ class SDPtoJingle
                             $rtcpfp->addAttribute('value', $matches[2]);
                             break;
 
-                            // http://xmpp.org/extensions/xep-0167.html#srtp
+                        // http://xmpp.org/extensions/xep-0167.html#srtp
                         case 'crypto':
                             $encryption = $description->addChild('encryption');
                             $crypto     = $encryption->addChild('crypto');
@@ -289,19 +287,19 @@ class SDPtoJingle
                             }
                             break;
 
-                            // http://xmpp.org/extensions/xep-0262.html
+                        // http://xmpp.org/extensions/xep-0262.html
                         case 'zrtp_hash':
                             $zrtphash   = $encryption->addChild('zrtp-hash', $matches[2]);
                             $zrtphash->addAttribute('xmlns', "urn:xmpp:jingle:apps:rtp:zrtp:1");
                             $zrtphash->addAttribute('version', $matches[1]);
                             break;
 
-                            // Non standard
+                        // Non standard
                         case 'rtcp_mux':
                             $description->addChild('rtcp-mux');
                             break;
 
-                            // http://xmpp.org/extensions/xep-0294.html
+                        // http://xmpp.org/extensions/xep-0294.html
                         case 'extmap':
                             $rtphdrext = $description->addChild('rtp-hdrext');
                             $rtphdrext->addAttribute('xmlns', "urn:xmpp:jingle:apps:rtp:rtp-hdrext:0");
@@ -318,7 +316,7 @@ class SDPtoJingle
                             }
                             break;
 
-                            // http://xmpp.org/extensions/xep-0339.html
+                        // http://xmpp.org/extensions/xep-0339.html
                         case 'ssrc':
                             $sources = $description->xpath('source[@ssrc="' . $matches[1] . '"]');
                             $ssrc = is_array($sources) && count($sources) > 0 ? $sources[0] : null;
@@ -348,7 +346,7 @@ class SDPtoJingle
                             $description->addAttribute('maxptime', $matches[1]);
                             break;
 
-                            // http://xmpp.org/extensions/xep-0338.html
+                        // http://xmpp.org/extensions/xep-0338.html
                         case 'group':
                             $group = $this->jingle->addChild('group');
                             $group->addAttribute('xmlns', "urn:xmpp:jingle:apps:grouping:0");
@@ -362,7 +360,7 @@ class SDPtoJingle
                             }
                             break;
 
-                            // http://xmpp.org/extensions/xep-0320.html
+                        // http://xmpp.org/extensions/xep-0320.html
                         case 'fingerprint':
                             if ($this->content == null) {
                                 $this->globalFingerprint['fingerprint'] = $matches[2];
@@ -375,7 +373,7 @@ class SDPtoJingle
 
                             break;
 
-                            // https://xmpp.org/extensions/xep-0343.html
+                        // https://xmpp.org/extensions/xep-0343.html
                         case 'sctpmap':
                             $sctpmap = $this->transport->addChild('sctpmap');
                             $sctpmap->addAttribute('xmlns', "urn:xmpp:jingle:transports:dtls-sctp:1");
@@ -384,7 +382,7 @@ class SDPtoJingle
                             $sctpmap->addAttribute('streams', $matches[3]);
                             break;
 
-                            // http://xmpp.org/extensions/xep-0320.html
+                        // http://xmpp.org/extensions/xep-0320.html
                         case 'setup':
                             if ($this->content != null) {
                                 $fingerprint->addAttribute('setup', $matches[1]);
@@ -406,7 +404,10 @@ class SDPtoJingle
                             $this->initContent();
                             $this->addName();
 
-                            $this->jingle->addAttribute('sid', $this->sid);
+                            if (empty($this->jingle->attributes()->sid)) {
+                                $this->jingle->addAttribute('sid', $this->sid);
+                            }
+
                             $candidate = $this->transport->addChild('candidate');
 
                             $candidate->addAttribute('foundation', $matches[1]);
@@ -420,7 +421,7 @@ class SDPtoJingle
                             // We have other arguments
                             $args = [];
                             if (isset($matches[9])) {
-                                $keyValues = explode(' ', $matches[9]);
+                                $keyValues = explode(' ', trim($matches[9]));
                                 foreach ($keyValues as $key)
 
                                     foreach (array_chunk($keyValues, 2) as $pair) {

@@ -5,15 +5,14 @@ namespace Moxl\Xec\Action\Jingle;
 use Moxl\Xec\Action;
 use Moxl\Stanza\Jingle;
 
-class SessionMute extends Action
+class ContentAdd extends Action
 {
     protected $_to;
-    protected $_id;
-    protected $_name = false;
+    protected $_jingle;
 
     public function request()
     {
         $this->store();
-        Jingle::sessionMute($this->_to, $this->_id, $this->_name);
+        Jingle::contentAdd($this->_to, $this->_jingle);
     }
 }

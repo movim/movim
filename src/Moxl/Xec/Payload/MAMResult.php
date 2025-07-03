@@ -21,38 +21,52 @@ class MAMResult extends Payload
         ) {
             $session->set('mamid' . (string)$stanza->attributes()->queryid, $messagesCounter + 1);
 
-            if ($stanza->forwarded->message->retract
-             && $stanza->forwarded->message->retract->attributes()->xmlns == 'urn:xmpp:message-retract:1') {
-                $retracted = new Retracted;
-                $retracted->handle($stanza->forwarded->message->retract, $stanza->forwarded->message);
-            }
-
-            if ($stanza->forwarded->message->invite
-             && $stanza->forwarded->message->invite->attributes()->xmlns == 'urn:xmpp:call-invites:0') {
-                $invite = new CallInvitePropose;
-                $invite->handle($stanza->forwarded->message->invite, $stanza->forwarded->message);
-            }
-
-            if ($stanza->forwarded->message->retract
-             && $stanza->forwarded->message->retract->attributes()->xmlns == 'urn:xmpp:call-invites:0') {
-                $retract = new CallInviteRetract;
-                $retract->handle($stanza->forwarded->message->retract, $stanza->forwarded->message);
-            }
-
-            if ($stanza->forwarded->message->accept
-             && $stanza->forwarded->message->accept->attributes()->xmlns == 'urn:xmpp:call-invites:0') {
-                $accept = new CallInviteAccept;
-                $accept->handle($stanza->forwarded->message->accept, $stanza->forwarded->message);
-            }
-
-            if ($stanza->forwarded->message->left
-             && $stanza->forwarded->message->left->attributes()->xmlns == 'urn:xmpp:call-invites:0') {
-                $left = new CallInviteLeft;
-                $left->handle($stanza->forwarded->message->left, $stanza->forwarded->message);
-            }
-
             $message = \App\Message::findByStanza($stanza, $parent);
             $message = $message->set($stanza->forwarded->message, $stanza->forwarded);
+
+            if (
+                $message->published && strtotime($message->published) > mktime(0, 0, 0, gmdate("m"), gmdate("d") - 3, gmdate("Y"))
+            ) {
+                if (
+                    $stanza->forwarded->message->retract
+                    && $stanza->forwarded->message->retract->attributes()->xmlns == 'urn:xmpp:message-retract:1'
+                ) {
+                    $retracted = new Retracted;
+                    $retracted->handle($stanza->forwarded->message->retract, $stanza->forwarded->message);
+                }
+
+                if (
+                    $stanza->forwarded->message->invite
+                    && $stanza->forwarded->message->invite->attributes()->xmlns == 'urn:xmpp:call-invites:0'
+                ) {
+                    $invite = new CallInvitePropose;
+                    $invite->handle($stanza->forwarded->message->invite, $stanza->forwarded->message);
+                }
+
+                if (
+                    $stanza->forwarded->message->retract
+                    && $stanza->forwarded->message->retract->attributes()->xmlns == 'urn:xmpp:call-invites:0'
+                ) {
+                    $retract = new CallInviteRetract;
+                    $retract->handle($stanza->forwarded->message->retract, $stanza->forwarded->message);
+                }
+
+                if (
+                    $stanza->forwarded->message->accept
+                    && $stanza->forwarded->message->accept->attributes()->xmlns == 'urn:xmpp:call-invites:0'
+                ) {
+                    $accept = new CallInviteAccept;
+                    $accept->handle($stanza->forwarded->message->accept, $stanza->forwarded->message);
+                }
+
+                if (
+                    $stanza->forwarded->message->left
+                    && $stanza->forwarded->message->left->attributes()->xmlns == 'urn:xmpp:call-invites:0'
+                ) {
+                    $left = new CallInviteLeft;
+                    $left->handle($stanza->forwarded->message->left, $stanza->forwarded->message);
+                }
+            }
 
             // parent message doesn't exists
             if ($message == null) {

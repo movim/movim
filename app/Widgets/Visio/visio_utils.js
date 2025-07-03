@@ -174,84 +174,8 @@ var VisioUtils = {
         document.querySelector('#dtmf p.dtmf span').innerText = '';
     },
 
-    toggleMainButton: function () {
-        button = document.getElementById('main');
-        state = document.querySelector('p.state');
-
-        i = button.querySelector('i');
-
-        button.classList.remove('red', 'green', 'gray', 'orange', 'ring', 'blue');
-        button.classList.add('disabled');
-
-        if (MovimVisio.pc) {
-            let length = MovimVisio.pc.getSenders().length;
-
-            if (MovimVisio.pc.iceConnectionState != 'closed'
-                && length > 0) {
-                button.classList.remove('disabled');
-            }
-
-            button.onclick = function () { };
-
-            if (length == 0) {
-                button.classList.add('gray');
-                i.innerText = 'more_horiz';
-            } else if (MovimVisio.pc.iceConnectionState == 'new') {
-                //if (MovimVisio.pc.iceGatheringState == 'gathering'
-                //|| MovimVisio.pc.iceGatheringState == 'complete') {
-                if (MovimVisio.calling) {
-                    button.classList.add('orange');
-                    i.className = 'material-symbols ring';
-                    i.innerText = 'call';
-                    state.innerText = MovimVisio.states.ringing;
-
-                    button.onclick = function () { MovimJingles.terminateAll('cancel'); };
-                } else {
-                    button.classList.add('green');
-                    button.classList.add('disabled');
-                    i.innerText = 'call';
-                }
-            } else if (MovimVisio.pc.iceConnectionState == 'checking') {
-                button.classList.add('blue');
-                i.className = 'material-symbols disabled';
-                i.innerText = 'more_horiz';
-                state.innerText = MovimVisio.states.connecting;
-            } else if (MovimVisio.pc.iceConnectionState == 'closed') {
-                button.classList.add('gray');
-                button.classList.remove('disabled');
-                i.innerText = 'call_end';
-
-                button.onclick = function () { MovimJingles.terminateAll(); };
-            } else if (MovimVisio.pc.iceConnectionState == 'connected'
-                || MovimVisio.pc.iceConnectionState == 'complete'
-                || MovimVisio.pc.iceConnectionState == 'failed') {
-                button.classList.add('red');
-                i.className = 'material-symbols';
-                i.innerText = 'call_end';
-
-                if (MovimVisio.pc.iceConnectionState == 'failed') {
-                    state.innerText = MovimVisio.states.failed;
-                } else {
-                    state.innerText = MovimVisio.states.in_call;
-                }
-
-                button.onclick = () => MovimJingles.terminateAll();
-            }
-        } else {
-            button.classList.add('red');
-            i.className = 'material-symbols';
-            i.innerText = 'close';
-
-            button.onclick = () => MovimJingles.terminateAll();
-        }
-    },
-
     enableScreenSharingButton: function () {
         document.querySelector('#screen_sharing').classList.add('enabled');
-    },
-
-    enableSwitchCameraButton: function () {
-        MovimVisio.switchCamera.classList.remove('disabled');
     },
 
     disableSwitchCameraButton: function () {
@@ -259,11 +183,15 @@ var VisioUtils = {
     },
 
     enableLobbyCallButton: function () {
-        document.querySelector('#lobby_start').classList.remove('disabled');
+        if (document.querySelector('#lobby_start')) {
+            document.querySelector('#lobby_start').classList.remove('disabled');
+        }
     },
 
     disableLobbyCallButton: function () {
-        document.querySelector('#lobby_start').classList.add('disabled');
+        if (document.querySelector('#lobby_start')) {
+            document.querySelector('#lobby_start').classList.add('disabled');
+        }
     },
 
     toggleScreenSharing: async function () {
@@ -283,91 +211,29 @@ var VisioUtils = {
                 VisioUtils.disableSwitchCameraButton();
                 button.innerText = 'stop_screen_share';
 
-                MovimVisio.gotScreen();
+                MovimJingles.enableScreenSharing();
             } catch (err) {
                 console.error("Error: " + err);
             }
+            return;
         } else {
-            MovimVisio.screenSharing.srcObject.getTracks().forEach(track => track.stop());
-            MovimVisio.screenSharing.srcObject = null;
-            MovimVisio.screenSharing.classList.remove('sharing');
-            VisioUtils.enableSwitchCameraButton();
-
-            button.innerText = 'screen_share';
-
-            MovimVisio.gotQuickStream();
+            VisioUtils.disableScreenSharing();
         }
     },
 
-    // TODO Use MovimVisio.getDevices
-    /*switchCameraInCall: function () {
-        MovimVisio.videoSelect = document.querySelector('#visio select#visio_source');
-        MovimVisio.switchCamera = document.querySelector("#visio #switch_camera");
+    disableScreenSharing: function () {
+        MovimJingles.disableScreenSharing();
 
-        navigator.mediaDevices.enumerateDevices().then(devicesInfo => {
-            MovimVisio.videoSelect.innerText = '';
+        if (MovimVisio.screenSharing.srcObject) {
+            MovimVisio.screenSharing.srcObject.getTracks().forEach(track => track.stop());
+            MovimVisio.screenSharing.srcObject = null;
 
-            for (const deviceInfo of devicesInfo) {
-                if (deviceInfo.kind === 'videoinput') {
-                    const option = document.createElement('option');
-                    option.value = deviceInfo.deviceId;
-                    option.text = deviceInfo.label || 'Camera ' + MovimVisio.videoSelect.length + 1;
+            MovimVisio.screenSharing.classList.remove('sharing');
+            MovimVisio.switchCamera.classList.remove('disabled');
+        }
 
-                    if (!Visio.videoSelect.querySelector('option[value="' + deviceInfo.deviceId + '"]')) {
-                        MovimVisio.videoSelect.appendChild(option);
-                    }
-                }
-            }
-
-            if (Visio.videoSelect.options.length >= 2) {
-                MovimVisio.switchCamera.classList.add('enabled');
-            }
-        });
-
-        MovimVisio.switchCamera.onclick = () => {
-            MovimVisio.videoSelect.selectedIndex++;
-
-            if (Visio.videoSelect.selectedIndex == -1) {
-                MovimVisio.videoSelect.selectedIndex++;
-            }
-
-            Toast.send(Visio.videoSelect.options[Visio.videoSelect.selectedIndex].label);
-
-            var constraints = {
-                video: true
-            };
-
-            constraints.video = {
-                deviceId: MovimVisio.videoSelect.options[Visio.videoSelect.selectedIndex].value,
-                width: { ideal: 4096 },
-                height: { ideal: 4096 }
-            };
-
-            MovimVisio.localVideo.srcObject = null;
-
-            VisioUtils.disableSwitchCameraButton();
-
-            var videoTrack = MovimVisio.pc.getSenders().find(rtc => rtc.track && rtc.track.kind == 'video');
-            if (videoTrack) videoTrack.track.stop();
-
-            navigator.mediaDevices.getUserMedia(constraints).then(stream => {
-                stream.getTracks().forEach(track => {
-                    MovimVisio.pc.addTrack(track, stream);
-
-                    if (track.kind == 'video') {
-                        MovimVisio.localVideo.srcObject = stream;
-                        localStorage.setItem('defaultCamera', track.getSettings().deviceId);
-                    }
-                });
-
-                VisioUtils.enableSwitchCameraButton();
-                var cameraIcon = document.querySelector('#toggle_video i');
-                cameraIcon.innerText = 'videocam';
-
-                VisioUtils.pcReplaceTrack(stream);
-                VisioUtils.enableScreenSharingButton();
-                VisioUtils.toggleMainButton();
-            }, logError);
-        };
-    },*/
+        if (button = document.querySelector('#screen_sharing i')) {
+            button.innerText = 'screen_share';
+        }
+    }
 }
