@@ -19,10 +19,22 @@ Movim requires some dependencies to be setup properly.
      * PHP ImageMagick and GD for the picture processing (package ''**php-imagick**'' and ''**php-gd**'')
      * Your database PHP driver (package ''**php-pgsql**'' or ''**php-mysql**'' depending on the type of database server you want to use).
      * And the PHP XML (package ''**php-xml**'')
+     * OpenSSL with ALPN support (most modern versions) for improved XMPP protocol negotiation
 
 ### Debian/Ubuntu
 
     apt install composer php-fpm php-curl php-mbstring php-imagick php-gd php-pgsql php-xml
+
+### ALPN Support
+
+Movim supports ALPN (Application-Layer Protocol Negotiation) for XMPP client connections when using modern PHP (8.2+) with OpenSSL support. This feature:
+
+* Improves protocol negotiation between Movim and XMPP servers
+* Enhances security by explicitly identifying the XMPP client protocol
+* Is automatically enabled when supported by the PHP/OpenSSL environment
+* Gracefully degrades when not supported without affecting functionality
+
+The ALPN protocol identifier used is `xmpp-client` as registered with IANA.
 
 # General architecture
 

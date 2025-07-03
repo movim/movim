@@ -45,6 +45,20 @@ function handleSSLErrors($errno, $errstr)
     logOut(colorize('SSL Error ' . $errno . ': ' . $errstr, 'red'));
 }
 
+function setAlpnProtocols($stream, $protocols = ['xmpp-client'])
+{
+    try {
+        // Add ALPN support for XMPP client connections
+        // This helps with protocol negotiation and security
+        stream_context_set_option($stream, 'ssl', 'alpn_protocols', $protocols);
+        logOut(colorize('ALPN protocols set: ' . implode(', ', $protocols), 'blue'));
+        return true;
+    } catch (Exception $e) {
+        logOut(colorize('ALPN not supported: ' . $e->getMessage(), 'yellow'));
+        return false;
+    }
+}
+
 // Temporary linker killer
 $loop->addPeriodicTimer(5, function () use (&$xmppSocket, &$timestampReceive, &$timestampSend) {
     if (($timestampSend < time() - 3600 * 24 /* 24h */ || $timestampReceive < time() - 60 * 30 /* 30min */)
@@ -102,6 +116,9 @@ function enableEncryption($connection)
     stream_context_set_option($connection->stream, 'ssl', 'SNI_enabled', true);
     stream_context_set_option($connection->stream, 'ssl', 'peer_name', $session->get('host'));
     stream_context_set_option($connection->stream, 'ssl', 'allow_self_signed', false);
+    
+    // Add ALPN support for XMPP client connections
+    setAlpnProtocols($connection->stream);
 
     return $encryption->enable($connection)->then(
         fn () => logOut(colorize('TLS enabled', 'blue')),
@@ -168,11 +185,17 @@ function handleClientDNS(array $results, $dns, $connector, $xmppBehaviour)
                 'tls' => [
                     'SNI_enabled' => true,
                     'allow_self_signed' => false,
-                    'peer_name' => $sessionHost
+                    'peer_name' => $sessionHost,
+                    'alpn_protocols' => ['xmpp-client']  // Add ALPN support for XMPP client
                 ]
             ]),
             $dns
         );
+
+        // Log ALPN usage for direct TLS connections
+        if ($directTLSSocket) {
+            logOut(colorize('Using ALPN protocol: xmpp-client for direct TLS connection', 'blue'));
+        }
 
         $connector->connect($socket)->then(
             $xmppBehaviour,
