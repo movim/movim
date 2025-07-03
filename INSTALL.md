@@ -19,6 +19,7 @@ Movim requires some dependencies to be setup properly.
      * PHP ImageMagick and GD for the picture processing (package ''**php-imagick**'' and ''**php-gd**'')
      * Your database PHP driver (package ''**php-pgsql**'' or ''**php-mysql**'' depending on the type of database server you want to use).
      * And the PHP XML (package ''**php-xml**'')
+     * For optimal XMPP TLS support, ensure OpenSSL is compiled with ALPN support (automatically enabled with PHP 7.4+ and modern OpenSSL versions)
 
 ### Debian/Ubuntu
 
@@ -231,3 +232,18 @@ To set a user admin login at least once (to register it in the database). You ca
 The administrators will be listed on the login page of the instance.
 
 Some of the configuration elements are only applied after the reboot of the daemon.
+
+## ALPN (Application-Layer Protocol Negotiation) Support
+
+Movim automatically enables ALPN support for XMPP connections when available. ALPN helps modern XMPP servers properly identify the `xmpp-client` protocol during TLS negotiation, improving protocol clarity and security.
+
+**Requirements:**
+- PHP 7.4 or higher
+- OpenSSL compiled with ALPN support (standard in modern distributions)
+
+**Benefits:**
+- Improved TLS negotiation with modern XMPP servers
+- Better protocol identification and security
+- Enhanced compatibility with XMPP servers that support ALPN
+
+ALPN support is automatically detected and enabled when the requirements are met. No additional configuration is required.

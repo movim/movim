@@ -103,6 +103,13 @@ function enableEncryption($connection)
     stream_context_set_option($connection->stream, 'ssl', 'peer_name', $session->get('host'));
     stream_context_set_option($connection->stream, 'ssl', 'allow_self_signed', false);
 
+    // Add ALPN (Application-Layer Protocol Negotiation) support for XMPP
+    // This helps modern XMPP servers properly identify the xmpp-client protocol during TLS negotiation
+    if (PHP_VERSION_ID >= 70400 && defined('OPENSSL_TLSEXT_SERVER_NAME')) {
+        @stream_context_set_option($connection->stream, 'ssl', 'alpn_protocols', ['xmpp-client']);
+        logOut(colorize('ALPN enabled for xmpp-client protocol', 'blue'));
+    }
+
     return $encryption->enable($connection)->then(
         fn () => logOut(colorize('TLS enabled', 'blue')),
         function ($error) use ($connection) {
@@ -168,11 +175,18 @@ function handleClientDNS(array $results, $dns, $connector, $xmppBehaviour)
                 'tls' => [
                     'SNI_enabled' => true,
                     'allow_self_signed' => false,
-                    'peer_name' => $sessionHost
+                    'peer_name' => $sessionHost,
+                    // Add ALPN (Application-Layer Protocol Negotiation) support for XMPP
+                    // This helps modern XMPP servers properly identify the xmpp-client protocol during TLS negotiation
+                    ...(PHP_VERSION_ID >= 70400 && defined('OPENSSL_TLSEXT_SERVER_NAME') ? ['alpn_protocols' => ['xmpp-client']] : [])
                 ]
             ]),
             $dns
         );
+
+        if (PHP_VERSION_ID >= 70400 && defined('OPENSSL_TLSEXT_SERVER_NAME')) {
+            logOut(colorize('ALPN enabled for xmpp-client protocol', 'blue'));
+        }
 
         $connector->connect($socket)->then(
             $xmppBehaviour,
