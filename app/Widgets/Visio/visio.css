@@ -282,7 +282,7 @@ body>#visio:not(:fullscreen) .participant img.avatar {
     max-width: 33%;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 800px) and (display-mode: fullscreen) {
     #visio .participant {
         flex-direction: column;
     }
