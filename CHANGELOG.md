@@ -20,6 +20,7 @@ v0.30.1 (master)
 * Add Pronouns support in vCard4
 * Add a toggle state to the Chat page buttons to switch quickly between one-to-one and rooms
 * Redesign the subscription page
+* Add WebRTC multi-track support
 
 v0.30
 ---------------------------
