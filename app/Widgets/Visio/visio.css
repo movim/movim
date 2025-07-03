@@ -189,7 +189,6 @@ body>#visio:not(:fullscreen) .participant img.avatar {
 }
 
 @media screen and (max-width: 800px) {
-
     #visio video#local_video,
     #visio video#screen_sharing_video.sharing {
         width: 15rem;
@@ -259,6 +258,7 @@ body>#visio:not(:fullscreen) .participant img.avatar {
     box-sizing: border-box;
     max-height: 100%;
     display: flex;
+    justify-content: space-around;
     align-items: center;
     gap: 0.5rem;
     flex: 1 auto;
@@ -275,10 +275,25 @@ body>#visio:not(:fullscreen) .participant img.avatar {
 
 #visio .participant:not(.screen_off):not(.video_off) video.screen {
     max-width: 66%;
+    height: auto;
 }
 
 #visio .participant:not(.screen_off) video.screen + video {
     max-width: 33%;
+}
+
+@media screen and (max-width: 800px) {
+    #visio .participant {
+        flex-direction: column;
+    }
+
+    #visio .participant:not(.screen_off):not(.video_off) video.screen {
+        max-width: 100%;
+    }
+
+    #visio .participant:not(.screen_off) video.screen + video {
+        max-width: 100%;
+    }
 }
 
 #visio .participant:not(.screen_off).video_off video.screen + video {
