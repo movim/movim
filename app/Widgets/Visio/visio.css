@@ -152,6 +152,7 @@ body>#visio:not(:fullscreen) #toggle_mode,
     right: 0.5rem;
     bottom: 0.5rem;
     width: 20rem;
+    max-width: 40%;
     height: auto;
     border-radius: 0.5rem;
     box-shadow: var(--elevation-4);
@@ -189,6 +190,7 @@ body>#visio:not(:fullscreen) .participant img.avatar {
 }
 
 @media screen and (max-width: 800px) {
+
     #visio video#local_video,
     #visio video#screen_sharing_video.sharing {
         width: 15rem;
@@ -257,11 +259,11 @@ body>#visio:not(:fullscreen) .participant img.avatar {
     padding: 0.5rem;
     box-sizing: border-box;
     max-height: 100%;
+    flex: 1 auto;
+
     display: flex;
     justify-content: space-around;
     align-items: center;
-    gap: 0.5rem;
-    flex: 1 auto;
 }
 
 #visio .participant video {
@@ -273,30 +275,21 @@ body>#visio:not(:fullscreen) .participant img.avatar {
     object-fit: cover;
 }
 
-#visio .participant:not(.screen_off):not(.video_off) video.screen {
-    max-width: 66%;
+#visio .participant video.screen {
+    max-height: 100%;
     height: auto;
 }
 
-#visio .participant:not(.screen_off) video.screen + video {
-    max-width: 33%;
+#visio .participant:not(.screen_off) video.screen+video {
+    position: absolute;
+    bottom: 0.5rem;
+    left: 0.5rem;
+    width: 20rem;
+    max-width: 40%;
+    height: auto;
 }
 
-@media screen and (max-width: 800px) and (display-mode: fullscreen) {
-    #visio .participant {
-        flex-direction: column;
-    }
-
-    #visio .participant:not(.screen_off):not(.video_off) video.screen {
-        max-width: 100%;
-    }
-
-    #visio .participant:not(.screen_off) video.screen + video {
-        max-width: 100%;
-    }
-}
-
-#visio .participant:not(.screen_off).video_off video.screen + video {
+#visio .participant:not(.screen_off).video_off video.screen+video {
     display: none;
 }
 
@@ -313,7 +306,7 @@ body>#visio:not(:fullscreen) #participants.active .participant:not(.active) {
     color: var(--p-green);
     opacity: calc(1 - var(--level));
     transform: scale(1.5) translateX(0.25rem) translateY(-0.25rem);
-    transition: opacity 0.5s ease-in-out, transform .3s cubic-bezier(.4,0,.2,1);
+    transition: opacity 0.5s ease-in-out, transform .3s cubic-bezier(.4, 0, .2, 1);
 }
 
 #visio #participants:not(.active):has(.participant:nth-child(2)) .participant {
@@ -360,7 +353,7 @@ body>#visio #participants:not(.active):has(.participant:nth-child(2)) .participa
     color: white;
     text-shadow: 0 0 1rem rgba(0, 0, 0, 0.85);
     font-size: 2rem;
-    transition: opacity 0.5s ease-in-out, transform .3s cubic-bezier(.4,0,.2,1);
+    transition: opacity 0.5s ease-in-out, transform .3s cubic-bezier(.4, 0, .2, 1);
 }
 
 #visio .participant::after {

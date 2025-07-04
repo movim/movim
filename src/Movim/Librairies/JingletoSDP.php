@@ -28,6 +28,13 @@ class JingletoSDP
         'unicast_address'   => '0.0.0.0'
     ];
 
+    private $sendersToDirection  = [
+        'none'      => 'inactive',
+        'initiator' => 'sendonly',
+        'responder' => 'recvonly',
+        'both'      => 'sendrecv',
+    ];
+
     public function __construct(SimpleXMLElement $jingle)
     {
         $this->jingle = $jingle;
@@ -113,19 +120,13 @@ class JingletoSDP
                                 $payload->attributes()->id;
 
                             if (isset($payload->attributes()->senders)) {
-                                $sendersToDirection = [
-                                    'initiator' => 'sendonly',
-                                    'responder' => 'recvonly',
-                                    'both' => 'sendrecv',
-                                ];
-
-                                $sdpMedia .= '/' . $sendersToDirection[(string)$payload->attributes()->senders];
+                                $sdpMedia .= '/' . $this->sendersToDirection[(string)$payload->attributes()->senders];
                             }
 
                             $sdpMedia .= ' ' . $payload->attributes()->uri;
                             break;
 
-                            // https://xmpp.org/extensions/xep-0293.html
+                        // https://xmpp.org/extensions/xep-0293.html
                         case 'rtcp-fb':
                             $sdpMedia .=
                                 "\r\na=rtcp-fb:" .
@@ -196,7 +197,7 @@ class JingletoSDP
                                         }
 
                                         break;
-                                        // http://xmpp.org/extensions/xep-0167.html#format
+                                    // http://xmpp.org/extensions/xep-0167.html#format
                                     case 'parameter':
                                         if ($first_fmtp) {
                                             $sdpMedia .=
@@ -273,7 +274,7 @@ class JingletoSDP
                         }
                         break;
 
-                        // https://xmpp.org/extensions/xep-0343.html
+                    // https://xmpp.org/extensions/xep-0343.html
                     case 'sctpmap':
                         $sdpMedia .=
                             "\r\na=sctpmap:" .
@@ -400,10 +401,13 @@ class JingletoSDP
                     $sdpmediaHeader .
                     "\r\nc=IN " . $ipVersion . " " . $mediaHeaderLastIp .
                     $sdpMedia;
-                //"\r\na=sendrecv";
 
                 if ($this->name !== null) {
                     $sdpMedias .= "\r\na=mid:" . $this->name;
+                }
+
+                if ($content->attributes()->senders) {
+                    $sdpMedias .= "\r\na=" . $this->sendersToDirection[(string)$content->attributes()->senders];
                 }
             } else {
                 $sdpMedias = $sdpMedia;

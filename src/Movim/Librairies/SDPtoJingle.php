@@ -27,30 +27,38 @@ class SDPtoJingle
     private $fmtpCache = [];
     private $rtcpFbCache = [];
 
+    private $directionToSenders = [
+        'inactive' => 'none',
+        'sendonly' => 'initiator',
+        'recvonly' => 'responder',
+        'sendrecv' => 'both',
+    ];
+
     private $regex = [
+        'bandwidth'       => "/^b=(\w+):(\d+)/i",
         'candidate'       => "/^a=candidate:(\w{1,32}) (\d{1,5}) (udp|tcp) (\d{1,10}) ([a-zA-Z0-9:\.]{1,45}) (\d{1,5}) (typ) (host|srflx|prflx|relay|ufrag)\s?(.+)?/i",
-        'sess_id'         => "/^o=(\S+) (\d+)/i",
-        'group'           => "/^a=group:(\S+) (.+)/i",
-        'rtpmap'          => "/^a=rtpmap:(\d+) (([^\s\/]+)(\/(\d+)(\/([^\s\/]+))?)?)?/i",
-        'fmtp'            => "/^a=fmtp:(\d+) (.+)/i",
-        'rtcp_fb'         => "/^a=rtcp-fb:(\S+) (\S+)( (\S+))?/i",
-        'rtcp_fb_trr_int' => "/^a=rtcp-fb:(\d+) trr-int (\d+)/i",
-        'pwd'             => "/^a=ice-pwd:(\S+)/i",
-        'ufrag'           => "/^a=ice-ufrag:(\S+)/i",
-        'ptime'           => "/^a=ptime:(\d+)/i",
-        'maxptime'        => "/^a=maxptime:(\d+)/i",
-        'ssrc'            => "/^a=ssrc:(\d+) (\w+)(:(\S+))?( (\w+))?/i",
-        'rtcp_mux'        => "/^a=rtcp-mux/i",
         'crypto'          => "/^a=crypto:(\d{1,9}) (\w+) (\S+)( (\S+))?/i",
-        'zrtp_hash'       => "/^a=zrtp-hash:(\S+) (\w+)/i",
-        'fingerprint'     => "/^a=fingerprint:(\S+) (\S+)/i",
-        'setup'           => "/^a=setup:(\S+)/i",
         'extmap'          => "/^a=extmap:([^\s\/]+)(\/([^\s\/]+))? (\S+)/i",
-        'sctpmap'         => "/^a=sctpmap:(\d+) (\S+) (\d+)/i",
+        'fingerprint'     => "/^a=fingerprint:(\S+) (\S+)/i",
+        'fmtp'            => "/^a=fmtp:(\d+) (.+)/i",
+        'group'           => "/^a=group:(\S+) (.+)/i",
+        'maxptime'        => "/^a=maxptime:(\d+)/i",
+        'media'           => "/^m=(audio|video|application|data)/i",
         'mid'             => "/^a=mid:(\S+)/i",
         'msid'            => "/^a=msid:(.+)/i",
-        'bandwidth'       => "/^b=(\w+):(\d+)/i",
-        'media'           => "/^m=(audio|video|application|data)/i"
+        'ptime'           => "/^a=ptime:(\d+)/i",
+        'pwd'             => "/^a=ice-pwd:(\S+)/i",
+        'rtcp_fb_trr_int' => "/^a=rtcp-fb:(\d+) trr-int (\d+)/i",
+        'rtcp_fb'         => "/^a=rtcp-fb:(\S+) (\S+)( (\S+))?/i",
+        'rtcp_mux'        => "/^a=rtcp-mux/i",
+        'rtpmap'          => "/^a=rtpmap:(\d+) (([^\s\/]+)(\/(\d+)(\/([^\s\/]+))?)?)?/i",
+        'sctpmap'         => "/^a=sctpmap:(\d+) (\S+) (\d+)/i",
+        'senders'         => "/^a=(sendrecv|sendonly|inactive|recvonly)/i",
+        'sess_id'         => "/^o=(\S+) (\d+)/i",
+        'setup'           => "/^a=setup:(\S+)/i",
+        'ssrc'            => "/^a=ssrc:(\d+) (\w+)(:(\S+))?( (\w+))?/i",
+        'ufrag'           => "/^a=ice-ufrag:(\S+)/i",
+        'zrtp_hash'       => "/^a=zrtp-hash:(\S+) (\w+)/i",
     ];
 
     public function __construct(
@@ -233,18 +241,8 @@ class SDPtoJingle
 
                         // http://xmpp.org/extensions/xep-0167.html#format
                         case 'fmtp':
-                            // If fmtp is added just after the correspondant rtpmap
-                            $params = explode(';', $matches[2]);
-
-                            if (
-                                isset($payloadtype)
-                                && $matches[1] == $payloadtype->attributes()->id
-                            ) {
-                                $this->addFmtpParameters($payloadtype, $params);
-                                // If not we cache it
-                            } else {
-                                $this->fmtpCache[$matches[1]] = $params;
-                            }
+                            $params = explode(';', trim($matches[2]));
+                            $this->fmtpCache[$matches[1]] = $params;
                             break;
 
                         // http://xmpp.org/extensions/xep-0293.html
@@ -306,13 +304,14 @@ class SDPtoJingle
                             $rtphdrext->addAttribute('id', $matches[1]);
                             $rtphdrext->addAttribute('uri', $matches[4]);
                             if (isset($matches[3]) && $matches[3] != '') {
-                                $directionToSenders = [
-                                    'sendonly' => 'initiator',
-                                    'recvonly' => 'responder',
-                                    'sendrecv' => 'both',
-                                ];
+                                $rtphdrext->addAttribute('senders', $this->directionToSenders[$matches[3]]);
+                            }
+                            break;
 
-                                $rtphdrext->addAttribute('senders', $directionToSenders[$matches[3]]);
+                        // https://xmpp.org/extensions/xep-0166.html#def-content
+                        case 'senders':
+                            if ($this->content != null) {
+                                $this->content->addAttribute('senders', $this->directionToSenders[$matches[1]]);
                             }
                             break;
 

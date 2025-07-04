@@ -219,6 +219,7 @@ MovimJingleSession.prototype.onContentAdd = function (sdp, mid) {
             this.pc.createAnswer()
                 .then(answer => this.pc.setLocalDescription(answer))
                 .then(() => Visio_ajaxSessionAccept(this.fullJid, this.id, this.pc.localDescription))
+                .catch(MovimUtils.logError);
         })
         .catch(error => MovimUtils.logError(error));
 }
@@ -239,6 +240,7 @@ MovimJingleSession.prototype.onContentRemove = function (sdp, mid) {
             this.pc.createAnswer()
                 .then(answer => this.pc.setLocalDescription(answer))
                 .then(() => Visio_ajaxSessionAccept(this.fullJid, this.id, this.pc.localDescription))
+                .catch(MovimUtils.logError);
         })
         .catch(error => MovimUtils.logError(error));
 }

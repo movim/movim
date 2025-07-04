@@ -361,7 +361,7 @@ class Visio extends Base
 
     public function ajaxContentAdd(string $to, string $sdp, string $id, string $mediaId)
     {
-        $stj = new SDPtoJingle($this->filderSDPMedia($sdp, $mediaId), sid: $id, action: 'content-add');
+        $stj = new SDPtoJingle($this->filterSDPMedia($sdp, $mediaId), sid: $id, action: 'content-add');
 
         $si = new ContentAdd;
         $si->setTo($to)
@@ -371,7 +371,7 @@ class Visio extends Base
 
     public function ajaxContentRemove(string $to, string $sdp, string $id, string $mediaId)
     {
-        $stj = new SDPtoJingle($this->filderSDPMedia($sdp, $mediaId), sid: $id, action: 'content-remove');
+        $stj = new SDPtoJingle($this->filterSDPMedia($sdp, $mediaId), sid: $id, action: 'content-remove');
 
         $si = new ContentRemove;
         $si->setTo($to)
@@ -728,7 +728,7 @@ class Visio extends Base
         $this->rpc('MovimJingles.terminateAll', $reason);
     }
 
-    private function filderSDPMedia(string $sdp, string $mediaId)
+    private function filterSDPMedia(string $sdp, string $mediaId)
     {
         // Ugly but simple
         $exp = explode('m=', $sdp);

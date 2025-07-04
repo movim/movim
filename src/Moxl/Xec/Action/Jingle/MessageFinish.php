@@ -9,10 +9,11 @@ class MessageFinish extends Action
 {
     protected $_to;
     protected $_id;
+    protected $_reason;
 
     public function request()
     {
         $this->store();
-        Jingle::messageFinish($this->_to, $this->_id);
+        Jingle::messageFinish($this->_to, $this->_id, $this->_reason);
     }
 }

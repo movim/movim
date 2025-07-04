@@ -80,7 +80,7 @@ class Jingle
         \Moxl\API::sendDom($dom);
     }
 
-    public static function messageFinish(string $to, string $id)
+    public static function messageFinish(string $to, string $id, string $reason)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $message = $dom->createElementNS('jabber:client', 'message');
