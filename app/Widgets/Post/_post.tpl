@@ -152,23 +152,21 @@
 {/if}
 
 {if="$repost"}
-    <a href="{$c->route('contact', $post->contact->jid)}">
-        <ul class="list active middle">
-            <li>
-                <span class="primary icon bubble" style="background-image: url('{$post->contact->getPicture(\Movim\ImageSize::M)}');">
-                    <i class="material-symbols">loop</i>
-                </span>
-                <span class="control icon">
-                    <i class="material-symbols">chevron_right</i>
-                </span>
+    <ul class="list active middle">
+        <li onclick="MovimUtils.reload('{$c->route('contact', $post->contact->jid)}');">
+            <span class="primary icon bubble" style="background-image: url('{$post->contact->getPicture(\Movim\ImageSize::M)}');">
+                <i class="material-symbols">loop</i>
+            </span>
+            <span class="control icon">
+                <i class="material-symbols">chevron_right</i>
+            </span>
 
-                <div>
-                    <p>{$c->__('post.repost', $post->contact->truename)}</p>
-                    <p>{$c->__('post.repost_profile', $post->contact->truename)}</p>
-                </div>
-            </li>
-        </ul>
-    </a>
+            <div>
+                <p>{$c->__('post.repost', $post->contact->truename)}</p>
+                <p>{$c->__('post.see_profile', $post->contact->truename)}</p>
+            </div>
+        </li>
+    </ul>
 {/if}
 
 <section dir="{if="$post->isRTL()"}rtl{else}ltr{/if}">

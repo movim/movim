@@ -124,7 +124,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-02 23:43+0200\n"
+"POT-Creation-Date: 2025-07-05 14:21+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Rintan, 2020-2021\n"
 "Language-Team: Japanese (http://app.transifex.com/movim/movim/language/ja/)\n"
@@ -665,7 +665,7 @@ msgstr ""
 msgid "Refused call"
 msgstr ""
 
-#: [chat]jingle_end [visio]ended
+#: [chat]jingle_end
 msgid "Call ended"
 msgstr "通話を終了"
 
@@ -1887,7 +1887,7 @@ msgstr "新しい投稿"
 msgid "This is a re-post from %s"
 msgstr "%sからの再共有"
 
-#: [post]repost_profile
+#: [post]see_profile
 msgid "See %s profile"
 msgstr "%sのプロフィールを見る"
 
@@ -1997,6 +1997,11 @@ msgstr "あなたの投稿がいいねされました"
 #: [post]commented
 msgid "Commented"
 msgstr "コメントされました"
+
+#: [post]subscription_required
+#, fuzzy
+msgid "You must be subscribed to %s to see this publication"
+msgstr "この連絡先に購読されていません"
 
 #: [hello]contact_post
 msgid "Contact post"
@@ -2684,16 +2689,8 @@ msgid "Story deleted"
 msgstr ""
 
 #: [subscribe]info
-msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
+msgid "Movim is a decentralized social network, you are invited to register on the following XMPP server(s)"
 msgstr ""
-
-#: [subscribe]server_question
-msgid "Your server here?"
-msgstr "あなたのサーバーはここにありますか？"
-
-#: [subscribe]server_contact
-msgid "Contact us to add yours to the officially supported servers list"
-msgstr "あなたのサーバーを公式サポートサーバーリストに追加するには私たちにご連絡ください"
 
 #: [feed]title
 msgid "%s’s feed"
@@ -2859,6 +2856,10 @@ msgstr ""
 #: [visio]connecting
 msgid "…connecting"
 msgstr "接続中…"
+
+#: [visio]ended
+msgid "End of call"
+msgstr ""
 
 #: [visio]no_participants_left
 msgid "All participants have left the call"
@@ -3835,6 +3836,12 @@ msgstr "APIにアクセスできません、後ほど再試行してください
 #: [field]type_here
 msgid "Type here"
 msgstr "ここに入力してください"
+
+#~ msgid "Your server here?"
+#~ msgstr "あなたのサーバーはここにありますか？"
+
+#~ msgid "Contact us to add yours to the officially supported servers list"
+#~ msgstr "あなたのサーバーを公式サポートサーバーリストに追加するには私たちにご連絡ください"
 
 #~ msgid "Avatar Updated"
 #~ msgstr "アバターがアップデートされました"

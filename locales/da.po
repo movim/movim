@@ -119,7 +119,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-02 23:43+0200\n"
+"POT-Creation-Date: 2025-07-05 14:21+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Mikkel Kirkgaard Nielsen <memb_transifex@mikini.dk>, 2016\n"
 "Language-Team: Danish (http://app.transifex.com/movim/movim/language/da/)\n"
@@ -657,7 +657,7 @@ msgstr ""
 msgid "Refused call"
 msgstr ""
 
-#: [chat]jingle_end [visio]ended
+#: [chat]jingle_end
 msgid "Call ended"
 msgstr ""
 
@@ -1872,7 +1872,7 @@ msgstr "Nyt indlæg"
 msgid "This is a re-post from %s"
 msgstr "Dette er et delt inlæg fra %s"
 
-#: [post]repost_profile
+#: [post]see_profile
 msgid "See %s profile"
 msgstr "Se profilen for %s"
 
@@ -1981,6 +1981,11 @@ msgstr ""
 #: [post]commented
 msgid "Commented"
 msgstr ""
+
+#: [post]subscription_required
+#, fuzzy
+msgid "You must be subscribed to %s to see this publication"
+msgstr "Du abonnerer ikke på denne kontakt"
 
 #: [hello]contact_post
 msgid "Contact post"
@@ -2662,16 +2667,9 @@ msgid "Story deleted"
 msgstr ""
 
 #: [subscribe]info
-msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
+#, fuzzy
+msgid "Movim is a decentralized social network, you are invited to register on the following XMPP server(s)"
 msgstr "Movim er et decentraliseret socialt netværk, før du opretter en ny konto skal du vælge en server"
-
-#: [subscribe]server_question
-msgid "Your server here?"
-msgstr ""
-
-#: [subscribe]server_contact
-msgid "Contact us to add yours to the officially supported servers list"
-msgstr "Kontakt os for at tilføje din til den officielt understøttede serverliste"
 
 #: [feed]title
 msgid "%s’s feed"
@@ -2835,6 +2833,10 @@ msgstr ""
 
 #: [visio]connecting
 msgid "…connecting"
+msgstr ""
+
+#: [visio]ended
+msgid "End of call"
 msgstr ""
 
 #: [visio]no_participants_left
@@ -3811,6 +3813,9 @@ msgstr "API'et kan ikke nåes, prøv igen senere"
 #: [field]type_here
 msgid "Type here"
 msgstr "Skriv her"
+
+#~ msgid "Contact us to add yours to the officially supported servers list"
+#~ msgstr "Kontakt os for at tilføje din til den officielt understøttede serverliste"
 
 #~ msgid "Avatar Updated"
 #~ msgstr "Profilbillede opdateret"

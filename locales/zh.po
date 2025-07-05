@@ -135,7 +135,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-02 23:43+0200\n"
+"POT-Creation-Date: 2025-07-05 14:21+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Phonebook3599, 2025\n"
 "Language-Team: Chinese (China) (http://app.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -676,7 +676,7 @@ msgstr "未接来电"
 msgid "Refused call"
 msgstr "已拒通话"
 
-#: [chat]jingle_end [visio]ended
+#: [chat]jingle_end
 msgid "Call ended"
 msgstr "通话结束"
 
@@ -1899,7 +1899,7 @@ msgstr "新帖子"
 msgid "This is a re-post from %s"
 msgstr "这是从 %s 的转帖"
 
-#: [post]repost_profile
+#: [post]see_profile
 msgid "See %s profile"
 msgstr "查看 %s 个人资料"
 
@@ -2010,6 +2010,11 @@ msgstr "点赞了您的发布"
 #: [post]commented
 msgid "Commented"
 msgstr "已评论"
+
+#: [post]subscription_required
+#, fuzzy
+msgid "You must be subscribed to %s to see this publication"
+msgstr "您没有订阅此联系人"
 
 #: [hello]contact_post
 msgid "Contact post"
@@ -2701,16 +2706,9 @@ msgid "Story deleted"
 msgstr "故事已删除"
 
 #: [subscribe]info
-msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
+#, fuzzy
+msgid "Movim is a decentralized social network, you are invited to register on the following XMPP server(s)"
 msgstr "Movim 是去中心化的社交网络，在创建新账号之前，您需要选择服务器进行注册。"
-
-#: [subscribe]server_question
-msgid "Your server here?"
-msgstr "您的服务器不在此处？"
-
-#: [subscribe]server_contact
-msgid "Contact us to add yours to the officially supported servers list"
-msgstr "请联系我们，将您的服务器添加到官方支持的服务器列表中"
 
 #: [feed]title
 msgid "%s’s feed"
@@ -2876,6 +2874,11 @@ msgstr "失败"
 #: [visio]connecting
 msgid "…connecting"
 msgstr "…正在连接"
+
+#: [visio]ended
+#, fuzzy
+msgid "End of call"
+msgstr "加入的通话"
 
 #: [visio]no_participants_left
 msgid "All participants have left the call"
@@ -3852,6 +3855,12 @@ msgstr "无法访问 API，请稍后重试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
+
+#~ msgid "Your server here?"
+#~ msgstr "您的服务器不在此处？"
+
+#~ msgid "Contact us to add yours to the officially supported servers list"
+#~ msgstr "请联系我们，将您的服务器添加到官方支持的服务器列表中"
 
 #~ msgid "Avatar Updated"
 #~ msgstr "头像已更新"

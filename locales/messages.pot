@@ -117,7 +117,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-02 23:43+0200\n"
+"POT-Creation-Date: 2025-07-05 14:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -671,7 +671,7 @@ msgstr ""
 msgid "Refused call"
 msgstr ""
 
-#: [chat]jingle_end [visio]ended
+#: [chat]jingle_end
 msgid "Call ended"
 msgstr ""
 
@@ -1908,7 +1908,7 @@ msgstr ""
 msgid "This is a re-post from %s"
 msgstr ""
 
-#: [post]repost_profile
+#: [post]see_profile
 msgid "See %s profile"
 msgstr ""
 
@@ -2014,6 +2014,10 @@ msgstr ""
 
 #: [post]commented
 msgid "Commented"
+msgstr ""
+
+#: [post]subscription_required
+msgid "You must be subscribed to %s to see this publication"
 msgstr ""
 
 #: [hello]contact_post
@@ -2697,16 +2701,8 @@ msgstr ""
 
 #: [subscribe]info
 msgid ""
-"Movim is a decentralized social network, before creating a new account you "
-"need to choose a server to register."
-msgstr ""
-
-#: [subscribe]server_question
-msgid "Your server here?"
-msgstr ""
-
-#: [subscribe]server_contact
-msgid "Contact us to add yours to the officially supported servers list"
+"Movim is a decentralized social network, you are invited to register on the "
+"following XMPP server(s)"
 msgstr ""
 
 #: [feed]title
@@ -2879,6 +2875,10 @@ msgstr ""
 
 #: [visio]connecting
 msgid "…connecting"
+msgstr ""
+
+#: [visio]ended
+msgid "End of call"
 msgstr ""
 
 #: [visio]no_participants_left

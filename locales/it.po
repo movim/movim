@@ -126,7 +126,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-02 23:43+0200\n"
+"POT-Creation-Date: 2025-07-05 14:21+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Giacomo Lacava <g.lacava@gmail.com>, 2018\n"
 "Language-Team: Italian (http://app.transifex.com/movim/movim/language/it/)\n"
@@ -666,7 +666,7 @@ msgstr ""
 msgid "Refused call"
 msgstr ""
 
-#: [chat]jingle_end [visio]ended
+#: [chat]jingle_end
 msgid "Call ended"
 msgstr ""
 
@@ -1884,7 +1884,7 @@ msgstr "Nuovo articolo"
 msgid "This is a re-post from %s"
 msgstr "Questo è un Post ripubblicato da %s"
 
-#: [post]repost_profile
+#: [post]see_profile
 msgid "See %s profile"
 msgstr "Guarda il profilo %s"
 
@@ -1994,6 +1994,11 @@ msgstr ""
 #: [post]commented
 msgid "Commented"
 msgstr ""
+
+#: [post]subscription_required
+#, fuzzy
+msgid "You must be subscribed to %s to see this publication"
+msgstr "Non sei iscritto a questo contatto"
 
 #: [hello]contact_post
 msgid "Contact post"
@@ -2677,16 +2682,9 @@ msgid "Story deleted"
 msgstr ""
 
 #: [subscribe]info
-msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
+#, fuzzy
+msgid "Movim is a decentralized social network, you are invited to register on the following XMPP server(s)"
 msgstr "Movim è un social network decentralizzato, prima di creare un nuovo account devi scegliere un server su cui registrarti."
-
-#: [subscribe]server_question
-msgid "Your server here?"
-msgstr ""
-
-#: [subscribe]server_contact
-msgid "Contact us to add yours to the officially supported servers list"
-msgstr "Contattaci per aggiungere il tuo server alla lista di quelli supportati"
 
 #: [feed]title
 msgid "%s’s feed"
@@ -2851,6 +2849,10 @@ msgstr ""
 #: [visio]connecting
 msgid "…connecting"
 msgstr "... in collegamento ..."
+
+#: [visio]ended
+msgid "End of call"
+msgstr ""
 
 #: [visio]no_participants_left
 msgid "All participants have left the call"
@@ -3826,6 +3828,9 @@ msgstr "L'API non è raggiungibile, riprovare più tardi"
 #: [field]type_here
 msgid "Type here"
 msgstr "Digita qui"
+
+#~ msgid "Contact us to add yours to the officially supported servers list"
+#~ msgstr "Contattaci per aggiungere il tuo server alla lista di quelli supportati"
 
 #~ msgid "Avatar Updated"
 #~ msgstr "Foto del profilo aggiornata"

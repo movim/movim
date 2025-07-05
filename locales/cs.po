@@ -122,7 +122,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-02 23:43+0200\n"
+"POT-Creation-Date: 2025-07-05 14:21+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Egon Borovan <egon.boro@gmail.com>, 2019\n"
 "Language-Team: Czech (Czech Republic) (http://app.transifex.com/movim/movim/language/cs_CZ/)\n"
@@ -661,7 +661,7 @@ msgstr ""
 msgid "Refused call"
 msgstr ""
 
-#: [chat]jingle_end [visio]ended
+#: [chat]jingle_end
 msgid "Call ended"
 msgstr ""
 
@@ -1879,7 +1879,7 @@ msgstr "Nové příspěvky"
 msgid "This is a re-post from %s"
 msgstr "Toto je re-post od %s"
 
-#: [post]repost_profile
+#: [post]see_profile
 msgid "See %s profile"
 msgstr "Navštivte profil %s"
 
@@ -1988,6 +1988,11 @@ msgstr ""
 #: [post]commented
 msgid "Commented"
 msgstr ""
+
+#: [post]subscription_required
+#, fuzzy
+msgid "You must be subscribed to %s to see this publication"
+msgstr "Nejste přihlášení k odebírání tohoto kontaktu"
 
 #: [hello]contact_post
 msgid "Contact post"
@@ -2669,16 +2674,9 @@ msgid "Story deleted"
 msgstr ""
 
 #: [subscribe]info
-msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
+#, fuzzy
+msgid "Movim is a decentralized social network, you are invited to register on the following XMPP server(s)"
 msgstr "Movim je decentralizovaná sociální síť, před vytvořením účtu musíte vybrat server, na který se registrujete."
-
-#: [subscribe]server_question
-msgid "Your server here?"
-msgstr ""
-
-#: [subscribe]server_contact
-msgid "Contact us to add yours to the officially supported servers list"
-msgstr "Kontaktujte nás pro přidání vašeho serveru mezi oficiálně podporované servery."
 
 #: [feed]title
 msgid "%s’s feed"
@@ -2842,6 +2840,10 @@ msgstr ""
 
 #: [visio]connecting
 msgid "…connecting"
+msgstr ""
+
+#: [visio]ended
+msgid "End of call"
 msgstr ""
 
 #: [visio]no_participants_left
@@ -3818,6 +3820,9 @@ msgstr "API je nedostupná, zkuste to znovu později"
 #: [field]type_here
 msgid "Type here"
 msgstr "Pište sem"
+
+#~ msgid "Contact us to add yours to the officially supported servers list"
+#~ msgstr "Kontaktujte nás pro přidání vašeho serveru mezi oficiálně podporované servery."
 
 #~ msgid "Avatar Updated"
 #~ msgstr "Avatar aktualizován"

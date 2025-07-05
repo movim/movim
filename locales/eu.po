@@ -121,7 +121,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-02 23:43+0200\n"
+"POT-Creation-Date: 2025-07-05 14:21+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Xabi, 2023-2024\n"
 "Language-Team: Basque (http://app.transifex.com/movim/movim/language/eu/)\n"
@@ -662,7 +662,7 @@ msgstr "Dei galdua"
 msgid "Refused call"
 msgstr "Dei baztertua"
 
-#: [chat]jingle_end [visio]ended
+#: [chat]jingle_end
 msgid "Call ended"
 msgstr "Deiaren amaiera"
 
@@ -1885,7 +1885,7 @@ msgstr "Argitalpen berria"
 msgid "This is a re-post from %s"
 msgstr "Jatorrian %s(e)k argitaratutakoa da hau"
 
-#: [post]repost_profile
+#: [post]see_profile
 msgid "See %s profile"
 msgstr "Ikusi %s(r)en profila"
 
@@ -1996,6 +1996,11 @@ msgstr "Zure argitalpena gogoko du"
 #: [post]commented
 msgid "Commented"
 msgstr "Iruzkindu du"
+
+#: [post]subscription_required
+#, fuzzy
+msgid "You must be subscribed to %s to see this publication"
+msgstr "Ez zaude kontaktu honen jariora harpidetuta"
 
 #: [hello]contact_post
 msgid "Contact post"
@@ -2687,16 +2692,9 @@ msgid "Story deleted"
 msgstr ""
 
 #: [subscribe]info
-msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
+#, fuzzy
+msgid "Movim is a decentralized social network, you are invited to register on the following XMPP server(s)"
 msgstr "Movim gizarte-sare deszentralizatu bat da. Kontu berri bat sortu baino lehen zerbitzari bat aukeratu behar duzu bertan erregistratzeko."
-
-#: [subscribe]server_question
-msgid "Your server here?"
-msgstr "Zure zerbitzaria hemen?"
-
-#: [subscribe]server_contact
-msgid "Contact us to add yours to the officially supported servers list"
-msgstr "Jar zaitez gurekin harremanetan zerbitzarien zerrendan zurea gehitzea nahi baduzu"
 
 #: [feed]title
 msgid "%s’s feed"
@@ -2862,6 +2860,10 @@ msgstr ""
 #: [visio]connecting
 msgid "…connecting"
 msgstr "… konektatzen"
+
+#: [visio]ended
+msgid "End of call"
+msgstr ""
 
 #: [visio]no_participants_left
 msgid "All participants have left the call"
@@ -3838,6 +3840,12 @@ msgstr "Ezin da APIa eskuratu, saiatu berriro beranduago"
 #: [field]type_here
 msgid "Type here"
 msgstr "Idatzi hemen"
+
+#~ msgid "Your server here?"
+#~ msgstr "Zure zerbitzaria hemen?"
+
+#~ msgid "Contact us to add yours to the officially supported servers list"
+#~ msgstr "Jar zaitez gurekin harremanetan zerbitzarien zerrendan zurea gehitzea nahi baduzu"
 
 #~ msgid "Avatar Updated"
 #~ msgstr "Abatarra eguneratu da"

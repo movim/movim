@@ -128,7 +128,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-02 23:43+0200\n"
+"POT-Creation-Date: 2025-07-05 14:21+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Robbie Deighton <deightonrobbie@gmail.com>, 2019\n"
 "Language-Team: Dutch (http://app.transifex.com/movim/movim/language/nl/)\n"
@@ -668,7 +668,7 @@ msgstr ""
 msgid "Refused call"
 msgstr ""
 
-#: [chat]jingle_end [visio]ended
+#: [chat]jingle_end
 msgid "Call ended"
 msgstr ""
 
@@ -1885,7 +1885,7 @@ msgstr "nieuwe berichten"
 msgid "This is a re-post from %s"
 msgstr "dit is een repost van %s"
 
-#: [post]repost_profile
+#: [post]see_profile
 msgid "See %s profile"
 msgstr "zie %s profiel"
 
@@ -1994,6 +1994,11 @@ msgstr ""
 #: [post]commented
 msgid "Commented"
 msgstr ""
+
+#: [post]subscription_required
+#, fuzzy
+msgid "You must be subscribed to %s to see this publication"
+msgstr "Je bent niet geabbonneerd op deze contactpersoon"
 
 #: [hello]contact_post
 msgid "Contact post"
@@ -2675,16 +2680,8 @@ msgid "Story deleted"
 msgstr ""
 
 #: [subscribe]info
-msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
+msgid "Movim is a decentralized social network, you are invited to register on the following XMPP server(s)"
 msgstr ""
-
-#: [subscribe]server_question
-msgid "Your server here?"
-msgstr ""
-
-#: [subscribe]server_contact
-msgid "Contact us to add yours to the officially supported servers list"
-msgstr "Neem contact met ons op om die van jou aan de lijst van officieel ondersteunde servers toe te voegen"
 
 #: [feed]title
 msgid "%s’s feed"
@@ -2848,6 +2845,10 @@ msgstr ""
 
 #: [visio]connecting
 msgid "…connecting"
+msgstr ""
+
+#: [visio]ended
+msgid "End of call"
 msgstr ""
 
 #: [visio]no_participants_left
@@ -3824,6 +3825,9 @@ msgstr "De API is niet bereikbaar, probeer later nog eens"
 #: [field]type_here
 msgid "Type here"
 msgstr "Typ hier"
+
+#~ msgid "Contact us to add yours to the officially supported servers list"
+#~ msgstr "Neem contact met ons op om die van jou aan de lijst van officieel ondersteunde servers toe te voegen"
 
 #~ msgid "Avatar Updated"
 #~ msgstr "Profielfoto geüpdated"

@@ -120,7 +120,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-02 23:43+0200\n"
+"POT-Creation-Date: 2025-07-05 14:21+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: 조수연, 2022\n"
 "Language-Team: Korean (http://app.transifex.com/movim/movim/language/ko/)\n"
@@ -661,7 +661,7 @@ msgstr ""
 msgid "Refused call"
 msgstr ""
 
-#: [chat]jingle_end [visio]ended
+#: [chat]jingle_end
 msgid "Call ended"
 msgstr "통화 종료"
 
@@ -1883,7 +1883,7 @@ msgstr "새 게시물"
 msgid "This is a re-post from %s"
 msgstr "%s님의 재포스팅입니다."
 
-#: [post]repost_profile
+#: [post]see_profile
 msgid "See %s profile"
 msgstr "%s님의 프로필 보기"
 
@@ -1993,6 +1993,11 @@ msgstr "당신의 게시물을 좋아합니다"
 #: [post]commented
 msgid "Commented"
 msgstr "댓글을 달았습니다"
+
+#: [post]subscription_required
+#, fuzzy
+msgid "You must be subscribed to %s to see this publication"
+msgstr "이 계정을 구독하고 있지 않습니다"
 
 #: [hello]contact_post
 msgid "Contact post"
@@ -2683,16 +2688,9 @@ msgid "Story deleted"
 msgstr ""
 
 #: [subscribe]info
-msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
+#, fuzzy
+msgid "Movim is a decentralized social network, you are invited to register on the following XMPP server(s)"
 msgstr "Movim은 탈중앙화 소셜 네트워크로, 새 계정을 만들기 전에 등록할 서버를 선택해야 합니다."
-
-#: [subscribe]server_question
-msgid "Your server here?"
-msgstr "당신의 서버가 여기인가요?"
-
-#: [subscribe]server_contact
-msgid "Contact us to add yours to the officially supported servers list"
-msgstr "공식적으로 지원되는 서버 목록에 추가하려면 저희에게 문의해주세요."
 
 #: [feed]title
 msgid "%s’s feed"
@@ -2858,6 +2856,10 @@ msgstr ""
 #: [visio]connecting
 msgid "…connecting"
 msgstr "연결 중"
+
+#: [visio]ended
+msgid "End of call"
+msgstr ""
 
 #: [visio]no_participants_left
 msgid "All participants have left the call"
@@ -3834,6 +3836,12 @@ msgstr "API에 연결할 수 없습니다. 나중에 다시 시도하십시오."
 #: [field]type_here
 msgid "Type here"
 msgstr "여기에 입력하세요"
+
+#~ msgid "Your server here?"
+#~ msgstr "당신의 서버가 여기인가요?"
+
+#~ msgid "Contact us to add yours to the officially supported servers list"
+#~ msgstr "공식적으로 지원되는 서버 목록에 추가하려면 저희에게 문의해주세요."
 
 #~ msgid "Avatar Updated"
 #~ msgstr "프로필 업데이트됨"

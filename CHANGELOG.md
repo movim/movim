@@ -15,6 +15,7 @@ v0.31 (master)
 * Redesign the subscription page
 * Add WebRTC multi-track support
 * Implement Jingle content-modify to refresh the whole SDP and allow simultanous screen sharing
+* Add a placeholder if a Post is not accessible without a contact subscription
 
 v0.30.1
 ---------------------------

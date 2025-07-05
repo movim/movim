@@ -120,7 +120,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-02 23:43+0200\n"
+"POT-Creation-Date: 2025-07-05 14:21+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: sergey solovey, 2022,2024\n"
 "Language-Team: Ukrainian (http://app.transifex.com/movim/movim/language/uk/)\n"
@@ -661,7 +661,7 @@ msgstr "Пропущений виклик"
 msgid "Refused call"
 msgstr "Відхилений виклик"
 
-#: [chat]jingle_end [visio]ended
+#: [chat]jingle_end
 msgid "Call ended"
 msgstr "Виклик завершено"
 
@@ -1884,7 +1884,7 @@ msgstr "Нова публікація"
 msgid "This is a re-post from %s"
 msgstr "Це перепост з %s"
 
-#: [post]repost_profile
+#: [post]see_profile
 msgid "See %s profile"
 msgstr "Переглянути профіль %s"
 
@@ -1995,6 +1995,11 @@ msgstr "Сподобалась ваша публікація"
 #: [post]commented
 msgid "Commented"
 msgstr "Коментує"
+
+#: [post]subscription_required
+#, fuzzy
+msgid "You must be subscribed to %s to see this publication"
+msgstr "Ви не підписані на цього користувача"
 
 #: [hello]contact_post
 msgid "Contact post"
@@ -2686,16 +2691,9 @@ msgid "Story deleted"
 msgstr ""
 
 #: [subscribe]info
-msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
+#, fuzzy
+msgid "Movim is a decentralized social network, you are invited to register on the following XMPP server(s)"
 msgstr "Movim - це децентралізована соціальна мережа, перед створенням нового облікового запису вам потрібно вибрати сервер для реєстрації."
-
-#: [subscribe]server_question
-msgid "Your server here?"
-msgstr "Ваш сервер тут?"
-
-#: [subscribe]server_contact
-msgid "Contact us to add yours to the officially supported servers list"
-msgstr "Зв'яжіться з нами, щоб додати ваш сервер до списку офіційно підтримуваних"
 
 #: [feed]title
 msgid "%s’s feed"
@@ -2861,6 +2859,10 @@ msgstr "Не вдалося"
 #: [visio]connecting
 msgid "…connecting"
 msgstr "...з'єднання"
+
+#: [visio]ended
+msgid "End of call"
+msgstr ""
 
 #: [visio]no_participants_left
 msgid "All participants have left the call"
@@ -3837,6 +3839,12 @@ msgstr "API недоступний, спробуйте пізніше"
 #: [field]type_here
 msgid "Type here"
 msgstr "Напишіть тут"
+
+#~ msgid "Your server here?"
+#~ msgstr "Ваш сервер тут?"
+
+#~ msgid "Contact us to add yours to the officially supported servers list"
+#~ msgstr "Зв'яжіться з нами, щоб додати ваш сервер до списку офіційно підтримуваних"
 
 #~ msgid "Avatar Updated"
 #~ msgstr "Аватар оновлено"

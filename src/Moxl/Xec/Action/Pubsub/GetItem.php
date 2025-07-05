@@ -113,6 +113,12 @@ class GetItem extends Action
         $this->errorServiceUnavailable($errorId, $message);
     }
 
+    public function errorPresenceSubscriptionRequired(string $errorId, ?string $message = null)
+    {
+        $this->pack($this->_to);
+        $this->deliver();
+    }
+
     public function errorServiceUnavailable(string $errorId, ?string $message = null)
     {
         $pd = new PostDelete;

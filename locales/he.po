@@ -120,7 +120,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-02 23:43+0200\n"
+"POT-Creation-Date: 2025-07-05 14:21+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: gk <genghiskhan@gmx.ca>, 2016\n"
 "Language-Team: Hebrew (http://app.transifex.com/movim/movim/language/he/)\n"
@@ -658,7 +658,7 @@ msgstr ""
 msgid "Refused call"
 msgstr ""
 
-#: [chat]jingle_end [visio]ended
+#: [chat]jingle_end
 msgid "Call ended"
 msgstr ""
 
@@ -1872,7 +1872,7 @@ msgstr "פרסום חדש"
 msgid "This is a re-post from %s"
 msgstr ""
 
-#: [post]repost_profile
+#: [post]see_profile
 msgid "See %s profile"
 msgstr ""
 
@@ -1980,6 +1980,10 @@ msgstr ""
 
 #: [post]commented
 msgid "Commented"
+msgstr ""
+
+#: [post]subscription_required
+msgid "You must be subscribed to %s to see this publication"
 msgstr ""
 
 #: [hello]contact_post
@@ -2660,16 +2664,9 @@ msgid "Story deleted"
 msgstr ""
 
 #: [subscribe]info
-msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
+#, fuzzy
+msgid "Movim is a decentralized social network, you are invited to register on the following XMPP server(s)"
 msgstr "Movim הינה רשת חברתית מבוזרת (א-ריכוזית), טרם יצירת חשבון חדש עליך לבחור שרת להירשם אליו."
-
-#: [subscribe]server_question
-msgid "Your server here?"
-msgstr ""
-
-#: [subscribe]server_contact
-msgid "Contact us to add yours to the officially supported servers list"
-msgstr "צור עמנו קשר כדי להוסיף את שלך אל רשימת השרתים אשר נתמכת באופן רשמי"
 
 #: [feed]title
 msgid "%s’s feed"
@@ -2833,6 +2830,10 @@ msgstr ""
 
 #: [visio]connecting
 msgid "…connecting"
+msgstr ""
+
+#: [visio]ended
+msgid "End of call"
 msgstr ""
 
 #: [visio]no_participants_left
@@ -3809,6 +3810,9 @@ msgstr "API אינו נגיש, נסה שוב מאוחר יותר"
 #: [field]type_here
 msgid "Type here"
 msgstr "הקלד כאן"
+
+#~ msgid "Contact us to add yours to the officially supported servers list"
+#~ msgstr "צור עמנו קשר כדי להוסיף את שלך אל רשימת השרתים אשר נתמכת באופן רשמי"
 
 #~ msgid "Avatar Updated"
 #~ msgstr "אווטאר עודכן"

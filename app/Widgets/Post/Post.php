@@ -9,7 +9,7 @@ use Movim\Widget\Base;
 use Moxl\Xec\Action\Pubsub\GetItem;
 use Moxl\Xec\Action\Microblog\CommentsGet;
 use Moxl\Xec\Action\Microblog\CommentPublish;
-
+use Moxl\Xec\Payload\Packet;
 use Respect\Validation\Validator;
 
 class Post extends Base
@@ -24,10 +24,11 @@ class Post extends Base
         $this->registerEvent('microblog_commentsget_error', 'onCommentsError');
         $this->registerEvent('pubsub_getitem_handle', 'onHandle', 'post');
         $this->registerEvent('pubsub_postdelete_handle', 'onDelete', 'post');
+        $this->registerEvent('pubsub_getitem_errorpresencesubscriptionrequired', 'onPresenceSubscriptionRequired');
         $this->registerEvent('post_resolved', 'onHandle', 'post');
     }
 
-    public function onHandle($packet)
+    public function onHandle(Packet $packet)
     {
         $post = $packet->content;
 
@@ -50,7 +51,7 @@ class Post extends Base
         }
     }
 
-    public function onCommentPublished($packet)
+    public function onCommentPublished(Packet $packet)
     {
         $isLike = $packet->content;
         Toast::send($isLike
@@ -63,7 +64,7 @@ class Post extends Base
         Toast::send($this->__('post.comment_publish_error'));
     }
 
-    public function onComments($packet)
+    public function onComments(Packet $packet)
     {
         $post = \App\Post::find($packet->content);
 
@@ -77,7 +78,14 @@ class Post extends Base
         }
     }
 
-    public function onCommentsError($packet)
+    public function onPresenceSubscriptionRequired(Packet $packet)
+    {
+        $view = $this->tpl();
+        $view->assign('contact', \App\Contact::firstOrNew(['id' => $packet->content]));
+        $this->rpc('MovimTpl.fill', '#post_widget', $view->draw('_post_subscription_required'));
+    }
+
+    public function onCommentsError(Packet $packet)
     {
         $view = $this->tpl();
         $view->assign('post', \App\Post::find($packet->content));

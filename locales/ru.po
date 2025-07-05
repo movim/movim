@@ -134,7 +134,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-02 23:43+0200\n"
+"POT-Creation-Date: 2025-07-05 14:21+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Rus D <rus@zx22.ru>, 2021\n"
 "Language-Team: Russian (http://app.transifex.com/movim/movim/language/ru/)\n"
@@ -675,7 +675,7 @@ msgstr ""
 msgid "Refused call"
 msgstr ""
 
-#: [chat]jingle_end [visio]ended
+#: [chat]jingle_end
 msgid "Call ended"
 msgstr "Вызов завершён "
 
@@ -1895,7 +1895,7 @@ msgstr "Новая запись"
 msgid "This is a re-post from %s"
 msgstr "Это репост от %s"
 
-#: [post]repost_profile
+#: [post]see_profile
 msgid "See %s profile"
 msgstr "Смотрите профиль %s"
 
@@ -2005,6 +2005,11 @@ msgstr "Нравится Ваша публикация"
 #: [post]commented
 msgid "Commented"
 msgstr ""
+
+#: [post]subscription_required
+#, fuzzy
+msgid "You must be subscribed to %s to see this publication"
+msgstr "Вы не подписаны на этот контакт"
 
 #: [hello]contact_post
 msgid "Contact post"
@@ -2690,16 +2695,9 @@ msgid "Story deleted"
 msgstr ""
 
 #: [subscribe]info
-msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
+#, fuzzy
+msgid "Movim is a decentralized social network, you are invited to register on the following XMPP server(s)"
 msgstr "Movim — это децентрализованная социальная сеть. Перед созданием учетной записи нужно выбрать сервер."
-
-#: [subscribe]server_question
-msgid "Your server here?"
-msgstr "Ваш сервер здесь? "
-
-#: [subscribe]server_contact
-msgid "Contact us to add yours to the officially supported servers list"
-msgstr "Свяжитесь с нами чтобы добавить свой сервер в список официальных серверов"
 
 #: [feed]title
 msgid "%s’s feed"
@@ -2864,6 +2862,10 @@ msgstr ""
 #: [visio]connecting
 msgid "…connecting"
 msgstr "... соединение"
+
+#: [visio]ended
+msgid "End of call"
+msgstr ""
 
 #: [visio]no_participants_left
 msgid "All participants have left the call"
@@ -3839,6 +3841,12 @@ msgstr "API недоступен, попробуйте позже"
 #: [field]type_here
 msgid "Type here"
 msgstr "Введите здесь"
+
+#~ msgid "Your server here?"
+#~ msgstr "Ваш сервер здесь? "
+
+#~ msgid "Contact us to add yours to the officially supported servers list"
+#~ msgstr "Свяжитесь с нами чтобы добавить свой сервер в список официальных серверов"
 
 #~ msgid "Avatar Updated"
 #~ msgstr "Аватар обновлен"

@@ -123,7 +123,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-02 23:43+0200\n"
+"POT-Creation-Date: 2025-07-05 14:21+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Sylwester Cyba, 2024\n"
 "Language-Team: Polish (http://app.transifex.com/movim/movim/language/pl/)\n"
@@ -664,7 +664,7 @@ msgstr "Przeoczone połączenie"
 msgid "Refused call"
 msgstr "Odrzucone połączenie"
 
-#: [chat]jingle_end [visio]ended
+#: [chat]jingle_end
 msgid "Call ended"
 msgstr "Połączenie zakończone"
 
@@ -1887,7 +1887,7 @@ msgstr "Nowy wpis"
 msgid "This is a re-post from %s"
 msgstr "To jest ponownie opublikowany wpis z %s"
 
-#: [post]repost_profile
+#: [post]see_profile
 msgid "See %s profile"
 msgstr "Zobacz profil %s"
 
@@ -1998,6 +1998,11 @@ msgstr "Polubił twoją publikację"
 #: [post]commented
 msgid "Commented"
 msgstr "Skomentował"
+
+#: [post]subscription_required
+#, fuzzy
+msgid "You must be subscribed to %s to see this publication"
+msgstr "Nie jesteś subskrybowany przez ten kontakt"
 
 #: [hello]contact_post
 msgid "Contact post"
@@ -2689,16 +2694,9 @@ msgid "Story deleted"
 msgstr ""
 
 #: [subscribe]info
-msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
+#, fuzzy
+msgid "Movim is a decentralized social network, you are invited to register on the following XMPP server(s)"
 msgstr "Movim jest zdecentralizowaną siecią społecznościową. Przed utworzeniem nowego konta wybierz serwer do zarejestrowania się."
-
-#: [subscribe]server_question
-msgid "Your server here?"
-msgstr "Twój serwer tutaj?"
-
-#: [subscribe]server_contact
-msgid "Contact us to add yours to the officially supported servers list"
-msgstr "Skontaktuj się z nami w celu dodania twojego serwera do oficjalnej listy obsługiwanych serwerów"
 
 #: [feed]title
 msgid "%s’s feed"
@@ -2864,6 +2862,10 @@ msgstr "Nie udało się"
 #: [visio]connecting
 msgid "…connecting"
 msgstr "…łączę"
+
+#: [visio]ended
+msgid "End of call"
+msgstr ""
 
 #: [visio]no_participants_left
 msgid "All participants have left the call"
@@ -3840,6 +3842,12 @@ msgstr "Interfejs nieosiągalny, spróbuj ponownie później"
 #: [field]type_here
 msgid "Type here"
 msgstr "Pisz tutaj"
+
+#~ msgid "Your server here?"
+#~ msgstr "Twój serwer tutaj?"
+
+#~ msgid "Contact us to add yours to the officially supported servers list"
+#~ msgstr "Skontaktuj się z nami w celu dodania twojego serwera do oficjalnej listy obsługiwanych serwerów"
 
 #~ msgid "Avatar Updated"
 #~ msgstr "Zaktualizowano awatar"
