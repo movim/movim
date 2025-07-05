@@ -1,15 +1,8 @@
 Movim Changelog
 ================
 
-v0.30.1 (master)
+v0.31 (master)
 ---------------------------
-* Wait 2min for the pong in ChatroomPings before timing out, it seems that some services are realllyyyy slow to reply
-* Remove HTTP ranges in the Picture proxy and simply stop Curl when the download is above the declared file size, small refactor
-* Redesign the avatar and banner edition layout
-* Enable animated WebP pictures support in the images proxyfier
-* Implement XEP-0392: Consistent Color Generation
-* Refactor the color system and adapt the internal palette
-* Dropping support for MySQL, only MariaDB and PostgreSQL are supported by now
 * Implement XEP-0433: Extended Channel Search to replace the historical implementation
 * Allow to search Channels in the global directory directly from the Search bar
 * Introducing the URL Resolver Worker, that resolves the shared URLs in a non-blocking and concurrential way
@@ -21,6 +14,17 @@ v0.30.1 (master)
 * Add a toggle state to the Chat page buttons to switch quickly between one-to-one and rooms
 * Redesign the subscription page
 * Add WebRTC multi-track support
+* Implement Jingle content-modify to refresh the whole SDP and allow simultanous screen sharing
+
+v0.30.1
+---------------------------
+* Wait 2min for the pong in ChatroomPings before timing out, it seems that some services are realllyyyy slow to reply
+* Remove HTTP ranges in the Picture proxy and simply stop Curl when the download is above the declared file size, small refactor
+* Redesign the avatar and banner edition layout
+* Enable animated WebP pictures support in the images proxyfier
+* Implement XEP-0392: Consistent Color Generation
+* Refactor the color system and adapt the internal palette
+* Dropping support for MySQL, only MariaDB and PostgreSQL are supported by now
 
 v0.30
 ---------------------------
