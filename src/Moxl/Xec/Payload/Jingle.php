@@ -27,8 +27,6 @@ class Jingle extends Payload
 
             switch ($action) {
                 case 'session-initiate':
-                    //$stanza = CurrentCall::getInstance()->setContent($stanza);
-
                     $this->pack($stanza, $from);
                     $this->event('jingle_sessioninitiate');
                     break;
@@ -63,17 +61,14 @@ class Jingle extends Payload
                     $this->event('jingle_sessionaccept');
                     break;
                 case 'content-add':
-                    //$stanza = CurrentCall::getInstance()->setContent($stanza);
                     $this->pack($stanza, $from);
                     $this->event('jingle_contentadd');
                     break;
                 case 'content-modify':
-                    //$stanza = CurrentCall::getInstance()->setContent($stanza);
                     $this->pack($stanza, $from);
                     $this->event('jingle_contentmodify');
                     break;
                 case 'content-remove':
-                    //$stanza = CurrentCall::getInstance()->setContent($stanza);
                     $this->pack($stanza, $from);
                     $this->event('jingle_contentremove');
                     break;

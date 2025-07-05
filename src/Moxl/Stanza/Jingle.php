@@ -126,6 +126,11 @@ class Jingle
         \Moxl\API::request(\Moxl\API::iqWrapper($jingle, $to, 'set'));
     }
 
+    public static function contentModify(string $to, $jingle)
+    {
+        \Moxl\API::request(\Moxl\API::iqWrapper($jingle, $to, 'set'));
+    }
+
     public static function contentRemove(string $to, $jingle)
     {
         \Moxl\API::request(\Moxl\API::iqWrapper($jingle, $to, 'set'));

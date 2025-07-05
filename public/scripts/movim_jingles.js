@@ -225,7 +225,16 @@ MovimJingleSession.prototype.onContentAdd = function (sdp, mid) {
 }
 
 MovimJingleSession.prototype.onContentModify = function (sdp, mid) {
-    /// TODO
+    // TODO, implement mid
+
+    this.pc.setRemoteDescription({ 'sdp': sdp + "\n", 'type': 'offer' })
+        .then(() => {
+            this.pc.createAnswer()
+                .then(answer => this.pc.setLocalDescription(answer))
+                .then(() => Visio_ajaxSessionAccept(this.fullJid, this.id, this.pc.localDescription))
+                .catch(MovimUtils.logError);
+        })
+        .catch(error => MovimUtils.logError(error));
 }
 
 MovimJingleSession.prototype.onContentRemove = function (sdp, mid) {
@@ -260,13 +269,22 @@ MovimJingleSession.prototype.updateContent = function () {
     let createdMedias = newMedias.filter((e) => !oldMedias.includes(e));
     let destroyedMedias = oldMedias.filter((e) => !newMedias.includes(e));
 
+    let changed = false;
+
     createdMedias.forEach(mid => {
-        Visio_ajaxContentAdd(this.fullJid, this.pc.localDescription.sdp, id, mid);
+        changed = true;
+        Visio_ajaxContentAdd(this.fullJid, this.pc.localDescription.sdp, this.id, mid);
     });
 
     destroyedMedias.forEach(mid => {
-        Visio_ajaxContentRemove(this.fullJid, this.oldLocalDescription, id, mid);
+        changed = true;
+        Visio_ajaxContentRemove(this.fullJid, this.oldLocalDescription, this.id, mid);
     });
+
+    // Nothing added, nothing removed, lets update everything...
+    if (changed == false) {
+        Visio_ajaxContentModify(this.fullJid, this.pc.localDescription.sdp, this.id);
+    }
 }
 
 MovimJingleSession.prototype.onAcceptSDP = function (sdp) {

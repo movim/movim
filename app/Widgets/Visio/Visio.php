@@ -8,14 +8,23 @@ use App\Widgets\Notif\Notif;
 use App\Widgets\Rooms\Rooms;
 use App\Widgets\Toast\Toast;
 
-use Moxl\Xec\Action\Jingle\MessagePropose;
-use Moxl\Xec\Action\Jingle\MessageRetract;
-use Moxl\Xec\Action\Jingle\MessageProceed;
-use Moxl\Xec\Action\Jingle\MessageReject;
+use Movim\CurrentCall;
+use Movim\ImageSize;
+use Movim\Librairies\JingletoSDP;
+use Movim\Librairies\SDPtoJingle;
+use Movim\Widget\Base;
+
+use Moxl\Xec\Action\Jingle\ContentAdd;
+use Moxl\Xec\Action\Jingle\ContentModify;
+use Moxl\Xec\Action\Jingle\ContentRemove;
 use Moxl\Xec\Action\Jingle\MessageFinish;
+use Moxl\Xec\Action\Jingle\MessageProceed;
+use Moxl\Xec\Action\Jingle\MessagePropose;
+use Moxl\Xec\Action\Jingle\MessageReject;
+use Moxl\Xec\Action\Jingle\MessageRetract;
 use Moxl\Xec\Action\Jingle\SessionInitiate;
-use Moxl\Xec\Action\Jingle\SessionTerminate;
 use Moxl\Xec\Action\Jingle\SessionMute;
+use Moxl\Xec\Action\Jingle\SessionTerminate;
 use Moxl\Xec\Action\Jingle\SessionUnmute;
 use Moxl\Xec\Action\JingleCallInvite\Accept;
 use Moxl\Xec\Action\JingleCallInvite\Invite;
@@ -24,14 +33,6 @@ use Moxl\Xec\Action\Muc\CreateMujiRoom;
 use Moxl\Xec\Action\Presence\Muc;
 use Moxl\Xec\Action\Presence\Unavailable;
 use Moxl\Xec\Payload\Packet;
-
-use Movim\Widget\Base;
-use Movim\CurrentCall;
-use Movim\ImageSize;
-use Movim\Librairies\JingletoSDP;
-use Movim\Librairies\SDPtoJingle;
-use Moxl\Xec\Action\Jingle\ContentAdd;
-use Moxl\Xec\Action\Jingle\ContentRemove;
 
 class Visio extends Base
 {
@@ -254,7 +255,7 @@ class Visio extends Base
 
         $this->rpc('MovimJingles.onContentModify',
             \baseJid($packet->from), $jts->generate(),
-            (string)$packet->content->attributes()->name
+            //(string)$packet->content->attributes()->name
         );
     }
 
@@ -374,6 +375,16 @@ class Visio extends Base
         $stj = new SDPtoJingle($this->filterSDPMedia($sdp, $mediaId), sid: $id, action: 'content-remove');
 
         $si = new ContentRemove;
+        $si->setTo($to)
+            ->setJingle($stj->generate())
+            ->request();
+    }
+
+    public function ajaxContentModify(string $to, string $sdp, string $id)
+    {
+        $stj = new SDPtoJingle($sdp, sid: $id, action: 'content-modify');
+
+        $si = new ContentModify;
         $si->setTo($to)
             ->setJingle($stj->generate())
             ->request();
