@@ -128,7 +128,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-05 14:21+0200\n"
+"POT-Creation-Date: 2025-07-07 18:24+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>, 2015-2025\n"
 "Language-Team: French (France) (http://app.transifex.com/movim/movim/language/fr_FR/)\n"
@@ -1978,9 +1978,8 @@ msgid "Commented"
 msgstr "Commenté"
 
 #: [post]subscription_required
-#, fuzzy
 msgid "You must be subscribed to %s to see this publication"
-msgstr "Vous n’êtes pas abonné à ce contact"
+msgstr "Vous devez suivre %s pour voir cette publication"
 
 #: [hello]contact_post
 msgid "Contact post"
@@ -2113,6 +2112,10 @@ msgstr "Ajouter des #hastag dans le titre ou le contenu de votre article pour ê
 #: [publish]publish_error_forbidden
 msgid "You are not authorized to publish there"
 msgstr "Vous n'êtes pas autorisé à publier ici"
+
+#: [publish]blog_presence
+msgid "Your blog is only accessible to your subscribers. You can make it accessible to anyone in the settings page."
+msgstr "Votre blog n'est accessible qu'à vos contacts. Vous pouvez le rendre accessible à tous dans la configuration."
 
 #: [publishhelp]title [page]help
 msgid "Help"
@@ -2647,9 +2650,8 @@ msgid "Story deleted"
 msgstr "Story supprimée"
 
 #: [subscribe]info
-#, fuzzy
 msgid "Movim is a decentralized social network, you are invited to register on the following XMPP server(s)"
-msgstr "Movim est un réseau social décentralisé, avant de créer un compte vous devez choisir un serveur sur lequel vous inscrire."
+msgstr "Movim est un réseau social décentralisé, vous êtes invité à vous inscrire sur le(s) serveur(s) suivant"
 
 #: [feed]title
 msgid "%s’s feed"
@@ -2816,9 +2818,8 @@ msgid "…connecting"
 msgstr "…mise en relation"
 
 #: [visio]ended
-#, fuzzy
 msgid "End of call"
-msgstr "Appels rejoins"
+msgstr "Fin de l'appel"
 
 #: [visio]no_participants_left
 msgid "All participants have left the call"
@@ -2933,8 +2934,8 @@ msgid "Profile Picture"
 msgstr "Avatar"
 
 #: [page]chats
-msgid "Direct Messages"
-msgstr "Messages directs"
+msgid "Messages"
+msgstr "Messages"
 
 #: [page]publish
 msgid "Publish"
@@ -3793,9 +3794,3 @@ msgstr "L’API est indisponible pour le moment, réessayez plus tard."
 #: [field]type_here
 msgid "Type here"
 msgstr "Rédigez votre message ici"
-
-#~ msgid "Your server here?"
-#~ msgstr "Votre serveur ici ?"
-
-#~ msgid "Contact us to add yours to the officially supported servers list"
-#~ msgstr "Contactez-nous pour ajouter le vôtre à la liste des serveurs officiellement pris en charge"

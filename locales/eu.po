@@ -121,7 +121,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-05 14:21+0200\n"
+"POT-Creation-Date: 2025-07-07 18:24+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Xabi, 2023-2024\n"
 "Language-Team: Basque (http://app.transifex.com/movim/movim/language/eu/)\n"
@@ -2136,6 +2136,10 @@ msgstr "Gehitu #traola​k titulu edo edukian zure argitalpenak hedapen handiago
 msgid "You are not authorized to publish there"
 msgstr "Ez duzu hor argitaratzeko baimenik"
 
+#: [publish]blog_presence
+msgid "Your blog is only accessible to your subscribers. You can make it accessible to anyone in the settings page."
+msgstr ""
+
 #: [publishhelp]title [page]help
 msgid "Help"
 msgstr "Laguntza"
@@ -2980,7 +2984,7 @@ msgstr "Profila eguneratu da"
 
 #: [page]chats
 #, fuzzy
-msgid "Direct Messages"
+msgid "Messages"
 msgstr "Atzera botatako mezua"
 
 #: [page]publish

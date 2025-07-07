@@ -118,7 +118,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-05 14:21+0200\n"
+"POT-Creation-Date: 2025-07-07 18:24+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: English (http://app.transifex.com/movim/movim/language/en/)\n"
@@ -2133,6 +2133,10 @@ msgstr "Add #hashtags in your title or content to allow your article to be disco
 msgid "You are not authorized to publish there"
 msgstr "You are not authorized to publish there"
 
+#: [publish]blog_presence
+msgid "Your blog is only accessible to your subscribers. You can make it accessible to anyone in the settings page."
+msgstr ""
+
 #: [publishhelp]title [page]help
 msgid "Help"
 msgstr "Help"
@@ -2978,7 +2982,7 @@ msgstr "Profile Updated"
 
 #: [page]chats
 #, fuzzy
-msgid "Direct Messages"
+msgid "Messages"
 msgstr "Retracted message"
 
 #: [page]publish

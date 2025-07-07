@@ -122,7 +122,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-05 14:21+0200\n"
+"POT-Creation-Date: 2025-07-07 18:24+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: revolt68 <ashrafnezhad@gmail.com>, 2021\n"
 "Language-Team: Persian (http://app.transifex.com/movim/movim/language/fa/)\n"
@@ -2120,6 +2120,10 @@ msgstr ""
 msgid "You are not authorized to publish there"
 msgstr ""
 
+#: [publish]blog_presence
+msgid "Your blog is only accessible to your subscribers. You can make it accessible to anyone in the settings page."
+msgstr ""
+
 #: [publishhelp]title [page]help
 msgid "Help"
 msgstr "کمک"
@@ -2952,8 +2956,9 @@ msgid "Profile Picture"
 msgstr "پروفایل"
 
 #: [page]chats
-msgid "Direct Messages"
-msgstr ""
+#, fuzzy
+msgid "Messages"
+msgstr "پیام منتشر شد"
 
 #: [page]publish
 msgid "Publish"

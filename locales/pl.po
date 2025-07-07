@@ -123,7 +123,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-05 14:21+0200\n"
+"POT-Creation-Date: 2025-07-07 18:24+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Sylwester Cyba, 2024\n"
 "Language-Team: Polish (http://app.transifex.com/movim/movim/language/pl/)\n"
@@ -2138,6 +2138,10 @@ msgstr "Dodaj #hasztag w tytule lub treści aby ułatwić odnalezienie artykułu
 msgid "You are not authorized to publish there"
 msgstr "Nie masz uprawnień do publikowania w tym miejscu"
 
+#: [publish]blog_presence
+msgid "Your blog is only accessible to your subscribers. You can make it accessible to anyone in the settings page."
+msgstr ""
+
 #: [publishhelp]title [page]help
 msgid "Help"
 msgstr "Pomoc"
@@ -2982,7 +2986,7 @@ msgstr "Profil Zaktualizowany"
 
 #: [page]chats
 #, fuzzy
-msgid "Direct Messages"
+msgid "Messages"
 msgstr "Wycofana wiadomość"
 
 #: [page]publish

@@ -120,7 +120,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-05 14:21+0200\n"
+"POT-Creation-Date: 2025-07-07 18:24+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Krunoslav Tomorad <krunoslav.tomorad@gmail.com>, 2019\n"
 "Language-Team: Croatian (http://app.transifex.com/movim/movim/language/hr/)\n"
@@ -2119,6 +2119,10 @@ msgstr ""
 msgid "You are not authorized to publish there"
 msgstr ""
 
+#: [publish]blog_presence
+msgid "Your blog is only accessible to your subscribers. You can make it accessible to anyone in the settings page."
+msgstr ""
+
 #: [publishhelp]title [page]help
 msgid "Help"
 msgstr ""
@@ -2943,8 +2947,9 @@ msgid "Profile Picture"
 msgstr ""
 
 #: [page]chats
-msgid "Direct Messages"
-msgstr ""
+#, fuzzy
+msgid "Messages"
+msgstr "Poruka je objavljena"
 
 #: [page]publish
 msgid "Publish"

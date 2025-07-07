@@ -117,7 +117,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-05 14:21+0200\n"
+"POT-Creation-Date: 2025-07-07 18:24+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2160,6 +2160,12 @@ msgstr ""
 msgid "You are not authorized to publish there"
 msgstr ""
 
+#: [publish]blog_presence
+msgid ""
+"Your blog is only accessible to your subscribers. You can make it "
+"accessible to anyone in the settings page."
+msgstr ""
+
 #: [publishhelp]title [page]help
 msgid "Help"
 msgstr ""
@@ -2996,7 +3002,7 @@ msgid "Profile Picture"
 msgstr ""
 
 #: [page]chats
-msgid "Direct Messages"
+msgid "Messages"
 msgstr ""
 
 #: [page]publish
