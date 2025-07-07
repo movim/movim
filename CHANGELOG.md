@@ -16,6 +16,7 @@ v0.31 (master)
 * Add WebRTC multi-track support
 * Implement Jingle content-modify to refresh the whole SDP and allow simultanous screen sharing
 * Add a placeholder if a Post is not accessible without a contact subscription
+* Add a little helper in the Publish widget when publishing publicly and the blog is configured on presence
 
 v0.30.1
 ---------------------------

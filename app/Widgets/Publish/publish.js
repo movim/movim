@@ -42,6 +42,7 @@ var Publish = {
 
         MovimUtils.applyAutoheight();
         Publish_ajaxOpenlinkPreview(id);
+        Publish_ajaxCheckPrivacy(id);
     },
 
     saveTitle: function () {

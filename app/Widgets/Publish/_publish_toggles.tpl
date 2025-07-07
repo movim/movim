@@ -26,6 +26,8 @@
     </div>
 </li>
 
+<li id="publish_blog_presence"></li>
+
 <li>
     <span class="primary comments_disabled"
     title="{$c->__('post.comments_disabled_title')}">

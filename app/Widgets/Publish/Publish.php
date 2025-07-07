@@ -4,6 +4,7 @@ namespace App\Widgets\Publish;
 
 use Moxl\Xec\Action\Pubsub\PostPublish;
 use Moxl\Xec\Action\Microblog\CommentCreateNode;
+use Moxl\Xec\Action\Pubsub\GetConfig;
 use Moxl\Xec\Action\Pubsub\Subscribe;
 
 use Movim\Widget\Base;
@@ -28,6 +29,7 @@ class Publish extends Base
         $this->registerEvent('pubsub_postpublish_handle', 'onPublish');
         $this->registerEvent('pubsub_postpublish_errorforbidden', 'onPublishErrorForbidden');
         $this->registerEvent('microblog_commentcreatenode_handle', 'onCommentNodeCreated');
+        $this->registerEvent('pubsub_getconfig_handle', 'onBlogConfig');
 
         $this->addjs('publish.js');
         $this->addcss('publish.css');
@@ -47,6 +49,16 @@ class Publish extends Base
             $this->rpc('MovimUtils.reload', $this->route('news'));
         } elseif ($node != AppPost::STORIES_NODE) {
             $this->rpc('MovimUtils.reload', $this->route('community', [$to, $node]));
+        }
+    }
+
+    public function onBlogConfig($package)
+    {
+        $value = $package->content['config']->xpath('//field[@var=\'pubsub#access_model\']/value/text()');
+
+        if (is_array($value) && (string)$value[0] == 'presence') {
+            $view = $this->tpl();
+            $this->rpc('MovimTpl.fill', '#publish_blog_presence', $view->draw('_publish_blog_presence'));
         }
     }
 
@@ -375,9 +387,22 @@ class Publish extends Base
             $draft->open = $open;
             $draft->save();
 
+            $this->ajaxCheckPrivacy($id);
+
             Toast::send(($open)
                 ? $this->__('post.public_yes')
                 : $this->__('post.public_no'));
+        }
+    }
+
+    public function ajaxCheckPrivacy($id)
+    {
+        $draft = $this->user->drafts()->find($id);
+
+        if ($draft && $draft->open) {
+            (new GetConfig)->setNode(AppPost::MICROBLOG_NODE)->request();
+        } else {
+            $this->rpc('MovimTpl.fill', '#publish_blog_presence', '');
         }
     }
 
