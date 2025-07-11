@@ -120,7 +120,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-07 18:24+0200\n"
+"POT-Creation-Date: 2025-07-11 10:57+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Krunoslav Tomorad <krunoslav.tomorad@gmail.com>, 2019\n"
 "Language-Team: Croatian (http://app.transifex.com/movim/movim/language/hr/)\n"
@@ -196,9 +196,8 @@ msgid "Delete your account"
 msgstr "Obrišite svoj račun"
 
 #: [account]delete_text
-#, fuzzy
 msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts, and publications)."
-msgstr "Obrisat ćete svoj XMPP račun te sve podatke vezane uza nj (profil, kontakte i objave)."
+msgstr ""
 
 #: [account]delete_text_confirm
 msgid "Type your full username"
@@ -217,14 +216,12 @@ msgid "Leave this instance"
 msgstr "Napusti ovu instanciju"
 
 #: [account]clear_text
-#, fuzzy
 msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts, and publications)."
-msgstr "Obrisat ćete sve podatke povezane s vašim računom na ovoj instanciji Movima (profil, kontakte i objave)."
+msgstr ""
 
 #: [account]clear_text_confirm
-#, fuzzy
 msgid "This action will not delete your account but will disconnect you from Movim."
-msgstr "Ovime ćete se odspojiti s ove instancije Movima, ali nećete obrisati svoj račun."
+msgstr ""
 
 #: [account]delete_bundle_title
 msgid "OMEMO Key deletion"
@@ -307,9 +304,8 @@ msgid "Restrict suggestions"
 msgstr "Ograniči prijedloge"
 
 #: [restrictsuggestions]text
-#, fuzzy
 msgid "Only suggest chatrooms, Communities, and other contents that are available on the user's XMPP server and related services"
-msgstr "Predlaži samo sobe za čavrljanje, zajednice te ostali sadržaj koji je dostupan na korisnikovom poslužitelju za XMPP i na s njime povezanim uslugama"
+msgstr ""
 
 #: [chatonly]title
 msgid "Chat only"
@@ -340,23 +336,20 @@ msgid "Remove the XMPP registration flow and buttons from the interface"
 msgstr ""
 
 #: [whitelist]title
-#, fuzzy
 msgid "Allowed XMPP Servers"
-msgstr "Dopušteni poslužitelji za XMPP"
+msgstr ""
 
 #: [whitelist]info1
-#, fuzzy
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name(s) here, with comma (ex: movim.eu,jabber.fr)"
-msgstr "Ako želite odrediti popis dopuštenih poslužitelja na vašoj Movim instanciji te samim tim zabraniti veze prema svima ostalim, molim upišite njihove domene ovdje (odvojene zarezom, npr. movim.eu,jabber.fr)"
+msgstr ""
 
 #: [whitelist]info2
 msgid "Leave this field blank if you allow the access to all the XMPP accounts."
 msgstr "Ostavite ovo polje praznim želite li dopustiti pristup svim poslužiteljima za XMPP."
 
 #: [whitelist]label
-#, fuzzy
 msgid "List of allowed XMPP servers"
-msgstr "Popis dopuštenih poslužitelja za XMPP"
+msgstr ""
 
 #: [information]title
 msgctxt "[information]title"
@@ -469,14 +462,12 @@ msgid "Profile Picture Updated"
 msgstr ""
 
 #: [avatar]not_updated
-#, fuzzy
 msgid "Profile Picture Not Updated"
-msgstr "Profilna slika nije ažurirana"
+msgstr ""
 
 #: [avatar]change
-#, fuzzy
 msgid "Change my profile picture"
-msgstr "Promijeni moju zaporku"
+msgstr ""
 
 #: [banner]change
 msgid "Change my banner"
@@ -973,9 +964,8 @@ msgid "It seems that this community doesn’t exists anymore. Do you want to rem
 msgstr "Čini se je zajednica više ne postoji. Želite li ju maknuti s popisa vaših pretplata?"
 
 #: [communityaffiliation]delete_error
-#, fuzzy
 msgid "Error during the node deletion"
-msgstr "Došlo je do pogreške kod primjene postavki čvora."
+msgstr ""
 
 #: [communityaffiliation]config_error
 msgid "Error during the application of the node configuration"
@@ -1427,9 +1417,8 @@ msgid "Group"
 msgstr ""
 
 #: [delete]text
-#, fuzzy
 msgid "You are going to remove one of your contacts, please confirm your action"
-msgstr "Zatvorit ćete sljedeću zajednicu. Molim potvrditi da to želite napraviti."
+msgstr ""
 
 #: [age]years
 msgid "%s years"
@@ -1468,9 +1457,8 @@ msgid "But this contact can still see if you are online"
 msgstr ""
 
 #: [subscription]nil
-#, fuzzy
 msgid "You are not subscribed to anyone"
-msgstr "Otkazat ćete pretplatu na ovu zajednicu"
+msgstr ""
 
 #: [subscription]nil_button [button]invite
 msgid "Invite"
@@ -1893,15 +1881,6 @@ msgstr ""
 msgid "%s minutes"
 msgstr ""
 
-#: [post]public_title
-#, fuzzy
-msgid "Publish this post publicly"
-msgstr "Javno podijelite ovu pretplatu"
-
-#: [post]public_text
-msgid "This will allow anyone outside Movim to have access to your publication"
-msgstr ""
-
 #: [post]public_preview
 msgid "Preview URL: %s"
 msgstr ""
@@ -1927,9 +1906,8 @@ msgid "Nobody will be able to like or comment"
 msgstr ""
 
 #: [post]comments_disabled_yes
-#, fuzzy
 msgid "Comments disabled for this post"
-msgstr "Za ovu su zajednicu pretplate onemogućene"
+msgstr ""
 
 #: [post]comments_disabled_no
 msgid "Comments enabled for this post"
@@ -2123,6 +2101,14 @@ msgstr ""
 msgid "Your blog is only accessible to your subscribers. You can make it accessible to anyone in the settings page."
 msgstr ""
 
+#: [publish]publish_web_title
+msgid "Publish this post on your public blog"
+msgstr ""
+
+#: [publish]publish_web_text
+msgid "This will allow anyone outside Movim to have access to your publication"
+msgstr ""
+
 #: [publishhelp]title [page]help
 msgid "Help"
 msgstr ""
@@ -2196,14 +2182,12 @@ msgid "Show all chatrooms"
 msgstr ""
 
 #: [rooms]hide_disconnected
-#, fuzzy
 msgid "Hide disconnected chatrooms"
-msgstr "Odspojili ste se od sobe za razgovor"
+msgstr ""
 
 #: [rooms]destroy_title
-#, fuzzy
 msgid "Destroy the chatroom"
-msgstr "Odspojili ste se od sobe za razgovor"
+msgstr ""
 
 #: [rooms]destroy_text
 msgid "Are you sure you want to permanently destroy the following chatroom?"
@@ -2256,19 +2240,16 @@ msgid "Permanently leave a chatroom"
 msgstr ""
 
 #: [chatrooms]remove_text
-#, fuzzy
 msgid "You are going to permanently leave the following chatroom. Please confirm your action."
-msgstr "Zatvorit ćete sljedeću zajednicu. Molim potvrditi da to želite napraviti."
+msgstr ""
 
 #: [chatrooms]connected
-#, fuzzy
 msgid "Joined the chatroom"
-msgstr "Povezani ste u sobu za razgovor"
+msgstr ""
 
 #: [chatrooms]disconnected
-#, fuzzy
 msgid "Left the chatroom"
-msgstr "Povezani ste u sobu za razgovor"
+msgstr ""
 
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
@@ -2285,9 +2266,8 @@ msgid "Banned"
 msgstr ""
 
 #: [chatrooms]bad_nickname
-#, fuzzy
 msgid "Please enter a valid nickname (2 to 40 characters)"
-msgstr "Molim upišite valjan naziv zajednice (ne manje od četiri znaka)"
+msgstr ""
 
 #: [chatrooms]conflict
 msgid "Nickname already taken"
@@ -2354,9 +2334,8 @@ msgid "Bookmarks updated"
 msgstr ""
 
 #: [room]anonymous_title
-#, fuzzy
 msgid "Public Channel"
-msgstr "Javna stranica"
+msgstr ""
 
 #: [room]anonymous_text1
 msgid "You are currently logged as an anonymous user."
@@ -2947,9 +2926,8 @@ msgid "Profile Picture"
 msgstr ""
 
 #: [page]chats
-#, fuzzy
 msgid "Messages"
-msgstr "Poruka je objavljena"
+msgstr ""
 
 #: [page]publish
 msgid "Publish"
@@ -3808,6 +3786,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "Avatar Updated"
-#~ msgstr "Profilna slika je ažurirana"

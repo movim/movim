@@ -135,7 +135,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-07 18:24+0200\n"
+"POT-Creation-Date: 2025-07-11 10:57+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Phonebook3599, 2024-2025\n"
 "Language-Team: Chinese (China) (http://app.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -1729,7 +1729,7 @@ msgstr "访问项目官方网站 %s。"
 
 #: [menu]empty_title
 msgid "No news yet…"
-msgstr "还没有消息…"
+msgstr "暂无动态…"
 
 #: [menu]empty
 msgid "Welcome to your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
@@ -1895,14 +1895,6 @@ msgstr "%s 分钟"
 #: [post]read_time_plural
 msgid "%s minutes"
 msgstr "%s 分钟"
-
-#: [post]public_title
-msgid "Publish this post publicly"
-msgstr "公开发布此帖子"
-
-#: [post]public_text
-msgid "This will allow anyone outside Movim to have access to your publication"
-msgstr "这将允许 Movim 外的任何人访问您的发布内容"
 
 #: [post]public_preview
 msgid "Preview URL: %s"
@@ -2122,7 +2114,16 @@ msgstr "您无权在此处发布"
 
 #: [publish]blog_presence
 msgid "Your blog is only accessible to your subscribers. You can make it accessible to anyone in the settings page."
-msgstr ""
+msgstr "您的博客仅供您的订阅者访问。您可以在设置页面将其设置为任何人都可以访问。"
+
+#: [publish]publish_web_title
+#, fuzzy
+msgid "Publish this post on your public blog"
+msgstr "公开发布此帖子"
+
+#: [publish]publish_web_text
+msgid "This will allow anyone outside Movim to have access to your publication"
+msgstr "这将允许 Movim 外的任何人访问您的发布内容"
 
 #: [publishhelp]title [page]help
 msgid "Help"
@@ -2930,11 +2931,11 @@ msgstr "探索"
 
 #: [page]account_creation
 msgid "Account Creation"
-msgstr "创建账号"
+msgstr "账号创建"
 
 #: [page]news
 msgid "News"
-msgstr "消息"
+msgstr "动态"
 
 #: [page]avatar
 msgid "Profile Picture"
@@ -2942,7 +2943,7 @@ msgstr "头像"
 
 #: [page]chats
 msgid "Messages"
-msgstr ""
+msgstr "消息"
 
 #: [page]publish
 msgid "Publish"

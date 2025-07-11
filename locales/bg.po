@@ -121,7 +121,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-07 18:24+0200\n"
+"POT-Creation-Date: 2025-07-11 10:57+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Rossen Karpuzov <rkarpuzov@yahoo.com>, 2020-2023,2025\n"
 "Language-Team: Bulgarian (http://app.transifex.com/movim/movim/language/bg/)\n"
@@ -197,9 +197,8 @@ msgid "Delete your account"
 msgstr "Изтрийте вашата сметка"
 
 #: [account]delete_text
-#, fuzzy
 msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts, and publications)."
-msgstr "Вие ще изтриете вашата XMPP сметка и всяка отнасяща се информация свързана към нея (профил, контакти и публикации)."
+msgstr ""
 
 #: [account]delete_text_confirm
 msgid "Type your full username"
@@ -218,14 +217,12 @@ msgid "Leave this instance"
 msgstr "Напуснете тази инстанция"
 
 #: [account]clear_text
-#, fuzzy
 msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts, and publications)."
-msgstr "Ще изтриете всяка свързана информация отнасяща се за сметката ви на тази Movim инстанция (профил, контакти и публикации)."
+msgstr ""
 
 #: [account]clear_text_confirm
-#, fuzzy
 msgid "This action will not delete your account but will disconnect you from Movim."
-msgstr "Това действие няма да изтрие сметката ви, но ще ви изхвърли от тази инстанция."
+msgstr ""
 
 #: [account]delete_bundle_title
 msgid "OMEMO Key deletion"
@@ -308,9 +305,8 @@ msgid "Restrict suggestions"
 msgstr "Ограничете предложенията"
 
 #: [restrictsuggestions]text
-#, fuzzy
 msgid "Only suggest chatrooms, Communities, and other contents that are available on the user's XMPP server and related services"
-msgstr "Предлагайте само чат стаи, общности и друго съдържание, което е достъпно на потребителския XMPP сървър и свързаните с него услуги"
+msgstr ""
 
 #: [chatonly]title
 msgid "Chat only"
@@ -341,23 +337,20 @@ msgid "Remove the XMPP registration flow and buttons from the interface"
 msgstr "Премахнете XMPP регистрационния процес и бутоните от интерфейса "
 
 #: [whitelist]title
-#, fuzzy
 msgid "Allowed XMPP Servers"
-msgstr "Доверени XMPP сървъри"
+msgstr ""
 
 #: [whitelist]info1
-#, fuzzy
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name(s) here, with comma (ex: movim.eu,jabber.fr)"
-msgstr "Ако искате да посочите списък с упълномощени XMPP сървъри във вашия Movim кошер и да забраните връзката на всички останали, моля, поставете името на домейна им тук, със запетая (напр. Movim.eu, jabber.fr) "
+msgstr ""
 
 #: [whitelist]info2
 msgid "Leave this field blank if you allow the access to all the XMPP accounts."
 msgstr "Оставете това поле празно, ако позволявате достъп до всички XMPP сметки."
 
 #: [whitelist]label
-#, fuzzy
 msgid "List of allowed XMPP servers"
-msgstr "Списък на доверените XMPP сървъри"
+msgstr ""
 
 #: [information]title
 msgctxt "[information]title"
@@ -466,19 +459,16 @@ msgid "File"
 msgstr "Файл"
 
 #: [avatar]updated
-#, fuzzy
 msgid "Profile Picture Updated"
-msgstr "Профилът не е актуализиран"
+msgstr ""
 
 #: [avatar]not_updated
-#, fuzzy
 msgid "Profile Picture Not Updated"
-msgstr "Профилът не е актуализиран"
+msgstr ""
 
 #: [avatar]change
-#, fuzzy
 msgid "Change my profile picture"
-msgstr "Промени ми паролата"
+msgstr ""
 
 #: [banner]change
 msgid "Change my banner"
@@ -589,9 +579,8 @@ msgid ":shortcut: to insert an emoji"
 msgstr ":shortcut: за да вмъкнете емоджи"
 
 #: [message]visitor_help
-#, fuzzy
 msgid "You are not allowed to send messages in this chatroom"
-msgstr "Не ви е позволено да изпращате съобщения в конфренцията"
+msgstr ""
 
 #: [chat]attention
 msgid "%s needs your attention"
@@ -976,9 +965,8 @@ msgid "It seems that this community doesn’t exists anymore. Do you want to rem
 msgstr "Изглежда, че тази общност вече не съществува. Искате ли да го премахнете от абонаментите си?"
 
 #: [communityaffiliation]delete_error
-#, fuzzy
 msgid "Error during the node deletion"
-msgstr "Грешка по време на прилагането на конфигурацията на възела"
+msgstr ""
 
 #: [communityaffiliation]config_error
 msgid "Error during the application of the node configuration"
@@ -1210,9 +1198,8 @@ msgid "Main chat page"
 msgstr "Начална чат страница"
 
 #: [config]chatmain_text
-#, fuzzy
 msgid "Set the chat page to the default when opening Movim"
-msgstr "Направете страницата за чат като подразбираща се"
+msgstr ""
 
 #: [config]mam_text
 msgid "Server-side chat messages archiving preferences"
@@ -1295,9 +1282,8 @@ msgid "Add a contact"
 msgstr "Добави контакт"
 
 #: [roster]add_contact_info1
-#, fuzzy
 msgid "Enter the XMPP Address of your contact."
-msgstr "Въведете Jabber ID на вашия контакт."
+msgstr ""
 
 #: [roster]add_contact_info2
 msgid "Press enter to validate."
@@ -1376,9 +1362,8 @@ msgid "Links"
 msgstr "Връзки"
 
 #: [general]private_account_title
-#, fuzzy
 msgid "Your account is private"
-msgstr "Този пост е частен"
+msgstr ""
 
 #: [general]private_account_text
 msgid "Go to the Settings page to create a public blog and allow the other users to find you"
@@ -1433,9 +1418,8 @@ msgid "Group"
 msgstr "Група"
 
 #: [delete]text
-#, fuzzy
 msgid "You are going to remove one of your contacts, please confirm your action"
-msgstr "Ще изтриете един от контактите си, моля, потвърдете действието си"
+msgstr ""
 
 #: [age]years
 msgid "%s years"
@@ -1474,18 +1458,16 @@ msgid "But this contact can still see if you are online"
 msgstr "Но този контакт все още може да види дали сте онлайн"
 
 #: [subscription]nil
-#, fuzzy
 msgid "You are not subscribed to anyone"
-msgstr "Не сте абонирани за този контакт"
+msgstr ""
 
 #: [subscription]nil_button [button]invite
 msgid "Invite"
 msgstr "Поканете"
 
 #: [subscription]nil_text
-#, fuzzy
 msgid "This contact is in your contact list but you are not subscribed to each other"
-msgstr "Този контакт е във вашия списък с контакти, но няма абонамент между двата акаунта"
+msgstr ""
 
 #: [dictaphone]name
 msgid "Dictaphone"
@@ -1548,18 +1530,16 @@ msgid "By default the content is only available to your contacts. You can make y
 msgstr "По подразбиране съдържанието е достъпно само за вашите контакти. Можете да направите своя профил и публикации обществени, като активирате съответната настройка."
 
 #: [faq]permission_community_title
-#, fuzzy
 msgid "How does it apply to Communities posts?"
-msgstr "Как да се прилага за публикациите в общности?"
+msgstr ""
 
 #: [faq]permission_community_text
 msgid "Similary to your blog publications except that, by default, the posts are only available to the members or subscribers of the Community (except if you explicitly open all the Community content)"
 msgstr "Подобно на вашите публикации в блога, с изключение на това, че по подразбиране публикациите са достъпни само за членовете или абонатите на Общността (освен ако изрично отворите цялото съдържание на Общността)"
 
 #: [faq]chatrooms_title
-#, fuzzy
 msgid "Where can I find a list of group chats?"
-msgstr "Къде мога да намеря списък с чат стаи?"
+msgstr ""
 
 #: [faq]find_contacts_title
 msgid "Where can I find my contacts?"
@@ -1634,9 +1614,8 @@ msgid "Empty Challenge from the server"
 msgstr "Празно предизвикателство от сървъра"
 
 #: [error]dns
-#, fuzzy
 msgid "XMPP Domain error, your account is not a valid XMPP Address"
-msgstr "Грешка в XMPP домейн, вашият акаунт не е правилен Jabber ID "
+msgstr ""
 
 #: [error]data_missings
 msgid "Some data are missing!"
@@ -1739,9 +1718,8 @@ msgid "No news yet…"
 msgstr "Все още няма новини ..."
 
 #: [menu]empty
-#, fuzzy
 msgid "Welcome to your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
-msgstr "Добре дошли във вашата емисия новини, тук ще видите всички публикации, публикувани от вашите контакти и в общностите, за които сте се абонирали."
+msgstr ""
 
 #: [menu]mine
 msgid "My publications"
@@ -1904,15 +1882,6 @@ msgstr "%s минута"
 msgid "%s minutes"
 msgstr "%s минути"
 
-#: [post]public_title
-#, fuzzy
-msgid "Publish this post publicly"
-msgstr "Публикувай тази статия публично"
-
-#: [post]public_text
-msgid "This will allow anyone outside Movim to have access to your publication"
-msgstr ""
-
 #: [post]public_preview
 msgid "Preview URL: %s"
 msgstr ""
@@ -1938,14 +1907,12 @@ msgid "Nobody will be able to like or comment"
 msgstr "Никой не може да харесва или коментира"
 
 #: [post]comments_disabled_yes
-#, fuzzy
 msgid "Comments disabled for this post"
-msgstr "Коментарите са забранени за тази статия"
+msgstr ""
 
 #: [post]comments_disabled_no
-#, fuzzy
 msgid "Comments enabled for this post"
-msgstr "Коментарите са забранени за тази статия"
+msgstr ""
 
 #: [post]delete_title [post]delete
 msgid "Delete this post"
@@ -1960,9 +1927,8 @@ msgid "Are you sure that you want to delete this comment?"
 msgstr "Наистина ли искате да изтриете този коментар?"
 
 #: [post]discover
-#, fuzzy
 msgid "Discover more posts on the communities page"
-msgstr "Открийте още статии на страницата на общностите"
+msgstr ""
 
 #: [post]more
 msgid "Read more"
@@ -1997,9 +1963,8 @@ msgid "Commented"
 msgstr "Коментирано"
 
 #: [post]subscription_required
-#, fuzzy
 msgid "You must be subscribed to %s to see this publication"
-msgstr "Не сте абонирани за този контакт"
+msgstr ""
 
 #: [hello]contact_post
 msgid "Contact post"
@@ -2022,9 +1987,8 @@ msgid "Oh! Hello!"
 msgstr "О! Здравейте!"
 
 #: [hello]enter_paragraph
-#, fuzzy
 msgid "It seems that you are new here! Welcome to Movim!"
-msgstr "Изглежда, че сте нов там! Добре дошли в Movim!"
+msgstr ""
 
 #: [hello]menu_title
 msgid "Check the Menu"
@@ -2138,6 +2102,14 @@ msgstr ""
 msgid "Your blog is only accessible to your subscribers. You can make it accessible to anyone in the settings page."
 msgstr ""
 
+#: [publish]publish_web_title
+msgid "Publish this post on your public blog"
+msgstr ""
+
+#: [publish]publish_web_text
+msgid "This will allow anyone outside Movim to have access to your publication"
+msgstr ""
+
 #: [publishhelp]title [page]help
 msgid "Help"
 msgstr "Помощ"
@@ -2187,48 +2159,40 @@ msgid "Join a custom chatroom"
 msgstr "Присъедини се към персонализирана чат стая"
 
 #: [rooms]empty_text1
-#, fuzzy
 msgid "You don’t have any chatroom yet."
-msgstr "Все още нямате абонаменти за общности."
+msgstr ""
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
 msgstr "Добавете такъв, като кликнете върху бутона за добавяне."
 
 #: [rooms]type_room
-#, fuzzy
 msgid "Type of chatroom"
-msgstr "Тип на стая"
+msgstr ""
 
 #: [rooms]default_room
-#, fuzzy
 msgid "Standard chatroom"
-msgstr "Стандартна стая"
+msgstr ""
 
 #: [rooms]gateway_room
-#, fuzzy
 msgid "Gateway chatroom"
-msgstr "Стая за портал"
+msgstr ""
 
 #: [rooms]show_all
-#, fuzzy
 msgid "Show all chatrooms"
-msgstr "Покажи всички стаи"
+msgstr ""
 
 #: [rooms]hide_disconnected
-#, fuzzy
 msgid "Hide disconnected chatrooms"
-msgstr "Скриване на несвързаните стаи"
+msgstr ""
 
 #: [rooms]destroy_title
-#, fuzzy
 msgid "Destroy the chatroom"
-msgstr "Унищожи стая"
+msgstr ""
 
 #: [rooms]destroy_text
-#, fuzzy
 msgid "Are you sure you want to permanently destroy the following chatroom?"
-msgstr "Наистина ли искате да изтриете този коментар?"
+msgstr ""
 
 #: [rooms]owner
 msgctxt "[rooms]owner"
@@ -2257,42 +2221,36 @@ msgid "Chatrooms"
 msgstr "Стаи за разговори"
 
 #: [chatrooms]id
-#, fuzzy
 msgid "Chatroom Address"
-msgstr "Стаи за разговори"
+msgstr ""
 
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "Мои любими стаи"
 
 #: [chatrooms]bad_id
-#, fuzzy
 msgid "Bad Chatroom Address"
-msgstr "Лош идентификатор на чат стая"
+msgstr ""
 
 #: [chatrooms]empty_name
 msgid "Empty name"
 msgstr "Празно име"
 
 #: [chatrooms]remove_title
-#, fuzzy
 msgid "Permanently leave a chatroom"
-msgstr "Създай стая за разговори"
+msgstr ""
 
 #: [chatrooms]remove_text
-#, fuzzy
 msgid "You are going to permanently leave the following chatroom. Please confirm your action."
-msgstr "Ще изтриете следната общност. Моля, потвърдете действието си."
+msgstr ""
 
 #: [chatrooms]connected
-#, fuzzy
 msgid "Joined the chatroom"
-msgstr "Присъедини се към чат стая"
+msgstr ""
 
 #: [chatrooms]disconnected
-#, fuzzy
 msgid "Left the chatroom"
-msgstr "Добавете стаята за разговори"
+msgstr ""
 
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
@@ -2309,28 +2267,24 @@ msgid "Banned"
 msgstr "Ограничени"
 
 #: [chatrooms]bad_nickname
-#, fuzzy
 msgid "Please enter a valid nickname (2 to 40 characters)"
-msgstr "Моля, въведете правилен псевдоним (2 до 40 символа)"
+msgstr ""
 
 #: [chatrooms]conflict
-#, fuzzy
 msgid "Nickname already taken"
-msgstr "Потребителското име е вече заето"
+msgstr ""
 
 #: [chatrooms]autojoin
-#, fuzzy
 msgid "Join this chatroom on login"
-msgstr "Присъединете се към тази чат стая при свързване"
+msgstr ""
 
 #: [chatrooms]pinned
 msgid "Pin this chatroom"
 msgstr "Забоди тази чат стая"
 
 #: [chatrooms]destroyed
-#, fuzzy
 msgid "Chatroom destroyed"
-msgstr "Стаята е унищожена"
+msgstr ""
 
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
@@ -2381,9 +2335,8 @@ msgid "Bookmarks updated"
 msgstr "Отметките са актуализирани"
 
 #: [room]anonymous_title
-#, fuzzy
 msgid "Public Channel"
-msgstr "Публична страница"
+msgstr ""
 
 #: [room]anonymous_text1
 msgid "You are currently logged as an anonymous user."
@@ -2418,9 +2371,8 @@ msgid "Public profiles"
 msgstr "Публични профили"
 
 #: [room]nonanonymous_muc_text
-#, fuzzy
 msgid "The participants of this chatroom can see each other's XMPP Addresses"
-msgstr "Участниците в тази чат стая могат да се виждат един с друг"
+msgstr ""
 
 #: [room]archived
 msgid "Archived"
@@ -2543,9 +2495,8 @@ msgid "No chatrooms found locally"
 msgstr "Не са открити чат стаи локално"
 
 #: [roomsexplore]global_title
-#, fuzzy
 msgid "Channels"
-msgstr "Канал"
+msgstr ""
 
 #: [roomsexplore]no_global
 msgid "No chatrooms found globally"
@@ -2692,9 +2643,8 @@ msgid "Story deleted"
 msgstr "Разказ изтрит"
 
 #: [subscribe]info
-#, fuzzy
 msgid "Movim is a decentralized social network, you are invited to register on the following XMPP server(s)"
-msgstr "Movim е децентрализирана социална мрежа, преди да създадете нов акаунт, трябва да изберете сървър, на който да се регистрирате."
+msgstr ""
 
 #: [feed]title
 msgid "%s’s feed"
@@ -2973,14 +2923,12 @@ msgid "News"
 msgstr "Новини"
 
 #: [page]avatar
-#, fuzzy
 msgid "Profile Picture"
-msgstr "Профила е актуализиран"
+msgstr ""
 
 #: [page]chats
-#, fuzzy
 msgid "Messages"
-msgstr "Оттеглено съобщение"
+msgstr ""
 
 #: [page]publish
 msgid "Publish"
@@ -3839,60 +3787,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr "Пиши тук"
-
-#~ msgid "Your server here?"
-#~ msgstr "Вашия сървър тук?"
-
-#~ msgid "Contact us to add yours to the officially supported servers list"
-#~ msgstr "Свържете се с нас, за да добавим вашия към официално поддържания списък със сървъри"
-
-#~ msgid "Avatar Updated"
-#~ msgstr "Аватарът е обновен"
-
-#~ msgid "Avatar Not Updated"
-#~ msgstr "Аватарът не е обновен"
-
-#~ msgid "Change my avatar"
-#~ msgstr "Смени моя аватар"
-
-#~ msgid "No subscriptions"
-#~ msgstr "Няма абонаменти"
-
-#~ msgid "Invalid JID"
-#~ msgstr "Неправилен JID"
-
-#~ msgid "Chatroom ID"
-#~ msgstr "Чат стая ID"
-
-#~ msgid "Public chatroom"
-#~ msgstr "Обществена чат стая"
-
-#~ msgid "Global search"
-#~ msgstr "Глобално търсене"
-
-#~ msgid "Avatar"
-#~ msgstr "Аватар"
-
-#~ msgid "Chats"
-#~ msgstr "Разговори"
-
-#~ msgid "Room"
-#~ msgstr "Стая"
-
-#~ msgid "Upload a new picture"
-#~ msgstr "Качи нова картинка"
-
-#~ msgid "Article"
-#~ msgstr "Статия"
-
-#~ msgid "Video & Voice"
-#~ msgstr "Видео и глас"
-
-#~ msgid "Configure the default devices used by Movim"
-#~ msgstr "Настройка на подразбиращите се устройства ползвани от Movim"
-
-#~ msgid "Microphone"
-#~ msgstr "Микрофон"
-
-#~ msgid "Camera"
-#~ msgstr "Камера"

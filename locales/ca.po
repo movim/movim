@@ -120,7 +120,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-07 18:24+0200\n"
+"POT-Creation-Date: 2025-07-11 10:57+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: T3rr0rz0n3 <zagur@voidnull.es>, 2019\n"
 "Language-Team: Catalan (http://app.transifex.com/movim/movim/language/ca/)\n"
@@ -196,9 +196,8 @@ msgid "Delete your account"
 msgstr "Esborra el teu compte"
 
 #: [account]delete_text
-#, fuzzy
 msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts, and publications)."
-msgstr "Eliminaràs el teu compte XMPP i tota la informació relacionada (perfil, contactes i publicacions)."
+msgstr ""
 
 #: [account]delete_text_confirm
 msgid "Type your full username"
@@ -217,14 +216,12 @@ msgid "Leave this instance"
 msgstr "Sortir d'aquesta instància"
 
 #: [account]clear_text
-#, fuzzy
 msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts, and publications)."
-msgstr "Esborraràs tota la informació relativa al teu compte en aquesta instància de Movim (Perfil, contactes i publicacions)"
+msgstr ""
 
 #: [account]clear_text_confirm
-#, fuzzy
 msgid "This action will not delete your account but will disconnect you from Movim."
-msgstr "Aquesta acció no esborrà el seu compte, però el desconnectarà d'aquesta instància"
+msgstr ""
 
 #: [account]delete_bundle_title
 msgid "OMEMO Key deletion"
@@ -339,23 +336,20 @@ msgid "Remove the XMPP registration flow and buttons from the interface"
 msgstr ""
 
 #: [whitelist]title
-#, fuzzy
 msgid "Allowed XMPP Servers"
-msgstr "Servidors XMPP de llistes blanques"
+msgstr ""
 
 #: [whitelist]info1
-#, fuzzy
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name(s) here, with comma (ex: movim.eu,jabber.fr)"
-msgstr "Si vols especificar la llista de servidors XMPP autoritzats en el teu pod de Movim i prohibir la connexió a tota la resta introdueix el nom de domini aquí, amb coma (ex: movim.eu,jabber.fr)"
+msgstr ""
 
 #: [whitelist]info2
 msgid "Leave this field blank if you allow the access to all the XMPP accounts."
 msgstr "Deixa en aquest camp en blanc si permets la connexió a tots els comptes XMPP."
 
 #: [whitelist]label
-#, fuzzy
 msgid "List of allowed XMPP servers"
-msgstr "Llistat dels servidors XMPP en llista blanca"
+msgstr ""
 
 #: [information]title
 msgctxt "[information]title"
@@ -468,14 +462,12 @@ msgid "Profile Picture Updated"
 msgstr ""
 
 #: [avatar]not_updated
-#, fuzzy
 msgid "Profile Picture Not Updated"
-msgstr "Avatar no actualitzat"
+msgstr ""
 
 #: [avatar]change
-#, fuzzy
 msgid "Change my profile picture"
-msgstr "Canvia la contrasenya"
+msgstr ""
 
 #: [banner]change
 msgid "Change my banner"
@@ -1425,9 +1417,8 @@ msgid "Group"
 msgstr "Grup"
 
 #: [delete]text
-#, fuzzy
 msgid "You are going to remove one of your contacts, please confirm your action"
-msgstr "Esborraràs un dels teus contactes, siusplau confirma la teva acció"
+msgstr ""
 
 #: [age]years
 msgid "%s years"
@@ -1466,9 +1457,8 @@ msgid "But this contact can still see if you are online"
 msgstr "Però aquest contacte encara pot veure si estas connectat"
 
 #: [subscription]nil
-#, fuzzy
 msgid "You are not subscribed to anyone"
-msgstr "No estàs subscrit a aquest contacte"
+msgstr ""
 
 #: [subscription]nil_button [button]invite
 msgid "Invite"
@@ -1891,14 +1881,6 @@ msgstr ""
 msgid "%s minutes"
 msgstr ""
 
-#: [post]public_title
-msgid "Publish this post publicly"
-msgstr ""
-
-#: [post]public_text
-msgid "This will allow anyone outside Movim to have access to your publication"
-msgstr ""
-
 #: [post]public_preview
 msgid "Preview URL: %s"
 msgstr ""
@@ -1980,9 +1962,8 @@ msgid "Commented"
 msgstr ""
 
 #: [post]subscription_required
-#, fuzzy
 msgid "You must be subscribed to %s to see this publication"
-msgstr "No estàs subscrit a aquest contacte"
+msgstr ""
 
 #: [hello]contact_post
 msgid "Contact post"
@@ -2120,6 +2101,14 @@ msgstr ""
 msgid "Your blog is only accessible to your subscribers. You can make it accessible to anyone in the settings page."
 msgstr ""
 
+#: [publish]publish_web_title
+msgid "Publish this post on your public blog"
+msgstr ""
+
+#: [publish]publish_web_text
+msgid "This will allow anyone outside Movim to have access to your publication"
+msgstr ""
+
 #: [publishhelp]title [page]help
 msgid "Help"
 msgstr ""
@@ -2177,33 +2166,28 @@ msgid "Add one by clicking on the add button."
 msgstr ""
 
 #: [rooms]type_room
-#, fuzzy
 msgid "Type of chatroom"
-msgstr "Afegeix la sala de xat"
+msgstr ""
 
 #: [rooms]default_room
-#, fuzzy
 msgid "Standard chatroom"
-msgstr "Afegeix la sala de xat"
+msgstr ""
 
 #: [rooms]gateway_room
-#, fuzzy
 msgid "Gateway chatroom"
-msgstr "Afegeix la sala de xat"
+msgstr ""
 
 #: [rooms]show_all
 msgid "Show all chatrooms"
 msgstr ""
 
 #: [rooms]hide_disconnected
-#, fuzzy
 msgid "Hide disconnected chatrooms"
-msgstr "Desconnectat de la sala de xat"
+msgstr ""
 
 #: [rooms]destroy_title
-#, fuzzy
 msgid "Destroy the chatroom"
-msgstr "Afegeix la sala de xat"
+msgstr ""
 
 #: [rooms]destroy_text
 msgid "Are you sure you want to permanently destroy the following chatroom?"
@@ -2244,9 +2228,8 @@ msgid "My Favorite Room"
 msgstr ""
 
 #: [chatrooms]bad_id
-#, fuzzy
 msgid "Bad Chatroom Address"
-msgstr "ID de la sala de xat incorrecta"
+msgstr ""
 
 #: [chatrooms]empty_name
 msgid "Empty name"
@@ -2257,19 +2240,16 @@ msgid "Permanently leave a chatroom"
 msgstr ""
 
 #: [chatrooms]remove_text
-#, fuzzy
 msgid "You are going to permanently leave the following chatroom. Please confirm your action."
-msgstr "Esborraràs un dels teus contactes, siusplau confirma la teva acció"
+msgstr ""
 
 #: [chatrooms]connected
-#, fuzzy
 msgid "Joined the chatroom"
-msgstr "Afegeix la sala de xat"
+msgstr ""
 
 #: [chatrooms]disconnected
-#, fuzzy
 msgid "Left the chatroom"
-msgstr "Afegeix la sala de xat"
+msgstr ""
 
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
@@ -2946,9 +2926,8 @@ msgid "Profile Picture"
 msgstr ""
 
 #: [page]chats
-#, fuzzy
 msgid "Messages"
-msgstr "Missatge publicat"
+msgstr ""
 
 #: [page]publish
 msgid "Publish"
@@ -3807,9 +3786,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "Avatar Updated"
-#~ msgstr "Avatar actualitzat"
-
-#~ msgid "No subscriptions"
-#~ msgstr "No hi ha subscripcions"

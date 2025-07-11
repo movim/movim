@@ -122,7 +122,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-07 18:24+0200\n"
+"POT-Creation-Date: 2025-07-11 10:57+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: revolt68 <ashrafnezhad@gmail.com>, 2021\n"
 "Language-Team: Persian (http://app.transifex.com/movim/movim/language/fa/)\n"
@@ -198,9 +198,8 @@ msgid "Delete your account"
 msgstr "حساب کاربریتان را حذف کنید"
 
 #: [account]delete_text
-#, fuzzy
 msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts, and publications)."
-msgstr "شما تمامی اطلاعات و اکانت مسنجر خود را و هر چه را که به آن وابسته هست را حذف خواهید کرد"
+msgstr ""
 
 #: [account]delete_text_confirm
 msgid "Type your full username"
@@ -219,14 +218,12 @@ msgid "Leave this instance"
 msgstr "ترک کردن این سرور"
 
 #: [account]clear_text
-#, fuzzy
 msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts, and publications)."
-msgstr "در این نمونه Movim (مشخصات ، مخاطبین و نشریات) تمام اطلاعات نسبی مرتبط با حساب خود را حذف خواهید کرد."
+msgstr ""
 
 #: [account]clear_text_confirm
-#, fuzzy
 msgid "This action will not delete your account but will disconnect you from Movim."
-msgstr "این عملیات اکانت کاربری شمارا حذف نمیکند، اما باعث میشود که از این سرور قطع شوید"
+msgstr ""
 
 #: [account]delete_bundle_title
 msgid "OMEMO Key deletion"
@@ -309,9 +306,8 @@ msgid "Restrict suggestions"
 msgstr "پیشنهادات را محدود کنید"
 
 #: [restrictsuggestions]text
-#, fuzzy
 msgid "Only suggest chatrooms, Communities, and other contents that are available on the user's XMPP server and related services"
-msgstr "فقط اتاق های گفتگو، انجمن ها و سایر مطالبی را که در سرور XMPP کاربر و سرویس های مرتبط در دسترس است، پیشنهاد دهید"
+msgstr ""
 
 #: [chatonly]title
 msgid "Chat only"
@@ -342,23 +338,20 @@ msgid "Remove the XMPP registration flow and buttons from the interface"
 msgstr "جریان و دکمه های ثبت نام XMPP را از رابط حذف کنید"
 
 #: [whitelist]title
-#, fuzzy
 msgid "Allowed XMPP Servers"
-msgstr "سرور های XMPP مجاز"
+msgstr ""
 
 #: [whitelist]info1
-#, fuzzy
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name(s) here, with comma (ex: movim.eu,jabber.fr)"
-msgstr "اگر می خواهید لیستی از سرورهای مجاز XMPP را در غرفه Movim خود مشخص کنید و اتصال به دیگران را ممنوع کنید ، لطفاً نام دامنه آنها را با کاما در اینجا قرار دهید (مانند: movim.eu، jabber.fr)"
+msgstr ""
 
 #: [whitelist]info2
 msgid "Leave this field blank if you allow the access to all the XMPP accounts."
 msgstr "اگر میخواهید به همه سرور ها اجازه بدهید اینجا را خالی بگذارید"
 
 #: [whitelist]label
-#, fuzzy
 msgid "List of allowed XMPP servers"
-msgstr "لیست سرورهای XMPP مجاز"
+msgstr ""
 
 #: [information]title
 msgctxt "[information]title"
@@ -471,14 +464,12 @@ msgid "Profile Picture Updated"
 msgstr ""
 
 #: [avatar]not_updated
-#, fuzzy
 msgid "Profile Picture Not Updated"
-msgstr "آواتار تغییر نیافت"
+msgstr ""
 
 #: [avatar]change
-#, fuzzy
 msgid "Change my profile picture"
-msgstr "تغییر رمز عبور"
+msgstr ""
 
 #: [banner]change
 msgid "Change my banner"
@@ -1372,9 +1363,8 @@ msgid "Links"
 msgstr ""
 
 #: [general]private_account_title
-#, fuzzy
 msgid "Your account is private"
-msgstr "این نوشته خصوصی است"
+msgstr ""
 
 #: [general]private_account_text
 msgid "Go to the Settings page to create a public blog and allow the other users to find you"
@@ -1429,9 +1419,8 @@ msgid "Group"
 msgstr "گروه"
 
 #: [delete]text
-#, fuzzy
 msgid "You are going to remove one of your contacts, please confirm your action"
-msgstr "شما درحال حذف این نوشته هستید ،لطفا تایید کنید"
+msgstr ""
 
 #: [age]years
 msgid "%s years"
@@ -1894,15 +1883,6 @@ msgstr ""
 msgid "%s minutes"
 msgstr ""
 
-#: [post]public_title
-#, fuzzy
-msgid "Publish this post publicly"
-msgstr "این نوشته عمومی است"
-
-#: [post]public_text
-msgid "This will allow anyone outside Movim to have access to your publication"
-msgstr ""
-
 #: [post]public_preview
 msgid "Preview URL: %s"
 msgstr ""
@@ -1928,9 +1908,8 @@ msgid "Nobody will be able to like or comment"
 msgstr ""
 
 #: [post]comments_disabled_yes
-#, fuzzy
 msgid "Comments disabled for this post"
-msgstr "نظر دادن خاموش است"
+msgstr ""
 
 #: [post]comments_disabled_no
 msgid "Comments enabled for this post"
@@ -2124,6 +2103,14 @@ msgstr ""
 msgid "Your blog is only accessible to your subscribers. You can make it accessible to anyone in the settings page."
 msgstr ""
 
+#: [publish]publish_web_title
+msgid "Publish this post on your public blog"
+msgstr ""
+
+#: [publish]publish_web_text
+msgid "This will allow anyone outside Movim to have access to your publication"
+msgstr ""
+
 #: [publishhelp]title [page]help
 msgid "Help"
 msgstr "کمک"
@@ -2181,34 +2168,28 @@ msgid "Add one by clicking on the add button."
 msgstr "با کلیک کردن روی دکمه اضافه کنید"
 
 #: [rooms]type_room
-#, fuzzy
 msgid "Type of chatroom"
-msgstr "ویرایش اتاق گپ"
+msgstr ""
 
 #: [rooms]default_room
-#, fuzzy
 msgid "Standard chatroom"
-msgstr "ویرایش اتاق گپ"
+msgstr ""
 
 #: [rooms]gateway_room
-#, fuzzy
 msgid "Gateway chatroom"
-msgstr "ویرایش اتاق گپ"
+msgstr ""
 
 #: [rooms]show_all
-#, fuzzy
 msgid "Show all chatrooms"
-msgstr "ویرایش اتاق گپ"
+msgstr ""
 
 #: [rooms]hide_disconnected
-#, fuzzy
 msgid "Hide disconnected chatrooms"
-msgstr "از اتاق گپ قطع شدید"
+msgstr ""
 
 #: [rooms]destroy_title
-#, fuzzy
 msgid "Destroy the chatroom"
-msgstr "اتاق گپ را اضافه کنید"
+msgstr ""
 
 #: [rooms]destroy_text
 msgid "Are you sure you want to permanently destroy the following chatroom?"
@@ -2241,18 +2222,16 @@ msgid "Chatrooms"
 msgstr "اتاق های چت"
 
 #: [chatrooms]id
-#, fuzzy
 msgid "Chatroom Address"
-msgstr "اتاق های چت"
+msgstr ""
 
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "اتاق مورد علاقه من"
 
 #: [chatrooms]bad_id
-#, fuzzy
 msgid "Bad Chatroom Address"
-msgstr "آیدی اتاق چت اشتباه است"
+msgstr ""
 
 #: [chatrooms]empty_name
 msgid "Empty name"
@@ -2263,19 +2242,16 @@ msgid "Permanently leave a chatroom"
 msgstr ""
 
 #: [chatrooms]remove_text
-#, fuzzy
 msgid "You are going to permanently leave the following chatroom. Please confirm your action."
-msgstr "شما درحال حذف این نوشته هستید ،لطفا تایید کنید"
+msgstr ""
 
 #: [chatrooms]connected
-#, fuzzy
 msgid "Joined the chatroom"
-msgstr "اتاق گپ را اضافه کنید"
+msgstr ""
 
 #: [chatrooms]disconnected
-#, fuzzy
 msgid "Left the chatroom"
-msgstr "اتاق گپ را اضافه کنید"
+msgstr ""
 
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
@@ -2296,9 +2272,8 @@ msgid "Please enter a valid nickname (2 to 40 characters)"
 msgstr ""
 
 #: [chatrooms]conflict
-#, fuzzy
 msgid "Nickname already taken"
-msgstr "نام کاربری قبلا استفاده شده است"
+msgstr ""
 
 #: [chatrooms]autojoin
 msgid "Join this chatroom on login"
@@ -2309,9 +2284,8 @@ msgid "Pin this chatroom"
 msgstr ""
 
 #: [chatrooms]destroyed
-#, fuzzy
 msgid "Chatroom destroyed"
-msgstr "اتاق های چت"
+msgstr ""
 
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
@@ -2362,9 +2336,8 @@ msgid "Bookmarks updated"
 msgstr "نشان ها بروز شد"
 
 #: [room]anonymous_title
-#, fuzzy
 msgid "Public Channel"
-msgstr "اتاق های گپ عمومی"
+msgstr ""
 
 #: [room]anonymous_text1
 msgid "You are currently logged as an anonymous user."
@@ -2951,14 +2924,12 @@ msgid "News"
 msgstr ""
 
 #: [page]avatar
-#, fuzzy
 msgid "Profile Picture"
-msgstr "پروفایل"
+msgstr ""
 
 #: [page]chats
-#, fuzzy
 msgid "Messages"
-msgstr "پیام منتشر شد"
+msgstr ""
 
 #: [page]publish
 msgid "Publish"
@@ -3817,15 +3788,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr "اینجا بنویسید"
-
-#~ msgid "Avatar Updated"
-#~ msgstr "آواتار تغییر یافت"
-
-#~ msgid "No subscriptions"
-#~ msgstr "بدون عضو"
-
-#~ msgid "Global search"
-#~ msgstr "سرچ کلی"
-
-#~ msgid "Chats"
-#~ msgstr "گپ ها"

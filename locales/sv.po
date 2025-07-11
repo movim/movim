@@ -121,7 +121,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-07 18:24+0200\n"
+"POT-Creation-Date: 2025-07-11 10:57+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Lyn, 2022\n"
 "Language-Team: Swedish (http://app.transifex.com/movim/movim/language/sv/)\n"
@@ -459,19 +459,16 @@ msgid "File"
 msgstr ""
 
 #: [avatar]updated
-#, fuzzy
 msgid "Profile Picture Updated"
-msgstr "Profil uppdaterad"
+msgstr ""
 
 #: [avatar]not_updated
-#, fuzzy
 msgid "Profile Picture Not Updated"
-msgstr "Profil uppdaterad"
+msgstr ""
 
 #: [avatar]change
-#, fuzzy
 msgid "Change my profile picture"
-msgstr "Ändra mitt lösenord"
+msgstr ""
 
 #: [banner]change
 msgid "Change my banner"
@@ -1885,14 +1882,6 @@ msgstr ""
 msgid "%s minutes"
 msgstr ""
 
-#: [post]public_title
-msgid "Publish this post publicly"
-msgstr ""
-
-#: [post]public_text
-msgid "This will allow anyone outside Movim to have access to your publication"
-msgstr ""
-
 #: [post]public_preview
 msgid "Preview URL: %s"
 msgstr ""
@@ -2111,6 +2100,14 @@ msgstr ""
 
 #: [publish]blog_presence
 msgid "Your blog is only accessible to your subscribers. You can make it accessible to anyone in the settings page."
+msgstr ""
+
+#: [publish]publish_web_title
+msgid "Publish this post on your public blog"
+msgstr ""
+
+#: [publish]publish_web_text
+msgid "This will allow anyone outside Movim to have access to your publication"
 msgstr ""
 
 #: [publishhelp]title [page]help
@@ -2926,9 +2923,8 @@ msgid "News"
 msgstr "Nyheter"
 
 #: [page]avatar
-#, fuzzy
 msgid "Profile Picture"
-msgstr "Profil uppdaterad"
+msgstr ""
 
 #: [page]chats
 msgid "Messages"
@@ -3791,12 +3787,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "No subscriptions"
-#~ msgstr "Ingen prenumerationer"
-
-#~ msgid "Global search"
-#~ msgstr "Global sökning"
-
-#~ msgid "Chats"
-#~ msgstr "Chats"

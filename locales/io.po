@@ -120,7 +120,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-07 18:24+0200\n"
+"POT-Creation-Date: 2025-07-11 10:57+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: William <fxinkeo@mail.com>, 2015\n"
 "Language-Team: Ido (http://app.transifex.com/movim/movim/language/io/)\n"
@@ -196,9 +196,8 @@ msgid "Delete your account"
 msgstr "Efacar vua uzanto"
 
 #: [account]delete_text
-#, fuzzy
 msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts, and publications)."
-msgstr "Vu efacus vua XMPP-uzanto ed omna di la relatanta informi ligita ad olu (profilo, kontakti e publikigi)."
+msgstr ""
 
 #: [account]delete_text_confirm
 msgid "Type your full username"
@@ -217,9 +216,8 @@ msgid "Leave this instance"
 msgstr ""
 
 #: [account]clear_text
-#, fuzzy
 msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts, and publications)."
-msgstr "Vu efacus vua XMPP-uzanto ed omna di la relatanta informi ligita ad olu (profilo, kontakti e publikigi)."
+msgstr ""
 
 #: [account]clear_text_confirm
 msgid "This action will not delete your account but will disconnect you from Movim."
@@ -468,9 +466,8 @@ msgid "Profile Picture Not Updated"
 msgstr ""
 
 #: [avatar]change
-#, fuzzy
 msgid "Change my profile picture"
-msgstr "Chanjar mea pasvorto"
+msgstr ""
 
 #: [banner]change
 msgid "Change my banner"
@@ -1884,14 +1881,6 @@ msgstr ""
 msgid "%s minutes"
 msgstr ""
 
-#: [post]public_title
-msgid "Publish this post publicly"
-msgstr ""
-
-#: [post]public_text
-msgid "This will allow anyone outside Movim to have access to your publication"
-msgstr ""
-
 #: [post]public_preview
 msgid "Preview URL: %s"
 msgstr ""
@@ -2110,6 +2099,14 @@ msgstr ""
 
 #: [publish]blog_presence
 msgid "Your blog is only accessible to your subscribers. You can make it accessible to anyone in the settings page."
+msgstr ""
+
+#: [publish]publish_web_title
+msgid "Publish this post on your public blog"
+msgstr ""
+
+#: [publish]publish_web_text
+msgid "This will allow anyone outside Movim to have access to your publication"
 msgstr ""
 
 #: [publishhelp]title [page]help
@@ -2929,9 +2926,8 @@ msgid "Profile Picture"
 msgstr ""
 
 #: [page]chats
-#, fuzzy
 msgid "Messages"
-msgstr "Mesajo publikesis"
+msgstr ""
 
 #: [page]publish
 msgid "Publish"
@@ -3790,6 +3786,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "Invalid JID"
-#~ msgstr "Nekorekta JID"

@@ -118,7 +118,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-07 18:24+0200\n"
+"POT-Creation-Date: 2025-07-11 10:57+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Occitan (post 1500) (http://app.transifex.com/movim/movim/language/oc/)\n"
@@ -334,23 +334,20 @@ msgid "Remove the XMPP registration flow and buttons from the interface"
 msgstr ""
 
 #: [whitelist]title
-#, fuzzy
 msgid "Allowed XMPP Servers"
-msgstr "Lista blancha dels servidors XMPP"
+msgstr ""
 
 #: [whitelist]info1
-#, fuzzy
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name(s) here, with comma (ex: movim.eu,jabber.fr)"
-msgstr "Si desiratz especificar una lista de servidors XMPP autorizats sus vòstre pòd Movim e interdire la connexion a tots los autres, especificatz si vos plai la lista de lor noms de domeni, separats per de las virgulas (ex: movim.eu, jabber.fr)"
+msgstr ""
 
 #: [whitelist]info2
 msgid "Leave this field blank if you allow the access to all the XMPP accounts."
 msgstr "Daissatz aqueste champ void se desiratz autorizar la connexion a totes los comptes XMPP."
 
 #: [whitelist]label
-#, fuzzy
 msgid "List of allowed XMPP servers"
-msgstr "Lista blancha dels servidors XMPP"
+msgstr ""
 
 #: [information]title
 msgctxt "[information]title"
@@ -459,14 +456,12 @@ msgid "File"
 msgstr ""
 
 #: [avatar]updated
-#, fuzzy
 msgid "Profile Picture Updated"
-msgstr "Perfil mes a jorn"
+msgstr ""
 
 #: [avatar]not_updated
-#, fuzzy
 msgid "Profile Picture Not Updated"
-msgstr "Perfil mes a jorn"
+msgstr ""
 
 #: [avatar]change
 msgid "Change my profile picture"
@@ -1884,14 +1879,6 @@ msgstr ""
 msgid "%s minutes"
 msgstr ""
 
-#: [post]public_title
-msgid "Publish this post publicly"
-msgstr ""
-
-#: [post]public_text
-msgid "This will allow anyone outside Movim to have access to your publication"
-msgstr ""
-
 #: [post]public_preview
 msgid "Preview URL: %s"
 msgstr ""
@@ -2112,6 +2099,14 @@ msgstr ""
 msgid "Your blog is only accessible to your subscribers. You can make it accessible to anyone in the settings page."
 msgstr ""
 
+#: [publish]publish_web_title
+msgid "Publish this post on your public blog"
+msgstr ""
+
+#: [publish]publish_web_text
+msgid "This will allow anyone outside Movim to have access to your publication"
+msgstr ""
+
 #: [publishhelp]title [page]help
 msgid "Help"
 msgstr "Ajuda"
@@ -2223,18 +2218,16 @@ msgid "Chatrooms"
 msgstr "Salons de discussion"
 
 #: [chatrooms]id
-#, fuzzy
 msgid "Chatroom Address"
-msgstr "Salons de discussion"
+msgstr ""
 
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr ""
 
 #: [chatrooms]bad_id
-#, fuzzy
 msgid "Bad Chatroom Address"
-msgstr "Salons de discussion"
+msgstr ""
 
 #: [chatrooms]empty_name
 msgid "Empty name"
@@ -2287,9 +2280,8 @@ msgid "Pin this chatroom"
 msgstr ""
 
 #: [chatrooms]destroyed
-#, fuzzy
 msgid "Chatroom destroyed"
-msgstr "Salons de discussion"
+msgstr ""
 
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
@@ -2928,14 +2920,12 @@ msgid "News"
 msgstr "Actualitats"
 
 #: [page]avatar
-#, fuzzy
 msgid "Profile Picture"
-msgstr "Perfil mes a jorn"
+msgstr ""
 
 #: [page]chats
-#, fuzzy
 msgid "Messages"
-msgstr "Messatge publicat"
+msgstr ""
 
 #: [page]publish
 msgid "Publish"
@@ -3794,9 +3784,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "Invalid JID"
-#~ msgstr "Identificant Jabber invalid"
-
-#~ msgid "Avatar"
-#~ msgstr "Avatar"

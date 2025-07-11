@@ -119,7 +119,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-07 18:24+0200\n"
+"POT-Creation-Date: 2025-07-11 10:57+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: akong <akong@aspa.idv.tw>, 2018\n"
 "Language-Team: Chinese (Taiwan) (http://app.transifex.com/movim/movim/language/zh_TW/)\n"
@@ -195,9 +195,8 @@ msgid "Delete your account"
 msgstr "刪除您的帳號"
 
 #: [account]delete_text
-#, fuzzy
 msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts, and publications)."
-msgstr "您將刪除您的 XMPP 帳號及所有連結在此的資訊 (個人資訊，連絡人及發佈的內容)。"
+msgstr ""
 
 #: [account]delete_text_confirm
 msgid "Type your full username"
@@ -216,14 +215,12 @@ msgid "Leave this instance"
 msgstr "離開這個範例"
 
 #: [account]clear_text
-#, fuzzy
 msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts, and publications)."
-msgstr "您將刪除在這個 Movim 範例中所有連結到您帳號的資訊 (個人資訊，連絡人及發佈的內容)。 "
+msgstr ""
 
 #: [account]clear_text_confirm
-#, fuzzy
 msgid "This action will not delete your account but will disconnect you from Movim."
-msgstr "這個動作不會刪除您的帳號但是會中斷您與此範例的連結。"
+msgstr ""
 
 #: [account]delete_bundle_title
 msgid "OMEMO Key deletion"
@@ -306,9 +303,8 @@ msgid "Restrict suggestions"
 msgstr "有限的建議"
 
 #: [restrictsuggestions]text
-#, fuzzy
 msgid "Only suggest chatrooms, Communities, and other contents that are available on the user's XMPP server and related services"
-msgstr "只有建議的聊天室，社群和其他內容可以使用在 XMPP 伺服器及相關服務"
+msgstr ""
 
 #: [chatonly]title
 msgid "Chat only"
@@ -339,23 +335,20 @@ msgid "Remove the XMPP registration flow and buttons from the interface"
 msgstr ""
 
 #: [whitelist]title
-#, fuzzy
 msgid "Allowed XMPP Servers"
-msgstr "XMPP 白名單伺服器"
+msgstr ""
 
 #: [whitelist]info1
-#, fuzzy
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name(s) here, with comma (ex: movim.eu,jabber.fr)"
-msgstr "假如您要指定以下已驗證的 XMPP 伺服器在您的 Movim pod 然後禁止連線到其他的伺服器，請在此輸入他們的網域名稱並用逗號分隔 (例如: movim.eu,jabber.fr)"
+msgstr ""
 
 #: [whitelist]info2
 msgid "Leave this field blank if you allow the access to all the XMPP accounts."
 msgstr "假如您允許存取所有 XMPP 帳號的話，保持欄位空白。"
 
 #: [whitelist]label
-#, fuzzy
 msgid "List of allowed XMPP servers"
-msgstr "XMPP 白名單伺服器列表"
+msgstr ""
 
 #: [information]title
 msgctxt "[information]title"
@@ -468,14 +461,12 @@ msgid "Profile Picture Updated"
 msgstr ""
 
 #: [avatar]not_updated
-#, fuzzy
 msgid "Profile Picture Not Updated"
-msgstr "圖示未更新"
+msgstr ""
 
 #: [avatar]change
-#, fuzzy
 msgid "Change my profile picture"
-msgstr "變更我的密碼"
+msgstr ""
 
 #: [banner]change
 msgid "Change my banner"
@@ -1621,9 +1612,8 @@ msgid "Empty Challenge from the server"
 msgstr ""
 
 #: [error]dns
-#, fuzzy
 msgid "XMPP Domain error, your account is not a valid XMPP Address"
-msgstr "XMPP網域錯誤, 不正確Jabber ID"
+msgstr ""
 
 #: [error]data_missings
 msgid "Some data are missing!"
@@ -1890,14 +1880,6 @@ msgstr ""
 msgid "%s minutes"
 msgstr ""
 
-#: [post]public_title
-msgid "Publish this post publicly"
-msgstr ""
-
-#: [post]public_text
-msgid "This will allow anyone outside Movim to have access to your publication"
-msgstr ""
-
 #: [post]public_preview
 msgid "Preview URL: %s"
 msgstr ""
@@ -2118,6 +2100,14 @@ msgstr ""
 msgid "Your blog is only accessible to your subscribers. You can make it accessible to anyone in the settings page."
 msgstr ""
 
+#: [publish]publish_web_title
+msgid "Publish this post on your public blog"
+msgstr ""
+
+#: [publish]publish_web_text
+msgid "This will allow anyone outside Movim to have access to your publication"
+msgstr ""
+
 #: [publishhelp]title [page]help
 msgid "Help"
 msgstr "求助"
@@ -2179,9 +2169,8 @@ msgid "Type of chatroom"
 msgstr ""
 
 #: [rooms]default_room
-#, fuzzy
 msgid "Standard chatroom"
-msgstr "錯誤的聊天室 ID"
+msgstr ""
 
 #: [rooms]gateway_room
 msgid "Gateway chatroom"
@@ -2192,14 +2181,12 @@ msgid "Show all chatrooms"
 msgstr ""
 
 #: [rooms]hide_disconnected
-#, fuzzy
 msgid "Hide disconnected chatrooms"
-msgstr "已中斷與聊天室的連線"
+msgstr ""
 
 #: [rooms]destroy_title
-#, fuzzy
 msgid "Destroy the chatroom"
-msgstr "已中斷與聊天室的連線"
+msgstr ""
 
 #: [rooms]destroy_text
 msgid "Are you sure you want to permanently destroy the following chatroom?"
@@ -2240,9 +2227,8 @@ msgid "My Favorite Room"
 msgstr ""
 
 #: [chatrooms]bad_id
-#, fuzzy
 msgid "Bad Chatroom Address"
-msgstr "錯誤的聊天室 ID"
+msgstr ""
 
 #: [chatrooms]empty_name
 msgid "Empty name"
@@ -2257,14 +2243,12 @@ msgid "You are going to permanently leave the following chatroom. Please confirm
 msgstr ""
 
 #: [chatrooms]connected
-#, fuzzy
 msgid "Joined the chatroom"
-msgstr "已連線到聊天室"
+msgstr ""
 
 #: [chatrooms]disconnected
-#, fuzzy
 msgid "Left the chatroom"
-msgstr "已連線到聊天室"
+msgstr ""
 
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
@@ -2937,14 +2921,12 @@ msgid "News"
 msgstr ""
 
 #: [page]avatar
-#, fuzzy
 msgid "Profile Picture"
-msgstr "個人檔案"
+msgstr ""
 
 #: [page]chats
-#, fuzzy
 msgid "Messages"
-msgstr "訊息已發佈"
+msgstr ""
 
 #: [page]publish
 msgid "Publish"
@@ -3803,12 +3785,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "Avatar Updated"
-#~ msgstr "圖示已更新"
-
-#~ msgid "Invalid JID"
-#~ msgstr "JID錯誤"
-
-#~ msgid "Avatar"
-#~ msgstr "圖像"

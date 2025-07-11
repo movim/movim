@@ -119,7 +119,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-07 18:24+0200\n"
+"POT-Creation-Date: 2025-07-11 10:57+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Irriep Nala Novram <per.morvan.bzh29@gmail.com>, 2017\n"
 "Language-Team: Breton (http://app.transifex.com/movim/movim/language/br/)\n"
@@ -195,9 +195,8 @@ msgid "Delete your account"
 msgstr "Dilemel ho kont"
 
 #: [account]delete_text
-#, fuzzy
 msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts, and publications)."
-msgstr "Emaoc'h o vont da zilemel ho kont XMPP hag an holl ditouroù liammet outañ (profil, darempredoù hag embannadennoù)."
+msgstr ""
 
 #: [account]delete_text_confirm
 msgid "Type your full username"
@@ -216,9 +215,8 @@ msgid "Leave this instance"
 msgstr "Kuitaat an instañs-mañ"
 
 #: [account]clear_text
-#, fuzzy
 msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts, and publications)."
-msgstr "Emaoc'h o vont da zilemel an holl ditouroù liammet gant ho kont war an instañs-mañ eus Movin (profil, darempredoù hag embannadennoù)."
+msgstr ""
 
 #: [account]clear_text_confirm
 msgid "This action will not delete your account but will disconnect you from Movim."
@@ -467,9 +465,8 @@ msgid "Profile Picture Not Updated"
 msgstr ""
 
 #: [avatar]change
-#, fuzzy
 msgid "Change my profile picture"
-msgstr "Kemm ma ger-tremen"
+msgstr ""
 
 #: [banner]change
 msgid "Change my banner"
@@ -1615,9 +1612,8 @@ msgid "Empty Challenge from the server"
 msgstr ""
 
 #: [error]dns
-#, fuzzy
 msgid "XMPP Domain error, your account is not a valid XMPP Address"
-msgstr "Kudenn Domani XMPP, ho kont n'eo ket un ID Jabber reizh"
+msgstr ""
 
 #: [error]data_missings
 msgid "Some data are missing!"
@@ -1884,14 +1880,6 @@ msgstr ""
 msgid "%s minutes"
 msgstr ""
 
-#: [post]public_title
-msgid "Publish this post publicly"
-msgstr ""
-
-#: [post]public_text
-msgid "This will allow anyone outside Movim to have access to your publication"
-msgstr ""
-
 #: [post]public_preview
 msgid "Preview URL: %s"
 msgstr ""
@@ -2110,6 +2098,14 @@ msgstr ""
 
 #: [publish]blog_presence
 msgid "Your blog is only accessible to your subscribers. You can make it accessible to anyone in the settings page."
+msgstr ""
+
+#: [publish]publish_web_title
+msgid "Publish this post on your public blog"
+msgstr ""
+
+#: [publish]publish_web_text
+msgid "This will allow anyone outside Movim to have access to your publication"
 msgstr ""
 
 #: [publishhelp]title [page]help
@@ -2925,9 +2921,8 @@ msgid "News"
 msgstr "Nevezenti"
 
 #: [page]avatar
-#, fuzzy
 msgid "Profile Picture"
-msgstr "Profil"
+msgstr ""
 
 #: [page]chats
 msgid "Messages"
@@ -3790,9 +3785,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "Invalid JID"
-#~ msgstr "JID direizh"
-
-#~ msgid "Avatar"
-#~ msgstr "Avatar"

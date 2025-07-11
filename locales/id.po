@@ -121,7 +121,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-07 18:24+0200\n"
+"POT-Creation-Date: 2025-07-11 10:57+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Fahmi <itsfahmiegerton@live.co.uk>, 2017\n"
 "Language-Team: Indonesian (http://app.transifex.com/movim/movim/language/id/)\n"
@@ -197,9 +197,8 @@ msgid "Delete your account"
 msgstr "Hapus akun anda"
 
 #: [account]delete_text
-#, fuzzy
 msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts, and publications)."
-msgstr "Anda akan menghapus akun XMPP anda dan semua yang informasi yang berhubungan dengannya (profil, kontak dan publikasi)"
+msgstr ""
 
 #: [account]delete_text_confirm
 msgid "Type your full username"
@@ -218,9 +217,8 @@ msgid "Leave this instance"
 msgstr ""
 
 #: [account]clear_text
-#, fuzzy
 msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts, and publications)."
-msgstr "Anda akan menghapus akun XMPP anda dan semua yang informasi yang berhubungan dengannya (profil, kontak dan publikasi)"
+msgstr ""
 
 #: [account]clear_text_confirm
 msgid "This action will not delete your account but will disconnect you from Movim."
@@ -339,23 +337,20 @@ msgid "Remove the XMPP registration flow and buttons from the interface"
 msgstr ""
 
 #: [whitelist]title
-#, fuzzy
 msgid "Allowed XMPP Servers"
-msgstr "Daftar putih server XMPP"
+msgstr ""
 
 #: [whitelist]info1
-#, fuzzy
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name(s) here, with comma (ex: movim.eu,jabber.fr)"
-msgstr "Jika Anda ingin menentukan daftar server XMPP ke pod Movim anda dan mengabaikan semua koneksi lainnya, mohon input nama domain tersebut disini, dengan koma (cth:movim.eu,jabber.fr)"
+msgstr ""
 
 #: [whitelist]info2
 msgid "Leave this field blank if you allow the access to all the XMPP accounts."
 msgstr "Biarkan kolom ini kosong jika anda mengizinkan akses ke semua akun XMPP"
 
 #: [whitelist]label
-#, fuzzy
 msgid "List of allowed XMPP servers"
-msgstr "Daftar putih server XMPP"
+msgstr ""
 
 #: [information]title
 msgctxt "[information]title"
@@ -464,19 +459,16 @@ msgid "File"
 msgstr "Berkas"
 
 #: [avatar]updated
-#, fuzzy
 msgid "Profile Picture Updated"
-msgstr "Profil di Perbarui"
+msgstr ""
 
 #: [avatar]not_updated
-#, fuzzy
 msgid "Profile Picture Not Updated"
-msgstr "Profil di Perbarui"
+msgstr ""
 
 #: [avatar]change
-#, fuzzy
 msgid "Change my profile picture"
-msgstr "Rubah kata sandi saya"
+msgstr ""
 
 #: [banner]change
 msgid "Change my banner"
@@ -1370,9 +1362,8 @@ msgid "Links"
 msgstr ""
 
 #: [general]private_account_title
-#, fuzzy
 msgid "Your account is private"
-msgstr "Post ini bersifat pribadi"
+msgstr ""
 
 #: [general]private_account_text
 msgid "Go to the Settings page to create a public blog and allow the other users to find you"
@@ -1427,9 +1418,8 @@ msgid "Group"
 msgstr "Grup"
 
 #: [delete]text
-#, fuzzy
 msgid "You are going to remove one of your contacts, please confirm your action"
-msgstr "Anda akan menghapus salah satu kontak anda, mohon konfirmasi aksi anda"
+msgstr ""
 
 #: [age]years
 msgid "%s years"
@@ -1468,18 +1458,16 @@ msgid "But this contact can still see if you are online"
 msgstr "Tetapi kontak ini tetap dapat melihat anda aktif"
 
 #: [subscription]nil
-#, fuzzy
 msgid "You are not subscribed to anyone"
-msgstr "Anda tidak berlangganan kontak ini"
+msgstr ""
 
 #: [subscription]nil_button [button]invite
 msgid "Invite"
 msgstr "Undang"
 
 #: [subscription]nil_text
-#, fuzzy
 msgid "This contact is in your contact list but you are not subscribed to each other"
-msgstr "Post baru saja diterbitkan di komunitas dimana anda belum berlangganan"
+msgstr ""
 
 #: [dictaphone]name
 msgid "Dictaphone"
@@ -1626,9 +1614,8 @@ msgid "Empty Challenge from the server"
 msgstr "Tantangan kosong dari server"
 
 #: [error]dns
-#, fuzzy
 msgid "XMPP Domain error, your account is not a valid XMPP Address"
-msgstr "Domain XMPP galat, akun anda bukanlah Jabber ID yang benar"
+msgstr ""
 
 #: [error]data_missings
 msgid "Some data are missing!"
@@ -1731,9 +1718,8 @@ msgid "No news yet…"
 msgstr "Belum ada berita..."
 
 #: [menu]empty
-#, fuzzy
 msgid "Welcome to your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
-msgstr "Selamat datang di beranda anda, disini anda dapat melihat semua postingan dari kontak anda dan dari komunitas anda berlangganan."
+msgstr ""
 
 #: [menu]mine
 msgid "My publications"
@@ -1896,15 +1882,6 @@ msgstr ""
 msgid "%s minutes"
 msgstr ""
 
-#: [post]public_title
-#, fuzzy
-msgid "Publish this post publicly"
-msgstr "Post ini publik"
-
-#: [post]public_text
-msgid "This will allow anyone outside Movim to have access to your publication"
-msgstr ""
-
 #: [post]public_preview
 msgid "Preview URL: %s"
 msgstr ""
@@ -1930,9 +1907,8 @@ msgid "Nobody will be able to like or comment"
 msgstr ""
 
 #: [post]comments_disabled_yes
-#, fuzzy
 msgid "Comments disabled for this post"
-msgstr "Komentar dinonaktifkan"
+msgstr ""
 
 #: [post]comments_disabled_no
 msgid "Comments enabled for this post"
@@ -1951,9 +1927,8 @@ msgid "Are you sure that you want to delete this comment?"
 msgstr ""
 
 #: [post]discover
-#, fuzzy
 msgid "Discover more posts on the communities page"
-msgstr "Jelajahi artikel lainnya di halaman komunitas"
+msgstr ""
 
 #: [post]more
 msgid "Read more"
@@ -1988,9 +1963,8 @@ msgid "Commented"
 msgstr ""
 
 #: [post]subscription_required
-#, fuzzy
 msgid "You must be subscribed to %s to see this publication"
-msgstr "Anda tidak berlangganan kontak ini"
+msgstr ""
 
 #: [hello]contact_post
 msgid "Contact post"
@@ -2128,6 +2102,14 @@ msgstr ""
 msgid "Your blog is only accessible to your subscribers. You can make it accessible to anyone in the settings page."
 msgstr ""
 
+#: [publish]publish_web_title
+msgid "Publish this post on your public blog"
+msgstr ""
+
+#: [publish]publish_web_text
+msgid "This will allow anyone outside Movim to have access to your publication"
+msgstr ""
+
 #: [publishhelp]title [page]help
 msgid "Help"
 msgstr "Bantuan"
@@ -2185,33 +2167,28 @@ msgid "Add one by clicking on the add button."
 msgstr ""
 
 #: [rooms]type_room
-#, fuzzy
 msgid "Type of chatroom"
-msgstr "Tambahkan ke chatroom"
+msgstr ""
 
 #: [rooms]default_room
-#, fuzzy
 msgid "Standard chatroom"
-msgstr "Tambahkan ke chatroom"
+msgstr ""
 
 #: [rooms]gateway_room
-#, fuzzy
 msgid "Gateway chatroom"
-msgstr "Tambahkan ke chatroom"
+msgstr ""
 
 #: [rooms]show_all
 msgid "Show all chatrooms"
 msgstr ""
 
 #: [rooms]hide_disconnected
-#, fuzzy
 msgid "Hide disconnected chatrooms"
-msgstr "Terputus dari chatroom"
+msgstr ""
 
 #: [rooms]destroy_title
-#, fuzzy
 msgid "Destroy the chatroom"
-msgstr "Tambahkan ke chatroom"
+msgstr ""
 
 #: [rooms]destroy_text
 msgid "Are you sure you want to permanently destroy the following chatroom?"
@@ -2252,9 +2229,8 @@ msgid "My Favorite Room"
 msgstr ""
 
 #: [chatrooms]bad_id
-#, fuzzy
 msgid "Bad Chatroom Address"
-msgstr "ID Chatroom Salah"
+msgstr ""
 
 #: [chatrooms]empty_name
 msgid "Empty name"
@@ -2265,19 +2241,16 @@ msgid "Permanently leave a chatroom"
 msgstr ""
 
 #: [chatrooms]remove_text
-#, fuzzy
 msgid "You are going to permanently leave the following chatroom. Please confirm your action."
-msgstr "Anda akan menghapus post ini, mohon konfirmasi aksi anda"
+msgstr ""
 
 #: [chatrooms]connected
-#, fuzzy
 msgid "Joined the chatroom"
-msgstr "Tambahkan ke chatroom"
+msgstr ""
 
 #: [chatrooms]disconnected
-#, fuzzy
 msgid "Left the chatroom"
-msgstr "Tambahkan ke chatroom"
+msgstr ""
 
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
@@ -2362,9 +2335,8 @@ msgid "Bookmarks updated"
 msgstr "Bookmark diperbarui"
 
 #: [room]anonymous_title
-#, fuzzy
 msgid "Public Channel"
-msgstr "Penerbit"
+msgstr ""
 
 #: [room]anonymous_text1
 msgid "You are currently logged as an anonymous user."
@@ -2951,14 +2923,12 @@ msgid "News"
 msgstr "Berita"
 
 #: [page]avatar
-#, fuzzy
 msgid "Profile Picture"
-msgstr "Profil di Perbarui"
+msgstr ""
 
 #: [page]chats
-#, fuzzy
 msgid "Messages"
-msgstr "Pesan Diterbitkan"
+msgstr ""
 
 #: [page]publish
 msgid "Publish"
@@ -3817,18 +3787,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "Avatar Updated"
-#~ msgstr "Avatar Diperbarui"
-
-#~ msgid "Avatar Not Updated"
-#~ msgstr "Avatar Belum Diperbarui"
-
-#~ msgid "No subscriptions"
-#~ msgstr "Tidak ada langganan"
-
-#~ msgid "Invalid JID"
-#~ msgstr "JID tidak valid"
-
-#~ msgid "Avatar"
-#~ msgstr "Avatar"

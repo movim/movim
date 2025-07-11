@@ -119,7 +119,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-07 18:24+0200\n"
+"POT-Creation-Date: 2025-07-11 10:57+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Mikael H <silfursun@gmail.com>, 2016\n"
 "Language-Team: Finnish (http://app.transifex.com/movim/movim/language/fi/)\n"
@@ -195,9 +195,8 @@ msgid "Delete your account"
 msgstr "Poista tilisi"
 
 #: [account]delete_text
-#, fuzzy
 msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts, and publications)."
-msgstr "Olet poistamassa XMPP-tiliäsi ja kaikkea siihen liittyvää tietoa (profiili, kontaktit ja julkaisut)."
+msgstr ""
 
 #: [account]delete_text_confirm
 msgid "Type your full username"
@@ -216,9 +215,8 @@ msgid "Leave this instance"
 msgstr ""
 
 #: [account]clear_text
-#, fuzzy
 msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts, and publications)."
-msgstr "Olet poistamassa XMPP-tiliäsi ja kaikkea siihen liittyvää tietoa (profiili, kontaktit ja julkaisut)."
+msgstr ""
 
 #: [account]clear_text_confirm
 msgid "This action will not delete your account but will disconnect you from Movim."
@@ -459,19 +457,16 @@ msgid "File"
 msgstr "Tiedosto"
 
 #: [avatar]updated
-#, fuzzy
 msgid "Profile Picture Updated"
-msgstr "Profiilia ei päivitetty"
+msgstr ""
 
 #: [avatar]not_updated
-#, fuzzy
 msgid "Profile Picture Not Updated"
-msgstr "Profiilia ei päivitetty"
+msgstr ""
 
 #: [avatar]change
-#, fuzzy
 msgid "Change my profile picture"
-msgstr "Vaihda salasana"
+msgstr ""
 
 #: [banner]change
 msgid "Change my banner"
@@ -1365,9 +1360,8 @@ msgid "Links"
 msgstr ""
 
 #: [general]private_account_title
-#, fuzzy
 msgid "Your account is private"
-msgstr "Tämä julkaisu on yksityinen"
+msgstr ""
 
 #: [general]private_account_text
 msgid "Go to the Settings page to create a public blog and allow the other users to find you"
@@ -1422,9 +1416,8 @@ msgid "Group"
 msgstr "Ryhmä"
 
 #: [delete]text
-#, fuzzy
 msgid "You are going to remove one of your contacts, please confirm your action"
-msgstr "Varmista kontaktin poistaminen"
+msgstr ""
 
 #: [age]years
 msgid "%s years"
@@ -1619,9 +1612,8 @@ msgid "Empty Challenge from the server"
 msgstr ""
 
 #: [error]dns
-#, fuzzy
 msgid "XMPP Domain error, your account is not a valid XMPP Address"
-msgstr "XMPP domain -virhe, käyttäjätilisi ei ollut oikea Jabber ID"
+msgstr ""
 
 #: [error]data_missings
 msgid "Some data are missing!"
@@ -1888,15 +1880,6 @@ msgstr ""
 msgid "%s minutes"
 msgstr ""
 
-#: [post]public_title
-#, fuzzy
-msgid "Publish this post publicly"
-msgstr "Tämä julkaisu on julkinen"
-
-#: [post]public_text
-msgid "This will allow anyone outside Movim to have access to your publication"
-msgstr ""
-
 #: [post]public_preview
 msgid "Preview URL: %s"
 msgstr ""
@@ -1922,9 +1905,8 @@ msgid "Nobody will be able to like or comment"
 msgstr ""
 
 #: [post]comments_disabled_yes
-#, fuzzy
 msgid "Comments disabled for this post"
-msgstr "Kommentit pois käytöstä"
+msgstr ""
 
 #: [post]comments_disabled_no
 msgid "Comments enabled for this post"
@@ -2118,6 +2100,14 @@ msgstr ""
 msgid "Your blog is only accessible to your subscribers. You can make it accessible to anyone in the settings page."
 msgstr ""
 
+#: [publish]publish_web_title
+msgid "Publish this post on your public blog"
+msgstr ""
+
+#: [publish]publish_web_text
+msgid "This will allow anyone outside Movim to have access to your publication"
+msgstr ""
+
 #: [publishhelp]title [page]help
 msgid "Help"
 msgstr "Ohje"
@@ -2179,28 +2169,24 @@ msgid "Type of chatroom"
 msgstr ""
 
 #: [rooms]default_room
-#, fuzzy
 msgid "Standard chatroom"
-msgstr "Huono keskusteluhuoneen ID"
+msgstr ""
 
 #: [rooms]gateway_room
 msgid "Gateway chatroom"
 msgstr ""
 
 #: [rooms]show_all
-#, fuzzy
 msgid "Show all chatrooms"
-msgstr "Julkinen keskusteluhuone"
+msgstr ""
 
 #: [rooms]hide_disconnected
-#, fuzzy
 msgid "Hide disconnected chatrooms"
-msgstr "Yhdistetty keskusteluhuoneeseen katkaistu"
+msgstr ""
 
 #: [rooms]destroy_title
-#, fuzzy
 msgid "Destroy the chatroom"
-msgstr "Yhdistetty keskusteluhuoneeseen katkaistu"
+msgstr ""
 
 #: [rooms]destroy_text
 msgid "Are you sure you want to permanently destroy the following chatroom?"
@@ -2233,18 +2219,16 @@ msgid "Chatrooms"
 msgstr "Keskusteluhuoneet"
 
 #: [chatrooms]id
-#, fuzzy
 msgid "Chatroom Address"
-msgstr "Keskusteluhuoneet"
+msgstr ""
 
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "Lempihuoneeni"
 
 #: [chatrooms]bad_id
-#, fuzzy
 msgid "Bad Chatroom Address"
-msgstr "Huono keskusteluhuoneen ID"
+msgstr ""
 
 #: [chatrooms]empty_name
 msgid "Empty name"
@@ -2255,19 +2239,16 @@ msgid "Permanently leave a chatroom"
 msgstr ""
 
 #: [chatrooms]remove_text
-#, fuzzy
 msgid "You are going to permanently leave the following chatroom. Please confirm your action."
-msgstr "Varmista julkaisun poistaminen"
+msgstr ""
 
 #: [chatrooms]connected
-#, fuzzy
 msgid "Joined the chatroom"
-msgstr "Yhdistetty keskusteluhuoneeseen"
+msgstr ""
 
 #: [chatrooms]disconnected
-#, fuzzy
 msgid "Left the chatroom"
-msgstr "Yhdistetty keskusteluhuoneeseen"
+msgstr ""
 
 #: [chatrooms]users
 msgctxt "[chatrooms]users"
@@ -2284,14 +2265,12 @@ msgid "Banned"
 msgstr ""
 
 #: [chatrooms]bad_nickname
-#, fuzzy
 msgid "Please enter a valid nickname (2 to 40 characters)"
-msgstr "Anna toimiva nimimerkki (2-40 merkkiä)"
+msgstr ""
 
 #: [chatrooms]conflict
-#, fuzzy
 msgid "Nickname already taken"
-msgstr "Nimimerkki on jo käytössä"
+msgstr ""
 
 #: [chatrooms]autojoin
 msgid "Join this chatroom on login"
@@ -2302,9 +2281,8 @@ msgid "Pin this chatroom"
 msgstr ""
 
 #: [chatrooms]destroyed
-#, fuzzy
 msgid "Chatroom destroyed"
-msgstr "Keskusteluhuoneet"
+msgstr ""
 
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
@@ -2355,9 +2333,8 @@ msgid "Bookmarks updated"
 msgstr "Kirjanmerkit päivitetty"
 
 #: [room]anonymous_title
-#, fuzzy
 msgid "Public Channel"
-msgstr "Julkinen keskusteluhuone"
+msgstr ""
 
 #: [room]anonymous_text1
 msgid "You are currently logged as an anonymous user."
@@ -2664,9 +2641,8 @@ msgid "Story deleted"
 msgstr ""
 
 #: [subscribe]info
-#, fuzzy
 msgid "Movim is a decentralized social network, you are invited to register on the following XMPP server(s)"
-msgstr "Movim on hajautettu sosiaalinen verkosto. Ennen rekisteröitymistä sinun pitää valita serveri jolle rekisteröidyt."
+msgstr ""
 
 #: [feed]title
 msgid "%s’s feed"
@@ -2945,14 +2921,12 @@ msgid "News"
 msgstr "Uutiset"
 
 #: [page]avatar
-#, fuzzy
 msgid "Profile Picture"
-msgstr "Profiili päivitetty"
+msgstr ""
 
 #: [page]chats
-#, fuzzy
 msgid "Messages"
-msgstr "Viesti julkaistu"
+msgstr ""
 
 #: [page]publish
 msgid "Publish"
@@ -3811,21 +3785,3 @@ msgstr "API ei ole saatavilla, yritä myöhemmin uudelleen"
 #: [field]type_here
 msgid "Type here"
 msgstr "Kirjoita tähän"
-
-#~ msgid "Avatar Updated"
-#~ msgstr "Avatar päivitetty"
-
-#~ msgid "Avatar Not Updated"
-#~ msgstr "Avataria ei päivitetty"
-
-#~ msgid "Invalid JID"
-#~ msgstr "Väärä JID"
-
-#~ msgid "Avatar"
-#~ msgstr "Avatar"
-
-#~ msgid "Chats"
-#~ msgstr "Keskustelut"
-
-#~ msgid "Room"
-#~ msgstr "Huone"
