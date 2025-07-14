@@ -1,6 +1,6 @@
 <li>
     <span class="primary privacy"
-    title="{$c->__('post.public_title')}">
+    title="{$c->__('post.publish_web_title')}">
         <form>
             <div>
                 <div class="checkbox">

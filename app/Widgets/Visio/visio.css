@@ -354,6 +354,7 @@ body>#visio #participants:not(.active):has(.participant:nth-child(2)) .participa
     text-shadow: 0 0 1rem rgba(0, 0, 0, 0.85);
     font-size: 2rem;
     transition: opacity 0.5s ease-in-out, transform .3s cubic-bezier(.4, 0, .2, 1);
+    z-index: 1;
 }
 
 #visio .participant::after {
@@ -376,7 +377,7 @@ body>#visio #participants:not(.active):has(.participant:nth-child(2)) .participa
     display: none;
 }
 
-#visio .participant.video_off img.avatar {
+#visio .participant.video_off.screen_off img.avatar {
     opacity: 1;
     display: initial;
 }
