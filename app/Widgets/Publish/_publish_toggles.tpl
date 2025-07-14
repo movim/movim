@@ -1,6 +1,6 @@
 <li>
     <span class="primary privacy"
-    title="{$c->__('post.publish_web_title')}">
+    title="{$c->__('publish.web_title')}">
         <form>
             <div>
                 <div class="checkbox">
@@ -20,8 +20,8 @@
         </form>
     </span>
     <div>
-        <p>{$c->__('publish.publish_web_title')}</p>
-        <p>{$c->__('publish.publish_web_text')}</p>
+        <p>{$c->__('publish.web_title')}</p>
+        <p>{$c->__('publish.web_text')}</p>
         <span class="supporting line" id="publishopenlinkpreview"></span>
     </div>
 </li>

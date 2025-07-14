@@ -117,7 +117,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-11 10:57+0200\n"
+"POT-Creation-Date: 2025-07-14 21:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2158,11 +2158,11 @@ msgid ""
 "accessible to anyone in the settings page."
 msgstr ""
 
-#: [publish]publish_web_title
+#: [publish]web_title
 msgid "Publish this post on your public blog"
 msgstr ""
 
-#: [publish]publish_web_text
+#: [publish]web_text
 msgid "This will allow anyone outside Movim to have access to your publication"
 msgstr ""
 

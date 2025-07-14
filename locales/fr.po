@@ -128,7 +128,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-11 10:57+0200\n"
+"POT-Creation-Date: 2025-07-14 21:08+0200\n"
 "PO-Revision-Date: 2015-06-24 09:45+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>, 2015-2025\n"
 "Language-Team: French (France) (http://app.transifex.com/movim/movim/language/fr_FR/)\n"
@@ -2109,12 +2109,12 @@ msgstr "Vous n'êtes pas autorisé à publier ici"
 msgid "Your blog is only accessible to your subscribers. You can make it accessible to anyone in the settings page."
 msgstr "Votre blog n'est accessible qu'à vos contacts. Vous pouvez le rendre accessible à tous dans la configuration."
 
-#: [publish]publish_web_title
+#: [publish]web_title
 #, fuzzy
 msgid "Publish this post on your public blog"
 msgstr "Publier cet article publiquement"
 
-#: [publish]publish_web_text
+#: [publish]web_text
 msgid "This will allow anyone outside Movim to have access to your publication"
 msgstr "Vous allez autoriser l'accès à cet article à n'importe qui à l'extérieur de Movim"
 
