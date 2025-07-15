@@ -4,12 +4,15 @@ namespace App\Widgets\AdHoc;
 
 use App\Widgets\Dialog\Dialog;
 use App\Widgets\Toast\Toast;
+use Movim\Librairies\JingletoSDP;
+use Movim\Librairies\SDPtoJingle;
 use Moxl\Xec\Action\AdHoc\Get;
 use Moxl\Xec\Action\AdHoc\Command;
 use Moxl\Xec\Action\AdHoc\Submit;
 
 use Movim\Session;
 use Moxl\Xec\Payload\Packet;
+use stdClass;
 
 class AdHoc extends \Movim\Widget\Base
 {
@@ -77,6 +80,43 @@ class AdHoc extends \Movim\Widget\Base
             Toast::send($this->__('adhoc.completed'));
             return;
         }
+    }
+
+    public function ajaxSDPToJingle()
+    {
+        $view = $this->tpl();
+        Dialog::fill($view->draw('_adhoc_sdptojingle'), true);
+    }
+
+    public function ajaxSDPToJingleSubmit(stdClass $data)
+    {
+        $stj = new SDPtoJingle($data->sdp->value, 'SID');
+
+        $view = $this->tpl();
+        $view->assign('jingle', $stj->generate());
+        Dialog::fill($view->draw('_adhoc_sdptojingle_result'), true);
+    }
+
+    public function ajaxJingleToSDP()
+    {
+        $view = $this->tpl();
+        Dialog::fill($view->draw('_adhoc_jingletosdp'), true);
+    }
+
+    public function ajaxJingleToSDPSubmit(stdClass $data)
+    {
+        $xml = simplexml_load_string($data->jingle->value);
+
+        if ($xml == false) {
+            Toast::send($this->__('error.oops'));
+            return;
+        }
+
+        $jts = new JingletoSDP($xml);
+
+        $view = $this->tpl();
+        $view->assign('sdp', $jts->generate());
+        Dialog::fill($view->draw('_adhoc_jingletosdp_result'), true);
     }
 
     public function onCommandError(Packet $packet)

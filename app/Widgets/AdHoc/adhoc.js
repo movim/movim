@@ -8,7 +8,7 @@ var AdHoc = {
         }
     },
     refresh: function () {
-        var items = document.querySelectorAll('.adhoc_widget li:not(.subheader)');
+        var items = document.querySelectorAll('.adhoc_widget .actions li:not(.subheader)');
         var i = 0;
 
         while (i < items.length) {
@@ -30,7 +30,10 @@ var AdHoc = {
         }
 
         var form = document.querySelector('#dialog form[name=command]');
-        form.addEventListener('input', e => AdHoc.checkFormValidity());
+
+        if (form) {
+            form.addEventListener('input', e => AdHoc.checkFormValidity());
+        }
 
         AdHoc.checkFormValidity();
     },
