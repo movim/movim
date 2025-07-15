@@ -110,7 +110,8 @@ var Rooms = {
         var parent = document.querySelector('#rooms').parentElement;
 
         parent.onscroll = e => {
-            if (e.target.scrollTop + 5 >= document.querySelector('#rooms').offsetTop) {
+            if ((e.target.scrollHeight <= e.target.scrollTop + e.target.offsetHeight + 1)
+                || (e.target.scrollTop + 5 >= document.querySelector('#rooms').offsetTop)) {
                 Rooms.scrollToRooms();
             } else {
                 Rooms.scrollToChats();
