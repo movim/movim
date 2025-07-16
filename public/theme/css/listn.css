@@ -146,8 +146,8 @@ ul.list li>span.thumb {
     flex: 0 0 7rem;
 }
 
-ul.list li:not(.subheader) .control:not(.bubble):not(.thumb),
-ul.list li:not(.subheader) .primary:not(.bubble):not(.thumb):not(.small) {
+ul.list:not(.context_menu) li:not(.subheader) .control:not(.bubble):not(.thumb),
+ul.list:not(.context_menu) li:not(.subheader) .primary:not(.bubble):not(.thumb):not(.small) {
     padding: 0.25rem 0.5rem;
 }
 
