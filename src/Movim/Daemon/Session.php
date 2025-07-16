@@ -28,13 +28,9 @@ class Session
     public bool $registered = false;
     public bool $started = false;
 
-
-
     private $state;
-
     private $verbose;
     private $debug;
-
     private $language;
 
     public function __construct(
