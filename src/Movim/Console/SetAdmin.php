@@ -45,11 +45,11 @@ class SetAdmin extends Command
 
             $user->save();
 
-            return 0;
+            return Command::SUCCESS;
         }
 
         $output->writeln('<error>User '.$input->getArgument('jid').' not found</error>');
 
-        return 1;
+        return Command::FAILURE;
     }
 }

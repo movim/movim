@@ -18,6 +18,7 @@ v0.31 (master)
 * Add a placeholder if a Post is not accessible without a contact subscription
 * Add a little helper in the Publish widget when publishing publicly and the blog is configured on presence
 * Add SDP to Jingle and Jingle to SDP debug tool
+* Check the required PHP extensions before starting the daemon
 
 v0.30.1
 ---------------------------

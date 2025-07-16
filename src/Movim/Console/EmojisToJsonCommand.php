@@ -70,6 +70,6 @@ class EmojisToJsonCommand extends Command
 
         $output->writeln('<info>'.\count($json).' emojis saved</info>');
 
-        return 0;
+        return Command::SUCCESS;
     }
 }

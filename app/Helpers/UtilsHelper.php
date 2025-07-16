@@ -195,6 +195,43 @@ function resolveInfos($postCollection)
 }
 
 /**
+ * Get required PHP extensions
+ */
+function requiredExtensions(): array
+{
+    $extensions = [
+        'curl',
+        'dom',
+        'imagick',
+        'mbstring',
+        'openssl',
+        'pdo',
+        'simplexml',
+        'xml',
+    ];
+
+    // ext-json is included in PHP since 8.0
+    if (version_compare(PHP_VERSION, '8.0.0') < 0) {
+        array_push($extensions, 'json');
+    }
+
+    if (config('database.driver') == 'mysql') {
+        array_push($extensions, 'mysqlnd');
+        array_push($extensions, 'mysqli');
+        array_push($extensions, 'pdo_mysql');
+    } else {
+        array_push($extensions, 'pdo_pgsql');
+    }
+
+    // Optional extension
+    if (extension_loaded('bcmath')) {
+        array_push($extensions, 'bcmath');
+    }
+
+    return $extensions;
+}
+
+/**
  *  Form to array
  */
 function formToArray(stdClass $form): array

@@ -31,6 +31,6 @@ class ClearTemplatesCache extends Command
 
         $output->writeln('<info>Template cache cleared</info>');
 
-        return 0;
+        return Command::SUCCESS;
     }
 }

@@ -66,6 +66,6 @@ class CompileStickers extends Command
         }
 
         $output->writeln('<info>' . $count . ' stickers compiled</info>');
-        return 0;
+        return Command::SUCCESS;
     }
 }

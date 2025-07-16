@@ -28,23 +28,14 @@ class Session
     public bool $registered = false;
     public bool $started = false;
 
+
+
     private $state;
 
     private $verbose;
     private $debug;
 
     private $language;
-
-    private $extensions = [
-        'curl',
-        'dom',
-        'imagick',
-        'mbstring',
-        'openssl',
-        'pdo',
-        'simplexml',
-        'xml',
-    ];
 
     public function __construct(
         LoopInterface $loop,
@@ -122,25 +113,7 @@ class Session
         // Only load the required extensions
         $configuration = '-n ';
 
-        // ext-json is included in PHP since 8.0
-        if (version_compare(PHP_VERSION, '8.0.0') < 0) {
-            array_push($this->extensions, 'json');
-        }
-
-        if (config('database.driver') == 'mysql') {
-            array_push($this->extensions, 'mysqlnd');
-            array_push($this->extensions, 'mysqli');
-            array_push($this->extensions, 'pdo_mysql');
-        } else {
-            array_push($this->extensions, 'pdo_pgsql');
-        }
-
-        // Optional extension
-        if (extension_loaded('bcmath')) {
-            array_push($this->extensions, 'bcmath');
-        }
-
-        foreach ($this->extensions as $extension) {
+        foreach (requiredExtensions() as $extension) {
             $configuration .= '-dextension=' . $extension . '.so ';
         }
 

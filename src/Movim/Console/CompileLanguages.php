@@ -30,6 +30,6 @@ class CompileLanguages extends Command
         $locale->compilePos();
         $output->writeln('<info>Compiled po files</info>');
 
-        return 0;
+        return Command::SUCCESS;
     }
 }

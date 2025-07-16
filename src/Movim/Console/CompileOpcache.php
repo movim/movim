@@ -44,6 +44,6 @@ class CompileOpcache extends Command
             $output->writeln('Set opcache.enable=1 and opcache.enable_cli=1');
         }
 
-        return 0;
+        return Command::SUCCESS;
     }
 }

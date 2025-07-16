@@ -56,6 +56,13 @@ class DaemonCommand extends Command
             exit;
         }
 
+        foreach (requiredExtensions() as $extension) {
+            if (!extension_loaded($extension)) {
+                $output->writeln('<comment>The following PHP extension is missing: ' . $extension . '</comment>');
+                return Command::FAILURE;
+            }
+        }
+
         $loop = Loop::get();
 
         if (config('daemon.url')) {
@@ -134,6 +141,6 @@ class DaemonCommand extends Command
 
         (new IoServer($app, $socket, $loop))->run();
 
-        return 0;
+        return Command::SUCCESS;
     }
 }
