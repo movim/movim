@@ -1,6 +1,6 @@
 <form enctype="multipart/form-data" method="post" action="index.php" name="general" onchange="Config_ajaxSubmit(MovimUtils.formToJson('general'));">
     <div class="block">
-        <ul class="list flex ">
+        <ul class="list">
             <li class="subheader large block"><div><p>{$c->__('config.audio_title')}</p></div></li>
             <li>
                 <span class="primary icon gray">

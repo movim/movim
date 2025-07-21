@@ -109,7 +109,7 @@ class Account extends \Movim\Widget\Base
     {
         $p1 = $form->password->value;
         $p2 = $form->password_confirmation->value;
-\logDebug($p1);
+
         if ($p1 == $p2) {
             $arr = explodeJid($this->user->id);
 

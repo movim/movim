@@ -380,9 +380,9 @@ input[type=button]:hover {
     cursor: pointer;
 }
 
-.button.flat:hover,
-.button.flat.on,
-input[type=button].flat:hover {
+.button.flat:not(.color):hover,
+.button.flat:not(.color).on,
+input[type=button].flat:not(.color):hover {
     background-color: rgba(var(--movim-element-action), 0.2);
 }
 
@@ -391,8 +391,8 @@ input[type=button]:focus {
     border: 0;
 }
 
-.button.flat:focus,
-input[type=button].flat:focus {
+.button.flat:not(.color):focus,
+input[type=button].flat:not(.color):focus {
     background-color: rgba(var(--movim-element-action), 0.4);
     font-variation-settings: 'FILL' 1;
 }
