@@ -20,6 +20,7 @@ v0.31 (master)
 * Add SDP to Jingle and Jingle to SDP debug tool
 * Check the required PHP extensions before starting the daemon
 * Fix #1452 Use a textNode to change password to automatically escape the characters
+* Remove the Location widget
 
 v0.30.1
 ---------------------------

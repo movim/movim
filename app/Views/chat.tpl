@@ -5,7 +5,6 @@
 <?php $this->widget('ContactActions');?>
 <?php $this->widget('AdHoc');?>
 <?php if(\App\User::me()->hasOMEMO()) $this->widget('ChatOmemo');?>
-<?php $this->widget('Location');?>
 
 <nav>
     <?php $this->widget('Presence');?>

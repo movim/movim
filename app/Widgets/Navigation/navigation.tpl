@@ -92,17 +92,6 @@
         </div>
     </li>
 
-    <li onclick="Location_ajaxToggle()"
-        title="{$c->__('location.title')}"
-        id="location_widget">
-        <span class="primary icon disabled">
-            <i class="material-symbols">place</i>
-        </span>
-        <div>
-            <p class="normal line">{$c->__('location.title')}</p>
-        </div>
-    </li>
-
     {if="$c->getUser()->hasPubsub()"}
         <li onclick="MovimUtils.reload('{$c->route('subscriptions')}')"
             title="{$c->__('communityaffiliation.subscriptions')}"

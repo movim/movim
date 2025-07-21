@@ -6,7 +6,6 @@
 <?php $this->widget('SendTo');?>
 <?php $this->widget('Tabs');?>
 <?php if(\App\User::me()->hasOMEMO()) $this->widget('ChatOmemo');?>
-<?php $this->widget('Location');?>
 
 <nav>
     <?php $this->widget('Presence');?>

@@ -272,7 +272,6 @@ class Bootstrap
             'Dialog',
             'Drawer',
             'EmojisConfig',
-            'Location',
             'Login',
             'Menu',
             'Navigation',
