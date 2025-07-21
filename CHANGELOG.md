@@ -19,6 +19,7 @@ v0.31 (master)
 * Add a little helper in the Publish widget when publishing publicly and the blog is configured on presence
 * Add SDP to Jingle and Jingle to SDP debug tool
 * Check the required PHP extensions before starting the daemon
+* Fix #1452 Use a textNode to change password to automatically escape the characters
 
 v0.30.1
 ---------------------------
