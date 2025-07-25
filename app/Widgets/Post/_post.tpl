@@ -219,12 +219,15 @@
     {/if}
 
     {if="$post->openlink && $post->openlink->url && (!defined('BASE_HOST') || $post->openlink->url.host != BASE_HOST)"}
-        <ul class="list middle flex active">
-            <li class="block large" onclick="MovimUtils.openInNew('{$post->openlink->href}')">
+        <ul class="list middle flex">
+            <li class="block large">
                 <span class="primary icon gray">
                     <i class="material-symbols">wifi_tethering</i>
                 </span>
-                <span class="control icon gray">
+                <span class="control icon gray active" onclick="Preview.copyToClipboard('{$post->openlink->href}')">
+                    <i class="material-symbols">content_copy</i>
+                </span>
+                <span class="control icon gray active" onclick="MovimUtils.openInNew('{$post->openlink->href}')">
                     <i class="material-symbols">open_in_new</i>
                 </span>
                 <div>
