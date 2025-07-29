@@ -106,7 +106,7 @@ class Utils
                 if ($value === 'false') {
                     $val->nodeValue = 'false';
                 } elseif (empty($val->nodeValue)) {
-                    $val->nodeValue = trim($value);
+                    $val->appendChild($x->ownerDocument->createTextNode(trim($value)));
                 }
             }
 
