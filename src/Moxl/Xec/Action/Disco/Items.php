@@ -5,6 +5,7 @@ namespace Moxl\Xec\Action\Disco;
 use Moxl\Xec\Action;
 use Moxl\Xec\Action\Disco\Request;
 use Moxl\Stanza\Disco;
+use Moxl\Xec\Action\Pubsub\GetItem;
 
 class Items extends Action
 {
@@ -38,22 +39,43 @@ class Items extends Action
             }
 
             $parent = \App\Info::where('server', $this->_to)
-                             ->where('node', '')
-                             ->first();
+                ->where('node', '')
+                ->first();
+
+            $nodes = \App\Info::where('server', $this->_to)
+                ->whereNot('node', '')
+                ->get()
+                ->keyBy('node');
+
             $counter = 0;
 
             foreach ($stanza->query->item as $item) {
                 if ($this->_save) {
                     if ($item->attributes()->node) {
-                        $info = \App\Info::firstOrNew([
-                            'server' => $this->_to,
-                            'node' => (string)$item->attributes()->node
-                        ]);
+                        $info = $nodes->get((string)$item->attributes()->node)
+                            ?? new \App\Info([
+                                'server' => $this->_to,
+                                'node' => (string)$item->attributes()->node
+                            ]);
 
                         if ($parent && $parent->isPubsubService()) {
                             $info->setPubsubItem($item);
 
                             if (!$info->isMicroblogCommentsNode()) {
+                                if (!$info->pubsubaccessmodel) {
+                                    $r = new Request;
+                                    $r->setTo($info->server)
+                                        ->setNode($info->node)
+                                        ->setParent($this->_to)
+                                        ->request();
+
+                                    $g = new GetItem;
+                                    $g->setTo($info->server)
+                                        ->setNode($info->node)
+                                        ->setId('urn:xmpp:avatar:metadata')
+                                        ->request();
+                                }
+
                                 $counter++;
                                 $info->save();
                             }
@@ -61,8 +83,8 @@ class Items extends Action
                     } elseif ($parent && $parent->identities->contains('category', 'server')) {
                         $r = new Request;
                         $r->setTo((string)$item->attributes()->jid)
-                          ->setParent($this->_to)
-                          ->request();
+                            ->setParent($this->_to)
+                            ->request();
                     }
                 }
             }

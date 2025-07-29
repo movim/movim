@@ -3,6 +3,7 @@
         {if="$community->subscription == 'subscribed'"}action{/if}
         {if="$community->occupants > 0"}condensed{/if}
         "
+    id="{$id}"
     onclick="MovimUtils.reload('{$c->route('community', [$community->server, $community->node])}')"
     title="{$community->server} - {$community->node}"
 >
