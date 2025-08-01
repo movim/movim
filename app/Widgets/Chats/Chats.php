@@ -182,8 +182,9 @@ class Chats extends Base
             if ($message && $message->published) {
                 $g->setStart(strtotime($message->published) + 1);
             } else {
-                // We only sync up the last month the first time
-                $g->setStart(\Carbon\Carbon::now()->subMonth()->timestamp);
+                // We sync up the last 500 messages at first
+                $g->setLimit(500);
+                $g->setBefore('');
             }
 
             $g->request();

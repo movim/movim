@@ -9,6 +9,7 @@ use Moxl\Xec\Action\Muc\GetConfig;
 use Moxl\Xec\Action\Muc\SetConfig;
 
 use App\Contact;
+use App\MAMEarliest;
 use App\Message;
 use App\MessageFile;
 use App\MessageOmemoHeader;
@@ -21,6 +22,7 @@ use App\Widgets\Dictaphone\Dictaphone;
 use App\Widgets\Notif\Notif;
 use App\Widgets\Post\Post;
 use App\Widgets\Toast\Toast;
+use Carbon\Carbon;
 use Moxl\Xec\Action\BOB\Request;
 use Moxl\Xec\Action\Disco\Request as DiscoRequest;
 
@@ -39,12 +41,23 @@ class Chat extends \Movim\Widget\Base
     private $_pagination = 50;
     private $_wrapper = [];
     private $_messageTypes = [
-        'chat', 'headline', 'invitation',
-        'jingle_incoming', 'jingle_outgoing', 'jingle_end', 'jingle_retract', 'jingle_reject'
+        'chat',
+        'headline',
+        'invitation',
+        'jingle_incoming',
+        'jingle_outgoing',
+        'jingle_end',
+        'jingle_retract',
+        'jingle_reject'
     ];
     private $_messageTypesMuc = [
-        'groupchat', 'muji_propose', 'muji_retract',
-        'muc_owner', 'muc_admin', 'muc_outcast', 'muc_member'
+        'groupchat',
+        'muji_propose',
+        'muji_retract',
+        'muc_owner',
+        'muc_admin',
+        'muc_outcast',
+        'muc_member'
     ];
     private $_mucPresences = [];
 
@@ -177,9 +190,17 @@ class Chat extends \Movim\Widget\Base
 
         if (
             $message->isEmpty() && !in_array($message->type, [
-                'jingle_incoming', 'jingle_outgoing', 'jingle_end', 'muc_owner', 'jingle_retract', 'jingle_reject',
-                'muji_propose', 'muji_retract',
-                'muc_admin', 'muc_outcast', 'muc_member'
+                'jingle_incoming',
+                'jingle_outgoing',
+                'jingle_end',
+                'muc_owner',
+                'jingle_retract',
+                'jingle_reject',
+                'muji_propose',
+                'muji_retract',
+                'muc_admin',
+                'muc_outcast',
+                'muc_member'
             ])
         ) {
             return;
@@ -453,7 +474,7 @@ class Chat extends \Movim\Widget\Base
                         ->where('jid', $jid)
                         ->select(['bundleid', 'jid'])
                         ->get()
-                        ->mapToGroups(fn ($tuple) => [$tuple['jid'] => $tuple['bundleid']])
+                        ->mapToGroups(fn($tuple) => [$tuple['jid'] => $tuple['bundleid']])
                         ->toArray()
                 );
             }
@@ -513,7 +534,7 @@ class Chat extends \Movim\Widget\Base
                         })
                         ->select(['bundleid', 'jid'])
                         ->get()
-                        ->mapToGroups(fn ($tuple) => [$tuple['jid'] => $tuple['bundleid']])
+                        ->mapToGroups(fn($tuple) => [$tuple['jid'] => $tuple['bundleid']])
                         ->toArray()
                 );
             }
@@ -872,7 +893,7 @@ class Chat extends \Movim\Widget\Base
                         ->delete();
                 }
 
-                $newEmojis = $emojis->filter(fn ($value, $key) => $value->emoji != $emoji);
+                $newEmojis = $emojis->filter(fn($value, $key) => $value->emoji != $emoji);
             }
 
             $r->setTo($parentMessage->jidfrom != $parentMessage->user_id
@@ -1159,7 +1180,7 @@ class Chat extends \Movim\Widget\Base
      *
      * @param string $jid
      */
-    public function ajaxClearHistoryConfirm($jid)
+    public function ajaxClearHistoryConfirm(string $jid)
     {
         if (!validateJid($jid)) {
             return;
@@ -1180,6 +1201,8 @@ class Chat extends \Movim\Widget\Base
                 'messages'
             )->where('user_id', $this->user->id);
         })->delete();
+
+        $this->user->MAMEarliests()->where('jid', $jid)->delete();
 
         $this->ajaxGet($jid);
     }
@@ -1274,6 +1297,29 @@ class Chat extends \Movim\Widget\Base
 
         if ($unreadsCount > 0) {
             $this->rpc('Chat.insertSeparator', $unreadsCount);
+        }
+
+        // Do we need to query MAM?
+        if ($messages->isEmpty()) {
+            $earliest = MAMEarliest::query();
+            $earliest = $muc ? $earliest->where('to', $jid)
+                : $earliest->where('jid', $jid);
+
+            if (!$earliest->first()) {
+                $this->rpc('Chat.getHistory', true);
+            }
+        } elseif ($messages->count() < $this->_pagination) {
+            $earliest = MAMEarliest::query();
+            $earliest = $muc ? $earliest->where('to', $jid)
+                : $earliest->where('jid', $jid);
+            $me = $earliest->first();
+
+            if (
+                !$me ||
+                (new Carbon($me->earliest))->isAfter(new Carbon($messages->first()->published))
+            ) {
+                $this->rpc('Chat.getHistory', true);
+            }
         }
     }
 
@@ -1581,8 +1627,14 @@ class Chat extends \Movim\Widget\Base
 
         // Internal messages
         if (in_array($message->type, [
-            'muc_owner', 'muc_admin', 'muc_outcast', 'muc_member',
-            'jingle_reject', 'jingle_incoming', 'jingle_outgoing', 'jingle_retract',
+            'muc_owner',
+            'muc_admin',
+            'muc_outcast',
+            'muc_member',
+            'jingle_reject',
+            'jingle_incoming',
+            'jingle_outgoing',
+            'jingle_retract',
             'muji_propose'
         ])) {
             $view = $this->tpl();

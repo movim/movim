@@ -2,6 +2,7 @@
 
 namespace Moxl\Xec\Action\MAM;
 
+use App\MAMEarliest;
 use Moxl\Xec\Action;
 use Moxl\Stanza\MAM;
 use Movim\Session;
@@ -9,14 +10,14 @@ use Movim\Session;
 
 class Get extends Action
 {
-    protected $_queryid;
-    protected $_to;
-    protected $_jid;
-    protected $_start;
-    protected $_end;
-    protected $_limit;
-    protected $_after;
-    protected $_before;
+    protected ?string $_to = null;
+    protected ?string $_queryid = null;
+    protected ?string $_jid = null;
+    protected ?int $_start = null;
+    protected ?int $_end = null;
+    protected ?int $_limit = null;
+    protected ?string $_after = null;
+    protected ?string $_before = null;
     protected string $_version = '2';
     protected int $_messageCounter = 0;
 
@@ -60,6 +61,24 @@ class Get extends Action
         $this->deliver();
 
         $totalCounter = $this->_messageCounter + $messagesCounter;
+
+        if (
+            isset($stanza->fin->set)
+            && $stanza->fin->set->attributes()->xmlns == 'http://jabber.org/protocol/rsm'
+            && $stanza->fin->set->count == 0
+            && (
+                ($this->_end != null && $this->_start == null)
+                ||
+                ($this->_end == null && $this->_start == null && $this->_before == '')
+            )
+        ) {
+            $earliest = new MAMEarliest;
+            $earliest->user_id = \App\User::me()->id;
+            $earliest->to = $this->_to;
+            $earliest->jid = $this->_jid;
+            $earliest->earliest = date(MOVIM_SQL_DATE, $this->_end ?? time());
+            $earliest->save();
+        }
 
         if (
             isset($stanza->fin)
