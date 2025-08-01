@@ -9,11 +9,12 @@ main:not(.enabled) #chat_widget {
     overflow-y: auto;
 }
 
+#chat_frequent,
 #chat_explore {
     width: 100%;
 }
 
-#chat_widget>div:not(#chat_explore),
+#chat_widget>div:not(#chat_explore):not(#chat_frequent),
 #chat_widget>header {
     max-width: 100%;
     width: 100%;
@@ -38,6 +39,10 @@ main:not(.enabled) #chat_widget {
     overflow-x: hidden;
     height: 100%;
     position: relative;
+}
+
+#chat_widget ul.list.flex {
+    width: 100%;
 }
 
 #chat_widget .contained:before {

@@ -52,7 +52,7 @@ class Contact extends Model
             from presences
             group by jid) as presences
             '), 'presences.jid', '=', 'contacts.id')
-            ->orderBy('presences.value');
+            ->orderBy('presences.value', 'asc');
     }
 
     public function save(array $options = [])

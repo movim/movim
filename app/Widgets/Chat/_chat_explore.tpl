@@ -1,5 +1,5 @@
 {if="$users->isNotEmpty()"}
-    <ul class="list" style="width: 100%;">
+    <ul class="list">
         <li class="subheader">
             <div>
                 <p>{$c->__('explore.explore')}</p>
@@ -16,16 +16,14 @@
             {/if}
         </li>
     </ul>
-    <ul class="list flex middle active">
+    <ul class="list card shadow flex fourth compact middle active">
         {if="$users->count() > $pagination"}
             {$user = $users->pop()}
         {/if}
         {loop="$users"}
             <li class="block" title="{$value->jid}"
                 onclick="Chats_ajaxOpen('{$value->jid|echapJS}', true);">
-                <span class="control icon gray">
-                    <i class="material-symbols">comment</i>
-                </span>
+                <img class="main" src="{$value->getBanner(\Movim\ImageSize::L)}">
                 <span class="primary icon bubble {if="$value->value"}status {$presencestxt[$value->value]}{/if}">
                     <img src="{$value->getPicture(\Movim\ImageSize::M)}">
                 </span>
@@ -33,7 +31,11 @@
                     <p class="normal line">
                         {$value->truename}
                     </p>
-                    {if="!empty($value->description)"}
+                    {if="!empty($value->status)"}
+                        <p class="line" title="{$value->status|strip_tags}">
+                            {$value->status|strip_tags|truncate:80}
+                        </p>
+                    {elseif="!empty($value->description)"}
                         <p class="line" title="{$value->description|strip_tags}">
                             {$value->description|strip_tags|truncate:80}
                         </p>

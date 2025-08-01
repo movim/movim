@@ -10,8 +10,6 @@ use React\Http\Message\Response;
 use React\Promise\Promise;
 use React\Promise\PromiseInterface;
 
-use function React\Async\await;
-
 /**
  * Log an error
  */
