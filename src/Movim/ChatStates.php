@@ -106,6 +106,6 @@ class ChatStates
 
     private function resolveJid(string $from, string $to)
     {
-        return ($from == \App\User::me()->id) ? $to : $from;
+        return ($from == me()->id) ? $to : $from;
     }
 }

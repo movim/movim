@@ -15,7 +15,7 @@ class ReceiptRequest extends Payload
 
         \Moxl\Stanza\Message::received(baseJid($from), $id, (string)$parent->attributes()->type);
 
-        $message = \App\User::me()->messages()
+        $message = me()->messages()
                                   ->where('originid', $id)
                                   ->where('jidfrom', baseJid($from))
                                   ->first();

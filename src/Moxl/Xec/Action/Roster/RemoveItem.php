@@ -17,7 +17,7 @@ class RemoveItem extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        \App\User::me()
+        me()
               ->session
               ->contacts()
               ->where('jid', $this->_to)

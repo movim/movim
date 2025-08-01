@@ -108,7 +108,7 @@ class Session extends Model
 
         $configuration = Configuration::get();
         if ($configuration->restrictsuggestions) {
-            $host = \App\User::me()->session->host;
+            $host = me()->session->host;
             $where .= ' where server like \'%.' . $host . '\'';
         }
 

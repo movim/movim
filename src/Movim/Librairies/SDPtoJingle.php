@@ -88,7 +88,7 @@ class SDPtoJingle
         } else {
             $this->jingle = new \SimpleXMLElement('<jingle></jingle>');
             $this->jingle->addAttribute('xmlns', 'urn:xmpp:jingle:1');
-            $this->jingle->addAttribute('initiator', \App\User::me()->id);
+            $this->jingle->addAttribute('initiator', me()->id);
         }
 
         if ($action) {

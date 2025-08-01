@@ -19,7 +19,7 @@ class SessionTerminate extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $userid = \App\User::me()->id;
+        $userid = me()->id;
         $message = new \App\Message;
         $message->user_id = $userid;
         $message->id = 'm_' . generateUUID();

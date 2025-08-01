@@ -15,7 +15,7 @@ class Location extends Payload
             $contact->setLocation($stanza->items->item);
             $contact->save();
 
-            if ($from == \App\User::me()->id) {
+            if ($from == me()->id) {
                 $this->event('mylocation');
                 $this->event('mypresence');
             } else {

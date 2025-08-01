@@ -23,6 +23,7 @@ class NewsNav extends Base
                 ->orderBy('posts.published', 'desc')
                 ->restrictToMicroblog()
                 ->restrictUserHost()
+                ->restrictReported()
                 ->restrictNSFW()
                 ->recents()
                 ->take(6)

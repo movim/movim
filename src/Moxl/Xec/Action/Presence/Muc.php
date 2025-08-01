@@ -33,7 +33,7 @@ class Muc extends Action
         }
 
         if ($this->_mam == false && $this->_mam2 == false) {
-            \App\User::me()->messages()->where('jidfrom', $this->_to)->delete();
+            me()->messages()->where('jidfrom', $this->_to)->delete();
         }
 
         $this->store(); // Set stanzaId
@@ -93,7 +93,7 @@ class Muc extends Action
         }
 
         if ($this->_mam) {
-            $message = \App\User::me()->messages()
+            $message = me()->messages()
                 ->where('jidfrom', $this->_to)
                 ->whereNull('subject');
 

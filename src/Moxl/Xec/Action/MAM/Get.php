@@ -73,7 +73,7 @@ class Get extends Action
             )
         ) {
             $earliest = new MAMEarliest;
-            $earliest->user_id = \App\User::me()->id;
+            $earliest->user_id = me()->id;
             $earliest->to = $this->_to;
             $earliest->jid = $this->_jid;
             $earliest->earliest = date(MOVIM_SQL_DATE, $this->_end ?? time());

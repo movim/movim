@@ -1,7 +1,7 @@
 <?php $this->widget('Search');?>
 <?php $this->widget('Onboarding');?>
 <?php $this->widget('Notifications');?>
-<?php if(\App\User::me()->hasOMEMO()) $this->widget('ChatOmemo');?>
+<?php if(me()->hasOMEMO()) $this->widget('ChatOmemo');?>
 
 <nav>
     <?php $this->widget('Presence');?>
@@ -28,18 +28,18 @@
         <?php $this->widget('Tabs');?>
         <ul class="tabs" id="navtabs"></ul>
         <?php $this->widget('Vcard4');?>
-        <?php if (\App\User::me()->hasPubsub()) { ?>
+        <?php if (me()->hasPubsub()) { ?>
             <?php $this->widget('Avatar');?>
             <?php $this->widget('Config');?>
         <?php } ?>
         <?php $this->widget('Account');?>
         <?php $this->widget('EmojisConfig');?>
         <?php $this->widget('NotificationConfig');?>
-        <?php $this->widget('AdHoc', ['to' => \App\User::me()->session->host]);?>
+        <?php $this->widget('AdHoc', ['to' => me()->session->host]);?>
         <?php $this->widget('Blocked');?>
     </div>
 </main>
 
-<?php if (\App\User::me()->hasPubsub()) { ?>
+<?php if (me()->hasPubsub()) { ?>
     <?php $this->widget('PublishStories');?>
 <?php } ?>

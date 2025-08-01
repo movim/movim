@@ -24,7 +24,7 @@ class GetDeviceList extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        \App\User::me()->bundles()->where('jid', $this->_to)->delete();
+        me()->bundles()->where('jid', $this->_to)->delete();
 
         foreach ($stanza->pubsub->items->item as $item) {
             if ((string)$item->attributes()->id == 'current' || $stanza->pubsub->items->count() == 1) {

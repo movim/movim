@@ -11,6 +11,14 @@ use React\Promise\Promise;
 use React\Promise\PromiseInterface;
 
 /**
+ * Me
+ */
+function me(bool $reload = false)
+{
+    return \App\User::me($reload);
+}
+
+/**
  * Log an error
  */
 function logError(string|Stringable $logs)

@@ -41,7 +41,7 @@ class MujiCall extends Model
     {
         return $this->hasOne('App\Presence', ['jid', 'session_id'], ['muc', 'session_id'])
                     ->where('value', '<', 5)
-                    ->where('mucjid', \App\User::me()->id);
+                    ->where('mucjid', me()->id);
     }
 
     public function participants()

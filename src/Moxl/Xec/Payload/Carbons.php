@@ -9,7 +9,7 @@ class Carbons extends Payload
         $parentfrom = baseJid((string)$parent->attributes()->from);
         $message = $stanza->forwarded->message;
 
-        if ($parentfrom == \App\User::me()->id) {
+        if ($parentfrom == me()->id) {
             if ($message->retract
              && $message->retract->attributes()->xmlns == 'urn:xmpp:message-retract:1') {
                 $retracted = new Retracted;
@@ -42,7 +42,7 @@ class Carbons extends Payload
             } elseif (count($jingle_messages = $stanza->xpath('//*[@xmlns="urn:xmpp:jingle-message:0"]')) >= 1) {
                 $callto = baseJid((string)$message->attributes()->to);
 
-                if ($callto == \App\User::me()->id || $callto == "") {
+                if ($callto == me()->id || $callto == "") {
                     // We get carbons for calls other clients make as well as calls other clients receive
                     // So make sure we only ring when we see a call _to_ us
                     // Or with no "to", which means from ourselves to ourselves, like another client's <accept>

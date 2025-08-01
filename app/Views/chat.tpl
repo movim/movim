@@ -4,7 +4,7 @@
 <?php $this->widget('SendTo');?>
 <?php $this->widget('ContactActions');?>
 <?php $this->widget('AdHoc');?>
-<?php if(\App\User::me()->hasOMEMO()) $this->widget('ChatOmemo');?>
+<?php if(me()->hasOMEMO()) $this->widget('ChatOmemo');?>
 
 <nav>
     <?php $this->widget('Presence');?>
@@ -21,7 +21,7 @@
         <a class="button action color" onclick="Search_ajaxRequest(true)">
             <i class="material-symbols">add</i>
         </a>
-        <?php if (\App\User::me()->hasPubsub()) { ?>
+        <?php if (me()->hasPubsub()) { ?>
             <?php $this->widget('Stories');?>
         <?php } ?>
         <?php $this->widget('Chats');?>
@@ -32,7 +32,7 @@
 
 <?php $this->widget('Dictaphone');?>
 <?php $this->widget('Snap');?>
-<?php if (\App\User::me()->hasPubsub()) { ?>
+<?php if (me()->hasPubsub()) { ?>
     <?php $this->widget('PublishStories');?>
     <?php $this->widget('StoriesViewer');?>
 <?php } ?>

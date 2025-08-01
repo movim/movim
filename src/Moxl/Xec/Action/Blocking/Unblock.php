@@ -17,8 +17,8 @@ class Unblock extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        \App\User::me()->reported()->detach($this->_jid);
-        \App\User::me()->refreshBlocked();
+        me()->reported()->detach($this->_jid);
+        me()->refreshBlocked();
 
         $this->pack($this->_jid);
         $this->deliver();

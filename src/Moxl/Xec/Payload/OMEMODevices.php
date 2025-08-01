@@ -22,7 +22,7 @@ class OMEMODevices extends Payload
             }
 
             // Remove all the cached devices not in the list
-            Bundle::where('user_id', \App\User::me()->id)
+            Bundle::where('user_id', me()->id)
                   ->where('jid', $from)
                   ->whereNotIn('bundleid', $devicesIds)
                   ->delete();

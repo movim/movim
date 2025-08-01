@@ -17,7 +17,7 @@ class Bundle extends Model
 
     public function set(string $jid, string $bundleId, $bundle)
     {
-        $this->user_id = \App\User::me()->id;
+        $this->user_id = me()->id;
         $this->jid = $jid;
         $this->bundleid = $bundleId;
 

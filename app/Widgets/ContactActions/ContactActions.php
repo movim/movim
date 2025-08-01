@@ -11,6 +11,8 @@ use App\Widgets\Toast\Toast;
 use Movim\CurrentCall;
 use Movim\EmbedLight;
 use Movim\Widget\Base;
+use Moxl\Xec\Action\Blocking\Block;
+use Moxl\Xec\Action\Blocking\Unblock;
 
 class ContactActions extends Base
 {
@@ -145,6 +147,20 @@ class ContactActions extends Base
 
             $this->rpc('MovimUtils.reload', $this->route('chat', $jid));
         }
+    }
+
+    public function ajaxBlock(string $jid)
+    {
+        $block = new Block;
+        $block->setJid($jid);
+        $block->request();
+    }
+
+    public function ajaxUnblock(string $jid)
+    {
+        $block = new Unblock;
+        $block->setJid($jid);
+        $block->request();
     }
 
     public function ajaxHttpGetPictures($jid, $page = 0)

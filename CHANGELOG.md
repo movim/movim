@@ -6,6 +6,8 @@ v0.31.1 (master)
 * Add a copy external link button on the Posts
 * Improve the Communities discovery flow when visiting a server
 * Add a MAMEarliest table to keep track of the earliest message when requesting MAM
+* Improve the contact block/unblock flows
+* Add a me() utils
 
 v0.31
 ---------------------------

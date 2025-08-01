@@ -8,8 +8,8 @@ class Unblocked extends Payload
     {
         $jid = (string)$stanza->item->attributes()->jid;
 
-        \App\User::me()->reported()->detach($jid);
-        \App\User::me()->refreshBlocked();
+        me()->reported()->detach($jid);
+        me()->refreshBlocked();
 
         $this->pack($jid);
         $this->deliver();

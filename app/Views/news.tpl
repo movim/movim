@@ -3,7 +3,7 @@
 <?php $this->widget('Onboarding');?>
 <?php $this->widget('Notifications');?>
 <?php $this->widget('SendTo');?>
-<?php if(\App\User::me()->hasOMEMO()) $this->widget('ChatOmemo');?>
+<?php if(me()->hasOMEMO()) $this->widget('ChatOmemo');?>
 
 <?php $this->widget('PostActions');?>
 
@@ -26,6 +26,6 @@
 <?php $this->widget('Snap');?>
 <?php $this->widget('Draw');?>
 
-<?php if (\App\User::me()->hasPubsub()) { ?>
+<?php if (me()->hasPubsub()) { ?>
     <?php $this->widget('PublishStories');?>
 <?php } ?>

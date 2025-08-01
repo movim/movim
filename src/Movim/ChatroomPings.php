@@ -36,7 +36,7 @@ class ChatroomPings
         $this->clear($from);
 
         $this->_chatrooms[$from] = $loop->addTimer($this->_pingIn, function () use ($from) {
-            $presence = \App\User::me()->session->conferences()
+            $presence = me()->session->conferences()
                 ->where('conference', $from)
                 ->first()?->presence;
 

@@ -11,8 +11,8 @@ class Blocked extends Payload
         $jid = (string)$stanza->item->attributes()->jid;
 
         $r = Reported::firstOrCreate(['id' => $jid]);
-        \App\User::me()->reported()->syncWithoutDetaching([$r->id => ['synced' => true]]);
-        \App\User::me()->refreshBlocked();
+        me()->reported()->syncWithoutDetaching([$r->id => ['synced' => true]]);
+        me()->refreshBlocked();
 
         $this->pack($jid);
         $this->deliver();

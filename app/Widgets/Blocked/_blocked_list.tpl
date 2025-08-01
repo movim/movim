@@ -1,5 +1,5 @@
-{loop="$list"}<li id="blocked-{$value->id|cleanupId}">
-    <span class="primary icon gray">
+{loop="$list"}<li class="block" id="blocked-{$value->id|cleanupId}">
+    <span class="control icon active" onclick="MovimUtils.reload('{$c->route('contact', $value->id)}');">
         <i class="material-symbols">person</i>
     </span>
     <span class="control icon active divided" onclick="Blocked_ajaxUnblock('{$value->id|echapJS}')">

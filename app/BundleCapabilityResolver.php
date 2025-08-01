@@ -26,7 +26,7 @@ class BundleCapabilityResolver
 
     public function load()
     {
-        $this->_bundles = Bundle::where('user_id', \App\User::me()->id)
+        $this->_bundles = Bundle::where('user_id', me()->id)
                                 ->whereNull('node')
                                 ->select('jid', 'bundleid')
                                 ->get()
@@ -42,7 +42,7 @@ class BundleCapabilityResolver
                     ->first();
 
             if ($presence && $presence->capability) {
-                Bundle::where('user_id', \App\User::me()->id)
+                Bundle::where('user_id', me()->id)
                       ->whereNull('node')
                       ->where('jid', $message->jidfrom)
                       ->where('bundleid', $message->bundleid)

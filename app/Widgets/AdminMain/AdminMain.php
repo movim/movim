@@ -13,7 +13,7 @@ class AdminMain extends \Movim\Widget\Base
 
         $configuration = Configuration::get();
 
-        if (isset($form) && !empty($form) && isset($form['adminform']) && \App\User::me()->admin) {
+        if (isset($form) && !empty($form) && isset($form['adminform']) && me()->admin) {
             $form['disableregistration'] = (isset($form['disableregistration']));
             $form['restrictsuggestions'] = (isset($form['restrictsuggestions']));
             $form['chatonly'] = (isset($form['chatonly']));

@@ -16,7 +16,7 @@ class Presence extends Payload
     {
         $jid = explodeJid($stanza->attributes()->from);
 
-        if (\App\User::me()->hasBlocked($jid['jid'])) {
+        if (me()->hasBlocked($jid['jid'])) {
             return;
         }
 
@@ -30,7 +30,7 @@ class Presence extends Payload
             $presence->set($stanza);
 
             if (CurrentCall::getInstance()->isStarted() && CurrentCall::getInstance()->mujiRoom == $jid['jid']) {
-                $muji = \App\User::me()->session->mujiCalls()
+                $muji = me()->session->mujiCalls()
                     ->where('muc', $jid['jid'])
                     ->first();
 
@@ -53,7 +53,7 @@ class Presence extends Payload
                 if ($presence->muc) {
                     ChatroomPings::getInstance()->touch($presence->jid);
 
-                    if ($presence->mucjid == \App\User::me()->id) {
+                    if ($presence->mucjid == me()->id) {
                         // Spectrum2 specific bug, we can receive two self-presences, one with several caps items
                         $cCount = 0;
                         foreach ($stanza->children() as $key => $content) {

@@ -3,7 +3,7 @@
     <?php $this->widget('Upload'); ?>
     <?php $this->widget('Notifications');?>
     <?php $this->widget('SendTo');?>
-    <?php if(\App\User::me()->hasOMEMO()) $this->widget('ChatOmemo');?>
+    <?php if(me()->hasOMEMO()) $this->widget('ChatOmemo');?>
     <?php $this->widget('PostActions');?>
 
     <nav>
@@ -58,6 +58,6 @@
     <?php } ?>
 </main>
 
-<?php if (isLogged() && \App\User::me()->hasPubsub()) { ?>
+<?php if (isLogged() && me()->hasPubsub()) { ?>
     <?php $this->widget('PublishStories');?>
 <?php } ?>

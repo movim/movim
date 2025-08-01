@@ -16,7 +16,7 @@ class CallInvitePropose extends Payload
             CurrentCall::getInstance()->isStarted()
             && CurrentCall::getInstance()->isJidInCall(baseJid($parent->attributes()->from))
         ) {
-            $conference = \App\User::me()->session->conferences()->where('conference', \baseJid((string)$parent->attributes()->from))->first();
+            $conference = me()->session->conferences()->where('conference', \baseJid((string)$parent->attributes()->from))->first();
 
             if ($conference) {
                 // If the propose is from another person

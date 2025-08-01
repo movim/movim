@@ -17,14 +17,14 @@ class DeleteBundle extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        \App\User::me()->bundles()
-                       ->where('jid', \App\User::me()->id)
+        me()->bundles()
+                       ->where('jid', me()->id)
                        ->where('bundleid', $this->_id)
                        ->delete();
 
-        $devicesList = array_values(\App\User::me()->bundles()
+        $devicesList = array_values(me()->bundles()
             ->select('bundleid')
-            ->where('jid', \App\User::me()->id)
+            ->where('jid', me()->id)
             ->pluck('bundleid')
             ->toArray());
 

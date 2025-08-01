@@ -43,7 +43,7 @@ class Set extends Action
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         if ($this->_to == false && $this->_node == false) {
-            $me = \App\User::me()->contact;
+            $me = me()->contact;
             $me->avatartype = 'urn:xmpp:avatar:metadata';
             $me->save();
 

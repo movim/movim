@@ -32,12 +32,12 @@ class MujiCallParticipant extends Model
         $jid = explodeJid($this->jid);
 
         if ($jid['resource'] == null) {
-            return $this->jid == \App\User::me()->id;
+            return $this->jid == me()->id;
         }
 
         $presence = Presence::where('jid', $jid['jid'])->where('resource', $jid['resource'])->first();
 
-        return $presence && $presence->mucjid == \App\User::me()->id;
+        return $presence && $presence->mucjid == me()->id;
     }
 
     public function getNameAttribute()

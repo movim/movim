@@ -55,13 +55,13 @@ class Conference extends Model
 
     public function otherPresences()
     {
-        return $this->presences()->where('mucjid', '!=', \App\User::me()->id);
+        return $this->presences()->where('mucjid', '!=', me()->id);
     }
 
     public function unreads()
     {
         return $this->hasMany('App\Message', 'jidfrom', 'conference')
-                    ->where('user_id', \App\User::me()->id)
+                    ->where('user_id', me()->id)
                     ->where('type', 'groupchat')
                     ->whereNull('subject')
                     ->where('seen', false);
@@ -70,7 +70,7 @@ class Conference extends Model
     public function quoted()
     {
         return $this->hasMany('App\Message', 'jidfrom', 'conference')
-                    ->where('user_id', \App\User::me()->id)
+                    ->where('user_id', me()->id)
                     ->where('type', 'groupchat')
                     ->whereNull('subject')
                     ->where('quoted', true)
@@ -81,7 +81,7 @@ class Conference extends Model
     {
         return $this->hasOne('App\Presence', ['jid', 'session_id'], ['conference', 'session_id'])
                     ->where('value', '<', 5)
-                    ->where('mucjid', \App\User::me()->id);
+                    ->where('mucjid', me()->id);
     }
 
     public function members()
@@ -103,7 +103,7 @@ class Conference extends Model
     public function pictures()
     {
         return $this->hasMany('App\Message', 'jidfrom', 'conference')
-                    ->where('user_id', \App\User::me()->id)
+                    ->where('user_id', me()->id)
                     ->where('type', 'groupchat')
                     ->where('picture', true)
                     ->where('retracted', false)
@@ -113,7 +113,7 @@ class Conference extends Model
     public function links()
     {
         return $this->hasMany('App\Message', 'jidfrom', 'conference')
-                    ->where('user_id', \App\User::me()->id)
+                    ->where('user_id', me()->id)
                     ->where('type', 'groupchat')
                     ->whereNotNull('urlid')
                     ->where('picture', false)
@@ -128,7 +128,7 @@ class Conference extends Model
                         $query->where('node', function ($query) {
                             $query->select('node')
                                 ->from('presences')
-                                ->where('session_id', \App\User::me()->session->id)
+                                ->where('session_id', me()->session->id)
                                 ->whereColumn('jid', 'infos.server')
                                 ->where('resource', '')
                                 ->take(1);
@@ -211,7 +211,7 @@ class Conference extends Model
 
     public function getSubjectAttribute()
     {
-        $subject = \App\User::me()
+        $subject = me()
                             ->messages()
                             ->jid($this->conference)
                             ->whereNotNull('subject')

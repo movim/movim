@@ -146,7 +146,7 @@ class Presence extends Model
                         $session = Session::instance();
 
                         if ($session->get(Muc::$mucId . (string)$stanza->attributes()->from)) {
-                            $this->mucjid = \App\User::me()->id;
+                            $this->mucjid = me()->id;
                         }
 
                         if (!isset($c->item)) {
@@ -154,7 +154,7 @@ class Presence extends Model
                         }
 
                         if (!empty($c->xpath("//status[@code='110']"))) {
-                            $this->mucjid = \App\User::me()->id;
+                            $this->mucjid = me()->id;
                         } elseif ($c->item->attributes()->jid) {
                             $jid = explodeJid((string)$c->item->attributes()->jid);
                             $this->mucjid = $jid['jid'];

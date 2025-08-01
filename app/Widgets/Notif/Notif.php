@@ -96,7 +96,7 @@ class Notif extends Base
 
             // Push notification
             if ($webPush) {
-                foreach (\App\User::me()->pushSubscriptions()->where('enabled', true)->whereNotNull('activity_at')->get() as $pushSubscription) {
+                foreach (me()->pushSubscriptions()->where('enabled', true)->whereNotNull('activity_at')->get() as $pushSubscription) {
                     $subscription = Subscription::create([
                         'endpoint' => $pushSubscription->endpoint,
                         'contentEncoding' => 'aesgcm',
@@ -147,7 +147,7 @@ class Notif extends Base
         }
 
         if ($first === 'chat') {
-            RPC::call('Notif.counter', $first, (\App\User::me())->unreads(null, true));
+            RPC::call('Notif.counter', $first, (me())->unreads(null, true));
             self::executeRPC();
         } else {
             RPC::call('Notif.counter', $first, $notifs[$first]);
@@ -233,7 +233,7 @@ class Notif extends Base
 
         if ($notifs == null) $notifs = [];
 
-        $notifs['chat'] = (\App\User::me())->unreads();
+        $notifs['chat'] = (me())->unreads();
         RPC::call('Notif.refresh', $notifs);
     }
 

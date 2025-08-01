@@ -28,7 +28,7 @@ class Presence
         $root = $dom->createElementNS('jabber:client', 'presence');
         $dom->appendChild($root);
 
-        $me = \App\User::me();
+        $me = me();
 
         if ($me && $me->session) {
             $root->setAttribute('from', $me->id . '/' . $me->session->resource);

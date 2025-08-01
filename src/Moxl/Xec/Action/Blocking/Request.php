@@ -31,13 +31,13 @@ class Request extends Action
             ];
         })->toArray());
 
-        \App\User::me()->reported()->syncWithoutDetaching($jids->mapWithKeys(function ($jid) {
+        me()->reported()->syncWithoutDetaching($jids->mapWithKeys(function ($jid) {
             return [$jid  => ['synced' => true]];
         }));
-        \App\User::me()->refreshBlocked();
+        me()->refreshBlocked();
 
         // Retro-compatibility support
-        foreach (\App\User::me()->reported()->where('synced', false)->get() as $reported) {
+        foreach (me()->reported()->where('synced', false)->get() as $reported) {
             $block = new Block;
             $block->setJid($reported->id);
             $block->request();

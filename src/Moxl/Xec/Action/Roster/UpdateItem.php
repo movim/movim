@@ -20,7 +20,7 @@ class UpdateItem extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $roster = \App\User::me()->session->contacts()->where('jid', $this->_to)->first();
+        $roster = me()->session->contacts()->where('jid', $this->_to)->first();
 
         if ($roster) {
             $roster->name = $this->_name;

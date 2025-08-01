@@ -30,7 +30,7 @@ class GetBundle extends Action
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         if ($stanza->pubsub->items->item->bundle) {
-            $bundle = Bundle::where('user_id', \App\User::me()->id)
+            $bundle = Bundle::where('user_id', me()->id)
                 ->where('jid', $this->_to)
                 ->where('bundleid', $this->_id)
                 ->first();

@@ -413,17 +413,17 @@ class Chats extends Base
             ->whereNotIn('jidfrom', function ($query) {
                 $query->select('jid')
                     ->from('open_chats')
-                    ->where('user_id', \App\User::me()->id);
+                    ->where('user_id', me()->id);
             })
             ->whereNotIn('jidto', function ($query) {
                 $query->select('jid')
                     ->from('open_chats')
-                    ->where('user_id', \App\User::me()->id);
+                    ->where('user_id', me()->id);
             })
             ->groupBy('jidfrom', 'jidto')
             ->get()
             ->each(function ($message) use (&$toOpen) {
-                $jid = $message->jidfrom == \App\User::me()->id
+                $jid = $message->jidfrom == me()->id
                     ? $message->jidto
                     : $message->jidfrom;
 
@@ -438,7 +438,7 @@ class Chats extends Base
 
         foreach ($toOpen as $jid => $published) {
             $openChat = new OpenChat;
-            $openChat->user_id = \App\User::me()->id;
+            $openChat->user_id = me()->id;
             $openChat->jid = $jid;
             $openChat->created_at = $openChat->updated_at = $published;
             $openChat->save(['timestamps' => false]);

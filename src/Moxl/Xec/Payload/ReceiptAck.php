@@ -8,13 +8,13 @@ class ReceiptAck extends Payload
     {
         // Handle only MUC messages with a proper stanza-id
         $message = ('groupchat' == (string)$parent->attributes()->type)
-            ? \App\User::me()->messages()
+            ? me()->messages()
                     ->where('stanzaid', (string)$stanza->attributes()->id)
                     ->where('jidfrom', current(explode('/',
                         (string)$parent->attributes()->from
                     )))
                     ->first()
-            : \App\User::me()->messages()
+            : me()->messages()
                     ->where('originid', (string)$stanza->attributes()->id)
                     ->where('jidfrom', current(explode('/',
                         (string)$parent->attributes()->to

@@ -15,7 +15,7 @@ class Retracted extends Payload
             ) ? 'stanzaid'
               : 'originid';
 
-        $message = \App\User::me()->messages()
+        $message = me()->messages()
                                     ->where($idKey, (string)$stanza->attributes()->id)
                                     ->where('jidfrom', baseJid((string)$parent->attributes()->from))
                                     ->first();

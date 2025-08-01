@@ -315,6 +315,10 @@
                     {else}
                         {$contact->truename}
                     {/if}
+
+                    {if="$contact->isBlocked()"}
+                        <span class="tag color red">{$c->__('blocked.title')}</span>
+                    {/if}
                 </p>
                 <p class="compose first line active" id="{$jid|cleanupId}-state" onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')"></p>
                 <p class="line active" onclick="ChatActions_ajaxGetContact('{$contact->jid|echapJS}')">

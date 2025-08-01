@@ -447,7 +447,7 @@ class XMPPtoForm
         $select->setAttribute('id', $s['var']);
         $select->setAttribute('name', $s['var']);
 
-        $subscriptions = \App\User::me()->subscriptions()
+        $subscriptions = me()->subscriptions()
             ->notComments()
             ->orderBy('server')->orderBy('node')
             ->get();

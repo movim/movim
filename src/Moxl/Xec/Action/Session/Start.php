@@ -21,7 +21,7 @@ class Start extends Action
         $session = Session::instance();
         $session->delete('password');
 
-        $session = \App\User::me()->session;
+        $session = me()->session;
         $session->active = true;
         $session->save();
 

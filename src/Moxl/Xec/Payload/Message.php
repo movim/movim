@@ -37,7 +37,7 @@ class Message extends Payload
             return;
         }
 
-        if ($message->type == 'chat' && \App\User::me()->hasBlocked($message->jidfrom)) {
+        if ($message->type == 'chat' && me()->hasBlocked($message->jidfrom)) {
             return;
         }
 

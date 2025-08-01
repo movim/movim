@@ -26,7 +26,7 @@ class Remove extends Action
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         if ($this->_pepnode == 'urn:xmpp:pubsub:movim-public-subscription') {
-            \App\User::me()->subscriptions()
+            me()->subscriptions()
                            ->where('server', $this->_server)
                            ->where('node', $this->_node)
                            ->delete();

@@ -27,7 +27,7 @@ class Set extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        \App\User::me()->session->conferences()
+        me()->session->conferences()
             ->where('conference', $this->_conference->conference)
             ->delete();
 

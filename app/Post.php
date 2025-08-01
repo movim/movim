@@ -74,7 +74,7 @@ class Post extends Model
     public function userAffiliation()
     {
         return $this->hasOne('App\Affiliation', ['server', 'node'], ['server', 'node'])
-            ->where('jid', \App\User::me()->id);
+            ->where('jid', me()->id);
     }
 
     public function userViews()
@@ -84,7 +84,7 @@ class Post extends Model
 
     public function myViews()
     {
-        return $this->userViews()->where('user_id', \App\User::me()->id);
+        return $this->userViews()->where('user_id', me()->id);
     }
 
     public function likes()
@@ -215,7 +215,7 @@ class Post extends Model
 
         if ($configuration->restrictsuggestions) {
             $query->whereIn('id', function ($query) {
-                $host = \App\User::me()->session->host;
+                $host = me()->session->host;
                 $query->select('id')
                     ->from('posts')
                     ->where('server', 'like', '%.' . $host)
@@ -224,11 +224,20 @@ class Post extends Model
         }
     }
 
+    public function scopeRestrictReported($query)
+    {
+        $query->whereNotIn('aid', function ($query) {
+            $query->select('reported_id')
+                ->from('reported_user')
+                ->where('user_id', me()->id);
+        });
+    }
+
     public function scopeRestrictNSFW($query)
     {
         $query->where('nsfw', false);
 
-        if (\App\User::me()->nsfw) {
+        if (me()->nsfw) {
             $query->orWhere('nsfw', true);
         }
     }
@@ -272,7 +281,7 @@ class Post extends Model
         return $query->unionAll(
             DB::table('posts')
                 ->where('node', $node)
-                ->where('server', \App\User::me()->id)
+                ->where('server', me()->id)
         );
     }
 
@@ -288,12 +297,12 @@ class Post extends Model
                 ->whereIn('server', function ($query) {
                     $query->select('server')
                         ->from('subscriptions')
-                        ->where('jid', \App\User::me()->id);
+                        ->where('jid', me()->id);
                 })
                 ->whereIn('node', function ($query) {
                     $query->select('node')
                         ->from('subscriptions')
-                        ->where('jid', \App\User::me()->id);
+                        ->where('jid', me()->id);
                 })
         );
     }
@@ -793,11 +802,11 @@ class Post extends Model
     public function isMine($force = false): bool
     {
         if ($force) {
-            return ($this->aid == \App\User::me()->id);
+            return ($this->aid == me()->id);
         }
 
-        return ($this->aid == \App\User::me()->id
-            || $this->server == \App\User::me()->id);
+        return ($this->aid == me()->id
+            || $this->server == me()->id);
     }
 
     public function isMicroblog(): bool
@@ -888,7 +897,7 @@ class Post extends Model
 
     public function isLiked()
     {
-        return ($this->likes()->where('aid', \App\User::me()->id)->count() > 0);
+        return ($this->likes()->where('aid', me()->id)->count() > 0);
     }
 
     public function isRecycled()

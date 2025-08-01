@@ -26,13 +26,13 @@ class ChatActions extends \Movim\Widget\Base
     public function onBlock($packet)
     {
         Toast::send($this->__('blocked.account_blocked'));
-        $this->rpc('Chats_ajaxClose', $packet->content, true);
+        $this->rpc('Chat_ajaxGet', $packet->content);
     }
 
     public function onUnblock($packet)
     {
         Toast::send($this->__('blocked.account_unblocked'));
-        $this->rpc('Chats_ajaxClose', $packet->content, true);
+        $this->rpc('Chat_ajaxGet', $packet->content);
     }
 
     /**

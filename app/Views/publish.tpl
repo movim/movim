@@ -1,7 +1,7 @@
 <?php $this->widget('Search');?>
 <?php $this->widget('Upload'); ?>
 <?php $this->widget('Notifications');?>
-<?php if(\App\User::me()->hasOMEMO()) $this->widget('ChatOmemo');?>
+<?php if(me()->hasOMEMO()) $this->widget('ChatOmemo');?>
 
 <nav>
     <?php $this->widget('Presence');?>

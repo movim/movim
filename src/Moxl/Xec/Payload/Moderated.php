@@ -7,7 +7,7 @@ class Moderated extends Payload
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         if ($parent->{'apply-to'} && $parent->{'apply-to'}->attributes()->xmlns == 'urn:xmpp:fasten:0') {
-            $message = \App\User::me()->messages()
+            $message = me()->messages()
                                       ->where('stanzaid', (string)$parent->{'apply-to'}->attributes()->id)
                                       ->where('jidfrom', baseJid((string)$parent->attributes()->from))
                                       ->first();

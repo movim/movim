@@ -44,7 +44,7 @@ class Message extends Model
         static::saved(function (Message $message) {
             if ($message->messageFiles != null && $message->messageFiles->isNotEmpty()) {
                 $mid = Message::where('id', $message->id)
-                    ->where('user_id', \App\User::me()->id)
+                    ->where('user_id', me()->id)
                     ->where('jidfrom', $message->jidfrom)
                     ->first()
                     ->mid;
@@ -92,18 +92,18 @@ class Message extends Model
     public function scopeJid($query, string $jid)
     {
         $jidFromToMessages = DB::table('messages')
-            ->where('user_id', \App\User::me()->id)
+            ->where('user_id', me()->id)
             ->where('jidfrom', $jid)
             ->unionAll(
                 DB::table('messages')
-                    ->where('user_id', \App\User::me()->id)
+                    ->where('user_id', me()->id)
                     ->where('jidto', $jid)
             );
 
         return $query->select('*')->from(
             $jidFromToMessages,
             'messages'
-        )->where('user_id', \App\User::me()->id);
+        )->where('user_id', me()->id);
     }
 
     public function reactions()
@@ -161,24 +161,24 @@ class Message extends Model
             && $stanza->attributes()->xmlns == 'urn:xmpp:mam:2'
         ) {
             return self::firstOrNew([
-                'user_id' => \App\User::me()->id,
+                'user_id' => me()->id,
                 'stanzaid' => (string)$stanza->attributes()->id,
                 'jidfrom' => baseJid((string)$stanza->forwarded->message->attributes()->from)
             ]);
         } elseif (
             $stanza->{'stanza-id'} && $stanza->{'stanza-id'}->attributes()->id
             && ($stanza->{'stanza-id'}->attributes()->by == $jidfrom
-                || $stanza->{'stanza-id'}->attributes()->by == \App\User::me()->id
+                || $stanza->{'stanza-id'}->attributes()->by == me()->id
             )
         ) {
             return self::firstOrNew([
-                'user_id' => \App\User::me()->id,
+                'user_id' => me()->id,
                 'stanzaid' => (string)$stanza->{'stanza-id'}->attributes()->id,
                 'jidfrom' => $jidfrom
             ]);
         } else {
             $message = new Message;
-            $message->user_id = \App\User::me()->id;
+            $message->user_id = me()->id;
             $message->id = 'm_' . generateUUID();
             $message->jidfrom = $jidfrom;
             return $message;
@@ -191,23 +191,23 @@ class Message extends Model
 
         if ($muc) {
             // Resolve the current presence
-            $presence = \App\User::me()->session->presences()
+            $presence = me()->session->presences()
                 ->where('jid', $to)
                 ->where('muc', true)
-                ->where('mucjid', \App\User::me()->id)
+                ->where('mucjid', me()->id)
                 ->first();
 
             if ($presence) {
-                $m = \App\User::me()->messages()
+                $m = me()->messages()
                     ->where('type', 'groupchat')
                     ->where('jidfrom', $to)
-                    ->where('jidto', \App\User::me()->id)
+                    ->where('jidto', me()->id)
                     ->where('resource', $presence->resource)
                     ->orderBy('published', 'desc')
                     ->first();
             }
         } else {
-            $m = \App\User::me()->messages()
+            $m = me()->messages()
                 ->where('jidto', $to)
                 ->orderBy('published', 'desc')
                 ->first();
@@ -225,7 +225,7 @@ class Message extends Model
 
     public static function eventMessageFactory(string $type, string $from, string $thread): Message
     {
-        $userid = \App\User::me()->id;
+        $userid = me()->id;
         $message = new \App\Message;
         $message->user_id = $userid;
         $message->id = 'm_' . generateUUID();
@@ -258,7 +258,7 @@ class Message extends Model
         $jidTo = explodeJid((string)$stanza->attributes()->to);
         $jidFrom = explodeJid((string)$stanza->attributes()->from);
 
-        $this->user_id    = \App\User::me()->id;
+        $this->user_id    = me()->id;
 
         if (!$this->id) {
             $this->id = 'm_' . generateUUID();
@@ -313,7 +313,7 @@ class Message extends Model
             && $stanza->{'stanza-id'}->attributes()->id
             && (string)$stanza->{'stanza-id'}->attributes()->xmlns == 'urn:xmpp:sid:0'
             && ($stanza->{'stanza-id'}->attributes()->by == $this->jidfrom
-                || $stanza->{'stanza-id'}->attributes()->by == \App\User::me()->id
+                || $stanza->{'stanza-id'}->attributes()->by == me()->id
             )
         ) {
             if ($this->isMuc()) {

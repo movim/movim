@@ -64,7 +64,7 @@ class Info extends Model
 
         if ($configuration->restrictsuggestions) {
             $query->whereIn('server', function ($query) {
-                $host = \App\User::me()->session->host;
+                $host = me()->session->host;
                 $query->select('server')
                     ->from('infos')
                     ->where('server', 'like', '%.' . $host);
@@ -205,7 +205,7 @@ class Info extends Model
      */
     public function getPresenceAttribute()
     {
-        return \App\User::me()->session->presences()
+        return me()->session->presences()
             ->where('jid', $this->attributes['server'])
             ->first();
     }

@@ -42,6 +42,9 @@
                 <div>
                     <p class="line">
                         {$contact->truename}
+                        {if="$contact->isBlocked()"}
+                            <span class="tag color red">{$c->__('blocked.title')}</span>
+                        {/if}
                         {if="$roster && $roster->group"}
                             <span class="tag color {$roster->group|stringToColor}">{$roster->group}</span>
                         {/if}
@@ -197,13 +200,42 @@
         <div class="tabelem spin" title="{$c->__('omemo.fingerprints_title')}" id="omemo_fingerprints"></div>
     {/if}
 
-    <div id="adhoc_widget_{$jid|cleanupId}"
-        class="adhoc_widget tabelem"
+    <div id="adhoc_widget"
+        class="tabelem"
         title="{$c->__('adhoc.title')}"
         data-mobileicon="terminal" >
-        <div class="placeholder">
-            <i class="material-symbols">terminal</i>
-            <h1>{$c->__('adhoc.title')}</h1>
+        <ul class="list middle active divided">
+            {if="$contact->isBlocked()"}
+                <li onclick="ContactActions_ajaxUnblock('{$contact->id|echapJS}'); Drawer.clear();">
+                    <span class="primary icon green">
+                        <i class="material-symbols">cancel</i>
+                    </span>
+                    <span class="control icon gray">
+                        <i class="material-symbols">chevron_right</i>
+                    </span>
+                    <div>
+                        <p class="normal">{$c->__('blocked.unblock_account')}</p>
+                    </div>
+                </li>
+            {else}
+                <li onclick="ContactActions_ajaxBlock('{$contact->id|echapJS}'); Drawer.clear();">
+                    <span class="primary icon red">
+                        <i class="material-symbols">block</i>
+                    </span>
+                    <span class="control icon gray">
+                        <i class="material-symbols">chevron_right</i>
+                    </span>
+                    <div>
+                        <p class="normal">{$c->__('blocked.block_account')}</p>
+                    </div>
+                </li>
+            {/if}
+        </ul>
+        <div id="adhoc_widget_{$jid|cleanupId}">
+            <div class="placeholder">
+                <i class="material-symbols">terminal</i>
+                <h1>{$c->__('adhoc.title')}</h1>
+            </div>
         </div>
     </div>
 

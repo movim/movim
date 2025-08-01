@@ -18,7 +18,7 @@ class Delete extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        \App\User::me()->session->conferences()->where('conference', $this->_id)->delete();
+        me()->session->conferences()->where('conference', $this->_id)->delete();
         $this->deliver();
     }
 }

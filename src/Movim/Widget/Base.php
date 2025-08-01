@@ -41,7 +41,7 @@ class Base
         }
 
         $this->setName();
-        $this->user = \App\User::me();
+        $this->user = me();
         $this->load();
         $this->baseUri = BASE_URI;
 

@@ -17,7 +17,7 @@ class Bind extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $session = \App\User::me()->session;
+        $session = me()->session;
 
         $jid = explodeJid((string)$stanza->bind->jid);
 

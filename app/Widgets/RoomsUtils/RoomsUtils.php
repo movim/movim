@@ -844,7 +844,7 @@ class RoomsUtils extends Base
     {
         $g = new \Moxl\Xec\Action\MAM\Get;
 
-        $message = \App\User::me()->messages()
+        $message = me()->messages()
             ->where('jidfrom', $jid)
             ->whereNull('subject');
 

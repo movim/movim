@@ -11,7 +11,7 @@ class SASL2Success extends Payload
         $memorySession = Session::instance();
         $memorySession->delete('password');
 
-        $session = \App\User::me()->session;
+        $session = me()->session;
 
         $jid = explodeJid((string)$stanza->{'authorization-identifier'});
 

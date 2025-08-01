@@ -19,8 +19,8 @@ class Block extends Action
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         $r = Reported::firstOrCreate(['id' => $this->_jid]);
-        \App\User::me()->reported()->syncWithoutDetaching([$r->id => ['synced' => true]]);
-        \App\User::me()->refreshBlocked();
+        me()->reported()->syncWithoutDetaching([$r->id => ['synced' => true]]);
+        me()->refreshBlocked();
 
         $this->pack($this->_jid);
         $this->deliver();

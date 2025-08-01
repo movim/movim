@@ -21,12 +21,12 @@
                 </li>
             </ul>
         </header>
-        <?php if (\App\User::me()->hasPubsub()) { ?>
+        <?php if (me()->hasPubsub()) { ?>
             <?php $this->widget('CommunitySubscriptions'); ?>
         <?php } ?>
     </div>
 </main>
 
-<?php if (\App\User::me()->hasPubsub()) { ?>
+<?php if (me()->hasPubsub()) { ?>
     <?php $this->widget('PublishStories');?>
 <?php } ?>

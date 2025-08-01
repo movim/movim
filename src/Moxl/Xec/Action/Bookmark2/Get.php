@@ -19,7 +19,7 @@ class Get extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        \App\User::me()
+        me()
             ->session
             ->conferences()
             ->where('bookmarkversion', (int)$this->_version)
@@ -36,7 +36,7 @@ class Get extends Action
         }
 
         // We remove the conferences that might be saved under another bookmark version
-        \App\User::me()
+        me()
             ->session
             ->conferences()
             ->whereIn('conference', $conferenceIds)

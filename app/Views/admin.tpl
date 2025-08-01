@@ -24,7 +24,7 @@
             </ul>
         </header>
 
-        <?php if (\App\User::me()->admin) { ?>
+        <?php if (me()->admin) { ?>
             <?php $this->widget('Tabs');?>
             <ul class="tabs" id="navtabs"></ul>
 
@@ -35,6 +35,6 @@
     </div>
 </main>
 
-<?php if (\App\User::me()->hasPubsub()) { ?>
+<?php if (me()->hasPubsub()) { ?>
     <?php $this->widget('PublishStories');?>
 <?php } ?>
