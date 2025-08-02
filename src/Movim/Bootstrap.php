@@ -261,6 +261,7 @@ class Bootstrap
             'CommunitiesServers',
             'Confirm',
             'ContactActions',
+            'ContactBlogConfig',
             'Chat',
             'ChatActions',
             'ChatOmemo',

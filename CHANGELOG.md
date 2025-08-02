@@ -8,6 +8,7 @@ v0.31.1 (master)
 * Add a MAMEarliest table to keep track of the earliest message when requesting MAM
 * Improve the contact block/unblock flows
 * Add a me() utils
+* Add a ContactBlogConfig widget to notify the user about a Private blog configuration
 
 v0.31
 ---------------------------

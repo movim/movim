@@ -5,6 +5,7 @@
 <?php $this->widget('Notifications');?>
 <?php $this->widget('SendTo');?>
 <?php $this->widget('Tabs');?>
+<?php $this->widget('Upload');?>
 <?php if(me()->hasOMEMO()) $this->widget('ChatOmemo');?>
 
 <nav>
@@ -21,6 +22,7 @@
     </aside>
     <div>
         <?php $this->widget('ContactHeader'); ?>
+        <?php $this->widget('ContactBlogConfig'); ?>
         <?php $this->widget('CommunityPosts'); ?>
     </div>
 </main>

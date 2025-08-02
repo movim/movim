@@ -54,9 +54,7 @@ class Publish extends Base
 
     public function onBlogConfig($package)
     {
-        $value = $package->content['config']->xpath('//field[@var=\'pubsub#access_model\']/value/text()');
-
-        if (is_array($value) && (string)$value[0] == 'presence') {
+        if ($package->content['access_model'] == 'presence') {
             $view = $this->tpl();
             $this->rpc('MovimTpl.fill', '#publish_blog_presence', $view->draw('_publish_blog_presence'));
         }
