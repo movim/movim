@@ -202,8 +202,7 @@
 
     <div id="adhoc_widget"
         class="tabelem"
-        title="{$c->__('adhoc.title')}"
-        data-mobileicon="terminal" >
+        title="{$c->__('adhoc.title')}">
         <ul class="list middle active divided">
             {if="$contact->isBlocked()"}
                 <li onclick="ContactActions_ajaxUnblock('{$contact->id|echapJS}'); Drawer.clear();">

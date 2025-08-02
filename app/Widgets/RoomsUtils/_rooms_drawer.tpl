@@ -360,8 +360,7 @@
 
     <div id="adhoc_widget_{$room|cleanupId}"
     class="adhoc_widget tabelem"
-    title="{$c->__('adhoc.title')}"
-    data-mobileicon="terminal" >
+    title="{$c->__('adhoc.title')}">
         <div class="placeholder">
             <i class="material-symbols">terminal</i>
             <h1>{$c->__('adhoc.title')}</h1>
