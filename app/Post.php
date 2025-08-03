@@ -23,13 +23,7 @@ class Post extends Model
         'likes',
         'comments',
         'contact',
-        'openlink',
-        'embed',
         'links',
-        'files',
-        'pictures',
-        'picture',
-        'attachment',
         'userAffiliation'
     ];
     public $withCount = ['userViews'];
@@ -99,18 +93,6 @@ class Post extends Model
             });
     }
 
-    public function openlink()
-    {
-        return $this->hasOne('App\Attachment')
-            ->where('category', 'open');
-    }
-
-    public function embed()
-    {
-        return $this->hasOne('App\Attachment')
-            ->where('category', 'embed');
-    }
-
     public function links()
     {
         return $this->hasMany('App\Attachment')
@@ -124,35 +106,53 @@ class Post extends Model
             });
     }
 
-    public function files()
-    {
-        return $this->hasMany('App\Attachment')
-            ->where('category', 'file');
-    }
-
-    public function pictures()
-    {
-        return $this->hasMany('App\Attachment')
-            ->where('category', 'picture')
-            ->where('type', '!=', 'content');
-    }
-
-    public function picture()
-    {
-        return $this->hasOne('App\Attachment')
-            ->where('category', 'picture');
-    }
-
-    public function attachment()
-    {
-        return $this->hasOne('App\Attachment')
-            ->whereIn('rel', ['enclosure', 'related'])
-            ->orderBy('rel', 'desc'); // related first
-    }
+    /**
+     * Attachements
+     */
 
     public function attachments()
     {
         return $this->hasMany('App\Attachment');
+    }
+
+    public function getOpenlinkAttribute()
+    {
+        return $this->relations['attachments']->firstWhere('category', 'open');
+    }
+
+    public function getEmbedsAttribute()
+    {
+        return $this->relations['attachments']->where('category', 'embed');
+    }
+
+    public function getEmbedAttribute()
+    {
+        return $this->relations['attachments']->firstWhere('category', 'embed');
+    }
+
+    public function getFilesAttribute()
+    {
+        return $this->relations['attachments']->where('category', 'file');
+    }
+
+    public function getPicturesAttribute()
+    {
+        return $this->relations['attachments']
+            ->where('category', 'picture')
+            ->where('type', '!=', 'content');
+    }
+
+    public function getPictureAttribute()
+    {
+        return $this->relations['attachments']->firstWhere('category', 'picture');
+    }
+
+    public function getAttachmentAttribute()
+    {
+        return $this->relations['attachments']
+            ->whereIn('rel', ['enclosure', 'related'])
+            ->orderBy('rel', 'desc')
+            ->first(); // related first
     }
 
     public function save(array $options = [])
@@ -688,13 +688,20 @@ class Post extends Model
                 $atte->rel = $enc['rel'];
                 $atte->category = 'embed';
 
+                // Youtube
                 if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $enc['href'], $match)) {
                     $atte->href = 'https://www.youtube.com/embed/' . $match[1];
                     $this->attachments[] = $atte;
+                // RedGif
                 } elseif (preg_match('/(?:https:\/\/)?(?:www.)?redgifs.com\/watch\/([a-zA-Z]+)$/', $enc['href'], $match)) {
                     $atte->href = 'https://www.redgifs.com/ifr/' . $match[1];
                     $this->attachments[] = $atte;
                     $this->resolveUrl($enc['href']);
+                // PeerTube
+                } elseif (preg_match('/https:\/\/?(.*)\/w\/(\w{22})/', $enc['href'], $match)) {
+                    $atte->href = 'https://' . $match[1] . '/videos/embed/' . $match[2];
+                    $this->attachments[] = $atte;
+                // Reddit
                 } elseif (in_array(parse_url($enc['href'], PHP_URL_HOST), ['old.reddit.com', 'reddit.com', 'www.reddit.com'])
                     && substr(parse_url($enc['href'], PHP_URL_PATH), 0, 8) == '/gallery') {
                     $this->resolveUrl($enc['href']);

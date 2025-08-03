@@ -106,10 +106,12 @@
                 <i class="material-symbols">visibility</i>
             </label>
             <div>
-                {if="$post->embed"}
-                    <div class="video_embed shimmer">
-                        <iframe class="spin" src="{$post->embed->href}" frameborder="0" allowfullscreen></iframe>
-                    </div>
+                {if="$post->embeds"}
+                    {loop="$post->embeds"}
+                        <div class="video_embed shimmer">
+                            <iframe class="spin" src="{$value->href}" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    {/loop}
                 {else}
                     {loop="$post->pictures"}
                         <img class="big_picture"
@@ -133,10 +135,12 @@
                 <i class="material-symbols">visibility</i>
             </label>
             <div>
-                {if="$post->embed"}
-                    <div class="video_embed shimmer">
-                        <iframe class="spin" src="{$post->embed->href}" frameborder="0" allowfullscreen></iframe>
-                    </div>
+                {if="$post->embeds"}
+                    {loop="$post->embeds"}
+                        <div class="video_embed shimmer">
+                            <iframe class="spin" src="{$value->href}" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    {/loop}
                 {elseif="$post->isShort()"}
                     {loop="$post->pictures"}
                         <img class="big_picture"

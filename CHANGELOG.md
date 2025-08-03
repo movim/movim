@@ -9,6 +9,8 @@ v0.31.1 (master)
 * Improve the contact block/unblock flows
 * Add a me() utils
 * Add a ContactBlogConfig widget to notify the user about a Private blog configuration
+* Fix #1270 Add PeerTube embedding support in Posts
+* Refactor the embbeding code and optimize the eager loading of attachments in Posts
 
 v0.31
 ---------------------------
@@ -636,7 +638,7 @@ v0.14.1
  * Display Gateway connection status
  * CSS fixes in Forms
  * Disable the dropdown in Form if there is only one choice
- * Add support for embeded images in Forms (for CAPTCHA)
+ * Add support for embedded images in Forms (for CAPTCHA)
  * Chat bubbles a bit more compact
  * Display single emojis as small stickers
  * Display chat states in MUC, handle the chat states with a new ChatStates class

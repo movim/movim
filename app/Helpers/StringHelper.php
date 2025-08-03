@@ -301,6 +301,14 @@ function typeIsAudio(string $type): bool
 }
 
 /**
+ * @desc Check if the Provider Name is embedable
+ */
+function providerNameIsEmbed(string $providerName): bool
+{
+    return in_array($providerName, ['PeerTube', 'YouTube', 'RedGIFs']);
+}
+
+/**
  * @desc Validate a media type
  */
 function isMimeType(string $mimeType): bool

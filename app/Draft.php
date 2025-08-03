@@ -53,9 +53,11 @@ class Draft extends Model
             }
 
             foreach ($post->attachments()->whereIn('rel', ['enclosure', 'related'])->get() as $attachment) {
-                $embed = new DraftEmbed;
-                $embed->url = $attachment->href;
-                array_push($this->embeds, $embed);
+                if ($attachment->category != 'embed') {
+                    $embed = new DraftEmbed;
+                    $embed->url = $attachment->href;
+                    array_push($this->embeds, $embed);
+                }
             }
         }
     }

@@ -171,10 +171,12 @@
 
 <section dir="{if="$post->isRTL()"}rtl{else}ltr{/if}">
     <div>
-        {if="$post->embed"}
-            <div class="video_embed shimmer">
-                <iframe class="spin" src="{$post->embed->href}" frameborder="0" allowfullscreen></iframe>
-            </div>
+        {if="$post->embeds"}
+            {loop="$post->embeds"}
+                <div class="video_embed shimmer">
+                    <iframe class="spin" src="{$value->href}" frameborder="0" allowfullscreen></iframe>
+                </div>
+            {/loop}
         {elseif="$post->isShort()"}
             {loop="$post->pictures"}
                 <img class="big_picture"
@@ -245,14 +247,14 @@
         </ul>
     {/if}
 
-    {if="$post->pictures()->count() > 0 && !$post->isBrief() && !$post->isShort()"}
+    {if="$post->pictures->count() > 0 && !$post->isBrief() && !$post->isShort()"}
         <ul class="list">
             <li class="subheader">
                 <div>
                     <p>
                         {$c->__('general.pictures')}
                         <span class="second">
-                            {$post->pictures()->count()}
+                            {$post->pictures->count()}
                             <i class="material-symbols">image</i>
                         </span>
                     </p>
