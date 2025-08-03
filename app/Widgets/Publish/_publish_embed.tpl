@@ -1,6 +1,7 @@
 {$resolved = $embed->resolve()}
 
 {if="$resolved"}
+{$resolved|serialize}
 <li class="block" id="{$embed->HTMLId}">
     {if="providerNameIsEmbed($resolved->providerName)"}
         <span class="control icon gray" title="{$c->__('publish.embedded_link')}">

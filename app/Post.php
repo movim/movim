@@ -7,6 +7,7 @@ use Respect\Validation\Validator;
 use Awobaz\Compoships\Database\Eloquent\Model;
 use Carbon\Carbon;
 use Illuminate\Database\Capsule\Manager as DB;
+use Illuminate\Support\Collection;
 use Movim\Widget\Wrapper;
 use Moxl\Xec\Payload\Packet;
 use React\Promise\Promise;
@@ -115,41 +116,46 @@ class Post extends Model
         return $this->hasMany('App\Attachment');
     }
 
+    public function resolveAttachments(): Collection
+    {
+        return $this->relations['attachments'] ?? $this->attachments()->get();
+    }
+
     public function getOpenlinkAttribute()
     {
-        return $this->relations['attachments']->firstWhere('category', 'open');
+        return $this->resolveAttachments()->firstWhere('category', 'open');
     }
 
     public function getEmbedsAttribute()
     {
-        return $this->relations['attachments']->where('category', 'embed');
+        return $this->resolveAttachments()->where('category', 'embed');
     }
 
     public function getEmbedAttribute()
     {
-        return $this->relations['attachments']->firstWhere('category', 'embed');
+        return $this->resolveAttachments()->firstWhere('category', 'embed');
     }
 
     public function getFilesAttribute()
     {
-        return $this->relations['attachments']->where('category', 'file');
+        return $this->resolveAttachments()->where('category', 'file');
     }
 
     public function getPicturesAttribute()
     {
-        return $this->relations['attachments']
+        return $this->resolveAttachments()
             ->where('category', 'picture')
             ->where('type', '!=', 'content');
     }
 
     public function getPictureAttribute()
     {
-        return $this->relations['attachments']->firstWhere('category', 'picture');
+        return $this->resolveAttachments()->firstWhere('category', 'picture');
     }
 
     public function getAttachmentAttribute()
     {
-        return $this->relations['attachments']
+        return $this->resolveAttachments()
             ->whereIn('rel', ['enclosure', 'related'])
             ->orderBy('rel', 'desc')
             ->first(); // related first
@@ -179,7 +185,6 @@ class Post extends Model
 
                 $this->tags()->sync($this->tags);
             }
-
         } catch (\Exception $e) {
             /*
              * When an article is received by two accounts simultaenously
@@ -315,16 +320,16 @@ class Post extends Model
     public function scopeMyStories($query, ?int $id = null)
     {
         $query = $query->whereIn('id', function ($query) {
-                $filters = DB::table('posts')->where('id', -1);
+            $filters = DB::table('posts')->where('id', -1);
 
-                $filters = \App\Post::withMineScope($filters, Post::STORIES_NODE);
-                $filters = \App\Post::withContactsScope($filters, Post::STORIES_NODE);
+            $filters = \App\Post::withMineScope($filters, Post::STORIES_NODE);
+            $filters = \App\Post::withContactsScope($filters, Post::STORIES_NODE);
 
-                $query->select('id')->from(
-                    $filters,
-                    'posts'
-                );
-            })
+            $query->select('id')->from(
+                $filters,
+                'posts'
+            );
+        })
             ->where('published', '>', Carbon::now()->subDay())
             ->orderBy('published', 'desc');
 
@@ -392,7 +397,7 @@ class Post extends Model
                     $d = htmlspecialchars_decode((string)$c);
 
                     $dom = new \DOMDocument('1.0', 'utf-8');
-                    $dom->loadHTML('<div>' .$d . '</div>', LIBXML_NOERROR);
+                    $dom->loadHTML('<div>' . $d . '</div>', LIBXML_NOERROR);
 
                     return (string)$dom->saveHTML($dom->documentElement->lastChild->lastChild);
                     break;
@@ -692,18 +697,23 @@ class Post extends Model
                 if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $enc['href'], $match)) {
                     $atte->href = 'https://www.youtube.com/embed/' . $match[1];
                     $this->attachments[] = $atte;
-                // RedGif
+                    // RedGif
                 } elseif (preg_match('/(?:https:\/\/)?(?:www.)?redgifs.com\/watch\/([a-zA-Z]+)$/', $enc['href'], $match)) {
                     $atte->href = 'https://www.redgifs.com/ifr/' . $match[1];
                     $this->attachments[] = $atte;
                     $this->resolveUrl($enc['href']);
-                // PeerTube
-                } elseif (preg_match('/https:\/\/?(.*)\/w\/(\w{22})/', $enc['href'], $match)) {
+                    // PeerTube
+                } elseif (
+                    preg_match('/https:\/\/?(.*)\/w\/(\w{22})/', $enc['href'], $match)
+                    || preg_match('/https:\/\/?(.*)\/videos\/watch\/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})/', $enc['href'], $match)
+                ) {
                     $atte->href = 'https://' . $match[1] . '/videos/embed/' . $match[2];
                     $this->attachments[] = $atte;
-                // Reddit
-                } elseif (in_array(parse_url($enc['href'], PHP_URL_HOST), ['old.reddit.com', 'reddit.com', 'www.reddit.com'])
-                    && substr(parse_url($enc['href'], PHP_URL_PATH), 0, 8) == '/gallery') {
+                    // Reddit
+                } elseif (
+                    in_array(parse_url($enc['href'], PHP_URL_HOST), ['old.reddit.com', 'reddit.com', 'www.reddit.com'])
+                    && substr(parse_url($enc['href'], PHP_URL_PATH), 0, 8) == '/gallery'
+                ) {
                     $this->resolveUrl($enc['href']);
                 }
             }
