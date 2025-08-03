@@ -171,7 +171,7 @@
 
 <section dir="{if="$post->isRTL()"}rtl{else}ltr{/if}">
     <div>
-        {if="$post->embeds"}
+        {if="$post->embeds->count() > 0"}
             {loop="$post->embeds"}
                 <div class="video_embed shimmer">
                     <iframe class="spin" src="{$value->href}" frameborder="0" allowfullscreen></iframe>
