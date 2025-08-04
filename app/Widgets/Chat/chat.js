@@ -802,7 +802,9 @@ var Chat = {
         });
     },
     scrollAndBlinkMessageMid: function (mid) {
-        Chat.scrollAndBlinkMessage(document.querySelector('div[data-mid="' + mid + '"'));
+        setTimeout(() => {
+            Chat.scrollAndBlinkMessage(document.querySelector('div[data-mid="' + mid + '"'));
+        }, 200)
     },
     setVideoObserverBehaviour: function () {
         document.querySelectorAll('.file video').forEach(video => {
