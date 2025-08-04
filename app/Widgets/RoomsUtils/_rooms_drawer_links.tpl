@@ -1,10 +1,7 @@
 <ul class="active list thick">
     {loop="$links"}
         {autoescape="off"}
-            {$resolved = $value->resolvedUrl->cache}
-            {if="$resolved"}
-                {$c->prepareEmbedUrl($resolved)}
-            {/if}
+            {$c->prepareEmbedUrl($value)}
         {/autoescape}
     {/loop}
 </ul>

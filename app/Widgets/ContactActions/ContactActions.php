@@ -2,6 +2,7 @@
 
 namespace App\Widgets\ContactActions;
 
+use App\Message;
 use App\Widgets\AdHoc\AdHoc;
 use App\Widgets\Chat\Chat;
 use App\Widgets\Chats\Chats;
@@ -212,9 +213,13 @@ class ContactActions extends Base
         $this->rpc('MovimTpl.append', '#contact_links', $tpl->draw('_contactactions_drawer_links'));
     }
 
-    public function prepareEmbedUrl(EmbedLight $embed)
+    public function prepareEmbedUrl(Message $message)
     {
-        return (new Chat())->prepareEmbed($embed, true);
+        $resolved = $message->resolvedUrl->cache;
+
+        if ($resolved) {
+            return (new Chat())->prepareEmbed($resolved, $message);
+        }
     }
 
     public function prepareTicket(\App\Post $post)

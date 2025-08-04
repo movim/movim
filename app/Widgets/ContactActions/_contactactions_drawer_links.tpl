@@ -3,7 +3,7 @@
         {autoescape="off"}
             {$resolved = $value->resolvedUrl->cache}
             {if="$resolved"}
-                {$c->prepareEmbedUrl($resolved)}
+                {$c->prepareEmbedUrl($value)}
             {/if}
         {/autoescape}
     {/loop}

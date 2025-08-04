@@ -914,8 +914,12 @@ class RoomsUtils extends Base
         $this->rpc('MovimTpl.fill', '#gateway_rooms', '');
     }
 
-    public function prepareEmbedUrl(EmbedLight $embed)
+    public function prepareEmbedUrl(Message $message)
     {
-        return (new Chat)->prepareEmbed($embed, true);
+        $resolved = $message->resolvedUrl->cache;
+
+        if ($resolved) {
+            return (new Chat())->prepareEmbed($resolved, $message);
+        }
     }
 }

@@ -1,8 +1,8 @@
 <ul class="grid active">
     {loop="$pictures"}
         <li style="background-image: url('{$value->file->url|protectPicture}')"
-            onclick="Preview_ajaxHttpShow('{$value->file->url}')">
-            <i class="material-symbols">visibility</i>
+            onclick="Chat_ajaxGetMessageContext('{$value->jidfrom}', {$value->mid}, true); Drawer.clear()">
+            <i class="material-symbols">chat_paste_go_2</i>
         </li>
     {/loop}
 </ul>

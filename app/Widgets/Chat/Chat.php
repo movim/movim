@@ -1040,6 +1040,53 @@ class Chat extends \Movim\Widget\Base
     }
 
     /**
+     * @brief Get a specific message contect
+     */
+    public function ajaxGetMessageContext(string $jid, int $mid, bool $muc = false)
+    {
+        if (!validateJid($jid)) return;
+
+        $contextMessage = \App\Message::jid($jid)
+            ->where('published', '<=', function ($query) use ($mid) {
+                $query->select('published')
+                    ->from('messages')
+                    ->where('mid', $mid);
+            })
+            ->orderBy('published', 'desc')
+            ->take(1)
+            ->skip(3)
+            ->first();
+
+        if ($contextMessage) {
+            $messages = \App\Message::jid($jid)
+                ->where('published', '>=', $contextMessage->published);
+
+            $messages = $muc
+                ? $messages->whereIn('type', $this->_messageTypesMuc)->whereNull('subject')
+                : $messages->whereIn('type', $this->_messageTypes);
+
+            $messages = $messages->orderBy('published', 'asc')
+                ->withCount('reactions')
+                ->take($this->_pagination)
+                ->get();
+
+            if ($messages->count() > 0) {
+                $messages = $messages->reverse();
+
+                foreach ($messages as $message) {
+                    $this->prepareMessage($message);
+                }
+
+                $this->rpc('MovimTpl.fill', '#' . cleanupId($jid) . '-conversation', '');
+                $this->rpc('MovimUtils.addClass', '#scroll_now.button.action', 'show');
+                $this->rpc('Chat.appendMessagesWrapper', $this->_wrapper, true);
+                $this->rpc('Chat.scrollAndBlinkMessageMid', $mid);
+                $this->_wrapper = [];
+            }
+        }
+    }
+
+    /**
      * @brief Get the chat history
      *
      * @param string jid
@@ -1047,9 +1094,7 @@ class Chat extends \Movim\Widget\Base
      */
     public function ajaxGetHistory(string $jid, ?string $date = null, bool $muc = false, bool $prepend = true, bool $tryMam = true)
     {
-        if (!validateJid($jid)) {
-            return;
-        }
+        if (!validateJid($jid)) return;
 
         $messages = \App\Message::jid($jid);
 
@@ -1683,11 +1728,11 @@ class Chat extends \Movim\Widget\Base
         return $this->_wrapper;
     }
 
-    public function prepareEmbed(EmbedLight $embed, bool $withLink = false)
+    public function prepareEmbed(EmbedLight $embed, ?Message $message = null)
     {
         $tpl = $this->tpl();
         $tpl->assign('embed', $embed);
-        $tpl->assign('withlink', $withLink);
+        $tpl->assign('message', $message);
         return $tpl->draw('_chat_embed');
     }
 

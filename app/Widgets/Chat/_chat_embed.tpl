@@ -24,8 +24,13 @@
         </span>
     {/if}
 
-    {if="$withlink"}
-        <span class="control icon gray active" onclick="Preview.copyToClipboard('{$embed->url}')">
+    {if="$message"}
+        <span class="control icon gray active"
+            onclick="Chat_ajaxGetMessageContext('{$message->jidfrom}', {$message->mid}, {$message->isMuc() ? 'true' : 'false'}); Drawer.clear()">
+            <i class="material-symbols">chat_paste_go_2</i>
+        </span>
+
+        <span class="control icon gray active divided" onclick="Preview.copyToClipboard('{$embed->url}')">
             <i class="material-symbols">content_copy</i>
         </span>
         <span class="control icon gray active" onclick="MovimUtils.openInNew('{$embed->url}')">
@@ -53,7 +58,7 @@
                 <span class="second">{$embed->description}</span>
             {/if}
         </p>
-        {if="$withlink"}
+        {if="$message"}
             <p class="line"><a href="#">{$embed->url}</a></p>
         {/if}
     </div>

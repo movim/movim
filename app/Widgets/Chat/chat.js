@@ -780,23 +780,29 @@ var Chat = {
                     parentMsg = document.getElementById('id' + this.dataset.parentReplaceId)
                 }
                 if (parentMsg) {
-                    scrollToLi = parentMsg.parentNode.parentNode;
-
-                    parentMsg.parentNode.classList.add('scroll_blink');
-
-                    setTimeout(() => {
-                        parentMsg.parentNode.classList.remove('scroll_blink');
-                    }, 1000);
-
-                    document.querySelector('#chat_widget .contained').scrollTo({
-                        top: scrollToLi.offsetTop - 160,
-                        left: 0
-                    });
+                    Chat.scrollAndBlinkMessage(parentMsg)
                 }
             }
 
             i++;
         }
+    },
+    scrollAndBlinkMessage: function (msg) {
+        scrollToLi = msg.parentNode.parentNode;
+
+        msg.parentNode.classList.add('scroll_blink');
+
+        setTimeout(() => {
+            msg.parentNode.classList.remove('scroll_blink');
+        }, 1000);
+
+        document.querySelector('#chat_widget .contained').scrollTo({
+            top: scrollToLi.offsetTop - 160,
+            left: 0
+        });
+    },
+    scrollAndBlinkMessageMid: function (mid) {
+        Chat.scrollAndBlinkMessage(document.querySelector('div[data-mid="' + mid + '"'));
     },
     setVideoObserverBehaviour: function () {
         document.querySelectorAll('.file video').forEach(video => {
@@ -1664,6 +1670,15 @@ var Chat = {
         }
 
         return url.protocol === "http:" || url.protocol === "https:";
+    },
+    getChat: function (jid) {
+        var room = (MovimUtils.urlParts().params[1] === 'room');
+
+        if (room) {
+            Chat.getRoom(jid);
+        } else {
+            Chat.get(jid);
+        }
     }
 };
 
@@ -1676,11 +1691,7 @@ MovimWebsocket.attach(function () {
         if (Boolean(document.getElementById(MovimUtils.cleanupId(jid) + '-conversation')) && Chat.currentDateTime) {
             Chat_ajaxGetHistory(jid, Chat.currentDateTime, room, false, true);
         } else {
-            if (room) {
-                Chat.getRoom(jid);
-            } else {
-                Chat.get(jid);
-            }
+            Chat.getChat(jid);
         }
     } else {
         if (!MovimUtils.isMobile()) {

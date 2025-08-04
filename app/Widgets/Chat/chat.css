@@ -109,7 +109,8 @@ main:not(.enabled) #chat_widget {
 
 /* Scroll button */
 
-#chat_widget #scroll_down.button.action {
+#chat_widget #scroll_down.button.action,
+#chat_widget #scroll_now.button.action {
     animation: none;
     opacity: 0;
     transform: scale(90%);
@@ -119,7 +120,13 @@ main:not(.enabled) #chat_widget {
     pointer-events: none;
 }
 
-#chat_widget #scroll_down.button.action.show {
+#chat_widget #scroll_now.button.action {
+    width: 7rem;
+    right: 1.5rem;
+}
+
+#chat_widget #scroll_now.button.action.show,
+#chat_widget #scroll_now.button.action:not(.show) + #scroll_down.button.action.show {
     transition: transform 0.2s ease-in-out, opacity 0.2s;
     transform: scale(100%);
     opacity: 1;
