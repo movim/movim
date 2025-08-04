@@ -804,7 +804,7 @@ var Chat = {
     scrollAndBlinkMessageMid: function (mid) {
         setTimeout(() => {
             Chat.scrollAndBlinkMessage(document.querySelector('div[data-mid="' + mid + '"'));
-        }, 200)
+        }, 500)
     },
     setVideoObserverBehaviour: function () {
         document.querySelectorAll('.file video').forEach(video => {
