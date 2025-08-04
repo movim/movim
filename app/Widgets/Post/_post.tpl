@@ -237,10 +237,7 @@
                         {$c->__('post.public_yes')}
                     </p>
                     <p class="line">
-                        <a href="#">{$post->openlink->url.host}</a>
-                        {if="array_key_exists('path', $post->openlink->url) && $post->openlink->url.path != '/'"}
-                            <span class="second sticked">{$post->openlink->url.path}</span>
-                        {/if}
+                        <a href="#">{$post->openlink->url.host}</a>{if="array_key_exists('path', $post->openlink->url) && $post->openlink->url.path != '/'"}<span class="second sticked">{$post->openlink->url.path}</span>{/if}
                     </p>
                 </div>
             </li>
