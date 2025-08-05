@@ -20,7 +20,7 @@
         </li>
         <li class="reactions">
             <div>
-                <p>{loop="$message->reactions->groupBy('emoji')"}<a class="chip" href="#">{autoescape="off"}{$key|addEmojis:true}{/autoescape}{$value->implode('truename', ', ')}</a>{/loop}</p>
+                <p>{loop="$message->reactions->groupBy('emoji')"}<a class="chip" href="#" title="{$value->implode('truename', ', ')}">{autoescape="off"}{$key|addEmojis:true}{/autoescape}{$value->implode('truename', ', ')}</a>{/loop}</p>
             </div>
         </li>
     </ul>

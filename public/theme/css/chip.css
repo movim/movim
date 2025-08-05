@@ -8,13 +8,17 @@
     color: rgb(var(--movim-font));
     background-color: rgba(var(--movim-element-action), 0.05);
     transition: background 0.3s ease;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 80%;
 }
 
-*:not(p) > .chip:first-child {
+*:not(p)>.chip:first-child {
     margin-left: 0;
 }
 
-*:not(p) > .chip:last-child {
+*:not(p)>.chip:last-child {
     margin-right: 0;
 }
 
