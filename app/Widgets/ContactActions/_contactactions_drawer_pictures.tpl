@@ -1,7 +1,7 @@
 <ul class="grid active">
     {loop="$pictures"}
         <li style="background-image: url('{$value->file->url|protectPicture}')"
-            onclick="Chat_ajaxGetMessageContext('{$value->jidfrom}', {$value->mid}, false); Drawer.clear()">
+            onclick="Chat_ajaxGetMessageContext('{$value->jid}', {$value->mid}); Drawer.clear()">
             <i class="material-symbols">chat_paste_go_2</i>
         </li>
     {/loop}

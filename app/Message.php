@@ -152,6 +152,13 @@ class Message extends Model
         return \unechap($this->attributes['jidfrom']);
     }
 
+    public function getJidAttribute()
+    {
+        return $this->attributes['jidfrom'] == me()->id
+            ? \unechap($this->attributes['jidto'])
+            : \unechap($this->attributes['jidfrom']);
+    }
+
     public static function findByStanza(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null): Message
     {
         $jidfrom = baseJid((string)$stanza->attributes()->from);

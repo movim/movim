@@ -26,7 +26,7 @@
 
     {if="$message"}
         <span class="control icon gray active"
-            onclick="Chat_ajaxGetMessageContext('{$message->jidfrom}', {$message->mid}, {$message->isMuc() ? 'true' : 'false'}); Drawer.clear()">
+            onclick="Chat_ajaxGetMessageContext('{$message->jid}', {$message->mid}); Drawer.clear()">
             <i class="material-symbols">chat_paste_go_2</i>
         </span>
 

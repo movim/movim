@@ -1042,7 +1042,7 @@ class Chat extends \Movim\Widget\Base
     /**
      * @brief Get a specific message contect
      */
-    public function ajaxGetMessageContext(string $jid, int $mid, bool $muc = false)
+    public function ajaxGetMessageContext(string $jid, int $mid)
     {
         if (!validateJid($jid)) return;
 
@@ -1061,7 +1061,7 @@ class Chat extends \Movim\Widget\Base
             $messages = \App\Message::jid($jid)
                 ->where('published', '>=', $contextMessage->published);
 
-            $messages = $muc
+            $messages = $contextMessage->isMuc()
                 ? $messages->whereIn('type', $this->_messageTypesMuc)->whereNull('subject')
                 : $messages->whereIn('type', $this->_messageTypes);
 
