@@ -1,34 +1,45 @@
-#chat_actions ul#message_preview {
+ul#message_preview {
     background-color: rgb(var(--movim-background));
-    padding-top: 1.5rem;
+    min-height: 100%;
+    box-sizing: border-box;
+    padding: 0.75rem 0;
 }
 
-#chat_actions ul#message_preview li div.bubble {
+ul#message_preview li {
+    padding: 0.75rem;
+}
+
+ul#message_preview li > div.bubble::after {
+    white-space: nowrap;
+}
+
+ul#message_preview li div.bubble {
     max-width: calc(100% - 2rem);
     pointer-events: none;
 }
 
-#chat_actions ul#message_preview li div.bubble:not(.file) {
+ul#message_preview li div.bubble:not(.file) {
     padding-right: 5rem;
     margin-bottom: 0;
+    padding-bottom: 3rem;
 }
 
-#chat_actions ul#message_preview li.oppose {
+ul#message_preview li.oppose {
     flex-direction: row-reverse;
 }
 
-#chat_actions ul#message_preview li div.bubble div.message > p {
+ul#message_preview li div.bubble div.message > p {
     white-space: initial;
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
 }
 
-#chat_actions ul#message_preview li.reactions {
+ul#message_preview li.reactions {
     padding: 0 0.5rem;
     padding-bottom: 0.75rem;
 }
 
-#chat_actions ul#message_preview li.reactions > p {
+ul#message_preview li.reactions > p {
     line-height: 4.75rem;
 }

@@ -12,13 +12,14 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     max-width: 80%;
+    vertical-align: middle;
 }
 
-*:not(p)>.chip:first-child {
+*:not(p):not(h4)>.chip:first-child {
     margin-left: 0;
 }
 
-*:not(p)>.chip:last-child {
+*:not(p):not(h4)>.chip:last-child {
     margin-right: 0;
 }
 

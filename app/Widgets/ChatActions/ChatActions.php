@@ -2,15 +2,19 @@
 
 namespace App\Widgets\ChatActions;
 
+use App\Message;
 use App\Url;
 use App\Widgets\Chat\Chat;
 use App\Widgets\ContactActions\ContactActions;
 use App\Widgets\Dialog\Dialog;
+use App\Widgets\Drawer\Drawer;
 use App\Widgets\Toast\Toast;
 use Moxl\Xec\Action\Blocking\Block;
 use Moxl\Xec\Action\Blocking\Unblock;
 use Moxl\Xec\Action\Message\Moderate;
 use Moxl\Xec\Action\Message\Retract;
+
+use Illuminate\Database\Capsule\Manager as DB;
 
 class ChatActions extends \Movim\Widget\Base
 {
@@ -91,8 +95,68 @@ class ChatActions extends \Movim\Widget\Base
             }
 
             $this->rpc('ChatActions.setMessage', $message);
-            Dialog::fill($view->draw('_chatactions_message'));
+            Dialog::fill($view->draw('_chatactions_message_dialog'));
         }
+    }
+
+    /**
+     * @brief Display the search dialog
+     */
+    public function ajaxShowSearchDialog(string $jid, ?bool $muc = false)
+    {
+        if (DB::getDriverName() != 'pgsql') return;
+
+        $view = $this->tpl();
+        $view->assign('jid', $jid);
+        $view->assign('muc', $muc);
+
+        Drawer::fill('chat_search', $view->draw('_chatactions_search'));
+
+        $this->rpc('ChatActions.focusSearch');
+    }
+
+    public function ajaxSearchMessages(string $jid, string $keywords, ?bool $muc = false)
+    {
+        if (DB::getDriverName() != 'pgsql') return;
+        if (!validateJid($jid)) return;
+
+        if (!empty($keywords)) {
+            $keywords = str_replace(' ', ' & ', trim($keywords));
+
+            $messagesQuery = \App\Message::jid($jid)
+                ->selectRaw('*, ts_headline(\'simple\', body, plainto_tsquery(\'simple\', ?), \'StartSel=<mark>,StopSel=</mark>\') AS headline', [$keywords])
+                ->whereRaw('to_tsvector(\'simple\', body) @@ to_tsquery(\'simple\', ?)', [$keywords])
+                ->orderBy('published', 'desc')
+                ->where('encrypted', false)
+                ->where('retracted', false)
+                ->take(20);
+
+            $messagesQuery = $muc
+                ? $messagesQuery->whereIn('type', Message::MESSAGE_TYPE_MUC)->whereNull('subject')
+                : $messagesQuery->whereIn('type', Message::MESSAGE_TYPE);
+
+            $messages = $messagesQuery->get();
+
+            $view = $this->tpl();
+            $view->assign('messages', $messages);
+            $this->rpc('MovimTpl.fill', '#chat_search', $view->draw('_chatactions_search_result'));
+        } else {
+            $this->rpc('MovimTpl.fill', '#chat_search', $this->prepareSearchPlaceholder());
+        }
+    }
+
+    public function prepareMessage(Message $message, ?bool $search = false)
+    {
+        $view = $this->tpl();
+        $view->assign('message', $message);
+        $view->assign('search', $search);
+        return $view->draw('_chatactions_message');
+    }
+
+    public function prepareSearchPlaceholder()
+    {
+        $view = $this->tpl();
+        return $view->draw('_chatactions_search_placeholder');
     }
 
     public function ajaxCopiedMessageText()

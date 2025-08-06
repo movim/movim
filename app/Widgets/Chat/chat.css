@@ -646,6 +646,7 @@ ul.list li > div.bubble.file ul.card + p:empty:before {
 ul.list li > div.bubble.file div.file {
     margin-bottom: 3rem;
     border-radius: 0.75rem;
+    position: relative;
 }
 
 li:not(.oppose) .bubble.file span.resource+div.file {

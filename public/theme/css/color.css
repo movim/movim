@@ -187,6 +187,7 @@ header.big ul.list li>div>p>span.second {
 
 input[type=button].color,
 header.big,
+mark,
 main > header {
     background-color: var(--movim-accent);
     border-color: var(--movim-accent);

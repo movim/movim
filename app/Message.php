@@ -37,6 +37,26 @@ class Message extends Model
 
     public static $inlinePlaceholder = 'inline-img:';
 
+    public const MESSAGE_TYPE = [
+        'chat',
+        'headline',
+        'invitation',
+        'jingle_incoming',
+        'jingle_outgoing',
+        'jingle_end',
+        'jingle_retract',
+        'jingle_reject'
+    ];
+    public const MESSAGE_TYPE_MUC = [
+        'groupchat',
+        'muji_propose',
+        'muji_retract',
+        'muc_owner',
+        'muc_admin',
+        'muc_outcast',
+        'muc_member'
+    ];
+
     public static function boot()
     {
         parent::boot();

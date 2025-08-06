@@ -43,8 +43,14 @@
                 {/if}
             {/if}
 
+            {if="$c->database('pgsql')"}
+                <span class="control icon active" onclick="ChatActions_ajaxShowSearchDialog('{$jid|echapJS}', true)">
+                    <i class="material-symbols">manage_search</i>
+                </span>
+            {/if}
+
             {if="$conference && $conference->mujiCalls->isEmpty() && $conference->isGroupChat()"}
-                <span class="control icon active {if="$incall"}disabled{/if}" onclick="Visio_ajaxGetMujiLobby('{$conference->conference}', true, false);">
+                <span class="control icon active {if="$c->database('pgsql')"}divided{/if} {if="$incall"}disabled{/if}" onclick="Visio_ajaxGetMujiLobby('{$conference->conference}', true, false);">
                     <i class="material-symbols">call</i>
                 </span>
                 <span class="control icon active {if="$incall"}disabled{/if}" onclick="Visio_ajaxGetMujiLobby('{$conference->conference}', true, true);">
@@ -276,6 +282,12 @@
                 <img src="{if="$roster"}{$roster->getPicture()}{else}{$contact->getPicture()}{/if}">
             </span>
 
+            {if="$c->database('pgsql')"}
+                <span class="control icon active" onclick="ChatActions_ajaxShowSearchDialog('{$jid|echapJS}')">
+                    <i class="material-symbols">manage_search</i>
+                </span>
+            {/if}
+
             {$call = false}
 
             {if="!$incall"}
@@ -283,7 +295,7 @@
                     {loop="$roster->presences"}
                         {if="$value->capability && $value->capability->isJingleAudio() && $value->jid"}
                             {$call = true}
-                            <span title="{$c->__('button.audio_call')}" class="control icon active on_desktop"
+                            <span title="{$c->__('button.audio_call')}" class="control icon active {if="$c->database('pgsql')"}divided{/if} on_desktop"
                                 onclick="Visio_ajaxGetLobby('{$value->jid|echapJS}', true);">
                                 <i class="material-symbols">phone</i>
                             </span>

@@ -40,25 +40,6 @@ class Chat extends \Movim\Widget\Base
 {
     private $_pagination = 50;
     private $_wrapper = [];
-    private $_messageTypes = [
-        'chat',
-        'headline',
-        'invitation',
-        'jingle_incoming',
-        'jingle_outgoing',
-        'jingle_end',
-        'jingle_retract',
-        'jingle_reject'
-    ];
-    private $_messageTypesMuc = [
-        'groupchat',
-        'muji_propose',
-        'muji_retract',
-        'muc_owner',
-        'muc_admin',
-        'muc_outcast',
-        'muc_member'
-    ];
     private $_mucPresences = [];
 
     public function load()
@@ -1062,8 +1043,8 @@ class Chat extends \Movim\Widget\Base
                 ->where('published', '>=', $contextMessage->published);
 
             $messages = $contextMessage->isMuc()
-                ? $messages->whereIn('type', $this->_messageTypesMuc)->whereNull('subject')
-                : $messages->whereIn('type', $this->_messageTypes);
+                ? $messages->whereIn('type', Message::MESSAGE_TYPE_MUC)->whereNull('subject')
+                : $messages->whereIn('type', Message::MESSAGE_TYPE);
 
             $messages = $messages->orderBy('published', 'asc')
                 ->withCount('reactions')
@@ -1103,8 +1084,8 @@ class Chat extends \Movim\Widget\Base
         }
 
         $messages = $muc
-            ? $messages->whereIn('type', $this->_messageTypesMuc)->whereNull('subject')
-            : $messages->whereIn('type', $this->_messageTypes);
+            ? $messages->whereIn('type', Message::MESSAGE_TYPE_MUC)->whereNull('subject')
+            : $messages->whereIn('type', Message::MESSAGE_TYPE);
 
         $messages = $messages->orderBy('published', 'desc')
             ->withCount('reactions')
@@ -1279,8 +1260,8 @@ class Chat extends \Movim\Widget\Base
         $messagesQuery = \App\Message::jid($jid);
 
         $messagesQuery = $muc
-            ? $messagesQuery->whereIn('type', $this->_messageTypesMuc)->whereNull('subject')
-            : $messagesQuery->whereIn('type', $this->_messageTypes);
+            ? $messagesQuery->whereIn('type', Message::MESSAGE_TYPE_MUC)->whereNull('subject')
+            : $messagesQuery->whereIn('type', Message::MESSAGE_TYPE);
 
         /**
          * The object need to be cloned there for MySQL, looks like the pagination/where is kept somewhere in between…

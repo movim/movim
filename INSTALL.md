@@ -10,7 +10,7 @@ Movim requires some dependencies to be setup properly.
   * A PHP process manager like php-fpm will usually be required for Nginx
   * Root access by SSH with access to the webserver user (most of the time via the user www-data)
   * A SQL server with a schema for Movim.
-     * PostgreSQL (**_strongly recommended_**)
+     * PostgreSQL (**_strongly recommended_** some features are only available on this database)
      * MariaDB 10.2 or higher with utf8mb4 encoding (necessary for emojis 😃 support) AND `utf8mb4_bin` collation.
      * MySQL is __NOT__ supported and will throw errors during the migrations, please use PostgreSQL or MariaDB.
   * **PHP 8.2 minimum** with :
