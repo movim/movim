@@ -731,7 +731,7 @@ ul.list li > div.bubble.file div.file a span.size:before {
 }
 
 #chat_widget .bubble.file .message div.file:before {
-    right: 8.5rem;
+    right: 1.5rem;
 }
 
 #chat_widget .bubble.file[data-thumbash] {
