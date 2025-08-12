@@ -1,3 +1,5 @@
+<li id="publish_blog_presence"></li>
+
 <li>
     <span class="primary privacy"
     title="{$c->__('publish.web_title')}">
@@ -22,11 +24,9 @@
     <div>
         <p>{$c->__('publish.web_title')}</p>
         <p>{$c->__('publish.web_text')}</p>
-        <span class="supporting line" id="publishopenlinkpreview"></span>
+        <span class="supporting line" id="publish_preview_url"></span>
     </div>
 </li>
-
-<li id="publish_blog_presence"></li>
 
 <li>
     <span class="primary comments_disabled"

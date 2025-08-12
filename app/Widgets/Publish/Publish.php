@@ -190,10 +190,7 @@ class Publish extends Base
                     $p->setPublished(strtotime($post->published));
                 }
             } else {
-                $slug = $this->getSlugFromTitle($draft->title);
-                if ($slug) {
-                    $p->setId($slug);
-                }
+                $p->setId($this->titleToSlug($draft->title));
             }
 
             if (!$draft->comments_disabled) {
@@ -360,21 +357,20 @@ class Publish extends Base
     public function ajaxOpenlinkPreview($id)
     {
         $draft = $this->user->drafts()->find($id);
+        $view = $this->tpl();
 
-        if ($draft && !$draft->nodeid) {
-            $id = $draft->title ? $this->getSlugFromTitle($draft->title) : null;
+        if ($draft && $draft->open && !$draft->nodeid) {
+            $slug = $this->titleToSlug($draft->title);
 
-            if ($id) {
-                $openlink = ($draft->node == AppPost::MICROBLOG_NODE)
-                    ? $this->route('blog', [$draft->server, $id])
-                    : $this->route('community', [$draft->server, $draft->node, $id]);
-            }
+            $view->assign('link', ($draft->node == AppPost::MICROBLOG_NODE)
+                    ? $this->route('blog', [$draft->server, $slug])
+                    : $this->route('community', [$draft->server, $draft->node, $slug]));
 
-            $this->rpc('MovimTpl.fill', '#publishopenlinkpreview', $id ? __('post.public_preview', $openlink) : '');
+            $this->rpc('MovimTpl.fill', '#publish_preview_url', $view->draw('_publish_preview_url'));
             return;
         }
 
-        $this->rpc('MovimTpl.fill', '#publishopenlinkpreview', '');
+        $this->rpc('MovimTpl.fill', '#publish_preview_url', '');
     }
 
     public function ajaxTogglePrivacy($id, bool $open)
@@ -386,6 +382,10 @@ class Publish extends Base
             $draft->save();
 
             $this->ajaxCheckPrivacy($id);
+
+            if (!$open) {
+                $this->rpc('MovimTpl.fill', '#publish_preview_url', '');
+            }
 
             Toast::send(($open)
                 ? $this->__('post.public_yes')
@@ -562,7 +562,7 @@ class Publish extends Base
         $this->rpc('Publish.init');
     }
 
-    private function getSlugFromTitle(string $title): ?string
+    private function titleToSlug(?string $title = null): string
     {
         $slug = slugify(
             strtok(wordwrap($title, 80, "\n"), "\n")
@@ -572,6 +572,6 @@ class Publish extends Base
             return $slug . '-' . \generateKey(6);
         }
 
-        return null;
+        return \generateUUID();
     }
 }

@@ -13,6 +13,7 @@ v0.31.1 (master)
 * Refactor the embbeding code and optimize the eager loading of attachments in Posts
 * Add a "Scroll to Message in History" feature
 * Implement full text search of Message bodies using the PostgreSQL tsvector and tssearch features
+* Refactor the Public URL/Public Blog flow and texts
 
 v0.31
 ---------------------------

@@ -72,7 +72,7 @@
     right: 0;
 }
 
-#publish #publishopenlinkpreview:empty,
+#publish #publish_open_link_preview:empty,
 #publish form[data-type="brief"] div#content {
     display: none;
 }
