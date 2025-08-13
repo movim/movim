@@ -41,14 +41,19 @@ class Utils
         $identitiesData = [];
 
         foreach ($identities as $identity) {
-            array_push(
-                $identitiesData,
+            $identityData =
                 $identity->category . chr(31) .
-                    $identity->type . chr(31) .
-                    $identity->lang ?? '' . chr(31) .
-                    $identity->name ?? '' . chr(31) .
-                    chr(30) // 0x1e (ASCII Record Separator)
-            );
+                $identity->type . chr(31);
+
+            $identityData .= $identity->lang ?? '';
+            $identityData .= chr(31);
+
+            $identityData .= $identity->name ?? '';
+            $identityData .= chr(31);
+
+            $identityData .= chr(30); // 0x1e (ASCII Record Separator)
+
+            array_push($identitiesData, $identityData);
         }
 
         asort($identitiesData);
