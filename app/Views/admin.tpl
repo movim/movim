@@ -36,5 +36,6 @@
 </main>
 
 <?php if (me()->hasPubsub()) { ?>
+    <?php $this->widget('Upload');?>
     <?php $this->widget('PublishStories');?>
 <?php } ?>

@@ -5,15 +5,18 @@ var Tabs = {
 
         if (tabs.length == 0) return;
 
-        var current = null;
+        // We keep the current state
+        var current = document.querySelector('#navtabs .active')
+            ? document.querySelector('#navtabs .active').classList[0]
+            : null;
 
         document.querySelector('#navtabs').innerHTML = '';
 
         // We create the list
         for (var i = 0; i < tabs.length; i++) {
-            if (window.location.hash == '#' + tabs[i].id + '_tab') {
+            /*if (window.location.hash == '#' + tabs[i].id + '_tab') {
                 current = tabs[i].id;
-            }
+            }*/
 
             var li = document.createElement('li');
             li.setAttribute('class', tabs[i].id);
@@ -65,14 +68,6 @@ var Tabs = {
         }
 
         Tabs.change(menuTab);
-
-        /*window.onhashchange = function () {
-            var hash = window.location.hash.slice(1, -4);
-            if (hash) {
-                let current = document.querySelector('li.' + hash);
-                if (current) Tabs.change(current);
-            }
-        }*/
     },
 
     change: function (current) {
