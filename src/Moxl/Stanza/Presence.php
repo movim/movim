@@ -89,6 +89,15 @@ class Presence
             $root->appendChild($x);
         }
 
+        $c = $dom->createElementNS('urn:xmpp:caps', 'c');
+        $hash = $dom->createElement('hash', \Moxl\Utils::getOwnCapabilityHash());
+        $hash->setAttribute('xmlns', 'urn:xmpp:hashes:2');
+        $hash->setAttribute('algo', \Moxl\Utils::CAPABILITY_HASH_ALGORITHM);
+
+        $c->appendChild($hash);
+
+        $root->appendChild($c);
+
         $c = $dom->createElementNS('http://jabber.org/protocol/caps', 'c');
         $c->setAttribute('hash', 'sha-1');
         $c->setAttribute('node', 'https://movim.eu/');

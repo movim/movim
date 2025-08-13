@@ -3,13 +3,15 @@
 namespace App;
 
 use Awobaz\Compoships\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
+use Moxl\Utils;
 
 class Info extends Model
 {
     protected $fillable = ['server', 'node', 'avatarhash'];
     protected $with = ['identities'];
 
-    private $freshIdentities;
+    private Collection $freshIdentities;
 
     public function identities()
     {
@@ -329,6 +331,14 @@ class Info extends Model
                 $identity->category = (string)$i->attributes()->category;
                 $identity->type     = (string)$i->attributes()->type;
 
+                if ($i->attributes()->name) {
+                    $identity->name = (string)$i->attributes()->name;
+                }
+
+                if ($i->attributes()->{'xml-lang'}) {
+                    $identity->lang = (string)$i->attributes()->{'xml-lang'};
+                }
+
                 $this->freshIdentities->push($identity);
                 $this->name = ($i->attributes()->name)
                     ? (string)$i->attributes()->name
@@ -511,14 +521,33 @@ class Info extends Model
         return $roles;
     }
 
-    public function isPubsubService()
+    public function isPubsubService(): bool
     {
         return ($this->identities->contains('category', 'pubsub')
             && $this->identities->contains('type', 'service'));
     }
 
-    public function isMicroblogCommentsNode()
+    public function isMicroblogCommentsNode(): bool
     {
         return (substr($this->node, 0, 29) == 'urn:xmpp:microblog:0:comments');
+    }
+
+    public function checkCapabilityHash(): bool
+    {
+        preg_match('/urn:xmpp:caps#(.*)\./', $this->node, $matches);
+
+        $generatedHash = Utils::getCapabilityHashNode(
+            Utils::generateCapabilityHash(
+                $this->freshIdentities,
+                unserialize($this->attributes['features']),
+                $matches[1]
+            )
+        );
+
+        if ($this->node != $generatedHash) {
+            \logError('XEP-0390: Wrong hash for ' . $this->node . ' != ' . $generatedHash);
+        }
+
+        return $this->node == $generatedHash;
     }
 }

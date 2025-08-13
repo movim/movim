@@ -192,13 +192,15 @@ main:not(.enabled) #chat_widget {
 #chat_widget .chat_box form textarea[data-encryptedstate="disabled"]~span.control.icon.encrypted_disabled,
 #chat_widget .chat_box form textarea[data-encryptedstate="build"]~span.control.icon.encrypted_loading {
     display: inline-block;
-    font-size: 3rem;
+    font-size: 2.75rem;
     line-height: 6rem;
     height: 6rem;
     position: absolute;
     right: 0;
     top: 0;
-    padding: 0 1rem;
+    padding: 0 1.5rem;
+    z-index: 1;
+    color: rgba(var(--movim-font), 0.68);
 }
 
 #chat_widget .chat_box li.main > span.primary,

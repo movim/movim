@@ -22,6 +22,8 @@ class Identity extends Model
                     'info_id' => $identity->info_id,
                     'category' => $identity->category,
                     'type' => $identity->type,
+                    'lang' => $identity->lang,
+                    'name' => $identity->name
                 ];
             })->all(), $identities->first()->primaryKey);
         }

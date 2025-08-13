@@ -112,8 +112,9 @@ class Presence extends Model
         }
 
         if ($stanza->c) {
-            $this->node = (string)$stanza->c->attributes()->node .
-                '#' . (string)$stanza->c->attributes()->ver;
+            $this->node = (string)$stanza->c->attributes()->xmlns == 'urn:xmpp:caps'
+                ? 'urn:xmpp:caps#' . (string)$stanza->c->hash->attributes()->algo . '.' . (string)$stanza->c->hash
+                : (string)$stanza->c->attributes()->node . '#' . (string)$stanza->c->attributes()->ver;
         }
 
         $this->priority = ($stanza->priority) ? (int)$stanza->priority : 0;

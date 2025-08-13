@@ -1,7 +1,7 @@
 Movim Changelog
 ================
 
-v0.31.1 (master)
+v0.32 (master)
 ---------------------------
 * Add a copy external link button on the Posts
 * Improve the Communities discovery flow when visiting a server
@@ -14,6 +14,7 @@ v0.31.1 (master)
 * Add a "Scroll to Message in History" feature
 * Implement full text search of Message bodies using the PostgreSQL tsvector and tssearch features
 * Refactor the Public URL/Public Blog flow and texts
+* Implement XEP-0390: Entity Capabilities 2.0
 
 v0.31
 ---------------------------

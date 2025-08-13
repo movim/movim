@@ -6,16 +6,18 @@ use Moxl\Utils;
 
 class Disco
 {
-    public static function answer($to, $id)
+    public static function answer(string $to, string $id, string $node)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('http://jabber.org/protocol/disco#info', 'query');
-        $query->setAttribute('node', 'https://movim.eu/#'.Utils::generateCaps());
+        $query->setAttribute('node', $node);
+
+        $identityData = Utils::getIdentity();
 
         $identity = $dom->createElement('identity');
-        $identity->setAttribute('category', 'client');
-        $identity->setAttribute('type', 'web');
-        $identity->setAttribute('name', 'Movim');
+        $identity->setAttribute('category', $identityData->category);
+        $identity->setAttribute('type', $identityData->type);
+        $identity->setAttribute('name', $identityData->name);
 
         $query->appendChild($identity);
 

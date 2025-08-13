@@ -11,7 +11,6 @@ use Illuminate\Support\Collection;
 use Movim\Widget\Wrapper;
 use Moxl\Xec\Payload\Packet;
 use React\Promise\Promise;
-use React\Promise\PromiseInterface;
 use SimpleXMLElement;
 
 class Post extends Model
