@@ -1,25 +1,9 @@
 var KeyHelper = libsignal.KeyHelper;
 
 var ChatOmemo = {
-    requestedDevicesListFrom: null,
     refreshed: false,
 
-    initGenerateBundle: async function() {
-        var store = new ChatOmemoStorage();
-        const localDeviceId = await store.getLocalRegistrationId();
-
-        if (localDeviceId == undefined) {
-            ChatOmemo.generateBundle();
-        } else {
-            ChatOmemo_ajaxGetSelfMissingSessions(store.getSessionsIds(USER_JID));
-        }
-    },
-
-    generateBundle: async function () {
-        ChatOmemo_ajaxNotifyGeneratingBundle();
-    },
-
-    doGenerateBundle: async function () {
+    initiateBundle: async function (devicesIds) {
         var store = new ChatOmemoStorage();
 
         store.removeAllSessions();
@@ -51,20 +35,24 @@ var ChatOmemo = {
         bundle['preKeys'] = preKeys;
 
         ChatOmemo_ajaxNotifyGeneratedBundle();
-        ChatOmemo_ajaxAnnounceBundle(bundle);
+        ChatOmemo_ajaxAnnounceBundle(bundle, devicesIds);
     },
 
-    refreshBundle: async function(publishOnly) {
+    refreshBundle: async function (devicesIds, publishOnly) {
         var store = new ChatOmemoStorage();
 
         const bundle = {};
 
-        // We get the base of the bundle from the store
+        const localDeviceId = await store.getLocalRegistrationId();
 
+        if (!localDeviceId) ChatOmemo.initiateBundle(devicesIds);
+
+        // We get the base of the bundle from the store
         let keyPair = await store.getIdentityKeyPair();
+        const deviceId = localDeviceId;
 
         bundle['identityKey'] = MovimUtils.arrayBufferToBase64(keyPair.pubKey);
-        bundle['deviceId'] = await store.getLocalRegistrationId();
+        bundle['deviceId'] = deviceId;
 
         let signedPreKey = store.loadCompleteSignedPreKey(SIGNED_PREKEY_ID);
         bundle['signedPreKey'] = {
@@ -74,7 +62,6 @@ var ChatOmemo = {
         }
 
         // We refresh or load all the preKeys
-
         let keys = [];
         let preKeys = [];
 
@@ -94,41 +81,50 @@ var ChatOmemo = {
 
         bundle['preKeys'] = preKeys;
 
-        ChatOmemo_ajaxAnnounceBundle(bundle);
+        ChatOmemo_ajaxAnnounceBundle(bundle, devicesIds);
     },
 
-    ownDevicesReceived: async function (devices) {
+    ownDevicesReceived: async function (from, devicesIds) {
         var store = new ChatOmemoStorage();
         const localDeviceId = await store.getLocalRegistrationId();
 
-        if (!devices.includes(localDeviceId) && ChatOmemo.refreshed == false) {
-            ChatOmemo.refreshBundle(true);
+        if (!devicesIds.includes(localDeviceId.toString()) && ChatOmemo.refreshed == false) {
+            ChatOmemo.refreshBundle(devicesIds, true);
             ChatOmemo.refreshed = true;
         }
     },
 
-    handlePreKeys: function (jid, preKeys) {
-        let promises = [];
+    /**
+     * A contact send us a new device list, we check if we can already build a new session
+     */
+    devicesReceived: async function (from, devicesIds) {
+        var store = new ChatOmemoStorage();
 
-        Object.entries(preKeys).forEach(([deviceId, preKey]) => {
-            // The prekey.jid is different from the jid when resolving a MUC
-            promises.push(ChatOmemo.handlePreKey(preKey.jid, deviceId, preKey));
-        });
+        if (await store.getContactState(from)) {
+            for (deviceId of devicesIds.filter(
+                key => !store.getSessionsIds(from).includes(key)
+            )) {
+                ChatOmemo_ajaxGetBundle(from, deviceId);
+            }
+        }
+    },
 
-        Promise.all(promises).then(results => {
-            var store = new ChatOmemoStorage();
+    bundlesRefreshError(jid) {
+        var store = new ChatOmemoStorage();
+        store.setContactTombstone(jid);
+    },
 
-            /**
-             * First time we handle a session, we enforce the OMEMO state to true
-             */
+    bundlesRefreshed(jid) {
+        var store = new ChatOmemoStorage();
+        let textarea = Chat && Chat.getTextarea();
+
+        if (textarea) {
+            // First time we handle a session, we enforce the OMEMO state to true by default
             if (!store.hasContactState(jid)) {
                 store.setContactState(jid, true);
             }
 
-            if (!Chat) return;
-
-            let textarea = Chat.getTextarea();
-            if (textarea && textarea.dataset.jid == jid) {
+            if (textarea.dataset.jid == jid) {
                 Chat.setOmemoState('yes');
                 Chat.disableSending();
 
@@ -139,12 +135,13 @@ var ChatOmemo = {
                     Chat_ajaxGet(jid);
                 }
 
-                if (Chat.getTextarea().value.length > 0) {
+                if (!Boolean(textarea.dataset.muc) && Chat.getTextarea().value.length > 0) {
                     Chat.sendMessage();
                 }
             }
-        });
+        }
     },
+
     handlePreKey: async function (jid, deviceId, preKey) {
         var store = new ChatOmemoStorage();
         var address = new libsignal.SignalProtocolAddress(jid, deviceId);
@@ -189,14 +186,14 @@ var ChatOmemo = {
         return promise;
     },
 
-    closeSessions: async function (jid, devicesIds) {
+    /*closeSessions: async function (jid, devicesIds) {
         var store = new ChatOmemoStorage();
 
         devicesIds.forEach(deviceId => {
             var address = new libsignal.SignalProtocolAddress(jid, deviceId);
             store.removeSession(address);
         })
-    },
+    },*/
 
     encrypt: async function (to, plaintext, muc) {
         var store = new ChatOmemoStorage();
@@ -240,8 +237,8 @@ var ChatOmemo = {
         let messageKeys = {};
         ownKeys.map(result => {
             messageKeys[result.device] = {
-                payload : btoa(result.payload.body),
-                prekey : 3 == parseInt(result.payload.type, 10)
+                payload: btoa(result.payload.body),
+                prekey: 3 == parseInt(result.payload.type, 10)
             };
         });
 
@@ -254,6 +251,8 @@ var ChatOmemo = {
     },
     decrypt: async function (message) {
         if (message.omemoheader == undefined) return;
+
+        var store = new ChatOmemoStorage();
 
         let resolvedId = message.mine
             ? message.messageid
@@ -268,19 +267,29 @@ var ChatOmemo = {
         // Resolved jid from a muc message
         var jid = message.mucjid ?? message.jidfrom;
 
+        // If there was an encryption tombstone on this contact we can lift it
+        store.removeContactTombstone(jid);
+
         // No keys
         if (message.omemoheader.keys == undefined) return;
 
-        var store = new ChatOmemoStorage();
         let deviceId = await store.getLocalRegistrationId();
-        let originalSessionsNumber = store.getSessions(jid).length;
 
-        // We don't have any sessions from this message yet
-        if (originalSessionsNumber == 0) {
-            console.log('No sessions found for this contact, refresh the list: ' + jid);
-            ChatOmemo.requestedDevicesListFrom = jid;
-            ChatOmemo_ajaxGetDevicesList(jid);
-            return;
+        /**
+         * Check if we need to build more sessions
+         */
+        if (Chat) {
+            textarea = Chat.getTextarea();
+
+            if (!Boolean(textarea.dataset.muc)) {
+                for (bundleId of Object.keys(message.omemoheader.keys).filter(
+                    key => !store.getSessionsIds(jid)
+                        .concat(store.getOwnSessionsIds(), [deviceId.toString()]).includes(key)
+                )
+                ) {
+                    ChatOmemo_ajaxGetBundle(jid, bundleId);
+                }
+            }
         }
 
         if (message.omemoheader.keys[deviceId] == undefined) {
@@ -298,8 +307,9 @@ var ChatOmemo = {
             ChatOmemoDB.putMessage(resolvedId, false);
             console.log('Error during decryption: ' + err);
 
-            var address = new libsignal.SignalProtocolAddress(jid, message.omemoheader.sid);
-            store.removeSession(address);
+            // Let the session heal, a new prekey will be send next time
+            //var address = new libsignal.SignalProtocolAddress(jid, message.omemoheader.sid);
+            //store.removeSession(address);
             return;
         }
 
@@ -308,7 +318,7 @@ var ChatOmemo = {
 
         if (authenticationTag.byteLength < 16) {
             if (authenticationTag.byteLength > 0) {
-            throw new Error('Authentication tag too short');
+                throw new Error('Authentication tag too short');
             }
 
             console.log(`Authentication tag is only ${authenticationTag.byteLength} byte long`);
@@ -320,7 +330,7 @@ var ChatOmemo = {
 
         // One of our key was used, lets refresh the bundle
         if (key.prekey) {
-            ChatOmemo.refreshBundle();
+            ChatOmemo.refreshBundle(store.getOwnSessionsIds());
         }
 
         let iv = MovimUtils.base64ToArrayBuffer(message.omemoheader.iv);
@@ -338,19 +348,6 @@ var ChatOmemo = {
 
         let plaintext = MovimUtils.arrayBufferToString(decryptedBuffer);
 
-        /**
-         * We received a message for us, and a session was created from it, we might have
-         * some more sessions to build
-         */
-        if (store.getSessions(jid).length > originalSessionsNumber
-        && Object.keys(message.omemoheader.keys).includes(String(deviceId))
-        && ChatOmemo.requestedDevicesListFrom != jid) {
-            console.log('A new session was created from the incoming message, refresh the contact devices for ' + jid);
-
-            ChatOmemo.requestedDevicesListFrom = jid;
-            ChatOmemo_ajaxGetDevicesList(jid);
-        }
-
         ChatOmemoDB.putMessage(resolvedId, plaintext);
         return plaintext;
     },
@@ -360,11 +357,11 @@ var ChatOmemo = {
 
         if (muc) {
             Chat_ajaxGetRoom(jid);
+            ChatOmemo_ajaxEnableRoomState();
         } else {
             Chat_ajaxGet(jid);
+            ChatOmemo_ajaxEnableContactState();
         }
-
-        ChatOmemo_ajaxEnableContactState();
     },
     disableContactState: function (jid) {
         var store = new ChatOmemoStorage();
@@ -372,7 +369,7 @@ var ChatOmemo = {
         Chat.setOmemoState("disabled");
         ChatOmemo_ajaxDisableContactState();
     },
-    getContactState: async function(jid) {
+    getContactState: async function (jid) {
         var store = new ChatOmemoStorage();
         return store.getContactState(jid);
     },
@@ -400,7 +397,7 @@ var ChatOmemo = {
         return sessionCipher.encrypt(plaintext)
             .then(payload => ({ 'payload': payload, 'device': deviceId }));
     },
-    decryptDevice: async function(ciphertext, preKey, jid, deviceId) {
+    decryptDevice: async function (ciphertext, preKey, jid, deviceId) {
         var address = new libsignal.SignalProtocolAddress(jid, parseInt(deviceId, 10));
         var store = new ChatOmemoStorage();
         var sessionCipher = new libsignal.SessionCipher(store, address);
@@ -409,7 +406,7 @@ var ChatOmemo = {
             ? await sessionCipher.decryptPreKeyWhisperMessage(ciphertext, 'binary')
             : await sessionCipher.decryptWhisperMessage(ciphertext, 'binary');
     },
-    searchEncryptedFile: function(plaintext) {
+    searchEncryptedFile: function (plaintext) {
         let lines = plaintext.split('\n');
         let matches = lines[0].match(AESGCM_REGEX);
 
@@ -420,10 +417,10 @@ var ChatOmemo = {
         return '<i class="material-symbols">file_download</i> <a href="#" class="encrypted_file" onclick="ChatOmemo.getEncryptedFile(\''
             + lines[0]
             + '\')">'
-                + filename
+            + filename
             + '</a>';
     },
-    getEncryptedFile: async function(encryptedUrl) {
+    getEncryptedFile: async function (encryptedUrl) {
         Chat.enableSending();
 
         let [, url, filename, , hash] = encryptedUrl.match(AESGCM_REGEX);
@@ -432,7 +429,7 @@ var ChatOmemo = {
 
         try {
             response = await fetch(url)
-        } catch(e) {
+        } catch (e) {
             console.log('Cannot get the following file: ' + url)
             return null;
         }
@@ -459,9 +456,35 @@ var ChatOmemo = {
 
             URL.revokeObjectURL(link.href)
         }
+    },
+
+    resolveContactFingerprints: function (jid) {
+        let omemoStorage = new ChatOmemoStorage;
+
+        let sessionLoaded = [];
+        omemoStorage.getSessionsIds(jid).forEach(deviceId => {
+            var address = new libsignal.SignalProtocolAddress(jid, deviceId);
+            sessionLoaded.push(omemoStorage.loadSession(address.toString()));
+        });
+
+        const promise = new Promise((resolve) => {
+            Promise.all(sessionLoaded).then(sessions => {
+                let remoteKeys = [];
+
+                sessions.forEach(session => {
+                    let parsed = Object.values(JSON.parse(session).sessions)[0];
+                    remoteKeys.push({
+                        jid: jid,
+                        self: false,
+                        bundleid: parsed.registrationId.toString(),
+                        fingerprint: btoa(parsed.indexInfo.remoteIdentityKey)
+                    });
+                });
+
+                resolve(remoteKeys);
+            });
+        });
+
+        return promise;
     }
 }
-
-MovimWebsocket.attach(function() {
-    ChatOmemo.initGenerateBundle();
-});

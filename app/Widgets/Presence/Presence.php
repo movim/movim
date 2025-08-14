@@ -15,11 +15,9 @@ use Moxl\Stanza\Stream;
 
 use Movim\Daemon\Session;
 
-use App\BundleCapabilityResolver;
 use App\Post;
 use App\Widgets\Chats\Chats;
 use App\Widgets\Dialog\Dialog;
-use App\Widgets\Visio\Visio;
 use Movim\CurrentCall;
 use Moxl\Xec\Action\Blocking\Request;
 
@@ -56,9 +54,6 @@ class Presence extends Base
     public function start()
     {
         $this->rpc('Notif.inhibit', 15);
-
-        // Load the BundleCapabilityResolved
-        BundleCapabilityResolver::getInstance()->load();
 
         if ($this->user->session->type == 'bind1') {
             // http://xmpp.org/extensions/xep-0280.html

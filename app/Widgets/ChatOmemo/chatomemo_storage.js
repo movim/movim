@@ -162,15 +162,23 @@ ChatOmemoStorage.prototype = {
 
         return Promise.resolve();
     },
+    getOwnSessions: function () {
+        return this.filter('.session' + this.jid);
+    },
     getSessions: function (identifier) {
         return this.filter('.session' + identifier);
+    },
+    getOwnSessionsIds: function () {
+        return this.filter('.session' + this.jid).map(sessionId => sessionId.split('.').pop());
     },
     getSessionsIds: function (identifier) {
         return this.filter('.session' + identifier).map(sessionId => sessionId.split('.').pop());
     },
-    checkJidHasSessions: function (identifier) {
-        return this.filter('.session' + identifier).length > 0;
+
+    isJidResolved: function (identifier) {
+        return this.hasContactTombstone(identifier) || this.filter('.session' + identifier).length > 0;
     },
+
     removeAllSessionsOfJid: function (identifier) {
         let filtered = this.filter('.session' + identifier);
 
@@ -195,6 +203,19 @@ ChatOmemoStorage.prototype = {
     getContactState: function (jid) {
         let state = Boolean(this.get(this.jid + '.contact' + jid));
         return Promise.resolve(state);
+    },
+
+    /**
+     * Tombstone to know if a contact doesn't have OMEMO at the moment
+     */
+    setContactTombstone: function (jid) {
+        return Promise.resolve(this.put(this.jid + '.contact.tombstone' + jid, true));
+    },
+    removeContactTombstone: function (jid) {
+        return Promise.resolve(this.remove(this.jid + '.contact.tombstone' + jid));
+    },
+    hasContactTombstone: function(jid) {
+        return (this.get(this.jid + '.contact.tombstone' + jid) == true);
     },
 
     getSessionState: function (identifier) {
