@@ -17,7 +17,7 @@ class OMEMO
         \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'get'));
     }
 
-    public static function setDeviceList($ids)
+    public static function setDeviceList(array $ids)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElement('pubsub');

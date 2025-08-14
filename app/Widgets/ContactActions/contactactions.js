@@ -1,8 +1,7 @@
 var ContactActions = {
-    getDrawerFingerprints : function(jid) {
-        var store = new ChatOmemoStorage();
-        store.getLocalRegistrationId().then(deviceId => {
-            ContactActions_ajaxGetDrawerFingerprints(jid, deviceId);
+    getDrawerFingerprints: function (jid) {
+        ChatOmemo.resolveContactFingerprints(jid).then(remoteKeys => {
+            ContactActions_ajaxGetDrawerFingerprints(jid, remoteKeys);
         });
     },
     morePictures(button, jid, page) {
@@ -13,7 +12,7 @@ var ContactActions = {
         button.remove();
         ContactActions_ajaxHttpGetLinks(jid, page);
     },
-    resolveSessionsStates : function(jid, room = false) {
+    resolveSessionsStates: function (jid, room = false) {
         var store = new ChatOmemoStorage();
 
         store.getSessionsIds(jid).map(id => {
@@ -25,7 +24,7 @@ var ContactActions = {
                         icon.classList.add('blue');
                     }
 
-                    let checkbox = document.querySelector('input[name=sessionstate_' + MovimUtils.cleanupId(jid) + '_'+ id + ']');
+                    let checkbox = document.querySelector('input[name=sessionstate_' + MovimUtils.cleanupId(jid) + '_' + id + ']');
 
                     if (checkbox) {
                         checkbox.checked = true;
@@ -42,11 +41,8 @@ var ContactActions = {
             });
         }
     },
-    toggleFingerprintState : function(checkbox) {
+    toggleFingerprintState: function (checkbox) {
         var store = new ChatOmemoStorage();
         let set = store.setSessionState(checkbox.dataset.identifier, checkbox.checked);
-        if (!set) setTimeout(() => {
-            checkbox.checked = false;
-        }, 300);
     }
 }

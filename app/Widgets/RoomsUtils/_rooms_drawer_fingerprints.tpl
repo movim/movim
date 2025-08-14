@@ -18,7 +18,7 @@
                 </li>
                 {loop="$value"}
                     <li>
-                        <span class="primary icon {if="$value->jid == $c->getUser()->id"}blue{else}gray{/if}" id="sessionicon_{$value->jid}_{$value->bundleid}">
+                        <span class="primary icon gray" id="sessionicon_{$value->jid}_{$value->bundleid}">
                             <i class="material-symbols">fingerprint</i>
                         </span>
                         <span class="control">
@@ -37,12 +37,6 @@
                                 <span class="fingerprint" title="{$value->bundleid}">
                                     {$value->fingerprint}
                                 </span>
-                            </p>
-                            <p class="line">
-                                {if="$value->capability"}
-                                    {$value->capability->name}&nbsp;
-                                    <i class="material-symbols">{$value->capability->getDeviceIcon()}</i>
-                                {/if}
                             </p>
                         </div>
                     </li>

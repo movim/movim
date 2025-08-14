@@ -160,7 +160,7 @@ class Message extends Model
             : null;
     }
 
-    public function getOmemoheaderAttribute()
+    public function getOmemoheaderAttribute(): ?array
     {
         return array_key_exists('omemoheader', $this->attributes) && $this->attributes['omemoheader'] !== null
             ? unserialize($this->attributes['omemoheader'])

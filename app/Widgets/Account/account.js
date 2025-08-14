@@ -1,10 +1,10 @@
 var Account = {
-    resetPassword : function() {
+    resetPassword: function () {
         var form = document.querySelector('form[name=password]');
         form.reset();
         document.querySelector('#password_save').className = 'button color flat';
     },
-    resolveSessionsStates : function() {
+    resolveSessionsStates: function () {
         var store = new ChatOmemoStorage();
         store.getSessionsIds(store.jid).map(id => {
             store.getSessionState(store.jid + '.' + id).then(state => {
@@ -18,22 +18,36 @@ var Account = {
             })
         });
     },
-    toggleFingerprintState : function(checkbox) {
+    toggleFingerprintState: function (checkbox) {
         var store = new ChatOmemoStorage();
         store.setSessionState(checkbox.dataset.identifier, checkbox.checked);
     },
-    refreshFingerprints : function() {
-        let omemoStorage = new ChatOmemoStorage;
+    refreshFingerprints: async function () {
+        ChatOmemo.resolveContactFingerprints(USER_JID).then(remoteKeys => {
+            let omemoStorage = new ChatOmemoStorage;
 
-        omemoStorage.getIdentityKeyPair().then(keyPair => {
-            Account_ajaxHttpGetFingerprints(MovimUtils.arrayBufferToBase64(keyPair.pubKey), omemoStorage.getSessionsIds(USER_JID));
-        }).catch(a => {
-            Account_ajaxHttpGetFingerprints(null, store.getSessionsIds(USER_JID));
+            omemoStorage.getLocalRegistrationId().then(localBundleId => {
+                omemoStorage.getIdentityKeyPair().then(identityKey => {
+                    // Remove it if its already there
+                    remoteKeys = remoteKeys.filter(remoteKey =>
+                        remoteKey.bundleid != localBundleId.toString()
+                    );
+
+                    remoteKeys.unshift({
+                        jid: USER_JID,
+                        self: true,
+                        bundleid: localBundleId.toString(),
+                        fingerprint: MovimUtils.arrayBufferToBase64(identityKey.pubKey)
+                    });
+
+                    Account_ajaxHttpGetFingerprints(remoteKeys);
+                });
+            });
         });
     }
 }
 
-MovimWebsocket.attach(function() {
+MovimWebsocket.attach(function () {
     if (OMEMO_ENABLED) Account.refreshFingerprints();
     Account_ajaxHttpGetPresences();
     Account_ajaxGetGateways();

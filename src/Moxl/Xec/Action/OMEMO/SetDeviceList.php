@@ -7,7 +7,7 @@ use Moxl\Stanza\OMEMO;
 
 class SetDeviceList extends Action
 {
-    private $_list;
+    private array $_list;
 
     public function request()
     {
@@ -15,7 +15,7 @@ class SetDeviceList extends Action
         OMEMO::setDeviceList($this->_list);
     }
 
-    public function setList($list)
+    public function setList(array $list)
     {
         $this->_list = $list;
         return $this;

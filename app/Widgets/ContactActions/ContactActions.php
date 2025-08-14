@@ -73,12 +73,9 @@ class ContactActions extends Base
             $tpl->assign('roster', null);
         }
 
-        $hasFingerprints = ($this->user->bundles()->where('jid', $jid)->count() > 0);
-
         $tpl->assign('jid', $jid);
         $tpl->assign('incall', CurrentCall::getInstance()->isStarted());
         $tpl->assign('clienttype', getClientTypes());
-        $tpl->assign('hasfingerprints', $hasFingerprints);
         $tpl->assign('posts', \App\Post::where('server', $jid)
             ->restrictToMicroblog()
             ->where('open', true)
@@ -98,20 +95,20 @@ class ContactActions extends Base
             $this->rpc('ContactActions_ajaxHttpGetLinks', $jid);
         }
 
-        if ($this->user->hasOMEMO() && $hasFingerprints) {
+        if ($this->user->hasOMEMO()) {
             $this->rpc('ContactActions.getDrawerFingerprints', $jid);
         }
 
         (new AdHoc)->ajaxGet($jid);
     }
 
-    public function ajaxGetDrawerFingerprints($jid, $deviceId)
+    public function ajaxGetDrawerFingerprints(string $jid, array $fingerprints)
     {
-        $fingerprints = $this->user->bundles()
-                                   ->where('jid', $jid)
-                                   ->with('capability.identities')
-                                   ->get()
-                                   ->keyBy('bundleid');
+        $fingerprints = collect($fingerprints);
+
+        foreach ($fingerprints as $fingerprint) {
+            $fingerprint->fingerprint = base64ToFingerPrint($fingerprint->fingerprint);
+        }
 
         $latests = \App\Message::selectRaw('max(published) as latest, bundleid')
                                ->where('user_id', $this->user->id)
@@ -119,15 +116,14 @@ class ContactActions extends Base
                                ->groupBy('bundleid')
                                ->pluck('latest', 'bundleid');
 
-        foreach ($fingerprints->keys() as $key) {
-            $fingerprints[$key]->latest = $latests->has($key)
-                ? $latests[$key]
+        foreach ($fingerprints as $fingerprint) {
+            $fingerprint->latest = $latests->has($fingerprint->bundleid)
+                ? $latests[$fingerprint->bundleid]
                 : null;
         }
 
         $tpl = $this->tpl();
         $tpl->assign('fingerprints', $fingerprints);
-        $tpl->assign('deviceid', $deviceId);
         $tpl->assign('clienttype', getClientTypes());
 
         $this->rpc('MovimTpl.fill', '#omemo_fingerprints', $tpl->draw('_contactactions_drawer_fingerprints'));

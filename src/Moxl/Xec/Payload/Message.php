@@ -2,7 +2,6 @@
 
 namespace Moxl\Xec\Payload;
 
-use App\BundleCapabilityResolver;
 use Movim\ChatroomPings;
 use Movim\ChatStates;
 
@@ -65,10 +64,6 @@ class Message extends Payload
         ) {
             $message->save();
             $message = $message->fresh();
-
-            if ($message && $message->bundleid) {
-                BundleCapabilityResolver::getInstance()->resolve($message);
-            }
 
             if ($message && ($message->body || $message->subject)) {
                 $this->pack($message);
