@@ -11,7 +11,7 @@ class Info extends Model
     protected $fillable = ['server', 'node', 'avatarhash'];
     protected $with = ['identities'];
 
-    private Collection $freshIdentities;
+    private ?Collection $freshIdentities = null;
 
     public function identities()
     {
