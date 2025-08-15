@@ -2,6 +2,7 @@
 
 namespace App\Widgets\Chat;
 
+use App\Bundle;
 use Moxl\Xec\Action\Message\Publish;
 use Moxl\Xec\Action\Message\Reactions;
 
@@ -35,6 +36,7 @@ use Movim\EmbedLight;
 use Movim\Image;
 use Movim\XMPPUri;
 use Movim\Librairies\XMPPtoForm;
+use Movim\Session;
 
 class Chat extends \Movim\Widget\Base
 {
@@ -448,16 +450,7 @@ class Chat extends \Movim\Widget\Base
             $this->rpc('Chat.scrollToSeparator');
 
             if ($this->user->hasOMEMO()) {
-                $this->rpc(
-                    'Chat.setBundlesIds',
-                    $jid,
-                    $this->user->bundles()
-                        ->where('jid', $jid)
-                        ->select(['bundleid', 'jid'])
-                        ->get()
-                        ->mapToGroups(fn($tuple) => [$tuple['jid'] => $tuple['bundleid']])
-                        ->toArray()
-                );
+                $this->rpc('Chat.checkOMEMOState', $jid);
             }
         }
     }
@@ -504,20 +497,7 @@ class Chat extends \Movim\Widget\Base
 
             if ($this->user->hasOMEMO() && $conference->isGroupChat()) {
                 $this->rpc('Chat.setGroupChatMembers', $conference->members->pluck('jid')->toArray());
-                $this->rpc(
-                    'Chat.setBundlesIds',
-                    $room,
-                    $this->user->bundles()
-                        ->whereIn('jid', function ($query) use ($room) {
-                            $query->select('jid')
-                                ->from('members')
-                                ->where('conference', $room);
-                        })
-                        ->select(['bundleid', 'jid'])
-                        ->get()
-                        ->mapToGroups(fn($tuple) => [$tuple['jid'] => $tuple['bundleid']])
-                        ->toArray()
-                );
+                $this->rpc('Chat.checkOMEMOState', $room, true);
             }
         } else {
             $this->rpc('RoomsUtils_ajaxAdd', $room);

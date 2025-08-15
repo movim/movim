@@ -2,14 +2,13 @@
 
 namespace Moxl\Xec\Payload;
 
-use App\Bundle;
 use Moxl\Xec\Action\OMEMO\GetBundle;
 
 class OMEMODevices extends Payload
 {
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $from   = (string)$parent->attributes()->from;
+        $from = (string)$parent->attributes()->from;
         $list = $stanza->items->item->list;
 
         if ($list) {
@@ -21,18 +20,17 @@ class OMEMODevices extends Payload
                 }
             }
 
-            // Remove all the cached devices not in the list
-            Bundle::where('user_id', me()->id)
-                  ->where('jid', $from)
-                  ->whereNotIn('bundleid', $devicesIds)
-                  ->delete();
+            // If we have several time the same ID...
+            $devicesIds = array_unique($devicesIds);
 
-            // Refresh the rest
-            foreach ($devicesIds as $deviceId) {
-                $gb = new GetBundle;
-                $gb->setTo($from)
-                   ->setId($deviceId)
-                   ->request();
+            // Refresh our own devices
+            if ($from == me()->id) {
+                foreach ($devicesIds as $deviceId) {
+                    $gb = new GetBundle;
+                    $gb->setTo($from)
+                        ->setId($deviceId)
+                        ->request();
+                }
             }
 
             $this->pack([

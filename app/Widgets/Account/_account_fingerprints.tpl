@@ -16,18 +16,18 @@
                         <span class="control active icon gray" onclick="Account_ajaxDeleteBundleConfirm({$value->bundleid})">
                             <i class="material-symbols">delete</i>
                         </span>
+                        <span class="control">
+                            <div class="checkbox">
+                                <input
+                                    type="checkbox"
+                                    data-identifier="{$value->jid}.{$value->bundleid}"
+                                    id="accountsessionstate_{$value->bundleid}"
+                                    name="accountsessionstate_{$value->bundleid}"
+                                    onchange="Account.toggleFingerprintState(this)"/>
+                                <label for="accountsessionstate_{$value->bundleid}"></label>
+                            </div>
+                        </span>
                     {/if}
-                    <span class="control">
-                        <div class="checkbox">
-                            <input
-                                type="checkbox"
-                                data-identifier="{$value->jid}.{$value->bundleid}"
-                                id="accountsessionstate_{$value->bundleid}"
-                                name="accountsessionstate_{$value->bundleid}"
-                                onchange="Account.toggleFingerprintState(this)"/>
-                            <label for="accountsessionstate_{$value->bundleid}"></label>
-                        </div>
-                    </span>
                     <div>
                         <p class="normal">
                             <span class="fingerprint {if="$value->self"}self{/if}">

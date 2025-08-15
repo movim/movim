@@ -29,13 +29,6 @@
                             </span>
                         </p>
                         <p class="line">
-                           {if="$value->capability"}
-                                {$value->capability->name}&nbsp;
-                                <i class="material-symbols">{$value->capability->getDeviceIcon()}</i>
-                            {/if}
-                            {if="$value->capability && isset($value->latest)"}
-                            &nbsp;-&nbsp;
-                            {/if}
                             {if="isset($value->latest)"}
                                 {$c->__('omemo.last_activity')}: {$value->latest|prepareDate:true}
                             {/if}

@@ -950,3 +950,13 @@ function IANAHashToPhp(): array
         'sha-512' => 'sha512',
     ];
 }
+
+/**
+ * @desc Get OMEMO fingerprint from base64
+ */
+function base64ToFingerPrint(string $base64): string
+{
+    $buffer = base64_decode($base64);
+    $hex = unpack('H*', $buffer);
+    return implode(' ', str_split(substr($hex[1], 2), 8));
+}

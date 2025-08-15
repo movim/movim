@@ -10,7 +10,7 @@ class GetBundle extends Action
 {
     protected $_to;
     protected $_id;
-    protected $_notifyBundle = false;
+    protected bool $_notifyLast = false;
 
     public function request()
     {
@@ -21,37 +21,35 @@ class GetBundle extends Action
         );
     }
 
-    public function setNotifyBundle(bool $notifyBundle)
+    public function notifyLast()
     {
-        $this->_notifyBundle = $notifyBundle;
+        $this->_notifyLast = true;
         return $this;
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         if ($stanza->pubsub->items->item->bundle) {
-            $bundle = Bundle::where('user_id', me()->id)
-                ->where('jid', $this->_to)
-                ->where('bundleid', $this->_id)
-                ->first();
-
-            if (!$bundle) {
-                $bundle = new Bundle;
-            }
-
-            $oldBundle = clone $bundle;
-
+            $bundle = new Bundle;
             $bundle->set($this->_to, $this->_id, $stanza->pubsub->items->item->bundle);
 
-            // Only refresh if the bundle is different
-            if (!$oldBundle->sameAs($bundle)) {
-                $bundle->save();
+            $this->pack($bundle);
+            $this->deliver();
 
-                if ($this->_notifyBundle) {
-                    $this->pack($bundle);
-                    $this->deliver();
-                }
+            if ($this->_notifyLast) {
+                $this->pack($this->_to);
+                $this->method('last');
+                $this->deliver();
             }
+        }
+    }
+
+    public function error(string $errorId, ?string $message = null)
+    {
+        if ($this->_notifyLast) {
+            $this->pack($this->_to);
+            $this->method('last');
+            $this->deliver();
         }
     }
 }
