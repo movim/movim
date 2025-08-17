@@ -81,7 +81,7 @@ class Presence extends Base
 
         global $loop;
 
-        $loop->addTimer(2, function () {
+        $loop->addTimer(3, function () {
             $this->ajaxGetOMEMODevices();
         });
     }
