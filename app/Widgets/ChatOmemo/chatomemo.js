@@ -88,6 +88,7 @@ var ChatOmemo = {
 
         if (localDeviceId == undefined) {
             ChatOmemo.initiateBundle(devicesIds);
+            return;
         }
 
         if (!devicesIds.includes(localDeviceId.toString()) && ChatOmemo.refreshed == false) {
