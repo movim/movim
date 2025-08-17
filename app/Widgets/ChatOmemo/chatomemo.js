@@ -41,7 +41,6 @@ var ChatOmemo = {
         var store = new ChatOmemoStorage();
 
         const bundle = {};
-
         const localDeviceId = await store.getLocalRegistrationId();
 
         if (!localDeviceId) ChatOmemo.initiateBundle(devicesIds);
@@ -87,6 +86,10 @@ var ChatOmemo = {
         var store = new ChatOmemoStorage();
         const localDeviceId = await store.getLocalRegistrationId();
 
+        if (localDeviceId == undefined) {
+            ChatOmemo.initiateBundle(devicesIds);
+        }
+
         if (!devicesIds.includes(localDeviceId.toString()) && ChatOmemo.refreshed == false) {
             ChatOmemo.refreshBundle(devicesIds, true);
             ChatOmemo.refreshed = true;
@@ -123,6 +126,9 @@ var ChatOmemo = {
 
     bundlesRefreshed(jid) {
         var store = new ChatOmemoStorage();
+
+        if (typeof Chat == 'undefined') return;
+
         let textarea = Chat && Chat.getTextarea();
 
         if (textarea) {

@@ -9,7 +9,7 @@ ChatOmemoStorage.prototype = {
     },
 
     // Storage is versionned to ensure a proper reset when changes are made
-    storageVersion: '1',
+    storageVersion: '2',
 
     // Generic methods
     put: function (key, value) {

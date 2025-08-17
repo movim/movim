@@ -42,6 +42,7 @@ class GetDeviceList extends Action
             }
         }
 
+        $this->pack($this->_to);
         $this->deliver();
     }
 
