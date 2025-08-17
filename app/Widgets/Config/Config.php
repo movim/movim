@@ -5,6 +5,7 @@ namespace App\Widgets\Config;
 use App\Post;
 use App\User;
 use App\Widgets\Dialog\Dialog;
+use App\Widgets\Presence\Presence;
 use App\Widgets\Toast\Toast;
 use Movim\i18n\Locale;
 use Movim\Widget\Base;
@@ -93,7 +94,7 @@ class Config extends Base
     {
         $s = new SetConfig;
         $s->setDefault($value)
-          ->request();
+            ->request();
     }
 
     public function ajaxBlogGetConfig()
@@ -108,8 +109,8 @@ class Config extends Base
         if ($this->user->hasPubsub()) {
             $r = new PubsubSetConfig;
             $r->setNode(Post::MICROBLOG_NODE)
-              ->setData(formToArray($data))
-              ->request();
+                ->setData(formToArray($data))
+                ->request();
         }
     }
 
@@ -130,9 +131,17 @@ class Config extends Base
             }
         }
 
+        if ($config['omemoenabled'] == true) {
+            global $loop;
+
+            $loop->addTimer(3, function () {
+                (new Presence)->ajaxGetOMEMODevices();
+            });
+        }
+
         $s = new Set;
         $s->setData($config)
-          ->request();
+            ->request();
     }
 
     public function ajaxEditNickname()

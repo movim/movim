@@ -9,12 +9,6 @@ class Bundle extends Model
     public $incrementing = false;
     protected $primaryKey = ['user_id', 'jid', 'bundleid'];
 
-    public function capability()
-    {
-        return $this->hasOne('App\Info', 'node', 'node')
-                    ->whereNull('server');
-    }
-
     public function set(string $jid, string $bundleId, $bundle)
     {
         $this->user_id = me()->id;
@@ -36,27 +30,26 @@ class Bundle extends Model
         $this->prekeys = serialize($prekeys);
     }
 
-    public function sameAs(Bundle $bundle)
-    {
-        return (
-            isset($this->attributes['prekeys'])
-            && $this->attributes['prekeys'] == $bundle->attributes['prekeys']
-            && $this->attributes['signedprekeypublic'] == $bundle->attributes['signedprekeypublic']
-            && $this->attributes['signedprekeyid'] == $bundle->attributes['signedprekeyid']
-            && $this->attributes['signedprekeysignature'] == $bundle->attributes['signedprekeysignature']
-            && $this->attributes['identitykey'] == $bundle->attributes['identitykey']
-        );
-    }
-
-    public function getFingerprintAttribute()
-    {
-        $buffer = base64_decode($this->identitykey);
-        $hex = unpack('H*', $buffer);
-        return implode(' ', str_split(substr($hex[1], 2), 8));
-    }
-
     public function getPrekeysAttribute()
     {
         return unserialize($this->attributes['prekeys']);
+    }
+
+    public function extractPreKey(): ?array
+    {
+        $preKeys = unserialize($this->attributes['prekeys']);
+
+        if (empty($preKeys)) return null;
+
+        $pickedKey = array_rand($preKeys);
+
+        return [
+            'jid' => $this->jid,
+            'identitykey' => $this->identitykey,
+            'signedprekeypublic' => $this->signedprekeypublic,
+            'signedprekeyid' => $this->signedprekeyid,
+            'signedprekeysignature' => $this->signedprekeysignature,
+            'prekey' => ['id' => $pickedKey, 'value' => $this->prekeys[$pickedKey]]
+        ];
     }
 }

@@ -99,14 +99,6 @@ class RoomsUtils extends Base
 
         $view->assign('me', $this->user->id);
 
-        $hasFingerprints = ($this->user->bundles()->whereIn('jid', function ($query) use ($room) {
-            $query->select('jid')
-                ->from('members')
-                ->where('conference', $room);
-        })->count() > 0 && $conference->isGroupChat());
-
-        $view->assign('hasfingerprints', $hasFingerprints);
-
         Drawer::fill('room_drawer', $view->draw('_rooms_drawer'));
         $this->rpc('Tabs.create');
 
@@ -120,8 +112,12 @@ class RoomsUtils extends Base
             $this->rpc('RoomsUtils_ajaxHttpGetLinks', $room);
         }
 
-        if ($this->user->hasOMEMO() && $hasFingerprints) {
-            $this->rpc('RoomsUtils.getDrawerFingerprints', $room);
+        if ($this->user->hasOMEMO()) {
+            $this->rpc(
+                'RoomsUtils.getDrawerFingerprints',
+                $room,
+                $conference->members()->whereNot('jid', $this->user->id)->get()->pluck('jid')->toArray()
+            );
         }
 
         (new AdHoc)->ajaxGet($room);
@@ -163,26 +159,27 @@ class RoomsUtils extends Base
         $this->rpc('MovimTpl.append', '#room_presences_list', $tpl->draw('_rooms_presences_list'));
     }
 
-    public function ajaxGetDrawerFingerprints($room, $deviceId)
+    public function ajaxGetDrawerFingerprints($room, $contactsFingerprints)
     {
-        $fingerprints = $this->user->bundles()
-            ->whereIn('jid', function ($query) use ($room) {
-                $query->select('jid')
-                    ->from('members')
-                    ->where('conference', $room);
-            })
-            ->with('capability.identities')
-            ->get()
-            ->mapToGroups(fn ($tuple) => [$tuple['jid'] => $tuple]);
+        $resolvedFingerprints = collect();
+
+        foreach ($contactsFingerprints as $contactFingerprints) {
+            if (!empty($contactFingerprints)) {
+                foreach ($contactFingerprints as $fingerprint) {
+                    $fingerprint->fingerprint = base64ToFingerPrint($fingerprint->fingerprint);
+                }
+
+                $resolvedFingerprints->put($contactFingerprints[0]->jid, $contactFingerprints);
+            }
+        }
 
         $tpl = $this->tpl();
-        $tpl->assign('fingerprints', $fingerprints);
-        $tpl->assign('deviceid', $deviceId);
+        $tpl->assign('fingerprints', $resolvedFingerprints);
         $tpl->assign('clienttype', getClientTypes());
-        $tpl->assign('contacts', Contact::whereIn('id', $fingerprints->keys())->get()->keyBy('id'));
+        $tpl->assign('contacts', Contact::whereIn('id', $resolvedFingerprints->keys())->get()->keyBy('id'));
 
         $this->rpc('MovimTpl.fill', '#room_omemo_fingerprints', $tpl->draw('_rooms_drawer_fingerprints'));
-        foreach ($fingerprints as $jid => $value) {
+        foreach ($resolvedFingerprints as $jid => $value) {
             $this->rpc('ContactActions.resolveSessionsStates', $jid, true);
         }
         $this->rpc('RoomsUtils.resolveRoomEncryptionState', $room);
@@ -416,8 +413,8 @@ class RoomsUtils extends Base
             ->orderBy('server')
             ->get();
 
-        $gateways = $gateways->filter(fn ($gateway) => $gateway->parent === $this->user->session->host)
-            ->concat($gateways->reject(fn ($gateway) => $gateway->parent === $this->user->session->host));
+        $gateways = $gateways->filter(fn($gateway) => $gateway->parent === $this->user->session->host)
+            ->concat($gateways->reject(fn($gateway) => $gateway->parent === $this->user->session->host));
 
         $view->assign('gateways', $gateways);
 
@@ -893,7 +890,7 @@ class RoomsUtils extends Base
             return $item;
         })->map(function ($item, $key) use ($groups) {
             if ($item->parent != null && array_key_exists($item->parent, $groups) && $groups[$item->parent] == 1) {
-                $item->name = $item->parent . '/' .$item->name;
+                $item->name = $item->parent . '/' . $item->name;
                 $item->parent = null;
             }
 

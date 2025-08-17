@@ -214,29 +214,26 @@ var Chat = {
                     Chat_ajaxClearReply();
                 };
 
-                if (textarea.dataset.encryptedstate == 'build') {
+                if (Chat.getOmemoState() == 'build') {
                     var store = new ChatOmemoStorage();
                     store.getLocalRegistrationId().then(deviceId => {
                         if (deviceId) {
                             if (isMuc) {
-                                var bundlesIds = {};
-                                Chat.groupChatMembers.forEach(member => {
-                                    let bundles = store.getSessionsIds(member);
-                                    if (bundles.length > 0) {
-                                        bundlesIds[member] = bundles;
-                                    }
-                                });
-
-                                ChatOmemo_ajaxGetMissingRoomSessions(jid, bundlesIds);
-                            } else {
-                                ChatOmemo_ajaxGetMissingSessions(jid, store.getSessionsIds(jid));
+                                Chat.checkOMEMOState(jid, isMuc);
+                            } else if (store.getSessionsIds(jid).length == 0) {
+                                ChatOmemo_ajaxGetDevicesList(jid);
                             }
                         } else {
                             Chat.disableSending();
-                            ChatOmemo.generateBundle();
+                            ChatOmemo.refreshBundle(store.getOwnSessionsIds());
                         }
                     });
-                } else if (textarea.dataset.encryptedstate == 'yes') {
+                } else if (Chat.getOmemoState() == 'yes') {
+                    if (!text) {
+                        Chat.disableSending();
+                        return;
+                    }
+
                     // Try to encrypt the message
                     let omemo = ChatOmemo.encrypt(jid, text, isMuc);
                     if (omemo) {
@@ -274,43 +271,24 @@ var Chat = {
         Chat.groupChatMembers = members;
     },
 
-    setBundlesIds: function (jid, bundlesIds) {
+    checkOMEMOState: function (jid, muc) {
         var store = new ChatOmemoStorage();
 
-        let build = false;
-        for (const jid in bundlesIds) {
-            let storedSessionsIds = store.getSessionsIds(jid);
-
-            // We need to build new sessions
-            if (!bundlesIds[jid].every(bundleId => storedSessionsIds.includes(bundleId.toString()))) {
-                build = true;
-                break;
-            }
-
-            // We need to close a few sessions
-            if (storedSessionsIds.length > bundlesIds[jid].length) {
-                storedSessionsIds.forEach(storedSessionsId => {
-                    if (!bundlesIds[jid].includes(parseInt(storedSessionsId))) {
-                        var address = new libsignal.SignalProtocolAddress(jid, storedSessionsId);
-                        store.removeSession(address);
-                    }
-                });
-            }
-        }
+        let build = muc
+            ? Chat.groupChatMembers.some(
+                member => !store.isJidResolved(member)
+            )
+            : !store.isJidResolved(jid);
 
         ChatOmemo.getContactState(jid).then(enabled => {
             let state = 'no';
 
             if (enabled) {
-                if (Object.keys(bundlesIds).length > 0) {
-                    state = build
-                        ? 'build'
-                        : 'yes';
-                }
+                state = build
+                    ? 'build'
+                    : 'yes';
             } else {
-                if (Object.keys(bundlesIds).length > 0) {
-                    state = 'disabled';
-                }
+                state = 'disabled';
             }
 
             Chat.setOmemoState(state);
@@ -321,6 +299,13 @@ var Chat = {
         let textarea = Chat.getTextarea();
         if (textarea) {
             textarea.dataset.encryptedstate = state;
+        }
+    },
+
+    getOmemoState: function () {
+        let textarea = Chat.getTextarea();
+        if (textarea) {
+            return textarea.dataset.encryptedstate;
         }
     },
 

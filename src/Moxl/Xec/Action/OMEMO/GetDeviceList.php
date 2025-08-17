@@ -8,7 +8,6 @@ use Moxl\Stanza\OMEMO;
 class GetDeviceList extends Action
 {
     protected $_to;
-    protected $_notifyBundle = false;
 
     public function request()
     {
@@ -16,28 +15,39 @@ class GetDeviceList extends Action
         OMEMO::getDeviceList($this->_to);
     }
 
-    public function setNotifyBundle(bool $notifyBundle)
-    {
-        $this->_notifyBundle = $notifyBundle;
-        return $this;
-    }
-
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        me()->bundles()->where('jid', $this->_to)->delete();
-
         foreach ($stanza->pubsub->items->item as $item) {
             if ((string)$item->attributes()->id == 'current' || $stanza->pubsub->items->count() == 1) {
+                $devicesCount = $item->list->device->count();
+                $deviceCount = 0;
+
                 foreach ($item->list->device as $device) {
+                    $deviceCount++;
+
                     $gb = new GetBundle;
                     $gb->setTo($this->_to)
-                       ->setNotifyBundle($this->_notifyBundle)
-                       ->setId((string)$device->attributes()->id)
-                       ->request();
+                       ->setId((string)$device->attributes()->id);
+
+                    /**
+                     * We send a notification when the last bundle is retrieved
+                     */
+                    if ($devicesCount == $deviceCount) {
+                        $gb = $gb->notifyLast();
+                    }
+
+                    $gb->request();
+
                 }
             }
         }
 
+        $this->deliver();
+    }
+
+    public function error(string $errorId, ?string $message = null)
+    {
+        $this->pack($this->_to);
         $this->deliver();
     }
 }

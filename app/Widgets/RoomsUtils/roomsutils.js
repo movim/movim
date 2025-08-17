@@ -1,9 +1,15 @@
 var RoomsUtils = {
-    getDrawerFingerprints: function (room) {
-        var store = new ChatOmemoStorage();
-        store.getLocalRegistrationId().then(deviceId => {
-            RoomsUtils_ajaxGetDrawerFingerprints(room, deviceId);
+    getDrawerFingerprints: function (room, members) {
+        let resolved = [];
+
+        members.forEach(member => {
+            resolved.push(ChatOmemo.resolveContactFingerprints(member));
         });
+
+        Promise.all(resolved).then(fingerprints => {
+            RoomsUtils_ajaxGetDrawerFingerprints(room, fingerprints);
+        });
+
     },
     morePictures(button, room, page) {
         button.remove();
