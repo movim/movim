@@ -112,12 +112,15 @@ class RoomsUtils extends Base
             $this->rpc('RoomsUtils_ajaxHttpGetLinks', $room);
         }
 
-        if ($this->user->hasOMEMO()) {
+        if ($this->user->hasOMEMO() && $conference->isGroupChat()) {
             $this->rpc(
                 'RoomsUtils.getDrawerFingerprints',
                 $room,
                 $conference->members()->whereNot('jid', $this->user->id)->get()->pluck('jid')->toArray()
             );
+        } else {
+            $tpl = $this->tpl();
+            $this->rpc('MovimTpl.fill', '#room_omemo_fingerprints', $tpl->draw('_rooms_drawer_fingerprints_placeholder'));
         }
 
         (new AdHoc)->ajaxGet($room);
