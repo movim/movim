@@ -90,6 +90,11 @@ class ChatOmemo extends \Movim\Widget\Base
         Toast::send($this->__('omemo.disable_contact'));
     }
 
+    public function ajaxDisableRoomState()
+    {
+        Toast::send($this->__('omemo.disable_room'));
+    }
+
     public function ajaxNotifyGeneratedBundle()
     {
         Toast::send($this->__('omemo.generated_bundle'));

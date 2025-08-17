@@ -369,11 +369,16 @@ var ChatOmemo = {
             ChatOmemo_ajaxEnableContactState();
         }
     },
-    disableContactState: function (jid) {
+    disableContactState: function (jid, muc) {
         var store = new ChatOmemoStorage();
         store.setContactState(jid, false);
         Chat.setOmemoState("disabled");
-        ChatOmemo_ajaxDisableContactState();
+
+        if (muc) {
+            ChatOmemo_ajaxDisableRoomState();
+        } else {
+            ChatOmemo_ajaxDisableContactState();
+        }
     },
     getContactState: async function (jid) {
         var store = new ChatOmemoStorage();

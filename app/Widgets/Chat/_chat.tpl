@@ -117,7 +117,7 @@
                         {if="isset($conference) && $conference->presence && $conference->presence->mucrole == 'visitor'"}disabled{/if}
                     ></textarea>
                     <span class="control icon encrypted" title="{$c->__('omemo.encrypted')}"
-                        onclick="ChatOmemo.disableContactState('{$jid}')">
+                        onclick="ChatOmemo.disableContactState('{$jid}', {if="$muc"}true{else}false{/if})">
                         <i class="material-symbols">lock</i>
                     </span>
                     <span class="control icon encrypted_disabled" title="{$c->__('omemo.encrypted_disabled')}"
@@ -125,7 +125,7 @@
                         <i class="material-symbols">no_encryption</i>
                     </span>
                     <span class="control icon encrypted_loading" title="{$c->__('omemo.encrypted_loading')}"
-                        onclick="ChatOmemo.disableContactState('{$jid}');">
+                        onclick="ChatOmemo.disableContactState('{$jid}', {if="$muc"}true{else}false{/if})">
                         <i class="material-symbols">lock_clock</i>
                     </span>
                 </div>
