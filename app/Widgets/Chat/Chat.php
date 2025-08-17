@@ -496,6 +496,8 @@ class Chat extends \Movim\Widget\Base
             if ($this->user->hasOMEMO() && $conference->isGroupChat()) {
                 $this->rpc('Chat.setGroupChatMembers', $conference->members->pluck('jid')->toArray());
                 $this->rpc('Chat.checkOMEMOState', $room, true);
+            } else {
+                $this->rpc('Chat.setGroupChatMembers', []);
             }
         } else {
             $this->rpc('RoomsUtils_ajaxAdd', $room);
