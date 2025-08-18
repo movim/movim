@@ -131,14 +131,6 @@ class Config extends Base
             }
         }
 
-        if ($config['omemoenabled'] == true) {
-            global $loop;
-
-            $loop->addTimer(3, function () {
-                (new Presence)->ajaxGetOMEMODevices();
-            });
-        }
-
         $s = new Set;
         $s->setData($config)
             ->request();

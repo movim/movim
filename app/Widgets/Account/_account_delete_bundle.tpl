@@ -13,7 +13,7 @@
             <div>
                 <p class="normal">
                     <span class="fingerprint">
-                        {$bundle->fingerprint}
+                        {$fingerprint->fingerprint}
                     </span>
                 </p>
             </div>
@@ -27,7 +27,7 @@
     <button
         name="submit"
         class="button flat color red"
-        onclick="Account_ajaxDeleteBundle({$bundle->bundleid}); Dialog_ajaxClear()">
+        onclick="Account.deleteBundleConfirm({$fingerprint->bundleid}); Dialog_ajaxClear()">
         {$c->__('button.destroy')}
     </button>
 </footer>

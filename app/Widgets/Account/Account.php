@@ -197,26 +197,26 @@ class Account extends \Movim\Widget\Base
         $this->rpc('Account.resolveSessionsStates');
     }
 
-    public function ajaxDeleteBundleConfirm(int $id)
+    public function ajaxDeleteBundle($fingerprint)
     {
+        $fingerprint->fingerprint = base64ToFingerPrint($fingerprint->fingerprint);
+
         $view = $this->tpl();
-        $view->assign('bundle', $this->user->bundles()
-            ->where('jid', $this->user->id)
-            ->where('bundleid', $id)
-            ->first());
+        $view->assign('fingerprint', $fingerprint);
         Dialog::fill($view->draw('_account_delete_bundle'));
+    }
+
+    public function ajaxDeleteBundleConfirm(int $id, array $devicesIds)
+    {
+        $db = new DeleteBundle;
+        $db->setId($id)
+            ->setDevicesIds($devicesIds)
+            ->request();
     }
 
     public function ajaxGetGateways()
     {
         $this->rpc('MovimTpl.fill', '#account_gateways', $this->prepareGateways());
-    }
-
-    public function ajaxDeleteBundle(int $id)
-    {
-        $db = new DeleteBundle;
-        $db->setId($id)
-            ->request();
     }
 
     public function ajaxRemoveAccountConfirm($form)

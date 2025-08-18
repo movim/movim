@@ -35,6 +35,7 @@ var ChatOmemo = {
 
         ChatOmemo_ajaxNotifyGeneratedBundle();
         ChatOmemo_ajaxAnnounceBundle(bundle, devicesIds);
+        ChatOmemo_ajaxGetDevicesList(USER_JID);
     },
 
     refreshBundle: async function (devicesIds, publishOnly) {
@@ -85,6 +86,7 @@ var ChatOmemo = {
     ownDevicesReceived: async function (from, devicesIds) {
         var store = new ChatOmemoStorage();
         const localDeviceId = await store.getLocalRegistrationId();
+        devicesIds = Object.values(devicesIds);
 
         if (localDeviceId == undefined) {
             ChatOmemo.initiateBundle(devicesIds);
@@ -153,6 +155,10 @@ var ChatOmemo = {
 
     handlePreKey: async function (jid, deviceId, preKey) {
         var store = new ChatOmemoStorage();
+
+        const localDeviceId = await store.getLocalRegistrationId();
+        if (localDeviceId == undefined) return;
+
         var address = new libsignal.SignalProtocolAddress(jid, deviceId);
 
         const session = await store.loadSession(address.toString());
@@ -499,3 +505,11 @@ var ChatOmemo = {
         return promise;
     }
 }
+
+MovimWebsocket.attach(async () => {
+    var store = new ChatOmemoStorage();
+    const localDeviceId = await store.getLocalRegistrationId();
+    if (!localDeviceId) {
+        ChatOmemo_ajaxGetDevicesList(USER_JID);
+    }
+});

@@ -13,7 +13,7 @@
                         <i class="material-symbols">fingerprint</i>
                     </span>
                     {if="!$value->self"}
-                        <span class="control active icon gray" onclick="Account_ajaxDeleteBundleConfirm({$value->bundleid})">
+                        <span class="control active icon gray" onclick="Account.deleteBundle({$value->bundleid})">
                             <i class="material-symbols">delete</i>
                         </span>
                         <span class="control">

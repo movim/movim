@@ -25,8 +25,10 @@ class ChatOmemo extends \Movim\Widget\Base
 
     public function onDevicesList($packet)
     {
-        if ($packet->content == $this->user->id) {
-            $this->rpc('ChatOmemo.ownDevicesReceived');
+        list($from, $devices) = array_values($packet->content);
+
+        if ($from == $this->user->id) {
+            $this->rpc('ChatOmemo.ownDevicesReceived', $from, $devices);
         }
     }
 

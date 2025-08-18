@@ -8,6 +8,7 @@ use Moxl\Stanza\Pubsub;
 class DeleteBundle extends Action
 {
     protected $_id;
+    protected array $_devicesIds;
 
     public function request()
     {
@@ -15,21 +16,20 @@ class DeleteBundle extends Action
         Pubsub::delete(false, 'eu.siacs.conversations.axolotl.bundles:' . $this->_id);
     }
 
+    public function setDevicesIds(array $devicesIds)
+    {
+        $this->_devicesIds = $devicesIds;
+        return $this;
+    }
+
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        me()->bundles()
-                       ->where('jid', me()->id)
-                       ->where('bundleid', $this->_id)
-                       ->delete();
-
-        $devicesList = array_values(me()->bundles()
-            ->select('bundleid')
-            ->where('jid', me()->id)
-            ->pluck('bundleid')
-            ->toArray());
+        if (array_search($this->_id, $this->_devicesIds) !== false) {
+            unset($this->_devicesIds[array_search($this->_id, $this->_devicesIds)]);
+        }
 
         $sdl = new SetDeviceList;
-        $sdl->setList($devicesList)
+        $sdl->setList($this->_devicesIds)
             ->request();
     }
 

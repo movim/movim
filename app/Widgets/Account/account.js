@@ -22,6 +22,23 @@ var Account = {
         var store = new ChatOmemoStorage();
         store.setSessionState(checkbox.dataset.identifier, checkbox.checked);
     },
+    deleteBundle: async function (bundleid) {
+        ChatOmemo.resolveContactFingerprints(USER_JID).then(remoteKeys => {
+            remoteKeys = remoteKeys.filter(remoteKey =>
+                remoteKey.bundleid == bundleid
+            );
+
+            Account_ajaxDeleteBundle(remoteKeys[0])
+        });
+    },
+    deleteBundleConfirm: function (bundleid) {
+        var store = new ChatOmemoStorage();
+
+        var address = new libsignal.SignalProtocolAddress(USER_JID, bundleid);
+        store.removeSession(address);
+
+        Account_ajaxDeleteBundleConfirm(bundleid, store.getOwnSessionsIds());
+    },
     refreshFingerprints: async function () {
         ChatOmemo.resolveContactFingerprints(USER_JID).then(remoteKeys => {
             let omemoStorage = new ChatOmemoStorage;

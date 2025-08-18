@@ -78,12 +78,6 @@ class Presence extends Base
         $this->ajaxServerDisco();
         $this->ajaxProfileRefresh();
         $this->onSessionUp();
-
-        global $loop;
-
-        $loop->addTimer(3, function () {
-            $this->ajaxGetOMEMODevices();
-        });
     }
 
     public function ajaxAskLogout()
@@ -123,13 +117,6 @@ class Presence extends Base
     {
         $s = new Get;
         $s->request();
-    }
-
-    public function ajaxGetOMEMODevices()
-    {
-        $gdl = new GetDeviceList;
-        $gdl->setTo($this->user->id)
-            ->request();
     }
 
     public function ajaxPubsubSubscriptionsGet()
