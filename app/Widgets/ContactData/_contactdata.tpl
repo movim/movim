@@ -45,10 +45,10 @@
                     {$c->__('button.chat')}
                 </p>
                 {if="isset($message)"}
-                    {if="$message->retracted"}
+                    {if="$message->encrypted"}
+                        <p><i class="material-symbols fill">lock</i> {if="$message->retracted"}{$c->__('message.retracted')}{else}{$c->__('message.encrypted')}{/if}</p>
+                    {elseif="$message->retracted"}
                         <p><i class="material-symbols">delete</i> {$c->__('message.retracted')}</p>
-                    {elseif="$message->encrypted"}
-                        <p><i class="material-symbols">lock</i> {$c->__('message.encrypted')}</p>
                     {elseif="$message->file"}
                         <p>
                             {if="$message->jidfrom == $message->user_id"}

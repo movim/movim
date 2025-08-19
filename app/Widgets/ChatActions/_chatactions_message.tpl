@@ -6,7 +6,7 @@
                 <span class="resource {$message->resolveColor()}">{$message->resource}</span>
             {/if}
             {if="$message->encrypted"}
-                <p class="encrypted">{$c->__('message.encrypted')} <i class="material-symbols fill">lock</i></p>
+                <p class="encrypted">{if="$message->retracted"}{$c->__('message.retracted')}{else}{$c->__('message.encrypted')}{/if} <i class="material-symbols fill">lock</i></p>
             {elseif="$message->retracted"}
                 <p class="retracted">{$c->__('message.retracted')} <i class="material-symbols">delete</i></p>
             {elseif="$message->file && $message->file->isPicture"}
