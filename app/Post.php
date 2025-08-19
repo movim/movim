@@ -689,7 +689,7 @@ class Post extends Model
 
             if (in_array($att->rel, ['enclosure', 'related', 'alternate'])) {
                 $atte = new Attachment;
-                $atte->rel = $enc['rel'];
+                $atte->rel = $att->rel;
                 $atte->category = 'embed';
 
                 // Youtube

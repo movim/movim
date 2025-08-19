@@ -24,6 +24,11 @@ class MAMResult extends Payload
             $message = \App\Message::findByStanza($stanza, $parent);
             $message = $message->set($stanza->forwarded->message, $stanza->forwarded);
 
+            // parent message doesn't exists
+            if ($message == null) {
+                return;
+            }
+
             if (
                 $message->published && strtotime($message->published) > mktime(0, 0, 0, gmdate("m"), gmdate("d") - 3, gmdate("Y"))
             ) {
@@ -66,11 +71,6 @@ class MAMResult extends Payload
                     $left = new CallInviteLeft;
                     $left->handle($stanza->forwarded->message->left, $stanza->forwarded->message);
                 }
-            }
-
-            // parent message doesn't exists
-            if ($message == null) {
-                return;
             }
 
             if ($message->isMuc()) {
