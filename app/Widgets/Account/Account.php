@@ -25,7 +25,7 @@ class Account extends \Movim\Widget\Base
         $this->registerEvent('register_get_errorfeaturenotimplemented', 'onRegisterError', 'configuration');
         $this->registerEvent('register_set_handle', 'onRegistered', 'configuration');
         $this->registerEvent('register_set_error', 'onRegisterError', 'configuration');
-        $this->registerEvent('omemo_setdevicelist_handle', 'onDeviceList', 'configuration');
+        $this->registerEvent('omemo_SetDevicesList_handle', 'onDeviceList', 'configuration');
         $this->registerEvent('adhoc_get_handle', 'onAdHocList');
     }
 

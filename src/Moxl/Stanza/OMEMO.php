@@ -2,9 +2,11 @@
 
 namespace Moxl\Stanza;
 
+use App\Bundle;
+
 class OMEMO
 {
-    public static function getDeviceList($to)
+    public static function GetDevicesList($to)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElement('pubsub');
@@ -17,7 +19,7 @@ class OMEMO
         \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'get'));
     }
 
-    public static function setDeviceList(array $ids)
+    public static function SetDevicesList(array $ids)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElement('pubsub');
@@ -51,7 +53,7 @@ class OMEMO
         $pubsub->setAttribute('xmlns', 'http://jabber.org/protocol/pubsub');
 
         $items = $dom->createElement('items');
-        $items->setAttribute('node', 'eu.siacs.conversations.axolotl.bundles:'.$id);
+        $items->setAttribute('node', Bundle::OMEMO_BUNDLE . $id);
         $pubsub->appendChild($items);
 
         \Moxl\API::request(\Moxl\API::iqWrapper($pubsub, $to, 'get'));
@@ -69,7 +71,7 @@ class OMEMO
         $pubsub->setAttribute('xmlns', 'http://jabber.org/protocol/pubsub');
 
         $publish = $dom->createElement('publish');
-        $publish->setAttribute('node', 'eu.siacs.conversations.axolotl.bundles:'.$id);
+        $publish->setAttribute('node', Bundle::OMEMO_BUNDLE . $id);
         $pubsub->appendChild($publish);
 
         $item = $dom->createElement('item');

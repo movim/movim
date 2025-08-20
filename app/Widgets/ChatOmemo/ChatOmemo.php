@@ -4,9 +4,10 @@ namespace App\Widgets\ChatOmemo;
 
 use App\Widgets\Toast\Toast;
 use Moxl\Xec\Action\OMEMO\AnnounceBundle;
+use Moxl\Xec\Action\OMEMO\CleanDevicesList;
 use Moxl\Xec\Action\OMEMO\GetBundle;
-use Moxl\Xec\Action\OMEMO\GetDeviceList;
-use Moxl\Xec\Action\OMEMO\SetDeviceList;
+use Moxl\Xec\Action\OMEMO\GetDevicesList;
+use Moxl\Xec\Action\OMEMO\SetDevicesList;
 
 class ChatOmemo extends \Movim\Widget\Base
 {
@@ -15,8 +16,8 @@ class ChatOmemo extends \Movim\Widget\Base
         $this->registerEvent('omemo_getbundle_handle', 'onBundle');
         $this->registerEvent('omemo_getbundle_last', 'onLastBundle');
         $this->registerEvent('omemodevices', 'onDevices');
-        $this->registerEvent('omemo_getdevicelist_handle', 'onDevicesList');
-        $this->registerEvent('omemo_getdevicelist_error', 'onDeviceListError');
+        $this->registerEvent('omemo_GetDevicesList_handle', 'onDevicesList');
+        $this->registerEvent('omemo_GetDevicesList_error', 'onDeviceListError');
 
         $this->addjs('chatomemo.js');
         $this->addjs('chatomemo_storage.js');
@@ -77,6 +78,16 @@ class ChatOmemo extends \Movim\Widget\Base
             ->request();
     }
 
+    /**
+     * For debug purpose
+     */
+    public function ajaxCleanDevicesList(array $devicesIds)
+    {
+        $cdl = new CleanDevicesList;
+        $cdl->setCurrentList($devicesIds)
+            ->request();
+    }
+
     public function ajaxEnableContactState()
     {
         Toast::send($this->__('omemo.enable_contact'));
@@ -106,7 +117,7 @@ class ChatOmemo extends \Movim\Widget\Base
     {
         Toast::send($this->__('omemo.resolving_devices'));
 
-        $gdl = new GetDeviceList;
+        $gdl = new GetDevicesList;
         $gdl->setTo($to)
             ->request();
     }
@@ -130,7 +141,7 @@ class ChatOmemo extends \Movim\Widget\Base
             ->setPreKeys($preKeys)
             ->request();
 
-        $sdl = new SetDeviceList;
+        $sdl = new SetDevicesList;
         $sdl->setList($devicesIds)
             ->request();
     }
@@ -143,7 +154,7 @@ class ChatOmemo extends \Movim\Widget\Base
             ->pluck('bundleid')
             ->toArray());
 
-        $sdl = new SetDeviceList;
+        $sdl = new SetDevicesList;
         $sdl->setList($devicesList)
             ->request();
     }

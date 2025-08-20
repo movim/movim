@@ -2,6 +2,7 @@
 
 namespace Moxl\Xec\Action\OMEMO;
 
+use App\Bundle;
 use Moxl\Xec\Action;
 use Moxl\Stanza\Pubsub;
 
@@ -13,7 +14,7 @@ class DeleteBundle extends Action
     public function request()
     {
         $this->store();
-        Pubsub::delete(false, 'eu.siacs.conversations.axolotl.bundles:' . $this->_id);
+        Pubsub::delete(false, Bundle::OMEMO_BUNDLE . $this->_id);
     }
 
     public function setDevicesIds(array $devicesIds)
@@ -28,7 +29,7 @@ class DeleteBundle extends Action
             unset($this->_devicesIds[array_search($this->_id, $this->_devicesIds)]);
         }
 
-        $sdl = new SetDeviceList;
+        $sdl = new SetDevicesList;
         $sdl->setList($this->_devicesIds)
             ->request();
     }

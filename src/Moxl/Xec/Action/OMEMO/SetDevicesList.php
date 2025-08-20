@@ -5,14 +5,14 @@ namespace Moxl\Xec\Action\OMEMO;
 use Moxl\Xec\Action;
 use Moxl\Stanza\OMEMO;
 
-class SetDeviceList extends Action
+class SetDevicesList extends Action
 {
     private array $_list;
 
     public function request()
     {
         $this->store();
-        OMEMO::setDeviceList($this->_list);
+        OMEMO::SetDevicesList(array_unique($this->_list));
     }
 
     public function setList(array $list)

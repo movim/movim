@@ -20,7 +20,7 @@ use App\Widgets\Chats\Chats;
 use App\Widgets\Dialog\Dialog;
 use Movim\CurrentCall;
 use Moxl\Xec\Action\Blocking\Request;
-use Moxl\Xec\Action\OMEMO\GetDeviceList;
+use Moxl\Xec\Action\OMEMO\GetDevicesList;
 
 class Presence extends Base
 {

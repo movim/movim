@@ -30,7 +30,7 @@ class Disco
         \Moxl\API::request(\Moxl\API::iqWrapper($query, $to, 'result', $id));
     }
 
-    public static function request($to, $node = false)
+    public static function request(?string $to = null, $node = false)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('http://jabber.org/protocol/disco#info', 'query');
@@ -42,7 +42,7 @@ class Disco
         \Moxl\API::request(\Moxl\API::iqWrapper($query, $to, 'get'));
     }
 
-    public static function items($to, $node = false)
+    public static function items(?string $to = null, $node = false)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('http://jabber.org/protocol/disco#items', 'query');

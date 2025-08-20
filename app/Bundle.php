@@ -7,6 +7,7 @@ use Movim\Model;
 class Bundle extends Model
 {
     public $incrementing = false;
+    public const OMEMO_BUNDLE = 'eu.siacs.conversations.axolotl.bundles:';
     protected $primaryKey = ['user_id', 'jid', 'bundleid'];
 
     public function set(string $jid, string $bundleId, $bundle)
