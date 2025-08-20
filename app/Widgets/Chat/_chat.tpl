@@ -118,7 +118,7 @@
                     ></textarea>
                     <span class="control icon encrypted" title="{$c->__('omemo.encrypted')}"
                         onclick="ChatOmemo.disableContactState('{$jid}', {if="$muc"}true{else}false{/if})">
-                        <i class="material-symbols">lock</i>
+                        <i class="material-symbols fill">lock</i>
                     </span>
                     <span class="control icon encrypted_disabled" title="{$c->__('omemo.encrypted_disabled')}"
                         onclick="ChatOmemo.enableContactState('{$jid}', {if="$muc"}true{else}false{/if})">
