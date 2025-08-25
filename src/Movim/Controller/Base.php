@@ -113,6 +113,10 @@ class Base
 
         $content = new Builder;
 
+        if ($this->jsCheck == false) {
+            $content->disableJavascriptCheck();
+        }
+
         $headers = getallheaders();
 
         $built = $content->build('common');

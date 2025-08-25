@@ -1,10 +1,13 @@
 <?php if ($this->jsCheck) { ?>
 <noscript>
     <style type="text/css">main {display: none;}</style>
-    <ul class="list" style="color: white;">
+    <ul class="list thick">
         <li>
+            <span class="primary icon red">
+                <i class="material-symbols">info</i>
+            </span>
             <div>
-                <p class="center"><?php echo __('global.no_js'); ?></p>
+                <p class="normal"><?php echo __('global.no_js'); ?></p>
             </div>
         </li>
     </ul>

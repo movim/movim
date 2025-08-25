@@ -73,17 +73,7 @@
             {/if}
             {if="$public"}
                 <span class="control icon active">
-                    <a href="#"
-                    {if="$public"}
-                        {if="$post->isMicroblog()"}
-                            onclick="MovimUtils.reload('{$c->route('blog', [$post->server, $post->nodeid])}')"
-                        {else}
-                            onclick="MovimUtils.reload('{$c->route('community', [$post->server, $post->node, $post->nodeid])}')"
-                        {/if}
-                    {else}
-                        onclick="MovimUtils.reload('{$c->route('post', [$post->server, $post->node, $post->nodeid])}')"
-                    {/if}
-                    >
+                    <a href="{$post->getLink(true)}">
                         <i class="material-symbols">chevron_right</i>
                     </a>
                 </span>
@@ -220,7 +210,7 @@
         </ul>
     {/if}
 
-    {if="$post->openlink && $post->openlink->url && (!defined('BASE_HOST') || $post->openlink->url.host != BASE_HOST)"}
+    {if="!$public && $post->openlink && $post->openlink->url && (!defined('BASE_HOST') || $post->openlink->url.host != BASE_HOST)"}
         <ul class="list middle flex">
             <li class="block large">
                 <span class="primary icon gray">

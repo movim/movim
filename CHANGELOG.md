@@ -16,6 +16,7 @@ v0.32 (master)
 * Refactor the Public URL/Public Blog flow and texts
 * Implement XEP-0390: Entity Capabilities 2.0
 * Refactor all the OMEMO related code, drop the Bundles table, handle most of the logic in the JS, refactor the fingerprints resolver, cleanup
+* Fix #1459 Allow public posts to be read without Javascript enabled
 
 v0.31
 ---------------------------

@@ -19,8 +19,14 @@
                         <span class="primary icon bubble on_mobile">
                             <img src="{$contact->getPicture(\Movim\ImageSize::M)}">
                         </span>
-                        <span class="control icon active" onclick="MovimUtils.openInNew('{$contact->getSyndicationUrl()}')">
-                            <i class="material-symbols">rss_feed</i>
+                        <span class="control icon">
+                            <a
+                                href="{$contact->getSyndicationUrl()}"
+                                target="_blank"
+                                title="Atom"
+                            >
+                                <i class="material-symbols">rss_feed</i>
+                            </a>
                         </span>
                         <div>
                             <p>

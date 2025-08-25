@@ -804,9 +804,20 @@ class Post extends Model
         return 'urn:uuid:' . generateUUID(hash('sha256', $this->server . $this->node . $this->nodeid, true));
     }
 
-    public function getRef()
+    public function getRef(): string
     {
         return 'xmpp:' . $this->server . '?;node=' . $this->node . ';item=' . $this->nodeid;
+    }
+
+    public function getLink(?bool $public = false): string
+    {
+        if ($public) {
+            return $this->isMicroblog()
+                ? \Movim\Route::urlize('blog', [$this->server, $this->nodeid])
+                : \Movim\Route::urlize('community', [$this->server, $this->node, $this->nodeid]);
+        }
+
+        return \Movim\Route::urlize('post', [$this->server, $this->node, $this->nodeid]);
     }
 
     // Works only for the microblog posts
