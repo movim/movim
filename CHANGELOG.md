@@ -17,6 +17,7 @@ v0.32 (master)
 * Implement XEP-0390: Entity Capabilities 2.0
 * Refactor all the OMEMO related code, drop the Bundles table, handle most of the logic in the JS, refactor the fingerprints resolver, cleanup
 * Fix #1459 Allow public posts to be read without Javascript enabled
+* Fix #1460 Change geturl and seturl to text in Upload table
 
 v0.31
 ---------------------------
