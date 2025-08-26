@@ -124,7 +124,7 @@ var MovimTpl = {
             moveX = event.targetTouches[0].pageX;
             MovimTpl.translateX = parseInt(moveX - MovimTpl.startX);
 
-            if (!nav.classList.contains('active')
+            if (nav && !nav.classList.contains('active')
                 && MovimTpl.startX < clientWidth / 15
                 && MovimTpl.startY > 56
                 && MovimTpl.translateX < nav.offsetWidth + delay
@@ -140,7 +140,7 @@ var MovimTpl = {
             moveX = event.targetTouches[0].pageX;
             MovimTpl.translateX = parseInt(moveX - MovimTpl.startX);
 
-            if (nav.classList.contains('active') && MovimTpl.translateX - delay < 0) {
+            if (nav && nav.classList.contains('active') && MovimTpl.translateX - delay < 0) {
                 MovimTpl.menuDragged = true;
                 event.stopPropagation();
                 nav.style.transform = 'translateX(' + (MovimTpl.translateX - delay) + 'px)';
