@@ -4,13 +4,8 @@
     </div>
 </li>
 {loop="$contacts"}
-    <li class="{if="$value->presence && $value->presence->value > 4"}faded{/if}" data-jid="{$value->jid}">
-        <span class="primary icon bubble small
-            {if="!$value->presence || $value->presence->value > 4"}
-                disabled
-            {else}
-                status {$value->presence->presencekey}
-            {/if}">
+    <li data-jid="{$value->jid}">
+        <span class="primary icon bubble small status {$value->presence->presencekey}">
             <img src="{$value->getPicture(\Movim\ImageSize::M)}">
         </span>
         <span class="control icon active gray" onclick="SendTo_ajaxSend('{$value->jid|echapJS}', false, '{$uri}')">

@@ -51,6 +51,7 @@
             </span>
             {if="$c->getUser()->hasUpload()"}
                 <span class="emojis control icon gray active"
+                        id="dictaphone_toggle"
                         title="{$c->__('dictaphone.name')}"
                         onclick="Dictaphone.toggle()">
                     <i class="material-symbols">mic</i>
