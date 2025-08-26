@@ -341,6 +341,7 @@
             {else}
                 <div class="placeholder">
                     <i class="material-symbols">remove_circle_outline</i>
+                    <h1>{$c->__('chatrooms.banned')}</h1>
                 </div>
             {/if}
         </div>
