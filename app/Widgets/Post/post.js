@@ -23,9 +23,9 @@ MovimWebsocket.attach(function() {
 
     var parts = MovimUtils.urlParts();
 
-    if (parts.params.length) {
+    if (parts.params.length == 3) {
         Post_ajaxGetPost(parts.params[0], parts.params[1], parts.params[2]);
     } else {
-        Post_ajaxClear();
+        Post_ajaxGetNotFound();
     }
 });

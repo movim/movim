@@ -141,6 +141,11 @@ class Post extends Base
         }
     }
 
+    public function ajaxGetNotFound()
+    {
+        $this->rpc('MovimTpl.fill', '#post_widget', $this->prepareNotFound());
+    }
+
     public function ajaxGetPostComments(string $server, string $node, string $id)
     {
         $post = \App\Post::where('server', $server)
