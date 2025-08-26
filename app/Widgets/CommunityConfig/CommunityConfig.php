@@ -3,6 +3,7 @@
 namespace App\Widgets\CommunityConfig;
 
 use App\Widgets\Dialog\Dialog;
+use App\Widgets\Drawer\Drawer;
 use App\Widgets\Toast\Toast;
 use Movim\Image;
 use Movim\Librairies\XMPPtoForm;
@@ -24,7 +25,7 @@ class CommunityConfig extends Base
 
     public function onConfig($packet)
     {
-        list($config, $origin, $node, $advanced) = array_values($packet->content);
+        list($config, $accessModel, $origin, $node, $advanced) = array_values($packet->content);
 
         $view = $this->tpl();
 
@@ -37,7 +38,7 @@ class CommunityConfig extends Base
         $view->assign('config', ($advanced) ? false : $xml->getArray($config->x));
         $view->assign('attributes', $config->attributes());
 
-        Dialog::fill($view->draw('_communityconfig'), true);
+        Drawer::fill('community_config', $view->draw('_communityconfig'), tiny: true);
         $this->rpc('MovimUtils.applyAutoheight');
     }
 

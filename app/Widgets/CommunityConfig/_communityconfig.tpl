@@ -1,18 +1,25 @@
 <section class="scroll">
     <form id="config" name="config">
-        <h3>{$c->__('communityaffiliation.configuration')}</h3>
         {if="$config"}
         <div>
-            <input id="pubsub#title" name="pubsub#title" label="{$c->__('general.name')}"
-                   placeholder="{$c->__('general.name')}" type="text-single"
-                   value="{$config['pubsub#title']}">
-            <label for="pubsub#title">{$c->__('general.name')}</label>
-        </div>
-        <div>
-            <textarea id="pubsub#description" name="pubsub#description"
-                      data-autoheight="true"
-                      placeholder="{$c->__('communityconfig.description')}">{if="isset($config['pubsub#description'])"}{$config['pubsub#description']}{/if}</textarea>
-            <label for="pubsub#description">{$c->__('communityconfig.description')}</label>
+            <ul class="list">
+                <li>
+                    <div>
+                        <input id="pubsub#title" name="pubsub#title" label="{$c->__('general.name')}"
+                            placeholder="{$c->__('general.name')}" type="text-single"
+                            value="{$config['pubsub#title']}">
+                        <label for="pubsub#title">{$c->__('general.name')}</label>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <textarea id="pubsub#description" name="pubsub#description"
+                                data-autoheight="true"
+                                placeholder="{$c->__('communityconfig.description')}">{if="isset($config['pubsub#description'])"}{$config['pubsub#description']}{/if}</textarea>
+                        <label for="pubsub#description">{$c->__('communityconfig.description')}</label>
+                    </div>
+                </li>
+            </ul>
         </div>
         <div>
             <ul class="list middle">
@@ -114,18 +121,24 @@
             {/autoescape}
         {/if}
     </form>
+    <br />
 </section>
+<hr />
 <footer>
     {if="$config"}
         <button class="button flat" onclick="CommunityConfig_ajaxGetConfig('{$server|echapJS}', '{$node|echapJS}', true)">
             <i class="material-symbols">more_vert</i>
         </button>
+    {else}
+        <button class="button flat" onclick="CommunityConfig_ajaxGetConfig('{$server|echapJS}', '{$node|echapJS}', false)">
+            <i class="material-symbols">chevron_backward</i>
+        </button>
     {/if}
-    <button onclick="Dialog_ajaxClear()" class="button flat">
-        {$c->__('button.close')}
-    </button>
-    <button onclick="CommunityConfig_ajaxSetConfig(MovimUtils.formToJson('config'), '{$server|echapJS}', '{$node|echapJS}'); Dialog_ajaxClear();"
-       class="button flat">
+    <button onclick="CommunityConfig_ajaxSetConfig(MovimUtils.formToJson('config'), '{$server|echapJS}', '{$node|echapJS}'); Drawer.clear('community_config');"
+       class="button flat oppose green color">
         {$c->__('button.save')}
+    </button>
+    <button onclick="Drawer.clear('community_config');" class="button flat oppose">
+        {$c->__('button.close')}
     </button>
 </footer>
