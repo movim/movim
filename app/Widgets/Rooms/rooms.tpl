@@ -1,5 +1,5 @@
 <div id="rooms">
-    <ul class="list rooms divided spaced thin active spin"></ul>
+    <ul class="list rooms divided thin spaced active spin"></ul>
 
     <ul class="list head thin">
         <li class="subheader" title="{$c->__('page.configuration')}">

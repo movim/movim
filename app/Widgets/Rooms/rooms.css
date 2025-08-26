@@ -8,11 +8,48 @@
     animation: backgroundblink 1s;
 }
 
-#rooms > ul.list {
+#rooms>ul.list>li:has(ul) {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#rooms>ul.list>li>ul:has(li:nth-child(2)) {
+    padding-bottom: 1rem;
+}
+
+#rooms>ul.list>li>ul>li:not(:first-child)>span.icon,
+#rooms>ul.list>li>ul>li:not(:first-child)>div>p {
+    line-height: 3rem;
+    height: 3rem;
+}
+
+#rooms>ul.list>li>ul>li:not(:first-child)>div>p {
+    font-size: 1.9rem;
+}
+
+#rooms>ul.list>li>ul>li:not(:first-child)>span.icon>i {
+    font-size: 2.5rem;
+    line-height: 3rem;
+}
+
+#rooms>ul.list>li>ul>li:not(:first-child)>span.primary:first-child>i {
+    line-height: 2rem;
+}
+
+#rooms>ul.list>li>ul>li:not(:first-child)>span.primary:first-child {
+    margin-right: 0;
+    margin-left: 2rem;
+}
+
+#rooms>ul.list>li>ul>li:not(:first-child)>span.primary:not(:first-child) {
+    margin: 0;
+}
+
+#rooms>ul.list {
     order: 1;
 }
 
-#rooms > ul.list.head {
+#rooms>ul.list.head {
     order: 0;
 }
 
@@ -24,7 +61,7 @@
     min-height: 0;
 }
 
-#gateway_rooms:not(:empty) + div {
+#gateway_rooms:not(:empty)+div {
     display: none;
 }
 
@@ -37,74 +74,58 @@
     flex-direction: column;
 }
 
-#rooms ul.list.rooms li:not(.connected) span.primary {
+#rooms ul.list.rooms>li:not(.connected) span.primary {
     opacity: 0.25;
     filter: grayscale(0.5);
 }
 
-#rooms ul.toggle_show li div > p:first-child {
+#rooms ul.toggle_show li div>p:first-child {
     line-height: initial;
 }
 
-#rooms ul li.muc_call p:first-child {
-    padding-top: 0.75rem;
-}
-
-#rooms ul li.muc_call p:nth-child(2) {
-    padding: 1rem 0;
-}
-
-#rooms ul.list.rooms:empty ~ ul.toggle_show,
-#rooms ul.list.rooms:not(:empty):not(.all) ~ ul.toggle_show li span.primary i:first-child,
-#rooms ul.list.rooms:not(:empty).all ~ ul.toggle_show li span.primary i:last-child,
-#rooms ul.list.rooms:not(:empty):not(.all) ~ ul.list.head li span.control.toggle_show i:first-child,
-#rooms ul.list.rooms:not(:empty).all ~ ul.list.head li span.control.toggle_show i:last-child,
-#rooms ul.list.rooms:not(:empty):not(.all) ~ ul.toggle_show li div > p:first-child,
-#rooms ul.list.rooms:not(:empty).all ~ ul.toggle_show li div > p:last-child,
-#rooms ul.list.rooms:not(:empty) ~ ul.empty,
-#rooms ul.list.rooms:not(.different_states) ~ ul.toggle_show,
-#rooms ul.list.rooms:not(.all) li:not(.connected) {
+#rooms ul.list.rooms:empty~ul.toggle_show,
+#rooms ul.list.rooms:not(:empty):not(.all)~ul.toggle_show>li span.primary i:first-child,
+#rooms ul.list.rooms:not(:empty).all~ul.toggle_show>li span.primary i:last-child,
+#rooms ul.list.rooms:not(:empty):not(.all)~ul.list.head>li span.control.toggle_show i:first-child,
+#rooms ul.list.rooms:not(:empty).all~ul.list.head>li span.control.toggle_show i:last-child,
+#rooms ul.list.rooms:not(:empty):not(.all)~ul.toggle_show>li div>p:first-child,
+#rooms ul.list.rooms:not(:empty).all~ul.toggle_show>li div>p:last-child,
+#rooms ul.list.rooms:not(:empty)~ul.empty,
+#rooms ul.list.rooms:not(.different_states)~ul.toggle_show,
+#rooms ul.list.rooms:not(.all)>li:not(.connected) {
     display: none;
-}
-
-#rooms > ul.list.rooms > li div p[data-mujiid] {
-    padding: 0.5rem 0;
-}
-
-#rooms > ul.list.rooms > li div p[data-mujiid]:last-child {
-    padding-bottom: 1rem;
 }
 
 /* Rooms order */
 
-#rooms > ul.list.rooms > li {
+#rooms>ul.list.rooms>li {
     order: 4;
 }
 
-#rooms > ul.list.rooms > li.groupchat {
+#rooms>ul.list.rooms>li.groupchat {
     order: 3;
 }
 
-#rooms > ul.list.rooms > li.pinned {
+#rooms>ul.list.rooms>li.pinned {
     order: 2;
 }
 
-#rooms > ul.list.rooms > li.unread {
+#rooms>ul.list.rooms>li.unread {
     order: 1;
 }
 
-#rooms > ul.list.rooms > li.connected {
+#rooms>ul.list.rooms>li.connected {
     order: 0;
 }
 
-#rooms > ul.list.rooms > li.connected.groupchat {
+#rooms>ul.list.rooms>li.connected.groupchat {
     order: -1;
 }
 
-#rooms > ul.list.rooms > li.connected.pinned {
+#rooms>ul.list.rooms>li.connected.pinned {
     order: -2;
 }
 
-#rooms > ul.list.rooms > li.connected.unread {
+#rooms>ul.list.rooms>li.connected.unread {
     order: -3;
 }

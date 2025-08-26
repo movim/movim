@@ -32,4 +32,12 @@ class CreateChannel extends Action
         ]);
         $this->deliver();
     }
+
+    public function error(string $errorId, ?string $message = null)
+    {
+        if ($message) {
+            $this->pack($message);
+            $this->deliver();
+        }
+    }
 }

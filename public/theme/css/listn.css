@@ -50,52 +50,52 @@ ul.list.thick li:not(.subheader)>div {
 
 /* Active list items */
 
-ul.list.active li:hover:not(.subheader),
-ul.list.active.all li:hover,
-ul.list li.active:hover,
-ul.list.active li.active:not(.subheader),
+ul.list.active>li:hover:not(.subheader),
+ul.list.active.all>li:hover,
+ul.list>li.active:hover,
+ul.list.active>li.active:not(.subheader),
 ul.tabs>li:hover {
     cursor: pointer;
     user-select: none;
 }
 
-ul.list.active li:hover:not(.subheader):not(.color),
-ul.list.active.all li:hover:not(.color),
-ul.list li.active:hover:not(.color),
-ul.list.active li.active:not(.subheader):not(.color) {
+ul.list.active>li:hover:not(.subheader):not(.color),
+ul.list.active.all>li:hover:not(.color),
+ul.list>li.active:hover:not(.color),
+ul.list.active>li.active:not(.subheader):not(.color) {
     background-color: rgba(var(--movim-element-action), 0.1);
 }
 
-ul.list li>span.active:hover {
+ul.list>li>span.active:hover {
     cursor: pointer;
     user-select: none;
 }
 
-ul.list li>span.bubble.active:hover {
+ul.list>li>span.bubble.active:hover {
     filter: grayscale(25%);
 }
 
-ul.list li>span:not(.bubble).active:hover,
-ul.list li>div.bubble:not(.file):hover {
+ul.list>li>span:not(.bubble).active:hover,
+ul.list>li>div.bubble:not(.file):hover {
     cursor: pointer;
     background-color: rgba(var(--movim-element-action), 0.1);
 }
 
 /* Clicked list items */
 
-ul.list.active li:active:not(.subheader),
-ul.list.active.all li:active,
+ul.list.active>li:active:not(.subheader),
+ul.list.active.all>li:active,
 ul.tabs>li:active {
     background-color: rgba(var(--movim-element-action), 0.2);
 }
 
 
-ul.list li>span.bubble.active:active {
+ul.list>li>span.bubble.active:active {
     filter: grayscale(50%);
 }
 
-ul.list li>span:not(.bubble).active:active,
-ul.list li>div.bubble:not(.file):active {
+ul.list>li>span:not(.bubble).active:active,
+ul.list>li>div.bubble:not(.file):active {
     cursor: pointer;
     background-color: rgba(var(--movim-element-action), 0.2);
     font-variation-settings: 'FILL' 1;

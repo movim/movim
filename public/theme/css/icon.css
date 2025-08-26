@@ -21,7 +21,19 @@ span.icon img {
     object-fit: cover;
 }
 
-span.icon.top {
+span.icon.r1 {
+    transform: rotate(90deg);
+}
+
+span.icon.r2 {
+    transform: rotate(180deg);
+}
+
+span.icon.r3 {
+    transform: rotate(270deg);
+}
+
+/*span.icon.top {
     position: relative;
     top: -1.5rem;
     width: 100%;
@@ -34,7 +46,7 @@ span.icon.top {
 
 span.icon.top.preview {
     height: 25rem;
-}
+}*/
 
 span.icon.primary.thumb,
 span.icon.control.thumb {

@@ -48,6 +48,8 @@ class RoomsUtils extends Base
         $this->registerEvent('disco_items_errorregistrationrequired', 'onDiscoRegistrationRequired');
         $this->registerEvent('muc_creategroupchat_handle', 'onChatroomCreated');
         $this->registerEvent('muc_createchannel_handle', 'onChatroomCreated');
+        $this->registerEvent('muc_creategroupchat_error', 'onChatroomCreatedError');
+        $this->registerEvent('muc_createchannel_error', 'onChatroomCreatedError');
         $this->registerEvent('muc_changeaffiliation_handle', 'onAffiliationChanged');
         $this->registerEvent('muc_changeaffiliation_errornotallowed', 'onAffiliationChangeUnauthorized');
         $this->registerEvent('message_invite_error', 'onInviteError');
@@ -334,6 +336,14 @@ class RoomsUtils extends Base
     }
 
     /**
+     * @brief If a chatroom creation is failing
+     */
+    public function onChatroomCreatedError($packet)
+    {
+        Toast::send($packet->content);
+    }
+
+    /**
      * @brief Get the subject form of a chatroom
      */
     public function ajaxGetSubject($room)
@@ -455,6 +465,7 @@ class RoomsUtils extends Base
         } else {
             $m = new Muc;
             $m->enableCreate()
+                ->noNotify()
                 ->setTo(strtolower($form->jid->value))
                 ->setNickname($form->nick->value ?? $this->user->username)
                 ->request();
