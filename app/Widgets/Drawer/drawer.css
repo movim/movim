@@ -9,6 +9,7 @@
     transition: transform .3s ease-in-out;
     display: flex;
     flex-direction: column;
+    border-radius: 2rem 2rem 0 0;
 }
 
 .drawer.tiny {
@@ -35,7 +36,6 @@
 
 @media screen and (min-width: 570px) {
     .drawer {
-        border-radius: 2rem 2rem 0 0;
         width: 70rem;
         left: calc(50% - 35rem);
     }
