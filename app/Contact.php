@@ -244,10 +244,6 @@ class Contact extends Model
             ? (string)$vcard->url->uri
             : null;
 
-        $this->url = !empty($vcard->impp->uri)
-            ? $vcard->impp->uri
-            : null;
-
         $this->pronouns = !empty($vcard->pronouns->text)
             ? (string)$vcard->pronouns->text
             : null;
