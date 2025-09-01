@@ -53,6 +53,7 @@ class Chat extends \Movim\Widget\Base
         $this->registerEvent('retracted', 'onRetracted');
         $this->registerEvent('moderated', 'onRetracted');
         $this->registerEvent('receiptack', 'onMessageReceipt');
+        $this->registerEvent('pubsub_getitem_messageresolved', 'onPostResolved');
         $this->registerEvent('displayed', 'onMessage', 'chat');
         $this->registerEvent('mam_get_handle', 'onMAMRetrieved', 'chat');
         $this->registerEvent('chatstate', 'onChatState', 'chat');
@@ -110,27 +111,32 @@ class Chat extends \Movim\Widget\Base
 
     public function onJingleMessage($packet)
     {
-        $this->onMessage($packet, false, false);
+        $this->onMessage($packet);
     }
 
     public function onMujiMessage($packet)
     {
-        $this->onMessage($packet, false, false);
+        $this->onMessage($packet);
     }
 
     public function onMucEventMessage($packet)
     {
-        $this->onMessage($packet, false, false);
+        $this->onMessage($packet);
     }
 
     public function onMessageReceipt($packet)
     {
-        $this->onMessage($packet, false, true);
+        $this->onMessage($packet, history: false, receipt: true);
     }
 
     public function onRetracted($packet)
     {
-        $this->onMessage($packet, false, true);
+        $this->onMessage($packet, history: false, receipt: true);
+    }
+
+    public function onPostResolved($packet)
+    {
+        $this->onMessage($packet);
     }
 
     public function onCounter($count)

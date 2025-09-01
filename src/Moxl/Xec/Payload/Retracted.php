@@ -8,17 +8,18 @@ class Retracted extends Payload
     {
         $idKey = $stanza->moderated
             && in_array(
-                $stanza->moderated->attributes()->xmlns, [
+                $stanza->moderated->attributes()->xmlns,
+                [
                     'urn:xmpp:message-moderate:0', // buggy ejabberd implementation
                     'urn:xmpp:message-moderate:1'
                 ]
             ) ? 'stanzaid'
-              : 'originid';
+            : 'originid';
 
         $message = me()->messages()
-                                    ->where($idKey, (string)$stanza->attributes()->id)
-                                    ->where('jidfrom', baseJid((string)$parent->attributes()->from))
-                                    ->first();
+            ->where($idKey, (string)$stanza->attributes()->id)
+            ->where('jidfrom', baseJid((string)$parent->attributes()->from))
+            ->first();
 
         if ($message) {
             $message->retract();

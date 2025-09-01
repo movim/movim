@@ -17,6 +17,8 @@ class GetItem extends Action
     protected $_manual = false; // Use when we explicitely request an item
     protected $_parentid;
 
+    protected $_messagemid;
+
     public function request()
     {
         $this->store();
@@ -64,6 +66,19 @@ class GetItem extends Action
 
                     $this->pack($p);
                     $this->deliver();
+
+                    if ($this->_messagemid) {
+                        $message = me()->messages()->where('mid', $this->_messagemid)->first();
+
+                        if ($message) {
+                            $message->postid = $p->id;
+                            $message->save();
+
+                            $this->method('messageresolved');
+                            $this->pack($message);
+                            $this->deliver();
+                        }
+                    }
                 } elseif (isset($item->metadata)
                 && (string)$item->metadata->attributes()->xmlns == 'urn:xmpp:avatar:metadata'
                 && isset($item->metadata->info)

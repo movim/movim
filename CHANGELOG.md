@@ -18,6 +18,7 @@ v0.32 (master)
 * Refactor all the OMEMO related code, drop the Bundles table, handle most of the logic in the JS, refactor the fingerprints resolver, cleanup
 * Fix #1459 Allow public posts to be read without Javascript enabled
 * Fix #1460 Change geturl and seturl to text in Upload table
+* Try to Resolve Pubsub Posts from incoming messages if they are not present in the database
 
 v0.31
 ---------------------------

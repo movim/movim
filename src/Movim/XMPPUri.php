@@ -50,6 +50,21 @@ class XMPPUri
         }
     }
 
+    public function getServer(): ?string
+    {
+        return $this->type == 'post' ? $this->params[0] : null;
+    }
+
+    public function getNode(): ?string
+    {
+        return $this->type == 'post' ? $this->params[1] : null;
+    }
+
+    public function getNodeItemId(): ?string
+    {
+        return $this->type == 'post' ? $this->params[2] : null;
+    }
+
     public function getType(): ?string
     {
         return $this->type;

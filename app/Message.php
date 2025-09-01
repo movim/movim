@@ -13,6 +13,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Illuminate\Support\Collection;
 use Movim\XMPPUri;
 use Moxl\Xec\Action\BOB\Request;
+use Moxl\Xec\Action\Pubsub\GetItem;
 
 class Message extends Model
 {
@@ -76,6 +77,8 @@ class Message extends Model
                     $file->save();
                 });
             }
+
+            $message->resolvePost();
         });
     }
 
@@ -595,11 +598,7 @@ class Message extends Model
                         $this->messageFiles->push($messageFile);
                     }
                 } else {
-                    $xmppUri = new XMPPUri((string)$stanza->reference->attributes()->uri);
-
-                    if ($post = $xmppUri->getPost()) {
-                        $this->postid = $post->id;
-                    }
+                    $this->posturi = (string)$stanza->reference->attributes()->uri;
                 }
             }
 
@@ -644,6 +643,27 @@ class Message extends Model
         }
 
         return $this;
+    }
+
+    /**
+     * @desc Resolve the Post from its URI, require a saved message
+     */
+    public function resolvePost()
+    {
+        if (!$this->posturi || !empty($this->postid)) return;
+
+        $xmppUri = new XMPPUri($this->posturi);
+
+        if ($post = $xmppUri->getPost()) {
+            $this->postid = $post->id;
+        } else {
+            $getItem = new GetItem;
+            $getItem->setTo($xmppUri->getServer())
+                ->setNode($xmppUri->getNode())
+                ->setId($xmppUri->getNodeItemId())
+                ->setMessagemid($this->mid)
+                ->request();
+        }
     }
 
     /**

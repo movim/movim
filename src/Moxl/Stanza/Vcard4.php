@@ -79,7 +79,7 @@ class Vcard4
         }
 
         $impp = $dom->createElement('impp');
-        $impp->appendChild($dom->createElement('uri', 'xmpp:'.$data->jid));
+        $impp->appendChild($dom->createElement('uri', 'xmpp:' . $data->jid));
         $vcard->appendChild($impp);
 
         if (isset($data->email)) {
