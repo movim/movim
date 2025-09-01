@@ -219,6 +219,7 @@ class Rooms extends Base
 
         if ($conference) {
             $this->rpc('Rooms.setRoom', \cleanupId($conference->conference), $this->prepareConference($conference), $callSecond);
+            $this->rpc('Rooms.refresh', $callSecond);
         }
     }
 
@@ -237,10 +238,10 @@ class Rooms extends Base
         $this->rpc('Rooms.clearRooms');
 
         foreach ($conferences as $conference) {
-            $this->rpc('Rooms.setRoom', \cleanupId($conference->conference), $this->prepareConference($conference), true);
+            $this->rpc('Rooms.setRoom', \cleanupId($conference->conference), $this->prepareConference($conference));
         }
 
-        $this->rpc('Rooms.refresh');
+        $this->rpc('Rooms.refresh', true);
         $this->rpc('Rooms.checkNoConnected');
 
         $this->rpc('MovimUtils.removeClass', '#rooms ul.list.rooms', 'spin');

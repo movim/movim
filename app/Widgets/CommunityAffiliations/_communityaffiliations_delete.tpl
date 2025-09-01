@@ -14,8 +14,8 @@
     </button>
     <button
         name="submit"
-        class="button flat"
+        class="button flat color red"
         onclick="CommunityAffiliations_ajaxDeleteConfirm('{$server|echapJS}', '{$node|echapJS}'); Dialog_ajaxClear()">
-        {$c->__('button.remove')}
+        {$c->__('button.delete')}
     </button>
 </footer>

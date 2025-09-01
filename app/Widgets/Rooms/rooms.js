@@ -161,7 +161,7 @@ var Rooms = {
         document.querySelector('#rooms ul.list.rooms').innerHTML = '';
     },
 
-    setRoom: function (id, html, noSecondRefresh) {
+    setRoom: function (id, html) {
         var listSelector = '#rooms ul.list.rooms ';
         var list = document.querySelector(listSelector);
         var element = list.querySelector('#' + id);
@@ -183,8 +183,6 @@ var Rooms = {
         if (i == rooms.length) {
             MovimTpl.append(listSelector, html);
         }
-
-        Rooms.refresh(noSecondRefresh);
     },
 
     clearAllActives: function () {
