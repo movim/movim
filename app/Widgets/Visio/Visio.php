@@ -243,8 +243,10 @@ class Visio extends Base
     {
         $jts = new JingletoSDP($packet->content);
 
-        $this->rpc('MovimJingles.onContentAdd',
-            \baseJid($packet->from), $jts->generate(),
+        $this->rpc(
+            'MovimJingles.onContentAdd',
+            \baseJid($packet->from),
+            $jts->generate(),
             (string)$packet->content->content->attributes()->name
         );
     }
@@ -253,8 +255,10 @@ class Visio extends Base
     {
         $jts = new JingletoSDP($packet->content);
 
-        $this->rpc('MovimJingles.onContentModify',
-            \baseJid($packet->from), $jts->generate(),
+        $this->rpc(
+            'MovimJingles.onContentModify',
+            \baseJid($packet->from),
+            $jts->generate(),
             //(string)$packet->content->attributes()->name
         );
     }
@@ -263,8 +267,10 @@ class Visio extends Base
     {
         $jts = new JingletoSDP($packet->content);
 
-        $this->rpc('MovimJingles.onContentRemove',
-            \baseJid($packet->from), $jts->generate(),
+        $this->rpc(
+            'MovimJingles.onContentRemove',
+            \baseJid($packet->from),
+            $jts->generate(),
             (string)$packet->content->attributes()->name
         );
     }
@@ -647,7 +653,7 @@ class Visio extends Base
         $this->rpc('MovimVisio.setServices', [['urls' => array_slice($servers, 0, 2)]]);
     }
 
-    public function ajaxGetStates()
+    public function ajaxHttpGetStates()
     {
         $this->rpc('MovimVisio.setStates', [
             'calling' => $this->__('visio.calling'),
@@ -701,22 +707,20 @@ class Visio extends Base
         $st = new SessionTerminate;
         $st->setTo($to)
             ->setJingleSid($sid)
-            ->setReason($reason)
+            ->setReason($reason ?? 'success')
             ->request();
     }
 
     /**
-     * Close a one-to-one call
+     * @desc Close a one-to-one call
      */
     public function ajaxGoodbye(string $to, string $sid, ?string $reason = 'success')
     {
         if (CurrentCall::getInstance()->isStarted()) {
-            CurrentCall::getInstance()->stop($to, $sid);
-
             $st = new MessageFinish;
             $st->setTo($to)
                 ->setId($sid)
-                ->setReason($reason)
+                ->setReason($reason ?? 'success')
                 ->request();
         } else {
             $sr = new MessageRetract;
@@ -737,6 +741,18 @@ class Visio extends Base
 
         Toast::send($this->__('visio.ended'));
         $this->rpc('MovimJingles.terminateAll', $reason);
+    }
+
+    /**
+     * @desc Force stop the current call, when a page is reloaded for example
+     */
+    public function ajaxTryForceStop()
+    {
+        $currentCall = CurrentCall::getInstance();
+
+        if ($currentCall->isStarted()) {
+            $this->ajaxGoodbye($currentCall->jid, $currentCall->id, 'gone');
+        }
     }
 
     private function filterSDPMedia(string $sdp, string $mediaId)

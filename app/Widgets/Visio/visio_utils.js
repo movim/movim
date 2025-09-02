@@ -224,7 +224,7 @@ var VisioUtils = {
     disableScreenSharing: function () {
         MovimJingles.disableScreenSharing();
 
-        if (MovimVisio.screenSharing.srcObject) {
+        if (MovimVisio.screenSharing && MovimVisio.screenSharing.srcObject) {
             MovimVisio.screenSharing.srcObject.getTracks().forEach(track => track.stop());
             MovimVisio.screenSharing.srcObject = null;
 

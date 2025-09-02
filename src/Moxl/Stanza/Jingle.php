@@ -87,15 +87,15 @@ class Jingle
         $message->setAttribute('to', $to);
         $dom->appendChild($message);
 
-        $retract = $dom->createElementNS('urn:xmpp:jingle-message:0', 'finish');
-        $retract->setAttribute('id', $id);
-        $message->appendChild($retract);
+        $finish = $dom->createElementNS('urn:xmpp:jingle-message:0', 'finish');
+        $finish->setAttribute('id', $id);
+        $message->appendChild($finish);
 
-        $reason = $dom->createElementNS('urn:xmpp:jingle:1', 'reason');
-        $retract->appendChild($reason);
+        $jingleReason = $dom->createElementNS('urn:xmpp:jingle:1', 'reason');
+        $finish->appendChild($jingleReason);
 
-        $reason->appendChild($dom->createElement('success'));
-        $reason->appendChild($dom->createElement('text', 'Success'));
+        $jingleReason->appendChild($dom->createElement($reason));
+        $jingleReason->appendChild($dom->createElement('text', 'Success'));
 
         \Moxl\API::sendDom($dom);
     }

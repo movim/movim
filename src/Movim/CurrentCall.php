@@ -7,24 +7,7 @@
 namespace Movim;
 
 use Carbon\Carbon;
-use DOMDocument;
 use Movim\Widget\Wrapper;
-use SimpleXMLElement;
-
-class CurrentMujiCall
-{
-    public ?string $jid = null;
-    public ?string $id = null;
-    public ?string $mujiRoom = null;
-    public ?Carbon $startTime = null;
-
-    public function __construct(string $jid, string $id)
-    {
-        $this->jid = $jid;
-        $this->id = $id;
-        $this->startTime = Carbon::now();
-    }
-}
 
 /**
  * This class handle the current Jitsi call
@@ -36,8 +19,6 @@ class CurrentCall
     public ?string $id = null;
     public ?string $mujiRoom = null;
     public ?Carbon $startTime = null;
-
-    private array $contents = [];
 
     public static function getInstance()
     {

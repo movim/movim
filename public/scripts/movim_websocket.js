@@ -143,7 +143,7 @@ var MovimWebsocket = {
     },
 
     send: function (widget, func, params) {
-        if (this.connection.readyState == 1) {
+        if (this.connection && this.connection.readyState == 1) {
             var body = {
                 'w': widget,
                 'f': func
