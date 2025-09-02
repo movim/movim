@@ -758,6 +758,16 @@ class Visio extends Base
         $currentCall = CurrentCall::getInstance();
 
         if ($currentCall->isStarted()) {
+            $message = Message::eventMessageFactory(
+                'jingle',
+                baseJid($currentCall->jid),
+                $currentCall->id
+            );
+            $message->type = 'jingle_finish';
+            $message->save();
+
+            $this->packedEvent('jingle_message', $message);
+
             $this->ajaxGoodbye($currentCall->jid, $currentCall->id, 'gone');
         }
     }
