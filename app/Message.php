@@ -42,11 +42,12 @@ class Message extends Model
         'chat',
         'headline',
         'invitation',
+        'jingle_end',
+        'jingle_finish',
         'jingle_incoming',
         'jingle_outgoing',
-        'jingle_end',
+        'jingle_reject',
         'jingle_retract',
-        'jingle_reject'
     ];
     public const MESSAGE_TYPE_MUC = [
         'groupchat',

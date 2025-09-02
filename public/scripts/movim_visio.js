@@ -334,5 +334,6 @@ Visio_ajaxHttpGetStates();
 MovimWebsocket.attach(() => {
     if (MovimVisio.services.length == 0) {
         Visio_ajaxResolveServices();
+        Visio_ajaxTryForceStop();
     }
 });

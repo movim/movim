@@ -86,6 +86,8 @@
                 <i class="material-symbols icon gray">phone_missed</i> {$c->__('chat.jingle_retract')}
             {elseif="$message->type == 'jingle_reject'"}
                 <i class="material-symbols icon orange">phone_missed</i> {$c->__('chat.jingle_reject')}
+            {elseif="$message->type == 'jingle_finish'"}
+                <i class="material-symbols icon red">phone_disabled</i> {$c->__('chat.jingle_end')}
             {elseif="$message->type == 'jingle_outgoing'"}
                 <i class="material-symbols icon blue">call</i> {$c->__('chat.jingle_outgoing')}
             {elseif="$message->type == 'jingle_end'"}

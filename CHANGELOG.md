@@ -19,6 +19,7 @@ v0.32 (master)
 * Fix #1459 Allow public posts to be read without Javascript enabled
 * Fix #1460 Change geturl and seturl to text in Upload table
 * Try to Resolve Pubsub Posts from incoming messages if they are not present in the database
+* Implement the Jingle Finish event
 
 v0.31
 ---------------------------

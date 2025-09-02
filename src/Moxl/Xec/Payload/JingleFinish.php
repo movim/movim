@@ -5,7 +5,7 @@ namespace Moxl\Xec\Payload;
 use App\Message;
 use Movim\CurrentCall;
 
-class JingleReject extends Payload
+class JingleFinish extends Payload
 {
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
@@ -20,7 +20,7 @@ class JingleReject extends Payload
                 baseJid($from),
                 (string)$stanza->attributes()->id
             );
-            $message->type = 'jingle_reject';
+            $message->type = 'jingle_finish';
             $message->save();
 
             $this->pack($message);

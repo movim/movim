@@ -48,6 +48,7 @@ class Visio extends Base
         $this->registerEvent('jingleaccept', 'onAccept');
         $this->registerEvent('jingleretract', 'onRetract');
         $this->registerEvent('jinglereject', 'onReject');
+        $this->registerEvent('jinglefinish', 'onFinish');
 
         $this->registerEvent('jingle_sessioninitiate', 'onInitiateSDP');
         //$this->registerEvent('jingle_sessioninitiate_erroritemnotfound', 'onNotFound');
@@ -205,6 +206,11 @@ class Visio extends Base
     }
 
     public function onReject(Packet $packet)
+    {
+        $this->onTerminate($packet);
+    }
+
+    public function onFinish(Packet $packet)
     {
         $this->onTerminate($packet);
     }

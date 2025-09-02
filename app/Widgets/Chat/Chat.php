@@ -177,17 +177,18 @@ class Chat extends \Movim\Widget\Base
 
         if (
             $message->isEmpty() && !in_array($message->type, [
+                'jingle_end',
+                'jingle_finish',
                 'jingle_incoming',
                 'jingle_outgoing',
-                'jingle_end',
-                'muc_owner',
-                'jingle_retract',
                 'jingle_reject',
+                'jingle_retract',
+                'muc_admin',
+                'muc_member',
+                'muc_outcast',
+                'muc_owner',
                 'muji_propose',
                 'muji_retract',
-                'muc_admin',
-                'muc_outcast',
-                'muc_member'
             ])
         ) {
             return;
@@ -1639,15 +1640,16 @@ class Chat extends \Movim\Widget\Base
 
         // Internal messages
         if (in_array($message->type, [
-            'muc_owner',
-            'muc_admin',
-            'muc_outcast',
-            'muc_member',
-            'jingle_reject',
+            'jingle_finish',
             'jingle_incoming',
             'jingle_outgoing',
+            'jingle_reject',
             'jingle_retract',
-            'muji_propose'
+            'muc_admin',
+            'muc_member',
+            'muc_outcast',
+            'muc_owner',
+            'muji_propose',
         ])) {
             $view = $this->tpl();
             $view->assign('message', $message);

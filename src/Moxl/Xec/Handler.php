@@ -172,6 +172,7 @@ class Handler
             '0c0238797befe918ac81efaa0200771b' => 'JingleProceed',
             '46ee3ca42af934e8a3b4d42062817aa8' => 'JingleRetract',
             '44d0c16e222fcdee6961c8939b647e15' => 'JingleReject',
+            '1622ee132ba08e9ccf42bfa3956931f9' => 'JingleFinish',
             'd84d4b89d43e88a244197ccf499de8d8' => 'Jingle',
 
             // TODO: Update the handlers to XEP-0482 when Dino is updated
