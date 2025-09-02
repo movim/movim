@@ -717,6 +717,7 @@ class Visio extends Base
     public function ajaxGoodbye(string $to, string $sid, ?string $reason = 'success')
     {
         if (CurrentCall::getInstance()->isStarted()) {
+            CurrentCall::getInstance()->stop($to, $sid);
             $st = new MessageFinish;
             $st->setTo($to)
                 ->setId($sid)

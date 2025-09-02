@@ -21,7 +21,7 @@ class JingleRetract extends Payload
 
             $this->pack($message);
             $this->event('jingle_message');
-    }
+        }
 
         $this->pack((string)$stanza->attributes()->id, $from);
         $this->deliver();
