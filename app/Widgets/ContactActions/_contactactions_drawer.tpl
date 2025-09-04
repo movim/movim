@@ -230,7 +230,7 @@
                 </li>
             {/if}
         </ul>
-        <div id="adhoc_widget_{$jid|cleanupId}">
+        <div class="adhoc_widget" id="adhoc_widget_{$jid|cleanupId}">
             <div class="placeholder">
                 <i class="material-symbols">terminal</i>
                 <h1>{$c->__('adhoc.title')}</h1>
