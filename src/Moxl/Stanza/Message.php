@@ -210,7 +210,7 @@ class Message
                     $thumbnail->setAttribute('media-type', $file->thumbnail_type);
 
                     if ($file->thumbnail_type == 'image/thumbhash') {
-                        $thumbnail->setAttribute('uri', 'data:image/thumbhash,' . $file->thumbnail_url);
+                        $thumbnail->setAttribute('uri', 'data:image/thumbhash;base64,' . $file->thumbnail_url);
                     } else {
                         $thumbnail->setAttribute('uri', $file->thumbnail_url);
                     }

@@ -575,11 +575,11 @@ class Message extends Model
                             $messageFile->thumbnail_url = (string)$thumbnailAttributes->uri;
                         }
 
-                        if (substr((string)$thumbnailAttributes->uri, 0, 21) == 'data:image/thumbhash,') {
+                        if (substr((string)$thumbnailAttributes->uri, 0, 28) == 'data:image/thumbhash;base64,') {
                             $messageFile->thumbnail_width = (int)$thumbnailAttributes->width;
                             $messageFile->thumbnail_height = (int)$thumbnailAttributes->height;
                             $messageFile->thumbnail_type = (string)$thumbnailAttributes->{'media-type'};
-                            $messageFile->thumbnail_url = substr((string)$thumbnailAttributes->uri, 21);
+                            $messageFile->thumbnail_url = substr((string)$thumbnailAttributes->uri, 28);
                         }
                     }
 
