@@ -26,12 +26,7 @@ class CommunitiesServers extends Base
 
     public function onDiscoInfo($packet)
     {
-        $info = \App\Info::whereCategory('pubsub')
-            ->whereType('service')
-            ->where('server', $packet->content[0])
-            ->first();
-
-        if ($info) {
+        if ($packet->content->isPubsubService()) {
             $this->ajaxHttpGet();
         }
     }

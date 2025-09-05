@@ -27,8 +27,6 @@ class Request extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $this->pack([$this->_to, $this->_node]);
-
         // Info
         $info = new \App\Info;
         $info->set($stanza, $this->_node, $this->_parent);
@@ -64,6 +62,7 @@ class Request extends Action
             !$info->identities->contains('category', 'account')
             && !$info->identities->contains('category', 'client')
         ) {
+            $this->pack($info);
             $this->deliver();
         }
     }

@@ -52,16 +52,11 @@ class CommunitiesServer extends \Movim\Widget\Base
 
     public function onDiscoRequest($packet)
     {
-        list($server, $node) = $packet->content;
+        $info = $packet->content;
 
-        $community = \App\Info::where('server', $server)
-            ->where('node', $node)
-            ->first();
-
-        if ($community) {
-            $this->rpc('MovimTpl.replace', '#' . cleanupId($server . $node), $this->prepareTicket($community));
+        if ($info) {
+            $this->rpc('MovimTpl.replace', '#' . cleanupId($info->server . $info->node), $this->prepareTicket($info));
         }
-
     }
 
     public function onDiscoError($packet)

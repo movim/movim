@@ -26,8 +26,11 @@ class Rooms extends Base
 
         $this->registerEvent('bookmark2_get_handle', 'onBookmarkGet');
         $this->registerEvent('bookmark2', 'onBookmarkSet');
+        $this->registerEvent('bookmark2_retract', 'onBookmarkRetract');
         $this->registerEvent('bookmark2_set_handle', 'onBookmarkSet');
         $this->registerEvent('bookmark2_delete_handle', 'onBookmarkSet');
+
+        $this->registerEvent('disco_request_handle', 'onDiscoRequest', 'chat');
 
         $this->registerEvent('muc_destroy_handle', 'onDestroyed', 'chat');
 
@@ -57,6 +60,15 @@ class Rooms extends Base
         // Bug: In Chat::ajaxGet, Notif.current might come after this event
         // so we don't set the filter
         $this->registerEvent('chat_open_room', 'onChatOpen'/*, 'chat'*/);
+    }
+
+    public function onDiscoRequest(Packet $packet)
+    {
+        $info = $packet->content;
+
+        if ($info->isConference()) {
+            $this->ajaxHttpGet();
+        }
     }
 
     public function onChatOpen(string $room)
@@ -150,14 +162,26 @@ class Rooms extends Base
     {
         foreach (
             $this->user->session->conferences()
+                ->with('info')
                 ->where('bookmarkversion', (int)$packet->content)
                 ->get() as $room
         ) {
+            if (!$room->info) {
+                $request = new Request;
+                $request->setTo($room->conference)
+                    ->request();
+            }
+
             if ($room->autojoin && !$room->connected) {
                 $this->ajaxJoin($room->conference, $room->nick);
             }
         }
 
+        $this->ajaxHttpGet();
+    }
+
+    public function onBookmarkRetract($packet)
+    {
         $this->ajaxHttpGet();
     }
 

@@ -521,6 +521,11 @@ class Info extends Model
         return $roles;
     }
 
+    public function isConference(): bool
+    {
+        return $this->identities->contains('category', 'conference');
+    }
+
     public function isPubsubService(): bool
     {
         return ($this->identities->contains('category', 'pubsub')

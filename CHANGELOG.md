@@ -20,6 +20,8 @@ v0.32 (master)
 * Fix #1460 Change geturl and seturl to text in Upload table
 * Try to Resolve Pubsub Posts from incoming messages if they are not present in the database
 * Implement the Jingle Finish event
+* disco#info the bookmarked rooms that don't have an Info yet
+* Fix and refactor Disco Request resolution
 
 v0.31
 ---------------------------

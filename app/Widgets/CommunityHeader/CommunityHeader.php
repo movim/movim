@@ -12,6 +12,7 @@ use Moxl\Xec\Action\Pubsub\Unsubscribe;
 use Moxl\Xec\Action\PubsubSubscription\Add as SubscriptionAdd;
 use Moxl\Xec\Action\PubsubSubscription\Remove as SubscriptionRemove;
 use Moxl\Xec\Action\Pubsub\TestPostPublish;
+use Moxl\Xec\Payload\Packet;
 
 class CommunityHeader extends Base
 {
@@ -29,32 +30,32 @@ class CommunityHeader extends Base
         $this->addcss('communityheader.css');
     }
 
-    public function onDiscoRequest($packet)
+    public function onDiscoRequest(Packet $packet)
     {
-        list($origin, $node) = $packet->content;
+        $info = $packet->content;
 
-        if ((substr($node, 0, 30) != 'urn:xmpp:microblog:0:comments/')) {
-            $this->rpc('MovimTpl.fill', '#community_header', $this->prepareHeader($origin, $node));
+        if (!$info->isMicroblogCommentsNode()) {
+            $this->rpc('MovimTpl.fill', '#community_header', $this->prepareHeader($info->server, $info->node));
         }
     }
 
-    public function onConfigSaved($packet)
+    public function onConfigSaved(Packet $packet)
     {
         $this->rpc('CommunityHeader.getMetadata');
     }
 
-    public function onTestPublish($packet)
+    public function onTestPublish(Packet $packet)
     {
         list($origin, $node) = array_values($packet->content);
         $this->rpc('MovimUtils.redirect', $this->route('publish', [$origin, $node]));
     }
 
-    public function onTestPublishError($packet)
+    public function onTestPublishError(Packet $packet)
     {
         Toast::send($this->__('publish.no_publication'));
     }
 
-    public function onSubscribed($packet)
+    public function onSubscribed(Packet $packet)
     {
         list($origin, $node) = array_values($packet->content);
 
@@ -63,12 +64,12 @@ class CommunityHeader extends Base
         Toast::send($this->__('communityheader.subscribed'));
     }
 
-    public function onSubscriptionUnsupported($packet)
+    public function onSubscriptionUnsupported(Packet $packet)
     {
         Toast::send($this->__('communityheader.subscription_unsupported'));
     }
 
-    public function onUnsubscribed($packet)
+    public function onUnsubscribed(Packet $packet)
     {
         list($origin, $node) = array_values($packet->content);
 
