@@ -52,11 +52,6 @@ class AdHoc extends \Movim\Widget\Base
         $view = $this->tpl();
         $view->assign('jid', $packet->from);
 
-        // Refresh the AdHoc list in any cases
-        if ((string)$command->attributes()->status === 'completed') {
-            $this->rpc('AdHoc.init');
-        }
-
         if (isset($command->note)) {
             $view->assign('note', $command->note);
             Dialog::fill($view->draw('_adhoc_note'));

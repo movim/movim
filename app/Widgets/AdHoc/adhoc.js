@@ -1,12 +1,4 @@
 var AdHoc = {
-    init: function () {
-        var parts = MovimUtils.urlParts();
-        if (parts.page === "contact") {
-            AdHoc_ajaxGet(parts.params[0]);
-        } else {
-            AdHoc_ajaxGet();
-        }
-    },
     refresh: function () {
         var items = document.querySelectorAll('.adhoc_widget .actions li:not(.subheader)');
         var i = 0;
@@ -54,7 +46,3 @@ var AdHoc = {
         }
     }
 }
-
-MovimWebsocket.attach(function () {
-    AdHoc.init();
-});
