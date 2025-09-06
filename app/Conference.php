@@ -5,7 +5,6 @@ namespace App;
 use Movim\ImageSize;
 
 use Awobaz\Compoships\Database\Eloquent\Model;
-use Movim\CurrentCall;
 
 class Conference extends Model
 {
@@ -192,6 +191,10 @@ class Conference extends Model
     {
         if (!empty($this->name)) {
             return $this->name;
+        }
+
+        if ($this->info) {
+            return $this->info->name;
         }
 
         if ($this->isGroupChat() && $this->members()->count() > 0) {
