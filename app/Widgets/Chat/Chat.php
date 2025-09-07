@@ -146,9 +146,9 @@ class Chat extends \Movim\Widget\Base
 
     public function onNotificationCounterClear($params)
     {
-        list($page, $jid) = array_pad($params, 3, null);
+        $jid = $params[1] ?? null;
 
-        if ($page === 'chat') {
+        if ($params[0] === 'chat' && $jid) {
             // Check if the jid is a connected chatroom
             $presence = $this->user->session->presences()
                 ->where('jid', $jid)
