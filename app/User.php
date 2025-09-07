@@ -75,11 +75,6 @@ class User extends Model
         return $this->hasMany('App\Draft');
     }
 
-    public function bundles()
-    {
-        return $this->hasMany('App\Bundle');
-    }
-
     public function pushSubscriptions()
     {
         return $this->hasMany('App\PushSubscription');

@@ -17,7 +17,9 @@ class Remove extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $this->deliver();
+        if ($this->_to == null) {
+            $this->deliver();
+        }
     }
 
     public function error(string $errorId, ?string $message = null)

@@ -58,8 +58,8 @@ class Account extends \Movim\Widget\Base
 
     public function onRemoved()
     {
-        $this->user->messages()->delete();
         \App\Post::restrictToMicroblog()->where('server', $this->user->id)->delete();
+        $this->user->delete();
         $this->rpc('Presence_ajaxLogout');
     }
 

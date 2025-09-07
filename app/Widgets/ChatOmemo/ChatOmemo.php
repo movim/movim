@@ -145,17 +145,4 @@ class ChatOmemo extends \Movim\Widget\Base
         $sdl->setList($devicesIds)
             ->request();
     }
-
-    public function ajaxRefreshDeviceList()
-    {
-        $devicesList = array_values($this->user->bundles()
-            ->select('bundleid')
-            ->where('jid', $this->user->id)
-            ->pluck('bundleid')
-            ->toArray());
-
-        $sdl = new SetDevicesList;
-        $sdl->setList($devicesList)
-            ->request();
-    }
 }

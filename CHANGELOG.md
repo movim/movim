@@ -23,6 +23,8 @@ v0.32 (master)
 * disco#info the bookmarked rooms that don't have an Info yet
 * Fix and refactor Disco Request resolution
 * Fix Message Retraction in chatrooms
+* Completely delete the User (and related data) when someone is leaving the instance
+* Fix user clear when unregistering from a Chatroom
 
 v0.31
 ---------------------------
