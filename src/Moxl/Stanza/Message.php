@@ -396,18 +396,18 @@ class Message
         self::maker($to, type: 'chat', chatstates: 'paused');
     }
 
-    public static function retract(string $to, string $originId)
+    public static function retract(string $to, string $id, string $type)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $root = $dom->createElementNS('jabber:client', 'message');
         $dom->appendChild($root);
         $root->setAttribute('to', str_replace(' ', '\40', $to));
-        $root->setAttribute('type', 'chat');
+        $root->setAttribute('type', $type);
         $root->setAttribute('id', generateUUID());
 
         $retract = $dom->createElement('retract');
         $retract->setAttribute('xmlns', 'urn:xmpp:message-retract:1');
-        $retract->setAttribute('id', $originId);
+        $retract->setAttribute('id', $id);
         $root->appendChild($retract);
 
         // Hints

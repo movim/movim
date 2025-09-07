@@ -22,6 +22,7 @@ v0.32 (master)
 * Implement the Jingle Finish event
 * disco#info the bookmarked rooms that don't have an Info yet
 * Fix and refactor Disco Request resolution
+* Fix Message Retraction in chatrooms
 
 v0.31
 ---------------------------

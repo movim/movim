@@ -38,6 +38,7 @@ class MAMResult extends Payload
                 ) {
                     $retracted = new Retracted;
                     $retracted->handle($stanza->forwarded->message->retract, $stanza->forwarded->message);
+                    return;
                 }
 
                 if (

@@ -185,16 +185,19 @@ class ChatActions extends \Movim\Widget\Base
             ->where('mid', $mid)
             ->first();
 
-        if ($retract && $retract->originid) {
+        if ($retract && ($retract->stanzaid || $retract->originid)) {
             $this->rpc('Dialog.clear');
 
             $r = new Retract;
-            $r->setTo($retract->jidto)
-                ->setOriginid($retract->originid)
+            $r->setTo($retract->isMuc() ? $retract->jidfrom : $retract->jidto)
+                ->setType($retract->type)
+                ->setId($retract->stanzaid ?? $retract->originid)
                 ->request();
 
-            $retract->retract();
-            $retract->save();
+            if (!$retract->isMuc()) {
+                $retract->retract();
+                $retract->save();
+            }
 
             $packet = new \Moxl\Xec\Payload\Packet;
             $packet->content = $retract;

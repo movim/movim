@@ -8,10 +8,11 @@ use Moxl\Stanza\Message;
 class Retract extends Action
 {
     protected $_to;
-    protected $_originid;
+    protected $_id;
+    protected $_type = 'chat';
 
     public function request()
     {
-        Message::retract($this->_to, $this->_originid);
+        Message::retract($this->_to, $this->_id, $this->_type);
     }
 }
