@@ -65,7 +65,7 @@
         {if="$conference->subject"}
             <li>
                 <span class="primary icon gray">
-                    <i class="material-symbols">short_text</i>
+                    <i class="material-symbols">info_i</i>
                 </span>
                 <div>
                     <p class="line">
@@ -77,7 +77,25 @@
                     </p>
                     <p class="all">
                         {autoescape="off"}
-                            {$conference->subject|addUrls}
+                            {$conference->subject|addUrls|nl2br}
+                        {/autoescape}
+                    </p>
+                </div>
+            </li>
+        {/if}
+
+        {if="$conference->info->description"}
+            <li>
+                <span class="primary icon gray">
+                    <i class="material-symbols">short_text</i>
+                </span>
+                <div>
+                    <p class="line">
+                        {$c->__('information.description')}
+                    </p>
+                    <p class="all">
+                        {autoescape="off"}
+                            {$conference->info->description|addUrls|nl2br}
                         {/autoescape}
                     </p>
                 </div>

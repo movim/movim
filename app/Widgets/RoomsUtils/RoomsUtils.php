@@ -34,6 +34,7 @@ use Moxl\Xec\Action\Presence\Muc;
 use Moxl\Xec\Action\Presence\Unavailable;
 
 use Illuminate\Database\Capsule\Manager as DB;
+use Moxl\Xec\Action\Register\Remove;
 
 class RoomsUtils extends Base
 {
@@ -556,6 +557,10 @@ class RoomsUtils extends Base
         $d = new Delete;
         $d->setId($room)
             ->setVersion($conference->bookmarkversion)
+            ->request();
+
+        $unregister = new Remove;
+        $unregister->setTo($room)
             ->request();
     }
 

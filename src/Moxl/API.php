@@ -18,7 +18,7 @@ class API
         if ($me->id && $me->session && $me->session->resource) {
             $iq->setAttribute(
                 'from',
-                $me->id.'/'.$me->session->resource
+                $me->id . '/' . $me->session->resource
             );
         }
 

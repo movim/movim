@@ -29,11 +29,13 @@ class RoomsExplore extends Base
         }
 
         $view->assign('vcards', Contact::whereIn('id', $keys)->get()->keyBy('id'));
-        $view->assign('bookmarks', $this->user->session
-                                        ->conferences()
-                                        ->whereIn('conference', $keys)
-                                        ->get()
-                                        ->keyBy('conference')
+        $view->assign(
+            'bookmarks',
+            $this->user->session
+                ->conferences()
+                ->whereIn('conference', $keys)
+                ->get()
+                ->keyBy('conference')
         );
         $view->assign('results', $results);
         $view->assign('global', $packet->content['global']);
@@ -79,7 +81,7 @@ class RoomsExplore extends Base
         } else {
             $s = new Search;
             $s->setKeyword($keyword)
-              ->request();
+                ->request();
         }
     }
 
@@ -88,6 +90,7 @@ class RoomsExplore extends Base
         $view = $this->tpl();
         $rooms = \App\Info::whereCategory('conference')
             ->restrictUserHost()
+            ->restrictMucServices()
             ->whereType('text')
             ->where('mucpublic', true)
             ->where('mucpersistent', true)
@@ -95,10 +98,10 @@ class RoomsExplore extends Base
             ->orderBy('occupants', 'desc');
 
         if ($keyword) {
-            $rooms = $rooms->where(function($query) use ($keyword) {
-                $query->where('name', 'like', '%'.$keyword.'%')
-                    ->orWhere('server', 'like', '%'.$keyword.'%')
-                    ->orWhere('description', 'like', '%'.$keyword.'%');
+            $rooms = $rooms->where(function ($query) use ($keyword) {
+                $query->where('name', 'like', '%' . $keyword . '%')
+                    ->orWhere('server', 'like', '%' . $keyword . '%')
+                    ->orWhere('description', 'like', '%' . $keyword . '%');
             });
         }
 
@@ -106,11 +109,13 @@ class RoomsExplore extends Base
 
         $view->assign('vcards', Contact::whereIn('id', $rooms->pluck('server'))->get()->keyBy('id'));
         $view->assign('rooms', $rooms);
-        $view->assign('bookmarks', $this->user->session
-                                        ->conferences()
-                                        ->whereIn('conference', $rooms->pluck('server'))
-                                        ->get()
-                                        ->keyBy('conference')
+        $view->assign(
+            'bookmarks',
+            $this->user->session
+                ->conferences()
+                ->whereIn('conference', $rooms->pluck('server'))
+                ->get()
+                ->keyBy('conference')
         );
 
         $this->rpc('MovimTpl.fill', '#roomsexplore_local', $view->draw('_roomsexplore_local'));

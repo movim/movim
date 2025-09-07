@@ -167,8 +167,11 @@ class Rooms extends Base
                 ->get() as $room
         ) {
             if (!$room->info) {
+                $jid = explodeJid($room->conference);
+
                 $request = new Request;
                 $request->setTo($room->conference)
+                    ->setParent($jid['server'])
                     ->request();
             }
 
@@ -284,8 +287,11 @@ class Rooms extends Base
             return;
         }
 
+        $jid = explodeJid($room);
+
         $r = new Request;
         $r->setTo($room)
+            ->setParent($jid['server'])
             ->request();
 
         $p = new Muc;
@@ -295,7 +301,6 @@ class Rooms extends Base
             $nickname = $this->user->username;
         }
 
-        $jid = explodeJid($room);
         $capability = \App\Info::where('server', $jid['server'])
             ->where('node', '')
             ->first();
@@ -308,10 +313,6 @@ class Rooms extends Base
             if ($capability->isMAM2()) {
                 $p->enableMAM2();
             }
-        } else {
-            $r = new Request;
-            $r->setTo($jid['server'])
-                ->request();
         }
 
         $m = new GetMembers;

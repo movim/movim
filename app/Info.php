@@ -74,6 +74,24 @@ class Info extends Model
         }
     }
 
+    public function scopeRestrictMucServices($query)
+    {
+        $query->whereIn('parent', function ($query) {
+            $query->select('server')
+                ->from('infos')
+                ->whereIn('id', function ($query) {
+                    $query->select('info_id')
+                        ->from('identities')
+                        ->where('category', 'conference');
+                })
+                ->whereNotIn('id', function ($query) {
+                    $query->select('info_id')
+                        ->from('identities')
+                        ->where('category', 'gateway');
+                });
+        });
+    }
+
     public function setReactionsrestrictionsAttribute(array $arr)
     {
         $this->attributes['reactionsrestrictions'] = serialize($arr);
