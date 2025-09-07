@@ -4,8 +4,7 @@ var Chat = {
     date: null,
     separator: null,
 
-    // Date time of the oldest message displayed
-    currentDateTime: null,
+    oldestMessageDateTime: null,
     edit: false,
 
     // Scroll
@@ -46,6 +45,18 @@ var Chat = {
     // Keep track of replaced messages hash when loading history or refreshing
     replacedHash: [],
 
+    init: function (date, separator, config) {
+        var div = document.createElement('div');
+
+        div.innerHTML = date;
+        Chat.date = div.firstChild.cloneNode(true);
+        div.innerHTML = separator;
+        Chat.separator = div.firstChild.cloneNode(true);
+
+        Chat.pagination = config['pagination'];
+        Chat.delivery_error = config['delivery_error'];
+        Chat.action_impossible_encrypted_error = config['action_impossible_encrypted_error'];
+    },
     autocomplete: function (event, jid) {
         RoomsUtils_ajaxMucUsersAutocomplete(jid);
     },
@@ -158,7 +169,7 @@ var Chat = {
         if (textarea) {
             Chat_ajaxGetHistory(
                 textarea.dataset.jid,
-                Chat.currentDateTime,
+                Chat.oldestMessageDateTime,
                 Boolean(textarea.dataset.muc),
                 true,
                 tryMam);
@@ -637,16 +648,8 @@ var Chat = {
         Chat.delivery_error = delivery_error;
         Chat.action_impossible_encrypted_error = action_impossible_encrypted_error;
     },
-    resetCurrentDateTime: function () {
-        Chat.currentDateTime = null;
-    },
-    setGeneralElements(date, separator) {
-        var div = document.createElement('div');
-
-        div.innerHTML = date;
-        Chat.date = div.firstChild.cloneNode(true);
-        div.innerHTML = separator;
-        Chat.separator = div.firstChild.cloneNode(true);
+    resetOldestMessageDateTime: function () {
+        Chat.oldestMessageDateTime = null;
     },
     setSpecificElements: function (left, right) {
         var div = document.createElement('div');
@@ -662,7 +665,7 @@ var Chat = {
 
         discussion.onscroll = function () {
             if (this.scrollTop < 1
-                && Chat.currentDateTime) {
+                && Chat.oldestMessageDateTime) {
                 Chat.getHistory(true);
             }
 
@@ -935,8 +938,8 @@ var Chat = {
                 /**
                  * We might have old messages reacted pushed by the server
                  */
-                if (Chat.currentDateTime
-                    && Chat.currentDateTime > messageDateTime
+                if (Chat.oldestMessageDateTime
+                    && Chat.oldestMessageDateTime > messageDateTime
                     && !prepend) {
                     return;
                 }
@@ -946,8 +949,8 @@ var Chat = {
                 }
 
                 for (speakertime in page[date]) {
-                    if (Chat.currentDateTime == null) {
-                        Chat.currentDateTime = page[date][speakertime].published;
+                    if (Chat.oldestMessageDateTime == null) {
+                        Chat.oldestMessageDateTime = page[date][speakertime].published;
                     }
 
                     Chat.appendMessage(speakertime, page[date][speakertime], prepend);
@@ -1037,11 +1040,9 @@ var Chat = {
         } else {
             if (data.user_id == data.jidfrom || data.mine) {
                 bubble = Chat.right.cloneNode(true);
-                if (data.mine) {
-                    id = data.jidfrom;
-                } else {
-                    id = data.jidto;
-                }
+                id = (data.mine)
+                    ? data.jidfrom
+                    : data.jidto;
             } else {
                 bubble = Chat.left.cloneNode(true);
                 id = data.jidfrom;
@@ -1275,17 +1276,14 @@ var Chat = {
             }
         }
 
-        if (prepend) {
-            if (new Date(Chat.currentDateTime) > new Date(data.published)) {
-                Chat.currentDateTime = data.published;
-            }
+        if (new Date(Chat.oldestMessageDateTime) > new Date(data.published)) {
+            Chat.oldestMessageDateTime = data.published;
+        }
 
-            // We prepend
-            if (!mergeMsg) {
+        if (!mergeMsg) {
+            if (prepend) {
                 MovimTpl.prepend('#' + id, bubble.outerHTML);
-            }
-        } else {
-            if (!mergeMsg) {
+            } else {
                 MovimTpl.append('#' + id, bubble.outerHTML);
             }
         }
@@ -1657,28 +1655,29 @@ var Chat = {
         }
 
         return url.protocol === "http:" || url.protocol === "https:";
-    },
-    getChat: function (jid) {
-        var room = (MovimUtils.urlParts().params[1] === 'room');
-
-        if (room) {
-            Chat.getRoom(jid);
-        } else {
-            Chat.get(jid);
-        }
     }
 };
 
 MovimWebsocket.attach(function () {
-    Chat_ajaxInit();
+    if (!Chat.pagination) {
+        Chat_ajaxInit();
+    }
 
     var jid = MovimUtils.urlParts().params[0];
-    var room = (MovimUtils.urlParts().params[1] === 'room');
+
     if (jid) {
-        if (Boolean(document.getElementById(MovimUtils.cleanupId(jid) + '-conversation')) && Chat.currentDateTime) {
-            Chat_ajaxGetHistory(jid, Chat.currentDateTime, room, false, true);
+        if (Boolean(document.getElementById(MovimUtils.cleanupId(jid) + '-conversation')) && Chat.oldestMessageDateTime) {
+            Chat_ajaxGetHistory(
+                jid,
+                Chat.oldestMessageDateTime,
+                (MovimUtils.urlParts().params[1] === 'room'),
+                false,
+                false
+            );
         } else {
-            Chat.getChat(jid);
+            (MovimUtils.urlParts().params[1] === 'room')
+                ? Chat.getRoom(jid)
+                : Chat.get(jid);
         }
     } else {
         if (!MovimUtils.isMobile()) {

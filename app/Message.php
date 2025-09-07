@@ -51,12 +51,12 @@ class Message extends Model
     ];
     public const MESSAGE_TYPE_MUC = [
         'groupchat',
+        'muc_admin',
+        'muc_member',
+        'muc_outcast',
+        'muc_owner',
         'muji_propose',
         'muji_retract',
-        'muc_owner',
-        'muc_admin',
-        'muc_outcast',
-        'muc_member'
     ];
 
     public static function boot()

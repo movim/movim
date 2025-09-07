@@ -10,6 +10,7 @@ use App\Message;
 use App\OpenChat;
 use App\Roster;
 use App\User;
+use App\Widgets\Chat\Chat;
 use Carbon\Carbon;
 use Movim\CurrentCall;
 
@@ -255,8 +256,10 @@ class Chats extends Base
         $tpl->cacheClear('_chats_item', $jid);
 
         $this->rpc('MovimTpl.remove', $this->getItemId($jid));
-        $this->rpc('Chat_ajaxClearCounter', $jid);
         $this->rpc('Chats.refresh');
+
+        // Clear the counter
+        (new Chat)->getMessages($jid, seenOnly: true, event: false);
 
         if ($closeDiscussion) {
             $this->rpc('Chat_ajaxGet');
