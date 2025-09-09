@@ -64,10 +64,10 @@ class Bookmark2
         }
 
         if ($configuration->notify !== null) {
-            $notifications = $dom->createElement('notifications');
-            $notifications->setAttribute('xmlns', Conference::$xmlnsNotifications);
-            $notifications->setAttribute('notify', $configuration->notificationKey);
-            $extensions->appendChild($notifications);
+            $notify = $dom->createElement('notify');
+            $notify->setAttribute('xmlns', Conference::$xmlnsNotifications);
+            $notify->appendChild($dom->createElement($configuration->notificationKey));
+            $extensions->appendChild($notify);
         }
 
         if ($configuration->pinned == true) {

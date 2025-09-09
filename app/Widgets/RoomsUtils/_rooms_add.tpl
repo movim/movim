@@ -156,7 +156,7 @@
                     <option value="never" {if="isset($conference) && $conference->notify == 0"}selected{/if}>
                         {$c->__('room.notify_never')}
                     </option>
-                    <option value="quoted" {if="isset($conference) && $conference->notify == 1"}selected{/if}
+                    <option value="on-mention" {if="isset($conference) && $conference->notify == 1"}selected{/if}
                         {if="!isset($conference)"}selected{/if}>
                         {$c->__('room.notify_quoted')}
                     </option>

@@ -25,6 +25,8 @@ v0.32 (master)
 * Fix Message Retraction in chatrooms
 * Completely delete the User (and related data) when someone is leaving the instance
 * Fix user clear when unregistering from a Chatroom
+* Implement XEP-0300: Use of Cryptographic Hash Functions in XMPP
+* Implement XEP-0492: Chat notification settings
 
 v0.31
 ---------------------------

@@ -13,11 +13,11 @@ class Conference extends Model
     protected $fillable = ['conference', 'name', 'nick', 'autojoin', 'pinned'];
     protected $with = ['contact', 'mujiCalls'];
 
-    public static $xmlnsNotifications = 'xmpp:movim.eu/notifications:0';
+    public static $xmlnsNotifications = 'urn:xmpp:notification-settings:0';
     public static $xmlnsPinned = 'urn:xmpp:bookmarks-pinning:0';
     public static $notifications = [
         0 => 'never',
-        1 => 'quoted',
+        1 => 'on-mention',
         2 => 'always'
     ];
 
@@ -153,15 +153,43 @@ class Conference extends Model
 
         if ($item->conference->extensions) {
             if (
-                $item->conference->extensions && $item->conference->extensions->notifications
-                && $item->conference->extensions->notifications->attributes()->xmlns == self::$xmlnsNotifications
+                $item->conference->extensions->notify
+                && $item->conference->extensions->notify->attributes()->xmlns == self::$xmlnsNotifications
             ) {
-                $this->notify = (int)array_flip(self::$notifications)[(string)$item->conference->extensions->notifications->attributes()->notify];
+                if ($item->conference->extensions->notify->never) {
+                    $this->notify = 0;
+                }
+
+                if ($item->conference->extensions->notify->{'on-mention'}) {
+                    $this->notify = 1;
+                }
+
+                if ($item->conference->extensions->notify->always) {
+                    $this->notify = 2;
+                }
+
+                unset($item->conference->extensions->notify);
+
+                // Remove the deprecated extension if present
+                if ($item->conference->extensions->notifications) {
+                    unset($item->conference->extensions->notifications);
+                }
+            } else if ( // Deprecated
+                $item->conference->extensions->notifications
+                && $item->conference->extensions->notifications->attributes()->xmlns == 'xmpp:movim.eu/notifications:0'
+            ) {
+                $notifications = [
+                    'never' => 0,
+                    'quoted' => 1,
+                    'always' => 2
+                ];
+
+                $this->notify = (int)$notifications[(string)$item->conference->extensions->notifications->attributes()->notify];
                 unset($item->conference->extensions->notifications);
             }
 
             if (
-                $item->conference->extensions && $item->conference->extensions->pinned
+                $item->conference->extensions->pinned
                 && in_array($item->conference->extensions->pinned->attributes()->xmlns, [self::$xmlnsPinned, 'xmpp:movim.eu/pinned:0'])
             ) {
                 $this->pinned = true;
@@ -182,7 +210,7 @@ class Conference extends Model
         return isset($this->presence);
     }
 
-    public function getNotificationKeyAttribute()
+    public function getNotificationKeyAttribute(): string
     {
         return self::$notifications[$this->notify];
     }
