@@ -60,10 +60,10 @@
     max-height: initial;
 }
 
+.snackbar#status_websocket:not(.hide) ~ nav,
 .snackbar#status_websocket:not(.hide) ~ main {
-    opacity: 0.5;
+    opacity: 0.05;
     pointer-events: none;
-    filter: grayscale(1);
 }
 
 .snackbar#status_websocket:not(.hide) ~ div.dialog,
