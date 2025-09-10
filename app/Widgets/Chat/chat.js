@@ -1627,9 +1627,7 @@ var Chat = {
                 }
 
                 if (Chat.slideAuthorized) {
-                    chat.style.transform = 'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, '
-                        + (Chat.translateX - delay)
-                        + ', 0, 0, 1)';
+                    chat.style.transform = 'translateX(' + Chat.translateX + 'px)';
                 }
             }
         }, true);
