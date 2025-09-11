@@ -438,7 +438,7 @@ class Chat extends \Movim\Widget\Base
             }
 
             $this->rpc('Chat.setObservers');
-            $this->rpc('Chat.clearMessages', '#' . cleanupId($jid) . '-conversation');
+            $this->rpc('MovimTpl.fill', '#' . cleanupId($jid) . '-conversation', '');
             $this->getMessages($jid);
             $this->rpc('Notif.current', 'chat|' . $jid);
             $this->rpc('Chat.scrollToSeparator');
@@ -484,7 +484,7 @@ class Chat extends \Movim\Widget\Base
             }
 
             $this->rpc('Chat.setObservers');
-            $this->rpc('Chat.clearMessages', '#' . cleanupId($room) . '-conversation'); // TODO, not call there all the time ?!
+            $this->rpc('MovimTpl.fill', '#' . cleanupId($room) . '-conversation', '');
             $this->getMessages($room, muc: true);
             $this->rpc('Notif.current', 'chat|' . $room);
             $this->rpc('Chat.scrollToSeparator');
@@ -1015,7 +1015,7 @@ class Chat extends \Movim\Widget\Base
             ->first();
 
         if ($contextMessage) {
-            $this->rpc('Chat.clearMessages', '#' . cleanupId($jid) . '-conversation');
+            $this->rpc('MovimTpl.fill', '#' . cleanupId($jid) . '-conversation', '');
             $this->ajaxGetHistory($jid, $contextMessage->published, muc: $contextMessage->isMuc(), prepend: false, tryMam: false);
             $this->rpc('Chat.scrollAndBlinkMessageMid', $mid);
             $this->rpc('MovimUtils.addClass', '#chat_widget .contained', 'history');
@@ -1204,7 +1204,7 @@ class Chat extends \Movim\Widget\Base
 
     public function ajaxClearAndGetMessages(string $jid, $muc = false)
     {
-        $this->rpc('Chat.clearMessages', '#' . cleanupId($jid) . '-conversation');
+        $this->rpc('MovimTpl.fill', '#' . cleanupId($jid) . '-conversation', '');
         $this->getMessages($jid, $muc);
         $this->rpc('MovimUtils.removeClass', '#chat_widget .contained', 'history');
     }

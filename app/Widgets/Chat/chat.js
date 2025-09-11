@@ -648,9 +648,6 @@ var Chat = {
         Chat.delivery_error = delivery_error;
         Chat.action_impossible_encrypted_error = action_impossible_encrypted_error;
     },
-    clearMessages: function (id) {
-        MovimTpl.fill(id, '');
-    },
     setSpecificElements: function (left, right) {
         var div = document.createElement('div');
 
@@ -1641,10 +1638,11 @@ var Chat = {
     getNewerMessages: function () {
         var jid = MovimUtils.urlParts().params[0];
         let lastMessage = Chat.getDiscussion().querySelector('li:last-child .bubble:last-child .message:last-child');
-        if (jid && lastMessage) {
+
+        if (jid) {
             Chat_ajaxGetHistory(
                 jid,
-                lastMessage.dataset.published,
+                lastMessage ? lastMessage.dataset.published : null,
                 (MovimUtils.urlParts().params[1] === 'room'),
                 false,
                 false
