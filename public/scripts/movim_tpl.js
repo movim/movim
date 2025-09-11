@@ -152,14 +152,12 @@ var MovimTpl = {
 MovimEvents.registerBody('touchstart', 'movimtpl', (event) => {
     MovimTpl.startX = event.targetTouches[0].pageX;
     MovimTpl.startY = event.targetTouches[0].pageY;
-    document.querySelector('body > nav').classList.remove('moving');
 });
 
 MovimEvents.registerBody('touchend', 'movimtpl', (event) => {
-    nav.classList.add('moving');
+    nav = document.querySelector('body > nav');
     nav.style.transform = '';
-
-    percent = MovimTpl.translateX / clientWidth;
+    percent = MovimTpl.translateX / clientWidth;'moving'
 
     if (MovimTpl.menuDragged) {
         if (nav.classList.contains('active') && percent < -0.2) {

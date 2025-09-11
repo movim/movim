@@ -93,20 +93,14 @@ body>nav li {
 @media screen and (max-width: 1024px) {
     body>nav.active {
         box-shadow: var(--elevation-3);
+        transition: transform .25s var(--accelerate-easing);
+        transform: translateX(0%);
     }
 
     body>nav:not(.active) {
         width: 45rem;
         transform: translateX(-100%);
-    }
-
-    body>nav.moving {
         transition: transform .25s var(--decelerate-easing);
-    }
-
-    body>nav.active.moving {
-        transition: transform .25s var(--accelerate-easing);
-        transform: translateX(0%);
     }
 }
 
@@ -247,10 +241,6 @@ main>div:first-child:nth-last-child(2)+div {
         border-radius: 0;
     }
 
-    nav~main.slide {
-        display: block;
-    }
-
     main.slide>div:first-child:nth-last-child(2),
     main.slide>div:first-child:nth-last-child(2)+div {
         width: 100%;
@@ -268,20 +258,12 @@ main>div:first-child:nth-last-child(2)+div {
         z-index: 1;
         box-shadow: var(--elevation-4);
         transform: translateX(100%);
-    }
-
-    main.slide>div:first-child:nth-last-child(2).moving {
         transition: transform .25s var(--decelerate-easing);
-        will-change: transform;
     }
 
     main.slide.enabled>div:first-child:nth-last-child(2) {
         transform: translateX(0);
-    }
-
-    main.slide.enabled>div:first-child:nth-last-child(2).moving {
         transition: transform .25s var(--accelerate-easing);
-        will-change: transform;
     }
 
     main.slide.enabled>div:first-child:nth-last-child(2)+div {

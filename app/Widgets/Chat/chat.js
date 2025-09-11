@@ -1609,7 +1609,6 @@ var Chat = {
         chat.addEventListener('touchstart', function (event) {
             Chat.startX = event.targetTouches[0].pageX;
             Chat.startY = event.targetTouches[0].pageY;
-            chat.classList.remove('moving');
         }, true);
 
         chat.addEventListener('touchmove', function (event) {
@@ -1633,11 +1632,11 @@ var Chat = {
         }, true);
 
         chat.addEventListener('touchend', function (event) {
-            chat.classList.add('moving');
             if (Chat.translateX > (clientWidth / 4) && Chat.slideAuthorized) {
                 MovimTpl.hidePanel();
                 Chat.get(null, true);
             }
+
             chat.style.transform = '';
             Chat.slideAuthorized = false;
             Chat.startX = Chat.translateX = Chat.startY = Chat.translateY = 0;

@@ -16,14 +16,15 @@
     height: auto;
 }
 
-.drawer > section {
+.drawer>section {
     height: 100%;
     overflow-y: auto;
-    -webkit-overflow-scrolling: touch; /* Hack to have a non-blocking scrolling in iOS… */
+    /* Hack to have a non-blocking scrolling in iOS… */
+    -webkit-overflow-scrolling: touch;
     position: relative;
 }
 
-.drawer > section form > div:not(:has(ul.list)) {
+.drawer>section form>div:not(:has(ul.list)) {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
 }
@@ -38,6 +39,17 @@
     .drawer {
         width: 70rem;
         left: calc(50% - 35rem);
+    }
+}
+
+@media screen and (max-width: 570px) {
+    main {
+        transition: transform .25s var(--accelerate-easing);
+    }
+
+    .drawer:not(:empty)~main {
+        transition: transform .25s var(--decelerate-easing);
+        transform: translateY(-2rem);
     }
 }
 
