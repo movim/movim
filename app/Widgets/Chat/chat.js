@@ -169,7 +169,7 @@ var Chat = {
         if (textarea) {
             Chat_ajaxGetHistory(
                 textarea.dataset.jid,
-                firstMessage.dataset.published,
+                firstMessage ? firstMessage.dataset.published : null,
                 Boolean(textarea.dataset.muc),
                 true,
                 tryMam);
@@ -1589,6 +1589,8 @@ var Chat = {
         if (!chat) return;
 
         chat.addEventListener('touchstart', function (event) {
+            chat.classList.remove('moving');
+
             Chat.startX = event.targetTouches[0].pageX;
             Chat.startY = event.targetTouches[0].pageY;
         }, true);
@@ -1608,12 +1610,14 @@ var Chat = {
                 }
 
                 if (Chat.slideAuthorized) {
-                    chat.style.transform = 'translateX(' + Chat.translateX + 'px)';
+                    chat.style.transform = 'translateX(' + (Chat.translateX - delay) + 'px)';
                 }
             }
         }, true);
 
         chat.addEventListener('touchend', function (event) {
+            chat.classList.add('moving');
+
             if (Chat.translateX > (clientWidth / 4) && Chat.slideAuthorized) {
                 MovimTpl.hidePanel();
                 Chat.get(null, true);

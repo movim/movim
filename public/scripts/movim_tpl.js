@@ -150,6 +150,7 @@ var MovimTpl = {
 };
 
 MovimEvents.registerBody('touchstart', 'movimtpl', (event) => {
+    document.querySelector('body > nav').classList.remove('moving');
     MovimTpl.startX = event.targetTouches[0].pageX;
     MovimTpl.startY = event.targetTouches[0].pageY;
 });
@@ -157,7 +158,8 @@ MovimEvents.registerBody('touchstart', 'movimtpl', (event) => {
 MovimEvents.registerBody('touchend', 'movimtpl', (event) => {
     nav = document.querySelector('body > nav');
     nav.style.transform = '';
-    percent = MovimTpl.translateX / clientWidth;'moving'
+    nav.classList.add('moving');
+    percent = MovimTpl.translateX / clientWidth;
 
     if (MovimTpl.menuDragged) {
         if (nav.classList.contains('active') && percent < -0.2) {

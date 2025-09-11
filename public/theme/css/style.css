@@ -93,6 +93,9 @@ body>nav li {
 @media screen and (max-width: 1024px) {
     body>nav.active {
         box-shadow: var(--elevation-3);
+    }
+
+    body>nav.active.moving {
         transition: transform .25s var(--accelerate-easing);
         transform: translateX(0%);
     }
@@ -100,6 +103,9 @@ body>nav li {
     body>nav:not(.active) {
         width: 45rem;
         transform: translateX(-100%);
+    }
+
+    body>nav.moving {
         transition: transform .25s var(--decelerate-easing);
     }
 }
@@ -258,17 +264,23 @@ main>div:first-child:nth-last-child(2)+div {
         z-index: 1;
         box-shadow: var(--elevation-4);
         transform: translateX(100%);
+    }
+
+    main.slide>div:first-child:nth-last-child(2).moving {
         transition: transform .25s var(--decelerate-easing);
     }
 
     main.slide.enabled>div:first-child:nth-last-child(2) {
         transform: translateX(0);
-        transition: transform .25s var(--accelerate-easing);
     }
 
     main.slide.enabled>div:first-child:nth-last-child(2)+div {
         opacity: 0.3;
         transform: translateX(-2rem);
+    }
+
+    main.slide.enabled>div:first-child:nth-last-child(2)+div.moving {
+        transition: transform .25s var(--accelerate-easing);
     }
 
     main>aside+div {
@@ -401,6 +413,7 @@ img.avatar:not([src=""])+.placeholder {
 }
 
 @media screen and (max-width: 1024px) {
+
     .on_mobile,
     .on_mobile_after:after {
         display: inherit !important;
@@ -522,6 +535,7 @@ div.bubble .audio_player p {
 }
 
 @keyframes blink {
+
     0%,
     100% {
         opacity: 0;
@@ -534,6 +548,7 @@ div.bubble .audio_player p {
 }
 
 @keyframes fadetext {
+
     0%,
     100% {
         color: transparent;
@@ -616,6 +631,7 @@ div.bubble .audio_player p {
 }
 
 @keyframes backgroundblink {
+
     0%,
     50%,
     100% {
