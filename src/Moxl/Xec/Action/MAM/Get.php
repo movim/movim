@@ -55,7 +55,7 @@ class Get extends Action
         $session = Session::instance();
 
         $messagesCounter = (int)$session->get('mamid' . $this->_queryid);
-        $this->pack($messagesCounter);
+        $this->pack(['counter' => $messagesCounter, 'forward' => ($this->_start != null)]);
 
         $session->delete('mamid' . $this->_queryid);
         $this->deliver();

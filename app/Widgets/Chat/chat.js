@@ -4,7 +4,6 @@ var Chat = {
     date: null,
     separator: null,
 
-    oldestMessageDateTime: null,
     edit: false,
 
     // Scroll
@@ -166,10 +165,11 @@ var Chat = {
     getHistory: function (tryMam) {
         var textarea = Chat.getTextarea();
 
+        let firstMessage = Chat.getDiscussion().querySelector('.message');
         if (textarea) {
             Chat_ajaxGetHistory(
                 textarea.dataset.jid,
-                Chat.oldestMessageDateTime,
+                firstMessage.dataset.published,
                 Boolean(textarea.dataset.muc),
                 true,
                 tryMam);
@@ -648,8 +648,8 @@ var Chat = {
         Chat.delivery_error = delivery_error;
         Chat.action_impossible_encrypted_error = action_impossible_encrypted_error;
     },
-    resetOldestMessageDateTime: function () {
-        Chat.oldestMessageDateTime = null;
+    clearMessages: function (id) {
+        MovimTpl.fill(id, '');
     },
     setSpecificElements: function (left, right) {
         var div = document.createElement('div');
@@ -664,8 +664,7 @@ var Chat = {
         if (discussion == null) return;
 
         discussion.onscroll = function () {
-            if (this.scrollTop < 1
-                && Chat.oldestMessageDateTime) {
+            if (this.scrollTop < 1) {
                 Chat.getHistory(true);
             }
 
@@ -681,7 +680,13 @@ var Chat = {
         Chat.lastHeight = discussion.scrollHeight;
         Chat.lastScroll = discussion.scrollTop + discussion.clientHeight;
 
-        Chat.scrollToggleButton();
+        var button = document.querySelector('#chat_widget #scroll_down.button.action');
+
+        if (Chat.isScrolled()) {
+            button.classList.remove('show');
+        } else {
+            button.classList.add('show');
+        }
     },
     isScrolled: function () {
         return Chat.lastHeight - 5 <= Chat.lastScroll;
@@ -726,18 +731,6 @@ var Chat = {
         if (separator) {
             discussion.scrollTop = separator.offsetTop - 65;
             Chat.setScroll();
-        }
-    },
-    scrollToggleButton: function () {
-        var discussion = Chat.getDiscussion();
-        if (discussion == null) return;
-
-        var button = document.querySelector('#chat_widget #scroll_down.button.action');
-
-        if (Chat.isScrolled()) {
-            button.classList.remove('show');
-        } else {
-            button.classList.add('show');
         }
     },
     removeSeparator: function () {
@@ -938,21 +931,17 @@ var Chat = {
                 /**
                  * We might have old messages reacted pushed by the server
                  */
-                if (Chat.oldestMessageDateTime
+                /*if (Chat.oldestMessageDateTime
                     && Chat.oldestMessageDateTime > messageDateTime
                     && !prepend) {
                     return;
-                }
+                }*/
 
                 if (prepend === undefined || prepend === false) {
                     Chat.appendDate(date, prepend);
                 }
 
                 for (speakertime in page[date]) {
-                    if (Chat.oldestMessageDateTime == null) {
-                        Chat.oldestMessageDateTime = page[date][speakertime].published;
-                    }
-
                     Chat.appendMessage(speakertime, page[date][speakertime], prepend);
                 }
 
@@ -1183,7 +1172,7 @@ var Chat = {
             msg.appendChild(Chat.getCardHtml(data.card, data.story));
         }
 
-        msg.setAttribute('title', data.published);
+        msg.dataset.published = data.published;
 
         msg.appendChild(p);
         msg.appendChild(info);
@@ -1274,10 +1263,6 @@ var Chat = {
             if (data.quoted) {
                 bubble.querySelector('div.bubble').classList.add('quoted');
             }
-        }
-
-        if (new Date(Chat.oldestMessageDateTime) > new Date(data.published)) {
-            Chat.oldestMessageDateTime = data.published;
         }
 
         if (!mergeMsg) {
@@ -1652,7 +1637,20 @@ var Chat = {
         }
 
         return url.protocol === "http:" || url.protocol === "https:";
-    }
+    },
+    getNewerMessages: function () {
+        var jid = MovimUtils.urlParts().params[0];
+        let lastMessage = Chat.getDiscussion().querySelector('li:last-child .bubble:last-child .message:last-child');
+        if (jid && lastMessage) {
+            Chat_ajaxGetHistory(
+                jid,
+                lastMessage.dataset.published,
+                (MovimUtils.urlParts().params[1] === 'room'),
+                false,
+                false
+            );
+        }
+    },
 };
 
 MovimWebsocket.attach(function () {
@@ -1663,14 +1661,8 @@ MovimWebsocket.attach(function () {
     var jid = MovimUtils.urlParts().params[0];
 
     if (jid) {
-        if (Boolean(document.getElementById(MovimUtils.cleanupId(jid) + '-conversation')) && Chat.oldestMessageDateTime) {
-            Chat_ajaxGetHistory(
-                jid,
-                Chat.oldestMessageDateTime,
-                (MovimUtils.urlParts().params[1] === 'room'),
-                false,
-                false
-            );
+        if (Boolean(document.getElementById(MovimUtils.cleanupId(jid) + '-conversation'))) {
+            Chat.getNewerMessages();
         } else {
             (MovimUtils.urlParts().params[1] === 'room')
                 ? Chat.getRoom(jid)

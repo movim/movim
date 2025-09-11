@@ -41,6 +41,10 @@ main:not(.enabled) #chat_widget {
     position: relative;
 }
 
+#chat_widget .contained.history {
+    mask-image: linear-gradient(to bottom, transparent, black 25% 75%, transparent);
+}
+
 #chat_widget ul.list.flex {
     width: 100%;
 }
@@ -120,13 +124,13 @@ main:not(.enabled) #chat_widget {
     pointer-events: none;
 }
 
-#chat_widget #scroll_now.button.action {
+#chat_widget .contained.history ~ .chat_box #scroll_now.button.action {
     width: 7rem;
     right: 1.5rem;
 }
 
-#chat_widget #scroll_now.button.action.show,
-#chat_widget #scroll_now.button.action:not(.show) + #scroll_down.button.action.show {
+#chat_widget .contained.history ~ .chat_box #scroll_now.button.action,
+#chat_widget .contained:not(.history) ~ .chat_box #scroll_now.button.action + #scroll_down.button.action.show {
     transition: transform 0.2s ease-in-out, opacity 0.2s;
     transform: scale(100%);
     opacity: 1;

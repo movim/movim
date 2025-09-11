@@ -104,7 +104,7 @@ class Muc extends Action
 
             $g = new \Moxl\Xec\Action\MAM\Get;
             $g->setTo($this->_to)
-                ->setLimit(300);
+                ->setLimit(500);
 
             if (
                 !empty($message)

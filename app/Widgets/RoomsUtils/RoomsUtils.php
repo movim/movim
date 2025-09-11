@@ -27,7 +27,6 @@ use App\Widgets\Dialog\Dialog;
 use App\Widgets\Drawer\Drawer;
 use App\Widgets\Toast\Toast;
 use Respect\Validation\Validator;
-use Movim\EmbedLight;
 use Movim\Session;
 use Moxl\Xec\Action\Muc\ChangeAffiliation;
 use Moxl\Xec\Action\Presence\Muc;

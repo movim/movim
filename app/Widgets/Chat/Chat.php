@@ -311,12 +311,16 @@ class Chat extends \Movim\Widget\Base
 
     public function onMAMRetrieved($packet)
     {
-        $counter = $packet->content;
+        $content = $packet->content;
 
         $this->rpc('MovimUtils.removeClass', '#chat_widget .contained', 'loading');
 
-        if ($counter > 0) {
-            $this->rpc('Chat.getHistory', false);
+        if ($content['counter'] > 0) {
+            if ($content['forward']) {
+                $this->rpc('Chat.getNewerMessages');
+            } else {
+                $this->rpc('Chat.getHistory', false);
+            }
         }
     }
 
@@ -434,7 +438,7 @@ class Chat extends \Movim\Widget\Base
             }
 
             $this->rpc('Chat.setObservers');
-            $this->rpc('Chat.resetOldestMessageDateTime');
+            $this->rpc('Chat.clearMessages', '#' . cleanupId($jid) . '-conversation');
             $this->getMessages($jid);
             $this->rpc('Notif.current', 'chat|' . $jid);
             $this->rpc('Chat.scrollToSeparator');
@@ -480,7 +484,7 @@ class Chat extends \Movim\Widget\Base
             }
 
             $this->rpc('Chat.setObservers');
-            $this->rpc('Chat.resetOldestMessageDateTime'); // TODO, not call there all the time ?!
+            $this->rpc('Chat.clearMessages', '#' . cleanupId($room) . '-conversation'); // TODO, not call there all the time ?!
             $this->getMessages($room, muc: true);
             $this->rpc('Notif.current', 'chat|' . $room);
             $this->rpc('Chat.scrollToSeparator');
@@ -1011,10 +1015,10 @@ class Chat extends \Movim\Widget\Base
             ->first();
 
         if ($contextMessage) {
-            $this->rpc('MovimTpl.fill', '#' . cleanupId($jid) . '-conversation', '');
+            $this->rpc('Chat.clearMessages', '#' . cleanupId($jid) . '-conversation');
             $this->ajaxGetHistory($jid, $contextMessage->published, muc: $contextMessage->isMuc(), prepend: false, tryMam: false);
             $this->rpc('Chat.scrollAndBlinkMessageMid', $mid);
-            $this->rpc('MovimUtils.addClass', '#scroll_now.button.action', 'show');
+            $this->rpc('MovimUtils.addClass', '#chat_widget .contained', 'history');
         }
     }
 
@@ -1031,23 +1035,19 @@ class Chat extends \Movim\Widget\Base
         $messages = \App\Message::jid($jid);
 
         if ($date !== null) {
-            $messages = $messages->where('published', $prepend ? '<' : '>', date(MOVIM_SQL_DATE, strtotime($date)));
+            $messages = $messages->where('published', $prepend ? '<' : '>=', date(MOVIM_SQL_DATE, strtotime($date)));
         }
 
         $messages = $muc
             ? $messages->whereIn('type', Message::MESSAGE_TYPE_MUC)->whereNull('subject')
             : $messages->whereIn('type', Message::MESSAGE_TYPE);
 
-        $messages = $messages->orderBy('published', 'desc')
+        $messages = $messages->orderBy('published', $prepend ? 'desc' : 'asc')
             ->withCount('reactions')
             ->take($this->_pagination)
             ->get();
 
         if ($messages->count() > 0) {
-            if (!$prepend) {
-                $messages = $messages->reverse();
-            }
-
             foreach ($messages as $message) {
                 $this->prepareMessage($message);
             }
@@ -1204,9 +1204,9 @@ class Chat extends \Movim\Widget\Base
 
     public function ajaxClearAndGetMessages(string $jid, $muc = false)
     {
-        $this->rpc('MovimTpl.fill', '#' . cleanupId($jid) . '-conversation', '');
+        $this->rpc('Chat.clearMessages', '#' . cleanupId($jid) . '-conversation');
         $this->getMessages($jid, $muc);
-        $this->rpc('MovimUtils.removeClass', '#scroll_now.button.action', 'show');
+        $this->rpc('MovimUtils.removeClass', '#chat_widget .contained', 'history');
     }
 
     public function getMessages(string $jid, $muc = false, $seenOnly = false, $event = true)
