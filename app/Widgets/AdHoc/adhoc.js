@@ -46,3 +46,11 @@ var AdHoc = {
         }
     }
 }
+
+MovimWebsocket.attach(function () {
+    var parts = MovimUtils.urlParts();
+
+    if (parts.page === "configuration") {
+        AdHoc_ajaxGet();
+    }
+});
