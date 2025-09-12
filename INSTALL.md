@@ -19,10 +19,11 @@ Movim requires some dependencies to be setup properly.
      * PHP ImageMagick and GD for the picture processing (package ''**php-imagick**'' and ''**php-gd**'')
      * Your database PHP driver (package ''**php-pgsql**'' or ''**php-mysql**'' depending on the type of database server you want to use).
      * And the PHP XML (package ''**php-xml**'')
+     * Also the PHP Zip (package ''**php-zip**'') to import Emojis
 
 ### Debian/Ubuntu
 
-    apt install composer php-fpm php-curl php-mbstring php-imagick php-gd php-pgsql php-xml
+    apt install composer php-fpm php-curl php-mbstring php-imagick php-gd php-pgsql php-xml php-zip
 
 # General architecture
 
