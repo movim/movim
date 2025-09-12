@@ -228,6 +228,11 @@ class User extends Model
         }
     }
 
+    public function isRestricted(): bool
+    {
+        return \App\Configuration::get()->restrictsuggestions;
+    }
+
     public function hasMAM(): bool
     {
         return ($this->capability && $this->capability->hasFeature('urn:xmpp:mam:2'));

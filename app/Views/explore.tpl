@@ -22,6 +22,13 @@
                         <span class="primary icon active" onclick="history.back()">
                             <i class="material-symbols">arrow_back</i>
                         </span>
+
+                        <?php if (!me()->isRestricted()) { ?>
+                            <span class="control icon active divided" onclick="CommunitiesServers_ajaxDiscoverServer()">
+                                <i class="material-symbols">search</i>
+                            </span>
+                        <?php } ?>
+
                         <div>
                             <p class="center"><?php echo __('communities.servers'); ?></p>
                             <p class="center line"><?php echo __('communities.empty_text'); ?></p>

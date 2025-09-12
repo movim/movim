@@ -27,6 +27,7 @@ v0.32 (master)
 * Fix user clear when unregistering from a Chatroom
 * Implement XEP-0300: Use of Cryptographic Hash Functions in XMPP
 * Implement XEP-0492: Chat notification settings
+* Fix #1473 Fix and refactor the Pubsub services discovery form
 
 v0.31
 ---------------------------

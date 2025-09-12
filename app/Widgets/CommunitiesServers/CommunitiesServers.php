@@ -2,6 +2,7 @@
 
 namespace App\Widgets\CommunitiesServers;
 
+use App\Widgets\Dialog\Dialog;
 use App\Widgets\Toast\Toast;
 use Movim\Widget\Base;
 
@@ -12,9 +13,10 @@ class CommunitiesServers extends Base
 {
     public function load()
     {
-        $this->registerEvent('disco_items_manual', 'onDisco', 'community');
-        $this->registerEvent('disco_items_manual_error', 'onDiscoError', 'community');
-        $this->registerEvent('disco_request_handle', 'onDiscoInfo', 'community');
+        $this->registerEvent('disco_items_manual', 'onDisco', 'explore');
+        $this->registerEvent('disco_items_manual_error', 'onDiscoError', 'explore');
+        $this->registerEvent('disco_items_errorremoteservernotfound', 'onDiscoNotFound', 'explore');
+        $this->registerEvent('disco_request_handle', 'onDiscoInfo', 'explore');
         $this->addjs('communitiesservers.js');
     }
 
@@ -22,6 +24,7 @@ class CommunitiesServers extends Base
     {
         Toast::send($this->__('communities.disco'));
         $this->ajaxHttpGet();
+        $this->rpc('Dialog_ajaxClear');
     }
 
     public function onDiscoInfo($packet)
@@ -36,8 +39,21 @@ class CommunitiesServers extends Base
         Toast::send($this->__('communities.disco_error'));
     }
 
-    public function ajaxDisco($origin)
+    public function onDiscoNotFound($packet)
     {
+        Toast::send($this->__('page.not_found'));
+    }
+
+    public function ajaxDiscoverServer()
+    {
+        $view = $this->tpl();
+        Dialog::fill($view->draw('_communitiesservers_discover_server'));
+    }
+
+    public function ajaxDisco($form)
+    {
+        $origin = $form->server->value;
+
         if (!validateServer($origin)) {
             Toast::send($this->__('communities.disco_error'));
             return;
@@ -64,11 +80,9 @@ class CommunitiesServers extends Base
             ->restrictUserHost()
             ->orderBy('occupants', 'desc')
             ->get();
-        $configuration = \App\Configuration::get();
 
         $view = $this->tpl();
         $view->assign('servers', $servers);
-        $view->assign('restrict', $configuration->restrictsuggestions);
 
         return $view->draw('_communitiesservers');
     }

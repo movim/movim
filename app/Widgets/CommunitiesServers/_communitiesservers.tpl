@@ -32,19 +32,3 @@
         {/loop}
     </ul>
 {/if}
-{if="!$restrict"}
-    <ul class="list middle">
-        <li class="block large">
-            <span class="primary icon">
-                <i class="material-symbols">search</i>
-            </span>
-            <form>
-                <div>
-                    <input placeholder="pubsub.server.com" onkeypress="
-                        if (event.key == 'Enter') { CommunitiesServers_ajaxDisco(this.value); return false; }" >
-                    <label>{$c->__('communities.search_server')}</label>
-                </div>
-            </form>
-        </li>
-    </ul>
-{/if}
