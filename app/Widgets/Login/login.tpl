@@ -56,7 +56,7 @@
                 name="login">
                 <div>
                     <input type="text" id="complete" tabindex="-1"/>
-                    <input type="text" pattern="^[^\u0000-\u001f\u0020\u0022\u0026\u0027\u002f\u003a\u003c\u003e\u0040\u007f\u0080-\u009f\u00a0]+@[a-z0-9.\-]+\.[a-z]{2,10}$" name="username" id="username" autofocus required
+                    <input type="text" pattern="^.+@.+\..{2,10}$" name="username" id="username" autofocus required
                         placeholder="username@server.com"/>
                     <label for="username">{$c->__('form.username')}</label>
                 </div>
