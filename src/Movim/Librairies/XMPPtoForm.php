@@ -309,10 +309,6 @@ class XMPPtoForm
             $input->setAttribute('disabled', 'disabled');
         }
 
-        if ($s->required) {
-            $input->setAttribute('required', 'required');
-        }
-
         if ((string)$s->value === 'true' || (string)$s->value === '1') {
             $input->setAttribute('checked', 'checked');
         }
