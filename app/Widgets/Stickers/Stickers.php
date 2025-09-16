@@ -15,8 +15,8 @@ use App\Sticker;
 use App\StickersPack;
 use App\Widgets\Chat\Chat;
 use App\Widgets\Chats\Chats;
-use App\Widgets\Dialog\Dialog;
 use App\Widgets\Drawer\Drawer;
+use Moxl\Xec\Payload\Packet;
 
 class Stickers extends \Movim\Widget\Base
 {

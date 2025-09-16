@@ -562,6 +562,19 @@ class Message extends Model
                         }
                     }
 
+                    // We extract the inline disposition from SFS if present
+                    if (
+                        $stanza->{'file-sharing'}
+                        && $stanza->{'file-sharing'}->attributes()->xmlns == 'urn:xmpp:sfs:0'
+                        && $stanza->{'file-sharing'}->attributes()->disposition
+                        && $stanza->{'file-sharing'}->sources
+                        && $stanza->{'file-sharing'}->sources->{'url-data'}
+                        && $stanza->{'file-sharing'}->sources->{'url-data'}->attributes()->xmlns == 'http://jabber.org/protocol/url-data'
+                        && $stanza->{'file-sharing'}->sources->{'url-data'}->attributes()->target == $messageFile->url
+                    ) {
+                        $messageFile->disposition = $stanza->{'file-sharing'}->attributes()->disposition;
+                    }
+
                     if (
                         $stanza->reference->{'media-sharing'}->file->thumbnail
                         && (string)$stanza->reference->{'media-sharing'}->file->thumbnail->attributes()->xmlns == 'urn:xmpp:thumbs:1'
@@ -657,7 +670,7 @@ class Message extends Model
 
         if ($post = $xmppUri->getPost()) {
             $this->postid = $post->id;
-        } elseif($xmppUri->getServer() && $xmppUri->getNode() && $xmppUri->getNodeItemId()) {
+        } elseif ($xmppUri->getServer() && $xmppUri->getNode() && $xmppUri->getNodeItemId()) {
             $getItem = new GetItem;
             $getItem->setTo($xmppUri->getServer())
                 ->setNode($xmppUri->getNode())
