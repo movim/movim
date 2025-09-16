@@ -242,7 +242,7 @@ class Info extends Model
 
     public function getPicture(\Movim\ImageSize $size = \Movim\ImageSize::M): string
     {
-        return getPicture($this->attributes['avatarhash'], $this->node, $size);
+        return getPicture($this->attributes['avatarhash'] ?? null, $this->node, $size);
     }
 
     public function getDeviceIcon()
