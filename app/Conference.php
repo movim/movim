@@ -249,6 +249,7 @@ class Conference extends Model
             ->jid($this->conference)
             ->whereNotNull('subject')
             ->whereNull('body')
+            ->whereNull('thread')
             ->where('type', 'groupchat')
             ->orderBy('published', 'desc')
             ->first();
