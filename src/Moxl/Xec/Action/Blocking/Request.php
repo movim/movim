@@ -22,6 +22,8 @@ class Request extends Action
             $jids->push((string)$item->attributes()->jid);
         }
 
+        $jids = $jids->unique();
+
         Reported::insert($jids->diff(Reported::whereIn('id', $jids)->get()->pluck('id'))->map(function ($jid) {
             $now = \Carbon\Carbon::now();
             return [
