@@ -117,7 +117,7 @@
                     onclick="Publish_ajaxLink()">
                     <i class="material-symbols">add_link</i>
                 </button>
-                {if="$c->getUser()->hasUpload()"}
+                {if="$c->me->hasUpload()"}
                     <button
                         class="button narrow flat icon gray"
                         title="{$c->__('publish.attach')}"

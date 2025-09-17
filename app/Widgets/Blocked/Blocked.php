@@ -20,7 +20,7 @@ class Blocked extends \Movim\Widget\Base
     public function onList()
     {
         $list = $this->tpl();
-        $list->assign('list', $this->user->reported()->orderBy('reported_user.created_at', 'desc')->get());
+        $list->assign('list', $this->me->reported()->orderBy('reported_user.created_at', 'desc')->get());
         $this->rpc('MovimTpl.fill', '#blocked_widget_list', $list->draw('_blocked_list'));
     }
 

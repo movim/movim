@@ -4,6 +4,7 @@ namespace App\Widgets\ContactData;
 
 use Movim\CurrentCall;
 use Movim\Widget\Base;
+use Moxl\Xec\Payload\Packet;
 
 class ContactData extends Base
 {
@@ -17,15 +18,14 @@ class ContactData extends Base
         $this->registerEvent('currentcall_stopped', 'onCallEvent', 'contact');
     }
 
-    public function onVcardReceived($packet)
+    public function onVcardReceived(Packet $packet)
     {
-        $contact = $packet->content;
-        $this->ajaxGet($contact->id);
+        $this->ajaxGet($packet->content);
     }
 
-    public function onCallEvent($packet)
+    public function onCallEvent(Packet $packet)
     {
-        $this->ajaxGet($packet[0]);
+        $this->ajaxGet($packet->from);
     }
 
     public function prepareData($jid)
@@ -43,7 +43,7 @@ class ContactData extends Base
                         ->first()
         );
         $view->assign('contact', \App\Contact::firstOrNew(['id' => $jid]));
-        $view->assign('roster', $this->user->session->contacts()->where('jid', $jid)->first());
+        $view->assign('roster', $this->me->session->contacts()->where('jid', $jid)->first());
         $view->assign('incall', CurrentCall::getInstance()->isStarted());
 
         return $view->draw('_contactdata');

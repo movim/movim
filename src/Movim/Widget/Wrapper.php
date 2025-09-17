@@ -6,7 +6,9 @@
 
 namespace Movim\Widget;
 
+use App\User;
 use Movim\Session;
+use Moxl\Xec\Payload\Packet;
 
 class Wrapper
 {
@@ -139,8 +141,7 @@ class Wrapper
      *
      * @param $widgetName is the name of the widget.
      * @param $method is the function to be run.
-     * @param $params is an array containing the parameters to
-     *   be passed along to the method.
+     * @param $params is an array containing the parameters to be passed along to the method.
      * @return what the widget's method returns.
      */
     public function runWidget(string $widgetName, string $method, array $params = []): ?string
@@ -156,18 +157,34 @@ class Wrapper
     }
 
     /**
+     * @desc Load a widget and call an event method on it
+     *
+     * @param $jid The jid to inject the correct user
+     * @param $widgetName is the name of the widget.
+     * @param $method is the function to be run.
+     * @param $packet is a Packet to be passed along to the method.
+     */
+    public function runUserWidget(string $jid, string $widgetName, string $method, ?Packet $packet = null)
+    {
+        $widget = $this->loadWidget($widgetName);
+        $widget->me = User::find($jid);
+        $widget->enableUseTemplater();
+        $widget->$method($packet);
+    }
+
+    /**
      * Calls a particular function with the given parameters on
      * all loaded widgets.
      *
      * @param $key is the key of the incoming event
      * @param $data is the Packet that is sent as a parameter
      */
-    public function iterate(string $key, $data)
+    public function iterate(string $key, ?Packet $packet = null)
     {
-        if (!empty($data->from)) {
-            logInfo('Package : "' . $key . '" from "' . $data->from . '" fired');
+        if ($packet && !empty($packet->from)) {
+            logInfo('Package : "' . $key . '" from "' . $packet->from . '" fired');
         } else {
-            logInfo('Package : "' . $key);
+            logInfo('Package : "' . $key . '"');
         }
 
         if (array_key_exists($key, $this->_events)) {
@@ -188,22 +205,31 @@ class Wrapper
                             $notifsKey = $session->get('notifs_key');
 
                             if ($notifsKey == 'blurred') {
-                                $widget->{$method}($data);
+                                $this->callWidget($widget, $method, $packet);
                             } elseif ($notifsKey != null) {
                                 $explode = explode('|', $notifsKey);
                                 $notifKey = reset($explode);
 
                                 if ($notifKey == $widget->filters[$key . '_' . $method]) {
-                                    $widget->{$method}($data);
+                                    $this->callWidget($widget, $method, $packet);
                                 }
                             }
                         } else {
-                            $widget->{$method}($data);
+                            $this->callWidget($widget, $method, $packet);
                         }
                     }
                 }
             }
         }
+    }
+
+    private function callWidget($widget, string $method, ?Packet $packet = null)
+    {
+        if (str_starts_with($method, 'ton')) {
+            return requestTemplaterWorker($widget->getName(), $method, $packet);
+        }
+
+        return $widget->{$method}($packet);
     }
 
     /**

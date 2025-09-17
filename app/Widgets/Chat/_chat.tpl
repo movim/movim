@@ -49,7 +49,7 @@
                   onclick="Stickers_ajaxShow('{$jid}')">
                 <i class="material-symbols flip-vert">note_stack</i>
             </span>
-            {if="$c->getUser()->hasUpload()"}
+            {if="$c->me->hasUpload()"}
                 <span class="emojis control icon gray active"
                         id="dictaphone_toggle"
                         title="{$c->__('dictaphone.name')}"
@@ -62,7 +62,7 @@
                     onclick="Stickers_ajaxReaction(null)">
                 <i class="material-symbols">emoji_emotions</i>
             </span>
-            {if="$c->getUser()->hasUpload()"}
+            {if="$c->me->hasUpload()"}
                 <span class="attach control icon" onclick="Chat.toggleAttach()">
                     <i class="material-symbols">add_circle</i>
                 </span>

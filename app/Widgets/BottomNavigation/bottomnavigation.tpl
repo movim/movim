@@ -4,7 +4,7 @@
             <i class="material-symbols">more_vert</i>
         </span>
     </li>
-    {if="$c->getUser()->hasPubsub()"}
+    {if="$c->me->hasPubsub()"}
         <li {if="$page == 'news'"}class="active"{/if}
             onclick="MovimUtils.reload('{$c->route('news')}')"
             title="{$c->__('page.news')}"

@@ -59,12 +59,12 @@ class GetItem extends Action
                             $this->pack(\App\Post::find($this->_askreply));
                             $this->deliver();
                         } else {
-                            $this->pack($p);
-                            $this->event('post', $this->packet);
+                            $this->pack($p->id);
+                            $this->event('post');
                         }
                     }
 
-                    $this->pack($p);
+                    $this->pack($p->id);
                     $this->deliver();
 
                     if ($this->_messagemid) {

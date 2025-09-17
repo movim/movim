@@ -25,7 +25,7 @@ class StoriesViewer extends Base
         if (!$post) return;
 
         $view = $this->tpl();
-        $post->userViews()->syncWithoutDetaching($this->user->id);
+        $post->userViews()->syncWithoutDetaching($this->me->id);
         $view->assign('story', $post);
 
         $this->rpc('MovimTpl.fill', '#storiesviewer', $view->draw('_storiesviewer'));
@@ -42,7 +42,7 @@ class StoriesViewer extends Base
         }
 
         $view = $this->tpl();
-        $post->userViews()->syncWithoutDetaching($this->user->id);
+        $post->userViews()->syncWithoutDetaching($this->me->id);
         $view->assign('story', $post);
 
         $this->rpc('MovimTpl.fill', '#storiesviewer', $view->draw('_storiesviewer'));

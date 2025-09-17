@@ -16,7 +16,8 @@ class Tune extends Payload
             $contact->setTune($stanza);
             $contact->save();
 
-            $this->event('tune', $from);
+            $this->pack($from);
+            $this->event('tune');
         }
     }
 }

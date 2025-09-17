@@ -11,8 +11,10 @@ use Minishlink\WebPush\Subscription;
 use Carbon\Carbon;
 
 use App\PushSubscription;
+use App\Widgets\Chat\Chat;
 use App\Widgets\Dialog\Dialog;
 use App\Widgets\Toast\Toast;
+use Moxl\Xec\Payload\Packet;
 
 class Notif extends Base
 {
@@ -35,9 +37,9 @@ class Notif extends Base
         Session::instance()->set('session_down', true);
     }
 
-    public function onChatCounter(int $count = 0)
+    public function onChatCounter(Packet $packet)
     {
-        RPC::call('Notif.counter', 'chat', $count);
+        RPC::call('Notif.counter', 'chat', $packet->content);
     }
 
     public static function rpcCall($rpc)
@@ -147,7 +149,7 @@ class Notif extends Base
         }
 
         if ($first === 'chat') {
-            RPC::call('Notif.counter', $first, (me())->unreads(null, true));
+            RPC::call('Notif.counter', $first, me()->unreads(null, true));
             self::executeRPC();
         } else {
             RPC::call('Notif.counter', $first, $notifs[$first]);
@@ -252,7 +254,7 @@ class Notif extends Base
 
         // If the page was blurred
         if ($session->get('notifs_key') === 'blurred') {
-            $this->event('notification_counter_clear', explode('|', $key));
+            (new Chat)->onNotificationCounterClear((new Packet)->pack(explode('|', $key)));
         }
 
         $session->set('notifs_key', $key);
@@ -267,10 +269,10 @@ class Notif extends Base
      */
     public function ajaxRegisterPushSubscrition(string $endpoint, string $auth, string $p256dh, ?string $userAgent)
     {
-        $pushSubscription = $this->user->pushSubscriptions()->where('endpoint', $endpoint)->first();
+        $pushSubscription = $this->me->pushSubscriptions()->where('endpoint', $endpoint)->first();
 
         $p = $pushSubscription ?? new PushSubscription;
-        $p->user_id = $this->user->id;
+        $p->user_id = $this->me->id;
         $p->endpoint = $endpoint;
         $p->auth = $auth;
         $p->p256dh = $p256dh;
@@ -289,7 +291,7 @@ class Notif extends Base
      */
     public function ajaxHttpTouchPushSubscription(string $endpoint)
     {
-        $pushSubscription = $this->user->pushSubscriptions()->where('endpoint', $endpoint)->first();
+        $pushSubscription = $this->me->pushSubscriptions()->where('endpoint', $endpoint)->first();
 
         if ($pushSubscription) {
             $pushSubscription->activity_at = Carbon::now();
@@ -308,7 +310,8 @@ class Notif extends Base
 
     public function ajaxRequestGranted()
     {
-        RPC::call('Notif.desktop',
+        RPC::call(
+            'Notif.desktop',
             $this->__('notification.request_title'),
             $this->__('notification.request_granted'),
             null,

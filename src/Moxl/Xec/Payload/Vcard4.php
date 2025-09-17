@@ -14,6 +14,7 @@ class Vcard4 extends Payload
         $contact->setVcard4($stanza->items->item->vcard);
         $contact->save();
 
-        $this->event('vcard', $contact);
+        $this->pack($contact->id);
+        $this->event('vcard');
     }
 }

@@ -11,7 +11,7 @@ class CommunitiesInteresting extends Base
     {
         $this->view->assign(
             'communities',
-            $this->user->session
+            $this->me->session
                 ->interestingCommunities(6)
                 ->inRandomOrder()
                 ->get()

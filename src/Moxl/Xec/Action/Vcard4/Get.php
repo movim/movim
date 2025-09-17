@@ -22,7 +22,7 @@ class Get extends Action
             $contact->setVcard4($stanza->pubsub->items->item->vcard);
             $contact->save();
 
-            $this->pack($contact);
+            $this->pack($contact->id);
             $this->deliver();
         } else {
             $this->error(false);

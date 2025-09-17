@@ -22,7 +22,7 @@
             <p class="normal line">{$c->__('page.configuration')}</p>
         </div>
     </li>
-    {if="$c->getUser()->admin"}
+    {if="$c->me->admin"}
         <li {if="$page == 'admin'"}class="active"{/if}
             onclick="MovimUtils.reload('{$c->route('admin')}')"
             title="{$c->__('page.configuration')}">

@@ -37,7 +37,7 @@ class Post extends Payload
             ) {
                 $p->save();
 
-                $this->pack($p);
+                $this->pack($p->id);
                 $this->deliver();
             }
         } elseif ($stanza->items->retract) {

@@ -54,7 +54,7 @@ class Jingle extends Payload
                     }
 
                     $this->pack((string)$stanza->attributes()->sid, $from);
-                    $this->event('jingle_sessionterminate'/*, (string)$stanza->reason->children()[0]->getName()*/);
+                    $this->event('jingle_sessionterminate');
                     break;
                 case 'session-accept':
                     $this->pack($stanza, $from);

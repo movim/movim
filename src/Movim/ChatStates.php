@@ -7,6 +7,7 @@
 namespace Movim;
 
 use Movim\Widget\Wrapper;
+use Moxl\Xec\Payload\Packet;
 use React\EventLoop\Timer\Timer;
 
 /**
@@ -34,9 +35,11 @@ class ChatStates
 
         if (array_key_exists($jid, $this->_composing)) {
             if ($resource !== null) {
-                if (is_array($this->_composing[$jid])
-                && array_key_exists($resource, $this->_composing[$jid])
-                && $this->_composing[$jid][$resource] instanceof Timer) {
+                if (
+                    is_array($this->_composing[$jid])
+                    && array_key_exists($resource, $this->_composing[$jid])
+                    && $this->_composing[$jid][$resource] instanceof Timer
+                ) {
                     $loop->cancelTimer($this->_composing[$jid][$resource]);
                     unset($this->_composing[$jid][$resource]);
 
@@ -51,13 +54,14 @@ class ChatStates
         }
     }
 
-    public function getState(string $jid)
+    public function getState(string $jid): Packet
     {
-        return [$jid,
+        return (new Packet)->pack(
             array_key_exists($jid, $this->_composing)
                 ? $this->_composing[$jid]
-                : null
-        ];
+                : null,
+            $jid
+        );
     }
 
     public function composing(string $from, string $to, bool $mucPM = false)
@@ -84,8 +88,7 @@ class ChatStates
             $this->_composing[$jid] = $timer;
         }
 
-        $wrapper = Wrapper::getInstance();
-        $wrapper->iterate('chatstate', [$jid, $this->_composing[$jid]]);
+        Wrapper::getInstance()->iterate('chatstate', $this->getState($jid));
     }
 
     public function paused(string $from, string $to, bool $mucPM = false)
@@ -95,13 +98,7 @@ class ChatStates
 
         $this->clearState($jid, !$mucPM ? $explodedFrom['resource'] : null);
 
-        $wrapper = Wrapper::getInstance();
-        $wrapper->iterate('chatstate', [
-            $jid,
-            array_key_exists($jid, $this->_composing)
-                ? $this->_composing[$jid]
-                : null
-        ]);
+        Wrapper::getInstance()->iterate('chatstate', $this->getState($jid));
     }
 
     private function resolveJid(string $from, string $to)

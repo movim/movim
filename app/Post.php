@@ -757,10 +757,7 @@ class Post extends Model
                         //
                     }
 
-                    $wrapper = Wrapper::getInstance();
-                    $packet = new Packet;
-                    $packet->content = Post::find($this->id);
-                    $wrapper->iterate('post_resolved', $packet);
+                    Wrapper::getInstance()->iterate('post_resolved', (new Packet)->pack($this->id));
                 });
             })
         );

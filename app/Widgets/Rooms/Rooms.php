@@ -56,10 +56,6 @@ class Rooms extends Base
         $this->registerEvent('callinviteleft', 'onCallInvite');
         $this->registerEvent('callinviteretract', 'onCallInvite');
         $this->registerEvent('presence_muji_event', 'onCallInvite');
-
-        // Bug: In Chat::ajaxGet, Notif.current might come after this event
-        // so we don't set the filter
-        $this->registerEvent('chat_open_room', 'onChatOpen'/*, 'chat'*/);
     }
 
     public function onDiscoRequest(Packet $packet)
@@ -71,14 +67,15 @@ class Rooms extends Base
         }
     }
 
-    public function onChatOpen(string $room)
+    public function onChatState(Packet $packet)
     {
-        $this->setCounter($room);
-    }
-
-    public function onChatState(array $array)
-    {
-        $this->setState($array[0], isset($array[1]));
+        $this->rpc(
+            !empty($packet->content)
+                ? 'MovimUtils.addClass'
+                : 'MovimUtils.removeClass',
+            '#' . cleanupId($packet->from . '_rooms_primary'),
+            'composing'
+        );
     }
 
     public function onCallInvitePropose(Packet $packet)
@@ -131,7 +128,7 @@ class Rooms extends Base
     {
         $message = $packet->content;
 
-        if ($message->isMuc() && $message->jidto == $this->user->id) {
+        if ($message->isMuc() && $message->jidto == $this->me->id) {
             $this->onPresence($message->jidfrom);
         }
     }
@@ -161,7 +158,7 @@ class Rooms extends Base
     public function onBookmarkGet($packet)
     {
         foreach (
-            $this->user->session->conferences()
+            $this->me->session->conferences()
                 ->with('info')
                 ->where('bookmarkversion', (int)$packet->content)
                 ->get() as $room
@@ -205,20 +202,9 @@ class Rooms extends Base
         }
     }
 
-    private function setState(string $room, bool $composing)
+    public function setCounter(string $room)
     {
-        $this->rpc(
-            $composing
-                ? 'MovimUtils.addClass'
-                : 'MovimUtils.removeClass',
-            '#' . cleanupId($room . '_rooms_primary'),
-            'composing'
-        );
-    }
-
-    private function setCounter(string $room)
-    {
-        $conference = $this->user->session
+        $conference = $this->me->session
             ->conferences()
             ->where('conference', $room)
             ->withCount('unreads', 'quoted')
@@ -238,7 +224,7 @@ class Rooms extends Base
 
     public function onPresence(string $room, bool $callSecond = true)
     {
-        $conference = $this->user->session->conferences()
+        $conference = $this->me->session->conferences()
             ->where('conference', $room)
             ->with('info', 'contact', 'presence')
             ->withCount('unreads', 'quoted', 'presences')
@@ -257,7 +243,7 @@ class Rooms extends Base
 
     public function ajaxHttpGet()
     {
-        $conferences = $this->user->session->conferences()
+        $conferences = $this->me->session->conferences()
             ->with('info', 'contact', 'presence')
             ->withCount('unreads', 'quoted', 'presences')
             ->get();
@@ -298,7 +284,7 @@ class Rooms extends Base
         $p->setTo($room);
 
         if ($nickname == null) {
-            $nickname = $this->user->username;
+            $nickname = $this->me->username;
         }
 
         $capability = \App\Info::where('server', $jid['server'])
@@ -338,7 +324,7 @@ class Rooms extends Base
         $this->rpc('Chat_ajaxGet');
 
         // We properly exit
-        $conference = $this->user->session->conferences()
+        $conference = $this->me->session->conferences()
             ->where('conference', $room)
             ->first();
 
@@ -352,14 +338,14 @@ class Rooms extends Base
             ->first();
 
         if (!$capability || !$capability->isMAM()) {
-            $this->user->messages()->where('jidfrom', $room)->delete();
+            $this->me->messages()->where('jidfrom', $room)->delete();
         }
 
         // We clear the ping timer
         ChatroomPings::getInstance()->clear($room);
 
         // We clear the presences from the buffer cache and then the DB
-        $this->user->session->conferences()
+        $this->me->session->conferences()
             ->where('conference', $room)
             ->first()->presences()->delete();
 

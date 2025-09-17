@@ -36,7 +36,7 @@
         <br />
     </ul>
     <ul class="list middle active">
-        <li onclick="Config_ajaxEditNickname()">
+        <li onclick="Config_ajaxEditNickna$c->me">
             <span class="control icon gray">
                 <i class="material-symbols">chevron_right</i>
             </span>

@@ -3,6 +3,7 @@
 namespace App\Widgets\Navigation;
 
 use Movim\Widget\Base;
+use Moxl\Xec\Payload\Packet;
 
 class Navigation extends Base
 {
@@ -12,19 +13,19 @@ class Navigation extends Base
         $this->registerEvent('chat_counter', 'onCounter');
     }
 
-    public function onCounter($count)
+    public function onCounter(Packet $packet)
     {
-        $this->rpc('MovimUtils.setDataItem', '#chatcounter', 'counter', $count);
+        $this->rpc('MovimUtils.setDataItem', '#chatcounter', 'counter', $packet->content);
     }
 
     public function ajaxHttpRefresh()
     {
-        $this->onCounter($this->user->unreads());
+        $this->onCounter((new Packet)->pack($this->me->unreads()));
     }
 
     public function display()
     {
         $this->view->assign('page', $this->_view);
-        $this->view->assign('chatCounter', $this->user->unreads(null, false, true));
+        $this->view->assign('chatCounter', $this->me->unreads(null, false, true));
     }
 }

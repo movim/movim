@@ -28,7 +28,7 @@ class ChatOmemo extends \Movim\Widget\Base
     {
         list($from, $devices) = array_values($packet->content);
 
-        if ($from == $this->user->id) {
+        if ($from == $this->me->id) {
             $this->rpc('ChatOmemo.ownDevicesReceived', $from, $devices);
         }
     }
@@ -38,7 +38,7 @@ class ChatOmemo extends \Movim\Widget\Base
         list($from, $devices) = array_values($packet->content);
 
         $this->rpc(
-            $from == $this->user->id
+            $from == $this->me->id
                 ? 'ChatOmemo.ownDevicesReceived'
                 : 'ChatOmemo.devicesReceived',
             $from,
@@ -63,7 +63,7 @@ class ChatOmemo extends \Movim\Widget\Base
 
     public function onDeviceListError($packet)
     {
-        if ($packet->content == $this->user->id) {
+        if ($packet->content == $this->me->id) {
             $this->rpc('ChatOmemo.initiateBundle', []);
         }
 

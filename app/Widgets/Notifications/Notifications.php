@@ -2,6 +2,7 @@
 
 namespace App\Widgets\Notifications;
 
+use App\Post;
 use App\User;
 use App\Widgets\Dialog\Dialog;
 use App\Widgets\Drawer\Drawer;
@@ -12,9 +13,9 @@ use Moxl\Xec\Action\Roster\AddItem;
 use Moxl\Xec\Action\Presence\Subscribe;
 
 use Movim\Widget\Base;
-use Movim\Session;
 use Moxl\Xec\Action\Presence\Unsubscribe;
 use Moxl\Xec\Action\Roster\RemoveItem;
+use Moxl\Xec\Payload\Packet;
 
 class Notifications extends Base
 {
@@ -33,17 +34,18 @@ class Notifications extends Base
         $this->registerEvent('presence_subscribed_handle', 'onInvitations');
     }
 
-    public function onPost($packet)
+    public function onPost(Packet $packet)
     {
-        $post = $packet->content;
-        if ($post->isComment() && !$post->isMine()) {
+        $post = Post::find($packet->content);
+
+        if ($post && $post->isComment() && !$post->isMine()) {
             $this->ajaxSetCounter();
         }
     }
 
     public function onRoster($packet)
     {
-        $contact = $this->user->session->contacts()->where('jid', $packet->content)->first();
+        $contact = $this->me->session->contacts()->where('jid', $packet->content)->first();
 
         // If the invitation was accepted or removed from another connected client
         if (($contact && $contact->subscription == 'both') || !$contact) {
@@ -51,8 +53,10 @@ class Notifications extends Base
         }
     }
 
-    public function onInvitations($from = false)
+    public function onInvitations(Packet $packet)
     {
+        $from = $packet->content;
+
         if (is_string($from)) {
             $contact = \App\Contact::find($from);
 
@@ -75,8 +79,8 @@ class Notifications extends Base
     {
         Drawer::fill('notifications', $this->prepareNotifications());
 
-        $this->user->notifications_since = date(MOVIM_SQL_DATE);
-        $this->user->save();
+        $this->me->notifications_since = date(MOVIM_SQL_DATE);
+        $this->me->save();
 
         $this->ajaxSetCounter();
         (new Notif)->ajaxClear('comments');
@@ -89,11 +93,11 @@ class Notifications extends Base
         $count = \App\Post::whereIn('parent_id', function ($query) {
             $query->select('id')
                 ->from('posts')
-                ->where('aid', $this->user->id);
+                ->where('aid', $this->me->id);
         })->where('published', '>', $since)
-            ->where('aid', '!=', $this->user->id)->count();
+            ->where('aid', '!=', $this->me->id)->count();
 
-        $count += $this->user->session ? $this->user->session->presences()
+        $count += $this->me->session ? $this->me->session->presences()
                         ->whereIn('type', ['subscribe', 'subscribed'])
                         ->count() : 0;
 
@@ -104,7 +108,7 @@ class Notifications extends Base
     {
         $view = $this->tpl();
         $view->assign('contact', \App\Contact::firstOrNew(['id' => $jid]));
-        $view->assign('groups', $this->user->session->contacts()
+        $view->assign('groups', $this->me->session->contacts()
                                                     ->select('group')
                                                     ->whereNotNull('group')
                                                     ->distinct()
@@ -153,9 +157,9 @@ class Notifications extends Base
 
     public function ajaxAccept(string $jid)
     {
-        $roster = $this->user->session->contacts()->where('jid', $jid)->first();
+        $roster = $this->me->session->contacts()->where('jid', $jid)->first();
 
-        $this->user->session->presences()
+        $this->me->session->presences()
              ->whereIn('type', ['subscribe', 'subscribed'])
              ->where('jid', $jid)
              ->delete();
@@ -181,7 +185,7 @@ class Notifications extends Base
 
     public function ajaxRefuse(string $jid)
     {
-        if ($this->user->session->contacts()->where('jid', $jid)->exists()) {
+        if ($this->me->session->contacts()->where('jid', $jid)->exists()) {
             $r = new RemoveItem;
             $r->setTo($jid)
                 ->request();
@@ -191,7 +195,7 @@ class Notifications extends Base
         $p->setTo($jid)
             ->request();
 
-        $this->user->session->presences()->where('jid', $jid)->delete();
+        $this->me->session->presences()->where('jid', $jid)->delete();
 
         $this->removeInvitation($jid);
     }
@@ -214,10 +218,10 @@ class Notifications extends Base
         $notifs = \App\Post::whereIn('parent_id', function ($query) {
             $query->select('id')
                 ->from('posts')
-                ->where('aid', $this->user->id)
+                ->where('aid', $this->me->id)
                 ->orderBy('published', 'desc');
         })
-            ->where('aid', '!=', $this->user->id)
+            ->where('aid', '!=', $this->me->id)
             ->orderBy('published', 'desc')
             ->limit(30)
             ->with('parent')
@@ -228,11 +232,11 @@ class Notifications extends Base
         $view = $this->tpl();
         $view->assign('hearth', addEmojis('♥'));
         $view->assign('notifs', $notifs);
-        $view->assign('subscriptionRoster', $this->user->session->contacts()
+        $view->assign('subscriptionRoster', $this->me->session->contacts()
                                      ->where('subscription' , 'none')
                                      ->orderBy('ask', 'desc')
                                      ->get());
-        $view->assign('subscribePresences', $this->user->session->presences()
+        $view->assign('subscribePresences', $this->me->session->presences()
                                                  ->with('contact')
                                                  ->whereIn('type', ['subscribe', 'subscribed'])
                                                  ->get());

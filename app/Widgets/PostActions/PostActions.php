@@ -31,20 +31,20 @@ class PostActions extends Base
             $this->rpc(
                 'PostActions.handleDelete',
                 ($node == 'urn:xmpp:microblog:0') ?
-                $this->route('news') :
-                $this->route('community', [$server, $node])
+                    $this->route('news') :
+                    $this->route('community', [$server, $node])
             );
         }
 
-        $this->rpc('MovimTpl.remove', '#'.cleanupId($id));
+        $this->rpc('MovimTpl.remove', '#' . cleanupId($id));
     }
 
     public function ajaxLike($to, $node, $id)
     {
         $p = \App\Post::where('server', $to)
-                      ->where('node', $node)
-                      ->where('nodeid', $id)
-                      ->first();
+            ->where('node', $node)
+            ->where('nodeid', $id)
+            ->first();
 
         if (!isset($p) || $p->isLiked()) {
             return;
@@ -57,9 +57,9 @@ class PostActions extends Base
     public function ajaxDelete($to, $node, $id)
     {
         $post = \App\Post::where('server', $to)
-                         ->where('node', $node)
-                         ->where('nodeid', $id)
-                         ->first();
+            ->where('node', $node)
+            ->where('nodeid', $id)
+            ->first();
 
         if ($post) {
             $view = $this->tpl();
@@ -73,22 +73,22 @@ class PostActions extends Base
     public function ajaxDeleteConfirm($to, $node, $id)
     {
         $post = \App\Post::where('server', $to)
-                         ->where('node', $node)
-                         ->where('nodeid', $id)
-                         ->first();
+            ->where('node', $node)
+            ->where('nodeid', $id)
+            ->first();
 
         if (isset($post)) {
             $p = new PostDelete;
             $p->setTo($post->server)
-              ->setNode($post->node)
-              ->setId($post->nodeid)
-              ->request();
+                ->setNode($post->node)
+                ->setId($post->nodeid)
+                ->request();
 
             if (!$post->isComment()) {
                 $p = new Delete;
                 $p->setTo($post->commentserver)
-                  ->setNode('urn:xmpp:microblog:0:comments/'.$post->commentnodeid)
-                  ->request();
+                    ->setNode('urn:xmpp:microblog:0:comments/' . $post->commentnodeid)
+                    ->request();
             }
         }
     }

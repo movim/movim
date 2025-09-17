@@ -24,9 +24,4 @@ class Create extends Action
             $this->deliver();
         }
     }
-
-    public function error(string $errorId, ?string $message = null)
-    {
-        $this->event('creationerror', $this->_node);
-    }
 }

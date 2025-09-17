@@ -21,7 +21,7 @@ class CommentsGet extends Action
     public function setId($id)
     {
         $this->_id = $id;
-        $this->_node = 'urn:xmpp:microblog:0:comments/'.$this->_id;
+        $this->_node = 'urn:xmpp:microblog:0:comments/' . $this->_id;
         return $this;
     }
 

@@ -101,6 +101,7 @@ class Bootstrap
 
         define('API_SOCKET', CACHE_PATH . 'socketapi.sock');
         define('RESOLVER_SOCKET', CACHE_PATH . 'resolver.sock');
+        define('TEMPLATER_SOCKET', CACHE_PATH . 'templater.sock');
     }
 
     private function getVersion()

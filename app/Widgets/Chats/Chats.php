@@ -9,32 +9,14 @@ use App\Contact;
 use App\Message;
 use App\OpenChat;
 use App\Roster;
-use App\User;
 use App\Widgets\Chat\Chat;
 use Carbon\Carbon;
 use Movim\CurrentCall;
-
-use React\Promise\PromiseInterface;
-use function React\Promise\resolve;
+use Moxl\Xec\Payload\Packet;
 
 class Chats extends Base
 {
     private $_filters = ['all', 'roster'];
-
-    public function boot()
-    {
-        // Each day at 00:01
-        $this->registerTask('1 0 * * *', 'cleanCache', function (): PromiseInterface {
-            if (User::me()->id) {
-                User::me()->openChats->each(function ($openChat) {
-                    $view = $this->tpl();
-                    $view->cacheClear('_chats_item', $openChat->jid);
-                });
-            }
-
-            return resolve(true);
-        });
-    }
 
     public function load()
     {
@@ -49,9 +31,6 @@ class Chats extends Base
         $this->registerEvent('jingle_message', 'onMessage');
         $this->registerEvent('presence', 'onPresence'/*, 'chat'*/);
         $this->registerEvent('chatstate', 'onChatState', 'chat');
-        // Bug: In Chat::ajaxGet, Notif.current might come after this event
-        // so we don't set the filter
-        $this->registerEvent('chat_open', 'onChatOpen', /* 'chat'*/);
 
         $this->registerEvent('currentcall_started', 'onCallEvent', 'chat');
         $this->registerEvent('currentcall_stopped', 'onCallEvent', 'chat');
@@ -88,7 +67,7 @@ class Chats extends Base
         }
     }
 
-    public function onChatOpen($jid)
+    public function chatOpen(string $jid)
     {
         if (!validateJid($jid)) {
             return;
@@ -108,21 +87,21 @@ class Chats extends Base
         $this->rpc('Chats.refresh');
     }
 
-    public function onPresence($packet)
+    public function onPresence(Packet $packet)
     {
         if ($packet->content != null) {
             $this->replaceChat($packet->content->jid);
         }
     }
 
-    public function onCallEvent($packet)
+    public function onCallEvent(Packet $packet)
     {
-        $this->replaceChat($packet[0]);
+        $this->replaceChat($packet->from);
     }
 
     private function replaceChat(string $jid)
     {
-        if ($this->user->openChats()->where('jid', $jid)->count() > 0) {
+        if ($this->me->openChats()->where('jid', $jid)->count() > 0) {
             $this->rpc(
                 'MovimTpl.replace',
                 $this->getItemId($jid),
@@ -138,19 +117,14 @@ class Chats extends Base
         }
     }
 
-    public function onChatState(array $array)
+    public function onChatState(Packet $packet)
     {
-        $this->setState($array[0], isset($array[1]));
-    }
-
-    private function setState(string $jid, bool $composing)
-    {
-        if ($this->user->openChats()->where('jid', $jid)->count() > 0) {
+        if ($this->me->openChats()->where('jid', $packet->from)->count() > 0) {
             $this->rpc(
-                $composing
+                !empty($packet->content)
                     ? 'MovimUtils.addClass'
                     : 'MovimUtils.removeClass',
-                $this->getItemId($jid) . ' span.primary',
+                $this->getItemId($packet->from) . ' span.primary',
                 'composing'
             );
         }
@@ -173,7 +147,7 @@ class Chats extends Base
         // see https://stackoverflow.com/questions/40365098/why-is-postgres-not-using-my-index-on-a-simple-order-by-limit-1
         // a little hack is needed to use corectly the indexes
         if ($jid == null) {
-            $message = $this->user->messages();
+            $message = $this->me->messages();
 
             $message = (DB::getDriverName() == 'pgsql')
                 ? $message->orderByRaw('published desc nulls last')
@@ -211,8 +185,8 @@ class Chats extends Base
     public function ajaxSetFilter(string $filter)
     {
         if (in_array($filter, $this->_filters)) {
-            $this->user->chats_filter = $filter;
-            $this->user->save();
+            $this->me->chats_filter = $filter;
+            $this->me->save();
         }
 
         $this->rpc('Chats.refreshFilters');
@@ -220,12 +194,12 @@ class Chats extends Base
 
     public function ajaxOpen($jid, ?bool $andShow = false, ?bool $history = true)
     {
-        if (!validateJid($jid) || $jid != $this->user->id) {
+        if (!validateJid($jid) || $jid != $this->me->id) {
             if ($history) {
                 $this->ajaxGetMAMHistory($jid);
             }
 
-            $openChat = $this->user->openChats()->firstOrCreate(['jid' => $jid]);
+            $openChat = $this->me->openChats()->firstOrCreate(['jid' => $jid]);
             $openChat->touch();
 
             $this->rpc('MovimTpl.remove', $this->getItemId($jid));
@@ -250,7 +224,7 @@ class Chats extends Base
             return;
         }
 
-        $this->user->openChats()->where('jid', $jid)->delete();
+        $this->me->openChats()->where('jid', $jid)->delete();
 
         $tpl = $this->tpl();
         $tpl->cacheClear('_chats_item', $jid);
@@ -271,7 +245,7 @@ class Chats extends Base
     public function prepareCalls()
     {
         $view = $this->tpl();
-        $view->assign('calls', $this->user->session->mujiCalls()->where('isfromconference', false)->get());
+        $view->assign('calls', $this->me->session->mujiCalls()->where('isfromconference', false)->get());
 
         return $view->draw('_chats_calls');
     }
@@ -314,20 +288,20 @@ class Chats extends Base
             $messages = collect();
 
             $jidFromToMessages = DB::table('messages')
-                ->where('user_id', $this->user->id)
+                ->where('user_id', $this->me->id)
                 ->whereIn('jidfrom', $chats)
                 ->unionAll(
                     DB::table('messages')
-                        ->where('user_id', $this->user->id)
+                        ->where('user_id', $this->me->id)
                         ->whereIn('jidto', $chats)
                 );
 
-            $selectedMessages = $this->user->messages()
+            $selectedMessages = $this->me->messages()
                 ->joinSub(
                     function ($query) use ($jidFromToMessages) {
                         $query->selectRaw('max(published) as published, jidfrom, jidto')
                             ->from($jidFromToMessages, 'messages')
-                            ->where('user_id', $this->user->id)
+                            ->where('user_id', $this->me->id)
                             ->groupBy(['jidfrom', 'jidto']);
                     },
                     'recents',
@@ -339,7 +313,7 @@ class Chats extends Base
                 )->get();
 
             foreach ($selectedMessages as $message) {
-                $key = $message->jidfrom == $this->user->id
+                $key = $message->jidfrom == $this->me->id
                     ? $message->jidto
                     : $message->jidfrom;
 
@@ -349,7 +323,7 @@ class Chats extends Base
                 }
             }
 
-            $rosters = $this->user->session->contacts()->whereIn('jid', $chats)
+            $rosters = $this->me->session->contacts()->whereIn('jid', $chats)
                 ->with('presence.capability')->get()->keyBy('jid');
 
             foreach (array_reverse($chats) as $key) {
@@ -376,7 +350,7 @@ class Chats extends Base
         $view->assign('status', $status);
         $view->assign('contact', $contact);
         $view->assign('roster', $roster);
-        $view->assign('count', $this->user->unreads($jid));
+        $view->assign('count', $this->me->unreads($jid));
         $view->assign('contactincall', CurrentCall::getInstance()->isJidInCall($jid));
 
         if ($status == null) {
@@ -394,7 +368,7 @@ class Chats extends Base
 
     public function resolveRosterFromJid(string $jid): ?Roster
     {
-        return $this->user->session->contacts()->where('jid', $jid)
+        return $this->me->session->contacts()->where('jid', $jid)
             ->with('presence.capability')->first();
     }
 
@@ -409,24 +383,24 @@ class Chats extends Base
     {
         $toOpen = [];
 
-        $this->user->messages()
+        $this->me->messages()
             ->select((DB::raw('max(published) as published, jidfrom, jidto')))
             ->where('seen', false)
             ->whereIn('type', ['chat', 'headline', 'invitation'])
             ->whereNotIn('jidfrom', function ($query) {
                 $query->select('jid')
                     ->from('open_chats')
-                    ->where('user_id', me()->id);
+                    ->where('user_id', $this->me->id);
             })
             ->whereNotIn('jidto', function ($query) {
                 $query->select('jid')
                     ->from('open_chats')
-                    ->where('user_id', me()->id);
+                    ->where('user_id', $this->me->id);
             })
             ->groupBy('jidfrom', 'jidto')
             ->get()
             ->each(function ($message) use (&$toOpen) {
-                $jid = $message->jidfrom == me()->id
+                $jid = $message->jidfrom == $this->me->id
                     ? $message->jidto
                     : $message->jidfrom;
 
@@ -441,7 +415,7 @@ class Chats extends Base
 
         foreach ($toOpen as $jid => $published) {
             $openChat = new OpenChat;
-            $openChat->user_id = me()->id;
+            $openChat->user_id = $this->me->id;
             $openChat->jid = $jid;
             $openChat->created_at = $openChat->updated_at = $published;
             $openChat->save(['timestamps' => false]);
@@ -450,13 +424,13 @@ class Chats extends Base
             $view->cacheClear('_chats_item', $jid);
         }
 
-        return $this->user->openChats()->orderBy('updated_at')->pluck('jid')->toArray();
+        return $this->me->openChats()->orderBy('updated_at')->pluck('jid')->toArray();
     }
 
     public function display()
     {
         $this->view->assign('filters', $this->_filters);
-        $this->view->assign('filter', $this->user->chats_filter);
+        $this->view->assign('filter', $this->me->chats_filter);
     }
 
     private function getItemId(string $jid): string

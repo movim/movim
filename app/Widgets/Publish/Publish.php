@@ -73,7 +73,7 @@ class Publish extends Base
 
         $s = new Subscribe;
         $s->setTo($server)
-            ->setFrom($this->user->id)
+            ->setFrom($this->me->id)
             ->setNode('urn:xmpp:microblog:0:comments/' . $parentid)
             ->request();
     }
@@ -92,7 +92,7 @@ class Publish extends Base
 
     public function ajaxHttpSaveTitle($id, $title)
     {
-        $draft = $this->user->drafts()->find($id);
+        $draft = $this->me->drafts()->find($id);
 
         if ($draft) {
             $draft->title = $title;
@@ -103,7 +103,7 @@ class Publish extends Base
 
     public function ajaxHttpSaveContent($id, $content)
     {
-        $draft = $this->user->drafts()->find($id);
+        $draft = $this->me->drafts()->find($id);
 
         if ($draft) {
             $draft->content = $content;
@@ -114,7 +114,7 @@ class Publish extends Base
 
     public function ajaxPreview($id)
     {
-        $draft = $this->user->drafts()->find($id);
+        $draft = $this->me->drafts()->find($id);
 
         if ($draft && $draft->isNotEmpty()) {
             $view = $this->tpl();
@@ -138,16 +138,16 @@ class Publish extends Base
     {
         $this->rpc('Publish.disableSend');
 
-        $draft = $this->user->drafts()->find($id);
+        $draft = $this->me->drafts()->find($id);
 
         if ($draft && $draft->isNotEmpty()) {
             $p = new PostPublish;
-            $p->setFrom($this->user->id)
+            $p->setFrom($this->me->id)
                 ->setTo($draft->server)
                 ->setNode($draft->node)
                 ->setTitle(htmlspecialchars($draft->title));
 
-            $comments = $this->user->session->getCommentsService();
+            $comments = $this->me->session->getCommentsService();
 
             $tags = [];
 
@@ -308,7 +308,7 @@ class Publish extends Base
 
     private function addEmbed(int $draftId, string $url)
     {
-        $draft = $this->user->drafts()->find($draftId);
+        $draft = $this->me->drafts()->find($draftId);
 
         if (Validator::url()->isValid($url)) {
             $embed = $draft->embeds()->where('url', $url)->first();
@@ -342,7 +342,7 @@ class Publish extends Base
 
     public function ajaxHttpRemoveEmbed($id, $embedId)
     {
-        $draft = $this->user->drafts()->find($id);
+        $draft = $this->me->drafts()->find($id);
 
         if ($draft) {
             $embed = $draft->embeds()->find($embedId);
@@ -356,7 +356,7 @@ class Publish extends Base
 
     public function ajaxOpenlinkPreview($id)
     {
-        $draft = $this->user->drafts()->find($id);
+        $draft = $this->me->drafts()->find($id);
         $view = $this->tpl();
 
         if ($draft && $draft->open && !$draft->nodeid) {
@@ -375,7 +375,7 @@ class Publish extends Base
 
     public function ajaxTogglePrivacy($id, bool $open)
     {
-        $draft = $this->user->drafts()->find($id);
+        $draft = $this->me->drafts()->find($id);
 
         if ($draft) {
             $draft->open = $open;
@@ -395,7 +395,7 @@ class Publish extends Base
 
     public function ajaxCheckPrivacy($id)
     {
-        $draft = $this->user->drafts()->find($id);
+        $draft = $this->me->drafts()->find($id);
 
         if ($draft && $draft->open) {
             (new GetConfig)->setNode(AppPost::MICROBLOG_NODE)->request();
@@ -406,7 +406,7 @@ class Publish extends Base
 
     public function ajaxToggleCommentsDisabled($id, bool $commentsDisabled)
     {
-        $draft = $this->user->drafts()->find($id);
+        $draft = $this->me->drafts()->find($id);
 
         if ($draft) {
             $draft->comments_disabled = $commentsDisabled;
@@ -420,7 +420,7 @@ class Publish extends Base
 
     public function ajaxClearReply($id)
     {
-        $draft = $this->user->drafts()->find($id);
+        $draft = $this->me->drafts()->find($id);
 
         if ($draft) {
             $draft->reply_id = null;
@@ -446,7 +446,7 @@ class Publish extends Base
 
     public function ajaxEmbedChooseImage($id, $embedId)
     {
-        $draft = $this->user->drafts()->find($id);
+        $draft = $this->me->drafts()->find($id);
 
         if ($draft) {
             $embed = $draft->embeds()->find($embedId);
@@ -461,7 +461,7 @@ class Publish extends Base
 
     public function ajaxHttpSetImageNumber($id, $embedId, $imageNumber)
     {
-        $draft = $this->user->drafts()->find($id);
+        $draft = $this->me->drafts()->find($id);
 
         if ($draft) {
             $embed = $draft->embeds()->find($embedId);
@@ -489,7 +489,7 @@ class Publish extends Base
         $view = $this->tpl();
 
         if ($server == null) {
-            $server = $this->user->id;
+            $server = $this->me->id;
         }
 
         if ($node == null) {
@@ -509,7 +509,7 @@ class Publish extends Base
             $view->assign('icon', $info);
         }
 
-        $draft = $this->user->drafts()
+        $draft = $this->me->drafts()
             ->where('server', $server)
             ->where('node', $node)
             ->where('nodeid', $nodeId)
@@ -517,7 +517,7 @@ class Publish extends Base
 
         if (!$draft) {
             $draft = new Draft;
-            $draft->user_id = $this->user->id;
+            $draft->user_id = $this->me->id;
             $draft->server = $server;
             $draft->node = $node;
             $draft->nodeid = $nodeId;

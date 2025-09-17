@@ -17,7 +17,7 @@ class ContactBlogConfig extends Base
 
     public function ajaxCheckAccessModel(string $jid)
     {
-        if ($jid == me()->id) {
+        if ($jid == $this->me->id) {
             (new GetConfig)->setNode(Post::MICROBLOG_NODE)->request();
         }
     }

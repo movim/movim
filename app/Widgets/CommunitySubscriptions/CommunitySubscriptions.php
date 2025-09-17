@@ -24,7 +24,7 @@ class CommunitySubscriptions extends Base
     public function ajaxHttpGet()
     {
         $view = $this->tpl();
-        $view->assign('subscriptions', $this->user->subscriptions()
+        $view->assign('subscriptions', $this->me->subscriptions()
             ->notComments()
             ->orderBy('server')->orderBy('node')
             ->get());

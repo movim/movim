@@ -6,6 +6,7 @@ use Monolog\Handler\SyslogHandler;
 use Monolog\Handler\StreamHandler;
 use Movim\Image;
 use Movim\ImageSize;
+use Moxl\Xec\Payload\Packet;
 use React\Http\Message\Response;
 use React\Promise\Promise;
 use React\Promise\PromiseInterface;
@@ -721,6 +722,32 @@ function requestResolverWorker(string $url, int $timeout = 30): PromiseInterface
     return $browser
         ->withTimeout($timeout)
         ->post($url, [], json_encode($data))
+        ->then(function (Response $response) {
+            return json_decode($response->getBody());
+        });
+}
+
+/**
+ * @desc Request the Templater Worker
+ */
+function requestTemplaterWorker(string $widget, string $method, ?Packet $data = null): PromiseInterface
+{
+    $connector = new React\Socket\FixedUriConnector(
+        'unix://' . TEMPLATER_SOCKET,
+        new React\Socket\UnixConnector()
+    );
+
+    $browser = new React\Http\Browser($connector);
+    $payload = [
+        'sid' => SESSION_ID,
+        'jid' => me()->id,
+        'widget' => $widget,
+        'method' => $method,
+        'data' => $data
+    ];
+
+    return $browser
+        ->post('http://templater', [], json_encode($payload))
         ->then(function (Response $response) {
             return json_decode($response->getBody());
         });

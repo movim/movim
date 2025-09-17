@@ -2,6 +2,7 @@
 
 namespace App\Widgets\Post;
 
+use App\Post as AppPost;
 use App\Widgets\ContactActions\ContactActions;
 use App\Widgets\Toast\Toast;
 use Movim\Widget\Base;
@@ -22,32 +23,34 @@ class Post extends Base
         $this->registerEvent('microblog_commentpublish_handle', 'onCommentPublished');
         $this->registerEvent('microblog_commentpublish_error', 'onCommentPublishError');
         $this->registerEvent('microblog_commentsget_error', 'onCommentsError');
-        $this->registerEvent('pubsub_getitem_handle', 'onHandle', 'post');
+        $this->registerEvent('pubsub_getitem_handle', 'tonHandle', 'post');
         $this->registerEvent('pubsub_postdelete_handle', 'onDelete', 'post');
         $this->registerEvent('pubsub_getitem_errorpresencesubscriptionrequired', 'onPresenceSubscriptionRequired');
-        $this->registerEvent('post_resolved', 'onHandle', 'post');
+        $this->registerEvent('post_resolved', 'tonHandle', 'post');
     }
 
-    public function onHandle(Packet $packet)
+    public function tonHandle(Packet $packet)
     {
-        $post = $packet->content;
+        $post = AppPost::find($packet->content);
 
-        if ($post->isComment()) {
-            $parent = $post->getParent();
+        if ($post) {
+            if ($post->isComment()) {
+                $parent = $post->getParent();
 
-            $this->rpc(
-                'MovimTpl.fill',
-                '#post_widget.' . cleanupId($parent->nodeid) . ' #comments',
-                $this->prepareComments($post->getParent())
-            );
-            $this->rpc('MovimUtils.applyAutoheight');
-        } else {
-            $this->rpc(
-                'MovimTpl.fill',
-                '#post_widget.' . cleanupId($post->nodeid),
-                $this->preparePost($post)
-            );
-            $this->rpc('MovimUtils.enhanceArticlesContent');
+                $this->rpc(
+                    'MovimTpl.fill',
+                    '#post_widget.' . cleanupId($parent->nodeid) . ' #comments',
+                    $this->prepareComments($post->getParent())
+                );
+                $this->rpc('MovimUtils.applyAutoheight');
+            } else {
+                $this->rpc(
+                    'MovimTpl.fill',
+                    '#post_widget.' . cleanupId($post->nodeid),
+                    $this->preparePost($post)
+                );
+                $this->rpc('MovimUtils.enhanceArticlesContent');
+            }
         }
     }
 
@@ -119,7 +122,7 @@ class Post extends Base
             ->request();
 
         if ($p) {
-            $p->userViews()->syncWithoutDetaching($this->user->id);
+            $p->userViews()->syncWithoutDetaching($this->me->id);
 
             $html = $this->preparePost($p, requestComments: false);
 
@@ -197,7 +200,7 @@ class Post extends Base
         if ($p) {
             $cp = new CommentPublish;
             $cp->setTo($p->commentserver)
-                ->setFrom($this->user->id)
+                ->setFrom($this->me->id)
                 ->setCommentNodeId($p->commentnodeid)
                 ->setTitle(htmlspecialchars(rawurldecode($comment)))
                 ->setParentId($p->id)
@@ -258,7 +261,7 @@ class Post extends Base
             $view->assign('reply', $post->isReply() ? $post->getReply() : false);
             $view->assign('repost', $post->isRecycled() ? \App\Contact::find($post->server) : false);
 
-            $view->assign('nsfw', $this->user->nsfw);
+            $view->assign('nsfw', $this->me->nsfw);
             $view->assign('post', $post);
 
             return ($card)

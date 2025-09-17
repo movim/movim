@@ -39,15 +39,15 @@ class Config extends Base
 
         $view->assign('languages', $l->getList());
         $view->assign('accent_colors', User::ACCENT_COLORS);
-        $view->assign('configuration', $this->user);
+        $view->assign('configuration', $this->me);
 
         return $view->draw('_config_form');
     }
 
     public function onConfig($package)
     {
-        $this->user->setConfig($package->content);
-        $this->user->save();
+        $this->me->setConfig($package->content);
+        $this->me->save();
 
         $this->refreshConfig();
 
@@ -85,7 +85,7 @@ class Config extends Base
 
     public function ajaxMAMGetConfig()
     {
-        if ($this->user->hasMAM()) {
+        if ($this->me->hasMAM()) {
             (new GetConfig)->request();
         }
     }
@@ -99,14 +99,14 @@ class Config extends Base
 
     public function ajaxBlogGetConfig()
     {
-        if ($this->user->hasPubsub()) {
+        if ($this->me->hasPubsub()) {
             (new PubsubGetConfig)->setNode(Post::MICROBLOG_NODE)->request();
         }
     }
 
     public function ajaxBlogSetConfig(\stdClass $data)
     {
-        if ($this->user->hasPubsub()) {
+        if ($this->me->hasPubsub()) {
             $r = new PubsubSetConfig;
             $r->setNode(Post::MICROBLOG_NODE)
                 ->setData(formToArray($data))
@@ -139,20 +139,20 @@ class Config extends Base
     public function ajaxEditNickname()
     {
         $view = $this->tpl();
-        $view->assign('me', $this->user);
+        $view->assign('me', $this->me);
         Dialog::fill($view->draw('_config_nickname'));
     }
 
     public function ajaxSaveNickname(string $nickname)
     {
         if (Validator::regex('/^[a-z_\-\d]{3,64}$/i')->isValid($nickname)) {
-            if (\App\User::where('nickname', $nickname)->where('id', '!=', $this->user->id)->first()) {
+            if (\App\User::where('nickname', $nickname)->where('id', '!=', $this->me->id)->first()) {
                 Toast::send($this->__('profile.nickname_conflict'));
                 return;
             }
 
-            $this->user->nickname = $nickname;
-            $this->user->save();
+            $this->me->nickname = $nickname;
+            $this->me->save();
             $this->refreshConfig();
 
             (new Dialog)->ajaxClear();
@@ -165,10 +165,10 @@ class Config extends Base
     public function ajaxChangePrivacy($value)
     {
         if ($value == true) {
-            $this->user->setPublic();
+            $this->me->setPublic();
             Toast::send($this->__('profile.public'));
         } else {
-            $this->user->setPrivate();
+            $this->me->setPrivate();
             Toast::send($this->__('profile.restricted'));
         }
     }
@@ -189,7 +189,7 @@ class Config extends Base
     public function prepareAccentColorRadio(string $color)
     {
         $view = $this->tpl();
-        $view->assign('configuration', $this->user);
+        $view->assign('configuration', $this->me);
         $view->assign('color', $color);
 
         return $view->draw('_config_accent_color');
@@ -197,7 +197,7 @@ class Config extends Base
 
     public function display()
     {
-        $this->view->assign('me', $this->user);
+        $this->view->assign('me', $this->me);
         $this->view->assign('form', $this->prepareConfigForm());
     }
 }

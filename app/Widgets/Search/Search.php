@@ -37,7 +37,7 @@ class Search extends Base
     public function ajaxHttpInitRoster()
     {
         $view = $this->tpl();
-        $view->assign('contacts', $this->user->session->topContacts()
+        $view->assign('contacts', $this->me->session->topContacts()
             ->with('presence.capability')
             ->get());
 
@@ -54,7 +54,7 @@ class Search extends Base
         if (Validator::stringType()->length(2, 64)->isValid($key)) {
             $view->assign('posts', new Collection);
 
-            if ($this->user->hasPubsub()) {
+            if ($this->me->hasPubsub()) {
                 $tags = DB::table('post_tag')
                     ->select(DB::raw('count(*) as count, name'))
                     ->join('tags', 'tag_id', '=', 'tags.id')

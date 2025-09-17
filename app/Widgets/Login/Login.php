@@ -125,7 +125,7 @@ class Login extends Base
 
     public function showErrorBlock($error)
     {
-        $this->user->encryptedPasswords()->delete();
+        $this->me->encryptedPasswords()->delete();
 
         $this->rpc('Login.clearQuick');
         $this->rpc('MovimTpl.fill', '#error', $this->prepareError($error));
