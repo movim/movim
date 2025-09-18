@@ -19,6 +19,12 @@ use App\EncryptedPassword;
 use App\PushSubscription;
 use App\Info;
 use Minishlink\WebPush\VAPID;
+use Movim\Template\Partial;
+use React\Promise\PromiseInterface;
+use WyriHaximus\React\Cron;
+use WyriHaximus\React\Cron\Action;
+
+use function React\Promise\resolve;
 
 class Core implements MessageComponentInterface
 {
@@ -42,13 +48,16 @@ class Core implements MessageComponentInterface
 
         DBSession::whereNotNull('id')->delete();
 
-        // API_SOCKET ?
-        if (file_exists(CACHE_PATH . 'socketapi.sock')) {
-            unlink(CACHE_PATH . 'socketapi.sock');
+        if (file_exists(API_SOCKET)) {
+            unlink(API_SOCKET);
         }
 
-        if (file_exists(CACHE_PATH . 'resolver.sock')) {
-            unlink(CACHE_PATH . 'resolver.sock');
+        if (file_exists(RESOLVER_SOCKET)) {
+            unlink(RESOLVER_SOCKET);
+        }
+
+        if (file_exists(TEMPLATER_SOCKET)) {
+            unlink(TEMPLATER_SOCKET);
         }
 
         array_map('unlink', array_merge(
@@ -64,6 +73,11 @@ class Core implements MessageComponentInterface
             $keyset = VAPID::createVapidKeys();
             file_put_contents(CACHE_PATH . 'vapid_keys.json', json_encode($keyset));
         }
+    }
+
+    public function getKey(): string
+    {
+        return $this->key;
     }
 
     public function setWebsocket($port)
@@ -144,8 +158,10 @@ class Core implements MessageComponentInterface
             }
 
             $this->sessions[$sid]->attach($conn);
+        } elseif ($this->isTemplater($conn)) {
+            echo colorize("Templater connected", 'green') . "\n";
         } else {
-            // WebSocket from the internal subprocess
+            // WebSocket from the linkers
             $sid = $this->getHeaderSid($conn);
             if ($sid != null && isset($this->sessions[$sid])) {
                 $this->sessions[$sid]->attachInternal($conn);
@@ -159,6 +175,17 @@ class Core implements MessageComponentInterface
 
     public function onMessage(ConnectionInterface $from, $msg)
     {
+        if ($this->isTemplater($from)) {
+            $json = json_decode($msg);
+            $sid = $json->sid;
+            unset($json->sid);
+
+            if ($sid != null && isset($this->sessions[$sid])) {
+                $this->sessions[$sid]->messageOut(json_encode($json));
+            }
+            return;
+        }
+
         $sid = $this->getCookieSid($from);
         if ($sid != null && isset($this->sessions[$sid])) {
             $this->sessions[$sid]->messageIn($msg);
@@ -228,12 +255,39 @@ class Core implements MessageComponentInterface
         $this->cleanupEncryptedPasswords();
         $this->cleanupPushSubscriptions();
         $this->cleanupInfos();
+        $this->cleanupChatsCache();
 
         $this->loop->addPeriodicTimer(60 * 60 * 24, function () {
             $this->cleanupEncryptedPasswords();
             $this->cleanupPushSubscriptions();
             $this->cleanupInfos();
         });
+    }
+
+    /**
+     * @desc Clear Chats items cache
+     */
+    private function cleanupChatsCache()
+    {
+        Cron::create(
+            new Action(
+                'cleanCache',
+                0.1,
+                '1 0 * * *',
+                function (): PromiseInterface {
+                    foreach (
+                        glob(
+                            CACHE_PATH . '*__chats_item_*' . Partial::EXTENSION,
+                            GLOB_NOSORT
+                        ) as $path
+                    ) {
+                        @unlink($path);
+                    }
+
+                    return resolve(true);
+                }
+            )
+        );
     }
 
     /**
@@ -278,7 +332,7 @@ class Core implements MessageComponentInterface
     public function getSessions()
     {
         return array_map(
-            fn ($session) => $session->started,
+            fn($session) => $session->started,
             $this->sessions
         );
     }
@@ -309,6 +363,11 @@ class Core implements MessageComponentInterface
         return $cookies->get('MOVIM_SESSION_ID')
             ? $cookies->get('MOVIM_SESSION_ID')->getValue()
             : null;
+    }
+
+    public function isTemplater(ConnectionInterface $conn)
+    {
+        return ($conn->httpRequest->hasHeader('MOVIM_TEMPLATER'));
     }
 
     private function getHeaderSid(ConnectionInterface $conn)

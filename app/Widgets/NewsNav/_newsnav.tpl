@@ -36,7 +36,7 @@
 </ul>
 {/if}
 
-{if="$page == 'news' && $c->getUser()->hasPubsub()"}
+{if="$page == 'news' && $c->me->hasPubsub()"}
     <ul class="list thick on_desktop card">
         <li class="block color indigo">
             <i class="main material-symbols">share</i>

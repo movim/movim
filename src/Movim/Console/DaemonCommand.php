@@ -98,15 +98,15 @@ class DaemonCommand extends Command
 
         $clearTemplatesCache = new Process('exec ' . PHP_BINARY . ' daemon.php clearTemplatesCache');
         $clearTemplatesCache->start($loop);
-        $clearTemplatesCache->on('exit', fn ($out) => $output->writeln('<info>Templates cache cleared</info>'));
+        $clearTemplatesCache->on('exit', fn($out) => $output->writeln('<info>Templates cache cleared</info>'));
 
         $compileLanguages = new Process('exec ' . PHP_BINARY . ' daemon.php compileLanguages');
         $compileLanguages->start($loop);
-        $compileLanguages->on('exit', fn ($out) => $output->writeln('<info>Compiled po files</info>'));
+        $compileLanguages->on('exit', fn($out) => $output->writeln('<info>Compiled po files</info>'));
 
         $compileStickers = new Process('exec ' . PHP_BINARY . ' daemon.php compileStickers');
         $compileStickers->start($loop);
-        $compileStickers->on('exit', fn ($out) => $output->writeln('<info>Stickers compiled</info>'));
+        $compileStickers->on('exit', fn($out) => $output->writeln('<info>Stickers compiled</info>'));
 
         $output->writeln('<info>Movim daemon launched</info>');
         $output->writeln('<info>Base URL: ' . $baseuri . '</info>');
@@ -118,7 +118,7 @@ class DaemonCommand extends Command
         if (isOpcacheEnabled()) {
             $compileOpcache = new Process('exec ' . PHP_BINARY . ' daemon.php compileOpcache');
             $compileOpcache->start($loop);
-            $compileOpcache->on('exit', fn ($out) => $output->writeln('<info>Files compiled in Opcache</info>'));
+            $compileOpcache->on('exit', fn($out) => $output->writeln('<info>Files compiled in Opcache</info>'));
         } else {
             $output->writeln('<error>Opcache is disabled, it is strongly advised to enable it in PHP CLI php.ini</error>');
             $output->writeln('Set opcache.enable=1 and opcache.enable_cli=1 in the PHP CLI ini file');
@@ -136,8 +136,21 @@ class DaemonCommand extends Command
 
         $resolverWorker = new Process('exec ' . PHP_BINARY . ' resolver.php');
         $resolverWorker->start($loop);
-        $resolverWorker->on('exit', fn () => $output->writeln('<error>Resolver Worker crashed</error>'));
+        $resolverWorker->on('exit', fn() => $output->writeln('<error>Resolver Worker crashed</error>'));
         $output->writeln('<info>Resolver Worker launched</info>');
+
+        $templaterWorker = new Process(
+            'exec ' . PHP_BINARY . ' templater.php',
+            null,
+            [
+                'key'       => $core->getKey(),
+                'baseuri'   => $baseuri,
+                'port'      => config('daemon.port')
+            ]
+        );
+        $templaterWorker->start($loop);
+        $templaterWorker->on('exit', fn() => $output->writeln('<error>Templater Worker crashed</error>'));
+        $output->writeln('<info>Templater Worker launched</info>');
 
         (new IoServer($app, $socket, $loop))->run();
 

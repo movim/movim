@@ -6,12 +6,10 @@
 
 namespace Movim\Widget;
 
+use App\User;
 use Rain\Tpl;
 use Movim\Controller\Ajax;
 use Movim\Template\Partial;
-use Moxl\Xec\Payload\Packet;
-use WyriHaximus\React\Cron;
-use WyriHaximus\React\Cron\Action;
 
 use Illuminate\Database\Capsule\Manager as DB;
 
@@ -20,11 +18,12 @@ class Base
     protected array $js = [];     // Contains javascripts
     protected array $css = [];    // Contains CSS files
     protected $ajax;        // Contains ajax client code
-    protected $user;
     protected ?string $name = null;
     protected $view;
+    public ?User $me = null;
 
     protected $_view;
+    private $_useTemplater = false;
 
     public $baseUri;
     public array $events = [];
@@ -42,8 +41,8 @@ class Base
             $this->_view = $view;
         }
 
+        $this->me = me();
         $this->setName();
-        $this->user = me();
         $this->load();
         $this->baseUri = BASE_URI;
 
@@ -99,7 +98,6 @@ class Base
     {
         unset($this->view);
         unset($this->ajax);
-        unset($this->user);
         unset($this->_view);
     }
 
@@ -123,18 +121,35 @@ class Base
         return DB::getDriverName() == $driver;
     }
 
-    public function rpc(...$args)
+    public function rpc($funcname, ...$args)
     {
-        \Movim\RPC::call(...$args);
+        if ($this->_useTemplater) {
+            $payload = [
+                'func' => $funcname,
+                'templater' => true,
+                'sid' => $this->me->session->id,
+            ];
+
+            if (!empty($args)) {
+                $payload['p'] = $args;
+            }
+
+            writeTemplater($payload);
+
+            return;
+        }
+
+        \Movim\RPC::call($funcname, ...$args);
     }
 
-    public function boot()
+    public function enableUseTemplater()
     {
+        $this->_useTemplater = true;
     }
 
-    public function load()
-    {
-    }
+    public function boot() {}
+
+    public function load() {}
 
     /**
      * Generates the widget's HTML code.
@@ -142,30 +157,6 @@ class Base
     public function build(...$params): string
     {
         return $this->draw(...$params);
-    }
-
-    /**
-     * Send an event to the Widgets
-     */
-    public function event(string $key, $data = null)
-    {
-        $widgets = Wrapper::getInstance();
-        $widgets->iterate($key, $data);
-    }
-
-    /**
-     * Send a packed event
-     */
-    public function packedEvent(string $key, $content, ?string $from = null)
-    {
-        $packet = new Packet;
-        $packet->content = $content;
-
-        if ($from != null) {
-            $packet->from = $from;
-        }
-
-        $this->event($key, $packet);
     }
 
     /**
@@ -177,14 +168,6 @@ class Base
     }
 
     /**
-     * Get the current user
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
      *  @desc Return the template's HTML code
      */
     public function draw(...$params): string
@@ -193,7 +176,7 @@ class Base
             $this->display(...$params);
         }
 
-        return (file_exists($this->respath(strtolower($this->name).'.tpl', true)))
+        return (file_exists($this->respath(strtolower($this->name) . '.tpl', true)))
             ? trim((string)$this->view->draw(strtolower($this->name), true))
             : '';
     }
@@ -221,7 +204,7 @@ class Base
         $path = 'app/Widgets/' . $folder . '/' . $file;
 
         if ($fspath) {
-            $path = DOCUMENT_ROOT . '/'.$path;
+            $path = DOCUMENT_ROOT . '/' . $path;
         } else {
             $path = urilize($path, $notime);
         }
@@ -326,29 +309,6 @@ class Base
             }
 
             $this->filters[$key . '_' . $method] = $filter;
-        }
-    }
-
-    /**
-     * @brief Register a CRON task
-     * @param @expression The cron expression to schedule the actoon
-     * @param $function The function to call
-     */
-    protected function registerTask(string $expression, string $key, $function)
-    {
-        $key = $this->name . '_' . $key;
-
-        if (php_sapi_name() == 'cli' && !array_key_exists($key, $this->tasks)) {
-            Cron::create(
-                new Action(
-                    $key,
-                    0.1,
-                    $expression,
-                    $function
-                )
-            );
-
-            $this->tasks[$key] = true;
         }
     }
 }

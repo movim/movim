@@ -15,6 +15,7 @@ class AvatarData extends Payload
         $p->setKey($jid);
         $p->save();
 
-        $this->event('vcard', \App\Contact::firstOrNew(['id' => $jid]));
+        $this->pack($jid);
+        $this->event('vcard');
     }
 }

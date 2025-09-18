@@ -58,8 +58,8 @@ class Account extends \Movim\Widget\Base
 
     public function onRemoved()
     {
-        \App\Post::restrictToMicroblog()->where('server', $this->user->id)->delete();
-        $this->user->delete();
+        \App\Post::restrictToMicroblog()->where('server', $this->me->id)->delete();
+        $this->me->delete();
         $this->rpc('Presence_ajaxLogout');
     }
 
@@ -102,7 +102,7 @@ class Account extends \Movim\Widget\Base
     public function ajaxChangePassword()
     {
         $view = $this->tpl();
-        $view->assign('jid', $this->user->id);
+        $view->assign('jid', $this->me->id);
         Dialog::fill($view->draw('_account_password'));
     }
 
@@ -112,7 +112,7 @@ class Account extends \Movim\Widget\Base
         $p2 = $form->password_confirmation->value;
 
         if ($p1 == $p2) {
-            $arr = explodeJid($this->user->id);
+            $arr = explodeJid($this->me->id);
 
             $this->rpc('Dialog_ajaxClear');
 
@@ -131,14 +131,14 @@ class Account extends \Movim\Widget\Base
     {
         $this->rpc('Presence.clearQuick');
         $view = $this->tpl();
-        $view->assign('jid', $this->user->id);
+        $view->assign('jid', $this->me->id);
         Dialog::fill($view->draw('_account_remove'));
     }
 
     public function ajaxClearAccount()
     {
         $view = $this->tpl();
-        $view->assign('jid', $this->user->id);
+        $view->assign('jid', $this->me->id);
         Dialog::fill($view->draw('_account_clear'));
     }
 
@@ -151,10 +151,10 @@ class Account extends \Movim\Widget\Base
     {
         $view = $this->tpl();
 
-        $presences = $this->user->session->ownPresences;
+        $presences = $this->me->session->ownPresences;
 
         if ($presences->count() > 0) {
-            $view->assign('session', $this->user->session);
+            $view->assign('session', $this->me->session);
             $view->assign('presences', $presences);
             $view->assign('clienttype', getClientTypes());
 
@@ -177,8 +177,8 @@ class Account extends \Movim\Widget\Base
         }
 
         $latests = \App\Message::selectRaw('max(published) as latest, bundleid')
-            ->where('user_id', $this->user->id)
-            ->where('jidfrom', $this->user->id)
+            ->where('user_id', $this->me->id)
+            ->where('jidfrom', $this->me->id)
             ->groupBy('bundleid')
             ->pluck('latest', 'bundleid');
 
@@ -221,7 +221,7 @@ class Account extends \Movim\Widget\Base
 
     public function ajaxRemoveAccountConfirm($form)
     {
-        if ($form->jid->value == $this->user->id) {
+        if ($form->jid->value == $this->me->id) {
             $da = new Remove;
             $da->request();
         } else {
@@ -253,7 +253,7 @@ class Account extends \Movim\Widget\Base
 
     public function prepareGateways()
     {
-        $gateways = \App\Info::where('parent', $this->user->session->host)
+        $gateways = \App\Info::where('parent', $this->me->session->host)
             ->whereCategory('gateway')
             ->with('contact')
             ->get();

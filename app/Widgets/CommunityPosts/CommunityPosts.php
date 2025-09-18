@@ -20,8 +20,8 @@ class CommunityPosts extends Base
         $this->registerEvent('pubsub_getitems_error', 'onItemsError');
         $this->registerEvent('pubsub_getitemsid_error', 'onItemsError');
         $this->registerEvent('pubsub_setconfig_handle', 'onConfigSaved', 'community');
-        $this->registerEvent('pubsub_getitems_errorpresencesubscriptionrequired', 'onItemsErrorPresenceSubscriptionRequired');
-        $this->registerEvent('post_resolved', 'onPostResolved');
+        $this->registerEvent('pubsub_getitems_errorpresencesubscriptionrequired', 'tonItemsErrorPresenceSubscriptionRequired');
+        $this->registerEvent('post_resolved', 'tonPostResolved');
 
         $this->addjs('communityposts.js');
     }
@@ -34,9 +34,9 @@ class CommunityPosts extends Base
         $this->displayItems($origin, $node, $ids, $first, $last, $count, $paginated, $before, $after, $query);
     }
 
-    public function onPostResolved(Packet $packet)
+    public function tonPostResolved(Packet $packet)
     {
-        $post = $packet->content;
+        $post = AppPost::find($packet->content);
 
         $info = \App\Info::where('server', $post->server)
             ->where('node', $post->node)
@@ -56,7 +56,7 @@ class CommunityPosts extends Base
         $this->rpc('CommunityPosts.getItems');
     }
 
-    public function onItemsErrorPresenceSubscriptionRequired($packet)
+    public function tonItemsErrorPresenceSubscriptionRequired($packet)
     {
         list($origin, $node) = array_values($packet->content);
 
@@ -74,7 +74,7 @@ class CommunityPosts extends Base
         list($origin, $node) = array_values($packet->content);
 
         if ($node != AppPost::MICROBLOG_NODE) {
-            if ($this->user->subscriptions()
+            if ($this->me->subscriptions()
                 ->where('server', $origin)
                 ->where('node', $node)
                 ->first()
@@ -155,7 +155,7 @@ class CommunityPosts extends Base
     public function prepareEmpty($origin = '')
     {
         $view = $this->tpl();
-        $view->assign('me', $origin == $this->user->id);
+        $view->assign('me', $origin == $this->me->id);
         return $view->draw('_communityposts_empty');
     }
 
@@ -218,7 +218,7 @@ class CommunityPosts extends Base
         $view->assign('before', $before);
         $view->assign('after', $after);
         $view->assign('info', $info);
-        $view->assign('subscription', $this->user->subscriptions()
+        $view->assign('subscription', $this->me->subscriptions()
             ->where('server', $origin)
             ->where('node', $node)
             ->first());

@@ -8,6 +8,7 @@ namespace Movim;
 
 use Carbon\Carbon;
 use Movim\Widget\Wrapper;
+use Moxl\Xec\Payload\Packet;
 
 /**
  * This class handle the current Jitsi call
@@ -38,8 +39,10 @@ class CurrentCall
         $this->mujiRoom = $mujiRoom;
         $this->startTime = Carbon::now();
 
-        $wrapper = Wrapper::getInstance();
-        $wrapper->iterate('currentcall_started', [$this->getBareJid(), $id]);
+        Wrapper::getInstance()->iterate(
+            'currentcall_started',
+            (new Packet)->pack($id, $this->getBareJid())
+        );
 
         return true;
     }
@@ -53,8 +56,10 @@ class CurrentCall
 
         $this->jid = $this->id = $this->mujiRoom = $this->startTime = null;
 
-        $wrapper = Wrapper::getInstance();
-        $wrapper->iterate('currentcall_stopped', [$jid, $id]);
+        Wrapper::getInstance()->iterate(
+            'currentcall_stopped',
+            (new Packet)->pack($id, $jid)
+        );
 
         return true;
     }

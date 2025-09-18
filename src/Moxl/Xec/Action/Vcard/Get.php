@@ -40,7 +40,7 @@ class Get extends Action
         $contact->save();
 
         if ($notify) {
-            $this->pack($contact);
+            $this->pack($contact->id);
             $this->deliver();
         }
     }

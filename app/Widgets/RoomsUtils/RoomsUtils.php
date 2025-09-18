@@ -68,7 +68,7 @@ class RoomsUtils extends Base
             return;
         }
 
-        $conference = $this->user->session->conferences()
+        $conference = $this->me->session->conferences()
             ->where('conference', $room)
             ->with('info')
             ->first();
@@ -99,7 +99,7 @@ class RoomsUtils extends Base
             ->where('affiliation', '=', 'outcast')
             ->get());
 
-        $view->assign('me', $this->user->id);
+        $view->assign('me', $this->me->id);
 
         Drawer::fill('room_drawer', $view->draw('_rooms_drawer'));
         $this->rpc('Tabs.create');
@@ -114,11 +114,11 @@ class RoomsUtils extends Base
             $this->rpc('RoomsUtils_ajaxHttpGetLinks', $room);
         }
 
-        if ($this->user->hasOMEMO() && $conference->isGroupChat()) {
+        if ($this->me->hasOMEMO() && $conference->isGroupChat()) {
             $this->rpc(
                 'RoomsUtils.getDrawerFingerprints',
                 $room,
-                $conference->members()->whereNot('jid', $this->user->id)->get()->pluck('jid')->toArray()
+                $conference->members()->whereNot('jid', $this->me->id)->get()->pluck('jid')->toArray()
             );
         } else {
             $tpl = $this->tpl();
@@ -132,7 +132,7 @@ class RoomsUtils extends Base
     {
         $pagination = 20;
 
-        $conference = $this->user->session->conferences()
+        $conference = $this->me->session->conferences()
             ->where('conference', $room)
             ->with('info')
             ->first();
@@ -158,7 +158,7 @@ class RoomsUtils extends Base
         $tpl->assign('conference', $conference);
         $tpl->assign('presences', $presences);
         $tpl->assign('page', $page + 1);
-        $tpl->assign('me', $this->user->id);
+        $tpl->assign('me', $this->me->id);
 
         $this->rpc('MovimTpl.remove', '#room_presences_more');
         $this->rpc('MovimTpl.append', '#room_presences_list', $tpl->draw('_rooms_presences_list'));
@@ -200,7 +200,7 @@ class RoomsUtils extends Base
         }
 
         $view = $this->tpl();
-        $view->assign('room', $this->user->session->conferences()
+        $view->assign('room', $this->me->session->conferences()
             ->where('conference', $room)
             ->first());
 
@@ -304,7 +304,7 @@ class RoomsUtils extends Base
 
         $values = $packet->content;
 
-        $conference = $this->user->session->conferences()
+        $conference = $this->me->session->conferences()
             ->where('conference', $values['jid'])
             ->firstOrNew();
 
@@ -320,7 +320,7 @@ class RoomsUtils extends Base
             ->request();
 
         // Disconnect properly
-        $nick = $values['nick'] ?? $this->user->username;
+        $nick = $values['nick'] ?? $this->me->username;
         $session = Session::instance();
         $session->delete($values['jid'] . '/' . $nick);
 
@@ -329,7 +329,7 @@ class RoomsUtils extends Base
             ->setResource($nick)
             ->request();
 
-        $this->user->session->presences()->where('jid', $values['jid'])->delete();
+        $this->me->session->presences()->where('jid', $values['jid'])->delete();
         //$this->rpc('RoomsUtils.configureDisconnect', $values['jid']);
 
         $this->rpc('Dialog_ajaxClear');
@@ -353,7 +353,7 @@ class RoomsUtils extends Base
         }
 
         $view = $this->tpl();
-        $view->assign('room', $this->user->session->conferences()
+        $view->assign('room', $this->me->session->conferences()
             ->where('conference', $room)
             ->first());
 
@@ -386,9 +386,9 @@ class RoomsUtils extends Base
     {
         $view = $this->tpl();
 
-        $view->assign('contacts', $this->user->session->contacts()->pluck('jid'));
+        $view->assign('contacts', $this->me->session->contacts()->pluck('jid'));
         $view->assign('room', $room);
-        $view->assign('invite', \App\Invite::set($this->user->id, $room));
+        $view->assign('invite', \App\Invite::set($this->me->id, $room));
 
         Dialog::fill($view->draw('_rooms_invite'));
     }
@@ -404,7 +404,7 @@ class RoomsUtils extends Base
             ->where('node', '')
             ->whereCategory('conference')
             ->first());
-        $view->assign('mucservice', \App\Info::where('parent', $this->user->session->host)
+        $view->assign('mucservice', \App\Info::where('parent', $this->me->session->host)
             ->whereCategory('conference')
             ->whereType('text')
             ->first());
@@ -412,11 +412,11 @@ class RoomsUtils extends Base
         $view->assign('create', $create);
         $view->assign(
             'conference',
-            $this->user->session->conferences()
+            $this->me->session->conferences()
                 ->where('conference', $room)->first()
         );
         $view->assign('name', $name);
-        $view->assign('username', $this->user->username);
+        $view->assign('username', $this->me->username);
 
         $gateways = \App\Info::select('name', 'server', 'parent')
             ->whereCategory('gateway')
@@ -426,12 +426,12 @@ class RoomsUtils extends Base
             ->orderBy('server')
             ->get();
 
-        $gateways = $gateways->filter(fn($gateway) => $gateway->parent === $this->user->session->host)
-            ->concat($gateways->reject(fn($gateway) => $gateway->parent === $this->user->session->host));
+        $gateways = $gateways->filter(fn($gateway) => $gateway->parent === $this->me->session->host)
+            ->concat($gateways->reject(fn($gateway) => $gateway->parent === $this->me->session->host));
 
         $view->assign('gateways', $gateways);
 
-        $this->rpc('Rooms.setDefaultServices', $this->user->session->getChatroomsServices());
+        $this->rpc('Rooms.setDefaultServices', $this->me->session->getChatroomsServices());
 
         Dialog::fill($view->draw('_rooms_add'));
     }
@@ -441,7 +441,7 @@ class RoomsUtils extends Base
      */
     public function ajaxResolveSlug($name)
     {
-        $service = Info::where('parent', $this->user->session->host)
+        $service = Info::where('parent', $this->me->session->host)
             ->whereCategory('conference')
             ->whereType('text')
             ->first();
@@ -467,7 +467,7 @@ class RoomsUtils extends Base
             $m->enableCreate()
                 ->noNotify()
                 ->setTo(strtolower($form->jid->value))
-                ->setNickname($form->nick->value ?? $this->user->username)
+                ->setNickname($form->nick->value ?? $this->me->username)
                 ->request();
         }
     }
@@ -483,7 +483,7 @@ class RoomsUtils extends Base
                     ->setName($form->name->value)
                     ->setAutoJoin($form->autojoin->value)
                     ->setPinned($form->pinned->value)
-                    ->setNick($form->nick->value ?? $this->user->username)
+                    ->setNick($form->nick->value ?? $this->me->username)
                     ->setNotify((int)array_flip(Conference::$notifications)[$form->notify->value])
                     ->request();
             } elseif ($form->type->value == 'channel') {
@@ -549,7 +549,7 @@ class RoomsUtils extends Base
             return;
         }
 
-        $conference = $this->user->session->conferences()
+        $conference = $this->me->session->conferences()
             ->where('conference', strtolower($room))
             ->first();
 
@@ -583,17 +583,17 @@ class RoomsUtils extends Base
             // Create and save a message in the database to display the invitation
             $m = new Message;
 
-            $m->user_id = $this->user->id;
+            $m->user_id = $this->me->id;
             $m->id = $id;
             $m->type = 'invitation';
             $m->subject = $form->to->value;
-            $m->jidfrom = $this->user->id;
+            $m->jidfrom = $this->me->id;
             $m->jidto = $form->invite->value;
             $m->published = gmdate('Y-m-d H:i:s');
             $m->body = '';
             $m->markable = true;
             $m->seen = true;
-            $m->resource = $this->user->session->resource;
+            $m->resource = $this->me->session->resource;
             $m->save();
 
             $m = $m->fresh();
@@ -653,7 +653,7 @@ class RoomsUtils extends Base
             return;
         }
 
-        $conference = $this->user->session->conferences()
+        $conference = $this->me->session->conferences()
             ->where('conference', $room)
             ->with('info')
             ->first();
@@ -689,7 +689,7 @@ class RoomsUtils extends Base
             return;
         }
 
-        $conference = $this->user->session->conferences()
+        $conference = $this->me->session->conferences()
             ->where('conference', $room)
             ->with('info')
             ->first();
@@ -721,7 +721,7 @@ class RoomsUtils extends Base
      */
     public function ajaxMucUsersAutocomplete($room)
     {
-        $this->rpc("Chat.onAutocomplete", $this->user->session->conferences()
+        $this->rpc("Chat.onAutocomplete", $this->me->session->conferences()
             ->where('conference', $room)
             ->first()->presences
             ->pluck('resource'));
@@ -753,7 +753,7 @@ class RoomsUtils extends Base
         }
 
         $view = $this->tpl();
-        $view->assign('room', $this->user->session->conferences()
+        $view->assign('room', $this->me->session->conferences()
             ->where('conference', $room)
             ->first());
 
@@ -791,7 +791,7 @@ class RoomsUtils extends Base
         }
 
         $view = $this->tpl();
-        $view->assign('room', $this->user->session->conferences()
+        $view->assign('room', $this->me->session->conferences()
             ->where('conference', $room)
             ->first());
         $view->assign('jid', $jid);
@@ -824,7 +824,7 @@ class RoomsUtils extends Base
             return;
         }
 
-        $conference = $this->user->session->conferences()
+        $conference = $this->me->session->conferences()
             ->where('conference', $room)
             ->first();
 
@@ -859,7 +859,7 @@ class RoomsUtils extends Base
     {
         $g = new \Moxl\Xec\Action\MAM\Get;
 
-        $message = me()->messages()
+        $message = $this->me->messages()
             ->where('jidfrom', $jid)
             ->whereNull('subject');
 

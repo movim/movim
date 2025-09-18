@@ -13,7 +13,7 @@ use Movim\ImageSize;
 use Movim\Librairies\JingletoSDP;
 use Movim\Librairies\SDPtoJingle;
 use Movim\Widget\Base;
-
+use Movim\Widget\Wrapper;
 use Moxl\Xec\Action\Jingle\ContentAdd;
 use Moxl\Xec\Action\Jingle\ContentModify;
 use Moxl\Xec\Action\Jingle\ContentRemove;
@@ -180,7 +180,7 @@ class Visio extends Base
         $message->type = 'jingle_incoming';
         $message->save();
 
-        $this->packedEvent('jingle_message', $message);
+        Wrapper::getInstance()->iterate('jingle_message', (new Packet)->pack($message));
 
         $this->ajaxGetLobby($packet->from, false, $packet->content['withVideo'], $packet->content['id']);
     }
@@ -315,7 +315,7 @@ class Visio extends Base
         $message->type = 'jingle_outgoing';
         $message->save();
 
-        $this->packedEvent('jingle_message', $message);
+        Wrapper::getInstance()->iterate('jingle_message', (new Packet)->pack($message));
 
         $p = new MessagePropose;
         $p->setTo($to)
@@ -407,7 +407,7 @@ class Visio extends Base
     public function ajaxChooseMuji(string $muc)
     {
         $view = $this->tpl();
-        $view->assign('conference', $this->user->session->conferences()
+        $view->assign('conference', $this->me->session->conferences()
             ->where('conference', $muc)
             ->first());
 
@@ -416,7 +416,7 @@ class Visio extends Base
 
     public function ajaxJoinMuji(string $mujiId, ?bool $withVideo = false)
     {
-        $muji = $this->user->session->mujiCalls()
+        $muji = $this->me->session->mujiCalls()
             ->where('id', $mujiId)
             ->with('conference')
             ->first();
@@ -428,7 +428,7 @@ class Visio extends Base
 
     public function ajaxLeaveMuji(string $mujiId)
     {
-        $muji = $this->user->session->mujiCalls()
+        $muji = $this->me->session->mujiCalls()
             ->where('id', $mujiId)
             ->with('conference')
             ->first();
@@ -444,7 +444,7 @@ class Visio extends Base
                     ->setResource($resource)
                     ->request();
 
-                $this->user->session->mujiCalls()->where('id', $mujiId)->delete();
+                $this->me->session->mujiCalls()->where('id', $mujiId)->delete();
 
                 (new Rooms)->onPresence($muji->jidfrom);
 
@@ -465,7 +465,7 @@ class Visio extends Base
     public function ajaxGetMujiLobby(string $jid, bool $calling = false, ?bool $withVideo = false, ?string $id = null)
     {
         $view = $this->tpl();
-        $view->assign('conference', $this->user->session
+        $view->assign('conference', $this->me->session
             ->conferences()->where('conference', $jid)
             ->first());
         $view->assign('calling', $calling);
@@ -505,7 +505,7 @@ class Visio extends Base
 
     public function ajaxMujiAccept(string $mujiId)
     {
-        $muji = $this->user->session->mujiCalls()
+        $muji = $this->me->session->mujiCalls()
             ->where('id', $mujiId)
             ->with('conference')
             ->first();
@@ -520,7 +520,7 @@ class Visio extends Base
 
             $muc = new Muc;
             $muc->setTo($muji->muc)
-                ->setNickname($muji->conference ? $muji->conference->nickname : $this->user->nickname)
+                ->setNickname($muji->conference ? $muji->conference->nickname : $this->me->nickname)
                 ->enableMujiPreparing()
                 ->noNotify()
                 ->request();
@@ -531,14 +531,14 @@ class Visio extends Base
 
     public function ajaxMujiTrigger()
     {
-        $muji = $this->user->session->mujiCalls()->first();
+        $muji = $this->me->session->mujiCalls()->first();
 
         $this->rpc('MovimVisio.init', $muji->jidfrom, $muji->jidfrom, $muji->id, $muji->video, true);
     }
 
     public function ajaxMujiInit(string $mujiId, $sdp)
     {
-        $muji = $this->user->session->mujiCalls()
+        $muji = $this->me->session->mujiCalls()
             ->where('id', $mujiId)
             ->with('conference')
             ->first();
@@ -548,7 +548,7 @@ class Visio extends Base
 
             $muc = new Muc;
             $muc->setTo($muji->muc)
-                ->setNickname($muji->conference ? $muji->conference->nickname : $this->user->nickname)
+                ->setNickname($muji->conference ? $muji->conference->nickname : $this->me->nickname)
                 ->setMuji($stj->generate())
                 ->noNotify()
                 ->request();
@@ -559,11 +559,11 @@ class Visio extends Base
 
     public function ajaxMujiCreate(string $to, bool $withVideo = false)
     {
-        $conference = $this->user->session
+        $conference = $this->me->session
             ->conferences()->where('conference', $to)
             ->first();
 
-        $mujiService = $this->user->session->getMujiService();
+        $mujiService = $this->me->session->getMujiService();
 
         if (!$mujiService) {
             Toast::send($this->__('muji.cannot_create'));
@@ -619,14 +619,14 @@ class Visio extends Base
 
     public function ajaxResolveServices()
     {
-        if (!$this->user->session) return;
+        if (!me()->session) return;
 
-        $info = \App\Info::where('server', $this->user->session->host)
+        $info = \App\Info::where('server', $this->me->session->host)
             ->where('node', '')
             ->first();
         if ($info && $info->hasExternalServices()) {
             $c = new \Moxl\Xec\Action\ExternalServices\Get;
-            $c->setTo($this->user->session->host)
+            $c->setTo($this->me->session->host)
                 ->request();
         } else {
             $this->setDefaultServices();
@@ -743,7 +743,7 @@ class Visio extends Base
             $message->type = 'jingle_retract';
             $message->save();
 
-            $this->packedEvent('jingle_message', $message);
+            Wrapper::getInstance()->iterate('jingle_message', (new Packet)->pack($message));
         }
 
         Toast::send($this->__('visio.ended'));
@@ -766,7 +766,7 @@ class Visio extends Base
             $message->type = 'jingle_finish';
             $message->save();
 
-            $this->packedEvent('jingle_message', $message);
+            Wrapper::getInstance()->iterate('jingle_message', (new Packet)->pack($message));
 
             $this->ajaxGoodbye($currentCall->jid, $currentCall->id, 'gone');
         }

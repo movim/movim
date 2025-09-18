@@ -54,28 +54,28 @@ class Avatar extends \Movim\Widget\Base
     public function prepareForm()
     {
         $avatarform = $this->tpl();
-        $avatarform->assign('me', \App\Contact::firstOrNew(['id' => $this->user->id]));
+        $avatarform->assign('me', \App\Contact::firstOrNew(['id' => $this->me->id]));
         return $avatarform->draw('_avatar');
     }
 
     public function ajaxGetForm()
     {
         $view = $this->tpl();
-        $view->assign('me', \App\Contact::firstOrNew(['id' => $this->user->id]));
+        $view->assign('me', \App\Contact::firstOrNew(['id' => $this->me->id]));
         Dialog::fill($view->draw('_avatar_form'));
     }
 
     public function ajaxGetBannerForm()
     {
         $view = $this->tpl();
-        $view->assign('me', \App\Contact::firstOrNew(['id' => $this->user->id]));
+        $view->assign('me', \App\Contact::firstOrNew(['id' => $this->me->id]));
         Dialog::fill($view->draw('_avatar_banner_form'));
     }
 
     public function ajaxGetAvatar()
     {
         $r = new Get;
-        $r->setTo($this->user->id)
+        $r->setTo($this->me->id)
           ->request();
     }
 
@@ -90,7 +90,7 @@ class Avatar extends \Movim\Widget\Base
 
         $p = new Image;
         $p->fromBase($avatar->photobin->value);
-        $p->setKey($this->user->id.'avatar');
+        $p->setKey($this->me->id.'avatar');
         $p->save(false, false, 'jpeg', 90);
 
         // Reload
@@ -107,7 +107,7 @@ class Avatar extends \Movim\Widget\Base
     {
         if (empty($banner->photobin->value)) return;
 
-        $key = $this->user->id.'banner';
+        $key = $this->me->id.'banner';
 
         $p = new Image;
         $p->fromBase($banner->photobin->value);

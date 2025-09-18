@@ -12,7 +12,7 @@ use Movim\Widget\Base;
 
 class Partial extends Tpl
 {
-    private $extension = '.rtpl.cache';
+    public const EXTENSION = '.rtpl.cache';
 
     public function __construct(Base $widget)
     {
@@ -55,7 +55,7 @@ class Partial extends Tpl
                         $templateFilePath .
                         '_' .
                         '*' .
-                        $this->extension,
+                        self::EXTENSION,
                     GLOB_NOSORT
                 ) as $path) {
                 @unlink($path);
@@ -75,6 +75,6 @@ class Partial extends Tpl
 
     private function resolvedCacheKey(string $templateFilePath, string $key): string
     {
-        return CACHE_PATH . hash('sha256', User::me()->id) . '_' . $templateFilePath . '_' . hash('sha256', $key) . $this->extension;
+        return CACHE_PATH . hash('sha256', User::me()->id) . '_' . $templateFilePath . '_' . hash('sha256', $key) . self::EXTENSION;
     }
 }

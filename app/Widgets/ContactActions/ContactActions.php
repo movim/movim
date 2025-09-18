@@ -55,7 +55,7 @@ class ContactActions extends Base
         $picturesCount = 0;
         $linksCount = 0;
 
-        if ($jid != $this->user->id) {
+        if ($jid != $this->me->id) {
             $picturesCount = \App\Message::jid($jid)
                 ->where('picture', true)
                 ->orderBy('published', 'desc')
@@ -66,7 +66,7 @@ class ContactActions extends Base
                 ->count();
             $tpl->assign('picturesCount', $picturesCount);
             $tpl->assign('linksCount', $linksCount);
-            $tpl->assign('roster', $this->user->session->contacts()->where('jid', $jid)->first());
+            $tpl->assign('roster', $this->me->session->contacts()->where('jid', $jid)->first());
         } else {
             $tpl->assign('pictures', collect());
             $tpl->assign('links', collect());
@@ -95,7 +95,7 @@ class ContactActions extends Base
             $this->rpc('ContactActions_ajaxHttpGetLinks', $jid);
         }
 
-        if ($this->user->hasOMEMO()) {
+        if ($this->me->hasOMEMO()) {
             $this->rpc('ContactActions.getDrawerFingerprints', $jid);
         }
 
@@ -111,7 +111,7 @@ class ContactActions extends Base
         }
 
         $latests = \App\Message::selectRaw('max(published) as latest, bundleid')
-                               ->where('user_id', $this->user->id)
+                               ->where('user_id', $this->me->id)
                                ->where('jidfrom', $jid)
                                ->groupBy('bundleid')
                                ->pluck('latest', 'bundleid');

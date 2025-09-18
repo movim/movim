@@ -1,5 +1,5 @@
 <ul class="navigation list active" dir="ltr">
-    {if="$c->getUser()->hasPubsub()"}
+    {if="$c->me->hasPubsub()"}
         <li onclick="MovimUtils.reload('{$c->route('news')}')"
             class="on_desktop {if="$page == 'news' || $page == 'post'"}active{/if}"
             title="{$c->__('page.news')}"
@@ -38,7 +38,7 @@
 
     <hr class="on_desktop"/>
 
-    {if="$c->getUser()->hasPubsub()"}
+    {if="$c->me->hasPubsub()"}
         <li onclick="MovimUtils.reload('{$c->route('publish')}')"
             title="{$c->__('page.publish')}"
             {if="$page == 'publish'"}class="active"{/if}
@@ -92,7 +92,7 @@
         </div>
     </li>
 
-    {if="$c->getUser()->hasPubsub()"}
+    {if="$c->me->hasPubsub()"}
         <li onclick="MovimUtils.reload('{$c->route('subscriptions')}')"
             title="{$c->__('communityaffiliation.subscriptions')}"
             {if="$page == 'subscriptions'"}class="active"{/if}

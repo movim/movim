@@ -33,16 +33,22 @@ abstract class Payload
     }
 
     /**
+     * Set the content of the packet
+     *
+     * @return void
+     */
+    final public function pack($content, ?string $from = null)
+    {
+        $this->packet->pack($content, $from);
+    }
+
+    /**
      * Deliver the packet
      *
      * @return void
      */
-    final public function deliver($content = null, ?string $from = null)
+    final public function deliver()
     {
-        if ($content !== null) {
-            $this->pack($content, $from);
-        }
-
         $action_ns = 'Moxl\Xec\Action';
 
         if (
@@ -61,7 +67,7 @@ abstract class Payload
             $key = $key . '_' . $this->method;
         }
 
-        $this->event($key, $this->packet);
+        Wrapper::getInstance()->iterate($key, $this->packet);
     }
 
     /**
@@ -69,10 +75,9 @@ abstract class Payload
      *
      * @return void
      */
-    final public function event(string $key, $packet = null)
+    final public function event(string $key)
     {
-        $wrapper = Wrapper::getInstance();
-        $wrapper->iterate($key, $packet ? $packet : $this->packet);
+        Wrapper::getInstance()->iterate($key, $this->packet);
     }
 
     /**
@@ -80,22 +85,9 @@ abstract class Payload
      *
      * @return void
      */
-    final public function method(?string $method = null)
+    final public function method(string $method)
     {
-        $this->method = $method ? strtolower($method) : null;
-    }
-
-    /**
-     * Set the content of the packet
-     *
-     * @return void
-     */
-    final public function pack($content, ?string $from = null)
-    {
-        $this->packet->content = $content;
-        if ($from != null) {
-            $this->packet->from = $from;
-        }
+        $this->method = strtolower($method);
     }
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null) {}

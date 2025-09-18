@@ -19,7 +19,7 @@ class Help extends Base
         $this->view->assign(
             'info',
             (isLogged())
-                ? \App\Info::where('server', $this->user->session->host)
+                ? \App\Info::where('server', $this->me->session->host)
                          ->where('node', '')
                          ->first()
                 : null

@@ -6,6 +6,7 @@ use App\Post;
 use App\Widgets\Chats\Chats;
 use App\Widgets\Toast\Toast;
 use Movim\Widget\Base;
+use Moxl\Xec\Payload\Packet;
 
 class Stories extends Base
 {
@@ -19,18 +20,18 @@ class Stories extends Base
         $this->addcss('stories.css');
     }
 
-    public function onStory($packet)
+    public function onStory(Packet $packet)
     {
-        $post = $packet->content;
+        $post = Post::find($packet->content);
 
-        if ($post->isStory()) {
+        if ($post && $post->isStory()) {
             $this->ajaxHttpGet();
         }
     }
 
     public function onDelete($packet)
     {
-        if ($packet->content['server'] == $this->user->id
+        if ($packet->content['server'] == $this->me->id
          && $packet->content['node'] == Post::STORIES_NODE) {
             Toast::send($this->__('stories.deleted'));
             $this->ajaxHttpGet();
@@ -54,7 +55,7 @@ class Stories extends Base
         }
 
         $view = $this->tpl();
-        $view->assign('topcontacts', $this->user->session->topContactsToChat()->take($takeTopContacts)->get());
+        $view->assign('topcontacts', $this->me->session->topContactsToChat()->take($takeTopContacts)->get());
         $view->assign('stories', $stories);
 
         $this->rpc('MovimTpl.fill', '#stories', $view->draw('_stories'));

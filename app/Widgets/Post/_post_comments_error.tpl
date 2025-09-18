@@ -1,4 +1,4 @@
-{if="$c->getUser()->hasPubsub()"}
+{if="$c->me->hasPubsub()"}
 <ul class="list middle">
     <li>
         <span class="primary icon gray">

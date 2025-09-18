@@ -3,11 +3,13 @@
 namespace App\Widgets\Menu;
 
 use App\User;
+use App\Post as AppPost;
 use App\Widgets\Notif\Notif;
 use App\Widgets\Post\Post;
 use Movim\Widget\Base;
 
 use Illuminate\Database\Capsule\Manager as DB;
+use Moxl\Xec\Payload\Packet;
 
 class Menu extends Base
 {
@@ -24,16 +26,16 @@ class Menu extends Base
         $this->addcss('menu.css');
     }
 
-    public function onItem($packet)
+    public function onItem(Packet $packet)
     {
-        $post = $packet->content;
-
-        if ($post && $post->isComment()) {
-            $post = $post->getParent();
-        }
+        $post = AppPost::find($packet->content);
 
         if ($post) {
-            $this->rpc('MovimTpl.fill', '#menu_widget #'.cleanupId($post->nodeid), $this->preparePost($post));
+            if ($post->isComment()) {
+                $post = $post->getParent();
+            }
+
+            $this->rpc('MovimTpl.fill', '#menu_widget #' . cleanupId($post->nodeid), $this->preparePost($post));
         }
     }
 
@@ -42,7 +44,7 @@ class Menu extends Base
         $this->ajaxHttpGetAll();
     }
 
-    public function onPost($packet)
+    public function onPost(Packet $packet)
     {
         $since = User::me(true)->posts_since; // Force refresh the user
 
@@ -63,16 +65,16 @@ class Menu extends Base
             $count = 0;
         }
 
-        $post = $packet->content;
+        $post = AppPost::find($packet->content);
 
         if (!is_object($post)) {
             return;
         }
 
         $post = \App\Post::where('server', $post->server)
-                         ->where('node', $post->node)
-                         ->where('nodeid', $post->nodeid)
-                         ->first();
+            ->where('node', $post->node)
+            ->where('nodeid', $post->nodeid)
+            ->first();
 
         if ($post === null || $post->isEdited()) {
             return;
@@ -85,14 +87,16 @@ class Menu extends Base
             if ($parent && $contact) {
                 Notif::append(
                     'comments',
-                    ($post->isLike()) ? '❤️ ' .$contact->truename : $post->title,
+                    ($post->isLike()) ? '❤️ ' . $contact->truename : $post->title,
                     '📝 ' . $parent->title,
                     $contact->getPicture(),
                     4
                 );
             }
-        } elseif ($count > 0
-        && (strtotime($post->published) > strtotime($since))) {
+        } elseif (
+            $count > 0
+            && (strtotime($post->published) > strtotime($since))
+        ) {
             if ($post->isMicroblog() || $post->isStory()) {
                 $contact = \App\Contact::firstOrNew(['id' => $post->server]);
 
@@ -109,8 +113,8 @@ class Menu extends Base
                 }
             } else {
                 $info = \App\Info::where('server', $post->server)
-                                 ->where('node', $post->node)
-                                 ->first();
+                    ->where('node', $post->node)
+                    ->first();
                 $logo = null;
                 $title = $post->node;
 
@@ -180,7 +184,7 @@ class Menu extends Base
             );
         });
 
-        $since = $this->user->posts_since;
+        $since = $this->me->posts_since;
 
         $count = ($since)
             ? $posts->where('published', '>', $since)->count()
@@ -190,8 +194,8 @@ class Menu extends Base
         if ($page == 0) {
             $count = 0;
             $last = $posts->orderBy('published', 'desc')->first();
-            $this->user->posts_since = ($last) ? $last->published : date(MOVIM_SQL_DATE);
-            $this->user->save();
+            $this->me->posts_since = ($last) ? $last->published : date(MOVIM_SQL_DATE);
+            $this->me->save();
         }
 
         $items = \App\Post::skip($page * $this->_paging + $count)->withoutComments();
@@ -214,15 +218,15 @@ class Menu extends Base
             );
         });
 
-        $view->assign('previous', $this->route('news', $page-1));
-        $view->assign('next', $this->route('news', $page+1));
+        $view->assign('previous', $this->route('news', $page - 1));
+        $view->assign('next', $this->route('news', $page + 1));
 
         if ($type == 'news') {
-            $view->assign('previous', $this->route('news', $page-1, [], 'communities'));
-            $view->assign('next', $this->route('news', $page+1, [], 'communities'));
+            $view->assign('previous', $this->route('news', $page - 1, [], 'communities'));
+            $view->assign('next', $this->route('news', $page + 1, [], 'communities'));
         } elseif ($type == 'feed') {
-            $view->assign('previous', $this->route('news', $page-1, [], 'contacts'));
-            $view->assign('next', $this->route('news', $page+1, [], 'contacts'));
+            $view->assign('previous', $this->route('news', $page - 1, [], 'contacts'));
+            $view->assign('next', $this->route('news', $page + 1, [], 'contacts'));
         }
 
         $items = $items

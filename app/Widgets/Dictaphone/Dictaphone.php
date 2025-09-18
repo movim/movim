@@ -14,7 +14,7 @@ class Dictaphone extends Base
 
     public function ajaxHttpGet()
     {
-        if ($this->getUser()->hasUpload()) {
+        if ($this->me->hasUpload()) {
             $view = $this->tpl();
             $this->rpc('MovimTpl.fill', '#dictaphone', $view->draw('_dictaphone'));
             $this->rpc('Dictaphone.init');

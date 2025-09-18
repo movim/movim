@@ -44,12 +44,12 @@ class SendTo extends Base
 
         $this->resolveUriInView($uri, $view);
 
-        $view->assign('subscriptions', $this->user->subscriptions()
+        $view->assign('subscriptions', $this->me->subscriptions()
             ->notComments()
             ->orderBy('server')->orderBy('node')
             ->get());
 
-        $contact = $this->user->contact;
+        $contact = $this->me->contact;
         $view->assign('me', ($contact == null) ? new \App\Contact : $contact);
 
         Drawer::fill('send_to_article', $view->draw('_sendto_article'));
@@ -65,12 +65,12 @@ class SendTo extends Base
 
         $this->resolveUriInView($uri, $view);
 
-        $conferences = $this->user->session->conferences()
+        $conferences = $this->me->session->conferences()
                             ->with('info', 'contact')
                             ->has('presence')
                             ->get();
         $view->assign('conferences', $conferences);
-        $view->assign('contacts', $this->user->session
+        $view->assign('contacts', $this->me->session
                                        ->topContacts()
                                        ->with('presence')
                                        ->take($conferences->count() > 0 && $conferences->count() <= 10
@@ -120,7 +120,7 @@ class SendTo extends Base
 
     public function ajaxGetMoreContacts(string $uri)
     {
-        $contacts = $this->user->session->topContacts()->with('presence')->get();
+        $contacts = $this->me->session->topContacts()->with('presence')->get();
         $this->rpc('MovimTpl.fill', '#sendto_share_contacts', $this->prepareContacts($contacts, $uri));
         $this->rpc('SendTo.init');
     }

@@ -20,7 +20,6 @@ use App\Widgets\Chats\Chats;
 use App\Widgets\Dialog\Dialog;
 use Movim\CurrentCall;
 use Moxl\Xec\Action\Blocking\Request;
-use Moxl\Xec\Action\OMEMO\GetDevicesList;
 
 class Presence extends Base
 {
@@ -28,8 +27,8 @@ class Presence extends Base
     {
         $this->addcss('presence.css');
         $this->addjs('presence.js');
-        $this->registerEvent('avatar_get_handle', 'onMyPresence');
-        $this->registerEvent('mypresence', 'onMyPresence');
+        $this->registerEvent('avatar_get_handle', 'tonMyPresence');
+        $this->registerEvent('mypresence', 'tonMyPresence');
         $this->registerEvent('session_up', 'onSessionUp');
         $this->registerEvent('session_down', 'onSessionDown');
     }
@@ -47,7 +46,7 @@ class Presence extends Base
             ->request();
     }
 
-    public function onMyPresence($packet)
+    public function tonMyPresence($packet)
     {
         $this->rpc('MovimTpl.fill', '#presence_widget', $this->preparePresence());
     }
@@ -56,7 +55,7 @@ class Presence extends Base
     {
         $this->rpc('Notif.inhibit', 15);
 
-        if ($this->user->session->type == 'bind1') {
+        if ($this->me->session->type == 'bind1') {
             // http://xmpp.org/extensions/xep-0280.html
             \Moxl\Stanza\Carbons::enable();
         }
@@ -90,7 +89,7 @@ class Presence extends Base
     {
         $this->rpc('Presence.clearQuick');
 
-        $this->user->encryptedPasswords()->delete();
+        $this->me->encryptedPasswords()->delete();
 
         if (CurrentCall::getInstance()->isStarted()) {
             //(new Visio)->ajaxEnd(CurrentCall::getInstance()->jid, CurrentCall::getInstance()->id);
@@ -98,8 +97,8 @@ class Presence extends Base
 
         $p = new Unavailable;
         $p->setType('terminate')
-            ->setResource($this->user->session->resource)
-            ->setTo($this->user->id)
+            ->setResource($this->me->session->resource)
+            ->setTo($this->me->id)
             ->request();
 
         Stream::end();
@@ -123,13 +122,13 @@ class Presence extends Base
     {
         // Private Subscritions
         $ps = new GetPubsubSubscriptions;
-        $ps->setTo($this->user->id)
+        $ps->setTo($this->me->id)
             ->setPEPNode('urn:xmpp:pubsub:movim-public-subscription')
             ->request();
 
         // Public Subscritions
         $ps = new GetPubsubSubscriptions;
-        $ps->setTo($this->user->id)
+        $ps->setTo($this->me->id)
             ->request();
     }
 
@@ -137,10 +136,10 @@ class Presence extends Base
     public function ajaxServerCapsGet()
     {
         $c = new \Moxl\Xec\Action\Disco\Request;
-        $c->setTo($this->user->session->host)
+        $c->setTo($this->me->session->host)
             ->request();
 
-        $c->setTo($this->user->id)
+        $c->setTo($this->me->id)
             ->request();
     }
 
@@ -148,7 +147,7 @@ class Presence extends Base
     public function ajaxServerDisco()
     {
         $c = new \Moxl\Xec\Action\Disco\Items;
-        $c->setTo($this->user->session->host)
+        $c->setTo($this->me->session->host)
             ->request();
     }
 
@@ -156,11 +155,11 @@ class Presence extends Base
     public function ajaxProfileRefresh()
     {
         $a = new \Moxl\Xec\Action\Avatar\Get;
-        $a->setTo($this->user->id)
+        $a->setTo($this->me->id)
             ->request();
 
         $v = new \Moxl\Xec\Action\Vcard4\Get;
-        $v->setTo($this->user->id)
+        $v->setTo($this->me->id)
             ->request();
     }
 
@@ -168,12 +167,12 @@ class Presence extends Base
     public function ajaxBookmarksGet()
     {
         $b = new \Moxl\Xec\Action\Bookmark2\Get;
-        $b->setTo($this->user->id)
+        $b->setTo($this->me->id)
             ->request();
 
         // Also get the old Bookmarks
         $b = new \Moxl\Xec\Action\Bookmark2\Get;
-        $b->setTo($this->user->id)
+        $b->setTo($this->me->id)
             ->setVersion('0')
             ->request();
     }
@@ -182,7 +181,7 @@ class Presence extends Base
     public function ajaxFeedRefresh()
     {
         $r = new GetItemsId;
-        $r->setTo($this->user->id)
+        $r->setTo($this->me->id)
             ->setNode(Post::MICROBLOG_NODE)
             ->request();
     }
@@ -190,7 +189,7 @@ class Presence extends Base
     public function preparePresence()
     {
         // If the user is still on a logued-in page after a daemon restart
-        if ($this->user->id == false) {
+        if ($this->me->id == false) {
             $this->rpc('MovimUtils.disconnect');
             return false;
         }
@@ -198,8 +197,8 @@ class Presence extends Base
         // We reload the user instance in memory
         \App\User::me(true);
 
-        $presence = $this->user->session?->presence;
-        $contact = $this->user->contact;
+        $presence = $this->me->session?->presence;
+        $contact = $this->me->contact;
 
         $presencetpl = $this->tpl();
 
@@ -212,7 +211,7 @@ class Presence extends Base
 
     public function display()
     {
-        $contact = $this->user->contact;
+        $contact = $this->me->contact;
         $this->view->assign('page', $this->_view);
         $this->view->assign('me', ($contact == null) ? new \App\Contact : $contact);
     }

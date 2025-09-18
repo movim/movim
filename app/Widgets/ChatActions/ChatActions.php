@@ -73,7 +73,7 @@ class ChatActions extends \Movim\Widget\Base
      */
     public function ajaxShowMessageDialog(string $mid)
     {
-        $message = $this->user->messages()
+        $message = $this->me->messages()
             ->where('mid', $mid)
             ->with('reactions.contact')
             ->first();
@@ -86,7 +86,7 @@ class ChatActions extends \Movim\Widget\Base
             $view->assign('message', $message);
 
             if ($message->isMuc()) {
-                $view->assign('conference', $this->user->session->conferences()
+                $view->assign('conference', $this->me->session->conferences()
                     ->where('conference', $message->jidfrom)
                     ->with('info')
                     ->first());
@@ -181,7 +181,7 @@ class ChatActions extends \Movim\Widget\Base
      */
     public function ajaxHttpDaemonRetract($mid)
     {
-        $retract = $this->user->messages()
+        $retract = $this->me->messages()
             ->where('mid', $mid)
             ->first();
 
@@ -215,7 +215,7 @@ class ChatActions extends \Movim\Widget\Base
      */
     public function ajaxHttpDaemonModerate($mid)
     {
-        $retract = $this->user->messages()
+        $retract = $this->me->messages()
             ->where('mid', $mid)
             ->first();
 
@@ -234,7 +234,7 @@ class ChatActions extends \Movim\Widget\Base
      */
     public function ajaxHttpResolveMessage($mid)
     {
-        $message = $this->user->messages()
+        $message = $this->me->messages()
             ->where('mid', $mid)
             ->first();
 

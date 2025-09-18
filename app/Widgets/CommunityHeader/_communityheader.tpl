@@ -24,7 +24,7 @@
             </span>
         {/if}
         <div>
-            {if="$c->getUser()->hasPubsub()"}
+            {if="$c->me->hasPubsub()"}
                 {if="$subscription == null"}
                     <button class="button oppose color green" title="{$c->__('communityheader.subscribe')}"
                     onclick="CommunityHeader_ajaxAskSubscribe('{$server|echapJS}', '{$node|echapJS}')">

@@ -21,12 +21,12 @@ class ContactHeader extends Base
 
     public function onUpdate($packet)
     {
-        $this->rpc('MovimTpl.fill', '#'.cleanupId($packet->content) . '_contact_header', $this->prepareHeader($packet->content));
+        $this->rpc('MovimTpl.fill', '#' . cleanupId($packet->content) . '_contact_header', $this->prepareHeader($packet->content));
     }
 
     public function onVcardReceived($packet)
     {
-        $this->rpc('MovimTpl.fill', '#'.cleanupId($packet->content->id) . '_contact_header', $this->prepareHeader($packet->content->id));
+        $this->rpc('MovimTpl.fill', '#' . cleanupId($packet->content) . '_contact_header', $this->prepareHeader($packet->content));
     }
 
     public function ajaxEditContact($jid)
@@ -37,8 +37,8 @@ class ContactHeader extends Base
 
         $view = $this->tpl();
 
-        $view->assign('contact', $this->user->session->contacts()->where('jid', $jid)->first());
-        $view->assign('groups', $this->user->session->contacts()->select('group')->groupBy('group')->pluck('group')->toArray());
+        $view->assign('contact', $this->me->session->contacts()->where('jid', $jid)->first());
+        $view->assign('groups', $this->me->session->contacts()->select('group')->groupBy('group')->pluck('group')->toArray());
 
         Dialog::fill($view->draw('_contactheader_edit'));
     }
@@ -47,9 +47,9 @@ class ContactHeader extends Base
     {
         $rd = new UpdateItem;
         $rd->setTo($form->jid->value)
-           ->setName($form->alias->value)
-           ->setGroup($form->group->value)
-           ->request();
+            ->setName($form->alias->value)
+            ->setGroup($form->group->value)
+            ->request();
     }
 
     public function ajaxChat($jid)
@@ -71,7 +71,7 @@ class ContactHeader extends Base
         }
 
         $view = $this->tpl();
-        $view->assign('roster', ($this->user->session->contacts()->where('jid', $jid)->first()));
+        $view->assign('roster', ($this->me->session->contacts()->where('jid', $jid)->first()));
         $view->assign('contact', \App\Contact::firstOrNew(['id' => $jid]));
 
         return $view->draw('_contactheader');

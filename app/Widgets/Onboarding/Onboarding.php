@@ -19,20 +19,20 @@ class Onboarding extends Base
         $tpl = $this->tpl();
         $this->rpc('Onboarding.setPublic');
 
-        if ($this->user->public == null) {
+        if ($this->me->public == null) {
             Dialog::fill($tpl->draw('_onboarding_public'));
         }
     }
 
     public function ajaxEnablePublic()
     {
-        $this->user->setPublic();
+        $this->me->setPublic();
         Toast::send($this->__('vcard.public'));
     }
 
     public function ajaxEnableRestricted()
     {
-        $this->user->setPrivate();
+        $this->me->setPrivate();
         Toast::send($this->__('vcard.restricted'));
     }
 }

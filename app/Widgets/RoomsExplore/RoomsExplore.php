@@ -31,7 +31,7 @@ class RoomsExplore extends Base
         $view->assign('vcards', Contact::whereIn('id', $keys)->get()->keyBy('id'));
         $view->assign(
             'bookmarks',
-            $this->user->session
+            $this->me->session
                 ->conferences()
                 ->whereIn('conference', $keys)
                 ->get()
@@ -111,7 +111,7 @@ class RoomsExplore extends Base
         $view->assign('rooms', $rooms);
         $view->assign(
             'bookmarks',
-            $this->user->session
+            $this->me->session
                 ->conferences()
                 ->whereIn('conference', $rooms->pluck('server'))
                 ->get()

@@ -15,7 +15,7 @@ class AdminReported extends \Movim\Widget\Base
 
     public function ajaxBlock(string $jid, bool $checked)
     {
-        if (!$this->user->admin) return;
+        if (!me()->admin) return;
 
         $reported = Reported::where('id', $jid)->first();
 
@@ -28,12 +28,12 @@ class AdminReported extends \Movim\Widget\Base
             Toast::send($this->__('blocked.account_unblocked'));
         }
 
-        $this->user->refreshBlocked();
+        $this->me->refreshBlocked();
     }
 
     public function ajaxHttpGet()
     {
-        if (!$this->user->admin) return;
+        if (!me()->admin) return;
 
         $this->rpc('MovimTpl.fill', '#adminreported_widget', $this->prepareReported());
     }

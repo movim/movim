@@ -12,7 +12,7 @@ class Upload extends Base
 {
     public function load()
     {
-        if ($this->user->hasUpload()) {
+        if ($this->me->hasUpload()) {
             $this->addjs('upload.js');
             $this->addcss('upload.css');
         }
@@ -64,19 +64,19 @@ class Upload extends Base
     public function ajaxGetPanel()
     {
         $view = $this->tpl();
-        $view->assign('service', $this->user->session->getUploadService());
+        $view->assign('service', $this->me->session->getUploadService());
         Dialog::fill($view->draw('_upload'));
         $this->rpc('Upload.attachEvents');
     }
 
     public function ajaxPrepare($file)
     {
-        $uploadService = $this->user->session->getUploadService();
+        $uploadService = $this->me->session->getUploadService();
 
         if($uploadService) {
             $upload = \App\Upload::firstOrCreate([
                 'id' => generateUUID(),
-                'user_id' => $this->user->id,
+                'user_id' => $this->me->id,
                 'jidto' => $uploadService->server,
                 'name' => $file->name,
                 'size' => $file->size,
@@ -95,7 +95,7 @@ class Upload extends Base
 
     public function ajaxSend($file)
     {
-        $upload = $this->user->session->getUploadService();
+        $upload = $this->me->session->getUploadService();
 
         if ($upload) {
             $r = new Request;

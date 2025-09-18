@@ -40,7 +40,7 @@ class CommunityAffiliations extends Base
         $infoServer = \App\Info::where('server', $server)->where('node', '')->first();
 
         $view = $this->tpl();
-        $view->assign('myaffiliation', $affiliations->where('jid', $this->user->id)->first());
+        $view->assign('myaffiliation', $affiliations->where('jid', $this->me->id)->first());
         $view->assign('info', \App\Info::where('server', $server)
             ->where('node', $node)
             ->first());
@@ -76,7 +76,7 @@ class CommunityAffiliations extends Base
         $view->assign('server', $server);
         $view->assign('node', $node);
         $view->assign('affiliations', $affiliations);
-        $view->assign('me', $this->user->id);
+        $view->assign('me', $this->me->id);
         $view->assign('roles', ($infoServer) ? $infoServer->getPubsubRoles() : []);
 
         $this->rpc(
@@ -109,7 +109,7 @@ class CommunityAffiliations extends Base
     private function deleted($packet)
     {
         if (
-            $packet->content['server'] != $this->user->id
+            $packet->content['server'] != $this->me->id
             && substr($packet->content['node'], 0, 29) != 'urn:xmpp:microblog:0:comments'
         ) {
             $this->rpc(
@@ -243,8 +243,8 @@ class CommunityAffiliations extends Base
 
         $sortedSubscriptions = collect();
 
-        if ($this->user && $this->user->session) {
-            $rosterJids = $this->user->session->contacts->pluck('jid')->toArray();
+        if ($this->me && $this->me->session) {
+            $rosterJids = $this->me->session->contacts->pluck('jid')->toArray();
 
             foreach ($subscriptions as $subscription) {
                 $subscription->setAttribute('in_roster', in_array($subscription->jid, $rosterJids));

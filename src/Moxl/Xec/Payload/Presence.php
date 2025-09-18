@@ -47,7 +47,8 @@ class Presence extends Payload
 
             PresenceBuffer::getInstance()->append($presence, function () use ($presence, $stanza, $jid) {
                 if ((string)$stanza->attributes()->type == 'subscribe') {
-                    $this->event('subscribe', (string)$stanza->attributes()->from);
+                    $this->pack((string)$stanza->attributes()->from);
+                    $this->event('subscribe');
                 }
 
                 if ($presence->muc) {

@@ -62,10 +62,10 @@ class PublishStories extends Base
         if (!$upload) return;
 
         $publish = new PostPublish;
-        $publish->setTo($this->user->id)
+        $publish->setTo($this->me->id)
                 ->setNode(Post::STORIES_NODE)
                 ->setId(generateUUID())
-                ->setFrom($this->user->id)
+                ->setFrom($this->me->id)
                 ->setTitle($form->title->value)
                 ->addImage($upload->geturl, 'story', 'image/jpeg')
                 ->setTags(getHashtags(htmlspecialchars($form->title->value)))
@@ -76,7 +76,7 @@ class PublishStories extends Base
     {
         $this->view->assign(
             'rostercount',
-            $this->user->session->contacts()->whereIn('subscription', ['both', 'from'])->count()
+            $this->me->session->contacts()->whereIn('subscription', ['both', 'from'])->count()
         );
     }
 }

@@ -28,6 +28,8 @@ v0.32 (master)
 * Implement XEP-0300: Use of Cryptographic Hash Functions in XMPP
 * Implement XEP-0492: Chat notification settings
 * Fix #1473 Fix and refactor the Pubsub services discovery form
+* Add a templater worker and start to offload some widget calls to it
+* Refactor and simplify the internal events system, enforce Packet everywhere
 
 v0.31
 ---------------------------

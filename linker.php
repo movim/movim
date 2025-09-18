@@ -11,6 +11,7 @@ use Movim\Scheduler;
 use React\Promise\Timer;
 
 use App\PresenceBuffer;
+use Movim\Widget\Wrapper;
 
 $loop = React\EventLoop\Loop::get();
 
@@ -108,8 +109,7 @@ function enableEncryption($connection)
         function ($error) use ($connection) {
             logOut(colorize('TLS error ' . $error->getMessage(), 'blue'));
 
-            $evt = new Movim\Widget\Base;
-            $evt->event('ssl_error');
+            Wrapper::getInstance()->iterate('ssl_error');
 
             shutdown();
         }
@@ -179,8 +179,7 @@ function handleClientDNS(array $results, $dns, $connector, $xmppBehaviour)
             function (\Exception $error) {
                 logOut(colorize($error->getMessage(), 'red'));
 
-                $evt = new Movim\Widget\Base;
-                $evt->event('timeout_error');
+                Wrapper::getInstance()->iterate('timeout_error');
             }
         );
     }
@@ -198,8 +197,6 @@ function shutdown()
 }
 
 $wsSocketBehaviour = function ($msg) use (&$xmppSocket, &$connector, &$xmppBehaviour, &$dns) {
-    global $wsSocket;
-
     $msg = json_decode($msg);
 
     if (isset($msg)) {
@@ -214,8 +211,7 @@ $wsSocketBehaviour = function ($msg) use (&$xmppSocket, &$connector, &$xmppBehav
                     isset($xmppSocket)
                     && is_resource($xmppSocket->stream)
                 ) {
-                    $evt = new Movim\Widget\Base;
-                    $evt->event('session_' . $msg->func);
+                    Wrapper::getInstance()->iterate('session_' . $msg->func);
                 }
                 break;
 
@@ -277,8 +273,7 @@ $xmppBehaviour = function (React\Socket\Connection $stream) use (&$xmppSocket, $
 
     $xmppSocket = $stream;
 
-    $evt = new Movim\Widget\Base;
-    $evt->event('socket_connected');
+    Wrapper::getInstance()->iterate('socket_connected');
 
     if (getenv('verbose')) {
         logOut(colorize('XMPP socket launched', 'blue'));

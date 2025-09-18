@@ -8,7 +8,7 @@ use Movim\Widget\Base;
 use Moxl\Xec\Action\Vcard4\Get;
 use Moxl\Xec\Action\Vcard4\Set;
 use Moxl\Xec\Action\Nickname\Set as Nickname;
-
+use Moxl\Xec\Payload\Packet;
 use Respect\Validation\Validator;
 
 class Vcard4 extends Base
@@ -19,11 +19,13 @@ class Vcard4 extends Base
         $this->registerEvent('vcard4_set_handle', 'onMyVcard4');
     }
 
-    public function prepareForm($contact)
+    public function prepareForm(string $jid)
     {
         $vcardform = $this->tpl();
 
-        $vcardform->assign('me', $this->user);
+        $contact = \App\Contact::firstOrNew(['id' => $jid]);
+
+        $vcardform->assign('me', $this->me);
         $vcardform->assign('contact', $contact);
         $vcardform->assign('desc', trim($contact->description ?? ''));
         $vcardform->assign('countries', getCountries());
@@ -33,7 +35,7 @@ class Vcard4 extends Base
         return $vcardform->draw('_vcard4_form');
     }
 
-    public function onMyVcard4($packet)
+    public function onMyVcard4(Packet $packet)
     {
         $html = $this->prepareForm($packet->content);
 
@@ -56,13 +58,13 @@ class Vcard4 extends Base
     public function ajaxGetVcard()
     {
         $r = new Get;
-        $r->setTo($this->user->id)
+        $r->setTo($this->me->id)
             ->request();
     }
 
     public function ajaxVcardSubmit($vcard)
     {
-        $c = $this->user->contact;
+        $c = $this->me->contact;
 
         $c->name = null;
 
@@ -95,7 +97,7 @@ class Vcard4 extends Base
 
         $c->save();
 
-        $c->jid = $this->user->id;
+        $c->jid = $this->me->id;
 
         $r = new Set;
         $r->setData($c)->request();
@@ -103,6 +105,6 @@ class Vcard4 extends Base
 
     public function display()
     {
-        $this->view->assign('form', $this->prepareForm($this->user->contact));
+        $this->view->assign('form', $this->prepareForm($this->me->id));
     }
 }

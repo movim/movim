@@ -21,7 +21,7 @@ class EmojisConfig extends Base
     {
         $view = $this->tpl();
         $view->assign('packs', EmojisPack::all());
-        $view->assign('favorites', $this->user->emojis->keyBy('id'));
+        $view->assign('favorites', $this->me->emojis->keyBy('id'));
         $this->rpc('MovimTpl.fill', '#emojisconfig_widget', $view->draw('_emojisconfig'));
     }
 
@@ -31,7 +31,7 @@ class EmojisConfig extends Base
 
         if ($emoji) {
             $view = $this->tpl();
-            $view->assign('favorite', $this->user->emojis()->where('id', $emojiId)->first());
+            $view->assign('favorite', $this->me->emojis()->where('id', $emojiId)->first());
             $view->assign('emoji', $emoji);
             Dialog::fill($view->draw('_emojisconfig_add_edit'));
         }
@@ -43,7 +43,7 @@ class EmojisConfig extends Base
 
         if ($emoji && Validator::regex('/^[a-z0-9\-]+$/')->isValid($form->alias->value)) {
 
-            if ($this->user->emojis()->wherePivot('alias', $form->alias->value)
+            if ($this->me->emojis()->wherePivot('alias', $form->alias->value)
                 ->where('id', '!=', $emoji->id)
                 ->exists()
             ) {
@@ -52,8 +52,8 @@ class EmojisConfig extends Base
             }
 
 
-            $this->user->emojis()->detach($emoji->id);
-            $this->user->emojis()->attach($emoji->id, ['alias' => $form->alias->value]);
+            $this->me->emojis()->detach($emoji->id);
+            $this->me->emojis()->attach($emoji->id, ['alias' => $form->alias->value]);
             $this->rpc('Dialog_ajaxClear');
 
             Toast::send($this->__('emojisconfig.new_added'));
@@ -65,7 +65,7 @@ class EmojisConfig extends Base
 
     public function ajaxRemoveFavorite(int $emojiId)
     {
-        $this->user->emojis()->detach($emojiId);
+        $this->me->emojis()->detach($emojiId);
         $this->rpc('Dialog_ajaxClear');
         $this->rpc('EmojisConfig_ajaxHttpGet');
     }

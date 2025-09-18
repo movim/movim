@@ -19,7 +19,7 @@ class Set extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $this->pack(me()->contact);
+        $this->pack(me()->id);
         $this->deliver();
     }
 

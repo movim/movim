@@ -75,9 +75,9 @@ class Stickers extends \Movim\Widget\Base
 
         // Creating a message
         $m = new \App\Message;
-        $m->user_id         = $this->user->id;
+        $m->user_id         = $this->me->id;
         $m->jidto           = $to;
-        $m->jidfrom         = $this->user->id;
+        $m->jidfrom         = $this->me->id;
         $m->sticker_cid_hash = $sticker->cache_hash;
         $m->sticker_cid_algorythm = $sticker->cache_hash_algorythm;
         $m->seen            = true;
@@ -88,7 +88,7 @@ class Stickers extends \Movim\Widget\Base
 
         $m->id      = generateUUID();
         $m->type    = 'chat';
-        $m->resource = $this->user->session->resource;
+        $m->resource = $this->me->session->resource;
 
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $p = $dom->createElement('p');
@@ -176,7 +176,7 @@ class Stickers extends \Movim\Widget\Base
         $emojis = $this->tpl();
         $emojis->assign('mid', $mid);
         $emojis->assign('reactionsrestrictions', $info ? $info->reactionsrestrictions : null);
-        $emojis->assign('favorites', $this->user->emojis);
+        $emojis->assign('favorites', $this->me->emojis);
         $emojis->assign('gotemojis', $mid == null && Emoji::count() > 0);
 
         Drawer::fill('emojis', $emojis->draw('_stickers_emojis'), actions: true, tiny: true);

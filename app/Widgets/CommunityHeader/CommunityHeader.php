@@ -22,8 +22,8 @@ class CommunityHeader extends Base
         $this->registerEvent('pubsub_subscribe_handle', 'onSubscribed');
         $this->registerEvent('pubsub_subscribe_errorunsupported', 'onSubscriptionUnsupported');
         $this->registerEvent('pubsubsubscription_remove_handle', 'onUnsubscribed');
-        $this->registerEvent('pubsub_testpostpublish_handle', 'onTestPublish');
-        $this->registerEvent('pubsub_testpostpublish_error', 'onTestPublishError');
+        $this->registerEvent('pubsub_testpostpublish_handle', 'tonTestPublish');
+        $this->registerEvent('pubsub_testpostpublish_error', 'tonTestPublishError');
         $this->registerEvent('pubsub_setconfig_handle', 'onConfigSaved', 'community');
 
         $this->addjs('communityheader.js');
@@ -44,13 +44,13 @@ class CommunityHeader extends Base
         $this->rpc('CommunityHeader.getMetadata');
     }
 
-    public function onTestPublish(Packet $packet)
+    public function tonTestPublish(Packet $packet)
     {
         list($origin, $node) = array_values($packet->content);
         $this->rpc('MovimUtils.redirect', $this->route('publish', [$origin, $node]));
     }
 
-    public function onTestPublishError(Packet $packet)
+    public function tonTestPublishError(Packet $packet)
     {
         Toast::send($this->__('publish.no_publication'));
     }
@@ -115,7 +115,7 @@ class CommunityHeader extends Base
         $g = new Subscribe;
         $g->setTo($origin)
             ->setNode($node)
-            ->setFrom($this->user->id)
+            ->setFrom($this->me->id)
             ->setData(formToArray($form))
             ->request();
 
@@ -123,7 +123,7 @@ class CommunityHeader extends Base
             $a = new SubscriptionAdd;
             $a->setServer($origin)
                 ->setNode($node)
-                ->setFrom($this->user->id)
+                ->setFrom($this->me->id)
                 ->request();
         }
     }
@@ -151,7 +151,7 @@ class CommunityHeader extends Base
             return;
         }
 
-        $subscriptions = $this->user->subscriptions()
+        $subscriptions = $this->me->subscriptions()
             ->where('server', $origin)
             ->where('node', $node)
             ->get();
@@ -161,14 +161,14 @@ class CommunityHeader extends Base
             $g->setTo($origin)
                 ->setNode($node)
                 ->setSubid($s->subid)
-                ->setFrom($this->user->id)
+                ->setFrom($this->me->id)
                 ->request();
         }
 
         $r = new SubscriptionRemove;
         $r->setServer($origin)
             ->setNode($node)
-            ->setFrom($this->user->id)
+            ->setFrom($this->me->id)
             ->request();
     }
 
@@ -196,7 +196,7 @@ class CommunityHeader extends Base
             ->first();
 
         $view->assign('info', $info);
-        $view->assign('subscription', $this->user->subscriptions()
+        $view->assign('subscription', $this->me->subscriptions()
             ->where('server', $origin)
             ->where('node', $node)
             ->first());

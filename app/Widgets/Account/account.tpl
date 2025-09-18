@@ -1,6 +1,6 @@
 <div class="tabelem" title="{$c->__('account.title')}" data-mobileicon="account_circle" id="account_widget">
     <div id="account_presences"></div>
-    {if="$c->getUser()->hasOMEMO()"}<div id="account_fingerprints"></div>{/if}
+    {if="$c->me->hasOMEMO()"}<div id="account_fingerprints"></div>{/if}
     <div id="account_gateways"></div>
     <ul class="list active">
         <li class="subheader">

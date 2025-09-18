@@ -21,6 +21,7 @@ use App\Widgets\Dialog\Dialog;
 use App\Widgets\Dictaphone\Dictaphone;
 use App\Widgets\Notif\Notif;
 use App\Widgets\Post\Post;
+use App\Widgets\Rooms\Rooms;
 use App\Widgets\Toast\Toast;
 use Carbon\Carbon;
 use Moxl\Xec\Action\BOB\Request;
@@ -35,6 +36,8 @@ use Movim\EmbedLight;
 use Movim\Image;
 use Movim\XMPPUri;
 use Movim\Librairies\XMPPtoForm;
+use Movim\Widget\Wrapper;
+use Moxl\Xec\Payload\Packet;
 
 class Chat extends \Movim\Widget\Base
 {
@@ -72,7 +75,6 @@ class Chat extends \Movim\Widget\Base
         $this->registerEvent('muc_event_message', 'onMucEventMessage');
 
         $this->registerEvent('bob_request_handle', 'onSticker');
-        $this->registerEvent('notification_counter_clear', 'onNotificationCounterClear');
 
         $this->registerEvent('currentcall_started', 'onCallEvent', 'chat');
         $this->registerEvent('currentcall_stopped', 'onCallEvent', 'chat');
@@ -95,7 +97,7 @@ class Chat extends \Movim\Widget\Base
         }
     }
 
-    public function onCallInvite($packet)
+    public function onCallInvite(Packet $packet)
     {
         $muji = $packet->content;
 
@@ -104,9 +106,9 @@ class Chat extends \Movim\Widget\Base
         }
     }
 
-    public function onCallEvent($packet)
+    public function onCallEvent(Packet $packet)
     {
-        $this->ajaxGetHeader($packet[0]);
+        $this->ajaxGetHeader($packet->from);
     }
 
     public function onJingleMessage($packet)
@@ -139,20 +141,22 @@ class Chat extends \Movim\Widget\Base
         $this->onMessage($packet);
     }
 
-    public function onCounter($count)
+    public function onCounter(Packet $packet)
     {
-        $this->rpc('MovimUtils.setDataItem', '#chatheadercounter', 'counter', $count);
+        $this->rpc('MovimUtils.setDataItem', '#chatcounter', 'counter', $packet->content);
+        $this->rpc('MovimUtils.setDataItem', '#chatheadercounter', 'counter', $packet->content);
     }
 
-    public function onNotificationCounterClear($params)
+    public function onNotificationCounterClear(Packet $packet)
     {
+        $params = $packet->content;
         $jid = $params[1] ?? null;
 
         if ($params[0] === 'chat' && $jid) {
             // Check if the jid is a connected chatroom
-            $presence = $this->user->session->presences()
+            $presence = $this->me->session->presences()
                 ->where('jid', $jid)
-                ->where('mucjid', $this->user->id)
+                ->where('mucjid', $this->me->id)
                 ->first();
 
             $this->getMessages($jid, muc: ($presence), seenOnly: true);
@@ -207,7 +211,7 @@ class Chat extends \Movim\Widget\Base
             $contact = Contact::firstOrNew(['id' => $from]);
 
             $conference = $message->isMuc()
-                ? $this->user->session
+                ? $this->me->session
                 ->conferences()->where('conference', $from)
                 ->first()
                 : null;
@@ -218,7 +222,7 @@ class Chat extends \Movim\Widget\Base
                 && !$message->retracted
                 && !$message->oldid
             ) {
-                $roster = $this->user->session->contacts()->where('jid', $from)->first();
+                $roster = $this->me->session->contacts()->where('jid', $from)->first();
                 $chatStates->clearState($from);
 
                 $name = $roster ? $roster->truename : $contact->truename;
@@ -280,7 +284,7 @@ class Chat extends \Movim\Widget\Base
         }
 
         $this->rpc('Chat.appendMessagesWrapper', $this->prepareMessage($message, $from));
-        $this->event('chat_counter', $this->user->unreads());
+        Wrapper::getInstance()->iterate('chat_counter', (new Packet)->pack($this->me->unreads()));
     }
 
     public function onSticker($packet)
@@ -289,19 +293,21 @@ class Chat extends \Movim\Widget\Base
         $this->ajaxGet($to);
     }
 
-    public function onChatState(array $array, $first = true)
+    public function onChatState(Packet $packet, $first = true)
     {
-        if (isset($array[1])) {
-            $this->setState(
-                $array[0],
-                is_array($array[1]) && !empty($array[1])
-                    ? $this->prepareComposeList(array_keys($array[1]))
-                    : $this->__('message.composing'),
-                $first
-            );
-        } else {
-            $this->setState($array[0], '', $first);
+        if ($first) {
+            $this->rpc('MovimUtils.removeClass', '#' . cleanupId($packet->from . '_state'), 'first');
         }
+
+        $message = '';
+
+        if (isset($packet->content)) {
+            $message = is_array($packet->content)
+                ? $this->prepareComposeList(array_keys($packet->content))
+                : $this->__('message.composing');
+        }
+
+        $this->rpc('MovimTpl.fill', '#' . cleanupId($packet->from . '_state'), $message);
     }
 
     public function onConferenceSubject($packet)
@@ -360,14 +366,6 @@ class Chat extends \Movim\Widget\Base
             ->request();
 
         Toast::send($this->__('chatroom.config_saved'));
-    }
-
-    private function setState(string $jid, string $message, $first = true)
-    {
-        if ($first) {
-            $this->rpc('MovimUtils.removeClass', '#' . cleanupId($jid . '_state'), 'first');
-        }
-        $this->rpc('MovimTpl.fill', '#' . cleanupId($jid . '_state'), $message);
     }
 
     public function ajaxInit()
@@ -443,7 +441,7 @@ class Chat extends \Movim\Widget\Base
             $this->rpc('Notif.current', 'chat|' . $jid);
             $this->rpc('Chat.scrollToSeparator');
 
-            if ($this->user->hasOMEMO()) {
+            if ($this->me->hasOMEMO()) {
                 $this->rpc('Chat.checkOMEMOState', $jid);
             }
         }
@@ -459,7 +457,7 @@ class Chat extends \Movim\Widget\Base
             return;
         }
 
-        $conference = $this->user->session->conferences()->where('conference', $room)->with('members')->first();
+        $conference = $this->me->session->conferences()->where('conference', $room)->with('members')->first();
 
         if ($conference) {
             if (!$conference->connected && !$noConnect) {
@@ -470,8 +468,7 @@ class Chat extends \Movim\Widget\Base
                 $this->rpc('MovimUtils.pushSoftState', $this->route('chat', [$room, 'room']));
                 $this->rpc('MovimTpl.fill', '#chat_widget', $this->prepareChat($room, true));
 
-                $chatStates = ChatStates::getInstance();
-                $this->onChatState($chatStates->getState($room), false);
+                $this->onChatState(ChatStates::getInstance()->getState($room), false);
 
                 $this->rpc('MovimTpl.showPanel');
                 $this->rpc('Chat.focus');
@@ -489,7 +486,7 @@ class Chat extends \Movim\Widget\Base
             $this->rpc('Notif.current', 'chat|' . $room);
             $this->rpc('Chat.scrollToSeparator');
 
-            if ($this->user->hasOMEMO() && $conference->isGroupChat()) {
+            if ($this->me->hasOMEMO() && $conference->isGroupChat()) {
                 $this->rpc('Chat.setGroupChatMembers', $conference->members->pluck('jid')->toArray());
                 $this->rpc('Chat.checkOMEMOState', $room, true);
             } else {
@@ -578,9 +575,9 @@ class Chat extends \Movim\Widget\Base
         $m->originid    = $m->id;
         $m->messageid   = $m->id;
         $m->replaceid   = $replace ? $replace->originid : null;
-        $m->user_id     = $this->user->id;
+        $m->user_id     = $this->me->id;
         $m->jidto       = $to;
-        $m->jidfrom     = $this->user->id;
+        $m->jidfrom     = $this->me->id;
         $m->published   = gmdate('Y-m-d H:i:s');
 
         $reply = null;
@@ -591,7 +588,7 @@ class Chat extends \Movim\Widget\Base
         }
 
         if ($replyToMid !== 0) {
-            $reply = $this->user->messages()
+            $reply = $this->me->messages()
                 ->where('mid', $replyToMid)
                 ->first();
 
@@ -605,11 +602,11 @@ class Chat extends \Movim\Widget\Base
         $m->markable = true;
         $m->seen = true;
         $m->type    = 'chat';
-        $m->resource = $this->user->session->resource;
+        $m->resource = $this->me->session->resource;
 
         if ($muc) {
             $m->type        = 'groupchat';
-            $m->resource    = $this->user->username;
+            $m->resource    = $this->me->username;
             $m->jidfrom     = $to;
         }
 
@@ -681,7 +678,7 @@ class Chat extends \Movim\Widget\Base
         preg_match_all('/:([a-z0-9\-]+):/', $m->body, $matchedCustomEmojis);
 
         if (!empty($matchedCustomEmojis[1])) {
-            $favoritesEmojis = $this->user->emojis->keyBy('pivot.alias');
+            $favoritesEmojis = $this->me->emojis->keyBy('pivot.alias');
 
             $html = '<p>' . $m->body . '</p>';
 
@@ -779,7 +776,7 @@ class Chat extends \Movim\Widget\Base
      */
     public function ajaxHttpDaemonCorrect(string $to, int $mid, string $message = '')
     {
-        $replace = $this->user->messages()
+        $replace = $this->me->messages()
             ->where('mid', $mid)
             ->first();
 
@@ -793,7 +790,7 @@ class Chat extends \Movim\Widget\Base
      */
     public function ajaxHttpDaemonSendReaction(string $mid, string $emoji)
     {
-        $parentMessage = $this->user->messages()
+        $parentMessage = $this->me->messages()
             ->where('mid', $mid)
             ->first();
 
@@ -804,9 +801,9 @@ class Chat extends \Movim\Widget\Base
             // Try to load the MUC presence and resolve the resource
             $mucPresence = null;
             if ($parentMessage->isMuc()) {
-                $mucPresence = $this->user->session->presences()
+                $mucPresence = $this->me->session->presences()
                     ->where('jid', $parentMessage->jidfrom)
-                    ->where('mucjid', $this->user->id)
+                    ->where('mucjid', $this->me->id)
                     ->where('muc', true)
                     ->first();
 
@@ -815,7 +812,7 @@ class Chat extends \Movim\Widget\Base
 
             $jidfrom = ($parentMessage->isMuc())
                 ? $mucPresence->resource
-                : $this->user->id;
+                : $this->me->id;
 
             $emojis = $parentMessage->reactions()
                 ->where('jidfrom', $jidfrom)
@@ -831,8 +828,8 @@ class Chat extends \Movim\Widget\Base
                 $reaction = new Reaction;
                 $reaction->message_mid = $parentMessage->mid;
                 $reaction->jidfrom = ($parentMessage->isMuc())
-                    ? $this->user->username
-                    : $this->user->id;
+                    ? $this->me->username
+                    : $this->me->id;
                 $reaction->created_at = $now;
                 $reaction->updated_at = $now;
                 $reaction->emoji = $emoji;
@@ -882,7 +879,7 @@ class Chat extends \Movim\Widget\Base
      */
     public function ajaxRefreshMessage(string $mid)
     {
-        $message = $this->user->messages()
+        $message = $this->me->messages()
             ->where('mid', $mid)
             ->first();
 
@@ -907,7 +904,7 @@ class Chat extends \Movim\Widget\Base
         $mid = $m->mid;
 
         if ($m && !empty($m->replaceid)) {
-            $originalMessage = $this->user->messages()
+            $originalMessage = $this->me->messages()
                 ->where('originid', $m->replaceid)
                 ->first();
 
@@ -936,7 +933,7 @@ class Chat extends \Movim\Widget\Base
      */
     public function ajaxEdit($mid)
     {
-        $m = $this->user->messages()
+        $m = $this->me->messages()
             ->where('mid', $mid)
             ->first();
 
@@ -957,7 +954,7 @@ class Chat extends \Movim\Widget\Base
      */
     public function ajaxHttpDaemonReply($mid)
     {
-        $message = $this->user->messages()
+        $message = $this->me->messages()
             ->where('mid', $mid)
             ->first();
 
@@ -1110,7 +1107,7 @@ class Chat extends \Movim\Widget\Base
             return;
         }
 
-        $message = $this->user->messages()->where('id', $id)->first();
+        $message = $this->me->messages()->where('id', $id)->first();
 
         if (
             $message
@@ -1165,21 +1162,21 @@ class Chat extends \Movim\Widget\Base
 
         \App\Message::whereIn('id', function ($query) use ($jid) {
             $jidFromToMessages = DB::table('messages')
-                ->where('user_id', $this->user->id)
+                ->where('user_id', $this->me->id)
                 ->where('jidfrom', $jid)
                 ->unionAll(
                     DB::table('messages')
-                        ->where('user_id', $this->user->id)
+                        ->where('user_id', $this->me->id)
                         ->where('jidto', $jid)
                 );
 
             $query->select('id')->from(
                 $jidFromToMessages,
                 'messages'
-            )->where('user_id', $this->user->id);
+            )->where('user_id', $this->me->id);
         })->delete();
 
-        $this->user->MAMEarliests()->where('jid', $jid)->delete();
+        $this->me->MAMEarliests()->where('jid', $jid)->delete();
 
         $this->ajaxGet($jid);
     }
@@ -1193,7 +1190,7 @@ class Chat extends \Movim\Widget\Base
         $view->assign('emoji', prepareString('😀'));
 
         if ($muc) {
-            $view->assign('conference', $this->user->session->conferences()
+            $view->assign('conference', $this->me->session->conferences()
                 ->where('conference', $jid)
                 ->with('info')
                 ->first());
@@ -1239,7 +1236,7 @@ class Chat extends \Movim\Widget\Base
         // Prepare the muc presences if possible
         $firstMessage = $messages->first();
         if ($firstMessage && $firstMessage->isMuc()) {
-            $this->_mucPresences = $this->user->session->presences()
+            $this->_mucPresences = $this->me->session->presences()
                 ->where('jid', $firstMessage->jidfrom)
                 ->where('muc', true)
                 ->whereIn('resource', $messages->pluck('resource')->unique())
@@ -1264,7 +1261,7 @@ class Chat extends \Movim\Widget\Base
             $view->assign('muc', $muc);
             $left = $view->draw('_chat_bubble');
 
-            $view->assign('contact', Contact::firstOrNew(['id' => $this->user->id]));
+            $view->assign('contact', Contact::firstOrNew(['id' => $this->me->id]));
             $view->assign('me', true);
             $view->assign('muc', $muc);
             $right = $view->draw('_chat_bubble');
@@ -1274,10 +1271,12 @@ class Chat extends \Movim\Widget\Base
         }
 
         if ($event) {
-            $this->event($muc ? 'chat_open_room' : 'chat_open', $jid);
+            $muc
+                ? (new Rooms)->setCounter($jid)
+                : (new Chats)->chatOpen($jid);
         }
 
-        $this->event('chat_counter', $this->user->unreads());
+        Wrapper::getInstance()->iterate('chat_counter', (new Packet)->pack($this->me->unreads()));
 
         if ($unreadsCount > 0) {
             $this->rpc('Chat.insertSeparator', $unreadsCount);
@@ -1468,7 +1467,7 @@ class Chat extends \Movim\Widget\Base
                 $message->parent->fromName = $message->parent->resource;
             } else {
                 // TODO optimize
-                $roster = $this->user->session->contacts()
+                $roster = $this->me->session->contacts()
                     ->where('jid', $message->parent->jidfrom)
                     ->first();
 
@@ -1541,7 +1540,7 @@ class Chat extends \Movim\Widget\Base
             // Cache the resolved presences for a while
             $key = $message->jidfrom . $message->resource;
             if (!isset($this->_mucPresences[$key])) {
-                $this->_mucPresences[$key] = $this->user->session->presences()
+                $this->_mucPresences[$key] = $this->me->session->presences()
                     ->where('jid', $message->jidfrom)
                     ->where('resource', $message->resource)
                     ->where('muc', true)
@@ -1551,7 +1550,7 @@ class Chat extends \Movim\Widget\Base
             if ($this->_mucPresences[$key] && $this->_mucPresences[$key] !== true) {
                 $message->moderator = ($this->_mucPresences[$key]->mucrole == 'moderator');
                 $message->mucjid = $this->_mucPresences[$key]->mucjid;
-                $message->mine = $message->seen = ($this->_mucPresences[$key]->mucjid == $this->user->id);
+                $message->mine = $message->seen = ($this->_mucPresences[$key]->mucjid == $this->me->id);
                 $message->icon_url = $this->_mucPresences[$key]->conferencePicture;
             } else {
                 // No presence, we set a placeholder avatar as a fallback
@@ -1586,7 +1585,7 @@ class Chat extends \Movim\Widget\Base
             $message->seen === true
             && $messageDBSeen === false
         ) {
-            $this->user->messages()
+            $this->me->messages()
                 ->where('id', $message->id)
                 ->update(['seen' => true]);
         }
@@ -1604,7 +1603,7 @@ class Chat extends \Movim\Widget\Base
         if ($message->type == 'invitation') {
             $view = $this->tpl();
             $view->assign('message', $message);
-            $message->body = ($message->jidfrom == $this->user->id)
+            $message->body = ($message->jidfrom == $this->me->id)
                 ? $view->draw('_chat_invitation_self')
                 : $view->draw('_chat_invitation');
         }
@@ -1632,7 +1631,7 @@ class Chat extends \Movim\Widget\Base
             $view->assign('message', $message);
             $view->assign('diff', false);
 
-            $start = $this->user->messages()->where('thread', $message->thread)
+            $start = $this->me->messages()->where('thread', $message->thread)
                 ->whereIn('type', ['jingle_incoming', 'jingle_outgoing'])
                 ->first();
 
@@ -1651,7 +1650,7 @@ class Chat extends \Movim\Widget\Base
             $view->assign('message', $message);
             $view->assign('diff', false);
 
-            $start = $this->user->messages()->where('thread', $message->thread)
+            $start = $this->me->messages()->where('thread', $message->thread)
                 ->whereIn('type', ['muji_propose'])
                 ->first();
 
@@ -1696,7 +1695,7 @@ class Chat extends \Movim\Widget\Base
 
         $view->assign('message', $message);
         $view->assign('reactions', $merged);
-        $view->assign('me', $this->user->id);
+        $view->assign('me', $this->me->id);
 
         return $view->draw('_chat_reactions');
     }
@@ -1711,15 +1710,15 @@ class Chat extends \Movim\Widget\Base
         $view->assign('incall', CurrentCall::getInstance()->isStarted());
         $view->assign(
             'info',
-            \App\Info::where('server', $this->user->session->host)
+            \App\Info::where('server', $this->me->session->host)
                 ->where('node', '')
                 ->first()
         );
         $view->assign('anon', false);
-        $view->assign('counter', $this->user->unreads(null, false, true));
+        $view->assign('counter', $this->me->unreads(null, false, true));
 
         if ($muc) {
-            $view->assign('conference', $this->user->session->conferences()
+            $view->assign('conference', $this->me->session->conferences()
                 ->where('conference', $jid)
                 ->with('info')
                 ->first());
@@ -1731,7 +1730,7 @@ class Chat extends \Movim\Widget\Base
                 $view->assign('info', $mucinfo);
             }
         } else {
-            $view->assign('roster', $this->user->session->contacts()->where('jid', $jid)->first());
+            $view->assign('roster', $this->me->session->contacts()->where('jid', $jid)->first());
             $view->assign('contact', Contact::firstOrNew(['id' => $jid]));
         }
 
@@ -1741,7 +1740,7 @@ class Chat extends \Movim\Widget\Base
     public function prepareEmpty()
     {
         $view = $this->tpl();
-        $view->assign('top', $this->user->session->topContactsToChat()->take(15)->get());
+        $view->assign('top', $this->me->session->topContactsToChat()->take(15)->get());
 
         return $view->draw('_chat_empty');
     }
