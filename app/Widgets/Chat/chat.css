@@ -786,6 +786,11 @@ ul.list li > div.bubble.file div.file a span.size:before {
 }
 
 #chat_widget .bubble.file .message span.info:after {
+    display: block;
+    margin-top: -2rem;
+}
+
+#chat_widget .bubble.file .message div.file ~ span.info:after {
     display: none;
 }
 
