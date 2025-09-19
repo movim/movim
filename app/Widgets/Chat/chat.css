@@ -790,6 +790,7 @@ ul.list li > div.bubble.file div.file a span.size:before {
     margin-top: -2rem;
 }
 
+#chat_widget .bubble.file .message ul.list.card ~ span.info:after,
 #chat_widget .bubble.file .message div.file ~ span.info:after {
     display: none;
 }
