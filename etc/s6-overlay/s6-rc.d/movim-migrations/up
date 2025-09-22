@@ -1,0 +1,2 @@
+#!/command/with-contenv sh
+composer -d /var/www/html/ movim:migrate

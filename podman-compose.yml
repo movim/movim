@@ -1,0 +1,24 @@
+services:
+  db:
+    image: 'postgres:latest'
+    environment:
+      POSTGRES_USER: movim
+      POSTGRES_PASSWORD: movim
+      POSTGRES_DB: movim
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 2s
+  movim:
+    build:
+      context: ./
+      dockerfile: Containerfile
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_HOST: db
+      DAEMON_URL: https://127.0.0.1:8443/
+      DAEMON_DEBUG: true
+      DAEMON_VERBOSE: true
+    ports:
+      - 8443:8443

@@ -30,12 +30,7 @@ $handler = function (ServerRequestInterface $request) use ($templater) {
     $data = json_decode((string)$request->getBody());
 
     return new Promise(function () use ($data, $templater) {
-        $templater->callWidget($data->jid, $data->widget, $data->method, $data->data);/*->then(function ($resolvedData) use ($data) {
-            global $wsTemplaterSocket;
-
-            $resolvedData['sid'] = $data->sid;
-            $wsTemplaterSocket->send(json_encode($resolvedData));
-        });*/
+        $templater->callWidget($data->jid, $data->widget, $data->method, $data->data);
     });
 };
 
@@ -45,19 +40,19 @@ $server->on('error', function (\Throwable $e) {
 });
 
 $path = 'unix://' . TEMPLATER_SOCKET;
-//$path = '127.0.0.1:8899';
 $server->listen(new SocketServer($path));
-
 
 /**
  * Authenticated Websocket to the main Daemon
  */
 $wsConnector = new \Ratchet\Client\Connector($loop);
-$wsConnector('ws://127.0.0.1:' . getenv('port'), [], [
+$wsConnector('ws://127.0.0.1:' . config('daemon.port'), [], [
     'MOVIM_DAEMON_KEY' => getenv('key'),
-    'MOVIM_TEMPLATER' => 'hop',
+    'MOVIM_TEMPLATER' => 'templater',
 ])->then(function (Ratchet\Client\WebSocket $socket) use (&$wsTemplaterSocket) {
     $wsTemplaterSocket = $socket;
+}, function ($e) {
+    \logError($e->getMessage());
 });
 
 $loop->run();

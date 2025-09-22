@@ -114,7 +114,7 @@ class Core implements MessageComponentInterface
             "--- " . colorize("Server Configuration - Caddy", 'purple') . " ---" .
             "\n";
         echo colorize("Add this in your configuration file", 'yellow') . "\nhandle /ws/* {
-    reverse_proxy localhost:8080
+    reverse_proxy localhost:{$port}
 }
 
 ";
@@ -149,11 +149,8 @@ class Core implements MessageComponentInterface
                     $this->loop,
                     $sid,
                     $this->baseuri,
-                    config('daemon.port'),
                     $this->key,
-                    $language,
-                    config('daemon.verbose'),
-                    config('daemon.debug')
+                    $language
                 );
             }
 

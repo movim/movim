@@ -52,7 +52,7 @@ class DaemonCommand extends Command
         if ($manager->printStatus('movim')['hasDownMigration']) {
             $output->writeln('<comment>The database needs to be migrated before running the daemon</comment>');
             $output->writeln('<info>To migrate the database run</info>');
-            $output->writeln('<info>php vendor/bin/phinx migrate</info>');
+            $output->writeln('<info>composer movim:migrate</info>');
             exit;
         }
 
@@ -76,8 +76,8 @@ class DaemonCommand extends Command
             # URI in practice.
             $schemeEnforcedURL = parse_url(config('daemon.url'), PHP_URL_SCHEME)
                 ? config('daemon.url')
-                : 'http://' . ltrim(config('daemon.url'), '/');
-            if (Validator::url()->notEmpty()->isValid($schemeEnforcedURL)) {
+                : 'https://' . ltrim(config('daemon.url'), '/');
+            if (filter_var($schemeEnforcedURL, FILTER_VALIDATE_URL)) {
                 $baseuri = rtrim(config('daemon.url'), '/') . '/';
             }
         } else {
@@ -93,15 +93,15 @@ class DaemonCommand extends Command
         }
 
 
-        $clearTemplatesCache = new Process('exec ' . PHP_BINARY . ' daemon.php clearTemplatesCache');
+        $clearTemplatesCache = new Process('exec ' . PHP_BINARY . ' ' . DOCUMENT_ROOT . '/daemon.php clearTemplatesCache');
         $clearTemplatesCache->start($loop);
         $clearTemplatesCache->on('exit', fn($out) => $output->writeln('<info>Templates cache cleared</info>'));
 
-        $compileLanguages = new Process('exec ' . PHP_BINARY . ' daemon.php compileLanguages');
+        $compileLanguages = new Process('exec ' . PHP_BINARY . ' ' . DOCUMENT_ROOT . '/daemon.php compileLanguages');
         $compileLanguages->start($loop);
         $compileLanguages->on('exit', fn($out) => $output->writeln('<info>Compiled po files</info>'));
 
-        $compileStickers = new Process('exec ' . PHP_BINARY . ' daemon.php compileStickers');
+        $compileStickers = new Process('exec ' . PHP_BINARY . ' ' . DOCUMENT_ROOT . '/daemon.php compileStickers');
         $compileStickers->start($loop);
         $compileStickers->on('exit', fn($out) => $output->writeln('<info>Stickers compiled</info>'));
 
@@ -113,7 +113,7 @@ class DaemonCommand extends Command
         }
 
         if (isOpcacheEnabled()) {
-            $compileOpcache = new Process('exec ' . PHP_BINARY . ' daemon.php compileOpcache');
+            $compileOpcache = new Process('exec ' . PHP_BINARY . ' ' . DOCUMENT_ROOT . '/daemon.php compileOpcache');
             $compileOpcache->start($loop);
             $compileOpcache->on('exit', fn($out) => $output->writeln('<info>Files compiled in Opcache</info>'));
         } else {
@@ -131,18 +131,30 @@ class DaemonCommand extends Command
         $socketApi = new SocketServer('unix://' . API_SOCKET);
         new Api($socketApi, $core);
 
-        $resolverWorker = new Process('exec ' . PHP_BINARY . ' resolver.php');
+        // Resolver
+
+        $resolverWorker = new Process('exec ' . PHP_BINARY . ' resolver.php', cwd: DOCUMENT_ROOT);
         $resolverWorker->start($loop);
         $resolverWorker->on('exit', fn() => $output->writeln('<error>Resolver Worker crashed</error>'));
         $output->writeln('<info>Resolver Worker launched</info>');
 
+        // Templater
+
         $templaterWorker = new Process(
             'exec ' . PHP_BINARY . ' templater.php',
-            null,
-            [
-                'key'       => $core->getKey(),
-                'baseuri'   => $baseuri,
-                'port'      => config('daemon.port')
+            cwd: DOCUMENT_ROOT,
+            env: [
+                'baseuri'       => $baseuri,
+                'DAEMON_DEBUG'  => config('daemon.debug'),
+                'DAEMON_PORT'   => config('daemon.port'),
+                'DAEMON_VERBOSE'=> config('daemon.verbose'),
+                'DB_DATABASE'   => config('database.database'),
+                'DB_DRIVER'     => config('database.driver'),
+                'DB_HOST'       => config('database.host'),
+                'DB_PASSWORD'   => config('database.password'),
+                'DB_PORT'       => config('database.port'),
+                'DB_USERNAME'   => config('database.username'),
+                'key'           => $core->getKey(),
             ]
         );
         $templaterWorker->start($loop);
