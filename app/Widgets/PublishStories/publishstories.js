@@ -376,21 +376,23 @@ var PublishStories = {
     }
 }
 
-Upload.attach((file) => {
-    if (PublishStories.main && PublishStories.main.classList.contains('publish')) {
+MovimEvents.registerWindow('loaded', 'publishstories', () => {
+    Upload.attach((file) => {
+        if (PublishStories.main && PublishStories.main.classList.contains('publish')) {
+            PublishStories.main.querySelector('#publishactions').classList.remove('uploading');
+            PublishStories.main.querySelector('#publishactions').classList.add('publishing');
+            PublishStories_ajaxPublish(MovimUtils.formToJson('metadata'), file.id);
+        }
+    });
+
+    Upload.fail(() => {
         PublishStories.main.querySelector('#publishactions').classList.remove('uploading');
-        PublishStories.main.querySelector('#publishactions').classList.add('publishing');
-        PublishStories_ajaxPublish(MovimUtils.formToJson('metadata'), file.id);
-    }
-});
+    });
 
-Upload.fail(() => {
-    PublishStories.main.querySelector('#publishactions').classList.remove('uploading');
-});
-
-Upload.progress((percent) => {
-    if (PublishStories.main != undefined && PublishStories.main.classList.contains('publish')) {
-        PublishStories.main.querySelector('#publishactionsprogress').innerHTML =
-            percent + '%';
-    }
+    Upload.progress((percent) => {
+        if (PublishStories.main != undefined && PublishStories.main.classList.contains('publish')) {
+            PublishStories.main.querySelector('#publishactionsprogress').innerHTML =
+                percent + '%';
+        }
+    });
 });

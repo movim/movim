@@ -61,9 +61,8 @@ var MovimEvents = {
 }
 
 document.addEventListener('DOMContentLoaded', (e) => {
-    MovimEvents.triggerWindow('loaded', e)
-
     // Window
+    window.addEventListener('load', (e) => MovimEvents.triggerWindow('loaded', e), false);
     window.addEventListener('keydown', (e) => MovimEvents.triggerWindow('keydown', e), false);
     window.addEventListener('paste', (e) => MovimEvents.triggerWindow('paste', e), false);
     window.addEventListener('resize', (e) => MovimEvents.triggerWindow('resize', e), false);

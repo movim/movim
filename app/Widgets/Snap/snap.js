@@ -187,18 +187,20 @@ var Snap = {
     }
 }
 
-Upload.attach((file) => {
-    if (Snap.snap) Snap.end();
-});
+MovimEvents.registerWindow('loaded', 'snap', () => {
+    Upload.attach((file) => {
+        if (Snap.snap) Snap.end();
+    });
 
-Upload.progress((percent) => {
-    if (Snap.wait) {
-        Snap.wait.style.backgroundImage = 'linear-gradient(to top, rgba(0, 0, 0, 0.5) ' + percent + '%, transparent ' + percent + '%)';
-    }
-});
+    Upload.progress((percent) => {
+        if (Snap.wait) {
+            Snap.wait.style.backgroundImage = 'linear-gradient(to top, rgba(0, 0, 0, 0.5) ' + percent + '%, transparent ' + percent + '%)';
+        }
+    });
 
-Upload.fail(() => {
-    if (Snap.snap) {
-        Snap.snap.classList = 'upload'; Snap.wait.style.backgroundImage = '';
-    }
+    Upload.fail(() => {
+        if (Snap.snap) {
+            Snap.snap.classList = 'upload'; Snap.wait.style.backgroundImage = '';
+        }
+    });
 });

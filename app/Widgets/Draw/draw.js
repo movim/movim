@@ -445,28 +445,29 @@ var Draw = {
         }
     }
 };
+MovimEvents.registerWindow('loaded', 'draw', () => {
+    Upload.attach((file) => {
+        if (Draw.draw) Draw.draw.classList = '';
+        if (Draw.save) {
+            Draw.save.classList.remove('disabled');
+            Draw.save.style.backgroundImage = '';
+        }
+    });
 
-Upload.attach((file) => {
-    if (Draw.draw) Draw.draw.classList = '';
-    if (Draw.save) {
-        Draw.save.classList.remove('disabled');
-        Draw.save.style.backgroundImage = '';
-    }
-});
+    Upload.fail(() => {
+        if (Draw.draw) Draw.draw.classList = 'upload';
+        if (Draw.save) {
+            Draw.save.classList.remove('disabled');
+            Draw.save.style.backgroundImage = '';
+        }
+    });
 
-Upload.fail(() => {
-    if (Draw.draw) Draw.draw.classList = 'upload';
-    if (Draw.save) {
-        Draw.save.classList.remove('disabled');
-        Draw.save.style.backgroundImage = '';
-    }
-});
-
-Upload.progress((percent) => {
-    if (Draw.save) {
-        Draw.save.style.backgroundImage
-            = 'linear-gradient(to top, rgba(0, 0, 0, 0.5) ' + percent + '%, transparent ' + percent + '%)';
-    }
+    Upload.progress((percent) => {
+        if (Draw.save) {
+            Draw.save.style.backgroundImage
+                = 'linear-gradient(to top, rgba(0, 0, 0, 0.5) ' + percent + '%, transparent ' + percent + '%)';
+        }
+    });
 });
 
 MovimEvents.registerBody('touchstart', 'draw', (e) => Draw.disableForCanvas(e));
