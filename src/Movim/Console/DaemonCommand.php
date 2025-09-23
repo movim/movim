@@ -80,11 +80,8 @@ class DaemonCommand extends Command
             if (Validator::url()->notEmpty()->isValid($schemeEnforcedURL)) {
                 $baseuri = rtrim(config('daemon.url'), '/') . '/';
             }
-        } elseif (file_exists(CACHE_PATH . 'baseuri')) {
-            $baseuri = file_get_contents(CACHE_PATH . 'baseuri');
         } else {
-            $output->writeln('<comment>Please load the login page once before starting the daemon to cache the public URL</comment>');
-            $output->writeln('<comment>or configure DAEMON_URL in .env</comment>');
+            $output->writeln('<comment>Please configure DAEMON_URL in .env</comment>');
             exit;
         }
 
