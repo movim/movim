@@ -22,36 +22,26 @@ class Session
     public ?Process $process;
     public ?ConnectionInterface $internalSocket = null;
 
-    private int $port; // Daemon Websocket port
     private string $key; // Daemon secure key
 
     public bool $registered = false;
     public bool $started = false;
 
     private $state;
-    private $verbose;
-    private $debug;
     private $language;
 
     public function __construct(
         LoopInterface $loop,
         string $sid,
         string $baseuri,
-        int $port,
         string $key,
-        $language = false,
-        $verbose = false,
-        $debug = false
+        $language = false
     ) {
         $this->sid = $sid;
         $this->baseuri = $baseuri;
         $this->language = $language;
 
-        $this->port = $port;
         $this->key = $key;
-
-        $this->verbose = $verbose;
-        $this->debug = $debug;
 
         $this->clients = new \SplObjectStorage;
         $this->register($loop);
@@ -63,7 +53,7 @@ class Session
     {
         $this->clients->attach($conn);
 
-        if ($this->verbose) {
+        if (config('daemon.verbose')) {
             echo colorize($this->sid, 'yellow') . " : " . colorize($conn->resourceId . " connected\n", 'green');
         }
 
@@ -76,7 +66,7 @@ class Session
     {
         $this->internalSocket = $conn;
 
-        if ($this->verbose) {
+        if (config('daemon.verbose')) {
             echo colorize($this->sid, 'yellow') . " : " . colorize($conn->resourceId . " internal connected\n", 'green');
         }
     }
@@ -85,7 +75,7 @@ class Session
     {
         $this->clients->detach($conn);
 
-        if ($this->verbose) {
+        if (config('daemon.verbose')) {
             echo colorize($this->sid, 'yellow') . " : " . colorize($conn->resourceId . " deconnected\n", 'red');
         }
 
@@ -121,22 +111,28 @@ class Session
         // Launching the linker
         $this->process = new Process(
             'exec ' . PHP_BINARY . ' ' . $configuration . ' -d=memory_limit=512M linker.php ' . $this->sid,
-            null,
-            [
-                'sid'       => $this->sid,
-                'baseuri'   => $this->baseuri,
-                'language'  => $this->language,
-                'verbose'   => $this->verbose,
-                'debug'     => $this->debug,
-                'key'       => $this->key,
-                'port'      => $this->port
+            cwd: DOCUMENT_ROOT,
+            env: [
+                'baseuri'       => $this->baseuri,
+                'DAEMON_DEBUG'  => config('daemon.debug'),
+                'DAEMON_PORT'   => config('daemon.port'),
+                'DAEMON_VERBOSE'=> config('daemon.verbose'),
+                'DB_DATABASE'   => config('database.database'),
+                'DB_DRIVER'     => config('database.driver'),
+                'DB_HOST'       => config('database.host'),
+                'DB_PASSWORD'   => config('database.password'),
+                'DB_PORT'       => config('database.port'),
+                'DB_USERNAME'   => config('database.username'),
+                'key'           => $this->key,
+                'language'      => $this->language,
+                'sid'           => $this->sid,
             ]
         );
         $this->process->start($loop);
 
         // The linker died, we close properly the session
         $this->process->on('exit', function ($output) {
-            if ($this->verbose) {
+            if (config('daemon.verbose')) {
                 echo colorize($this->sid, 'yellow') . " : " . colorize("linker killed \n", 'red');
             }
 

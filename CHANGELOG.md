@@ -31,6 +31,7 @@ v0.32 (master)
 * Add a templater worker and start to offload some widget calls to it
 * Refactor and simplify the internal events system, enforce Packet everywhere
 * Remove the necessity to launch the Login page to cache the BASE_URI for the daemon launch
+* Containerfile and podman-compose test scripts
 
 v0.31
 ---------------------------

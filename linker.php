@@ -275,7 +275,7 @@ $xmppBehaviour = function (React\Socket\Connection $stream) use (&$xmppSocket, $
 
     Wrapper::getInstance()->iterate('socket_connected');
 
-    if (getenv('verbose')) {
+    if (config('daemon.verbose')) {
         logOut(colorize('XMPP socket launched', 'blue'));
         logOut(" launched : " . \humanSize(memory_get_usage()));
     }
@@ -325,7 +325,7 @@ $xmppBehaviour = function (React\Socket\Connection $stream) use (&$xmppSocket, $
 };
 
 $wsConnector = new \Ratchet\Client\Connector($loop);
-$wsConnector('ws://127.0.0.1:' . getenv('port'), [], [
+$wsConnector('ws://127.0.0.1:' . config('daemon.port'), [], [
     'MOVIM_SESSION_ID' => getenv('sid'),
     'MOVIM_DAEMON_KEY' => getenv('key')
 ])->then(function (Ratchet\Client\WebSocket $socket) use (&$wsSocket, $wsSocketBehaviour) {
