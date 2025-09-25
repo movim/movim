@@ -662,7 +662,7 @@ var Chat = {
 
         discussion.onscroll = function () {
             // Don't get more history the conversation is already empty
-            if (discussion.querySelector('.conversation').innerHTML != '' && this.scrollTop < 100) {
+            if (discussion.querySelector('.conversation').innerHTML != '' && this.scrollTop < 10) {
                 Chat.getHistory(true);
             }
 
