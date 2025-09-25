@@ -1012,7 +1012,8 @@ class Chat extends \Movim\Widget\Base
             ->first();
 
         if ($contextMessage) {
-            $this->ajaxGetHistory($jid, $contextMessage->published, muc: $contextMessage->isMuc(), prepend: false, tryMam: false, clear: true);
+            $this->rpc('MovimTpl.fill', '#' . cleanupId($jid) . '-conversation', '');
+            $this->ajaxGetHistory($jid, $contextMessage->published, muc: $contextMessage->isMuc(), prepend: false, tryMam: false);
             $this->rpc('Chat.scrollAndBlinkMessageMid', $mid);
             $this->rpc('MovimUtils.addClass', '#chat_widget .contained', 'history');
         }
@@ -1024,7 +1025,7 @@ class Chat extends \Movim\Widget\Base
      * @param string jid
      * @param string time
      */
-    public function ajaxGetHistory(string $jid, ?string $date = null, bool $muc = false, bool $prepend = true, bool $tryMam = true, ?bool $clear = false)
+    public function ajaxGetHistory(string $jid, ?string $date = null, bool $muc = false, bool $prepend = true, bool $tryMam = true)
     {
         if (!validateJid($jid)) return;
 
@@ -1046,10 +1047,6 @@ class Chat extends \Movim\Widget\Base
         if ($messages->count() > 0) {
             foreach ($messages as $message) {
                 $this->prepareMessage($message);
-            }
-
-            if ($clear) {
-                $this->rpc('MovimTpl.fill', '#' . cleanupId($jid) . '-conversation', '');
             }
 
             $this->rpc('Chat.appendMessagesWrapper', $this->_wrapper, $prepend);

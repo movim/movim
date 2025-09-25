@@ -658,10 +658,11 @@ var Chat = {
     },
     setScrollBehaviour: function () {
         var discussion = Chat.getDiscussion();
-        if (discussion == null) return;
+        if (!discussion) return;
 
         discussion.onscroll = function () {
-            if (this.scrollTop < 1) {
+            // Don't get more history the conversation is already empty
+            if (discussion.querySelector('.conversation').innerHTML != '' && this.scrollTop < 100) {
                 Chat.getHistory(true);
             }
 
@@ -672,7 +673,7 @@ var Chat = {
     },
     setScroll: function () {
         var discussion = Chat.getDiscussion();
-        if (discussion == null) return;
+        if (!discussion) return;
 
         Chat.lastHeight = discussion.scrollHeight;
         Chat.lastScroll = discussion.scrollTop + discussion.clientHeight;
@@ -700,7 +701,7 @@ var Chat = {
     },
     scrollTotally: function () {
         var discussion = Chat.getDiscussion();
-        if (discussion == null) return;
+        if (!discussion) return;
 
         discussion.scrollTop = discussion.scrollHeight;
     },
@@ -722,7 +723,7 @@ var Chat = {
     },
     scrollToSeparator: function () {
         var discussion = Chat.getDiscussion();
-        if (discussion == null) return;
+        if (!discussion) return;
 
         var separator = discussion.querySelector('.separator');
         if (separator) {
@@ -1272,6 +1273,8 @@ var Chat = {
     },
     appendDate: function (date, prepend) {
         var list = document.querySelector('#chat_widget > div ul.conversation');
+
+        if (!list) return;
 
         dateNode = Chat.date.cloneNode(true);
         dateNode.querySelector('p').innerHTML = date;
