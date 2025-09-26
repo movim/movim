@@ -75,7 +75,6 @@ form > div .select select {
     background-color: transparent;
     background-image: none;
     padding-bottom: 1rem;
-    font-weight: 400;
     mask-image: linear-gradient(to right, black calc(100% - 10rem), transparent);
 }
 
