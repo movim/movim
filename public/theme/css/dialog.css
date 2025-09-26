@@ -1,6 +1,6 @@
 .dialog {
     position: fixed;
-    top: 8rem;
+    top: 5%;
     left: calc(50% - 30rem);
     height: initial;
     width: 60rem;
@@ -19,7 +19,7 @@
 }
 
 .dialog.scroll {
-    height: calc(100% - 16rem);
+    height: 90%;
 }
 
 .dialog > section {
