@@ -245,7 +245,7 @@ class Post extends Base
                 && !$public && !$card
             ) {
                 if ($requestComments) {
-                    $this->requestComments($post); // Broken in case of repost
+                    $this->rpc('Post_ajaxGetPostComments', $post->server, $post->node, $post->nodeid); // Broken in case of repost
                 }
             } elseif (!$card) {
                 $viewd = $this->tpl();
