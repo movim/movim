@@ -124,13 +124,13 @@
                     <button class="button red flat"
                         id="like"
                         onclick="this.classList.add('disabled'); PostActions_ajaxDeleteConfirm('{$liked[0]}', '{$liked[1]}', '{$liked[2]}')">
-                        <i class="material-symbols fill">favorite</i>
+                        <i class="material-symbols">favorite</i>
                     </button>
                 {else}
                     <button class="button red flat"
                         id="like"
                         onclick="this.classList.add('disabled'); PostActions_ajaxLike('{$post->server}', '{$post->node}', '{$post->nodeid}')">
-                        <i class="material-symbols">favorite</i> {$c->__('button.like')}
+                        <i class="material-symbols fill">favorite</i> {$c->__('button.like')}
                     </button>
                 {/if}
                 <button class="button flat gray" onclick="Post.comment()">

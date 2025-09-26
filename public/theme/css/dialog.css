@@ -1,14 +1,14 @@
 .dialog {
     position: fixed;
-    top: 5%;
-    left: calc(50% - 25rem);
+    top: 8rem;
+    left: calc(50% - 30rem);
     height: initial;
-    width: 50rem;
+    width: 60rem;
 
     overflow: hidden;
 
     box-shadow: var(--elevation-3);
-    border-radius: 1rem;
+    border-radius: 2rem;
     z-index: 4;
     box-sizing: border-box;
     animation: zoom .25s ease-in-out;
@@ -19,7 +19,7 @@
 }
 
 .dialog.scroll {
-    height: 90%;
+    height: calc(100% - 16rem);
 }
 
 .dialog > section {
@@ -67,11 +67,11 @@
     left: 0;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 34rem) {
     .dialog {
-        width: 90%;
+        width: calc(100% - 6rem);
         min-height: 0;
         min-width: 0;
-        left: 5%;
+        left: 3rem;
     }
 }

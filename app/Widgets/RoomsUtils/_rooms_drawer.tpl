@@ -262,7 +262,7 @@
                         {/if}
                         {if="$conference->presence && ($conference->presence->mucrole == 'moderator' || $conference->presence->mucaffiliation == 'owner')"}
                             <span class="control icon active gray divided" onclick="
-                                RoomsUtils_ajaxChangeAffiliation('{$conference->conference|echapJS}', '{$value->jid|echapJS}');
+                                RoomsUtils_ajaxConfigureUser('{$conference->conference|echapJS}', '{$value->jid|echapJS}');
                                 Drawer.clear();">
                                 <i class="material-symbols">manage_accounts</i>
                             </span>

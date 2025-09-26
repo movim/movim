@@ -845,9 +845,9 @@ class RoomsUtils extends Base
     }
 
     /**
-     * @brief Change a user role
+     * @brief Change a user voice
      */
-    public function ajaxChangeRole(string $room, string $mucjid, $form)
+    public function ajaxChangeVoice(string $room, string $mucjid, $form)
     {
         if (!validateRoom($room)) {
             return;
@@ -864,7 +864,7 @@ class RoomsUtils extends Base
                 $p = new SetRole;
                 $p->setTo($room)
                     ->setNick($presence->resource)
-                    ->setRole($form->role->value)
+                    ->setRole($form->voice->value ? 'participant' : 'visitor')
                     ->request();
             }
         }

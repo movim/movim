@@ -3,6 +3,7 @@
 h1 { /* Display 1 */
     font-size: 4.25rem;
     line-height: 7rem;
+    font-weight: 400;
 }
 
 article h1,
@@ -10,12 +11,13 @@ h2 { /* Headline */
     font-size: 3rem;
     line-height: 4rem;
     padding: 1.5rem 0;
+    font-weight: 400;
 }
 
 article h2,
 h3 { /* Title */
     font-size: 2.5rem;
-    font-weight: 600;
+    font-weight: 400;
     line-height: 3rem;
     padding: 1rem 0;
 }
@@ -24,6 +26,7 @@ article h3,
 h4, input, textarea, select { /* Headline */
     font-size: 2rem;
     line-height: 3rem;
+    font-weight: 500;
 }
 
 article h4 {
