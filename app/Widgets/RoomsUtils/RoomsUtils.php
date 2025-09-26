@@ -33,6 +33,7 @@ use Moxl\Xec\Action\Presence\Muc;
 use Moxl\Xec\Action\Presence\Unavailable;
 
 use Illuminate\Database\Capsule\Manager as DB;
+use Moxl\Xec\Action\Muc\SetRole;
 use Moxl\Xec\Action\Register\Remove;
 
 class RoomsUtils extends Base
@@ -52,6 +53,7 @@ class RoomsUtils extends Base
         $this->registerEvent('muc_createchannel_error', 'onChatroomCreatedError');
         $this->registerEvent('muc_changeaffiliation_handle', 'onAffiliationChanged');
         $this->registerEvent('muc_changeaffiliation_errornotallowed', 'onAffiliationChangeUnauthorized');
+        $this->registerEvent('muc_setrole_handle', 'onSetRole');
         $this->registerEvent('message_invite_error', 'onInviteError');
 
         $this->registerEvent('presence_muc_create_handle', 'onMucCreated');
@@ -255,6 +257,11 @@ class RoomsUtils extends Base
     public function onDiscoRegistrationRequired($packet)
     {
         Toast::send($this->__('rooms.disco_registration_required'));
+    }
+
+    public function onSetRole($packet)
+    {
+        Toast::send($this->__('room.role_changed'));
     }
 
     /**
@@ -816,9 +823,9 @@ class RoomsUtils extends Base
     }
 
     /**
-     * @brief Show the change affiliation form
+     * @brief Show the user configuration panel
      */
-    public function ajaxChangeAffiliation(string $room, string $jid)
+    public function ajaxConfigureUser(string $room, string $jid)
     {
         if (!validateRoom($room)) {
             return;
@@ -830,10 +837,37 @@ class RoomsUtils extends Base
 
         $view = $this->tpl();
         $view->assign('room', $conference);
+        $view->assign('presence', $conference->presences()->where('mucjid', $jid)->first());
         $view->assign('member', $conference->members()->where('jid', $jid)->first());
-        $view->assign('jid', $jid);
+        $view->assign('contact', Contact::firstOrNew(['id' => $jid]));
 
-        Dialog::fill($view->draw('_rooms_change_affiliation'));
+        Dialog::fill($view->draw('_rooms_configure_user'));
+    }
+
+    /**
+     * @brief Change a user role
+     */
+    public function ajaxChangeRole(string $room, string $mucjid, $form)
+    {
+        if (!validateRoom($room)) {
+            return;
+        }
+
+        $conference = $this->me->session->conferences()
+            ->where('conference', $room)
+            ->first();
+
+        if ($conference) {
+            $presence = $conference->presences()->where('mucjid', $mucjid)->first();
+
+            if ($presence) {
+                $p = new SetRole;
+                $p->setTo($room)
+                    ->setNick($presence->resource)
+                    ->setRole($form->role->value)
+                    ->request();
+            }
+        }
     }
 
     /**

@@ -33,6 +33,7 @@ v0.32 (master)
 * Remove the necessity to launch the Login page to cache the BASE_URI for the daemon launch
 * Containerfile and podman-compose test scripts
 * Fix #1433 Use directly the Carbon object and not createFromFormat() in Contact::isOld()
+* Allow admins to configure the user role, redesign the chatroom user configuration panel, related to #1478
 
 v0.31
 ---------------------------

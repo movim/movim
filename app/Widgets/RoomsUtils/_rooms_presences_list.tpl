@@ -16,7 +16,7 @@
         {/if}
         {if="$value->mucrole == 'visitor'"}
             <span class="control icon gray" title="{$c->__('rooms.visitor')}">
-                <i class="material-symbols">speaker_notes_off</i>
+                <i class="material-symbols">voice_selection_off</i>
             </span>
         {/if}
         {if="$value->mucjid != $me"}
@@ -28,7 +28,7 @@
         {/if}
         {if="$conference->presence && ($conference->presence->mucrole == 'moderator' || $conference->presence->mucaffiliation == 'owner')"}
             <span class="control icon active gray divided" onclick="
-                RoomsUtils_ajaxChangeAffiliation('{$conference->conference|echapJS}', '{$value->mucjid|echapJS}');
+                RoomsUtils_ajaxConfigureUser('{$conference->conference|echapJS}', '{$value->mucjid|echapJS}');
                 Drawer.clear();">
                 <i class="material-symbols">manage_accounts</i>
             </span>
