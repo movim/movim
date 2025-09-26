@@ -429,7 +429,7 @@ class Contact extends Model
     public function isOld(): bool
     {
         return $this->updated_at !== null
-            && \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $this->updated_at)->addDay()->isBefore(\Carbon\Carbon::now());
+            && $this->updated_at->addDay()->isBefore(\Carbon\Carbon::now());
     }
 
     public function isMe(): bool

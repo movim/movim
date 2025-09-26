@@ -32,6 +32,7 @@ v0.32 (master)
 * Refactor and simplify the internal events system, enforce Packet everywhere
 * Remove the necessity to launch the Login page to cache the BASE_URI for the daemon launch
 * Containerfile and podman-compose test scripts
+* Fix #1433 Use directly the Carbon object and not createFromFormat() in Contact::isOld()
 
 v0.31
 ---------------------------
