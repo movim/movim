@@ -182,6 +182,11 @@ MovimEvents.registerWindow('loaded', 'movimtpl', () => {
 });
 
 MovimEvents.registerWindow('popstate', 'movimtpl', (e) => {
+    if (Dialog.filled()) {
+        Dialog.clear();
+        return;
+    }
+
     if (MovimTpl.popAnchorKey || e.target.location.hash != '') {
         MovimTpl.clearAnchorState();
         return;
