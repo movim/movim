@@ -16,14 +16,14 @@ class Confirm extends Base
         $this->registerEvent('confirm', 'onConfirm');
     }
 
-    public function onConfirm($package)
+    public function onConfirm($packet)
     {
         $view = $this->tpl();
 
-        $view->assign('from', $package->content['from']);
-        $view->assign('id', $package->content['id']);
-        $view->assign('url', $package->content['url']);
-        $view->assign('method', $package->content['method']);
+        $view->assign('from', $packet->content['from']);
+        $view->assign('id', $packet->content['id']);
+        $view->assign('url', $packet->content['url']);
+        $view->assign('method', $packet->content['method']);
 
         Dialog::fill($view->draw('_confirm'));
     }

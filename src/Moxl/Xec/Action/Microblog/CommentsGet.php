@@ -2,13 +2,13 @@
 
 namespace Moxl\Xec\Action\Microblog;
 
+use App\Post;
 use Moxl\Xec\Action;
 use Moxl\Stanza\Pubsub;
 
 class CommentsGet extends Action
 {
     protected $_to;
-    protected $_id;
     protected $_node;
     protected $_parentid;
 
@@ -20,8 +20,7 @@ class CommentsGet extends Action
 
     public function setId($id)
     {
-        $this->_id = $id;
-        $this->_node = 'urn:xmpp:microblog:0:comments/' . $this->_id;
+        $this->_node = Post::COMMENTS_NODE . '/' . $id;
         return $this;
     }
 

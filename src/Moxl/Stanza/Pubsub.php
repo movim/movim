@@ -53,7 +53,7 @@ class Pubsub
         $pubsub->setAttribute('xmlns', 'http://jabber.org/protocol/pubsub');
 
         $create = $dom->createElement('create');
-        $create->setAttribute('node', 'urn:xmpp:microblog:0:comments/' . $node);
+        $create->setAttribute('node', Post::COMMENTS_NODE . '/' . $node);
         $pubsub->appendChild($create);
 
         $configure = $dom->createElement('configure');

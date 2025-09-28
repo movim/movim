@@ -75,11 +75,11 @@ class PubsubAtom
             $link->setAttribute('title', 'comments');
 
             if ($this->repost) {
-                $link->setAttribute('href', 'xmpp:' . $this->repost[0] . '?;node=urn:xmpp:microblog:0:comments/' . $this->repost[2]);
+                $link->setAttribute('href', 'xmpp:' . $this->repost[0] . '?;node=' . Post::COMMENTS_NODE . '/' . $this->repost[2]);
             } elseif ($this->comments === true) {
-                $link->setAttribute('href', 'xmpp:' . $this->to . '?;node=urn:xmpp:microblog:0:comments/' . $this->id);
+                $link->setAttribute('href', 'xmpp:' . $this->to . '?;node=' . Post::COMMENTS_NODE . '/' . $this->id);
             } else {
-                $link->setAttribute('href', 'xmpp:' . $this->comments . '?;node=urn:xmpp:microblog:0:comments/' . $this->id);
+                $link->setAttribute('href', 'xmpp:' . $this->comments . '?;node=' . Post::COMMENTS_NODE . '/' . $this->id);
             }
 
             $entry->appendChild($link);

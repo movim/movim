@@ -27,7 +27,7 @@ class Subscription extends Model
 
     public function scopeNotComments($query)
     {
-        return $query->where('node', 'not like', 'urn:xmpp:microblog:0:comments/%');
+        return $query->where('node', 'not like', Post::COMMENTS_NODE . '/%');
     }
 
     public function toArray()

@@ -36,6 +36,7 @@ class Post extends Model
     public $tags = [];
 
     public const MICROBLOG_NODE = 'urn:xmpp:microblog:0';
+    public const COMMENTS_NODE = 'urn:xmpp:microblog:0:comments';
     public const STORIES_NODE = 'urn:xmpp:pubsub-social-feed:stories:0';
 
     public function contact()
@@ -880,7 +881,7 @@ class Post extends Model
 
     public function isComment(): bool
     {
-        return (substr($this->node, 0, 30) == 'urn:xmpp:microblog:0:comments/');
+        return (str_starts_with($this->node, Post::COMMENTS_NODE));
     }
 
     public function hasCommentsNode(): bool

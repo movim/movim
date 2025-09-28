@@ -29,7 +29,7 @@ class Stories extends Base
         }
     }
 
-    public function onDelete($packet)
+    public function onDelete(Packet $packet)
     {
         if ($packet->content['server'] == $this->me->id
          && $packet->content['node'] == Post::STORIES_NODE) {

@@ -23,9 +23,9 @@ class AccountNext extends \Movim\Widget\Base
         $this->registerEvent('register_get_errorserviceunavailable', 'onServiceUnavailable', 'accountnext');
     }
 
-    public function onForm($package)
+    public function onForm($packet)
     {
-        $form = $package->content;
+        $form = $packet->content;
 
         $xtf = new XMPPtoForm;
         $html = '';
@@ -60,9 +60,9 @@ class AccountNext extends \Movim\Widget\Base
         Toast::send($this->__('error.service_unavailable'));
     }
 
-    public function onRegisterError($package)
+    public function onRegisterError($packet)
     {
-        $error = $package->content;
+        $error = $packet->content;
         Toast::send($error);
     }
 

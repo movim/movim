@@ -552,7 +552,7 @@ class Info extends Model
 
     public function isMicroblogCommentsNode(): bool
     {
-        return (substr($this->node, 0, 29) == 'urn:xmpp:microblog:0:comments');
+        return (str_starts_with($this->node, Post::COMMENTS_NODE));
     }
 
     public function checkCapabilityHash(): bool

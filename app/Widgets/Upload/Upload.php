@@ -28,9 +28,9 @@ class Upload extends Base
         }
     }
 
-    public function onRequested($package)
+    public function onRequested($packet)
     {
-        $content = $package->content;
+        $content = $packet->content;
 
         $upload = \App\Upload::find($content['id']);
         $upload->puturl = $content['put'];

@@ -2,6 +2,7 @@
 
 namespace Moxl\Xec\Action\Microblog;
 
+use App\Post;
 use Moxl\Stanza\Pubsub;
 use Moxl\Stanza\PubsubAtom;
 use Moxl\Xec\Action;
@@ -12,7 +13,6 @@ class CommentPublish extends Action
     protected $_to;
     protected $_node;
     protected $_parentid;
-    protected $_commentnodeid;
 
     protected PubsubAtom $_atom;
 
@@ -35,10 +35,9 @@ class CommentPublish extends Action
         return $this;
     }
 
-    public function setCommentNodeId($commentnodeid)
+    public function setId(string $id)
     {
-        $this->_commentnodeid = $commentnodeid;
-        $this->_node = 'urn:xmpp:microblog:0:comments/'.$this->_commentnodeid;
+        $this->_node = Post::COMMENTS_NODE . '/' . $id;
         $this->_atom->node = $this->_node;
         return $this;
     }
@@ -71,10 +70,10 @@ class CommentPublish extends Action
     {
         $g = new GetItem;
         $g->setTo($this->_to)
-          ->setNode($this->_node)
-          ->setId($this->_atom->id)
-          ->setParentId($this->_parentid)
-          ->request();
+            ->setNode($this->_node)
+            ->setId($this->_atom->id)
+            ->setParentId($this->_parentid)
+            ->request();
 
         $this->pack(($this->_atom->title === '♥'));
         $this->deliver();

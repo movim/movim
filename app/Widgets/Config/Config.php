@@ -44,9 +44,9 @@ class Config extends Base
         return $view->draw('_config_form');
     }
 
-    public function onConfig($package)
+    public function onConfig($packet)
     {
-        $this->me->setConfig($package->content);
+        $this->me->setConfig($packet->content);
         $this->me->save();
 
         $this->refreshConfig();
@@ -54,10 +54,10 @@ class Config extends Base
         Toast::send($this->__('config.updated'));
     }
 
-    public function onMAMConfig($package)
+    public function onMAMConfig($packet)
     {
         $view = $this->tpl();
-        $view->assign('default', $package->content);
+        $view->assign('default', $packet->content);
         $this->rpc('MovimTpl.fill', '#config_widget_mam', $view->draw('_config_mam'));
     }
 
@@ -71,11 +71,11 @@ class Config extends Base
         Toast::send($this->__('config.blog_saved'));
     }
 
-    public function onBlogConfig($package)
+    public function onBlogConfig($packet)
     {
         $view = $this->tpl();
 
-        $value = $package->content['config']->xpath('//field[@var=\'pubsub#access_model\']/value/text()');
+        $value = $packet->content['config']->xpath('//field[@var=\'pubsub#access_model\']/value/text()');
 
         if (is_array($value)) {
             $view->assign('default', (string)$value[0]);

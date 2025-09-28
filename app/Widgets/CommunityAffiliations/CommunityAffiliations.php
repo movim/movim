@@ -12,7 +12,7 @@ use Moxl\Xec\Action\Pubsub\Delete;
 use Moxl\Xec\Action\Pubsub\GetAffiliations;
 use Moxl\Xec\Action\Pubsub\SetAffiliations;
 use Moxl\Xec\Action\Pubsub\GetSubscriptions;
-
+use Moxl\Xec\Payload\Packet;
 use Respect\Validation\Validator;
 
 class CommunityAffiliations extends Base
@@ -106,11 +106,11 @@ class CommunityAffiliations extends Base
         Dialog::fill($view->draw('_communityaffiliations_subscriptions'), true);
     }
 
-    private function deleted($packet)
+    private function deleted(Packet $packet)
     {
         if (
             $packet->content['server'] != $this->me->id
-            && substr($packet->content['node'], 0, 29) != 'urn:xmpp:microblog:0:comments'
+            && str_starts_with($packet->content['node'], Post::COMMENTS_NODE)
         ) {
             $this->rpc(
                 'MovimUtils.redirect',

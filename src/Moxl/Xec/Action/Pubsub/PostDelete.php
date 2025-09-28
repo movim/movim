@@ -20,12 +20,13 @@ class PostDelete extends Action
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
         \App\Post::where('server', $this->_to)->where('node', $this->_node)
-                 ->where('nodeid', $this->_id)->delete();
+            ->where('nodeid', $this->_id)->delete();
 
         $this->pack([
             'server' => $this->_to,
             'node' => $this->_node,
-            'id' => $this->_id]);
+            'id' => $this->_id
+        ]);
 
         $this->deliver();
     }
@@ -33,6 +34,6 @@ class PostDelete extends Action
     public function error(string $errorId, ?string $message = null)
     {
         \App\Post::where('server', $this->_to)->where('node', $this->_node)
-                 ->where('nodeid', $this->_id)->delete();
+            ->where('nodeid', $this->_id)->delete();
     }
 }

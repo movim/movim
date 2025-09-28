@@ -2,6 +2,7 @@
 
 namespace App\Widgets\PostActions;
 
+use App\Post as AppPost;
 use App\Widgets\Dialog\Dialog;
 use App\Widgets\Post\Post;
 use App\Widgets\Toast\Toast;
@@ -9,6 +10,7 @@ use Movim\Widget\Base;
 
 use Moxl\Xec\Action\Pubsub\PostDelete;
 use Moxl\Xec\Action\Pubsub\Delete;
+use Moxl\Xec\Payload\Packet;
 
 class PostActions extends Base
 {
@@ -19,18 +21,18 @@ class PostActions extends Base
         $this->addjs('postactions.js');
     }
 
-    public function onDelete($packet)
+    public function onDelete(Packet $packet)
     {
         list($server, $node, $id) = array_values($packet->content);
 
-        if (substr($node, 0, 29) == 'urn:xmpp:microblog:0:comments') {
+        if (str_starts_with($node, AppPost::COMMENTS_NODE)) {
             Toast::send($this->__('post.comment_deleted'));
         } else {
             Toast::send($this->__('post.deleted'));
 
             $this->rpc(
                 'PostActions.handleDelete',
-                ($node == 'urn:xmpp:microblog:0') ?
+                ($node == AppPost::MICROBLOG_NODE) ?
                     $this->route('news') :
                     $this->route('community', [$server, $node])
             );
@@ -39,7 +41,7 @@ class PostActions extends Base
         $this->rpc('MovimTpl.remove', '#' . cleanupId($id));
     }
 
-    public function ajaxLike($to, $node, $id)
+    public function ajaxLike(string $to, string $node, string $id)
     {
         $p = \App\Post::where('server', $to)
             ->where('node', $node)
@@ -87,7 +89,7 @@ class PostActions extends Base
             if (!$post->isComment()) {
                 $p = new Delete;
                 $p->setTo($post->commentserver)
-                    ->setNode('urn:xmpp:microblog:0:comments/' . $post->commentnodeid)
+                    ->setNode(AppPost::COMMENTS_NODE . '/' . $post->commentnodeid)
                     ->request();
             }
         }

@@ -34,16 +34,16 @@ class Account extends \Movim\Widget\Base
         $this->rpc('Account.refreshFingerprints');
     }
 
-    public function onAdHocList($package)
+    public function onAdHocList($packet)
     {
-        $list = $package->content;
+        $list = $packet->content;
 
         $view = $this->tpl();
         $view->assign('list', $list);
 
         $this->rpc(
             'MovimTpl.fill',
-            '#gateway_' . cleanupId($package->from),
+            '#gateway_' . cleanupId($packet->from),
             $view->draw('_account_gateway_adhoc_list')
         );
     }
@@ -69,9 +69,9 @@ class Account extends \Movim\Widget\Base
         Toast::send($this->__('client.registered'));
     }
 
-    public function onRegister($package)
+    public function onRegister($packet)
     {
-        $content = $package->content;
+        $content = $packet->content;
 
         $view = $this->tpl();
 
@@ -80,7 +80,7 @@ class Account extends \Movim\Widget\Base
             $form = $xml->getHTML($content->x);
 
             $view->assign('form', $form);
-            $view->assign('from', $package->from);
+            $view->assign('from', $packet->from);
             $view->assign('attributes', $content->attributes());
             $view->assign('actions', null);
             if (isset($content->actions)) {

@@ -22,9 +22,9 @@ class ContactBlogConfig extends Base
         }
     }
 
-    public function onBlogConfig($package)
+    public function onBlogConfig($packet)
     {
-        if ($package->content['access_model'] == 'presence') {
+        if ($packet->content['access_model'] == 'presence') {
             $view = $this->tpl();
             $this->rpc('MovimTpl.fill', '#contact_blog_config_widget', $view->draw('_contactblogconfig'));
         }

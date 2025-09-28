@@ -56,8 +56,7 @@ class Post extends Base
 
     public function onCommentPublished(Packet $packet)
     {
-        $isLike = $packet->content;
-        Toast::send($isLike
+        Toast::send($packet->content
             ? $this->__('post.comment_like_published')
             : $this->__('post.comment_published'));
     }
@@ -201,7 +200,7 @@ class Post extends Base
             $cp = new CommentPublish;
             $cp->setTo($p->commentserver)
                 ->setFrom($this->me->id)
-                ->setCommentNodeId($p->commentnodeid)
+                ->setId($p->commentnodeid)
                 ->setTitle(htmlspecialchars(rawurldecode($comment)))
                 ->setParentId($p->id)
                 ->request();
