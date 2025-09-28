@@ -13,7 +13,7 @@
                         {if="$public"}
                             {$value->truename}{if="$key + 1 < $post->likes->count()"},{/if}
                         {else}
-                            {if="$value->isMine()"}
+                            {if="$value->isMine($c->me)"}
                                 {$liked = [$value->server, $value->node, $value->nodeid]}
                             {/if}
                             <a title="{$value->published|prepareDate:true,true}"
@@ -41,8 +41,8 @@
     {loop="$post->comments"}
         {if="$value->title"}
         <li id="{$value->nodeid|cleanupId}"
-            {if="!$public && $value->isMine(true) && $value->isLike()"}class="mine"{/if}>
-            {if="!$public && ($value->isMine() || $post->isMine())"}
+            {if="!$public && $value->isMine($c->me, true) && $value->isLike()"}class="mine"{/if}>
+            {if="!$public && ($value->isMine($c->me) || $post->isMine($c->me))"}
                 <span class="control icon gray active"
                       onclick="PostActions_ajaxDelete('{$value->server}', '{$value->node}', '{$value->nodeid}')">
                     <i class="material-symbols">delete</i>

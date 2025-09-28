@@ -15,7 +15,7 @@
                     <img src="{$story->contact->getPicture()}">
                 </span>
             {/if}
-            {if="$story->isMine()"}
+            {if="$story->isMine($c->me)"}
             <span class="control icon active" onclick="StoriesViewer.pause(); StoriesViewer_ajaxDelete('{$story->id}')">
                 <i class="material-symbols fill">delete</i>
             </span>
@@ -52,7 +52,7 @@
                 <p class="normal title">{autoescape="off"}{$story->title|addHashtagsLinks}{/autoescape}</p>
             </div>
         </li>
-        {if="!$story->isMine()"}
+        {if="!$story->isMine()$c->me"}
         <li class="comment">
             <span class="control icon active" onclick="StoriesViewer.sendComment({$story->id})">
                 <i class="material-symbols">send</i>

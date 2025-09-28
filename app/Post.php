@@ -824,14 +824,14 @@ class Post extends Model
         return \App\Post::find($this->parent_id);
     }
 
-    public function isMine($force = false): bool
+    public function isMine(User $me, ?bool $force = false): bool
     {
         if ($force) {
-            return ($this->aid == me()->id);
+            return ($this->aid == $me->id);
         }
 
-        return ($this->aid == me()->id
-            || $this->server == me()->id);
+        return ($this->aid == $me->id
+            || $this->server == $me->id);
     }
 
     public function isMicroblog(): bool

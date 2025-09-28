@@ -80,7 +80,7 @@ class Menu extends Base
             return;
         }
 
-        if ($post->isComment() && !$post->isMine()) {
+        if ($post->isComment() && !$post->isMine($this->me)) {
             $contact = \App\Contact::where('id', $post->aid)->first();
             $parent = $post->parent;
 
@@ -94,13 +94,14 @@ class Menu extends Base
                 );
             }
         } elseif (
-            $count > 0
+            !$post->isComment()
+            && $count > 0
             && (strtotime($post->published) > strtotime($since))
         ) {
             if ($post->isMicroblog() || $post->isStory()) {
                 $contact = \App\Contact::firstOrNew(['id' => $post->server]);
 
-                if (!$post->isMine()) {
+                if (!$post->isMine($this->me)) {
                     Notif::append(
                         'news',
                         '📝 ' . ($post->isStory() ? __('stories.new_story', $contact->truename) : $contact->truename),

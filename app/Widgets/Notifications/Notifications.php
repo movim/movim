@@ -38,7 +38,7 @@ class Notifications extends Base
     {
         $post = Post::find($packet->content);
 
-        if ($post && $post->isComment() && !$post->isMine()) {
+        if ($post && $post->isComment() && !$post->isMine($this->me)) {
             $this->ajaxSetCounter();
         }
     }

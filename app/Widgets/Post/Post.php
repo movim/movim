@@ -36,11 +36,10 @@ class Post extends Base
         if ($post) {
             if ($post->isComment()) {
                 $parent = $post->getParent();
-
                 $this->rpc(
                     'MovimTpl.fill',
                     '#post_widget.' . cleanupId($parent->nodeid) . ' #comments',
-                    $this->prepareComments($post->getParent())
+                    $this->prepareComments($parent)
                 );
                 $this->rpc('MovimUtils.applyAutoheight');
             } else {

@@ -68,12 +68,12 @@ class CommentPublish extends Action
 
     public function handle(?\SimpleXMLElement $stanza = null, ?\SimpleXMLElement $parent = null)
     {
-        $g = new GetItem;
+        /*$g = new GetItem;
         $g->setTo($this->_to)
             ->setNode($this->_node)
             ->setId($this->_atom->id)
             ->setParentId($this->_parentid)
-            ->request();
+            ->request();*/
 
         $this->pack(($this->_atom->title === '♥'));
         $this->deliver();

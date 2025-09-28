@@ -235,7 +235,7 @@
                         {/if}
                     {/if}
 
-                    {if="$post->isMine() || ($post->userAffiliation && $post->userAffiliation->affiliation == 'owner')"}
+                    {if="$post->isMine($c->me) || ($post->userAffiliation && $post->userAffiliation->affiliation == 'owner')"}
                         {if="$post->isEditable()"}
                             <a class="button narrow icon flat oppose gray on_desktop"
                             href="{$c->route('publish', [$post->server, $post->node, $post->nodeid])}"
