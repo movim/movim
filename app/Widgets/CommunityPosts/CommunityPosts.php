@@ -26,7 +26,7 @@ class CommunityPosts extends Base
         $this->addjs('communityposts.js');
     }
 
-    public function onItemsId($packet)
+    public function onItemsId(Packet $packet)
     {
         list($origin, $node, $ids, $first, $last, $count, $paginated, $before, $after, $query)
             = array_values($packet->content);
@@ -51,12 +51,12 @@ class CommunityPosts extends Base
         );
     }
 
-    public function onConfigSaved($packet)
+    public function onConfigSaved(Packet $packet)
     {
         $this->rpc('CommunityPosts.getItems');
     }
 
-    public function tonItemsErrorPresenceSubscriptionRequired($packet)
+    public function tonItemsErrorPresenceSubscriptionRequired(Packet $packet)
     {
         list($origin, $node) = array_values($packet->content);
 
@@ -69,7 +69,7 @@ class CommunityPosts extends Base
         );
     }
 
-    public function onItemsError($packet)
+    public function onItemsError(Packet $packet)
     {
         list($origin, $node) = array_values($packet->content);
 

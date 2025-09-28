@@ -43,7 +43,7 @@ class Notifications extends Base
         }
     }
 
-    public function onRoster($packet)
+    public function onRoster(Packet $packet)
     {
         $contact = $this->me->session->contacts()->where('jid', $packet->content)->first();
 

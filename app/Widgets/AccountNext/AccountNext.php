@@ -7,6 +7,7 @@ use Movim\Librairies\XMPPtoForm;
 use Moxl\Xec\Action\Register\Set;
 
 use Movim\Session;
+use Moxl\Xec\Payload\Packet;
 
 class AccountNext extends \Movim\Widget\Base
 {
@@ -23,7 +24,7 @@ class AccountNext extends \Movim\Widget\Base
         $this->registerEvent('register_get_errorserviceunavailable', 'onServiceUnavailable', 'accountnext');
     }
 
-    public function onForm($packet)
+    public function onForm(Packet $packet)
     {
         $form = $packet->content;
 
@@ -49,7 +50,7 @@ class AccountNext extends \Movim\Widget\Base
         $this->rpc('MovimTpl.fill', '#subscription_form', $html);
     }
 
-    public function onRegistered($packet)
+    public function onRegistered(Packet $packet)
     {
         $view = $this->tpl();
         $this->rpc('MovimTpl.fill', '#subscribe', $view->draw('_accountnext_registered'));
@@ -60,7 +61,7 @@ class AccountNext extends \Movim\Widget\Base
         Toast::send($this->__('error.service_unavailable'));
     }
 
-    public function onRegisterError($packet)
+    public function onRegisterError(Packet $packet)
     {
         $error = $packet->content;
         Toast::send($error);

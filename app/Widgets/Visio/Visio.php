@@ -88,7 +88,7 @@ class Visio extends Base
         }
     }
 
-    public function onMucMujiCreated($packet)
+    public function onMucMujiCreated(Packet $packet)
     {
         $presence = $packet->content;
 
@@ -97,17 +97,17 @@ class Visio extends Base
             ->request();
     }
 
-    public function onMucMujiPreparing($packet)
+    public function onMucMujiPreparing(Packet $packet)
     {
         $this->ajaxMujiTrigger();
     }
 
-    public function onCallInviteRetract($packet)
+    public function onCallInviteRetract(Packet $packet)
     {
         $this->rpc('MovimVisio.clear');
     }
 
-    public function onExternalServices($packet)
+    public function onExternalServices(Packet $packet)
     {
         $externalServices = [];
         if ($packet->content) {
@@ -139,7 +139,7 @@ class Visio extends Base
         }
     }
 
-    public function onMujiPresence($packet)
+    public function onMujiPresence(Packet $packet)
     {
         list($stanza, $presence) = $packet->content;
         if (
@@ -159,7 +159,7 @@ class Visio extends Base
         }
     }
 
-    public function onExternalServicesError($packet)
+    public function onExternalServicesError(Packet $packet)
     {
         $this->setDefaultServices();
 
@@ -192,7 +192,7 @@ class Visio extends Base
     }
 
     // Deprecated
-    public function onAccept($packet)
+    public function onAccept(Packet $packet)
     {
         $this->rpc('Notif.incomingCallAnswer');
         CurrentCall::getInstance()->start(\baseJid($packet->from), $packet->content);

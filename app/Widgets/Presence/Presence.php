@@ -20,6 +20,7 @@ use App\Widgets\Chats\Chats;
 use App\Widgets\Dialog\Dialog;
 use Movim\CurrentCall;
 use Moxl\Xec\Action\Blocking\Request;
+use Moxl\Xec\Payload\Packet;
 
 class Presence extends Base
 {
@@ -46,7 +47,7 @@ class Presence extends Base
             ->request();
     }
 
-    public function tonMyPresence($packet)
+    public function tonMyPresence(Packet $packet)
     {
         $this->rpc('MovimTpl.fill', '#presence_widget', $this->preparePresence());
     }

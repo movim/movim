@@ -7,6 +7,7 @@ use Movim\Widget\Base;
 
 use App\Contact;
 use App\Widgets\Drawer\Drawer;
+use Moxl\Xec\Payload\Packet;
 
 class RoomsExplore extends Base
 {
@@ -17,7 +18,7 @@ class RoomsExplore extends Base
         $this->registerEvent('extendedchannelsearch_search_error', 'onGlobalSearchError', 'chat');
     }
 
-    public function onGlobalSearch($packet)
+    public function onGlobalSearch(Packet $packet)
     {
         $view = $this->tpl();
 
@@ -47,7 +48,7 @@ class RoomsExplore extends Base
         $this->rpc('RoomsExplore.searchClear');
     }
 
-    public function onGlobalSearchError($packet)
+    public function onGlobalSearchError(Packet $packet)
     {
         $this->rpc('MovimTpl.fill', '#roomsexplore_global', '');
         $this->searchLocally($packet->content);

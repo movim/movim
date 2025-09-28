@@ -10,10 +10,10 @@ use App\Widgets\Drawer\Drawer;
 use App\Widgets\Post\Post;
 use App\Widgets\Toast\Toast;
 use Movim\CurrentCall;
-use Movim\EmbedLight;
 use Movim\Widget\Base;
 use Moxl\Xec\Action\Blocking\Block;
 use Moxl\Xec\Action\Blocking\Unblock;
+use Moxl\Xec\Payload\Packet;
 
 class ContactActions extends Base
 {
@@ -28,17 +28,17 @@ class ContactActions extends Base
         $this->registerEvent('roster_updateitem_handle', 'onUpdate');
     }
 
-    public function onDelete($packet)
+    public function onDelete(Packet $packet)
     {
         Toast::send($this->__('roster.deleted'));
     }
 
-    public function onAdd($packet)
+    public function onAdd(Packet $packet)
     {
         Toast::send($this->__('roster.added'));
     }
 
-    public function onUpdate($packet = false)
+    public function onUpdate(Packet $packet)
     {
         Toast::send($this->__('roster.updated'));
     }

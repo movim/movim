@@ -36,7 +36,7 @@ class Publish extends Base
         $this->addcss('publish.css');
     }
 
-    public function onPublish($packet)
+    public function onPublish(Packet $packet)
     {
         Toast::send($this->__('post.published'));
 
@@ -53,7 +53,7 @@ class Publish extends Base
         }
     }
 
-    public function onBlogConfig($packet)
+    public function onBlogConfig(Packet $packet)
     {
         if ($packet->content['access_model'] == 'presence') {
             $view = $this->tpl();
@@ -61,7 +61,7 @@ class Publish extends Base
         }
     }
 
-    public function onPublishErrorForbidden($packet)
+    public function onPublishErrorForbidden(Packet $packet)
     {
         Toast::send($this->__('publish.publish_error_forbidden'));
 

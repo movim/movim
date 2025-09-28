@@ -29,7 +29,7 @@ class CommunityAffiliations extends Base
         $this->addjs('communityaffiliations.js');
     }
 
-    public function onAffiliations($packet)
+    public function onAffiliations(Packet $packet)
     {
         list($server, $node) = array_values($packet->content);
 
@@ -86,12 +86,12 @@ class CommunityAffiliations extends Base
         );
     }
 
-    public function onAffiliationsSet($packet)
+    public function onAffiliationsSet(Packet $packet)
     {
         Toast::send($this->__('communityaffiliation.role_set'));
     }
 
-    public function onSubscriptions($packet)
+    public function onSubscriptions(Packet $packet)
     {
         list($subscriptions, $server, $node) = array_values($packet->content);
 
@@ -122,14 +122,14 @@ class CommunityAffiliations extends Base
         }
     }
 
-    public function onDelete($packet)
+    public function onDelete(Packet $packet)
     {
         Toast::send($this->__('communityaffiliation.deleted'));
 
         $this->deleted($packet);
     }
 
-    public function onDeleteError($packet)
+    public function onDeleteError(Packet $packet)
     {
         Toast::send($this->__('communityaffiliation.delete_error'));
 

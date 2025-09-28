@@ -5,6 +5,7 @@ namespace App\Widgets\ContactSubscriptions;
 use Movim\Widget\Base;
 
 use Moxl\Xec\Action\PubsubSubscription\Get as GetPubsubSubscriptions;
+use Moxl\Xec\Payload\Packet;
 
 class ContactSubscriptions extends Base
 {
@@ -14,7 +15,7 @@ class ContactSubscriptions extends Base
         $this->registerEvent('pubsubsubscription_get_handle', 'onPubsubSubscriptionReceived', 'contact');
     }
 
-    public function onPubsubSubscriptionReceived($packet)
+    public function onPubsubSubscriptionReceived(Packet $packet)
     {
         $jid = $packet->content;
         $this->rpc('MovimTpl.fill', '#'.cleanupId($jid) . '_contact_subscriptions', $this->prepareSubscriptions($jid));

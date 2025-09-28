@@ -17,6 +17,7 @@ use App\Widgets\Toast\Toast;
 use Movim\Widget\Base;
 
 use Movim\Cookie;
+use Moxl\Xec\Payload\Packet;
 
 class Login extends Base
 {
@@ -39,7 +40,7 @@ class Login extends Base
         $this->registerEvent('streamerror', 'onFailAuth');
     }
 
-    public function onStart($packet)
+    public function onStart(Packet $packet)
     {
         //$session = Session::instance();
 
@@ -49,17 +50,17 @@ class Login extends Base
         //}
     }
 
-    public function onConnected($packet)
+    public function onConnected()
     {
         Toast::send($this->__('connection.socket_connected'));
     }
 
-    public function onSASLSuccess($packet)
+    public function onSASLSuccess(Packet $packet)
     {
         Toast::send($this->__('connection.authenticated'));
     }
 
-    public function onConfig($packet)
+    public function onConfig(Packet $packet)
     {
         $p = new Presence;
         $p->start();
@@ -163,7 +164,7 @@ class Login extends Base
         $this->showErrorBlock('timeout');
     }
 
-    public function onSASLFailure($packet)
+    public function onSASLFailure(Packet $packet)
     {
         switch ($packet->content) {
             case 'invalid-mechanism':

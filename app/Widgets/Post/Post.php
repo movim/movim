@@ -94,7 +94,7 @@ class Post extends Base
         $this->rpc('MovimTpl.fill', '#comments', $view->draw('_post_comments_error'));
     }
 
-    public function onDelete($packet)
+    public function onDelete(Packet $packet)
     {
         $this->rpc('Post.refreshComments');
     }

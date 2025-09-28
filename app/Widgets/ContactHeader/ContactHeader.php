@@ -7,6 +7,7 @@ use App\Widgets\Dialog\Dialog;
 use Movim\Widget\Base;
 
 use Moxl\Xec\Action\Roster\UpdateItem;
+use Moxl\Xec\Payload\Packet;
 
 class ContactHeader extends Base
 {
@@ -19,12 +20,12 @@ class ContactHeader extends Base
         $this->registerEvent('vcard4_get_handle', 'onVcardReceived', 'contact');
     }
 
-    public function onUpdate($packet)
+    public function onUpdate(Packet $packet)
     {
         $this->rpc('MovimTpl.fill', '#' . cleanupId($packet->content) . '_contact_header', $this->prepareHeader($packet->content));
     }
 
-    public function onVcardReceived($packet)
+    public function onVcardReceived(Packet $packet)
     {
         $this->rpc('MovimTpl.fill', '#' . cleanupId($packet->content) . '_contact_header', $this->prepareHeader($packet->content));
     }

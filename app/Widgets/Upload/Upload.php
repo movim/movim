@@ -7,6 +7,7 @@ use App\Widgets\Toast\Toast;
 use Movim\Widget\Base;
 
 use Moxl\Xec\Action\Upload\Request;
+use Moxl\Xec\Payload\Packet;
 
 class Upload extends Base
 {
@@ -28,7 +29,7 @@ class Upload extends Base
         }
     }
 
-    public function onRequested($packet)
+    public function onRequested(Packet $packet)
     {
         $content = $packet->content;
 

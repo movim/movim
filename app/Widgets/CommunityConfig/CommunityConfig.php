@@ -12,6 +12,7 @@ use Movim\Widget\Base;
 use Moxl\Xec\Action\Pubsub\GetConfig;
 use Moxl\Xec\Action\Pubsub\SetConfig;
 use Moxl\Xec\Action\Avatar\Set as AvatarSet;
+use Moxl\Xec\Payload\Packet;
 
 class CommunityConfig extends Base
 {
@@ -23,7 +24,7 @@ class CommunityConfig extends Base
         $this->registerEvent('avatar_set_pubsub', 'onAvatarSet');
     }
 
-    public function onConfig($packet)
+    public function onConfig(Packet $packet)
     {
         list($config, $accessModel, $origin, $node, $advanced) = array_values($packet->content);
 
@@ -42,7 +43,7 @@ class CommunityConfig extends Base
         $this->rpc('MovimUtils.applyAutoheight');
     }
 
-    public function onAvatarSet($packet)
+    public function onAvatarSet(Packet $packet)
     {
         $this->rpc('Dialog_ajaxClear');
         Toast::send($this->__('avatar.updated'));
@@ -53,7 +54,7 @@ class CommunityConfig extends Base
         Toast::send($this->__('communityaffiliation.config_saved'));
     }
 
-    public function onConfigError($packet)
+    public function onConfigError(Packet $packet)
     {
         Toast::send(
             $packet->content ??

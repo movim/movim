@@ -29,7 +29,7 @@ class Stickers extends \Movim\Widget\Base
         $this->registerEvent('bob', 'onRequest');
     }
 
-    public function onRequest($packet)
+    public function onRequest(Packet $packet)
     {
         list($to, $id, $cid) = array_values($packet->content);
 

@@ -15,6 +15,7 @@ use Moxl\Xec\Action\Message\Moderate;
 use Moxl\Xec\Action\Message\Retract;
 
 use Illuminate\Database\Capsule\Manager as DB;
+use Moxl\Xec\Payload\Packet;
 
 class ChatActions extends \Movim\Widget\Base
 {
@@ -27,13 +28,13 @@ class ChatActions extends \Movim\Widget\Base
         $this->registerEvent('blocking_unblock_handle', 'onUnblock');
     }
 
-    public function onBlock($packet)
+    public function onBlock(Packet $packet)
     {
         Toast::send($this->__('blocked.account_blocked'));
         $this->rpc('Chat_ajaxGet', $packet->content);
     }
 
-    public function onUnblock($packet)
+    public function onUnblock(Packet $packet)
     {
         Toast::send($this->__('blocked.account_unblocked'));
         $this->rpc('Chat_ajaxGet', $packet->content);

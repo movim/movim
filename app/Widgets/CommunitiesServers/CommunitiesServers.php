@@ -8,6 +8,7 @@ use Movim\Widget\Base;
 
 use Moxl\Xec\Action\Disco\Request;
 use Moxl\Xec\Action\Disco\Items;
+use Moxl\Xec\Payload\Packet;
 
 class CommunitiesServers extends Base
 {
@@ -20,26 +21,26 @@ class CommunitiesServers extends Base
         $this->addjs('communitiesservers.js');
     }
 
-    public function onDisco($packet)
+    public function onDisco(Packet $packet)
     {
         Toast::send($this->__('communities.disco'));
         $this->ajaxHttpGet();
         $this->rpc('Dialog_ajaxClear');
     }
 
-    public function onDiscoInfo($packet)
+    public function onDiscoInfo(Packet $packet)
     {
         if ($packet->content->isPubsubService()) {
             $this->ajaxHttpGet();
         }
     }
 
-    public function onDiscoError($packet)
+    public function onDiscoError(Packet $packet)
     {
         Toast::send($this->__('communities.disco_error'));
     }
 
-    public function onDiscoNotFound($packet)
+    public function onDiscoNotFound(Packet $packet)
     {
         Toast::send($this->__('page.not_found'));
     }

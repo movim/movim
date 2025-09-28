@@ -15,6 +15,7 @@ use Moxl\Xec\Action\MAM\GetConfig;
 use Moxl\Xec\Action\MAM\SetConfig;
 use Moxl\Xec\Action\Pubsub\GetConfig as PubsubGetConfig;
 use Moxl\Xec\Action\Pubsub\SetConfig as PubsubSetConfig;
+use Moxl\Xec\Payload\Packet;
 use Respect\Validation\Validator;
 
 class Config extends Base
@@ -44,7 +45,7 @@ class Config extends Base
         return $view->draw('_config_form');
     }
 
-    public function onConfig($packet)
+    public function onConfig(Packet $packet)
     {
         $this->me->setConfig($packet->content);
         $this->me->save();
@@ -54,7 +55,7 @@ class Config extends Base
         Toast::send($this->__('config.updated'));
     }
 
-    public function onMAMConfig($packet)
+    public function onMAMConfig(Packet $packet)
     {
         $view = $this->tpl();
         $view->assign('default', $packet->content);
@@ -71,7 +72,7 @@ class Config extends Base
         Toast::send($this->__('config.blog_saved'));
     }
 
-    public function onBlogConfig($packet)
+    public function onBlogConfig(Packet $packet)
     {
         $view = $this->tpl();
 

@@ -7,6 +7,7 @@ use Movim\Widget\Base;
 
 use Moxl\Xec\Action\Confirm\Accept;
 use Moxl\Xec\Action\Confirm\Refuse;
+use Moxl\Xec\Payload\Packet;
 
 class Confirm extends Base
 {
@@ -16,7 +17,7 @@ class Confirm extends Base
         $this->registerEvent('confirm', 'onConfirm');
     }
 
-    public function onConfirm($packet)
+    public function onConfirm(Packet $packet)
     {
         $view = $this->tpl();
 

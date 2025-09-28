@@ -7,6 +7,7 @@ use App\Widgets\Toast\Toast;
 use Movim\Image;
 use Moxl\Xec\Action\Avatar\Get;
 use Moxl\Xec\Action\Avatar\Set;
+use Moxl\Xec\Payload\Packet;
 
 class Avatar extends \Movim\Widget\Base
 {
@@ -23,13 +24,13 @@ class Avatar extends \Movim\Widget\Base
         $this->registerEvent('avatar_set_errornotallowed', 'onMyAvatarError');
     }
 
-    public function onSetAvatar($packet)
+    public function onSetAvatar(Packet $packet)
     {
         $this->ajaxGetAvatar();
         $this->rpc('MovimTpl.fill', '#avatar', $this->prepareForm());
     }
 
-    public function onSetBanner($packet)
+    public function onSetBanner(Packet $packet)
     {
         global $loop;
 
@@ -38,7 +39,7 @@ class Avatar extends \Movim\Widget\Base
         });
     }
 
-    public function onGetAvatar($packet)
+    public function onGetAvatar(Packet $packet)
     {
         $this->rpc('MovimTpl.fill', '#avatar', $this->prepareForm());
         $this->rpc('Dialog_ajaxClear');

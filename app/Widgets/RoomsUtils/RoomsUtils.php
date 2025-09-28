@@ -238,28 +238,28 @@ class RoomsUtils extends Base
         $r->setData($vcard)->setTo($room)->request();
     }
 
-    public function onAvatarSet($packet)
+    public function onAvatarSet(Packet $packet)
     {
         $this->rpc('Dialog_ajaxClear');
         Toast::send($this->__('avatar.updated'));
     }
 
-    public function onMucCreated($packet)
+    public function onMucCreated(Packet $packet)
     {
         $this->rpc('RoomsUtils.configureCreatedRoom');
     }
 
-    public function onPresenceMucNotAllowed($packet)
+    public function onPresenceMucNotAllowed(Packet $packet)
     {
         Toast::send($this->__('chatrooms.notallowed'));
     }
 
-    public function onDiscoRegistrationRequired($packet)
+    public function onDiscoRegistrationRequired(Packet $packet)
     {
         Toast::send($this->__('rooms.disco_registration_required'));
     }
 
-    public function onSetRole($packet)
+    public function onSetRole(Packet $packet)
     {
         Toast::send($this->__('room.role_changed'));
     }
@@ -267,7 +267,7 @@ class RoomsUtils extends Base
     /**
      * @brief Affiliation changed for a user
      */
-    public function onAffiliationChanged($packet)
+    public function onAffiliationChanged(Packet $packet)
     {
         $affiliation = $packet->content;
 
@@ -297,7 +297,7 @@ class RoomsUtils extends Base
     /**
      * @brief When the affiliation change is unauthorized
      */
-    public function onAffiliationChangeUnauthorized($packet)
+    public function onAffiliationChangeUnauthorized(Packet $packet)
     {
         Toast::send($this->__('room.change_affiliation_unauthorized'));
     }
@@ -305,7 +305,7 @@ class RoomsUtils extends Base
     /**
      * @brief If a chatroom is successfuly created
      */
-    public function onChatroomCreated($packet)
+    public function onChatroomCreated(Packet $packet)
     {
         Toast::send($this->__('chatrooms.created'));
 
@@ -345,7 +345,7 @@ class RoomsUtils extends Base
     /**
      * @brief If a chatroom creation is failing
      */
-    public function onChatroomCreatedError($packet)
+    public function onChatroomCreatedError(Packet $packet)
     {
         Toast::send($packet->content);
     }
@@ -617,7 +617,7 @@ class RoomsUtils extends Base
         }
     }
 
-    public function onInviteError($packet)
+    public function onInviteError(Packet $packet)
     {
         Toast::send($packet->content);
     }
@@ -913,7 +913,7 @@ class RoomsUtils extends Base
         $g->request();
     }
 
-    public function onDiscoGateway($packet)
+    public function onDiscoGateway(Packet $packet)
     {
         $view = $this->tpl();
 
@@ -953,7 +953,7 @@ class RoomsUtils extends Base
         $this->rpc('MovimTpl.fill', '#gateway_rooms', $view->draw('_rooms_gateway_rooms'));
     }
 
-    public function onDiscoGatewayError($packet)
+    public function onDiscoGatewayError(Packet $packet)
     {
         $this->ajaxResetGatewayRooms();
     }

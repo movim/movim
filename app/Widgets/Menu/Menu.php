@@ -39,7 +39,7 @@ class Menu extends Base
         }
     }
 
-    public function onRetract($packet)
+    public function onRetract(Packet $packet)
     {
         $this->ajaxHttpGetAll();
     }

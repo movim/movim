@@ -40,18 +40,18 @@ class Chats extends Base
         $this->registerEvent('callinviteleft', 'onCallInvite');
     }
 
-    public function onStart($packet)
+    public function onStart(Packet $packet)
     {
         $tpl = $this->tpl();
         $tpl->cacheClear('_chats_item');
     }
 
-    public function onCallInvite($packet)
+    public function onCallInvite(Packet $packet)
     {
         $this->rpc('MovimTpl.fill', '#chats_calls_list', $this->prepareCalls());
     }
 
-    public function onMessage($packet)
+    public function onMessage(Packet $packet)
     {
         $message = $packet->content;
 

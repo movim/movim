@@ -8,6 +8,7 @@ use Moxl\Xec\Action\OMEMO\CleanDevicesList;
 use Moxl\Xec\Action\OMEMO\GetBundle;
 use Moxl\Xec\Action\OMEMO\GetDevicesList;
 use Moxl\Xec\Action\OMEMO\SetDevicesList;
+use Moxl\Xec\Payload\Packet;
 
 class ChatOmemo extends \Movim\Widget\Base
 {
@@ -24,7 +25,7 @@ class ChatOmemo extends \Movim\Widget\Base
         $this->addjs('chatomemo_db.js');
     }
 
-    public function onDevicesList($packet)
+    public function onDevicesList(Packet $packet)
     {
         list($from, $devices) = array_values($packet->content);
 
@@ -33,7 +34,7 @@ class ChatOmemo extends \Movim\Widget\Base
         }
     }
 
-    public function onDevices($packet)
+    public function onDevices(Packet $packet)
     {
         list($from, $devices) = array_values($packet->content);
 
@@ -46,7 +47,7 @@ class ChatOmemo extends \Movim\Widget\Base
         );
     }
 
-    public function onBundle($packet)
+    public function onBundle(Packet $packet)
     {
         $bundle = $packet->content;
         $prekey = $bundle->extractPreKey();
@@ -56,12 +57,12 @@ class ChatOmemo extends \Movim\Widget\Base
         }
     }
 
-    public function onLastBundle($packet)
+    public function onLastBundle(Packet $packet)
     {
         $this->rpc('ChatOmemo.bundlesRefreshed', $packet->content);
     }
 
-    public function onDeviceListError($packet)
+    public function onDeviceListError(Packet $packet)
     {
         if ($packet->content == $this->me->id) {
             $this->rpc('ChatOmemo.initiateBundle', []);

@@ -11,6 +11,7 @@ use Moxl\Xec\Action\Register\Remove;
 use Moxl\Xec\Action\Register\Get;
 use Moxl\Xec\Action\Register\Set;
 use Moxl\Xec\Action\AdHoc\Get as AdHocGet;
+use Moxl\Xec\Payload\Packet;
 
 class Account extends \Movim\Widget\Base
 {
@@ -34,7 +35,7 @@ class Account extends \Movim\Widget\Base
         $this->rpc('Account.refreshFingerprints');
     }
 
-    public function onAdHocList($packet)
+    public function onAdHocList(Packet $packet)
     {
         $list = $packet->content;
 
@@ -69,7 +70,7 @@ class Account extends \Movim\Widget\Base
         Toast::send($this->__('client.registered'));
     }
 
-    public function onRegister($packet)
+    public function onRegister(Packet $packet)
     {
         $content = $packet->content;
 
@@ -91,7 +92,7 @@ class Account extends \Movim\Widget\Base
         }
     }
 
-    public function onRegisterError($packet)
+    public function onRegisterError(Packet $packet)
     {
         Toast::send(
             $packet->content ??

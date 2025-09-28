@@ -35,6 +35,7 @@ v0.32 (master)
 * Fix #1433 Use directly the Carbon object and not createFromFormat() in Contact::isOld()
 * Allow chatroom admins to configure the user voice, related to #1478
 * Material Design 3 CSS changes
+* Enforce Packet parameters in all the Widgets
 
 v0.31
 ---------------------------

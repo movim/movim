@@ -19,7 +19,7 @@ class PublishStories extends Base
         $this->addcss('publishstories.css');
     }
 
-    public function onPublish($packet)
+    public function onPublish(Packet $packet)
     {
         Toast::send($this->__('story.published'));
 

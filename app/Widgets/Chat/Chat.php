@@ -86,7 +86,7 @@ class Chat extends \Movim\Widget\Base
         $this->registerEvent('presence_muji_event', 'onCallInvite');
     }
 
-    public function onPresence($packet)
+    public function onPresence(Packet $packet)
     {
         if ($packet->content && $jid = $packet->content->jid) {
             $arr = explode('|', (new Notif)->getCurrent());
@@ -111,32 +111,32 @@ class Chat extends \Movim\Widget\Base
         $this->ajaxGetHeader($packet->from);
     }
 
-    public function onJingleMessage($packet)
+    public function onJingleMessage(Packet $packet)
     {
         $this->onMessage($packet);
     }
 
-    public function onMujiMessage($packet)
+    public function onMujiMessage(Packet $packet)
     {
         $this->onMessage($packet);
     }
 
-    public function onMucEventMessage($packet)
+    public function onMucEventMessage(Packet $packet)
     {
         $this->onMessage($packet);
     }
 
-    public function onMessageReceipt($packet)
+    public function onMessageReceipt(Packet $packet)
     {
         $this->onMessage($packet, history: false, receipt: true);
     }
 
-    public function onRetracted($packet)
+    public function onRetracted(Packet $packet)
     {
         $this->onMessage($packet, history: false, receipt: true);
     }
 
-    public function onPostResolved($packet)
+    public function onPostResolved(Packet $packet)
     {
         $this->onMessage($packet);
     }
@@ -163,7 +163,7 @@ class Chat extends \Movim\Widget\Base
         }
     }
 
-    public function onPublishError($packet)
+    public function onPublishError(Packet $packet)
     {
         Toast::send(
             $packet->content ??
@@ -171,7 +171,7 @@ class Chat extends \Movim\Widget\Base
         );
     }
 
-    public function onMessage($packet, $history = false, $receipt = false)
+    public function onMessage(Packet $packet, $history = false, $receipt = false)
     {
         $message = $packet->content;
         $from = null;
@@ -287,7 +287,7 @@ class Chat extends \Movim\Widget\Base
         Wrapper::getInstance()->iterate('chat_counter', (new Packet)->pack($this->me->unreads()));
     }
 
-    public function onSticker($packet)
+    public function onSticker(Packet $packet)
     {
         list($to, $cid) = array_values($packet->content);
         $this->ajaxGet($to);
@@ -310,12 +310,12 @@ class Chat extends \Movim\Widget\Base
         $this->rpc('MovimTpl.fill', '#' . cleanupId($packet->from . '_state'), $message);
     }
 
-    public function onConferenceSubject($packet)
+    public function onConferenceSubject(Packet $packet)
     {
         $this->ajaxGetRoom($packet->content->jidfrom, false, true);
     }
 
-    public function onMAMRetrieved($packet)
+    public function onMAMRetrieved(Packet $packet)
     {
         $content = $packet->content;
 
@@ -330,7 +330,7 @@ class Chat extends \Movim\Widget\Base
         }
     }
 
-    public function onMucConnected($packet)
+    public function onMucConnected(Packet $packet)
     {
         list($content, $notify) = $packet->content;
 
@@ -339,12 +339,12 @@ class Chat extends \Movim\Widget\Base
         }
     }
 
-    public function onRoomConfigError($packet)
+    public function onRoomConfigError(Packet $packet)
     {
         Toast::send($packet->content);
     }
 
-    public function onRoomConfig($packet)
+    public function onRoomConfig(Packet $packet)
     {
         list($config, $room) = array_values($packet->content);
 
@@ -359,7 +359,7 @@ class Chat extends \Movim\Widget\Base
         Dialog::fill($view->draw('_chat_config_room'), true);
     }
 
-    public function onRoomConfigSaved($packet)
+    public function onRoomConfigSaved(Packet $packet)
     {
         $r = new DiscoRequest;
         $r->setTo($packet->content)

@@ -111,7 +111,7 @@ class Rooms extends Base
         }
     }
 
-    public function onMessage($packet)
+    public function onMessage(Packet $packet)
     {
         $message = $packet->content;
 
@@ -124,7 +124,7 @@ class Rooms extends Base
         }
     }
 
-    public function onDisplayed($packet)
+    public function onDisplayed(Packet $packet)
     {
         $message = $packet->content;
 
@@ -133,7 +133,7 @@ class Rooms extends Base
         }
     }
 
-    public function onDestroyed($packet)
+    public function onDestroyed(Packet $packet)
     {
         $this->ajaxHttpGet();
         $this->rpc('Chat_ajaxGet');
@@ -141,13 +141,13 @@ class Rooms extends Base
         Toast::send($this->__('chatrooms.destroyed'));
     }
 
-    public function onConnected($packet)
+    public function onConnected(Packet $packet)
     {
         list($presence, $notify) = array_values($packet->content);
         $this->onPresence($presence->jid);
     }
 
-    public function onDisconnected($packet)
+    public function onDisconnected(Packet $packet)
     {
         if ($packet->content) {
             $this->onPresence($packet->content);
@@ -155,7 +155,7 @@ class Rooms extends Base
         }
     }
 
-    public function onBookmarkGet($packet)
+    public function onBookmarkGet(Packet $packet)
     {
         foreach (
             $this->me->session->conferences()
@@ -180,12 +180,12 @@ class Rooms extends Base
         $this->ajaxHttpGet();
     }
 
-    public function onBookmarkRetract($packet)
+    public function onBookmarkRetract(Packet $packet)
     {
         $this->ajaxHttpGet();
     }
 
-    public function onBookmarkSet($packet)
+    public function onBookmarkSet(Packet $packet)
     {
         $conference = $packet->content;
 
@@ -388,55 +388,55 @@ class Rooms extends Base
         Toast::send($this->__('chatrooms.conflict'));
     }
 
-    public function onRegistrationRequired($packet)
+    public function onRegistrationRequired(Packet $packet)
     {
         Toast::send($this->__('chatrooms.registrationrequired'));
         $this->ajaxExit($packet->content);
     }
 
-    public function onRemoteServerNotFound($packet)
+    public function onRemoteServerNotFound(Packet $packet)
     {
         Toast::send($this->__('chatrooms.remoteservernotfound'));
         $this->ajaxExit($packet->content);
     }
 
-    public function onRemoteServerTimeout($packet)
+    public function onRemoteServerTimeout(Packet $packet)
     {
         Toast::send($this->__('chatrooms.remoteservertimeout'));
         $this->ajaxExit($packet->content);
     }
 
-    public function onItemNotFound($packet)
+    public function onItemNotFound(Packet $packet)
     {
         Toast::send($this->__('chatrooms.itemnotfound'));
         $this->ajaxExit($packet->content);
     }
 
-    public function onNotAuthorized($packet)
+    public function onNotAuthorized(Packet $packet)
     {
         Toast::send($this->__('chatrooms.notauthorized'));
         $this->ajaxExit($packet->content);
     }
 
-    public function onForbidden($packet)
+    public function onForbidden(Packet $packet)
     {
         Toast::send($this->__('chatrooms.forbidden'));
         $this->ajaxExit($packet->content);
     }
 
-    public function onJidMalformed($packet)
+    public function onJidMalformed(Packet $packet)
     {
         Toast::send($this->__('chatrooms.jidmalformed'));
         $this->ajaxExit($packet->content);
     }
 
-    public function onNotAcceptable($packet)
+    public function onNotAcceptable(Packet $packet)
     {
         Toast::send($this->__('chatrooms.notacceptable'));
         $this->ajaxExit($packet->content);
     }
 
-    public function onServiceUnavailable($packet)
+    public function onServiceUnavailable(Packet $packet)
     {
         Toast::send($this->__('chatrooms.serviceunavailable'));
         $this->ajaxExit($packet->content);

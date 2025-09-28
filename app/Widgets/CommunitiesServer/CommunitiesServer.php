@@ -44,14 +44,14 @@ class CommunitiesServer extends \Movim\Widget\Base
         $this->rpc('MovimTpl.fill', '#communities_server', $view->draw('_communitiesserver_remoteservernotfound'));
     }
 
-    public function onDisco($packet)
+    public function onDisco(Packet $packet)
     {
         $origin = $packet->content;
 
         $this->rpc('MovimTpl.fill', '#communities_server', $this->prepareCommunitiesServer($origin));
     }
 
-    public function onDiscoRequest($packet)
+    public function onDiscoRequest(Packet $packet)
     {
         $info = $packet->content;
 
@@ -60,7 +60,7 @@ class CommunitiesServer extends \Movim\Widget\Base
         }
     }
 
-    public function onDiscoError($packet)
+    public function onDiscoError(Packet $packet)
     {
         $origin = $packet->content;
 
@@ -71,7 +71,7 @@ class CommunitiesServer extends \Movim\Widget\Base
         Toast::send($this->__('communitiesserver.disco_error'));
     }
 
-    public function onTestCreate($packet)
+    public function onTestCreate(Packet $packet)
     {
         $origin = $packet->content;
 
@@ -81,7 +81,7 @@ class CommunitiesServer extends \Movim\Widget\Base
         Dialog::fill($view->draw('_communitiesserver_add'));
     }
 
-    public function onTestCreateError($packet)
+    public function onTestCreateError(Packet $packet)
     {
         Toast::send($this->__('communitiesserver.no_creation'));
     }

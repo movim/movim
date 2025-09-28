@@ -6,6 +6,7 @@ use App\Post;
 use Movim\Widget\Base;
 
 use Moxl\Xec\Action\Pubsub\GetConfig;
+use Moxl\Xec\Payload\Packet;
 
 class ContactBlogConfig extends Base
 {
@@ -22,7 +23,7 @@ class ContactBlogConfig extends Base
         }
     }
 
-    public function onBlogConfig($packet)
+    public function onBlogConfig(Packet $packet)
     {
         if ($packet->content['access_model'] == 'presence') {
             $view = $this->tpl();
