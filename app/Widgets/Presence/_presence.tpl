@@ -3,7 +3,6 @@
         onclick="MovimUtils.reload('{$c->route('contact', $me->jid)}')"
         class="primary icon bubble status
         {if="$presence->value != null"}{$presencetxt[$presence->value]}{/if}
-        {if="$me->hasLocation()"} location{/if}
     ">
         <img src="{$me->getPicture(\Movim\ImageSize::M)}">
     </span>
