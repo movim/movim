@@ -81,7 +81,7 @@ class AccountNext extends \Movim\Widget\Base
     {
         Toast::send($this->__('error.service_unavailable'));
 
-        requestAPI('disconnect', 2, ['sid' => SESSION_ID]);
+        requestAPI('disconnect', post: ['sid' => SESSION_ID]);
 
         $this->rpc('MovimUtils.redirect', $this->route('account'));
     }

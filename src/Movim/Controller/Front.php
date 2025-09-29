@@ -61,7 +61,7 @@ class Front extends Base
 
         // Ajax request that is going to the daemon
         if ($request === 'ajaxd') {
-            requestAPI('ajax', 2, [
+            requestAPI('ajax', post: [
                 'sid' => SESSION_ID,
                 'json' => rawurlencode(file_get_contents('php://input'))
             ]);

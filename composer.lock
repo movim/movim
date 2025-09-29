@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a68eb663f09739bf9b9964c15bbcbded",
+    "content-hash": "682142e59af45053576467f71f62636f",
     "packages": [
         {
             "name": "awobaz/compoships",
@@ -7480,7 +7480,6 @@
     "prefer-lowest": false,
     "platform": {
         "php": ">=8.2.0",
-        "ext-curl": "*",
         "ext-gd": "*",
         "ext-dom": "*",
         "ext-mbstring": "*",

@@ -72,12 +72,14 @@ class Image
         if ($this->_im) {
             return $this->_im->getImageGeometry();
         }
+
+        return null;
     }
 
     /**
      * @desc Load a bin picture from an URL
      */
-    public function fromURL(string $url):bool
+    public function fromURL(string $url): bool
     {
         $bin = requestURL($url);
         if ($bin) {
@@ -204,12 +206,14 @@ class Image
 
                 // And destroy all the thumbnails if it's the original
                 if ($width == false) {
-                    foreach (glob(
-                        PUBLIC_CACHE_PATH .
-                            hash(Image::$hash, $this->_key) .
-                            '*' . self::$formats[$format],
-                        GLOB_NOSORT
-                    ) as $pathThumb) {
+                    foreach (
+                        glob(
+                            PUBLIC_CACHE_PATH .
+                                hash(Image::$hash, $this->_key) .
+                                '*' . self::$formats[$format],
+                            GLOB_NOSORT
+                        ) as $pathThumb
+                    ) {
                         @unlink($pathThumb);
                     }
                 }
@@ -250,7 +254,7 @@ class Image
             }
 
             // Auto-rotate
-            switch($this->_im->getImageOrientation()) {
+            switch ($this->_im->getImageOrientation()) {
                 case \Imagick::ORIENTATION_BOTTOMRIGHT:
                     $this->_im->rotateimage("#000", 180);
                     break;

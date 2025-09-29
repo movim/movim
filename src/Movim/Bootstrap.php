@@ -222,7 +222,7 @@ class Bootstrap
     private function checkSession()
     {
         if (is_string(SESSION_ID)) {
-            $process = (bool)requestAPI('exists', 2, ['sid' => SESSION_ID]);
+            $process = (bool)requestAPI('exists', post: ['sid' => SESSION_ID]);
             $session = DBSession::find(SESSION_ID);
 
             if ($session) {
@@ -237,7 +237,7 @@ class Bootstrap
                 $session->loadMemory();
             } elseif ($process) {
                 // A process but no session in the db
-                requestAPI('disconnect', 2, ['sid' => SESSION_ID]);
+                requestAPI('disconnect', post: ['sid' => SESSION_ID]);
             }
         }
     }

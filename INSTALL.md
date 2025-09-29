@@ -14,7 +14,6 @@ Movim requires some dependencies to be setup properly.
      * MariaDB 10.2 or higher with utf8mb4 encoding (necessary for emojis 😃 support) AND `utf8mb4_bin` collation.
      * MySQL is __NOT__ supported and will throw errors during the migrations, please use PostgreSQL or MariaDB.
   * **PHP 8.2 minimum** with :
-     * Curl (package ''**php-curl**'')
      * PHP mbstring (package ''**php-mbstring**'')
      * PHP ImageMagick and GD for the picture processing (package ''**php-imagick**'' and ''**php-gd**'')
      * Your database PHP driver (package ''**php-pgsql**'' or ''**php-mysql**'' depending on the type of database server you want to use).
@@ -23,7 +22,7 @@ Movim requires some dependencies to be setup properly.
 
 ### Debian/Ubuntu
 
-    apt install composer php-fpm php-curl php-mbstring php-imagick php-gd php-pgsql php-xml php-zip
+    apt install composer php-fpm php-mbstring php-imagick php-gd php-pgsql php-xml php-zip
 
 # General architecture
 

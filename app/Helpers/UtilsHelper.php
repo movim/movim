@@ -11,6 +11,8 @@ use React\Http\Message\Response;
 use React\Promise\Promise;
 use React\Promise\PromiseInterface;
 
+use function React\Async\await;
+
 /**
  * Me
  */
@@ -207,7 +209,6 @@ function resolveInfos($postCollection)
 function requiredExtensions(): array
 {
     $extensions = [
-        'curl',
         'dom',
         'imagick',
         'mbstring',
@@ -756,83 +757,65 @@ function requestTemplaterWorker(string $widget, string $method, ?Packet $data = 
 /*
  * @desc Request a simple url
  */
-function requestURL(string $url, int $timeout = 10, $post = false, bool $json = false, array $headers = [])
+function requestURL(string $url, int $timeout = 10, bool $json = false, array $headers = []): ?string
 {
     if ($json) {
         array_push($headers, 'Accept: application/json');
     }
 
-    $ch = curl_init($url);
-
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    //curl_setopt($ch, CURLOPT_ENCODING, 'gzip,deflate');
-    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-    curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
-    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
-    curl_setopt($ch, CURLOPT_USERAGENT, DEFAULT_HTTP_USER_AGENT);
-
-    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-
-    if ($post) {
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-    }
+    $connector = null;
 
     // Disable SSL if the host requested is the local one
     if (parse_url(config('daemon.url'), PHP_URL_HOST) == parse_url($url, PHP_URL_HOST)) {
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        $connector = new React\Socket\Connector([
+            'tls' => [
+                'verify_peer' => false,
+                'verify_peer_name' => false
+            ]
+        ]);
     }
 
-    $content = curl_exec($ch);
+    $browser = (new React\Http\Browser($connector))
+        ->withTimeout($timeout)
+        ->withHeader('User-Agent', DEFAULT_HTTP_USER_AGENT)
+        ->withFollowRedirects(true);
 
-    return curl_errno($ch) == 0 ? $content : false;
-}
-
-/*
- * Request the headers of a URL
- */
-function requestHeaders(string $url, $timeout = 2): ?array
-{
-    $ch = curl_init($url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    //curl_setopt($ch, CURLOPT_ENCODING, 'gzip,deflate');
-    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-    curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
-    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
-    curl_setopt($ch, CURLOPT_HEADER, 1);
-    curl_setopt($ch, CURLOPT_NOBODY, 1);
-    curl_setopt($ch, CURLOPT_USERAGENT, DEFAULT_HTTP_USER_AGENT);
-
-    $ret = curl_exec($ch);
-
-    if (empty($ret)) {
-        \logError('requestHeader on "' . $url . '": ' . curl_error($ch));
-        curl_close($ch);
+    try {
+        $response = await($browser->get($url, $headers));
+        // response successfully received
+        return (string)$response->getBody();
+    } catch (Exception $e) {
         return null;
     }
-
-    return curl_getinfo($ch);
 }
 
 /**
  * Request the internal API
  */
-function requestAPI(string $action, int $timeout = 2, $post = false)
+function requestAPI(string $action, int $timeout = 2, ?array $post = null): string|false
 {
-    $ch = curl_init('http:/' . $action);
-    curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
-    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
-    curl_setopt($ch, CURLOPT_UNIX_SOCKET_PATH, API_SOCKET);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    $browser = (new React\Http\Browser(
+        new React\Socket\FixedUriConnector(
+            API_SOCKET,
+            new React\Socket\UnixConnector()
+        )
+    ))->withTimeout($timeout)
+        ->withHeader('Content-Type', 'application/x-www-form-urlencoded')
+        ->withHeader('Host', $action);
 
-    if (is_array($post)) {
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+    $url = 'http:/' . $action;
+
+    try {
+        $response = await(
+            $post
+                ? $browser->post($url, body: http_build_query($post))
+                : $browser->get($url)
+        );
+
+        return (string)$response->getBody();
+    } catch (Exception $e) {
+        return false;
     }
-
-    $content = curl_exec($ch);
-    return curl_errno($ch) == 0 ? $content : false;
 }
 
 /**

@@ -36,6 +36,7 @@ v0.32 (master)
 * Allow chatroom admins to configure the user voice, related to #1478
 * Material Design 3 CSS changes
 * Enforce Packet parameters in all the Widgets
+* Drop php-curl dependency and replace it with reactphp/http
 
 v0.31
 ---------------------------

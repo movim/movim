@@ -2,8 +2,11 @@
 
 namespace App\Widgets\Picture;
 
-use Movim\Widget\Base;
+use Exception;
 use Movim\Image;
+use Movim\Widget\Base;
+use Psr\Http\Message\ResponseInterface;
+use React\Http\Browser;
 
 class Picture extends Base
 {
@@ -12,7 +15,7 @@ class Picture extends Base
 
     public function display()
     {
-        $url = str_replace ( ' ', '%20', html_entity_decode(urldecode($this->get('url'))));
+        $url = str_replace(' ', '%20', html_entity_decode(urldecode($this->get('url'))));
         $parsedUrl = parse_url($url);
         if (
             is_array($parsedUrl)
@@ -22,66 +25,53 @@ class Picture extends Base
             $url = getImgurThumbnail($url);
         }
 
-        $headers = requestHeaders($url);
+        $browser = (new Browser())
+            ->withHeader('User-Agent', DEFAULT_HTTP_USER_AGENT)
+            ->withFollowRedirects(true);
 
-        if (is_array($headers) && preg_match('/2\d{2}/', $headers['http_code'])) {
-            $imported = false;
-            $chunks = '';
+        $browser->withTimeout(2)->head($url)->then(function (ResponseInterface $response) use ($url, $browser) {
+            $contentLength = null;
 
-            $max = $headers["download_content_length"] > $this->compressLimit ? $this->compressLimit : $headers["download_content_length"];
-
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $url);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_HEADER, true);
-            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
-            curl_setopt($ch, CURLOPT_BUFFERSIZE, 12800);
-            curl_setopt($ch, CURLOPT_NOPROGRESS, false);
-            curl_setopt($ch, CURLOPT_MAXFILESIZE, $max);
-            curl_setopt($ch, CURLOPT_USERAGENT, DEFAULT_HTTP_USER_AGENT);
-            curl_setopt($ch, CURLOPT_WRITEFUNCTION, function ($ch, $chunk) use (&$chunks, $max) {
-                $chunks .= $chunk;
-                return strlen($chunk);
-            });
-
-            curl_exec($ch);
-            curl_close($ch);
-
-            $headerSize = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
-            $headers = preg_split('/[\r\n]+/', substr($chunks, 0, $headerSize));
-            $body = substr($chunks, $headerSize);
-            $p = null;
-
-            $p = new Image;
-
-            /**
-             * In case of an animated GIF we get only the first frame
-             */
-            if (substr_count($chunks, "\x00\x21\xF9\x04") > 1) {
-                $body = substr($body, 0, strrpos($body, "\x00\x21\xF9\x04"));
+            if ($response->hasHeader('Content-Length')) {
+                $contentLength = (int)$response->getHeader('Content-Length')[0];
             }
 
-            $imported = $p->fromBin($body);
+            $max = $contentLength && $contentLength > $this->compressLimit
+                ? $this->compressLimit
+                : $contentLength;
 
-            if ($imported) {
-                $p->inMemory();
-                $p->save(quality: 85);
+            $browser->withTimeout(10)->withResponseBuffer($max)->get($url)->then(function (ResponseInterface $response) {
+                $imported = false;
+                $body = (string)$response->getBody();
+                $p = new Image;
 
-                if ($p->getImage()->getImageWidth() > $this->sizeLimit || $p->getImage()->getImageHeight() > $this->sizeLimit) {
-                    $p->getImage()->adaptiveResizeImage($this->sizeLimit, $this->sizeLimit, true, false);
+                // In case of an animated GIF we get only the first frame
+                if (substr_count($body, "\x00\x21\xF9\x04") > 1) {
+                    $body = substr($body, 0, strrpos($body, "\x00\x21\xF9\x04"));
                 }
 
-                header_remove('Content-Type');
-                header('Content-Type: image/' . DEFAULT_PICTURE_FORMAT);
-                header('Cache-Control: max-age=' . 3600 * 24);
-                print $p ? $p->getImage()->getImagesBlob() : $body;
+                $imported = $p->fromBin($body);
 
-                return;
-            }
-        }
+                if ($imported) {
+                    $p->inMemory();
+                    $p->save(quality: 85);
 
-        header("HTTP/1.1 301 Moved Permanently");
-        header('Location: /theme/img/broken_image_filled.svg');
+                    if ($p->getImage()->getImageWidth() > $this->sizeLimit || $p->getImage()->getImageHeight() > $this->sizeLimit) {
+                        $p->getImage()->adaptiveResizeImage($this->sizeLimit, $this->sizeLimit, true, false);
+                    }
+
+                    header_remove('Content-Type');
+                    header('Content-Type: image/' . DEFAULT_PICTURE_FORMAT);
+                    header('Cache-Control: max-age=' . 3600 * 24);
+                    print $p ? $p->getImage()->getImagesBlob() : $body;
+
+                    return;
+                }
+            });
+
+        }, function (Exception $e) {
+            header("HTTP/1.1 301 Moved Permanently");
+            header('Location: /theme/img/broken_image_filled.svg');
+        });
     }
 }

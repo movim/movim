@@ -513,7 +513,7 @@ class Post extends Model
 
         if ($summary != null || $content != null) {
             $this->content = trim((string)$summary . (string)$content);
-            $this->contentcleaned = requestAPI('purifyhtml', 2, ['content' => $this->content]);
+            $this->contentcleaned = purifyHTML(html_entity_decode($this->content));//requestAPI('purifyhtml', post: ['content' => $this->content]);
         }
 
         $this->updated = ($entry->entry->updated)

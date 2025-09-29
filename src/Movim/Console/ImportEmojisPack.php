@@ -50,7 +50,7 @@ class ImportEmojisPack extends Command
 
         $output->writeln('<info>Downloading the manifest</info>');
 
-        $content = requestURL($input->getArgument('manifest-url'), 5, false, true);
+        $content = requestURL($input->getArgument('manifest-url'), timeout: 5, json: true);
 
         if (!$content) {
             $output->writeln('<error>The manifest cannot be downloaded</error>');
@@ -85,7 +85,12 @@ class ImportEmojisPack extends Command
 
         $output->writeln('<info>Downloading ' . $pack . ' - ' . $json->{$pack}->description . '</info>');
 
-        $content = requestURL($json->{$pack}->src, 5);
+        $content = requestURL($json->{$pack}->src, timeout: 5);
+
+        if (!$content) {
+            $output->writeln('<error>The archive cannot be downloaded</error>');
+            return Command::FAILURE;
+        }
 
         $tempZip = tempnam(sys_get_temp_dir(), $pack);
         file_put_contents($tempZip, $content);

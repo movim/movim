@@ -108,10 +108,12 @@ class Contact extends Model
             filter_var((string)$vcard->vCard->PHOTO, FILTER_VALIDATE_URL)
             && in_array($this->avatartype, ['vcard-temp', null])
         ) {
-            $this->photobin = base64_encode(
-                requestURL((string)$vcard->vCard->PHOTO, 1)
-            );
-            $this->avatartype = 'vcard-temp';
+            $data = requestURL((string)$vcard->vCard->PHOTO, timeout: 1);
+
+            if ($data) {
+                $this->photobin = base64_encode($data);
+                $this->avatartype = 'vcard-temp';
+            }
         } elseif (
             $vcard->vCard->PHOTO
             && in_array($this->avatartype, ['vcard-temp', null])

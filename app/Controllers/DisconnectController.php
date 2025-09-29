@@ -14,7 +14,7 @@ class DisconnectController extends Base
     {
         // Just in case
         User::me()->encryptedPasswords()->delete();
-        requestAPI('disconnect', 2, ['sid' => SESSION_ID]);
+        requestAPI('disconnect', post: ['sid' => SESSION_ID]);
         Session::dispose();
 
         // Fresh cookie

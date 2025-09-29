@@ -12,7 +12,7 @@ class AccountController extends Base
             $this->redirect('login');
         }
 
-        requestAPI('disconnect', 2, ['sid' => SESSION_ID]);
+        requestAPI('disconnect', post: ['sid' => SESSION_ID]);
 
         $this->page->setTitle(__('page.account_creation'));
     }
