@@ -29,6 +29,7 @@ class Publish extends Base
     {
         $this->registerEvent('pubsub_postpublish_handle', 'onPublish');
         $this->registerEvent('pubsub_postpublish_errorforbidden', 'onPublishErrorForbidden');
+        $this->registerEvent('pubsub_postpublish_errorpayloadtoobig', 'onPayloadTooBig');
         $this->registerEvent('microblog_commentcreatenode_handle', 'onCommentNodeCreated');
         $this->registerEvent('pubsub_getconfig_handle', 'onBlogConfig');
 
@@ -64,7 +65,12 @@ class Publish extends Base
     public function onPublishErrorForbidden(Packet $packet)
     {
         Toast::send($this->__('publish.publish_error_forbidden'));
+        $this->rpc('Publish.enableSend');
+    }
 
+    public function onPayloadTooBig(Packet $packet)
+    {
+        Toast::send($this->__('publish.publish_error_payload_to_big'));
         $this->rpc('Publish.enableSend');
     }
 

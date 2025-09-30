@@ -184,4 +184,9 @@ class PostPublish extends Action
         $this->_withPublishOption = false;
         $this->request();
     }
+
+    public function errorPayloadTooBig(string $errorId, ?string $message = null)
+    {
+        $this->deliver();
+    }
 }
