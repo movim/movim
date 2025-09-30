@@ -1346,8 +1346,18 @@ var Chat = {
         return ul;
     },
     getFileHtml: function (file, data) {
+        // Inline files
+        if (file.disposition == 'inline' && (!file.preview || !file.preview.height) && file.type.substring(0, 5) == 'image') {
+            var img = document.createElement('img');
+            img.classList.add('sticker');
+            img.setAttribute('src', file.url);
+            img.setAttribute('height', '170');
+
+            return img;
+        }
+
         var div = document.createElement('div');
-        div.setAttribute('class', 'file');
+        div.classList.add('file');
 
         if (file.name) {
             div.dataset.type = file.type;
@@ -1394,9 +1404,10 @@ var Chat = {
 
             var url = new URL(file.url);
 
-            // Tenor implementation
+            // Tenor implementation and inline files
             if (url.host && url.host == 'media.tenor.com'
-                || file.type == 'audio/ogg' || file.type == 'audio/opus' || file.type == 'audio/mpeg') {
+                || file.type == 'audio/ogg' || file.type == 'audio/opus' || file.type == 'audio/mpeg'
+                || file.disposition == 'inline') {
                 return div;
             }
 
@@ -1494,7 +1505,7 @@ var Chat = {
         var url = new URL(file.url);
 
         // Tenor implementation
-        if (url.host && url.host == 'media.tenor.com') {
+        if ((url.host && url.host == 'media.tenor.com') || file.disposition == 'inline') {
             video.classList.add('gif');
         } else {
             video.setAttribute('controls', 'controls');
