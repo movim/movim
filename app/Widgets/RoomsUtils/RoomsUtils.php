@@ -412,6 +412,9 @@ class RoomsUtils extends Base
             ->whereCategory('conference')
             ->first());
         $view->assign('mucservice', \App\Info::where('parent', $this->me->session->host)
+            ->whereDoesntHave('identities', function ($query)  {
+                $query->where('category', 'gateway');
+            })
             ->whereCategory('conference')
             ->whereType('text')
             ->first());
