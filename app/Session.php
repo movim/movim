@@ -160,6 +160,9 @@ class Session extends Model
     {
         return Info::where('parent', $this->host)
             ->whereCategory('conference')
+            ->whereDoesntHave('identities', function ($query)  {
+                $query->where('category', 'gateway');
+            })
             ->get();
     }
 

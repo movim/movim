@@ -29,7 +29,10 @@
                                     <optgroup label="{$value->parent}">
                                 {/if}
                                 <option value="{$value->server}">
-                                    {$value->name}
+                                    {if="!empty($value->name)"}
+                                        {$value->name} -
+                                    {/if}
+                                    {$value->server}
                                 </option>
                                 {$group = $value->parent}
                             {/loop}
