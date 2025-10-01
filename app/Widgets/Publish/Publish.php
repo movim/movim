@@ -148,6 +148,12 @@ class Publish extends Base
         $draft = $this->me->drafts()->find($id);
 
         if ($draft && $draft->isNotEmpty()) {
+            if (!$draft->isSmallEnough()) {
+                $this->rpc('Publish.enableSend');
+                Toast::send($this->__('publish.too_long', Draft::LENGTH_LIMIT));
+                return;
+            }
+
             $p = new PostPublish;
             $p->setFrom($this->me->id)
                 ->setTo($draft->server)

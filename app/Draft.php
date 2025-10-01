@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Draft extends Model
 {
+    public const LENGTH_LIMIT = 16384; // ~64kb in UTF8 with 4 bytes per character
     protected $with = ['reply'];
     private $embeds = [];
 
@@ -35,12 +36,18 @@ class Draft extends Model
         return !empty($this->title);
     }
 
+    public function isSmallEnough()
+    {
+        return mb_strlen($this->title) < self::LENGTH_LIMIT
+            && mb_strlen($this->content) < self::LENGTH_LIMIT;
+    }
+
     public function tryFillPost()
     {
         $post = Post::where('server', $this->server)
-                    ->where('node', $this->node)
-                    ->where('nodeid', $this->nodeid)
-                    ->first();
+            ->where('node', $this->node)
+            ->where('nodeid', $this->nodeid)
+            ->first();
 
         if ($post) {
             $this->title = $post->title;

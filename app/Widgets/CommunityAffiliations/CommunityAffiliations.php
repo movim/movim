@@ -3,6 +3,7 @@
 namespace App\Widgets\CommunityAffiliations;
 
 use App\Affiliation;
+use App\Post;
 use App\Widgets\CommunityHeader\CommunityHeader;
 use App\Widgets\Dialog\Dialog;
 use App\Widgets\Toast\Toast;

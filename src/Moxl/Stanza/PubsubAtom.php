@@ -151,9 +151,10 @@ class PubsubAtom
         }
 
         if ($this->content) {
-            $content_raw = $dom->createElement('content', $this->content);
-            $content_raw->setAttribute('type', 'text');
-            $entry->appendChild($content_raw);
+            $contentRaw = $dom->createElement('content');
+            $contentRaw->appendChild($dom->createTextNode($this->content));
+            $contentRaw->setAttribute('type', 'text');
+            $entry->appendChild($contentRaw);
         }
 
         if ($this->contentxhtml) {
