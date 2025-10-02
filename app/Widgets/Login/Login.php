@@ -7,7 +7,7 @@ use Moxl\Xec\Action\Storage\Get;
 use Respect\Validation\Validator;
 use Defuse\Crypto\Key;
 use Defuse\Crypto\Crypto;
-use League\CommonMark\CommonMarkConverter;
+use League\CommonMark\GithubFlavoredMarkdownConverter;
 
 use App\Configuration;
 use App\Session;
@@ -73,7 +73,7 @@ class Login extends Base
         $configuration = Configuration::get();
 
         if (!empty($configuration->info)) {
-            $converter = new CommonMarkConverter([
+            $converter = new GithubFlavoredMarkdownConverter([
                 'html_input' => 'strip',
                 'allow_unsafe_links' => false,
             ]);

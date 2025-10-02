@@ -37,6 +37,7 @@ v0.32 (master)
 * Material Design 3 CSS changes
 * Enforce Packet parameters in all the Widgets
 * Drop php-curl dependency and replace it with reactphp/http
+* Use Github Flavored Markdown to support a more advanced Markdown format
 
 v0.31
 ---------------------------

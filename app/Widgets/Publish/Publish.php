@@ -10,7 +10,7 @@ use Moxl\Xec\Action\Pubsub\Subscribe;
 use Movim\Widget\Base;
 use Movim\Session;
 
-use League\CommonMark\CommonMarkConverter;
+use League\CommonMark\GithubFlavoredMarkdownConverter;
 use Respect\Validation\Validator;
 
 use App\Draft;
@@ -126,7 +126,7 @@ class Publish extends Base
         if ($draft && $draft->isNotEmpty()) {
             $view = $this->tpl();
             $doc = new \DOMDocument;
-            $converter = new CommonMarkConverter([
+            $converter = new GithubFlavoredMarkdownConverter([
                 'html_input' => 'escape',
                 'allow_unsafe_links' => true,
             ]);
@@ -170,7 +170,7 @@ class Publish extends Base
             }
 
             if (Validator::stringType()->notEmpty()->isValid(trim($draft->content))) {
-                $converter = new CommonMarkConverter([
+                $converter = new GithubFlavoredMarkdownConverter([
                     'html_input' => 'escape',
                     'allow_unsafe_links' => true,
                 ]);
